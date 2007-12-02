@@ -1,0 +1,148 @@
+/*
+Copyright (C) 2007 <SWGEmu>
+ 
+This File is part of Core3.
+ 
+This program is free software; you can redistribute 
+it and/or modify it under the terms of the GNU Lesser 
+General Public License as published by the Free Software
+Foundation; either version 2 of the License, 
+or (at your option) any later version.
+ 
+This program is distributed in the hope that it will be useful, 
+but WITHOUT ANY WARRANTY; without even the implied warranty of 
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+See the GNU Lesser General Public License for
+more details.
+ 
+You should have received a copy of the GNU Lesser General 
+Public License along with this program; if not, write to
+the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+ 
+Linking Engine3 statically or dynamically with other modules 
+is making a combined work based on Engine3. 
+Thus, the terms and conditions of the GNU Lesser General Public License 
+cover the whole combination.
+ 
+In addition, as a special exception, the copyright holders of Engine3 
+give you permission to combine Engine3 program with free software 
+programs or libraries that are released under the GNU LGPL and with 
+code included in the standard release of Core3 under the GNU LGPL 
+license (or modified versions of such code, with unchanged license). 
+You may copy and distribute such a system following the terms of the 
+GNU LGPL for Engine3 and the licenses of the other code concerned, 
+provided that you include the source code of that other code when 
+and as the GNU LGPL requires distribution of source code.
+ 
+Note that people who make modified versions of Engine3 are not obligated 
+to grant this special exception for their modified versions; 
+it is their choice whether to do so. The GNU Lesser General Public License 
+gives permission to release a modified version without this exception; 
+this exception also makes it possible to release a modified version 
+which carries forward this exception.
+*/
+
+#ifndef WOUNDSDIRECTPOOLATTACKTARGETSKILL_H_
+#define WOUNDSDIRECTPOOLATTACKTARGETSKILL_H_
+
+#include "DirectPoolAttackTargetSkill.h"
+
+class WoundsDirectPoolAttackTargetSkill : public DirectPoolAttackTargetSkill {
+public:
+	WoundsDirectPoolAttackTargetSkill(const string& name, const string& anim, ZoneProcessServerImplementation* serv) : DirectPoolAttackTargetSkill(name, anim, serv) {
+	}
+	
+	int doSkill(CreatureObject* creature, CreatureObject* targetCreature, bool doAnimation = true) {
+		
+		int damage = calculateDamage(creature, targetCreature);
+		
+		/*if (doAnimation) {
+			if (animCRC == 0 && creature->isPlayer()) {
+				Player* player = (Player*) creature;
+				string anim = Animations::getRandomAnimation();
+				uint32 animationCRC = String::hashCode(anim);
+				player->doCombatAnimation(targetCreature, animationCRC, 1);
+				creature->sendSystemMessage(anim);
+			} else
+				creature->doCombatAnimation(targetCreature, animCRC, (damage > 0));
+		}*/
+		if (damage && targetCreature->hasAttackDelay())
+			targetCreature->clearAttackDelay();
+		
+		doAnimations(creature, targetCreature);
+		
+		return damage;
+	}
+	
+	int calculateDamage(CreatureObject* creature, CreatureObject* targetCreature) {
+		
+		Weapon* weapon = creature->getWeapon();
+		Weapon* targetWeapon = targetCreature->getWeapon();
+		
+		float minDamage = 0;
+		float maxDamage = 0;
+		int woundsRatio = 5;		 
+		
+		if (weapon != NULL) {
+			minDamage = weapon->getMinDamage();
+			maxDamage = weapon->getMaxDamage();
+		} else {
+			maxDamage = (float)creature->getSkillMod("unarmed_damage");
+			if (maxDamage < 25)
+				maxDamage = 25;
+			minDamage = maxDamage / 2;
+		}
+		
+		checkMitigation(creature, targetCreature, minDamage, maxDamage);
+					
+		float damage = -damageRatio * (System::random((int)maxDamage - (int)minDamage) + (int)minDamage);
+			
+		calculateDamageReduction(creature, targetCreature, damage);
+	
+		int pool = System::random(100);
+		
+			if (getHitChance(creature, targetCreature) > System::random(100)) {
+				
+				int secondaryDefense = checkSecondaryDefenses(creature, targetCreature);
+				if (secondaryDefense < 2) {
+					if (secondaryDefense == 1)
+						damage = damage / 2;
+					
+					if (pool < healthPoolAttackChance) {
+						applyHealthPoolDamage(creature, targetCreature, (int32) damage);
+						applyHealthPoolWoundsDamage(targetCreature, -(int32) damage / 25);
+					} else if (pool < healthPoolAttackChance + actionPoolAttackChance) {
+						applyActionPoolDamage(creature, targetCreature, (int32) damage);
+						applyActionPoolWoundsDamage(targetCreature, -(int32) damage / 25);
+					} else if (pool < mindPoolAttackChance) {
+						applyMindPoolDamage(creature, targetCreature, (int32) damage);
+						applyMindPoolWoundsDamage(targetCreature, -(int32) damage / 25);
+					}
+				} else
+					return 0;
+		} else {
+			doMiss(creature, targetCreature, (int32) damage);
+			return 0;
+		}
+
+		if (hasCbtSpamHit()) 
+			creature->sendCombatSpam(targetCreature, NULL, -(int32)damage, getCbtSpamHit());
+
+		return -(int32)damage;
+	}
+	
+	void applyHealthPoolWoundsDamage(CreatureObject* targetCreature, int32 damage) {
+		targetCreature->changeHealthWoundsBar(damage);
+	}
+	
+	void applyActionPoolWoundsDamage(CreatureObject* targetCreature, int32 damage) {
+		targetCreature->changeActionWoundsBar(damage);
+	}
+	
+	void applyMindPoolWoundsDamage(CreatureObject* targetCreature, int32 damage) {
+		targetCreature->changeMindWoundsBar(damage);
+	}
+	
+};
+
+#endif /*WOUNDSDIRECTPOOLATTACKTARGETSKILL_H_*/

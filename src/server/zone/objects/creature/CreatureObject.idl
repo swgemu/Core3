@@ -1,0 +1,469 @@
+/*
+Copyright (C) 2007 <SWGEmu>
+ 
+This File is part of Core3.
+ 
+This program is free software; you can redistribute 
+it and/or modify it under the terms of the GNU Lesser 
+General Public License as published by the Free Software
+Foundation; either version 2 of the License, 
+or (at your option) any later version.
+ 
+This program is distributed in the hope that it will be useful, 
+but WITHOUT ANY WARRANTY; without even the implied warranty of 
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+See the GNU Lesser General Public License for
+more details.
+ 
+You should have received a copy of the GNU Lesser General 
+Public License along with this program; if not, write to
+the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+ 
+Linking Engine3 statically or dynamically with other modules 
+is making a combined work based on Engine3. 
+Thus, the terms and conditions of the GNU Lesser General Public License 
+cover the whole combination.
+ 
+In addition, as a special exception, the copyright holders of Engine3 
+give you permission to combine Engine3 program with free software 
+programs or libraries that are released under the GNU LGPL and with 
+code included in the standard release of Core3 under the GNU LGPL 
+license (or modified versions of such code, with unchanged license). 
+You may copy and distribute such a system following the terms of the 
+GNU LGPL for Engine3 and the licenses of the other code concerned, 
+provided that you include the source code of that other code when 
+and as the GNU LGPL requires distribution of source code.
+ 
+Note that people who make modified versions of Engine3 are not obligated 
+to grant this special exception for their modified versions; 
+it is their choice whether to do so. The GNU Lesser General Public License 
+gives permission to release a modified version without this exception; 
+this exception also makes it possible to release a modified version 
+which carries forward this exception.
+*/
+
+import "../scene/SceneObject";
+
+import "../tangible/Inventory";
+
+import "../tangible/TangibleObject";
+
+import "../tangible/weapons/Weapon";
+
+import "../group/GroupObject";
+
+include "engine/service/Message";
+
+import "../player/Player";
+
+import "../building/BuildingObject";
+import "../creature/mount/MountCreature";
+
+import "../guild/Guild";
+
+interface CreatureObject implements SceneObject {
+	CreatureObject(unsigned long oid);
+	
+	void sendItemsTo(Player player);
+	void sendTo(Player player, boolean doClose = true);
+
+	void sendDestroyTo(Player player);
+
+	// combat
+	void doCombatAnimation(CreatureObject defender, unsigned int animcrc, boolean hit = false);
+	void doAnimation(const string anim);
+	void playEffect(const string file, const string aux);
+	void showFlyText(const string file, const string aux, unsigned char red, unsigned char green, unsigned char blue);
+	void sendCombatSpam(CreatureObject defender, TangibleObject item, unsigned int damage, const string skill);
+	
+	unsigned int getMitigation(const string mit);
+	
+	boolean isIncapacitated();
+	boolean isDead();
+	boolean isKnockeddowned();
+	boolean isKneeled();
+	boolean isProne();
+	boolean isInCombat();
+	boolean isDizzied();
+	boolean isStunned();
+	boolean isBlinded();
+	boolean isIntimidated();
+	boolean isDiseased();
+	boolean isPoisoned();
+	boolean isBleeding();
+	boolean isOnFire();
+	boolean isMounted();
+	boolean isRidingCreature();
+	boolean isMeditating();
+	boolean isPeaced();
+	
+	void updateKnockdownRecovery();
+	
+	void updateMood(const string md);
+	
+	boolean checkKnockdownRecovery();
+	
+	void updatePostureDownRecovery();
+	
+	void updatePostureUpRecovery();
+	
+	boolean checkPostureDownRecovery();
+	
+	boolean checkPostureUpRecovery();
+	
+	void setCombatState();
+	void clearCombatState(boolean removedefenders = true);
+	
+	void setDefender(CreatureObject defender);
+	void addDefender(CreatureObject defender);
+	void removeDefenders();
+	void removeDefender(CreatureObject defender);
+	boolean hasDefender(CreatureObject defender);
+	
+
+	boolean setState(unsigned long state);
+	boolean clearState(unsigned long state);
+	void updateStates();
+	void clearStates();
+	
+	boolean hasAttackDelay();
+	void clearAttackDelay();
+	
+	boolean isOnFullHealth();
+	boolean hasStates();
+	boolean hasState(unsigned long state);
+	
+	boolean isAttackable();
+	
+	boolean isListening();
+	boolean isWatching();
+	
+	void activateBurstRun();
+	
+	boolean hasQueuedState(unsigned int skillCRC);
+	boolean removeQueuedState(unsigned int skillCRC);
+	boolean addQueuedState(unsigned int skillCRC);
+	
+	void setMeditateState();
+	
+	// setters
+	void setHealth(unsigned int health);
+	void setStrength(unsigned int strength);
+	void setConstitution(unsigned int constituition);
+	void setAction(unsigned int action);
+	void setQuickness(unsigned int quickness);
+	void setStamina(unsigned int stamina);
+	void setMind(unsigned int mind);
+	void setFocus(unsigned int focus);
+	void setWillpower(unsigned int willpower);
+
+	void setHealthMax(unsigned int health);
+	void setStrengthMax(unsigned int strength);
+	void setConstitutionMax(unsigned int constituition);
+	void setActionMax(unsigned int action);
+	void setQuicknessMax(unsigned int quickness);
+	void setStaminaMax(unsigned int stamina);
+	void setMindMax(unsigned int mind);
+	void setFocusMax(unsigned int focus);
+	void setWillpowerMax(unsigned int willpower);
+
+	void setHealthWounds(unsigned int wounds);
+	void setActionWounds(unsigned int wounds);
+	void setMindWounds(unsigned int wounds);
+
+	void setWoundsUpdateCounter(unsigned int count);
+	
+	boolean changeHAMBars(int hp, int ap, int mp, boolean forcedChange = false);
+	boolean changeHAMWounds(int hpwnd, int apwnd, int mpwnd, boolean forcedChange = false);
+	void changeMaxHAMBars(int hp, int ap, int mp);
+	
+	boolean changeHealthWoundsBar(int wounds, boolean forcedChange = false);
+	boolean changeActionWoundsBar(int wounds, boolean forcedChange = false);
+	boolean changeMindWoundsBar(int wounds, boolean forcedChange = false);
+	
+	boolean changeHealthBar(int hp, boolean forcedChange = false);
+	boolean changeStrengthBar(int st, boolean forcedChange = false);
+	boolean changeConstitutionBar(int cs, boolean forcedChange = false);
+	
+	void changeMaxHealthBar(int hp);
+	void changeMaxStrengthBar(int hp);
+	void changeMaxConstitutionBar(int hp);
+	
+	boolean changeActionBar(int ap, boolean forcedChange = false);
+	boolean changeQuicknessBar(int qc, boolean forcedChange = false);
+	boolean changeStaminaBar(int st, boolean forcedChange = false);
+	
+	void changeMaxActionBar(int hp);
+	void changeMaxQuicknessBar(int hp);
+	void changeMaxStaminaBar(int hp);
+	
+	boolean changeMindBar(int mp, boolean forcedChange = false);
+	boolean changeFocusBar(int fc, boolean forcedChange = false);
+	boolean changeWillpowerBar(int wl, boolean forcedChange = false);
+	
+	void changeMaxMindBar(int hp);
+	void changeMaxFocusBar(int hp);
+	void changeMaxWillpowerBar(int hp);
+	
+	void changeConditionDamage(int amount);
+	
+	void setPosture(unsigned char state, boolean overrideDizzy = false, boolean objectInteraction = false, float objX = 0, float objY = 0, float objZ = 0);
+	
+	void setDizziedState();
+	void setStunnedState();
+	void setBlindedState();
+	void setIntimidatedState();
+	
+	void setPoisonedState(int str, int type);
+	void setBleedingState(int str, int type);
+	void setDiseasedState(int str, int type);
+	void setOnFireState(int str, int type);
+	
+	boolean setNextAttackDelay(int del);
+	
+	void setCharacterName(const string name);
+	void setCharacterName(unicode name);
+	
+	void setTerrainName(const string name);
+	
+	void setCharacterApperance(string cust);
+	
+	void setRaceName(const string name);
+	void setSpeciesName(const string name);
+	
+	void setFaction(unsigned int fac);
+	
+	void setHeight(float h);
+	
+	void setMood(unsigned char mdid);
+	
+	void setMood(const string m);
+	
+	void setGroup(GroupObject Group);
+	
+	void setMount(MountCreature mount);
+	
+	void removeGroup();
+	
+	boolean isInAGroup();
+	
+	void setGroupID(unsigned long gid);
+	
+	void updateGroupId(unsigned long id);
+	void updateGroupInviterId(unsigned long id);
+
+	void setDefenderID(long did);
+	
+	void updateTarget(unsigned long targ);
+	void updateTarget(SceneObject targ);
+	
+	void setActionCounter(unsigned int actioncntr);
+	
+	void setWeapon(Weapon wep);
+	
+	void setBuilding(BuildingObject build);
+	
+	void setCreatureLinkID(unsigned long creatureID);
+	
+	void setAccuracy(int acc);
+	void setDamageBonus(int bonus);
+	void setDefenseBonus(int bonus);
+	
+	void setLastMovementUpdateStamp(unsigned int tme);
+	void setIgnoreMovementTests(int times);
+	
+	void setLevel(unsigned int lvl);
+
+	// getters
+	unicode getCharacterName();
+	
+	string getStfName();
+	string getSpeciesName();
+	string getRaceName();
+	
+	string getTerrainName();
+
+	string getCharacterApperance();
+	
+	boolean isOvert();
+	
+	unsigned long getStateBitmask();
+	
+	unsigned int getCreatureBitmask();
+	
+	unsigned char getPosture();
+	
+	unsigned int getFaction();
+	boolean isRebel();
+	boolean isNeutral();
+	boolean isImperial();
+	
+	unsigned int getPvpStatusBitmask();
+	
+	unsigned int getBankCredits();
+	unsigned int getCashCredits();
+	
+	unsigned int getWoundsUpdateCounter();
+	unsigned int getNewWoundsUpdateCounter(int upd);
+
+	unsigned int getHealth();
+	unsigned int getStrength();
+	unsigned int getConstitution();
+	unsigned int getAction();
+	unsigned int getQuickness();
+	unsigned int getStamina();
+	unsigned int getMind();
+	unsigned int getFocus();
+	unsigned int getWillpower();
+
+	unsigned int getHealthMax();
+	unsigned int getStrengthMax();
+	unsigned int getConstitutionMax();
+	unsigned int getActionMax();
+	unsigned int getQuicknessMax();
+	unsigned int getStaminaMax();
+	unsigned int getMindMax();
+	unsigned int getFocusMax();
+	unsigned int getWillpowerMax();
+	
+	unsigned int getHealthWounds();
+	unsigned int getActionWounds();
+	unsigned int getMindWounds();
+	
+	unsigned int getHAMUpdateCounter();
+	unsigned int getNewHAMUpdateCounter(int cnt);
+	unsigned int getHAMMaxUpdateCounter();
+	unsigned int getNewHAMMaxUpdateCounter(int cnt);
+	
+	unsigned long getTargetID();
+	
+	SceneObject getTarget();
+	
+	unsigned long getWeaponID();
+	
+	unsigned long getGroupID();
+	unsigned long getGuildID();
+	Guild getGuild();
+
+	unsigned float getSpeed();
+	unsigned float getAcceleration();
+	
+	unsigned long getDefenderID();
+	unsigned int getDefenderUpdateCounter();
+	unsigned int getNewDefenderUpdateCounter(int cnt);
+	
+	string getPerformanceName();
+	unsigned int getPerformanceCounter();
+	
+	unsigned int getInstrumentID();
+	
+	string getMood();
+	unsigned char getMoodID();
+	
+	unsigned long getGroupInviterID();
+	unsigned long getGroupInviteCounter();
+	unsigned long getNewGroupInviteCounter();
+
+	unsigned long getWatchID();
+	unsigned long getListenID();
+	
+	string getGuildName();
+	
+	int getWeaponSpeedModifier();
+	
+	unsigned int getSkillBoxesUpdateCounter();
+	unsigned int getSkillModsCounter();
+	unsigned int getNewSkillModsCounter(int cnt);
+	
+	BuildingObject getBuilding();
+	
+	SceneObject getInventoryItem(unsigned long oid);
+	void removeInventoryItem(unsigned long oid);
+		
+	void broadcastMessage(Message msg, int range = 128, boolean doLock = true);
+	
+	Inventory getInventory();
+	
+	unsigned long getNewItemID(); // should be virtual
+	
+	Weapon getWeapon();
+	
+	int getSkillMod(const string name);
+	
+	boolean hasSkillMod(const string name);
+	
+	int getAccuracy();
+	int getDefenseBonus();
+	int getDamageBonus();
+	
+	int getConditionDamage();
+	int getMaxCondition();
+	int getCondition();
+	MountCreature getMount();
+	
+	unsigned long getCreatureLinkID();
+	
+	float getDistanceTo(CreatureObject targetCreature); // temp
+	float getHeight();
+	
+	unsigned int getCreatureSkillsCount();
+	unsigned int getNewCreatureSkillsCount(int cnt);
+	
+	unsigned int getLastMovementUpdateStamp();
+	int getIgnoreMovementTests();
+	
+	unsigned int getDefenderListSize();
+	CreatureObject getDefender(int idx);
+	
+	unsigned int getLevel();
+	
+	void sendSystemMessage(const string message);
+	void sendSystemMessage(const string file, const string str, unsigned long targetid = 0);
+	
+	void addInventoryItem(TangibleObject item);
+	
+	// Ent methods
+	void startDancing(const string anim);
+	void startPlayingMusic(const string anim);
+	
+	void startWatch(unsigned long entid);
+	void startListen(unsigned long entid);
+	
+	void stopWatch(unsigned long entid, boolean doSendPackets = true, boolean forced = false, boolean doLock = true);
+	void stopListen(unsigned long entid, boolean doSendPackets = true, boolean forced = false, boolean doLock = true);
+	
+	boolean isPlayingMusic();
+	boolean isDancing();
+	
+	void stopDancing();
+	void stopPlayingMusic();
+	
+	void addListener(CreatureObject creature);
+	void addWatcher(CreatureObject creature);
+	
+	void removeListener(CreatureObject creature);
+	void removeWatcher(CreatureObject creature);
+	
+	void activateRecovery();
+	
+	// Skill methods
+	int getCreatureSkillsSize();
+	string getSkill(int idx);
+	boolean hasSkill(unsigned int skillCRC);
+	
+	// mount methods
+	void mountCreature(MountCreature mnt, boolean lockMount = true);
+	void dismount(boolean lockMount = true);
+	
+	//tip methods
+	void addCashCredits(int credits);
+	void addBankCredits(int credits);
+	void subtractCashCredits(int credits);
+	void subtractBankCredits(int credits);
+	
+	void setCashCredits(int credits);
+	void setBankCredits(int credits);
+	
+	boolean verifyCashCredits(int creditsToRemove);
+	boolean verifyBankCredits(int creditsToRemove);
+}
