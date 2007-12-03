@@ -49,50 +49,46 @@ which carries forward this exception.
 
 class ConfigManager : public Lua {
 
-	bool MakeLogin;
-	bool MakeZone;
-	bool MakePing;
+	bool makeLogin;
+	bool makeZone;
+	bool makePing;
 	
 	string orbNamingDirectoryAddress;
 	
-	string DBHost;
-	uint16 DBPort;
-	string DBName;
-	string DBUser;
-	string DBPass;
+	string dBHost;
+	uint16 dBPort;
+	string dBName;
+	string dBUser;
+	string dBPass;
 	
-	uint16 LoginPort;
-	int LoginAllowedConnections;
-	bool AutoReg;
+	uint16 loginPort;
+	int loginAllowedConnections;
+	bool autoReg;
 	
-	int ZoneProcessingThreads;
-	int ZoneAllowedConnections;
-	
-	bool SecureClient;
+	int zoneProcessingThreads;
+	int zoneAllowedConnections;
 
 public:
 
 	ConfigManager() {
-		MakeLogin = true;
-		MakeZone = true;
-		MakePing = true;
+		makeLogin = true;
+		makeZone = true;
+		makePing = true;
 
 		orbNamingDirectoryAddress = "";
 		
-		DBHost = "127.0.0.1";
-		DBPort = 3306;
-		DBName = "swgemu";
-		DBUser = "root";
-		DBPass = "Gemeni1";
+		dBHost = "127.0.0.1";
+		dBPort = 3306;
+		dBName = "swgemu";
+		dBUser = "root";
+		dBPass = "Gemeni1";
 		
-		LoginPort = 44453;
-		LoginAllowedConnections = 30;
-		AutoReg = true;
+		loginPort = 44453;
+		loginAllowedConnections = 30;
+		autoReg = true;
 		
-		ZoneProcessingThreads = 10;
-		ZoneAllowedConnections = 300;
-		
-		SecureClient = true;
+		zoneProcessingThreads = 10;
+		zoneAllowedConnections = 300;
 	}
 	
 	~ConfigManager() {
@@ -107,15 +103,15 @@ public:
 	//getters
 	
 	inline bool getMakeLogin() {
-		return MakeLogin;
+		return makeLogin;
 	}
 	
 	inline bool getMakeZone() {
-		return MakeZone;
+		return makeZone;
 	}
 	
 	inline bool getMakePing() {
-		return MakePing;
+		return makePing;
 	}
 
 	inline string& getORBNamingDirectoryAddress() {
@@ -123,48 +119,45 @@ public:
 	}
 	
 	inline string& getDBHost() {
-		return DBHost;
+		return dBHost;
 	}
 	
 	inline uint16& getDBPort() {
-		return DBPort;
+		return dBPort;
 	}
 	
 	inline string& getDBName() {
-		return DBName;
+		return dBName;
 	}
 	
 	inline string& getDBUser() {
-		return DBUser;
+		return dBUser;
 	}
 	
 	inline string& getDBPass() {
-		return DBPass;
+		return dBPass;
 	}
 	
 	inline uint16 getLoginPort() {
-		return LoginPort;
+		return loginPort;
 	}
 	
 	inline int getLoginAllowedConnections() {
-		return LoginAllowedConnections;
+		return loginAllowedConnections;
 	}
 	
 	inline int getAutoReg() {
-		return AutoReg;
+		return autoReg;
 	}
 	
 	inline int getZoneProcessingThreads() {
-		return ZoneProcessingThreads;
+		return zoneProcessingThreads;
 	}
 	
 	inline int getZoneAllowedConnections() {
-		return ZoneAllowedConnections;
+		return zoneAllowedConnections;
 	}
 	
-	inline bool getSecureClient() {
-		return SecureClient;
-	}
 };
 
 #endif // #ifndef CONFIGMANAGER_H_

@@ -48,25 +48,24 @@ bool ConfigManager::loadConfigData() {
 	if(!loadConfigFile())
 		return false;
 		
-	MakeLogin = getGlobalByte("MakeLogin");
-	MakeZone = getGlobalByte("MakeZone");
-	MakePing = getGlobalByte("MakePing");
+	makeLogin = getGlobalByte("MakeLogin");
+	makeZone = getGlobalByte("MakeZone");
+	makePing = getGlobalByte("MakePing");
 
 	orbNamingDirectoryAddress = getGlobalString("ORB");
 	
-	DBHost = getGlobalString("DBHost");
-	DBPort = getGlobalShort("DBPort");
-	DBName = getGlobalString("DBName");
-	DBUser = getGlobalString("DBUser");
-	DBPass = getGlobalString("DBPass");
+	dBHost = getGlobalString("DBHost");
+	dBPort = getGlobalShort("DBPort");
+	dBName = getGlobalString("DBName");
+	dBUser = getGlobalString("DBUser");
+	dBPass = getGlobalString("DBPass");
 	
-	LoginPort = getGlobalShort("LoginPort");
-	LoginAllowedConnections =  getGlobalInt("LoginAllowedConnections");
-	AutoReg = getGlobalByte("AutoReg");
+	loginPort = getGlobalShort("LoginPort");
+	loginAllowedConnections =  getGlobalInt("LoginAllowedConnections");
+	autoReg = getGlobalByte("AutoReg");
 	
-	ZoneProcessingThreads = getGlobalInt("ZoneProcessingThreads");
-	ZoneAllowedConnections = getGlobalInt("ZoneAllowedConnections");
-	
-	SecureClient = getGlobalByte("SecureClient");
+	zoneProcessingThreads = getGlobalInt("ZoneProcessingThreads");
+	zoneAllowedConnections = getGlobalInt("ZoneAllowedConnections");
+
 	return true;	
 }
