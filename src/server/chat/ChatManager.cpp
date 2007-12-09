@@ -550,6 +550,21 @@ bool ChatManager::isMute() {
 		return ((ChatManagerImplementation*) _impl)->isMute();
 }
 
+void ChatManager::broadcastMessageRange(Player* player, const string& message, float range) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 42);
+		invocation.addObjectParameter(player);
+		invocation.addAsciiParameter(message);
+		invocation.addFloatParameter(range);
+		
+		invocation.executeWithVoidReturn();
+	} else
+		((ChatManagerImplementation*) _impl)->broadcastMessageRange(player, message, range);
+}
+
 /*
  *	ChatManagerAdapter
  */
@@ -669,6 +684,9 @@ Packet* ChatManagerAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* inv
 	case 41:
 		resp->insertBoolean(isMute());
 		break;
+	case 42:
+		broadcastMessageRange((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_broadcastMessageRange__string_), inv->getFloatParameter());
+		break;
 	default:
 		return NULL;
 	}
@@ -730,6 +748,10 @@ void ChatManagerAdapter::broadcastMessage(Player* player, unicode& message, unsi
 
 void ChatManagerAdapter::broadcastMessage(const string& message) {
 	return ((ChatManagerImplementation*) impl)->broadcastMessage(message);
+}
+
+void ChatManagerAdapter::broadcastMessageRange(Player* player, const string& message, float range) {
+	return ((ChatManagerImplementation*) impl)->broadcastMessageRange(player, message, range);
 }
 
 void ChatManagerAdapter::handleGameCommand(Player* player, const string& command) {

@@ -111,6 +111,8 @@ public:
 	void handleGameCommand(Player* player, const string& command);
 	
 	void broadcastMessage(const string& message);
+	
+	void broadcastMessageRange(Player* player, const string& message, float range);
 
 	// ChatRooms
 	void initiateRooms();

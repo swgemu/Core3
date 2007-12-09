@@ -203,6 +203,28 @@ void ChatManagerImplementation::broadcastMessage(const string& message) {
 	unlock();
 }
 
+void ChatManagerImplementation::broadcastMessageRange(Player* player, const string& message, float range) {
+	try {
+		lock();
+
+		playerMap->resetIterator();
+	
+		while (playerMap->hasNext()) {
+			Player* trgplayer = playerMap->getNextValue();
+			if(player->isInRange((SceneObject*)trgplayer, range)) {
+				trgplayer->sendSystemMessage(message);
+			}
+		}
+
+		unlock();
+	} catch (...) {
+
+		unlock();
+
+		cout << "exception ChatManagerImplementation::broadcastMessageRange(const string& message)\n";
+	}
+}
+
 void ChatManagerImplementation::handleMessage(Player* player, Message* pack) {
 	try {
 		pack->parseLong();
@@ -607,9 +629,28 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
             Thread::sleepMili(5000);
             
             player->sendMessage(packet);
-		} else {
-			player->sendSystemMessage("Unknown Command: " + cmd);
-		}
+		} else if(cmd == "@systemMessage") {
+			if (userManager->isAdmin(player->getFirstName())) {
+				string sysMsg = "System Message from " + player->getFirstName() + ": ";
+				string msg;
+				
+				float msgRange = tokenizer.getFloatToken();
+				
+				while(tokenizer.hasMoreTokens())
+				{
+					tokenizer.getStringToken(msg);
+					sysMsg += msg + " ";
+				}
+				
+				if(msgRange == 0) {
+					broadcastMessage(sysMsg);
+				} else {
+					broadcastMessageRange(player, sysMsg, msgRange);
+				}
+			} else {
+				player->sendSystemMessage("Unknown Command: " + cmd);
+			}
+		 }
 	} catch (Exception& e) {
 		//cout << "not enough parameter for command \'" << cmd << "\'\n"; 
 	}

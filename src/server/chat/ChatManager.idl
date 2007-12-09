@@ -68,6 +68,7 @@ interface ChatManager {
 
 	void broadcastMessage(Player player, unicode message, unsigned long target = 0, unsigned int moodid = 0, unsigned int mood2 = 0);
 	void broadcastMessage(const string message);
+	void broadcastMessageRange(Player player, const string message, float range);
 
 	void handleGameCommand(Player player, const string command);
 
