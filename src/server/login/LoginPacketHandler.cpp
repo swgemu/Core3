@@ -87,19 +87,25 @@ void LoginPacketHandler::handleLoginClientID(Message* pack) {
 	
 	Account account(pack);
 	
-	if(!account.validate()) {
-		if(!account.create()) {
-			string errtype = "Login Error";
-			string errmsg = "The username specified is taken or your password is wrong. Please disconnect and try again.";
-			Message* ler = new ErrorMessage(errtype, errmsg, 0x00);
-			client->sendMessage(ler);
+	if(!account.checkVersion()) {
+		string errtype = "Login Error";
+		string errmsg = "The client you are using is out of date. Go to the SWGEmu Updates forum and read the 11/03/07 Client Notice.";
+		Message* ver = new ErrorMessage(errtype, errmsg, 0x00);
+		client->sendMessage(ver);
+	} else {
+		if(!account.validate()) {
+			if(!account.create()) {
+				string errtype = "Login Error";
+				string errmsg = "The username specified is taken or your password is wrong. Please disconnect and try again.";
+				Message* ler = new ErrorMessage(errtype, errmsg, 0x00);
+				client->sendMessage(ler);
+			}
+			else {
+				account.validate();
+			}
 		}
-		else {
-			account.validate();
-		}
-	}
-	
 	account.login(client);
+	}
 }
 
 void LoginPacketHandler::handleDeleteCharacterMessage(Message* pack) {
