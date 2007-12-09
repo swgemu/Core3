@@ -52,6 +52,7 @@ public:
 	static void parse(Packet* pack, string& username, string& password, string& version) {
 		pack->parseAscii(username);
 		pack->parseAscii(password);
+		
 		pack->parseAscii(version);
 	}
 

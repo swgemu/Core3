@@ -65,6 +65,7 @@ public:
 
 	Account(Packet* pack) {
 		AccountVersionMessage::parse(pack, username, password, version);
+		
 		MySqlDatabase::escapeString(username);
 		MySqlDatabase::escapeString(password);
 	}
@@ -72,11 +73,10 @@ public:
 	//Checks for publish 13 clients. To disable: have the function return true all the time.
 	//Disabling Version check could be hazardous in game.
 	bool checkVersion() {
-		if(version == "20050125-12:19") {
+		if (version == "20050125-12:19")
 			return true;
-		} else {
+		else
 			return false;
-		}
 	}
 	
 	bool validate() {

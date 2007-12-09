@@ -660,7 +660,7 @@ void CombatManager::checkMitigation(CreatureObject* creature, CreatureObject* ta
 	if (tarWeapon != NULL)
 		targetWeaponCategory = tarWeapon->getCategory();
 
-	if ((creatureWeaponCategory == WeaponImplementation::MELEE) && (targetWeaponCategory == WeaponImplementation::MELEE)) {
+	if (creatureWeaponCategory == WeaponImplementation::MELEE) {
 		uint32 mit = targetCreature->getMitigation("melee_damage_mitigation_3");
 
 		if (mit == 0) {
@@ -672,7 +672,7 @@ void CombatManager::checkMitigation(CreatureObject* creature, CreatureObject* ta
 		if (mit != 0)
 			maxDamage = minDamage + ((maxDamage - minDamage) * (1 - (float)mit / 100));
 
-	} else if ((creatureWeaponCategory == WeaponImplementation::RANGED) && (targetWeaponCategory == WeaponImplementation::RANGED)) {
+	} else if (creatureWeaponCategory == WeaponImplementation::RANGED) {
 		uint32 mit = targetCreature->getMitigation("ranged_damage_mitigation_3");
 
 		if (mit == 0) {

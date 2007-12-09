@@ -207,6 +207,7 @@ void ChatManagerImplementation::broadcastMessageRange(Player* player, const stri
 	try {
 		lock();
 
+		//TODO make it polling the spatial indexer instead of iterating the whole hash table
 		playerMap->resetIterator();
 	
 		while (playerMap->hasNext()) {
@@ -631,26 +632,24 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
             player->sendMessage(packet);
 		} else if(cmd == "@systemMessage") {
 			if (userManager->isAdmin(player->getFirstName())) {
-				string sysMsg = "System Message from " + player->getFirstName() + ": ";
-				string msg;
-				
-				float msgRange = tokenizer.getFloatToken();
-				
-				while(tokenizer.hasMoreTokens())
-				{
-					tokenizer.getStringToken(msg);
-					sysMsg += msg + " ";
+				float range = tokenizer.getFloatToken();
+
+				stringstream message;
+				message << "System Message from " << player->getFirstName() << ": ";
+
+				while (tokenizer.hasMoreTokens()) {
+					tokenizer.getStringToken(message);
+					message << " ";
 				}
 				
-				if(msgRange == 0) {
-					broadcastMessage(sysMsg);
-				} else {
-					broadcastMessageRange(player, sysMsg, msgRange);
-				}
-			} else {
-				player->sendSystemMessage("Unknown Command: " + cmd);
+				if (range == 0)
+					broadcastMessage(message.str());
+				else
+					broadcastMessageRange(player, message.str(), range);
 			}
-		 }
+		} else {
+			player->sendSystemMessage("Unknown Command: " + cmd);
+		}
 	} catch (Exception& e) {
 		//cout << "not enough parameter for command \'" << cmd << "\'\n"; 
 	}
