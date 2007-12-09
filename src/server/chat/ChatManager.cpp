@@ -64,6 +64,17 @@ ChatManager::ChatManager() : ORBObjectStub(NULL) {
 ChatManager::ChatManager(ORBObjectServant* obj) : ORBObjectStub(obj) {
 }
 
+ChatManager::ChatManager(ChatManager& ref) : ORBObjectStub(ref) {
+}
+
+ChatManager::~ChatManager() {
+}
+
+ChatManager* ChatManager::clone() {
+	return new ChatManager(*this);
+}
+
+
 void ChatManager::addPlayer(Player* player) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);

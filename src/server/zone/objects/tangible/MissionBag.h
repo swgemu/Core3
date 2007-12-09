@@ -61,6 +61,11 @@ class MissionBag : public Container {
 public:
 	MissionBag();
 	MissionBag(ORBObjectServant* obj);
+	MissionBag(MissionBag& ref);
+
+	MissionBag* clone();
+
+	virtual ~MissionBag();
 
 protected:
 };

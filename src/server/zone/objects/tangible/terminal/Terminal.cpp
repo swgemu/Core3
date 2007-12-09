@@ -64,6 +64,17 @@ Terminal::Terminal() : TangibleObject(NULL) {
 Terminal::Terminal(ORBObjectServant* obj) : TangibleObject(obj) {
 }
 
+Terminal::Terminal(Terminal& ref) : TangibleObject(ref) {
+}
+
+Terminal::~Terminal() {
+}
+
+Terminal* Terminal::clone() {
+	return new Terminal(*this);
+}
+
+
 int Terminal::useObject(Player* player) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);

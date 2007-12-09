@@ -61,6 +61,11 @@ class RangedWeapon : public Weapon {
 public:
 	RangedWeapon();
 	RangedWeapon(ORBObjectServant* obj);
+	RangedWeapon(RangedWeapon& ref);
+
+	RangedWeapon* clone();
+
+	virtual ~RangedWeapon();
 
 	int getRange();
 

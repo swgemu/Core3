@@ -64,6 +64,17 @@ PistolRangedWeapon::PistolRangedWeapon() : RangedWeapon(NULL) {
 PistolRangedWeapon::PistolRangedWeapon(ORBObjectServant* obj) : RangedWeapon(obj) {
 }
 
+PistolRangedWeapon::PistolRangedWeapon(PistolRangedWeapon& ref) : RangedWeapon(ref) {
+}
+
+PistolRangedWeapon::~PistolRangedWeapon() {
+}
+
+PistolRangedWeapon* PistolRangedWeapon::clone() {
+	return new PistolRangedWeapon(*this);
+}
+
+
 /*
  *	PistolRangedWeaponAdapter
  */

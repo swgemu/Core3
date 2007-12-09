@@ -61,6 +61,11 @@ class GuildManager : public ORBObjectStub {
 public:
 	GuildManager();
 	GuildManager(ORBObjectServant* obj);
+	GuildManager(GuildManager& ref);
+
+	GuildManager* clone();
+
+	virtual ~GuildManager();
 
 	void lock(bool doLock = true);
 

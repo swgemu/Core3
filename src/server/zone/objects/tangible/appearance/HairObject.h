@@ -61,6 +61,11 @@ class HairObject : public TangibleObject {
 public:
 	HairObject();
 	HairObject(ORBObjectServant* obj);
+	HairObject(HairObject& ref);
+
+	HairObject* clone();
+
+	virtual ~HairObject();
 
 protected:
 };

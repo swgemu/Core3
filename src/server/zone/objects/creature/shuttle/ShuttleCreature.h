@@ -63,6 +63,11 @@ class ShuttleCreature : public Creature {
 public:
 	ShuttleCreature();
 	ShuttleCreature(ORBObjectServant* obj);
+	ShuttleCreature(ShuttleCreature& ref);
+
+	ShuttleCreature* clone();
+
+	virtual ~ShuttleCreature();
 
 	void doTakeOff();
 

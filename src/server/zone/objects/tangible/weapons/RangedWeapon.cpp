@@ -64,6 +64,17 @@ RangedWeapon::RangedWeapon() : Weapon(NULL) {
 RangedWeapon::RangedWeapon(ORBObjectServant* obj) : Weapon(obj) {
 }
 
+RangedWeapon::RangedWeapon(RangedWeapon& ref) : Weapon(ref) {
+}
+
+RangedWeapon::~RangedWeapon() {
+}
+
+RangedWeapon* RangedWeapon::clone() {
+	return new RangedWeapon(*this);
+}
+
+
 int RangedWeapon::getRange() {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);

@@ -63,6 +63,11 @@ class RecruiterCreature : public Creature {
 public:
 	RecruiterCreature();
 	RecruiterCreature(ORBObjectServant* obj);
+	RecruiterCreature(RecruiterCreature& ref);
+
+	RecruiterCreature* clone();
+
+	virtual ~RecruiterCreature();
 
 	void sendConversationStartTo(SceneObject* obj);
 

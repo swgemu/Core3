@@ -64,6 +64,17 @@ ChatRoom::ChatRoom() : ORBObjectStub(NULL) {
 ChatRoom::ChatRoom(ORBObjectServant* obj) : ORBObjectStub(obj) {
 }
 
+ChatRoom::ChatRoom(ChatRoom& ref) : ORBObjectStub(ref) {
+}
+
+ChatRoom::~ChatRoom() {
+}
+
+ChatRoom* ChatRoom::clone() {
+	return new ChatRoom(*this);
+}
+
+
 void ChatRoom::sendTo(Player* player) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);

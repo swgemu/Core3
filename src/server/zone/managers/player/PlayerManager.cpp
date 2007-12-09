@@ -66,6 +66,17 @@ PlayerManager::PlayerManager() : ORBObjectStub(NULL) {
 PlayerManager::PlayerManager(ORBObjectServant* obj) : ORBObjectStub(obj) {
 }
 
+PlayerManager::PlayerManager(PlayerManager& ref) : ORBObjectStub(ref) {
+}
+
+PlayerManager::~PlayerManager() {
+}
+
+PlayerManager* PlayerManager::clone() {
+	return new PlayerManager(*this);
+}
+
+
 bool PlayerManager::create(Player* player, unsigned int sessionkey) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);

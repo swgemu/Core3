@@ -78,6 +78,17 @@ CreatureObject::CreatureObject() : SceneObject(NULL) {
 CreatureObject::CreatureObject(ORBObjectServant* obj) : SceneObject(obj) {
 }
 
+CreatureObject::CreatureObject(CreatureObject& ref) : SceneObject(ref) {
+}
+
+CreatureObject::~CreatureObject() {
+}
+
+CreatureObject* CreatureObject::clone() {
+	return new CreatureObject(*this);
+}
+
+
 void CreatureObject::sendItemsTo(Player* player) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);

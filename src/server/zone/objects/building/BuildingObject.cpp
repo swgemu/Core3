@@ -66,6 +66,17 @@ BuildingObject::BuildingObject() : SceneObject(NULL) {
 BuildingObject::BuildingObject(ORBObjectServant* obj) : SceneObject(obj) {
 }
 
+BuildingObject::BuildingObject(BuildingObject& ref) : SceneObject(ref) {
+}
+
+BuildingObject::~BuildingObject() {
+}
+
+BuildingObject* BuildingObject::clone() {
+	return new BuildingObject(*this);
+}
+
+
 void BuildingObject::addCell(CellObject* cell) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);

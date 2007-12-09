@@ -66,6 +66,17 @@ RecruiterCreature::RecruiterCreature() : Creature(NULL) {
 RecruiterCreature::RecruiterCreature(ORBObjectServant* obj) : Creature(obj) {
 }
 
+RecruiterCreature::RecruiterCreature(RecruiterCreature& ref) : Creature(ref) {
+}
+
+RecruiterCreature::~RecruiterCreature() {
+}
+
+RecruiterCreature* RecruiterCreature::clone() {
+	return new RecruiterCreature(*this);
+}
+
+
 void RecruiterCreature::sendConversationStartTo(SceneObject* obj) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);

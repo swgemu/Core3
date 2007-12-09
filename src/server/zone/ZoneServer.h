@@ -71,6 +71,11 @@ class ZoneServer : public ORBObjectStub {
 public:
 	ZoneServer();
 	ZoneServer(ORBObjectServant* obj);
+	ZoneServer(ZoneServer& ref);
+
+	ZoneServer* clone();
+
+	virtual ~ZoneServer();
 
 	void startManagers();
 

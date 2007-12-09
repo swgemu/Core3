@@ -106,15 +106,18 @@ IDL_SOURCES = server/zone/Zone.idl \
 				server/chat/ChatManager.idl
 
 all:
-	cd src && $(IDLC) $(IDL_SOURCES)
+	#cd src && $(IDLC) $(IDL_SOURCES)
 	cd build/unix && ../../configure && make
 	cp build/unix/src/core3* bin
 	#done
 
-clean:
-	cd src && idlc -rebuild $(IDL_SOURCES)
+config:
+	autoreconf --force
+	#done
+
+clean: cleanidl
 	cd build/unix && make clean
 	#done
 
-
-
+cleanidl:
+	cd src && idlc -rebuild $(IDL_SOURCES)

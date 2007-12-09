@@ -64,6 +64,17 @@ Datapad::Datapad() : Container(NULL) {
 Datapad::Datapad(ORBObjectServant* obj) : Container(obj) {
 }
 
+Datapad::Datapad(Datapad& ref) : Container(ref) {
+}
+
+Datapad::~Datapad() {
+}
+
+Datapad* Datapad::clone() {
+	return new Datapad(*this);
+}
+
+
 /*
  *	DatapadAdapter
  */

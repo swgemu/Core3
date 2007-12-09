@@ -360,6 +360,8 @@ void PlayerImplementation::disconnect(bool closeClient, bool doLock) {
 		if (isInCombat() && !isLinkDead()) {
 			info("link dead");
 
+			unload();
+
 			setLinkDead();
 		} else {
 			info("disconnecting player");

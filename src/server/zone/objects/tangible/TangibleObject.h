@@ -65,6 +65,11 @@ class TangibleObject : public SceneObject {
 public:
 	TangibleObject();
 	TangibleObject(ORBObjectServant* obj);
+	TangibleObject(TangibleObject& ref);
+
+	TangibleObject* clone();
+
+	virtual ~TangibleObject();
 
 	void insertToZone(Zone* zone);
 

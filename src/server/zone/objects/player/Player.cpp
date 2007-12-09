@@ -80,6 +80,17 @@ Player::Player() : CreatureObject(NULL) {
 Player::Player(ORBObjectServant* obj) : CreatureObject(obj) {
 }
 
+Player::Player(Player& ref) : CreatureObject(ref) {
+}
+
+Player::~Player() {
+}
+
+Player* Player::clone() {
+	return new Player(*this);
+}
+
+
 Player* Player::create(ZoneClient* client) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);

@@ -61,6 +61,11 @@ class Bank : public Container {
 public:
 	Bank();
 	Bank(ORBObjectServant* obj);
+	Bank(Bank& ref);
+
+	Bank* clone();
+
+	virtual ~Bank();
 
 protected:
 };

@@ -62,6 +62,17 @@ PlayerMap::PlayerMap() : ORBObjectStub(NULL) {
 PlayerMap::PlayerMap(ORBObjectServant* obj) : ORBObjectStub(obj) {
 }
 
+PlayerMap::PlayerMap(PlayerMap& ref) : ORBObjectStub(ref) {
+}
+
+PlayerMap::~PlayerMap() {
+}
+
+PlayerMap* PlayerMap::clone() {
+	return new PlayerMap(*this);
+}
+
+
 Player* PlayerMap::put(string& name, Player* player) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);

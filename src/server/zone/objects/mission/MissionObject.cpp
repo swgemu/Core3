@@ -62,6 +62,17 @@ MissionObject::MissionObject() : SceneObject(NULL) {
 MissionObject::MissionObject(ORBObjectServant* obj) : SceneObject(obj) {
 }
 
+MissionObject::MissionObject(MissionObject& ref) : SceneObject(ref) {
+}
+
+MissionObject::~MissionObject() {
+}
+
+MissionObject* MissionObject::clone() {
+	return new MissionObject(*this);
+}
+
+
 /*
  *	MissionObjectAdapter
  */

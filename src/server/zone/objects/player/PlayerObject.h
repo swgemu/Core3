@@ -65,6 +65,11 @@ class PlayerObject : public SceneObject {
 public:
 	PlayerObject();
 	PlayerObject(ORBObjectServant* obj);
+	PlayerObject(PlayerObject& ref);
+
+	PlayerObject* clone();
+
+	virtual ~PlayerObject();
 
 	void sendToOwner();
 

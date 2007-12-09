@@ -68,6 +68,17 @@ Creature::Creature() : CreatureObject(NULL) {
 Creature::Creature(ORBObjectServant* obj) : CreatureObject(obj) {
 }
 
+Creature::Creature(Creature& ref) : CreatureObject(ref) {
+}
+
+Creature::~Creature() {
+}
+
+Creature* Creature::clone() {
+	return new Creature(*this);
+}
+
+
 void Creature::init() {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);

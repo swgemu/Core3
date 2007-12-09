@@ -61,6 +61,11 @@ class Container : public TangibleObject {
 public:
 	Container();
 	Container(ORBObjectServant* obj);
+	Container(Container& ref);
+
+	Container* clone();
+
+	virtual ~Container();
 
 	void addObject(SceneObject* obj);
 

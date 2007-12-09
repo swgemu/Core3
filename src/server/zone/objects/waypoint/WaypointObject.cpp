@@ -62,6 +62,17 @@ WaypointObject::WaypointObject() : SceneObject(NULL) {
 WaypointObject::WaypointObject(ORBObjectServant* obj) : SceneObject(obj) {
 }
 
+WaypointObject::WaypointObject(WaypointObject& ref) : SceneObject(ref) {
+}
+
+WaypointObject::~WaypointObject() {
+}
+
+WaypointObject* WaypointObject::clone() {
+	return new WaypointObject(*this);
+}
+
+
 void WaypointObject::changeStatus(bool status) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);

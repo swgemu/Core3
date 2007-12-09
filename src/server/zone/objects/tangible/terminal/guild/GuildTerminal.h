@@ -61,6 +61,11 @@ class GuildTerminal : public Terminal {
 public:
 	GuildTerminal();
 	GuildTerminal(ORBObjectServant* obj);
+	GuildTerminal(GuildTerminal& ref);
+
+	GuildTerminal* clone();
+
+	virtual ~GuildTerminal();
 
 	int useObject(Player* player);
 

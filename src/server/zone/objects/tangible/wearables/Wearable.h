@@ -59,6 +59,11 @@ class Wearable : public TangibleObject {
 public:
 	Wearable();
 	Wearable(ORBObjectServant* obj);
+	Wearable(Wearable& ref);
+
+	Wearable* clone();
+
+	virtual ~Wearable();
 
 protected:
 };

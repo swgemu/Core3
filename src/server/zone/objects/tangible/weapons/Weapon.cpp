@@ -66,6 +66,17 @@ Weapon::Weapon() : TangibleObject(NULL) {
 Weapon::Weapon(ORBObjectServant* obj) : TangibleObject(obj) {
 }
 
+Weapon::Weapon(Weapon& ref) : TangibleObject(ref) {
+}
+
+Weapon::~Weapon() {
+}
+
+Weapon* Weapon::clone() {
+	return new Weapon(*this);
+}
+
+
 void Weapon::sendTo(Player* player, bool doClose) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);

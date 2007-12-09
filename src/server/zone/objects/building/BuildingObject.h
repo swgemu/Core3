@@ -65,6 +65,11 @@ class BuildingObject : public SceneObject {
 public:
 	BuildingObject();
 	BuildingObject(ORBObjectServant* obj);
+	BuildingObject(BuildingObject& ref);
+
+	BuildingObject* clone();
+
+	virtual ~BuildingObject();
 
 	void addCell(CellObject* cell);
 

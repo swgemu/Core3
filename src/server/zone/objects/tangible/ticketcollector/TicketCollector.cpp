@@ -64,6 +64,17 @@ TicketCollector::TicketCollector() : TangibleObject(NULL) {
 TicketCollector::TicketCollector(ORBObjectServant* obj) : TangibleObject(obj) {
 }
 
+TicketCollector::TicketCollector(TicketCollector& ref) : TangibleObject(ref) {
+}
+
+TicketCollector::~TicketCollector() {
+}
+
+TicketCollector* TicketCollector::clone() {
+	return new TicketCollector(*this);
+}
+
+
 int TicketCollector::useObject(Player* player) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);

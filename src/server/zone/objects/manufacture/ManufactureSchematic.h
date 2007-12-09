@@ -59,6 +59,11 @@ class ManufactureSchematic : public SceneObject {
 public:
 	ManufactureSchematic();
 	ManufactureSchematic(ORBObjectServant* obj);
+	ManufactureSchematic(ManufactureSchematic& ref);
+
+	ManufactureSchematic* clone();
+
+	virtual ~ManufactureSchematic();
 
 protected:
 };

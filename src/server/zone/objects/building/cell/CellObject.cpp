@@ -64,6 +64,17 @@ CellObject::CellObject() : SceneObject(NULL) {
 CellObject::CellObject(ORBObjectServant* obj) : SceneObject(obj) {
 }
 
+CellObject::CellObject(CellObject& ref) : SceneObject(ref) {
+}
+
+CellObject::~CellObject() {
+}
+
+CellObject* CellObject::clone() {
+	return new CellObject(*this);
+}
+
+
 /*
  *	CellObjectAdapter
  */

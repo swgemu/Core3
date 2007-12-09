@@ -59,6 +59,11 @@ class CreatureGroup : public ORBObjectStub {
 public:
 	CreatureGroup();
 	CreatureGroup(ORBObjectServant* obj);
+	CreatureGroup(CreatureGroup& ref);
+
+	CreatureGroup* clone();
+
+	virtual ~CreatureGroup();
 
 	void addCreature(Creature* creature);
 

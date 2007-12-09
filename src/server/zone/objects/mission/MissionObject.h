@@ -59,6 +59,11 @@ class MissionObject : public SceneObject {
 public:
 	MissionObject();
 	MissionObject(ORBObjectServant* obj);
+	MissionObject(MissionObject& ref);
+
+	MissionObject* clone();
+
+	virtual ~MissionObject();
 
 protected:
 };

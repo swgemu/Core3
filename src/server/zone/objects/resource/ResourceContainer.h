@@ -59,6 +59,11 @@ class ResourceContainer : public SceneObject {
 public:
 	ResourceContainer();
 	ResourceContainer(ORBObjectServant* obj);
+	ResourceContainer(ResourceContainer& ref);
+
+	ResourceContainer* clone();
+
+	virtual ~ResourceContainer();
 
 protected:
 };

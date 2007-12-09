@@ -62,6 +62,17 @@ GuildMap::GuildMap() : ORBObjectStub(NULL) {
 GuildMap::GuildMap(ORBObjectServant* obj) : ORBObjectStub(obj) {
 }
 
+GuildMap::GuildMap(GuildMap& ref) : ORBObjectStub(ref) {
+}
+
+GuildMap::~GuildMap() {
+}
+
+GuildMap* GuildMap::clone() {
+	return new GuildMap(*this);
+}
+
+
 void GuildMap::add(Guild* guild) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);

@@ -64,6 +64,17 @@ JediWeapon::JediWeapon() : Weapon(NULL) {
 JediWeapon::JediWeapon(ORBObjectServant* obj) : Weapon(obj) {
 }
 
+JediWeapon::JediWeapon(JediWeapon& ref) : Weapon(ref) {
+}
+
+JediWeapon::~JediWeapon() {
+}
+
+JediWeapon* JediWeapon::clone() {
+	return new JediWeapon(*this);
+}
+
+
 int JediWeapon::getForceCost() {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);

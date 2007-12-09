@@ -68,6 +68,17 @@ PlayerObject::PlayerObject() : SceneObject(NULL) {
 PlayerObject::PlayerObject(ORBObjectServant* obj) : SceneObject(obj) {
 }
 
+PlayerObject::PlayerObject(PlayerObject& ref) : SceneObject(ref) {
+}
+
+PlayerObject::~PlayerObject() {
+}
+
+PlayerObject* PlayerObject::clone() {
+	return new PlayerObject(*this);
+}
+
+
 void PlayerObject::sendToOwner() {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);

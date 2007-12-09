@@ -61,6 +61,11 @@ class UnarmedMeleeWeapon : public MeleeWeapon {
 public:
 	UnarmedMeleeWeapon();
 	UnarmedMeleeWeapon(ORBObjectServant* obj);
+	UnarmedMeleeWeapon(UnarmedMeleeWeapon& ref);
+
+	UnarmedMeleeWeapon* clone();
+
+	virtual ~UnarmedMeleeWeapon();
 
 protected:
 };

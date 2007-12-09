@@ -64,6 +64,17 @@ TwoHandedMeleeWeapon::TwoHandedMeleeWeapon() : MeleeWeapon(NULL) {
 TwoHandedMeleeWeapon::TwoHandedMeleeWeapon(ORBObjectServant* obj) : MeleeWeapon(obj) {
 }
 
+TwoHandedMeleeWeapon::TwoHandedMeleeWeapon(TwoHandedMeleeWeapon& ref) : MeleeWeapon(ref) {
+}
+
+TwoHandedMeleeWeapon::~TwoHandedMeleeWeapon() {
+}
+
+TwoHandedMeleeWeapon* TwoHandedMeleeWeapon::clone() {
+	return new TwoHandedMeleeWeapon(*this);
+}
+
+
 /*
  *	TwoHandedMeleeWeaponAdapter
  */

@@ -65,6 +65,11 @@ class TrainerCreature : public Creature {
 public:
 	TrainerCreature();
 	TrainerCreature(ORBObjectServant* obj);
+	TrainerCreature(TrainerCreature& ref);
+
+	TrainerCreature* clone();
+
+	virtual ~TrainerCreature();
 
 	void sendConversationStartTo(SceneObject* obj);
 

@@ -61,6 +61,11 @@ class Datapad : public Container {
 public:
 	Datapad();
 	Datapad(ORBObjectServant* obj);
+	Datapad(Datapad& ref);
+
+	Datapad* clone();
+
+	virtual ~Datapad();
 
 protected:
 };

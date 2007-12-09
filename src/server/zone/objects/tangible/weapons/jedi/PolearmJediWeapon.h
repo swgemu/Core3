@@ -61,6 +61,11 @@ class PolearmJediWeapon : public JediWeapon {
 public:
 	PolearmJediWeapon();
 	PolearmJediWeapon(ORBObjectServant* obj);
+	PolearmJediWeapon(PolearmJediWeapon& ref);
+
+	PolearmJediWeapon* clone();
+
+	virtual ~PolearmJediWeapon();
 
 protected:
 };

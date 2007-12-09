@@ -61,6 +61,11 @@ class JediWeapon : public Weapon {
 public:
 	JediWeapon();
 	JediWeapon(ORBObjectServant* obj);
+	JediWeapon(JediWeapon& ref);
+
+	JediWeapon* clone();
+
+	virtual ~JediWeapon();
 
 	int getForceCost();
 

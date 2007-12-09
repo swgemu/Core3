@@ -62,6 +62,17 @@ ItemManager::ItemManager() : ORBObjectStub(NULL) {
 ItemManager::ItemManager(ORBObjectServant* obj) : ORBObjectStub(obj) {
 }
 
+ItemManager::ItemManager(ItemManager& ref) : ORBObjectStub(ref) {
+}
+
+ItemManager::~ItemManager() {
+}
+
+ItemManager* ItemManager::clone() {
+	return new ItemManager(*this);
+}
+
+
 void ItemManager::loadStaticWorldObjects() {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);

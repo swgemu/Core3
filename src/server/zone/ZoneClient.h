@@ -61,6 +61,11 @@ class ZoneClient : public ORBObjectStub {
 public:
 	ZoneClient();
 	ZoneClient(ORBObjectServant* obj);
+	ZoneClient(ZoneClient& ref);
+
+	ZoneClient* clone();
+
+	virtual ~ZoneClient();
 
 	void disconnect(bool doLock = true);
 

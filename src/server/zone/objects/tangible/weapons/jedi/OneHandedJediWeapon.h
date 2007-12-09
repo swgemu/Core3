@@ -61,6 +61,11 @@ class OneHandedJediWeapon : public JediWeapon {
 public:
 	OneHandedJediWeapon();
 	OneHandedJediWeapon(ORBObjectServant* obj);
+	OneHandedJediWeapon(OneHandedJediWeapon& ref);
+
+	OneHandedJediWeapon* clone();
+
+	virtual ~OneHandedJediWeapon();
 
 protected:
 };

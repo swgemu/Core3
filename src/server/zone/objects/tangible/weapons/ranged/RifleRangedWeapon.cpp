@@ -64,6 +64,17 @@ RifleRangedWeapon::RifleRangedWeapon() : RangedWeapon(NULL) {
 RifleRangedWeapon::RifleRangedWeapon(ORBObjectServant* obj) : RangedWeapon(obj) {
 }
 
+RifleRangedWeapon::RifleRangedWeapon(RifleRangedWeapon& ref) : RangedWeapon(ref) {
+}
+
+RifleRangedWeapon::~RifleRangedWeapon() {
+}
+
+RifleRangedWeapon* RifleRangedWeapon::clone() {
+	return new RifleRangedWeapon(*this);
+}
+
+
 /*
  *	RifleRangedWeaponAdapter
  */

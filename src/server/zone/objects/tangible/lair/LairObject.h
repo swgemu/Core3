@@ -59,6 +59,11 @@ class LairObject : public TangibleObject {
 public:
 	LairObject();
 	LairObject(ORBObjectServant* obj);
+	LairObject(LairObject& ref);
+
+	LairObject* clone();
+
+	virtual ~LairObject();
 
 protected:
 };

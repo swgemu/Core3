@@ -64,6 +64,17 @@ OneHandedMeleeWeapon::OneHandedMeleeWeapon() : MeleeWeapon(NULL) {
 OneHandedMeleeWeapon::OneHandedMeleeWeapon(ORBObjectServant* obj) : MeleeWeapon(obj) {
 }
 
+OneHandedMeleeWeapon::OneHandedMeleeWeapon(OneHandedMeleeWeapon& ref) : MeleeWeapon(ref) {
+}
+
+OneHandedMeleeWeapon::~OneHandedMeleeWeapon() {
+}
+
+OneHandedMeleeWeapon* OneHandedMeleeWeapon::clone() {
+	return new OneHandedMeleeWeapon(*this);
+}
+
+
 /*
  *	OneHandedMeleeWeaponAdapter
  */

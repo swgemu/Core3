@@ -64,6 +64,17 @@ MeleeWeapon::MeleeWeapon() : Weapon(NULL) {
 MeleeWeapon::MeleeWeapon(ORBObjectServant* obj) : Weapon(obj) {
 }
 
+MeleeWeapon::MeleeWeapon(MeleeWeapon& ref) : Weapon(ref) {
+}
+
+MeleeWeapon::~MeleeWeapon() {
+}
+
+MeleeWeapon* MeleeWeapon::clone() {
+	return new MeleeWeapon(*this);
+}
+
+
 /*
  *	MeleeWeaponAdapter
  */

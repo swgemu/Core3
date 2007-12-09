@@ -62,6 +62,17 @@ Wearable::Wearable() : TangibleObject(NULL) {
 Wearable::Wearable(ORBObjectServant* obj) : TangibleObject(obj) {
 }
 
+Wearable::Wearable(Wearable& ref) : TangibleObject(ref) {
+}
+
+Wearable::~Wearable() {
+}
+
+Wearable* Wearable::clone() {
+	return new Wearable(*this);
+}
+
+
 /*
  *	WearableAdapter
  */

@@ -66,6 +66,17 @@ SceneObject::SceneObject() : RWLockable(NULL) {
 SceneObject::SceneObject(ORBObjectServant* obj) : RWLockable(obj) {
 }
 
+SceneObject::SceneObject(SceneObject& ref) : RWLockable(ref) {
+}
+
+SceneObject::~SceneObject() {
+}
+
+SceneObject* SceneObject::clone() {
+	return new SceneObject(*this);
+}
+
+
 void SceneObject::sendTo(Player* player, bool doClose) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);

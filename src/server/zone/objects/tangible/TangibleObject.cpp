@@ -66,6 +66,17 @@ TangibleObject::TangibleObject() : SceneObject(NULL) {
 TangibleObject::TangibleObject(ORBObjectServant* obj) : SceneObject(obj) {
 }
 
+TangibleObject::TangibleObject(TangibleObject& ref) : SceneObject(ref) {
+}
+
+TangibleObject::~TangibleObject() {
+}
+
+TangibleObject* TangibleObject::clone() {
+	return new TangibleObject(*this);
+}
+
+
 void TangibleObject::insertToZone(Zone* zone) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);

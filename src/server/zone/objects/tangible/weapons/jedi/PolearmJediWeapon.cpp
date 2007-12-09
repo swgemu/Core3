@@ -64,6 +64,17 @@ PolearmJediWeapon::PolearmJediWeapon() : JediWeapon(NULL) {
 PolearmJediWeapon::PolearmJediWeapon(ORBObjectServant* obj) : JediWeapon(obj) {
 }
 
+PolearmJediWeapon::PolearmJediWeapon(PolearmJediWeapon& ref) : JediWeapon(ref) {
+}
+
+PolearmJediWeapon::~PolearmJediWeapon() {
+}
+
+PolearmJediWeapon* PolearmJediWeapon::clone() {
+	return new PolearmJediWeapon(*this);
+}
+
+
 /*
  *	PolearmJediWeaponAdapter
  */

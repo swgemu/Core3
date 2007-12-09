@@ -62,6 +62,17 @@ LairObject::LairObject() : TangibleObject(NULL) {
 LairObject::LairObject(ORBObjectServant* obj) : TangibleObject(obj) {
 }
 
+LairObject::LairObject(LairObject& ref) : TangibleObject(ref) {
+}
+
+LairObject::~LairObject() {
+}
+
+LairObject* LairObject::clone() {
+	return new LairObject(*this);
+}
+
+
 /*
  *	LairObjectAdapter
  */

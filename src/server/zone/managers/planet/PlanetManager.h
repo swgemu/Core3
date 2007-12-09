@@ -63,6 +63,11 @@ class PlanetManager : public ORBObjectStub {
 public:
 	PlanetManager();
 	PlanetManager(ORBObjectServant* obj);
+	PlanetManager(PlanetManager& ref);
+
+	PlanetManager* clone();
+
+	virtual ~PlanetManager();
 
 	void init();
 

@@ -64,6 +64,17 @@ UnarmedMeleeWeapon::UnarmedMeleeWeapon() : MeleeWeapon(NULL) {
 UnarmedMeleeWeapon::UnarmedMeleeWeapon(ORBObjectServant* obj) : MeleeWeapon(obj) {
 }
 
+UnarmedMeleeWeapon::UnarmedMeleeWeapon(UnarmedMeleeWeapon& ref) : MeleeWeapon(ref) {
+}
+
+UnarmedMeleeWeapon::~UnarmedMeleeWeapon() {
+}
+
+UnarmedMeleeWeapon* UnarmedMeleeWeapon::clone() {
+	return new UnarmedMeleeWeapon(*this);
+}
+
+
 /*
  *	UnarmedMeleeWeaponAdapter
  */

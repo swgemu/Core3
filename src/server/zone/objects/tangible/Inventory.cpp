@@ -64,6 +64,17 @@ Inventory::Inventory() : Container(NULL) {
 Inventory::Inventory(ORBObjectServant* obj) : Container(obj) {
 }
 
+Inventory::Inventory(Inventory& ref) : Container(ref) {
+}
+
+Inventory::~Inventory() {
+}
+
+Inventory* Inventory::clone() {
+	return new Inventory(*this);
+}
+
+
 /*
  *	InventoryAdapter
  */

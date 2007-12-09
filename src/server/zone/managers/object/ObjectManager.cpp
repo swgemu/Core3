@@ -70,6 +70,8 @@ bool ObjectManager::activate() {
 		if (!obj->undeploy())
 			error("object (" + obj->_getORBName() + ") was not found in naming directory");
 		
+		delete obj;
+		
 		objectCacheMap->remove(objectid);
 	}
 	
@@ -81,6 +83,9 @@ bool ObjectManager::activate() {
 
 void ObjectManager::add(SceneObject* obj) {
 	uint64 oid = obj->getObjectID();
+	
+	objectCacheMap->remove(oid);
+
 	objectMap->put(oid, obj);
 }
 

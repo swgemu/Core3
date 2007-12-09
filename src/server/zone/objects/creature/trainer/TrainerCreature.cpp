@@ -66,6 +66,17 @@ TrainerCreature::TrainerCreature() : Creature(NULL) {
 TrainerCreature::TrainerCreature(ORBObjectServant* obj) : Creature(obj) {
 }
 
+TrainerCreature::TrainerCreature(TrainerCreature& ref) : Creature(ref) {
+}
+
+TrainerCreature::~TrainerCreature() {
+}
+
+TrainerCreature* TrainerCreature::clone() {
+	return new TrainerCreature(*this);
+}
+
+
 void TrainerCreature::sendConversationStartTo(SceneObject* obj) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);

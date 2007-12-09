@@ -66,6 +66,17 @@ GuildManager::GuildManager() : ORBObjectStub(NULL) {
 GuildManager::GuildManager(ORBObjectServant* obj) : ORBObjectStub(obj) {
 }
 
+GuildManager::GuildManager(GuildManager& ref) : ORBObjectStub(ref) {
+}
+
+GuildManager::~GuildManager() {
+}
+
+GuildManager* GuildManager::clone() {
+	return new GuildManager(*this);
+}
+
+
 void GuildManager::lock(bool doLock) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);

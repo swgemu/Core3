@@ -63,6 +63,11 @@ class IntangibleObject : public SceneObject {
 public:
 	IntangibleObject();
 	IntangibleObject(ORBObjectServant* obj);
+	IntangibleObject(IntangibleObject& ref);
+
+	IntangibleObject* clone();
+
+	virtual ~IntangibleObject();
 
 	void sendTo(Player* player, bool doClose = true);
 

@@ -74,6 +74,17 @@ ZoneServer::ZoneServer() : ORBObjectStub(NULL) {
 ZoneServer::ZoneServer(ORBObjectServant* obj) : ORBObjectStub(obj) {
 }
 
+ZoneServer::ZoneServer(ZoneServer& ref) : ORBObjectStub(ref) {
+}
+
+ZoneServer::~ZoneServer() {
+}
+
+ZoneServer* ZoneServer::clone() {
+	return new ZoneServer(*this);
+}
+
+
 void ZoneServer::startManagers() {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);

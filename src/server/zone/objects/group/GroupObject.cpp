@@ -66,6 +66,17 @@ GroupObject::GroupObject() : SceneObject(NULL) {
 GroupObject::GroupObject(ORBObjectServant* obj) : SceneObject(obj) {
 }
 
+GroupObject::GroupObject(GroupObject& ref) : SceneObject(ref) {
+}
+
+GroupObject::~GroupObject() {
+}
+
+GroupObject* GroupObject::clone() {
+	return new GroupObject(*this);
+}
+
+
 void GroupObject::sendTo(Player* player) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);

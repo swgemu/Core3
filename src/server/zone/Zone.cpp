@@ -70,6 +70,17 @@ Zone::Zone() : ORBObjectStub(NULL) {
 Zone::Zone(ORBObjectServant* obj) : ORBObjectStub(obj) {
 }
 
+Zone::Zone(Zone& ref) : ORBObjectStub(ref) {
+}
+
+Zone::~Zone() {
+}
+
+Zone* Zone::clone() {
+	return new Zone(*this);
+}
+
+
 void Zone::lock(bool doLock) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);

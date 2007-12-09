@@ -71,6 +71,11 @@ class CreatureManager : public ORBObjectStub {
 public:
 	CreatureManager();
 	CreatureManager(ORBObjectServant* obj);
+	CreatureManager(CreatureManager& ref);
+
+	CreatureManager* clone();
+
+	virtual ~CreatureManager();
 
 	void init();
 

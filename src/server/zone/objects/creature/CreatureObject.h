@@ -77,6 +77,11 @@ class CreatureObject : public SceneObject {
 public:
 	CreatureObject();
 	CreatureObject(ORBObjectServant* obj);
+	CreatureObject(CreatureObject& ref);
+
+	CreatureObject* clone();
+
+	virtual ~CreatureObject();
 
 	void sendItemsTo(Player* player);
 

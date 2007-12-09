@@ -64,6 +64,17 @@ MissionBag::MissionBag() : Container(NULL) {
 MissionBag::MissionBag(ORBObjectServant* obj) : Container(obj) {
 }
 
+MissionBag::MissionBag(MissionBag& ref) : Container(ref) {
+}
+
+MissionBag::~MissionBag() {
+}
+
+MissionBag* MissionBag::clone() {
+	return new MissionBag(*this);
+}
+
+
 /*
  *	MissionBagAdapter
  */

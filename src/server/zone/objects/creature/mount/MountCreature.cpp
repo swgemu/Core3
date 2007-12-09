@@ -66,6 +66,17 @@ MountCreature::MountCreature() : Creature(NULL) {
 MountCreature::MountCreature(ORBObjectServant* obj) : Creature(obj) {
 }
 
+MountCreature::MountCreature(MountCreature& ref) : Creature(ref) {
+}
+
+MountCreature::~MountCreature() {
+}
+
+MountCreature* MountCreature::clone() {
+	return new MountCreature(*this);
+}
+
+
 void MountCreature::setMountType(int type) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);

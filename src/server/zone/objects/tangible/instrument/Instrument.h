@@ -63,6 +63,11 @@ class Instrument : public TangibleObject {
 public:
 	Instrument();
 	Instrument(ORBObjectServant* obj);
+	Instrument(Instrument& ref);
+
+	Instrument* clone();
+
+	virtual ~Instrument();
 
 	int useObject(Player* player);
 

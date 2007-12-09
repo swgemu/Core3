@@ -61,6 +61,11 @@ class PistolRangedWeapon : public RangedWeapon {
 public:
 	PistolRangedWeapon();
 	PistolRangedWeapon(ORBObjectServant* obj);
+	PistolRangedWeapon(PistolRangedWeapon& ref);
+
+	PistolRangedWeapon* clone();
+
+	virtual ~PistolRangedWeapon();
 
 protected:
 };

@@ -63,6 +63,11 @@ class Weapon : public TangibleObject {
 public:
 	Weapon();
 	Weapon(ORBObjectServant* obj);
+	Weapon(Weapon& ref);
+
+	Weapon* clone();
+
+	virtual ~Weapon();
 
 	void sendTo(Player* player, bool doClose = true);
 

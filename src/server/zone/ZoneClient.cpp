@@ -62,6 +62,17 @@ ZoneClient::ZoneClient() : ORBObjectStub(NULL) {
 ZoneClient::ZoneClient(ORBObjectServant* obj) : ORBObjectStub(obj) {
 }
 
+ZoneClient::ZoneClient(ZoneClient& ref) : ORBObjectStub(ref) {
+}
+
+ZoneClient::~ZoneClient() {
+}
+
+ZoneClient* ZoneClient::clone() {
+	return new ZoneClient(*this);
+}
+
+
 void ZoneClient::disconnect(bool doLock) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);

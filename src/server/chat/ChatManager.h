@@ -61,6 +61,11 @@ class ChatManager : public ORBObjectStub {
 public:
 	ChatManager();
 	ChatManager(ORBObjectServant* obj);
+	ChatManager(ChatManager& ref);
+
+	ChatManager* clone();
+
+	virtual ~ChatManager();
 
 	void addPlayer(Player* player);
 

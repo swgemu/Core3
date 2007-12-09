@@ -60,6 +60,17 @@ UserManager::UserManager() : ORBObjectStub(NULL) {
 UserManager::UserManager(ORBObjectServant* obj) : ORBObjectStub(obj) {
 }
 
+UserManager::UserManager(UserManager& ref) : ORBObjectStub(ref) {
+}
+
+UserManager::~UserManager() {
+}
+
+UserManager* UserManager::clone() {
+	return new UserManager(*this);
+}
+
+
 bool UserManager::checkUser(unsigned int ipid) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);

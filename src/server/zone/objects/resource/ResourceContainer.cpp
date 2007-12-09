@@ -62,6 +62,17 @@ ResourceContainer::ResourceContainer() : SceneObject(NULL) {
 ResourceContainer::ResourceContainer(ORBObjectServant* obj) : SceneObject(obj) {
 }
 
+ResourceContainer::ResourceContainer(ResourceContainer& ref) : SceneObject(ref) {
+}
+
+ResourceContainer::~ResourceContainer() {
+}
+
+ResourceContainer* ResourceContainer::clone() {
+	return new ResourceContainer(*this);
+}
+
+
 /*
  *	ResourceContainerAdapter
  */

@@ -64,6 +64,17 @@ Guild::Guild() : ORBObjectStub(NULL) {
 Guild::Guild(ORBObjectServant* obj) : ORBObjectStub(obj) {
 }
 
+Guild::Guild(Guild& ref) : ORBObjectStub(ref) {
+}
+
+Guild::~Guild() {
+}
+
+Guild* Guild::clone() {
+	return new Guild(*this);
+}
+
+
 void Guild::sendGuildListTo(Player* player, bool doLock) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);

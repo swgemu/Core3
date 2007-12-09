@@ -61,6 +61,11 @@ class Inventory : public Container {
 public:
 	Inventory();
 	Inventory(ORBObjectServant* obj);
+	Inventory(Inventory& ref);
+
+	Inventory* clone();
+
+	virtual ~Inventory();
 
 protected:
 };

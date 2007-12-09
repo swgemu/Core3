@@ -63,6 +63,11 @@ class TravelTerminal : public Terminal {
 public:
 	TravelTerminal();
 	TravelTerminal(ORBObjectServant* obj);
+	TravelTerminal(TravelTerminal& ref);
+
+	TravelTerminal* clone();
+
+	virtual ~TravelTerminal();
 
 	int useObject(Player* player);
 

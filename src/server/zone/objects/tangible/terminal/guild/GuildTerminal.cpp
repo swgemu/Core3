@@ -64,6 +64,17 @@ GuildTerminal::GuildTerminal() : Terminal(NULL) {
 GuildTerminal::GuildTerminal(ORBObjectServant* obj) : Terminal(obj) {
 }
 
+GuildTerminal::GuildTerminal(GuildTerminal& ref) : Terminal(ref) {
+}
+
+GuildTerminal::~GuildTerminal() {
+}
+
+GuildTerminal* GuildTerminal::clone() {
+	return new GuildTerminal(*this);
+}
+
+
 int GuildTerminal::useObject(Player* player) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);

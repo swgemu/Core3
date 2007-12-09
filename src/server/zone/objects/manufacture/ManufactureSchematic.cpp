@@ -62,6 +62,17 @@ ManufactureSchematic::ManufactureSchematic() : SceneObject(NULL) {
 ManufactureSchematic::ManufactureSchematic(ORBObjectServant* obj) : SceneObject(obj) {
 }
 
+ManufactureSchematic::ManufactureSchematic(ManufactureSchematic& ref) : SceneObject(ref) {
+}
+
+ManufactureSchematic::~ManufactureSchematic() {
+}
+
+ManufactureSchematic* ManufactureSchematic::clone() {
+	return new ManufactureSchematic(*this);
+}
+
+
 /*
  *	ManufactureSchematicAdapter
  */

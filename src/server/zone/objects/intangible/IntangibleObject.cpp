@@ -64,6 +64,17 @@ IntangibleObject::IntangibleObject() : SceneObject(NULL) {
 IntangibleObject::IntangibleObject(ORBObjectServant* obj) : SceneObject(obj) {
 }
 
+IntangibleObject::IntangibleObject(IntangibleObject& ref) : SceneObject(ref) {
+}
+
+IntangibleObject::~IntangibleObject() {
+}
+
+IntangibleObject* IntangibleObject::clone() {
+	return new IntangibleObject(*this);
+}
+
+
 void IntangibleObject::sendTo(Player* player, bool doClose) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);

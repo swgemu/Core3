@@ -65,6 +65,11 @@ class Creature : public CreatureObject {
 public:
 	Creature();
 	Creature(ORBObjectServant* obj);
+	Creature(Creature& ref);
+
+	Creature* clone();
+
+	virtual ~Creature();
 
 	void init();
 

@@ -81,6 +81,11 @@ class Player : public CreatureObject {
 public:
 	Player();
 	Player(ORBObjectServant* obj);
+	Player(Player& ref);
+
+	Player* clone();
+
+	virtual ~Player();
 
 	Player* create(ZoneClient* client);
 

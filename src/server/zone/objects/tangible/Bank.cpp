@@ -64,6 +64,17 @@ Bank::Bank() : Container(NULL) {
 Bank::Bank(ORBObjectServant* obj) : Container(obj) {
 }
 
+Bank::Bank(Bank& ref) : Container(ref) {
+}
+
+Bank::~Bank() {
+}
+
+Bank* Bank::clone() {
+	return new Bank(*this);
+}
+
+
 /*
  *	BankAdapter
  */

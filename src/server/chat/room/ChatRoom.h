@@ -61,6 +61,11 @@ class ChatRoom : public ORBObjectStub {
 public:
 	ChatRoom();
 	ChatRoom(ORBObjectServant* obj);
+	ChatRoom(ChatRoom& ref);
+
+	ChatRoom* clone();
+
+	virtual ~ChatRoom();
 
 	void sendTo(Player* player);
 

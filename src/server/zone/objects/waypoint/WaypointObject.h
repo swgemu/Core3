@@ -59,6 +59,11 @@ class WaypointObject : public SceneObject {
 public:
 	WaypointObject();
 	WaypointObject(ORBObjectServant* obj);
+	WaypointObject(WaypointObject& ref);
+
+	WaypointObject* clone();
+
+	virtual ~WaypointObject();
 
 	void changeStatus(bool status);
 

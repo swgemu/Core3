@@ -66,6 +66,17 @@ Armor::Armor() : Wearable(NULL) {
 Armor::Armor(ORBObjectServant* obj) : Wearable(obj) {
 }
 
+Armor::Armor(Armor& ref) : Wearable(ref) {
+}
+
+Armor::~Armor() {
+}
+
+Armor* Armor::clone() {
+	return new Armor(*this);
+}
+
+
 void Armor::sendTo(Player* player, bool doClose) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);

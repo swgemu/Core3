@@ -64,6 +64,17 @@ TravelTerminal::TravelTerminal() : Terminal(NULL) {
 TravelTerminal::TravelTerminal(ORBObjectServant* obj) : Terminal(obj) {
 }
 
+TravelTerminal::TravelTerminal(TravelTerminal& ref) : Terminal(ref) {
+}
+
+TravelTerminal::~TravelTerminal() {
+}
+
+TravelTerminal* TravelTerminal::clone() {
+	return new TravelTerminal(*this);
+}
+
+
 int TravelTerminal::useObject(Player* player) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);

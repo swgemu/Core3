@@ -61,6 +61,11 @@ class PlayerManager : public ORBObjectStub {
 public:
 	PlayerManager();
 	PlayerManager(ORBObjectServant* obj);
+	PlayerManager(PlayerManager& ref);
+
+	PlayerManager* clone();
+
+	virtual ~PlayerManager();
 
 	bool create(Player* player, unsigned int sessionkey);
 

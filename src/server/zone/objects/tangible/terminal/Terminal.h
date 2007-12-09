@@ -63,6 +63,11 @@ class Terminal : public TangibleObject {
 public:
 	Terminal();
 	Terminal(ORBObjectServant* obj);
+	Terminal(Terminal& ref);
+
+	Terminal* clone();
+
+	virtual ~Terminal();
 
 	int useObject(Player* player);
 

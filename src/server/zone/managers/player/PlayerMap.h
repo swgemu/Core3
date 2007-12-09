@@ -57,6 +57,11 @@ class PlayerMap : public ORBObjectStub {
 public:
 	PlayerMap();
 	PlayerMap(ORBObjectServant* obj);
+	PlayerMap(PlayerMap& ref);
+
+	PlayerMap* clone();
+
+	virtual ~PlayerMap();
 
 	Player* put(string& name, Player* player);
 

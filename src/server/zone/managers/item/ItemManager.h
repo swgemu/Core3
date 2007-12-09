@@ -57,6 +57,11 @@ class ItemManager : public ORBObjectStub {
 public:
 	ItemManager();
 	ItemManager(ORBObjectServant* obj);
+	ItemManager(ItemManager& ref);
+
+	ItemManager* clone();
+
+	virtual ~ItemManager();
 
 	void loadStaticWorldObjects();
 

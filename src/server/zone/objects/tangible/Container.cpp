@@ -64,6 +64,17 @@ Container::Container() : TangibleObject(NULL) {
 Container::Container(ORBObjectServant* obj) : TangibleObject(obj) {
 }
 
+Container::Container(Container& ref) : TangibleObject(ref) {
+}
+
+Container::~Container() {
+}
+
+Container* Container::clone() {
+	return new Container(*this);
+}
+
+
 void Container::addObject(SceneObject* obj) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);

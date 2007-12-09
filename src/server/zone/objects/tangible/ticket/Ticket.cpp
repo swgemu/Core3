@@ -64,6 +64,17 @@ Ticket::Ticket() : TangibleObject(NULL) {
 Ticket::Ticket(ORBObjectServant* obj) : TangibleObject(obj) {
 }
 
+Ticket::Ticket(Ticket& ref) : TangibleObject(ref) {
+}
+
+Ticket::~Ticket() {
+}
+
+Ticket* Ticket::clone() {
+	return new Ticket(*this);
+}
+
+
 int Ticket::useObject(Player* player) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);

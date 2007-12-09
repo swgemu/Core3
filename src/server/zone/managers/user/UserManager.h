@@ -55,6 +55,11 @@ class UserManager : public ORBObjectStub {
 public:
 	UserManager();
 	UserManager(ORBObjectServant* obj);
+	UserManager(UserManager& ref);
+
+	UserManager* clone();
+
+	virtual ~UserManager();
 
 	bool checkUser(unsigned int ipid);
 

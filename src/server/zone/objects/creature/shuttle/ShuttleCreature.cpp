@@ -64,6 +64,17 @@ ShuttleCreature::ShuttleCreature() : Creature(NULL) {
 ShuttleCreature::ShuttleCreature(ORBObjectServant* obj) : Creature(obj) {
 }
 
+ShuttleCreature::ShuttleCreature(ShuttleCreature& ref) : Creature(ref) {
+}
+
+ShuttleCreature::~ShuttleCreature() {
+}
+
+ShuttleCreature* ShuttleCreature::clone() {
+	return new ShuttleCreature(*this);
+}
+
+
 void ShuttleCreature::doTakeOff() {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);

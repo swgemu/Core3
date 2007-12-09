@@ -61,6 +61,11 @@ class TwoHandedMeleeWeapon : public MeleeWeapon {
 public:
 	TwoHandedMeleeWeapon();
 	TwoHandedMeleeWeapon(ORBObjectServant* obj);
+	TwoHandedMeleeWeapon(TwoHandedMeleeWeapon& ref);
+
+	TwoHandedMeleeWeapon* clone();
+
+	virtual ~TwoHandedMeleeWeapon();
 
 protected:
 };

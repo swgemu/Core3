@@ -77,8 +77,8 @@ target_triplet = @target@
 subdir = .
 DIST_COMMON = README $(am__configure_deps) $(srcdir)/Makefile.am \
 	$(srcdir)/Makefile.in $(srcdir)/config.h.in \
-	$(top_srcdir)/configure AUTHORS COPYING COPYING.LESSER \
-	ChangeLog INSTALL NEWS build/unix/config/config.guess \
+	$(top_srcdir)/configure AUTHORS COPYING.LESSER ChangeLog \
+	INSTALL NEWS build/unix/config/config.guess \
 	build/unix/config/config.sub build/unix/config/depcomp \
 	build/unix/config/install-sh build/unix/config/missing \
 	config.guess config.sub install-sh

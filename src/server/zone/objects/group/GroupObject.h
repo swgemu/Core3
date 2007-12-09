@@ -65,6 +65,11 @@ class GroupObject : public SceneObject {
 public:
 	GroupObject();
 	GroupObject(ORBObjectServant* obj);
+	GroupObject(GroupObject& ref);
+
+	GroupObject* clone();
+
+	virtual ~GroupObject();
 
 	void sendTo(Player* player);
 

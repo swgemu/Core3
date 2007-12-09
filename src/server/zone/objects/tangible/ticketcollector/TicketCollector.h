@@ -63,6 +63,11 @@ class TicketCollector : public TangibleObject {
 public:
 	TicketCollector();
 	TicketCollector(ORBObjectServant* obj);
+	TicketCollector(TicketCollector& ref);
+
+	TicketCollector* clone();
+
+	virtual ~TicketCollector();
 
 	int useObject(Player* player);
 

@@ -63,6 +63,11 @@ class CellObject : public SceneObject {
 public:
 	CellObject();
 	CellObject(ORBObjectServant* obj);
+	CellObject(CellObject& ref);
+
+	CellObject* clone();
+
+	virtual ~CellObject();
 
 protected:
 };

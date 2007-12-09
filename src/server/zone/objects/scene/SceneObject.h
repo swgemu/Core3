@@ -69,6 +69,11 @@ class SceneObject : public RWLockable {
 public:
 	SceneObject();
 	SceneObject(ORBObjectServant* obj);
+	SceneObject(SceneObject& ref);
+
+	SceneObject* clone();
+
+	virtual ~SceneObject();
 
 	void sendTo(Player* player, bool doClose = true);
 

@@ -63,6 +63,11 @@ class Armor : public Wearable {
 public:
 	Armor();
 	Armor(ORBObjectServant* obj);
+	Armor(Armor& ref);
+
+	Armor* clone();
+
+	virtual ~Armor();
 
 	void sendTo(Player* player, bool doClose = true);
 

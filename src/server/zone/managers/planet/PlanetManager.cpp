@@ -66,6 +66,17 @@ PlanetManager::PlanetManager() : ORBObjectStub(NULL) {
 PlanetManager::PlanetManager(ORBObjectServant* obj) : ORBObjectStub(obj) {
 }
 
+PlanetManager::PlanetManager(PlanetManager& ref) : ORBObjectStub(ref) {
+}
+
+PlanetManager::~PlanetManager() {
+}
+
+PlanetManager* PlanetManager::clone() {
+	return new PlanetManager(*this);
+}
+
+
 void PlanetManager::init() {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);

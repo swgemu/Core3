@@ -63,6 +63,11 @@ class MountCreature : public Creature {
 public:
 	MountCreature();
 	MountCreature(ORBObjectServant* obj);
+	MountCreature(MountCreature& ref);
+
+	MountCreature* clone();
+
+	virtual ~MountCreature();
 
 	void setMountType(int type);
 

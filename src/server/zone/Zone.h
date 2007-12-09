@@ -67,6 +67,11 @@ class Zone : public ORBObjectStub {
 public:
 	Zone();
 	Zone(ORBObjectServant* obj);
+	Zone(Zone& ref);
+
+	Zone* clone();
+
+	virtual ~Zone();
 
 	void lock(bool doLock = true);
 

@@ -61,6 +61,11 @@ class MeleeWeapon : public Weapon {
 public:
 	MeleeWeapon();
 	MeleeWeapon(ORBObjectServant* obj);
+	MeleeWeapon(MeleeWeapon& ref);
+
+	MeleeWeapon* clone();
+
+	virtual ~MeleeWeapon();
 
 protected:
 };

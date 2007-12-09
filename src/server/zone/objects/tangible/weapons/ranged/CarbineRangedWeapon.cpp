@@ -64,6 +64,17 @@ CarbineRangedWeapon::CarbineRangedWeapon() : RangedWeapon(NULL) {
 CarbineRangedWeapon::CarbineRangedWeapon(ORBObjectServant* obj) : RangedWeapon(obj) {
 }
 
+CarbineRangedWeapon::CarbineRangedWeapon(CarbineRangedWeapon& ref) : RangedWeapon(ref) {
+}
+
+CarbineRangedWeapon::~CarbineRangedWeapon() {
+}
+
+CarbineRangedWeapon* CarbineRangedWeapon::clone() {
+	return new CarbineRangedWeapon(*this);
+}
+
+
 /*
  *	CarbineRangedWeaponAdapter
  */

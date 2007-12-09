@@ -59,6 +59,11 @@ class Guild : public ORBObjectStub {
 public:
 	Guild();
 	Guild(ORBObjectServant* obj);
+	Guild(Guild& ref);
+
+	Guild* clone();
+
+	virtual ~Guild();
 
 	void sendGuildListTo(Player* player, bool doLock = true);
 

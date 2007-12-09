@@ -64,6 +64,17 @@ TwoHandedJediWeapon::TwoHandedJediWeapon() : JediWeapon(NULL) {
 TwoHandedJediWeapon::TwoHandedJediWeapon(ORBObjectServant* obj) : JediWeapon(obj) {
 }
 
+TwoHandedJediWeapon::TwoHandedJediWeapon(TwoHandedJediWeapon& ref) : JediWeapon(ref) {
+}
+
+TwoHandedJediWeapon::~TwoHandedJediWeapon() {
+}
+
+TwoHandedJediWeapon* TwoHandedJediWeapon::clone() {
+	return new TwoHandedJediWeapon(*this);
+}
+
+
 /*
  *	TwoHandedJediWeaponAdapter
  */

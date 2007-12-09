@@ -64,6 +64,17 @@ PolearmMeleeWeapon::PolearmMeleeWeapon() : MeleeWeapon(NULL) {
 PolearmMeleeWeapon::PolearmMeleeWeapon(ORBObjectServant* obj) : MeleeWeapon(obj) {
 }
 
+PolearmMeleeWeapon::PolearmMeleeWeapon(PolearmMeleeWeapon& ref) : MeleeWeapon(ref) {
+}
+
+PolearmMeleeWeapon::~PolearmMeleeWeapon() {
+}
+
+PolearmMeleeWeapon* PolearmMeleeWeapon::clone() {
+	return new PolearmMeleeWeapon(*this);
+}
+
+
 /*
  *	PolearmMeleeWeaponAdapter
  */

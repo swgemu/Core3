@@ -57,6 +57,11 @@ class GuildMap : public ORBObjectStub {
 public:
 	GuildMap();
 	GuildMap(ORBObjectServant* obj);
+	GuildMap(GuildMap& ref);
+
+	GuildMap* clone();
+
+	virtual ~GuildMap();
 
 	void add(Guild* guild);
 

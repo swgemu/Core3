@@ -64,6 +64,17 @@ HairObject::HairObject() : TangibleObject(NULL) {
 HairObject::HairObject(ORBObjectServant* obj) : TangibleObject(obj) {
 }
 
+HairObject::HairObject(HairObject& ref) : TangibleObject(ref) {
+}
+
+HairObject::~HairObject() {
+}
+
+HairObject* HairObject::clone() {
+	return new HairObject(*this);
+}
+
+
 /*
  *	HairObjectAdapter
  */

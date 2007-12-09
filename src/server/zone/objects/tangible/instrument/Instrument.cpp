@@ -64,6 +64,17 @@ Instrument::Instrument() : TangibleObject(NULL) {
 Instrument::Instrument(ORBObjectServant* obj) : TangibleObject(obj) {
 }
 
+Instrument::Instrument(Instrument& ref) : TangibleObject(ref) {
+}
+
+Instrument::~Instrument() {
+}
+
+Instrument* Instrument::clone() {
+	return new Instrument(*this);
+}
+
+
 int Instrument::useObject(Player* player) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);

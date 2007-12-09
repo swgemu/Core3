@@ -64,6 +64,17 @@ CreatureGroup::CreatureGroup() : ORBObjectStub(NULL) {
 CreatureGroup::CreatureGroup(ORBObjectServant* obj) : ORBObjectStub(obj) {
 }
 
+CreatureGroup::CreatureGroup(CreatureGroup& ref) : ORBObjectStub(ref) {
+}
+
+CreatureGroup::~CreatureGroup() {
+}
+
+CreatureGroup* CreatureGroup::clone() {
+	return new CreatureGroup(*this);
+}
+
+
 void CreatureGroup::addCreature(Creature* creature) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);

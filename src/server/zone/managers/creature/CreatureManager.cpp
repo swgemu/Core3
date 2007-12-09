@@ -74,6 +74,17 @@ CreatureManager::CreatureManager() : ORBObjectStub(NULL) {
 CreatureManager::CreatureManager(ORBObjectServant* obj) : ORBObjectStub(obj) {
 }
 
+CreatureManager::CreatureManager(CreatureManager& ref) : ORBObjectStub(ref) {
+}
+
+CreatureManager::~CreatureManager() {
+}
+
+CreatureManager* CreatureManager::clone() {
+	return new CreatureManager(*this);
+}
+
+
 void CreatureManager::init() {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);

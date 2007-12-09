@@ -63,6 +63,11 @@ class Ticket : public TangibleObject {
 public:
 	Ticket();
 	Ticket(ORBObjectServant* obj);
+	Ticket(Ticket& ref);
+
+	Ticket* clone();
+
+	virtual ~Ticket();
 
 	int useObject(Player* player);
 
