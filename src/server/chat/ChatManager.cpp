@@ -259,12 +259,27 @@ void ChatManager::broadcastMessage(const string& message) {
 		((ChatManagerImplementation*) _impl)->broadcastMessage(message);
 }
 
-void ChatManager::handleGameCommand(Player* player, const string& command) {
+void ChatManager::broadcastMessageRange(Player* player, const string& message, float range) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
 		ORBMethodInvocation invocation(this, 20);
+		invocation.addObjectParameter(player);
+		invocation.addAsciiParameter(message);
+		invocation.addFloatParameter(range);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((ChatManagerImplementation*) _impl)->broadcastMessageRange(player, message, range);
+}
+
+void ChatManager::handleGameCommand(Player* player, const string& command) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 21);
 		invocation.addObjectParameter(player);
 		invocation.addAsciiParameter(command);
 
@@ -278,7 +293,7 @@ void ChatManager::initiateRooms() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 21);
+		ORBMethodInvocation invocation(this, 22);
 
 		invocation.executeWithVoidReturn();
 	} else
@@ -290,7 +305,7 @@ void ChatManager::handleChatRoomMessage(Player* player, Message* pack) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 22);
+		ORBMethodInvocation invocation(this, 23);
 		invocation.addObjectParameter(player);
 		invocation.addObjectParameter(pack);
 
@@ -304,7 +319,7 @@ void ChatManager::handleGroupChat(Player* player, Message* pack) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 23);
+		ORBMethodInvocation invocation(this, 24);
 		invocation.addObjectParameter(player);
 		invocation.addObjectParameter(pack);
 
@@ -318,7 +333,7 @@ void ChatManager::handleCreateRoom(Player* player, Message* pack) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 24);
+		ORBMethodInvocation invocation(this, 25);
 		invocation.addObjectParameter(player);
 		invocation.addObjectParameter(pack);
 
@@ -332,7 +347,7 @@ void ChatManager::handleChatEnterRoomById(Player* player, Message* pack) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 25);
+		ORBMethodInvocation invocation(this, 26);
 		invocation.addObjectParameter(player);
 		invocation.addObjectParameter(pack);
 
@@ -346,7 +361,7 @@ void ChatManager::handleChatDestroyRoom(Player* player, Message* pack) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 26);
+		ORBMethodInvocation invocation(this, 27);
 		invocation.addObjectParameter(player);
 		invocation.addObjectParameter(pack);
 
@@ -360,7 +375,7 @@ void ChatManager::handleChatRemoveAvatarFromRoom(Player* player, Message* pack) 
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 27);
+		ORBMethodInvocation invocation(this, 28);
 		invocation.addObjectParameter(player);
 		invocation.addObjectParameter(pack);
 
@@ -374,7 +389,7 @@ ChatRoom* ChatManager::getChatRoom(unsigned int id) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 28);
+		ORBMethodInvocation invocation(this, 29);
 		invocation.addUnsignedIntParameter(id);
 
 		return (ChatRoom*) invocation.executeWithObjectReturn();
@@ -387,7 +402,7 @@ void ChatManager::addRoom(ChatRoom* channel) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 29);
+		ORBMethodInvocation invocation(this, 30);
 		invocation.addObjectParameter(channel);
 
 		invocation.executeWithVoidReturn();
@@ -400,7 +415,7 @@ void ChatManager::removeRoom(ChatRoom* channel) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 30);
+		ORBMethodInvocation invocation(this, 31);
 		invocation.addObjectParameter(channel);
 
 		invocation.executeWithVoidReturn();
@@ -413,7 +428,7 @@ void ChatManager::sendRoomList(Player* player) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 31);
+		ORBMethodInvocation invocation(this, 32);
 		invocation.addObjectParameter(player);
 
 		invocation.executeWithVoidReturn();
@@ -426,7 +441,7 @@ ChatRoom* ChatManager::createGroupRoom(unsigned int groupID, Player* creator) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 32);
+		ORBMethodInvocation invocation(this, 33);
 		invocation.addUnsignedIntParameter(groupID);
 		invocation.addObjectParameter(creator);
 
@@ -440,7 +455,7 @@ ChatRoom* ChatManager::createRoomByFullPath(const string& path) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 33);
+		ORBMethodInvocation invocation(this, 34);
 		invocation.addAsciiParameter(path);
 
 		return (ChatRoom*) invocation.executeWithObjectReturn();
@@ -453,7 +468,7 @@ void ChatManager::destroyRoom(ChatRoom* room) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 34);
+		ORBMethodInvocation invocation(this, 35);
 		invocation.addObjectParameter(room);
 
 		invocation.executeWithVoidReturn();
@@ -466,7 +481,7 @@ void ChatManager::printRoomTree(ChatRoom* channel) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 35);
+		ORBMethodInvocation invocation(this, 36);
 		invocation.addObjectParameter(channel);
 
 		invocation.executeWithVoidReturn();
@@ -479,7 +494,7 @@ ChatRoom* ChatManager::getChatRoomByFullPath(const string& path) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 36);
+		ORBMethodInvocation invocation(this, 37);
 		invocation.addAsciiParameter(path);
 
 		return (ChatRoom*) invocation.executeWithObjectReturn();
@@ -492,7 +507,7 @@ ChatRoom* ChatManager::getGameRoom(const string& game) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 37);
+		ORBMethodInvocation invocation(this, 38);
 		invocation.addAsciiParameter(game);
 
 		return (ChatRoom*) invocation.executeWithObjectReturn();
@@ -505,7 +520,7 @@ ChatRoom* ChatManager::getChatRoomByGamePath(ChatRoom* game, const string& path)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 38);
+		ORBMethodInvocation invocation(this, 39);
 		invocation.addObjectParameter(game);
 		invocation.addAsciiParameter(path);
 
@@ -519,7 +534,7 @@ unsigned int ChatManager::getNextRoomID() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 39);
+		ORBMethodInvocation invocation(this, 40);
 
 		return invocation.executeWithUnsignedIntReturn();
 	} else
@@ -531,7 +546,7 @@ int ChatManager::getPlayerCount() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 40);
+		ORBMethodInvocation invocation(this, 41);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -543,26 +558,11 @@ bool ChatManager::isMute() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 41);
+		ORBMethodInvocation invocation(this, 42);
 
 		return invocation.executeWithBooleanReturn();
 	} else
 		return ((ChatManagerImplementation*) _impl)->isMute();
-}
-
-void ChatManager::broadcastMessageRange(Player* player, const string& message, float range) {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 42);
-		invocation.addObjectParameter(player);
-		invocation.addAsciiParameter(message);
-		invocation.addFloatParameter(range);
-		
-		invocation.executeWithVoidReturn();
-	} else
-		((ChatManagerImplementation*) _impl)->broadcastMessageRange(player, message, range);
 }
 
 /*
@@ -619,73 +619,73 @@ Packet* ChatManagerAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* inv
 		broadcastMessage(inv->getAsciiParameter(_param0_broadcastMessage__string_));
 		break;
 	case 20:
-		handleGameCommand((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_handleGameCommand__Player_string_));
+		broadcastMessageRange((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_broadcastMessageRange__Player_string_float_), inv->getFloatParameter());
 		break;
 	case 21:
-		initiateRooms();
+		handleGameCommand((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_handleGameCommand__Player_string_));
 		break;
 	case 22:
-		handleChatRoomMessage((Player*) inv->getObjectParameter(), (Message*) inv->getObjectParameter());
+		initiateRooms();
 		break;
 	case 23:
-		handleGroupChat((Player*) inv->getObjectParameter(), (Message*) inv->getObjectParameter());
+		handleChatRoomMessage((Player*) inv->getObjectParameter(), (Message*) inv->getObjectParameter());
 		break;
 	case 24:
-		handleCreateRoom((Player*) inv->getObjectParameter(), (Message*) inv->getObjectParameter());
+		handleGroupChat((Player*) inv->getObjectParameter(), (Message*) inv->getObjectParameter());
 		break;
 	case 25:
-		handleChatEnterRoomById((Player*) inv->getObjectParameter(), (Message*) inv->getObjectParameter());
+		handleCreateRoom((Player*) inv->getObjectParameter(), (Message*) inv->getObjectParameter());
 		break;
 	case 26:
-		handleChatDestroyRoom((Player*) inv->getObjectParameter(), (Message*) inv->getObjectParameter());
+		handleChatEnterRoomById((Player*) inv->getObjectParameter(), (Message*) inv->getObjectParameter());
 		break;
 	case 27:
-		handleChatRemoveAvatarFromRoom((Player*) inv->getObjectParameter(), (Message*) inv->getObjectParameter());
+		handleChatDestroyRoom((Player*) inv->getObjectParameter(), (Message*) inv->getObjectParameter());
 		break;
 	case 28:
-		resp->insertLong(getChatRoom(inv->getUnsignedIntParameter())->_getORBObjectID());
+		handleChatRemoveAvatarFromRoom((Player*) inv->getObjectParameter(), (Message*) inv->getObjectParameter());
 		break;
 	case 29:
-		addRoom((ChatRoom*) inv->getObjectParameter());
+		resp->insertLong(getChatRoom(inv->getUnsignedIntParameter())->_getORBObjectID());
 		break;
 	case 30:
-		removeRoom((ChatRoom*) inv->getObjectParameter());
+		addRoom((ChatRoom*) inv->getObjectParameter());
 		break;
 	case 31:
-		sendRoomList((Player*) inv->getObjectParameter());
+		removeRoom((ChatRoom*) inv->getObjectParameter());
 		break;
 	case 32:
-		resp->insertLong(createGroupRoom(inv->getUnsignedIntParameter(), (Player*) inv->getObjectParameter())->_getORBObjectID());
+		sendRoomList((Player*) inv->getObjectParameter());
 		break;
 	case 33:
-		resp->insertLong(createRoomByFullPath(inv->getAsciiParameter(_param0_createRoomByFullPath__string_))->_getORBObjectID());
+		resp->insertLong(createGroupRoom(inv->getUnsignedIntParameter(), (Player*) inv->getObjectParameter())->_getORBObjectID());
 		break;
 	case 34:
-		destroyRoom((ChatRoom*) inv->getObjectParameter());
+		resp->insertLong(createRoomByFullPath(inv->getAsciiParameter(_param0_createRoomByFullPath__string_))->_getORBObjectID());
 		break;
 	case 35:
-		printRoomTree((ChatRoom*) inv->getObjectParameter());
+		destroyRoom((ChatRoom*) inv->getObjectParameter());
 		break;
 	case 36:
-		resp->insertLong(getChatRoomByFullPath(inv->getAsciiParameter(_param0_getChatRoomByFullPath__string_))->_getORBObjectID());
+		printRoomTree((ChatRoom*) inv->getObjectParameter());
 		break;
 	case 37:
-		resp->insertLong(getGameRoom(inv->getAsciiParameter(_param0_getGameRoom__string_))->_getORBObjectID());
+		resp->insertLong(getChatRoomByFullPath(inv->getAsciiParameter(_param0_getChatRoomByFullPath__string_))->_getORBObjectID());
 		break;
 	case 38:
-		resp->insertLong(getChatRoomByGamePath((ChatRoom*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_getChatRoomByGamePath__ChatRoom_string_))->_getORBObjectID());
+		resp->insertLong(getGameRoom(inv->getAsciiParameter(_param0_getGameRoom__string_))->_getORBObjectID());
 		break;
 	case 39:
-		resp->insertInt(getNextRoomID());
+		resp->insertLong(getChatRoomByGamePath((ChatRoom*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_getChatRoomByGamePath__ChatRoom_string_))->_getORBObjectID());
 		break;
 	case 40:
-		resp->insertSignedInt(getPlayerCount());
+		resp->insertInt(getNextRoomID());
 		break;
 	case 41:
-		resp->insertBoolean(isMute());
+		resp->insertSignedInt(getPlayerCount());
 		break;
 	case 42:
-		broadcastMessageRange((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_broadcastMessageRange__string_), inv->getFloatParameter());
+		resp->insertBoolean(isMute());
 		break;
 	default:
 		return NULL;

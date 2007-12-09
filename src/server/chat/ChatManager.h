@@ -89,7 +89,7 @@ public:
 	void broadcastMessage(Player* player, unicode& message, unsigned long long target = 0, unsigned int moodid = 0, unsigned int mood2 = 0);
 
 	void broadcastMessage(const string& message);
-	
+
 	void broadcastMessageRange(Player* player, const string& message, float range);
 
 	void handleGameCommand(Player* player, const string& command);
@@ -174,7 +174,7 @@ public:
 	void broadcastMessage(Player* player, unicode& message, unsigned long long target, unsigned int moodid, unsigned int mood2);
 
 	void broadcastMessage(const string& message);
-	
+
 	void broadcastMessageRange(Player* player, const string& message, float range);
 
 	void handleGameCommand(Player* player, const string& command);
@@ -231,12 +231,12 @@ protected:
 	unicode _param1_sendSystemMessage__Player_unicode_;
 	unicode _param1_broadcastMessage__Player_unicode_long_int_int_;
 	string _param0_broadcastMessage__string_;
+	string _param1_broadcastMessageRange__Player_string_float_;
 	string _param1_handleGameCommand__Player_string_;
 	string _param0_createRoomByFullPath__string_;
 	string _param0_getChatRoomByFullPath__string_;
 	string _param0_getGameRoom__string_;
 	string _param1_getChatRoomByGamePath__ChatRoom_string_;
-	string _param1_broadcastMessageRange__string_;
 };
 
 class ChatManagerHelper : public ORBClassHelper {
