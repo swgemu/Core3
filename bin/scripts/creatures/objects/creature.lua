@@ -59,6 +59,8 @@ Creature = Object:new {
 	mind = 0,
 	focus = 0,
 	willpower = 0,
+	
+	armor = 0,
 
 	xp = 0,
 	

@@ -92,4 +92,6 @@ interface Weapon implements TangibleObject {
 	
 	int getWoundsRatio();
 
+	int getArmorPiercing();
+
 }

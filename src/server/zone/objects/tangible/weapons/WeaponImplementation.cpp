@@ -85,8 +85,27 @@ void WeaponImplementation::generateAttributes(SceneObject* obj) {
 	alm->insertAttribute("condition", "1000/1000");
 	
 	alm->insertAttribute("volume", "1");
+
+	string ap;
+	switch (armorPiercing) {
+	case NONE:
+		ap = "None";
+		break;
+	case LIGHT:
+		ap = "Light";
+		break;
+	case MEDIUM:
+		ap = "Medium";
+		break;
+	case HEAVY:
+		ap = "Heavy";
+		break;
+	default:
+		ap = "Unknown";
+		break;
+	}
 	
-	alm->insertAttribute("wpn_armor_pierce_rating", "Medium");
+	alm->insertAttribute("wpn_armor_pierce_rating", ap);
 	
 	alm->insertAttribute("wpn_attack_speed", attackSpeed);
 					

@@ -109,6 +109,8 @@ public:
 
 	int getWoundsRatio();
 
+	int getArmorPiercing();
+
 protected:
 };
 
@@ -159,6 +161,8 @@ public:
 	int getIdealAccuracy();
 
 	int getWoundsRatio();
+
+	int getArmorPiercing();
 
 };
 

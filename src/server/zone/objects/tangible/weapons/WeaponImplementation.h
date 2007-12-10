@@ -238,6 +238,10 @@ public:
 	inline int getWoundsRatio() {
 		return woundsRatio;
 	}
+	
+	inline int getArmorPiercing() {
+		return armorPiercing;
+	}
 
 	friend class CombatManager;
 	

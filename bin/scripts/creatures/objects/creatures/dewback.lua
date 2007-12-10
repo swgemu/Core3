@@ -56,6 +56,8 @@ dewback = Creature:new {
 	mind = 10000,
 	focus = 220,
 	willpower = 220,
+	
+	armor = 0, -- from allakhazam
 
 	height = 1,
 	

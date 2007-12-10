@@ -166,6 +166,8 @@ interface CreatureObject implements SceneObject {
 	void setMindMax(unsigned int mind);
 	void setFocusMax(unsigned int focus);
 	void setWillpowerMax(unsigned int willpower);
+	
+	void setArmor(unsigned int ar);
 
 	void setHealthWounds(unsigned int wounds);
 	void setActionWounds(unsigned int wounds);
@@ -325,6 +327,8 @@ interface CreatureObject implements SceneObject {
 	unsigned int getMindMax();
 	unsigned int getFocusMax();
 	unsigned int getWillpowerMax();
+	
+	unsigned int getArmor();
 	
 	unsigned int getHealthWounds();
 	unsigned int getActionWounds();

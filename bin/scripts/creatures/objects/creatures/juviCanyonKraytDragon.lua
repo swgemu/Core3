@@ -60,6 +60,8 @@ juviCanyonKraytDragon = Creature:new {
 	mind = 54000,
 	focus = 1000,
 	willpower = 1000,
+	
+	armor = 2, -- from allakhazam
 
 	height = .5,
 	

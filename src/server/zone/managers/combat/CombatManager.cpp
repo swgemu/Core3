@@ -637,6 +637,32 @@ void CombatManager::doBlock(CreatureObject* creature, CreatureObject* defender) 
 
 // calc methods
 void CombatManager::calculateDamageReduction(CreatureObject* creature, CreatureObject* targetCreature, float& damage) {
+	//Armor piercing: figure difference in AP to AR, apply 25% increases or 50% decreases accordingly
+	// Source: http://www.nofuture.org.uk/swg/rifleman.php (and others)
+	Weapon *weapon = creature->getWeapon();
+
+
+	//if no weapon, no armor piercing? What about bralwer, TKA?	
+	int ap = 0;
+	
+	if (weapon != NULL) 
+		ap = weapon->getArmorPiercing();
+
+	int ar = targetCreature->getArmor();
+
+	if (ap > ar)
+		damage *= powf(1.25f, ap - ar); // If armor piercing is greater, increase by 25% per level
+	else if (ap < ar)
+		damage *= powf(0.5f, ar - ap); // If armor resist is greater, decrease by half per level
+
+	//if (creature->isPlayer()) { // Debug message
+	//	stringstream msg;
+	//	msg << "(debug) Your weapons damage is adjusted by " << mult << " because its AP is "
+	//	    << ap << " and your target's AR is " << ar;
+	//	creature->sendSystemMessage(msg.str());
+	//}
+
+	//Other factors
 	if (targetCreature->isPlayer())
 		damage = damage / 3;
 

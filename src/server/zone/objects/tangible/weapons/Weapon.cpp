@@ -320,6 +320,18 @@ int Weapon::getWoundsRatio() {
 		return ((WeaponImplementation*) _impl)->getWoundsRatio();
 }
 
+int Weapon::getArmorPiercing() {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 26);
+
+		return invocation.executeWithSignedIntReturn();
+	} else
+		return ((WeaponImplementation*) _impl)->getArmorPiercing();
+}
+
 /*
  *	WeaponAdapter
  */
@@ -390,6 +402,9 @@ Packet* WeaponAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* inv) {
 		break;
 	case 25:
 		resp->insertSignedInt(getWoundsRatio());
+		break;
+	case 26:
+		resp->insertSignedInt(getArmorPiercing());
 		break;
 	default:
 		return NULL;
@@ -476,6 +491,10 @@ int WeaponAdapter::getIdealAccuracy() {
 
 int WeaponAdapter::getWoundsRatio() {
 	return ((WeaponImplementation*) impl)->getWoundsRatio();
+}
+
+int WeaponAdapter::getArmorPiercing() {
+	return ((WeaponImplementation*) impl)->getArmorPiercing();
 }
 
 /*

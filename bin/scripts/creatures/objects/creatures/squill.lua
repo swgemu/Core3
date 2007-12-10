@@ -56,6 +56,8 @@ squill = Creature:new {
 	mind = 4300,
 	focus = 1000,
 	willpower = 1000,
+	
+	armor = 0, -- from allakhazam
 
 	height = 1,
 	

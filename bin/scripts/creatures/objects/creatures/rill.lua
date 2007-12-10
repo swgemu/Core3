@@ -56,6 +56,8 @@ rill = Creature:new {
 	mind = 220,
 	focus = 220,
 	willpower = 220,
+	
+	armor = 0, -- from allakhazam
 
 	height = 1,
 	

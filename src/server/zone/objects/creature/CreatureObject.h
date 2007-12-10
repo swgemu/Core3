@@ -235,6 +235,8 @@ public:
 
 	void setWillpowerMax(unsigned int willpower);
 
+	void setArmor(unsigned int ar);
+
 	void setHealthWounds(unsigned int wounds);
 
 	void setActionWounds(unsigned int wounds);
@@ -446,6 +448,8 @@ public:
 	unsigned int getFocusMax();
 
 	unsigned int getWillpowerMax();
+
+	unsigned int getArmor();
 
 	unsigned int getHealthWounds();
 
@@ -810,6 +814,8 @@ public:
 
 	void setWillpowerMax(unsigned int willpower);
 
+	void setArmor(unsigned int ar);
+
 	void setHealthWounds(unsigned int wounds);
 
 	void setActionWounds(unsigned int wounds);
@@ -1021,6 +1027,8 @@ public:
 	unsigned int getFocusMax();
 
 	unsigned int getWillpowerMax();
+
+	unsigned int getArmor();
 
 	unsigned int getHealthWounds();
 

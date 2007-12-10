@@ -60,6 +60,8 @@ canyonKraytDragon = Creature:new {
 	mind = 350000,
 	focus = 1000,
 	willpower = 1000,
+	
+	armor = 3, -- from allakhazam
 
 	height = 5,
 	

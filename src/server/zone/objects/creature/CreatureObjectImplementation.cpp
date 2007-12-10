@@ -144,6 +144,8 @@ CreatureObjectImplementation::CreatureObjectImplementation(uint64 oid) : Creatur
 	mindMax = 3000;
 	focusMax = 3000;
 	willpowerMax = 3000;
+	
+	armor=0;
 
 	// ent
 	performanceCounter = 0;

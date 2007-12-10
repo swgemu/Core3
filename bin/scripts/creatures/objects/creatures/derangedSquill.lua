@@ -56,6 +56,8 @@ derangedSquill = Creature:new {
 	mind = 9900,
 	focus = 1000,
 	willpower = 1000,
+	
+	armor = 1, -- closest was "Malignant Squill", from allakhazam
 
 	height = 1,
 	

@@ -492,6 +492,8 @@ int CreatureManagerImplementation::addCreature(lua_State *L) {
 	creatureImpl->mindMax = creatureImpl->mind;
 	creatureImpl->focusMax = creatureImpl->focus;
 	creatureImpl->willpowerMax = creatureImpl->willpower;
+	
+	creatureImpl->armor = creature.getIntField("armor");
 
 	creatureImpl->height = creature.getFloatField("height");
 	float x = creature.getFloatField("positionX");

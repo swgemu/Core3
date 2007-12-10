@@ -57,6 +57,8 @@ scyk = Creature:new {
 	focus = 1200,
 	willpower = 1200,
 
+	armor = 0, -- from allakhazam
+	
 	height = 1,
 	
 	accuracy = 300,

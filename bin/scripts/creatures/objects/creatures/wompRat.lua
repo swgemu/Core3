@@ -56,6 +56,8 @@ wompRat = Creature:new {
 	mind = 135,
 	focus = 135,
 	willpower = 135,
+	
+	armor = 0, -- from allakhazam
 
 	height = 1,
 	

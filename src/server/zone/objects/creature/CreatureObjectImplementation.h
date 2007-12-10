@@ -182,6 +182,9 @@ protected:
 	uint32 focusMax;
 	uint32 willpowerMax;
 	
+	// Inherent Armor,Resists
+	uint32 armor;
+	
 	// WOUND vars
 	
 	uint32 woundsUpdateCounter;
@@ -933,7 +936,11 @@ public:
 	inline void setWillpowerMax(uint32 value) {
 		willpowerMax = value;
 	}
-	
+
+	inline void setArmor(uint32 ar) {
+		armor=ar;
+	}
+
 	inline void setHealthWounds(uint32 wounds) {
 		healthWounds = wounds;
 	}
@@ -1078,6 +1085,10 @@ public:
 
 	inline uint32 getWillpowerMax() {
 		return willpowerMax;
+	}
+	
+	inline uint32 getArmor() {
+		return armor;
 	}
 
 	inline uint32 getHealthWounds() {

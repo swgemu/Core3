@@ -60,6 +60,8 @@ darthVader = Creature:new {
 	mind = 390000,
 	focus = 1000,
 	willpower = 1000,
+	
+	armor = 2, -- Just a guess
 
 	height = 1,
 	
