@@ -102,6 +102,7 @@ IDL_SOURCES = server/zone/Zone.idl \
 				server/zone/managers/user/UserManager.idl \
 				server/zone/managers/creature/CreatureManager.idl \
 				server/zone/managers/planet/PlanetManager.idl \
+				server/zone/managers/resource/ResourceManager.idl \
 				server/chat/room/ChatRoom.idl \
 				server/chat/ChatManager.idl
 

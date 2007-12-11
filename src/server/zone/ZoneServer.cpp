@@ -56,6 +56,8 @@ which carries forward this exception.
 
 #include "managers/item/ItemManager.h"
 
+#include "managers/resource/ResourceManager.h"
+
 #include "../chat/ChatManager.h"
 
 #include "Zone.h"
@@ -290,12 +292,24 @@ ItemManager* ZoneServer::getItemManager() {
 		return ((ZoneServerImplementation*) _impl)->getItemManager();
 }
 
-Zone* ZoneServer::getZone(int index) {
+ResourceManager* ZoneServer::getResourceManager() {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
 		ORBMethodInvocation invocation(this, 22);
+
+		return (ResourceManager*) invocation.executeWithObjectReturn();
+	} else
+		return ((ZoneServerImplementation*) _impl)->getResourceManager();
+}
+
+Zone* ZoneServer::getZone(int index) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 23);
 		invocation.addSignedIntParameter(index);
 
 		return (Zone*) invocation.executeWithObjectReturn();
@@ -308,7 +322,7 @@ string& ZoneServer::getServerName() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 23);
+		ORBMethodInvocation invocation(this, 24);
 
 		invocation.executeWithAsciiReturn(_return_getServerName);
 		return _return_getServerName;
@@ -321,7 +335,7 @@ int ZoneServer::getConnectionCount() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 24);
+		ORBMethodInvocation invocation(this, 25);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -333,7 +347,7 @@ unsigned long long ZoneServer::getNextCreatureID() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 25);
+		ORBMethodInvocation invocation(this, 26);
 
 		return invocation.executeWithUnsignedLongReturn();
 	} else
@@ -400,15 +414,18 @@ Packet* ZoneServerAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* inv)
 		resp->insertLong(getItemManager()->_getORBObjectID());
 		break;
 	case 22:
-		resp->insertLong(getZone(inv->getSignedIntParameter())->_getORBObjectID());
+		resp->insertLong(getResourceManager()->_getORBObjectID());
 		break;
 	case 23:
-		resp->insertAscii(getServerName());
+		resp->insertLong(getZone(inv->getSignedIntParameter())->_getORBObjectID());
 		break;
 	case 24:
-		resp->insertSignedInt(getConnectionCount());
+		resp->insertAscii(getServerName());
 		break;
 	case 25:
+		resp->insertSignedInt(getConnectionCount());
+		break;
+	case 26:
 		resp->insertLong(getNextCreatureID());
 		break;
 	default:
@@ -480,6 +497,10 @@ UserManager* ZoneServerAdapter::getUserManager() {
 
 ItemManager* ZoneServerAdapter::getItemManager() {
 	return ((ZoneServerImplementation*) impl)->getItemManager();
+}
+
+ResourceManager* ZoneServerAdapter::getResourceManager() {
+	return ((ZoneServerImplementation*) impl)->getResourceManager();
 }
 
 Zone* ZoneServerAdapter::getZone(int index) {

@@ -42,58 +42,10 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-/*import "objects/ObjectMap";*/
-
-import "objects/scene/SceneObject";
-
-import "managers/user/UserManager";
-import "managers/guild/GuildManager";
-import "managers/player/PlayerManager";
-import "managers/item/ItemManager";
-import "managers/resource/ResourceManager";
-
-import "../chat/ChatManager";
-
-import "Zone";
-
-include "../db/ServerDatabase";
-
-interface ZoneServer {
-	void startManagers();
-
-	// object methods	
-	void addObject(SceneObject obj, boolean doLock = true);
-
-	SceneObject getObject(unsigned long oid, boolean doLock = true);
-
-	SceneObject removeObject(unsigned long oid, boolean doLock = true);
-
-	SceneObject removeCachedObject(unsigned long oid, boolean doLock = true);
-
-	// administration methods
-	boolean banUser(string name, string admin);
-
-	void changeUserCap(int amount = 50);
-
-	void addTotalSentPacket(int count);
-	void addTotalResentPacket(int count);
-
-	void lock();
-	void unlock();
+interface ResourceManager {
+	void shiftOutResources();
 	
-	// getters
-	ChatManager getChatManager();
-	GuildManager getGuildManager();
-	PlayerManager getPlayerManager();
-	UserManager getUserManager();
-	ItemManager getItemManager();
-	ResourceManager getResourceManager();
+	void shiftInResources();
 	
-	Zone getZone(int index);
-	
-	string getServerName();
-	
-	int getConnectionCount();
-	
-	unsigned long getNextCreatureID();
+	void makeResourceName(string resname, boolean isOrganic);
 }

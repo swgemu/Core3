@@ -115,8 +115,8 @@ am__objects_1 = Zone.$(OBJEXT) ZoneClient.$(OBJEXT) \
 	GuildMap.$(OBJEXT) GuildManager.$(OBJEXT) PlayerMap.$(OBJEXT) \
 	PlayerManager.$(OBJEXT) CreatureManager.$(OBJEXT) \
 	ItemManager.$(OBJEXT) UserManager.$(OBJEXT) \
-	PlanetManager.$(OBJEXT) ChatRoom.$(OBJEXT) \
-	ChatManager.$(OBJEXT)
+	PlanetManager.$(OBJEXT) ResourceManager.$(OBJEXT) \
+	ChatRoom.$(OBJEXT) ChatManager.$(OBJEXT)
 am_core3_OBJECTS = $(am__objects_1) ServerCore.$(OBJEXT) \
 	ConfigManager.$(OBJEXT) ServerDatabase.$(OBJEXT) \
 	LoginServer.$(OBJEXT) LoginPacketHandler.$(OBJEXT) \
@@ -152,6 +152,7 @@ am_core3_OBJECTS = $(am__objects_1) ServerCore.$(OBJEXT) \
 	CommandQueueAction.$(OBJEXT) \
 	CreatureManagerImplementation.$(OBJEXT) \
 	PlanetManagerImplementation.$(OBJEXT) \
+	ResourceManagerImplementation.$(OBJEXT) \
 	ChatRoomImplementation.$(OBJEXT) \
 	ChatManagerImplementation.$(OBJEXT) \
 	ObjectControllerMessage.$(OBJEXT) main.$(OBJEXT)
@@ -338,6 +339,7 @@ core3_IDLS = server/zone/Zone.cpp \
 		server/zone/managers/item/ItemManager.cpp \
 		server/zone/managers/user/UserManager.cpp \
 		server/zone/managers/planet/PlanetManager.cpp \
+		server/zone/managers/resource/ResourceManager.cpp \
 		server/chat/room/ChatRoom.cpp \
 		server/chat/ChatManager.cpp
 
@@ -385,6 +387,7 @@ core3_SOURCES = $(core3_IDLS) \
 		server/zone/managers/combat/CommandQueueAction.cpp \
 		server/zone/managers/creature/CreatureManagerImplementation.cpp \
 		server/zone/managers/planet/PlanetManagerImplementation.cpp \
+		server/zone/managers/resource/ResourceManagerImplementation.cpp \
 		server/chat/room/ChatRoomImplementation.cpp \
 		server/chat/ChatManagerImplementation.cpp \
 		server/zone/packets/object/ObjectControllerMessage.cpp \
@@ -529,6 +532,8 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/RangedWeapon.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/RecruiterCreature.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ResourceContainer.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ResourceManager.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ResourceManagerImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/RifleRangedWeapon.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SceneObject.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SceneObjectImplementation.Po@am__quote@
@@ -1420,6 +1425,20 @@ PlanetManager.obj: server/zone/managers/planet/PlanetManager.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o PlanetManager.obj `if test -f 'server/zone/managers/planet/PlanetManager.cpp'; then $(CYGPATH_W) 'server/zone/managers/planet/PlanetManager.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/planet/PlanetManager.cpp'; fi`
 
+ResourceManager.o: server/zone/managers/resource/ResourceManager.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ResourceManager.o -MD -MP -MF $(DEPDIR)/ResourceManager.Tpo -c -o ResourceManager.o `test -f 'server/zone/managers/resource/ResourceManager.cpp' || echo '$(srcdir)/'`server/zone/managers/resource/ResourceManager.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/ResourceManager.Tpo $(DEPDIR)/ResourceManager.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/managers/resource/ResourceManager.cpp' object='ResourceManager.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ResourceManager.o `test -f 'server/zone/managers/resource/ResourceManager.cpp' || echo '$(srcdir)/'`server/zone/managers/resource/ResourceManager.cpp
+
+ResourceManager.obj: server/zone/managers/resource/ResourceManager.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ResourceManager.obj -MD -MP -MF $(DEPDIR)/ResourceManager.Tpo -c -o ResourceManager.obj `if test -f 'server/zone/managers/resource/ResourceManager.cpp'; then $(CYGPATH_W) 'server/zone/managers/resource/ResourceManager.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/resource/ResourceManager.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/ResourceManager.Tpo $(DEPDIR)/ResourceManager.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/managers/resource/ResourceManager.cpp' object='ResourceManager.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ResourceManager.obj `if test -f 'server/zone/managers/resource/ResourceManager.cpp'; then $(CYGPATH_W) 'server/zone/managers/resource/ResourceManager.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/resource/ResourceManager.cpp'; fi`
+
 ChatRoom.o: server/chat/room/ChatRoom.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ChatRoom.o -MD -MP -MF $(DEPDIR)/ChatRoom.Tpo -c -o ChatRoom.o `test -f 'server/chat/room/ChatRoom.cpp' || echo '$(srcdir)/'`server/chat/room/ChatRoom.cpp
 @am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/ChatRoom.Tpo $(DEPDIR)/ChatRoom.Po
@@ -2049,6 +2068,20 @@ PlanetManagerImplementation.obj: server/zone/managers/planet/PlanetManagerImplem
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/managers/planet/PlanetManagerImplementation.cpp' object='PlanetManagerImplementation.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o PlanetManagerImplementation.obj `if test -f 'server/zone/managers/planet/PlanetManagerImplementation.cpp'; then $(CYGPATH_W) 'server/zone/managers/planet/PlanetManagerImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/planet/PlanetManagerImplementation.cpp'; fi`
+
+ResourceManagerImplementation.o: server/zone/managers/resource/ResourceManagerImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ResourceManagerImplementation.o -MD -MP -MF $(DEPDIR)/ResourceManagerImplementation.Tpo -c -o ResourceManagerImplementation.o `test -f 'server/zone/managers/resource/ResourceManagerImplementation.cpp' || echo '$(srcdir)/'`server/zone/managers/resource/ResourceManagerImplementation.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/ResourceManagerImplementation.Tpo $(DEPDIR)/ResourceManagerImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/managers/resource/ResourceManagerImplementation.cpp' object='ResourceManagerImplementation.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ResourceManagerImplementation.o `test -f 'server/zone/managers/resource/ResourceManagerImplementation.cpp' || echo '$(srcdir)/'`server/zone/managers/resource/ResourceManagerImplementation.cpp
+
+ResourceManagerImplementation.obj: server/zone/managers/resource/ResourceManagerImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ResourceManagerImplementation.obj -MD -MP -MF $(DEPDIR)/ResourceManagerImplementation.Tpo -c -o ResourceManagerImplementation.obj `if test -f 'server/zone/managers/resource/ResourceManagerImplementation.cpp'; then $(CYGPATH_W) 'server/zone/managers/resource/ResourceManagerImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/resource/ResourceManagerImplementation.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/ResourceManagerImplementation.Tpo $(DEPDIR)/ResourceManagerImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/managers/resource/ResourceManagerImplementation.cpp' object='ResourceManagerImplementation.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ResourceManagerImplementation.obj `if test -f 'server/zone/managers/resource/ResourceManagerImplementation.cpp'; then $(CYGPATH_W) 'server/zone/managers/resource/ResourceManagerImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/resource/ResourceManagerImplementation.cpp'; fi`
 
 ChatRoomImplementation.o: server/chat/room/ChatRoomImplementation.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ChatRoomImplementation.o -MD -MP -MF $(DEPDIR)/ChatRoomImplementation.Tpo -c -o ChatRoomImplementation.o `test -f 'server/chat/room/ChatRoomImplementation.cpp' || echo '$(srcdir)/'`server/chat/room/ChatRoomImplementation.cpp

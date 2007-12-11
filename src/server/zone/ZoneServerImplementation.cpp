@@ -62,6 +62,9 @@ which carries forward this exception.
 #include "managers/guild/GuildManagerImplementation.h"
 #include "managers/group/GroupManager.h"
 
+#include "managers/resource/ResourceManager.h"
+#include "managers/resource/ResourceManagerImplementation.h"
+
 #include "ZoneClient.h"
 #include "ZoneClientImplementation.h"
 
@@ -101,21 +104,24 @@ void ZoneServerImplementation::startManagers() {
 	info("loading managers..");
 	
 	UserManagerImplementation* userImpl = new UserManagerImplementation(_this);
-	userManager = (UserManager*) ObjectRequestBroker::instance()->deploy("UserManager", userImpl);
+	userManager = (UserManager*) userImpl->deploy("UserManager");
 	
 	ItemManagerImplementation* itemImpl = new ItemManagerImplementation(_this);
-	itemManager = (ItemManager*) ObjectRequestBroker::instance()->deploy("ItemManager", itemImpl);
+	itemManager = (ItemManager*) itemImpl->deploy("ItemManager");
 
 	PlayerManagerImplementation* playerImpl = new PlayerManagerImplementation(itemManager, processor);
-	playerManager = (PlayerManager*) ObjectRequestBroker::instance()->deploy("PlayerManager", playerImpl);
+	playerManager = (PlayerManager*) playerImpl->deploy("PlayerManager");
 	
 	GuildManagerImplementation* guildImpl = new GuildManagerImplementation(_this);
-	guildManager = (GuildManager*) ObjectRequestBroker::instance()->deploy("GuildManager", guildImpl);
+	guildManager = (GuildManager*) guildImpl->deploy("GuildManager");
 	guildManager->load();
 	playerManager->setGuildManager(guildManager);
 
+	ResourceManagerImplementation* resImpl = new ResourceManagerImplementation(_this);
+	resourceManager = (ResourceManager*) resImpl->deploy("ResourceManager");
+
 	ChatManagerImplementation* chatImpl = new ChatManagerImplementation(_this, 10000);
-	chatManager = (ChatManager*) ObjectRequestBroker::instance()->deploy("ChatManager", chatImpl);
+	chatManager = (ChatManager*) chatImpl->deploy("ChatManager");
 }
 
 ZoneServerImplementation::~ZoneServerImplementation() {

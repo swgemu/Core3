@@ -69,6 +69,8 @@ class ChatManagerImplementation : public ChatManagerServant, public Mutex {
 	
 	PlayerManager* playerManager;
 	GuildManager* guildManager;
+	
+	ResourceManager* resourceManager;
 
 	PlayerMap* playerMap;
 	

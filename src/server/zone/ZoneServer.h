@@ -61,6 +61,8 @@ class PlayerManager;
 
 class ItemManager;
 
+class ResourceManager;
+
 class ChatManager;
 
 class Zone;
@@ -108,6 +110,8 @@ public:
 	UserManager* getUserManager();
 
 	ItemManager* getItemManager();
+
+	ResourceManager* getResourceManager();
 
 	Zone* getZone(int index);
 
@@ -161,6 +165,8 @@ public:
 	UserManager* getUserManager();
 
 	ItemManager* getItemManager();
+
+	ResourceManager* getResourceManager();
 
 	Zone* getZone(int index);
 

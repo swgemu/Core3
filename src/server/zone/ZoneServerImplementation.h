@@ -65,6 +65,8 @@ class GuildManager;
 
 class ChatManager;
 
+class ResourceManager;
+
 #include "ZoneServer.h"
 
 class ZoneServerImplementation : public DatagramServiceThread, public ZoneServerServant {
@@ -82,6 +84,8 @@ class ZoneServerImplementation : public DatagramServiceThread, public ZoneServer
 	ItemManager* itemManager;
 	ChatManager* chatManager;
 	GuildManager* guildManager;
+	
+	ResourceManager* resourceManager;
 	
 	int totalSentPackets;
 	int totalResentPackets;
@@ -164,6 +168,10 @@ public:
 
 	inline GuildManager* getGuildManager() {
 		return guildManager;
+	}
+	
+	inline ResourceManager* getResourceManager() {
+		return resourceManager;
 	}
 	
 	inline Zone* getZone(int index) {
