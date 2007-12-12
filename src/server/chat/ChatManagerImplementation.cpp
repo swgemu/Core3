@@ -278,7 +278,7 @@ void ChatManagerImplementation::handleEmote(Player* player, Message* pack) {
 	pack->parseUnicode(emote);
 	
 	StringTokenizer tokenizer(emote.c_str());
-	//cout << "Emote Message: " << emote.c_str() << "\n";
+
 	try {
 		zone->lock();
 

@@ -133,7 +133,12 @@ void ZonePacketHandler::handleMessage(Message* pack) {
 		}
 		
 		break;
-	case 4:
+	case 04:
+		switch (opcode) {
+		case 0x092D3564: // Selection box return
+			handleSelectionBox(pack);
+			break;
+		}
 		break;
 	case 05:
 		switch (opcode) {
@@ -696,4 +701,27 @@ void ZonePacketHandler::handleChatRemoveAvatarFromRoom(Message* pack) {
 		
 	ChatManager* chatManager = server->getChatManager();
 	chatManager->handleChatRemoveAvatarFromRoom(player, pack);
+}
+
+void ZonePacketHandler::handleSelectionBox(Message* pack) {
+	ZoneClientImplementation* client = (ZoneClientImplementation*) pack->getClient();
+	Player* player = client->getPlayer();	
+	if (player == NULL)
+		return;
+	
+	uint32 opcode = pack->parseInt();
+	unicode value;
+	
+	switch (opcode) {
+	case 0x004D5553:
+		pack->shiftOffset(12);
+		pack->parseUnicode(value);
+		player->startPlayingMusic(value.c_str());
+		break;
+	case 0x0044414E:
+		pack->shiftOffset(12);
+		pack->parseUnicode(value);
+		player->startDancing(value.c_str());
+		break;
+	}
 }

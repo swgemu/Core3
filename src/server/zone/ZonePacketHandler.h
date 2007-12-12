@@ -99,6 +99,8 @@ public:
 	void handleChatEnterRoomById(Message* pack);
 	void handleChatDestroyRoom(Message* pack);
 	void handleChatRemoveAvatarFromRoom(Message* pack);
+	
+	void handleSelectionBox(Message* pack);
 };
 
 #endif /*ZONEPACKETHANDLER_H_*/

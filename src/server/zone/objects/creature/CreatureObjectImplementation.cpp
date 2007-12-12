@@ -75,6 +75,8 @@ which carries forward this exception.
 
 #include "skills/PassiveSkill.h"
 
+#include "skills/EntertainerSkills.h"
+
 CreatureObjectImplementation::CreatureObjectImplementation(uint64 oid) : CreatureObjectServant(oid + 0x15) {
 	objectType = NONPLAYERCREATURE;
 
@@ -1823,113 +1825,152 @@ void CreatureObjectImplementation::removeSkillMod(const string& name, bool updat
 
 void CreatureObjectImplementation::startDancing(const string& anim) {
 	if (isPlayingMusic())
-		stopPlayingMusic();	
-		
+		stopPlayingMusic();
+
 	if (isDancing()) {
 		sendSystemMessage("You are already dancing.");
 		return;
 	}
 
-	if (anim == "basic") {
+	if (anim == "") {
+		Message* msg = new EntertainMenu("dance", dances, 20);
+		((PlayerImplementation*) this)->sendMessage(msg);
+		return;
+	}
+
+	if (anim == "basic" || anim == "0") {
 		sendEntertainingUpdate(0x3C4CCCCD, "dance_1", 0x07339FF8, 0xDD);
-	} else if (anim == "rhythmic") { 
+	} else if (anim == "rhythmic" || anim == "1") {
 		sendEntertainingUpdate(0x3C4CCCCD, "dance_3", 0x07339FF8, 0xDD);
-	} else if (anim == "basic2") { 
+	} else if (anim == "basic2" || anim == "2") {
 		sendEntertainingUpdate(0x3C4CCCCD, "dance_2", 0x07339FF8, 0xDD);
-	} else if (anim == "rhythmic2") { 
+	} else if (anim == "rhythmic2" || anim == "3") {
 		sendEntertainingUpdate(0x3C4CCCCD, "dance_4", 0x07339FF8, 0xDD);
-	} else if (anim == "footloose") { 
+	} else if (anim == "footloose" || anim == "4") {
 		sendEntertainingUpdate(0x3C4CCCCD, "dance_15", 0x07339FF8, 0xDD);
-	} else if (anim == "formal") { 
+	} else if (anim == "formal" || anim == "5") {
 		sendEntertainingUpdate(0x3C4CCCCD, "dance_17", 0x07339FF8, 0xDD);
-	} else if (anim == "footloose2") { 
+	} else if (anim == "footloose2" || anim == "6") {
 		sendEntertainingUpdate(0x3C4CCCCD, "dance_16", 0x07339FF8, 0xDD);
-	} else if (anim == "formal2") { 
+	} else if (anim == "formal2" || anim == "7") {
 		sendEntertainingUpdate(0x3C4CCCCD, "dance_18", 0x07339FF8, 0xDD);
-	} else if (anim == "popular") { 
+	} else if (anim == "popular" || anim == "8") {
 		sendEntertainingUpdate(0x3C4CCCCD, "dance_9", 0x07339FF8, 0xDD);
-	} else if (anim == "poplock") { 
+	} else if (anim == "poplock" || anim == "9") {
 		sendEntertainingUpdate(0x3C4CCCCD, "dance_13", 0x07339FF8, 0xDD);
-	} else if (anim == "popular2") { 
+	} else if (anim == "popular2" || anim == "10") {
 		sendEntertainingUpdate(0x3C4CCCCD, "dance_10", 0x07339FF8, 0xDD);
-	} else if (anim == "poplock2") { 
+	} else if (anim == "poplock2" || anim == "11") {
 		sendEntertainingUpdate(0x3C4CCCCD, "dance_14", 0x07339FF8, 0xDD);
-	} else if (anim == "lyrical") { 
+	} else if (anim == "lyrical" || anim == "12") {
 		sendEntertainingUpdate(0x3C4CCCCD, "dance_11", 0x07339FF8, 0xDD);
-	} else if (anim == "exotic") { 
+	} else if (anim == "exotic" || anim == "13") {
 		sendEntertainingUpdate(0x3C4CCCCD, "dance_5", 0x07339FF8, 0xDD);
-	} else if (anim == "exotic2") { 
+	} else if (anim == "exotic2" || anim == "14") {
 		sendEntertainingUpdate(0x3C4CCCCD, "dance_6", 0x07339FF8, 0xDD);
-	} else if (anim == "lyrical2") { 
+	} else if (anim == "lyrical2" || anim == "15") {
 		sendEntertainingUpdate(0x3C4CCCCD, "dance_12", 0x07339FF8, 0xDD);
-	} else if (anim == "exotic3") { 
+	} else if (anim == "exotic3" || anim == "16") {
 		sendEntertainingUpdate(0x3C4CCCCD, "dance_7", 0x07339FF8, 0xDD);
-	} else if (anim == "exotic4") { 
+	} else if (anim == "exotic4" || anim == "17") {
 		sendEntertainingUpdate(0x3C4CCCCD, "dance_8", 0x07339FF8, 0xDD);
-	} else if (anim == "theatrical") { 
+	} else if (anim == "theatrical" || anim == "18") {
 		sendEntertainingUpdate(0x3C4CCCCD, "dance_21", 0x07339FF8, 0xDD);
-	} else if (anim == "theatrical2") { 
+	} else if (anim == "theatrical2" || anim == "19") {
 		sendEntertainingUpdate(0x3C4CCCCD, "dance_22", 0x07339FF8, 0xDD);
 	} else {
 		sendSystemMessage("Invalid dance name.");
 		return;
 	}
-			
+
 	info("started dancing");
-	
+
 	setPosture(9);
 	setDancing(true);
-	
+
 	sendSystemMessage("You start dancing.");
 }
 
 void CreatureObjectImplementation::startPlayingMusic(const string& music) {
 	if (isDancing())
-		stopDancing();	
-	
+		stopDancing();
+
 	if (isPlayingMusic()) {
 		sendSystemMessage("You are already playing music.");
 		return;
 	}
-	
+
+	if (music == "") {
+		Message* msg = new EntertainMenu("music", songs, 11);
+		((PlayerImplementation*) this)->sendMessage(msg);
+		return;
+	}
+
 	int instrid;
-	if (music == "starwars1") {
+	if (music == "starwars1" || music == "0") {
 		instrid = 1;
-	} else if (music == "rock") {
+	} else if (music == "rock" || music == "1") {
 		instrid = 11;
-	} else if (music == "starwars2") {
+	} else if (music == "starwars2" || music == "2") {
 		instrid = 21;
-	} else if (music == "folk") {
+	} else if (music == "folk" || music == "3") {
 		instrid = 31;
-	} else if (music == "starwars3") {
+	} else if (music == "starwars3" || music == "4") {
 		instrid = 41;
-	} else if (music == "ceremonial") {
+	} else if (music == "ceremonial" || music == "5") {
 		instrid = 51;
-	} else if (music == "ballad") {
+	} else if (music == "ballad" || music == "6") {
 		instrid = 61;
-	} else if (music == "waltz") {
+	} else if (music == "waltz" || music == "7") {
 		instrid = 71;
-	} else if (music == "jazz") {
+	} else if (music == "jazz" || music == "8") {
 		instrid = 81;
-	} else if (music == "virtuoso") {
+	} else if (music == "virtuoso" || music == "9") {
 		instrid = 91;
-	} else if (music == "western") {
+	} else if (music == "western" || music == "10") {
 		instrid = 101;
 	} else {
 		sendSystemMessage("Invalid music name.");
 		return;
 	}
 
+    // Need to find what instrument is equipped
+	string instrument = "slitherhorn";
+
+	if (instrument == "slitherhorn") {
+		instrid += 0;
+	} else if (instrument == "fizz") {
+		instrid += 1;
+	} else if (instrument == "fanfar") {
+		instrid += 2;
+	} else if (instrument == "kloo_horn") {
+		instrid += 3;
+	} else if (instrument == "mandoviol") {
+		instrid += 4;
+	} else if (instrument == "traz") {
+		instrid += 5;
+	} else if (instrument == "bandfill") {
+		instrid += 6;
+	} else if (instrument == "chidinkalu_horn") {
+		instrid += 7;
+	} else if (instrument == "ommni_box") {
+		instrid += 8;
+	} else if (instrument == "nalargon") {
+		instrid += 9;
+	} else {
+		sendSystemMessage("Instrument not equipped");
+		return;
+	}
+
 	info("started playing music");
-		
+
 	setPosture(9);
 	setPlayingMusic(true);
-	
+
 	sendEntertainingUpdate(0x3C4CCCCD, "music_3", 0x07352BAC, instrid);
-	
+
 	sendSystemMessage("You start to play music.");
 }
-
 void CreatureObjectImplementation::stopDancing() {
 	if (isPlayer())
 		sendSystemMessage("You stop dancing.");

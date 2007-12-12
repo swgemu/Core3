@@ -104,6 +104,7 @@ which carries forward this exception.
 #include "packets/creature/CreatureObjectDeltaMessage4.h"
 #include "packets/creature/CreatureObjectDeltaMessage6.h"
 #include "packets/creature/UpdatePVPStatusMessage.h"
+#include "packets/creature/EntertainMenu.h"
 
 #include "packets/group/GroupObjectMessage3.h"
 #include "packets/group/GroupObjectMessage6.h"
