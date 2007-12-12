@@ -175,6 +175,8 @@ public:
 
 	void switchMovingState();
 
+	bool doKeepObject();
+
 protected:
 };
 
@@ -285,6 +287,8 @@ public:
 	bool isMoving();
 
 	void switchMovingState();
+
+	bool doKeepObject();
 
 };
 

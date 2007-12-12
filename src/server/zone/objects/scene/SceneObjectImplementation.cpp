@@ -63,6 +63,8 @@ SceneObjectImplementation::SceneObjectImplementation() : QuadTreeEntry(), SceneO
 	linkType = 0x04;
 	
 	moving = false;
+	
+	keepObject = false;
 }
 
 SceneObjectImplementation::SceneObjectImplementation(uint64 oid) : QuadTreeEntry(), SceneObjectServant(), Logger() {
@@ -82,6 +84,8 @@ SceneObjectImplementation::SceneObjectImplementation(uint64 oid) : QuadTreeEntry
 	linkType = 0x04;
 	
 	moving = false;
+
+	keepObject = false;
 }
 
 SceneObjectImplementation::~SceneObjectImplementation() {

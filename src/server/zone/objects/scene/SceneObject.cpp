@@ -713,6 +713,18 @@ void SceneObject::switchMovingState() {
 		((SceneObjectImplementation*) _impl)->switchMovingState();
 }
 
+bool SceneObject::doKeepObject() {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 56);
+
+		return invocation.executeWithBooleanReturn();
+	} else
+		return ((SceneObjectImplementation*) _impl)->doKeepObject();
+}
+
 /*
  *	SceneObjectAdapter
  */
@@ -873,6 +885,9 @@ Packet* SceneObjectAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* inv
 		break;
 	case 55:
 		switchMovingState();
+		break;
+	case 56:
+		resp->insertBoolean(doKeepObject());
 		break;
 	default:
 		return NULL;
@@ -1079,6 +1094,10 @@ bool SceneObjectAdapter::isMoving() {
 
 void SceneObjectAdapter::switchMovingState() {
 	return ((SceneObjectImplementation*) impl)->switchMovingState();
+}
+
+bool SceneObjectAdapter::doKeepObject() {
+	return ((SceneObjectImplementation*) impl)->doKeepObject();
 }
 
 /*

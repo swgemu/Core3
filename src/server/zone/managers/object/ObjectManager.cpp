@@ -62,17 +62,19 @@ bool ObjectManager::activate() {
 	HashTableIterator<uint64, SceneObject*> iterator(objectCacheMap);
 	while (iterator.hasNext()) {
 		SceneObject* obj = iterator.getNextValue();
-		
+
 		uint64 objectid = obj->getObjectID();
 
-		info("undeploying object (" + obj->_getORBName() + ")", true);
-
-		if (!obj->undeploy())
-			error("object (" + obj->_getORBName() + ") was not found in naming directory");
-		
-		delete obj;
-		
 		objectCacheMap->remove(objectid);
+
+		if (!obj->doKeepObject()) {
+			info("undeploying object (" + obj->_getORBName() + ")", true);
+
+			if (!obj->undeploy())
+				error("object (" + obj->_getORBName() + ") was not found in naming directory");
+
+			delete obj;
+		}
 	}
 	
 	server->addEvent(this, 20000);
@@ -112,7 +114,7 @@ SceneObject* ObjectManager::remove(uint64 oid) {
 	objectCacheMap->put(oid, obj);
 	
 	/*if (!isQueued())
-		server->addEvent(this, 20000);*/		
+		server->addEvent(this, 10000);*/		
 	
 	return obj;
 }

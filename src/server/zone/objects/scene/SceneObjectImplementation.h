@@ -83,6 +83,8 @@ protected:
 	
 	uint32 linkType;
 
+	bool keepObject;
+	
 public:
 	static const int NONPLAYERCREATURE = 1;
 	static const int PLAYER = 2;
@@ -256,7 +258,7 @@ public:
 			return 0;
 	}
 
-	// setters and getters
+	// setters
 	inline void setParent(SceneObject* par, uint32 linktype = 0x04) {
 		parent = par;
 		linkType = linktype;
@@ -282,6 +284,11 @@ public:
 		objectCRC = crc;
 	}
 
+	inline void setObjectKeeping(bool keeping) {
+		keepObject = true;
+	}
+	
+	// getters
 	inline Zone* getZone() {
 		return zone;
 	}
@@ -337,6 +344,9 @@ public:
 			return parent->getObjectID();
 	}
 	
+	inline bool doKeepObject() {
+		return keepObject;
+	}
 };
 
 #endif /*SCENEOBJECTIMPLEMENTATION_H_*/

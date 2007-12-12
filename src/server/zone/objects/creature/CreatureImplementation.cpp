@@ -110,6 +110,8 @@ void CreatureImplementation::init() {
 	aggroedCreature = NULL;
 	willAggro = false;
 	
+	setObjectKeeping(true);
+	
 	stringstream logname;
 	logname << "NPC = 0x" << hex << objectID;
 

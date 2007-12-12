@@ -102,11 +102,15 @@ PlayerImplementation::PlayerImplementation(uint64 cid) : PlayerServant(baseID = 
 PlayerImplementation::~PlayerImplementation() {
 	if (playerObject != NULL) {
 		playerObject->undeploy();
+		
+		delete playerObject;
 		playerObject = NULL;
 	}
 	
 	if (inventory != NULL) {
 		inventory->undeploy();
+		
+		delete inventory;
 		inventory = NULL;
 	}
 }

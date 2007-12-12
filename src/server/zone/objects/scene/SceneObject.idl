@@ -154,4 +154,6 @@ interface SceneObject implements RWLockable {
 	boolean isMoving();
 	
 	void switchMovingState();
+	
+	boolean doKeepObject();
 }
