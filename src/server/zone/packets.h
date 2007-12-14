@@ -54,6 +54,7 @@ which carries forward this exception.
 
 #include "packets/zone/SelectCharacter.h"
 #include "packets/zone/ClientIDMessage.h"
+#include "packets/zone/ClientLogout.h"
 #include "packets/zone/ClientPermissionsMessage.h"
 #include "packets/zone/unkByteFlag.h"
 #include "packets/zone/ParametersMessage.h"

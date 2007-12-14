@@ -104,6 +104,7 @@ class PlayerImplementation : public PlayerServant {
 	Time nextAction;
 
 	Event* disconnectEvent;
+	Event* logoutEvent;
 
 	PlayerRecoveryEvent* recoveryEvent;
 	Event* changeFactionEvent;
@@ -176,6 +177,8 @@ public:
 	void unload();
 
 	void logout(bool doLock = true);
+	void userLogout(int msgCounter = 3);
+	
 	void disconnect(bool closeClient = true, bool doLock = true);
 
 	void createItems();

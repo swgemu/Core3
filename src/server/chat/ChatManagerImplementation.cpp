@@ -129,7 +129,7 @@ void ChatManagerImplementation::handleTellMessage(Player* sender, Message* pack)
 	String::toLower(name);
 	Player* receiver = getPlayer(name);
 
-	if (receiver == NULL) {
+	if (receiver == NULL || !receiver->isOnline() || receiver->isLoggingOut()) {
 		Message* amsg = new ChatOnSendInstantMessage(seq, true);
 		sender->sendMessage(amsg);
 
@@ -335,12 +335,23 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 	CreatureManager* creatureManager = player->getZone()->getCreatureManager();
 	
 	try {
-		if (cmd == "@map") {
+		if (cmd == "@help") {
 			if (userManager->isAdmin(player->getFirstName())) {
-				int planetid = tokenizer.getIntToken();
-			
-				if (planetid >= 0 && planetid < 50)
-					player->switchMap(planetid);
+				player->sendSystemMessage("Command List: map, warp, printRoomTree, banUser, kill, muteChat, "
+						"users, setWeather, ticketPurchase, awardBadge, setGuildID, createGuild"
+						"deleteGuildByID, npcc, setAdminLevel"); 
+			}
+		} else if (cmd == "@map") {
+			if (userManager->isAdmin(player->getFirstName())) {
+				if (tokenizer.hasMoreTokens()) {
+					int planetid = tokenizer.getIntToken();
+					if (planetid >= 0 && planetid < 50)
+						player->switchMap(planetid);
+				} else {
+					player->sendSystemMessage("Useage: map <planetid>\n"
+						"0=Corellia, 1=Dantooine, 2=Dathomir, 3=Endor,\n"
+						"5=Naboo, 6=Rori, 7=Talus, 8=Tatooine, 9=Yavin 4");
+				}
 			}
 		} else if (cmd == "@warp") {
 			if (userManager->isAdmin(player->getFirstName())) {

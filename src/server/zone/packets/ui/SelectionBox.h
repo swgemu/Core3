@@ -46,10 +46,10 @@ which carries forward this exception.
 #define SELECTIONBOX_H_
 
 #include "engine/engine.h"
-#include <vector>
 
 class SelectionBox : public Message {
-	vector<string> menuItems;
+	Vector<string> menuItems;
+	
 	string boxTitle;
 	string boxText;
 	
@@ -57,19 +57,21 @@ public:
 	SelectionBox(string& title, int selectionBoxId, string& bodyText) {
 		boxTitle = title;
 		boxText = bodyText;
+		
 		insertShort(0x02);
 		insertInt(0xD44B7259);
 		insertInt(selectionBoxId);
 	}
 	
 	void addItem(string& itemText) {
-		menuItems.push_back(itemText);
+		menuItems.add(itemText);
 	}
 
 	void generateMessage() {
 		insertAscii("Script.listBox");
 		insertInt(7 + (2 * menuItems.size()));
-		for(int i = 0; i < 2; i++) {  // If these are not added twice it crashes the client
+		
+		for (int i = 0; i < 2; i++) {  // If these are not added twice it crashes the client
 			insertInt(5);
 			insertByte(0);
 			insertInt(7);
@@ -88,9 +90,12 @@ public:
 		insertInt(1);
 		
 		unicode uni;
+		
 		uni = unicode(boxTitle);
 		insertUnicode(uni);
+		
 		insertInt(2);
+		
 		insertAscii("bg.caption.lblTitle");
 		insertAscii("Text");
 		
@@ -99,7 +104,9 @@ public:
 		
 		uni = unicode(boxText);
 		insertUnicode(uni);
+		
 		insertInt(2);
+		
 		insertAscii("Prompt.lblPrompt");
 		insertAscii("Text");
 		
@@ -108,7 +115,9 @@ public:
 		
 		uni = unicode("@cancel");
 		insertUnicode(uni); // Button label @ are predefined strings
+
 		insertInt(2);
+		
 		insertAscii("btnCancel"); // Button type
 		insertAscii("Text");
 		
@@ -117,7 +126,9 @@ public:
 		
 		uni = unicode("@ok");
 		insertUnicode(uni);
+		
 		insertInt(2);
+		
 		insertAscii("btnOk");
 		insertAscii("Text");
 		
@@ -129,12 +140,13 @@ public:
 		
 		//vector<string>::iterator iter;
 		//for (iter = menuItems.begin(); iter != menuItems.end(); iter++) {
-		for(int i = 0; i < menuItems.size(); i++) {
+		for (int i = 0; i < menuItems.size(); i++) {
 			insertByte(4);
 			insertInt(1);
 			
 			char tempStr[30];
 			sprintf(tempStr, "%d", i);
+
 			uni = unicode(tempStr);
 			insertUnicode(uni);
 			
@@ -146,10 +158,11 @@ public:
 			insertByte(3);
 			insertInt(1);
 			
-			uni = unicode(menuItems.at(i));
+			uni = unicode(menuItems.get(i));
 			insertUnicode(uni);
 			
 			insertInt(2);
+			
 			sprintf(tempStr, "List.dataList.%d");
 			
 			insertAscii(tempStr);
@@ -159,8 +172,8 @@ public:
 		insertLong(0);
 		insertLong(0);
 		insertInt(0);
-		
 	}
+	
 };
 
 #endif /*SELECTIONBOX_H_*/

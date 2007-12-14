@@ -580,7 +580,11 @@ public:
 	inline bool isProne() {
 		return postureState == PRONE_POSTURE;
 	}
-	
+
+	inline bool isSitting() {
+		return postureState == SITTING_POSTURE;
+	}
+
 	inline bool isInCombat() {
 		return stateBitmask & COMBAT_STATE;
 	}

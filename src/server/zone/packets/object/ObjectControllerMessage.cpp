@@ -227,8 +227,11 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player, Message* 
 	CombatManager* combatManager = serv->getCombatManager();
 
 	CommandQueueAction* action;
-
+	
 	switch (actionCRC) {
+	case (0x03B65950): // Logout
+		player->userLogout();
+		break;
 	case (0x7C8D63D4):
 		chatManager = player->getZone()->getChatManager();
 		chatManager->handleMessage(player, pack);

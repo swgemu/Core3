@@ -73,6 +73,7 @@ which carries forward this exception.
 #include "Player.h"
 #include "PlayerImplementation.h"
 
+#include "events/PlayerLogoutEvent.h"
 #include "events/PlayerDisconnectEvent.h"
 #include "events/PlayerRecoveryEvent.h"
 #include "events/CommandQueueActionEvent.h"
@@ -125,6 +126,7 @@ void PlayerImplementation::init() {
 	playerObject = NULL;
 	
 	disconnectEvent = NULL;
+	logoutEvent = NULL;
 	
 	recoveryEvent = new PlayerRecoveryEvent(this);
 	changeFactionEvent = NULL;
@@ -231,11 +233,17 @@ void PlayerImplementation::reload(ZoneClient* client) {
 		if (isLoggingOut()) {
 			if (disconnectEvent != NULL) {
 				server->removeEvent(disconnectEvent);
+				
 				delete disconnectEvent;
 				disconnectEvent = NULL;
-
-				info("reloading player");
 			}
+			
+			info("reloading player");
+		} else if (logoutEvent != NULL) {
+			server->removeEvent(logoutEvent);
+				
+			delete logoutEvent;
+			logoutEvent = NULL;
 		} else if (isLoggingIn()) {
 			info("kicking player over network failure");
 			
@@ -346,37 +354,84 @@ void PlayerImplementation::logout(bool doLock) {
 	wlock(doLock);
 	
 	if (disconnectEvent == NULL) {
-		info("logging out player");
-		
+		info("creating disconnect event");		
 		disconnectEvent = new PlayerDisconnectEvent(this);
-		server->addEvent(disconnectEvent, 1000);
 		
-		onlineStatus = LOGGINGOUT;
+		if (isLoggingOut()) {
+			server->addEvent(disconnectEvent, 10);
+		} else {
+			server->addEvent(disconnectEvent, 1000);
+			setLoggingOut();
+		}
 	}
 	
 	unlock(doLock);
 }
 
+void PlayerImplementation::userLogout(int msgCounter) {
+	if (msgCounter < 0 || msgCounter > 3)
+		msgCounter = 3;
+		
+	if (!isInCombat() && isSitting()) {
+		logoutEvent = new PlayerLogoutEvent(_this, msgCounter);
+		
+		switch (msgCounter) {
+		case 3:
+			sendSystemMessage("You can safely log out in 30 seconds...");
+			server->addEvent(logoutEvent, 15000);
+			break;
+		case 2:
+			sendSystemMessage("You can safely log out in 15 seconds...");
+			server->addEvent(logoutEvent, 10000);
+			break;
+		case 1:
+			sendSystemMessage("You can safely log out in 5 seconds...");
+			server->addEvent(logoutEvent, 5000);
+			break;
+		case 0:  // Disconnect!!!
+			info("Safe Logout");
+			
+			setLoggingOut();
+			
+			ClientLogout* packet = new ClientLogout();
+			sendMessage(packet);
+			break;
+		}
+	} else {
+		if (logoutEvent != NULL){
+			server->removeEvent(logoutEvent);
+			logoutEvent = NULL;
+		}
+		
+		if (isInCombat())
+			sendSystemMessage("Can not log out while in combat.");
+		else if (!isSitting())
+			sendSystemMessage("You must be sitting to log out.");
+	}
+}
+
 void PlayerImplementation::disconnect(bool closeClient, bool doLock) {
 	try {
 		wlock(doLock);
-
+		
+		// User is disconnecting in combat.  Will remain LD.
 		if (isInCombat() && !isLinkDead()) {
 			info("link dead");
-
+			
 			unload();
-
+			
 			setLinkDead();
 		} else {
 			info("disconnecting player");
 			
 			unload();
-			onlineStatus = OFFLINE;
+			
+			setOffline();
 		}
-
+		
 		if (disconnectEvent != NULL)
 			disconnectEvent = NULL;
-		
+	
 		if (closeClient && owner != NULL) {
 			owner->closeConnection();
 		}
@@ -479,7 +534,7 @@ void PlayerImplementation::insertToZone(Zone* zone) {
 		zone->registerObject(_this);
 
 		owner->balancePacketCheckupTime();
-	
+		
 		sendToOwner();
 		
 		zone->insert(this);
@@ -685,6 +740,8 @@ void PlayerImplementation::removeFromZone(bool doLock) {
 		zone->remove(this);
 		
 		zone->deleteObject(objectID);
+		
+		//TODO: SEND RETURN TO CHARSCREEN???
 		
 		zone->unlock(doLock);
 	} catch (...) {
@@ -1008,6 +1065,13 @@ void PlayerImplementation::doIncapacitate() {
 }
 
 void PlayerImplementation::changePosture(int post) {
+	if (logoutEvent != NULL) {
+		sendSystemMessage("Logout canceled.");
+		server->removeEvent(logoutEvent);
+		
+		logoutEvent = NULL;
+	}
+	
 	if (isMounted())
 		return;
 
@@ -1049,8 +1113,7 @@ void PlayerImplementation::activateRecovery() {
 void PlayerImplementation::doRecovery() {
 	if (isLinkDead() && logoutTimeStamp.isPast()) {
 		unload();
-		
-		onlineStatus = OFFLINE;
+		setOffline();
 		return;
 	}
 	

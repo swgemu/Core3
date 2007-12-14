@@ -55,11 +55,15 @@ which carries forward this exception.
 
 #include "engine/service/StandaloneMessage.h"
 
-class WaypointObject;
-
 class ZoneClient;
 
+class Zone;
+
+class SceneObject;
+
 class CreatureObject;
+
+class PlayerObject;
 
 class Weapon;
 
@@ -67,11 +71,9 @@ class Datapad;
 
 class GroupObject;
 
-class Zone;
-
-class PlayerObject;
-
 class Guild;
+
+class WaypointObject;
 
 class ChatRoom;
 
@@ -98,6 +100,8 @@ public:
 	void disconnect(bool closeClient = true, bool doLock = true);
 
 	void logout(bool doLock = true);
+
+	void userLogout(int msgCounter = 3);
 
 	void insertToZone(Zone* zone);
 
@@ -273,6 +277,8 @@ public:
 
 	bool isLoggingIn();
 
+	bool isLoggingOut();
+
 	CreatureObject* getConversatingCreature();
 
 	string& getFirstName();
@@ -371,6 +377,8 @@ public:
 	void disconnect(bool closeClient, bool doLock);
 
 	void logout(bool doLock);
+
+	void userLogout(int msgCounter);
 
 	void insertToZone(Zone* zone);
 
@@ -545,6 +553,8 @@ public:
 	bool isLinkDead();
 
 	bool isLoggingIn();
+
+	bool isLoggingOut();
 
 	CreatureObject* getConversatingCreature();
 
