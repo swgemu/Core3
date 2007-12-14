@@ -104,7 +104,6 @@ which carries forward this exception.
 #include "packets/creature/CreatureObjectDeltaMessage4.h"
 #include "packets/creature/CreatureObjectDeltaMessage6.h"
 #include "packets/creature/UpdatePVPStatusMessage.h"
-#include "packets/creature/EntertainMenu.h"
 
 #include "packets/group/GroupObjectMessage3.h"
 #include "packets/group/GroupObjectMessage6.h"
@@ -156,6 +155,7 @@ which carries forward this exception.
 #include "packets/chat/ChatOnLeaveRoom.h"
 
 #include "packets/ui/SuiCreatePageMessage.h"
+#include "packets/ui/SelectionBox.h"
 
 #include "packets/building/BuildingObjectMessage3.h"
 #include "packets/building/BuildingObjectMessage6.h"

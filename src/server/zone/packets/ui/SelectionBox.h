@@ -42,77 +42,64 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef ENTERTANMENU_H_
-#define ENTERTANMENU_H_
+#ifndef SELECTIONBOX_H_
+#define SELECTIONBOX_H_
 
 #include "engine/engine.h"
+#include <vector>
 
-class EntertainMenu : public Message {
+class SelectionBox : public Message {
+	vector<string> menuItems;
+	string boxTitle;
+	string boxText;
+	
 public:
-	EntertainMenu(const string& type, string performanceArray[], int length) {
+	SelectionBox(string& title, int selectionBoxId, string& bodyText) {
+		boxTitle = title;
+		boxText = bodyText;
 		insertShort(0x02);
-		insertInt(0xD44B7259);  // CRC
-		if (type == "music")
-			insertInt(0x004D5553);  // Selection box unique ID seems to be random on NGE
-		else
-			insertInt(0x0044414E);
+		insertInt(0xD44B7259);
+		insertInt(selectionBoxId);
+	}
+	
+	void addItem(string& itemText) {
+		menuItems.push_back(itemText);
+	}
+
+	void generateMessage() {
 		insertAscii("Script.listBox");
-	 	insertInt(7 + (2 * length));
-	 	
-	 	insertInt(5);
-		insertByte(0);
-		insertInt(7);
-		insertShort(0);
-		insertShort(1);
-		insertByte(9);
+		insertInt(7 + (2 * menuItems.size()));
+		for(int i = 0; i < 2; i++) {  // If these are not added twice it crashes the client
+			insertInt(5);
+			insertByte(0);
+			insertInt(7);
+			insertShort(0);
+			insertShort(1);
+			insertByte(9);
 		
-		insertAscii("msgSongSelected");
-		insertAscii("List.lstList");
-		insertAscii("SelectedRow");
-		insertAscii("bg.caption.lblTitle");
-		insertAscii("Text");
-			
-		insertInt(5);
-		insertByte(0);
-		insertInt(7);
-		insertShort(0);
-		insertShort(1);
-		insertByte(9);
+			insertAscii("msgSelected");
+			insertAscii("List.lstList");
+			insertAscii("SelectedRow");
+			insertAscii("bg.caption.lblTitle");
+			insertAscii("Text");
+		}
 		
-		insertAscii("msgSongSelected");
-		insertAscii("List.lstList");
-		insertAscii("SelectedRow");
-		insertAscii("bg.caption.lblTitle");
-		insertAscii("Text");
-			
 		insertByte(3);
 		insertInt(1);
+		
 		unicode uni;
-		
-		if (type == "music")
-			uni = unicode("Available songs");
-		else 
-			uni = unicode("Available dances");
-		
+		uni = unicode(boxTitle);
 		insertUnicode(uni);
-		
 		insertInt(2);
-		
 		insertAscii("bg.caption.lblTitle");
 		insertAscii("Text");
 		
 		insertByte(3);
 		insertInt(1);
 		
-		if (type == "music")
-			uni = unicode("Select a song to play");  // Body text
-		else
-			uni = unicode("Select a dance");
-		
+		uni = unicode(boxText);
 		insertUnicode(uni);
-		
 		insertInt(2);
-		
 		insertAscii("Prompt.lblPrompt");
 		insertAscii("Text");
 		
@@ -121,9 +108,7 @@ public:
 		
 		uni = unicode("@cancel");
 		insertUnicode(uni); // Button label @ are predefined strings
-		
 		insertInt(2);
-		
 		insertAscii("btnCancel"); // Button type
 		insertAscii("Text");
 		
@@ -132,9 +117,7 @@ public:
 		
 		uni = unicode("@ok");
 		insertUnicode(uni);
-		
 		insertInt(2);
-		
 		insertAscii("btnOk");
 		insertAscii("Text");
 		
@@ -144,15 +127,16 @@ public:
 		
 		insertAscii("List.dataList");
 		
-		for (int i = 0; i < length; i++) {
+		//vector<string>::iterator iter;
+		//for (iter = menuItems.begin(); iter != menuItems.end(); iter++) {
+		for(int i = 0; i < menuItems.size(); i++) {
 			insertByte(4);
 			insertInt(1);
 			
 			char tempStr[30];
 			sprintf(tempStr, "%d", i);
-			
 			uni = unicode(tempStr);
-			insertUnicode(uni); // Will this work?
+			insertUnicode(uni);
 			
 			insertInt(2);
 			
@@ -162,11 +146,11 @@ public:
 			insertByte(3);
 			insertInt(1);
 			
-			uni = unicode(performanceArray[i]);
+			uni = unicode(menuItems.at(i));
 			insertUnicode(uni);
 			
 			insertInt(2);
-			sprintf(tempStr, "List.dataList.%d", i);
+			sprintf(tempStr, "List.dataList.%d");
 			
 			insertAscii(tempStr);
 			insertAscii("Text");
@@ -175,7 +159,8 @@ public:
 		insertLong(0);
 		insertLong(0);
 		insertInt(0);
+		
 	}
 };
-	
-#endif /*ENTERTANMENU_H_*/
+
+#endif /*SELECTIONBOX_H_*/
