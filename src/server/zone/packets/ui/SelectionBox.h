@@ -157,9 +157,10 @@ public:
 			
 			insertByte(3);
 			insertInt(1);
-			
-			uni = unicode(menuItems.get(i));
-			insertUnicode(uni);
+
+			//TODO: resolve this hack and fix unicode class
+			unicode uni2(menuItems.get(i).c_str());
+			insertUnicode(uni2);
 			
 			insertInt(2);
 			
