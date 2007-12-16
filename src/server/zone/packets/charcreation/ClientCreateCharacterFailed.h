@@ -60,7 +60,7 @@ public:
 		insertInt(0x00); //static spacer
 		insertAscii(error_string); 
 		//Please note, error_string must be a specefic error string from table.
-		//See: http://swgemutrac.no-ip.org:8080/cgi-bin/trac.cgi/wiki/ClientCreateCharacterFailed
+		//See: ClientCreateCharacterFailed
 
 		setCompression(false);
 	}

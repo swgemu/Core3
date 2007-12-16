@@ -46,7 +46,7 @@ which carries forward this exception.
 #define CHATONCONNECTAVATAR_H_
 
 //Mail - "You got mail"
-//http://swgemutrac.no-ip.org:8080/cgi-bin/trac.cgi/wiki/ChatOnConnectAvatar
+//ChatOnConnectAvatar
 
 #include "engine/engine.h"
 
