@@ -442,6 +442,8 @@ public:
 	void updateTarget(uint64 targ);
 	void updateTarget(SceneObject* targ);
 	
+	void clearTarget();
+	
 	void setDizziedState();
 	void setStunnedState();
 	void setBlindedState();

@@ -85,7 +85,7 @@ SceneObject* ObjectManager::remove(uint64 oid) {
 
 	objectCacheMap->put(oid, obj);
 
-	//obj->scheduleUndeploy();	
+	obj->scheduleUndeploy();	
 	
 	return obj;
 }

@@ -1634,11 +1634,16 @@ void CreatureObjectImplementation::updateTarget(uint64 targ) {
 	SceneObject* target = zone->lookupObject(targ); 
 
 	if (target != targetObject) {
+		if (targetObject != NULL)
+			targetObject->release();
+		
 		targetObject = target;
 		
 		if (targetObject == NULL)
 			return;
 	
+		targetObject->acquire();
+		
 		CreatureObjectDeltaMessage6* dcreo6 = new CreatureObjectDeltaMessage6(_this);
 		dcreo6->updateTarget();
 		dcreo6->close();
@@ -1648,17 +1653,30 @@ void CreatureObjectImplementation::updateTarget(uint64 targ) {
 }
 
 void CreatureObjectImplementation::updateTarget(SceneObject* targ) {
-	targetObject = targ;
-	
-	CreatureObjectDeltaMessage6* dcreo6 = new CreatureObjectDeltaMessage6(_this);
-	dcreo6->updateTarget();
-	
-	/*if (isInCombat())
-		dcreo6->updateDefender();*/
+	if (targetObject != targ) {
+		if (targetObject != NULL)
+			targetObject->release();
 
-	dcreo6->close();
+		targetObject = targ;
+		targetObject->acquire();
+	
+		CreatureObjectDeltaMessage6* dcreo6 = new CreatureObjectDeltaMessage6(_this);
+		dcreo6->updateTarget();
+	
+		/*if (isInCombat())
+			dcreo6->updateDefender();*/
 
-	broadcastMessage(dcreo6);
+		dcreo6->close();
+
+		broadcastMessage(dcreo6);
+	}
+}
+
+void CreatureObjectImplementation::clearTarget() {
+	if (targetObject != NULL) {
+		targetObject->release();
+		targetObject = NULL;
+	}
 }
 
 void CreatureObjectImplementation::equipItem(TangibleObject* item) {
@@ -1916,7 +1934,7 @@ void CreatureObjectImplementation::startPlayingMusic(const string& music) {
 		
 		ListBox* msg = new ListBox(0x004D5553, title, bodyText);
 		
-		for(int i = 0; i < 11; i++)
+		for (int i = 0; i < 11; i++)
 			msg->addItem(songs[i]);
 		
 		msg->generateMessage();

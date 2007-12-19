@@ -134,7 +134,8 @@ void CreatureImplementation::reload() {
 
 void CreatureImplementation::unload() {
 	clearCombatState();
-	targetObject == NULL;
+
+	clearTarget();
 
 	if (zone != NULL && isInQuadTree()) {
 		removeFromZone(true);
@@ -505,9 +506,9 @@ bool CreatureImplementation::attack(CreatureObject* target) {
 		return false;
 
 	if (target->isIncapacitated() || target->isDead() || !isInRange(target, 64)) {
-		targetObject = NULL;
 		aggroedCreature = NULL;
 		
+		clearTarget();
 		clearCombatState();
 		
 		return false;
@@ -553,9 +554,9 @@ bool CreatureImplementation::attack(CreatureObject* target) {
 	delete action;
 	
 	if (target->isIncapacitated() || target->isDead()) {
-		targetObject = NULL;
 		aggroedCreature = NULL;
-		
+
+		clearTarget();
 		clearCombatState();
 		
 		return false;
