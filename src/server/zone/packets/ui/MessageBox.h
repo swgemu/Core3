@@ -42,65 +42,52 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef ZONEPACKETHANDLER_H_
-#define ZONEPACKETHANDLER_H_
+#ifndef MESSAGEBOX_H_
+#define MESSAGEBOX_H_
 
 #include "engine/engine.h"
+#include "SuiCreatePageMessage.h"
 
-#include "ZoneClient.h"
-
-class ZoneServer;
-class ZoneProcessServerImplementation;
-
-class ZonePacketHandler : public Logger {
-	ZoneProcessServerImplementation* processServer;
+class MessageBox : public SuiCreatePageMessage {
+	string boxTitle;
+	string promptContent;
 	
-	ZoneServer* server;
-
 public:
-	ZonePacketHandler() : Logger() {
-		server = NULL;
-	} 
-
-	ZonePacketHandler(const string& s, ZoneProcessServerImplementation* serv);
-
-	~ZonePacketHandler() {
+	MessageBox(uint32 boxID, const string& boxtitle, const string& promptcontent) :
+		SuiCreatePageMessage(boxID) {
+		
+		boxTitle = boxtitle;
+		promptContent = promptcontent;
+		
+		generateMessage();
 	}
+	
+	void generateMessage() {
+		insertAscii("Script.messageBox");  //Wrong struct
+		insertInt(8);
+		
+		for (int i = 0; i < 2; ++i) {
+			insertByte(5);
+			insertInt(0);
+			insertInt(3);
 
-	void handleMessage(Message* pack);
-	
-	void handleClientPermissionsMessage(Message* pack);
-	void handleSelectCharacter(Message* pack);
-	void handleCmdSceneReady(Message* packet);
+			insertShort(0); // 1
+			insertShort(1); // 2
+			insertByte(9 + i);
+			insertAscii("handleSUI"); // 3
+		}
 
-	void handleObjectControllerMessage(Message* pack);
-	void handleTellMessage(Message* pack);
-
-	void handleClientRandomNameRequest(Message* pack);
-	void handleClientCreateCharacter(Message* pack);
+		insertOption(3, promptContent, "Prompt.lblPrompt", "Text");
+		insertOption(3, boxTitle, "bg.caption.lblTitle", "Text");
+		insertOption(3, "False", "btnCancel", "Enabled");
+		insertOption(3, "False", "btnCancel", "Visible");
+		insertOption(3, "False", "btnRevert", "Enabled");
+		insertOption(3, "False", "btnRevert", "Visible");
 	
-	void handleSendMail(Message* pack);
-	void handleRequestPersistentMsg(Message* pack);
-	void handleDeletePersistentMsg(Message* pack);
-	
-	void handleFactionRequestMessage(Message* pack);
-	void handleGetMapLocationsRequestMessage(Message* pack);
-	void handleStomachRequestMessage(Message* pack);
-	void handleGuildRequestMessage(Message* pack);
-	void handlePlayerMoneyRequest(Message* pack);
-	
-	void handleTravelListRequest(Message* pack);
-	void handleRadialSelect(Message* pack);
-	
-	void handleChatRoomMessage(Message* pack);
-	void handleChatRequestRoomList(Message* pack);
-	
-	void handleChatCreateRoom(Message* pack);
-	void handleChatEnterRoomById(Message* pack);
-	void handleChatDestroyRoom(Message* pack);
-	void handleChatRemoveAvatarFromRoom(Message* pack);
-	
-	void handleSuiEventNotification(Message* pack);
+		insertLong(0);
+		insertInt(0);
+		insertLong(0);
+	}
 };
 
-#endif /*ZONEPACKETHANDLER_H_*/
+#endif /*MESSAGEBOX_H_*/

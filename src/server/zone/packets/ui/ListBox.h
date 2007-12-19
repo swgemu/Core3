@@ -42,139 +42,73 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef SELECTIONBOX_H_
-#define SELECTIONBOX_H_
+#ifndef LISTBOX_H_
+#define LISTBOX_H_
 
 #include "engine/engine.h"
+#include "SuiCreatePageMessage.h"
 
-class SelectionBox : public Message {
+class ListBox : public SuiCreatePageMessage {
 	Vector<string> menuItems;
-	
+		
 	string boxTitle;
 	string boxText;
-	
 public:
-	SelectionBox(string& title, int selectionBoxId, string& bodyText) {
+	ListBox(uint32 selectionBoxId, const string& title, const string& bodyText) :
+		SuiCreatePageMessage(selectionBoxId) {
+
 		boxTitle = title;
 		boxText = bodyText;
-		
-		insertShort(0x02);
-		insertInt(0xD44B7259);
-		insertInt(selectionBoxId);
 	}
 	
-	void addItem(string& itemText) {
+	void addItem(const string& itemText) {
 		menuItems.add(itemText);
 	}
 
 	void generateMessage() {
 		insertAscii("Script.listBox");
 		insertInt(7 + (2 * menuItems.size()));
-		
+
 		for (int i = 0; i < 2; i++) {  // If these are not added twice it crashes the client
-			insertInt(5);
-			insertByte(0);
+			insertByte(5);
+			insertInt(0);
 			insertInt(7);
-			insertShort(0);
-			insertShort(1);
-			insertByte(9);
-		
-			insertAscii("msgSelected");
-			insertAscii("List.lstList");
-			insertAscii("SelectedRow");
-			insertAscii("bg.caption.lblTitle");
-			insertAscii("Text");
+			insertShort(0); // 1
+			insertShort(1); // 2
+			insertByte(9 + i);
+
+			insertAscii("msgSelected"); // 3
+			insertAscii("List.lstList"); // 4
+			insertAscii("SelectedRow"); // 5
+			insertAscii("bg.caption.lblTitle"); // 6
+			insertAscii("Text"); // 7
 		}
 		
-		insertByte(3);
-		insertInt(1);
-		
-		unicode uni;
-		
-		uni = unicode(boxTitle);
-		insertUnicode(uni);
-		
-		insertInt(2);
-		
-		insertAscii("bg.caption.lblTitle");
-		insertAscii("Text");
-		
-		insertByte(3);
-		insertInt(1);
-		
-		uni = unicode(boxText);
-		insertUnicode(uni);
-		
-		insertInt(2);
-		
-		insertAscii("Prompt.lblPrompt");
-		insertAscii("Text");
-		
-		insertByte(3);
-		insertInt(1);
-		
-		uni = unicode("@cancel");
-		insertUnicode(uni); // Button label @ are predefined strings
+		insertOption(3, boxTitle, "bg.caption.lblTitle", "Text");
+		insertOption(3, boxText, "Prompt.lblPrompt", "Text");
+		insertOption(3, "@cancel", "btnCancel", "Text");
+		insertOption(3, "@ok", "btnOk", "Text");
 
-		insertInt(2);
-		
-		insertAscii("btnCancel"); // Button type
-		insertAscii("Text");
-		
-		insertByte(3);
+		insertByte(1);
+		insertInt(0);
 		insertInt(1);
-		
-		uni = unicode("@ok");
-		insertUnicode(uni);
-		
-		insertInt(2);
-		
-		insertAscii("btnOk");
-		insertAscii("Text");
-		
-		insertInt(1);
-		insertByte(0);
-		insertInt(1);
-		
 		insertAscii("List.dataList");
-		
-		//vector<string>::iterator iter;
-		//for (iter = menuItems.begin(); iter != menuItems.end(); iter++) {
+
 		for (int i = 0; i < menuItems.size(); i++) {
-			insertByte(4);
-			insertInt(1);
-			
 			char tempStr[30];
 			sprintf(tempStr, "%d", i);
+			
+			insertOption(4, tempStr, "List.dataList", "Name");
+			
+			sprintf(tempStr, "List.dataList.%d", i);
 
-			uni = unicode(tempStr);
-			insertUnicode(uni);
-			
-			insertInt(2);
-			
-			insertAscii("List.dataList");
-			insertAscii("Name");
-			
-			insertByte(3);
-			insertInt(1);
-
-			//TODO: resolve this hack and fix unicode class
-			unicode uni2(menuItems.get(i).c_str());
-			insertUnicode(uni2);
-			
-			insertInt(2);
-			
-			sprintf(tempStr, "List.dataList.%d");
-			
-			insertAscii(tempStr);
-			insertAscii("Text");
+			insertOption(3, menuItems.get(i), tempStr, "Text");
 		}
-			
-		insertLong(0);
+
 		insertLong(0);
 		insertInt(0);
+		insertLong(0);
 	}
-	
 };
 
-#endif /*SELECTIONBOX_H_*/
+#endif /*LISTBOX_H_*/

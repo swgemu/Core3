@@ -42,65 +42,87 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef ZONEPACKETHANDLER_H_
-#define ZONEPACKETHANDLER_H_
+#ifndef INPUTBOX_H_
+#define INPUTBOX_H_
 
 #include "engine/engine.h"
+#include "SuiCreatePageMessage.h"
 
-#include "ZoneClient.h"
-
-class ZoneServer;
-class ZoneProcessServerImplementation;
-
-class ZonePacketHandler : public Logger {
-	ZoneProcessServerImplementation* processServer;
+class InputBox : public SuiCreatePageMessage {
+	string title;
+	string promptContent;
 	
-	ZoneServer* server;
-
+	int maxLength;
+	
+	bool enableCancelButton;
+	
 public:
-	ZonePacketHandler() : Logger() {
-		server = NULL;
-	} 
-
-	ZonePacketHandler(const string& s, ZoneProcessServerImplementation* serv);
-
-	~ZonePacketHandler() {
+	InputBox(uint32 boxID, const string& boxtitle, const string& promptcontent, int maxlength, bool cancelButton) : 
+		SuiCreatePageMessage(boxID) {
+		
+		title = boxtitle;
+		promptContent = promptcontent;
+		
+		maxLength = maxlength;
+		
+		enableCancelButton = cancelButton;
+		
+		generateMessage();
 	}
+	
+	
+	void generateMessage() {
+		insertAscii("Script.inputBox");
+		
+		if (enableCancelButton)
+			insertInt(0x0C);
+		else
+			insertInt(0x0D);
 
-	void handleMessage(Message* pack);
-	
-	void handleClientPermissionsMessage(Message* pack);
-	void handleSelectCharacter(Message* pack);
-	void handleCmdSceneReady(Message* packet);
+		for (int i = 0; i < 2; ++i) { 
+			insertByte(5);
+			insertInt(0);
+			insertInt(7); // number of shorts(asciis?)
 
-	void handleObjectControllerMessage(Message* pack);
-	void handleTellMessage(Message* pack);
+			insertShort(0); // 1
+			insertShort(1); // 2
+			insertByte(9 + i);
+			insertAscii("handleAutoLevelSelect"); // 3
+			insertAscii("txtInput"); // 4
+			insertAscii("LocalText"); // 5
+			insertAscii("cmbInput"); // 6
+			insertAscii("SelectedText"); // 7
+		}
 
-	void handleClientRandomNameRequest(Message* pack);
-	void handleClientCreateCharacter(Message* pack);
+		insertOption(3, promptContent, "Prompt.lblPrompt", "Text");
+		insertOption(3, title, "bg.caption.lblTitle", "Text");
+
+		if (enableCancelButton) {
+			insertOption(3, "@cancel", "btnCancel", "Text");
+		} else {
+			insertOption(3, "False", "btnCancel", "Enabled");
+			insertOption(3, "False", "btnCancel", "Visible");
+		}
+
+		insertOption(3, "@ok", "btnOk", "Text");
+
+		insertOption(3, "true", "txtInput", "Enabled");
+		insertOption(3, "true", "txtInput", "Visible");
+
+		insertOption(3, "false", "cmbInput", "Enabled");
+		insertOption(3, "false", "cmbInput", "Visible");
+
+		char tempStr[10];
+		sprintf(tempStr, "%d", maxLength);
+		
+		insertOption(3, tempStr, "txtInput", "MaxLength");
+		insertOption(3, tempStr, "cmbInput", "MaxLength");
+
+		insertLong(0);
+		insertInt(0);
+		insertLong(0);
+	}
 	
-	void handleSendMail(Message* pack);
-	void handleRequestPersistentMsg(Message* pack);
-	void handleDeletePersistentMsg(Message* pack);
-	
-	void handleFactionRequestMessage(Message* pack);
-	void handleGetMapLocationsRequestMessage(Message* pack);
-	void handleStomachRequestMessage(Message* pack);
-	void handleGuildRequestMessage(Message* pack);
-	void handlePlayerMoneyRequest(Message* pack);
-	
-	void handleTravelListRequest(Message* pack);
-	void handleRadialSelect(Message* pack);
-	
-	void handleChatRoomMessage(Message* pack);
-	void handleChatRequestRoomList(Message* pack);
-	
-	void handleChatCreateRoom(Message* pack);
-	void handleChatEnterRoomById(Message* pack);
-	void handleChatDestroyRoom(Message* pack);
-	void handleChatRemoveAvatarFromRoom(Message* pack);
-	
-	void handleSuiEventNotification(Message* pack);
 };
 
-#endif /*ZONEPACKETHANDLER_H_*/
+#endif /*INPUTBOX_H_*/

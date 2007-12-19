@@ -49,108 +49,219 @@ which carries forward this exception.
 
 class SuiCreatePageMessage : public Message {
 public:
-   SuiCreatePageMessage() : Message() {
+   SuiCreatePageMessage(uint32 pageID) : Message() {
 		insertShort(0x02);
 		insertInt(0xD44B7259);  // CRC
-              	
+		
+		insertInt(pageID);
    }
    
-   void ticketPurchased() {
-   		insertInt(0x000E4C4F);
-       	
-       	insertAscii("Script.messageBox");  //Wrong struct
-       	insertInt(8); // counter
-       	
-       	
-       	//
-       	
-       	/*insertByte(5);
-       	insertInt(0);
-       	insertInt(3); // counter
-       	insertShort(0);
-       	insertShort(1);
-       	insertShort(9);
-       	insertAscii("handleSUI");*/
-       	
-       	
-       	insertInt(5);
-       	insertShort(0x0300);
-       	insertInt(0);
-       	insertShort(0x0100);
-       	insertShort(0x0900);
-       	insertAscii("handleSUI");
-       	
-  		insertInt(5);
-       	insertShort(0x0300);
-       	insertInt(0);
-       	insertShort(0x0100);
-       	insertShort(0x0A00);
-       	insertAscii("handleSUI");
-       	
-       	insertByte(3);
-       	insertInt(1);
-       	
-       	unicode tat = "@travel:ticket_purchase_complete";
-       	insertUnicode(tat);
-       	
-       	insertInt(2);
-       	
-       	insertAscii("Prompt.lblPrompt");
-       	insertAscii("Text");
-       	
-       	insertByte(3);
-       	insertInt(1);
-       	
-       	unicode bas = "@base_player:swg";
-       	insertUnicode(bas);
-       	
-       	insertInt(2);
-       	
-       	insertAscii("bg.caption.lblTitle");
-       	insertAscii("Text");
-       	
-       	insertByte(3);
-       	insertInt(1);
-       	
-       	unicode asd = "False";
-       	insertUnicode(asd);
-       	
-       	insertInt(2);
-       	
-       	insertAscii("btnCancel");
-       	insertAscii("Enabled");
-       	
-       	insertByte(3);
-       	insertInt(1);
-       	
-       	insertUnicode(asd);
-       	insertInt(2);
-       	
-       	insertAscii("btnCancel");
-       	insertAscii("Visible");
-       	
-       	insertByte(3);
-       	insertInt(1);
-       	
-       	insertUnicode(asd);
-       	insertInt(2);
-       	insertAscii("btnRevert");
-       	insertAscii("Enabled");
-       	insertByte(3);
-       	insertInt(1);
-       	
-       	insertUnicode(asd);
-       	insertInt(2);
-       	insertAscii("btnRevert");
-       	insertAscii("Visible");
-       	
-       	// 
-       	insertLong(0);
-       	insertInt(0);
-       	insertLong(0);
+   void insertOption(uint8 option, const string& value, const string& variable, const string& type) {
+	   insertByte(option); // 3 strings?
+	   
+	   insertInt(1); // number of Unicodes
+	   unicode val = unicode(value);
+	   insertUnicode(val);
+	   
+	   insertInt(2); // number of ASCIIS
+	   insertAscii(variable.c_str());
+	   insertAscii(type.c_str());
    }
-    
-    
+   
+   /*void frogMenu() {
+	   insertInt(0x00F85E88); //I'm gonna guess this is an ID of sorts.
+	   insertAscii("Script.listBox");
+	   insertInt(0x11);
+
+
+	   insertInt(5);
+	   insertByte(0);
+	   insertInt(0x0B);
+	   insertShort(0);
+	   insertShort(1);
+	   insertByte(9); //Counter
+	   insertAscii("handleRoadmapSelect");
+	   insertAscii("this");
+	   insertAscii("otherPressed");
+	   insertAscii("List.lstList");
+	   insertAscii("SelectedRow");
+	   insertAscii("bg.caption.lblTitle");
+	   insertAscii("Text");
+	   insertAscii("this");
+	   insertAscii("otherPressed");
+	   //end of list.
+
+	   insertInt(5);
+	   insertByte(0);
+	   insertInt(0x0B);
+	   insertShort(0);
+	   insertShort(1);
+	   insertByte(0x0A); //Counter?
+	   insertAscii("handleRoadmapSelect");
+	   insertAscii("this");
+	   insertAscii("otherPressed");
+	   insertAscii("List.lstList");
+	   insertAscii("SelectedRow");
+	   insertAscii("bg.caption.lblTitle");
+	   insertAscii("Text");
+	   insertAscii("this");
+	   insertAscii("otherPressed");
+	   //end of list?
+
+	   //---------------------------
+	   insertByte(3);
+	   insertInt(1); //I think this is a counter.
+	   unicode test = "Character Builder Terminal";
+	   insertUnicode(test);
+
+	   insertInt(2); //Counter I think
+	   insertAscii("bg.caption.lblTitle");
+	   insertAscii("Text");
+
+	   //---------------------------
+	   insertByte(3);
+	   insertInt(1); //counter I think.
+	   unicode test2 = "Select the desired Roadmap option";
+	   insertUnicode(test2);
+
+	   insertInt(2); //counter I think.
+	   insertAscii("Prompt.lblPrompt");
+	   insertAscii("Text");
+
+
+	   //---------------------------
+	   insertByte(3);
+	   insertInt(1); //counter I think
+	   unicode test99 = "true";
+	   insertUnicode(test99);
+
+	   insertInt(2); //counter I think
+	   insertAscii("btnOther");
+	   insertAscii("visible");
+
+
+	   //---------------------------
+	   insertByte(3);
+	   insertInt(1); //counter I think
+	   unicode test3 = "@refresh";
+	   insertUnicode(test3);
+
+	   insertInt(2); //counter I think
+	   insertAscii("btnOther");
+	   insertAscii("visible");
+
+	   //---------------------------
+	   insertByte(3);
+	   insertInt(1); //counter I think
+	   unicode test4 = "@cancel";
+	   insertUnicode(test4);
+
+	   insertInt(2); //counter I think
+	   insertAscii("btnCancel");
+	   insertAscii("Text");
+
+	   //---------------------------
+	   insertByte(3);
+	   insertInt(1); //counter I think
+	   unicode test5 = "@ok";
+	   insertUnicode(test5);
+
+	   insertInt(2); //counter I think
+	   insertAscii("btnOk");
+	   insertAscii("Text");
+
+	   //---------------------------
+
+
+	   //Start New Section?
+	   insertInt(1);
+	   insertByte(0);
+
+	   insertInt(1); //counter I think
+	   insertAscii("List.dataList");
+
+	   //---------------------------
+	   insertByte(4);
+	   insertInt(1);
+	   unicode test6 = "0";
+	   insertUnicode(test6);
+	   insertInt(2); //counter I think
+	   insertAscii("List.dataList");
+	   insertAscii("Name");
+
+	   //---------------------------
+	   insertByte(3);
+	   insertInt(1);
+	   unicode test7 = "Select Roadmap";
+	   insertUnicode(test7);
+	   insertInt(2); //counter I think
+	   insertAscii("List.dataList.0");
+	   insertAscii("Text");
+
+	   //---------------------------
+	   insertByte(4);
+	   insertInt(1);
+	   unicode test8 = "1";
+	   insertUnicode(test8);
+	   insertInt(2); //counter I think
+	   insertAscii("List.dataList");
+	   insertAscii("Name");
+
+	   //---------------------------
+	   insertByte(3);
+	   insertInt(1);
+	   unicode test9 = "Earn Current Skill";
+	   insertUnicode(test9);
+	   insertInt(2); //counter I think
+	   insertAscii("List.dataList.1");
+	   insertAscii("Text");
+
+
+	   //---------------------------
+	   insertByte(4);
+	   insertInt(1);
+	   unicode test10 = "2";
+	   insertUnicode(test10);
+	   insertInt(2); //counter I think
+	   insertAscii("List.dataList");
+	   insertAscii("Name");
+
+
+	   //---------------------------
+	   insertByte(3);
+	   insertInt(1);
+	   unicode test11 = "Set Combat Level";
+	   insertUnicode(test11);
+	   insertInt(2); //counter I think
+	   insertAscii("List.dataList.2");
+	   insertAscii("Text");
+
+
+	   //---------------------------
+	   insertByte(3);
+	   insertInt(1);
+	   unicode test12 = "true";
+	   insertUnicode(test12);
+	   insertInt(2); //counter I think
+	   insertAscii("btnOther");
+	   insertAscii("visible");
+
+
+	   //---------------------------
+	   insertByte(3);
+	   insertInt(1);
+	   unicode test13 = "Back";
+	   insertUnicode(test13);
+	   insertInt(2); //counter I think
+	   insertAscii("btnOther");
+	   insertAscii("Text");
+
+
+	   //I dunno what these are/do.
+	   insertLong(0);
+	   insertInt(0);
+	   insertLong(0);
+   }*/    
 	
 };
 

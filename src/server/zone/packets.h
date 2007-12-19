@@ -156,7 +156,9 @@ which carries forward this exception.
 #include "packets/chat/ChatOnLeaveRoom.h"
 
 #include "packets/ui/SuiCreatePageMessage.h"
-#include "packets/ui/SelectionBox.h"
+#include "packets/ui/ListBox.h"
+#include "packets/ui/InputBox.h"
+#include "packets/ui/MessageBox.h"
 
 #include "packets/building/BuildingObjectMessage3.h"
 #include "packets/building/BuildingObjectMessage6.h"

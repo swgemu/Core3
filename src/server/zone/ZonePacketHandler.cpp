@@ -136,7 +136,7 @@ void ZonePacketHandler::handleMessage(Message* pack) {
 	case 04:
 		switch (opcode) {
 		case 0x092D3564: // Selection box return
-			handleSelectionBox(pack);
+			handleSuiEventNotification(pack);
 			break;
 		}
 		break;
@@ -703,25 +703,42 @@ void ZonePacketHandler::handleChatRemoveAvatarFromRoom(Message* pack) {
 	chatManager->handleChatRemoveAvatarFromRoom(player, pack);
 }
 
-void ZonePacketHandler::handleSelectionBox(Message* pack) {
+void ZonePacketHandler::handleSuiEventNotification(Message* pack) {
 	ZoneClientImplementation* client = (ZoneClientImplementation*) pack->getClient();
 	Player* player = client->getPlayer();	
 	if (player == NULL)
 		return;
 	
 	uint32 opcode = pack->parseInt();
+	
+	uint32 cancel = pack->parseInt();
+	uint32 unk1 = pack->parseInt();
+	uint32 unk2 = pack->parseInt();
 	unicode value;
+	pack->parseUnicode(value);
 	
 	switch (opcode) {
 	case 0x004D5553:
-		pack->shiftOffset(12);
-		pack->parseUnicode(value);
-		player->startPlayingMusic(value.c_str());
+		if (cancel != 1)
+			player->startPlayingMusic(value.c_str());
 		break;
 	case 0x0044414E:
-		pack->shiftOffset(12);
-		pack->parseUnicode(value);
-		player->startDancing(value.c_str());
+		if (cancel != 1)
+			player->startDancing(value.c_str());
+		break;
+	/*case 0x4347494C:
+		if (cancel != 1)
+			processServer->getGuildManager()->handleCreateGuildNameBox(player, value.c_str());
+		break;
+	case 0x47414242:
+		if (cancel != 1)
+			processServer->getGuildManager()->handleCreateGuildTagBox(player, value.c_str());
+		else
+			processServer->getGuildManager()->sendCreateGuildBox(player);
+		break;*/		
+	default:
+		//error("Unknown SuiEventNotification opcode");
 		break;
 	}
+
 }

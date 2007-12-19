@@ -1836,11 +1836,10 @@ void CreatureObjectImplementation::startDancing(const string& anim) {
 		string title = "Available dances";
 		string bodyText = "Pick a dance";
 		
-		SelectionBox* msg = new SelectionBox(title, 0x0044414E, bodyText);
+		ListBox* msg = new ListBox(0x0044414E, title, bodyText);
 		
-		for(int i = 0; i < 20; i++) {
+		for(int i = 0; i < 20; i++)
 			msg->addItem(dances[i]);
-		}
 		
 		msg->generateMessage();
 		
@@ -1915,11 +1914,10 @@ void CreatureObjectImplementation::startPlayingMusic(const string& music) {
 		string title = "Available songs";
 		string bodyText = "Pick a song";
 		
-		SelectionBox* msg = new SelectionBox(title, 0x004D5553, bodyText);
+		ListBox* msg = new ListBox(0x004D5553, title, bodyText);
 		
-		for(int i = 0; i < 11; i++) {
+		for(int i = 0; i < 11; i++)
 			msg->addItem(songs[i]);
-		}
 		
 		msg->generateMessage();
 		
