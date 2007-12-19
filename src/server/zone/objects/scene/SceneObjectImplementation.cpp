@@ -64,6 +64,7 @@ SceneObjectImplementation::SceneObjectImplementation() : QuadTreeEntry(), SceneO
 	
 	moving = false;
 	
+	undeployEvent = NULL;
 	keepObject = false;
 }
 
@@ -85,6 +86,7 @@ SceneObjectImplementation::SceneObjectImplementation(uint64 oid) : QuadTreeEntry
 	
 	moving = false;
 
+	undeployEvent = NULL;
 	keepObject = false;
 }
 
@@ -94,6 +96,33 @@ SceneObjectImplementation::~SceneObjectImplementation() {
 
 SceneObject* SceneObjectImplementation::deploy() {
 	return (SceneObject*) ORBObjectServant::deploy("SceneObject", objectID);
+}
+
+void SceneObjectImplementation::redeploy() {
+	if (undeployEvent != NULL) {
+		server->removeEvent(undeployEvent);
+		undeployEvent = NULL;
+	}
+}
+
+void SceneObjectImplementation::scheduleUndeploy() {
+	if (undeployEvent == NULL && !keepObject) {
+		undeployEvent = new UndeploySceneObjectEvent(_this);
+		server->addEvent(undeployEvent);
+	}
+}
+
+void SceneObjectImplementation::doUndeploy() {
+	zone->deleteCachedObject(_this);
+
+	if (!keepObject) {
+		string orbName = _this->_getORBName();
+		
+		info("undeploying object (" + orbName + ")", true);
+
+		if (!_this->undeploy())
+			error("object (" + orbName + ") was not found in naming directory");
+	}
 }
 
 void SceneObjectImplementation::create(ZoneClient* client) {

@@ -574,10 +574,10 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 			}*/
 		} else if (cmd == "@npcc") {
 		 	if (userManager->isAdmin(player->getFirstName())) {
-		 		SuiCreatePageMessage* sui = new SuiCreatePageMessage();
+		 		/*SuiCreatePageMessage* sui = new SuiCreatePageMessage();
 		 		sui->ticketPurchased();
 		 		
-		 		player->sendMessage(sui);
+		 		player->sendMessage(sui);*/
 		 	}
 		} else if (cmd == "@setAdminLevel") {
 		 	if (userManager->isAdmin(player->getFirstName())) {

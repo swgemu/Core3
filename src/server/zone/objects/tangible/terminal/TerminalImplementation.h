@@ -75,10 +75,7 @@ public:
 		
 		terminalType = TerminalType;
 
-		positionX = x;
-		positionZ = z;
-		positionY = y;
-		
+		initializePosition(x, z, y);
 	}
 	
 	virtual int useObject(Player* player) {

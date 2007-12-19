@@ -40,7 +40,7 @@
 # this exception also makes it possible to release a modified version 
 # which carries forward this exception.
 
-AM_CXXFLAGS=-g0 -Wno-deprecated
+AM_CXXFLAGS=-ggdb -Wno-deprecated
 
 ENGINE3_PATH=../../../../MMOEngine
 

@@ -56,6 +56,8 @@ public:
 	SelfEnhanceEvent(CreatureObject* cr, EnhanceSelfSkill* sk) : Event((uint64)sk->getDuration() * 1000){
 		creo = cr;
 		skill = sk;
+
+		creo->acquire();
 	}
 	
 	bool activate() {
@@ -69,6 +71,8 @@ public:
 			cout << "Unreported exception caught in SelfEnhanceEvent(CreatureObject* cr, EnhanceSelfSkill* sk)\n";
 			creo->unlock();
 		}
+		
+		creo->release();
 	}
 };
 

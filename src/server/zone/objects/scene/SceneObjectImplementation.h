@@ -51,6 +51,8 @@ which carries forward this exception.
 
 #include "engine/util/QuadTreeEntry.h"
 
+#include "events/UndeploySceneObjectEvent.h"
+
 class Zone;
 class ZoneClient;
 
@@ -83,6 +85,8 @@ protected:
 	
 	uint32 linkType;
 
+	UndeploySceneObjectEvent* undeployEvent;
+
 	bool keepObject;
 	
 public:
@@ -101,6 +105,10 @@ public:
 	virtual ~SceneObjectImplementation();
 
 	SceneObject* deploy();
+	void redeploy();
+
+	void scheduleUndeploy();
+	void doUndeploy();
 
 	void create(ZoneClient* client);
 	void destroy(ZoneClient* client);

@@ -49,7 +49,7 @@ which carries forward this exception.
 
 #include "ObjectMap.h"
 
-class ObjectManager : public Event, public Logger {
+class ObjectManager : public Logger {
 	ServiceThread* server;
 	
 	ObjectMap* objectMap;
@@ -57,8 +57,6 @@ class ObjectManager : public Event, public Logger {
 
 public:
 	ObjectManager(ServiceThread* serv);
-	
-	bool activate();
 	
 	// object methods
 	void add(SceneObject* obj);

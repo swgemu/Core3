@@ -166,7 +166,7 @@ void PlanetManagerImplementation::loadBuildings() {
 			BuildingObject* buio = (BuildingObject*) buioImpl->deploy();
 
 			buio->setObjectCRC(String::hashCode(file));
-			buio->setPosition(x, z, y);
+			buio->initializePosition(x, z, y);
 			buio->setDirection(oX, oZ, oY, oW);
 			//buio->insertToZone(zone);
 			//zone->registerObject(buio);
@@ -179,7 +179,7 @@ void PlanetManagerImplementation::loadBuildings() {
 			CellObject* cell = (CellObject*) cellImpl->deploy(); 
 			
 			cell->setObjectCRC(String::hashCode(file));
-			cell->setPosition(x, z, y);
+			cell->initializePosition(x, z, y);
 			cell->setDirection(oX, oZ, oY, oW);
 			
 			//buio->insertChild(cell, false);

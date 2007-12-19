@@ -55,6 +55,12 @@ import "../../ZoneClient";
 import "../player/Player";
 
 interface SceneObject implements RWLockable {
+	void redeploy();
+	
+	void scheduleUndeploy();
+	void doUndeploy();
+
+	// client methods
 	void sendTo(Player player, boolean doClose = true);
 	void sendDestroyTo(Player player);
 	
@@ -89,16 +95,19 @@ interface SceneObject implements RWLockable {
 
 	int useObject(Player player);
 
+	// positioning methods
+	void initializePosition(float x, float z, float y);
+
+	void setPosition(float x, float z, float y);
+
+	void setDirection(float x, float z, float y, float w);
+
 	// setters
 	void setObjectID(unsigned long oid);
 
 	void setObjectCRC(unsigned int crc);
 
 	void setMovementCounter(unsigned int cntr);
-
-	void setPosition(float x, float z, float y);
-
-	void setDirection(float x, float z, float y, float w);
 	
 	void setZoneIndex(int id);
 	

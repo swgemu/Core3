@@ -44,11 +44,9 @@ which carries forward this exception.
 
 #include "ObjectManager.h"
 
-ObjectManager::ObjectManager(ServiceThread* serv) : Event(), Logger("ObjectManager") {
+ObjectManager::ObjectManager(ServiceThread* serv) : Logger("ObjectManager") {
 	server = serv;
 
-	setKeeping(true);
-	
 	objectMap = new ObjectMap(100000);
 	objectCacheMap = new ObjectMap(20000);
 	
@@ -56,37 +54,11 @@ ObjectManager::ObjectManager(ServiceThread* serv) : Event(), Logger("ObjectManag
 	setGlobalLogging(true);
 }
 
-bool ObjectManager::activate() {
-	server->lock();
-	
-	HashTableIterator<uint64, SceneObject*> iterator(objectCacheMap);
-	while (iterator.hasNext()) {
-		SceneObject* obj = iterator.getNextValue();
-
-		uint64 objectid = obj->getObjectID();
-
-		objectCacheMap->remove(objectid);
-
-		if (!obj->doKeepObject()) {
-			info("undeploying object (" + obj->_getORBName() + ")", true);
-
-			if (!obj->undeploy())
-				error("object (" + obj->_getORBName() + ") was not found in naming directory");
-
-			delete obj;
-		}
-	}
-	
-	server->addEvent(this, 20000);
-	
-	server->unlock();
-	return true;
-}
-
 void ObjectManager::add(SceneObject* obj) {
 	uint64 oid = obj->getObjectID();
 	
-	objectCacheMap->remove(oid);
+	if (objectCacheMap->remove(oid) != NULL)
+		obj->redeploy();
 
 	objectMap->put(oid, obj);
 }
@@ -112,9 +84,8 @@ SceneObject* ObjectManager::remove(uint64 oid) {
 		return NULL;
 
 	objectCacheMap->put(oid, obj);
-	
-	/*if (!isQueued())
-		server->addEvent(this, 10000);*/		
+
+	//obj->scheduleUndeploy();	
 	
 	return obj;
 }

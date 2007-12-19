@@ -66,9 +66,7 @@ public:
 		templateTypeName = "terminal_name";
 		templateName = tempn;
 
-		positionX = x;
-		positionZ = z;
-		positionY = y;
+		initializePosition(x , z, y);
 		
 		shuttle = shutle;
 	}

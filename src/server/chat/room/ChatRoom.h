@@ -136,9 +136,9 @@ public:
 protected:
 	string _return_getCreator;
 
-	string _return_getFullPath;
-
 	string _return_getName;
+
+	string _return_getFullPath;
 
 	string _return_getServerName;
 

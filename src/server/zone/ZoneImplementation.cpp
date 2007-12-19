@@ -101,6 +101,10 @@ SceneObject* ZoneImplementation::deleteObject(SceneObject* obj) {
 	return server->removeObject(obj->getObjectID());
 }
 
+SceneObject* ZoneImplementation::deleteCachedObject(SceneObject* obj) {
+	return server->removeCachedObject(obj->getObjectID());
+}
+
 ChatManager* ZoneImplementation::getChatManager() {
 	return server->getChatManager();
 }

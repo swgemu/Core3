@@ -85,6 +85,8 @@ public:
 
 	SceneObject* deleteObject(SceneObject* obj);
 
+	SceneObject* deleteCachedObject(SceneObject* obj);
+
 	int getZoneID();
 
 	ZoneServer* getZoneServer();
@@ -139,6 +141,8 @@ public:
 	SceneObject* deleteObject(unsigned long long oid);
 
 	SceneObject* deleteObject(SceneObject* obj);
+
+	SceneObject* deleteCachedObject(SceneObject* obj);
 
 	int getZoneID();
 

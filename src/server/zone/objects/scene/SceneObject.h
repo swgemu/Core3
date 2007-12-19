@@ -75,6 +75,12 @@ public:
 
 	virtual ~SceneObject();
 
+	void redeploy();
+
+	void scheduleUndeploy();
+
+	void doUndeploy();
+
 	void sendTo(Player* player, bool doClose = true);
 
 	void sendDestroyTo(Player* player);
@@ -113,15 +119,17 @@ public:
 
 	int useObject(Player* player);
 
+	void initializePosition(float x, float z, float y);
+
+	void setPosition(float x, float z, float y);
+
+	void setDirection(float x, float z, float y, float w);
+
 	void setObjectID(unsigned long long oid);
 
 	void setObjectCRC(unsigned int crc);
 
 	void setMovementCounter(unsigned int cntr);
-
-	void setPosition(float x, float z, float y);
-
-	void setDirection(float x, float z, float y, float w);
 
 	void setZoneIndex(int id);
 
@@ -188,6 +196,12 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, ORBMethodInvocation* inv);
 
+	void redeploy();
+
+	void scheduleUndeploy();
+
+	void doUndeploy();
+
 	void sendTo(Player* player, bool doClose);
 
 	void sendDestroyTo(Player* player);
@@ -226,15 +240,17 @@ public:
 
 	int useObject(Player* player);
 
+	void initializePosition(float x, float z, float y);
+
+	void setPosition(float x, float z, float y);
+
+	void setDirection(float x, float z, float y, float w);
+
 	void setObjectID(unsigned long long oid);
 
 	void setObjectCRC(unsigned int crc);
 
 	void setMovementCounter(unsigned int cntr);
-
-	void setPosition(float x, float z, float y);
-
-	void setDirection(float x, float z, float y, float w);
 
 	void setZoneIndex(int id);
 

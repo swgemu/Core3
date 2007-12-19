@@ -100,7 +100,7 @@ bool PlayerManagerImplementation::create(Player* player, uint32 sessionkey) {
 	//float startY = 2500.0f;
 	/*player->positionX = 96.0f;
 	player->positionY = ;*/
-	player->setPosition(96.0f, 0, -5334.0f);
+	player->initializePosition(96.0f, 0, -5334.0f);
 		
 	player->randomizePosition(128);
 	
@@ -237,7 +237,7 @@ Player* PlayerManagerImplementation::loadFromDatabase(PlayerImplementation* play
 	
 	player->setZoneIndex(character->getInt(16));
 	player->setTerrainName(Terrain::getTerrainName(player->getZoneIndex()));
-	player->setPosition(character->getFloat(13), character->getFloat(15), character->getFloat(14));
+	player->initializePosition(character->getFloat(13), character->getFloat(15), character->getFloat(14));
 	
 	Guild* guild = guildManager->getGuild(character->getUnsignedInt(12));
 	if (guild != NULL)

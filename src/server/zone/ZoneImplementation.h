@@ -93,6 +93,8 @@ public:
 	
 	SceneObject* deleteObject(uint64 oid);
 	SceneObject* deleteObject(SceneObject* obj);
+
+	SceneObject* deleteCachedObject(SceneObject* obj);
 	
 	void startManagers();
 

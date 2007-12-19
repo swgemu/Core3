@@ -233,7 +233,7 @@ TrainerCreature* CreatureManagerImplementation::spawnTrainer(const string& profe
 		trainerImpl->terrainName = Terrain::getTerrainName(zone->getZoneID());
 	
 		trainerImpl->height = 1.0f;
-		trainerImpl->setPosition(x, 0, y);
+		trainerImpl->initializePosition(x, 0, y);
 		trainerImpl->pvpStatusBitmask = 0;//0x01 + 0x02 + 0x20;
 		
 		load(trainerImpl);
@@ -273,7 +273,7 @@ RecruiterCreature* CreatureManagerImplementation::spawnRecruiter(const string& s
 		//ham stuff
 		
 		recruiterImpl->height = 1.0f;
-		recruiterImpl->setPosition(x, 0, y);
+		recruiterImpl->initializePosition(x, 0, y);
 		recruiterImpl->pvpStatusBitmask = 0;//0x01 + 0x02 + 0x20;
 
 		load(recruiterImpl);
@@ -303,7 +303,7 @@ ShuttleCreature* CreatureManagerImplementation::spawnShuttle(const string& Plane
 		shuttleImpl->terrainName = Terrain::getTerrainName(zone->getZoneID());
 	
 		shuttleImpl->height = 1.0f;
-		shuttleImpl->setPosition(x, z, y);
+		shuttleImpl->initializePosition(x, z, y);
 		
 		load(shuttleImpl);
 		
@@ -361,7 +361,7 @@ Creature* CreatureManagerImplementation::spawnCreature(const string& stfname, co
 		creatureImpl->willpowerMax = 10000;
 
 		creatureImpl->height = 1.0f;
-		creatureImpl->setPosition(x, 0, y);
+		creatureImpl->initializePosition(x, 0, y);
 		creatureImpl->pvpStatusBitmask = bitmask;//0x01 + 0x02 + 0x20;
 
 		load(creatureImpl);
@@ -499,7 +499,7 @@ int CreatureManagerImplementation::addCreature(lua_State *L) {
 	float x = creature.getFloatField("positionX");
 	float y = creature.getFloatField("positionY");
 	float z = creature.getFloatField("positionZ");
-	creatureImpl->setPosition(x, z, y);
+	creatureImpl->initializePosition(x, z, y);
 	
 	creatureImpl->accuracy = creature.getIntField("accuracy");
 	creatureImpl->speed = creature.getFloatField("speed");
@@ -535,7 +535,7 @@ int CreatureManagerImplementation::addLair(lua_State * L) {
 	float x = object.getFloatField("positionX");
 	float y = object.getFloatField("positionY");
 	float z = object.getFloatField("positionZ"); 
-	lairImpl->setPosition(x, z, y);
+	lairImpl->initializePosition(x, z, y);
 	
 	LairObject* lairObject = (LairObject*) lairImpl->deploy();
 
@@ -599,7 +599,7 @@ int CreatureManagerImplementation::addLair(lua_State * L) {
 	float x = creature.getFloatField("positionX");
 	float y = creature.getFloatField("positionY");
 	float z = creature.getFloatField("positionZ");
-	creatureImpl->setPosition(x, z, y);
+	creatureImpl->initializePosition(x, z, y);
 	creatureImpl->pvpStatusBitmask = 0x23;
 
 	creatureImpl->accuracy = creature.getIntField("accuracy");
