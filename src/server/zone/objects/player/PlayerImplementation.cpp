@@ -1215,8 +1215,104 @@ void PlayerImplementation::doClone() {
 		cManager->freeDuelList(_this);
 	}
 		
-	changeHAMBars(3000, 3000, 3000);
-	changeForceBar(7000);
+	// remove buff events from queue
+	for(int i = (currentEvents.size() - 1); i >= 0; i--) {
+		Event* e = currentEvents.get(i);
+		server->removeEvent(e);
+		currentEvents.remove(i);
+	}
+	
+	// Clear buff icons
+	if(healthBuff) {
+		addBuff(0x98321369, 0.0f);
+		healthBuff = false;
+	}
+	
+	if(strengthBuff) {
+		addBuff(0x815D85C5, 0.0f);
+		strengthBuff = false;
+	}
+	
+	if(constitutionBuff) {
+		addBuff(0x7F86D2C6, 0.0f);
+		constitutionBuff = false;
+	}
+	
+	if(actionBuff) {
+		addBuff(0x4BF616E2, 0.0f);
+		actionBuff = false;
+	}
+	
+	if(quicknessBuff) {
+		addBuff(0x71B5C842, 0.0f);
+		quicknessBuff = false;
+	}
+	
+	if(staminaBuff) {
+		addBuff(0xED0040D9, 0.0f);
+		staminaBuff = false;
+	}
+	
+	if(mindBuff) {
+		addBuff(0x11C1772E, 0.0f);
+		mindBuff = false;
+	}
+	
+	if(focusBuff) {
+		addBuff(0x2E77F586, 0.0f);
+		focusBuff = false;
+	}
+	
+	if(willpowerBuff) {
+		addBuff(0x3EC6FCB6, 0.0f);
+		willpowerBuff = false;
+	}
+	
+	// reset HAM
+	
+	CreatureObjectDeltaMessage6* delta = new CreatureObjectDeltaMessage6(_this);
+	
+	health = healthMax = baseHealth;
+	delta->updateHealthBar(health);
+	delta->updateMaxHealthBar(healthMax);
+	
+	strength = strengthMax = baseStrength;
+	delta->updateStrengthBar(strength);
+	delta->updateMaxStrengthBar(strengthMax);
+	
+	constitution = constitutionMax = baseConstitution;
+	delta->updateConstitutionBar(constitution);
+	delta->updateMaxConstitutionBar(constitutionMax);
+	
+	action = actionMax = baseAction;
+	delta->updateActionBar(action);
+	delta->updateMaxActionBar(actionMax);
+	
+	quickness = quicknessMax = baseQuickness;
+	delta->updateQuicknessBar(quickness);
+	delta->updateMaxQuicknessBar(quicknessMax);
+	
+	stamina = staminaMax = baseStamina;
+	delta->updateStaminaBar(stamina);
+	delta->updateMaxStaminaBar(staminaMax);
+	
+	mind = mindMax = baseMind;
+	delta->updateMindBar(mind);
+	delta->updateMaxMindBar(mindMax);
+	
+	focus = focusMax = baseFocus;
+	delta->updateFocusBar(focus);
+	delta->updateMaxFocusBar(focusMax);
+	
+	willpower = willpowerMax = baseWillpower;
+	delta->updateWillpowerBar(willpower);
+	delta->updateMaxWillpowerBar(willpowerMax);
+	
+	delta->close();
+	
+	broadcastMessage(delta);
+	
+	changeForceBar(0);
 		
 	setPosture(UPRIGHT_POSTURE);
 }

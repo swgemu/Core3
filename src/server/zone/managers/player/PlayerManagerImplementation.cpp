@@ -70,6 +70,8 @@ which carries forward this exception.
 #include "../planet/PlanetManager.h"
 #include "../../../chat/ChatManager.h"
 
+#include "PlayerHAM.h"
+
 PlayerManagerImplementation::PlayerManagerImplementation(ItemManager* mgr, ZoneProcessServerImplementation* srv) : PlayerManagerServant() {
 	PlayerMapImplementation* mapImpl = new PlayerMapImplementation(3000);
 	playerMap = (PlayerMap*) mapImpl->deploy("PlayerMap");
@@ -96,10 +98,6 @@ bool PlayerManagerImplementation::create(Player* player, uint32 sessionkey) {
 	
 	player->setZoneIndex(8);
 
-	//float startX = -600.0f;
-	//float startY = 2500.0f;
-	/*player->positionX = 96.0f;
-	player->positionY = ;*/
 	player->initializePosition(96.0f, 0, -5334.0f);
 		
 	player->randomizePosition(128);
@@ -120,6 +118,33 @@ bool PlayerManagerImplementation::create(Player* player, uint32 sessionkey) {
 	BinaryData hair(player->getHairData());
 	hair.encode(hairdata);
 	
+	int hamValues[9];
+	
+	string prof = player->getStartingProfession();
+	
+	if (prof == "artisan")
+		memcpy(hamValues, professionHams[0], sizeof(hamValues));
+	else if (prof == "brawler")
+		memcpy(hamValues, professionHams[1], sizeof(hamValues));
+	else if (prof == "entertainer")
+		memcpy(hamValues, professionHams[2], sizeof(hamValues));
+	else if (prof == "marksman")
+		memcpy(hamValues, professionHams[3], sizeof(hamValues));
+	else if (prof == "medic")
+		memcpy(hamValues, professionHams[4], sizeof(hamValues));
+	else if (prof == "scout")
+		memcpy(hamValues, professionHams[5], sizeof(hamValues));
+	else {
+		memcpy(hamValues, professionHams[6], sizeof(hamValues));
+	}
+	
+	// Add the race mods
+	int hamMods[9];
+	memcpy(hamMods, raceHamMods[race % 10], sizeof(hamMods));
+		
+	for (int i = 0; i < 9; i++)
+		hamValues[i] += hamMods[i];
+
 	try {
 		stringstream query;
     	query << "INSERT INTO `characters` "
@@ -127,8 +152,10 @@ bool PlayerManagerImplementation::create(Player* player, uint32 sessionkey) {
 	          << "`appearance`,`professions`,`race`,`gender`,`lots`,"
     	      << "`credits_inv`,`credits_bank`,`guild`,`x`,`y`,`z`,`zoneid`,`planet_id`,"
 	          << "`lfg`,`helper`,`roleplayer`,`faction_id`,`archived`,`scale`,`biography`,"
-	          << "`infofield`,`hair`,`hairData`,`playermodel`,`CRC`,Title)"
-	          << "VALUES ("
+	          << "`infofield`,`hair`,`hairData`,`playermodel`,`CRC`,`Title`,"
+	          << "`health`,`strength`,`constitution`,`action`,`quickness`,"
+	          << "`stamina`,`mind`,`focus`,`willpower`"
+	          << ") VALUES ("
     	      << accountID << "," << galaxyID << ",'" 
 	          << player->getFirstName() << "','" << surname << "','" 
 	          << apperance.substr(0, apperance.size() - 1) << "','" 
@@ -138,12 +165,15 @@ bool PlayerManagerImplementation::create(Player* player, uint32 sessionkey) {
 	          << player->getPositionZ() << "," << player->getZoneIndex() << "," << 0//planetID 
     	      << ",0,0,0,0,0," << player->getHeight() << ","
     	      << "'" << bio << "','" << info << "','" 
-    	      << player->getHairObject() << "','" << hairdata.substr(0, hairdata.size() - 1) << "','', '0','')";
+    	      << player->getHairObject() << "','" << hairdata.substr(0, hairdata.size() - 1) << "','', '0','',"
+    	      << hamValues[0] << "," << hamValues[1] << "," << hamValues[2] << "," 
+    	      << hamValues[3] << "," << hamValues[4] << "," << hamValues[5] << ","
+    	      << hamValues[6] << "," << hamValues[7] << "," << hamValues[8] << ")";
 	
 		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
 	
 		player->setCharacterID(res->getLastAffectedRow());
-
+		
 		playerMap->put(player->getFirstName(), player);
 		
 		delete res;
@@ -281,6 +311,47 @@ Player* PlayerManagerImplementation::loadFromDatabase(PlayerImplementation* play
 	
 	string title = character->getString(32);
 	player->getPlayerObject()->setTitle(title);
+	
+	player->setBaseHealth(character->getInt(35));
+	player->setBaseStrength(character->getInt(36));
+	player->setBaseConstitution(character->getInt(37));
+	player->setBaseAction(character->getInt(38));
+	player->setBaseQuickness(character->getInt(39));
+	player->setBaseStamina(character->getInt(40));
+	player->setBaseMind(character->getInt(41));
+	player->setBaseFocus(character->getInt(42));
+	player->setBaseWillpower(character->getInt(43));
+	
+	// On login have no buffs applied
+	player->setHealthMax(character->getInt(35));
+	player->setStrengthMax(character->getInt(36));
+	player->setConstitutionMax(character->getInt(37));
+	player->setActionMax(character->getInt(38));
+	player->setQuicknessMax(character->getInt(39));
+	player->setStaminaMax(character->getInt(40));
+	player->setMindMax(character->getInt(41));
+	player->setFocusMax(character->getInt(42));
+	player->setWillpowerMax(character->getInt(43));
+	
+	// And stats at maximum
+	player->setHealth(character->getInt(35));
+	player->setStrength(character->getInt(36));
+	player->setConstitution(character->getInt(37));
+	player->setAction(character->getInt(38));
+	player->setQuickness(character->getInt(39));
+	player->setStamina(character->getInt(40));
+	player->setMind(character->getInt(41));
+	player->setFocus(character->getInt(42));
+	player->setWillpower(character->getInt(43));
+	player->setHealthMax(character->getInt(35));
+	player->setStrengthMax(character->getInt(36));
+	player->setConstitutionMax(character->getInt(37));
+	player->setActionMax(character->getInt(38));
+	player->setQuicknessMax(character->getInt(39));
+	player->setStaminaMax(character->getInt(40));
+	player->setMindMax(character->getInt(41));
+	player->setFocusMax(character->getInt(42));
+	player->setWillpowerMax(character->getInt(43));
 	
 	player->loadProfessions();
 	

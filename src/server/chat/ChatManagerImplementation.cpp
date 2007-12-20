@@ -668,6 +668,26 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 				else
 					broadcastMessageRange(player, message.str(), range);
 			}
+		} else if(cmd=="@buff") {
+			if(player->getHealthMax() == player->getBaseHealth()) {
+				
+				int buffValue = 3000;
+				float buffDuration = 10800.0f;
+
+				player->applyBuff("health", buffValue, buffDuration);
+				player->applyBuff("strength", buffValue, buffDuration);
+				player->applyBuff("constitution", buffValue, buffDuration);
+				player->applyBuff("action", buffValue, buffDuration);
+				player->applyBuff("quickness", buffValue, buffDuration);
+				player->applyBuff("stamina", buffValue, buffDuration);
+				player->applyBuff("mind", buffValue, buffDuration);
+				player->applyBuff("focus", buffValue, buffDuration);
+				player->applyBuff("willpower", buffValue, buffDuration);
+
+				player->sendSystemMessage("Buffs applied");
+			} else {
+				player->sendSystemMessage("Already buffed");
+			}
 		} else {
 			player->sendSystemMessage("Unknown Command: " + cmd);
 		}

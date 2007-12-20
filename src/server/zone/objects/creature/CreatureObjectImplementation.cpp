@@ -67,6 +67,7 @@ which carries forward this exception.
 #include "events/CreatureBurstRunOverEvent.h"
 #include "events/CreatureForceRunOverEvent.h"
 #include "events/DizzyFallDownEvent.h"
+#include "events/CreatureBuffEvent.h"
 
 #include "../../objects/player/Races.h"
 #include "mount/MountCreature.h"
@@ -127,6 +128,16 @@ CreatureObjectImplementation::CreatureObjectImplementation(uint64 oid) : Creatur
 	hamUpdateCounter = 0;
 	hamMaxUpdateCounter = 0;
 	
+	baseHealth = 1000;
+	baseStrength = 500;
+	baseConstitution = 500;
+	baseAction = 1000;
+	baseQuickness = 500;
+	baseStamina = 500;
+	baseMind = 1000;
+	baseFocus = 500;
+	baseWillpower = 500;
+
 	health = 3000;
 	strength = 3000;
 	constitution = 3000;
@@ -219,6 +230,18 @@ CreatureObjectImplementation::CreatureObjectImplementation(uint64 oid) : Creatur
 	ignoreMovementTests = 5;
 	
 	level = 0;
+	
+	// Buffs
+	healthBuff = false;
+	strengthBuff = false;
+	constitutionBuff = false;
+	actionBuff = false;
+	quicknessBuff = false;
+	staminaBuff = false;
+	mindBuff = false;
+	focusBuff = false;
+	willpowerBuff = false;
+
 }
 
 CreatureObjectImplementation::~CreatureObjectImplementation() {
@@ -1989,7 +2012,7 @@ void CreatureObjectImplementation::startPlayingMusic(const string& music) {
 		instrid += 5;
 	} else if (instrument == "bandfill") {
 		instrid += 6;
-	} else if (instrument == "chidinkalu_horn") {
+	} else if (instrument == "flute_droopy") {
 		instrid += 7;
 	} else if (instrument == "ommni_box") {
 		instrid += 8;
@@ -2555,4 +2578,166 @@ bool CreatureObjectImplementation::verifyBankCredits(int creditsToRemove) {
 	 } else {
 	 	return false;
 	}
+}
+
+void CreatureObjectImplementation::applyBuff(const string& type, int value, 
+	float duration) {	
+	
+	int buffCrc;
+	
+	CreatureObjectDeltaMessage6* delta = new CreatureObjectDeltaMessage6(_this);
+	
+	if(type == "health" && !healthBuff) {
+		buffCrc = 0x98321369;
+		healthMax += value;
+		health += value;
+		delta->updateMaxHealthBar(healthMax);
+		delta->updateHealthBar(health);
+		healthBuff = true;
+	} else if(type == "strength" && !strengthBuff) {
+		buffCrc = 0x815D85C5;
+		strengthMax += value;
+		strength += value;
+		delta->updateMaxStrengthBar(strengthMax);
+		delta->updateStrengthBar(strength);
+		strengthBuff = true;
+	} else if(type == "constitution" && !constitutionBuff) {
+		buffCrc = 0x7F86D2C6;
+		constitutionMax += value;
+		constitution += value;
+		delta->updateMaxConstitutionBar(constitutionMax);
+		delta->updateConstitutionBar(constitution);
+		constitutionBuff = true;
+	} else if(type == "action" && !actionBuff) {
+		buffCrc = 0x4BF616E2;
+		actionMax += value;
+		action += value;
+		delta->updateMaxActionBar(actionMax);
+		delta->updateActionBar(action);
+		actionBuff = true;
+	} else if(type == "quickness" && !quicknessBuff) {
+		buffCrc = 0x71B5C842;
+		quicknessMax += value;
+		quickness += value;
+		delta->updateMaxQuicknessBar(quicknessMax);
+		delta->updateQuicknessBar(quickness);
+		quicknessBuff = true;
+	} else if(type == "stamina" && !staminaBuff) {
+		buffCrc = 0xED0040D9;
+		staminaMax += value;
+		stamina += value;
+		delta->updateMaxStaminaBar(staminaMax);
+		delta->updateStaminaBar(stamina);
+		staminaBuff = true;
+	} else if(type == "mind" && !mindBuff) {
+		buffCrc = 0x11C1772E;
+		mindMax += value;
+		mind += value;
+		delta->updateMaxMindBar(mindMax);
+		delta->updateMindBar(mind);
+		mindBuff = true;
+	} else if(type == "focus" && !focusBuff) {
+		buffCrc = 0x2E77F586;
+		focusMax += value;
+		focus += value;
+		delta->updateMaxFocusBar(focusMax);
+		delta->updateFocusBar(focus);
+		focusBuff = true;
+	} else if(type == "willpower" && !willpowerBuff) {
+		buffCrc = 0x3EC6FCB6;
+		willpowerMax += value;
+		willpower += value;
+		delta->updateMaxWillpowerBar(willpowerMax);
+		delta->updateWillpowerBar(willpower);
+		willpowerBuff = true;
+	} else
+		return;
+	
+	delta->close();
+	
+	broadcastMessage(delta);
+	
+	((PlayerImplementation*) this)->addBuff(buffCrc, duration);
+	
+	int durationMilliseconds = (int)(duration * 1000);
+	Event* e = new CreatureBuffEvent(this, type, durationMilliseconds, value);
+	server->addEvent(e);
+	currentEvents.add(e);
+}
+
+void CreatureObjectImplementation::removeBuff(const string& type, int value, Event* event) {	
+
+	CreatureObjectDeltaMessage6* delta = new CreatureObjectDeltaMessage6(_this);
+	
+	currentEvents.removeElement(event);
+	
+	if(type == "health" && healthBuff) {
+		healthMax -= value;
+		if(health > healthMax)
+			health = healthMax;
+		delta->updateMaxHealthBar(healthMax);
+		delta->updateHealthBar(health);
+		healthBuff = false;
+	} else if(type == "strength" && strengthBuff) {
+		strengthMax -= value;
+		if(strength > strengthMax)
+			strength = strengthMax;
+		delta->updateMaxStrengthBar(strengthMax);
+		delta->updateStrengthBar(strength);
+		strengthBuff = false;
+	} else if(type == "constitution" && constitutionBuff) {
+		constitutionMax -= value;
+		if(constitution > constitutionMax)
+			constitution = constitutionMax;
+		delta->updateMaxConstitutionBar(constitutionMax);
+		delta->updateConstitutionBar(constitution);
+		constitutionBuff = false;
+	} else if(type == "action" && actionBuff) {
+		actionMax -= value;
+		if(action > actionMax)
+			action = actionMax;
+		delta->updateMaxActionBar(actionMax);
+		delta->updateActionBar(action);
+		actionBuff = false;
+	} else if(type == "quickness" && quicknessBuff) {
+		quicknessMax -= value;
+		if(quickness > quicknessMax)
+			quickness = quicknessMax;
+		delta->updateMaxQuicknessBar(quicknessMax);
+		delta->updateQuicknessBar(quickness);
+		quicknessBuff = false;
+	} else if(type == "stamina" && staminaBuff) {
+		staminaMax -= value;
+		if(stamina > staminaMax)
+			stamina = staminaMax;
+		delta->updateMaxStaminaBar(staminaMax);
+		delta->updateStaminaBar(stamina);
+		staminaBuff = false;
+	} else if(type == "mind" && mindBuff) {
+		mindMax -= value;
+		if(mind > mindMax)
+			mind = mindMax;
+		delta->updateMaxMindBar(mindMax);
+		delta->updateMindBar(mind);
+		mindBuff = false;
+	} else if(type == "focus" && focusBuff) {
+		focusMax -= value;
+		if(focus > focusMax)
+			focus = focusMax;
+		delta->updateMaxFocusBar(focusMax);
+		delta->updateFocusBar(focus);
+		focusBuff = false;
+	} else if(type == "willpower" && willpowerBuff) {
+		willpowerMax -= value;
+		if(willpower > willpowerMax)
+			willpower = willpowerMax;
+		delta->updateMaxWillpowerBar(willpowerMax);
+		delta->updateWillpowerBar(willpower);
+		willpowerBuff = false;
+	} else
+		return;
+	
+	delta->close();
+	
+	broadcastMessage(delta);
 }

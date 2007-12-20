@@ -147,6 +147,16 @@ interface CreatureObject implements SceneObject {
 	void setMeditateState();
 	
 	// setters
+	void setBaseHealth(unsigned int health);
+	void setBaseStrength(unsigned int strength);
+	void setBaseConstitution(unsigned int constituition);
+	void setBaseAction(unsigned int action);
+	void setBaseQuickness(unsigned int quickness);
+	void setBaseStamina(unsigned int stamina);
+	void setBaseMind(unsigned int mind);
+	void setBaseFocus(unsigned int focus);
+	void setBaseWillpower(unsigned int willpower);
+	
 	void setHealth(unsigned int health);
 	void setStrength(unsigned int strength);
 	void setConstitution(unsigned int constituition);
@@ -307,6 +317,16 @@ interface CreatureObject implements SceneObject {
 	
 	unsigned int getWoundsUpdateCounter();
 	unsigned int getNewWoundsUpdateCounter(int upd);
+	
+	unsigned int getBaseHealth();
+	unsigned int getBaseStrength();
+	unsigned int getBaseConstitution();
+	unsigned int getBaseAction();
+	unsigned int getBaseQuickness();
+	unsigned int getBaseStamina();
+	unsigned int getBaseMind();
+	unsigned int getBaseFocus();
+	unsigned int getBaseWillpower();
 
 	unsigned int getHealth();
 	unsigned int getStrength();
@@ -467,6 +487,9 @@ interface CreatureObject implements SceneObject {
 	
 	void setCashCredits(int credits);
 	void setBankCredits(int credits);
+	
+	// Buff method
+	void applyBuff(const string type, int value, float duration);
 	
 	boolean verifyCashCredits(int creditsToRemove);
 	boolean verifyBankCredits(int creditsToRemove);

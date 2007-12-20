@@ -162,6 +162,17 @@ protected:
 	uint32 hamUpdateCounter;
 	uint32 hamMaxUpdateCounter;
 
+	//CREO1 HAM variables
+	uint32 baseHealth;
+	uint32 baseStrength;
+	uint32 baseConstitution;
+	uint32 baseAction;
+	uint32 baseQuickness;
+	uint32 baseStamina;
+	uint32 baseMind;
+	uint32 baseFocus;
+	uint32 baseWillpower;
+	
 	uint32 health;
 	uint32 strength;
 	uint32 constitution;
@@ -239,6 +250,9 @@ protected:
 	
 	Vector<CreatureObject*> defenderList;
 	
+	// Store buff events so they can be removed on death.
+	Vector<Event*> currentEvents;
+	
 	//group stuff
 	uint64 groupId;
 	uint64 groupInviteCount;
@@ -256,6 +270,16 @@ protected:
 	bool doPlayingMusic;
 	bool doListening;
 	bool doWatching;
+	
+	bool healthBuff;
+	bool strengthBuff;
+	bool constitutionBuff;
+	bool actionBuff;
+	bool quicknessBuff;
+	bool staminaBuff;
+	bool mindBuff;
+	bool focusBuff;
+	bool willpowerBuff;
 	
 	uint64 watchID;
 	uint64 listenID;
@@ -871,6 +895,42 @@ public:
 		pvpStatusBitmask = mask;
 	}
 	
+	inline void setBaseHealth(uint32 value) {
+		baseHealth = value;
+	}
+
+	inline void setBaseStrength(uint32 value) {
+		baseStrength = value;
+	}
+
+	inline void setBaseConstitution(uint32 value) {
+		baseConstitution = value;
+	}
+
+	inline void setBaseAction(uint32 value) {
+		baseAction = value;
+	}
+
+	inline void setBaseQuickness(uint32 value) {
+		baseQuickness = value;
+	}
+
+	inline void setBaseStamina(uint32 value) {
+		baseStamina = value;
+	}
+
+	inline void setBaseMind(uint32 value) {
+		baseMind = value;
+	}
+	
+	inline void setBaseFocus(uint32 value) {
+		baseFocus = value;
+	}
+	
+	inline void setBaseWillpower(uint32 value) {
+		baseWillpower = value;
+	}
+
 	inline void setHealth(uint32 value) {
 		health = value;
 	}
@@ -1021,6 +1081,42 @@ public:
 	}
 
 	// HAM getters
+	inline uint32 getBaseHealth() {
+		return baseHealth;
+	}
+
+	inline uint32 getBaseStrength() {
+		return baseStrength;
+	}
+
+	inline uint32 getBaseConstitution() {
+		return baseConstitution;
+	}
+
+	inline uint32 getBaseAction() {
+		return baseAction;
+	}
+
+	inline uint32 getBaseQuickness() {
+		return baseQuickness;
+	}
+
+	inline uint32 getBaseStamina() {
+		return baseStamina;
+	}
+
+	inline uint32 getBaseMind() {
+		return baseMind;
+	}
+
+	inline uint32 getBaseFocus() {
+		return baseFocus;
+	}
+
+	inline uint32 getBaseWillpower() {
+		return baseWillpower;
+	}
+
 	inline uint32 getHealth() {
 		return health;
 	}
@@ -1435,6 +1531,10 @@ public:
 	
 	bool verifyCashCredits(int creditsToRemove);
 	bool verifyBankCredits(int creditsToRemove);
+	
+	void CreatureObjectImplementation::applyBuff(const string& type, int value, 
+			float duration);
+	void CreatureObjectImplementation::removeBuff(const string& type, int value, Event* event);
 
 	friend class CombatManager;
 	friend class SkillManager;

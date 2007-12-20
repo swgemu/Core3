@@ -59,13 +59,13 @@ PlayerObjectImplementation::PlayerObjectImplementation(Player* pl) : SceneObject
 	objectCRC = 0x619BAE21;
 	
 	// PLAY8 operands
-	forcePower = 7000;
-	forcePowerMax = 7000;
+	forcePower = 0;
+	forcePowerMax = 0;
 	experienceListCount = 0;
 	waypointListCount = 0;
 	waypointList.setNullValue(NULL);
 
-	forceRegen = 58;
+	forceRegen = 0;
 
 	// PLAY9 operands
 	jediState = 0x08;

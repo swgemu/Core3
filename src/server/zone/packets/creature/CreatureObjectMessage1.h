@@ -57,17 +57,18 @@ public:
 		insertInt(creo->bankCredits);
 		insertInt(creo->cashCredits);
 
+		// Base HAM
 		insertInt(9);
 		insertInt(9);
-		insertInt(0);
-		insertInt(0);
-		insertInt(0);
-		insertInt(0);
-		insertInt(0);
-		insertInt(0);
-		insertInt(0);
-		insertInt(0);
-		insertInt(0);
+		insertInt(creo->getBaseHealth());
+		insertInt(creo->getBaseStrength());
+		insertInt(creo->getBaseConstitution());
+		insertInt(creo->getBaseAction());
+		insertInt(creo->getBaseQuickness());
+		insertInt(creo->getBaseStamina());
+		insertInt(creo->getBaseMind());
+		insertInt(creo->getBaseFocus());
+		insertInt(creo->getBaseWillpower());
 		
 		insertSkillBoxes(creo);
 		
