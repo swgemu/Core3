@@ -1228,6 +1228,18 @@ void CreatureObjectImplementation::changeConditionDamage(int amount) {
 	broadcastMessage(dcreo3);
 }
 
+void CreatureObjectImplementation::resetHAMBars() {
+	health = healthMax = baseHealth;
+	strength = strengthMax = baseStrength;
+	constitution = constitutionMax = baseConstitution;
+	action = actionMax = baseAction;
+	quickness = quicknessMax = baseQuickness;
+	stamina = staminaMax = baseStamina;
+	mind = mindMax = baseMind;
+	focus = focusMax = baseFocus;
+	willpower = willpowerMax = baseWillpower;
+}
+
 void CreatureObjectImplementation::setHAMBars(uint32 hp, uint32 ap, uint32 mp) {
 	CreatureObjectDeltaMessage6* dcreo6 = new CreatureObjectDeltaMessage6(_this);
 
@@ -2580,75 +2592,100 @@ bool CreatureObjectImplementation::verifyBankCredits(int creditsToRemove) {
 	}
 }
 
-void CreatureObjectImplementation::applyBuff(const string& type, int value, 
-	float duration) {	
-	
+void CreatureObjectImplementation::applyBuff(const string& type, int value, float duration) {	
 	int buffCrc;
 	
 	CreatureObjectDeltaMessage6* delta = new CreatureObjectDeltaMessage6(_this);
 	
-	if(type == "health" && !healthBuff) {
+	if (type == "health" && !healthBuff) {
 		buffCrc = 0x98321369;
+		
 		healthMax += value;
 		health += value;
+		
 		delta->updateMaxHealthBar(healthMax);
 		delta->updateHealthBar(health);
+		
 		healthBuff = true;
-	} else if(type == "strength" && !strengthBuff) {
+	} else if (type == "strength" && !strengthBuff) {
 		buffCrc = 0x815D85C5;
+		
 		strengthMax += value;
 		strength += value;
+		
 		delta->updateMaxStrengthBar(strengthMax);
 		delta->updateStrengthBar(strength);
+		
 		strengthBuff = true;
-	} else if(type == "constitution" && !constitutionBuff) {
+	} else if (type == "constitution" && !constitutionBuff) {
 		buffCrc = 0x7F86D2C6;
+		
 		constitutionMax += value;
 		constitution += value;
+		
 		delta->updateMaxConstitutionBar(constitutionMax);
 		delta->updateConstitutionBar(constitution);
+		
 		constitutionBuff = true;
-	} else if(type == "action" && !actionBuff) {
+	} else if (type == "action" && !actionBuff) {
 		buffCrc = 0x4BF616E2;
+		
 		actionMax += value;
 		action += value;
+		
 		delta->updateMaxActionBar(actionMax);
 		delta->updateActionBar(action);
+		
 		actionBuff = true;
-	} else if(type == "quickness" && !quicknessBuff) {
+	} else if (type == "quickness" && !quicknessBuff) {
 		buffCrc = 0x71B5C842;
+		
 		quicknessMax += value;
 		quickness += value;
+		
 		delta->updateMaxQuicknessBar(quicknessMax);
 		delta->updateQuicknessBar(quickness);
+		
 		quicknessBuff = true;
-	} else if(type == "stamina" && !staminaBuff) {
+	} else if (type == "stamina" && !staminaBuff) {
 		buffCrc = 0xED0040D9;
+		
 		staminaMax += value;
 		stamina += value;
+		
 		delta->updateMaxStaminaBar(staminaMax);
 		delta->updateStaminaBar(stamina);
+		
 		staminaBuff = true;
-	} else if(type == "mind" && !mindBuff) {
+	} else if (type == "mind" && !mindBuff) {
 		buffCrc = 0x11C1772E;
+		
 		mindMax += value;
 		mind += value;
+		
 		delta->updateMaxMindBar(mindMax);
 		delta->updateMindBar(mind);
+		
 		mindBuff = true;
-	} else if(type == "focus" && !focusBuff) {
+	} else if (type == "focus" && !focusBuff) {
 		buffCrc = 0x2E77F586;
+		
 		focusMax += value;
 		focus += value;
+		
 		delta->updateMaxFocusBar(focusMax);
 		delta->updateFocusBar(focus);
+		
 		focusBuff = true;
-	} else if(type == "willpower" && !willpowerBuff) {
+	} else if (type == "willpower" && !willpowerBuff) {
 		buffCrc = 0x3EC6FCB6;
+		
 		willpowerMax += value;
 		willpower += value;
+		
 		delta->updateMaxWillpowerBar(willpowerMax);
 		delta->updateWillpowerBar(willpower);
+		
 		willpowerBuff = true;
 	} else
 		return;
@@ -2659,80 +2696,151 @@ void CreatureObjectImplementation::applyBuff(const string& type, int value,
 	
 	((PlayerImplementation*) this)->addBuff(buffCrc, duration);
 	
-	int durationMilliseconds = (int)(duration * 1000);
-	Event* e = new CreatureBuffEvent(this, type, durationMilliseconds, value);
+	Event* e = new CreatureBuffEvent(this, type, duration, value);
 	server->addEvent(e);
-	currentEvents.add(e);
+	
+	buffEvents.add(e);
+}
+
+void CreatureObjectImplementation::removeBuffs(bool doUpdateCreature) {
+	// remove buff events from queue
+	for (int i = 0; i < buffEvents.size(); i++) {
+		Event* e = buffEvents.get(i);
+		server->removeEvent(e);
+	}
+
+	buffEvents.removeAll();
+
+	resetHAMBars();
+
+	if (!doUpdateCreature)
+		return;
+	
+	CreatureObjectDeltaMessage6* delta = new CreatureObjectDeltaMessage6(_this);
+	
+	delta->updateHealthBar(health);
+	delta->updateMaxHealthBar(healthMax);
+	
+	delta->updateStrengthBar(strength);
+	delta->updateMaxStrengthBar(strengthMax);
+	
+	delta->updateConstitutionBar(constitution);
+	delta->updateMaxConstitutionBar(constitutionMax);
+	
+	delta->updateActionBar(action);
+	delta->updateMaxActionBar(actionMax);
+	
+	delta->updateQuicknessBar(quickness);
+	delta->updateMaxQuicknessBar(quicknessMax);
+	
+	delta->updateStaminaBar(stamina);
+	delta->updateMaxStaminaBar(staminaMax);
+	
+	delta->updateMindBar(mind);
+	delta->updateMaxMindBar(mindMax);
+	
+	delta->updateFocusBar(focus);
+	delta->updateMaxFocusBar(focusMax);
+	
+	delta->updateWillpowerBar(willpower);
+	delta->updateMaxWillpowerBar(willpowerMax);
+	
+	delta->close();
+	
+	broadcastMessage(delta);
 }
 
 void CreatureObjectImplementation::removeBuff(const string& type, int value, Event* event) {	
-
 	CreatureObjectDeltaMessage6* delta = new CreatureObjectDeltaMessage6(_this);
 	
-	currentEvents.removeElement(event);
+	buffEvents.removeElement(event);
 	
-	if(type == "health" && healthBuff) {
+	if (type == "health" && healthBuff) {
 		healthMax -= value;
+		
 		if(health > healthMax)
 			health = healthMax;
+		
 		delta->updateMaxHealthBar(healthMax);
 		delta->updateHealthBar(health);
+		
 		healthBuff = false;
-	} else if(type == "strength" && strengthBuff) {
+	} else if (type == "strength" && strengthBuff) {
 		strengthMax -= value;
-		if(strength > strengthMax)
+		
+		if (strength > strengthMax)
 			strength = strengthMax;
+		
 		delta->updateMaxStrengthBar(strengthMax);
 		delta->updateStrengthBar(strength);
+		
 		strengthBuff = false;
-	} else if(type == "constitution" && constitutionBuff) {
+	} else if (type == "constitution" && constitutionBuff) {
 		constitutionMax -= value;
+		
 		if(constitution > constitutionMax)
 			constitution = constitutionMax;
+		
 		delta->updateMaxConstitutionBar(constitutionMax);
 		delta->updateConstitutionBar(constitution);
+		
 		constitutionBuff = false;
-	} else if(type == "action" && actionBuff) {
+	} else if (type == "action" && actionBuff) {
 		actionMax -= value;
+		
 		if(action > actionMax)
 			action = actionMax;
+		
 		delta->updateMaxActionBar(actionMax);
 		delta->updateActionBar(action);
+		
 		actionBuff = false;
-	} else if(type == "quickness" && quicknessBuff) {
+	} else if (type == "quickness" && quicknessBuff) {
 		quicknessMax -= value;
+		
 		if(quickness > quicknessMax)
 			quickness = quicknessMax;
+		
 		delta->updateMaxQuicknessBar(quicknessMax);
 		delta->updateQuicknessBar(quickness);
+		
 		quicknessBuff = false;
-	} else if(type == "stamina" && staminaBuff) {
+	} else if (type == "stamina" && staminaBuff) {
 		staminaMax -= value;
 		if(stamina > staminaMax)
 			stamina = staminaMax;
 		delta->updateMaxStaminaBar(staminaMax);
 		delta->updateStaminaBar(stamina);
 		staminaBuff = false;
-	} else if(type == "mind" && mindBuff) {
+	} else if (type == "mind" && mindBuff) {
 		mindMax -= value;
+		
 		if(mind > mindMax)
 			mind = mindMax;
+		
 		delta->updateMaxMindBar(mindMax);
 		delta->updateMindBar(mind);
+		
 		mindBuff = false;
-	} else if(type == "focus" && focusBuff) {
+	} else if (type == "focus" && focusBuff) {
 		focusMax -= value;
+		
 		if(focus > focusMax)
 			focus = focusMax;
+		
 		delta->updateMaxFocusBar(focusMax);
 		delta->updateFocusBar(focus);
+		
 		focusBuff = false;
-	} else if(type == "willpower" && willpowerBuff) {
+	} else if (type == "willpower" && willpowerBuff) {
 		willpowerMax -= value;
+		
 		if(willpower > willpowerMax)
 			willpower = willpowerMax;
+		
 		delta->updateMaxWillpowerBar(willpowerMax);
 		delta->updateWillpowerBar(willpower);
+		
 		willpowerBuff = false;
 	} else
 		return;

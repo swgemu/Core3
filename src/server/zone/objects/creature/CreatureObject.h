@@ -173,77 +173,7 @@ public:
 
 	void clearStates();
 
-	bool hasAttackDelay();
-
-	void clearAttackDelay();
-
-	bool isOnFullHealth();
-
-	bool hasStates();
-
-	bool hasState(unsigned long long state);
-
-	bool isAttackable();
-
-	bool isListening();
-
-	bool isWatching();
-
-	void activateBurstRun();
-
-	bool hasQueuedState(unsigned int skillCRC);
-
-	bool removeQueuedState(unsigned int skillCRC);
-
-	bool addQueuedState(unsigned int skillCRC);
-
-	void setMeditateState();
-
-	void setHealth(unsigned int health);
-
-	void setStrength(unsigned int strength);
-
-	void setConstitution(unsigned int constituition);
-
-	void setAction(unsigned int action);
-
-	void setQuickness(unsigned int quickness);
-
-	void setStamina(unsigned int stamina);
-
-	void setMind(unsigned int mind);
-
-	void setFocus(unsigned int focus);
-
-	void setWillpower(unsigned int willpower);
-
-	void setHealthMax(unsigned int health);
-
-	void setStrengthMax(unsigned int strength);
-
-	void setConstitutionMax(unsigned int constituition);
-
-	void setActionMax(unsigned int action);
-
-	void setQuicknessMax(unsigned int quickness);
-
-	void setStaminaMax(unsigned int stamina);
-
-	void setMindMax(unsigned int mind);
-
-	void setFocusMax(unsigned int focus);
-
-	void setWillpowerMax(unsigned int willpower);
-
-	void setArmor(unsigned int ar);
-
-	void setHealthWounds(unsigned int wounds);
-
-	void setActionWounds(unsigned int wounds);
-
-	void setMindWounds(unsigned int wounds);
-
-	void setWoundsUpdateCounter(unsigned int count);
+	void resetHAMBars();
 
 	bool changeHAMBars(int hp, int ap, int mp, bool forcedChange = false);
 
@@ -292,6 +222,96 @@ public:
 	void changeMaxFocusBar(int hp);
 
 	void changeMaxWillpowerBar(int hp);
+
+	bool hasAttackDelay();
+
+	void clearAttackDelay();
+
+	bool isOnFullHealth();
+
+	bool hasStates();
+
+	bool hasState(unsigned long long state);
+
+	bool isAttackable();
+
+	bool isListening();
+
+	bool isWatching();
+
+	void activateBurstRun();
+
+	bool hasQueuedState(unsigned int skillCRC);
+
+	bool removeQueuedState(unsigned int skillCRC);
+
+	bool addQueuedState(unsigned int skillCRC);
+
+	void setMeditateState();
+
+	void setBaseHealth(unsigned int health);
+
+	void setBaseStrength(unsigned int strength);
+
+	void setBaseConstitution(unsigned int constituition);
+
+	void setBaseAction(unsigned int action);
+
+	void setBaseQuickness(unsigned int quickness);
+
+	void setBaseStamina(unsigned int stamina);
+
+	void setBaseMind(unsigned int mind);
+
+	void setBaseFocus(unsigned int focus);
+
+	void setBaseWillpower(unsigned int willpower);
+
+	void setHealth(unsigned int health);
+
+	void setStrength(unsigned int strength);
+
+	void setConstitution(unsigned int constituition);
+
+	void setAction(unsigned int action);
+
+	void setQuickness(unsigned int quickness);
+
+	void setStamina(unsigned int stamina);
+
+	void setMind(unsigned int mind);
+
+	void setFocus(unsigned int focus);
+
+	void setWillpower(unsigned int willpower);
+
+	void setHealthMax(unsigned int health);
+
+	void setStrengthMax(unsigned int strength);
+
+	void setConstitutionMax(unsigned int constituition);
+
+	void setActionMax(unsigned int action);
+
+	void setQuicknessMax(unsigned int quickness);
+
+	void setStaminaMax(unsigned int stamina);
+
+	void setMindMax(unsigned int mind);
+
+	void setFocusMax(unsigned int focus);
+
+	void setWillpowerMax(unsigned int willpower);
+
+	void setArmor(unsigned int ar);
+
+	void setHealthWounds(unsigned int wounds);
+
+	void setActionWounds(unsigned int wounds);
+
+	void setMindWounds(unsigned int wounds);
+
+	void setWoundsUpdateCounter(unsigned int count);
 
 	void changeConditionDamage(int amount);
 
@@ -412,6 +432,24 @@ public:
 	unsigned int getWoundsUpdateCounter();
 
 	unsigned int getNewWoundsUpdateCounter(int upd);
+
+	unsigned int getBaseHealth();
+
+	unsigned int getBaseStrength();
+
+	unsigned int getBaseConstitution();
+
+	unsigned int getBaseAction();
+
+	unsigned int getBaseQuickness();
+
+	unsigned int getBaseStamina();
+
+	unsigned int getBaseMind();
+
+	unsigned int getBaseFocus();
+
+	unsigned int getBaseWillpower();
 
 	unsigned int getHealth();
 
@@ -627,28 +665,30 @@ public:
 
 	void setBankCredits(int credits);
 
+	void applyBuff(const string& type, int value, float duration);
+
 	bool verifyCashCredits(int creditsToRemove);
 
 	bool verifyBankCredits(int creditsToRemove);
 
 protected:
-	string _return_getPerformanceName;
+	string _return_getCharacterApperance;
+
+	string _return_getTerrainName;
 
 	string _return_getSkill;
 
-	string _return_getSpeciesName;
-
 	string _return_getStfName;
-
-	string _return_getMood;
-
-	string _return_getCharacterApperance;
 
 	string _return_getRaceName;
 
 	string _return_getGuildName;
 
-	string _return_getTerrainName;
+	string _return_getPerformanceName;
+
+	string _return_getSpeciesName;
+
+	string _return_getMood;
 
 	unicode _return_getCharacterName;
 
@@ -752,77 +792,7 @@ public:
 
 	void clearStates();
 
-	bool hasAttackDelay();
-
-	void clearAttackDelay();
-
-	bool isOnFullHealth();
-
-	bool hasStates();
-
-	bool hasState(unsigned long long state);
-
-	bool isAttackable();
-
-	bool isListening();
-
-	bool isWatching();
-
-	void activateBurstRun();
-
-	bool hasQueuedState(unsigned int skillCRC);
-
-	bool removeQueuedState(unsigned int skillCRC);
-
-	bool addQueuedState(unsigned int skillCRC);
-
-	void setMeditateState();
-
-	void setHealth(unsigned int health);
-
-	void setStrength(unsigned int strength);
-
-	void setConstitution(unsigned int constituition);
-
-	void setAction(unsigned int action);
-
-	void setQuickness(unsigned int quickness);
-
-	void setStamina(unsigned int stamina);
-
-	void setMind(unsigned int mind);
-
-	void setFocus(unsigned int focus);
-
-	void setWillpower(unsigned int willpower);
-
-	void setHealthMax(unsigned int health);
-
-	void setStrengthMax(unsigned int strength);
-
-	void setConstitutionMax(unsigned int constituition);
-
-	void setActionMax(unsigned int action);
-
-	void setQuicknessMax(unsigned int quickness);
-
-	void setStaminaMax(unsigned int stamina);
-
-	void setMindMax(unsigned int mind);
-
-	void setFocusMax(unsigned int focus);
-
-	void setWillpowerMax(unsigned int willpower);
-
-	void setArmor(unsigned int ar);
-
-	void setHealthWounds(unsigned int wounds);
-
-	void setActionWounds(unsigned int wounds);
-
-	void setMindWounds(unsigned int wounds);
-
-	void setWoundsUpdateCounter(unsigned int count);
+	void resetHAMBars();
 
 	bool changeHAMBars(int hp, int ap, int mp, bool forcedChange);
 
@@ -871,6 +841,96 @@ public:
 	void changeMaxFocusBar(int hp);
 
 	void changeMaxWillpowerBar(int hp);
+
+	bool hasAttackDelay();
+
+	void clearAttackDelay();
+
+	bool isOnFullHealth();
+
+	bool hasStates();
+
+	bool hasState(unsigned long long state);
+
+	bool isAttackable();
+
+	bool isListening();
+
+	bool isWatching();
+
+	void activateBurstRun();
+
+	bool hasQueuedState(unsigned int skillCRC);
+
+	bool removeQueuedState(unsigned int skillCRC);
+
+	bool addQueuedState(unsigned int skillCRC);
+
+	void setMeditateState();
+
+	void setBaseHealth(unsigned int health);
+
+	void setBaseStrength(unsigned int strength);
+
+	void setBaseConstitution(unsigned int constituition);
+
+	void setBaseAction(unsigned int action);
+
+	void setBaseQuickness(unsigned int quickness);
+
+	void setBaseStamina(unsigned int stamina);
+
+	void setBaseMind(unsigned int mind);
+
+	void setBaseFocus(unsigned int focus);
+
+	void setBaseWillpower(unsigned int willpower);
+
+	void setHealth(unsigned int health);
+
+	void setStrength(unsigned int strength);
+
+	void setConstitution(unsigned int constituition);
+
+	void setAction(unsigned int action);
+
+	void setQuickness(unsigned int quickness);
+
+	void setStamina(unsigned int stamina);
+
+	void setMind(unsigned int mind);
+
+	void setFocus(unsigned int focus);
+
+	void setWillpower(unsigned int willpower);
+
+	void setHealthMax(unsigned int health);
+
+	void setStrengthMax(unsigned int strength);
+
+	void setConstitutionMax(unsigned int constituition);
+
+	void setActionMax(unsigned int action);
+
+	void setQuicknessMax(unsigned int quickness);
+
+	void setStaminaMax(unsigned int stamina);
+
+	void setMindMax(unsigned int mind);
+
+	void setFocusMax(unsigned int focus);
+
+	void setWillpowerMax(unsigned int willpower);
+
+	void setArmor(unsigned int ar);
+
+	void setHealthWounds(unsigned int wounds);
+
+	void setActionWounds(unsigned int wounds);
+
+	void setMindWounds(unsigned int wounds);
+
+	void setWoundsUpdateCounter(unsigned int count);
 
 	void changeConditionDamage(int amount);
 
@@ -991,6 +1051,24 @@ public:
 	unsigned int getWoundsUpdateCounter();
 
 	unsigned int getNewWoundsUpdateCounter(int upd);
+
+	unsigned int getBaseHealth();
+
+	unsigned int getBaseStrength();
+
+	unsigned int getBaseConstitution();
+
+	unsigned int getBaseAction();
+
+	unsigned int getBaseQuickness();
+
+	unsigned int getBaseStamina();
+
+	unsigned int getBaseMind();
+
+	unsigned int getBaseFocus();
+
+	unsigned int getBaseWillpower();
 
 	unsigned int getHealth();
 
@@ -1206,6 +1284,8 @@ public:
 
 	void setBankCredits(int credits);
 
+	void applyBuff(const string& type, int value, float duration);
+
 	bool verifyCashCredits(int creditsToRemove);
 
 	bool verifyBankCredits(int creditsToRemove);
@@ -1233,6 +1313,7 @@ protected:
 	string _param1_sendSystemMessage__string_string_long_;
 	string _param0_startDancing__string_;
 	string _param0_startPlayingMusic__string_;
+	string _param0_applyBuff__string_int_float_;
 };
 
 class CreatureObjectHelper : public ORBClassHelper {

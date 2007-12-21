@@ -61,6 +61,17 @@ public:
 		items.setNullValue(NULL);
 	}
 	
+	virtual ~ContainerImplementation() {
+		for (int i = 0; i < items.size(); ++i) {
+			SceneObject* item = items.get(i);
+			
+			item->undeploy();
+			delete item;
+		}
+		
+		items.removeAll();
+	}
+	
 	void addObject(SceneObject* obj) {
 		uint64 oid = obj->getObjectID(); 
 		items.put(oid, obj);

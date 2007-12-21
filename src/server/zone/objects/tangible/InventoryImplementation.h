@@ -62,13 +62,8 @@ public:
 	}
 	
 	~InventoryImplementation() {
-		for (int i = 0; i < items.size(); ++i) {
-			SceneObject* item = items.get(i);
-			item->undeploy();
-		}
-		
-		items.removeAll();
 	}
+	
 };
 
 #endif /*INVENTORYIMPLEMENTATION_H_*/

@@ -91,5 +91,9 @@ SceneObject* ObjectManager::remove(uint64 oid) {
 }
 
 SceneObject* ObjectManager::removeCachedObject(uint64 oid) {
-	return objectCacheMap->remove(oid);
+	SceneObject* obj = objectCacheMap->remove(oid);
+	
+	obj->redeploy();
+	
+	return obj;
 }

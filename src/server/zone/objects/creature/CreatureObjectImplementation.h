@@ -251,7 +251,7 @@ protected:
 	Vector<CreatureObject*> defenderList;
 	
 	// Store buff events so they can be removed on death.
-	Vector<Event*> currentEvents;
+	Vector<Event*> buffEvents;
 	
 	//group stuff
 	uint64 groupId;
@@ -423,6 +423,8 @@ public:
 	void changeMaxWillpowerBar(int32 hp);
 	
 	void changeConditionDamage(int amount);
+	
+	void resetHAMBars();
 	
 	void setMaxHAMBars(uint32 hp, uint32 ap, uint32 mp);
 	void setHAMBars(uint32 hp, uint32 ap, uint32 mp);
@@ -717,6 +719,21 @@ public:
 	// mount methods
 	void mountCreature(MountCreature* mnt, bool lockMount = true);
 	void dismount(bool lockMount = true, bool ignoreCooldown = false);
+
+	// buffing methods
+	void applyBuff(const string& type, int value, float duration);
+	void removeBuff(const string& type, int value, Event* event);
+	
+	void removeBuffs(bool doUpdateCreature = true);
+
+	// cash transaction methods
+	void addCashCredits(int credits);
+	void addBankCredits(int credits);
+	void subtractCashCredits(int credits);
+	void subtractBankCredits(int credits);
+
+	bool verifyCashCredits(int creditsToRemove);
+	bool verifyBankCredits(int creditsToRemove);
 
 	// misc		
 	virtual uint64 getNewItemID() = 0;
@@ -1516,11 +1533,6 @@ public:
 		return building;
 	}
 	
-	void addCashCredits(int credits);
-	void addBankCredits(int credits);
-	void subtractCashCredits(int credits);
-	void subtractBankCredits(int credits);
-	
 	inline void setCashCredits(int credits) {
 		cashCredits = credits;
 	}
@@ -1528,13 +1540,6 @@ public:
 	inline void setBankCredits(int credits) {
 		bankCredits = credits;
 	}
-	
-	bool verifyCashCredits(int creditsToRemove);
-	bool verifyBankCredits(int creditsToRemove);
-	
-	void CreatureObjectImplementation::applyBuff(const string& type, int value, 
-			float duration);
-	void CreatureObjectImplementation::removeBuff(const string& type, int value, Event* event);
 
 	friend class CombatManager;
 	friend class SkillManager;

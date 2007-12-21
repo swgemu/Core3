@@ -70,8 +70,6 @@ which carries forward this exception.
 #include "../planet/PlanetManager.h"
 #include "../../../chat/ChatManager.h"
 
-#include "PlayerHAM.h"
-
 PlayerManagerImplementation::PlayerManagerImplementation(ItemManager* mgr, ZoneProcessServerImplementation* srv) : PlayerManagerServant() {
 	PlayerMapImplementation* mapImpl = new PlayerMapImplementation(3000);
 	playerMap = (PlayerMap*) mapImpl->deploy("PlayerMap");
@@ -117,33 +115,8 @@ bool PlayerManagerImplementation::create(Player* player, uint32 sessionkey) {
 	string hairdata;
 	BinaryData hair(player->getHairData());
 	hair.encode(hairdata);
-	
-	int hamValues[9];
-	
-	string prof = player->getStartingProfession();
-	
-	if (prof == "artisan")
-		memcpy(hamValues, professionHams[0], sizeof(hamValues));
-	else if (prof == "brawler")
-		memcpy(hamValues, professionHams[1], sizeof(hamValues));
-	else if (prof == "entertainer")
-		memcpy(hamValues, professionHams[2], sizeof(hamValues));
-	else if (prof == "marksman")
-		memcpy(hamValues, professionHams[3], sizeof(hamValues));
-	else if (prof == "medic")
-		memcpy(hamValues, professionHams[4], sizeof(hamValues));
-	else if (prof == "scout")
-		memcpy(hamValues, professionHams[5], sizeof(hamValues));
-	else {
-		memcpy(hamValues, professionHams[6], sizeof(hamValues));
-	}
-	
-	// Add the race mods
-	int hamMods[9];
-	memcpy(hamMods, raceHamMods[race % 10], sizeof(hamMods));
-		
-	for (int i = 0; i < 9; i++)
-		hamValues[i] += hamMods[i];
+
+	player->createBaseStats();
 
 	try {
 		stringstream query;
@@ -166,9 +139,9 @@ bool PlayerManagerImplementation::create(Player* player, uint32 sessionkey) {
     	      << ",0,0,0,0,0," << player->getHeight() << ","
     	      << "'" << bio << "','" << info << "','" 
     	      << player->getHairObject() << "','" << hairdata.substr(0, hairdata.size() - 1) << "','', '0','',"
-    	      << hamValues[0] << "," << hamValues[1] << "," << hamValues[2] << "," 
-    	      << hamValues[3] << "," << hamValues[4] << "," << hamValues[5] << ","
-    	      << hamValues[6] << "," << hamValues[7] << "," << hamValues[8] << ")";
+    	      << player->getBaseHealth() << "," << player->getBaseStrength() << "," << player->getBaseConstitution() << "," 
+    	      << player->getBaseAction() << "," << player->getBaseQuickness() << "," << player->getBaseStamina() << "," 
+    	      << player->getBaseMind() << "," << player->getBaseFocus() << "," << player->getBaseWillpower() << ")";
 	
 		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
 	
@@ -322,36 +295,7 @@ Player* PlayerManagerImplementation::loadFromDatabase(PlayerImplementation* play
 	player->setBaseFocus(character->getInt(42));
 	player->setBaseWillpower(character->getInt(43));
 	
-	// On login have no buffs applied
-	player->setHealthMax(character->getInt(35));
-	player->setStrengthMax(character->getInt(36));
-	player->setConstitutionMax(character->getInt(37));
-	player->setActionMax(character->getInt(38));
-	player->setQuicknessMax(character->getInt(39));
-	player->setStaminaMax(character->getInt(40));
-	player->setMindMax(character->getInt(41));
-	player->setFocusMax(character->getInt(42));
-	player->setWillpowerMax(character->getInt(43));
-	
-	// And stats at maximum
-	player->setHealth(character->getInt(35));
-	player->setStrength(character->getInt(36));
-	player->setConstitution(character->getInt(37));
-	player->setAction(character->getInt(38));
-	player->setQuickness(character->getInt(39));
-	player->setStamina(character->getInt(40));
-	player->setMind(character->getInt(41));
-	player->setFocus(character->getInt(42));
-	player->setWillpower(character->getInt(43));
-	player->setHealthMax(character->getInt(35));
-	player->setStrengthMax(character->getInt(36));
-	player->setConstitutionMax(character->getInt(37));
-	player->setActionMax(character->getInt(38));
-	player->setQuicknessMax(character->getInt(39));
-	player->setStaminaMax(character->getInt(40));
-	player->setMindMax(character->getInt(41));
-	player->setFocusMax(character->getInt(42));
-	player->setWillpowerMax(character->getInt(43));
+	player->resetHAMBars();
 	
 	player->loadProfessions();
 	

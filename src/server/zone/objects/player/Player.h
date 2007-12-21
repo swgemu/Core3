@@ -157,6 +157,8 @@ public:
 
 	void loadItems();
 
+	void createBaseStats();
+
 	void saveProfessions();
 
 	void loadProfessions();
@@ -433,6 +435,8 @@ public:
 	void createItems();
 
 	void loadItems();
+
+	void createBaseStats();
 
 	void saveProfessions();
 

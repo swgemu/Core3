@@ -49,13 +49,15 @@ which carries forward this exception.
 
 class CreatureBuffEvent : public Event {
 	CreatureObjectImplementation* creo;
+	
 	string buffType;
 	int buffValue;
 	
 public:
 	CreatureBuffEvent(CreatureObjectImplementation* cr, const string& type,
-		int duration, int value) : Event(duration) {
+			float duration, int value) : Event((int) (duration * 1000)) {
 		creo = cr;
+		
 	    buffType = type;
 	    buffValue = value;
 	}
@@ -71,5 +73,6 @@ public:
 			creo->unlock();
 		}
 	}
+	
 };
 #endif /*CREATUREBUFFEVENT_H_*/

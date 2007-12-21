@@ -73,6 +73,8 @@ which carries forward this exception.
 #include "Player.h"
 #include "PlayerImplementation.h"
 
+#include "PlayerHAM.h"
+
 #include "events/PlayerLogoutEvent.h"
 #include "events/PlayerDisconnectEvent.h"
 #include "events/PlayerRecoveryEvent.h"
@@ -83,6 +85,7 @@ which carries forward this exception.
 #include "../creature/events/DizzyFallDownEvent.h"
 
 #include "professions/Certification.h"
+
 #include "../../managers/combat/CommandQueueAction.h"
 
 PlayerImplementation::PlayerImplementation() : PlayerServant(0) {
@@ -170,7 +173,7 @@ void PlayerImplementation::init() {
 	setLogging(false);
 	setGlobalLogging(true);
 }
-	
+
 Player* PlayerImplementation::create(ZoneClient* client) {
 	Player* player = (Player*) deploy();
 
@@ -345,6 +348,8 @@ void PlayerImplementation::unload() {
 			changeFactionEvent = NULL;
 		}
 
+		clearBuffs();
+		
 		removeFromZone(true);
 		//zone = NULL;
 	}
@@ -479,6 +484,46 @@ void PlayerImplementation::loadItems() {
 		
 		hairObj = (HairObject*) hairImpl->deploy();
 	}
+}
+
+void PlayerImplementation::createBaseStats() {
+	//TODO: bit hackish, find more clean solution
+	
+	int hamValues[9];
+	
+	if (startingProfession == "artisan")
+		memcpy(hamValues, professionHams[0], sizeof(hamValues));
+	else if (startingProfession == "brawler")
+		memcpy(hamValues, professionHams[1], sizeof(hamValues));
+	else if (startingProfession == "entertainer")
+		memcpy(hamValues, professionHams[2], sizeof(hamValues));
+	else if (startingProfession == "marksman")
+		memcpy(hamValues, professionHams[3], sizeof(hamValues));
+	else if (startingProfession == "medic")
+		memcpy(hamValues, professionHams[4], sizeof(hamValues));
+	else if (startingProfession == "scout")
+		memcpy(hamValues, professionHams[5], sizeof(hamValues));
+	else
+		memcpy(hamValues, professionHams[6], sizeof(hamValues));
+
+	int race = Races::getRaceID(raceFile);
+
+	// Add the race mods
+	int hamMods[9];
+	memcpy(hamMods, raceHamMods[race % 10], sizeof(hamMods));
+		
+	for (int i = 0; i < 9; i++)
+		hamValues[i] += hamMods[i];
+	
+	baseHealth = hamValues[0];
+	baseStrength = hamValues[1];
+	baseConstitution = hamValues[2];
+	baseAction = hamValues[3];
+	baseQuickness = hamValues[4];
+	baseStamina = hamValues[5];
+	baseMind = hamValues[6];
+	baseFocus = hamValues[7];
+	baseWillpower = hamValues[8];
 }
 
 void PlayerImplementation::sendToOwner() {
@@ -1214,106 +1259,11 @@ void PlayerImplementation::doClone() {
 		
 		cManager->freeDuelList(_this);
 	}
-		
-	// remove buff events from queue
-	for(int i = (currentEvents.size() - 1); i >= 0; i--) {
-		Event* e = currentEvents.get(i);
-		server->removeEvent(e);
-		currentEvents.remove(i);
-	}
-	
-	// Clear buff icons
-	if(healthBuff) {
-		addBuff(0x98321369, 0.0f);
-		healthBuff = false;
-	}
-	
-	if(strengthBuff) {
-		addBuff(0x815D85C5, 0.0f);
-		strengthBuff = false;
-	}
-	
-	if(constitutionBuff) {
-		addBuff(0x7F86D2C6, 0.0f);
-		constitutionBuff = false;
-	}
-	
-	if(actionBuff) {
-		addBuff(0x4BF616E2, 0.0f);
-		actionBuff = false;
-	}
-	
-	if(quicknessBuff) {
-		addBuff(0x71B5C842, 0.0f);
-		quicknessBuff = false;
-	}
-	
-	if(staminaBuff) {
-		addBuff(0xED0040D9, 0.0f);
-		staminaBuff = false;
-	}
-	
-	if(mindBuff) {
-		addBuff(0x11C1772E, 0.0f);
-		mindBuff = false;
-	}
-	
-	if(focusBuff) {
-		addBuff(0x2E77F586, 0.0f);
-		focusBuff = false;
-	}
-	
-	if(willpowerBuff) {
-		addBuff(0x3EC6FCB6, 0.0f);
-		willpowerBuff = false;
-	}
-	
-	// reset HAM
-	
-	CreatureObjectDeltaMessage6* delta = new CreatureObjectDeltaMessage6(_this);
-	
-	health = healthMax = baseHealth;
-	delta->updateHealthBar(health);
-	delta->updateMaxHealthBar(healthMax);
-	
-	strength = strengthMax = baseStrength;
-	delta->updateStrengthBar(strength);
-	delta->updateMaxStrengthBar(strengthMax);
-	
-	constitution = constitutionMax = baseConstitution;
-	delta->updateConstitutionBar(constitution);
-	delta->updateMaxConstitutionBar(constitutionMax);
-	
-	action = actionMax = baseAction;
-	delta->updateActionBar(action);
-	delta->updateMaxActionBar(actionMax);
-	
-	quickness = quicknessMax = baseQuickness;
-	delta->updateQuicknessBar(quickness);
-	delta->updateMaxQuicknessBar(quicknessMax);
-	
-	stamina = staminaMax = baseStamina;
-	delta->updateStaminaBar(stamina);
-	delta->updateMaxStaminaBar(staminaMax);
-	
-	mind = mindMax = baseMind;
-	delta->updateMindBar(mind);
-	delta->updateMaxMindBar(mindMax);
-	
-	focus = focusMax = baseFocus;
-	delta->updateFocusBar(focus);
-	delta->updateMaxFocusBar(focusMax);
-	
-	willpower = willpowerMax = baseWillpower;
-	delta->updateWillpowerBar(willpower);
-	delta->updateMaxWillpowerBar(willpowerMax);
-	
-	delta->close();
-	
-	broadcastMessage(delta);
+
+	clearBuffs();
 	
 	changeForceBar(0);
-		
+	
 	setPosture(UPRIGHT_POSTURE);
 }
 
@@ -1444,6 +1394,50 @@ bool PlayerImplementation::changeForceBar(int32 fp) {
 void PlayerImplementation::addBuff(uint32 buffcrc, float time) {
 	Buffs* bf = new Buffs(_this, buffcrc, time);
 	sendMessage(bf);
+}
+
+void PlayerImplementation::clearBuffs(bool doUpdatePlayer) {
+	// Clear buff icons
+	if (doUpdatePlayer) {
+		if (healthBuff)
+			addBuff(0x98321369, 0.0f);
+	
+		if (strengthBuff)
+			addBuff(0x815D85C5, 0.0f);
+	
+		if (constitutionBuff)
+			addBuff(0x7F86D2C6, 0.0f);
+	
+		if (actionBuff)
+			addBuff(0x4BF616E2, 0.0f);
+	
+		if (quicknessBuff)
+			addBuff(0x71B5C842, 0.0f);
+	
+		if (staminaBuff)
+			addBuff(0xED0040D9, 0.0f);
+	
+		if (mindBuff)
+			addBuff(0x11C1772E, 0.0f);
+	
+		if (focusBuff)
+			addBuff(0x2E77F586, 0.0f);
+	
+		if (willpowerBuff)
+			addBuff(0x3EC6FCB6, 0.0f);
+	}
+		
+	healthBuff = false;
+	strengthBuff = false;
+	constitutionBuff = false;
+	actionBuff = false;
+	quicknessBuff = false;
+	staminaBuff = false;
+	mindBuff = false;
+	focusBuff = false;
+	willpowerBuff = false;
+
+	removeBuffs(doUpdatePlayer);
 }
 
 /*

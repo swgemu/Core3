@@ -668,9 +668,8 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 				else
 					broadcastMessageRange(player, message.str(), range);
 			}
-		} else if(cmd=="@buff") {
-			if(player->getHealthMax() == player->getBaseHealth()) {
-				
+		} else if (cmd == "@buff") {
+			if (player->getHealthMax() == player->getBaseHealth()) {
 				int buffValue = 3000;
 				float buffDuration = 10800.0f;
 

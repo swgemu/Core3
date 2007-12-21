@@ -657,463 +657,16 @@ void CreatureObject::clearStates() {
 		((CreatureObjectImplementation*) _impl)->clearStates();
 }
 
-bool CreatureObject::hasAttackDelay() {
+void CreatureObject::resetHAMBars() {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
 		ORBMethodInvocation invocation(this, 51);
 
-		return invocation.executeWithBooleanReturn();
-	} else
-		return ((CreatureObjectImplementation*) _impl)->hasAttackDelay();
-}
-
-void CreatureObject::clearAttackDelay() {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 52);
-
 		invocation.executeWithVoidReturn();
 	} else
-		((CreatureObjectImplementation*) _impl)->clearAttackDelay();
-}
-
-bool CreatureObject::isOnFullHealth() {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 53);
-
-		return invocation.executeWithBooleanReturn();
-	} else
-		return ((CreatureObjectImplementation*) _impl)->isOnFullHealth();
-}
-
-bool CreatureObject::hasStates() {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 54);
-
-		return invocation.executeWithBooleanReturn();
-	} else
-		return ((CreatureObjectImplementation*) _impl)->hasStates();
-}
-
-bool CreatureObject::hasState(unsigned long long state) {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 55);
-		invocation.addUnsignedLongParameter(state);
-
-		return invocation.executeWithBooleanReturn();
-	} else
-		return ((CreatureObjectImplementation*) _impl)->hasState(state);
-}
-
-bool CreatureObject::isAttackable() {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 56);
-
-		return invocation.executeWithBooleanReturn();
-	} else
-		return ((CreatureObjectImplementation*) _impl)->isAttackable();
-}
-
-bool CreatureObject::isListening() {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 57);
-
-		return invocation.executeWithBooleanReturn();
-	} else
-		return ((CreatureObjectImplementation*) _impl)->isListening();
-}
-
-bool CreatureObject::isWatching() {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 58);
-
-		return invocation.executeWithBooleanReturn();
-	} else
-		return ((CreatureObjectImplementation*) _impl)->isWatching();
-}
-
-void CreatureObject::activateBurstRun() {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 59);
-
-		invocation.executeWithVoidReturn();
-	} else
-		((CreatureObjectImplementation*) _impl)->activateBurstRun();
-}
-
-bool CreatureObject::hasQueuedState(unsigned int skillCRC) {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 60);
-		invocation.addUnsignedIntParameter(skillCRC);
-
-		return invocation.executeWithBooleanReturn();
-	} else
-		return ((CreatureObjectImplementation*) _impl)->hasQueuedState(skillCRC);
-}
-
-bool CreatureObject::removeQueuedState(unsigned int skillCRC) {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 61);
-		invocation.addUnsignedIntParameter(skillCRC);
-
-		return invocation.executeWithBooleanReturn();
-	} else
-		return ((CreatureObjectImplementation*) _impl)->removeQueuedState(skillCRC);
-}
-
-bool CreatureObject::addQueuedState(unsigned int skillCRC) {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 62);
-		invocation.addUnsignedIntParameter(skillCRC);
-
-		return invocation.executeWithBooleanReturn();
-	} else
-		return ((CreatureObjectImplementation*) _impl)->addQueuedState(skillCRC);
-}
-
-void CreatureObject::setMeditateState() {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 63);
-
-		invocation.executeWithVoidReturn();
-	} else
-		((CreatureObjectImplementation*) _impl)->setMeditateState();
-}
-
-void CreatureObject::setHealth(unsigned int health) {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 64);
-		invocation.addUnsignedIntParameter(health);
-
-		invocation.executeWithVoidReturn();
-	} else
-		((CreatureObjectImplementation*) _impl)->setHealth(health);
-}
-
-void CreatureObject::setStrength(unsigned int strength) {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 65);
-		invocation.addUnsignedIntParameter(strength);
-
-		invocation.executeWithVoidReturn();
-	} else
-		((CreatureObjectImplementation*) _impl)->setStrength(strength);
-}
-
-void CreatureObject::setConstitution(unsigned int constituition) {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 66);
-		invocation.addUnsignedIntParameter(constituition);
-
-		invocation.executeWithVoidReturn();
-	} else
-		((CreatureObjectImplementation*) _impl)->setConstitution(constituition);
-}
-
-void CreatureObject::setAction(unsigned int action) {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 67);
-		invocation.addUnsignedIntParameter(action);
-
-		invocation.executeWithVoidReturn();
-	} else
-		((CreatureObjectImplementation*) _impl)->setAction(action);
-}
-
-void CreatureObject::setQuickness(unsigned int quickness) {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 68);
-		invocation.addUnsignedIntParameter(quickness);
-
-		invocation.executeWithVoidReturn();
-	} else
-		((CreatureObjectImplementation*) _impl)->setQuickness(quickness);
-}
-
-void CreatureObject::setStamina(unsigned int stamina) {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 69);
-		invocation.addUnsignedIntParameter(stamina);
-
-		invocation.executeWithVoidReturn();
-	} else
-		((CreatureObjectImplementation*) _impl)->setStamina(stamina);
-}
-
-void CreatureObject::setMind(unsigned int mind) {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 70);
-		invocation.addUnsignedIntParameter(mind);
-
-		invocation.executeWithVoidReturn();
-	} else
-		((CreatureObjectImplementation*) _impl)->setMind(mind);
-}
-
-void CreatureObject::setFocus(unsigned int focus) {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 71);
-		invocation.addUnsignedIntParameter(focus);
-
-		invocation.executeWithVoidReturn();
-	} else
-		((CreatureObjectImplementation*) _impl)->setFocus(focus);
-}
-
-void CreatureObject::setWillpower(unsigned int willpower) {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 72);
-		invocation.addUnsignedIntParameter(willpower);
-
-		invocation.executeWithVoidReturn();
-	} else
-		((CreatureObjectImplementation*) _impl)->setWillpower(willpower);
-}
-
-void CreatureObject::setHealthMax(unsigned int health) {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 73);
-		invocation.addUnsignedIntParameter(health);
-
-		invocation.executeWithVoidReturn();
-	} else
-		((CreatureObjectImplementation*) _impl)->setHealthMax(health);
-}
-
-void CreatureObject::setStrengthMax(unsigned int strength) {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 74);
-		invocation.addUnsignedIntParameter(strength);
-
-		invocation.executeWithVoidReturn();
-	} else
-		((CreatureObjectImplementation*) _impl)->setStrengthMax(strength);
-}
-
-void CreatureObject::setConstitutionMax(unsigned int constituition) {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 75);
-		invocation.addUnsignedIntParameter(constituition);
-
-		invocation.executeWithVoidReturn();
-	} else
-		((CreatureObjectImplementation*) _impl)->setConstitutionMax(constituition);
-}
-
-void CreatureObject::setActionMax(unsigned int action) {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 76);
-		invocation.addUnsignedIntParameter(action);
-
-		invocation.executeWithVoidReturn();
-	} else
-		((CreatureObjectImplementation*) _impl)->setActionMax(action);
-}
-
-void CreatureObject::setQuicknessMax(unsigned int quickness) {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 77);
-		invocation.addUnsignedIntParameter(quickness);
-
-		invocation.executeWithVoidReturn();
-	} else
-		((CreatureObjectImplementation*) _impl)->setQuicknessMax(quickness);
-}
-
-void CreatureObject::setStaminaMax(unsigned int stamina) {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 78);
-		invocation.addUnsignedIntParameter(stamina);
-
-		invocation.executeWithVoidReturn();
-	} else
-		((CreatureObjectImplementation*) _impl)->setStaminaMax(stamina);
-}
-
-void CreatureObject::setMindMax(unsigned int mind) {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 79);
-		invocation.addUnsignedIntParameter(mind);
-
-		invocation.executeWithVoidReturn();
-	} else
-		((CreatureObjectImplementation*) _impl)->setMindMax(mind);
-}
-
-void CreatureObject::setFocusMax(unsigned int focus) {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 80);
-		invocation.addUnsignedIntParameter(focus);
-
-		invocation.executeWithVoidReturn();
-	} else
-		((CreatureObjectImplementation*) _impl)->setFocusMax(focus);
-}
-
-void CreatureObject::setWillpowerMax(unsigned int willpower) {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 81);
-		invocation.addUnsignedIntParameter(willpower);
-
-		invocation.executeWithVoidReturn();
-	} else
-		((CreatureObjectImplementation*) _impl)->setWillpowerMax(willpower);
-}
-
-void CreatureObject::setArmor(unsigned int ar) {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 82);
-		invocation.addUnsignedIntParameter(ar);
-
-		invocation.executeWithVoidReturn();
-	} else
-		((CreatureObjectImplementation*) _impl)->setArmor(ar);
-}
-
-void CreatureObject::setHealthWounds(unsigned int wounds) {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 83);
-		invocation.addUnsignedIntParameter(wounds);
-
-		invocation.executeWithVoidReturn();
-	} else
-		((CreatureObjectImplementation*) _impl)->setHealthWounds(wounds);
-}
-
-void CreatureObject::setActionWounds(unsigned int wounds) {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 84);
-		invocation.addUnsignedIntParameter(wounds);
-
-		invocation.executeWithVoidReturn();
-	} else
-		((CreatureObjectImplementation*) _impl)->setActionWounds(wounds);
-}
-
-void CreatureObject::setMindWounds(unsigned int wounds) {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 85);
-		invocation.addUnsignedIntParameter(wounds);
-
-		invocation.executeWithVoidReturn();
-	} else
-		((CreatureObjectImplementation*) _impl)->setMindWounds(wounds);
-}
-
-void CreatureObject::setWoundsUpdateCounter(unsigned int count) {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 86);
-		invocation.addUnsignedIntParameter(count);
-
-		invocation.executeWithVoidReturn();
-	} else
-		((CreatureObjectImplementation*) _impl)->setWoundsUpdateCounter(count);
+		((CreatureObjectImplementation*) _impl)->resetHAMBars();
 }
 
 bool CreatureObject::changeHAMBars(int hp, int ap, int mp, bool forcedChange) {
@@ -1121,7 +674,7 @@ bool CreatureObject::changeHAMBars(int hp, int ap, int mp, bool forcedChange) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 87);
+		ORBMethodInvocation invocation(this, 52);
 		invocation.addSignedIntParameter(hp);
 		invocation.addSignedIntParameter(ap);
 		invocation.addSignedIntParameter(mp);
@@ -1137,7 +690,7 @@ bool CreatureObject::changeHAMWounds(int hpwnd, int apwnd, int mpwnd, bool force
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 88);
+		ORBMethodInvocation invocation(this, 53);
 		invocation.addSignedIntParameter(hpwnd);
 		invocation.addSignedIntParameter(apwnd);
 		invocation.addSignedIntParameter(mpwnd);
@@ -1153,7 +706,7 @@ void CreatureObject::changeMaxHAMBars(int hp, int ap, int mp) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 89);
+		ORBMethodInvocation invocation(this, 54);
 		invocation.addSignedIntParameter(hp);
 		invocation.addSignedIntParameter(ap);
 		invocation.addSignedIntParameter(mp);
@@ -1168,7 +721,7 @@ bool CreatureObject::changeHealthWoundsBar(int wounds, bool forcedChange) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 90);
+		ORBMethodInvocation invocation(this, 55);
 		invocation.addSignedIntParameter(wounds);
 		invocation.addBooleanParameter(forcedChange);
 
@@ -1182,7 +735,7 @@ bool CreatureObject::changeActionWoundsBar(int wounds, bool forcedChange) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 91);
+		ORBMethodInvocation invocation(this, 56);
 		invocation.addSignedIntParameter(wounds);
 		invocation.addBooleanParameter(forcedChange);
 
@@ -1196,7 +749,7 @@ bool CreatureObject::changeMindWoundsBar(int wounds, bool forcedChange) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 92);
+		ORBMethodInvocation invocation(this, 57);
 		invocation.addSignedIntParameter(wounds);
 		invocation.addBooleanParameter(forcedChange);
 
@@ -1210,7 +763,7 @@ bool CreatureObject::changeHealthBar(int hp, bool forcedChange) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 93);
+		ORBMethodInvocation invocation(this, 58);
 		invocation.addSignedIntParameter(hp);
 		invocation.addBooleanParameter(forcedChange);
 
@@ -1224,7 +777,7 @@ bool CreatureObject::changeStrengthBar(int st, bool forcedChange) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 94);
+		ORBMethodInvocation invocation(this, 59);
 		invocation.addSignedIntParameter(st);
 		invocation.addBooleanParameter(forcedChange);
 
@@ -1238,7 +791,7 @@ bool CreatureObject::changeConstitutionBar(int cs, bool forcedChange) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 95);
+		ORBMethodInvocation invocation(this, 60);
 		invocation.addSignedIntParameter(cs);
 		invocation.addBooleanParameter(forcedChange);
 
@@ -1252,7 +805,7 @@ void CreatureObject::changeMaxHealthBar(int hp) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 96);
+		ORBMethodInvocation invocation(this, 61);
 		invocation.addSignedIntParameter(hp);
 
 		invocation.executeWithVoidReturn();
@@ -1265,7 +818,7 @@ void CreatureObject::changeMaxStrengthBar(int hp) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 97);
+		ORBMethodInvocation invocation(this, 62);
 		invocation.addSignedIntParameter(hp);
 
 		invocation.executeWithVoidReturn();
@@ -1278,7 +831,7 @@ void CreatureObject::changeMaxConstitutionBar(int hp) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 98);
+		ORBMethodInvocation invocation(this, 63);
 		invocation.addSignedIntParameter(hp);
 
 		invocation.executeWithVoidReturn();
@@ -1291,7 +844,7 @@ bool CreatureObject::changeActionBar(int ap, bool forcedChange) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 99);
+		ORBMethodInvocation invocation(this, 64);
 		invocation.addSignedIntParameter(ap);
 		invocation.addBooleanParameter(forcedChange);
 
@@ -1305,7 +858,7 @@ bool CreatureObject::changeQuicknessBar(int qc, bool forcedChange) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 100);
+		ORBMethodInvocation invocation(this, 65);
 		invocation.addSignedIntParameter(qc);
 		invocation.addBooleanParameter(forcedChange);
 
@@ -1319,7 +872,7 @@ bool CreatureObject::changeStaminaBar(int st, bool forcedChange) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 101);
+		ORBMethodInvocation invocation(this, 66);
 		invocation.addSignedIntParameter(st);
 		invocation.addBooleanParameter(forcedChange);
 
@@ -1333,7 +886,7 @@ void CreatureObject::changeMaxActionBar(int hp) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 102);
+		ORBMethodInvocation invocation(this, 67);
 		invocation.addSignedIntParameter(hp);
 
 		invocation.executeWithVoidReturn();
@@ -1346,7 +899,7 @@ void CreatureObject::changeMaxQuicknessBar(int hp) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 103);
+		ORBMethodInvocation invocation(this, 68);
 		invocation.addSignedIntParameter(hp);
 
 		invocation.executeWithVoidReturn();
@@ -1359,7 +912,7 @@ void CreatureObject::changeMaxStaminaBar(int hp) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 104);
+		ORBMethodInvocation invocation(this, 69);
 		invocation.addSignedIntParameter(hp);
 
 		invocation.executeWithVoidReturn();
@@ -1372,7 +925,7 @@ bool CreatureObject::changeMindBar(int mp, bool forcedChange) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 105);
+		ORBMethodInvocation invocation(this, 70);
 		invocation.addSignedIntParameter(mp);
 		invocation.addBooleanParameter(forcedChange);
 
@@ -1386,7 +939,7 @@ bool CreatureObject::changeFocusBar(int fc, bool forcedChange) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 106);
+		ORBMethodInvocation invocation(this, 71);
 		invocation.addSignedIntParameter(fc);
 		invocation.addBooleanParameter(forcedChange);
 
@@ -1400,7 +953,7 @@ bool CreatureObject::changeWillpowerBar(int wl, bool forcedChange) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 107);
+		ORBMethodInvocation invocation(this, 72);
 		invocation.addSignedIntParameter(wl);
 		invocation.addBooleanParameter(forcedChange);
 
@@ -1414,7 +967,7 @@ void CreatureObject::changeMaxMindBar(int hp) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 108);
+		ORBMethodInvocation invocation(this, 73);
 		invocation.addSignedIntParameter(hp);
 
 		invocation.executeWithVoidReturn();
@@ -1427,7 +980,7 @@ void CreatureObject::changeMaxFocusBar(int hp) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 109);
+		ORBMethodInvocation invocation(this, 74);
 		invocation.addSignedIntParameter(hp);
 
 		invocation.executeWithVoidReturn();
@@ -1440,7 +993,7 @@ void CreatureObject::changeMaxWillpowerBar(int hp) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 110);
+		ORBMethodInvocation invocation(this, 75);
 		invocation.addSignedIntParameter(hp);
 
 		invocation.executeWithVoidReturn();
@@ -1448,12 +1001,588 @@ void CreatureObject::changeMaxWillpowerBar(int hp) {
 		((CreatureObjectImplementation*) _impl)->changeMaxWillpowerBar(hp);
 }
 
-void CreatureObject::changeConditionDamage(int amount) {
+bool CreatureObject::hasAttackDelay() {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 76);
+
+		return invocation.executeWithBooleanReturn();
+	} else
+		return ((CreatureObjectImplementation*) _impl)->hasAttackDelay();
+}
+
+void CreatureObject::clearAttackDelay() {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 77);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->clearAttackDelay();
+}
+
+bool CreatureObject::isOnFullHealth() {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 78);
+
+		return invocation.executeWithBooleanReturn();
+	} else
+		return ((CreatureObjectImplementation*) _impl)->isOnFullHealth();
+}
+
+bool CreatureObject::hasStates() {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 79);
+
+		return invocation.executeWithBooleanReturn();
+	} else
+		return ((CreatureObjectImplementation*) _impl)->hasStates();
+}
+
+bool CreatureObject::hasState(unsigned long long state) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 80);
+		invocation.addUnsignedLongParameter(state);
+
+		return invocation.executeWithBooleanReturn();
+	} else
+		return ((CreatureObjectImplementation*) _impl)->hasState(state);
+}
+
+bool CreatureObject::isAttackable() {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 81);
+
+		return invocation.executeWithBooleanReturn();
+	} else
+		return ((CreatureObjectImplementation*) _impl)->isAttackable();
+}
+
+bool CreatureObject::isListening() {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 82);
+
+		return invocation.executeWithBooleanReturn();
+	} else
+		return ((CreatureObjectImplementation*) _impl)->isListening();
+}
+
+bool CreatureObject::isWatching() {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 83);
+
+		return invocation.executeWithBooleanReturn();
+	} else
+		return ((CreatureObjectImplementation*) _impl)->isWatching();
+}
+
+void CreatureObject::activateBurstRun() {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 84);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->activateBurstRun();
+}
+
+bool CreatureObject::hasQueuedState(unsigned int skillCRC) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 85);
+		invocation.addUnsignedIntParameter(skillCRC);
+
+		return invocation.executeWithBooleanReturn();
+	} else
+		return ((CreatureObjectImplementation*) _impl)->hasQueuedState(skillCRC);
+}
+
+bool CreatureObject::removeQueuedState(unsigned int skillCRC) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 86);
+		invocation.addUnsignedIntParameter(skillCRC);
+
+		return invocation.executeWithBooleanReturn();
+	} else
+		return ((CreatureObjectImplementation*) _impl)->removeQueuedState(skillCRC);
+}
+
+bool CreatureObject::addQueuedState(unsigned int skillCRC) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 87);
+		invocation.addUnsignedIntParameter(skillCRC);
+
+		return invocation.executeWithBooleanReturn();
+	} else
+		return ((CreatureObjectImplementation*) _impl)->addQueuedState(skillCRC);
+}
+
+void CreatureObject::setMeditateState() {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 88);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setMeditateState();
+}
+
+void CreatureObject::setBaseHealth(unsigned int health) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 89);
+		invocation.addUnsignedIntParameter(health);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setBaseHealth(health);
+}
+
+void CreatureObject::setBaseStrength(unsigned int strength) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 90);
+		invocation.addUnsignedIntParameter(strength);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setBaseStrength(strength);
+}
+
+void CreatureObject::setBaseConstitution(unsigned int constituition) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 91);
+		invocation.addUnsignedIntParameter(constituition);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setBaseConstitution(constituition);
+}
+
+void CreatureObject::setBaseAction(unsigned int action) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 92);
+		invocation.addUnsignedIntParameter(action);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setBaseAction(action);
+}
+
+void CreatureObject::setBaseQuickness(unsigned int quickness) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 93);
+		invocation.addUnsignedIntParameter(quickness);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setBaseQuickness(quickness);
+}
+
+void CreatureObject::setBaseStamina(unsigned int stamina) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 94);
+		invocation.addUnsignedIntParameter(stamina);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setBaseStamina(stamina);
+}
+
+void CreatureObject::setBaseMind(unsigned int mind) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 95);
+		invocation.addUnsignedIntParameter(mind);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setBaseMind(mind);
+}
+
+void CreatureObject::setBaseFocus(unsigned int focus) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 96);
+		invocation.addUnsignedIntParameter(focus);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setBaseFocus(focus);
+}
+
+void CreatureObject::setBaseWillpower(unsigned int willpower) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 97);
+		invocation.addUnsignedIntParameter(willpower);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setBaseWillpower(willpower);
+}
+
+void CreatureObject::setHealth(unsigned int health) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 98);
+		invocation.addUnsignedIntParameter(health);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setHealth(health);
+}
+
+void CreatureObject::setStrength(unsigned int strength) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 99);
+		invocation.addUnsignedIntParameter(strength);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setStrength(strength);
+}
+
+void CreatureObject::setConstitution(unsigned int constituition) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 100);
+		invocation.addUnsignedIntParameter(constituition);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setConstitution(constituition);
+}
+
+void CreatureObject::setAction(unsigned int action) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 101);
+		invocation.addUnsignedIntParameter(action);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setAction(action);
+}
+
+void CreatureObject::setQuickness(unsigned int quickness) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 102);
+		invocation.addUnsignedIntParameter(quickness);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setQuickness(quickness);
+}
+
+void CreatureObject::setStamina(unsigned int stamina) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 103);
+		invocation.addUnsignedIntParameter(stamina);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setStamina(stamina);
+}
+
+void CreatureObject::setMind(unsigned int mind) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 104);
+		invocation.addUnsignedIntParameter(mind);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setMind(mind);
+}
+
+void CreatureObject::setFocus(unsigned int focus) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 105);
+		invocation.addUnsignedIntParameter(focus);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setFocus(focus);
+}
+
+void CreatureObject::setWillpower(unsigned int willpower) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 106);
+		invocation.addUnsignedIntParameter(willpower);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setWillpower(willpower);
+}
+
+void CreatureObject::setHealthMax(unsigned int health) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 107);
+		invocation.addUnsignedIntParameter(health);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setHealthMax(health);
+}
+
+void CreatureObject::setStrengthMax(unsigned int strength) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 108);
+		invocation.addUnsignedIntParameter(strength);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setStrengthMax(strength);
+}
+
+void CreatureObject::setConstitutionMax(unsigned int constituition) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 109);
+		invocation.addUnsignedIntParameter(constituition);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setConstitutionMax(constituition);
+}
+
+void CreatureObject::setActionMax(unsigned int action) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 110);
+		invocation.addUnsignedIntParameter(action);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setActionMax(action);
+}
+
+void CreatureObject::setQuicknessMax(unsigned int quickness) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
 		ORBMethodInvocation invocation(this, 111);
+		invocation.addUnsignedIntParameter(quickness);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setQuicknessMax(quickness);
+}
+
+void CreatureObject::setStaminaMax(unsigned int stamina) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 112);
+		invocation.addUnsignedIntParameter(stamina);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setStaminaMax(stamina);
+}
+
+void CreatureObject::setMindMax(unsigned int mind) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 113);
+		invocation.addUnsignedIntParameter(mind);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setMindMax(mind);
+}
+
+void CreatureObject::setFocusMax(unsigned int focus) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 114);
+		invocation.addUnsignedIntParameter(focus);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setFocusMax(focus);
+}
+
+void CreatureObject::setWillpowerMax(unsigned int willpower) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 115);
+		invocation.addUnsignedIntParameter(willpower);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setWillpowerMax(willpower);
+}
+
+void CreatureObject::setArmor(unsigned int ar) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 116);
+		invocation.addUnsignedIntParameter(ar);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setArmor(ar);
+}
+
+void CreatureObject::setHealthWounds(unsigned int wounds) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 117);
+		invocation.addUnsignedIntParameter(wounds);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setHealthWounds(wounds);
+}
+
+void CreatureObject::setActionWounds(unsigned int wounds) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 118);
+		invocation.addUnsignedIntParameter(wounds);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setActionWounds(wounds);
+}
+
+void CreatureObject::setMindWounds(unsigned int wounds) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 119);
+		invocation.addUnsignedIntParameter(wounds);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setMindWounds(wounds);
+}
+
+void CreatureObject::setWoundsUpdateCounter(unsigned int count) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 120);
+		invocation.addUnsignedIntParameter(count);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setWoundsUpdateCounter(count);
+}
+
+void CreatureObject::changeConditionDamage(int amount) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 121);
 		invocation.addSignedIntParameter(amount);
 
 		invocation.executeWithVoidReturn();
@@ -1466,7 +1595,7 @@ void CreatureObject::setPosture(unsigned char state, bool overrideDizzy, bool ob
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 112);
+		ORBMethodInvocation invocation(this, 122);
 		invocation.addUnsignedCharParameter(state);
 		invocation.addBooleanParameter(overrideDizzy);
 		invocation.addBooleanParameter(objectInteraction);
@@ -1484,7 +1613,7 @@ void CreatureObject::setDizziedState() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 113);
+		ORBMethodInvocation invocation(this, 123);
 
 		invocation.executeWithVoidReturn();
 	} else
@@ -1496,7 +1625,7 @@ void CreatureObject::setStunnedState() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 114);
+		ORBMethodInvocation invocation(this, 124);
 
 		invocation.executeWithVoidReturn();
 	} else
@@ -1508,7 +1637,7 @@ void CreatureObject::setBlindedState() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 115);
+		ORBMethodInvocation invocation(this, 125);
 
 		invocation.executeWithVoidReturn();
 	} else
@@ -1520,7 +1649,7 @@ void CreatureObject::setIntimidatedState() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 116);
+		ORBMethodInvocation invocation(this, 126);
 
 		invocation.executeWithVoidReturn();
 	} else
@@ -1532,7 +1661,7 @@ void CreatureObject::setPoisonedState(int str, int type) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 117);
+		ORBMethodInvocation invocation(this, 127);
 		invocation.addSignedIntParameter(str);
 		invocation.addSignedIntParameter(type);
 
@@ -1546,7 +1675,7 @@ void CreatureObject::setBleedingState(int str, int type) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 118);
+		ORBMethodInvocation invocation(this, 128);
 		invocation.addSignedIntParameter(str);
 		invocation.addSignedIntParameter(type);
 
@@ -1560,7 +1689,7 @@ void CreatureObject::setDiseasedState(int str, int type) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 119);
+		ORBMethodInvocation invocation(this, 129);
 		invocation.addSignedIntParameter(str);
 		invocation.addSignedIntParameter(type);
 
@@ -1574,7 +1703,7 @@ void CreatureObject::setOnFireState(int str, int type) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 120);
+		ORBMethodInvocation invocation(this, 130);
 		invocation.addSignedIntParameter(str);
 		invocation.addSignedIntParameter(type);
 
@@ -1588,7 +1717,7 @@ bool CreatureObject::setNextAttackDelay(int del) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 121);
+		ORBMethodInvocation invocation(this, 131);
 		invocation.addSignedIntParameter(del);
 
 		return invocation.executeWithBooleanReturn();
@@ -1601,7 +1730,7 @@ void CreatureObject::setCharacterName(const string& name) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 122);
+		ORBMethodInvocation invocation(this, 132);
 		invocation.addAsciiParameter(name);
 
 		invocation.executeWithVoidReturn();
@@ -1614,7 +1743,7 @@ void CreatureObject::setCharacterName(unicode& name) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 123);
+		ORBMethodInvocation invocation(this, 133);
 		invocation.addUnicodeParameter(name);
 
 		invocation.executeWithVoidReturn();
@@ -1627,7 +1756,7 @@ void CreatureObject::setTerrainName(const string& name) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 124);
+		ORBMethodInvocation invocation(this, 134);
 		invocation.addAsciiParameter(name);
 
 		invocation.executeWithVoidReturn();
@@ -1640,7 +1769,7 @@ void CreatureObject::setCharacterApperance(string& cust) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 125);
+		ORBMethodInvocation invocation(this, 135);
 		invocation.addAsciiParameter(cust);
 
 		invocation.executeWithVoidReturn();
@@ -1653,7 +1782,7 @@ void CreatureObject::setRaceName(const string& name) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 126);
+		ORBMethodInvocation invocation(this, 136);
 		invocation.addAsciiParameter(name);
 
 		invocation.executeWithVoidReturn();
@@ -1666,7 +1795,7 @@ void CreatureObject::setSpeciesName(const string& name) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 127);
+		ORBMethodInvocation invocation(this, 137);
 		invocation.addAsciiParameter(name);
 
 		invocation.executeWithVoidReturn();
@@ -1679,7 +1808,7 @@ void CreatureObject::setFaction(unsigned int fac) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 128);
+		ORBMethodInvocation invocation(this, 138);
 		invocation.addUnsignedIntParameter(fac);
 
 		invocation.executeWithVoidReturn();
@@ -1692,7 +1821,7 @@ void CreatureObject::setHeight(float h) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 129);
+		ORBMethodInvocation invocation(this, 139);
 		invocation.addFloatParameter(h);
 
 		invocation.executeWithVoidReturn();
@@ -1705,7 +1834,7 @@ void CreatureObject::setMood(unsigned char mdid) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 130);
+		ORBMethodInvocation invocation(this, 140);
 		invocation.addUnsignedCharParameter(mdid);
 
 		invocation.executeWithVoidReturn();
@@ -1718,7 +1847,7 @@ void CreatureObject::setMood(const string& m) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 131);
+		ORBMethodInvocation invocation(this, 141);
 		invocation.addAsciiParameter(m);
 
 		invocation.executeWithVoidReturn();
@@ -1731,7 +1860,7 @@ void CreatureObject::setGroup(GroupObject* Group) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 132);
+		ORBMethodInvocation invocation(this, 142);
 		invocation.addObjectParameter(Group);
 
 		invocation.executeWithVoidReturn();
@@ -1744,7 +1873,7 @@ void CreatureObject::setMount(MountCreature* mount) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 133);
+		ORBMethodInvocation invocation(this, 143);
 		invocation.addObjectParameter(mount);
 
 		invocation.executeWithVoidReturn();
@@ -1757,7 +1886,7 @@ void CreatureObject::removeGroup() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 134);
+		ORBMethodInvocation invocation(this, 144);
 
 		invocation.executeWithVoidReturn();
 	} else
@@ -1769,7 +1898,7 @@ bool CreatureObject::isInAGroup() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 135);
+		ORBMethodInvocation invocation(this, 145);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -1781,7 +1910,7 @@ void CreatureObject::setGroupID(unsigned long long gid) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 136);
+		ORBMethodInvocation invocation(this, 146);
 		invocation.addUnsignedLongParameter(gid);
 
 		invocation.executeWithVoidReturn();
@@ -1794,7 +1923,7 @@ void CreatureObject::updateGroupId(unsigned long long id) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 137);
+		ORBMethodInvocation invocation(this, 147);
 		invocation.addUnsignedLongParameter(id);
 
 		invocation.executeWithVoidReturn();
@@ -1807,7 +1936,7 @@ void CreatureObject::updateGroupInviterId(unsigned long long id) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 138);
+		ORBMethodInvocation invocation(this, 148);
 		invocation.addUnsignedLongParameter(id);
 
 		invocation.executeWithVoidReturn();
@@ -1820,7 +1949,7 @@ void CreatureObject::setDefenderID(long long did) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 139);
+		ORBMethodInvocation invocation(this, 149);
 		invocation.addSignedLongParameter(did);
 
 		invocation.executeWithVoidReturn();
@@ -1833,7 +1962,7 @@ void CreatureObject::updateTarget(unsigned long long targ) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 140);
+		ORBMethodInvocation invocation(this, 150);
 		invocation.addUnsignedLongParameter(targ);
 
 		invocation.executeWithVoidReturn();
@@ -1846,7 +1975,7 @@ void CreatureObject::updateTarget(SceneObject* targ) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 141);
+		ORBMethodInvocation invocation(this, 151);
 		invocation.addObjectParameter(targ);
 
 		invocation.executeWithVoidReturn();
@@ -1859,7 +1988,7 @@ void CreatureObject::setActionCounter(unsigned int actioncntr) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 142);
+		ORBMethodInvocation invocation(this, 152);
 		invocation.addUnsignedIntParameter(actioncntr);
 
 		invocation.executeWithVoidReturn();
@@ -1872,7 +2001,7 @@ void CreatureObject::setWeapon(Weapon* wep) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 143);
+		ORBMethodInvocation invocation(this, 153);
 		invocation.addObjectParameter(wep);
 
 		invocation.executeWithVoidReturn();
@@ -1885,7 +2014,7 @@ void CreatureObject::setBuilding(BuildingObject* build) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 144);
+		ORBMethodInvocation invocation(this, 154);
 		invocation.addObjectParameter(build);
 
 		invocation.executeWithVoidReturn();
@@ -1898,7 +2027,7 @@ void CreatureObject::setCreatureLinkID(unsigned long long creatureID) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 145);
+		ORBMethodInvocation invocation(this, 155);
 		invocation.addUnsignedLongParameter(creatureID);
 
 		invocation.executeWithVoidReturn();
@@ -1911,7 +2040,7 @@ void CreatureObject::setAccuracy(int acc) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 146);
+		ORBMethodInvocation invocation(this, 156);
 		invocation.addSignedIntParameter(acc);
 
 		invocation.executeWithVoidReturn();
@@ -1924,7 +2053,7 @@ void CreatureObject::setDamageBonus(int bonus) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 147);
+		ORBMethodInvocation invocation(this, 157);
 		invocation.addSignedIntParameter(bonus);
 
 		invocation.executeWithVoidReturn();
@@ -1937,7 +2066,7 @@ void CreatureObject::setDefenseBonus(int bonus) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 148);
+		ORBMethodInvocation invocation(this, 158);
 		invocation.addSignedIntParameter(bonus);
 
 		invocation.executeWithVoidReturn();
@@ -1950,7 +2079,7 @@ void CreatureObject::setLastMovementUpdateStamp(unsigned int tme) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 149);
+		ORBMethodInvocation invocation(this, 159);
 		invocation.addUnsignedIntParameter(tme);
 
 		invocation.executeWithVoidReturn();
@@ -1963,7 +2092,7 @@ void CreatureObject::setIgnoreMovementTests(int times) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 150);
+		ORBMethodInvocation invocation(this, 160);
 		invocation.addSignedIntParameter(times);
 
 		invocation.executeWithVoidReturn();
@@ -1976,7 +2105,7 @@ void CreatureObject::setLevel(unsigned int lvl) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 151);
+		ORBMethodInvocation invocation(this, 161);
 		invocation.addUnsignedIntParameter(lvl);
 
 		invocation.executeWithVoidReturn();
@@ -1989,7 +2118,7 @@ unicode& CreatureObject::getCharacterName() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 152);
+		ORBMethodInvocation invocation(this, 162);
 
 		invocation.executeWithUnicodeReturn(_return_getCharacterName);
 		return _return_getCharacterName;
@@ -2002,7 +2131,7 @@ string& CreatureObject::getStfName() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 153);
+		ORBMethodInvocation invocation(this, 163);
 
 		invocation.executeWithAsciiReturn(_return_getStfName);
 		return _return_getStfName;
@@ -2015,7 +2144,7 @@ string& CreatureObject::getSpeciesName() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 154);
+		ORBMethodInvocation invocation(this, 164);
 
 		invocation.executeWithAsciiReturn(_return_getSpeciesName);
 		return _return_getSpeciesName;
@@ -2028,7 +2157,7 @@ string& CreatureObject::getRaceName() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 155);
+		ORBMethodInvocation invocation(this, 165);
 
 		invocation.executeWithAsciiReturn(_return_getRaceName);
 		return _return_getRaceName;
@@ -2041,7 +2170,7 @@ string& CreatureObject::getTerrainName() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 156);
+		ORBMethodInvocation invocation(this, 166);
 
 		invocation.executeWithAsciiReturn(_return_getTerrainName);
 		return _return_getTerrainName;
@@ -2054,7 +2183,7 @@ string& CreatureObject::getCharacterApperance() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 157);
+		ORBMethodInvocation invocation(this, 167);
 
 		invocation.executeWithAsciiReturn(_return_getCharacterApperance);
 		return _return_getCharacterApperance;
@@ -2067,7 +2196,7 @@ bool CreatureObject::isOvert() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 158);
+		ORBMethodInvocation invocation(this, 168);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -2079,7 +2208,7 @@ unsigned long long CreatureObject::getStateBitmask() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 159);
+		ORBMethodInvocation invocation(this, 169);
 
 		return invocation.executeWithUnsignedLongReturn();
 	} else
@@ -2091,7 +2220,7 @@ unsigned int CreatureObject::getCreatureBitmask() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 160);
+		ORBMethodInvocation invocation(this, 170);
 
 		return invocation.executeWithUnsignedIntReturn();
 	} else
@@ -2103,7 +2232,7 @@ unsigned char CreatureObject::getPosture() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 161);
+		ORBMethodInvocation invocation(this, 171);
 
 		return invocation.executeWithUnsignedCharReturn();
 	} else
@@ -2115,7 +2244,7 @@ unsigned int CreatureObject::getFaction() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 162);
+		ORBMethodInvocation invocation(this, 172);
 
 		return invocation.executeWithUnsignedIntReturn();
 	} else
@@ -2127,7 +2256,7 @@ bool CreatureObject::isRebel() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 163);
+		ORBMethodInvocation invocation(this, 173);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -2139,7 +2268,7 @@ bool CreatureObject::isNeutral() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 164);
+		ORBMethodInvocation invocation(this, 174);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -2151,7 +2280,7 @@ bool CreatureObject::isImperial() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 165);
+		ORBMethodInvocation invocation(this, 175);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -2163,7 +2292,7 @@ unsigned int CreatureObject::getPvpStatusBitmask() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 166);
+		ORBMethodInvocation invocation(this, 176);
 
 		return invocation.executeWithUnsignedIntReturn();
 	} else
@@ -2175,7 +2304,7 @@ unsigned int CreatureObject::getBankCredits() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 167);
+		ORBMethodInvocation invocation(this, 177);
 
 		return invocation.executeWithUnsignedIntReturn();
 	} else
@@ -2187,7 +2316,7 @@ unsigned int CreatureObject::getCashCredits() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 168);
+		ORBMethodInvocation invocation(this, 178);
 
 		return invocation.executeWithUnsignedIntReturn();
 	} else
@@ -2199,7 +2328,7 @@ unsigned int CreatureObject::getWoundsUpdateCounter() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 169);
+		ORBMethodInvocation invocation(this, 179);
 
 		return invocation.executeWithUnsignedIntReturn();
 	} else
@@ -2211,7 +2340,7 @@ unsigned int CreatureObject::getNewWoundsUpdateCounter(int upd) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 170);
+		ORBMethodInvocation invocation(this, 180);
 		invocation.addSignedIntParameter(upd);
 
 		return invocation.executeWithUnsignedIntReturn();
@@ -2219,12 +2348,120 @@ unsigned int CreatureObject::getNewWoundsUpdateCounter(int upd) {
 		return ((CreatureObjectImplementation*) _impl)->getNewWoundsUpdateCounter(upd);
 }
 
+unsigned int CreatureObject::getBaseHealth() {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 181);
+
+		return invocation.executeWithUnsignedIntReturn();
+	} else
+		return ((CreatureObjectImplementation*) _impl)->getBaseHealth();
+}
+
+unsigned int CreatureObject::getBaseStrength() {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 182);
+
+		return invocation.executeWithUnsignedIntReturn();
+	} else
+		return ((CreatureObjectImplementation*) _impl)->getBaseStrength();
+}
+
+unsigned int CreatureObject::getBaseConstitution() {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 183);
+
+		return invocation.executeWithUnsignedIntReturn();
+	} else
+		return ((CreatureObjectImplementation*) _impl)->getBaseConstitution();
+}
+
+unsigned int CreatureObject::getBaseAction() {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 184);
+
+		return invocation.executeWithUnsignedIntReturn();
+	} else
+		return ((CreatureObjectImplementation*) _impl)->getBaseAction();
+}
+
+unsigned int CreatureObject::getBaseQuickness() {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 185);
+
+		return invocation.executeWithUnsignedIntReturn();
+	} else
+		return ((CreatureObjectImplementation*) _impl)->getBaseQuickness();
+}
+
+unsigned int CreatureObject::getBaseStamina() {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 186);
+
+		return invocation.executeWithUnsignedIntReturn();
+	} else
+		return ((CreatureObjectImplementation*) _impl)->getBaseStamina();
+}
+
+unsigned int CreatureObject::getBaseMind() {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 187);
+
+		return invocation.executeWithUnsignedIntReturn();
+	} else
+		return ((CreatureObjectImplementation*) _impl)->getBaseMind();
+}
+
+unsigned int CreatureObject::getBaseFocus() {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 188);
+
+		return invocation.executeWithUnsignedIntReturn();
+	} else
+		return ((CreatureObjectImplementation*) _impl)->getBaseFocus();
+}
+
+unsigned int CreatureObject::getBaseWillpower() {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 189);
+
+		return invocation.executeWithUnsignedIntReturn();
+	} else
+		return ((CreatureObjectImplementation*) _impl)->getBaseWillpower();
+}
+
 unsigned int CreatureObject::getHealth() {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 171);
+		ORBMethodInvocation invocation(this, 190);
 
 		return invocation.executeWithUnsignedIntReturn();
 	} else
@@ -2236,7 +2473,7 @@ unsigned int CreatureObject::getStrength() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 172);
+		ORBMethodInvocation invocation(this, 191);
 
 		return invocation.executeWithUnsignedIntReturn();
 	} else
@@ -2248,7 +2485,7 @@ unsigned int CreatureObject::getConstitution() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 173);
+		ORBMethodInvocation invocation(this, 192);
 
 		return invocation.executeWithUnsignedIntReturn();
 	} else
@@ -2260,7 +2497,7 @@ unsigned int CreatureObject::getAction() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 174);
+		ORBMethodInvocation invocation(this, 193);
 
 		return invocation.executeWithUnsignedIntReturn();
 	} else
@@ -2272,7 +2509,7 @@ unsigned int CreatureObject::getQuickness() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 175);
+		ORBMethodInvocation invocation(this, 194);
 
 		return invocation.executeWithUnsignedIntReturn();
 	} else
@@ -2284,7 +2521,7 @@ unsigned int CreatureObject::getStamina() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 176);
+		ORBMethodInvocation invocation(this, 195);
 
 		return invocation.executeWithUnsignedIntReturn();
 	} else
@@ -2296,7 +2533,7 @@ unsigned int CreatureObject::getMind() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 177);
+		ORBMethodInvocation invocation(this, 196);
 
 		return invocation.executeWithUnsignedIntReturn();
 	} else
@@ -2308,7 +2545,7 @@ unsigned int CreatureObject::getFocus() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 178);
+		ORBMethodInvocation invocation(this, 197);
 
 		return invocation.executeWithUnsignedIntReturn();
 	} else
@@ -2320,7 +2557,7 @@ unsigned int CreatureObject::getWillpower() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 179);
+		ORBMethodInvocation invocation(this, 198);
 
 		return invocation.executeWithUnsignedIntReturn();
 	} else
@@ -2332,7 +2569,7 @@ unsigned int CreatureObject::getHealthMax() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 180);
+		ORBMethodInvocation invocation(this, 199);
 
 		return invocation.executeWithUnsignedIntReturn();
 	} else
@@ -2344,7 +2581,7 @@ unsigned int CreatureObject::getStrengthMax() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 181);
+		ORBMethodInvocation invocation(this, 200);
 
 		return invocation.executeWithUnsignedIntReturn();
 	} else
@@ -2356,7 +2593,7 @@ unsigned int CreatureObject::getConstitutionMax() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 182);
+		ORBMethodInvocation invocation(this, 201);
 
 		return invocation.executeWithUnsignedIntReturn();
 	} else
@@ -2368,7 +2605,7 @@ unsigned int CreatureObject::getActionMax() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 183);
+		ORBMethodInvocation invocation(this, 202);
 
 		return invocation.executeWithUnsignedIntReturn();
 	} else
@@ -2380,7 +2617,7 @@ unsigned int CreatureObject::getQuicknessMax() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 184);
+		ORBMethodInvocation invocation(this, 203);
 
 		return invocation.executeWithUnsignedIntReturn();
 	} else
@@ -2392,7 +2629,7 @@ unsigned int CreatureObject::getStaminaMax() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 185);
+		ORBMethodInvocation invocation(this, 204);
 
 		return invocation.executeWithUnsignedIntReturn();
 	} else
@@ -2404,7 +2641,7 @@ unsigned int CreatureObject::getMindMax() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 186);
+		ORBMethodInvocation invocation(this, 205);
 
 		return invocation.executeWithUnsignedIntReturn();
 	} else
@@ -2416,7 +2653,7 @@ unsigned int CreatureObject::getFocusMax() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 187);
+		ORBMethodInvocation invocation(this, 206);
 
 		return invocation.executeWithUnsignedIntReturn();
 	} else
@@ -2428,7 +2665,7 @@ unsigned int CreatureObject::getWillpowerMax() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 188);
+		ORBMethodInvocation invocation(this, 207);
 
 		return invocation.executeWithUnsignedIntReturn();
 	} else
@@ -2440,7 +2677,7 @@ unsigned int CreatureObject::getArmor() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 189);
+		ORBMethodInvocation invocation(this, 208);
 
 		return invocation.executeWithUnsignedIntReturn();
 	} else
@@ -2452,7 +2689,7 @@ unsigned int CreatureObject::getHealthWounds() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 190);
+		ORBMethodInvocation invocation(this, 209);
 
 		return invocation.executeWithUnsignedIntReturn();
 	} else
@@ -2464,7 +2701,7 @@ unsigned int CreatureObject::getActionWounds() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 191);
+		ORBMethodInvocation invocation(this, 210);
 
 		return invocation.executeWithUnsignedIntReturn();
 	} else
@@ -2476,7 +2713,7 @@ unsigned int CreatureObject::getMindWounds() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 192);
+		ORBMethodInvocation invocation(this, 211);
 
 		return invocation.executeWithUnsignedIntReturn();
 	} else
@@ -2488,7 +2725,7 @@ unsigned int CreatureObject::getHAMUpdateCounter() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 193);
+		ORBMethodInvocation invocation(this, 212);
 
 		return invocation.executeWithUnsignedIntReturn();
 	} else
@@ -2500,7 +2737,7 @@ unsigned int CreatureObject::getNewHAMUpdateCounter(int cnt) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 194);
+		ORBMethodInvocation invocation(this, 213);
 		invocation.addSignedIntParameter(cnt);
 
 		return invocation.executeWithUnsignedIntReturn();
@@ -2513,7 +2750,7 @@ unsigned int CreatureObject::getHAMMaxUpdateCounter() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 195);
+		ORBMethodInvocation invocation(this, 214);
 
 		return invocation.executeWithUnsignedIntReturn();
 	} else
@@ -2525,7 +2762,7 @@ unsigned int CreatureObject::getNewHAMMaxUpdateCounter(int cnt) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 196);
+		ORBMethodInvocation invocation(this, 215);
 		invocation.addSignedIntParameter(cnt);
 
 		return invocation.executeWithUnsignedIntReturn();
@@ -2538,7 +2775,7 @@ unsigned long long CreatureObject::getTargetID() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 197);
+		ORBMethodInvocation invocation(this, 216);
 
 		return invocation.executeWithUnsignedLongReturn();
 	} else
@@ -2550,7 +2787,7 @@ SceneObject* CreatureObject::getTarget() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 198);
+		ORBMethodInvocation invocation(this, 217);
 
 		return (SceneObject*) invocation.executeWithObjectReturn();
 	} else
@@ -2562,7 +2799,7 @@ unsigned long long CreatureObject::getWeaponID() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 199);
+		ORBMethodInvocation invocation(this, 218);
 
 		return invocation.executeWithUnsignedLongReturn();
 	} else
@@ -2574,7 +2811,7 @@ unsigned long long CreatureObject::getGroupID() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 200);
+		ORBMethodInvocation invocation(this, 219);
 
 		return invocation.executeWithUnsignedLongReturn();
 	} else
@@ -2586,7 +2823,7 @@ unsigned long long CreatureObject::getGuildID() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 201);
+		ORBMethodInvocation invocation(this, 220);
 
 		return invocation.executeWithUnsignedLongReturn();
 	} else
@@ -2598,7 +2835,7 @@ Guild* CreatureObject::getGuild() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 202);
+		ORBMethodInvocation invocation(this, 221);
 
 		return (Guild*) invocation.executeWithObjectReturn();
 	} else
@@ -2610,7 +2847,7 @@ float CreatureObject::getSpeed() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 203);
+		ORBMethodInvocation invocation(this, 222);
 
 		return invocation.executeWithFloatReturn();
 	} else
@@ -2622,7 +2859,7 @@ float CreatureObject::getAcceleration() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 204);
+		ORBMethodInvocation invocation(this, 223);
 
 		return invocation.executeWithFloatReturn();
 	} else
@@ -2634,7 +2871,7 @@ unsigned long long CreatureObject::getDefenderID() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 205);
+		ORBMethodInvocation invocation(this, 224);
 
 		return invocation.executeWithUnsignedLongReturn();
 	} else
@@ -2646,7 +2883,7 @@ unsigned int CreatureObject::getDefenderUpdateCounter() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 206);
+		ORBMethodInvocation invocation(this, 225);
 
 		return invocation.executeWithUnsignedIntReturn();
 	} else
@@ -2658,7 +2895,7 @@ unsigned int CreatureObject::getNewDefenderUpdateCounter(int cnt) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 207);
+		ORBMethodInvocation invocation(this, 226);
 		invocation.addSignedIntParameter(cnt);
 
 		return invocation.executeWithUnsignedIntReturn();
@@ -2671,7 +2908,7 @@ string& CreatureObject::getPerformanceName() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 208);
+		ORBMethodInvocation invocation(this, 227);
 
 		invocation.executeWithAsciiReturn(_return_getPerformanceName);
 		return _return_getPerformanceName;
@@ -2684,7 +2921,7 @@ unsigned int CreatureObject::getPerformanceCounter() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 209);
+		ORBMethodInvocation invocation(this, 228);
 
 		return invocation.executeWithUnsignedIntReturn();
 	} else
@@ -2696,7 +2933,7 @@ unsigned int CreatureObject::getInstrumentID() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 210);
+		ORBMethodInvocation invocation(this, 229);
 
 		return invocation.executeWithUnsignedIntReturn();
 	} else
@@ -2708,7 +2945,7 @@ string& CreatureObject::getMood() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 211);
+		ORBMethodInvocation invocation(this, 230);
 
 		invocation.executeWithAsciiReturn(_return_getMood);
 		return _return_getMood;
@@ -2721,7 +2958,7 @@ unsigned char CreatureObject::getMoodID() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 212);
+		ORBMethodInvocation invocation(this, 231);
 
 		return invocation.executeWithUnsignedCharReturn();
 	} else
@@ -2733,7 +2970,7 @@ unsigned long long CreatureObject::getGroupInviterID() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 213);
+		ORBMethodInvocation invocation(this, 232);
 
 		return invocation.executeWithUnsignedLongReturn();
 	} else
@@ -2745,7 +2982,7 @@ unsigned long long CreatureObject::getGroupInviteCounter() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 214);
+		ORBMethodInvocation invocation(this, 233);
 
 		return invocation.executeWithUnsignedLongReturn();
 	} else
@@ -2757,7 +2994,7 @@ unsigned long long CreatureObject::getNewGroupInviteCounter() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 215);
+		ORBMethodInvocation invocation(this, 234);
 
 		return invocation.executeWithUnsignedLongReturn();
 	} else
@@ -2769,7 +3006,7 @@ unsigned long long CreatureObject::getWatchID() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 216);
+		ORBMethodInvocation invocation(this, 235);
 
 		return invocation.executeWithUnsignedLongReturn();
 	} else
@@ -2781,7 +3018,7 @@ unsigned long long CreatureObject::getListenID() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 217);
+		ORBMethodInvocation invocation(this, 236);
 
 		return invocation.executeWithUnsignedLongReturn();
 	} else
@@ -2793,7 +3030,7 @@ string& CreatureObject::getGuildName() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 218);
+		ORBMethodInvocation invocation(this, 237);
 
 		invocation.executeWithAsciiReturn(_return_getGuildName);
 		return _return_getGuildName;
@@ -2806,7 +3043,7 @@ int CreatureObject::getWeaponSpeedModifier() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 219);
+		ORBMethodInvocation invocation(this, 238);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -2818,7 +3055,7 @@ unsigned int CreatureObject::getSkillBoxesUpdateCounter() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 220);
+		ORBMethodInvocation invocation(this, 239);
 
 		return invocation.executeWithUnsignedIntReturn();
 	} else
@@ -2830,7 +3067,7 @@ unsigned int CreatureObject::getSkillModsCounter() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 221);
+		ORBMethodInvocation invocation(this, 240);
 
 		return invocation.executeWithUnsignedIntReturn();
 	} else
@@ -2842,7 +3079,7 @@ unsigned int CreatureObject::getNewSkillModsCounter(int cnt) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 222);
+		ORBMethodInvocation invocation(this, 241);
 		invocation.addSignedIntParameter(cnt);
 
 		return invocation.executeWithUnsignedIntReturn();
@@ -2855,7 +3092,7 @@ BuildingObject* CreatureObject::getBuilding() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 223);
+		ORBMethodInvocation invocation(this, 242);
 
 		return (BuildingObject*) invocation.executeWithObjectReturn();
 	} else
@@ -2867,7 +3104,7 @@ SceneObject* CreatureObject::getInventoryItem(unsigned long long oid) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 224);
+		ORBMethodInvocation invocation(this, 243);
 		invocation.addUnsignedLongParameter(oid);
 
 		return (SceneObject*) invocation.executeWithObjectReturn();
@@ -2880,7 +3117,7 @@ void CreatureObject::removeInventoryItem(unsigned long long oid) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 225);
+		ORBMethodInvocation invocation(this, 244);
 		invocation.addUnsignedLongParameter(oid);
 
 		invocation.executeWithVoidReturn();
@@ -2893,7 +3130,7 @@ void CreatureObject::broadcastMessage(Message* msg, int range, bool doLock) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 226);
+		ORBMethodInvocation invocation(this, 245);
 		invocation.addObjectParameter(msg);
 		invocation.addSignedIntParameter(range);
 		invocation.addBooleanParameter(doLock);
@@ -2908,7 +3145,7 @@ Inventory* CreatureObject::getInventory() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 227);
+		ORBMethodInvocation invocation(this, 246);
 
 		return (Inventory*) invocation.executeWithObjectReturn();
 	} else
@@ -2920,7 +3157,7 @@ unsigned long long CreatureObject::getNewItemID() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 228);
+		ORBMethodInvocation invocation(this, 247);
 
 		return invocation.executeWithUnsignedLongReturn();
 	} else
@@ -2932,7 +3169,7 @@ Weapon* CreatureObject::getWeapon() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 229);
+		ORBMethodInvocation invocation(this, 248);
 
 		return (Weapon*) invocation.executeWithObjectReturn();
 	} else
@@ -2944,7 +3181,7 @@ int CreatureObject::getSkillMod(const string& name) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 230);
+		ORBMethodInvocation invocation(this, 249);
 		invocation.addAsciiParameter(name);
 
 		return invocation.executeWithSignedIntReturn();
@@ -2957,7 +3194,7 @@ bool CreatureObject::hasSkillMod(const string& name) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 231);
+		ORBMethodInvocation invocation(this, 250);
 		invocation.addAsciiParameter(name);
 
 		return invocation.executeWithBooleanReturn();
@@ -2970,7 +3207,7 @@ int CreatureObject::getAccuracy() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 232);
+		ORBMethodInvocation invocation(this, 251);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -2982,7 +3219,7 @@ int CreatureObject::getDefenseBonus() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 233);
+		ORBMethodInvocation invocation(this, 252);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -2994,7 +3231,7 @@ int CreatureObject::getDamageBonus() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 234);
+		ORBMethodInvocation invocation(this, 253);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -3006,7 +3243,7 @@ int CreatureObject::getConditionDamage() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 235);
+		ORBMethodInvocation invocation(this, 254);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -3018,7 +3255,7 @@ int CreatureObject::getMaxCondition() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 236);
+		ORBMethodInvocation invocation(this, 255);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -3030,7 +3267,7 @@ int CreatureObject::getCondition() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 237);
+		ORBMethodInvocation invocation(this, 256);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -3042,7 +3279,7 @@ MountCreature* CreatureObject::getMount() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 238);
+		ORBMethodInvocation invocation(this, 257);
 
 		return (MountCreature*) invocation.executeWithObjectReturn();
 	} else
@@ -3054,7 +3291,7 @@ unsigned long long CreatureObject::getCreatureLinkID() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 239);
+		ORBMethodInvocation invocation(this, 258);
 
 		return invocation.executeWithUnsignedLongReturn();
 	} else
@@ -3066,7 +3303,7 @@ float CreatureObject::getDistanceTo(CreatureObject* targetCreature) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 240);
+		ORBMethodInvocation invocation(this, 259);
 		invocation.addObjectParameter(targetCreature);
 
 		return invocation.executeWithFloatReturn();
@@ -3079,7 +3316,7 @@ float CreatureObject::getHeight() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 241);
+		ORBMethodInvocation invocation(this, 260);
 
 		return invocation.executeWithFloatReturn();
 	} else
@@ -3091,7 +3328,7 @@ unsigned int CreatureObject::getCreatureSkillsCount() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 242);
+		ORBMethodInvocation invocation(this, 261);
 
 		return invocation.executeWithUnsignedIntReturn();
 	} else
@@ -3103,7 +3340,7 @@ unsigned int CreatureObject::getNewCreatureSkillsCount(int cnt) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 243);
+		ORBMethodInvocation invocation(this, 262);
 		invocation.addSignedIntParameter(cnt);
 
 		return invocation.executeWithUnsignedIntReturn();
@@ -3116,7 +3353,7 @@ unsigned int CreatureObject::getLastMovementUpdateStamp() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 244);
+		ORBMethodInvocation invocation(this, 263);
 
 		return invocation.executeWithUnsignedIntReturn();
 	} else
@@ -3128,7 +3365,7 @@ int CreatureObject::getIgnoreMovementTests() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 245);
+		ORBMethodInvocation invocation(this, 264);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -3140,7 +3377,7 @@ unsigned int CreatureObject::getDefenderListSize() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 246);
+		ORBMethodInvocation invocation(this, 265);
 
 		return invocation.executeWithUnsignedIntReturn();
 	} else
@@ -3152,7 +3389,7 @@ CreatureObject* CreatureObject::getDefender(int idx) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 247);
+		ORBMethodInvocation invocation(this, 266);
 		invocation.addSignedIntParameter(idx);
 
 		return (CreatureObject*) invocation.executeWithObjectReturn();
@@ -3165,7 +3402,7 @@ unsigned int CreatureObject::getLevel() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 248);
+		ORBMethodInvocation invocation(this, 267);
 
 		return invocation.executeWithUnsignedIntReturn();
 	} else
@@ -3177,7 +3414,7 @@ void CreatureObject::sendSystemMessage(const string& message) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 249);
+		ORBMethodInvocation invocation(this, 268);
 		invocation.addAsciiParameter(message);
 
 		invocation.executeWithVoidReturn();
@@ -3190,7 +3427,7 @@ void CreatureObject::sendSystemMessage(const string& file, const string& str, un
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 250);
+		ORBMethodInvocation invocation(this, 269);
 		invocation.addAsciiParameter(file);
 		invocation.addAsciiParameter(str);
 		invocation.addUnsignedLongParameter(targetid);
@@ -3205,7 +3442,7 @@ void CreatureObject::addInventoryItem(TangibleObject* item) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 251);
+		ORBMethodInvocation invocation(this, 270);
 		invocation.addObjectParameter(item);
 
 		invocation.executeWithVoidReturn();
@@ -3218,7 +3455,7 @@ void CreatureObject::startDancing(const string& anim) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 252);
+		ORBMethodInvocation invocation(this, 271);
 		invocation.addAsciiParameter(anim);
 
 		invocation.executeWithVoidReturn();
@@ -3231,7 +3468,7 @@ void CreatureObject::startPlayingMusic(const string& anim) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 253);
+		ORBMethodInvocation invocation(this, 272);
 		invocation.addAsciiParameter(anim);
 
 		invocation.executeWithVoidReturn();
@@ -3244,7 +3481,7 @@ void CreatureObject::startWatch(unsigned long long entid) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 254);
+		ORBMethodInvocation invocation(this, 273);
 		invocation.addUnsignedLongParameter(entid);
 
 		invocation.executeWithVoidReturn();
@@ -3257,7 +3494,7 @@ void CreatureObject::startListen(unsigned long long entid) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 255);
+		ORBMethodInvocation invocation(this, 274);
 		invocation.addUnsignedLongParameter(entid);
 
 		invocation.executeWithVoidReturn();
@@ -3270,7 +3507,7 @@ void CreatureObject::stopWatch(unsigned long long entid, bool doSendPackets, boo
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 256);
+		ORBMethodInvocation invocation(this, 275);
 		invocation.addUnsignedLongParameter(entid);
 		invocation.addBooleanParameter(doSendPackets);
 		invocation.addBooleanParameter(forced);
@@ -3286,7 +3523,7 @@ void CreatureObject::stopListen(unsigned long long entid, bool doSendPackets, bo
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 257);
+		ORBMethodInvocation invocation(this, 276);
 		invocation.addUnsignedLongParameter(entid);
 		invocation.addBooleanParameter(doSendPackets);
 		invocation.addBooleanParameter(forced);
@@ -3302,7 +3539,7 @@ bool CreatureObject::isPlayingMusic() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 258);
+		ORBMethodInvocation invocation(this, 277);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -3314,7 +3551,7 @@ bool CreatureObject::isDancing() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 259);
+		ORBMethodInvocation invocation(this, 278);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -3326,7 +3563,7 @@ void CreatureObject::stopDancing() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 260);
+		ORBMethodInvocation invocation(this, 279);
 
 		invocation.executeWithVoidReturn();
 	} else
@@ -3338,7 +3575,7 @@ void CreatureObject::stopPlayingMusic() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 261);
+		ORBMethodInvocation invocation(this, 280);
 
 		invocation.executeWithVoidReturn();
 	} else
@@ -3350,7 +3587,7 @@ void CreatureObject::addListener(CreatureObject* creature) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 262);
+		ORBMethodInvocation invocation(this, 281);
 		invocation.addObjectParameter(creature);
 
 		invocation.executeWithVoidReturn();
@@ -3363,7 +3600,7 @@ void CreatureObject::addWatcher(CreatureObject* creature) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 263);
+		ORBMethodInvocation invocation(this, 282);
 		invocation.addObjectParameter(creature);
 
 		invocation.executeWithVoidReturn();
@@ -3376,7 +3613,7 @@ void CreatureObject::removeListener(CreatureObject* creature) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 264);
+		ORBMethodInvocation invocation(this, 283);
 		invocation.addObjectParameter(creature);
 
 		invocation.executeWithVoidReturn();
@@ -3389,7 +3626,7 @@ void CreatureObject::removeWatcher(CreatureObject* creature) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 265);
+		ORBMethodInvocation invocation(this, 284);
 		invocation.addObjectParameter(creature);
 
 		invocation.executeWithVoidReturn();
@@ -3402,7 +3639,7 @@ void CreatureObject::activateRecovery() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 266);
+		ORBMethodInvocation invocation(this, 285);
 
 		invocation.executeWithVoidReturn();
 	} else
@@ -3414,7 +3651,7 @@ int CreatureObject::getCreatureSkillsSize() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 267);
+		ORBMethodInvocation invocation(this, 286);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -3426,7 +3663,7 @@ string& CreatureObject::getSkill(int idx) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 268);
+		ORBMethodInvocation invocation(this, 287);
 		invocation.addSignedIntParameter(idx);
 
 		invocation.executeWithAsciiReturn(_return_getSkill);
@@ -3440,7 +3677,7 @@ bool CreatureObject::hasSkill(unsigned int skillCRC) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 269);
+		ORBMethodInvocation invocation(this, 288);
 		invocation.addUnsignedIntParameter(skillCRC);
 
 		return invocation.executeWithBooleanReturn();
@@ -3453,7 +3690,7 @@ void CreatureObject::mountCreature(MountCreature* mnt, bool lockMount) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 270);
+		ORBMethodInvocation invocation(this, 289);
 		invocation.addObjectParameter(mnt);
 		invocation.addBooleanParameter(lockMount);
 
@@ -3467,7 +3704,7 @@ void CreatureObject::dismount(bool lockMount) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 271);
+		ORBMethodInvocation invocation(this, 290);
 		invocation.addBooleanParameter(lockMount);
 
 		invocation.executeWithVoidReturn();
@@ -3480,7 +3717,7 @@ void CreatureObject::addCashCredits(int credits) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 272);
+		ORBMethodInvocation invocation(this, 291);
 		invocation.addSignedIntParameter(credits);
 
 		invocation.executeWithVoidReturn();
@@ -3493,7 +3730,7 @@ void CreatureObject::addBankCredits(int credits) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 273);
+		ORBMethodInvocation invocation(this, 292);
 		invocation.addSignedIntParameter(credits);
 
 		invocation.executeWithVoidReturn();
@@ -3506,7 +3743,7 @@ void CreatureObject::subtractCashCredits(int credits) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 274);
+		ORBMethodInvocation invocation(this, 293);
 		invocation.addSignedIntParameter(credits);
 
 		invocation.executeWithVoidReturn();
@@ -3519,7 +3756,7 @@ void CreatureObject::subtractBankCredits(int credits) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 275);
+		ORBMethodInvocation invocation(this, 294);
 		invocation.addSignedIntParameter(credits);
 
 		invocation.executeWithVoidReturn();
@@ -3532,7 +3769,7 @@ void CreatureObject::setCashCredits(int credits) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 276);
+		ORBMethodInvocation invocation(this, 295);
 		invocation.addSignedIntParameter(credits);
 
 		invocation.executeWithVoidReturn();
@@ -3545,7 +3782,7 @@ void CreatureObject::setBankCredits(int credits) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 277);
+		ORBMethodInvocation invocation(this, 296);
 		invocation.addSignedIntParameter(credits);
 
 		invocation.executeWithVoidReturn();
@@ -3553,12 +3790,27 @@ void CreatureObject::setBankCredits(int credits) {
 		((CreatureObjectImplementation*) _impl)->setBankCredits(credits);
 }
 
+void CreatureObject::applyBuff(const string& type, int value, float duration) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 297);
+		invocation.addAsciiParameter(type);
+		invocation.addSignedIntParameter(value);
+		invocation.addFloatParameter(duration);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->applyBuff(type, value, duration);
+}
+
 bool CreatureObject::verifyCashCredits(int creditsToRemove) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 278);
+		ORBMethodInvocation invocation(this, 298);
 		invocation.addSignedIntParameter(creditsToRemove);
 
 		return invocation.executeWithBooleanReturn();
@@ -3571,7 +3823,7 @@ bool CreatureObject::verifyBankCredits(int creditsToRemove) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 279);
+		ORBMethodInvocation invocation(this, 299);
 		invocation.addSignedIntParameter(creditsToRemove);
 
 		return invocation.executeWithBooleanReturn();
@@ -3726,690 +3978,750 @@ Packet* CreatureObjectAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* 
 		clearStates();
 		break;
 	case 51:
-		resp->insertBoolean(hasAttackDelay());
+		resetHAMBars();
 		break;
 	case 52:
-		clearAttackDelay();
-		break;
-	case 53:
-		resp->insertBoolean(isOnFullHealth());
-		break;
-	case 54:
-		resp->insertBoolean(hasStates());
-		break;
-	case 55:
-		resp->insertBoolean(hasState(inv->getUnsignedLongParameter()));
-		break;
-	case 56:
-		resp->insertBoolean(isAttackable());
-		break;
-	case 57:
-		resp->insertBoolean(isListening());
-		break;
-	case 58:
-		resp->insertBoolean(isWatching());
-		break;
-	case 59:
-		activateBurstRun();
-		break;
-	case 60:
-		resp->insertBoolean(hasQueuedState(inv->getUnsignedIntParameter()));
-		break;
-	case 61:
-		resp->insertBoolean(removeQueuedState(inv->getUnsignedIntParameter()));
-		break;
-	case 62:
-		resp->insertBoolean(addQueuedState(inv->getUnsignedIntParameter()));
-		break;
-	case 63:
-		setMeditateState();
-		break;
-	case 64:
-		setHealth(inv->getUnsignedIntParameter());
-		break;
-	case 65:
-		setStrength(inv->getUnsignedIntParameter());
-		break;
-	case 66:
-		setConstitution(inv->getUnsignedIntParameter());
-		break;
-	case 67:
-		setAction(inv->getUnsignedIntParameter());
-		break;
-	case 68:
-		setQuickness(inv->getUnsignedIntParameter());
-		break;
-	case 69:
-		setStamina(inv->getUnsignedIntParameter());
-		break;
-	case 70:
-		setMind(inv->getUnsignedIntParameter());
-		break;
-	case 71:
-		setFocus(inv->getUnsignedIntParameter());
-		break;
-	case 72:
-		setWillpower(inv->getUnsignedIntParameter());
-		break;
-	case 73:
-		setHealthMax(inv->getUnsignedIntParameter());
-		break;
-	case 74:
-		setStrengthMax(inv->getUnsignedIntParameter());
-		break;
-	case 75:
-		setConstitutionMax(inv->getUnsignedIntParameter());
-		break;
-	case 76:
-		setActionMax(inv->getUnsignedIntParameter());
-		break;
-	case 77:
-		setQuicknessMax(inv->getUnsignedIntParameter());
-		break;
-	case 78:
-		setStaminaMax(inv->getUnsignedIntParameter());
-		break;
-	case 79:
-		setMindMax(inv->getUnsignedIntParameter());
-		break;
-	case 80:
-		setFocusMax(inv->getUnsignedIntParameter());
-		break;
-	case 81:
-		setWillpowerMax(inv->getUnsignedIntParameter());
-		break;
-	case 82:
-		setArmor(inv->getUnsignedIntParameter());
-		break;
-	case 83:
-		setHealthWounds(inv->getUnsignedIntParameter());
-		break;
-	case 84:
-		setActionWounds(inv->getUnsignedIntParameter());
-		break;
-	case 85:
-		setMindWounds(inv->getUnsignedIntParameter());
-		break;
-	case 86:
-		setWoundsUpdateCounter(inv->getUnsignedIntParameter());
-		break;
-	case 87:
 		resp->insertBoolean(changeHAMBars(inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter()));
 		break;
-	case 88:
+	case 53:
 		resp->insertBoolean(changeHAMWounds(inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter()));
 		break;
-	case 89:
+	case 54:
 		changeMaxHAMBars(inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
 		break;
-	case 90:
+	case 55:
 		resp->insertBoolean(changeHealthWoundsBar(inv->getSignedIntParameter(), inv->getBooleanParameter()));
 		break;
-	case 91:
+	case 56:
 		resp->insertBoolean(changeActionWoundsBar(inv->getSignedIntParameter(), inv->getBooleanParameter()));
 		break;
-	case 92:
+	case 57:
 		resp->insertBoolean(changeMindWoundsBar(inv->getSignedIntParameter(), inv->getBooleanParameter()));
 		break;
-	case 93:
+	case 58:
 		resp->insertBoolean(changeHealthBar(inv->getSignedIntParameter(), inv->getBooleanParameter()));
 		break;
-	case 94:
+	case 59:
 		resp->insertBoolean(changeStrengthBar(inv->getSignedIntParameter(), inv->getBooleanParameter()));
 		break;
-	case 95:
+	case 60:
 		resp->insertBoolean(changeConstitutionBar(inv->getSignedIntParameter(), inv->getBooleanParameter()));
 		break;
-	case 96:
+	case 61:
 		changeMaxHealthBar(inv->getSignedIntParameter());
 		break;
-	case 97:
+	case 62:
 		changeMaxStrengthBar(inv->getSignedIntParameter());
 		break;
-	case 98:
+	case 63:
 		changeMaxConstitutionBar(inv->getSignedIntParameter());
 		break;
-	case 99:
+	case 64:
 		resp->insertBoolean(changeActionBar(inv->getSignedIntParameter(), inv->getBooleanParameter()));
 		break;
-	case 100:
+	case 65:
 		resp->insertBoolean(changeQuicknessBar(inv->getSignedIntParameter(), inv->getBooleanParameter()));
 		break;
-	case 101:
+	case 66:
 		resp->insertBoolean(changeStaminaBar(inv->getSignedIntParameter(), inv->getBooleanParameter()));
 		break;
-	case 102:
+	case 67:
 		changeMaxActionBar(inv->getSignedIntParameter());
 		break;
-	case 103:
+	case 68:
 		changeMaxQuicknessBar(inv->getSignedIntParameter());
 		break;
-	case 104:
+	case 69:
 		changeMaxStaminaBar(inv->getSignedIntParameter());
 		break;
-	case 105:
+	case 70:
 		resp->insertBoolean(changeMindBar(inv->getSignedIntParameter(), inv->getBooleanParameter()));
 		break;
-	case 106:
+	case 71:
 		resp->insertBoolean(changeFocusBar(inv->getSignedIntParameter(), inv->getBooleanParameter()));
 		break;
-	case 107:
+	case 72:
 		resp->insertBoolean(changeWillpowerBar(inv->getSignedIntParameter(), inv->getBooleanParameter()));
 		break;
-	case 108:
+	case 73:
 		changeMaxMindBar(inv->getSignedIntParameter());
 		break;
-	case 109:
+	case 74:
 		changeMaxFocusBar(inv->getSignedIntParameter());
 		break;
-	case 110:
+	case 75:
 		changeMaxWillpowerBar(inv->getSignedIntParameter());
 		break;
+	case 76:
+		resp->insertBoolean(hasAttackDelay());
+		break;
+	case 77:
+		clearAttackDelay();
+		break;
+	case 78:
+		resp->insertBoolean(isOnFullHealth());
+		break;
+	case 79:
+		resp->insertBoolean(hasStates());
+		break;
+	case 80:
+		resp->insertBoolean(hasState(inv->getUnsignedLongParameter()));
+		break;
+	case 81:
+		resp->insertBoolean(isAttackable());
+		break;
+	case 82:
+		resp->insertBoolean(isListening());
+		break;
+	case 83:
+		resp->insertBoolean(isWatching());
+		break;
+	case 84:
+		activateBurstRun();
+		break;
+	case 85:
+		resp->insertBoolean(hasQueuedState(inv->getUnsignedIntParameter()));
+		break;
+	case 86:
+		resp->insertBoolean(removeQueuedState(inv->getUnsignedIntParameter()));
+		break;
+	case 87:
+		resp->insertBoolean(addQueuedState(inv->getUnsignedIntParameter()));
+		break;
+	case 88:
+		setMeditateState();
+		break;
+	case 89:
+		setBaseHealth(inv->getUnsignedIntParameter());
+		break;
+	case 90:
+		setBaseStrength(inv->getUnsignedIntParameter());
+		break;
+	case 91:
+		setBaseConstitution(inv->getUnsignedIntParameter());
+		break;
+	case 92:
+		setBaseAction(inv->getUnsignedIntParameter());
+		break;
+	case 93:
+		setBaseQuickness(inv->getUnsignedIntParameter());
+		break;
+	case 94:
+		setBaseStamina(inv->getUnsignedIntParameter());
+		break;
+	case 95:
+		setBaseMind(inv->getUnsignedIntParameter());
+		break;
+	case 96:
+		setBaseFocus(inv->getUnsignedIntParameter());
+		break;
+	case 97:
+		setBaseWillpower(inv->getUnsignedIntParameter());
+		break;
+	case 98:
+		setHealth(inv->getUnsignedIntParameter());
+		break;
+	case 99:
+		setStrength(inv->getUnsignedIntParameter());
+		break;
+	case 100:
+		setConstitution(inv->getUnsignedIntParameter());
+		break;
+	case 101:
+		setAction(inv->getUnsignedIntParameter());
+		break;
+	case 102:
+		setQuickness(inv->getUnsignedIntParameter());
+		break;
+	case 103:
+		setStamina(inv->getUnsignedIntParameter());
+		break;
+	case 104:
+		setMind(inv->getUnsignedIntParameter());
+		break;
+	case 105:
+		setFocus(inv->getUnsignedIntParameter());
+		break;
+	case 106:
+		setWillpower(inv->getUnsignedIntParameter());
+		break;
+	case 107:
+		setHealthMax(inv->getUnsignedIntParameter());
+		break;
+	case 108:
+		setStrengthMax(inv->getUnsignedIntParameter());
+		break;
+	case 109:
+		setConstitutionMax(inv->getUnsignedIntParameter());
+		break;
+	case 110:
+		setActionMax(inv->getUnsignedIntParameter());
+		break;
 	case 111:
-		changeConditionDamage(inv->getSignedIntParameter());
+		setQuicknessMax(inv->getUnsignedIntParameter());
 		break;
 	case 112:
-		setPosture(inv->getUnsignedCharParameter(), inv->getBooleanParameter(), inv->getBooleanParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter());
+		setStaminaMax(inv->getUnsignedIntParameter());
 		break;
 	case 113:
-		setDizziedState();
+		setMindMax(inv->getUnsignedIntParameter());
 		break;
 	case 114:
-		setStunnedState();
+		setFocusMax(inv->getUnsignedIntParameter());
 		break;
 	case 115:
-		setBlindedState();
+		setWillpowerMax(inv->getUnsignedIntParameter());
 		break;
 	case 116:
-		setIntimidatedState();
+		setArmor(inv->getUnsignedIntParameter());
 		break;
 	case 117:
-		setPoisonedState(inv->getSignedIntParameter(), inv->getSignedIntParameter());
+		setHealthWounds(inv->getUnsignedIntParameter());
 		break;
 	case 118:
-		setBleedingState(inv->getSignedIntParameter(), inv->getSignedIntParameter());
+		setActionWounds(inv->getUnsignedIntParameter());
 		break;
 	case 119:
-		setDiseasedState(inv->getSignedIntParameter(), inv->getSignedIntParameter());
+		setMindWounds(inv->getUnsignedIntParameter());
 		break;
 	case 120:
-		setOnFireState(inv->getSignedIntParameter(), inv->getSignedIntParameter());
+		setWoundsUpdateCounter(inv->getUnsignedIntParameter());
 		break;
 	case 121:
-		resp->insertBoolean(setNextAttackDelay(inv->getSignedIntParameter()));
+		changeConditionDamage(inv->getSignedIntParameter());
 		break;
 	case 122:
-		setCharacterName(inv->getAsciiParameter(_param0_setCharacterName__string_));
+		setPosture(inv->getUnsignedCharParameter(), inv->getBooleanParameter(), inv->getBooleanParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter());
 		break;
 	case 123:
-		setCharacterName(inv->getUnicodeParameter(_param0_setCharacterName__unicode_));
+		setDizziedState();
 		break;
 	case 124:
-		setTerrainName(inv->getAsciiParameter(_param0_setTerrainName__string_));
+		setStunnedState();
 		break;
 	case 125:
-		setCharacterApperance(inv->getAsciiParameter(_param0_setCharacterApperance__string_));
+		setBlindedState();
 		break;
 	case 126:
-		setRaceName(inv->getAsciiParameter(_param0_setRaceName__string_));
+		setIntimidatedState();
 		break;
 	case 127:
-		setSpeciesName(inv->getAsciiParameter(_param0_setSpeciesName__string_));
+		setPoisonedState(inv->getSignedIntParameter(), inv->getSignedIntParameter());
 		break;
 	case 128:
-		setFaction(inv->getUnsignedIntParameter());
+		setBleedingState(inv->getSignedIntParameter(), inv->getSignedIntParameter());
 		break;
 	case 129:
-		setHeight(inv->getFloatParameter());
+		setDiseasedState(inv->getSignedIntParameter(), inv->getSignedIntParameter());
 		break;
 	case 130:
-		setMood(inv->getUnsignedCharParameter());
+		setOnFireState(inv->getSignedIntParameter(), inv->getSignedIntParameter());
 		break;
 	case 131:
-		setMood(inv->getAsciiParameter(_param0_setMood__string_));
+		resp->insertBoolean(setNextAttackDelay(inv->getSignedIntParameter()));
 		break;
 	case 132:
-		setGroup((GroupObject*) inv->getObjectParameter());
+		setCharacterName(inv->getAsciiParameter(_param0_setCharacterName__string_));
 		break;
 	case 133:
-		setMount((MountCreature*) inv->getObjectParameter());
+		setCharacterName(inv->getUnicodeParameter(_param0_setCharacterName__unicode_));
 		break;
 	case 134:
-		removeGroup();
+		setTerrainName(inv->getAsciiParameter(_param0_setTerrainName__string_));
 		break;
 	case 135:
-		resp->insertBoolean(isInAGroup());
+		setCharacterApperance(inv->getAsciiParameter(_param0_setCharacterApperance__string_));
 		break;
 	case 136:
-		setGroupID(inv->getUnsignedLongParameter());
+		setRaceName(inv->getAsciiParameter(_param0_setRaceName__string_));
 		break;
 	case 137:
-		updateGroupId(inv->getUnsignedLongParameter());
+		setSpeciesName(inv->getAsciiParameter(_param0_setSpeciesName__string_));
 		break;
 	case 138:
-		updateGroupInviterId(inv->getUnsignedLongParameter());
+		setFaction(inv->getUnsignedIntParameter());
 		break;
 	case 139:
-		setDefenderID(inv->getSignedLongParameter());
+		setHeight(inv->getFloatParameter());
 		break;
 	case 140:
-		updateTarget(inv->getUnsignedLongParameter());
+		setMood(inv->getUnsignedCharParameter());
 		break;
 	case 141:
-		updateTarget((SceneObject*) inv->getObjectParameter());
+		setMood(inv->getAsciiParameter(_param0_setMood__string_));
 		break;
 	case 142:
-		setActionCounter(inv->getUnsignedIntParameter());
+		setGroup((GroupObject*) inv->getObjectParameter());
 		break;
 	case 143:
-		setWeapon((Weapon*) inv->getObjectParameter());
+		setMount((MountCreature*) inv->getObjectParameter());
 		break;
 	case 144:
-		setBuilding((BuildingObject*) inv->getObjectParameter());
+		removeGroup();
 		break;
 	case 145:
-		setCreatureLinkID(inv->getUnsignedLongParameter());
+		resp->insertBoolean(isInAGroup());
 		break;
 	case 146:
-		setAccuracy(inv->getSignedIntParameter());
+		setGroupID(inv->getUnsignedLongParameter());
 		break;
 	case 147:
-		setDamageBonus(inv->getSignedIntParameter());
+		updateGroupId(inv->getUnsignedLongParameter());
 		break;
 	case 148:
-		setDefenseBonus(inv->getSignedIntParameter());
+		updateGroupInviterId(inv->getUnsignedLongParameter());
 		break;
 	case 149:
-		setLastMovementUpdateStamp(inv->getUnsignedIntParameter());
+		setDefenderID(inv->getSignedLongParameter());
 		break;
 	case 150:
-		setIgnoreMovementTests(inv->getSignedIntParameter());
+		updateTarget(inv->getUnsignedLongParameter());
 		break;
 	case 151:
-		setLevel(inv->getUnsignedIntParameter());
+		updateTarget((SceneObject*) inv->getObjectParameter());
 		break;
 	case 152:
-		resp->insertUnicode(getCharacterName());
+		setActionCounter(inv->getUnsignedIntParameter());
 		break;
 	case 153:
-		resp->insertAscii(getStfName());
+		setWeapon((Weapon*) inv->getObjectParameter());
 		break;
 	case 154:
-		resp->insertAscii(getSpeciesName());
+		setBuilding((BuildingObject*) inv->getObjectParameter());
 		break;
 	case 155:
-		resp->insertAscii(getRaceName());
+		setCreatureLinkID(inv->getUnsignedLongParameter());
 		break;
 	case 156:
-		resp->insertAscii(getTerrainName());
+		setAccuracy(inv->getSignedIntParameter());
 		break;
 	case 157:
-		resp->insertAscii(getCharacterApperance());
+		setDamageBonus(inv->getSignedIntParameter());
 		break;
 	case 158:
-		resp->insertBoolean(isOvert());
+		setDefenseBonus(inv->getSignedIntParameter());
 		break;
 	case 159:
-		resp->insertLong(getStateBitmask());
+		setLastMovementUpdateStamp(inv->getUnsignedIntParameter());
 		break;
 	case 160:
-		resp->insertInt(getCreatureBitmask());
+		setIgnoreMovementTests(inv->getSignedIntParameter());
 		break;
 	case 161:
-		resp->insertByte(getPosture());
+		setLevel(inv->getUnsignedIntParameter());
 		break;
 	case 162:
-		resp->insertInt(getFaction());
+		resp->insertUnicode(getCharacterName());
 		break;
 	case 163:
-		resp->insertBoolean(isRebel());
+		resp->insertAscii(getStfName());
 		break;
 	case 164:
-		resp->insertBoolean(isNeutral());
+		resp->insertAscii(getSpeciesName());
 		break;
 	case 165:
-		resp->insertBoolean(isImperial());
+		resp->insertAscii(getRaceName());
 		break;
 	case 166:
-		resp->insertInt(getPvpStatusBitmask());
+		resp->insertAscii(getTerrainName());
 		break;
 	case 167:
-		resp->insertInt(getBankCredits());
+		resp->insertAscii(getCharacterApperance());
 		break;
 	case 168:
-		resp->insertInt(getCashCredits());
+		resp->insertBoolean(isOvert());
 		break;
 	case 169:
-		resp->insertInt(getWoundsUpdateCounter());
+		resp->insertLong(getStateBitmask());
 		break;
 	case 170:
-		resp->insertInt(getNewWoundsUpdateCounter(inv->getSignedIntParameter()));
+		resp->insertInt(getCreatureBitmask());
 		break;
 	case 171:
-		resp->insertInt(getHealth());
+		resp->insertByte(getPosture());
 		break;
 	case 172:
-		resp->insertInt(getStrength());
+		resp->insertInt(getFaction());
 		break;
 	case 173:
-		resp->insertInt(getConstitution());
+		resp->insertBoolean(isRebel());
 		break;
 	case 174:
-		resp->insertInt(getAction());
+		resp->insertBoolean(isNeutral());
 		break;
 	case 175:
-		resp->insertInt(getQuickness());
+		resp->insertBoolean(isImperial());
 		break;
 	case 176:
-		resp->insertInt(getStamina());
+		resp->insertInt(getPvpStatusBitmask());
 		break;
 	case 177:
-		resp->insertInt(getMind());
+		resp->insertInt(getBankCredits());
 		break;
 	case 178:
-		resp->insertInt(getFocus());
+		resp->insertInt(getCashCredits());
 		break;
 	case 179:
-		resp->insertInt(getWillpower());
+		resp->insertInt(getWoundsUpdateCounter());
 		break;
 	case 180:
-		resp->insertInt(getHealthMax());
+		resp->insertInt(getNewWoundsUpdateCounter(inv->getSignedIntParameter()));
 		break;
 	case 181:
-		resp->insertInt(getStrengthMax());
+		resp->insertInt(getBaseHealth());
 		break;
 	case 182:
-		resp->insertInt(getConstitutionMax());
+		resp->insertInt(getBaseStrength());
 		break;
 	case 183:
-		resp->insertInt(getActionMax());
+		resp->insertInt(getBaseConstitution());
 		break;
 	case 184:
-		resp->insertInt(getQuicknessMax());
+		resp->insertInt(getBaseAction());
 		break;
 	case 185:
-		resp->insertInt(getStaminaMax());
+		resp->insertInt(getBaseQuickness());
 		break;
 	case 186:
-		resp->insertInt(getMindMax());
+		resp->insertInt(getBaseStamina());
 		break;
 	case 187:
-		resp->insertInt(getFocusMax());
+		resp->insertInt(getBaseMind());
 		break;
 	case 188:
-		resp->insertInt(getWillpowerMax());
+		resp->insertInt(getBaseFocus());
 		break;
 	case 189:
-		resp->insertInt(getArmor());
+		resp->insertInt(getBaseWillpower());
 		break;
 	case 190:
-		resp->insertInt(getHealthWounds());
+		resp->insertInt(getHealth());
 		break;
 	case 191:
-		resp->insertInt(getActionWounds());
+		resp->insertInt(getStrength());
 		break;
 	case 192:
-		resp->insertInt(getMindWounds());
+		resp->insertInt(getConstitution());
 		break;
 	case 193:
-		resp->insertInt(getHAMUpdateCounter());
+		resp->insertInt(getAction());
 		break;
 	case 194:
-		resp->insertInt(getNewHAMUpdateCounter(inv->getSignedIntParameter()));
+		resp->insertInt(getQuickness());
 		break;
 	case 195:
-		resp->insertInt(getHAMMaxUpdateCounter());
+		resp->insertInt(getStamina());
 		break;
 	case 196:
-		resp->insertInt(getNewHAMMaxUpdateCounter(inv->getSignedIntParameter()));
+		resp->insertInt(getMind());
 		break;
 	case 197:
-		resp->insertLong(getTargetID());
+		resp->insertInt(getFocus());
 		break;
 	case 198:
-		resp->insertLong(getTarget()->_getORBObjectID());
+		resp->insertInt(getWillpower());
 		break;
 	case 199:
-		resp->insertLong(getWeaponID());
+		resp->insertInt(getHealthMax());
 		break;
 	case 200:
-		resp->insertLong(getGroupID());
+		resp->insertInt(getStrengthMax());
 		break;
 	case 201:
-		resp->insertLong(getGuildID());
+		resp->insertInt(getConstitutionMax());
 		break;
 	case 202:
-		resp->insertLong(getGuild()->_getORBObjectID());
+		resp->insertInt(getActionMax());
 		break;
 	case 203:
-		resp->insertFloat(getSpeed());
+		resp->insertInt(getQuicknessMax());
 		break;
 	case 204:
-		resp->insertFloat(getAcceleration());
+		resp->insertInt(getStaminaMax());
 		break;
 	case 205:
-		resp->insertLong(getDefenderID());
+		resp->insertInt(getMindMax());
 		break;
 	case 206:
-		resp->insertInt(getDefenderUpdateCounter());
+		resp->insertInt(getFocusMax());
 		break;
 	case 207:
-		resp->insertInt(getNewDefenderUpdateCounter(inv->getSignedIntParameter()));
+		resp->insertInt(getWillpowerMax());
 		break;
 	case 208:
-		resp->insertAscii(getPerformanceName());
+		resp->insertInt(getArmor());
 		break;
 	case 209:
-		resp->insertInt(getPerformanceCounter());
+		resp->insertInt(getHealthWounds());
 		break;
 	case 210:
-		resp->insertInt(getInstrumentID());
+		resp->insertInt(getActionWounds());
 		break;
 	case 211:
-		resp->insertAscii(getMood());
+		resp->insertInt(getMindWounds());
 		break;
 	case 212:
-		resp->insertByte(getMoodID());
+		resp->insertInt(getHAMUpdateCounter());
 		break;
 	case 213:
-		resp->insertLong(getGroupInviterID());
+		resp->insertInt(getNewHAMUpdateCounter(inv->getSignedIntParameter()));
 		break;
 	case 214:
-		resp->insertLong(getGroupInviteCounter());
+		resp->insertInt(getHAMMaxUpdateCounter());
 		break;
 	case 215:
-		resp->insertLong(getNewGroupInviteCounter());
+		resp->insertInt(getNewHAMMaxUpdateCounter(inv->getSignedIntParameter()));
 		break;
 	case 216:
-		resp->insertLong(getWatchID());
+		resp->insertLong(getTargetID());
 		break;
 	case 217:
-		resp->insertLong(getListenID());
+		resp->insertLong(getTarget()->_getORBObjectID());
 		break;
 	case 218:
-		resp->insertAscii(getGuildName());
+		resp->insertLong(getWeaponID());
 		break;
 	case 219:
-		resp->insertSignedInt(getWeaponSpeedModifier());
+		resp->insertLong(getGroupID());
 		break;
 	case 220:
-		resp->insertInt(getSkillBoxesUpdateCounter());
+		resp->insertLong(getGuildID());
 		break;
 	case 221:
-		resp->insertInt(getSkillModsCounter());
+		resp->insertLong(getGuild()->_getORBObjectID());
 		break;
 	case 222:
-		resp->insertInt(getNewSkillModsCounter(inv->getSignedIntParameter()));
+		resp->insertFloat(getSpeed());
 		break;
 	case 223:
-		resp->insertLong(getBuilding()->_getORBObjectID());
+		resp->insertFloat(getAcceleration());
 		break;
 	case 224:
-		resp->insertLong(getInventoryItem(inv->getUnsignedLongParameter())->_getORBObjectID());
+		resp->insertLong(getDefenderID());
 		break;
 	case 225:
-		removeInventoryItem(inv->getUnsignedLongParameter());
+		resp->insertInt(getDefenderUpdateCounter());
 		break;
 	case 226:
-		broadcastMessage((Message*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter());
+		resp->insertInt(getNewDefenderUpdateCounter(inv->getSignedIntParameter()));
 		break;
 	case 227:
-		resp->insertLong(getInventory()->_getORBObjectID());
+		resp->insertAscii(getPerformanceName());
 		break;
 	case 228:
-		resp->insertLong(getNewItemID());
+		resp->insertInt(getPerformanceCounter());
 		break;
 	case 229:
-		resp->insertLong(getWeapon()->_getORBObjectID());
+		resp->insertInt(getInstrumentID());
 		break;
 	case 230:
-		resp->insertSignedInt(getSkillMod(inv->getAsciiParameter(_param0_getSkillMod__string_)));
+		resp->insertAscii(getMood());
 		break;
 	case 231:
-		resp->insertBoolean(hasSkillMod(inv->getAsciiParameter(_param0_hasSkillMod__string_)));
+		resp->insertByte(getMoodID());
 		break;
 	case 232:
-		resp->insertSignedInt(getAccuracy());
+		resp->insertLong(getGroupInviterID());
 		break;
 	case 233:
-		resp->insertSignedInt(getDefenseBonus());
+		resp->insertLong(getGroupInviteCounter());
 		break;
 	case 234:
-		resp->insertSignedInt(getDamageBonus());
+		resp->insertLong(getNewGroupInviteCounter());
 		break;
 	case 235:
-		resp->insertSignedInt(getConditionDamage());
+		resp->insertLong(getWatchID());
 		break;
 	case 236:
-		resp->insertSignedInt(getMaxCondition());
+		resp->insertLong(getListenID());
 		break;
 	case 237:
-		resp->insertSignedInt(getCondition());
+		resp->insertAscii(getGuildName());
 		break;
 	case 238:
-		resp->insertLong(getMount()->_getORBObjectID());
+		resp->insertSignedInt(getWeaponSpeedModifier());
 		break;
 	case 239:
-		resp->insertLong(getCreatureLinkID());
+		resp->insertInt(getSkillBoxesUpdateCounter());
 		break;
 	case 240:
-		resp->insertFloat(getDistanceTo((CreatureObject*) inv->getObjectParameter()));
+		resp->insertInt(getSkillModsCounter());
 		break;
 	case 241:
-		resp->insertFloat(getHeight());
+		resp->insertInt(getNewSkillModsCounter(inv->getSignedIntParameter()));
 		break;
 	case 242:
-		resp->insertInt(getCreatureSkillsCount());
+		resp->insertLong(getBuilding()->_getORBObjectID());
 		break;
 	case 243:
-		resp->insertInt(getNewCreatureSkillsCount(inv->getSignedIntParameter()));
+		resp->insertLong(getInventoryItem(inv->getUnsignedLongParameter())->_getORBObjectID());
 		break;
 	case 244:
-		resp->insertInt(getLastMovementUpdateStamp());
+		removeInventoryItem(inv->getUnsignedLongParameter());
 		break;
 	case 245:
-		resp->insertSignedInt(getIgnoreMovementTests());
+		broadcastMessage((Message*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter());
 		break;
 	case 246:
-		resp->insertInt(getDefenderListSize());
+		resp->insertLong(getInventory()->_getORBObjectID());
 		break;
 	case 247:
-		resp->insertLong(getDefender(inv->getSignedIntParameter())->_getORBObjectID());
+		resp->insertLong(getNewItemID());
 		break;
 	case 248:
-		resp->insertInt(getLevel());
+		resp->insertLong(getWeapon()->_getORBObjectID());
 		break;
 	case 249:
-		sendSystemMessage(inv->getAsciiParameter(_param0_sendSystemMessage__string_));
+		resp->insertSignedInt(getSkillMod(inv->getAsciiParameter(_param0_getSkillMod__string_)));
 		break;
 	case 250:
-		sendSystemMessage(inv->getAsciiParameter(_param0_sendSystemMessage__string_string_long_), inv->getAsciiParameter(_param1_sendSystemMessage__string_string_long_), inv->getUnsignedLongParameter());
+		resp->insertBoolean(hasSkillMod(inv->getAsciiParameter(_param0_hasSkillMod__string_)));
 		break;
 	case 251:
-		addInventoryItem((TangibleObject*) inv->getObjectParameter());
+		resp->insertSignedInt(getAccuracy());
 		break;
 	case 252:
-		startDancing(inv->getAsciiParameter(_param0_startDancing__string_));
+		resp->insertSignedInt(getDefenseBonus());
 		break;
 	case 253:
-		startPlayingMusic(inv->getAsciiParameter(_param0_startPlayingMusic__string_));
+		resp->insertSignedInt(getDamageBonus());
 		break;
 	case 254:
-		startWatch(inv->getUnsignedLongParameter());
+		resp->insertSignedInt(getConditionDamage());
 		break;
 	case 255:
-		startListen(inv->getUnsignedLongParameter());
+		resp->insertSignedInt(getMaxCondition());
 		break;
 	case 256:
-		stopWatch(inv->getUnsignedLongParameter(), inv->getBooleanParameter(), inv->getBooleanParameter(), inv->getBooleanParameter());
+		resp->insertSignedInt(getCondition());
 		break;
 	case 257:
-		stopListen(inv->getUnsignedLongParameter(), inv->getBooleanParameter(), inv->getBooleanParameter(), inv->getBooleanParameter());
+		resp->insertLong(getMount()->_getORBObjectID());
 		break;
 	case 258:
-		resp->insertBoolean(isPlayingMusic());
+		resp->insertLong(getCreatureLinkID());
 		break;
 	case 259:
-		resp->insertBoolean(isDancing());
+		resp->insertFloat(getDistanceTo((CreatureObject*) inv->getObjectParameter()));
 		break;
 	case 260:
-		stopDancing();
+		resp->insertFloat(getHeight());
 		break;
 	case 261:
-		stopPlayingMusic();
+		resp->insertInt(getCreatureSkillsCount());
 		break;
 	case 262:
-		addListener((CreatureObject*) inv->getObjectParameter());
+		resp->insertInt(getNewCreatureSkillsCount(inv->getSignedIntParameter()));
 		break;
 	case 263:
-		addWatcher((CreatureObject*) inv->getObjectParameter());
+		resp->insertInt(getLastMovementUpdateStamp());
 		break;
 	case 264:
-		removeListener((CreatureObject*) inv->getObjectParameter());
+		resp->insertSignedInt(getIgnoreMovementTests());
 		break;
 	case 265:
-		removeWatcher((CreatureObject*) inv->getObjectParameter());
+		resp->insertInt(getDefenderListSize());
 		break;
 	case 266:
-		activateRecovery();
+		resp->insertLong(getDefender(inv->getSignedIntParameter())->_getORBObjectID());
 		break;
 	case 267:
-		resp->insertSignedInt(getCreatureSkillsSize());
+		resp->insertInt(getLevel());
 		break;
 	case 268:
-		resp->insertAscii(getSkill(inv->getSignedIntParameter()));
+		sendSystemMessage(inv->getAsciiParameter(_param0_sendSystemMessage__string_));
 		break;
 	case 269:
-		resp->insertBoolean(hasSkill(inv->getUnsignedIntParameter()));
+		sendSystemMessage(inv->getAsciiParameter(_param0_sendSystemMessage__string_string_long_), inv->getAsciiParameter(_param1_sendSystemMessage__string_string_long_), inv->getUnsignedLongParameter());
 		break;
 	case 270:
-		mountCreature((MountCreature*) inv->getObjectParameter(), inv->getBooleanParameter());
+		addInventoryItem((TangibleObject*) inv->getObjectParameter());
 		break;
 	case 271:
-		dismount(inv->getBooleanParameter());
+		startDancing(inv->getAsciiParameter(_param0_startDancing__string_));
 		break;
 	case 272:
-		addCashCredits(inv->getSignedIntParameter());
+		startPlayingMusic(inv->getAsciiParameter(_param0_startPlayingMusic__string_));
 		break;
 	case 273:
-		addBankCredits(inv->getSignedIntParameter());
+		startWatch(inv->getUnsignedLongParameter());
 		break;
 	case 274:
-		subtractCashCredits(inv->getSignedIntParameter());
+		startListen(inv->getUnsignedLongParameter());
 		break;
 	case 275:
-		subtractBankCredits(inv->getSignedIntParameter());
+		stopWatch(inv->getUnsignedLongParameter(), inv->getBooleanParameter(), inv->getBooleanParameter(), inv->getBooleanParameter());
 		break;
 	case 276:
-		setCashCredits(inv->getSignedIntParameter());
+		stopListen(inv->getUnsignedLongParameter(), inv->getBooleanParameter(), inv->getBooleanParameter(), inv->getBooleanParameter());
 		break;
 	case 277:
-		setBankCredits(inv->getSignedIntParameter());
+		resp->insertBoolean(isPlayingMusic());
 		break;
 	case 278:
-		resp->insertBoolean(verifyCashCredits(inv->getSignedIntParameter()));
+		resp->insertBoolean(isDancing());
 		break;
 	case 279:
+		stopDancing();
+		break;
+	case 280:
+		stopPlayingMusic();
+		break;
+	case 281:
+		addListener((CreatureObject*) inv->getObjectParameter());
+		break;
+	case 282:
+		addWatcher((CreatureObject*) inv->getObjectParameter());
+		break;
+	case 283:
+		removeListener((CreatureObject*) inv->getObjectParameter());
+		break;
+	case 284:
+		removeWatcher((CreatureObject*) inv->getObjectParameter());
+		break;
+	case 285:
+		activateRecovery();
+		break;
+	case 286:
+		resp->insertSignedInt(getCreatureSkillsSize());
+		break;
+	case 287:
+		resp->insertAscii(getSkill(inv->getSignedIntParameter()));
+		break;
+	case 288:
+		resp->insertBoolean(hasSkill(inv->getUnsignedIntParameter()));
+		break;
+	case 289:
+		mountCreature((MountCreature*) inv->getObjectParameter(), inv->getBooleanParameter());
+		break;
+	case 290:
+		dismount(inv->getBooleanParameter());
+		break;
+	case 291:
+		addCashCredits(inv->getSignedIntParameter());
+		break;
+	case 292:
+		addBankCredits(inv->getSignedIntParameter());
+		break;
+	case 293:
+		subtractCashCredits(inv->getSignedIntParameter());
+		break;
+	case 294:
+		subtractBankCredits(inv->getSignedIntParameter());
+		break;
+	case 295:
+		setCashCredits(inv->getSignedIntParameter());
+		break;
+	case 296:
+		setBankCredits(inv->getSignedIntParameter());
+		break;
+	case 297:
+		applyBuff(inv->getAsciiParameter(_param0_applyBuff__string_int_float_), inv->getSignedIntParameter(), inv->getFloatParameter());
+		break;
+	case 298:
+		resp->insertBoolean(verifyCashCredits(inv->getSignedIntParameter()));
+		break;
+	case 299:
 		resp->insertBoolean(verifyBankCredits(inv->getSignedIntParameter()));
 		break;
 	default:
@@ -4599,148 +4911,8 @@ void CreatureObjectAdapter::clearStates() {
 	return ((CreatureObjectImplementation*) impl)->clearStates();
 }
 
-bool CreatureObjectAdapter::hasAttackDelay() {
-	return ((CreatureObjectImplementation*) impl)->hasAttackDelay();
-}
-
-void CreatureObjectAdapter::clearAttackDelay() {
-	return ((CreatureObjectImplementation*) impl)->clearAttackDelay();
-}
-
-bool CreatureObjectAdapter::isOnFullHealth() {
-	return ((CreatureObjectImplementation*) impl)->isOnFullHealth();
-}
-
-bool CreatureObjectAdapter::hasStates() {
-	return ((CreatureObjectImplementation*) impl)->hasStates();
-}
-
-bool CreatureObjectAdapter::hasState(unsigned long long state) {
-	return ((CreatureObjectImplementation*) impl)->hasState(state);
-}
-
-bool CreatureObjectAdapter::isAttackable() {
-	return ((CreatureObjectImplementation*) impl)->isAttackable();
-}
-
-bool CreatureObjectAdapter::isListening() {
-	return ((CreatureObjectImplementation*) impl)->isListening();
-}
-
-bool CreatureObjectAdapter::isWatching() {
-	return ((CreatureObjectImplementation*) impl)->isWatching();
-}
-
-void CreatureObjectAdapter::activateBurstRun() {
-	return ((CreatureObjectImplementation*) impl)->activateBurstRun();
-}
-
-bool CreatureObjectAdapter::hasQueuedState(unsigned int skillCRC) {
-	return ((CreatureObjectImplementation*) impl)->hasQueuedState(skillCRC);
-}
-
-bool CreatureObjectAdapter::removeQueuedState(unsigned int skillCRC) {
-	return ((CreatureObjectImplementation*) impl)->removeQueuedState(skillCRC);
-}
-
-bool CreatureObjectAdapter::addQueuedState(unsigned int skillCRC) {
-	return ((CreatureObjectImplementation*) impl)->addQueuedState(skillCRC);
-}
-
-void CreatureObjectAdapter::setMeditateState() {
-	return ((CreatureObjectImplementation*) impl)->setMeditateState();
-}
-
-void CreatureObjectAdapter::setHealth(unsigned int health) {
-	return ((CreatureObjectImplementation*) impl)->setHealth(health);
-}
-
-void CreatureObjectAdapter::setStrength(unsigned int strength) {
-	return ((CreatureObjectImplementation*) impl)->setStrength(strength);
-}
-
-void CreatureObjectAdapter::setConstitution(unsigned int constituition) {
-	return ((CreatureObjectImplementation*) impl)->setConstitution(constituition);
-}
-
-void CreatureObjectAdapter::setAction(unsigned int action) {
-	return ((CreatureObjectImplementation*) impl)->setAction(action);
-}
-
-void CreatureObjectAdapter::setQuickness(unsigned int quickness) {
-	return ((CreatureObjectImplementation*) impl)->setQuickness(quickness);
-}
-
-void CreatureObjectAdapter::setStamina(unsigned int stamina) {
-	return ((CreatureObjectImplementation*) impl)->setStamina(stamina);
-}
-
-void CreatureObjectAdapter::setMind(unsigned int mind) {
-	return ((CreatureObjectImplementation*) impl)->setMind(mind);
-}
-
-void CreatureObjectAdapter::setFocus(unsigned int focus) {
-	return ((CreatureObjectImplementation*) impl)->setFocus(focus);
-}
-
-void CreatureObjectAdapter::setWillpower(unsigned int willpower) {
-	return ((CreatureObjectImplementation*) impl)->setWillpower(willpower);
-}
-
-void CreatureObjectAdapter::setHealthMax(unsigned int health) {
-	return ((CreatureObjectImplementation*) impl)->setHealthMax(health);
-}
-
-void CreatureObjectAdapter::setStrengthMax(unsigned int strength) {
-	return ((CreatureObjectImplementation*) impl)->setStrengthMax(strength);
-}
-
-void CreatureObjectAdapter::setConstitutionMax(unsigned int constituition) {
-	return ((CreatureObjectImplementation*) impl)->setConstitutionMax(constituition);
-}
-
-void CreatureObjectAdapter::setActionMax(unsigned int action) {
-	return ((CreatureObjectImplementation*) impl)->setActionMax(action);
-}
-
-void CreatureObjectAdapter::setQuicknessMax(unsigned int quickness) {
-	return ((CreatureObjectImplementation*) impl)->setQuicknessMax(quickness);
-}
-
-void CreatureObjectAdapter::setStaminaMax(unsigned int stamina) {
-	return ((CreatureObjectImplementation*) impl)->setStaminaMax(stamina);
-}
-
-void CreatureObjectAdapter::setMindMax(unsigned int mind) {
-	return ((CreatureObjectImplementation*) impl)->setMindMax(mind);
-}
-
-void CreatureObjectAdapter::setFocusMax(unsigned int focus) {
-	return ((CreatureObjectImplementation*) impl)->setFocusMax(focus);
-}
-
-void CreatureObjectAdapter::setWillpowerMax(unsigned int willpower) {
-	return ((CreatureObjectImplementation*) impl)->setWillpowerMax(willpower);
-}
-
-void CreatureObjectAdapter::setArmor(unsigned int ar) {
-	return ((CreatureObjectImplementation*) impl)->setArmor(ar);
-}
-
-void CreatureObjectAdapter::setHealthWounds(unsigned int wounds) {
-	return ((CreatureObjectImplementation*) impl)->setHealthWounds(wounds);
-}
-
-void CreatureObjectAdapter::setActionWounds(unsigned int wounds) {
-	return ((CreatureObjectImplementation*) impl)->setActionWounds(wounds);
-}
-
-void CreatureObjectAdapter::setMindWounds(unsigned int wounds) {
-	return ((CreatureObjectImplementation*) impl)->setMindWounds(wounds);
-}
-
-void CreatureObjectAdapter::setWoundsUpdateCounter(unsigned int count) {
-	return ((CreatureObjectImplementation*) impl)->setWoundsUpdateCounter(count);
+void CreatureObjectAdapter::resetHAMBars() {
+	return ((CreatureObjectImplementation*) impl)->resetHAMBars();
 }
 
 bool CreatureObjectAdapter::changeHAMBars(int hp, int ap, int mp, bool forcedChange) {
@@ -4837,6 +5009,186 @@ void CreatureObjectAdapter::changeMaxFocusBar(int hp) {
 
 void CreatureObjectAdapter::changeMaxWillpowerBar(int hp) {
 	return ((CreatureObjectImplementation*) impl)->changeMaxWillpowerBar(hp);
+}
+
+bool CreatureObjectAdapter::hasAttackDelay() {
+	return ((CreatureObjectImplementation*) impl)->hasAttackDelay();
+}
+
+void CreatureObjectAdapter::clearAttackDelay() {
+	return ((CreatureObjectImplementation*) impl)->clearAttackDelay();
+}
+
+bool CreatureObjectAdapter::isOnFullHealth() {
+	return ((CreatureObjectImplementation*) impl)->isOnFullHealth();
+}
+
+bool CreatureObjectAdapter::hasStates() {
+	return ((CreatureObjectImplementation*) impl)->hasStates();
+}
+
+bool CreatureObjectAdapter::hasState(unsigned long long state) {
+	return ((CreatureObjectImplementation*) impl)->hasState(state);
+}
+
+bool CreatureObjectAdapter::isAttackable() {
+	return ((CreatureObjectImplementation*) impl)->isAttackable();
+}
+
+bool CreatureObjectAdapter::isListening() {
+	return ((CreatureObjectImplementation*) impl)->isListening();
+}
+
+bool CreatureObjectAdapter::isWatching() {
+	return ((CreatureObjectImplementation*) impl)->isWatching();
+}
+
+void CreatureObjectAdapter::activateBurstRun() {
+	return ((CreatureObjectImplementation*) impl)->activateBurstRun();
+}
+
+bool CreatureObjectAdapter::hasQueuedState(unsigned int skillCRC) {
+	return ((CreatureObjectImplementation*) impl)->hasQueuedState(skillCRC);
+}
+
+bool CreatureObjectAdapter::removeQueuedState(unsigned int skillCRC) {
+	return ((CreatureObjectImplementation*) impl)->removeQueuedState(skillCRC);
+}
+
+bool CreatureObjectAdapter::addQueuedState(unsigned int skillCRC) {
+	return ((CreatureObjectImplementation*) impl)->addQueuedState(skillCRC);
+}
+
+void CreatureObjectAdapter::setMeditateState() {
+	return ((CreatureObjectImplementation*) impl)->setMeditateState();
+}
+
+void CreatureObjectAdapter::setBaseHealth(unsigned int health) {
+	return ((CreatureObjectImplementation*) impl)->setBaseHealth(health);
+}
+
+void CreatureObjectAdapter::setBaseStrength(unsigned int strength) {
+	return ((CreatureObjectImplementation*) impl)->setBaseStrength(strength);
+}
+
+void CreatureObjectAdapter::setBaseConstitution(unsigned int constituition) {
+	return ((CreatureObjectImplementation*) impl)->setBaseConstitution(constituition);
+}
+
+void CreatureObjectAdapter::setBaseAction(unsigned int action) {
+	return ((CreatureObjectImplementation*) impl)->setBaseAction(action);
+}
+
+void CreatureObjectAdapter::setBaseQuickness(unsigned int quickness) {
+	return ((CreatureObjectImplementation*) impl)->setBaseQuickness(quickness);
+}
+
+void CreatureObjectAdapter::setBaseStamina(unsigned int stamina) {
+	return ((CreatureObjectImplementation*) impl)->setBaseStamina(stamina);
+}
+
+void CreatureObjectAdapter::setBaseMind(unsigned int mind) {
+	return ((CreatureObjectImplementation*) impl)->setBaseMind(mind);
+}
+
+void CreatureObjectAdapter::setBaseFocus(unsigned int focus) {
+	return ((CreatureObjectImplementation*) impl)->setBaseFocus(focus);
+}
+
+void CreatureObjectAdapter::setBaseWillpower(unsigned int willpower) {
+	return ((CreatureObjectImplementation*) impl)->setBaseWillpower(willpower);
+}
+
+void CreatureObjectAdapter::setHealth(unsigned int health) {
+	return ((CreatureObjectImplementation*) impl)->setHealth(health);
+}
+
+void CreatureObjectAdapter::setStrength(unsigned int strength) {
+	return ((CreatureObjectImplementation*) impl)->setStrength(strength);
+}
+
+void CreatureObjectAdapter::setConstitution(unsigned int constituition) {
+	return ((CreatureObjectImplementation*) impl)->setConstitution(constituition);
+}
+
+void CreatureObjectAdapter::setAction(unsigned int action) {
+	return ((CreatureObjectImplementation*) impl)->setAction(action);
+}
+
+void CreatureObjectAdapter::setQuickness(unsigned int quickness) {
+	return ((CreatureObjectImplementation*) impl)->setQuickness(quickness);
+}
+
+void CreatureObjectAdapter::setStamina(unsigned int stamina) {
+	return ((CreatureObjectImplementation*) impl)->setStamina(stamina);
+}
+
+void CreatureObjectAdapter::setMind(unsigned int mind) {
+	return ((CreatureObjectImplementation*) impl)->setMind(mind);
+}
+
+void CreatureObjectAdapter::setFocus(unsigned int focus) {
+	return ((CreatureObjectImplementation*) impl)->setFocus(focus);
+}
+
+void CreatureObjectAdapter::setWillpower(unsigned int willpower) {
+	return ((CreatureObjectImplementation*) impl)->setWillpower(willpower);
+}
+
+void CreatureObjectAdapter::setHealthMax(unsigned int health) {
+	return ((CreatureObjectImplementation*) impl)->setHealthMax(health);
+}
+
+void CreatureObjectAdapter::setStrengthMax(unsigned int strength) {
+	return ((CreatureObjectImplementation*) impl)->setStrengthMax(strength);
+}
+
+void CreatureObjectAdapter::setConstitutionMax(unsigned int constituition) {
+	return ((CreatureObjectImplementation*) impl)->setConstitutionMax(constituition);
+}
+
+void CreatureObjectAdapter::setActionMax(unsigned int action) {
+	return ((CreatureObjectImplementation*) impl)->setActionMax(action);
+}
+
+void CreatureObjectAdapter::setQuicknessMax(unsigned int quickness) {
+	return ((CreatureObjectImplementation*) impl)->setQuicknessMax(quickness);
+}
+
+void CreatureObjectAdapter::setStaminaMax(unsigned int stamina) {
+	return ((CreatureObjectImplementation*) impl)->setStaminaMax(stamina);
+}
+
+void CreatureObjectAdapter::setMindMax(unsigned int mind) {
+	return ((CreatureObjectImplementation*) impl)->setMindMax(mind);
+}
+
+void CreatureObjectAdapter::setFocusMax(unsigned int focus) {
+	return ((CreatureObjectImplementation*) impl)->setFocusMax(focus);
+}
+
+void CreatureObjectAdapter::setWillpowerMax(unsigned int willpower) {
+	return ((CreatureObjectImplementation*) impl)->setWillpowerMax(willpower);
+}
+
+void CreatureObjectAdapter::setArmor(unsigned int ar) {
+	return ((CreatureObjectImplementation*) impl)->setArmor(ar);
+}
+
+void CreatureObjectAdapter::setHealthWounds(unsigned int wounds) {
+	return ((CreatureObjectImplementation*) impl)->setHealthWounds(wounds);
+}
+
+void CreatureObjectAdapter::setActionWounds(unsigned int wounds) {
+	return ((CreatureObjectImplementation*) impl)->setActionWounds(wounds);
+}
+
+void CreatureObjectAdapter::setMindWounds(unsigned int wounds) {
+	return ((CreatureObjectImplementation*) impl)->setMindWounds(wounds);
+}
+
+void CreatureObjectAdapter::setWoundsUpdateCounter(unsigned int count) {
+	return ((CreatureObjectImplementation*) impl)->setWoundsUpdateCounter(count);
 }
 
 void CreatureObjectAdapter::changeConditionDamage(int amount) {
@@ -5077,6 +5429,42 @@ unsigned int CreatureObjectAdapter::getWoundsUpdateCounter() {
 
 unsigned int CreatureObjectAdapter::getNewWoundsUpdateCounter(int upd) {
 	return ((CreatureObjectImplementation*) impl)->getNewWoundsUpdateCounter(upd);
+}
+
+unsigned int CreatureObjectAdapter::getBaseHealth() {
+	return ((CreatureObjectImplementation*) impl)->getBaseHealth();
+}
+
+unsigned int CreatureObjectAdapter::getBaseStrength() {
+	return ((CreatureObjectImplementation*) impl)->getBaseStrength();
+}
+
+unsigned int CreatureObjectAdapter::getBaseConstitution() {
+	return ((CreatureObjectImplementation*) impl)->getBaseConstitution();
+}
+
+unsigned int CreatureObjectAdapter::getBaseAction() {
+	return ((CreatureObjectImplementation*) impl)->getBaseAction();
+}
+
+unsigned int CreatureObjectAdapter::getBaseQuickness() {
+	return ((CreatureObjectImplementation*) impl)->getBaseQuickness();
+}
+
+unsigned int CreatureObjectAdapter::getBaseStamina() {
+	return ((CreatureObjectImplementation*) impl)->getBaseStamina();
+}
+
+unsigned int CreatureObjectAdapter::getBaseMind() {
+	return ((CreatureObjectImplementation*) impl)->getBaseMind();
+}
+
+unsigned int CreatureObjectAdapter::getBaseFocus() {
+	return ((CreatureObjectImplementation*) impl)->getBaseFocus();
+}
+
+unsigned int CreatureObjectAdapter::getBaseWillpower() {
+	return ((CreatureObjectImplementation*) impl)->getBaseWillpower();
 }
 
 unsigned int CreatureObjectAdapter::getHealth() {
@@ -5505,6 +5893,10 @@ void CreatureObjectAdapter::setCashCredits(int credits) {
 
 void CreatureObjectAdapter::setBankCredits(int credits) {
 	return ((CreatureObjectImplementation*) impl)->setBankCredits(credits);
+}
+
+void CreatureObjectAdapter::applyBuff(const string& type, int value, float duration) {
+	return ((CreatureObjectImplementation*) impl)->applyBuff(type, value, duration);
 }
 
 bool CreatureObjectAdapter::verifyCashCredits(int creditsToRemove) {

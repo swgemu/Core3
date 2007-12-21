@@ -184,6 +184,8 @@ public:
 	void createItems();
 	void loadItems();
 	
+	void createBaseStats();
+	
 	void sendToOwner();
 	void sendPersonalContainers();
 	void sendTo(Player* player, bool doClose = true);
@@ -246,16 +248,21 @@ public:
 	
 	void kill();
 
+	// buffing methods
+	void addBuff(uint32 buffcrc, float time);
+	
+	void clearBuffs(bool doUpdatePlayer = true);
+
+	// jedi methods
 	inline bool isJedi() {
 		return playerObject->isJedi();
 	}
 
 	bool changeForceBar(int32 fp);
+	
 	void setForceBar(uint32 fp) {
 		playerObject->setForcePower(fp, true);
 	}
-	
-	void addBuff(uint32 buffcrc, float time);
 	
 	// faction methods
 	void setOvert();

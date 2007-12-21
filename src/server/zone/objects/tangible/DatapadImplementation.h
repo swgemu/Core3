@@ -62,6 +62,9 @@ public:
 		container = (SceneObject*) creature;
 	}
 	
+	virtual ~DatapadImplementation() {
+	}
+	
 };
 
 #endif /*DATAPADIMPLEMENTATION_H_*/
