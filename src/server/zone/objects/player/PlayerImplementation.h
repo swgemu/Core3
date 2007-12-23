@@ -251,7 +251,7 @@ public:
 	// buffing methods
 	void addBuff(uint32 buffcrc, float time);
 	
-	void clearBuffs(bool doUpdatePlayer = true);
+	void clearBuffs(bool doUpdatePlayer = true, bool reload = false);
 
 	// jedi methods
 	inline bool isJedi() {

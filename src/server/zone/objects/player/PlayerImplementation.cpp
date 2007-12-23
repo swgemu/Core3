@@ -270,7 +270,7 @@ void PlayerImplementation::reload(ZoneClient* client) {
 	
 		owner = client;
 		client->setPlayer(_this);
-	
+
 		setLoggingIn();
 	
 		Zone* zone = server->getZoneServer()->getZone(zoneID);
@@ -279,8 +279,11 @@ void PlayerImplementation::reload(ZoneClient* client) {
 			reinsertToZone(zone);
 		else
 			insertToZone(zone);
-	
+		
+		clearBuffs(true, true);
+		
 		unlock();
+		
 	} catch (Exception& e) {
 		error("reconnecting in character");
 		error(e.getMessage());
@@ -1396,37 +1399,41 @@ void PlayerImplementation::addBuff(uint32 buffcrc, float time) {
 	sendMessage(bf);
 }
 
-void PlayerImplementation::clearBuffs(bool doUpdatePlayer) {
+//TODO: Fix the disconnect reconnect code so no need for reload variable
+void PlayerImplementation::clearBuffs(bool doUpdatePlayer, bool reload) {
 	// Clear buff icons
 	if (doUpdatePlayer) {
-		if (healthBuff)
+		if (healthBuff || reload)
 			addBuff(0x98321369, 0.0f);
 	
-		if (strengthBuff)
+		if (strengthBuff || reload)
 			addBuff(0x815D85C5, 0.0f);
 	
-		if (constitutionBuff)
+		if (constitutionBuff || reload)
 			addBuff(0x7F86D2C6, 0.0f);
 	
-		if (actionBuff)
+		if (actionBuff || reload)
 			addBuff(0x4BF616E2, 0.0f);
 	
-		if (quicknessBuff)
+		if (quicknessBuff || reload)
 			addBuff(0x71B5C842, 0.0f);
 	
-		if (staminaBuff)
+		if (staminaBuff || reload)
 			addBuff(0xED0040D9, 0.0f);
 	
-		if (mindBuff)
+		if (mindBuff || reload)
 			addBuff(0x11C1772E, 0.0f);
 	
-		if (focusBuff)
+		if (focusBuff || reload)
 			addBuff(0x2E77F586, 0.0f);
 	
-		if (willpowerBuff)
+		if (willpowerBuff || reload)
 			addBuff(0x3EC6FCB6, 0.0f);
-	}
 		
+		if(reload)
+			return;
+	}
+
 	healthBuff = false;
 	strengthBuff = false;
 	constitutionBuff = false;
@@ -1436,7 +1443,7 @@ void PlayerImplementation::clearBuffs(bool doUpdatePlayer) {
 	mindBuff = false;
 	focusBuff = false;
 	willpowerBuff = false;
-
+	
 	removeBuffs(doUpdatePlayer);
 }
 
