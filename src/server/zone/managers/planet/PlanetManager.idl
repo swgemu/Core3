@@ -51,12 +51,14 @@ include "engine/util/Coordinate";
 interface PlanetManager {
 	void init();
 		
-	unsigned long getNextStaticObjectID();
+	unsigned long getNextStaticObjectID(boolean doLock = true);
 	
 	void landShuttles();
 	void takeOffShuttles();
 	
 	ShuttleCreature getShuttle(const string Shuttle);
+	
+	void sendPlanetTravelPointListResponse(Player player);
 	
 	CellObject getCell(unsigned long id);
 	BuildingObject getBuilding(unsigned long id);

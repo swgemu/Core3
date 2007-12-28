@@ -155,7 +155,6 @@ interface Player implements CreatureObject {
 	//DuelList manipulation methods
 	void removeFromDuelList(Player targetPlayer);
 	void addToDuelList(Player targetPlayer);
-	void freeDuelList();
 	
 	boolean isInDuelWith(Player targetPlayer, boolean doLock = true);
 	

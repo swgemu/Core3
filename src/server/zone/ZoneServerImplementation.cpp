@@ -396,3 +396,12 @@ void ZoneServerImplementation::printEvents() {
 	unlock();
 }
 
+uint64 ZoneServerImplementation::getNextCreatureID(bool doLock) {
+	lock(doLock);
+	
+	uint64 nextID = (nextCreatureID += 0x10);
+	
+	unlock(doLock);
+	
+	return nextID;
+}

@@ -95,13 +95,11 @@ public:
 	PlanetManagerImplementation(Zone* zone, ZoneProcessServerImplementation* serv);
 	
 	void init();
-		
-	inline uint64 getNextStaticObjectID() {
-		return ++nextStaticObjectID;
-	}
-	
+
 	void landShuttles();
 	void takeOffShuttles();
+	
+	void sendPlanetTravelPointListResponse(Player* player);
 	
 	ShuttleCreature* getShuttle(const string& Shuttle);
 	
@@ -114,6 +112,8 @@ public:
 	}
 	
 	int64 getLandingTime();
+	
+	uint64 getNextStaticObjectID(bool doLock = true);
 	
 };
 

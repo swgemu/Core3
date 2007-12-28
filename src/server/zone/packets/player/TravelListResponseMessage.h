@@ -47,20 +47,46 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-class TravelListResponseMessage : public Message {
+class TravelPoint {
+	string name;
+	
+	float positionX;
+	float positionY;
+	float positionZ;
+	
+	uint32 unknown1;
+	uint8 unknown2;
+	
 public:
+	TravelPoint(const string& Name, float x, float z, float y) {
+		name = Name;
+		
+		positionX = x;
+		positionY = y;
+		positionZ = z;
+		
+		unknown1 = 0xC8;
+		unknown2 = 1;
+	}
+	
+	friend class TravelListResponseMessage;
+};
 
-    TravelListResponseMessage(string planet) : Message() {
+class TravelListResponseMessage : public Message {
+	Vector<TravelPoint*> travelPoints;
+	
+public:
+    TravelListResponseMessage(const string& planet) : Message() {
 		insertShort(0x06);
 		insertInt(0x4D32541F);  // CRC
         insertAscii(planet);
-        
-        insertInt(2); //Counter of Entries in list of shuttles methinks.
+        /*
+        insertInt(2); 
 	    insertAscii("Bestine");
 	    insertAscii("Anchorhead");
 	    //insertAscii("Coronet");
         
-        insertInt(2); //counter of entries in list of shuttles methinks.
+        insertInt(2);
         insertFloat(-1090);
         insertFloat(12.6);
         insertFloat(-3558);
@@ -71,18 +97,80 @@ public:
         
         /*insertFloat(-338);
         insertFloat(28);
-        insertFloat(-4634);*/
+        insertFloat(-4634);*//*
   
-        insertInt(2); //counter of entries in list of shuttles methinks.
+        insertInt(2); 
         insertInt(0xC8);
         insertInt(0xC8);
         //insertInt(0xC8);
         
-        insertInt(2); //counter of entries in list of shuttles methinks.
+        insertInt(2); 
         insertByte(1); //??
         insertByte(1); //??
-        //insertByte(1); //??
+        //insertByte(1); //??*/
 	}
+    
+    void addPoint(const string& name, float x, float z, float y) {
+    	TravelPoint* point = new TravelPoint(name, x, z, y);
+    	travelPoints.add(point);
+    }
+    
+    void generateMessage() {
+    	insertNames();
+    	insertCoords();
+    	insertUnknown1();
+    	insertUnknown2();
+    	
+    	while (travelPoints.size() > 0) {
+    		TravelPoint* point = travelPoints.get(0);
+    		
+    		travelPoints.remove(0);
+    		delete point;
+    	}
+    }
+    
+    void insertNames() {
+    	insertInt(travelPoints.size());
+        	
+    	for (int i = 0; i < travelPoints.size(); ++i) {
+    		TravelPoint* point = travelPoints.get(i);
+    		
+    		insertAscii(point->name);
+    	}
+    }
+    
+    void insertCoords() {
+    	insertInt(travelPoints.size());
+
+    	for (int i = 0; i < travelPoints.size(); ++i) {
+    		TravelPoint* point = travelPoints.get(i);
+
+    		insertFloat(point->positionX);
+    		insertFloat(point->positionZ);
+    		insertFloat(point->positionY);
+    	}
+    }
+    
+    void insertUnknown1() {
+    	insertInt(travelPoints.size());
+
+    	for (int i = 0; i < travelPoints.size(); ++i) {
+    		TravelPoint* point = travelPoints.get(i);
+
+    		insertInt(point->unknown1);
+    	}
+    }
+    
+    void insertUnknown2() {
+    	insertInt(travelPoints.size());
+
+    	for (int i = 0; i < travelPoints.size(); ++i) {
+    		TravelPoint* point = travelPoints.get(i);
+
+    		insertByte(point->unknown2);
+    	}
+    }
 	
 };
+
 #endif /*TRAVELLISTRESPONSEMESSAGE_H_*/

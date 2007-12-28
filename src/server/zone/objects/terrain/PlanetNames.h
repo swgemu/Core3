@@ -102,6 +102,13 @@ public:
 		return PlanetNames[id];
 	}
 	
+	const static int getPlanetID(const string& name) {
+		for (int i = 0; i < 10; ++i) {
+			if (name == PlanetNames[i])
+				return i;
+		}
+	}
+	
 };
 
 #endif /*PLANETNAMES_H_*/

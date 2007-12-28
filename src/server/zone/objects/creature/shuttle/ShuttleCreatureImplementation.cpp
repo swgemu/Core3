@@ -50,6 +50,8 @@ which carries forward this exception.
 #include "../../../managers/planet/PlanetManager.h"
 
 #include "../../player/Player.h"
+#include "../../tangible/ticket/Ticket.h"
+#include "../../terrain/PlanetNames.h"
 
 ShuttleCreatureImplementation::ShuttleCreatureImplementation(const string& Planet, const string& City, Coordinate* playerSpawnPoint, uint64 oid) 
 		: ShuttleCreatureServant(oid) {
@@ -70,6 +72,9 @@ ShuttleCreatureImplementation::ShuttleCreatureImplementation(const string& Plane
 	arrivalPoint = playerSpawnPoint;
 }
 
+ShuttleCreatureImplementation::~ShuttleCreatureImplementation() {
+	delete arrivalPoint;
+}
 
 void ShuttleCreatureImplementation::doTakeOff() {
 	setPosture(2);
@@ -83,14 +88,27 @@ void ShuttleCreatureImplementation::doLanding() {
 	doCombatAnimation((ShuttleCreature*) _this, 0xAB290245, 0);
 }
 	
-void ShuttleCreatureImplementation::sendPlayerTo(Player* player, const string& shuttle) {
-	PlanetManager* planetManager = zone->getPlanetManager();
+void ShuttleCreatureImplementation::sendPlayerTo(Player* player, Ticket* ticket) {
+	string planet = ticket->getArrivalPlanet();
+	string shuttle = ticket->getArrivalPoint();
 
+	int id = Planet::getPlanetID(planet);
+	Zone* arrivalZone = server->getZoneServer()->getZone(id);
+	
+	if (arrivalZone == NULL)
+		return;
+	
+	PlanetManager* planetManager = arrivalZone->getPlanetManager();
 	ShuttleCreature* arrivalShuttle = planetManager->getShuttle(shuttle);
 		
 	if (arrivalShuttle != NULL) {
 		Coordinate* coords = arrivalShuttle->getArrivalPoint();
-		player->doWarp(coords->getPositionX(), coords->getPositionY(), coords->getPositionZ());
+		
+		if (zone != arrivalZone) {
+			player->setPosition(coords->getPositionX(), coords->getPositionZ(), coords->getPositionY());
+			player->switchMap(id);
+		} else
+			player->doWarp(coords->getPositionX(), coords->getPositionY(), coords->getPositionZ());
 	}
 }
 

@@ -71,13 +71,15 @@ public:
 
 	void init();
 
-	unsigned long long getNextStaticObjectID();
+	unsigned long long getNextStaticObjectID(bool doLock = true);
 
 	void landShuttles();
 
 	void takeOffShuttles();
 
 	ShuttleCreature* getShuttle(const string& Shuttle);
+
+	void sendPlanetTravelPointListResponse(Player* player);
 
 	CellObject* getCell(unsigned long long id);
 
@@ -98,13 +100,15 @@ public:
 
 	void init();
 
-	unsigned long long getNextStaticObjectID();
+	unsigned long long getNextStaticObjectID(bool doLock);
 
 	void landShuttles();
 
 	void takeOffShuttles();
 
 	ShuttleCreature* getShuttle(const string& Shuttle);
+
+	void sendPlanetTravelPointListResponse(Player* player);
 
 	CellObject* getCell(unsigned long long id);
 

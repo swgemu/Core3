@@ -342,16 +342,17 @@ int ZoneServer::getConnectionCount() {
 		return ((ZoneServerImplementation*) _impl)->getConnectionCount();
 }
 
-unsigned long long ZoneServer::getNextCreatureID() {
+unsigned long long ZoneServer::getNextCreatureID(bool doLock) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
 		ORBMethodInvocation invocation(this, 26);
+		invocation.addBooleanParameter(doLock);
 
 		return invocation.executeWithUnsignedLongReturn();
 	} else
-		return ((ZoneServerImplementation*) _impl)->getNextCreatureID();
+		return ((ZoneServerImplementation*) _impl)->getNextCreatureID(doLock);
 }
 
 /*
@@ -426,7 +427,7 @@ Packet* ZoneServerAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* inv)
 		resp->insertSignedInt(getConnectionCount());
 		break;
 	case 26:
-		resp->insertLong(getNextCreatureID());
+		resp->insertLong(getNextCreatureID(inv->getBooleanParameter()));
 		break;
 	default:
 		return NULL;
@@ -515,8 +516,8 @@ int ZoneServerAdapter::getConnectionCount() {
 	return ((ZoneServerImplementation*) impl)->getConnectionCount();
 }
 
-unsigned long long ZoneServerAdapter::getNextCreatureID() {
-	return ((ZoneServerImplementation*) impl)->getNextCreatureID();
+unsigned long long ZoneServerAdapter::getNextCreatureID(bool doLock) {
+	return ((ZoneServerImplementation*) impl)->getNextCreatureID(doLock);
 }
 
 /*

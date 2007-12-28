@@ -89,16 +89,17 @@ void PlanetManager::init() {
 		((PlanetManagerImplementation*) _impl)->init();
 }
 
-unsigned long long PlanetManager::getNextStaticObjectID() {
+unsigned long long PlanetManager::getNextStaticObjectID(bool doLock) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
 		ORBMethodInvocation invocation(this, 7);
+		invocation.addBooleanParameter(doLock);
 
 		return invocation.executeWithUnsignedLongReturn();
 	} else
-		return ((PlanetManagerImplementation*) _impl)->getNextStaticObjectID();
+		return ((PlanetManagerImplementation*) _impl)->getNextStaticObjectID(doLock);
 }
 
 void PlanetManager::landShuttles() {
@@ -138,12 +139,25 @@ ShuttleCreature* PlanetManager::getShuttle(const string& Shuttle) {
 		return ((PlanetManagerImplementation*) _impl)->getShuttle(Shuttle);
 }
 
-CellObject* PlanetManager::getCell(unsigned long long id) {
+void PlanetManager::sendPlanetTravelPointListResponse(Player* player) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
 		ORBMethodInvocation invocation(this, 11);
+		invocation.addObjectParameter(player);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((PlanetManagerImplementation*) _impl)->sendPlanetTravelPointListResponse(player);
+}
+
+CellObject* PlanetManager::getCell(unsigned long long id) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 12);
 		invocation.addUnsignedLongParameter(id);
 
 		return (CellObject*) invocation.executeWithObjectReturn();
@@ -156,7 +170,7 @@ BuildingObject* PlanetManager::getBuilding(unsigned long long id) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 12);
+		ORBMethodInvocation invocation(this, 13);
 		invocation.addUnsignedLongParameter(id);
 
 		return (BuildingObject*) invocation.executeWithObjectReturn();
@@ -169,7 +183,7 @@ unsigned long long PlanetManager::getLandingTime() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 13);
+		ORBMethodInvocation invocation(this, 14);
 
 		return invocation.executeWithUnsignedLongReturn();
 	} else
@@ -191,7 +205,7 @@ Packet* PlanetManagerAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* i
 		init();
 		break;
 	case 7:
-		resp->insertLong(getNextStaticObjectID());
+		resp->insertLong(getNextStaticObjectID(inv->getBooleanParameter()));
 		break;
 	case 8:
 		landShuttles();
@@ -203,12 +217,15 @@ Packet* PlanetManagerAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* i
 		resp->insertLong(getShuttle(inv->getAsciiParameter(_param0_getShuttle__string_))->_getORBObjectID());
 		break;
 	case 11:
-		resp->insertLong(getCell(inv->getUnsignedLongParameter())->_getORBObjectID());
+		sendPlanetTravelPointListResponse((Player*) inv->getObjectParameter());
 		break;
 	case 12:
-		resp->insertLong(getBuilding(inv->getUnsignedLongParameter())->_getORBObjectID());
+		resp->insertLong(getCell(inv->getUnsignedLongParameter())->_getORBObjectID());
 		break;
 	case 13:
+		resp->insertLong(getBuilding(inv->getUnsignedLongParameter())->_getORBObjectID());
+		break;
+	case 14:
 		resp->insertLong(getLandingTime());
 		break;
 	default:
@@ -222,8 +239,8 @@ void PlanetManagerAdapter::init() {
 	return ((PlanetManagerImplementation*) impl)->init();
 }
 
-unsigned long long PlanetManagerAdapter::getNextStaticObjectID() {
-	return ((PlanetManagerImplementation*) impl)->getNextStaticObjectID();
+unsigned long long PlanetManagerAdapter::getNextStaticObjectID(bool doLock) {
+	return ((PlanetManagerImplementation*) impl)->getNextStaticObjectID(doLock);
 }
 
 void PlanetManagerAdapter::landShuttles() {
@@ -236,6 +253,10 @@ void PlanetManagerAdapter::takeOffShuttles() {
 
 ShuttleCreature* PlanetManagerAdapter::getShuttle(const string& Shuttle) {
 	return ((PlanetManagerImplementation*) impl)->getShuttle(Shuttle);
+}
+
+void PlanetManagerAdapter::sendPlanetTravelPointListResponse(Player* player) {
+	return ((PlanetManagerImplementation*) impl)->sendPlanetTravelPointListResponse(player);
 }
 
 CellObject* PlanetManagerAdapter::getCell(unsigned long long id) {

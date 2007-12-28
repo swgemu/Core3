@@ -189,8 +189,6 @@ public:
 
 	void addToDuelList(Player* targetPlayer);
 
-	void freeDuelList();
-
 	bool isInDuelWith(Player* targetPlayer, bool doLock = true);
 
 	Player* getDuelListObject(int index);
@@ -467,8 +465,6 @@ public:
 	void removeFromDuelList(Player* targetPlayer);
 
 	void addToDuelList(Player* targetPlayer);
-
-	void freeDuelList();
 
 	bool isInDuelWith(Player* targetPlayer, bool doLock);
 

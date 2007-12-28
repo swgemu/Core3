@@ -47,11 +47,11 @@ which carries forward this exception.
 
 class Zone;
 class Player;
+class Ticket;
 
 #include "ShuttleCreature.h"
 
 class ShuttleCreatureImplementation : public ShuttleCreatureServant {
-	
 	string planet;
 	string city;
 	
@@ -59,11 +59,12 @@ class ShuttleCreatureImplementation : public ShuttleCreatureServant {
 	
 public:
 	ShuttleCreatureImplementation(const string& Planet, const string& City, Coordinate* playerSpawnPoint, uint64 oid);
+	~ShuttleCreatureImplementation();
 	
 	void doTakeOff();
 	void doLanding();
 	
-	void sendPlayerTo(Player* player, const string& shuttle);
+	void sendPlayerTo(Player* player, Ticket* ticket);
 	
 	inline string& getCity() {
 		return city;

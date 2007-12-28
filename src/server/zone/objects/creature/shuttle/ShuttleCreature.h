@@ -55,6 +55,8 @@ class Creature;
 
 class Player;
 
+class Ticket;
+
 #include "engine/util/Coordinate.h"
 
 #include "../Creature.h"
@@ -73,7 +75,7 @@ public:
 
 	void doLanding();
 
-	void sendPlayerTo(Player* player, const string& shuttle);
+	void sendPlayerTo(Player* player, Ticket* ticker);
 
 	string& getCity();
 
@@ -102,7 +104,7 @@ public:
 
 	void doLanding();
 
-	void sendPlayerTo(Player* player, const string& shuttle);
+	void sendPlayerTo(Player* player, Ticket* ticker);
 
 	string& getCity();
 
@@ -112,8 +114,6 @@ public:
 
 	int getArrivalTime();
 
-protected:
-	string _param1_sendPlayerTo__Player_string_;
 };
 
 class ShuttleCreatureHelper : public ORBClassHelper {

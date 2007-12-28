@@ -665,6 +665,9 @@ void ObjectControllerMessage::parsePurchaseTicket(Player* player, Message *pack)
     tattr->insertAttribute("travel_arrival_planet", ticket->getArrivalPlanet());
     tattr->insertAttribute("travel_arrival_point", ticket->getArrivalPoint());
     player->sendMessage(tattr);
+    
+    MessageBox* sui = new MessageBox(0, "@base_player:swg", "@travel:ticket_purchase_complete");
+    player->sendMessage(sui);
 
 }
 

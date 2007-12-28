@@ -82,10 +82,10 @@ void RadialManager::handleRadialRequest(Player* player, Packet* pack) {
 	case SceneObjectImplementation::NONPLAYERCREATURE:
 		Creature* creature = (Creature*)object;
 		
-		if (creature->isMount() && (player->getMount() == (MountCreature*)creature))
+		if (creature->isMount() && (player->getMount() == (MountCreature*)creature)) {
 			sendRadialResponseForMounts(player, (MountCreature*)creature, omr);
-		else
-			sendDefaultRadialResponse(player, omr);
+			return;
+		}
 		
 		break;
 	case SceneObjectImplementation::TANGIBLE:
@@ -99,16 +99,14 @@ void RadialManager::handleRadialRequest(Player* player, Packet* pack) {
 			case TerminalImplementation::GUILD:
 				GuildTerminal* guildTerminal = (GuildTerminal*) terminal;
 				sendRadialResponseForGuildTerminals(player, guildTerminal, omr);
-				break;
+				return;
 			}
 			break;		
 		}
 		break;
-	default:
-		sendDefaultRadialResponse(player, omr);
-		break;
 	}
 	
+	sendDefaultRadialResponse(player, omr);
 }
 
 void RadialManager::handleSelection(int radialID, Player* player, SceneObject* obj) {

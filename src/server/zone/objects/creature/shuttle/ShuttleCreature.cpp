@@ -50,6 +50,8 @@ which carries forward this exception.
 
 #include "../../player/Player.h"
 
+#include "../../tangible/ticket/Ticket.h"
+
 #include "ShuttleCreature.h"
 
 #include "ShuttleCreatureImplementation.h"
@@ -99,18 +101,18 @@ void ShuttleCreature::doLanding() {
 		((ShuttleCreatureImplementation*) _impl)->doLanding();
 }
 
-void ShuttleCreature::sendPlayerTo(Player* player, const string& shuttle) {
+void ShuttleCreature::sendPlayerTo(Player* player, Ticket* ticker) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
 		ORBMethodInvocation invocation(this, 8);
 		invocation.addObjectParameter(player);
-		invocation.addAsciiParameter(shuttle);
+		invocation.addObjectParameter(ticker);
 
 		invocation.executeWithVoidReturn();
 	} else
-		((ShuttleCreatureImplementation*) _impl)->sendPlayerTo(player, shuttle);
+		((ShuttleCreatureImplementation*) _impl)->sendPlayerTo(player, ticker);
 }
 
 string& ShuttleCreature::getCity() {
@@ -181,7 +183,7 @@ Packet* ShuttleCreatureAdapter::invokeMethod(uint32 methid, ORBMethodInvocation*
 		doLanding();
 		break;
 	case 8:
-		sendPlayerTo((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_sendPlayerTo__Player_string_));
+		sendPlayerTo((Player*) inv->getObjectParameter(), (Ticket*) inv->getObjectParameter());
 		break;
 	case 9:
 		resp->insertAscii(getCity());
@@ -210,8 +212,8 @@ void ShuttleCreatureAdapter::doLanding() {
 	return ((ShuttleCreatureImplementation*) impl)->doLanding();
 }
 
-void ShuttleCreatureAdapter::sendPlayerTo(Player* player, const string& shuttle) {
-	return ((ShuttleCreatureImplementation*) impl)->sendPlayerTo(player, shuttle);
+void ShuttleCreatureAdapter::sendPlayerTo(Player* player, Ticket* ticker) {
+	return ((ShuttleCreatureImplementation*) impl)->sendPlayerTo(player, ticker);
 }
 
 string& ShuttleCreatureAdapter::getCity() {

@@ -55,6 +55,9 @@ which carries forward this exception.
 #include "managers/player/PlayerManager.h"
 #include "managers/item/ItemManager.h"
 #include "managers/radial/RadialManager.h"
+#include "managers/planet/PlanetManager.h"
+
+#include "objects/terrain/PlanetNames.h"
 
 #include "../chat/ChatManager.h"
 
@@ -118,7 +121,7 @@ void ZonePacketHandler::handleMessage(Message* pack) {
 		case 0x7CA18726:
 			handleRadialSelect(pack);
 		    break;
-		case 0x96405D4D: //Travel Points list? USE THIS TEMP UNTIL WE DROP A TERMINAL.
+		case 0x96405D4D: //Travel Points list
 		    handleTravelListRequest(pack);
 		    break;
 		case 0xBC6BDDF2: // ChatEnterRoomById
@@ -617,14 +620,26 @@ void ZonePacketHandler::handlePlayerMoneyRequest(Message* pack) {
 
 void ZonePacketHandler::handleTravelListRequest(Message* pack) {
     ZoneClientImplementation* client = (ZoneClientImplementation*) pack->getClient();
+    Player* player = client->getPlayer();
+    
+    if (player == NULL)
+    	return;
+    
 	
 	uint64 objectid;
 	objectid = pack->parseLong();
 	string planet;
 	pack->parseAscii(planet);
 	
-	TravelListResponseMessage* tlrm = new TravelListResponseMessage("tatooine");
-	client->sendMessage(tlrm);
+	int id = Planet::getPlanetID(planet);
+	
+	Zone* zone = server->getZone(id);
+	
+	if (zone != NULL) {
+		PlanetManager* planetManager = zone->getPlanetManager();
+	
+		planetManager->sendPlanetTravelPointListResponse(player);
+	}
 }
 
 void ZonePacketHandler::handleRadialSelect(Message* pack) {
@@ -715,7 +730,9 @@ void ZonePacketHandler::handleSuiEventNotification(Message* pack) {
 	uint32 unk1 = pack->parseInt();
 	uint32 unk2 = pack->parseInt();
 	unicode value;
-	pack->parseUnicode(value);
+	
+	if (unk2 != 0)
+		pack->parseUnicode(value);
 	
 	switch (opcode) {
 	case 0x004D5553:

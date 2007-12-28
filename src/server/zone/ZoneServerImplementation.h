@@ -178,9 +178,7 @@ public:
 		return zones.get(index); 
 	}
 	
-	inline uint64 getNextCreatureID() {
-		return nextCreatureID += 0x10;
-	}
+	uint64 getNextCreatureID(bool doLock = true);
 	
 };
 

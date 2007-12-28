@@ -334,9 +334,9 @@ public:
 		return duelList.size();
 	}
 	
-	void freeDuelList() {
+	/*void freeDuelList() {
 		duelList.removeAll();
-	}
+	}*/
 	
 	//Certs
 	int getCertificationListSize() {

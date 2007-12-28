@@ -45,6 +45,7 @@ which carries forward this exception.
 import "../Creature";
 
 import "../../player/Player";
+import "../../tangible/ticket/Ticket";
 
 include "engine/util/Coordinate";
 
@@ -54,7 +55,7 @@ interface ShuttleCreature implements Creature {
 	void doTakeOff();
 	void doLanding();
 	
-	void sendPlayerTo(Player player, const string shuttle);
+	void sendPlayerTo(Player player, Ticket ticker);
 	
 	string getCity();
 	

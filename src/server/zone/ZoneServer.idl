@@ -95,5 +95,5 @@ interface ZoneServer {
 	
 	int getConnectionCount();
 	
-	unsigned long getNextCreatureID();
+	unsigned long getNextCreatureID(boolean doLock = true);
 }

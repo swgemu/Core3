@@ -75,6 +75,12 @@ public:
 		// Pre: player unlocked
 		player->wlock();
 		
+		if (player->isMounted()) {
+			player->sendSystemMessage("You cant travel while mounted.");
+			player->unlock();
+			return 0;
+		}
+		
 		if (player->isInCombat()) {
 			player->unlock();
 			return 0;
@@ -104,7 +110,7 @@ public:
 				if ((ticket->getDeparturePoint() == city) &&  (ticket->getDeparturePlanet() == planet)) {
 					player->removeInventoryItem(item->getObjectID());
 					
-					shuttle->sendPlayerTo(player, ticket->getArrivalPoint());
+					shuttle->sendPlayerTo(player, ticket);
 														
 					//delete ticket;
 					

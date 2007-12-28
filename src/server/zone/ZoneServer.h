@@ -119,7 +119,7 @@ public:
 
 	int getConnectionCount();
 
-	unsigned long long getNextCreatureID();
+	unsigned long long getNextCreatureID(bool doLock = true);
 
 protected:
 	string _return_getServerName;
@@ -174,7 +174,7 @@ public:
 
 	int getConnectionCount();
 
-	unsigned long long getNextCreatureID();
+	unsigned long long getNextCreatureID(bool doLock);
 
 protected:
 	string _param0_banUser__string_string_;
