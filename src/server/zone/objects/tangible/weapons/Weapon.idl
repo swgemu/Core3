@@ -59,6 +59,10 @@ interface Weapon implements TangibleObject {
 
 	void sliceWeapon(Player player);
 
+	boolean decreaseDot0Uses();
+	boolean decreaseDot1Uses();
+	boolean decreaseDot2Uses();
+
 	boolean isSliced();
 
 	boolean isJedi();

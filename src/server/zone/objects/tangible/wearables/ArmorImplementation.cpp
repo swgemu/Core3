@@ -50,6 +50,55 @@ which carries forward this exception.
 #include "Armor.h"
 #include "ArmorImplementation.h"
 
+ArmorImplementation::ArmorImplementation(uint64 objid, uint32 tempCRC, const unicode& n, const string& tempn, bool eqp)
+		: ArmorServant(objid, tempCRC, n, tempn, eqp) {
+	initialize();
+}
+
+ArmorImplementation::ArmorImplementation(CreatureObject* creature, uint32 tempCRC, const unicode& n, const string& tempn, bool eqp)
+		: ArmorServant(creature, tempCRC, n, tempn, eqp) {
+	initialize();
+}
+
+void ArmorImplementation::initialize() {
+	objectSubType = ARMOR;
+	
+	rating = LIGHT;
+	conditionDamage = 10000;
+	maxCondition = 50000;
+	 	
+	healthEncumbrance = 300;
+	actionEncumbrance = 124;
+	mindEncumbrance = 87; 	
+	 	
+	kinetic = 50.0f;
+	kineticIsSpecial = true;
+
+	energy = 50.0f;
+	energyIsSpecial = true;
+
+	electricity = 50.0f;
+	electricityIsSpecial = false;
+
+	stun = 50.0f;
+	stunIsSpecial = true;
+
+	blast = 50.0f;
+	blastIsSpecial = false;
+
+	heat = 50.0f;
+	heatIsSpecial = false;
+
+	cold = 50.0f;
+	coldIsSpecial = false;
+
+	acid = 50.0f;
+	acidIsSpecial = false;
+
+	lightSaber = 50.0f;
+	lightSaberIsSpecial = false;
+}
+
 void ArmorImplementation::sendTo(Player* player, bool doClose) {
 	ZoneClient* client = player->getClient();
 	if (client == NULL)

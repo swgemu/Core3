@@ -121,6 +121,16 @@ void RadialManager::handleSelection(int radialID, Player* player, SceneObject* o
 		case 20: // ITEM_USE
 			obj->useObject(player);
 			break;
+		case 35:  // LOOT
+			player->lootCorpse();
+			break;
+		case 36:  // LOOT_ALL
+			player->wlock(obj);
+			
+			player->lootCorpse();
+			
+			player->unlock();
+			break;
 		case 60: // VEHICLE_GENERATE
 			handleVehicleGenerate(player, obj);
 			break;

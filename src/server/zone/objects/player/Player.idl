@@ -117,6 +117,8 @@ interface Player implements CreatureObject {
 	
 	void kill();
 	
+	void lootCorpse();
+	
 	//boolean isChangingFaction();
 	
 	// Item manipulation methods

@@ -434,9 +434,7 @@ public:
 					}
 				}
 			
-				if (weapon->getDot0Uses() != -1 && areaHit == 0) {
-					weapon->setDot0Uses(weapon->getDot0Uses() - 1);
-					
+				if (areaHit == 0 && weapon->decreaseDot0Uses()) {
 					if (creature->isPlayer())
 						weapon->sendTo((Player*) creature);
 					
@@ -462,9 +460,7 @@ public:
 					}
 				}
 				
-				if (weapon->getDot1Uses() != -1 && areaHit == 0) {
-					weapon->setDot1Uses(weapon->getDot1Uses() - 1);
-					
+				if (areaHit == 0 && weapon->decreaseDot1Uses()) {
 					if (creature->isPlayer())
 						weapon->sendTo((Player*) creature);
 					
@@ -490,9 +486,7 @@ public:
 					}
 				}
 				
-				if (weapon->getDot2Uses() != -1 && areaHit == 0) {
-					weapon->setDot2Uses(weapon->getDot2Uses() - 1);
-					
+				if (areaHit == 0 && weapon->decreaseDot2Uses()) {
 					if (creature->isPlayer())
 						weapon->sendTo((Player*) creature);
 					

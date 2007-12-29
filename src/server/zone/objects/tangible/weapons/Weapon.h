@@ -77,6 +77,12 @@ public:
 
 	void sliceWeapon(Player* player);
 
+	bool decreaseDot0Uses();
+
+	bool decreaseDot1Uses();
+
+	bool decreaseDot2Uses();
+
 	bool isSliced();
 
 	bool isJedi();
@@ -177,6 +183,12 @@ public:
 	void setWeaponStats(int modifier);
 
 	void sliceWeapon(Player* player);
+
+	bool decreaseDot0Uses();
+
+	bool decreaseDot1Uses();
+
+	bool decreaseDot2Uses();
 
 	bool isSliced();
 

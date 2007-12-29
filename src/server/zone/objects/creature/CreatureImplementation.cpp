@@ -1074,55 +1074,45 @@ void CreatureImplementation::createJunkLoot() {
 }
 
 void CreatureImplementation::lootCorpse(Player* player) {
-	try {
-		wlock(player);
-	
-		if (!isDead()) {
-			unlock();
-			return;
-		}
-	
-		int credits = getCashCredits();
-		
-		if (credits > 0) {	
-			setCashCredits(0);
-			
-			player->addCashCredits(credits);
-			
-			stringstream creditText;
-			creditText << "You loot " << credits << " credits from corpse of " << characterName.c_str() << ".";
+	if (!isDead())
+		return;
 
-			player->sendSystemMessage(creditText.str());
-		}
+	int credits = getCashCredits();
+	
+	if (credits > 0) {	
+		setCashCredits(0);
 		
-		if (inventory != NULL) {
-			while (!inventory->isEmpty()) {
-				TangibleObject* lootItem = (TangibleObject*) inventory->getObject(0);
-				
-				if (!lootItem->isEquipped()) {
-					inventory->removeObject(0);
-					
-					player->addInventoryItem(lootItem);
-					
-					lootItem->sendTo(player);
-					
-					lootItem->setPersistent(false);
-				}
-			}
+		player->addCashCredits(credits);
+		
+		stringstream creditText;
+		creditText << "You loot " << credits << " credits from corpse of " << characterName.c_str() << ".";
 
-			player->sendSystemMessage("You have completely looted the corpse of all items.");
-		} else 
-			player->sendSystemMessage("You find nothing else of value on the selected corpse.");
-		
-		if (isQueued())
-			server->removeEvent(this);
-		
-		unload();
-		
-		unlock();
-	} catch (...) {
-		unlock();
+		player->sendSystemMessage(creditText.str());
 	}
+	
+	if (inventory != NULL) {
+		for (int i = inventory->objectsSize() - 1; i >= 0; --i) {
+			TangibleObject* lootItem = (TangibleObject*) inventory->getObject(i);
+			
+			if (!lootItem->isEquipped()) {
+				inventory->removeObject(i);
+				
+				player->addInventoryItem(lootItem);
+				
+				lootItem->sendTo(player);
+				
+				lootItem->setPersistent(false);
+			}
+		}
+
+		player->sendSystemMessage("You have completely looted the corpse of all items.");
+	} else 
+		player->sendSystemMessage("You find nothing else of value on the selected corpse.");
+	
+	if (isQueued())
+		server->removeEvent(this);
+	
+	unload();
 }
 
 void CreatureImplementation::setPatrolPoint(Coordinate* cord, bool doLock) {

@@ -147,6 +147,8 @@ public:
 
 	void kill();
 
+	void lootCorpse();
+
 	void changeCloth(unsigned long long itemid);
 
 	void changeWeapon(unsigned long long itemid);
@@ -423,6 +425,8 @@ public:
 	void doPeace();
 
 	void kill();
+
+	void lootCorpse();
 
 	void changeCloth(unsigned long long itemid);
 

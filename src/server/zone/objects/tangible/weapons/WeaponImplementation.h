@@ -146,83 +146,10 @@ public:
 	static const int WILLPOWER = 9;
 
 public:
-	WeaponImplementation(uint64 objid, uint32 tempCRC, const unicode& n, const string& tempn, bool eqp, int tp, int cat) 
-			: WeaponServant(objid, n, tempn, tempCRC, WEAPON) {
-		type = tp;
-		category = cat;
-		
-		equipped = eqp;
+	WeaponImplementation(uint64 objid, uint32 tempCRC, const unicode& n, const string& tempn, bool eqp, int tp, int cat);
+	WeaponImplementation(CreatureObject* creature, const string& temp, const unicode& n, const string& tempn, bool eqp, int tp, int cat); 
 
-		initialize();
-}
-
-	WeaponImplementation(CreatureObject* creature, const string& temp, const unicode& n, const string& tempn, bool eqp, int tp, int cat) 
-			: WeaponServant(creature->getNewItemID(), WEAPON) {
-		objectCRC = String::hashCode(temp);
-
-		name = n;
-		
-		type = tp;
-		category = cat;
-		
-		templateName = tempn;
-
-		if (equipped = eqp)
-			setContainer(creature, 0x04);
-		else
-			setContainer(creature->getInventory(), 0xFFFFFFFF);
-		
-		initialize();
-	}
-
-	void initialize() {
-		templateTypeName = "weapon_name";
-
-		minDamage = 50;
-		maxDamage = 100;
-		
-		attackSpeed = 1.0f;
-		
-		healthAttackCost = 15;
-		actionAttackCost = 10;
-		mindAttackCost = 5;
-		
-		pointBlankRange = 0;
-		pointBlankAccuracy = 0;
-		
-		idealRange = 2;
-		idealAccuracy = 15;
-				
-		maxRange = 5;
-		maxRangeAccuracy = 0;
-		
-		woundsRatio = 10;
-		
-		armorPiercing = NONE;
-		
-		dot0Type=0;
-		dot0Attribute=0;
-		dot0Strength=0;
-		dot0Duration=0;
-		dot0Potency=0;
-		dot0Uses=0;
-		
-		dot1Type=0;
-		dot1Attribute=0;
-		dot1Strength=0;
-		dot1Duration=0;
-		dot1Potency=0;
-		dot1Uses=0;
-	
-		dot2Type=0;
-		dot2Attribute=0;
-		dot2Strength=0;
-		dot2Duration=0;
-		dot2Potency=0;
-		dot2Uses=0;
-		
-		sliced=0;
-	}
+	void initialize();
 	
 	void sendTo(Player* player, bool doClose = true);
 	
@@ -240,7 +167,32 @@ public:
 	inline bool isSliced() {
 		return sliced;
 	}	
-	
+
+	// dots
+	inline bool decreaseDot0Uses() {
+		if (dot0Uses != -1) { 
+			--dot0Uses;
+			return true;
+		} else
+			return false;
+	}
+
+	inline bool decreaseDot1Uses() {
+		if (dot1Uses != -1) { 
+			--dot1Uses;
+			return true;
+		} else
+			return false;
+	}
+
+	inline bool decreaseDot2Uses() {
+		if (dot2Uses != -1) { 
+			--dot2Uses;
+			return true;
+		} else
+			return false;
+	}
+
 	// setters
 	inline void setMinDamage(float minDmg) {
 		minDamage = minDmg;
