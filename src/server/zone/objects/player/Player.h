@@ -333,6 +333,8 @@ public:
 
 	Datapad* getDatapad();
 
+	unsigned int getNewItemID();
+
 	unsigned int getItemShift();
 
 	float getLastTestPositionX();
@@ -611,6 +613,8 @@ public:
 	bool isChangingFaction();
 
 	Datapad* getDatapad();
+
+	unsigned int getNewItemID();
 
 	unsigned int getItemShift();
 

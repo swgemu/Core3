@@ -1654,12 +1654,24 @@ Datapad* Player::getDatapad() {
 		return ((PlayerImplementation*) _impl)->getDatapad();
 }
 
-unsigned int Player::getItemShift() {
+unsigned int Player::getNewItemID() {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
 		ORBMethodInvocation invocation(this, 128);
+
+		return invocation.executeWithUnsignedIntReturn();
+	} else
+		return ((PlayerImplementation*) _impl)->getNewItemID();
+}
+
+unsigned int Player::getItemShift() {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 129);
 
 		return invocation.executeWithUnsignedIntReturn();
 	} else
@@ -1671,7 +1683,7 @@ float Player::getLastTestPositionX() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 129);
+		ORBMethodInvocation invocation(this, 130);
 
 		return invocation.executeWithFloatReturn();
 	} else
@@ -1683,7 +1695,7 @@ float Player::getLastTestPositionY() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 130);
+		ORBMethodInvocation invocation(this, 131);
 
 		return invocation.executeWithFloatReturn();
 	} else
@@ -2068,12 +2080,15 @@ Packet* PlayerAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* inv) {
 		resp->insertLong(getDatapad()->_getORBObjectID());
 		break;
 	case 128:
-		resp->insertInt(getItemShift());
+		resp->insertInt(getNewItemID());
 		break;
 	case 129:
-		resp->insertFloat(getLastTestPositionX());
+		resp->insertInt(getItemShift());
 		break;
 	case 130:
+		resp->insertFloat(getLastTestPositionX());
+		break;
+	case 131:
 		resp->insertFloat(getLastTestPositionY());
 		break;
 	default:
@@ -2569,6 +2584,10 @@ bool PlayerAdapter::isChangingFaction() {
 
 Datapad* PlayerAdapter::getDatapad() {
 	return ((PlayerImplementation*) impl)->getDatapad();
+}
+
+unsigned int PlayerAdapter::getNewItemID() {
+	return ((PlayerImplementation*) impl)->getNewItemID();
 }
 
 unsigned int PlayerAdapter::getItemShift() {

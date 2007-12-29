@@ -45,6 +45,7 @@ void LootManager::lootCorpse(Player* player, Creature* creature) {
 				if (!lootItem->isEquipped()) {
 					inventory->removeObject(i);
 
+					lootItem->setObjectID(player->getNewItemID());
 					player->addInventoryItem(lootItem);
 
 					lootItem->sendTo(player);
