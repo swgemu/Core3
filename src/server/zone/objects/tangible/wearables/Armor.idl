@@ -45,6 +45,8 @@ which carries forward this exception.
 import "Wearable";
 
 import "../../player/Player";
+import "../../creature/CreatureObject";
+
 import "../../scene/SceneObject";
 
 interface Armor implements Wearable {
@@ -54,6 +56,8 @@ interface Armor implements Wearable {
 	void sendTo(Player player, boolean doClose = true);
 	
 	void generateAttributes(SceneObject obj);
+	
+	void setArmorStats(int modifier);
 	
 	// setters and getters
 	int getRating();

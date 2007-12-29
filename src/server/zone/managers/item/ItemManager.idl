@@ -52,7 +52,14 @@ interface ItemManager {
 	void loadDefaultPlayerItems(Player player);
 	
 	void unloadPlayerItems(Player player);
+
+	// stat methods
+	void showDbStats(Player player);
+	void showDbDeleted(Player player);
 	
+	void purgeDbDeleted(Player player);
+	
+	// getters
 	unsigned long getNextStaticObjectID();
 	
 }

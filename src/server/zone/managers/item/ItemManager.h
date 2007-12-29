@@ -53,8 +53,6 @@ which carries forward this exception.
 
 class Player;
 
-class TangibleObject;
-
 class ItemManager : public ORBObjectStub {
 public:
 	ItemManager();
@@ -73,15 +71,13 @@ public:
 
 	void unloadPlayerItems(Player* player);
 
-	unsigned long long getNextStaticObjectID();
-	
-	void deletePlayerItem(Player* player, TangibleObject* item);
-	
 	void showDbStats(Player* player);
-	
+
 	void showDbDeleted(Player* player);
-	
+
 	void purgeDbDeleted(Player* player);
+
+	unsigned long long getNextStaticObjectID();
 
 protected:
 };
@@ -102,16 +98,14 @@ public:
 
 	void unloadPlayerItems(Player* player);
 
-	unsigned long long getNextStaticObjectID();
-	
-	void deletePlayerItem(Player* player, TangibleObject* item);
-	
 	void showDbStats(Player* player);
-	
+
 	void showDbDeleted(Player* player);
-	
+
 	void purgeDbDeleted(Player* player);
-	
+
+	unsigned long long getNextStaticObjectID();
+
 };
 
 class ItemManagerHelper : public ORBClassHelper {

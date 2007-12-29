@@ -156,8 +156,6 @@ public:
 	void createItems();
 
 	void loadItems();
-	
-	void lootCorpse();
 
 	void createBaseStats();
 

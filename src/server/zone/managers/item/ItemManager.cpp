@@ -124,38 +124,12 @@ void ItemManager::unloadPlayerItems(Player* player) {
 		((ItemManagerImplementation*) _impl)->unloadPlayerItems(player);
 }
 
-unsigned long long ItemManager::getNextStaticObjectID() {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 10);
-
-		return invocation.executeWithUnsignedLongReturn();
-	} else
-		return ((ItemManagerImplementation*) _impl)->getNextStaticObjectID();
-}
-
-void ItemManager::deletePlayerItem(Player* player, TangibleObject* item) {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 11);
-		invocation.addObjectParameter(player);
-		//invocation.addObjectParameter(item);
-
-		invocation.executeWithVoidReturn();
-	} else
-		((ItemManagerImplementation*) _impl)->deletePlayerItem(player, item);
-}
-
 void ItemManager::showDbStats(Player* player) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 12);
+		ORBMethodInvocation invocation(this, 10);
 		invocation.addObjectParameter(player);
 
 		invocation.executeWithVoidReturn();
@@ -168,7 +142,7 @@ void ItemManager::showDbDeleted(Player* player) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 13);
+		ORBMethodInvocation invocation(this, 11);
 		invocation.addObjectParameter(player);
 
 		invocation.executeWithVoidReturn();
@@ -181,12 +155,24 @@ void ItemManager::purgeDbDeleted(Player* player) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 14);
+		ORBMethodInvocation invocation(this, 12);
 		invocation.addObjectParameter(player);
 
 		invocation.executeWithVoidReturn();
 	} else
 		((ItemManagerImplementation*) _impl)->purgeDbDeleted(player);
+}
+
+unsigned long long ItemManager::getNextStaticObjectID() {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 13);
+
+		return invocation.executeWithUnsignedLongReturn();
+	} else
+		return ((ItemManagerImplementation*) _impl)->getNextStaticObjectID();
 }
 
 /*
@@ -213,21 +199,17 @@ Packet* ItemManagerAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* inv
 		unloadPlayerItems((Player*) inv->getObjectParameter());
 		break;
 	case 10:
-		resp->insertLong(getNextStaticObjectID());
-		break;
-	case 11:
-		deletePlayerItem((Player*) inv->getObjectParameter(), (TangibleObject*) inv->getObjectParameter());
-		break;
-	case 12:
 		showDbStats((Player*) inv->getObjectParameter());
 		break;
-	case 13:
+	case 11:
 		showDbDeleted((Player*) inv->getObjectParameter());
 		break;
-	case 14:
+	case 12:
 		purgeDbDeleted((Player*) inv->getObjectParameter());
 		break;
-
+	case 13:
+		resp->insertLong(getNextStaticObjectID());
+		break;
 	default:
 		return NULL;
 	}
@@ -251,14 +233,6 @@ void ItemManagerAdapter::unloadPlayerItems(Player* player) {
 	return ((ItemManagerImplementation*) impl)->unloadPlayerItems(player);
 }
 
-unsigned long long ItemManagerAdapter::getNextStaticObjectID() {
-	return ((ItemManagerImplementation*) impl)->getNextStaticObjectID();
-}
-
-void ItemManagerAdapter::deletePlayerItem(Player* player, TangibleObject* item) {
-	return ((ItemManagerImplementation*) impl)->deletePlayerItem(player, item);
-}
-
 void ItemManagerAdapter::showDbStats(Player* player) {
 	return ((ItemManagerImplementation*) impl)->showDbStats(player);
 }
@@ -271,6 +245,9 @@ void ItemManagerAdapter::purgeDbDeleted(Player* player) {
 	return ((ItemManagerImplementation*) impl)->purgeDbDeleted(player);
 }
 
+unsigned long long ItemManagerAdapter::getNextStaticObjectID() {
+	return ((ItemManagerImplementation*) impl)->getNextStaticObjectID();
+}
 
 /*
  *	ItemManagerHelper
