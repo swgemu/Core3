@@ -84,13 +84,21 @@ public:
 	SceneObject* getObject(uint64 oid) {
 		return items.get(oid);
 	}
-	
+
+	void removeObject(int index) {
+		items.remove(index);
+	}
+
 	void removeObject(uint64 oid) {
 		items.drop(oid);
 	}
 
 	int objectsSize() {
 		return items.size();
+	}
+	
+	bool isEmpty() {
+		return items.isEmpty();
 	}
 
 };

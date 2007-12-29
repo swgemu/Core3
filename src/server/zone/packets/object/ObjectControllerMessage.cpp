@@ -42,29 +42,31 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
+#include "../../../ServerCore.h"
+
 #include "../../Zone.h"
 #include "../../ZoneServer.h"
 
-#include "../../../chat/ChatManager.h"
+#include "../../ZoneProcessServerImplementation.h"
 
+#include "../../managers/player/PlayerManager.h"
+
+#include "../../managers/item/ItemManager.h"
 #include "../../managers/combat/CombatManager.h"
-#include "../../managers/combat/CommandQueueAction.h"
-
 #include "../../managers/player/ProfessionManager.h"
 #include "../../managers/radial/RadialManager.h"
 #include "../../managers/group/GroupManager.h"
-#include "../../managers/player/PlayerManager.h"
+
+#include "../../../chat/ChatManager.h"
 
 #include "../../objects.h"
 
-#include "../../../ServerCore.h"
+#include "../../managers/combat/CommandQueueAction.h"
 
 #include "ObjectControllerMessage.h"
 #include "CommandQueueRemove.h"
 
 #include "../../packets.h"
-
-#include "../../ZoneProcessServerImplementation.h"
 
 ObjectControllerMessage::ObjectControllerMessage(uint64 objid, uint32 header1, uint32 header2, bool comp) : Message() {
 	insertShort(0x05);

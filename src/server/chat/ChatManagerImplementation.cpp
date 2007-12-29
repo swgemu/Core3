@@ -53,9 +53,11 @@ which carries forward this exception.
 #include "../zone/managers/player/ProfessionManager.h"
 #include "../zone/managers/resource/ResourceManager.h"
 
+#include "../zone/managers/player/PlayerManager.h"
 #include "../zone/managers/user/UserManager.h"
 
-#include "../zone/managers/player/PlayerManager.h"
+#include "../zone/managers/item/ItemManager.h"
+
 #include "../zone/managers/guild/GuildManager.h"
 
 #include "ChatManager.h"
@@ -77,7 +79,6 @@ ChatManagerImplementation::ChatManagerImplementation(ZoneServer* serv, int inits
 	guildManager = playerManager->getGuildManager();
 	
 	resourceManager = server->getResourceManager();
-		
 	//playerMap = new PlayerMap(initsize);
 	
 	PlayerMapImplementation* mapImpl = new PlayerMapImplementation(initsize);
@@ -333,13 +334,13 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 	tokenizer.getStringToken(cmd);
 
 	CreatureManager* creatureManager = player->getZone()->getCreatureManager();
-	
+	ItemManager* itemManager = player->getZone()->getZoneServer()->getItemManager();
 	try {
 		if (cmd == "@help") {
 			if (userManager->isAdmin(player->getFirstName())) {
 				player->sendSystemMessage("Command List: map, warp, printRoomTree, banUser, kill, muteChat, "
 						"users, setWeather, ticketPurchase, awardBadge, setGuildID, createGuild"
-						"deleteGuildByID, npcc, setAdminLevel"); 
+						"deleteGuildByID, npcc, setAdminLevel, dbStats, dbShowDeleted, dbPurge"); 
 			}
 		} else if (cmd == "@map") {
 			if (userManager->isAdmin(player->getFirstName())) {
@@ -687,7 +688,38 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 			} else {
 				player->sendSystemMessage("Already buffed");
 			}
-		} else {
+		} else if (cmd == "@sliceEquippedWeapon") {
+			Weapon* weapon = player->getWeapon();
+			
+			if (weapon != NULL) {
+				weapon->sliceWeapon(player);
+			} else
+				player->sendSystemMessage("No weapon equipped.");
+		} else if (cmd == "@dbStats") {
+			if (userManager->isAdmin(player->getFirstName())) {
+				itemManager->showDbStats(player);
+				}
+		} else if (cmd == "@dbShowDeleted") {
+			if (userManager->isAdmin(player->getFirstName())) {
+				itemManager->showDbDeleted(player);
+			}	
+		} else if (cmd == "@dbPurge") {
+			if (userManager->isAdmin(player->getFirstName())) {
+				itemManager->purgeDbDeleted(player);
+			}	
+		} /*else if (cmd == "@open") {
+					CreatureObject* target = (CreatureObject*)player->getTarget();
+					if (target != NULL) {
+						Message* packet = new Message();
+						packet->insertShort(0x04);
+						packet->insertInt(0xDCA57409);
+						packet->insertLong(player->getTarget()->getObjectID());
+						packet->insertInt(0);
+						packet->insertShort(0x00);
+						player->sendMessage(packet);
+					}
+		}*/
+		else {
 			player->sendSystemMessage("Unknown Command: " + cmd);
 		}
 	} catch (Exception& e) {

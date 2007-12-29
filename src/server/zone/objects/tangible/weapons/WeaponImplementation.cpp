@@ -72,11 +72,10 @@ void WeaponImplementation::sendTo(Player* player, bool doClose) {
 }
 
 void WeaponImplementation::generateAttributes(SceneObject* obj) {
-		
-	if (obj->getObjectType() != SceneObjectImplementation::PLAYER)
+	if (!obj->isPlayer())
 		return;
 		
-	Player* play = (Player*) obj;
+	Player* player = (Player*) obj;
 	
 	AttributeListMessage* alm = new AttributeListMessage((Weapon*) _this);
 	
@@ -85,8 +84,9 @@ void WeaponImplementation::generateAttributes(SceneObject* obj) {
 	alm->insertAttribute("condition", "1000/1000");
 	
 	alm->insertAttribute("volume", "1");
-
+	
 	string ap;
+	
 	switch (armorPiercing) {
 	case NONE:
 		ap = "None";
@@ -126,18 +126,21 @@ void WeaponImplementation::generateAttributes(SceneObject* obj) {
 	stringstream pblank;
 	if (pointBlankAccuracy >= 0)
 		pblank << "+";
+		
 	pblank << pointBlankAccuracy << " @ " << pointBlankRange;
 	alm->insertAttribute("wpn_range_zero", pblank);
 	
 	stringstream ideal;
 	if (idealAccuracy >= 0)
 		ideal << "+";
+		
 	ideal << idealAccuracy << " @ " << idealRange;
 	alm->insertAttribute("wpn_range_mid", ideal);
 	
 	stringstream maxrange;
 	if (maxRangeAccuracy >= 0)
 		maxrange << "+";
+		
 	maxrange << maxRangeAccuracy << " @ " << maxRange;
 	alm->insertAttribute("wpn_range_max", maxrange);
 	
@@ -149,6 +152,380 @@ void WeaponImplementation::generateAttributes(SceneObject* obj) {
 	
 	alm->insertAttribute("pup_wpn_attack_cost_mind", mindAttackCost);
 	
-	play->sendMessage(alm);
+	generateDotAttributes(alm);
 	
+	if (sliced == 1) 
+		alm->insertAttribute("hacked1", "");
+		
+	player->sendMessage(alm);
+}
+
+void WeaponImplementation::generateDotAttributes(AttributeListMessage* alm) {
+	if (dot0Uses != 0) {
+		alm->insertAttribute("cat_wpn_dot_00", "");
+		
+		switch (dot0Type) {
+		case BLEED:
+			alm->insertAttribute("wpn_dot_type", "Bleed");
+			break;
+		case DISEASE:
+			alm->insertAttribute("wpn_dot_type", "Disease");
+			break;
+		case FIRE:
+			alm->insertAttribute("wpn_dot_type", "Fire");
+			break;
+		case POISON:
+			alm->insertAttribute("wpn_dot_type", "Poison");
+			break;
+		}
+		
+		switch (dot0Attribute) {
+		case HEALTH:
+			alm->insertAttribute("wpn_dot_attrib", "Health");
+			break;
+		case STRENGTH:
+			alm->insertAttribute("wpn_dot_attrib", "Action");
+			break;
+		case CONSTITUTION:
+			alm->insertAttribute("wpn_dot_attrib", "Constitution");
+			break;
+		case ACTION:
+			alm->insertAttribute("wpn_dot_attrib", "Action");
+			break;
+		case QUICKNESS:
+			alm->insertAttribute("wpn_dot_attrib", "Quickness");
+			break;
+		case STAMINA:
+			alm->insertAttribute("wpn_dot_attrib", "Stamina");
+			break;
+		case MIND:
+			alm->insertAttribute("wpn_dot_attrib", "Mind");
+			break;
+		case FOCUS:
+			alm->insertAttribute("wpn_dot_attrib", "Focus");
+			break;
+		case WILLPOWER:
+			alm->insertAttribute("wpn_dot_attrib", "Willpower");
+			break;
+		}
+		alm->insertAttribute("wpn_dot_strength", dot0Strength);
+		
+		stringstream dur;
+		dur << dot0Duration << "s";
+		alm->insertAttribute("wpn_dot_duration", dur);
+		
+		stringstream pot;
+		pot << dot0Potency << "%";
+		alm->insertAttribute("wpn_dot_potency", pot);
+		
+		alm->insertAttribute("wpn_dot_uses", dot0Uses);
+	}
+
+	if (dot1Uses != 0) {
+		alm->insertAttribute("cat_wpn_dot_01", "");
+		
+		switch (dot1Type) {
+		case BLEED:
+			alm->insertAttribute("wpn_dot_type", "Bleed");
+			break;
+		case DISEASE:
+			alm->insertAttribute("wpn_dot_type", "Disease");
+			break;
+		case FIRE:
+			alm->insertAttribute("wpn_dot_type", "Fire");
+			break;
+		case POISON:
+			alm->insertAttribute("wpn_dot_type", "Poison");
+			break;
+		}
+		
+		switch (dot1Attribute) {
+		case HEALTH:
+			alm->insertAttribute("wpn_dot_attrib", "Health");
+			break;
+		case STRENGTH:
+			alm->insertAttribute("wpn_dot_attrib", "Action");
+			break;
+		case CONSTITUTION:
+			alm->insertAttribute("wpn_dot_attrib", "Constitution");
+			break;
+		case ACTION:
+			alm->insertAttribute("wpn_dot_attrib", "Action");
+			break;
+		case QUICKNESS:
+			alm->insertAttribute("wpn_dot_attrib", "Quickness");
+			break;
+		case STAMINA:
+			alm->insertAttribute("wpn_dot_attrib", "Stamina");
+			break;
+		case MIND:
+			alm->insertAttribute("wpn_dot_attrib", "Mind");
+			break;
+		case FOCUS:
+			alm->insertAttribute("wpn_dot_attrib", "Focus");
+			break;
+		case WILLPOWER:
+			alm->insertAttribute("wpn_dot_attrib", "Willpower");
+			break;
+		}
+		
+		alm->insertAttribute("wpn_dot_strength", dot1Strength);
+
+		stringstream dur;
+		dur << dot1Duration << "s";
+		alm->insertAttribute("wpn_dot_duration", dur);
+		
+		stringstream pot;
+		pot << dot1Potency << "%";
+		alm->insertAttribute("wpn_dot_potency", pot);
+		
+		alm->insertAttribute("wpn_dot_uses", dot1Uses);
+	}
+	
+	if (dot2Uses != 0) {
+		alm->insertAttribute("cat_wpn_dot_02", "");
+		
+		switch (dot2Type) {
+		case BLEED:
+			alm->insertAttribute("wpn_dot_type", "Bleed");
+			break;
+		case DISEASE:
+			alm->insertAttribute("wpn_dot_type", "Disease");
+			break;
+		case FIRE:
+			alm->insertAttribute("wpn_dot_type", "Fire");
+			break;
+		case POISON:
+			alm->insertAttribute("wpn_dot_type", "Poison");
+			break;
+		}
+		
+		switch (dot2Attribute) {
+		case HEALTH:
+			alm->insertAttribute("wpn_dot_attrib", "Health");
+			break;
+		case STRENGTH:
+			alm->insertAttribute("wpn_dot_attrib", "Action");
+			break;
+		case CONSTITUTION:
+			alm->insertAttribute("wpn_dot_attrib", "Constitution");
+			break;
+		case ACTION:
+			alm->insertAttribute("wpn_dot_attrib", "Action");
+			break;
+		case QUICKNESS:
+			alm->insertAttribute("wpn_dot_attrib", "Quickness");
+			break;
+		case STAMINA:
+			alm->insertAttribute("wpn_dot_attrib", "Stamina");
+			break;
+		case MIND:
+			alm->insertAttribute("wpn_dot_attrib", "Mind");
+			break;
+		case FOCUS:
+			alm->insertAttribute("wpn_dot_attrib", "Focus");
+			break;
+		case WILLPOWER:
+			alm->insertAttribute("wpn_dot_attrib", "Willpower");
+			break;
+		}
+		
+		alm->insertAttribute("wpn_dot_strength", dot2Strength);
+		
+		stringstream dur;
+		dur << dot2Duration << "s";
+		alm->insertAttribute("wpn_dot_duration", dur);
+		
+		stringstream pot;
+		pot << dot2Potency << "%";
+		alm->insertAttribute("wpn_dot_potency", pot);
+		
+		alm->insertAttribute("wpn_dot_uses", dot2Uses);
+	}
+}
+
+void WeaponImplementation::setWeaponStats(int modifier){
+	wlock();
+	
+	int luck = (System::random(100)) + (modifier/4);
+	
+	if (System::random(1000) == 7) 
+		luck = luck * 10; 
+		
+	if (System::random(10000) == 777) 
+		luck = luck * 25; 
+		
+	if (System::random(100) == 6) 
+		luck = 0;
+		
+	modifier = modifier + System::random(50);
+	
+	int playerRoll = System::random(1000) * modifier * luck / 1000;
+	if (playerRoll > 200000) {
+		modifier = modifier + 100;
+		luck = luck + 100;
+		maxDamage = maxDamage * 1.5;
+		
+		stringstream itemText;
+		itemText << "\\#ffff00" << name.c_str() << " (Legendary)";
+		name = unicode(itemText.str());	
+	} else if (playerRoll > 44000) {
+		modifier = modifier + 50;
+		luck = luck + 50;
+
+		stringstream itemText;
+		itemText << "\\#ffff00" << name.c_str() << " (Exceptional)";	
+		name = unicode(itemText.str());
+	} else if (playerRoll > 12000) {
+		modifier = modifier + 10;
+		luck = luck + 25;
+
+		stringstream itemText;
+		itemText << "\\#ffff00" << name.c_str();
+		name = unicode(itemText.str());	
+	}
+	
+	if ((luck * System::random(100)) > 1500) {
+		minDamage = round((minDamage * modifier / 100) + luck);
+		maxDamage = round((maxDamage * modifier / 100) + (1.1 * luck));
+	}
+	
+	if ((luck * System::random(100)) > 1800) {	
+		attackSpeed = round(10 * (attackSpeed - (attackSpeed * modifier / 500) - (luck / 150))) / 10;
+	}
+	
+	if ((luck * System::random(100)) > 2000) {
+		healthAttackCost = healthAttackCost - (modifier / 25) - (luck / 50);
+		actionAttackCost = actionAttackCost - (modifier / 25) - (luck / 50);
+		mindAttackCost = mindAttackCost - (modifier / 25) - (luck / 50);
+	}
+
+	if ((luck * System::random(100)) > 2000)
+		woundsRatio = woundsRatio + (modifier / 15) + (luck / 10);
+	
+	if (playerRoll > 12500)	{
+		switch (System::random(4)) {
+		case 1:
+			dot1Type = BLEED;
+			dot1Attribute = (System::random(2) * 3) + 1;
+			dot1Strength = (modifier / 10) + luck;
+			dot1Duration = (luck * 5) + modifier;
+			dot1Potency = luck;
+			dot1Uses = (modifier + luck) * 11;
+			break;
+		case 2:
+			dot1Type = DISEASE;
+			dot1Attribute = (System::random(2) * 3) + 1;
+			dot1Strength = (modifier / 10) + luck;
+			dot1Duration = (luck * 7) + modifier;
+			dot1Potency = luck;
+			dot1Uses = (modifier + luck) * 13;
+			break;	
+		case 3:
+			dot1Type = FIRE;
+			dot1Attribute = (System::random(2) * 3) + 1;
+			dot1Strength = (modifier / 10)+ luck;
+			dot1Duration = (luck * 4) + modifier;
+			dot1Potency = luck;
+			dot1Uses = (modifier + luck) * 11;
+			break;
+		case 4:
+			dot1Type = POISON;
+			dot1Attribute = (System::random(2) * 3) + 1;
+			dot1Strength = (modifier / 10) + luck;
+			dot1Duration = (luck * 5) + modifier;
+			dot1Potency = luck;
+			dot1Uses = (modifier + luck) * 11;
+			break;
+		}
+	}
+	if (attackSpeed < 1) 
+		attackSpeed = 1.0f;
+		
+	if (healthAttackCost < 0) 
+		healthAttackCost = 0;
+		
+	if (actionAttackCost < 0) 
+		actionAttackCost = 0;
+	
+	if (mindAttackCost < 0) 
+		mindAttackCost = 0;
+
+	if (maxDamage > 3250) 
+		maxDamage = 3000 + (System::random(250));
+
+	if (minDamage > maxDamage) 
+		minDamage = round(0.95*maxDamage);
+		
+	equipped = false;
+	
+	persistent = false;
+	updated = true;
+	
+	unlock();
+}
+
+void WeaponImplementation::sliceWeapon(Player* player){
+	bool sliceType = System::random(1);
+	int slicePercent;
+	
+	stringstream msg;
+
+	try {
+		wlock();
+
+		if (isSliced()) {
+			switch (sliceType) {
+			case 0:
+				slicePercent = sliceWeaponDamage();
+				msg << "Weapon damage increased by " << slicePercent << "%";
+				break;
+			case 1:
+				slicePercent = sliceWeaponSpeed();
+				msg << "Weapon speed decreased by " << slicePercent << "%";
+				break;
+			}
+		
+			sendTo(player);
+		} else
+			msg << "Weapon is already sliced.";
+
+		unlock();
+	} catch (...) {
+		unlock();
+	}
+
+	player->sendSystemMessage(msg.str());
+}
+
+int WeaponImplementation::sliceWeaponDamage(){
+	if (sliced) 
+		return 0;
+		
+	int modifier = System::random(11) + 25;
+	
+	minDamage = round((minDamage * modifier / 100) + minDamage);
+	maxDamage = round((maxDamage * modifier / 100) + maxDamage);
+	
+	sliced = true;
+	updated = true;
+	
+	return modifier;
+}
+
+int WeaponImplementation::sliceWeaponSpeed(){
+	if (sliced) 
+		return 0;
+		
+	int modifier = System::random(11) + 25;
+	
+	attackSpeed = round(10 * (attackSpeed - (attackSpeed * modifier / 100))) / 10;
+
+	if (attackSpeed < 1) 
+		attackSpeed = 1.0f;
+	
+	sliced = true;
+	updated = true;
+	
+	return modifier;
 }

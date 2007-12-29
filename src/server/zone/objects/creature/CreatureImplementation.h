@@ -150,6 +150,16 @@ public:
 	bool doRecovery();
 	void doStatesRecovery();
 
+	// loot methods
+	void createLoot();
+	
+	void createWeaponLoot(int creatureLevel);
+	void createArmorLoot(int creatureLevel);
+	
+	void createJunkLoot();
+	
+	void lootCorpse(Player* player);
+
 	// waypoint methods
 	void setPatrolPoint(Coordinate* cord, bool doLock = true );	
 
@@ -258,7 +268,7 @@ public:
 	inline LairObject* getLair() {
 		return lair;
 	}
-
+	
 	friend class CreatureManagerImplementation;
 	
 };

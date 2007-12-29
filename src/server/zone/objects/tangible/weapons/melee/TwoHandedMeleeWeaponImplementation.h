@@ -61,11 +61,11 @@ public:
 	}
 
 	void initialize() {
-		minDamage = 300;
-		maxDamage = 600;
-		
+		minDamage = 156;
+		maxDamage = 308;
+		armorPiercing = MEDIUM;
 		//attackSpeed = 4.0f;
-		attackSpeed = 1.2f;
+		attackSpeed = 4.7f;
 	}
 	
 };

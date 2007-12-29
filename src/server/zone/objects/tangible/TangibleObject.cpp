@@ -156,12 +156,84 @@ void TangibleObject::sendTo(Player* player, bool doClose) {
 		((TangibleObjectImplementation*) _impl)->sendTo(player, doClose);
 }
 
-void TangibleObject::setPersistent(bool pers) {
+bool TangibleObject::isPersistent() {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
 		ORBMethodInvocation invocation(this, 12);
+
+		return invocation.executeWithBooleanReturn();
+	} else
+		return ((TangibleObjectImplementation*) _impl)->isPersistent();
+}
+
+bool TangibleObject::isUpdated() {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 13);
+
+		return invocation.executeWithBooleanReturn();
+	} else
+		return ((TangibleObjectImplementation*) _impl)->isUpdated();
+}
+
+bool TangibleObject::isEquipped() {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 14);
+
+		return invocation.executeWithBooleanReturn();
+	} else
+		return ((TangibleObjectImplementation*) _impl)->isEquipped();
+}
+
+bool TangibleObject::isWeapon() {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 15);
+
+		return invocation.executeWithBooleanReturn();
+	} else
+		return ((TangibleObjectImplementation*) _impl)->isWeapon();
+}
+
+bool TangibleObject::isArmor() {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 16);
+
+		return invocation.executeWithBooleanReturn();
+	} else
+		return ((TangibleObjectImplementation*) _impl)->isArmor();
+}
+
+bool TangibleObject::isTicket() {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 17);
+
+		return invocation.executeWithBooleanReturn();
+	} else
+		return ((TangibleObjectImplementation*) _impl)->isTicket();
+}
+
+void TangibleObject::setPersistent(bool pers) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 18);
 		invocation.addBooleanParameter(pers);
 
 		invocation.executeWithVoidReturn();
@@ -174,7 +246,7 @@ void TangibleObject::setUpdated(bool upd) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 13);
+		ORBMethodInvocation invocation(this, 19);
 		invocation.addBooleanParameter(upd);
 
 		invocation.executeWithVoidReturn();
@@ -187,7 +259,7 @@ SceneObject* TangibleObject::getContainer() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 14);
+		ORBMethodInvocation invocation(this, 20);
 
 		return (SceneObject*) invocation.executeWithObjectReturn();
 	} else
@@ -199,7 +271,7 @@ unicode& TangibleObject::getName() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 15);
+		ORBMethodInvocation invocation(this, 21);
 
 		invocation.executeWithUnicodeReturn(_return_getName);
 		return _return_getName;
@@ -212,7 +284,7 @@ string& TangibleObject::getTemplateName() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 16);
+		ORBMethodInvocation invocation(this, 22);
 
 		invocation.executeWithAsciiReturn(_return_getTemplateName);
 		return _return_getTemplateName;
@@ -225,7 +297,7 @@ string& TangibleObject::getTemplateTypeName() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 17);
+		ORBMethodInvocation invocation(this, 23);
 
 		invocation.executeWithAsciiReturn(_return_getTemplateTypeName);
 		return _return_getTemplateTypeName;
@@ -238,7 +310,7 @@ string& TangibleObject::getCustomizationString() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 18);
+		ORBMethodInvocation invocation(this, 24);
 
 		invocation.executeWithAsciiReturn(_return_getCustomizationString);
 		return _return_getCustomizationString;
@@ -251,7 +323,7 @@ int TangibleObject::getObjectSubType() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 19);
+		ORBMethodInvocation invocation(this, 25);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -263,7 +335,7 @@ unsigned int TangibleObject::getTemplateID() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 20);
+		ORBMethodInvocation invocation(this, 26);
 
 		return invocation.executeWithUnsignedIntReturn();
 	} else
@@ -275,71 +347,11 @@ int TangibleObject::getObjectCount() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 21);
+		ORBMethodInvocation invocation(this, 27);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
 		return ((TangibleObjectImplementation*) _impl)->getObjectCount();
-}
-
-bool TangibleObject::isPersistent() {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 22);
-
-		return invocation.executeWithBooleanReturn();
-	} else
-		return ((TangibleObjectImplementation*) _impl)->isPersistent();
-}
-
-bool TangibleObject::isUpdated() {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 23);
-
-		return invocation.executeWithBooleanReturn();
-	} else
-		return ((TangibleObjectImplementation*) _impl)->isUpdated();
-}
-
-bool TangibleObject::isEquipped() {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 24);
-
-		return invocation.executeWithBooleanReturn();
-	} else
-		return ((TangibleObjectImplementation*) _impl)->isEquipped();
-}
-
-bool TangibleObject::isWeapon() {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 25);
-
-		return invocation.executeWithBooleanReturn();
-	} else
-		return ((TangibleObjectImplementation*) _impl)->isWeapon();
-}
-
-bool TangibleObject::isTicket() {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 26);
-
-		return invocation.executeWithBooleanReturn();
-	} else
-		return ((TangibleObjectImplementation*) _impl)->isTicket();
 }
 
 int TangibleObject::getConditionDamage() {
@@ -347,7 +359,7 @@ int TangibleObject::getConditionDamage() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 27);
+		ORBMethodInvocation invocation(this, 28);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -359,7 +371,7 @@ int TangibleObject::getMaxCondition() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 28);
+		ORBMethodInvocation invocation(this, 29);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -371,7 +383,7 @@ int TangibleObject::getCondition() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 29);
+		ORBMethodInvocation invocation(this, 30);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -408,57 +420,60 @@ Packet* TangibleObjectAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* 
 		sendTo((Player*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
 	case 12:
-		setPersistent(inv->getBooleanParameter());
-		break;
-	case 13:
-		setUpdated(inv->getBooleanParameter());
-		break;
-	case 14:
-		resp->insertLong(getContainer()->_getORBObjectID());
-		break;
-	case 15:
-		resp->insertUnicode(getName());
-		break;
-	case 16:
-		resp->insertAscii(getTemplateName());
-		break;
-	case 17:
-		resp->insertAscii(getTemplateTypeName());
-		break;
-	case 18:
-		resp->insertAscii(getCustomizationString());
-		break;
-	case 19:
-		resp->insertSignedInt(getObjectSubType());
-		break;
-	case 20:
-		resp->insertInt(getTemplateID());
-		break;
-	case 21:
-		resp->insertSignedInt(getObjectCount());
-		break;
-	case 22:
 		resp->insertBoolean(isPersistent());
 		break;
-	case 23:
+	case 13:
 		resp->insertBoolean(isUpdated());
 		break;
-	case 24:
+	case 14:
 		resp->insertBoolean(isEquipped());
 		break;
-	case 25:
+	case 15:
 		resp->insertBoolean(isWeapon());
 		break;
-	case 26:
+	case 16:
+		resp->insertBoolean(isArmor());
+		break;
+	case 17:
 		resp->insertBoolean(isTicket());
 		break;
+	case 18:
+		setPersistent(inv->getBooleanParameter());
+		break;
+	case 19:
+		setUpdated(inv->getBooleanParameter());
+		break;
+	case 20:
+		resp->insertLong(getContainer()->_getORBObjectID());
+		break;
+	case 21:
+		resp->insertUnicode(getName());
+		break;
+	case 22:
+		resp->insertAscii(getTemplateName());
+		break;
+	case 23:
+		resp->insertAscii(getTemplateTypeName());
+		break;
+	case 24:
+		resp->insertAscii(getCustomizationString());
+		break;
+	case 25:
+		resp->insertSignedInt(getObjectSubType());
+		break;
+	case 26:
+		resp->insertInt(getTemplateID());
+		break;
 	case 27:
-		resp->insertSignedInt(getConditionDamage());
+		resp->insertSignedInt(getObjectCount());
 		break;
 	case 28:
-		resp->insertSignedInt(getMaxCondition());
+		resp->insertSignedInt(getConditionDamage());
 		break;
 	case 29:
+		resp->insertSignedInt(getMaxCondition());
+		break;
+	case 30:
 		resp->insertSignedInt(getCondition());
 		break;
 	default:
@@ -490,6 +505,30 @@ void TangibleObjectAdapter::setContainer(SceneObject* cont, unsigned int type) {
 
 void TangibleObjectAdapter::sendTo(Player* player, bool doClose) {
 	return ((TangibleObjectImplementation*) impl)->sendTo(player, doClose);
+}
+
+bool TangibleObjectAdapter::isPersistent() {
+	return ((TangibleObjectImplementation*) impl)->isPersistent();
+}
+
+bool TangibleObjectAdapter::isUpdated() {
+	return ((TangibleObjectImplementation*) impl)->isUpdated();
+}
+
+bool TangibleObjectAdapter::isEquipped() {
+	return ((TangibleObjectImplementation*) impl)->isEquipped();
+}
+
+bool TangibleObjectAdapter::isWeapon() {
+	return ((TangibleObjectImplementation*) impl)->isWeapon();
+}
+
+bool TangibleObjectAdapter::isArmor() {
+	return ((TangibleObjectImplementation*) impl)->isArmor();
+}
+
+bool TangibleObjectAdapter::isTicket() {
+	return ((TangibleObjectImplementation*) impl)->isTicket();
 }
 
 void TangibleObjectAdapter::setPersistent(bool pers) {
@@ -530,26 +569,6 @@ unsigned int TangibleObjectAdapter::getTemplateID() {
 
 int TangibleObjectAdapter::getObjectCount() {
 	return ((TangibleObjectImplementation*) impl)->getObjectCount();
-}
-
-bool TangibleObjectAdapter::isPersistent() {
-	return ((TangibleObjectImplementation*) impl)->isPersistent();
-}
-
-bool TangibleObjectAdapter::isUpdated() {
-	return ((TangibleObjectImplementation*) impl)->isUpdated();
-}
-
-bool TangibleObjectAdapter::isEquipped() {
-	return ((TangibleObjectImplementation*) impl)->isEquipped();
-}
-
-bool TangibleObjectAdapter::isWeapon() {
-	return ((TangibleObjectImplementation*) impl)->isWeapon();
-}
-
-bool TangibleObjectAdapter::isTicket() {
-	return ((TangibleObjectImplementation*) impl)->isTicket();
 }
 
 int TangibleObjectAdapter::getConditionDamage() {

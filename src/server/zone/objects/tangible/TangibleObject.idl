@@ -64,11 +64,22 @@ interface TangibleObject implements SceneObject {
 	
 	void sendTo(Player player, boolean doClose = true);
 
-	// setters and getters
+	boolean isPersistent();
+	boolean isUpdated();
+	
+	boolean isEquipped();
+	
+	boolean isWeapon();
+	boolean isArmor();
+
+	boolean isTicket();
+
+	// setters
 	void setPersistent(boolean pers);
 	
 	void setUpdated(boolean upd);
 	
+	// getters
 	SceneObject getContainer();
 
 	unicode getName();
@@ -81,14 +92,6 @@ interface TangibleObject implements SceneObject {
 	unsigned int getTemplateID();
 	
 	int getObjectCount();
-
-	boolean isPersistent();
-	boolean isUpdated();
-	
-	boolean isEquipped();
-	
-	boolean isWeapon();
-	boolean isTicket();
 	
 	int getConditionDamage();
 	int getMaxCondition();

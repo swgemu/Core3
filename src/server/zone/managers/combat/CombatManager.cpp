@@ -115,7 +115,6 @@ float CombatManager::doTargetSkill(CommandQueueAction* action) {
 
 	if (tskill->isArea())
 		handleAreaAction(creature, targetCreature, action, actionMessage);
-	
 	creature->broadcastMessage(actionMessage);
 
 	return tskill->calculateSpeed(creature);
@@ -262,10 +261,15 @@ bool CombatManager::doAction(CreatureObject* attacker, CreatureObject* targetCre
 		
 		if (targetCreature->isIncapacitated()) {
 			attacker->sendSystemMessage("base_player", "prose_target_incap", targetCreature->getObjectID());
+			
 			if (!skill->isArea())
 				attacker->clearCombatState(true);
 		} else if (targetCreature->isDead()) {
+			if (targetCreature->isNonPlayerCreature())
+				((Creature*) targetCreature)->createLoot();
+				
 			attacker->sendSystemMessage("base_player", "prose_target_dead", targetCreature->getObjectID());
+
 			if (!skill->isArea())
 				attacker->clearCombatState(true);
 		}

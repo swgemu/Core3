@@ -48,6 +48,7 @@ which carries forward this exception.
 #include "engine/engine.h"
 
 class UserManager;
+class ItemManager;
 class ProfessionManager;
 class CreatureManager;
 

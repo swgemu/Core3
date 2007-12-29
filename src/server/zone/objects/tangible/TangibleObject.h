@@ -83,6 +83,18 @@ public:
 
 	void sendTo(Player* player, bool doClose = true);
 
+	bool isPersistent();
+
+	bool isUpdated();
+
+	bool isEquipped();
+
+	bool isWeapon();
+
+	bool isArmor();
+
+	bool isTicket();
+
 	void setPersistent(bool pers);
 
 	void setUpdated(bool upd);
@@ -102,16 +114,6 @@ public:
 	unsigned int getTemplateID();
 
 	int getObjectCount();
-
-	bool isPersistent();
-
-	bool isUpdated();
-
-	bool isEquipped();
-
-	bool isWeapon();
-
-	bool isTicket();
 
 	int getConditionDamage();
 
@@ -150,6 +152,18 @@ public:
 
 	void sendTo(Player* player, bool doClose);
 
+	bool isPersistent();
+
+	bool isUpdated();
+
+	bool isEquipped();
+
+	bool isWeapon();
+
+	bool isArmor();
+
+	bool isTicket();
+
 	void setPersistent(bool pers);
 
 	void setUpdated(bool upd);
@@ -169,16 +183,6 @@ public:
 	unsigned int getTemplateID();
 
 	int getObjectCount();
-
-	bool isPersistent();
-
-	bool isUpdated();
-
-	bool isEquipped();
-
-	bool isWeapon();
-
-	bool isTicket();
 
 	int getConditionDamage();
 

@@ -71,11 +71,10 @@ void ArmorImplementation::sendTo(Player* player, bool doClose) {
 }
 
 void ArmorImplementation::generateAttributes(SceneObject* obj) {
-		
-	if (obj->getObjectType() != SceneObjectImplementation::PLAYER)
+	if (!obj->isPlayer())
 		return;
 		
-	Player* play = (Player*) obj;
+	Player* player = (Player*) obj;
 	
 	AttributeListMessage* alm = new AttributeListMessage((TangibleObject*) _this);
 	
@@ -86,54 +85,71 @@ void ArmorImplementation::generateAttributes(SceneObject* obj) {
 	alm->insertAttribute("Volume", "1");
 	
 	//Armor Rating
-	if(rating == LIGHT)
+	if (rating == LIGHT)
 		alm->insertAttribute("armorrating", "Light");
-	else if(rating == MEDIUM)
+	else if (rating == MEDIUM)
 		alm->insertAttribute("armorrating", "Medium");
-	else if(rating == HEAVY)
+	else if (rating == HEAVY)
 		alm->insertAttribute("armorrating", "Heavy");
 	
 	alm->insertAttribute("cat_armor_special_protection", "");
 	
 	//Check for special protections
-	if(kineticIsSpecial)
+	if (kineticIsSpecial)
 		alm->insertAttribute("armor_eff_kinetic", kinetic);
-	if(energyIsSpecial)
+	
+	if (energyIsSpecial)
 		alm->insertAttribute("armor_eff_energy", energy);
-	if(electricityIsSpecial)
+	
+	if (electricityIsSpecial)
 		alm->insertAttribute("armor_eff_elemental_electrical", electricity);
-	if(stunIsSpecial)
+	
+	if (stunIsSpecial)
 		alm->insertAttribute("armor_eff_stun", stun);
-	if(blastIsSpecial)
+	
+	if (blastIsSpecial)
 		alm->insertAttribute("armor_eff_blast", blast);
-	if(heatIsSpecial)
+	
+	if (heatIsSpecial)
 		alm->insertAttribute("armor_eff_elemental_heat", heat);
-	if(coldIsSpecial)
+	
+	if (coldIsSpecial)
 		alm->insertAttribute("armor_eff_elemental_cold", cold);
-	if(acidIsSpecial)
+	
+	if (acidIsSpecial)
 		alm->insertAttribute("armor_eff_elemental_acid", acid);
-	if(lightSaberIsSpecial)
+	
+	if (lightSaberIsSpecial)
 		alm->insertAttribute("armor_eff_restraint", lightSaber);
 		
 	alm->insertAttribute("cat_armor_effectiveness", "");
+
 	//Check for Effectiveness protections(Normal)
-	if(!kineticIsSpecial)
+	if (!kineticIsSpecial)
 		alm->insertAttribute("armor_eff_kinetic", kinetic);
-	if(!energyIsSpecial)
+	
+	if (!energyIsSpecial)
 		alm->insertAttribute("armor_eff_energy", energy);
-	if(!electricityIsSpecial)
+	
+	if (!electricityIsSpecial)
 		alm->insertAttribute("armor_eff_elemental_electrical", electricity);
-	if(!stunIsSpecial)
+	
+	if (!stunIsSpecial)
 		alm->insertAttribute("armor_eff_stun", stun);
-	if(!blastIsSpecial)
+	
+	if (!blastIsSpecial)
 		alm->insertAttribute("armor_eff_blast", blast);
-	if(!heatIsSpecial)
+	
+	if (!heatIsSpecial)
 		alm->insertAttribute("armor_eff_elemental_heat", heat);
-	if(!coldIsSpecial)
+	
+	if (!coldIsSpecial)
 		alm->insertAttribute("armor_eff_elemental_cold", cold);
-	if(!acidIsSpecial)
+	
+	if (!acidIsSpecial)
 		alm->insertAttribute("armor_eff_elemental_acid", acid);
-	if(!lightSaberIsSpecial)
+	
+	if (!lightSaberIsSpecial)
 		alm->insertAttribute("armor_eff_restraint", lightSaber);
 	
 	//Encumbrances
@@ -145,6 +161,109 @@ void ArmorImplementation::generateAttributes(SceneObject* obj) {
 	
 	alm->insertAttribute("mindencumbrance", mindEncumbrance);
 	
-	play->sendMessage(alm);
+	player->sendMessage(alm);
 	
+}
+
+void ArmorImplementation::setArmorStats(int modifier) {	
+	int luck = (System::random(100)) + (modifier / 4);
+	
+	if (System::random(1000) == 7) 
+		luck = luck * 10;
+	
+	if (System::random(10000) == 777) 
+		luck = luck * 25;
+	
+	if (System::random(100) == 6) 
+		luck = 0;
+	
+	int playerRoll = System::random(1000) * modifier * luck / 1000;
+	if (playerRoll > 100000) {
+		modifier = modifier + 100;
+		luck = luck + 100;
+		
+		stringstream itemText;
+		itemText << "\\#ffff00" << name.c_str() << " (Legendary)";
+		name = unicode(itemText.str());	
+	} else if (playerRoll > 22500) {
+		modifier = modifier + 50;
+		luck = luck + 50;
+		
+		stringstream itemText;
+		itemText << "\\#ffff00" << name.c_str() << " (Exceptional)";	
+		name = unicode(itemText.str());
+	} else if (playerRoll > 7500) {
+		modifier = modifier + 25;
+		luck = luck + 25;
+		
+		stringstream itemText;
+		itemText << "\\#ffff00" << name.c_str();
+		name = unicode(itemText.str());	
+	}
+	
+	maxCondition = 25000 + (modifier * 10) + (luck * 10);
+	
+	if ((luck * System::random(100)) > 2000) {
+		healthEncumbrance = healthEncumbrance - (modifier / 4) - (luck / 10);
+		actionEncumbrance = actionEncumbrance - (modifier / 4) - (luck / 10);
+		mindEncumbrance = mindEncumbrance - (modifier / 4) - (luck / 10);
+	}
+	
+	if ((luck * System::random(100)) > 2000) {
+		kinetic = kinetic + (modifier / 10) + (luck / 10);
+		energy = energy + (modifier / 10) + (luck / 10);
+		electricity = electricity + (modifier / 10) + (luck / 10);
+		stun = stun + (modifier / 10) + (luck / 10);
+		blast = blast + (modifier / 10) + (luck / 10);
+		heat = heat + (modifier / 10) + (luck / 10);
+		cold = cold + (modifier / 10) + (luck / 10);
+		acid = acid + (modifier / 10) + (luck / 10);
+		lightSaber = lightSaber + (modifier / 10) + (luck / 10);
+	}
+	
+	kineticIsSpecial = System::random(1);
+	energyIsSpecial = System::random(1);
+	electricityIsSpecial = System::random(1);
+	stunIsSpecial = System::random(1);
+	blastIsSpecial = System::random(1);
+	heatIsSpecial = System::random(1);
+	coldIsSpecial = System::random(1);
+	acidIsSpecial = System::random(1);
+	lightSaberIsSpecial = System::random(1);
+	
+	if (kinetic > 90.0f) 
+		kinetic = 90.0f;
+	
+	if (energy > 90.0f) 
+		energy = 90.0f;
+	
+	if (electricity > 90.0f) 
+		electricity = 90.0f;
+	
+	if (stun > 90.0f) 
+		stun = 90.0f;
+	
+	if (blast > 90.0f) 
+		blast = 90.0f;
+	
+	if (heat > 90.0f) 
+		heat = 90.0f;
+	
+	if (cold > 90.0f) 
+		cold = 90.0f;
+	
+	if (acid > 90.0f) 
+		acid = 90.0f;
+	
+	if (lightSaber > 90.0f) 
+		lightSaber = 90.0f;
+	
+	if (healthEncumbrance < 0) 
+		healthEncumbrance = 0;
+	
+	if (actionEncumbrance < 0) 
+		actionEncumbrance = 0;
+	
+	if (mindEncumbrance < 0) 
+		mindEncumbrance = 0;
 }

@@ -72,6 +72,8 @@ public:
 	void sendTo(Player* player, bool doClose = true);
 
 	void generateAttributes(SceneObject* obj);
+	
+	void setArmorStats(int modifier);
 
 	int getRating();
 
@@ -120,6 +122,52 @@ public:
 	float getLightSaber();
 
 	bool isLightSaberSpecial();
+	
+	void setRating(int rat);
+	
+	void setMaxCondition(int maxCond);
+
+	void setHealthEncumbrance(int healthEnc);
+
+	void setActionEncumbrance(int actionEnc);
+
+	void setMindEncumbrance(int mindEnc);
+
+	void setKinetic(float kin);
+
+	void setKineticIsSpecial(bool kineticSpec);
+
+	void setEnergy(float ene);
+
+	void setEnergyIsSpecial(bool energySpec);
+
+	void setElectricity(float ele);
+
+	void setElectricityIsSpecial(bool electricitySpec);
+
+	void setStun(float stu);
+
+	void setStunIsSpecial(bool stunSpec);
+
+	void setBlast(float blst);
+
+	void setBlastIsSpecial(bool blastSpec);
+
+	void setHeat(float hot);
+
+	void setHeatIsSpecial(bool heatSpec);
+
+	void setCold(float notHot);
+
+	void setColdIsSpecial(bool coldSpec);
+
+	void setAcid(float aci);
+
+	void setAcidIsSpecial(bool acidSpec);
+
+	void setLightSaber(float lightSab);
+
+	void setLightSaberIsSpecial(bool lightSaberSpec);
 
 protected:
 };
@@ -135,6 +183,8 @@ public:
 	void sendTo(Player* player, bool doClose);
 
 	void generateAttributes(SceneObject* obj);
+	
+	void setArmorStats(int modifier);
 
 	int getRating();
 
@@ -183,6 +233,52 @@ public:
 	float getLightSaber();
 
 	bool isLightSaberSpecial();
+	
+	void setRating(int rat);
+	
+	void setMaxCondition(int maxCond);
+
+	void setHealthEncumbrance(int healthEnc);
+
+	void setActionEncumbrance(int actionEnc);
+
+	void setMindEncumbrance(int mindEnc);
+
+	void setKinetic(float kin);
+
+	void setKineticIsSpecial(bool kineticSpec);
+
+	void setEnergy(float ene);
+
+	void setEnergyIsSpecial(bool energySpec);
+
+	void setElectricity(float ele);
+
+	void setElectricityIsSpecial(bool electricitySpec);
+
+	void setStun(float stu);
+
+	void setStunIsSpecial(bool stunSpec);
+
+	void setBlast(float blst);
+
+	void setBlastIsSpecial(bool blastSpec);
+
+	void setHeat(float hot);
+
+	void setHeatIsSpecial(bool heatSpec);
+
+	void setCold(float notHot);
+
+	void setColdIsSpecial(bool coldSpec);
+
+	void setAcid(float aci);
+
+	void setAcidIsSpecial(bool acidSpec);
+
+	void setLightSaber(float lightSab);
+
+	void setLightSaberIsSpecial(bool lightSaberSpec);
 
 };
 

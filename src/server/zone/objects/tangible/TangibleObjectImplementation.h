@@ -185,7 +185,11 @@ public:
 	inline bool isWeapon() {
 		return (objectSubType == WEAPON);
 	}
-	
+
+	inline bool isArmor() {
+		return (objectSubType == ARMOR);
+	}
+
 	inline bool isTicket() {
 		return objectSubType == TICKET;
 	}

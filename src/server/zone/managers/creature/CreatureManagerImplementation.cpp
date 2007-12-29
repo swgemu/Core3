@@ -483,6 +483,10 @@ int CreatureManagerImplementation::addCreature(lua_State *L) {
 	creatureImpl->focus = creature.getIntField("focus");
 	creatureImpl->willpower = creature.getIntField("willpower");
 
+	creatureImpl->health = creatureImpl->health + (creatureImpl->health * (System::random(100)) / 1111);
+	creatureImpl->action = creatureImpl->action + (creatureImpl->action * (System::random(100)) / 1111);
+	creatureImpl->mind = creatureImpl->mind + (creatureImpl->mind * (System::random(100)) / 1111);
+	
 	creatureImpl->healthMax = creatureImpl->health;
 	creatureImpl->strengthMax = creatureImpl->strength;
 	creatureImpl->constitutionMax = creatureImpl->constitution;

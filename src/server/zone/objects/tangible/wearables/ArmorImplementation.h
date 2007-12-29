@@ -141,8 +141,105 @@ public:
 	}
 	
 	void sendTo(Player* player, bool doClose = true);
+	
 	void generateAttributes(SceneObject* obj);
 	
+	void setArmorStats(int modifier);
+
+	// setters
+	inline void setRating(int rat) {
+		rating = rat;
+	}
+	
+	inline void setMaxCondition(int maxCond) {
+		maxCondition = maxCond;
+	}
+
+	inline void setHealthEncumbrance(int healthEnc) {
+		healthEncumbrance = healthEnc;
+	}
+
+	inline void setActionEncumbrance(int actionEnc) {
+		actionEncumbrance = actionEnc;
+	}
+
+	inline void setMindEncumbrance(int mindEnc) {
+		mindEncumbrance = mindEnc;
+	}
+
+	inline void setKinetic(float kin) {
+		kinetic = kin;
+	}
+
+	inline void setKineticIsSpecial(bool kineticIsSpec) {
+		kineticIsSpecial = kineticIsSpec;
+	}
+
+	inline void setEnergy(float ene) {
+		energy = ene;
+	}
+
+	inline void setEnergyIsSpecial(bool energyIsSpec) {
+		energyIsSpecial = energyIsSpec;
+	}
+
+	inline void setElectricity(float ele) {
+		electricity = ele;
+	}
+
+	inline void setElectricityIsSpecial(bool electricityIsSpec) {
+		electricityIsSpecial = electricityIsSpec;
+	}
+
+	inline void setStun(float stu) {
+		stun = stu;
+	}
+
+	inline void setStunIsSpecial(bool stunIsSpec) {
+		stunIsSpecial = stunIsSpec;
+	}
+
+	inline void setBlast(float blst) {
+		blast = blst;
+	}
+
+	inline void setBlastIsSpecial(bool blastIsSpec) {
+		blastIsSpecial = blastIsSpec;
+	}
+
+	inline void setHeat(float hot) {
+		heat = hot;
+	}
+
+	inline void setHeatIsSpecial(bool heatIsSpec) {
+		heatIsSpecial = heatIsSpec;
+	}
+
+	inline void setCold(float notHot) {
+		cold = notHot;
+	}
+
+	inline void setColdIsSpecial(bool coldIsSpec) {
+		coldIsSpecial = coldIsSpec;
+	}
+
+	inline void setAcid(float aci) {
+		acid = aci;
+	}
+
+	inline void setAcidIsSpecial(bool acidIsSpec) {
+		acidIsSpecial = acidIsSpec;
+	}
+
+	inline void setLightSaber(float lightSab) {
+		lightSaber = lightSab;
+	}
+
+	inline void setLightSaberIsSpecial(bool lightSaberIsSpec) {
+		lightSaberIsSpecial = lightSaberIsSpec;
+	}
+
+	// getters
 	inline int getRating() {
 		return rating;
 	}
@@ -234,5 +331,6 @@ public:
 	inline bool isLightSaberSpecial() {
 		return lightSaberIsSpecial;
 	}
+
 };	
 #endif /*ARMORIMPLEMENTATION_H_*/

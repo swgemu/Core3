@@ -122,6 +122,8 @@ public:
 			isConeSkill = true;
 	}
 
+	void doDotWeaponAttack(CreatureObject* creature, CreatureObject* targetCreature, bool areaHit);
+	
 };
 
 #endif /*TARGETSKILL_H_*/

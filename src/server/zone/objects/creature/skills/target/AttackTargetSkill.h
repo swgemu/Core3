@@ -93,7 +93,6 @@ protected:
 
 public:
 	AttackTargetSkill(const string& name, const string& anim, ZoneProcessServerImplementation* serv) : TargetSkill(name, anim, ATTACK, serv) {
-
 		healthPoolAttackChance = 0;
 		strengthPoolAttackChance = 0;
 		constitutionPoolAttackChance = 0;
@@ -164,6 +163,8 @@ public:
 				((Player*)attacker)->sendMessage(fly);
 			}
 		}
+		
+		doDotWeaponAttack(attacker, target, 0);
 	}
 	
 	void applyStrengthPoolDamage(CreatureObject* target, int32 damage) {
@@ -190,6 +191,8 @@ public:
 				((Player*)attacker)->sendMessage(fly);
 			}
 		}
+		
+		doDotWeaponAttack(attacker, target, 0);
 	}
 	
 	void applyQuicknessPoolDamage(CreatureObject* target, int32 damage) {
@@ -207,6 +210,8 @@ public:
 			ShowFlyText* fly = new ShowFlyText(target, "combat_effects", "hit_head", 0, 0, 0xFF);
 			((Player*)attacker)->sendMessage(fly);
 		}
+		
+		doDotWeaponAttack(attacker, target, 0);
 	}
 	
 	void applyFocusPoolDamage(CreatureObject* target, int32 damage) {
@@ -406,7 +411,97 @@ public:
 	float getTargetDefense(CreatureObject* creature, CreatureObject* targetCreature, Weapon* weapon) {
 		return server->getCombatManager()->getTargetDefense(creature, targetCreature, weapon);
 	}
-	
+
+	void doDotWeaponAttack(CreatureObject* creature, CreatureObject* targetCreature, bool areaHit) {
+		Weapon* weapon = creature->getWeapon();
+		
+		if (weapon != NULL) {
+			if (weapon->getDot0Uses() != 0) {
+				if (System::random(100) < weapon->getDot0Potency()) {
+					switch (weapon->getDot0Type()) {
+					case 1:
+						targetCreature->setBleedingState(weapon->getDot0Strength(), weapon->getDot0Attribute());
+						break;	
+					case 2:
+						targetCreature->setDiseasedState(weapon->getDot0Strength(), weapon->getDot0Attribute());
+						break;	
+					case 3:
+						targetCreature->setOnFireState(weapon->getDot0Strength(), weapon->getDot0Attribute());
+						break;	
+					case 4:
+						targetCreature->setPoisonedState(weapon->getDot0Strength(), weapon->getDot0Attribute());
+						break;	
+					}
+				}
+			
+				if (weapon->getDot0Uses() != -1 && areaHit == 0) {
+					weapon->setDot0Uses(weapon->getDot0Uses() - 1);
+					
+					if (creature->isPlayer())
+						weapon->sendTo((Player*) creature);
+					
+					weapon->setUpdated(true);
+				}
+			}
+			
+			if (weapon->getDot1Uses() != 0) {
+				if (System::random(100) < weapon->getDot1Potency()) {
+					switch (weapon->getDot1Type()) {
+					case 1:
+						targetCreature->setBleedingState(weapon->getDot1Strength(), weapon->getDot1Attribute());
+						break;	
+					case 2:
+						targetCreature->setDiseasedState(weapon->getDot1Strength(), weapon->getDot1Attribute());
+						break;	
+					case 3:
+						targetCreature->setOnFireState(weapon->getDot1Strength(), weapon->getDot1Attribute());
+						break;	
+					case 4:
+						targetCreature->setPoisonedState(weapon->getDot1Strength(), weapon->getDot1Attribute());
+						break;	
+					}
+				}
+				
+				if (weapon->getDot1Uses() != -1 && areaHit == 0) {
+					weapon->setDot1Uses(weapon->getDot1Uses() - 1);
+					
+					if (creature->isPlayer())
+						weapon->sendTo((Player*) creature);
+					
+					weapon->setUpdated(true);
+				}
+			}
+			
+			if (weapon->getDot2Uses() != 0) {
+				if (System::random(100) < weapon->getDot2Potency()) {
+					switch (weapon->getDot2Type()) {
+					case 1:
+						targetCreature->setBleedingState(weapon->getDot2Strength(), weapon->getDot2Attribute());
+						break;	
+					case 2:
+						targetCreature->setDiseasedState(weapon->getDot2Strength(), weapon->getDot2Attribute());
+						break;	
+					case 3:
+						targetCreature->setOnFireState(weapon->getDot2Strength(), weapon->getDot2Attribute());
+						break;	
+					case 4:
+						targetCreature->setPoisonedState(weapon->getDot2Strength(), weapon->getDot2Attribute());
+						break;	
+					}
+				}
+				
+				if (weapon->getDot2Uses() != -1 && areaHit == 0) {
+					weapon->setDot2Uses(weapon->getDot2Uses() - 1);
+					
+					if (creature->isPlayer())
+						weapon->sendTo((Player*) creature);
+					
+					weapon->setUpdated(true);
+				}
+			}
+		}
+	}
+
 	bool isArea() {
 		if (areaRangeDamage != 0) {
 			return true;

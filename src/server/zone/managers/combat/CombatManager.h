@@ -106,7 +106,7 @@ public:
 	int getHitChance(CreatureObject* creature, CreatureObject* targetCreature, int accuracyBonus);
 	float getWeaponAccuracy(float currentRange, Weapon* weapon);
 	float getTargetDefense(CreatureObject* creature, CreatureObject* targetCreature, Weapon* weapon);
-	 
+	
 };
 
 #endif /*COMBATMANAGER_H_*/

@@ -73,9 +73,13 @@ public:
 
 	SceneObject* getObject(unsigned long long oid);
 
+	void removeObject(int index);
+
 	void removeObject(unsigned long long oid);
 
 	int objectsSize();
+
+	bool isEmpty();
 
 protected:
 };
@@ -94,9 +98,13 @@ public:
 
 	SceneObject* getObject(unsigned long long oid);
 
+	void removeObject(int index);
+
 	void removeObject(unsigned long long oid);
 
 	int objectsSize();
+
+	bool isEmpty();
 
 };
 

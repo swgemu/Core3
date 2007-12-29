@@ -803,32 +803,36 @@ void CreatureObjectImplementation::doBleedingTick() {
 }
 
 void CreatureObjectImplementation::doDiseaseTick() {
-	/*
 	if (nextDiseaseTick.isPast()) {
 	
 		if (diseaseDotType == 1)
-			changeHealthWoundBar(diseaseDotStrength);
+			changeHealthWoundsBar(diseaseDotStrength);
 		else if (diseaseDotType == 2)
-			changeActionWoundBar(diseaseDotStrength);
+			changeActionWoundsBar(diseaseDotStrength);
 		else
-			changeMindWoundBar(diseaseDotStrength);
+			changeMindWoundsBar(diseaseDotStrength);
 			
 		playEffect("clienteffect/dot_diseased.cef");
 		
 		nextDiseaseTick.update();
 		nextDiseaseTick.addMiliTime(9000);
-	*/
+	}
 }
 
 void CreatureObjectImplementation::doFireTick() {
 	if (nextFireTick.isPast()) {
-		if (fireDotType == 1)
+		if (fireDotType == 1){
+			changeHealthWoundsBar(fireDotStrength);
 			changeHealthBar(-fireDotStrength);
-		else if (bleedingDotType == 2)
+		}
+		else if (bleedingDotType == 2) {
+			changeActionWoundsBar(fireDotStrength);
 			changeActionBar(-fireDotStrength);
-		else
+	}
+		else {
+			changeMindWoundsBar(fireDotStrength);
 			changeMindBar(-fireDotStrength);
-		
+		}
 		playEffect("clienteffect/dot_fire.cef");
 		
 		nextFireTick.update();

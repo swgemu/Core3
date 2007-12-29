@@ -84,7 +84,30 @@ protected:
 	int woundsRatio;
 	
 	int armorPiercing;
+	
+	int dot0Type;
+	int dot0Attribute;
+	int dot0Strength;
+	int dot0Duration;
+	int dot0Potency;
+	int dot0Uses;
+	
+	int dot1Type;
+	int dot1Attribute;
+	int dot1Strength;
+	int dot1Duration;
+	int dot1Potency;
+	int dot1Uses;
 
+	int dot2Type;
+	int dot2Attribute;
+	int dot2Strength;
+	int dot2Duration;
+	int dot2Potency;
+	int dot2Uses;
+	
+	bool sliced;
+	
 public:
 
 	static const int MELEE = 0x10;
@@ -106,7 +129,21 @@ public:
 	static const int LIGHT = 1;
 	static const int MEDIUM = 2;
 	static const int HEAVY = 3;
-	 
+	
+	static const int BLEED = 1;
+	static const int DISEASE = 2;
+	static const int FIRE = 3;
+	static const int POISON = 4;
+	
+	static const int HEALTH = 1;
+	static const int STRENGTH = 2;
+	static const int CONSTITUTION = 3;
+	static const int ACTION = 4;
+	static const int QUICKNESS = 5;
+	static const int STAMINA = 6;
+	static const int MIND = 7;
+	static const int FOCUS = 8;
+	static const int WILLPOWER = 9;
 
 public:
 	WeaponImplementation(uint64 objid, uint32 tempCRC, const unicode& n, const string& tempn, bool eqp, int tp, int cat) 
@@ -162,11 +199,186 @@ public:
 		woundsRatio = 10;
 		
 		armorPiercing = NONE;
+		
+		dot0Type=0;
+		dot0Attribute=0;
+		dot0Strength=0;
+		dot0Duration=0;
+		dot0Potency=0;
+		dot0Uses=0;
+		
+		dot1Type=0;
+		dot1Attribute=0;
+		dot1Strength=0;
+		dot1Duration=0;
+		dot1Potency=0;
+		dot1Uses=0;
+	
+		dot2Type=0;
+		dot2Attribute=0;
+		dot2Strength=0;
+		dot2Duration=0;
+		dot2Potency=0;
+		dot2Uses=0;
+		
+		sliced=0;
 	}
 	
 	void sendTo(Player* player, bool doClose = true);
+	
 	void generateAttributes(SceneObject* obj);
+	void generateDotAttributes(class AttributeListMessage* alm);
+	
+	void setWeaponStats(int modifier);
 
+	// slicing methods
+	void sliceWeapon(Player* player);
+
+	int sliceWeaponDamage();
+	int sliceWeaponSpeed();
+
+	inline bool isSliced() {
+		return sliced;
+	}	
+	
+	// setters
+	inline void setMinDamage(float minDmg) {
+		minDamage = minDmg;
+	}
+
+	inline void setMaxDamage(float maxDmg) {
+		maxDamage = maxDmg;
+	}
+
+	inline void setAttackSpeed(float attackSpd) {
+		attackSpeed = attackSpd;
+	}
+
+	inline void setHealthAttackCost(int healthCost) {
+		healthAttackCost = healthCost;
+	}
+
+	inline void setActionAttackCost(int actionCost) {
+		actionAttackCost = actionCost;
+	}
+
+	inline void setMindAttackCost(int mindCost) {
+		mindAttackCost = mindCost;
+	}
+		
+	inline void setCategory(int cat) {
+		category = cat;
+	}
+	
+	inline void setPointBlankRange(int pointBlankRnge) {
+		pointBlankRange = pointBlankRnge;
+	}
+	
+	inline void setPointBlankAccuracy(int pointBlankAcc) {
+		pointBlankAccuracy = pointBlankAcc;
+	}
+	
+	inline void setMaxRange(int maxRnge) {
+		maxRange = maxRnge;
+	}
+	
+	inline void setMaxRangeAccuracy(int maxRangeAcc) {
+		maxRangeAccuracy = maxRangeAcc;
+	}
+	
+	inline void setIdealRange(int idealRnge) {
+		idealRange = idealRnge;
+	}
+	
+	inline void setIdealAccuracy(int idealAcc) {
+		idealAccuracy = idealAcc;
+	}
+	
+	inline void setWoundsRatio(int woundsRat) {
+		woundsRatio = woundsRat;
+	}
+	
+	inline void setArmorPiercing(int armorPierce) {
+		armorPiercing = armorPierce;
+	}
+
+	inline void setDot0Type(int type) {
+		dot0Type = type;
+	}
+	
+	inline void setDot0Attribute(int attribute) {
+		dot0Attribute = attribute;
+	}
+	
+	inline void setDot0Strength(int strength) {
+		dot0Strength = strength;
+	}
+	
+	inline void setDot0Duration(int duration) {
+		dot0Duration = duration;
+	}
+	
+	inline void setDot0Potency(int potency) {
+		dot0Potency = potency;
+	}
+	
+	inline void setDot0Uses(int uses) {
+		dot0Uses = uses;
+	}
+
+	inline void setDot1Type(int type) {
+		dot1Type = type;
+	}
+	
+	inline void setDot1Attribute(int attribute) {
+		dot1Attribute = attribute;
+	}
+	
+	inline void setDot1Strength(int strength) {
+		dot1Strength = strength;
+	}
+	
+	inline void setDot1Duration(int duration) {
+		dot1Duration = duration;
+	}
+	
+	inline void setDot1Potency(int potency) {
+		dot1Potency = potency;
+	}
+	
+	inline void setDot1Uses(int uses) {
+		dot1Uses = uses;
+	}
+	
+	inline void setDot2Type(int type) {
+		dot2Type = type;
+	}
+	
+	inline void setDot2Attribute(int attribute) {
+		dot2Attribute = attribute;
+	}
+	
+	inline void setDot2Strength(int strength) {
+		dot2Strength = strength;
+	}
+	
+	inline void setDot2Duration(int duration) {
+		dot2Duration = duration;
+	}
+	
+	inline void setDot2Potency(int potency) {
+		dot2Potency = potency;
+	}
+	
+	inline void setDot2Uses(int uses) {
+		dot2Uses = uses;
+	}
+
+	inline void setSliced(int hacked) {
+		sliced = hacked;
+	}
+	
+	// getters
 	inline float getMinDamage() {
 		return minDamage;
 	}
@@ -241,6 +453,78 @@ public:
 	
 	inline int getArmorPiercing() {
 		return armorPiercing;
+	}
+	
+	inline int getDot0Type() {
+		return dot0Type;
+	}
+
+	inline int getDot0Attribute() {
+		return dot0Attribute;
+	}
+
+	inline int getDot0Strength() {
+		return dot0Strength;
+	}
+
+	inline int getDot0Duration() {
+		return dot0Duration;
+	}
+
+	inline int getDot0Potency() {
+		return dot0Potency;
+	}
+
+	inline int getDot0Uses() {
+		return dot0Uses;
+	}
+
+	inline int getDot1Type() {
+		return dot1Type;
+	}
+
+	inline int getDot1Attribute() {
+		return dot1Attribute;
+	}
+
+	inline int getDot1Strength() {
+		return dot1Strength;
+	}
+
+	inline int getDot1Duration() {
+		return dot1Duration;
+	}
+
+	inline int getDot1Potency() {
+		return dot1Potency;
+	}
+
+	inline int getDot1Uses() {
+		return dot1Uses;
+	}
+	
+	inline int getDot2Type() {
+		return dot2Type;
+	}
+
+	inline int getDot2Attribute() {
+		return dot2Attribute;
+	}
+
+	inline int getDot2Strength() {
+		return dot2Strength;
+	}
+
+	inline int getDot2Duration() {
+		return dot2Duration;
+	}
+
+	inline int getDot2Potency() {
+		return dot2Potency;
+	}
+
+	inline int getDot2Uses() {
+		return dot2Uses;
 	}
 
 	friend class CombatManager;

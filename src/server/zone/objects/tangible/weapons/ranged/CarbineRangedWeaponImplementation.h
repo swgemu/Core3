@@ -61,10 +61,10 @@ public:
 	}
 
 	void initialize() {
-		minDamage = 450;
-		maxDamage = 550;
+		minDamage = 137;
+		maxDamage = 288;
 		
-		attackSpeed = 4.0f;
+		attackSpeed = 4.7f;
 
 		range = 65;
 		
@@ -76,6 +76,7 @@ public:
 			
 		maxRangeAccuracy = -85;
 		maxRange = 64;
+		armorPiercing = MEDIUM;
 	}
 	
 };

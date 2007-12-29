@@ -54,7 +54,11 @@ interface Container implements TangibleObject {
 
 	SceneObject getObject(unsigned long oid);
 	
+	void removeObject(int index);
+
 	void removeObject(unsigned long oid);
 
 	int objectsSize();
+	
+	boolean isEmpty();
 }

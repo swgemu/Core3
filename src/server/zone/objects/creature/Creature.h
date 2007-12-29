@@ -57,6 +57,8 @@ class CreatureGroup;
 
 class Zone;
 
+class Player;
+
 class LairObject;
 
 #include "CreatureObject.h"
@@ -104,6 +106,10 @@ public:
 	bool doRecovery();
 
 	void doStatesRecovery();
+
+	void createLoot();
+
+	void lootCorpse(Player* player);
 
 	void addPatrolPoint(float x, float y, bool doLock = true);
 
@@ -187,6 +193,10 @@ public:
 	bool doRecovery();
 
 	void doStatesRecovery();
+
+	void createLoot();
+
+	void lootCorpse(Player* player);
 
 	void addPatrolPoint(float x, float y, bool doLock);
 

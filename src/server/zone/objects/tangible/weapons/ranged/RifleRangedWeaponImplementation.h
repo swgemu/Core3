@@ -61,21 +61,26 @@ public:
 	}
 
 	void initialize() {
-		minDamage = 300;
-		maxDamage = 600;
-		
-		attackSpeed = 5.0f;
-		
-		range = 65;
-		
-		pointBlankAccuracy = -30;
+		armorPiercing = HEAVY;
+		attackSpeed = 7.9;
+
+		minDamage = 105;
+		maxDamage = 350;
+		woundsRatio = 15;
+
+		pointBlankAccuracy = -90;
 		pointBlankRange = 0;
-		
-		idealAccuracy = 60;
-		idealRange = 45;
-			
-		maxRangeAccuracy = -45;
+
+		idealAccuracy = -32;
+		idealRange = 60;
+
+		maxRangeAccuracy = 0;
 		maxRange = 64;
+
+		healthAttackCost = 45;
+		actionAttackCost = 39;
+		mindAttackCost = 83;
+		armorPiercing = HEAVY;
 	}
 	
 };

@@ -114,12 +114,25 @@ SceneObject* Container::getObject(unsigned long long oid) {
 		return ((ContainerImplementation*) _impl)->getObject(oid);
 }
 
-void Container::removeObject(unsigned long long oid) {
+void Container::removeObject(int index) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
 		ORBMethodInvocation invocation(this, 9);
+		invocation.addSignedIntParameter(index);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((ContainerImplementation*) _impl)->removeObject(index);
+}
+
+void Container::removeObject(unsigned long long oid) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 10);
 		invocation.addUnsignedLongParameter(oid);
 
 		invocation.executeWithVoidReturn();
@@ -132,11 +145,23 @@ int Container::objectsSize() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 10);
+		ORBMethodInvocation invocation(this, 11);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
 		return ((ContainerImplementation*) _impl)->objectsSize();
+}
+
+bool Container::isEmpty() {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 12);
+
+		return invocation.executeWithBooleanReturn();
+	} else
+		return ((ContainerImplementation*) _impl)->isEmpty();
 }
 
 /*
@@ -160,10 +185,16 @@ Packet* ContainerAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* inv) 
 		resp->insertLong(getObject(inv->getUnsignedLongParameter())->_getORBObjectID());
 		break;
 	case 9:
-		removeObject(inv->getUnsignedLongParameter());
+		removeObject(inv->getSignedIntParameter());
 		break;
 	case 10:
+		removeObject(inv->getUnsignedLongParameter());
+		break;
+	case 11:
 		resp->insertSignedInt(objectsSize());
+		break;
+	case 12:
+		resp->insertBoolean(isEmpty());
 		break;
 	default:
 		return NULL;
@@ -184,12 +215,20 @@ SceneObject* ContainerAdapter::getObject(unsigned long long oid) {
 	return ((ContainerImplementation*) impl)->getObject(oid);
 }
 
+void ContainerAdapter::removeObject(int index) {
+	return ((ContainerImplementation*) impl)->removeObject(index);
+}
+
 void ContainerAdapter::removeObject(unsigned long long oid) {
 	return ((ContainerImplementation*) impl)->removeObject(oid);
 }
 
 int ContainerAdapter::objectsSize() {
 	return ((ContainerImplementation*) impl)->objectsSize();
+}
+
+bool ContainerAdapter::isEmpty() {
+	return ((ContainerImplementation*) impl)->isEmpty();
 }
 
 /*

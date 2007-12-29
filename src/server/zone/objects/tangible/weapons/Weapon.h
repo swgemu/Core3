@@ -53,9 +53,9 @@ which carries forward this exception.
 
 class SceneObject;
 
-class Player;
-
 class TangibleObject;
+
+class Player;
 
 #include "../TangibleObject.h"
 
@@ -73,15 +73,27 @@ public:
 
 	void generateAttributes(SceneObject* obj);
 
-	int getType();
+	void setWeaponStats(int modifier);
 
-	int getCategory();
+	void sliceWeapon(Player* player);
+
+	bool isSliced();
 
 	bool isJedi();
 
 	bool isMelee();
 
 	bool isRanged();
+
+	void setDot0Uses(int uses);
+
+	void setDot1Uses(int uses);
+
+	void setDot2Uses(int uses);
+
+	int getType();
+
+	int getCategory();
 
 	float getMinDamage();
 
@@ -110,6 +122,42 @@ public:
 	int getWoundsRatio();
 
 	int getArmorPiercing();
+
+	int getDot0Type();
+
+	int getDot0Attribute();
+
+	int getDot0Strength();
+
+	int getDot0Duration();
+
+	int getDot0Potency();
+
+	int getDot0Uses();
+
+	int getDot1Type();
+
+	int getDot1Attribute();
+
+	int getDot1Strength();
+
+	int getDot1Duration();
+
+	int getDot1Potency();
+
+	int getDot1Uses();
+
+	int getDot2Type();
+
+	int getDot2Attribute();
+
+	int getDot2Strength();
+
+	int getDot2Duration();
+
+	int getDot2Potency();
+
+	int getDot2Uses();
 
 protected:
 };
@@ -126,15 +174,27 @@ public:
 
 	void generateAttributes(SceneObject* obj);
 
-	int getType();
+	void setWeaponStats(int modifier);
 
-	int getCategory();
+	void sliceWeapon(Player* player);
+
+	bool isSliced();
 
 	bool isJedi();
 
 	bool isMelee();
 
 	bool isRanged();
+
+	void setDot0Uses(int uses);
+
+	void setDot1Uses(int uses);
+
+	void setDot2Uses(int uses);
+
+	int getType();
+
+	int getCategory();
 
 	float getMinDamage();
 
@@ -163,6 +223,42 @@ public:
 	int getWoundsRatio();
 
 	int getArmorPiercing();
+
+	int getDot0Type();
+
+	int getDot0Attribute();
+
+	int getDot0Strength();
+
+	int getDot0Duration();
+
+	int getDot0Potency();
+
+	int getDot0Uses();
+
+	int getDot1Type();
+
+	int getDot1Attribute();
+
+	int getDot1Strength();
+
+	int getDot1Duration();
+
+	int getDot1Potency();
+
+	int getDot1Uses();
+
+	int getDot2Type();
+
+	int getDot2Attribute();
+
+	int getDot2Strength();
+
+	int getDot2Duration();
+
+	int getDot2Potency();
+
+	int getDot2Uses();
 
 };
 

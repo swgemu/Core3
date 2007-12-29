@@ -1383,6 +1383,16 @@ void PlayerImplementation::doPeace() {
 	//info("finished doPeace");
 }
 
+void PlayerImplementation::lootCorpse() {
+	if (!targetObject->isNonPlayerCreature())
+		return;
+	
+	Creature* target = (Creature*) targetObject;
+	if (target != NULL && !isIncapacitated() && !isDead() && isInRange(target, 20)) {
+		target->lootCorpse(_this);
+	}
+}
+
 bool PlayerImplementation::changeForceBar(int32 fp) {
 	int32 newForce = playerObject->getForcePower() + fp;
 	

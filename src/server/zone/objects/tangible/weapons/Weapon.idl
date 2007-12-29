@@ -43,8 +43,9 @@ which carries forward this exception.
 */
 
 import "../../scene/SceneObject";
-import "../../player/Player";
 import "../TangibleObject";
+
+import "../../player/Player";
 
 interface Weapon implements TangibleObject {
 	Weapon(unsigned long oid, int tp = 0);
@@ -53,18 +54,28 @@ interface Weapon implements TangibleObject {
 	void sendTo(Player player, boolean doClose = true);
 	
 	void generateAttributes(SceneObject obj);
+	
+	void setWeaponStats(int modifier);
 
-	// setters and getters
+	void sliceWeapon(Player player);
 
-	int getType();
-
-	int getCategory();
+	boolean isSliced();
 
 	boolean isJedi();
 	
 	boolean isMelee();
 	
 	boolean isRanged();
+
+	// setters 
+	void setDot0Uses(int uses);
+	void setDot1Uses(int uses);
+	void setDot2Uses(int uses);
+	
+	// getters
+	int getType();
+
+	int getCategory();
 
 	float getMinDamage();
 
@@ -93,5 +104,26 @@ interface Weapon implements TangibleObject {
 	int getWoundsRatio();
 
 	int getArmorPiercing();
+
+	int getDot0Type();
+	int getDot0Attribute();
+	int getDot0Strength();
+	int getDot0Duration();
+	int getDot0Potency();
+	int getDot0Uses();
+
+	int getDot1Type();
+	int getDot1Attribute();
+	int getDot1Strength();
+	int getDot1Duration();
+	int getDot1Potency();
+	int getDot1Uses();
+
+	int getDot2Type();
+	int getDot2Attribute();
+	int getDot2Strength();
+	int getDot2Duration();
+	int getDot2Potency();
+	int getDot2Uses();
 
 }

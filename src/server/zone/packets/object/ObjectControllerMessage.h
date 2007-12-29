@@ -53,6 +53,7 @@ class RadialManager;
 class PlayerManager;
 class Player;
 class CombatManager;
+class ItemManager;
 
 class ObjectControllerMessage : public Message {
 public:

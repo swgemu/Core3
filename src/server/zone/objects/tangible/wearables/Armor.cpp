@@ -392,6 +392,307 @@ bool Armor::isLightSaberSpecial() {
 		return ((ArmorImplementation*) _impl)->isLightSaberSpecial();
 }
 
+void Armor::setRating(int rat) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 32);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((ArmorImplementation*) _impl)->setRating(rat);
+}
+
+/*void Armor::setCondition(int cond) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 33);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((ArmorImplementation*) _impl)->setCondition(cond);
+}*/
+
+void Armor::setMaxCondition(int maxCond) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 34);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((ArmorImplementation*) _impl)->setMaxCondition(maxCond);
+}
+
+void Armor::setHealthEncumbrance(int healthEnc) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 35);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((ArmorImplementation*) _impl)->setHealthEncumbrance(healthEnc);
+}
+
+void Armor::setActionEncumbrance(int actionEnc) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 36);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((ArmorImplementation*) _impl)->setActionEncumbrance(actionEnc);
+}
+
+void Armor::setMindEncumbrance(int mindEnc) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 37);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((ArmorImplementation*) _impl)->setMindEncumbrance(mindEnc);
+}
+
+void Armor::setKinetic(float kin) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 38);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((ArmorImplementation*) _impl)->setKinetic(kin);
+}
+
+void Armor::setKineticIsSpecial(bool kineticIsSpecial) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 39);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((ArmorImplementation*) _impl)->setKineticIsSpecial(kineticIsSpecial);
+}
+
+void Armor::setEnergy(float ene) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 40);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((ArmorImplementation*) _impl)->setEnergy(ene);
+}
+
+void Armor::setEnergyIsSpecial(bool energyIsSpec) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 41);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((ArmorImplementation*) _impl)->setEnergyIsSpecial(energyIsSpec);
+}
+
+void Armor::setElectricity(float ele) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 42);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((ArmorImplementation*) _impl)->setElectricity(ele);
+}
+
+void Armor::setElectricityIsSpecial(bool electricityIsSpec) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 43);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((ArmorImplementation*) _impl)->setElectricityIsSpecial(electricityIsSpec);
+}
+
+void Armor::setStun(float stu) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 44);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((ArmorImplementation*) _impl)->setStun(stu);
+}
+
+void Armor::setStunIsSpecial(bool stunIsSpec) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 45);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((ArmorImplementation*) _impl)->setStunIsSpecial(stunIsSpec);
+}
+
+void Armor::setBlast(float blst) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 46);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((ArmorImplementation*) _impl)->setBlast(blst);
+}
+
+void Armor::setBlastIsSpecial(bool blastIsSpec) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 47);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((ArmorImplementation*) _impl)->setBlastIsSpecial(blastIsSpec);
+}
+
+void Armor::setHeat(float hot) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 48);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((ArmorImplementation*) _impl)->setHeat(hot);
+}
+
+void Armor::setHeatIsSpecial(bool heatIsSpec) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 49);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((ArmorImplementation*) _impl)->setHeatIsSpecial(heatIsSpec);
+}
+
+void Armor::setCold(float notHot) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 50);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((ArmorImplementation*) _impl)->setCold(notHot);
+}
+
+void Armor::setColdIsSpecial(bool coldIsSpec) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 51);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((ArmorImplementation*) _impl)->setColdIsSpecial(coldIsSpec);
+}
+
+void Armor::setAcid(float aci) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 52);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((ArmorImplementation*) _impl)->setAcid(aci);
+}
+
+void Armor::setAcidIsSpecial(bool acidIsSpec) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 53);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((ArmorImplementation*) _impl)->setAcidIsSpecial(acidIsSpec);
+}
+
+void Armor::setLightSaber(float lightSab) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 54);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((ArmorImplementation*) _impl)->setLightSaber(lightSab);
+}
+
+void Armor::setLightSaberIsSpecial(bool lightSaberIsSpec) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 55);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((ArmorImplementation*) _impl)->setLightSaberIsSpecial(lightSaberIsSpec);
+}
+
+void Armor::setArmorStats(int modifier) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 56);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((ArmorImplementation*) _impl)->setArmorStats(modifier);
+}
+
+
 /*
  *	ArmorAdapter
  */
@@ -480,6 +781,81 @@ Packet* ArmorAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* inv) {
 		break;
 	case 31:
 		resp->insertBoolean(isLightSaberSpecial());
+		break;
+	case 32:
+		setRating(inv->getSignedIntParameter());
+		break;
+/*	case 33:
+		setCondition(inv->getSignedIntParameter());
+		break;*/
+	case 34:
+		setMaxCondition(inv->getSignedIntParameter());
+		break;
+	case 35:
+		setHealthEncumbrance(inv->getSignedIntParameter());
+		break;
+	case 36:
+		setActionEncumbrance(inv->getSignedIntParameter());
+		break;
+	case 37:
+		setMindEncumbrance(inv->getSignedIntParameter());
+		break;
+	case 38:
+		setKinetic(inv->getFloatParameter());
+		break;
+	case 39:
+		setKineticIsSpecial(inv->getBooleanParameter());
+		break;
+	case 40:
+		setEnergy(inv->getFloatParameter());
+		break;
+	case 41:
+		setEnergyIsSpecial(inv->getBooleanParameter());
+		break;
+	case 42:
+		setElectricity(inv->getFloatParameter());
+		break;
+	case 43:
+		setElectricityIsSpecial(inv->getBooleanParameter());
+		break;
+	case 44:
+		setStun(inv->getFloatParameter());
+		break;
+	case 45:
+		setStunIsSpecial(inv->getBooleanParameter());
+		break;
+	case 46:
+		setBlast(inv->getFloatParameter());
+		break;
+	case 47:
+		setBlastIsSpecial(inv->getBooleanParameter());
+		break;
+	case 48:
+		setHeat(inv->getFloatParameter());
+		break;
+	case 49:
+		setHeatIsSpecial(inv->getBooleanParameter());
+		break;
+	case 50:
+		setCold(inv->getFloatParameter());
+		break;
+	case 51:
+		setColdIsSpecial(inv->getBooleanParameter());
+		break;
+	case 52:
+		setAcid(inv->getFloatParameter());
+		break;
+	case 53:
+		setAcidIsSpecial(inv->getBooleanParameter());
+		break;
+	case 54:
+		setLightSaber(inv->getFloatParameter());
+		break;
+	case 55:
+		setLightSaberIsSpecial(inv->getBooleanParameter());
+		break;
+	case 56:
+		setArmorStats(inv->getSignedIntParameter());
 		break;
 	default:
 		return NULL;
@@ -590,6 +966,106 @@ float ArmorAdapter::getLightSaber() {
 
 bool ArmorAdapter::isLightSaberSpecial() {
 	return ((ArmorImplementation*) impl)->isLightSaberSpecial();
+}
+
+void ArmorAdapter::setRating(int rat) {
+	((ArmorImplementation*) impl)->setRating(rat);
+}
+
+/*void ArmorAdapter::setCondition(int cond) {
+	return ((ArmorImplementation*) impl)->setCondition(cond);
+}*/
+
+void ArmorAdapter::setMaxCondition(int maxCond) {
+	((ArmorImplementation*) impl)->setMaxCondition(maxCond);
+}
+
+void ArmorAdapter::setHealthEncumbrance(int healthEnc) {
+	((ArmorImplementation*) impl)->setHealthEncumbrance(healthEnc);
+}
+
+void ArmorAdapter::setActionEncumbrance(int actionEnc) {
+	((ArmorImplementation*) impl)->setActionEncumbrance(actionEnc);
+}
+
+void ArmorAdapter::setMindEncumbrance(int mindEnc) {
+	((ArmorImplementation*) impl)->setMindEncumbrance(mindEnc);
+}
+
+void ArmorAdapter::setKinetic(float kin) {
+	((ArmorImplementation*) impl)->setKinetic(kin);
+}
+
+void ArmorAdapter::setKineticIsSpecial(bool kinIsSpec) {
+	((ArmorImplementation*) impl)->setKineticIsSpecial(kinIsSpec);
+}
+
+void ArmorAdapter::setEnergy(float ene) {
+	((ArmorImplementation*) impl)->setEnergy(ene);
+}
+
+void ArmorAdapter::setEnergyIsSpecial(bool energyIsSpec) {
+	((ArmorImplementation*) impl)->setEnergyIsSpecial(energyIsSpec);
+}
+
+void ArmorAdapter::setElectricity(float ele) {
+	((ArmorImplementation*) impl)->setElectricity(ele);
+}
+
+void ArmorAdapter::setElectricityIsSpecial(bool electricityIsSpec) {
+	((ArmorImplementation*) impl)->setElectricityIsSpecial(electricityIsSpec);
+}
+
+void ArmorAdapter::setStun(float stu) {
+	((ArmorImplementation*) impl)->setStun(stu);
+}
+
+void ArmorAdapter::setStunIsSpecial(bool stunIsSpec) {
+	((ArmorImplementation*) impl)->setStunIsSpecial(stunIsSpec);
+}
+
+void ArmorAdapter::setBlast(float blst) {
+	((ArmorImplementation*) impl)->setBlast(blst);
+}
+
+void ArmorAdapter::setBlastIsSpecial(bool blastIsSpec) {
+	((ArmorImplementation*) impl)->setBlastIsSpecial(blastIsSpec);
+}
+
+void ArmorAdapter::setHeat(float hot) {
+	((ArmorImplementation*) impl)->setHeat(hot);
+}
+
+void ArmorAdapter::setHeatIsSpecial(bool heatIsSpec) {
+	((ArmorImplementation*) impl)->setHeatIsSpecial(heatIsSpec);
+}
+
+void ArmorAdapter::setCold(float notHot) {
+	((ArmorImplementation*) impl)->setCold(notHot);
+}
+
+void ArmorAdapter::setColdIsSpecial(bool coldIsSpec) {
+	((ArmorImplementation*) impl)->setColdIsSpecial(coldIsSpec);
+}
+
+void ArmorAdapter::setAcid(float aci) {
+	((ArmorImplementation*) impl)->setAcid(aci);
+}
+
+void ArmorAdapter::setAcidIsSpecial(bool acidIsSpec) {
+	((ArmorImplementation*) impl)->setAcidIsSpecial(acidIsSpec);
+}
+
+void ArmorAdapter::setLightSaber(float lightSab) {
+	((ArmorImplementation*) impl)->setLightSaber(lightSab);
+}
+
+void ArmorAdapter::setLightSaberIsSpecial(bool lightSaberIsSpec) {
+	((ArmorImplementation*) impl)->setLightSaberIsSpecial(lightSaberIsSpec);
+}
+
+void ArmorAdapter::setArmorStats(int modifier) {
+	((ArmorImplementation*) impl)->setArmorStats(modifier);
 }
 
 /*

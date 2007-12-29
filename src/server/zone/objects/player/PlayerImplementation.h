@@ -183,7 +183,7 @@ public:
 
 	void createItems();
 	void loadItems();
-	
+
 	void createBaseStats();
 	
 	void sendToOwner();
@@ -245,6 +245,8 @@ public:
 	void removeCenterOfBeing();
 	
 	void doPeace();
+
+	void lootCorpse();
 	
 	void kill();
 

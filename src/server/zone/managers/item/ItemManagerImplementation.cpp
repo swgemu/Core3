@@ -98,17 +98,18 @@ void ItemManagerImplementation::createPlayerObject(Player* player, ResultSet* re
 	
 	unicode objectname(result->getString(2));
 	char* objecttemp = result->getString(5);
-	
+
 	TangibleObjectImplementation* item = NULL;
 
 	bool equipped = result->getBoolean(6);
-	
+	if (result->getBoolean(7)==0)	// if NOT deleted
+	{
 	switch (objecttype) {
 	case TangibleObjectImplementation::ROBE:
 		item = new WearableImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
 		break;
 	case TangibleObjectImplementation::WEAPON:
-		int weapontype = result->getInt(7);
+		int weapontype = result->getInt(8);
 		
 		switch (weapontype) {
 		case WeaponImplementation::UNARMED:
@@ -142,12 +143,74 @@ void ItemManagerImplementation::createPlayerObject(Player* player, ResultSet* re
 			item = new PolearmJediWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
 			break;
 		}
+		
+		WeaponImplementation* weaponitem = (WeaponImplementation*) item;
+		weaponitem->setCategory(result->getInt(9));
+		weaponitem->setMinDamage(result->getFloat(10));
+		weaponitem->setMaxDamage(result->getFloat(11));
+		weaponitem->setAttackSpeed(result->getFloat(12));
+		weaponitem->setHealthAttackCost(result->getInt(13));
+		weaponitem->setActionAttackCost(result->getInt(14));
+		weaponitem->setMindAttackCost(result->getInt(15));
+		weaponitem->setPointBlankAccuracy(result->getInt(16));
+		weaponitem->setPointBlankRange(result->getInt(17));
+		weaponitem->setIdealRange(result->getInt(18));
+		weaponitem->setIdealAccuracy(result->getInt(19));
+		weaponitem->setMaxRange(result->getInt(20));
+		weaponitem->setMaxRangeAccuracy(result->getInt(21));
+		weaponitem->setWoundsRatio(result->getInt(22));
+		weaponitem->setArmorPiercing(result->getInt(23));
+		weaponitem->setDot0Type(result->getInt(47));
+		weaponitem->setDot0Attribute(result->getInt(48));
+		weaponitem->setDot0Strength(result->getInt(49));
+		weaponitem->setDot0Duration(result->getInt(50));
+		weaponitem->setDot0Potency(result->getInt(51));
+		weaponitem->setDot0Uses(result->getInt(52));
+		weaponitem->setDot1Type(result->getInt(53));
+		weaponitem->setDot1Attribute(result->getInt(54));
+		weaponitem->setDot1Strength(result->getInt(55));
+		weaponitem->setDot1Duration(result->getInt(56));
+		weaponitem->setDot1Potency(result->getInt(57));
+		weaponitem->setDot1Uses(result->getInt(58));
+		weaponitem->setDot2Type(result->getInt(59));
+		weaponitem->setDot2Attribute(result->getInt(60));
+		weaponitem->setDot2Strength(result->getInt(61));
+		weaponitem->setDot2Duration(result->getInt(62));
+		weaponitem->setDot2Potency(result->getInt(63));
+		weaponitem->setDot2Uses(result->getInt(64));
+		weaponitem->setSliced(result->getBoolean(65));		
 		break;
 	case TangibleObjectImplementation::CLOTH:
 		item = new WearableImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
 		break;
 	case TangibleObjectImplementation::ARMOR:
 		item = new ArmorImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
+
+		ArmorImplementation* armoritem = (ArmorImplementation*) item;
+		armoritem->setRating(result->getInt(23));
+		//((ArmorImplementation*)item)->setCondition(result->getInt(24));
+		armoritem->setMaxCondition(result->getInt(25));
+		armoritem->setHealthEncumbrance(result->getInt(26));
+		armoritem->setActionEncumbrance(result->getInt(27));
+		armoritem->setMindEncumbrance(result->getInt(28));	 	
+		armoritem->setKinetic(result->getFloat(29));
+		armoritem->setKineticIsSpecial(result->getBoolean(30));
+		armoritem->setEnergy(result->getFloat(31));
+		armoritem->setEnergyIsSpecial(result->getBoolean(32));
+		armoritem->setElectricity(result->getFloat(33));
+		armoritem->setElectricityIsSpecial(result->getBoolean(34));
+		armoritem->setStun(result->getFloat(35));
+		armoritem->setStunIsSpecial(result->getBoolean(36));
+		armoritem->setBlast(result->getFloat(37));
+		armoritem->setBlastIsSpecial(result->getBoolean(38));
+		armoritem->setHeat(result->getFloat(39));
+		armoritem->setHeatIsSpecial(result->getBoolean(40));
+		armoritem->setCold(result->getFloat(41));
+		armoritem->setColdIsSpecial(result->getBoolean(42));
+		armoritem->setAcid(result->getFloat(43));
+		armoritem->setAcidIsSpecial(result->getBoolean(44));
+		armoritem->setLightSaber(result->getFloat(45));
+		armoritem->setLightSaberIsSpecial(result->getBoolean(46));		
 		break;
 	case TangibleObjectImplementation::TICKET:
 		break;
@@ -155,8 +218,11 @@ void ItemManagerImplementation::createPlayerObject(Player* player, ResultSet* re
 		break;
 	case TangibleObjectImplementation::INSTRUMENT:
 		break;
+	default:
+		item = new TangibleObjectImplementation(objectid, objectname, objecttemp, objectcrc, equipped);
+		break;
 	}
-
+	
 	if (item == NULL)
 		return;
 	
@@ -167,7 +233,8 @@ void ItemManagerImplementation::createPlayerObject(Player* player, ResultSet* re
 	player->addInventoryItem(tano);
 	
 	if (equipped && tano->isWeapon())
-		player->setWeapon((Weapon*)tano);
+		player->setWeapon((Weapon*) tano);
+	}
 }
 
 void ItemManagerImplementation::loadDefaultPlayerItems(Player* player) {
@@ -334,11 +401,13 @@ void ItemManagerImplementation::unloadPlayerItems(Player* player) {
 
 	for (int i = 0; i < inventory->objectsSize(); ++i) {
 		TangibleObject* item = (TangibleObject*) inventory->getObject(i);
-
+		
 		if (!item->isPersistent()) {
 			if (item->isWeapon())
 				createPlayerWeapon(player, (Weapon*) item);
-			else
+			else if (item->isArmor())
+				createPlayerArmor(player, (Armor*) item);
+			else 
 				createPlayerItem(player, item);
 		} else if (item->isUpdated()) {
 			savePlayerItem(player, item);
@@ -364,29 +433,223 @@ void ItemManagerImplementation::createPlayerItem(Player* player, TangibleObject*
 	}
 }
 
-void ItemManagerImplementation::createPlayerWeapon(Player* player, Weapon* item) {
+void ItemManagerImplementation::savePlayerItem(Player* player, TangibleObject* item) {
 	try {
 		stringstream query;
-		query << "INSERT INTO `character_items` "
-			  << "(`item_id`,`character_id`,`name`,`template_crc`,`template_type`,`template_name`,`equipped`,`weapon_type`)"
-			  << " VALUES(" << item->getObjectID() << "," << player->getCharacterID() 
-			  << ",'" << item->getName().c_str() << "'," 
-			  << item->getObjectCRC() << "," << item->getObjectSubType() << ",'" << item->getTemplateName() << "',"
-			  << item->isEquipped() << "," << item->getType() << ")";
+		query << "update `character_items` set equipped = " << item->isEquipped() << " ";
 
+		if (item->isWeapon()) {
+			query << ", min_damage = " << ((Weapon*) item)->getMinDamage();
+			query << ", max_damage = " << ((Weapon*) item)->getMaxDamage();
+			
+			query << ", attack_speed = " << ((Weapon*) item)->getAttackSpeed();
+			
+			query << ", sliced = " << ((Weapon*) item)->isSliced();
+				
+			query << ", dot0_uses = " << ((Weapon*) item)->getDot0Uses();
+			query << ", dot1_uses = " << ((Weapon*) item)->getDot1Uses();
+			query << ", dot2_uses = " << ((Weapon*) item)->getDot2Uses() << " ";
+		}
+
+		query << "where item_id = " << item->getObjectID();
+		
 		ServerDatabase::instance()->executeStatement(query);
 	} catch (DatabaseException& e) {
 		cout << e.getMessage() << "\n";
 	}
 }
 
-void ItemManagerImplementation::savePlayerItem(Player* player, TangibleObject* item) {
+void ItemManagerImplementation::createPlayerWeapon(Player* player, Weapon* item) {
+	try { 
+		stringstream query;
+		query << "INSERT INTO `character_items` "
+			  << "(`item_id`,`character_id`,`name`,`template_crc`,`template_type`,`template_name`,`equipped`,`weapon_type`,`category`,`min_damage`,`max_damage`,`attack_speed`,`health_attack_cost`,`action_attack_cost`,`mind_attack_cost`,`point_blank_accuracy`,`point_blank_range`,`ideal_range`,`ideal_accuracy`,`max_range`,`max_range_accuracy`,`wounds_ratio`,`armor_piercing`,`dot0_type`,`dot0_attribute`,`dot0_strength`,`dot0_duration`,`dot0_potency`,`dot0_uses`,`dot1_type`,`dot1_attribute`,`dot1_strength`,`dot1_duration`,`dot1_potency`,`dot1_uses`,`dot2_type`,`dot2_attribute`,`dot2_strength`,`dot2_duration`,`dot2_potency`,`dot2_uses`,`sliced`)"
+			  << " VALUES(" << item->getObjectID() << "," << player->getCharacterID() 
+			  << ",'\\" << item->getName().c_str() << "'," 
+			  << item->getObjectCRC() << "," << item->getObjectSubType() << ",'" << item->getTemplateName() << "',"  
+			  << item->isEquipped() << "," << item->getType() << "," << item->getCategory() << "," << item->getMinDamage() << "," 
+			  << item->getMaxDamage() << "," << item->getAttackSpeed() << "," << item->getHealthAttackCost() << "," 
+			  << item->getActionAttackCost() << "," << item->getMindAttackCost() << "," << item->getPointBlankAccuracy() <<  ","  
+			  << item->getPointBlankRange() << "," << item->getIdealRange() << "," << item->getIdealAccuracy() << "," 
+			  << item->getMaxRange() << "," << item->getMaxRangeAccuracy() << "," << item->getWoundsRatio() << "," 
+			  << item->getArmorPiercing() << "," << item->getDot0Type() << "," << item->getDot0Attribute() << "," 
+			  << item->getDot0Strength() << "," << item->getDot0Duration() << "," << item->getDot0Potency() << "," 
+			  << item->getDot0Uses() << "," << item->getDot1Type() << "," << item->getDot1Attribute() << "," 
+			  << item->getDot1Strength() << "," << item->getDot1Duration() << "," << item->getDot1Potency() << "," 
+			  << item->getDot1Uses() << "," << item->getDot2Type() << "," << item->getDot2Attribute() << "," 
+			  << item->getDot2Strength() << "," << item->getDot2Duration() << "," << item->getDot2Potency() << "," 
+			  << item->getDot2Uses() << "," << item->isSliced() << ")";
+		
+		ServerDatabase::instance()->executeStatement(query);
+		
+		item->setPersistent(true);
+	} catch (DatabaseException& e) {
+		cout << e.getMessage() << "\n";
+	}
+}
+
+void ItemManagerImplementation::createPlayerArmor(Player* player, Armor* item) {
 	try {
 		stringstream query;
-		query << "update `character_items` set equipped = " << item->isEquipped()
-			  << " where item_id = " << item->getObjectID();
+		query << "INSERT INTO `character_items` "
+			  << "(`item_id`,`character_id`,`name`,`template_crc`,`template_type`,`template_name`,`equipped`,`category`,`armor_piercing`,`max_condition`,`health_encumb`,`action_encumb`,`mind_encumb`,`kinetic`,`kinetic_special`,`energy`,`energy_special`,`electricity`,`electricity_special`,`stun`,`stun_special`,`blast`,`blast_special`,`heat`,`heat_special`,`cold`,`cold_special`,`acid`,`acid_special`,`lightsaber`,`lightsaber_special`)"
+			  << " VALUES(" << item->getObjectID() << "," << player->getCharacterID() 
+			  << ",'\\" << item->getName().c_str() << "'," 
+			  << item->getObjectCRC() << "," << item->getObjectSubType() << ",'" << item->getTemplateName() << "',"  
+			  << item->isEquipped() << "," << item->getRating() << "," << 0 << "," 
+			  << item->getMaxCondition() << "," << item->getHealthEncumbrance() << "," << item->getActionEncumbrance() << "," 
+			  << item->getMindEncumbrance() << "," << item->getKinetic() << "," << item->isKineticSpecial() <<  ","  
+			  << item->getEnergy() << "," << item->isEnergySpecial() << "," << item->getElectricity() << "," 
+			  << item->isElectricitySpecial() << "," << item->getStun() << "," << item->isStunSpecial() << "," 
+			  << item->getBlast() << "," << item->isBlastSpecial() << "," << item->getHeat() << "," << item->isHeatSpecial() << "," 
+			  << item->getCold() << "," << item->isColdSpecial() << "," << item->getAcid() << "," << item->isAcidSpecial() << "," 
+			  << item->getLightSaber() << "," << item->isLightSaberSpecial() << ")";
+		
+		ServerDatabase::instance()->executeStatement(query);
+		
+		item->setPersistent(true);
+	} catch (DatabaseException& e) {
+		cout << e.getMessage() << "\n";
+	}
+}
+
+void ItemManagerImplementation::deletePlayerItem(Player* player, TangibleObject* item) {
+	try {	
+		stringstream query;
+		query << "update `character_items` set deleted = " << 1 << " where item_id = " << item->getObjectID();
 	
 		ServerDatabase::instance()->executeStatement(query);
+
+		player->sendSystemMessage("Item deleted.");
+	} catch (DatabaseException& e) {
+		cout << e.getMessage() << "\n";
+	}
+}
+
+void ItemManagerImplementation::showDbStats(Player* player) {
+	stringstream txt;
+	txt << "Database Statistics\n";
+	
+	try {
+		stringstream query;
+		query << "select * from `character_items`";
+		
+		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
+		
+		txt << res->size() << " total items in the database\n";
+		
+		delete res;
+	} catch (DatabaseException& e) {
+		cout << e.getMessage() << "\n";
+	}
+	
+	try {
+		stringstream query;
+		query << "select * from `character_items` where `character_id` = " << player->getCharacterID() << " and `deleted` = 1";
+		
+		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
+		
+		txt << res->size() << " deleted items in the database.\n";
+		
+		delete res;
+	} catch (DatabaseException& e) {
+		cout << e.getMessage() << "\n";
+	}
+	
+	try {
+		stringstream query;
+		query << "select * from `character_items` where `character_id` = " << player->getCharacterID() << " and `template_type` = 2";
+		
+		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
+		
+		txt << res->size() << " Weapon Items, ";
+		
+		delete res;
+	} catch (DatabaseException& e) {
+		cout << e.getMessage() << "\n";
+	}
+	
+	try {
+		stringstream query;
+		query << "select * from `character_items` where `character_id` = " << player->getCharacterID() << " and `template_type` = 3";
+		
+		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
+		
+		txt << res->size() << " Clothing Items, ";
+		
+		delete res;
+	} catch (DatabaseException& e) {
+		cout << e.getMessage() << "\n";
+	}
+	
+	try {
+		stringstream query;
+		query << "select * from `character_items` where `character_id` = " << player->getCharacterID() << " and `template_type` = 4";
+		
+		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
+		
+		txt << res->size() << " Armor Items.\n";
+		
+		delete res;
+	} catch (DatabaseException& e) {
+		cout << e.getMessage() << "\n";
+	}
+	
+	try {
+		stringstream query;
+		query << "SELECT * FROM `character_items` WHERE `deleted` = 0 ORDER BY `max_damage` DESC LIMIT 10";
+		
+		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
+		
+		txt << "Top 10 Weapons by Max Damage\n";
+		
+		while (res->next()) {
+			if (res->getInt(4) == 2)
+				txt << "ObjID: " << res->getUnsignedLong(0) << " Name: " << res->getString(2) << "\\#ffffff MinDmg: " << res->getFloat(10) << " MaxDmg: " << res->getFloat(11) << " Spd: " << res->getFloat(12) << "\n";
+		}
+		
+		delete res;
+		
+		player->sendSystemMessage(txt.str());
+	} catch (DatabaseException& e) {
+		cout << e.getMessage() << "\n";
+	}
+	
+	player->sendSystemMessage(txt.str());
+}
+
+void ItemManagerImplementation::showDbDeleted(Player* player) {
+	try {
+		stringstream query;
+		query << "select * from `character_items` where `character_id` = " << player->getCharacterID() << " and `deleted` = 1";
+		
+		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
+		
+		stringstream txt;
+		
+		while (res->next()) {
+			if (res->getInt(4) == 2)
+				txt << "ObjID: " << res->getUnsignedLong(0) << " Name: " << res->getString(2) << "\\#ffffff MinDmg: " << res->getFloat(10) << " MaxDmg: " << res->getFloat(11) << " Spd: " << res->getFloat(12) << "\n";
+			else if (res->getInt(4) == 4)
+				txt << "ObjID: " << res->getUnsignedLong(0) << " Name: " << res->getString(2) << "\\#ffffff Resists: " << res->getFloat(29) << " " << res->getFloat(31) << " " << res->getFloat(33) << " " << res->getFloat(35) << " " << res->getFloat(37) << " " <<  res->getFloat(39) << " " << res->getFloat(41) << " " << res->getFloat(43) << " " << res->getFloat(45) << "\n";
+			else
+				txt << "ObjID: " << res->getUnsignedLong(0) << " Name: " << res->getString(2) << "\\#ffffff \n";
+		}
+		
+		player->sendSystemMessage(txt.str());
+	} catch (DatabaseException& e) {
+		cout << e.getMessage() << "\n";
+	}						
+}
+
+void ItemManagerImplementation::purgeDbDeleted(Player* player) {
+	try {
+		stringstream query;
+		query << "DELETE FROM `character_items` WHERE `deleted` = 1";
+		
+		ServerDatabase::instance()->executeStatement(query);
+
+		player->sendSystemMessage("Deleted items purged.");
 	} catch (DatabaseException& e) {
 		cout << e.getMessage() << "\n";
 	}

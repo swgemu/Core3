@@ -55,7 +55,10 @@ which carries forward this exception.
 
 class ZoneServer;
 
-class TangibleObjectImplementation;
+class TangibleObject;
+
+class Weapon;
+class Armor;
 
 class ItemManagerImplementation : public ItemManagerServant {
 	ZoneServer* server;
@@ -78,9 +81,18 @@ public:
 	void unloadPlayerItems(Player* player);
 
 	void createPlayerItem(Player* player, TangibleObject* item);
-	void createPlayerWeapon(Player* player, Weapon* item);
 
+	void createPlayerWeapon(Player* player, Weapon* item);
+	void createPlayerArmor(Player* player, Armor* item);
+
+	void deletePlayerItem(Player* player, TangibleObject* item);
+	
 	void savePlayerItem(Player* player, TangibleObject* item);
+
+	void showDbStats(Player* player);
+	void showDbDeleted(Player* player);
+	
+	void purgeDbDeleted(Player* player);
 
 	// setters and getters
 	inline uint64 getNextStaticObjectID() {
