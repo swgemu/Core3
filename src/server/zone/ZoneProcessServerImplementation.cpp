@@ -79,6 +79,7 @@ which carries forward this exception.
 #include "managers/guild/GuildManagerImplementation.h"
 #include "managers/group/GroupManager.h"
 #include "managers/skills/SkillManager.h"
+#include "managers/loot/LootManager.h"
 
 ZoneProcessServerImplementation::ZoneProcessServerImplementation(ZoneServer* serv, int processingThreads) 
 		: ServiceMessageHandlerThread("ZoneProcessorServer") {
@@ -93,6 +94,7 @@ ZoneProcessServerImplementation::ZoneProcessServerImplementation(ZoneServer* ser
 	skillManager = professionManager->getSkillManager();
 	radialManager = new RadialManager();
 	groupManager = new GroupManager();
+	lootManager = new LootManager(this);
 
 	scheduler->setLogging(false);
 }

@@ -72,24 +72,18 @@ public:
 	}
 	
 	int useObject(Player* player) {
-		// Pre: player unlocked
-		player->wlock();
-		
+		// Pre: player wlocked
+		// Post: player wlocked
 		if (player->isMounted()) {
 			player->sendSystemMessage("You cant travel while mounted.");
-			player->unlock();
 			return 0;
 		}
 		
-		if (player->isInCombat()) {
-			player->unlock();
+		if (player->isInCombat())
 			return 0;
-		}
 		
-		if (!checkTime(shuttle, player)) {
-			player->unlock();
-			return 0;	
-		}
+		if (!checkTime(shuttle, player))
+			return 0;
 			
 		string city = shuttle->getCity();
 		string planet = shuttle->getPlanet();
@@ -113,14 +107,10 @@ public:
 					shuttle->sendPlayerTo(player, ticket);
 														
 					//delete ticket;
-					
-					player->unlock();
 					return 1;
 				}
 			}
 		}
-		
-		player->unlock();
 		
 		player->sendSystemMessage("You do not have a ticket to board this shuttle.");
 		return 0;

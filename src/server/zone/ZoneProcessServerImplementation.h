@@ -67,6 +67,7 @@ class ProfessionManager;
 class SkillManager;
 class RadialManager;
 class GroupManager;
+class LootManager;
 
 class ZoneProcessServerImplementation : public ServiceMessageHandlerThread {
 	ZoneServer* server;
@@ -82,6 +83,7 @@ class ZoneProcessServerImplementation : public ServiceMessageHandlerThread {
 	SkillManager* skillManager;
 	RadialManager* radialManager;
 	GroupManager* groupManager;
+	LootManager* lootManager;
 	
 public:
 	ZoneProcessServerImplementation(ZoneServer* serv, int processingThreads);
@@ -140,6 +142,10 @@ public:
 	
 	inline GroupManager* getGroupManager() {
 		return groupManager;
+	}
+	
+	inline LootManager* getLootManager() {
+		return lootManager;
 	}
 	
 };

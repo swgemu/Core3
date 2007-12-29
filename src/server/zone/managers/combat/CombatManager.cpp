@@ -58,6 +58,8 @@ which carries forward this exception.
 
 #include "CommandQueueAction.h"
 
+#include "../loot/LootManager.h"
+
 CombatManager::CombatManager(ZoneProcessServerImplementation* srv) {
 	server = srv;
 }
@@ -265,8 +267,10 @@ bool CombatManager::doAction(CreatureObject* attacker, CreatureObject* targetCre
 			if (!skill->isArea())
 				attacker->clearCombatState(true);
 		} else if (targetCreature->isDead()) {
-			if (targetCreature->isNonPlayerCreature())
-				((Creature*) targetCreature)->createLoot();
+			if (targetCreature->isNonPlayerCreature()) {
+				LootManager* lootManager = server->getLootManager();
+				lootManager->createLoot((Creature*) targetCreature);
+			}
 				
 			attacker->sendSystemMessage("base_player", "prose_target_dead", targetCreature->getObjectID());
 

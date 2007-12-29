@@ -73,6 +73,8 @@ interface Creature implements CreatureObject {
 	boolean activate();
 	
 	boolean isActive();
+	
+	void removeFromQueue();
 
 	boolean doMovement();
 
@@ -87,11 +89,6 @@ interface Creature implements CreatureObject {
 	void activateRecovery();
 	boolean doRecovery();
 	void doStatesRecovery();
-
-	// loot methods
-	void createLoot();
-	
-	void lootCorpse(Player player);
 
 	// waypoint methods
 	

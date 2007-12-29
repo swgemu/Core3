@@ -115,6 +115,7 @@ core3_IDLS =	server/zone/Zone.cpp \
 		server/zone/managers/user/UserManager.cpp \
 		server/zone/managers/planet/PlanetManager.cpp \
 		server/zone/managers/resource/ResourceManager.cpp \
+		server/zone/managers/loot/LootManager.cpp \
 		server/chat/room/ChatRoom.cpp \
 		server/chat/ChatManager.cpp
 

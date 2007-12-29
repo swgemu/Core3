@@ -109,54 +109,86 @@ void RadialManager::handleRadialRequest(Player* player, Packet* pack) {
 	sendDefaultRadialResponse(player, omr);
 }
 
-void RadialManager::handleSelection(int radialID, Player* player, SceneObject* obj) {
+void RadialManager::handleRadialSelect(Player* player, Packet* pack) {
+    SceneObject* obj = NULL;
+    
 	try {
-		obj->wlock();
+		player->wlock();
+
+		uint64 objectID = pack->parseLong();
+		uint8 radialID = pack->parseByte();
 		
-		switch (radialID) {
-		case 7: // EXAMINE
-			break;
-		case 14: // DESTROY
-			break;
-		case 20: // ITEM_USE
-			obj->useObject(player);
-			break;
-		case 35:  // LOOT
-			player->lootCorpse();
-			break;
-		case 36:  // LOOT_ALL
-			player->wlock(obj);
-			
-			player->lootCorpse();
-			
+		Zone* zone = player->getZone();
+		if (zone == NULL) {
 			player->unlock();
-			break;
-		case 60: // VEHICLE_GENERATE
-			handleVehicleGenerate(player, obj);
-			break;
-		case 61: // VEHICLE_STORE
-			handleVehicleStore(player, obj);
-			break;
-		case 187: // SERVER_GUILD_INFO
-			break;
-		case 188: // SERVER_GUILD_MEMBERS
-			break;
-		case 190: // SERVER_GUILD_ENEMIES
-			break;
-		case 194: // SERVER_GUILD_GUILD_MANAGEMENT
-			break;
-		case 195: // SERVER_GUILD_MEMBER_MANAGEMENT
-			break;
-		default:
-			//cout << "Unkown radial selection recieved:" << radialID << "\n";
-			break;
+			return;
 		}
+
+		obj = zone->lookupObject(objectID);
+
+		if (obj == NULL) {
+			obj = player->getInventoryItem(objectID);
+
+			if (obj == NULL)
+				obj = player->getDatapadItem(objectID);
+
+			if (obj == NULL) {
+				player->unlock();
+				return;
+			}    			
+		}
+
+		handleSelection(radialID, player, obj);
 		
-		obj->unlock();
 	} catch (...) {
-		cout << "Unreported exception in RadialManager::handleSelection\n";
-		obj->unlock();
+		cout << "unreported exception on ZonePacketHandler:::handleUseItem(Message* pack)\n";
+		player->unlock();
 	}
+}
+
+void RadialManager::handleSelection(int radialID, Player* player, SceneObject* obj) {
+	// Pre: player is wlocked, obj is unlocked
+	// Post: player and obj unlocked
+	switch (radialID) {
+	case 7: // EXAMINE
+		break;
+	case 14: // DESTROY
+		break;
+	case 20: // ITEM_USE
+		obj->useObject(player);
+		break;
+	case 35:  // LOOT 
+		player->lootCorpse(); 
+		break; 
+	case 36:  // LOOT_ALL 
+		player->lootCorpse(); 
+		break; 
+	case 60: // VEHICLE_GENERATE
+		player->unlock();
+		
+		handleVehicleGenerate(obj);
+		return;
+	case 61: // VEHICLE_STORE
+		player->unlock();
+		
+		handleVehicleStore(obj);
+		return;
+	case 187: // SERVER_GUILD_INFO
+		break;
+	case 188: // SERVER_GUILD_MEMBERS
+		break;
+	case 190: // SERVER_GUILD_ENEMIES
+		break;
+	case 194: // SERVER_GUILD_GUILD_MANAGEMENT
+		break;
+	case 195: // SERVER_GUILD_MEMBER_MANAGEMENT
+		break;
+	default:
+		//cout << "Unkown radial selection recieved:" << radialID << "\n";
+		break;
+	}
+	
+	player->unlock();
 }
 
 ObjectMenuResponse* RadialManager::parseDefaults(Player* player, uint64 objectid, Packet* pack) {
@@ -221,64 +253,27 @@ void RadialManager::sendRadialResponseForGuildTerminals(Player* player, GuildTer
 	player->sendMessage(omr);
 }
 
-void RadialManager::handleRadialSelect(Player* player, Packet* pack) {
-    SceneObject* obj = NULL;
-    
-	try {
-		player->wlock();
-
-		uint64 objectID = pack->parseLong();
-		uint8 radialID = pack->parseByte();
-		
-		Zone* zone = player->getZone();
-		if (zone == NULL) {
-			player->unlock();
-			return;
-		}
-
-		obj = zone->lookupObject(objectID);
-
-		if (obj == NULL) {
-			obj = player->getInventoryItem(objectID);
-
-			if (obj == NULL)
-				obj = player->getDatapadItem(objectID);
-
-			if (obj == NULL) {
-				player->unlock();
-				return;
-			}    			
-		}
-
-		player->unlock();
-		
-		handleSelection(radialID, player, obj);
-		
-	} catch (...) {
-		cout << "unreported exception on ZonePacketHandler:::handleUseItem(Message* pack)\n";
-		player->unlock();
-	}
-}
-
-void RadialManager::handleVehicleStore(Player* player, SceneObject* obj) {
+void RadialManager::handleVehicleStore(SceneObject* obj) {
 	if (obj->isIntangible()) {
 		SceneObject* mount = ((IntangibleObject*)obj)->getWorldObject();
 		if (mount == NULL)
 			return;
+		
 		if (!mount->isNonPlayerCreature())
 			return;
+		
 		if (!((Creature*)mount)->isMount())
 			return;
 		
-		obj->unlock();
+		try {
+			mount->wlock();
 		
-		mount->wlock();
+			((MountCreature*)mount)->store();
 		
-		((MountCreature*)mount)->store();
-		
-		mount->unlock();
-		
-		obj->wlock();
+			mount->unlock();
+		} catch (...) {
+			mount->unlock();
+		}
 		return;
 	}
 	
@@ -288,30 +283,32 @@ void RadialManager::handleVehicleStore(Player* player, SceneObject* obj) {
 	if (!((Creature*)obj)->isMount())
 		return;
 	
-	((MountCreature*)obj)->store();
+	try {
+		obj->wlock();
+
+		((MountCreature*)obj)->store();
+
+		obj->unlock();
+	} catch (...) {
+		cout << "Unreported exception caught in RadialManager::handleVehicleStore(Player* player, SceneObject* obj)\n";
+		obj->unlock();
+	}
 }
 
-void RadialManager::handleVehicleGenerate(Player* player, SceneObject* obj) {
+void RadialManager::handleVehicleGenerate(SceneObject* obj) {
 	if (!obj->isIntangible())
 		return;
 
 	SceneObject* mount = ((IntangibleObject*)obj)->getWorldObject();
-	obj->unlock();
 
-	if (mount == NULL) {
-		obj->wlock();
+	if (mount == NULL)
 		return;
-	}
 
-	if (!mount->isNonPlayerCreature()) {
-		obj->wlock();
+	if (!mount->isNonPlayerCreature())
 		return;
-	}
 	
-	if (!((Creature*)mount)->isMount()) {
-		obj->wlock();
+	if (!((Creature*)mount)->isMount())
 		return;
-	}
 
 	try {
 		mount->wlock();
@@ -323,6 +320,4 @@ void RadialManager::handleVehicleGenerate(Player* player, SceneObject* obj) {
 		cout << "Unreported exception caught in RadialManager::handleVehicleGenerate\n";
 		mount->unlock();
 	}
-
-	obj->wlock();
 }

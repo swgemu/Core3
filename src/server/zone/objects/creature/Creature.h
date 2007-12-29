@@ -91,6 +91,8 @@ public:
 
 	bool isActive();
 
+	void removeFromQueue();
+
 	bool doMovement();
 
 	void doIncapacitate();
@@ -106,10 +108,6 @@ public:
 	bool doRecovery();
 
 	void doStatesRecovery();
-
-	void createLoot();
-
-	void lootCorpse(Player* player);
 
 	void addPatrolPoint(float x, float y, bool doLock = true);
 
@@ -178,6 +176,8 @@ public:
 
 	bool isActive();
 
+	void removeFromQueue();
+
 	bool doMovement();
 
 	void doIncapacitate();
@@ -193,10 +193,6 @@ public:
 	bool doRecovery();
 
 	void doStatesRecovery();
-
-	void createLoot();
-
-	void lootCorpse(Player* player);
 
 	void addPatrolPoint(float x, float y, bool doLock);
 

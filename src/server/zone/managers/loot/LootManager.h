@@ -42,38 +42,24 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef RADIALMANAGER_H_
-#define RADIALMANAGER_H_
+#ifndef LOOTMANAGER_H_
+#define LOOTMANAGER_H_
 
-#include "engine/engine.h"
-
-class RadialItem;
-class MountCreature;
-class ObjectMenuResponse;
 class Player;
-class SceneObject;
-class GuildTerminal;
+class Creature;
+class ZoneProcessServerImplementation;
 
-class RadialManager {
+class LootManager {
+	ZoneProcessServerImplementation* processServer;
 	
 public:
-	RadialManager();
+	LootManager(ZoneProcessServerImplementation* procServer);
 	
-	void handleRadialRequest(Player* player, Packet* pack);
-	void handleRadialSelect(Player* player, Packet* pack);
-	
-	void sendDefaultRadialResponse(Player* player, ObjectMenuResponse* omr);
-	void sendRadialResponseForMounts(Player* player, MountCreature* mount, ObjectMenuResponse* omr);
-	void sendRadialResponseForGuildTerminals(Player* player, GuildTerminal* guildTerm, ObjectMenuResponse* omr);
-	
-	void handleSelection(int radialID, Player* player, SceneObject* obj);
-	
-	void handleVehicleStore(SceneObject* obj);
-	void handleVehicleGenerate(SceneObject* obj);
-	
-private:
-	ObjectMenuResponse* parseDefaults(Player* player, uint64 objectid, Packet* pack);
-
+	void lootCorpse(Player* player, Creature* creature);
+	void createLoot(Creature* creature);
+	void createWeaponLoot(Creature* creature, int creatureLevel);
+	void createArmorLoot(Creature* creature, int creatureLevel);
+	void createJunkLoot(Creature* creature);
 };
 
-#endif /*RADIALMANAGER_H_*/
+#endif /*LOOTMANAGER_H_*/

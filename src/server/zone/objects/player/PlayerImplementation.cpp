@@ -60,6 +60,8 @@ which carries forward this exception.
 
 #include "../../managers/planet/PlanetManager.h"
 
+#include "../../managers/loot/LootManager.h"
+
 #include "../../../chat/ChatManager.h"
 #include "../../../ServerCore.h"
 
@@ -1388,8 +1390,10 @@ void PlayerImplementation::lootCorpse() {
 		return;
 	
 	Creature* target = (Creature*) targetObject;
+	
 	if (target != NULL && !isIncapacitated() && !isDead() && isInRange(target, 20)) {
-		target->lootCorpse(_this);
+		LootManager* lootManager = server->getLootManager();
+		lootManager->lootCorpse(_this, target);
 	}
 }
 

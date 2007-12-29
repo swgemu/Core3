@@ -130,6 +130,11 @@ public:
 	inline bool isActive() {
 		return isQueued();
 	}
+	
+	void removeFromQueue() {
+		if (isQueued())
+			server->removeEvent(this);
+	}
 
 	bool checkState();
 	void resetState();
@@ -149,16 +154,6 @@ public:
 	void activateRecovery();
 	bool doRecovery();
 	void doStatesRecovery();
-
-	// loot methods
-	void createLoot();
-	
-	void createWeaponLoot(int creatureLevel);
-	void createArmorLoot(int creatureLevel);
-	
-	void createJunkLoot();
-	
-	void lootCorpse(Player* player);
 
 	// waypoint methods
 	void setPatrolPoint(Coordinate* cord, bool doLock = true );	

@@ -116,7 +116,7 @@ am__objects_1 = Zone.$(OBJEXT) ZoneClient.$(OBJEXT) \
 	PlayerManager.$(OBJEXT) CreatureManager.$(OBJEXT) \
 	ItemManager.$(OBJEXT) UserManager.$(OBJEXT) \
 	PlanetManager.$(OBJEXT) ResourceManager.$(OBJEXT) \
-	ChatRoom.$(OBJEXT) ChatManager.$(OBJEXT)
+	LootManager.$(OBJEXT) ChatRoom.$(OBJEXT) ChatManager.$(OBJEXT)
 am_core3_OBJECTS = $(am__objects_1) ServerCore.$(OBJEXT) \
 	ConfigManager.$(OBJEXT) ServerDatabase.$(OBJEXT) \
 	LoginServer.$(OBJEXT) LoginPacketHandler.$(OBJEXT) \
@@ -340,6 +340,7 @@ core3_IDLS = server/zone/Zone.cpp \
 		server/zone/managers/user/UserManager.cpp \
 		server/zone/managers/planet/PlanetManager.cpp \
 		server/zone/managers/resource/ResourceManager.cpp \
+		server/zone/managers/loot/LootManager.cpp \
 		server/chat/room/ChatRoom.cpp \
 		server/chat/ChatManager.cpp
 
@@ -505,6 +506,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/LoginMessageProcessorThread.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/LoginPacketHandler.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/LoginServer.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/LootManager.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ManufactureSchematic.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/MeleeWeapon.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/MissionBag.Po@am__quote@
@@ -1438,6 +1440,20 @@ ResourceManager.obj: server/zone/managers/resource/ResourceManager.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/managers/resource/ResourceManager.cpp' object='ResourceManager.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ResourceManager.obj `if test -f 'server/zone/managers/resource/ResourceManager.cpp'; then $(CYGPATH_W) 'server/zone/managers/resource/ResourceManager.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/resource/ResourceManager.cpp'; fi`
+
+LootManager.o: server/zone/managers/loot/LootManager.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT LootManager.o -MD -MP -MF $(DEPDIR)/LootManager.Tpo -c -o LootManager.o `test -f 'server/zone/managers/loot/LootManager.cpp' || echo '$(srcdir)/'`server/zone/managers/loot/LootManager.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/LootManager.Tpo $(DEPDIR)/LootManager.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/managers/loot/LootManager.cpp' object='LootManager.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o LootManager.o `test -f 'server/zone/managers/loot/LootManager.cpp' || echo '$(srcdir)/'`server/zone/managers/loot/LootManager.cpp
+
+LootManager.obj: server/zone/managers/loot/LootManager.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT LootManager.obj -MD -MP -MF $(DEPDIR)/LootManager.Tpo -c -o LootManager.obj `if test -f 'server/zone/managers/loot/LootManager.cpp'; then $(CYGPATH_W) 'server/zone/managers/loot/LootManager.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/loot/LootManager.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/LootManager.Tpo $(DEPDIR)/LootManager.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/managers/loot/LootManager.cpp' object='LootManager.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o LootManager.obj `if test -f 'server/zone/managers/loot/LootManager.cpp'; then $(CYGPATH_W) 'server/zone/managers/loot/LootManager.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/loot/LootManager.cpp'; fi`
 
 ChatRoom.o: server/chat/room/ChatRoom.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ChatRoom.o -MD -MP -MF $(DEPDIR)/ChatRoom.Tpo -c -o ChatRoom.o `test -f 'server/chat/room/ChatRoom.cpp' || echo '$(srcdir)/'`server/chat/room/ChatRoom.cpp
