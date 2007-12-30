@@ -137,6 +137,14 @@ public:
 	inline void setCustomizationString(string& cust) {
 		customizationString = cust;
 	}
+	
+	inline void setMaxCondition(int condition) {
+		maxCondition = condition;
+	}
+
+	inline void setConditionDamage(int damage) {
+		conditionDamage = damage;
+	}
 
 	inline bool isPersistent() {
 		return persistent;

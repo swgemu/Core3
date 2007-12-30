@@ -159,7 +159,10 @@ void WeaponImplementation::generateAttributes(SceneObject* obj) {
 	
 	alm->insertAttribute("weapon_cert_status", "Yes");
 	
-	alm->insertAttribute("condition", "1000/1000");
+	stringstream cond;
+	cond << (maxCondition-conditionDamage) << "/" << maxCondition;
+	
+	alm->insertAttribute("condition", cond);
 	
 	alm->insertAttribute("volume", "1");
 	

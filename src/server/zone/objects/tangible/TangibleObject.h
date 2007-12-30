@@ -98,6 +98,10 @@ public:
 	void setPersistent(bool pers);
 
 	void setUpdated(bool upd);
+	
+	void setMaxCondition(int condition);
+
+	void setConditionDamage(int damage);
 
 	SceneObject* getContainer();
 
@@ -167,6 +171,10 @@ public:
 	void setPersistent(bool pers);
 
 	void setUpdated(bool upd);
+	
+	void setMaxCondition(int condition);
+
+	void setConditionDamage(int damage);
 
 	SceneObject* getContainer();
 

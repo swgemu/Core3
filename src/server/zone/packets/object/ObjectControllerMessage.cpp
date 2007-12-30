@@ -926,17 +926,27 @@ void ObjectControllerMessage::parseSetWaypointName(Player* player, Message* pack
 
 void ObjectControllerMessage::parseServerDestoryObject(Player* player, Message* pack) {
 	//NOTE: this is probably used for more than deleteing waypoints.
-	uint64 wpId = pack->parseLong(); //get the id
-	
+	uint64 objid = pack->parseLong(); //get the id
+
+	ItemManager* itemManager = player->getZone()->getZoneServer()->getItemManager();
+
 	unicode unkPramString;
 	pack->parseUnicode(unkPramString); //?
 	
-	WaypointObject* wp = player->getWaypoint(wpId);
+	WaypointObject* waypoint = player->getWaypoint(objid);
 	
-	if (wp == NULL)
-		return;
-	
-	player->removeWaypoint(wp);
+	TangibleObject* item = (TangibleObject*) player->getInventoryItem(objid);
+	if (item != NULL) {
+		item->setEquipped(0);
+		
+		itemManager->deletePlayerItem(player, item);
+		
+		player->removeInventoryItem(objid);
+		
+		Message* msg = new SceneObjectDestroyMessage(item);
+		player->getClient()->sendMessage(msg);
+	} else if (waypoint != NULL)
+		player->removeWaypoint(waypoint);
 }
 
 void ObjectControllerMessage::parseSetWaypointActiveStatus(Player* player, Message* pack) {

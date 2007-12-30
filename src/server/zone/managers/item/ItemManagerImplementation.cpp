@@ -160,6 +160,8 @@ void ItemManagerImplementation::createPlayerObject(Player* player, ResultSet* re
 		weaponitem->setMaxRangeAccuracy(result->getInt(21));
 		weaponitem->setWoundsRatio(result->getInt(22));
 		weaponitem->setArmorPiercing(result->getInt(23));
+		item->setConditionDamage(result->getInt(24));
+		item->setMaxCondition(result->getInt(25));
 		weaponitem->setDot0Type(result->getInt(47));
 		weaponitem->setDot0Attribute(result->getInt(48));
 		weaponitem->setDot0Strength(result->getInt(49));
@@ -439,6 +441,9 @@ void ItemManagerImplementation::savePlayerItem(Player* player, TangibleObject* i
 		query << "update `character_items` set equipped = " << item->isEquipped() << " ";
 
 		if (item->isWeapon()) {
+			query << ", condition_damage = " << item->getConditionDamage();
+			query << ", max_condition = " << item->getMaxCondition();
+			
 			query << ", min_damage = " << ((Weapon*) item)->getMinDamage();
 			query << ", max_damage = " << ((Weapon*) item)->getMaxDamage();
 			

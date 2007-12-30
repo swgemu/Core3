@@ -254,12 +254,38 @@ void TangibleObject::setUpdated(bool upd) {
 		((TangibleObjectImplementation*) _impl)->setUpdated(upd);
 }
 
-SceneObject* TangibleObject::getContainer() {
+void TangibleObject::setConditionDamage(int damage) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
 		ORBMethodInvocation invocation(this, 20);
+		invocation.addSignedIntParameter(damage);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((TangibleObjectImplementation*) _impl)->setConditionDamage(damage);
+}
+
+void TangibleObject::setMaxCondition(int condition) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 21);
+		invocation.addSignedIntParameter(condition);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((TangibleObjectImplementation*) _impl)->setMaxCondition(condition);
+}
+
+SceneObject* TangibleObject::getContainer() {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 22);
 
 		return (SceneObject*) invocation.executeWithObjectReturn();
 	} else
@@ -271,7 +297,7 @@ unicode& TangibleObject::getName() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 21);
+		ORBMethodInvocation invocation(this, 23);
 
 		invocation.executeWithUnicodeReturn(_return_getName);
 		return _return_getName;
@@ -284,7 +310,7 @@ string& TangibleObject::getTemplateName() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 22);
+		ORBMethodInvocation invocation(this, 24);
 
 		invocation.executeWithAsciiReturn(_return_getTemplateName);
 		return _return_getTemplateName;
@@ -297,7 +323,7 @@ string& TangibleObject::getTemplateTypeName() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 23);
+		ORBMethodInvocation invocation(this, 25);
 
 		invocation.executeWithAsciiReturn(_return_getTemplateTypeName);
 		return _return_getTemplateTypeName;
@@ -310,7 +336,7 @@ string& TangibleObject::getCustomizationString() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 24);
+		ORBMethodInvocation invocation(this, 26);
 
 		invocation.executeWithAsciiReturn(_return_getCustomizationString);
 		return _return_getCustomizationString;
@@ -323,7 +349,7 @@ int TangibleObject::getObjectSubType() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 25);
+		ORBMethodInvocation invocation(this, 27);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -335,7 +361,7 @@ unsigned int TangibleObject::getTemplateID() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 26);
+		ORBMethodInvocation invocation(this, 28);
 
 		return invocation.executeWithUnsignedIntReturn();
 	} else
@@ -347,7 +373,7 @@ int TangibleObject::getObjectCount() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 27);
+		ORBMethodInvocation invocation(this, 29);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -359,7 +385,7 @@ int TangibleObject::getConditionDamage() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 28);
+		ORBMethodInvocation invocation(this, 30);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -371,7 +397,7 @@ int TangibleObject::getMaxCondition() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 29);
+		ORBMethodInvocation invocation(this, 31);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -383,7 +409,7 @@ int TangibleObject::getCondition() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 30);
+		ORBMethodInvocation invocation(this, 32);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -444,36 +470,42 @@ Packet* TangibleObjectAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* 
 		setUpdated(inv->getBooleanParameter());
 		break;
 	case 20:
-		resp->insertLong(getContainer()->_getORBObjectID());
+		setConditionDamage(inv->getSignedIntParameter());
 		break;
 	case 21:
-		resp->insertUnicode(getName());
+		setMaxCondition(inv->getSignedIntParameter());
 		break;
 	case 22:
-		resp->insertAscii(getTemplateName());
+		resp->insertLong(getContainer()->_getORBObjectID());
 		break;
 	case 23:
-		resp->insertAscii(getTemplateTypeName());
+		resp->insertUnicode(getName());
 		break;
 	case 24:
-		resp->insertAscii(getCustomizationString());
+		resp->insertAscii(getTemplateName());
 		break;
 	case 25:
-		resp->insertSignedInt(getObjectSubType());
+		resp->insertAscii(getTemplateTypeName());
 		break;
 	case 26:
-		resp->insertInt(getTemplateID());
+		resp->insertAscii(getCustomizationString());
 		break;
 	case 27:
-		resp->insertSignedInt(getObjectCount());
+		resp->insertSignedInt(getObjectSubType());
 		break;
 	case 28:
-		resp->insertSignedInt(getConditionDamage());
+		resp->insertInt(getTemplateID());
 		break;
 	case 29:
-		resp->insertSignedInt(getMaxCondition());
+		resp->insertSignedInt(getObjectCount());
 		break;
 	case 30:
+		resp->insertSignedInt(getConditionDamage());
+		break;
+	case 31:
+		resp->insertSignedInt(getMaxCondition());
+		break;
+	case 32:
 		resp->insertSignedInt(getCondition());
 		break;
 	default:
@@ -537,6 +569,14 @@ void TangibleObjectAdapter::setPersistent(bool pers) {
 
 void TangibleObjectAdapter::setUpdated(bool upd) {
 	return ((TangibleObjectImplementation*) impl)->setUpdated(upd);
+}
+
+void TangibleObjectAdapter::setConditionDamage(int damage) {
+	return ((TangibleObjectImplementation*) impl)->setConditionDamage(damage);
+}
+
+void TangibleObjectAdapter::setMaxCondition(int condition) {
+	return ((TangibleObjectImplementation*) impl)->setMaxCondition(condition);
 }
 
 SceneObject* TangibleObjectAdapter::getContainer() {
