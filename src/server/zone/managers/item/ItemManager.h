@@ -51,9 +51,9 @@ which carries forward this exception.
 
 #include "engine/orb/ObjectRequestBroker.h"
 
-class Player;
-
 class TangibleObject;
+
+class Player;
 
 class ItemManager : public ORBObjectStub {
 public:
@@ -73,8 +73,8 @@ public:
 
 	void unloadPlayerItems(Player* player);
 
-	void deletePlayerItem(Player* player,TangibleObject* item);
-	
+	void deletePlayerItem(Player* player, TangibleObject* item);
+
 	void showDbStats(Player* player);
 
 	void showDbDeleted(Player* player);
@@ -101,8 +101,8 @@ public:
 	void loadDefaultPlayerItems(Player* player);
 
 	void unloadPlayerItems(Player* player);
-	
-	void deletePlayerItem(Player* player,TangibleObject* item);
+
+	void deletePlayerItem(Player* player, TangibleObject* item);
 
 	void showDbStats(Player* player);
 

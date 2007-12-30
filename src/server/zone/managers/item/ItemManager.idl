@@ -42,6 +42,8 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
+import "../../objects/tangible/TangibleObject";
+
 import "../../objects/player/Player";
 
 interface ItemManager {
@@ -52,6 +54,8 @@ interface ItemManager {
 	void loadDefaultPlayerItems(Player player);
 	
 	void unloadPlayerItems(Player player);
+
+	void deletePlayerItem(Player player, TangibleObject item);
 
 	// stat methods
 	void showDbStats(Player player);
