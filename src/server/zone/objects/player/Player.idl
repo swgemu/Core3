@@ -79,6 +79,8 @@ interface Player implements CreatureObject {
 	void logout(boolean doLock = true);
 	void userLogout(int msgCounter = 3);
 
+	void clearLogoutEvent();
+
 	// Spatial indexing
 	void insertToZone(Zone zone);
 	void reinsertToZone(Zone zone);

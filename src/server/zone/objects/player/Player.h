@@ -103,6 +103,8 @@ public:
 
 	void userLogout(int msgCounter = 3);
 
+	void clearLogoutEvent();
+
 	void insertToZone(Zone* zone);
 
 	void reinsertToZone(Zone* zone);
@@ -383,6 +385,8 @@ public:
 	void logout(bool doLock);
 
 	void userLogout(int msgCounter);
+
+	void clearLogoutEvent();
 
 	void insertToZone(Zone* zone);
 

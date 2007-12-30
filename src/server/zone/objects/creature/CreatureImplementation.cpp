@@ -71,6 +71,8 @@ CreatureImplementation::CreatureImplementation(uint64 oid, CreatureGroup* group)
 	objectID = oid;
 	type = CREATURE;
 	
+	baseID = oid;
+	
 	stfName = "mob/creature_names";
 
 	creatureGroup = group;
@@ -118,8 +120,9 @@ void CreatureImplementation::init() {
 	setLockName(logname.str());
 	
 	setLoggingName(logname.str());
+	
 	setLogging(false);
-	setGlobalLogging(false);	
+	setGlobalLogging(true);
 }
 
 void CreatureImplementation::reload() {
@@ -147,28 +150,28 @@ void CreatureImplementation::unload() {
 }
 
 void CreatureImplementation::loadItems() {
-	InventoryImplementation* invImpl = new InventoryImplementation((CreatureObject*) _this);
+	InventoryImplementation* invImpl = new InventoryImplementation(_this);
 	inventory = (Inventory*) invImpl->deploy();
 	
 	Weapon* weapon = NULL;
 	
 	if (objectCRC == 0xBA7F23CD) { //storm trooper
-		RifleRangedWeaponImplementation* rifleImpl = new RifleRangedWeaponImplementation((Creature*) _this, "object/weapon/ranged/rifle/shared_rifle_t21.iff", 
+		RifleRangedWeaponImplementation* rifleImpl = new RifleRangedWeaponImplementation(_this, "object/weapon/ranged/rifle/shared_rifle_t21.iff", 
 				unicode("Teh Pwn"), "rifle_t21", true);
 		
 		weapon = (Weapon*) rifleImpl->deploy();
 	} else if (objectCRC == 0xE158FEC1) { //tusken raider
-		OneHandedMeleeWeaponImplementation* gardiffImpl = new OneHandedMeleeWeaponImplementation((Creature*) _this, "object/weapon/melee/baton/shared_baton_gaderiffi.iff", 
+		OneHandedMeleeWeaponImplementation* gardiffImpl = new OneHandedMeleeWeaponImplementation(_this, "object/weapon/melee/baton/shared_baton_gaderiffi.iff", 
 				unicode("Teh Pwn"), "baton_gaderiffi", true);
 		
 		weapon = (Weapon*) gardiffImpl->deploy();
 	} else if (objectCRC == 0x148D60AA) { //elite tusken
-		PolearmMeleeWeaponImplementation* lanceImpl = new PolearmMeleeWeaponImplementation((Creature*) _this, "object/weapon/melee/polearm/shared_lance_vibrolance.iff", 
+		PolearmMeleeWeaponImplementation* lanceImpl = new PolearmMeleeWeaponImplementation(_this, "object/weapon/melee/polearm/shared_lance_vibrolance.iff", 
 				unicode("Teh Pwn Lance"), "lance_vibrolance", true);
 		
 		weapon = (Weapon*) lanceImpl->deploy();
 	} else if (objectCRC == 0x8C70914) {
-		OneHandedJediWeaponImplementation* saberImpl = new OneHandedJediWeaponImplementation((Creature*) _this, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s4_gen4.iff", 
+		OneHandedJediWeaponImplementation* saberImpl = new OneHandedJediWeaponImplementation(_this, "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s4_gen4.iff", 
 				unicode("Darth Saber"), "sword_lightsaber_one_handed_s4_gen4", true);
 		
 		weapon = (Weapon*) saberImpl->deploy();
@@ -182,6 +185,10 @@ void CreatureImplementation::loadItems() {
 void CreatureImplementation::insertToZone(Zone* zone) {
 	CreatureImplementation::zone = zone;
 	zoneID = zone->getZoneID();
+
+	stringstream msg;
+	msg << "spawned on " << zoneID;
+	info(msg);
 
 	try {
 		zone->lock();
@@ -263,7 +270,7 @@ void CreatureImplementation::removeFromZone(bool doLock) {
 	clearCombatState();
 	
 	try {
-		if (zone == NULL)
+		if (zone == NULL || !isInQuadTree())
 			return;
 		
 		zone->lock(doLock);
@@ -368,6 +375,11 @@ bool CreatureImplementation::activate() {
 		unlock();
 	}
 			
+}
+
+void CreatureImplementation::removeFromQueue() {
+	if (isQueued())
+		creatureManager->dequeueActivity(this);
 }
 
 bool CreatureImplementation::checkState() {
@@ -488,6 +500,8 @@ void CreatureImplementation::doAttack(CreatureObject* target, int damage) {
 	if (target != aggroedCreature && highestMadeDamage < damage) {
 		highestMadeDamage = damage;
 
+		info("new target locked");
+
 		aggroedCreature = target;
 		
 		updateTarget(target);
@@ -565,6 +579,20 @@ bool CreatureImplementation::attack(CreatureObject* target) {
 	lastCombatAction.update();
 
 	return true;
+}
+
+void CreatureImplementation::deagro() {
+	if (aggroedCreature != NULL) {
+		stringstream msg;
+		msg << "deaggroed (0x" << hex << aggroedCreature->getObjectID() << dec << ")";
+		info(msg);
+	
+		aggroedCreature->release();
+		aggroedCreature = NULL;
+	}
+
+	clearTarget();
+	clearCombatState();
 }
 
 void CreatureImplementation::activateRecovery() {

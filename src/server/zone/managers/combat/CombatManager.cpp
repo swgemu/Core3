@@ -446,6 +446,8 @@ void CombatManager::requestDuel(Player* player, Player* targetPlayer) {
 			return;
 		}
 	
+		player->info("requesting duel");
+	
 		player->addToDuelList(targetPlayer);
 		
 		if (targetPlayer->requestedDuelTo(player)) {
@@ -469,6 +471,8 @@ void CombatManager::requestDuel(Player* player, Player* targetPlayer) {
 		}
 
 		targetPlayer->unlock();
+	} catch (Exception& e) {
+		cout << "Exception caught in CombatManager::requestDuel(Player* player, Player* targetPlayer)\n" << e.getMessage() << "\n";
 	} catch (...) {
 		cout << "Unreported Exception caught in CombatManager::requestDuel(Player* player, Player* targetPlayer)\n";
 		targetPlayer->unlock();
@@ -513,6 +517,8 @@ void CombatManager::requestEndDuel(Player* player, Player* targetPlayer) {
 			targetPlayer->unlock();
 			return;
 		}
+
+		player->info("ending duel");
 		
 		player->removeFromDuelList(targetPlayer);
 		
@@ -549,9 +555,11 @@ void CombatManager::freeDuelList(Player* player) {
 		
 	if (player->isWatching())
 		player->stopWatch(player->getWatchID());
+
+	player->info("freeing duel list");
 		
-	for (int i = 0; i < player->getDuelListSize(); i++) {
-		Player* targetPlayer = player->getDuelListObject(i);
+	while (player->getDuelListSize() != 0) {
+		Player* targetPlayer = player->getDuelListObject(0);
 		
 		if (targetPlayer != NULL) {
 			try {
@@ -572,9 +580,9 @@ void CombatManager::freeDuelList(Player* player) {
 					ChatSystemMessage* csm2 = new ChatSystemMessage("duel", "end_target", player->getObjectID());
 					targetPlayer->sendMessage(csm2);
 				}
-	
+				
 				player->removeFromDuelList(targetPlayer);
-
+	
 				targetPlayer->unlock();
 			} catch (...) {
 				targetPlayer->unlock();

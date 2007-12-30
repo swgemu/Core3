@@ -130,11 +130,7 @@ public:
 	inline bool isActive() {
 		return isQueued();
 	}
-	
-	void removeFromQueue() {
-		if (isQueued())
-			server->removeEvent(this);
-	}
+	void removeFromQueue();
 
 	bool checkState();
 	void resetState();
@@ -147,6 +143,8 @@ public:
 	void notifyPositionUpdate(QuadTreeEntry* obj);
 	
 	void agro(bool all);
+	
+	void deagro();
 	
 	void doAttack(CreatureObject* target, int damage = 1);
 	bool attack(CreatureObject* target);

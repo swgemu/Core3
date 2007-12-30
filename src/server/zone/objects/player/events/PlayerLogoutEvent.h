@@ -65,6 +65,8 @@ public:
 			
 			if (player->isOnline())
 				player->userLogout(msgCounter);
+			else
+				player->clearLogoutEvent();
 			
 			player->unlock();
 		} catch (...) {

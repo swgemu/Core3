@@ -187,9 +187,10 @@ CreatureGroup* CreatureManagerImplementation::spawnCreatureGroup(int count, cons
 
 		for (int i = 0; i < count; i++) {
 			Creature* creature = spawnCreature(stfname, name, objCrc, x, y, bitmask, false);
+
 			creatureMap->put(creature->getObjectID(), creature);
+			
 			creature->setCreatureGroup(group);
-		
 			group->addCreature(creature);
 		
 			switch (layout) {

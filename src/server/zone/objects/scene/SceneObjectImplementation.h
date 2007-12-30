@@ -300,6 +300,10 @@ public:
 	inline Zone* getZone() {
 		return zone;
 	}
+
+	inline int getZoneID() {
+		return zoneID;
+	}
 	
 	inline uint32 getObjectCRC() {
 		return objectCRC;

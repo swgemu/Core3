@@ -139,6 +139,10 @@ void GroupManager::joinGroup(Player* player) {
 			return;
 		}
 		
+		player->info("joining group");
+		
+		//player->acquire();
+		
 		group->addPlayer(player);
 		player->setGroup(group);
 		player->updateGroupId(group->getObjectID());
@@ -203,6 +207,10 @@ void GroupManager::leaveGroup(GroupObject* group, Player* player) {
 		
 		Message* msg = new SceneObjectDestroyMessage(group);
 		player->sendMessage(msg);
+		
+		player->info("leaving group");
+		
+		//player->release();
 
 		if (group->getGroupSize() < 2) {
 			group->disband();
@@ -279,8 +287,13 @@ void GroupManager::kickFromGroup(GroupObject* group, Player* player, Player* pla
 		if (group->getGroupSize() - 1 < 2) {
 			group->disband();	
 			disbanded = true;
-		} else		
+		} else {		
 			group->removePlayer(playerToKick);
+
+			playerToKick->info("kikcing from group");
+
+			//playerToKick->release();
+		}
 	
 		group->unlock();
 		

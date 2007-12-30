@@ -70,7 +70,7 @@ SceneObjectImplementation::SceneObjectImplementation() : QuadTreeEntry(), SceneO
 
 SceneObjectImplementation::SceneObjectImplementation(uint64 oid) : QuadTreeEntry(), SceneObjectServant(), Logger() {
 	objectID = oid;
-
+	
 	stringstream n;
 	n << hex << "Player::" << objectID;
 	setLockName(n.str()); 
@@ -91,6 +91,8 @@ SceneObjectImplementation::SceneObjectImplementation(uint64 oid) : QuadTreeEntry
 }
 
 SceneObjectImplementation::~SceneObjectImplementation() {
+	//info("destroyed", true);
+	
 	RWLockableImplementation::destroy();
 }
 
@@ -116,12 +118,10 @@ void SceneObjectImplementation::doUndeploy() {
 	zone->deleteCachedObject(_this);
 
 	if (!keepObject) {
-		string orbName = _this->_getORBName();
-		
-		info("undeploying object (" + orbName + ")", true);
+		info("undeploying object", true);
 
 		if (!_this->undeploy())
-			error("object (" + orbName + ") was not found in naming directory");
+			error("object was not found in naming directory");
 	}
 }
 

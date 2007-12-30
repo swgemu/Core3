@@ -59,7 +59,8 @@ public:
 		try {
 			object->doUndeploy();
 
-			delete object;
+			object->release();
+			//delete object;
 		} catch (...) {
 		}
 	}

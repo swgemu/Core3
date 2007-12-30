@@ -142,6 +142,8 @@ interface SceneObject implements RWLockable {
 
 	float getDirectionW();
 	
+	string getLoggingName();
+	
 	boolean isPlayer();
 	
 	boolean isNonPlayerCreature();
@@ -155,6 +157,8 @@ interface SceneObject implements RWLockable {
 	boolean isIntangible();
 	
 	Zone getZone();
+	
+	int getZoneID();
 		
 	SceneObject getParent();
 	

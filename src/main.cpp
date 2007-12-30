@@ -46,24 +46,6 @@ which carries forward this exception.
 
 #include "system/lang/SignalException.h"
 
-class TestClass {
-	int value;
-	
-public:
-	TestClass(int val) {
-		value = val;
-	}
-	
-	int compareTo(TestClass* obj) {
-		if (value < obj->value)
-			return 1;
-		else if (value > obj->value)
-			return -1;
-		else
-			return 0;
-	}
-};
-
 int main(int argc, char* argv[]) {
 	try {
 		Logger::setGlobalFileLogger("core3.log");

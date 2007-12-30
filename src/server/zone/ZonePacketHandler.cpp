@@ -331,6 +331,8 @@ void ZonePacketHandler::handleObjectControllerMessage(Message* pack) {
 	uint32 header2 = pack->parseInt();
 	
 	stringstream msg;
+	msg << "ObjectControllerMessage(0x" << hex << header1 << ", 0x" << header2 << dec << ")";
+	player->info(msg.str());
 	
 	try {
 		player->wlock();
@@ -346,13 +348,10 @@ void ZonePacketHandler::handleObjectControllerMessage(Message* pack) {
 				//msg << "light chaging position (" << player->getPositionX() << ", " << player->getPositionY() << ") ->";
 			
 				if (ObjectControllerMessage::parseDataTransform(player, pack)) {
-					//msg << "(" << player->getPositionX() << ", " << player->getPositionY() << ")";
-			
-					//player->info(msg.str(), true);
-
 					player->lightUpdateZone();
-				} /*else 
-					player->info(msg.str(), true);*/
+
+					//player->info(msg);
+				}
 				
 				break;
 			case 0xF1:
@@ -364,16 +363,13 @@ void ZonePacketHandler::handleObjectControllerMessage(Message* pack) {
 		case 0x23:
 			switch (header2) {
 			case 0x71:
-				//msg << "light chaging position (" << player->getPositionX() << ", " << player->getPositionY() << ") ->";
+				//msg << "chaging position (" << player->getPositionX() << ", " << player->getPositionY() << ") ->";
 
 				if (ObjectControllerMessage::parseDataTransform(player, pack)) {
-					/*msg << "(" << player->getPositionX() << ", " << player->getPositionY() << ")";
-			
-					player->info(msg.str(), true);*/
-
 					player->updateZone();
-				} /*else 
-					player->info(msg.str(), true);*/
+
+					//player->info(msg);
+				}
 					
 				break;
 			case 0xF1:

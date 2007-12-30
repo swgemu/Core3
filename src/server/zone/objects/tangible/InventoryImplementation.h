@@ -61,7 +61,7 @@ public:
 		container = (SceneObject*) creature;
 	}
 	
-	~InventoryImplementation() {
+	virtual ~InventoryImplementation() {
 	}
 	
 };

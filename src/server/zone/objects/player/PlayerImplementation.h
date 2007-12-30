@@ -181,6 +181,10 @@ public:
 	
 	void disconnect(bool closeClient = true, bool doLock = true);
 
+	void clearLogoutEvent() {
+		logoutEvent = NULL;
+	}
+
 	void createItems();
 	void loadItems();
 
@@ -312,13 +316,9 @@ public:
 	void decreasePvpRating(int value);
 
 	// duellist manipulation methods	
-	void removeFromDuelList(Player* targetPlayer) {
-		duelList.drop(targetPlayer);
-	}
-	
-	void addToDuelList(Player* targetPlayer) {
-		duelList.add(targetPlayer);
-	}
+	void addToDuelList(Player* targetPlayer);
+
+	void removeFromDuelList(Player* targetPlayer);
 	
 	Player* getDuelListObject(int index) {
 		return duelList.get(index);
@@ -336,9 +336,7 @@ public:
 		return duelList.size();
 	}
 	
-	/*void freeDuelList() {
-		duelList.removeAll();
-	}*/
+	void clearDuelList();
 	
 	//Certs
 	int getCertificationListSize() {
@@ -408,7 +406,7 @@ public:
 	void sendMessage(Message* msg);
 	void sendMessage(StandaloneMessage* msg);
 
-	// setters and getters
+	// setters
 	void setOnline();
 
 	void setOffline() {
@@ -423,34 +421,6 @@ public:
 
 	void setLoggingOut() {
 		onlineStatus = LOGGINGOUT;
-	}
-
-	inline string& getHairData() {
-		return hairData;
-	}
-
-	inline GroupObject* getGroupObject() {
-		return group;
-	}
-	
-	inline bool isOnline() {
-		return onlineStatus != OFFLINE && onlineStatus != LINKDEAD;
-	}
-
-	inline bool isOffline() {
-		return onlineStatus == OFFLINE;
-	}
-
-	inline bool isLinkDead() {
-		return onlineStatus == LINKDEAD;
-	}
-
-	inline bool isLoggingIn() {
-		return onlineStatus == LOGGINGIN;
-	}
-
-	inline bool isLoggingOut() {
-		return onlineStatus == LOGGINGOUT;
 	}
 
 	void setClient(ZoneClient* client) {
@@ -509,6 +479,35 @@ public:
 	
 	inline void setLastTestPositionY(float pos) {
 		lastTestPositionY = pos;
+	}
+
+	// getters
+	inline string& getHairData() {
+		return hairData;
+	}
+
+	inline GroupObject* getGroupObject() {
+		return group;
+	}
+	
+	inline bool isOnline() {
+		return onlineStatus != OFFLINE && onlineStatus != LINKDEAD;
+	}
+
+	inline bool isOffline() {
+		return onlineStatus == OFFLINE;
+	}
+
+	inline bool isLinkDead() {
+		return onlineStatus == LINKDEAD;
+	}
+
+	inline bool isLoggingIn() {
+		return onlineStatus == LOGGINGIN;
+	}
+
+	inline bool isLoggingOut() {
+		return onlineStatus == LOGGINGOUT;
 	}
 	
 	inline float getLastTestPositionX() {

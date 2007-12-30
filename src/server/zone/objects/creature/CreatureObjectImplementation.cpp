@@ -537,6 +537,9 @@ void CreatureObjectImplementation::setDefender(CreatureObject* defender) {
 	} else {
 		dcreo6->startDefenderUpdate(1);
 		dcreo6->addDefender(defenderList.size(), defender->getObjectID());
+		
+		defender->acquire();
+		
 		defenderList.add(defender);
 	}
 	
@@ -555,6 +558,10 @@ void CreatureObjectImplementation::addDefender(CreatureObject* defender) {
 		if (defender == defenderList.get(i))
 			return;
 	}
+	
+	info("adding defender");
+	
+	defender->acquire();
 	
 	defenderList.add(defender);
 	
@@ -576,8 +583,14 @@ void CreatureObjectImplementation::removeDefenders() {
 	CreatureObjectDeltaMessage6* dcreo6 = new CreatureObjectDeltaMessage6((CreatureObject*) _this);
 	dcreo6->startDefenderUpdate(defenderList.size());
 	
-	for (int i = 0; i < defenderList.size(); ++i)
+	for (int i = 0; i < defenderList.size(); ++i) {
+		CreatureObject* defender = defenderList.get(i);
+
+		info("removing defender");
+		defender->release();
+		
 		dcreo6->removeDefender(i);
+	}
 	
 	dcreo6->close();
 	broadcastMessage(dcreo6);
@@ -595,6 +608,9 @@ void CreatureObjectImplementation::removeDefender(CreatureObject* defender) {
 	for (int i = 0; i < defenderList.size(); ++i) {
 		if (defenderList.get(i) == defender) {
 			defenderList.remove(i);
+			
+			info("removing defender");
+			defender->release();
 			
 			CreatureObjectDeltaMessage6* dcreo6 = new CreatureObjectDeltaMessage6((CreatureObject*) _this);
 			dcreo6->startDefenderUpdate(1);
@@ -1673,13 +1689,18 @@ void CreatureObjectImplementation::updateTarget(uint64 targ) {
 	SceneObject* target = zone->lookupObject(targ); 
 
 	if (target != targetObject) {
-		if (targetObject != NULL)
+		if (targetObject != NULL) {
+			info("released target");
+
 			targetObject->release();
+		}
 		
 		targetObject = target;
 		
 		if (targetObject == NULL)
 			return;
+	
+		info("updating target");
 	
 		targetObject->acquire();
 		
@@ -1693,10 +1714,16 @@ void CreatureObjectImplementation::updateTarget(uint64 targ) {
 
 void CreatureObjectImplementation::updateTarget(SceneObject* targ) {
 	if (targetObject != targ) {
-		if (targetObject != NULL)
+		if (targetObject != NULL) {
+			info("releasing target");
+			
 			targetObject->release();
+		}
 
 		targetObject = targ;
+		
+		info("updating target");
+		
 		targetObject->acquire();
 	
 		CreatureObjectDeltaMessage6* dcreo6 = new CreatureObjectDeltaMessage6(_this);
@@ -1713,6 +1740,8 @@ void CreatureObjectImplementation::updateTarget(SceneObject* targ) {
 
 void CreatureObjectImplementation::clearTarget() {
 	if (targetObject != NULL) {
+		info("releasing target");
+
 		targetObject->release();
 		targetObject = NULL;
 	}
@@ -2393,7 +2422,9 @@ void CreatureObjectImplementation::broadcastMessage(Message* msg, int range, boo
 		zone->lock(doLock);
 
 		for (int i = 0; i < inRangeObjectCount(); ++i) {
-			SceneObject* object = (SceneObject*) (((SceneObjectImplementation*) getInRangeObject(i))->_getStub());
+			SceneObjectImplementation* scno = (SceneObjectImplementation*) getInRangeObject(i);
+			SceneObject* object = (SceneObject*) scno->_getStub();
+			
 			if (object->isPlayer()) {
 				Player* player = (Player*) object;
 

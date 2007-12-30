@@ -206,10 +206,11 @@ void PlayerImplementation::load(ZoneClient* client) {
 		owner = client;
 		client->setPlayer(_this);
 
-		string logName = "Player = " + firstName;
+		stringstream logName;
+		logName << "Player = " << firstName << " (0x" << hex << objectID << dec << ")";
 	
-		setLockName(logName);
-		setLoggingName(logName);
+		setLockName(logName.str());
+		setLoggingName(logName.str());
 
 		info("loading player");
 
@@ -281,8 +282,11 @@ void PlayerImplementation::reload(ZoneClient* client) {
 			reinsertToZone(zone);
 		else
 			insertToZone(zone);
-		
+
 		clearBuffs(true, true);
+
+		if (!isOnFullHealth())
+			doRecovery();	
 		
 		unlock();
 		
@@ -331,6 +335,8 @@ void PlayerImplementation::unload() {
 
 		PlayerManager* playerManager = zserver->getPlayerManager();
 		playerManager->unload(_this);
+
+		clearDuelList();
 
 		if (isDancing())
 			stopDancing();
@@ -441,6 +447,11 @@ void PlayerImplementation::disconnect(bool closeClient, bool doLock) {
 		
 		if (disconnectEvent != NULL)
 			disconnectEvent = NULL;
+			
+		if (logoutEvent != NULL) {
+			server->removeEvent(logoutEvent);
+			logoutEvent = NULL;
+		}
 	
 		if (closeClient && owner != NULL) {
 			owner->closeConnection();
@@ -598,7 +609,6 @@ void PlayerImplementation::insertToZone(Zone* zone) {
 
 		zone->unlock();
 	}
-	
 }
 
 void PlayerImplementation::reinsertToZone(Zone* zone) {
@@ -1173,9 +1183,9 @@ void PlayerImplementation::doRecovery() {
 		setPosture(UPRIGHT_POSTURE);
 	} else if (isDead()) { 		
 		doClone();
+		
 		if (isLinkDead())
 			server->addEvent(recoveryEvent, 3000);
-		return;
 	} else {
 		if (hasStates()) {
 			doStateRecovery();
@@ -1245,7 +1255,7 @@ void PlayerImplementation::doStateRecovery() {
 }
 
 void PlayerImplementation::doClone() {
-	//doWarp(-643.0f, 2451.0f);
+	info("cloning player");
 
 	if (faction == String::hashCode("rebel"))
 		doWarp(-130.0f, -5300.0f, 0, true);
@@ -1258,12 +1268,8 @@ void PlayerImplementation::doClone() {
 		
 	//setNeutral();
 	//setCovert();
-		
-	if (zone != NULL) {
-		CombatManager* cManager = server->getCombatManager();
-		
-		cManager->freeDuelList(_this);
-	}
+
+	clearDuelList();		
 
 	clearBuffs();
 	
@@ -1386,12 +1392,12 @@ void PlayerImplementation::doPeace() {
 }
 
 void PlayerImplementation::lootCorpse() {
-	if (!targetObject->isNonPlayerCreature())
+	if (targetObject == NULL || !targetObject->isNonPlayerCreature())
 		return;
 	
 	Creature* target = (Creature*) targetObject;
 	
-	if (target != NULL && !isIncapacitated() && !isDead() && isInRange(target, 20)) {
+	if (!isIncapacitated() && !isDead() && isInRange(target, 20)) {
 		LootManager* lootManager = server->getLootManager();
 		lootManager->lootCorpse(_this, target);
 	}
@@ -1651,6 +1657,33 @@ bool PlayerImplementation::isInDuelWith(Player* targetPlayer, bool doLock) {
 			targetPlayer->unlock();
 		
 		return false;
+	}
+}
+
+void PlayerImplementation::addToDuelList(Player* targetPlayer) {
+	if (duelList.put(targetPlayer) != -1) {
+		info("player [" + targetPlayer->getLoggingName() + "] added to duel list");
+
+		targetPlayer->acquire();
+	} else
+		error("player [" + targetPlayer->getLoggingName() + "] was already in duel list");
+		
+}
+
+void PlayerImplementation::removeFromDuelList(Player* targetPlayer) {
+	if (duelList.drop(targetPlayer)) {
+		info("player [" + targetPlayer->getLoggingName() + "] removed from duel list");
+
+		targetPlayer->release();
+	} else
+		error("player [" + targetPlayer->getLoggingName() + "] was not found in duel list for removal");
+}
+
+void PlayerImplementation::clearDuelList() {
+	if (zone != NULL) {
+		CombatManager* combatManager = server->getCombatManager();
+		
+		combatManager->freeDuelList(_this);
 	}
 }
 

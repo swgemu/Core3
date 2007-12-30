@@ -161,6 +161,8 @@ public:
 
 	float getDirectionW();
 
+	string& getLoggingName();
+
 	bool isPlayer();
 
 	bool isNonPlayerCreature();
@@ -175,6 +177,8 @@ public:
 
 	Zone* getZone();
 
+	int getZoneID();
+
 	SceneObject* getParent();
 
 	unsigned long long getParentID();
@@ -186,6 +190,8 @@ public:
 	bool doKeepObject();
 
 protected:
+	string _return_getLoggingName;
+
 };
 
 class SceneObjectImplementation;
@@ -282,6 +288,8 @@ public:
 
 	float getDirectionW();
 
+	string& getLoggingName();
+
 	bool isPlayer();
 
 	bool isNonPlayerCreature();
@@ -295,6 +303,8 @@ public:
 	bool isIntangible();
 
 	Zone* getZone();
+
+	int getZoneID();
 
 	SceneObject* getParent();
 
