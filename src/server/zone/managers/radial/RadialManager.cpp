@@ -45,9 +45,11 @@ which carries forward this exception.
 #include "RadialManager.h"
 
 #include "../../packets/object/ObjectMenuResponse.h"
+#include "../../packets/trade/BeginTradeMessage.h"
 
 #include "../../Zone.h"
 #include "../../objects.h"
+
 
 RadialManager::RadialManager() {
 }
@@ -326,22 +328,38 @@ void RadialManager::handleVehicleGenerate(SceneObject* obj) {
 }
 
 void RadialManager::handleTrade(Player* player, SceneObject* obj) {
-	if (obj->isPlayer()) {
-		Inventory* inventory = player->getInventory();
+	if (!obj->isPlayer())
+		return;
+	
+	Player* target = (Player*)obj;
 
-		stringstream msg;
-		msg << "Select the item you wish to give to " << ((Player*) obj)->getFirstName();
-		
-		ListBox* list = new ListBox(0xBEEFAAEA, "Give Item", msg.str());
-		
-		for (int i = 0; i < inventory->objectsSize(); i++) {
-			TangibleObject* item = (TangibleObject*) inventory->getObject(i);
+	try {
+		target->wlock(player);
 			
-			list->addItem(item->getName().c_str());
+		uint64 requestedID = target->getTradeRequestedPlayer();
+		player->setTradeRequestedPlayer(obj->getObjectID());
+		
+		if (requestedID == player->getObjectID()) {
+			BeginTradeMessage* msg = new BeginTradeMessage(target->getObjectID());
+			player->sendMessage(msg);
+			
+			BeginTradeMessage* msg2 = new BeginTradeMessage(player->getObjectID());
+			target->sendMessage(msg2);
+			
+		} else {
+			Player* target = (Player*)obj;
+
+			stringstream msg;
+			msg << player->getCharacterName().c_str() << " requested a trade.";
+			target->sendSystemMessage(msg.str());
 		}
-
-		list->generateMessage();
-
-		player->sendMessage(list);
+		
+		target->unlock();
+	} catch (Exception& e) {
+		target->unlock();
+		cout << e.getMessage() << "caught in RadialManager::handleTrade(Player* player, SceneObject* obj)\n";
+	} catch (...) {
+		target->unlock();
+		cout << "Unreported exception caught in RadialManager::handleTrade(Player* player, SceneObject* obj)\n";
 	}
 }

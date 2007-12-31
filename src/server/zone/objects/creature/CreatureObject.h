@@ -653,13 +653,13 @@ public:
 
 	void dismount(bool lockMount = true);
 
-	void addCashCredits(int credits);
+	void addCashCredits(unsigned int credits);
 
-	void addBankCredits(int credits);
+	void addBankCredits(unsigned int credits);
 
-	void subtractCashCredits(int credits);
+	void subtractCashCredits(unsigned int credits);
 
-	void subtractBankCredits(int credits);
+	void subtractBankCredits(unsigned int credits);
 
 	void setCashCredits(int credits);
 
@@ -1272,13 +1272,13 @@ public:
 
 	void dismount(bool lockMount);
 
-	void addCashCredits(int credits);
+	void addCashCredits(unsigned int credits);
 
-	void addBankCredits(int credits);
+	void addBankCredits(unsigned int credits);
 
-	void subtractCashCredits(int credits);
+	void subtractCashCredits(unsigned int credits);
 
-	void subtractBankCredits(int credits);
+	void subtractBankCredits(unsigned int credits);
 
 	void setCashCredits(int credits);
 

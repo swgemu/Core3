@@ -3712,52 +3712,52 @@ void CreatureObject::dismount(bool lockMount) {
 		((CreatureObjectImplementation*) _impl)->dismount(lockMount);
 }
 
-void CreatureObject::addCashCredits(int credits) {
+void CreatureObject::addCashCredits(unsigned int credits) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
 		ORBMethodInvocation invocation(this, 291);
-		invocation.addSignedIntParameter(credits);
+		invocation.addUnsignedIntParameter(credits);
 
 		invocation.executeWithVoidReturn();
 	} else
 		((CreatureObjectImplementation*) _impl)->addCashCredits(credits);
 }
 
-void CreatureObject::addBankCredits(int credits) {
+void CreatureObject::addBankCredits(unsigned int credits) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
 		ORBMethodInvocation invocation(this, 292);
-		invocation.addSignedIntParameter(credits);
+		invocation.addUnsignedIntParameter(credits);
 
 		invocation.executeWithVoidReturn();
 	} else
 		((CreatureObjectImplementation*) _impl)->addBankCredits(credits);
 }
 
-void CreatureObject::subtractCashCredits(int credits) {
+void CreatureObject::subtractCashCredits(unsigned int credits) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
 		ORBMethodInvocation invocation(this, 293);
-		invocation.addSignedIntParameter(credits);
+		invocation.addUnsignedIntParameter(credits);
 
 		invocation.executeWithVoidReturn();
 	} else
 		((CreatureObjectImplementation*) _impl)->subtractCashCredits(credits);
 }
 
-void CreatureObject::subtractBankCredits(int credits) {
+void CreatureObject::subtractBankCredits(unsigned int credits) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
 		ORBMethodInvocation invocation(this, 294);
-		invocation.addSignedIntParameter(credits);
+		invocation.addUnsignedIntParameter(credits);
 
 		invocation.executeWithVoidReturn();
 	} else
@@ -4698,16 +4698,16 @@ Packet* CreatureObjectAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* 
 		dismount(inv->getBooleanParameter());
 		break;
 	case 291:
-		addCashCredits(inv->getSignedIntParameter());
+		addCashCredits(inv->getUnsignedIntParameter());
 		break;
 	case 292:
-		addBankCredits(inv->getSignedIntParameter());
+		addBankCredits(inv->getUnsignedIntParameter());
 		break;
 	case 293:
-		subtractCashCredits(inv->getSignedIntParameter());
+		subtractCashCredits(inv->getUnsignedIntParameter());
 		break;
 	case 294:
-		subtractBankCredits(inv->getSignedIntParameter());
+		subtractBankCredits(inv->getUnsignedIntParameter());
 		break;
 	case 295:
 		setCashCredits(inv->getSignedIntParameter());
@@ -5871,19 +5871,19 @@ void CreatureObjectAdapter::dismount(bool lockMount) {
 	return ((CreatureObjectImplementation*) impl)->dismount(lockMount);
 }
 
-void CreatureObjectAdapter::addCashCredits(int credits) {
+void CreatureObjectAdapter::addCashCredits(unsigned int credits) {
 	return ((CreatureObjectImplementation*) impl)->addCashCredits(credits);
 }
 
-void CreatureObjectAdapter::addBankCredits(int credits) {
+void CreatureObjectAdapter::addBankCredits(unsigned int credits) {
 	return ((CreatureObjectImplementation*) impl)->addBankCredits(credits);
 }
 
-void CreatureObjectAdapter::subtractCashCredits(int credits) {
+void CreatureObjectAdapter::subtractCashCredits(unsigned int credits) {
 	return ((CreatureObjectImplementation*) impl)->subtractCashCredits(credits);
 }
 
-void CreatureObjectAdapter::subtractBankCredits(int credits) {
+void CreatureObjectAdapter::subtractBankCredits(unsigned int credits) {
 	return ((CreatureObjectImplementation*) impl)->subtractBankCredits(credits);
 }
 

@@ -188,4 +188,14 @@ which carries forward this exception.
 #include "packets/charcreation/ClientCreateCharacterSuccess.h"
 #include "packets/charcreation/ClientCreateCharacterFailed.h"
 
+// trade
+#include "packets/trade/AbortTradeMessage.h"
+#include "packets/trade/AcceptTransactionMessage.h"
+#include "packets/trade/UnAcceptTransactionMessage.h"
+#include "packets/trade/AddItemMessage.h"
+#include "packets/trade/BeginTradeMessage.h"
+#include "packets/trade/DenyTradeMessage.h"
+#include "packets/trade/TradeCompleteMessage.h"
+#include "packets/trade/GiveMoneyMessage.h"
+
 #endif /*PACKETS_H_*/

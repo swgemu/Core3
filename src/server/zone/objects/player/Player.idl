@@ -123,6 +123,22 @@ interface Player implements CreatureObject {
 	
 	void lootCorpse();
 	
+	// trade
+	void addTradeItem(TangibleObject item);
+	void clearTradeItems();
+	int getTradeSize();
+	TangibleObject getTradeItem(int idx);
+	
+	void setAcceptedTrade(boolean val);
+	boolean hasAcceptedTrade();
+	
+	void setVerifiedTrade(boolean val);
+	boolean hasVerifiedTrade();
+	
+	void setMoneyToTrade(unsigned int value);
+
+	unsigned int getMoneyToTrade();
+	
 	//boolean isChangingFaction();
 	
 	// Item manipulation methods
@@ -133,8 +149,6 @@ interface Player implements CreatureObject {
 	
 	void createItems();
 	void loadItems();
-	
-	void giveItem(Player target, TangibleObject item);
 
 	void createBaseStats();
 	
@@ -240,6 +254,8 @@ interface Player implements CreatureObject {
 	
 	void setLastTestPositionX(float pos);
 	void setLastTestPositionY(float pos);
+	
+	void setTradeRequestedPlayer(unsigned long ID);
 
 	// getters
 	PlayerObject getPlayerObject();
@@ -304,4 +320,6 @@ interface Player implements CreatureObject {
 	
 	float getLastTestPositionX();
 	float getLastTestPositionY();
+	
+	unsigned long getTradeRequestedPlayer();
 }

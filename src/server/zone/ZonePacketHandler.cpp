@@ -75,6 +75,8 @@ void ZonePacketHandler::handleMessage(Message* pack) {
 	uint16 opcount = pack->parseShort();
 	uint32 opcode = pack->parseInt();
 	
+	//cout << "processing opcount:[" << opcount << "] opcode:[" << hex << opcode << "]\n";
+	
 	switch (opcount) {
 	case 1:
 		switch (opcode) {
@@ -93,6 +95,18 @@ void ZonePacketHandler::handleMessage(Message* pack) {
 		case 0x4C3D2CFA: //ChatRequestRoomList
 			handleChatRequestRoomList(pack);
 			break;
+		case 0x9CA80F98: // AbortTradeMsg
+			handleAbortTradeMessage(pack);
+			break;
+		case 0xB131CA17: // AcceptTransactionMessage
+			handleAcceptTransactionMessage(pack);
+			break;
+		case 0xE81E4382: // UnAcceptTransactionMessage
+			handleUnAcceptTransactionMessage(pack);
+			break;
+		case 0x9AE247EE: // VerifyTradeMessage
+			handleVerifyTradeMessage(pack);
+			break;			
 		}
 		
 		break;
@@ -107,6 +121,12 @@ void ZonePacketHandler::handleMessage(Message* pack) {
 		case 0x81EB4EF7: //GuildRequestMessage
 		    handleGuildRequestMessage(pack);
 		    break;
+		case 0x1E8D1356: // AddItemMessage
+			handleAddItemMessage(pack);
+			break;
+		case 0xD1527EE8: // GiveMoneyMessage
+			handleGiveMoneyMessage(pack);
+			break;
 		}
 		
 		break;
@@ -763,20 +783,6 @@ void ZonePacketHandler::handleSuiEventNotification(Message* pack) {
 		}
 
 		break;
-	case 0xBEEFAAEA: // give item
-		if (cancel != 1) {
-			Inventory* inventory = player->getInventory(); 
-
-			int itemindex = atoi(value.c_str().c_str());
-
-			TangibleObject* item = (TangibleObject*) inventory->getObject(itemindex);
-
-			SceneObject* target = player->getTarget();
-			if (target->isPlayer())
-				player->giveItem((Player*) target, item);
-		}
-
-		break;
 	/*case 0x4347494C:
 		if (cancel != 1)
 			processServer->getGuildManager()->handleCreateGuildNameBox(player, value.c_str());
@@ -792,4 +798,68 @@ void ZonePacketHandler::handleSuiEventNotification(Message* pack) {
 		break;
 	}
 
+}
+
+void ZonePacketHandler::handleAbortTradeMessage(Message* pack) {
+	ZoneClientImplementation* client = (ZoneClientImplementation*) pack->getClient();
+	Player* player = client->getPlayer();
+
+	if (player == NULL)
+		return;
+	
+	server->getPlayerManager()->handleAbortTradeMessage(player);
+}
+
+void ZonePacketHandler::handleAddItemMessage(Message* pack) {
+	ZoneClientImplementation* client = (ZoneClientImplementation*) pack->getClient();
+	Player* player = client->getPlayer();
+	
+	if (player == NULL)
+		return;
+	
+	uint64 id = pack->parseLong();
+	
+	server->getPlayerManager()->handleAddItemMessage(player, id);
+}
+
+void ZonePacketHandler::handleGiveMoneyMessage(Message* pack) {
+	ZoneClientImplementation* client = (ZoneClientImplementation*) pack->getClient();
+	Player* player = client->getPlayer();
+
+	if (player == NULL)
+		return;
+	
+	uint32 value = pack->parseInt();
+	
+	server->getPlayerManager()->handleGiveMoneyMessage(player, value);
+}
+
+void ZonePacketHandler::handleAcceptTransactionMessage(Message* pack) {
+	ZoneClientImplementation* client = (ZoneClientImplementation*) pack->getClient();
+	Player* player = client->getPlayer();
+
+	if (player == NULL)
+		return;
+	
+	server->getPlayerManager()->handleAcceptTransactionMessage(player);
+}
+
+void ZonePacketHandler::handleUnAcceptTransactionMessage(Message* pack) {
+	ZoneClientImplementation* client = (ZoneClientImplementation*) pack->getClient();
+	Player* player = client->getPlayer();
+
+	if (player == NULL)
+		return;
+
+	server->getPlayerManager()->handleUnAcceptTransactionMessage(player);
+}
+
+void ZonePacketHandler::handleVerifyTradeMessage(Message* pack) {
+	ZoneClientImplementation* client = (ZoneClientImplementation*) pack->getClient();
+	Player* player = client->getPlayer();
+
+	if (player == NULL)
+		return;
+
+	server->getPlayerManager()->handleVerifyTradeMessage(player);
 }

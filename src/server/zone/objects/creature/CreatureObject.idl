@@ -482,10 +482,10 @@ interface CreatureObject implements SceneObject {
 	void dismount(boolean lockMount = true);
 	
 	//tip methods
-	void addCashCredits(int credits);
-	void addBankCredits(int credits);
-	void subtractCashCredits(int credits);
-	void subtractBankCredits(int credits);
+	void addCashCredits(unsigned int credits);
+	void addBankCredits(unsigned int credits);
+	void subtractCashCredits(unsigned int credits);
+	void subtractBankCredits(unsigned int credits);
 	
 	void setCashCredits(int credits);
 	void setBankCredits(int credits);

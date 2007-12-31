@@ -42,72 +42,15 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef ZONEPACKETHANDLER_H_
-#define ZONEPACKETHANDLER_H_
+#ifndef TRADECOMPLETEMESSAGE_H_
+#define TRADECOMPLETEMESSAGE_H_
 
-#include "engine/engine.h"
-
-#include "ZoneClient.h"
-
-class ZoneServer;
-class ZoneProcessServerImplementation;
-
-class ZonePacketHandler : public Logger {
-	ZoneProcessServerImplementation* processServer;
-	
-	ZoneServer* server;
-
+class TradeCompleteMessage : public Message {
 public:
-	ZonePacketHandler() : Logger() {
-		server = NULL;
-	} 
-
-	ZonePacketHandler(const string& s, ZoneProcessServerImplementation* serv);
-
-	~ZonePacketHandler() {
+	TradeCompleteMessage() : Message(6) {
+		insertShort(1);
+		insertInt(0xC542038B);
 	}
-
-	void handleMessage(Message* pack);
-	
-	void handleClientPermissionsMessage(Message* pack);
-	void handleSelectCharacter(Message* pack);
-	void handleCmdSceneReady(Message* packet);
-
-	void handleObjectControllerMessage(Message* pack);
-	void handleTellMessage(Message* pack);
-
-	void handleClientRandomNameRequest(Message* pack);
-	void handleClientCreateCharacter(Message* pack);
-	
-	void handleSendMail(Message* pack);
-	void handleRequestPersistentMsg(Message* pack);
-	void handleDeletePersistentMsg(Message* pack);
-	
-	void handleFactionRequestMessage(Message* pack);
-	void handleGetMapLocationsRequestMessage(Message* pack);
-	void handleStomachRequestMessage(Message* pack);
-	void handleGuildRequestMessage(Message* pack);
-	void handlePlayerMoneyRequest(Message* pack);
-	
-	void handleTravelListRequest(Message* pack);
-	void handleRadialSelect(Message* pack);
-	
-	void handleChatRoomMessage(Message* pack);
-	void handleChatRequestRoomList(Message* pack);
-	
-	void handleChatCreateRoom(Message* pack);
-	void handleChatEnterRoomById(Message* pack);
-	void handleChatDestroyRoom(Message* pack);
-	void handleChatRemoveAvatarFromRoom(Message* pack);
-	
-	void handleSuiEventNotification(Message* pack);
-	
-	void handleAbortTradeMessage(Message* pack);
-	void handleAddItemMessage(Message* pack);
-	void handleGiveMoneyMessage(Message* pack);
-	void handleAcceptTransactionMessage(Message* pack);
-	void handleUnAcceptTransactionMessage(Message* pack);
-	void handleVerifyTradeMessage(Message* pack);
 };
 
-#endif /*ZONEPACKETHANDLER_H_*/
+#endif /*TRADECOMPLETEMESSAGE_H_*/

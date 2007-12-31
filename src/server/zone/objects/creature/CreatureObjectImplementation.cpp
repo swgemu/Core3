@@ -2575,7 +2575,7 @@ void CreatureObjectImplementation::dismount(bool lockMount, bool ignoreCooldown)
 	parent = NULL;
 }
 
-void CreatureObjectImplementation::addCashCredits(int credits) {
+void CreatureObjectImplementation::addCashCredits(uint32 credits) {
 	cashCredits = cashCredits + credits;
 	
 	CreatureObjectDeltaMessage1* delta = new CreatureObjectDeltaMessage1(this);
@@ -2585,7 +2585,7 @@ void CreatureObjectImplementation::addCashCredits(int credits) {
 	((PlayerImplementation*) this)->sendMessage(delta);
 }
 
-void CreatureObjectImplementation::addBankCredits(int credits) {
+void CreatureObjectImplementation::addBankCredits(uint32 credits) {
 	bankCredits = bankCredits + credits;
 	
 	CreatureObjectDeltaMessage1* delta = new CreatureObjectDeltaMessage1(this);
@@ -2595,7 +2595,7 @@ void CreatureObjectImplementation::addBankCredits(int credits) {
 	((PlayerImplementation*) this)->sendMessage(delta);
 }
 
-void CreatureObjectImplementation::subtractCashCredits(int credits) {
+void CreatureObjectImplementation::subtractCashCredits(uint32 credits) {
 	cashCredits = cashCredits - credits;
 	
 	CreatureObjectDeltaMessage1* delta = new CreatureObjectDeltaMessage1(this);
@@ -2605,7 +2605,7 @@ void CreatureObjectImplementation::subtractCashCredits(int credits) {
 	((PlayerImplementation*) this)->sendMessage(delta);
 }
 
-void CreatureObjectImplementation::subtractBankCredits(int credits) {
+void CreatureObjectImplementation::subtractBankCredits(uint32 credits) {
 	bankCredits = bankCredits - credits;
 	
 	CreatureObjectDeltaMessage1* delta = new CreatureObjectDeltaMessage1(this);

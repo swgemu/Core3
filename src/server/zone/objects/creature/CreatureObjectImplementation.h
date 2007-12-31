@@ -730,10 +730,10 @@ public:
 	void removeBuffs(bool doUpdateCreature = true);
 
 	// cash transaction methods
-	void addCashCredits(int credits);
-	void addBankCredits(int credits);
-	void subtractCashCredits(int credits);
-	void subtractBankCredits(int credits);
+	void addCashCredits(uint32 credits);
+	void addBankCredits(uint32 credits);
+	void subtractCashCredits(uint32 credits);
+	void subtractBankCredits(uint32 credits);
 
 	bool verifyCashCredits(int creditsToRemove);
 	bool verifyBankCredits(int creditsToRemove);

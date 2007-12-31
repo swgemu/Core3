@@ -149,6 +149,12 @@ class PlayerImplementation : public PlayerServant {
 	float lastTestPositionX;
 	float lastTestPositionY;
 	
+	uint64 tradeRequestedPlayer;
+	Vector<TangibleObject*> tradeItems;
+	uint32 moneyToTrade;
+	bool acceptedTrade;
+	bool verifiedTrade;
+	
 public:
 	static const int ONLINE = 1;
 	static const int OFFLINE = 2;
@@ -187,7 +193,6 @@ public:
 
 	void createItems();
 	void loadItems();
-	void giveItem(Player* target, TangibleObject* item);
 	
 	void createBaseStats();
 	
@@ -228,6 +233,55 @@ public:
 	void addDatapadItem(SceneObject* item);
 	SceneObject* getDatapadItem(uint64 oid);
 	void removeDatapadItem(uint64 oid);
+
+	// trade mehtods
+	void addTradeItem(TangibleObject* item) {
+		for (int i = 0; i < tradeItems.size(); ++i) {
+			if (tradeItems.get(i) == item)
+				return;
+		}
+		
+		tradeItems.add(item);
+		acceptedTrade = verifiedTrade = false;
+	}
+	
+	void clearTradeItems() {
+		tradeItems.removeAll();
+		acceptedTrade = verifiedTrade = false;
+	}
+	
+	int getTradeSize() {
+		return tradeItems.size();
+	}
+	
+	TangibleObject* getTradeItem(int idx) {
+		return tradeItems.get(idx);
+	}
+	
+	void setMoneyToTrade(uint32 value) {
+		moneyToTrade = value;
+		acceptedTrade = verifiedTrade = false;
+	}
+	
+	uint32 getMoneyToTrade() {
+		return moneyToTrade;
+	}
+	
+	void setAcceptedTrade(bool val) {
+		acceptedTrade = val;
+	}
+	
+	bool hasAcceptedTrade() {
+		return acceptedTrade;
+	}
+	
+	void setVerifiedTrade(bool val) {
+		verifiedTrade = val;
+	}
+
+	bool hasVerifiedTrade() {
+		return verifiedTrade;
+	}
 
 	// combat methods
 	void queueAction(Player* player, uint64 target, uint32 actionCRC, uint32 actionCntr);
@@ -481,6 +535,10 @@ public:
 	inline void setLastTestPositionY(float pos) {
 		lastTestPositionY = pos;
 	}
+	
+	inline void setTradeRequestedPlayer(uint64 id) {
+		tradeRequestedPlayer = id;
+	}
 
 	// getters
 	inline string& getHairData() {
@@ -617,6 +675,10 @@ public:
 	
 	inline int getRegionID() {
 		return regionId;	
+	}
+	
+	inline uint64 getTradeRequestedPlayer() {
+		return tradeRequestedPlayer;
 	}
 	
 	inline void setRegionID(int regId) {

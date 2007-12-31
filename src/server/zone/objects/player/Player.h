@@ -153,6 +153,26 @@ public:
 
 	void lootCorpse();
 
+	void addTradeItem(TangibleObject* item);
+
+	void clearTradeItems();
+
+	int getTradeSize();
+
+	TangibleObject* getTradeItem(int idx);
+
+	void setAcceptedTrade(bool val);
+
+	bool hasAcceptedTrade();
+
+	void setVerifiedTrade(bool val);
+
+	bool hasVerifiedTrade();
+
+	void setMoneyToTrade(unsigned int value);
+
+	unsigned int getMoneyToTrade();
+
 	void changeCloth(unsigned long long itemid);
 
 	void changeWeapon(unsigned long long itemid);
@@ -162,8 +182,6 @@ public:
 	void createItems();
 
 	void loadItems();
-
-	void giveItem(Player* target, TangibleObject* item);
 
 	void createBaseStats();
 
@@ -279,6 +297,8 @@ public:
 
 	void setLastTestPositionY(float pos);
 
+	void setTradeRequestedPlayer(unsigned long long ID);
+
 	PlayerObject* getPlayerObject();
 
 	bool isLinkDead();
@@ -346,6 +366,8 @@ public:
 	float getLastTestPositionX();
 
 	float getLastTestPositionY();
+
+	unsigned long long getTradeRequestedPlayer();
 
 protected:
 	string _return_getRaceFileName;
@@ -438,6 +460,26 @@ public:
 
 	void lootCorpse();
 
+	void addTradeItem(TangibleObject* item);
+
+	void clearTradeItems();
+
+	int getTradeSize();
+
+	TangibleObject* getTradeItem(int idx);
+
+	void setAcceptedTrade(bool val);
+
+	bool hasAcceptedTrade();
+
+	void setVerifiedTrade(bool val);
+
+	bool hasVerifiedTrade();
+
+	void setMoneyToTrade(unsigned int value);
+
+	unsigned int getMoneyToTrade();
+
 	void changeCloth(unsigned long long itemid);
 
 	void changeWeapon(unsigned long long itemid);
@@ -447,8 +489,6 @@ public:
 	void createItems();
 
 	void loadItems();
-
-	void giveItem(Player* target, TangibleObject* item);
 
 	void createBaseStats();
 
@@ -564,6 +604,8 @@ public:
 
 	void setLastTestPositionY(float pos);
 
+	void setTradeRequestedPlayer(unsigned long long ID);
+
 	PlayerObject* getPlayerObject();
 
 	bool isLinkDead();
@@ -631,6 +673,8 @@ public:
 	float getLastTestPositionX();
 
 	float getLastTestPositionY();
+
+	unsigned long long getTradeRequestedPlayer();
 
 protected:
 	string _param0_trainSkillBox__string_;

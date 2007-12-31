@@ -73,6 +73,10 @@ class PlayerManagerImplementation : public PlayerManagerServant {
 	ItemManager* itemManager;
 	
 	GuildManager* guildManager;
+	
+private:
+	Player* loadFromDatabase(PlayerImplementation* player);
+	void loadWaypoints(PlayerImplementation* player);
 
 public:
 	PlayerManagerImplementation(ItemManager* mgr, ZoneProcessServerImplementation* srv);
@@ -88,12 +92,16 @@ public:
 	void doBankTip(Player* sender, Player* receiver, int tipAmount, bool updateTipTo);
 	void doCashTip(Player* sender, Player* receiver, int tipAmount, bool updateTipTo);
 	void modifyOfflineBank(Player* sender, string playerName, int creditAmount);
+	
+	void handleAbortTradeMessage(Player* player, bool doLock = true);
+	void handleAddItemMessage(Player* player, uint64 itemID);
+	void handleGiveMoneyMessage(Player* player, uint32 value);
+	void handleAcceptTransactionMessage(Player* player);
+	void handleUnAcceptTransactionMessage(Player* player);
+	void handleVerifyTradeMessage(Player* player);
+	
+	void moveItem(Player* sender, Player* receiver, TangibleObject* item);
 
-private:
-	Player* loadFromDatabase(PlayerImplementation* player);
-	void loadWaypoints(PlayerImplementation* player);
-
-public:	
 	inline void setGuildManager(GuildManager* gmanager) {
 		guildManager = gmanager;
 	}

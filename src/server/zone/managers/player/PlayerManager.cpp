@@ -50,6 +50,8 @@ which carries forward this exception.
 
 #include "../../objects/player/Player.h"
 
+#include "../../objects/tangible/TangibleObject.h"
+
 #include "PlayerMap.h"
 
 #include "PlayerManager.h"
@@ -130,12 +132,107 @@ void PlayerManager::unload(Player* player) {
 		((PlayerManagerImplementation*) _impl)->unload(player);
 }
 
-void PlayerManager::doBankTip(Player* sender, Player* receiver, int tipAmount, bool updateTipTo) {
+void PlayerManager::handleAbortTradeMessage(Player* player) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
 		ORBMethodInvocation invocation(this, 10);
+		invocation.addObjectParameter(player);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((PlayerManagerImplementation*) _impl)->handleAbortTradeMessage(player);
+}
+
+void PlayerManager::handleAddItemMessage(Player* player, unsigned long long itemID) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 11);
+		invocation.addObjectParameter(player);
+		invocation.addUnsignedLongParameter(itemID);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((PlayerManagerImplementation*) _impl)->handleAddItemMessage(player, itemID);
+}
+
+void PlayerManager::handleGiveMoneyMessage(Player* player, unsigned int value) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 12);
+		invocation.addObjectParameter(player);
+		invocation.addUnsignedIntParameter(value);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((PlayerManagerImplementation*) _impl)->handleGiveMoneyMessage(player, value);
+}
+
+void PlayerManager::handleAcceptTransactionMessage(Player* player) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 13);
+		invocation.addObjectParameter(player);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((PlayerManagerImplementation*) _impl)->handleAcceptTransactionMessage(player);
+}
+
+void PlayerManager::handleUnAcceptTransactionMessage(Player* player) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 14);
+		invocation.addObjectParameter(player);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((PlayerManagerImplementation*) _impl)->handleUnAcceptTransactionMessage(player);
+}
+
+void PlayerManager::handleVerifyTradeMessage(Player* player) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 15);
+		invocation.addObjectParameter(player);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((PlayerManagerImplementation*) _impl)->handleVerifyTradeMessage(player);
+}
+
+void PlayerManager::moveItem(Player* sender, Player* receiver, TangibleObject* item) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 16);
+		invocation.addObjectParameter(sender);
+		invocation.addObjectParameter(receiver);
+		invocation.addObjectParameter(item);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((PlayerManagerImplementation*) _impl)->moveItem(sender, receiver, item);
+}
+
+void PlayerManager::doBankTip(Player* sender, Player* receiver, int tipAmount, bool updateTipTo) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 17);
 		invocation.addObjectParameter(sender);
 		invocation.addObjectParameter(receiver);
 		invocation.addSignedIntParameter(tipAmount);
@@ -151,7 +248,7 @@ void PlayerManager::doCashTip(Player* sender, Player* receiver, int tipAmount, b
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 11);
+		ORBMethodInvocation invocation(this, 18);
 		invocation.addObjectParameter(sender);
 		invocation.addObjectParameter(receiver);
 		invocation.addSignedIntParameter(tipAmount);
@@ -167,7 +264,7 @@ void PlayerManager::modifyOfflineBank(Player* sender, string& receiverName, int 
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 12);
+		ORBMethodInvocation invocation(this, 19);
 		invocation.addObjectParameter(sender);
 		invocation.addAsciiParameter(receiverName);
 		invocation.addSignedIntParameter(creditAmount);
@@ -182,7 +279,7 @@ void PlayerManager::setGuildManager(GuildManager* gmanager) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 13);
+		ORBMethodInvocation invocation(this, 20);
 		invocation.addObjectParameter(gmanager);
 
 		invocation.executeWithVoidReturn();
@@ -195,7 +292,7 @@ Player* PlayerManager::getPlayer(string& name) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 14);
+		ORBMethodInvocation invocation(this, 21);
 		invocation.addAsciiParameter(name);
 
 		return (Player*) invocation.executeWithObjectReturn();
@@ -208,7 +305,7 @@ GuildManager* PlayerManager::getGuildManager() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 15);
+		ORBMethodInvocation invocation(this, 22);
 
 		return (GuildManager*) invocation.executeWithObjectReturn();
 	} else
@@ -220,7 +317,7 @@ PlayerMap* PlayerManager::getPlayerMap() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 16);
+		ORBMethodInvocation invocation(this, 23);
 
 		return (PlayerMap*) invocation.executeWithObjectReturn();
 	} else
@@ -251,24 +348,45 @@ Packet* PlayerManagerAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* i
 		unload((Player*) inv->getObjectParameter());
 		break;
 	case 10:
-		doBankTip((Player*) inv->getObjectParameter(), (Player*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter());
+		handleAbortTradeMessage((Player*) inv->getObjectParameter());
 		break;
 	case 11:
-		doCashTip((Player*) inv->getObjectParameter(), (Player*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter());
+		handleAddItemMessage((Player*) inv->getObjectParameter(), inv->getUnsignedLongParameter());
 		break;
 	case 12:
-		modifyOfflineBank((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_modifyOfflineBank__Player_string_int_), inv->getSignedIntParameter());
+		handleGiveMoneyMessage((Player*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
 		break;
 	case 13:
-		setGuildManager((GuildManager*) inv->getObjectParameter());
+		handleAcceptTransactionMessage((Player*) inv->getObjectParameter());
 		break;
 	case 14:
-		resp->insertLong(getPlayer(inv->getAsciiParameter(_param0_getPlayer__string_))->_getORBObjectID());
+		handleUnAcceptTransactionMessage((Player*) inv->getObjectParameter());
 		break;
 	case 15:
-		resp->insertLong(getGuildManager()->_getORBObjectID());
+		handleVerifyTradeMessage((Player*) inv->getObjectParameter());
 		break;
 	case 16:
+		moveItem((Player*) inv->getObjectParameter(), (Player*) inv->getObjectParameter(), (TangibleObject*) inv->getObjectParameter());
+		break;
+	case 17:
+		doBankTip((Player*) inv->getObjectParameter(), (Player*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter());
+		break;
+	case 18:
+		doCashTip((Player*) inv->getObjectParameter(), (Player*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter());
+		break;
+	case 19:
+		modifyOfflineBank((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_modifyOfflineBank__Player_string_int_), inv->getSignedIntParameter());
+		break;
+	case 20:
+		setGuildManager((GuildManager*) inv->getObjectParameter());
+		break;
+	case 21:
+		resp->insertLong(getPlayer(inv->getAsciiParameter(_param0_getPlayer__string_))->_getORBObjectID());
+		break;
+	case 22:
+		resp->insertLong(getGuildManager()->_getORBObjectID());
+		break;
+	case 23:
 		resp->insertLong(getPlayerMap()->_getORBObjectID());
 		break;
 	default:
@@ -292,6 +410,34 @@ Player* PlayerManagerAdapter::load(unsigned long long charid) {
 
 void PlayerManagerAdapter::unload(Player* player) {
 	return ((PlayerManagerImplementation*) impl)->unload(player);
+}
+
+void PlayerManagerAdapter::handleAbortTradeMessage(Player* player) {
+	return ((PlayerManagerImplementation*) impl)->handleAbortTradeMessage(player);
+}
+
+void PlayerManagerAdapter::handleAddItemMessage(Player* player, unsigned long long itemID) {
+	return ((PlayerManagerImplementation*) impl)->handleAddItemMessage(player, itemID);
+}
+
+void PlayerManagerAdapter::handleGiveMoneyMessage(Player* player, unsigned int value) {
+	return ((PlayerManagerImplementation*) impl)->handleGiveMoneyMessage(player, value);
+}
+
+void PlayerManagerAdapter::handleAcceptTransactionMessage(Player* player) {
+	return ((PlayerManagerImplementation*) impl)->handleAcceptTransactionMessage(player);
+}
+
+void PlayerManagerAdapter::handleUnAcceptTransactionMessage(Player* player) {
+	return ((PlayerManagerImplementation*) impl)->handleUnAcceptTransactionMessage(player);
+}
+
+void PlayerManagerAdapter::handleVerifyTradeMessage(Player* player) {
+	return ((PlayerManagerImplementation*) impl)->handleVerifyTradeMessage(player);
+}
+
+void PlayerManagerAdapter::moveItem(Player* sender, Player* receiver, TangibleObject* item) {
+	return ((PlayerManagerImplementation*) impl)->moveItem(sender, receiver, item);
 }
 
 void PlayerManagerAdapter::doBankTip(Player* sender, Player* receiver, int tipAmount, bool updateTipTo) {

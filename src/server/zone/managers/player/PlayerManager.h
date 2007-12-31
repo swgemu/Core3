@@ -55,6 +55,8 @@ class GuildManager;
 
 class Player;
 
+class TangibleObject;
+
 class PlayerMap;
 
 class PlayerManager : public ORBObjectStub {
@@ -74,6 +76,20 @@ public:
 	Player* load(unsigned long long charid);
 
 	void unload(Player* player);
+
+	void handleAbortTradeMessage(Player* player);
+
+	void handleAddItemMessage(Player* player, unsigned long long itemID);
+
+	void handleGiveMoneyMessage(Player* player, unsigned int value);
+
+	void handleAcceptTransactionMessage(Player* player);
+
+	void handleUnAcceptTransactionMessage(Player* player);
+
+	void handleVerifyTradeMessage(Player* player);
+
+	void moveItem(Player* sender, Player* receiver, TangibleObject* item);
 
 	void doBankTip(Player* sender, Player* receiver, int tipAmount, bool updateTipTo);
 
@@ -107,6 +123,20 @@ public:
 	Player* load(unsigned long long charid);
 
 	void unload(Player* player);
+
+	void handleAbortTradeMessage(Player* player);
+
+	void handleAddItemMessage(Player* player, unsigned long long itemID);
+
+	void handleGiveMoneyMessage(Player* player, unsigned int value);
+
+	void handleAcceptTransactionMessage(Player* player);
+
+	void handleUnAcceptTransactionMessage(Player* player);
+
+	void handleVerifyTradeMessage(Player* player);
+
+	void moveItem(Player* sender, Player* receiver, TangibleObject* item);
 
 	void doBankTip(Player* sender, Player* receiver, int tipAmount, bool updateTipTo);
 

@@ -56,6 +56,7 @@ which carries forward this exception.
 #include "../../objects/tangible/weapons/JediWeapon.h"
 
 #include "../../../ServerCore.h"
+#include "../../ZoneServer.h"
 
 #include "../../objects.h"
 
@@ -68,6 +69,7 @@ which carries forward this exception.
 
 #include "../guild/GuildManager.h"
 #include "../planet/PlanetManager.h"
+#include "../item/ItemManager.h"
 #include "../../../chat/ChatManager.h"
 
 PlayerManagerImplementation::PlayerManagerImplementation(ItemManager* mgr, ZoneProcessServerImplementation* srv) : PlayerManagerServant() {
@@ -373,6 +375,263 @@ void PlayerManagerImplementation::unload(Player* player) {
 	player->saveProfessions();	
 	
 	playerMap->remove(player->getFirstName());
+}
+
+void PlayerManagerImplementation::handleAbortTradeMessage(Player* player, bool doLock) {
+	try {
+		player->wlock(doLock);
+
+		uint64 targID = player->getTradeRequestedPlayer();
+		SceneObject* obj = server->getZoneServer()->getObject(targID);
+		
+		AbortTradeMessage* msg = new AbortTradeMessage();
+
+		if (obj != NULL && obj->isPlayer()) {
+			Player* receiver = (Player*)obj;
+
+			receiver->sendMessage(msg->clone());
+
+			receiver->wlock(player);
+
+			receiver->clearTradeItems();
+			receiver->setTradeRequestedPlayer(0);
+			receiver->setAcceptedTrade(false);
+			receiver->setVerifiedTrade(false);
+			receiver->setMoneyToTrade(0);
+
+			receiver->unlock();
+		}
+		
+		player->sendMessage(msg->clone());
+
+		delete msg;
+
+		player->clearTradeItems();
+		player->setTradeRequestedPlayer(0);
+		player->setAcceptedTrade(false);
+		player->setVerifiedTrade(false);
+		player->setMoneyToTrade(0);
+
+		player->unlock(doLock);
+	} catch (...) {
+		player->unlock(doLock);
+		cout << "Unreported exception caught in PlayerManagerImplementation::handleAbortTradeMessage(Player* player)\n";
+	}
+}
+
+void PlayerManagerImplementation::handleAddItemMessage(Player* player, uint64 itemID) {
+	try {
+		player->wlock();
+
+		SceneObject* object = player->getInventoryItem(itemID);
+
+		if (object != NULL) {
+			if (object->isTangible()) {
+				TangibleObject* item = (TangibleObject*)object;
+				
+				if (item->isEquipped()) {;
+					handleAbortTradeMessage(player, false);
+					player->sendSystemMessage("You can't trade equipped items!");
+					
+					player->unlock();
+					return;
+				}
+
+				uint64 targID = player->getTradeRequestedPlayer();
+				SceneObject* obj = server->getZoneServer()->getObject(targID);
+
+				if (obj != NULL && obj->isPlayer()) {
+					player->addTradeItem(item);
+
+					Player* receiver = (Player*)obj;
+
+					item->sendTo(receiver);
+
+					AddItemMessage* msg = new AddItemMessage(itemID);
+					receiver->sendMessage(msg);
+				}
+			}
+		}
+
+		player->unlock();
+	} catch (...) {
+		player->unlock();
+		cout << "Unreported exception caught in PlayerManagerImplementation::handleAddItemMessage(Player* player, uint64 itemID)\n";
+	}
+}
+
+void PlayerManagerImplementation::handleGiveMoneyMessage(Player* player, uint32 value) {
+	try {
+		player->wlock();
+
+		uint32 currentMoney = player->getCashCredits();
+		
+		if (value > currentMoney)
+			value = currentMoney;
+		
+		player->setMoneyToTrade(value);
+		
+		uint64 targID = player->getTradeRequestedPlayer();
+		SceneObject* obj = server->getZoneServer()->getObject(targID);
+
+		if (obj != NULL && obj->isPlayer()) {
+			Player* receiver = (Player*)obj;
+		
+			GiveMoneyMessage* msg = new GiveMoneyMessage(value);
+			receiver->sendMessage(msg);
+		}
+
+		player->unlock();
+	} catch (...) {
+		player->unlock();
+		cout << "Unreported exception in PlayerManagerImplementation::hanleGiveMoneyMessage(Player* player, uint32 value)\n";
+	}
+}
+
+void PlayerManagerImplementation::handleAcceptTransactionMessage(Player* player) {
+	try {
+		player->wlock();
+		
+		player->setAcceptedTrade(true);
+		
+		uint64 targID = player->getTradeRequestedPlayer();
+		SceneObject* obj = server->getZoneServer()->getObject(targID);
+
+		if (obj != NULL && obj->isPlayer()) {
+			Player* receiver = (Player*)obj;
+
+			AcceptTransactionMessage* msg = new AcceptTransactionMessage();
+			receiver->sendMessage(msg);
+		}
+		
+		player->unlock();
+	} catch (...) {
+		player->unlock();
+		cout << "Unreported exception caught in PlayerManagerImplementation::handleAcceptTransactionMessage(Player* player)\n";
+	}
+}
+
+void PlayerManagerImplementation::handleUnAcceptTransactionMessage(Player* player) {
+	try {
+		player->wlock();
+		
+		player->setAcceptedTrade(false);
+		
+		uint64 targID = player->getTradeRequestedPlayer();
+		SceneObject* obj = server->getZoneServer()->getObject(targID);
+
+		if (obj != NULL && obj->isPlayer()) {
+			Player* receiver = (Player*)obj;
+
+			UnAcceptTransactionMessage* msg = new UnAcceptTransactionMessage();
+			receiver->sendMessage(msg);
+		}
+		
+		player->unlock();
+	} catch (...) {
+		player->unlock();
+		cout << "Unreported exception caught in PlayerManagerImplementation::handleUnAcceptTransactionMessage(Player* player)\n";
+	}
+}
+
+void PlayerManagerImplementation::handleVerifyTradeMessage(Player* player) {
+	try {
+		player->wlock();
+
+		player->setVerifiedTrade(true);
+
+		uint64 targID = player->getTradeRequestedPlayer();
+		SceneObject* obj = server->getZoneServer()->getObject(targID);
+
+		if (obj != NULL && obj->isPlayer()) {
+			Player* receiver = (Player*)obj;
+			
+			try {
+				receiver->wlock(player);
+
+				if (receiver->hasVerifiedTrade()) {
+					for (int i = 0; i < player->getTradeSize(); ++i) {
+						TangibleObject* item = player->getTradeItem(i);
+						moveItem(player, receiver, item);
+					}
+					
+					for (int i = 0; i < receiver->getTradeSize(); ++i) {
+						TangibleObject* item = receiver->getTradeItem(i);
+						moveItem(receiver, player, item);
+					}
+					
+					uint32 giveMoney = player->getMoneyToTrade();
+					
+					if (giveMoney > 0) {
+						player->subtractCashCredits(giveMoney);
+						receiver->addCashCredits(giveMoney);
+					}
+
+					giveMoney = receiver->getMoneyToTrade();
+					
+					if (giveMoney > 0) {
+						receiver->subtractCashCredits(giveMoney);
+						player->addCashCredits(giveMoney);
+					}
+					
+					receiver->clearTradeItems();
+					receiver->setTradeRequestedPlayer(0);
+					receiver->setAcceptedTrade(false);
+					receiver->setVerifiedTrade(false);
+					receiver->setMoneyToTrade(0);
+					
+					player->clearTradeItems();
+					player->setTradeRequestedPlayer(0);
+					player->setAcceptedTrade(false);
+					player->setVerifiedTrade(false);
+					player->setMoneyToTrade(0);
+					
+					TradeCompleteMessage* msg = new TradeCompleteMessage();
+					receiver->sendMessage(msg->clone());
+					player->sendMessage(msg->clone());
+
+					delete msg;
+				}
+
+				receiver->unlock();
+			} catch (...) {
+				cout << "Excepion in PlayerManagerImplementation::handleVerifyTradeMessage\n";
+				receiver->unlock();
+			}
+		}
+
+		player->unlock();
+	} catch (...) {
+		player->unlock();
+		cout << "Unreported exception caught in PlayerManagerImplementation::handleVerifyTradeMessage(Player* player)\n";
+	}
+}
+
+void PlayerManagerImplementation::moveItem(Player* sender, Player* receiver, TangibleObject* item) {
+	// Pre: both players locked
+	ItemManager* itemManager = server->getItemManager();
+	
+	item->setEquipped(false);
+	sender->removeInventoryItem(item->getObjectID());
+
+	item->sendDestroyTo(sender);
+
+	receiver->addInventoryItem(item);
+	item->sendTo(receiver);
+	
+	if (item->isPersistent()) {
+		item->setUpdated(true);
+		itemManager->savePlayerItem(receiver, item);
+	}
+	/*
+	stringstream playertxt;
+	stringstream targettxt;
+	
+	playertxt << "You gave a " << item->getName().c_str() << " to " << target->getFirstName() << ".";
+	targettxt << getFirstName() << " gave you a " << item->getName().c_str() << ".";
+	
+	sendSystemMessage(playertxt.str());
+	target->sendSystemMessage(targettxt.str());*/
 }
 
 void PlayerManagerImplementation::doBankTip(Player* sender, Player* receiver, int tipAmount, bool updateTipTo) {
