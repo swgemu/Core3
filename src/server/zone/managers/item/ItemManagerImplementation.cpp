@@ -160,8 +160,8 @@ void ItemManagerImplementation::createPlayerObject(Player* player, ResultSet* re
 		weaponitem->setMaxRangeAccuracy(result->getInt(21));
 		weaponitem->setWoundsRatio(result->getInt(22));
 		weaponitem->setArmorPiercing(result->getInt(23));
-		item->setConditionDamage(result->getInt(24));
-		item->setMaxCondition(result->getInt(25));
+		weaponitem->setConditionDamage(result->getInt(24));
+		weaponitem->setMaxCondition(result->getInt(25));
 		weaponitem->setDot0Type(result->getInt(47));
 		weaponitem->setDot0Attribute(result->getInt(48));
 		weaponitem->setDot0Strength(result->getInt(49));
@@ -468,7 +468,7 @@ void ItemManagerImplementation::createPlayerWeapon(Player* player, Weapon* item)
 	try { 
 		stringstream query;
 		query << "INSERT INTO `character_items` "
-			  << "(`item_id`,`character_id`,`name`,`template_crc`,`template_type`,`template_name`,`equipped`,`weapon_type`,`category`,`min_damage`,`max_damage`,`attack_speed`,`health_attack_cost`,`action_attack_cost`,`mind_attack_cost`,`point_blank_accuracy`,`point_blank_range`,`ideal_range`,`ideal_accuracy`,`max_range`,`max_range_accuracy`,`wounds_ratio`,`armor_piercing`,`dot0_type`,`dot0_attribute`,`dot0_strength`,`dot0_duration`,`dot0_potency`,`dot0_uses`,`dot1_type`,`dot1_attribute`,`dot1_strength`,`dot1_duration`,`dot1_potency`,`dot1_uses`,`dot2_type`,`dot2_attribute`,`dot2_strength`,`dot2_duration`,`dot2_potency`,`dot2_uses`,`sliced`)"
+			  << "(`item_id`,`character_id`,`name`,`template_crc`,`template_type`,`template_name`,`equipped`,`weapon_type`,`category`,`min_damage`,`max_damage`,`attack_speed`,`health_attack_cost`,`action_attack_cost`,`mind_attack_cost`,`point_blank_accuracy`,`point_blank_range`,`ideal_range`,`ideal_accuracy`,`max_range`,`max_range_accuracy`,`wounds_ratio`,`armor_piercing`,`condition_damage`,`max_condition`,`dot0_type`,`dot0_attribute`,`dot0_strength`,`dot0_duration`,`dot0_potency`,`dot0_uses`,`dot1_type`,`dot1_attribute`,`dot1_strength`,`dot1_duration`,`dot1_potency`,`dot1_uses`,`dot2_type`,`dot2_attribute`,`dot2_strength`,`dot2_duration`,`dot2_potency`,`dot2_uses`,`sliced`)"
 			  << " VALUES(" << item->getObjectID() << "," << player->getCharacterID() 
 			  << ",'\\" << item->getName().c_str() << "'," 
 			  << item->getObjectCRC() << "," << item->getObjectSubType() << ",'" << item->getTemplateName() << "',"  
@@ -477,7 +477,8 @@ void ItemManagerImplementation::createPlayerWeapon(Player* player, Weapon* item)
 			  << item->getActionAttackCost() << "," << item->getMindAttackCost() << "," << item->getPointBlankAccuracy() <<  ","  
 			  << item->getPointBlankRange() << "," << item->getIdealRange() << "," << item->getIdealAccuracy() << "," 
 			  << item->getMaxRange() << "," << item->getMaxRangeAccuracy() << "," << item->getWoundsRatio() << "," 
-			  << item->getArmorPiercing() << "," << item->getDot0Type() << "," << item->getDot0Attribute() << "," 
+			  << item->getArmorPiercing() << "," << item->getConditionDamage() << "," << item->getMaxCondition() << "," 
+			  << item->getDot0Type() << "," << item->getDot0Attribute() << "," 
 			  << item->getDot0Strength() << "," << item->getDot0Duration() << "," << item->getDot0Potency() << "," 
 			  << item->getDot0Uses() << "," << item->getDot1Type() << "," << item->getDot1Attribute() << "," 
 			  << item->getDot1Strength() << "," << item->getDot1Duration() << "," << item->getDot1Potency() << "," 

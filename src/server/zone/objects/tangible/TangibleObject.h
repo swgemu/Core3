@@ -99,6 +99,8 @@ public:
 
 	void setUpdated(bool upd);
 
+	void setConditionDamage(int damage);
+
 	SceneObject* getContainer();
 
 	unicode& getName();
@@ -167,6 +169,8 @@ public:
 	void setPersistent(bool pers);
 
 	void setUpdated(bool upd);
+
+	void setConditionDamage(int damage);
 
 	SceneObject* getContainer();
 

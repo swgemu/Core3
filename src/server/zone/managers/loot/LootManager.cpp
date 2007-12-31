@@ -174,6 +174,8 @@ void LootManager::createWeaponLoot(Creature* creature, int creatureLevel) {
 	
 	if (item != NULL) {
 		item->setWeaponStats(creatureLevel);
+		item->setConditionDamage(System::random(500));
+		
 		creature->addInventoryItem(item);
 	}
 }

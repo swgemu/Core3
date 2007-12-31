@@ -81,6 +81,9 @@ WeaponImplementation::WeaponImplementation(CreatureObject* creature, const strin
 void WeaponImplementation::initialize() {
 	templateTypeName = "weapon_name";
 
+	conditionDamage = 0;
+	maxCondition = 750;
+	
 	minDamage = 50;
 	maxDamage = 100;
 	

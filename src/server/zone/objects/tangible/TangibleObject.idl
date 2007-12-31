@@ -76,8 +76,10 @@ interface TangibleObject implements SceneObject {
 
 	// setters
 	void setPersistent(boolean pers);
-	
+
 	void setUpdated(boolean upd);
+
+	void setConditionDamage(int damage);
 	
 	// getters
 	SceneObject getContainer();
