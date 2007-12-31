@@ -41,13 +41,13 @@
 --which carries forward this exception.
 nightsisterAttack1 = {
 	attackname = "nightsisterAttack1",
-	animation = "force_lightning",
+	animation = "combo_2d_medium",
 	
-	requiredWeaponType = NONE,
+	requiredWeaponType = POLEARM,
 
 	range = 25,
 
-	damageRatio = 35,
+	damageRatio = 40,
 
 	speedRatio = 4,
 	coneAngle = 30,
@@ -55,12 +55,12 @@ nightsisterAttack1 = {
 	areaRange = 0,
 	accuracyBonus = 0,
 		
-	knockdownChance = 0,
-	postureDownChance = 2,
+	knockdownChance = 10,
+	postureDownChance = 10,
 	postureUpChance = 0,
-	dizzyChance = 2,
-	blindChance = 5,
-	stunChance = 5,
+	dizzyChance = 0,
+	blindChance = 10,
+	stunChance = 10,
 	intimidateChance = 10,
 	
 	CbtSpamBlock = "",
@@ -79,7 +79,7 @@ nightsisterAttack2 = {
 
 	range = 15,
 
-	damageRatio = 20,
+	damageRatio = 25,
 
 	speedRatio = 4,
 	coneAngle = 30,
@@ -105,9 +105,41 @@ nightsisterAttack2 = {
 AddRandomPoolAttackTargetSkill(nightsisterAttack2)
 nightsisterAttack3 = {
 	attackname = "nightsisterAttack3",
-	animation = "force_lightning",
+	animation = "combo_2c_medium",
 	
-	requiredWeaponType = NONE,
+	requiredWeaponType = POLEARM,
+
+	range = 15,
+
+	damageRatio = 20,
+
+	speedRatio = 4,
+	coneAngle = 30,
+
+	areaRange = 0,
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 10,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 10,
+	stunChance = 10,
+	intimidateChance = 10,
+	
+	CbtSpamBlock = "",
+	CbtSpamCounter = "",
+	CbtSpamEvade = "",
+	CbtSpamHit = "",
+	CbtSpamMiss = "",
+}
+
+AddRandomPoolAttackTargetSkill(nightsisterAttack3)
+nightsisterAttack4 = {
+	attackname = "nightsisterAttack4",
+	animation = "combo_2c_medium",
+	
+	requiredWeaponType = POLEARM,
 
 	range = 15,
 
@@ -120,44 +152,12 @@ nightsisterAttack3 = {
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
-	postureDownChance = 2,
+	postureDownChance = 10,
 	postureUpChance = 0,
 	dizzyChance = 0,
-	blindChance = 2,
-	stunChance = 2,
-	intimidateChance = 2,
-	
-	CbtSpamBlock = "",
-	CbtSpamCounter = "",
-	CbtSpamEvade = "",
-	CbtSpamHit = "",
-	CbtSpamMiss = "",
-}
-
-AddRandomPoolAttackTargetSkill(nightsisterAttack3)
-nightsisterAttack4 = {
-	attackname = "nightsisterAttack4",
-	animation = "force_lightning",
-	
-	requiredWeaponType = NONE,
-
-	range = 1,
-
-	damageRatio = 12,
-
-	speedRatio = 4,
-	coneAngle = 30,
-
-	areaRange = 0,
-	accuracyBonus = 0,
-		
-	knockdownChance = 0,
-	postureDownChance = 2,
-	postureUpChance = 0,
-	dizzyChance = 0,
-	blindChance = 2,
-	stunChance = 20,
-	intimidateChance = 2,
+	blindChance = 10,
+	stunChance = 10,
+	intimidateChance = 10,
 	
 	CbtSpamBlock = "",
 	CbtSpamCounter = "",

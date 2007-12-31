@@ -83,6 +83,8 @@ RunSkillsFile("creatureSkills/gubburAttacks.lua")
 RunSkillsFile("creatureSkills/gulginawAttacks.lua")
 RunSkillsFile("creatureSkills/gurrcatAttacks.lua")
 RunSkillsFile("creatureSkills/humbabaAttacks.lua")
+RunSkillsFile("creatureSkills/nyaxAttacks.lua")
+
 RunSkillsFile("creatureSkills/murraAttacks.lua")
 RunSkillsFile("creatureSkills/paralopeAttacks.lua")
 RunSkillsFile("creatureSkills/plumedRaspAttacks.lua")

@@ -72,7 +72,7 @@ function spawnCreature(creature, Planet, PositionX, PositionY, respawnTime)
 end
 
 function spawnCreatures(creature, Planet, PositionX, PositionY, radius, number)
-	for i=0,number do
+	for i=1,number do
 		angle = math.random(359)
 		dist = math.random(radius)
 	
@@ -134,7 +134,7 @@ RunCreatureFile("objects/creatures/singingMountainClanGuardian.lua")
 
 RunCreatureFile("objects/creatures/bazNitch.lua")
 RunCreatureFile("objects/creatures/kwi.lua")
-RunCreatureFile("objects/creatures/reptilianflier.lua")
+RunCreatureFile("objects/creatures/reptilianFlier.lua")
 RunCreatureFile("objects/creatures/malkloc.lua")
 RunCreatureFile("objects/creatures/purbole.lua")
 RunCreatureFile("objects/creatures/verne.lua")
@@ -155,6 +155,8 @@ RunCreatureFile("objects/creatures/gubbur.lua")
 RunCreatureFile("objects/creatures/gulginaw.lua")
 RunCreatureFile("objects/creatures/gurrcat.lua")
 RunCreatureFile("objects/creatures/humbaba.lua")
+RunCreatureFile("objects/creatures/lordNyax.lua")
+RunCreatureFile("objects/creatures/nyaxThug.lua")
 RunCreatureFile("objects/creatures/murra.lua")
 RunCreatureFile("objects/creatures/paralope.lua")
 RunCreatureFile("objects/creatures/plumedRasp.lua")
@@ -162,8 +164,8 @@ RunCreatureFile("objects/creatures/sharnaff.lua")
 RunCreatureFile("objects/creatures/sliceHound.lua")
 
 RunCreatureFile("objects/creatures/stormTrooper.lua")
-RunCreatureFile("objects/creatures/AtSt.lua")
-RunCreatureFile("objects/creatures/AtAt.lua")
+RunCreatureFile("objects/creatures/atSt.lua")
+RunCreatureFile("objects/creatures/atAt.lua")
 RunCreatureFile("objects/creatures/superBattleDroid.lua")
 
 RunCreatureFile("objects/creatures/rebelGeneral.lua")

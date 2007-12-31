@@ -408,7 +408,7 @@ void LootManager::createArmorLoot(Creature* creature, int creatureLevel) {
 			case 2 :
 				ArmorImplementation* boots5Impl = new ArmorImplementation(creature, 0xA06D625, 
 						unicode("Marine Boots"), "armor_marine_boots", false);
-				item = (Armor*) helmet5Impl->deploy();
+				item = (Armor*) boots5Impl->deploy();
 				break;
 			case 3 :
 				ArmorImplementation* pants5Impl = new ArmorImplementation(creature, 0xF3D42F59, 

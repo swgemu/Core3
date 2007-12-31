@@ -39,60 +39,28 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-singingMountainClanAttack1 = {
-	attackname = "singingMountainClanAttack1",
+nyaxAttack1 = {
+	attackname = "nyaxAttack1",
 	animation = "combo_2d_medium",
 	
-	requiredWeaponType = POLEARM,
+	requiredWeaponType = NONE,
 
 	range = 25,
 
-	damageRatio = 40,
+	damageRatio = 50,
 
-	speedRatio = 4,
-	coneAngle = 30,
-
-	areaRange = 0,
-	accuracyBonus = 0,
-		
-	knockdownChance = 10,
-	postureDownChance = 10,
-	postureUpChance = 0,
-	dizzyChance = 0,
-	blindChance = 10,
-	stunChance = 10,
-	intimidateChance = 10,
-	
-	CbtSpamBlock = "",
-	CbtSpamCounter = "",
-	CbtSpamEvade = "",
-	CbtSpamHit = "",
-	CbtSpamMiss = "",
-}
-
-AddRandomPoolAttackTargetSkill(singingMountainClanAttack1)
-singingMountainClanAttack2 = {
-	attackname = "singingMountainClanAttack2",
-	animation = "combo_2d_medium",
-	
-	requiredWeaponType = POLEARM,
-
-	range = 15,
-
-	damageRatio = 25,
-
-	speedRatio = 4,
+	speedRatio = 3,
 	coneAngle = 30,
 
 	areaRange = 0,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
-	postureDownChance = 10,
+	postureDownChance = 2,
 	postureUpChance = 0,
 	dizzyChance = 2,
-	blindChance = 10,
-	stunChance = 10,
+	blindChance = 5,
+	stunChance = 5,
 	intimidateChance = 10,
 	
 	CbtSpamBlock = "",
@@ -102,12 +70,12 @@ singingMountainClanAttack2 = {
 	CbtSpamMiss = "",
 }
 
-AddRandomPoolAttackTargetSkill(singingMountainClanAttack2)
-singingMountainClanAttack3 = {
-	attackname = "singingMountainClanAttack3",
-	animation = "combo_2c_medium",
+AddRandomPoolAttackTargetSkill(nyaxAttack1)
+nyaxAttack2 = {
+	attackname = "nyaxAttack2",
+	animation = "combo_2d_medium",
 	
-	requiredWeaponType = POLEARM,
+	requiredWeaponType = NONE,
 
 	range = 15,
 
@@ -120,12 +88,12 @@ singingMountainClanAttack3 = {
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
-	postureDownChance = 10,
+	postureDownChance = 0,
 	postureUpChance = 0,
-	dizzyChance = 0,
-	blindChance = 10,
-	stunChance = 10,
-	intimidateChance = 10,
+	dizzyChance = 2,
+	blindChance = 2,
+	stunChance = 2,
+	intimidateChance = 2,
 	
 	CbtSpamBlock = "",
 	CbtSpamCounter = "",
@@ -134,38 +102,4 @@ singingMountainClanAttack3 = {
 	CbtSpamMiss = "",
 }
 
-AddRandomPoolAttackTargetSkill(singingMountainClanAttack3)
-singingMountainClanAttack4 = {
-	attackname = "singingMountainClanAttack4",
-	animation = "combo_2c_medium",
-	
-	requiredWeaponType = POLEARM,
-
-	range = 15,
-
-	damageRatio = 15,
-
-	speedRatio = 4,
-	coneAngle = 30,
-
-	areaRange = 0,
-	accuracyBonus = 0,
-		
-	knockdownChance = 0,
-	postureDownChance = 10,
-	postureUpChance = 0,
-	dizzyChance = 0,
-	blindChance = 10,
-	stunChance = 10,
-	intimidateChance = 10,
-	
-	CbtSpamBlock = "",
-	CbtSpamCounter = "",
-	CbtSpamEvade = "",
-	CbtSpamHit = "",
-	CbtSpamMiss = "",
-}
-
-AddRandomPoolAttackTargetSkill(singingMountainClanAttack4)
-
-
+AddRandomPoolAttackTargetSkill(nyaxAttack2)

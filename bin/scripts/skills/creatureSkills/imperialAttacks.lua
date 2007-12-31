@@ -47,7 +47,7 @@ stormTrooperAttack1 = {
 
 	range = 64,
 
-	damageRatio = 15,
+	damageRatio = 2,
 
 	speedRatio = 4,
 	coneAngle = 0,

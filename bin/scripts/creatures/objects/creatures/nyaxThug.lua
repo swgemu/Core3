@@ -39,37 +39,37 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-atSt = Creature:new {
-	objectName = "atSt", -- name of the lua Object
+nyaxThug = Creature:new {
+	objectName = "nyaxThug", -- name of the lua Object
 	
-	name = "an At-St",
-	objectCRC = 2128352281,
-	socialGroup = "imperial",
+	name = "a Thug",
+	objectCRC = 2603521920,
+	socialGroup = "nyax",
+	named = TRUE,
 	
-	level = 100,
-	
-	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+	level = 70,
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
-	health = 50000,
-	strength = 50000,
-	constitution = 50000,
+	health = 8000,
+	strength = 1000,
+	constitution = 1000,
 
-	action = 50000,
-	quickness = 50000,
-	stamina = 50000,
+	action = 8000,
+	quickness = 1000,
+	stamina = 1000,
 
-	mind = 50000,
-	focus = 50000,
-	willpower = 50000,
-	
-	armor = 2,
+	mind = 8000,
+	focus = 1000,
+	willpower = 1000,
 
 	height = 1,
+	armor = 1,
+	
 	
 	accuracy = 300,
 
-	skills = { "stormTrooperAttack2" }
+	skills = { "nyaxAttack2" }
 	-- respawnTimer = 180,
 }
 
-Creatures:addCreature(atSt, 2128352281) --- Add to global creature table
+Creatures:addCreature(nyaxThug, 2603521920) --- Add to global creature table
