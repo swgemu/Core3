@@ -73,6 +73,8 @@ public:
 
 	void unloadPlayerItems(Player* player);
 
+	void savePlayerItem(Player* player, TangibleObject* item);
+
 	void deletePlayerItem(Player* player, TangibleObject* item);
 
 	void showDbStats(Player* player);
@@ -101,6 +103,8 @@ public:
 	void loadDefaultPlayerItems(Player* player);
 
 	void unloadPlayerItems(Player* player);
+
+	void savePlayerItem(Player* player, TangibleObject* item);
 
 	void deletePlayerItem(Player* player, TangibleObject* item);
 

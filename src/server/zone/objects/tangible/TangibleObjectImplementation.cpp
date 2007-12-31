@@ -192,6 +192,14 @@ void TangibleObjectImplementation::sendTo(Player* player, bool doClose) {
 	
 }
 
+void TangibleObjectImplementation::sendDestroyTo(Player* player) {
+	ZoneClient* client = player->getClient();
+	if (client == NULL)
+		return;
+	
+	destroy(client);
+}
+
 void TangibleObjectImplementation::close(Player* player) {
 	ZoneClient* client = player->getClient();
 	if (client == NULL)

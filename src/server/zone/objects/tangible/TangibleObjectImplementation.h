@@ -109,7 +109,9 @@ public:
 	void removeFromZone();
 
 	void sendTo(Player* player, bool doClose = true);
-	
+
+	void sendDestroyTo(Player* player);
+
 	void close(Player* player);
 
 	inline TangibleObject* deploy() {

@@ -739,6 +739,44 @@ void ZonePacketHandler::handleSuiEventNotification(Message* pack) {
 		if (cancel != 1)
 			player->startDancing(value.c_str());
 		break;
+	case 0xBEEFAAAA:	// slice weapon
+		if (cancel != 1) {
+			Inventory* inventory = player->getInventory(); 
+			
+			int itemindex = atoi(value.c_str().c_str());
+			int weaponCount = 0;
+
+			for (int i = 0; i < inventory->objectsSize(); i++) {
+				TangibleObject* item = (TangibleObject*) inventory->getObject(i);
+				
+				if (item->isWeapon()) {
+					Weapon* weapon = (Weapon*) item;
+	
+					if (!weapon->isSliced()) {
+						if (weaponCount == itemindex)
+							weapon->sliceWeapon(player);
+
+						weaponCount++;
+					}
+				}
+			}
+		}
+
+		break;
+	case 0xBEEFAAEA: // give item
+		if (cancel != 1) {
+			Inventory* inventory = player->getInventory(); 
+
+			int itemindex = atoi(value.c_str().c_str());
+
+			TangibleObject* item = (TangibleObject*) inventory->getObject(itemindex);
+
+			SceneObject* target = player->getTarget();
+			if (target->isPlayer())
+				player->giveItem((Player*) target, item);
+		}
+
+		break;
 	/*case 0x4347494C:
 		if (cancel != 1)
 			processServer->getGuildManager()->handleCreateGuildNameBox(player, value.c_str());

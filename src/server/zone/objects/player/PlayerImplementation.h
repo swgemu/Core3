@@ -187,7 +187,8 @@ public:
 
 	void createItems();
 	void loadItems();
-
+	void giveItem(Player* target, TangibleObject* item);
+	
 	void createBaseStats();
 	
 	void sendToOwner();

@@ -688,13 +688,6 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 			} else {
 				player->sendSystemMessage("Already buffed");
 			}
-		} else if (cmd == "@sliceEquippedWeapon") {
-			Weapon* weapon = player->getWeapon();
-			
-			if (weapon != NULL) {
-				weapon->sliceWeapon(player);
-			} else
-				player->sendSystemMessage("No weapon equipped.");
 		} else if (cmd == "@dbStats") {
 			if (userManager->isAdmin(player->getFirstName())) {
 				itemManager->showDbStats(player);
@@ -707,7 +700,22 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 			if (userManager->isAdmin(player->getFirstName())) {
 				itemManager->purgeDbDeleted(player);
 			}	
-		} /*else if (cmd == "@open") {
+		} else if (cmd == "@sliceWeapon") {
+			SuiCreatePageMessage* list;
+			list = new ListBox(0xBEEFAAAA, "Weapon Upgrade Kit", "Select the item you wish to slice");
+			
+			int items = player->getInventory()->objectsSize();
+			
+			for (int i = 0; i < items; i++)
+				if (((TangibleObject*)player->getInventory()->getObject(i))->getObjectSubType()==2)
+					if (!((Weapon*)player->getInventory()->getObject(i))->isSliced())
+						((ListBox*)list)->addItem(((TangibleObject*)player->getInventory()->getObject(i))->getName().c_str());	
+			
+			((ListBox*)list)->generateMessage();
+
+			player->sendMessage(list);
+		}
+		/*else if (cmd == "@open") {
 					CreatureObject* target = (CreatureObject*)player->getTarget();
 					if (target != NULL) {
 						Message* packet = new Message();

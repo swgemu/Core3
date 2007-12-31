@@ -63,6 +63,8 @@ class SceneObject;
 
 class CreatureObject;
 
+class TangibleObject;
+
 class PlayerObject;
 
 class Weapon;
@@ -160,6 +162,8 @@ public:
 	void createItems();
 
 	void loadItems();
+
+	void giveItem(Player* target, TangibleObject* item);
 
 	void createBaseStats();
 
@@ -443,6 +447,8 @@ public:
 	void createItems();
 
 	void loadItems();
+
+	void giveItem(Player* target, TangibleObject* item);
 
 	void createBaseStats();
 

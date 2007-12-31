@@ -152,6 +152,9 @@ void RadialManager::handleSelection(int radialID, Player* player, SceneObject* o
 	switch (radialID) {
 	case 7: // EXAMINE
 		break;
+	case 8: // TRADE
+		handleTrade(player, obj);
+		break;
 	case 14: // DESTROY
 		break;
 	case 20: // ITEM_USE
@@ -319,5 +322,26 @@ void RadialManager::handleVehicleGenerate(SceneObject* obj) {
 	} catch (...) {
 		cout << "Unreported exception caught in RadialManager::handleVehicleGenerate\n";
 		mount->unlock();
+	}
+}
+
+void RadialManager::handleTrade(Player* player, SceneObject* obj) {
+	if (obj->isPlayer()) {
+		Inventory* inventory = player->getInventory();
+
+		stringstream msg;
+		msg << "Select the item you wish to give to " << ((Player*) obj)->getFirstName();
+		
+		ListBox* list = new ListBox(0xBEEFAAEA, "Give Item", msg.str());
+		
+		for (int i = 0; i < inventory->objectsSize(); i++) {
+			TangibleObject* item = (TangibleObject*) inventory->getObject(i);
+			
+			list->addItem(item->getName().c_str());
+		}
+
+		list->generateMessage();
+
+		player->sendMessage(list);
 	}
 }

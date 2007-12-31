@@ -502,6 +502,32 @@ void PlayerImplementation::loadItems() {
 	}
 }
 
+void PlayerImplementation::giveItem(Player* target, TangibleObject* item) {
+	ItemManager* itemManager = getZone()->getZoneServer()->getItemManager();
+	
+	item->setEquipped(false);
+	removeInventoryItem(item);
+
+	item->sendDestroyTo(_this);
+
+	target->addInventoryItem(item);
+	item->sendTo(target);
+	
+	if (item->isPersistent()) {
+		item->setUpdated(true);
+		itemManager->savePlayerItem(target,item);
+	}
+
+	stringstream playertxt;
+	stringstream targettxt;
+	
+	playertxt << "You gave a " << item->getName().c_str() << " to " << target->getFirstName() << ".";
+	targettxt << getFirstName() << " gave you a " << item->getName().c_str() << ".";
+	
+	sendSystemMessage(playertxt.str());
+	target->sendSystemMessage(targettxt.str());
+}
+
 void PlayerImplementation::createBaseStats() {
 	//TODO: bit hackish, find more clean solution
 	

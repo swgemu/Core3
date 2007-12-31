@@ -438,11 +438,12 @@ void ItemManagerImplementation::createPlayerItem(Player* player, TangibleObject*
 void ItemManagerImplementation::savePlayerItem(Player* player, TangibleObject* item) {
 	try {
 		stringstream query;
-		query << "update `character_items` set equipped = " << item->isEquipped() << " ";
+		query << "update `character_items` set equipped = " << item->isEquipped();
+		query << ", character_id = " << player->getCharacterID() << " ";
 
 		if (item->isWeapon()) {
-			query << ", condition_damage = " << item->getConditionDamage();
-			query << ", max_condition = " << item->getMaxCondition();
+			query << ", condition_damage = " << ((Weapon*) item)->getConditionDamage();
+			query << ", max_condition = " << ((Weapon*) item)->getMaxCondition();
 			
 			query << ", min_damage = " << ((Weapon*) item)->getMinDamage();
 			query << ", max_damage = " << ((Weapon*) item)->getMaxDamage();

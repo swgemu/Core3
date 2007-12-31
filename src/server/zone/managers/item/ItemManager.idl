@@ -55,6 +55,8 @@ interface ItemManager {
 	
 	void unloadPlayerItems(Player player);
 
+	void savePlayerItem(Player player, TangibleObject item); 
+
 	void deletePlayerItem(Player player, TangibleObject item);
 
 	// stat methods

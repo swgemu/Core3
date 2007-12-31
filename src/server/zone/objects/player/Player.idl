@@ -52,6 +52,8 @@ import "../scene/SceneObject";
 
 import "../creature/CreatureObject";
 
+import "../tangible/TangibleObject";
+
 import "PlayerObject";
 
 import "../tangible/weapons/Weapon";
@@ -131,6 +133,8 @@ interface Player implements CreatureObject {
 	
 	void createItems();
 	void loadItems();
+	
+	void giveItem(Player target, TangibleObject item);
 
 	void createBaseStats();
 	

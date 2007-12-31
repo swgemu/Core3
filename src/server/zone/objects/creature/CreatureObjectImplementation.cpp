@@ -1820,6 +1820,10 @@ TangibleObject* CreatureObjectImplementation::getInventoryItem(uint64 oid) {
 	return (TangibleObject*) inventory->getObject(oid);
 }
 
+void CreatureObjectImplementation::removeInventoryItem(SceneObject* item) {
+	inventory->removeObject(item->getObjectID());
+}
+
 void CreatureObjectImplementation::removeInventoryItem(uint64 oid) {
 	inventory->removeObject(oid);
 }

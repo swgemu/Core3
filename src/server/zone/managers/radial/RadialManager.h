@@ -70,6 +70,8 @@ public:
 	
 	void handleVehicleStore(SceneObject* obj);
 	void handleVehicleGenerate(SceneObject* obj);
+
+	void handleTrade(Player* player, SceneObject* obj);
 	
 private:
 	ObjectMenuResponse* parseDefaults(Player* player, uint64 objectid, Packet* pack);
