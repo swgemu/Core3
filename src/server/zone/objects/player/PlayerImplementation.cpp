@@ -1262,12 +1262,31 @@ void PlayerImplementation::doStateRecovery() {
 void PlayerImplementation::doClone() {
 	info("cloning player");
 
-	if (faction == String::hashCode("rebel"))
-		doWarp(-130.0f, -5300.0f, 0, true);
-	else if (faction == String::hashCode("imperial"))
-		doWarp(10.0f, -5480.0f, 0, true);
-	else
-		doWarp(96.0f, -5334.0f);
+	switch (zoneID) {
+	case 0:	// corellia
+		if (faction == String::hashCode("rebel"))
+			doWarp(-326.0f, -4640.0f, 0, true);				// shuttle 1
+		else
+			doWarp(-28.0f, -4438.0f);						// shuttle 2
+		
+		break;
+	case 2: // dathomir
+		if (faction == String::hashCode("rebel"))			// science outpost
+			doWarp(-76.0f, -1627.0f, 0, true);
+		else
+			doWarp(618.0f, 3054.0f);						// trade outpost
+		
+		break;
+	default:
+		if (faction == String::hashCode("rebel"))
+			doWarp(-130.0f, -5300.0f, 0, true);
+		else if (faction == String::hashCode("imperial"))
+			doWarp(10.0f, -5480.0f, 0, true);
+		else
+			doWarp(96.0f, -5334.0f);
+		
+		break;
+	}
 		
 	clearStates();
 		
