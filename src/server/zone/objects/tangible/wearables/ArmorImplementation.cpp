@@ -80,7 +80,7 @@ void ArmorImplementation::initialize() {
 	electricity = 50.0f;
 	electricityIsSpecial = false;
 
-	stun = 50.0f;
+	stun = 25.0f;
 	stunIsSpecial = true;
 
 	blast = 50.0f;
@@ -262,7 +262,7 @@ void ArmorImplementation::setArmorStats(int modifier) {
 		kinetic = kinetic + (modifier / 10) + (luck / 10);
 		energy = energy + (modifier / 10) + (luck / 10);
 		electricity = electricity + (modifier / 10) + (luck / 10);
-		stun = stun + (modifier / 10) + (luck / 10);
+		stun = stun + (modifier / 20) + (luck / 20);
 		blast = blast + (modifier / 10) + (luck / 10);
 		heat = heat + (modifier / 10) + (luck / 10);
 		cold = cold + (modifier / 10) + (luck / 10);
@@ -273,7 +273,7 @@ void ArmorImplementation::setArmorStats(int modifier) {
 	kineticIsSpecial = System::random(1);
 	energyIsSpecial = System::random(1);
 	electricityIsSpecial = System::random(1);
-	stunIsSpecial = System::random(1);
+	stunIsSpecial = true;
 	blastIsSpecial = System::random(1);
 	heatIsSpecial = System::random(1);
 	coldIsSpecial = System::random(1);
@@ -289,8 +289,8 @@ void ArmorImplementation::setArmorStats(int modifier) {
 	if (electricity > 90.0f) 
 		electricity = 90.0f;
 	
-	if (stun > 90.0f) 
-		stun = 90.0f;
+	if (stun > 50.0f) 
+		stun = 50.0f;
 	
 	if (blast > 90.0f) 
 		blast = 90.0f;

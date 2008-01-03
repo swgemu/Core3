@@ -51,6 +51,16 @@ void LootManager::lootCorpse(Player* player, Creature* creature) {
 					lootItem->sendTo(player);
 
 					lootItem->setPersistent(false);
+					
+					if (player->getGroupObject()!=NULL) {
+						stringstream grouptxt;
+						grouptxt << player->getCharacterName().c_str() << " looted " << lootItem->getName().c_str() << "\\#ffffff from " << creature->getCharacterName().c_str();
+						
+						unicode utxt = unicode(grouptxt.str());
+						Message* packet = new ChatSystemMessage(utxt);
+
+						player->getGroupObject()->broadcastMessage(packet);
+					}					
 				}
 			}
 
@@ -77,9 +87,9 @@ void LootManager::createLoot(Creature* creature) {
 	if (creatureLevel == 0) 
 		creatureLevel = 1;
 
-	int weaponDropRate = 1750;
-	int armorDropRate = 1750;
-	int junkDropRate = 1050;
+	int weaponDropRate = 1500;
+	int armorDropRate = 1500;
+	int junkDropRate = 1100;
 	int creditDropRate = 1500;
 	
 	creature->setCashCredits(0);
@@ -169,12 +179,17 @@ void LootManager::createWeaponLoot(Creature* creature, int creatureLevel) {
 		RifleRangedWeaponImplementation* rifle2Impl = new RifleRangedWeaponImplementation(creature, 
 				"object/weapon/ranged/rifle/shared_rifle_tenloss_dxr6_disruptor_loot.iff", unicode("a DX6R Rifle"), "rifle_tenloss_dxr6", true);
 		item = (Weapon*) rifle2Impl->deploy();
-		break;			
+		break;
+	/*case 13 :	// FLAMETHROWER
+			RifleRangedWeaponImplementation* flamerImpl = new RifleRangedWeaponImplementation(creature, 
+					"object/weapon/ranged/rifle/shared_rifle_flame_thrower.iff", unicode("a Flamethrower"), "rifle_flame_thrower", true);
+			item = (Weapon*) flamerImpl->deploy();
+			break;*/
 	}
 	
 	if (item != NULL) {
 		item->setWeaponStats(creatureLevel);
-		item->setConditionDamage(System::random(500));
+		item->setConditionDamage(System::random(649));
 		
 		creature->addInventoryItem(item);
 	}
@@ -430,13 +445,13 @@ void LootManager::createArmorLoot(Creature* creature, int creatureLevel) {
 			}
 		}
 		break;
-	/*case 5:
+	case 5:
 		if (((objectCRC == 0xF0663601)||(objectCRC == 0xAA197516))&&(System::random(10)==7)) {
 			ArmorImplementation* nsImpl = new ArmorImplementation(creature, 0x2E943BD2, unicode("Nightsister Bicep"), "nightsister_bicep_r", false);
 			item = (Armor*) nsImpl->deploy();
 			creatureLevel = creatureLevel + 200;
 		break;
-		}*/
+		}
 	}
 		
 	if (item != NULL) {

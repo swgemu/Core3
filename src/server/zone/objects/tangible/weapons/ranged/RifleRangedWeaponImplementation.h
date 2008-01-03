@@ -61,6 +61,7 @@ public:
 	}
 
 	void initialize() {
+		damageType = ENERGY;
 		armorPiercing = HEAVY;
 		attackSpeed = 7.9;
 

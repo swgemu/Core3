@@ -61,6 +61,7 @@ public:
 	}
 
 	void initialize() {
+		damageType = KINETIC;
 		minDamage = 58;
 		maxDamage = 172;
 		armorPiercing = LIGHT;

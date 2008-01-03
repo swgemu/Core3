@@ -146,41 +146,42 @@ void ItemManagerImplementation::createPlayerObject(Player* player, ResultSet* re
 		
 		WeaponImplementation* weaponitem = (WeaponImplementation*) item;
 		weaponitem->setCategory(result->getInt(9));
-		weaponitem->setMinDamage(result->getFloat(10));
-		weaponitem->setMaxDamage(result->getFloat(11));
-		weaponitem->setAttackSpeed(result->getFloat(12));
-		weaponitem->setHealthAttackCost(result->getInt(13));
-		weaponitem->setActionAttackCost(result->getInt(14));
-		weaponitem->setMindAttackCost(result->getInt(15));
-		weaponitem->setPointBlankAccuracy(result->getInt(16));
-		weaponitem->setPointBlankRange(result->getInt(17));
-		weaponitem->setIdealRange(result->getInt(18));
-		weaponitem->setIdealAccuracy(result->getInt(19));
-		weaponitem->setMaxRange(result->getInt(20));
-		weaponitem->setMaxRangeAccuracy(result->getInt(21));
-		weaponitem->setWoundsRatio(result->getInt(22));
-		weaponitem->setArmorPiercing(result->getInt(23));
-		weaponitem->setConditionDamage(result->getInt(24));
-		weaponitem->setMaxCondition(result->getInt(25));
-		weaponitem->setDot0Type(result->getInt(47));
-		weaponitem->setDot0Attribute(result->getInt(48));
-		weaponitem->setDot0Strength(result->getInt(49));
-		weaponitem->setDot0Duration(result->getInt(50));
-		weaponitem->setDot0Potency(result->getInt(51));
-		weaponitem->setDot0Uses(result->getInt(52));
-		weaponitem->setDot1Type(result->getInt(53));
-		weaponitem->setDot1Attribute(result->getInt(54));
-		weaponitem->setDot1Strength(result->getInt(55));
-		weaponitem->setDot1Duration(result->getInt(56));
-		weaponitem->setDot1Potency(result->getInt(57));
-		weaponitem->setDot1Uses(result->getInt(58));
-		weaponitem->setDot2Type(result->getInt(59));
-		weaponitem->setDot2Attribute(result->getInt(60));
-		weaponitem->setDot2Strength(result->getInt(61));
-		weaponitem->setDot2Duration(result->getInt(62));
-		weaponitem->setDot2Potency(result->getInt(63));
-		weaponitem->setDot2Uses(result->getInt(64));
-		weaponitem->setSliced(result->getBoolean(65));		
+		weaponitem->setDamageType(result->getInt(10));
+		weaponitem->setMinDamage(result->getFloat(11));
+		weaponitem->setMaxDamage(result->getFloat(12));
+		weaponitem->setAttackSpeed(result->getFloat(13));
+		weaponitem->setHealthAttackCost(result->getInt(14));
+		weaponitem->setActionAttackCost(result->getInt(15));
+		weaponitem->setMindAttackCost(result->getInt(16));
+		weaponitem->setPointBlankAccuracy(result->getInt(17));
+		weaponitem->setPointBlankRange(result->getInt(18));
+		weaponitem->setIdealRange(result->getInt(19));
+		weaponitem->setIdealAccuracy(result->getInt(20));
+		weaponitem->setMaxRange(result->getInt(21));
+		weaponitem->setMaxRangeAccuracy(result->getInt(22));
+		weaponitem->setWoundsRatio(result->getInt(23));
+		weaponitem->setArmorPiercing(result->getInt(24));
+		weaponitem->setConditionDamage(result->getInt(25));
+		weaponitem->setMaxCondition(result->getInt(26));
+		weaponitem->setDot0Type(result->getInt(48));
+		weaponitem->setDot0Attribute(result->getInt(49));
+		weaponitem->setDot0Strength(result->getInt(50));
+		weaponitem->setDot0Duration(result->getInt(51));
+		weaponitem->setDot0Potency(result->getInt(52));
+		weaponitem->setDot0Uses(result->getInt(53));
+		weaponitem->setDot1Type(result->getInt(54));
+		weaponitem->setDot1Attribute(result->getInt(55));
+		weaponitem->setDot1Strength(result->getInt(56));
+		weaponitem->setDot1Duration(result->getInt(57));
+		weaponitem->setDot1Potency(result->getInt(58));
+		weaponitem->setDot1Uses(result->getInt(59));
+		weaponitem->setDot2Type(result->getInt(60));
+		weaponitem->setDot2Attribute(result->getInt(61));
+		weaponitem->setDot2Strength(result->getInt(62));
+		weaponitem->setDot2Duration(result->getInt(63));
+		weaponitem->setDot2Potency(result->getInt(64));
+		weaponitem->setDot2Uses(result->getInt(65));
+		weaponitem->setSliced(result->getBoolean(66));		
 		break;
 	case TangibleObjectImplementation::CLOTH:
 		item = new WearableImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
@@ -189,30 +190,30 @@ void ItemManagerImplementation::createPlayerObject(Player* player, ResultSet* re
 		item = new ArmorImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
 
 		ArmorImplementation* armoritem = (ArmorImplementation*) item;
-		armoritem->setRating(result->getInt(23));
-		//((ArmorImplementation*)item)->setCondition(result->getInt(24));
-		armoritem->setMaxCondition(result->getInt(25));
-		armoritem->setHealthEncumbrance(result->getInt(26));
-		armoritem->setActionEncumbrance(result->getInt(27));
-		armoritem->setMindEncumbrance(result->getInt(28));	 	
-		armoritem->setKinetic(result->getFloat(29));
-		armoritem->setKineticIsSpecial(result->getBoolean(30));
-		armoritem->setEnergy(result->getFloat(31));
-		armoritem->setEnergyIsSpecial(result->getBoolean(32));
-		armoritem->setElectricity(result->getFloat(33));
-		armoritem->setElectricityIsSpecial(result->getBoolean(34));
-		armoritem->setStun(result->getFloat(35));
-		armoritem->setStunIsSpecial(result->getBoolean(36));
-		armoritem->setBlast(result->getFloat(37));
-		armoritem->setBlastIsSpecial(result->getBoolean(38));
-		armoritem->setHeat(result->getFloat(39));
-		armoritem->setHeatIsSpecial(result->getBoolean(40));
-		armoritem->setCold(result->getFloat(41));
-		armoritem->setColdIsSpecial(result->getBoolean(42));
-		armoritem->setAcid(result->getFloat(43));
-		armoritem->setAcidIsSpecial(result->getBoolean(44));
-		armoritem->setLightSaber(result->getFloat(45));
-		armoritem->setLightSaberIsSpecial(result->getBoolean(46));		
+		armoritem->setRating(result->getInt(24));
+		//((ArmorImplementation*)item)->setCondition(result->getInt(25));
+		armoritem->setMaxCondition(result->getInt(26));
+		armoritem->setHealthEncumbrance(result->getInt(27));
+		armoritem->setActionEncumbrance(result->getInt(28));
+		armoritem->setMindEncumbrance(result->getInt(29));	 	
+		armoritem->setKinetic(result->getFloat(30));
+		armoritem->setKineticIsSpecial(result->getBoolean(31));
+		armoritem->setEnergy(result->getFloat(32));
+		armoritem->setEnergyIsSpecial(result->getBoolean(33));
+		armoritem->setElectricity(result->getFloat(34));
+		armoritem->setElectricityIsSpecial(result->getBoolean(35));
+		armoritem->setStun(result->getFloat(36));
+		armoritem->setStunIsSpecial(result->getBoolean(37));
+		armoritem->setBlast(result->getFloat(38));
+		armoritem->setBlastIsSpecial(result->getBoolean(39));
+		armoritem->setHeat(result->getFloat(40));
+		armoritem->setHeatIsSpecial(result->getBoolean(41));
+		armoritem->setCold(result->getFloat(42));
+		armoritem->setColdIsSpecial(result->getBoolean(43));
+		armoritem->setAcid(result->getFloat(44));
+		armoritem->setAcidIsSpecial(result->getBoolean(45));
+		armoritem->setLightSaber(result->getFloat(46));
+		armoritem->setLightSaberIsSpecial(result->getBoolean(47));		
 		break;
 	case TangibleObjectImplementation::TICKET:
 		break;
@@ -469,12 +470,12 @@ void ItemManagerImplementation::createPlayerWeapon(Player* player, Weapon* item)
 	try { 
 		stringstream query;
 		query << "INSERT INTO `character_items` "
-			  << "(`item_id`,`character_id`,`name`,`template_crc`,`template_type`,`template_name`,`equipped`,`weapon_type`,`category`,`min_damage`,`max_damage`,`attack_speed`,`health_attack_cost`,`action_attack_cost`,`mind_attack_cost`,`point_blank_accuracy`,`point_blank_range`,`ideal_range`,`ideal_accuracy`,`max_range`,`max_range_accuracy`,`wounds_ratio`,`armor_piercing`,`condition_damage`,`max_condition`,`dot0_type`,`dot0_attribute`,`dot0_strength`,`dot0_duration`,`dot0_potency`,`dot0_uses`,`dot1_type`,`dot1_attribute`,`dot1_strength`,`dot1_duration`,`dot1_potency`,`dot1_uses`,`dot2_type`,`dot2_attribute`,`dot2_strength`,`dot2_duration`,`dot2_potency`,`dot2_uses`,`sliced`)"
+			  << "(`item_id`,`character_id`,`name`,`template_crc`,`template_type`,`template_name`,`equipped`,`weapon_type`,`category`,`damage_type`,`min_damage`,`max_damage`,`attack_speed`,`health_attack_cost`,`action_attack_cost`,`mind_attack_cost`,`point_blank_accuracy`,`point_blank_range`,`ideal_range`,`ideal_accuracy`,`max_range`,`max_range_accuracy`,`wounds_ratio`,`armor_piercing`,`condition_damage`,`max_condition`,`dot0_type`,`dot0_attribute`,`dot0_strength`,`dot0_duration`,`dot0_potency`,`dot0_uses`,`dot1_type`,`dot1_attribute`,`dot1_strength`,`dot1_duration`,`dot1_potency`,`dot1_uses`,`dot2_type`,`dot2_attribute`,`dot2_strength`,`dot2_duration`,`dot2_potency`,`dot2_uses`,`sliced`)"
 			  << " VALUES(" << item->getObjectID() << "," << player->getCharacterID() 
 			  << ",'\\" << item->getName().c_str() << "'," 
 			  << item->getObjectCRC() << "," << item->getObjectSubType() << ",'" << item->getTemplateName() << "',"  
-			  << item->isEquipped() << "," << item->getType() << "," << item->getCategory() << "," << item->getMinDamage() << "," 
-			  << item->getMaxDamage() << "," << item->getAttackSpeed() << "," << item->getHealthAttackCost() << "," 
+			  << item->isEquipped() << "," << item->getType() << "," << item->getCategory() << "," << item->getDamageType() << "," 
+			  << item->getMinDamage() << "," << item->getMaxDamage() << "," << item->getAttackSpeed() << "," << item->getHealthAttackCost() << ","
 			  << item->getActionAttackCost() << "," << item->getMindAttackCost() << "," << item->getPointBlankAccuracy() <<  ","  
 			  << item->getPointBlankRange() << "," << item->getIdealRange() << "," << item->getIdealAccuracy() << "," 
 			  << item->getMaxRange() << "," << item->getMaxRangeAccuracy() << "," << item->getWoundsRatio() << "," 

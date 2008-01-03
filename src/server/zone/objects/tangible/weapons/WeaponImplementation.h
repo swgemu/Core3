@@ -63,6 +63,7 @@ protected:
 	
 	int category;
 
+	int damageType;
 	float minDamage;
 	float maxDamage;
 	
@@ -144,6 +145,16 @@ public:
 	static const int MIND = 7;
 	static const int FOCUS = 8;
 	static const int WILLPOWER = 9;
+	
+	static const int KINETIC = 1;
+	static const int ENERGY = 2;
+	static const int ELECTRICITY = 3;
+	static const int STUN = 4;
+	static const int BLAST = 5;
+	static const int HEAT = 6;
+	static const int COLD = 7;
+	static const int ACID = 8;
+	static const int LIGHTSABER = 9;
 
 public:
 	WeaponImplementation(uint64 objid, uint32 tempCRC, const unicode& n, const string& tempn, bool eqp, int tp, int cat);
@@ -194,6 +205,10 @@ public:
 	}
 
 	// setters
+	inline void setDamageType(int type) {
+		damageType = type;
+	}
+	
 	inline void setMinDamage(float minDmg) {
 		minDamage = minDmg;
 	}
@@ -331,6 +346,10 @@ public:
 	}
 	
 	// getters
+	inline int getDamageType() {
+		return damageType;
+	}
+	
 	inline float getMinDamage() {
 		return minDamage;
 	}

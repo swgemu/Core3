@@ -84,6 +84,7 @@ void WeaponImplementation::initialize() {
 	conditionDamage = 0;
 	maxCondition = 750;
 	
+	damageType = KINETIC;
 	minDamage = 50;
 	maxDamage = 100;
 	
@@ -194,7 +195,39 @@ void WeaponImplementation::generateAttributes(SceneObject* obj) {
 	alm->insertAttribute("wpn_attack_speed", attackSpeed);
 					
 	alm->insertAttribute("damage", "");
-	alm->insertAttribute("wpn_damage_type", "Generic");
+	
+	stringstream dmgtxt;
+	switch (damageType) {
+	case KINETIC: 
+		dmgtxt << "Kinetic";
+	break;
+	case ENERGY: 
+		dmgtxt << "Energy";
+	break;
+	case ELECTRICITY: 
+		dmgtxt << "Electricity";
+	break;
+	case STUN: 
+		dmgtxt << "Stun";
+	break;
+	case BLAST: 
+		dmgtxt << "Blast";
+	break;
+	case HEAT: 
+		dmgtxt << "Heat";
+	break;
+	case COLD: 
+		dmgtxt << "Cold";
+	break;
+	case ACID: 
+		dmgtxt << "Acid";
+	break;
+	case LIGHTSABER: 
+		dmgtxt << "Lightsaber";
+	break;
+	}
+	
+	alm->insertAttribute("wpn_damage_type", dmgtxt);
 
 	alm->insertAttribute("wpn_damage_min", minDamage);
 
@@ -431,14 +464,84 @@ void WeaponImplementation::generateDotAttributes(AttributeListMessage* alm) {
 void WeaponImplementation::setWeaponStats(int modifier){
 	wlock();
 	
+	if (templateName == "lance_nightsister") {
+
+		armorPiercing = NONE;
+		attackSpeed = 3.6;
+
+		damageType = ENERGY;
+		minDamage = 68;
+		maxDamage = 278;
+		woundsRatio = 33;
+
+		dot0Type = DISEASE;
+		dot0Attribute = HEALTH;
+		dot0Strength = 40;
+		dot0Duration = 1200;
+		dot0Potency = 70;
+		dot0Uses = 9000;
+	} else if (templateName == "rifle_flame_thrower") {
+		armorPiercing = NONE;
+		damageType = HEAT;
+		minDamage = minDamage * 2;
+		maxDamage = maxDamage * 3;
+		woundsRatio = woundsRatio * 2;
+		
+		pointBlankAccuracy = 10;
+		idealAccuracy = -65;
+		maxRangeAccuracy = -120;
+
+		idealRange = 50;
+	} else if (templateName == "2h_sword_battleaxe")
+		damageType == BLAST;
+	
+	else if (templateName == "lance_vibrolance") {
+		damageType = ELECTRICITY;
+		armorPiercing = LIGHT;
+	}
+	
+	else if (templateName == "baton_stun")
+		damageType = STUN;
+		
+	else if (templateName == "pistol_dx2")
+		damageType = ACID;
+ 
+	else if (templateName == "carbine_dx6r")
+		damageType = ACID;
+
+	else if (templateName == "rifle_tenloss_dxr6") {
+		damageType = ACID;
+		armorPiercing = MEDIUM;
+	}
+	
+	else if (templateName == "rifle_jawa_ion") {
+		damageType = STUN;
+		armorPiercing = LIGHT;
+	}
+	
+	else if (templateName == "pistol_cdef")
+		armorPiercing = NONE;
+
+	else if (templateName == "carbine_cdef") {
+			damageType = ENERGY;
+			armorPiercing = NONE;
+	}
+	
+	else if (templateName == "knive_vibroblade")
+		armorPiercing = LIGHT;
+	
+	
 	int luck = (System::random(100)) + (modifier/4);
 	
 	if (System::random(1000) == 7) 
+		luck = luck * 2; 
+	
+	if (System::random(10000) == 77) 
 		luck = luck * 10; 
 		
-	if (System::random(10000) == 777) 
+	if (System::random(100000) == 777) 
 		luck = luck * 25; 
-		
+	
 	if (System::random(100) == 6) 
 		luck = 0;
 		
@@ -487,7 +590,7 @@ void WeaponImplementation::setWeaponStats(int modifier){
 	if ((luck * System::random(100)) > 2000)
 		woundsRatio = woundsRatio + (modifier / 15) + (luck / 10);
 	
-	if (playerRoll > 12500)	{
+	if (playerRoll > 13000)	{
 		switch (System::random(4)) {
 		case 1:
 			dot1Type = BLEED;
@@ -523,6 +626,11 @@ void WeaponImplementation::setWeaponStats(int modifier){
 			break;
 		}
 	}
+	
+	pointBlankAccuracy = pointBlankAccuracy + 50;	// temporary accuracy hack
+	
+	attackSpeed = round(10*(attackSpeed / 1.5))/10;	// temporary speed fix
+	
 	if (attackSpeed < 1) 
 		attackSpeed = 1.0f;
 		
@@ -534,9 +642,6 @@ void WeaponImplementation::setWeaponStats(int modifier){
 	
 	if (mindAttackCost < 0) 
 		mindAttackCost = 0;
-
-	if (maxDamage > 3250) 
-		maxDamage = 3000 + (System::random(250));
 
 	if (minDamage > maxDamage) 
 		minDamage = round(0.95*maxDamage);

@@ -58,7 +58,7 @@ const static char* anims[] = {
 	"tumble_facing",
 	"tumble",
 	"warcry",
-	/*"force_throw_1_arc_particle_level_1_light",
+	"force_throw_1_arc_particle_level_1_light",
 	"force_throw_1_arc_particle_level_1_medium",
 	"force_throw_1_particle_level_1_light",
 	"force_throw_1_particle_level_1_medium",
@@ -113,7 +113,7 @@ const static char* anims[] = {
 	"force_absorb_2_particles_light",
 	"force_absorb_2_particles_medium",
 	"force_absorb_1_particle_light",
-	"force_absorb_1_particle_medium",*/
+	"force_absorb_1_particle_medium",
 	"point_and_laugh",
 	"intimidate",
 	"rescue",

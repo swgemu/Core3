@@ -75,11 +75,13 @@ interface Weapon implements TangibleObject {
 	void setDot0Uses(int uses);
 	void setDot1Uses(int uses);
 	void setDot2Uses(int uses);
-	
+
 	// getters
 	int getType();
 
 	int getCategory();
+
+	int getDamageType();
 
 	float getMinDamage();
 

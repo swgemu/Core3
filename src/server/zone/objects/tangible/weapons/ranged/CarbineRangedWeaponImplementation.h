@@ -61,6 +61,7 @@ public:
 	}
 
 	void initialize() {
+		damageType = ENERGY;
 		minDamage = 137;
 		maxDamage = 288;
 		

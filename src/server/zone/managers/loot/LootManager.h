@@ -49,6 +49,8 @@ class Player;
 class Creature;
 class ZoneProcessServerImplementation;
 
+class ChatSystemMessage;
+
 class LootManager {
 	ZoneProcessServerImplementation* processServer;
 	

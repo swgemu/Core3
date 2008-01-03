@@ -390,7 +390,7 @@ bool CreatureImplementation::checkState() {
 		
 		creatureState = DESPAWNING;
 		
-		creatureManager->queueActivity(this, 30000);
+		creatureManager->queueActivity(this, 120000);
 		
 		return false;
 	} else if (isDeSpawning()) {
@@ -520,6 +520,9 @@ bool CreatureImplementation::attack(CreatureObject* target) {
 		return false;
 
 	if (target->isIncapacitated() || target->isDead() || !isInRange(target, 64)) {
+		
+		doIncapAnimation();
+			
 		aggroedCreature = NULL;
 		
 		clearTarget();
@@ -620,6 +623,45 @@ bool CreatureImplementation::doRecovery() {
 	}
 	
 	return true;
+}
+
+void CreatureImplementation::doIncapAnimation() {
+	
+	switch (System::random(20)) {
+	case 0:
+		doAnimation("laugh");
+		break;
+	case 1:
+		doAnimation("rofl");
+		break;
+	case 2:
+		doAnimation("chicken");
+		break;
+	case 3:
+		doAnimation("airguitar");
+		break;
+	case 4:
+		doAnimation("curtsey");
+		break;
+	case 5:
+		doAnimation("bang");
+		break;
+	case 6:
+		doAnimation("kiss");
+		break;
+	case 7:
+		doAnimation("mock");
+		break;
+	case 8:
+		doAnimation("strut");
+		break;
+	case 9:
+		doAnimation("waft");
+		break;
+	default:
+		doAnimation("rude");
+		break;			
+	}
 }
 
 void CreatureImplementation::doStatesRecovery() {
