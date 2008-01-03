@@ -52,22 +52,22 @@ singingMountainClanInitiate = Creature:new {
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
 	health = 14000,
-	strength = 200,
-	constitution = 2000,
+	strength = 1000,
+	constitution = 1000,
 
 	action = 14000,
-	quickness = 200,
-	stamina = 200,
+	quickness = 1000,
+	stamina = 1000,
 
 	mind = 14000,
-	focus = 200,
-	willpower = 200,
+	focus = 1000,
+	willpower = 1000,
 
 	height = 1,
 	armor = 1,
 	accuracy = 300,
 
-	skills = { "singingMountainClanAttack4" }
+	skills = { "singingMountainClanAttack4", "singingMountainClanAttack5", "singingMountainClanAttack6", "singingMountainClanAttack7", "singingMountainClanAttack8", "singingMountainClanAttack9", "singingMountainClanAttack10" }
 	-- respawnTimer = 180,
 }
 

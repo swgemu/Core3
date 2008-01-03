@@ -67,7 +67,7 @@ nightsisterSpellweaver = Creature:new {
 	armor = 2,
 	accuracy = 300,
 
-	skills = { "nightsisterAttack2" }
+	skills = { "nightsisterAttack2", "nightsisterAttack3", "nightsisterAttack4", "nightsisterAttack5", "nightsisterAttack6", "nightsisterAttack7", "nightsisterAttack8", "nightsisterAttack9", "nightsisterAttack10" }
 	-- respawnTimer = 180,
 }
 

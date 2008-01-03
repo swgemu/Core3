@@ -67,7 +67,7 @@ nightsisterProtector = Creature:new {
 	armor = 2,
 	accuracy = 300,
 
-	skills = { "nightsisterAttack2" }
+	skills = { "nightsisterAttack2", "nightsisterAttack3", "nightsisterAttack4", "nightsisterAttack5", "nightsisterAttack10", "nightsisterAttack11" }
 	-- respawnTimer = 180,
 }
 

@@ -52,16 +52,16 @@ singingMountainClanCouncilwoman = Creature:new {
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
 	health = 390000,
-	strength = 1000,
-	constitution = 1000,
+	strength = 2000,
+	constitution = 2000,
 
 	action = 390000,
-	quickness = 1000,
-	stamina = 1000,
+	quickness = 2000,
+	stamina = 2000,
 
 	mind = 390000,
-	focus = 1000,
-	willpower = 1000,
+	focus = 2000,
+	willpower = 2000,
 
 	height = 1,
 	armor = 3,
@@ -69,8 +69,11 @@ singingMountainClanCouncilwoman = Creature:new {
 	
 	accuracy = 300,
 
-	skills = { "singingMountainClanAttack1" }
+	skills = {
+"singingMountainClanAttack1", "singingMountainClanAttack2", "singingMountainClanAttack3", "singingMountainClanAttack4", "singingMountainClanAttack5", "singingMountainClanAttack11", "singingMountainClanAttack12" }
+
 	-- respawnTimer = 180,
+
 }
 
 Creatures:addCreature(singingMountainClanCouncilwoman, 905293113) --- Add to global creature table

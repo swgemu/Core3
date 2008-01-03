@@ -66,7 +66,7 @@ nightsisterSentinel = Creature:new {
 	armor = 1,
 	accuracy = 300,
 
-	skills = { "nightsisterAttack3" }
+	skills = { "nightsisterAttack3", "nightsisterAttack4", "nightsisterAttack5", "nightsisterAttack6", "nightsisterAttack7", "nightsisterAttack8", "nightsisterAttack9", "nightsisterAttack10" }
 	-- respawnTimer = 180,
 }
 

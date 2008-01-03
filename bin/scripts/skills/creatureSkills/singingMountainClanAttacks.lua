@@ -41,13 +41,14 @@
 --which carries forward this exception.
 singingMountainClanAttack1 = {
 	attackname = "singingMountainClanAttack1",
-	animation = "combo_2d_medium",
-	
-	requiredWeaponType = POLEARM,
+	--animation = "combo_3a_light",
+	animation = "force_choke_1_arc_particle_level_1_light",
 
-	range = 25,
+	requiredWeaponType = NONE,
 
-	damageRatio = 40,
+	range = 32,
+
+	damageRatio = 55,
 
 	speedRatio = 4,
 	coneAngle = 30,
@@ -55,10 +56,10 @@ singingMountainClanAttack1 = {
 	areaRange = 0,
 	accuracyBonus = 0,
 		
-	knockdownChance = 10,
-	postureDownChance = 10,
+	knockdownChance = 0,
+	postureDownChance = 0,
 	postureUpChance = 0,
-	dizzyChance = 0,
+	dizzyChance = 10,
 	blindChance = 10,
 	stunChance = 10,
 	intimidateChance = 10,
@@ -73,13 +74,14 @@ singingMountainClanAttack1 = {
 AddRandomPoolAttackTargetSkill(singingMountainClanAttack1)
 singingMountainClanAttack2 = {
 	attackname = "singingMountainClanAttack2",
-	animation = "combo_2d_medium",
-	
-	requiredWeaponType = POLEARM,
+	--animation = "attack_special_hammerfist_light",
+	animation = "force_lightning_1_particle_level_5_medium",	
 
-	range = 15,
+	requiredWeaponType = NONE,
 
-	damageRatio = 25,
+	range = 32,
+
+	damageRatio = 45,
 
 	speedRatio = 4,
 	coneAngle = 30,
@@ -88,9 +90,9 @@ singingMountainClanAttack2 = {
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
-	postureDownChance = 10,
+	postureDownChance = 0,
 	postureUpChance = 0,
-	dizzyChance = 2,
+	dizzyChance = 10,
 	blindChance = 10,
 	stunChance = 10,
 	intimidateChance = 10,
@@ -105,13 +107,14 @@ singingMountainClanAttack2 = {
 AddRandomPoolAttackTargetSkill(singingMountainClanAttack2)
 singingMountainClanAttack3 = {
 	attackname = "singingMountainClanAttack3",
-	animation = "combo_2c_medium",
-	
-	requiredWeaponType = POLEARM,
+	--animation = "attack_special_shoulder_bash_medium",
+	animation = "force_weaken_1_arc_particle_level_1_medium",
 
-	range = 15,
+	requiredWeaponType = NONE,
 
-	damageRatio = 20,
+	range = 32,
+
+	damageRatio = 40,
 
 	speedRatio = 4,
 	coneAngle = 30,
@@ -120,9 +123,9 @@ singingMountainClanAttack3 = {
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
-	postureDownChance = 10,
+	postureDownChance = 0,
 	postureUpChance = 0,
-	dizzyChance = 0,
+	dizzyChance = 10,
 	blindChance = 10,
 	stunChance = 10,
 	intimidateChance = 10,
@@ -137,9 +140,171 @@ singingMountainClanAttack3 = {
 AddRandomPoolAttackTargetSkill(singingMountainClanAttack3)
 singingMountainClanAttack4 = {
 	attackname = "singingMountainClanAttack4",
-	animation = "combo_2c_medium",
+	--animation = "attack_special_wookiee_slap_light",
+	animation = "force_drain_1",
+
+	requiredWeaponType = NONE,
+
+	range = 32,
+
+	damageRatio = 35,
+
+	speedRatio = 4,
+	coneAngle = 30,
+
+	areaRange = 0,
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 10,
+	blindChance = 10,
+	stunChance = 10,
+	intimidateChance = 10,
 	
-	requiredWeaponType = POLEARM,
+	CbtSpamBlock = "",
+	CbtSpamCounter = "",
+	CbtSpamEvade = "",
+	CbtSpamHit = "",
+	CbtSpamMiss = "",
+}
+
+AddRandomPoolAttackTargetSkill(singingMountainClanAttack4)
+singingMountainClanAttack5 = {
+	attackname = "singingMountainClanAttack5",
+	--animation = "combo_4b_medium",
+	animation = "force_lightning_1_arc_particle_level_1_light",
+
+	requiredWeaponType = NONE,
+
+	range = 32,
+
+	damageRatio = 25,
+
+	speedRatio = 4,
+	coneAngle = 30,
+
+	areaRange = 0,
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 10,
+	
+	CbtSpamBlock = "",
+	CbtSpamCounter = "",
+	CbtSpamEvade = "",
+	CbtSpamHit = "",
+	CbtSpamMiss = "",
+}
+
+AddRandomPoolAttackTargetSkill(singingMountainClanAttack5)
+singingMountainClanAttack6 = {
+	attackname = "singingMountainClanAttack6",
+	animation = "combo_3d_medium",
+	
+	requiredWeaponType = NONE,
+
+	range = 15,
+
+	damageRatio = 15,
+
+	speedRatio = 4,
+	coneAngle = 30,
+
+	areaRange = 0,
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 10,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "",
+	CbtSpamCounter = "",
+	CbtSpamEvade = "",
+	CbtSpamHit = "",
+	CbtSpamMiss = "",
+}
+
+AddRandomPoolAttackTargetSkill(singingMountainClanAttack6)
+singingMountainClanAttack7 = {
+	attackname = "singingMountainClanAttack7",
+	animation = "combo_4a_light",
+	
+	requiredWeaponType = NONE,
+
+	range = 15,
+
+	damageRatio = 15,
+
+	speedRatio = 4,
+	coneAngle = 30,
+
+	areaRange = 0,
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 10,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "",
+	CbtSpamCounter = "",
+	CbtSpamEvade = "",
+	CbtSpamHit = "",
+	CbtSpamMiss = "",
+}
+
+AddRandomPoolAttackTargetSkill(singingMountainClanAttack7)
+singingMountainClanAttack8 = {
+	attackname = "singingMountainClanAttack8",
+	animation = "attack_special_shoulder_bash_medium",
+	
+	requiredWeaponType = NONE,
+
+	range = 15,
+
+	damageRatio = 15,
+
+	speedRatio = 4,
+	coneAngle = 30,
+
+	areaRange = 0,
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 10,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "",
+	CbtSpamCounter = "",
+	CbtSpamEvade = "",
+	CbtSpamHit = "",
+	CbtSpamMiss = "",
+}
+
+AddRandomPoolAttackTargetSkill(singingMountainClanAttack8)
+singingMountainClanAttack9 = {
+	attackname = "singingMountainClanAttack9",
+	animation = "attack_special_foot_stomp_medium",
+	
+	requiredWeaponType = NONE,
 
 	range = 15,
 
@@ -155,9 +320,9 @@ singingMountainClanAttack4 = {
 	postureDownChance = 10,
 	postureUpChance = 0,
 	dizzyChance = 0,
-	blindChance = 10,
-	stunChance = 10,
-	intimidateChance = 10,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
 	
 	CbtSpamBlock = "",
 	CbtSpamCounter = "",
@@ -166,6 +331,100 @@ singingMountainClanAttack4 = {
 	CbtSpamMiss = "",
 }
 
-AddRandomPoolAttackTargetSkill(singingMountainClanAttack4)
+AddRandomPoolAttackTargetSkill(singingMountainClanAttack9)
+singingMountainClanAttack10 = {
+	attackname = "singingMountainClanAttack10",
+	animation = "knockdown_unarmed_1",
+	
+	requiredWeaponType = NONE,
 
+	range = 15,
 
+	damageRatio = 15,
+
+	speedRatio = 4,
+	coneAngle = 30,
+
+	areaRange = 0,
+	accuracyBonus = 0,
+		
+	knockdownChance = 10,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "",
+	CbtSpamCounter = "",
+	CbtSpamEvade = "",
+	CbtSpamHit = "",
+	CbtSpamMiss = "",
+}
+
+AddRandomPoolAttackTargetSkill(singingMountainClanAttack10)
+singingMountainClanAttack11 = {
+	attackname = "singingMountainClanAttack11",
+	animation = "combo_5a_medium",
+	
+	requiredWeaponType = NONE,
+
+	range = 15,
+
+	damageRatio = 50,
+
+	speedRatio = 4,
+	coneAngle = 30,
+
+	areaRange = 0,
+	accuracyBonus = 0,
+		
+	knockdownChance = 10,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "",
+	CbtSpamCounter = "",
+	CbtSpamEvade = "",
+	CbtSpamHit = "",
+	CbtSpamMiss = "",
+}
+
+AddRandomPoolAttackTargetSkill(singingMountainClanAttack11)
+singingMountainClanAttack12 = {
+	attackname = "singingMountainClanAttack12",
+	animation = "combo_2c_medium",
+	
+	requiredWeaponType = NONE,
+
+	range = 15,
+
+	damageRatio = 60,
+
+	speedRatio = 2,
+	coneAngle = 30,
+
+	areaRange = 0,
+	accuracyBonus = 0,
+		
+	knockdownChance = 10,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "",
+	CbtSpamCounter = "",
+	CbtSpamEvade = "",
+	CbtSpamHit = "",
+	CbtSpamMiss = "",
+}
+
+AddRandomPoolAttackTargetSkill(singingMountainClanAttack12)

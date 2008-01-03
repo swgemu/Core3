@@ -67,7 +67,7 @@ singingMountainClanArchWitch = Creature:new {
 	armor = 2,
 	accuracy = 300,
 
-	skills = { "singingMountainClanAttack2" }
+	skills = { "singingMountainClanAttack2", "singingMountainClanAttack3", "singingMountainClanAttack4", "singingMountainClanAttack5", "singingMountainClanAttack11", "singingMountainClanAttack12" }
 	-- respawnTimer = 180,
 }
 
