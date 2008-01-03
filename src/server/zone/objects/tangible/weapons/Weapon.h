@@ -101,6 +101,8 @@ public:
 
 	int getCategory();
 
+	int getDamageType();
+
 	float getMinDamage();
 
 	float getMaxDamage();
@@ -207,6 +209,8 @@ public:
 	int getType();
 
 	int getCategory();
+
+	int getDamageType();
 
 	float getMinDamage();
 

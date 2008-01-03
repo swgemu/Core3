@@ -197,34 +197,35 @@ void WeaponImplementation::generateAttributes(SceneObject* obj) {
 	alm->insertAttribute("damage", "");
 	
 	stringstream dmgtxt;
+
 	switch (damageType) {
-	case KINETIC: 
+	case KINETIC:
 		dmgtxt << "Kinetic";
-	break;
-	case ENERGY: 
+		break;
+	case ENERGY:
 		dmgtxt << "Energy";
-	break;
-	case ELECTRICITY: 
+		break;
+	case ELECTRICITY:
 		dmgtxt << "Electricity";
-	break;
-	case STUN: 
+		break;
+	case STUN:
 		dmgtxt << "Stun";
-	break;
-	case BLAST: 
+		break;
+	case BLAST:
 		dmgtxt << "Blast";
-	break;
-	case HEAT: 
+		break;
+	case HEAT:
 		dmgtxt << "Heat";
-	break;
-	case COLD: 
+		break;
+	case COLD:
 		dmgtxt << "Cold";
-	break;
-	case ACID: 
+		break;
+	case ACID:
 		dmgtxt << "Acid";
-	break;
-	case LIGHTSABER: 
+		break;
+	case LIGHTSABER:
 		dmgtxt << "Lightsaber";
-	break;
+		break;
 	}
 	
 	alm->insertAttribute("wpn_damage_type", dmgtxt);
@@ -465,7 +466,6 @@ void WeaponImplementation::setWeaponStats(int modifier){
 	wlock();
 	
 	if (templateName == "lance_nightsister") {
-
 		armorPiercing = NONE;
 		attackSpeed = 3.6;
 
@@ -492,44 +492,31 @@ void WeaponImplementation::setWeaponStats(int modifier){
 		maxRangeAccuracy = -120;
 
 		idealRange = 50;
-	} else if (templateName == "2h_sword_battleaxe")
+	} else if (templateName == "2h_sword_battleaxe") {
 		damageType == BLAST;
-	
-	else if (templateName == "lance_vibrolance") {
+	} else if (templateName == "lance_vibrolance") {
 		damageType = ELECTRICITY;
 		armorPiercing = LIGHT;
-	}
-	
-	else if (templateName == "baton_stun")
+	} else if (templateName == "baton_stun") {
 		damageType = STUN;
-		
-	else if (templateName == "pistol_dx2")
+	} else if (templateName == "pistol_dx2") {
 		damageType = ACID;
- 
-	else if (templateName == "carbine_dx6r")
+	} else if (templateName == "carbine_dx6r") {
 		damageType = ACID;
-
-	else if (templateName == "rifle_tenloss_dxr6") {
+	} else if (templateName == "rifle_tenloss_dxr6") {
 		damageType = ACID;
 		armorPiercing = MEDIUM;
-	}
-	
-	else if (templateName == "rifle_jawa_ion") {
+	} else if (templateName == "rifle_jawa_ion") {
 		damageType = STUN;
 		armorPiercing = LIGHT;
-	}
-	
-	else if (templateName == "pistol_cdef")
+	} else if (templateName == "pistol_cdef") {
 		armorPiercing = NONE;
-
-	else if (templateName == "carbine_cdef") {
+	} else if (templateName == "carbine_cdef") {
 			damageType = ENERGY;
 			armorPiercing = NONE;
-	}
-	
-	else if (templateName == "knive_vibroblade")
+	} else if (templateName == "knive_vibroblade") {
 		armorPiercing = LIGHT;
-	
+	}
 	
 	int luck = (System::random(100)) + (modifier/4);
 	
@@ -629,7 +616,7 @@ void WeaponImplementation::setWeaponStats(int modifier){
 	
 	pointBlankAccuracy = pointBlankAccuracy + 50;	// temporary accuracy hack
 	
-	attackSpeed = round(10*(attackSpeed / 1.5))/10;	// temporary speed fix
+	attackSpeed = round(10*(attackSpeed / 1.5)) / 10;	// temporary speed fix
 	
 	if (attackSpeed < 1) 
 		attackSpeed = 1.0f;

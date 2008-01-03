@@ -520,7 +520,6 @@ bool CreatureImplementation::attack(CreatureObject* target) {
 		return false;
 
 	if (target->isIncapacitated() || target->isDead() || !isInRange(target, 64)) {
-		
 		doIncapAnimation();
 			
 		aggroedCreature = NULL;
@@ -626,7 +625,6 @@ bool CreatureImplementation::doRecovery() {
 }
 
 void CreatureImplementation::doIncapAnimation() {
-	
 	switch (System::random(20)) {
 	case 0:
 		doAnimation("laugh");
