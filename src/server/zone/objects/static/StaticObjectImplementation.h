@@ -42,8 +42,8 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef TANGIBLEOBJECTIMPLEMENTATION_H_
-#define TANGIBLEOBJECTIMPLEMENTATION_H_
+#ifndef STATICOBJECTIMPLEMENTATION_H_
+#define STATICOBJECTIMPLEMENTATION_H_
 
 #include "engine/engine.h"
 
@@ -51,14 +51,14 @@ which carries forward this exception.
 
 #include "../scene/SceneObject.h"
 
-#include "TangibleObject.h"
+#include "StaticObject.h"
 
 class Zone;
 class CreatureObject;
 class Player;
 class BuildingObject;
 
-class TangibleObjectImplementation : public TangibleObjectServant {
+class StaticObjectImplementation : public StaticObjectServant {
 protected:
 	Zone* zone;
 	
@@ -87,23 +87,12 @@ protected:
 	uint32 pvpStatusBitmask;
 
 public:
-	static const int ROBE = 1;
-	static const int WEAPON = 2;
-	static const int CLOTH = 3;
-	static const int ARMOR = 4;
-	static const int HAIR = 5;
-	static const int TICKET = 6;
-	static const int TERMINAL = 7;
-	static const int TICKETCOLLECTOR = 8;
-	static const int INSTRUMENT = 9;
-	static const int LAIR = 10;
-	static const int HOLOCRON = 11;
-	static const int FIREWORK = 12;
+	static const int FIREWORK = 1;
 
 public:
-	TangibleObjectImplementation(uint64 oid, int tp = 0);
-	TangibleObjectImplementation(uint64 oid, const unicode& name, const string& tempname, uint32 tempCRC, int tp = 0);
-	TangibleObjectImplementation(CreatureObject* creature, const unicode& name, const string& tempname, uint32 tempCRC, int tp = 0);
+	StaticObjectImplementation(uint64 oid, int tp = 0);
+	StaticObjectImplementation(uint64 oid, const unicode& name, const string& tempname, uint32 tempCRC, int tp = 0);
+	StaticObjectImplementation(CreatureObject* creature, const unicode& name, const string& tempname, uint32 tempCRC, int tp = 0);
 
 	void initialize();
 	
@@ -116,14 +105,14 @@ public:
 
 	void close(Player* player);
 
-	inline TangibleObject* deploy() {
-		return (TangibleObject*) SceneObjectImplementation::deploy();
+	inline StaticObject* deploy() {
+		return (StaticObject*) SceneObjectImplementation::deploy();
 	}
 	
 	// setters and getters
 	inline void setContainer(SceneObject* cont, uint32 type = 0x04) {
 		container = cont;
-		linkType = type;
+		//linkType = type;
 	}
 
 	inline void setPersistent(bool pers) {
@@ -194,22 +183,6 @@ public:
 		return objectSubType;
 	}
 	
-	inline bool isWeapon() {
-		return (objectSubType == WEAPON);
-	}
-
-	inline bool isArmor() {
-		return (objectSubType == ARMOR);
-	}
-
-	inline bool isTicket() {
-		return objectSubType == TICKET;
-	}
-	
-	inline bool isHolocron() {
-		return objectSubType == HOLOCRON;
-	}
-	
 	inline bool isFirework() {
 		return objectSubType == FIREWORK;
 	}
@@ -228,4 +201,4 @@ public:
 	
 };
 
-#endif /*TANGIBLEOBJECTIMPLEMENTATION_H_*/
+#endif /*STATICOBJECTIMPLEMENTATION_H_*/

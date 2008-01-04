@@ -1866,6 +1866,18 @@ unsigned long long Player::getTradeRequestedPlayer() {
 		return ((PlayerImplementation*) _impl)->getTradeRequestedPlayer();
 }
 
+void Player::launchFirework() {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 145);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((PlayerImplementation*) _impl)->launchFirework();
+}
+
 /*
  *	PlayerAdapter
  */
@@ -2293,6 +2305,9 @@ Packet* PlayerAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* inv) {
 		break;
 	case 144:
 		resp->insertLong(getTradeRequestedPlayer());
+		break;
+	case 145:
+		launchFirework();
 		break;
 	default:
 		return NULL;
@@ -2855,6 +2870,10 @@ float PlayerAdapter::getLastTestPositionY() {
 
 unsigned long long PlayerAdapter::getTradeRequestedPlayer() {
 	return ((PlayerImplementation*) impl)->getTradeRequestedPlayer();
+}
+
+void PlayerAdapter::launchFirework() {
+	return ((PlayerImplementation*) impl)->launchFirework();
 }
 
 /*

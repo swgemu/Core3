@@ -711,6 +711,8 @@ public:
 		return adminLevel;	
 	}
 	
+	void launchFirework();
+	
 	friend class PlayerManager;
 	friend class ProfessionManager;
 	friend class SkillManager;

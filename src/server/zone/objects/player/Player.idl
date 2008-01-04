@@ -322,4 +322,6 @@ interface Player implements CreatureObject {
 	float getLastTestPositionY();
 	
 	unsigned long getTradeRequestedPlayer();
+	
+	void launchFirework();
 }

@@ -107,12 +107,14 @@ am__objects_1 = Zone.$(OBJEXT) ZoneClient.$(OBJEXT) \
 	Wearable.$(OBJEXT) Armor.$(OBJEXT) Ticket.$(OBJEXT) \
 	Terminal.$(OBJEXT) TravelTerminal.$(OBJEXT) \
 	GuildTerminal.$(OBJEXT) TicketCollector.$(OBJEXT) \
-	Instrument.$(OBJEXT) LairObject.$(OBJEXT) \
-	IntangibleObject.$(OBJEXT) GroupObject.$(OBJEXT) \
-	Guild.$(OBJEXT) CellObject.$(OBJEXT) BuildingObject.$(OBJEXT) \
-	ManufactureSchematic.$(OBJEXT) ResourceContainer.$(OBJEXT) \
-	MissionObject.$(OBJEXT) WaypointObject.$(OBJEXT) \
-	GuildMap.$(OBJEXT) GuildManager.$(OBJEXT) PlayerMap.$(OBJEXT) \
+	Instrument.$(OBJEXT) LairObject.$(OBJEXT) Holocron.$(OBJEXT) \
+	Firework.$(OBJEXT) IntangibleObject.$(OBJEXT) \
+	StaticObject.$(OBJEXT) FireworkWorld.$(OBJEXT) \
+	GroupObject.$(OBJEXT) Guild.$(OBJEXT) CellObject.$(OBJEXT) \
+	BuildingObject.$(OBJEXT) ManufactureSchematic.$(OBJEXT) \
+	ResourceContainer.$(OBJEXT) MissionObject.$(OBJEXT) \
+	WaypointObject.$(OBJEXT) GuildMap.$(OBJEXT) \
+	GuildManager.$(OBJEXT) PlayerMap.$(OBJEXT) \
 	PlayerManager.$(OBJEXT) CreatureManager.$(OBJEXT) \
 	ItemManager.$(OBJEXT) UserManager.$(OBJEXT) \
 	PlanetManager.$(OBJEXT) ResourceManager.$(OBJEXT) \
@@ -134,6 +136,7 @@ am_core3_OBJECTS = $(am__objects_1) ServerCore.$(OBJEXT) \
 	ArmorImplementation.$(OBJEXT) WeaponImplementation.$(OBJEXT) \
 	TangibleObjectImplementation.$(OBJEXT) \
 	LairObjectImplementation.$(OBJEXT) \
+	StaticObjectImplementation.$(OBJEXT) \
 	PlayerImplementation.$(OBJEXT) \
 	PlayerObjectImplementation.$(OBJEXT) \
 	CreatureImplementation.$(OBJEXT) \
@@ -322,7 +325,11 @@ core3_IDLS = server/zone/Zone.cpp \
 		server/zone/objects/tangible/ticketcollector/TicketCollector.cpp \
 		server/zone/objects/tangible/instrument/Instrument.cpp \
 		server/zone/objects/tangible/lair/LairObject.cpp \
+		server/zone/objects/tangible/holocron/Holocron.cpp \
+		server/zone/objects/tangible/firework/Firework.cpp \
 		server/zone/objects/intangible/IntangibleObject.cpp \
+		server/zone/objects/static/StaticObject.cpp \
+		server/zone/objects/static/firework/FireworkWorld.cpp \
 		server/zone/objects/group/GroupObject.cpp \
 		server/zone/objects/guild/Guild.cpp \
 		server/zone/objects/building/cell/CellObject.cpp \
@@ -366,6 +373,7 @@ core3_SOURCES = $(core3_IDLS) \
 		server/zone/objects/tangible/weapons/WeaponImplementation.cpp \
 		server/zone/objects/tangible/TangibleObjectImplementation.cpp \
 		server/zone/objects/tangible/lair/LairObjectImplementation.cpp \
+		server/zone/objects/static/StaticObjectImplementation.cpp \
 		server/zone/objects/player/PlayerImplementation.cpp \
 		server/zone/objects/player/PlayerObjectImplementation.cpp \
 		server/zone/objects/creature/CreatureImplementation.cpp \
@@ -484,6 +492,8 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/CreatureObject.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/CreatureObjectImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Datapad.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Firework.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/FireworkWorld.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/GroupManager.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/GroupObject.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/GroupObjectImplementation.Po@am__quote@
@@ -494,6 +504,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/GuildMap.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/GuildTerminal.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/HairObject.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Holocron.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Instrument.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/IntangibleObject.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/IntangibleObjectImplementation.Po@am__quote@
@@ -545,6 +556,8 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ShuttleCreature.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ShuttleCreatureImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SkillManager.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/StaticObject.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/StaticObjectImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/TangibleObject.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/TangibleObjectImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Terminal.Po@am__quote@
@@ -1189,6 +1202,34 @@ LairObject.obj: server/zone/objects/tangible/lair/LairObject.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o LairObject.obj `if test -f 'server/zone/objects/tangible/lair/LairObject.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/lair/LairObject.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/lair/LairObject.cpp'; fi`
 
+Holocron.o: server/zone/objects/tangible/holocron/Holocron.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT Holocron.o -MD -MP -MF $(DEPDIR)/Holocron.Tpo -c -o Holocron.o `test -f 'server/zone/objects/tangible/holocron/Holocron.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/holocron/Holocron.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/Holocron.Tpo $(DEPDIR)/Holocron.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/holocron/Holocron.cpp' object='Holocron.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o Holocron.o `test -f 'server/zone/objects/tangible/holocron/Holocron.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/holocron/Holocron.cpp
+
+Holocron.obj: server/zone/objects/tangible/holocron/Holocron.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT Holocron.obj -MD -MP -MF $(DEPDIR)/Holocron.Tpo -c -o Holocron.obj `if test -f 'server/zone/objects/tangible/holocron/Holocron.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/holocron/Holocron.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/holocron/Holocron.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/Holocron.Tpo $(DEPDIR)/Holocron.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/holocron/Holocron.cpp' object='Holocron.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o Holocron.obj `if test -f 'server/zone/objects/tangible/holocron/Holocron.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/holocron/Holocron.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/holocron/Holocron.cpp'; fi`
+
+Firework.o: server/zone/objects/tangible/firework/Firework.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT Firework.o -MD -MP -MF $(DEPDIR)/Firework.Tpo -c -o Firework.o `test -f 'server/zone/objects/tangible/firework/Firework.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/firework/Firework.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/Firework.Tpo $(DEPDIR)/Firework.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/firework/Firework.cpp' object='Firework.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o Firework.o `test -f 'server/zone/objects/tangible/firework/Firework.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/firework/Firework.cpp
+
+Firework.obj: server/zone/objects/tangible/firework/Firework.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT Firework.obj -MD -MP -MF $(DEPDIR)/Firework.Tpo -c -o Firework.obj `if test -f 'server/zone/objects/tangible/firework/Firework.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/firework/Firework.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/firework/Firework.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/Firework.Tpo $(DEPDIR)/Firework.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/firework/Firework.cpp' object='Firework.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o Firework.obj `if test -f 'server/zone/objects/tangible/firework/Firework.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/firework/Firework.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/firework/Firework.cpp'; fi`
+
 IntangibleObject.o: server/zone/objects/intangible/IntangibleObject.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT IntangibleObject.o -MD -MP -MF $(DEPDIR)/IntangibleObject.Tpo -c -o IntangibleObject.o `test -f 'server/zone/objects/intangible/IntangibleObject.cpp' || echo '$(srcdir)/'`server/zone/objects/intangible/IntangibleObject.cpp
 @am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/IntangibleObject.Tpo $(DEPDIR)/IntangibleObject.Po
@@ -1202,6 +1243,34 @@ IntangibleObject.obj: server/zone/objects/intangible/IntangibleObject.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/intangible/IntangibleObject.cpp' object='IntangibleObject.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o IntangibleObject.obj `if test -f 'server/zone/objects/intangible/IntangibleObject.cpp'; then $(CYGPATH_W) 'server/zone/objects/intangible/IntangibleObject.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/intangible/IntangibleObject.cpp'; fi`
+
+StaticObject.o: server/zone/objects/static/StaticObject.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT StaticObject.o -MD -MP -MF $(DEPDIR)/StaticObject.Tpo -c -o StaticObject.o `test -f 'server/zone/objects/static/StaticObject.cpp' || echo '$(srcdir)/'`server/zone/objects/static/StaticObject.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/StaticObject.Tpo $(DEPDIR)/StaticObject.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/static/StaticObject.cpp' object='StaticObject.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o StaticObject.o `test -f 'server/zone/objects/static/StaticObject.cpp' || echo '$(srcdir)/'`server/zone/objects/static/StaticObject.cpp
+
+StaticObject.obj: server/zone/objects/static/StaticObject.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT StaticObject.obj -MD -MP -MF $(DEPDIR)/StaticObject.Tpo -c -o StaticObject.obj `if test -f 'server/zone/objects/static/StaticObject.cpp'; then $(CYGPATH_W) 'server/zone/objects/static/StaticObject.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/static/StaticObject.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/StaticObject.Tpo $(DEPDIR)/StaticObject.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/static/StaticObject.cpp' object='StaticObject.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o StaticObject.obj `if test -f 'server/zone/objects/static/StaticObject.cpp'; then $(CYGPATH_W) 'server/zone/objects/static/StaticObject.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/static/StaticObject.cpp'; fi`
+
+FireworkWorld.o: server/zone/objects/static/firework/FireworkWorld.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT FireworkWorld.o -MD -MP -MF $(DEPDIR)/FireworkWorld.Tpo -c -o FireworkWorld.o `test -f 'server/zone/objects/static/firework/FireworkWorld.cpp' || echo '$(srcdir)/'`server/zone/objects/static/firework/FireworkWorld.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/FireworkWorld.Tpo $(DEPDIR)/FireworkWorld.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/static/firework/FireworkWorld.cpp' object='FireworkWorld.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o FireworkWorld.o `test -f 'server/zone/objects/static/firework/FireworkWorld.cpp' || echo '$(srcdir)/'`server/zone/objects/static/firework/FireworkWorld.cpp
+
+FireworkWorld.obj: server/zone/objects/static/firework/FireworkWorld.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT FireworkWorld.obj -MD -MP -MF $(DEPDIR)/FireworkWorld.Tpo -c -o FireworkWorld.obj `if test -f 'server/zone/objects/static/firework/FireworkWorld.cpp'; then $(CYGPATH_W) 'server/zone/objects/static/firework/FireworkWorld.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/static/firework/FireworkWorld.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/FireworkWorld.Tpo $(DEPDIR)/FireworkWorld.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/static/firework/FireworkWorld.cpp' object='FireworkWorld.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o FireworkWorld.obj `if test -f 'server/zone/objects/static/firework/FireworkWorld.cpp'; then $(CYGPATH_W) 'server/zone/objects/static/firework/FireworkWorld.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/static/firework/FireworkWorld.cpp'; fi`
 
 GroupObject.o: server/zone/objects/group/GroupObject.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT GroupObject.o -MD -MP -MF $(DEPDIR)/GroupObject.Tpo -c -o GroupObject.o `test -f 'server/zone/objects/group/GroupObject.cpp' || echo '$(srcdir)/'`server/zone/objects/group/GroupObject.cpp
@@ -1776,6 +1845,20 @@ LairObjectImplementation.obj: server/zone/objects/tangible/lair/LairObjectImplem
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/lair/LairObjectImplementation.cpp' object='LairObjectImplementation.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o LairObjectImplementation.obj `if test -f 'server/zone/objects/tangible/lair/LairObjectImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/lair/LairObjectImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/lair/LairObjectImplementation.cpp'; fi`
+
+StaticObjectImplementation.o: server/zone/objects/static/StaticObjectImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT StaticObjectImplementation.o -MD -MP -MF $(DEPDIR)/StaticObjectImplementation.Tpo -c -o StaticObjectImplementation.o `test -f 'server/zone/objects/static/StaticObjectImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/static/StaticObjectImplementation.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/StaticObjectImplementation.Tpo $(DEPDIR)/StaticObjectImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/static/StaticObjectImplementation.cpp' object='StaticObjectImplementation.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o StaticObjectImplementation.o `test -f 'server/zone/objects/static/StaticObjectImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/static/StaticObjectImplementation.cpp
+
+StaticObjectImplementation.obj: server/zone/objects/static/StaticObjectImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT StaticObjectImplementation.obj -MD -MP -MF $(DEPDIR)/StaticObjectImplementation.Tpo -c -o StaticObjectImplementation.obj `if test -f 'server/zone/objects/static/StaticObjectImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/static/StaticObjectImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/static/StaticObjectImplementation.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/StaticObjectImplementation.Tpo $(DEPDIR)/StaticObjectImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/static/StaticObjectImplementation.cpp' object='StaticObjectImplementation.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o StaticObjectImplementation.obj `if test -f 'server/zone/objects/static/StaticObjectImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/static/StaticObjectImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/static/StaticObjectImplementation.cpp'; fi`
 
 PlayerImplementation.o: server/zone/objects/player/PlayerImplementation.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT PlayerImplementation.o -MD -MP -MF $(DEPDIR)/PlayerImplementation.Tpo -c -o PlayerImplementation.o `test -f 'server/zone/objects/player/PlayerImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/player/PlayerImplementation.cpp

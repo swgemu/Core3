@@ -714,7 +714,35 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 			((ListBox*)list)->generateMessage();
 
 			player->sendMessage(list);
-		}
+		} else if (cmd == "@giveItemTemp") {
+			if (userManager->isAdmin(player->getFirstName())) {
+				
+				//Give TANO
+				string itemType;
+				tokenizer.getStringToken(itemType);
+				
+				if (itemType == "Holocron") {
+					TangibleObject* item = NULL;
+					HolocronImplementation* itemImpl = new HolocronImplementation(player, 0x9BA06548, unicode("Holocron"), "object/tangible/jedi/shared_jedi_holocron_light.iff");
+					item = itemImpl->deploy();
+						if (item != NULL) {
+							player->addInventoryItem(item);
+							item->sendTo(player);
+						}
+				} else if (itemType == "Firework") {
+					TangibleObject* item = NULL;
+					FireworkImplementation* itemImpl = new FireworkImplementation(player, 0x7C540DEB, unicode("a Firework"), "object/tangible/firework/shared_firework_s04.iff");
+					item = itemImpl->deploy();
+						if (item != NULL) {
+							player->addInventoryItem(item);
+							item->sendTo(player);
+						}
+				} else {
+					player->sendSystemMessage("Unknown Item Type.");
+				}
+				
+			}	
+		} 
 		/*else if (cmd == "@open") {
 					CreatureObject* target = (CreatureObject*)player->getTarget();
 					if (target != NULL) {

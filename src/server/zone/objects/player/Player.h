@@ -369,6 +369,8 @@ public:
 
 	unsigned long long getTradeRequestedPlayer();
 
+	void launchFirework();
+
 protected:
 	string _return_getRaceFileName;
 
@@ -675,6 +677,8 @@ public:
 	float getLastTestPositionY();
 
 	unsigned long long getTradeRequestedPlayer();
+
+	void launchFirework();
 
 protected:
 	string _param0_trainSkillBox__string_;

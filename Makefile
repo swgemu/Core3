@@ -85,6 +85,10 @@ IDL_SOURCES = server/zone/Zone.idl \
 				server/zone/objects/tangible/ticketcollector/TicketCollector.idl \
 				server/zone/objects/tangible/instrument/Instrument.idl \
 				server/zone/objects/tangible/lair/LairObject.idl \
+				server/zone/objects/tangible/holocron/Holocron.idl \
+				server/zone/objects/tangible/firework/Firework.idl \
+				server/zone/objects/static/firework/FireworkWorld.idl \
+				server/zone/objects/static/StaticObject.idl \
 				server/zone/objects/intangible/IntangibleObject.idl \
 				server/zone/objects/group/GroupObject.idl \
 				server/zone/objects/guild/Guild.idl \

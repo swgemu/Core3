@@ -821,6 +821,7 @@ void PlayerImplementation::notifyInsert(QuadTreeEntry* obj) {
 	Player* player;
 	Creature* creature;
 	TangibleObject* tangible;
+	StaticObject* statico;
 	
 	if (parent == scno)
 		return;
@@ -855,6 +856,12 @@ void PlayerImplementation::notifyInsert(QuadTreeEntry* obj) {
 	case SceneObjectImplementation::TANGIBLE:
 		tangible = (TangibleObject*) scno;
 		tangible->sendTo(_this);
+
+		break;
+	
+	case SceneObjectImplementation::STATIC:
+		statico = (StaticObject*) scno;
+		statico->sendTo(_this);
 
 		break;
 	}
@@ -1924,4 +1931,23 @@ void PlayerImplementation::newChangeFactionEvent(uint32 faction) {
 	changeFactionEvent = new ChangeFactionEvent(this, faction);
 
 	server->addEvent(changeFactionEvent);
+}
+
+void PlayerImplementation::launchFirework() {
+		//Create the firework in the world.
+		FireworkWorld* firework;
+		//FireworkWorldImplementation(uint32 objCRC, uint64 objid, const unicode& n, const string& tempn, float x, float z, float y, int FireworkType)
+		FireworkWorldImplementation* fwwImpl = new FireworkWorldImplementation(0xBD7F7602, getNewItemID(), unicode("testing"), "unknown_object", getPositionX(), getPositionZ(), getPositionY(), 1);
+		fwwImpl->setDirection(0, 0, -0.64, 0.76);
+		firework = (FireworkWorld*) fwwImpl->deploy();
+		firework->insertToZone(zone);
+	
+		
+		
+		//play the animation for the lighting of the firework.
+		setPosture(CROUCHED_POSTURE);
+		Animation* anim = new Animation(_this, "manipulate_low");
+		broadcastMessage(anim);	
+		
+		firework->removeFromZone();
 }

@@ -97,6 +97,7 @@ public:
 	static const int BUILDING = 5;
 	static const int CELL = 6;
 	static const int INTANGIBLE = 7;
+	static const int STATIC = 8;
 	
 public:
 	SceneObjectImplementation();

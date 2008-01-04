@@ -100,6 +100,10 @@ which carries forward this exception.
 #include "objects/tangible/instrument/InstrumentImplementation.h"
 #include "objects/tangible/lair/LairObject.h"
 #include "objects/tangible/lair/LairObjectImplementation.h"
+#include "objects/tangible/holocron/Holocron.h"
+#include "objects/tangible/holocron/HolocronImplementation.h"
+#include "objects/tangible/firework/Firework.h"
+#include "objects/tangible/firework/FireworkImplementation.h"
 
 #include "objects/tangible/weapons/Weapon.h"
 #include "objects/tangible/weapons/WeaponImplementation.h"
@@ -147,5 +151,10 @@ which carries forward this exception.
 
 #include "objects/scene/SceneObject.h"
 #include "objects/scene/SceneObjectImplementation.h"
+
+#include "objects/static/StaticObject.h"
+#include "objects/static/StaticObjectImplementation.h"
+#include "objects/static/firework/FireworkWorld.h"
+#include "objects/static/firework/FireworkWorldImplementation.h"
 
 #endif /*ZONEOBJECTS_H_*/

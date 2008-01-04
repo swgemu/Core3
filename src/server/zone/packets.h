@@ -198,4 +198,8 @@ which carries forward this exception.
 #include "packets/trade/TradeCompleteMessage.h"
 #include "packets/trade/GiveMoneyMessage.h"
 
+// static objects
+#include "packets/static/StaticObjectMessage3.h"
+#include "packets/static/StaticObjectMessage6.h"
+
 #endif /*PACKETS_H_*/
