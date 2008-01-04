@@ -47,7 +47,7 @@ lordNyax = Creature:new {
 	socialGroup = "nyax",
 	named = TRUE,
 	
-	level = 300,
+	level = 175,
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
 	health = 75000,

@@ -310,5 +310,5 @@ spawnCreatures(sliceHound, 0, 660, -4700, 300, 5)
 
 -- Lord Nyax 1350 -322
 spawnCreatures(nyaxThug, 0, 1350, -322, 200, 40)
-spawnCreatures(lordNyax, 0, 1352, -322, 10, 1)
+spawnCreature(lordNyax, 0, 1352, -322, 13200)
 
