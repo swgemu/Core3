@@ -55,8 +55,6 @@ class StaticObject;
 
 class Player;
 
-#include "engine/service/Message.h"
-
 #include "../../static/StaticObject.h"
 
 class FireworkWorld : public StaticObject {

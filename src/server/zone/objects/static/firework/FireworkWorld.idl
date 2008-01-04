@@ -43,9 +43,8 @@ which carries forward this exception.
 */
 
 import "../../static/StaticObject";
-import "../../player/Player";
 
-include "engine/service/Message";
+import "../../player/Player";
 
 interface FireworkWorld implements StaticObject {
 	FireworkWorld(unsigned long oid, int tp);

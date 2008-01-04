@@ -299,6 +299,16 @@ public:
 
 	void setTradeRequestedPlayer(unsigned long long ID);
 
+	unsigned long long getTradeRequestedPlayer();
+
+	void launchFirework();
+
+	void sendMessage(Message* msg);
+
+	void sendMessage(StandaloneMessage* msg);
+
+	bool isJedi();
+
 	PlayerObject* getPlayerObject();
 
 	bool isLinkDead();
@@ -316,14 +326,6 @@ public:
 	unicode& getBiography();
 
 	string& getHairData();
-
-	unsigned int getForcePower();
-
-	bool isJedi();
-
-	void sendMessage(Message* msg);
-
-	void sendMessage(StandaloneMessage* msg);
 
 	unsigned long long getCharacterID();
 
@@ -367,9 +369,7 @@ public:
 
 	float getLastTestPositionY();
 
-	unsigned long long getTradeRequestedPlayer();
-
-	void launchFirework();
+	unsigned int getForcePower();
 
 protected:
 	string _return_getRaceFileName;
@@ -608,6 +608,16 @@ public:
 
 	void setTradeRequestedPlayer(unsigned long long ID);
 
+	unsigned long long getTradeRequestedPlayer();
+
+	void launchFirework();
+
+	void sendMessage(Message* msg);
+
+	void sendMessage(StandaloneMessage* msg);
+
+	bool isJedi();
+
 	PlayerObject* getPlayerObject();
 
 	bool isLinkDead();
@@ -625,14 +635,6 @@ public:
 	unicode& getBiography();
 
 	string& getHairData();
-
-	unsigned int getForcePower();
-
-	bool isJedi();
-
-	void sendMessage(Message* msg);
-
-	void sendMessage(StandaloneMessage* msg);
 
 	unsigned long long getCharacterID();
 
@@ -676,9 +678,7 @@ public:
 
 	float getLastTestPositionY();
 
-	unsigned long long getTradeRequestedPlayer();
-
-	void launchFirework();
+	unsigned int getForcePower();
 
 protected:
 	string _param0_trainSkillBox__string_;

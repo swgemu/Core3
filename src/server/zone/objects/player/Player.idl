@@ -257,6 +257,15 @@ interface Player implements CreatureObject {
 	
 	void setTradeRequestedPlayer(unsigned long ID);
 
+	unsigned long getTradeRequestedPlayer();
+	
+	void launchFirework();
+	
+	void sendMessage(Message msg);
+	void sendMessage(StandaloneMessage msg);
+
+	boolean isJedi();
+
 	// getters
 	PlayerObject getPlayerObject();
 	
@@ -274,12 +283,6 @@ interface Player implements CreatureObject {
 	unicode getBiography();
 	string getHairData();
 
-	unsigned int getForcePower();
-	boolean isJedi();
-	
-	void sendMessage(Message msg);
-	void sendMessage(StandaloneMessage msg);
-	
 	unsigned long getCharacterID();
 	
 	string getStartingProfession();
@@ -320,8 +323,7 @@ interface Player implements CreatureObject {
 	
 	float getLastTestPositionX();
 	float getLastTestPositionY();
-	
-	unsigned long getTradeRequestedPlayer();
-	
-	void launchFirework();
+
+	unsigned int getForcePower();
+
 }

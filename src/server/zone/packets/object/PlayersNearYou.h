@@ -44,42 +44,43 @@ which carries forward this exception.
 
 #ifndef PLAYERSNEARYOU_H_
 #define PLAYERSNEARYOU_H_
-
+ 
 #include "ObjectControllerMessage.h"
-
+ 
 #include "../../objects/player/PlayerObject.h"
 #include "../../objects/player/PlayerImplementation.h"
 
+#include "../../objects/player/Races.h"
+ 
 #include "../../objects/terrain/RegionNames.h"
-
+#include "../../objects/terrain/PlanetNames.h"
+ 
 class PlayersNearYouMessage : public ObjectControllerMessage {
 public:
 	PlayersNearYouMessage(CreatureObject* creo) 
 			: ObjectControllerMessage(creo->getObjectID(), 0x0B, 0x1E7) {
-	
-		insertInt(0);
+ 		insertInt(0);
 	}
-	
+ 
 	void addFoundPlayer(Player* player) {
 		insertInt(0); //List counter for something.
 		insertUnicode(player->getCharacterName());
-		
-		insertInt(0); // Race ID
-		
+ 
+		insertInt(Races::getRaceID(player->getRaceName())); // Race ID
+ 
 		insertAscii(Region::getRegionName(player->getRegionID())); //Region Name
-		insertAscii("tatooine"); //Planet
-		
+		insertAscii(Planet::getPlanetName(player->getZoneID())); //Planet
+ 
 		insertAscii(player->getGuildName()); //Guild
-		
+ 
 		insertAscii(player->getPlayerObject()->getCurrentTitle()); //Title	
 	}
-	
+ 
 	void insertPlayerCounter(uint32 foundCount) {
-		insertInt(30,foundCount);
-		insertInt(34,0);
+		insertInt(30, foundCount);
+		insertInt(34 ,0);
 	}
-
-
+ 
 };
-
+ 
 #endif /*PLAYERSNEARYOU_H_*/

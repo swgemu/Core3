@@ -61,66 +61,17 @@ which carries forward this exception.
 StaticObjectImplementation::StaticObjectImplementation(uint64 oid, int tp) 
 		: StaticObjectServant(oid) {
 	initialize();
-	
-	objectSubType = tp;
-	
-	pvpStatusBitmask = 0;
-}
-
-StaticObjectImplementation::StaticObjectImplementation(uint64 oid, const unicode& n, const string& tempname, uint32 tempCRC, int tp) 
-		: StaticObjectServant(oid) {
-	initialize();
-	
-	objectCRC = tempCRC;
-	
-	name = n;
-
-	objectSubType = tp;
-	
-	pvpStatusBitmask = 0;
-}
-
-StaticObjectImplementation::StaticObjectImplementation(CreatureObject* creature, const unicode& n, const string& tempname, uint32 tempCRC, int tp) 
-		: StaticObjectServant() {
-	initialize();
-	
-	name = n;
-	
-	objectCRC = tempCRC;
-	objectID = creature->getNewItemID();
-
-	objectSubType = tp;
 }
 
 void StaticObjectImplementation::initialize() { 
-	container = NULL;
 	zone = NULL;
 	
-	persistent = false;
-	updated = false;
-	
-	building = NULL;
-
-	objectCount = 0;
-	
-	conditionDamage = 0;
-	maxCondition = 6000;
-	
 	objectType = SceneObjectImplementation::STATIC;
-	
-	equipped = false;
-	
-	pvpStatusBitmask = 0;
 }
 
 void StaticObjectImplementation::insertToZone(Zone* zone) {
 	StaticObjectImplementation::zone = zone;
 	
-	/*if (container != NULL) {
-		if (container->isCell())
-			building = (BuildingObject*) container->getParent();
-	}*/
-
 	try {
 		zone->lock();
 		
@@ -173,20 +124,12 @@ void StaticObjectImplementation::sendTo(Player* player, bool doClose) {
 
 	SceneObjectImplementation::create(client);
 
-	if (container != NULL)
-		link(client, container);
-
 	Message* stao3 = new StaticObjectMessage3((StaticObject*) _this);
 	client->sendMessage(stao3);
 
 	Message* stao6 = new StaticObjectMessage6((StaticObject*) _this);
 	client->sendMessage(stao6);
 	
-	if (pvpStatusBitmask != 0) {
-		//UpdatePVPStatusMessage* msg = new UpdatePVPStatusMessage(_this, pvpStatusBitmask);
-		//client->sendMessage(stao6);
-	}
-
 	if (doClose)
 		SceneObjectImplementation::close(client);
 	

@@ -43,14 +43,12 @@ which carries forward this exception.
 */
 
 import "../TangibleObject";
-import "../../player/Player";
 
-include "engine/service/Message";
+import "../../player/Player";
 
 interface Firework implements TangibleObject {
 	Firework(unsigned long oid, int tp);
 
 	int useObject(Player player);
-	
 }
 

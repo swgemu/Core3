@@ -47,10 +47,6 @@ which carries forward this exception.
 
 #include "../../player/Player.h"
 
-#include "../../creature/shuttle/ShuttleCreature.h"
-
-#include "../../../packets/player/EnterTicketPurchaseModeMessage.h"
-
 #include "FireworkWorld.h"
 
 class FireworkWorldImplementation : public FireworkWorldServant {
@@ -62,26 +58,16 @@ public:
 	static const int TESTA = 1;
 	static const int TESTB = 2;
 	
-	
 public:
-	FireworkWorldImplementation(uint32 objCRC, uint64 objid, const unicode& n, const string& tempn, float x, float z, float y, int FireworkType) 
-			: FireworkWorldServant(objid, FIREWORK) {
+	FireworkWorldImplementation(Player* player, int type = 1) 
+			: FireworkWorldServant(player->getNewItemID(), FIREWORK) {
 			
-		objectCRC = objCRC;
-
-		name = n;
+		objectCRC = 0xBD7F7602;
 		
-		templateTypeName = "obj_n";
-		templateName = tempn;
-		
-		fireworkType = FireworkType;
+		fireworkType = type;
 
-		initializePosition(x, z, y);
+		initializePosition(player->getPositionX(), player->getPositionZ(), player->getPositionY());
 	}
-	
-	//virtual int useObject(Player* player) {
-	//	return 0;
-	//	}
 	
 	inline int getFireworkType() {
 		return fireworkType;

@@ -172,6 +172,6 @@ RunCreatureFile("objects/creatures/rebelGeneral.lua")
 RunCreatureFile("objects/creatures/rebelSurfaceMarshal.lua")
 
 -- Spawns
-RunCreatureFile("tatooine/staticSpawns.lua")
-RunCreatureFile("dathomir/staticSpawns.lua")
-RunCreatureFile("corellia/staticSpawns.lua")
+--RunCreatureFile("tatooine/staticSpawns.lua")
+--RunCreatureFile("dathomir/staticSpawns.lua")
+--RunCreatureFile("corellia/staticSpawns.lua")

@@ -50,7 +50,6 @@ import "../../Zone";
 include "engine/service/Message";
 
 interface StaticObject implements SceneObject {
-	StaticObject();
 	StaticObject(unsigned long oid);
 
 	void insertToZone(Zone zone);
@@ -58,39 +57,5 @@ interface StaticObject implements SceneObject {
 
 	void close(Player player);
 	
-	void setEquipped(boolean eqp);
-	
-	void setContainer(SceneObject cont, unsigned int type = 0x04);
-	
 	void sendTo(Player player, boolean doClose = true);
-
-	boolean isPersistent();
-	boolean isUpdated();
-	
-	boolean isEquipped();
-	
-	// setters
-	void setPersistent(boolean pers);
-
-	void setUpdated(boolean upd);
-
-	void setConditionDamage(int damage);
-	
-	// getters
-	SceneObject getContainer();
-
-	unicode getName();
-	string getTemplateName();
-	string getTemplateTypeName();
-	string getCustomizationString();
-
-	int getObjectSubType();
-
-	unsigned int getTemplateID();
-	
-	int getObjectCount();
-	
-	int getConditionDamage();
-	int getMaxCondition();
-	int getCondition();
 }

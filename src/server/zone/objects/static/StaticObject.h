@@ -77,55 +77,9 @@ public:
 
 	void close(Player* player);
 
-	void setEquipped(bool eqp);
-
-	void setContainer(SceneObject* cont, unsigned int type = 04);
-
 	void sendTo(Player* player, bool doClose = true);
 
-	bool isPersistent();
-
-	bool isUpdated();
-
-	bool isEquipped();
-
-	void setPersistent(bool pers);
-
-	void setUpdated(bool upd);
-
-	void setConditionDamage(int damage);
-
-	SceneObject* getContainer();
-
-	unicode& getName();
-
-	string& getTemplateName();
-
-	string& getTemplateTypeName();
-
-	string& getCustomizationString();
-
-	int getObjectSubType();
-
-	unsigned int getTemplateID();
-
-	int getObjectCount();
-
-	int getConditionDamage();
-
-	int getMaxCondition();
-
-	int getCondition();
-
 protected:
-	string _return_getCustomizationString;
-
-	string _return_getTemplateTypeName;
-
-	string _return_getTemplateName;
-
-	unicode _return_getName;
-
 };
 
 class StaticObjectImplementation;
@@ -142,45 +96,7 @@ public:
 
 	void close(Player* player);
 
-	void setEquipped(bool eqp);
-
-	void setContainer(SceneObject* cont, unsigned int type);
-
 	void sendTo(Player* player, bool doClose);
-
-	bool isPersistent();
-
-	bool isUpdated();
-
-	bool isEquipped();
-
-	void setPersistent(bool pers);
-
-	void setUpdated(bool upd);
-
-	void setConditionDamage(int damage);
-
-	SceneObject* getContainer();
-
-	unicode& getName();
-
-	string& getTemplateName();
-
-	string& getTemplateTypeName();
-
-	string& getCustomizationString();
-
-	int getObjectSubType();
-
-	unsigned int getTemplateID();
-
-	int getObjectCount();
-
-	int getConditionDamage();
-
-	int getMaxCondition();
-
-	int getCondition();
 
 };
 
@@ -205,7 +121,6 @@ public:
 	StaticObject* _this;
 
 public:
-	StaticObjectServant();
 	StaticObjectServant(unsigned long long oid);
 	virtual ~StaticObjectServant();
 

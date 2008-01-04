@@ -61,38 +61,12 @@ class BuildingObject;
 class StaticObjectImplementation : public StaticObjectServant {
 protected:
 	Zone* zone;
-	
-	int conditionDamage;
-	int maxCondition;
-
-	bool persistent, updated;
-
-	uint32 templateID;
-	int objectSubType;
-
-	SceneObject* container;
-	
-	BuildingObject* building;
-
-	unicode name;
-	string templateTypeName;
-	string templateName;
-	
-	string customizationString;
-
-	int objectCount;
-
-	bool equipped;
-	
-	uint32 pvpStatusBitmask;
 
 public:
 	static const int FIREWORK = 1;
 
 public:
 	StaticObjectImplementation(uint64 oid, int tp = 0);
-	StaticObjectImplementation(uint64 oid, const unicode& name, const string& tempname, uint32 tempCRC, int tp = 0);
-	StaticObjectImplementation(CreatureObject* creature, const unicode& name, const string& tempname, uint32 tempCRC, int tp = 0);
 
 	void initialize();
 	
@@ -108,97 +82,7 @@ public:
 	inline StaticObject* deploy() {
 		return (StaticObject*) SceneObjectImplementation::deploy();
 	}
-	
-	// setters and getters
-	inline void setContainer(SceneObject* cont, uint32 type = 0x04) {
-		container = cont;
-		//linkType = type;
-	}
-
-	inline void setPersistent(bool pers) {
-		persistent = pers;
-	}
-
-	inline void setUpdated(bool upd) {
-		updated = upd;
-	}
-
-	inline void setEquipped(bool eqp) {
-		equipped = eqp;
-	}
-
-	inline void setCustomizationString(string& cust) {
-		customizationString = cust;
-	}
-	
-	inline void setMaxCondition(int condition) {
-		maxCondition = condition;
-	}
-
-	inline void setConditionDamage(int damage) {
-		conditionDamage = damage;
-	}
-
-	inline bool isPersistent() {
-		return persistent;
-	}
-	
-	inline bool isUpdated() {
-		return updated;
-	}
-	
-	inline SceneObject* getContainer() {
-		return container;
-	}
-	
-	inline unicode& getName() {
-		return name;
-	}
-
-	inline uint32 getTemplateID() {
-		return templateID;
-	}
-
-	inline string& getTemplateName() {
-		return templateName;
-	}
-
-	inline string& getCustomizationString() {
-		return customizationString;
-	}
-
-	inline string& getTemplateTypeName() {
-		return templateTypeName;
-	}
-	
-	inline int getObjectCount() {
-		return objectCount;
-	}
-	
-	bool isEquipped() {
-		return equipped;
-	}
-	
-	inline int getObjectSubType() { 
-		return objectSubType;
-	}
-	
-	inline bool isFirework() {
-		return objectSubType == FIREWORK;
-	}
-	
-	inline int getConditionDamage() {
-		return conditionDamage;
-	}
-
-	inline int getMaxCondition() {
-		return maxCondition;
-	}
-
-	inline int getCondition() {
-		return maxCondition - conditionDamage;
-	}
-	
+		
 };
 
 #endif /*STATICOBJECTIMPLEMENTATION_H_*/

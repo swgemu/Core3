@@ -46,10 +46,8 @@ which carries forward this exception.
 #define FIREWORKIMPLEMENTATION_H_
 
 #include "../../player/Player.h"
-#include "../../../packets.h"
 
 #include "Firework.h"
-#include "../../static/StaticObjectImplementation.h"
 
 class FireworkImplementation : public FireworkServant {
 protected:
@@ -74,8 +72,10 @@ public:
 		player->sendSystemMessage("Launching Firework...");
 		
 		//first remove the firework from the inventory
+
 		_this->sendDestroyTo(player);
-		player->removeInventoryItem(_this->getObjectID());
+		
+		player->removeInventoryItem(objectID);
 		
 		//now we launch it.
 		player->launchFirework();

@@ -115,256 +115,18 @@ void StaticObject::close(Player* player) {
 		((StaticObjectImplementation*) _impl)->close(player);
 }
 
-void StaticObject::setEquipped(bool eqp) {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 9);
-		invocation.addBooleanParameter(eqp);
-
-		invocation.executeWithVoidReturn();
-	} else
-		((StaticObjectImplementation*) _impl)->setEquipped(eqp);
-}
-
-void StaticObject::setContainer(SceneObject* cont, unsigned int type) {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 10);
-		invocation.addObjectParameter(cont);
-		invocation.addUnsignedIntParameter(type);
-
-		invocation.executeWithVoidReturn();
-	} else
-		((StaticObjectImplementation*) _impl)->setContainer(cont, type);
-}
-
 void StaticObject::sendTo(Player* player, bool doClose) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 11);
+		ORBMethodInvocation invocation(this, 9);
 		invocation.addObjectParameter(player);
 		invocation.addBooleanParameter(doClose);
 
 		invocation.executeWithVoidReturn();
 	} else
 		((StaticObjectImplementation*) _impl)->sendTo(player, doClose);
-}
-
-bool StaticObject::isPersistent() {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 12);
-
-		return invocation.executeWithBooleanReturn();
-	} else
-		return ((StaticObjectImplementation*) _impl)->isPersistent();
-}
-
-bool StaticObject::isUpdated() {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 13);
-
-		return invocation.executeWithBooleanReturn();
-	} else
-		return ((StaticObjectImplementation*) _impl)->isUpdated();
-}
-
-bool StaticObject::isEquipped() {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 14);
-
-		return invocation.executeWithBooleanReturn();
-	} else
-		return ((StaticObjectImplementation*) _impl)->isEquipped();
-}
-
-void StaticObject::setPersistent(bool pers) {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 15);
-		invocation.addBooleanParameter(pers);
-
-		invocation.executeWithVoidReturn();
-	} else
-		((StaticObjectImplementation*) _impl)->setPersistent(pers);
-}
-
-void StaticObject::setUpdated(bool upd) {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 16);
-		invocation.addBooleanParameter(upd);
-
-		invocation.executeWithVoidReturn();
-	} else
-		((StaticObjectImplementation*) _impl)->setUpdated(upd);
-}
-
-void StaticObject::setConditionDamage(int damage) {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 17);
-		invocation.addSignedIntParameter(damage);
-
-		invocation.executeWithVoidReturn();
-	} else
-		((StaticObjectImplementation*) _impl)->setConditionDamage(damage);
-}
-
-SceneObject* StaticObject::getContainer() {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 18);
-
-		return (SceneObject*) invocation.executeWithObjectReturn();
-	} else
-		return ((StaticObjectImplementation*) _impl)->getContainer();
-}
-
-unicode& StaticObject::getName() {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 19);
-
-		invocation.executeWithUnicodeReturn(_return_getName);
-		return _return_getName;
-	} else
-		return ((StaticObjectImplementation*) _impl)->getName();
-}
-
-string& StaticObject::getTemplateName() {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 20);
-
-		invocation.executeWithAsciiReturn(_return_getTemplateName);
-		return _return_getTemplateName;
-	} else
-		return ((StaticObjectImplementation*) _impl)->getTemplateName();
-}
-
-string& StaticObject::getTemplateTypeName() {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 21);
-
-		invocation.executeWithAsciiReturn(_return_getTemplateTypeName);
-		return _return_getTemplateTypeName;
-	} else
-		return ((StaticObjectImplementation*) _impl)->getTemplateTypeName();
-}
-
-string& StaticObject::getCustomizationString() {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 22);
-
-		invocation.executeWithAsciiReturn(_return_getCustomizationString);
-		return _return_getCustomizationString;
-	} else
-		return ((StaticObjectImplementation*) _impl)->getCustomizationString();
-}
-
-int StaticObject::getObjectSubType() {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 23);
-
-		return invocation.executeWithSignedIntReturn();
-	} else
-		return ((StaticObjectImplementation*) _impl)->getObjectSubType();
-}
-
-unsigned int StaticObject::getTemplateID() {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 24);
-
-		return invocation.executeWithUnsignedIntReturn();
-	} else
-		return ((StaticObjectImplementation*) _impl)->getTemplateID();
-}
-
-int StaticObject::getObjectCount() {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 25);
-
-		return invocation.executeWithSignedIntReturn();
-	} else
-		return ((StaticObjectImplementation*) _impl)->getObjectCount();
-}
-
-int StaticObject::getConditionDamage() {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 26);
-
-		return invocation.executeWithSignedIntReturn();
-	} else
-		return ((StaticObjectImplementation*) _impl)->getConditionDamage();
-}
-
-int StaticObject::getMaxCondition() {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 27);
-
-		return invocation.executeWithSignedIntReturn();
-	} else
-		return ((StaticObjectImplementation*) _impl)->getMaxCondition();
-}
-
-int StaticObject::getCondition() {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 28);
-
-		return invocation.executeWithSignedIntReturn();
-	} else
-		return ((StaticObjectImplementation*) _impl)->getCondition();
 }
 
 /*
@@ -388,64 +150,7 @@ Packet* StaticObjectAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* in
 		close((Player*) inv->getObjectParameter());
 		break;
 	case 9:
-		setEquipped(inv->getBooleanParameter());
-		break;
-	case 10:
-		setContainer((SceneObject*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
-		break;
-	case 11:
 		sendTo((Player*) inv->getObjectParameter(), inv->getBooleanParameter());
-		break;
-	case 12:
-		resp->insertBoolean(isPersistent());
-		break;
-	case 13:
-		resp->insertBoolean(isUpdated());
-		break;
-	case 14:
-		resp->insertBoolean(isEquipped());
-		break;
-	case 15:
-		setPersistent(inv->getBooleanParameter());
-		break;
-	case 16:
-		setUpdated(inv->getBooleanParameter());
-		break;
-	case 17:
-		setConditionDamage(inv->getSignedIntParameter());
-		break;
-	case 18:
-		resp->insertLong(getContainer()->_getORBObjectID());
-		break;
-	case 19:
-		resp->insertUnicode(getName());
-		break;
-	case 20:
-		resp->insertAscii(getTemplateName());
-		break;
-	case 21:
-		resp->insertAscii(getTemplateTypeName());
-		break;
-	case 22:
-		resp->insertAscii(getCustomizationString());
-		break;
-	case 23:
-		resp->insertSignedInt(getObjectSubType());
-		break;
-	case 24:
-		resp->insertInt(getTemplateID());
-		break;
-	case 25:
-		resp->insertSignedInt(getObjectCount());
-		break;
-	case 26:
-		resp->insertSignedInt(getConditionDamage());
-		break;
-	case 27:
-		resp->insertSignedInt(getMaxCondition());
-		break;
-	case 28:
-		resp->insertSignedInt(getCondition());
 		break;
 	default:
 		return NULL;
@@ -466,84 +171,8 @@ void StaticObjectAdapter::close(Player* player) {
 	return ((StaticObjectImplementation*) impl)->close(player);
 }
 
-void StaticObjectAdapter::setEquipped(bool eqp) {
-	return ((StaticObjectImplementation*) impl)->setEquipped(eqp);
-}
-
-void StaticObjectAdapter::setContainer(SceneObject* cont, unsigned int type) {
-	return ((StaticObjectImplementation*) impl)->setContainer(cont, type);
-}
-
 void StaticObjectAdapter::sendTo(Player* player, bool doClose) {
 	return ((StaticObjectImplementation*) impl)->sendTo(player, doClose);
-}
-
-bool StaticObjectAdapter::isPersistent() {
-	return ((StaticObjectImplementation*) impl)->isPersistent();
-}
-
-bool StaticObjectAdapter::isUpdated() {
-	return ((StaticObjectImplementation*) impl)->isUpdated();
-}
-
-bool StaticObjectAdapter::isEquipped() {
-	return ((StaticObjectImplementation*) impl)->isEquipped();
-}
-
-void StaticObjectAdapter::setPersistent(bool pers) {
-	return ((StaticObjectImplementation*) impl)->setPersistent(pers);
-}
-
-void StaticObjectAdapter::setUpdated(bool upd) {
-	return ((StaticObjectImplementation*) impl)->setUpdated(upd);
-}
-
-void StaticObjectAdapter::setConditionDamage(int damage) {
-	return ((StaticObjectImplementation*) impl)->setConditionDamage(damage);
-}
-
-SceneObject* StaticObjectAdapter::getContainer() {
-	return ((StaticObjectImplementation*) impl)->getContainer();
-}
-
-unicode& StaticObjectAdapter::getName() {
-	return ((StaticObjectImplementation*) impl)->getName();
-}
-
-string& StaticObjectAdapter::getTemplateName() {
-	return ((StaticObjectImplementation*) impl)->getTemplateName();
-}
-
-string& StaticObjectAdapter::getTemplateTypeName() {
-	return ((StaticObjectImplementation*) impl)->getTemplateTypeName();
-}
-
-string& StaticObjectAdapter::getCustomizationString() {
-	return ((StaticObjectImplementation*) impl)->getCustomizationString();
-}
-
-int StaticObjectAdapter::getObjectSubType() {
-	return ((StaticObjectImplementation*) impl)->getObjectSubType();
-}
-
-unsigned int StaticObjectAdapter::getTemplateID() {
-	return ((StaticObjectImplementation*) impl)->getTemplateID();
-}
-
-int StaticObjectAdapter::getObjectCount() {
-	return ((StaticObjectImplementation*) impl)->getObjectCount();
-}
-
-int StaticObjectAdapter::getConditionDamage() {
-	return ((StaticObjectImplementation*) impl)->getConditionDamage();
-}
-
-int StaticObjectAdapter::getMaxCondition() {
-	return ((StaticObjectImplementation*) impl)->getMaxCondition();
-}
-
-int StaticObjectAdapter::getCondition() {
-	return ((StaticObjectImplementation*) impl)->getCondition();
 }
 
 /*
@@ -586,10 +215,6 @@ ORBObjectAdapter* StaticObjectHelper::createAdapter(ORBObjectServant* obj) {
 /*
  *	StaticObjectServant
  */
-
-StaticObjectServant::StaticObjectServant() : SceneObjectImplementation() {
-	_classHelper = StaticObjectHelper::getInstance();
-}
 
 StaticObjectServant::StaticObjectServant(unsigned long long oid) : SceneObjectImplementation(oid) {
 	_classHelper = StaticObjectHelper::getInstance();

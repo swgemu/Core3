@@ -722,40 +722,25 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 				tokenizer.getStringToken(itemType);
 				
 				if (itemType == "Holocron") {
-					TangibleObject* item = NULL;
 					HolocronImplementation* itemImpl = new HolocronImplementation(player, 0x9BA06548, unicode("Holocron"), "object/tangible/jedi/shared_jedi_holocron_light.iff");
-					item = itemImpl->deploy();
-						if (item != NULL) {
-							player->addInventoryItem(item);
-							item->sendTo(player);
-						}
+					TangibleObject* item = itemImpl->deploy();
+
+					player->addInventoryItem(item);
+
+					item->sendTo(player);
 				} else if (itemType == "Firework") {
-					TangibleObject* item = NULL;
 					FireworkImplementation* itemImpl = new FireworkImplementation(player, 0x7C540DEB, unicode("a Firework"), "object/tangible/firework/shared_firework_s04.iff");
-					item = itemImpl->deploy();
-						if (item != NULL) {
-							player->addInventoryItem(item);
-							item->sendTo(player);
-						}
+					TangibleObject* item = itemImpl->deploy();
+
+					player->addInventoryItem(item);
+					
+					item->sendTo(player);
 				} else {
 					player->sendSystemMessage("Unknown Item Type.");
 				}
 				
 			}	
-		} 
-		/*else if (cmd == "@open") {
-					CreatureObject* target = (CreatureObject*)player->getTarget();
-					if (target != NULL) {
-						Message* packet = new Message();
-						packet->insertShort(0x04);
-						packet->insertInt(0xDCA57409);
-						packet->insertLong(player->getTarget()->getObjectID());
-						packet->insertInt(0);
-						packet->insertShort(0x00);
-						player->sendMessage(packet);
-					}
-		}*/
-		else {
+		} else {
 			player->sendSystemMessage("Unknown Command: " + cmd);
 		}
 	} catch (Exception& e) {

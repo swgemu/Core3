@@ -55,8 +55,6 @@ class TangibleObject;
 
 class Player;
 
-#include "engine/service/Message.h"
-
 #include "../TangibleObject.h"
 
 class Firework : public TangibleObject {

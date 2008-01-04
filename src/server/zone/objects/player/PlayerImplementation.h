@@ -426,6 +426,7 @@ public:
 		chatRooms.drop(room);
 	}
 	
+	// skill methods
 	void addSkillPoints(int sPoints) {
 		skillPoints += sPoints;
 	}
@@ -446,6 +447,7 @@ public:
 	void addCertifications(Vector<Certification*>& certs, bool updateClient = false);
 	void removeCertifications(Vector<Certification*>& certs, bool updateClient = false);
 
+	// waypoint methods
 	void addWaypoint(WaypointObject* wp) {
 		playerObject->addWaypoint(wp, true);
 	}
@@ -458,6 +460,9 @@ public:
 		return playerObject->getWaypoint(id);
 	}
 
+	void launchFirework();
+
+	// packet methods
 	void sendMessage(Message* msg);
 	void sendMessage(StandaloneMessage* msg);
 
@@ -710,8 +715,6 @@ public:
 	inline int getAdminLevel() {
 		return adminLevel;	
 	}
-	
-	void launchFirework();
 	
 	friend class PlayerManager;
 	friend class ProfessionManager;

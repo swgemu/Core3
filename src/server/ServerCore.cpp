@@ -151,6 +151,9 @@ void ServerCore::run() {
 				zserv = NULL;
 				
 				zserv->fixScheduler();
+			} else if (command == "help") { 
+				cout << "available commands:\n"; 
+				cout << "\texit, logQuadTree, info, icap, dcap, fixQueue, crash, about.\n"; 			
 			} else if (command == "about") {
 				cout << "Core3 Uber Edition. Ultyma pwns you.\n";
 			} else

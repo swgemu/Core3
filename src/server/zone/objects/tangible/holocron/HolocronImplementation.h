@@ -70,8 +70,10 @@ public:
 	
 	int useObject(Player* player) {
 		player->sendSystemMessage("A mysterious voice says, \"In order to continue your path to enlightenment, you must learn Master Bounty Hunter.\"");
+		
 		_this->sendDestroyTo(player);
-		player->removeInventoryItem(_this->getObjectID());
+		
+		player->removeInventoryItem(objectID);
 	}
 	
 };
