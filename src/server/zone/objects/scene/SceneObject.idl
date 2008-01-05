@@ -156,6 +156,10 @@ interface SceneObject implements RWLockable {
 	
 	boolean isIntangible();
 	
+	boolean isStatic();
+	
+	boolean isShip();
+	
 	Zone getZone();
 	
 	int getZoneID();

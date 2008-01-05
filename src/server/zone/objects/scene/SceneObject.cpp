@@ -717,12 +717,36 @@ bool SceneObject::isIntangible() {
 		return ((SceneObjectImplementation*) _impl)->isIntangible();
 }
 
-Zone* SceneObject::getZone() {
+bool SceneObject::isStatic() {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
 		ORBMethodInvocation invocation(this, 56);
+
+		return invocation.executeWithBooleanReturn();
+	} else
+		return ((SceneObjectImplementation*) _impl)->isStatic();
+}
+
+bool SceneObject::isShip() {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 57);
+
+		return invocation.executeWithBooleanReturn();
+	} else
+		return ((SceneObjectImplementation*) _impl)->isShip();
+}
+
+Zone* SceneObject::getZone() {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 58);
 
 		return (Zone*) invocation.executeWithObjectReturn();
 	} else
@@ -734,7 +758,7 @@ int SceneObject::getZoneID() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 57);
+		ORBMethodInvocation invocation(this, 59);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -746,7 +770,7 @@ SceneObject* SceneObject::getParent() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 58);
+		ORBMethodInvocation invocation(this, 60);
 
 		return (SceneObject*) invocation.executeWithObjectReturn();
 	} else
@@ -758,7 +782,7 @@ unsigned long long SceneObject::getParentID() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 59);
+		ORBMethodInvocation invocation(this, 61);
 
 		return invocation.executeWithUnsignedLongReturn();
 	} else
@@ -770,7 +794,7 @@ bool SceneObject::isMoving() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 60);
+		ORBMethodInvocation invocation(this, 62);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -782,7 +806,7 @@ void SceneObject::switchMovingState() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 61);
+		ORBMethodInvocation invocation(this, 63);
 
 		invocation.executeWithVoidReturn();
 	} else
@@ -794,7 +818,7 @@ bool SceneObject::doKeepObject() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 62);
+		ORBMethodInvocation invocation(this, 64);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -963,24 +987,30 @@ Packet* SceneObjectAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* inv
 		resp->insertBoolean(isIntangible());
 		break;
 	case 56:
-		resp->insertLong(getZone()->_getORBObjectID());
+		resp->insertBoolean(isStatic());
 		break;
 	case 57:
-		resp->insertSignedInt(getZoneID());
+		resp->insertBoolean(isShip());
 		break;
 	case 58:
-		resp->insertLong(getParent()->_getORBObjectID());
+		resp->insertLong(getZone()->_getORBObjectID());
 		break;
 	case 59:
-		resp->insertLong(getParentID());
+		resp->insertSignedInt(getZoneID());
 		break;
 	case 60:
-		resp->insertBoolean(isMoving());
+		resp->insertLong(getParent()->_getORBObjectID());
 		break;
 	case 61:
-		switchMovingState();
+		resp->insertLong(getParentID());
 		break;
 	case 62:
+		resp->insertBoolean(isMoving());
+		break;
+	case 63:
+		switchMovingState();
+		break;
+	case 64:
 		resp->insertBoolean(doKeepObject());
 		break;
 	default:
@@ -1188,6 +1218,14 @@ bool SceneObjectAdapter::isTangible() {
 
 bool SceneObjectAdapter::isIntangible() {
 	return ((SceneObjectImplementation*) impl)->isIntangible();
+}
+
+bool SceneObjectAdapter::isStatic() {
+	return ((SceneObjectImplementation*) impl)->isStatic();
+}
+
+bool SceneObjectAdapter::isShip() {
+	return ((SceneObjectImplementation*) impl)->isShip();
 }
 
 Zone* SceneObjectAdapter::getZone() {

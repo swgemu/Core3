@@ -98,6 +98,8 @@ IDL_SOURCES = server/zone/Zone.idl \
 				server/zone/objects/resource/ResourceContainer.idl \
 				server/zone/objects/mission/MissionObject.idl \
 				server/zone/objects/waypoint/WaypointObject.idl \
+				server/zone/objects/tangible/component/ShipComponent.idl \
+				server/zone/objects/ship/ShipObject.idl \
 				server/zone/managers/guild/GuildMap.idl \
 				server/zone/managers/guild/GuildManager.idl \
 				server/zone/managers/player/PlayerManager.idl \

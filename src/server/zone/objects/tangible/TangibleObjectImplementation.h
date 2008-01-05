@@ -99,6 +99,7 @@ public:
 	static const int LAIR = 10;
 	static const int HOLOCRON = 11;
 	static const int FIREWORK = 12;
+	static const int SHIPCOMPONENT = 13;
 
 public:
 	TangibleObjectImplementation(uint64 oid, int tp = 0);

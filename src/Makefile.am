@@ -110,6 +110,8 @@ core3_IDLS =	server/zone/Zone.cpp \
 		server/zone/objects/resource/ResourceContainer.cpp \
 		server/zone/objects/mission/MissionObject.cpp \
 		server/zone/objects/waypoint/WaypointObject.cpp \
+		server/zone/objects/tangible/component/ShipComponent.cpp \
+		server/zone/objects/ship/ShipObject.cpp \
 		server/zone/managers/guild/GuildMap.cpp \
 		server/zone/managers/guild/GuildManager.cpp \
 		server/zone/managers/player/PlayerMap.cpp \
@@ -154,6 +156,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/creature/trainer/TrainerCreatureImplementation.cpp \
 		server/zone/objects/creature/mount/MountCreatureImplementation.cpp \
 		server/zone/objects/scene/SceneObjectImplementation.cpp \
+		server/zone/objects/ship/ShipObjectImplementation.cpp \
 		server/zone/managers/object/ObjectManager.cpp \
 		server/zone/managers/guild/GuildManagerImplementation.cpp \
 		server/zone/managers/player/PlayerManagerImplementation.cpp \

@@ -96,6 +96,11 @@ which carries forward this exception.
 #include "packets/scene/ServerWeatherMessage.h"
 #include "packets/scene/GameSceneChangedMessage.h"
 
+#include "packets/ship/ShipObjectMessage1.h"
+#include "packets/ship/ShipObjectMessage3.h"
+#include "packets/ship/ShipObjectMessage4.h"
+#include "packets/ship/ShipObjectMessage6.h"
+
 #include "packets/creature/CreatureObjectMessage1.h"
 #include "packets/creature/CreatureObjectMessage3.h"
 #include "packets/creature/CreatureObjectMessage4.h"

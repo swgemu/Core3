@@ -80,6 +80,8 @@ which carries forward this exception.
 #include "objects/tangible/InventoryImplementation.h"
 #include "objects/tangible/MissionBag.h"
 #include "objects/tangible/MissionBagImplementation.h"
+#include "objects/tangible/component/ShipComponent.h"
+#include "objects/tangible/component/ShipComponentImplementation.h"
 #include "objects/tangible/wearables/Wearable.h"
 #include "objects/tangible/wearables/WearableImplementation.h"
 #include "objects/tangible/wearables/Armor.h"
@@ -151,6 +153,9 @@ which carries forward this exception.
 
 #include "objects/scene/SceneObject.h"
 #include "objects/scene/SceneObjectImplementation.h"
+
+#include "objects/ship/ShipObject.h"
+#include "objects/ship/ShipObjectImplementation.h"
 
 #include "objects/static/StaticObject.h"
 #include "objects/static/StaticObjectImplementation.h"

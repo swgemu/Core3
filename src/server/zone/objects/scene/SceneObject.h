@@ -175,6 +175,10 @@ public:
 
 	bool isIntangible();
 
+	bool isStatic();
+
+	bool isShip();
+
 	Zone* getZone();
 
 	int getZoneID();
@@ -301,6 +305,10 @@ public:
 	bool isTangible();
 
 	bool isIntangible();
+
+	bool isStatic();
+
+	bool isShip();
 
 	Zone* getZone();
 

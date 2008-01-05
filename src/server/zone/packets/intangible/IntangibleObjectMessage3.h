@@ -54,8 +54,8 @@ public:
 	IntangibleObjectMessage3(IntangibleObject* itno) 
 			: BaseLineMessage(itno->getObjectID(), 0x4F4E5449, 3, 5) {
 		
-		insertInt(0x3F80);
-		insertAscii("monster_name");
+		insertFloat(1);
+		insertAscii(itno->getDetailName()); //real stf name
 		insertInt(0);
 		insertAscii(itno->getName());
 		insertInt(0);

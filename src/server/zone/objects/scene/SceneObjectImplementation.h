@@ -98,6 +98,7 @@ public:
 	static const int CELL = 6;
 	static const int INTANGIBLE = 7;
 	static const int STATIC = 8;
+	static const int SHIP = 9;
 	
 public:
 	SceneObjectImplementation();
@@ -254,6 +255,14 @@ public:
 	
 	inline bool isIntangible() {
 		return objectType == INTANGIBLE;
+	}
+	
+	inline bool isStatic() {
+		return objectType == STATIC;
+	}
+	
+	inline bool isShip() {
+		return objectType == SHIP;
 	}
 
 	int compareTo(SceneObject* obj) {

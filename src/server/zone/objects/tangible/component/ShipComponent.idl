@@ -42,28 +42,51 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef INTANGIBLEOBJECTMESSAGE6_H_
-#define INTANGIBLEOBJECTMESSAGE6_H_
+import "../TangibleObject";
+import "../../player/Player";
 
-#include "../BaseLineMessage.h"
+include "engine/service/Message";
 
-#include "../../objects/intangible/IntangibleObject.h"
+interface ShipComponent implements TangibleObject {
+	ShipComponent(unsigned long oid, int tp);
 
-class IntangibleObjectMessage6 : public BaseLineMessage {
-public:
-	IntangibleObjectMessage6(IntangibleObject* itno) 
-			: BaseLineMessage(itno->getObjectID(), 0x4F4E5449, 6, 2) {
-		
-		insertInt(0x6E);
-		
-		insertAscii(itno->getDetailName()); //should be "monster_detail" for creature mounts
-		insertInt(0);
-		
-		insertAscii(itno->getDetailName());
-
-		setSize();
-	}
+	void erase();
 	
-};
-
-#endif /*INTANGIBLEOBJECTMESSAGE6_H_*/
+	int useObject(Player player);
+	
+	//val manip
+	
+	unsigned int getComponentCrc();
+	
+	void setComponentCrc(unsigned int tcc);
+	
+	float getCurArmor();
+	
+	void setCurArmor(float tca);
+	
+	float getMaxArmor();
+	
+	void setMaxArmor(float tma);
+	
+	float getCurHitpoints();
+	
+	void setCurHitpoints(float tch);
+	
+	float getMaxHitpoints();
+	
+	void setMaxHitpoints(float tmh);
+	
+	float getEnergyDrain();
+	
+	void setEnergyDrain(float ted);
+	
+	float getMass();
+	
+	void setMass(float tm);
+	
+	//type set/get
+	
+	void setCompType(int tct);
+	
+	boolean getCompType();
+}
