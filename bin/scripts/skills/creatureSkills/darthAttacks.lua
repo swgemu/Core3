@@ -47,7 +47,7 @@ darthAttack1 = {
 
 	range = 15,
 
-	damageRatio = 30,
+	damageRatio = 40,
 
 	speedRatio = 2,
 	coneAngle = 30,

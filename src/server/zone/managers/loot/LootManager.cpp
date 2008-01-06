@@ -37,11 +37,11 @@ void LootManager::lootCorpse(Player* player, Creature* creature) {
 		}
 
 		Inventory* inventory = creature->getInventory();
-		
+				
 		if (inventory != NULL) {
 			for (int i = inventory->objectsSize() - 1; i >= 0; --i) {
 				TangibleObject* lootItem = (TangibleObject*) inventory->getObject(i);
-
+				
 				if (!lootItem->isEquipped()) {
 					inventory->removeObject(i);
 
@@ -89,12 +89,12 @@ void LootManager::createLoot(Creature* creature) {
 
 	int weaponDropRate = 1500;
 	int armorDropRate = 1500;
-	int junkDropRate = 1100;
+	int junkDropRate = 1250;
 	int creditDropRate = 1500;
 	
 	creature->setCashCredits(0);
 
-	int itemcount = System::random(3) + 1;
+	int itemcount = System::random(2) + 1;
 
 	for (int i = 0; i < itemcount; ++i) {
 		if (System::random(armorDropRate) + creatureLevel > 1000) 
@@ -122,7 +122,7 @@ void LootManager::createWeaponLoot(Creature* creature, int creatureLevel) {
 		break;
 	case 1 :	// ONEHANDED
 		OneHandedMeleeWeaponImplementation* onehandImpl = new OneHandedMeleeWeaponImplementation(creature, 
-				"object/weapon/melee/baton/shared_baton_gaderiffi.iff", unicode("a Gaderiffi"), "baton_gaderiffi", true);
+				"object/weapon/melee/baton/shared_baton_gaderiffi.iff", unicode("a Gaderiffi"), "baton_gaderiffi", false);
 		item = (Weapon*) onehandImpl->deploy();
 		break;
 	case 2 :	// TWOHANDED
@@ -132,7 +132,7 @@ void LootManager::createWeaponLoot(Creature* creature, int creatureLevel) {
 		break;
 	case 3 :	// POLEARM
 		PolearmMeleeWeaponImplementation* polearmImpl = new PolearmMeleeWeaponImplementation(creature, 
-				"object/weapon/melee/polearm/shared_lance_vibrolance.iff", unicode("a Vibrolance"), "lance_vibrolance", true);
+				"object/weapon/melee/polearm/shared_lance_vibrolance.iff", unicode("a Vibrolance"), "lance_vibrolance", false);
 		item = (Weapon*) polearmImpl->deploy();
 		break;
 	case 4 :	// PISTOL
@@ -147,12 +147,12 @@ void LootManager::createWeaponLoot(Creature* creature, int creatureLevel) {
 		break;
 	case 6 :	// RIFLE
 		RifleRangedWeaponImplementation* rifleImpl = new RifleRangedWeaponImplementation(creature, 
-				"object/weapon/ranged/rifle/shared_rifle_t21.iff", unicode("a T21 Rifle"), "rifle_t21", true);
+				"object/weapon/ranged/rifle/shared_rifle_t21.iff", unicode("a T21 Rifle"), "rifle_t21", false);
 		item = (Weapon*) rifleImpl->deploy();
 		break;
 	case 7 :	// ONEHANDED
 		OneHandedMeleeWeaponImplementation* onehand2Impl = new OneHandedMeleeWeaponImplementation(creature, 
-				"object/weapon/melee/baton/shared_baton_stun.iff", unicode("a Stun Baton"), "baton_stun", true);
+				"object/weapon/melee/baton/shared_baton_stun.iff", unicode("a Stun Baton"), "baton_stun", false);
 		item = (Weapon*) onehand2Impl->deploy();
 		break;
 	case 8 :	// TWOHANDED
@@ -162,7 +162,7 @@ void LootManager::createWeaponLoot(Creature* creature, int creatureLevel) {
 		break;
 	case 9 :	// POLEARM
 		PolearmMeleeWeaponImplementation* polearm2Impl = new PolearmMeleeWeaponImplementation(creature, 
-				"object/weapon/melee/polearm/shared_polearm_vibro_axe.iff", unicode("a Long Vibro Axe"), "lance_vibro_axe", true);
+				"object/weapon/melee/polearm/shared_polearm_vibro_axe.iff", unicode("a Long Vibro Axe"), "lance_vibro_axe", false);
 		item = (Weapon*) polearm2Impl->deploy();
 		break;
 	case 10 :	// PISTOL
@@ -177,12 +177,12 @@ void LootManager::createWeaponLoot(Creature* creature, int creatureLevel) {
 		break;
 	case 12 :	// RIFLE
 		RifleRangedWeaponImplementation* rifle2Impl = new RifleRangedWeaponImplementation(creature, 
-				"object/weapon/ranged/rifle/shared_rifle_tenloss_dxr6_disruptor_loot.iff", unicode("a DX6R Rifle"), "rifle_tenloss_dxr6", true);
+				"object/weapon/ranged/rifle/shared_rifle_tenloss_dxr6_disruptor_loot.iff", unicode("a DX6R Rifle"), "rifle_tenloss_dxr6", false);
 		item = (Weapon*) rifle2Impl->deploy();
 		break;
 	/*case 13 :	// FLAMETHROWER
 			RifleRangedWeaponImplementation* flamerImpl = new RifleRangedWeaponImplementation(creature, 
-					"object/weapon/ranged/rifle/shared_rifle_flame_thrower.iff", unicode("a Flamethrower"), "rifle_flame_thrower", true);
+					"object/weapon/ranged/rifle/shared_rifle_flame_thrower.iff", unicode("a Flamethrower"), "rifle_flame_thrower", false);
 			item = (Weapon*) flamerImpl->deploy();
 			break;*/
 	}
@@ -250,7 +250,7 @@ void LootManager::createArmorLoot(Creature* creature, int creatureLevel) {
 		}
 		break;
 	case 1:
-		if (creatureLevel > 99) {
+		if (creatureLevel > 99 && System::random(1) == 1) {
 			switch (System::random(8)) {	// BH Armor
 			case 0 :
 				ArmorImplementation* chest2Impl = new ArmorImplementation(creature, 0x4FD29AA3, 
@@ -298,13 +298,11 @@ void LootManager::createArmorLoot(Creature* creature, int creatureLevel) {
 				item = (Armor*) bracerr2Impl->deploy();
 				break;
 			}
-			
-			creatureLevel = creatureLevel + 25;	
 		}
 		
 		break;
 	case 2:
-		if (creatureLevel > 124) {
+		if (creatureLevel > 149 && System::random(2) == 1) {
 			switch (System::random(8)) {	// Mando Armor
 			case 0 :
 				ArmorImplementation* chest3Impl = new ArmorImplementation(creature, 0x24525C1C, 
@@ -352,8 +350,6 @@ void LootManager::createArmorLoot(Creature* creature, int creatureLevel) {
 				item = (Armor*) bracerr3Impl->deploy();
 				break;
 			}
-			
-			creatureLevel = creatureLevel + 50;
 		}
 		
 		break;
@@ -410,7 +406,7 @@ void LootManager::createArmorLoot(Creature* creature, int creatureLevel) {
 		
 		break;
 	case 4:
-		if ((objectCRC == 0x1527DF01)||(objectCRC == 0x71F874)) {
+		if (objectCRC == 0x1527DF01 || objectCRC == 0x71F874) {
 			switch (System::random(5)) {
 			case 0 :
 				ArmorImplementation* chest5Impl = new ArmorImplementation(creature, 0x98A41A65, 
@@ -446,10 +442,9 @@ void LootManager::createArmorLoot(Creature* creature, int creatureLevel) {
 		}
 		break;
 	case 5:
-		if (((objectCRC == 0xF0663601)||(objectCRC == 0xAA197516))&&(System::random(10)==7)) {
+		if ((objectCRC == 0xF0663601 || objectCRC == 0xAA197516) && System::random(10) == 7) {
 			ArmorImplementation* nsImpl = new ArmorImplementation(creature, 0x2E943BD2, unicode("Nightsister Bicep"), "nightsister_bicep_r", false);
 			item = (Armor*) nsImpl->deploy();
-			creatureLevel = creatureLevel + 200;
 		break;
 		}
 	}
@@ -518,8 +513,16 @@ void LootManager::createJunkLoot(Creature* creature) {
 		TangibleObjectImplementation* item10Impl = new TangibleObjectImplementation(creature, unicode("a Briefcase"), 
 				"object/tangible/loot/misc/shared_briefcase_s01.iff", 0x6C34F325);
 		item = item10Impl->deploy();
-		break;	
-	}
+		break;
+/*	case 11 :
+		FireworkImplementation* fireworkImpl = new FireworkImplementation(((Player*)creature), 0x7C540DEB, unicode("a Firework"), "object/tangible/firework/shared_firework_s04.iff");
+		item = fireworkImpl->deploy();
+		break;
+	case 12 :
+		HolocronImplementation* holoImpl = new HolocronImplementation(((Player*)creature), 0x9BA06548, unicode("Holocron"), "object/tangible/jedi/shared_jedi_holocron_light.iff");
+		item = holoImpl->deploy();
+		break;
+*/	}
 	
 	if (item != NULL)
 		creature->addInventoryItem(item);

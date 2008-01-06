@@ -613,7 +613,27 @@ void ItemManagerImplementation::showDbStats(Player* player) {
 		
 		while (res->next()) {
 			if (res->getInt(4) == 2)
-				txt << "ObjID: " << res->getUnsignedLong(0) << " Name: " << res->getString(2) << "\\#ffffff MinDmg: " << res->getFloat(10) << " MaxDmg: " << res->getFloat(11) << " Spd: " << res->getFloat(12) << "\n";
+				txt << "ObjID: " << res->getUnsignedLong(0) << " Name: " << res->getString(2) << "\\#ffffff MinDmg: " << res->getFloat(11) << " MaxDmg: " << res->getFloat(12) << " Spd: " << res->getFloat(13) << "\n";
+		}
+		
+		delete res;
+		
+		player->sendSystemMessage(txt.str());
+	} catch (DatabaseException& e) {
+		cout << e.getMessage() << "\n";
+	}
+	
+	try {
+		stringstream query;
+		query << "SELECT * FROM `character_items` WHERE `deleted` = 0 ORDER BY `dot1_strength` DESC LIMIT 10";
+		
+		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
+		
+		txt << "Top 10 Weapons by DOT Strength\n";
+		
+		while (res->next()) {
+			if (res->getInt(4) == 2)
+				txt << "ObjID: " << res->getUnsignedLong(0) << " Name: " << res->getString(2) << "\\#ffffff MinDmg: " << res->getFloat(11) << " MaxDmg: " << res->getFloat(12) << " Spd: " << res->getFloat(13) << " Strength: " << res->getInt(57) << " Potency: " << res->getInt(59) << "\n";
 		}
 		
 		delete res;
@@ -637,9 +657,9 @@ void ItemManagerImplementation::showDbDeleted(Player* player) {
 		
 		while (res->next()) {
 			if (res->getInt(4) == 2)
-				txt << "ObjID: " << res->getUnsignedLong(0) << " Name: " << res->getString(2) << "\\#ffffff MinDmg: " << res->getFloat(10) << " MaxDmg: " << res->getFloat(11) << " Spd: " << res->getFloat(12) << "\n";
+				txt << "ObjID: " << res->getUnsignedLong(0) << " Name: " << res->getString(2) << "\\#ffffff MinDmg: " << res->getFloat(11) << " MaxDmg: " << res->getFloat(12) << " Spd: " << res->getFloat(13) << "\n";
 			else if (res->getInt(4) == 4)
-				txt << "ObjID: " << res->getUnsignedLong(0) << " Name: " << res->getString(2) << "\\#ffffff Resists: " << res->getFloat(29) << " " << res->getFloat(31) << " " << res->getFloat(33) << " " << res->getFloat(35) << " " << res->getFloat(37) << " " <<  res->getFloat(39) << " " << res->getFloat(41) << " " << res->getFloat(43) << " " << res->getFloat(45) << "\n";
+				txt << "ObjID: " << res->getUnsignedLong(0) << " Name: " << res->getString(2) << "\\#ffffff Resists: " << res->getFloat(30) << " " << res->getFloat(32) << " " << res->getFloat(34) << " " << res->getFloat(36) << " " << res->getFloat(38) << " " <<  res->getFloat(40) << " " << res->getFloat(42) << " " << res->getFloat(44) << " " << res->getFloat(46) << "\n";
 			else
 				txt << "ObjID: " << res->getUnsignedLong(0) << " Name: " << res->getString(2) << "\\#ffffff \n";
 		}

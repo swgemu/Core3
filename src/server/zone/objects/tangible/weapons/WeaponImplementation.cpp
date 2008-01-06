@@ -523,16 +523,16 @@ void WeaponImplementation::setWeaponStats(int modifier){
 	if (System::random(1000) == 7) 
 		luck = luck * 2; 
 	
-	if (System::random(10000) == 77) 
-		luck = luck * 10; 
+	if (System::random(50000) == 77) 
+		luck = luck * 5; 
 		
-	if (System::random(100000) == 777) 
-		luck = luck * 25; 
+	if (System::random(1000000) == 777) 
+		luck = luck * 10; 
 	
 	if (System::random(100) == 6) 
 		luck = 0;
 		
-	modifier = modifier + System::random(50);
+	modifier = modifier + System::random(10);
 	
 	int playerRoll = System::random(1000) * modifier * luck / 1000;
 	if (playerRoll > 200000) {
@@ -543,14 +543,14 @@ void WeaponImplementation::setWeaponStats(int modifier){
 		stringstream itemText;
 		itemText << "\\#ffff00" << name.c_str() << " (Legendary)";
 		name = unicode(itemText.str());	
-	} else if (playerRoll > 44000) {
+	} else if (playerRoll > 45000) {
 		modifier = modifier + 50;
 		luck = luck + 50;
 
 		stringstream itemText;
 		itemText << "\\#ffff00" << name.c_str() << " (Exceptional)";	
 		name = unicode(itemText.str());
-	} else if (playerRoll > 12000) {
+	} else if (playerRoll > 12500) {
 		modifier = modifier + 10;
 		luck = luck + 25;
 
@@ -559,12 +559,12 @@ void WeaponImplementation::setWeaponStats(int modifier){
 		name = unicode(itemText.str());	
 	}
 	
-	if ((luck * System::random(100)) > 1500) {
-		minDamage = round((minDamage * modifier / 100) + luck);
-		maxDamage = round((maxDamage * modifier / 100) + (1.1 * luck));
+	if ((luck * System::random(100)) > 1600) {
+		minDamage = round((minDamage * modifier / 100) + (0.7 * luck));
+		maxDamage = round((maxDamage * modifier / 100) + (0.8 * luck));
 	}
 	
-	if ((luck * System::random(100)) > 1800) {	
+	if ((luck * System::random(100)) > 1750) {	
 		attackSpeed = round(10 * (attackSpeed - (attackSpeed * modifier / 500) - (luck / 150))) / 10;
 	}
 	
@@ -577,7 +577,7 @@ void WeaponImplementation::setWeaponStats(int modifier){
 	if ((luck * System::random(100)) > 2000)
 		woundsRatio = woundsRatio + (modifier / 15) + (luck / 10);
 	
-	if (playerRoll > 13000)	{
+	if (playerRoll > 13500)	{
 		switch (System::random(4)) {
 		case 1:
 			dot1Type = BLEED;
@@ -616,7 +616,7 @@ void WeaponImplementation::setWeaponStats(int modifier){
 	
 	pointBlankAccuracy = pointBlankAccuracy + 50;	// temporary accuracy hack
 	
-	attackSpeed = round(10*(attackSpeed / 1.5)) / 10;	// temporary speed fix
+	attackSpeed = round(10*(attackSpeed / 1.25)) / 10;	// temporary speed fix
 	
 	if (attackSpeed < 1) 
 		attackSpeed = 1.0f;
@@ -630,9 +630,15 @@ void WeaponImplementation::setWeaponStats(int modifier){
 	if (mindAttackCost < 0) 
 		mindAttackCost = 0;
 
+	if (maxDamage > 1050)
+		maxDamage = 950 + System::random(100);
+
+	if (dot1Strength > 700)
+		dot1Strength = 650 + System::random(50);
+	
 	if (minDamage > maxDamage) 
-		minDamage = round(0.95*maxDamage);
-		
+		minDamage = round(0.8*maxDamage);
+	
 	equipped = false;
 	
 	persistent = false;

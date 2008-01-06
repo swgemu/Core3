@@ -312,3 +312,11 @@ spawnCreatures(sliceHound, 0, 660, -4700, 300, 5)
 spawnCreatures(nyaxThug, 0, 1350, -322, 200, 40)
 spawnCreature(lordNyax, 0, 1352, -322, 13200)
 
+-- Rebel Hideout -6500 6000
+spawnCreatures(rebelSurfaceMarshal, 0, -6500, 6000, 300, 30)
+spawnCreatures(rebelGeneral, 0, -6500, 6000, 400, 60)
+
+-- Imperial Stronghold 4660 -5785
+spawnCreatures(stormTrooper, 0, 4660, -5785, 200, 50)
+spawnCreatures(atSt, 0, 4660, -5785, 50, 4)
+

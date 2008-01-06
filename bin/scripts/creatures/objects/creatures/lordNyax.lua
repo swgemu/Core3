@@ -45,20 +45,19 @@ lordNyax = Creature:new {
 	name = "Lord Nyax",
 	objectCRC = 4219937413,
 	socialGroup = "nyax",
-	named = TRUE,
 	
 	level = 175,
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
-	health = 75000,
+	health = 55000,
 	strength = 1000,
 	constitution = 1000,
 
-	action = 75000,
+	action = 55000,
 	quickness = 1000,
 	stamina = 1000,
 
-	mind = 75000,
+	mind = 55000,
 	focus = 1000,
 	willpower = 1000,
 
@@ -68,7 +67,7 @@ lordNyax = Creature:new {
 	
 	accuracy = 300,
 
-	skills = { "nyaxAttack1" }
+	skills = { "nyaxAttack10", "nyaxAttack11", "nyaxAttack12", "nyaxAttack13", "nyaxAttack14", "nyaxAttack15", "nyaxAttack16", "nyaxAttack17", "nyaxAttack18", "nyaxAttack19", "nyaxAttack20", "nyaxAttack21", "nyaxAttack22", "nyaxAttack23", "nyaxAttack24"  }
 	-- respawnTimer = 180,
 }
 

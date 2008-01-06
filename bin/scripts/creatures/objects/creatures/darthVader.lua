@@ -45,7 +45,7 @@ darthVader = Creature:new {
 	name = "Darth Vader",
 	objectCRC = 147261716,
 	
-	level = 500,
+	level = 400,
 	
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

@@ -68,7 +68,7 @@ nightsisterElder = Creature:new {
 	
 	accuracy = 300,
 
-	skills = { "nightsisterAttack1", "nightsisterAttack2", "nightsisterAttack3", "nightsisterAttack4",  "nightsisterAttack5", "nightsisterAttack11", "nightsisterAttack12" }
+	skills = { "nightsisterAttack20", "nightsisterAttack21", "nightsisterAttack22", "nightsisterAttack23", "nightsisterAttack24",  "nightsisterAttack25", "nightsisterAttack26", "nightsisterAttack27", "nightsisterAttack28", "nightsisterAttack29", "nightsisterAttack30", "nightsisterAttack31" }
 	-- respawnTimer = 180,
 }
 

@@ -67,7 +67,7 @@ singingMountainClanInitiate = Creature:new {
 	armor = 1,
 	accuracy = 300,
 
-	skills = { "singingMountainClanAttack4", "singingMountainClanAttack5", "singingMountainClanAttack6", "singingMountainClanAttack7", "singingMountainClanAttack8", "singingMountainClanAttack9", "singingMountainClanAttack10" }
+	skills = { "singingMountainClanAttack40", "singingMountainClanAttack41", "singingMountainClanAttack42", "singingMountainClanAttack43", "singingMountainClanAttack44", "singingMountainClanAttack45", "singingMountainClanAttack46", "singingMountainClanAttack47", "singingMountainClanAttack48", "singingMountainClanAttack49", "singingMountainClanAttack50", "singingMountainClanAttack51" }
 	-- respawnTimer = 180,
 }
 

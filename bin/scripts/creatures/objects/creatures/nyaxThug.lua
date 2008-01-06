@@ -68,7 +68,7 @@ nyaxThug = Creature:new {
 	
 	accuracy = 300,
 
-	skills = { "nyaxAttack2" }
+	skills = { "nyaxAttack1", "nyaxAttack2" }
 	-- respawnTimer = 180,
 }
 

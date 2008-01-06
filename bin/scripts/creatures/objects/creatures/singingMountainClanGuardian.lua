@@ -67,7 +67,7 @@ singingMountainClanGuardian = Creature:new {
 	armor = 2,
 	accuracy = 300,
 
-	skills = { "singingMountainClanAttack2", "singingMountainClanAttack3", "singingMountainClanAttack4", "singingMountainClanAttack5", "singingMountainClanAttack11", "singingMountainClanAttack12" }
+	skills = { "singingMountainClanAttack20", "singingMountainClanAttack21", "singingMountainClanAttack22", "singingMountainClanAttack23", "singingMountainClanAttack24",  "singingMountainClanAttack25", "singingMountainClanAttack26", "singingMountainClanAttack27", "singingMountainClanAttack28", "singingMountainClanAttack29", "singingMountainClanAttack30", "singingMountainClanAttack31"  }
 	-- respawnTimer = 180,
 }
 
