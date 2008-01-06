@@ -57,7 +57,7 @@ which carries forward this exception.
 ShipObjectImplementation::ShipObjectImplementation(uint64 oid, Player* SOwner) : SceneObjectImplementation(oid) {
 	owner = SOwner;
 
-	objectType = SceneObjectImplementation::SHIP
+	objectType = SceneObjectImplementation::SHIP;
 	
 	init();
 }
