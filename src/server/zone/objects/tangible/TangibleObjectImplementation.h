@@ -116,6 +116,10 @@ public:
 	void sendDestroyTo(Player* player);
 
 	void close(Player* player);
+	
+	void repairItem(Player* player);
+	
+	void decay(int decayRate);
 
 	inline TangibleObject* deploy() {
 		return (TangibleObject*) SceneObjectImplementation::deploy();

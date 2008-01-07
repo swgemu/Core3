@@ -799,6 +799,28 @@ void ZonePacketHandler::handleSuiEventNotification(Message* pack) {
 		}
 
 		break;
+
+	case 0xBEEFAACA:	// repair weapon
+		if (cancel != 1) {
+			Inventory* inventory = player->getInventory(); 
+			
+			int itemindex = atoi(value.c_str().c_str());			
+			int weaponCount = 0;
+			
+			for (int i = 0; i < inventory->objectsSize(); i++) {
+				TangibleObject* item = (TangibleObject*) inventory->getObject(i);
+				
+				if (item->isWeapon()) {
+					Weapon* weapon = (Weapon*) item;
+
+					if (weaponCount == itemindex)
+						((TangibleObject*) weapon)->repairItem(player);
+					weaponCount++;
+				}
+			}
+		}
+		break;
+
 	/*case 0x4347494C:
 		if (cancel != 1)
 			processServer->getGuildManager()->handleCreateGuildNameBox(player, value.c_str());

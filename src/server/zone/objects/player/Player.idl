@@ -152,6 +152,8 @@ interface Player implements CreatureObject {
 
 	void createBaseStats();
 	
+	void decayInventory();
+	
 	// Profession
 	void saveProfessions();
 	void loadProfessions();

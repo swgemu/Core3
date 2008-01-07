@@ -714,6 +714,19 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 			((ListBox*)list)->generateMessage();
 
 			player->sendMessage(list);
+		} else if (cmd == "@repairWeapon") {
+			SuiCreatePageMessage* list;
+			list = new ListBox(0xBEEFAACA, "Weapon Repair Kit", "Select the item you wish to repair");
+			
+			int items = player->getInventory()->objectsSize();
+			
+			for (int i = 0; i < items; i++)
+				if (((TangibleObject*)player->getInventory()->getObject(i))->getObjectSubType()==2)
+					((ListBox*)list)->addItem(((TangibleObject*)player->getInventory()->getObject(i))->getName().c_str());	
+			
+			((ListBox*)list)->generateMessage();
+
+			player->sendMessage(list);
 		} else if (cmd == "@giveItemTemp") {
 			if (userManager->isAdmin(player->getFirstName())) {
 				

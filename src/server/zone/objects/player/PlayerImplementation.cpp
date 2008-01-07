@@ -546,6 +546,20 @@ void PlayerImplementation::createBaseStats() {
 	baseWillpower = hamValues[8];
 }
 
+void PlayerImplementation::decayInventory() {
+	if (inventory != NULL) {
+		for (int i = 0; i < inventory->objectsSize(); i++) {
+			TangibleObject* item = ((TangibleObject*)(inventory->getObject(i)));
+			if (item->isEquipped())
+				item->decay(10);
+			else
+				item->decay(5);	
+			
+			item->sendTo(_this);
+		}
+	}
+}
+
 void PlayerImplementation::sendToOwner() {
 	if (faction != 0)
 		pvpStatusBitmask |= OVERT_FLAG;
@@ -1291,7 +1305,8 @@ void PlayerImplementation::doClone() {
 		
 		break;
 	}
-		
+	
+	decayInventory();
 	clearStates();
 		
 	//setNeutral();

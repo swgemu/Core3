@@ -196,6 +196,8 @@ public:
 	
 	void createBaseStats();
 	
+	void decayInventory();
+	
 	void sendToOwner();
 	void sendPersonalContainers();
 	void sendTo(Player* player, bool doClose = true);

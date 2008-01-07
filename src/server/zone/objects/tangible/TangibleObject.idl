@@ -63,6 +63,10 @@ interface TangibleObject implements SceneObject {
 	void setContainer(SceneObject cont, unsigned int type = 0x04);
 	
 	void sendTo(Player player, boolean doClose = true);
+	
+	void repairItem(Player player);
+	
+	void decay(int decayRate);
 
 	boolean isPersistent();
 	boolean isUpdated();
