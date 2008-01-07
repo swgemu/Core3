@@ -108,6 +108,10 @@ public:
 	void handleAcceptTransactionMessage(Message* pack);
 	void handleUnAcceptTransactionMessage(Message* pack);
 	void handleVerifyTradeMessage(Message* pack);
+	
+	void handleBazaarAddInstantItem(Message* pack);
+	void handleBazaarAddAuctionItem(Message* pack);
+	void handleBazaarScreens(Message* pack);
 };
 
 #endif /*ZONEPACKETHANDLER_H_*/

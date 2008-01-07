@@ -65,6 +65,9 @@ which carries forward this exception.
 #include "managers/resource/ResourceManager.h"
 #include "managers/resource/ResourceManagerImplementation.h"
 
+#include "managers/bazaar/BazaarManager.h"
+#include "managers/bazaar/BazaarManagerImplementation.h"
+
 #include "ZoneClient.h"
 #include "ZoneClientImplementation.h"
 
@@ -120,6 +123,9 @@ void ZoneServerImplementation::startManagers() {
 	ResourceManagerImplementation* resImpl = new ResourceManagerImplementation(_this);
 	resourceManager = (ResourceManager*) resImpl->deploy("ResourceManager");
 
+	BazaarManagerImplementation* bazImpl = new BazaarManagerImplementation(_this);
+	bazaarManager = (BazaarManager*) bazImpl->deploy("BazaarManager");
+	
 	ChatManagerImplementation* chatImpl = new ChatManagerImplementation(_this, 10000);
 	chatManager = (ChatManager*) chatImpl->deploy("ChatManager");
 }

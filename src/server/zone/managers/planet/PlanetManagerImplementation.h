@@ -90,6 +90,7 @@ private:
 	void loadTrainers();
 	void loadBuildings();
 	void loadGuildTerminals();
+	void loadVendorTerminals();
 		
 public:
 	PlanetManagerImplementation(Zone* zone, ZoneProcessServerImplementation* serv);

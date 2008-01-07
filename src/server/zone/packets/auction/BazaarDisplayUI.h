@@ -42,60 +42,39 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef TERMINALIMPLEMENTATION_H_
-#define TERMINALIMPLEMENTATION_H_
+#ifndef BAZAARDISPLAYUI_H_
+#define BAZAARDISPLAYUI_H_
 
-#include "../../player/Player.h"
+#include "engine/engine.h"
+#include "../../objects/player/Player.h"
+#include "../../objects/player/PlayerObject.h"
 
-#include "../../creature/shuttle/ShuttleCreature.h"
-
-#include "../../../packets/player/EnterTicketPurchaseModeMessage.h"
-
-#include "Terminal.h"
-
-class TerminalImplementation : public TerminalServant {
-protected:
-	int terminalType;
-
-		
-public:
-	static const int TRAVEL = 1;
-	static const int GUILD = 2;
-	static const int VENDOR = 3;
-	static const int BAZAAR = 50;
+class BazaarDisplayUI : public Message {
 	
 public:
-	TerminalImplementation(uint32 objCRC, uint64 objid, const unicode& n, const string& tempn, float x, float z, float y, int TerminalType) 
-			: TerminalServant(objid, TERMINAL) {
-			
-		objectCRC = objCRC;
-
-		name = n;
+	BazaarDisplayUI(bool vendor, long bazaarId, Player* player) {
 		
-		templateTypeName = "terminal_name";
-		templateName = tempn;
-		
-		terminalType = TerminalType;
-
-		initializePosition(x, z, y);
-	}
-	
-	virtual int useObject(Player* player) {
-		return 0;
-	}
-	
-	inline int getTerminalType() {
-		return terminalType;
-	}
-	
-	inline bool isTravelTerminal() {
-		return terminalType == TRAVEL;
-	}
-	
-	inline bool isGuildTerminal() {
-		return terminalType == GUILD;
+		insertShort(5);
+		insertInt(0x80CE5E46);
+		insertInt(0x0B);
+		insertInt(0x0147);
+		insertLong(player->getPlayerObject()->getObjectID());
+		insertInt(0);
+		insertLong(bazaarId);
+		insertLong(player->getPlayerObject()->getObjectID());
+		insertInt(2);
+		insertShort(1);
+		insertInt(0x012E);
+		insertShort(0);
+		insertShort(2);
+		insertInt(0x0701);
+		insertShort(0);
+		if(vendor)
+			insertByte(0x1F);
+		else
+			insertByte(1); 
 	}
 	
 };
 
-#endif /*TERMINALIMPLEMENTATION_H_*/
+#endif /*BAZAARDISPLAYUI_H_*/

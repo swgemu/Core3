@@ -42,60 +42,48 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef TERMINALIMPLEMENTATION_H_
-#define TERMINALIMPLEMENTATION_H_
+#ifndef BAZAARMANAGERIMPLEMENTATION_H_
+#define BAZAARMANAGERIMPLEMENTATION_H_
 
-#include "../../player/Player.h"
+#include "engine/engine.h"
 
-#include "../../creature/shuttle/ShuttleCreature.h"
+#include "BazaarManager.h"
 
-#include "../../../packets/player/EnterTicketPurchaseModeMessage.h"
+#include "BazaarTerminals.h"
+#include "BazaarPlanetManager.h"
 
-#include "Terminal.h"
+#include "../../objects/player/Player.h"
 
-class TerminalImplementation : public TerminalServant {
-protected:
-	int terminalType;
+#define ARMOR 				0x00000100
+#define BUILDING 			0x00000200
+#define ENTITY				0x00000400
+#define DATA				0x00000800
+#define INSTALLATION		0x00001000
+#define MISC				0x00002000
+#define TOOL				0x00008000
+#define WEAPON				0x00020000
+#define COMPONENT			0x00040000
+#define WEAPONPOWERUP		0x00080000
+#define ARMORPOWERUP		0x00100000
+#define JEWELRY				0x00200000
+#define RESOURCECONTAINER	0x00400000
+#define	DEED				0x00800000
+#define CLOTHING			0x01000000
+#define SHIPCOMPONENT		0x40000000
 
-		
-public:
-	static const int TRAVEL = 1;
-	static const int GUILD = 2;
-	static const int VENDOR = 3;
-	static const int BAZAAR = 50;
+class BazaarManagerImplementation : public BazaarManagerServant, public Mutex {
+	BazaarPlanetManager* bazaarPlanets[10];
+	BazaarTerminals* bazaarTerminals;
 	
 public:
-	TerminalImplementation(uint32 objCRC, uint64 objid, const unicode& n, const string& tempn, float x, float z, float y, int TerminalType) 
-			: TerminalServant(objid, TERMINAL) {
-			
-		objectCRC = objCRC;
-
-		name = n;
-		
-		templateTypeName = "terminal_name";
-		templateName = tempn;
-		
-		terminalType = TerminalType;
-
-		initializePosition(x, z, y);
-	}
+	BazaarManagerImplementation(ZoneServer* server);
 	
-	virtual int useObject(Player* player) {
-		return 0;
-	}
+	void newBazaarRequest(long bazaarID, Player* player, int planet);
+	bool isBazaarTerminal(long objectID);
 	
-	inline int getTerminalType() {
-		return terminalType;
-	}
-	
-	inline bool isTravelTerminal() {
-		return terminalType == TRAVEL;
-	}
-	
-	inline bool isGuildTerminal() {
-		return terminalType == GUILD;
-	}
-	
+	void addInstantItem(Player* player, long objectid, long bazaarid, string& description, int price);
+	void addAuctionItem(Player* player, long objectid, long bazaarid, string& description, int price, int duration);
+	void getBazaarData(Player* player, long objectid, int screen, int extent, int category, int count);
 };
 
-#endif /*TERMINALIMPLEMENTATION_H_*/
+#endif /*BAZAARMANAGERIMPLEMENTATION_H_*/

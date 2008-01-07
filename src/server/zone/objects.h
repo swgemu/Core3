@@ -96,6 +96,8 @@ which carries forward this exception.
 #include "objects/tangible/terminal/travel/TravelTerminalImplementation.h"
 #include "objects/tangible/terminal/guild/GuildTerminal.h"
 #include "objects/tangible/terminal/guild/GuildTerminalImplementation.h"
+#include "objects/tangible/terminal/vendor/VendorTerminal.h"
+#include "objects/tangible/terminal/vendor/VendorTerminalImplementation.h"
 #include "objects/tangible/ticketcollector/TicketCollector.h"
 #include "objects/tangible/ticketcollector/TicketCollectorImplementation.h"
 #include "objects/tangible/instrument/Instrument.h"

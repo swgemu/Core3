@@ -90,7 +90,7 @@ void ShipObjectImplementation::init() {
 	maxArmorUpdateCnt = 0;
 	curHitpointsUpdateCnt = 0;
 	maxHitpointsUpdateCnt = 0;
-	unkUpdateCnt = 0;
+	//unkUpdateCnt = 0;
 	frontshieldMax = 0.0f;
 	backshieldMax = 0.0f;
 	
@@ -154,7 +154,7 @@ void ShipObjectImplementation::addComponent(ShipComponent* tsc) {
 }
 
 void ShipObjectImplementation::removeComponent(int compId) {
-	componentList.get(compId)->unload();
+	//componentList.get(compId)->unload();
 	calcActiveComponentListSize();
 }
 

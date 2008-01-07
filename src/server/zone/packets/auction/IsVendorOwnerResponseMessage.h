@@ -49,18 +49,30 @@ which carries forward this exception.
 
 class IsVendorOwnerResponseMessage : public Message {
 public:
-    IsVendorOwnerResponseMessage(CreatureObject* creo, uint64 vendorid, string vendorinfo) : Message() {
-		insertShort(0x03);
-		insertInt(0xCE04173E);  // opcode
+    IsVendorOwnerResponseMessage(bool vendor, long objectId, string& planet, string& header, int x, int z ) {
 		
-		insertInt(1); //list count?
-		insertInt(0); //update count?
+		insertShort(3);
+		insertInt(0xCE04173E);
 		
-		insertLong(vendorid); //ObjectID player retrieved.
+		if(!vendor)
+			insertInt(2);
+		else
+			insertInt(1);
+		insertInt(0);
 		
-		insertAscii(vendorinfo);
-		insertShort(0x64); //Owner flag I think.
+		insertLong(objectId);
+
+		stringstream title;
+		title << planet << ".@";
+		if(vendor)
+			title << "planet_n:" << planet <<  ".Vendor: " << "test";
+		else
+			title << planet << "_region_names:" << header << ".@terminal_name:terminal_bazaar";
+		title << "." << objectId << "#" << x << "," << z;
+		insertAscii(title.str());
 		
+		insertShort(0x64);
 	}
 };
+
 #endif /*ISVENDOROWNERRESPONSEMESSAGE_H_*/

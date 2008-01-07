@@ -94,6 +94,7 @@ core3_IDLS =	server/zone/Zone.cpp \
 		server/zone/objects/tangible/terminal/Terminal.cpp \
 		server/zone/objects/tangible/terminal/travel/TravelTerminal.cpp \
 		server/zone/objects/tangible/terminal/guild/GuildTerminal.cpp \
+		server/zone/objects/tangible/terminal/vendor/VendorTerminal.cpp \
 		server/zone/objects/tangible/ticketcollector/TicketCollector.cpp \
 		server/zone/objects/tangible/instrument/Instrument.cpp \
 		server/zone/objects/tangible/lair/LairObject.cpp \
@@ -122,6 +123,8 @@ core3_IDLS =	server/zone/Zone.cpp \
 		server/zone/managers/planet/PlanetManager.cpp \
 		server/zone/managers/resource/ResourceManager.cpp \
 		server/zone/managers/loot/LootManager.cpp \
+		server/zone/managers/bazaar/BazaarManager.cpp \
+		server/zone/managers/bazaar/BazaarPlanetManager.cpp \
 		server/chat/room/ChatRoom.cpp \
 		server/chat/ChatManager.cpp
 
@@ -172,6 +175,8 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/creature/CreatureManagerImplementation.cpp \
 		server/zone/managers/planet/PlanetManagerImplementation.cpp \
 		server/zone/managers/resource/ResourceManagerImplementation.cpp \
+		server/zone/managers/bazaar/BazaarManagerImplementation.cpp \
+		server/zone/managers/bazaar/BazaarPlanetManagerImplementation.cpp \
 		server/chat/room/ChatRoomImplementation.cpp \
 		server/chat/ChatManagerImplementation.cpp \
 		server/zone/packets/object/ObjectControllerMessage.cpp \

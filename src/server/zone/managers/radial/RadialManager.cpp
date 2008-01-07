@@ -50,6 +50,8 @@ which carries forward this exception.
 #include "../../Zone.h"
 #include "../../objects.h"
 
+#include "../bazaar/BazaarManager.h"
+#include "../bazaar/BazaarManagerImplementation.h"
 
 RadialManager::RadialManager() {
 }
@@ -113,7 +115,7 @@ void RadialManager::handleRadialRequest(Player* player, Packet* pack) {
 
 void RadialManager::handleRadialSelect(Player* player, Packet* pack) {
     SceneObject* obj = NULL;
-    
+        
 	try {
 		player->wlock();
 
@@ -127,6 +129,15 @@ void RadialManager::handleRadialSelect(Player* player, Packet* pack) {
 		}
 
 		obj = zone->lookupObject(objectID);
+		
+		//TODO: Get a bazaar object to pass to the next functions
+		BazaarManager* bazaarManager = zone->getZoneServer()->getBazaarManager();
+		if(bazaarManager->isBazaarTerminal(objectID)) {
+			
+			sendRadialResponseForBazaar(objectID, player);
+			player->unlock();
+			return;
+		}
 
 		if (obj == NULL) {
 			obj = player->getInventoryItem(objectID);
@@ -151,6 +162,7 @@ void RadialManager::handleRadialSelect(Player* player, Packet* pack) {
 void RadialManager::handleSelection(int radialID, Player* player, SceneObject* obj) {
 	// Pre: player is wlocked, obj is unlocked
 	// Post: player and obj unlocked
+	
 	switch (radialID) {
 	case 7: // EXAMINE
 		break;
@@ -168,6 +180,9 @@ void RadialManager::handleSelection(int radialID, Player* player, SceneObject* o
 	case 36:  // LOOT_ALL 
 		player->lootCorpse(); 
 		break; 
+	case 45: // Open vendor
+		sendRadialResponseForBazaar(obj->getObjectID(), player);
+		break;
 	case 60: // VEHICLE_GENERATE
 		player->unlock();
 		
@@ -198,6 +213,7 @@ void RadialManager::handleSelection(int radialID, Player* player, SceneObject* o
 
 ObjectMenuResponse* RadialManager::parseDefaults(Player* player, uint64 objectid, Packet* pack) {
 	int size = pack->parseInt();
+
 	ObjectMenuResponse* omr = new ObjectMenuResponse(player, objectid, 0);
 
 	for (int i = 0; i < size; i++) {
@@ -256,6 +272,14 @@ void RadialManager::sendRadialResponseForGuildTerminals(Player* player, GuildTer
 	omr->finish();
 
 	player->sendMessage(omr);
+}
+
+void RadialManager::sendRadialResponseForBazaar(long objectId, Player* player) {
+	Zone* zone = player->getZone();
+	
+	BazaarManager* bazaarManager = zone->getZoneServer()->getBazaarManager();
+	bazaarManager->newBazaarRequest(objectId, player, player->getZoneID());
+	
 }
 
 void RadialManager::handleVehicleStore(SceneObject* obj) {

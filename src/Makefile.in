@@ -106,19 +106,22 @@ am__objects_1 = Zone.$(OBJEXT) ZoneClient.$(OBJEXT) \
 	PolearmJediWeapon.$(OBJEXT) HairObject.$(OBJEXT) \
 	Wearable.$(OBJEXT) Armor.$(OBJEXT) Ticket.$(OBJEXT) \
 	Terminal.$(OBJEXT) TravelTerminal.$(OBJEXT) \
-	GuildTerminal.$(OBJEXT) TicketCollector.$(OBJEXT) \
-	Instrument.$(OBJEXT) LairObject.$(OBJEXT) Holocron.$(OBJEXT) \
-	Firework.$(OBJEXT) IntangibleObject.$(OBJEXT) \
-	StaticObject.$(OBJEXT) FireworkWorld.$(OBJEXT) \
-	GroupObject.$(OBJEXT) Guild.$(OBJEXT) CellObject.$(OBJEXT) \
-	BuildingObject.$(OBJEXT) ManufactureSchematic.$(OBJEXT) \
-	ResourceContainer.$(OBJEXT) MissionObject.$(OBJEXT) \
-	WaypointObject.$(OBJEXT) GuildMap.$(OBJEXT) \
-	GuildManager.$(OBJEXT) PlayerMap.$(OBJEXT) \
+	GuildTerminal.$(OBJEXT) VendorTerminal.$(OBJEXT) \
+	TicketCollector.$(OBJEXT) Instrument.$(OBJEXT) \
+	LairObject.$(OBJEXT) Holocron.$(OBJEXT) Firework.$(OBJEXT) \
+	IntangibleObject.$(OBJEXT) StaticObject.$(OBJEXT) \
+	FireworkWorld.$(OBJEXT) GroupObject.$(OBJEXT) Guild.$(OBJEXT) \
+	CellObject.$(OBJEXT) BuildingObject.$(OBJEXT) \
+	ManufactureSchematic.$(OBJEXT) ResourceContainer.$(OBJEXT) \
+	MissionObject.$(OBJEXT) WaypointObject.$(OBJEXT) \
+	ShipComponent.$(OBJEXT) ShipObject.$(OBJEXT) \
+	GuildMap.$(OBJEXT) GuildManager.$(OBJEXT) PlayerMap.$(OBJEXT) \
 	PlayerManager.$(OBJEXT) CreatureManager.$(OBJEXT) \
 	ItemManager.$(OBJEXT) UserManager.$(OBJEXT) \
 	PlanetManager.$(OBJEXT) ResourceManager.$(OBJEXT) \
-	LootManager.$(OBJEXT) ChatRoom.$(OBJEXT) ChatManager.$(OBJEXT)
+	LootManager.$(OBJEXT) BazaarManager.$(OBJEXT) \
+	BazaarPlanetManager.$(OBJEXT) ChatRoom.$(OBJEXT) \
+	ChatManager.$(OBJEXT)
 am_core3_OBJECTS = $(am__objects_1) ServerCore.$(OBJEXT) \
 	ConfigManager.$(OBJEXT) ServerDatabase.$(OBJEXT) \
 	LoginServer.$(OBJEXT) LoginPacketHandler.$(OBJEXT) \
@@ -144,7 +147,8 @@ am_core3_OBJECTS = $(am__objects_1) ServerCore.$(OBJEXT) \
 	ShuttleCreatureImplementation.$(OBJEXT) \
 	TrainerCreatureImplementation.$(OBJEXT) \
 	MountCreatureImplementation.$(OBJEXT) \
-	SceneObjectImplementation.$(OBJEXT) ObjectManager.$(OBJEXT) \
+	SceneObjectImplementation.$(OBJEXT) \
+	ShipObjectImplementation.$(OBJEXT) ObjectManager.$(OBJEXT) \
 	GuildManagerImplementation.$(OBJEXT) \
 	PlayerManagerImplementation.$(OBJEXT) \
 	ProfessionManager.$(OBJEXT) SkillManager.$(OBJEXT) \
@@ -156,6 +160,8 @@ am_core3_OBJECTS = $(am__objects_1) ServerCore.$(OBJEXT) \
 	CreatureManagerImplementation.$(OBJEXT) \
 	PlanetManagerImplementation.$(OBJEXT) \
 	ResourceManagerImplementation.$(OBJEXT) \
+	BazaarManagerImplementation.$(OBJEXT) \
+	BazaarPlanetManagerImplementation.$(OBJEXT) \
 	ChatRoomImplementation.$(OBJEXT) \
 	ChatManagerImplementation.$(OBJEXT) \
 	ObjectControllerMessage.$(OBJEXT) main.$(OBJEXT)
@@ -322,6 +328,7 @@ core3_IDLS = server/zone/Zone.cpp \
 		server/zone/objects/tangible/terminal/Terminal.cpp \
 		server/zone/objects/tangible/terminal/travel/TravelTerminal.cpp \
 		server/zone/objects/tangible/terminal/guild/GuildTerminal.cpp \
+		server/zone/objects/tangible/terminal/vendor/VendorTerminal.cpp \
 		server/zone/objects/tangible/ticketcollector/TicketCollector.cpp \
 		server/zone/objects/tangible/instrument/Instrument.cpp \
 		server/zone/objects/tangible/lair/LairObject.cpp \
@@ -338,6 +345,8 @@ core3_IDLS = server/zone/Zone.cpp \
 		server/zone/objects/resource/ResourceContainer.cpp \
 		server/zone/objects/mission/MissionObject.cpp \
 		server/zone/objects/waypoint/WaypointObject.cpp \
+		server/zone/objects/tangible/component/ShipComponent.cpp \
+		server/zone/objects/ship/ShipObject.cpp \
 		server/zone/managers/guild/GuildMap.cpp \
 		server/zone/managers/guild/GuildManager.cpp \
 		server/zone/managers/player/PlayerMap.cpp \
@@ -348,6 +357,8 @@ core3_IDLS = server/zone/Zone.cpp \
 		server/zone/managers/planet/PlanetManager.cpp \
 		server/zone/managers/resource/ResourceManager.cpp \
 		server/zone/managers/loot/LootManager.cpp \
+		server/zone/managers/bazaar/BazaarManager.cpp \
+		server/zone/managers/bazaar/BazaarPlanetManager.cpp \
 		server/chat/room/ChatRoom.cpp \
 		server/chat/ChatManager.cpp
 
@@ -382,6 +393,7 @@ core3_SOURCES = $(core3_IDLS) \
 		server/zone/objects/creature/trainer/TrainerCreatureImplementation.cpp \
 		server/zone/objects/creature/mount/MountCreatureImplementation.cpp \
 		server/zone/objects/scene/SceneObjectImplementation.cpp \
+		server/zone/objects/ship/ShipObjectImplementation.cpp \
 		server/zone/managers/object/ObjectManager.cpp \
 		server/zone/managers/guild/GuildManagerImplementation.cpp \
 		server/zone/managers/player/PlayerManagerImplementation.cpp \
@@ -397,6 +409,8 @@ core3_SOURCES = $(core3_IDLS) \
 		server/zone/managers/creature/CreatureManagerImplementation.cpp \
 		server/zone/managers/planet/PlanetManagerImplementation.cpp \
 		server/zone/managers/resource/ResourceManagerImplementation.cpp \
+		server/zone/managers/bazaar/BazaarManagerImplementation.cpp \
+		server/zone/managers/bazaar/BazaarPlanetManagerImplementation.cpp \
 		server/chat/room/ChatRoomImplementation.cpp \
 		server/chat/ChatManagerImplementation.cpp \
 		server/zone/packets/object/ObjectControllerMessage.cpp \
@@ -471,6 +485,10 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Armor.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ArmorImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Bank.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/BazaarManager.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/BazaarManagerImplementation.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/BazaarPlanetManager.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/BazaarPlanetManagerImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/BuildingObject.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/BuildingObjectImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/CarbineRangedWeapon.Po@am__quote@
@@ -553,6 +571,9 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ScriptAttacksManager.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ServerCore.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ServerDatabase.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ShipComponent.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ShipObject.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ShipObjectImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ShuttleCreature.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ShuttleCreatureImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SkillManager.Po@am__quote@
@@ -571,6 +592,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/UnarmedMeleeWeapon.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/UserManager.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/UserManagerImplementation.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/VendorTerminal.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/WaypointObject.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Weapon.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/WeaponImplementation.Po@am__quote@
@@ -1160,6 +1182,20 @@ GuildTerminal.obj: server/zone/objects/tangible/terminal/guild/GuildTerminal.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o GuildTerminal.obj `if test -f 'server/zone/objects/tangible/terminal/guild/GuildTerminal.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/terminal/guild/GuildTerminal.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/terminal/guild/GuildTerminal.cpp'; fi`
 
+VendorTerminal.o: server/zone/objects/tangible/terminal/vendor/VendorTerminal.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT VendorTerminal.o -MD -MP -MF $(DEPDIR)/VendorTerminal.Tpo -c -o VendorTerminal.o `test -f 'server/zone/objects/tangible/terminal/vendor/VendorTerminal.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/terminal/vendor/VendorTerminal.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/VendorTerminal.Tpo $(DEPDIR)/VendorTerminal.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/terminal/vendor/VendorTerminal.cpp' object='VendorTerminal.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o VendorTerminal.o `test -f 'server/zone/objects/tangible/terminal/vendor/VendorTerminal.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/terminal/vendor/VendorTerminal.cpp
+
+VendorTerminal.obj: server/zone/objects/tangible/terminal/vendor/VendorTerminal.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT VendorTerminal.obj -MD -MP -MF $(DEPDIR)/VendorTerminal.Tpo -c -o VendorTerminal.obj `if test -f 'server/zone/objects/tangible/terminal/vendor/VendorTerminal.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/terminal/vendor/VendorTerminal.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/terminal/vendor/VendorTerminal.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/VendorTerminal.Tpo $(DEPDIR)/VendorTerminal.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/terminal/vendor/VendorTerminal.cpp' object='VendorTerminal.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o VendorTerminal.obj `if test -f 'server/zone/objects/tangible/terminal/vendor/VendorTerminal.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/terminal/vendor/VendorTerminal.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/terminal/vendor/VendorTerminal.cpp'; fi`
+
 TicketCollector.o: server/zone/objects/tangible/ticketcollector/TicketCollector.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT TicketCollector.o -MD -MP -MF $(DEPDIR)/TicketCollector.Tpo -c -o TicketCollector.o `test -f 'server/zone/objects/tangible/ticketcollector/TicketCollector.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/ticketcollector/TicketCollector.cpp
 @am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/TicketCollector.Tpo $(DEPDIR)/TicketCollector.Po
@@ -1384,6 +1420,34 @@ WaypointObject.obj: server/zone/objects/waypoint/WaypointObject.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o WaypointObject.obj `if test -f 'server/zone/objects/waypoint/WaypointObject.cpp'; then $(CYGPATH_W) 'server/zone/objects/waypoint/WaypointObject.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/waypoint/WaypointObject.cpp'; fi`
 
+ShipComponent.o: server/zone/objects/tangible/component/ShipComponent.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ShipComponent.o -MD -MP -MF $(DEPDIR)/ShipComponent.Tpo -c -o ShipComponent.o `test -f 'server/zone/objects/tangible/component/ShipComponent.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/component/ShipComponent.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/ShipComponent.Tpo $(DEPDIR)/ShipComponent.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/component/ShipComponent.cpp' object='ShipComponent.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ShipComponent.o `test -f 'server/zone/objects/tangible/component/ShipComponent.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/component/ShipComponent.cpp
+
+ShipComponent.obj: server/zone/objects/tangible/component/ShipComponent.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ShipComponent.obj -MD -MP -MF $(DEPDIR)/ShipComponent.Tpo -c -o ShipComponent.obj `if test -f 'server/zone/objects/tangible/component/ShipComponent.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/component/ShipComponent.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/component/ShipComponent.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/ShipComponent.Tpo $(DEPDIR)/ShipComponent.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/component/ShipComponent.cpp' object='ShipComponent.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ShipComponent.obj `if test -f 'server/zone/objects/tangible/component/ShipComponent.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/component/ShipComponent.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/component/ShipComponent.cpp'; fi`
+
+ShipObject.o: server/zone/objects/ship/ShipObject.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ShipObject.o -MD -MP -MF $(DEPDIR)/ShipObject.Tpo -c -o ShipObject.o `test -f 'server/zone/objects/ship/ShipObject.cpp' || echo '$(srcdir)/'`server/zone/objects/ship/ShipObject.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/ShipObject.Tpo $(DEPDIR)/ShipObject.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/ship/ShipObject.cpp' object='ShipObject.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ShipObject.o `test -f 'server/zone/objects/ship/ShipObject.cpp' || echo '$(srcdir)/'`server/zone/objects/ship/ShipObject.cpp
+
+ShipObject.obj: server/zone/objects/ship/ShipObject.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ShipObject.obj -MD -MP -MF $(DEPDIR)/ShipObject.Tpo -c -o ShipObject.obj `if test -f 'server/zone/objects/ship/ShipObject.cpp'; then $(CYGPATH_W) 'server/zone/objects/ship/ShipObject.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/ship/ShipObject.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/ShipObject.Tpo $(DEPDIR)/ShipObject.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/ship/ShipObject.cpp' object='ShipObject.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ShipObject.obj `if test -f 'server/zone/objects/ship/ShipObject.cpp'; then $(CYGPATH_W) 'server/zone/objects/ship/ShipObject.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/ship/ShipObject.cpp'; fi`
+
 GuildMap.o: server/zone/managers/guild/GuildMap.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT GuildMap.o -MD -MP -MF $(DEPDIR)/GuildMap.Tpo -c -o GuildMap.o `test -f 'server/zone/managers/guild/GuildMap.cpp' || echo '$(srcdir)/'`server/zone/managers/guild/GuildMap.cpp
 @am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/GuildMap.Tpo $(DEPDIR)/GuildMap.Po
@@ -1523,6 +1587,34 @@ LootManager.obj: server/zone/managers/loot/LootManager.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/managers/loot/LootManager.cpp' object='LootManager.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o LootManager.obj `if test -f 'server/zone/managers/loot/LootManager.cpp'; then $(CYGPATH_W) 'server/zone/managers/loot/LootManager.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/loot/LootManager.cpp'; fi`
+
+BazaarManager.o: server/zone/managers/bazaar/BazaarManager.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT BazaarManager.o -MD -MP -MF $(DEPDIR)/BazaarManager.Tpo -c -o BazaarManager.o `test -f 'server/zone/managers/bazaar/BazaarManager.cpp' || echo '$(srcdir)/'`server/zone/managers/bazaar/BazaarManager.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/BazaarManager.Tpo $(DEPDIR)/BazaarManager.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/managers/bazaar/BazaarManager.cpp' object='BazaarManager.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o BazaarManager.o `test -f 'server/zone/managers/bazaar/BazaarManager.cpp' || echo '$(srcdir)/'`server/zone/managers/bazaar/BazaarManager.cpp
+
+BazaarManager.obj: server/zone/managers/bazaar/BazaarManager.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT BazaarManager.obj -MD -MP -MF $(DEPDIR)/BazaarManager.Tpo -c -o BazaarManager.obj `if test -f 'server/zone/managers/bazaar/BazaarManager.cpp'; then $(CYGPATH_W) 'server/zone/managers/bazaar/BazaarManager.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/bazaar/BazaarManager.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/BazaarManager.Tpo $(DEPDIR)/BazaarManager.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/managers/bazaar/BazaarManager.cpp' object='BazaarManager.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o BazaarManager.obj `if test -f 'server/zone/managers/bazaar/BazaarManager.cpp'; then $(CYGPATH_W) 'server/zone/managers/bazaar/BazaarManager.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/bazaar/BazaarManager.cpp'; fi`
+
+BazaarPlanetManager.o: server/zone/managers/bazaar/BazaarPlanetManager.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT BazaarPlanetManager.o -MD -MP -MF $(DEPDIR)/BazaarPlanetManager.Tpo -c -o BazaarPlanetManager.o `test -f 'server/zone/managers/bazaar/BazaarPlanetManager.cpp' || echo '$(srcdir)/'`server/zone/managers/bazaar/BazaarPlanetManager.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/BazaarPlanetManager.Tpo $(DEPDIR)/BazaarPlanetManager.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/managers/bazaar/BazaarPlanetManager.cpp' object='BazaarPlanetManager.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o BazaarPlanetManager.o `test -f 'server/zone/managers/bazaar/BazaarPlanetManager.cpp' || echo '$(srcdir)/'`server/zone/managers/bazaar/BazaarPlanetManager.cpp
+
+BazaarPlanetManager.obj: server/zone/managers/bazaar/BazaarPlanetManager.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT BazaarPlanetManager.obj -MD -MP -MF $(DEPDIR)/BazaarPlanetManager.Tpo -c -o BazaarPlanetManager.obj `if test -f 'server/zone/managers/bazaar/BazaarPlanetManager.cpp'; then $(CYGPATH_W) 'server/zone/managers/bazaar/BazaarPlanetManager.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/bazaar/BazaarPlanetManager.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/BazaarPlanetManager.Tpo $(DEPDIR)/BazaarPlanetManager.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/managers/bazaar/BazaarPlanetManager.cpp' object='BazaarPlanetManager.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o BazaarPlanetManager.obj `if test -f 'server/zone/managers/bazaar/BazaarPlanetManager.cpp'; then $(CYGPATH_W) 'server/zone/managers/bazaar/BazaarPlanetManager.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/bazaar/BazaarPlanetManager.cpp'; fi`
 
 ChatRoom.o: server/chat/room/ChatRoom.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ChatRoom.o -MD -MP -MF $(DEPDIR)/ChatRoom.Tpo -c -o ChatRoom.o `test -f 'server/chat/room/ChatRoom.cpp' || echo '$(srcdir)/'`server/chat/room/ChatRoom.cpp
@@ -1972,6 +2064,20 @@ SceneObjectImplementation.obj: server/zone/objects/scene/SceneObjectImplementati
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o SceneObjectImplementation.obj `if test -f 'server/zone/objects/scene/SceneObjectImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/scene/SceneObjectImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/scene/SceneObjectImplementation.cpp'; fi`
 
+ShipObjectImplementation.o: server/zone/objects/ship/ShipObjectImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ShipObjectImplementation.o -MD -MP -MF $(DEPDIR)/ShipObjectImplementation.Tpo -c -o ShipObjectImplementation.o `test -f 'server/zone/objects/ship/ShipObjectImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/ship/ShipObjectImplementation.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/ShipObjectImplementation.Tpo $(DEPDIR)/ShipObjectImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/ship/ShipObjectImplementation.cpp' object='ShipObjectImplementation.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ShipObjectImplementation.o `test -f 'server/zone/objects/ship/ShipObjectImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/ship/ShipObjectImplementation.cpp
+
+ShipObjectImplementation.obj: server/zone/objects/ship/ShipObjectImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ShipObjectImplementation.obj -MD -MP -MF $(DEPDIR)/ShipObjectImplementation.Tpo -c -o ShipObjectImplementation.obj `if test -f 'server/zone/objects/ship/ShipObjectImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/ship/ShipObjectImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/ship/ShipObjectImplementation.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/ShipObjectImplementation.Tpo $(DEPDIR)/ShipObjectImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/ship/ShipObjectImplementation.cpp' object='ShipObjectImplementation.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ShipObjectImplementation.obj `if test -f 'server/zone/objects/ship/ShipObjectImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/ship/ShipObjectImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/ship/ShipObjectImplementation.cpp'; fi`
+
 ObjectManager.o: server/zone/managers/object/ObjectManager.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ObjectManager.o -MD -MP -MF $(DEPDIR)/ObjectManager.Tpo -c -o ObjectManager.o `test -f 'server/zone/managers/object/ObjectManager.cpp' || echo '$(srcdir)/'`server/zone/managers/object/ObjectManager.cpp
 @am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/ObjectManager.Tpo $(DEPDIR)/ObjectManager.Po
@@ -2181,6 +2287,34 @@ ResourceManagerImplementation.obj: server/zone/managers/resource/ResourceManager
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/managers/resource/ResourceManagerImplementation.cpp' object='ResourceManagerImplementation.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ResourceManagerImplementation.obj `if test -f 'server/zone/managers/resource/ResourceManagerImplementation.cpp'; then $(CYGPATH_W) 'server/zone/managers/resource/ResourceManagerImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/resource/ResourceManagerImplementation.cpp'; fi`
+
+BazaarManagerImplementation.o: server/zone/managers/bazaar/BazaarManagerImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT BazaarManagerImplementation.o -MD -MP -MF $(DEPDIR)/BazaarManagerImplementation.Tpo -c -o BazaarManagerImplementation.o `test -f 'server/zone/managers/bazaar/BazaarManagerImplementation.cpp' || echo '$(srcdir)/'`server/zone/managers/bazaar/BazaarManagerImplementation.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/BazaarManagerImplementation.Tpo $(DEPDIR)/BazaarManagerImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/managers/bazaar/BazaarManagerImplementation.cpp' object='BazaarManagerImplementation.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o BazaarManagerImplementation.o `test -f 'server/zone/managers/bazaar/BazaarManagerImplementation.cpp' || echo '$(srcdir)/'`server/zone/managers/bazaar/BazaarManagerImplementation.cpp
+
+BazaarManagerImplementation.obj: server/zone/managers/bazaar/BazaarManagerImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT BazaarManagerImplementation.obj -MD -MP -MF $(DEPDIR)/BazaarManagerImplementation.Tpo -c -o BazaarManagerImplementation.obj `if test -f 'server/zone/managers/bazaar/BazaarManagerImplementation.cpp'; then $(CYGPATH_W) 'server/zone/managers/bazaar/BazaarManagerImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/bazaar/BazaarManagerImplementation.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/BazaarManagerImplementation.Tpo $(DEPDIR)/BazaarManagerImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/managers/bazaar/BazaarManagerImplementation.cpp' object='BazaarManagerImplementation.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o BazaarManagerImplementation.obj `if test -f 'server/zone/managers/bazaar/BazaarManagerImplementation.cpp'; then $(CYGPATH_W) 'server/zone/managers/bazaar/BazaarManagerImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/bazaar/BazaarManagerImplementation.cpp'; fi`
+
+BazaarPlanetManagerImplementation.o: server/zone/managers/bazaar/BazaarPlanetManagerImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT BazaarPlanetManagerImplementation.o -MD -MP -MF $(DEPDIR)/BazaarPlanetManagerImplementation.Tpo -c -o BazaarPlanetManagerImplementation.o `test -f 'server/zone/managers/bazaar/BazaarPlanetManagerImplementation.cpp' || echo '$(srcdir)/'`server/zone/managers/bazaar/BazaarPlanetManagerImplementation.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/BazaarPlanetManagerImplementation.Tpo $(DEPDIR)/BazaarPlanetManagerImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/managers/bazaar/BazaarPlanetManagerImplementation.cpp' object='BazaarPlanetManagerImplementation.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o BazaarPlanetManagerImplementation.o `test -f 'server/zone/managers/bazaar/BazaarPlanetManagerImplementation.cpp' || echo '$(srcdir)/'`server/zone/managers/bazaar/BazaarPlanetManagerImplementation.cpp
+
+BazaarPlanetManagerImplementation.obj: server/zone/managers/bazaar/BazaarPlanetManagerImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT BazaarPlanetManagerImplementation.obj -MD -MP -MF $(DEPDIR)/BazaarPlanetManagerImplementation.Tpo -c -o BazaarPlanetManagerImplementation.obj `if test -f 'server/zone/managers/bazaar/BazaarPlanetManagerImplementation.cpp'; then $(CYGPATH_W) 'server/zone/managers/bazaar/BazaarPlanetManagerImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/bazaar/BazaarPlanetManagerImplementation.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/BazaarPlanetManagerImplementation.Tpo $(DEPDIR)/BazaarPlanetManagerImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/managers/bazaar/BazaarPlanetManagerImplementation.cpp' object='BazaarPlanetManagerImplementation.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o BazaarPlanetManagerImplementation.obj `if test -f 'server/zone/managers/bazaar/BazaarPlanetManagerImplementation.cpp'; then $(CYGPATH_W) 'server/zone/managers/bazaar/BazaarPlanetManagerImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/bazaar/BazaarPlanetManagerImplementation.cpp'; fi`
 
 ChatRoomImplementation.o: server/chat/room/ChatRoomImplementation.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ChatRoomImplementation.o -MD -MP -MF $(DEPDIR)/ChatRoomImplementation.Tpo -c -o ChatRoomImplementation.o `test -f 'server/chat/room/ChatRoomImplementation.cpp' || echo '$(srcdir)/'`server/chat/room/ChatRoomImplementation.cpp

@@ -42,60 +42,12 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef TERMINALIMPLEMENTATION_H_
-#define TERMINALIMPLEMENTATION_H_
+import "../Terminal";
+import "../../../player/Player";
 
-#include "../../player/Player.h"
-
-#include "../../creature/shuttle/ShuttleCreature.h"
-
-#include "../../../packets/player/EnterTicketPurchaseModeMessage.h"
-
-#include "Terminal.h"
-
-class TerminalImplementation : public TerminalServant {
-protected:
-	int terminalType;
-
-		
-public:
-	static const int TRAVEL = 1;
-	static const int GUILD = 2;
-	static const int VENDOR = 3;
-	static const int BAZAAR = 50;
+interface VendorTerminal implements Terminal {
+	VendorTerminal(unsigned int objCRC, unsigned long objid, 
+				const unicode n, const string tempn, float x, float z, float y, int TerminalType);
 	
-public:
-	TerminalImplementation(uint32 objCRC, uint64 objid, const unicode& n, const string& tempn, float x, float z, float y, int TerminalType) 
-			: TerminalServant(objid, TERMINAL) {
-			
-		objectCRC = objCRC;
-
-		name = n;
-		
-		templateTypeName = "terminal_name";
-		templateName = tempn;
-		
-		terminalType = TerminalType;
-
-		initializePosition(x, z, y);
-	}
-	
-	virtual int useObject(Player* player) {
-		return 0;
-	}
-	
-	inline int getTerminalType() {
-		return terminalType;
-	}
-	
-	inline bool isTravelTerminal() {
-		return terminalType == TRAVEL;
-	}
-	
-	inline bool isGuildTerminal() {
-		return terminalType == GUILD;
-	}
-	
-};
-
-#endif /*TERMINALIMPLEMENTATION_H_*/
+	int useObject(Player player);
+}

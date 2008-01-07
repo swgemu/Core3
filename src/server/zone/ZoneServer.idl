@@ -51,6 +51,7 @@ import "managers/guild/GuildManager";
 import "managers/player/PlayerManager";
 import "managers/item/ItemManager";
 import "managers/resource/ResourceManager";
+import "managers/bazaar/BazaarManager";
 
 import "../chat/ChatManager";
 
@@ -88,6 +89,7 @@ interface ZoneServer {
 	UserManager getUserManager();
 	ItemManager getItemManager();
 	ResourceManager getResourceManager();
+	BazaarManager getBazaarManager();
 	
 	Zone getZone(int index);
 	

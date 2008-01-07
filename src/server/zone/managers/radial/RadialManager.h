@@ -65,6 +65,7 @@ public:
 	void sendDefaultRadialResponse(Player* player, ObjectMenuResponse* omr);
 	void sendRadialResponseForMounts(Player* player, MountCreature* mount, ObjectMenuResponse* omr);
 	void sendRadialResponseForGuildTerminals(Player* player, GuildTerminal* guildTerm, ObjectMenuResponse* omr);
+	void sendRadialResponseForBazaar(long objectId, Player* player);
 	
 	void handleSelection(int radialID, Player* player, SceneObject* obj);
 	

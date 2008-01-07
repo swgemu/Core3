@@ -82,6 +82,7 @@ IDL_SOURCES = server/zone/Zone.idl \
 				server/zone/objects/tangible/terminal/Terminal.idl \
 				server/zone/objects/tangible/terminal/travel/TravelTerminal.idl \
 				server/zone/objects/tangible/terminal/guild/GuildTerminal.idl \
+				server/zone/objects/tangible/terminal/vendor/VendorTerminal.idl \
 				server/zone/objects/tangible/ticketcollector/TicketCollector.idl \
 				server/zone/objects/tangible/instrument/Instrument.idl \
 				server/zone/objects/tangible/lair/LairObject.idl \
@@ -98,6 +99,8 @@ IDL_SOURCES = server/zone/Zone.idl \
 				server/zone/objects/resource/ResourceContainer.idl \
 				server/zone/objects/mission/MissionObject.idl \
 				server/zone/objects/waypoint/WaypointObject.idl \
+				server/zone/managers/bazaar/BazaarManager.idl \
+				server/zone/managers/bazaar/BazaarPlanetManager.idl \
 				server/zone/objects/tangible/component/ShipComponent.idl \
 				server/zone/objects/ship/ShipObject.idl \
 				server/zone/managers/guild/GuildMap.idl \

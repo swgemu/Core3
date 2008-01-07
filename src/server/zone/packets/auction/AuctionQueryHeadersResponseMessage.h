@@ -51,34 +51,65 @@ which carries forward this exception.
 
 class AuctionQueryHeadersResponseMessage : public Message {
 	Vector<AuctionItem*> itemList;
+	Vector<string> locationList;
+	int offset;
+	
 public:
-   AuctionQueryHeadersResponseMessage(const string& vendorinfo, const string& vendorowner) : Message() {
+	AuctionQueryHeadersResponseMessage(int screen, int counter) : Message() {	
 		insertShort(0x08);
 		insertInt(0xFA500E52);  // opcode
 		
-		insertInt(0); //??
-		insertInt(0); //??
-		insertInt(0); //??
-		insertAscii(vendorinfo);
-		insertAscii(vendorowner);
-		insertShort(0); //??
-		
-		//insertInt(0); //Item List Count Names
-		//insertUnicode("test"); //unicode item name
-		
-		//insertInt(0); //Item List Count Info
-		//insertLong(0); //Item ID
-		//insertByte(0); //??
-		//insertInt(0); //Item Cost
-				
+		insertInt(counter);
+		insertInt(screen); // Vendor screen number
 	}
-
-	void addAuctionItem(uint64 id, unicode name, int price) {
+	
+	void addAuctionItem(uint64 id, string& name, int price, bool auction, int time, int type,
+			long ownerid, string& owner, bool vendor, string& planet, string& header, long vendorid) {
 		AuctionItem* ai = new AuctionItem();
 		ai->id = id;
 		ai->itemname = name;
 		ai->price = price;
+		ai->remainingTime = time;
+		ai->auction = auction;
+		ai->itemType = type;
+		
+		stringstream title;
+		title << planet << ".@";
+		if(vendor)
+			title << "planet_n:" << planet <<  ".Vendor: " << header;
+		else
+			title << planet << "_region_names:" << header << ".@:";
+		title << "." << vendorid << "#0,0";
+		string str = title.str();
+		
+		ai->location = -1;
+		for(int i = 0; i < locationList.size(); i++)
+			if(locationList.get(i) == str)
+				ai->location = i;
+		if(ai->location == -1) {
+			ai->location = locationList.size();
+			locationList.add(locationList.size(), str);
+		}
+		
+		ai->ownerID = ownerid;
+		ai->owner = -1;
+		for(int i = 0; i < locationList.size(); i++)
+			if(locationList.get(i) == owner)
+				ai->owner = i;
+		if(ai->owner == -1) {
+			ai->owner = locationList.size();
+			locationList.add(locationList.size(), owner);
+		}
 		itemList.add(ai);
+	}
+	
+	void dumpLocationList() {
+		int llSize = locationList.size();
+		insertInt(llSize);
+		
+		for(int i = 0; i < locationList.size(); i++) {
+			insertAscii(locationList.get(i));
+		}
 	}
 	
 	void dumpItemNameList() {
@@ -87,7 +118,8 @@ public:
 
 		for (int i = 0; i < itemList.size(); i++) {
 			AuctionItem* il = itemList.get(i);
-	    	insertUnicode(il->itemname); //name
+	    	unicode name = il->itemname;
+	    	insertUnicode(name); //name
 		}
 	}
 	
@@ -98,13 +130,34 @@ public:
 		for (int i = 0; i < itemList.size(); i++) {
 			AuctionItem* il = itemList.get(i);
 	    	insertLong(il->id); //item id
-	    	insertByte(0); //??
+	    	insertByte(i);  // List item string number
 	    	insertInt(il->price); //item cost.
+	    	insertInt(il->remainingTime);
+	    	if(il->auction)
+	    		insertByte(0);
+	    	else
+	    		insertByte(1);
+	    	insertShort(il->location);
+	    	insertLong(il->ownerID);
+	    	insertShort(il->owner);
+	    	insertLong(0); // ??
+	    	insertLong(0); // ??
+	    	insertShort(0); // ??
+	    	insertLong(0); // object type 0 = object, 1 = corpse etc
 		}
 	}
 	
 	inline int getListSize() {
 		return itemList.size();
 	}
+	
+	void createMessage(int offset = 0) {
+		dumpLocationList();
+		dumpItemNameList();
+		dumpItemInfoList();
+		insertShort(offset); // Item list start offset
+		insertByte(0);
+	}
+	
 };
 #endif /*AUCTIONQUERYHEADERSRESPONSEMESSAGE_H_*/
