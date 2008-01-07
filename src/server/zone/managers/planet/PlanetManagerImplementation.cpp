@@ -196,10 +196,9 @@ void PlanetManagerImplementation::loadGuildTerminals() {
 	
 	lock();
 	
-	GuildTerminal* guildTerminal;
-	
 	GuildTerminalImplementation* guildImpl = new GuildTerminalImplementation(server->getGuildManager(), getNextStaticObjectID(false), 44, 52, -5352);
-	guildTerminal = (GuildTerminal*) guildImpl->deploy();
+	
+	GuildTerminal* guildTerminal = (GuildTerminal*) guildImpl->deploy();
 	guildTerminal->insertToZone(zone);
 	
 	unlock();
@@ -211,11 +210,10 @@ void PlanetManagerImplementation::loadVendorTerminals() {
 	
 	lock();
 	
-	VendorTerminal* vendorTerminal;
-
 	VendorTerminalImplementation* termImpl = new VendorTerminalImplementation(zone->getZoneServer()->getBazaarManager(), getNextStaticObjectID(false), 46, 52, -5352);
 	termImpl->setDirection(0, 0, 0, 0);
-	vendorTerminal = (VendorTerminal*) termImpl->deploy();
+	
+	VendorTerminal* vendorTerminal = (VendorTerminal*) termImpl->deploy();
 	vendorTerminal->insertToZone(zone);
 	
 	unlock();

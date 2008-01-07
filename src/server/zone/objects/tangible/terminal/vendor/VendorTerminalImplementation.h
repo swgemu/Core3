@@ -46,6 +46,7 @@ which carries forward this exception.
 #define VENDORTERMINALIMPLEMENTATION_H_
 
 #include "../../../player/Player.h"
+
 #include "../../../../managers/bazaar/BazaarManager.h"
 
 class VendorTerminalImplementation : public VendorTerminalServant {
@@ -53,8 +54,7 @@ class VendorTerminalImplementation : public VendorTerminalServant {
 	
 public:
 	VendorTerminalImplementation(BazaarManager* bazaarmanager, uint64 objid, float x, float z, float y) :
-		VendorTerminalServant(0xBD7FCCB1, objid, unicode("Julian's Vendor"), "vendor_terminal_basic", x, z, y, VENDOR) {
-
+			VendorTerminalServant(0xBD7FCCB1, objid, unicode("Julian's Vendor"), "vendor_terminal_basic", x, z, y, VENDOR) {
 		bazaarManager = bazaarmanager;
 	}
 	

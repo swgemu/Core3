@@ -83,6 +83,10 @@ public:
 
 	void sendTo(Player* player, bool doClose = true);
 
+	void repairItem(Player* player);
+
+	void decay(int decayRate);
+
 	bool isPersistent();
 
 	bool isUpdated();
@@ -153,6 +157,10 @@ public:
 	void setContainer(SceneObject* cont, unsigned int type);
 
 	void sendTo(Player* player, bool doClose);
+
+	void repairItem(Player* player);
+
+	void decay(int decayRate);
 
 	bool isPersistent();
 

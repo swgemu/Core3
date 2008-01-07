@@ -43,11 +43,13 @@ which carries forward this exception.
 */
 
 import "../Terminal";
+
 import "../../../player/Player";
 
 interface VendorTerminal implements Terminal {
-	VendorTerminal(unsigned int objCRC, unsigned long objid, 
-				const unicode n, const string tempn, float x, float z, float y, int TerminalType);
+	VendorTerminal(unsigned int objCRC, unsigned long objid, const unicode n, const string tempn, 
+		float x, float z, float y, int TerminalType);
 	
 	int useObject(Player player);
+	
 }

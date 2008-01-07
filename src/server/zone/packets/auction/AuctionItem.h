@@ -44,16 +44,24 @@ which carries forward this exception.
 
 #ifndef AUCTIONITEM_H_
 #define AUCTIONITEM_H_
+
 class AuctionItem {
 public:
 	long ownerID;
 	short owner;
+	
 	short location;
+	
 	uint64 id;
+	
 	string itemname;
+	
 	int price;
+	
 	bool auction;
+	
 	int remainingTime;
 	int itemType;
 };
+
 #endif /*AUCTIONITEM_H_*/

@@ -54,26 +54,28 @@ which carries forward this exception.
 
 #include "../../objects/player/Player.h"
 
-#define ARMOR 				0x00000100
-#define BUILDING 			0x00000200
-#define ENTITY				0x00000400
-#define DATA				0x00000800
-#define INSTALLATION		0x00001000
-#define MISC				0x00002000
-#define TOOL				0x00008000
-#define WEAPON				0x00020000
-#define COMPONENT			0x00040000
-#define WEAPONPOWERUP		0x00080000
-#define ARMORPOWERUP		0x00100000
-#define JEWELRY				0x00200000
-#define RESOURCECONTAINER	0x00400000
-#define	DEED				0x00800000
-#define CLOTHING			0x01000000
-#define SHIPCOMPONENT		0x40000000
-
 class BazaarManagerImplementation : public BazaarManagerServant, public Mutex {
 	BazaarPlanetManager* bazaarPlanets[10];
+
 	BazaarTerminals* bazaarTerminals;
+
+public:
+	static const int ARMOR = 0x00000100;
+	static const int BUILDING = 0x00000200;
+	static const int ENTITY = 0x00000400;
+	static const int DATA = 0x00000800;
+	static const int INSTALLATION = 0x00001000;
+	static const int MISC = 0x00002000;
+	static const int TOOL = 0x00008000;
+	static const int WEAPON = 0x00020000;
+	static const int COMPONENT = 0x00040000;
+	static const int WEAPONPOWERUP = 0x00080000;
+	static const int ARMORPOWERUP = 0x00100000;
+	static const int JEWELRY = 0x00200000;
+	static const int RESOURCECONTAINER = 0x00400000;
+	static const int DEED = 0x00800000;
+	static const int CLOTHING = 0x01000000;
+	static const int SHIPCOMPONENT = 0x40000000;
 	
 public:
 	BazaarManagerImplementation(ZoneServer* server);
@@ -84,6 +86,7 @@ public:
 	void addInstantItem(Player* player, long objectid, long bazaarid, string& description, int price);
 	void addAuctionItem(Player* player, long objectid, long bazaarid, string& description, int price, int duration);
 	void getBazaarData(Player* player, long objectid, int screen, int extent, int category, int count);
+	
 };
 
 #endif /*BAZAARMANAGERIMPLEMENTATION_H_*/

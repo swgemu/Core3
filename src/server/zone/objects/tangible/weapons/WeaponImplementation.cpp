@@ -559,22 +559,22 @@ void WeaponImplementation::setWeaponStats(int modifier){
 		name = unicode(itemText.str());	
 	}
 	
-	if ((luck * System::random(100)) > 1600) {
+	if (luck * System::random(100) > 1600) {
 		minDamage = round((minDamage * modifier / 100) + (0.7 * luck));
 		maxDamage = round((maxDamage * modifier / 100) + (0.8 * luck));
 	}
 	
-	if ((luck * System::random(100)) > 1750) {	
+	if (luck * System::random(100) > 1750) {	
 		attackSpeed = round(10 * (attackSpeed - (attackSpeed * modifier / 500) - (luck / 150))) / 10;
 	}
 	
-	if ((luck * System::random(100)) > 2000) {
+	if (luck * System::random(100) > 2000) {
 		healthAttackCost = healthAttackCost - (modifier / 25) - (luck / 50);
 		actionAttackCost = actionAttackCost - (modifier / 25) - (luck / 50);
 		mindAttackCost = mindAttackCost - (modifier / 25) - (luck / 50);
 	}
 
-	if ((luck * System::random(100)) > 2000)
+	if (luck * System::random(100) > 2000)
 		woundsRatio = woundsRatio + (modifier / 15) + (luck / 10);
 	
 	if (playerRoll > 13500)	{
@@ -637,7 +637,7 @@ void WeaponImplementation::setWeaponStats(int modifier){
 		dot1Strength = 650 + System::random(50);
 	
 	if (minDamage > maxDamage) 
-		minDamage = round(0.8*maxDamage);
+		minDamage = round(0.8 * maxDamage);
 	
 	equipped = false;
 	

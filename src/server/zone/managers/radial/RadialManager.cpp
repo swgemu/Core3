@@ -132,9 +132,9 @@ void RadialManager::handleRadialSelect(Player* player, Packet* pack) {
 		
 		//TODO: Get a bazaar object to pass to the next functions
 		BazaarManager* bazaarManager = zone->getZoneServer()->getBazaarManager();
-		if(bazaarManager->isBazaarTerminal(objectID)) {
-			
+		if (bazaarManager->isBazaarTerminal(objectID)) {
 			sendRadialResponseForBazaar(objectID, player);
+			
 			player->unlock();
 			return;
 		}

@@ -428,7 +428,7 @@ RandPoolAtt = {
 	postureDownChance = 0,
 	postureUpChance = 0,
 	dizzyChance = 0,
-	blindChance = 0,
+	blindChance = 5,
 	stunChance = 0,
 	intimidateChance = 0,
 	

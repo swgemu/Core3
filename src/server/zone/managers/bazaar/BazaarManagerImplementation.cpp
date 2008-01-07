@@ -50,17 +50,19 @@ which carries forward this exception.
 #include "../../packets/auction/IsVendorOwnerResponseMessage.h"
 #include "../../packets/auction/BazaarDisplayUI.h"
 #include "../../packets/auction/AuctionQueryHeadersResponseMessage.h"
+
 #include "../../objects/terrain/PlanetNames.h"
 
-BazaarManagerImplementation::BazaarManagerImplementation(ZoneServer* server) : BazaarManagerServant(), Mutex("BazaarManager") {
-	
-	for(int i = 0; i < 10; i++)
+BazaarManagerImplementation::BazaarManagerImplementation(ZoneServer* server) 
+		: BazaarManagerServant(), Mutex("BazaarManager") {
+	for (int i = 0; i < 10; i++)
 		bazaarPlanets[i] = NULL;  // Add as required
+	
 	bazaarTerminals = new BazaarTerminals();
 }
 
 bool BazaarManagerImplementation::isBazaarTerminal(long objectID) {
-	if(bazaarTerminals->isBazaarTerminal(objectID) != NULL)
+	if (bazaarTerminals->isBazaarTerminal(objectID) != NULL)
 		return true;
 	else
 		return false;	
@@ -68,54 +70,62 @@ bool BazaarManagerImplementation::isBazaarTerminal(long objectID) {
 
 void BazaarManagerImplementation::newBazaarRequest(long bazaarID, Player* player, int planet) {
 	BazaarTerminalDetails* location;
+	
 	bool vendor;
+	
 	string header;
+	
 	int bazaarX;
 	int bazaarZ;
 	
-	if((location = bazaarTerminals->isBazaarTerminal(bazaarID)) == NULL)
+	if ((location = bazaarTerminals->isBazaarTerminal(bazaarID)) == NULL)
 		vendor = true;
 	else
 		vendor = false;
 	
 	string planetString = PlanetNames[planet];
-	if(!vendor) {
+	
+	if (!vendor) {
 		header = location->getRegion();
+		
 		bazaarX = location->getX();
 		bazaarZ = location->getZ();
 	}
 
 	IsVendorOwnerResponseMessage* msg = new IsVendorOwnerResponseMessage(vendor, bazaarID, planetString, header, bazaarX, bazaarZ);
 	player->sendMessage(msg);
+	
 	BazaarDisplayUI* msg2 = new BazaarDisplayUI(vendor, bazaarID, player);
 	player->sendMessage(msg2);
 }
 
 void BazaarManagerImplementation::addInstantItem(Player* player, long objectid, long bazaarid, string& description, int price) {
-	
 }
 
 void BazaarManagerImplementation::addAuctionItem(Player* player, long objectid, long bazaarid, string& description, int price, int duration) {
-	
 }
 
 void BazaarManagerImplementation::getBazaarData(Player* player, long objectid, int screen, int extent, int category, int counter) {
 	// Return an empty bazaar packet
 	AuctionQueryHeadersResponseMessage* reply = new AuctionQueryHeadersResponseMessage(screen, counter);
+
 	// Populate Bazaar with some items
-	if(screen == 2) {
+	if (screen == 2) {
 		string name = "Death Star (damaged)";
 		string owner = "Darth Vader";
 		string planet = "corellia";
 		string region = "coronet";
+		
 		reply->addAuctionItem(123456, name, 5000, false, 7200, 0, 123545, owner, false, planet, region, objectid);
+		
 		name = "Light Saber";
 		owner = "Luke Skywalker";
 		planet = "tatooine";
 		region = "mos_eisley";
 		reply->addAuctionItem(123457, name, 50000, true, 7200, 0, 123546, owner, false, planet, region, objectid);
-			
 	}
+	
 	reply->createMessage();
+	
 	player->sendMessage(reply);
 }

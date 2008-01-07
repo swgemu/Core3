@@ -211,42 +211,41 @@ void TangibleObjectImplementation::close(Player* player) {
 
 void TangibleObjectImplementation::repairItem(Player* player) {
 	int roll = System::random(100);
-	int decayRate = 100;
-	stringstream txt;
 	
+	int decayRate = 100;
+	
+	stringstream txt;
 	txt << "The repair was ";
+	
 	if (roll < 10) {
 		txt << "a critical failure!";
 		decayRate = 75;
-	}
-	else if (roll < 20) {
+	} else if (roll < 20) {
 		txt << "a failure.";
-		decayRate = 50;					
-	}
-	else if (roll < 80) {
+		decayRate = 50;	
+	} else if (roll < 80) {
 		txt << "a success.";
 		decayRate = 20;					
-	}
-	else {
+	} else {
 		txt << "an amazing success.";
 		decayRate = 5;					
-	}				
+	}
+	
 	player->sendSystemMessage(txt.str());
 
-	maxCondition = (maxCondition - (maxCondition/100*decayRate));
+	maxCondition = (maxCondition - (maxCondition / 100 * decayRate));
 	conditionDamage = 0;
-	updated = 1;
+	
+	updated = true;
 
 	sendTo(player);
-	
 }
 
 void TangibleObjectImplementation::decay(int decayRate) {
-	conditionDamage = conditionDamage + (maxCondition/100*decayRate);
+	conditionDamage = conditionDamage + (maxCondition / 100 * decayRate);
 
 	if (conditionDamage > maxCondition)
 		conditionDamage = maxCondition;
 	
-	updated = 1;
-	
+	updated = true;
 }

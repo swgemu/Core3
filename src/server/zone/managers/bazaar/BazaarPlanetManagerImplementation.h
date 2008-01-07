@@ -50,7 +50,9 @@ class BazaarPlanetManagerImplementation {
 	
 public:
 	BazaarPlanetManagerImplementation();
+	
 	void setPlanet(int planet);
+	
 	bool isBazaarTerminal(long objectID);
 };
 

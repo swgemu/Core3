@@ -514,15 +514,17 @@ void LootManager::createJunkLoot(Creature* creature) {
 				"object/tangible/loot/misc/shared_briefcase_s01.iff", 0x6C34F325);
 		item = item10Impl->deploy();
 		break;
-/*	case 11 :
-		FireworkImplementation* fireworkImpl = new FireworkImplementation(((Player*)creature), 0x7C540DEB, unicode("a Firework"), "object/tangible/firework/shared_firework_s04.iff");
+	case 11 :
+		FireworkImplementation* fireworkImpl = new FireworkImplementation(((Player*)creature), 0x7C540DEB, 
+				unicode("a Firework"), "object/tangible/firework/shared_firework_s04.iff");
 		item = fireworkImpl->deploy();
 		break;
 	case 12 :
-		HolocronImplementation* holoImpl = new HolocronImplementation(((Player*)creature), 0x9BA06548, unicode("Holocron"), "object/tangible/jedi/shared_jedi_holocron_light.iff");
+		HolocronImplementation* holoImpl = new HolocronImplementation(((Player*)creature), 0x9BA06548, 
+				unicode("Holocron"), "object/tangible/jedi/shared_jedi_holocron_light.iff");
 		item = holoImpl->deploy();
 		break;
-*/	}
+	}
 	
 	if (item != NULL)
 		creature->addInventoryItem(item);

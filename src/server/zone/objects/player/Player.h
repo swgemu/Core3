@@ -185,6 +185,8 @@ public:
 
 	void createBaseStats();
 
+	void decayInventory();
+
 	void saveProfessions();
 
 	void loadProfessions();
@@ -493,6 +495,8 @@ public:
 	void loadItems();
 
 	void createBaseStats();
+
+	void decayInventory();
 
 	void saveProfessions();
 

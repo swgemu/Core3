@@ -612,8 +612,11 @@ void ItemManagerImplementation::showDbStats(Player* player) {
 		txt << "Top 10 Weapons by Max Damage\n";
 		
 		while (res->next()) {
-			if (res->getInt(4) == 2)
-				txt << "ObjID: " << res->getUnsignedLong(0) << " Name: " << res->getString(2) << "\\#ffffff MinDmg: " << res->getFloat(11) << " MaxDmg: " << res->getFloat(12) << " Spd: " << res->getFloat(13) << "\n";
+			if (res->getInt(4) == 2) {
+				txt << "ObjID: " << res->getUnsignedLong(0) << " Name: " << res->getString(2) 
+					<< "\\#ffffff MinDmg: " << res->getFloat(11) << " MaxDmg: " << res->getFloat(12) 
+					<< " Spd: " << res->getFloat(13) << "\n";
+			}
 		}
 		
 		delete res;
@@ -632,8 +635,12 @@ void ItemManagerImplementation::showDbStats(Player* player) {
 		txt << "Top 10 Weapons by DOT Strength\n";
 		
 		while (res->next()) {
-			if (res->getInt(4) == 2)
-				txt << "ObjID: " << res->getUnsignedLong(0) << " Name: " << res->getString(2) << "\\#ffffff MinDmg: " << res->getFloat(11) << " MaxDmg: " << res->getFloat(12) << " Spd: " << res->getFloat(13) << " Strength: " << res->getInt(57) << " Potency: " << res->getInt(59) << "\n";
+			if (res->getInt(4) == 2) {
+				txt << "ObjID: " << res->getUnsignedLong(0) << " Name: " << res->getString(2) 
+					<< "\\#ffffff MinDmg: " << res->getFloat(11) << " MaxDmg: " << res->getFloat(12) 
+					<< " Spd: " << res->getFloat(13) << " Strength: " << res->getInt(57) 
+					<< " Potency: " << res->getInt(59) << "\n";
+			}
 		}
 		
 		delete res;
@@ -656,12 +663,19 @@ void ItemManagerImplementation::showDbDeleted(Player* player) {
 		stringstream txt;
 		
 		while (res->next()) {
-			if (res->getInt(4) == 2)
-				txt << "ObjID: " << res->getUnsignedLong(0) << " Name: " << res->getString(2) << "\\#ffffff MinDmg: " << res->getFloat(11) << " MaxDmg: " << res->getFloat(12) << " Spd: " << res->getFloat(13) << "\n";
-			else if (res->getInt(4) == 4)
-				txt << "ObjID: " << res->getUnsignedLong(0) << " Name: " << res->getString(2) << "\\#ffffff Resists: " << res->getFloat(30) << " " << res->getFloat(32) << " " << res->getFloat(34) << " " << res->getFloat(36) << " " << res->getFloat(38) << " " <<  res->getFloat(40) << " " << res->getFloat(42) << " " << res->getFloat(44) << " " << res->getFloat(46) << "\n";
-			else
+			if (res->getInt(4) == 2) {
+				txt << "ObjID: " << res->getUnsignedLong(0) << " Name: " << res->getString(2) 
+					<< "\\#ffffff MinDmg: " << res->getFloat(11) << " MaxDmg: " << res->getFloat(12) 
+					<< " Spd: " << res->getFloat(13) << "\n";
+			} else if (res->getInt(4) == 4) {
+				txt << "ObjID: " << res->getUnsignedLong(0) << " Name: " << res->getString(2) 
+				<< "\\#ffffff Resists: " << res->getFloat(30) << " " << res->getFloat(32) << " " 
+				<< res->getFloat(34) << " " << res->getFloat(36) << " " << res->getFloat(38) << " " 
+				<< res->getFloat(40) << " " << res->getFloat(42) << " " << res->getFloat(44) << " " 
+				<< res->getFloat(46) << "\n";
+			} else {
 				txt << "ObjID: " << res->getUnsignedLong(0) << " Name: " << res->getString(2) << "\\#ffffff \n";
+			}
 		}
 		
 		player->sendSystemMessage(txt.str());

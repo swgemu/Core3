@@ -51,7 +51,9 @@ which carries forward this exception.
 
 class AuctionQueryHeadersResponseMessage : public Message {
 	Vector<AuctionItem*> itemList;
+	
 	Vector<string> locationList;
+	
 	int offset;
 	
 public:
@@ -75,49 +77,63 @@ public:
 		
 		stringstream title;
 		title << planet << ".@";
-		if(vendor)
+		
+		if (vendor)
 			title << "planet_n:" << planet <<  ".Vendor: " << header;
 		else
 			title << planet << "_region_names:" << header << ".@:";
+		
 		title << "." << vendorid << "#0,0";
 		string str = title.str();
 		
 		ai->location = -1;
-		for(int i = 0; i < locationList.size(); i++)
-			if(locationList.get(i) == str)
+		
+		for (int i = 0; i < locationList.size(); i++) {
+			if (locationList.get(i) == str)
 				ai->location = i;
-		if(ai->location == -1) {
+		}
+		
+		if (ai->location == -1) {
 			ai->location = locationList.size();
+			
 			locationList.add(locationList.size(), str);
 		}
 		
 		ai->ownerID = ownerid;
 		ai->owner = -1;
-		for(int i = 0; i < locationList.size(); i++)
-			if(locationList.get(i) == owner)
+		
+		for (int i = 0; i < locationList.size(); i++) {
+			if (locationList.get(i) == owner)
 				ai->owner = i;
-		if(ai->owner == -1) {
+		}
+		
+		if (ai->owner == -1) {
 			ai->owner = locationList.size();
+			
 			locationList.add(locationList.size(), owner);
 		}
+		
 		itemList.add(ai);
 	}
 	
 	void dumpLocationList() {
 		int llSize = locationList.size();
+		
 		insertInt(llSize);
 		
-		for(int i = 0; i < locationList.size(); i++) {
+		for (int i = 0; i < locationList.size(); i++) {
 			insertAscii(locationList.get(i));
 		}
 	}
 	
 	void dumpItemNameList() {
 		int ilSize = itemList.size();
+		
 		insertInt(ilSize);
 
 		for (int i = 0; i < itemList.size(); i++) {
 			AuctionItem* il = itemList.get(i);
+			
 	    	unicode name = il->itemname;
 	    	insertUnicode(name); //name
 		}
@@ -125,21 +141,30 @@ public:
 	
 	void dumpItemInfoList() {
 		int ilSize = itemList.size();
+		
 		insertInt(ilSize);
 
 		for (int i = 0; i < itemList.size(); i++) {
 			AuctionItem* il = itemList.get(i);
-	    	insertLong(il->id); //item id
-	    	insertByte(i);  // List item string number
-	    	insertInt(il->price); //item cost.
-	    	insertInt(il->remainingTime);
-	    	if(il->auction)
+	    	
+			insertLong(il->id); //item id
+	    	
+			insertByte(i);  // List item string number
+	    	
+			insertInt(il->price); //item cost.
+	    	
+			insertInt(il->remainingTime);
+	    	
+	    	if (il->auction)
 	    		insertByte(0);
 	    	else
 	    		insertByte(1);
+	    	
 	    	insertShort(il->location);
+	    	
 	    	insertLong(il->ownerID);
 	    	insertShort(il->owner);
+	    	
 	    	insertLong(0); // ??
 	    	insertLong(0); // ??
 	    	insertShort(0); // ??
@@ -147,17 +172,22 @@ public:
 		}
 	}
 	
+	void createMessage(int offset = 0) {
+		dumpLocationList();
+
+		dumpItemNameList();
+		
+		dumpItemInfoList();
+		
+		insertShort(offset); // Item list start offset
+		
+		insertByte(0);
+	}
+
 	inline int getListSize() {
 		return itemList.size();
 	}
-	
-	void createMessage(int offset = 0) {
-		dumpLocationList();
-		dumpItemNameList();
-		dumpItemInfoList();
-		insertShort(offset); // Item list start offset
-		insertByte(0);
-	}
-	
+
 };
+
 #endif /*AUCTIONQUERYHEADERSRESPONSEMESSAGE_H_*/

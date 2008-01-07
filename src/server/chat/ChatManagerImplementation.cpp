@@ -701,30 +701,33 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 				itemManager->purgeDbDeleted(player);
 			}	
 		} else if (cmd == "@sliceWeapon") {
-			SuiCreatePageMessage* list;
-			list = new ListBox(0xBEEFAAAA, "Weapon Upgrade Kit", "Select the item you wish to slice");
+			ListBox* list = new ListBox(0xBEEFAAAA, "Weapon Upgrade Kit", "Select the item you wish to slice");
 			
-			int items = player->getInventory()->objectsSize();
+			Inventory* inventory = player->getInventory();
 			
-			for (int i = 0; i < items; i++)
-				if (((TangibleObject*)player->getInventory()->getObject(i))->getObjectSubType()==2)
-					if (!((Weapon*)player->getInventory()->getObject(i))->isSliced())
-						((ListBox*)list)->addItem(((TangibleObject*)player->getInventory()->getObject(i))->getName().c_str());	
-			
-			((ListBox*)list)->generateMessage();
+			for (int i = 0; i < inventory->objectsSize(); i++) {
+				TangibleObject* item = (TangibleObject*) inventory->getObject(i);
+				
+				if (item->isWeapon() && !((Weapon*) item)->isSliced())
+					list->addItem(item->getName().c_str());	
+			}
+					
+			list->generateMessage();
 
 			player->sendMessage(list);
 		} else if (cmd == "@repairWeapon") {
-			SuiCreatePageMessage* list;
-			list = new ListBox(0xBEEFAACA, "Weapon Repair Kit", "Select the item you wish to repair");
+			ListBox* list = new ListBox(0xBEEFAACA, "Weapon Repair Kit", "Select the item you wish to repair");
 			
-			int items = player->getInventory()->objectsSize();
+			Inventory* inventory = player->getInventory();
+
+			for (int i = 0; i < inventory->objectsSize(); i++) {
+				TangibleObject* item = (TangibleObject*) inventory->getObject(i);
+				
+				if (item->isWeapon())
+					list->addItem(item->getName().c_str());
+			}
 			
-			for (int i = 0; i < items; i++)
-				if (((TangibleObject*)player->getInventory()->getObject(i))->getObjectSubType()==2)
-					((ListBox*)list)->addItem(((TangibleObject*)player->getInventory()->getObject(i))->getName().c_str());	
-			
-			((ListBox*)list)->generateMessage();
+			list->generateMessage();
 
 			player->sendMessage(list);
 		} else if (cmd == "@giveItemTemp") {

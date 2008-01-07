@@ -815,12 +815,13 @@ void ZonePacketHandler::handleSuiEventNotification(Message* pack) {
 
 					if (weaponCount == itemindex)
 						((TangibleObject*) weapon)->repairItem(player);
+					
 					weaponCount++;
 				}
 			}
 		}
+		
 		break;
-
 	/*case 0x4347494C:
 		if (cancel != 1)
 			processServer->getGuildManager()->handleCreateGuildNameBox(player, value.c_str());

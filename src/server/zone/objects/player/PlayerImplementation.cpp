@@ -1307,6 +1307,7 @@ void PlayerImplementation::doClone() {
 	}
 	
 	decayInventory();
+	
 	clearStates();
 		
 	//setNeutral();

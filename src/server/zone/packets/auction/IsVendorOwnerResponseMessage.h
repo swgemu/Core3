@@ -50,25 +50,28 @@ which carries forward this exception.
 class IsVendorOwnerResponseMessage : public Message {
 public:
     IsVendorOwnerResponseMessage(bool vendor, long objectId, string& planet, string& header, int x, int z ) {
-		
 		insertShort(3);
 		insertInt(0xCE04173E);
 		
-		if(!vendor)
+		if (!vendor)
 			insertInt(2);
 		else
 			insertInt(1);
+		
 		insertInt(0);
 		
 		insertLong(objectId);
 
 		stringstream title;
 		title << planet << ".@";
-		if(vendor)
+		
+		if (vendor)
 			title << "planet_n:" << planet <<  ".Vendor: " << "test";
 		else
 			title << planet << "_region_names:" << header << ".@terminal_name:terminal_bazaar";
+		
 		title << "." << objectId << "#" << x << "," << z;
+		
 		insertAscii(title.str());
 		
 		insertShort(0x64);
