@@ -173,8 +173,8 @@ void CreatureImplementation::loadItems() {
 		switch (System::random(1)) {
 		case 0 :
 			OneHandedMeleeWeaponImplementation* gaffi2Impl = new OneHandedMeleeWeaponImplementation(_this, "object/weapon/melee/baton/shared_baton_gaderiffi.iff", unicode("a Gaderiffi"), "baton_gaderiffi", true);
-			gaffi2Impl->setMinDamage(75+level);
-			gaffi2Impl->setMaxDamage(100+level);
+			gaffi2Impl->setMinDamage(75 + level);
+			gaffi2Impl->setMaxDamage(100 + level);
 			gaffi2Impl->setAttackSpeed(1.5);
 
 			weapon = (Weapon*) gaffi2Impl->deploy();
@@ -182,8 +182,8 @@ void CreatureImplementation::loadItems() {
 		case 1 :
 			OneHandedMeleeWeaponImplementation* baton1Impl = new OneHandedMeleeWeaponImplementation(_this, 
 					"object/weapon/melee/baton/shared_baton_stun.iff", unicode("a Stun Baton"), "baton_stun", true);
-			baton1Impl->setMinDamage(75+level);
-			baton1Impl->setMaxDamage(100+level);
+			baton1Impl->setMinDamage(75 + level);
+			baton1Impl->setMaxDamage(100 + level);
 			baton1Impl->setAttackSpeed(1.5);			
 
 			weapon = (Weapon*) baton1Impl->deploy();
@@ -197,8 +197,8 @@ void CreatureImplementation::loadItems() {
 		case 0 :
 			PolearmMeleeWeaponImplementation* vibrolance1Impl = new PolearmMeleeWeaponImplementation(_this, 
 					"object/weapon/melee/polearm/shared_lance_vibrolance.iff", unicode("a Vibrolance"), "lance_vibrolance", true);
-			vibrolance1Impl->setMinDamage(150+level);
-			vibrolance1Impl->setMaxDamage(300+level);
+			vibrolance1Impl->setMinDamage(150 +l evel);
+			vibrolance1Impl->setMaxDamage(300 + level);
 			vibrolance1Impl->setAttackSpeed(1.5);
 
 			weapon = (Weapon*) vibrolance1Impl->deploy();
@@ -206,8 +206,8 @@ void CreatureImplementation::loadItems() {
 		case 1 :
 			PolearmMeleeWeaponImplementation* lva1Impl = new PolearmMeleeWeaponImplementation(_this, 
 					"object/weapon/melee/polearm/shared_polearm_vibro_axe.iff", unicode("a Long Vibro Axe"), "lance_vibro_axe", true);
-			lva1Impl->setMinDamage(150+level);
-			lva1Impl->setMaxDamage(300+level);
+			lva1Impl->setMinDamage(150 + level);
+			lva1Impl->setMaxDamage(300 + level);
 			lva1Impl->setAttackSpeed(1.5);
 
 			weapon = (Weapon*) lva1Impl->deploy();
