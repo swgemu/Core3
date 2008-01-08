@@ -97,11 +97,11 @@ singingMountainClanAttack21 = {
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
-	postureDownChance = 30,
+	postureDownChance = 1,
 	postureUpChance = 0,
 	dizzyChance = 0,
 	blindChance = 0,
-	stunChance = 40,
+	stunChance = 1,
 	intimidateChance = 0,
 	
 	CbtSpamBlock = "melee_block",
@@ -133,7 +133,7 @@ singingMountainClanAttack22 = {
 	postureUpChance = 0,
 	dizzyChance = 0,
 	blindChance = 0,
-	stunChance = 40,
+	stunChance = 1,
 	intimidateChance = 0,
 	
 	CbtSpamBlock = "melee_block",
@@ -165,7 +165,7 @@ singingMountainClanAttack23 = {
 	postureUpChance = 0,
 	dizzyChance = 0,
 	blindChance = 0,
-	stunChance = 40,
+	stunChance = 1,
 	intimidateChance = 0,
 	
 	CbtSpamBlock = "melee_block",
@@ -195,7 +195,7 @@ singingMountainClanAttack24 = {
 	knockdownChance = 0,
 	postureDownChance = 0,
 	postureUpChance = 0,
-	dizzyChance = 40,
+	dizzyChance = 1,
 	blindChance = 0,
 	stunChance = 0,
 	intimidateChance = 0,
@@ -268,7 +268,7 @@ singingMountainClanAttack26 = {
 	knockdownChance = 0,
 	postureDownChance = 0,
 	postureUpChance = 0,
-	dizzyChance = 40,
+	dizzyChance = 1,
 	blindChance = 0,
 	stunChance = 0,
 	intimidateChance = 0,
@@ -343,7 +343,7 @@ singingMountainClanAttack28 = {
 	postureUpChance = 0,
 	dizzyChance = 40,
 	blindChance = 0,
-	stunChance = 40,
+	stunChance = 1,
 	intimidateChance = 0,
 	
 	CbtSpamBlock = "melee_block",
@@ -369,7 +369,7 @@ singingMountainClanAttack29 = {
 	areaRange = 0,
 	accuracyBonus = 0,
 		
-	knockdownChance = 30,
+	knockdownChance = 1,
 	postureDownChance = 0,
 	postureUpChance = 0,
 	dizzyChance = 0,
@@ -400,7 +400,7 @@ singingMountainClanAttack30 = {
 	areaRange = 7,
 	accuracyBonus = 0,
 		
-	knockdownChance = 40,
+	knockdownChance = 1,
 	postureDownChance = 0,
 	postureUpChance = 0,
 	dizzyChance = 0,
@@ -467,7 +467,7 @@ singingMountainClanAttack40 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 5.5,
+	damageRatio = 4.5,
 	speedRatio = 1.25,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -529,7 +529,7 @@ singingMountainClanAttack42 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 5.0,
+	damageRatio = 4.0,
 	speedRatio = 1.8,
 	areaRange = 7,
 	accuracyBonus = 0,
@@ -537,7 +537,7 @@ singingMountainClanAttack42 = {
 	knockdownChance = 0,
 	postureDownChance = 0,
 	postureUpChance = 0,
-	dizzyChance = 40,
+	dizzyChance = 1,
 	blindChance = 0,
 	stunChance = 0,
 	intimidateChance = 0,
@@ -560,7 +560,7 @@ singingMountainClanAttack43 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 5.2,
+	damageRatio = 4.2,
 	speedRatio = 1.25,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -592,7 +592,7 @@ singingMountainClanAttack44 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 5.15,
+	damageRatio = 4.15,
 	speedRatio = 1.45,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -634,7 +634,7 @@ singingMountainClanAttack45 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 5.15,
+	damageRatio = 4.15,
 	speedRatio = 1.45,
 	areaRange = 7,
 	accuracyBonus = 0,
@@ -708,7 +708,7 @@ singingMountainClanAttack47 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 5.15,
+	damageRatio = 4.15,
 	speedRatio = 1.45,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -792,7 +792,7 @@ singingMountainClanAttack49 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 5.15,
+	damageRatio = 4.15,
 	speedRatio = 1.45,
 	areaRange = 7,
 	accuracyBonus = 0,
@@ -801,7 +801,7 @@ singingMountainClanAttack49 = {
 	postureDownChance = 0,
 	postureUpChance = 0,
 	dizzyChance = 0,
-	blindChance = 30,
+	blindChance = 1,
 	stunChance = 0,
 	intimidateChance = 0,
 	
@@ -823,7 +823,7 @@ singingMountainClanAttack50 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 5.55,
+	damageRatio = 4.55,
 	speedRatio = 1.45,
 	areaRange = 7,
 	accuracyBonus = 0,
@@ -832,7 +832,7 @@ singingMountainClanAttack50 = {
 	postureDownChance = 0,
 	postureUpChance = 0,
 	dizzyChance = 0,
-	blindChance = 35,
+	blindChance = 1,
 	stunChance = 0,
 	intimidateChance = 0,
 	
@@ -854,7 +854,7 @@ singingMountainClanAttack51 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 5.5,
+	damageRatio = 4.5,
 	speedRatio = 1.25,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -863,7 +863,7 @@ singingMountainClanAttack51 = {
 	postureDownChance = 0,
 	postureUpChance = 0,
 	dizzyChance = 0,
-	blindChance = 40,
+	blindChance = 1,
 	stunChance = 0,
 	intimidateChance = 0,
 	
