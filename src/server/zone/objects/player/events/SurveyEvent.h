@@ -42,84 +42,34 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef ATTRIBUTELISTMESSAGE_H_
-#define ATTRIBUTELISTMESSAGE_H_
+#ifndef SURVEYEVENT_H_
+#define SURVEYEVENT_H_
 
-#include "engine/engine.h"
+#include "../Player.h"
 
-class AttributeListMessage : public Message {
-	int listcount;
+class SurveyEvent : public Event {
+	Player* player;
+	unicode resource_name;
 public:
-	AttributeListMessage(SceneObject* object) : Message() {
-		insertShort(0x03);
-		insertInt(0xF3F12F2A); // opcode
-		
-		insertLong(object->getObjectID());
-		insertInt(0); // list count
-		
-		listcount = 0;
-		
+	SurveyEvent(Player* pl, unicode& rn) : Event() {
+		player = pl;
+		resource_name = rn;
 	}
-	
-	AttributeListMessage(uint64 object_id) : Message() {
-		insertShort(0x03);
-		insertInt(0xF3F12F2A);
-		insertLong(object_id);
-		insertInt(0); // list count
-		listcount = 0;
+
+	bool activate() {
+		try {
+			player->wlock();
+			if (player->isOnline()) {
+				player->getZone()->getZoneServer()->getResourceManager()->sendSurveyMessage(player, resource_name);
+				player->setCanSurvey();
+			}
+			player->unlock();
+		} catch(...) {
+			player->unlock();
+			cout << "Unhandled SurveyEvent exception.\n";
+		}
 	}
-	
-	void insertAttribute(const string& attribute, string& value) {
-		unicode Value = unicode(value);
-		insertAscii(attribute.c_str());
-		insertUnicode(Value);
-		
-		updateListCount();
-	}
-	
-	void insertAttribute(const string& attribute, const string& value) {
-		unicode Value = unicode(value);
-		insertAscii(attribute.c_str());
-		insertUnicode(Value);
-		
-		updateListCount();
-	}
-	
-	void insertAttribute(const string& attribute, stringstream& value) {
-		unicode Value = unicode(value.str());
-		insertAscii(attribute.c_str());
-		insertUnicode(Value);
-		
-		updateListCount();
-	}
-	
-	void insertAttribute(const string& attribute, float value) {
-		stringstream t;
-		t << value;
-		unicode Value = unicode(t.str());
-		
-		insertAscii(attribute.c_str());
-		insertUnicode(Value);
-		
-		updateListCount();
-	}
-	
-	void insertAttribute(const string& attribute, int value) {
-		stringstream t;
-		t << value;
-		unicode Value = unicode(t.str());
-		
-		insertAscii(attribute.c_str());
-		insertUnicode(Value);
-		
-		updateListCount();
-	}
-	
-	void updateListCount() {
-		insertInt(18, ++listcount);
-	}
-	
-	
+
 };
 
-#endif /*ATTRIBUTELISTMESSAGE_H_*/
+#endif /*SURVEYEVENT_H_*/

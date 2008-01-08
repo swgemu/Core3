@@ -478,7 +478,7 @@ void CreatureImplementation::resetState() {
 }
 
 bool CreatureImplementation::doMovement() {
-	if (isKnockeddowned())
+	if (isKnockedDown())
 		return true;
 		
 	if (isKneeled())
@@ -599,7 +599,7 @@ bool CreatureImplementation::attack(CreatureObject* target) {
 	
 	//updateTarget(target->getObjectID());
 
-	if (isDead() || isKnockeddowned())
+	if (isDead() || isKnockedDown())
 		return false;
 
 	if (!isInRange(target, skill->getRange()))
@@ -709,7 +709,7 @@ void CreatureImplementation::doIncapAnimation() {
 }
 
 void CreatureImplementation::doStatesRecovery() {
-	if (isKnockeddowned() && knockdownRecoveryTime.isPast())
+	if (isKnockedDown() && knockdownRecoveryTime.isPast())
 		doStandUp();
 
 	if (isDizzied() && dizzyRecoveryTime.isPast())

@@ -106,6 +106,10 @@ void RadialManager::handleRadialRequest(Player* player, Packet* pack) {
 				return;
 			}
 			break;		
+		case TangibleObjectImplementation::SURVEYTOOL:
+			SurveyTool* surveyTool = (SurveyTool*) tano;
+			sendRadialResponseForSurveyTools(player, surveyTool, omr);
+			return;
 		}
 		break;
 	}
@@ -193,6 +197,10 @@ void RadialManager::handleSelection(int radialID, Player* player, SceneObject* o
 		
 		handleVehicleStore(obj);
 		return;
+	case 136: // SURVEY_TOOL_OPTIONS
+		break;
+	case 137: // SURVEY_TOOL_SET_RANGE
+		sendRadialResponseForSurveyToolRange(player, obj);
 	case 187: // SERVER_GUILD_INFO
 		break;
 	case 188: // SERVER_GUILD_MEMBERS
@@ -386,4 +394,54 @@ void RadialManager::handleTrade(Player* player, SceneObject* obj) {
 		target->unlock();
 		cout << "Unreported exception caught in RadialManager::handleTrade(Player* player, SceneObject* obj)\n";
 	}
+}
+
+void RadialManager::sendRadialResponseForSurveyTools(Player* player, SurveyTool* surveyTool, ObjectMenuResponse* omr) {
+	omr->addRadialItem(0, 136, 3, "@sui:tool_options");
+	omr->addRadialItem(4, 137, 3, "@sui:survey_range");
+	omr->finish();
+	
+	player->sendMessage(omr);
+}
+
+void RadialManager::sendRadialResponseForSurveyToolRange(Player* player, SceneObject* obj) {
+	if (!player->hasSkillMod("surveying")) {
+		player->sendSystemMessage("You are confused by this device.");
+		return;
+	}
+	
+	string boxTitle = "@base_player:swg";
+	string boxText = "@survey:select_range";
+	
+	string range64 = "64m x 3pts";
+	string range128 = "128m x 4pts";
+	string range192 = "192m x 4pts";
+	string range256 = "256m x 5pts";
+	string range320 = "320m x 5pts";
+	string surveying = "surveying";
+	
+	int surveyMod = player->getSkillMod(surveying);
+	
+	ListBox* suiToolRangeBox = new ListBox(0xD44B7259, boxTitle, boxText, false);
+	
+	if (surveyMod >= 0)
+		suiToolRangeBox->addItem(range64);
+	
+	if (surveyMod > 20)
+		suiToolRangeBox->addItem(range128);
+	
+	if (surveyMod > 40)
+		suiToolRangeBox->addItem(range192);
+	
+	if (surveyMod > 60)
+		suiToolRangeBox->addItem(range256);
+
+	if (surveyMod > 80)
+		suiToolRangeBox->addItem(range320);
+	
+	suiToolRangeBox->generateMessage();
+	
+	player->sendMessage(suiToolRangeBox);
+	
+	player->setSurveyTool((SurveyTool*)obj);
 }

@@ -105,7 +105,7 @@ public:
 
 	bool isDead();
 
-	bool isKnockeddowned();
+	bool isKnockedDown();
 
 	bool isKneeled();
 
@@ -724,7 +724,7 @@ public:
 
 	bool isDead();
 
-	bool isKnockeddowned();
+	bool isKnockedDown();
 
 	bool isKneeled();
 

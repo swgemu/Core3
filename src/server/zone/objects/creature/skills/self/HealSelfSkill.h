@@ -149,7 +149,7 @@ public:
 	}
 	
 	virtual bool calculateCost(CreatureObject* creature) {
-		if (creature->isKnockeddowned()) {
+		if (creature->isKnockedDown()) {
 			creature->sendSystemMessage("You can't heal while KnockedDown.");
 			return false;
 		}

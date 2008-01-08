@@ -108,6 +108,10 @@ which carries forward this exception.
 #include "objects/tangible/holocron/HolocronImplementation.h"
 #include "objects/tangible/firework/Firework.h"
 #include "objects/tangible/firework/FireworkImplementation.h"
+#include "objects/tangible/surveytool/SurveyTool.h"
+#include "objects/tangible/surveytool/SurveyToolImplementation.h"
+#include "objects/tangible/resource/ResourceContainer.h"
+#include "objects/tangible/resource/ResourceContainerImplementation.h"
 
 #include "objects/tangible/weapons/Weapon.h"
 #include "objects/tangible/weapons/WeaponImplementation.h"
@@ -137,9 +141,6 @@ which carries forward this exception.
 
 #include "objects/manufacture/ManufactureSchematic.h"
 #include "objects/manufacture/ManufactureSchematicImplementation.h"
-
-#include "objects/resource/ResourceContainer.h"
-#include "objects/resource/ResourceContainerImplementation.h"
 
 #include "objects/mission/MissionObject.h"
 #include "objects/mission/MissionObjectImplementation.h"

@@ -110,6 +110,14 @@ public:
     
     static void handleDeathblow(Player* player, Message* packet, CombatManager* combatManager);
     
+    static void parseSurveySlashRequest(Player* player, Message* pack);
+    static void parseSampleSlashRequest(Player* player, Message* pack);
+    static void parseSurveyRequest(Player* player, Message* pack);
+    static void parseSampleRequest(Player* player, Message* pack);
+    
+    static void parseResourceContainerSplit(Player* player, Message* pack);
+    static void parseResourceContainerTransfer(Player* player, Message* pack);
+    
     // group
     static void parseGroupInvite(Player* player, Message* pack, GroupManager* groupManager);
     static void parseGroupUninvite(Player* player, Message* pack);

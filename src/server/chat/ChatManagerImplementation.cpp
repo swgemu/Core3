@@ -362,13 +362,6 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 				if (x >= -8192 && x < 8192 && y >= -8192 && y < 8192)
 					player->doWarp(x, y);
 			}
-		} else if (cmd == "@spawnResource") {
-			if (userManager->isAdmin(player->getFirstName())) {
-				string resource;
-				resourceManager->makeResourceName(resource, true);
-				
-				player->sendSystemMessage("Resource is \'" + resource + "\'");
-			}
 		} /*else if (cmd == "@playAnim") {
 			string anim;
 			tokenizer.getStringToken(anim);
@@ -1262,4 +1255,5 @@ void ChatManagerImplementation::destroyRoom(ChatRoom* room) {
 	
 	delete room;
 }
+
 

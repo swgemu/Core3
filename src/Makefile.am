@@ -98,6 +98,8 @@ core3_IDLS =	server/zone/Zone.cpp \
 		server/zone/objects/tangible/ticketcollector/TicketCollector.cpp \
 		server/zone/objects/tangible/instrument/Instrument.cpp \
 		server/zone/objects/tangible/lair/LairObject.cpp \
+		server/zone/objects/tangible/surveytool/SurveyTool.cpp \
+		server/zone/objects/tangible/resource/ResourceContainer.cpp \
 		server/zone/objects/tangible/holocron/Holocron.cpp \
 		server/zone/objects/tangible/firework/Firework.cpp \
 		server/zone/objects/intangible/IntangibleObject.cpp \
@@ -108,7 +110,6 @@ core3_IDLS =	server/zone/Zone.cpp \
 		server/zone/objects/building/cell/CellObject.cpp \
 		server/zone/objects/building/BuildingObject.cpp \
 		server/zone/objects/manufacture/ManufactureSchematic.cpp \
-		server/zone/objects/resource/ResourceContainer.cpp \
 		server/zone/objects/mission/MissionObject.cpp \
 		server/zone/objects/waypoint/WaypointObject.cpp \
 		server/zone/objects/tangible/component/ShipComponent.cpp \
@@ -150,6 +151,8 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/weapons/WeaponImplementation.cpp \
 		server/zone/objects/tangible/TangibleObjectImplementation.cpp \
 		server/zone/objects/tangible/lair/LairObjectImplementation.cpp \
+		server/zone/objects/tangible/surveytool/SurveyToolImplementation.cpp \
+    server/zone/objects/tangible/resource/ResourceContainerImplementation.cpp \
 		server/zone/objects/static/StaticObjectImplementation.cpp \
 		server/zone/objects/player/PlayerImplementation.cpp \
 		server/zone/objects/player/PlayerObjectImplementation.cpp \

@@ -53,6 +53,7 @@ class ObjectMenuResponse;
 class Player;
 class SceneObject;
 class GuildTerminal;
+class SurveyTool;
 
 class RadialManager {
 	
@@ -73,6 +74,9 @@ public:
 	void handleVehicleGenerate(SceneObject* obj);
 
 	void handleTrade(Player* player, SceneObject* obj);
+	
+	void sendRadialResponseForSurveyTools(Player* player, SurveyTool* surveyTool, ObjectMenuResponse* omr);
+	void sendRadialResponseForSurveyToolRange(Player* player, SceneObject* obj);
 	
 private:
 	ObjectMenuResponse* parseDefaults(Player* player, uint64 objectid, Packet* pack);

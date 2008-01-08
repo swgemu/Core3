@@ -86,6 +86,8 @@ IDL_SOURCES = server/zone/Zone.idl \
 				server/zone/objects/tangible/ticketcollector/TicketCollector.idl \
 				server/zone/objects/tangible/instrument/Instrument.idl \
 				server/zone/objects/tangible/lair/LairObject.idl \
+				server/zone/objects/tangible/surveytool/SurveyTool.idl \
+				server/zone/objects/tangible/resource/ResourceContainer.idl \
 				server/zone/objects/tangible/holocron/Holocron.idl \
 				server/zone/objects/tangible/firework/Firework.idl \
 				server/zone/objects/static/firework/FireworkWorld.idl \
@@ -96,7 +98,6 @@ IDL_SOURCES = server/zone/Zone.idl \
 				server/zone/objects/building/cell/CellObject.idl \
 				server/zone/objects/building/BuildingObject.idl \
 				server/zone/objects/manufacture/ManufactureSchematic.idl \
-				server/zone/objects/resource/ResourceContainer.idl \
 				server/zone/objects/mission/MissionObject.idl \
 				server/zone/objects/waypoint/WaypointObject.idl \
 				server/zone/managers/bazaar/BazaarManager.idl \

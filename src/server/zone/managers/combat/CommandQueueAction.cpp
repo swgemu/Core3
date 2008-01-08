@@ -80,7 +80,7 @@ bool CommandQueueAction::check() {
 	}
 
 	if (skill->isTargetSkill()) {
-		if (creature->isKnockeddowned()) {
+		if (creature->isKnockedDown()) {
 			clearError(1, 18);		
 			return false;
 		}
@@ -186,7 +186,7 @@ bool CommandQueueAction::validate() {
 			return false;
 		}
 		
-		if (creature->isKnockeddowned()) {
+		if (creature->isKnockedDown()) {
 			clearError(1, 18);		
 			return false;
 		}

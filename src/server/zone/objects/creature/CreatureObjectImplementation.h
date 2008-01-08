@@ -597,7 +597,7 @@ public:
 		return postureState == DEAD_POSTURE;
 	}
 
-	inline bool isKnockeddowned() {
+	inline bool isKnockedDown() {
 		return postureState == KNOCKEDDOWN_POSTURE;
 	}
 	

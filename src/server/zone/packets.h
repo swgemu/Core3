@@ -95,6 +95,7 @@ which carries forward this exception.
 #include "packets/scene/ServerTimeMessage.h"
 #include "packets/scene/ServerWeatherMessage.h"
 #include "packets/scene/GameSceneChangedMessage.h"
+#include "packets/scene/PlayClientEffectLocMessage.h"
 
 #include "packets/ship/ShipObjectMessage1.h"
 #include "packets/ship/ShipObjectMessage3.h"
@@ -202,6 +203,14 @@ which carries forward this exception.
 #include "packets/trade/DenyTradeMessage.h"
 #include "packets/trade/TradeCompleteMessage.h"
 #include "packets/trade/GiveMoneyMessage.h"
+
+//Resources:
+#include "packets/resource/ResourceListForSurveyMessage.h"
+#include "packets/resource/SurveyMessage.h"
+#include "packets/resource/ResourceContainerObjectMessage3.h"
+#include "packets/resource/ResourceContainerObjectMessage6.h"
+#include "packets/resource/ResourceContainerObjectDeltaMessage3.h"
+#include "packets/resource/ResourceContainerObjectDeltaMessage6.h"
 
 // static objects
 #include "packets/static/StaticObjectMessage3.h"

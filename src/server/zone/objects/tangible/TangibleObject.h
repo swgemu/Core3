@@ -97,7 +97,11 @@ public:
 
 	bool isArmor();
 
+	bool isResource();
+
 	bool isTicket();
+
+	bool isSurveyTool();
 
 	void setPersistent(bool pers);
 
@@ -172,7 +176,11 @@ public:
 
 	bool isArmor();
 
+	bool isResource();
+
 	bool isTicket();
+
+	bool isSurveyTool();
 
 	void setPersistent(bool pers);
 

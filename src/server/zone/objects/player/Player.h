@@ -71,6 +71,8 @@ class Weapon;
 
 class Datapad;
 
+class SurveyTool;
+
 class GroupObject;
 
 class Guild;
@@ -202,6 +204,8 @@ public:
 	string& getNextSkillBox();
 
 	bool hasNextSkillBox();
+
+	bool hasSkillBox(string& skillBox);
 
 	void addWaypoint(WaypointObject* wp);
 
@@ -373,6 +377,40 @@ public:
 
 	unsigned int getForcePower();
 
+	SurveyTool* getSurveyTool();
+
+	void setSurveyTool(SurveyTool* sTool);
+
+	void setSurveyWaypoint(WaypointObject* id);
+
+	WaypointObject* getSurveyWaypoint();
+
+	bool getCanSurvey();
+
+	bool getCanSample();
+
+	void setCanSurvey();
+
+	void setCanSample();
+
+	void setSurveyEvent(unicode& resourcename);
+
+	void setSampleEvent(unicode& resourcename, bool firstTime = false);
+
+	void setCancelSample(bool val);
+
+	bool getCancelSample();
+
+	void sendSampleTimeRemaining();
+
+	void setSurveyErrorMessage();
+
+	void setSampleErrorMessage();
+
+	bool getSurveyErrorMessage();
+
+	bool getSampleErrorMessage();
+
 protected:
 	string _return_getRaceFileName;
 
@@ -513,6 +551,8 @@ public:
 	string& getNextSkillBox();
 
 	bool hasNextSkillBox();
+
+	bool hasSkillBox(string& skillBox);
 
 	void addWaypoint(WaypointObject* wp);
 
@@ -684,9 +724,44 @@ public:
 
 	unsigned int getForcePower();
 
+	SurveyTool* getSurveyTool();
+
+	void setSurveyTool(SurveyTool* sTool);
+
+	void setSurveyWaypoint(WaypointObject* id);
+
+	WaypointObject* getSurveyWaypoint();
+
+	bool getCanSurvey();
+
+	bool getCanSample();
+
+	void setCanSurvey();
+
+	void setCanSample();
+
+	void setSurveyEvent(unicode& resourcename);
+
+	void setSampleEvent(unicode& resourcename, bool firstTime);
+
+	void setCancelSample(bool val);
+
+	bool getCancelSample();
+
+	void sendSampleTimeRemaining();
+
+	void setSurveyErrorMessage();
+
+	void setSampleErrorMessage();
+
+	bool getSurveyErrorMessage();
+
+	bool getSampleErrorMessage();
+
 protected:
 	string _param0_trainSkillBox__string_;
 	string _param0_surrenderSkillBox__string_;
+	string _param0_hasSkillBox__string_;
 	string _param0_addXp__string_int_bool_;
 	string _param0_removeXp__string_int_bool_;
 	string _param0_sendSystemMessage__string_;
@@ -704,6 +779,8 @@ protected:
 	string _param0_setRaceFileName__string_;
 	string _param0_setStartingLocation__string_;
 	string _param0_setFactionRank__string_;
+	unicode _param0_setSurveyEvent__unicode_;
+	unicode _param0_setSampleEvent__unicode_bool_;
 };
 
 class PlayerHelper : public ORBClassHelper {

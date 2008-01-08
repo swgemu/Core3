@@ -108,11 +108,12 @@ am__objects_1 = Zone.$(OBJEXT) ZoneClient.$(OBJEXT) \
 	Terminal.$(OBJEXT) TravelTerminal.$(OBJEXT) \
 	GuildTerminal.$(OBJEXT) VendorTerminal.$(OBJEXT) \
 	TicketCollector.$(OBJEXT) Instrument.$(OBJEXT) \
-	LairObject.$(OBJEXT) Holocron.$(OBJEXT) Firework.$(OBJEXT) \
-	IntangibleObject.$(OBJEXT) StaticObject.$(OBJEXT) \
-	FireworkWorld.$(OBJEXT) GroupObject.$(OBJEXT) Guild.$(OBJEXT) \
-	CellObject.$(OBJEXT) BuildingObject.$(OBJEXT) \
-	ManufactureSchematic.$(OBJEXT) ResourceContainer.$(OBJEXT) \
+	LairObject.$(OBJEXT) SurveyTool.$(OBJEXT) \
+	ResourceContainer.$(OBJEXT) Holocron.$(OBJEXT) \
+	Firework.$(OBJEXT) IntangibleObject.$(OBJEXT) \
+	StaticObject.$(OBJEXT) FireworkWorld.$(OBJEXT) \
+	GroupObject.$(OBJEXT) Guild.$(OBJEXT) CellObject.$(OBJEXT) \
+	BuildingObject.$(OBJEXT) ManufactureSchematic.$(OBJEXT) \
 	MissionObject.$(OBJEXT) WaypointObject.$(OBJEXT) \
 	ShipComponent.$(OBJEXT) ShipObject.$(OBJEXT) \
 	GuildMap.$(OBJEXT) GuildManager.$(OBJEXT) PlayerMap.$(OBJEXT) \
@@ -139,6 +140,8 @@ am_core3_OBJECTS = $(am__objects_1) ServerCore.$(OBJEXT) \
 	ArmorImplementation.$(OBJEXT) WeaponImplementation.$(OBJEXT) \
 	TangibleObjectImplementation.$(OBJEXT) \
 	LairObjectImplementation.$(OBJEXT) \
+	SurveyToolImplementation.$(OBJEXT) \
+	ResourceContainerImplementation.$(OBJEXT) \
 	StaticObjectImplementation.$(OBJEXT) \
 	PlayerImplementation.$(OBJEXT) \
 	PlayerObjectImplementation.$(OBJEXT) \
@@ -332,6 +335,8 @@ core3_IDLS = server/zone/Zone.cpp \
 		server/zone/objects/tangible/ticketcollector/TicketCollector.cpp \
 		server/zone/objects/tangible/instrument/Instrument.cpp \
 		server/zone/objects/tangible/lair/LairObject.cpp \
+		server/zone/objects/tangible/surveytool/SurveyTool.cpp \
+		server/zone/objects/tangible/resource/ResourceContainer.cpp \
 		server/zone/objects/tangible/holocron/Holocron.cpp \
 		server/zone/objects/tangible/firework/Firework.cpp \
 		server/zone/objects/intangible/IntangibleObject.cpp \
@@ -342,7 +347,6 @@ core3_IDLS = server/zone/Zone.cpp \
 		server/zone/objects/building/cell/CellObject.cpp \
 		server/zone/objects/building/BuildingObject.cpp \
 		server/zone/objects/manufacture/ManufactureSchematic.cpp \
-		server/zone/objects/resource/ResourceContainer.cpp \
 		server/zone/objects/mission/MissionObject.cpp \
 		server/zone/objects/waypoint/WaypointObject.cpp \
 		server/zone/objects/tangible/component/ShipComponent.cpp \
@@ -384,6 +388,8 @@ core3_SOURCES = $(core3_IDLS) \
 		server/zone/objects/tangible/weapons/WeaponImplementation.cpp \
 		server/zone/objects/tangible/TangibleObjectImplementation.cpp \
 		server/zone/objects/tangible/lair/LairObjectImplementation.cpp \
+		server/zone/objects/tangible/surveytool/SurveyToolImplementation.cpp \
+    server/zone/objects/tangible/resource/ResourceContainerImplementation.cpp \
 		server/zone/objects/static/StaticObjectImplementation.cpp \
 		server/zone/objects/player/PlayerImplementation.cpp \
 		server/zone/objects/player/PlayerObjectImplementation.cpp \
@@ -563,6 +569,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/RangedWeapon.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/RecruiterCreature.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ResourceContainer.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ResourceContainerImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ResourceManager.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ResourceManagerImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/RifleRangedWeapon.Po@am__quote@
@@ -579,6 +586,8 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SkillManager.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/StaticObject.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/StaticObjectImplementation.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SurveyTool.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SurveyToolImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/TangibleObject.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/TangibleObjectImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Terminal.Po@am__quote@
@@ -1238,6 +1247,34 @@ LairObject.obj: server/zone/objects/tangible/lair/LairObject.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o LairObject.obj `if test -f 'server/zone/objects/tangible/lair/LairObject.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/lair/LairObject.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/lair/LairObject.cpp'; fi`
 
+SurveyTool.o: server/zone/objects/tangible/surveytool/SurveyTool.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT SurveyTool.o -MD -MP -MF $(DEPDIR)/SurveyTool.Tpo -c -o SurveyTool.o `test -f 'server/zone/objects/tangible/surveytool/SurveyTool.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/surveytool/SurveyTool.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/SurveyTool.Tpo $(DEPDIR)/SurveyTool.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/surveytool/SurveyTool.cpp' object='SurveyTool.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o SurveyTool.o `test -f 'server/zone/objects/tangible/surveytool/SurveyTool.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/surveytool/SurveyTool.cpp
+
+SurveyTool.obj: server/zone/objects/tangible/surveytool/SurveyTool.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT SurveyTool.obj -MD -MP -MF $(DEPDIR)/SurveyTool.Tpo -c -o SurveyTool.obj `if test -f 'server/zone/objects/tangible/surveytool/SurveyTool.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/surveytool/SurveyTool.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/surveytool/SurveyTool.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/SurveyTool.Tpo $(DEPDIR)/SurveyTool.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/surveytool/SurveyTool.cpp' object='SurveyTool.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o SurveyTool.obj `if test -f 'server/zone/objects/tangible/surveytool/SurveyTool.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/surveytool/SurveyTool.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/surveytool/SurveyTool.cpp'; fi`
+
+ResourceContainer.o: server/zone/objects/tangible/resource/ResourceContainer.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ResourceContainer.o -MD -MP -MF $(DEPDIR)/ResourceContainer.Tpo -c -o ResourceContainer.o `test -f 'server/zone/objects/tangible/resource/ResourceContainer.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/resource/ResourceContainer.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/ResourceContainer.Tpo $(DEPDIR)/ResourceContainer.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/resource/ResourceContainer.cpp' object='ResourceContainer.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ResourceContainer.o `test -f 'server/zone/objects/tangible/resource/ResourceContainer.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/resource/ResourceContainer.cpp
+
+ResourceContainer.obj: server/zone/objects/tangible/resource/ResourceContainer.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ResourceContainer.obj -MD -MP -MF $(DEPDIR)/ResourceContainer.Tpo -c -o ResourceContainer.obj `if test -f 'server/zone/objects/tangible/resource/ResourceContainer.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/resource/ResourceContainer.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/resource/ResourceContainer.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/ResourceContainer.Tpo $(DEPDIR)/ResourceContainer.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/resource/ResourceContainer.cpp' object='ResourceContainer.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ResourceContainer.obj `if test -f 'server/zone/objects/tangible/resource/ResourceContainer.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/resource/ResourceContainer.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/resource/ResourceContainer.cpp'; fi`
+
 Holocron.o: server/zone/objects/tangible/holocron/Holocron.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT Holocron.o -MD -MP -MF $(DEPDIR)/Holocron.Tpo -c -o Holocron.o `test -f 'server/zone/objects/tangible/holocron/Holocron.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/holocron/Holocron.cpp
 @am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/Holocron.Tpo $(DEPDIR)/Holocron.Po
@@ -1377,20 +1414,6 @@ ManufactureSchematic.obj: server/zone/objects/manufacture/ManufactureSchematic.c
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/manufacture/ManufactureSchematic.cpp' object='ManufactureSchematic.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ManufactureSchematic.obj `if test -f 'server/zone/objects/manufacture/ManufactureSchematic.cpp'; then $(CYGPATH_W) 'server/zone/objects/manufacture/ManufactureSchematic.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/manufacture/ManufactureSchematic.cpp'; fi`
-
-ResourceContainer.o: server/zone/objects/resource/ResourceContainer.cpp
-@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ResourceContainer.o -MD -MP -MF $(DEPDIR)/ResourceContainer.Tpo -c -o ResourceContainer.o `test -f 'server/zone/objects/resource/ResourceContainer.cpp' || echo '$(srcdir)/'`server/zone/objects/resource/ResourceContainer.cpp
-@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/ResourceContainer.Tpo $(DEPDIR)/ResourceContainer.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/resource/ResourceContainer.cpp' object='ResourceContainer.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ResourceContainer.o `test -f 'server/zone/objects/resource/ResourceContainer.cpp' || echo '$(srcdir)/'`server/zone/objects/resource/ResourceContainer.cpp
-
-ResourceContainer.obj: server/zone/objects/resource/ResourceContainer.cpp
-@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ResourceContainer.obj -MD -MP -MF $(DEPDIR)/ResourceContainer.Tpo -c -o ResourceContainer.obj `if test -f 'server/zone/objects/resource/ResourceContainer.cpp'; then $(CYGPATH_W) 'server/zone/objects/resource/ResourceContainer.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/resource/ResourceContainer.cpp'; fi`
-@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/ResourceContainer.Tpo $(DEPDIR)/ResourceContainer.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/resource/ResourceContainer.cpp' object='ResourceContainer.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ResourceContainer.obj `if test -f 'server/zone/objects/resource/ResourceContainer.cpp'; then $(CYGPATH_W) 'server/zone/objects/resource/ResourceContainer.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/resource/ResourceContainer.cpp'; fi`
 
 MissionObject.o: server/zone/objects/mission/MissionObject.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT MissionObject.o -MD -MP -MF $(DEPDIR)/MissionObject.Tpo -c -o MissionObject.o `test -f 'server/zone/objects/mission/MissionObject.cpp' || echo '$(srcdir)/'`server/zone/objects/mission/MissionObject.cpp
@@ -1937,6 +1960,34 @@ LairObjectImplementation.obj: server/zone/objects/tangible/lair/LairObjectImplem
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/lair/LairObjectImplementation.cpp' object='LairObjectImplementation.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o LairObjectImplementation.obj `if test -f 'server/zone/objects/tangible/lair/LairObjectImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/lair/LairObjectImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/lair/LairObjectImplementation.cpp'; fi`
+
+SurveyToolImplementation.o: server/zone/objects/tangible/surveytool/SurveyToolImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT SurveyToolImplementation.o -MD -MP -MF $(DEPDIR)/SurveyToolImplementation.Tpo -c -o SurveyToolImplementation.o `test -f 'server/zone/objects/tangible/surveytool/SurveyToolImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/surveytool/SurveyToolImplementation.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/SurveyToolImplementation.Tpo $(DEPDIR)/SurveyToolImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/surveytool/SurveyToolImplementation.cpp' object='SurveyToolImplementation.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o SurveyToolImplementation.o `test -f 'server/zone/objects/tangible/surveytool/SurveyToolImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/surveytool/SurveyToolImplementation.cpp
+
+SurveyToolImplementation.obj: server/zone/objects/tangible/surveytool/SurveyToolImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT SurveyToolImplementation.obj -MD -MP -MF $(DEPDIR)/SurveyToolImplementation.Tpo -c -o SurveyToolImplementation.obj `if test -f 'server/zone/objects/tangible/surveytool/SurveyToolImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/surveytool/SurveyToolImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/surveytool/SurveyToolImplementation.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/SurveyToolImplementation.Tpo $(DEPDIR)/SurveyToolImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/surveytool/SurveyToolImplementation.cpp' object='SurveyToolImplementation.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o SurveyToolImplementation.obj `if test -f 'server/zone/objects/tangible/surveytool/SurveyToolImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/surveytool/SurveyToolImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/surveytool/SurveyToolImplementation.cpp'; fi`
+
+ResourceContainerImplementation.o: server/zone/objects/tangible/resource/ResourceContainerImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ResourceContainerImplementation.o -MD -MP -MF $(DEPDIR)/ResourceContainerImplementation.Tpo -c -o ResourceContainerImplementation.o `test -f 'server/zone/objects/tangible/resource/ResourceContainerImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/resource/ResourceContainerImplementation.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/ResourceContainerImplementation.Tpo $(DEPDIR)/ResourceContainerImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/resource/ResourceContainerImplementation.cpp' object='ResourceContainerImplementation.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ResourceContainerImplementation.o `test -f 'server/zone/objects/tangible/resource/ResourceContainerImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/resource/ResourceContainerImplementation.cpp
+
+ResourceContainerImplementation.obj: server/zone/objects/tangible/resource/ResourceContainerImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ResourceContainerImplementation.obj -MD -MP -MF $(DEPDIR)/ResourceContainerImplementation.Tpo -c -o ResourceContainerImplementation.obj `if test -f 'server/zone/objects/tangible/resource/ResourceContainerImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/resource/ResourceContainerImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/resource/ResourceContainerImplementation.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/ResourceContainerImplementation.Tpo $(DEPDIR)/ResourceContainerImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/resource/ResourceContainerImplementation.cpp' object='ResourceContainerImplementation.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ResourceContainerImplementation.obj `if test -f 'server/zone/objects/tangible/resource/ResourceContainerImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/resource/ResourceContainerImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/resource/ResourceContainerImplementation.cpp'; fi`
 
 StaticObjectImplementation.o: server/zone/objects/static/StaticObjectImplementation.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT StaticObjectImplementation.o -MD -MP -MF $(DEPDIR)/StaticObjectImplementation.Tpo -c -o StaticObjectImplementation.o `test -f 'server/zone/objects/static/StaticObjectImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/static/StaticObjectImplementation.cpp

@@ -42,84 +42,26 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef ATTRIBUTELISTMESSAGE_H_
-#define ATTRIBUTELISTMESSAGE_H_
+#ifndef RESOURCECONTAINEROBJECTMESSAGE6_H_
+#define RESOURCECONTAINEROBJECTMESSAGE6_H_
 
-#include "engine/engine.h"
+#include "../../objects/tangible/resource/ResourceContainer.h"
+#include "../BaseLineMessage.h"
 
-class AttributeListMessage : public Message {
-	int listcount;
+class ResourceContainerObjectMessage6 : public BaseLineMessage {
 public:
-	AttributeListMessage(SceneObject* object) : Message() {
-		insertShort(0x03);
-		insertInt(0xF3F12F2A); // opcode
-		
-		insertLong(object->getObjectID());
-		insertInt(0); // list count
-		
-		listcount = 0;
-		
+	ResourceContainerObjectMessage6(ResourceContainer* rcno)
+			: BaseLineMessage(rcno->getObjectID(), 0x52434E4F, 6, 0x05) {
+		insertAscii(""); // Resource Container: "resource_container_d"
+		insertInt(0);
+		insertAscii(""); // Resource Type: "organic_food_small"
+		unicode u_str = unicode("");
+		insertUnicode(u_str); // Container Name
+		insertInt(0x000186A0); // Max stack size
+		insertAscii(rcno->getTemplateName()); // Resource Type: planet specific
+		insertUnicode(rcno->getName());  // Resource name.
+		setSize();
 	}
-	
-	AttributeListMessage(uint64 object_id) : Message() {
-		insertShort(0x03);
-		insertInt(0xF3F12F2A);
-		insertLong(object_id);
-		insertInt(0); // list count
-		listcount = 0;
-	}
-	
-	void insertAttribute(const string& attribute, string& value) {
-		unicode Value = unicode(value);
-		insertAscii(attribute.c_str());
-		insertUnicode(Value);
-		
-		updateListCount();
-	}
-	
-	void insertAttribute(const string& attribute, const string& value) {
-		unicode Value = unicode(value);
-		insertAscii(attribute.c_str());
-		insertUnicode(Value);
-		
-		updateListCount();
-	}
-	
-	void insertAttribute(const string& attribute, stringstream& value) {
-		unicode Value = unicode(value.str());
-		insertAscii(attribute.c_str());
-		insertUnicode(Value);
-		
-		updateListCount();
-	}
-	
-	void insertAttribute(const string& attribute, float value) {
-		stringstream t;
-		t << value;
-		unicode Value = unicode(t.str());
-		
-		insertAscii(attribute.c_str());
-		insertUnicode(Value);
-		
-		updateListCount();
-	}
-	
-	void insertAttribute(const string& attribute, int value) {
-		stringstream t;
-		t << value;
-		unicode Value = unicode(t.str());
-		
-		insertAscii(attribute.c_str());
-		insertUnicode(Value);
-		
-		updateListCount();
-	}
-	
-	void updateListCount() {
-		insertInt(18, ++listcount);
-	}
-	
-	
 };
 
-#endif /*ATTRIBUTELISTMESSAGE_H_*/
+#endif /*RESOURCECONTAINEROBJECTMESSAGE6_H_*/

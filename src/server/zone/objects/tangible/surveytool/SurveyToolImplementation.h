@@ -42,84 +42,51 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef ATTRIBUTELISTMESSAGE_H_
-#define ATTRIBUTELISTMESSAGE_H_
+#ifndef SURVEYTOOLIMPLEMENTATION_H_
+#define SURVEYTOOLIMPLEMENTATION_H_
 
-#include "engine/engine.h"
+#include "../../player/Player.h"
+#include "../../../packets.h"
+#include "SurveyTool.h"
 
-class AttributeListMessage : public Message {
-	int listcount;
+class SurveyToolImplementation : public SurveyToolServant {
+protected:
+	int surveyToolType;
+	int surveyToolRange;
+	
 public:
-	AttributeListMessage(SceneObject* object) : Message() {
-		insertShort(0x03);
-		insertInt(0xF3F12F2A); // opcode
-		
-		insertLong(object->getObjectID());
-		insertInt(0); // list count
-		
-		listcount = 0;
-		
+	static const int SOLAR = 1;
+	static const int CHEMICAL = 2;
+	static const int FLORA = 3;
+	static const int GAS = 4;
+	static const int GEOTHERMAL = 5;
+	static const int MINERAL = 6;
+	static const int WATER = 7;
+	static const int WIND = 8;
+	
+public:
+	SurveyToolImplementation(uint64 object_id, uint32 tempCRC, const unicode& n, const string& tempn, Player* player);
+	SurveyToolImplementation(CreatureObject* creature, uint32 tempCRC, const unicode& n, const string& tempn);
+	
+	~SurveyToolImplementation();
+	
+	int useObject(Player* player);
+	
+	void sendSurveyEffect(Player* player);
+	void sendSampleEffect(Player* player);
+	
+	inline int getSurveyToolType() {
+		return surveyToolType;	
 	}
 	
-	AttributeListMessage(uint64 object_id) : Message() {
-		insertShort(0x03);
-		insertInt(0xF3F12F2A);
-		insertLong(object_id);
-		insertInt(0); // list count
-		listcount = 0;
+	inline int getSurveyToolRange() {
+		return surveyToolRange;
 	}
 	
-	void insertAttribute(const string& attribute, string& value) {
-		unicode Value = unicode(value);
-		insertAscii(attribute.c_str());
-		insertUnicode(Value);
+	inline void setSurveyToolRange(int range) {
+		surveyToolRange = range;
 		
-		updateListCount();
 	}
-	
-	void insertAttribute(const string& attribute, const string& value) {
-		unicode Value = unicode(value);
-		insertAscii(attribute.c_str());
-		insertUnicode(Value);
-		
-		updateListCount();
-	}
-	
-	void insertAttribute(const string& attribute, stringstream& value) {
-		unicode Value = unicode(value.str());
-		insertAscii(attribute.c_str());
-		insertUnicode(Value);
-		
-		updateListCount();
-	}
-	
-	void insertAttribute(const string& attribute, float value) {
-		stringstream t;
-		t << value;
-		unicode Value = unicode(t.str());
-		
-		insertAscii(attribute.c_str());
-		insertUnicode(Value);
-		
-		updateListCount();
-	}
-	
-	void insertAttribute(const string& attribute, int value) {
-		stringstream t;
-		t << value;
-		unicode Value = unicode(t.str());
-		
-		insertAscii(attribute.c_str());
-		insertUnicode(Value);
-		
-		updateListCount();
-	}
-	
-	void updateListCount() {
-		insertInt(18, ++listcount);
-	}
-	
-	
 };
 
-#endif /*ATTRIBUTELISTMESSAGE_H_*/
+#endif /*SURVEYTOOLIMPLEMENTATION_H_*/

@@ -63,6 +63,11 @@ public:
 		insertAscii(pTitle);
 	}
 	
+	void setUpdateTypeNine(int value) {
+		startUpdate(9);
+		insertInt(value);
+	}
+	
 	void updateCharacterBitmask(uint32 bitmask) {
 		startUpdate(5);
 		insertInt(4);

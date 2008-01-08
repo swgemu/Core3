@@ -287,7 +287,7 @@ public:
 	
 	void checkKnockDown(CreatureObject* creature, CreatureObject* targetCreature) {
 		if (knockdownStateChance != 0) {
-			if (creature->isPlayer() && (targetCreature->isKnockeddowned() || targetCreature->isProne())) {
+			if (creature->isPlayer() && (targetCreature->isKnockedDown() || targetCreature->isProne())) {
 				if (80 > System::random(100))
 					targetCreature->setPosture(CreatureObjectImplementation::UPRIGHT_POSTURE, true);
 				return;
@@ -320,7 +320,7 @@ public:
 	
 	void checkPostureDown(CreatureObject* creature, CreatureObject* targetCreature) {
 		if (postureDownStateChance != 0) {
-			if (creature->isPlayer() && (targetCreature->isKnockeddowned() || targetCreature->isProne())) {
+			if (creature->isPlayer() && (targetCreature->isKnockedDown() || targetCreature->isProne())) {
 				if (80 > System::random(100))
 					targetCreature->setPosture(CreatureObjectImplementation::UPRIGHT_POSTURE, true);
 				return;

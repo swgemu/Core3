@@ -42,84 +42,45 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef ATTRIBUTELISTMESSAGE_H_
-#define ATTRIBUTELISTMESSAGE_H_
+#ifndef SURVEY_H_
+#define SURVEY_H_
 
 #include "engine/engine.h"
 
-class AttributeListMessage : public Message {
-	int listcount;
+class Survey : public Message {
 public:
-	AttributeListMessage(SceneObject* object) : Message() {
-		insertShort(0x03);
-		insertInt(0xF3F12F2A); // opcode
+	int listSize;
+	
+	Survey() : Message() {
+		/* Struct
+		 * 02 00 // Operand
+		 * AC 79 7F 87 // Opcode
+		 * INT // Number of resources in list
+		 * {
+		 * FLOAT // X
+		 * FLOAT // Z (00 00 00 00)
+		 * FLOAT // Y
+		 * FLOAT // Percentage
+		 * }
+		 */
 		
-		insertLong(object->getObjectID());
-		insertInt(0); // list count
-		
-		listcount = 0;
-		
+		insertShort(2);
+		insertInt(0x877F79AC);
+		insertInt(0);
+		listSize = 0;
+	} 
+	
+	void add(float loc_x, float loc_y, float percentage) {
+		insertFloat(loc_x);
+		insertFloat(0);
+		insertFloat(loc_y);
+		insertFloat(percentage);
+		updateSize();
 	}
 	
-	AttributeListMessage(uint64 object_id) : Message() {
-		insertShort(0x03);
-		insertInt(0xF3F12F2A);
-		insertLong(object_id);
-		insertInt(0); // list count
-		listcount = 0;
+	void updateSize() {
+		insertInt(10,++listSize);
 	}
-	
-	void insertAttribute(const string& attribute, string& value) {
-		unicode Value = unicode(value);
-		insertAscii(attribute.c_str());
-		insertUnicode(Value);
-		
-		updateListCount();
-	}
-	
-	void insertAttribute(const string& attribute, const string& value) {
-		unicode Value = unicode(value);
-		insertAscii(attribute.c_str());
-		insertUnicode(Value);
-		
-		updateListCount();
-	}
-	
-	void insertAttribute(const string& attribute, stringstream& value) {
-		unicode Value = unicode(value.str());
-		insertAscii(attribute.c_str());
-		insertUnicode(Value);
-		
-		updateListCount();
-	}
-	
-	void insertAttribute(const string& attribute, float value) {
-		stringstream t;
-		t << value;
-		unicode Value = unicode(t.str());
-		
-		insertAscii(attribute.c_str());
-		insertUnicode(Value);
-		
-		updateListCount();
-	}
-	
-	void insertAttribute(const string& attribute, int value) {
-		stringstream t;
-		t << value;
-		unicode Value = unicode(t.str());
-		
-		insertAscii(attribute.c_str());
-		insertUnicode(Value);
-		
-		updateListCount();
-	}
-	
-	void updateListCount() {
-		insertInt(18, ++listcount);
-	}
-	
-	
-};
 
-#endif /*ATTRIBUTELISTMESSAGE_H_*/
+};
+#endif /*SURVEY_H_*/

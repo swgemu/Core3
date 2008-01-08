@@ -50,16 +50,12 @@ which carries forward this exception.
 
 #include "../../managers/player/PlayerManager.h"
 #include "../../managers/player/ProfessionManager.h"
-
 #include "../../managers/item/ItemManager.h"
-
 #include "../../managers/combat/CombatManager.h"
-
 #include "../../managers/guild/GuildManager.h"
 #include "../../managers/group/GroupManager.h"
-
 #include "../../managers/planet/PlanetManager.h"
-
+#include "../../managers/resource/ResourceManager.h"
 #include "../../managers/loot/LootManager.h"
 
 #include "../../../chat/ChatManager.h"
@@ -83,6 +79,8 @@ which carries forward this exception.
 #include "events/CommandQueueActionEvent.h"
 #include "events/ChangeFactionEvent.h"
 #include "events/CenterOfBeingEvent.h"
+#include "events/SurveyEvent.h"
+#include "events/SampleEvent.h"
 
 #include "../creature/events/DizzyFallDownEvent.h"
 
@@ -180,6 +178,16 @@ void PlayerImplementation::init() {
 	acceptedTrade = false;
 	verifiedTrade = false;
 
+	surveyEvent = NULL;
+	sampleEvent = NULL;
+	firstSampleEvent = NULL;
+	surveyWaypoint = NULL;
+	surveyTool = NULL;
+	cancelSample = false;
+	surveyErrorMessage = false;
+	sampleErrorMessage = false;
+	
+	
 	setLogging(false);
 	setGlobalLogging(true);
 }
@@ -311,6 +319,13 @@ void PlayerImplementation::unload() {
 
 	clearCombatState(); // remove the defenders
 	
+	if (firstSampleEvent != NULL) {
+		server->removeEvent(firstSampleEvent);
+	}
+	if (sampleEvent != NULL) {
+		server->removeEvent(sampleEvent);
+	}
+	
 	// remove from group
 	if (group != NULL && zone != NULL) {
 		GroupManager* groupManager = server->getGroupManager();
@@ -391,7 +406,9 @@ void PlayerImplementation::logout(bool doLock) {
 void PlayerImplementation::userLogout(int msgCounter) {
 	if (msgCounter < 0 || msgCounter > 3)
 		msgCounter = 3;
-		
+	if (!isSitting()) {
+		changePosture(CreatureObjectImplementation::SITTING_POSTURE);
+	}
 	if (!isInCombat() && isSitting()) {
 		logoutEvent = new PlayerLogoutEvent(_this, msgCounter);
 		
@@ -1153,6 +1170,19 @@ void PlayerImplementation::changePosture(int post) {
 		server->removeEvent(logoutEvent);
 		
 		logoutEvent = NULL;
+	}
+
+	if (!getCanSample() && !getCancelSample()) {
+		sendSystemMessage("You stop taking resource samples.");
+		if (firstSampleEvent != NULL) {
+			server->removeEvent(firstSampleEvent);
+		}
+		uint64 time = -(sampleEvent->getTimeStamp().miliDifference());
+		server->removeEvent(sampleEvent);
+		unicode u_str = unicode("");
+		sampleEvent = new SampleEvent(_this, u_str, true);
+		server->addEvent(sampleEvent, time);
+		setCancelSample(true);
 	}
 	
 	if (isMounted())
@@ -1943,8 +1973,46 @@ void PlayerImplementation::surrenderSkillBox(const string& name) {
 
 void PlayerImplementation::newChangeFactionEvent(uint32 faction) {
 	changeFactionEvent = new ChangeFactionEvent(this, faction);
-
 	server->addEvent(changeFactionEvent);
+}
+
+void PlayerImplementation::setSurveyEvent(unicode& resource_name) {
+	surveyEvent = new SurveyEvent(_this, resource_name);
+	server->addEvent(surveyEvent, 5000);
+}
+
+void PlayerImplementation::setSampleEvent(unicode& resource_name, bool firstTime) {
+	if (firstTime) {
+		firstSampleEvent = new SampleEvent(_this, resource_name);
+		server->addEvent(firstSampleEvent, 2000);
+		
+		sampleEvent = new SampleEvent(_this, resource_name, false, true);
+		server->addEvent(sampleEvent, 14000);
+	} else {
+		firstSampleEvent = NULL;
+		
+		if (changeActionBar(-200, false) ) {
+			activateRecovery();
+			
+			sampleEvent = new SampleEvent(_this, resource_name);
+			getZone()->getZoneServer()->getResourceManager()->sendSampleMessage(_this, resource_name);
+			server->addEvent(sampleEvent, 12000);
+		} else {
+			sendSystemMessage("You do not have enough action to do that.");
+			
+			sampleEvent = new SampleEvent(_this, resource_name);
+			server->addEvent(sampleEvent, 12000);
+		}
+	}
+}
+
+void PlayerImplementation::sendSampleTimeRemaining() {
+	// Precondition: sampleEvent != NULL
+	uint64 time = -(sampleEvent->getTimeStamp().miliDifference()) / 1000;
+	
+	stringstream ss;
+	ss << "You will be able to sample again in " << ++time << " seconds.";
+	sendSystemMessage(ss.str());
 }
 
 void PlayerImplementation::launchFirework() {

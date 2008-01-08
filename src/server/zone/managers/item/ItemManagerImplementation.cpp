@@ -221,6 +221,26 @@ void ItemManagerImplementation::createPlayerObject(Player* player, ResultSet* re
 		break;
 	case TangibleObjectImplementation::INSTRUMENT:
 		break;
+	case TangibleObjectImplementation::SURVEYTOOL:
+		item = new SurveyToolImplementation(objectid, objectcrc, objectname, objecttemp, player);
+		break;
+	case TangibleObjectImplementation::RESOURCE:
+		item = new ResourceContainerImplementation(objectid, objectcrc, objectname, objecttemp, player);
+		ResourceContainerImplementation* resourceItem = (ResourceContainerImplementation*) item;
+		resourceItem->setResourceID(result->getInt(67));
+		resourceItem->setContents(result->getInt(68));
+		resourceItem->setDecayResistance(result->getInt(69));
+		resourceItem->setQuality(result->getInt(70));
+		resourceItem->setFlavor(result->getInt(71));
+		resourceItem->setPotentialEnergy(result->getInt(72));
+		resourceItem->setMalleability(result->getInt(73));
+		resourceItem->setToughness(result->getInt(74));
+		resourceItem->setShockResistance(result->getInt(75));
+		resourceItem->setColdResistance(result->getInt(76));
+		resourceItem->setHeatResistance(result->getInt(77));
+		resourceItem->setConductivity(result->getInt(78));
+		resourceItem->setEntangleResistance(result->getInt(79));
+		break;
 	default:
 		item = new TangibleObjectImplementation(objectid, objectname, objecttemp, objectcrc, equipped);
 		break;
@@ -301,7 +321,31 @@ void ItemManagerImplementation::loadDefaultPlayerItems(Player* player) {
 	weaoImpl = new TwoHandedMeleeWeaponImplementation(player, "object/weapon/melee/2h_sword/shared_2h_sword_maul.iff", unicode("Teh Pwn Battle Hammer"), "2h_sword_battleaxe", false);
 	player->addInventoryItem(weaoImpl->deploy());
 	
+	// Survey tools
+	SurveyToolImplementation* minSurvImpl = new SurveyToolImplementation(player, 0xAA9AB32C, unicode("Mineral Survey Tool"), "survey_tool_mineral");
+	player->addInventoryItem(minSurvImpl->deploy());
+	
+	SurveyToolImplementation* solSurvImpl = new SurveyToolImplementation(player, 0x8B95C48D, unicode("Solar Survey Tool"), "survey_tool_solar");
+	player->addInventoryItem(solSurvImpl->deploy());
+		
+	SurveyToolImplementation* chemSurvImpl = new SurveyToolImplementation(player, 0x85A7C02A, unicode("Chemical Survey Tool"), "survey_tool_chemical");
+	player->addInventoryItem(chemSurvImpl->deploy());
+			
+	SurveyToolImplementation* floSurvImpl = new SurveyToolImplementation(player, 0x4F38AD50, unicode("Flora Survey Tool"), "survey_tool_flora");
+	player->addInventoryItem(floSurvImpl->deploy());
+	
+	SurveyToolImplementation* gasSurvImpl = new SurveyToolImplementation(player, 0x3F1F6443, unicode("Gas Survey Tool"), "survey_tool_gas");
+	player->addInventoryItem(gasSurvImpl->deploy());
+	
+	//SurveyToolImplementation* geoSurvImpl = new SurveyToolImplementation(player, 0xAA9AB32C, unicode("Geothermal Survey Tool"), "survey_tool_geothermal");
+	//player->addInventoryItem(geoSurvImpl->deploy());
 
+	SurveyToolImplementation* watSurvImpl = new SurveyToolImplementation(player, 0x81AE2438, unicode("Water Survey Tool"), "survey_tool_water");
+	player->addInventoryItem(watSurvImpl->deploy());
+	
+	SurveyToolImplementation* windSurvImpl = new SurveyToolImplementation(player, 0x21C39BD0, unicode("Wind Survey Tool"), "survey_tool_wind");
+	player->addInventoryItem(windSurvImpl->deploy());
+	
 	//Slitherhorn
 	InstrumentImplementation* instruImpl = new InstrumentImplementation(player, 0xD2A2E607, unicode("The Pwn Slitherhorn"), "obj_slitherhorn", InstrumentImplementation::SLITHERHORN);
 	player->addInventoryItem(instruImpl->deploy());
@@ -412,7 +456,9 @@ void ItemManagerImplementation::unloadPlayerItems(Player* player) {
 				createPlayerWeapon(player, (Weapon*) item);
 			else if (item->isArmor())
 				createPlayerArmor(player, (Armor*) item);
-			else 
+			else if (item->isResource())
+				createPlayerResource(player, (ResourceContainer*)item);
+			else
 				createPlayerItem(player, item);
 		} else if (item->isUpdated()) {
 			savePlayerItem(player, item);
@@ -458,6 +504,8 @@ void ItemManagerImplementation::savePlayerItem(Player* player, TangibleObject* i
 			query << ", dot0_uses = " << ((Weapon*) item)->getDot0Uses();
 			query << ", dot1_uses = " << ((Weapon*) item)->getDot1Uses();
 			query << ", dot2_uses = " << ((Weapon*) item)->getDot2Uses() << " ";
+		} else if (item->isResource()) {
+			query << ", contents = " << ((ResourceContainer*)item)->getContents() << " ";
 		}
 
 		query << "where item_id = " << item->getObjectID();
@@ -517,6 +565,27 @@ void ItemManagerImplementation::createPlayerArmor(Player* player, Armor* item) {
 		
 		ServerDatabase::instance()->executeStatement(query);
 		
+		item->setPersistent(true);
+	} catch (DatabaseException& e) {
+		cout << e.getMessage() << "\n";
+	}
+}
+
+void ItemManagerImplementation::createPlayerResource(Player* player, ResourceContainer* item) {
+	try {
+		stringstream query;
+		query << "INSERT INTO `character_items` "
+			  << "(`item_id`,`character_id`,`name`,`template_crc`,`template_type`,`template_name`,"
+			  << "`resource_id`,`contents`,`res_decay_resist`,`res_quality`,`res_flavor`,`res_potential_energy`,`res_malleability`,"
+			  << "`res_toughness`,`res_shock_resistance`,`res_cold_resist`,`res_heat_resist`,`res_conductivity`,`entangle_resistance`)"
+			  << " VALUES(" << item->getObjectID() << "," << player->getCharacterID() 
+			  << ",'" << item->getName().c_str() << "'," << item->getObjectCRC() << "," << item->getObjectSubType() << ",'" << item->getTemplateName()
+			  << "'," << item->getResourceID() << "," << item->getContents() << "," << item->getDecayResistance() << "," << item->getQuality()
+			  << "," << item->getFlavor() << "," << item->getPotentialEnergy() << "," << item->getMalleability() << "," << item->getToughness()
+			  << "," << item->getShockResistance() << "," << item->getColdResistance() << "," << item->getHeatResistance()
+			  << "," << item->getConductivity() << "," << item->getEntangleResistance() << ")";
+		ServerDatabase::instance()->executeStatement(query);
+
 		item->setPersistent(true);
 	} catch (DatabaseException& e) {
 		cout << e.getMessage() << "\n";

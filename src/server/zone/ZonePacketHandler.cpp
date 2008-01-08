@@ -775,6 +775,17 @@ void ZonePacketHandler::handleSuiEventNotification(Message* pack) {
 		if (cancel != 1)
 			player->startDancing(value.c_str());
 		break;
+	case 0xD44B7259:
+		int range = (atoi(value.c_str().c_str()) * 64) + 64;
+		
+		SurveyTool* surveyTool =  player->getSurveyTool();
+		
+		if (surveyTool != NULL)
+			surveyTool->setSurveyToolRange(range);
+		else
+			player->sendSystemMessage("Error, invalid tool.");
+		
+		break;
 	case 0xBEEFAAAA:	// slice weapon
 		if (cancel != 1) {
 			Inventory* inventory = player->getInventory(); 
@@ -964,4 +975,5 @@ void ZonePacketHandler::handleBazaarScreens(Message* pack) {
    	BazaarManager* bazaarManager = server->getBazaarManager();
    	bazaarManager->getBazaarData(player, bazaarId, screen, extent, category, counter);
 }
+
 

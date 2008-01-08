@@ -59,6 +59,7 @@ class TangibleObject;
 
 class Weapon;
 class Armor;
+class ResourceContainer;
 
 class ItemManagerImplementation : public ItemManagerServant {
 	ZoneServer* server;
@@ -84,7 +85,7 @@ public:
 
 	void createPlayerWeapon(Player* player, Weapon* item);
 	void createPlayerArmor(Player* player, Armor* item);
-
+	void createPlayerResource(Player*, ResourceContainer* item);
 	void deletePlayerItem(Player* player, TangibleObject* item);
 	
 	void savePlayerItem(Player* player, TangibleObject* item);
@@ -102,4 +103,5 @@ public:
 };
 
 #endif /*ITEMMANAGERIMPLEMENTATION_H_*/
+
 

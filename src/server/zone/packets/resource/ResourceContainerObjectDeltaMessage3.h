@@ -42,84 +42,37 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef ATTRIBUTELISTMESSAGE_H_
-#define ATTRIBUTELISTMESSAGE_H_
+#ifndef RESOURCECONTAINEROBJECTDELTAMESSAGE3_H_
+#define RESOURCECONTAINEROBJECTDELTAMESSAGE3_H_
 
-#include "engine/engine.h"
+#include "../../objects/tangible/resource/ResourceContainer.h"
+#include "../DeltaMessage.h"
 
-class AttributeListMessage : public Message {
-	int listcount;
+class ResourceContainerObjectDeltaMessage3 : public DeltaMessage {
 public:
-	AttributeListMessage(SceneObject* object) : Message() {
-		insertShort(0x03);
-		insertInt(0xF3F12F2A); // opcode
-		
-		insertLong(object->getObjectID());
-		insertInt(0); // list count
-		
-		listcount = 0;
-		
+	ResourceContainerObjectDeltaMessage3(ResourceContainer* rcno)
+			: DeltaMessage(rcno->getObjectID(), 0x52434E4F, 3) {
+
 	}
-	
-	AttributeListMessage(uint64 object_id) : Message() {
-		insertShort(0x03);
-		insertInt(0xF3F12F2A);
-		insertLong(object_id);
-		insertInt(0); // list count
-		listcount = 0;
-	}
-	
-	void insertAttribute(const string& attribute, string& value) {
-		unicode Value = unicode(value);
-		insertAscii(attribute.c_str());
-		insertUnicode(Value);
+	/*
+	 * Need More Research.
+	 * 
+	 * void setContainerType(string& file, string& ctype) {
+	 * 	startUpdate(0x01);
+	 * 	insertAscii(file);
+	 * 	insertInt(0);
+	 * 	insertAscii(ctype);
+	 * }
+	 * 
+	 * void setResourceID(uint64 rid) {
+	 * 	addLongUpdate(0x0E, rid);
+	 * }
+	 */
 		
-		updateListCount();
+	void setQuantity(int quantity) {
+		addIntUpdate(0x0B, quantity);
 	}
-	
-	void insertAttribute(const string& attribute, const string& value) {
-		unicode Value = unicode(value);
-		insertAscii(attribute.c_str());
-		insertUnicode(Value);
-		
-		updateListCount();
-	}
-	
-	void insertAttribute(const string& attribute, stringstream& value) {
-		unicode Value = unicode(value.str());
-		insertAscii(attribute.c_str());
-		insertUnicode(Value);
-		
-		updateListCount();
-	}
-	
-	void insertAttribute(const string& attribute, float value) {
-		stringstream t;
-		t << value;
-		unicode Value = unicode(t.str());
-		
-		insertAscii(attribute.c_str());
-		insertUnicode(Value);
-		
-		updateListCount();
-	}
-	
-	void insertAttribute(const string& attribute, int value) {
-		stringstream t;
-		t << value;
-		unicode Value = unicode(t.str());
-		
-		insertAscii(attribute.c_str());
-		insertUnicode(Value);
-		
-		updateListCount();
-	}
-	
-	void updateListCount() {
-		insertInt(18, ++listcount);
-	}
-	
 	
 };
 
-#endif /*ATTRIBUTELISTMESSAGE_H_*/
+#endif /*RESOURCECONTAINEROBJECTDELTAMESSAGE3_H_*/

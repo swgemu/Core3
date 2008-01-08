@@ -53,12 +53,14 @@ class ListBox : public SuiCreatePageMessage {
 		
 	string boxTitle;
 	string boxText;
+	bool enableCancelButton;
 public:
-	ListBox(uint32 selectionBoxId, const string& title, const string& bodyText) :
+	ListBox(uint32 selectionBoxId, const string& title, const string& bodyText, bool cancelButton = true) :
 		SuiCreatePageMessage(selectionBoxId) {
 
 		boxTitle = title;
 		boxText = bodyText;
+		enableCancelButton = cancelButton;
 	}
 	
 	void addItem(const string& itemText) {
@@ -67,7 +69,11 @@ public:
 
 	void generateMessage() {
 		insertAscii("Script.listBox");
-		insertInt(7 + (2 * menuItems.size()));
+		if (enableCancelButton) {
+			insertInt(7 + (2 * menuItems.size()));
+		} else {
+			insertInt(8 + (2 * menuItems.size()));
+		}
 
 		for (int i = 0; i < 2; i++) {  // If these are not added twice it crashes the client
 			insertByte(5);
@@ -86,7 +92,12 @@ public:
 		
 		insertOption(3, boxTitle, "bg.caption.lblTitle", "Text");
 		insertOption(3, boxText, "Prompt.lblPrompt", "Text");
-		insertOption(3, "@cancel", "btnCancel", "Text");
+		if (enableCancelButton) {
+			insertOption(3, "@cancel", "btnCancel", "Text");
+		} else {
+			insertOption(3, "False", "btnCancel", "Enabled");
+			insertOption(3, "False", "btnCancel", "Visible");
+		}
 		insertOption(3, "@ok", "btnOk", "Text");
 
 		insertByte(1);

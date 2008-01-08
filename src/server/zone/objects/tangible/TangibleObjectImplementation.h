@@ -100,6 +100,8 @@ public:
 	static const int HOLOCRON = 11;
 	static const int FIREWORK = 12;
 	static const int SHIPCOMPONENT = 13;
+	static const int SURVEYTOOL = 14;
+	static const int RESOURCE = 15;
 
 public:
 	TangibleObjectImplementation(uint64 oid, int tp = 0);
@@ -202,11 +204,19 @@ public:
 	inline bool isWeapon() {
 		return (objectSubType == WEAPON);
 	}
-
+	
 	inline bool isArmor() {
 		return (objectSubType == ARMOR);
 	}
-
+	
+	inline bool isResource() {
+		return objectSubType == RESOURCE;
+	}
+	
+	inline bool isSurveyTool() {
+		return objectSubType == SURVEYTOOL;
+	}
+	
 	inline bool isTicket() {
 		return objectSubType == TICKET;
 	}
@@ -218,19 +228,18 @@ public:
 	inline bool isFirework() {
 		return objectSubType == FIREWORK;
 	}
-	
+
 	inline int getConditionDamage() {
 		return conditionDamage;
 	}
-
+	
 	inline int getMaxCondition() {
 		return maxCondition;
 	}
-
+	
 	inline int getCondition() {
 		return maxCondition - conditionDamage;
 	}
-	
 };
 
 #endif /*TANGIBLEOBJECTIMPLEMENTATION_H_*/

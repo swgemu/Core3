@@ -2513,7 +2513,7 @@ void CreatureObjectImplementation::mountCreature(MountCreature* mnt, bool lockMo
 	if (mnt != mount || isMounted() || mnt == NULL)
 		return;
 	
-	if (mount->isDisabled() || !isInRange(mount, 5))
+	if (mount->isDisabled() || !isInRange(mount, 5) || _this->isKnockedDown())
 		return;
 	
 	if (!mountCooldown.isPast())

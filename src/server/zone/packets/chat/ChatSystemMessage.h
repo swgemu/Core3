@@ -115,6 +115,53 @@ public:
 
 	}
 	
+	ChatSystemMessage(const string& file, const string& str, unicode& u_str, int quantity, bool flipByte) : Message() {
+		insertShort(0x04);
+		insertInt(0x6D2A6413);
+		
+		insertByte(0);
+		insertInt(0);
+		
+		int size = file.size() + str.size() + (2 * u_str.size()) + 0x56;
+		bool odd = (size & 1);
+		
+		if (odd)
+			insertInt((size + 1) / 2);
+		else 
+			insertInt(size / 2);
+		
+		if (!flipByte)
+			insertShort(0);
+		else 
+			insertShort(1);
+		
+		insertByte(1);
+		insertInt(0xFFFFFFFF);
+		
+		insertAscii(file.c_str());
+		insertInt(0);
+
+		insertAscii(str.c_str());
+		insertInt(0);
+		
+		insertLong(0);
+		insertLong(0);
+		insertLong(0);
+		insertLong(0);
+		insertLong(0);
+		insertLong(0);
+		insertInt(0);
+		insertUnicode(u_str);
+		insertInt(quantity);
+
+		insertInt(0);
+		insertInt(0); // ???
+		insertShort(0); // ???
+		insertByte(0);
+
+		if (odd)
+			insertByte(0);
+	}
 };
 
 #endif /*CHATSYSTEMMESSAGE_H_*/

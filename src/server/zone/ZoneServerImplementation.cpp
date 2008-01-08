@@ -120,7 +120,7 @@ void ZoneServerImplementation::startManagers() {
 	guildManager->load();
 	playerManager->setGuildManager(guildManager);
 
-	ResourceManagerImplementation* resImpl = new ResourceManagerImplementation(_this);
+	ResourceManagerImplementation* resImpl = new ResourceManagerImplementation(_this, processor);
 	resourceManager = (ResourceManager*) resImpl->deploy("ResourceManager");
 
 	BazaarManagerImplementation* bazImpl = new BazaarManagerImplementation(_this);

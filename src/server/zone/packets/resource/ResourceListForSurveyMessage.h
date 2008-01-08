@@ -42,84 +42,48 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef ATTRIBUTELISTMESSAGE_H_
-#define ATTRIBUTELISTMESSAGE_H_
+#ifndef RESOURCELISTFORSURVEY_H_
+#define RESOURCELISTFORSURVEY_H_
 
 #include "engine/engine.h"
 
-class AttributeListMessage : public Message {
-	int listcount;
+class ResourceListForSurvey : public Message {
 public:
-	AttributeListMessage(SceneObject* object) : Message() {
-		insertShort(0x03);
-		insertInt(0xF3F12F2A); // opcode
+	int listSize;
+	
+	ResourceListForSurvey() : Message() {
+		/* Struct
+		 * 04 00 // Operand
+		 * D5 B1 64 8A // Opcode
+		 * INT // Number of resources in list
+		 * {
+		 * SHORT // Size of string.
+		 * Variable // A_STRING
+		 * LONG // Resource ObjectID
+		 * }
+		 * SHORT // Size of string
+		 * Variable // A_STRING of resource type (ex. "flora_resources")
+		 * LONG // PlayerID
+		 */
 		
-		insertLong(object->getObjectID());
-		insertInt(0); // list count
-		
-		listcount = 0;
-		
+		insertShort(4);
+		insertInt(0x8A64B1D5);
+		insertInt(0);
+		listSize = 0;
+	} 
+	
+	void addResource(string& resourceName, string& resourceType, long resourceID) {
+		insertAscii(resourceName);
+		insertLong(resourceID);
+		insertAscii(resourceType);
+		++listSize;
 	}
 	
-	AttributeListMessage(uint64 object_id) : Message() {
-		insertShort(0x03);
-		insertInt(0xF3F12F2A);
-		insertLong(object_id);
-		insertInt(0); // list count
-		listcount = 0;
+	void finish(string& resourceType, long playerID) {
+		insertAscii(resourceType);
+		insertLong(playerID);
+		insertInt(10,listSize);
 	}
-	
-	void insertAttribute(const string& attribute, string& value) {
-		unicode Value = unicode(value);
-		insertAscii(attribute.c_str());
-		insertUnicode(Value);
-		
-		updateListCount();
-	}
-	
-	void insertAttribute(const string& attribute, const string& value) {
-		unicode Value = unicode(value);
-		insertAscii(attribute.c_str());
-		insertUnicode(Value);
-		
-		updateListCount();
-	}
-	
-	void insertAttribute(const string& attribute, stringstream& value) {
-		unicode Value = unicode(value.str());
-		insertAscii(attribute.c_str());
-		insertUnicode(Value);
-		
-		updateListCount();
-	}
-	
-	void insertAttribute(const string& attribute, float value) {
-		stringstream t;
-		t << value;
-		unicode Value = unicode(t.str());
-		
-		insertAscii(attribute.c_str());
-		insertUnicode(Value);
-		
-		updateListCount();
-	}
-	
-	void insertAttribute(const string& attribute, int value) {
-		stringstream t;
-		t << value;
-		unicode Value = unicode(t.str());
-		
-		insertAscii(attribute.c_str());
-		insertUnicode(Value);
-		
-		updateListCount();
-	}
-	
-	void updateListCount() {
-		insertInt(18, ++listcount);
-	}
-	
-	
-};
 
-#endif /*ATTRIBUTELISTMESSAGE_H_*/
+};
+#endif /*RESOURCELISTFORSURVEY_H_*/

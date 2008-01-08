@@ -76,7 +76,11 @@ interface TangibleObject implements SceneObject {
 	boolean isWeapon();
 	boolean isArmor();
 
+	boolean isResource();
+
 	boolean isTicket();
+
+	boolean isSurveyTool();
 
 	// setters
 	void setPersistent(boolean pers);

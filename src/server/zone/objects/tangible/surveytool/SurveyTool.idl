@@ -42,18 +42,25 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef RESOURCECONTAINERIMPLEMENTATION_H_
-#define RESOURCECONTAINERIMPLEMENTATION_H_
+import "../TangibleObject";
+import "../../../packets";
+import "../../player/Player";
+import "../../creature/CreatureObject";
 
-#include "ResourceContainer.h"
+include "engine/service/Message";
 
-class ResourceContainerImplementation : public ResourceContainerServant {
+interface SurveyTool implements TangibleObject {
+	SurveyTool(CreatureObject creature, const unicode n, const string tempn, int tempCRC, int tp);
+	SurveyTool(unsigned long oid, const unicode n, const string tempn, int tempCRC, int tp);
 	
+	int useObject(Player player);
 	
-public:
+	int getSurveyToolType();
 	
-	ResourceContainerImplementation(uint64 oid) : ResourceContainerServant(oid) {
-	}
-};
-
-#endif /*RESOURCECONTAINERIMPLEMENTATION_H_*/
+	int getSurveyToolRange();
+	
+	void setSurveyToolRange(int range);
+	
+	void sendSurveyEffect(Player player);
+	void sendSampleEffect(Player player);
+}

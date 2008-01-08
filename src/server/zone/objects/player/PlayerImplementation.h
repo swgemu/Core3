@@ -149,11 +149,27 @@ class PlayerImplementation : public PlayerServant {
 	float lastTestPositionX;
 	float lastTestPositionY;
 	
+	// trading
 	uint64 tradeRequestedPlayer;
 	Vector<TangibleObject*> tradeItems;
 	uint32 moneyToTrade;
 	bool acceptedTrade;
 	bool verifiedTrade;
+	
+	// samplig, surveying
+	Event* surveyEvent;
+	
+	Event* sampleEvent;
+	Event* firstSampleEvent;
+	
+	WaypointObject* surveyWaypoint;
+	
+	SurveyTool* surveyTool;
+	
+	bool cancelSample;
+	
+	bool surveyErrorMessage;
+	bool sampleErrorMessage;
 	
 public:
 	static const int ONLINE = 1;
@@ -716,6 +732,76 @@ public:
 	
 	inline int getAdminLevel() {
 		return adminLevel;	
+	}
+	
+	// Survey and Sample Functions
+	void setSurveyEvent(unicode& resource_name);
+	void setSampleEvent(unicode& resource_name, bool firstTime = false);
+	void stopSample();
+	void sendSampleTimeRemaining();
+	
+	inline void setSurveyTool(SurveyTool* sTool) {
+		surveyTool = sTool;
+	}
+	
+	inline void setSurveyWaypoint(WaypointObject* wpo) {
+		surveyWaypoint = wpo;
+	}
+	
+	inline void setCanSurvey() {
+		surveyEvent = NULL;
+	}
+	
+	inline void setCanSample() {
+		sampleEvent = NULL;
+	}
+	
+	inline void setSurveyErrorMessage() {
+		surveyErrorMessage = true;
+	}
+	
+	inline void setSampleErrorMessage() {
+		sampleErrorMessage = true;
+	}
+	
+	inline void setCancelSample(bool val) {
+		cancelSample = val;
+	}
+	
+	inline SurveyTool* getSurveyTool() {
+		return surveyTool;
+	}
+	
+	inline WaypointObject* getSurveyWaypoint() {
+		return surveyWaypoint;
+	}
+	
+	inline bool getCanSurvey() {
+		return surveyEvent == NULL;
+	}
+	
+	inline bool getCanSample() {
+		return sampleEvent == NULL;
+	}
+
+	inline bool getSurveyErrorMessage() {
+		if (surveyErrorMessage) {
+			surveyErrorMessage = false;
+			return true;
+		}
+		return false;
+	}
+	
+	inline bool getSampleErrorMessage() {
+		if (sampleErrorMessage) {
+			sampleErrorMessage = false;
+			return true;
+		}
+		return false;
+	}
+	
+	inline bool getCancelSample() {
+		return cancelSample;
 	}
 	
 	friend class PlayerManager;

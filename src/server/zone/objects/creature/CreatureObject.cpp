@@ -241,7 +241,7 @@ bool CreatureObject::isDead() {
 		return ((CreatureObjectImplementation*) _impl)->isDead();
 }
 
-bool CreatureObject::isKnockeddowned() {
+bool CreatureObject::isKnockedDown() {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
@@ -250,7 +250,7 @@ bool CreatureObject::isKnockeddowned() {
 
 		return invocation.executeWithBooleanReturn();
 	} else
-		return ((CreatureObjectImplementation*) _impl)->isKnockeddowned();
+		return ((CreatureObjectImplementation*) _impl)->isKnockedDown();
 }
 
 bool CreatureObject::isKneeled() {
@@ -3876,7 +3876,7 @@ Packet* CreatureObjectAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* 
 		resp->insertBoolean(isDead());
 		break;
 	case 17:
-		resp->insertBoolean(isKnockeddowned());
+		resp->insertBoolean(isKnockedDown());
 		break;
 	case 18:
 		resp->insertBoolean(isKneeled());
@@ -4775,8 +4775,8 @@ bool CreatureObjectAdapter::isDead() {
 	return ((CreatureObjectImplementation*) impl)->isDead();
 }
 
-bool CreatureObjectAdapter::isKnockeddowned() {
-	return ((CreatureObjectImplementation*) impl)->isKnockeddowned();
+bool CreatureObjectAdapter::isKnockedDown() {
+	return ((CreatureObjectImplementation*) impl)->isKnockedDown();
 }
 
 bool CreatureObjectAdapter::isKneeled() {

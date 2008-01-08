@@ -42,10 +42,19 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
+import "../../objects/player/Player";
+import "../../objects/tangible/resource/ResourceContainerImplementation";
+
 interface ResourceManager {
-	void shiftOutResources();
+	void theShift();
+	void clearResources();
+
+	float getDensity(int planet, unicode resname, float inx, float iny);
+	void sendSurveyMessage(Player player, unicode resource_name);
+	void sendSampleMessage(Player player, unicode resource_name);
+	void setResourceData(ResourceContainerImplementation resContainer);
 	
-	void shiftInResources();
-	
-	void makeResourceName(string resname, boolean isOrganic);
+	void sendResourceStats(Player player, int SurveyToolType);
+	boolean sendResourceList(Player player, int SurveyToolType);
+	boolean checkResource(Player player, unicode resource_name, int SurveyToolType);
 }

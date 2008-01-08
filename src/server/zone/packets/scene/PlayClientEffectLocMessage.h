@@ -42,84 +42,68 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef ATTRIBUTELISTMESSAGE_H_
-#define ATTRIBUTELISTMESSAGE_H_
+#ifndef PLAYCLIENTEFFECTLOC_H_
+#define PLAYCLIENTEFFECTLOC_H_
 
 #include "engine/engine.h"
 
-class AttributeListMessage : public Message {
-	int listcount;
+class PlayClientEffectLoc : public Message {
 public:
-	AttributeListMessage(SceneObject* object) : Message() {
-		insertShort(0x03);
-		insertInt(0xF3F12F2A); // opcode
-		
-		insertLong(object->getObjectID());
-		insertInt(0); // list count
-		
-		listcount = 0;
-		
-	}
+	int listSize;
 	
-	AttributeListMessage(uint64 object_id) : Message() {
-		insertShort(0x03);
-		insertInt(0xF3F12F2A);
-		insertLong(object_id);
-		insertInt(0); // list count
-		listcount = 0;
-	}
-	
-	void insertAttribute(const string& attribute, string& value) {
-		unicode Value = unicode(value);
-		insertAscii(attribute.c_str());
-		insertUnicode(Value);
-		
-		updateListCount();
-	}
-	
-	void insertAttribute(const string& attribute, const string& value) {
-		unicode Value = unicode(value);
-		insertAscii(attribute.c_str());
-		insertUnicode(Value);
-		
-		updateListCount();
-	}
-	
-	void insertAttribute(const string& attribute, stringstream& value) {
-		unicode Value = unicode(value.str());
-		insertAscii(attribute.c_str());
-		insertUnicode(Value);
-		
-		updateListCount();
-	}
-	
-	void insertAttribute(const string& attribute, float value) {
-		stringstream t;
-		t << value;
-		unicode Value = unicode(t.str());
-		
-		insertAscii(attribute.c_str());
-		insertUnicode(Value);
-		
-		updateListCount();
-	}
-	
-	void insertAttribute(const string& attribute, int value) {
-		stringstream t;
-		t << value;
-		unicode Value = unicode(t.str());
-		
-		insertAscii(attribute.c_str());
-		insertUnicode(Value);
-		
-		updateListCount();
-	}
-	
-	void updateListCount() {
-		insertInt(18, ++listcount);
-	}
-	
-	
-};
+	PlayClientEffectLoc(const string& file, int planet, float x, float z, float y) : Message() {
+		/* Struct
+		 * 09 00 // Operand
+		 * 74 9E 94 02 // Opcode
+		 * A_STRING (effect)
+		 * A_STRING (planet)
+		 * FLOAT // X
+		 * FLOAT // Z
+		 * FLOAT // Y
+		 * 00 00 00 00 00 00 00 00
+		 * 00 00 00 00
+		 */
+		insertShort(9);
+		insertInt(0x02949E74);
+		insertAscii(file);
+		switch(planet) {
+		case 0:
+			insertAscii("corellia");
+			break;
+		case 1:
+			insertAscii("dantooine");
+			break;
+		case 2:
+			insertAscii("dathomir");
+			break;
+		case 3:
+			insertAscii("endor");
+			break;
+		case 4:
+			insertAscii("lok");
+			break;
+		case 5:
+			insertAscii("naboo");
+			break;
+		case 6:
+			insertAscii("rori");
+			break;
+		case 7:
+			insertAscii("talus");
+			break;
+		case 8:
+			insertAscii("tatooine");
+			break;
+		case 9:
+			insertAscii("yavin4");
+			break;
+		}
+		insertFloat(x);
+		insertFloat(z);
+		insertFloat(y);
+		insertLong(0);
+		insertInt(0);
+	} 
 
-#endif /*ATTRIBUTELISTMESSAGE_H_*/
+};
+#endif /*PLAYCLIENTEFFECTLOC_H_*/

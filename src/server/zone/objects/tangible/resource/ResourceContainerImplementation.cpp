@@ -1,0 +1,194 @@
+/*
+Copyright (C) 2007 <SWGEmu>
+ 
+This File is part of Core3.
+ 
+This program is free software; you can redistribute 
+it and/or modify it under the terms of the GNU Lesser 
+General Public License as published by the Free Software
+Foundation; either version 2 of the License, 
+or (at your option) any later version.
+ 
+This program is distributed in the hope that it will be useful, 
+but WITHOUT ANY WARRANTY; without even the implied warranty of 
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+See the GNU Lesser General Public License for
+more details.
+ 
+You should have received a copy of the GNU Lesser General 
+Public License along with this program; if not, write to
+the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+ 
+Linking Engine3 statically or dynamically with other modules 
+is making a combined work based on Engine3. 
+Thus, the terms and conditions of the GNU Lesser General Public License 
+cover the whole combination.
+ 
+In addition, as a special exception, the copyright holders of Engine3 
+give you permission to combine Engine3 program with free software 
+programs or libraries that are released under the GNU LGPL and with 
+code included in the standard release of Core3 under the GNU LGPL 
+license (or modified versions of such code, with unchanged license). 
+You may copy and distribute such a system following the terms of the 
+GNU LGPL for Engine3 and the licenses of the other code concerned, 
+provided that you include the source code of that other code when 
+and as the GNU LGPL requires distribution of source code.
+ 
+Note that people who make modified versions of Engine3 are not obligated 
+to grant this special exception for their modified versions; 
+it is their choice whether to do so. The GNU Lesser General Public License 
+gives permission to release a modified version without this exception; 
+this exception also makes it possible to release a modified version 
+which carries forward this exception.
+*/
+
+#include "ResourceContainerImplementation.h"
+#include "ResourceContainer.h"
+#include "../../../packets.h"
+#include "../../../objects.h"
+#include "../../../ZoneClient.h"
+
+ResourceContainerImplementation::ResourceContainerImplementation(uint64 oid) 
+		: ResourceContainerServant(oid, RESOURCE) {
+	objectCRC = 741847407;
+	
+	templateTypeName = "obj_n";
+	name = unicode("");
+	templateName = "";
+	
+	init();
+}
+
+ResourceContainerImplementation::ResourceContainerImplementation(uint64 oid, uint32 tempCRC, const unicode& n, 
+		const string& tempn, Player* player) : ResourceContainerServant(oid, n, tempn, tempCRC, RESOURCE) {
+	templateTypeName = "obj_n";
+	
+	name = n;
+	templateName = tempn;
+	
+	init();
+}
+
+ResourceContainerImplementation::ResourceContainerImplementation(CreatureObject* creature, uint32 tempCRC, 
+		const unicode& n, const string& tempn) : ResourceContainerServant(creature, n, tempn, tempCRC, RESOURCE) {
+	templateTypeName = "obj_n";
+	
+	name = n;
+	templateName = tempn;
+	
+	init();
+}
+
+ResourceContainerImplementation::~ResourceContainerImplementation() {
+}
+
+void ResourceContainerImplementation::init() {
+	quantity = 0;
+
+	res_dr = 0;
+	res_oq = 0;
+	res_fl = 0;
+	res_pe = 0;
+	res_m = 0;
+	res_t = 0;
+	res_sr = 0;
+	res_cr = 0;
+	res_hr = 0;
+	res_c = 0;
+	res_er = 0;
+}
+
+void ResourceContainerImplementation::sendTo(Player* player, bool doClose) {
+	ZoneClient* client = player->getClient();
+	
+	if (client == NULL)
+		return;
+	
+	SceneObjectImplementation::create(client);
+	
+	if (container != NULL) {
+		link(client, container);
+	}
+	
+	Message* rcno3 = new ResourceContainerObjectMessage3(_this);
+	client->sendMessage(rcno3);
+	
+	Message* rcno6 = new ResourceContainerObjectMessage6(_this);
+	client->sendMessage(rcno6);
+	
+	if (doClose)
+		SceneObjectImplementation::close(client);
+	
+	sendDeltas(player);
+	
+	generateAttributes(player);
+}
+
+void ResourceContainerImplementation::sendDeltas(Player* player) {
+	ZoneClient* client = player->getClient();
+	
+	ResourceContainerObjectDeltaMessage3* rcnod3 = new ResourceContainerObjectDeltaMessage3(_this);
+	rcnod3->setQuantity(quantity);
+	rcnod3->close();
+	
+	client->sendMessage(rcnod3);
+	//Message* rcnod6 = new ResourceContainerObjectDeltaMessage6(_this);
+	//client->sendMessage(rcnod6);
+}
+
+void ResourceContainerImplementation::generateAttributes(SceneObject* obj) {
+	if (!obj->isPlayer())
+		return;
+	
+	Player* player = (Player*) obj;
+	
+	AttributeListMessage* alm = new AttributeListMessage(_this);
+	alm->insertAttribute("volume", "1");
+	alm->insertAttribute("condition", "100/100");
+	
+	stringstream ssQuantity;
+	ssQuantity << quantity << "/" << getMaxContents();
+	
+	alm->insertAttribute("resource_contents", ssQuantity.str());
+	alm->insertAttribute("resource_name", name.c_str());
+	
+	stringstream sstemplateName;
+	sstemplateName << "@resource/resource_name:" << templateName;
+	
+	alm->insertAttribute("resource_class", sstemplateName.str());
+	
+	if (res_cr > 0)
+		alm->insertAttribute("res_cold_resist", res_cr);
+	
+	if (res_c > 0)
+		alm->insertAttribute("res_conductivity", res_c);
+	
+	if (res_dr > 0)
+		alm->insertAttribute("res_decay_resist", res_dr);
+	
+	if (res_hr > 0)
+		alm->insertAttribute("res_heat_resist", res_hr);
+	
+	if (res_m > 0)
+		alm->insertAttribute("res_malleability", res_m);
+	
+	if (res_fl > 0)
+		alm->insertAttribute("res_flavor", res_fl);
+	
+	if (res_pe > 0)
+		alm->insertAttribute("res_potential_energy", res_pe);
+	
+	if (res_oq > 0)
+		alm->insertAttribute("res_quality", res_oq);
+	
+	if (res_sr > 0)
+		alm->insertAttribute("res_shock_resistance", res_sr);
+	
+	if (res_t > 0)
+		alm->insertAttribute("res_toughness", res_t);
+	
+	if (res_er > 0)
+		alm->insertAttribute("entangle_resistance", res_er);
+	
+	player->sendMessage(alm);
+}
