@@ -235,8 +235,10 @@ void ItemManagerImplementation::createPlayerObject(Player* player, ResultSet* re
 	
 	player->addInventoryItem(tano);
 	
-	if (equipped && tano->isWeapon())
+	if (equipped && tano->isWeapon()) {
 		player->setWeapon((Weapon*) tano);
+		player->setWeaponSkillMods((Weapon*) tano);
+	}
 	}
 }
 
