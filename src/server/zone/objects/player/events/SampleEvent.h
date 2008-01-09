@@ -49,13 +49,18 @@ which carries forward this exception.
 
 class SampleEvent : public Event {
 	Player* player;
+	
 	unicode resource_name;
+	
 	bool resetCancel;
 	bool firstTime;
+	
 public:
 	SampleEvent(Player* pl, unicode& res_name, bool rc = false, bool ft = false) : Event() {
 		player = pl;
+		
 		resource_name = res_name;
+		
 		resetCancel = rc;
 		firstTime = ft;
 	}
@@ -63,19 +68,21 @@ public:
 	bool activate() {
 		try {
 			player->wlock();
-			if (player->isOnline()) {
-				if (!firstTime) {
-					if(resetCancel) {
-						player->setCanSample();
-						player->setCancelSample(false);
-					} else {
-						player->setSampleEvent(resource_name);
-					}
+			
+			if (player->isOnline() && !firstTime) {
+				if (resetCancel) {
+					player->setCanSample();
+						
+					player->setCancelSample(false);
+				} else {
+					player->setSampleEvent(resource_name);
 				}
 			}
+			
 			player->unlock();
-		} catch(...) {
+		} catch (...) {
 			player->unlock();
+			
 			cout << "Unhandled SurveyEvent exception.\n";
 		}
 	}

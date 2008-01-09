@@ -1488,6 +1488,9 @@ void ObjectControllerMessage::parseResourceContainerTransfer(Player* player, Mes
     	rcof->setContents(rcofContents - canMove);
     	rcof->sendDeltas(player);
     	rcof->generateAttributes(player);
+    	
+        rcof->setUpdated(true); 
     }
     
+    rcot->setUpdated(true); 
 }

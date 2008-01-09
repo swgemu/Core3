@@ -49,23 +49,30 @@ which carries forward this exception.
 
 class SurveyEvent : public Event {
 	Player* player;
+	
 	unicode resource_name;
+	
 public:
 	SurveyEvent(Player* pl, unicode& rn) : Event() {
 		player = pl;
+		
 		resource_name = rn;
 	}
 
 	bool activate() {
 		try {
 			player->wlock();
+			
 			if (player->isOnline()) {
 				player->getZone()->getZoneServer()->getResourceManager()->sendSurveyMessage(player, resource_name);
+				
 				player->setCanSurvey();
 			}
+			
 			player->unlock();
-		} catch(...) {
+		} catch (...) {
 			player->unlock();
+			
 			cout << "Unhandled SurveyEvent exception.\n";
 		}
 	}

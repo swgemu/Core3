@@ -197,7 +197,7 @@ void CreatureImplementation::loadItems() {
 		case 0 :
 			PolearmMeleeWeaponImplementation* vibrolance1Impl = new PolearmMeleeWeaponImplementation(_this, 
 					"object/weapon/melee/polearm/shared_lance_vibrolance.iff", unicode("a Vibrolance"), "lance_vibrolance", true);
-			vibrolance1Impl->setMinDamage(150 +l evel);
+			vibrolance1Impl->setMinDamage(150 + level);
 			vibrolance1Impl->setMaxDamage(300 + level);
 			vibrolance1Impl->setAttackSpeed(1.5);
 

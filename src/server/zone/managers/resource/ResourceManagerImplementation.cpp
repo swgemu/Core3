@@ -83,6 +83,7 @@ void ResourceManagerImplementation::theShift() {
 	
 	serv->addEvent(spawnResourcesEvent, averageShiftTime);
 }
+
 void ResourceManagerImplementation::countResources() {  
 	// This method pure supports out for the above method, is purely cosmetic
 	try {
@@ -94,13 +95,15 @@ void ResourceManagerImplementation::countResources() {
 		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
 		
 		info("Minimum Pool has " + stringify(res->size()) + "/15 resources");
-
+		delete res;
+		
 		query2 << "SELECT DISTINCT resource_name FROM resource_spawns"
 			   << " WHERE pool = 'random'";
 
 		res = ServerDatabase::instance()->executeQuery(query2);
 		
 		info("Random Pool has " + stringify(res->size()) + "/24 resources");
+		delete res;
 
 		query3 << "SELECT DISTINCT resource_name FROM resource_spawns"
 			   << " WHERE pool = 'fixed'";
@@ -108,6 +111,7 @@ void ResourceManagerImplementation::countResources() {
 		res = ServerDatabase::instance()->executeQuery(query3);
 		
 		info("Fixed Pool has " + stringify(res->size()) + "/22 resources");
+		delete res;
 
 		query4 << "SELECT DISTINCT resource_name FROM resource_spawns"
 			   << " WHERE pool = 'native'";
@@ -115,12 +119,14 @@ void ResourceManagerImplementation::countResources() {
 		res = ServerDatabase::instance()->executeQuery(query4);
 		
 		info("Native Pool has " + stringify(res->size()) + "/420 resources");
+		delete res;
 		
 		info("*** Extra resources expected ***");
 	} catch(...) {
 		cout << "Error in ResourceManagerImplementation::countResources()\n";
 	}
 }
+
 void ResourceManagerImplementation::clearResources() {
 	try {
 		numFunctions++;
@@ -129,11 +135,9 @@ void ResourceManagerImplementation::clearResources() {
 		query << "TRUNCATE TABLE `resource_spawns`;";
 		query << "TRUNCATE TABLE `resource_data`;";
 		
-		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
+		ServerDatabase::instance()->executeStatement(query);
 		
 		numQueries++;
-		
-		delete res;
 	} catch (...) {
 		cout << "Error in clearResources\n";
 	}
@@ -674,25 +678,22 @@ void ResourceManagerImplementation::removeExpiredResources() {
 		stringstream query, query2;
 		query << "DELETE FROM resource_spawns WHERE despawn < " << (long)time(0);
 		
-		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
+		ServerDatabase::instance()->executeStatement(query);
 		
 		info("Deleted despawned resources");
 
 		query2 << "UPDATE resource_data rd  "
-			<< "INNER JOIN resource_spawns rs "
-			<< " ON rd.resource_name = rs.resource_name "
-			<< " SET rd.shiftedOut = " << (long)time(0) +
-			(System::random(aveduration) + (averageShiftTime * 2))
-			<< " WHERE rs.despawn <  " << (long)time(0) << " and rd.shiftedOut = 0";
+			   << "INNER JOIN resource_spawns rs "
+			   << " ON rd.resource_name = rs.resource_name "
+			   << " SET rd.shiftedOut = " << (long)time(0) + (System::random(aveduration) + (averageShiftTime * 2))
+			   << " WHERE rs.despawn <  " << (long)time(0) << " and rd.shiftedOut = 0";
 
-		res = ServerDatabase::instance()->executeQuery(query2);
+		ServerDatabase::instance()->executeStatement(query2);
 		
 		info("Updated expiring resources with spawnout time");
 
 		numQueries++;
 		numQueries++;
-
-		delete res;
 	} catch (...) {
 		cout << "Database error in removeExpiredResources\n";
 	}
@@ -744,9 +745,13 @@ int ResourceManagerImplementation::randomPoolNeeds() {
 
 	ResultSet* res = ServerDatabase::instance()->executeQuery(query);
 	
+	int size = res->size();
+
 	numQueries++;
+
+	delete res;
 	
-	return (24 - res->size());
+	return 24 - size;
 }
 
 void ResourceManagerImplementation::checkFixedPool() {
@@ -784,9 +789,13 @@ int ResourceManagerImplementation::fixedPoolIron() {
 
 	ResultSet* res = ServerDatabase::instance()->executeQuery(query);
 	
+	int size = res->size();
+	
+	delete res;
+	
 	numQueries++;
 	
-	return 14 - res->size();
+	return 14 - size;
 }
 
 void ResourceManagerImplementation::checkNativePool() {
@@ -912,11 +921,13 @@ void ResourceManagerImplementation::getFromRandomPool(Vector<string> * spawnMe,	
 
 					numQueries++;
 
-					res = ServerDatabase::instance()->executeQuery(query2);
+					ServerDatabase::instance()->executeStatement(query2);
 
 					spawnMe->remove(x);
 					x--;
 				}
+				
+				delete res;
 			} catch (...) {
 				cout << "Database error in getFromRandomPool\n";
 				break;
@@ -961,7 +972,8 @@ string ResourceManagerImplementation::getRandomResourceFromType(string restype, 
 		}
 		
 		delete res;
-		return 0;
+		
+		return "";
 	} catch (...) {
 		cout << "Database error in getRandomResourceFromType\n";
 	}
@@ -1257,11 +1269,9 @@ void ResourceManagerImplementation::insertResource(ResourceImplementation* resou
 			  << ", " << (long)time(0) << ",'" << resource->getContainer()
 			  << "'," << resource->getContainerCRC()<< ")";
 
-		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
+		ServerDatabase::instance()->executeStatement(query);
 		
 		numInsert++;
-		
-		delete res;
 	} catch (...) {
 		cout << "Insert Resource Failed " << endl;
 	}
@@ -1299,11 +1309,9 @@ void ResourceManagerImplementation::insertSpawn(ResourceImplementation* resource
 			  << x << "," << y << ","<< radius
 			  << "," << max << "," << despawn << ",'" << pool << "')";
 
-		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
+		ServerDatabase::instance()->executeStatement(query);
 		
 		numInsert++;
-		
-		delete res;
 	} catch (...) {
 		cout << "Insert Spawn Failed " << endl;
 	}
@@ -1379,7 +1387,11 @@ bool ResourceManagerImplementation::checkResourceName(const string instring) {
 		
 		numQueries++;
 		
-		if (res->size() == 0) {
+		int size = res->size();
+		
+		delete res;
+		
+		if (size == 0) {
 			return true;
 		} else {
 			//cout << "Duplicate Name, OMG?!?!" << endl;
