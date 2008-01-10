@@ -462,6 +462,30 @@ void WeaponImplementation::generateDotAttributes(AttributeListMessage* alm) {
 	}
 }
 
+void WeaponImplementation::decay(int decayRate) {
+	conditionDamage = conditionDamage + (maxCondition / 100 * decayRate);
+
+	if (conditionDamage > maxCondition)
+		conditionDamage = maxCondition;
+	
+	if (maxCondition > 0) {
+		float ratio = ((float)conditionDamage) / ((float)maxCondition);
+
+		if (ratio > 0.99) {
+			maxDamage = 1;
+			minDamage = 1;
+		}
+		else if (ratio > 0.75) {
+				maxDamage = round(maxDamage - (maxDamage * decayRate / 100));
+				minDamage = round(minDamage - (minDamage * decayRate / 100));
+
+				attackSpeed = round((attackSpeed + (attackSpeed * decayRate / 100)) * 10) / 10;
+		}
+	}
+	updated = true;
+
+}
+
 void WeaponImplementation::setWeaponStats(int modifier){
 	wlock();
 	
@@ -568,7 +592,7 @@ void WeaponImplementation::setWeaponStats(int modifier){
 		attackSpeed = round(10 * (attackSpeed - (attackSpeed * modifier / 500) - (luck / 150))) / 10;
 	}
 	
-	if (luck * System::random(100) > 2000) {
+	if (luck * System::random(100) > 1750) {
 		healthAttackCost = healthAttackCost - (modifier / 25) - (luck / 50);
 		actionAttackCost = actionAttackCost - (modifier / 25) - (luck / 50);
 		mindAttackCost = mindAttackCost - (modifier / 25) - (luck / 50);
@@ -630,11 +654,14 @@ void WeaponImplementation::setWeaponStats(int modifier){
 	if (mindAttackCost < 0) 
 		mindAttackCost = 0;
 
-	if (maxDamage > 1050)
-		maxDamage = 950 + System::random(100);
+	if (maxDamage > 900)
+		maxDamage = 850 + System::random(50);
+	
+	if (type == UNARMED && maxDamage > 500)
+		maxDamage = 450 + System::random(50);
 
-	if (dot1Strength > 700)
-		dot1Strength = 650 + System::random(50);
+	if (dot1Strength > 300)
+		dot1Strength = 250 + System::random(50);
 	
 	if (minDamage > maxDamage) 
 		minDamage = round(0.8 * maxDamage);

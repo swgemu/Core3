@@ -168,6 +168,8 @@ public:
 	void generateDotAttributes(class AttributeListMessage* alm);
 	
 	void setWeaponStats(int modifier);
+	
+	void decay(int decayRate);
 
 	// slicing methods
 	void sliceWeapon(Player* player);

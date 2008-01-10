@@ -43,7 +43,7 @@ derangedSquill = Creature:new {
 	objectName = "derangedSquill", -- name of the lua Object
 	
 	name = "a Deranged Squill Ravisher",
-	objectCRC = 1824637824,
+	objectCRC = 807169980,
 
 	health = 9900,
 	strength = 1000,
@@ -67,4 +67,4 @@ derangedSquill = Creature:new {
 	-- respawnTimer = 60,
 }
 
-Creatures:addCreature(derangedSquill, 1824637824) --- Add to global creature table
+Creatures:addCreature(derangedSquill, 807169980) --- Add to global creature table
