@@ -70,10 +70,10 @@ public:
 		MySqlDatabase::escapeString(password);
 	}
 	
-	//Checks for publish 13 clients. To disable: have the function return true all the time.
+	//Checks for publish 14 clients. To disable: have the function return true all the time.
 	//Disabling Version check could be hazardous in game.
 	bool checkVersion() {
-		if (version == "20050125-12:19")
+		if (version == "20050408-18:00")
 			return true;
 		else
 			return false;
