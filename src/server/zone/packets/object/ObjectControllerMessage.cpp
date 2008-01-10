@@ -711,17 +711,27 @@ void ObjectControllerMessage::parseGetAttributes(Player* player, Message* pack) 
 
 	unicode objectid;
 	pack->parseUnicode(objectid);
-
+ 
 	uint64 objid = atoll(objectid.c_str().c_str());
-	
-	//string test;
-	//test = objectid.c_str();
-	//player->sendSystemMessage(test);
-	//AttributeListMessage* atlm = new AttributeListMessage(player->getInventoryItem(objid));
-	//atlm->insertAttribute("Volume", "1");
-	
-	//player->sendMessage(atlm);
-	
+ 
+	Zone* zone = (Zone*) player->getZone();
+	if (zone == NULL)
+		return;
+ 
+	SceneObject* object = zone->lookupObject(objid); 
+ 
+	if (object == NULL) {
+		object = player->getInventoryItem(objid);
+
+		if (object == NULL)
+			object = player->getDatapadItem(objid);
+
+		if (object == NULL)
+			object = player->getWaypoint(objid);
+	}
+
+	if (object != NULL)
+		object->generateAttributes(player);
 }
 
 void ObjectControllerMessage::parseRadialRequest(Player* player, Message* pack, RadialManager* radialManager) {

@@ -48,6 +48,8 @@ which carries forward this exception.
 #include "WaypointObject.h"
 #include "../player/Player.h"
 
+#include "../../packets.h"
+
 #include "../terrain/PlanetNames.h"
 
 class WaypointObjectImplementation : public WaypointObjectServant {
@@ -78,6 +80,22 @@ public:
 		else
 			active = true;	
 	}
+
+	void generateAttributes(SceneObject* obj) {
+		if (!obj->isPlayer())
+			return;
+			
+		Player* player = (Player*) obj;
+		
+		AttributeListMessage* alm = new AttributeListMessage((WaypointObject*) _this);
+		
+		/*
+		 * This is where to add to the contents of the attribute packet.  More needs to be
+		 * researched of what is exactly sent.
+		 * 
+		 **/
+		player->sendMessage(alm);
+	}
 	
 	inline bool getStatus() {
 		return active;
@@ -102,6 +120,7 @@ public:
 	inline string& getPlanetName() {
 		return planetName;
 	}
+	
 };
 
 #endif /*WAYPOINTOBJECTIMPLEMENTATION_H_*/

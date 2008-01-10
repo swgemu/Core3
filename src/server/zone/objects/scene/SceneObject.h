@@ -125,6 +125,8 @@ public:
 
 	void setDirection(float x, float z, float y, float w);
 
+	void generateAttributes(Player* player);
+
 	void setObjectID(unsigned long long oid);
 
 	void setObjectCRC(unsigned int crc);
@@ -255,6 +257,8 @@ public:
 	void setPosition(float x, float z, float y);
 
 	void setDirection(float x, float z, float y, float w);
+
+	void generateAttributes(Player* player);
 
 	void setObjectID(unsigned long long oid);
 

@@ -102,6 +102,9 @@ interface SceneObject implements RWLockable {
 
 	void setDirection(float x, float z, float y, float w);
 
+	// attribute methods
+	void generateAttributes(Player player);
+
 	// setters
 	void setObjectID(unsigned long oid);
 
@@ -173,4 +176,5 @@ interface SceneObject implements RWLockable {
 	void switchMovingState();
 	
 	boolean doKeepObject();
+	
 }

@@ -73,6 +73,8 @@ public:
 
 	void generateAttributes(SceneObject* obj);
 
+	void decay(int decayRate);
+
 	void setWeaponStats(int modifier);
 
 	void sliceWeapon(Player* player);
@@ -181,6 +183,8 @@ public:
 	void sendTo(Player* player, bool doClose);
 
 	void generateAttributes(SceneObject* obj);
+
+	void decay(int decayRate);
 
 	void setWeaponStats(int modifier);
 

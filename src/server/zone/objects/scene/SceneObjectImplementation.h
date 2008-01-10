@@ -141,6 +141,9 @@ public:
 	virtual int useObject(Player* player) {
 		return 0;
 	}
+
+	inline virtual void generateAttributes(SceneObject* obj) {
+	}
 	
 	// setters and getters
 	inline void setMovementCounter(uint32 cnt) {
@@ -369,6 +372,7 @@ public:
 	inline bool doKeepObject() {
 		return keepObject;
 	}
+	
 };
 
 #endif /*SCENEOBJECTIMPLEMENTATION_H_*/

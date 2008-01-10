@@ -469,21 +469,20 @@ void WeaponImplementation::decay(int decayRate) {
 		conditionDamage = maxCondition;
 	
 	if (maxCondition > 0) {
-		float ratio = ((float)conditionDamage) / ((float)maxCondition);
+		float ratio = ((float) conditionDamage) / ((float) maxCondition);
 
 		if (ratio > 0.99) {
 			maxDamage = 1;
 			minDamage = 1;
-		}
-		else if (ratio > 0.75) {
-				maxDamage = round(maxDamage - (maxDamage * decayRate / 100));
-				minDamage = round(minDamage - (minDamage * decayRate / 100));
+		} else if (ratio > 0.75) {
+			maxDamage = round(maxDamage - (maxDamage * decayRate / 100));
+			minDamage = round(minDamage - (minDamage * decayRate / 100));
 
-				attackSpeed = round((attackSpeed + (attackSpeed * decayRate / 100)) * 10) / 10;
+			attackSpeed = round((attackSpeed + (attackSpeed * decayRate / 100)) * 10) / 10;
 		}
 	}
+	
 	updated = true;
-
 }
 
 void WeaponImplementation::setWeaponStats(int modifier){

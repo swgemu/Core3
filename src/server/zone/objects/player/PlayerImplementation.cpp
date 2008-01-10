@@ -566,15 +566,10 @@ void PlayerImplementation::createBaseStats() {
 void PlayerImplementation::decayInventory() {
 	if (inventory != NULL)
 		for (int i = 0; i < inventory->objectsSize(); i++) {
-			TangibleObject* item = ((TangibleObject*)(inventory->getObject(i)));
-			if (item->isWeapon()) {
-				((Weapon*)item)->decay(5);
-				((Weapon*)item)->sendTo(_this);
-			}
-			else {
-				item->decay(5);
-				item->sendTo(_this);
-			}
+			TangibleObject* item = ((TangibleObject*) inventory->getObject(i));
+			item->decay(5);
+				
+			item->sendTo(_this);
 		}
 }
 
