@@ -108,7 +108,7 @@ void ShuttleCreatureImplementation::sendPlayerTo(Player* player, Ticket* ticket)
 			player->setPosition(coords->getPositionX(), coords->getPositionZ(), coords->getPositionY());
 			player->switchMap(id);
 		} else
-			player->doWarp(coords->getPositionX(), coords->getPositionY(), coords->getPositionZ());
+			player->doWarp(coords->getPositionX(), coords->getPositionY(), coords->getPositionZ(), 5.0f);
 	}
 }
 

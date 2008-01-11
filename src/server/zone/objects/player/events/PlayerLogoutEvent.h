@@ -70,6 +70,8 @@ public:
 			
 			player->unlock();
 		} catch (...) {
+			player->clearLogoutEvent();
+
 			player->unlock();
 		}
 	}

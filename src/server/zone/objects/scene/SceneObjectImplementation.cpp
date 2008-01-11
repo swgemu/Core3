@@ -91,8 +91,11 @@ SceneObjectImplementation::SceneObjectImplementation(uint64 oid) : QuadTreeEntry
 }
 
 SceneObjectImplementation::~SceneObjectImplementation() {
-	//info("destroyed", true);
+	log("undeploying object");
 	
+	if (!_this->undeploy())
+		error("object was not found in naming directory");
+
 	RWLockableImplementation::destroy();
 }
 
@@ -114,14 +117,13 @@ void SceneObjectImplementation::scheduleUndeploy() {
 	}
 }
 
-void SceneObjectImplementation::doUndeploy() {
+void SceneObjectImplementation::finalize() {
 	zone->deleteCachedObject(_this);
 
 	if (!keepObject) {
-		info("undeploying object", true);
+		info("releasing object reference");
 
-		if (!_this->undeploy())
-			error("object was not found in naming directory");
+		_this->release();
 	}
 }
 

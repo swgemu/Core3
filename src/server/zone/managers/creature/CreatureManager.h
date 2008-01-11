@@ -79,9 +79,9 @@ public:
 
 	void init();
 
-	void run();
-
 	void start();
+
+	void stop();
 
 	void loadTrainers();
 
@@ -120,9 +120,9 @@ public:
 
 	void init();
 
-	void run();
-
 	void start();
+
+	void stop();
 
 	void loadTrainers();
 

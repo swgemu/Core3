@@ -253,6 +253,10 @@ void ZonePacketHandler::handleSelectCharacter(Message* pack) {
 	Player* player = NULL;
 
 	SceneObject* obj = server->getObject(playerID);
+	
+	if (obj == NULL)
+		obj = server->getCachedObject(playerID);
+	
 	if (obj != NULL) {
 		player = (Player*) obj;
 		player->reload(client);

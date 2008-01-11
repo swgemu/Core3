@@ -64,16 +64,7 @@ void ObjectManager::add(SceneObject* obj) {
 }
 
 SceneObject* ObjectManager::get(uint64 oid) {
-	SceneObject* obj = objectMap->get(oid);
-		
-	if (obj == NULL) {
-		obj = objectCacheMap->get(oid);
-		
-		if (obj != NULL)
-			removeCachedObject(oid);
-	}
-	
-	return obj;
+	return objectMap->get(oid);
 }
 
 SceneObject* ObjectManager::remove(uint64 oid) {
@@ -85,15 +76,24 @@ SceneObject* ObjectManager::remove(uint64 oid) {
 
 	objectCacheMap->put(oid, obj);
 
-	//obj->scheduleUndeploy();	
+	obj->scheduleUndeploy();	
+	
+	return obj;
+}
+
+SceneObject* ObjectManager::getCachedObject(uint64 oid) {
+	SceneObject* obj = objectCacheMap->get(oid);
+
+	if (obj != NULL) {
+		removeCachedObject(oid);
+
+		obj->redeploy();
+	}
 	
 	return obj;
 }
 
 SceneObject* ObjectManager::removeCachedObject(uint64 oid) {
 	SceneObject* obj = objectCacheMap->remove(oid);
-	
-	obj->redeploy();
-	
 	return obj;
 }

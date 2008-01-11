@@ -446,6 +446,9 @@ void CreatureObjectImplementation::setPosture(uint8 state, bool overrideDizzy, b
 		else if (doPlayingMusic)
 			stopPlayingMusic();
 			
+		if (meditating && postureState != SITTING_POSTURE)
+			meditating = false;
+			
 		Vector<Message*> msgs;
 		CreatureObjectDeltaMessage3* dcreo3 = new CreatureObjectDeltaMessage3(_this);
 		dcreo3->updatePosture();
@@ -661,6 +664,10 @@ void CreatureObjectImplementation::clearCombatState(bool removedefenders) {
 }
 
 void CreatureObjectImplementation::setDizziedState() {
+	//TODO: remove this once npcs gets state defences
+	if (dizzyRecoveryTime.miliDifference() > -(1000 + System::random(3000)))
+		return;
+	
 	if (setState(DIZZY_STATE)) {
 		playEffect("clienteffect/combat_special_defender_dizzy.cef");
 		showFlyText("combat_effects", "go_dizzy", 0, 0xFF, 0);
@@ -672,6 +679,10 @@ void CreatureObjectImplementation::setDizziedState() {
 }
 
 void CreatureObjectImplementation::setStunnedState() {
+	//TODO: remove this once npcs gets state defences
+	if (stunRecoveryTime.miliDifference() > -(1000 + System::random(5000)))
+		return;
+
 	if (setState(STUNNED_STATE)) {
 		playEffect("clienteffect/combat_special_defender_stun.cef");
 		showFlyText("combat_effects", "go_stunned", 0, 0xFF, 0);
@@ -683,6 +694,10 @@ void CreatureObjectImplementation::setStunnedState() {
 }
 
 void CreatureObjectImplementation::setBlindedState() {
+	//TODO: remove this once npcs gets state defences
+	if (stunRecoveryTime.miliDifference() > -(1000 + System::random(1000)))
+		return;
+
 	if (setState(BLINDED_STATE)) {
 		playEffect("clienteffect/combat_special_defender_blind.cef");
 		showFlyText("combat_effects", "go_blind", 0, 0xFF, 0);
@@ -949,11 +964,13 @@ bool CreatureObjectImplementation::changeHAMBars(int32 hp, int32 ap, int32 mp, b
 			setPosture(UPRIGHT_POSTURE);
 	}
 	
-	if (newHealth <= 0 || newAction <=0 || newMind <= 0) {
+	if (newHealth <= 0 || newAction <= 0 || newMind <= 0) {
 		if (forcedChange) {
 			setHAMBars(MAX(newHealth, 0), MAX(newAction, 0), MAX(newMind, 0));
+			
 			doIncapacitate();
 		}
+		
 		return false; 
 	}
 
@@ -976,7 +993,7 @@ bool CreatureObjectImplementation::changeHAMWounds(int32 hpwnds, int32 apwnds, i
 	int32 newActionWounds = actionWounds + apwnds;
 	int32 newMindWounds = mindWounds + mpwnds;
 	
-	if (newHealthWounds >= healthMax || newActionWounds >=actionMax || newMindWounds >= mindMax) {
+	if (newHealthWounds >= healthMax || newActionWounds >= actionMax || newMindWounds >= mindMax) {
 		if (forcedChange) {
 			setHAMWoundsBars(MIN(newHealthWounds, healthMax), MIN(newActionWounds, actionMax), MIN(newMindWounds, mindMax));
 			//doIncapacitate();
@@ -1258,6 +1275,15 @@ void CreatureObjectImplementation::resetHAMBars() {
 	mind = mindMax = baseMind;
 	focus = focusMax = baseFocus;
 	willpower = willpowerMax = baseWillpower;
+	
+	if (healthWounds > healthMax)
+		healthWounds = healthMax - 1;
+		
+	if (actionWounds > actionMax)
+		actionWounds = actionMax - 1;
+		
+	if (mindWounds > mindMax)
+		mindWounds = mindMax - 1;
 }
 
 void CreatureObjectImplementation::setHAMBars(uint32 hp, uint32 ap, uint32 mp) {

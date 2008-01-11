@@ -107,25 +107,24 @@ PlayerImplementation::~PlayerImplementation() {
 	clearBuffs(false);
 	
 	if (playerObject != NULL) {
-		playerObject->undeploy();
-		
 		delete playerObject;
 		playerObject = NULL;
 	}
 	
 	if (inventory != NULL) {
-		inventory->undeploy();
-		
 		delete inventory;
 		inventory = NULL;
 	}
 	
+	info("undeploying object");
 }
 
 void PlayerImplementation::init() {
 	objectType = PLAYER;
+	
 	owner = NULL;
 	zone = NULL;
+	
 	onlineStatus  = LOGGINGIN;
 
 	// objects
@@ -277,7 +276,7 @@ void PlayerImplementation::reload(ZoneClient* client) {
 			
 			info("loading player");
 		} else if (isOnline()) {
-			error("already loaded");
+			info("already loaded");
 			
 			unlock();
 
@@ -299,8 +298,9 @@ void PlayerImplementation::reload(ZoneClient* client) {
 		else
 			insertToZone(zone);
 
-		if (!isOnFullHealth())
-			doRecovery();	
+		clearBuffs(true);
+
+		activateRecovery();
 		
 		unlock();
 		
@@ -370,7 +370,6 @@ void PlayerImplementation::unload() {
 		if (isListening())
 			stopListen(listenID);
 
-		server->removeEvent(recoveryEvent);
 		server->removeEvent((Event*) dizzyFallDownEvent);
 		
 		if (changeFactionEvent != NULL) {
@@ -379,6 +378,8 @@ void PlayerImplementation::unload() {
 			
 			changeFactionEvent = NULL;
 		}
+		
+		clearTarget();
 		
 		removeFromZone(true);
 		//zone = NULL;
@@ -455,8 +456,6 @@ void PlayerImplementation::disconnect(bool closeClient, bool doLock) {
 		if (isInCombat() && !isLinkDead()) {
 			info("link dead");
 			
-			unload();
-			
 			setLinkDead();
 		} else {
 			info("disconnecting player");
@@ -481,8 +480,16 @@ void PlayerImplementation::disconnect(bool closeClient, bool doLock) {
 		owner = NULL;
 			
 		unlock(doLock);
+	} catch (Exception& e) {
+		error("Exception on Player::disconnect()");
+		e.printStackTrace();
+
+		clearDisconnectEvent();
+		unlock(doLock);
 	} catch (...) {
 		error("unreported exception on Player::disconnect()");
+		
+		clearDisconnectEvent();
 		unlock(doLock);
 	}
 }
@@ -628,6 +635,8 @@ void PlayerImplementation::insertToZone(Zone* zone) {
 		owner->balancePacketCheckupTime();
 		
 		sendToOwner();
+		
+		_this->acquire();
 		
 		zone->insert(this);
 		zone->inRange(this, 128);
@@ -830,6 +839,8 @@ void PlayerImplementation::removeFromZone(bool doLock) {
 
 		zone->remove(this);
 		
+		_this->release();
+		
 		zone->deleteObject(objectID);
 		
 		//TODO: SEND RETURN TO CHARSCREEN???
@@ -938,7 +949,7 @@ void PlayerImplementation::switchMap(int planetid) {
 	insertToZone(zone);
 }	
 
-void PlayerImplementation::doWarp(float x, float y, float z, bool doRandomize) {
+void PlayerImplementation::doWarp(float x, float y, float z, float randomizeDistance) {
 	if (zone == NULL)
 		return;
 
@@ -950,8 +961,8 @@ void PlayerImplementation::doWarp(float x, float y, float z, bool doRandomize) {
 	
 	setIgnoreMovementTests(10);
 	
-	if (doRandomize)
-		randomizePosition(64);
+	if (randomizeDistance != 0)
+		randomizePosition(randomizeDistance);
 	
 	insertToZone(zone);
 }	
@@ -1134,18 +1145,7 @@ void PlayerImplementation::doIncapacitate() {
 	if (isMounted())
 		dismount(true, true);
 	
-	if (++deathCount > 2) {
-		server->removeEvent(recoveryEvent);
-
-		clearStates();
-		setPosture(DEAD_POSTURE);
-
-		deathCount = 0;
-
-		server->addEvent(recoveryEvent, 5000);
-	} else {
-		server->removeEvent(recoveryEvent);
-
+	if (++deathCount < 3) {
 		// send incapacitation timer
 		CreatureObjectDeltaMessage3* incap = new CreatureObjectDeltaMessage3(_this);
 		incap->updateIncapacitationRecoveryTime(8);
@@ -1156,8 +1156,18 @@ void PlayerImplementation::doIncapacitate() {
 		clearStates();
 		setPosture(INCAPACITATED_POSTURE);
 
-		server->addEvent(recoveryEvent, 8000);
-	}
+		rescheduleRecovery(8000);
+	} else
+		kill();
+}
+
+void PlayerImplementation::kill() {
+	clearStates();
+	setPosture(DEAD_POSTURE);
+
+	deathCount = 0;
+
+	rescheduleRecovery(5000);
 }
 
 void PlayerImplementation::changePosture(int post) {
@@ -1219,11 +1229,29 @@ void PlayerImplementation::activateRecovery() {
 		server->addEvent(recoveryEvent, 3000);
 }
 
+void PlayerImplementation::rescheduleRecovery(int time) {
+	if (recoveryEvent->isQueued())
+		server->removeEvent(recoveryEvent);
+	
+	server->addEvent(recoveryEvent, time);
+}
+
 void PlayerImplementation::doRecovery() {
-	if (isLinkDead() && logoutTimeStamp.isPast()) {
-		unload();
-		setOffline();
-		return;
+	if (isLinkDead()) {
+		if (logoutTimeStamp.isPast()) {
+			info("unloading dead linked player");
+			
+			unload();
+		
+			setOffline();
+			
+			owner = NULL;
+			return;
+		} else {
+			info("keeping dead linked player in game");
+			
+			activateRecovery();
+		}
 	}
 	
 	if (isIncapacitated()) {
@@ -1233,34 +1261,25 @@ void PlayerImplementation::doRecovery() {
 	} else if (isDead()) { 		
 		doClone();
 		
-		if (isLinkDead())
-			server->addEvent(recoveryEvent, 3000);
-	} else {
-		if (hasStates()) {
-			doStateRecovery();
+		return;
+	} 
+	
+	if (hasStates()) {
+		doStateRecovery();
 
-			if (!isInCombat()) {
-				if (isOnFullHealth() && !isDizzied() && !hasStates()) {
-					if (isLinkDead())
-						server->addEvent(recoveryEvent, 3000);
-					return;
-				}
-					
-			} else if (lastCombatAction.miliDifference() > 30000)
-				clearCombatState();
-		}
+		if (!isInCombat()) {
+			if (isOnFullHealth() && !hasStates())
+				return;
+		} else if (lastCombatAction.miliDifference() > 30000)
+			clearCombatState();
 	}
 
 	calculateHAMregen();
 
-	if (isJedi() && !playerObject->isOnFullForce()) {
-		if (getPosture() == SITTING_POSTURE)
-			changeForceBar(playerObject->getForceRegen());
-		else
-			changeForceBar(playerObject->getForceRegen() / 3);
-	}
-
-	server->addEvent(recoveryEvent, 3000);
+	if (isJedi())
+		calculateForceRegen();
+	
+	activateRecovery();
 }
 
 void PlayerImplementation::doStateRecovery() {
@@ -1335,17 +1354,18 @@ void PlayerImplementation::doClone() {
 	decayInventory();
 	
 	clearStates();
+	clearBuffs();
+
+	changeForceBar(0);
 		
 	//setNeutral();
 	//setCovert();
 
 	clearDuelList();		
-
-	clearBuffs();
-	
-	changeForceBar(0);
 	
 	setPosture(UPRIGHT_POSTURE);
+
+	activateRecovery();
 }
 
 void PlayerImplementation::doCenterOfBeing() {
@@ -1412,17 +1432,6 @@ void PlayerImplementation::removeCenterOfBeing() {
 	centered = false;
 }
 
-void PlayerImplementation::kill() {
-	server->removeEvent(recoveryEvent);
-
-	clearStates();
-	setPosture(DEAD_POSTURE);
-
-	deathCount = 0;
-
-	server->addEvent(recoveryEvent, 5000);
-}
-
 void PlayerImplementation::doPeace() {
 	//info("trying Peace action");
 	
@@ -1470,6 +1479,15 @@ void PlayerImplementation::lootCorpse() {
 	if (!isIncapacitated() && !isDead() && isInRange(target, 20)) {
 		LootManager* lootManager = server->getLootManager();
 		lootManager->lootCorpse(_this, target);
+	}
+}
+
+void PlayerImplementation::calculateForceRegen() {
+	if (isJedi() && !playerObject->isOnFullForce()) {
+		if (getPosture() == SITTING_POSTURE)
+			changeForceBar(playerObject->getForceRegen());
+		else
+			changeForceBar(playerObject->getForceRegen() / 3);
 	}
 }
 
@@ -1687,9 +1705,8 @@ void PlayerImplementation::setLinkDead() {
 	
 	logoutTimeStamp.update();
 	logoutTimeStamp.addMiliTime(30000);
-	
-	if (!recoveryEvent->isQueued())
-		server->addEvent(recoveryEvent, 3000);
+
+	activateRecovery();	
 }
 
 void PlayerImplementation::setOnline() {
@@ -2014,16 +2031,35 @@ void PlayerImplementation::sendSampleTimeRemaining() {
 void PlayerImplementation::launchFirework() {
 	//Create the firework in the world.
 	FireworkWorldImplementation* fwwImpl = new FireworkWorldImplementation(_this);
+	fwwImpl->setZoneProcessServer(server);
 	fwwImpl->setDirection(0, 0, -0.64, 0.76);
-		
+
 	FireworkWorld* firework = (FireworkWorld*) fwwImpl->deploy();
-	firework->insertToZone(zone);
-		
-	//play the animation for the lighting of the firework.
+
 	setPosture(CROUCHED_POSTURE);
+
+	try {
+		zone->lock();
+
+		for (int i = 0; i < inRangeObjectCount(); ++i) {
+			SceneObject* obj = (SceneObject*) (((SceneObjectImplementation*) getInRangeObject(i))->_getStub());
 		
-	Animation* anim = new Animation(_this, "manipulate_low");
-	broadcastMessage(anim);	
-		
-	firework->removeFromZone();
+			if (obj->isPlayer()) {
+				Player* player = (Player*) obj;
+
+				firework->sendTo(player);
+			
+				Animation* anim = new Animation(_this, "manipulate_low");
+				player->sendMessage(anim);
+			}
+		}
+
+		zone->unlock();
+	} catch (...) {
+		zone->unlock();
+
+		cout << "unreported Exception on Player::launchFirework()\n";
+	}
+
+	delete firework;		
 }

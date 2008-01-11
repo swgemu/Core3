@@ -65,8 +65,9 @@ public:
 
 	SceneObject* remove(uint64 oid);
 
-	SceneObject* removeCachedObject(uint64 oid);
+	SceneObject* getCachedObject(uint64 oid);
 
+	SceneObject* removeCachedObject(uint64 oid);
 };
 
 #endif /*OBJECTMANAGER_H_*/

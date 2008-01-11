@@ -95,7 +95,7 @@ interface Player implements CreatureObject {
 	void lightUpdateZoneWithParent(unsigned long cell);
 	
 	void switchMap(int planetid);
-	void doWarp(float x, float y, float z = 0, boolean doRandomize = false);
+	void doWarp(float x, float y, float z = 0, float randomizeDistance = 0);
 	
 	void bounceBack();
 	
@@ -231,6 +231,8 @@ interface Player implements CreatureObject {
 	void setPlayerObject(PlayerObject obj);
 	
 	void setOnline();
+
+	void clearDisconnectEvent();
 	
 	void setClient(ZoneClient client);
 	

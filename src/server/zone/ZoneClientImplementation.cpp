@@ -65,8 +65,7 @@ ZoneClientImplementation::ZoneClientImplementation(DatagramServiceThread* serv, 
 }
 
 ZoneClientImplementation::~ZoneClientImplementation() {
-	if (player != NULL)
-		delete player;
+	_this->undeploy();
 }
 
 void ZoneClientImplementation::disconnect() {

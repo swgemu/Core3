@@ -56,13 +56,26 @@ public:
 	}
 	
 	bool activate() {
-		try {
-			object->doUndeploy();
+		object->acquire();
 
-			object->release();
-			//delete object;
+		try {
+			object->wlock();
+			
+			object->finalize();
+
+			object->unlock();
+		} catch (Exception& e) {
+			object->unlock();
+
+			cout << "Execption on scene object undeployment\n" << e.getMessage() << "\n";
 		} catch (...) {
+			object->unlock();
+
+			cout << "execption on scene object undeployment\n";
 		}
+		
+		object->release();
+		object = NULL;
 	}
 
 };

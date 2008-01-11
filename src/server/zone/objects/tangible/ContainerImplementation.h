@@ -59,13 +59,19 @@ public:
 		
 		items.setInsertPlan(SortedVector<VectorMapEntry<uint64, SceneObject*>*>::NO_DUPLICATE);
 		items.setNullValue(NULL);
-	}
+
+		stringstream loggingname;
+		loggingname << "Container = 0x" << oid;
+		setLoggingName(loggingname.str());
 	
+		setLogging(false);
+		setGlobalLogging(true);
+	}
+		
 	virtual ~ContainerImplementation() {
 		for (int i = 0; i < items.size(); ++i) {
 			SceneObject* item = items.get(i);
-			
-			item->undeploy();
+
 			delete item;
 		}
 		

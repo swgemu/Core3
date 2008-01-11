@@ -87,6 +87,10 @@ public:
 	~ZoneImplementation() {
 	}
 
+	void startManagers();
+
+	void stopManagers();
+
 	void registerObject(SceneObject* obj);
 	
 	SceneObject* lookupObject(uint64 oid);
@@ -96,8 +100,6 @@ public:
 
 	SceneObject* deleteCachedObject(SceneObject* obj);
 	
-	void startManagers();
-
 	// setters and getters
 	inline int getZoneID() {
 		return zoneID;

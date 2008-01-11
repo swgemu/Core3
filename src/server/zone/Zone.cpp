@@ -81,12 +81,36 @@ Zone* Zone::clone() {
 }
 
 
-void Zone::lock(bool doLock) {
+void Zone::startManagers() {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
 		ORBMethodInvocation invocation(this, 6);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((ZoneImplementation*) _impl)->startManagers();
+}
+
+void Zone::stopManagers() {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 7);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((ZoneImplementation*) _impl)->stopManagers();
+}
+
+void Zone::lock(bool doLock) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 8);
 		invocation.addBooleanParameter(doLock);
 
 		invocation.executeWithVoidReturn();
@@ -99,7 +123,7 @@ void Zone::unlock(bool doLock) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 7);
+		ORBMethodInvocation invocation(this, 9);
 		invocation.addBooleanParameter(doLock);
 
 		invocation.executeWithVoidReturn();
@@ -112,7 +136,7 @@ void Zone::registerObject(SceneObject* obj) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 8);
+		ORBMethodInvocation invocation(this, 10);
 		invocation.addObjectParameter(obj);
 
 		invocation.executeWithVoidReturn();
@@ -125,7 +149,7 @@ SceneObject* Zone::lookupObject(unsigned long long oid) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 9);
+		ORBMethodInvocation invocation(this, 11);
 		invocation.addUnsignedLongParameter(oid);
 
 		return (SceneObject*) invocation.executeWithObjectReturn();
@@ -138,7 +162,7 @@ SceneObject* Zone::deleteObject(unsigned long long oid) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 10);
+		ORBMethodInvocation invocation(this, 12);
 		invocation.addUnsignedLongParameter(oid);
 
 		return (SceneObject*) invocation.executeWithObjectReturn();
@@ -151,7 +175,7 @@ SceneObject* Zone::deleteObject(SceneObject* obj) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 11);
+		ORBMethodInvocation invocation(this, 13);
 		invocation.addObjectParameter(obj);
 
 		return (SceneObject*) invocation.executeWithObjectReturn();
@@ -164,7 +188,7 @@ SceneObject* Zone::deleteCachedObject(SceneObject* obj) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 12);
+		ORBMethodInvocation invocation(this, 14);
 		invocation.addObjectParameter(obj);
 
 		return (SceneObject*) invocation.executeWithObjectReturn();
@@ -177,7 +201,7 @@ int Zone::getZoneID() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 13);
+		ORBMethodInvocation invocation(this, 15);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -189,7 +213,7 @@ ZoneServer* Zone::getZoneServer() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 14);
+		ORBMethodInvocation invocation(this, 16);
 
 		return (ZoneServer*) invocation.executeWithObjectReturn();
 	} else
@@ -201,7 +225,7 @@ ChatManager* Zone::getChatManager() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 15);
+		ORBMethodInvocation invocation(this, 17);
 
 		return (ChatManager*) invocation.executeWithObjectReturn();
 	} else
@@ -213,7 +237,7 @@ CreatureManager* Zone::getCreatureManager() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 16);
+		ORBMethodInvocation invocation(this, 18);
 
 		return (CreatureManager*) invocation.executeWithObjectReturn();
 	} else
@@ -225,7 +249,7 @@ PlanetManager* Zone::getPlanetManager() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 17);
+		ORBMethodInvocation invocation(this, 19);
 
 		return (PlanetManager*) invocation.executeWithObjectReturn();
 	} else
@@ -237,7 +261,7 @@ unsigned long long Zone::getGalacticTime() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 18);
+		ORBMethodInvocation invocation(this, 20);
 
 		return invocation.executeWithUnsignedLongReturn();
 	} else
@@ -249,7 +273,7 @@ unsigned int Zone::getWeatherId() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 19);
+		ORBMethodInvocation invocation(this, 21);
 
 		return invocation.executeWithUnsignedIntReturn();
 	} else
@@ -261,7 +285,7 @@ float Zone::getWeatherCloudX() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 20);
+		ORBMethodInvocation invocation(this, 22);
 
 		return invocation.executeWithFloatReturn();
 	} else
@@ -273,7 +297,7 @@ float Zone::getWeatherCloudY() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 21);
+		ORBMethodInvocation invocation(this, 23);
 
 		return invocation.executeWithFloatReturn();
 	} else
@@ -285,7 +309,7 @@ void Zone::setSize(float minx, float miny, float maxx, float maxy) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 22);
+		ORBMethodInvocation invocation(this, 24);
 		invocation.addFloatParameter(minx);
 		invocation.addFloatParameter(miny);
 		invocation.addFloatParameter(maxx);
@@ -301,7 +325,7 @@ void Zone::insert(QuadTreeEntry* obj) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 23);
+		ORBMethodInvocation invocation(this, 25);
 		invocation.addObjectParameter(obj);
 
 		invocation.executeWithVoidReturn();
@@ -314,7 +338,7 @@ void Zone::remove(QuadTreeEntry* obj) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 24);
+		ORBMethodInvocation invocation(this, 26);
 		invocation.addObjectParameter(obj);
 
 		invocation.executeWithVoidReturn();
@@ -327,7 +351,7 @@ void Zone::removeAll() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 25);
+		ORBMethodInvocation invocation(this, 27);
 
 		invocation.executeWithVoidReturn();
 	} else
@@ -339,7 +363,7 @@ bool Zone::update(QuadTreeEntry* obj) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 26);
+		ORBMethodInvocation invocation(this, 28);
 		invocation.addObjectParameter(obj);
 
 		return invocation.executeWithBooleanReturn();
@@ -352,25 +376,13 @@ void Zone::inRange(QuadTreeEntry* obj, float range) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 27);
+		ORBMethodInvocation invocation(this, 29);
 		invocation.addObjectParameter(obj);
 		invocation.addFloatParameter(range);
 
 		invocation.executeWithVoidReturn();
 	} else
 		((ZoneImplementation*) _impl)->inRange(obj, range);
-}
-
-void Zone::startManagers() {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 28);
-
-		invocation.executeWithVoidReturn();
-	} else
-		((ZoneImplementation*) _impl)->startManagers();
 }
 
 /*
@@ -385,79 +397,90 @@ Packet* ZoneAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* inv) {
 
 	switch (methid) {
 	case 6:
-		lock(inv->getBooleanParameter());
+		startManagers();
 		break;
 	case 7:
-		unlock(inv->getBooleanParameter());
+		stopManagers();
 		break;
 	case 8:
-		registerObject((SceneObject*) inv->getObjectParameter());
+		lock(inv->getBooleanParameter());
 		break;
 	case 9:
-		resp->insertLong(lookupObject(inv->getUnsignedLongParameter())->_getORBObjectID());
+		unlock(inv->getBooleanParameter());
 		break;
 	case 10:
-		resp->insertLong(deleteObject(inv->getUnsignedLongParameter())->_getORBObjectID());
+		registerObject((SceneObject*) inv->getObjectParameter());
 		break;
 	case 11:
-		resp->insertLong(deleteObject((SceneObject*) inv->getObjectParameter())->_getORBObjectID());
+		resp->insertLong(lookupObject(inv->getUnsignedLongParameter())->_getORBObjectID());
 		break;
 	case 12:
-		resp->insertLong(deleteCachedObject((SceneObject*) inv->getObjectParameter())->_getORBObjectID());
+		resp->insertLong(deleteObject(inv->getUnsignedLongParameter())->_getORBObjectID());
 		break;
 	case 13:
-		resp->insertSignedInt(getZoneID());
+		resp->insertLong(deleteObject((SceneObject*) inv->getObjectParameter())->_getORBObjectID());
 		break;
 	case 14:
-		resp->insertLong(getZoneServer()->_getORBObjectID());
+		resp->insertLong(deleteCachedObject((SceneObject*) inv->getObjectParameter())->_getORBObjectID());
 		break;
 	case 15:
-		resp->insertLong(getChatManager()->_getORBObjectID());
+		resp->insertSignedInt(getZoneID());
 		break;
 	case 16:
-		resp->insertLong(getCreatureManager()->_getORBObjectID());
+		resp->insertLong(getZoneServer()->_getORBObjectID());
 		break;
 	case 17:
-		resp->insertLong(getPlanetManager()->_getORBObjectID());
+		resp->insertLong(getChatManager()->_getORBObjectID());
 		break;
 	case 18:
-		resp->insertLong(getGalacticTime());
+		resp->insertLong(getCreatureManager()->_getORBObjectID());
 		break;
 	case 19:
-		resp->insertInt(getWeatherId());
+		resp->insertLong(getPlanetManager()->_getORBObjectID());
 		break;
 	case 20:
-		resp->insertFloat(getWeatherCloudX());
+		resp->insertLong(getGalacticTime());
 		break;
 	case 21:
-		resp->insertFloat(getWeatherCloudY());
+		resp->insertInt(getWeatherId());
 		break;
 	case 22:
-		setSize(inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter());
+		resp->insertFloat(getWeatherCloudX());
 		break;
 	case 23:
-		insert((QuadTreeEntry*) inv->getObjectParameter());
+		resp->insertFloat(getWeatherCloudY());
 		break;
 	case 24:
-		remove((QuadTreeEntry*) inv->getObjectParameter());
+		setSize(inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter());
 		break;
 	case 25:
-		removeAll();
+		insert((QuadTreeEntry*) inv->getObjectParameter());
 		break;
 	case 26:
-		resp->insertBoolean(update((QuadTreeEntry*) inv->getObjectParameter()));
+		remove((QuadTreeEntry*) inv->getObjectParameter());
 		break;
 	case 27:
-		inRange((QuadTreeEntry*) inv->getObjectParameter(), inv->getFloatParameter());
+		removeAll();
 		break;
 	case 28:
-		startManagers();
+		resp->insertBoolean(update((QuadTreeEntry*) inv->getObjectParameter()));
+		break;
+	case 29:
+		inRange((QuadTreeEntry*) inv->getObjectParameter(), inv->getFloatParameter());
 		break;
 	default:
 		return NULL;
 	}
 
 	return resp;
+}
+
+void ZoneAdapter::startManagers() {
+	return ((ZoneImplementation*) impl)->startManagers();
+}
+
+void ZoneAdapter::stopManagers() {
+	return ((ZoneImplementation*) impl)->stopManagers();
 }
 
 void ZoneAdapter::lock(bool doLock) {
@@ -546,10 +569,6 @@ bool ZoneAdapter::update(QuadTreeEntry* obj) {
 
 void ZoneAdapter::inRange(QuadTreeEntry* obj, float range) {
 	return ((ZoneImplementation*) impl)->inRange(obj, range);
-}
-
-void ZoneAdapter::startManagers() {
-	return ((ZoneImplementation*) impl)->startManagers();
 }
 
 /*

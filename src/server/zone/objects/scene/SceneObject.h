@@ -75,11 +75,11 @@ public:
 
 	virtual ~SceneObject();
 
+	void finalize();
+
 	void redeploy();
 
 	void scheduleUndeploy();
-
-	void doUndeploy();
 
 	void sendTo(Player* player, bool doClose = true);
 
@@ -208,11 +208,11 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, ORBMethodInvocation* inv);
 
+	void finalize();
+
 	void redeploy();
 
 	void scheduleUndeploy();
-
-	void doUndeploy();
 
 	void sendTo(Player* player, bool doClose);
 

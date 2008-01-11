@@ -79,6 +79,9 @@ CreatureManagerImplementation::CreatureManagerImplementation(Zone* zone, ZonePro
 	creatureMap = new CreatureMap(20000);
 	
 	setLoggingName("CreatureManager" + zone->getZoneID());
+	
+	setLogging(false);
+	setGlobalLogging(true);
 }
 
 CreatureManagerImplementation::~CreatureManagerImplementation() {
@@ -117,6 +120,14 @@ void CreatureManagerImplementation::run() {
 			error("unreported Exception caught");
 		}
 	}
+}
+
+void CreatureManagerImplementation::stop() {
+	creatureActivityQueue.flush();
+		
+	join();
+		
+	info("stopped");
 }
 
 void CreatureManagerImplementation::loadRecruiters() {

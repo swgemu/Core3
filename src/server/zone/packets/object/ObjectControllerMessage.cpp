@@ -224,6 +224,10 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player, Message* 
 		player->clearQueueAction(actioncntr, 0.0f, 1, 19);		
 		return;
 	}
+	
+	stringstream msg;
+	msg << "parsing CommandQueueEnqueue actionCRC = (0x" << hex << actionCRC << dec <<  ")";
+	player->info(msg.str());
 
 	ChatManager* chatManager;
 	

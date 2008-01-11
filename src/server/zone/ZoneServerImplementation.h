@@ -126,6 +126,8 @@ public:
 
 	SceneObject* removeObject(uint64 oid, bool doLock = true);
 
+	SceneObject* getCachedObject(uint64 oid, bool doLock = true);
+
 	SceneObject* removeCachedObject(uint64 oid, bool doLock = true);
 
 	// server methods

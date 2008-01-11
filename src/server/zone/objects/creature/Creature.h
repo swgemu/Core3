@@ -109,6 +109,8 @@ public:
 
 	void doStatesRecovery();
 
+	void queueRespawn();
+
 	void addPatrolPoint(float x, float y, bool doLock = true);
 
 	void resetPatrolPoints(bool doLock = true);
@@ -193,6 +195,8 @@ public:
 	bool doRecovery();
 
 	void doStatesRecovery();
+
+	void queueRespawn();
 
 	void addPatrolPoint(float x, float y, bool doLock);
 

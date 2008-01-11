@@ -85,6 +85,13 @@ void ZoneImplementation::startManagers() {
 	planetManager->init();
 }
 
+void ZoneImplementation::stopManagers() {
+	if (zoneID > 9)
+		return;
+	
+	creatureManager->stop();
+}
+
 void ZoneImplementation::registerObject(SceneObject* obj) {
 	server->addObject(obj);
 }

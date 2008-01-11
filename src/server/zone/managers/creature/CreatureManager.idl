@@ -57,9 +57,9 @@ interface CreatureManager {
 	
 	void init();
 
-	void run();
-	
 	void start();
+	
+	void stop();
 
 	// creature loading methods
 	void loadTrainers();

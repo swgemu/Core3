@@ -62,9 +62,13 @@ public:
 
 			if (player->isOnline() || player->isLinkDead())
 				player->disconnect(true, false);
+			else
+				player->clearDisconnectEvent();	
 
 			player->unlock();
 		} catch (...) {
+			player->clearDisconnectEvent();	
+
 			player->unlock();
 		}
 	}

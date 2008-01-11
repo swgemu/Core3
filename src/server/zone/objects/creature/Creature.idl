@@ -89,6 +89,8 @@ interface Creature implements CreatureObject {
 	void activateRecovery();
 	boolean doRecovery();
 	void doStatesRecovery();
+	
+	void queueRespawn();
 
 	// waypoint methods
 	

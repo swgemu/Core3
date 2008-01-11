@@ -56,6 +56,9 @@ public:
 		init(serv);
 	}
 
+	virtual ~LoginClient() {
+	}
+	
 	void disconnect(bool doLock = true) {
 		if (isDisconnected())
 			return;

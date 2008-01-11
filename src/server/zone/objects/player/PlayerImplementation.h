@@ -237,7 +237,8 @@ public:
 	void notifyDissapear(QuadTreeEntry* obj);
 
 	void switchMap(int planetid);
-	void doWarp(float x, float y, float z = 0, bool doRandomize = false);
+
+	void doWarp(float x, float y, float z = 0, float randomizeDistance = 0);
 	
 	void bounceBack();
 
@@ -304,6 +305,7 @@ public:
 	// combat methods
 	void queueAction(Player* player, uint64 target, uint32 actionCRC, uint32 actionCntr);
 	bool doAction(CommandQueueAction* action);
+
 	void clearQueueAction(uint32 actioncntr, float timer = 0.0, uint32 tab1 = 0, uint32 tab2 = 0);
 	void deleteQueueAction(uint32 actioncntr);
 
@@ -313,6 +315,9 @@ public:
 	void activateQueueAction(CommandQueueAction* action = NULL);
 
 	void activateRecovery();
+	
+	void rescheduleRecovery(int time = 3000);
+	
 	void doRecovery();
 	void doStateRecovery();
 
@@ -327,17 +332,20 @@ public:
 	
 	void kill();
 
+
 	// buffing methods
 	void addBuff(uint32 buffcrc, float time);
 	
 	void clearBuffs(bool doUpdatePlayer = true);
 
 	// jedi methods
+	void calculateForceRegen();
+
+	bool changeForceBar(int32 fp);
+
 	inline bool isJedi() {
 		return playerObject->isJedi();
 	}
-
-	bool changeForceBar(int32 fp);
 	
 	void setForceBar(uint32 fp) {
 		playerObject->setForcePower(fp, true);
@@ -499,6 +507,10 @@ public:
 
 	void setLoggingOut() {
 		onlineStatus = LOGGINGOUT;
+	}
+
+	void clearDisconnectEvent() {
+		disconnectEvent = NULL;
 	}
 
 	void setClient(ZoneClient* client) {

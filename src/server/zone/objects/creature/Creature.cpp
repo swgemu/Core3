@@ -302,12 +302,24 @@ void Creature::doStatesRecovery() {
 		((CreatureImplementation*) _impl)->doStatesRecovery();
 }
 
-void Creature::addPatrolPoint(float x, float y, bool doLock) {
+void Creature::queueRespawn() {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
 		ORBMethodInvocation invocation(this, 24);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((CreatureImplementation*) _impl)->queueRespawn();
+}
+
+void Creature::addPatrolPoint(float x, float y, bool doLock) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 25);
 		invocation.addFloatParameter(x);
 		invocation.addFloatParameter(y);
 		invocation.addBooleanParameter(doLock);
@@ -322,7 +334,7 @@ void Creature::resetPatrolPoints(bool doLock) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 25);
+		ORBMethodInvocation invocation(this, 26);
 		invocation.addBooleanParameter(doLock);
 
 		invocation.executeWithVoidReturn();
@@ -335,7 +347,7 @@ int Creature::compareTo(Creature* creature) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 26);
+		ORBMethodInvocation invocation(this, 27);
 		invocation.addObjectParameter(creature);
 
 		return invocation.executeWithSignedIntReturn();
@@ -348,7 +360,7 @@ void Creature::setLair(LairObject* Lair) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 27);
+		ORBMethodInvocation invocation(this, 28);
 		invocation.addObjectParameter(Lair);
 
 		invocation.executeWithVoidReturn();
@@ -361,7 +373,7 @@ void Creature::setCreatureGroup(CreatureGroup* group) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 28);
+		ORBMethodInvocation invocation(this, 29);
 		invocation.addObjectParameter(group);
 
 		invocation.executeWithVoidReturn();
@@ -374,7 +386,7 @@ void Creature::setObjectFileName(string& name) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 29);
+		ORBMethodInvocation invocation(this, 30);
 		invocation.addAsciiParameter(name);
 
 		invocation.executeWithVoidReturn();
@@ -387,7 +399,7 @@ void Creature::setType(int tp) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 30);
+		ORBMethodInvocation invocation(this, 31);
 		invocation.addSignedIntParameter(tp);
 
 		invocation.executeWithVoidReturn();
@@ -400,7 +412,7 @@ void Creature::setRespawnTimer(unsigned int seconds) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 31);
+		ORBMethodInvocation invocation(this, 32);
 		invocation.addUnsignedIntParameter(seconds);
 
 		invocation.executeWithVoidReturn();
@@ -413,7 +425,7 @@ int Creature::getType() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 32);
+		ORBMethodInvocation invocation(this, 33);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -425,7 +437,7 @@ bool Creature::isTrainer() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 33);
+		ORBMethodInvocation invocation(this, 34);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -437,7 +449,7 @@ bool Creature::isRecruiter() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 34);
+		ORBMethodInvocation invocation(this, 35);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -449,7 +461,7 @@ bool Creature::isMount() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 35);
+		ORBMethodInvocation invocation(this, 36);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -461,7 +473,7 @@ string& Creature::getName() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 36);
+		ORBMethodInvocation invocation(this, 37);
 
 		invocation.executeWithAsciiReturn(_return_getName);
 		return _return_getName;
@@ -474,7 +486,7 @@ int Creature::getZoneIndex() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 37);
+		ORBMethodInvocation invocation(this, 38);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -486,7 +498,7 @@ Zone* Creature::getZone() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 38);
+		ORBMethodInvocation invocation(this, 39);
 
 		return (Zone*) invocation.executeWithObjectReturn();
 	} else
@@ -498,7 +510,7 @@ unsigned long long Creature::getNewItemID() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 39);
+		ORBMethodInvocation invocation(this, 40);
 
 		return invocation.executeWithUnsignedLongReturn();
 	} else
@@ -510,7 +522,7 @@ unsigned int Creature::getRespawnTimer() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 40);
+		ORBMethodInvocation invocation(this, 41);
 
 		return invocation.executeWithUnsignedIntReturn();
 	} else
@@ -522,7 +534,7 @@ LairObject* Creature::getLair() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 41);
+		ORBMethodInvocation invocation(this, 42);
 
 		return (LairObject*) invocation.executeWithObjectReturn();
 	} else
@@ -595,57 +607,60 @@ Packet* CreatureAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* inv) {
 		doStatesRecovery();
 		break;
 	case 24:
-		addPatrolPoint(inv->getFloatParameter(), inv->getFloatParameter(), inv->getBooleanParameter());
+		queueRespawn();
 		break;
 	case 25:
-		resetPatrolPoints(inv->getBooleanParameter());
+		addPatrolPoint(inv->getFloatParameter(), inv->getFloatParameter(), inv->getBooleanParameter());
 		break;
 	case 26:
-		resp->insertSignedInt(compareTo((Creature*) inv->getObjectParameter()));
+		resetPatrolPoints(inv->getBooleanParameter());
 		break;
 	case 27:
-		setLair((LairObject*) inv->getObjectParameter());
+		resp->insertSignedInt(compareTo((Creature*) inv->getObjectParameter()));
 		break;
 	case 28:
-		setCreatureGroup((CreatureGroup*) inv->getObjectParameter());
+		setLair((LairObject*) inv->getObjectParameter());
 		break;
 	case 29:
-		setObjectFileName(inv->getAsciiParameter(_param0_setObjectFileName__string_));
+		setCreatureGroup((CreatureGroup*) inv->getObjectParameter());
 		break;
 	case 30:
-		setType(inv->getSignedIntParameter());
+		setObjectFileName(inv->getAsciiParameter(_param0_setObjectFileName__string_));
 		break;
 	case 31:
-		setRespawnTimer(inv->getUnsignedIntParameter());
+		setType(inv->getSignedIntParameter());
 		break;
 	case 32:
-		resp->insertSignedInt(getType());
+		setRespawnTimer(inv->getUnsignedIntParameter());
 		break;
 	case 33:
-		resp->insertBoolean(isTrainer());
+		resp->insertSignedInt(getType());
 		break;
 	case 34:
-		resp->insertBoolean(isRecruiter());
+		resp->insertBoolean(isTrainer());
 		break;
 	case 35:
-		resp->insertBoolean(isMount());
+		resp->insertBoolean(isRecruiter());
 		break;
 	case 36:
-		resp->insertAscii(getName());
+		resp->insertBoolean(isMount());
 		break;
 	case 37:
-		resp->insertSignedInt(getZoneIndex());
+		resp->insertAscii(getName());
 		break;
 	case 38:
-		resp->insertLong(getZone()->_getORBObjectID());
+		resp->insertSignedInt(getZoneIndex());
 		break;
 	case 39:
-		resp->insertLong(getNewItemID());
+		resp->insertLong(getZone()->_getORBObjectID());
 		break;
 	case 40:
-		resp->insertInt(getRespawnTimer());
+		resp->insertLong(getNewItemID());
 		break;
 	case 41:
+		resp->insertInt(getRespawnTimer());
+		break;
+	case 42:
 		resp->insertLong(getLair()->_getORBObjectID());
 		break;
 	default:
@@ -725,6 +740,10 @@ bool CreatureAdapter::doRecovery() {
 
 void CreatureAdapter::doStatesRecovery() {
 	return ((CreatureImplementation*) impl)->doStatesRecovery();
+}
+
+void CreatureAdapter::queueRespawn() {
+	return ((CreatureImplementation*) impl)->queueRespawn();
 }
 
 void CreatureAdapter::addPatrolPoint(float x, float y, bool doLock) {

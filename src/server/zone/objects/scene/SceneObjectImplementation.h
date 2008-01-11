@@ -106,11 +106,12 @@ public:
 
 	virtual ~SceneObjectImplementation();
 
+	void finalize();
+	
 	SceneObject* deploy();
 	void redeploy();
 
 	void scheduleUndeploy();
-	void doUndeploy();
 
 	void create(ZoneClient* client);
 	void destroy(ZoneClient* client);

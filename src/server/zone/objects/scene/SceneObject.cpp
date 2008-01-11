@@ -77,12 +77,24 @@ SceneObject* SceneObject::clone() {
 }
 
 
-void SceneObject::redeploy() {
+void SceneObject::finalize() {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
 		ORBMethodInvocation invocation(this, 6);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((SceneObjectImplementation*) _impl)->finalize();
+}
+
+void SceneObject::redeploy() {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 7);
 
 		invocation.executeWithVoidReturn();
 	} else
@@ -94,23 +106,11 @@ void SceneObject::scheduleUndeploy() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 7);
-
-		invocation.executeWithVoidReturn();
-	} else
-		((SceneObjectImplementation*) _impl)->scheduleUndeploy();
-}
-
-void SceneObject::doUndeploy() {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
 		ORBMethodInvocation invocation(this, 8);
 
 		invocation.executeWithVoidReturn();
 	} else
-		((SceneObjectImplementation*) _impl)->doUndeploy();
+		((SceneObjectImplementation*) _impl)->scheduleUndeploy();
 }
 
 void SceneObject::sendTo(Player* player, bool doClose) {
@@ -850,13 +850,13 @@ Packet* SceneObjectAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* inv
 
 	switch (methid) {
 	case 6:
-		redeploy();
+		finalize();
 		break;
 	case 7:
-		scheduleUndeploy();
+		redeploy();
 		break;
 	case 8:
-		doUndeploy();
+		scheduleUndeploy();
 		break;
 	case 9:
 		sendTo((Player*) inv->getObjectParameter(), inv->getBooleanParameter());
@@ -1036,16 +1036,16 @@ Packet* SceneObjectAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* inv
 	return resp;
 }
 
+void SceneObjectAdapter::finalize() {
+	return ((SceneObjectImplementation*) impl)->finalize();
+}
+
 void SceneObjectAdapter::redeploy() {
 	return ((SceneObjectImplementation*) impl)->redeploy();
 }
 
 void SceneObjectAdapter::scheduleUndeploy() {
 	return ((SceneObjectImplementation*) impl)->scheduleUndeploy();
-}
-
-void SceneObjectAdapter::doUndeploy() {
-	return ((SceneObjectImplementation*) impl)->doUndeploy();
 }
 
 void SceneObjectAdapter::sendTo(Player* player, bool doClose) {

@@ -97,7 +97,7 @@ void CreatureManager::init() {
 		((CreatureManagerImplementation*) _impl)->init();
 }
 
-void CreatureManager::run() {
+void CreatureManager::start() {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
@@ -106,10 +106,10 @@ void CreatureManager::run() {
 
 		invocation.executeWithVoidReturn();
 	} else
-		((CreatureManagerImplementation*) _impl)->run();
+		((CreatureManagerImplementation*) _impl)->start();
 }
 
-void CreatureManager::start() {
+void CreatureManager::stop() {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
@@ -118,7 +118,7 @@ void CreatureManager::start() {
 
 		invocation.executeWithVoidReturn();
 	} else
-		((CreatureManagerImplementation*) _impl)->start();
+		((CreatureManagerImplementation*) _impl)->stop();
 }
 
 void CreatureManager::loadTrainers() {
@@ -317,10 +317,10 @@ Packet* CreatureManagerAdapter::invokeMethod(uint32 methid, ORBMethodInvocation*
 		init();
 		break;
 	case 7:
-		run();
+		start();
 		break;
 	case 8:
-		start();
+		stop();
 		break;
 	case 9:
 		loadTrainers();
@@ -369,12 +369,12 @@ void CreatureManagerAdapter::init() {
 	return ((CreatureManagerImplementation*) impl)->init();
 }
 
-void CreatureManagerAdapter::run() {
-	return ((CreatureManagerImplementation*) impl)->run();
-}
-
 void CreatureManagerAdapter::start() {
 	return ((CreatureManagerImplementation*) impl)->start();
+}
+
+void CreatureManagerAdapter::stop() {
+	return ((CreatureManagerImplementation*) impl)->stop();
 }
 
 void CreatureManagerAdapter::loadTrainers() {

@@ -129,6 +129,13 @@ void WeaponImplementation::initialize() {
 	dot2Uses = 0;
 	
 	sliced = false;
+
+	stringstream loggingname;
+	loggingname << "Weapon = 0x" << objectID;
+	setLoggingName(loggingname.str());
+	
+	setLogging(false);
+	setGlobalLogging(true);
 }
 
 void WeaponImplementation::sendTo(Player* player, bool doClose) {

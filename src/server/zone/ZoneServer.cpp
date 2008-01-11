@@ -143,12 +143,26 @@ SceneObject* ZoneServer::removeObject(unsigned long long oid, bool doLock) {
 		return ((ZoneServerImplementation*) _impl)->removeObject(oid, doLock);
 }
 
-SceneObject* ZoneServer::removeCachedObject(unsigned long long oid, bool doLock) {
+SceneObject* ZoneServer::getCachedObject(unsigned long long oid, bool doLock) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
 		ORBMethodInvocation invocation(this, 10);
+		invocation.addUnsignedLongParameter(oid);
+		invocation.addBooleanParameter(doLock);
+
+		return (SceneObject*) invocation.executeWithObjectReturn();
+	} else
+		return ((ZoneServerImplementation*) _impl)->getCachedObject(oid, doLock);
+}
+
+SceneObject* ZoneServer::removeCachedObject(unsigned long long oid, bool doLock) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 11);
 		invocation.addUnsignedLongParameter(oid);
 		invocation.addBooleanParameter(doLock);
 
@@ -162,7 +176,7 @@ bool ZoneServer::banUser(string& name, string& admin) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 11);
+		ORBMethodInvocation invocation(this, 12);
 		invocation.addAsciiParameter(name);
 		invocation.addAsciiParameter(admin);
 
@@ -176,7 +190,7 @@ void ZoneServer::changeUserCap(int amount) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 12);
+		ORBMethodInvocation invocation(this, 13);
 		invocation.addSignedIntParameter(amount);
 
 		invocation.executeWithVoidReturn();
@@ -189,7 +203,7 @@ void ZoneServer::addTotalSentPacket(int count) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 13);
+		ORBMethodInvocation invocation(this, 14);
 		invocation.addSignedIntParameter(count);
 
 		invocation.executeWithVoidReturn();
@@ -202,7 +216,7 @@ void ZoneServer::addTotalResentPacket(int count) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 14);
+		ORBMethodInvocation invocation(this, 15);
 		invocation.addSignedIntParameter(count);
 
 		invocation.executeWithVoidReturn();
@@ -215,7 +229,7 @@ void ZoneServer::lock() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 15);
+		ORBMethodInvocation invocation(this, 16);
 
 		invocation.executeWithVoidReturn();
 	} else
@@ -227,7 +241,7 @@ void ZoneServer::unlock() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 16);
+		ORBMethodInvocation invocation(this, 17);
 
 		invocation.executeWithVoidReturn();
 	} else
@@ -239,7 +253,7 @@ ChatManager* ZoneServer::getChatManager() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 17);
+		ORBMethodInvocation invocation(this, 18);
 
 		return (ChatManager*) invocation.executeWithObjectReturn();
 	} else
@@ -251,7 +265,7 @@ GuildManager* ZoneServer::getGuildManager() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 18);
+		ORBMethodInvocation invocation(this, 19);
 
 		return (GuildManager*) invocation.executeWithObjectReturn();
 	} else
@@ -263,7 +277,7 @@ PlayerManager* ZoneServer::getPlayerManager() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 19);
+		ORBMethodInvocation invocation(this, 20);
 
 		return (PlayerManager*) invocation.executeWithObjectReturn();
 	} else
@@ -275,7 +289,7 @@ UserManager* ZoneServer::getUserManager() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 20);
+		ORBMethodInvocation invocation(this, 21);
 
 		return (UserManager*) invocation.executeWithObjectReturn();
 	} else
@@ -287,7 +301,7 @@ ItemManager* ZoneServer::getItemManager() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 21);
+		ORBMethodInvocation invocation(this, 22);
 
 		return (ItemManager*) invocation.executeWithObjectReturn();
 	} else
@@ -299,7 +313,7 @@ ResourceManager* ZoneServer::getResourceManager() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 22);
+		ORBMethodInvocation invocation(this, 23);
 
 		return (ResourceManager*) invocation.executeWithObjectReturn();
 	} else
@@ -311,7 +325,7 @@ BazaarManager* ZoneServer::getBazaarManager() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 23);
+		ORBMethodInvocation invocation(this, 24);
 
 		return (BazaarManager*) invocation.executeWithObjectReturn();
 	} else
@@ -323,7 +337,7 @@ Zone* ZoneServer::getZone(int index) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 24);
+		ORBMethodInvocation invocation(this, 25);
 		invocation.addSignedIntParameter(index);
 
 		return (Zone*) invocation.executeWithObjectReturn();
@@ -336,7 +350,7 @@ string& ZoneServer::getServerName() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 25);
+		ORBMethodInvocation invocation(this, 26);
 
 		invocation.executeWithAsciiReturn(_return_getServerName);
 		return _return_getServerName;
@@ -349,7 +363,7 @@ int ZoneServer::getConnectionCount() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 26);
+		ORBMethodInvocation invocation(this, 27);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -361,7 +375,7 @@ unsigned long long ZoneServer::getNextCreatureID(bool doLock) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 27);
+		ORBMethodInvocation invocation(this, 28);
 		invocation.addBooleanParameter(doLock);
 
 		return invocation.executeWithUnsignedLongReturn();
@@ -393,57 +407,60 @@ Packet* ZoneServerAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* inv)
 		resp->insertLong(removeObject(inv->getUnsignedLongParameter(), inv->getBooleanParameter())->_getORBObjectID());
 		break;
 	case 10:
-		resp->insertLong(removeCachedObject(inv->getUnsignedLongParameter(), inv->getBooleanParameter())->_getORBObjectID());
+		resp->insertLong(getCachedObject(inv->getUnsignedLongParameter(), inv->getBooleanParameter())->_getORBObjectID());
 		break;
 	case 11:
-		resp->insertBoolean(banUser(inv->getAsciiParameter(_param0_banUser__string_string_), inv->getAsciiParameter(_param1_banUser__string_string_)));
+		resp->insertLong(removeCachedObject(inv->getUnsignedLongParameter(), inv->getBooleanParameter())->_getORBObjectID());
 		break;
 	case 12:
-		changeUserCap(inv->getSignedIntParameter());
+		resp->insertBoolean(banUser(inv->getAsciiParameter(_param0_banUser__string_string_), inv->getAsciiParameter(_param1_banUser__string_string_)));
 		break;
 	case 13:
-		addTotalSentPacket(inv->getSignedIntParameter());
+		changeUserCap(inv->getSignedIntParameter());
 		break;
 	case 14:
-		addTotalResentPacket(inv->getSignedIntParameter());
+		addTotalSentPacket(inv->getSignedIntParameter());
 		break;
 	case 15:
-		lock();
+		addTotalResentPacket(inv->getSignedIntParameter());
 		break;
 	case 16:
-		unlock();
+		lock();
 		break;
 	case 17:
-		resp->insertLong(getChatManager()->_getORBObjectID());
+		unlock();
 		break;
 	case 18:
-		resp->insertLong(getGuildManager()->_getORBObjectID());
+		resp->insertLong(getChatManager()->_getORBObjectID());
 		break;
 	case 19:
-		resp->insertLong(getPlayerManager()->_getORBObjectID());
+		resp->insertLong(getGuildManager()->_getORBObjectID());
 		break;
 	case 20:
-		resp->insertLong(getUserManager()->_getORBObjectID());
+		resp->insertLong(getPlayerManager()->_getORBObjectID());
 		break;
 	case 21:
-		resp->insertLong(getItemManager()->_getORBObjectID());
+		resp->insertLong(getUserManager()->_getORBObjectID());
 		break;
 	case 22:
-		resp->insertLong(getResourceManager()->_getORBObjectID());
+		resp->insertLong(getItemManager()->_getORBObjectID());
 		break;
 	case 23:
-		resp->insertLong(getBazaarManager()->_getORBObjectID());
+		resp->insertLong(getResourceManager()->_getORBObjectID());
 		break;
 	case 24:
-		resp->insertLong(getZone(inv->getSignedIntParameter())->_getORBObjectID());
+		resp->insertLong(getBazaarManager()->_getORBObjectID());
 		break;
 	case 25:
-		resp->insertAscii(getServerName());
+		resp->insertLong(getZone(inv->getSignedIntParameter())->_getORBObjectID());
 		break;
 	case 26:
-		resp->insertSignedInt(getConnectionCount());
+		resp->insertAscii(getServerName());
 		break;
 	case 27:
+		resp->insertSignedInt(getConnectionCount());
+		break;
+	case 28:
 		resp->insertLong(getNextCreatureID(inv->getBooleanParameter()));
 		break;
 	default:
@@ -467,6 +484,10 @@ SceneObject* ZoneServerAdapter::getObject(unsigned long long oid, bool doLock) {
 
 SceneObject* ZoneServerAdapter::removeObject(unsigned long long oid, bool doLock) {
 	return ((ZoneServerImplementation*) impl)->removeObject(oid, doLock);
+}
+
+SceneObject* ZoneServerAdapter::getCachedObject(unsigned long long oid, bool doLock) {
+	return ((ZoneServerImplementation*) impl)->getCachedObject(oid, doLock);
 }
 
 SceneObject* ZoneServerAdapter::removeCachedObject(unsigned long long oid, bool doLock) {

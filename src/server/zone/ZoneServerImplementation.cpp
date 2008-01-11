@@ -103,33 +103,6 @@ ZoneServerImplementation::ZoneServerImplementation(int processingThreads) :
 	scheduler->setLogging(false);
 }
 
-void ZoneServerImplementation::startManagers() {
-	info("loading managers..");
-	
-	UserManagerImplementation* userImpl = new UserManagerImplementation(_this);
-	userManager = (UserManager*) userImpl->deploy("UserManager");
-	
-	ItemManagerImplementation* itemImpl = new ItemManagerImplementation(_this);
-	itemManager = (ItemManager*) itemImpl->deploy("ItemManager");
-
-	PlayerManagerImplementation* playerImpl = new PlayerManagerImplementation(itemManager, processor);
-	playerManager = (PlayerManager*) playerImpl->deploy("PlayerManager");
-	
-	GuildManagerImplementation* guildImpl = new GuildManagerImplementation(_this);
-	guildManager = (GuildManager*) guildImpl->deploy("GuildManager");
-	guildManager->load();
-	playerManager->setGuildManager(guildManager);
-
-	ResourceManagerImplementation* resImpl = new ResourceManagerImplementation(_this, processor);
-	resourceManager = (ResourceManager*) resImpl->deploy("ResourceManager");
-
-	BazaarManagerImplementation* bazImpl = new BazaarManagerImplementation(_this);
-	bazaarManager = (BazaarManager*) bazImpl->deploy("BazaarManager");
-	
-	ChatManagerImplementation* chatImpl = new ChatManagerImplementation(_this, 10000);
-	chatManager = (ChatManager*) chatImpl->deploy("ChatManager");
-}
-
 ZoneServerImplementation::~ZoneServerImplementation() {
 	if (phandler != NULL)
 		delete phandler; 
@@ -163,15 +136,39 @@ void ZoneServerImplementation::init() {
 		stringstream Name;
 		Name << "Zone" << i;
 		
-		Zone* zne = (Zone*) ObjectRequestBroker::instance()->deploy(Name.str(), zoneImpl);
-		zne->startManagers();
+		Zone* zone = (Zone*) ObjectRequestBroker::instance()->deploy(Name.str(), zoneImpl);
+		zone->startManagers();
 		
-		zones.add(zne);
+		zones.add(zone);
 	}
 	
 	startManagers();
 
 	return;
+}
+
+void ZoneServerImplementation::startManagers() {
+	info("loading managers..");
+	
+	UserManagerImplementation* userImpl = new UserManagerImplementation(_this);
+	userManager = (UserManager*) userImpl->deploy("UserManager");
+	
+	ItemManagerImplementation* itemImpl = new ItemManagerImplementation(_this);
+	itemManager = (ItemManager*) itemImpl->deploy("ItemManager");
+
+	PlayerManagerImplementation* playerImpl = new PlayerManagerImplementation(itemManager, processor);
+	playerManager = (PlayerManager*) playerImpl->deploy("PlayerManager");
+	
+	GuildManagerImplementation* guildImpl = new GuildManagerImplementation(_this);
+	guildManager = (GuildManager*) guildImpl->deploy("GuildManager");
+	guildManager->load();
+	playerManager->setGuildManager(guildManager);
+
+	ResourceManagerImplementation* resImpl = new ResourceManagerImplementation(_this, processor);
+	resourceManager = (ResourceManager*) resImpl->deploy("ResourceManager");
+
+	ChatManagerImplementation* chatImpl = new ChatManagerImplementation(_this, 10000);
+	chatManager = (ChatManager*) chatImpl->deploy("ChatManager");
 }
 
 void ZoneServerImplementation::run() {
@@ -184,8 +181,15 @@ void ZoneServerImplementation::shutdown() {
 	chatManager->broadcastMessage("Server is shutting down in 10 seconds..");
 	
 	Thread::sleepMili(10000);
-	
+
 	stop();
+
+	for (int i = 0; i < 50; ++i) {
+		Zone* zone = zones.get(i);
+		zone->stopManagers();
+	}
+
+	zones.removeAll();
 	
 	processor->stop();
 
@@ -302,6 +306,22 @@ SceneObject* ZoneServerImplementation::removeObject(uint64 oid, bool doLock) {
 			
 			--currentPlayers;
 		}
+
+		unlock(doLock);
+	} catch (...) {
+		unlock(doLock);
+	}
+
+	return obj;
+}
+
+SceneObject* ZoneServerImplementation::getCachedObject(uint64 oid, bool doLock) {
+	SceneObject* obj = NULL;
+	
+	try {
+		lock(doLock);
+
+		obj = objectManager->getCachedObject(oid);
 
 		unlock(doLock);
 	} catch (...) {

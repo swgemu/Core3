@@ -97,6 +97,13 @@ void ArmorImplementation::initialize() {
 
 	lightSaber = 50.0f;
 	lightSaberIsSpecial = false;
+
+	stringstream loggingname;
+	loggingname << "Armor = 0x" << objectID;
+	setLoggingName(loggingname.str());
+	
+	setLogging(false);
+	setGlobalLogging(true);
 }
 
 void ArmorImplementation::sendTo(Player* player, bool doClose) {

@@ -61,6 +61,13 @@ public:
 		setType(CreatureImplementation::RECRUITER);
 
 		creatureBitmask = 0x108;
+
+		stringstream loggingname;
+		loggingname << "Recruiter = 0x" << oid;
+		setLoggingName(loggingname.str());
+	
+		setLogging(false);
+		setGlobalLogging(true);
 	}
 	
 	void sendConversationStartTo(SceneObject* obj) {

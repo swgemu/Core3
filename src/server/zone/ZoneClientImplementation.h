@@ -63,7 +63,7 @@ class ZoneClientImplementation : public BaseClientProxy, public ZoneClientServan
 public:
 	ZoneClientImplementation(DatagramServiceThread* serv, Socket* sock, SocketAddress& addr);
 		
-	~ZoneClientImplementation();
+	virtual ~ZoneClientImplementation();
 	
 	void sendMessage(Message* msg) {
 		BaseClientProxy::sendPacket((BasePacket*) msg);

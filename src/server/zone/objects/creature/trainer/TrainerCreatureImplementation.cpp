@@ -61,6 +61,13 @@ TrainerCreatureImplementation::TrainerCreatureImplementation(uint64 oid, Profess
 	setType(CreatureImplementation::TRAINER);
 
 	creatureBitmask = 0x108;
+
+	stringstream loggingname;
+	loggingname << "Trainer = 0x" << oid;
+	setLoggingName(loggingname.str());
+	
+	setLogging(false);
+	setGlobalLogging(true);
 }
 
 TrainerCreatureImplementation::~TrainerCreatureImplementation() {

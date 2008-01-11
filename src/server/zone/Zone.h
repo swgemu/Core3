@@ -73,6 +73,10 @@ public:
 
 	virtual ~Zone();
 
+	void startManagers();
+
+	void stopManagers();
+
 	void lock(bool doLock = true);
 
 	void unlock(bool doLock = true);
@@ -117,8 +121,6 @@ public:
 
 	void inRange(QuadTreeEntry* obj, float range);
 
-	void startManagers();
-
 protected:
 };
 
@@ -129,6 +131,10 @@ public:
 	ZoneAdapter(ZoneImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, ORBMethodInvocation* inv);
+
+	void startManagers();
+
+	void stopManagers();
 
 	void lock(bool doLock);
 
@@ -173,8 +179,6 @@ public:
 	bool update(QuadTreeEntry* obj);
 
 	void inRange(QuadTreeEntry* obj, float range);
-
-	void startManagers();
 
 };
 

@@ -83,6 +83,13 @@ MountCreatureImplementation::MountCreatureImplementation(CreatureObject* linkCre
 	itnoCRC = itnocrc;
 	
 	instantMount = false;
+	
+	stringstream loggingname;
+	loggingname << "Mount = 0x" << oid;
+	setLoggingName(loggingname.str());
+	
+	setLogging(false);
+	setGlobalLogging(true);
 }
 
 void MountCreatureImplementation::addToDatapad() {

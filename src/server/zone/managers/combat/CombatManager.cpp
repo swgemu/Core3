@@ -117,6 +117,7 @@ float CombatManager::doTargetSkill(CommandQueueAction* action) {
 
 	if (tskill->isArea())
 		handleAreaAction(creature, targetCreature, action, actionMessage);
+		
 	creature->broadcastMessage(actionMessage);
 
 	return tskill->calculateSpeed(creature);
@@ -193,10 +194,7 @@ void CombatManager::handleAreaAction(CreatureObject* creature, CreatureObject* t
 			
 			zone->unlock();
 
-			if (doAction(creature, targetCreature, skill, NULL)) {
-				if (skill->isAttackSkill())
-					targetCreature->addDefender(creature);
-			}
+			doAction(creature, targetCreature, skill, NULL);
 
 			zone->lock();
 		}
@@ -242,7 +240,7 @@ bool CombatManager::doAction(CreatureObject* attacker, CreatureObject* targetCre
 					targetCreature->unlock();
 					return false;
 				}
-						
+										
 				return handleMountDamage(attacker, (MountCreature*)creature);
 			}
 		}
@@ -253,7 +251,11 @@ bool CombatManager::doAction(CreatureObject* attacker, CreatureObject* targetCre
 			else if (targetCreature->isDancing())
 				targetCreature->stopDancing();
 			
-			attacker->setDefender(targetCreature);
+			if (skill->isArea()) 
+				attacker->addDefender(targetCreature);
+			else
+				attacker->setDefender(targetCreature);
+			
 			targetCreature->addDefender(attacker);
 		}
 		
@@ -292,9 +294,19 @@ bool CombatManager::doAction(CreatureObject* attacker, CreatureObject* targetCre
 		}
 			
 		targetCreature->unlock();
+	} catch (Exception& e) {
+		cout << "Exception in doAction(CreatureObject* attacker, CreatureObject* targetCreature, TargetSkill* skill)\n" 
+			 << e.getMessage() << "\n"; 
+		e.printStackTrace();
+		
+		targetCreature->unlock();
+		
+		return false;
 	} catch (...) {
 		cout << "exception in doAction(CreatureObject* attacker, CreatureObject* targetCreature, TargetSkill* skill)";
+		
 		targetCreature->unlock();
+		
 		return false;
 	}
 	
@@ -410,8 +422,8 @@ void CombatManager::requestDuel(Player* player, uint64 targetID) {
 		SceneObject* targetObject = zone->lookupObject(targetID);
 
 		if (targetObject != NULL && targetObject->isPlayer()) {
-			Player* targetPlayer = (Player*)targetObject;
-			if (targetPlayer != player)
+			Player* targetPlayer = (Player*) targetObject;
+			if (targetPlayer != player && targetPlayer->isOnline())
 				requestDuel(player, targetPlayer);
 		}
 	}
@@ -500,12 +512,14 @@ void CombatManager::requestEndDuel(Player* player, Player* targetPlayer) {
 	/* Pre: player != targetPlayer and not NULL; player is locked
 	 * Post: player requested to end the duel with targetPlayer
 	 */
-	 
+	
 	if (player->isListening())
 		player->stopListen(player->getListenID());
 		
 	if (player->isWatching())
 		player->stopWatch(player->getWatchID());
+
+	targetPlayer->acquire();
 		
 	try {
 		targetPlayer->wlock(player);
@@ -515,6 +529,7 @@ void CombatManager::requestEndDuel(Player* player, Player* targetPlayer) {
 			player->sendMessage(csm);
 		
 			targetPlayer->unlock();
+			targetPlayer->release();
 			return;
 		}
 
@@ -541,6 +556,8 @@ void CombatManager::requestEndDuel(Player* player, Player* targetPlayer) {
 	} catch (...) {
 		targetPlayer->unlock();
 	}
+	
+	targetPlayer->release();
 }
 
 void CombatManager::freeDuelList(Player* player) {
@@ -562,6 +579,8 @@ void CombatManager::freeDuelList(Player* player) {
 		Player* targetPlayer = player->getDuelListObject(0);
 		
 		if (targetPlayer != NULL) {
+			targetPlayer->acquire();
+
 			try {
 				targetPlayer->wlock(player);
 
@@ -584,9 +603,15 @@ void CombatManager::freeDuelList(Player* player) {
 				player->removeFromDuelList(targetPlayer);
 	
 				targetPlayer->unlock();
+			} catch (ObjectNotDeployedException& e) {
+				player->removeFromDuelList(targetPlayer);
+
+				cout << "Exception on CombatManager::freeDuelList()\n" << e.getMessage() << "\n";
 			} catch (...) {
 				targetPlayer->unlock();
 			}
+			
+			targetPlayer->release();
 		}
 	}
 }
@@ -617,12 +642,15 @@ void CombatManager::declineDuel(Player* player, Player* targetPlayer) {
 			
 	if (player->isWatching())
 		player->stopWatch(player->getWatchID());
+		
+	targetPlayer->acquire();
 			
-	try {
+	try {		
 		targetPlayer->wlock(player);
 	
 		if (targetPlayer->requestedDuelTo(player)) {
 			targetPlayer->removeFromDuelList(player);
+			
 			ChatSystemMessage* csm = new ChatSystemMessage("duel", "cancel_self", targetPlayer->getObjectID());
 			player->sendMessage(csm);
 		
@@ -634,6 +662,8 @@ void CombatManager::declineDuel(Player* player, Player* targetPlayer) {
 	} catch (...) {
 		targetPlayer->unlock();
 	}
+	
+	targetPlayer->release();
 }
 
 void CombatManager::doDodge(CreatureObject* creature, CreatureObject* defender) {

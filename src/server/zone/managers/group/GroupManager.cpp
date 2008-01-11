@@ -141,7 +141,7 @@ void GroupManager::joinGroup(Player* player) {
 		
 		player->info("joining group");
 		
-		//player->acquire();
+		player->acquire();
 		
 		group->addPlayer(player);
 		player->setGroup(group);
@@ -166,8 +166,10 @@ GroupObject* GroupManager::createGroup(Player* leader) {
 	// Post: GroupObject is a new group with leader, leader locked.
 	
 	ZoneServer* server = leader->getZone()->getZoneServer();
+	
 	GroupObjectImplementation* groupImpl = new GroupObjectImplementation(server->getNextCreatureID(), leader);
 	GroupObject* group = (GroupObject*) groupImpl->deploy();
+	
 	group->setZone(leader->getZone());
 	group->sendTo(leader);
 
@@ -209,8 +211,8 @@ void GroupManager::leaveGroup(GroupObject* group, Player* player) {
 		player->sendMessage(msg);
 		
 		player->info("leaving group");
-		
-		//player->release();
+
+		player->release();
 
 		if (group->getGroupSize() < 2) {
 			group->disband();
@@ -224,7 +226,7 @@ void GroupManager::leaveGroup(GroupObject* group, Player* player) {
 	}
 	
 	player->wlock();
-	
+
 	if (destroyGroup)
 		delete group;
 
@@ -292,7 +294,7 @@ void GroupManager::kickFromGroup(GroupObject* group, Player* player, Player* pla
 
 			playerToKick->info("kikcing from group");
 
-			//playerToKick->release();
+			playerToKick->release();
 		}
 	
 		group->unlock();

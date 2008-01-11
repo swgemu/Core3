@@ -90,6 +90,8 @@ public:
 
 	void run();
 
+	void stop();
+	
 	// creature loading methods
 	void loadTrainers();
 	void loadRecruiters();

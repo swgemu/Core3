@@ -152,9 +152,11 @@ public:
 	void activateRecovery();
 	bool doRecovery();
 	void doStatesRecovery();
-	
-	void doIncapAnimation();
 
+	void queueRespawn();
+
+	void doIncapAnimation();
+	
 	// waypoint methods
 	void setPatrolPoint(Coordinate* cord, bool doLock = true );	
 

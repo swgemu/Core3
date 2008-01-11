@@ -54,6 +54,10 @@ import "managers/creature/CreatureManager";
 include "engine/util/QuadTreeEntry";
 
 interface Zone {
+	void startManagers();
+	
+	void stopManagers();
+
 	void lock(boolean doLock = true);
 	void unlock(boolean doLock = true);
 	
@@ -90,7 +94,5 @@ interface Zone {
 	void removeAll();
 	boolean update(QuadTreeEntry obj);
 	void inRange(QuadTreeEntry obj, float range);
-	
-	void startManagers();
-	
+
 }

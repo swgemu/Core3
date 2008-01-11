@@ -7,11 +7,17 @@
 
 #include "../../ZoneServer.h"
 #include "../../ZoneProcessServerImplementation.h"
+
 #include "../../objects/player/Player.h"
+
 #include "../../objects/tangible/Inventory.h"
+
 #include "../../objects/waypoint/WaypointObjectImplementation.h"
+
 #include "../../objects/tangible/surveytool/SurveyTool.h"
+
 #include "../../objects/tangible/resource/ResourceContainer.h"
+
 #include "ResourceManager.h"
 #include "ResourceImplementation.h"
 

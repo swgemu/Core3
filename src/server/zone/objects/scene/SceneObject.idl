@@ -55,10 +55,11 @@ import "../../ZoneClient";
 import "../player/Player";
 
 interface SceneObject implements RWLockable {
+	void finalize();
+
 	void redeploy();
 	
 	void scheduleUndeploy();
-	void doUndeploy();
 
 	// client methods
 	void sendTo(Player player, boolean doClose = true);

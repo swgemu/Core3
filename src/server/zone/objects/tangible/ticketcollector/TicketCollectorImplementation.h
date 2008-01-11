@@ -69,6 +69,13 @@ public:
 		initializePosition(x , z, y);
 		
 		shuttle = shutle;
+
+		stringstream loggingname;
+		loggingname << "TicketCollector = 0x" << objid;
+		setLoggingName(loggingname.str());
+	
+		setLogging(false);
+		setGlobalLogging(true);
 	}
 	
 	int useObject(Player* player) {

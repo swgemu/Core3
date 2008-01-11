@@ -362,6 +362,15 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 				if (x >= -8192 && x < 8192 && y >= -8192 && y < 8192)
 					player->doWarp(x, y);
 			}
+		} else if (cmd == "@warpTo") {
+			if (userManager->isAdmin(player->getFirstName())) {
+				string name;
+				tokenizer.getStringToken(name);
+
+				Player* target = playerMap->get(name);
+				if (target != NULL)
+					player->doWarp(target->getPositionX(), target->getPositionY(), 0, 64);
+			}
 		} /*else if (cmd == "@playAnim") {
 			string anim;
 			tokenizer.getStringToken(anim);
@@ -388,7 +397,14 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 		} else if (cmd == "@banUser") {
 			if (userManager->isAdmin(player->getFirstName())) {
 				string name;
-				tokenizer.getStringToken(name);
+
+				try {
+					tokenizer.getStringToken(name);
+				} catch (...) {
+					SceneObject* target = player->getTarget();
+					if (target->isPlayer())
+						name = ((Player*) target)->getFirstName();
+				}
 			
 				if (server->banUser(name, player->getFirstName())) {
 					player->sendSystemMessage("player \'" + name + "\' is banned");

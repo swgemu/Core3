@@ -123,7 +123,7 @@ public:
 
 	void switchMap(int planetid);
 
-	void doWarp(float x, float y, float z = 0, bool doRandomize = false);
+	void doWarp(float x, float y, float z = 0, float randomizeDistance = 0);
 
 	void bounceBack();
 
@@ -274,6 +274,8 @@ public:
 	void setPlayerObject(PlayerObject* obj);
 
 	void setOnline();
+
+	void clearDisconnectEvent();
 
 	void setClient(ZoneClient* client);
 
@@ -470,7 +472,7 @@ public:
 
 	void switchMap(int planetid);
 
-	void doWarp(float x, float y, float z, bool doRandomize);
+	void doWarp(float x, float y, float z, float randomizeDistance);
 
 	void bounceBack();
 
@@ -621,6 +623,8 @@ public:
 	void setPlayerObject(PlayerObject* obj);
 
 	void setOnline();
+
+	void clearDisconnectEvent();
 
 	void setClient(ZoneClient* client);
 

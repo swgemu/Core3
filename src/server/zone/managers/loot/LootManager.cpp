@@ -71,6 +71,8 @@ void LootManager::lootCorpse(Player* player, Creature* creature) {
 		creature->removeFromQueue();
 
 		creature->unload();
+		
+		creature->queueRespawn();
 
 		creature->unlock();
 	} catch (...) {
@@ -82,6 +84,11 @@ void LootManager::lootCorpse(Player* player, Creature* creature) {
 void LootManager::createLoot(Creature* creature) {
 	//Pre: creature wlocked
 	//Post: creature wlocked
+	Inventory* inventory = creature->getInventory();
+	
+	if (inventory != NULL && inventory->objectsSize() > 0)
+		return;
+		
 	int creatureLevel = creature->getLevel();
 
 	if (creatureLevel == 0) 

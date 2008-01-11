@@ -360,6 +360,7 @@ void CreatureImplementation::notifyPositionUpdate(QuadTreeEntry* obj) {
 			info("aggroing " + player->getFirstName());
 
 			aggroedCreature = player;
+			aggroedCreature->acquire();
 
 			if (isQueued())
 				creatureManager->dequeueActivity(this);
@@ -400,9 +401,12 @@ bool CreatureImplementation::activate() {
 		
 		needMoreActivity |= doMovement();
 	
-		if (aggroedCreature != NULL)
-			needMoreActivity |= attack(aggroedCreature);
-		else if (isInCombat())
+		if (aggroedCreature != NULL) {
+			if (aggroedCreature->isPlayer() && !((Player*) aggroedCreature)->isOnline())
+				deagro();
+			else
+				needMoreActivity |= attack(aggroedCreature);
+		} else if (isInCombat())
 			clearCombatState();
 		
 		needMoreActivity |= doRecovery();
@@ -414,6 +418,11 @@ bool CreatureImplementation::activate() {
 		} else
 			info("no more activities needed");
 			
+		unlock();
+	} catch (Exception& e) {
+		cout << "exception CreatureImplementation::activate()\n";
+		e.printStackTrace();
+
 		unlock();
 	} catch (...) {
 		cout << "exception CreatureImplementation::activate()\n";
@@ -432,7 +441,7 @@ bool CreatureImplementation::checkState() {
 	if (isDead() && isInActiveState()) {
 		info("queing despawn");
 		
-		clearCombatState();
+		deagro();
 		
 		creatureState = DESPAWNING;
 		
@@ -440,7 +449,7 @@ bool CreatureImplementation::checkState() {
 		
 		return false;
 	} else if (isDeSpawning()) {
-		clearCombatState();
+		deagro();
 		
 		creatureState = RESPAWNING;
 		
@@ -472,6 +481,12 @@ void CreatureImplementation::resetState() {
 	health = healthMax;
 	action = actionMax;
 	mind = mindMax;
+	
+	healthWounds = 0;
+	actionWounds = 0;
+	mindWounds = 0;
+	
+	clearStates();
 	
 	float distance = System::random(64) + 16;
 	randomizePosition(distance);
@@ -549,6 +564,7 @@ void CreatureImplementation::doAttack(CreatureObject* target, int damage) {
 		info("new target locked");
 
 		aggroedCreature = target;
+		aggroedCreature->acquire();
 		
 		updateTarget(target);
 
@@ -566,13 +582,9 @@ bool CreatureImplementation::attack(CreatureObject* target) {
 		return false;
 
 	if (target->isIncapacitated() || target->isDead() || !isInRange(target, 64)) {
+		deagro();
+
 		doIncapAnimation();
-			
-		aggroedCreature = NULL;
-		
-		clearTarget();
-		clearCombatState();
-		
 		return false;
 	}
 
@@ -616,11 +628,7 @@ bool CreatureImplementation::attack(CreatureObject* target) {
 	delete action;
 	
 	if (target->isIncapacitated() || target->isDead()) {
-		aggroedCreature = NULL;
-
-		clearTarget();
-		clearCombatState();
-		
+		deagro();
 		return false;
 	}
 	
@@ -749,6 +757,18 @@ void CreatureImplementation::doStatesRecovery() {
 	}
 
 	updateStates();
+}
+
+void CreatureImplementation::queueRespawn() {
+	creatureState = RESPAWNING;
+			
+	stringstream msg;
+	msg << "respawning creature with " << respawnTimer << "s timer";
+	info(msg);
+			
+	removeFromQueue();
+	
+	creatureManager->queueActivity(this, respawnTimer * 1000);
 }
 
 void CreatureImplementation::setPatrolPoint(Coordinate* cord, bool doLock) {

@@ -69,6 +69,8 @@ interface ZoneServer {
 
 	SceneObject removeObject(unsigned long oid, boolean doLock = true);
 
+	SceneObject getCachedObject(unsigned long oid, boolean doLock = true);
+
 	SceneObject removeCachedObject(unsigned long oid, boolean doLock = true);
 
 	// administration methods
