@@ -166,6 +166,9 @@ void ZoneServerImplementation::startManagers() {
 
 	ResourceManagerImplementation* resImpl = new ResourceManagerImplementation(_this, processor);
 	resourceManager = (ResourceManager*) resImpl->deploy("ResourceManager");
+	
+	BazaarManagerImplementation* bazImpl = new BazaarManagerImplementation(_this);
+	bazaarManager = (BazaarManager*) bazImpl->deploy("BazaarManager");
 
 	ChatManagerImplementation* chatImpl = new ChatManagerImplementation(_this, 10000);
 	chatManager = (ChatManager*) chatImpl->deploy("ChatManager");
