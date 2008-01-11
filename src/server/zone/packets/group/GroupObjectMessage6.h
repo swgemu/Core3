@@ -57,14 +57,16 @@ public:
 			: BaseLineMessage(gr->getObjectID(), 0x4352454F, 6, 0x06) {
 		
 		grup = gr;
-		insertInt(0x43);
+		insertFloat(128.f);
 		
 		groupLists();
 		
-		insertShort(0);
+		insertAscii("");
 		insertShort(0);
 		insertInt(0);
-
+		insertLong(0);
+		insertInt(0);
+		
 		setSize();
 	}
 	
@@ -80,7 +82,7 @@ public:
 			insertAscii(player->getCharacterName().c_str());
 		}
 		
-		insertInt(0);
+		insertInt(0); // uses the same method as above to parse this
 		insertInt(0);
 	}
 	

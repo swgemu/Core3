@@ -119,6 +119,7 @@ public:
 		insertInt(0);
 
 		insertShort(0);
+		insertByte(0);
 
 		setSize();
 	}

@@ -159,6 +159,9 @@ void ZonePacketHandler::handleMessage(Message* pack) {
 		break;
 	case 04:
 		switch (opcode) {
+		case 0xD5899226:
+			handleClientPermissionsMessage(pack);
+			break;
 		case 0x092D3564: // Selection box return
 			handleSuiEventNotification(pack);
 			break;
