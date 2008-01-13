@@ -161,27 +161,27 @@ void ItemManagerImplementation::createPlayerObject(Player* player, ResultSet* re
 		weaponitem->setMaxRangeAccuracy(result->getInt(22));
 		weaponitem->setWoundsRatio(result->getInt(23));
 		weaponitem->setArmorPiercing(result->getInt(24));
-		weaponitem->setConditionDamage(result->getInt(25));
-		weaponitem->setMaxCondition(result->getInt(26));
-		weaponitem->setDot0Type(result->getInt(48));
-		weaponitem->setDot0Attribute(result->getInt(49));
-		weaponitem->setDot0Strength(result->getInt(50));
-		weaponitem->setDot0Duration(result->getInt(51));
-		weaponitem->setDot0Potency(result->getInt(52));
-		weaponitem->setDot0Uses(result->getInt(53));
-		weaponitem->setDot1Type(result->getInt(54));
-		weaponitem->setDot1Attribute(result->getInt(55));
-		weaponitem->setDot1Strength(result->getInt(56));
-		weaponitem->setDot1Duration(result->getInt(57));
-		weaponitem->setDot1Potency(result->getInt(58));
-		weaponitem->setDot1Uses(result->getInt(59));
-		weaponitem->setDot2Type(result->getInt(60));
-		weaponitem->setDot2Attribute(result->getInt(61));
-		weaponitem->setDot2Strength(result->getInt(62));
-		weaponitem->setDot2Duration(result->getInt(63));
-		weaponitem->setDot2Potency(result->getInt(64));
-		weaponitem->setDot2Uses(result->getInt(65));
-		weaponitem->setSliced(result->getBoolean(66));		
+		weaponitem->setConditionDamage(result->getInt(26));
+		weaponitem->setMaxCondition(result->getInt(27));
+		weaponitem->setDot0Type(result->getInt(49));
+		weaponitem->setDot0Attribute(result->getInt(50));
+		weaponitem->setDot0Strength(result->getInt(51));
+		weaponitem->setDot0Duration(result->getInt(52));
+		weaponitem->setDot0Potency(result->getInt(53));
+		weaponitem->setDot0Uses(result->getInt(54));
+		weaponitem->setDot1Type(result->getInt(55));
+		weaponitem->setDot1Attribute(result->getInt(56));
+		weaponitem->setDot1Strength(result->getInt(57));
+		weaponitem->setDot1Duration(result->getInt(58));
+		weaponitem->setDot1Potency(result->getInt(59));
+		weaponitem->setDot1Uses(result->getInt(60));
+		weaponitem->setDot2Type(result->getInt(61));
+		weaponitem->setDot2Attribute(result->getInt(62));
+		weaponitem->setDot2Strength(result->getInt(63));
+		weaponitem->setDot2Duration(result->getInt(64));
+		weaponitem->setDot2Potency(result->getInt(65));
+		weaponitem->setDot2Uses(result->getInt(66));
+		weaponitem->setSliced(result->getBoolean(67));	
 		break;
 	case TangibleObjectImplementation::CLOTH:
 		item = new WearableImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
@@ -191,29 +191,30 @@ void ItemManagerImplementation::createPlayerObject(Player* player, ResultSet* re
 
 		ArmorImplementation* armoritem = (ArmorImplementation*) item;
 		armoritem->setRating(result->getInt(24));
-		//((ArmorImplementation*)item)->setCondition(result->getInt(25));
-		armoritem->setMaxCondition(result->getInt(26));
-		armoritem->setHealthEncumbrance(result->getInt(27));
-		armoritem->setActionEncumbrance(result->getInt(28));
-		armoritem->setMindEncumbrance(result->getInt(29));	 	
-		armoritem->setKinetic(result->getFloat(30));
-		armoritem->setKineticIsSpecial(result->getBoolean(31));
-		armoritem->setEnergy(result->getFloat(32));
-		armoritem->setEnergyIsSpecial(result->getBoolean(33));
-		armoritem->setElectricity(result->getFloat(34));
-		armoritem->setElectricityIsSpecial(result->getBoolean(35));
-		armoritem->setStun(result->getFloat(36));
-		armoritem->setStunIsSpecial(result->getBoolean(37));
-		armoritem->setBlast(result->getFloat(38));
-		armoritem->setBlastIsSpecial(result->getBoolean(39));
-		armoritem->setHeat(result->getFloat(40));
-		armoritem->setHeatIsSpecial(result->getBoolean(41));
-		armoritem->setCold(result->getFloat(42));
-		armoritem->setColdIsSpecial(result->getBoolean(43));
-		armoritem->setAcid(result->getFloat(44));
-		armoritem->setAcidIsSpecial(result->getBoolean(45));
-		armoritem->setLightSaber(result->getFloat(46));
-		armoritem->setLightSaberIsSpecial(result->getBoolean(47));		
+		armoritem->setType(result->getInt(25));
+		//armoritem->setCondition(result->getInt(26));
+		armoritem->setMaxCondition(result->getInt(27));
+		armoritem->setHealthEncumbrance(result->getInt(28));
+		armoritem->setActionEncumbrance(result->getInt(29));
+		armoritem->setMindEncumbrance(result->getInt(30));	 	
+		armoritem->setKinetic(result->getFloat(31));
+		armoritem->setKineticIsSpecial(result->getBoolean(32));
+		armoritem->setEnergy(result->getFloat(33));
+		armoritem->setEnergyIsSpecial(result->getBoolean(34));
+		armoritem->setElectricity(result->getFloat(35));
+		armoritem->setElectricityIsSpecial(result->getBoolean(36));
+		armoritem->setStun(result->getFloat(37));
+		armoritem->setStunIsSpecial(result->getBoolean(38));
+		armoritem->setBlast(result->getFloat(39));
+		armoritem->setBlastIsSpecial(result->getBoolean(40));
+		armoritem->setHeat(result->getFloat(41));
+		armoritem->setHeatIsSpecial(result->getBoolean(42));
+		armoritem->setCold(result->getFloat(43));
+		armoritem->setColdIsSpecial(result->getBoolean(44));
+		armoritem->setAcid(result->getFloat(45));
+		armoritem->setAcidIsSpecial(result->getBoolean(46));
+		armoritem->setLightSaber(result->getFloat(47));
+		armoritem->setLightSaberIsSpecial(result->getBoolean(48));
 		break;
 	case TangibleObjectImplementation::TICKET:
 		break;
@@ -227,19 +228,19 @@ void ItemManagerImplementation::createPlayerObject(Player* player, ResultSet* re
 	case TangibleObjectImplementation::RESOURCE:
 		item = new ResourceContainerImplementation(objectid, objectcrc, objectname, objecttemp, player);
 		ResourceContainerImplementation* resourceItem = (ResourceContainerImplementation*) item;
-		resourceItem->setResourceID(result->getInt(67));
-		resourceItem->setContents(result->getInt(68));
-		resourceItem->setDecayResistance(result->getInt(69));
-		resourceItem->setQuality(result->getInt(70));
-		resourceItem->setFlavor(result->getInt(71));
-		resourceItem->setPotentialEnergy(result->getInt(72));
-		resourceItem->setMalleability(result->getInt(73));
-		resourceItem->setToughness(result->getInt(74));
-		resourceItem->setShockResistance(result->getInt(75));
-		resourceItem->setColdResistance(result->getInt(76));
-		resourceItem->setHeatResistance(result->getInt(77));
-		resourceItem->setConductivity(result->getInt(78));
-		resourceItem->setEntangleResistance(result->getInt(79));
+		resourceItem->setResourceID(result->getInt(68));
+		resourceItem->setContents(result->getInt(69));
+		resourceItem->setDecayResistance(result->getInt(70));
+		resourceItem->setQuality(result->getInt(71));
+		resourceItem->setFlavor(result->getInt(72));
+		resourceItem->setPotentialEnergy(result->getInt(73));
+		resourceItem->setMalleability(result->getInt(74));
+		resourceItem->setToughness(result->getInt(75));
+		resourceItem->setShockResistance(result->getInt(76));
+		resourceItem->setColdResistance(result->getInt(77));
+		resourceItem->setHeatResistance(result->getInt(78));
+		resourceItem->setConductivity(result->getInt(79));
+		resourceItem->setEntangleResistance(result->getInt(80));
 		break;
 	default:
 		item = new TangibleObjectImplementation(objectid, objectname, objecttemp, objectcrc, equipped);
@@ -278,16 +279,40 @@ void ItemManagerImplementation::loadDefaultPlayerItems(Player* player) {
 
 	// armors
 	ArmorImplementation	* chestImpl = new ArmorImplementation(player, 0x7B476F26, unicode("Composite Chestplate"), "armor_composite_chestplate", false);
+	chestImpl->setType(ArmorImplementation::CHEST);
 	player->addInventoryItem(chestImpl->deploy());
 
 	ArmorImplementation* helmetImpl = new ArmorImplementation(player, 0x9AF51EAA, unicode("Composite Helmet"), "armor_composite_helmet", false);
+	helmetImpl->setType(ArmorImplementation::HEAD);
 	player->addInventoryItem(helmetImpl->deploy());
 
 	ArmorImplementation* bootsImpl = new ArmorImplementation(player, 0xDB91E9DB, unicode("Composite Boots"), "armor_composite_boots", false);
+	bootsImpl->setType(ArmorImplementation::FOOT);
 	player->addInventoryItem(bootsImpl->deploy());
 
 	ArmorImplementation* glovesImpl = new ArmorImplementation(player, 0x2C35FFA2, unicode("Composite Gloves"), "armor_composite_gloves", false);
+	glovesImpl->setType(ArmorImplementation::HAND);
 	player->addInventoryItem(glovesImpl->deploy());
+	
+	ArmorImplementation* pants2Impl = new ArmorImplementation(player, 0xC294C432, unicode("Composite Leggings"), "armor_composite_pants", false);
+	pants2Impl->setType(ArmorImplementation::LEG);
+	player->addInventoryItem(pants2Impl->deploy());
+
+	ArmorImplementation* biceplImpl = new ArmorImplementation(player, 0x13A4DA11, unicode("Composite Bicep"), "armor_composite_bicep_l", false);
+	biceplImpl->setType(ArmorImplementation::BICEPL);
+	player->addInventoryItem(biceplImpl->deploy());
+
+	ArmorImplementation* biceprImpl = new ArmorImplementation(player, 0x63719F82, unicode("Composite Bicep"), "armor_composite_bicep_r", false);
+	biceprImpl->setType(ArmorImplementation::BICEPR);
+	player->addInventoryItem(biceprImpl->deploy());
+
+	ArmorImplementation* bracerlImpl = new ArmorImplementation(player, 0x4DB0192D, unicode("Composite Bracer"), "armor_composite_bracer_l", false);
+	bracerlImpl->setType(ArmorImplementation::BRACERL);
+	player->addInventoryItem(bracerlImpl->deploy());
+
+	ArmorImplementation* bracerrImpl = new ArmorImplementation(player, 0x3D655CBE, unicode("Composite Bracer"), "armor_composite_bracer_r", false);
+	bracerrImpl->setType(ArmorImplementation::BRACERR);
+	player->addInventoryItem(bracerrImpl->deploy());
 
 	// weapons
 	Weapon* weapon;
@@ -297,6 +322,8 @@ void ItemManagerImplementation::loadDefaultPlayerItems(Player* player) {
 	deployItemFor(player, weaoImpl, "Weapon");*/
 
 	weaoImpl = new OneHandedMeleeWeaponImplementation(player, "object/weapon/melee/baton/shared_baton_gaderiffi.iff", unicode("Teh Pwn"), "baton_gaderiffi", false);
+	weaoImpl->setDamageType(WeaponImplementation::KINETIC);
+	weaoImpl->setArmorPiercing(WeaponImplementation::NONE);
 	player->addInventoryItem(weaoImpl->deploy());
 
 	/*weapon = new Weapon(this, "object/weapon/melee/baton/base/shared_baton_stun.iff", 
@@ -307,18 +334,28 @@ void ItemManagerImplementation::loadDefaultPlayerItems(Player* player) {
 	player->addInventoryItem(weaoImpl->deploy());
 
 	weaoImpl = new RifleRangedWeaponImplementation(player, "object/weapon/ranged/rifle/shared_rifle_t21.iff", unicode("Teh Pwn"), "rifle_t21", false);
+	weaoImpl->setDamageType(WeaponImplementation::ENERGY);
+	weaoImpl->setArmorPiercing(WeaponImplementation::HEAVY);
 	player->addInventoryItem(weaoImpl->deploy());
 
 	weaoImpl = new PistolRangedWeaponImplementation(player, "object/weapon/ranged/pistol/shared_pistol_cdef.iff", unicode("Teh Pwn Pistol"), "pistol_cdef", false);
+	weaoImpl->setDamageType(WeaponImplementation::ENERGY);
+	weaoImpl->setArmorPiercing(WeaponImplementation::NONE);
 	player->addInventoryItem(weaoImpl->deploy());
 
 	weaoImpl = new CarbineRangedWeaponImplementation(player, "object/weapon/ranged/carbine/shared_carbine_cdef.iff", unicode("Teh Pwn Carbine"), "carbine_cdef", false);
+	weaoImpl->setDamageType(WeaponImplementation::ENERGY);
+	weaoImpl->setArmorPiercing(WeaponImplementation::NONE);
 	player->addInventoryItem(weaoImpl->deploy());
 
 	weaoImpl = new PolearmMeleeWeaponImplementation(player, "object/weapon/melee/polearm/shared_lance_vibrolance.iff", unicode("Teh Pwn Lance"), "lance_vibrolance", false);
+	weaoImpl->setDamageType(WeaponImplementation::ELECTRICITY);
+	weaoImpl->setArmorPiercing(WeaponImplementation::LIGHT);
 	player->addInventoryItem(weaoImpl->deploy());
 
 	weaoImpl = new TwoHandedMeleeWeaponImplementation(player, "object/weapon/melee/2h_sword/shared_2h_sword_maul.iff", unicode("Teh Pwn Battle Hammer"), "2h_sword_battleaxe", false);
+	weaoImpl->setDamageType(WeaponImplementation::BLAST);
+	weaoImpl->setArmorPiercing(WeaponImplementation::MEDIUM);
 	player->addInventoryItem(weaoImpl->deploy());
 	
 	// Survey tools
@@ -550,11 +587,11 @@ void ItemManagerImplementation::createPlayerArmor(Player* player, Armor* item) {
 	try {
 		stringstream query;
 		query << "INSERT INTO `character_items` "
-			  << "(`item_id`,`character_id`,`name`,`template_crc`,`template_type`,`template_name`,`equipped`,`category`,`armor_piercing`,`max_condition`,`health_encumb`,`action_encumb`,`mind_encumb`,`kinetic`,`kinetic_special`,`energy`,`energy_special`,`electricity`,`electricity_special`,`stun`,`stun_special`,`blast`,`blast_special`,`heat`,`heat_special`,`cold`,`cold_special`,`acid`,`acid_special`,`lightsaber`,`lightsaber_special`)"
+			  << "(`item_id`,`character_id`,`name`,`template_crc`,`template_type`,`template_name`,`equipped`,`armor_piercing`,`armor_type`,`condition_damage`,`max_condition`,`health_encumb`,`action_encumb`,`mind_encumb`,`kinetic`,`kinetic_special`,`energy`,`energy_special`,`electricity`,`electricity_special`,`stun`,`stun_special`,`blast`,`blast_special`,`heat`,`heat_special`,`cold`,`cold_special`,`acid`,`acid_special`,`lightsaber`,`lightsaber_special`)"
 			  << " VALUES(" << item->getObjectID() << "," << player->getCharacterID() 
 			  << ",'\\" << item->getName().c_str() << "'," 
 			  << item->getObjectCRC() << "," << item->getObjectSubType() << ",'" << item->getTemplateName() << "',"  
-			  << item->isEquipped() << "," << item->getRating() << "," << 0 << "," 
+			  << item->isEquipped() << "," << item->getRating() << "," << item->getType() << "," << 0 << ","
 			  << item->getMaxCondition() << "," << item->getHealthEncumbrance() << "," << item->getActionEncumbrance() << "," 
 			  << item->getMindEncumbrance() << "," << item->getKinetic() << "," << item->isKineticSpecial() <<  ","  
 			  << item->getEnergy() << "," << item->isEnergySpecial() << "," << item->getElectricity() << "," 
@@ -709,8 +746,8 @@ void ItemManagerImplementation::showDbStats(Player* player) {
 			if (res->getInt(4) == 2) {
 				txt << "ObjID: " << res->getUnsignedLong(0) << " Name: " << res->getString(2) 
 					<< "\\#ffffff MinDmg: " << res->getFloat(11) << " MaxDmg: " << res->getFloat(12) 
-					<< " Spd: " << res->getFloat(13) << " Strength: " << res->getInt(57) 
-					<< " Potency: " << res->getInt(59) << "\n";
+					<< " Spd: " << res->getFloat(13) << " Strength: " << res->getInt(58) 
+					<< " Potency: " << res->getInt(60) << "\n";
 			}
 		}
 		
@@ -740,10 +777,10 @@ void ItemManagerImplementation::showDbDeleted(Player* player) {
 					<< " Spd: " << res->getFloat(13) << "\n";
 			} else if (res->getInt(4) == 4) {
 				txt << "ObjID: " << res->getUnsignedLong(0) << " Name: " << res->getString(2) 
-				<< "\\#ffffff Resists: " << res->getFloat(30) << " " << res->getFloat(32) << " " 
-				<< res->getFloat(34) << " " << res->getFloat(36) << " " << res->getFloat(38) << " " 
-				<< res->getFloat(40) << " " << res->getFloat(42) << " " << res->getFloat(44) << " " 
-				<< res->getFloat(46) << "\n";
+				<< "\\#ffffff Resists: " << res->getFloat(31) << " " << res->getFloat(33) << " " 
+				<< res->getFloat(35) << " " << res->getFloat(36) << " " << res->getFloat(39) << " " 
+				<< res->getFloat(41) << " " << res->getFloat(43) << " " << res->getFloat(45) << " " 
+				<< res->getFloat(47) << "\n";
 			} else {
 				txt << "ObjID: " << res->getUnsignedLong(0) << " Name: " << res->getString(2) << "\\#ffffff \n";
 			}

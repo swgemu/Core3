@@ -47,6 +47,7 @@ which carries forward this exception.
 
 class Player;
 class Creature;
+class Container;
 class ZoneProcessServerImplementation;
 
 class ChatSystemMessage;
@@ -62,6 +63,7 @@ public:
 	void createWeaponLoot(Creature* creature, int creatureLevel);
 	void createArmorLoot(Creature* creature, int creatureLevel);
 	void createJunkLoot(Creature* creature);
+
 };
 
 #endif /*LOOTMANAGER_H_*/

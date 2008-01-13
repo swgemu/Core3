@@ -495,24 +495,8 @@ void WeaponImplementation::decay(int decayRate) {
 void WeaponImplementation::setWeaponStats(int modifier){
 	wlock();
 	
-	if (templateName == "lance_nightsister") {
-		armorPiercing = NONE;
-		attackSpeed = 3.6;
-
-		damageType = ENERGY;
-		minDamage = 68;
-		maxDamage = 278;
-		woundsRatio = 33;
-
-		dot0Type = DISEASE;
-		dot0Attribute = HEALTH;
-		dot0Strength = 40;
-		dot0Duration = 1200;
-		dot0Potency = 70;
-		dot0Uses = 9000;
-	} else if (templateName == "rifle_flame_thrower") {
-		armorPiercing = NONE;
-		damageType = HEAT;
+	if (templateName == "rifle_flame_thrower") {
+		
 		minDamage = minDamage * 2;
 		maxDamage = maxDamage * 3;
 		woundsRatio = woundsRatio * 2;
@@ -522,30 +506,6 @@ void WeaponImplementation::setWeaponStats(int modifier){
 		maxRangeAccuracy = -120;
 
 		idealRange = 50;
-	} else if (templateName == "2h_sword_battleaxe") {
-		damageType == BLAST;
-	} else if (templateName == "lance_vibrolance") {
-		damageType = ELECTRICITY;
-		armorPiercing = LIGHT;
-	} else if (templateName == "baton_stun") {
-		damageType = STUN;
-	} else if (templateName == "pistol_dx2") {
-		damageType = ACID;
-	} else if (templateName == "carbine_dx6r") {
-		damageType = ACID;
-	} else if (templateName == "rifle_tenloss_dxr6") {
-		damageType = ACID;
-		armorPiercing = MEDIUM;
-	} else if (templateName == "rifle_jawa_ion") {
-		damageType = STUN;
-		armorPiercing = LIGHT;
-	} else if (templateName == "pistol_cdef") {
-		armorPiercing = NONE;
-	} else if (templateName == "carbine_cdef") {
-			damageType = ENERGY;
-			armorPiercing = NONE;
-	} else if (templateName == "knive_vibroblade") {
-		armorPiercing = LIGHT;
 	}
 	
 	int luck = (System::random(100)) + (modifier/4);
@@ -598,13 +558,13 @@ void WeaponImplementation::setWeaponStats(int modifier){
 		attackSpeed = round(10 * (attackSpeed - (attackSpeed * modifier / 500) - (luck / 150))) / 10;
 	}
 	
-	if (luck * System::random(100) > 1750) {
+	if (luck * System::random(100) > 1000) {
 		healthAttackCost = healthAttackCost - (modifier / 25) - (luck / 50);
 		actionAttackCost = actionAttackCost - (modifier / 25) - (luck / 50);
 		mindAttackCost = mindAttackCost - (modifier / 25) - (luck / 50);
 	}
 
-	if (luck * System::random(100) > 2000)
+	if (luck * System::random(100) > 1750)
 		woundsRatio = woundsRatio + (modifier / 15) + (luck / 10);
 	
 	if (playerRoll > 13500)	{
@@ -644,9 +604,9 @@ void WeaponImplementation::setWeaponStats(int modifier){
 		}
 	}
 	
-	pointBlankAccuracy = pointBlankAccuracy + 50;	// temporary accuracy hack
+	//pointBlankAccuracy = pointBlankAccuracy + 20;	// temporary accuracy hack
 	
-	attackSpeed = round(10*(attackSpeed / 1.25)) / 10;	// temporary speed fix
+	//attackSpeed = round(10*(attackSpeed / 1.25)) / 10;	// temporary speed fix
 	
 	if (attackSpeed < 1) 
 		attackSpeed = 1.0f;

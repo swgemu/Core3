@@ -119,10 +119,8 @@ public:
 				if (healthPoolAttackChance != 0 && rand < healthPoolAttackChance) {
 					float healthDamage = -damageRatio * average;
 					calculateDamageReduction(creature, targetCreature, healthDamage);
-
-					applyHealthPoolDamage(creature, targetCreature, (int32) healthDamage);
 	
-					damage += healthDamage;
+					damage += healthDamage - applyHealthPoolDamage(creature, targetCreature, (int32) healthDamage);
 				}
 		
 				if (strengthPoolAttackChance != 0 && rand < strengthPoolAttackChance) {
@@ -150,9 +148,7 @@ public:
 					float actionDamage = -damageRatio * average;
 					calculateDamageReduction(creature, targetCreature, actionDamage);
 
-					applyActionPoolDamage(creature, targetCreature, (int32) actionDamage);
-
-					damage += actionDamage;
+					damage += actionDamage - applyActionPoolDamage(creature, targetCreature, (int32) actionDamage);
 				}
 		
 				if (quicknessPoolAttackChance != 0 && rand < quicknessPoolAttackChance) {
@@ -179,9 +175,7 @@ public:
 					float mindDamage = -damageRatio * average;
 					calculateDamageReduction(creature, targetCreature, mindDamage);
 
-					applyMindPoolDamage(creature, targetCreature, (int32) mindDamage);
-
-					damage += mindDamage;
+					damage += mindDamage - applyMindPoolDamage(creature, targetCreature, (int32) mindDamage);
 				}
 		
 				if (focusPoolAttackChance != 0 && rand < focusPoolAttackChance) {

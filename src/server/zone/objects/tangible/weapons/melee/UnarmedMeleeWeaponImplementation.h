@@ -65,8 +65,11 @@ public:
 		minDamage = 58;
 		maxDamage = 172;
 		armorPiercing = LIGHT;
-		//attackSpeed = 2.0f;
 		attackSpeed = 2.1f;
+		
+		healthAttackCost = 19;
+		actionAttackCost = 32;
+		mindAttackCost = 19;
 	}
 };
 

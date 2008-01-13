@@ -46,9 +46,13 @@ import "../scene/SceneObject";
 
 import "../tangible/Inventory";
 
+import "../tangible/Container";
+
 import "../tangible/TangibleObject";
 
 import "../tangible/weapons/Weapon";
+
+import "../tangible/wearables/Armor";
 
 import "../group/GroupObject";
 
@@ -405,14 +409,21 @@ interface CreatureObject implements SceneObject {
 	
 	SceneObject getInventoryItem(unsigned long oid);
 	void removeInventoryItem(unsigned long oid);
+
+	SceneObject getLootItem(unsigned long oid);
+	void removeLootItem(unsigned long oid);
 		
 	void broadcastMessage(Message msg, int range = 128, boolean doLock = true);
 	
 	Inventory getInventory();
+
+	Container getLootContainer();
 	
 	unsigned long getNewItemID(); // should be virtual
 	
 	Weapon getWeapon();
+	
+	Armor getArmor(int type);
 	
 	int getSkillMod(const string name);
 	
@@ -447,6 +458,8 @@ interface CreatureObject implements SceneObject {
 	void sendSystemMessage(const string file, const string str, unsigned long targetid = 0);
 	
 	void addInventoryItem(TangibleObject item);
+	
+	void addLootItem(TangibleObject item);
 	
 	// Ent methods
 	void startDancing(const string anim);

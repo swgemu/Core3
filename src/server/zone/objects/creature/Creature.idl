@@ -49,6 +49,8 @@ import "../../Zone";
 
 import "../player/Player";
 
+import "../tangible/wearables/Armor";
+
 import "../tangible/lair/LairObject";
 
 interface Creature implements CreatureObject {

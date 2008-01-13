@@ -88,9 +88,9 @@ protected:
 
 public:
 	static const int ROBE = 1;
-	static const int WEAPON = 2;
+	//static const int WEAPON = 2;
 	static const int CLOTH = 3;
-	static const int ARMOR = 4;
+	//static const int ARMOR = 4;
 	static const int HAIR = 5;
 	static const int TICKET = 6;
 	static const int TERMINAL = 7;
@@ -102,7 +102,31 @@ public:
 	static const int SHIPCOMPONENT = 13;
 	static const int SURVEYTOOL = 14;
 	static const int RESOURCE = 15;
-
+	
+	static const int ARMOR = 256;
+	static const int BODYARMOR = 257;
+	static const int HEADARMOR = 258;
+	static const int MISCARMOR = 259;
+	static const int LEGARMOR = 260;
+	static const int ARMARMOR = 261;
+	static const int HANDARMOR = 262;
+	static const int FOOTARMOR = 263;
+	static const int SHIELDGENERATOR = 264;
+	
+	static const int WEAPON = 131072;
+	static const int MELEEWEAPON = 131073;
+	static const int RANGEDWEAPON = 131074;
+	static const int THROWNWEAPON = 131075;
+	static const int HEAVYWEAPON = 131076;
+	static const int MINE = 131077;
+	static const int SPECIALHEAVYWEAPON = 131078;
+	static const int ONEHANDMELEEWEAPON = 131079;
+	static const int TWOHANDMELEEWEAPON = 131080;
+	static const int POLEARM = 131081;
+	static const int PISTOL = 131082;
+	static const int CARBINE = 131083;
+	static const int RIFLE = 131084;
+	
 public:
 	TangibleObjectImplementation(uint64 oid, int tp = 0);
 	TangibleObjectImplementation(uint64 oid, const unicode& name, const string& tempname, uint32 tempCRC, int tp = 0);

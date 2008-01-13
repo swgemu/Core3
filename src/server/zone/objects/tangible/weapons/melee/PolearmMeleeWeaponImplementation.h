@@ -61,12 +61,13 @@ public:
 	}
 
 	void initialize() {
-		damageType = KINETIC;
 		minDamage = 149;
 		maxDamage = 272;
-		armorPiercing = MEDIUM;
-		//attackSpeed = 3.0f;
 		attackSpeed = 3.0f;
+		
+		healthAttackCost = 91;
+		actionAttackCost = 71;
+		mindAttackCost = 28;
 	}
 };
 

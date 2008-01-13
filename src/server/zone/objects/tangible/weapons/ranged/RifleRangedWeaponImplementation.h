@@ -63,7 +63,7 @@ public:
 	void initialize() {
 		damageType = ENERGY;
 		armorPiercing = HEAVY;
-		attackSpeed = 7.9;
+		attackSpeed = 5.9;
 
 		minDamage = 105;
 		maxDamage = 350;

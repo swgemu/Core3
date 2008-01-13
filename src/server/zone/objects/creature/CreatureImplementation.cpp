@@ -48,6 +48,8 @@ which carries forward this exception.
 #include "../../packets.h"
 
 #include "../tangible/Inventory.h" 
+#include "../tangible/Container.h" 
+
 #include "../terrain/Terrain.h"
 
 #include "../../managers/creature/CreatureManagerImplementation.h"
@@ -153,6 +155,9 @@ void CreatureImplementation::loadItems() {
 	InventoryImplementation* invImpl = new InventoryImplementation(_this);
 	inventory = (Inventory*) invImpl->deploy();
 	
+	ContainerImplementation* containerImpl = new ContainerImplementation(getNewItemID());
+	lootContainer = (Container*) containerImpl->deploy();
+	
 	Weapon* weapon = NULL;
 	
 	if (objectCRC == 0xBA7F23CD) { //storm trooper
@@ -176,6 +181,8 @@ void CreatureImplementation::loadItems() {
 			gaffi2Impl->setMinDamage(75 + level);
 			gaffi2Impl->setMaxDamage(100 + level);
 			gaffi2Impl->setAttackSpeed(1.5);
+			gaffi2Impl->setDamageType(WeaponImplementation::KINETIC);
+			gaffi2Impl->setArmorPiercing(WeaponImplementation::NONE);
 
 			weapon = (Weapon*) gaffi2Impl->deploy();
 			break;
@@ -184,7 +191,9 @@ void CreatureImplementation::loadItems() {
 					"object/weapon/melee/baton/shared_baton_stun.iff", unicode("a Stun Baton"), "baton_stun", true);
 			baton1Impl->setMinDamage(75 + level);
 			baton1Impl->setMaxDamage(100 + level);
-			baton1Impl->setAttackSpeed(1.5);			
+			baton1Impl->setAttackSpeed(1.5);
+			baton1Impl->setDamageType(WeaponImplementation::STUN);
+			baton1Impl->setArmorPiercing(WeaponImplementation::NONE);
 
 			weapon = (Weapon*) baton1Impl->deploy();
 			break;
@@ -200,6 +209,8 @@ void CreatureImplementation::loadItems() {
 			vibrolance1Impl->setMinDamage(150 + level);
 			vibrolance1Impl->setMaxDamage(300 + level);
 			vibrolance1Impl->setAttackSpeed(1.5);
+			vibrolance1Impl->setDamageType(WeaponImplementation::ELECTRICITY);
+			vibrolance1Impl->setArmorPiercing(WeaponImplementation::LIGHT);
 
 			weapon = (Weapon*) vibrolance1Impl->deploy();
 			break;
@@ -209,6 +220,8 @@ void CreatureImplementation::loadItems() {
 			lva1Impl->setMinDamage(150 + level);
 			lva1Impl->setMaxDamage(300 + level);
 			lva1Impl->setAttackSpeed(1.5);
+			lva1Impl->setDamageType(WeaponImplementation::KINETIC);
+			lva1Impl->setArmorPiercing(WeaponImplementation::MEDIUM);
 
 			weapon = (Weapon*) lva1Impl->deploy();
 			break;
@@ -219,6 +232,8 @@ void CreatureImplementation::loadItems() {
 		nyaxCarbImpl->setMinDamage(250);
 		nyaxCarbImpl->setMaxDamage(450);
 		nyaxCarbImpl->setAttackSpeed(1.5);
+		nyaxCarbImpl->setDamageType(WeaponImplementation::ENERGY);
+		nyaxCarbImpl->setArmorPiercing(WeaponImplementation::MEDIUM);
 
 		weapon = (Weapon*) nyaxCarbImpl->deploy();
 	} else

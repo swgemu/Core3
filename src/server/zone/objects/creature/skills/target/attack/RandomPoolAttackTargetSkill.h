@@ -88,6 +88,8 @@ public:
 		Weapon* weapon = creature->getWeapon();
 		float minDamage = 0;
 		float maxDamage = 0;
+		int reduction;
+		int bodyPart;
 		
 		if (weapon != NULL) {
 			minDamage = weapon->getMinDamage();
@@ -115,22 +117,26 @@ public:
 					damage = damage / 2;
 				
 				if (pool < healthPoolAttackChance) {
-					applyHealthPoolDamage(creature, targetCreature, (int32) damage);
+					bodyPart = System::random(6)+1;
+					reduction = applyHealthPoolDamage(creature, targetCreature, (int32) damage, bodyPart);
 				} else if (pool < healthPoolAttackChance + actionPoolAttackChance) {
-					applyActionPoolDamage(creature, targetCreature, (int32) damage);
-				} else if (pool < 100)
-					applyMindPoolDamage(creature, targetCreature, (int32) damage);
+					bodyPart = System::random(1)+7;
+					reduction = applyActionPoolDamage(creature, targetCreature, (int32) damage, bodyPart);
+				} else if (pool < 100) {
+					bodyPart = 9;
+					reduction = applyMindPoolDamage(creature, targetCreature, (int32) damage);
+				}
 			} else
 				return 0;
 		} else {
 			doMiss(creature, targetCreature, (int32) damage);
 			return 0;
 		}
-
-		if (hasCbtSpamHit()) 
-			creature->sendCombatSpam(targetCreature, NULL, -(int32)damage, getCbtSpamHit());
-
-		return -(int32)damage;
+		
+		if (hasCbtSpamHit())
+			creature->sendCombatSpam(targetCreature, NULL, -(int32) damage, getCbtSpamHit());
+		
+		return -(int32)(damage - reduction);
 	}
 
 	virtual bool calculateCost(CreatureObject* creature) {

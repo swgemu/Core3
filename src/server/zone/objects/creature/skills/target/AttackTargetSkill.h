@@ -47,6 +47,7 @@ which carries forward this exception.
 
 #include "../TargetSkill.h"
 #include "../PassiveSkill.h"
+#include "../../../tangible/wearables/Armor.h"
 
 #include "../../../../packets/object/ShowFlyText.h"
 
@@ -142,29 +143,37 @@ public:
 		*/
 	}
 
-	void applyHealthPoolDamage(CreatureObject* attacker, CreatureObject* target, int32 damage) {
-		int part = System::random(3);
-
+	int applyHealthPoolDamage(CreatureObject* attacker, CreatureObject* target, int32 damage, int part = 1) {
+		
+		Weapon* weapon = attacker->getWeapon();
+		Armor* armor = target->getArmor(part);
+				
+		int reduction = doArmorResists(armor, weapon, damage);
+		
+		damage = damage - reduction;
+		
 		target->changeHealthBar((int32) damage, true);
 			
-		if (part == 2) {
+		if (part < 3) {
 			if (attacker->isPlayer()) {
 				ShowFlyText* fly = new ShowFlyText(target, "combat_effects", "hit_body", 0xFF, 0, 0);
 				((Player*)attacker)->sendMessage(fly);
 			}
-		} else if (part == 1) {
+		} else if (part < 5) {
 			if (attacker->isPlayer()) {
-				ShowFlyText* fly = new ShowFlyText(target, "combat_effects", "hit_rarm", 0xFF, 0, 0);
+				ShowFlyText* fly = new ShowFlyText(target, "combat_effects", "hit_larm", 0xFF, 0, 0);
 				((Player*)attacker)->sendMessage(fly);
 			}
 		} else {
 			if (attacker->isPlayer()) { 
-				ShowFlyText* fly = new ShowFlyText(target, "combat_effects", "hit_larm", 0xFF, 0, 0);
+				ShowFlyText* fly = new ShowFlyText(target, "combat_effects", "hit_rarm", 0xFF, 0, 0);
 				((Player*)attacker)->sendMessage(fly);
 			}
 		}
 		
 		doDotWeaponAttack(attacker, target, 0);
+		
+		return reduction;
 	}
 	
 	void applyStrengthPoolDamage(CreatureObject* target, int32 damage) {
@@ -175,12 +184,18 @@ public:
 		target->changeConstitutionBar((int32) damage, true);
 	}
 
-	void applyActionPoolDamage(CreatureObject* attacker, CreatureObject* target, int32 damage) {
-		int part = System::random(2);
+	int applyActionPoolDamage(CreatureObject* attacker, CreatureObject* target, int32 damage, int part = 7) {
+		
+		Weapon* weapon = attacker->getWeapon();
+		Armor* armor = target->getArmor(part);
+		
+		int reduction = doArmorResists(armor, weapon, damage);
+		
+		damage = damage - reduction;
 		
 		target->changeActionBar((int32) damage, true);
-			
-		if (part == 1) {
+		
+		if (part == 1) {  // below is sending flytext for the wrong parts...
 			if (attacker->isPlayer()) {
 				ShowFlyText* fly = new ShowFlyText(target, "combat_effects", "hit_lleg", 0, 0xFF, 0);
 				((Player*)attacker)->sendMessage(fly);
@@ -191,8 +206,10 @@ public:
 				((Player*)attacker)->sendMessage(fly);
 			}
 		}
-		
+
 		doDotWeaponAttack(attacker, target, 0);
+		
+		return reduction;
 	}
 	
 	void applyQuicknessPoolDamage(CreatureObject* target, int32 damage) {
@@ -203,15 +220,25 @@ public:
 		target->changeStaminaBar((int32) damage, true);
 	}	
 
-	void applyMindPoolDamage(CreatureObject* attacker, CreatureObject* target, int32 damage) {
+	int applyMindPoolDamage(CreatureObject* attacker, CreatureObject* target, int32 damage) {
+		
+		Weapon* weapon = attacker->getWeapon();
+		Armor* armor = target->getArmor(9);
+		
+		int reduction = doArmorResists(armor, weapon, damage);
+		
+		damage = damage - reduction;
+		
 		target->changeMindBar((int32) damage, true);
-
+		
 		if (attacker->isPlayer()) {
 			ShowFlyText* fly = new ShowFlyText(target, "combat_effects", "hit_head", 0, 0, 0xFF);
 			((Player*)attacker)->sendMessage(fly);
 		}
 		
 		doDotWeaponAttack(attacker, target, 0);
+		
+		return reduction;
 	}
 	
 	void applyFocusPoolDamage(CreatureObject* target, int32 damage) {
@@ -496,6 +523,47 @@ public:
 		}
 	}
 
+	int doArmorResists(Armor* armor, Weapon* weapon, int dmg) {
+		float resist = 0;
+		int damageType = WeaponImplementation::KINETIC;
+		
+		if (weapon != NULL)
+			damageType = weapon->getDamageType();
+
+		if (armor != NULL)
+			switch (damageType) {
+			case WeaponImplementation::KINETIC:
+				resist = armor->getKinetic();
+				break;
+			case WeaponImplementation::ENERGY:
+				resist = armor->getEnergy();
+				break;
+			case WeaponImplementation::ELECTRICITY:
+				resist = armor->getElectricity();
+				break;
+			case WeaponImplementation::STUN:
+				resist = armor->getStun();
+				break;
+			case WeaponImplementation::BLAST:
+				resist = armor->getBlast();
+				break;
+			case WeaponImplementation::HEAT:
+				resist = armor->getHeat();
+				break;
+			case WeaponImplementation::COLD:
+				resist = armor->getCold();
+				break;
+			case WeaponImplementation::ACID:
+				resist = armor->getAcid();
+				break;
+			case WeaponImplementation::LIGHTSABER:
+				resist = armor->getLightSaber();
+				break;
+			}
+	
+		return int(dmg*resist/100);
+	}
+	
 	bool isArea() {
 		if (areaRangeDamage != 0) {
 			return true;

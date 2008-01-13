@@ -78,6 +78,10 @@ public:
 		maxRangeAccuracy = -85;
 		maxRange = 44;
 		armorPiercing = LIGHT;
+		
+		healthAttackCost = 17;
+		actionAttackCost = 30;
+		mindAttackCost = 17;
 	}
 	
 };

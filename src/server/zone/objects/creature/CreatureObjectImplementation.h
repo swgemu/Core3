@@ -67,6 +67,7 @@ class Inventory;
 class HairObject;
 class TangibleObject;
 class Weapon;
+class Armor;
 
 class GroupObject;
 class MountCreature;
@@ -98,6 +99,7 @@ protected:
 
 	//creature objects
 	Inventory* inventory;
+	Container* lootContainer;
 	HairObject* hairObj;
 	
 	Time lastCombatAction;
@@ -704,6 +706,13 @@ public:
 	void removeInventoryItem(SceneObject* item);
 	void removeInventoryItem(uint64 oid);
 
+	void addLootItem(TangibleObject* item);
+
+	TangibleObject* getLootItem(uint64 oid);
+	
+	void removeLootItem(SceneObject* item);
+	void removeLootItem(uint64 oid);
+	
 	// Entertainer methods
 	void startDancing(const string& anim);
 	void startPlayingMusic(const string& anim);
@@ -1099,6 +1108,8 @@ public:
 	inline Weapon* getWeapon() {
 		return weaponObject;
 	}
+	
+	Armor* getArmor(int type);
 
 	// HAM getters
 	inline uint32 getBaseHealth() {
@@ -1376,6 +1387,10 @@ public:
 
 	inline Inventory* getInventory() {
 		return inventory;
+	}
+	
+	inline Container* getLootContainer() {
+		return lootContainer;
 	}
 
 	// entertainer

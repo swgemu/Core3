@@ -77,26 +77,28 @@ void ArmorImplementation::initialize() {
 	energy = 50.0f;
 	energyIsSpecial = true;
 
-	electricity = 50.0f;
+	electricity = 30.0f;
 	electricityIsSpecial = false;
 
-	stun = 25.0f;
-	stunIsSpecial = true;
+	stun = 0.0f;
+	stunIsSpecial = false;
 
-	blast = 50.0f;
+	blast = 30.0f;
 	blastIsSpecial = false;
 
-	heat = 50.0f;
+	heat = 30.0f;
 	heatIsSpecial = false;
 
-	cold = 50.0f;
+	cold = 30.0f;
 	coldIsSpecial = false;
 
-	acid = 50.0f;
+	acid = 30.0f;
 	acidIsSpecial = false;
 
-	lightSaber = 50.0f;
+	lightSaber = 0.0f;
 	lightSaberIsSpecial = false;
+	
+	type = 0;
 
 	stringstream loggingname;
 	loggingname << "Armor = 0x" << objectID;
@@ -269,23 +271,19 @@ void ArmorImplementation::setArmorStats(int modifier) {
 		kinetic = kinetic + (modifier / 10) + (luck / 10);
 		energy = energy + (modifier / 10) + (luck / 10);
 		electricity = electricity + (modifier / 10) + (luck / 10);
-		stun = stun + (modifier / 20) + (luck / 20);
 		blast = blast + (modifier / 10) + (luck / 10);
 		heat = heat + (modifier / 10) + (luck / 10);
 		cold = cold + (modifier / 10) + (luck / 10);
 		acid = acid + (modifier / 10) + (luck / 10);
-		lightSaber = lightSaber + (modifier / 10) + (luck / 10);
 	}
 	
 	kineticIsSpecial = System::random(1);
 	energyIsSpecial = System::random(1);
 	electricityIsSpecial = System::random(1);
-	stunIsSpecial = true;
 	blastIsSpecial = System::random(1);
 	heatIsSpecial = System::random(1);
 	coldIsSpecial = System::random(1);
 	acidIsSpecial = System::random(1);
-	lightSaberIsSpecial = System::random(1);
 	
 	if (kinetic > 90.0f) 
 		kinetic = 90.0f;
@@ -295,9 +293,6 @@ void ArmorImplementation::setArmorStats(int modifier) {
 	
 	if (electricity > 90.0f) 
 		electricity = 90.0f;
-	
-	if (stun > 50.0f) 
-		stun = 50.0f;
 	
 	if (blast > 90.0f) 
 		blast = 90.0f;
@@ -311,9 +306,6 @@ void ArmorImplementation::setArmorStats(int modifier) {
 	if (acid > 90.0f) 
 		acid = 90.0f;
 	
-	if (lightSaber > 90.0f) 
-		lightSaber = 90.0f;
-	
 	if (healthEncumbrance < 0) 
 		healthEncumbrance = 0;
 	
@@ -322,4 +314,5 @@ void ArmorImplementation::setArmorStats(int modifier) {
 	
 	if (mindEncumbrance < 0) 
 		mindEncumbrance = 0;
+	
 }

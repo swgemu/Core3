@@ -59,6 +59,8 @@ which carries forward this exception.
 #include "../tangible/InventoryImplementation.h"
 
 #include "../tangible/weapons/Weapon.h"
+#include "../tangible/wearables/Armor.h"
+
 #include "../tangible/appearance/HairObject.h"
 #include "../tangible/appearance/HairObjectImplementation.h"
 
@@ -84,6 +86,7 @@ CreatureObjectImplementation::CreatureObjectImplementation(uint64 oid) : Creatur
 	positionCounter = 0;
 
 	inventory = NULL;
+	lootContainer = NULL;
 	
 	weaponSpeedModifier = 1;
 	
@@ -805,7 +808,7 @@ void CreatureObjectImplementation::doPoisonTick() {
 	if(nextPoisonTick.isPast()) {
 		if (poisonDotType == 1)
 			changeHealthBar(-poisonDotStrength);
-		else if (poisonDotType == 2)
+		else if (poisonDotType == 4)
 			changeActionBar(-poisonDotStrength);
 		else
 			changeMindBar(-poisonDotStrength);
@@ -821,7 +824,7 @@ void CreatureObjectImplementation::doBleedingTick() {
 	if (nextBleedingTick.isPast()) {
 		if (bleedingDotType == 1)
 			changeHealthBar(-bleedingDotStrength);
-		else if (bleedingDotType == 2)
+		else if (bleedingDotType == 4)
 			changeActionBar(-bleedingDotStrength);
 		else
 			changeMindBar(-bleedingDotStrength);
@@ -838,7 +841,7 @@ void CreatureObjectImplementation::doDiseaseTick() {
 	
 		if (diseaseDotType == 1)
 			changeHealthWoundsBar(diseaseDotStrength);
-		else if (diseaseDotType == 2)
+		else if (diseaseDotType == 4)
 			changeActionWoundsBar(diseaseDotStrength);
 		else
 			changeMindWoundsBar(diseaseDotStrength);
@@ -856,7 +859,7 @@ void CreatureObjectImplementation::doFireTick() {
 			changeHealthWoundsBar(fireDotStrength);
 			changeHealthBar(-fireDotStrength);
 		}
-		else if (bleedingDotType == 2) {
+		else if (bleedingDotType == 4) {
 			changeActionWoundsBar(fireDotStrength);
 			changeActionBar(-fireDotStrength);
 	}
@@ -995,13 +998,13 @@ bool CreatureObjectImplementation::changeHAMWounds(int32 hpwnds, int32 apwnds, i
 	
 	if (newHealthWounds >= healthMax || newActionWounds >= actionMax || newMindWounds >= mindMax) {
 		if (forcedChange) {
-			setHAMWoundsBars(MIN(newHealthWounds, healthMax), MIN(newActionWounds, actionMax), MIN(newMindWounds, mindMax));
+			setHAMWoundsBars(MIN(newHealthWounds, baseHealth), MIN(newActionWounds, baseAction), MIN(newMindWounds, baseMind));
 			//doIncapacitate();
 		}
 		return false; 
 	}
-
-	setHAMWoundsBars(MIN(newHealthWounds, healthMax), MIN(newActionWounds, actionMax), MIN(newMindWounds, mindMax));
+	
+	setHAMWoundsBars(MIN(newHealthWounds, baseHealth), MIN(newActionWounds, baseAction), MIN(newMindWounds, baseMind));
 	
 	return true;
 
@@ -1039,7 +1042,7 @@ bool CreatureObjectImplementation::changeHealthWoundsBar(int32 wounds, bool forc
 		return false;
 	}
 	
-	setHealthWoundsBar(MIN(newHealthWounds, healthMax));
+	setHealthWoundsBar(MIN(newHealthWounds, baseHealth - 1));
 	
 	return true;
 }
@@ -1120,7 +1123,7 @@ bool CreatureObjectImplementation::changeActionWoundsBar(int32 wounds, bool forc
 		return false;
 	}
 	
-	setActionWoundsBar(MIN(newActionWounds, actionMax));
+	setActionWoundsBar(MIN(newActionWounds, baseAction - 1));
 	
 	return true;
 }
@@ -1201,7 +1204,7 @@ bool CreatureObjectImplementation::changeMindWoundsBar(int32 wounds, bool forced
 		return false;
 	}
 	
-	setMindWoundsBar(MIN(newMindWounds, mindMax));
+	setMindWoundsBar(MIN(newMindWounds, baseMind - 1));
 	
 	return true;
 }
@@ -1830,6 +1833,17 @@ uint64 CreatureObjectImplementation::getWeaponID() {
 		return 0;
 }
 
+Armor* CreatureObjectImplementation::getArmor(int type) {
+	if (inventory != NULL)
+		for (int i=0; i < inventory->objectsSize(); i++) {
+			TangibleObject* item = ((TangibleObject*)(inventory->getObject(i)));
+			if (item->isArmor())
+				if (((Armor*)item)->getType() == type && item->isEquipped())
+					return ((Armor*)item);
+		}
+	return NULL;
+}
+
 void CreatureObjectImplementation::addInventoryItem(TangibleObject* item) {
 	if (item->isEquipped()) {
 		item->setContainer(_this, 0x04);
@@ -1852,6 +1866,25 @@ void CreatureObjectImplementation::removeInventoryItem(SceneObject* item) {
 
 void CreatureObjectImplementation::removeInventoryItem(uint64 oid) {
 	inventory->removeObject(oid);
+}
+
+void CreatureObjectImplementation::addLootItem(TangibleObject* item) {
+
+	//item->setContainer(lootContainer, 0xFFFFFFFF);
+
+	lootContainer->addObject(item);
+}
+
+TangibleObject* CreatureObjectImplementation::getLootItem(uint64 oid) {
+	return (TangibleObject*) lootContainer->getObject(oid);
+}
+
+void CreatureObjectImplementation::removeLootItem(SceneObject* item) {
+	lootContainer->removeObject(item->getObjectID());
+}
+
+void CreatureObjectImplementation::removeLootItem(uint64 oid) {
+	lootContainer->removeObject(oid);
 }
 
 void CreatureObjectImplementation::addSkills(Vector<Skill*>& skills, bool updateClient) {

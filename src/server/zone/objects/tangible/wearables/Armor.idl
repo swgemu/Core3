@@ -107,4 +107,6 @@ interface Armor implements Wearable {
 	float getLightSaber();
 	
 	boolean isLightSaberSpecial();
+	
+	int getType();
 }

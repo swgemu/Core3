@@ -84,11 +84,24 @@ private:
 	float lightSaber;
 	bool lightSaberIsSpecial;
 	
+	int type;
+	
 public:
 
 	static const int LIGHT = 0x10;
 	static const int MEDIUM = 0x20;
 	static const int HEAVY = 0x30;	
+	
+	static const int CHEST = 1;
+	static const int HAND = 2;
+	static const int BRACERL = 3;
+	static const int BICEPL = 4;
+	static const int BRACERR = 5;
+	static const int BICEPR = 6;
+	static const int LEG = 7;
+	static const int FOOT = 8;
+	static const int HEAD = 9;
+	static const int BELT = 10;
 	
 public:
 	ArmorImplementation(uint64 objid, uint32 tempCRC, const unicode& n, const string& tempn, bool eqp = false);
@@ -194,6 +207,10 @@ public:
 	inline void setLightSaberIsSpecial(bool lightSaberIsSpec) {
 		lightSaberIsSpecial = lightSaberIsSpec;
 	}
+	
+	inline void setType(int armorType) {
+		type = armorType;
+	}
 
 	// getters
 	inline int getRating() {
@@ -286,6 +303,10 @@ public:
 	
 	inline bool isLightSaberSpecial() {
 		return lightSaberIsSpecial;
+	}
+	
+	inline int getType() {
+		return type;
 	}
 
 };	
