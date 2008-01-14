@@ -93,12 +93,25 @@ void Armor::sendTo(Player* player, bool doClose) {
 		((ArmorImplementation*) _impl)->sendTo(player, doClose);
 }
 
-void Armor::generateAttributes(SceneObject* obj) {
+void Armor::decayArmor(int decayRate) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
 		ORBMethodInvocation invocation(this, 7);
+		invocation.addSignedIntParameter(decayRate);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((ArmorImplementation*) _impl)->decayArmor(decayRate);
+}
+
+void Armor::generateAttributes(SceneObject* obj) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 8);
 		invocation.addObjectParameter(obj);
 
 		invocation.executeWithVoidReturn();
@@ -111,7 +124,7 @@ void Armor::setArmorStats(int modifier) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 8);
+		ORBMethodInvocation invocation(this, 9);
 		invocation.addSignedIntParameter(modifier);
 
 		invocation.executeWithVoidReturn();
@@ -119,12 +132,25 @@ void Armor::setArmorStats(int modifier) {
 		((ArmorImplementation*) _impl)->setArmorStats(modifier);
 }
 
+void Armor::sliceArmor(Player* player) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 10);
+		invocation.addObjectParameter(player);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((ArmorImplementation*) _impl)->sliceArmor(player);
+}
+
 int Armor::getRating() {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 9);
+		ORBMethodInvocation invocation(this, 11);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -136,7 +162,7 @@ int Armor::getCondition() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 10);
+		ORBMethodInvocation invocation(this, 12);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -148,7 +174,7 @@ int Armor::getMaxCondition() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 11);
+		ORBMethodInvocation invocation(this, 13);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -160,7 +186,7 @@ int Armor::getHealthEncumbrance() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 12);
+		ORBMethodInvocation invocation(this, 14);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -172,7 +198,7 @@ int Armor::getActionEncumbrance() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 13);
+		ORBMethodInvocation invocation(this, 15);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -184,7 +210,7 @@ int Armor::getMindEncumbrance() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 14);
+		ORBMethodInvocation invocation(this, 16);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -196,7 +222,7 @@ float Armor::getKinetic() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 15);
+		ORBMethodInvocation invocation(this, 17);
 
 		return invocation.executeWithFloatReturn();
 	} else
@@ -208,7 +234,7 @@ bool Armor::isKineticSpecial() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 16);
+		ORBMethodInvocation invocation(this, 18);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -220,7 +246,7 @@ float Armor::getEnergy() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 17);
+		ORBMethodInvocation invocation(this, 19);
 
 		return invocation.executeWithFloatReturn();
 	} else
@@ -232,7 +258,7 @@ bool Armor::isEnergySpecial() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 18);
+		ORBMethodInvocation invocation(this, 20);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -244,7 +270,7 @@ float Armor::getElectricity() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 19);
+		ORBMethodInvocation invocation(this, 21);
 
 		return invocation.executeWithFloatReturn();
 	} else
@@ -256,7 +282,7 @@ bool Armor::isElectricitySpecial() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 20);
+		ORBMethodInvocation invocation(this, 22);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -268,7 +294,7 @@ float Armor::getStun() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 21);
+		ORBMethodInvocation invocation(this, 23);
 
 		return invocation.executeWithFloatReturn();
 	} else
@@ -280,7 +306,7 @@ bool Armor::isStunSpecial() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 22);
+		ORBMethodInvocation invocation(this, 24);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -292,7 +318,7 @@ float Armor::getBlast() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 23);
+		ORBMethodInvocation invocation(this, 25);
 
 		return invocation.executeWithFloatReturn();
 	} else
@@ -304,7 +330,7 @@ bool Armor::isBlastSpecial() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 24);
+		ORBMethodInvocation invocation(this, 26);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -316,7 +342,7 @@ float Armor::getHeat() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 25);
+		ORBMethodInvocation invocation(this, 27);
 
 		return invocation.executeWithFloatReturn();
 	} else
@@ -328,7 +354,7 @@ bool Armor::isHeatSpecial() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 26);
+		ORBMethodInvocation invocation(this, 28);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -340,7 +366,7 @@ float Armor::getCold() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 27);
+		ORBMethodInvocation invocation(this, 29);
 
 		return invocation.executeWithFloatReturn();
 	} else
@@ -352,7 +378,7 @@ bool Armor::isColdSpecial() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 28);
+		ORBMethodInvocation invocation(this, 30);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -364,7 +390,7 @@ float Armor::getAcid() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 29);
+		ORBMethodInvocation invocation(this, 31);
 
 		return invocation.executeWithFloatReturn();
 	} else
@@ -376,7 +402,7 @@ bool Armor::isAcidSpecial() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 30);
+		ORBMethodInvocation invocation(this, 32);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -388,7 +414,7 @@ float Armor::getLightSaber() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 31);
+		ORBMethodInvocation invocation(this, 33);
 
 		return invocation.executeWithFloatReturn();
 	} else
@@ -400,11 +426,35 @@ bool Armor::isLightSaberSpecial() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 32);
+		ORBMethodInvocation invocation(this, 34);
 
 		return invocation.executeWithBooleanReturn();
 	} else
 		return ((ArmorImplementation*) _impl)->isLightSaberSpecial();
+}
+
+int Armor::getType() {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 35);
+
+		return invocation.executeWithSignedIntReturn();
+	} else
+		return ((ArmorImplementation*) _impl)->getType();
+}
+
+bool Armor::isSliced() {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 36);
+
+		return invocation.executeWithBooleanReturn();
+	} else
+		return ((ArmorImplementation*) _impl)->isSliced();
 }
 
 /*
@@ -422,82 +472,94 @@ Packet* ArmorAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* inv) {
 		sendTo((Player*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
 	case 7:
-		generateAttributes((SceneObject*) inv->getObjectParameter());
+		decayArmor(inv->getSignedIntParameter());
 		break;
 	case 8:
-		setArmorStats(inv->getSignedIntParameter());
+		generateAttributes((SceneObject*) inv->getObjectParameter());
 		break;
 	case 9:
-		resp->insertSignedInt(getRating());
+		setArmorStats(inv->getSignedIntParameter());
 		break;
 	case 10:
-		resp->insertSignedInt(getCondition());
+		sliceArmor((Player*) inv->getObjectParameter());
 		break;
 	case 11:
-		resp->insertSignedInt(getMaxCondition());
+		resp->insertSignedInt(getRating());
 		break;
 	case 12:
-		resp->insertSignedInt(getHealthEncumbrance());
+		resp->insertSignedInt(getCondition());
 		break;
 	case 13:
-		resp->insertSignedInt(getActionEncumbrance());
+		resp->insertSignedInt(getMaxCondition());
 		break;
 	case 14:
-		resp->insertSignedInt(getMindEncumbrance());
+		resp->insertSignedInt(getHealthEncumbrance());
 		break;
 	case 15:
-		resp->insertFloat(getKinetic());
+		resp->insertSignedInt(getActionEncumbrance());
 		break;
 	case 16:
-		resp->insertBoolean(isKineticSpecial());
+		resp->insertSignedInt(getMindEncumbrance());
 		break;
 	case 17:
-		resp->insertFloat(getEnergy());
+		resp->insertFloat(getKinetic());
 		break;
 	case 18:
-		resp->insertBoolean(isEnergySpecial());
+		resp->insertBoolean(isKineticSpecial());
 		break;
 	case 19:
-		resp->insertFloat(getElectricity());
+		resp->insertFloat(getEnergy());
 		break;
 	case 20:
-		resp->insertBoolean(isElectricitySpecial());
+		resp->insertBoolean(isEnergySpecial());
 		break;
 	case 21:
-		resp->insertFloat(getStun());
+		resp->insertFloat(getElectricity());
 		break;
 	case 22:
-		resp->insertBoolean(isStunSpecial());
+		resp->insertBoolean(isElectricitySpecial());
 		break;
 	case 23:
-		resp->insertFloat(getBlast());
+		resp->insertFloat(getStun());
 		break;
 	case 24:
-		resp->insertBoolean(isBlastSpecial());
+		resp->insertBoolean(isStunSpecial());
 		break;
 	case 25:
-		resp->insertFloat(getHeat());
+		resp->insertFloat(getBlast());
 		break;
 	case 26:
-		resp->insertBoolean(isHeatSpecial());
+		resp->insertBoolean(isBlastSpecial());
 		break;
 	case 27:
-		resp->insertFloat(getCold());
+		resp->insertFloat(getHeat());
 		break;
 	case 28:
-		resp->insertBoolean(isColdSpecial());
+		resp->insertBoolean(isHeatSpecial());
 		break;
 	case 29:
-		resp->insertFloat(getAcid());
+		resp->insertFloat(getCold());
 		break;
 	case 30:
-		resp->insertBoolean(isAcidSpecial());
+		resp->insertBoolean(isColdSpecial());
 		break;
 	case 31:
-		resp->insertFloat(getLightSaber());
+		resp->insertFloat(getAcid());
 		break;
 	case 32:
+		resp->insertBoolean(isAcidSpecial());
+		break;
+	case 33:
+		resp->insertFloat(getLightSaber());
+		break;
+	case 34:
 		resp->insertBoolean(isLightSaberSpecial());
+		break;
+	case 35:
+		resp->insertSignedInt(getType());
+		break;
+	case 36:
+		resp->insertBoolean(isSliced());
 		break;
 	default:
 		return NULL;
@@ -510,12 +572,20 @@ void ArmorAdapter::sendTo(Player* player, bool doClose) {
 	return ((ArmorImplementation*) impl)->sendTo(player, doClose);
 }
 
+void ArmorAdapter::decayArmor(int decayRate) {
+	return ((ArmorImplementation*) impl)->decayArmor(decayRate);
+}
+
 void ArmorAdapter::generateAttributes(SceneObject* obj) {
 	return ((ArmorImplementation*) impl)->generateAttributes(obj);
 }
 
 void ArmorAdapter::setArmorStats(int modifier) {
 	return ((ArmorImplementation*) impl)->setArmorStats(modifier);
+}
+
+void ArmorAdapter::sliceArmor(Player* player) {
+	return ((ArmorImplementation*) impl)->sliceArmor(player);
 }
 
 int ArmorAdapter::getRating() {
@@ -612,6 +682,14 @@ float ArmorAdapter::getLightSaber() {
 
 bool ArmorAdapter::isLightSaberSpecial() {
 	return ((ArmorImplementation*) impl)->isLightSaberSpecial();
+}
+
+int ArmorAdapter::getType() {
+	return ((ArmorImplementation*) impl)->getType();
+}
+
+bool ArmorAdapter::isSliced() {
+	return ((ArmorImplementation*) impl)->isSliced();
 }
 
 /*

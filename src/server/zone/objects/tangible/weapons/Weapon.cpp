@@ -104,7 +104,7 @@ void Weapon::generateAttributes(SceneObject* obj) {
 		((WeaponImplementation*) _impl)->generateAttributes(obj);
 }
 
-void Weapon::decay(int decayRate) {
+void Weapon::decayWeapon(int decayRate) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
@@ -114,7 +114,7 @@ void Weapon::decay(int decayRate) {
 
 		invocation.executeWithVoidReturn();
 	} else
-		((WeaponImplementation*) _impl)->decay(decayRate);
+		((WeaponImplementation*) _impl)->decayWeapon(decayRate);
 }
 
 void Weapon::setWeaponStats(int modifier) {
@@ -704,7 +704,7 @@ Packet* WeaponAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* inv) {
 		generateAttributes((SceneObject*) inv->getObjectParameter());
 		break;
 	case 8:
-		decay(inv->getSignedIntParameter());
+		decayWeapon(inv->getSignedIntParameter());
 		break;
 	case 9:
 		setWeaponStats(inv->getSignedIntParameter());
@@ -862,8 +862,8 @@ void WeaponAdapter::generateAttributes(SceneObject* obj) {
 	return ((WeaponImplementation*) impl)->generateAttributes(obj);
 }
 
-void WeaponAdapter::decay(int decayRate) {
-	return ((WeaponImplementation*) impl)->decay(decayRate);
+void WeaponAdapter::decayWeapon(int decayRate) {
+	return ((WeaponImplementation*) impl)->decayWeapon(decayRate);
 }
 
 void WeaponAdapter::setWeaponStats(int modifier) {

@@ -54,6 +54,8 @@ which carries forward this exception.
 
 #include "../player/Player.h"
 
+#include "../tangible/wearables/Armor.h"
+
 #include "../tangible/lair/LairObject.h"
 
 #include "Creature.h"

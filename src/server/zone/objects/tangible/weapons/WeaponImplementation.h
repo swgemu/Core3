@@ -169,7 +169,7 @@ public:
 	
 	void setWeaponStats(int modifier);
 	
-	void decay(int decayRate);
+	void decayWeapon(int decayRate);
 
 	// slicing methods
 	void sliceWeapon(Player* player);

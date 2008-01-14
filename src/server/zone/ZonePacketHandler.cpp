@@ -818,6 +818,31 @@ void ZonePacketHandler::handleSuiEventNotification(Message* pack) {
 
 		break;
 
+	case 0xBEEFAABA:	// slice armor
+		if (cancel != 1) {
+			Inventory* inventory = player->getInventory(); 
+			
+			int itemindex = atoi(value.c_str().c_str());
+			int armorCount = 0;
+
+			for (int i = 0; i < inventory->objectsSize(); i++) {
+				TangibleObject* item = (TangibleObject*) inventory->getObject(i);
+				
+				if (item->isArmor()) {
+					Armor* armor = (Armor*) item;
+	
+					if (!armor->isSliced()) {
+						if (armorCount == itemindex)
+							armor->sliceArmor(player);
+
+						armorCount++;
+					}
+				}
+			}
+		}
+
+		break;
+		
 	case 0xBEEFAACA:	// repair weapon
 		if (cancel != 1) {
 			Inventory* inventory = player->getInventory(); 
@@ -835,6 +860,28 @@ void ZonePacketHandler::handleSuiEventNotification(Message* pack) {
 						((TangibleObject*) weapon)->repairItem(player);
 					
 					weaponCount++;
+				}
+			}
+		}
+		
+		break;
+	case 0xBEEFAADA:	// repair armor
+		if (cancel != 1) {
+			Inventory* inventory = player->getInventory(); 
+			
+			int itemindex = atoi(value.c_str().c_str());			
+			int armorCount = 0;
+			
+			for (int i = 0; i < inventory->objectsSize(); i++) {
+				TangibleObject* item = (TangibleObject*) inventory->getObject(i);
+				
+				if (item->isArmor()) {
+					Armor* armor = (Armor*) item;
+
+					if (armorCount == itemindex)
+						((TangibleObject*) armor)->repairItem(player);
+					
+					armorCount++;
 				}
 			}
 		}

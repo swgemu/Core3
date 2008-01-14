@@ -192,7 +192,7 @@ void ItemManagerImplementation::createPlayerObject(Player* player, ResultSet* re
 		ArmorImplementation* armoritem = (ArmorImplementation*) item;
 		armoritem->setRating(result->getInt(24));
 		armoritem->setType(result->getInt(25));
-		//armoritem->setCondition(result->getInt(26));
+		armoritem->setConditionDamage(result->getInt(26));
 		armoritem->setMaxCondition(result->getInt(27));
 		armoritem->setHealthEncumbrance(result->getInt(28));
 		armoritem->setActionEncumbrance(result->getInt(29));
@@ -215,6 +215,7 @@ void ItemManagerImplementation::createPlayerObject(Player* player, ResultSet* re
 		armoritem->setAcidIsSpecial(result->getBoolean(46));
 		armoritem->setLightSaber(result->getFloat(47));
 		armoritem->setLightSaberIsSpecial(result->getBoolean(48));
+		armoritem->setSliced(result->getBoolean(67));
 		break;
 	case TangibleObjectImplementation::TICKET:
 		break;
@@ -541,7 +542,28 @@ void ItemManagerImplementation::savePlayerItem(Player* player, TangibleObject* i
 			query << ", dot0_uses = " << ((Weapon*) item)->getDot0Uses();
 			query << ", dot1_uses = " << ((Weapon*) item)->getDot1Uses();
 			query << ", dot2_uses = " << ((Weapon*) item)->getDot2Uses() << " ";
-		} else if (item->isResource()) {
+		} else if (item->isArmor()) {
+			query << ", condition_damage = " << ((Armor*) item)->getConditionDamage();
+			query << ", max_condition = " << ((Armor*) item)->getMaxCondition();
+
+			query << ", health_encumb = " << ((Armor*) item)->getHealthEncumbrance();
+			query << ", action_encumb = " << ((Armor*) item)->getActionEncumbrance();
+			query << ", mind_encumb = " << ((Armor*) item)->getMindEncumbrance();
+			
+			query << ", kinetic = " << ((Armor*) item)->getKinetic();
+			query << ", energy = " << ((Armor*) item)->getEnergy();
+			query << ", electricity = " << ((Armor*) item)->getElectricity();
+			query << ", stun = " << ((Armor*) item)->getStun();
+			query << ", blast = " << ((Armor*) item)->getBlast();
+			query << ", heat = " << ((Armor*) item)->getHeat();
+			query << ", cold = " << ((Armor*) item)->getCold();
+			query << ", acid = " << ((Armor*) item)->getAcid();
+			query << ", lightsaber = " << ((Armor*) item)->getLightSaber();
+			
+			query << ", sliced = " << ((Armor*) item)->isSliced() << " ";
+		}
+		
+		else if (item->isResource()) {
 			query << ", contents = " << ((ResourceContainer*)item)->getContents() << " ";
 		}
 
@@ -591,7 +613,7 @@ void ItemManagerImplementation::createPlayerArmor(Player* player, Armor* item) {
 			  << " VALUES(" << item->getObjectID() << "," << player->getCharacterID() 
 			  << ",'\\" << item->getName().c_str() << "'," 
 			  << item->getObjectCRC() << "," << item->getObjectSubType() << ",'" << item->getTemplateName() << "',"  
-			  << item->isEquipped() << "," << item->getRating() << "," << item->getType() << "," << 0 << ","
+			  << item->isEquipped() << "," << item->getRating() << "," << item->getType() << "," << item->getConditionDamage() << ","
 			  << item->getMaxCondition() << "," << item->getHealthEncumbrance() << "," << item->getActionEncumbrance() << "," 
 			  << item->getMindEncumbrance() << "," << item->getKinetic() << "," << item->isKineticSpecial() <<  ","  
 			  << item->getEnergy() << "," << item->isEnergySpecial() << "," << item->getElectricity() << "," 

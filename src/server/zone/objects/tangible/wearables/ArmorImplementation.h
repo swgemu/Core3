@@ -86,6 +86,8 @@ private:
 	
 	int type;
 	
+	bool sliced;
+	
 public:
 
 	static const int LIGHT = 0x10;
@@ -111,7 +113,15 @@ public:
 	
 	void sendTo(Player* player, bool doClose = true);
 	
+	void decayArmor(int decayRate);
+	
 	void generateAttributes(SceneObject* obj);
+	
+	void sliceArmor(Player* player);
+	
+	int sliceArmorEffectiveness();
+	
+	int sliceArmorEncumbrance();
 	
 	void setArmorStats(int modifier);
 
@@ -211,6 +221,10 @@ public:
 	inline void setType(int armorType) {
 		type = armorType;
 	}
+	
+	inline void setSliced(bool hacked) {
+		sliced = hacked;
+	}
 
 	// getters
 	inline int getRating() {
@@ -307,6 +321,10 @@ public:
 	
 	inline int getType() {
 		return type;
+	}
+	
+	inline bool isSliced() {
+		return sliced;
 	}
 
 };	

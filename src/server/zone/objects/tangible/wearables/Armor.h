@@ -73,9 +73,13 @@ public:
 
 	void sendTo(Player* player, bool doClose = true);
 
+	void decayArmor(int decayRate);
+
 	void generateAttributes(SceneObject* obj);
 
 	void setArmorStats(int modifier);
+
+	void sliceArmor(Player* player);
 
 	int getRating();
 
@@ -124,6 +128,10 @@ public:
 	float getLightSaber();
 
 	bool isLightSaberSpecial();
+
+	int getType();
+
+	bool isSliced();
 
 protected:
 };
@@ -138,9 +146,13 @@ public:
 
 	void sendTo(Player* player, bool doClose);
 
+	void decayArmor(int decayRate);
+
 	void generateAttributes(SceneObject* obj);
 
 	void setArmorStats(int modifier);
+
+	void sliceArmor(Player* player);
 
 	int getRating();
 
@@ -189,6 +201,10 @@ public:
 	float getLightSaber();
 
 	bool isLightSaberSpecial();
+
+	int getType();
+
+	bool isSliced();
 
 };
 

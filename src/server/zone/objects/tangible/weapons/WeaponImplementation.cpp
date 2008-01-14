@@ -199,10 +199,11 @@ void WeaponImplementation::generateAttributes(SceneObject* obj) {
 	
 	alm->insertAttribute("wpn_armor_pierce_rating", ap);
 	
-	alm->insertAttribute("wpn_attack_speed", attackSpeed);
-					
-	alm->insertAttribute("damage", "");
+	float speed = round(10*attackSpeed)/10;
 	
+	alm->insertAttribute("wpn_attack_speed", speed);
+	
+	//Damage Information
 	stringstream dmgtxt;
 
 	switch (damageType) {
@@ -235,47 +236,48 @@ void WeaponImplementation::generateAttributes(SceneObject* obj) {
 		break;
 	}
 	
-	alm->insertAttribute("wpn_damage_type", dmgtxt);
+	alm->insertAttribute("damage.wpn_damage_type", dmgtxt);
 
-	alm->insertAttribute("wpn_damage_min", minDamage);
+	float minDmg = round(minDamage);
+	float maxDmg = round(maxDamage);
+	
+	alm->insertAttribute("damage.wpn_damage_min", minDmg);
 
-	alm->insertAttribute("wpn_damage_max", maxDamage);
+	alm->insertAttribute("damage.wpn_damage_max", maxDmg);
 	
 	stringstream woundsratio;
 	woundsratio << woundsRatio << "%";
 	
-	alm->insertAttribute("wpn_wound_chance", woundsratio);
+	alm->insertAttribute("damage.wpn_wound_chance", woundsratio);
 	
-	alm->insertAttribute("cat_wpn_rangemods", "");
-	
+	//Accuracy Modifiers
 	stringstream pblank;
 	if (pointBlankAccuracy >= 0)
 		pblank << "+";
 		
-	pblank << pointBlankAccuracy << " @ " << pointBlankRange;
-	alm->insertAttribute("wpn_range_zero", pblank);
+	pblank << pointBlankAccuracy << " @ " << pointBlankRange << "m";
+	alm->insertAttribute("cat_wpn_rangemods.wpn_range_zero", pblank);
 	
 	stringstream ideal;
 	if (idealAccuracy >= 0)
 		ideal << "+";
 		
-	ideal << idealAccuracy << " @ " << idealRange;
-	alm->insertAttribute("wpn_range_mid", ideal);
+	ideal << idealAccuracy << " @ " << idealRange << "m";
+	alm->insertAttribute("cat_wpn_rangemods.wpn_range_mid", ideal);
 	
 	stringstream maxrange;
 	if (maxRangeAccuracy >= 0)
 		maxrange << "+";
 		
-	maxrange << maxRangeAccuracy << " @ " << maxRange;
-	alm->insertAttribute("wpn_range_max", maxrange);
+	maxrange << maxRangeAccuracy << " @ " << maxRange << "m";
+	alm->insertAttribute("cat_wpn_rangemods.wpn_range_max", maxrange);
 	
-	alm->insertAttribute("cat_wpn_attack_cost", "");
+	//Special Attack Costs
+	alm->insertAttribute("cat_wpn_attack_cost.health", healthAttackCost);
 	
-	alm->insertAttribute("pup_wpn_attack_cost_health", healthAttackCost);
+	alm->insertAttribute("cat_wpn_attack_cost.action", actionAttackCost);
 	
-	alm->insertAttribute("pup_wpn_attack_cost_action", actionAttackCost);
-	
-	alm->insertAttribute("pup_wpn_attack_cost_mind", mindAttackCost);
+	alm->insertAttribute("cat_wpn_attack_cost.mind", mindAttackCost);
 	
 	generateDotAttributes(alm);
 	
@@ -287,189 +289,189 @@ void WeaponImplementation::generateAttributes(SceneObject* obj) {
 
 void WeaponImplementation::generateDotAttributes(AttributeListMessage* alm) {
 	if (dot0Uses != 0) {
-		alm->insertAttribute("cat_wpn_dot_00", "");
+		//Sends the information along for the first DOT, if it exists
 		
 		switch (dot0Type) {
 		case BLEED:
-			alm->insertAttribute("wpn_dot_type", "Bleed");
+			alm->insertAttribute("cat_wpn_dot_00.wpn_dot_type", "Bleed");
 			break;
 		case DISEASE:
-			alm->insertAttribute("wpn_dot_type", "Disease");
+			alm->insertAttribute("cat_wpn_dot_00.wpn_dot_type", "Disease");
 			break;
 		case FIRE:
-			alm->insertAttribute("wpn_dot_type", "Fire");
+			alm->insertAttribute("cat_wpn_dot_00.wpn_dot_type", "Fire");
 			break;
 		case POISON:
-			alm->insertAttribute("wpn_dot_type", "Poison");
+			alm->insertAttribute("cat_wpn_dot_00.wpn_dot_type", "Poison");
 			break;
 		}
 		
 		switch (dot0Attribute) {
 		case HEALTH:
-			alm->insertAttribute("wpn_dot_attrib", "Health");
+			alm->insertAttribute("cat_wpn_dot_00.wpn_dot_attrib", "Health");
 			break;
 		case STRENGTH:
-			alm->insertAttribute("wpn_dot_attrib", "Action");
+			alm->insertAttribute("cat_wpn_dot_00.wpn_dot_attrib", "Strength");
 			break;
 		case CONSTITUTION:
-			alm->insertAttribute("wpn_dot_attrib", "Constitution");
+			alm->insertAttribute("cat_wpn_dot_00.wpn_dot_attrib", "Constitution");
 			break;
 		case ACTION:
-			alm->insertAttribute("wpn_dot_attrib", "Action");
+			alm->insertAttribute("cat_wpn_dot_00.wpn_dot_attrib", "Action");
 			break;
 		case QUICKNESS:
-			alm->insertAttribute("wpn_dot_attrib", "Quickness");
+			alm->insertAttribute("cat_wpn_dot_00.wpn_dot_attrib", "Quickness");
 			break;
 		case STAMINA:
-			alm->insertAttribute("wpn_dot_attrib", "Stamina");
+			alm->insertAttribute("cat_wpn_dot_00.wpn_dot_attrib", "Stamina");
 			break;
 		case MIND:
-			alm->insertAttribute("wpn_dot_attrib", "Mind");
+			alm->insertAttribute("cat_wpn_dot_00.wpn_dot_attrib", "Mind");
 			break;
 		case FOCUS:
-			alm->insertAttribute("wpn_dot_attrib", "Focus");
+			alm->insertAttribute("cat_wpn_dot_00.wpn_dot_attrib", "Focus");
 			break;
 		case WILLPOWER:
-			alm->insertAttribute("wpn_dot_attrib", "Willpower");
+			alm->insertAttribute("cat_wpn_dot_00.wpn_dot_attrib", "Willpower");
 			break;
 		}
-		alm->insertAttribute("wpn_dot_strength", dot0Strength);
+		alm->insertAttribute("cat_wpn_dot_00.wpn_dot_strength", dot0Strength);
 		
 		stringstream dur;
 		dur << dot0Duration << "s";
-		alm->insertAttribute("wpn_dot_duration", dur);
+		alm->insertAttribute("cat_wpn_dot_00.wpn_dot_duration", dur);
 		
 		stringstream pot;
 		pot << dot0Potency << "%";
-		alm->insertAttribute("wpn_dot_potency", pot);
+		alm->insertAttribute("cat_wpn_dot_00.wpn_dot_potency", pot);
 		
-		alm->insertAttribute("wpn_dot_uses", dot0Uses);
+		alm->insertAttribute("cat_wpn_dot_00.wpn_dot_uses", dot0Uses);
 	}
 
 	if (dot1Uses != 0) {
-		alm->insertAttribute("cat_wpn_dot_01", "");
+		//Sends the information for the second DOT, if it exists
 		
 		switch (dot1Type) {
 		case BLEED:
-			alm->insertAttribute("wpn_dot_type", "Bleed");
+			alm->insertAttribute("cat_wpn_dot_01.wpn_dot_type", "Bleed");
 			break;
 		case DISEASE:
-			alm->insertAttribute("wpn_dot_type", "Disease");
+			alm->insertAttribute("cat_wpn_dot_01.wpn_dot_type", "Disease");
 			break;
 		case FIRE:
-			alm->insertAttribute("wpn_dot_type", "Fire");
+			alm->insertAttribute("cat_wpn_dot_01.wpn_dot_type", "Fire");
 			break;
 		case POISON:
-			alm->insertAttribute("wpn_dot_type", "Poison");
+			alm->insertAttribute("cat_wpn_dot_01.wpn_dot_type", "Poison");
 			break;
 		}
 		
 		switch (dot1Attribute) {
 		case HEALTH:
-			alm->insertAttribute("wpn_dot_attrib", "Health");
+			alm->insertAttribute("cat_wpn_dot_01.wpn_dot_attrib", "Health");
 			break;
 		case STRENGTH:
-			alm->insertAttribute("wpn_dot_attrib", "Action");
+			alm->insertAttribute("cat_wpn_dot_01.wpn_dot_attrib", "Strength");
 			break;
 		case CONSTITUTION:
-			alm->insertAttribute("wpn_dot_attrib", "Constitution");
+			alm->insertAttribute("cat_wpn_dot_01.wpn_dot_attrib", "Constitution");
 			break;
 		case ACTION:
-			alm->insertAttribute("wpn_dot_attrib", "Action");
+			alm->insertAttribute("cat_wpn_dot_01.wpn_dot_attrib", "Action");
 			break;
 		case QUICKNESS:
-			alm->insertAttribute("wpn_dot_attrib", "Quickness");
+			alm->insertAttribute("cat_wpn_dot_01.wpn_dot_attrib", "Quickness");
 			break;
 		case STAMINA:
-			alm->insertAttribute("wpn_dot_attrib", "Stamina");
+			alm->insertAttribute("cat_wpn_dot_01.wpn_dot_attrib", "Stamina");
 			break;
 		case MIND:
-			alm->insertAttribute("wpn_dot_attrib", "Mind");
+			alm->insertAttribute("cat_wpn_dot_01.wpn_dot_attrib", "Mind");
 			break;
 		case FOCUS:
-			alm->insertAttribute("wpn_dot_attrib", "Focus");
+			alm->insertAttribute("cat_wpn_dot_01.wpn_dot_attrib", "Focus");
 			break;
 		case WILLPOWER:
-			alm->insertAttribute("wpn_dot_attrib", "Willpower");
+			alm->insertAttribute("cat_wpn_dot_01.wpn_dot_attrib", "Willpower");
 			break;
 		}
 		
-		alm->insertAttribute("wpn_dot_strength", dot1Strength);
+		alm->insertAttribute("cat_wpn_dot_01.wpn_dot_strength", dot1Strength);
 
 		stringstream dur;
 		dur << dot1Duration << "s";
-		alm->insertAttribute("wpn_dot_duration", dur);
+		alm->insertAttribute("cat_wpn_dot_01.wpn_dot_duration", dur);
 		
 		stringstream pot;
 		pot << dot1Potency << "%";
-		alm->insertAttribute("wpn_dot_potency", pot);
+		alm->insertAttribute("cat_wpn_dot_01.wpn_dot_potency", pot);
 		
-		alm->insertAttribute("wpn_dot_uses", dot1Uses);
+		alm->insertAttribute("cat_wpn_dot_01.wpn_dot_uses", dot1Uses);
 	}
 	
 	if (dot2Uses != 0) {
-		alm->insertAttribute("cat_wpn_dot_02", "");
+		//The third DOT, if it exists
 		
 		switch (dot2Type) {
 		case BLEED:
-			alm->insertAttribute("wpn_dot_type", "Bleed");
+			alm->insertAttribute("cat_wpn_dot_02.wpn_dot_type", "Bleed");
 			break;
 		case DISEASE:
-			alm->insertAttribute("wpn_dot_type", "Disease");
+			alm->insertAttribute("cat_wpn_dot_02.wpn_dot_type", "Disease");
 			break;
 		case FIRE:
-			alm->insertAttribute("wpn_dot_type", "Fire");
+			alm->insertAttribute("cat_wpn_dot_02.wpn_dot_type", "Fire");
 			break;
 		case POISON:
-			alm->insertAttribute("wpn_dot_type", "Poison");
+			alm->insertAttribute("cat_wpn_dot_02.wpn_dot_type", "Poison");
 			break;
 		}
 		
 		switch (dot2Attribute) {
 		case HEALTH:
-			alm->insertAttribute("wpn_dot_attrib", "Health");
+			alm->insertAttribute("cat_wpn_dot_02.wpn_dot_attrib", "Health");
 			break;
 		case STRENGTH:
-			alm->insertAttribute("wpn_dot_attrib", "Action");
+			alm->insertAttribute("cat_wpn_dot_02.wpn_dot_attrib", "Strength");
 			break;
 		case CONSTITUTION:
-			alm->insertAttribute("wpn_dot_attrib", "Constitution");
+			alm->insertAttribute("cat_wpn_dot_02.wpn_dot_attrib", "Constitution");
 			break;
 		case ACTION:
-			alm->insertAttribute("wpn_dot_attrib", "Action");
+			alm->insertAttribute("cat_wpn_dot_02.wpn_dot_attrib", "Action");
 			break;
 		case QUICKNESS:
-			alm->insertAttribute("wpn_dot_attrib", "Quickness");
+			alm->insertAttribute("cat_wpn_dot_02.wpn_dot_attrib", "Quickness");
 			break;
 		case STAMINA:
-			alm->insertAttribute("wpn_dot_attrib", "Stamina");
+			alm->insertAttribute("cat_wpn_dot_02.wpn_dot_attrib", "Stamina");
 			break;
 		case MIND:
-			alm->insertAttribute("wpn_dot_attrib", "Mind");
+			alm->insertAttribute("cat_wpn_dot_02.wpn_dot_attrib", "Mind");
 			break;
 		case FOCUS:
-			alm->insertAttribute("wpn_dot_attrib", "Focus");
+			alm->insertAttribute("cat_wpn_dot_02.wpn_dot_attrib", "Focus");
 			break;
 		case WILLPOWER:
-			alm->insertAttribute("wpn_dot_attrib", "Willpower");
+			alm->insertAttribute("cat_wpn_dot_02.wpn_dot_attrib", "Willpower");
 			break;
 		}
 		
-		alm->insertAttribute("wpn_dot_strength", dot2Strength);
+		alm->insertAttribute("cat_wpn_dot_02.wpn_dot_strength", dot2Strength);
 		
 		stringstream dur;
 		dur << dot2Duration << "s";
-		alm->insertAttribute("wpn_dot_duration", dur);
+		alm->insertAttribute("cat_wpn_dot_02.wpn_dot_duration", dur);
 		
 		stringstream pot;
 		pot << dot2Potency << "%";
-		alm->insertAttribute("wpn_dot_potency", pot);
+		alm->insertAttribute("cat_wpn_dot_02.wpn_dot_potency", pot);
 		
-		alm->insertAttribute("wpn_dot_uses", dot2Uses);
+		alm->insertAttribute("cat_wpn_dot_02.wpn_dot_uses", dot2Uses);
 	}
 }
 
-void WeaponImplementation::decay(int decayRate) {
+void WeaponImplementation::decayWeapon(int decayRate) {
 	conditionDamage = conditionDamage + (maxCondition / 100 * decayRate);
 
 	if (conditionDamage > maxCondition)
@@ -482,10 +484,10 @@ void WeaponImplementation::decay(int decayRate) {
 			maxDamage = 1;
 			minDamage = 1;
 		} else if (ratio > 0.75) {
-			maxDamage = round(maxDamage - (maxDamage * decayRate / 100));
-			minDamage = round(minDamage - (minDamage * decayRate / 100));
+			maxDamage = maxDamage - (maxDamage * decayRate / 100);
+			minDamage = minDamage - (minDamage * decayRate / 100);
 
-			attackSpeed = round((attackSpeed + (attackSpeed * decayRate / 100)) * 10) / 10;
+			attackSpeed = attackSpeed + (attackSpeed * decayRate / 100);
 		}
 	}
 	
@@ -550,12 +552,12 @@ void WeaponImplementation::setWeaponStats(int modifier){
 	}
 	
 	if (luck * System::random(100) > 1600) {
-		minDamage = round((minDamage * modifier / 100) + (0.7 * luck));
-		maxDamage = round((maxDamage * modifier / 100) + (0.8 * luck));
+		minDamage = (minDamage * modifier / 100) + (0.7 * luck);
+		maxDamage = (maxDamage * modifier / 100) + (0.8 * luck);
 	}
 	
 	if (luck * System::random(100) > 1750) {	
-		attackSpeed = round(10 * (attackSpeed - (attackSpeed * modifier / 500) - (luck / 150))) / 10;
+		attackSpeed = attackSpeed - (attackSpeed * modifier / 500) - (luck / 150);
 	}
 	
 	if (luck * System::random(100) > 1000) {
@@ -603,10 +605,6 @@ void WeaponImplementation::setWeaponStats(int modifier){
 			break;
 		}
 	}
-	
-	//pointBlankAccuracy = pointBlankAccuracy + 20;	// temporary accuracy hack
-	
-	//attackSpeed = round(10*(attackSpeed / 1.25)) / 10;	// temporary speed fix
 	
 	if (attackSpeed < 1) 
 		attackSpeed = 1.0f;
@@ -679,8 +677,8 @@ int WeaponImplementation::sliceWeaponDamage(){
 		
 	int modifier = System::random(11) + 25;
 	
-	minDamage = round((minDamage * modifier / 100) + minDamage);
-	maxDamage = round((maxDamage * modifier / 100) + maxDamage);
+	minDamage = (minDamage * modifier / 100) + minDamage;
+	maxDamage = (maxDamage * modifier / 100) + maxDamage;
 	
 	sliced = true;
 	updated = true;
@@ -694,7 +692,7 @@ int WeaponImplementation::sliceWeaponSpeed(){
 		
 	int modifier = System::random(11) + 25;
 	
-	attackSpeed = round(10 * (attackSpeed - (attackSpeed * modifier / 100))) / 10;
+	attackSpeed = attackSpeed - (attackSpeed * modifier / 100);
 
 	if (attackSpeed < 1) 
 		attackSpeed = 1.0f;

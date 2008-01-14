@@ -55,9 +55,13 @@ class SceneObject;
 
 class Inventory;
 
+class Container;
+
 class TangibleObject;
 
 class Weapon;
+
+class Armor;
 
 class GroupObject;
 
@@ -561,13 +565,21 @@ public:
 
 	void removeInventoryItem(unsigned long long oid);
 
+	SceneObject* getLootItem(unsigned long long oid);
+
+	void removeLootItem(unsigned long long oid);
+
 	void broadcastMessage(Message* msg, int range = 128, bool doLock = true);
 
 	Inventory* getInventory();
 
+	Container* getLootContainer();
+
 	unsigned long long getNewItemID();
 
 	Weapon* getWeapon();
+
+	Armor* getArmor(int type);
 
 	int getSkillMod(const string& name);
 
@@ -612,6 +624,8 @@ public:
 	void sendSystemMessage(const string& file, const string& str, unsigned long long targetid = 0);
 
 	void addInventoryItem(TangibleObject* item);
+
+	void addLootItem(TangibleObject* item);
 
 	void startDancing(const string& anim);
 
@@ -1180,13 +1194,21 @@ public:
 
 	void removeInventoryItem(unsigned long long oid);
 
+	SceneObject* getLootItem(unsigned long long oid);
+
+	void removeLootItem(unsigned long long oid);
+
 	void broadcastMessage(Message* msg, int range, bool doLock);
 
 	Inventory* getInventory();
 
+	Container* getLootContainer();
+
 	unsigned long long getNewItemID();
 
 	Weapon* getWeapon();
+
+	Armor* getArmor(int type);
 
 	int getSkillMod(const string& name);
 
@@ -1231,6 +1253,8 @@ public:
 	void sendSystemMessage(const string& file, const string& str, unsigned long long targetid);
 
 	void addInventoryItem(TangibleObject* item);
+
+	void addLootItem(TangibleObject* item);
 
 	void startDancing(const string& anim);
 

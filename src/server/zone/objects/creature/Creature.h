@@ -59,6 +59,8 @@ class Zone;
 
 class Player;
 
+class Armor;
+
 class LairObject;
 
 #include "CreatureObject.h"

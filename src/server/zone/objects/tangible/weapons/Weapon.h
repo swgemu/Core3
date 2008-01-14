@@ -73,7 +73,7 @@ public:
 
 	void generateAttributes(SceneObject* obj);
 
-	void decay(int decayRate);
+	void decayWeapon(int decayRate);
 
 	void setWeaponStats(int modifier);
 
@@ -184,7 +184,7 @@ public:
 
 	void generateAttributes(SceneObject* obj);
 
-	void decay(int decayRate);
+	void decayWeapon(int decayRate);
 
 	void setWeaponStats(int modifier);
 

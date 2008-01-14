@@ -50,9 +50,13 @@ which carries forward this exception.
 
 #include "../tangible/Inventory.h"
 
+#include "../tangible/Container.h"
+
 #include "../tangible/TangibleObject.h"
 
 #include "../tangible/weapons/Weapon.h"
+
+#include "../tangible/wearables/Armor.h"
 
 #include "../group/GroupObject.h"
 
@@ -3125,12 +3129,38 @@ void CreatureObject::removeInventoryItem(unsigned long long oid) {
 		((CreatureObjectImplementation*) _impl)->removeInventoryItem(oid);
 }
 
-void CreatureObject::broadcastMessage(Message* msg, int range, bool doLock) {
+SceneObject* CreatureObject::getLootItem(unsigned long long oid) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
 		ORBMethodInvocation invocation(this, 245);
+		invocation.addUnsignedLongParameter(oid);
+
+		return (SceneObject*) invocation.executeWithObjectReturn();
+	} else
+		return ((CreatureObjectImplementation*) _impl)->getLootItem(oid);
+}
+
+void CreatureObject::removeLootItem(unsigned long long oid) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 246);
+		invocation.addUnsignedLongParameter(oid);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->removeLootItem(oid);
+}
+
+void CreatureObject::broadcastMessage(Message* msg, int range, bool doLock) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 247);
 		invocation.addObjectParameter(msg);
 		invocation.addSignedIntParameter(range);
 		invocation.addBooleanParameter(doLock);
@@ -3145,11 +3175,23 @@ Inventory* CreatureObject::getInventory() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 246);
+		ORBMethodInvocation invocation(this, 248);
 
 		return (Inventory*) invocation.executeWithObjectReturn();
 	} else
 		return ((CreatureObjectImplementation*) _impl)->getInventory();
+}
+
+Container* CreatureObject::getLootContainer() {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 249);
+
+		return (Container*) invocation.executeWithObjectReturn();
+	} else
+		return ((CreatureObjectImplementation*) _impl)->getLootContainer();
 }
 
 unsigned long long CreatureObject::getNewItemID() {
@@ -3157,7 +3199,7 @@ unsigned long long CreatureObject::getNewItemID() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 247);
+		ORBMethodInvocation invocation(this, 250);
 
 		return invocation.executeWithUnsignedLongReturn();
 	} else
@@ -3169,11 +3211,24 @@ Weapon* CreatureObject::getWeapon() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 248);
+		ORBMethodInvocation invocation(this, 251);
 
 		return (Weapon*) invocation.executeWithObjectReturn();
 	} else
 		return ((CreatureObjectImplementation*) _impl)->getWeapon();
+}
+
+Armor* CreatureObject::getArmor(int type) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 252);
+		invocation.addSignedIntParameter(type);
+
+		return (Armor*) invocation.executeWithObjectReturn();
+	} else
+		return ((CreatureObjectImplementation*) _impl)->getArmor(type);
 }
 
 int CreatureObject::getSkillMod(const string& name) {
@@ -3181,7 +3236,7 @@ int CreatureObject::getSkillMod(const string& name) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 249);
+		ORBMethodInvocation invocation(this, 253);
 		invocation.addAsciiParameter(name);
 
 		return invocation.executeWithSignedIntReturn();
@@ -3194,7 +3249,7 @@ bool CreatureObject::hasSkillMod(const string& name) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 250);
+		ORBMethodInvocation invocation(this, 254);
 		invocation.addAsciiParameter(name);
 
 		return invocation.executeWithBooleanReturn();
@@ -3207,7 +3262,7 @@ int CreatureObject::getAccuracy() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 251);
+		ORBMethodInvocation invocation(this, 255);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -3219,7 +3274,7 @@ int CreatureObject::getDefenseBonus() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 252);
+		ORBMethodInvocation invocation(this, 256);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -3231,7 +3286,7 @@ int CreatureObject::getDamageBonus() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 253);
+		ORBMethodInvocation invocation(this, 257);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -3243,7 +3298,7 @@ int CreatureObject::getConditionDamage() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 254);
+		ORBMethodInvocation invocation(this, 258);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -3255,7 +3310,7 @@ int CreatureObject::getMaxCondition() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 255);
+		ORBMethodInvocation invocation(this, 259);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -3267,7 +3322,7 @@ int CreatureObject::getCondition() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 256);
+		ORBMethodInvocation invocation(this, 260);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -3279,7 +3334,7 @@ MountCreature* CreatureObject::getMount() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 257);
+		ORBMethodInvocation invocation(this, 261);
 
 		return (MountCreature*) invocation.executeWithObjectReturn();
 	} else
@@ -3291,7 +3346,7 @@ unsigned long long CreatureObject::getCreatureLinkID() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 258);
+		ORBMethodInvocation invocation(this, 262);
 
 		return invocation.executeWithUnsignedLongReturn();
 	} else
@@ -3303,7 +3358,7 @@ float CreatureObject::getDistanceTo(CreatureObject* targetCreature) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 259);
+		ORBMethodInvocation invocation(this, 263);
 		invocation.addObjectParameter(targetCreature);
 
 		return invocation.executeWithFloatReturn();
@@ -3316,7 +3371,7 @@ float CreatureObject::getHeight() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 260);
+		ORBMethodInvocation invocation(this, 264);
 
 		return invocation.executeWithFloatReturn();
 	} else
@@ -3328,7 +3383,7 @@ unsigned int CreatureObject::getCreatureSkillsCount() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 261);
+		ORBMethodInvocation invocation(this, 265);
 
 		return invocation.executeWithUnsignedIntReturn();
 	} else
@@ -3340,7 +3395,7 @@ unsigned int CreatureObject::getNewCreatureSkillsCount(int cnt) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 262);
+		ORBMethodInvocation invocation(this, 266);
 		invocation.addSignedIntParameter(cnt);
 
 		return invocation.executeWithUnsignedIntReturn();
@@ -3353,7 +3408,7 @@ unsigned int CreatureObject::getLastMovementUpdateStamp() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 263);
+		ORBMethodInvocation invocation(this, 267);
 
 		return invocation.executeWithUnsignedIntReturn();
 	} else
@@ -3365,7 +3420,7 @@ int CreatureObject::getIgnoreMovementTests() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 264);
+		ORBMethodInvocation invocation(this, 268);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -3377,7 +3432,7 @@ unsigned int CreatureObject::getDefenderListSize() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 265);
+		ORBMethodInvocation invocation(this, 269);
 
 		return invocation.executeWithUnsignedIntReturn();
 	} else
@@ -3389,7 +3444,7 @@ CreatureObject* CreatureObject::getDefender(int idx) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 266);
+		ORBMethodInvocation invocation(this, 270);
 		invocation.addSignedIntParameter(idx);
 
 		return (CreatureObject*) invocation.executeWithObjectReturn();
@@ -3402,7 +3457,7 @@ unsigned int CreatureObject::getLevel() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 267);
+		ORBMethodInvocation invocation(this, 271);
 
 		return invocation.executeWithUnsignedIntReturn();
 	} else
@@ -3414,7 +3469,7 @@ void CreatureObject::sendSystemMessage(const string& message) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 268);
+		ORBMethodInvocation invocation(this, 272);
 		invocation.addAsciiParameter(message);
 
 		invocation.executeWithVoidReturn();
@@ -3427,7 +3482,7 @@ void CreatureObject::sendSystemMessage(const string& file, const string& str, un
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 269);
+		ORBMethodInvocation invocation(this, 273);
 		invocation.addAsciiParameter(file);
 		invocation.addAsciiParameter(str);
 		invocation.addUnsignedLongParameter(targetid);
@@ -3442,7 +3497,7 @@ void CreatureObject::addInventoryItem(TangibleObject* item) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 270);
+		ORBMethodInvocation invocation(this, 274);
 		invocation.addObjectParameter(item);
 
 		invocation.executeWithVoidReturn();
@@ -3450,12 +3505,25 @@ void CreatureObject::addInventoryItem(TangibleObject* item) {
 		((CreatureObjectImplementation*) _impl)->addInventoryItem(item);
 }
 
+void CreatureObject::addLootItem(TangibleObject* item) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 275);
+		invocation.addObjectParameter(item);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->addLootItem(item);
+}
+
 void CreatureObject::startDancing(const string& anim) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 271);
+		ORBMethodInvocation invocation(this, 276);
 		invocation.addAsciiParameter(anim);
 
 		invocation.executeWithVoidReturn();
@@ -3468,7 +3536,7 @@ void CreatureObject::startPlayingMusic(const string& anim) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 272);
+		ORBMethodInvocation invocation(this, 277);
 		invocation.addAsciiParameter(anim);
 
 		invocation.executeWithVoidReturn();
@@ -3481,7 +3549,7 @@ void CreatureObject::startWatch(unsigned long long entid) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 273);
+		ORBMethodInvocation invocation(this, 278);
 		invocation.addUnsignedLongParameter(entid);
 
 		invocation.executeWithVoidReturn();
@@ -3494,7 +3562,7 @@ void CreatureObject::startListen(unsigned long long entid) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 274);
+		ORBMethodInvocation invocation(this, 279);
 		invocation.addUnsignedLongParameter(entid);
 
 		invocation.executeWithVoidReturn();
@@ -3507,7 +3575,7 @@ void CreatureObject::stopWatch(unsigned long long entid, bool doSendPackets, boo
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 275);
+		ORBMethodInvocation invocation(this, 280);
 		invocation.addUnsignedLongParameter(entid);
 		invocation.addBooleanParameter(doSendPackets);
 		invocation.addBooleanParameter(forced);
@@ -3523,7 +3591,7 @@ void CreatureObject::stopListen(unsigned long long entid, bool doSendPackets, bo
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 276);
+		ORBMethodInvocation invocation(this, 281);
 		invocation.addUnsignedLongParameter(entid);
 		invocation.addBooleanParameter(doSendPackets);
 		invocation.addBooleanParameter(forced);
@@ -3539,7 +3607,7 @@ bool CreatureObject::isPlayingMusic() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 277);
+		ORBMethodInvocation invocation(this, 282);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -3551,7 +3619,7 @@ bool CreatureObject::isDancing() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 278);
+		ORBMethodInvocation invocation(this, 283);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -3563,7 +3631,7 @@ void CreatureObject::stopDancing() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 279);
+		ORBMethodInvocation invocation(this, 284);
 
 		invocation.executeWithVoidReturn();
 	} else
@@ -3575,7 +3643,7 @@ void CreatureObject::stopPlayingMusic() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 280);
+		ORBMethodInvocation invocation(this, 285);
 
 		invocation.executeWithVoidReturn();
 	} else
@@ -3587,7 +3655,7 @@ void CreatureObject::addListener(CreatureObject* creature) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 281);
+		ORBMethodInvocation invocation(this, 286);
 		invocation.addObjectParameter(creature);
 
 		invocation.executeWithVoidReturn();
@@ -3600,7 +3668,7 @@ void CreatureObject::addWatcher(CreatureObject* creature) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 282);
+		ORBMethodInvocation invocation(this, 287);
 		invocation.addObjectParameter(creature);
 
 		invocation.executeWithVoidReturn();
@@ -3613,7 +3681,7 @@ void CreatureObject::removeListener(CreatureObject* creature) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 283);
+		ORBMethodInvocation invocation(this, 288);
 		invocation.addObjectParameter(creature);
 
 		invocation.executeWithVoidReturn();
@@ -3626,7 +3694,7 @@ void CreatureObject::removeWatcher(CreatureObject* creature) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 284);
+		ORBMethodInvocation invocation(this, 289);
 		invocation.addObjectParameter(creature);
 
 		invocation.executeWithVoidReturn();
@@ -3639,7 +3707,7 @@ void CreatureObject::activateRecovery() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 285);
+		ORBMethodInvocation invocation(this, 290);
 
 		invocation.executeWithVoidReturn();
 	} else
@@ -3651,7 +3719,7 @@ int CreatureObject::getCreatureSkillsSize() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 286);
+		ORBMethodInvocation invocation(this, 291);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -3663,7 +3731,7 @@ string& CreatureObject::getSkill(int idx) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 287);
+		ORBMethodInvocation invocation(this, 292);
 		invocation.addSignedIntParameter(idx);
 
 		invocation.executeWithAsciiReturn(_return_getSkill);
@@ -3677,7 +3745,7 @@ bool CreatureObject::hasSkill(unsigned int skillCRC) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 288);
+		ORBMethodInvocation invocation(this, 293);
 		invocation.addUnsignedIntParameter(skillCRC);
 
 		return invocation.executeWithBooleanReturn();
@@ -3690,7 +3758,7 @@ void CreatureObject::mountCreature(MountCreature* mnt, bool lockMount) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 289);
+		ORBMethodInvocation invocation(this, 294);
 		invocation.addObjectParameter(mnt);
 		invocation.addBooleanParameter(lockMount);
 
@@ -3704,7 +3772,7 @@ void CreatureObject::dismount(bool lockMount) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 290);
+		ORBMethodInvocation invocation(this, 295);
 		invocation.addBooleanParameter(lockMount);
 
 		invocation.executeWithVoidReturn();
@@ -3717,7 +3785,7 @@ void CreatureObject::addCashCredits(unsigned int credits) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 291);
+		ORBMethodInvocation invocation(this, 296);
 		invocation.addUnsignedIntParameter(credits);
 
 		invocation.executeWithVoidReturn();
@@ -3730,7 +3798,7 @@ void CreatureObject::addBankCredits(unsigned int credits) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 292);
+		ORBMethodInvocation invocation(this, 297);
 		invocation.addUnsignedIntParameter(credits);
 
 		invocation.executeWithVoidReturn();
@@ -3743,7 +3811,7 @@ void CreatureObject::subtractCashCredits(unsigned int credits) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 293);
+		ORBMethodInvocation invocation(this, 298);
 		invocation.addUnsignedIntParameter(credits);
 
 		invocation.executeWithVoidReturn();
@@ -3756,7 +3824,7 @@ void CreatureObject::subtractBankCredits(unsigned int credits) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 294);
+		ORBMethodInvocation invocation(this, 299);
 		invocation.addUnsignedIntParameter(credits);
 
 		invocation.executeWithVoidReturn();
@@ -3769,7 +3837,7 @@ void CreatureObject::setCashCredits(int credits) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 295);
+		ORBMethodInvocation invocation(this, 300);
 		invocation.addSignedIntParameter(credits);
 
 		invocation.executeWithVoidReturn();
@@ -3782,7 +3850,7 @@ void CreatureObject::setBankCredits(int credits) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 296);
+		ORBMethodInvocation invocation(this, 301);
 		invocation.addSignedIntParameter(credits);
 
 		invocation.executeWithVoidReturn();
@@ -3795,7 +3863,7 @@ void CreatureObject::applyBuff(const string& type, int value, float duration) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 297);
+		ORBMethodInvocation invocation(this, 302);
 		invocation.addAsciiParameter(type);
 		invocation.addSignedIntParameter(value);
 		invocation.addFloatParameter(duration);
@@ -3810,7 +3878,7 @@ bool CreatureObject::verifyCashCredits(int creditsToRemove) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 298);
+		ORBMethodInvocation invocation(this, 303);
 		invocation.addSignedIntParameter(creditsToRemove);
 
 		return invocation.executeWithBooleanReturn();
@@ -3823,7 +3891,7 @@ bool CreatureObject::verifyBankCredits(int creditsToRemove) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 299);
+		ORBMethodInvocation invocation(this, 304);
 		invocation.addSignedIntParameter(creditsToRemove);
 
 		return invocation.executeWithBooleanReturn();
@@ -4560,168 +4628,183 @@ Packet* CreatureObjectAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* 
 		removeInventoryItem(inv->getUnsignedLongParameter());
 		break;
 	case 245:
-		broadcastMessage((Message*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter());
+		resp->insertLong(getLootItem(inv->getUnsignedLongParameter())->_getORBObjectID());
 		break;
 	case 246:
-		resp->insertLong(getInventory()->_getORBObjectID());
+		removeLootItem(inv->getUnsignedLongParameter());
 		break;
 	case 247:
-		resp->insertLong(getNewItemID());
+		broadcastMessage((Message*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter());
 		break;
 	case 248:
-		resp->insertLong(getWeapon()->_getORBObjectID());
+		resp->insertLong(getInventory()->_getORBObjectID());
 		break;
 	case 249:
-		resp->insertSignedInt(getSkillMod(inv->getAsciiParameter(_param0_getSkillMod__string_)));
+		resp->insertLong(getLootContainer()->_getORBObjectID());
 		break;
 	case 250:
-		resp->insertBoolean(hasSkillMod(inv->getAsciiParameter(_param0_hasSkillMod__string_)));
+		resp->insertLong(getNewItemID());
 		break;
 	case 251:
-		resp->insertSignedInt(getAccuracy());
+		resp->insertLong(getWeapon()->_getORBObjectID());
 		break;
 	case 252:
-		resp->insertSignedInt(getDefenseBonus());
+		resp->insertLong(getArmor(inv->getSignedIntParameter())->_getORBObjectID());
 		break;
 	case 253:
-		resp->insertSignedInt(getDamageBonus());
+		resp->insertSignedInt(getSkillMod(inv->getAsciiParameter(_param0_getSkillMod__string_)));
 		break;
 	case 254:
-		resp->insertSignedInt(getConditionDamage());
+		resp->insertBoolean(hasSkillMod(inv->getAsciiParameter(_param0_hasSkillMod__string_)));
 		break;
 	case 255:
-		resp->insertSignedInt(getMaxCondition());
+		resp->insertSignedInt(getAccuracy());
 		break;
 	case 256:
-		resp->insertSignedInt(getCondition());
+		resp->insertSignedInt(getDefenseBonus());
 		break;
 	case 257:
-		resp->insertLong(getMount()->_getORBObjectID());
+		resp->insertSignedInt(getDamageBonus());
 		break;
 	case 258:
-		resp->insertLong(getCreatureLinkID());
+		resp->insertSignedInt(getConditionDamage());
 		break;
 	case 259:
-		resp->insertFloat(getDistanceTo((CreatureObject*) inv->getObjectParameter()));
+		resp->insertSignedInt(getMaxCondition());
 		break;
 	case 260:
-		resp->insertFloat(getHeight());
+		resp->insertSignedInt(getCondition());
 		break;
 	case 261:
-		resp->insertInt(getCreatureSkillsCount());
+		resp->insertLong(getMount()->_getORBObjectID());
 		break;
 	case 262:
-		resp->insertInt(getNewCreatureSkillsCount(inv->getSignedIntParameter()));
+		resp->insertLong(getCreatureLinkID());
 		break;
 	case 263:
-		resp->insertInt(getLastMovementUpdateStamp());
+		resp->insertFloat(getDistanceTo((CreatureObject*) inv->getObjectParameter()));
 		break;
 	case 264:
-		resp->insertSignedInt(getIgnoreMovementTests());
+		resp->insertFloat(getHeight());
 		break;
 	case 265:
-		resp->insertInt(getDefenderListSize());
+		resp->insertInt(getCreatureSkillsCount());
 		break;
 	case 266:
-		resp->insertLong(getDefender(inv->getSignedIntParameter())->_getORBObjectID());
+		resp->insertInt(getNewCreatureSkillsCount(inv->getSignedIntParameter()));
 		break;
 	case 267:
-		resp->insertInt(getLevel());
+		resp->insertInt(getLastMovementUpdateStamp());
 		break;
 	case 268:
-		sendSystemMessage(inv->getAsciiParameter(_param0_sendSystemMessage__string_));
+		resp->insertSignedInt(getIgnoreMovementTests());
 		break;
 	case 269:
-		sendSystemMessage(inv->getAsciiParameter(_param0_sendSystemMessage__string_string_long_), inv->getAsciiParameter(_param1_sendSystemMessage__string_string_long_), inv->getUnsignedLongParameter());
+		resp->insertInt(getDefenderListSize());
 		break;
 	case 270:
-		addInventoryItem((TangibleObject*) inv->getObjectParameter());
+		resp->insertLong(getDefender(inv->getSignedIntParameter())->_getORBObjectID());
 		break;
 	case 271:
-		startDancing(inv->getAsciiParameter(_param0_startDancing__string_));
+		resp->insertInt(getLevel());
 		break;
 	case 272:
-		startPlayingMusic(inv->getAsciiParameter(_param0_startPlayingMusic__string_));
+		sendSystemMessage(inv->getAsciiParameter(_param0_sendSystemMessage__string_));
 		break;
 	case 273:
-		startWatch(inv->getUnsignedLongParameter());
+		sendSystemMessage(inv->getAsciiParameter(_param0_sendSystemMessage__string_string_long_), inv->getAsciiParameter(_param1_sendSystemMessage__string_string_long_), inv->getUnsignedLongParameter());
 		break;
 	case 274:
-		startListen(inv->getUnsignedLongParameter());
+		addInventoryItem((TangibleObject*) inv->getObjectParameter());
 		break;
 	case 275:
-		stopWatch(inv->getUnsignedLongParameter(), inv->getBooleanParameter(), inv->getBooleanParameter(), inv->getBooleanParameter());
+		addLootItem((TangibleObject*) inv->getObjectParameter());
 		break;
 	case 276:
-		stopListen(inv->getUnsignedLongParameter(), inv->getBooleanParameter(), inv->getBooleanParameter(), inv->getBooleanParameter());
+		startDancing(inv->getAsciiParameter(_param0_startDancing__string_));
 		break;
 	case 277:
-		resp->insertBoolean(isPlayingMusic());
+		startPlayingMusic(inv->getAsciiParameter(_param0_startPlayingMusic__string_));
 		break;
 	case 278:
-		resp->insertBoolean(isDancing());
+		startWatch(inv->getUnsignedLongParameter());
 		break;
 	case 279:
-		stopDancing();
+		startListen(inv->getUnsignedLongParameter());
 		break;
 	case 280:
-		stopPlayingMusic();
+		stopWatch(inv->getUnsignedLongParameter(), inv->getBooleanParameter(), inv->getBooleanParameter(), inv->getBooleanParameter());
 		break;
 	case 281:
-		addListener((CreatureObject*) inv->getObjectParameter());
+		stopListen(inv->getUnsignedLongParameter(), inv->getBooleanParameter(), inv->getBooleanParameter(), inv->getBooleanParameter());
 		break;
 	case 282:
-		addWatcher((CreatureObject*) inv->getObjectParameter());
+		resp->insertBoolean(isPlayingMusic());
 		break;
 	case 283:
-		removeListener((CreatureObject*) inv->getObjectParameter());
+		resp->insertBoolean(isDancing());
 		break;
 	case 284:
-		removeWatcher((CreatureObject*) inv->getObjectParameter());
+		stopDancing();
 		break;
 	case 285:
-		activateRecovery();
+		stopPlayingMusic();
 		break;
 	case 286:
-		resp->insertSignedInt(getCreatureSkillsSize());
+		addListener((CreatureObject*) inv->getObjectParameter());
 		break;
 	case 287:
-		resp->insertAscii(getSkill(inv->getSignedIntParameter()));
+		addWatcher((CreatureObject*) inv->getObjectParameter());
 		break;
 	case 288:
-		resp->insertBoolean(hasSkill(inv->getUnsignedIntParameter()));
+		removeListener((CreatureObject*) inv->getObjectParameter());
 		break;
 	case 289:
-		mountCreature((MountCreature*) inv->getObjectParameter(), inv->getBooleanParameter());
+		removeWatcher((CreatureObject*) inv->getObjectParameter());
 		break;
 	case 290:
-		dismount(inv->getBooleanParameter());
+		activateRecovery();
 		break;
 	case 291:
-		addCashCredits(inv->getUnsignedIntParameter());
+		resp->insertSignedInt(getCreatureSkillsSize());
 		break;
 	case 292:
-		addBankCredits(inv->getUnsignedIntParameter());
+		resp->insertAscii(getSkill(inv->getSignedIntParameter()));
 		break;
 	case 293:
-		subtractCashCredits(inv->getUnsignedIntParameter());
+		resp->insertBoolean(hasSkill(inv->getUnsignedIntParameter()));
 		break;
 	case 294:
-		subtractBankCredits(inv->getUnsignedIntParameter());
+		mountCreature((MountCreature*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
 	case 295:
-		setCashCredits(inv->getSignedIntParameter());
+		dismount(inv->getBooleanParameter());
 		break;
 	case 296:
-		setBankCredits(inv->getSignedIntParameter());
+		addCashCredits(inv->getUnsignedIntParameter());
 		break;
 	case 297:
-		applyBuff(inv->getAsciiParameter(_param0_applyBuff__string_int_float_), inv->getSignedIntParameter(), inv->getFloatParameter());
+		addBankCredits(inv->getUnsignedIntParameter());
 		break;
 	case 298:
-		resp->insertBoolean(verifyCashCredits(inv->getSignedIntParameter()));
+		subtractCashCredits(inv->getUnsignedIntParameter());
 		break;
 	case 299:
+		subtractBankCredits(inv->getUnsignedIntParameter());
+		break;
+	case 300:
+		setCashCredits(inv->getSignedIntParameter());
+		break;
+	case 301:
+		setBankCredits(inv->getSignedIntParameter());
+		break;
+	case 302:
+		applyBuff(inv->getAsciiParameter(_param0_applyBuff__string_int_float_), inv->getSignedIntParameter(), inv->getFloatParameter());
+		break;
+	case 303:
+		resp->insertBoolean(verifyCashCredits(inv->getSignedIntParameter()));
+		break;
+	case 304:
 		resp->insertBoolean(verifyBankCredits(inv->getSignedIntParameter()));
 		break;
 	default:
@@ -5687,6 +5770,14 @@ void CreatureObjectAdapter::removeInventoryItem(unsigned long long oid) {
 	return ((CreatureObjectImplementation*) impl)->removeInventoryItem(oid);
 }
 
+SceneObject* CreatureObjectAdapter::getLootItem(unsigned long long oid) {
+	return ((CreatureObjectImplementation*) impl)->getLootItem(oid);
+}
+
+void CreatureObjectAdapter::removeLootItem(unsigned long long oid) {
+	return ((CreatureObjectImplementation*) impl)->removeLootItem(oid);
+}
+
 void CreatureObjectAdapter::broadcastMessage(Message* msg, int range, bool doLock) {
 	return ((CreatureObjectImplementation*) impl)->broadcastMessage(msg, range, doLock);
 }
@@ -5695,12 +5786,20 @@ Inventory* CreatureObjectAdapter::getInventory() {
 	return ((CreatureObjectImplementation*) impl)->getInventory();
 }
 
+Container* CreatureObjectAdapter::getLootContainer() {
+	return ((CreatureObjectImplementation*) impl)->getLootContainer();
+}
+
 unsigned long long CreatureObjectAdapter::getNewItemID() {
 	return ((CreatureObjectImplementation*) impl)->getNewItemID();
 }
 
 Weapon* CreatureObjectAdapter::getWeapon() {
 	return ((CreatureObjectImplementation*) impl)->getWeapon();
+}
+
+Armor* CreatureObjectAdapter::getArmor(int type) {
+	return ((CreatureObjectImplementation*) impl)->getArmor(type);
 }
 
 int CreatureObjectAdapter::getSkillMod(const string& name) {
@@ -5789,6 +5888,10 @@ void CreatureObjectAdapter::sendSystemMessage(const string& file, const string& 
 
 void CreatureObjectAdapter::addInventoryItem(TangibleObject* item) {
 	return ((CreatureObjectImplementation*) impl)->addInventoryItem(item);
+}
+
+void CreatureObjectAdapter::addLootItem(TangibleObject* item) {
+	return ((CreatureObjectImplementation*) impl)->addLootItem(item);
 }
 
 void CreatureObjectAdapter::startDancing(const string& anim) {

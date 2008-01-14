@@ -528,6 +528,7 @@ void LootManager::createArmorLoot(Creature* creature, int creatureLevel) {
 		
 	if (item != NULL) {
 		item->setArmorStats(creatureLevel);
+		item->setConditionDamage(System::random(item->getMaxCondition()*3/4));
 		creature->addLootItem(item);
 	}
 }

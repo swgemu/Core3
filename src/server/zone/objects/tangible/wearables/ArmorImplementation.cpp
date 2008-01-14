@@ -99,6 +99,8 @@ void ArmorImplementation::initialize() {
 	lightSaberIsSpecial = false;
 	
 	type = 0;
+	
+	sliced = false;
 
 	stringstream loggingname;
 	loggingname << "Armor = 0x" << objectID;
@@ -150,78 +152,180 @@ void ArmorImplementation::generateAttributes(SceneObject* obj) {
 	else if (rating == HEAVY)
 		alm->insertAttribute("armorrating", "Heavy");
 	
-	alm->insertAttribute("cat_armor_special_protection", "");
-	
 	//Check for special protections
-	if (kineticIsSpecial)
-		alm->insertAttribute("armor_eff_kinetic", kinetic);
-	
-	if (energyIsSpecial)
-		alm->insertAttribute("armor_eff_energy", energy);
-	
-	if (electricityIsSpecial)
-		alm->insertAttribute("armor_eff_elemental_electrical", electricity);
-	
-	if (stunIsSpecial)
-		alm->insertAttribute("armor_eff_stun", stun);
-	
-	if (blastIsSpecial)
-		alm->insertAttribute("armor_eff_blast", blast);
-	
-	if (heatIsSpecial)
-		alm->insertAttribute("armor_eff_elemental_heat", heat);
-	
-	if (coldIsSpecial)
-		alm->insertAttribute("armor_eff_elemental_cold", cold);
-	
-	if (acidIsSpecial)
-		alm->insertAttribute("armor_eff_elemental_acid", acid);
-	
-	if (lightSaberIsSpecial)
-		alm->insertAttribute("armor_eff_restraint", lightSaber);
-		
-	alm->insertAttribute("cat_armor_effectiveness", "");
-
+	if (kineticIsSpecial) {
+		stringstream txt;
+		txt << round(kinetic) << "%";
+		alm->insertAttribute("cat_armor_special_protection.armor_eff_kinetic", txt.str());
+	}
+	if (energyIsSpecial) {
+		stringstream txt;
+		txt << round(energy) << "%";
+		alm->insertAttribute("cat_armor_special_protection.armor_eff_energy", txt.str());
+	}
+	if (electricityIsSpecial) {
+		stringstream txt;
+		txt << round(electricity) << "%";
+		alm->insertAttribute("cat_armor_special_protection.armor_eff_elemental_electrical", txt.str());
+	}
+	if (stunIsSpecial) {
+		stringstream txt;
+		txt << round(stun) << "%";
+		alm->insertAttribute("cat_armor_special_protection.armor_eff_stun", txt.str());
+	}
+	if (blastIsSpecial) {
+		stringstream txt;
+		txt << round(blast) << "%";
+		alm->insertAttribute("cat_armor_special_protection.armor_eff_blast", txt.str());
+	}
+	if (heatIsSpecial) {
+		stringstream txt;
+		txt << round(heat) << "%";
+		alm->insertAttribute("cat_armor_special_protection.armor_eff_elemental_heat", txt.str());
+	}
+	if (coldIsSpecial) {
+		stringstream txt;
+		txt << round(cold) << "%";
+		alm->insertAttribute("cat_armor_special_protection.armor_eff_elemental_cold", txt.str());
+	}
+	if (acidIsSpecial) {
+		stringstream txt;
+		txt << round(acid) << "%";
+		alm->insertAttribute("cat_armor_special_protection.armor_eff_elemental_acid", txt.str());
+	}
+	if (lightSaberIsSpecial) {
+		stringstream txt;
+		txt << round(lightSaber) << "%";
+		alm->insertAttribute("cat_armor_special_protection.armor_eff_restraint", txt.str());
+	}
 	//Check for Effectiveness protections(Normal)
-	if (!kineticIsSpecial)
-		alm->insertAttribute("armor_eff_kinetic", kinetic);
+	if (!kineticIsSpecial && kinetic > 0) {
+		stringstream txt;
+		txt << round(kinetic) << "%";
+		alm->insertAttribute("cat_armor_effectiveness.armor_eff_kinetic", txt.str());
+	}
+	if (!energyIsSpecial && energy > 0) {
+		stringstream txt;
+		txt << round(energy) << "%";
+		alm->insertAttribute("cat_armor_effectiveness.armor_eff_energy", txt.str());
+	}
+	if (!electricityIsSpecial && electricity > 0) {
+		stringstream txt;
+		txt << round(electricity) << "%";
+		alm->insertAttribute("cat_armor_effectiveness.armor_eff_elemental_electrical", txt.str());
+	}
+	if (!stunIsSpecial && stun > 0) {
+		stringstream txt;
+		txt << round(stun) << "%";
+		alm->insertAttribute("cat_armor_effectiveness.armor_eff_stun", txt.str());
+	}
+	if (!blastIsSpecial && blast > 0) {
+		stringstream txt;
+		txt << round(blast) << "%";
+		alm->insertAttribute("cat_armor_effectiveness.armor_eff_blast", txt.str());
+	}
+	if (!heatIsSpecial && heat > 0) {
+		stringstream txt;
+		txt << round(heat) << "%";
+		alm->insertAttribute("cat_armor_effectiveness.armor_eff_elemental_heat", txt.str());
+	}
+	if (!coldIsSpecial && cold > 0) {
+		stringstream txt;
+		txt << round(cold) << "%";
+		alm->insertAttribute("cat_armor_effectiveness.armor_eff_elemental_cold", txt.str());
+	}
+	if (!acidIsSpecial && acid > 0) {
+		stringstream txt;
+		txt << round(acid) << "%";
+		alm->insertAttribute("cat_armor_effectiveness.armor_eff_elemental_acid", txt.str());
+	}
+	if (!lightSaberIsSpecial && lightSaber > 0) {
+		stringstream txt;
+		txt << round(lightSaber) << "%";
+		alm->insertAttribute("cat_armor_effectiveness.armor_eff_restraint", txt.str());
+	}
 	
-	if (!energyIsSpecial)
-		alm->insertAttribute("armor_eff_energy", energy);
+	//Vulnerabilities
+	if (kinetic == 0)
+		alm->insertAttribute("cat_armor_vulnerability.armor_eff_kinetic", "-");
 	
-	if (!electricityIsSpecial)
-		alm->insertAttribute("armor_eff_elemental_electrical", electricity);
+	if (energy == 0)
+		alm->insertAttribute("cat_armor_vulnerability.armor_eff_energy", "-");
 	
-	if (!stunIsSpecial)
-		alm->insertAttribute("armor_eff_stun", stun);
+	if (electricity == 0)
+		alm->insertAttribute("cat_armor_vulnerability.armor_eff_elemental_electrical", "-");
 	
-	if (!blastIsSpecial)
-		alm->insertAttribute("armor_eff_blast", blast);
+	if (stun == 0)
+		alm->insertAttribute("cat_armor_vulnerability.armor_eff_stun", "-");
 	
-	if (!heatIsSpecial)
-		alm->insertAttribute("armor_eff_elemental_heat", heat);
+	if (blast == 0)
+		alm->insertAttribute("cat_armor_vulnerability.armor_eff_blast", "-");
 	
-	if (!coldIsSpecial)
-		alm->insertAttribute("armor_eff_elemental_cold", cold);
+	if (heat == 0)
+		alm->insertAttribute("cat_armor_vulnerability.armor_eff_elemental_heat", "-");
 	
-	if (!acidIsSpecial)
-		alm->insertAttribute("armor_eff_elemental_acid", acid);
+	if (cold == 0)
+		alm->insertAttribute("cat_armor_vulnerability.armor_eff_elemental_cold", "-");
 	
-	if (!lightSaberIsSpecial)
-		alm->insertAttribute("armor_eff_restraint", lightSaber);
+	if (acid == 0)
+		alm->insertAttribute("cat_armor_vulnerability.armor_eff_elemental_acid", "-");
+	
+	if (lightSaber == 0)
+		alm->insertAttribute("cat_armor_vulnerability.armor_eff_restraint", "-");
 	
 	//Encumbrances
-	alm->insertAttribute("cat_armor_encumbrance", "");
+	alm->insertAttribute("cat_armor_encumbrance.health", healthEncumbrance);
 	
-	alm->insertAttribute("healthencumbrance", healthEncumbrance);
+	alm->insertAttribute("cat_armor_encumbrance.action", actionEncumbrance);
 	
-	alm->insertAttribute("actionencumbrance", actionEncumbrance);
+	alm->insertAttribute("cat_armor_encumbrance.mind", mindEncumbrance);
 	
-	alm->insertAttribute("mindencumbrance", mindEncumbrance);
+	if (sliced == 1) 
+		alm->insertAttribute("hacked", "");
 	
 	player->sendMessage(alm);
 	
 }
+
+void ArmorImplementation::decayArmor(int decayRate) {
+	conditionDamage = conditionDamage + (maxCondition / 100 * decayRate);
+
+	if (conditionDamage > maxCondition)
+		conditionDamage = maxCondition;
+	
+	if (maxCondition > 0) {
+		float ratio = ((float) conditionDamage) / ((float) maxCondition);
+
+		if (ratio > 0.99) {
+			rating = 0;
+			
+			kinetic = 0.0f;
+			energy = 0.0f;
+			electricity = 0.0f;
+			stun = 0.0f;
+			blast = 0.0f;
+			heat = 0.0f;
+			cold = 0.0f;
+			acid = 0.0f;
+			lightSaber = 0.0f;
+			
+		} else if (ratio > 0.75) {
+			kinetic = kinetic - (kinetic * decayRate / 100);
+			energy = energy - (energy * decayRate / 100);
+			electricity = electricity - (electricity * decayRate / 100);
+			stun = stun - (stun * decayRate / 100);
+			blast = blast - (blast * decayRate / 100);
+			heat = heat - (heat * decayRate / 100);
+			cold = cold - (cold * decayRate / 100);
+			acid = acid - (acid * decayRate / 100);
+			lightSaber = lightSaber - (lightSaber* decayRate / 100);
+		}
+	}
+	
+	updated = true;
+}
+
+
 
 void ArmorImplementation::setArmorStats(int modifier) {	
 	int luck = (System::random(100)) + (modifier / 4);
@@ -315,4 +419,112 @@ void ArmorImplementation::setArmorStats(int modifier) {
 	if (mindEncumbrance < 0) 
 		mindEncumbrance = 0;
 	
+}
+
+void ArmorImplementation::sliceArmor(Player* player){
+	bool sliceType = System::random(1);
+	int slicePercent;
+	
+	stringstream msg;
+
+	try {
+		wlock();
+
+		if (!isSliced()) {
+			switch (sliceType) {
+			case 0:
+				slicePercent = sliceArmorEffectiveness();
+				msg << "Armor effectiveness increased by " << slicePercent << "%";
+				break;
+			case 1:
+				slicePercent = sliceArmorEncumbrance();
+				msg << "Armor encumbrance reduced by " << slicePercent << "%";
+				break;
+			}
+		
+			sendTo(player);
+		} else
+			msg << "Armor is already sliced.";
+
+		unlock();
+	} catch (...) {
+		unlock();
+	}
+
+	player->sendSystemMessage(msg.str());
+}
+
+int ArmorImplementation::sliceArmorEffectiveness(){
+	if (sliced) 
+		return 0;
+		
+	int modifier = System::random(10) + 25;
+
+	if (!kineticIsSpecial) {
+		kinetic = kinetic + (kinetic * modifier / 100);
+		if (kinetic > 90.0f) 
+			kinetic = 90.0f;
+	}
+		
+	if (!energyIsSpecial) {
+		energy = energy + (energy * modifier / 100);
+		if (energy > 90.0f) 
+			energy = 90.0f;		
+	}
+	if (!electricityIsSpecial) {
+		electricity = electricity + (electricity * modifier / 100);
+		if (electricity > 90.0f) 
+			electricity = 90.0f;		
+	}
+	if (!stunIsSpecial) {
+		stun = stun + (stun * modifier / 100);
+		if (stun > 90.0f)
+			stun = 90.0f;
+	}
+	if (!blastIsSpecial) {
+		blast = blast + (blast * modifier / 100);
+		if (blast > 90.0f) 
+			blast = 90.0f;
+	}
+	if (!heatIsSpecial) {
+		heat = heat + (heat * modifier / 100);
+		if (heat > 90.0f) 
+			heat = 90.0f;
+	}
+	if (!coldIsSpecial) {
+		cold = cold + (cold * modifier / 100);
+		if (cold > 90.0f) 
+			cold = 90.0f;
+	}
+	if (!acidIsSpecial) {
+		acid = acid + (acid * modifier / 100);
+		if (acid > 90.0f) 
+			acid = 90.0f;
+	}
+	if (!lightSaberIsSpecial) {
+		lightSaber = lightSaber + (lightSaber * modifier / 100);
+		if (lightSaber > 90.0f)
+			lightSaber = 90.0f;		
+	}
+
+	sliced = true;
+	updated = true;
+	
+	return modifier;
+}
+
+int ArmorImplementation::sliceArmorEncumbrance(){
+	if (sliced) 
+		return 0;
+		
+	int modifier = System::random(30) + 15;
+	
+	healthEncumbrance = healthEncumbrance - (healthEncumbrance * modifier / 100);
+	actionEncumbrance = actionEncumbrance - (actionEncumbrance * modifier / 100);
+	mindEncumbrance = mindEncumbrance - (mindEncumbrance * modifier / 100);
+	
+	sliced = true;
+	updated = true;
+	
+	return modifier;
 }

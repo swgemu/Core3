@@ -724,6 +724,21 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 			list->generateMessage();
 
 			player->sendMessage(list);
+		} else if (cmd == "@sliceArmor") {
+			ListBox* list = new ListBox(0xBEEFAABA, "Armor Upgrade Kit", "Select the item you wish to slice");
+			
+			Inventory* inventory = player->getInventory();
+			
+			for (int i = 0; i < inventory->objectsSize(); i++) {
+				TangibleObject* item = (TangibleObject*) inventory->getObject(i);
+				
+				if (item->isArmor() && !((Armor*) item)->isSliced())
+					list->addItem(item->getName().c_str());	
+			}
+					
+			list->generateMessage();
+
+			player->sendMessage(list);
 		} else if (cmd == "@repairWeapon") {
 			ListBox* list = new ListBox(0xBEEFAACA, "Weapon Repair Kit", "Select the item you wish to repair");
 			
@@ -739,7 +754,33 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 			list->generateMessage();
 
 			player->sendMessage(list);
-		} else if (cmd == "@giveItemTemp") {
+		} else if (cmd == "@repairArmor") {
+			ListBox* list = new ListBox(0xBEEFAADA, "Armor Repair Kit", "Select the item you wish to repair");
+			
+			Inventory* inventory = player->getInventory();
+
+			for (int i = 0; i < inventory->objectsSize(); i++) {
+				TangibleObject* item = (TangibleObject*) inventory->getObject(i);
+				
+				if (item->isArmor())
+					list->addItem(item->getName().c_str());
+			}
+			
+			list->generateMessage();
+
+			player->sendMessage(list);
+		} /*else if (cmd == "@open") {
+					CreatureObject* target = (CreatureObject*)player->getTarget();
+					if (target != NULL) {
+						Message* packet = new Message();
+						packet->insertShort(0x04);
+						packet->insertInt(0xDCA57409);
+						packet->insertLong(target->getLootContainer()->getObjectID());
+						packet->insertInt(0);
+						packet->insertShort(0x00);
+						player->sendMessage(packet);
+					}
+		}*/ else if (cmd == "@giveItemTemp") {
 			if (userManager->isAdmin(player->getFirstName())) {
 				
 				//Give TANO

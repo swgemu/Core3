@@ -574,8 +574,14 @@ void PlayerImplementation::decayInventory() {
 	if (inventory != NULL)
 		for (int i = 0; i < inventory->objectsSize(); i++) {
 			TangibleObject* item = ((TangibleObject*) inventory->getObject(i));
-			item->decay(5);
-				
+			
+			if (item->isWeapon())
+				((Weapon*)item)->decayWeapon(5);
+			else if (item->isArmor())
+				((Armor*)item)->decayArmor(5);
+			else
+				item->decay(5);
+			
 			item->sendTo(_this);
 		}
 }

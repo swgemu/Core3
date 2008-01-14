@@ -55,9 +55,13 @@ interface Armor implements Wearable {
 	
 	void sendTo(Player player, boolean doClose = true);
 	
+	void decayArmor(int decayRate);
+	
 	void generateAttributes(SceneObject obj);
 	
 	void setArmorStats(int modifier);
+	
+	void sliceArmor(Player player);
 	
 	// setters and getters
 	int getRating();
@@ -109,4 +113,7 @@ interface Armor implements Wearable {
 	boolean isLightSaberSpecial();
 	
 	int getType();
+	
+	boolean isSliced();
+	
 }
