@@ -1660,7 +1660,7 @@ void CreatureObject::setIntimidatedState() {
 		((CreatureObjectImplementation*) _impl)->setIntimidatedState();
 }
 
-void CreatureObject::setPoisonedState(int str, int type) {
+void CreatureObject::setPoisonedState(int str, int type, int duration) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
@@ -1668,13 +1668,14 @@ void CreatureObject::setPoisonedState(int str, int type) {
 		ORBMethodInvocation invocation(this, 127);
 		invocation.addSignedIntParameter(str);
 		invocation.addSignedIntParameter(type);
+		invocation.addSignedIntParameter(duration);
 
 		invocation.executeWithVoidReturn();
 	} else
-		((CreatureObjectImplementation*) _impl)->setPoisonedState(str, type);
+		((CreatureObjectImplementation*) _impl)->setPoisonedState(str, type, duration);
 }
 
-void CreatureObject::setBleedingState(int str, int type) {
+void CreatureObject::setBleedingState(int str, int type, int duration) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
@@ -1682,13 +1683,14 @@ void CreatureObject::setBleedingState(int str, int type) {
 		ORBMethodInvocation invocation(this, 128);
 		invocation.addSignedIntParameter(str);
 		invocation.addSignedIntParameter(type);
+		invocation.addSignedIntParameter(duration);
 
 		invocation.executeWithVoidReturn();
 	} else
-		((CreatureObjectImplementation*) _impl)->setBleedingState(str, type);
+		((CreatureObjectImplementation*) _impl)->setBleedingState(str, type, duration);
 }
 
-void CreatureObject::setDiseasedState(int str, int type) {
+void CreatureObject::setDiseasedState(int str, int type, int duration) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
@@ -1696,13 +1698,14 @@ void CreatureObject::setDiseasedState(int str, int type) {
 		ORBMethodInvocation invocation(this, 129);
 		invocation.addSignedIntParameter(str);
 		invocation.addSignedIntParameter(type);
+		invocation.addSignedIntParameter(duration);
 
 		invocation.executeWithVoidReturn();
 	} else
-		((CreatureObjectImplementation*) _impl)->setDiseasedState(str, type);
+		((CreatureObjectImplementation*) _impl)->setDiseasedState(str, type, duration);
 }
 
-void CreatureObject::setOnFireState(int str, int type) {
+void CreatureObject::setOnFireState(int str, int type, int duration) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
@@ -1710,10 +1713,11 @@ void CreatureObject::setOnFireState(int str, int type) {
 		ORBMethodInvocation invocation(this, 130);
 		invocation.addSignedIntParameter(str);
 		invocation.addSignedIntParameter(type);
+		invocation.addSignedIntParameter(duration);
 
 		invocation.executeWithVoidReturn();
 	} else
-		((CreatureObjectImplementation*) _impl)->setOnFireState(str, type);
+		((CreatureObjectImplementation*) _impl)->setOnFireState(str, type, duration);
 }
 
 bool CreatureObject::setNextAttackDelay(int del) {
@@ -4274,16 +4278,16 @@ Packet* CreatureObjectAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* 
 		setIntimidatedState();
 		break;
 	case 127:
-		setPoisonedState(inv->getSignedIntParameter(), inv->getSignedIntParameter());
+		setPoisonedState(inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
 		break;
 	case 128:
-		setBleedingState(inv->getSignedIntParameter(), inv->getSignedIntParameter());
+		setBleedingState(inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
 		break;
 	case 129:
-		setDiseasedState(inv->getSignedIntParameter(), inv->getSignedIntParameter());
+		setDiseasedState(inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
 		break;
 	case 130:
-		setOnFireState(inv->getSignedIntParameter(), inv->getSignedIntParameter());
+		setOnFireState(inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
 		break;
 	case 131:
 		resp->insertBoolean(setNextAttackDelay(inv->getSignedIntParameter()));
@@ -5298,20 +5302,20 @@ void CreatureObjectAdapter::setIntimidatedState() {
 	return ((CreatureObjectImplementation*) impl)->setIntimidatedState();
 }
 
-void CreatureObjectAdapter::setPoisonedState(int str, int type) {
-	return ((CreatureObjectImplementation*) impl)->setPoisonedState(str, type);
+void CreatureObjectAdapter::setPoisonedState(int str, int type, int duration) {
+	return ((CreatureObjectImplementation*) impl)->setPoisonedState(str, type, duration);
 }
 
-void CreatureObjectAdapter::setBleedingState(int str, int type) {
-	return ((CreatureObjectImplementation*) impl)->setBleedingState(str, type);
+void CreatureObjectAdapter::setBleedingState(int str, int type, int duration) {
+	return ((CreatureObjectImplementation*) impl)->setBleedingState(str, type, duration);
 }
 
-void CreatureObjectAdapter::setDiseasedState(int str, int type) {
-	return ((CreatureObjectImplementation*) impl)->setDiseasedState(str, type);
+void CreatureObjectAdapter::setDiseasedState(int str, int type, int duration) {
+	return ((CreatureObjectImplementation*) impl)->setDiseasedState(str, type, duration);
 }
 
-void CreatureObjectAdapter::setOnFireState(int str, int type) {
-	return ((CreatureObjectImplementation*) impl)->setOnFireState(str, type);
+void CreatureObjectAdapter::setOnFireState(int str, int type, int duration) {
+	return ((CreatureObjectImplementation*) impl)->setOnFireState(str, type, duration);
 }
 
 bool CreatureObjectAdapter::setNextAttackDelay(int del) {

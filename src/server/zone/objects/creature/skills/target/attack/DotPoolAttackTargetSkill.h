@@ -186,16 +186,16 @@ public:
 			}
 			
 			if (fireDotType > 0)
-				targetCreature->setOnFireState(fireDotStrength, fireDotType);
+				targetCreature->setOnFireState(fireDotStrength, fireDotType, 60);
 			
 			if (bleedingDotType > 0)
-				targetCreature->setBleedingState(bleedingDotStrength, bleedingDotType);
+				targetCreature->setBleedingState(bleedingDotStrength, bleedingDotType, 60);
 				
 			if (poisonDotType > 0)
-				targetCreature->setPoisonedState(poisonDotStrength, poisonDotType);
+				targetCreature->setPoisonedState(poisonDotStrength, poisonDotType, 60);
 		
 			if (diseaseDotType > 0)
-				targetCreature->setDiseasedState(diseaseDotStrength, diseaseDotType);
+				targetCreature->setDiseasedState(diseaseDotStrength, diseaseDotType, 60);
 			
 			targetCreature->updateStates();
 		}

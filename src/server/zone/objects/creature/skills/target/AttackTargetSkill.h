@@ -447,16 +447,16 @@ public:
 				if (System::random(100) < weapon->getDot0Potency()) {
 					switch (weapon->getDot0Type()) {
 					case 1:
-						targetCreature->setBleedingState(weapon->getDot0Strength(), weapon->getDot0Attribute());
+						targetCreature->setBleedingState(weapon->getDot0Strength(), weapon->getDot0Attribute(), weapon->getDot0Duration());
 						break;	
 					case 2:
-						targetCreature->setDiseasedState(weapon->getDot0Strength(), weapon->getDot0Attribute());
+						targetCreature->setDiseasedState(weapon->getDot0Strength(), weapon->getDot0Attribute(), weapon->getDot0Duration());
 						break;	
 					case 3:
-						targetCreature->setOnFireState(weapon->getDot0Strength(), weapon->getDot0Attribute());
+						targetCreature->setOnFireState(weapon->getDot0Strength(), weapon->getDot0Attribute(), weapon->getDot0Duration());
 						break;	
 					case 4:
-						targetCreature->setPoisonedState(weapon->getDot0Strength(), weapon->getDot0Attribute());
+						targetCreature->setPoisonedState(weapon->getDot0Strength(), weapon->getDot0Attribute(), weapon->getDot0Duration());
 						break;	
 					}
 				}
@@ -473,16 +473,16 @@ public:
 				if (System::random(100) < weapon->getDot1Potency()) {
 					switch (weapon->getDot1Type()) {
 					case 1:
-						targetCreature->setBleedingState(weapon->getDot1Strength(), weapon->getDot1Attribute());
+						targetCreature->setBleedingState(weapon->getDot1Strength(), weapon->getDot1Attribute(), weapon->getDot1Duration());
 						break;	
 					case 2:
-						targetCreature->setDiseasedState(weapon->getDot1Strength(), weapon->getDot1Attribute());
+						targetCreature->setDiseasedState(weapon->getDot1Strength(), weapon->getDot1Attribute(), weapon->getDot1Duration());
 						break;	
 					case 3:
-						targetCreature->setOnFireState(weapon->getDot1Strength(), weapon->getDot1Attribute());
+						targetCreature->setOnFireState(weapon->getDot1Strength(), weapon->getDot1Attribute(), weapon->getDot1Duration());
 						break;	
 					case 4:
-						targetCreature->setPoisonedState(weapon->getDot1Strength(), weapon->getDot1Attribute());
+						targetCreature->setPoisonedState(weapon->getDot1Strength(), weapon->getDot1Attribute(), weapon->getDot1Duration());
 						break;	
 					}
 				}
@@ -499,16 +499,16 @@ public:
 				if (System::random(100) < weapon->getDot2Potency()) {
 					switch (weapon->getDot2Type()) {
 					case 1:
-						targetCreature->setBleedingState(weapon->getDot2Strength(), weapon->getDot2Attribute());
+						targetCreature->setBleedingState(weapon->getDot2Strength(), weapon->getDot2Attribute(), weapon->getDot2Duration());
 						break;	
 					case 2:
-						targetCreature->setDiseasedState(weapon->getDot2Strength(), weapon->getDot2Attribute());
+						targetCreature->setDiseasedState(weapon->getDot2Strength(), weapon->getDot2Attribute(), weapon->getDot2Duration());
 						break;	
 					case 3:
-						targetCreature->setOnFireState(weapon->getDot2Strength(), weapon->getDot2Attribute());
+						targetCreature->setOnFireState(weapon->getDot2Strength(), weapon->getDot2Attribute(), weapon->getDot2Duration());
 						break;	
 					case 4:
-						targetCreature->setPoisonedState(weapon->getDot2Strength(), weapon->getDot2Attribute());
+						targetCreature->setPoisonedState(weapon->getDot2Strength(), weapon->getDot2Attribute(), weapon->getDot2Duration());
 						break;	
 					}
 				}

@@ -555,10 +555,10 @@ public:
 	virtual void activateRecovery() = 0;
 		
 	// dots
-	void setPoisonedState(int str, int type);
-	void setBleedingState(int str, int type);
-	void setDiseasedState(int str, int type);
-	void setOnFireState(int str, int type);
+	void setPoisonedState(int str, int type, int duration);
+	void setBleedingState(int str, int type, int duration);
+	void setDiseasedState(int str, int type, int duration);
+	void setOnFireState(int str, int type, int duration);
 	
 	void doPoisonTick();
 	void doBleedingTick();

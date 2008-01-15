@@ -750,7 +750,7 @@ void CreatureObjectImplementation::setMeditateState() {
 	meditating = true;
 }
 
-void CreatureObjectImplementation::setPoisonedState(int str, int type) {
+void CreatureObjectImplementation::setPoisonedState(int str, int type, int duration) {
 	if(setState(POISONED_STATE)) {
 		playEffect("clienteffect/dot_apply_poison.cef");
 		sendSystemMessage("dot_message", "start_poisoned");
@@ -759,11 +759,11 @@ void CreatureObjectImplementation::setPoisonedState(int str, int type) {
 		poisonDotStrength = str;
 
 		poisonRecoveryTime.update();
-		poisonRecoveryTime.addMiliTime(60000);
+		poisonRecoveryTime.addMiliTime(duration * 1000);
 	}
 }
 
-void CreatureObjectImplementation::setOnFireState(int str, int type) {
+void CreatureObjectImplementation::setOnFireState(int str, int type, int duration) {
 	if(setState(ONFIRE_STATE)) {
 		playEffect("clienteffect/dot_apply_fire.cef");
 		sendSystemMessage("dot_message", "start_fire");
@@ -772,11 +772,11 @@ void CreatureObjectImplementation::setOnFireState(int str, int type) {
 		fireDotStrength = str;
 
 		fireRecoveryTime.update();
-		fireRecoveryTime.addMiliTime(60000);
+		fireRecoveryTime.addMiliTime(duration * 1000);
 	}
 }
 
-void CreatureObjectImplementation::setBleedingState(int str, int type) {
+void CreatureObjectImplementation::setBleedingState(int str, int type, int duration) {
 	if(setState(BLEEDING_STATE)) {
 		playEffect("clienteffect/dot_apply_bleeding.cef");
 		sendSystemMessage("dot_message", "start_bleeding");
@@ -785,13 +785,13 @@ void CreatureObjectImplementation::setBleedingState(int str, int type) {
 		bleedingDotStrength = str;
 
 		bleedingRecoveryTime.update();
-		bleedingRecoveryTime.addMiliTime(60000);
+		bleedingRecoveryTime.addMiliTime(duration * 1000);
 		
 		nextBleedingTick.update();
 	}
 }
 
-void CreatureObjectImplementation::setDiseasedState(int str, int type) {
+void CreatureObjectImplementation::setDiseasedState(int str, int type, int duration) {
 	if(setState(DISEASED_STATE)) {
 		playEffect("clienteffect/dot_apply_disease.cef");
 		sendSystemMessage("dot_message", "start_diseased");
@@ -800,7 +800,7 @@ void CreatureObjectImplementation::setDiseasedState(int str, int type) {
 		diseaseDotStrength = str;
 
 		diseasedRecoveryTime.update();
-		diseasedRecoveryTime.addMiliTime(60000);
+		diseasedRecoveryTime.addMiliTime(duration * 1000);
 	}
 }
 
@@ -859,7 +859,7 @@ void CreatureObjectImplementation::doFireTick() {
 			changeHealthWoundsBar(fireDotStrength);
 			changeHealthBar(-fireDotStrength);
 		}
-		else if (bleedingDotType == 4) {
+		else if (fireDotType == 4) {
 			changeActionWoundsBar(fireDotStrength);
 			changeActionBar(-fireDotStrength);
 	}
