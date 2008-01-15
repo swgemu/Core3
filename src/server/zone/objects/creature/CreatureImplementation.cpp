@@ -371,7 +371,7 @@ void CreatureImplementation::notifyPositionUpdate(QuadTreeEntry* obj) {
 	case SceneObjectImplementation::PLAYER:
 		player = (Player*) scno;
 
-		if (isAgressive() && !player->isIncapacitated() && !player->isDead() && isInRange(player, 32)) {
+		if (isAgressive() && !isDead() && !player->isIncapacitated() && !player->isDead() && isInRange(player, 32)) {
 			info("aggroing " + player->getFirstName());
 
 			aggroedCreature = player;
