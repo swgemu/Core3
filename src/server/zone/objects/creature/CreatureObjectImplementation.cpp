@@ -1834,13 +1834,18 @@ uint64 CreatureObjectImplementation::getWeaponID() {
 }
 
 Armor* CreatureObjectImplementation::getArmor(int type) {
-	if (inventory != NULL)
-		for (int i=0; i < inventory->objectsSize(); i++) {
-			TangibleObject* item = ((TangibleObject*)(inventory->getObject(i)));
-			if (item->isArmor())
-				if (((Armor*)item)->getType() == type && item->isEquipped())
-					return ((Armor*)item);
+	if (inventory == NULL)
+		return NULL;
+
+	for (int i=0; i < inventory->objectsSize(); i++) {
+		TangibleObject* item = (TangibleObject*) inventory->getObject(i);
+
+		if (item->isArmor()) {
+			if (((Armor*) item)->getType() == type && item->isEquipped())
+				return (Armor*) item;
 		}
+	}
+
 	return NULL;
 }
 

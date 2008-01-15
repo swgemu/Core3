@@ -498,7 +498,6 @@ void WeaponImplementation::setWeaponStats(int modifier){
 	wlock();
 	
 	if (templateName == "rifle_flame_thrower") {
-		
 		minDamage = minDamage * 2;
 		maxDamage = maxDamage * 3;
 		woundsRatio = woundsRatio * 2;
