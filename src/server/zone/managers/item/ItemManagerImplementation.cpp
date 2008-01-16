@@ -226,7 +226,18 @@ void ItemManagerImplementation::createPlayerObject(Player* player, ResultSet* re
 	case TangibleObjectImplementation::SURVEYTOOL:
 		item = new SurveyToolImplementation(objectid, objectcrc, objectname, objecttemp, player);
 		break;
-	case TangibleObjectImplementation::RESOURCE:
+	case TangibleObjectImplementation::RESOURCECONTAINER:
+	case TangibleObjectImplementation::ENERGYGAS:
+	case TangibleObjectImplementation::ENERGYLIQUID:
+	case TangibleObjectImplementation::ENERGYRADIOACTIVE:
+	case TangibleObjectImplementation::ENERGYSOLID:
+	case TangibleObjectImplementation::INORGANICCHEMICAL:
+	case TangibleObjectImplementation::INORGANICGAS:
+	case TangibleObjectImplementation::INORGANICMINERAL:
+	case TangibleObjectImplementation::WATER:
+	case TangibleObjectImplementation::ORGANICFOOD:
+	case TangibleObjectImplementation::ORGANICHIDE:
+	case TangibleObjectImplementation::ORGANICSTRUCTURAL:
 		item = new ResourceContainerImplementation(objectid, objectcrc, objectname, objecttemp, player);
 		ResourceContainerImplementation* resourceItem = (ResourceContainerImplementation*) item;
 		resourceItem->setResourceID(result->getInt(68));

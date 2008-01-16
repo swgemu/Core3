@@ -55,7 +55,7 @@ which carries forward this exception.
 #include "../../managers/guild/GuildManager.h"
 #include "../../managers/group/GroupManager.h"
 #include "../../managers/planet/PlanetManager.h"
-#include "../../managers/resource/ResourceManager.h"
+#include "../../managers/resource/LocalResourceManager.h"
 #include "../../managers/loot/LootManager.h"
 
 #include "../../../chat/ChatManager.h"
@@ -897,8 +897,6 @@ void PlayerImplementation::removeFromZone(bool doLock) {
 		_this->release();
 		
 		zone->deleteObject(objectID);
-	
-		//TODO: SEND RETURN TO CHARSCREEN???
 		
 		zone->unlock(doLock);
 	} catch (...) {
@@ -1268,6 +1266,10 @@ void PlayerImplementation::kill() {
 }
 
 void PlayerImplementation::changePosture(int post) {
+	if (post == getPosture()) {
+		return;
+	}
+	
 	if (logoutEvent != NULL) {
 		sendSystemMessage("Logout canceled.");
 		server->removeEvent(logoutEvent);
@@ -2092,6 +2094,11 @@ void PlayerImplementation::setSurveyEvent(unicode& resource_name) {
 }
 
 void PlayerImplementation::setSampleEvent(unicode& resource_name, bool firstTime) {
+	if (getInventoryItem(surveyTool->getObjectID()) == NULL) {
+		ChatSystemMessage* sysMessage = new ChatSystemMessage("survey","sample_gone");
+		sendMessage(sysMessage);
+		return;
+	}
 	if (firstTime) {
 		firstSampleEvent = new SampleEvent(_this, resource_name);
 		server->addEvent(firstSampleEvent, 2000);
@@ -2105,7 +2112,7 @@ void PlayerImplementation::setSampleEvent(unicode& resource_name, bool firstTime
 			activateRecovery();
 			
 			sampleEvent = new SampleEvent(_this, resource_name);
-			getZone()->getZoneServer()->getResourceManager()->sendSampleMessage(_this, resource_name);
+			getZone()->getLocalResourceManager()->sendSampleMessage(_this, resource_name);
 			server->addEvent(sampleEvent, 12000);
 		} else {
 			sendSystemMessage("You do not have enough action to do that.");
@@ -2118,11 +2125,11 @@ void PlayerImplementation::setSampleEvent(unicode& resource_name, bool firstTime
 
 void PlayerImplementation::sendSampleTimeRemaining() {
 	// Precondition: sampleEvent != NULL
-	uint64 time = -(sampleEvent->getTimeStamp().miliDifference()) / 1000;
+	int time = -(sampleEvent->getTimeStamp().miliDifference()) / 1000;
 	
-	stringstream ss;
-	ss << "You will be able to sample again in " << ++time << " seconds.";
-	sendSystemMessage(ss.str());
+	unicode ustr = "";
+	ChatSystemMessage* sysMessage = new ChatSystemMessage("survey","tool_recharge_time",ustr,time,false);
+	sendMessage(sysMessage);
 }
 
 void PlayerImplementation::launchFirework() {

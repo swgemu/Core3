@@ -131,12 +131,40 @@ void ResourceContainer::generateAttributes(SceneObject* obj) {
 		((ResourceContainerImplementation*) _impl)->generateAttributes(obj);
 }
 
-void ResourceContainer::setContents(int i) {
+void ResourceContainer::splitContainer(Player* player, int newQuantity) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
 		ORBMethodInvocation invocation(this, 10);
+		invocation.addObjectParameter(player);
+		invocation.addSignedIntParameter(newQuantity);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((ResourceContainerImplementation*) _impl)->splitContainer(player, newQuantity);
+}
+
+void ResourceContainer::transferContents(Player* player, ResourceContainer* fromRCO) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 11);
+		invocation.addObjectParameter(player);
+		invocation.addObjectParameter(fromRCO);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((ResourceContainerImplementation*) _impl)->transferContents(player, fromRCO);
+}
+
+void ResourceContainer::setContents(int i) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 12);
 		invocation.addSignedIntParameter(i);
 
 		invocation.executeWithVoidReturn();
@@ -149,7 +177,7 @@ void ResourceContainer::setDecayResistance(int i) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 11);
+		ORBMethodInvocation invocation(this, 13);
 		invocation.addSignedIntParameter(i);
 
 		invocation.executeWithVoidReturn();
@@ -162,7 +190,7 @@ void ResourceContainer::setQuality(int i) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 12);
+		ORBMethodInvocation invocation(this, 14);
 		invocation.addSignedIntParameter(i);
 
 		invocation.executeWithVoidReturn();
@@ -175,7 +203,7 @@ void ResourceContainer::setFlavor(int i) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 13);
+		ORBMethodInvocation invocation(this, 15);
 		invocation.addSignedIntParameter(i);
 
 		invocation.executeWithVoidReturn();
@@ -188,7 +216,7 @@ void ResourceContainer::setPotentialEnergy(int i) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 14);
+		ORBMethodInvocation invocation(this, 16);
 		invocation.addSignedIntParameter(i);
 
 		invocation.executeWithVoidReturn();
@@ -201,7 +229,7 @@ void ResourceContainer::setMalleability(int i) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 15);
+		ORBMethodInvocation invocation(this, 17);
 		invocation.addSignedIntParameter(i);
 
 		invocation.executeWithVoidReturn();
@@ -214,7 +242,7 @@ void ResourceContainer::setToughness(int i) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 16);
+		ORBMethodInvocation invocation(this, 18);
 		invocation.addSignedIntParameter(i);
 
 		invocation.executeWithVoidReturn();
@@ -227,7 +255,7 @@ void ResourceContainer::setShockResistance(int i) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 17);
+		ORBMethodInvocation invocation(this, 19);
 		invocation.addSignedIntParameter(i);
 
 		invocation.executeWithVoidReturn();
@@ -240,7 +268,7 @@ void ResourceContainer::setColdResistance(int i) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 18);
+		ORBMethodInvocation invocation(this, 20);
 		invocation.addSignedIntParameter(i);
 
 		invocation.executeWithVoidReturn();
@@ -253,7 +281,7 @@ void ResourceContainer::setHeatResistance(int i) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 19);
+		ORBMethodInvocation invocation(this, 21);
 		invocation.addSignedIntParameter(i);
 
 		invocation.executeWithVoidReturn();
@@ -266,7 +294,7 @@ void ResourceContainer::setConductivity(int i) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 20);
+		ORBMethodInvocation invocation(this, 22);
 		invocation.addSignedIntParameter(i);
 
 		invocation.executeWithVoidReturn();
@@ -279,7 +307,7 @@ void ResourceContainer::setEntangleResistance(int i) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 21);
+		ORBMethodInvocation invocation(this, 23);
 		invocation.addSignedIntParameter(i);
 
 		invocation.executeWithVoidReturn();
@@ -292,7 +320,7 @@ void ResourceContainer::setResourceName(unicode& n) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 22);
+		ORBMethodInvocation invocation(this, 24);
 		invocation.addUnicodeParameter(n);
 
 		invocation.executeWithVoidReturn();
@@ -305,7 +333,7 @@ void ResourceContainer::setContainerFile(string& tempn) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 23);
+		ORBMethodInvocation invocation(this, 25);
 		invocation.addAsciiParameter(tempn);
 
 		invocation.executeWithVoidReturn();
@@ -318,7 +346,7 @@ void ResourceContainer::setObjectCRC(int tempCRC) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 24);
+		ORBMethodInvocation invocation(this, 26);
 		invocation.addSignedIntParameter(tempCRC);
 
 		invocation.executeWithVoidReturn();
@@ -331,7 +359,7 @@ void ResourceContainer::setResourceID(unsigned long long rid) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 25);
+		ORBMethodInvocation invocation(this, 27);
 		invocation.addUnsignedLongParameter(rid);
 
 		invocation.executeWithVoidReturn();
@@ -339,12 +367,25 @@ void ResourceContainer::setResourceID(unsigned long long rid) {
 		((ResourceContainerImplementation*) _impl)->setResourceID(rid);
 }
 
+void ResourceContainer::setObjectSubType(int subType) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 28);
+		invocation.addSignedIntParameter(subType);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((ResourceContainerImplementation*) _impl)->setObjectSubType(subType);
+}
+
 int ResourceContainer::getContents() {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 26);
+		ORBMethodInvocation invocation(this, 29);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -356,7 +397,7 @@ int ResourceContainer::getDecayResistance() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 27);
+		ORBMethodInvocation invocation(this, 30);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -368,7 +409,7 @@ int ResourceContainer::getQuality() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 28);
+		ORBMethodInvocation invocation(this, 31);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -380,7 +421,7 @@ int ResourceContainer::getFlavor() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 29);
+		ORBMethodInvocation invocation(this, 32);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -392,7 +433,7 @@ int ResourceContainer::getPotentialEnergy() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 30);
+		ORBMethodInvocation invocation(this, 33);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -404,7 +445,7 @@ int ResourceContainer::getMalleability() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 31);
+		ORBMethodInvocation invocation(this, 34);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -416,7 +457,7 @@ int ResourceContainer::getToughness() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 32);
+		ORBMethodInvocation invocation(this, 35);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -428,7 +469,7 @@ int ResourceContainer::getShockResistance() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 33);
+		ORBMethodInvocation invocation(this, 36);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -440,7 +481,7 @@ int ResourceContainer::getColdResistance() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 34);
+		ORBMethodInvocation invocation(this, 37);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -452,7 +493,7 @@ int ResourceContainer::getHeatResistance() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 35);
+		ORBMethodInvocation invocation(this, 38);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -464,7 +505,7 @@ int ResourceContainer::getConductivity() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 36);
+		ORBMethodInvocation invocation(this, 39);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -476,7 +517,7 @@ int ResourceContainer::getEntangleResistance() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 37);
+		ORBMethodInvocation invocation(this, 40);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -488,7 +529,7 @@ unsigned long long ResourceContainer::getResourceID() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 38);
+		ORBMethodInvocation invocation(this, 41);
 
 		return invocation.executeWithUnsignedLongReturn();
 	} else
@@ -500,7 +541,7 @@ int ResourceContainer::getMaxContents() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 39);
+		ORBMethodInvocation invocation(this, 42);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -531,93 +572,102 @@ Packet* ResourceContainerAdapter::invokeMethod(uint32 methid, ORBMethodInvocatio
 		generateAttributes((SceneObject*) inv->getObjectParameter());
 		break;
 	case 10:
-		setContents(inv->getSignedIntParameter());
+		splitContainer((Player*) inv->getObjectParameter(), inv->getSignedIntParameter());
 		break;
 	case 11:
-		setDecayResistance(inv->getSignedIntParameter());
+		transferContents((Player*) inv->getObjectParameter(), (ResourceContainer*) inv->getObjectParameter());
 		break;
 	case 12:
-		setQuality(inv->getSignedIntParameter());
+		setContents(inv->getSignedIntParameter());
 		break;
 	case 13:
-		setFlavor(inv->getSignedIntParameter());
+		setDecayResistance(inv->getSignedIntParameter());
 		break;
 	case 14:
-		setPotentialEnergy(inv->getSignedIntParameter());
+		setQuality(inv->getSignedIntParameter());
 		break;
 	case 15:
-		setMalleability(inv->getSignedIntParameter());
+		setFlavor(inv->getSignedIntParameter());
 		break;
 	case 16:
-		setToughness(inv->getSignedIntParameter());
+		setPotentialEnergy(inv->getSignedIntParameter());
 		break;
 	case 17:
-		setShockResistance(inv->getSignedIntParameter());
+		setMalleability(inv->getSignedIntParameter());
 		break;
 	case 18:
-		setColdResistance(inv->getSignedIntParameter());
+		setToughness(inv->getSignedIntParameter());
 		break;
 	case 19:
-		setHeatResistance(inv->getSignedIntParameter());
+		setShockResistance(inv->getSignedIntParameter());
 		break;
 	case 20:
-		setConductivity(inv->getSignedIntParameter());
+		setColdResistance(inv->getSignedIntParameter());
 		break;
 	case 21:
-		setEntangleResistance(inv->getSignedIntParameter());
+		setHeatResistance(inv->getSignedIntParameter());
 		break;
 	case 22:
-		setResourceName(inv->getUnicodeParameter(_param0_setResourceName__unicode_));
+		setConductivity(inv->getSignedIntParameter());
 		break;
 	case 23:
-		setContainerFile(inv->getAsciiParameter(_param0_setContainerFile__string_));
+		setEntangleResistance(inv->getSignedIntParameter());
 		break;
 	case 24:
-		setObjectCRC(inv->getSignedIntParameter());
+		setResourceName(inv->getUnicodeParameter(_param0_setResourceName__unicode_));
 		break;
 	case 25:
-		setResourceID(inv->getUnsignedLongParameter());
+		setContainerFile(inv->getAsciiParameter(_param0_setContainerFile__string_));
 		break;
 	case 26:
-		resp->insertSignedInt(getContents());
+		setObjectCRC(inv->getSignedIntParameter());
 		break;
 	case 27:
-		resp->insertSignedInt(getDecayResistance());
+		setResourceID(inv->getUnsignedLongParameter());
 		break;
 	case 28:
-		resp->insertSignedInt(getQuality());
+		setObjectSubType(inv->getSignedIntParameter());
 		break;
 	case 29:
-		resp->insertSignedInt(getFlavor());
+		resp->insertSignedInt(getContents());
 		break;
 	case 30:
-		resp->insertSignedInt(getPotentialEnergy());
+		resp->insertSignedInt(getDecayResistance());
 		break;
 	case 31:
-		resp->insertSignedInt(getMalleability());
+		resp->insertSignedInt(getQuality());
 		break;
 	case 32:
-		resp->insertSignedInt(getToughness());
+		resp->insertSignedInt(getFlavor());
 		break;
 	case 33:
-		resp->insertSignedInt(getShockResistance());
+		resp->insertSignedInt(getPotentialEnergy());
 		break;
 	case 34:
-		resp->insertSignedInt(getColdResistance());
+		resp->insertSignedInt(getMalleability());
 		break;
 	case 35:
-		resp->insertSignedInt(getHeatResistance());
+		resp->insertSignedInt(getToughness());
 		break;
 	case 36:
-		resp->insertSignedInt(getConductivity());
+		resp->insertSignedInt(getShockResistance());
 		break;
 	case 37:
-		resp->insertSignedInt(getEntangleResistance());
+		resp->insertSignedInt(getColdResistance());
 		break;
 	case 38:
-		resp->insertLong(getResourceID());
+		resp->insertSignedInt(getHeatResistance());
 		break;
 	case 39:
+		resp->insertSignedInt(getConductivity());
+		break;
+	case 40:
+		resp->insertSignedInt(getEntangleResistance());
+		break;
+	case 41:
+		resp->insertLong(getResourceID());
+		break;
+	case 42:
 		resp->insertSignedInt(getMaxContents());
 		break;
 	default:
@@ -641,6 +691,14 @@ void ResourceContainerAdapter::sendDeltas(Player* player) {
 
 void ResourceContainerAdapter::generateAttributes(SceneObject* obj) {
 	return ((ResourceContainerImplementation*) impl)->generateAttributes(obj);
+}
+
+void ResourceContainerAdapter::splitContainer(Player* player, int newQuantity) {
+	return ((ResourceContainerImplementation*) impl)->splitContainer(player, newQuantity);
+}
+
+void ResourceContainerAdapter::transferContents(Player* player, ResourceContainer* fromRCO) {
+	return ((ResourceContainerImplementation*) impl)->transferContents(player, fromRCO);
 }
 
 void ResourceContainerAdapter::setContents(int i) {
@@ -705,6 +763,10 @@ void ResourceContainerAdapter::setObjectCRC(int tempCRC) {
 
 void ResourceContainerAdapter::setResourceID(unsigned long long rid) {
 	return ((ResourceContainerImplementation*) impl)->setResourceID(rid);
+}
+
+void ResourceContainerAdapter::setObjectSubType(int subType) {
+	return ((ResourceContainerImplementation*) impl)->setObjectSubType(subType);
 }
 
 int ResourceContainerAdapter::getContents() {

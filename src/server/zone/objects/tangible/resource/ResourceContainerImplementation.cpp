@@ -44,12 +44,12 @@ which carries forward this exception.
 
 #include "ResourceContainerImplementation.h"
 #include "ResourceContainer.h"
+
 #include "../../../packets.h"
 #include "../../../objects.h"
-#include "../../../ZoneClient.h"
 
 ResourceContainerImplementation::ResourceContainerImplementation(uint64 oid) 
-		: ResourceContainerServant(oid, RESOURCE) {
+		: ResourceContainerServant(oid, RESOURCECONTAINER) {
 	objectCRC = 741847407;
 	
 	templateTypeName = "obj_n";
@@ -60,7 +60,7 @@ ResourceContainerImplementation::ResourceContainerImplementation(uint64 oid)
 }
 
 ResourceContainerImplementation::ResourceContainerImplementation(uint64 oid, uint32 tempCRC, const unicode& n, 
-		const string& tempn, Player* player) : ResourceContainerServant(oid, n, tempn, tempCRC, RESOURCE) {
+		const string& tempn, Player* player) : ResourceContainerServant(oid, n, tempn, tempCRC, RESOURCECONTAINER) {
 	templateTypeName = "obj_n";
 	
 	name = n;
@@ -70,7 +70,7 @@ ResourceContainerImplementation::ResourceContainerImplementation(uint64 oid, uin
 }
 
 ResourceContainerImplementation::ResourceContainerImplementation(CreatureObject* creature, uint32 tempCRC, 
-		const unicode& n, const string& tempn) : ResourceContainerServant(creature, n, tempn, tempCRC, RESOURCE) {
+		const unicode& n, const string& tempn) : ResourceContainerServant(creature, n, tempn, tempCRC, RESOURCECONTAINER) {
 	templateTypeName = "obj_n";
 	
 	name = n;
@@ -152,10 +152,10 @@ void ResourceContainerImplementation::generateAttributes(SceneObject* obj) {
 	alm->insertAttribute("resource_contents", ssQuantity.str());
 	alm->insertAttribute("resource_name", name.c_str());
 	
-	stringstream sstemplateName;
-	sstemplateName << "@resource/resource_name:" << templateName;
-	
-	alm->insertAttribute("resource_class", sstemplateName.str());
+	string res_class7;
+	string resourceName = name.c_str();
+	res_class7 = player->getZone()->getLocalResourceManager()->getClassSeven(resourceName);
+	alm->insertAttribute("resource_class", res_class7);
 	
 	if (res_cr > 0)
 		alm->insertAttribute("res_cold_resist", res_cr);
@@ -191,4 +191,57 @@ void ResourceContainerImplementation::generateAttributes(SceneObject* obj) {
 		alm->insertAttribute("entangle_resistance", res_er);
 	
 	player->sendMessage(alm);
+}
+
+void ResourceContainerImplementation::splitContainer(Player* player, int newQuantity) {
+	int oldQuantity = getContents();
+		
+	if (newQuantity < oldQuantity) {
+		ResourceContainerImplementation* newRco = new ResourceContainerImplementation(player->getNewItemID(), getObjectCRC(), getName(), getTemplateName(), player); 
+		newRco->setContents(newQuantity);
+	
+		player->getZone()->getLocalResourceManager()->setResourceData(newRco);
+		
+		player->addInventoryItem(newRco->deploy());
+		
+		newRco->sendTo(player);
+		newRco->setPersistent(false);
+		
+		setContents(oldQuantity - newQuantity);
+		sendDeltas(player);
+		generateAttributes(player);
+		setUpdated(true);
+	}
+}
+
+void ResourceContainerImplementation::transferContents(Player* player, ResourceContainer* fromRCO) {
+
+    int fromContents = fromRCO->getContents();
+    int toContents = getContents();
+    
+    if (fromContents + toContents <= getMaxContents()) {
+    	setContents(fromContents + toContents);
+    	sendDeltas(player);
+    	generateAttributes(player);
+    
+    	player->getZone()->getZoneServer()->getItemManager()->deletePlayerItem(player, fromRCO);
+    	
+    	player->removeInventoryItem(fromRCO->getObjectID());
+    	
+    	fromRCO->destroy(player->getClient());
+    } else {
+    	int canMove = getMaxContents() - fromContents;
+    	
+    	setContents(canMove + toContents);
+    	sendDeltas(player);
+    	generateAttributes(player);
+    	
+    	fromRCO->setContents(fromContents - canMove);
+    	fromRCO->sendDeltas(player);
+    	fromRCO->generateAttributes(player);
+    	
+    	fromRCO->setUpdated(true); 
+    }
+    
+    setUpdated(true); 
 }

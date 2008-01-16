@@ -42,59 +42,60 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-import "objects/scene/SceneObject";
+#ifndef SPAWNLOCATIONIMPLEMENTATION_H_
+#define SPAWNLOCATIONIMPLEMENTATION_H_
 
-import "ZoneServer";
+#include "SpawnLocation.h"
 
-import "../chat/ChatManager";
-
-import "managers/planet/PlanetManager";
-import "managers/creature/CreatureManager";
-import "managers/resource/LocalResourceManager";
-
-include "engine/util/QuadTreeEntry";
-
-interface Zone {
-	void startManagers();
+class SpawnLocationImplementation : public SpawnLocationServant {
+private:
+	uint64 sid;
+	int planet;
+	float x, y, radius, max;
+	string pool;
 	
-	void stopManagers();
+public:
+	SpawnLocationImplementation(uint64 id, int inPlanet, float inX, float inY, float inRadius, float inMax, string& inPool) : SpawnLocationServant() {
+		sid = id;
+		planet = inPlanet;
+		x = inX;
+		y = inY;
+		radius = inRadius;
+		max = inMax;
+		pool = inPool;
+	}
+	
+	SpawnLocation* deploy() {
+		return (SpawnLocation*) ORBObjectServant::deploy("SpawnLocation", sid);
+	}
+	
+	uint64 getID() {
+		return sid;
+	}
+	
+	int getPlanet() {
+		return planet;
+	}
+	
+	float getX() {
+		return x;
+	}
+	
+	float getY() {
+		return y;
+	}
+	
+	float getRadius() {
+		return radius;
+	}
+	
+	float getMax() {
+		return max;
+	}
+	
+	string& getPool() {
+		return pool;
+	}
+};
 
-	void lock(boolean doLock = true);
-	void unlock(boolean doLock = true);
-	
-	void registerObject(SceneObject obj);
-	
-	SceneObject lookupObject(unsigned long oid);
-	
-	SceneObject deleteObject(unsigned long oid);
-	SceneObject deleteObject(SceneObject obj);
-
-	SceneObject deleteCachedObject(SceneObject obj);
-
-	// setters and getters
-	int getZoneID();
-
-	ZoneServer getZoneServer();
-
-	ChatManager getChatManager();
-	CreatureManager getCreatureManager();
-	PlanetManager getPlanetManager();
-	LocalResourceManager getLocalResourceManager();
-	
-	unsigned long getGalacticTime();
-	
-	unsigned int getWeatherId();
-	
-	float getWeatherCloudX();
-	
-	float getWeatherCloudY();
-	
-	//QT methods
-	void setSize(float minx, float miny, float maxx, float maxy);
-	void insert(QuadTreeEntry obj);
-	void remove(QuadTreeEntry obj);
-	void removeAll();
-	boolean update(QuadTreeEntry obj);
-	void inRange(QuadTreeEntry obj, float range);
-
-}
+#endif /*SPAWNLOCATIONIMPLEMENTATION_H_*/

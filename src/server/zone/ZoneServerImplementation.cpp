@@ -187,6 +187,8 @@ void ZoneServerImplementation::shutdown() {
 
 	stop();
 
+	resourceManager->stop();
+	
 	for (int i = 0; i < 50; ++i) {
 		Zone* zone = zones.get(i);
 		zone->stopManagers();

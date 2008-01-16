@@ -100,8 +100,23 @@ public:
 	static const int HOLOCRON = 11;
 	static const int FIREWORK = 12;
 	static const int SHIPCOMPONENT = 13;
-	static const int SURVEYTOOL = 14;
-	static const int RESOURCE = 15;
+	
+	static const int RESOURCECONTAINER = 4194304;
+	static const int ENERGYGAS = 4194305;
+	static const int ENERGYLIQUID = 4194306;
+	static const int ENERGYRADIOACTIVE = 4194307;
+	static const int ENERGYSOLID = 4194308;
+	static const int INORGANICCHEMICAL = 4194309;
+	static const int INORGANICGAS = 4194310;
+	static const int INORGANICMINERAL = 4194311;
+	static const int WATER = 4194312;
+	static const int ORGANICFOOD = 4194313;
+	static const int ORGANICHIDE = 4194314;
+	static const int ORGANICSTRUCTURAL = 4194315;
+	// static const int RESOURCECONTAINER = 4194316;
+
+	
+	static const int SURVEYTOOL = 32770;
 	
 	static const int ARMOR = 256;
 	static const int BODYARMOR = 257;
@@ -234,7 +249,12 @@ public:
 	}
 	
 	inline bool isResource() {
-		return objectSubType == RESOURCE;
+		return objectSubType == RESOURCECONTAINER || objectSubType == ENERGYGAS || 
+			objectSubType == ENERGYLIQUID || objectSubType == ENERGYRADIOACTIVE || 
+			objectSubType == ENERGYSOLID || objectSubType == INORGANICCHEMICAL || 
+			objectSubType == INORGANICGAS || objectSubType == INORGANICMINERAL || 
+			objectSubType == WATER || objectSubType == ORGANICFOOD || 
+			objectSubType == ORGANICHIDE || objectSubType == ORGANICSTRUCTURAL;
 	}
 	
 	inline bool isSurveyTool() {

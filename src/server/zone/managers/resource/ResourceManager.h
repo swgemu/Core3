@@ -69,19 +69,7 @@ public:
 
 	void clearResources();
 
-	float getDensity(int planet, unicode& resname, float inx, float iny);
-
-	void sendSurveyMessage(Player* player, unicode& resourcename);
-
-	void sendSampleMessage(Player* player, unicode& resourcename);
-
-	void setResourceData(ResourceContainerImplementation* resContainer);
-
-	void sendResourceStats(Player* player, int SurveyToolType);
-
-	bool sendResourceList(Player* player, int SurveyToolType);
-
-	bool checkResource(Player* player, unicode& resourcename, int SurveyToolType);
+	void stop();
 
 protected:
 };
@@ -98,25 +86,8 @@ public:
 
 	void clearResources();
 
-	float getDensity(int planet, unicode& resname, float inx, float iny);
+	void stop();
 
-	void sendSurveyMessage(Player* player, unicode& resourcename);
-
-	void sendSampleMessage(Player* player, unicode& resourcename);
-
-	void setResourceData(ResourceContainerImplementation* resContainer);
-
-	void sendResourceStats(Player* player, int SurveyToolType);
-
-	bool sendResourceList(Player* player, int SurveyToolType);
-
-	bool checkResource(Player* player, unicode& resourcename, int SurveyToolType);
-
-protected:
-	unicode _param1_getDensity__int_unicode_float_float_;
-	unicode _param1_sendSurveyMessage__Player_unicode_;
-	unicode _param1_sendSampleMessage__Player_unicode_;
-	unicode _param1_checkResource__Player_unicode_int_;
 };
 
 class ResourceManagerHelper : public ORBClassHelper {

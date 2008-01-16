@@ -42,59 +42,26 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-import "objects/scene/SceneObject";
+import "ResourceTemplate";
+import "SpawnLocation";
 
-import "ZoneServer";
+import "../../objects/player/Player";
+import "../../objects/tangible/resource/ResourceContainerImplementation";
 
-import "../chat/ChatManager";
+interface LocalResourceManager {
+	void init();
 
-import "managers/planet/PlanetManager";
-import "managers/creature/CreatureManager";
-import "managers/resource/LocalResourceManager";
-
-include "engine/util/QuadTreeEntry";
-
-interface Zone {
-	void startManagers();
+	float getDensity(int planet, unicode resname, float inx, float iny);
+	void sendSurveyMessage(Player player, unicode resource_name);
+	void sendSampleMessage(Player player, unicode resource_name);
+	void setResourceData(ResourceContainerImplementation resContainer);
 	
-	void stopManagers();
-
-	void lock(boolean doLock = true);
-	void unlock(boolean doLock = true);
+	boolean sendSurveyResources(Player player, int SurveyToolType);
+	boolean checkResource(Player player, unicode resource_name, int SurveyToolType);
 	
-	void registerObject(SceneObject obj);
+	string getClassSeven(const string str);
 	
-	SceneObject lookupObject(unsigned long oid);
-	
-	SceneObject deleteObject(unsigned long oid);
-	SceneObject deleteObject(SceneObject obj);
-
-	SceneObject deleteCachedObject(SceneObject obj);
-
-	// setters and getters
-	int getZoneID();
-
-	ZoneServer getZoneServer();
-
-	ChatManager getChatManager();
-	CreatureManager getCreatureManager();
-	PlanetManager getPlanetManager();
-	LocalResourceManager getLocalResourceManager();
-	
-	unsigned long getGalacticTime();
-	
-	unsigned int getWeatherId();
-	
-	float getWeatherCloudX();
-	
-	float getWeatherCloudY();
-	
-	//QT methods
-	void setSize(float minx, float miny, float maxx, float maxy);
-	void insert(QuadTreeEntry obj);
-	void remove(QuadTreeEntry obj);
-	void removeAll();
-	boolean update(QuadTreeEntry obj);
-	void inRange(QuadTreeEntry obj, float range);
-
+	// Methods for communicating w/ ResourceManager
+	void addResource(ResourceTemplate resource);
+	SpawnLocation despawnResource(string resourceName, unsigned long sid);
 }

@@ -1359,29 +1359,17 @@ void ObjectControllerMessage::parseSampleSlashRequest(Player* player, Message* p
 void ObjectControllerMessage::parseSurveyRequest(Player* player, Message* packet) {
 	uint64 targetID = packet->parseLong();
 	
-	unicode resource_name;
-	packet->parseUnicode(resource_name);
+	unicode resourceName;
+	packet->parseUnicode(resourceName);
 	
 	string skillBox = "crafting_artisan_novice";
+	
 	if (player->getSkillBoxesSize() && player->hasSkillBox(skillBox)) {
 		if (player->getSurveyTool() == NULL) {
 			player->sendSystemMessage("Please reopen survey tool.");
 			return;
 		}
-		
-		if (!player->getZone()->getZoneServer()->getResourceManager()->checkResource(player, resource_name,player->getSurveyTool()->getSurveyToolType())) {
-			//player->error("Invalid Resource Selected");
-			return;
-		}
-		
-		if (player->getCanSurvey()) {
-			// Send's System Message
-			ChatSystemMessage* sysMessage = new ChatSystemMessage("survey","start_survey",resource_name,0,false);
-			player->sendMessage(sysMessage);
-			// Begin Surveying
-			player->getSurveyTool()->sendSurveyEffect(player);
-			player->setSurveyEvent(resource_name);
-		}
+		player->getSurveyTool()->surveyRequest(player, resourceName);
 	} else {
 		if (player->getSurveyErrorMessage())
 			player->sendSystemMessage("You do not have sufficient abilities to Survey Resources.");
@@ -1391,8 +1379,8 @@ void ObjectControllerMessage::parseSurveyRequest(Player* player, Message* packet
 void ObjectControllerMessage::parseSampleRequest(Player* player, Message* packet) {
 	uint64 targetID = packet->parseLong();
 	
-	unicode resource_name;
-	packet->parseUnicode(resource_name);
+	unicode resourceName;
+	packet->parseUnicode(resourceName);
 	
 	string skillBox = "crafting_artisan_novice";
 	
@@ -1401,28 +1389,7 @@ void ObjectControllerMessage::parseSampleRequest(Player* player, Message* packet
 			player->sendSystemMessage("Please reopen survey tool.");
 			return;
 		}
-		
-		if (!player->getZone()->getZoneServer()->getResourceManager()->checkResource(player, resource_name,player->getSurveyTool()->getSurveyToolType())) {
-			 player->error("Invalid Resource");
-			 return;
-		}
-		
-		if (player->getSurveyTool()->getSurveyToolType() == SurveyToolImplementation::SOLAR || player->getSurveyTool()->getSurveyToolType() == SurveyToolImplementation::WIND) {
-			player->sendSystemMessage("Unable to sample this resource type.");
-			return;
-		}
-		
-		if (player->getCanSample()) {
-			if(!player->isKneeled()) {
-				player->changePosture(CreatureObjectImplementation::CROUCHED_POSTURE);
-			}
-			ChatSystemMessage* sysMessage = new ChatSystemMessage("survey","start_sampling",resource_name,0,false);
-			player->sendMessage(sysMessage);
-			// Begin Sampling
-			player->setSampleEvent(resource_name, true);
-		} else {
-			player->sendSampleTimeRemaining();
-		}
+		player->getSurveyTool()->sampleRequest(player, resourceName);
 	} else {
 		if (player->getSampleErrorMessage())
 			player->sendSystemMessage("You do not have sufficient abilities to Sample Resource.");
@@ -1432,10 +1399,10 @@ void ObjectControllerMessage::parseSampleRequest(Player* player, Message* packet
 void ObjectControllerMessage::parseResourceContainerSplit(Player* player, Message* packet) {
 	uint64 objectID = packet->parseLong();
 	
-	unicode resource_quantity;
-	packet->parseUnicode(resource_quantity);
+	unicode resourceQuantity;
+	packet->parseUnicode(resourceQuantity);
     
-	StringTokenizer tokenizer(resource_quantity.c_str());
+	StringTokenizer tokenizer(resourceQuantity.c_str());
 	
     string quantityString;
     
@@ -1448,36 +1415,16 @@ void ObjectControllerMessage::parseResourceContainerSplit(Player* player, Messag
 	
 	ResourceContainer* rco = (ResourceContainer*)player->getInventoryItem(objectID);
 	
-	int oldQuantity = rco->getContents();
-	
-	if (newQuantity < oldQuantity) {
-		ResourceContainerImplementation* newRco = new ResourceContainerImplementation(player->getNewItemID(), rco->getObjectCRC(), rco->getName(), rco->getTemplateName(), player); 
-		newRco->setContents(newQuantity);
-	
-		player->getZone()->getZoneServer()->getResourceManager()->setResourceData(newRco);
-		
-		player->addInventoryItem(newRco->deploy());
-		
-		newRco->sendTo(player);
-		newRco->setPersistent(false);
-		
-		rco->setContents(oldQuantity - newQuantity);
-		rco->sendDeltas(player);
-		rco->generateAttributes(player);
-		
-		rco->setUpdated(true);
-	}
+	rco->splitContainer(player, newQuantity);
 }
 
 void ObjectControllerMessage::parseResourceContainerTransfer(Player* player, Message* packet) {
 	uint64 fromID = packet->parseLong();
 	
-	unicode resource_quantity;
+	unicode ustr;
+	packet->parseUnicode(ustr);
 	
-	unicode u_str;
-	packet->parseUnicode(u_str);
-	
-    StringTokenizer tokenizer(u_str.c_str());
+    StringTokenizer tokenizer(ustr.c_str());
     
     string quantityString, toIDString;
     
@@ -1492,31 +1439,5 @@ void ObjectControllerMessage::parseResourceContainerTransfer(Player* player, Mes
     ResourceContainer* rcof = (ResourceContainer*)player->getInventoryItem(fromID);
     ResourceContainer* rcot = (ResourceContainer*)player->getInventoryItem(toID);
     
-    int rcofContents = rcof->getContents();
-    int rcotContents = rcot->getContents();
-    
-    if (rcofContents + rcotContents <= rcot->getMaxContents()) {
-    	rcot->setContents(rcofContents + rcotContents);
-    	rcot->sendDeltas(player);
-    	rcot->generateAttributes(player);
-    
-    	player->getZone()->getZoneServer()->getItemManager()->deletePlayerItem(player, rcof);
-    	
-    	player->removeInventoryItem(rcof->getObjectID());
-    	
-    	rcof->destroy(player->getClient());
-    } else {
-    	int canMove = rcot->getMaxContents() - rcofContents;
-    	
-    	rcot->setContents(canMove + rcotContents);
-    	rcot->sendDeltas(player);
-    	rcot->generateAttributes(player);
-    	rcof->setContents(rcofContents - canMove);
-    	rcof->sendDeltas(player);
-    	rcof->generateAttributes(player);
-    	
-        rcof->setUpdated(true); 
-    }
-    
-    rcot->setUpdated(true); 
+    rcot->transferContents(player, rcof);
 }

@@ -99,104 +99,16 @@ void ResourceManager::clearResources() {
 		((ResourceManagerImplementation*) _impl)->clearResources();
 }
 
-float ResourceManager::getDensity(int planet, unicode& resname, float inx, float iny) {
+void ResourceManager::stop() {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
 		ORBMethodInvocation invocation(this, 8);
-		invocation.addSignedIntParameter(planet);
-		invocation.addUnicodeParameter(resname);
-		invocation.addFloatParameter(inx);
-		invocation.addFloatParameter(iny);
-
-		return invocation.executeWithFloatReturn();
-	} else
-		return ((ResourceManagerImplementation*) _impl)->getDensity(planet, resname, inx, iny);
-}
-
-void ResourceManager::sendSurveyMessage(Player* player, unicode& resourcename) {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 9);
-		invocation.addObjectParameter(player);
-		invocation.addUnicodeParameter(resourcename);
 
 		invocation.executeWithVoidReturn();
 	} else
-		((ResourceManagerImplementation*) _impl)->sendSurveyMessage(player, resourcename);
-}
-
-void ResourceManager::sendSampleMessage(Player* player, unicode& resourcename) {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 10);
-		invocation.addObjectParameter(player);
-		invocation.addUnicodeParameter(resourcename);
-
-		invocation.executeWithVoidReturn();
-	} else
-		((ResourceManagerImplementation*) _impl)->sendSampleMessage(player, resourcename);
-}
-
-void ResourceManager::setResourceData(ResourceContainerImplementation* resContainer) {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 11);
-		invocation.addObjectParameter(resContainer);
-
-		invocation.executeWithVoidReturn();
-	} else
-		((ResourceManagerImplementation*) _impl)->setResourceData(resContainer);
-}
-
-void ResourceManager::sendResourceStats(Player* player, int SurveyToolType) {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 12);
-		invocation.addObjectParameter(player);
-		invocation.addSignedIntParameter(SurveyToolType);
-
-		invocation.executeWithVoidReturn();
-	} else
-		((ResourceManagerImplementation*) _impl)->sendResourceStats(player, SurveyToolType);
-}
-
-bool ResourceManager::sendResourceList(Player* player, int SurveyToolType) {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 13);
-		invocation.addObjectParameter(player);
-		invocation.addSignedIntParameter(SurveyToolType);
-
-		return invocation.executeWithBooleanReturn();
-	} else
-		return ((ResourceManagerImplementation*) _impl)->sendResourceList(player, SurveyToolType);
-}
-
-bool ResourceManager::checkResource(Player* player, unicode& resourcename, int SurveyToolType) {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 14);
-		invocation.addObjectParameter(player);
-		invocation.addUnicodeParameter(resourcename);
-		invocation.addSignedIntParameter(SurveyToolType);
-
-		return invocation.executeWithBooleanReturn();
-	} else
-		return ((ResourceManagerImplementation*) _impl)->checkResource(player, resourcename, SurveyToolType);
+		((ResourceManagerImplementation*) _impl)->stop();
 }
 
 /*
@@ -217,25 +129,7 @@ Packet* ResourceManagerAdapter::invokeMethod(uint32 methid, ORBMethodInvocation*
 		clearResources();
 		break;
 	case 8:
-		resp->insertFloat(getDensity(inv->getSignedIntParameter(), inv->getUnicodeParameter(_param1_getDensity__int_unicode_float_float_), inv->getFloatParameter(), inv->getFloatParameter()));
-		break;
-	case 9:
-		sendSurveyMessage((Player*) inv->getObjectParameter(), inv->getUnicodeParameter(_param1_sendSurveyMessage__Player_unicode_));
-		break;
-	case 10:
-		sendSampleMessage((Player*) inv->getObjectParameter(), inv->getUnicodeParameter(_param1_sendSampleMessage__Player_unicode_));
-		break;
-	case 11:
-		setResourceData((ResourceContainerImplementation*) inv->getObjectParameter());
-		break;
-	case 12:
-		sendResourceStats((Player*) inv->getObjectParameter(), inv->getSignedIntParameter());
-		break;
-	case 13:
-		resp->insertBoolean(sendResourceList((Player*) inv->getObjectParameter(), inv->getSignedIntParameter()));
-		break;
-	case 14:
-		resp->insertBoolean(checkResource((Player*) inv->getObjectParameter(), inv->getUnicodeParameter(_param1_checkResource__Player_unicode_int_), inv->getSignedIntParameter()));
+		stop();
 		break;
 	default:
 		return NULL;
@@ -252,32 +146,8 @@ void ResourceManagerAdapter::clearResources() {
 	return ((ResourceManagerImplementation*) impl)->clearResources();
 }
 
-float ResourceManagerAdapter::getDensity(int planet, unicode& resname, float inx, float iny) {
-	return ((ResourceManagerImplementation*) impl)->getDensity(planet, resname, inx, iny);
-}
-
-void ResourceManagerAdapter::sendSurveyMessage(Player* player, unicode& resourcename) {
-	return ((ResourceManagerImplementation*) impl)->sendSurveyMessage(player, resourcename);
-}
-
-void ResourceManagerAdapter::sendSampleMessage(Player* player, unicode& resourcename) {
-	return ((ResourceManagerImplementation*) impl)->sendSampleMessage(player, resourcename);
-}
-
-void ResourceManagerAdapter::setResourceData(ResourceContainerImplementation* resContainer) {
-	return ((ResourceManagerImplementation*) impl)->setResourceData(resContainer);
-}
-
-void ResourceManagerAdapter::sendResourceStats(Player* player, int SurveyToolType) {
-	return ((ResourceManagerImplementation*) impl)->sendResourceStats(player, SurveyToolType);
-}
-
-bool ResourceManagerAdapter::sendResourceList(Player* player, int SurveyToolType) {
-	return ((ResourceManagerImplementation*) impl)->sendResourceList(player, SurveyToolType);
-}
-
-bool ResourceManagerAdapter::checkResource(Player* player, unicode& resourcename, int SurveyToolType) {
-	return ((ResourceManagerImplementation*) impl)->checkResource(player, resourcename, SurveyToolType);
+void ResourceManagerAdapter::stop() {
+	return ((ResourceManagerImplementation*) impl)->stop();
 }
 
 /*

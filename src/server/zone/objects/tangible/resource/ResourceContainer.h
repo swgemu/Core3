@@ -79,6 +79,10 @@ public:
 
 	void generateAttributes(SceneObject* obj);
 
+	void splitContainer(Player* player, int newQuantity);
+
+	void transferContents(Player* player, ResourceContainer* fromRCO);
+
 	void setContents(int i);
 
 	void setDecayResistance(int i);
@@ -110,6 +114,8 @@ public:
 	void setObjectCRC(int tempCRC);
 
 	void setResourceID(unsigned long long rid);
+
+	void setObjectSubType(int subType);
 
 	int getContents();
 
@@ -158,6 +164,10 @@ public:
 
 	void generateAttributes(SceneObject* obj);
 
+	void splitContainer(Player* player, int newQuantity);
+
+	void transferContents(Player* player, ResourceContainer* fromRCO);
+
 	void setContents(int i);
 
 	void setDecayResistance(int i);
@@ -189,6 +199,8 @@ public:
 	void setObjectCRC(int tempCRC);
 
 	void setResourceID(unsigned long long rid);
+
+	void setObjectSubType(int subType);
 
 	int getContents();
 

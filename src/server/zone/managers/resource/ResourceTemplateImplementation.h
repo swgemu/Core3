@@ -1,24 +1,102 @@
-#ifndef RESOURCEIMPLEMENTATION_H_
-#define RESOURCEIMPLEMENTATION_H_
+/*
+Copyright (C) 2007 <SWGEmu>
+ 
+This File is part of Core3.
+ 
+This program is free software; you can redistribute 
+it and/or modify it under the terms of the GNU Lesser 
+General Public License as published by the Free Software
+Foundation; either version 2 of the License, 
+or (at your option) any later version.
+ 
+This program is distributed in the hope that it will be useful, 
+but WITHOUT ANY WARRANTY; without even the implied warranty of 
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+See the GNU Lesser General Public License for
+more details.
+ 
+You should have received a copy of the GNU Lesser General 
+Public License along with this program; if not, write to
+the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+ 
+Linking Engine3 statically or dynamically with other modules 
+is making a combined work based on Engine3. 
+Thus, the terms and conditions of the GNU Lesser General Public License 
+cover the whole combination.
+ 
+In addition, as a special exception, the copyright holders of Engine3 
+give you permission to combine Engine3 program with free software 
+programs or libraries that are released under the GNU LGPL and with 
+code included in the standard release of Core3 under the GNU LGPL 
+license (or modified versions of such code, with unchanged license). 
+You may copy and distribute such a system following the terms of the 
+GNU LGPL for Engine3 and the licenses of the other code concerned, 
+provided that you include the source code of that other code when 
+and as the GNU LGPL requires distribution of source code.
+ 
+Note that people who make modified versions of Engine3 are not obligated 
+to grant this special exception for their modified versions; 
+it is their choice whether to do so. The GNU Lesser General Public License 
+gives permission to release a modified version without this exception; 
+this exception also makes it possible to release a modified version 
+which carries forward this exception.
+*/
 
-#include "../../ZoneServer.h"
-#include "ResourceManager.h"
-#include "ResourceManagerImplementation.h"
+#ifndef RESOURCETEMPLATEIMPLEMENTATION_H_
+#define RESOURCETEMPLATEIMPLEMENTATION_H_
 
-class ResourceImplementation {
+#include "engine/engine.h"
+
+#include "ResourceTemplate.h"
+#include "SpawnLocation.h"
+
+class ResourceTemplateImplementation : public ResourceTemplateServant {
+	uint64 rid;
+	
 	string resname, restype, class1, class2, class3, class4, class5, class6,
 			class7, container, att1, att2, att3, att4, att5, att6, att7, att8,
 			att9, att10, att11;
 	
 	int att1stat, att2stat, att3stat, att4stat, att5stat, att6stat, att7stat,
 			att8stat, att9stat, att10stat, att11stat, maxtype, mintype,
-			minpool, maxpool;
+			minpool, maxpool, objectSubType;
 	
 	uint32 containerCRC;
+	
+	Vector<SpawnLocation*> * spawnLocations;
 
 public:
-	ResourceImplementation(const string& inType) {
+	ResourceTemplateImplementation(const string& inType) : ResourceTemplateServant() {
 		restype = inType;
+		spawnLocations = new Vector<SpawnLocation*>();
+	}
+	
+	ResourceTemplate* deploy() {
+		return (ResourceTemplate*) ORBObjectServant::deploy("Resource", rid);
+	}
+	
+	// Spawn Stuff
+	inline SpawnLocation* getSpawn(int i) {
+		return spawnLocations->get(i);
+	}
+	
+	inline int getSpawnSize() {
+		return spawnLocations->size();
+	}
+	
+	inline void addSpawn(SpawnLocation* sl) {
+		spawnLocations->add(sl);
+	}
+	
+	inline SpawnLocation* removeSpawn(int sid) {
+		for(int i = spawnLocations->size() - 1; i >= 0; i--) {
+			SpawnLocation* sl = spawnLocations->get(i);
+			if (sl->getID() == sid) {
+				spawnLocations->remove(i);
+				return sl;
+			}
+		}
+		return NULL;
 	}
 
 	// setters
@@ -165,85 +243,93 @@ public:
 	inline void setContainerCRC(uint32 inCRC) {
 		containerCRC = inCRC;
 	}
+	
+	inline void setResourceID(uint64 inID) {
+		rid = inID;
+	}
+	
+	inline void setObjectSubType(int subType) {
+		objectSubType = subType;
+	}
 
 	// getters
-	inline const string& getName() {
+	inline string& getName() {
 		return resname;
 	}
 	
-	inline const string& getType() {
+	inline string& getType() {
 		return restype;
 	}
 	
-	inline const string& getClass1() {
+	inline string& getClass1() {
 		return class1;
 	}
 	
-	inline const string& getClass2() {
+	inline string& getClass2() {
 		return class2;
 	}
 	
-	inline const string& getClass3() {
+	inline string& getClass3() {
 		return class3;
 	}
 	
-	inline const string& getClass4() {
+	inline string& getClass4() {
 		return class4;
 	}
 	
-	inline const string& getClass5() {
+	inline string& getClass5() {
 		return class5;
 	}
 	
-	inline const string& getClass6() {
+	inline string& getClass6() {
 		return class6;
 	}
 	
-	inline const string& getClass7() {
+	inline string& getClass7() {
 		return class7;
 	}
 	
-	inline const string& getAtt1() {
+	inline string& getAtt1() {
 		return att1;
 	}
 	
-	inline const string& getAtt2() {
+	inline string& getAtt2() {
 		return att2;
 	}
 	
-	inline const string& getAtt3() {
+	inline string& getAtt3() {
 		return att3;
 	}
 	
-	inline const string& getAtt4() {
+	inline string& getAtt4() {
 		return att4;
 	}
 	
-	inline const string& getAtt5() {
+	inline string& getAtt5() {
 		return att5;
 	}
 	
-	inline const string& getAtt6() {
+	inline string& getAtt6() {
 		return att6;
 	}
 	
-	inline const string& getAtt7() {
+	inline string& getAtt7() {
 		return att7;
 	}
 	
-	inline const string& getAtt8() {
+	inline string& getAtt8() {
 		return att8;
 	}
 	
-	inline const string& getAtt9() {
+	inline string& getAtt9() {
 		return att9;
 	}
 	
-	inline const string& getAtt10() {
+	inline string& getAtt10() {
 		return att10;
 	}
 	
-	inline const string& getAtt11() {
+	inline string& getAtt11() {
 		return att11;
 	}
 	
@@ -307,14 +393,22 @@ public:
 		return minpool;
 	}
 	
-	inline const string& getContainer() {
+	inline string& getContainer() {
 		return container;
 	}
 	
 	inline uint32 getContainerCRC() {
 		return containerCRC;
 	}
+	
+	inline uint64 getResourceID() {
+		return rid;
+	}
+	
+	inline int getObjectSubType() {
+		return objectSubType;
+	}
 
 };
 
-#endif /*RESOURCEIMPLEMENTATION_H_*/
+#endif /*RESOURCETEMPLATEIMPLEMENTATION_H_*/

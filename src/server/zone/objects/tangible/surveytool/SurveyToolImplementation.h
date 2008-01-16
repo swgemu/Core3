@@ -75,6 +75,9 @@ public:
 	void sendSurveyEffect(Player* player);
 	void sendSampleEffect(Player* player);
 	
+	void surveyRequest(Player* player, unicode& resourceName);
+	void sampleRequest(Player* player, unicode& resourceName);
+	
 	inline int getSurveyToolType() {
 		return surveyToolType;	
 	}
@@ -84,8 +87,7 @@ public:
 	}
 	
 	inline void setSurveyToolRange(int range) {
-		surveyToolRange = range;
-		
+		surveyToolRange = range;	
 	}
 };
 

@@ -48,13 +48,16 @@ import "../../objects/tangible/resource/ResourceContainerImplementation";
 interface ResourceManager {
 	void theShift();
 	void clearResources();
-
+	
+	void stop();
+	
+	/*
 	float getDensity(int planet, unicode resname, float inx, float iny);
 	void sendSurveyMessage(Player player, unicode resource_name);
 	void sendSampleMessage(Player player, unicode resource_name);
 	void setResourceData(ResourceContainerImplementation resContainer);
 	
-	void sendResourceStats(Player player, int SurveyToolType);
-	boolean sendResourceList(Player player, int SurveyToolType);
+	boolean sendSurveyResources(Player player, int SurveyToolType);
 	boolean checkResource(Player player, unicode resource_name, int SurveyToolType);
+	*/
 }

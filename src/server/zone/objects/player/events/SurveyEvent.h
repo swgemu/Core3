@@ -64,7 +64,7 @@ public:
 			player->wlock();
 			
 			if (player->isOnline()) {
-				player->getZone()->getZoneServer()->getResourceManager()->sendSurveyMessage(player, resource_name);
+				player->getZone()->getLocalResourceManager()->sendSurveyMessage(player, resource_name);
 				
 				player->setCanSurvey();
 			}

@@ -46,6 +46,13 @@ which carries forward this exception.
 #define RESOURCECONTAINERIMPLEMENTATION_H_
 
 #include "../../player/Player.h"
+
+#include "../../../Zone.h"
+#include "../../../ZoneClient.h"
+
+#include "../../../managers/resource/LocalResourceManager.h"
+#include "../../../managers/item/ItemManager.h"
+
 #include "ResourceContainer.h"
 
 class ResourceContainerImplementation : public ResourceContainerServant {
@@ -79,7 +86,10 @@ public:
 	void sendTo(Player* player, bool doClose = true);
 	void sendDeltas(Player* player);
 	void generateAttributes(SceneObject* obj);
-
+	
+	void splitContainer(Player* player, int newQuantity);
+	void transferContents(Player* player, ResourceContainer* fromRCO);
+	
 	inline void setContents(int i) {
 		quantity = i;
 	}
@@ -142,6 +152,10 @@ public:
 	
 	inline void setObjectCRC(uint32 tempCRC) {
 		objectCRC = tempCRC;
+	}
+	
+	inline void setObjectSubType(int subType) {
+		objectSubType = subType;
 	}
 	
 	inline int getContents() {

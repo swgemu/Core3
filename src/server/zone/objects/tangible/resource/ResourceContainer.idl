@@ -63,6 +63,9 @@ interface ResourceContainer implements TangibleObject {
 	
 	void generateAttributes(SceneObject obj);
 	
+	void splitContainer(Player player, int newQuantity);
+	void transferContents(Player player, ResourceContainer fromRCO);
+	
 	void setContents(int i);
 	void setDecayResistance(int i);
 	void setQuality(int i);
@@ -79,6 +82,7 @@ interface ResourceContainer implements TangibleObject {
 	void setContainerFile(string tempn);
 	void setObjectCRC(int tempCRC);
 	void setResourceID(unsigned long rid);
+	void setObjectSubType(int subType);
 	
 	int getContents();
 	int getDecayResistance();

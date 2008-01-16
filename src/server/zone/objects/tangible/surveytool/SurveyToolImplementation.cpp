@@ -49,7 +49,7 @@ which carries forward this exception.
 #include "SurveyTool.h"
 #include "SurveyToolImplementation.h"
 
-#include "../../../managers/resource/ResourceManager.h"
+#include "../../../managers/resource/LocalResourceManager.h"
 
 SurveyToolImplementation::SurveyToolImplementation(uint64 object_id, uint32 tempCRC, const unicode& n, const string& tempn, Player* player) 
 		: SurveyToolServant(object_id, n, tempn, tempCRC, SURVEYTOOL) {
@@ -78,31 +78,7 @@ SurveyToolImplementation::SurveyToolImplementation(uint64 object_id, uint32 temp
 		surveyToolType = WIND;
 	}
 	
-	if (player != NULL) {
-		int surveyMod = player->getSkillMod("surveying");
-		
-		if (surveyMod >= 0) {
-			setSurveyToolRange(64);
-		}
-		
-		if (surveyMod > 20) {
-			setSurveyToolRange(128);
-		}
-		
-		if (surveyMod > 40) {
-			setSurveyToolRange(192);
-		}
-		
-		if (surveyMod > 60) {
-			setSurveyToolRange(256);
-		}
-		
-		if (surveyMod > 80) {
-			setSurveyToolRange(320);
-		}
-	} else {
-		setSurveyToolRange(64);
-	}
+	setSurveyToolRange(0);
 }
 
 SurveyToolImplementation::SurveyToolImplementation(CreatureObject* creature, uint32 tempCRC, const unicode& n, const string& tempn) 
@@ -132,50 +108,29 @@ SurveyToolImplementation::SurveyToolImplementation(CreatureObject* creature, uin
 		surveyToolType = WIND;
 	}
 	
-	if (creature->isPlayer()) {
-		int surveyMod = ((Player*) creature)->getSkillMod("surveying");
-		
-		if (surveyMod >= 0) {
-			setSurveyToolRange(64);
-		}
-		
-		if (surveyMod > 20) {
-			setSurveyToolRange(128);
-		}
-		
-		if (surveyMod > 40) {
-			setSurveyToolRange(192);
-		}
-		
-		if (surveyMod > 60) {
-			setSurveyToolRange(256);
-		}
-		
-		if (surveyMod > 80) {
-			setSurveyToolRange(320);
-		}
-	} else {
-		setSurveyToolRange(64);
-	}
+	setSurveyToolRange(0);
 }
 
 SurveyToolImplementation::~SurveyToolImplementation(){
 }
 
 int SurveyToolImplementation::useObject(Player* player) {
-	ResourceManager* resourceManager = player->getZone()->getZoneServer()->getResourceManager();
+	LocalResourceManager* resourceManager = player->getZone()->getLocalResourceManager();
 	
 	string skillBox = "crafting_artisan_novice";
-	
 	if (player->getSkillBoxesSize() && player->hasSkillBox(skillBox)) {
-		if (resourceManager->sendResourceList(player, getSurveyToolType())) {
-			player->setSurveyTool(_this);
-			
-			resourceManager->sendResourceStats(player, getSurveyToolType());
+		if (surveyToolRange != 0) {
+			if (resourceManager->sendSurveyResources(player, getSurveyToolType())) {
+				player->setSurveyTool(_this);
+			}
+		} else {
+			ChatSystemMessage* sysMessage = new ChatSystemMessage("survey","select_range");
+			player->sendMessage(sysMessage);
 		}
 	} else {
-		player->sendSystemMessage("You do not have sufficient abilities to open " + getName().c_str());
+		player->sendSystemMessage("You do not have sufficient abilities to open " + getName().c_str() + ".");
 	}
+	
 }
 
 void SurveyToolImplementation::sendSurveyEffect(Player* player) {
@@ -252,3 +207,54 @@ void SurveyToolImplementation::sendSampleEffect(Player* player) {
 	player->broadcastMessage(effect);
 }
 
+void SurveyToolImplementation::surveyRequest(Player* player, unicode& resourceName) {
+	if (!player->getZone()->getLocalResourceManager()->checkResource(player, resourceName, getSurveyToolType())) {
+		player->error("Invalid Resource Selected");
+		return;
+	}
+	
+	if (!player->getCanSample()) {
+		ChatSystemMessage* sysMessage = new ChatSystemMessage("survey","survey_sample");
+		player->sendMessage(sysMessage);
+		return;
+	}
+	
+	if (player->getCanSurvey()) {
+		// Send's System Message
+		ChatSystemMessage* sysMessage = new ChatSystemMessage("survey","start_survey",resourceName,0,false);
+		player->sendMessage(sysMessage);
+		// Begin Surveying
+		sendSurveyEffect(player);
+		player->setSurveyEvent(resourceName);
+	}
+}
+
+void SurveyToolImplementation::sampleRequest(Player* player, unicode& resourceName) {
+	if (!player->getZone()->getLocalResourceManager()->checkResource(player, resourceName, getSurveyToolType())) {
+		 player->error("Invalid Resource");
+		 return;
+	}
+	
+	if (!player->getCanSurvey()) {
+		ChatSystemMessage* sysMessage = new ChatSystemMessage("survey","sample_survey");
+		player->sendMessage(sysMessage);
+		return;
+	}
+	
+	if (getSurveyToolType() == SOLAR || getSurveyToolType() == WIND) {
+		player->sendSystemMessage("Unable to sample this resource type.");
+		return;
+	}
+	
+	if (player->getCanSample()) {
+		if(!player->isKneeled()) {
+			player->changePosture(CreatureObjectImplementation::CROUCHED_POSTURE);
+		}
+		ChatSystemMessage* sysMessage = new ChatSystemMessage("survey","start_sampling",resourceName,0,false);
+		player->sendMessage(sysMessage);
+		// Begin Sampling
+		player->setSampleEvent(resourceName, true);
+	} else {
+		player->sendSampleTimeRemaining();
+	}
+}

@@ -61,6 +61,8 @@ class PlanetManager;
 
 class CreatureManager;
 
+class LocalResourceManager;
+
 #include "engine/util/QuadTreeEntry.h"
 
 class Zone : public ORBObjectStub {
@@ -100,6 +102,8 @@ public:
 	CreatureManager* getCreatureManager();
 
 	PlanetManager* getPlanetManager();
+
+	LocalResourceManager* getLocalResourceManager();
 
 	unsigned long long getGalacticTime();
 
@@ -159,6 +163,8 @@ public:
 	CreatureManager* getCreatureManager();
 
 	PlanetManager* getPlanetManager();
+
+	LocalResourceManager* getLocalResourceManager();
 
 	unsigned long long getGalacticTime();
 

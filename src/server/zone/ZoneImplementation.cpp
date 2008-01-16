@@ -52,6 +52,9 @@ which carries forward this exception.
 #include "managers/planet/PlanetManager.h"
 #include "managers/planet/PlanetManagerImplementation.h"
 
+#include "managers/resource/LocalResourceManager.h"
+#include "managers/resource/LocalResourceManagerImplementation.h"
+
 #include "../chat/ChatManager.h"
 
 #include "objects/scene/SceneObject.h"
@@ -78,8 +81,12 @@ void ZoneImplementation::startManagers() {
 	PlanetManagerImplementation* planImpl = new PlanetManagerImplementation((Zone*) _this, processor);
 	planetManager = (PlanetManager*) planImpl->deploy("PlanetManager", zoneID);
 	
+	LocalResourceManagerImplementation* locResImpl = new LocalResourceManagerImplementation((Zone*) _this, processor);
+	localResourceManager = (LocalResourceManager*) locResImpl->deploy("LocalResourceManager", zoneID);
+	
 	planetManager->init();
 	creatureManager->init();
+	localResourceManager->init();
 	
 	planetManager->start();
 	creatureManager->start();

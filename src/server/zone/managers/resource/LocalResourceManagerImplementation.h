@@ -42,59 +42,67 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-import "objects/scene/SceneObject";
+#ifndef LOCALRESOURCEMANAGERIMPLEMENTATION_H_
+#define LOCALRESOURCEMANAGERIMPLEMENTATION_H_
 
-import "ZoneServer";
+#include "engine/engine.h"
 
-import "../chat/ChatManager";
+#include "../../Zone.h"
+#include "../../ZoneProcessServerImplementation.h"
 
-import "managers/planet/PlanetManager";
-import "managers/creature/CreatureManager";
-import "managers/resource/LocalResourceManager";
+#include "../../objects/player/Player.h"
 
-include "engine/util/QuadTreeEntry";
+#include "../../objects/tangible/Inventory.h"
 
-interface Zone {
-	void startManagers();
+#include "../../objects/waypoint/WaypointObjectImplementation.h"
+
+#include "../../objects/tangible/surveytool/SurveyTool.h"
+
+#include "../../objects/tangible/resource/ResourceContainer.h"
+
+#include "ResourceMap.h"
+#include "ResourceManager.h"
+#include "ResourceTemplateImplementation.h"
+#include "SpawnLocation.h"
+
+class ResourceTemplate;
+
+class LocalResourceManagerImplementation : public LocalResourceManagerServant, public Logger {
+	Zone* zone;
+	ZoneProcessServerImplementation* server;
 	
-	void stopManagers();
+	ResourceMap* resourceMap;
+	
+public:
+	LocalResourceManagerImplementation(Zone* inzone, ZoneProcessServerImplementation* inserv);
+	
+	void init();
+	void buildMap();
+	
+	void addResource(ResourceTemplate* resource);
+	SpawnLocation* despawnResource(string& resourceName, uint64 sid);
+	
+	float getDensity(int planet, unicode& resname, float inx, float iny);
+	
+	void sendSurveyMessage(Player* player, unicode& resource_name);
+	void sendSampleMessage(Player* player, unicode& resource_name);
+	
+	void setResourceData(ResourceContainerImplementation* resContainer);
+	
+	bool sendSurveyResources(Player* player, int SurveyToolType);
+	
+	bool checkResource(Player* player, unicode& resource_name, int SurveyToolType);
+	
+	string& LocalResourceManagerImplementation::getClassSeven(const string& resource);
+	
+private:
+	bool isDuplicate(Vector<string>* rList, string& resource);
+	
+	void sendSurveyResourceStats(Player* player, Vector<string>* rList);
+	
+	void setObjectSubType(ResourceTemplateImplementation* resImpl);
+	
+	ResourceTemplateImplementation* cloneResource(ResourceTemplate* in);
+};
 
-	void lock(boolean doLock = true);
-	void unlock(boolean doLock = true);
-	
-	void registerObject(SceneObject obj);
-	
-	SceneObject lookupObject(unsigned long oid);
-	
-	SceneObject deleteObject(unsigned long oid);
-	SceneObject deleteObject(SceneObject obj);
-
-	SceneObject deleteCachedObject(SceneObject obj);
-
-	// setters and getters
-	int getZoneID();
-
-	ZoneServer getZoneServer();
-
-	ChatManager getChatManager();
-	CreatureManager getCreatureManager();
-	PlanetManager getPlanetManager();
-	LocalResourceManager getLocalResourceManager();
-	
-	unsigned long getGalacticTime();
-	
-	unsigned int getWeatherId();
-	
-	float getWeatherCloudX();
-	
-	float getWeatherCloudY();
-	
-	//QT methods
-	void setSize(float minx, float miny, float maxx, float maxy);
-	void insert(QuadTreeEntry obj);
-	void remove(QuadTreeEntry obj);
-	void removeAll();
-	boolean update(QuadTreeEntry obj);
-	void inRange(QuadTreeEntry obj, float range);
-
-}
+#endif /*LOCALRESOURCEMANAGERIMPLEMENTATION_H_*/
