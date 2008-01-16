@@ -782,31 +782,62 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 						player->sendMessage(packet);
 					}
 		}*/ else if (cmd == "@giveItemTemp") {
-			if (userManager->isAdmin(player->getFirstName())) {
-				
-				//Give TANO
-				string itemType;
-				tokenizer.getStringToken(itemType);
-				
-				if (itemType == "Holocron") {
-					HolocronImplementation* itemImpl = new HolocronImplementation(player, 0x9BA06548, unicode("Holocron"), "object/tangible/jedi/shared_jedi_holocron_light.iff");
-					TangibleObject* item = itemImpl->deploy();
+			//Give TANO
+			string itemType;
+			tokenizer.getStringToken(itemType);
+			
+			if (userManager->isAdmin(player->getFirstName()) && itemType == "Holocron") {
+				HolocronImplementation* itemImpl = new HolocronImplementation(player, 0x9BA06548, unicode("Holocron"), "object/tangible/jedi/shared_jedi_holocron_light.iff");
+				TangibleObject* item = itemImpl->deploy();
 
-					player->addInventoryItem(item);
+				player->addInventoryItem(item);
 
-					item->sendTo(player);
-				} else if (itemType == "Firework") {
-					FireworkImplementation* itemImpl = new FireworkImplementation(player, 0x7C540DEB, unicode("a Firework"), "object/tangible/firework/shared_firework_s04.iff");
-					TangibleObject* item = itemImpl->deploy();
+				item->sendTo(player);
+			} else if (userManager->isAdmin(player->getFirstName())&& itemType == "Firework") {
+				FireworkImplementation* itemImpl = new FireworkImplementation(player, 0x7C540DEB, unicode("a Firework"), "object/tangible/firework/shared_firework_s04.iff");
+				TangibleObject* item = itemImpl->deploy();
 
-					player->addInventoryItem(item);
-					
-					item->sendTo(player);
-				} else {
-					player->sendSystemMessage("Unknown Item Type.");
-				}
+				player->addInventoryItem(item);
 				
-			}	
+				item->sendTo(player);
+			} else if (itemType == "SurveyTools") {
+				SurveyToolImplementation* minSurvImpl = new SurveyToolImplementation(player, 0xAA9AB32C, unicode("Mineral Survey Tool"), "survey_tool_mineral");
+			 	TangibleObject* tano = minSurvImpl->deploy();
+			 	player->addInventoryItem(tano);
+			 	tano->sendTo(player);
+			 	
+			 	SurveyToolImplementation* solSurvImpl = new SurveyToolImplementation(player, 0x8B95C48D, unicode("Solar Survey Tool"), "survey_tool_solar");
+			 	tano = solSurvImpl->deploy();
+			 	player->addInventoryItem(tano);
+			 	tano->sendTo(player);
+			 	
+			 	SurveyToolImplementation* chemSurvImpl = new SurveyToolImplementation(player, 0x85A7C02A, unicode("Chemical Survey Tool"), "survey_tool_chemical");
+			 	tano = chemSurvImpl->deploy();
+			 	player->addInventoryItem(tano);
+			 	tano->sendTo(player);
+			 	
+			 	SurveyToolImplementation* floSurvImpl = new SurveyToolImplementation(player, 0x4F38AD50, unicode("Flora Survey Tool"), "survey_tool_flora");
+			 	tano = floSurvImpl->deploy();
+			 	player->addInventoryItem(tano);
+			 	tano->sendTo(player);
+			 	
+			 	SurveyToolImplementation* gasSurvImpl = new SurveyToolImplementation(player, 0x3F1F6443, unicode("Gas Survey Tool"), "survey_tool_gas");
+			 	tano = gasSurvImpl->deploy();
+			 	player->addInventoryItem(tano);
+			 	tano->sendTo(player);
+			 	
+			 	SurveyToolImplementation* watSurvImpl = new SurveyToolImplementation(player, 0x81AE2438, unicode("Water Survey Tool"), "survey_tool_water");
+			 	tano = watSurvImpl->deploy();
+			 	player->addInventoryItem(tano);
+			 	tano->sendTo(player);
+			 	
+			 	SurveyToolImplementation* windSurvImpl = new SurveyToolImplementation(player, 0x21C39BD0, unicode("Wind Survey Tool"), "survey_tool_wind");
+			 	tano = windSurvImpl->deploy();
+			 	player->addInventoryItem(tano);
+			 	tano->sendTo(player);
+			} else {
+				player->sendSystemMessage("Unknown Item Type.");
+			}
 		} else {
 			player->sendSystemMessage("Unknown Command: " + cmd);
 		}

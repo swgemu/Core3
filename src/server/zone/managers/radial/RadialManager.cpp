@@ -405,7 +405,9 @@ void RadialManager::sendRadialResponseForSurveyTools(Player* player, SurveyTool*
 }
 
 void RadialManager::sendRadialResponseForSurveyToolRange(Player* player, SceneObject* obj) {
-	if (!player->hasSkillMod("surveying")) {
+	string skillBox = "crafting_artisan_novice";
+	
+	if (!player->hasSkillBox(skillBox)) {
 		player->sendSystemMessage("You are confused by this device.");
 		return;
 	}
