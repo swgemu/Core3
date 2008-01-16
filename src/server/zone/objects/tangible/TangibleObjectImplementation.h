@@ -114,7 +114,6 @@ public:
 	static const int ORGANICHIDE = 4194314;
 	static const int ORGANICSTRUCTURAL = 4194315;
 	// static const int RESOURCECONTAINER = 4194316;
-
 	
 	static const int SURVEYTOOL = 32770;
 	

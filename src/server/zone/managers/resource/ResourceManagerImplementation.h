@@ -95,35 +95,19 @@ class ResourceManagerImplementation : public ResourceManagerServant, public Logg
 	
 public:
 	ResourceManagerImplementation(ZoneServer* planet, ZoneProcessServerImplementation* serv);
-	
+
 	void theShift();
 	void clearResources();
-	
+
 	inline void stop() {
 		if (spawnResourcesEvent != NULL) {
 			server->removeEvent(spawnResourcesEvent);
 		}
 	}
-	
-	/*
-	float getDensity(int planet, unicode& resname, float inx, float iny);
-	void sendSurveyMessage(Player* player, unicode& resource_name);
-	void sendSampleMessage(Player* player, unicode& resource_name);
-	void setResourceData(ResourceContainerImplementation* resContainer);
-	
-	bool sendSurveyResources(Player* player, int SurveyToolType);
-	bool checkResource(Player* player, unicode& resource_name, int SurveyToolType);
-	*/
+
 private:
-	/*
-	void sendSurveyResourceStats(Player* player, Vector<string>* rList);
-	bool isDuplicate(Vector<string>* rList, string& resource);
-	
-	void buildMap();
-	*/
-	
 	void init();
-	
+
 	void countResources();
 
 	void checkMinimumPool();
