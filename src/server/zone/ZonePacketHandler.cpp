@@ -59,6 +59,7 @@ which carries forward this exception.
 #include "managers/bazaar/BazaarManager.h"
 
 #include "objects/terrain/PlanetNames.h"
+#include "objects/tangible/terminal/bazaar/RegionBazaar.h"
 
 #include "../chat/ChatManager.h"
 
@@ -204,7 +205,7 @@ void ZonePacketHandler::handleMessage(Message* pack) {
 			handleChatCreateRoom(pack);
 			break;
 		case 0xAD47021D: 
-			handleBazaarAddAuctionItem(pack);
+			handleBazaarAddItem(pack, true);
 			break;
 		}
 		
@@ -212,9 +213,9 @@ void ZonePacketHandler::handleMessage(Message* pack) {
 	case 8:
 		switch (opcode) {
 		case 0x1E9CE308: //Bazaar
-			handleBazaarAddInstantItem(pack);
+			handleBazaarAddItem(pack, false);
 			break;
-		case 0x679E0D00:
+		case 0x679E0D00: // Pre 14
 			handleBazaarScreens(pack);
 			break;
 		}
@@ -225,7 +226,13 @@ void ZonePacketHandler::handleMessage(Message* pack) {
 			handleClientCreateCharacter(pack);
 			break;
 		}
-		
+		break;
+	case 14:
+		switch (opcode) {
+		case 0x679E0D00: // 14
+			handleBazaarScreens(pack);
+			break;
+		}
 		break;
 	default:
 		//error("unhandled operand count" + pack->toString());
@@ -968,46 +975,25 @@ void ZonePacketHandler::handleVerifyTradeMessage(Message* pack) {
 	server->getPlayerManager()->handleVerifyTradeMessage(player);
 }
 
-void ZonePacketHandler::handleBazaarAddInstantItem(Message* pack) {
+void ZonePacketHandler::handleBazaarAddItem(Message* pack, bool auction) {
 	ZoneClientImplementation* client = (ZoneClientImplementation*) pack->getClient();
 	
 	Player* player = client->getPlayer();
 	if (player == NULL)
 		return;
 	
-   	long objectid = pack->parseLong(); // object for sale
-   	long bazaarid = pack->parseLong(); // bazaar
+   	 uint64 objectid = pack->parseLong(); // object for sale
+   	 uint64 bazaarid = pack->parseLong(); // bazaar
    	
-   	int price = pack->parseInt(); // Sale price
-   	int unk1 = pack->parseInt(); // How long to sell for in minutes
-   	
-   	unicode description;
-   	pack->parseUnicode(description);
-   	string descriptionString = description.c_str();
-   	
-   	BazaarManager* bazaarManager = server->getBazaarManager();
-   	bazaarManager->addInstantItem(player, objectid, bazaarid, descriptionString, price);
-}
-
-void ZonePacketHandler::handleBazaarAddAuctionItem(Message* pack) {
-	ZoneClientImplementation* client = (ZoneClientImplementation*) pack->getClient();
-	
-	Player* player = client->getPlayer();
-	if (player == NULL)
-		return;
-	
-   	long objectid = pack->parseLong(); // object for sale
-   	long bazaarid = pack->parseLong(); // bazaar
-   	
-   	int price = pack->parseInt();     // Start price
-   	int timelimit = pack->parseInt(); // How long to put on sale in minutes
+   	uint32 price = pack->parseInt(); // Sale price
+   	uint32 duration = pack->parseInt(); // How long to sell for in minutes
    	
    	unicode description;
    	pack->parseUnicode(description);
    	string descriptionString = description.c_str();
    	
    	BazaarManager* bazaarManager = server->getBazaarManager();
-   	bazaarManager->addAuctionItem(player, objectid, bazaarid, descriptionString, price, timelimit);
+   	bazaarManager->addSaleItem(player, objectid, bazaarid, descriptionString, price, duration, auction);
 }
 
 void ZonePacketHandler::handleBazaarScreens(Message* pack) {
@@ -1023,11 +1009,13 @@ void ZonePacketHandler::handleBazaarScreens(Message* pack) {
 	int screen = pack->parseInt(); 
 	// 2 - all items, 3 - my sales, 4 - my bids, 5 - available items, 
 	// 7 - for sale, 9 - offers to vendor
-	int category = pack->parseInt();  // Bitmask
-	long bazaarId = pack->parseLong();
+	uint32 category = pack->parseInt();  // Bitmask
+	pack->shiftOffset(21);
+	uint64 bazaarId = pack->parseLong();
 	
    	BazaarManager* bazaarManager = server->getBazaarManager();
-   	bazaarManager->getBazaarData(player, bazaarId, screen, extent, category, counter);
+   	RegionBazaar* bazaar = bazaarManager->getBazaar(bazaarId);
+   	bazaar->getBazaarData(player, bazaarId, screen, extent, category, counter);
 }
 
 

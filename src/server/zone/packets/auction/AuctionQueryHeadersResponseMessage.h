@@ -47,14 +47,12 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-#include "AuctionItem.h"
+#include "../../objects/auction/AuctionItem.h"
 
 class AuctionQueryHeadersResponseMessage : public BaseMessage {
 	Vector<AuctionItem*> itemList;
 	
 	Vector<string> locationList;
-	
-	int offset;
 	
 public:
 	AuctionQueryHeadersResponseMessage(int screen, int counter) : BaseMessage() {	
@@ -66,51 +64,48 @@ public:
 	}
 	
 	void addAuctionItem(uint64 id, string& name, int price, bool auction, int time, int type,
-			long ownerid, string& owner, bool vendor, string& planet, string& header, long vendorid) {
+			int ownerid, string& owner, bool vendor, string& planet, string& header, long long vendorid, int x, int z) {
+
 		AuctionItem* ai = new AuctionItem();
+		
 		ai->id = id;
-		ai->itemname = name;
+		ai->itemName = name;
 		ai->price = price;
 		ai->remainingTime = time;
 		ai->auction = auction;
 		ai->itemType = type;
+		ai->ownerName = owner;
 		
-		stringstream title;
-		title << planet << ".@";
+		ai->setLocation(planet, header, vendorid, x, z, vendor);
 		
-		if (vendor)
-			title << "planet_n:" << planet <<  ".Vendor: " << header;
-		else
-			title << planet << "_region_names:" << header << ".@:";
-		
-		title << "." << vendorid << "#0,0";
-		string str = title.str();
-		
-		ai->location = -1;
+		addItemToList(ai);
+	}
+	
+	void addItemToList(AuctionItem* ai) {
+		ai->locationPointer = -1;
 		
 		for (int i = 0; i < locationList.size(); i++) {
-			if (locationList.get(i) == str)
-				ai->location = i;
+			if (locationList.get(i) == ai->terminalTitle)
+				ai->locationPointer = i;
 		}
 		
-		if (ai->location == -1) {
-			ai->location = locationList.size();
+		if (ai->locationPointer == -1) {
+			ai->locationPointer = locationList.size();
 			
-			locationList.add(locationList.size(), str);
+			locationList.add(locationList.size(), ai->terminalTitle);
 		}
 		
-		ai->ownerID = ownerid;
-		ai->owner = -1;
+		ai->ownerPointer = -1;
 		
 		for (int i = 0; i < locationList.size(); i++) {
-			if (locationList.get(i) == owner)
-				ai->owner = i;
+			if (locationList.get(i) == ai->ownerName)
+				ai->ownerPointer = i;
 		}
 		
-		if (ai->owner == -1) {
-			ai->owner = locationList.size();
+		if (ai->ownerPointer == -1) {
+			ai->ownerPointer = locationList.size();
 			
-			locationList.add(locationList.size(), owner);
+			locationList.add(locationList.size(), ai->ownerName);
 		}
 		
 		itemList.add(ai);
@@ -134,7 +129,7 @@ public:
 		for (int i = 0; i < itemList.size(); i++) {
 			AuctionItem* il = itemList.get(i);
 			
-	    	unicode name = il->itemname;
+	    	unicode name = il->itemName;
 	    	insertUnicode(name); //name
 		}
 	}
@@ -148,31 +143,36 @@ public:
 			AuctionItem* il = itemList.get(i);
 	    	
 			insertLong(il->id); //item id
-	    	
 			insertByte(i);  // List item string number
 	    	
 			insertInt(il->price); //item cost.
 	    	
-			insertInt(il->remainingTime);
+			insertInt(il->expireTime - time(NULL));
 	    	
 	    	if (il->auction)
 	    		insertByte(0);
 	    	else
 	    		insertByte(1);
 	    	
-	    	insertShort(il->location);
+	    	insertShort(il->locationPointer);
 	    	
 	    	insertLong(il->ownerID);
-	    	insertShort(il->owner);
+	    	insertShort(il->ownerPointer);
+
+	    	insertInt(0);
+	    	insertInt(0);
+	    	insertInt(0);
+	    	insertInt(0);
+	    	insertShort(0);
+
+	    	insertInt(il->itemType); 
 	    	
-	    	insertLong(0); // ??
-	    	insertLong(0); // ??
-	    	insertShort(0); // ??
-	    	insertLong(0); // object type 0 = object, 1 = corpse etc
+	    	insertInt(0);
+	    	insertInt(0);
 		}
 	}
 	
-	void createMessage(int offset = 0) {
+	void createMessage(int offset = 0, bool continues = false) {
 		dumpLocationList();
 
 		dumpItemNameList();
@@ -181,7 +181,7 @@ public:
 		
 		insertShort(offset); // Item list start offset
 		
-		insertByte(0);
+		insertByte(continues); // more to come?
 	}
 
 	inline int getListSize() {

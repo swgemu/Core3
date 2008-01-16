@@ -109,8 +109,7 @@ public:
 	void handleUnAcceptTransactionMessage(Message* pack);
 	void handleVerifyTradeMessage(Message* pack);
 	
-	void handleBazaarAddInstantItem(Message* pack);
-	void handleBazaarAddAuctionItem(Message* pack);
+	void handleBazaarAddItem(Message* pack, bool auction);
 	void handleBazaarScreens(Message* pack);
 };
 

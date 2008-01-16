@@ -45,59 +45,72 @@ which carries forward this exception.
 #ifndef BAZAARTERMINALS_H_
 #define BAZAARTERMINALS_H_
 
-#include <map>
+#include "engine/engine.h"
 
-class BazaarTerminalDetails {
-	int bazaarPlanet;
-	string bazaarRegion;
-	int bazaarX;
-	int bazaarZ;
-	
-public:
-	BazaarTerminalDetails(int planet, char* region, int x, int z) {
-		bazaarPlanet=planet;
-		bazaarRegion=region;
-		bazaarX=x;
-		bazaarZ=z;
-	}
-	
-	inline int getPlanet() {
-		return bazaarPlanet;
-	}
-	
-	inline string getRegion() {
-		return bazaarRegion;
-	}
-	
-	inline int getX() {
-		return bazaarX;
-	}
-	
-	inline int getZ() {
-		return bazaarZ;
-	}
-};
+#include "BazaarTerminalDetails.h"
 
 class BazaarTerminals {
-	map<int, BazaarTerminalDetails*> bazaarLocations;
+	BazaarMap* bazaarLocations;
 
 public:
 	BazaarTerminals() {
-		bazaarLocations[3945353] = new BazaarTerminalDetails(8, "anchorhead", 60, -5350);
-			//"tatooine.@tatooine_region_names:anchorhead.@terminal_name:terminal_bazaar.3945353#60,-5350";
-		bazaarLocations[3945352] = new BazaarTerminalDetails(8, "anchorhead", 64, -5350);
-			//"tatooine.@tatooine_region_names:anchorhead.@terminal_name:terminal_bazaar.3945352#64,-5350";
-		bazaarLocations[5515502] = new BazaarTerminalDetails(8, "bestine", -1252, -3659);
-			//"tatooine.@tatooine_region_names:bestine.@terminal_name:terminal_bazaar.5515502#-1252,-3659";
+		bazaarLocations = new BazaarMap(200);
+		
+		// Tatooine Anchorhead
+		string location = "anchorhead";
+		bazaarLocations->put(3945353, new BazaarTerminalDetails(8, location, 60, -5350));
+		bazaarLocations->put(3945352, new BazaarTerminalDetails(8, location, 64, -5350));
+
+		// Tattoine Bestine
+		location = "bestine";
+		bazaarLocations->put(5515502, new BazaarTerminalDetails(8, location, -1252, -3659));
+		bazaarLocations->put(4235514, new BazaarTerminalDetails(8, location, -1290, -3578));
+		bazaarLocations->put(3945361, new BazaarTerminalDetails(8, location, -1452, -3580));
+		bazaarLocations->put(3945360, new BazaarTerminalDetails(8, location, -1452, -3577));
+		bazaarLocations->put(3945359, new BazaarTerminalDetails(8, location, -1447, -3551));
+		bazaarLocations->put(3945356, new BazaarTerminalDetails(8, location, -1447, -3548));
+		bazaarLocations->put(5515501, new BazaarTerminalDetails(8, location, -1294, -3669));
+		bazaarLocations->put(4235511, new BazaarTerminalDetails(8, location, -1293, -3601));
+		bazaarLocations->put(683510, new BazaarTerminalDetails(8, location, -1103, -3532));
+		bazaarLocations->put(683509, new BazaarTerminalDetails(8, location, -1105, -3535));
+		bazaarLocations->put(683508, new BazaarTerminalDetails(8, location, -1107, -3537));
+		bazaarLocations->put(683457, new BazaarTerminalDetails(8, location, -1392, -3716));
+		bazaarLocations->put(683458, new BazaarTerminalDetails(8, location, -1393, -3707));
+		bazaarLocations->put(683459, new BazaarTerminalDetails(8, location, -1398, -3707));
+		bazaarLocations->put(683456, new BazaarTerminalDetails(8, location, -1396, -3717));
+		bazaarLocations->put(1250246, new BazaarTerminalDetails(8, location, -1105, -3692));
+		bazaarLocations->put(1250243, new BazaarTerminalDetails(8, location, -1124, -3676));
+
+		// Corellia Coronet
+		location = "coronet";
+		bazaarLocations->put(7755375, new BazaarTerminalDetails(0, location, -312, -4644));
+		bazaarLocations->put(7755372, new BazaarTerminalDetails(0, location, -340, -4644));
+		bazaarLocations->put(5625468, new BazaarTerminalDetails(0, location, -77, -4599));
+		bazaarLocations->put(5625467, new BazaarTerminalDetails(0, location, -55, -4621));
+		bazaarLocations->put(5625469, new BazaarTerminalDetails(0, location, -55, -4577));
+		bazaarLocations->put(5625470, new BazaarTerminalDetails(0, location, -34, -4599));
+
+		// Dathomir Science outpost
+		location = "science_outpost";
+		bazaarLocations->put(2835653, new BazaarTerminalDetails(2, location, -70, -1598));
+		bazaarLocations->put(2835652, new BazaarTerminalDetails(2, location, -81, -1589));
+
+		// Dathomir Trade outpost
+		location = "trade_outpost";
+		bazaarLocations->put(1392905, new BazaarTerminalDetails(2, location, 573, 3092));
+
 	}
 	
 	BazaarTerminalDetails* isBazaarTerminal(long objectid) {
-		  map<int, BazaarTerminalDetails*>::iterator iter = bazaarLocations.find(objectid);
-		  if( iter != bazaarLocations.end() ) {
-			  return iter->second;
-		  } else {
-			  return NULL;
-		  }
+		if( bazaarLocations->containsKey(objectid) ) {
+			return bazaarLocations->get(objectid);
+		} else {
+			return NULL;
+		}
+	}
+	
+	BazaarMap* getBazaarMap() {
+		return bazaarLocations;
 	}
 };
 

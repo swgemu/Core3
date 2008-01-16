@@ -45,23 +45,52 @@ which carries forward this exception.
 #ifndef AUCTIONITEM_H_
 #define AUCTIONITEM_H_
 
-class AuctionItem {
+#include <ctime>
+#include "engine/engine.h"
+
+class AuctionItem : public ORBObject {
+	
 public:
-	long ownerID;
-	short owner;
-	
-	short location;
-	
 	uint64 id;
+	int itemType;
 	
-	string itemname;
+	uint32 ownerID;
+	string ownerName;
+	short ownerPointer;
+	
+	short planet;
+	string region;
+	string location;
+	string terminalTitle;
+	short locationPointer;
+	uint64 vendorID;
+	
+	string itemName;
 	
 	int price;
 	
 	bool auction;
+	bool sold;
 	
+	uint32 expireTime;
 	int remainingTime;
-	int itemType;
+
+	bool updated;
+	
+	void setLocation(string& planet, string& header, long long vendorid, int x, int z, bool vendor) {
+		location = header;
+		
+		stringstream title;
+		title << planet << ".@";
+		
+		if (vendor)
+			title << "planet_n:" << planet <<  ".Vendor: " << header;
+		else
+			title << planet << "_region_names:" << header << ".@:";
+		
+		title << "." << vendorid << "#" << x << "," << z;
+		terminalTitle = title.str();
+	}
 };
 
 #endif /*AUCTIONITEM_H_*/

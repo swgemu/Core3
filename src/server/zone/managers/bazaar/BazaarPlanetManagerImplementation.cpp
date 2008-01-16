@@ -43,11 +43,44 @@ which carries forward this exception.
 */
 
 #include "BazaarPlanetManagerImplementation.h"
+#include "../../objects/terrain/PlanetNames.h"
 
-BazaarPlanetManagerImplementation::BazaarPlanetManagerImplementation() {
-	
+BazaarPlanetManagerImplementation::BazaarPlanetManagerImplementation(int planet) : BazaarPlanetManagerServant() , Logger("BazaarPlanetManager") {
+	info("Starting BazaarPlanetManager for " + (string)PlanetNames[planet]);
+	vendorPlanet = planet;
 }
 
 void BazaarPlanetManagerImplementation::setPlanet(int planet) {
 	vendorPlanet = planet;
+}
+
+void BazaarPlanetManagerImplementation::addItem(AuctionItem* auctionItem) {
+	RegionBazaar* bazaar;
+	
+	bazaar = bazaars.get(auctionItem->location);
+	if(bazaar == NULL) {
+		info("Bazaar not found " + auctionItem->location);
+	} else {
+		bazaar->addItem(auctionItem);
+	}
+}
+
+void BazaarPlanetManagerImplementation::addBazaar(BazaarTerminalDetails* terminal) {
+	RegionBazaar* bazaar;
+
+	if (bazaars.contains(terminal->getRegion())) {
+		bazaar = bazaars.get(terminal->getRegion());
+	} else {
+		RegionBazaarImplementation* termImpl = new RegionBazaarImplementation();
+		bazaar = (RegionBazaar*) termImpl->deploy();
+
+		info("Adding bazaar for " + terminal->getRegion());
+		bazaars.put(terminal->getRegion(), bazaar);
+		
+		string region = terminal->getRegion();
+		bazaar->setRegion(region);
+		bazaar->setManager(_this);
+	}
+	
+	terminal->setTerminal(bazaar);
 }

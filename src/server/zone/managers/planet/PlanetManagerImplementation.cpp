@@ -84,7 +84,7 @@ void PlanetManagerImplementation::start() {
 void PlanetManagerImplementation::loadStaticPlanetObjects() {
 	loadShuttles();	
 	//loadGuildTerminals();
-	loadVendorTerminals();
+	//loadVendorTerminals();
 }
 
 void PlanetManagerImplementation::loadShuttles() {

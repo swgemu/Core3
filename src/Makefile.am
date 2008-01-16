@@ -95,6 +95,7 @@ core3_IDLS =	server/zone/Zone.cpp \
 		server/zone/objects/tangible/terminal/travel/TravelTerminal.cpp \
 		server/zone/objects/tangible/terminal/guild/GuildTerminal.cpp \
 		server/zone/objects/tangible/terminal/vendor/VendorTerminal.cpp \
+		server/zone/objects/tangible/terminal/bazaar/RegionBazaar.cpp \
 		server/zone/objects/tangible/ticketcollector/TicketCollector.cpp \
 		server/zone/objects/tangible/instrument/Instrument.cpp \
 		server/zone/objects/tangible/lair/LairObject.cpp \

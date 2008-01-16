@@ -51,6 +51,10 @@ which carries forward this exception.
 
 #include "engine/orb/ObjectRequestBroker.h"
 
+class AuctionItem;
+
+#include "BazaarTerminalDetails.h"
+
 class BazaarPlanetManager : public ORBObjectStub {
 public:
 	BazaarPlanetManager();
@@ -62,6 +66,10 @@ public:
 	virtual ~BazaarPlanetManager();
 
 	void setPlanet(int planet);
+
+	void addItem(AuctionItem* item);
+
+	void addBazaar(BazaarTerminalDetails* terminal);
 
 protected:
 };
@@ -75,6 +83,10 @@ public:
 	Packet* invokeMethod(sys::uint32 methid, ORBMethodInvocation* inv);
 
 	void setPlanet(int planet);
+
+	void addItem(AuctionItem* item);
+
+	void addBazaar(BazaarTerminalDetails* terminal);
 
 };
 

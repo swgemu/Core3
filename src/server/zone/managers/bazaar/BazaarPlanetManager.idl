@@ -42,6 +42,12 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
+#import "../../objects/auction/AuctionItem";
+
+#include "BazaarTerminalDetails";
+
 interface BazaarPlanetManager {
 	void setPlanet(int planet);
+	void addItem(AuctionItem item);
+	void addBazaar(BazaarTerminalDetails terminal);
 }

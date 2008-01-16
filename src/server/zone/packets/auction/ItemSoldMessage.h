@@ -42,60 +42,19 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef BAZAARMANAGERIMPLEMENTATION_H_
-#define BAZAARMANAGERIMPLEMENTATION_H_
+#ifndef ITEMSOLDMESSAGE_H_
+#define ITEMSOLDMESSAGE_H_
 
-#include "engine/engine.h"
-
-#include "BazaarManager.h"
-
-#include "BazaarTerminals.h"
-#include "BazaarPlanetManager.h"
-#include "BazaarPlanetManagerImplementation.h"
-
-#include "../../objects/tangible/terminal/bazaar/RegionBazaar.h"
-
-#include "../../objects/player/Player.h"
-
-#include "../../objects/auction/AuctionItem.h"
-
-class BazaarManagerImplementation : public BazaarManagerServant, public Mutex, public Logger {
-	BazaarPlanetManager* bazaarPlanets[10];
-
-	BazaarTerminals* bazaarTerminals;
-	
-	Vector<uint64>updated;
-	
-	Vector<AuctionItem*>items;
+class ItemSoldMessage : public BaseMessage {
 
 public:
-	static const int ARMOR = 0x00000100;
-	static const int BUILDING = 0x00000200;
-	static const int ENTITY = 0x00000400;
-	static const int DATA = 0x00000800;
-	static const int INSTALLATION = 0x00001000;
-	static const int MISC = 0x00002000;
-	static const int TOOL = 0x00008000;
-	static const int WEAPON = 0x00020000;
-	static const int COMPONENT = 0x00040000;
-	static const int WEAPONPOWERUP = 0x00080000;
-	static const int ARMORPOWERUP = 0x00100000;
-	static const int JEWELRY = 0x00200000;
-	static const int RESOURCECONTAINER = 0x00400000;
-	static const int DEED = 0x00800000;
-	static const int CLOTHING = 0x01000000;
-	static const int SHIPCOMPONENT = 0x40000000;
-	
-public:
-	BazaarManagerImplementation(ZoneServer* server);
-	
-	void newBazaarRequest(long long bazaarID, Player* player, int planet);
-	bool isBazaarTerminal(long long objectID);
-	
-	void addSaleItem(Player* player, long long objectid, long long bazaarid, string& description, int price, unsigned int duration, bool auction);
-	void getBazaarData(Player* player, long long objectid, int screen, int extent, int category, int count);
-	RegionBazaar* getBazaar(long long objectid);
-	void updateItemStatus(uint64 itemid);
+	ItemSoldMessage(long long objectid) {
+		insertShort(3);
+		insertInt(0x0E61CC92);
+		
+		insertLong(objectid);
+		insertInt(0);
+	}
 };
 
-#endif /*BAZAARMANAGERIMPLEMENTATION_H_*/
+#endif /*ITEMSOLDMESSAGE_H_*/

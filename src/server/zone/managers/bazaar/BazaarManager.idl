@@ -43,14 +43,15 @@ which carries forward this exception.
 */
 
 import "../../objects/player/Player";
+import "../../objects/tangible/terminal/bazaar/RegionBazaar";
 
 interface BazaarManager {
 	void newBazaarRequest(long bazaarID, Player player, int planet);
 	
 	boolean isBazaarTerminal(long objectID);
 
-	void addInstantItem(Player player, long objectid, long bazaarid, string description, int price);
-	void addAuctionItem(Player player, long objectid, long bazaarid, string description, int price, int duration);
+	void addSaleItem(Player player, long objectid, long bazaarid, string description, int price, int duration, boolean auction);
 
    	void getBazaarData(Player player, long objectid, int screen, int extent, int category, int count);
+	RegionBazaar getBazaar(long objectid);
 }

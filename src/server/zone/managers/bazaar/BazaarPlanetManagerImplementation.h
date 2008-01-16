@@ -45,15 +45,28 @@ which carries forward this exception.
 #ifndef BAZAARPLANETMANAGERIMPLEMENTATION_H_
 #define BAZAARPLANETMANAGERIMPLEMENTATION_H_
 
-class BazaarPlanetManagerImplementation {
+#include "engine/engine.h"
+
+#include "BazaarPlanetManager.h"
+
+#include "BazaarManager.h"
+#include "BazaarManagerImplementation.h"
+
+#include "BazaarTerminals.h"
+
+#include "../../objects/tangible/terminal/bazaar/RegionBazaar.h"
+#include "../../objects/tangible/terminal/bazaar/RegionBazaarImplementation.h"
+
+class BazaarPlanetManagerImplementation : public BazaarPlanetManagerServant, public Logger {
 	int vendorPlanet;
+	VectorMap<string, RegionBazaar*> bazaars;
 	
 public:
-	BazaarPlanetManagerImplementation();
+	BazaarPlanetManagerImplementation(int planet);
 	
 	void setPlanet(int planet);
-	
-	bool isBazaarTerminal(long objectID);
+	void addItem(AuctionItem* auctionItem);
+	void addBazaar(BazaarTerminalDetails* terminal);
 };
 
 #endif /*BAZAARPLANETMANAGERIMPLEMENTATION_H_*/

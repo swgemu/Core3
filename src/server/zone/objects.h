@@ -165,4 +165,6 @@ which carries forward this exception.
 #include "objects/static/firework/FireworkWorld.h"
 #include "objects/static/firework/FireworkWorldImplementation.h"
 
+#include "objects/auction/AuctionItem.h"
+
 #endif /*ZONEOBJECTS_H_*/

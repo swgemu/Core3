@@ -42,12 +42,17 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-import "../Terminal";
-
 import "../../../player/Player";
 
-include "engine/service/Message";
+import "../../../scene/SceneObject";
 
-interface RegionBazaar implements Terminal {
+import "../../../auction/AuctionItem";
+import "../../../../managers/bazaar/BazaarPlanetManager";
 
+interface RegionBazaar implements SceneObject {
+	void addItem(AuctionItem item);
+	void setRegion(string region);
+	void setManager(BazaarPlanetManager manager);
+	void newBazaarRequest(long bazaarID, Player player, int planet);
+	void getBazaarData(Player player, long objectid, int screen, int extent, int category, int count);
 }

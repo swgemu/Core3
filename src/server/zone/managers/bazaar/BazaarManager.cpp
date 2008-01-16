@@ -48,6 +48,8 @@ which carries forward this exception.
 
 #include "../../objects/player/Player.h"
 
+#include "../../objects/tangible/terminal/bazaar/RegionBazaar.h"
+
 #include "BazaarManager.h"
 
 #include "BazaarManagerImplementation.h"
@@ -101,7 +103,7 @@ bool BazaarManager::isBazaarTerminal(long long objectID) {
 		return ((BazaarManagerImplementation*) _impl)->isBazaarTerminal(objectID);
 }
 
-void BazaarManager::addInstantItem(Player* player, long long objectid, long long bazaarid, string& description, int price) {
+void BazaarManager::addSaleItem(Player* player, long long objectid, long long bazaarid, string& description, int price, int duration, bool auction) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
@@ -112,28 +114,12 @@ void BazaarManager::addInstantItem(Player* player, long long objectid, long long
 		invocation.addSignedLongParameter(bazaarid);
 		invocation.addAsciiParameter(description);
 		invocation.addSignedIntParameter(price);
-
-		invocation.executeWithVoidReturn();
-	} else
-		((BazaarManagerImplementation*) _impl)->addInstantItem(player, objectid, bazaarid, description, price);
-}
-
-void BazaarManager::addAuctionItem(Player* player, long long objectid, long long bazaarid, string& description, int price, int duration) {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 9);
-		invocation.addObjectParameter(player);
-		invocation.addSignedLongParameter(objectid);
-		invocation.addSignedLongParameter(bazaarid);
-		invocation.addAsciiParameter(description);
-		invocation.addSignedIntParameter(price);
 		invocation.addSignedIntParameter(duration);
+		invocation.addBooleanParameter(auction);
 
 		invocation.executeWithVoidReturn();
 	} else
-		((BazaarManagerImplementation*) _impl)->addAuctionItem(player, objectid, bazaarid, description, price, duration);
+		((BazaarManagerImplementation*) _impl)->addSaleItem(player, objectid, bazaarid, description, price, duration, auction);
 }
 
 void BazaarManager::getBazaarData(Player* player, long long objectid, int screen, int extent, int category, int count) {
@@ -141,7 +127,7 @@ void BazaarManager::getBazaarData(Player* player, long long objectid, int screen
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 10);
+		ORBMethodInvocation invocation(this, 9);
 		invocation.addObjectParameter(player);
 		invocation.addSignedLongParameter(objectid);
 		invocation.addSignedIntParameter(screen);
@@ -152,6 +138,19 @@ void BazaarManager::getBazaarData(Player* player, long long objectid, int screen
 		invocation.executeWithVoidReturn();
 	} else
 		((BazaarManagerImplementation*) _impl)->getBazaarData(player, objectid, screen, extent, category, count);
+}
+
+RegionBazaar* BazaarManager::getBazaar(long long objectid) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 10);
+		invocation.addSignedLongParameter(objectid);
+
+		return (RegionBazaar*) invocation.executeWithObjectReturn();
+	} else
+		return ((BazaarManagerImplementation*) _impl)->getBazaar(objectid);
 }
 
 /*
@@ -172,13 +171,13 @@ Packet* BazaarManagerAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* i
 		resp->insertBoolean(isBazaarTerminal(inv->getSignedLongParameter()));
 		break;
 	case 8:
-		addInstantItem((Player*) inv->getObjectParameter(), inv->getSignedLongParameter(), inv->getSignedLongParameter(), inv->getAsciiParameter(_param3_addInstantItem__Player_long_long_string_int_), inv->getSignedIntParameter());
+		addSaleItem((Player*) inv->getObjectParameter(), inv->getSignedLongParameter(), inv->getSignedLongParameter(), inv->getAsciiParameter(_param3_addSaleItem__Player_long_long_string_int_int_bool_), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter());
 		break;
 	case 9:
-		addAuctionItem((Player*) inv->getObjectParameter(), inv->getSignedLongParameter(), inv->getSignedLongParameter(), inv->getAsciiParameter(_param3_addAuctionItem__Player_long_long_string_int_int_), inv->getSignedIntParameter(), inv->getSignedIntParameter());
+		getBazaarData((Player*) inv->getObjectParameter(), inv->getSignedLongParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
 		break;
 	case 10:
-		getBazaarData((Player*) inv->getObjectParameter(), inv->getSignedLongParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
+		resp->insertLong(getBazaar(inv->getSignedLongParameter())->_getORBObjectID());
 		break;
 	default:
 		return NULL;
@@ -195,16 +194,16 @@ bool BazaarManagerAdapter::isBazaarTerminal(long long objectID) {
 	return ((BazaarManagerImplementation*) impl)->isBazaarTerminal(objectID);
 }
 
-void BazaarManagerAdapter::addInstantItem(Player* player, long long objectid, long long bazaarid, string& description, int price) {
-	return ((BazaarManagerImplementation*) impl)->addInstantItem(player, objectid, bazaarid, description, price);
-}
-
-void BazaarManagerAdapter::addAuctionItem(Player* player, long long objectid, long long bazaarid, string& description, int price, int duration) {
-	return ((BazaarManagerImplementation*) impl)->addAuctionItem(player, objectid, bazaarid, description, price, duration);
+void BazaarManagerAdapter::addSaleItem(Player* player, long long objectid, long long bazaarid, string& description, int price, int duration, bool auction) {
+	return ((BazaarManagerImplementation*) impl)->addSaleItem(player, objectid, bazaarid, description, price, duration, auction);
 }
 
 void BazaarManagerAdapter::getBazaarData(Player* player, long long objectid, int screen, int extent, int category, int count) {
 	return ((BazaarManagerImplementation*) impl)->getBazaarData(player, objectid, screen, extent, category, count);
+}
+
+RegionBazaar* BazaarManagerAdapter::getBazaar(long long objectid) {
+	return ((BazaarManagerImplementation*) impl)->getBazaar(objectid);
 }
 
 /*
