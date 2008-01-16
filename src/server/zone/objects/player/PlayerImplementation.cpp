@@ -1266,11 +1266,12 @@ void PlayerImplementation::kill() {
 }
 
 void PlayerImplementation::changePosture(int post) {
-	if (post == getPosture()) {
-		return;
-	}
-	
 	if (logoutEvent != NULL) {
+		if(post == SITTING_POSTURE) {
+			clearQueueAction(actionCounter);
+			return;
+		}
+		
 		sendSystemMessage("Logout canceled.");
 		server->removeEvent(logoutEvent);
 		
