@@ -47,9 +47,9 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-class ClientRandomNameReponse : public Message {
+class ClientRandomNameReponse : public BaseMessage {
 public:
-	ClientRandomNameReponse(string race_iff) : Message() {
+	ClientRandomNameReponse(string race_iff) : BaseMessage() {
 		insertShort(0x04);
 		insertInt(0xE85FB868); //opcode: ClientRandomNameReponse
 		insertAscii(race_iff);
@@ -60,6 +60,7 @@ public:
 
 		setCompression(false);
 	}
+	
 };
 
 #endif /*CLIENTRANDOMNAMERESPONSE_H_*/

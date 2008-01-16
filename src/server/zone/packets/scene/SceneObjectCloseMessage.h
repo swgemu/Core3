@@ -49,15 +49,15 @@ which carries forward this exception.
 
 #include "../../objects/scene/SceneObject.h"
 
-class SceneObjectCloseMessage : public Message {
+class SceneObjectCloseMessage : public BaseMessage {
 public:
-	SceneObjectCloseMessage(SceneObject* scno) : Message(18) {
+	SceneObjectCloseMessage(SceneObject* scno) : BaseMessage(18) {
 		insertShort(0x02);
 		insertInt(0x2C436037);  // CRC
 		insertLong(scno->getObjectID());  // ObjectID
 	}
 	
-	SceneObjectCloseMessage(uint64 oid) : Message() {
+	SceneObjectCloseMessage(uint64 oid) : BaseMessage() {
 		insertShort(0x02);
 		insertInt(0x2C436037);  // CRC
 		insertLong(oid);  // ObjectID

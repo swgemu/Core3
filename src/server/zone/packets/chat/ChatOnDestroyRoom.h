@@ -45,10 +45,10 @@ which carries forward this exception.
 #ifndef CHATONDESTROYROOM_H_
 #define CHATONDESTROYROOM_H_
 
-class ChatOnDestroyRoom : public Message {
+class ChatOnDestroyRoom : public BaseMessage {
 public:
 	
-	ChatOnDestroyRoom(const string& game, const string& server, uint32 channelid) : Message() {
+	ChatOnDestroyRoom(const string& game, const string& server, uint32 channelid) : BaseMessage() {
 		insertShort(0x05);
 		insertInt(0xE8EC5877);  // Opcode
 		insertAscii(game.c_str());

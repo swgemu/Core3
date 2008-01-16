@@ -62,7 +62,7 @@ class SkillModList : public HashTable<string, int32> , public HashTableIterator<
 	}
 
 public:
-	SkillModList() : HashTable<string, int32>(500) , HashTableIterator<string, int32>(this) {
+	SkillModList() : HashTable<string, int32>(50) , HashTableIterator<string, int32>(this) {
 		setNullValue(0);
 	}	
 }; 

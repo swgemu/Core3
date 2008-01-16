@@ -47,7 +47,7 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-class DeltaMessage : public Message {
+class DeltaMessage : public BaseMessage {
 	int updateCount;
 	
 public:

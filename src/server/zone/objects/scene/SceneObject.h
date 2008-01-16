@@ -53,7 +53,7 @@ which carries forward this exception.
 
 #include "engine/core/thread/RWLockable.h"
 
-#include "engine/service/Message.h"
+#include "engine/service/proto/BaseMessage.h"
 
 #include "engine/util/QuadTreeEntry.h"
 
@@ -105,13 +105,15 @@ public:
 
 	void addInRangeObject(QuadTreeEntry* obj);
 
+	void removeInRangeObject(QuadTreeEntry* obj);
+
 	bool isInQuadTree();
 
 	QuadTreeEntry* getQuadTreeEntry();
 
 	int compareTo(SceneObject* obj);
 
-	Message* link(SceneObject* obj);
+	BaseMessage* link(SceneObject* obj);
 
 	void link(ZoneClient* client, SceneObject* obj);
 
@@ -238,13 +240,15 @@ public:
 
 	void addInRangeObject(QuadTreeEntry* obj);
 
+	void removeInRangeObject(QuadTreeEntry* obj);
+
 	bool isInQuadTree();
 
 	QuadTreeEntry* getQuadTreeEntry();
 
 	int compareTo(SceneObject* obj);
 
-	Message* link(SceneObject* obj);
+	BaseMessage* link(SceneObject* obj);
 
 	void link(ZoneClient* client, SceneObject* obj);
 

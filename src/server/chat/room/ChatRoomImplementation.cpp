@@ -260,26 +260,27 @@ void ChatRoomImplementation::removeSubRoom(ChatRoom* channel) {
 	unlock();
 }
 
-void ChatRoomImplementation::broadcastMessage(Message* msg) {
+void ChatRoomImplementation::broadcastMessage(BaseMessage* msg) {
 	lock();
 	
 	for (int i = 0; i < playerList.size(); i++) {
 		Player* player = playerList.get(i);
 		player->sendMessage(msg->clone());
 	}
+	
 	delete msg;
 	
 	unlock();
 }
 
-void ChatRoomImplementation::broadcastMessage(Vector<Message*>& messages) {
+void ChatRoomImplementation::broadcastMessage(Vector<BaseMessage*>& messages) {
 	lock();
 	
 	for (int i = 0; i < playerList.size(); ++i) {
 		Player* player = playerList.get(i);
 		
 		for (int j = 0; j < messages.size(); ++j) {
-			Message* msg = messages.get(j);
+			BaseMessage* msg = messages.get(j);
 			player->sendMessage(msg->clone());
 		}
 	}

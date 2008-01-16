@@ -61,7 +61,7 @@ public:
 		try {
 			player->wlock();
 
-			if (player->isOnline())
+			if (player->isOnline() || player->isLinkDead())
 				player->doRecovery();
 
 			player->unlock();

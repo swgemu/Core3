@@ -49,9 +49,9 @@ which carries forward this exception.
 
 #include "../objects/CharacterList.h"
 
-class EnumerateCharacterID : public Message {
+class EnumerateCharacterID : public BaseMessage {
 public:
-	 EnumerateCharacterID(CharacterList* characters) : Message(100) {
+	 EnumerateCharacterID(CharacterList* characters) : BaseMessage(100) {
 		insertShort(0x02);
 		insertInt(0x65EA4574);
 

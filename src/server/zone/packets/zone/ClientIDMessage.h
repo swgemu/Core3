@@ -47,7 +47,7 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-class ClientIDMessage : public Message {
+class ClientIDMessage : public BaseMessage {
 public:
 	static uint32 parse(Packet* pack) {
 		pack->shiftOffset(4);

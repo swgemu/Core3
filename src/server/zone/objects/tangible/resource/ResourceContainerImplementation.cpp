@@ -110,10 +110,10 @@ void ResourceContainerImplementation::sendTo(Player* player, bool doClose) {
 		link(client, container);
 	}
 	
-	Message* rcno3 = new ResourceContainerObjectMessage3(_this);
+	BaseMessage* rcno3 = new ResourceContainerObjectMessage3(_this);
 	client->sendMessage(rcno3);
 	
-	Message* rcno6 = new ResourceContainerObjectMessage6(_this);
+	BaseMessage* rcno6 = new ResourceContainerObjectMessage6(_this);
 	client->sendMessage(rcno6);
 	
 	if (doClose)

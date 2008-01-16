@@ -58,6 +58,7 @@ which carries forward this exception.
 class CreatureManagerImplementation;
 class CreatureGroup;
 class LairObject;
+class BuildingObject;
 
 class CreatureImplementation : public CreatureServant, public Event {
 	CreatureManagerImplementation* creatureManager;
@@ -117,10 +118,14 @@ public:
 
 	// spatial methods
 	void insertToZone(Zone* zone);
-	void updateZone();
-	void lightUpdateZone();
+	void insertToBuilding(BuildingObject* building);
+	
+	void updateZone(bool lightUpdate = false);
+	void updateZoneWithParent(uint64 par, bool lightUpdate = false);
+	void updateCreaturePosition(bool lightUpdate);
 	
 	void removeFromZone(bool doLock = true);
+	void removeFromBuilding(BuildingObject* building);
 	
 	void loadItems();
 

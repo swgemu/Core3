@@ -99,7 +99,7 @@ void ZoneClient::closeConnection(bool doLock) {
 		((ZoneClientImplementation*) _impl)->closeConnection(doLock);
 }
 
-void ZoneClient::sendMessage(Message* msg) {
+void ZoneClient::sendMessage(BaseMessage* msg) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
@@ -112,7 +112,7 @@ void ZoneClient::sendMessage(Message* msg) {
 		((ZoneClientImplementation*) _impl)->sendMessage(msg);
 }
 
-void ZoneClient::sendMessage(StandaloneMessage* msg) {
+void ZoneClient::sendMessage(StandaloneBaseMessage* msg) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
@@ -229,10 +229,10 @@ Packet* ZoneClientAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* inv)
 		closeConnection(inv->getBooleanParameter());
 		break;
 	case 8:
-		sendMessage((Message*) inv->getObjectParameter());
+		sendMessage((BaseMessage*) inv->getObjectParameter());
 		break;
 	case 9:
-		sendMessage((StandaloneMessage*) inv->getObjectParameter());
+		sendMessage((StandaloneBaseMessage*) inv->getObjectParameter());
 		break;
 	case 10:
 		resetPacketCheckupTime();
@@ -270,11 +270,11 @@ void ZoneClientAdapter::closeConnection(bool doLock) {
 	return ((ZoneClientImplementation*) impl)->closeConnection(doLock);
 }
 
-void ZoneClientAdapter::sendMessage(Message* msg) {
+void ZoneClientAdapter::sendMessage(BaseMessage* msg) {
 	return ((ZoneClientImplementation*) impl)->sendMessage(msg);
 }
 
-void ZoneClientAdapter::sendMessage(StandaloneMessage* msg) {
+void ZoneClientAdapter::sendMessage(StandaloneBaseMessage* msg) {
 	return ((ZoneClientImplementation*) impl)->sendMessage(msg);
 }
 

@@ -47,9 +47,9 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-class ChatSystemMessage : public Message {
+class ChatSystemMessage : public BaseMessage {
 public:
-	ChatSystemMessage(unicode& message) : Message() {
+	ChatSystemMessage(unicode& message) : BaseMessage() {
 		insertShort(0x05);
 		insertInt(0x6D2A6413);  // CRC
 
@@ -60,7 +60,7 @@ public:
 		insertInt(0x00);
 	}
 	
-	ChatSystemMessage(const string& file, const string& str, uint64 targetid = 0) : Message() {
+	ChatSystemMessage(const string& file, const string& str, uint64 targetid = 0) : BaseMessage() {
 		
 		insertShort(0x08);
 		insertInt(0x6D2A6413);
@@ -115,7 +115,8 @@ public:
 
 	}
 	
-	ChatSystemMessage(const string& file, const string& str, unicode& u_str, int quantity, bool flipByte) : Message() {
+	ChatSystemMessage(const string& file, const string& str, unicode& u_str, int quantity
+			, bool flipByte) : BaseMessage() {
 		insertShort(0x04);
 		insertInt(0x6D2A6413);
 		

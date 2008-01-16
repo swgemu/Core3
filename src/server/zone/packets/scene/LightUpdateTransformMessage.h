@@ -49,9 +49,9 @@ which carries forward this exception.
 
 #include "../../objects/scene/SceneObjectImplementation.h"
 
-class LightUpdateTransformMessage : public StandaloneMessage {
+class LightUpdateTransformMessage : public StandaloneBaseMessage {
 public:
-	LightUpdateTransformMessage(SceneObject* scno) : StandaloneMessage(50) {
+	LightUpdateTransformMessage(SceneObject* scno) : StandaloneBaseMessage(50) {
 		insertShort(0x08);
 		insertInt(0x1B24F808);
 	    insertLong(scno->getObjectID());

@@ -47,9 +47,9 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-class ChatRoomMessage : public Message {
+class ChatRoomMessage : public BaseMessage {
 public:
-	ChatRoomMessage(string& sender, unicode& message, uint32 channelid) : Message() {
+	ChatRoomMessage(string& sender, unicode& message, uint32 channelid) : BaseMessage() {
 		insertShort(0x05);
 		insertInt(0xCD4CE444);  // Opcode
 		insertAscii("SWG");

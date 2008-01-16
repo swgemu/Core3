@@ -47,9 +47,9 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-class ChatInstantMessageToClient : public Message {
+class ChatInstantMessageToClient : public BaseMessage {
 public:
-	ChatInstantMessageToClient(string& game, string& galaxy, string& name, unicode& message) : Message() {
+	ChatInstantMessageToClient(string& game, string& galaxy, string& name, unicode& message) : BaseMessage() {
 		insertShort(0x05);
 		insertInt(0x3C565CED);  // CRC
 

@@ -47,9 +47,9 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-class UpdateCellPermissionsMessage : public Message {
+class UpdateCellPermissionsMessage : public BaseMessage {
 public:
-    UpdateCellPermissionsMessage(uint64 cellid) : Message() {
+    UpdateCellPermissionsMessage(uint64 cellid) : BaseMessage() {
 		insertShort(0x04);
 		insertInt(0xF612499C);  // CRC
         

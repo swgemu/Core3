@@ -54,16 +54,107 @@ BuildingObjectImplementation::BuildingObjectImplementation(uint64 oid, bool stat
 		: QuadTree(-1024, -1024, 1024, 1024), BuildingObjectServant(oid) {
 	
 	staticBuilding = staticBuild;
+	
+	objectType = SceneObjectImplementation::BUILDING;
+	
+	cells.setInsertPlan(SortedVector<SceneObject*>::NO_DUPLICATE);
 }
 
 BuildingObjectImplementation::~BuildingObjectImplementation() {
+}
+
+void BuildingObjectImplementation::insertToZone(Zone* zone) {
+	BuildingObjectImplementation::zone = zone;
+
+	try {
+		zone->lock();
+		
+		zone->registerObject((SceneObject*) _this);
+	
+		zone->insert(this);
+		zone->inRange(this, 128);
+		
+		zone->unlock();
+	} catch (...) {
+		cout << "exception TangibleObject::insertToZone(Zone* zone)\n";
+
+		zone->unlock();
+	}
 }
 
 void BuildingObjectImplementation::addCell(CellObject* cell) {
 	cells.put(cell);
 }
 
-void BuildingObjectImplementation::broadcastMessage(Message* msg, int range, bool doLock) {
+void BuildingObjectImplementation::notifyInsert(QuadTreeEntry* obj) {
+	SceneObjectImplementation* scno = (SceneObjectImplementation*) obj;
+
+	if (scno->isPlayer() || scno->isNonPlayerCreature()) {
+		for(int i = 0; i < cells.size(); ++i) {
+			CellObject* cell = cells.get(i);
+
+			for (int j = 0; j < cell->getChildrenSize(); ++j) {
+				SceneObject* child = cell->getChild(j);
+
+				if (child->isPlayer() || child->isNonPlayerCreature()) {
+					child->addInRangeObject(obj);
+					
+					SceneObjectImplementation* a = (SceneObjectImplementation*) child->_getImplementation();
+					if (a != NULL)
+						obj->addInRangeObject(a);
+				}
+			}
+		}
+	}
+}
+
+void BuildingObjectImplementation::notifyDissapear(QuadTreeEntry* obj) {
+	SceneObjectImplementation* scno = (SceneObjectImplementation*) obj;
+
+	for(int i = 0; i < cells.size(); ++i) {
+		CellObject* cell = cells.get(i);
+
+		for (int j = 0; j < cell->getChildrenSize(); ++j) {
+			SceneObject* child = cell->getChild(j);
+			
+			child->removeInRangeObject(obj);
+
+			SceneObjectImplementation* a = (SceneObjectImplementation*) child->_getImplementation();
+			
+			if (a != NULL)
+				obj->removeInRangeObject(a);
+		}
+	}
+}
+
+void BuildingObjectImplementation::sendTo(Player* player, bool doClose) {
+	// send buio packets if not static
+	
+}
+
+void BuildingObjectImplementation::sendDestroyTo(Player* player) {
+	//send destroy if not static
+	
+	//destroy(player->getClient());
+}
+
+void BuildingObjectImplementation::notifyInsertToZone(CreatureObject* creature) {
+	SceneObjectImplementation* creoImpl = (SceneObjectImplementation*) creature->_getImplementation();
+	if (creoImpl == NULL)
+		return;
+	
+	for (int i = 0; i < inRangeObjectCount(); ++i) {
+		QuadTreeEntry* obj = getInRangeObject(i);
+		SceneObjectImplementation* objImpl = (SceneObjectImplementation*) obj;
+		
+		if (objImpl->isPlayer() || objImpl->isNonPlayerCreature()) {
+			creoImpl->addInRangeObject(obj);
+			obj->addInRangeObject(creoImpl);
+		}
+	}
+}
+
+void BuildingObjectImplementation::broadcastMessage(BaseMessage* msg, int range, bool doLock) {
 	if (zone == NULL)
 		return;
 	

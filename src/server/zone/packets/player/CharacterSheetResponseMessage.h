@@ -47,9 +47,9 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-class CharacterSheetResponseMessage : public Message {
+class CharacterSheetResponseMessage : public BaseMessage {
 public:
-    CharacterSheetResponseMessage(uint64 objectid) : Message() {
+    CharacterSheetResponseMessage(uint64 objectid) : BaseMessage() {
 		insertShort(0x0D);
 		insertInt(0x9B3A17C4);  // CRC
      

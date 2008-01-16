@@ -47,9 +47,9 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-class ClientPermissionsMessage : public Message {
+class ClientPermissionsMessage : public BaseMessage {
 public:
-	ClientPermissionsMessage() : Message(7) {
+	ClientPermissionsMessage() : BaseMessage(7) {
 		insertShort(0x04);
 		insertInt(0xE00730E5);
 		insertByte(1);

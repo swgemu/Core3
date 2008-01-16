@@ -132,24 +132,12 @@ void Creature::updateZone() {
 		((CreatureImplementation*) _impl)->updateZone();
 }
 
-void Creature::lightUpdateZone() {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 10);
-
-		invocation.executeWithVoidReturn();
-	} else
-		((CreatureImplementation*) _impl)->lightUpdateZone();
-}
-
 void Creature::removeFromZone(bool doLock) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 11);
+		ORBMethodInvocation invocation(this, 10);
 		invocation.addBooleanParameter(doLock);
 
 		invocation.executeWithVoidReturn();
@@ -162,7 +150,7 @@ void Creature::loadItems() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 12);
+		ORBMethodInvocation invocation(this, 11);
 
 		invocation.executeWithVoidReturn();
 	} else
@@ -174,7 +162,7 @@ bool Creature::activate() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 13);
+		ORBMethodInvocation invocation(this, 12);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -186,7 +174,7 @@ bool Creature::isActive() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 14);
+		ORBMethodInvocation invocation(this, 13);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -198,7 +186,7 @@ void Creature::removeFromQueue() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 15);
+		ORBMethodInvocation invocation(this, 14);
 
 		invocation.executeWithVoidReturn();
 	} else
@@ -210,7 +198,7 @@ bool Creature::doMovement() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 16);
+		ORBMethodInvocation invocation(this, 15);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -222,7 +210,7 @@ void Creature::doIncapacitate() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 17);
+		ORBMethodInvocation invocation(this, 16);
 
 		invocation.executeWithVoidReturn();
 	} else
@@ -234,7 +222,7 @@ void Creature::doStandUp() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 18);
+		ORBMethodInvocation invocation(this, 17);
 
 		invocation.executeWithVoidReturn();
 	} else
@@ -246,7 +234,7 @@ void Creature::doAttack(CreatureObject* target, int damage) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 19);
+		ORBMethodInvocation invocation(this, 18);
 		invocation.addObjectParameter(target);
 		invocation.addSignedIntParameter(damage);
 
@@ -260,7 +248,7 @@ bool Creature::attack(CreatureObject* target) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 20);
+		ORBMethodInvocation invocation(this, 19);
 		invocation.addObjectParameter(target);
 
 		return invocation.executeWithBooleanReturn();
@@ -273,7 +261,7 @@ void Creature::activateRecovery() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 21);
+		ORBMethodInvocation invocation(this, 20);
 
 		invocation.executeWithVoidReturn();
 	} else
@@ -285,7 +273,7 @@ bool Creature::doRecovery() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 22);
+		ORBMethodInvocation invocation(this, 21);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -297,7 +285,7 @@ void Creature::doStatesRecovery() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 23);
+		ORBMethodInvocation invocation(this, 22);
 
 		invocation.executeWithVoidReturn();
 	} else
@@ -309,7 +297,7 @@ void Creature::queueRespawn() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 24);
+		ORBMethodInvocation invocation(this, 23);
 
 		invocation.executeWithVoidReturn();
 	} else
@@ -321,7 +309,7 @@ void Creature::addPatrolPoint(float x, float y, bool doLock) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 25);
+		ORBMethodInvocation invocation(this, 24);
 		invocation.addFloatParameter(x);
 		invocation.addFloatParameter(y);
 		invocation.addBooleanParameter(doLock);
@@ -336,7 +324,7 @@ void Creature::resetPatrolPoints(bool doLock) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 26);
+		ORBMethodInvocation invocation(this, 25);
 		invocation.addBooleanParameter(doLock);
 
 		invocation.executeWithVoidReturn();
@@ -349,7 +337,7 @@ int Creature::compareTo(Creature* creature) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 27);
+		ORBMethodInvocation invocation(this, 26);
 		invocation.addObjectParameter(creature);
 
 		return invocation.executeWithSignedIntReturn();
@@ -362,7 +350,7 @@ void Creature::setLair(LairObject* Lair) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 28);
+		ORBMethodInvocation invocation(this, 27);
 		invocation.addObjectParameter(Lair);
 
 		invocation.executeWithVoidReturn();
@@ -375,7 +363,7 @@ void Creature::setCreatureGroup(CreatureGroup* group) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 29);
+		ORBMethodInvocation invocation(this, 28);
 		invocation.addObjectParameter(group);
 
 		invocation.executeWithVoidReturn();
@@ -388,7 +376,7 @@ void Creature::setObjectFileName(string& name) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 30);
+		ORBMethodInvocation invocation(this, 29);
 		invocation.addAsciiParameter(name);
 
 		invocation.executeWithVoidReturn();
@@ -401,7 +389,7 @@ void Creature::setType(int tp) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 31);
+		ORBMethodInvocation invocation(this, 30);
 		invocation.addSignedIntParameter(tp);
 
 		invocation.executeWithVoidReturn();
@@ -414,7 +402,7 @@ void Creature::setRespawnTimer(unsigned int seconds) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 32);
+		ORBMethodInvocation invocation(this, 31);
 		invocation.addUnsignedIntParameter(seconds);
 
 		invocation.executeWithVoidReturn();
@@ -427,7 +415,7 @@ int Creature::getType() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 33);
+		ORBMethodInvocation invocation(this, 32);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -439,7 +427,7 @@ bool Creature::isTrainer() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 34);
+		ORBMethodInvocation invocation(this, 33);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -451,7 +439,7 @@ bool Creature::isRecruiter() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 35);
+		ORBMethodInvocation invocation(this, 34);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -463,7 +451,7 @@ bool Creature::isMount() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 36);
+		ORBMethodInvocation invocation(this, 35);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -475,7 +463,7 @@ string& Creature::getName() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 37);
+		ORBMethodInvocation invocation(this, 36);
 
 		invocation.executeWithAsciiReturn(_return_getName);
 		return _return_getName;
@@ -488,7 +476,7 @@ int Creature::getZoneIndex() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 38);
+		ORBMethodInvocation invocation(this, 37);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -500,7 +488,7 @@ Zone* Creature::getZone() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 39);
+		ORBMethodInvocation invocation(this, 38);
 
 		return (Zone*) invocation.executeWithObjectReturn();
 	} else
@@ -512,7 +500,7 @@ unsigned long long Creature::getNewItemID() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 40);
+		ORBMethodInvocation invocation(this, 39);
 
 		return invocation.executeWithUnsignedLongReturn();
 	} else
@@ -524,7 +512,7 @@ unsigned int Creature::getRespawnTimer() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 41);
+		ORBMethodInvocation invocation(this, 40);
 
 		return invocation.executeWithUnsignedIntReturn();
 	} else
@@ -536,7 +524,7 @@ LairObject* Creature::getLair() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 42);
+		ORBMethodInvocation invocation(this, 41);
 
 		return (LairObject*) invocation.executeWithObjectReturn();
 	} else
@@ -567,102 +555,99 @@ Packet* CreatureAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* inv) {
 		updateZone();
 		break;
 	case 10:
-		lightUpdateZone();
-		break;
-	case 11:
 		removeFromZone(inv->getBooleanParameter());
 		break;
-	case 12:
+	case 11:
 		loadItems();
 		break;
-	case 13:
+	case 12:
 		resp->insertBoolean(activate());
 		break;
-	case 14:
+	case 13:
 		resp->insertBoolean(isActive());
 		break;
-	case 15:
+	case 14:
 		removeFromQueue();
 		break;
-	case 16:
+	case 15:
 		resp->insertBoolean(doMovement());
 		break;
-	case 17:
+	case 16:
 		doIncapacitate();
 		break;
-	case 18:
+	case 17:
 		doStandUp();
 		break;
-	case 19:
+	case 18:
 		doAttack((CreatureObject*) inv->getObjectParameter(), inv->getSignedIntParameter());
 		break;
-	case 20:
+	case 19:
 		resp->insertBoolean(attack((CreatureObject*) inv->getObjectParameter()));
 		break;
-	case 21:
+	case 20:
 		activateRecovery();
 		break;
-	case 22:
+	case 21:
 		resp->insertBoolean(doRecovery());
 		break;
-	case 23:
+	case 22:
 		doStatesRecovery();
 		break;
-	case 24:
+	case 23:
 		queueRespawn();
 		break;
-	case 25:
+	case 24:
 		addPatrolPoint(inv->getFloatParameter(), inv->getFloatParameter(), inv->getBooleanParameter());
 		break;
-	case 26:
+	case 25:
 		resetPatrolPoints(inv->getBooleanParameter());
 		break;
-	case 27:
+	case 26:
 		resp->insertSignedInt(compareTo((Creature*) inv->getObjectParameter()));
 		break;
-	case 28:
+	case 27:
 		setLair((LairObject*) inv->getObjectParameter());
 		break;
-	case 29:
+	case 28:
 		setCreatureGroup((CreatureGroup*) inv->getObjectParameter());
 		break;
-	case 30:
+	case 29:
 		setObjectFileName(inv->getAsciiParameter(_param0_setObjectFileName__string_));
 		break;
-	case 31:
+	case 30:
 		setType(inv->getSignedIntParameter());
 		break;
-	case 32:
+	case 31:
 		setRespawnTimer(inv->getUnsignedIntParameter());
 		break;
-	case 33:
+	case 32:
 		resp->insertSignedInt(getType());
 		break;
-	case 34:
+	case 33:
 		resp->insertBoolean(isTrainer());
 		break;
-	case 35:
+	case 34:
 		resp->insertBoolean(isRecruiter());
 		break;
-	case 36:
+	case 35:
 		resp->insertBoolean(isMount());
 		break;
-	case 37:
+	case 36:
 		resp->insertAscii(getName());
 		break;
-	case 38:
+	case 37:
 		resp->insertSignedInt(getZoneIndex());
 		break;
-	case 39:
+	case 38:
 		resp->insertLong(getZone()->_getORBObjectID());
 		break;
-	case 40:
+	case 39:
 		resp->insertLong(getNewItemID());
 		break;
-	case 41:
+	case 40:
 		resp->insertInt(getRespawnTimer());
 		break;
-	case 42:
+	case 41:
 		resp->insertLong(getLair()->_getORBObjectID());
 		break;
 	default:
@@ -686,10 +671,6 @@ void CreatureAdapter::insertToZone(Zone* zone) {
 
 void CreatureAdapter::updateZone() {
 	return ((CreatureImplementation*) impl)->updateZone();
-}
-
-void CreatureAdapter::lightUpdateZone() {
-	return ((CreatureImplementation*) impl)->lightUpdateZone();
 }
 
 void CreatureAdapter::removeFromZone(bool doLock) {

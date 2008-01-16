@@ -51,9 +51,9 @@ which carries forward this exception.
 
 #include "../../objects/player/badges/Badges.h"
 
-class BadgesResponseMessage : public Message {
+class BadgesResponseMessage : public BaseMessage {
 public:
-    BadgesResponseMessage(Player* player) : Message() {
+    BadgesResponseMessage(Player* player) : BaseMessage() {
 	/*	insertShort(0x03);
 		insertInt(0x6D89D25B);  // CRC
 		insertLong(player->getObjectID()); //Player ID

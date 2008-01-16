@@ -47,9 +47,9 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-class ParametersMessage : public Message {
+class ParametersMessage : public BaseMessage {
 public:
-	ParametersMessage() : Message(7) {
+	ParametersMessage() : BaseMessage(7) {
 		insertShort(0x02);
 		insertInt(0x487652DA);
 	    insertInt(0x00000384);

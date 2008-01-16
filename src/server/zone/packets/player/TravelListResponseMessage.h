@@ -72,11 +72,11 @@ public:
 	friend class TravelListResponseMessage;
 };
 
-class TravelListResponseMessage : public Message {
+class TravelListResponseMessage : public BaseMessage {
 	Vector<TravelPoint*> travelPoints;
 	
 public:
-    TravelListResponseMessage(const string& planet) : Message() {
+    TravelListResponseMessage(const string& planet) : BaseMessage() {
 		insertShort(0x06);
 		insertInt(0x4D32541F);  // CRC
         insertAscii(planet);

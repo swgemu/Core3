@@ -47,9 +47,9 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-class unkByteFlag : public Message {
+class unkByteFlag : public BaseMessage {
 public:
-	unkByteFlag() : Message(7) {
+	unkByteFlag() : BaseMessage(7) {
 		insertShort(0x02);
 		insertInt(0x7102B15F);
 		insertByte(1);
@@ -61,4 +61,5 @@ public:
 	}
 	
 };
+
 #endif /*UNKBYTEFLAG_H_*/

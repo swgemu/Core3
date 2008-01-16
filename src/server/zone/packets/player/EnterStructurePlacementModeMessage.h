@@ -47,9 +47,9 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-class EnterStructurePlacementModeMessage : public Message {
+class EnterStructurePlacementModeMessage : public BaseMessage {
 public:
-    EnterStructurePlacementModeMessage(uint64 deedid) : Message() {
+    EnterStructurePlacementModeMessage(uint64 deedid) : BaseMessage() {
 		insertShort(0x03);
 		insertInt(0xE8A54DC1);  // CRC
         

@@ -86,6 +86,11 @@ public:
 			return 0;
 		}
 		
+		if (player->isInRange(_this, 5)) {
+			player->sendSystemMessage("You are too far away to start your travel.");
+			return 0;
+		}
+		
 		if (player->isInCombat())
 			return 0;
 		

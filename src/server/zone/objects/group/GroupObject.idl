@@ -42,7 +42,7 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-include "engine/service/Message";
+include "engine/service/proto/BaseMessage";
 
 import "../scene/SceneObject";
 
@@ -54,7 +54,7 @@ interface GroupObject implements SceneObject {
 	
 	void sendTo(Player player);
 
-	void broadcastMessage(Message msg);
+	void broadcastMessage(BaseMessage msg);
 
 	void addPlayer(Player player);
 	void removePlayer(Player player);

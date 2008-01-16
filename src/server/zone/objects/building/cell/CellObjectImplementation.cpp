@@ -52,9 +52,37 @@ which carries forward this exception.
 
 #include "../BuildingObject.h"
 
-CellObjectImplementation::CellObjectImplementation(uint64 oid, BuildingObject* buio) : CellObjectServant(oid) {
-	parent = buio;
+#include "../../../Zone.h"
+
+CellObjectImplementation::CellObjectImplementation(uint64 oid, BuildingObject* buio) : 
+	CellObjectServant(oid) {
+	
+	parent = (SceneObject*) buio;
+	
+	objectType = SceneObjectImplementation::CELL;
+	
+	children.setInsertPlan(SortedVector<SceneObject*>::NO_DUPLICATE);
 }
 
 CellObjectImplementation::~CellObjectImplementation() {	
+}
+
+void CellObjectImplementation::insertToZone(Zone* zone) {
+}
+
+
+void CellObjectImplementation::addChild(SceneObject* obj, bool doLock) {
+	wlock(doLock);
+	
+	children.put(obj);
+	
+	unlock(doLock);
+}
+
+void CellObjectImplementation::removeChild(SceneObject* obj, bool doLock) {
+	wlock(doLock);
+	
+	children.drop(obj);
+	
+	unlock(doLock);
 }

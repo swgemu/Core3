@@ -49,9 +49,9 @@ which carries forward this exception.
 
 #include "../objects/GalaxyList.h"
 
-class LoginEnumCluster : public Message {
+class LoginEnumCluster : public BaseMessage {
 public:
-	LoginEnumCluster(uint32 galcnt) : Message(100) {
+	LoginEnumCluster(uint32 galcnt) : BaseMessage(100) {
 		insertShort(0x02);
 		insertInt(0xC11C63B9);
 		

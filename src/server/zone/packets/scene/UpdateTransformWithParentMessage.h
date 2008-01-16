@@ -49,9 +49,9 @@ which carries forward this exception.
 
 #include "../../objects/scene/SceneObject.h"
 
-class UpdateTransformWithParentMessage : public Message {
+class UpdateTransformWithParentMessage : public BaseMessage {
 public:
-	UpdateTransformWithParentMessage(SceneObject* object) : Message(50) {
+	UpdateTransformWithParentMessage(SceneObject* object) : BaseMessage(50) {
 		insertShort(0x08);
 		insertInt(0xC867AB5A);
 		insertLong(object->getParentID());

@@ -52,6 +52,10 @@ which carries forward this exception.
 
 #include "../player/Player.h"
 
+#include "../creature/CreatureObject.h"
+
+#include "../../Zone.h"
+
 #include "BuildingObject.h"
 
 #include "BuildingObjectImplementation.h"
@@ -90,12 +94,38 @@ void BuildingObject::addCell(CellObject* cell) {
 		((BuildingObjectImplementation*) _impl)->addCell(cell);
 }
 
-bool BuildingObject::isStatic() {
+void BuildingObject::insertToZone(Zone* zone) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
 		ORBMethodInvocation invocation(this, 7);
+		invocation.addObjectParameter(zone);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((BuildingObjectImplementation*) _impl)->insertToZone(zone);
+}
+
+void BuildingObject::notifyInsertToZone(CreatureObject* creature) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 8);
+		invocation.addObjectParameter(creature);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((BuildingObjectImplementation*) _impl)->notifyInsertToZone(creature);
+}
+
+bool BuildingObject::isStatic() {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 9);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -107,7 +137,7 @@ void BuildingObject::lock(bool doLock) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 8);
+		ORBMethodInvocation invocation(this, 10);
 		invocation.addBooleanParameter(doLock);
 
 		invocation.executeWithVoidReturn();
@@ -120,7 +150,7 @@ void BuildingObject::unlock(bool doLock) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 9);
+		ORBMethodInvocation invocation(this, 11);
 		invocation.addBooleanParameter(doLock);
 
 		invocation.executeWithVoidReturn();
@@ -133,7 +163,7 @@ void BuildingObject::setSize(float minx, float miny, float maxx, float maxy) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 10);
+		ORBMethodInvocation invocation(this, 12);
 		invocation.addFloatParameter(minx);
 		invocation.addFloatParameter(miny);
 		invocation.addFloatParameter(maxx);
@@ -149,7 +179,7 @@ void BuildingObject::insert(QuadTreeEntry* obj) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 11);
+		ORBMethodInvocation invocation(this, 13);
 		invocation.addObjectParameter(obj);
 
 		invocation.executeWithVoidReturn();
@@ -162,7 +192,7 @@ void BuildingObject::remove(QuadTreeEntry* obj) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 12);
+		ORBMethodInvocation invocation(this, 14);
 		invocation.addObjectParameter(obj);
 
 		invocation.executeWithVoidReturn();
@@ -175,7 +205,7 @@ void BuildingObject::removeAll() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 13);
+		ORBMethodInvocation invocation(this, 15);
 
 		invocation.executeWithVoidReturn();
 	} else
@@ -187,7 +217,7 @@ bool BuildingObject::update(QuadTreeEntry* obj) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 14);
+		ORBMethodInvocation invocation(this, 16);
 		invocation.addObjectParameter(obj);
 
 		return invocation.executeWithBooleanReturn();
@@ -200,7 +230,7 @@ void BuildingObject::inRange(QuadTreeEntry* obj, float range) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 15);
+		ORBMethodInvocation invocation(this, 17);
 		invocation.addObjectParameter(obj);
 		invocation.addFloatParameter(range);
 
@@ -224,30 +254,36 @@ Packet* BuildingObjectAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* 
 		addCell((CellObject*) inv->getObjectParameter());
 		break;
 	case 7:
-		resp->insertBoolean(isStatic());
+		insertToZone((Zone*) inv->getObjectParameter());
 		break;
 	case 8:
-		lock(inv->getBooleanParameter());
+		notifyInsertToZone((CreatureObject*) inv->getObjectParameter());
 		break;
 	case 9:
-		unlock(inv->getBooleanParameter());
+		resp->insertBoolean(isStatic());
 		break;
 	case 10:
-		setSize(inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter());
+		lock(inv->getBooleanParameter());
 		break;
 	case 11:
-		insert((QuadTreeEntry*) inv->getObjectParameter());
+		unlock(inv->getBooleanParameter());
 		break;
 	case 12:
-		remove((QuadTreeEntry*) inv->getObjectParameter());
+		setSize(inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter());
 		break;
 	case 13:
-		removeAll();
+		insert((QuadTreeEntry*) inv->getObjectParameter());
 		break;
 	case 14:
-		resp->insertBoolean(update((QuadTreeEntry*) inv->getObjectParameter()));
+		remove((QuadTreeEntry*) inv->getObjectParameter());
 		break;
 	case 15:
+		removeAll();
+		break;
+	case 16:
+		resp->insertBoolean(update((QuadTreeEntry*) inv->getObjectParameter()));
+		break;
+	case 17:
 		inRange((QuadTreeEntry*) inv->getObjectParameter(), inv->getFloatParameter());
 		break;
 	default:
@@ -259,6 +295,14 @@ Packet* BuildingObjectAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* 
 
 void BuildingObjectAdapter::addCell(CellObject* cell) {
 	return ((BuildingObjectImplementation*) impl)->addCell(cell);
+}
+
+void BuildingObjectAdapter::insertToZone(Zone* zone) {
+	return ((BuildingObjectImplementation*) impl)->insertToZone(zone);
+}
+
+void BuildingObjectAdapter::notifyInsertToZone(CreatureObject* creature) {
+	return ((BuildingObjectImplementation*) impl)->notifyInsertToZone(creature);
 }
 
 bool BuildingObjectAdapter::isStatic() {

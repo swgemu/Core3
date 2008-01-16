@@ -69,7 +69,7 @@ public:
 	GroupObjectImplementation(uint64 oid, Player* Leader);
 
 	void sendTo(Player* player, bool doClose = true);
-	void broadcastMessage(Message* msg);
+	void broadcastMessage(BaseMessage* msg);
 		
 	void addPlayer(Player* player);
 	void removePlayer(Player* player);

@@ -49,6 +49,7 @@ which carries forward this exception.
 
 class CellObject;
 class Player;
+class Zone;
 
 #include "BuildingObject.h"
 
@@ -62,17 +63,26 @@ public:
 	BuildingObjectImplementation(uint64 oid, bool staticBuild);
 	~BuildingObjectImplementation();
 	
-	void sendTo(Player* player, bool doClose = true) {
-	}
+	void insertToZone(Zone* zone);
 	
-	void sendDestroyTo(Player* player) {
-	}
+	void sendTo(Player* player, bool doClose = true);
+	void sendDestroyTo(Player* player);
 	
 	void addCell(CellObject* cell);
-	void broadcastMessage(Message* msg, int range = 128, bool doLock = true);
+		
+	void notifyInsert(QuadTreeEntry* obj);
+	void notifyDissapear(QuadTreeEntry* obj);
+	
+	void notifyInsertToZone(CreatureObject* creature);
+	
+	void broadcastMessage(BaseMessage* msg, int range = 128, bool doLock = true);
 	
 	inline bool isStatic() {
 		return staticBuilding == true;
+	}
+	
+	void lock(bool doLock = true) {
+		QuadTree::lock(doLock);
 	}
 	
 	void unlock(bool doLock = true) {

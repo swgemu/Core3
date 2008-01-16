@@ -49,9 +49,9 @@ which carries forward this exception.
 
 //Even though this opcode isnt in our tables, its required for some reason to make things work :(
 
-class HeartBeat : public Message {
+class HeartBeat : public BaseMessage {
 public:
-	HeartBeat() : Message() {
+	HeartBeat() : BaseMessage() {
 		insertShort(0x01);
 		insertInt(0xA16CF9AF); //opcode: HeartBeat
 	}

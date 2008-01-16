@@ -207,7 +207,7 @@ void GroupManager::leaveGroup(GroupObject* group, Player* player) {
 			
 		group->removePlayer(player);
 		
-		Message* msg = new SceneObjectDestroyMessage(group);
+		BaseMessage* msg = new SceneObjectDestroyMessage(group);
 		player->sendMessage(msg);
 		
 		player->info("leaving group");

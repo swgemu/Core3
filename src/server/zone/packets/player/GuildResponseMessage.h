@@ -47,9 +47,9 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-class GuildResponseMessage : public Message {
+class GuildResponseMessage : public BaseMessage {
 public:
-    GuildResponseMessage(CreatureObject* creo, uint64 objectid) : Message() {
+    GuildResponseMessage(CreatureObject* creo, uint64 objectid) : BaseMessage() {
 		insertShort(0x04);
 		insertInt(0x32263F20);  // CRC
         

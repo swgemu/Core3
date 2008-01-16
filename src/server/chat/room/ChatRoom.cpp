@@ -194,7 +194,7 @@ void ChatRoom::removePlayer(const string& player) {
 		((ChatRoomImplementation*) _impl)->removePlayer(player);
 }
 
-void ChatRoom::broadcastMessage(Message* msg) {
+void ChatRoom::broadcastMessage(BaseMessage* msg) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
@@ -536,7 +536,7 @@ Packet* ChatRoomAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* inv) {
 		removePlayer(inv->getAsciiParameter(_param0_removePlayer__string_));
 		break;
 	case 15:
-		broadcastMessage((Message*) inv->getObjectParameter());
+		broadcastMessage((BaseMessage*) inv->getObjectParameter());
 		break;
 	case 16:
 		resp->insertBoolean(hasPlayer((Player*) inv->getObjectParameter()));
@@ -650,7 +650,7 @@ void ChatRoomAdapter::removePlayer(const string& player) {
 	return ((ChatRoomImplementation*) impl)->removePlayer(player);
 }
 
-void ChatRoomAdapter::broadcastMessage(Message* msg) {
+void ChatRoomAdapter::broadcastMessage(BaseMessage* msg) {
 	return ((ChatRoomImplementation*) impl)->broadcastMessage(msg);
 }
 

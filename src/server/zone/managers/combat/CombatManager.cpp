@@ -173,7 +173,7 @@ void CombatManager::handleAreaAction(CreatureObject* creature, CreatureObject* t
 			if (targetCreature == creature || targetCreature == target)
 				continue;
 			
-			if (!targetCreature->isAttackable())
+			if (!targetCreature->isAttackableBy(creature))
 				continue;
 			
 			if (!creature->isPlayer() && !targetCreature->isPlayer())
@@ -459,13 +459,13 @@ void CombatManager::requestDuel(Player* player, Player* targetPlayer) {
 		player->addToDuelList(targetPlayer);
 		
 		if (targetPlayer->requestedDuelTo(player)) {
-			Message* pvpstat = new UpdatePVPStatusMessage(targetPlayer, targetPlayer->getPvpStatusBitmask() + CreatureObjectImplementation::ATTACKABLE_FLAG + CreatureObjectImplementation::AGGRESSIVE_FLAG);	
+			BaseMessage* pvpstat = new UpdatePVPStatusMessage(targetPlayer, targetPlayer->getPvpStatusBitmask() + CreatureObjectImplementation::ATTACKABLE_FLAG + CreatureObjectImplementation::AGGRESSIVE_FLAG);	
 			player->sendMessage(pvpstat);
 		
 			ChatSystemMessage* csm = new ChatSystemMessage("duel", "accept_self", targetPlayer->getObjectID());
 			player->sendMessage(csm);
 			
-			Message* pvpstat2 = new UpdatePVPStatusMessage(player, player->getPvpStatusBitmask() + CreatureObjectImplementation::ATTACKABLE_FLAG + CreatureObjectImplementation::AGGRESSIVE_FLAG);	
+			BaseMessage* pvpstat2 = new UpdatePVPStatusMessage(player, player->getPvpStatusBitmask() + CreatureObjectImplementation::ATTACKABLE_FLAG + CreatureObjectImplementation::AGGRESSIVE_FLAG);	
 			targetPlayer->sendMessage(pvpstat2);
 			
 			ChatSystemMessage* csm2 = new ChatSystemMessage("duel", "accept_target", player->getObjectID());
@@ -535,13 +535,13 @@ void CombatManager::requestEndDuel(Player* player, Player* targetPlayer) {
 		
 		if (targetPlayer->requestedDuelTo(player)) {
 			targetPlayer->removeFromDuelList(player);
-			Message* pvpstat = new UpdatePVPStatusMessage(targetPlayer, targetPlayer->getPvpStatusBitmask());	
+			BaseMessage* pvpstat = new UpdatePVPStatusMessage(targetPlayer, targetPlayer->getPvpStatusBitmask());	
 			player->sendMessage(pvpstat);
 		
 			ChatSystemMessage* csm = new ChatSystemMessage("duel", "end_self", targetPlayer->getObjectID());
 			player->sendMessage(csm);
 			
-			Message* pvpstat2 = new UpdatePVPStatusMessage(player, player->getPvpStatusBitmask());	
+			BaseMessage* pvpstat2 = new UpdatePVPStatusMessage(player, player->getPvpStatusBitmask());	
 			targetPlayer->sendMessage(pvpstat2);
 		
 			ChatSystemMessage* csm2 = new ChatSystemMessage("duel", "end_target", player->getObjectID());
@@ -583,13 +583,13 @@ void CombatManager::freeDuelList(Player* player) {
 				if (targetPlayer->requestedDuelTo(player)) {
 					targetPlayer->removeFromDuelList(player);
 					
-					Message* pvpstat = new UpdatePVPStatusMessage(targetPlayer, targetPlayer->getPvpStatusBitmask());	
+					BaseMessage* pvpstat = new UpdatePVPStatusMessage(targetPlayer, targetPlayer->getPvpStatusBitmask());	
 					player->sendMessage(pvpstat);
 			
 					ChatSystemMessage* csm = new ChatSystemMessage("duel", "end_self", targetPlayer->getObjectID());
 					player->sendMessage(csm);
 			
-					Message* pvpstat2 = new UpdatePVPStatusMessage(player, player->getPvpStatusBitmask());	
+					BaseMessage* pvpstat2 = new UpdatePVPStatusMessage(player, player->getPvpStatusBitmask());	
 					targetPlayer->sendMessage(pvpstat2);
 				
 					ChatSystemMessage* csm2 = new ChatSystemMessage("duel", "end_target", player->getObjectID());

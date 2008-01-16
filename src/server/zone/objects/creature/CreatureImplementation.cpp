@@ -256,8 +256,14 @@ void CreatureImplementation::insertToZone(Zone* zone) {
 		
 		zone->registerObject(_this);
 
-		zone->insert(this);
-		zone->inRange(this, 128);
+		if (parent != NULL) {
+			((CellObject*)parent)->addChild(_this);
+			BuildingObject* building = (BuildingObject*)parent->getParent();
+			insertToBuilding(building);
+		} else { 
+			zone->insert(this);
+			zone->inRange(this, 128);
+		}
 		
 		zone->unlock();
 	} catch (...) {
@@ -267,25 +273,55 @@ void CreatureImplementation::insertToZone(Zone* zone) {
 	}
 }
 
-void CreatureImplementation::updateZone() {
+void CreatureImplementation::insertToBuilding(BuildingObject* building) {
+	if (isInQuadTree() || !parent->isCell())
+		return;
+
+	try {
+		//building->lock(doLock);
+
+		info("inserting to building");
+
+		((CellObject*)parent)->addChild(_this);
+
+		building->insert(this);
+		building->inRange(this, 128);
+
+		//building->unlock(doLock);
+
+		linkType = 0xFFFFFFFF;
+		broadcastMessage(link(parent), 128, false);
+
+	} catch (...) {
+		error("exception PlayerImplementation::insertToBuilding(BuildingObject* building)");
+
+		//building->unlock(doLock);
+	}
+}
+
+void CreatureImplementation::updateZone(bool lightUpdate) {
+	bool insert = false;
+	
 	try {
 		zone->lock();
+		
+		if (parent != NULL && parent->isCell()) {
+			CellObject* cell = (CellObject*)parent;
 
-		zone->update(this);
-		zone->inRange(this, 128);
+			removeFromBuilding((BuildingObject*)cell->getParent());
 
-    	for (int i = 0; i < inRangeObjectCount(); ++i) {
-			SceneObject* obj = (SceneObject*) (((SceneObjectImplementation*) getInRangeObject(i))->_getStub());
-			if (obj->isPlayer()) {
-				Player* player = (Player*) obj;
-
-				UpdateTransformMessage* umsg = new UpdateTransformMessage(_this);
-				player->sendMessage(umsg);
-			}
+			parent = NULL;
+			insert = true;
 		}
 
-		/*UpdateTransformMessage* umsg = new UpdateTransformMessage(this);
-		broadcastMessage(umsg, 128, false);*/
+		if (insert)
+			zone->insert(this);
+		else
+			zone->update(this);
+		
+		zone->inRange(this, 128);
+
+		updateCreaturePosition(lightUpdate);
 
 		++movementCounter;
 
@@ -297,33 +333,89 @@ void CreatureImplementation::updateZone() {
 	}
 }
 
-void CreatureImplementation::lightUpdateZone() {
+void CreatureImplementation::updateZoneWithParent(uint64 par, bool lightUpdate) {
+	if (zone == NULL)
+		return;
+
+	SceneObject* newParent = parent;
+
+	if (parent == NULL || (parent != NULL && parent->getObjectID() != par))
+		newParent = zone->lookupObject(par);
+
+	if (newParent == NULL)
+		return;
+
+	bool insert = false;
+
 	try {
 		zone->lock();
 
-		zone->update(this);
-		zone->inRange(this, 128);
+		if (newParent != parent) {
+			if (parent == NULL) {
+				zone->remove(this);
+				insert = true;
+			} else {
+				BuildingObject* building = (BuildingObject*) parent->getParent();
+				SceneObject* newObj = newParent->getParent();
 
-    	for (int i = 0; i < inRangeObjectCount(); ++i) {
-			SceneObject* obj = (SceneObject*) (((SceneObjectImplementation*) getInRangeObject(i))->_this);
-			if (obj->isPlayer()) {
-				Player* player = (Player*) obj;
+				if (newObj->isBuilding()) {
+					BuildingObject* newBuilding = (BuildingObject*) newObj;
 
-				LightUpdateTransformMessage* umsg = new LightUpdateTransformMessage((Creature*) _this);
-				player->sendMessage(umsg);
+					if (building != newBuilding) {
+						removeFromBuilding(building);
+
+						insert = true;
+					}
+				}
+
+				((CellObject*) parent)->removeChild(_this);
 			}
+			parent = newParent;
+			((CellObject*) parent)->addChild(_this);
 		}
 
-		/*UpdateTransformMessage* umsg = new UpdateTransformMessage(this);
-		broadcastMessage(umsg, 128, false);*/
+		BuildingObject* building = (BuildingObject*) parent->getParent();
 
-		++movementCounter;
+		if (insert) {
+			insertToBuilding(building);
+		} else {
+			building->update(this);
+			building->inRange(this, 128);
+		}
+
+		updateCreaturePosition(lightUpdate);
 
 		zone->unlock();
 	} catch (...) {
-		cout << "exception CreatureImplementation::updateZone()\n";
-
 		zone->unlock();
+		error("Exception in PlayerImplementation::updateZoneWithParent");
+	}
+}
+
+void CreatureImplementation::updateCreaturePosition(bool lightUpdate) {
+	for (int i = 0; i < inRangeObjectCount(); ++i) {
+		SceneObject* obj = (SceneObject*) (((SceneObjectImplementation*) getInRangeObject(i))->_getStub());
+		if (obj->isPlayer()) {
+			Player* player = (Player*) obj;
+
+			if (!lightUpdate) {
+				if (parent != NULL) {
+					UpdateTransformWithParentMessage* umsg = new UpdateTransformWithParentMessage(_this);
+					player->sendMessage(umsg);
+				} else {
+					UpdateTransformMessage* umsg = new UpdateTransformMessage(_this);
+					player->sendMessage(umsg);
+				}
+			} else {
+				if (parent != NULL) {
+					LightUpdateTransformWithParentMessage* umsg = new LightUpdateTransformWithParentMessage(_this);
+					player->sendMessage(umsg);
+				} else {
+					LightUpdateTransformMessage* umsg = new LightUpdateTransformMessage(_this);
+					player->sendMessage(umsg);
+				}
+			}
+		}
 	}
 }
 
@@ -335,6 +427,14 @@ void CreatureImplementation::removeFromZone(bool doLock) {
 			return;
 		
 		zone->lock(doLock);
+		
+		if (parent != NULL && parent->isCell()) {
+			CellObject* cell = (CellObject*) parent;
+			BuildingObject* building = (BuildingObject*)parent->getParent();
+
+			removeFromBuilding(building);
+		} else
+			zone->remove(this);
 
     	for (int i = 0; i < inRangeObjectCount(); ++i) {
 			QuadTreeEntry* obj = getInRangeObject(i);
@@ -345,8 +445,6 @@ void CreatureImplementation::removeFromZone(bool doLock) {
 
 		removeInRangeObjects();
 		
-		zone->remove(this);
-		
 		zone->deleteObject(objectID);
 
 		zone->unlock(doLock);
@@ -354,6 +452,29 @@ void CreatureImplementation::removeFromZone(bool doLock) {
 		cout << "exception CreatureImplementation::removeFromZone(bool doLock)\n";
 
 		zone->unlock(doLock);
+	}
+}
+
+void CreatureImplementation::removeFromBuilding(BuildingObject* building) {
+	if (building == NULL || !isInQuadTree() || !parent->isCell())
+		return;
+
+	try {
+		//building->lock(doLock);
+
+		info("removing from building");
+
+		broadcastMessage(link(0, 0xFFFFFFFF), 128, false);
+
+		((CellObject*)parent)->removeChild(_this);
+
+		building->remove(this);
+
+		//building->unlock(doLock);
+	} catch (...) {
+		error("exception PlayerImplementation::removeFromBuilding(BuildingObject* building, bool doLock)");
+
+		//building->unlock(doLock);
 	}
 }
 
@@ -417,7 +538,7 @@ bool CreatureImplementation::activate() {
 		needMoreActivity |= doMovement();
 	
 		if (aggroedCreature != NULL) {
-			if (aggroedCreature->isPlayer() && !((Player*) aggroedCreature)->isOnline())
+			if (!aggroedCreature->isAttackable())
 				deagro();
 			else
 				needMoreActivity |= attack(aggroedCreature);
@@ -600,6 +721,7 @@ bool CreatureImplementation::attack(CreatureObject* target) {
 		deagro();
 
 		doIncapAnimation();
+
 		return false;
 	}
 

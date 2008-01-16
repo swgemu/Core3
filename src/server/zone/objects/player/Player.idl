@@ -42,8 +42,8 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-include "engine/service/Message";
-include "engine/service/StandaloneMessage";
+include "engine/service/proto/BaseMessage";
+include "engine/service/proto/StandaloneBaseMessage";
 
 import "../../ZoneClient";
 import "../../Zone";
@@ -88,14 +88,14 @@ interface Player implements CreatureObject {
 	void insertToZone(Zone zone);
 	void reinsertToZone(Zone zone);
 	
-	void lightUpdateZone();
-	void updateZone();
+	//void lightUpdateZone();
+	void updateZone(boolean lightUpdate = false);
 	
-	void updateZoneWithParent(unsigned long cell);
-	void lightUpdateZoneWithParent(unsigned long cell);
+	void updateZoneWithParent(unsigned long cell, boolean lightUpdate = false);
+	//void lightUpdateZoneWithParent(unsigned long cell);
 	
 	void switchMap(int planetid);
-	void doWarp(float x, float y, float z = 0, float randomizeDistance = 0);
+	void doWarp(float x, float y, float z = 0, float randomizeDistance = 0, unsigned long parentID = 0);
 	
 	void bounceBack();
 	
@@ -267,8 +267,8 @@ interface Player implements CreatureObject {
 	
 	void launchFirework();
 	
-	void sendMessage(Message msg);
-	void sendMessage(StandaloneMessage msg);
+	void sendMessage(BaseMessage msg);
+	void sendMessage(StandaloneBaseMessage msg);
 
 	boolean isJedi();
 

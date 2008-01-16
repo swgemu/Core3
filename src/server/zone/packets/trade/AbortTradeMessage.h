@@ -45,9 +45,9 @@ which carries forward this exception.
 #ifndef ABORTTRADEMESSAGE_H_
 #define ABORTTRADEMESSAGE_H_
 
-class AbortTradeMessage : public Message {
+class AbortTradeMessage : public BaseMessage {
 public:
-	AbortTradeMessage() : Message(6) {
+	AbortTradeMessage() : BaseMessage(6) {
 		insertShort(1);
 		insertInt(0x9CA80F98);
 	}

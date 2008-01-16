@@ -47,9 +47,9 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-class LoginClientToken : public Message {
+class LoginClientToken : public BaseMessage {
 public:
-	LoginClientToken(string& username, uint32 accountid, uint32 stationid) : Message(100) {
+	LoginClientToken(string& username, uint32 accountid, uint32 stationid) : BaseMessage(100) {
 		insertShort(0x04);
 		insertInt(0xAAB296C6);
 		

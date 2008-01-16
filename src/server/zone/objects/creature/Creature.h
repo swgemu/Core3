@@ -83,8 +83,6 @@ public:
 
 	void updateZone();
 
-	void lightUpdateZone();
-
 	void removeFromZone(bool doLock = true);
 
 	void loadItems();
@@ -169,8 +167,6 @@ public:
 	void insertToZone(Zone* zone);
 
 	void updateZone();
-
-	void lightUpdateZone();
 
 	void removeFromZone(bool doLock);
 

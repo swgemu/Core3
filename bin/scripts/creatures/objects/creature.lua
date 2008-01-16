@@ -79,9 +79,9 @@ Creature = Object:new {
 	
 	respawnTimer = 60,
 
-	skills = { }
+	skills = { },
 
-	-- respawnTimer= 0,
+	cellID = 0
 }
 
 -- setters

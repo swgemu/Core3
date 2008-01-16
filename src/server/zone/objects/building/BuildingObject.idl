@@ -42,12 +42,17 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
+include "engine/service/proto/BaseMessage";
+
+include "engine/util/QuadTreeEntry";
+
 import "cell/CellObject";
 
 import "../scene/SceneObject";
 import "../player/Player";
+import "../creature/CreatureObject";
 
-include "engine/service/Message";
+import "../../Zone";
 
 interface BuildingObject implements SceneObject {
 	BuildingObject(unsigned long oid);
@@ -56,6 +61,10 @@ interface BuildingObject implements SceneObject {
 	//void sendDestroyTo(Player* player);
 		
 	void addCell(CellObject cell);
+	
+	void insertToZone(Zone zone);
+	
+	void notifyInsertToZone(CreatureObject creature);
 		
 	boolean isStatic();
 	

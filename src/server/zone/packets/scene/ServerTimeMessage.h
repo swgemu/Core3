@@ -49,15 +49,15 @@ which carries forward this exception.
 
 #include "../../Zone.h"
 
-class ServerTimeMessage : public Message {
+class ServerTimeMessage : public BaseMessage {
 public:
-	ServerTimeMessage(uint64 time) : Message(18) {
+	ServerTimeMessage(uint64 time) : BaseMessage(18) {
 		insertShort(0x02);
 		insertInt(0x2EBC3BD9);  // CRC
 		insertLong(time);  // Galactic_Time
 	}
 	
-	ServerTimeMessage(Zone* zone) : Message(18) {
+	ServerTimeMessage(Zone* zone) : BaseMessage(18) {
 		insertShort(0x02);
 		insertInt(0x2EBC3BD9);  // CRC
 		insertLong(zone->getGalacticTime());  // Galactic_Time

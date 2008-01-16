@@ -42,11 +42,11 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
+include "engine/service/Message";
+
 import "room/ChatRoom";
 
 import "../zone/objects/player/Player";
-
-include "engine/service/Message";
 
 interface ChatManager {
 	void addPlayer(Player player);

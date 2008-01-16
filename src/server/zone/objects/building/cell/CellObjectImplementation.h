@@ -46,16 +46,24 @@ which carries forward this exception.
 #define CELLOBJECTIMPLEMENTATION_H_
 
 #include "CellObject.h"
+#include "../../scene/SceneObject.h"
 
 class Player;
 class BuildingObject;
+class Zone;
 
 class CellObjectImplementation : public CellObjectServant {
+	SortedVector<SceneObject*> children;
 
 public:
 	
 	CellObjectImplementation(uint64 oid, BuildingObject* buio);
 	~CellObjectImplementation();
+	
+	void insertToZone(Zone* zone);
+	
+	void addChild(SceneObject* obj, bool doLock = true);
+	void removeChild(SceneObject* obj, bool doLock = true);
 	
 	void sendTo(Player* player, bool doClose = true) {
 	}
@@ -63,6 +71,14 @@ public:
 	void sendDestroyTo(Player* player) {
 	}
 	
+	inline SceneObject* getChild(int idx) {
+		return children.get(idx);
+	}
+
+	inline int getChildrenSize() {
+		return children.size();
+	}
+
 };
 
 #endif /*CELLOBJECTIMPLEMENTATION_H_*/

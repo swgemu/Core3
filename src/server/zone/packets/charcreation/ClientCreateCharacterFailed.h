@@ -50,9 +50,9 @@ which carries forward this exception.
 //This packet is sent when we verify the data (namely the charname) when the client sends ClientCreateCharacter
 //If it fails we are sending the failure notice here:
 
-class ClientCreateCharacterFailed : public Message {
+class ClientCreateCharacterFailed : public BaseMessage {
 public:
-	ClientCreateCharacterFailed(string error_string) : Message() {
+	ClientCreateCharacterFailed(string error_string) : BaseMessage() {
 		insertShort(0x03);
 		insertInt(0xDF333C6E); //opcode: ClientCreateCharacterFailed
 		insertInt(0x00); //Unicode string, used instead of stf file. We'll never use it.

@@ -45,9 +45,9 @@ which carries forward this exception.
 #ifndef DENYTRADEMESSAGE_H_
 #define DENYTRADEMESSAGE_H_
 
-class DenyTradeMessage : public Message {
+class DenyTradeMessage : public BaseMessage {
 public:
-	DenyTradeMessage() : Message(6) {
+	DenyTradeMessage() : BaseMessage(6) {
 		insertShort(1);
 		insertInt(0x6EC28670);
 	}

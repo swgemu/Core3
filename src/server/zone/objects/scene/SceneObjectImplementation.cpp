@@ -128,7 +128,7 @@ void SceneObjectImplementation::finalize() {
 }
 
 void SceneObjectImplementation::create(ZoneClient* client) {
-	Message* msg = new SceneObjectCreateMessage(_this);
+	BaseMessage* msg = new SceneObjectCreateMessage(_this);
 
 	client->sendMessage(msg);
 }
@@ -139,11 +139,15 @@ void SceneObjectImplementation::link(ZoneClient* client, SceneObject* container)
 	
 	parent = container;
 
-	Message* msg = new UpdateContainmentMessage(container, _this, linkType);
+	BaseMessage* msg = new UpdateContainmentMessage(container, _this, linkType);
 	client->sendMessage(msg);
 }
 
-Message* SceneObjectImplementation::link(SceneObject* container) {
+BaseMessage* SceneObjectImplementation::link(uint64 container, uint32 type) {
+	return new UpdateContainmentMessage(objectID, container, type);
+}
+
+BaseMessage* SceneObjectImplementation::link(SceneObject* container) {
 	return new UpdateContainmentMessage(container, _this, linkType);
 }
 	
@@ -151,7 +155,7 @@ void SceneObjectImplementation::close(ZoneClient* client) {
 	if (client == NULL)
 		return;
 
-	Message* msg = new SceneObjectCloseMessage(_this);
+	BaseMessage* msg = new SceneObjectCloseMessage(_this);
 	client->sendMessage(msg);
 }
 
@@ -159,6 +163,6 @@ void SceneObjectImplementation::destroy(ZoneClient* client) {
 	if (client == NULL)
 		return;
 
-	Message* msg = new SceneObjectDestroyMessage(_this);
+	BaseMessage* msg = new SceneObjectDestroyMessage(_this);
 	client->sendMessage(msg);
 }

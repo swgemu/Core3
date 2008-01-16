@@ -90,7 +90,7 @@ void GroupObject::sendTo(Player* player) {
 		((GroupObjectImplementation*) _impl)->sendTo(player);
 }
 
-void GroupObject::broadcastMessage(Message* msg) {
+void GroupObject::broadcastMessage(BaseMessage* msg) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
@@ -293,7 +293,7 @@ Packet* GroupObjectAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* inv
 		sendTo((Player*) inv->getObjectParameter());
 		break;
 	case 7:
-		broadcastMessage((Message*) inv->getObjectParameter());
+		broadcastMessage((BaseMessage*) inv->getObjectParameter());
 		break;
 	case 8:
 		addPlayer((Player*) inv->getObjectParameter());
@@ -348,7 +348,7 @@ void GroupObjectAdapter::sendTo(Player* player) {
 	return ((GroupObjectImplementation*) impl)->sendTo(player);
 }
 
-void GroupObjectAdapter::broadcastMessage(Message* msg) {
+void GroupObjectAdapter::broadcastMessage(BaseMessage* msg) {
 	return ((GroupObjectImplementation*) impl)->broadcastMessage(msg);
 }
 

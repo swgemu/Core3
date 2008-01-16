@@ -49,9 +49,9 @@ which carries forward this exception.
 
 #include "../../Zone.h"
 
-class ServerWeatherMessage : public Message {
+class ServerWeatherMessage : public BaseMessage {
 public:
-	ServerWeatherMessage(Zone* zone) : Message() {
+	ServerWeatherMessage(Zone* zone) : BaseMessage() {
 	
 		insertShort(0x03);
 		insertInt(0x486356EA);
@@ -64,7 +64,7 @@ public:
 	}
 	
     //for setting custom weather by @ command
-	ServerWeatherMessage(int weatherid) : Message() {
+	ServerWeatherMessage(int weatherid) : BaseMessage() {
 		insertShort(0x03);
 		insertInt(0x486356EA);
 	

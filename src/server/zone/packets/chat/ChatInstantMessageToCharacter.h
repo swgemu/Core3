@@ -47,7 +47,7 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-class ChatInstantMessageToCharacter : public Message {
+class ChatInstantMessageToCharacter : public BaseMessage {
 public:
 	static uint32 parse(Message* pack, string& game, string& galaxy, string& name, unicode& message) {
 		pack->parseAscii(game);

@@ -50,6 +50,8 @@ which carries forward this exception.
 
 #include "../../player/Player.h"
 
+#include "../../../Zone.h"
+
 #include "CellObject.h"
 
 #include "CellObjectImplementation.h"
@@ -75,6 +77,72 @@ CellObject* CellObject::clone() {
 }
 
 
+void CellObject::insertToZone(Zone* zone) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 6);
+		invocation.addObjectParameter(zone);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((CellObjectImplementation*) _impl)->insertToZone(zone);
+}
+
+void CellObject::addChild(SceneObject* object, bool doLock) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 7);
+		invocation.addObjectParameter(object);
+		invocation.addBooleanParameter(doLock);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((CellObjectImplementation*) _impl)->addChild(object, doLock);
+}
+
+void CellObject::removeChild(SceneObject* object, bool doLock) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 8);
+		invocation.addObjectParameter(object);
+		invocation.addBooleanParameter(doLock);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((CellObjectImplementation*) _impl)->removeChild(object, doLock);
+}
+
+SceneObject* CellObject::getChild(int idx) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 9);
+		invocation.addSignedIntParameter(idx);
+
+		return (SceneObject*) invocation.executeWithObjectReturn();
+	} else
+		return ((CellObjectImplementation*) _impl)->getChild(idx);
+}
+
+int CellObject::getChildrenSize() {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 10);
+
+		return invocation.executeWithSignedIntReturn();
+	} else
+		return ((CellObjectImplementation*) _impl)->getChildrenSize();
+}
+
 /*
  *	CellObjectAdapter
  */
@@ -86,11 +154,46 @@ Packet* CellObjectAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* inv)
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
+	case 6:
+		insertToZone((Zone*) inv->getObjectParameter());
+		break;
+	case 7:
+		addChild((SceneObject*) inv->getObjectParameter(), inv->getBooleanParameter());
+		break;
+	case 8:
+		removeChild((SceneObject*) inv->getObjectParameter(), inv->getBooleanParameter());
+		break;
+	case 9:
+		resp->insertLong(getChild(inv->getSignedIntParameter())->_getORBObjectID());
+		break;
+	case 10:
+		resp->insertSignedInt(getChildrenSize());
+		break;
 	default:
 		return NULL;
 	}
 
 	return resp;
+}
+
+void CellObjectAdapter::insertToZone(Zone* zone) {
+	return ((CellObjectImplementation*) impl)->insertToZone(zone);
+}
+
+void CellObjectAdapter::addChild(SceneObject* object, bool doLock) {
+	return ((CellObjectImplementation*) impl)->addChild(object, doLock);
+}
+
+void CellObjectAdapter::removeChild(SceneObject* object, bool doLock) {
+	return ((CellObjectImplementation*) impl)->removeChild(object, doLock);
+}
+
+SceneObject* CellObjectAdapter::getChild(int idx) {
+	return ((CellObjectImplementation*) impl)->getChild(idx);
+}
+
+int CellObjectAdapter::getChildrenSize() {
+	return ((CellObjectImplementation*) impl)->getChildrenSize();
 }
 
 /*

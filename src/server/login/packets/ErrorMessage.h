@@ -47,9 +47,9 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-class ErrorMessage : public Message {
+class ErrorMessage : public BaseMessage {
 public:
-	ErrorMessage(string& ErrorType, string& ErrorMsg, uint8 Fatal) : Message() {
+	ErrorMessage(string& ErrorType, string& ErrorMsg, uint8 Fatal) : BaseMessage() {
     	insertShort(0x03);
     	insertInt(0xB5ABF91A);
     	

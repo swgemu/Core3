@@ -51,13 +51,19 @@ which carries forward this exception.
 
 #include "engine/orb/ObjectRequestBroker.h"
 
+#include "engine/service/proto/BaseMessage.h"
+
+#include "engine/util/QuadTreeEntry.h"
+
 class CellObject;
 
 class SceneObject;
 
 class Player;
 
-#include "engine/service/Message.h"
+class CreatureObject;
+
+class Zone;
 
 #include "../scene/SceneObject.h"
 
@@ -72,6 +78,10 @@ public:
 	virtual ~BuildingObject();
 
 	void addCell(CellObject* cell);
+
+	void insertToZone(Zone* zone);
+
+	void notifyInsertToZone(CreatureObject* creature);
 
 	bool isStatic();
 
@@ -103,6 +113,10 @@ public:
 	Packet* invokeMethod(sys::uint32 methid, ORBMethodInvocation* inv);
 
 	void addCell(CellObject* cell);
+
+	void insertToZone(Zone* zone);
+
+	void notifyInsertToZone(CreatureObject* creature);
 
 	bool isStatic();
 

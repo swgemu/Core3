@@ -239,7 +239,7 @@ void ZonePacketHandler::handleClientPermissionsMessage(Message* pack) {
 	uint32 accountID = ClientIDMessage::parse(pack);
 	client->setSessionKey(accountID);
 	
-	Message* cpm = new ClientPermissionsMessage();
+	BaseMessage* cpm = new ClientPermissionsMessage();
 	client->sendMessage(cpm);
 
 }
@@ -276,7 +276,7 @@ void ZonePacketHandler::handleSelectCharacter(Message* pack) {
 void ZonePacketHandler::handleCmdSceneReady(Message* pack) {
 	ZoneClientImplementation* client = (ZoneClientImplementation*) pack->getClient();
 	
-	Message* csr = new CmdSceneReady();
+	BaseMessage* csr = new CmdSceneReady();
 	client->sendMessage(csr);
 	
 	client->resetPacketCheckupTime();
@@ -308,7 +308,7 @@ void ZonePacketHandler::handleClientCreateCharacter(Message* pack) {
 	ClientCreateCharacter::parse(pack, playerImpl);
 
 	if (!playerManager->validateName(playerImpl->getFirstName())) {
-		Message* msg = new ClientCreateCharacterFailed("name_declined_in_use");
+		BaseMessage* msg = new ClientCreateCharacterFailed("name_declined_in_use");
 		client->sendMessage(msg);
 		
 		return;
@@ -324,10 +324,10 @@ void ZonePacketHandler::handleClientCreateCharacter(Message* pack) {
 		uint32 skey = client->getSessionKey();
 		
 		if (playerManager->create(player, skey)) {
-			Message* hb = new HeartBeat();
+			BaseMessage* hb = new HeartBeat();
 			client->sendMessage(hb);
 			
-			Message* msg = new ClientCreateCharacterSuccess(player->getCharacterID());
+			BaseMessage* msg = new ClientCreateCharacterSuccess(player->getCharacterID());
 			player->sendMessage(msg);
 			
 			Zone* zone = server->getZone(player->getZoneIndex());
@@ -346,7 +346,7 @@ void ZonePacketHandler::handleClientCreateCharacter(Message* pack) {
 			
 			server->removeCachedObject(player->getObjectID());
 		} else {
-			Message* msg = new ClientCreateCharacterFailed("name_declined_in_use");
+			BaseMessage* msg = new ClientCreateCharacterFailed("name_declined_in_use");
 			player->sendMessage(msg);
 		}
 	
@@ -391,15 +391,15 @@ void ZonePacketHandler::handleObjectControllerMessage(Message* pack) {
 				//msg << "light chaging position (" << player->getPositionX() << ", " << player->getPositionY() << ") ->";
 			
 				if (ObjectControllerMessage::parseDataTransform(player, pack)) {
-					player->lightUpdateZone();
+					player->updateZone(true);
 
 					//player->info(msg);
 				}
 				
 				break;
 			case 0xF1:
-				/*uint64 parent = ObjectControllerMessage::parseDataTransformWithParent(player, pack);
-				player->lightUpdateZoneWithParent(parent);*/
+				uint64 parent = ObjectControllerMessage::parseDataTransformWithParent(player, pack);
+				player->updateZoneWithParent(parent, true);
 				break;
 			}
 			break;
@@ -416,8 +416,8 @@ void ZonePacketHandler::handleObjectControllerMessage(Message* pack) {
 					
 				break;
 			case 0xF1:
-				/*uint64 parent = ObjectControllerMessage::parseDataTransformWithParent(player, pack);
-				player->updateZoneWithParent(parent);*/
+				uint64 parent = ObjectControllerMessage::parseDataTransformWithParent(player, pack);
+				player->updateZoneWithParent(parent);
 				break;
 			case 0x116:
 				ObjectControllerMessage::parseCommandQueueEnqueue(player, pack, processServer);

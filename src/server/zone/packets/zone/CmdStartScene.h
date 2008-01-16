@@ -51,9 +51,9 @@ which carries forward this exception.
 
 #include "../../Zone.h"
 
-class CmdStartScene : public Message {
+class CmdStartScene : public BaseMessage {
 public:
-	CmdStartScene(CreatureObject* creo) : Message(50) {
+	CmdStartScene(CreatureObject* creo) : BaseMessage(50) {
 		insertShort(0x09);
 		insertInt(0x3AE6DFAE);
 		insertByte(0);
@@ -72,4 +72,5 @@ public:
 	}
 	
 };
+
 #endif /*CMDSTARTSCENE_H_*/

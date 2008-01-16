@@ -71,11 +71,14 @@ PlanetManagerImplementation::PlanetManagerImplementation(Zone* planet, ZoneProce
 }
 
 void PlanetManagerImplementation::init() {
+	loadBuildings();
+}
+
+void PlanetManagerImplementation::start() {
 	loadStaticPlanetObjects();
+	
 	if (shuttleMap.size() > 0)
 		takeOffShuttles();
-	
-	//loadBuildings();
 }
 
 void PlanetManagerImplementation::loadStaticPlanetObjects() {
@@ -124,9 +127,9 @@ void PlanetManagerImplementation::loadShuttles() {
 		terminal->insertToZone(zone);
 	} else if (zone->getZoneID() == 2) {
 		coordinates = new Coordinate(617, 6, 3090);
-		shuttle = creatureManager->spawnShuttle(planetName, "TradeOutpost", coordinates, 593.9, 3089, 13.1256);
+		shuttle = creatureManager->spawnShuttle(planetName, "Trade Outpost", coordinates, 593.9, 3089, 13.1256);
 		shuttle->setDirection(0, 0, -0.71, 0.70);
-		shuttleMap.put("TradeOutpost", shuttle);
+		shuttleMap.put("Trade_Outpost", shuttle);
 
 		TicketCollectorImplementation* colImpl = new TicketCollectorImplementation(shuttle, getNextStaticObjectID(false), unicode("Ticket Collector"), "ticket_travel", 598, 6, 3095);
 		colImpl->setDirection(0, 0, 1, 0);
@@ -139,9 +142,9 @@ void PlanetManagerImplementation::loadShuttles() {
 		terminal->insertToZone(zone);
 
 		coordinates = new Coordinate(-52, 18, -1585);
-		shuttle = creatureManager->spawnShuttle(planetName, "ScienceOutpost", coordinates, -74, -1583, 25.086);
+		shuttle = creatureManager->spawnShuttle(planetName, "Science Outpost", coordinates, -74, -1583, 25.086);
 		shuttle->setDirection(0, 0, 1, 0);
-		shuttleMap.put("ScienceOutpost", shuttle);
+		shuttleMap.put("Science_Outpost", shuttle);
 
 		colImpl = new TicketCollectorImplementation(shuttle, getNextStaticObjectID(false), unicode("Ticket Collector"), "ticket_travel", -68.9, 18, -1578);
 		colImpl->setDirection(0, 0, 1, 0);
@@ -154,9 +157,9 @@ void PlanetManagerImplementation::loadShuttles() {
 		terminal->insertToZone(zone);
 	} else if (zone->getZoneID() == 0) {
 		coordinates = new Coordinate(-331.2, 28, -4639.2);
-		shuttle = creatureManager->spawnShuttle(planetName, "Coronet1", coordinates, -320, -4620, 28.6);
+		shuttle = creatureManager->spawnShuttle(planetName, "Coronet #1", coordinates, -320, -4620, 28.6);
 		shuttle->setDirection(0, 0, -0.71, 0.70);
-		shuttleMap.put("Coronet1", shuttle);
+		shuttleMap.put("Coronet_#1", shuttle);
 
 		TicketCollectorImplementation* colImpl = new TicketCollectorImplementation(shuttle, getNextStaticObjectID(false), unicode("Ticket Collector"), "ticket_travel", -338, 28.6, -4634);
 		colImpl->setDirection(0, 0, 1, 0);
@@ -169,9 +172,9 @@ void PlanetManagerImplementation::loadShuttles() {
 		terminal->insertToZone(zone);
 		
 		coordinates = new Coordinate(-27.9, 28, -4406);
-		shuttle = creatureManager->spawnShuttle(planetName, "Coronet2", coordinates, -18, -4388, 28.6);
+		shuttle = creatureManager->spawnShuttle(planetName, "Coronet #2", coordinates, -18, -4388, 28.6);
 		shuttle->setDirection(0, 0, -0.71, 0.70);
-		shuttleMap.put("Coronet2", shuttle);
+		shuttleMap.put("Coronet_#2", shuttle);
 
 		colImpl = new TicketCollectorImplementation(shuttle, getNextStaticObjectID(false), unicode("Ticket Collector"), "ticket_travel", -34.2, 28.6, -4402);
 		colImpl->setDirection(0, 0, 1, 0);
@@ -222,6 +225,11 @@ void PlanetManagerImplementation::loadVendorTerminals() {
 void PlanetManagerImplementation::loadBuildings() {
 	int planetid = zone->getZoneID();
 	
+	if (planetid != 8)
+		return;
+	
+	lock();
+	
 	stringstream query;
 	query << "SELECT * FROM staticobjects WHERE zoneid = " << planetid << ";";
 	
@@ -244,19 +252,11 @@ void PlanetManagerImplementation::loadBuildings() {
 		
 		float type = result->getFloat(11);
 		
-		if ((int) file.find("object/building/") >= 0) {
-			BuildingObjectImplementation* buioImpl = new BuildingObjectImplementation(oid, true);
-			BuildingObject* buio = (BuildingObject*) buioImpl->deploy();
-
-			buio->setObjectCRC(String::hashCode(file));
-			buio->initializePosition(x, z, y);
-			buio->setDirection(oX, oZ, oY, oW);
-			//buio->insertToZone(zone);
-			//zone->registerObject(buio);
-			
-			buildingMap->put(oid, buio);
-		} else if ((int)file.find("object/cell/") >= 0) {
+		if ((int)file.find("object/cell/") >= 0) {
 			BuildingObject* buio = buildingMap->get(parentId);
+			
+			if (buio == NULL)
+				buio = loadBuilding(parentId, planetid);
 			
 			CellObjectImplementation* cellImpl = new CellObjectImplementation(oid, buio);
 			CellObject* cell = (CellObject*) cellImpl->deploy(); 
@@ -264,13 +264,59 @@ void PlanetManagerImplementation::loadBuildings() {
 			cell->setObjectCRC(String::hashCode(file));
 			cell->initializePosition(x, z, y);
 			cell->setDirection(oX, oZ, oY, oW);
+			//cell->insertToZone(zone);
+			zone->registerObject(cell);
 			
-			//buio->insertChild(cell, false);
 			buio->addCell(cell);
 			cellMap->put(oid, cell);
 		}
 	}
+	
 	delete result;
+	
+	unlock();
+}
+
+BuildingObject* PlanetManagerImplementation::loadBuilding(uint64 oid, int planet) {
+	stringstream query;
+	query << "SELECT * FROM staticobjects WHERE zoneid = '" << planet << "' AND objectid = '" << oid << "';";
+		
+	ResultSet* result = ServerDatabase::instance()->executeQuery(query);
+	
+	BuildingObject* buio = NULL;
+
+	if (result->next()) {
+		uint64 oid = result->getUnsignedLong(1);
+		uint64 parentId = result->getUnsignedLong(2);
+
+		string file = result->getString(3);
+
+		float oX = result->getFloat(4);
+		float oY = result->getFloat(5);
+		float oZ = result->getFloat(6);
+		float oW = result->getFloat(7);
+
+		float x = result->getFloat(8);
+		float z = result->getFloat(9);					
+		float y = result->getFloat(10);
+
+		float type = result->getFloat(11);
+		
+		BuildingObjectImplementation* buioImpl = new BuildingObjectImplementation(oid, true);
+		buio = (BuildingObject*) buioImpl->deploy();
+
+		buio->setObjectCRC(String::hashCode(file));
+		buio->initializePosition(x, z, y);
+		buio->setDirection(oX, oZ, oY, oW);
+		buio->insertToZone(zone);
+		//zone->registerObject(buio);
+
+		buildingMap->put(oid, buio);
+	}
+	
+	delete result;
+	
+	return buio;
 }
 
 void PlanetManagerImplementation::landShuttles() {

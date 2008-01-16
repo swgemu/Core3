@@ -49,7 +49,7 @@ which carries forward this exception.
 
 #include "../../objects/player/PlayerImplementation.h"
 
-class ClientCreateCharacter : public Message {
+class ClientCreateCharacter : public BaseMessage {
 public:
 	static void parse(Packet* pack, PlayerImplementation* player) {
 		string customization;

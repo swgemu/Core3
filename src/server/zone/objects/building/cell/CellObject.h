@@ -57,6 +57,8 @@ class Player;
 
 #include "engine/service/Message.h"
 
+class Zone;
+
 #include "../../scene/SceneObject.h"
 
 class CellObject : public SceneObject {
@@ -69,6 +71,16 @@ public:
 
 	virtual ~CellObject();
 
+	void insertToZone(Zone* zone);
+
+	void addChild(SceneObject* object, bool doLock = true);
+
+	void removeChild(SceneObject* object, bool doLock = true);
+
+	SceneObject* getChild(int idx);
+
+	int getChildrenSize();
+
 protected:
 };
 
@@ -79,6 +91,16 @@ public:
 	CellObjectAdapter(CellObjectImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, ORBMethodInvocation* inv);
+
+	void insertToZone(Zone* zone);
+
+	void addChild(SceneObject* object, bool doLock);
+
+	void removeChild(SceneObject* object, bool doLock);
+
+	SceneObject* getChild(int idx);
+
+	int getChildrenSize();
 
 };
 

@@ -45,9 +45,9 @@ which carries forward this exception.
 #ifndef TRADECOMPLETEMESSAGE_H_
 #define TRADECOMPLETEMESSAGE_H_
 
-class TradeCompleteMessage : public Message {
+class TradeCompleteMessage : public BaseMessage {
 public:
-	TradeCompleteMessage() : Message(6) {
+	TradeCompleteMessage() : BaseMessage(6) {
 		insertShort(1);
 		insertInt(0xC542038B);
 	}

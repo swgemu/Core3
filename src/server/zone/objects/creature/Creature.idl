@@ -63,7 +63,6 @@ interface Creature implements CreatureObject {
 	// spatial methods
 	void insertToZone(Zone zone);
 	void updateZone();
-	void lightUpdateZone();
 	
 	//void update(unsigned int time);
 	

@@ -104,7 +104,7 @@ protected:
 	
 	Time lastCombatAction;
 
-	Vector<Message*> broadcastBuffer;
+	Vector<BaseMessage*> broadcastBuffer;
 
 	// modifiers
 	int weaponSpeedModifier;
@@ -293,8 +293,6 @@ protected:
 
 	Guild* guild;
 	
-	BuildingObject* building;
-	
 	uint32 lastMovementUpdateStamp;
 	int ignoreMovementTests;
 	
@@ -385,7 +383,6 @@ public:
 	
 	void setCombatState();
 	void clearCombatState(bool removeDefenders = true);
-	
 
 	bool setState(uint64 state);
 	bool clearState(uint64 state);
@@ -480,6 +477,14 @@ public:
 	bool setNextAttackDelay(int del);
 	
 	void setMeditateState();
+
+	virtual bool isAttackable() {
+		return !isIncapacitated() && !isDead();
+	}
+
+	inline bool isAttackableBy(CreatureObject* attacker) {
+		return !(creatureBitmask & 0x100);
+	}
 	
 	bool hasAttackDelay() {
 		return !nextAttackDelay.isPast();
@@ -759,8 +764,8 @@ public:
 
 	void sendDestroyTo(Player* player);
 
-	void broadcastMessage(Message* msg, int range = 128, bool doLock = true);
-	void broadcastMessages(Vector<Message*>& msgs, int range = 128, bool doLock = true);
+	void broadcastMessage(BaseMessage* msg, int range = 128, bool doLock = true);
+	void broadcastMessages(Vector<BaseMessage*>& msgs, int range = 128, bool doLock = true);
 	
 	void sendSystemMessage(const string& message);
 	void sendSystemMessage(const string& file, const string& str, uint64 targetid = 0);
@@ -1340,10 +1345,6 @@ public:
 		return pvpStatusBitmask;
 	}
 	
-	inline bool isAttackable() {
-		return !(creatureBitmask & 0x100);
-	}
-	
 	inline void setCreatureBitmask(uint32 bit) {
 		creatureBitmask = bit;
 	}
@@ -1492,10 +1493,6 @@ public:
 		doListening = value;
 	}
 	
-	inline void setBuilding(BuildingObject* build) {
-		building = build;
-	}
-	
 	inline bool isWatching() {
 		return doWatching;
 	}
@@ -1546,11 +1543,7 @@ public:
 	inline string& getGuildName() {
 		return guild->getGuildName();
 	}
-	
-	inline BuildingObject* getBuilding() {
-		return building;
-	}
-	
+		
 	inline void setCashCredits(int credits) {
 		cashCredits = credits;
 	}

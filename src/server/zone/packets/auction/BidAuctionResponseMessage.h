@@ -47,9 +47,9 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-class BidAuctionResponseMessage : public Message {
+class BidAuctionResponseMessage : public BaseMessage {
 public:
-    BidAuctionResponseMessage(CreatureObject* creo, uint64 objectid) : Message() {
+    BidAuctionResponseMessage(CreatureObject* creo, uint64 objectid) : BaseMessage() {
 		insertShort(0x03);
 		insertInt(0x8FCBEF4A);  // opcode
 		

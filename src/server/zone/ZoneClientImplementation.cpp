@@ -53,15 +53,18 @@ which carries forward this exception.
 
 ZoneClientImplementation::ZoneClientImplementation(DatagramServiceThread* serv, Socket* sock, SocketAddress& addr) 
 		: BaseClientProxy(sock, addr), ZoneClientServant() {
-	setLogging(false);
-	setLoggingName("ZoneClient " + ip);
-
 	init(serv);
 
 	player = NULL;
 	sessionKey = 0;
 		
 	disconnecting = false;
+
+	stringstream loggingname;
+	loggingname << "ZoneClient " << addr.getFullIPAddress();
+
+	setLoggingName(loggingname.str());
+	setLogging(false);
 }
 
 ZoneClientImplementation::~ZoneClientImplementation() {

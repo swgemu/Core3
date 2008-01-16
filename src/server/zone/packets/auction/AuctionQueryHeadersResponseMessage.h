@@ -49,7 +49,7 @@ which carries forward this exception.
 
 #include "AuctionItem.h"
 
-class AuctionQueryHeadersResponseMessage : public Message {
+class AuctionQueryHeadersResponseMessage : public BaseMessage {
 	Vector<AuctionItem*> itemList;
 	
 	Vector<string> locationList;
@@ -57,7 +57,7 @@ class AuctionQueryHeadersResponseMessage : public Message {
 	int offset;
 	
 public:
-	AuctionQueryHeadersResponseMessage(int screen, int counter) : Message() {	
+	AuctionQueryHeadersResponseMessage(int screen, int counter) : BaseMessage() {	
 		insertShort(0x08);
 		insertInt(0xFA500E52);  // opcode
 		

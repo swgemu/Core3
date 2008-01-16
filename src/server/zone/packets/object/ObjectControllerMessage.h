@@ -55,7 +55,7 @@ class Player;
 class CombatManager;
 class ItemManager;
 
-class ObjectControllerMessage : public Message {
+class ObjectControllerMessage : public BaseMessage {
 public:
 	ObjectControllerMessage(uint64 objid, uint32 header1, uint32 header2, bool comp = true);
 		

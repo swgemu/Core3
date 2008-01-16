@@ -131,16 +131,16 @@ void ChatManagerImplementation::handleTellMessage(Player* sender, Message* pack)
 	Player* receiver = getPlayer(name);
 
 	if (receiver == NULL || !receiver->isOnline() || receiver->isLoggingOut()) {
-		Message* amsg = new ChatOnSendInstantMessage(seq, true);
+		BaseMessage* amsg = new ChatOnSendInstantMessage(seq, true);
 		sender->sendMessage(amsg);
 
 		return;
 	}
 
-	Message* msg = new ChatInstantMessageToClient(game, galaxy, sender->getFirstName(), message);
+	BaseMessage* msg = new ChatInstantMessageToClient(game, galaxy, sender->getFirstName(), message);
 	receiver->sendMessage(msg);
 		
-	Message* amsg = new ChatOnSendInstantMessage(seq, false);
+	BaseMessage* amsg = new ChatOnSendInstantMessage(seq, false);
 	sender->sendMessage(amsg);
 }
 
@@ -584,10 +584,11 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 			}*/
 		} else if (cmd == "@npcc") {
 		 	if (userManager->isAdmin(player->getFirstName())) {
-		 		/*SuiCreatePageMessage* sui = new SuiCreatePageMessage();
-		 		sui->ticketPurchased();
+		 		LairObjectImplementation* lair = new LairObjectImplementation(0x13B1178, player->getNewItemID());
+		 		TangibleObject* tano = lair->deploy();
+		 		tano->initializePosition(player->getPositionX(), 0xFFFFFFFF, player->getPositionY());
+		 		tano->insertToZone(player->getZone());
 		 		
-		 		player->sendMessage(sui);*/
 		 	}
 		} else if (cmd == "@setAdminLevel") {
 		 	if (userManager->isAdmin(player->getFirstName())) {
@@ -598,7 +599,7 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 			string vendorinfo = "testvendor";
 			string vendorowner = "testnpc";
 			
-			Message* packet = new Message();
+			BaseMessage* packet = new BaseMessage();
 			
             packet->insertShort(0x08);
             packet->insertInt(0xFA500E52);  // opcode
@@ -908,7 +909,7 @@ void ChatManagerImplementation::sendMail(const string& sendername, unicode& head
 		if (mail->next()) {
 			int mailid = mail->getInt(0);
 		
-			Message* mmsg = new ChatPersistentMessageToClient(sendername, mailid, 0x01, header, body);
+			BaseMessage* mmsg = new ChatPersistentMessageToClient(sendername, mailid, 0x01, header, body);
 			receiver->sendMessage(mmsg);
 		}
 
@@ -940,7 +941,7 @@ void ChatManagerImplementation::sendMailBody(Player* receiver, uint32 mailid) {
 			unicode subject = mail->getString(3);
 			unicode body = mail->getString(4);
 
-			Message* mmsg = new ChatPersistentMessageToClient(sender, mailid, 0, subject, body);
+			BaseMessage* mmsg = new ChatPersistentMessageToClient(sender, mailid, 0, subject, body);
 			receiver->sendMessage(mmsg);
 		}
 	
@@ -969,7 +970,7 @@ void ChatManagerImplementation::listMail(Player* ply) {
 			unicode header = res->getString(3);
 			unicode body = res->getString(4);
 		
-			Message* mmsg = new ChatPersistentMessageToClient(sendername, mailid, 0x01, header, body);
+			BaseMessage* mmsg = new ChatPersistentMessageToClient(sendername, mailid, 0x01, header, body);
 			ply->sendMessage(mmsg);
 		}
 	
@@ -1009,9 +1010,10 @@ void ChatManagerImplementation::handleChatRoomMessage(Player* sender, Message* p
 	if (!channel->hasPlayer(sender))
 		return;
 	
-	Message* msg = new ChatRoomMessage(name, message, channelid);
+	BaseMessage* msg = new ChatRoomMessage(name, message, channelid);
 	channel->broadcastMessage(msg);
-	Message* amsg = new ChatOnSendRoomMessage(counter);
+	
+	BaseMessage* amsg = new ChatOnSendRoomMessage(counter);
 	channel->broadcastMessage(amsg);
 	
 	/*Vector<Message*> messages;
@@ -1037,7 +1039,7 @@ void ChatManagerImplementation::handleGroupChat(Player* sender, Message* pack) {
 	try {
 		group->wlock();
 	
-		Message* msg = new ChatRoomMessage(name, message, group->getGroupChannel()->getRoomID());
+		BaseMessage* msg = new ChatRoomMessage(name, message, group->getGroupChannel()->getRoomID());
 		group->broadcastMessage(msg);
 	
 		group->unlock();

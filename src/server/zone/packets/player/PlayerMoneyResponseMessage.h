@@ -47,9 +47,9 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-class PlayerMoneyResponseMessage : public Message {
+class PlayerMoneyResponseMessage : public BaseMessage {
 public:
-    PlayerMoneyResponseMessage(CreatureObject* creo) : Message(20) {
+    PlayerMoneyResponseMessage(CreatureObject* creo) : BaseMessage(20) {
 		insertShort(0x03);
 		insertInt(0x367E737E);  // CRC
   

@@ -51,7 +51,7 @@ which carries forward this exception.
 
 #include "engine/orb/ObjectRequestBroker.h"
 
-#include "engine/service/Message.h"
+#include "engine/service/proto/BaseMessage.h"
 
 class SceneObject;
 
@@ -73,7 +73,7 @@ public:
 
 	void sendTo(Player* player);
 
-	void broadcastMessage(Message* msg);
+	void broadcastMessage(BaseMessage* msg);
 
 	void addPlayer(Player* player);
 
@@ -116,7 +116,7 @@ public:
 
 	void sendTo(Player* player);
 
-	void broadcastMessage(Message* msg);
+	void broadcastMessage(BaseMessage* msg);
 
 	void addPlayer(Player* player);
 

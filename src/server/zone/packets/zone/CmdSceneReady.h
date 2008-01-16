@@ -47,9 +47,9 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-class CmdSceneReady : public Message {
+class CmdSceneReady : public BaseMessage {
 public:
-	CmdSceneReady() : Message(9) {
+	CmdSceneReady() : BaseMessage(9) {
 		insertShort(0x01);
 		insertInt(0x43FD1C22);
 		

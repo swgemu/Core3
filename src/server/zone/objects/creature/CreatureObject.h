@@ -51,6 +51,8 @@ which carries forward this exception.
 
 #include "engine/orb/ObjectRequestBroker.h"
 
+#include "engine/service/proto/BaseMessage.h"
+
 class SceneObject;
 
 class Inventory;
@@ -64,8 +66,6 @@ class Weapon;
 class Armor;
 
 class GroupObject;
-
-#include "engine/service/Message.h"
 
 class Player;
 
@@ -239,6 +239,8 @@ public:
 
 	bool isAttackable();
 
+	bool isAttackableBy(CreatureObject* attacker);
+
 	bool isListening();
 
 	bool isWatching();
@@ -382,8 +384,6 @@ public:
 	void setActionCounter(unsigned int actioncntr);
 
 	void setWeapon(Weapon* wep);
-
-	void setBuilding(BuildingObject* build);
 
 	void setCreatureLinkID(unsigned long long creatureID);
 
@@ -559,8 +559,6 @@ public:
 
 	unsigned int getNewSkillModsCounter(int cnt);
 
-	BuildingObject* getBuilding();
-
 	SceneObject* getInventoryItem(unsigned long long oid);
 
 	void removeInventoryItem(unsigned long long oid);
@@ -569,7 +567,7 @@ public:
 
 	void removeLootItem(unsigned long long oid);
 
-	void broadcastMessage(Message* msg, int range = 128, bool doLock = true);
+	void broadcastMessage(BaseMessage* msg, int range = 128, bool doLock = true);
 
 	Inventory* getInventory();
 
@@ -665,7 +663,7 @@ public:
 
 	void mountCreature(MountCreature* mnt, bool lockMount = true);
 
-	void dismount(bool lockMount = true);
+	void dismount(bool lockMount = true, bool ignoreCooldown = true);
 
 	void addCashCredits(unsigned int credits);
 
@@ -868,6 +866,8 @@ public:
 
 	bool isAttackable();
 
+	bool isAttackableBy(CreatureObject* attacker);
+
 	bool isListening();
 
 	bool isWatching();
@@ -1011,8 +1011,6 @@ public:
 	void setActionCounter(unsigned int actioncntr);
 
 	void setWeapon(Weapon* wep);
-
-	void setBuilding(BuildingObject* build);
 
 	void setCreatureLinkID(unsigned long long creatureID);
 
@@ -1188,8 +1186,6 @@ public:
 
 	unsigned int getNewSkillModsCounter(int cnt);
 
-	BuildingObject* getBuilding();
-
 	SceneObject* getInventoryItem(unsigned long long oid);
 
 	void removeInventoryItem(unsigned long long oid);
@@ -1198,7 +1194,7 @@ public:
 
 	void removeLootItem(unsigned long long oid);
 
-	void broadcastMessage(Message* msg, int range, bool doLock);
+	void broadcastMessage(BaseMessage* msg, int range, bool doLock);
 
 	Inventory* getInventory();
 
@@ -1294,7 +1290,7 @@ public:
 
 	void mountCreature(MountCreature* mnt, bool lockMount);
 
-	void dismount(bool lockMount);
+	void dismount(bool lockMount, bool ignoreCooldown);
 
 	void addCashCredits(unsigned int credits);
 

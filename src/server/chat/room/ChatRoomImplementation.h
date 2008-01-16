@@ -91,8 +91,8 @@ public:
 	void removePlayer(Player* player, bool doLock = true);
 	void removePlayer(const string& player);
 	
-	void broadcastMessage(Message* msg);
-	void broadcastMessage(Vector<Message*>& messages);
+	void broadcastMessage(BaseMessage* msg);
+	void broadcastMessage(Vector<BaseMessage*>& messages);
 	
 	bool hasPlayer(Player* player);
 	bool hasPlayer(const string& name);

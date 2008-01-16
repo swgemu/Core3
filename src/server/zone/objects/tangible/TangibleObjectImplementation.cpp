@@ -176,10 +176,10 @@ void TangibleObjectImplementation::sendTo(Player* player, bool doClose) {
 	if (container != NULL)
 		link(client, container);
 
-	Message* tano3 = new TangibleObjectMessage3((TangibleObject*) _this);
+	BaseMessage* tano3 = new TangibleObjectMessage3((TangibleObject*) _this);
 	client->sendMessage(tano3);
 
-	Message* tano6 = new TangibleObjectMessage6((TangibleObject*) _this);
+	BaseMessage* tano6 = new TangibleObjectMessage6((TangibleObject*) _this);
 	client->sendMessage(tano6);
 	
 	if (pvpStatusBitmask != 0) {

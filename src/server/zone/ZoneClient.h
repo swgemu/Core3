@@ -53,9 +53,9 @@ which carries forward this exception.
 
 class Player;
 
-#include "engine/service/Message.h"
+#include "engine/service/proto/BaseMessage.h"
 
-#include "engine/service/StandaloneMessage.h"
+#include "engine/service/proto/StandaloneBaseMessage.h"
 
 class ZoneClient : public ORBObjectStub {
 public:
@@ -71,9 +71,9 @@ public:
 
 	void closeConnection(bool doLock = true);
 
-	void sendMessage(Message* msg);
+	void sendMessage(BaseMessage* msg);
 
-	void sendMessage(StandaloneMessage* msg);
+	void sendMessage(StandaloneBaseMessage* msg);
 
 	void resetPacketCheckupTime();
 
@@ -106,9 +106,9 @@ public:
 
 	void closeConnection(bool doLock);
 
-	void sendMessage(Message* msg);
+	void sendMessage(BaseMessage* msg);
 
-	void sendMessage(StandaloneMessage* msg);
+	void sendMessage(StandaloneBaseMessage* msg);
 
 	void resetPacketCheckupTime();
 

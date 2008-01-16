@@ -65,11 +65,11 @@ public:
 		
 	virtual ~ZoneClientImplementation();
 	
-	void sendMessage(Message* msg) {
+	void sendMessage(BaseMessage* msg) {
 		BaseClientProxy::sendPacket((BasePacket*) msg);
 	}
 
-	void sendMessage(StandaloneMessage* msg) {
+	void sendMessage(StandaloneBaseMessage* msg) {
 		BaseClientProxy::sendPacket((BasePacket*) msg);
 	}
 	
@@ -78,6 +78,14 @@ public:
 	
 	void closeConnection(bool doLock = true);
 
+	void acquire() {
+		_this->acquire();
+	}
+	
+	void release() {
+		_this->release();
+	}
+	
 	// setters and getters
 	void setPlayer(Player* p) {
 		player = p;

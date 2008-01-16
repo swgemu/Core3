@@ -56,6 +56,7 @@ which carries forward this exception.
 
 PlayerObjectImplementation::PlayerObjectImplementation(Player* pl) : SceneObjectImplementation(pl->getObjectID() + 0x0C) {
 	player = pl;
+	
 	objectCRC = 0x619BAE21;
 	
 	// PLAY8 operands
@@ -82,16 +83,16 @@ void PlayerObjectImplementation::sendToOwner() {
 	create(client);
 	link(client, player);
 	
-	Message* play3 = new PlayerObjectMessage3((PlayerObject*) _this);
+	BaseMessage* play3 = new PlayerObjectMessage3((PlayerObject*) _this);
 	client->sendMessage(play3);
 	
-	Message* play6 = new PlayerObjectMessage6((PlayerObject*) _this);
+	BaseMessage* play6 = new PlayerObjectMessage6((PlayerObject*) _this);
 	client->sendMessage(play6);
 	
-	Message* play8 = new PlayerObjectMessage8(this);
+	BaseMessage* play8 = new PlayerObjectMessage8(this);
 	client->sendMessage(play8);
 
-	Message* play9 = new PlayerObjectMessage9(this);
+	BaseMessage* play9 = new PlayerObjectMessage9(this);
 	client->sendMessage(play9);
 		
 	close(client);
@@ -109,10 +110,10 @@ void PlayerObjectImplementation::sendTo(Player* targetPlayer, bool doClose) {
 	//Message* play8 = new PlayerObjectMessage8(this);
 	//client->sendMessage(play8);
 	
-	Message* play3 = new PlayerObjectMessage3((PlayerObject*) _this);
+	BaseMessage* play3 = new PlayerObjectMessage3((PlayerObject*) _this);
 	client->sendMessage(play3);
 	
-	Message* play6 = new PlayerObjectMessage6((PlayerObject*) _this);
+	BaseMessage* play6 = new PlayerObjectMessage6((PlayerObject*) _this);
 	client->sendMessage(play6);
 
 	if (doClose)
@@ -160,13 +161,13 @@ void PlayerObjectImplementation::removeExperience(const string& xpType, int xp, 
 
 bool PlayerObjectImplementation::setCharacterBit(uint32 bit, bool updateClient) {
 	if (!(characterBitmask & bit)) {
-		
 		characterBitmask |= bit;
 	
 		if (updateClient && player != NULL) {
 			PlayerObjectDeltaMessage3* delta = new PlayerObjectDeltaMessage3((PlayerObject*) _this);
 			delta->updateCharacterBitmask(characterBitmask);
 			delta->close();
+			
 			player->broadcastMessage(delta);
 		}
 		return true;
@@ -182,6 +183,7 @@ bool PlayerObjectImplementation::clearCharacterBit(uint32 bit, bool updateClient
 			PlayerObjectDeltaMessage3* delta = new PlayerObjectDeltaMessage3((PlayerObject*) _this);
 			delta->updateCharacterBitmask(characterBitmask);
 			delta->close();
+			
 			player->broadcastMessage(delta);
 		}
 		

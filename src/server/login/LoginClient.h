@@ -50,8 +50,8 @@ which carries forward this exception.
 class LoginClient : public BaseClientProxy {
 public:
 	LoginClient(DatagramServiceThread* serv, Socket* sock, SocketAddress& addr) : BaseClientProxy(sock, addr) {
-		setLogging(false);
 		setLoggingName("LoginClient " + ip);
+		setLogging(false);
 		
 		init(serv);
 	}

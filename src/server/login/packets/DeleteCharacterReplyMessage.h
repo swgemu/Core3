@@ -47,9 +47,9 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-class DeleteCharacterReplyMessage : public Message {
+class DeleteCharacterReplyMessage : public BaseMessage {
 public:
-	DeleteCharacterReplyMessage(int Failure) : Message() {
+	DeleteCharacterReplyMessage(int Failure) : BaseMessage() {
     	insertShort(0x03);
 		insertInt(0x8268989B); //DeleteCharacterReplyMessage
 		insertInt(Failure);

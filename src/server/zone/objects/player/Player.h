@@ -51,9 +51,9 @@ which carries forward this exception.
 
 #include "engine/orb/ObjectRequestBroker.h"
 
-#include "engine/service/Message.h"
+#include "engine/service/proto/BaseMessage.h"
 
-#include "engine/service/StandaloneMessage.h"
+#include "engine/service/proto/StandaloneBaseMessage.h"
 
 class ZoneClient;
 
@@ -113,17 +113,13 @@ public:
 
 	void reinsertToZone(Zone* zone);
 
-	void lightUpdateZone();
+	void updateZone(bool lightUpdate = false);
 
-	void updateZone();
-
-	void updateZoneWithParent(unsigned long long cell);
-
-	void lightUpdateZoneWithParent(unsigned long long cell);
+	void updateZoneWithParent(unsigned long long cell, bool lightUpdate = false);
 
 	void switchMap(int planetid);
 
-	void doWarp(float x, float y, float z = 0, float randomizeDistance = 0);
+	void doWarp(float x, float y, float z = 0, float randomizeDistance = 0, unsigned long long parentID = 0);
 
 	void bounceBack();
 
@@ -311,9 +307,9 @@ public:
 
 	void launchFirework();
 
-	void sendMessage(Message* msg);
+	void sendMessage(BaseMessage* msg);
 
-	void sendMessage(StandaloneMessage* msg);
+	void sendMessage(StandaloneBaseMessage* msg);
 
 	bool isJedi();
 
@@ -462,17 +458,13 @@ public:
 
 	void reinsertToZone(Zone* zone);
 
-	void lightUpdateZone();
+	void updateZone(bool lightUpdate);
 
-	void updateZone();
-
-	void updateZoneWithParent(unsigned long long cell);
-
-	void lightUpdateZoneWithParent(unsigned long long cell);
+	void updateZoneWithParent(unsigned long long cell, bool lightUpdate);
 
 	void switchMap(int planetid);
 
-	void doWarp(float x, float y, float z, float randomizeDistance);
+	void doWarp(float x, float y, float z, float randomizeDistance, unsigned long long parentID);
 
 	void bounceBack();
 
@@ -660,9 +652,9 @@ public:
 
 	void launchFirework();
 
-	void sendMessage(Message* msg);
+	void sendMessage(BaseMessage* msg);
 
-	void sendMessage(StandaloneMessage* msg);
+	void sendMessage(StandaloneBaseMessage* msg);
 
 	bool isJedi();
 

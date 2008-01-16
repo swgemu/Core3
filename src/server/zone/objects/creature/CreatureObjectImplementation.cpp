@@ -225,8 +225,6 @@ CreatureObjectImplementation::CreatureObjectImplementation(uint64 oid) : Creatur
 	
 	group = NULL;
 	
-	building = NULL;
-	
 	dizzyFallDownEvent = new DizzyFallDownEvent(this);
 	
 	lastMovementUpdateStamp = 0;
@@ -259,13 +257,13 @@ void CreatureObjectImplementation::sendToOwner(Player* player, bool doClose) {
 	if (client == NULL)
 		return;
 
-	Message* ubf = new unkByteFlag();
+	BaseMessage* ubf = new unkByteFlag();
 	client->sendMessage(ubf);
 	
-	Message* css = new CmdStartScene(_this);
+	BaseMessage* css = new CmdStartScene(_this);
 	client->sendMessage(css);
 	
-	Message* pmm = new ParametersMessage();
+	BaseMessage* pmm = new ParametersMessage();
 	client->sendMessage(pmm);
 	
 	if (parent != NULL)
@@ -278,6 +276,10 @@ void CreatureObjectImplementation::sendTo(Player* player, bool doClose) {
 	ZoneClient* client = player->getClient();
 	if (client == NULL)
 		return;
+	
+	/*stringstream msg;
+	msg << "sending TO:[" << player->getFirstName() << "]";
+	info(msg.str(), true);*/
 		
 	if (player == (Player*) _this && group != NULL)
 		group->sendTo(player);
@@ -288,19 +290,19 @@ void CreatureObjectImplementation::sendTo(Player* player, bool doClose) {
 		client->sendMessage(link(parent));
 	
 	if (player == (Player*) _this) {
-		Message* creo1 = new CreatureObjectMessage1(this);
+		BaseMessage* creo1 = new CreatureObjectMessage1(this);
 		client->sendMessage(creo1);
 	}
 	
-	Message* creo3 = new CreatureObjectMessage3(_this);
+	BaseMessage* creo3 = new CreatureObjectMessage3(_this);
 	client->sendMessage(creo3);
 		
 	if (player == (Player*) _this) {
-		Message* creo4 = new CreatureObjectMessage4(this);
+		BaseMessage* creo4 = new CreatureObjectMessage4(this);
 		client->sendMessage(creo4);
 	}
 
-	Message* creo6 = new CreatureObjectMessage6(_this);
+	BaseMessage* creo6 = new CreatureObjectMessage6(_this);
 	client->sendMessage(creo6);
 	
 	sendFactionStatusTo(player);
@@ -345,18 +347,18 @@ void CreatureObjectImplementation::sendFactionStatusTo(Player* player, bool doTw
 			
 		if (player->isOvert() && (player->getFaction() != faction)) {
 			if (doTwoWay && isPlayer()) {	
-				Message* pvpstat = new UpdatePVPStatusMessage(player, playerPvp + ATTACKABLE_FLAG + AGGRESSIVE_FLAG);	
+				BaseMessage* pvpstat = new UpdatePVPStatusMessage(player, playerPvp + ATTACKABLE_FLAG + AGGRESSIVE_FLAG);	
 				((PlayerImplementation*) this)->sendMessage(pvpstat);
 			}
 				
-			Message* pvpstat2 = new UpdatePVPStatusMessage(_this, pvpBitmask + ATTACKABLE_FLAG + AGGRESSIVE_FLAG);	
+			BaseMessage* pvpstat2 = new UpdatePVPStatusMessage(_this, pvpBitmask + ATTACKABLE_FLAG + AGGRESSIVE_FLAG);	
 			player->sendMessage(pvpstat2);
 		} else { 				
-			Message* pvpstat3 = new UpdatePVPStatusMessage(_this, pvpBitmask);	
+			BaseMessage* pvpstat3 = new UpdatePVPStatusMessage(_this, pvpBitmask);	
 			player->sendMessage(pvpstat3);
 			
 			if (doTwoWay && isPlayer()) {	
-				Message* pvpstat = new UpdatePVPStatusMessage(player, playerPvp);	
+				BaseMessage* pvpstat = new UpdatePVPStatusMessage(player, playerPvp);	
 				((PlayerImplementation*) this)->sendMessage(pvpstat);
 			}
 		}
@@ -364,11 +366,11 @@ void CreatureObjectImplementation::sendFactionStatusTo(Player* player, bool doTw
 		uint32 playerPvp = player->getPvpStatusBitmask();
 
 		if (doTwoWay && isPlayer()) {	
-			Message* pvpstat = new UpdatePVPStatusMessage(player, playerPvp);	
+			BaseMessage* pvpstat = new UpdatePVPStatusMessage(player, playerPvp);	
 			((PlayerImplementation*) this)->sendMessage(pvpstat);
 		}
 		
-		Message* pvpstat2 = new UpdatePVPStatusMessage(_this, pvpStatusBitmask);	
+		BaseMessage* pvpstat2 = new UpdatePVPStatusMessage(_this, pvpStatusBitmask);	
 		player->sendMessage(pvpstat2);
 	}
 }
@@ -452,7 +454,7 @@ void CreatureObjectImplementation::setPosture(uint8 state, bool overrideDizzy, b
 		if (meditating && postureState != SITTING_POSTURE)
 			meditating = false;
 			
-		Vector<Message*> msgs;
+		Vector<BaseMessage*> msgs;
 		CreatureObjectDeltaMessage3* dcreo3 = new CreatureObjectDeltaMessage3(_this);
 		dcreo3->updatePosture();
 		
@@ -1815,7 +1817,7 @@ void CreatureObjectImplementation::unequipItem(TangibleObject* item) {
 
 	item->setUpdated(true);
 
-	Message* linkmsg = item->link(inventory);
+	BaseMessage* linkmsg = item->link(inventory);
 	broadcastMessage(linkmsg);
 }
 
@@ -2481,7 +2483,7 @@ uint32 CreatureObjectImplementation::getMitigation(const string& mit) {
 	}
 }
 
-void CreatureObjectImplementation::broadcastMessage(Message* msg, int range, bool doLock) {
+void CreatureObjectImplementation::broadcastMessage(BaseMessage* msg, int range, bool doLock) {
 	if (zone == NULL)
 		return;
 	
@@ -2496,7 +2498,7 @@ void CreatureObjectImplementation::broadcastMessage(Message* msg, int range, boo
 			if (object->isPlayer()) {
 				Player* player = (Player*) object;
 
-				if (range == 128 || isInRange(player, range))
+				if (range == 128 || isInRange(player, range) || player->getParent() != NULL)
 					player->sendMessage(msg->clone());
 			}
 		}
@@ -2513,7 +2515,7 @@ void CreatureObjectImplementation::broadcastMessage(Message* msg, int range, boo
 	}
 }
 
-void CreatureObjectImplementation::broadcastMessages(Vector<Message*>& msgs, int range, bool doLock) {
+void CreatureObjectImplementation::broadcastMessages(Vector<BaseMessage*>& msgs, int range, bool doLock) {
 	if (zone == NULL)
 		return;
 		
@@ -2528,9 +2530,9 @@ void CreatureObjectImplementation::broadcastMessages(Vector<Message*>& msgs, int
 			if (object->isPlayer()) {
 				Player* player = (Player*) object;
 
-				if (range == 128 || isInRange(player, range)) {
+				if (range == 128 || isInRange(player, range) || player->getParent() != NULL) {
 					for (int j = 0; j < msgs.size(); ++j) {
-						Message* msg = msgs.get(j);				
+						BaseMessage* msg = msgs.get(j);				
 						player->sendMessage(msg->clone());
 					}
 				}
@@ -2577,7 +2579,7 @@ void CreatureObjectImplementation::mountCreature(MountCreature* mnt, bool lockMo
 	if (mnt != mount || isMounted() || mnt == NULL)
 		return;
 	
-	if (mount->isDisabled() || !isInRange(mount, 5) || _this->isKnockedDown())
+	if (mount->isDisabled() || !isInRange(mount, 5) || isKnockedDown())
 		return;
 	
 	if (!mountCooldown.isPast())
@@ -2586,24 +2588,21 @@ void CreatureObjectImplementation::mountCreature(MountCreature* mnt, bool lockMo
 	mountCooldown.update();
 	mountCooldown.addMiliTime(3000);
 	
+	if (lockMount)
+		mount->wlock(_this);
+	
+	setPosture(UPRIGHT_POSTURE);
+	
 	parent = mount;
 	linkType = 4;
-	Message* msg = link(mount);
-	broadcastMessage(msg);
-	
-	setIgnoreMovementTests(10);
+	broadcastMessage(link(mount));
+
+	mount->setState(MOUNTEDCREATURE_STATE);
+	mount->updateStates();
 	
 	setSpeed(mount->getSpeed(), mount->getAcceleration());
 	setState(RIDINGMOUNT_STATE);
 	updateStates();
-	
-	setPosture(UPRIGHT_POSTURE);
-	
-	if (lockMount)
-		mount->wlock(_this);
-	
-	mount->setState(MOUNTEDCREATURE_STATE);
-	mount->updateStates();
 	
 	if (lockMount)
 		mount->unlock();
@@ -2622,19 +2621,19 @@ void CreatureObjectImplementation::dismount(bool lockMount, bool ignoreCooldown)
 	if (lockMount)
 		mount->wlock(_this);
 	
+	linkType = 4;
+	UpdateContainmentMessage* msg = new UpdateContainmentMessage(objectID, 0, 0xFFFFFFFF);
+	broadcastMessage(msg);
+	
 	mount->clearState(MOUNTEDCREATURE_STATE);
 	mount->updateStates();
-	
-	if (lockMount)
-		mount->unlock();
 
 	setSpeed(5.376f, 1.549f);
 	clearState(RIDINGMOUNT_STATE);
 	updateStates();
-	
-	linkType = 0xFFFFFFFF;
-	UpdateContainmentMessage* msg = new UpdateContainmentMessage(objectID, 0, 0xFFFFFFFF);
-	broadcastMessage(msg);
+
+	if (lockMount)
+		mount->unlock();
 	
 	parent = NULL;
 }

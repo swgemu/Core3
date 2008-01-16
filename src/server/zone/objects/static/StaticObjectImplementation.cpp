@@ -124,10 +124,10 @@ void StaticObjectImplementation::sendTo(Player* player, bool doClose) {
 
 	SceneObjectImplementation::create(client);
 
-	Message* stao3 = new StaticObjectMessage3((StaticObject*) _this);
+	BaseMessage* stao3 = new StaticObjectMessage3((StaticObject*) _this);
 	client->sendMessage(stao3);
 
-	Message* stao6 = new StaticObjectMessage6((StaticObject*) _this);
+	BaseMessage* stao6 = new StaticObjectMessage6((StaticObject*) _this);
 	client->sendMessage(stao6);
 	
 	if (doClose)

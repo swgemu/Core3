@@ -117,7 +117,8 @@ public:
 	void destroy(ZoneClient* client);
 	
 	void link(ZoneClient* client, SceneObject* obj);
-	Message* link(SceneObject* obj);
+	BaseMessage* link(SceneObject* obj);
+	BaseMessage* link(uint64 container, uint32 type);
 	
 	void close(ZoneClient* client);
 	

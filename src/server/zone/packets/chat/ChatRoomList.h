@@ -49,11 +49,11 @@ which carries forward this exception.
 
 #include "../../../chat/room/ChatRoom.h"
 
-class ChatRoomList : public Message {
+class ChatRoomList : public BaseMessage {
 	int channelCounter;
 	
 public:
-	ChatRoomList() : Message() {
+	ChatRoomList() : BaseMessage() {
 		insertShort(0x02);
 		insertInt(0x70DEB197);  // Opcode
 		

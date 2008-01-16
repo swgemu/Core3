@@ -113,16 +113,16 @@ void ShipObjectImplementation::sendToOwner(bool inSpace) {
 	if(inSpace)
 		link(client, owner);
 	
-	Message* ship3 = new ShipObjectMessage3((ShipObject*) _this);
+	BaseMessage* ship3 = new ShipObjectMessage3((ShipObject*) _this);
 	client->sendMessage(ship3);
 	
-	Message* ship6 = new ShipObjectMessage6((ShipObject*) _this);
+	BaseMessage* ship6 = new ShipObjectMessage6((ShipObject*) _this);
 	client->sendMessage(ship6);
 	
-	Message* ship1 = new ShipObjectMessage1((ShipObject*) _this);
+	BaseMessage* ship1 = new ShipObjectMessage1((ShipObject*) _this);
 	client->sendMessage(ship1);
 	
-	Message* ship4 = new ShipObjectMessage4((ShipObject*) _this);
+	BaseMessage* ship4 = new ShipObjectMessage4((ShipObject*) _this);
 	client->sendMessage(ship4);
 		
 	close(client);
@@ -138,10 +138,10 @@ void ShipObjectImplementation::sendTo(Player* targetPlayer, bool inSpace, bool d
 	if(inSpace)
 		link(client, owner);
 	
-	Message* ship3 = new ShipObjectMessage3((ShipObject*) _this);
+	BaseMessage* ship3 = new ShipObjectMessage3((ShipObject*) _this);
 	client->sendMessage(ship3);
 	
-	Message* ship6 = new ShipObjectMessage6((ShipObject*) _this);
+	BaseMessage* ship6 = new ShipObjectMessage6((ShipObject*) _this);
 	client->sendMessage(ship6);
 
 	if (doClose)

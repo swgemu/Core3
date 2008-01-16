@@ -51,11 +51,11 @@ which carries forward this exception.
 
 #include "engine/orb/ObjectRequestBroker.h"
 
+#include "engine/service/proto/BaseMessage.h"
+
 class ZoneServer;
 
 class Player;
-
-#include "engine/service/Message.h"
 
 class ChatRoom : public ORBObjectStub {
 public:
@@ -85,7 +85,7 @@ public:
 
 	void removePlayer(const string& player);
 
-	void broadcastMessage(Message* msg);
+	void broadcastMessage(BaseMessage* msg);
 
 	bool hasPlayer(Player* player);
 
@@ -174,7 +174,7 @@ public:
 
 	void removePlayer(const string& player);
 
-	void broadcastMessage(Message* msg);
+	void broadcastMessage(BaseMessage* msg);
 
 	bool hasPlayer(Player* player);
 

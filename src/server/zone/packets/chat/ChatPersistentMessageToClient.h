@@ -49,9 +49,10 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-class ChatPersistentMessageToClient : public Message {
+class ChatPersistentMessageToClient : public BaseMessage {
 public:
-	ChatPersistentMessageToClient(const string& sender, uint32 mailid, uint8 type, unicode& subject, unicode& body) : Message() {
+	ChatPersistentMessageToClient(const string& sender, uint32 mailid, uint8 type, unicode& subject
+			, unicode& body) : BaseMessage() {
 		insertShort(0x02);
 		insertInt(0x08485E17);  // CRC
 

@@ -49,9 +49,9 @@ which carries forward this exception.
 
 #include "../../objects/scene/SceneObject.h"
 
-class PlayClientEffectObjectMessage : public Message {
+class PlayClientEffectObjectMessage : public BaseMessage {
 public:
-	PlayClientEffectObjectMessage(SceneObject* obj, const string& file, const string& aux) : Message() {
+	PlayClientEffectObjectMessage(SceneObject* obj, const string& file, const string& aux) : BaseMessage() {
 		insertShort(0x05);
 		insertInt(0x8855434A);  // CRC
 		insertAscii(file.c_str());

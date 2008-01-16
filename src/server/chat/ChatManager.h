@@ -51,11 +51,11 @@ which carries forward this exception.
 
 #include "engine/orb/ObjectRequestBroker.h"
 
+#include "engine/service/Message.h"
+
 class ChatRoom;
 
 class Player;
-
-#include "engine/service/Message.h"
 
 class ChatManager : public ORBObjectStub {
 public:

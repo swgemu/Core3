@@ -49,9 +49,9 @@ which carries forward this exception.
 
 #include "../objects/GalaxyList.h"
 
-class LoginClusterStatus : public Message {
+class LoginClusterStatus : public BaseMessage {
 public:
-	LoginClusterStatus(uint32 galcnt) : Message(100) {
+	LoginClusterStatus(uint32 galcnt) : BaseMessage(100) {
 		insertShort(0x03);
 		insertInt(0x3436AEB6);
 

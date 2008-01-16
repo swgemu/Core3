@@ -49,9 +49,9 @@ which carries forward this exception.
 
 #include "../../objects/scene/SceneObject.h"
 
-class SceneObjectCreateMessage : public Message {
+class SceneObjectCreateMessage : public BaseMessage {
 public:
-	SceneObjectCreateMessage(SceneObject* scno) : Message() {
+	SceneObjectCreateMessage(SceneObject* scno) : BaseMessage() {
 		insertShort(0x05);
 		insertInt(0xFE89DDEA);  // CRC
 		insertLong(scno->getObjectID());  // ObjectID
@@ -73,7 +73,7 @@ public:
 		//cout << this->toString() << "\n";
 	}
 	
-	SceneObjectCreateMessage(uint64 oid, uint32 objCrc) : Message() {
+	SceneObjectCreateMessage(uint64 oid, uint32 objCrc) : BaseMessage() {
 		insertShort(0x05);
 		insertInt(0xFE89DDEA);  // CRC
 		insertLong(oid);  // ObjectID

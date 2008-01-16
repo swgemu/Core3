@@ -45,9 +45,9 @@ which carries forward this exception.
 #ifndef BEGINTRADEMESSAGE_H_
 #define BEGINTRADEMESSAGE_H_
 
-class BeginTradeMessage : public Message {
+class BeginTradeMessage : public BaseMessage {
 public:
-	BeginTradeMessage(uint64 playerID) : Message(14) {
+	BeginTradeMessage(uint64 playerID) : BaseMessage(14) {
 		insertShort(1);
 		insertInt(0x325932D8);
 		insertLong(playerID);

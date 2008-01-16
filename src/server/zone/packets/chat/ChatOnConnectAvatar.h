@@ -50,9 +50,9 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-class ChatOnConnectAvatar : public Message {
+class ChatOnConnectAvatar : public BaseMessage {
 public:
-	ChatOnConnectAvatar() : Message() {
+	ChatOnConnectAvatar() : BaseMessage() {
 		insertShort(0x01);
 		insertInt(0xD72FE9BE);  // CRC
 	} 

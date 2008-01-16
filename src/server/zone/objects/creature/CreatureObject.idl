@@ -42,6 +42,8 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
+include "engine/service/proto/BaseMessage";
+
 import "../scene/SceneObject";
 
 import "../tangible/Inventory";
@@ -55,8 +57,6 @@ import "../tangible/weapons/Weapon";
 import "../tangible/wearables/Armor";
 
 import "../group/GroupObject";
-
-include "engine/service/Message";
 
 import "../player/Player";
 
@@ -172,6 +172,7 @@ interface CreatureObject implements SceneObject {
 	boolean hasState(unsigned long state);
 	
 	boolean isAttackable();
+	boolean isAttackableBy(CreatureObject attacker);
 	
 	boolean isListening();
 	boolean isWatching();
@@ -278,8 +279,6 @@ interface CreatureObject implements SceneObject {
 	void setActionCounter(unsigned int actioncntr);
 	
 	void setWeapon(Weapon wep);
-	
-	void setBuilding(BuildingObject build);
 	
 	void setCreatureLinkID(unsigned long creatureID);
 	
@@ -405,15 +404,13 @@ interface CreatureObject implements SceneObject {
 	unsigned int getSkillModsCounter();
 	unsigned int getNewSkillModsCounter(int cnt);
 	
-	BuildingObject getBuilding();
-	
 	SceneObject getInventoryItem(unsigned long oid);
 	void removeInventoryItem(unsigned long oid);
 
 	SceneObject getLootItem(unsigned long oid);
 	void removeLootItem(unsigned long oid);
 		
-	void broadcastMessage(Message msg, int range = 128, boolean doLock = true);
+	void broadcastMessage(BaseMessage msg, int range = 128, boolean doLock = true);
 	
 	Inventory getInventory();
 
@@ -492,7 +489,7 @@ interface CreatureObject implements SceneObject {
 	
 	// mount methods
 	void mountCreature(MountCreature mnt, boolean lockMount = true);
-	void dismount(boolean lockMount = true);
+	void dismount(boolean lockMount = true, boolean ignoreCooldown = true);
 	
 	//tip methods
 	void addCashCredits(unsigned int credits);

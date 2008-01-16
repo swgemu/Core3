@@ -47,9 +47,9 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-class ChatOnSendInstantMessage : public Message {
+class ChatOnSendInstantMessage : public BaseMessage {
 public:
-	ChatOnSendInstantMessage(uint32 seq, bool failed = false) : Message() {
+	ChatOnSendInstantMessage(uint32 seq, bool failed = false) : BaseMessage() {
 		insertShort(0x03);
 		insertInt(0x88DBB381);  // CRC
 

@@ -80,10 +80,10 @@ void GroupObjectImplementation::sendTo(Player* player, bool doClose) {
 
 	create(client);
 	
-	Message* grup3 = new GroupObjectMessage3((GroupObject*) _this);
+	BaseMessage* grup3 = new GroupObjectMessage3((GroupObject*) _this);
 	client->sendMessage(grup3);
 
-	Message* grup6 = new GroupObjectMessage6((GroupObject*) _this);
+	BaseMessage* grup6 = new GroupObjectMessage6((GroupObject*) _this);
 	client->sendMessage(grup6);
 
 	if (doClose)
@@ -149,7 +149,7 @@ void GroupObjectImplementation::disband() {
 			play->setGroup(NULL);
 			play->updateGroupId(0);
 			
-			Message* msg = new SceneObjectDestroyMessage((GroupObject*) _this);
+			BaseMessage* msg = new SceneObjectDestroyMessage((GroupObject*) _this);
 			play->sendMessage(msg);
 
 			play->unlock();
@@ -173,7 +173,7 @@ void GroupObjectImplementation::disband() {
 	groupMembers.removeAll();
 }
 
-void GroupObjectImplementation::broadcastMessage(Message* msg) {
+void GroupObjectImplementation::broadcastMessage(BaseMessage* msg) {
 	for (int i = 0; i < groupMembers.size(); i++) {
 		Player* play = groupMembers.get(i);
 

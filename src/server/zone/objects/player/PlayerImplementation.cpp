@@ -641,12 +641,18 @@ void PlayerImplementation::insertToZone(Zone* zone) {
 		owner->balancePacketCheckupTime();
 		
 		sendToOwner();
-		
+
+		if (parent != NULL) {
+			BuildingObject* building = (BuildingObject*) parent->getParent();
+			insertToBuilding(building);
+			building->notifyInsertToZone(_this);
+		} else {
+			zone->insert(this);
+			zone->inRange(this, 128);
+		}
+
 		_this->acquire();
 		
-		zone->insert(this);
-		zone->inRange(this, 128);
-
 		owner->resetPacketCheckupTime();
 
 		zone->unlock();
@@ -654,6 +660,32 @@ void PlayerImplementation::insertToZone(Zone* zone) {
 		error("exception Player::insertToZone(Zone* zone)");
 
 		zone->unlock();
+	}
+}
+
+void PlayerImplementation::insertToBuilding(BuildingObject* building, bool doLock) {
+	if (owner == NULL || isInQuadTree() || !parent->isCell())
+		return;
+	
+	try {
+		//building->lock(doLock);
+
+		info("inserting to building");
+		
+		((CellObject*)parent)->addChild(_this);
+		
+		building->insert(this);
+		building->inRange(this, 128);
+		
+		//building->unlock(doLock);
+		
+		linkType = 0xFFFFFFFF;
+		broadcastMessage(link(parent), 128, false);
+	
+	} catch (...) {
+		error("exception PlayerImplementation::insertToBuilding(BuildingObject* building)");
+
+		//building->unlock(doLock);
 	}
 }
 
@@ -684,9 +716,11 @@ void PlayerImplementation::reinsertToZone(Zone* zone) {
 	
 }
 
-void PlayerImplementation::updateZone() {
+void PlayerImplementation::updateZone(bool lightUpdate) {
 	if (zone == NULL || isIncapacitated() || isDead())
 		return;
+	
+	bool insert = false;
 	
 	if (isMounted())
 		updateMountPosition();
@@ -695,12 +729,25 @@ void PlayerImplementation::updateZone() {
 		//info("updating player in Zone");
 		
 		zone->lock();
+		
+		if (parent != NULL && parent->isCell()) {
+			CellObject* cell = (CellObject*)parent;
 
-		zone->update(this);
+			removeFromBuilding((BuildingObject*)cell->getParent());
+
+			parent = NULL;
+			insert = true;
+		}
+
+		if (insert)
+			zone->insert(this);
+		else
+			zone->update(this);
+		
 		zone->inRange(this, 128);
 		
 		if (!isMounted())
-			updatePlayerPosition();
+			updatePlayerPosition(lightUpdate);
 
 		zone->unlock();
 		
@@ -712,80 +759,66 @@ void PlayerImplementation::updateZone() {
 	}
 }
 
-void PlayerImplementation::updateZoneWithParent(uint64 Parent) {
-	/*if (zone == NULL)
-		return;
-	
-	SceneObject* newParent = zone->lookupObject(Parent);
-	
-	if (newParent == NULL || parent == NULL)
-		return;
-	
-	try {
-		zone->lock();
-		
-		zone->update(this);		
-		building->inRange(this, 128);
-
-		updatePlayerPosition();
-
-		zone->unlock();
-	} catch (...) {
-		error("Unreported exception in PlayerImplementation::updateZoneWithParent");
-		zone->unlock();
-	}*/
-}
-
-void PlayerImplementation::lightUpdateZone() {
-	if (zone == NULL || isIncapacitated() || isDead())
-		return;
-	
+void PlayerImplementation::updateZoneWithParent(uint64 Parent, bool lightUpdate) {
 	if (isMounted())
-		updateMountPosition();
-	
-	try {
-		//info("light updating player in Zone");
+		dismount(true, true);
 
+	if (zone == NULL)
+		return;
+	
+	SceneObject* newParent = parent;
+	
+	if (parent == NULL || (parent != NULL && parent->getObjectID() != Parent))
+		newParent = zone->lookupObject(Parent);
+
+	if (newParent == NULL)
+		return;
+
+	bool insert = false;
+
+	try {
 		zone->lock();
 
-		zone->update(this);
-		zone->inRange(this, 128);
+		if (newParent != parent) {
+			if (parent == NULL) {
+				zone->remove(this);
+				insert = true;
+			} else {
+				BuildingObject* building = (BuildingObject*) parent->getParent();
+				SceneObject* newObj = newParent->getParent();
 
-		if (!isMounted())
-			updatePlayerPosition(true);
+				if (newObj->isBuilding()) {
+					BuildingObject* newBuilding = (BuildingObject*) newObj;
+
+					if (building != newBuilding) {
+						removeFromBuilding(building);
+
+						insert = true;
+					}
+				}
 	
-		zone->unlock();
+				((CellObject*) parent)->removeChild(_this);
+			}
+			parent = newParent;
+			((CellObject*) parent)->addChild(_this);
+		}
 
-		//info("finsihed light update player in Zone");
+		BuildingObject* building = (BuildingObject*) parent->getParent();
+
+		if (insert) {
+			insertToBuilding(building, false);
+		} else {
+			building->update(this);
+			building->inRange(this, 128);
+		}
+
+		updatePlayerPosition(lightUpdate);
+		
+		zone->unlock();
 	} catch (...) {
-		error("exception Player::lightUpdateZone()");
-
 		zone->unlock();
+		error("Exception in PlayerImplementation::updateZoneWithParent");
 	}
-}
-
-void PlayerImplementation::lightUpdateZoneWithParent(uint64 Parent) {
-	/*if (zone == NULL)
-		return;
-
-	SceneObject* newParent = zone->lookupObject(Parent);
-
-	if (newParent == NULL || parent == NULL)
-		return;
-
-	try {
-		zone->lock();
-
-		zone->update(this);		
-		building->inRange(this, 128);
-
-		updatePlayerPosition(true);
-
-		zone->unlock();
-	} catch (...) {
-		cout << "Unreported exception in PlayerImplementation::updateZoneWithParent\n";
-		zone->unlock();
-	}*/
 }
 
 void PlayerImplementation::updatePlayerPosition(bool doLightUpdate) {
@@ -796,11 +829,21 @@ void PlayerImplementation::updatePlayerPosition(bool doLightUpdate) {
 			Player* player = (Player*) obj;
 			
 			if (doLightUpdate) {
-				LightUpdateTransformMessage* umsg = new LightUpdateTransformMessage(_this);
-				player->sendMessage(umsg);
+				if (parent != NULL && parent->isCell()) {
+					LightUpdateTransformWithParentMessage* umsg = new LightUpdateTransformWithParentMessage(_this);
+					player->sendMessage(umsg);
+				} else {
+					LightUpdateTransformMessage* umsg = new LightUpdateTransformMessage(_this);
+					player->sendMessage(umsg);
+				}
 			} else {
-				UpdateTransformMessage* umsg = new UpdateTransformMessage(_this);
-				player->sendMessage(umsg);
+				if (parent != NULL && parent->isCell()) {
+					UpdateTransformWithParentMessage* umsg = new UpdateTransformWithParentMessage(_this);
+					player->sendMessage(umsg);
+				} else {
+					UpdateTransformMessage* umsg = new UpdateTransformMessage(_this);
+					player->sendMessage(umsg);
+				}
 			}
 		}
 	}
@@ -833,7 +876,15 @@ void PlayerImplementation::removeFromZone(bool doLock) {
 		zone->lock(doLock);
 
 		info("removing from zone");
+		
+		if (parent != NULL && parent->isCell()) {
+			CellObject* cell = (CellObject*) parent;
+			BuildingObject* building = (BuildingObject*)parent->getParent();
 
+			removeFromBuilding(building);
+		} else
+			zone->remove(this);
+		
 		for (int i = 0; i < inRangeObjectCount(); ++i) {
 			QuadTreeEntry* obj = getInRangeObject(i);
 
@@ -842,13 +893,11 @@ void PlayerImplementation::removeFromZone(bool doLock) {
 		}
 
 		removeInRangeObjects();
-
-		zone->remove(this);
 		
 		_this->release();
 		
 		zone->deleteObject(objectID);
-		
+	
 		//TODO: SEND RETURN TO CHARSCREEN???
 		
 		zone->unlock(doLock);
@@ -856,6 +905,29 @@ void PlayerImplementation::removeFromZone(bool doLock) {
 		error("exception Player::removeFromZone(bool doLock)");
 
 		zone->unlock(doLock);
+	}
+}
+
+void PlayerImplementation::removeFromBuilding(BuildingObject* building, bool doLock) {
+	if (building == NULL || !isInQuadTree() || !parent->isCell())
+		return;
+
+	try {
+		//building->lock(doLock);
+
+		info("removing from building");
+		
+		broadcastMessage(link(0, 0xFFFFFFFF), 128, false);
+		
+		((CellObject*)parent)->removeChild(_this);
+
+		building->remove(this);
+		
+		//building->unlock(doLock);
+	} catch (...) {
+		error("exception PlayerImplementation::removeFromBuilding(BuildingObject* building, bool doLock)");
+
+		//building->unlock(doLock);
 	}
 }
 
@@ -870,10 +942,10 @@ void PlayerImplementation::notifyInsert(QuadTreeEntry* obj) {
 	if (parent == scno)
 		return;
 	
-	SceneObject* par = scno->getParent();
-
-	if (par != NULL)
-		par->sendTo(_this);
+	SceneObject* scnoParent = scno->getParent();
+	
+	if (scnoParent != NULL && scnoParent->isNonPlayerCreature())
+		return;
 	
 	switch (scno->getObjectType()) {
 	case SceneObjectImplementation::PLAYER:
@@ -888,12 +960,8 @@ void PlayerImplementation::notifyInsert(QuadTreeEntry* obj) {
 		break;
 	case SceneObjectImplementation::NONPLAYERCREATURE:
 		creature = (Creature*) scno;
-
-		if (creature->isRidingCreature())
-			break;
-		else
-			creature->sendTo(_this);
 		
+		creature->sendTo(_this);
 		creature->sendItemsTo(_this);
 
 		break;
@@ -905,6 +973,11 @@ void PlayerImplementation::notifyInsert(QuadTreeEntry* obj) {
 	case SceneObjectImplementation::STATIC:
 		statico = (StaticObject*) scno;
 		statico->sendTo(_this);
+		break;
+		
+	case SceneObjectImplementation::BUILDING:
+		BuildingObject* buio = (BuildingObject*) scno;
+		buio->sendTo(_this);
 		break;
 	}
 }
@@ -926,6 +999,17 @@ void PlayerImplementation::notifyDissapear(QuadTreeEntry* obj) {
 		creature->sendDestroyTo(_this);
 		
 		break;
+		
+	case SceneObjectImplementation::BUILDING:
+		BuildingObject* buio = (BuildingObject*) scno;
+		buio->sendDestroyTo(_this);
+		break;
+		
+	case SceneObjectImplementation::TANGIBLE:
+		TangibleObject* tano = (TangibleObject*) scno;
+		tano->sendDestroyTo(_this);
+		
+		break;
 	}
 }
 
@@ -944,6 +1028,8 @@ void PlayerImplementation::switchMap(int planetid) {
 	
 	removeFromZone();
 	
+	parent = NULL;
+	
 	setIgnoreMovementTests(5);
 	
 	zoneID = planetid;
@@ -955,15 +1041,20 @@ void PlayerImplementation::switchMap(int planetid) {
 	insertToZone(zone);
 }	
 
-void PlayerImplementation::doWarp(float x, float y, float z, float randomizeDistance) {
+void PlayerImplementation::doWarp(float x, float y, float z, float randomizeDistance, uint64 parentID) {
 	if (zone == NULL)
 		return;
 
 	removeFromZone();
 	
+	parent = NULL;
+	
 	positionX = x;
 	positionY = y;
 	positionZ = z;
+	
+	if (parentID != 0)
+		parent = zone->lookupObject(parentID);
 	
 	setIgnoreMovementTests(10);
 	
@@ -1129,7 +1220,7 @@ void PlayerImplementation::activateQueueAction(CommandQueueAction* action) {
 }
 
 void PlayerImplementation::clearQueueAction(uint32 actioncntr, float timer, uint32 tab1, uint32 tab2) {
-	Message* queuemsg = new CommandQueueRemove(_this, actioncntr, timer, tab1, tab2);
+	BaseMessage* queuemsg = new CommandQueueRemove(_this, actioncntr, timer, tab1, tab2);
 	sendMessage(queuemsg);
 }
 
@@ -1777,14 +1868,14 @@ void PlayerImplementation::clearDuelList() {
 	}
 }
 
-void PlayerImplementation::sendMessage(Message* msg) {
+void PlayerImplementation::sendMessage(BaseMessage* msg) {
 	if (owner != NULL)
 		owner->sendMessage(msg);
 	else
 		delete msg;
 }
 
-void PlayerImplementation::sendMessage(StandaloneMessage* msg) {
+void PlayerImplementation::sendMessage(StandaloneBaseMessage* msg) {
 	if (owner != NULL)
 		owner->sendMessage(msg);
 	else

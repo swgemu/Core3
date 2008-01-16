@@ -304,10 +304,8 @@ Player* PlayerManagerImplementation::loadFromDatabase(PlayerImplementation* play
 	PlanetManager* planetManager = zne->getPlanetManager();
 	SceneObject* parent = planetManager->getCell(character->getUnsignedLong(33));
 	
-	if (parent != NULL) {
-		player->setParent(parent);
-		player->setBuilding((BuildingObject*) parent->getParent());
-	}
+	if (parent != NULL)
+		player->setParent(parent, 0xFFFFFFFF);
 	
 	loadWaypoints(player);
 	

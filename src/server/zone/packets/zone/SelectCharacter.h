@@ -47,7 +47,7 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-class SelectCharacter : public Message {
+class SelectCharacter : public BaseMessage {
 public:
 	static uint64 parse(Packet* pack) {
 		return pack->parseLong(6);

@@ -49,11 +49,10 @@ which carries forward this exception.
 #include "../../objects/player/Player.h"
 #include "../../objects/player/PlayerObject.h"
 
-class BazaarDisplayUI : public Message {
+class BazaarDisplayUI : public BaseMessage {
 	
 public:
 	BazaarDisplayUI(bool vendor, long bazaarId, Player* player) {
-		
 		insertShort(5);
 		insertInt(0x80CE5E46);
 		insertInt(0x0B);
@@ -69,7 +68,8 @@ public:
 		insertShort(2);
 		insertInt(0x0701);
 		insertShort(0);
-		if(vendor)
+
+		if (vendor)
 			insertByte(0x1F);
 		else
 			insertByte(1); 

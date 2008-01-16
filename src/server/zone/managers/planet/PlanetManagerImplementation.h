@@ -67,6 +67,7 @@ class Zone;
 class CreatureManager;
 
 class ZoneProcessServerImplementation;
+class BuildingObject;
 
 class PlanetManagerImplementation : public PlanetManagerServant, public Mutex {
 	Zone* zone;
@@ -91,11 +92,14 @@ private:
 	void loadBuildings();
 	void loadGuildTerminals();
 	void loadVendorTerminals();
+	
+	BuildingObject* loadBuilding(uint64 oid, int planet);
 		
 public:
 	PlanetManagerImplementation(Zone* zone, ZoneProcessServerImplementation* serv);
 	
 	void init();
+	void start();
 
 	void landShuttles();
 	void takeOffShuttles();

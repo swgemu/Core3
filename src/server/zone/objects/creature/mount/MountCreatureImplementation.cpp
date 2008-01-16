@@ -55,6 +55,8 @@ which carries forward this exception.
 
 #include "../../../packets.h"
 
+#include "../../../ZoneClient.h"
+
 MountCreatureImplementation::MountCreatureImplementation(CreatureObject* linkCreature, const string& name, 
 		const string& stf, uint32 itnocrc, uint32 objCRC, uint64 oid) : MountCreatureServant(oid) {
 	creatureLinkID = linkCreature->getObjectID();
@@ -110,12 +112,42 @@ void MountCreatureImplementation::addToDatapad() {
 	linkedPlayer->addDatapadItem((SceneObject*)itno);
 }
 
+void MountCreatureImplementation::sendTo(Player* player, bool doClose) {
+	ZoneClient* client = player->getClient();
+	if (client == NULL)
+		return;
+
+	create(client);
+
+	BaseMessage* creo3 = new CreatureObjectMessage3(_this);
+	client->sendMessage(creo3);
+
+	BaseMessage* creo6 = new CreatureObjectMessage6(_this);
+	client->sendMessage(creo6);
+
+	sendFactionStatusTo(player);
+	
+	if (isRidingCreature()) {
+		linkedCreature->sendTo(player);
+		linkedCreature->sendItemsTo(player);
+	}
+
+	if (doClose)
+		close(client);
+}
+
 void MountCreatureImplementation::call() {
 	if (isInQuadTree())
 		return;
 		
 	try {
 		linkedCreature->wlock(_this);
+		
+		if (linkedCreature->getParent() != NULL) {
+			linkedCreature->unlock();
+			return;
+		}
+		
 		
 		if (linkedCreature->getMount() != NULL) {
 			linkedCreature->unlock();
@@ -126,10 +158,8 @@ void MountCreatureImplementation::call() {
 			linkedCreature->unlock();
 			return;
 		}
-
-		positionX = linkedCreature->getPositionX();
-		positionZ = linkedCreature->getPositionZ();
-		positionY = linkedCreature->getPositionY();
+		
+		initializePosition(linkedCreature->getPositionX(), linkedCreature->getPositionZ(), linkedCreature->getPositionY());
 
 		zone = linkedCreature->getZone();
 		
@@ -176,7 +206,7 @@ void MountCreatureImplementation::store(bool doLock) {
 			linkedCreature->wlock(_this);
 		
 		if (linkedCreature->isMounted())
-			linkedCreature->dismount(false);
+			linkedCreature->dismount(false, true);
 		
 		linkedCreature->setMount(NULL);
 		

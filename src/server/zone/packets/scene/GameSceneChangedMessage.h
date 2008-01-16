@@ -47,9 +47,9 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-class GameSceneChangedMessage : public Message {
+class GameSceneChangedMessage : public BaseMessage {
 public:
-	GameSceneChangedMessage() : Message(8) {
+	GameSceneChangedMessage() : BaseMessage(8) {
 		insertShort(0x01);
 		insertInt(0xBBADAEB9);
 	}

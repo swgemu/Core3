@@ -49,10 +49,10 @@ which carries forward this exception.
 
 #include "MapLocation.h"
 
-class GetMapLocationsResponseMessage : public Message {
+class GetMapLocationsResponseMessage : public BaseMessage {
 	Vector<MapLocation*> locationList;
 public:
-	GetMapLocationsResponseMessage(string planet) : Message() {
+	GetMapLocationsResponseMessage(string planet) : BaseMessage() {
 		insertShort(0x05);
 		insertInt(0x9F80464C);  // CRC
 

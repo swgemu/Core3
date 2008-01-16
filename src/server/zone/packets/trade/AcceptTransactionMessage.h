@@ -45,9 +45,9 @@ which carries forward this exception.
 #ifndef ACCEPTTRANSACTIONMESSAGE_H_
 #define ACCEPTTRANSACTIONMESSAGE_H_
 
-class AcceptTransactionMessage : public Message {
+class AcceptTransactionMessage : public BaseMessage {
 public:
-	AcceptTransactionMessage() : Message(6) {
+	AcceptTransactionMessage() : BaseMessage(6) {
 		insertShort(1);
 		insertInt(0xB131CA17);
 	}

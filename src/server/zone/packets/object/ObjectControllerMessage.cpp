@@ -69,7 +69,7 @@ which carries forward this exception.
 
 #include "../../packets.h"
 
-ObjectControllerMessage::ObjectControllerMessage(uint64 objid, uint32 header1, uint32 header2, bool comp) : Message() {
+ObjectControllerMessage::ObjectControllerMessage(uint64 objid, uint32 header1, uint32 header2, bool comp) : BaseMessage() {
 	insertShort(0x05);
 	insertInt(0x80CE5E46);  // CRC
 	insertInt(header1);
@@ -162,6 +162,13 @@ uint64 ObjectControllerMessage::parseDataTransformWithParent(Player* player, Mes
 	
 	uint64 parent = pack->parseLong();
 	
+	Zone* zone = player->getZone();
+	if (zone == NULL)
+		return 0;
+	
+	if (zone->lookupObject(parent) == NULL)
+		return 0;
+	
 	float dx = pack->parseFloat();
 	float dz = pack->parseFloat();
 	float dy = pack->parseFloat();
@@ -170,6 +177,11 @@ uint64 ObjectControllerMessage::parseDataTransformWithParent(Player* player, Mes
 	float x = pack->parseFloat();
 	float z = pack->parseFloat();
 	float y = pack->parseFloat();
+	
+	if (x > 1024.0f || x < -1024.0f || y > 1024.0f || y < -1024.0f) {
+		player->error("position out of bounds...");		
+		return false;
+	}
 	
 	/*uint32 lastStamp = player->getLastMovementUpdateStamp();
 	int ignoreMovements = player->getIgnoreMovementTests();
@@ -976,7 +988,7 @@ void ObjectControllerMessage::parseServerDestoryObject(Player* player, Message* 
 		
 		player->removeInventoryItem(objid);
 		
-		Message* msg = new SceneObjectDestroyMessage(item);
+		BaseMessage* msg = new SceneObjectDestroyMessage(item);
 		player->getClient()->sendMessage(msg);
 	} else if (waypoint != NULL)
 		player->removeWaypoint(waypoint);

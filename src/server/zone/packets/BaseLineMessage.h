@@ -47,14 +47,14 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-class BaseLineMessage : public Message {
+class BaseLineMessage : public BaseMessage {
 public:
 	BaseLineMessage(uint64 oid, uint32 name, uint8 type, uint16 opcnt) {
 		insertShort(0x05);
 		insertInt(0x68A75F0C);
 		insertLong(oid);
-		//insertInt(name);
-		insertInt(generateRandomObjectCRC());
+		insertInt(name);
+		//insertInt(generateRandomObjectCRC());
 		insertByte(type);
 		insertInt(0);
 

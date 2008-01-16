@@ -142,7 +142,7 @@ bool CommandQueueAction::validate() {
 						return false;
 					}
 
-					if (!target->isAttackable()) {
+					if (!target->isAttackableBy(creature)) {
 						clearError(3);
 						target->unlock();
 						return false;

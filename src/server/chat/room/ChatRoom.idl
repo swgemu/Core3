@@ -42,10 +42,10 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
+include "engine/service/proto/BaseMessage";
+
 import "../../zone/ZoneServer";
 import "../../zone/objects/player/Player";
-
-include "engine/service/Message";
 
 interface ChatRoom {
 	
@@ -61,7 +61,7 @@ interface ChatRoom {
 	void removePlayer(Player player, boolean doLock = true);
 	void removePlayer(const string player);
 	
-	void broadcastMessage(Message msg);
+	void broadcastMessage(BaseMessage msg);
 	//void broadcastMessage(Vector<Message> messages);
 	
 	boolean hasPlayer(Player player);

@@ -47,10 +47,10 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-class PlayMusicMessage : public Message {
+class PlayMusicMessage : public BaseMessage {
 public:
 
-    PlayMusicMessage(string soundFile) : Message() {
+    PlayMusicMessage(string soundFile) : BaseMessage() {
 		insertShort(0x05);
 		insertInt(0x04270D8A);  // CRC
         insertAscii(soundFile);

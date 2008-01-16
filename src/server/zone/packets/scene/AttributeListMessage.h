@@ -47,10 +47,10 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-class AttributeListMessage : public Message {
+class AttributeListMessage : public BaseMessage {
 	int listcount;
 public:
-	AttributeListMessage(SceneObject* object) : Message() {
+	AttributeListMessage(SceneObject* object) : BaseMessage() {
 		insertShort(0x03);
 		insertInt(0xF3F12F2A); // opcode
 		
@@ -61,7 +61,7 @@ public:
 		
 	}
 	
-	AttributeListMessage(uint64 object_id) : Message() {
+	AttributeListMessage(uint64 object_id) : BaseMessage() {
 		insertShort(0x03);
 		insertInt(0xF3F12F2A);
 		insertLong(object_id);

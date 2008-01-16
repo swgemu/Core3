@@ -47,9 +47,9 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-class ChatOnSendRoomMessage : public Message {
+class ChatOnSendRoomMessage : public BaseMessage {
 public:
-	ChatOnSendRoomMessage(uint32 seq) : Message() {
+	ChatOnSendRoomMessage(uint32 seq) : BaseMessage() {
 		insertShort(0x03);
 		insertInt(0xE7B61633);  // Opcode
 		insertInt(0);

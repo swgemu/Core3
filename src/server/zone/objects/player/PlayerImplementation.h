@@ -220,25 +220,27 @@ public:
 
 	// spatial methods
 	void insertToZone(Zone* zone);
+	void insertToBuilding(BuildingObject* building, bool doLock = true);
 	void reinsertToZone(Zone* zone);
 
-	void updateZone();
-	void lightUpdateZone();
+	void updateZone(bool lightUpdate = false);
+	//void lightUpdateZone();
 	
-	void updateZoneWithParent(uint64 Parent);
-	void lightUpdateZoneWithParent(uint64 Parent);
+	void updateZoneWithParent(uint64 Parent, bool lightUpdate = false);
+	//void lightUpdateZoneWithParent(uint64 Parent);
 	
 	void updatePlayerPosition(bool doLightUpdate = false);
 	void updateMountPosition();
 	
 	void removeFromZone(bool doLock = true);
+	void removeFromBuilding(BuildingObject* building, bool doLock = true);
 	
 	void notifyInsert(QuadTreeEntry* obj);
 	void notifyDissapear(QuadTreeEntry* obj);
 
 	void switchMap(int planetid);
 
-	void doWarp(float x, float y, float z = 0, float randomizeDistance = 0);
+	void doWarp(float x, float y, float z = 0, float randomizeDistance = 0, uint64 parentID = 0);
 	
 	void bounceBack();
 
@@ -489,8 +491,8 @@ public:
 	void launchFirework();
 
 	// packet methods
-	void sendMessage(Message* msg);
-	void sendMessage(StandaloneMessage* msg);
+	void sendMessage(BaseMessage* msg);
+	void sendMessage(StandaloneBaseMessage* msg);
 
 	// setters
 	void setOnline();

@@ -47,8 +47,19 @@ import "../../player/Player";
 
 include "engine/service/Message";
 
+import "../../../Zone";
+
 interface CellObject implements SceneObject {
 	CellObject(unsigned long oid);
+	
+	void insertToZone(Zone zone);
+	
+	void addChild(SceneObject object, boolean doLock = true);
+	void removeChild(SceneObject object, boolean doLock = true);
+	
+	SceneObject getChild(int idx);
+
+	int getChildrenSize();
 	
 	//void sendTo(Player player);
 	//void sendDestroyTo(Player player);

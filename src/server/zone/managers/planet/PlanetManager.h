@@ -51,6 +51,8 @@ which carries forward this exception.
 
 #include "engine/orb/ObjectRequestBroker.h"
 
+class Player;
+
 class ShuttleCreature;
 
 class BuildingObject;
@@ -70,6 +72,8 @@ public:
 	virtual ~PlanetManager();
 
 	void init();
+
+	void start();
 
 	unsigned long long getNextStaticObjectID(bool doLock = true);
 
@@ -99,6 +103,8 @@ public:
 	Packet* invokeMethod(sys::uint32 methid, ORBMethodInvocation* inv);
 
 	void init();
+
+	void start();
 
 	unsigned long long getNextStaticObjectID(bool doLock);
 

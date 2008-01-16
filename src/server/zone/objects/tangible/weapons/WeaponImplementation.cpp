@@ -148,7 +148,7 @@ void WeaponImplementation::sendTo(Player* player, bool doClose) {
 	if (container != NULL)
 		link(client, container);
 	
-	Message* weao3 = new WeaponObjectMessage3((Weapon*) _this);
+	BaseMessage* weao3 = new WeaponObjectMessage3((Weapon*) _this);
 	client->sendMessage(weao3);
 
 	/*Message* weao6 = new WeaponObjectMessage6(this);

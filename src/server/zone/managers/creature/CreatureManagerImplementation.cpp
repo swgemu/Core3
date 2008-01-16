@@ -523,6 +523,7 @@ int CreatureManagerImplementation::addCreature(lua_State *L) {
 	creatureImpl->respawnTimer = creature.getIntField("respawnTimer");
 	creatureImpl->level = creature.getIntField("level");
 	creatureImpl->pvpStatusBitmask = creature.getIntField("combatFlags");
+	creatureImpl->parent = instance->getZone()->lookupObject(creature.getLongField("cellID"));
 
 	instance->load(creatureImpl);
 

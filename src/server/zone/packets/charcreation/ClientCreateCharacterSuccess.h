@@ -50,9 +50,9 @@ which carries forward this exception.
 //This packet is sent when we verify the data (namely the charname) when the client sends ClientCreateCharacter
 //We are assigning an object id here. after this packet, continue with the ZONELOGIN sequence as usual
 
-class ClientCreateCharacterSuccess : public Message {
+class ClientCreateCharacterSuccess : public BaseMessage {
 public:
-	ClientCreateCharacterSuccess(uint64 objid) : Message() {
+	ClientCreateCharacterSuccess(uint64 objid) : BaseMessage() {
 		insertShort(0x02);
 		insertInt(0x1DB575CC); //opcode: ClientCreateCharacterSuccess
 		insertLong(objid); //New obj id of the character.

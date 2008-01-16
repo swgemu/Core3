@@ -26,7 +26,7 @@ case "$host_cpu-$host_os" in
       ;;
     *)
       SYSTEM_INCLUDES="" 
-      SYSTEM_LIBS="-lrt -ldl -lpthread -lexecinfo"
+      SYSTEM_LIBS="-lrt -ldl -lpthread"
       USER_INCLUDES_PATH="/usr/local/include"
       USER_LIBS_PATH="/usr/local/lib"
 esac

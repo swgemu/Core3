@@ -44,7 +44,7 @@ which carries forward this exception.
 
 include "engine/core/thread/RWLockable";
 
-include "engine/service/Message";
+include "engine/service/proto/BaseMessage";
 
 include "engine/util/QuadTreeEntry";
 
@@ -82,6 +82,7 @@ interface SceneObject implements RWLockable {
 	
 	QuadTreeEntry getInRangeObject(int idx);
 	void addInRangeObject(QuadTreeEntry obj);
+	void removeInRangeObject(QuadTreeEntry obj);
 	
 	boolean isInQuadTree();
 	
@@ -89,7 +90,7 @@ interface SceneObject implements RWLockable {
 
 	int compareTo(SceneObject obj);
 	
-	Message link(SceneObject obj);
+	BaseMessage link(SceneObject obj);
 	void link(ZoneClient client, SceneObject obj);
 	
 	void randomizePosition(float radius);

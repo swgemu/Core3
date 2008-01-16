@@ -45,9 +45,9 @@ which carries forward this exception.
 #ifndef ADDITEMMESSAGE_H_
 #define ADDITEMMESSAGE_H_
 
-class AddItemMessage : public Message {
+class AddItemMessage : public BaseMessage {
 public:
-	AddItemMessage(uint64 itemID) : Message(14) {
+	AddItemMessage(uint64 itemID) : BaseMessage(14) {
 		insertShort(1);
 		insertInt(0x1E8D1356);
 		insertLong(itemID);

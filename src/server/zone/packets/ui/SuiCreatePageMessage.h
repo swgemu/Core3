@@ -47,9 +47,9 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-class SuiCreatePageMessage : public Message {
+class SuiCreatePageMessage : public BaseMessage {
 public:
-   SuiCreatePageMessage(uint32 pageID) : Message() {
+   SuiCreatePageMessage(uint32 pageID) : BaseMessage() {
 		insertShort(0x02);
 		insertInt(0xD44B7259);  // CRC
 		

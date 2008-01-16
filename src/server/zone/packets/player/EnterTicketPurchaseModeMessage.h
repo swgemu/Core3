@@ -47,10 +47,10 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-class EnterTicketPurchaseModeMessage : public Message {
+class EnterTicketPurchaseModeMessage : public BaseMessage {
 public:
 
-    EnterTicketPurchaseModeMessage(string planet, string city) : Message() {
+    EnterTicketPurchaseModeMessage(string planet, string city) : BaseMessage() {
 		insertShort(0x03);
 		insertInt(0x904DAE1A);  // CRC
         insertAscii(planet);

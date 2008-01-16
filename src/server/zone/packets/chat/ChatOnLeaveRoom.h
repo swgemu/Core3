@@ -51,10 +51,10 @@ which carries forward this exception.
 
 #include "../../objects/player/Player.h"
 
-class ChatOnLeaveRoom : public Message {
+class ChatOnLeaveRoom : public BaseMessage {
 public:
 
-	ChatOnLeaveRoom(ChatRoom* room, Player* player) : Message() {
+	ChatOnLeaveRoom(ChatRoom* room, Player* player) : BaseMessage() {
 		insertShort(0x03);
 		insertInt(0x60B5098B);  // Opcode
 		

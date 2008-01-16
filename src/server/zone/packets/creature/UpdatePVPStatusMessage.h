@@ -52,9 +52,9 @@ which carries forward this exception.
 #include "../../objects/creature/CreatureObject.h"
 #include "../../objects/creature/CreatureObjectImplementation.h"
 
-class UpdatePVPStatusMessage : public Message {
+class UpdatePVPStatusMessage : public BaseMessage {
 public:
-	UpdatePVPStatusMessage(CreatureObject* creo, uint32 pvpBitmask) : Message() {
+	UpdatePVPStatusMessage(CreatureObject* creo, uint32 pvpBitmask) : BaseMessage() {
 		insertShort(0x04);
 		insertInt(0x08A1C126);  // CRC
 		insertInt(pvpBitmask);
@@ -63,7 +63,7 @@ public:
 		insertLong(creo->getObjectID());
 	}
 	
-	UpdatePVPStatusMessage(CreatureObjectImplementation* creo, uint32 pvpBitmask) : Message() {
+	UpdatePVPStatusMessage(CreatureObjectImplementation* creo, uint32 pvpBitmask) : BaseMessage() {
 		insertShort(0x04);
 		insertInt(0x08A1C126);  // CRC
 		insertInt(pvpBitmask);
@@ -72,7 +72,7 @@ public:
 		insertLong(creo->getObjectID());
 	}
 	
-	UpdatePVPStatusMessage(TangibleObject* tano, uint32 pvpBitmask) : Message() {
+	UpdatePVPStatusMessage(TangibleObject* tano, uint32 pvpBitmask) : BaseMessage() {
 		insertShort(0x04);
 		insertInt(0x08A1C126);  // CRC
 		insertInt(pvpBitmask);

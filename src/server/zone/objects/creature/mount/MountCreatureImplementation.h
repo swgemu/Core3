@@ -73,6 +73,8 @@ public:
 	
 	void addToDatapad();
 	
+	void sendTo(Player* player, bool doClose = true);
+	
 	void call();
 	void store(bool doLock = true);
 

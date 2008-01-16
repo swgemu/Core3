@@ -42,6 +42,7 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
+import "../../objects/player/Player";
 import "../../objects/creature/shuttle/ShuttleCreature";
 import "../../objects/building/BuildingObject";
 import "../../objects/building/cell/CellObject";
@@ -50,6 +51,7 @@ include "engine/util/Coordinate";
 
 interface PlanetManager {
 	void init();
+	void start();
 		
 	unsigned long getNextStaticObjectID(boolean doLock = true);
 	

@@ -47,10 +47,10 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-class FactionResponseMessage : public Message {
+class FactionResponseMessage : public BaseMessage {
 public:
 
-	FactionResponseMessage(string rank, uint32 rebpts, uint32 imppts) : Message() {
+	FactionResponseMessage(string rank, uint32 rebpts, uint32 imppts) : BaseMessage() {
 		insertShort(0x07);
 		insertInt(0x5DD53957);  // CRC
 
