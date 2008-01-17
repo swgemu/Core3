@@ -237,8 +237,6 @@ void TangibleObjectImplementation::repairItem(Player* player) {
 	conditionDamage = 0;
 	
 	updated = true;
-
-	sendTo(player);
 }
 
 void TangibleObjectImplementation::decay(int decayRate) {

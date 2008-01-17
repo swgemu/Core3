@@ -166,3 +166,13 @@ void SceneObjectImplementation::destroy(ZoneClient* client) {
 	BaseMessage* msg = new SceneObjectDestroyMessage(_this);
 	client->sendMessage(msg);
 }
+
+void SceneObjectImplementation::generateAttributes(SceneObject* obj) {
+	if (!obj->isPlayer())
+		return;
+
+	Player* player = (Player*) obj;
+
+	AttributeListMessage* alm = new AttributeListMessage(_this);
+	player->sendMessage(alm);
+}

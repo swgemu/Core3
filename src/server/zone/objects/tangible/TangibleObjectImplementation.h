@@ -264,6 +264,10 @@ public:
 		return objectSubType == TICKET;
 	}
 	
+	inline bool isTicketCollector() {
+		return objectSubType == TICKETCOLLECTOR;
+	}
+	
 	inline bool isHolocron() {
 		return objectSubType == HOLOCRON;
 	}

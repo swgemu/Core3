@@ -42,52 +42,30 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef MESSAGEBOX_H_
-#define MESSAGEBOX_H_
+#include "SuiBoxImplementation.h"
 
-#include "engine/engine.h"
-#include "SuiCreatePageMessage.h"
+#include "../PlayerImplementation.h"
 
-class MessageBox : public SuiCreatePageMessage {
-	string boxTitle;
-	string promptContent;
+SuiBoxImplementation::SuiBoxImplementation(Player* play, uint32 typeID, uint32 boxtype) : 
+	SuiBoxServant() {
 	
-public:
-	MessageBox(uint32 boxID, const string& boxtitle, const string& promptcontent) :
-		SuiCreatePageMessage(boxID) {
-		
-		boxTitle = boxtitle;
-		promptContent = promptcontent;
-		
-		generateMessage();
-	}
+	player = play;
+
+	boxType = boxtype;
 	
-	void generateMessage() {
-		insertAscii("Script.messageBox");  //Wrong struct
-		insertInt(8);
-		
-		for (int i = 0; i < 2; ++i) {
-			insertByte(5);
-			insertInt(0);
-			insertInt(3);
-
-			insertShort(0); // 1
-			insertShort(1); // 2
-			insertByte(9 + i);
-			insertAscii("handleSUI"); // 3
-		}
-
-		insertOption(3, promptContent, "Prompt.lblPrompt", "Text");
-		insertOption(3, boxTitle, "bg.caption.lblTitle", "Text");
-		insertOption(3, "False", "btnCancel", "Enabled");
-		insertOption(3, "False", "btnCancel", "Visible");
-		insertOption(3, "False", "btnRevert", "Enabled");
-		insertOption(3, "False", "btnRevert", "Visible");
+	boxID = player->getNewSuiBoxID(typeID);
 	
-		insertLong(0);
-		insertInt(0);
-		insertLong(0);
-	}
-};
+	cancelButton = false;
+}
 
-#endif /*MESSAGEBOX_H_*/
+SuiBoxImplementation::~SuiBoxImplementation() {
+	if (_this != NULL)
+		_this->undeploy();
+}
+
+SuiBox* SuiBoxImplementation::deploy() {
+	stringstream name;
+	name << "SuiBox:" << player->getFirstName();
+	
+	return (SuiBox*) ORBObjectServant::deploy(name.str(), (uint64)boxID);
+}

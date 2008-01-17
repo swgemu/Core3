@@ -42,84 +42,96 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef LISTBOX_H_
-#define LISTBOX_H_
+#ifndef SUIBOXIMPLEMENTATION_H_
+#define SUIBOXIMPLEMENTATION_H_
 
+#include "SuiBox.h"
 #include "engine/engine.h"
-#include "SuiCreatePageMessage.h"
 
-class ListBox : public SuiCreatePageMessage {
-	Vector<string> menuItems;
-		
-	string boxTitle;
-	string boxText;
-	bool enableCancelButton;
+#include "SuiBoxImplementation.h"
+
+class Player;
+
+class SuiBoxImplementation : public SuiBoxServant {
+protected:
+	Player* player;
+	
+	uint32 boxID;
+	
+	uint64 usingObjectID;
+	
+	bool cancelButton;
+	
+	string promptTitle;
+	string promptText;
+	
+	int boxType;
+	
 public:
-	ListBox(uint32 selectionBoxId, const string& title, const string& bodyText, bool cancelButton = true) :
-		SuiCreatePageMessage(selectionBoxId) {
+	const static int INPUTBOX = 0;
+	const static int LISTBOX = 1;
+	const static int MESSAGEBOX = 2;
+	const static int TRANSFERBOX = 3;
+	
+public:
+	SuiBoxImplementation(Player* play, uint32 typeID, uint32 boxtype);
+	~SuiBoxImplementation();
+	
+	SuiBox* deploy();
+	
+	virtual BaseMessage* generateMessage() = 0;
+	
+	int compareTo(SuiBox* obj) {
+		uint32 id = obj->getBoxID();
 
-		boxTitle = title;
-		boxText = bodyText;
-		enableCancelButton = cancelButton;
+		if (boxID < id)
+			return 1;
+		else if (boxID > id)
+			return -1;
+		else
+			return 0;
 	}
 	
-	void addItem(const string& itemText) {
-		menuItems.add(itemText);
+	inline void setPromptTitle(const string name) {
+		promptTitle = name;
+	}
+	
+	inline void setPromptText(const string name) {
+		promptText = name;
+	}
+	
+	inline void setUsingObjectID(uint64 oid) {
+		usingObjectID = oid;
 	}
 
-	void generateMessage() {
-		insertAscii("Script.listBox");
-		if (enableCancelButton) {
-			insertInt(7 + (2 * menuItems.size()));
-		} else {
-			insertInt(8 + (2 * menuItems.size()));
-		}
-
-		for (int i = 0; i < 2; i++) {  // If these are not added twice it crashes the client
-			insertByte(5);
-			insertInt(0);
-			insertInt(7);
-			insertShort(0); // 1
-			insertShort(1); // 2
-			insertByte(9 + i);
-
-			insertAscii("msgSelected"); // 3
-			insertAscii("List.lstList"); // 4
-			insertAscii("SelectedRow"); // 5
-			insertAscii("bg.caption.lblTitle"); // 6
-			insertAscii("Text"); // 7
-		}
-		
-		insertOption(3, boxTitle, "bg.caption.lblTitle", "Text");
-		insertOption(3, boxText, "Prompt.lblPrompt", "Text");
-		if (enableCancelButton) {
-			insertOption(3, "@cancel", "btnCancel", "Text");
-		} else {
-			insertOption(3, "False", "btnCancel", "Enabled");
-			insertOption(3, "False", "btnCancel", "Visible");
-		}
-		insertOption(3, "@ok", "btnOk", "Text");
-
-		insertByte(1);
-		insertInt(0);
-		insertInt(1);
-		insertAscii("List.dataList");
-
-		for (int i = 0; i < menuItems.size(); i++) {
-			char tempStr[30];
-			sprintf(tempStr, "%d", i);
-			
-			insertOption(4, tempStr, "List.dataList", "Name");
-			
-			sprintf(tempStr, "List.dataList.%d", i);
-
-			insertOption(3, menuItems.get(i), tempStr, "Text");
-		}
-
-		insertLong(0);
-		insertInt(0);
-		insertLong(0);
+	inline bool isInputBox() {
+		return boxType == INPUTBOX;
 	}
+	
+	inline bool isListBox() {
+		return boxType == LISTBOX;
+	}
+	
+	inline bool isMessageBox() {
+		return boxType == MESSAGEBOX;
+	}
+	
+	inline void setCancelButton(bool value) {
+		cancelButton = value;
+	}
+
+	inline uint64 getUsingObjectID() {
+		return usingObjectID;
+	}
+	
+	inline Player* getPlayer() {
+		return player;
+	}
+	
+	inline uint32 getBoxID() {
+		return boxID;
+	}
+	
 };
 
-#endif /*LISTBOX_H_*/
+#endif /*SuiBoxIMPLEMENTATON_H_*/

@@ -72,6 +72,8 @@ which carries forward this exception.
 
 #include "../../../chat/room/ChatRoom.h"
 
+#include "sui/SuiBox.h"
+
 #include "Player.h"
 
 #include "PlayerImplementation.h"
@@ -1514,12 +1516,77 @@ bool Player::isJedi() {
 		return ((PlayerImplementation*) _impl)->isJedi();
 }
 
-PlayerObject* Player::getPlayerObject() {
+bool Player::hasSuiBox(unsigned int boxID) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
 		ORBMethodInvocation invocation(this, 116);
+		invocation.addUnsignedIntParameter(boxID);
+
+		return invocation.executeWithBooleanReturn();
+	} else
+		return ((PlayerImplementation*) _impl)->hasSuiBox(boxID);
+}
+
+void Player::removeSuiBox(unsigned int boxID) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 117);
+		invocation.addUnsignedIntParameter(boxID);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((PlayerImplementation*) _impl)->removeSuiBox(boxID);
+}
+
+SuiBox* Player::getSuiBox(unsigned int boxID) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 118);
+		invocation.addUnsignedIntParameter(boxID);
+
+		return (SuiBox*) invocation.executeWithObjectReturn();
+	} else
+		return ((PlayerImplementation*) _impl)->getSuiBox(boxID);
+}
+
+void Player::addSuiBox(SuiBox* sui) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 119);
+		invocation.addObjectParameter(sui);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((PlayerImplementation*) _impl)->addSuiBox(sui);
+}
+
+unsigned int Player::getNewSuiBoxID(unsigned int type) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 120);
+		invocation.addUnsignedIntParameter(type);
+
+		return invocation.executeWithUnsignedIntReturn();
+	} else
+		return ((PlayerImplementation*) _impl)->getNewSuiBoxID(type);
+}
+
+PlayerObject* Player::getPlayerObject() {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 121);
 
 		return (PlayerObject*) invocation.executeWithObjectReturn();
 	} else
@@ -1531,7 +1598,7 @@ bool Player::isLinkDead() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 117);
+		ORBMethodInvocation invocation(this, 122);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -1543,7 +1610,7 @@ bool Player::isLoggingIn() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 118);
+		ORBMethodInvocation invocation(this, 123);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -1555,7 +1622,7 @@ bool Player::isLoggingOut() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 119);
+		ORBMethodInvocation invocation(this, 124);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -1567,7 +1634,7 @@ CreatureObject* Player::getConversatingCreature() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 120);
+		ORBMethodInvocation invocation(this, 125);
 
 		return (CreatureObject*) invocation.executeWithObjectReturn();
 	} else
@@ -1579,7 +1646,7 @@ string& Player::getFirstName() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 121);
+		ORBMethodInvocation invocation(this, 126);
 
 		invocation.executeWithAsciiReturn(_return_getFirstName);
 		return _return_getFirstName;
@@ -1592,7 +1659,7 @@ string& Player::getRaceFileName() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 122);
+		ORBMethodInvocation invocation(this, 127);
 
 		invocation.executeWithAsciiReturn(_return_getRaceFileName);
 		return _return_getRaceFileName;
@@ -1605,7 +1672,7 @@ unicode& Player::getBiography() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 123);
+		ORBMethodInvocation invocation(this, 128);
 
 		invocation.executeWithUnicodeReturn(_return_getBiography);
 		return _return_getBiography;
@@ -1618,7 +1685,7 @@ string& Player::getHairData() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 124);
+		ORBMethodInvocation invocation(this, 129);
 
 		invocation.executeWithAsciiReturn(_return_getHairData);
 		return _return_getHairData;
@@ -1631,7 +1698,7 @@ unsigned long long Player::getCharacterID() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 125);
+		ORBMethodInvocation invocation(this, 130);
 
 		return invocation.executeWithUnsignedLongReturn();
 	} else
@@ -1643,7 +1710,7 @@ string& Player::getStartingProfession() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 126);
+		ORBMethodInvocation invocation(this, 131);
 
 		invocation.executeWithAsciiReturn(_return_getStartingProfession);
 		return _return_getStartingProfession;
@@ -1656,7 +1723,7 @@ int Player::getZoneIndex() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 127);
+		ORBMethodInvocation invocation(this, 132);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -1668,7 +1735,7 @@ string& Player::getHairObject() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 128);
+		ORBMethodInvocation invocation(this, 133);
 
 		invocation.executeWithAsciiReturn(_return_getHairObject);
 		return _return_getHairObject;
@@ -1681,7 +1748,7 @@ bool Player::isOnline() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 129);
+		ORBMethodInvocation invocation(this, 134);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -1693,7 +1760,7 @@ ZoneClient* Player::getClient() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 130);
+		ORBMethodInvocation invocation(this, 135);
 
 		return (ZoneClient*) invocation.executeWithObjectReturn();
 	} else
@@ -1705,7 +1772,7 @@ GroupObject* Player::getGroupObject() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 131);
+		ORBMethodInvocation invocation(this, 136);
 
 		return (GroupObject*) invocation.executeWithObjectReturn();
 	} else
@@ -1717,7 +1784,7 @@ string& Player::getFactionRank() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 132);
+		ORBMethodInvocation invocation(this, 137);
 
 		invocation.executeWithAsciiReturn(_return_getFactionRank);
 		return _return_getFactionRank;
@@ -1730,7 +1797,7 @@ unsigned int Player::getRebelPoints() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 133);
+		ORBMethodInvocation invocation(this, 138);
 
 		return invocation.executeWithUnsignedIntReturn();
 	} else
@@ -1742,7 +1809,7 @@ unsigned int Player::getImperialPoints() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 134);
+		ORBMethodInvocation invocation(this, 139);
 
 		return invocation.executeWithUnsignedIntReturn();
 	} else
@@ -1754,7 +1821,7 @@ int Player::getPvpRating() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 135);
+		ORBMethodInvocation invocation(this, 140);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -1766,7 +1833,7 @@ void Player::getPlayersNearYou() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 136);
+		ORBMethodInvocation invocation(this, 141);
 
 		invocation.executeWithVoidReturn();
 	} else
@@ -1778,7 +1845,7 @@ int Player::getRegionID() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 137);
+		ORBMethodInvocation invocation(this, 142);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -1790,7 +1857,7 @@ int Player::getCertificationListSize() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 138);
+		ORBMethodInvocation invocation(this, 143);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -1802,7 +1869,7 @@ string& Player::getCertification(int idx) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 139);
+		ORBMethodInvocation invocation(this, 144);
 		invocation.addSignedIntParameter(idx);
 
 		invocation.executeWithAsciiReturn(_return_getCertification);
@@ -1816,7 +1883,7 @@ bool Player::isChangingFaction() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 140);
+		ORBMethodInvocation invocation(this, 145);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -1828,7 +1895,7 @@ Datapad* Player::getDatapad() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 141);
+		ORBMethodInvocation invocation(this, 146);
 
 		return (Datapad*) invocation.executeWithObjectReturn();
 	} else
@@ -1840,7 +1907,7 @@ unsigned int Player::getNewItemID() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 142);
+		ORBMethodInvocation invocation(this, 147);
 
 		return invocation.executeWithUnsignedIntReturn();
 	} else
@@ -1852,7 +1919,7 @@ unsigned int Player::getItemShift() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 143);
+		ORBMethodInvocation invocation(this, 148);
 
 		return invocation.executeWithUnsignedIntReturn();
 	} else
@@ -1864,7 +1931,7 @@ float Player::getLastTestPositionX() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 144);
+		ORBMethodInvocation invocation(this, 149);
 
 		return invocation.executeWithFloatReturn();
 	} else
@@ -1876,7 +1943,7 @@ float Player::getLastTestPositionY() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 145);
+		ORBMethodInvocation invocation(this, 150);
 
 		return invocation.executeWithFloatReturn();
 	} else
@@ -1888,7 +1955,7 @@ unsigned int Player::getForcePower() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 146);
+		ORBMethodInvocation invocation(this, 151);
 
 		return invocation.executeWithUnsignedIntReturn();
 	} else
@@ -1900,7 +1967,7 @@ SurveyTool* Player::getSurveyTool() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 147);
+		ORBMethodInvocation invocation(this, 152);
 
 		return (SurveyTool*) invocation.executeWithObjectReturn();
 	} else
@@ -1912,7 +1979,7 @@ void Player::setSurveyTool(SurveyTool* sTool) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 148);
+		ORBMethodInvocation invocation(this, 153);
 		invocation.addObjectParameter(sTool);
 
 		invocation.executeWithVoidReturn();
@@ -1925,7 +1992,7 @@ void Player::setSurveyWaypoint(WaypointObject* id) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 149);
+		ORBMethodInvocation invocation(this, 154);
 		invocation.addObjectParameter(id);
 
 		invocation.executeWithVoidReturn();
@@ -1938,7 +2005,7 @@ WaypointObject* Player::getSurveyWaypoint() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 150);
+		ORBMethodInvocation invocation(this, 155);
 
 		return (WaypointObject*) invocation.executeWithObjectReturn();
 	} else
@@ -1950,7 +2017,7 @@ bool Player::getCanSurvey() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 151);
+		ORBMethodInvocation invocation(this, 156);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -1962,7 +2029,7 @@ bool Player::getCanSample() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 152);
+		ORBMethodInvocation invocation(this, 157);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -1974,7 +2041,7 @@ void Player::setCanSurvey() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 153);
+		ORBMethodInvocation invocation(this, 158);
 
 		invocation.executeWithVoidReturn();
 	} else
@@ -1986,7 +2053,7 @@ void Player::setCanSample() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 154);
+		ORBMethodInvocation invocation(this, 159);
 
 		invocation.executeWithVoidReturn();
 	} else
@@ -1998,7 +2065,7 @@ void Player::setSurveyEvent(unicode& resourcename) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 155);
+		ORBMethodInvocation invocation(this, 160);
 		invocation.addUnicodeParameter(resourcename);
 
 		invocation.executeWithVoidReturn();
@@ -2011,7 +2078,7 @@ void Player::setSampleEvent(unicode& resourcename, bool firstTime) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 156);
+		ORBMethodInvocation invocation(this, 161);
 		invocation.addUnicodeParameter(resourcename);
 		invocation.addBooleanParameter(firstTime);
 
@@ -2025,7 +2092,7 @@ void Player::setCancelSample(bool val) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 157);
+		ORBMethodInvocation invocation(this, 162);
 		invocation.addBooleanParameter(val);
 
 		invocation.executeWithVoidReturn();
@@ -2038,7 +2105,7 @@ bool Player::getCancelSample() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 158);
+		ORBMethodInvocation invocation(this, 163);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -2050,7 +2117,7 @@ void Player::sendSampleTimeRemaining() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 159);
+		ORBMethodInvocation invocation(this, 164);
 
 		invocation.executeWithVoidReturn();
 	} else
@@ -2062,7 +2129,7 @@ void Player::setSurveyErrorMessage() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 160);
+		ORBMethodInvocation invocation(this, 165);
 
 		invocation.executeWithVoidReturn();
 	} else
@@ -2074,7 +2141,7 @@ void Player::setSampleErrorMessage() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 161);
+		ORBMethodInvocation invocation(this, 166);
 
 		invocation.executeWithVoidReturn();
 	} else
@@ -2086,7 +2153,7 @@ bool Player::getSurveyErrorMessage() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 162);
+		ORBMethodInvocation invocation(this, 167);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -2098,7 +2165,7 @@ bool Player::getSampleErrorMessage() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 163);
+		ORBMethodInvocation invocation(this, 168);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -2447,147 +2514,162 @@ Packet* PlayerAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* inv) {
 		resp->insertBoolean(isJedi());
 		break;
 	case 116:
-		resp->insertLong(getPlayerObject()->_getORBObjectID());
+		resp->insertBoolean(hasSuiBox(inv->getUnsignedIntParameter()));
 		break;
 	case 117:
-		resp->insertBoolean(isLinkDead());
+		removeSuiBox(inv->getUnsignedIntParameter());
 		break;
 	case 118:
-		resp->insertBoolean(isLoggingIn());
+		resp->insertLong(getSuiBox(inv->getUnsignedIntParameter())->_getORBObjectID());
 		break;
 	case 119:
-		resp->insertBoolean(isLoggingOut());
+		addSuiBox((SuiBox*) inv->getObjectParameter());
 		break;
 	case 120:
-		resp->insertLong(getConversatingCreature()->_getORBObjectID());
+		resp->insertInt(getNewSuiBoxID(inv->getUnsignedIntParameter()));
 		break;
 	case 121:
-		resp->insertAscii(getFirstName());
+		resp->insertLong(getPlayerObject()->_getORBObjectID());
 		break;
 	case 122:
-		resp->insertAscii(getRaceFileName());
+		resp->insertBoolean(isLinkDead());
 		break;
 	case 123:
-		resp->insertUnicode(getBiography());
+		resp->insertBoolean(isLoggingIn());
 		break;
 	case 124:
-		resp->insertAscii(getHairData());
+		resp->insertBoolean(isLoggingOut());
 		break;
 	case 125:
-		resp->insertLong(getCharacterID());
+		resp->insertLong(getConversatingCreature()->_getORBObjectID());
 		break;
 	case 126:
-		resp->insertAscii(getStartingProfession());
+		resp->insertAscii(getFirstName());
 		break;
 	case 127:
-		resp->insertSignedInt(getZoneIndex());
+		resp->insertAscii(getRaceFileName());
 		break;
 	case 128:
-		resp->insertAscii(getHairObject());
+		resp->insertUnicode(getBiography());
 		break;
 	case 129:
-		resp->insertBoolean(isOnline());
+		resp->insertAscii(getHairData());
 		break;
 	case 130:
-		resp->insertLong(getClient()->_getORBObjectID());
+		resp->insertLong(getCharacterID());
 		break;
 	case 131:
-		resp->insertLong(getGroupObject()->_getORBObjectID());
+		resp->insertAscii(getStartingProfession());
 		break;
 	case 132:
-		resp->insertAscii(getFactionRank());
+		resp->insertSignedInt(getZoneIndex());
 		break;
 	case 133:
-		resp->insertInt(getRebelPoints());
+		resp->insertAscii(getHairObject());
 		break;
 	case 134:
-		resp->insertInt(getImperialPoints());
+		resp->insertBoolean(isOnline());
 		break;
 	case 135:
-		resp->insertSignedInt(getPvpRating());
+		resp->insertLong(getClient()->_getORBObjectID());
 		break;
 	case 136:
-		getPlayersNearYou();
+		resp->insertLong(getGroupObject()->_getORBObjectID());
 		break;
 	case 137:
-		resp->insertSignedInt(getRegionID());
+		resp->insertAscii(getFactionRank());
 		break;
 	case 138:
-		resp->insertSignedInt(getCertificationListSize());
+		resp->insertInt(getRebelPoints());
 		break;
 	case 139:
-		resp->insertAscii(getCertification(inv->getSignedIntParameter()));
+		resp->insertInt(getImperialPoints());
 		break;
 	case 140:
-		resp->insertBoolean(isChangingFaction());
+		resp->insertSignedInt(getPvpRating());
 		break;
 	case 141:
-		resp->insertLong(getDatapad()->_getORBObjectID());
+		getPlayersNearYou();
 		break;
 	case 142:
-		resp->insertInt(getNewItemID());
+		resp->insertSignedInt(getRegionID());
 		break;
 	case 143:
-		resp->insertInt(getItemShift());
+		resp->insertSignedInt(getCertificationListSize());
 		break;
 	case 144:
-		resp->insertFloat(getLastTestPositionX());
+		resp->insertAscii(getCertification(inv->getSignedIntParameter()));
 		break;
 	case 145:
-		resp->insertFloat(getLastTestPositionY());
+		resp->insertBoolean(isChangingFaction());
 		break;
 	case 146:
-		resp->insertInt(getForcePower());
+		resp->insertLong(getDatapad()->_getORBObjectID());
 		break;
 	case 147:
-		resp->insertLong(getSurveyTool()->_getORBObjectID());
+		resp->insertInt(getNewItemID());
 		break;
 	case 148:
-		setSurveyTool((SurveyTool*) inv->getObjectParameter());
+		resp->insertInt(getItemShift());
 		break;
 	case 149:
-		setSurveyWaypoint((WaypointObject*) inv->getObjectParameter());
+		resp->insertFloat(getLastTestPositionX());
 		break;
 	case 150:
-		resp->insertLong(getSurveyWaypoint()->_getORBObjectID());
+		resp->insertFloat(getLastTestPositionY());
 		break;
 	case 151:
-		resp->insertBoolean(getCanSurvey());
+		resp->insertInt(getForcePower());
 		break;
 	case 152:
-		resp->insertBoolean(getCanSample());
+		resp->insertLong(getSurveyTool()->_getORBObjectID());
 		break;
 	case 153:
-		setCanSurvey();
+		setSurveyTool((SurveyTool*) inv->getObjectParameter());
 		break;
 	case 154:
-		setCanSample();
+		setSurveyWaypoint((WaypointObject*) inv->getObjectParameter());
 		break;
 	case 155:
-		setSurveyEvent(inv->getUnicodeParameter(_param0_setSurveyEvent__unicode_));
+		resp->insertLong(getSurveyWaypoint()->_getORBObjectID());
 		break;
 	case 156:
-		setSampleEvent(inv->getUnicodeParameter(_param0_setSampleEvent__unicode_bool_), inv->getBooleanParameter());
+		resp->insertBoolean(getCanSurvey());
 		break;
 	case 157:
-		setCancelSample(inv->getBooleanParameter());
+		resp->insertBoolean(getCanSample());
 		break;
 	case 158:
-		resp->insertBoolean(getCancelSample());
+		setCanSurvey();
 		break;
 	case 159:
-		sendSampleTimeRemaining();
+		setCanSample();
 		break;
 	case 160:
-		setSurveyErrorMessage();
+		setSurveyEvent(inv->getUnicodeParameter(_param0_setSurveyEvent__unicode_));
 		break;
 	case 161:
-		setSampleErrorMessage();
+		setSampleEvent(inv->getUnicodeParameter(_param0_setSampleEvent__unicode_bool_), inv->getBooleanParameter());
 		break;
 	case 162:
-		resp->insertBoolean(getSurveyErrorMessage());
+		setCancelSample(inv->getBooleanParameter());
 		break;
 	case 163:
+		resp->insertBoolean(getCancelSample());
+		break;
+	case 164:
+		sendSampleTimeRemaining();
+		break;
+	case 165:
+		setSurveyErrorMessage();
+		break;
+	case 166:
+		setSampleErrorMessage();
+		break;
+	case 167:
+		resp->insertBoolean(getSurveyErrorMessage());
+		break;
+	case 168:
 		resp->insertBoolean(getSampleErrorMessage());
 		break;
 	default:
@@ -3035,6 +3117,26 @@ void PlayerAdapter::sendMessage(StandaloneBaseMessage* msg) {
 
 bool PlayerAdapter::isJedi() {
 	return ((PlayerImplementation*) impl)->isJedi();
+}
+
+bool PlayerAdapter::hasSuiBox(unsigned int boxID) {
+	return ((PlayerImplementation*) impl)->hasSuiBox(boxID);
+}
+
+void PlayerAdapter::removeSuiBox(unsigned int boxID) {
+	return ((PlayerImplementation*) impl)->removeSuiBox(boxID);
+}
+
+SuiBox* PlayerAdapter::getSuiBox(unsigned int boxID) {
+	return ((PlayerImplementation*) impl)->getSuiBox(boxID);
+}
+
+void PlayerAdapter::addSuiBox(SuiBox* sui) {
+	return ((PlayerImplementation*) impl)->addSuiBox(sui);
+}
+
+unsigned int PlayerAdapter::getNewSuiBoxID(unsigned int type) {
+	return ((PlayerImplementation*) impl)->getNewSuiBoxID(type);
 }
 
 PlayerObject* PlayerAdapter::getPlayerObject() {

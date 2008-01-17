@@ -101,15 +101,43 @@ public:
 		addLongUpdate(0x09, creo->getTargetID());
 	}
 	
-	void updateMaximumPrimaryBars() {
+	void updateMaximumPrimaryBars(uint32 health, uint32 action, uint32 mind) {
 		startUpdate(0x0E);
 		
-		uint32 updatecount = creo->getNewHAMMaxUpdateCounter(3);
-		startList(3, updatecount);
+		uint8 h = 0, a = 0, m = 0;
+
+		if (creo->getHealthMax() != health) 
+			h = 1;
+
+		if (creo->getActionMax() != action) 
+			a = 1;
+
+		if (creo->getMindMax() != mind) 
+			m = 1;
 		
-		addListIntElement(0, creo->getHealthMax());
-		addListIntElement(3, creo->getActionMax());
-		addListIntElement(6, creo->getMindMax());
+		uint32 updatecount = creo->getNewHAMMaxUpdateCounter(h + a + m);
+		startList((h + a + m), updatecount);
+		
+		if (h) {
+			uint32 healthCreo = creo->getHealthMax();
+			addBar(0, healthCreo, health);
+
+			creo->setHealthMax(healthCreo);
+		}
+
+		if (a) {
+			uint32 actionCreo = creo->getActionMax();
+			addBar(3, actionCreo, action);
+
+			creo->setActionMax(actionCreo);
+		}
+
+		if (m) {
+			uint32 mindCreo = creo->getMindMax();
+			addBar(6, mindCreo, mind);
+
+			creo->setMindMax(mindCreo);
+		}
 	}
 
 	void updatePrimaryBars(uint32 health, uint32 action, uint32 mind) {

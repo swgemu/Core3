@@ -56,6 +56,8 @@ which carries forward this exception.
 
 #include "badges/Badges.h"
 #include "../terrain/RegionNames.h"
+#include "sui/SuiBoxImplementation.h"
+#include "sui/listBox/SuiListBoxImplementation.h"
 
 class PlayerManager;
 class ItemManager;
@@ -170,6 +172,10 @@ class PlayerImplementation : public PlayerServant {
 	
 	bool surveyErrorMessage;
 	bool sampleErrorMessage;
+	
+	// SuiEvents
+	VectorMap<uint32, SuiBox*> suiBoxes;
+	uint32 suiBoxNextID;
 	
 public:
 	static const int ONLINE = 1;
@@ -736,6 +742,27 @@ public:
 	
 	inline bool isChangingFaction() {
 		return changeFactionEvent != NULL;
+	}
+	
+	inline bool hasSuiBox(uint32 boxID) {
+		return suiBoxes.contains(boxID);
+	}
+	
+	void removeSuiBox(uint32 boxID) {
+		suiBoxes.drop(boxID);
+	}
+	
+	SuiBox* getSuiBox(uint32 boxID) {
+		return suiBoxes.get(boxID);
+	}
+	
+	void addSuiBox(SuiBox* sui) {
+		uint32 key = sui->getBoxID();
+		suiBoxes.put(key, sui);
+	}
+	
+	uint32 getNewSuiBoxID(uint32 type) {
+		return (++suiBoxNextID << 16) + (uint16)type;
 	}
 	
 	void getPlayersNearYou();

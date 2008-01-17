@@ -55,6 +55,11 @@ IDL_SOURCES = server/zone/Zone.idl \
 				server/zone/objects/creature/mount/MountCreature.idl \
 				server/zone/objects/player/Player.idl \
 				server/zone/objects/player/PlayerObject.idl \
+				server/zone/objects/player/sui/SuiBox.idl \
+				server/zone/objects/player/sui/listbox/SuiListBox.idl \
+				server/zone/objects/player/sui/messagebox/SuiMessageBox.idl \
+				server/zone/objects/player/sui/transferbox/SuiTransferBox.idl \
+				server/zone/objects/player/sui/inputbox/SuiInputBox.idl \
 				server/zone/objects/tangible/TangibleObject.idl \
 				server/zone/objects/tangible/Container.idl \
 				server/zone/objects/tangible/Inventory.idl \

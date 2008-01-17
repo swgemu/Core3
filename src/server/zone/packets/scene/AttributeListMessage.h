@@ -61,10 +61,10 @@ public:
 		
 	}
 	
-	AttributeListMessage(uint64 object_id) : BaseMessage() {
+	AttributeListMessage(uint64 objectID) : BaseMessage() {
 		insertShort(0x03);
 		insertInt(0xF3F12F2A);
-		insertLong(object_id);
+		insertLong(objectID);
 		insertInt(0); // list count
 		listcount = 0;
 	}

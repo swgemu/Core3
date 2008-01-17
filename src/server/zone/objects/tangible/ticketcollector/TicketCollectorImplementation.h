@@ -45,111 +45,24 @@ which carries forward this exception.
 #ifndef TICKETCOLLECTORIMPLEMENTATION_H_
 #define TICKETCOLLECTORIMPLEMENTATION_H_
 
-#include "../Inventory.h"
-
-#include "../ticket/Ticket.h"
-
-#include "../../creature/shuttle/ShuttleCreature.h"
-
 #include "TicketCollector.h"
+
+class ShuttleCreature;
+class Player;
+class Ticket;
 
 class TicketCollectorImplementation : public TicketCollectorServant {
 	ShuttleCreature* shuttle;
 	
 public:
-	TicketCollectorImplementation(ShuttleCreature* shutle, uint64 objid, const unicode& n, const string& tempn, float x, float z, float y) 
-			: TicketCollectorServant(objid, TERMINAL) {
-		objectCRC = 0xFCF0B40D;
-
-		name = n;
-		
-		templateTypeName = "terminal_name";
-		templateName = tempn;
-
-		initializePosition(x , z, y);
-		
-		shuttle = shutle;
-
-		stringstream loggingname;
-		loggingname << "TicketCollector = 0x" << objid;
-		setLoggingName(loggingname.str());
+	TicketCollectorImplementation(ShuttleCreature* shutle, uint64 objid, const unicode& n, 
+			const string& tempn, float x, float z, float y);
 	
-		setLogging(false);
-		setGlobalLogging(true);
-	}
+	int useObject(Player* player);
 	
-	int useObject(Player* player) {
-		// Pre: player wlocked
-		// Post: player wlocked
-		if (player->isMounted()) {
-			player->sendSystemMessage("You cant travel while mounted.");
-			return 0;
-		}
-		
-		if (player->isInRange(_this, 5)) {
-			player->sendSystemMessage("You are too far away to start your travel.");
-			return 0;
-		}
-		
-		if (player->isInCombat())
-			return 0;
-		
-		if (!checkTime(shuttle, player))
-			return 0;
-			
-		string city = shuttle->getCity();
-		string planet = shuttle->getPlanet();
-			
-		Inventory* inventory = player->getInventory();
-		
-		for (int i = 0; i < inventory->objectsSize(); ++i) {
-			SceneObject* obj = inventory->getObject(i);
-			
-			if (!obj->isTangible())
-				continue;
-			
-			TangibleObject* item = (TangibleObject*) obj;
-
-			if (item->isTicket()) {
-				Ticket* ticket = (Ticket*)item;
-				
-				if ((ticket->getDeparturePoint() == city) &&  (ticket->getDeparturePlanet() == planet)) {
-					player->removeInventoryItem(item->getObjectID());
-					
-					shuttle->sendPlayerTo(player, ticket);
-														
-					//delete ticket;
-					return 1;
-				}
-			}
-		}
-		
-		player->sendSystemMessage("You do not have a ticket to board this shuttle.");
-		return 0;
-	}
+	bool checkTime(ShuttleCreature* shuttle, Player* player);
 	
-	bool checkTime(ShuttleCreature* shuttle, Player* player) {
-		int landTime = shuttle->getArrivalTime();
-			
-		if (landTime > 0) {
-			int min = landTime / 60;
-			int seconds = (landTime % 60);
-								
-			stringstream arrivalTime;
-			arrivalTime << "The next shuttle will be ready to board in " << min << " minutes and " << seconds << " seconds";
-			player->sendSystemMessage(arrivalTime.str());
-
-			return false;
-		} else if (landTime > -20) {
-			stringstream arrivalTime;
-			arrivalTime << "The next shuttle is about to begin boarding";
-			player->sendSystemMessage(arrivalTime.str());
-
-			return false;
-		}
-
-		return true;
-	}
+	void useTicket(Player* player, Ticket* ticket);
 	
 };
 

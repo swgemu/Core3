@@ -42,87 +42,18 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef INPUTBOX_H_
-#define INPUTBOX_H_
+import "../SuiBox";
+import "../../Player";
 
-#include "engine/engine.h"
-#include "SuiCreatePageMessage.h"
+include "engine/service/proto/BaseMessage";
 
-class InputBox : public SuiCreatePageMessage {
-	string title;
-	string promptContent;
+interface SuiListBox implements SuiBox {
+	SuiListBox(Player play, unsigned int typeID, unsigned int boxtype);
 	
-	int maxLength;
+	void addMenuItem(const string item, unsigned long objectID);
 	
-	bool enableCancelButton;
-	
-public:
-	InputBox(uint32 boxID, const string& boxtitle, const string& promptcontent, int maxlength, bool cancelButton) : 
-		SuiCreatePageMessage(boxID) {
-		
-		title = boxtitle;
-		promptContent = promptcontent;
-		
-		maxLength = maxlength;
-		
-		enableCancelButton = cancelButton;
-		
-		generateMessage();
-	}
-	
-	
-	void generateMessage() {
-		insertAscii("Script.inputBox");
-		
-		if (enableCancelButton)
-			insertInt(0x0C);
-		else
-			insertInt(0x0D);
+	int getMenuSize();
+	unsigned long getMenuObjectID(int idx);
 
-		for (int i = 0; i < 2; ++i) { 
-			insertByte(5);
-			insertInt(0);
-			insertInt(7); // number of shorts(asciis?)
-
-			insertShort(0); // 1
-			insertShort(1); // 2
-			insertByte(9 + i);
-			insertAscii("handleAutoLevelSelect"); // 3
-			insertAscii("txtInput"); // 4
-			insertAscii("LocalText"); // 5
-			insertAscii("cmbInput"); // 6
-			insertAscii("SelectedText"); // 7
-		}
-
-		insertOption(3, promptContent, "Prompt.lblPrompt", "Text");
-		insertOption(3, title, "bg.caption.lblTitle", "Text");
-
-		if (enableCancelButton) {
-			insertOption(3, "@cancel", "btnCancel", "Text");
-		} else {
-			insertOption(3, "False", "btnCancel", "Enabled");
-			insertOption(3, "False", "btnCancel", "Visible");
-		}
-
-		insertOption(3, "@ok", "btnOk", "Text");
-
-		insertOption(3, "true", "txtInput", "Enabled");
-		insertOption(3, "true", "txtInput", "Visible");
-
-		insertOption(3, "false", "cmbInput", "Enabled");
-		insertOption(3, "false", "cmbInput", "Visible");
-
-		char tempStr[10];
-		sprintf(tempStr, "%d", maxLength);
-		
-		insertOption(3, tempStr, "txtInput", "MaxLength");
-		insertOption(3, tempStr, "cmbInput", "MaxLength");
-
-		insertLong(0);
-		insertInt(0);
-		insertLong(0);
-	}
-	
-};
-
-#endif /*INPUTBOX_H_*/
+	BaseMessage generateMessage();
+}

@@ -266,12 +266,24 @@ bool TangibleObject::isTicket() {
 		return ((TangibleObjectImplementation*) _impl)->isTicket();
 }
 
-bool TangibleObject::isSurveyTool() {
+bool TangibleObject::isTicketCollector() {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
 		ORBMethodInvocation invocation(this, 21);
+
+		return invocation.executeWithBooleanReturn();
+	} else
+		return ((TangibleObjectImplementation*) _impl)->isTicketCollector();
+}
+
+bool TangibleObject::isSurveyTool() {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 22);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -283,7 +295,7 @@ void TangibleObject::setPersistent(bool pers) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 22);
+		ORBMethodInvocation invocation(this, 23);
 		invocation.addBooleanParameter(pers);
 
 		invocation.executeWithVoidReturn();
@@ -296,7 +308,7 @@ void TangibleObject::setUpdated(bool upd) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 23);
+		ORBMethodInvocation invocation(this, 24);
 		invocation.addBooleanParameter(upd);
 
 		invocation.executeWithVoidReturn();
@@ -309,7 +321,7 @@ void TangibleObject::setConditionDamage(int damage) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 24);
+		ORBMethodInvocation invocation(this, 25);
 		invocation.addSignedIntParameter(damage);
 
 		invocation.executeWithVoidReturn();
@@ -322,7 +334,7 @@ SceneObject* TangibleObject::getContainer() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 25);
+		ORBMethodInvocation invocation(this, 26);
 
 		return (SceneObject*) invocation.executeWithObjectReturn();
 	} else
@@ -334,7 +346,7 @@ unicode& TangibleObject::getName() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 26);
+		ORBMethodInvocation invocation(this, 27);
 
 		invocation.executeWithUnicodeReturn(_return_getName);
 		return _return_getName;
@@ -347,7 +359,7 @@ string& TangibleObject::getTemplateName() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 27);
+		ORBMethodInvocation invocation(this, 28);
 
 		invocation.executeWithAsciiReturn(_return_getTemplateName);
 		return _return_getTemplateName;
@@ -360,7 +372,7 @@ string& TangibleObject::getTemplateTypeName() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 28);
+		ORBMethodInvocation invocation(this, 29);
 
 		invocation.executeWithAsciiReturn(_return_getTemplateTypeName);
 		return _return_getTemplateTypeName;
@@ -373,7 +385,7 @@ string& TangibleObject::getCustomizationString() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 29);
+		ORBMethodInvocation invocation(this, 30);
 
 		invocation.executeWithAsciiReturn(_return_getCustomizationString);
 		return _return_getCustomizationString;
@@ -386,7 +398,7 @@ int TangibleObject::getObjectSubType() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 30);
+		ORBMethodInvocation invocation(this, 31);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -398,7 +410,7 @@ unsigned int TangibleObject::getTemplateID() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 31);
+		ORBMethodInvocation invocation(this, 32);
 
 		return invocation.executeWithUnsignedIntReturn();
 	} else
@@ -410,7 +422,7 @@ int TangibleObject::getObjectCount() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 32);
+		ORBMethodInvocation invocation(this, 33);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -422,7 +434,7 @@ int TangibleObject::getConditionDamage() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 33);
+		ORBMethodInvocation invocation(this, 34);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -434,7 +446,7 @@ int TangibleObject::getMaxCondition() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 34);
+		ORBMethodInvocation invocation(this, 35);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -446,7 +458,7 @@ int TangibleObject::getCondition() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 35);
+		ORBMethodInvocation invocation(this, 36);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -510,48 +522,51 @@ Packet* TangibleObjectAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* 
 		resp->insertBoolean(isTicket());
 		break;
 	case 21:
-		resp->insertBoolean(isSurveyTool());
+		resp->insertBoolean(isTicketCollector());
 		break;
 	case 22:
-		setPersistent(inv->getBooleanParameter());
+		resp->insertBoolean(isSurveyTool());
 		break;
 	case 23:
-		setUpdated(inv->getBooleanParameter());
+		setPersistent(inv->getBooleanParameter());
 		break;
 	case 24:
-		setConditionDamage(inv->getSignedIntParameter());
+		setUpdated(inv->getBooleanParameter());
 		break;
 	case 25:
-		resp->insertLong(getContainer()->_getORBObjectID());
+		setConditionDamage(inv->getSignedIntParameter());
 		break;
 	case 26:
-		resp->insertUnicode(getName());
+		resp->insertLong(getContainer()->_getORBObjectID());
 		break;
 	case 27:
-		resp->insertAscii(getTemplateName());
+		resp->insertUnicode(getName());
 		break;
 	case 28:
-		resp->insertAscii(getTemplateTypeName());
+		resp->insertAscii(getTemplateName());
 		break;
 	case 29:
-		resp->insertAscii(getCustomizationString());
+		resp->insertAscii(getTemplateTypeName());
 		break;
 	case 30:
-		resp->insertSignedInt(getObjectSubType());
+		resp->insertAscii(getCustomizationString());
 		break;
 	case 31:
-		resp->insertInt(getTemplateID());
+		resp->insertSignedInt(getObjectSubType());
 		break;
 	case 32:
-		resp->insertSignedInt(getObjectCount());
+		resp->insertInt(getTemplateID());
 		break;
 	case 33:
-		resp->insertSignedInt(getConditionDamage());
+		resp->insertSignedInt(getObjectCount());
 		break;
 	case 34:
-		resp->insertSignedInt(getMaxCondition());
+		resp->insertSignedInt(getConditionDamage());
 		break;
 	case 35:
+		resp->insertSignedInt(getMaxCondition());
+		break;
+	case 36:
 		resp->insertSignedInt(getCondition());
 		break;
 	default:
@@ -619,6 +634,10 @@ bool TangibleObjectAdapter::isResource() {
 
 bool TangibleObjectAdapter::isTicket() {
 	return ((TangibleObjectImplementation*) impl)->isTicket();
+}
+
+bool TangibleObjectAdapter::isTicketCollector() {
+	return ((TangibleObjectImplementation*) impl)->isTicketCollector();
 }
 
 bool TangibleObjectAdapter::isSurveyTool() {

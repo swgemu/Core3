@@ -50,6 +50,8 @@ which carries forward this exception.
 #include "../../Zone.h"
 #include "../../objects.h"
 
+#include "../../objects/player/sui/listbox/SuiListBoxImplementation.h"
+
 #include "../bazaar/BazaarManager.h"
 #include "../bazaar/BazaarManagerImplementation.h"
 
@@ -414,38 +416,31 @@ void RadialManager::sendRadialResponseForSurveyToolRange(Player* player, SceneOb
 		return;
 	}
 	
-	string boxTitle = "@base_player:swg";
-	string boxText = "@survey:select_range";
-	
-	string range64 = "64m x 3pts";
-	string range128 = "128m x 4pts";
-	string range192 = "192m x 4pts";
-	string range256 = "256m x 5pts";
-	string range320 = "320m x 5pts";
 	string surveying = "surveying";
 	
 	int surveyMod = player->getSkillMod(surveying);
 	
-	ListBox* suiToolRangeBox = new ListBox(0xD44B7259, boxTitle, boxText, false);
+	SuiListBoxImplementation* suiToolRangeBox = new SuiListBoxImplementation(player, 0x7259);
+	suiToolRangeBox->setPromptTitle("@base_player:swg");
+	suiToolRangeBox->setPromptText("@survey:select_range");
 	
 	if (surveyMod >= 0)
-		suiToolRangeBox->addItem(range64);
+		suiToolRangeBox->addMenuItem("64m x 3pts");
 	
 	if (surveyMod > 20)
-		suiToolRangeBox->addItem(range128);
+		suiToolRangeBox->addMenuItem("128m x 4pts");
 	
 	if (surveyMod > 40)
-		suiToolRangeBox->addItem(range192);
+		suiToolRangeBox->addMenuItem("192m x 4pts");
 	
 	if (surveyMod > 60)
-		suiToolRangeBox->addItem(range256);
+		suiToolRangeBox->addMenuItem("256m x 5pts");
 
 	if (surveyMod > 80)
-		suiToolRangeBox->addItem(range320);
+		suiToolRangeBox->addMenuItem("320m x 5pts");
 	
-	suiToolRangeBox->generateMessage();
-	
-	player->sendMessage(suiToolRangeBox);
+	player->addSuiBox(suiToolRangeBox->deploy());
+	player->sendMessage(suiToolRangeBox->generateMessage());
 	
 	player->setSurveyTool((SurveyTool*)obj);
 }

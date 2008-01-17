@@ -67,6 +67,11 @@ core3_IDLS =	server/zone/Zone.cpp \
 		server/zone/objects/creature/mount/MountCreature.cpp \
 		server/zone/objects/player/Player.cpp \
 		server/zone/objects/player/PlayerObject.cpp \
+		server/zone/objects/player/sui/SuiBox.cpp \
+		server/zone/objects/player/sui/listbox/SuiListBox.cpp \
+		server/zone/objects/player/sui/messagebox/SuiMessageBox.cpp \
+		server/zone/objects/player/sui/inputBox/SuiInputBox.cpp \
+		server/zone/objects/player/sui/transferBox/SuiTransferBox.cpp \
 		server/zone/objects/tangible/TangibleObject.cpp \
 		server/zone/objects/tangible/Container.cpp \
 		server/zone/objects/tangible/Inventory.cpp \
@@ -156,10 +161,17 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/TangibleObjectImplementation.cpp \
 		server/zone/objects/tangible/lair/LairObjectImplementation.cpp \
 		server/zone/objects/tangible/surveytool/SurveyToolImplementation.cpp \
-    server/zone/objects/tangible/resource/ResourceContainerImplementation.cpp \
+    	server/zone/objects/tangible/resource/ResourceContainerImplementation.cpp \
+    	server/zone/objects/tangible/ticket/TicketImplementation.cpp \
+    	server/zone/objects/tangible/ticketcollector/TicketCollectorImplementation.cpp \
 		server/zone/objects/static/StaticObjectImplementation.cpp \
 		server/zone/objects/player/PlayerImplementation.cpp \
 		server/zone/objects/player/PlayerObjectImplementation.cpp \
+		server/zone/objects/player/sui/SuiBoxImplementation.cpp \
+		server/zone/objects/player/sui/listbox/SuiListBoxImplementation.cpp \
+		server/zone/objects/player/sui/messagebox/SuiMessageBoxImplementation.cpp \
+		server/zone/objects/player/sui/inputbox/SuiInputBoxImplementation.cpp \
+		server/zone/objects/player/sui/transferbox/SuiTransferBoxImplementation.cpp \
 		server/zone/objects/creature/CreatureImplementation.cpp \
 		server/zone/objects/creature/CreatureObjectImplementation.cpp \
 		server/zone/objects/creature/shuttle/ShuttleCreatureImplementation.cpp \
@@ -185,6 +197,7 @@ core3_SOURCES =	$(core3_IDLS) \
     server/zone/managers/resource/LocalResourceManagerImplementation.cpp \
 		server/zone/managers/bazaar/BazaarManagerImplementation.cpp \
 		server/zone/managers/bazaar/BazaarPlanetManagerImplementation.cpp \
+		server/zone/managers/sui/SuiManager.cpp \
 		server/chat/room/ChatRoomImplementation.cpp \
 		server/chat/ChatManagerImplementation.cpp \
 		server/zone/packets/object/ObjectControllerMessage.cpp \

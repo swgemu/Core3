@@ -123,8 +123,6 @@ void ArmorImplementation::sendTo(Player* player, bool doClose) {
 	BaseMessage* tano3 = new TangibleObjectMessage3((TangibleObject*) _this);
 	client->sendMessage(tano3);
 	
-	generateAttributes(player);
-	
 	if (doClose)
 		SceneObjectImplementation::close(client);
 		
@@ -442,7 +440,6 @@ void ArmorImplementation::sliceArmor(Player* player){
 				break;
 			}
 		
-			sendTo(player);
 		} else
 			msg << "Armor is already sliced.";
 

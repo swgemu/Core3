@@ -121,7 +121,7 @@ void ResourceContainerImplementation::sendTo(Player* player, bool doClose) {
 	
 	sendDeltas(player);
 	
-	generateAttributes(player);
+	//generateAttributes(player);
 }
 
 void ResourceContainerImplementation::sendDeltas(Player* player) {

@@ -68,6 +68,8 @@ import "../waypoint/WaypointObject";
 
 import "../../../chat/room/ChatRoom";
 
+import "sui/SuiBox";
+
 interface Player implements CreatureObject {
 	Player(unsigned long oid);
 
@@ -271,6 +273,18 @@ interface Player implements CreatureObject {
 	void sendMessage(StandaloneBaseMessage msg);
 
 	boolean isJedi();
+	
+	// SuiBoxes
+	
+	boolean hasSuiBox(unsigned int boxID);
+
+	void removeSuiBox(unsigned int boxID);
+
+	SuiBox getSuiBox(unsigned int boxID);
+
+	void addSuiBox(SuiBox sui);
+
+	unsigned int getNewSuiBoxID(unsigned int type);
 
 	// getters
 	PlayerObject getPlayerObject();

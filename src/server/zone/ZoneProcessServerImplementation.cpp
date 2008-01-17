@@ -80,6 +80,7 @@ which carries forward this exception.
 #include "managers/group/GroupManager.h"
 #include "managers/skills/SkillManager.h"
 #include "managers/loot/LootManager.h"
+#include "managers/sui/SuiManager.h"
 
 ZoneProcessServerImplementation::ZoneProcessServerImplementation(ZoneServer* serv, int processingThreads) 
 		: ServiceMessageHandlerThread("ZoneProcessorServer") {
@@ -95,6 +96,7 @@ ZoneProcessServerImplementation::ZoneProcessServerImplementation(ZoneServer* ser
 	radialManager = new RadialManager();
 	groupManager = new GroupManager();
 	lootManager = new LootManager(this);
+	suiManager = new SuiManager(this);
 
 	scheduler->setLogging(false);
 }

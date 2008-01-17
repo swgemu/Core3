@@ -57,6 +57,7 @@ which carries forward this exception.
 #include "managers/radial/RadialManager.h"
 #include "managers/planet/PlanetManager.h"
 #include "managers/bazaar/BazaarManager.h"
+#include "managers/sui/SuiManager.h"
 
 #include "objects/terrain/PlanetNames.h"
 #include "objects/tangible/terminal/bazaar/RegionBazaar.h"
@@ -780,135 +781,7 @@ void ZonePacketHandler::handleSuiEventNotification(Message* pack) {
 	if (unk2 != 0)
 		pack->parseUnicode(value);
 	
-	switch (opcode) {
-	case 0x004D5553:
-		if (cancel != 1)
-			player->startPlayingMusic(value.c_str());
-		break;
-	case 0x0044414E:
-		if (cancel != 1)
-			player->startDancing(value.c_str());
-		break;
-	case 0xD44B7259:
-		int range = (atoi(value.c_str().c_str()) * 64) + 64;
-		
-		SurveyTool* surveyTool =  player->getSurveyTool();
-		
-		if (surveyTool != NULL)
-			surveyTool->setSurveyToolRange(range);
-		else
-			player->sendSystemMessage("Error, invalid tool.");
-		
-		break;
-	case 0xBEEFAAAA:	// slice weapon
-		if (cancel != 1) {
-			Inventory* inventory = player->getInventory(); 
-			
-			int itemindex = atoi(value.c_str().c_str());
-			int weaponCount = 0;
-
-			for (int i = 0; i < inventory->objectsSize(); i++) {
-				TangibleObject* item = (TangibleObject*) inventory->getObject(i);
-				
-				if (item->isWeapon()) {
-					Weapon* weapon = (Weapon*) item;
-	
-					if (!weapon->isSliced()) {
-						if (weaponCount == itemindex)
-							weapon->sliceWeapon(player);
-
-						weaponCount++;
-					}
-				}
-			}
-		}
-
-		break;
-
-	case 0xBEEFAABA:	// slice armor
-		if (cancel != 1) {
-			Inventory* inventory = player->getInventory(); 
-			
-			int itemindex = atoi(value.c_str().c_str());
-			int armorCount = 0;
-
-			for (int i = 0; i < inventory->objectsSize(); i++) {
-				TangibleObject* item = (TangibleObject*) inventory->getObject(i);
-				
-				if (item->isArmor()) {
-					Armor* armor = (Armor*) item;
-	
-					if (!armor->isSliced()) {
-						if (armorCount == itemindex)
-							armor->sliceArmor(player);
-
-						armorCount++;
-					}
-				}
-			}
-		}
-
-		break;
-		
-	case 0xBEEFAACA:	// repair weapon
-		if (cancel != 1) {
-			Inventory* inventory = player->getInventory(); 
-			
-			int itemindex = atoi(value.c_str().c_str());			
-			int weaponCount = 0;
-			
-			for (int i = 0; i < inventory->objectsSize(); i++) {
-				TangibleObject* item = (TangibleObject*) inventory->getObject(i);
-				
-				if (item->isWeapon()) {
-					Weapon* weapon = (Weapon*) item;
-
-					if (weaponCount == itemindex)
-						((TangibleObject*) weapon)->repairItem(player);
-					
-					weaponCount++;
-				}
-			}
-		}
-		
-		break;
-	case 0xBEEFAADA:	// repair armor
-		if (cancel != 1) {
-			Inventory* inventory = player->getInventory(); 
-			
-			int itemindex = atoi(value.c_str().c_str());			
-			int armorCount = 0;
-			
-			for (int i = 0; i < inventory->objectsSize(); i++) {
-				TangibleObject* item = (TangibleObject*) inventory->getObject(i);
-				
-				if (item->isArmor()) {
-					Armor* armor = (Armor*) item;
-
-					if (armorCount == itemindex)
-						((TangibleObject*) armor)->repairItem(player);
-					
-					armorCount++;
-				}
-			}
-		}
-		
-		break;
-	/*case 0x4347494C:
-		if (cancel != 1)
-			processServer->getGuildManager()->handleCreateGuildNameBox(player, value.c_str());
-		break;
-	case 0x47414242:
-		if (cancel != 1)
-			processServer->getGuildManager()->handleCreateGuildTagBox(player, value.c_str());
-		else
-			processServer->getGuildManager()->sendCreateGuildBox(player);
-		break;*/		
-	default:
-		//error("Unknown SuiEventNotification opcode");
-		break;
-	}
-
+	processServer->getSuiManager()->handleSuiEventNotification(opcode, player, cancel, value.c_str());
 }
 
 void ZonePacketHandler::handleAbortTradeMessage(Message* pack) {
@@ -1017,5 +890,3 @@ void ZonePacketHandler::handleBazaarScreens(Message* pack) {
    	RegionBazaar* bazaar = bazaarManager->getBazaar(bazaarId);
    	bazaar->getBazaarData(player, bazaarId, screen, extent, category, counter);
 }
-
-

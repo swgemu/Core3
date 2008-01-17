@@ -1542,12 +1542,12 @@ void CreatureObjectImplementation::setMaxWillpowerBar(uint32 will) {
 }
 
 void CreatureObjectImplementation::setMaxHAMBars(uint32 hp, uint32 ap, uint32 mp) {
-	healthMax = hp;
+	/*healthMax = hp;
 	actionMax = ap;
-	mindMax = mp;
+	mindMax = mp;*/
 	
 	CreatureObjectDeltaMessage6* dcreo6 = new CreatureObjectDeltaMessage6(_this);
-	dcreo6->updateMaximumPrimaryBars();
+	dcreo6->updateMaximumPrimaryBars(hp, ap, mp);
 	dcreo6->close();
 
 	broadcastMessage(dcreo6);
@@ -1989,19 +1989,21 @@ void CreatureObjectImplementation::startDancing(const string& anim) {
 	}
 
 	if (anim == "") {
-		string title = "Available dances";
-		string bodyText = "Pick a dance";
-		
-		ListBox* msg = new ListBox(0x0044414E, title, bodyText);
-		
-		for(int i = 0; i < 20; i++)
-			msg->addItem(dances[i]);
-		
-		msg->generateMessage();
-		
-		((PlayerImplementation*) this)->sendMessage(msg);
-		
-		return;
+		if (isPlayer()) {
+			PlayerImplementation* player = (PlayerImplementation*) this;
+
+			SuiListBoxImplementation* sui = new SuiListBoxImplementation((Player*) _this, 0x414E);
+			sui->setPromptTitle("Available dances");
+			sui->setPromptText("Pick a dance");
+
+			for(int i = 0; i < 20; i++)
+				sui->addMenuItem(dances[i]);
+			
+			player->addSuiBox(sui->deploy());
+
+			player->sendMessage(sui->generateMessage());
+			return;
+		}
 	}
 
 	if (anim == "basic" || anim == "0") {
@@ -2067,17 +2069,20 @@ void CreatureObjectImplementation::startPlayingMusic(const string& music) {
 	}
 
 	if (music == "") {
-		string title = "Available songs";
-		string bodyText = "Pick a song";
-		
-		ListBox* msg = new ListBox(0x004D5553, title, bodyText);
-		
-		for (int i = 0; i < 11; i++)
-			msg->addItem(songs[i]);
-		
-		msg->generateMessage();
-		
-		((PlayerImplementation*) this)->sendMessage(msg);
+		if (isPlayer()) {
+			PlayerImplementation* player = (PlayerImplementation*) this;
+
+			SuiListBoxImplementation* sui = new SuiListBoxImplementation((Player*) _this, 0x5553);
+			sui->setPromptText("Available songs");
+			sui->setPromptTitle("Pick a song");
+
+			for (int i = 0; i < 11; i++)
+				sui->addMenuItem(songs[i]);
+			
+			player->addSuiBox(sui->deploy());
+			
+			player->sendMessage(sui->generateMessage());
+		}
 		
 		return;
 	}

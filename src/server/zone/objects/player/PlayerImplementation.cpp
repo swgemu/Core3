@@ -57,6 +57,7 @@ which carries forward this exception.
 #include "../../managers/planet/PlanetManager.h"
 #include "../../managers/resource/LocalResourceManager.h"
 #include "../../managers/loot/LootManager.h"
+#include "../../managers/sui/SuiManager.h"
 
 #include "../../../chat/ChatManager.h"
 #include "../../../ServerCore.h"
@@ -106,6 +107,10 @@ PlayerImplementation::PlayerImplementation(uint64 cid) : PlayerServant(baseID = 
 PlayerImplementation::~PlayerImplementation() {
 	clearBuffs(false);
 	
+	for (int i = 0; i < suiBoxes.size(); ++i) {
+		delete suiBoxes.get(i);
+	}
+
 	if (playerObject != NULL) {
 		delete playerObject;
 		playerObject = NULL;
@@ -186,6 +191,10 @@ void PlayerImplementation::init() {
 	surveyErrorMessage = false;
 	sampleErrorMessage = false;
 	
+	suiBoxes.setInsertPlan(SortedVector<SuiBox*>::NO_DUPLICATE);
+	suiBoxes.setNullValue(NULL);
+	
+	suiBoxNextID = 0;
 	
 	setLogging(false);
 	setGlobalLogging(true);

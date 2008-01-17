@@ -70,6 +70,8 @@ which carries forward this exception.
 
 #include "../zone/managers/player/PlayerMapImplementation.h"
 
+#include "../zone/objects/player/sui/listbox/SuiListBoxImplementation.h"
+
 ChatManagerImplementation::ChatManagerImplementation(ZoneServer* serv, int initsize) : ChatManagerServant(), Mutex("ChatManager") {
 	server = serv;
 		
@@ -711,7 +713,9 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 				itemManager->purgeDbDeleted(player);
 			}	
 		} else if (cmd == "@sliceWeapon") {
-			ListBox* list = new ListBox(0xBEEFAAAA, "Weapon Upgrade Kit", "Select the item you wish to slice");
+			SuiListBoxImplementation* sui = new SuiListBoxImplementation(player, 0xAAAA);
+			sui->setPromptTitle("Weapon Upgrade Kit");
+			sui->setPromptText("Select the item you wish to slice");
 			
 			Inventory* inventory = player->getInventory();
 			
@@ -719,29 +723,31 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 				TangibleObject* item = (TangibleObject*) inventory->getObject(i);
 				
 				if (item->isWeapon() && !((Weapon*) item)->isSliced())
-					list->addItem(item->getName().c_str());	
+					sui->addMenuItem(item->getName().c_str());	
 			}
-					
-			list->generateMessage();
-
-			player->sendMessage(list);
-		} else if (cmd == "@sliceArmor") {
-			ListBox* list = new ListBox(0xBEEFAABA, "Armor Upgrade Kit", "Select the item you wish to slice");
 			
+			player->addSuiBox(sui->deploy());
+			player->sendMessage(sui->generateMessage());
+		} else if (cmd == "@sliceArmor") {
+			SuiListBoxImplementation* sui = new SuiListBoxImplementation(player, 0xAABA);
+			sui->setPromptTitle("Armor Upgrade Kit");
+			sui->setPromptText("Select the item you wish to slice");
+
 			Inventory* inventory = player->getInventory();
 			
 			for (int i = 0; i < inventory->objectsSize(); i++) {
 				TangibleObject* item = (TangibleObject*) inventory->getObject(i);
 				
 				if (item->isArmor() && !((Armor*) item)->isSliced())
-					list->addItem(item->getName().c_str());	
+					sui->addMenuItem(item->getName().c_str());	
 			}
 					
-			list->generateMessage();
-
-			player->sendMessage(list);
+			player->addSuiBox(sui->deploy());
+			player->sendMessage(sui->generateMessage());
 		} else if (cmd == "@repairWeapon") {
-			ListBox* list = new ListBox(0xBEEFAACA, "Weapon Repair Kit", "Select the item you wish to repair");
+			SuiListBoxImplementation* sui = new SuiListBoxImplementation(player, 0xAACA);
+			sui->setPromptTitle("Weapon Repair Kit");
+			sui->setPromptText("Select the item you wish to repair");
 			
 			Inventory* inventory = player->getInventory();
 
@@ -749,14 +755,15 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 				TangibleObject* item = (TangibleObject*) inventory->getObject(i);
 				
 				if (item->isWeapon())
-					list->addItem(item->getName().c_str());
+					sui->addMenuItem(item->getName().c_str());
 			}
 			
-			list->generateMessage();
-
-			player->sendMessage(list);
+			player->addSuiBox(sui->deploy());
+			player->sendMessage(sui->generateMessage());
 		} else if (cmd == "@repairArmor") {
-			ListBox* list = new ListBox(0xBEEFAADA, "Armor Repair Kit", "Select the item you wish to repair");
+			SuiListBoxImplementation* sui = new SuiListBoxImplementation(player, 0xAADA);
+			sui->setPromptTitle("Armor Repair Kit");
+			sui->setPromptText("Select the item you wish to repair");
 			
 			Inventory* inventory = player->getInventory();
 
@@ -764,12 +771,11 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 				TangibleObject* item = (TangibleObject*) inventory->getObject(i);
 				
 				if (item->isArmor())
-					list->addItem(item->getName().c_str());
+					sui->addMenuItem(item->getName().c_str());
 			}
 			
-			list->generateMessage();
-
-			player->sendMessage(list);
+			player->addSuiBox(sui->deploy());
+			player->sendMessage(sui->generateMessage());
 		} /*else if (cmd == "@open") {
 					CreatureObject* target = (CreatureObject*)player->getTarget();
 					if (target != NULL) {

@@ -62,6 +62,8 @@ which carries forward this exception.
 
 #include "../../objects.h"
 
+#include "../../objects/player/sui/messagebox/SuiMessageBoxImplementation.h"
+
 #include "../../managers/combat/CommandQueueAction.h"
 
 #include "ObjectControllerMessage.h"
@@ -696,16 +698,12 @@ void ObjectControllerMessage::parsePurchaseTicket(Player* player, Message *pack)
 	player->addInventoryItem(ticket);
     ticket->sendTo(player, true);
     
-    AttributeListMessage* tattr = new AttributeListMessage(ticket);
-    tattr->insertAttribute("travel_departure_planet", ticket->getDeparturePlanet());
-    tattr->insertAttribute("travel_departure_point", ticket->getDeparturePoint());
-    tattr->insertAttribute("travel_arrival_planet", ticket->getArrivalPlanet());
-    tattr->insertAttribute("travel_arrival_point", ticket->getArrivalPoint());
-    player->sendMessage(tattr);
+    SuiMessageBoxImplementation* sui = new SuiMessageBoxImplementation(player, 0xDAAD);
+    sui->setPromptTitle("@base_player:swg");
+    sui->setPromptText("@travel:ticket_purchase_complete");
     
-    MessageBox* sui = new MessageBox(0, "@base_player:swg", "@travel:ticket_purchase_complete");
-    player->sendMessage(sui);
-
+    player->addSuiBox(sui->deploy());
+    player->sendMessage(sui->generateMessage());
 }
 
 void ObjectControllerMessage::parseNpcConversationSelect(Player* player, Message* pack) {
@@ -727,27 +725,38 @@ void ObjectControllerMessage::parseGetAttributes(Player* player, Message* pack) 
 
 	unicode objectid;
 	pack->parseUnicode(objectid);
- 
-	uint64 objid = atoll(objectid.c_str().c_str());
- 
-	Zone* zone = (Zone*) player->getZone();
-	if (zone == NULL)
-		return;
- 
-	SceneObject* object = zone->lookupObject(objid); 
- 
-	if (object == NULL) {
-		object = player->getInventoryItem(objid);
+	
+	StringTokenizer ids(objectid.c_str());
+	
+	while (ids.hasMoreTokens()) {
+		uint64 objid = ids.getLongToken();
+		
+		if (objid == 0)
+			continue;
+		
+		Zone* zone = (Zone*) player->getZone();
+		if (zone == NULL)
+			return;
 
-		if (object == NULL)
-			object = player->getDatapadItem(objid);
+		SceneObject* object = zone->lookupObject(objid); 
 
-		if (object == NULL)
-			object = player->getWaypoint(objid);
+		if (object == NULL) {
+			object = player->getInventoryItem(objid);
+
+			if (object == NULL)
+				object = player->getDatapadItem(objid);
+
+			if (object == NULL)
+				object = player->getWaypoint(objid);
+		}
+
+		if (object != NULL)
+			object->generateAttributes(player);
+		else {
+			AttributeListMessage* msg = new AttributeListMessage(objid);
+			player->sendMessage(msg);
+		}
 	}
-
-	if (object != NULL)
-		object->generateAttributes(player);
 }
 
 void ObjectControllerMessage::parseRadialRequest(Player* player, Message* pack, RadialManager* radialManager) {

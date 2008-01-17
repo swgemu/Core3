@@ -71,8 +71,6 @@ public:
 
 	void sendTo(Player* player, bool doClose = true);
 
-	void generateAttributes(SceneObject* obj);
-
 	void decayWeapon(int decayRate);
 
 	void setWeaponStats(int modifier);
@@ -181,8 +179,6 @@ public:
 	Packet* invokeMethod(sys::uint32 methid, ORBMethodInvocation* inv);
 
 	void sendTo(Player* player, bool doClose);
-
-	void generateAttributes(SceneObject* obj);
 
 	void decayWeapon(int decayRate);
 

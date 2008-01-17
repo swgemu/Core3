@@ -55,6 +55,8 @@ class TangibleObject;
 
 class Player;
 
+class Ticket;
+
 #include "engine/service/Message.h"
 
 #include "../TangibleObject.h"
@@ -71,6 +73,8 @@ public:
 
 	int useObject(Player* player);
 
+	void useTicket(Player* player, Ticket* ticket);
+
 protected:
 };
 
@@ -83,6 +87,8 @@ public:
 	Packet* invokeMethod(sys::uint32 methid, ORBMethodInvocation* inv);
 
 	int useObject(Player* player);
+
+	void useTicket(Player* player, Ticket* ticket);
 
 };
 

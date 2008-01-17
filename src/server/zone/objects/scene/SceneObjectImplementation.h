@@ -55,9 +55,9 @@ which carries forward this exception.
 
 class Zone;
 class ZoneClient;
+class Player;
 
 class ZoneProcessServerImplementation;
-class Player;
 
 class SceneObjectImplementation : public QuadTreeEntry, public SceneObjectServant, public Logger {
 
@@ -144,8 +144,7 @@ public:
 		return 0;
 	}
 
-	inline virtual void generateAttributes(SceneObject* obj) {
-	}
+	virtual void generateAttributes(SceneObject* obj);
 	
 	// setters and getters
 	inline void setMovementCounter(uint32 cnt) {

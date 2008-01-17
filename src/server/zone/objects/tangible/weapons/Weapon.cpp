@@ -91,25 +91,12 @@ void Weapon::sendTo(Player* player, bool doClose) {
 		((WeaponImplementation*) _impl)->sendTo(player, doClose);
 }
 
-void Weapon::generateAttributes(SceneObject* obj) {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 7);
-		invocation.addObjectParameter(obj);
-
-		invocation.executeWithVoidReturn();
-	} else
-		((WeaponImplementation*) _impl)->generateAttributes(obj);
-}
-
 void Weapon::decayWeapon(int decayRate) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 8);
+		ORBMethodInvocation invocation(this, 7);
 		invocation.addSignedIntParameter(decayRate);
 
 		invocation.executeWithVoidReturn();
@@ -122,7 +109,7 @@ void Weapon::setWeaponStats(int modifier) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 9);
+		ORBMethodInvocation invocation(this, 8);
 		invocation.addSignedIntParameter(modifier);
 
 		invocation.executeWithVoidReturn();
@@ -135,7 +122,7 @@ void Weapon::sliceWeapon(Player* player) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 10);
+		ORBMethodInvocation invocation(this, 9);
 		invocation.addObjectParameter(player);
 
 		invocation.executeWithVoidReturn();
@@ -148,7 +135,7 @@ bool Weapon::decreaseDot0Uses() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 11);
+		ORBMethodInvocation invocation(this, 10);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -160,7 +147,7 @@ bool Weapon::decreaseDot1Uses() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 12);
+		ORBMethodInvocation invocation(this, 11);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -172,7 +159,7 @@ bool Weapon::decreaseDot2Uses() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 13);
+		ORBMethodInvocation invocation(this, 12);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -184,7 +171,7 @@ bool Weapon::isSliced() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 14);
+		ORBMethodInvocation invocation(this, 13);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -196,7 +183,7 @@ bool Weapon::isJedi() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 15);
+		ORBMethodInvocation invocation(this, 14);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -208,7 +195,7 @@ bool Weapon::isMelee() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 16);
+		ORBMethodInvocation invocation(this, 15);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -220,7 +207,7 @@ bool Weapon::isRanged() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 17);
+		ORBMethodInvocation invocation(this, 16);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -232,7 +219,7 @@ void Weapon::setDot0Uses(int uses) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 18);
+		ORBMethodInvocation invocation(this, 17);
 		invocation.addSignedIntParameter(uses);
 
 		invocation.executeWithVoidReturn();
@@ -245,7 +232,7 @@ void Weapon::setDot1Uses(int uses) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 19);
+		ORBMethodInvocation invocation(this, 18);
 		invocation.addSignedIntParameter(uses);
 
 		invocation.executeWithVoidReturn();
@@ -258,7 +245,7 @@ void Weapon::setDot2Uses(int uses) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 20);
+		ORBMethodInvocation invocation(this, 19);
 		invocation.addSignedIntParameter(uses);
 
 		invocation.executeWithVoidReturn();
@@ -271,7 +258,7 @@ int Weapon::getType() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 21);
+		ORBMethodInvocation invocation(this, 20);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -283,7 +270,7 @@ int Weapon::getCategory() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 22);
+		ORBMethodInvocation invocation(this, 21);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -295,7 +282,7 @@ int Weapon::getDamageType() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 23);
+		ORBMethodInvocation invocation(this, 22);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -307,7 +294,7 @@ float Weapon::getMinDamage() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 24);
+		ORBMethodInvocation invocation(this, 23);
 
 		return invocation.executeWithFloatReturn();
 	} else
@@ -319,7 +306,7 @@ float Weapon::getMaxDamage() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 25);
+		ORBMethodInvocation invocation(this, 24);
 
 		return invocation.executeWithFloatReturn();
 	} else
@@ -331,7 +318,7 @@ float Weapon::getAttackSpeed() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 26);
+		ORBMethodInvocation invocation(this, 25);
 
 		return invocation.executeWithFloatReturn();
 	} else
@@ -343,7 +330,7 @@ int Weapon::getHealthAttackCost() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 27);
+		ORBMethodInvocation invocation(this, 26);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -355,7 +342,7 @@ int Weapon::getActionAttackCost() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 28);
+		ORBMethodInvocation invocation(this, 27);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -367,7 +354,7 @@ int Weapon::getMindAttackCost() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 29);
+		ORBMethodInvocation invocation(this, 28);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -379,7 +366,7 @@ int Weapon::getPointBlankRange() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 30);
+		ORBMethodInvocation invocation(this, 29);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -391,7 +378,7 @@ int Weapon::getPointBlankAccuracy() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 31);
+		ORBMethodInvocation invocation(this, 30);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -403,7 +390,7 @@ int Weapon::getMaxRange() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 32);
+		ORBMethodInvocation invocation(this, 31);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -415,7 +402,7 @@ int Weapon::getMaxRangeAccuracy() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 33);
+		ORBMethodInvocation invocation(this, 32);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -427,7 +414,7 @@ int Weapon::getIdealRange() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 34);
+		ORBMethodInvocation invocation(this, 33);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -439,7 +426,7 @@ int Weapon::getIdealAccuracy() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 35);
+		ORBMethodInvocation invocation(this, 34);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -451,7 +438,7 @@ int Weapon::getWoundsRatio() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 36);
+		ORBMethodInvocation invocation(this, 35);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -463,7 +450,7 @@ int Weapon::getArmorPiercing() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 37);
+		ORBMethodInvocation invocation(this, 36);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -475,7 +462,7 @@ int Weapon::getDot0Type() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 38);
+		ORBMethodInvocation invocation(this, 37);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -487,7 +474,7 @@ int Weapon::getDot0Attribute() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 39);
+		ORBMethodInvocation invocation(this, 38);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -499,7 +486,7 @@ int Weapon::getDot0Strength() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 40);
+		ORBMethodInvocation invocation(this, 39);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -511,7 +498,7 @@ int Weapon::getDot0Duration() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 41);
+		ORBMethodInvocation invocation(this, 40);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -523,7 +510,7 @@ int Weapon::getDot0Potency() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 42);
+		ORBMethodInvocation invocation(this, 41);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -535,7 +522,7 @@ int Weapon::getDot0Uses() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 43);
+		ORBMethodInvocation invocation(this, 42);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -547,7 +534,7 @@ int Weapon::getDot1Type() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 44);
+		ORBMethodInvocation invocation(this, 43);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -559,7 +546,7 @@ int Weapon::getDot1Attribute() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 45);
+		ORBMethodInvocation invocation(this, 44);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -571,7 +558,7 @@ int Weapon::getDot1Strength() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 46);
+		ORBMethodInvocation invocation(this, 45);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -583,7 +570,7 @@ int Weapon::getDot1Duration() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 47);
+		ORBMethodInvocation invocation(this, 46);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -595,7 +582,7 @@ int Weapon::getDot1Potency() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 48);
+		ORBMethodInvocation invocation(this, 47);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -607,7 +594,7 @@ int Weapon::getDot1Uses() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 49);
+		ORBMethodInvocation invocation(this, 48);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -619,7 +606,7 @@ int Weapon::getDot2Type() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 50);
+		ORBMethodInvocation invocation(this, 49);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -631,7 +618,7 @@ int Weapon::getDot2Attribute() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 51);
+		ORBMethodInvocation invocation(this, 50);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -643,7 +630,7 @@ int Weapon::getDot2Strength() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 52);
+		ORBMethodInvocation invocation(this, 51);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -655,7 +642,7 @@ int Weapon::getDot2Duration() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 53);
+		ORBMethodInvocation invocation(this, 52);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -667,7 +654,7 @@ int Weapon::getDot2Potency() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 54);
+		ORBMethodInvocation invocation(this, 53);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -679,7 +666,7 @@ int Weapon::getDot2Uses() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 55);
+		ORBMethodInvocation invocation(this, 54);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -701,150 +688,147 @@ Packet* WeaponAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* inv) {
 		sendTo((Player*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
 	case 7:
-		generateAttributes((SceneObject*) inv->getObjectParameter());
-		break;
-	case 8:
 		decayWeapon(inv->getSignedIntParameter());
 		break;
-	case 9:
+	case 8:
 		setWeaponStats(inv->getSignedIntParameter());
 		break;
-	case 10:
+	case 9:
 		sliceWeapon((Player*) inv->getObjectParameter());
 		break;
-	case 11:
+	case 10:
 		resp->insertBoolean(decreaseDot0Uses());
 		break;
-	case 12:
+	case 11:
 		resp->insertBoolean(decreaseDot1Uses());
 		break;
-	case 13:
+	case 12:
 		resp->insertBoolean(decreaseDot2Uses());
 		break;
-	case 14:
+	case 13:
 		resp->insertBoolean(isSliced());
 		break;
-	case 15:
+	case 14:
 		resp->insertBoolean(isJedi());
 		break;
-	case 16:
+	case 15:
 		resp->insertBoolean(isMelee());
 		break;
-	case 17:
+	case 16:
 		resp->insertBoolean(isRanged());
 		break;
-	case 18:
+	case 17:
 		setDot0Uses(inv->getSignedIntParameter());
 		break;
-	case 19:
+	case 18:
 		setDot1Uses(inv->getSignedIntParameter());
 		break;
-	case 20:
+	case 19:
 		setDot2Uses(inv->getSignedIntParameter());
 		break;
-	case 21:
+	case 20:
 		resp->insertSignedInt(getType());
 		break;
-	case 22:
+	case 21:
 		resp->insertSignedInt(getCategory());
 		break;
-	case 23:
+	case 22:
 		resp->insertSignedInt(getDamageType());
 		break;
-	case 24:
+	case 23:
 		resp->insertFloat(getMinDamage());
 		break;
-	case 25:
+	case 24:
 		resp->insertFloat(getMaxDamage());
 		break;
-	case 26:
+	case 25:
 		resp->insertFloat(getAttackSpeed());
 		break;
-	case 27:
+	case 26:
 		resp->insertSignedInt(getHealthAttackCost());
 		break;
-	case 28:
+	case 27:
 		resp->insertSignedInt(getActionAttackCost());
 		break;
-	case 29:
+	case 28:
 		resp->insertSignedInt(getMindAttackCost());
 		break;
-	case 30:
+	case 29:
 		resp->insertSignedInt(getPointBlankRange());
 		break;
-	case 31:
+	case 30:
 		resp->insertSignedInt(getPointBlankAccuracy());
 		break;
-	case 32:
+	case 31:
 		resp->insertSignedInt(getMaxRange());
 		break;
-	case 33:
+	case 32:
 		resp->insertSignedInt(getMaxRangeAccuracy());
 		break;
-	case 34:
+	case 33:
 		resp->insertSignedInt(getIdealRange());
 		break;
-	case 35:
+	case 34:
 		resp->insertSignedInt(getIdealAccuracy());
 		break;
-	case 36:
+	case 35:
 		resp->insertSignedInt(getWoundsRatio());
 		break;
-	case 37:
+	case 36:
 		resp->insertSignedInt(getArmorPiercing());
 		break;
-	case 38:
+	case 37:
 		resp->insertSignedInt(getDot0Type());
 		break;
-	case 39:
+	case 38:
 		resp->insertSignedInt(getDot0Attribute());
 		break;
-	case 40:
+	case 39:
 		resp->insertSignedInt(getDot0Strength());
 		break;
-	case 41:
+	case 40:
 		resp->insertSignedInt(getDot0Duration());
 		break;
-	case 42:
+	case 41:
 		resp->insertSignedInt(getDot0Potency());
 		break;
-	case 43:
+	case 42:
 		resp->insertSignedInt(getDot0Uses());
 		break;
-	case 44:
+	case 43:
 		resp->insertSignedInt(getDot1Type());
 		break;
-	case 45:
+	case 44:
 		resp->insertSignedInt(getDot1Attribute());
 		break;
-	case 46:
+	case 45:
 		resp->insertSignedInt(getDot1Strength());
 		break;
-	case 47:
+	case 46:
 		resp->insertSignedInt(getDot1Duration());
 		break;
-	case 48:
+	case 47:
 		resp->insertSignedInt(getDot1Potency());
 		break;
-	case 49:
+	case 48:
 		resp->insertSignedInt(getDot1Uses());
 		break;
-	case 50:
+	case 49:
 		resp->insertSignedInt(getDot2Type());
 		break;
-	case 51:
+	case 50:
 		resp->insertSignedInt(getDot2Attribute());
 		break;
-	case 52:
+	case 51:
 		resp->insertSignedInt(getDot2Strength());
 		break;
-	case 53:
+	case 52:
 		resp->insertSignedInt(getDot2Duration());
 		break;
-	case 54:
+	case 53:
 		resp->insertSignedInt(getDot2Potency());
 		break;
-	case 55:
+	case 54:
 		resp->insertSignedInt(getDot2Uses());
 		break;
 	default:
@@ -856,10 +840,6 @@ Packet* WeaponAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* inv) {
 
 void WeaponAdapter::sendTo(Player* player, bool doClose) {
 	return ((WeaponImplementation*) impl)->sendTo(player, doClose);
-}
-
-void WeaponAdapter::generateAttributes(SceneObject* obj) {
-	return ((WeaponImplementation*) impl)->generateAttributes(obj);
 }
 
 void WeaponAdapter::decayWeapon(int decayRate) {

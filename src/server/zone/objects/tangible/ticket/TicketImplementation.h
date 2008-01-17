@@ -45,9 +45,9 @@ which carries forward this exception.
 #ifndef TICKETIMPLEMENTATION_H_
 #define TICKETIMPLEMENTATION_H_
 
-#include "../../player/Player.h"
-
 #include "Ticket.h"
+
+class Player;
 
 class TicketImplementation : public TicketServant {
 protected:
@@ -58,42 +58,12 @@ protected:
 	Player* ply;
 	
 public:
-	TicketImplementation(Player* player, uint32 tempCRC, const unicode& n, const string& tempn, const string& dpPlanet, const string& dpPoint, const string& arPlanet, const string& arPoint) 
-			: TicketServant(player->getNewItemID(), TICKET) {
-		objectCRC = tempCRC;
-		
-		name = n;
-	    departurePlanet = dpPlanet;
-	    departurePoint = dpPoint;
-	    arrivalPlanet = arPlanet;
-	    arrivalPoint = arPoint;
-	    
-		templateTypeName = "wearables_name";
-		templateName = tempn;
-		
-		ply = player;
-		
-	    setContainer((TangibleObject*) player->getInventory(), 0xFFFFFFFF);
-	}
+	TicketImplementation(Player* player, uint32 tempCRC, const unicode& n, const string& tempn, 
+			const string& dpPlanet, const string& dpPoint, const string& arPlanet, const string& arPoint);
 	
-	int useObject(Player* player) {
-		//player->switchMap(2); // -1090, -3558 bestine shuttle
-		
-		/*player->removeInventoryItem(objectID);
-		
-		if (arrivalPoint.compare("Bestine") == 0)
-			player->doWarp(-1090, -3558, 12.6);
-		else
-			player->doWarp(54, -5332, 52.6);*/
-    	//player->sendSystemMessage(getDeparturePlanet());
-    	
-    	
-    
-    	/*TODO: ORU PLEASE READ:
-     	* I don't know if what im doing above completely destroys the TangibleObject from the server.
-     	* This may be a big issue, someone point this out to oru!
-     	*/
-	}
+	void generateAttributes(SceneObject* obj);
+	
+	int useObject(Player* player);
 	
 	inline string& getDeparturePlanet() {
 		return departurePlanet;

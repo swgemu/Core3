@@ -50,6 +50,8 @@ which carries forward this exception.
 
 #include "../../player/Player.h"
 
+#include "../ticket/Ticket.h"
+
 #include "TicketCollector.h"
 
 #include "TicketCollectorImplementation.h"
@@ -88,6 +90,20 @@ int TicketCollector::useObject(Player* player) {
 		return ((TicketCollectorImplementation*) _impl)->useObject(player);
 }
 
+void TicketCollector::useTicket(Player* player, Ticket* ticket) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 7);
+		invocation.addObjectParameter(player);
+		invocation.addObjectParameter(ticket);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((TicketCollectorImplementation*) _impl)->useTicket(player, ticket);
+}
+
 /*
  *	TicketCollectorAdapter
  */
@@ -102,6 +118,9 @@ Packet* TicketCollectorAdapter::invokeMethod(uint32 methid, ORBMethodInvocation*
 	case 6:
 		resp->insertSignedInt(useObject((Player*) inv->getObjectParameter()));
 		break;
+	case 7:
+		useTicket((Player*) inv->getObjectParameter(), (Ticket*) inv->getObjectParameter());
+		break;
 	default:
 		return NULL;
 	}
@@ -111,6 +130,10 @@ Packet* TicketCollectorAdapter::invokeMethod(uint32 methid, ORBMethodInvocation*
 
 int TicketCollectorAdapter::useObject(Player* player) {
 	return ((TicketCollectorImplementation*) impl)->useObject(player);
+}
+
+void TicketCollectorAdapter::useTicket(Player* player, Ticket* ticket) {
+	return ((TicketCollectorImplementation*) impl)->useTicket(player, ticket);
 }
 
 /*

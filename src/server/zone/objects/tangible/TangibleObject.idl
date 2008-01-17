@@ -79,6 +79,8 @@ interface TangibleObject implements SceneObject {
 	boolean isResource();
 
 	boolean isTicket();
+	
+	boolean isTicketCollector();
 
 	boolean isSurveyTool();
 

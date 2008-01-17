@@ -101,6 +101,8 @@ public:
 
 	bool isTicket();
 
+	bool isTicketCollector();
+
 	bool isSurveyTool();
 
 	void setPersistent(bool pers);
@@ -179,6 +181,8 @@ public:
 	bool isResource();
 
 	bool isTicket();
+
+	bool isTicketCollector();
 
 	bool isSurveyTool();
 

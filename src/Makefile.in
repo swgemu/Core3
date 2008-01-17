@@ -94,7 +94,9 @@ am__objects_1 = Zone.$(OBJEXT) ZoneClient.$(OBJEXT) \
 	CreatureGroup.$(OBJEXT) ShuttleCreature.$(OBJEXT) \
 	TrainerCreature.$(OBJEXT) RecruiterCreature.$(OBJEXT) \
 	MountCreature.$(OBJEXT) Player.$(OBJEXT) \
-	PlayerObject.$(OBJEXT) TangibleObject.$(OBJEXT) \
+	PlayerObject.$(OBJEXT) SuiBox.$(OBJEXT) SuiListBox.$(OBJEXT) \
+	SuiMessageBox.$(OBJEXT) SuiInputBox.$(OBJEXT) \
+	SuiTransferBox.$(OBJEXT) TangibleObject.$(OBJEXT) \
 	Container.$(OBJEXT) Inventory.$(OBJEXT) Datapad.$(OBJEXT) \
 	Bank.$(OBJEXT) MissionBag.$(OBJEXT) Weapon.$(OBJEXT) \
 	JediWeapon.$(OBJEXT) RangedWeapon.$(OBJEXT) \
@@ -107,8 +109,8 @@ am__objects_1 = Zone.$(OBJEXT) ZoneClient.$(OBJEXT) \
 	Wearable.$(OBJEXT) Armor.$(OBJEXT) Ticket.$(OBJEXT) \
 	Terminal.$(OBJEXT) TravelTerminal.$(OBJEXT) \
 	GuildTerminal.$(OBJEXT) VendorTerminal.$(OBJEXT) \
-	TicketCollector.$(OBJEXT) Instrument.$(OBJEXT) \
-	LairObject.$(OBJEXT) SurveyTool.$(OBJEXT) \
+	RegionBazaar.$(OBJEXT) TicketCollector.$(OBJEXT) \
+	Instrument.$(OBJEXT) LairObject.$(OBJEXT) SurveyTool.$(OBJEXT) \
 	ResourceContainer.$(OBJEXT) Holocron.$(OBJEXT) \
 	Firework.$(OBJEXT) IntangibleObject.$(OBJEXT) \
 	StaticObject.$(OBJEXT) FireworkWorld.$(OBJEXT) \
@@ -143,9 +145,16 @@ am_core3_OBJECTS = $(am__objects_1) ServerCore.$(OBJEXT) \
 	LairObjectImplementation.$(OBJEXT) \
 	SurveyToolImplementation.$(OBJEXT) \
 	ResourceContainerImplementation.$(OBJEXT) \
+	TicketImplementation.$(OBJEXT) \
+	TicketCollectorImplementation.$(OBJEXT) \
 	StaticObjectImplementation.$(OBJEXT) \
 	PlayerImplementation.$(OBJEXT) \
 	PlayerObjectImplementation.$(OBJEXT) \
+	SuiBoxImplementation.$(OBJEXT) \
+	SuiListBoxImplementation.$(OBJEXT) \
+	SuiMessageBoxImplementation.$(OBJEXT) \
+	SuiInputBoxImplementation.$(OBJEXT) \
+	SuiTransferBoxImplementation.$(OBJEXT) \
 	CreatureImplementation.$(OBJEXT) \
 	CreatureObjectImplementation.$(OBJEXT) \
 	ShuttleCreatureImplementation.$(OBJEXT) \
@@ -167,7 +176,7 @@ am_core3_OBJECTS = $(am__objects_1) ServerCore.$(OBJEXT) \
 	LocalResourceManagerImplementation.$(OBJEXT) \
 	BazaarManagerImplementation.$(OBJEXT) \
 	BazaarPlanetManagerImplementation.$(OBJEXT) \
-	ChatRoomImplementation.$(OBJEXT) \
+	SuiManager.$(OBJEXT) ChatRoomImplementation.$(OBJEXT) \
 	ChatManagerImplementation.$(OBJEXT) \
 	ObjectControllerMessage.$(OBJEXT) main.$(OBJEXT)
 core3_OBJECTS = $(am_core3_OBJECTS)
@@ -306,6 +315,11 @@ core3_IDLS = server/zone/Zone.cpp \
 		server/zone/objects/creature/mount/MountCreature.cpp \
 		server/zone/objects/player/Player.cpp \
 		server/zone/objects/player/PlayerObject.cpp \
+		server/zone/objects/player/sui/SuiBox.cpp \
+		server/zone/objects/player/sui/listbox/SuiListBox.cpp \
+		server/zone/objects/player/sui/messagebox/SuiMessageBox.cpp \
+		server/zone/objects/player/sui/inputBox/SuiInputBox.cpp \
+		server/zone/objects/player/sui/transferBox/SuiTransferBox.cpp \
 		server/zone/objects/tangible/TangibleObject.cpp \
 		server/zone/objects/tangible/Container.cpp \
 		server/zone/objects/tangible/Inventory.cpp \
@@ -334,6 +348,7 @@ core3_IDLS = server/zone/Zone.cpp \
 		server/zone/objects/tangible/terminal/travel/TravelTerminal.cpp \
 		server/zone/objects/tangible/terminal/guild/GuildTerminal.cpp \
 		server/zone/objects/tangible/terminal/vendor/VendorTerminal.cpp \
+		server/zone/objects/tangible/terminal/bazaar/RegionBazaar.cpp \
 		server/zone/objects/tangible/ticketcollector/TicketCollector.cpp \
 		server/zone/objects/tangible/instrument/Instrument.cpp \
 		server/zone/objects/tangible/lair/LairObject.cpp \
@@ -394,10 +409,17 @@ core3_SOURCES = $(core3_IDLS) \
 		server/zone/objects/tangible/TangibleObjectImplementation.cpp \
 		server/zone/objects/tangible/lair/LairObjectImplementation.cpp \
 		server/zone/objects/tangible/surveytool/SurveyToolImplementation.cpp \
-    server/zone/objects/tangible/resource/ResourceContainerImplementation.cpp \
+    	server/zone/objects/tangible/resource/ResourceContainerImplementation.cpp \
+    	server/zone/objects/tangible/ticket/TicketImplementation.cpp \
+    	server/zone/objects/tangible/ticketcollector/TicketCollectorImplementation.cpp \
 		server/zone/objects/static/StaticObjectImplementation.cpp \
 		server/zone/objects/player/PlayerImplementation.cpp \
 		server/zone/objects/player/PlayerObjectImplementation.cpp \
+		server/zone/objects/player/sui/SuiBoxImplementation.cpp \
+		server/zone/objects/player/sui/listbox/SuiListBoxImplementation.cpp \
+		server/zone/objects/player/sui/messagebox/SuiMessageBoxImplementation.cpp \
+		server/zone/objects/player/sui/inputbox/SuiInputBoxImplementation.cpp \
+		server/zone/objects/player/sui/transferbox/SuiTransferBoxImplementation.cpp \
 		server/zone/objects/creature/CreatureImplementation.cpp \
 		server/zone/objects/creature/CreatureObjectImplementation.cpp \
 		server/zone/objects/creature/shuttle/ShuttleCreatureImplementation.cpp \
@@ -423,6 +445,7 @@ core3_SOURCES = $(core3_IDLS) \
     server/zone/managers/resource/LocalResourceManagerImplementation.cpp \
 		server/zone/managers/bazaar/BazaarManagerImplementation.cpp \
 		server/zone/managers/bazaar/BazaarPlanetManagerImplementation.cpp \
+		server/zone/managers/sui/SuiManager.cpp \
 		server/chat/room/ChatRoomImplementation.cpp \
 		server/chat/ChatManagerImplementation.cpp \
 		server/zone/packets/object/ObjectControllerMessage.cpp \
@@ -576,6 +599,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/RadialManager.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/RangedWeapon.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/RecruiterCreature.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/RegionBazaar.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ResourceContainer.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ResourceContainerImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ResourceManager.Po@am__quote@
@@ -596,6 +620,17 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SpawnLocation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/StaticObject.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/StaticObjectImplementation.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SuiBox.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SuiBoxImplementation.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SuiInputBox.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SuiInputBoxImplementation.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SuiListBox.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SuiListBoxImplementation.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SuiManager.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SuiMessageBox.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SuiMessageBoxImplementation.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SuiTransferBox.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SuiTransferBoxImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SurveyTool.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SurveyToolImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/TangibleObject.Po@am__quote@
@@ -603,6 +638,8 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Terminal.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Ticket.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/TicketCollector.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/TicketCollectorImplementation.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/TicketImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/TrainerCreature.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/TrainerCreatureImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/TravelTerminal.Po@am__quote@
@@ -822,6 +859,76 @@ PlayerObject.obj: server/zone/objects/player/PlayerObject.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/player/PlayerObject.cpp' object='PlayerObject.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o PlayerObject.obj `if test -f 'server/zone/objects/player/PlayerObject.cpp'; then $(CYGPATH_W) 'server/zone/objects/player/PlayerObject.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/player/PlayerObject.cpp'; fi`
+
+SuiBox.o: server/zone/objects/player/sui/SuiBox.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT SuiBox.o -MD -MP -MF $(DEPDIR)/SuiBox.Tpo -c -o SuiBox.o `test -f 'server/zone/objects/player/sui/SuiBox.cpp' || echo '$(srcdir)/'`server/zone/objects/player/sui/SuiBox.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/SuiBox.Tpo $(DEPDIR)/SuiBox.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/player/sui/SuiBox.cpp' object='SuiBox.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o SuiBox.o `test -f 'server/zone/objects/player/sui/SuiBox.cpp' || echo '$(srcdir)/'`server/zone/objects/player/sui/SuiBox.cpp
+
+SuiBox.obj: server/zone/objects/player/sui/SuiBox.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT SuiBox.obj -MD -MP -MF $(DEPDIR)/SuiBox.Tpo -c -o SuiBox.obj `if test -f 'server/zone/objects/player/sui/SuiBox.cpp'; then $(CYGPATH_W) 'server/zone/objects/player/sui/SuiBox.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/player/sui/SuiBox.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/SuiBox.Tpo $(DEPDIR)/SuiBox.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/player/sui/SuiBox.cpp' object='SuiBox.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o SuiBox.obj `if test -f 'server/zone/objects/player/sui/SuiBox.cpp'; then $(CYGPATH_W) 'server/zone/objects/player/sui/SuiBox.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/player/sui/SuiBox.cpp'; fi`
+
+SuiListBox.o: server/zone/objects/player/sui/listbox/SuiListBox.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT SuiListBox.o -MD -MP -MF $(DEPDIR)/SuiListBox.Tpo -c -o SuiListBox.o `test -f 'server/zone/objects/player/sui/listbox/SuiListBox.cpp' || echo '$(srcdir)/'`server/zone/objects/player/sui/listbox/SuiListBox.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/SuiListBox.Tpo $(DEPDIR)/SuiListBox.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/player/sui/listbox/SuiListBox.cpp' object='SuiListBox.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o SuiListBox.o `test -f 'server/zone/objects/player/sui/listbox/SuiListBox.cpp' || echo '$(srcdir)/'`server/zone/objects/player/sui/listbox/SuiListBox.cpp
+
+SuiListBox.obj: server/zone/objects/player/sui/listbox/SuiListBox.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT SuiListBox.obj -MD -MP -MF $(DEPDIR)/SuiListBox.Tpo -c -o SuiListBox.obj `if test -f 'server/zone/objects/player/sui/listbox/SuiListBox.cpp'; then $(CYGPATH_W) 'server/zone/objects/player/sui/listbox/SuiListBox.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/player/sui/listbox/SuiListBox.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/SuiListBox.Tpo $(DEPDIR)/SuiListBox.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/player/sui/listbox/SuiListBox.cpp' object='SuiListBox.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o SuiListBox.obj `if test -f 'server/zone/objects/player/sui/listbox/SuiListBox.cpp'; then $(CYGPATH_W) 'server/zone/objects/player/sui/listbox/SuiListBox.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/player/sui/listbox/SuiListBox.cpp'; fi`
+
+SuiMessageBox.o: server/zone/objects/player/sui/messagebox/SuiMessageBox.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT SuiMessageBox.o -MD -MP -MF $(DEPDIR)/SuiMessageBox.Tpo -c -o SuiMessageBox.o `test -f 'server/zone/objects/player/sui/messagebox/SuiMessageBox.cpp' || echo '$(srcdir)/'`server/zone/objects/player/sui/messagebox/SuiMessageBox.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/SuiMessageBox.Tpo $(DEPDIR)/SuiMessageBox.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/player/sui/messagebox/SuiMessageBox.cpp' object='SuiMessageBox.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o SuiMessageBox.o `test -f 'server/zone/objects/player/sui/messagebox/SuiMessageBox.cpp' || echo '$(srcdir)/'`server/zone/objects/player/sui/messagebox/SuiMessageBox.cpp
+
+SuiMessageBox.obj: server/zone/objects/player/sui/messagebox/SuiMessageBox.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT SuiMessageBox.obj -MD -MP -MF $(DEPDIR)/SuiMessageBox.Tpo -c -o SuiMessageBox.obj `if test -f 'server/zone/objects/player/sui/messagebox/SuiMessageBox.cpp'; then $(CYGPATH_W) 'server/zone/objects/player/sui/messagebox/SuiMessageBox.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/player/sui/messagebox/SuiMessageBox.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/SuiMessageBox.Tpo $(DEPDIR)/SuiMessageBox.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/player/sui/messagebox/SuiMessageBox.cpp' object='SuiMessageBox.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o SuiMessageBox.obj `if test -f 'server/zone/objects/player/sui/messagebox/SuiMessageBox.cpp'; then $(CYGPATH_W) 'server/zone/objects/player/sui/messagebox/SuiMessageBox.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/player/sui/messagebox/SuiMessageBox.cpp'; fi`
+
+SuiInputBox.o: server/zone/objects/player/sui/inputBox/SuiInputBox.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT SuiInputBox.o -MD -MP -MF $(DEPDIR)/SuiInputBox.Tpo -c -o SuiInputBox.o `test -f 'server/zone/objects/player/sui/inputBox/SuiInputBox.cpp' || echo '$(srcdir)/'`server/zone/objects/player/sui/inputBox/SuiInputBox.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/SuiInputBox.Tpo $(DEPDIR)/SuiInputBox.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/player/sui/inputBox/SuiInputBox.cpp' object='SuiInputBox.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o SuiInputBox.o `test -f 'server/zone/objects/player/sui/inputBox/SuiInputBox.cpp' || echo '$(srcdir)/'`server/zone/objects/player/sui/inputBox/SuiInputBox.cpp
+
+SuiInputBox.obj: server/zone/objects/player/sui/inputBox/SuiInputBox.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT SuiInputBox.obj -MD -MP -MF $(DEPDIR)/SuiInputBox.Tpo -c -o SuiInputBox.obj `if test -f 'server/zone/objects/player/sui/inputBox/SuiInputBox.cpp'; then $(CYGPATH_W) 'server/zone/objects/player/sui/inputBox/SuiInputBox.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/player/sui/inputBox/SuiInputBox.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/SuiInputBox.Tpo $(DEPDIR)/SuiInputBox.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/player/sui/inputBox/SuiInputBox.cpp' object='SuiInputBox.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o SuiInputBox.obj `if test -f 'server/zone/objects/player/sui/inputBox/SuiInputBox.cpp'; then $(CYGPATH_W) 'server/zone/objects/player/sui/inputBox/SuiInputBox.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/player/sui/inputBox/SuiInputBox.cpp'; fi`
+
+SuiTransferBox.o: server/zone/objects/player/sui/transferBox/SuiTransferBox.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT SuiTransferBox.o -MD -MP -MF $(DEPDIR)/SuiTransferBox.Tpo -c -o SuiTransferBox.o `test -f 'server/zone/objects/player/sui/transferBox/SuiTransferBox.cpp' || echo '$(srcdir)/'`server/zone/objects/player/sui/transferBox/SuiTransferBox.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/SuiTransferBox.Tpo $(DEPDIR)/SuiTransferBox.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/player/sui/transferBox/SuiTransferBox.cpp' object='SuiTransferBox.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o SuiTransferBox.o `test -f 'server/zone/objects/player/sui/transferBox/SuiTransferBox.cpp' || echo '$(srcdir)/'`server/zone/objects/player/sui/transferBox/SuiTransferBox.cpp
+
+SuiTransferBox.obj: server/zone/objects/player/sui/transferBox/SuiTransferBox.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT SuiTransferBox.obj -MD -MP -MF $(DEPDIR)/SuiTransferBox.Tpo -c -o SuiTransferBox.obj `if test -f 'server/zone/objects/player/sui/transferBox/SuiTransferBox.cpp'; then $(CYGPATH_W) 'server/zone/objects/player/sui/transferBox/SuiTransferBox.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/player/sui/transferBox/SuiTransferBox.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/SuiTransferBox.Tpo $(DEPDIR)/SuiTransferBox.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/player/sui/transferBox/SuiTransferBox.cpp' object='SuiTransferBox.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o SuiTransferBox.obj `if test -f 'server/zone/objects/player/sui/transferBox/SuiTransferBox.cpp'; then $(CYGPATH_W) 'server/zone/objects/player/sui/transferBox/SuiTransferBox.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/player/sui/transferBox/SuiTransferBox.cpp'; fi`
 
 TangibleObject.o: server/zone/objects/tangible/TangibleObject.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT TangibleObject.o -MD -MP -MF $(DEPDIR)/TangibleObject.Tpo -c -o TangibleObject.o `test -f 'server/zone/objects/tangible/TangibleObject.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/TangibleObject.cpp
@@ -1214,6 +1321,20 @@ VendorTerminal.obj: server/zone/objects/tangible/terminal/vendor/VendorTerminal.
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/terminal/vendor/VendorTerminal.cpp' object='VendorTerminal.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o VendorTerminal.obj `if test -f 'server/zone/objects/tangible/terminal/vendor/VendorTerminal.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/terminal/vendor/VendorTerminal.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/terminal/vendor/VendorTerminal.cpp'; fi`
+
+RegionBazaar.o: server/zone/objects/tangible/terminal/bazaar/RegionBazaar.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT RegionBazaar.o -MD -MP -MF $(DEPDIR)/RegionBazaar.Tpo -c -o RegionBazaar.o `test -f 'server/zone/objects/tangible/terminal/bazaar/RegionBazaar.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/terminal/bazaar/RegionBazaar.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/RegionBazaar.Tpo $(DEPDIR)/RegionBazaar.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/terminal/bazaar/RegionBazaar.cpp' object='RegionBazaar.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o RegionBazaar.o `test -f 'server/zone/objects/tangible/terminal/bazaar/RegionBazaar.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/terminal/bazaar/RegionBazaar.cpp
+
+RegionBazaar.obj: server/zone/objects/tangible/terminal/bazaar/RegionBazaar.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT RegionBazaar.obj -MD -MP -MF $(DEPDIR)/RegionBazaar.Tpo -c -o RegionBazaar.obj `if test -f 'server/zone/objects/tangible/terminal/bazaar/RegionBazaar.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/terminal/bazaar/RegionBazaar.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/terminal/bazaar/RegionBazaar.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/RegionBazaar.Tpo $(DEPDIR)/RegionBazaar.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/terminal/bazaar/RegionBazaar.cpp' object='RegionBazaar.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o RegionBazaar.obj `if test -f 'server/zone/objects/tangible/terminal/bazaar/RegionBazaar.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/terminal/bazaar/RegionBazaar.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/terminal/bazaar/RegionBazaar.cpp'; fi`
 
 TicketCollector.o: server/zone/objects/tangible/ticketcollector/TicketCollector.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT TicketCollector.o -MD -MP -MF $(DEPDIR)/TicketCollector.Tpo -c -o TicketCollector.o `test -f 'server/zone/objects/tangible/ticketcollector/TicketCollector.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/ticketcollector/TicketCollector.cpp
@@ -2041,6 +2162,34 @@ ResourceContainerImplementation.obj: server/zone/objects/tangible/resource/Resou
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ResourceContainerImplementation.obj `if test -f 'server/zone/objects/tangible/resource/ResourceContainerImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/resource/ResourceContainerImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/resource/ResourceContainerImplementation.cpp'; fi`
 
+TicketImplementation.o: server/zone/objects/tangible/ticket/TicketImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT TicketImplementation.o -MD -MP -MF $(DEPDIR)/TicketImplementation.Tpo -c -o TicketImplementation.o `test -f 'server/zone/objects/tangible/ticket/TicketImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/ticket/TicketImplementation.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/TicketImplementation.Tpo $(DEPDIR)/TicketImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/ticket/TicketImplementation.cpp' object='TicketImplementation.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o TicketImplementation.o `test -f 'server/zone/objects/tangible/ticket/TicketImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/ticket/TicketImplementation.cpp
+
+TicketImplementation.obj: server/zone/objects/tangible/ticket/TicketImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT TicketImplementation.obj -MD -MP -MF $(DEPDIR)/TicketImplementation.Tpo -c -o TicketImplementation.obj `if test -f 'server/zone/objects/tangible/ticket/TicketImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/ticket/TicketImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/ticket/TicketImplementation.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/TicketImplementation.Tpo $(DEPDIR)/TicketImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/ticket/TicketImplementation.cpp' object='TicketImplementation.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o TicketImplementation.obj `if test -f 'server/zone/objects/tangible/ticket/TicketImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/ticket/TicketImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/ticket/TicketImplementation.cpp'; fi`
+
+TicketCollectorImplementation.o: server/zone/objects/tangible/ticketcollector/TicketCollectorImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT TicketCollectorImplementation.o -MD -MP -MF $(DEPDIR)/TicketCollectorImplementation.Tpo -c -o TicketCollectorImplementation.o `test -f 'server/zone/objects/tangible/ticketcollector/TicketCollectorImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/ticketcollector/TicketCollectorImplementation.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/TicketCollectorImplementation.Tpo $(DEPDIR)/TicketCollectorImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/ticketcollector/TicketCollectorImplementation.cpp' object='TicketCollectorImplementation.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o TicketCollectorImplementation.o `test -f 'server/zone/objects/tangible/ticketcollector/TicketCollectorImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/ticketcollector/TicketCollectorImplementation.cpp
+
+TicketCollectorImplementation.obj: server/zone/objects/tangible/ticketcollector/TicketCollectorImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT TicketCollectorImplementation.obj -MD -MP -MF $(DEPDIR)/TicketCollectorImplementation.Tpo -c -o TicketCollectorImplementation.obj `if test -f 'server/zone/objects/tangible/ticketcollector/TicketCollectorImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/ticketcollector/TicketCollectorImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/ticketcollector/TicketCollectorImplementation.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/TicketCollectorImplementation.Tpo $(DEPDIR)/TicketCollectorImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/ticketcollector/TicketCollectorImplementation.cpp' object='TicketCollectorImplementation.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o TicketCollectorImplementation.obj `if test -f 'server/zone/objects/tangible/ticketcollector/TicketCollectorImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/ticketcollector/TicketCollectorImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/ticketcollector/TicketCollectorImplementation.cpp'; fi`
+
 StaticObjectImplementation.o: server/zone/objects/static/StaticObjectImplementation.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT StaticObjectImplementation.o -MD -MP -MF $(DEPDIR)/StaticObjectImplementation.Tpo -c -o StaticObjectImplementation.o `test -f 'server/zone/objects/static/StaticObjectImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/static/StaticObjectImplementation.cpp
 @am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/StaticObjectImplementation.Tpo $(DEPDIR)/StaticObjectImplementation.Po
@@ -2082,6 +2231,76 @@ PlayerObjectImplementation.obj: server/zone/objects/player/PlayerObjectImplement
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/player/PlayerObjectImplementation.cpp' object='PlayerObjectImplementation.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o PlayerObjectImplementation.obj `if test -f 'server/zone/objects/player/PlayerObjectImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/player/PlayerObjectImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/player/PlayerObjectImplementation.cpp'; fi`
+
+SuiBoxImplementation.o: server/zone/objects/player/sui/SuiBoxImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT SuiBoxImplementation.o -MD -MP -MF $(DEPDIR)/SuiBoxImplementation.Tpo -c -o SuiBoxImplementation.o `test -f 'server/zone/objects/player/sui/SuiBoxImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/player/sui/SuiBoxImplementation.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/SuiBoxImplementation.Tpo $(DEPDIR)/SuiBoxImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/player/sui/SuiBoxImplementation.cpp' object='SuiBoxImplementation.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o SuiBoxImplementation.o `test -f 'server/zone/objects/player/sui/SuiBoxImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/player/sui/SuiBoxImplementation.cpp
+
+SuiBoxImplementation.obj: server/zone/objects/player/sui/SuiBoxImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT SuiBoxImplementation.obj -MD -MP -MF $(DEPDIR)/SuiBoxImplementation.Tpo -c -o SuiBoxImplementation.obj `if test -f 'server/zone/objects/player/sui/SuiBoxImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/player/sui/SuiBoxImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/player/sui/SuiBoxImplementation.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/SuiBoxImplementation.Tpo $(DEPDIR)/SuiBoxImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/player/sui/SuiBoxImplementation.cpp' object='SuiBoxImplementation.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o SuiBoxImplementation.obj `if test -f 'server/zone/objects/player/sui/SuiBoxImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/player/sui/SuiBoxImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/player/sui/SuiBoxImplementation.cpp'; fi`
+
+SuiListBoxImplementation.o: server/zone/objects/player/sui/listbox/SuiListBoxImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT SuiListBoxImplementation.o -MD -MP -MF $(DEPDIR)/SuiListBoxImplementation.Tpo -c -o SuiListBoxImplementation.o `test -f 'server/zone/objects/player/sui/listbox/SuiListBoxImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/player/sui/listbox/SuiListBoxImplementation.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/SuiListBoxImplementation.Tpo $(DEPDIR)/SuiListBoxImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/player/sui/listbox/SuiListBoxImplementation.cpp' object='SuiListBoxImplementation.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o SuiListBoxImplementation.o `test -f 'server/zone/objects/player/sui/listbox/SuiListBoxImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/player/sui/listbox/SuiListBoxImplementation.cpp
+
+SuiListBoxImplementation.obj: server/zone/objects/player/sui/listbox/SuiListBoxImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT SuiListBoxImplementation.obj -MD -MP -MF $(DEPDIR)/SuiListBoxImplementation.Tpo -c -o SuiListBoxImplementation.obj `if test -f 'server/zone/objects/player/sui/listbox/SuiListBoxImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/player/sui/listbox/SuiListBoxImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/player/sui/listbox/SuiListBoxImplementation.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/SuiListBoxImplementation.Tpo $(DEPDIR)/SuiListBoxImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/player/sui/listbox/SuiListBoxImplementation.cpp' object='SuiListBoxImplementation.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o SuiListBoxImplementation.obj `if test -f 'server/zone/objects/player/sui/listbox/SuiListBoxImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/player/sui/listbox/SuiListBoxImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/player/sui/listbox/SuiListBoxImplementation.cpp'; fi`
+
+SuiMessageBoxImplementation.o: server/zone/objects/player/sui/messagebox/SuiMessageBoxImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT SuiMessageBoxImplementation.o -MD -MP -MF $(DEPDIR)/SuiMessageBoxImplementation.Tpo -c -o SuiMessageBoxImplementation.o `test -f 'server/zone/objects/player/sui/messagebox/SuiMessageBoxImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/player/sui/messagebox/SuiMessageBoxImplementation.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/SuiMessageBoxImplementation.Tpo $(DEPDIR)/SuiMessageBoxImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/player/sui/messagebox/SuiMessageBoxImplementation.cpp' object='SuiMessageBoxImplementation.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o SuiMessageBoxImplementation.o `test -f 'server/zone/objects/player/sui/messagebox/SuiMessageBoxImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/player/sui/messagebox/SuiMessageBoxImplementation.cpp
+
+SuiMessageBoxImplementation.obj: server/zone/objects/player/sui/messagebox/SuiMessageBoxImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT SuiMessageBoxImplementation.obj -MD -MP -MF $(DEPDIR)/SuiMessageBoxImplementation.Tpo -c -o SuiMessageBoxImplementation.obj `if test -f 'server/zone/objects/player/sui/messagebox/SuiMessageBoxImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/player/sui/messagebox/SuiMessageBoxImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/player/sui/messagebox/SuiMessageBoxImplementation.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/SuiMessageBoxImplementation.Tpo $(DEPDIR)/SuiMessageBoxImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/player/sui/messagebox/SuiMessageBoxImplementation.cpp' object='SuiMessageBoxImplementation.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o SuiMessageBoxImplementation.obj `if test -f 'server/zone/objects/player/sui/messagebox/SuiMessageBoxImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/player/sui/messagebox/SuiMessageBoxImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/player/sui/messagebox/SuiMessageBoxImplementation.cpp'; fi`
+
+SuiInputBoxImplementation.o: server/zone/objects/player/sui/inputbox/SuiInputBoxImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT SuiInputBoxImplementation.o -MD -MP -MF $(DEPDIR)/SuiInputBoxImplementation.Tpo -c -o SuiInputBoxImplementation.o `test -f 'server/zone/objects/player/sui/inputbox/SuiInputBoxImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/player/sui/inputbox/SuiInputBoxImplementation.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/SuiInputBoxImplementation.Tpo $(DEPDIR)/SuiInputBoxImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/player/sui/inputbox/SuiInputBoxImplementation.cpp' object='SuiInputBoxImplementation.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o SuiInputBoxImplementation.o `test -f 'server/zone/objects/player/sui/inputbox/SuiInputBoxImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/player/sui/inputbox/SuiInputBoxImplementation.cpp
+
+SuiInputBoxImplementation.obj: server/zone/objects/player/sui/inputbox/SuiInputBoxImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT SuiInputBoxImplementation.obj -MD -MP -MF $(DEPDIR)/SuiInputBoxImplementation.Tpo -c -o SuiInputBoxImplementation.obj `if test -f 'server/zone/objects/player/sui/inputbox/SuiInputBoxImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/player/sui/inputbox/SuiInputBoxImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/player/sui/inputbox/SuiInputBoxImplementation.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/SuiInputBoxImplementation.Tpo $(DEPDIR)/SuiInputBoxImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/player/sui/inputbox/SuiInputBoxImplementation.cpp' object='SuiInputBoxImplementation.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o SuiInputBoxImplementation.obj `if test -f 'server/zone/objects/player/sui/inputbox/SuiInputBoxImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/player/sui/inputbox/SuiInputBoxImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/player/sui/inputbox/SuiInputBoxImplementation.cpp'; fi`
+
+SuiTransferBoxImplementation.o: server/zone/objects/player/sui/transferbox/SuiTransferBoxImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT SuiTransferBoxImplementation.o -MD -MP -MF $(DEPDIR)/SuiTransferBoxImplementation.Tpo -c -o SuiTransferBoxImplementation.o `test -f 'server/zone/objects/player/sui/transferbox/SuiTransferBoxImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/player/sui/transferbox/SuiTransferBoxImplementation.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/SuiTransferBoxImplementation.Tpo $(DEPDIR)/SuiTransferBoxImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/player/sui/transferbox/SuiTransferBoxImplementation.cpp' object='SuiTransferBoxImplementation.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o SuiTransferBoxImplementation.o `test -f 'server/zone/objects/player/sui/transferbox/SuiTransferBoxImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/player/sui/transferbox/SuiTransferBoxImplementation.cpp
+
+SuiTransferBoxImplementation.obj: server/zone/objects/player/sui/transferbox/SuiTransferBoxImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT SuiTransferBoxImplementation.obj -MD -MP -MF $(DEPDIR)/SuiTransferBoxImplementation.Tpo -c -o SuiTransferBoxImplementation.obj `if test -f 'server/zone/objects/player/sui/transferbox/SuiTransferBoxImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/player/sui/transferbox/SuiTransferBoxImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/player/sui/transferbox/SuiTransferBoxImplementation.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/SuiTransferBoxImplementation.Tpo $(DEPDIR)/SuiTransferBoxImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/player/sui/transferbox/SuiTransferBoxImplementation.cpp' object='SuiTransferBoxImplementation.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o SuiTransferBoxImplementation.obj `if test -f 'server/zone/objects/player/sui/transferbox/SuiTransferBoxImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/player/sui/transferbox/SuiTransferBoxImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/player/sui/transferbox/SuiTransferBoxImplementation.cpp'; fi`
 
 CreatureImplementation.o: server/zone/objects/creature/CreatureImplementation.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT CreatureImplementation.o -MD -MP -MF $(DEPDIR)/CreatureImplementation.Tpo -c -o CreatureImplementation.o `test -f 'server/zone/objects/creature/CreatureImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/creature/CreatureImplementation.cpp
@@ -2432,6 +2651,20 @@ BazaarPlanetManagerImplementation.obj: server/zone/managers/bazaar/BazaarPlanetM
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/managers/bazaar/BazaarPlanetManagerImplementation.cpp' object='BazaarPlanetManagerImplementation.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o BazaarPlanetManagerImplementation.obj `if test -f 'server/zone/managers/bazaar/BazaarPlanetManagerImplementation.cpp'; then $(CYGPATH_W) 'server/zone/managers/bazaar/BazaarPlanetManagerImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/bazaar/BazaarPlanetManagerImplementation.cpp'; fi`
+
+SuiManager.o: server/zone/managers/sui/SuiManager.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT SuiManager.o -MD -MP -MF $(DEPDIR)/SuiManager.Tpo -c -o SuiManager.o `test -f 'server/zone/managers/sui/SuiManager.cpp' || echo '$(srcdir)/'`server/zone/managers/sui/SuiManager.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/SuiManager.Tpo $(DEPDIR)/SuiManager.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/managers/sui/SuiManager.cpp' object='SuiManager.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o SuiManager.o `test -f 'server/zone/managers/sui/SuiManager.cpp' || echo '$(srcdir)/'`server/zone/managers/sui/SuiManager.cpp
+
+SuiManager.obj: server/zone/managers/sui/SuiManager.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT SuiManager.obj -MD -MP -MF $(DEPDIR)/SuiManager.Tpo -c -o SuiManager.obj `if test -f 'server/zone/managers/sui/SuiManager.cpp'; then $(CYGPATH_W) 'server/zone/managers/sui/SuiManager.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/sui/SuiManager.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/SuiManager.Tpo $(DEPDIR)/SuiManager.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/managers/sui/SuiManager.cpp' object='SuiManager.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o SuiManager.obj `if test -f 'server/zone/managers/sui/SuiManager.cpp'; then $(CYGPATH_W) 'server/zone/managers/sui/SuiManager.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/sui/SuiManager.cpp'; fi`
 
 ChatRoomImplementation.o: server/chat/room/ChatRoomImplementation.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ChatRoomImplementation.o -MD -MP -MF $(DEPDIR)/ChatRoomImplementation.Tpo -c -o ChatRoomImplementation.o `test -f 'server/chat/room/ChatRoomImplementation.cpp' || echo '$(srcdir)/'`server/chat/room/ChatRoomImplementation.cpp

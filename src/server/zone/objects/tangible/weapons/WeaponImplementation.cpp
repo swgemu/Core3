@@ -154,8 +154,6 @@ void WeaponImplementation::sendTo(Player* player, bool doClose) {
 	/*Message* weao6 = new WeaponObjectMessage6(this);
 	client->sendMessage(weao6);*/
 	
-	generateAttributes(player);
-	
 	if (doClose)
 		SceneObjectImplementation::close(client);
 }
@@ -658,7 +656,6 @@ void WeaponImplementation::sliceWeapon(Player* player){
 				break;
 			}
 		
-			sendTo(player);
 		} else
 			msg << "Weapon is already sliced.";
 

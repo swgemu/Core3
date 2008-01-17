@@ -44,6 +44,7 @@ which carries forward this exception.
 
 import "../TangibleObject";
 import "../../player/Player";
+import "../ticket/Ticket";
 
 include "engine/service/Message";
 
@@ -52,4 +53,5 @@ interface TicketCollector implements TangibleObject {
 	
 	int useObject(Player player);
 	
+	void useTicket(Player player, Ticket ticket);
 }

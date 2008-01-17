@@ -53,7 +53,7 @@ interface Weapon implements TangibleObject {
 	
 	void sendTo(Player player, boolean doClose = true);
 	
-	void generateAttributes(SceneObject obj);
+	//void generateAttributes(SceneObject obj);
 	
 	void decayWeapon(int decayRate);
 	

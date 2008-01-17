@@ -81,6 +81,8 @@ class WaypointObject;
 
 class ChatRoom;
 
+class SuiBox;
+
 #include "../creature/CreatureObject.h"
 
 class Player : public CreatureObject {
@@ -312,6 +314,16 @@ public:
 	void sendMessage(StandaloneBaseMessage* msg);
 
 	bool isJedi();
+
+	bool hasSuiBox(unsigned int boxID);
+
+	void removeSuiBox(unsigned int boxID);
+
+	SuiBox* getSuiBox(unsigned int boxID);
+
+	void addSuiBox(SuiBox* sui);
+
+	unsigned int getNewSuiBoxID(unsigned int type);
 
 	PlayerObject* getPlayerObject();
 
@@ -657,6 +669,16 @@ public:
 	void sendMessage(StandaloneBaseMessage* msg);
 
 	bool isJedi();
+
+	bool hasSuiBox(unsigned int boxID);
+
+	void removeSuiBox(unsigned int boxID);
+
+	SuiBox* getSuiBox(unsigned int boxID);
+
+	void addSuiBox(SuiBox* sui);
+
+	unsigned int getNewSuiBoxID(unsigned int type);
 
 	PlayerObject* getPlayerObject();
 
