@@ -78,6 +78,8 @@ public:
 		} catch (...) {
 			player->unlock();
 		}
+		
+		return true;
 	}
 
 };

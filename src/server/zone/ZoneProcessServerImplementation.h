@@ -99,6 +99,7 @@ public:
 	void stop();
 
 	ServiceClient* createConnection(Socket* sock, SocketAddress& addr) {
+		return NULL;
 	}
 
 	// setters and getters	

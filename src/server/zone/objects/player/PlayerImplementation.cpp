@@ -645,6 +645,8 @@ void PlayerImplementation::insertToZone(Zone* zone) {
 
 		info("inserting to zone");
 		
+		_this->acquire();
+		
 		zone->registerObject(_this);
 
 		owner->balancePacketCheckupTime();
@@ -659,8 +661,6 @@ void PlayerImplementation::insertToZone(Zone* zone) {
 			zone->insert(this);
 			zone->inRange(this, 128);
 		}
-
-		_this->acquire();
 		
 		owner->resetPacketCheckupTime();
 
@@ -1455,7 +1455,7 @@ void PlayerImplementation::doClone() {
 		else if (faction == String::hashCode("imperial"))
 			doWarp(10.0f, -5480.0f, 0, true);
 		else
-			doWarp(96.0f, -5334.0f);
+			doWarp(0.5f, 1.5f, 0.3f, 0, 1590892);
 		
 		break;
 	}

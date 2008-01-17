@@ -337,7 +337,7 @@ interface Player implements CreatureObject {
 	
 	Datapad getDatapad();
 	
-	unsigned int getNewItemID();
+	unsigned long getNewItemID();
 
 	unsigned int getItemShift();
 	

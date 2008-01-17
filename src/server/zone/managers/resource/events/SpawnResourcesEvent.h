@@ -19,6 +19,8 @@ public:
 
 	bool activate() {
 		resources->theShift();
+		
+		return true;
 	}
 
 };

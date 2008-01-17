@@ -337,7 +337,7 @@ public:
 					if (combatEquil > 100)
 						combatEquil = 100;
 
-					if ((combatEquil >> 1) > System::random(100))
+					if ((combatEquil >> 1) > (int) System::random(100))
 						targetCreature->setPosture(CreatureObjectImplementation::UPRIGHT_POSTURE, true);
 				}
 			} else
@@ -374,7 +374,7 @@ public:
 					if (combatEquil > 100)
 						combatEquil = 100;
 				
-					if ((combatEquil >> 1) > System::random(100))
+					if ((combatEquil >> 1) > (int) System::random(100))
 						targetCreature->setPosture(CreatureObjectImplementation::UPRIGHT_POSTURE, true);
 				}
 			} else
@@ -444,7 +444,7 @@ public:
 		
 		if (weapon != NULL) {
 			if (weapon->getDot0Uses() != 0) {
-				if (System::random(100) < weapon->getDot0Potency()) {
+				if ((int) System::random(100) < weapon->getDot0Potency()) {
 					switch (weapon->getDot0Type()) {
 					case 1:
 						targetCreature->setBleedingState(weapon->getDot0Strength(), weapon->getDot0Attribute(), weapon->getDot0Duration());
@@ -470,7 +470,7 @@ public:
 			}
 			
 			if (weapon->getDot1Uses() != 0) {
-				if (System::random(100) < weapon->getDot1Potency()) {
+				if ((int) System::random(100) < weapon->getDot1Potency()) {
 					switch (weapon->getDot1Type()) {
 					case 1:
 						targetCreature->setBleedingState(weapon->getDot1Strength(), weapon->getDot1Attribute(), weapon->getDot1Duration());
@@ -496,7 +496,7 @@ public:
 			}
 			
 			if (weapon->getDot2Uses() != 0) {
-				if (System::random(100) < weapon->getDot2Potency()) {
+				if ((int) System::random(100) < weapon->getDot2Potency()) {
 					switch (weapon->getDot2Type()) {
 					case 1:
 						targetCreature->setBleedingState(weapon->getDot2Strength(), weapon->getDot2Attribute(), weapon->getDot2Duration());

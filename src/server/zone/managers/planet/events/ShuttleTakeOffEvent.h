@@ -59,6 +59,8 @@ public:
 
 	bool activate() {
 		planet->takeOffShuttles();
+		
+		return true;
 	}
 
 };

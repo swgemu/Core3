@@ -201,9 +201,9 @@ uint64 ObjectControllerMessage::parseDataTransformWithParent(Player* player, Mes
 		float speed = dist / deltaStamp;
 
 		if (speed > player->getSpeed() + 5) {
-			/*cout << "SpeedHack detected on player: [" << player->getFirstName() << "]\n";
+			cout << "SpeedHack detected on player: [" << player->getFirstName() << "]\n";
 			cout << "Player Speed:" << player->getSpeed() << " caught speed:" << speed << "\n";
-			cout << "disconnecting..\n";*//*
+			cout << "disconnecting..\n";
 			player->disconnect(true, false);
 			return 0;
 		}
@@ -236,6 +236,11 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player, Message* 
 
 	if (player->isIncapacitated() || player->isDead()) {
 		player->clearQueueAction(actioncntr, 0.0f, 1, 19);		
+		return;
+	}
+	
+	if (actionCRC == 0) {
+		player->clearQueueAction(actioncntr, 0.0f, 0, 0);		
 		return;
 	}
 	

@@ -76,6 +76,8 @@ public:
 		
 		object->release();
 		object = NULL;
+		
+		return true;
 	}
 
 };

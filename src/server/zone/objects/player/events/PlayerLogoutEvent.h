@@ -74,6 +74,8 @@ public:
 
 			player->unlock();
 		}
+		
+		return true;
 	}
 
 };

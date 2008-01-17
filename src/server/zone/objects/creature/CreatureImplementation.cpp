@@ -260,6 +260,7 @@ void CreatureImplementation::insertToZone(Zone* zone) {
 			((CellObject*)parent)->addChild(_this);
 			BuildingObject* building = (BuildingObject*)parent->getParent();
 			insertToBuilding(building);
+			building->notifyInsertToZone(_this);
 		} else { 
 			zone->insert(this);
 			zone->inRange(this, 128);
@@ -565,7 +566,8 @@ bool CreatureImplementation::activate() {
 
 		unlock();
 	}
-			
+	
+	return true;		
 }
 
 void CreatureImplementation::removeFromQueue() {

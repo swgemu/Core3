@@ -83,6 +83,8 @@ public:
 			cout << "Unreported exception caught in DizzyFallDownEvent::activate\n";
 			creature->unlock();
 		}
+		
+		return true;
 	}
 };
 

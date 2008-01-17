@@ -59,6 +59,8 @@ public:
 
 	bool activate() {
 		planet->landShuttles();
+		
+		return true;
 	}
 
 };

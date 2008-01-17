@@ -68,6 +68,8 @@ public:
 			cout << "Unreported exception caught in CenterOfBeingEvent::activate\n";
 			player->unlock();
 		}
+		
+		return true;
 	}
 	
 };

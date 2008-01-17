@@ -74,7 +74,8 @@ void CellObjectImplementation::insertToZone(Zone* zone) {
 void CellObjectImplementation::addChild(SceneObject* obj, bool doLock) {
 	wlock(doLock);
 	
-	children.put(obj);
+	if (children.put(obj) != -1)
+		obj->acquire();
 	
 	unlock(doLock);
 }
@@ -82,7 +83,8 @@ void CellObjectImplementation::addChild(SceneObject* obj, bool doLock) {
 void CellObjectImplementation::removeChild(SceneObject* obj, bool doLock) {
 	wlock(doLock);
 	
-	children.drop(obj);
+	if (children.drop(obj))
+		obj->release();
 	
 	unlock(doLock);
 }

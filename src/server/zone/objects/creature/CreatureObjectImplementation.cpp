@@ -2593,14 +2593,14 @@ void CreatureObjectImplementation::mountCreature(MountCreature* mnt, bool lockMo
 	mountCooldown.update();
 	mountCooldown.addMiliTime(3000);
 	
-	if (lockMount)
-		mount->wlock(_this);
-	
 	setPosture(UPRIGHT_POSTURE);
 	
 	parent = mount;
 	linkType = 4;
 	broadcastMessage(link(mount));
+	
+	if (lockMount)
+		mount->wlock(_this);
 
 	mount->setState(MOUNTEDCREATURE_STATE);
 	mount->updateStates();
@@ -2623,12 +2623,12 @@ void CreatureObjectImplementation::dismount(bool lockMount, bool ignoreCooldown)
 	mountCooldown.update();
 	mountCooldown.addMiliTime(1000);
 	
-	if (lockMount)
-		mount->wlock(_this);
-	
 	linkType = 4;
 	UpdateContainmentMessage* msg = new UpdateContainmentMessage(objectID, 0, 0xFFFFFFFF);
 	broadcastMessage(msg);
+	
+	if (lockMount)
+		mount->wlock(_this);
 	
 	mount->clearState(MOUNTEDCREATURE_STATE);
 	mount->updateStates();

@@ -797,7 +797,7 @@ public:
 	}
 	
 	bool addQueuedState(uint32 skillCRC) {
-		queuedStates.put(skillCRC, skillCRC);
+		return queuedStates.put(skillCRC, skillCRC);
 	}
 	
 	SkillModList* getSkillModList() {

@@ -227,9 +227,9 @@ public:
 		return zone;
 	}
 
-	inline string& getHairObject() {
+	/*inline string& getHairObject() {
 		//return hairObject;
-	}
+	}*/
 	
 	inline uint64 getNewItemID() {
 		return baseID + itemShift++;

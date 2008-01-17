@@ -73,7 +73,10 @@ public:
 		}
 		
 		creo->release();
+		
+		return true;
 	}
+	
 };
 
 #endif /*SELFENHANCEEVENT_H_*/

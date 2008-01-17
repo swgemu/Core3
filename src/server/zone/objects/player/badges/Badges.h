@@ -215,6 +215,7 @@ public:
 	}
 
 	bool hasBadge(int badgeindex) {
+		return false;
 	}
 
 	uint32 getBitmask(int index) {

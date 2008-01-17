@@ -72,6 +72,8 @@ public:
 		} catch (...) {
 			creo->unlock();
 		}
+		
+		return true;
 	}
 	
 };

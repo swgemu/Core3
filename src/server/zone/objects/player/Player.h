@@ -377,7 +377,7 @@ public:
 
 	Datapad* getDatapad();
 
-	unsigned int getNewItemID();
+	unsigned long long getNewItemID();
 
 	unsigned int getItemShift();
 
@@ -732,7 +732,7 @@ public:
 
 	Datapad* getDatapad();
 
-	unsigned int getNewItemID();
+	unsigned long long getNewItemID();
 
 	unsigned int getItemShift();
 

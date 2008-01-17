@@ -71,6 +71,8 @@ float CombatManager::handleAction(CommandQueueAction* action) {
 		return doTargetSkill(action);
 	else if (skill->isSelfSkill())
 		return doSelfSkill(action);
+		
+	return 0.0f;
 }
 
 float CombatManager::doTargetSkill(CommandQueueAction* action) {

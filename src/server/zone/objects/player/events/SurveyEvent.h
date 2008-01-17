@@ -75,6 +75,8 @@ public:
 			
 			cout << "Unhandled SurveyEvent exception.\n";
 		}
+		
+		return true;
 	}
 
 };

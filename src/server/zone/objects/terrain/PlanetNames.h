@@ -107,6 +107,8 @@ public:
 			if (name == PlanetNames[i])
 				return i;
 		}
+		
+		return -1;
 	}
 	
 };

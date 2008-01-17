@@ -51,27 +51,24 @@ class SkillBox;
 
 class Profession {
 protected:
-	
 	string name;
 	int type;
 	
 	Vector<SkillBox*> skillBoxes;
+	
 public:
-
 	const static int FOURBYFOUR = 1;
 	const static int ONEBYFOUR = 2;
 	const static int PYRAMID = 3;
-
-private:
-
-	virtual void getProfessionBoxes(Vector<SkillBox*>& boxes) {
-	}
 
 public:
 	Profession(string& Name, int Type) {
 		name = Name;
 		type = Type;
 	}
+	
+	virtual ~Profession() {
+	} 
 	
 	void setMasterBox(SkillBox* skillbox) {
 		skillBoxes.add(skillbox);
@@ -88,7 +85,12 @@ public:
 	inline SkillBox* getMasterBox() {
 		return skillBoxes.get(1);;
 	}
-	
+
+private:
+	virtual void getProfessionBoxes(Vector<SkillBox*>& boxes) {
+	}
+
+public:	
 	inline string& getName() {
 		return name;
 	}

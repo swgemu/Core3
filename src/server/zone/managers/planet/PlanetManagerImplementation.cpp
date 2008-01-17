@@ -127,9 +127,9 @@ void PlanetManagerImplementation::loadShuttles() {
 		terminal->insertToZone(zone);
 	} else if (zone->getZoneID() == 2) {
 		coordinates = new Coordinate(617, 6, 3090);
-		shuttle = creatureManager->spawnShuttle(planetName, "Trade Outpost", coordinates, 593.9, 3089, 13.1256);
+		shuttle = creatureManager->spawnShuttle(planetName, "TradeOutpost", coordinates, 593.9, 3089, 13.1256);
 		shuttle->setDirection(0, 0, -0.71, 0.70);
-		shuttleMap.put("Trade_Outpost", shuttle);
+		shuttleMap.put("TradeOutpost", shuttle);
 
 		TicketCollectorImplementation* colImpl = new TicketCollectorImplementation(shuttle, getNextStaticObjectID(false), unicode("Ticket Collector"), "ticket_travel", 598, 6, 3095);
 		colImpl->setDirection(0, 0, 1, 0);
@@ -142,9 +142,9 @@ void PlanetManagerImplementation::loadShuttles() {
 		terminal->insertToZone(zone);
 
 		coordinates = new Coordinate(-52, 18, -1585);
-		shuttle = creatureManager->spawnShuttle(planetName, "Science Outpost", coordinates, -74, -1583, 25.086);
+		shuttle = creatureManager->spawnShuttle(planetName, "ScienceOutpost", coordinates, -74, -1583, 25.086);
 		shuttle->setDirection(0, 0, 1, 0);
-		shuttleMap.put("Science_Outpost", shuttle);
+		shuttleMap.put("ScienceOutpost", shuttle);
 
 		colImpl = new TicketCollectorImplementation(shuttle, getNextStaticObjectID(false), unicode("Ticket Collector"), "ticket_travel", -68.9, 18, -1578);
 		colImpl->setDirection(0, 0, 1, 0);
@@ -157,9 +157,9 @@ void PlanetManagerImplementation::loadShuttles() {
 		terminal->insertToZone(zone);
 	} else if (zone->getZoneID() == 0) {
 		coordinates = new Coordinate(-331.2, 28, -4639.2);
-		shuttle = creatureManager->spawnShuttle(planetName, "Coronet #1", coordinates, -320, -4620, 28.6);
+		shuttle = creatureManager->spawnShuttle(planetName, "Coronet#1", coordinates, -320, -4620, 28.6);
 		shuttle->setDirection(0, 0, -0.71, 0.70);
-		shuttleMap.put("Coronet_#1", shuttle);
+		shuttleMap.put("Coronet#1", shuttle);
 
 		TicketCollectorImplementation* colImpl = new TicketCollectorImplementation(shuttle, getNextStaticObjectID(false), unicode("Ticket Collector"), "ticket_travel", -338, 28.6, -4634);
 		colImpl->setDirection(0, 0, 1, 0);
@@ -172,9 +172,9 @@ void PlanetManagerImplementation::loadShuttles() {
 		terminal->insertToZone(zone);
 		
 		coordinates = new Coordinate(-27.9, 28, -4406);
-		shuttle = creatureManager->spawnShuttle(planetName, "Coronet #2", coordinates, -18, -4388, 28.6);
+		shuttle = creatureManager->spawnShuttle(planetName, "Coronet#2", coordinates, -18, -4388, 28.6);
 		shuttle->setDirection(0, 0, -0.71, 0.70);
-		shuttleMap.put("Coronet_#2", shuttle);
+		shuttleMap.put("Coronet#2", shuttle);
 
 		colImpl = new TicketCollectorImplementation(shuttle, getNextStaticObjectID(false), unicode("Ticket Collector"), "ticket_travel", -34.2, 28.6, -4402);
 		colImpl->setDirection(0, 0, 1, 0);

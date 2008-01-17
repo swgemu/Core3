@@ -1902,14 +1902,14 @@ Datapad* Player::getDatapad() {
 		return ((PlayerImplementation*) _impl)->getDatapad();
 }
 
-unsigned int Player::getNewItemID() {
+unsigned long long Player::getNewItemID() {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
 		ORBMethodInvocation invocation(this, 147);
 
-		return invocation.executeWithUnsignedIntReturn();
+		return invocation.executeWithUnsignedLongReturn();
 	} else
 		return ((PlayerImplementation*) _impl)->getNewItemID();
 }
@@ -2607,7 +2607,7 @@ Packet* PlayerAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* inv) {
 		resp->insertLong(getDatapad()->_getORBObjectID());
 		break;
 	case 147:
-		resp->insertInt(getNewItemID());
+		resp->insertLong(getNewItemID());
 		break;
 	case 148:
 		resp->insertInt(getItemShift());
@@ -3243,7 +3243,7 @@ Datapad* PlayerAdapter::getDatapad() {
 	return ((PlayerImplementation*) impl)->getDatapad();
 }
 
-unsigned int PlayerAdapter::getNewItemID() {
+unsigned long long PlayerAdapter::getNewItemID() {
 	return ((PlayerImplementation*) impl)->getNewItemID();
 }
 

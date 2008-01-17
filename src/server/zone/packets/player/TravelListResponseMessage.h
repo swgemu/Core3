@@ -95,9 +95,9 @@ public:
         insertFloat(52.6);
         insertFloat(-5332);
         
-        /*insertFloat(-338);
+        insertFloat(-338);
         insertFloat(28);
-        insertFloat(-4634);*//*
+        insertFloat(-4634);
   
         insertInt(2); 
         insertInt(0xC8);

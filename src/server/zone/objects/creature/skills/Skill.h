@@ -93,10 +93,15 @@ public:
 		speedRatio = 1.0;
 	}
 	
+	virtual ~Skill() {
+	}
+	
 	virtual int getRequiredWeaponType() {
+		return -1;
 	}
 	
 	virtual int getAreaRange() {
+		return -1;
 	}
 	
 	void setAnimation(const string& ename) {

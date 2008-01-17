@@ -79,6 +79,8 @@ public:
 		
 		//now we launch it.
 		player->launchFirework();
+		
+		return 0;
 	}
 	
 };

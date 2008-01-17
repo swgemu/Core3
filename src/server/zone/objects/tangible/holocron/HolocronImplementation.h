@@ -74,6 +74,8 @@ public:
 		_this->sendDestroyTo(player);
 		
 		player->removeInventoryItem(objectID);
+		
+		return 0;
 	}
 	
 };
