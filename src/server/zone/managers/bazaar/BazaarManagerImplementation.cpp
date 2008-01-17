@@ -211,8 +211,6 @@ void BazaarManagerImplementation::addSaleItem(Player* player, long long objectid
 		return;
 	}
 	
-	player->removeInventoryItem(objectid);
-	
 	AuctionItem* item  = new AuctionItem();
 	
 	item->planet = planet;
@@ -236,6 +234,11 @@ void BazaarManagerImplementation::addSaleItem(Player* player, long long objectid
 	string str2 = "sale_fee";
 	unicode uni = unicode("");
 	int saleFee = 20;
+
+	player->wlock();
+
+	player->removeInventoryItem(objectid);
+	
 	
 	BaseMessage* msg = new ChatSystemMessage(str1, str2, uni, saleFee, true);
 	player->sendMessage(msg);
@@ -245,7 +248,9 @@ void BazaarManagerImplementation::addSaleItem(Player* player, long long objectid
 	
 	msg = new SceneObjectDestroyMessage(objectid);
 	player->sendMessage(msg);
-	
+
+	player->unlock();
+
 	// TODO: update bank account update item in database
 }
 

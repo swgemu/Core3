@@ -276,59 +276,149 @@ void ItemManagerImplementation::createPlayerObject(Player* player, ResultSet* re
 }
 
 void ItemManagerImplementation::loadDefaultPlayerItems(Player* player) {
-	// clothes
-	WearableImplementation* shirtImpl = new WearableImplementation(player, 0x0E08CD84, unicode("Sexah Shirt"), "shirt_s16", true);
-	player->addInventoryItem(shirtImpl->deploy());
-
-	WearableImplementation* pantsImpl = new WearableImplementation(player, 0x1D2E8B9A, unicode("Sexah Pants"), "pants_s21", true);
-	player->addInventoryItem(pantsImpl->deploy());
-
-	WearableImplementation* shoesImpl = new WearableImplementation(player, 0x08878496, unicode("Sexah Shoes"), "shoes_s02", true);
-	player->addInventoryItem(shoesImpl->deploy());
-
-	WearableImplementation* vestImpl = new WearableImplementation(player, 0x717D3696, unicode("Sexah Vest"), "vest_s09", true);
-	player->addInventoryItem(vestImpl->deploy());
-
-	// armors
-	ArmorImplementation	* chestImpl = new ArmorImplementation(player, 0x7B476F26, unicode("Composite Chestplate"), "armor_composite_chestplate", false);
-	chestImpl->setType(ArmorImplementation::CHEST);
-	player->addInventoryItem(chestImpl->deploy());
-
-	ArmorImplementation* helmetImpl = new ArmorImplementation(player, 0x9AF51EAA, unicode("Composite Helmet"), "armor_composite_helmet", false);
-	helmetImpl->setType(ArmorImplementation::HEAD);
-	player->addInventoryItem(helmetImpl->deploy());
-
-	ArmorImplementation* bootsImpl = new ArmorImplementation(player, 0xDB91E9DB, unicode("Composite Boots"), "armor_composite_boots", false);
-	bootsImpl->setType(ArmorImplementation::FOOT);
-	player->addInventoryItem(bootsImpl->deploy());
-
-	ArmorImplementation* glovesImpl = new ArmorImplementation(player, 0x2C35FFA2, unicode("Composite Gloves"), "armor_composite_gloves", false);
-	glovesImpl->setType(ArmorImplementation::HAND);
-	player->addInventoryItem(glovesImpl->deploy());
-	
-	ArmorImplementation* pants2Impl = new ArmorImplementation(player, 0xC294C432, unicode("Composite Leggings"), "armor_composite_pants", false);
-	pants2Impl->setType(ArmorImplementation::LEG);
-	player->addInventoryItem(pants2Impl->deploy());
-
-	ArmorImplementation* biceplImpl = new ArmorImplementation(player, 0x13A4DA11, unicode("Composite Bicep"), "armor_composite_bicep_l", false);
-	biceplImpl->setType(ArmorImplementation::BICEPL);
-	player->addInventoryItem(biceplImpl->deploy());
-
-	ArmorImplementation* biceprImpl = new ArmorImplementation(player, 0x63719F82, unicode("Composite Bicep"), "armor_composite_bicep_r", false);
-	biceprImpl->setType(ArmorImplementation::BICEPR);
-	player->addInventoryItem(biceprImpl->deploy());
-
-	ArmorImplementation* bracerlImpl = new ArmorImplementation(player, 0x4DB0192D, unicode("Composite Bracer"), "armor_composite_bracer_l", false);
-	bracerlImpl->setType(ArmorImplementation::BRACERL);
-	player->addInventoryItem(bracerlImpl->deploy());
-
-	ArmorImplementation* bracerrImpl = new ArmorImplementation(player, 0x3D655CBE, unicode("Composite Bracer"), "armor_composite_bracer_r", false);
-	bracerrImpl->setType(ArmorImplementation::BRACERR);
-	player->addInventoryItem(bracerrImpl->deploy());
-
-	// weapons
 	Weapon* weapon;
 	WeaponImplementation* weaoImpl;
+
+	if (player->getRaceFileName().find("wookie") !=string::npos) {
+		
+		// Wookie clothing
+		WearableImplementation* hoodImpl = new WearableImplementation(player, 0xF504D4EC, unicode("Wookie Hood"), "wke_hood_s02", true);
+		player->addInventoryItem(hoodImpl->deploy());
+
+		WearableImplementation* skirtImpl = new WearableImplementation(player, 0x756D77B0, unicode("Wookie Skirt"), "wke_skirt_s02", true);
+		player->addInventoryItem(skirtImpl->deploy());
+		
+		WearableImplementation* shirtImpl = new WearableImplementation(player, 0x7D7652BA, unicode("Wookie Shirt"), "wke_shirt_s02", true);
+		player->addInventoryItem(shirtImpl->deploy());
+
+		
+		// Wookie armor
+		ArmorImplementation	* chestImpl = new ArmorImplementation(player, 0xE11CC6F9, unicode("Kasshyykian Hunting Armor Chestplate"), "armor_kashyyykian_hunting_chest_plate", false);
+		chestImpl->setType(ArmorImplementation::CHEST);
+		player->addInventoryItem(chestImpl->deploy());
+
+		ArmorImplementation* pantsImpl = new ArmorImplementation(player, 0xF198491B, unicode("Kasshyykian Hunting Armor Leggings"), "armor_kashyyykian_hunting_leggings", false);
+		pantsImpl->setType(ArmorImplementation::LEG);
+		player->addInventoryItem(pantsImpl->deploy());
+
+		ArmorImplementation* bracerlImpl = new ArmorImplementation(player, 0x7EBC9404, unicode("Kasshyykian Hunting Armor Bracer"), "armor_kashyyykian_hunting_bracer_l", false);
+		bracerlImpl->setType(ArmorImplementation::BRACERL);
+		player->addInventoryItem(bracerlImpl->deploy());
+
+		ArmorImplementation* bracerrImpl = new ArmorImplementation(player, 0xE69D197, unicode("Kasshyykian Hunting Armor Bracer"), "armor_kashyyykian_hunting_bracer_r", false);
+		bracerrImpl->setType(ArmorImplementation::BRACERR);
+		player->addInventoryItem(bracerrImpl->deploy());
+
+		weaoImpl = new RifleRangedWeaponImplementation(player, "object/weapon/ranged/rifle/shared_rifle_bowcaster.iff", unicode("Bowcaster"), "bowcaster", false);
+		weaoImpl->setDamageType(WeaponImplementation::ENERGY);
+		weaoImpl->setArmorPiercing(WeaponImplementation::HEAVY);
+		player->addInventoryItem(weaoImpl->deploy());
+
+	} else if (player->getRaceFileName().find("ithorian") !=string::npos) {
+		
+		// clothes
+		WearableImplementation* shirtImpl = new WearableImplementation(player, 0xA141D2A4, unicode("Ithorian Shirt"), "ith_shirt_s02", true);
+		player->addInventoryItem(shirtImpl->deploy());
+
+		WearableImplementation* pantsImpl = new WearableImplementation(player, 0x9849E919, unicode("Sexah Pants"), "ith_pants_s02", true);
+		player->addInventoryItem(pantsImpl->deploy());
+
+		WearableImplementation* vestImpl = new WearableImplementation(player, 0xB8CF50D5, unicode("Sexah Vest"), "ith_vest_s02", true);
+		player->addInventoryItem(vestImpl->deploy());
+
+
+		// armors
+		ArmorImplementation	* chestImpl = new ArmorImplementation(player, 0x169D55D8, unicode("Ithorian Sentinel Armor Chestplate"), "ith_armor_s03_chest_plate", false);
+		chestImpl->setType(ArmorImplementation::CHEST);
+		player->addInventoryItem(chestImpl->deploy());
+
+		ArmorImplementation* helmetImpl = new ArmorImplementation(player, 0x24E0753F, unicode("Ithorian Sentinel Armor Helmet"), "ith_armor_s03_helmet", false);
+		helmetImpl->setType(ArmorImplementation::HEAD);
+		player->addInventoryItem(helmetImpl->deploy());
+
+		ArmorImplementation* bootsImpl = new ArmorImplementation(player, 0xECE5898D, unicode("Ithorian Sentinel Armor Boots"), "ith_armor_s03_boots", false);
+		bootsImpl->setType(ArmorImplementation::FOOT);
+		player->addInventoryItem(bootsImpl->deploy());
+
+		ArmorImplementation* glovesImpl = new ArmorImplementation(player, 0x92209437, unicode("Ithorian Sentinel Armor Gloves"), "ith_armor_s03_gloves", false);
+		glovesImpl->setType(ArmorImplementation::HAND);
+		player->addInventoryItem(glovesImpl->deploy());
+	
+		ArmorImplementation* pants2Impl = new ArmorImplementation(player, 0x2F35FD70, unicode("Ithorian Sentinel Armor Leggings"), "ith_armor_s03_leggings", false);
+		pants2Impl->setType(ArmorImplementation::LEG);
+		player->addInventoryItem(pants2Impl->deploy());
+
+		ArmorImplementation* biceplImpl = new ArmorImplementation(player, 0x877F6265, unicode("Ithorian Sentinel Armor Bicep"), "ith_armor_s03_bicep_l", false);
+		biceplImpl->setType(ArmorImplementation::BICEPL);
+		player->addInventoryItem(biceplImpl->deploy());
+
+		ArmorImplementation* biceprImpl = new ArmorImplementation(player, 0xF7AA27F6, unicode("Ithorian Sentinel Armor Bicep"), "ith_armor_s03_bicep_r", false);
+		biceprImpl->setType(ArmorImplementation::BICEPR);
+		player->addInventoryItem(biceprImpl->deploy());
+
+		ArmorImplementation* bracerlImpl = new ArmorImplementation(player, 0xA011206F, unicode("Ithorian Sentinel Armor Bracer"), "ith_armor_s03_bracer_l", false);
+		bracerlImpl->setType(ArmorImplementation::BRACERL);
+		player->addInventoryItem(bracerlImpl->deploy());
+
+		ArmorImplementation* bracerrImpl = new ArmorImplementation(player, 0xD0C465FC, unicode("Ithorian Sentinel Armor Bracer"), "ith_armor_s03_bracer_r", false);
+		bracerrImpl->setType(ArmorImplementation::BRACERR);
+		player->addInventoryItem(bracerrImpl->deploy());
+
+	} else {
+		
+		// clothes
+		WearableImplementation* shirtImpl = new WearableImplementation(player, 0x0E08CD84, unicode("Sexah Shirt"), "shirt_s16", true);
+		player->addInventoryItem(shirtImpl->deploy());
+
+		WearableImplementation* pantsImpl = new WearableImplementation(player, 0x1D2E8B9A, unicode("Sexah Pants"), "pants_s21", true);
+		player->addInventoryItem(pantsImpl->deploy());
+
+		WearableImplementation* shoesImpl = new WearableImplementation(player, 0x08878496, unicode("Sexah Shoes"), "shoes_s02", true);
+		player->addInventoryItem(shoesImpl->deploy());
+
+		WearableImplementation* vestImpl = new WearableImplementation(player, 0x717D3696, unicode("Sexah Vest"), "vest_s09", true);
+		player->addInventoryItem(vestImpl->deploy());
+
+		// armors
+		ArmorImplementation	* chestImpl = new ArmorImplementation(player, 0x7B476F26, unicode("Composite Chestplate"), "armor_composite_chestplate", false);
+		chestImpl->setType(ArmorImplementation::CHEST);
+		player->addInventoryItem(chestImpl->deploy());
+
+		ArmorImplementation* helmetImpl = new ArmorImplementation(player, 0x9AF51EAA, unicode("Composite Helmet"), "armor_composite_helmet", false);
+		helmetImpl->setType(ArmorImplementation::HEAD);
+		player->addInventoryItem(helmetImpl->deploy());
+
+		ArmorImplementation* bootsImpl = new ArmorImplementation(player, 0xDB91E9DB, unicode("Composite Boots"), "armor_composite_boots", false);
+		bootsImpl->setType(ArmorImplementation::FOOT);
+		player->addInventoryItem(bootsImpl->deploy());
+
+		ArmorImplementation* glovesImpl = new ArmorImplementation(player, 0x2C35FFA2, unicode("Composite Gloves"), "armor_composite_gloves", false);
+		glovesImpl->setType(ArmorImplementation::HAND);
+		player->addInventoryItem(glovesImpl->deploy());
+	
+		ArmorImplementation* pants2Impl = new ArmorImplementation(player, 0xC294C432, unicode("Composite Leggings"), "armor_composite_pants", false);
+		pants2Impl->setType(ArmorImplementation::LEG);
+		player->addInventoryItem(pants2Impl->deploy());
+
+		ArmorImplementation* biceplImpl = new ArmorImplementation(player, 0x13A4DA11, unicode("Composite Bicep"), "armor_composite_bicep_l", false);
+		biceplImpl->setType(ArmorImplementation::BICEPL);
+		player->addInventoryItem(biceplImpl->deploy());
+
+		ArmorImplementation* biceprImpl = new ArmorImplementation(player, 0x63719F82, unicode("Composite Bicep"), "armor_composite_bicep_r", false);
+		biceprImpl->setType(ArmorImplementation::BICEPR);
+		player->addInventoryItem(biceprImpl->deploy());
+
+		ArmorImplementation* bracerlImpl = new ArmorImplementation(player, 0x4DB0192D, unicode("Composite Bracer"), "armor_composite_bracer_l", false);
+		bracerlImpl->setType(ArmorImplementation::BRACERL);
+		player->addInventoryItem(bracerlImpl->deploy());
+
+		ArmorImplementation* bracerrImpl = new ArmorImplementation(player, 0x3D655CBE, unicode("Composite Bracer"), "armor_composite_bracer_r", false);
+		bracerrImpl->setType(ArmorImplementation::BRACERR);
+		player->addInventoryItem(bracerrImpl->deploy());
+
+	}
+	
+	// weapons
 
 	/*weaoImpl = new PolearmJediWeaponImplementation(player, "object/weapon/melee/polearm/crafted_saber/shared_sword_lightsaber_polearm_s2_gen4.iff", 
 	deployItemFor(player, weaoImpl, "Weapon");*/
