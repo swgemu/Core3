@@ -88,6 +88,29 @@ private:
 	
 	bool sliced;
 	
+	int skillMod0Type;
+	int skillMod0Value;
+
+	int skillMod1Type;
+	int skillMod1Value;
+
+	int skillMod2Type;
+	int skillMod2Value;
+	
+	int sockets;
+	
+	int socket0Type;
+	int socket0Value;
+
+	int socket1Type;
+	int socket1Value;
+
+	int socket2Type;
+	int socket2Value;
+
+	int socket3Type;
+	int socket3Value;
+	
 public:
 
 	static const int LIGHT = 0x10;
@@ -116,6 +139,8 @@ public:
 	void decayArmor(int decayRate);
 	
 	void generateAttributes(SceneObject* obj);
+	
+	void generateSkillMods(class AttributeListMessage* alm, int skillModType, int skillModValue);
 	
 	void sliceArmor(Player* player);
 	
@@ -225,7 +250,67 @@ public:
 	inline void setSliced(bool hacked) {
 		sliced = hacked;
 	}
+	
+	inline void setSkillMod0Type(int skillModType) {
+		skillMod0Type = skillModType;
+	}
 
+	inline void setSkillMod1Type(int skillModType) {
+		skillMod1Type = skillModType;
+	}
+
+	inline void setSkillMod2Type(int skillModType) {
+		skillMod2Type = skillModType;
+	}
+	
+	inline void setSkillMod0Value(int skillModValue) {
+		skillMod0Value = skillModValue;
+	}
+
+	inline void setSkillMod1Value(int skillModValue) {
+		skillMod1Value = skillModValue;
+	}
+	
+	inline void setSkillMod2Value(int skillModValue) {
+		skillMod2Value = skillModValue;
+	}
+
+	inline void setSockets(int socket) {
+		sockets = socket;
+	}
+	
+	inline void setSocket0Type(int socketType) {
+		socket0Type = socketType;
+	}
+
+	inline void setSocket1Type(int socketType) {
+		socket1Type = socketType;
+	}
+	
+	inline void setSocket2Type(int socketType) {
+		socket2Type = socketType;
+	}
+	
+	inline void setSocket3Type(int socketType) {
+		socket2Type = socketType;
+	}
+	
+	inline void setSocket0Value(int socketValue) {
+		socket0Value = socketValue;
+	}
+
+	inline void setSocket1Value(int socketValue) {
+		socket1Value = socketValue;
+	}
+	
+	inline void setSocket2Value(int socketValue) {
+		socket2Value = socketValue;
+	}
+	
+	inline void setSocket3Value(int socketValue) {
+		socket3Value = socketValue;
+	}
+	
 	// getters
 	inline int getRating() {
 		return rating;
@@ -326,6 +411,65 @@ public:
 	inline bool isSliced() {
 		return sliced;
 	}
-
+	
+	inline int getSkillMod0Type() {
+		return skillMod0Type;
+	}
+	
+	inline int getSkillMod1Type() {
+		return skillMod1Type;
+	}
+	
+	inline int getSkillMod2Type() {
+		return skillMod2Type;
+	}
+	
+	inline int getSkillMod0Value() {
+		return skillMod0Value;
+	}
+	
+	inline int getSkillMod1Value() {
+		return skillMod1Value;
+	}
+	
+	inline int getSkillMod2Value() {
+		return skillMod2Value;
+	}
+	
+	inline int getSockets() {
+		return sockets;
+	}
+	
+	inline int getSocket0Type() {
+		return socket0Type;
+	}
+	
+	inline int getSocket1Type() {
+		return socket0Type;
+	}
+	
+	inline int getSocket2Type() {
+		return socket0Type;
+	}
+	
+	inline int getSocket3Type() {
+		return socket0Type;
+	}
+	
+	inline int getSocket0Value() {
+		return socket0Value;
+	}
+	
+	inline int getSocket1Value() {
+		return socket1Value;
+	}
+	
+	inline int getSocket2Value() {
+		return socket2Value;
+	}
+	
+	inline int getSocket3Value() {
+		return socket3Value;
+	}
 };	
 #endif /*ARMORIMPLEMENTATION_H_*/

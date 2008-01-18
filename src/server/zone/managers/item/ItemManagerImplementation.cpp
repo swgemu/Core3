@@ -181,9 +181,15 @@ void ItemManagerImplementation::createPlayerObject(Player* player, ResultSet* re
 		weaponitem->setDot2Duration(result->getInt(64));
 		weaponitem->setDot2Potency(result->getInt(65));
 		weaponitem->setDot2Uses(result->getInt(66));
-		weaponitem->setSliced(result->getBoolean(67));	
+		weaponitem->setSliced(result->getBoolean(67));
+		weaponitem->setSkillMod0Type(result->getInt(68));
+		weaponitem->setSkillMod0Value(result->getInt(69));
+		weaponitem->setSkillMod1Type(result->getInt(70));
+		weaponitem->setSkillMod1Value(result->getInt(71));
+		weaponitem->setSkillMod2Type(result->getInt(72));
+		weaponitem->setSkillMod2Value(result->getInt(73));
 		break;
-	case TangibleObjectImplementation::CLOTH:
+	case TangibleObjectImplementation::CLOTHING:
 		item = new WearableImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
 		break;
 	case TangibleObjectImplementation::ARMOR:
@@ -216,8 +222,23 @@ void ItemManagerImplementation::createPlayerObject(Player* player, ResultSet* re
 		armoritem->setLightSaber(result->getFloat(47));
 		armoritem->setLightSaberIsSpecial(result->getBoolean(48));
 		armoritem->setSliced(result->getBoolean(67));
+		armoritem->setSkillMod0Type(result->getInt(68));
+		armoritem->setSkillMod0Value(result->getInt(69));
+		armoritem->setSkillMod1Type(result->getInt(70));
+		armoritem->setSkillMod1Value(result->getInt(71));
+		armoritem->setSkillMod2Type(result->getInt(72));
+		armoritem->setSkillMod2Value(result->getInt(73));
+		armoritem->setSockets(result->getInt(74));
+		armoritem->setSocket0Type(result->getInt(75));
+		armoritem->setSocket0Value(result->getInt(76));
+		armoritem->setSocket1Type(result->getInt(77));
+		armoritem->setSocket1Value(result->getInt(78));
+		armoritem->setSocket2Type(result->getInt(79));
+		armoritem->setSocket2Value(result->getInt(80));
+		armoritem->setSocket3Type(result->getInt(81));
+		armoritem->setSocket3Value(result->getInt(82));
 		break;
-	case TangibleObjectImplementation::TICKET:
+	case TangibleObjectImplementation::TRAVELTICKET:
 		break;
 	case TangibleObjectImplementation::TERMINAL:
 		break;
@@ -240,19 +261,19 @@ void ItemManagerImplementation::createPlayerObject(Player* player, ResultSet* re
 	case TangibleObjectImplementation::ORGANICSTRUCTURAL:
 		item = new ResourceContainerImplementation(objectid, objectcrc, objectname, objecttemp, player);
 		ResourceContainerImplementation* resourceItem = (ResourceContainerImplementation*) item;
-		resourceItem->setResourceID(result->getInt(68));
-		resourceItem->setContents(result->getInt(69));
-		resourceItem->setDecayResistance(result->getInt(70));
-		resourceItem->setQuality(result->getInt(71));
-		resourceItem->setFlavor(result->getInt(72));
-		resourceItem->setPotentialEnergy(result->getInt(73));
-		resourceItem->setMalleability(result->getInt(74));
-		resourceItem->setToughness(result->getInt(75));
-		resourceItem->setShockResistance(result->getInt(76));
-		resourceItem->setColdResistance(result->getInt(77));
-		resourceItem->setHeatResistance(result->getInt(78));
-		resourceItem->setConductivity(result->getInt(79));
-		resourceItem->setEntangleResistance(result->getInt(80));
+		resourceItem->setResourceID(result->getInt(83));
+		resourceItem->setContents(result->getInt(84));
+		resourceItem->setDecayResistance(result->getInt(85));
+		resourceItem->setQuality(result->getInt(86));
+		resourceItem->setFlavor(result->getInt(87));
+		resourceItem->setPotentialEnergy(result->getInt(88));
+		resourceItem->setMalleability(result->getInt(89));
+		resourceItem->setToughness(result->getInt(90));
+		resourceItem->setShockResistance(result->getInt(91));
+		resourceItem->setColdResistance(result->getInt(92));
+		resourceItem->setHeatResistance(result->getInt(93));
+		resourceItem->setConductivity(result->getInt(94));
+		resourceItem->setEntangleResistance(result->getInt(95));
 		break;
 	default:
 		item = new TangibleObjectImplementation(objectid, objectname, objecttemp, objectcrc, equipped);
@@ -271,6 +292,11 @@ void ItemManagerImplementation::createPlayerObject(Player* player, ResultSet* re
 	if (equipped && tano->isWeapon()) {
 		player->setWeapon((Weapon*) tano);
 		player->setWeaponSkillMods((Weapon*) tano);
+	}
+	
+	if (equipped && tano->isArmor()) {
+		tano->setEquipped(false);
+		player->changeArmor(tano->getObjectID(), true);
 	}
 	}
 }
@@ -680,7 +706,7 @@ void ItemManagerImplementation::createPlayerWeapon(Player* player, Weapon* item)
 	try { 
 		stringstream query;
 		query << "INSERT INTO `character_items` "
-			  << "(`item_id`,`character_id`,`name`,`template_crc`,`template_type`,`template_name`,`equipped`,`weapon_type`,`category`,`damage_type`,`min_damage`,`max_damage`,`attack_speed`,`health_attack_cost`,`action_attack_cost`,`mind_attack_cost`,`point_blank_accuracy`,`point_blank_range`,`ideal_range`,`ideal_accuracy`,`max_range`,`max_range_accuracy`,`wounds_ratio`,`armor_piercing`,`condition_damage`,`max_condition`,`dot0_type`,`dot0_attribute`,`dot0_strength`,`dot0_duration`,`dot0_potency`,`dot0_uses`,`dot1_type`,`dot1_attribute`,`dot1_strength`,`dot1_duration`,`dot1_potency`,`dot1_uses`,`dot2_type`,`dot2_attribute`,`dot2_strength`,`dot2_duration`,`dot2_potency`,`dot2_uses`,`sliced`)"
+			  << "(`item_id`,`character_id`,`name`,`template_crc`,`template_type`,`template_name`,`equipped`,`weapon_type`,`category`,`damage_type`,`min_damage`,`max_damage`,`attack_speed`,`health_attack_cost`,`action_attack_cost`,`mind_attack_cost`,`point_blank_accuracy`,`point_blank_range`,`ideal_range`,`ideal_accuracy`,`max_range`,`max_range_accuracy`,`wounds_ratio`,`armor_piercing`,`condition_damage`,`max_condition`,`dot0_type`,`dot0_attribute`,`dot0_strength`,`dot0_duration`,`dot0_potency`,`dot0_uses`,`dot1_type`,`dot1_attribute`,`dot1_strength`,`dot1_duration`,`dot1_potency`,`dot1_uses`,`dot2_type`,`dot2_attribute`,`dot2_strength`,`dot2_duration`,`dot2_potency`,`dot2_uses`,`sliced`,`skillmod0_type`,`skillmod0_value`,`skillmod1_type`,`skillmod1_value`,`skillmod2_type`,`skillmod2_value`)"
 			  << " VALUES(" << item->getObjectID() << "," << player->getCharacterID() 
 			  << ",'\\" << item->getName().c_str() << "'," 
 			  << item->getObjectCRC() << "," << item->getObjectSubType() << ",'" << item->getTemplateName() << "',"  
@@ -696,7 +722,8 @@ void ItemManagerImplementation::createPlayerWeapon(Player* player, Weapon* item)
 			  << item->getDot1Strength() << "," << item->getDot1Duration() << "," << item->getDot1Potency() << "," 
 			  << item->getDot1Uses() << "," << item->getDot2Type() << "," << item->getDot2Attribute() << "," 
 			  << item->getDot2Strength() << "," << item->getDot2Duration() << "," << item->getDot2Potency() << "," 
-			  << item->getDot2Uses() << "," << item->isSliced() << ")";
+			  << item->getDot2Uses() << "," << item->isSliced() << "," << item->getSkillMod0Type() << "," << item->getSkillMod0Value() << ","
+			  << item->getSkillMod1Type() << "," << item->getSkillMod1Value() << "," << item->getSkillMod2Type() << "," << item->getSkillMod2Value() << ")";
 		
 		ServerDatabase::instance()->executeStatement(query);
 		
@@ -710,7 +737,7 @@ void ItemManagerImplementation::createPlayerArmor(Player* player, Armor* item) {
 	try {
 		stringstream query;
 		query << "INSERT INTO `character_items` "
-			  << "(`item_id`,`character_id`,`name`,`template_crc`,`template_type`,`template_name`,`equipped`,`armor_piercing`,`armor_type`,`condition_damage`,`max_condition`,`health_encumb`,`action_encumb`,`mind_encumb`,`kinetic`,`kinetic_special`,`energy`,`energy_special`,`electricity`,`electricity_special`,`stun`,`stun_special`,`blast`,`blast_special`,`heat`,`heat_special`,`cold`,`cold_special`,`acid`,`acid_special`,`lightsaber`,`lightsaber_special`)"
+			  << "(`item_id`,`character_id`,`name`,`template_crc`,`template_type`,`template_name`,`equipped`,`armor_piercing`,`armor_type`,`condition_damage`,`max_condition`,`health_encumb`,`action_encumb`,`mind_encumb`,`kinetic`,`kinetic_special`,`energy`,`energy_special`,`electricity`,`electricity_special`,`stun`,`stun_special`,`blast`,`blast_special`,`heat`,`heat_special`,`cold`,`cold_special`,`acid`,`acid_special`,`lightsaber`,`lightsaber_special`,`sliced`,`skillmod0_type`,`skillmod0_value`,`skillmod1_type`,`skillmod1_value`,`skillmod2_type`,`skillmod2_value`,`sockets`,`socket0_type`,`socket0_value`,`socket1_type`,`socket1_value`,`socket2_type`,`socket2_value`,`socket3_type`,`socket3_value`)"
 			  << " VALUES(" << item->getObjectID() << "," << player->getCharacterID() 
 			  << ",'\\" << item->getName().c_str() << "'," 
 			  << item->getObjectCRC() << "," << item->getObjectSubType() << ",'" << item->getTemplateName() << "',"  
@@ -721,7 +748,12 @@ void ItemManagerImplementation::createPlayerArmor(Player* player, Armor* item) {
 			  << item->isElectricitySpecial() << "," << item->getStun() << "," << item->isStunSpecial() << "," 
 			  << item->getBlast() << "," << item->isBlastSpecial() << "," << item->getHeat() << "," << item->isHeatSpecial() << "," 
 			  << item->getCold() << "," << item->isColdSpecial() << "," << item->getAcid() << "," << item->isAcidSpecial() << "," 
-			  << item->getLightSaber() << "," << item->isLightSaberSpecial() << ")";
+			  << item->getLightSaber() << "," << item->isLightSaberSpecial() << "," << item->isSliced() << ","  
+			  << item->getSkillMod0Type() << "," << item->getSkillMod0Value() << "," << item->getSkillMod1Type() << "," 
+			  << item->getSkillMod1Value() << "," << item->getSkillMod2Type() << "," << item->getSkillMod2Value() << "," << item->getSockets() << ","
+			  << item->getSocket0Type() << "," << item->getSocket0Value() << "," << item->getSocket1Type() << "," 
+			  << item->getSocket1Value() << "," << item->getSocket2Type() << "," << item->getSocket2Value() << ","
+			  << item->getSocket3Type() << "," << item->getSocket3Value()<< ")";
 		
 		ServerDatabase::instance()->executeStatement(query);
 		
@@ -759,7 +791,10 @@ void ItemManagerImplementation::deletePlayerItem(Player* player, TangibleObject*
 	
 		ServerDatabase::instance()->executeStatement(query);
 
-		player->sendSystemMessage("Item deleted.");
+		stringstream playertxt;
+		playertxt << "You have destroyed " << item->getName().c_str() << ".";
+
+		player->sendSystemMessage(playertxt.str());
 	} catch (DatabaseException& e) {
 		cout << e.getMessage() << "\n";
 	}
@@ -843,7 +878,7 @@ void ItemManagerImplementation::showDbStats(Player* player) {
 		txt << "Top 10 Weapons by Max Damage\n";
 		
 		while (res->next()) {
-			if (res->getInt(4) == 2) {
+			if (res->getInt(4) == WeaponImplementation::WEAPON) {
 				txt << "ObjID: " << res->getUnsignedLong(0) << " Name: " << res->getString(2) 
 					<< "\\#ffffff MinDmg: " << res->getFloat(11) << " MaxDmg: " << res->getFloat(12) 
 					<< " Spd: " << res->getFloat(13) << "\n";
@@ -866,7 +901,7 @@ void ItemManagerImplementation::showDbStats(Player* player) {
 		txt << "Top 10 Weapons by DOT Strength\n";
 		
 		while (res->next()) {
-			if (res->getInt(4) == 2) {
+			if (res->getInt(4) == WeaponImplementation::WEAPON) {
 				txt << "ObjID: " << res->getUnsignedLong(0) << " Name: " << res->getString(2) 
 					<< "\\#ffffff MinDmg: " << res->getFloat(11) << " MaxDmg: " << res->getFloat(12) 
 					<< " Spd: " << res->getFloat(13) << " Strength: " << res->getInt(58) 
@@ -894,11 +929,11 @@ void ItemManagerImplementation::showDbDeleted(Player* player) {
 		stringstream txt;
 		
 		while (res->next()) {
-			if (res->getInt(4) == 2) {
+			if (res->getInt(4) == WeaponImplementation::WEAPON) {
 				txt << "ObjID: " << res->getUnsignedLong(0) << " Name: " << res->getString(2) 
 					<< "\\#ffffff MinDmg: " << res->getFloat(11) << " MaxDmg: " << res->getFloat(12) 
 					<< " Spd: " << res->getFloat(13) << "\n";
-			} else if (res->getInt(4) == 4) {
+			} else if (res->getInt(4) == ArmorImplementation::ARMOR) {
 				txt << "ObjID: " << res->getUnsignedLong(0) << " Name: " << res->getString(2) 
 				<< "\\#ffffff Resists: " << res->getFloat(31) << " " << res->getFloat(33) << " " 
 				<< res->getFloat(35) << " " << res->getFloat(36) << " " << res->getFloat(39) << " " 

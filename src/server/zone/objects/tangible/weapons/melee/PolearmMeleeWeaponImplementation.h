@@ -61,6 +61,7 @@ public:
 	}
 
 	void initialize() {
+		//objectSubType = POLEARM;
 		minDamage = 149;
 		maxDamage = 272;
 		attackSpeed = 3.0f;

@@ -87,18 +87,18 @@ protected:
 	uint32 pvpStatusBitmask;
 
 public:
-	static const int ROBE = 1;
+	//static const int ROBE = 1;
 	//static const int WEAPON = 2;
-	static const int CLOTH = 3;
+	//static const int CLOTH = 3;
 	//static const int ARMOR = 4;
 	static const int HAIR = 5;
 	static const int TICKET = 6;
 	static const int TERMINAL = 7;
 	static const int TICKETCOLLECTOR = 8;
-	static const int INSTRUMENT = 9;
+	//static const int INSTRUMENT = 9;
 	static const int LAIR = 10;
 	static const int HOLOCRON = 11;
-	static const int FIREWORK = 12;
+	//static const int FIREWORK = 12;
 	static const int SHIPCOMPONENT = 13;
 	
 	static const int RESOURCECONTAINER = 4194304;
@@ -127,6 +127,64 @@ public:
 	static const int FOOTARMOR = 263;
 	static const int SHIELDGENERATOR = 264;
 	
+	static const int DATA = 2048;
+	static const int DRAFTSCHEMATIC = 2049;
+	static const int MANUFACTURINGSCHEMATIC = 2050;
+	static const int MISSIONOBJECT = 2051;
+	static const int TOKEN = 2052;
+	static const int WAYPOINT = 2053;
+	static const int DATA2 = 2054;
+	static const int PETCONTROLDEVICE = 2055;
+	static const int VEHICLECONTROLDEVICE = 2056;
+	static const int SHIPCONTROLDEVICE = 2058;
+	static const int DROIDCONTROLDEVICE = 2059;
+
+	static const int MISC = 8192;
+	static const int AMMUNITION = 8193;
+	static const int CHEMICAL = 8194;
+	static const int CONTAINER = 8197;
+	static const int CRAFTINGSTATION = 8198;
+	static const int ELECTRONICS = 8200;
+	static const int FLORA = 8201;
+	static const int FOOD = 8202;
+	static const int FURNITURE = 8203;
+	static const int INSTRUMENT = 8204;
+	static const int PHARMACEUTICAL = 8205;
+	static const int SIGN = 8207;
+	static const int COUNTER = 8208;
+	static const int FACTORYCRATE = 8209;
+	static const int TRAVELTICKET = 8210;
+	static const int GENERICITEM = 8211;
+	static const int TRAP = 8212;
+	static const int WEARABLECONTAINER = 8213;
+	static const int FISHINGPOLE = 8214;
+	static const int FISHINGBAIT = 8215;
+	static const int DRINK = 8216;
+	static const int FIREWORK = 8217;
+	static const int ITEM = 8218;
+	static const int PETMEDECINE = 8219;
+	static const int FIREWORKSHOW = 8220;
+	static const int CLOTHINGATTACHMENT = 8221;
+	static const int LIVESAMPLE = 8222;
+	static const int ARMORATTACHMENT = 8223;
+	static const int COMMUNITYCRAFTINGPROJECT = 8224;
+	static const int CRYSTAL = 8225;
+	static const int DROIDPROGRAMMINGCHIP = 8226;
+	static const int ASTEROID = 8227;
+	static const int PILOTCHAIR = 8228;
+	static const int OPERATIONSCHAIR = 8229;
+	static const int TURRETACCESSLADDER = 8230;
+	static const int CONTAINER2 = 8231;
+
+	static const int TOOL = 32768;
+	static const int CRAFTINGTOOL = 32769;
+	//static const int SURVEYTOOL = 32770;
+	static const int REPAIRTOOL = 32771;
+	static const int CAMPKIT = 32772;
+	static const int SHIPCOMPONENTREPAIRITEM = 32773;
+	static const int VEHICLE = 65536;
+	static const int HOVERVEHICLE = 65537;
+	
 	static const int WEAPON = 131072;
 	static const int MELEEWEAPON = 131073;
 	static const int RANGEDWEAPON = 131074;
@@ -141,6 +199,33 @@ public:
 	static const int CARBINE = 131083;
 	static const int RIFLE = 131084;
 	
+	static const int DEED = 8388608;
+	static const int BUILDINGDEED = 8388609;
+	static const int INSTALLATIONDEED = 8388610;
+	static const int PETDEED = 8388611;
+	static const int DROIDDEED = 8388612;
+	static const int VEHICLEDEED = 8388613;
+
+	static const int CLOTHING = 16777216;
+	static const int BANDOLIER = 16777217;
+	static const int BELT = 16777218;
+	static const int BODYSUIT = 16777219;
+	static const int CAPE = 16777220;
+	static const int CLOAK = 16777221;
+	static const int FOOTWEAR = 16777222;
+	static const int DRESS = 16777223;
+	static const int HANDWEAR = 16777224;
+	static const int EYEWEAR = 16777225;
+	static const int HEADWEAR = 16777226;
+	static const int JACKET = 16777227;
+	static const int PANTS = 16777228;
+	static const int ROBE = 16777229;
+	static const int SHIRT = 16777230;
+	static const int VEST = 16777231;
+	static const int WOOKIEGARB = 16777232;
+	static const int MISCCLOTHING = 16777233;
+	static const int SKIRT = 16777234;
+
 public:
 	TangibleObjectImplementation(uint64 oid, int tp = 0);
 	TangibleObjectImplementation(uint64 oid, const unicode& name, const string& tempname, uint32 tempCRC, int tp = 0);
@@ -261,7 +346,7 @@ public:
 	}
 	
 	inline bool isTicket() {
-		return objectSubType == TICKET;
+		return objectSubType == TRAVELTICKET;
 	}
 	
 	inline bool isTicketCollector() {

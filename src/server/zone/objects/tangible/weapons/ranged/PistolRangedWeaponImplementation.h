@@ -61,6 +61,7 @@ public:
 	}
 
 	void initialize() {
+		//objectSubType = PISTOL;
 		damageType = ENERGY;
 		minDamage = 89;
 		maxDamage = 232;

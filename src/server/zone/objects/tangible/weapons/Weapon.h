@@ -167,6 +167,18 @@ public:
 
 	int getDot2Uses();
 
+	int getSkillMod0Type();
+
+	int getSkillMod1Type();
+
+	int getSkillMod2Type();
+
+	int getSkillMod0Value();
+
+	int getSkillMod1Value();
+
+	int getSkillMod2Value();
+
 protected:
 };
 
@@ -275,6 +287,18 @@ public:
 	int getDot2Potency();
 
 	int getDot2Uses();
+
+	int getSkillMod0Type();
+
+	int getSkillMod1Type();
+
+	int getSkillMod2Type();
+
+	int getSkillMod0Value();
+
+	int getSkillMod1Value();
+
+	int getSkillMod2Value();
 
 };
 

@@ -507,6 +507,12 @@ public:
 
 	unsigned int getNewHAMMaxUpdateCounter(int cnt);
 
+	unsigned int getHealthEncumbrance();
+
+	unsigned int getActionEncumbrance();
+
+	unsigned int getMindEncumbrance();
+
 	unsigned long long getTargetID();
 
 	SceneObject* getTarget();
@@ -1133,6 +1139,12 @@ public:
 	unsigned int getHAMMaxUpdateCounter();
 
 	unsigned int getNewHAMMaxUpdateCounter(int cnt);
+
+	unsigned int getHealthEncumbrance();
+
+	unsigned int getActionEncumbrance();
+
+	unsigned int getMindEncumbrance();
 
 	unsigned long long getTargetID();
 

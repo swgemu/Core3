@@ -61,6 +61,7 @@ public:
 	}
 
 	void initialize() {
+		//objectSubType = RIFLE;
 		damageType = ENERGY;
 		armorPiercing = HEAVY;
 		attackSpeed = 5.9;

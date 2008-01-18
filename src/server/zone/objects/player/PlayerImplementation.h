@@ -59,6 +59,8 @@ which carries forward this exception.
 #include "sui/SuiBoxImplementation.h"
 #include "sui/listbox/SuiListBoxImplementation.h"
 
+#include "../../packets/BaseLineMessage.h"
+
 class PlayerManager;
 class ItemManager;
 class ProfessionManager;
@@ -75,6 +77,8 @@ class Datapad;
 class WaypointObject;
 class Guild;
 class Certification;
+
+class BaseLineMessage;
 
 #include "../../../chat/room/ChatRoom.h"
 
@@ -219,6 +223,7 @@ public:
 	void createBaseStats();
 	
 	void decayInventory();
+	void resetArmorEncumbrance();
 	
 	void sendToOwner();
 	void sendPersonalContainers();
@@ -370,8 +375,18 @@ public:
 	// item methods
 	void changeCloth(uint64 itemid);
 	void changeWeapon(uint64 itemid);
+	void changeArmor(uint64 itemid, bool forced);
 	
 	void setWeaponSkillMods(Weapon* weapon);
+	void unsetWeaponSkillMods(Weapon* weapon);
+
+	void setArmorSkillMods(Armor* armoritem);
+	void unsetArmorSkillMods(Armor* armoritem);
+	
+	bool setArmorEncumbrance(Armor* armor, bool forced);
+	void unsetArmorEncumbrance(Armor* armor);
+	
+	void setItemSkillMod(int type, int value);
 	
 	void setFactionRank(string fac) {
 		factionRank = fac;

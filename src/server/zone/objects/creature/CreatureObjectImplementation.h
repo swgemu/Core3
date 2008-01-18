@@ -195,6 +195,10 @@ protected:
 	uint32 focusMax;
 	uint32 willpowerMax;
 	
+	uint32 healthEncumbrance;
+	uint32 actionEncumbrance;
+	uint32 mindEncumbrance;
+	
 	// Inherent Armor,Resists
 	uint32 armor;
 	
@@ -1379,6 +1383,18 @@ public:
 	
 	inline uint32 getLevel() {
 		return level;
+	}
+	
+	inline uint32 getHealthEncumbrance() {
+		return healthEncumbrance;
+	}
+	
+	inline uint32 getActionEncumbrance() {
+		return actionEncumbrance;
+	}
+	
+	inline uint32 getMindEncumbrance() {
+		return mindEncumbrance;
 	}
 
 	// modifiers

@@ -61,6 +61,7 @@ public:
 	}
 
 	void initialize() {
+		//objectSubType = MELEEWEAPON;
 		damageType = KINETIC;
 		minDamage = 58;
 		maxDamage = 172;

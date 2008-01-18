@@ -84,6 +84,15 @@ void WeaponImplementation::initialize() {
 	conditionDamage = 0;
 	maxCondition = 750;
 	
+	skillMod0Type = 0;
+	skillMod0Value = 0;
+	
+	skillMod1Type = 0;
+	skillMod1Value = 0;
+	
+	skillMod2Type = 0;
+	skillMod2Value = 0;
+	
 	damageType = KINETIC;
 	minDamage = 50;
 	maxDamage = 100;
@@ -175,6 +184,15 @@ void WeaponImplementation::generateAttributes(SceneObject* obj) {
 	
 	alm->insertAttribute("volume", "1");
 	
+	if (skillMod0Type > 0)
+		generateSkillMods(alm, skillMod0Type, skillMod0Value);
+	
+	if (skillMod1Type > 0)
+		generateSkillMods(alm, skillMod1Type, skillMod1Value);
+	
+	if (skillMod2Type > 0)
+		generateSkillMods(alm, skillMod2Type, skillMod2Value);
+
 	string ap;
 	
 	switch (armorPiercing) {
@@ -197,9 +215,16 @@ void WeaponImplementation::generateAttributes(SceneObject* obj) {
 	
 	alm->insertAttribute("wpn_armor_pierce_rating", ap);
 	
-	float speed = round(10*attackSpeed)/10;
+	float speed = round(10 * attackSpeed) / 10;
 	
-	alm->insertAttribute("wpn_attack_speed", speed);
+	stringstream spdtxt;
+	
+	spdtxt << speed;
+	
+	if ((int(round(speed * 10)) % 10) == 0)
+		spdtxt << ".0";
+	
+	alm->insertAttribute("wpn_attack_speed", spdtxt.str());
 	
 	//Damage Information
 	stringstream dmgtxt;
@@ -479,8 +504,10 @@ void WeaponImplementation::decayWeapon(int decayRate) {
 		float ratio = ((float) conditionDamage) / ((float) maxCondition);
 
 		if (ratio > 0.99) {
-			maxDamage = 1;
-			minDamage = 1;
+			maxCondition = 1;
+			conditionDamage = 0;
+			maxDamage = 0;
+			minDamage = 0;
 		} else if (ratio > 0.75) {
 			maxDamage = maxDamage - (maxDamage * decayRate / 100);
 			minDamage = minDamage - (minDamage * decayRate / 100);
@@ -494,18 +521,6 @@ void WeaponImplementation::decayWeapon(int decayRate) {
 
 void WeaponImplementation::setWeaponStats(int modifier){
 	wlock();
-	
-	if (templateName == "rifle_flame_thrower") {
-		minDamage = minDamage * 2;
-		maxDamage = maxDamage * 3;
-		woundsRatio = woundsRatio * 2;
-		
-		pointBlankAccuracy = 10;
-		idealAccuracy = -65;
-		maxRangeAccuracy = -120;
-
-		idealRange = 50;
-	}
 	
 	int luck = (System::random(100)) + (modifier/4);
 	
@@ -541,7 +556,7 @@ void WeaponImplementation::setWeaponStats(int modifier){
 		name = unicode(itemText.str());
 	} else if (playerRoll > 12500) {
 		modifier = modifier + 10;
-		luck = luck + 25;
+		luck = luck + 20;
 
 		stringstream itemText;
 		itemText << "\\#ffff00" << name.c_str();
@@ -550,11 +565,11 @@ void WeaponImplementation::setWeaponStats(int modifier){
 	
 	if (luck * System::random(100) > 1600) {
 		minDamage = (minDamage * modifier / 100) + (0.7 * luck);
-		maxDamage = (maxDamage * modifier / 100) + (0.8 * luck);
+		maxDamage = (maxDamage * modifier / 100) + (0.75 * luck);
 	}
 	
 	if (luck * System::random(100) > 1750) {	
-		attackSpeed = attackSpeed - (attackSpeed * modifier / 500) - (luck / 150);
+		attackSpeed = attackSpeed - (attackSpeed * modifier / 500) - (luck / 200);
 	}
 	
 	if (luck * System::random(100) > 1000) {
@@ -566,13 +581,26 @@ void WeaponImplementation::setWeaponStats(int modifier){
 	if (luck * System::random(100) > 1750)
 		woundsRatio = woundsRatio + (modifier / 15) + (luck / 10);
 	
+	if (playerRoll > 13000) {
+		skillMod0Type = System::random(23) + 1;
+		skillMod0Value = luck / (System::random(9) + 3);
+	}
+	if (playerRoll > 15000) {
+		skillMod1Type = System::random(23) + 1;
+		skillMod1Value = luck / (System::random(9) + 3);
+	}
+	if (playerRoll > 45000) {
+		skillMod2Type = System::random(23) + 1;
+		skillMod2Value = luck / (System::random(9) + 3);
+	}
+	
 	if (playerRoll > 13500)	{
 		switch (System::random(4)) {
 		case 1:
 			dot1Type = BLEED;
 			dot1Attribute = (System::random(2) * 3) + 1;
 			dot1Strength = (modifier / 10) + luck;
-			dot1Duration = (luck * 5) + modifier;
+			dot1Duration = ((luck * 5) + modifier)/7;
 			dot1Potency = luck;
 			dot1Uses = (modifier + luck) * 11;
 			break;
@@ -580,7 +608,7 @@ void WeaponImplementation::setWeaponStats(int modifier){
 			dot1Type = DISEASE;
 			dot1Attribute = (System::random(2) * 3) + 1;
 			dot1Strength = (modifier / 10) + luck;
-			dot1Duration = (luck * 7) + modifier;
+			dot1Duration = ((luck * 7) + modifier)/7;
 			dot1Potency = luck;
 			dot1Uses = (modifier + luck) * 13;
 			break;	
@@ -588,7 +616,7 @@ void WeaponImplementation::setWeaponStats(int modifier){
 			dot1Type = FIRE;
 			dot1Attribute = (System::random(2) * 3) + 1;
 			dot1Strength = (modifier / 10)+ luck;
-			dot1Duration = (luck * 4) + modifier;
+			dot1Duration = ((luck * 4) + modifier)/7;
 			dot1Potency = luck;
 			dot1Uses = (modifier + luck) * 11;
 			break;
@@ -596,7 +624,7 @@ void WeaponImplementation::setWeaponStats(int modifier){
 			dot1Type = POISON;
 			dot1Attribute = (System::random(2) * 3) + 1;
 			dot1Strength = (modifier / 10) + luck;
-			dot1Duration = (luck * 5) + modifier;
+			dot1Duration = ((luck * 5) + modifier)/7;
 			dot1Potency = luck;
 			dot1Uses = (modifier + luck) * 11;
 			break;
@@ -605,27 +633,46 @@ void WeaponImplementation::setWeaponStats(int modifier){
 	
 	if (attackSpeed < 1) 
 		attackSpeed = 1.0f;
-		
+	
 	if (healthAttackCost < 0) 
 		healthAttackCost = 0;
-		
+	
 	if (actionAttackCost < 0) 
 		actionAttackCost = 0;
 	
 	if (mindAttackCost < 0) 
 		mindAttackCost = 0;
-
+	
 	if (maxDamage > 900)
 		maxDamage = 850 + System::random(50);
 	
 	if (type == UNARMED && maxDamage > 500)
 		maxDamage = 450 + System::random(50);
-
+	
 	if (dot1Strength > 300)
 		dot1Strength = 250 + System::random(50);
 	
 	if (minDamage > maxDamage) 
 		minDamage = round(0.8 * maxDamage);
+	
+	if (skillMod0Value > 25)
+		skillMod0Value = 25;
+
+	if (skillMod1Value > 25)
+		skillMod1Value = 25;
+
+	if (skillMod2Value > 25)
+		skillMod2Value = 25;
+	
+	if (skillMod2Type == skillMod1Type || skillMod2Type == skillMod0Type) {
+		skillMod2Type = 0;
+		skillMod2Value = 0;
+	}
+	
+	if (skillMod1Type == skillMod0Type || skillMod1Type == skillMod2Type) {
+		skillMod1Type = 0;
+		skillMod1Value = 0;
+	}
 	
 	equipped = false;
 	
@@ -634,6 +681,84 @@ void WeaponImplementation::setWeaponStats(int modifier){
 	
 	unlock();
 }
+
+void WeaponImplementation::generateSkillMods(AttributeListMessage* alm, int skillModType, int skillModValue) {
+	switch (skillModType) {
+	case 1:
+		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:melee_defense", skillModValue);
+		break;
+	case 2:
+		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:ranged_defense", skillModValue);
+		break;
+	case 3:
+		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:stun_defense", skillModValue);
+		break;
+	case 4:
+		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:dizzy_defense", skillModValue);
+		break;
+	case 5:
+		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:blind_defense", skillModValue);
+		break;
+	case 6:
+		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:knockdown_defense", skillModValue);
+		break;
+	case 7:
+		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:intimidate_defense", skillModValue);
+		break;
+	case 8:
+		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:pistol_speed", skillModValue);
+		break;
+	case 9:
+		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:carbine_speed", skillModValue);
+		break;
+	case 10:
+		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:rifle_speed", skillModValue);
+		break;
+	case 11:
+		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:unarmed_speed", skillModValue);
+		break;
+	case 12:
+		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:onehandmelee_speed", skillModValue);
+		break;
+	case 13:
+		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:twohandmelee_speed", skillModValue);
+		break;
+	case 14:
+		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:polearm_speed", skillModValue);
+		break;
+	case 15:
+		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:pistol_accuracy", skillModValue);
+		break;
+	case 16:
+		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:carbine_accuracy", skillModValue);
+		break;
+	case 17:
+		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:rifle_accuracy", skillModValue);
+		break;
+	case 18:
+		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:unarmed_accuracy", skillModValue);
+		break;
+	case 19:
+		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:onehandmelee_accuracy", skillModValue);
+		break;
+	case 20:
+		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:twohandmelee_accuracy", skillModValue);
+		break;
+	case 21:
+		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:polearm_accuracy", skillModValue);
+		break;
+	case 22:
+		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:dodge", skillModValue);
+		break;
+	case 23:
+		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:block", skillModValue);
+		break;
+	case 24:
+		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:counterattack", skillModValue);
+		break;	
+	}
+}
+
 
 void WeaponImplementation::sliceWeapon(Player* player){
 	bool sliceType = System::random(1);
@@ -671,7 +796,7 @@ int WeaponImplementation::sliceWeaponDamage(){
 	if (sliced) 
 		return 0;
 		
-	int modifier = System::random(11) + 25;
+	int modifier = System::random(10) + 25;
 	
 	minDamage = (minDamage * modifier / 100) + minDamage;
 	maxDamage = (maxDamage * modifier / 100) + maxDamage;
@@ -686,7 +811,7 @@ int WeaponImplementation::sliceWeaponSpeed(){
 	if (sliced) 
 		return 0;
 		
-	int modifier = System::random(11) + 25;
+	int modifier = System::random(10) + 25;
 	
 	attackSpeed = attackSpeed - (attackSpeed * modifier / 100);
 

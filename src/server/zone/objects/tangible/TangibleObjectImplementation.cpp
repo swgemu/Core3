@@ -215,20 +215,16 @@ void TangibleObjectImplementation::repairItem(Player* player) {
 	int decayRate = 100;
 	
 	stringstream txt;
-	txt << "The repair was ";
 	
 	if (roll < 10) {
-		txt << "a critical failure!";
-		decayRate = 75;
-	} else if (roll < 20) {
-		txt << "a failure.";
-		decayRate = 50;	
-	} else if (roll < 80) {
-		txt << "a success.";
+		txt << "You have completely failed to repair the item. The item falls apart.";
+		decayRate = 100;
+	} else if (roll < 75) {
+		txt << "You have repaired the item, however the items maximum condition has been reduced.";
 		decayRate = 20;					
 	} else {
-		txt << "an amazing success.";
-		decayRate = 5;					
+		txt << "You have completely repaired the item.";
+		decayRate = 0;					
 	}
 	
 	player->sendSystemMessage(txt.str());

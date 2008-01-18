@@ -61,6 +61,7 @@ public:
 	}
 
 	void initialize() {
+		//objectSubType = CARBINE;
 		damageType = ENERGY;
 		minDamage = 137;
 		maxDamage = 288;

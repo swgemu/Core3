@@ -61,6 +61,7 @@ public:
 	}
 
 	void initialize() {
+		//objectSubType = ONEHANDMELEEWEAPON;
 		minDamage = 49;
 		maxDamage = 157;
 		attackSpeed = 2.5f;

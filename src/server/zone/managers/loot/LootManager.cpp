@@ -9,7 +9,7 @@ LootManager::LootManager(ZoneProcessServerImplementation* procServer) {
 void LootManager::lootCorpse(Player* player, Creature* creature) {
 	//Pre: player wlocked, creature unlocked
 	//Post: player wlocked, creature unlocked
-	
+
 	try {
 		creature->wlock(player);
 		
@@ -17,16 +17,16 @@ void LootManager::lootCorpse(Player* player, Creature* creature) {
 			creature->unlock();
 			return;
 		}
-
+		
 		if (!creature->isDead()) {
 			creature->unlock();
 			return;
 		}
 		
 		createLoot(creature);
-
+		
 		int credits = creature->getCashCredits();
-
+		
 		if (credits > 0) {	
 			creature->setCashCredits(0);
 
@@ -37,9 +37,9 @@ void LootManager::lootCorpse(Player* player, Creature* creature) {
 
 			player->sendSystemMessage(creditText.str());
 		}
-
+		
 		Container* lootContainer = creature->getLootContainer();
-				
+			
 		if (lootContainer != NULL && lootContainer->objectsSize() > 0) {
 			for (int i = lootContainer->objectsSize() - 1; i >= 0; --i) {
 				TangibleObject* lootItem = (TangibleObject*) lootContainer->getObject(i);
@@ -63,7 +63,7 @@ void LootManager::lootCorpse(Player* player, Creature* creature) {
 					player->getGroupObject()->broadcastMessage(packet);
 				}
 			}
-
+			
 			player->sendSystemMessage("You have completely looted the corpse of all items.");
 		} else 
 			player->sendSystemMessage("You find nothing else of value on the selected corpse.");
@@ -75,6 +75,7 @@ void LootManager::lootCorpse(Player* player, Creature* creature) {
 		creature->queueRespawn();
 
 		creature->unlock();
+
 	} catch (...) {
 		cout << "Unreported exception caugh in LootManager::lootCorpse(Player* player, Creature* creature)";
 		creature->unlock();
@@ -86,6 +87,9 @@ void LootManager::createLoot(Creature* creature) {
 	//Post: creature wlocked
 	
 	Container* lootContainer = creature->getLootContainer();
+	
+	if (lootContainer == NULL)
+		return;
 	
 	if (lootContainer != NULL && lootContainer->objectsSize() > 0)
 		return;
@@ -116,6 +120,7 @@ void LootManager::createLoot(Creature* creature) {
 		
 		if (System::random(creditDropRate) + creatureLevel > 1000)
 			creature->setCashCredits(creatureLevel * System::random(1234) / 25);
+		
 	}
 }
 
@@ -127,6 +132,8 @@ void LootManager::createWeaponLoot(Creature* creature, int creatureLevel) {
 	case 0 :	// UNARMED
 		itemImpl = new UnarmedMeleeWeaponImplementation(creature, 
 				"object/weapon/melee/special/shared_vibroknuckler.iff",	unicode("a Vibroknuckler"), "vibroknuckler", false);
+		itemImpl->setDamageType(WeaponImplementation::KINETIC);
+		itemImpl->setArmorPiercing(WeaponImplementation::LIGHT);
 		break;
 	case 1 :	// ONEHANDED
 		itemImpl = new OneHandedMeleeWeaponImplementation(creature, 
@@ -209,11 +216,12 @@ void LootManager::createWeaponLoot(Creature* creature, int creatureLevel) {
 	
 	if (itemImpl != NULL) {
 		item = (Weapon*) itemImpl->deploy();
-
+		
 		item->setWeaponStats(creatureLevel);
 		item->setConditionDamage(System::random(649));
 		creature->addLootItem(item);
 	}
+	
 }
 
 void LootManager::createArmorLoot(Creature* creature, int creatureLevel) {
@@ -221,7 +229,7 @@ void LootManager::createArmorLoot(Creature* creature, int creatureLevel) {
 	ArmorImplementation* itemImpl = NULL;
 	
 	uint32 objectCRC = creature->getObjectCRC();
-
+	
 	switch (System::random(5)){
 	case 0:
 		switch (System::random(8)) {
@@ -473,12 +481,17 @@ void LootManager::createArmorLoot(Creature* creature, int creatureLevel) {
 	}
 		
 	if (itemImpl != NULL) {
-		item = (Armor*) itemImpl->deploy();
+		itemImpl->setHealthEncumbrance((System::random(6) + 7) * 19 / 3 + itemImpl->getType());
+		itemImpl->setActionEncumbrance((System::random(6) + 7) * 18 / 3 + itemImpl->getType());
+		itemImpl->setMindEncumbrance((System::random(7) + 7) * 17 / 3 + itemImpl->getType());		
 
+		item = (Armor*) itemImpl->deploy();
+		
 		item->setArmorStats(creatureLevel);
 		item->setConditionDamage(System::random(item->getMaxCondition()*3/4));
 		creature->addLootItem(item);
 	}
+	
 }
 
 void LootManager::createJunkLoot(Creature* creature) {

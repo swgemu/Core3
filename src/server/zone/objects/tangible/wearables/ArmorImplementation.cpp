@@ -66,16 +66,39 @@ void ArmorImplementation::initialize() {
 	rating = LIGHT;
 	conditionDamage = 10000;
 	maxCondition = 50000;
-	 	
+	
+	skillMod0Type = 0;
+	skillMod0Value = 0;
+	
+	skillMod1Type = 0;
+	skillMod1Value = 0;
+	
+	skillMod2Type = 0;
+	skillMod2Value = 0;
+
+	sockets = 4;
+	
+	socket0Type = 0;
+	socket0Value = 0;
+
+	socket1Type = 0;
+	socket1Value = 0;
+
+	socket2Type = 0;
+	socket2Value = 0;
+
+	socket3Type = 0;
+	socket3Value = 0;
+	
 	healthEncumbrance = 300;
 	actionEncumbrance = 124;
 	mindEncumbrance = 87; 	
 	 	
-	kinetic = 50.0f;
-	kineticIsSpecial = true;
+	kinetic = 30.0f;
+	kineticIsSpecial = false;
 
-	energy = 50.0f;
-	energyIsSpecial = true;
+	energy = 30.0f;
+	energyIsSpecial = false;
 
 	electricity = 30.0f;
 	electricityIsSpecial = false;
@@ -141,6 +164,17 @@ void ArmorImplementation::generateAttributes(SceneObject* obj) {
 	alm->insertAttribute("Condition", conditionStr);
 	
 	alm->insertAttribute("Volume", "1");
+	
+	alm->insertAttribute("Sockets", sockets);
+	
+	if (skillMod0Type > 0)
+		generateSkillMods(alm, skillMod0Type, skillMod0Value);
+	
+	if (skillMod1Type > 0)
+		generateSkillMods(alm, skillMod1Type, skillMod1Value);
+	
+	if (skillMod2Type > 0)
+		generateSkillMods(alm, skillMod2Type, skillMod2Value);
 	
 	//Armor Rating
 	if (rating == LIGHT)
@@ -285,6 +319,84 @@ void ArmorImplementation::generateAttributes(SceneObject* obj) {
 	
 }
 
+void ArmorImplementation::generateSkillMods(AttributeListMessage* alm, int skillModType, int skillModValue) {
+	switch (skillModType) {
+	case 1:
+		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:melee_defense", skillModValue);
+		break;
+	case 2:
+		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:ranged_defense", skillModValue);
+		break;
+	case 3:
+		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:stun_defense", skillModValue);
+		break;
+	case 4:
+		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:dizzy_defense", skillModValue);
+		break;
+	case 5:
+		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:blind_defense", skillModValue);
+		break;
+	case 6:
+		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:knockdown_defense", skillModValue);
+		break;
+	case 7:
+		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:intimidate_defense", skillModValue);
+		break;
+	case 8:
+		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:pistol_speed", skillModValue);
+		break;
+	case 9:
+		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:carbine_speed", skillModValue);
+		break;
+	case 10:
+		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:rifle_speed", skillModValue);
+		break;
+	case 11:
+		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:unarmed_speed", skillModValue);
+		break;
+	case 12:
+		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:onehandmelee_speed", skillModValue);
+		break;
+	case 13:
+		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:twohandmelee_speed", skillModValue);
+		break;
+	case 14:
+		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:polearm_speed", skillModValue);
+		break;
+	case 15:
+		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:pistol_accuracy", skillModValue);
+		break;
+	case 16:
+		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:carbine_accuracy", skillModValue);
+		break;
+	case 17:
+		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:rifle_accuracy", skillModValue);
+		break;
+	case 18:
+		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:unarmed_accuracy", skillModValue);
+		break;
+	case 19:
+		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:onehandmelee_accuracy", skillModValue);
+		break;
+	case 20:
+		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:twohandmelee_accuracy", skillModValue);
+		break;
+	case 21:
+		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:polearm_accuracy", skillModValue);
+		break;
+	case 22:
+		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:dodge", skillModValue);
+		break;
+	case 23:
+		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:block", skillModValue);
+		break;
+	case 24:
+		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:counterattack", skillModValue);
+		break;
+	}
+}
+
+
 void ArmorImplementation::decayArmor(int decayRate) {
 	conditionDamage = conditionDamage + (maxCondition / 100 * decayRate);
 
@@ -296,6 +408,8 @@ void ArmorImplementation::decayArmor(int decayRate) {
 
 		if (ratio > 0.99) {
 			rating = 0;
+			maxCondition = 1;
+			conditionDamage = 0;
 			
 			kinetic = 0.0f;
 			energy = 0.0f;
@@ -338,30 +452,30 @@ void ArmorImplementation::setArmorStats(int modifier) {
 		luck = 0;
 	
 	int playerRoll = System::random(1000) * modifier * luck / 1000;
-	if (playerRoll > 100000) {
+	if (playerRoll > 200000) {
 		modifier = modifier + 100;
 		luck = luck + 100;
 		
 		stringstream itemText;
 		itemText << "\\#ffff00" << name.c_str() << " (Legendary)";
 		name = unicode(itemText.str());	
-	} else if (playerRoll > 22500) {
+	} else if (playerRoll > 45000) {
 		modifier = modifier + 50;
 		luck = luck + 50;
 		
 		stringstream itemText;
 		itemText << "\\#ffff00" << name.c_str() << " (Exceptional)";	
 		name = unicode(itemText.str());
-	} else if (playerRoll > 7500) {
-		modifier = modifier + 25;
-		luck = luck + 25;
+	} else if (playerRoll > 12500) {
+		modifier = modifier + 10;
+		luck = luck + 20;
 		
 		stringstream itemText;
 		itemText << "\\#ffff00" << name.c_str();
 		name = unicode(itemText.str());	
 	}
 	
-	maxCondition = 25000 + (modifier * 10) + (luck * 10);
+	maxCondition = 25000 + (modifier * 10) + (luck * 20);
 	
 	if ((luck * System::random(100)) > 2000) {
 		healthEncumbrance = healthEncumbrance - (modifier / 4) - (luck / 10);
@@ -377,6 +491,19 @@ void ArmorImplementation::setArmorStats(int modifier) {
 		heat = heat + (modifier / 10) + (luck / 10);
 		cold = cold + (modifier / 10) + (luck / 10);
 		acid = acid + (modifier / 10) + (luck / 10);
+	}
+	
+	if (playerRoll > 13000) {
+		skillMod0Type = System::random(23) + 1;
+		skillMod0Value = luck / (System::random(9) + 3);
+	}
+	if (playerRoll > 15000) {
+		skillMod1Type = System::random(23) + 1;
+		skillMod1Value = luck / (System::random(9) + 3);
+	}
+	if (playerRoll > 45000) {
+		skillMod2Type = System::random(23) + 1;
+		skillMod2Value = luck / (System::random(9) + 3);
 	}
 	
 	kineticIsSpecial = System::random(1);
@@ -417,6 +544,24 @@ void ArmorImplementation::setArmorStats(int modifier) {
 	if (mindEncumbrance < 0) 
 		mindEncumbrance = 0;
 	
+	if (skillMod0Value > 25)
+		skillMod0Value = 25;
+
+	if (skillMod1Value > 25)
+		skillMod1Value = 25;
+
+	if (skillMod2Value > 25)
+		skillMod2Value = 25;
+	
+	if (skillMod2Type == skillMod1Type || skillMod2Type == skillMod0Type) {
+		skillMod2Type = 0;
+		skillMod2Value = 0;
+	}
+	
+	if (skillMod1Type == skillMod0Type || skillMod1Type == skillMod2Type) {
+		skillMod1Type = 0;
+		skillMod1Value = 0;
+	}
 }
 
 void ArmorImplementation::sliceArmor(Player* player){
@@ -427,8 +572,10 @@ void ArmorImplementation::sliceArmor(Player* player){
 
 	try {
 		wlock();
-
-		if (!isSliced()) {
+		
+		if (isEquipped())
+			msg << "You must unequip this item first.";
+		else if (!isSliced()) {
 			switch (sliceType) {
 			case 0:
 				slicePercent = sliceArmorEffectiveness();
@@ -525,3 +672,4 @@ int ArmorImplementation::sliceArmorEncumbrance(){
 	
 	return modifier;
 }
+

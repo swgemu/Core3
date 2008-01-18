@@ -52,7 +52,7 @@ which carries forward this exception.
 class WearableImplementation : public WearableServant {
 public:
 	WearableImplementation(uint64 objid, uint32 tempCRC, const unicode& n, const string& tempn, bool eqp = false) 
-			: WearableServant(objid, CLOTH) {
+			: WearableServant(objid, CLOTHING) {
 		objectCRC = tempCRC;
 
 		name = n;
@@ -64,7 +64,7 @@ public:
 	}
 	
 	WearableImplementation(CreatureObject* creature, uint64 oid, uint32 tempCRC, const unicode& n, const string& tempn, bool eqp = false) 
-		: WearableServant(oid, CLOTH) {
+		: WearableServant(oid, CLOTHING) {
 		objectCRC = tempCRC;
 
 		name = n;
@@ -79,7 +79,7 @@ public:
 	}
 
 	WearableImplementation(CreatureObject* creature, uint32 tempCRC, const unicode& n, const string& tempn, bool eqp = false) 
-			: WearableServant(creature->getNewItemID(), CLOTH) {
+			: WearableServant(creature->getNewItemID(), CLOTHING) {
 		objectCRC = tempCRC;
 
 		name = n;

@@ -60,9 +60,9 @@ public:
 		// encumberances
 		insertInt(3);
 		insertInt(3);
-		insertInt(0);
-		insertInt(0);
-		insertInt(0);
+		insertInt(creo->getHealthEncumbrance());
+		insertInt(creo->getActionEncumbrance());
+		insertInt(creo->getMindEncumbrance());
 
 		// skill mods
 		insertSkillMods(creo);

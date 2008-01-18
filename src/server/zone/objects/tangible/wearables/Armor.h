@@ -133,6 +133,36 @@ public:
 
 	bool isSliced();
 
+	int getSkillMod0Type();
+
+	int getSkillMod1Type();
+
+	int getSkillMod2Type();
+
+	int getSkillMod0Value();
+
+	int getSkillMod1Value();
+
+	int getSkillMod2Value();
+
+	int getSockets();
+
+	int getSocket0Type();
+
+	int getSocket1Type();
+
+	int getSocket2Type();
+
+	int getSocket3Type();
+
+	int getSocket0Value();
+
+	int getSocket1Value();
+
+	int getSocket2Value();
+
+	int getSocket3Value();
+
 protected:
 };
 
@@ -205,6 +235,36 @@ public:
 	int getType();
 
 	bool isSliced();
+
+	int getSkillMod0Type();
+
+	int getSkillMod1Type();
+
+	int getSkillMod2Type();
+
+	int getSkillMod0Value();
+
+	int getSkillMod1Value();
+
+	int getSkillMod2Value();
+
+	int getSockets();
+
+	int getSocket0Type();
+
+	int getSocket1Type();
+
+	int getSocket2Type();
+
+	int getSocket3Type();
+
+	int getSocket0Value();
+
+	int getSocket1Value();
+
+	int getSocket2Value();
+
+	int getSocket3Value();
 
 };
 

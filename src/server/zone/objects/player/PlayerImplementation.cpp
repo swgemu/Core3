@@ -308,7 +308,9 @@ void PlayerImplementation::reload(ZoneClient* client) {
 			insertToZone(zone);
 
 		clearBuffs(true);
-
+		
+		resetArmorEncumbrance();
+		
 		activateRecovery();
 		
 		unlock();
@@ -593,6 +595,23 @@ void PlayerImplementation::decayInventory() {
 			
 			item->sendTo(_this);
 		}
+}
+
+void PlayerImplementation::resetArmorEncumbrance() {
+	
+	healthEncumbrance = 0;
+	actionEncumbrance = 0;
+	mindEncumbrance = 0;
+	
+	for (int i=0; i < inventory->objectsSize(); i++) {
+		TangibleObject* item = ((TangibleObject*) inventory->getObject(i));
+		
+		if (item->isEquipped() && item->isArmor()) {
+			item->setEquipped(false);
+			changeArmor(item->getObjectID(), true);
+		
+		}
+	}
 }
 
 void PlayerImplementation::sendToOwner() {
@@ -1460,13 +1479,15 @@ void PlayerImplementation::doClone() {
 		break;
 	}
 	
-	decayInventory();
-	
 	clearStates();
 	clearBuffs();
+	
+	decayInventory();
 
 	changeForceBar(0);
-		
+	
+	resetArmorEncumbrance();
+	
 	//setNeutral();
 	//setCovert();
 
@@ -1677,6 +1698,11 @@ void PlayerImplementation::changeCloth(uint64 itemid) {
 		return;
 	}
 	
+	if (cloth->isArmor()) {
+		changeArmor(itemid, false);
+		return;
+	}
+	
 	if (cloth->isEquipped()) {
 		unequipItem(cloth);
 	} else {
@@ -1700,6 +1726,7 @@ void PlayerImplementation::changeWeapon(uint64 itemid) {
 	
 	if (weapon->isEquipped()) {
 		unequipItem(weapon);
+		unsetWeaponSkillMods(weapon);
 		setWeapon(NULL);
 		
 		accuracy = getSkillMod("unarmed_accuracy");
@@ -1711,6 +1738,111 @@ void PlayerImplementation::changeWeapon(uint64 itemid) {
 		equipItem(weapon);
 		
 		setWeaponSkillMods(weapon);		
+	}
+}
+
+void PlayerImplementation::changeArmor(uint64 itemid, bool forced) {
+	SceneObject* obj = inventory->getObject(itemid);
+	
+	if (obj == NULL || !obj->isTangible())
+		return;
+
+	Armor* armoritem = (Armor*) obj;
+	
+	if (armoritem == NULL) 
+		return;
+	
+	if (armoritem->isEquipped()) {
+		unequipItem((TangibleObject*) obj);
+		unsetArmorSkillMods(armoritem);
+		unsetArmorEncumbrance(armoritem);
+	} else {
+		Armor* olditem = getArmor(armoritem->getType());
+		
+		if (olditem != NULL) {
+			unsetArmorSkillMods(olditem);
+			unsetArmorEncumbrance(olditem);
+			unequipItem((TangibleObject*) olditem);
+		}
+		
+		if (setArmorEncumbrance(armoritem, forced)) {
+			equipItem((TangibleObject*) obj);
+			setArmorSkillMods(armoritem);
+		}
+	}
+	
+	BaseMessage* creo6 = new CreatureObjectMessage6(_this);
+	BaseMessage* creo4 = new CreatureObjectMessage4(this);
+	
+	sendMessage(creo6);
+	sendMessage(creo4);
+}
+
+void PlayerImplementation::setItemSkillMod(int type, int value) {
+	switch (type) {
+	case 1:
+		addSkillMod("melee_defense", value, true);
+		break;
+	case 2:
+		addSkillMod("ranged_defense", value, true);
+		break;
+	case 3:
+		addSkillMod("stun_defense", value, true);
+		break;
+	case 4:
+		addSkillMod("dizzy_defense", value, true);
+		break;
+	case 5:
+		addSkillMod("blind_defense", value, true);
+		break;
+	case 6:
+		addSkillMod("knockdown_defense", value, true);
+		break;
+	case 7:
+		addSkillMod("intimidate_defense", value, true);
+		break;
+	case 8:
+		addSkillMod("pistol_speed", value, true);
+		break;
+	case 9:
+		addSkillMod("carbine_speed", value, true);
+		break;
+	case 10:
+		addSkillMod("rifle_speed", value, true);
+		break;
+	case 11:
+		addSkillMod("unarmed_speed", value, true);
+		break;
+	case 12:
+		addSkillMod("onehandmelee_speed", value, true);
+		break;
+	case 13:
+		addSkillMod("twohandmelee_speed", value, true);
+		break;
+	case 14:
+		addSkillMod("polearm_speed", value, true);
+		break;
+	case 15:
+		addSkillMod("pistol_accuracy", value, true);
+		break;
+	case 16:
+		addSkillMod("carbine_accuracy", value, true);
+		break;
+	case 17:
+		addSkillMod("rifle_accuracy", value, true);
+		break;
+	case 18:
+		addSkillMod("unarmed_accuracy", value, true);
+		break;
+	case 19:
+		addSkillMod("onehandmelee_accuracy", value, true);
+		break;
+	case 20:
+		addSkillMod("twohandmelee_accuracy", value, true);
+		break;
+	case 21:
+		addSkillMod("polearm_accuracy", value, true);
+		break;
 	}
 }
 
@@ -1756,6 +1888,103 @@ void PlayerImplementation::setWeaponSkillMods(Weapon* weapon) {
 			accuracy = SkillMods.get("");
 			break;*/
 	}
+	setItemSkillMod(weapon->getSkillMod0Type(), weapon->getSkillMod0Value());
+	setItemSkillMod(weapon->getSkillMod1Type(), weapon->getSkillMod1Value());
+	setItemSkillMod(weapon->getSkillMod2Type(), weapon->getSkillMod2Value());
+
+}
+
+void PlayerImplementation::setArmorSkillMods(Armor* armoritem) {
+	setItemSkillMod(armoritem->getSkillMod0Type(), armoritem->getSkillMod0Value());
+	setItemSkillMod(armoritem->getSkillMod1Type(), armoritem->getSkillMod1Value());
+	setItemSkillMod(armoritem->getSkillMod2Type(), armoritem->getSkillMod2Value());
+
+	setItemSkillMod(armoritem->getSocket0Type(), armoritem->getSocket0Value());
+	setItemSkillMod(armoritem->getSocket1Type(), armoritem->getSocket1Value());
+	setItemSkillMod(armoritem->getSocket2Type(), armoritem->getSocket2Value());
+	setItemSkillMod(armoritem->getSocket3Type(), armoritem->getSocket3Value());	
+	
+}
+
+void PlayerImplementation::unsetArmorSkillMods(Armor* armoritem) {
+	setItemSkillMod(armoritem->getSkillMod0Type(), -armoritem->getSkillMod0Value());
+	setItemSkillMod(armoritem->getSkillMod1Type(), -armoritem->getSkillMod1Value());
+	setItemSkillMod(armoritem->getSkillMod2Type(), -armoritem->getSkillMod2Value());
+
+	setItemSkillMod(armoritem->getSocket0Type(), -armoritem->getSocket0Value());
+	setItemSkillMod(armoritem->getSocket1Type(), -armoritem->getSocket1Value());
+	setItemSkillMod(armoritem->getSocket2Type(), -armoritem->getSocket2Value());
+	setItemSkillMod(armoritem->getSocket3Type(), -armoritem->getSocket3Value());
+	
+}
+
+void PlayerImplementation::unsetWeaponSkillMods(Weapon* weapon) {
+	setItemSkillMod(weapon->getSkillMod0Type(), -weapon->getSkillMod0Value());
+	setItemSkillMod(weapon->getSkillMod1Type(), -weapon->getSkillMod1Value());
+	setItemSkillMod(weapon->getSkillMod2Type(), -weapon->getSkillMod2Value());
+	
+}
+
+bool PlayerImplementation::setArmorEncumbrance(Armor* armor, bool forced) {
+	int healthEncumb = armor->getHealthEncumbrance();
+	int actionEncumb = armor->getActionEncumbrance();
+	int mindEncumb = armor->getMindEncumbrance();
+	
+	if ((healthEncumb >= strength || healthEncumb >= constitution ||
+		actionEncumb >= quickness || actionEncumb >= stamina ||
+		mindEncumb >= focus || mindEncumb >= willpower) && !forced)
+		return false;
+	
+	if ((strength > 100000 || constitution > 100000 ||
+		quickness > 100000 || stamina > 100000 ||
+		focus > 100000 || willpower > 100000) && !forced)
+		return false;	
+	
+	healthEncumbrance += healthEncumb;
+	actionEncumbrance += actionEncumb;
+	mindEncumbrance += mindEncumb;
+	
+	strengthMax -= healthEncumb;
+	constitutionMax -= healthEncumb;
+	quicknessMax -= actionEncumb;
+	staminaMax -= actionEncumb;
+	focusMax -= mindEncumb;
+	willpowerMax -= mindEncumb;
+	
+	strength -= healthEncumb;
+	constitution -= healthEncumb;
+	quickness -= actionEncumb;
+	stamina -= actionEncumb;
+	focus -= mindEncumb;
+	willpower -= mindEncumb;
+	
+	return true;
+	
+}
+
+void PlayerImplementation::unsetArmorEncumbrance(Armor* armor) {	
+	int healthEncumb = armor->getHealthEncumbrance();
+	int actionEncumb = armor->getActionEncumbrance();
+	int mindEncumb = armor->getMindEncumbrance();
+	
+	healthEncumbrance -= healthEncumb;
+	actionEncumbrance -= actionEncumb;
+	mindEncumbrance -= mindEncumb;
+	
+	strengthMax += healthEncumb;
+	constitutionMax += healthEncumb;
+	quicknessMax += actionEncumb;
+	staminaMax += actionEncumb;
+	focusMax += mindEncumb;
+	willpowerMax += mindEncumb;
+	
+	strength += healthEncumb;
+	constitution += healthEncumb;
+	quickness += actionEncumb;
+	stamina += actionEncumb;
+	focus += mindEncumb;
+	willpower += mindEncumb;
+
 }
 
 void PlayerImplementation::setOvert() {

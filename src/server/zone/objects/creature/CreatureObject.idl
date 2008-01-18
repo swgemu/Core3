@@ -364,6 +364,10 @@ interface CreatureObject implements SceneObject {
 	unsigned int getHAMMaxUpdateCounter();
 	unsigned int getNewHAMMaxUpdateCounter(int cnt);
 	
+	unsigned int getHealthEncumbrance();
+	unsigned int getActionEncumbrance();
+	unsigned int getMindEncumbrance();
+	
 	unsigned long getTargetID();
 	
 	SceneObject getTarget();

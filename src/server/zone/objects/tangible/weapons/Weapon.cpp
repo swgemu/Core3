@@ -673,6 +673,78 @@ int Weapon::getDot2Uses() {
 		return ((WeaponImplementation*) _impl)->getDot2Uses();
 }
 
+int Weapon::getSkillMod0Type() {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 55);
+
+		return invocation.executeWithSignedIntReturn();
+	} else
+		return ((WeaponImplementation*) _impl)->getSkillMod0Type();
+}
+
+int Weapon::getSkillMod1Type() {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 56);
+
+		return invocation.executeWithSignedIntReturn();
+	} else
+		return ((WeaponImplementation*) _impl)->getSkillMod1Type();
+}
+
+int Weapon::getSkillMod2Type() {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 57);
+
+		return invocation.executeWithSignedIntReturn();
+	} else
+		return ((WeaponImplementation*) _impl)->getSkillMod2Type();
+}
+
+int Weapon::getSkillMod0Value() {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 58);
+
+		return invocation.executeWithSignedIntReturn();
+	} else
+		return ((WeaponImplementation*) _impl)->getSkillMod0Value();
+}
+
+int Weapon::getSkillMod1Value() {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 59);
+
+		return invocation.executeWithSignedIntReturn();
+	} else
+		return ((WeaponImplementation*) _impl)->getSkillMod1Value();
+}
+
+int Weapon::getSkillMod2Value() {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 60);
+
+		return invocation.executeWithSignedIntReturn();
+	} else
+		return ((WeaponImplementation*) _impl)->getSkillMod2Value();
+}
+
 /*
  *	WeaponAdapter
  */
@@ -830,6 +902,24 @@ Packet* WeaponAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* inv) {
 		break;
 	case 54:
 		resp->insertSignedInt(getDot2Uses());
+		break;
+	case 55:
+		resp->insertSignedInt(getSkillMod0Type());
+		break;
+	case 56:
+		resp->insertSignedInt(getSkillMod1Type());
+		break;
+	case 57:
+		resp->insertSignedInt(getSkillMod2Type());
+		break;
+	case 58:
+		resp->insertSignedInt(getSkillMod0Value());
+		break;
+	case 59:
+		resp->insertSignedInt(getSkillMod1Value());
+		break;
+	case 60:
+		resp->insertSignedInt(getSkillMod2Value());
 		break;
 	default:
 		return NULL;
@@ -1032,6 +1122,30 @@ int WeaponAdapter::getDot2Potency() {
 
 int WeaponAdapter::getDot2Uses() {
 	return ((WeaponImplementation*) impl)->getDot2Uses();
+}
+
+int WeaponAdapter::getSkillMod0Type() {
+	return ((WeaponImplementation*) impl)->getSkillMod0Type();
+}
+
+int WeaponAdapter::getSkillMod1Type() {
+	return ((WeaponImplementation*) impl)->getSkillMod1Type();
+}
+
+int WeaponAdapter::getSkillMod2Type() {
+	return ((WeaponImplementation*) impl)->getSkillMod2Type();
+}
+
+int WeaponAdapter::getSkillMod0Value() {
+	return ((WeaponImplementation*) impl)->getSkillMod0Value();
+}
+
+int WeaponAdapter::getSkillMod1Value() {
+	return ((WeaponImplementation*) impl)->getSkillMod1Value();
+}
+
+int WeaponAdapter::getSkillMod2Value() {
+	return ((WeaponImplementation*) impl)->getSkillMod2Value();
 }
 
 /*

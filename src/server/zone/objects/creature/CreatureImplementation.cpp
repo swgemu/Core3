@@ -165,10 +165,13 @@ void CreatureImplementation::loadItems() {
 				"object/weapon/ranged/rifle/shared_rifle_t21.iff", unicode("Teh Pwn"), "rifle_t21", true);
 		
 		weapon = (Weapon*) rifleImpl->deploy();
+		//setImperial();
 	} else if (objectCRC == 0x8C70914) {
 		OneHandedJediWeaponImplementation* saberImpl = new OneHandedJediWeaponImplementation(_this, 
 				"object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s4_gen4.iff", 
 				unicode("Darth Saber"), "sword_lightsaber_one_handed_s4_gen4", true);
+		saberImpl->setDamageType(WeaponImplementation::LIGHTSABER);
+		saberImpl->setArmorPiercing(WeaponImplementation::NONE);
 		
 		weapon = (Weapon*) saberImpl->deploy();
 	} else if (objectCRC == 0xD84925C2 || objectCRC == 0x90D8EBF8 || objectCRC == 0x1FA893FD || objectCRC == 0x2E831404 || 
@@ -511,7 +514,6 @@ void CreatureImplementation::notifyPositionUpdate(QuadTreeEntry* obj) {
 			if (!isQueued())
 				creatureManager->queueActivity(this, System::random(30000) + 1000);
 		}
-		
 		
 		break;
 	}

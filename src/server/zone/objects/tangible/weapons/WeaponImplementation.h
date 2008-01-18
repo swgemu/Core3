@@ -62,6 +62,15 @@ protected:
 	int type;
 	
 	int category;
+	
+	int skillMod0Type;
+	int skillMod0Value;
+
+	int skillMod1Type;
+	int skillMod1Value;
+
+	int skillMod2Type;
+	int skillMod2Value;
 
 	int damageType;
 	float minDamage;
@@ -166,6 +175,8 @@ public:
 	
 	void generateAttributes(SceneObject* obj);
 	void generateDotAttributes(class AttributeListMessage* alm);
+	
+	void generateSkillMods(class AttributeListMessage* alm, int skillModType, int skillModValue);
 	
 	void setWeaponStats(int modifier);
 	
@@ -347,6 +358,30 @@ public:
 		sliced = hacked;
 	}
 	
+	inline void setSkillMod0Type(int skillModType) {
+		skillMod0Type = skillModType;
+	}
+
+	inline void setSkillMod1Type(int skillModType) {
+		skillMod1Type = skillModType;
+	}
+
+	inline void setSkillMod2Type(int skillModType) {
+		skillMod2Type = skillModType;
+	}
+	
+	inline void setSkillMod0Value(int skillModValue) {
+		skillMod0Value = skillModValue;
+	}
+
+	inline void setSkillMod1Value(int skillModValue) {
+		skillMod1Value = skillModValue;
+	}
+	
+	inline void setSkillMod2Value(int skillModValue) {
+		skillMod2Value = skillModValue;
+	}
+	
 	// getters
 	inline int getDamageType() {
 		return damageType;
@@ -498,6 +533,30 @@ public:
 
 	inline int getDot2Uses() {
 		return dot2Uses;
+	}
+	
+	inline int getSkillMod0Type() {
+		return skillMod0Type;
+	}
+
+	inline int getSkillMod1Type() {
+		return skillMod1Type;
+	}
+
+	inline int getSkillMod2Type() {
+		return skillMod2Type;
+	}
+	
+	inline int getSkillMod0Value() {
+		return skillMod0Value;
+	}
+
+	inline int getSkillMod1Value() {
+		return skillMod1Value;
+	}
+	
+	inline int getSkillMod2Value() {
+		return skillMod2Value;
 	}
 
 	friend class CombatManager;

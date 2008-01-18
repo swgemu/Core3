@@ -161,6 +161,10 @@ CreatureObjectImplementation::CreatureObjectImplementation(uint64 oid) : Creatur
 	focusMax = 3000;
 	willpowerMax = 3000;
 	
+	healthEncumbrance = 0;
+	actionEncumbrance = 0;
+	mindEncumbrance = 0;
+	
 	armor=0;
 
 	// ent
@@ -1852,15 +1856,13 @@ Armor* CreatureObjectImplementation::getArmor(int type) {
 }
 
 void CreatureObjectImplementation::addInventoryItem(TangibleObject* item) {
-	if (item->isEquipped()) {
-		item->setContainer(_this, 0x04);
-		
-		if (item->getObjectSubType() == TangibleObjectImplementation::WEAPON)
+	if (item->isEquipped() && item->getObjectSubType() == TangibleObjectImplementation::WEAPON) {
+			item->setContainer(_this, 0x04);
 			setWeapon((Weapon*) item);
-	} else
-		item->setContainer(inventory, 0xFFFFFFFF);
+		} else
+			item->setContainer(inventory, 0xFFFFFFFF);
 
-	inventory->addObject(item);
+		inventory->addObject(item);
 }
 
 TangibleObject* CreatureObjectImplementation::getInventoryItem(uint64 oid) {
@@ -1877,7 +1879,7 @@ void CreatureObjectImplementation::removeInventoryItem(uint64 oid) {
 
 void CreatureObjectImplementation::addLootItem(TangibleObject* item) {
 
-	//item->setContainer(lootContainer, 0xFFFFFFFF);
+	item->setContainer(lootContainer, 0xFFFFFFFF);
 
 	lootContainer->addObject(item);
 }

@@ -69,6 +69,8 @@ class PlayerObject;
 
 class Weapon;
 
+class Armor;
+
 class Datapad;
 
 class SurveyTool;
@@ -177,7 +179,13 @@ public:
 
 	void changeWeapon(unsigned long long itemid);
 
+	void changeArmor(unsigned long long itemid, bool forced);
+
 	void setWeaponSkillMods(Weapon* weapon);
+
+	void setArmorSkillMods(Armor* armor);
+
+	bool setArmorEncumbrance(Armor* armor, bool forced);
 
 	void createItems();
 
@@ -532,7 +540,13 @@ public:
 
 	void changeWeapon(unsigned long long itemid);
 
+	void changeArmor(unsigned long long itemid, bool forced);
+
 	void setWeaponSkillMods(Weapon* weapon);
+
+	void setArmorSkillMods(Armor* armor);
+
+	bool setArmorEncumbrance(Armor* armor, bool forced);
 
 	void createItems();
 
