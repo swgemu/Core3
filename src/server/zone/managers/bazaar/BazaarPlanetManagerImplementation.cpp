@@ -46,6 +46,9 @@ which carries forward this exception.
 #include "../../objects/terrain/PlanetNames.h"
 
 BazaarPlanetManagerImplementation::BazaarPlanetManagerImplementation(int planet) : BazaarPlanetManagerServant() , Logger("BazaarPlanetManager") {
+	setLogging(false); 
+	setGlobalLogging(true);
+
 	info("Starting BazaarPlanetManager for " + (string)PlanetNames[planet]);
 	vendorPlanet = planet;
 }

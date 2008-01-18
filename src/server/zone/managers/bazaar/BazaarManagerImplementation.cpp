@@ -52,14 +52,21 @@ which carries forward this exception.
 #include "../../packets/auction/BazaarDisplayUI.h"
 #include "../../packets/auction/AuctionQueryHeadersResponseMessage.h"
 #include "../../packets/auction/ItemSoldMessage.h"
+#include "../../objects/tangible/TangibleObject.h"
 #include "../../objects/auction/AuctionItem.h"
 #include "../../packets/chat/ChatSystemMessage.h"
 #include "../../packets/scene/SceneObjectDestroyMessage.h"
 
 #include "../../objects/terrain/PlanetNames.h"
+#include "../item/ItemManager.h"
+
+#include "../../Zone.h"
 
 BazaarManagerImplementation::BazaarManagerImplementation(ZoneServer* server) 
 		: BazaarManagerServant(), Mutex("BazaarManager"), Logger("BazaarManager") {
+
+	setLogging(false); 
+	setGlobalLogging(true);
 
 	bazaarTerminals = new BazaarTerminals();
 	
@@ -163,32 +170,33 @@ void BazaarManagerImplementation::addSaleItem(Player* player, long long objectid
 	uint32 itemType;
 	string identity;
 	
+	// TODO: Check sale price is not excessive check player can afford to sell
 	BazaarMap* bazaarLocations = bazaarTerminals->getBazaarMap();
 	BazaarTerminalDetails* bazaar = bazaarLocations->get(bazaarid);
 	
-	query << "SELECT name, template_type from `character_items` where `item_id` = " << objectid << ";";
-	ResultSet* items = ServerDatabase::instance()->executeQuery(query);
+	player->wlock();
+
+	TangibleObject* obj = (TangibleObject*)player->getInventoryItem(objectid);
 	
-	if(items->next()) {
-		itemType = items->getUnsignedInt(1);
-	} else {
-		cout << "Item " << objectid << " not found\n";
-		return;
-	}
+	itemType = obj->getObjectSubType();
+
 	if(description.size() == 0) {
 		// Get the item name
-		description = items->getString(0);
+		description = obj->getName().c_str();
 	}
 	
-	delete items;
-	
+	if(!obj->isPersistent()) {
+		ItemManager* itemManager = player->getZone()->getZoneServer()->getItemManager();
+		itemManager->createPlayerItem(player, obj);
+	}
+		
 	time_t expire = time(NULL) + duration;
 	
 	int auctionout;
 	if(auction)
 		auctionout = 1;
 	else
-		auctionout =0;
+		auctionout = 0;
 
 	int planet = bazaar->getPlanet();
 	
@@ -208,6 +216,7 @@ void BazaarManagerImplementation::addSaleItem(Player* player, long long objectid
 	} catch(DatabaseException& e) {
 		cout << "Can't add bazaar_item " << objectid << "\n";
 		cout << query2.str() << "\n";
+		player->unlock();
 		return;
 	}
 	
@@ -235,10 +244,7 @@ void BazaarManagerImplementation::addSaleItem(Player* player, long long objectid
 	unicode uni = unicode("");
 	int saleFee = 20;
 
-	player->wlock();
-
 	player->removeInventoryItem(objectid);
-	
 	
 	BaseMessage* msg = new ChatSystemMessage(str1, str2, uni, saleFee, true);
 	player->sendMessage(msg);
@@ -248,10 +254,11 @@ void BazaarManagerImplementation::addSaleItem(Player* player, long long objectid
 	
 	msg = new SceneObjectDestroyMessage(objectid);
 	player->sendMessage(msg);
-
+	
+	player->subtractBankCredits(saleFee);
+	
 	player->unlock();
-
-	// TODO: update bank account update item in database
+	
 }
 
 RegionBazaar* BazaarManagerImplementation::getBazaar(long long objectid) {
