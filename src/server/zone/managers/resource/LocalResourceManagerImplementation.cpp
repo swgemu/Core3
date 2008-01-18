@@ -177,28 +177,29 @@ float LocalResourceManagerImplementation::getDensity(int planet, unicode& resnam
 		resname.c_str(name);
 		ResourceTemplateImplementation* resource = resourceMap->get(name);
 		
-		for (int i = resource->getSpawnSize() - 1; i >= 0; i--) {
-			sl = resource->getSpawn(i);
-			if (sl->getPlanet() == planet) {
-				x = sl->getX();
-				y = sl->getY();
-				
-				radius = sl->getRadius();
-				
-				source = sl->getMax();
-				
-				if (inx > (x - radius) && inx < (x + radius) && iny > (y - radius) && iny < (y + radius)) {
-					distance = sqrt(((inx - x) * (inx - x)) 
-							+ ((iny - y) * (iny - y)));
-
-					density = ((((radius - distance) / radius) * source) / 100.0f);
+		if (resource != NULL) {
+			for (int i = resource->getSpawnSize() - 1; i >= 0; i--) {
+				sl = resource->getSpawn(i);
+				if (sl->getPlanet() == planet) {
+					x = sl->getX();
+					y = sl->getY();
 					
-					if (density > max_density)
-						max_density = density;
+					radius = sl->getRadius();
+					
+					source = sl->getMax();
+					
+					if (inx > (x - radius) && inx < (x + radius) && iny > (y - radius) && iny < (y + radius)) {
+						distance = sqrt(((inx - x) * (inx - x)) 
+								+ ((iny - y) * (iny - y)));
+	
+						density = ((((radius - distance) / radius) * source) / 100.0f);
+						
+						if (density > max_density)
+							max_density = density;
+					}
 				}
 			}
 		}
-		
 		return max_density;
 		
 	} catch (...) {
