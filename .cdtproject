@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <?eclipse-cdt version="2.0"?>
 
 <cdtproject id="org.eclipse.cdt.make.core.make">
@@ -64,7 +64,13 @@
 <target name="idl" path="" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
 <buildCommand>make</buildCommand>
 <buildArguments>cleanidl</buildArguments>
-<buildTarget/>
+<stopOnError>false</stopOnError>
+<useDefaultCommand>false</useDefaultCommand>
+</target>
+<target name="config" path="" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
+<buildCommand>make</buildCommand>
+<buildArguments></buildArguments>
+<buildTarget>config</buildTarget>
 <stopOnError>false</stopOnError>
 <useDefaultCommand>false</useDefaultCommand>
 </target>

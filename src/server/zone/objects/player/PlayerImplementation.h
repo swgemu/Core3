@@ -57,7 +57,7 @@ which carries forward this exception.
 #include "badges/Badges.h"
 #include "../terrain/RegionNames.h"
 #include "sui/SuiBoxImplementation.h"
-#include "sui/listBox/SuiListBoxImplementation.h"
+#include "sui/listbox/SuiListBoxImplementation.h"
 
 class PlayerManager;
 class ItemManager;

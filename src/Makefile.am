@@ -70,8 +70,8 @@ core3_IDLS =	server/zone/Zone.cpp \
 		server/zone/objects/player/sui/SuiBox.cpp \
 		server/zone/objects/player/sui/listbox/SuiListBox.cpp \
 		server/zone/objects/player/sui/messagebox/SuiMessageBox.cpp \
-		server/zone/objects/player/sui/inputBox/SuiInputBox.cpp \
-		server/zone/objects/player/sui/transferBox/SuiTransferBox.cpp \
+		server/zone/objects/player/sui/inputbox/SuiInputBox.cpp \
+		server/zone/objects/player/sui/transferbox/SuiTransferBox.cpp \
 		server/zone/objects/tangible/TangibleObject.cpp \
 		server/zone/objects/tangible/Container.cpp \
 		server/zone/objects/tangible/Inventory.cpp \

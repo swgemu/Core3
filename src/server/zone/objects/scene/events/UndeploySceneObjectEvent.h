@@ -61,7 +61,7 @@ public:
 		try {
 			object->wlock();
 			
-			object->finalize();
+			//object->finalize();
 
 			object->unlock();
 		} catch (Exception& e) {
