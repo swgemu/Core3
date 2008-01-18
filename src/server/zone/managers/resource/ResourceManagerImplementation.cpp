@@ -515,6 +515,8 @@ string ResourceManagerImplementation::getRandomResourceFromType(string restype, 
 	} catch (...) {
 		cout << "Database error in getRandomResourceFromType\n";
 	}
+	
+	return "";
 }
 
 void ResourceManagerImplementation::createResource(string restype, string pool, bool jtl) {
@@ -1128,8 +1130,10 @@ bool ResourceManagerImplementation::isDumbPhrase(const string inname) {
 		return true;
 	else
 		return false;*/
-	
+
+	return false;
 }
+
 bool ResourceManagerImplementation::isProfanity(const string inname) {
 	if ((inname.find("anal") == string::npos) && (inname.find("ass")
 			== string::npos) && (inname.find("asshole") == string::npos)

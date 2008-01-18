@@ -131,6 +131,7 @@ int SurveyToolImplementation::useObject(Player* player) {
 		player->sendSystemMessage("You do not have sufficient abilities to open " + getName().c_str() + ".");
 	}
 	
+	return 0;
 }
 
 void SurveyToolImplementation::sendSurveyEffect(Player* player) {

@@ -69,6 +69,8 @@ public:
 	int useObject(Player* player) {
 		EnterTicketPurchaseModeMessage* etpm = new EnterTicketPurchaseModeMessage(shuttle->getPlanet(), shuttle->getCity());
 		player->sendMessage(etpm);
+		
+		return 0;
 	}
 	
 };

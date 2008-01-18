@@ -60,6 +60,8 @@ public:
 	
 	int useObject(Player* player) {
 		cout << "Vendor use object";
+		
+		return 0;
 	}
 	
 };

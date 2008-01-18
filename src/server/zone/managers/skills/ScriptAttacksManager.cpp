@@ -972,5 +972,7 @@ int ScriptAttacksManager::AddMeditateSkill(lua_State* L) {
 	string effect = skill.getStringField("effectname");
 	
 	meditate = new MeditateSelfSkill(skillname, effect, server);
-	CombatActions->put(meditate);	
+	CombatActions->put(meditate);
+	
+	return 0;
 }

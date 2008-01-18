@@ -82,9 +82,9 @@ public:
 	string& getPlanetName();
 
 protected:
-	string _return_getPlanetName;
-
 	string _return_getName;
+
+	string _return_getPlanetName;
 
 };
 

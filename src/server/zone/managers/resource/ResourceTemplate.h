@@ -224,47 +224,47 @@ public:
 	int getObjectSubType();
 
 protected:
-	string _return_getAtt8;
-
-	string _return_getAtt5;
-
-	string _return_getAtt4;
-
-	string _return_getClass6;
-
-	string _return_getClass7;
-
-	string _return_getContainer;
-
-	string _return_getClass5;
-
-	string _return_getAtt7;
+	string _return_getAtt2;
 
 	string _return_getAtt1;
 
-	string _return_getClass4;
-
-	string _return_getAtt10;
-
 	string _return_getName;
 
-	string _return_getAtt2;
+	string _return_getAtt9;
 
-	string _return_getClass1;
+	string _return_getAtt8;
+
+	string _return_getAtt7;
+
+	string _return_getContainer;
 
 	string _return_getAtt6;
 
-	string _return_getAtt9;
+	string _return_getAtt5;
+
+	string _return_getClass1;
+
+	string _return_getAtt4;
+
+	string _return_getAtt3;
+
+	string _return_getType;
+
+	string _return_getClass7;
+
+	string _return_getClass6;
+
+	string _return_getAtt11;
+
+	string _return_getAtt10;
 
 	string _return_getClass3;
 
 	string _return_getClass2;
 
-	string _return_getAtt11;
+	string _return_getClass5;
 
-	string _return_getAtt3;
-
-	string _return_getType;
+	string _return_getClass4;
 
 };
 

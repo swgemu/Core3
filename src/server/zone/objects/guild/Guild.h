@@ -80,9 +80,9 @@ public:
 	string& getGuildTag();
 
 protected:
-	string _return_getGuildTag;
-
 	string _return_getGuildName;
+
+	string _return_getGuildTag;
 
 };
 
