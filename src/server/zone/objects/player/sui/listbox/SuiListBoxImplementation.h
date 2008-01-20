@@ -75,7 +75,10 @@ public:
 	}
 	
 	uint64 getMenuObjectID(int idx) {
-		return menuItems.get(idx)->getObjectID();
+		if ((uint32)idx < menuItems.size())
+			return menuItems.get(idx)->getObjectID();
+		else
+			return 0;
 	}
 	
 	int getMenuSize() {

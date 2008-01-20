@@ -164,8 +164,9 @@ void ZoneServerImplementation::startManagers() {
 	guildManager->load();
 	playerManager->setGuildManager(guildManager);
 
-	ResourceManagerImplementation* resImpl = new ResourceManagerImplementation(_this, processor);
-	resourceManager = (ResourceManager*) resImpl->deploy("ResourceManager");
+	/*ResourceManagerImplementation* resImpl = new ResourceManagerImplementation(_this, processor);
+	resourceManager = (ResourceManager*) resImpl->deploy("ResourceManager");*/
+	resourceManager = NULL;
 	
 	BazaarManagerImplementation* bazImpl = new BazaarManagerImplementation(_this);
 	bazaarManager = (BazaarManager*) bazImpl->deploy("BazaarManager");
@@ -187,7 +188,8 @@ void ZoneServerImplementation::shutdown() {
 
 	stop();
 
-	resourceManager->stop();
+	if (resourceManager != NULL)
+		resourceManager->stop();
 	
 	for (int i = 0; i < 50; ++i) {
 		Zone* zone = zones.get(i);

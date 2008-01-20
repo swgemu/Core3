@@ -136,9 +136,9 @@ public:
 protected:
 	string _return_getCustomizationString;
 
-	string _return_getTemplateTypeName;
-
 	string _return_getTemplateName;
+
+	string _return_getTemplateTypeName;
 
 	unicode _return_getName;
 

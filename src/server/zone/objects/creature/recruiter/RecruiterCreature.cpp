@@ -203,6 +203,7 @@ RecruiterCreatureServant::RecruiterCreatureServant(unsigned long long oid) : Cre
 
 RecruiterCreatureServant::~RecruiterCreatureServant() {
 }
+
 void RecruiterCreatureServant::_setStub(ORBObjectStub* stub) {
 	_this = (RecruiterCreature*) stub;
 	CreatureServant::_setStub(stub);

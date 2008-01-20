@@ -197,6 +197,7 @@ ResourceManagerServant::ResourceManagerServant() {
 
 ResourceManagerServant::~ResourceManagerServant() {
 }
+
 void ResourceManagerServant::_setStub(ORBObjectStub* stub) {
 	_this = (ResourceManager*) stub;
 }

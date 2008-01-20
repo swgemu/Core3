@@ -144,6 +144,7 @@ PistolRangedWeaponServant::PistolRangedWeaponServant(CreatureObject* creature, c
 
 PistolRangedWeaponServant::~PistolRangedWeaponServant() {
 }
+
 void PistolRangedWeaponServant::_setStub(ORBObjectStub* stub) {
 	_this = (PistolRangedWeapon*) stub;
 	RangedWeaponServant::_setStub(stub);

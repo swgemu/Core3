@@ -159,6 +159,7 @@ SuiMessageBoxServant::SuiMessageBoxServant(Player* play, unsigned int typeID, un
 
 SuiMessageBoxServant::~SuiMessageBoxServant() {
 }
+
 void SuiMessageBoxServant::_setStub(ORBObjectStub* stub) {
 	_this = (SuiMessageBox*) stub;
 	SuiBoxServant::_setStub(stub);

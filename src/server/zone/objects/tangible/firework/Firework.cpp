@@ -160,6 +160,7 @@ FireworkServant::FireworkServant(unsigned long long oid, int tp) : TangibleObjec
 
 FireworkServant::~FireworkServant() {
 }
+
 void FireworkServant::_setStub(ORBObjectStub* stub) {
 	_this = (Firework*) stub;
 	TangibleObjectServant::_setStub(stub);

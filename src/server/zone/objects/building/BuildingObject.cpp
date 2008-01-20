@@ -388,6 +388,7 @@ BuildingObjectServant::BuildingObjectServant(unsigned long long oid) : SceneObje
 
 BuildingObjectServant::~BuildingObjectServant() {
 }
+
 void BuildingObjectServant::_setStub(ORBObjectStub* stub) {
 	_this = (BuildingObject*) stub;
 	SceneObjectServant::_setStub(stub);

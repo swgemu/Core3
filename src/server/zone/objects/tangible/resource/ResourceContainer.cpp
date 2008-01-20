@@ -880,6 +880,7 @@ ResourceContainerServant::ResourceContainerServant(CreatureObject* creature, con
 
 ResourceContainerServant::~ResourceContainerServant() {
 }
+
 void ResourceContainerServant::_setStub(ORBObjectStub* stub) {
 	_this = (ResourceContainer*) stub;
 	TangibleObjectServant::_setStub(stub);

@@ -160,6 +160,7 @@ HolocronServant::HolocronServant(unsigned long long oid, int tp) : TangibleObjec
 
 HolocronServant::~HolocronServant() {
 }
+
 void HolocronServant::_setStub(ORBObjectStub* stub) {
 	_this = (Holocron*) stub;
 	TangibleObjectServant::_setStub(stub);

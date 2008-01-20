@@ -115,6 +115,8 @@ SurveyToolImplementation::~SurveyToolImplementation(){
 }
 
 int SurveyToolImplementation::useObject(Player* player) {
+	return 0;
+	
 	LocalResourceManager* resourceManager = player->getZone()->getLocalResourceManager();
 	
 	string skillBox = "crafting_artisan_novice";

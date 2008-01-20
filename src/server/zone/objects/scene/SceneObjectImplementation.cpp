@@ -95,8 +95,6 @@ SceneObjectImplementation::~SceneObjectImplementation() {
 	
 	if (!_this->undeploy())
 		error("object was not found in naming directory");
-
-	RWLockableImplementation::destroy();
 }
 
 SceneObject* SceneObjectImplementation::deploy() {

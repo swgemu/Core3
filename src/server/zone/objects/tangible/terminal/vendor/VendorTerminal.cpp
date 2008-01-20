@@ -160,6 +160,7 @@ VendorTerminalServant::VendorTerminalServant(unsigned int objCRC, unsigned long 
 
 VendorTerminalServant::~VendorTerminalServant() {
 }
+
 void VendorTerminalServant::_setStub(ORBObjectStub* stub) {
 	_this = (VendorTerminal*) stub;
 	TerminalServant::_setStub(stub);

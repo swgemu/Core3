@@ -339,6 +339,7 @@ IntangibleObjectServant::IntangibleObjectServant(unsigned long long oid) : Scene
 
 IntangibleObjectServant::~IntangibleObjectServant() {
 }
+
 void IntangibleObjectServant::_setStub(ORBObjectStub* stub) {
 	_this = (IntangibleObject*) stub;
 	SceneObjectServant::_setStub(stub);

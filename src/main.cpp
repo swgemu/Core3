@@ -44,7 +44,7 @@ which carries forward this exception.
 
 #include "server/ServerCore.h"
 
-#include "system/lang/SignalException.h"
+//#include "system/lang/SignalException.h"
 
 int main(int argc, char* argv[]) {
 	try {

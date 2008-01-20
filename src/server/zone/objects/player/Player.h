@@ -430,19 +430,19 @@ public:
 	bool getSampleErrorMessage();
 
 protected:
-	string _return_getRaceFileName;
-
-	string _return_getFirstName;
+	string _return_getCertification;
 
 	string _return_getFactionRank;
+
+	string _return_getFirstName;
 
 	string _return_getHairData;
 
 	string _return_getHairObject;
 
-	string _return_getCertification;
-
 	string _return_getNextSkillBox;
+
+	string _return_getRaceFileName;
 
 	string _return_getStartingProfession;
 

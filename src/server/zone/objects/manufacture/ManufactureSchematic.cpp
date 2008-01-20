@@ -138,6 +138,7 @@ ManufactureSchematicServant::ManufactureSchematicServant(unsigned long long oid)
 
 ManufactureSchematicServant::~ManufactureSchematicServant() {
 }
+
 void ManufactureSchematicServant::_setStub(ORBObjectStub* stub) {
 	_this = (ManufactureSchematic*) stub;
 	SceneObjectServant::_setStub(stub);

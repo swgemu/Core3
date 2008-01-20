@@ -270,6 +270,7 @@ SpawnLocationServant::SpawnLocationServant() {
 
 SpawnLocationServant::~SpawnLocationServant() {
 }
+
 void SpawnLocationServant::_setStub(ORBObjectStub* stub) {
 	_this = (SpawnLocation*) stub;
 }

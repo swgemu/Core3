@@ -240,6 +240,7 @@ TicketServant::TicketServant(unsigned long long oid, int tp) : TangibleObjectImp
 
 TicketServant::~TicketServant() {
 }
+
 void TicketServant::_setStub(ORBObjectStub* stub) {
 	_this = (Ticket*) stub;
 	TangibleObjectServant::_setStub(stub);

@@ -353,6 +353,7 @@ LocalResourceManagerServant::LocalResourceManagerServant() {
 
 LocalResourceManagerServant::~LocalResourceManagerServant() {
 }
+
 void LocalResourceManagerServant::_setStub(ORBObjectStub* stub) {
 	_this = (LocalResourceManager*) stub;
 }

@@ -692,21 +692,21 @@ public:
 protected:
 	string _return_getCharacterApperance;
 
-	string _return_getTerrainName;
-
-	string _return_getSkill;
-
-	string _return_getStfName;
-
-	string _return_getRaceName;
-
 	string _return_getGuildName;
+
+	string _return_getMood;
 
 	string _return_getPerformanceName;
 
+	string _return_getRaceName;
+
+	string _return_getSkill;
+
 	string _return_getSpeciesName;
 
-	string _return_getMood;
+	string _return_getStfName;
+
+	string _return_getTerrainName;
 
 	unicode _return_getCharacterName;
 

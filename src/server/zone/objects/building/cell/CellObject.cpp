@@ -243,6 +243,7 @@ CellObjectServant::CellObjectServant(unsigned long long oid) : SceneObjectImplem
 
 CellObjectServant::~CellObjectServant() {
 }
+
 void CellObjectServant::_setStub(ORBObjectStub* stub) {
 	_this = (CellObject*) stub;
 	SceneObjectServant::_setStub(stub);

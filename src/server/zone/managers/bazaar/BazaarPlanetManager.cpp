@@ -198,6 +198,7 @@ BazaarPlanetManagerServant::BazaarPlanetManagerServant() {
 
 BazaarPlanetManagerServant::~BazaarPlanetManagerServant() {
 }
+
 void BazaarPlanetManagerServant::_setStub(ORBObjectStub* stub) {
 	_this = (BazaarPlanetManager*) stub;
 }

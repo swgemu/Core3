@@ -159,6 +159,7 @@ FireworkWorldServant::FireworkWorldServant(unsigned long long oid, int tp) : Sta
 
 FireworkWorldServant::~FireworkWorldServant() {
 }
+
 void FireworkWorldServant::_setStub(ORBObjectStub* stub) {
 	_this = (FireworkWorld*) stub;
 	StaticObjectServant::_setStub(stub);

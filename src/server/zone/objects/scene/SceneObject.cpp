@@ -1343,6 +1343,7 @@ SceneObjectServant::SceneObjectServant() : RWLockableImplementation() {
 
 SceneObjectServant::~SceneObjectServant() {
 }
+
 void SceneObjectServant::_setStub(ORBObjectStub* stub) {
 	_this = (SceneObject*) stub;
 	RWLockableServant::_setStub(stub);

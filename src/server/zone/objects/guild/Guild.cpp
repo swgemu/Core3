@@ -280,6 +280,7 @@ GuildServant::GuildServant() {
 
 GuildServant::~GuildServant() {
 }
+
 void GuildServant::_setStub(ORBObjectStub* stub) {
 	_this = (Guild*) stub;
 }

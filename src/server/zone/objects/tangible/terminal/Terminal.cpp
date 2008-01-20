@@ -179,6 +179,7 @@ TerminalServant::TerminalServant(unsigned long long oid, int tp) : TangibleObjec
 
 TerminalServant::~TerminalServant() {
 }
+
 void TerminalServant::_setStub(ORBObjectStub* stub) {
 	_this = (Terminal*) stub;
 	TangibleObjectServant::_setStub(stub);

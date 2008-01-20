@@ -456,8 +456,6 @@ void ZonePacketHandler::handleObjectControllerMessage(Message* pack) {
 		player->unlock();
 		
 		cout << "exception on ZonePacketHandler:::handleObjectControllerMessage(Message* pack)\n";
-		cout << e.getMessage() << "\n";
-		
 		e.printStackTrace();
 	} catch (...) {
 		player->unlock();

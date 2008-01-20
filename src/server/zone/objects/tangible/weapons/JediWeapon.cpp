@@ -183,6 +183,7 @@ JediWeaponServant::JediWeaponServant(CreatureObject* creature, const string& tem
 
 JediWeaponServant::~JediWeaponServant() {
 }
+
 void JediWeaponServant::_setStub(ORBObjectStub* stub) {
 	_this = (JediWeapon*) stub;
 	WeaponServant::_setStub(stub);

@@ -257,6 +257,7 @@ GuildMapServant::GuildMapServant() {
 
 GuildMapServant::~GuildMapServant() {
 }
+
 void GuildMapServant::_setStub(ORBObjectStub* stub) {
 	_this = (GuildMap*) stub;
 }

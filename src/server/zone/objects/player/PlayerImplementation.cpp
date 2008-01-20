@@ -1392,17 +1392,16 @@ void PlayerImplementation::doRecovery() {
 		return;
 	} 
 	
-	if (hasStates()) {
+	if (!isInCombat() && isOnFullHealth() && !hasStates()) {
+		return;
+	} else if (lastCombatAction.miliDifference() > 15000)
+		clearCombatState();
+
+	if (!isOnFullHealth())
+		calculateHAMregen();
+
+	if (hasStates())
 		doStateRecovery();
-
-		if (!isInCombat()) {
-			if (isOnFullHealth() && !hasStates())
-				return;
-		} else if (lastCombatAction.miliDifference() > 30000)
-			clearCombatState();
-	}
-
-	calculateHAMregen();
 
 	if (isJedi())
 		calculateForceRegen();
@@ -1495,7 +1494,7 @@ void PlayerImplementation::doClone() {
 	
 	setPosture(UPRIGHT_POSTURE);
 
-	activateRecovery();
+	rescheduleRecovery();
 }
 
 void PlayerImplementation::doCenterOfBeing() {

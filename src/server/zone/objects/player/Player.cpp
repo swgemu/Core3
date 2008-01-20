@@ -3442,6 +3442,7 @@ PlayerServant::PlayerServant(unsigned long long oid) : CreatureObjectImplementat
 
 PlayerServant::~PlayerServant() {
 }
+
 void PlayerServant::_setStub(ORBObjectStub* stub) {
 	_this = (Player*) stub;
 	CreatureObjectServant::_setStub(stub);

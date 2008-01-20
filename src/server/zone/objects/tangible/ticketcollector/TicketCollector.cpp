@@ -183,6 +183,7 @@ TicketCollectorServant::TicketCollectorServant(unsigned long long oid, int tp) :
 
 TicketCollectorServant::~TicketCollectorServant() {
 }
+
 void TicketCollectorServant::_setStub(ORBObjectStub* stub) {
 	_this = (TicketCollector*) stub;
 	TangibleObjectServant::_setStub(stub);

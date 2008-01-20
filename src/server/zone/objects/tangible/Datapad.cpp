@@ -140,6 +140,7 @@ DatapadServant::DatapadServant(unsigned long long oid) : ContainerImplementation
 
 DatapadServant::~DatapadServant() {
 }
+
 void DatapadServant::_setStub(ORBObjectStub* stub) {
 	_this = (Datapad*) stub;
 	ContainerServant::_setStub(stub);

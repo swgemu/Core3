@@ -160,6 +160,7 @@ TravelTerminalServant::TravelTerminalServant(unsigned int objCRC, unsigned long 
 
 TravelTerminalServant::~TravelTerminalServant() {
 }
+
 void TravelTerminalServant::_setStub(ORBObjectStub* stub) {
 	_this = (TravelTerminal*) stub;
 	TerminalServant::_setStub(stub);

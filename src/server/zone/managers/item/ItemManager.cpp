@@ -361,6 +361,7 @@ ItemManagerServant::ItemManagerServant() {
 
 ItemManagerServant::~ItemManagerServant() {
 }
+
 void ItemManagerServant::_setStub(ORBObjectStub* stub) {
 	_this = (ItemManager*) stub;
 }

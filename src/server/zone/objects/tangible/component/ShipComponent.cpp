@@ -491,6 +491,7 @@ ShipComponentServant::ShipComponentServant(unsigned long long oid, int tp) : Tan
 
 ShipComponentServant::~ShipComponentServant() {
 }
+
 void ShipComponentServant::_setStub(ORBObjectStub* stub) {
 	_this = (ShipComponent*) stub;
 	TangibleObjectServant::_setStub(stub);

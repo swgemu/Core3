@@ -112,6 +112,12 @@ void SuiManager::handleStartMusic(uint32 boxID, Player* player, uint32 cancel, c
 		delete sui;
 		
 		player->unlock();
+	} catch (Exception& e) {
+		stringstream msg;
+		msg << "Exception in SuiManager::handleStartMusic " << e.getMessage();
+		error(msg.str());
+		
+		player->unlock();
 	} catch (...) {
 		error("Unreported exception caught in SuiManager::handleStartMusic(Player* player, const string& music)");
 		player->unlock();
@@ -137,8 +143,14 @@ void SuiManager::handleStartDancing(uint32 boxID, Player* player, uint32 cancel,
 		delete sui;
 		
 		player->unlock();
+	} catch (Exception& e) {
+		stringstream msg;
+		msg << "Exception in SuiManager::handleStartDancing " << e.getMessage();
+		error(msg.str());
+		
+		player->unlock();
 	} catch (...) {
-		error("Unreported exception caught in SuiManager::handleStartMusic(Player* player, const string& music)");
+		error("Unreported exception caught in SuiManager::handleStartDancing(Player* player, const string& music)");
 		player->unlock();
 	}
 }
@@ -166,6 +178,12 @@ void SuiManager::handleSurveyToolRange(uint32 boxID, Player* player, uint32 canc
 		player->removeSuiBox(boxID);
 		
 		delete sui;
+		
+		player->unlock();
+	} catch (Exception& e) {
+		stringstream msg;
+		msg << "Exception in SuiManager::handleSurveyToolRange " << e.getMessage();
+		error(msg.str());
 		
 		player->unlock();
 	} catch (...) {
@@ -211,6 +229,12 @@ void SuiManager::handleSliceWeapon(uint32 boxID, Player* player, uint32 cancel, 
 		delete sui;
 
 		player->unlock();
+	} catch (Exception& e) {
+		stringstream msg;
+		msg << "Exception in SuiManager::handleSliceWeapon " << e.getMessage();
+		error(msg.str());
+		
+		player->unlock();
 	} catch (...) {
 		error("Unreported exception caught in SuiManager::handleSliceWeapon(uint32 boxID, Player* player, int itemindex)");
 		player->unlock();
@@ -254,6 +278,12 @@ void SuiManager::handleSliceArmor(uint32 boxID, Player* player, uint32 cancel, i
 		delete sui;
 
 		player->unlock();
+	} catch (Exception& e) {
+		stringstream msg;
+		msg << "Exception in SuiManager::handleSliceArmor " << e.getMessage();
+		error(msg.str());
+		
+		player->unlock();
 	} catch (...) {
 		error("Unreported exception caught in SuiManager::handleSliceArmor(uint32 boxID, Player* player, int itemindex)");
 		player->unlock();
@@ -294,6 +324,12 @@ void SuiManager::handleRepairWeapon(uint32 boxID, Player* player, uint32 cancel,
 		
 		delete sui;
 
+		player->unlock();
+	} catch (Exception& e) {
+		stringstream msg;
+		msg << "Exception in SuiManager::handleRepairWeapon " << e.getMessage();
+		error(msg.str());
+		
 		player->unlock();
 	} catch (...) {
 		error("Unreported exception caught in SuiManager::handleRepairWeapon(uint32 boxID, Player* player, int itemindex)");
@@ -336,6 +372,12 @@ void SuiManager::handleRepairArmor(uint32 boxID, Player* player, uint32 cancel, 
 		delete sui;
 
 		player->unlock();
+	} catch (Exception& e) {
+		stringstream msg;
+		msg << "Exception in SuiManager::handleRepairArmor " << e.getMessage();
+		error(msg.str());
+		
+		player->unlock();
 	} catch (...) {
 		error("Unreported exception caught in SuiManager::handleRepairArmor(uint32 boxID, Player* player, int itemindex)");
 		player->unlock();
@@ -358,8 +400,14 @@ void SuiManager::handleTicketPurchaseMessageBox(uint32 boxID, Player* player) {
 		delete sui;
 
 		player->unlock();
+	} catch (Exception& e) {
+		stringstream msg;
+		msg << "Exception in SuiManager::handleTicketPurchaseMessageBox " << e.getMessage();
+		error(msg.str());
+		
+		player->unlock();
 	} catch (...) {
-		error("Unreported exception caught in SuiManager::handleStartMusic(Player* player, const string& music)");
+		error("Unreported exception caught in SuiManager::handleTicketPurchaseMessageBox");
 		player->unlock();
 	}
 }
@@ -378,13 +426,16 @@ void SuiManager::handleTicketCollectorRespones(uint32 boxID, Player* player, uin
 		if (sui->isListBox() && cancel != 1) {
 			SuiListBox* listBox = (SuiListBox*)sui;
 			
-			uint64 ticketObectID = listBox->getMenuObjectID(ticketIndex);
+			uint64 ticketObjectID = listBox->getMenuObjectID(ticketIndex);
 			
-			TangibleObject* object = (TangibleObject*) player->getInventoryItem(ticketObectID);
-			if (object != NULL && object->isTicket()) {
-				Ticket* ticket = (Ticket*) object;
+			if (ticketObjectID != 0) {
+				TangibleObject* object = (TangibleObject*) player->getInventoryItem(ticketObjectID);
 				
-				ticket->useObject(player);
+				if (object != NULL && object->isTicket()) {
+					Ticket* ticket = (Ticket*) object;
+				
+					ticket->useObject(player);
+				}
 			}
 		} 
 
@@ -393,8 +444,13 @@ void SuiManager::handleTicketCollectorRespones(uint32 boxID, Player* player, uin
 		delete sui;
 
 		player->unlock();
+	} catch (Exception& e) {
+		error("Exception in SuiManager::handleTicketCollectorRespones ");
+		e.printStackTrace();
+		
+		player->unlock();
 	} catch (...) {
-		error("Unreported exception caught in SuiManager::handleStartMusic(Player* player, const string& music)");
+		error("Unreported exception caught in SuiManager::handleTicketCollectorRespones");
 		player->unlock();
 	}
 }

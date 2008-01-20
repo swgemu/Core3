@@ -80,13 +80,13 @@ public:
 	string& getArrivalPoint();
 
 protected:
-	string _return_getDeparturePlanet;
-
-	string _return_getDeparturePoint;
+	string _return_getArrivalPlanet;
 
 	string _return_getArrivalPoint;
 
-	string _return_getArrivalPlanet;
+	string _return_getDeparturePlanet;
+
+	string _return_getDeparturePoint;
 
 };
 

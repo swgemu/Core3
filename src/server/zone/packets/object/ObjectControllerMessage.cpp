@@ -533,22 +533,22 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player, Message* 
 		handleDeathblow(player, pack, combatManager);
 		break;
 	case (0x19C9FAC1):
-		parseSurveySlashRequest(player, pack);
+		//parseSurveySlashRequest(player, pack);
 		break;
 	case (0xC00CFA18):
-		parseSurveyRequest(player, pack);
+		//parseSurveyRequest(player, pack);
 		break;
 	case (0x8D0C1504):
-		parseSampleSlashRequest(player, pack);
+		//parseSampleSlashRequest(player, pack);
 		break;
 	case (0x9223C634):
-		parseSampleRequest(player, pack);
+		//parseSampleRequest(player, pack);
 		break;
 	case (0x74952854):
-		parseResourceContainerSplit(player, pack);
+		//parseResourceContainerSplit(player, pack);
 		break;
 	case (0xF7262A75):
-		parseResourceContainerTransfer(player, pack);
+		//parseResourceContainerTransfer(player, pack);
 		break;
 	default:
 		target = pack->parseLong();

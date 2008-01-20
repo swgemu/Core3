@@ -203,6 +203,7 @@ TrainerCreatureServant::TrainerCreatureServant(unsigned long long oid) : Creatur
 
 TrainerCreatureServant::~TrainerCreatureServant() {
 }
+
 void TrainerCreatureServant::_setStub(ORBObjectStub* stub) {
 	_this = (TrainerCreature*) stub;
 	CreatureServant::_setStub(stub);

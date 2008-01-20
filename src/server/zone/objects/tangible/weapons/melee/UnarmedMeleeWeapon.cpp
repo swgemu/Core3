@@ -144,6 +144,7 @@ UnarmedMeleeWeaponServant::UnarmedMeleeWeaponServant(CreatureObject* creature, c
 
 UnarmedMeleeWeaponServant::~UnarmedMeleeWeaponServant() {
 }
+
 void UnarmedMeleeWeaponServant::_setStub(ORBObjectStub* stub) {
 	_this = (UnarmedMeleeWeapon*) stub;
 	MeleeWeaponServant::_setStub(stub);

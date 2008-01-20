@@ -472,6 +472,7 @@ CreatureManagerServant::CreatureManagerServant() {
 
 CreatureManagerServant::~CreatureManagerServant() {
 }
+
 void CreatureManagerServant::_setStub(ORBObjectStub* stub) {
 	_this = (CreatureManager*) stub;
 }

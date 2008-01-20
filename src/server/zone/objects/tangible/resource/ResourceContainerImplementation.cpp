@@ -137,6 +137,8 @@ void ResourceContainerImplementation::sendDeltas(Player* player) {
 }
 
 void ResourceContainerImplementation::generateAttributes(SceneObject* obj) {
+	return;
+	
 	if (!obj->isPlayer())
 		return;
 	

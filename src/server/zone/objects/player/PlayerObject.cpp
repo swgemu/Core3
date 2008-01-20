@@ -703,6 +703,7 @@ PlayerObjectServant::PlayerObjectServant() : SceneObjectImplementation() {
 
 PlayerObjectServant::~PlayerObjectServant() {
 }
+
 void PlayerObjectServant::_setStub(ORBObjectStub* stub) {
 	_this = (PlayerObject*) stub;
 	SceneObjectServant::_setStub(stub);
