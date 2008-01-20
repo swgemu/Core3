@@ -47,28 +47,33 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-#include "BazaarManager.h"
-
 #include "BazaarTerminals.h"
 #include "BazaarPlanetManager.h"
 #include "BazaarPlanetManagerImplementation.h"
 
-#include "../../objects/tangible/terminal/bazaar/RegionBazaar.h"
+#include "../../objects.h"
+#include "../../objects/auction/AuctionController.h"
 
-#include "../../objects/player/Player.h"
+#include "BazaarManager.h"
 
-#include "../../objects/auction/AuctionItem.h"
+class CheckBazaarStatus;
 
-class BazaarManagerImplementation : public BazaarManagerServant, public Mutex, public Logger {
+class BazaarManagerImplementation : public AuctionController, public BazaarManagerServant, public Mutex, public Logger {
+	ZoneProcessServerImplementation* processServer;
+	
+	CheckBazaarStatus* checkEvent;
+	
 	BazaarPlanetManager* bazaarPlanets[10];
 
 	BazaarTerminals* bazaarTerminals;
 	
 	Vector<uint64>updated;
-	
-	Vector<AuctionItem*>items;
 
 public:
+	static const int MAXPRICE = 20000;
+	static const int MAXSALES = 100;
+	static const int SALESFEE = 5;
+	
 	static const int ARMOR = 0x00000100;
 	static const int BUILDING = 0x00000200;
 	static const int ENTITY = 0x00000400;
@@ -87,15 +92,16 @@ public:
 	static const int SHIPCOMPONENT = 0x40000000;
 	
 public:
-	BazaarManagerImplementation(ZoneServer* server);
+	BazaarManagerImplementation(ZoneServer* zoneServer, ZoneProcessServerImplementation* server);
 	
 	void newBazaarRequest(long long bazaarID, Player* player, int planet);
 	bool isBazaarTerminal(long long objectID);
 	
 	void addSaleItem(Player* player, long long objectid, long long bazaarid, string& description, int price, unsigned int duration, bool auction);
-	void getBazaarData(Player* player, long long objectid, int screen, int extent, int category, int count);
-	RegionBazaar* getBazaar(long long objectid);
+	BazaarPlanetManager* getPlanet(long long bazaarid);
+	RegionBazaar* getBazaar(long long bazaarid);
 	void updateItemStatus(uint64 itemid);
+	void checkAuctions();
 };
 
 #endif /*BAZAARMANAGERIMPLEMENTATION_H_*/

@@ -45,7 +45,7 @@ which carries forward this exception.
 #include "BazaarPlanetManagerImplementation.h"
 #include "../../objects/terrain/PlanetNames.h"
 
-BazaarPlanetManagerImplementation::BazaarPlanetManagerImplementation(int planet) : BazaarPlanetManagerServant() , Logger("BazaarPlanetManager") {
+BazaarPlanetManagerImplementation::BazaarPlanetManagerImplementation(int planet) : AuctionController(), BazaarPlanetManagerServant() , Logger("BazaarPlanetManager") {
 	setLogging(false); 
 	setGlobalLogging(true);
 
@@ -57,7 +57,7 @@ void BazaarPlanetManagerImplementation::setPlanet(int planet) {
 	vendorPlanet = planet;
 }
 
-void BazaarPlanetManagerImplementation::addItem(AuctionItem* auctionItem) {
+void BazaarPlanetManagerImplementation::addBazaarItem(AuctionItem* auctionItem) {
 	RegionBazaar* bazaar;
 	
 	bazaar = bazaars.get(auctionItem->location);
@@ -65,6 +65,20 @@ void BazaarPlanetManagerImplementation::addItem(AuctionItem* auctionItem) {
 		info("Bazaar not found " + auctionItem->location);
 	} else {
 		bazaar->addItem(auctionItem);
+		addItem(auctionItem);
+	}
+}
+
+void BazaarPlanetManagerImplementation::removeBazaarItem(long long objectid) {
+	RegionBazaar* bazaar;
+	
+	AuctionItem* item = getItem(objectid);
+	bazaar = bazaars.get(item->location);
+	if(bazaar == NULL) {
+		return;
+	} else {
+		bazaar->removeItem(objectid);
+		removeItem(objectid);
 	}
 }
 

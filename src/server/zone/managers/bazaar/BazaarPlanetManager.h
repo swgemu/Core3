@@ -53,6 +53,10 @@ which carries forward this exception.
 
 class AuctionItem;
 
+class Player;
+
+class RegionBazaar;
+
 #include "BazaarTerminalDetails.h"
 
 class BazaarPlanetManager : public ORBObjectStub {
@@ -67,9 +71,13 @@ public:
 
 	void setPlanet(int planet);
 
-	void addItem(AuctionItem* item);
+	void addBazaarItem(AuctionItem* item);
+
+	void removeBazaarItem(long long objectid);
 
 	void addBazaar(BazaarTerminalDetails* terminal);
+
+	void getBazaarData(Player* player, long long objectid, int screen, int extent, unsigned int category, int count, int offset);
 
 protected:
 };
@@ -84,9 +92,13 @@ public:
 
 	void setPlanet(int planet);
 
-	void addItem(AuctionItem* item);
+	void addBazaarItem(AuctionItem* item);
+
+	void removeBazaarItem(long long objectid);
 
 	void addBazaar(BazaarTerminalDetails* terminal);
+
+	void getBazaarData(Player* player, long long objectid, int screen, int extent, unsigned int category, int count, int offset);
 
 };
 

@@ -57,6 +57,7 @@ which carries forward this exception.
 #include "managers/radial/RadialManager.h"
 #include "managers/planet/PlanetManager.h"
 #include "managers/bazaar/BazaarManager.h"
+#include "managers/bazaar/BazaarPlanetManager.h"
 #include "managers/sui/SuiManager.h"
 
 #include "objects/terrain/PlanetNames.h"
@@ -883,8 +884,18 @@ void ZonePacketHandler::handleBazaarScreens(Message* pack) {
 	uint32 category = pack->parseInt();  // Bitmask
 	pack->shiftOffset(21);
 	uint64 bazaarId = pack->parseLong();
+	char unk1 = pack->parseByte();
+	int offset = pack->parseShort();
 	
    	BazaarManager* bazaarManager = server->getBazaarManager();
-   	RegionBazaar* bazaar = bazaarManager->getBazaar(bazaarId);
-   	bazaar->getBazaarData(player, bazaarId, screen, extent, category, counter);
+   	if (extent == 0)
+   		bazaarManager->getBazaarData(player, bazaarId, screen, extent, category, counter, offset);
+   	else if (extent == 1) {
+   		BazaarPlanetManager* planetManager = bazaarManager->getPlanet(bazaarId);
+   		planetManager->getBazaarData(player, bazaarId, screen, extent, category, counter, offset);
+   	}
+   	else if (extent == 2) {
+   		RegionBazaar* bazaar = bazaarManager->getBazaar(bazaarId);
+   		bazaar->getBazaarData(player, bazaarId, screen, extent, category, counter, offset);
+   	}
 }

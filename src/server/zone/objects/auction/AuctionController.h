@@ -42,33 +42,88 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef BAZAARPLANETMANAGERIMPLEMENTATION_H_
-#define BAZAARPLANETMANAGERIMPLEMENTATION_H_
+#ifndef AUCTIONCONTROLLER_H_
+#define AUCTIONCONTROLLER_H_
 
 #include "engine/engine.h"
 
-#include "BazaarPlanetManager.h"
+#include "AuctionItem.h"
 
-#include "BazaarManager.h"
-#include "BazaarManagerImplementation.h"
+#include "../../packets/auction/AuctionQueryHeadersResponseMessage.h"
+#include "../../objects/player/Player.h"
 
-#include "BazaarTerminals.h"
+class AuctionController {
 
-#include "../../objects/tangible/terminal/bazaar/RegionBazaar.h"
-#include "../../objects/tangible/terminal/bazaar/RegionBazaarImplementation.h"
-#include "../../objects/auction/AuctionController.h"
-
-class BazaarPlanetManagerImplementation : public AuctionController, public BazaarPlanetManagerServant, public Logger {
-	int vendorPlanet;
-	VectorMap<string, RegionBazaar*> bazaars;
-	
 public:
-	BazaarPlanetManagerImplementation(int planet);
+	VectorMap<uint64, AuctionItem*> items;
+
+	AuctionController() {
+		
+	}
 	
-	void setPlanet(int planet);
-	void addBazaarItem(AuctionItem* auctionItem);
-	void removeBazaarItem(long long objectid);
-	void addBazaar(BazaarTerminalDetails* terminal);
+	inline void addItem(AuctionItem* item) {
+		items.put(item->id, item);
+	}
+	
+	inline void removeItem(long long objectid) {
+		if (items.contains(objectid))
+			items.drop(objectid);
+	}
+	
+	inline AuctionItem* getItem(long long objectid) {
+		if (items.contains(objectid)) {
+			int index = items.find(objectid);
+			return items.get(index);
+		}
+		else
+			return NULL;
+	}
+	
+	void getBazaarData(Player* player, long long objectid, int screen, int extent, unsigned int category, int count, int offset) {
+
+		AuctionQueryHeadersResponseMessage* reply = new AuctionQueryHeadersResponseMessage(screen, count);
+
+		int displaying = 0;
+		if (screen == 2) {
+			
+			for (int i = 0; (i < items.size()) && (displaying < (offset + 100)); i++) {
+				AuctionItem* item = items.get(i);
+				
+				if (!item->sold)
+					if (item->itemType & category) {
+						if (displaying >= offset)
+							reply->addItemToList(items.get(i));
+						displaying++;
+					} else if ((category == 8192) && (item->itemType < 256)) {
+						if (displaying >= offset)
+							reply->addItemToList(items.get(i));
+						displaying++;
+					}				
+			}
+			
+		} else if (screen == 3) {
+			
+			for (int i = 0; i < items.size(); i++) {
+				if ((items.get(i)->ownerID == player->getCharacterID()) && !items.get(i)->sold)
+					reply->addItemToList(items.get(i));
+			}
+			
+		} else if (screen == 5) {
+
+			for (int i = 0; i < items.size(); i++) {
+				if ((items.get(i)->ownerID == player->getCharacterID()) && items.get(i)->sold)
+					reply->addItemToList(items.get(i));
+			}
+			
+		}
+		
+		if(displaying == (offset + 100))
+			reply->createMessage(offset, true);
+		else
+			reply->createMessage(offset);
+		
+		player->sendMessage(reply);
+	}
 };
 
-#endif /*BAZAARPLANETMANAGERIMPLEMENTATION_H_*/
+#endif /*AUCTIONCONTROLLER_H_*/

@@ -185,6 +185,7 @@ which carries forward this exception.
 #include "packets/auction/IsVendorOwnerResponseMessage.h"
 #include "packets/auction/RetrieveAuctionItemResponseMessage.h"
 #include "packets/auction/ItemSoldMessage.h"
+#include "packets/auction/BazaarDisplayUI.h"
 
 //Char Creation:
 #include "packets/charcreation/ClientCreateCharacter.h"

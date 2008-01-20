@@ -45,15 +45,35 @@ which carries forward this exception.
 #ifndef ITEMSOLDMESSAGE_H_
 #define ITEMSOLDMESSAGE_H_
 
+/*
+ * Status codes
+ * 0  - Sale succeeded
+ * 1  - Auctioner is invalid
+ * 2  - Invalid item 
+ * 3  - Vendor is malfunctioning
+ * 4  - Must specify a valid sale price
+ * 5  - Invalid sale Duration 
+ * 6  - Already for sale
+ * 7  - Unknown error
+ * 8  - Do not own
+ * 9  - Not enough credits (5)
+ * 10 - Unknown error
+ * 11 - Unknown error
+ * 12 - Unknown error
+ * 13 - Too many items
+ * 14 - Over 20,000 credits
+*/
+
 class ItemSoldMessage : public BaseMessage {
 
 public:
-	ItemSoldMessage(long long objectid) {
+	ItemSoldMessage(long long objectid, int status) {
 		insertShort(3);
 		insertInt(0x0E61CC92);
 		
 		insertLong(objectid);
-		insertInt(0);
+		insertInt(status); 
+		
 	}
 };
 

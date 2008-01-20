@@ -49,66 +49,16 @@ which carries forward this exception.
 
 #include "RegionBazaar.h"
 
-#include "../../../player/Player.h"
+#include "../../../../objects/auction/AuctionController.h"
+#include "../../../../packets.h"
 
-#include "../../../../objects/auction/AuctionItem.h"
-#include "../../../../packets/auction/IsVendorOwnerResponseMessage.h"
-#include "../../../../packets/auction/BazaarDisplayUI.h"
-#include "../../../../packets/auction/AuctionQueryHeadersResponseMessage.h"
-
-#include "../../../../objects/terrain/PlanetNames.h"
-
-class RegionBazaarImplementation : public RegionBazaarServant {
-	Vector<AuctionItem*> items;
+class RegionBazaarImplementation : public AuctionController, public RegionBazaarServant  {
 	string bazaarRegion;
 	BazaarPlanetManager* planetManager;
 	
 public:
-	RegionBazaarImplementation() : RegionBazaarServant() {
+	RegionBazaarImplementation() : AuctionController(), RegionBazaarServant() {
 	
-	}
-	
-	inline void addItem(AuctionItem* item) {
-		items.add(item);
-	}
-	
-	void setRegion(string& region) {
-		bazaarRegion = region;
-	}
-	
-	void setManager(BazaarPlanetManager* manager) {
-		planetManager = manager;
-	}
-	
-	void getBazaarData(Player* player, long objectid, int screen, int extent, int category, int count) {
-
-		AuctionQueryHeadersResponseMessage* reply = new AuctionQueryHeadersResponseMessage(screen, count);
-
-		if (screen == 2) {
-			int displaying = 0;
-			
-			for (int i = 0; (i < items.size()) && (displaying < 100); i++) {
-				AuctionItem* item = items.get(i);
-				
-				if (item->itemType & category) {
-					reply->addItemToList(items.get(i));
-					displaying++;
-				} else if ((category == 8192) && (item->itemType < 256)) {
-					reply->addItemToList(items.get(i));
-					displaying++;
-				}
-			}
-		} else if (screen == 3) {
-			
-			for (int i = 0; i < items.size(); i++) {
-				if (items.get(i)->ownerID == player->getCharacterID())
-					reply->addItemToList(items.get(i));
-			}
-		}
-		
-		reply->createMessage();
-		
-		player->sendMessage(reply);
 	}
 	
 	void newBazaarRequest(long bazaarID, Player* player, int planet) {
@@ -123,7 +73,13 @@ public:
 		player->sendMessage(msg2);
 	}
 
-
+	void setRegion(string& region) {
+		bazaarRegion = region;
+	}
+	
+	void setManager(BazaarPlanetManager* manager) {
+		planetManager = manager;
+	}
 };
 
 #endif /*REGIONBAZAARIMPLEMENTATION_H_*/

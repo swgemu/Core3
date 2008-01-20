@@ -51,9 +51,13 @@ which carries forward this exception.
 
 #include "engine/orb/ObjectRequestBroker.h"
 
+class AuctionItem;
+
 class Player;
 
 class RegionBazaar;
+
+class BazaarPlanetManager;
 
 class BazaarManager : public ORBObjectStub {
 public:
@@ -71,9 +75,11 @@ public:
 
 	void addSaleItem(Player* player, long long objectid, long long bazaarid, string& description, int price, int duration, bool auction);
 
-	void getBazaarData(Player* player, long long objectid, int screen, int extent, int category, int count);
+	void getBazaarData(Player* player, long long objectid, int screen, int extent, unsigned int category, int count, int offset);
 
-	RegionBazaar* getBazaar(long long objectid);
+	RegionBazaar* getBazaar(long long bazaarid);
+
+	BazaarPlanetManager* getPlanet(long long bazaarid);
 
 protected:
 };
@@ -92,9 +98,11 @@ public:
 
 	void addSaleItem(Player* player, long long objectid, long long bazaarid, string& description, int price, int duration, bool auction);
 
-	void getBazaarData(Player* player, long long objectid, int screen, int extent, int category, int count);
+	void getBazaarData(Player* player, long long objectid, int screen, int extent, unsigned int category, int count, int offset);
 
-	RegionBazaar* getBazaar(long long objectid);
+	RegionBazaar* getBazaar(long long bazaarid);
+
+	BazaarPlanetManager* getPlanet(long long bazaarid);
 
 protected:
 	string _param3_addSaleItem__Player_long_long_string_int_int_bool_;

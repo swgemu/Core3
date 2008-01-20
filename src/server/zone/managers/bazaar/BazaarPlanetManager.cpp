@@ -48,6 +48,10 @@ which carries forward this exception.
 
 #include "../../objects/auction/AuctionItem.h"
 
+#include "../../objects/player/Player.h"
+
+#include "../../objects/tangible/terminal/bazaar/RegionBazaar.h"
+
 #include "BazaarPlanetManager.h"
 
 #include "BazaarPlanetManagerImplementation.h"
@@ -86,7 +90,7 @@ void BazaarPlanetManager::setPlanet(int planet) {
 		((BazaarPlanetManagerImplementation*) _impl)->setPlanet(planet);
 }
 
-void BazaarPlanetManager::addItem(AuctionItem* item) {
+void BazaarPlanetManager::addBazaarItem(AuctionItem* item) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
@@ -96,7 +100,20 @@ void BazaarPlanetManager::addItem(AuctionItem* item) {
 
 		invocation.executeWithVoidReturn();
 	} else
-		((BazaarPlanetManagerImplementation*) _impl)->addItem(item);
+		((BazaarPlanetManagerImplementation*) _impl)->addBazaarItem(item);
+}
+
+void BazaarPlanetManager::removeBazaarItem(long long objectid) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 8);
+		invocation.addSignedLongParameter(objectid);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((BazaarPlanetManagerImplementation*) _impl)->removeBazaarItem(objectid);
 }
 
 void BazaarPlanetManager::addBazaar(BazaarTerminalDetails* terminal) {
@@ -104,12 +121,31 @@ void BazaarPlanetManager::addBazaar(BazaarTerminalDetails* terminal) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 8);
+		ORBMethodInvocation invocation(this, 9);
 		invocation.addObjectParameter(terminal);
 
 		invocation.executeWithVoidReturn();
 	} else
 		((BazaarPlanetManagerImplementation*) _impl)->addBazaar(terminal);
+}
+
+void BazaarPlanetManager::getBazaarData(Player* player, long long objectid, int screen, int extent, unsigned int category, int count, int offset) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 10);
+		invocation.addObjectParameter(player);
+		invocation.addSignedLongParameter(objectid);
+		invocation.addSignedIntParameter(screen);
+		invocation.addSignedIntParameter(extent);
+		invocation.addUnsignedIntParameter(category);
+		invocation.addSignedIntParameter(count);
+		invocation.addSignedIntParameter(offset);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((BazaarPlanetManagerImplementation*) _impl)->getBazaarData(player, objectid, screen, extent, category, count, offset);
 }
 
 /*
@@ -127,10 +163,16 @@ Packet* BazaarPlanetManagerAdapter::invokeMethod(uint32 methid, ORBMethodInvocat
 		setPlanet(inv->getSignedIntParameter());
 		break;
 	case 7:
-		addItem((AuctionItem*) inv->getObjectParameter());
+		addBazaarItem((AuctionItem*) inv->getObjectParameter());
 		break;
 	case 8:
+		removeBazaarItem(inv->getSignedLongParameter());
+		break;
+	case 9:
 		addBazaar((BazaarTerminalDetails*) inv->getObjectParameter());
+		break;
+	case 10:
+		getBazaarData((Player*) inv->getObjectParameter(), inv->getSignedLongParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getUnsignedIntParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
 		break;
 	default:
 		return NULL;
@@ -143,12 +185,20 @@ void BazaarPlanetManagerAdapter::setPlanet(int planet) {
 	return ((BazaarPlanetManagerImplementation*) impl)->setPlanet(planet);
 }
 
-void BazaarPlanetManagerAdapter::addItem(AuctionItem* item) {
-	return ((BazaarPlanetManagerImplementation*) impl)->addItem(item);
+void BazaarPlanetManagerAdapter::addBazaarItem(AuctionItem* item) {
+	return ((BazaarPlanetManagerImplementation*) impl)->addBazaarItem(item);
+}
+
+void BazaarPlanetManagerAdapter::removeBazaarItem(long long objectid) {
+	return ((BazaarPlanetManagerImplementation*) impl)->removeBazaarItem(objectid);
 }
 
 void BazaarPlanetManagerAdapter::addBazaar(BazaarTerminalDetails* terminal) {
 	return ((BazaarPlanetManagerImplementation*) impl)->addBazaar(terminal);
+}
+
+void BazaarPlanetManagerAdapter::getBazaarData(Player* player, long long objectid, int screen, int extent, unsigned int category, int count, int offset) {
+	return ((BazaarPlanetManagerImplementation*) impl)->getBazaarData(player, objectid, screen, extent, category, count, offset);
 }
 
 /*
