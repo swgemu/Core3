@@ -130,24 +130,31 @@ int TicketCollectorImplementation::useObject(Player* player) {
 
 bool TicketCollectorImplementation::checkTime(ShuttleCreature* shuttle, Player* player) {
 	int landTime = shuttle->getArrivalTime();
-
+ 
 	if (landTime > 0) {
 		int min = landTime / 60;
 		int seconds = (landTime % 60);
-
-		stringstream arrivalTime;
-		arrivalTime << "The next shuttle will be ready to board in " << min << " minutes and " << seconds << " seconds";
-		player->sendSystemMessage(arrivalTime.str());
-
+ 
+		if (min > 0) {
+			stringstream arrivalTime;
+			arrivalTime << "The next shuttle will be ready to board in " << min << " minutes and " << seconds << " seconds";
+			player->sendSystemMessage(arrivalTime.str());
+		} else {
+			stringstream arrivalTime;
+			arrivalTime << "The next shuttle will be ready to board in " << seconds << " seconds";
+			player->sendSystemMessage(arrivalTime.str());
+ 
+		}
+ 
 		return false;
 	} else if (landTime > -20) {
 		stringstream arrivalTime;
 		arrivalTime << "The next shuttle is about to begin boarding";
 		player->sendSystemMessage(arrivalTime.str());
-
+ 
 		return false;
 	}
-
+ 
 	return true;
 }
 

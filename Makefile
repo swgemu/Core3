@@ -131,6 +131,8 @@ all:
 	cp build/unix/src/core3* bin
 	#done
 
+rebuild: clean all
+
 config:
 	autoreconf --force
 	#done
