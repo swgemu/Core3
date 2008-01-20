@@ -64,7 +64,18 @@ nightsisterInitiate = Creature:new {
 	willpower = 200,
 
 	height = 1,
+
 	armor = 1,
+	kinetic = 10,
+	energy = 10,
+	electricity = 100,
+	stun = 100,
+	blast = 10,
+	heat = 100,
+	cold = 100,
+	acid = 0,
+	lightSaber = 0,
+
 	accuracy = 300,
 
 	skills = { "nightsisterAttack40", "nightsisterAttack41", "nightsisterAttack42", "nightsisterAttack43", "nightsisterAttack44", "nightsisterAttack45", "nightsisterAttack46", "nightsisterAttack47", "nightsisterAttack48", "nightsisterAttack49", "nightsisterAttack50", "nightsisterAttack51"  }

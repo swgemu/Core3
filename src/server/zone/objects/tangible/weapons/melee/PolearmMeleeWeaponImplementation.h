@@ -64,7 +64,16 @@ public:
 		//objectSubType = POLEARM;
 		minDamage = 149;
 		maxDamage = 272;
-		attackSpeed = 3.0f;
+		attackSpeed = 4.5f;
+		
+		pointBlankAccuracy = -45;
+		pointBlankRange = 0;
+		
+		idealAccuracy = -45;
+		idealRange = 7;
+		
+		maxRangeAccuracy = -45;
+		maxRange = 7;
 		
 		healthAttackCost = 91;
 		actionAttackCost = 71;

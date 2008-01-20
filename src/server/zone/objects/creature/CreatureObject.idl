@@ -354,6 +354,7 @@ interface CreatureObject implements SceneObject {
 	unsigned int getWillpowerMax();
 	
 	unsigned int getArmor();
+	float getArmorResist(int resistType);
 	
 	unsigned int getHealthWounds();
 	unsigned int getActionWounds();

@@ -176,6 +176,18 @@ void ArmorImplementation::generateAttributes(SceneObject* obj) {
 	if (skillMod2Type > 0)
 		generateSkillMods(alm, skillMod2Type, skillMod2Value);
 	
+	if (socket0Type > 0)
+		generateSkillMods(alm, socket0Type, socket0Value);
+	
+	if (socket1Type > 0)
+		generateSkillMods(alm, socket1Type, socket1Value);
+	
+	if (socket2Type > 0)
+		generateSkillMods(alm, socket2Type, socket2Value);
+	
+	if (socket3Type > 0)
+		generateSkillMods(alm, socket3Type, socket3Value);
+	
 	//Armor Rating
 	if (rating == LIGHT)
 		alm->insertAttribute("armorrating", "Light");
@@ -396,7 +408,6 @@ void ArmorImplementation::generateSkillMods(AttributeListMessage* alm, int skill
 	}
 }
 
-
 void ArmorImplementation::decayArmor(int decayRate) {
 	conditionDamage = conditionDamage + (maxCondition / 100 * decayRate);
 
@@ -436,8 +447,6 @@ void ArmorImplementation::decayArmor(int decayRate) {
 	
 	updated = true;
 }
-
-
 
 void ArmorImplementation::setArmorStats(int modifier) {	
 	int luck = (System::random(100)) + (modifier / 4);
@@ -493,17 +502,17 @@ void ArmorImplementation::setArmorStats(int modifier) {
 		acid = acid + (modifier / 10) + (luck / 10);
 	}
 	
-	if (playerRoll > 13000) {
+	if (playerRoll > 12500 && System::random(2) == 1) {
 		skillMod0Type = System::random(23) + 1;
-		skillMod0Value = luck / (System::random(9) + 3);
+		skillMod0Value = luck / (System::random(3) + 9);
 	}
-	if (playerRoll > 15000) {
+	if (playerRoll > 15000 && System::random(1) == 1) {
 		skillMod1Type = System::random(23) + 1;
-		skillMod1Value = luck / (System::random(9) + 3);
+		skillMod1Value = luck / (System::random(3) + 9);
 	}
 	if (playerRoll > 45000) {
 		skillMod2Type = System::random(23) + 1;
-		skillMod2Value = luck / (System::random(9) + 3);
+		skillMod2Value = luck / (System::random(3) + 9);
 	}
 	
 	kineticIsSpecial = System::random(1);

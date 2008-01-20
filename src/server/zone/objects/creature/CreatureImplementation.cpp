@@ -127,6 +127,128 @@ void CreatureImplementation::init() {
 	setGlobalLogging(true);
 }
 
+void CreatureImplementation::generateAttributes(SceneObject* obj) {
+	if (!obj->isPlayer())
+			return;
+			
+		Player* player = (Player*) obj;
+		
+		AttributeListMessage* alm = new AttributeListMessage(_this);
+		
+		if (armor == 0)
+			alm->insertAttribute("armorrating", "None");
+		else if (armor == 1)
+			alm->insertAttribute("armorrating", "Light");
+		else if (armor == 2)
+			alm->insertAttribute("armorrating", "Medium");
+		else if (armor == 3)
+			alm->insertAttribute("armorrating", "Heavy");
+			
+		if (kinetic == 100) {
+			alm->insertAttribute("cat_armor_special_protection.armor_eff_kinetic", "100%");
+		}
+		if (energy == 100) {
+			alm->insertAttribute("cat_armor_special_protection.armor_eff_energy", "100%");
+		}
+		if (electricity == 100) {
+			alm->insertAttribute("cat_armor_special_protection.armor_eff_elemental_electrical", "100%");
+		}
+		if (stun == 100) {
+			alm->insertAttribute("cat_armor_special_protection.armor_eff_stun", "100%");
+		}
+		if (blast == 100) {
+			alm->insertAttribute("cat_armor_special_protection.armor_eff_blast", "100%");
+		}
+		if (heat == 100) {
+			alm->insertAttribute("cat_armor_special_protection.armor_eff_elemental_heat", "100%");
+		}
+		if (cold == 100) {
+			alm->insertAttribute("cat_armor_special_protection.armor_eff_elemental_cold", "100%");
+		}
+		if (acid == 100) {
+			alm->insertAttribute("cat_armor_special_protection.armor_eff_elemental_acid", "100%");
+		}
+		if (lightSaber == 100) {
+			alm->insertAttribute("cat_armor_special_protection.armor_eff_restraint", "100%");
+		}
+		
+		if (kinetic > 0 && kinetic < 100) {
+				stringstream txt;
+				txt << round(kinetic) << "%";
+				alm->insertAttribute("cat_armor_effectiveness.armor_eff_kinetic", txt.str());
+		}
+		if (energy > 0 && energy < 100) {
+			stringstream txt;
+			txt << round(energy) << "%";
+			alm->insertAttribute("cat_armor_effectiveness.armor_eff_energy", txt.str());
+		}
+		if (electricity > 0 && electricity < 100) {
+			stringstream txt;
+			txt << round(electricity) << "%";
+			alm->insertAttribute("cat_armor_effectiveness.armor_eff_elemental_electrical", txt.str());
+		}
+		if (stun > 0 && stun < 100) {
+			stringstream txt;
+			txt << round(stun) << "%";
+			alm->insertAttribute("cat_armor_effectiveness.armor_eff_stun", txt.str());
+		}
+		if (blast > 0 && blast < 100) {
+			stringstream txt;
+			txt << round(blast) << "%";
+			alm->insertAttribute("cat_armor_effectiveness.armor_eff_blast", txt.str());
+		}
+		if (heat > 0 && heat < 100) {
+			stringstream txt;
+			txt << round(heat) << "%";
+			alm->insertAttribute("cat_armor_effectiveness.armor_eff_elemental_heat", txt.str());
+		}
+		if (cold > 0 && cold < 100) {
+			stringstream txt;
+			txt << round(cold) << "%";
+			alm->insertAttribute("cat_armor_effectiveness.armor_eff_elemental_cold", txt.str());
+		}
+		if (acid > 0 && acid < 100) {
+			stringstream txt;
+			txt << round(acid) << "%";
+			alm->insertAttribute("cat_armor_effectiveness.armor_eff_elemental_acid", txt.str());
+		}
+		if (lightSaber > 0 && lightSaber < 100) {
+			stringstream txt;
+			txt << round(lightSaber) << "%";
+			alm->insertAttribute("cat_armor_effectiveness.armor_eff_restraint", txt.str());
+		}
+		
+		if (kinetic == 0)
+			alm->insertAttribute("cat_armor_vulnerability.armor_eff_kinetic", "-");
+		
+		if (energy == 0)
+			alm->insertAttribute("cat_armor_vulnerability.armor_eff_energy", "-");
+		
+		if (electricity == 0)
+			alm->insertAttribute("cat_armor_vulnerability.armor_eff_elemental_electrical", "-");
+		
+		if (stun == 0)
+			alm->insertAttribute("cat_armor_vulnerability.armor_eff_stun", "-");
+		
+		if (blast == 0)
+			alm->insertAttribute("cat_armor_vulnerability.armor_eff_blast", "-");
+		
+		if (heat == 0)
+			alm->insertAttribute("cat_armor_vulnerability.armor_eff_elemental_heat", "-");
+		
+		if (cold == 0)
+			alm->insertAttribute("cat_armor_vulnerability.armor_eff_elemental_cold", "-");
+		
+		if (acid == 0)
+			alm->insertAttribute("cat_armor_vulnerability.armor_eff_elemental_acid", "-");
+		
+		if (lightSaber == 0)
+			alm->insertAttribute("cat_armor_vulnerability.armor_eff_restraint", "-");
+			
+		player->sendMessage(alm);
+	
+}
+
 void CreatureImplementation::reload() {
 	creatureManager->respawnCreature(_this);
 	
@@ -165,7 +287,7 @@ void CreatureImplementation::loadItems() {
 				"object/weapon/ranged/rifle/shared_rifle_t21.iff", unicode("Teh Pwn"), "rifle_t21", true);
 		
 		weapon = (Weapon*) rifleImpl->deploy();
-		//setImperial();
+		setImperial();
 	} else if (objectCRC == 0x8C70914) {
 		OneHandedJediWeaponImplementation* saberImpl = new OneHandedJediWeaponImplementation(_this, 
 				"object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s4_gen4.iff", 

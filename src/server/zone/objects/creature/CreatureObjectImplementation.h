@@ -202,6 +202,16 @@ protected:
 	// Inherent Armor,Resists
 	uint32 armor;
 	
+	float kinetic;
+	float energy;
+	float electricity;
+	float stun;
+	float blast;
+	float heat;
+	float cold;
+	float acid;
+	float lightSaber;
+	
 	// WOUND vars
 	
 	uint32 woundsUpdateCounter;
@@ -1045,6 +1055,38 @@ public:
 		armor=ar;
 	}
 
+	inline void setKinetic(float kin) {
+		kinetic = kin;
+	}
+
+	inline void setEnergy(float ene) {
+		energy = ene;
+	}
+
+	inline void setElectricity(float ele) {
+		electricity = ele;
+	}
+
+	inline void setStun(float stu) {
+		stun = stu;
+	}
+
+	inline void setHeat(float hea) {
+		heat = hea;
+	}
+
+	inline void setCold(float col) {
+		cold = col;
+	}
+	
+	inline void setAcid(float aci) {
+		acid = aci;
+	}
+	
+	inline void setLightSaber(float lig) {
+		lightSaber = lig;
+	}
+	
 	inline void setHealthWounds(uint32 wounds) {
 		healthWounds = wounds;
 	}
@@ -1232,6 +1274,40 @@ public:
 	inline uint32 getArmor() {
 		return armor;
 	}
+	
+	inline float getKinetic() {
+		return kinetic;
+	}
+
+	inline float getEnergy() {
+		return energy;
+	}
+
+	inline float getElectricity() {
+		return electricity;
+	}
+
+	inline float getStun() {
+		return stun;
+	}
+
+	inline float getHeat() {
+		return heat;
+	}
+
+	inline float getCold() {
+		return cold;
+	}
+	
+	inline float getAcid() {
+		return acid;
+	}
+	
+	inline float getLightSaber() {
+		return lightSaber;
+	}
+	
+	float getArmorResist(int resistType);
 
 	inline uint32 getHealthWounds() {
 		return healthWounds;

@@ -111,6 +111,11 @@ public:
 		Weapon* weapon = creature->getWeapon();
 		float minDamage = 0;
 		float maxDamage = 0; 
+		float healthDamage = 0;
+		float actionDamage = 0;
+		float mindDamage = 0;
+		int bodyPart = 0;
+		int reduction = 0;
 		
 		if (weapon != NULL) {
 			minDamage = weapon->getMinDamage();
@@ -136,23 +141,21 @@ public:
 					damage = damage / 2;
 					
 				if (healthPoolAttackChance != 0 && System::random(100) < healthPoolAttackChance) {
-					float healthDamage = -damageRatio * average;
+					healthDamage = -damageRatio * average;
 					calculateDamageReduction(creature, targetCreature, healthDamage);
-					applyHealthPoolDamage(creature, targetCreature, (int32) healthDamage);
-	
+					bodyPart = System::random(5)+1;
+					
 					damage += healthDamage;
 				} else if (actionPoolAttackChance != 0 && System::random(100) < actionPoolAttackChance) {
-					float actionDamage = -damageRatio * average;
+					actionDamage = -damageRatio * average;
 					calculateDamageReduction(creature, targetCreature,  actionDamage);
-
-					applyActionPoolDamage(creature, targetCreature, (int32) actionDamage);
+					bodyPart = System::random(1)+7;
 
 					damage += actionDamage;
 				} else if (mindPoolAttackChance != 0 && System::random(100) < mindPoolAttackChance) {
-					float mindDamage = -damageRatio * average;
+					mindDamage = -damageRatio * average;
 					calculateDamageReduction(creature, targetCreature,  mindDamage);
-
-					applyMindPoolDamage(creature, targetCreature, (int32) mindDamage);
+					bodyPart = 9;
 
 					damage += mindDamage;
 				}
@@ -168,12 +171,20 @@ public:
 
 			if (hasCbtSpamHit()) 
 				creature->sendCombatSpam(targetCreature, NULL, -(int32)damage, getCbtSpamHit());
+			
+			if (bodyPart < 7)
+				reduction = applyHealthPoolDamage(creature, targetCreature, (int32) healthDamage, bodyPart);
+			else if (bodyPart < 9)
+				reduction = applyActionPoolDamage(creature, targetCreature, (int32) actionDamage, bodyPart);
+			else if (bodyPart == 9)
+				reduction = applyMindPoolDamage(creature, targetCreature, (int32) mindDamage);
+			
 		} else {
 			doMiss(creature, targetCreature, (int32) damage);
 			return 0;
 		}
 		
-		return -(int32)damage;
+		return -(int32)damage - reduction;
 	}
 	
 	void checkDots(CreatureObject* targetCreature, float damage) {

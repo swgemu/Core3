@@ -89,7 +89,7 @@ public:
 		float minDamage = 0;
 		float maxDamage = 0;
 		int reduction;
-		int bodyPart;
+		int bodyPart = 0;
 		
 		if (weapon != NULL) {
 			minDamage = weapon->getMinDamage();
@@ -116,16 +116,13 @@ public:
 				if (secondaryDefense == 1)
 					damage = damage / 2;
 				
-				if (pool < healthPoolAttackChance) {
-					bodyPart = System::random(6)+1;
-					reduction = applyHealthPoolDamage(creature, targetCreature, (int32) damage, bodyPart);
-				} else if (pool < healthPoolAttackChance + actionPoolAttackChance) {
+				if (pool < healthPoolAttackChance)
+					bodyPart = System::random(5)+1;
+				else if (pool < healthPoolAttackChance + actionPoolAttackChance)
 					bodyPart = System::random(1)+7;
-					reduction = applyActionPoolDamage(creature, targetCreature, (int32) damage, bodyPart);
-				} else if (pool < 100) {
+				else if (pool < 100)
 					bodyPart = 9;
-					reduction = applyMindPoolDamage(creature, targetCreature, (int32) damage);
-				}
+
 			} else
 				return 0;
 		} else {
@@ -135,6 +132,13 @@ public:
 		
 		if (hasCbtSpamHit())
 			creature->sendCombatSpam(targetCreature, NULL, -(int32) damage, getCbtSpamHit());
+		
+		if (bodyPart < 7)
+			reduction = applyHealthPoolDamage(creature, targetCreature, (int32) damage, bodyPart);
+		else if (bodyPart < 9)
+			reduction = applyActionPoolDamage(creature, targetCreature, (int32) damage, bodyPart);
+		else if (bodyPart < 10)
+			reduction = applyMindPoolDamage(creature, targetCreature, (int32) damage);
 		
 		return -(int32)(damage - reduction);
 	}

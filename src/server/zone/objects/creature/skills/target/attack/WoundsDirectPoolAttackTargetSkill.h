@@ -81,7 +81,9 @@ public:
 		
 		float minDamage = 0;
 		float maxDamage = 0;
-		int woundsRatio = 5;		 
+		int woundsRatio = 5;
+		int bodyPart = 0;
+		int reduction = 0;
 		
 		if (weapon != NULL) {
 			minDamage = weapon->getMinDamage();
@@ -108,16 +110,13 @@ public:
 					if (secondaryDefense == 1)
 						damage = damage / 2;
 					
-					if (pool < healthPoolAttackChance) {
-						applyHealthPoolDamage(creature, targetCreature, (int32) damage);
-						applyHealthPoolWoundsDamage(targetCreature, -(int32) damage / 25);
-					} else if (pool < healthPoolAttackChance + actionPoolAttackChance) {
-						applyActionPoolDamage(creature, targetCreature, (int32) damage);
-						applyActionPoolWoundsDamage(targetCreature, -(int32) damage / 25);
-					} else if (pool < mindPoolAttackChance) {
-						applyMindPoolDamage(creature, targetCreature, (int32) damage);
-						applyMindPoolWoundsDamage(targetCreature, -(int32) damage / 25);
-					}
+					if (pool < healthPoolAttackChance)
+						bodyPart = System::random(5)+1;
+					else if (pool < healthPoolAttackChance + actionPoolAttackChance)
+						bodyPart = System::random(1)+7;
+					else if (pool < mindPoolAttackChance)
+						bodyPart = 9;
+					
 				} else
 					return 0;
 		} else {
@@ -127,8 +126,19 @@ public:
 
 		if (hasCbtSpamHit()) 
 			creature->sendCombatSpam(targetCreature, NULL, -(int32)damage, getCbtSpamHit());
-
-		return -(int32)damage;
+		
+		if (bodyPart < 7) {
+			reduction = applyHealthPoolDamage(creature, targetCreature, (int32) damage, bodyPart);
+			applyHealthPoolWoundsDamage(targetCreature, -(int32) damage / 25);
+		} else if (bodyPart  < 9) {
+			reduction = applyActionPoolDamage(creature, targetCreature, (int32) damage, bodyPart);
+			applyActionPoolWoundsDamage(targetCreature, -(int32) damage / 25);
+		} else {
+			reduction = applyMindPoolDamage(creature, targetCreature, (int32) damage);
+			applyMindPoolWoundsDamage(targetCreature, -(int32) damage / 25);
+		}
+		
+		return -(int32)damage - reduction;
 	}
 	
 	void applyHealthPoolWoundsDamage(CreatureObject* targetCreature, int32 damage) {

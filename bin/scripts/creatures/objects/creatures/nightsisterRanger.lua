@@ -64,6 +64,16 @@ nightsisterRanger = Creature:new {
 
 	height = 1,
 	armor = 1,
+	kinetic = 30,
+	energy = 30,
+	electricity = 100,
+	stun = 100,
+	blast = 30,
+	heat = 100,
+	cold = 100,
+	acid = 100,
+	lightSaber = 0,
+
 	accuracy = 300,
 
 	skills = { "nightsisterAttack40", "nightsisterAttack41", "nightsisterAttack42", "nightsisterAttack43", "nightsisterAttack44", "nightsisterAttack45", "nightsisterAttack46", "nightsisterAttack47", "nightsisterAttack48", "nightsisterAttack49", "nightsisterAttack50", "nightsisterAttack51"  }

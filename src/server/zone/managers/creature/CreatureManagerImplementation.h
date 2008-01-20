@@ -119,6 +119,14 @@ public:
 	void loadCreatureFile() {
 		runFile("scripts/creatures/main.lua");
 	}
+	
+	//creature naming
+	string makeCreatureName(string charname);
+	char chooseNextLetter(const char lastLetter, const char letterBeforeLast);
+	bool isProfanity(const string inname);
+	inline bool isVowel(const char inChar);
+	inline char chooseLetterExcluding(const char exclude[]);
+	inline string stringify(const int x);
 
 	//lua functions
 	static int runCreatureFile(lua_State* L);
@@ -148,6 +156,7 @@ public:
 	inline Zone* getZone() {
 		return zone;
 	}
+	
 };
 
 

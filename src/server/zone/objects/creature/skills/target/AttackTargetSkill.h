@@ -147,8 +147,13 @@ public:
 		
 		Weapon* weapon = attacker->getWeapon();
 		Armor* armor = target->getArmor(part);
-				
-		int reduction = doArmorResists(armor, weapon, damage);
+		
+		int reduction;
+		
+		if (target->isPlayer())
+			reduction = doArmorResists(armor, weapon, damage);
+		else
+			reduction = int(target->getArmorResist(weapon->getDamageType()) * damage / 100);
 		
 		damage = damage - reduction;
 		
@@ -171,6 +176,29 @@ public:
 			}
 		}
 		
+		if (target->isPlayer() && reduction != 0)
+			target->sendCombatSpam(target,(TangibleObject*) armor, -reduction, "armor_damaged");
+		
+		if (weapon == NULL)
+			return reduction;
+		
+		if (weapon->getWoundsRatio() > System::random(100)) {
+			target->changeHealthWoundsBar(1, true);
+			if (target->isPlayer()) {
+				target->sendCombatSpam(attacker, NULL, 1, "wounded");
+				target->sendCombatSpam(attacker, NULL, 1, "shock_wound");
+			}
+			if (armor != NULL) {
+				armor->setConditionDamage(armor->getConditionDamage() + 1);
+				armor->setUpdated(true);
+			}
+			
+			if (weapon != NULL && System::random(1) == 1) {
+				weapon->setConditionDamage(weapon->getConditionDamage() + 1);
+				weapon->setUpdated(true);
+			}
+		}
+		
 		doDotWeaponAttack(attacker, target, 0);
 		
 		return reduction;
@@ -189,13 +217,18 @@ public:
 		Weapon* weapon = attacker->getWeapon();
 		Armor* armor = target->getArmor(part);
 		
-		int reduction = doArmorResists(armor, weapon, damage);
+		int reduction;
+		
+		if (target->isPlayer())
+			reduction = doArmorResists(armor, weapon, damage);
+		else
+			reduction = int(target->getArmorResist(weapon->getDamageType()) * damage / 100);
 		
 		damage = damage - reduction;
 		
 		target->changeActionBar((int32) damage, true);
 		
-		if (part == 1) {  // below is sending flytext for the wrong parts...
+		if (part == 7) {  // below is sending flytext for the wrong parts...
 			if (attacker->isPlayer()) {
 				ShowFlyText* fly = new ShowFlyText(target, "combat_effects", "hit_lleg", 0, 0xFF, 0);
 				((Player*)attacker)->sendMessage(fly);
@@ -204,6 +237,29 @@ public:
 			if (attacker->isPlayer()) { 
 				ShowFlyText* fly = new ShowFlyText(target, "combat_effects", "hit_rleg", 0, 0xFF, 0);
 				((Player*)attacker)->sendMessage(fly);
+			}
+		}
+		
+		if (target->isPlayer() && reduction != 0)
+			target->sendCombatSpam(target,(TangibleObject*) armor, -reduction, "armor_damaged");
+		
+		if (weapon == NULL)
+			return reduction;
+		
+		if (weapon->getWoundsRatio() > System::random(100)) {
+			target->changeActionWoundsBar(1, true);
+			if (target->isPlayer()) {
+				target->sendCombatSpam(attacker, NULL, 1, "wounded");
+				target->sendCombatSpam(attacker, NULL, 1, "shock_wound");
+			}
+			if (armor != NULL) {
+				armor->setConditionDamage(armor->getConditionDamage() + 1);
+				armor->setUpdated(true);
+			}
+			
+			if (weapon != NULL && System::random(1) == 1) {
+				weapon->setConditionDamage(weapon->getConditionDamage() + 1);
+				weapon->setUpdated(true);
 			}
 		}
 
@@ -225,7 +281,12 @@ public:
 		Weapon* weapon = attacker->getWeapon();
 		Armor* armor = target->getArmor(9);
 		
-		int reduction = doArmorResists(armor, weapon, damage);
+		int reduction;
+		
+		if (target->isPlayer())
+			reduction = doArmorResists(armor, weapon, damage);
+		else
+			reduction = int(target->getArmorResist(weapon->getDamageType()) * damage / 100);
 		
 		damage = damage - reduction;
 		
@@ -234,6 +295,29 @@ public:
 		if (attacker->isPlayer()) {
 			ShowFlyText* fly = new ShowFlyText(target, "combat_effects", "hit_head", 0, 0, 0xFF);
 			((Player*)attacker)->sendMessage(fly);
+		}
+		
+		if (target->isPlayer() && reduction != 0)
+			target->sendCombatSpam(target,(TangibleObject*) armor, -reduction, "armor_damaged");
+		
+		if (weapon == NULL)
+			return reduction;
+		
+		if (weapon->getWoundsRatio() > System::random(100)) {
+			target->changeMindWoundsBar(1, true);
+			if (target->isPlayer()) {
+				target->sendCombatSpam(attacker, NULL, 1, "wounded");
+				target->sendCombatSpam(attacker, NULL, 1, "shock_wound");
+			}
+			if (armor != NULL) {
+				armor->setConditionDamage(armor->getConditionDamage() + 1);
+				armor->setUpdated(true);
+			}
+			
+			if (weapon != NULL && System::random(1) == 1) {
+				weapon->setConditionDamage(weapon->getConditionDamage() + 1);
+				weapon->setUpdated(true);
+			}
 		}
 		
 		doDotWeaponAttack(attacker, target, 0);

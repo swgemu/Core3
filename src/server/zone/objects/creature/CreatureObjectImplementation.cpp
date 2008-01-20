@@ -166,6 +166,16 @@ CreatureObjectImplementation::CreatureObjectImplementation(uint64 oid) : Creatur
 	mindEncumbrance = 0;
 	
 	armor=0;
+	
+	kinetic = 0;
+	energy = 0;
+	electricity = 0;
+	stun = 0;
+	blast = 0;
+	heat = 0;
+	cold = 0;
+	acid = 0;
+	lightSaber = 0;
 
 	// ent
 	performanceCounter = 0;
@@ -2957,4 +2967,38 @@ void CreatureObjectImplementation::removeBuff(const string& type, int value, Eve
 	delta->close();
 	
 	broadcastMessage(delta);
+}
+
+float CreatureObjectImplementation::getArmorResist(int resistType) {
+	switch (resistType) {
+	case 1:
+		return kinetic;
+
+	case 2:
+		return energy;
+
+	case 3:
+		return electricity;
+
+	case 4:
+		return stun;
+
+	case 5:
+		return blast;
+
+	case 6:
+		return heat;
+
+	case 7:
+		return cold;
+
+	case 8:
+		return acid;
+	
+	case 9:
+		return lightSaber;
+	
+	default:
+		return 0;
+	}
 }

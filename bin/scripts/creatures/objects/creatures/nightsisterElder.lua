@@ -64,7 +64,16 @@ nightsisterElder = Creature:new {
 
 	height = 1,
 	armor = 3,
-	
+
+	kinetic = 100,
+	energy = 25,
+	electricity = 100,
+	stun = 100,
+	blast = 25,
+	heat = 100,
+	cold = 100,
+	acid = 100,
+	lightSaber = 0,
 	
 	accuracy = 300,
 

@@ -64,6 +64,16 @@ nightsisterSentinel = Creature:new {
 
 	height = 1,
 	armor = 1,
+	kinetic = 35,
+	energy = 35,
+	electricity = 100,
+	stun = 100,
+	blast = 35,
+	heat = 100,
+	cold = 100,
+	acid = 100,
+	lightSaber = 0,
+
 	accuracy = 300,
 
 	skills = { "nightsisterAttack20", "nightsisterAttack21", "nightsisterAttack22", "nightsisterAttack23", "nightsisterAttack24",  "nightsisterAttack25", "nightsisterAttack26", "nightsisterAttack27", "nightsisterAttack28", "nightsisterAttack29", "nightsisterAttack30", "nightsisterAttack31" }

@@ -68,6 +68,15 @@ public:
 		armorPiercing = LIGHT;
 		attackSpeed = 2.1f;
 		
+		pointBlankAccuracy = 7;
+		pointBlankRange = 0;
+
+		idealAccuracy = 7;
+		idealRange = 3;
+
+		maxRangeAccuracy = 7;
+		maxRange = 5;
+		
 		healthAttackCost = 19;
 		actionAttackCost = 32;
 		mindAttackCost = 19;

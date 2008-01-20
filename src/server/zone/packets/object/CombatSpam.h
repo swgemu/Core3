@@ -47,13 +47,18 @@ which carries forward this exception.
 
 #include "ObjectControllerMessage.h"
 
+#include "../../objects/tangible/TangibleObject.h"
+
 class CombatSpam : public ObjectControllerMessage {
 public:
 	CombatSpam(CreatureObject* attacker, CreatureObject* defender, TangibleObject* item, uint32 damage, const string& file, const string& aux, CreatureObject* reciever) 
 			: ObjectControllerMessage(reciever->getObjectID(), 0x1B, 0x134) {
 		insertLong(attacker->getObjectID());
 		insertLong(defender->getObjectID());
-		insertLong(0);
+		if (item == NULL)
+			insertLong(0);
+		else
+			insertLong(item->getObjectID());
 		insertInt(damage);
 		
 		insertAscii(file.c_str());

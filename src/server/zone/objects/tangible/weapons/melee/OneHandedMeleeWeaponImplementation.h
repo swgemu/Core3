@@ -66,6 +66,15 @@ public:
 		maxDamage = 157;
 		attackSpeed = 2.5f;
 		
+		pointBlankAccuracy = -13;
+		pointBlankRange = 0;
+		
+		idealAccuracy = -13;
+		idealRange = 3;
+		
+		maxRangeAccuracy = -13;
+		maxRange = 5;
+		
 		healthAttackCost = 61;
 		actionAttackCost = 33;
 		mindAttackCost = 13;

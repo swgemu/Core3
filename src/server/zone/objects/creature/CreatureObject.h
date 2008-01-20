@@ -493,6 +493,8 @@ public:
 
 	unsigned int getArmor();
 
+	float getArmorResist(int resistType);
+
 	unsigned int getHealthWounds();
 
 	unsigned int getActionWounds();
@@ -1125,6 +1127,8 @@ public:
 	unsigned int getWillpowerMax();
 
 	unsigned int getArmor();
+
+	float getArmorResist(int resistType);
 
 	unsigned int getHealthWounds();
 

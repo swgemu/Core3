@@ -65,6 +65,16 @@ nightsisterRancorTamer = Creature:new {
 
 	height = 1,
 	armor = 1,
+	kinetic = 30,
+	energy = 30,
+	electricity = 50,
+	stun = 100,
+	blast = 30,
+	heat = 50,
+	cold = 50,
+	acid = 50,
+	lightSaber = 0,
+
 	accuracy = 300,
 
 	skills = { "nightsisterAttack40", "nightsisterAttack41", "nightsisterAttack42", "nightsisterAttack43", "nightsisterAttack44", "nightsisterAttack45", "nightsisterAttack46", "nightsisterAttack47", "nightsisterAttack48", "nightsisterAttack49", "nightsisterAttack50", "nightsisterAttack51"  }

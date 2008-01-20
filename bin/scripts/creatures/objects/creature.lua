@@ -62,6 +62,16 @@ Creature = Object:new {
 	
 	armor = 0,
 
+	kinetic = 15,
+	energy = 15,
+	electricity = 15,
+	stun = 0,
+	blast = 15,
+	heat = 15,
+	cold = 15,
+	acid = 15,
+	lightSaber = 0,
+
 	xp = 0,
 	
 	combatFlags = ATTACKABLE_FLAG,

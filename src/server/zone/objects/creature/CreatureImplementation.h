@@ -115,6 +115,8 @@ public:
 	
 	void reload();
 	void unload();
+	
+	void generateAttributes(SceneObject* obj);
 
 	// spatial methods
 	void insertToZone(Zone* zone);

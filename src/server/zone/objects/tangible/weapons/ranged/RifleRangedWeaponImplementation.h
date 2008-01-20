@@ -64,7 +64,7 @@ public:
 		//objectSubType = RIFLE;
 		damageType = ENERGY;
 		armorPiercing = HEAVY;
-		attackSpeed = 5.9;
+		attackSpeed = 7.4;
 
 		minDamage = 105;
 		maxDamage = 350;
