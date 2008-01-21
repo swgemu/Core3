@@ -42,7 +42,7 @@
 gapingSpiderRecluse = Creature:new {
 	objectName = "gapingSpiderRecluse", -- name of the lua Object
 	
-	name = "a Gaping Spider Recluse",
+	stfName = "a Gaping Spider Recluse",
 	objectCRC = 2216583678,
 	socialGroup = "gaping",
 	level = 76,

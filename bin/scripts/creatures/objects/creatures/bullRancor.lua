@@ -42,7 +42,7 @@
 bullRancor = Creature:new {
 	objectName = "bullRancor", -- name of the lua Object
 	
-	name = "a Bull Rancor",
+	stfName = "a Bull Rancor",
 	objectCRC = 837719973,
 	socialGroup = "rancor",
 	level = 65,

@@ -42,7 +42,7 @@
 darthVader = Creature:new {
 	objectName = "darthVader", -- name of the lua Object
 	
-	name = "Darth Vader",
+	stfName = "Darth Vader",
 	objectCRC = 147261716,
 	
 	level = 400,

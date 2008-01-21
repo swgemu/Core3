@@ -121,6 +121,7 @@ public:
 	}
 	
 	//creature naming
+	string makeStormTrooperName();
 	string makeCreatureName(string charname);
 	char chooseNextLetter(const char lastLetter, const char letterBeforeLast);
 	bool isProfanity(const string inname);

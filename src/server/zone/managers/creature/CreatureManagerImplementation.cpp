@@ -475,13 +475,16 @@ int CreatureManagerImplementation::addCreature(lua_State *L) {
 	string stfname = creature.getStringField("stfName");
 	string name = creature.getStringField("name");
 
-	if (!stfname.empty())
-		creatureImpl->speciesName = stfname;
-	else	
-		creatureImpl->characterName = unicode(instance->makeCreatureName(name));
-
 	creatureImpl->objectCRC = creature.getIntField("objectCRC");
 
+	if (!stfname.empty())
+		creatureImpl->characterName = stfname;
+	else	
+		if (creatureImpl->objectCRC == 0xBA7F23CD)
+			creatureImpl->characterName = unicode(instance->makeStormTrooperName());
+		else
+			creatureImpl->characterName = unicode(instance->makeCreatureName(name));
+	
 	creatureImpl->terrainName = Terrain::getTerrainName(planet);
 
 	//ham stuff
@@ -675,6 +678,32 @@ void CreatureManagerImplementation::registerGlobals() {
 
 uint64 CreatureManagerImplementation::getNextCreatureID() {
 	return zone->getZoneServer()->getNextCreatureID();
+}
+
+string CreatureManagerImplementation::makeStormTrooperName() {
+	stringstream characterName;
+	
+	switch (System::random(4)) {
+	case 0:
+		characterName << "G";
+		break;
+	case 1:
+		characterName << "L";
+		break;
+	case 2:
+		characterName << "R";
+		break;
+	case 3:
+		characterName << "T";
+		break;
+	case 4:
+		characterName << "V";
+		break;
+	}
+	
+	characterName << "K-" << System::random(490)+10;
+	
+	return characterName.str();
 }
 
 string CreatureManagerImplementation::makeCreatureName(string charname) {

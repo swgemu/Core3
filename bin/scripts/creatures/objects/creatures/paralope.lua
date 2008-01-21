@@ -42,7 +42,7 @@
 paralope = Creature:new {
 	objectName = "paralope", -- name of the lua Object
 	
-	name = "a paralope",
+	stfName = "a paralope",
 	objectCRC = 634611787,
 	
 	level = 2,

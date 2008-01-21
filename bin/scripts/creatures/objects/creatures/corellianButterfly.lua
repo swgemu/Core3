@@ -42,7 +42,7 @@
 corellianButterfly = Creature:new {
 	objectName = "corellianButterfly", -- name of the lua Object
 	
-	name = "a corellian butterfly",
+	stfName = "a corellian butterfly",
 	objectCRC = 3636427705,
 	
 	level = 4,

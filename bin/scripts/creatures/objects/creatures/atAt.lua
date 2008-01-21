@@ -42,7 +42,7 @@
 atAt = Creature:new {
 	objectName = "atAt", -- name of the lua Object
 	
-	name = "an At-At",
+	stfName = "an AT-AT",
 	objectCRC = 4274898142,
 	socialGroup = "imperial",
 	
@@ -63,6 +63,15 @@ atAt = Creature:new {
 	willpower = 1000000,
 	
 	armor = 3,
+	kinetic = 90,
+	energy = 90,
+	electricity = 90,
+	stun = 90,
+	blast = 90,
+	heat = 90,
+	cold = 90,
+	acid = 90,
+	lightSaber = 0,
 
 	height = 1,
 	

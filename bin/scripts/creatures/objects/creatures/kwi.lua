@@ -42,7 +42,7 @@
 kwi = Creature:new {
 	objectName = "kwi", -- name of the lua Object
 	
-	name = "a Kwi",
+	stfName = "a Kwi",
 	objectCRC = 2111021739,
 	
 	level = 64,

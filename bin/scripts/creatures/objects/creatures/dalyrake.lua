@@ -42,7 +42,7 @@
 dalyrake = Creature:new {
 	objectName = "dalyrake", -- name of the lua Object
 	
-	name = "a dalyrake",
+	stfName = "a dalyrake",
 	objectCRC = 3621894346,
 	
 	level = 15,

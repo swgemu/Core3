@@ -65,7 +65,16 @@ singingMountainClanCouncilwoman = Creature:new {
 
 	height = 1,
 	armor = 3,
-	
+
+	kinetic = 100,
+	energy = 20,
+	electricity = 100,
+	stun = 100,
+	blast = 20,
+	heat = 100,
+	cold = 100,
+	acid = 100,
+	lightSaber = 0,
 	
 	accuracy = 300,
 

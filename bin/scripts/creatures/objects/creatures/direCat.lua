@@ -42,7 +42,7 @@
 direCat = Creature:new {
 	objectName = "direCat", -- name of the lua Object
 	
-	name = "a dire cat",
+	stfName = "a dire cat",
 	objectCRC = 1616759912,
 	
 	level = 11,

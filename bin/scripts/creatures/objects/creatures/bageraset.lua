@@ -42,7 +42,7 @@
 bageraset = Creature:new {
 	objectName = "bageraset", -- name of the lua Object
 	
-	name = "a bageraset",
+	stfName = "a bageraset",
 	objectCRC = 2017464107,
 	
 	level = 8,

@@ -42,7 +42,7 @@
 scyk = Creature:new {
 	objectName = "scyk", -- name of the lua Object
 	
-	name = "a Scyk",
+	stfName = "a Scyk",
 	objectCRC = 3164121956,
 
 	health = 1200,

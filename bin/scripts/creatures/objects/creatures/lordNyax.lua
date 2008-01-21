@@ -42,7 +42,7 @@
 lordNyax = Creature:new {
 	objectName = "lordNyax", -- name of the lua Object
 	
-	name = "Lord Nyax",
+	stfName = "Lord Nyax",
 	objectCRC = 4219937413,
 	socialGroup = "nyax",
 	
@@ -64,6 +64,15 @@ lordNyax = Creature:new {
 	height = 1,
 	armor = 2,
 	
+	kinetic = 80,
+	energy = 45,
+	electricity = 100,
+	stun = 15,
+	blast = 40,
+	heat = 20,
+	cold = 50,
+	acid = 10,
+	lightSaber = 0,
 	
 	accuracy = 300,
 

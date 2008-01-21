@@ -42,7 +42,7 @@
 squill = Creature:new {
 	objectName = "squill", -- name of the lua Object
 	
-	name = "a Squill",
+	stfName = "a Squill",
 	objectCRC = 1824637824,
 
 	health = 4300,

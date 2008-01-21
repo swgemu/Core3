@@ -42,10 +42,9 @@
 nyaxThug = Creature:new {
 	objectName = "nyaxThug", -- name of the lua Object
 	
-	name = "a Thug",
+	name = "a fanatic of Lord Nyax",
 	objectCRC = 2603521920,
 	socialGroup = "nyax",
-	named = TRUE,
 	
 	level = 70,
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,

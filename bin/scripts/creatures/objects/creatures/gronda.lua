@@ -42,7 +42,7 @@
 gronda = Creature:new {
 	objectName = "gronda", -- name of the lua Object
 	
-	name = "a gronda",
+	stfName = "a gronda",
 	objectCRC = 2380349390,
 	
 	level = 11,

@@ -42,7 +42,7 @@
 atSt = Creature:new {
 	objectName = "atSt", -- name of the lua Object
 	
-	name = "an At-St",
+	stfName = "an AT-ST",
 	objectCRC = 2128352281,
 	socialGroup = "imperial",
 	

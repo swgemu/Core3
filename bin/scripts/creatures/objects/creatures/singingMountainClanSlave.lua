@@ -65,6 +65,17 @@ singingMountainClanSlave = Creature:new {
 
 	height = 1,
 	armor = 1,
+
+	kinetic = 100,
+	energy = 5,
+	electricity = 100,
+	stun = 100,
+	blast = 5,
+	heat = 100,
+	cold = 100,
+	acid = 100,
+	lightSaber = 0,
+
 	accuracy = 300,
 
 	skills = { "singingMountainClanAttack40", "singingMountainClanAttack41", "singingMountainClanAttack42", "singingMountainClanAttack43", "singingMountainClanAttack44", "singingMountainClanAttack45", "singingMountainClanAttack46", "singingMountainClanAttack47", "singingMountainClanAttack48", "singingMountainClanAttack49", "singingMountainClanAttack50", "singingMountainClanAttack51" }

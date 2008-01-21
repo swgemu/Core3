@@ -582,15 +582,15 @@ void WeaponImplementation::setWeaponStats(int modifier){
 		woundsRatio = woundsRatio + (modifier / 15) + (luck / 10);
 	
 	if (playerRoll > 12500 && System::random(2) == 1) {
-		skillMod0Type = System::random(23) + 1;
+		skillMod0Type = System::random(27) + 1;
 		skillMod0Value = luck / (System::random(3) + 9);
 	}
 	if (playerRoll > 15000 && System::random(1) == 1) {
-		skillMod1Type = System::random(23) + 1;
+		skillMod1Type = System::random(27) + 1;
 		skillMod1Value = luck / (System::random(3) + 9);
 	}
 	if (playerRoll > 45000) {
-		skillMod2Type = System::random(23) + 1;
+		skillMod2Type = System::random(27) + 1;
 		skillMod2Value = luck / (System::random(3) + 9);
 	}
 	
@@ -601,7 +601,7 @@ void WeaponImplementation::setWeaponStats(int modifier){
 			dot1Attribute = (System::random(2) * 3) + 1;
 			dot1Strength = (modifier / 10) + luck;
 			dot1Duration = ((luck * 5) + modifier) / 7;
-			dot1Potency = luck/2;
+			dot1Potency = luck/3;
 			dot1Uses = (modifier + luck) * 11;
 			break;
 		case 2:
@@ -609,7 +609,7 @@ void WeaponImplementation::setWeaponStats(int modifier){
 			dot1Attribute = (System::random(2) * 3) + 1;
 			dot1Strength = (modifier / 10) + luck;
 			dot1Duration = ((luck * 7) + modifier) / 7;
-			dot1Potency = luck/2;
+			dot1Potency = luck/3;
 			dot1Uses = (modifier + luck) * 13;
 			break;	
 		case 3:
@@ -617,7 +617,7 @@ void WeaponImplementation::setWeaponStats(int modifier){
 			dot1Attribute = (System::random(2) * 3) + 1;
 			dot1Strength = (modifier / 10) + luck;
 			dot1Duration = ((luck * 4) + modifier) / 7;
-			dot1Potency = luck/2;
+			dot1Potency = luck/3;
 			dot1Uses = (modifier + luck) * 11;
 			break;
 		case 4:
@@ -625,7 +625,7 @@ void WeaponImplementation::setWeaponStats(int modifier){
 			dot1Attribute = (System::random(2) * 3) + 1;
 			dot1Strength = (modifier / 10) + luck;
 			dot1Duration = ((luck * 5) + modifier) / 7;
-			dot1Potency = luck/2;
+			dot1Potency = luck/3;
 			dot1Uses = (modifier + luck) * 11;
 			break;
 		}
@@ -755,7 +755,19 @@ void WeaponImplementation::generateSkillMods(AttributeListMessage* alm, int skil
 		break;
 	case 24:
 		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:counterattack", skillModValue);
-		break;	
+		break;
+	case 25:
+		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:resistance_bleeding", skillModValue);
+		break;
+	case 26:
+		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:resistance_disease", skillModValue);
+		break;
+	case 27:
+		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:resistance_fire", skillModValue);
+		break;
+	case 28:
+		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:resistance_poison", skillModValue);
+		break;
 	}
 }
 

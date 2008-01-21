@@ -42,7 +42,7 @@
 superBattleDroid = Creature:new {
 	objectName = "superBattleDroid", -- name of the lua Object
 	
-	name = "a Super Battle Droid",
+	stfName = "a Super Battle Droid",
 	objectCRC = 3793641800,
 	socialGroup = "superBattleDroid",
 

@@ -42,7 +42,7 @@
 gurrcat = Creature:new {
 	objectName = "gurrcat", -- name of the lua Object
 	
-	name = "a gurrcat",
+	stfName = "a gurrcat",
 	objectCRC = 4196368391,
 	
 	level = 8,

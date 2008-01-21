@@ -42,7 +42,7 @@
 sliceHound = Creature:new {
 	objectName = "sliceHound", -- name of the lua Object
 	
-	name = "a slice hound",
+	stfName = "a slice hound",
 	objectCRC = 2638763255,
 	
 	level = 9,

@@ -405,6 +405,18 @@ void ArmorImplementation::generateSkillMods(AttributeListMessage* alm, int skill
 	case 24:
 		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:counterattack", skillModValue);
 		break;
+	case 25:
+		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:resistance_bleeding", skillModValue);
+		break;
+	case 26:
+		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:resistance_disease", skillModValue);
+		break;
+	case 27:
+		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:resistance_fire", skillModValue);
+		break;
+	case 28:
+		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:resistance_poison", skillModValue);
+		break;
 	}
 }
 
@@ -484,12 +496,12 @@ void ArmorImplementation::setArmorStats(int modifier) {
 		name = unicode(itemText.str());	
 	}
 	
-	maxCondition = 25000 + (modifier * 10) + (luck * 20);
+	maxCondition = 25000 + (modifier * 10) + (luck * 50);
 	
 	if ((luck * System::random(100)) > 2000) {
-		healthEncumbrance = healthEncumbrance - (modifier / 4) - (luck / 10);
-		actionEncumbrance = actionEncumbrance - (modifier / 4) - (luck / 10);
-		mindEncumbrance = mindEncumbrance - (modifier / 4) - (luck / 10);
+		healthEncumbrance = healthEncumbrance - (modifier / 10) - (luck / 10);
+		actionEncumbrance = actionEncumbrance - (modifier / 10) - (luck / 10);
+		mindEncumbrance = mindEncumbrance - (modifier / 10) - (luck / 10);
 	}
 	
 	if ((luck * System::random(100)) > 2000) {
@@ -503,15 +515,15 @@ void ArmorImplementation::setArmorStats(int modifier) {
 	}
 	
 	if (playerRoll > 12500 && System::random(2) == 1) {
-		skillMod0Type = System::random(23) + 1;
+		skillMod0Type = System::random(27) + 1;
 		skillMod0Value = luck / (System::random(3) + 9);
 	}
 	if (playerRoll > 15000 && System::random(1) == 1) {
-		skillMod1Type = System::random(23) + 1;
+		skillMod1Type = System::random(27) + 1;
 		skillMod1Value = luck / (System::random(3) + 9);
 	}
 	if (playerRoll > 45000) {
-		skillMod2Type = System::random(23) + 1;
+		skillMod2Type = System::random(27) + 1;
 		skillMod2Value = luck / (System::random(3) + 9);
 	}
 	

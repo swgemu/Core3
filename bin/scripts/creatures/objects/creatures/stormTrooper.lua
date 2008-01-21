@@ -64,6 +64,16 @@ stormTrooper = Creature:new {
 	
 	armor = 2,
 
+	kinetic = 30,
+	energy = 30,
+	electricity = 30,
+	stun = 0,
+	blast = 30,
+	heat = 0,
+	cold = 30,
+	acid = 0,
+	lightSaber = 0,
+
 	height = 1,
 	
 	accuracy = 300,

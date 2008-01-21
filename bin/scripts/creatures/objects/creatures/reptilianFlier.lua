@@ -42,7 +42,7 @@
 reptilianFlier = Creature:new {
 	objectName = "reptilianFlier", -- name of the lua Object
 	
-	name = "a Reptilian Flier",
+	stfName = "a Reptilian Flier",
 	objectCRC = 2270001055,
 	
 	level = 65,
@@ -62,7 +62,16 @@ reptilianFlier = Creature:new {
 	willpower = 500,
 
 	height = 1,
-	armor = 0,	
+	armor = 1,
+	kinetic = 10,
+	energy = 10,
+	electricity = 10,
+	stun = 10,
+	blast = 10,
+	heat = 10,
+	cold = 10,
+	acid = 10,
+	lightSaber = 0,
 	accuracy = 300,
 
 	skills = { "reptilianFlierAttack1" }

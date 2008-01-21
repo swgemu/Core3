@@ -1842,6 +1842,27 @@ void PlayerImplementation::setItemSkillMod(int type, int value) {
 	case 21:
 		addSkillMod("polearm_accuracy", value, true);
 		break;
+	case 22:
+		addSkillMod("dodge", value, true);
+		break;
+	case 23:
+		addSkillMod("block", value, true);
+		break;
+	case 24:
+		addSkillMod("counterattack", value, true);
+		break;
+	case 25:
+		addSkillMod("resistance_bleeding", value, true);
+		break;
+	case 26:
+		addSkillMod("resistance_disease", value, true);
+		break;
+	case 27:
+		addSkillMod("resistance_fire", value, true);
+		break;
+	case 28:
+		addSkillMod("resistance_poison", value, true);
+		break;
 	}
 }
 

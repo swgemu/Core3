@@ -42,7 +42,7 @@
 plumedRasp = Creature:new {
 	objectName = "plumedRasp", -- name of the lua Object
 	
-	name = "a plumed rasp",
+	stfName = "a plumed rasp",
 	objectCRC = 144116282,
 
 	health = 150,

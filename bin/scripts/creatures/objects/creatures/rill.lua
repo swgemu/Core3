@@ -42,7 +42,7 @@
 rill = Creature:new {
 	objectName = "rill", -- name of the lua Object
 	
-	name = "a Rill",
+	stfName = "a Rill",
 	objectCRC = 813958609,
 
 	health = 220,

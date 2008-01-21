@@ -42,7 +42,7 @@
 carrionSpat = Creature:new {
 	objectName = "carrionSpat", -- name of the lua Object
 	
-	name = "a carrion spat",
+	stfName = "a carrion spat",
 	objectCRC = 3186677588,
 	
 	level = 10,

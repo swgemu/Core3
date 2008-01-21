@@ -65,6 +65,17 @@ singingMountainClanArchWitch = Creature:new {
 
 	height = 1,
 	armor = 2,
+
+	kinetic = 100,
+	energy = 10,
+	electricity = 100,
+	stun = 100,
+	blast = 10,
+	heat = 100,
+	cold = 100,
+	acid = 100,
+	lightSaber = 0,
+
 	accuracy = 300,
 
 	skills = { "singingMountainClanAttack20", "singingMountainClanAttack21", "singingMountainClanAttack22", "singingMountainClanAttack23", "singingMountainClanAttack24",  "singingMountainClanAttack25", "singingMountainClanAttack26", "singingMountainClanAttack27", "singingMountainClanAttack28", "singingMountainClanAttack29", "singingMountainClanAttack30", "singingMountainClanAttack31"  }

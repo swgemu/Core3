@@ -42,7 +42,7 @@
 dewback = Creature:new {
 	objectName = "dewback", -- name of the lua Object
 	
-	name = "a Dewback",
+	stfName = "a Dewback",
 	objectCRC = 3499529322,
 
 	health = 10000,
