@@ -86,9 +86,9 @@ public:
 	int getArrivalTime();
 
 protected:
-	string _return_getCity;
-
 	string _return_getPlanet;
+
+	string _return_getCity;
 
 };
 

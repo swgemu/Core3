@@ -144,7 +144,6 @@ PolearmMeleeWeaponServant::PolearmMeleeWeaponServant(CreatureObject* creature, c
 
 PolearmMeleeWeaponServant::~PolearmMeleeWeaponServant() {
 }
-
 void PolearmMeleeWeaponServant::_setStub(ORBObjectStub* stub) {
 	_this = (PolearmMeleeWeapon*) stub;
 	MeleeWeaponServant::_setStub(stub);

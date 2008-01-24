@@ -83,10 +83,16 @@ void RadialManager::handleRadialRequest(Player* player, Packet* pack) {
 		sendDefaultRadialResponse(player, omr);
 		return;
 	}
+
+	TangibleObject* tano = NULL;
+	Creature* creature = NULL;
+	Terminal* terminal = NULL;
+	SurveyTool* surveyTool = NULL;
+	GuildTerminal* guildTerminal = NULL;
 	
 	switch (object->getObjectType()) {
 	case SceneObjectImplementation::NONPLAYERCREATURE:
-		Creature* creature = (Creature*)object;
+		creature = (Creature*)object;
 		
 		if (creature->isMount() && (player->getMount() == (MountCreature*)creature)) {
 			sendRadialResponseForMounts(player, (MountCreature*)creature, omr);
@@ -95,11 +101,11 @@ void RadialManager::handleRadialRequest(Player* player, Packet* pack) {
 		
 		break;
 	case SceneObjectImplementation::TANGIBLE:
-		TangibleObject* tano = (TangibleObject*) object;
+		tano = (TangibleObject*) object;
 		
 		switch (tano->getObjectSubType()) {
 		case TangibleObjectImplementation::TERMINAL:
-			Terminal* terminal = (Terminal*) tano;
+			terminal = (Terminal*) tano;
 			
 			switch (terminal->getTerminalType()) {
 			case TerminalImplementation::GUILD:
@@ -109,7 +115,7 @@ void RadialManager::handleRadialRequest(Player* player, Packet* pack) {
 			}
 			break;		
 		case TangibleObjectImplementation::SURVEYTOOL:
-			SurveyTool* surveyTool = (SurveyTool*) tano;
+			surveyTool = (SurveyTool*) tano;
 			sendRadialResponseForSurveyTools(player, surveyTool, omr);
 			return;
 		}

@@ -218,7 +218,6 @@ SuiInputBoxServant::SuiInputBoxServant(Player* play, unsigned int typeID, unsign
 
 SuiInputBoxServant::~SuiInputBoxServant() {
 }
-
 void SuiInputBoxServant::_setStub(ORBObjectStub* stub) {
 	_this = (SuiInputBox*) stub;
 	SuiBoxServant::_setStub(stub);

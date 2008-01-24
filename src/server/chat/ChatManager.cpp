@@ -900,7 +900,6 @@ ChatManagerServant::ChatManagerServant() {
 
 ChatManagerServant::~ChatManagerServant() {
 }
-
 void ChatManagerServant::_setStub(ORBObjectStub* stub) {
 	_this = (ChatManager*) stub;
 }

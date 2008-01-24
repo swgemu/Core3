@@ -393,6 +393,8 @@ void ZonePacketHandler::handleObjectControllerMessage(Message* pack) {
 			return;
 		}
 
+		uint64 parent;
+		
 		switch (header1) {
 		case 0x21:
 			switch (header2) {
@@ -425,7 +427,7 @@ void ZonePacketHandler::handleObjectControllerMessage(Message* pack) {
 					
 				break;
 			case 0xF1:
-				uint64 parent = ObjectControllerMessage::parseDataTransformWithParent(player, pack);
+				parent = ObjectControllerMessage::parseDataTransformWithParent(player, pack);
 				player->updateZoneWithParent(parent);
 				break;
 			case 0x116:

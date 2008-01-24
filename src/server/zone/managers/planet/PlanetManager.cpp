@@ -339,7 +339,6 @@ PlanetManagerServant::PlanetManagerServant() {
 
 PlanetManagerServant::~PlanetManagerServant() {
 }
-
 void PlanetManagerServant::_setStub(ORBObjectStub* stub) {
 	_this = (PlanetManager*) stub;
 }

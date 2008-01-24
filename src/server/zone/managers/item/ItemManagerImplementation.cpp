@@ -100,16 +100,24 @@ void ItemManagerImplementation::createPlayerObject(Player* player, ResultSet* re
 	char* objecttemp = result->getString(5);
 
 	TangibleObjectImplementation* item = NULL;
-
+	
+	WeaponImplementation* weaponitem = NULL;
+	ArmorImplementation* armoritem = NULL;
+	ResourceContainerImplementation* resourceItem = NULL;
+	
 	bool equipped = result->getBoolean(6);
-	if (result->getBoolean(7)==0)	// if NOT deleted
-	{
+	
+	if (result->getBoolean(7) != 0)	// if NOT deleted
+		return;
+	
+	int weapontype;
+	
 	switch (objecttype) {
 	case TangibleObjectImplementation::ROBE:
 		item = new WearableImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
 		break;
 	case TangibleObjectImplementation::WEAPON:
-		int weapontype = result->getInt(8);
+		weapontype = result->getInt(8);
 		
 		switch (weapontype) {
 		case WeaponImplementation::UNARMED:
@@ -144,7 +152,7 @@ void ItemManagerImplementation::createPlayerObject(Player* player, ResultSet* re
 			break;
 		}
 		
-		WeaponImplementation* weaponitem = (WeaponImplementation*) item;
+		weaponitem = (WeaponImplementation*) item;
 		weaponitem->setCategory(result->getInt(9));
 		weaponitem->setDamageType(result->getInt(10));
 		weaponitem->setMinDamage(result->getFloat(11));
@@ -195,7 +203,7 @@ void ItemManagerImplementation::createPlayerObject(Player* player, ResultSet* re
 	case TangibleObjectImplementation::ARMOR:
 		item = new ArmorImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
 
-		ArmorImplementation* armoritem = (ArmorImplementation*) item;
+		armoritem = (ArmorImplementation*) item;
 		armoritem->setRating(result->getInt(24));
 		armoritem->setType(result->getInt(25));
 		armoritem->setConditionDamage(result->getInt(26));
@@ -260,7 +268,8 @@ void ItemManagerImplementation::createPlayerObject(Player* player, ResultSet* re
 	case TangibleObjectImplementation::ORGANICHIDE:
 	case TangibleObjectImplementation::ORGANICSTRUCTURAL:
 		item = new ResourceContainerImplementation(objectid, objectcrc, objectname, objecttemp, player);
-		ResourceContainerImplementation* resourceItem = (ResourceContainerImplementation*) item;
+		
+		resourceItem = (ResourceContainerImplementation*) item;
 		resourceItem->setResourceID(result->getInt(83));
 		resourceItem->setContents(result->getInt(84));
 		resourceItem->setDecayResistance(result->getInt(85));
@@ -297,7 +306,6 @@ void ItemManagerImplementation::createPlayerObject(Player* player, ResultSet* re
 	if (equipped && tano->isArmor()) {
 		tano->setEquipped(false);
 		player->changeArmor(tano->getObjectID(), true);
-	}
 	}
 }
 

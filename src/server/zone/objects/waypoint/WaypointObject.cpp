@@ -295,7 +295,6 @@ WaypointObjectServant::WaypointObjectServant(unsigned long long oid) : SceneObje
 
 WaypointObjectServant::~WaypointObjectServant() {
 }
-
 void WaypointObjectServant::_setStub(ORBObjectStub* stub) {
 	_this = (WaypointObject*) stub;
 	SceneObjectServant::_setStub(stub);

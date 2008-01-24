@@ -272,7 +272,6 @@ RegionBazaarServant::RegionBazaarServant() : SceneObjectImplementation() {
 
 RegionBazaarServant::~RegionBazaarServant() {
 }
-
 void RegionBazaarServant::_setStub(ORBObjectStub* stub) {
 	_this = (RegionBazaar*) stub;
 	SceneObjectServant::_setStub(stub);

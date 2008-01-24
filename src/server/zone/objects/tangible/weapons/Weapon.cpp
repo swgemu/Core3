@@ -1199,7 +1199,6 @@ WeaponServant::WeaponServant(unsigned long long oid, const unicode& name, const 
 
 WeaponServant::~WeaponServant() {
 }
-
 void WeaponServant::_setStub(ORBObjectStub* stub) {
 	_this = (Weapon*) stub;
 	TangibleObjectServant::_setStub(stub);

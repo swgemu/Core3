@@ -144,7 +144,6 @@ OneHandedJediWeaponServant::OneHandedJediWeaponServant(CreatureObject* creature,
 
 OneHandedJediWeaponServant::~OneHandedJediWeaponServant() {
 }
-
 void OneHandedJediWeaponServant::_setStub(ORBObjectStub* stub) {
 	_this = (OneHandedJediWeapon*) stub;
 	JediWeaponServant::_setStub(stub);

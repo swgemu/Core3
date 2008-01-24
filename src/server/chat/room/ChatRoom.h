@@ -140,9 +140,9 @@ protected:
 
 	string _return_getName;
 
-	string _return_getOwner;
-
 	string _return_getServerName;
+
+	string _return_getOwner;
 
 	unicode _return_getTitle;
 

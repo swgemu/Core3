@@ -751,7 +751,6 @@ TangibleObjectServant::TangibleObjectServant(unsigned long long oid) : SceneObje
 
 TangibleObjectServant::~TangibleObjectServant() {
 }
-
 void TangibleObjectServant::_setStub(ORBObjectStub* stub) {
 	_this = (TangibleObject*) stub;
 	SceneObjectServant::_setStub(stub);

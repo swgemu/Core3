@@ -1014,6 +1014,9 @@ void PlayerImplementation::notifyDissapear(QuadTreeEntry* obj) {
 	Player* player;
 	Creature* creature;
 	
+	TangibleObject* tano;
+	BuildingObject* buio;
+	
 	switch (scno->getObjectType()) {
 	case SceneObjectImplementation::PLAYER:
 		player = (Player*) scno;
@@ -1027,12 +1030,12 @@ void PlayerImplementation::notifyDissapear(QuadTreeEntry* obj) {
 		break;
 		
 	case SceneObjectImplementation::BUILDING:
-		BuildingObject* buio = (BuildingObject*) scno;
+		buio = (BuildingObject*) scno;
 		buio->sendDestroyTo(_this);
 		break;
 		
 	case SceneObjectImplementation::TANGIBLE:
-		TangibleObject* tano = (TangibleObject*) scno;
+		tano = (TangibleObject*) scno;
 		tano->sendDestroyTo(_this);
 		
 		break;

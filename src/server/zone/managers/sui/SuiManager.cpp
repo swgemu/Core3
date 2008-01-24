@@ -58,6 +58,8 @@ SuiManager::SuiManager(ZoneProcessServerImplementation* serv) : Logger("SuiManag
 void SuiManager::handleSuiEventNotification(uint32 boxID, Player* player, uint32 cancel, const string& value) {
 	uint16 type = (uint16) boxID;
 	
+	int range;
+	
 	switch (type) {
 	case 0x5553:
 		handleStartMusic(boxID, player, cancel, value.c_str());
@@ -66,7 +68,7 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, Player* player, uint32
 		handleStartDancing(boxID, player, cancel, value.c_str());
 		break;
 	case 0x7259:
-		int range = (atoi(value.c_str()) * 64) + 64;
+		range = (atoi(value.c_str()) * 64) + 64;
 		handleSurveyToolRange(boxID, player, cancel, range);
 		break;
 	case 0xAAAA:	// slice weapon

@@ -332,7 +332,6 @@ SuiBoxServant::SuiBoxServant() {
 
 SuiBoxServant::~SuiBoxServant() {
 }
-
 void SuiBoxServant::_setStub(ORBObjectStub* stub) {
 	_this = (SuiBox*) stub;
 }

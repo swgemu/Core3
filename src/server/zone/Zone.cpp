@@ -639,7 +639,6 @@ ZoneServant::ZoneServant() {
 
 ZoneServant::~ZoneServant() {
 }
-
 void ZoneServant::_setStub(ORBObjectStub* stub) {
 	_this = (Zone*) stub;
 }

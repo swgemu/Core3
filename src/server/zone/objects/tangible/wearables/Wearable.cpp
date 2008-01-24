@@ -138,7 +138,6 @@ WearableServant::WearableServant(unsigned long long oid, int tp) : TangibleObjec
 
 WearableServant::~WearableServant() {
 }
-
 void WearableServant::_setStub(ORBObjectStub* stub) {
 	_this = (Wearable*) stub;
 	TangibleObjectServant::_setStub(stub);

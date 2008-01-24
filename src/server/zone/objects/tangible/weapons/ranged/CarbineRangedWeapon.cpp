@@ -144,7 +144,6 @@ CarbineRangedWeaponServant::CarbineRangedWeaponServant(CreatureObject* creature,
 
 CarbineRangedWeaponServant::~CarbineRangedWeaponServant() {
 }
-
 void CarbineRangedWeaponServant::_setStub(ORBObjectStub* stub) {
 	_this = (CarbineRangedWeapon*) stub;
 	RangedWeaponServant::_setStub(stub);

@@ -138,7 +138,6 @@ LairObjectServant::LairObjectServant(unsigned long long oid, int tp) : TangibleO
 
 LairObjectServant::~LairObjectServant() {
 }
-
 void LairObjectServant::_setStub(ORBObjectStub* stub) {
 	_this = (LairObject*) stub;
 	TangibleObjectServant::_setStub(stub);

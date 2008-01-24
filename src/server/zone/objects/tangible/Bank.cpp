@@ -140,7 +140,6 @@ BankServant::BankServant(unsigned long long oid) : ContainerImplementation(oid) 
 
 BankServant::~BankServant() {
 }
-
 void BankServant::_setStub(ORBObjectStub* stub) {
 	_this = (Bank*) stub;
 	ContainerServant::_setStub(stub);

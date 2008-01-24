@@ -898,7 +898,6 @@ ShipObjectServant::ShipObjectServant() : SceneObjectImplementation() {
 
 ShipObjectServant::~ShipObjectServant() {
 }
-
 void ShipObjectServant::_setStub(ORBObjectStub* stub) {
 	_this = (ShipObject*) stub;
 	SceneObjectServant::_setStub(stub);

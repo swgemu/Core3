@@ -140,7 +140,6 @@ HairObjectServant::HairObjectServant(unsigned long long oid, int tp) : TangibleO
 
 HairObjectServant::~HairObjectServant() {
 }
-
 void HairObjectServant::_setStub(ORBObjectStub* stub) {
 	_this = (HairObject*) stub;
 	TangibleObjectServant::_setStub(stub);

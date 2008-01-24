@@ -1028,7 +1028,6 @@ ArmorServant::ArmorServant(CreatureObject* creature, unsigned int tempCRC, const
 
 ArmorServant::~ArmorServant() {
 }
-
 void ArmorServant::_setStub(ORBObjectStub* stub) {
 	_this = (Armor*) stub;
 	WearableServant::_setStub(stub);

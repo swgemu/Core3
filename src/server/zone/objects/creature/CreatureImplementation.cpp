@@ -281,46 +281,40 @@ void CreatureImplementation::loadItems() {
 	lootContainer = (Container*) containerImpl->deploy();
 	
 	Weapon* weapon = NULL;
+	WeaponImplementation* weaponImpl = NULL;
 	
 	if (objectCRC == 0xBA7F23CD) { //storm trooper
-		RifleRangedWeaponImplementation* rifleImpl = new RifleRangedWeaponImplementation(_this, 
+		weaponImpl = new RifleRangedWeaponImplementation(_this, 
 				"object/weapon/ranged/rifle/shared_rifle_t21.iff", unicode("Teh Pwn"), "rifle_t21", true);
-		
-		weapon = (Weapon*) rifleImpl->deploy();
+
 		setImperial();
 	} else if (objectCRC == 0x8C70914) {
-		OneHandedJediWeaponImplementation* saberImpl = new OneHandedJediWeaponImplementation(_this, 
+		weaponImpl = new OneHandedJediWeaponImplementation(_this, 
 				"object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s4_gen4.iff", 
 				unicode("Darth Saber"), "sword_lightsaber_one_handed_s4_gen4", true);
-		saberImpl->setDamageType(WeaponImplementation::LIGHTSABER);
-		saberImpl->setArmorPiercing(WeaponImplementation::NONE);
-		
-		weapon = (Weapon*) saberImpl->deploy();
+		weaponImpl->setDamageType(WeaponImplementation::LIGHTSABER);
+		weaponImpl->setArmorPiercing(WeaponImplementation::NONE);
 	} else if (objectCRC == 0xD84925C2 || objectCRC == 0x90D8EBF8 || objectCRC == 0x1FA893FD || objectCRC == 0x2E831404 || 
 			   objectCRC == 0x2D98A9B3 || objectCRC == 0x2B0C220E || objectCRC == 0x476794EB || objectCRC == 0x4A889CCF ||
 			   objectCRC == 0x6D029623 || objectCRC == 0x4A48B6CC || objectCRC == 0x1527DF01 || objectCRC == 0xE158FEC1) { 
 		// low level NS, SMC, Rebel General, Tusken Raider		
 		switch (System::random(1)) {
 		case 0 :
-			OneHandedMeleeWeaponImplementation* gaffi2Impl = new OneHandedMeleeWeaponImplementation(_this, "object/weapon/melee/baton/shared_baton_gaderiffi.iff", unicode("a Gaderiffi"), "baton_gaderiffi", true);
-			gaffi2Impl->setMinDamage(75 + level);
-			gaffi2Impl->setMaxDamage(100 + level);
-			gaffi2Impl->setAttackSpeed(1.5);
-			gaffi2Impl->setDamageType(WeaponImplementation::KINETIC);
-			gaffi2Impl->setArmorPiercing(WeaponImplementation::NONE);
-
-			weapon = (Weapon*) gaffi2Impl->deploy();
+			weaponImpl = new OneHandedMeleeWeaponImplementation(_this, "object/weapon/melee/baton/shared_baton_gaderiffi.iff", unicode("a Gaderiffi"), "baton_gaderiffi", true);
+			weaponImpl->setMinDamage(75 + level);
+			weaponImpl->setMaxDamage(100 + level);
+			weaponImpl->setAttackSpeed(1.5);
+			weaponImpl->setDamageType(WeaponImplementation::KINETIC);
+			weaponImpl->setArmorPiercing(WeaponImplementation::NONE);
 			break;
 		case 1 :
-			OneHandedMeleeWeaponImplementation* baton1Impl = new OneHandedMeleeWeaponImplementation(_this, 
+			weaponImpl = new OneHandedMeleeWeaponImplementation(_this, 
 					"object/weapon/melee/baton/shared_baton_stun.iff", unicode("a Stun Baton"), "baton_stun", true);
-			baton1Impl->setMinDamage(75 + level);
-			baton1Impl->setMaxDamage(100 + level);
-			baton1Impl->setAttackSpeed(1.5);
-			baton1Impl->setDamageType(WeaponImplementation::STUN);
-			baton1Impl->setArmorPiercing(WeaponImplementation::NONE);
-
-			weapon = (Weapon*) baton1Impl->deploy();
+			weaponImpl->setMinDamage(75 + level);
+			weaponImpl->setMaxDamage(100 + level);
+			weaponImpl->setAttackSpeed(1.5);
+			weaponImpl->setDamageType(WeaponImplementation::STUN);
+			weaponImpl->setArmorPiercing(WeaponImplementation::NONE);
 			break;
 		}
 	} else if (objectCRC == 0xF0663601 || objectCRC == 0xAC722907 || objectCRC == 0x889ADF8D || objectCRC == 0xC4E5A41E || 
@@ -329,40 +323,36 @@ void CreatureImplementation::loadItems() {
 		// High level NS, SMC, Rebel Surface Marshal, Elite Tusken
 		switch (System::random(1)) {
 		case 0 :
-			PolearmMeleeWeaponImplementation* vibrolance1Impl = new PolearmMeleeWeaponImplementation(_this, 
+			weaponImpl = new PolearmMeleeWeaponImplementation(_this, 
 					"object/weapon/melee/polearm/shared_lance_vibrolance.iff", unicode("a Vibrolance"), "lance_vibrolance", true);
-			vibrolance1Impl->setMinDamage(150 + level);
-			vibrolance1Impl->setMaxDamage(300 + level);
-			vibrolance1Impl->setAttackSpeed(1.5);
-			vibrolance1Impl->setDamageType(WeaponImplementation::ELECTRICITY);
-			vibrolance1Impl->setArmorPiercing(WeaponImplementation::LIGHT);
-
-			weapon = (Weapon*) vibrolance1Impl->deploy();
+			weaponImpl->setMinDamage(150 + level);
+			weaponImpl->setMaxDamage(300 + level);
+			weaponImpl->setAttackSpeed(1.5);
+			weaponImpl->setDamageType(WeaponImplementation::ELECTRICITY);
+			weaponImpl->setArmorPiercing(WeaponImplementation::LIGHT);
 			break;
 		case 1 :
 			PolearmMeleeWeaponImplementation* lva1Impl = new PolearmMeleeWeaponImplementation(_this, 
 					"object/weapon/melee/polearm/shared_polearm_vibro_axe.iff", unicode("a Long Vibro Axe"), "lance_vibro_axe", true);
-			lva1Impl->setMinDamage(150 + level);
-			lva1Impl->setMaxDamage(300 + level);
-			lva1Impl->setAttackSpeed(1.5);
-			lva1Impl->setDamageType(WeaponImplementation::KINETIC);
-			lva1Impl->setArmorPiercing(WeaponImplementation::MEDIUM);
-
-			weapon = (Weapon*) lva1Impl->deploy();
+			weaponImpl->setMinDamage(150 + level);
+			weaponImpl->setMaxDamage(300 + level);
+			weaponImpl->setAttackSpeed(1.5);
+			weaponImpl->setDamageType(WeaponImplementation::KINETIC);
+			weaponImpl->setArmorPiercing(WeaponImplementation::MEDIUM);
 			break;
 		}
 	} else if (objectCRC == 0xFB872285) { // lord nyax
-		CarbineRangedWeaponImplementation* nyaxCarbImpl = new CarbineRangedWeaponImplementation(_this, 
+		weaponImpl = new CarbineRangedWeaponImplementation(_this, 
 				"object/weapon/ranged/carbine/shared_carbine_laser.iff", unicode("a Laser Carbine"), "carbine_laser", true);
-		nyaxCarbImpl->setMinDamage(250);
-		nyaxCarbImpl->setMaxDamage(450);
-		nyaxCarbImpl->setAttackSpeed(1.5);
-		nyaxCarbImpl->setDamageType(WeaponImplementation::ENERGY);
-		nyaxCarbImpl->setArmorPiercing(WeaponImplementation::MEDIUM);
-
-		weapon = (Weapon*) nyaxCarbImpl->deploy();
+		weaponImpl->setMinDamage(250);
+		weaponImpl->setMaxDamage(450);
+		weaponImpl->setAttackSpeed(1.5);
+		weaponImpl->setDamageType(WeaponImplementation::ENERGY);
+		weaponImpl->setArmorPiercing(WeaponImplementation::MEDIUM);
 	} else
 		return;
+
+	weapon = (Weapon*) weaponImpl->deploy();
 	
 	addInventoryItem(weapon);
 	setWeapon(weapon);

@@ -393,7 +393,6 @@ MountCreatureServant::MountCreatureServant(unsigned long long oid) : CreatureImp
 
 MountCreatureServant::~MountCreatureServant() {
 }
-
 void MountCreatureServant::_setStub(ORBObjectStub* stub) {
 	_this = (MountCreature*) stub;
 	CreatureServant::_setStub(stub);

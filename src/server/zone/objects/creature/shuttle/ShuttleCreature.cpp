@@ -279,7 +279,6 @@ ShuttleCreatureServant::ShuttleCreatureServant(unsigned long long oid) : Creatur
 
 ShuttleCreatureServant::~ShuttleCreatureServant() {
 }
-
 void ShuttleCreatureServant::_setStub(ORBObjectStub* stub) {
 	_this = (ShuttleCreature*) stub;
 	CreatureServant::_setStub(stub);

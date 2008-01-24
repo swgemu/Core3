@@ -455,7 +455,6 @@ GroupObjectServant::GroupObjectServant() : SceneObjectImplementation() {
 
 GroupObjectServant::~GroupObjectServant() {
 }
-
 void GroupObjectServant::_setStub(ORBObjectStub* stub) {
 	_this = (GroupObject*) stub;
 	SceneObjectServant::_setStub(stub);

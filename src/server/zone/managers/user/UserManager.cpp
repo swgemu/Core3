@@ -295,7 +295,6 @@ UserManagerServant::UserManagerServant() {
 
 UserManagerServant::~UserManagerServant() {
 }
-
 void UserManagerServant::_setStub(ORBObjectStub* stub) {
 	_this = (UserManager*) stub;
 }

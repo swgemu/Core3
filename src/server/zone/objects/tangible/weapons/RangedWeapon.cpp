@@ -183,7 +183,6 @@ RangedWeaponServant::RangedWeaponServant(CreatureObject* creature, const string&
 
 RangedWeaponServant::~RangedWeaponServant() {
 }
-
 void RangedWeaponServant::_setStub(ORBObjectStub* stub) {
 	_this = (RangedWeapon*) stub;
 	WeaponServant::_setStub(stub);

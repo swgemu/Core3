@@ -93,7 +93,7 @@ public:
 	
 	bool checkResource(Player* player, unicode& resource_name, int SurveyToolType);
 	
-	string& LocalResourceManagerImplementation::getClassSeven(const string& resource);
+	string& getClassSeven(const string& resource);
 	
 private:
 	bool isDuplicate(Vector<string>* rList, string& resource);

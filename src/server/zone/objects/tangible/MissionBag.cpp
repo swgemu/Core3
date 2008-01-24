@@ -140,7 +140,6 @@ MissionBagServant::MissionBagServant(unsigned long long oid) : ContainerImplemen
 
 MissionBagServant::~MissionBagServant() {
 }
-
 void MissionBagServant::_setStub(ORBObjectStub* stub) {
 	_this = (MissionBag*) stub;
 	ContainerServant::_setStub(stub);

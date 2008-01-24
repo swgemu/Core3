@@ -1719,7 +1719,6 @@ ResourceTemplateServant::ResourceTemplateServant() {
 
 ResourceTemplateServant::~ResourceTemplateServant() {
 }
-
 void ResourceTemplateServant::_setStub(ORBObjectStub* stub) {
 	_this = (ResourceTemplate*) stub;
 }

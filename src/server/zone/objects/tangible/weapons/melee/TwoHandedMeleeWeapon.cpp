@@ -144,7 +144,6 @@ TwoHandedMeleeWeaponServant::TwoHandedMeleeWeaponServant(CreatureObject* creatur
 
 TwoHandedMeleeWeaponServant::~TwoHandedMeleeWeaponServant() {
 }
-
 void TwoHandedMeleeWeaponServant::_setStub(ORBObjectStub* stub) {
 	_this = (TwoHandedMeleeWeapon*) stub;
 	MeleeWeaponServant::_setStub(stub);

@@ -793,7 +793,6 @@ ChatRoomServant::ChatRoomServant() {
 
 ChatRoomServant::~ChatRoomServant() {
 }
-
 void ChatRoomServant::_setStub(ORBObjectStub* stub) {
 	_this = (ChatRoom*) stub;
 }

@@ -278,7 +278,6 @@ BazaarManagerServant::BazaarManagerServant() {
 
 BazaarManagerServant::~BazaarManagerServant() {
 }
-
 void BazaarManagerServant::_setStub(ORBObjectStub* stub) {
 	_this = (BazaarManager*) stub;
 }

@@ -275,7 +275,6 @@ PlayerMapServant::PlayerMapServant() {
 
 PlayerMapServant::~PlayerMapServant() {
 }
-
 void PlayerMapServant::_setStub(ORBObjectStub* stub) {
 	_this = (PlayerMap*) stub;
 }

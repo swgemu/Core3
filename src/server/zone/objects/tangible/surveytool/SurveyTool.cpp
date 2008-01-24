@@ -308,7 +308,6 @@ SurveyToolServant::SurveyToolServant(unsigned long long oid, const unicode& n, c
 
 SurveyToolServant::~SurveyToolServant() {
 }
-
 void SurveyToolServant::_setStub(ORBObjectStub* stub) {
 	_this = (SurveyTool*) stub;
 	TangibleObjectServant::_setStub(stub);

@@ -144,7 +144,6 @@ PolearmJediWeaponServant::PolearmJediWeaponServant(CreatureObject* creature, con
 
 PolearmJediWeaponServant::~PolearmJediWeaponServant() {
 }
-
 void PolearmJediWeaponServant::_setStub(ORBObjectStub* stub) {
 	_this = (PolearmJediWeapon*) stub;
 	JediWeaponServant::_setStub(stub);

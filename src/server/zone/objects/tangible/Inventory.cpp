@@ -140,7 +140,6 @@ InventoryServant::InventoryServant(unsigned long long oid) : ContainerImplementa
 
 InventoryServant::~InventoryServant() {
 }
-
 void InventoryServant::_setStub(ORBObjectStub* stub) {
 	_this = (Inventory*) stub;
 	ContainerServant::_setStub(stub);

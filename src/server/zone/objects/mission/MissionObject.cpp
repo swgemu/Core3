@@ -138,7 +138,6 @@ MissionObjectServant::MissionObjectServant(unsigned long long oid) : SceneObject
 
 MissionObjectServant::~MissionObjectServant() {
 }
-
 void MissionObjectServant::_setStub(ORBObjectStub* stub) {
 	_this = (MissionObject*) stub;
 	SceneObjectServant::_setStub(stub);

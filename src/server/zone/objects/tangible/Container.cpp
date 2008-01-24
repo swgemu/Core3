@@ -278,7 +278,6 @@ ContainerServant::ContainerServant(unsigned long long oid) : TangibleObjectImple
 
 ContainerServant::~ContainerServant() {
 }
-
 void ContainerServant::_setStub(ORBObjectStub* stub) {
 	_this = (Container*) stub;
 	TangibleObjectServant::_setStub(stub);

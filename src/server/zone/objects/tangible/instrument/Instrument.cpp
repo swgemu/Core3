@@ -179,7 +179,6 @@ InstrumentServant::InstrumentServant(unsigned long long oid, int tp) : TangibleO
 
 InstrumentServant::~InstrumentServant() {
 }
-
 void InstrumentServant::_setStub(ORBObjectStub* stub) {
 	_this = (Instrument*) stub;
 	TangibleObjectServant::_setStub(stub);

@@ -200,7 +200,6 @@ SuiTransferBoxServant::SuiTransferBoxServant(Player* play, unsigned int typeID, 
 
 SuiTransferBoxServant::~SuiTransferBoxServant() {
 }
-
 void SuiTransferBoxServant::_setStub(ORBObjectStub* stub) {
 	_this = (SuiTransferBox*) stub;
 	SuiBoxServant::_setStub(stub);

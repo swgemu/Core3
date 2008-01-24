@@ -144,7 +144,6 @@ MeleeWeaponServant::MeleeWeaponServant(CreatureObject* creature, const string& t
 
 MeleeWeaponServant::~MeleeWeaponServant() {
 }
-
 void MeleeWeaponServant::_setStub(ORBObjectStub* stub) {
 	_this = (MeleeWeapon*) stub;
 	WeaponServant::_setStub(stub);

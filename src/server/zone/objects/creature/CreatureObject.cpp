@@ -6120,7 +6120,6 @@ CreatureObjectServant::CreatureObjectServant(unsigned long long oid) : SceneObje
 
 CreatureObjectServant::~CreatureObjectServant() {
 }
-
 void CreatureObjectServant::_setStub(ORBObjectStub* stub) {
 	_this = (CreatureObject*) stub;
 	SceneObjectServant::_setStub(stub);

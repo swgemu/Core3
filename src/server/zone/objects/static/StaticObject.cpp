@@ -222,7 +222,6 @@ StaticObjectServant::StaticObjectServant(unsigned long long oid) : SceneObjectIm
 
 StaticObjectServant::~StaticObjectServant() {
 }
-
 void StaticObjectServant::_setStub(ORBObjectStub* stub) {
 	_this = (StaticObject*) stub;
 	SceneObjectServant::_setStub(stub);

@@ -344,7 +344,6 @@ GuildManagerServant::GuildManagerServant() {
 
 GuildManagerServant::~GuildManagerServant() {
 }
-
 void GuildManagerServant::_setStub(ORBObjectStub* stub) {
 	_this = (GuildManager*) stub;
 }

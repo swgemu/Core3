@@ -180,7 +180,6 @@ CreatureGroupServant::CreatureGroupServant() {
 
 CreatureGroupServant::~CreatureGroupServant() {
 }
-
 void CreatureGroupServant::_setStub(ORBObjectStub* stub) {
 	_this = (CreatureGroup*) stub;
 }

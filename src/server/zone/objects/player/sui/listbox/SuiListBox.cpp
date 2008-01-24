@@ -219,7 +219,6 @@ SuiListBoxServant::SuiListBoxServant(Player* play, unsigned int typeID, unsigned
 
 SuiListBoxServant::~SuiListBoxServant() {
 }
-
 void SuiListBoxServant::_setStub(ORBObjectStub* stub) {
 	_this = (SuiListBox*) stub;
 	SuiBoxServant::_setStub(stub);

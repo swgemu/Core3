@@ -160,7 +160,6 @@ GuildTerminalServant::GuildTerminalServant(unsigned int objCRC, unsigned long lo
 
 GuildTerminalServant::~GuildTerminalServant() {
 }
-
 void GuildTerminalServant::_setStub(ORBObjectStub* stub) {
 	_this = (GuildTerminal*) stub;
 	TerminalServant::_setStub(stub);

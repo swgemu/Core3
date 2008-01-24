@@ -515,7 +515,6 @@ PlayerManagerServant::PlayerManagerServant() {
 
 PlayerManagerServant::~PlayerManagerServant() {
 }
-
 void PlayerManagerServant::_setStub(ORBObjectStub* stub) {
 	_this = (PlayerManager*) stub;
 }
