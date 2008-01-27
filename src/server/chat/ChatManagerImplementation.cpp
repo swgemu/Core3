@@ -882,8 +882,10 @@ Player* ChatManagerImplementation::removePlayer(string& name) {
 void ChatManagerImplementation::sendMail(const string& sendername, unicode& header, unicode& body, const string& name) {
 	Player* receiver = NULL;
 
-  	struct tm * timeinfo;
-  	string Name = name;
+	Time* expireTime = new Time();
+	uint64 currentTime = expireTime->getMiliTime() / 1000;
+
+	string Name = name;
   	String::toLower(Name);
   	receiver = getPlayer(Name);
 
@@ -906,9 +908,6 @@ void ChatManagerImplementation::sendMail(const string& sendername, unicode& head
 		delete rescid;
 		
 		//Insert mail into db.
-	  	time_t mailtime;
-	  	time ( &mailtime );
-	  	timeinfo = localtime ( &mailtime );
 	  	
 	  	string headerString = header.c_str();
 	  	MySqlDatabase::escapeString(headerString);
@@ -921,9 +920,9 @@ void ChatManagerImplementation::sendMail(const string& sendername, unicode& head
 	  	
 		stringstream inmqry;
 	    inmqry << "INSERT INTO `mail` "
-	        << "(`sender_name`,`recv_name`,`subject`,`body`,`time`)"
-		    << "VALUES ('" << senderName << "','" << Name << "','" << headerString << "','" << bodyString << "','" << asctime(timeinfo)
-		    << "');" ;
+	        << "(`sender_name`,`recv_name`,`subject`,`body`,`time`,`read`)"
+		    << "VALUES ('" << senderName << "','" << Name << "','" << headerString << "','" << bodyString << "'," 
+		    << currentTime << ",0);" ;
 		
 		ServerDatabase::instance()->executeStatement(inmqry);
 	} catch (DatabaseException& e) {
@@ -939,15 +938,20 @@ void ChatManagerImplementation::sendMail(const string& sendername, unicode& head
 		//receiver->wlock();
 		
 		stringstream query;
-		query << "SELECT mail_id FROM mail WHERE time = '" << asctime(timeinfo) << "';";
+		query << "SELECT mail_id FROM mail WHERE time = " << currentTime << ";";
 		
 		ResultSet* mail = ServerDatabase::instance()->executeQuery(query);
 		
 		if (mail->next()) {
 			int mailid = mail->getInt(0);
 		
-			BaseMessage* mmsg = new ChatPersistentMessageToClient(sendername, mailid, 0x01, header, body);
+			BaseMessage* mmsg = new ChatPersistentMessageToClient(sendername, mailid, 0x01, header, body, currentTime, 'N');
 			receiver->sendMessage(mmsg);
+			
+			stringstream update;
+			update << "UPDATE `mail` SET `read` = 1 WHERE mail_id = " << mailid << ";";
+			ServerDatabase::instance()->executeQuery(update);
+					
 		}
 
 		delete mail;
@@ -966,10 +970,9 @@ void ChatManagerImplementation::sendMailBody(Player* receiver, uint32 mailid) {
 		return;
 
 	try {
-		//receiver->wlock();
-	
+
 		stringstream query;
-		query << "SELECT * FROM mail WHERE mail_id = '" << mailid << "';";
+		query << "SELECT * FROM mail WHERE mail_id = " << mailid << ";";
 	
 		ResultSet* mail = ServerDatabase::instance()->executeQuery(query);
 	
@@ -980,15 +983,16 @@ void ChatManagerImplementation::sendMailBody(Player* receiver, uint32 mailid) {
 
 			BaseMessage* mmsg = new ChatPersistentMessageToClient(sender, mailid, 0, subject, body);
 			receiver->sendMessage(mmsg);
+			
+			stringstream update;
+			update << "UPDATE `mail` SET `read` = 2 WHERE mail_id = " << mailid << ";";
+			ServerDatabase::instance()->executeQuery(update);
 		}
 	
-		//receiver->unlock();
 	
 		delete mail;
 	} catch (DatabaseException& e) {
 		cout << e.getMessage() << "\n";
-		
-		//receiver->unlock();
 	}
 }		
 
@@ -1006,11 +1010,27 @@ void ChatManagerImplementation::listMail(Player* ply) {
 			string sendername = res->getString(1);
 			unicode header = res->getString(3);
 			unicode body = res->getString(4);
+			uint32 mailTime = res->getUnsignedInt(5);
+			short read = res->getInt(7);
 		
-			BaseMessage* mmsg = new ChatPersistentMessageToClient(sendername, mailid, 0x01, header, body);
+			char status;
+			if (read == 2) 
+				status = 'R';
+			else if (read == 1)
+				status = 'U';
+			else {
+				status = 'N';
+				read++;
+			}
+			
+			BaseMessage* mmsg = new ChatPersistentMessageToClient(sendername, mailid, 0x01, header, body, mailTime, status);
 			ply->sendMessage(mmsg);
+			
+			stringstream update;
+			update << "UPDATE `mail` SET `read` = " << read << " WHERE mail_id = " << mailid << ";";
+			ServerDatabase::instance()->executeQuery(update);
 		}
-	
+
 		delete res;
 	} catch(DatabaseException& e) {
 		cout << e.getMessage() << "\n";
