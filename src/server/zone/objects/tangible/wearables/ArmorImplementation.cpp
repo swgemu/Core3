@@ -64,8 +64,8 @@ void ArmorImplementation::initialize() {
 	objectSubType = ARMOR;
 	
 	rating = LIGHT;
-	conditionDamage = 10000;
-	maxCondition = 50000;
+	conditionDamage = 0;
+	maxCondition = 35000;
 	
 	skillMod0Type = 0;
 	skillMod0Value = 0;
@@ -90,9 +90,9 @@ void ArmorImplementation::initialize() {
 	socket3Type = 0;
 	socket3Value = 0;
 	
-	healthEncumbrance = 300;
-	actionEncumbrance = 124;
-	mindEncumbrance = 87; 	
+	healthEncumbrance = 100;
+	actionEncumbrance = 100;
+	mindEncumbrance = 100; 	
 	 	
 	kinetic = 30.0f;
 	kineticIsSpecial = false;
@@ -417,6 +417,9 @@ void ArmorImplementation::generateSkillMods(AttributeListMessage* alm, int skill
 	case 28:
 		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:resistance_poison", skillModValue);
 		break;
+	case 29:
+		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:slope_move", skillModValue);
+		break;
 	}
 }
 
@@ -499,9 +502,9 @@ void ArmorImplementation::setArmorStats(int modifier) {
 	maxCondition = 25000 + (modifier * 10) + (luck * 50);
 	
 	if ((luck * System::random(100)) > 2000) {
-		healthEncumbrance = healthEncumbrance - (modifier / 10) - (luck / 10);
-		actionEncumbrance = actionEncumbrance - (modifier / 10) - (luck / 10);
-		mindEncumbrance = mindEncumbrance - (modifier / 10) - (luck / 10);
+		healthEncumbrance = healthEncumbrance - (healthEncumbrance * luck / 300);
+		actionEncumbrance = actionEncumbrance - (actionEncumbrance * luck / 300);
+		mindEncumbrance = mindEncumbrance - (mindEncumbrance * luck / 300);
 	}
 	
 	if ((luck * System::random(100)) > 2000) {
@@ -515,16 +518,21 @@ void ArmorImplementation::setArmorStats(int modifier) {
 	}
 	
 	if (playerRoll > 12500 && System::random(3) == 1) {
-		skillMod0Type = System::random(27) + 1;
+		skillMod0Type = System::random(28) + 1;
 		skillMod0Value = luck / (System::random(3) + 9);
 	}
 	if (playerRoll > 15000 && System::random(2) == 1) {
-		skillMod1Type = System::random(27) + 1;
+		skillMod1Type = System::random(28) + 1;
 		skillMod1Value = luck / (System::random(3) + 9);
 	}
 	if (playerRoll > 45000) {
-		skillMod2Type = System::random(27) + 1;
+		skillMod2Type = System::random(28) + 1;
 		skillMod2Value = luck / (System::random(3) + 9);
+	}
+	
+	if (playerRoll > 15000 && System::random(3) == 1) {
+		stun += System::random(9) + 1;
+		stunIsSpecial = true;
 	}
 	
 	kineticIsSpecial = System::random(1);

@@ -164,8 +164,15 @@ void ScriptAttacksManager::registerGlobals() {
 	
 	// misc
 	setGlobalInt("HEALTH", 1);
-	setGlobalInt("ACTION", 2);
-	setGlobalInt("MIND", 3);
+	setGlobalInt("STRENGTH", 2);
+	setGlobalInt("CONSTITUTION", 3);
+	setGlobalInt("ACTION", 4);
+	setGlobalInt("QUICKNESS", 5);
+	setGlobalInt("STAMINA", 6);
+	setGlobalInt("MIND", 7);
+	setGlobalInt("FOCUS", 8);
+	setGlobalInt("WILLPOWER", 9);
+	
 }
 
 int ScriptAttacksManager::AddRandomPoolAttackTargetSkill(lua_State *L) {

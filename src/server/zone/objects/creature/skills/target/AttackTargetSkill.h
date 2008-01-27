@@ -574,7 +574,7 @@ public:
 			}
 			
 			if (weapon->getDot1Uses() != 0) {
-				switch (weapon->getDot0Type()) {
+				switch (weapon->getDot1Type()) {
 				case 1:
 					resist = targetCreature->getSkillMod("resistance_bleeding");
 					if (resist > 25) 
@@ -618,7 +618,7 @@ public:
 			}
 			
 			if (weapon->getDot2Uses() != 0) {
-				switch (weapon->getDot0Type()) {
+				switch (weapon->getDot2Type()) {
 				case 1:
 					resist = targetCreature->getSkillMod("resistance_bleeding");
 					if (resist > 25) 

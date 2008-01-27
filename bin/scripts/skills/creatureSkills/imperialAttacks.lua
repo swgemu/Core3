@@ -63,11 +63,11 @@ stormTrooperAttack1 = {
 	stunChance = 0,
 	intimidateChance = 1,
 	
-	CbtSpamBlock = "",
-	CbtSpamCounter = "",
-	CbtSpamEvade = "",
-	CbtSpamHit = "",
-	CbtSpamMiss = "",
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
 }
 
 AddRandomPoolAttackTargetSkill(stormTrooperAttack1)
@@ -79,7 +79,7 @@ stormTrooperAttack2 = {
 
 	range = 64,
 
-	damageRatio = 40,
+	damageRatio = 100,
 
 	speedRatio = 4,
 	coneAngle = 0,
@@ -95,11 +95,11 @@ stormTrooperAttack2 = {
 	stunChance = 1,
 	intimidateChance = 1,
 	
-	CbtSpamBlock = "",
-	CbtSpamCounter = "",
-	CbtSpamEvade = "",
-	CbtSpamHit = "",
-	CbtSpamMiss = "",
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
 }
 
 AddRandomPoolAttackTargetSkill(stormTrooperAttack2)

@@ -1868,6 +1868,9 @@ void PlayerImplementation::setItemSkillMod(int type, int value) {
 	case 28:
 		addSkillMod("resistance_poison", value, true);
 		break;
+	case 29:
+		addSkillMod("slope_move", value, true);
+		break;
 	}
 }
 

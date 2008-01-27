@@ -823,7 +823,7 @@ char CreatureManagerImplementation::chooseNextLetter(const char lastLetter, cons
 		}
 		case 'l': {
 			char exclusion[] = { 'b', 'c', 'd', 'f', 'g', 'h', 'j', 'k',
-							'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w',
+							'l', 'm', 'n', 'p', 'q', 'r', 's', 'v', 'w',
 									'x', 'z', '\0' };
 			return chooseLetterExcluding(exclusion);
 		}

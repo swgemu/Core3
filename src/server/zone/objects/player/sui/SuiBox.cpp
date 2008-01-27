@@ -161,12 +161,24 @@ bool SuiBox::isMessageBox() {
 		return ((SuiBoxImplementation*) _impl)->isMessageBox();
 }
 
-unsigned long long SuiBox::getBoxID() {
+bool SuiBox::isTransferBox() {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
 		ORBMethodInvocation invocation(this, 13);
+
+		return invocation.executeWithBooleanReturn();
+	} else
+		return ((SuiBoxImplementation*) _impl)->isTransferBox();
+}
+
+unsigned long long SuiBox::getBoxID() {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 14);
 
 		return invocation.executeWithUnsignedLongReturn();
 	} else
@@ -178,7 +190,7 @@ unsigned long long SuiBox::getUsingObjectID() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 14);
+		ORBMethodInvocation invocation(this, 15);
 
 		return invocation.executeWithUnsignedLongReturn();
 	} else
@@ -190,7 +202,7 @@ Player* SuiBox::getPlayer() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 15);
+		ORBMethodInvocation invocation(this, 16);
 
 		return (Player*) invocation.executeWithObjectReturn();
 	} else
@@ -230,12 +242,15 @@ Packet* SuiBoxAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* inv) {
 		resp->insertBoolean(isMessageBox());
 		break;
 	case 13:
-		resp->insertLong(getBoxID());
+		resp->insertBoolean(isTransferBox());
 		break;
 	case 14:
-		resp->insertLong(getUsingObjectID());
+		resp->insertLong(getBoxID());
 		break;
 	case 15:
+		resp->insertLong(getUsingObjectID());
+		break;
+	case 16:
 		resp->insertLong(getPlayer()->_getORBObjectID());
 		break;
 	default:
@@ -271,6 +286,10 @@ bool SuiBoxAdapter::isListBox() {
 
 bool SuiBoxAdapter::isMessageBox() {
 	return ((SuiBoxImplementation*) impl)->isMessageBox();
+}
+
+bool SuiBoxAdapter::isTransferBox() {
+	return ((SuiBoxImplementation*) impl)->isTransferBox();
 }
 
 unsigned long long SuiBoxAdapter::getBoxID() {
@@ -332,6 +351,7 @@ SuiBoxServant::SuiBoxServant() {
 
 SuiBoxServant::~SuiBoxServant() {
 }
+
 void SuiBoxServant::_setStub(ORBObjectStub* stub) {
 	_this = (SuiBox*) stub;
 }

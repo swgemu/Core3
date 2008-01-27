@@ -50,16 +50,16 @@ juviCanyonKraytDragon = Creature:new {
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
 	health = 54000,
-	strength = 1000,
-	constitution = 1000,
+	strength = 5000,
+	constitution = 5000,
 
 	action = 54000,
-	quickness = 1000,
-	stamina = 1000,
+	quickness = 5000,
+	stamina = 5000,
 
 	mind = 54000,
-	focus = 1000,
-	willpower = 1000,
+	focus = 5000,
+	willpower = 5000,
 	
 	armor = 2, -- from allakhazam
 
@@ -67,7 +67,7 @@ juviCanyonKraytDragon = Creature:new {
 	
 	accuracy = 300,
 
-	skills = { "kraytAttack1" }
+	skills = { "kraytAttack1", "kraytAttack2", "kraytAttack3", "kraytAttack4", "kraytAttack5" }
 	-- respawnTimer = 60,
 }
 

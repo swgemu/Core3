@@ -67,7 +67,7 @@ darthVader = Creature:new {
 	
 	accuracy = 300,
 
-	skills = { "darthAttack1" }
+	skills = { "darthAttack1", "darthAttack2", "darthAttack3", "darthAttack4" }
 	-- respawnTimer = 180,
 }
 

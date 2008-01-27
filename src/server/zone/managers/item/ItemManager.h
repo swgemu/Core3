@@ -53,6 +53,10 @@ which carries forward this exception.
 
 class TangibleObject;
 
+class Weapon;
+
+class Armor;
+
 class Player;
 
 class ItemManager : public ORBObjectStub {
@@ -67,6 +71,8 @@ public:
 
 	void loadStaticWorldObjects();
 
+	TangibleObject* getPlayerItem(Player* player, long long objectid);
+
 	void loadPlayerItems(Player* player);
 
 	void loadDefaultPlayerItems(Player* player);
@@ -74,6 +80,10 @@ public:
 	void unloadPlayerItems(Player* player);
 
 	void createPlayerItem(Player* player, TangibleObject* item);
+
+	void createPlayerWeapon(Player* player, Weapon* item);
+
+	void createPlayerArmor(Player* player, Armor* item);
 
 	void savePlayerItem(Player* player, TangibleObject* item);
 
@@ -100,6 +110,8 @@ public:
 
 	void loadStaticWorldObjects();
 
+	TangibleObject* getPlayerItem(Player* player, long long objectid);
+
 	void loadPlayerItems(Player* player);
 
 	void loadDefaultPlayerItems(Player* player);
@@ -107,6 +119,10 @@ public:
 	void unloadPlayerItems(Player* player);
 
 	void createPlayerItem(Player* player, TangibleObject* item);
+
+	void createPlayerWeapon(Player* player, Weapon* item);
+
+	void createPlayerArmor(Player* player, Armor* item);
 
 	void savePlayerItem(Player* player, TangibleObject* item);
 

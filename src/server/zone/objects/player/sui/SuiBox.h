@@ -77,6 +77,8 @@ public:
 
 	bool isMessageBox();
 
+	bool isTransferBox();
+
 	unsigned long long getBoxID();
 
 	unsigned long long getUsingObjectID();
@@ -107,6 +109,8 @@ public:
 	bool isListBox();
 
 	bool isMessageBox();
+
+	bool isTransferBox();
 
 	unsigned long long getBoxID();
 

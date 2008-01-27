@@ -45,9 +45,9 @@ darthAttack1 = {
 	
 	requiredWeaponType = JEDI,
 
-	range = 15,
+	range = 11,
 
-	damageRatio = 40,
+	damageRatio = 30,
 
 	speedRatio = 2,
 	coneAngle = 30,
@@ -55,21 +55,123 @@ darthAttack1 = {
 	areaRange = 0,
 	accuracyBonus = 0,
 		
-	knockdownChance = 1,
-	postureDownChance = 1,
+	knockdownChance = 10,
+	postureDownChance = 10,
 	postureUpChance = 0,
-	dizzyChance = 1,
-	blindChance = 1,
-	stunChance = 1,
-	intimidateChance = 1,
+	dizzyChance = 10,
+	blindChance = 10,
+	stunChance = 10,
+	intimidateChance = 10,
 	
-	CbtSpamBlock = "",
-	CbtSpamCounter = "",
-	CbtSpamEvade = "",
-	CbtSpamHit = "",
-	CbtSpamMiss = "",
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
 }
 
 AddRandomPoolAttackTargetSkill(darthAttack1)
 
 -----------------------------------------------
+darthAttack2 = {
+	attackname = "darthAttack2",
+	animation = "combo_jedi_2_light",
+
+	requiredWeaponType = JEDI,
+
+	range = 11,
+	coneAngle = 40,
+	damageRatio = 35,
+	speedRatio = 1.5,
+	accuracyBonus = 0,
+	
+	knockdownChance = 0,
+	postureDownChance = 0,
+	dizzyChance = 50,
+	blindChance = 45,
+	stunChance = 40,
+	intimidateChance = 0,
+
+	CbtSpamBlock = "saberpolearmdervish2_block",
+	CbtSpamCounter = "saberpolearmdervish2_counter",
+	CbtSpamEvade = "saberpolearmdervish2_evade",
+	CbtSpamHit = "saberpolearmdervish2_hit",
+	CbtSpamMiss = "saberpolearmdervish2_miss"
+}
+
+AddRandomPoolAttackTargetSkill(darthAttack2)
+
+-----------------------------------------------------------------------
+
+darthAttack3 = {
+	attackname = "darthAttack3",
+	animation = "saberthrow_posture_change",
+
+	requiredWeaponType = JEDI,
+
+	range = 32,
+	damageRatio = 30,
+	speedRatio = 1.0,
+	coneAngle = 40,
+	accuracyBonus = 0,
+	
+	knockdownChance = 40,
+	postureDownChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+
+	CbtSpamBlock = "saberthrow3_block",
+	CbtSpamCounter = "saberthrow3_counter",
+	CbtSpamEvade = "saberthrow3_evade",
+	CbtSpamHit = "saberthrow3_hit",
+	CbtSpamMiss = "saberthrow3_miss"
+}
+
+AddRandomPoolAttackTargetSkill(darthAttack3)
+
+-----------------------------------------------------------------------
+
+darthAttack4 = { 
+	attackname = "darthAttack4",
+	animation = "combo_2d_light",
+
+	requiredWeaponType = JEDI,
+	
+	range = 11,
+	damageRatio = 40,
+	speedRatio = 2.0,
+	areaRange = 0,
+	accuracyBonus = 0,
+	postureDownChance = 20,
+		
+	healthAttackChance = 90,
+	actionAttackChance = 70,
+	mindAttackChance = 50,
+
+	dotChance = 50,
+	tickStrengthOfHit = 1,
+
+	fireStrength = 0,
+	fireType = 0,
+
+	bleedingStrength = 0,
+	bleedingType = HEALTH,
+
+	poisonStrength = 0,
+	poisonType = 0,
+
+	diseaseStrength = 0,
+	diseaseType = 0,
+	
+	CbtSpamBlock = "saberslash2_block",
+	CbtSpamCounter = "saberslash2_counter",
+	CbtSpamEvade = "saberslash2_evade",
+	CbtSpamHit = "saberslash2_hit",
+	CbtSpamMiss = "saberslash2_miss"
+}
+
+AddDotPoolAttackTargetSkill(darthAttack4)
+
+-----------------------------------------------------------------------

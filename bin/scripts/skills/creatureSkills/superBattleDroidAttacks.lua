@@ -47,7 +47,7 @@ superBattleDroidAttack1 = {
 
 	range = 64,
 
-	damageRatio = 100,
+	damageRatio = 150,
 
 	speedRatio = 1,
 	coneAngle = 0,
@@ -63,11 +63,11 @@ superBattleDroidAttack1 = {
 	stunChance = 1,
 	intimidateChance = 1,
 	
-	CbtSpamBlock = "",
-	CbtSpamCounter = "",
-	CbtSpamEvade = "",
-	CbtSpamHit = "",
-	CbtSpamMiss = "",
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
 }
 
 AddRandomPoolAttackTargetSkill(superBattleDroidAttack1)
@@ -95,11 +95,11 @@ superBattleDroidAttack2 = {
 	stunChance = 1,
 	intimidateChance = 1,
 	
-	CbtSpamBlock = "",
-	CbtSpamCounter = "",
-	CbtSpamEvade = "",
-	CbtSpamHit = "",
-	CbtSpamMiss = "",
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
 }
 
 AddRandomPoolAttackTargetSkill(superBattleDroidAttack2)

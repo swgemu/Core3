@@ -171,6 +171,37 @@ BazaarPlanetManager* BazaarManager::getPlanet(long long bazaarid) {
 		return ((BazaarManagerImplementation*) _impl)->getPlanet(bazaarid);
 }
 
+void BazaarManager::buyItem(Player* player, long long objectid, int price1, int price2) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 12);
+		invocation.addObjectParameter(player);
+		invocation.addSignedLongParameter(objectid);
+		invocation.addSignedIntParameter(price1);
+		invocation.addSignedIntParameter(price2);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((BazaarManagerImplementation*) _impl)->buyItem(player, objectid, price1, price2);
+}
+
+void BazaarManager::retrieveItem(Player* player, long long objectid, long long bazaarid) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 13);
+		invocation.addObjectParameter(player);
+		invocation.addSignedLongParameter(objectid);
+		invocation.addSignedLongParameter(bazaarid);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((BazaarManagerImplementation*) _impl)->retrieveItem(player, objectid, bazaarid);
+}
+
 /*
  *	BazaarManagerAdapter
  */
@@ -199,6 +230,12 @@ Packet* BazaarManagerAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* i
 		break;
 	case 11:
 		resp->insertLong(getPlanet(inv->getSignedLongParameter())->_getORBObjectID());
+		break;
+	case 12:
+		buyItem((Player*) inv->getObjectParameter(), inv->getSignedLongParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
+		break;
+	case 13:
+		retrieveItem((Player*) inv->getObjectParameter(), inv->getSignedLongParameter(), inv->getSignedLongParameter());
 		break;
 	default:
 		return NULL;
@@ -229,6 +266,14 @@ RegionBazaar* BazaarManagerAdapter::getBazaar(long long bazaarid) {
 
 BazaarPlanetManager* BazaarManagerAdapter::getPlanet(long long bazaarid) {
 	return ((BazaarManagerImplementation*) impl)->getPlanet(bazaarid);
+}
+
+void BazaarManagerAdapter::buyItem(Player* player, long long objectid, int price1, int price2) {
+	return ((BazaarManagerImplementation*) impl)->buyItem(player, objectid, price1, price2);
+}
+
+void BazaarManagerAdapter::retrieveItem(Player* player, long long objectid, long long bazaarid) {
+	return ((BazaarManagerImplementation*) impl)->retrieveItem(player, objectid, bazaarid);
 }
 
 /*
@@ -278,6 +323,7 @@ BazaarManagerServant::BazaarManagerServant() {
 
 BazaarManagerServant::~BazaarManagerServant() {
 }
+
 void BazaarManagerServant::_setStub(ORBObjectStub* stub) {
 	_this = (BazaarManager*) stub;
 }

@@ -51,16 +51,16 @@ atAt = Creature:new {
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
 	health = 1000000,
-	strength = 1000000,
-	constitution = 1000000,
+	strength = 50000,
+	constitution = 50000,
 
 	action = 1000000,
-	quickness = 1000000,
-	stamina = 1000000,
+	quickness = 50000,
+	stamina = 50000,
 
 	mind = 1000000,
-	focus = 1000000,
-	willpower = 1000000,
+	focus = 50000,
+	willpower = 50000,
 	
 	armor = 3,
 	kinetic = 90,

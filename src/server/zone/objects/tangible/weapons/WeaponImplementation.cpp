@@ -541,7 +541,7 @@ void WeaponImplementation::setWeaponStats(int modifier){
 	int playerRoll = System::random(1000) * modifier * luck / 1000;
 	if (playerRoll > 200000) {
 		modifier = modifier + 100;
-		luck = luck + 100;
+		luck = luck + 150;
 		maxDamage = maxDamage * 1.5;
 		
 		stringstream itemText;
@@ -549,14 +549,14 @@ void WeaponImplementation::setWeaponStats(int modifier){
 		name = unicode(itemText.str());	
 	} else if (playerRoll > 45000) {
 		modifier = modifier + 50;
-		luck = luck + 50;
+		luck = luck + 100;
 
 		stringstream itemText;
 		itemText << "\\#ffff00" << name.c_str() << " (Exceptional)";	
 		name = unicode(itemText.str());
 	} else if (playerRoll > 12500) {
-		modifier = modifier + 10;
-		luck = luck + 25;
+		modifier = modifier + 25;
+		luck = luck + 50;
 
 		stringstream itemText;
 		itemText << "\\#ffff00" << name.c_str();
@@ -564,34 +564,34 @@ void WeaponImplementation::setWeaponStats(int modifier){
 	}
 	
 	if (luck * System::random(100) > 1700) {
-		minDamage = (minDamage * modifier / 100) + (0.45 * luck);
-		maxDamage = (maxDamage * modifier / 100) + (0.55 * luck);
+		minDamage = minDamage + (minDamage * luck / 140) + System::random(luck/10);
+		maxDamage = maxDamage + (maxDamage * luck / 140) + System::random(luck/10);
 	}
 	
 	if (luck * System::random(100) > 1700) {	
-		attackSpeed = attackSpeed - (attackSpeed * modifier / 500) - (luck / 500);
+		attackSpeed = attackSpeed - (attackSpeed * modifier / 750) - (luck / 500);
 	}
 	
 	if (luck * System::random(100) > 1700) {
-		healthAttackCost = healthAttackCost - (modifier / 25) - (luck / 75);
-		actionAttackCost = actionAttackCost - (modifier / 25) - (luck / 75);
-		mindAttackCost = mindAttackCost - (modifier / 25) - (luck / 75);
+		healthAttackCost = healthAttackCost - (healthAttackCost * luck / 300);
+		actionAttackCost = actionAttackCost - (actionAttackCost * luck / 300);
+		mindAttackCost = mindAttackCost - (mindAttackCost * luck / 300);
 	}
 
 	if (luck * System::random(100) > 1700)
 		woundsRatio = woundsRatio + (modifier / 15) + (luck / 10);
 	
 	if (playerRoll > 12500 && System::random(3) == 1) {
-		skillMod0Type = System::random(27) + 1;
-		skillMod0Value = luck / (System::random(3) + 9);
+		skillMod0Type = System::random(28) + 1;
+		skillMod0Value = luck / (System::random(3) + 10);
 	}
 	if (playerRoll > 15000 && System::random(2) == 1) {
-		skillMod1Type = System::random(27) + 1;
-		skillMod1Value = luck / (System::random(3) + 9);
+		skillMod1Type = System::random(28) + 1;
+		skillMod1Value = luck / (System::random(3) + 10);
 	}
 	if (playerRoll > 45000) {
-		skillMod2Type = System::random(27) + 1;
-		skillMod2Value = luck / (System::random(3) + 9);
+		skillMod2Type = System::random(28) + 1;
+		skillMod2Value = luck / (System::random(3) + 10);
 	}
 	
 	if (playerRoll > 13500 && System::random(1) == 1)	{
@@ -599,33 +599,33 @@ void WeaponImplementation::setWeaponStats(int modifier){
 		case 1:
 			dot1Type = BLEED;
 			dot1Attribute = (System::random(2) * 3) + 1;
-			dot1Strength = (modifier / 11) + luck;
+			dot1Strength = (modifier / 13) + (luck / 2);
 			dot1Duration = ((luck * 4) + modifier) / 7;
-			dot1Potency = luck/4;
+			dot1Potency = System::random(luck / 3) + (luck / 5);
 			dot1Uses = (modifier + luck) * 11;
 			break;
 		case 2:
 			dot1Type = DISEASE;
 			dot1Attribute = (System::random(2) * 3) + 1;
-			dot1Strength = (modifier / 11) + luck;
+			dot1Strength = (modifier / 13) + (luck / 2);
 			dot1Duration = ((luck * 5) + modifier) / 7;
-			dot1Potency = luck/4;
-			dot1Uses = (modifier + luck) * 13;
+			dot1Potency = System::random(luck / 3) + (luck / 5);
+			dot1Uses = (modifier + luck) * 11;
 			break;	
 		case 3:
 			dot1Type = FIRE;
 			dot1Attribute = (System::random(2) * 3) + 1;
-			dot1Strength = (modifier / 11) + luck;
+			dot1Strength = (modifier / 13) + (luck / 2);
 			dot1Duration = ((luck * 3) + modifier) / 7;
-			dot1Potency = luck/4;
+			dot1Potency = System::random(luck / 3) + (luck / 5);
 			dot1Uses = (modifier + luck) * 11;
 			break;
 		case 4:
 			dot1Type = POISON;
 			dot1Attribute = (System::random(2) * 3) + 1;
-			dot1Strength = (modifier / 11) + luck;
+			dot1Strength = (modifier / 13) + (luck / 2);
 			dot1Duration = ((luck * 4) + modifier) / 7;
-			dot1Potency = luck/4;
+			dot1Potency = System::random(luck / 3) + (luck / 5);
 			dot1Uses = (modifier + luck) * 11;
 			break;
 		}
@@ -767,6 +767,9 @@ void WeaponImplementation::generateSkillMods(AttributeListMessage* alm, int skil
 		break;
 	case 28:
 		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:resistance_poison", skillModValue);
+		break;
+	case 29:
+		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:slope_move", skillModValue);
 		break;
 	}
 }

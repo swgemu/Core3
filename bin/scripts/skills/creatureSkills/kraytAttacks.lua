@@ -47,28 +47,164 @@ kraytAttack1 = {
 
 	range = 15,
 
-	damageRatio = 65,
+	damageRatio = 120,
 
 	speedRatio = 3,
 
 	areaRange = 15,
 	accuracyBonus = 0,
 		
-	knockdownChance = 1,
+	knockdownChance = 0,
 	postureDownChance = 0,
-	postureUpChance = 1,
-	dizzyChance = 1,
-	blindChance = 1,
-	stunChance = 1,
-	intimidateChance = 1,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 10,
+	intimidateChance = 10,
 	
-	CbtSpamBlock = "",
-	CbtSpamCounter = "",
-	CbtSpamEvade = "",
-	CbtSpamHit = "",
-	CbtSpamMiss = "",
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
 }
 
 AddRandomPoolAttackTargetSkill(kraytAttack1)
+
+-----------------------------------------------
+
+kraytAttack2 = {
+	attackname = "kraytAttack2",
+	animation = "creature_attack_light",
+	
+	requiredWeaponType = NONE,
+
+	range = 15,
+
+	damageRatio = 95,
+
+	speedRatio = 3,
+
+	areaRange = 15,
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 10,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+}
+
+AddRandomPoolAttackTargetSkill(kraytAttack2)
+
+-----------------------------------------------
+
+kraytAttack3 = {
+	attackname = "kraytAttack3",
+	animation = "creature_attack_light",
+	
+	requiredWeaponType = NONE,
+
+	range = 15,
+
+	damageRatio = 110,
+
+	speedRatio = 3,
+
+	areaRange = 15,
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 10,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+}
+
+AddRandomPoolAttackTargetSkill(kraytAttack3)
+
+-----------------------------------------------
+
+kraytAttack4 = {
+	attackname = "kraytAttack4",
+	animation = "creature_attack_light",
+	
+	requiredWeaponType = NONE,
+
+	range = 15,
+
+	damageRatio = 100,
+
+	speedRatio = 3,
+
+	areaRange = 15,
+	accuracyBonus = 0,
+		
+	knockdownChance = 10,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+}
+
+AddRandomPoolAttackTargetSkill(kraytAttack4)
+
+-----------------------------------------------
+
+kraytAttack5 = {
+	attackname = "kraytAttack5",
+	animation = "creature_attack_light",
+	
+	requiredWeaponType = NONE,
+
+	range = 32,
+
+	damageRatio = 120,
+
+	speedRatio = 3,
+
+	areaRange = 15,
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+}
+
+AddRandomPoolAttackTargetSkill(kraytAttack5)
 
 -----------------------------------------------

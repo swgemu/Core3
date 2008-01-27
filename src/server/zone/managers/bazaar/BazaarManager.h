@@ -81,6 +81,10 @@ public:
 
 	BazaarPlanetManager* getPlanet(long long bazaarid);
 
+	void buyItem(Player* player, long long objectid, int price1, int price2);
+
+	void retrieveItem(Player* player, long long objectid, long long bazaarid);
+
 protected:
 };
 
@@ -103,6 +107,10 @@ public:
 	RegionBazaar* getBazaar(long long bazaarid);
 
 	BazaarPlanetManager* getPlanet(long long bazaarid);
+
+	void buyItem(Player* player, long long objectid, int price1, int price2);
+
+	void retrieveItem(Player* player, long long objectid, long long bazaarid);
 
 protected:
 	string _param3_addSaleItem__Player_long_long_string_int_int_bool_;
