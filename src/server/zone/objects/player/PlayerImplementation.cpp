@@ -586,12 +586,10 @@ void PlayerImplementation::decayInventory() {
 		for (int i = 0; i < inventory->objectsSize(); i++) {
 			TangibleObject* item = ((TangibleObject*) inventory->getObject(i));
 			
-			if (item->isWeapon())
+			if (item->isWeapon() && item->isEquipped())
 				((Weapon*)item)->decayWeapon(5);
-			else if (item->isArmor())
+			else if (item->isArmor() && item->isEquipped())
 				((Armor*)item)->decayArmor(5);
-			else
-				item->decay(5);
 			
 			item->sendTo(_this);
 		}
@@ -1695,13 +1693,7 @@ void PlayerImplementation::changeCloth(uint64 itemid) {
 	
 	TangibleObject* cloth = (TangibleObject*) obj;	
 	
-	if (cloth->isWeapon()) {
-		changeWeapon(itemid);
-		return;
-	}
-	
-	if (cloth->isArmor()) {
-		changeArmor(itemid, false);
+	if (cloth->isWeapon() || cloth->isArmor()) {
 		return;
 	}
 	
@@ -1733,8 +1725,10 @@ void PlayerImplementation::changeWeapon(uint64 itemid) {
 		
 		accuracy = getSkillMod("unarmed_accuracy");
 	} else {
-		if (weaponObject != NULL)
+		if (weaponObject != NULL) {
 			unequipItem(weaponObject);
+			unsetWeaponSkillMods(weaponObject);
+		}
 
 		setWeapon(weapon);
 		equipItem(weapon);

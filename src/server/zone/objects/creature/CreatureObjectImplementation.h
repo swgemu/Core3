@@ -1204,11 +1204,17 @@ public:
 	}
 
 	inline uint32 getStrength() {
-		return strength;
+		if ((int) strength < 1)
+			return 1;
+		else 
+			return strength;
 	}
 
 	inline uint32 getConstitution() {
-		return constitution;
+		if ((int) constitution < 1)
+			return 1;
+		else 
+			return constitution;
 	}
 
 	inline uint32 getAction() {
@@ -1216,11 +1222,17 @@ public:
 	}
 
 	inline uint32 getQuickness() {
-		return quickness;
+		if ((int) quickness < 1)
+			return 1;
+		else 
+			return quickness;
 	}
 
 	inline uint32 getStamina() {
-		return stamina;
+		if ((int) stamina < 1)
+			return 1;
+		else 
+			return stamina;
 	}
 
 	inline uint32 getMind() {
@@ -1228,11 +1240,17 @@ public:
 	}
 
 	inline uint32 getFocus() {
-		return focus;
+		if ((int) focus < 1)
+			return 1;
+		else 
+			return focus;
 	}
 
 	inline uint32 getWillpower() {
-		return willpower;
+		if ((int) willpower < 1)
+			return 1;
+		else 
+			return willpower;
 	}
 
 	inline uint32 getHealthMax() {
@@ -1240,11 +1258,17 @@ public:
 	}
 
 	inline uint32 getStrengthMax() {
-		return strengthMax;
+		if ((int) strengthMax < 1)
+			return 1;
+		else 
+			return strengthMax;
 	}
 
 	inline uint32 getConstitutionMax() {
-		return constitutionMax;
+		if ((int) constitutionMax < 1)
+			return 1;
+		else 
+			return constitutionMax;
 	}
 
 	inline uint32 getActionMax() {
@@ -1252,11 +1276,17 @@ public:
 	}
 
 	inline uint32 getQuicknessMax() {
-		return quicknessMax;
+		if ((int) quicknessMax < 1)
+			return 1;
+		else 
+			return quicknessMax;
 	}
 
 	inline uint32 getStaminaMax() {
-		return staminaMax;
+		if ((int) staminaMax < 1)
+			return 1;
+		else 
+			return staminaMax;
 	}
 
 	inline uint32 getMindMax() {
@@ -1264,11 +1294,17 @@ public:
 	}
 
 	inline uint32 getFocusMax() {
-		return focusMax;
+		if ((int) focusMax < 1)
+			return 1;
+		else 
+			return focusMax;
 	}
 
 	inline uint32 getWillpowerMax() {
-		return willpowerMax;
+		if ((int) willpowerMax < 1)
+			return 1;
+		else 
+			return willpowerMax;
 	}
 	
 	inline uint32 getArmor() {

@@ -564,8 +564,8 @@ void WeaponImplementation::setWeaponStats(int modifier){
 	}
 	
 	if (luck * System::random(100) > 1700) {
-		minDamage = (minDamage * modifier / 100) + (0.5 * luck);
-		maxDamage = (maxDamage * modifier / 100) + (0.6 * luck);
+		minDamage = (minDamage * modifier / 100) + (0.45 * luck);
+		maxDamage = (maxDamage * modifier / 100) + (0.55 * luck);
 	}
 	
 	if (luck * System::random(100) > 1700) {	
@@ -581,11 +581,11 @@ void WeaponImplementation::setWeaponStats(int modifier){
 	if (luck * System::random(100) > 1700)
 		woundsRatio = woundsRatio + (modifier / 15) + (luck / 10);
 	
-	if (playerRoll > 12500 && System::random(2) == 1) {
+	if (playerRoll > 12500 && System::random(3) == 1) {
 		skillMod0Type = System::random(27) + 1;
 		skillMod0Value = luck / (System::random(3) + 9);
 	}
-	if (playerRoll > 15000 && System::random(1) == 1) {
+	if (playerRoll > 15000 && System::random(2) == 1) {
 		skillMod1Type = System::random(27) + 1;
 		skillMod1Value = luck / (System::random(3) + 9);
 	}
@@ -599,33 +599,33 @@ void WeaponImplementation::setWeaponStats(int modifier){
 		case 1:
 			dot1Type = BLEED;
 			dot1Attribute = (System::random(2) * 3) + 1;
-			dot1Strength = (modifier / 10) + luck;
-			dot1Duration = ((luck * 5) + modifier) / 7;
-			dot1Potency = luck/3;
+			dot1Strength = (modifier / 11) + luck;
+			dot1Duration = ((luck * 4) + modifier) / 7;
+			dot1Potency = luck/4;
 			dot1Uses = (modifier + luck) * 11;
 			break;
 		case 2:
 			dot1Type = DISEASE;
 			dot1Attribute = (System::random(2) * 3) + 1;
-			dot1Strength = (modifier / 10) + luck;
-			dot1Duration = ((luck * 7) + modifier) / 7;
-			dot1Potency = luck/3;
+			dot1Strength = (modifier / 11) + luck;
+			dot1Duration = ((luck * 5) + modifier) / 7;
+			dot1Potency = luck/4;
 			dot1Uses = (modifier + luck) * 13;
 			break;	
 		case 3:
 			dot1Type = FIRE;
 			dot1Attribute = (System::random(2) * 3) + 1;
-			dot1Strength = (modifier / 10) + luck;
-			dot1Duration = ((luck * 4) + modifier) / 7;
-			dot1Potency = luck/3;
+			dot1Strength = (modifier / 11) + luck;
+			dot1Duration = ((luck * 3) + modifier) / 7;
+			dot1Potency = luck/4;
 			dot1Uses = (modifier + luck) * 11;
 			break;
 		case 4:
 			dot1Type = POISON;
 			dot1Attribute = (System::random(2) * 3) + 1;
-			dot1Strength = (modifier / 10) + luck;
-			dot1Duration = ((luck * 5) + modifier) / 7;
-			dot1Potency = luck/3;
+			dot1Strength = (modifier / 11) + luck;
+			dot1Duration = ((luck * 4) + modifier) / 7;
+			dot1Potency = luck/4;
 			dot1Uses = (modifier + luck) * 11;
 			break;
 		}

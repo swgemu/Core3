@@ -1568,6 +1568,9 @@ void CreatureObjectImplementation::setMaxHAMBars(uint32 hp, uint32 ap, uint32 mp
 }
 
 void CreatureObjectImplementation::calculateHAMregen() {
+	if ((int) constitution < 0 || (int) stamina < 0 || (int) willpower < 0)
+		return;
+	
 	float newHealth = (float)constitution * 13 / 1200 * 3;
 	float newAction = (float)stamina * 13 / 1200 * 3;
 	float newMind = (float)willpower * 13 / 1200 * 3;
@@ -2840,29 +2843,29 @@ void CreatureObjectImplementation::removeBuffs(bool doUpdateCreature) {
 	delta->updateHealthBar(health);
 	delta->updateMaxHealthBar(healthMax);
 	
-	delta->updateStrengthBar(strength);
-	delta->updateMaxStrengthBar(strengthMax);
+	delta->updateStrengthBar(getStrength());
+	delta->updateMaxStrengthBar(getStrengthMax());
 	
-	delta->updateConstitutionBar(constitution);
-	delta->updateMaxConstitutionBar(constitutionMax);
+	delta->updateConstitutionBar(getConstitution());
+	delta->updateMaxConstitutionBar(getConstitutionMax());
 	
 	delta->updateActionBar(action);
 	delta->updateMaxActionBar(actionMax);
 	
-	delta->updateQuicknessBar(quickness);
-	delta->updateMaxQuicknessBar(quicknessMax);
+	delta->updateQuicknessBar(getQuickness());
+	delta->updateMaxQuicknessBar(getQuicknessMax());
 	
-	delta->updateStaminaBar(stamina);
-	delta->updateMaxStaminaBar(staminaMax);
+	delta->updateStaminaBar(getStamina());
+	delta->updateMaxStaminaBar(getStaminaMax());
 	
 	delta->updateMindBar(mind);
 	delta->updateMaxMindBar(mindMax);
 	
-	delta->updateFocusBar(focus);
-	delta->updateMaxFocusBar(focusMax);
+	delta->updateFocusBar(getFocus());
+	delta->updateMaxFocusBar(getFocusMax());
 	
-	delta->updateWillpowerBar(willpower);
-	delta->updateMaxWillpowerBar(willpowerMax);
+	delta->updateWillpowerBar(getWillpower());
+	delta->updateMaxWillpowerBar(getWillpowerMax());
 	
 	delta->close();
 	
@@ -2887,21 +2890,21 @@ void CreatureObjectImplementation::removeBuff(const string& type, int value, Eve
 	} else if (type == "strength" && strengthBuff) {
 		strengthMax -= value;
 		
-		if (strength > strengthMax)
+		if ((int)strength > (int)strengthMax)
 			strength = strengthMax;
 		
-		delta->updateMaxStrengthBar(strengthMax);
-		delta->updateStrengthBar(strength);
+		delta->updateMaxStrengthBar(getStrengthMax());
+		delta->updateStrengthBar(getStrength());
 		
 		strengthBuff = false;
 	} else if (type == "constitution" && constitutionBuff) {
 		constitutionMax -= value;
 		
-		if(constitution > constitutionMax)
+		if((int)constitution > (int)constitutionMax)
 			constitution = constitutionMax;
 		
-		delta->updateMaxConstitutionBar(constitutionMax);
-		delta->updateConstitutionBar(constitution);
+		delta->updateMaxConstitutionBar(getConstitutionMax());
+		delta->updateConstitutionBar(getConstitution());
 		
 		constitutionBuff = false;
 	} else if (type == "action" && actionBuff) {
@@ -2917,19 +2920,19 @@ void CreatureObjectImplementation::removeBuff(const string& type, int value, Eve
 	} else if (type == "quickness" && quicknessBuff) {
 		quicknessMax -= value;
 		
-		if(quickness > quicknessMax)
+		if((int)quickness > (int)quicknessMax)
 			quickness = quicknessMax;
 		
-		delta->updateMaxQuicknessBar(quicknessMax);
-		delta->updateQuicknessBar(quickness);
+		delta->updateMaxQuicknessBar(getQuicknessMax());
+		delta->updateQuicknessBar(getQuickness());
 		
 		quicknessBuff = false;
 	} else if (type == "stamina" && staminaBuff) {
 		staminaMax -= value;
-		if(stamina > staminaMax)
+		if((int)stamina > (int)staminaMax)
 			stamina = staminaMax;
-		delta->updateMaxStaminaBar(staminaMax);
-		delta->updateStaminaBar(stamina);
+		delta->updateMaxStaminaBar(getStaminaMax());
+		delta->updateStaminaBar(getStamina());
 		staminaBuff = false;
 	} else if (type == "mind" && mindBuff) {
 		mindMax -= value;
@@ -2944,21 +2947,21 @@ void CreatureObjectImplementation::removeBuff(const string& type, int value, Eve
 	} else if (type == "focus" && focusBuff) {
 		focusMax -= value;
 		
-		if(focus > focusMax)
+		if((int)focus > (int)focusMax)
 			focus = focusMax;
 		
-		delta->updateMaxFocusBar(focusMax);
-		delta->updateFocusBar(focus);
+		delta->updateMaxFocusBar(getFocusMax());
+		delta->updateFocusBar(getFocus());
 		
 		focusBuff = false;
 	} else if (type == "willpower" && willpowerBuff) {
 		willpowerMax -= value;
 		
-		if(willpower > willpowerMax)
+		if((int)willpower > (int)willpowerMax)
 			willpower = willpowerMax;
 		
-		delta->updateMaxWillpowerBar(willpowerMax);
-		delta->updateWillpowerBar(willpower);
+		delta->updateMaxWillpowerBar(getWillpowerMax());
+		delta->updateWillpowerBar(getWillpower());
 		
 		willpowerBuff = false;
 	} else

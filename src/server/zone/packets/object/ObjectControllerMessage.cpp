@@ -295,7 +295,7 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player, Message* 
 		break;
 	case 0x18726ca1: // eq, uneq armor
 		target = pack->parseLong();
-		player->changeCloth(target);
+		player->changeArmor(target, false);
 		break;	
 	case (0xBD8D02AF):
 		if (player->isMounted()) {

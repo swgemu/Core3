@@ -514,11 +514,11 @@ void ArmorImplementation::setArmorStats(int modifier) {
 		acid = acid + (modifier / 10) + (luck / 10);
 	}
 	
-	if (playerRoll > 12500 && System::random(2) == 1) {
+	if (playerRoll > 12500 && System::random(3) == 1) {
 		skillMod0Type = System::random(27) + 1;
 		skillMod0Value = luck / (System::random(3) + 9);
 	}
-	if (playerRoll > 15000 && System::random(1) == 1) {
+	if (playerRoll > 15000 && System::random(2) == 1) {
 		skillMod1Type = System::random(27) + 1;
 		skillMod1Value = luck / (System::random(3) + 9);
 	}
