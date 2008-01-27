@@ -116,6 +116,10 @@ public:
 		return boxType == MESSAGEBOX;
 	}
 	
+	inline bool isTransferBox() {
+		return boxType == TRANSFERBOX;
+	}
+	
 	inline void setCancelButton(bool value) {
 		cancelButton = value;
 	}

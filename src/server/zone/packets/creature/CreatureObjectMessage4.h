@@ -77,7 +77,8 @@ public:
 		insertFloat(creo->speed);
 	
 		insertFloat(1.00625f);		
-		insertFloat(0.0125f);		
+	
+		insertFloat(creo->getTerrainNegotiation());  // Terrain Negotiation
 
 		// turn radius
 		insertFloat(1);		

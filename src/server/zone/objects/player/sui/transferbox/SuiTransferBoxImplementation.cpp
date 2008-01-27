@@ -80,6 +80,22 @@ void SuiTransferBoxImplementation::generateHeader(SuiCreatePageMessage* msg) {
 BaseMessage* SuiTransferBoxImplementation::generateMessage() {
 	message = new SuiCreatePageMessage(boxID);
 	generateHeader(message);
+	
+	addOption(lblFrom, "transaction.lblFrom", "Text");
+	addOption(lblTo, "transaction.lblTo", "Text");
+	
+	addOption(lblStartingFrom, "transaction.lblStartingFrom", "Text");
+	addOption(lblStartingTo, "transaction.lblStartingTo", "Text");
+	
+	addOption(lblInputFrom, "transaction.txtInputFrom", "Text");
+	addOption(lblInputTo, "transaction.txtInputTo", "Text");
+	
+	addOption(convertRatioFrom, "transaction", "ConversionRatioFrom");
+	addOption(convertRatioTo, "transaction", "ConversionRatioTo");
+	
+	message->insertLong(0);
+	message->insertInt(0);
+	message->insertLong(0);
 
 	return message;
 }
@@ -87,4 +103,21 @@ BaseMessage* SuiTransferBoxImplementation::generateMessage() {
 void SuiTransferBoxImplementation::addOption(const string& itemText, const string& lblType, const string& itemType) {
 	message->insertOption(3, itemText, lblType, itemType);
 	++options;
+}
+void SuiTransferBoxImplementation::addFrom(const string& from,
+		const string& startingFrom, const string& inputFrom, const string& rFrom) {
+	
+	lblFrom = from;
+	lblStartingFrom = startingFrom;
+	lblInputFrom = inputFrom;
+	convertRatioFrom = rFrom;
+	
+}
+void SuiTransferBoxImplementation::addTo(const string& to,
+		const string& startingTo, const string& inputTo, const string& rTo) {
+	
+	lblTo = to;
+	lblStartingTo = startingTo;
+	lblInputTo = inputTo;
+	convertRatioTo = rTo;
 }

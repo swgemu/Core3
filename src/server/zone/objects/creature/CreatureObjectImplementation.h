@@ -1679,6 +1679,9 @@ public:
 	inline void setBankCredits(int credits) {
 		bankCredits = credits;
 	}
+	inline float getTerrainNegotiation() {
+		return (float(getSkillMod("slope_move"))/float(100));
+	}
 
 	friend class CombatManager;
 	friend class SkillManager;
