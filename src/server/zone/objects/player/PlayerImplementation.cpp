@@ -1693,7 +1693,14 @@ void PlayerImplementation::changeCloth(uint64 itemid) {
 	
 	TangibleObject* cloth = (TangibleObject*) obj;	
 	
-	if (cloth->isWeapon() || cloth->isArmor()) {
+	if (cloth->isWeapon()) {
+		if (cloth->isEquipped())
+			changeWeapon(itemid);
+		return;
+	}	
+	if (cloth->isArmor()) {
+		if (cloth->isEquipped())
+			changeArmor(itemid, false);
 		return;
 	}
 	
@@ -1764,7 +1771,8 @@ void PlayerImplementation::changeArmor(uint64 itemid, bool forced) {
 		if (setArmorEncumbrance(armoritem, forced)) {
 			equipItem((TangibleObject*) obj);
 			setArmorSkillMods(armoritem);
-		}
+		} else
+			sendSystemMessage("You don't have enough pool points to do that!");
 	}
 	
 	BaseMessage* creo6 = new CreatureObjectMessage6(_this);

@@ -285,15 +285,15 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player, Message* 
 		player->setActionCounter(actioncntr);
 		player->changePosture(CreatureObjectImplementation::CROUCHED_POSTURE);
 		break;
- 	case 0x335676c7: // equip, unequip weapon
+ 	case 0x335676c7: // equip, change weapon.
 		target = pack->parseLong();
 		player->changeWeapon(target);
  		break;
-	case 0x82f75977: // equip, unequip clothes
+	case 0x82f75977: // equip, unequip, change clothes.  unequip weapon, unequip armor.
 		target = pack->parseLong();
 		player->changeCloth(target);
 		break;
-	case 0x18726ca1: // eq, uneq armor
+	case 0x18726ca1: // equip, change armor
 		target = pack->parseLong();
 		player->changeArmor(target, false);
 		break;	
