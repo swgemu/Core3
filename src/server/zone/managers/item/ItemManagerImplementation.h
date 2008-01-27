@@ -72,12 +72,13 @@ public:
 	void loadStaticWorldObjects();
 
 	void loadPlayerItems(Player* player);
+	TangibleObject* getPlayerItem(Player* player, uint64 objectid);
 	void loadDefaultPlayerItems(Player* player);
 	void loadDefaultDatapadItems(Player* player);
 	
 	void loadDefaultPlayerDatapadItems(Player* player);
 	
-	void createPlayerObject(Player* player, ResultSet* result);
+	TangibleObject* createPlayerObject(Player* player, ResultSet* result);
 	
 	void unloadPlayerItems(Player* player);
 

@@ -111,6 +111,8 @@ public:
 	
 	void handleBazaarAddItem(Message* pack, bool auction);
 	void handleBazaarScreens(Message* pack);
+	void handleBazaarBuy(Message* pack);
+	void handleRetrieveAuctionItem(Message* pack);
 };
 
 #endif /*ZONEPACKETHANDLER_H_*/

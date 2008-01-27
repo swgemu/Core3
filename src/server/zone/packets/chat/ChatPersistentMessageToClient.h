@@ -45,14 +45,14 @@ which carries forward this exception.
 #ifndef CHATPERSISTENTMESSAGETOCLIENT_H_
 #define CHATPERSISTENTMESSAGETOCLIENT_H_
 
-//Mail
+//Mail defaults status to N (new) and current time
 
 #include "engine/engine.h"
 
 class ChatPersistentMessageToClient : public BaseMessage {
 public:
 	ChatPersistentMessageToClient(const string& sender, uint32 mailid, uint8 type, unicode& subject
-			, unicode& body) : BaseMessage() {
+			, unicode& body, uint32 timestamp = 0, char status = 'N') : BaseMessage() {
 		insertShort(0x02);
 		insertInt(0x08485E17);  // CRC
 
@@ -70,10 +70,15 @@ public:
 		
 		insertUnicode(subject);
 		
-		//unknown crap :(
-		insertInt(0); //sequence? or read/not read flag?
-		insertInt(0x3422A94E);
-		insertByte(0x43);
+		insertInt(0); //sequence?
+		
+		insertByte(status); // status 'N' 'U' or 'R'
+		
+		if (timestamp == 0) {
+			Time* systemTime = new Time();
+			timestamp = systemTime->getMiliTime() / 1000;
+		}
+		insertInt(timestamp);
 		
 		insertInt(0x00);
 	}

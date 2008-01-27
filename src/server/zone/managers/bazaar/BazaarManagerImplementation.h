@@ -71,8 +71,9 @@ class BazaarManagerImplementation : public AuctionController, public BazaarManag
 
 public:
 	static const int MAXPRICE = 20000;
-	static const int MAXSALES = 100;
+	static const int MAXSALES = 20;
 	static const int SALESFEE = 5;
+	static const int CHECKEVERY = 2; // Minutes
 	
 	static const int ARMOR = 0x00000100;
 	static const int BUILDING = 0x00000200;
@@ -102,6 +103,8 @@ public:
 	RegionBazaar* getBazaar(long long bazaarid);
 	void updateItemStatus(uint64 itemid);
 	void checkAuctions();
+	void buyItem(Player* player, long long objectid, int price1, int price2);
+	void retrieveItem(Player* player, uint64 objectid, uint64 bazaarid);
 };
 
 #endif /*BAZAARMANAGERIMPLEMENTATION_H_*/

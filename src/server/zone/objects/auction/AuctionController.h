@@ -80,7 +80,7 @@ public:
 	}
 	
 	void getBazaarData(Player* player, long long objectid, int screen, int extent, unsigned int category, int count, int offset) {
-
+		
 		AuctionQueryHeadersResponseMessage* reply = new AuctionQueryHeadersResponseMessage(screen, count);
 
 		int displaying = 0;
@@ -104,14 +104,14 @@ public:
 		} else if (screen == 3) {
 			
 			for (int i = 0; i < items.size(); i++) {
-				if ((items.get(i)->ownerID == player->getCharacterID()) && !items.get(i)->sold)
+				if ((items.get(i)->ownerID == player->getObjectID()) && !items.get(i)->sold)
 					reply->addItemToList(items.get(i));
 			}
 			
 		} else if (screen == 5) {
 
 			for (int i = 0; i < items.size(); i++) {
-				if ((items.get(i)->ownerID == player->getCharacterID()) && items.get(i)->sold)
+				if (items.get(i)->buyerID == player->getObjectID())
 					reply->addItemToList(items.get(i));
 			}
 			
@@ -123,6 +123,7 @@ public:
 			reply->createMessage(offset);
 		
 		player->sendMessage(reply);
+		
 	}
 };
 

@@ -45,16 +45,26 @@ which carries forward this exception.
 #ifndef BIDAUCTIONRESPONSEMESSAGE_H_
 #define BIDAUCTIONRESPONSEMESSAGE_H_
 
+/*
+ * Status codes
+ * 0  - Suceeded
+ * 1  - Auctioner is invalid 
+ * 2  - Invalid item 
+ * 9  - Not enough credits
+ * 
+ */
+
 #include "engine/engine.h"
+
 
 class BidAuctionResponseMessage : public BaseMessage {
 public:
-    BidAuctionResponseMessage(CreatureObject* creo, uint64 objectid) : BaseMessage() {
+    BidAuctionResponseMessage(uint64 objectid, int status) : BaseMessage() {
 		insertShort(0x03);
 		insertInt(0x8FCBEF4A);  // opcode
 		
 		insertLong(objectid); //ObjectID player is bidding on.
-		insertInt(0); //dunno.
+		insertInt(status);
 	}
 	
 };

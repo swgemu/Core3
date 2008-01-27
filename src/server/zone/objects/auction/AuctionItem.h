@@ -54,7 +54,7 @@ public:
 	uint64 id;
 	int itemType;
 	
-	uint32 ownerID;
+	uint64 ownerID;
 	string ownerName;
 	short ownerPointer;
 	
@@ -71,6 +71,8 @@ public:
 	
 	bool auction;
 	bool sold;
+
+	uint64 buyerID;
 	
 	uint32 expireTime;
 	int remainingTime;

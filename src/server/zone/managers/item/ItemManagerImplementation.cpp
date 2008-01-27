@@ -90,7 +90,29 @@ void ItemManagerImplementation::loadPlayerItems(Player* player) {
 	}
 }
 
-void ItemManagerImplementation::createPlayerObject(Player* player, ResultSet* result) {
+TangibleObject* ItemManagerImplementation::getPlayerItem(Player* player, uint64 objectid) {
+	TangibleObject* tano;
+
+	try {
+		stringstream query;
+		query << "select * from `character_items` where `item_id` = " << objectid;
+	
+		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
+				
+		while (res->next())	{
+			tano = createPlayerObject(player, res);
+		}
+		
+		delete res;
+
+	} catch (DatabaseException& e) {
+		cout << e.getMessage() << "\n";
+	}
+	
+	return tano;
+}
+
+TangibleObject* ItemManagerImplementation::createPlayerObject(Player* player, ResultSet* result) {
 	uint64 objectid = result->getUnsignedLong(0);
 
 	int objecttype = result->getInt(4);
@@ -108,7 +130,7 @@ void ItemManagerImplementation::createPlayerObject(Player* player, ResultSet* re
 	bool equipped = result->getBoolean(6);
 	
 	if (result->getBoolean(7) != 0)	// if NOT deleted
-		return;
+		return NULL;
 	
 	int weapontype;
 	
@@ -290,7 +312,7 @@ void ItemManagerImplementation::createPlayerObject(Player* player, ResultSet* re
 	}
 	
 	if (item == NULL)
-		return;
+		return NULL;
 	
 	item->setPersistent(true);
 	
@@ -307,6 +329,8 @@ void ItemManagerImplementation::createPlayerObject(Player* player, ResultSet* re
 		tano->setEquipped(false);
 		player->changeArmor(tano->getObjectID(), true);
 	}
+	
+	return tano;
 }
 
 void ItemManagerImplementation::loadDefaultPlayerItems(Player* player) {

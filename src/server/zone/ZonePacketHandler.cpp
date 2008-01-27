@@ -157,6 +157,9 @@ void ZonePacketHandler::handleMessage(Message* pack) {
 		case 0x493E3FFA: //  ChatRemoveAvatarFromRoom
 			handleChatRemoveAvatarFromRoom(pack);
 			break;
+		case 0x12B0D449: // Retrieve auction item
+			handleRetrieveAuctionItem(pack);
+			break;
 		}
 		
 		break;
@@ -171,6 +174,7 @@ void ZonePacketHandler::handleMessage(Message* pack) {
 		case 0x91125453: // Bazaar/Vendor bid
 			// Returns objectID, price, price for instant
 			//		   objectID, bid, maximum bid for auction
+			handleBazaarBuy(pack);
 			break;
 		}
 		break;
@@ -900,4 +904,35 @@ void ZonePacketHandler::handleBazaarScreens(Message* pack) {
    		RegionBazaar* bazaar = bazaarManager->getBazaar(bazaarId);
    		bazaar->getBazaarData(player, bazaarId, screen, extent, category, counter, offset);
    	}
+}
+
+void ZonePacketHandler::handleBazaarBuy(Message* pack) {
+	ZoneClientImplementation* client = (ZoneClientImplementation*) pack->getClient();
+
+	Player* player = client->getPlayer();
+	if (player == NULL)
+		return;
+
+	uint64 objectId = pack->parseLong();
+	uint32 price1 = pack->parseInt();
+	uint32 price2 = pack->parseInt();
+	
+   	BazaarManager* bazaarManager = server->getBazaarManager();
+   	bazaarManager->buyItem(player, objectId, price1, price2);
+   	
+}
+
+void ZonePacketHandler::handleRetrieveAuctionItem(Message* pack) {
+	ZoneClientImplementation* client = (ZoneClientImplementation*) pack->getClient();
+
+	Player* player = client->getPlayer();
+	if (player == NULL)
+		return;
+
+	uint64 objectId = pack->parseLong();
+	uint64 bazaarId = pack->parseLong();
+	
+   	BazaarManager* bazaarManager = server->getBazaarManager();
+   	bazaarManager->retrieveItem(player, objectId, bazaarId);
+
 }

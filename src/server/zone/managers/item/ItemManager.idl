@@ -43,6 +43,8 @@ which carries forward this exception.
 */
 
 import "../../objects/tangible/TangibleObject";
+import "../../objects/tangible/Weapons/Weapon";
+import "../../objects/tangible/wearables/Armor";
 
 import "../../objects/player/Player";
 
@@ -50,17 +52,20 @@ interface ItemManager {
 	
 	void loadStaticWorldObjects();
 
+	TangibleObject getPlayerItem(Player player, long objectid);
 	void loadPlayerItems(Player player);
 	void loadDefaultPlayerItems(Player player);
 	
 	void unloadPlayerItems(Player player);
 	
 	void createPlayerItem(Player player, TangibleObject item);
+	void createPlayerWeapon(Player player, Weapon item);
+	void createPlayerArmor(Player player, Armor item);
 
 	void savePlayerItem(Player player, TangibleObject item); 
 
 	void deletePlayerItem(Player player, TangibleObject item);
-
+	
 	// stat methods
 	void showDbStats(Player player);
 	void showDbDeleted(Player player);

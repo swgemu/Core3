@@ -147,7 +147,10 @@ public:
 	    	
 			insertInt(il->price); //item cost.
 	    	
-			insertInt(il->expireTime - time(NULL));
+			Time* expireTime = new Time();
+			uint32 expire = il->expireTime - expireTime->getMiliTime() / 1000;
+
+			insertInt(expire);
 	    	
 	    	if (il->auction)
 	    		insertByte(0);
@@ -156,12 +159,12 @@ public:
 	    	
 	    	insertShort(il->locationPointer);
 	    	
-	    	insertLong(il->ownerID);
+	    	insertLong(il->ownerID); // seller ID
 	    	insertShort(il->ownerPointer);
 
-	    	insertInt(0);
-	    	insertInt(0);
-	    	insertInt(0);
+	    	insertLong(il->buyerID); // buyer ID
+	    	
+	    	insertInt(0); 
 	    	insertInt(0);
 	    	insertShort(0);
 

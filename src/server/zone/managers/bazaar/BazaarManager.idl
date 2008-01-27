@@ -57,4 +57,8 @@ interface BazaarManager {
    	void getBazaarData(Player player, long objectid, int screen, int extent, unsigned int category, int count, int offset);
 	RegionBazaar getBazaar(long bazaarid);
 	BazaarPlanetManager getPlanet(long bazaarid);
+	
+	void buyItem(Player player, long objectid, int price1, int price2);
+	void retrieveItem(Player player, long objectid, long bazaarid);
+	
 }
