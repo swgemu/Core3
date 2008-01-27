@@ -332,7 +332,7 @@ void CreatureImplementation::loadItems() {
 			weaponImpl->setArmorPiercing(WeaponImplementation::LIGHT);
 			break;
 		case 1 :
-			PolearmMeleeWeaponImplementation* lva1Impl = new PolearmMeleeWeaponImplementation(_this, 
+			weaponImpl = new PolearmMeleeWeaponImplementation(_this, 
 					"object/weapon/melee/polearm/shared_polearm_vibro_axe.iff", unicode("a Long Vibro Axe"), "lance_vibro_axe", true);
 			weaponImpl->setMinDamage(150 + level);
 			weaponImpl->setMaxDamage(300 + level);
