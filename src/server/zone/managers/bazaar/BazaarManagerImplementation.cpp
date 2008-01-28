@@ -228,9 +228,10 @@ void BazaarManagerImplementation::addSaleItem(Player* player, long long objectid
 		// Get the item name
 		description = obj->getName().c_str();
 	}
-	
+
+	ItemManager* itemManager = player->getZone()->getZoneServer()->getItemManager();
+
 	if(!obj->isPersistent()) {
-		ItemManager* itemManager = player->getZone()->getZoneServer()->getItemManager();
 		if (obj->isWeapon()) {
 			itemManager->createPlayerWeapon(player, (Weapon *)obj);
 		} else if (obj->isArmor()) {
@@ -239,6 +240,8 @@ void BazaarManagerImplementation::addSaleItem(Player* player, long long objectid
 			itemManager->createPlayerItem(player, obj);
 			itemManager->savePlayerItem(player, obj);
 		}
+	} else {
+		itemManager->savePlayerItem(player, obj); // need to save it in case of changes
 	}
 		
 	Time* expireTime = new Time();
