@@ -94,6 +94,9 @@ CreatureObjectImplementation::CreatureObjectImplementation(uint64 oid) : Creatur
 	creatureSkills.setInsertPlan(SortedVector<Skill*>::NO_DUPLICATE);
 	creatureSkills.setNullValue(NULL);
 	
+	damageMap.setInsertPlan(SortedVector<CreatureObject*>::NO_DUPLICATE);
+	damageMap.setNullValue(NULL);
+	
 	stfName = "species";
 
 	// CREO1 operands
@@ -3004,4 +3007,30 @@ float CreatureObjectImplementation::getArmorResist(int resistType) {
 	default:
 		return 0;
 	}
+}
+
+bool CreatureObjectImplementation::isLootOwner(CreatureObject* creature) {
+	int maxDmg = 0;
+	
+	for (int i=0; i < damageMap.size(); i++) {
+		int damage = damageMap.get(i);
+		
+		if (damage > maxDmg)
+			maxDmg = damage;
+	}
+	
+	if (maxDmg > 0 && damageMap.get(creature) == maxDmg)
+		return true;
+	else
+		return false;
+}
+
+void CreatureObjectImplementation::addDamage(CreatureObject* creature, uint32 damage) {
+	
+	damage += damageMap.get(creature);
+
+	damageMap.drop(creature);
+	
+	damageMap.put(creature, damage);
+	
 }

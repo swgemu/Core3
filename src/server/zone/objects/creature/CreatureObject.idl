@@ -80,6 +80,12 @@ interface CreatureObject implements SceneObject {
 	void showFlyText(const string file, const string aux, unsigned char red, unsigned char green, unsigned char blue);
 	void sendCombatSpam(CreatureObject defender, TangibleObject item, unsigned int damage, const string skill);
 	
+	void addDamage(CreatureObject creature, unsigned int damage);
+	
+	unsigned int getDamage(CreatureObject creature);
+	
+	boolean isLootOwner(CreatureObject creature);
+	
 	unsigned int getMitigation(const string mit);
 	
 	boolean isIncapacitated();

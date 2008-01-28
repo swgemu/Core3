@@ -47,7 +47,7 @@ kraytAttack1 = {
 
 	range = 15,
 
-	damageRatio = 120,
+	damageRatio = 110,
 
 	speedRatio = 3,
 
@@ -59,8 +59,8 @@ kraytAttack1 = {
 	postureUpChance = 0,
 	dizzyChance = 0,
 	blindChance = 0,
-	stunChance = 10,
-	intimidateChance = 10,
+	stunChance = 0,
+	intimidateChance = 0,
 	
 	CbtSpamBlock = "attack_block",
 	CbtSpamCounter = "attack_counter",
@@ -81,7 +81,7 @@ kraytAttack2 = {
 
 	range = 15,
 
-	damageRatio = 95,
+	damageRatio = 120,
 
 	speedRatio = 3,
 
@@ -92,7 +92,7 @@ kraytAttack2 = {
 	postureDownChance = 0,
 	postureUpChance = 0,
 	dizzyChance = 0,
-	blindChance = 10,
+	blindChance = 0,
 	stunChance = 0,
 	intimidateChance = 0,
 	
@@ -115,7 +115,7 @@ kraytAttack3 = {
 
 	range = 15,
 
-	damageRatio = 110,
+	damageRatio = 130,
 
 	speedRatio = 3,
 
@@ -125,7 +125,7 @@ kraytAttack3 = {
 	knockdownChance = 0,
 	postureDownChance = 0,
 	postureUpChance = 0,
-	dizzyChance = 10,
+	dizzyChance = 0,
 	blindChance = 0,
 	stunChance = 0,
 	intimidateChance = 0,
@@ -149,19 +149,19 @@ kraytAttack4 = {
 
 	range = 15,
 
-	damageRatio = 100,
+	damageRatio = 150,
 
 	speedRatio = 3,
 
 	areaRange = 15,
 	accuracyBonus = 0,
 		
-	knockdownChance = 10,
+	knockdownChance = 0,
 	postureDownChance = 0,
 	postureUpChance = 0,
 	dizzyChance = 0,
 	blindChance = 0,
-	stunChance = 0,
+	stunChance = 40,
 	intimidateChance = 0,
 	
 	CbtSpamBlock = "attack_block",
@@ -181,9 +181,9 @@ kraytAttack5 = {
 	
 	requiredWeaponType = NONE,
 
-	range = 32,
+	range = 15,
 
-	damageRatio = 120,
+	damageRatio = 160,
 
 	speedRatio = 3,
 

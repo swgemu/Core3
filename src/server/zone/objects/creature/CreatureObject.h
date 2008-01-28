@@ -103,6 +103,12 @@ public:
 
 	void sendCombatSpam(CreatureObject* defender, TangibleObject* item, unsigned int damage, const string& skill);
 
+	void addDamage(CreatureObject* creature, unsigned int damage);
+
+	unsigned int getDamage(CreatureObject* creature);
+
+	bool isLootOwner(CreatureObject* creature);
+
 	unsigned int getMitigation(const string& mit);
 
 	bool isIncapacitated();
@@ -694,21 +700,21 @@ public:
 protected:
 	string _return_getCharacterApperance;
 
-	string _return_getTerrainName;
-
-	string _return_getSkill;
-
-	string _return_getStfName;
-
-	string _return_getRaceName;
-
 	string _return_getGuildName;
+
+	string _return_getMood;
 
 	string _return_getPerformanceName;
 
+	string _return_getRaceName;
+
+	string _return_getSkill;
+
 	string _return_getSpeciesName;
 
-	string _return_getMood;
+	string _return_getStfName;
+
+	string _return_getTerrainName;
 
 	unicode _return_getCharacterName;
 
@@ -737,6 +743,12 @@ public:
 	void showFlyText(const string& file, const string& aux, unsigned char red, unsigned char green, unsigned char blue);
 
 	void sendCombatSpam(CreatureObject* defender, TangibleObject* item, unsigned int damage, const string& skill);
+
+	void addDamage(CreatureObject* creature, unsigned int damage);
+
+	unsigned int getDamage(CreatureObject* creature);
+
+	bool isLootOwner(CreatureObject* creature);
 
 	unsigned int getMitigation(const string& mit);
 

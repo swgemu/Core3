@@ -67,7 +67,7 @@ juviCanyonKraytDragon = Creature:new {
 	
 	accuracy = 300,
 
-	skills = { "kraytAttack1", "kraytAttack2", "kraytAttack3", "kraytAttack4", "kraytAttack5" }
+	skills = { "kraytAttack1", "kraytAttack2", "kraytAttack3" }
 	-- respawnTimer = 60,
 }
 

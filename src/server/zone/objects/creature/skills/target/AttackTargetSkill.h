@@ -148,16 +148,20 @@ public:
 		Weapon* weapon = attacker->getWeapon();
 		Armor* armor = target->getArmor(part);
 		
-		int reduction;
+		int reduction = 0;
 		
 		if (target->isPlayer())
 			reduction = doArmorResists(armor, weapon, damage);
-		else
+		else if (weapon != NULL)
 			reduction = int(target->getArmorResist(weapon->getDamageType()) * damage / 100);
+		else
+			reduction = int(target->getArmorResist(1) * damage / 100);
 		
 		damage = damage - reduction;
 		
 		target->changeHealthBar((int32) damage, true);
+		
+		target->addDamage(attacker, -damage);
 			
 		if (part < 3) {
 			if (attacker->isPlayer()) {
@@ -217,16 +221,20 @@ public:
 		Weapon* weapon = attacker->getWeapon();
 		Armor* armor = target->getArmor(part);
 		
-		int reduction;
+		int reduction = 0;
 		
 		if (target->isPlayer())
 			reduction = doArmorResists(armor, weapon, damage);
-		else
+		else if (weapon != NULL)
 			reduction = int(target->getArmorResist(weapon->getDamageType()) * damage / 100);
+		else
+			reduction = int(target->getArmorResist(1) * damage / 100);
 		
 		damage = damage - reduction;
 		
 		target->changeActionBar((int32) damage, true);
+		
+		target->addDamage(attacker, -damage);
 		
 		if (part == 7) {  // below is sending flytext for the wrong parts...
 			if (attacker->isPlayer()) {
@@ -281,16 +289,20 @@ public:
 		Weapon* weapon = attacker->getWeapon();
 		Armor* armor = target->getArmor(9);
 		
-		int reduction;
+		int reduction = 0;
 		
 		if (target->isPlayer())
 			reduction = doArmorResists(armor, weapon, damage);
-		else
+		else if (weapon != NULL)
 			reduction = int(target->getArmorResist(weapon->getDamageType()) * damage / 100);
+		else
+			reduction = int(target->getArmorResist(1) * damage / 100);
 		
 		damage = damage - reduction;
 		
 		target->changeMindBar((int32) damage, true);
+		
+		target->addDamage(attacker, -damage);
 		
 		if (attacker->isPlayer()) {
 			ShowFlyText* fly = new ShowFlyText(target, "combat_effects", "hit_head", 0, 0, 0xFF);

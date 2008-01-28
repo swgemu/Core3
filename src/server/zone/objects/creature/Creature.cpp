@@ -848,6 +848,7 @@ CreatureServant::CreatureServant(unsigned long long oid) : CreatureObjectImpleme
 
 CreatureServant::~CreatureServant() {
 }
+
 void CreatureServant::_setStub(ORBObjectStub* stub) {
 	_this = (Creature*) stub;
 	CreatureObjectServant::_setStub(stub);

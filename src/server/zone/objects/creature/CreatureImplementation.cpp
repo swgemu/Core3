@@ -738,6 +738,8 @@ void CreatureImplementation::resetState() {
 	actionWounds = 0;
 	mindWounds = 0;
 	
+	damageMap.removeAll();
+	
 	clearStates();
 	
 	float distance = System::random(64) + 16;

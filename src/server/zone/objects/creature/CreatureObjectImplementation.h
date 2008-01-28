@@ -266,6 +266,8 @@ protected:
 	
 	Vector<CreatureObject*> defenderList;
 	
+	VectorMap<CreatureObject*, uint64> damageMap;
+	
 	// Store buff events so they can be removed on death.
 	Vector<Event*> buffEvents;
 	
@@ -491,6 +493,10 @@ public:
 	bool setNextAttackDelay(int del);
 	
 	void setMeditateState();
+	
+	void addDamage(CreatureObject* creature, uint32 damage);
+
+	bool isLootOwner(CreatureObject* creature);
 
 	virtual bool isAttackable() {
 		return !isIncapacitated() && !isDead();
@@ -567,6 +573,10 @@ public:
 	
 	inline uint32 getNewCreatureSkillsCount(int cnt) {
 		return creatureSkillsCount += cnt;
+	}
+	
+	inline uint32 getDamage(CreatureObject* creature) {
+		return damageMap.get(creature);
 	}
 	
 	uint32 getMitigation(const string& mit);

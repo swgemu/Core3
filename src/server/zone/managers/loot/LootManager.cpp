@@ -23,6 +23,12 @@ void LootManager::lootCorpse(Player* player, Creature* creature) {
 			return;
 		}
 		
+		if (!((CreatureObject*)creature)->isLootOwner(player)) {
+			player->sendSystemMessage("You do not have permission to access this corpse.");
+			creature->unlock();
+			return;
+		}
+		
 		createLoot(creature);
 		
 		int credits = creature->getCashCredits();
