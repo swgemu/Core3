@@ -3027,8 +3027,15 @@ bool CreatureObjectImplementation::isLootOwner(CreatureObject* creature) {
 	
 	if (maxDmg > 0 && damageMap.get(creature) == maxDmg)
 		return true;
-	else
-		return false;
+	
+	GroupObject* group = ((Player*)creature)->getGroupObject();
+
+	if (group != NULL)
+		for (i = 0; i < group->getGroupSize(); i++)
+			if (damageMap.get(group->getGroupMember(i)) == maxDmg)
+				return true;
+
+	return false;
 }
 
 void CreatureObjectImplementation::addDamage(CreatureObject* creature, uint32 damage) {
