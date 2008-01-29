@@ -63,6 +63,8 @@ interface Armor implements Wearable {
 	
 	void sliceArmor(Player player);
 	
+	void repairArmor(Player player);
+	
 	// setters and getters
 	int getRating();
 	

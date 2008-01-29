@@ -187,6 +187,8 @@ public:
 
 	int sliceWeaponDamage();
 	int sliceWeaponSpeed();
+	
+	void repairWeapon(Player* player);
 
 	inline bool isSliced() {
 		return sliced;

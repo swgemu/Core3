@@ -60,6 +60,8 @@ interface Weapon implements TangibleObject {
 	void setWeaponStats(int modifier);
 
 	void sliceWeapon(Player player);
+	
+	void repairWeapon(Player player);
 
 	boolean decreaseDot0Uses();
 	boolean decreaseDot1Uses();

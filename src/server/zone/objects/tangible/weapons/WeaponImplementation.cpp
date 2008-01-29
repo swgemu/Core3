@@ -495,7 +495,7 @@ void WeaponImplementation::generateDotAttributes(AttributeListMessage* alm) {
 }
 
 void WeaponImplementation::decayWeapon(int decayRate) {
-	conditionDamage = conditionDamage + (maxCondition / 100 * decayRate);
+	conditionDamage += (maxCondition * decayRate / 100);
 
 	if (conditionDamage > maxCondition)
 		conditionDamage = maxCondition;
@@ -505,7 +505,7 @@ void WeaponImplementation::decayWeapon(int decayRate) {
 
 		if (ratio > 0.99) {
 			maxCondition = 1;
-			conditionDamage = 0;
+			conditionDamage = 1;
 			maxDamage = 0;
 			minDamage = 0;
 		} else if (ratio > 0.75) {
@@ -517,6 +517,42 @@ void WeaponImplementation::decayWeapon(int decayRate) {
 	}
 	
 	updated = true;
+	
+}
+
+void WeaponImplementation::repairWeapon(Player* player) {
+	int roll = System::random(100);
+	
+	int decayRate = 0;
+	
+	stringstream txt;
+	
+	if (roll < 10) {
+		player->sendSystemMessage("You have completely failed to repair the item. The item falls apart.");
+		decayWeapon(100);
+		
+		updated = true;
+		
+		BaseMessage* weao3 = new WeaponObjectMessage3(_this);
+		player->sendMessage(weao3);
+		
+		return;
+	} else if (roll < 75) {
+		txt << "You have repaired the item, however the items maximum condition has been reduced.";
+		decayRate = 20;
+	} else {
+		txt << "You have completely repaired the item.";				
+	}
+	
+	player->sendSystemMessage(txt.str());
+
+	maxCondition = (maxCondition - (maxCondition / 100 * decayRate));
+	conditionDamage = 0;
+	
+	updated = true;
+	
+	BaseMessage* weao3 = new WeaponObjectMessage3(_this);
+	player->sendMessage(weao3);
 }
 
 void WeaponImplementation::setWeaponStats(int modifier){

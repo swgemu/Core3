@@ -148,6 +148,8 @@ public:
 	
 	int sliceArmorEncumbrance();
 	
+	void repairArmor(Player* player);
+	
 	void setArmorStats(int modifier);
 
 	// setters

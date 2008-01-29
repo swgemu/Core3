@@ -217,11 +217,14 @@ void TangibleObjectImplementation::repairItem(Player* player) {
 	stringstream txt;
 	
 	if (roll < 10) {
-		txt << "You have completely failed to repair the item. The item falls apart.";
-		decayRate = 100;
+		player->sendSystemMessage("You have completely failed to repair the item. The item falls apart.");
+		maxCondition = 1;
+		conditionDamage = 1;
+		updated = true;
+		return;
 	} else if (roll < 75) {
 		txt << "You have repaired the item, however the items maximum condition has been reduced.";
-		decayRate = 20;					
+		decayRate = 20;
 	} else {
 		txt << "You have completely repaired the item.";
 		decayRate = 0;					

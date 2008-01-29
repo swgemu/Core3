@@ -315,7 +315,7 @@ void SuiManager::handleRepairWeapon(uint32 boxID, Player* player, uint32 cancel,
 					Weapon* weapon = (Weapon*) item;
 
 					if (weaponCount == itemindex)
-						((TangibleObject*) weapon)->repairItem(player);
+						weapon->repairWeapon(player);
 
 					weaponCount++;
 				}
@@ -362,7 +362,7 @@ void SuiManager::handleRepairArmor(uint32 boxID, Player* player, uint32 cancel, 
 					Armor* armor = (Armor*) item;
 
 					if (armorCount == itemindex)
-						((TangibleObject*) armor)->repairItem(player);
+						armor->repairArmor(player);
 
 					armorCount++;
 				}

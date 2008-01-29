@@ -81,6 +81,8 @@ public:
 
 	void sliceArmor(Player* player);
 
+	void repairArmor(Player* player);
+
 	int getRating();
 
 	int getCondition();
@@ -183,6 +185,8 @@ public:
 	void setArmorStats(int modifier);
 
 	void sliceArmor(Player* player);
+
+	void repairArmor(Player* player);
 
 	int getRating();
 

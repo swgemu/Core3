@@ -77,6 +77,8 @@ public:
 
 	void sliceWeapon(Player* player);
 
+	void repairWeapon(Player* player);
+
 	bool decreaseDot0Uses();
 
 	bool decreaseDot1Uses();
@@ -197,6 +199,8 @@ public:
 	void setWeaponStats(int modifier);
 
 	void sliceWeapon(Player* player);
+
+	void repairWeapon(Player* player);
 
 	bool decreaseDot0Uses();
 
