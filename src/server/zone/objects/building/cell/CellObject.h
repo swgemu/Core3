@@ -105,7 +105,7 @@ public:
 };
 
 class CellObjectHelper : public ORBClassHelper {
-	static ORBClassHelper* instance;
+	static CellObjectHelper instance;
 
 public:
 	CellObjectHelper();

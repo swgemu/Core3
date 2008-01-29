@@ -105,7 +105,7 @@ public:
 };
 
 class SpawnLocationHelper : public ORBClassHelper {
-	static ORBClassHelper* instance;
+	static SpawnLocationHelper instance;
 
 public:
 	SpawnLocationHelper();

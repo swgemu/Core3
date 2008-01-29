@@ -81,7 +81,7 @@ public:
 };
 
 class PolearmMeleeWeaponHelper : public ORBClassHelper {
-	static ORBClassHelper* instance;
+	static PolearmMeleeWeaponHelper instance;
 
 public:
 	PolearmMeleeWeaponHelper();

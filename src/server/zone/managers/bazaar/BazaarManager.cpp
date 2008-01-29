@@ -280,7 +280,7 @@ void BazaarManagerAdapter::retrieveItem(Player* player, long long objectid, long
  *	BazaarManagerHelper
  */
 
-ORBClassHelper* BazaarManagerHelper::instance = new BazaarManagerHelper();
+BazaarManagerHelper BazaarManagerHelper::instance;
 
 BazaarManagerHelper::BazaarManagerHelper() {
 	className = "BazaarManager";
@@ -289,10 +289,7 @@ BazaarManagerHelper::BazaarManagerHelper() {
 }
 
 ORBClassHelper* BazaarManagerHelper::getInstance() {
-	if (instance == NULL)
-		return instance = new BazaarManagerHelper();
-	else
-		return instance;
+		return &instance;
 }
 
 ORBObject* BazaarManagerHelper::instantiateObject() {

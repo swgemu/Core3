@@ -97,7 +97,7 @@ Packet* OneHandedJediWeaponAdapter::invokeMethod(uint32 methid, ORBMethodInvocat
  *	OneHandedJediWeaponHelper
  */
 
-ORBClassHelper* OneHandedJediWeaponHelper::instance = new OneHandedJediWeaponHelper();
+OneHandedJediWeaponHelper OneHandedJediWeaponHelper::instance;
 
 OneHandedJediWeaponHelper::OneHandedJediWeaponHelper() {
 	className = "OneHandedJediWeapon";
@@ -106,10 +106,7 @@ OneHandedJediWeaponHelper::OneHandedJediWeaponHelper() {
 }
 
 ORBClassHelper* OneHandedJediWeaponHelper::getInstance() {
-	if (instance == NULL)
-		return instance = new OneHandedJediWeaponHelper();
-	else
-		return instance;
+		return &instance;
 }
 
 ORBObject* OneHandedJediWeaponHelper::instantiateObject() {
@@ -144,6 +141,7 @@ OneHandedJediWeaponServant::OneHandedJediWeaponServant(CreatureObject* creature,
 
 OneHandedJediWeaponServant::~OneHandedJediWeaponServant() {
 }
+
 void OneHandedJediWeaponServant::_setStub(ORBObjectStub* stub) {
 	_this = (OneHandedJediWeapon*) stub;
 	JediWeaponServant::_setStub(stub);

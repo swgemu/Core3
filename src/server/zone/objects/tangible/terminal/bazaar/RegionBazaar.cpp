@@ -229,7 +229,7 @@ void RegionBazaarAdapter::getBazaarData(Player* player, long long objectid, int 
  *	RegionBazaarHelper
  */
 
-ORBClassHelper* RegionBazaarHelper::instance = new RegionBazaarHelper();
+RegionBazaarHelper RegionBazaarHelper::instance;
 
 RegionBazaarHelper::RegionBazaarHelper() {
 	className = "RegionBazaar";
@@ -238,10 +238,7 @@ RegionBazaarHelper::RegionBazaarHelper() {
 }
 
 ORBClassHelper* RegionBazaarHelper::getInstance() {
-	if (instance == NULL)
-		return instance = new RegionBazaarHelper();
-	else
-		return instance;
+		return &instance;
 }
 
 ORBObject* RegionBazaarHelper::instantiateObject() {
@@ -272,6 +269,7 @@ RegionBazaarServant::RegionBazaarServant() : SceneObjectImplementation() {
 
 RegionBazaarServant::~RegionBazaarServant() {
 }
+
 void RegionBazaarServant::_setStub(ORBObjectStub* stub) {
 	_this = (RegionBazaar*) stub;
 	SceneObjectServant::_setStub(stub);

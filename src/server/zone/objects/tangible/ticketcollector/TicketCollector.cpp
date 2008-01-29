@@ -140,7 +140,7 @@ void TicketCollectorAdapter::useTicket(Player* player, Ticket* ticket) {
  *	TicketCollectorHelper
  */
 
-ORBClassHelper* TicketCollectorHelper::instance = new TicketCollectorHelper();
+TicketCollectorHelper TicketCollectorHelper::instance;
 
 TicketCollectorHelper::TicketCollectorHelper() {
 	className = "TicketCollector";
@@ -149,10 +149,7 @@ TicketCollectorHelper::TicketCollectorHelper() {
 }
 
 ORBClassHelper* TicketCollectorHelper::getInstance() {
-	if (instance == NULL)
-		return instance = new TicketCollectorHelper();
-	else
-		return instance;
+		return &instance;
 }
 
 ORBObject* TicketCollectorHelper::instantiateObject() {
@@ -183,6 +180,7 @@ TicketCollectorServant::TicketCollectorServant(unsigned long long oid, int tp) :
 
 TicketCollectorServant::~TicketCollectorServant() {
 }
+
 void TicketCollectorServant::_setStub(ORBObjectStub* stub) {
 	_this = (TicketCollector*) stub;
 	TangibleObjectServant::_setStub(stub);

@@ -85,7 +85,7 @@ public:
 };
 
 class HolocronHelper : public ORBClassHelper {
-	static ORBClassHelper* instance;
+	static HolocronHelper instance;
 
 public:
 	HolocronHelper();

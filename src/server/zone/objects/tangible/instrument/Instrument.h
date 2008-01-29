@@ -91,7 +91,7 @@ public:
 };
 
 class InstrumentHelper : public ORBClassHelper {
-	static ORBClassHelper* instance;
+	static InstrumentHelper instance;
 
 public:
 	InstrumentHelper();

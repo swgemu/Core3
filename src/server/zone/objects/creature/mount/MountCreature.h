@@ -135,7 +135,7 @@ public:
 };
 
 class MountCreatureHelper : public ORBClassHelper {
-	static ORBClassHelper* instance;
+	static MountCreatureHelper instance;
 
 public:
 	MountCreatureHelper();

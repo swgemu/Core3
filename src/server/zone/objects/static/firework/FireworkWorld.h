@@ -85,7 +85,7 @@ public:
 };
 
 class FireworkWorldHelper : public ORBClassHelper {
-	static ORBClassHelper* instance;
+	static FireworkWorldHelper instance;
 
 public:
 	FireworkWorldHelper();

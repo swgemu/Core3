@@ -232,7 +232,7 @@ void PlayerMapAdapter::resetIterator() {
  *	PlayerMapHelper
  */
 
-ORBClassHelper* PlayerMapHelper::instance = new PlayerMapHelper();
+PlayerMapHelper PlayerMapHelper::instance;
 
 PlayerMapHelper::PlayerMapHelper() {
 	className = "PlayerMap";
@@ -241,10 +241,7 @@ PlayerMapHelper::PlayerMapHelper() {
 }
 
 ORBClassHelper* PlayerMapHelper::getInstance() {
-	if (instance == NULL)
-		return instance = new PlayerMapHelper();
-	else
-		return instance;
+		return &instance;
 }
 
 ORBObject* PlayerMapHelper::instantiateObject() {
@@ -275,6 +272,7 @@ PlayerMapServant::PlayerMapServant() {
 
 PlayerMapServant::~PlayerMapServant() {
 }
+
 void PlayerMapServant::_setStub(ORBObjectStub* stub) {
 	_this = (PlayerMap*) stub;
 }

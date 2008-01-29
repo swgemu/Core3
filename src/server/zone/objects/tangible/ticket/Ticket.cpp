@@ -197,7 +197,7 @@ string& TicketAdapter::getArrivalPoint() {
  *	TicketHelper
  */
 
-ORBClassHelper* TicketHelper::instance = new TicketHelper();
+TicketHelper TicketHelper::instance;
 
 TicketHelper::TicketHelper() {
 	className = "Ticket";
@@ -206,10 +206,7 @@ TicketHelper::TicketHelper() {
 }
 
 ORBClassHelper* TicketHelper::getInstance() {
-	if (instance == NULL)
-		return instance = new TicketHelper();
-	else
-		return instance;
+		return &instance;
 }
 
 ORBObject* TicketHelper::instantiateObject() {
@@ -240,6 +237,7 @@ TicketServant::TicketServant(unsigned long long oid, int tp) : TangibleObjectImp
 
 TicketServant::~TicketServant() {
 }
+
 void TicketServant::_setStub(ORBObjectStub* stub) {
 	_this = (Ticket*) stub;
 	TangibleObjectServant::_setStub(stub);

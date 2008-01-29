@@ -136,7 +136,7 @@ void JediWeaponAdapter::setForceCost(int fcost) {
  *	JediWeaponHelper
  */
 
-ORBClassHelper* JediWeaponHelper::instance = new JediWeaponHelper();
+JediWeaponHelper JediWeaponHelper::instance;
 
 JediWeaponHelper::JediWeaponHelper() {
 	className = "JediWeapon";
@@ -145,10 +145,7 @@ JediWeaponHelper::JediWeaponHelper() {
 }
 
 ORBClassHelper* JediWeaponHelper::getInstance() {
-	if (instance == NULL)
-		return instance = new JediWeaponHelper();
-	else
-		return instance;
+		return &instance;
 }
 
 ORBObject* JediWeaponHelper::instantiateObject() {
@@ -183,6 +180,7 @@ JediWeaponServant::JediWeaponServant(CreatureObject* creature, const string& tem
 
 JediWeaponServant::~JediWeaponServant() {
 }
+
 void JediWeaponServant::_setStub(ORBObjectStub* stub) {
 	_this = (JediWeapon*) stub;
 	WeaponServant::_setStub(stub);

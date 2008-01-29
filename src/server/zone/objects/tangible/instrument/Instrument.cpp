@@ -136,7 +136,7 @@ int InstrumentAdapter::getInstrumentType() {
  *	InstrumentHelper
  */
 
-ORBClassHelper* InstrumentHelper::instance = new InstrumentHelper();
+InstrumentHelper InstrumentHelper::instance;
 
 InstrumentHelper::InstrumentHelper() {
 	className = "Instrument";
@@ -145,10 +145,7 @@ InstrumentHelper::InstrumentHelper() {
 }
 
 ORBClassHelper* InstrumentHelper::getInstance() {
-	if (instance == NULL)
-		return instance = new InstrumentHelper();
-	else
-		return instance;
+		return &instance;
 }
 
 ORBObject* InstrumentHelper::instantiateObject() {
@@ -179,6 +176,7 @@ InstrumentServant::InstrumentServant(unsigned long long oid, int tp) : TangibleO
 
 InstrumentServant::~InstrumentServant() {
 }
+
 void InstrumentServant::_setStub(ORBObjectStub* stub) {
 	_this = (Instrument*) stub;
 	TangibleObjectServant::_setStub(stub);

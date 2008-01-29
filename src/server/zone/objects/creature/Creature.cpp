@@ -805,7 +805,7 @@ LairObject* CreatureAdapter::getLair() {
  *	CreatureHelper
  */
 
-ORBClassHelper* CreatureHelper::instance = new CreatureHelper();
+CreatureHelper CreatureHelper::instance;
 
 CreatureHelper::CreatureHelper() {
 	className = "Creature";
@@ -814,10 +814,7 @@ CreatureHelper::CreatureHelper() {
 }
 
 ORBClassHelper* CreatureHelper::getInstance() {
-	if (instance == NULL)
-		return instance = new CreatureHelper();
-	else
-		return instance;
+		return &instance;
 }
 
 ORBObject* CreatureHelper::instantiateObject() {

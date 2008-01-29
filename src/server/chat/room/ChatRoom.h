@@ -140,9 +140,9 @@ protected:
 
 	string _return_getName;
 
-	string _return_getServerName;
-
 	string _return_getOwner;
+
+	string _return_getServerName;
 
 	unicode _return_getTitle;
 
@@ -233,7 +233,7 @@ protected:
 };
 
 class ChatRoomHelper : public ORBClassHelper {
-	static ORBClassHelper* instance;
+	static ChatRoomHelper instance;
 
 public:
 	ChatRoomHelper();

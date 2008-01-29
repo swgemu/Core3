@@ -1152,7 +1152,7 @@ int WeaponAdapter::getSkillMod2Value() {
  *	WeaponHelper
  */
 
-ORBClassHelper* WeaponHelper::instance = new WeaponHelper();
+WeaponHelper WeaponHelper::instance;
 
 WeaponHelper::WeaponHelper() {
 	className = "Weapon";
@@ -1161,10 +1161,7 @@ WeaponHelper::WeaponHelper() {
 }
 
 ORBClassHelper* WeaponHelper::getInstance() {
-	if (instance == NULL)
-		return instance = new WeaponHelper();
-	else
-		return instance;
+		return &instance;
 }
 
 ORBObject* WeaponHelper::instantiateObject() {
@@ -1199,6 +1196,7 @@ WeaponServant::WeaponServant(unsigned long long oid, const unicode& name, const 
 
 WeaponServant::~WeaponServant() {
 }
+
 void WeaponServant::_setStub(ORBObjectStub* stub) {
 	_this = (Weapon*) stub;
 	TangibleObjectServant::_setStub(stub);

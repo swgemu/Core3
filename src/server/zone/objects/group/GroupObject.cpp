@@ -412,7 +412,7 @@ unsigned int GroupObjectAdapter::getNewListCount(int cnt) {
  *	GroupObjectHelper
  */
 
-ORBClassHelper* GroupObjectHelper::instance = new GroupObjectHelper();
+GroupObjectHelper GroupObjectHelper::instance;
 
 GroupObjectHelper::GroupObjectHelper() {
 	className = "GroupObject";
@@ -421,10 +421,7 @@ GroupObjectHelper::GroupObjectHelper() {
 }
 
 ORBClassHelper* GroupObjectHelper::getInstance() {
-	if (instance == NULL)
-		return instance = new GroupObjectHelper();
-	else
-		return instance;
+		return &instance;
 }
 
 ORBObject* GroupObjectHelper::instantiateObject() {
@@ -455,6 +452,7 @@ GroupObjectServant::GroupObjectServant() : SceneObjectImplementation() {
 
 GroupObjectServant::~GroupObjectServant() {
 }
+
 void GroupObjectServant::_setStub(ORBObjectStub* stub) {
 	_this = (GroupObject*) stub;
 	SceneObjectServant::_setStub(stub);

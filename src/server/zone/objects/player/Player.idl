@@ -112,6 +112,8 @@ interface Player implements CreatureObject {
 	SceneObject getDatapadItem(unsigned long oid);
 	void removeDatapadItem(unsigned long oid);
 	
+	SceneObject getPlayerItem(unsigned long oid);
+	
 	// Combat
 	void clearQueueAction(unsigned int actioncntr, float timer = 0, unsigned int tab1 = 0, unsigned int tab2 = 0);
 	void queueAction(Player player, unsigned long target, unsigned int actionCRC, unsigned int actionCntr);

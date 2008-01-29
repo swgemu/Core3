@@ -237,7 +237,7 @@ string& GuildAdapter::getGuildTag() {
  *	GuildHelper
  */
 
-ORBClassHelper* GuildHelper::instance = new GuildHelper();
+GuildHelper GuildHelper::instance;
 
 GuildHelper::GuildHelper() {
 	className = "Guild";
@@ -246,10 +246,7 @@ GuildHelper::GuildHelper() {
 }
 
 ORBClassHelper* GuildHelper::getInstance() {
-	if (instance == NULL)
-		return instance = new GuildHelper();
-	else
-		return instance;
+		return &instance;
 }
 
 ORBObject* GuildHelper::instantiateObject() {
@@ -280,6 +277,7 @@ GuildServant::GuildServant() {
 
 GuildServant::~GuildServant() {
 }
+
 void GuildServant::_setStub(ORBObjectStub* stub) {
 	_this = (Guild*) stub;
 }

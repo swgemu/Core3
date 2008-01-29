@@ -154,7 +154,7 @@ void ResourceManagerAdapter::stop() {
  *	ResourceManagerHelper
  */
 
-ORBClassHelper* ResourceManagerHelper::instance = new ResourceManagerHelper();
+ResourceManagerHelper ResourceManagerHelper::instance;
 
 ResourceManagerHelper::ResourceManagerHelper() {
 	className = "ResourceManager";
@@ -163,10 +163,7 @@ ResourceManagerHelper::ResourceManagerHelper() {
 }
 
 ORBClassHelper* ResourceManagerHelper::getInstance() {
-	if (instance == NULL)
-		return instance = new ResourceManagerHelper();
-	else
-		return instance;
+		return &instance;
 }
 
 ORBObject* ResourceManagerHelper::instantiateObject() {
@@ -197,6 +194,7 @@ ResourceManagerServant::ResourceManagerServant() {
 
 ResourceManagerServant::~ResourceManagerServant() {
 }
+
 void ResourceManagerServant::_setStub(ORBObjectStub* stub) {
 	_this = (ResourceManager*) stub;
 }

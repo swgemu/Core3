@@ -111,7 +111,7 @@ public:
 };
 
 class GuildHelper : public ORBClassHelper {
-	static ORBClassHelper* instance;
+	static GuildHelper instance;
 
 public:
 	GuildHelper();

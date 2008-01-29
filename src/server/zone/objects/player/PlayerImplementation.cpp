@@ -2284,6 +2284,21 @@ void PlayerImplementation::removeDatapadItem(uint64 oid) {
 	datapad->removeObject(oid);
 }
 
+SceneObject* PlayerImplementation::getPlayerItem(uint64 oid) {
+	SceneObject* object = NULL;
+	
+	object = getInventoryItem(oid);
+
+	if (object == NULL) {
+		object = getDatapadItem(oid);
+
+		if (object == NULL)
+			object = getWaypoint(oid);
+	}
+
+	return object;
+}
+
 bool PlayerImplementation::setGuild(uint32 gid) {
 	PlayerManager* playerManager = zone->getZoneServer()->getPlayerManager();
 	GuildManager* guildManager = playerManager->getGuildManager();

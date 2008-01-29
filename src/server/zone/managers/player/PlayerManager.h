@@ -159,7 +159,7 @@ protected:
 };
 
 class PlayerManagerHelper : public ORBClassHelper {
-	static ORBClassHelper* instance;
+	static PlayerManagerHelper instance;
 
 public:
 	PlayerManagerHelper();

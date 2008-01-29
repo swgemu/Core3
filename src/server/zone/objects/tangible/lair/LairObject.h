@@ -79,7 +79,7 @@ public:
 };
 
 class LairObjectHelper : public ORBClassHelper {
-	static ORBClassHelper* instance;
+	static LairObjectHelper instance;
 
 public:
 	LairObjectHelper();

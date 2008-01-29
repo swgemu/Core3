@@ -127,7 +127,7 @@ public:
 };
 
 class ZoneClientHelper : public ORBClassHelper {
-	static ORBClassHelper* instance;
+	static ZoneClientHelper instance;
 
 public:
 	ZoneClientHelper();

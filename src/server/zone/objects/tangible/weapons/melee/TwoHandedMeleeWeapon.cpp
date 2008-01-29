@@ -97,7 +97,7 @@ Packet* TwoHandedMeleeWeaponAdapter::invokeMethod(uint32 methid, ORBMethodInvoca
  *	TwoHandedMeleeWeaponHelper
  */
 
-ORBClassHelper* TwoHandedMeleeWeaponHelper::instance = new TwoHandedMeleeWeaponHelper();
+TwoHandedMeleeWeaponHelper TwoHandedMeleeWeaponHelper::instance;
 
 TwoHandedMeleeWeaponHelper::TwoHandedMeleeWeaponHelper() {
 	className = "TwoHandedMeleeWeapon";
@@ -106,10 +106,7 @@ TwoHandedMeleeWeaponHelper::TwoHandedMeleeWeaponHelper() {
 }
 
 ORBClassHelper* TwoHandedMeleeWeaponHelper::getInstance() {
-	if (instance == NULL)
-		return instance = new TwoHandedMeleeWeaponHelper();
-	else
-		return instance;
+		return &instance;
 }
 
 ORBObject* TwoHandedMeleeWeaponHelper::instantiateObject() {
@@ -144,6 +141,7 @@ TwoHandedMeleeWeaponServant::TwoHandedMeleeWeaponServant(CreatureObject* creatur
 
 TwoHandedMeleeWeaponServant::~TwoHandedMeleeWeaponServant() {
 }
+
 void TwoHandedMeleeWeaponServant::_setStub(ORBObjectStub* stub) {
 	_this = (TwoHandedMeleeWeapon*) stub;
 	MeleeWeaponServant::_setStub(stub);

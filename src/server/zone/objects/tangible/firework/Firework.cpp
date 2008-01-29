@@ -117,7 +117,7 @@ int FireworkAdapter::useObject(Player* player) {
  *	FireworkHelper
  */
 
-ORBClassHelper* FireworkHelper::instance = new FireworkHelper();
+FireworkHelper FireworkHelper::instance;
 
 FireworkHelper::FireworkHelper() {
 	className = "Firework";
@@ -126,10 +126,7 @@ FireworkHelper::FireworkHelper() {
 }
 
 ORBClassHelper* FireworkHelper::getInstance() {
-	if (instance == NULL)
-		return instance = new FireworkHelper();
-	else
-		return instance;
+		return &instance;
 }
 
 ORBObject* FireworkHelper::instantiateObject() {
@@ -160,6 +157,7 @@ FireworkServant::FireworkServant(unsigned long long oid, int tp) : TangibleObjec
 
 FireworkServant::~FireworkServant() {
 }
+
 void FireworkServant::_setStub(ORBObjectStub* stub) {
 	_this = (Firework*) stub;
 	TangibleObjectServant::_setStub(stub);

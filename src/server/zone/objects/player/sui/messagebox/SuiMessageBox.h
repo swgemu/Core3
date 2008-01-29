@@ -87,7 +87,7 @@ public:
 };
 
 class SuiMessageBoxHelper : public ORBClassHelper {
-	static ORBClassHelper* instance;
+	static SuiMessageBoxHelper instance;
 
 public:
 	SuiMessageBoxHelper();

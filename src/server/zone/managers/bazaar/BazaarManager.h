@@ -117,7 +117,7 @@ protected:
 };
 
 class BazaarManagerHelper : public ORBClassHelper {
-	static ORBClassHelper* instance;
+	static BazaarManagerHelper instance;
 
 public:
 	BazaarManagerHelper();

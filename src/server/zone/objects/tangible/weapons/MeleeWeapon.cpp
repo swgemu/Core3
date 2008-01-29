@@ -97,7 +97,7 @@ Packet* MeleeWeaponAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* inv
  *	MeleeWeaponHelper
  */
 
-ORBClassHelper* MeleeWeaponHelper::instance = new MeleeWeaponHelper();
+MeleeWeaponHelper MeleeWeaponHelper::instance;
 
 MeleeWeaponHelper::MeleeWeaponHelper() {
 	className = "MeleeWeapon";
@@ -106,10 +106,7 @@ MeleeWeaponHelper::MeleeWeaponHelper() {
 }
 
 ORBClassHelper* MeleeWeaponHelper::getInstance() {
-	if (instance == NULL)
-		return instance = new MeleeWeaponHelper();
-	else
-		return instance;
+		return &instance;
 }
 
 ORBObject* MeleeWeaponHelper::instantiateObject() {
@@ -144,6 +141,7 @@ MeleeWeaponServant::MeleeWeaponServant(CreatureObject* creature, const string& t
 
 MeleeWeaponServant::~MeleeWeaponServant() {
 }
+
 void MeleeWeaponServant::_setStub(ORBObjectStub* stub) {
 	_this = (MeleeWeapon*) stub;
 	WeaponServant::_setStub(stub);

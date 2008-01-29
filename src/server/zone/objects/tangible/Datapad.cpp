@@ -97,7 +97,7 @@ Packet* DatapadAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* inv) {
  *	DatapadHelper
  */
 
-ORBClassHelper* DatapadHelper::instance = new DatapadHelper();
+DatapadHelper DatapadHelper::instance;
 
 DatapadHelper::DatapadHelper() {
 	className = "Datapad";
@@ -106,10 +106,7 @@ DatapadHelper::DatapadHelper() {
 }
 
 ORBClassHelper* DatapadHelper::getInstance() {
-	if (instance == NULL)
-		return instance = new DatapadHelper();
-	else
-		return instance;
+		return &instance;
 }
 
 ORBObject* DatapadHelper::instantiateObject() {
@@ -140,6 +137,7 @@ DatapadServant::DatapadServant(unsigned long long oid) : ContainerImplementation
 
 DatapadServant::~DatapadServant() {
 }
+
 void DatapadServant::_setStub(ORBObjectStub* stub) {
 	_this = (Datapad*) stub;
 	ContainerServant::_setStub(stub);

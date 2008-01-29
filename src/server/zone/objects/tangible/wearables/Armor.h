@@ -269,7 +269,7 @@ public:
 };
 
 class ArmorHelper : public ORBClassHelper {
-	static ORBClassHelper* instance;
+	static ArmorHelper instance;
 
 public:
 	ArmorHelper();

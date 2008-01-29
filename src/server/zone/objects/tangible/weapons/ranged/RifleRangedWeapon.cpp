@@ -97,7 +97,7 @@ Packet* RifleRangedWeaponAdapter::invokeMethod(uint32 methid, ORBMethodInvocatio
  *	RifleRangedWeaponHelper
  */
 
-ORBClassHelper* RifleRangedWeaponHelper::instance = new RifleRangedWeaponHelper();
+RifleRangedWeaponHelper RifleRangedWeaponHelper::instance;
 
 RifleRangedWeaponHelper::RifleRangedWeaponHelper() {
 	className = "RifleRangedWeapon";
@@ -106,10 +106,7 @@ RifleRangedWeaponHelper::RifleRangedWeaponHelper() {
 }
 
 ORBClassHelper* RifleRangedWeaponHelper::getInstance() {
-	if (instance == NULL)
-		return instance = new RifleRangedWeaponHelper();
-	else
-		return instance;
+		return &instance;
 }
 
 ORBObject* RifleRangedWeaponHelper::instantiateObject() {
@@ -144,6 +141,7 @@ RifleRangedWeaponServant::RifleRangedWeaponServant(CreatureObject* creature, con
 
 RifleRangedWeaponServant::~RifleRangedWeaponServant() {
 }
+
 void RifleRangedWeaponServant::_setStub(ORBObjectStub* stub) {
 	_this = (RifleRangedWeapon*) stub;
 	RangedWeaponServant::_setStub(stub);

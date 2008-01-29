@@ -87,7 +87,7 @@ public:
 };
 
 class TravelTerminalHelper : public ORBClassHelper {
-	static ORBClassHelper* instance;
+	static TravelTerminalHelper instance;
 
 public:
 	TravelTerminalHelper();

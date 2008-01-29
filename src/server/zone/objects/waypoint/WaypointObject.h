@@ -118,7 +118,7 @@ protected:
 };
 
 class WaypointObjectHelper : public ORBClassHelper {
-	static ORBClassHelper* instance;
+	static WaypointObjectHelper instance;
 
 public:
 	WaypointObjectHelper();

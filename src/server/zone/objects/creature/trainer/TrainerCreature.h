@@ -97,7 +97,7 @@ public:
 };
 
 class TrainerCreatureHelper : public ORBClassHelper {
-	static ORBClassHelper* instance;
+	static TrainerCreatureHelper instance;
 
 public:
 	TrainerCreatureHelper();

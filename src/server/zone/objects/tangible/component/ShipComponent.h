@@ -155,7 +155,7 @@ public:
 };
 
 class ShipComponentHelper : public ORBClassHelper {
-	static ORBClassHelper* instance;
+	static ShipComponentHelper instance;
 
 public:
 	ShipComponentHelper();

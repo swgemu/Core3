@@ -111,7 +111,7 @@ protected:
 };
 
 class RegionBazaarHelper : public ORBClassHelper {
-	static ORBClassHelper* instance;
+	static RegionBazaarHelper instance;
 
 public:
 	RegionBazaarHelper();

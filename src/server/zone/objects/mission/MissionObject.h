@@ -79,7 +79,7 @@ public:
 };
 
 class MissionObjectHelper : public ORBClassHelper {
-	static ORBClassHelper* instance;
+	static MissionObjectHelper instance;
 
 public:
 	MissionObjectHelper();

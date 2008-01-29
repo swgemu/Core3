@@ -79,7 +79,7 @@ public:
 };
 
 class ManufactureSchematicHelper : public ORBClassHelper {
-	static ORBClassHelper* instance;
+	static ManufactureSchematicHelper instance;
 
 public:
 	ManufactureSchematicHelper();

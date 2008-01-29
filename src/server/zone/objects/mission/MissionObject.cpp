@@ -95,7 +95,7 @@ Packet* MissionObjectAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* i
  *	MissionObjectHelper
  */
 
-ORBClassHelper* MissionObjectHelper::instance = new MissionObjectHelper();
+MissionObjectHelper MissionObjectHelper::instance;
 
 MissionObjectHelper::MissionObjectHelper() {
 	className = "MissionObject";
@@ -104,10 +104,7 @@ MissionObjectHelper::MissionObjectHelper() {
 }
 
 ORBClassHelper* MissionObjectHelper::getInstance() {
-	if (instance == NULL)
-		return instance = new MissionObjectHelper();
-	else
-		return instance;
+		return &instance;
 }
 
 ORBObject* MissionObjectHelper::instantiateObject() {
@@ -138,6 +135,7 @@ MissionObjectServant::MissionObjectServant(unsigned long long oid) : SceneObject
 
 MissionObjectServant::~MissionObjectServant() {
 }
+
 void MissionObjectServant::_setStub(ORBObjectStub* stub) {
 	_this = (MissionObject*) stub;
 	SceneObjectServant::_setStub(stub);

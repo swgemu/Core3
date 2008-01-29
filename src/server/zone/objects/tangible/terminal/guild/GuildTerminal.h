@@ -85,7 +85,7 @@ public:
 };
 
 class GuildTerminalHelper : public ORBClassHelper {
-	static ORBClassHelper* instance;
+	static GuildTerminalHelper instance;
 
 public:
 	GuildTerminalHelper();

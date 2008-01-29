@@ -122,7 +122,7 @@ protected:
 };
 
 class SurveyToolHelper : public ORBClassHelper {
-	static ORBClassHelper* instance;
+	static SurveyToolHelper instance;
 
 public:
 	SurveyToolHelper();

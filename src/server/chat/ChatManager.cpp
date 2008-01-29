@@ -857,7 +857,7 @@ bool ChatManagerAdapter::isMute() {
  *	ChatManagerHelper
  */
 
-ORBClassHelper* ChatManagerHelper::instance = new ChatManagerHelper();
+ChatManagerHelper ChatManagerHelper::instance;
 
 ChatManagerHelper::ChatManagerHelper() {
 	className = "ChatManager";
@@ -866,10 +866,7 @@ ChatManagerHelper::ChatManagerHelper() {
 }
 
 ORBClassHelper* ChatManagerHelper::getInstance() {
-	if (instance == NULL)
-		return instance = new ChatManagerHelper();
-	else
-		return instance;
+		return &instance;
 }
 
 ORBObject* ChatManagerHelper::instantiateObject() {
@@ -900,6 +897,7 @@ ChatManagerServant::ChatManagerServant() {
 
 ChatManagerServant::~ChatManagerServant() {
 }
+
 void ChatManagerServant::_setStub(ORBObjectStub* stub) {
 	_this = (ChatManager*) stub;
 }

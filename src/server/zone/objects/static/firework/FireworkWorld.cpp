@@ -116,7 +116,7 @@ int FireworkWorldAdapter::getFireworkType() {
  *	FireworkWorldHelper
  */
 
-ORBClassHelper* FireworkWorldHelper::instance = new FireworkWorldHelper();
+FireworkWorldHelper FireworkWorldHelper::instance;
 
 FireworkWorldHelper::FireworkWorldHelper() {
 	className = "FireworkWorld";
@@ -125,10 +125,7 @@ FireworkWorldHelper::FireworkWorldHelper() {
 }
 
 ORBClassHelper* FireworkWorldHelper::getInstance() {
-	if (instance == NULL)
-		return instance = new FireworkWorldHelper();
-	else
-		return instance;
+		return &instance;
 }
 
 ORBObject* FireworkWorldHelper::instantiateObject() {
@@ -159,6 +156,7 @@ FireworkWorldServant::FireworkWorldServant(unsigned long long oid, int tp) : Sta
 
 FireworkWorldServant::~FireworkWorldServant() {
 }
+
 void FireworkWorldServant::_setStub(ORBObjectStub* stub) {
 	_this = (FireworkWorld*) stub;
 	StaticObjectServant::_setStub(stub);

@@ -103,7 +103,7 @@ protected:
 };
 
 class GuildMapHelper : public ORBClassHelper {
-	static ORBClassHelper* instance;
+	static GuildMapHelper instance;
 
 public:
 	GuildMapHelper();

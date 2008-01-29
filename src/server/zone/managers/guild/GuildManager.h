@@ -126,7 +126,7 @@ protected:
 };
 
 class GuildManagerHelper : public ORBClassHelper {
-	static ORBClassHelper* instance;
+	static GuildManagerHelper instance;
 
 public:
 	GuildManagerHelper();

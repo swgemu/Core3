@@ -829,7 +829,7 @@ int ResourceContainerAdapter::getMaxContents() {
  *	ResourceContainerHelper
  */
 
-ORBClassHelper* ResourceContainerHelper::instance = new ResourceContainerHelper();
+ResourceContainerHelper ResourceContainerHelper::instance;
 
 ResourceContainerHelper::ResourceContainerHelper() {
 	className = "ResourceContainer";
@@ -838,10 +838,7 @@ ResourceContainerHelper::ResourceContainerHelper() {
 }
 
 ORBClassHelper* ResourceContainerHelper::getInstance() {
-	if (instance == NULL)
-		return instance = new ResourceContainerHelper();
-	else
-		return instance;
+		return &instance;
 }
 
 ORBObject* ResourceContainerHelper::instantiateObject() {
@@ -880,6 +877,7 @@ ResourceContainerServant::ResourceContainerServant(CreatureObject* creature, con
 
 ResourceContainerServant::~ResourceContainerServant() {
 }
+
 void ResourceContainerServant::_setStub(ORBObjectStub* stub) {
 	_this = (ResourceContainer*) stub;
 	TangibleObjectServant::_setStub(stub);

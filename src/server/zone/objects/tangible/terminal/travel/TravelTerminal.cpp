@@ -117,7 +117,7 @@ int TravelTerminalAdapter::useObject(Player* player) {
  *	TravelTerminalHelper
  */
 
-ORBClassHelper* TravelTerminalHelper::instance = new TravelTerminalHelper();
+TravelTerminalHelper TravelTerminalHelper::instance;
 
 TravelTerminalHelper::TravelTerminalHelper() {
 	className = "TravelTerminal";
@@ -126,10 +126,7 @@ TravelTerminalHelper::TravelTerminalHelper() {
 }
 
 ORBClassHelper* TravelTerminalHelper::getInstance() {
-	if (instance == NULL)
-		return instance = new TravelTerminalHelper();
-	else
-		return instance;
+		return &instance;
 }
 
 ORBObject* TravelTerminalHelper::instantiateObject() {
@@ -160,6 +157,7 @@ TravelTerminalServant::TravelTerminalServant(unsigned int objCRC, unsigned long 
 
 TravelTerminalServant::~TravelTerminalServant() {
 }
+
 void TravelTerminalServant::_setStub(ORBObjectStub* stub) {
 	_this = (TravelTerminal*) stub;
 	TerminalServant::_setStub(stub);

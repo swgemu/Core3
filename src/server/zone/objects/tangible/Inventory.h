@@ -81,7 +81,7 @@ public:
 };
 
 class InventoryHelper : public ORBClassHelper {
-	static ORBClassHelper* instance;
+	static InventoryHelper instance;
 
 public:
 	InventoryHelper();

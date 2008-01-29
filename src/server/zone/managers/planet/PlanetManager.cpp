@@ -296,7 +296,7 @@ unsigned long long PlanetManagerAdapter::getLandingTime() {
  *	PlanetManagerHelper
  */
 
-ORBClassHelper* PlanetManagerHelper::instance = new PlanetManagerHelper();
+PlanetManagerHelper PlanetManagerHelper::instance;
 
 PlanetManagerHelper::PlanetManagerHelper() {
 	className = "PlanetManager";
@@ -305,10 +305,7 @@ PlanetManagerHelper::PlanetManagerHelper() {
 }
 
 ORBClassHelper* PlanetManagerHelper::getInstance() {
-	if (instance == NULL)
-		return instance = new PlanetManagerHelper();
-	else
-		return instance;
+		return &instance;
 }
 
 ORBObject* PlanetManagerHelper::instantiateObject() {
@@ -339,6 +336,7 @@ PlanetManagerServant::PlanetManagerServant() {
 
 PlanetManagerServant::~PlanetManagerServant() {
 }
+
 void PlanetManagerServant::_setStub(ORBObjectStub* stub) {
 	_this = (PlanetManager*) stub;
 }

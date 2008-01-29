@@ -88,6 +88,9 @@ void GroupObjectImplementation::sendTo(Player* player, bool doClose) {
 
 	if (doClose)
 		close(client);
+	
+	if (groupChannel != NULL)
+		groupChannel->sendTo(player);	
 }
 
 void GroupObjectImplementation::addPlayer(Player* player) {

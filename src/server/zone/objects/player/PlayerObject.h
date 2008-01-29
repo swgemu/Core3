@@ -204,7 +204,7 @@ protected:
 };
 
 class PlayerObjectHelper : public ORBClassHelper {
-	static ORBClassHelper* instance;
+	static PlayerObjectHelper instance;
 
 public:
 	PlayerObjectHelper();

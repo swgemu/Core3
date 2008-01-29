@@ -109,7 +109,7 @@ protected:
 };
 
 class PlayerMapHelper : public ORBClassHelper {
-	static ORBClassHelper* instance;
+	static PlayerMapHelper instance;
 
 public:
 	PlayerMapHelper();

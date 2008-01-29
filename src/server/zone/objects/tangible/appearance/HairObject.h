@@ -81,7 +81,7 @@ public:
 };
 
 class HairObjectHelper : public ORBClassHelper {
-	static ORBClassHelper* instance;
+	static HairObjectHelper instance;
 
 public:
 	HairObjectHelper();

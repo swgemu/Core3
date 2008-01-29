@@ -81,7 +81,7 @@ public:
 };
 
 class CarbineRangedWeaponHelper : public ORBClassHelper {
-	static ORBClassHelper* instance;
+	static CarbineRangedWeaponHelper instance;
 
 public:
 	CarbineRangedWeaponHelper();

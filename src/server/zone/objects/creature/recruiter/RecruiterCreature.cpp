@@ -160,7 +160,7 @@ void RecruiterCreatureAdapter::selectConversationOption(int option, SceneObject*
  *	RecruiterCreatureHelper
  */
 
-ORBClassHelper* RecruiterCreatureHelper::instance = new RecruiterCreatureHelper();
+RecruiterCreatureHelper RecruiterCreatureHelper::instance;
 
 RecruiterCreatureHelper::RecruiterCreatureHelper() {
 	className = "RecruiterCreature";
@@ -169,10 +169,7 @@ RecruiterCreatureHelper::RecruiterCreatureHelper() {
 }
 
 ORBClassHelper* RecruiterCreatureHelper::getInstance() {
-	if (instance == NULL)
-		return instance = new RecruiterCreatureHelper();
-	else
-		return instance;
+		return &instance;
 }
 
 ORBObject* RecruiterCreatureHelper::instantiateObject() {
@@ -203,6 +200,7 @@ RecruiterCreatureServant::RecruiterCreatureServant(unsigned long long oid) : Cre
 
 RecruiterCreatureServant::~RecruiterCreatureServant() {
 }
+
 void RecruiterCreatureServant::_setStub(ORBObjectStub* stub) {
 	_this = (RecruiterCreature*) stub;
 	CreatureServant::_setStub(stub);

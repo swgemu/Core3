@@ -252,7 +252,7 @@ int UserManagerAdapter::getUserCap() {
  *	UserManagerHelper
  */
 
-ORBClassHelper* UserManagerHelper::instance = new UserManagerHelper();
+UserManagerHelper UserManagerHelper::instance;
 
 UserManagerHelper::UserManagerHelper() {
 	className = "UserManager";
@@ -261,10 +261,7 @@ UserManagerHelper::UserManagerHelper() {
 }
 
 ORBClassHelper* UserManagerHelper::getInstance() {
-	if (instance == NULL)
-		return instance = new UserManagerHelper();
-	else
-		return instance;
+		return &instance;
 }
 
 ORBObject* UserManagerHelper::instantiateObject() {
@@ -295,6 +292,7 @@ UserManagerServant::UserManagerServant() {
 
 UserManagerServant::~UserManagerServant() {
 }
+
 void UserManagerServant::_setStub(ORBObjectStub* stub) {
 	_this = (UserManager*) stub;
 }

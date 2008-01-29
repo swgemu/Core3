@@ -139,7 +139,7 @@ public:
 };
 
 class BuildingObjectHelper : public ORBClassHelper {
-	static ORBClassHelper* instance;
+	static BuildingObjectHelper instance;
 
 public:
 	BuildingObjectHelper();

@@ -192,7 +192,7 @@ protected:
 };
 
 class ZoneServerHelper : public ORBClassHelper {
-	static ORBClassHelper* instance;
+	static ZoneServerHelper instance;
 
 public:
 	ZoneServerHelper();

@@ -117,7 +117,7 @@ int VendorTerminalAdapter::useObject(Player* player) {
  *	VendorTerminalHelper
  */
 
-ORBClassHelper* VendorTerminalHelper::instance = new VendorTerminalHelper();
+VendorTerminalHelper VendorTerminalHelper::instance;
 
 VendorTerminalHelper::VendorTerminalHelper() {
 	className = "VendorTerminal";
@@ -126,10 +126,7 @@ VendorTerminalHelper::VendorTerminalHelper() {
 }
 
 ORBClassHelper* VendorTerminalHelper::getInstance() {
-	if (instance == NULL)
-		return instance = new VendorTerminalHelper();
-	else
-		return instance;
+		return &instance;
 }
 
 ORBObject* VendorTerminalHelper::instantiateObject() {
@@ -160,6 +157,7 @@ VendorTerminalServant::VendorTerminalServant(unsigned int objCRC, unsigned long 
 
 VendorTerminalServant::~VendorTerminalServant() {
 }
+
 void VendorTerminalServant::_setStub(ORBObjectStub* stub) {
 	_this = (VendorTerminal*) stub;
 	TerminalServant::_setStub(stub);

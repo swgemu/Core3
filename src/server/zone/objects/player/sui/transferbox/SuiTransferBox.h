@@ -99,7 +99,7 @@ protected:
 };
 
 class SuiTransferBoxHelper : public ORBClassHelper {
-	static ORBClassHelper* instance;
+	static SuiTransferBoxHelper instance;
 
 public:
 	SuiTransferBoxHelper();

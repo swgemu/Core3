@@ -97,7 +97,7 @@ Packet* MissionBagAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* inv)
  *	MissionBagHelper
  */
 
-ORBClassHelper* MissionBagHelper::instance = new MissionBagHelper();
+MissionBagHelper MissionBagHelper::instance;
 
 MissionBagHelper::MissionBagHelper() {
 	className = "MissionBag";
@@ -106,10 +106,7 @@ MissionBagHelper::MissionBagHelper() {
 }
 
 ORBClassHelper* MissionBagHelper::getInstance() {
-	if (instance == NULL)
-		return instance = new MissionBagHelper();
-	else
-		return instance;
+		return &instance;
 }
 
 ORBObject* MissionBagHelper::instantiateObject() {
@@ -140,6 +137,7 @@ MissionBagServant::MissionBagServant(unsigned long long oid) : ContainerImplemen
 
 MissionBagServant::~MissionBagServant() {
 }
+
 void MissionBagServant::_setStub(ORBObjectStub* stub) {
 	_this = (MissionBag*) stub;
 	ContainerServant::_setStub(stub);

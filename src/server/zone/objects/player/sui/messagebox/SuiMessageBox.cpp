@@ -116,7 +116,7 @@ BaseMessage* SuiMessageBoxAdapter::generateMessage() {
  *	SuiMessageBoxHelper
  */
 
-ORBClassHelper* SuiMessageBoxHelper::instance = new SuiMessageBoxHelper();
+SuiMessageBoxHelper SuiMessageBoxHelper::instance;
 
 SuiMessageBoxHelper::SuiMessageBoxHelper() {
 	className = "SuiMessageBox";
@@ -125,10 +125,7 @@ SuiMessageBoxHelper::SuiMessageBoxHelper() {
 }
 
 ORBClassHelper* SuiMessageBoxHelper::getInstance() {
-	if (instance == NULL)
-		return instance = new SuiMessageBoxHelper();
-	else
-		return instance;
+		return &instance;
 }
 
 ORBObject* SuiMessageBoxHelper::instantiateObject() {
@@ -159,6 +156,7 @@ SuiMessageBoxServant::SuiMessageBoxServant(Player* play, unsigned int typeID, un
 
 SuiMessageBoxServant::~SuiMessageBoxServant() {
 }
+
 void SuiMessageBoxServant::_setStub(ORBObjectStub* stub) {
 	_this = (SuiMessageBox*) stub;
 	SuiBoxServant::_setStub(stub);

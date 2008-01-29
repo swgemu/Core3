@@ -252,7 +252,7 @@ string& WaypointObjectAdapter::getPlanetName() {
  *	WaypointObjectHelper
  */
 
-ORBClassHelper* WaypointObjectHelper::instance = new WaypointObjectHelper();
+WaypointObjectHelper WaypointObjectHelper::instance;
 
 WaypointObjectHelper::WaypointObjectHelper() {
 	className = "WaypointObject";
@@ -261,10 +261,7 @@ WaypointObjectHelper::WaypointObjectHelper() {
 }
 
 ORBClassHelper* WaypointObjectHelper::getInstance() {
-	if (instance == NULL)
-		return instance = new WaypointObjectHelper();
-	else
-		return instance;
+		return &instance;
 }
 
 ORBObject* WaypointObjectHelper::instantiateObject() {
@@ -295,6 +292,7 @@ WaypointObjectServant::WaypointObjectServant(unsigned long long oid) : SceneObje
 
 WaypointObjectServant::~WaypointObjectServant() {
 }
+
 void WaypointObjectServant::_setStub(ORBObjectStub* stub) {
 	_this = (WaypointObject*) stub;
 	SceneObjectServant::_setStub(stub);

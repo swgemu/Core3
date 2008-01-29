@@ -91,7 +91,7 @@ public:
 };
 
 class TerminalHelper : public ORBClassHelper {
-	static ORBClassHelper* instance;
+	static TerminalHelper instance;
 
 public:
 	TerminalHelper();

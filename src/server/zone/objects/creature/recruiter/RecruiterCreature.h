@@ -95,7 +95,7 @@ public:
 };
 
 class RecruiterCreatureHelper : public ORBClassHelper {
-	static ORBClassHelper* instance;
+	static RecruiterCreatureHelper instance;
 
 public:
 	RecruiterCreatureHelper();

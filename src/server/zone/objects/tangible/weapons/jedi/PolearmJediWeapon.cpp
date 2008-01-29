@@ -97,7 +97,7 @@ Packet* PolearmJediWeaponAdapter::invokeMethod(uint32 methid, ORBMethodInvocatio
  *	PolearmJediWeaponHelper
  */
 
-ORBClassHelper* PolearmJediWeaponHelper::instance = new PolearmJediWeaponHelper();
+PolearmJediWeaponHelper PolearmJediWeaponHelper::instance;
 
 PolearmJediWeaponHelper::PolearmJediWeaponHelper() {
 	className = "PolearmJediWeapon";
@@ -106,10 +106,7 @@ PolearmJediWeaponHelper::PolearmJediWeaponHelper() {
 }
 
 ORBClassHelper* PolearmJediWeaponHelper::getInstance() {
-	if (instance == NULL)
-		return instance = new PolearmJediWeaponHelper();
-	else
-		return instance;
+		return &instance;
 }
 
 ORBObject* PolearmJediWeaponHelper::instantiateObject() {
@@ -144,6 +141,7 @@ PolearmJediWeaponServant::PolearmJediWeaponServant(CreatureObject* creature, con
 
 PolearmJediWeaponServant::~PolearmJediWeaponServant() {
 }
+
 void PolearmJediWeaponServant::_setStub(ORBObjectStub* stub) {
 	_this = (PolearmJediWeapon*) stub;
 	JediWeaponServant::_setStub(stub);

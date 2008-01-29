@@ -149,7 +149,7 @@ public:
 };
 
 class GroupObjectHelper : public ORBClassHelper {
-	static ORBClassHelper* instance;
+	static GroupObjectHelper instance;
 
 public:
 	GroupObjectHelper();

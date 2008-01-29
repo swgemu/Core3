@@ -205,7 +205,7 @@ void BazaarPlanetManagerAdapter::getBazaarData(Player* player, long long objecti
  *	BazaarPlanetManagerHelper
  */
 
-ORBClassHelper* BazaarPlanetManagerHelper::instance = new BazaarPlanetManagerHelper();
+BazaarPlanetManagerHelper BazaarPlanetManagerHelper::instance;
 
 BazaarPlanetManagerHelper::BazaarPlanetManagerHelper() {
 	className = "BazaarPlanetManager";
@@ -214,10 +214,7 @@ BazaarPlanetManagerHelper::BazaarPlanetManagerHelper() {
 }
 
 ORBClassHelper* BazaarPlanetManagerHelper::getInstance() {
-	if (instance == NULL)
-		return instance = new BazaarPlanetManagerHelper();
-	else
-		return instance;
+		return &instance;
 }
 
 ORBObject* BazaarPlanetManagerHelper::instantiateObject() {
@@ -248,6 +245,7 @@ BazaarPlanetManagerServant::BazaarPlanetManagerServant() {
 
 BazaarPlanetManagerServant::~BazaarPlanetManagerServant() {
 }
+
 void BazaarPlanetManagerServant::_setStub(ORBObjectStub* stub) {
 	_this = (BazaarPlanetManager*) stub;
 }

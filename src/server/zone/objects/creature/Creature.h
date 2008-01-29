@@ -237,7 +237,7 @@ protected:
 };
 
 class CreatureHelper : public ORBClassHelper {
-	static ORBClassHelper* instance;
+	static CreatureHelper instance;
 
 public:
 	CreatureHelper();

@@ -385,7 +385,7 @@ unsigned long long ItemManagerAdapter::getNextStaticObjectID() {
  *	ItemManagerHelper
  */
 
-ORBClassHelper* ItemManagerHelper::instance = new ItemManagerHelper();
+ItemManagerHelper ItemManagerHelper::instance;
 
 ItemManagerHelper::ItemManagerHelper() {
 	className = "ItemManager";
@@ -394,10 +394,7 @@ ItemManagerHelper::ItemManagerHelper() {
 }
 
 ORBClassHelper* ItemManagerHelper::getInstance() {
-	if (instance == NULL)
-		return instance = new ItemManagerHelper();
-	else
-		return instance;
+		return &instance;
 }
 
 ORBObject* ItemManagerHelper::instantiateObject() {

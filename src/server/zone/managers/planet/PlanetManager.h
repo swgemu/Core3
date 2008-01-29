@@ -127,7 +127,7 @@ protected:
 };
 
 class PlanetManagerHelper : public ORBClassHelper {
-	static ORBClassHelper* instance;
+	static PlanetManagerHelper instance;
 
 public:
 	PlanetManagerHelper();

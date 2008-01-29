@@ -981,7 +981,7 @@ int ArmorAdapter::getSocket3Value() {
  *	ArmorHelper
  */
 
-ORBClassHelper* ArmorHelper::instance = new ArmorHelper();
+ArmorHelper ArmorHelper::instance;
 
 ArmorHelper::ArmorHelper() {
 	className = "Armor";
@@ -990,10 +990,7 @@ ArmorHelper::ArmorHelper() {
 }
 
 ORBClassHelper* ArmorHelper::getInstance() {
-	if (instance == NULL)
-		return instance = new ArmorHelper();
-	else
-		return instance;
+		return &instance;
 }
 
 ORBObject* ArmorHelper::instantiateObject() {
@@ -1028,6 +1025,7 @@ ArmorServant::ArmorServant(CreatureObject* creature, unsigned int tempCRC, const
 
 ArmorServant::~ArmorServant() {
 }
+
 void ArmorServant::_setStub(ORBObjectStub* stub) {
 	_this = (Armor*) stub;
 	WearableServant::_setStub(stub);

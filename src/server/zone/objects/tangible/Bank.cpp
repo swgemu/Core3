@@ -97,7 +97,7 @@ Packet* BankAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* inv) {
  *	BankHelper
  */
 
-ORBClassHelper* BankHelper::instance = new BankHelper();
+BankHelper BankHelper::instance;
 
 BankHelper::BankHelper() {
 	className = "Bank";
@@ -106,10 +106,7 @@ BankHelper::BankHelper() {
 }
 
 ORBClassHelper* BankHelper::getInstance() {
-	if (instance == NULL)
-		return instance = new BankHelper();
-	else
-		return instance;
+		return &instance;
 }
 
 ORBObject* BankHelper::instantiateObject() {
@@ -140,6 +137,7 @@ BankServant::BankServant(unsigned long long oid) : ContainerImplementation(oid) 
 
 BankServant::~BankServant() {
 }
+
 void BankServant::_setStub(ORBObjectStub* stub) {
 	_this = (Bank*) stub;
 	ContainerServant::_setStub(stub);

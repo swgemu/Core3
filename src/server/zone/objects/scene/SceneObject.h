@@ -335,7 +335,7 @@ public:
 };
 
 class SceneObjectHelper : public ORBClassHelper {
-	static ORBClassHelper* instance;
+	static SceneObjectHelper instance;
 
 public:
 	SceneObjectHelper();

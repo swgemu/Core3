@@ -265,6 +265,8 @@ public:
 	void addDatapadItem(SceneObject* item);
 	SceneObject* getDatapadItem(uint64 oid);
 	void removeDatapadItem(uint64 oid);
+	
+	SceneObject* getPlayerItem(uint64 oid);
 
 	// trade mehtods
 	void addTradeItem(TangibleObject* item) {

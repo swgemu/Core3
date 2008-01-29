@@ -245,7 +245,7 @@ protected:
 };
 
 class ChatManagerHelper : public ORBClassHelper {
-	static ORBClassHelper* instance;
+	static ChatManagerHelper instance;
 
 public:
 	ChatManagerHelper();

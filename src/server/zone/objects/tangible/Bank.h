@@ -81,7 +81,7 @@ public:
 };
 
 class BankHelper : public ORBClassHelper {
-	static ORBClassHelper* instance;
+	static BankHelper instance;
 
 public:
 	BankHelper();

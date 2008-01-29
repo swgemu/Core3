@@ -175,7 +175,7 @@ bool SuiInputBoxAdapter::isFilterBox() {
  *	SuiInputBoxHelper
  */
 
-ORBClassHelper* SuiInputBoxHelper::instance = new SuiInputBoxHelper();
+SuiInputBoxHelper SuiInputBoxHelper::instance;
 
 SuiInputBoxHelper::SuiInputBoxHelper() {
 	className = "SuiInputBox";
@@ -184,10 +184,7 @@ SuiInputBoxHelper::SuiInputBoxHelper() {
 }
 
 ORBClassHelper* SuiInputBoxHelper::getInstance() {
-	if (instance == NULL)
-		return instance = new SuiInputBoxHelper();
-	else
-		return instance;
+		return &instance;
 }
 
 ORBObject* SuiInputBoxHelper::instantiateObject() {
@@ -218,6 +215,7 @@ SuiInputBoxServant::SuiInputBoxServant(Player* play, unsigned int typeID, unsign
 
 SuiInputBoxServant::~SuiInputBoxServant() {
 }
+
 void SuiInputBoxServant::_setStub(ORBObjectStub* stub) {
 	_this = (SuiInputBox*) stub;
 	SuiBoxServant::_setStub(stub);

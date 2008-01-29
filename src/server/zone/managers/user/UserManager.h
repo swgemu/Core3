@@ -112,7 +112,7 @@ protected:
 };
 
 class UserManagerHelper : public ORBClassHelper {
-	static ORBClassHelper* instance;
+	static UserManagerHelper instance;
 
 public:
 	UserManagerHelper();

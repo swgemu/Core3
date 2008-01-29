@@ -472,7 +472,7 @@ PlayerMap* PlayerManagerAdapter::getPlayerMap() {
  *	PlayerManagerHelper
  */
 
-ORBClassHelper* PlayerManagerHelper::instance = new PlayerManagerHelper();
+PlayerManagerHelper PlayerManagerHelper::instance;
 
 PlayerManagerHelper::PlayerManagerHelper() {
 	className = "PlayerManager";
@@ -481,10 +481,7 @@ PlayerManagerHelper::PlayerManagerHelper() {
 }
 
 ORBClassHelper* PlayerManagerHelper::getInstance() {
-	if (instance == NULL)
-		return instance = new PlayerManagerHelper();
-	else
-		return instance;
+		return &instance;
 }
 
 ORBObject* PlayerManagerHelper::instantiateObject() {
@@ -515,6 +512,7 @@ PlayerManagerServant::PlayerManagerServant() {
 
 PlayerManagerServant::~PlayerManagerServant() {
 }
+
 void PlayerManagerServant::_setStub(ORBObjectStub* stub) {
 	_this = (PlayerManager*) stub;
 }

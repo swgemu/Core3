@@ -350,7 +350,7 @@ bool MountCreatureAdapter::isInWorld() {
  *	MountCreatureHelper
  */
 
-ORBClassHelper* MountCreatureHelper::instance = new MountCreatureHelper();
+MountCreatureHelper MountCreatureHelper::instance;
 
 MountCreatureHelper::MountCreatureHelper() {
 	className = "MountCreature";
@@ -359,10 +359,7 @@ MountCreatureHelper::MountCreatureHelper() {
 }
 
 ORBClassHelper* MountCreatureHelper::getInstance() {
-	if (instance == NULL)
-		return instance = new MountCreatureHelper();
-	else
-		return instance;
+		return &instance;
 }
 
 ORBObject* MountCreatureHelper::instantiateObject() {
@@ -393,6 +390,7 @@ MountCreatureServant::MountCreatureServant(unsigned long long oid) : CreatureImp
 
 MountCreatureServant::~MountCreatureServant() {
 }
+
 void MountCreatureServant::_setStub(ORBObjectStub* stub) {
 	_this = (MountCreature*) stub;
 	CreatureServant::_setStub(stub);

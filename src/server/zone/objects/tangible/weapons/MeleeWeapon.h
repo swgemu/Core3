@@ -81,7 +81,7 @@ public:
 };
 
 class MeleeWeaponHelper : public ORBClassHelper {
-	static ORBClassHelper* instance;
+	static MeleeWeaponHelper instance;
 
 public:
 	MeleeWeaponHelper();

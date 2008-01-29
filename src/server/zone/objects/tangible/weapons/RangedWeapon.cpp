@@ -136,7 +136,7 @@ void RangedWeaponAdapter::setRange(int rng) {
  *	RangedWeaponHelper
  */
 
-ORBClassHelper* RangedWeaponHelper::instance = new RangedWeaponHelper();
+RangedWeaponHelper RangedWeaponHelper::instance;
 
 RangedWeaponHelper::RangedWeaponHelper() {
 	className = "RangedWeapon";
@@ -145,10 +145,7 @@ RangedWeaponHelper::RangedWeaponHelper() {
 }
 
 ORBClassHelper* RangedWeaponHelper::getInstance() {
-	if (instance == NULL)
-		return instance = new RangedWeaponHelper();
-	else
-		return instance;
+		return &instance;
 }
 
 ORBObject* RangedWeaponHelper::instantiateObject() {
@@ -183,6 +180,7 @@ RangedWeaponServant::RangedWeaponServant(CreatureObject* creature, const string&
 
 RangedWeaponServant::~RangedWeaponServant() {
 }
+
 void RangedWeaponServant::_setStub(ORBObjectStub* stub) {
 	_this = (RangedWeapon*) stub;
 	WeaponServant::_setStub(stub);

@@ -247,7 +247,7 @@ protected:
 };
 
 class ShipObjectHelper : public ORBClassHelper {
-	static ORBClassHelper* instance;
+	static ShipObjectHelper instance;
 
 public:
 	ShipObjectHelper();

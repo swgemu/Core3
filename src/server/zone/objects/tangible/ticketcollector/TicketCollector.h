@@ -93,7 +93,7 @@ public:
 };
 
 class TicketCollectorHelper : public ORBClassHelper {
-	static ORBClassHelper* instance;
+	static TicketCollectorHelper instance;
 
 public:
 	TicketCollectorHelper();

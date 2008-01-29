@@ -1300,7 +1300,7 @@ bool SceneObjectAdapter::doKeepObject() {
  *	SceneObjectHelper
  */
 
-ORBClassHelper* SceneObjectHelper::instance = new SceneObjectHelper();
+SceneObjectHelper SceneObjectHelper::instance;
 
 SceneObjectHelper::SceneObjectHelper() {
 	className = "SceneObject";
@@ -1309,10 +1309,7 @@ SceneObjectHelper::SceneObjectHelper() {
 }
 
 ORBClassHelper* SceneObjectHelper::getInstance() {
-	if (instance == NULL)
-		return instance = new SceneObjectHelper();
-	else
-		return instance;
+		return &instance;
 }
 
 ORBObject* SceneObjectHelper::instantiateObject() {
@@ -1343,6 +1340,7 @@ SceneObjectServant::SceneObjectServant() : RWLockableImplementation() {
 
 SceneObjectServant::~SceneObjectServant() {
 }
+
 void SceneObjectServant::_setStub(ORBObjectStub* stub) {
 	_this = (SceneObject*) stub;
 	RWLockableServant::_setStub(stub);

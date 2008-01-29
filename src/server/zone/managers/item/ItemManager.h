@@ -139,7 +139,7 @@ public:
 };
 
 class ItemManagerHelper : public ORBClassHelper {
-	static ORBClassHelper* instance;
+	static ItemManagerHelper instance;
 
 public:
 	ItemManagerHelper();

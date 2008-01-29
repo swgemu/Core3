@@ -236,7 +236,7 @@ int ShuttleCreatureAdapter::getArrivalTime() {
  *	ShuttleCreatureHelper
  */
 
-ORBClassHelper* ShuttleCreatureHelper::instance = new ShuttleCreatureHelper();
+ShuttleCreatureHelper ShuttleCreatureHelper::instance;
 
 ShuttleCreatureHelper::ShuttleCreatureHelper() {
 	className = "ShuttleCreature";
@@ -245,10 +245,7 @@ ShuttleCreatureHelper::ShuttleCreatureHelper() {
 }
 
 ORBClassHelper* ShuttleCreatureHelper::getInstance() {
-	if (instance == NULL)
-		return instance = new ShuttleCreatureHelper();
-	else
-		return instance;
+		return &instance;
 }
 
 ORBObject* ShuttleCreatureHelper::instantiateObject() {
@@ -279,6 +276,7 @@ ShuttleCreatureServant::ShuttleCreatureServant(unsigned long long oid) : Creatur
 
 ShuttleCreatureServant::~ShuttleCreatureServant() {
 }
+
 void ShuttleCreatureServant::_setStub(ORBObjectStub* stub) {
 	_this = (ShuttleCreature*) stub;
 	CreatureServant::_setStub(stub);

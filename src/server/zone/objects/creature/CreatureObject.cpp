@@ -6139,7 +6139,7 @@ bool CreatureObjectAdapter::verifyBankCredits(int creditsToRemove) {
  *	CreatureObjectHelper
  */
 
-ORBClassHelper* CreatureObjectHelper::instance = new CreatureObjectHelper();
+CreatureObjectHelper CreatureObjectHelper::instance;
 
 CreatureObjectHelper::CreatureObjectHelper() {
 	className = "CreatureObject";
@@ -6148,10 +6148,7 @@ CreatureObjectHelper::CreatureObjectHelper() {
 }
 
 ORBClassHelper* CreatureObjectHelper::getInstance() {
-	if (instance == NULL)
-		return instance = new CreatureObjectHelper();
-	else
-		return instance;
+		return &instance;
 }
 
 ORBObject* CreatureObjectHelper::instantiateObject() {

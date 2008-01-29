@@ -97,7 +97,7 @@ Packet* UnarmedMeleeWeaponAdapter::invokeMethod(uint32 methid, ORBMethodInvocati
  *	UnarmedMeleeWeaponHelper
  */
 
-ORBClassHelper* UnarmedMeleeWeaponHelper::instance = new UnarmedMeleeWeaponHelper();
+UnarmedMeleeWeaponHelper UnarmedMeleeWeaponHelper::instance;
 
 UnarmedMeleeWeaponHelper::UnarmedMeleeWeaponHelper() {
 	className = "UnarmedMeleeWeapon";
@@ -106,10 +106,7 @@ UnarmedMeleeWeaponHelper::UnarmedMeleeWeaponHelper() {
 }
 
 ORBClassHelper* UnarmedMeleeWeaponHelper::getInstance() {
-	if (instance == NULL)
-		return instance = new UnarmedMeleeWeaponHelper();
-	else
-		return instance;
+		return &instance;
 }
 
 ORBObject* UnarmedMeleeWeaponHelper::instantiateObject() {
@@ -144,6 +141,7 @@ UnarmedMeleeWeaponServant::UnarmedMeleeWeaponServant(CreatureObject* creature, c
 
 UnarmedMeleeWeaponServant::~UnarmedMeleeWeaponServant() {
 }
+
 void UnarmedMeleeWeaponServant::_setStub(ORBObjectStub* stub) {
 	_this = (UnarmedMeleeWeapon*) stub;
 	MeleeWeaponServant::_setStub(stub);

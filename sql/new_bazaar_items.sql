@@ -1,4 +1,4 @@
-DROP TABLE `bazaar_items`
+DROP TABLE `bazaar_items`;
 
 CREATE TABLE `bazaar_items` (
   `objectid` bigint(20) unsigned NOT NULL,

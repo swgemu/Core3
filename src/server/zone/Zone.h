@@ -189,7 +189,7 @@ public:
 };
 
 class ZoneHelper : public ORBClassHelper {
-	static ORBClassHelper* instance;
+	static ZoneHelper instance;
 
 public:
 	ZoneHelper();

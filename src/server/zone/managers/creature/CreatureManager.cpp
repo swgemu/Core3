@@ -429,7 +429,7 @@ Creature* CreatureManagerAdapter::getCreature(unsigned long long oid) {
  *	CreatureManagerHelper
  */
 
-ORBClassHelper* CreatureManagerHelper::instance = new CreatureManagerHelper();
+CreatureManagerHelper CreatureManagerHelper::instance;
 
 CreatureManagerHelper::CreatureManagerHelper() {
 	className = "CreatureManager";
@@ -438,10 +438,7 @@ CreatureManagerHelper::CreatureManagerHelper() {
 }
 
 ORBClassHelper* CreatureManagerHelper::getInstance() {
-	if (instance == NULL)
-		return instance = new CreatureManagerHelper();
-	else
-		return instance;
+		return &instance;
 }
 
 ORBObject* CreatureManagerHelper::instantiateObject() {
@@ -472,6 +469,7 @@ CreatureManagerServant::CreatureManagerServant() {
 
 CreatureManagerServant::~CreatureManagerServant() {
 }
+
 void CreatureManagerServant::_setStub(ORBObjectStub* stub) {
 	_this = (CreatureManager*) stub;
 }

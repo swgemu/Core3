@@ -296,7 +296,7 @@ unsigned int IntangibleObjectAdapter::getStatus() {
  *	IntangibleObjectHelper
  */
 
-ORBClassHelper* IntangibleObjectHelper::instance = new IntangibleObjectHelper();
+IntangibleObjectHelper IntangibleObjectHelper::instance;
 
 IntangibleObjectHelper::IntangibleObjectHelper() {
 	className = "IntangibleObject";
@@ -305,10 +305,7 @@ IntangibleObjectHelper::IntangibleObjectHelper() {
 }
 
 ORBClassHelper* IntangibleObjectHelper::getInstance() {
-	if (instance == NULL)
-		return instance = new IntangibleObjectHelper();
-	else
-		return instance;
+		return &instance;
 }
 
 ORBObject* IntangibleObjectHelper::instantiateObject() {
@@ -339,6 +336,7 @@ IntangibleObjectServant::IntangibleObjectServant(unsigned long long oid) : Scene
 
 IntangibleObjectServant::~IntangibleObjectServant() {
 }
+
 void IntangibleObjectServant::_setStub(ORBObjectStub* stub) {
 	_this = (IntangibleObject*) stub;
 	SceneObjectServant::_setStub(stub);

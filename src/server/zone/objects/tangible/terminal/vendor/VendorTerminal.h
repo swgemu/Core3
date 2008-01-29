@@ -85,7 +85,7 @@ public:
 };
 
 class VendorTerminalHelper : public ORBClassHelper {
-	static ORBClassHelper* instance;
+	static VendorTerminalHelper instance;
 
 public:
 	VendorTerminalHelper();

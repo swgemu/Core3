@@ -87,7 +87,7 @@ public:
 };
 
 class CreatureGroupHelper : public ORBClassHelper {
-	static ORBClassHelper* instance;
+	static CreatureGroupHelper instance;
 
 public:
 	CreatureGroupHelper();

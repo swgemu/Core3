@@ -132,7 +132,7 @@ protected:
 };
 
 class LocalResourceManagerHelper : public ORBClassHelper {
-	static ORBClassHelper* instance;
+	static LocalResourceManagerHelper instance;
 
 public:
 	LocalResourceManagerHelper();

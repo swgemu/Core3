@@ -157,7 +157,7 @@ void SuiTransferBoxAdapter::addOption(const string& itemText, const string& lblT
  *	SuiTransferBoxHelper
  */
 
-ORBClassHelper* SuiTransferBoxHelper::instance = new SuiTransferBoxHelper();
+SuiTransferBoxHelper SuiTransferBoxHelper::instance;
 
 SuiTransferBoxHelper::SuiTransferBoxHelper() {
 	className = "SuiTransferBox";
@@ -166,10 +166,7 @@ SuiTransferBoxHelper::SuiTransferBoxHelper() {
 }
 
 ORBClassHelper* SuiTransferBoxHelper::getInstance() {
-	if (instance == NULL)
-		return instance = new SuiTransferBoxHelper();
-	else
-		return instance;
+		return &instance;
 }
 
 ORBObject* SuiTransferBoxHelper::instantiateObject() {
@@ -200,6 +197,7 @@ SuiTransferBoxServant::SuiTransferBoxServant(Player* play, unsigned int typeID, 
 
 SuiTransferBoxServant::~SuiTransferBoxServant() {
 }
+
 void SuiTransferBoxServant::_setStub(ORBObjectStub* stub) {
 	_this = (SuiTransferBox*) stub;
 	SuiBoxServant::_setStub(stub);

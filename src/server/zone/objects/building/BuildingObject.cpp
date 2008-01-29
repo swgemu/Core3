@@ -345,7 +345,7 @@ void BuildingObjectAdapter::inRange(QuadTreeEntry* obj, float range) {
  *	BuildingObjectHelper
  */
 
-ORBClassHelper* BuildingObjectHelper::instance = new BuildingObjectHelper();
+BuildingObjectHelper BuildingObjectHelper::instance;
 
 BuildingObjectHelper::BuildingObjectHelper() {
 	className = "BuildingObject";
@@ -354,10 +354,7 @@ BuildingObjectHelper::BuildingObjectHelper() {
 }
 
 ORBClassHelper* BuildingObjectHelper::getInstance() {
-	if (instance == NULL)
-		return instance = new BuildingObjectHelper();
-	else
-		return instance;
+		return &instance;
 }
 
 ORBObject* BuildingObjectHelper::instantiateObject() {
@@ -388,6 +385,7 @@ BuildingObjectServant::BuildingObjectServant(unsigned long long oid) : SceneObje
 
 BuildingObjectServant::~BuildingObjectServant() {
 }
+
 void BuildingObjectServant::_setStub(ORBObjectStub* stub) {
 	_this = (BuildingObject*) stub;
 	SceneObjectServant::_setStub(stub);

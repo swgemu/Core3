@@ -81,7 +81,7 @@ public:
 };
 
 class OneHandedMeleeWeaponHelper : public ORBClassHelper {
-	static ORBClassHelper* instance;
+	static OneHandedMeleeWeaponHelper instance;
 
 public:
 	OneHandedMeleeWeaponHelper();

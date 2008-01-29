@@ -137,7 +137,7 @@ void CreatureGroupAdapter::setTarget(CreatureObject* targ) {
  *	CreatureGroupHelper
  */
 
-ORBClassHelper* CreatureGroupHelper::instance = new CreatureGroupHelper();
+CreatureGroupHelper CreatureGroupHelper::instance;
 
 CreatureGroupHelper::CreatureGroupHelper() {
 	className = "CreatureGroup";
@@ -146,10 +146,7 @@ CreatureGroupHelper::CreatureGroupHelper() {
 }
 
 ORBClassHelper* CreatureGroupHelper::getInstance() {
-	if (instance == NULL)
-		return instance = new CreatureGroupHelper();
-	else
-		return instance;
+		return &instance;
 }
 
 ORBObject* CreatureGroupHelper::instantiateObject() {
@@ -180,6 +177,7 @@ CreatureGroupServant::CreatureGroupServant() {
 
 CreatureGroupServant::~CreatureGroupServant() {
 }
+
 void CreatureGroupServant::_setStub(ORBObjectStub* stub) {
 	_this = (CreatureGroup*) stub;
 }

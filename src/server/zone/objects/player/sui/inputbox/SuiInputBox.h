@@ -101,7 +101,7 @@ protected:
 };
 
 class SuiInputBoxHelper : public ORBClassHelper {
-	static ORBClassHelper* instance;
+	static SuiInputBoxHelper instance;
 
 public:
 	SuiInputBoxHelper();

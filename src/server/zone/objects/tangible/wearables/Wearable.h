@@ -79,7 +79,7 @@ public:
 };
 
 class WearableHelper : public ORBClassHelper {
-	static ORBClassHelper* instance;
+	static WearableHelper instance;
 
 public:
 	WearableHelper();

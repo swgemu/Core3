@@ -101,7 +101,7 @@ public:
 };
 
 class StaticObjectHelper : public ORBClassHelper {
-	static ORBClassHelper* instance;
+	static StaticObjectHelper instance;
 
 public:
 	StaticObjectHelper();

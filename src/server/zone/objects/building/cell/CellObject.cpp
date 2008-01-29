@@ -200,7 +200,7 @@ int CellObjectAdapter::getChildrenSize() {
  *	CellObjectHelper
  */
 
-ORBClassHelper* CellObjectHelper::instance = new CellObjectHelper();
+CellObjectHelper CellObjectHelper::instance;
 
 CellObjectHelper::CellObjectHelper() {
 	className = "CellObject";
@@ -209,10 +209,7 @@ CellObjectHelper::CellObjectHelper() {
 }
 
 ORBClassHelper* CellObjectHelper::getInstance() {
-	if (instance == NULL)
-		return instance = new CellObjectHelper();
-	else
-		return instance;
+		return &instance;
 }
 
 ORBObject* CellObjectHelper::instantiateObject() {
@@ -243,6 +240,7 @@ CellObjectServant::CellObjectServant(unsigned long long oid) : SceneObjectImplem
 
 CellObjectServant::~CellObjectServant() {
 }
+
 void CellObjectServant::_setStub(ORBObjectStub* stub) {
 	_this = (CellObject*) stub;
 	SceneObjectServant::_setStub(stub);

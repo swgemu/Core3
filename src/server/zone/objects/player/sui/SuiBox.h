@@ -124,7 +124,7 @@ protected:
 };
 
 class SuiBoxHelper : public ORBClassHelper {
-	static ORBClassHelper* instance;
+	static SuiBoxHelper instance;
 
 public:
 	SuiBoxHelper();

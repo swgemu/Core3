@@ -1676,7 +1676,7 @@ int ResourceTemplateAdapter::getObjectSubType() {
  *	ResourceTemplateHelper
  */
 
-ORBClassHelper* ResourceTemplateHelper::instance = new ResourceTemplateHelper();
+ResourceTemplateHelper ResourceTemplateHelper::instance;
 
 ResourceTemplateHelper::ResourceTemplateHelper() {
 	className = "ResourceTemplate";
@@ -1685,10 +1685,7 @@ ResourceTemplateHelper::ResourceTemplateHelper() {
 }
 
 ORBClassHelper* ResourceTemplateHelper::getInstance() {
-	if (instance == NULL)
-		return instance = new ResourceTemplateHelper();
-	else
-		return instance;
+		return &instance;
 }
 
 ORBObject* ResourceTemplateHelper::instantiateObject() {
@@ -1719,6 +1716,7 @@ ResourceTemplateServant::ResourceTemplateServant() {
 
 ResourceTemplateServant::~ResourceTemplateServant() {
 }
+
 void ResourceTemplateServant::_setStub(ORBObjectStub* stub) {
 	_this = (ResourceTemplate*) stub;
 }

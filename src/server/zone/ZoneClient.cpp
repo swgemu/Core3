@@ -310,7 +310,7 @@ unsigned int ZoneClientAdapter::getSessionKey() {
  *	ZoneClientHelper
  */
 
-ORBClassHelper* ZoneClientHelper::instance = new ZoneClientHelper();
+ZoneClientHelper ZoneClientHelper::instance;
 
 ZoneClientHelper::ZoneClientHelper() {
 	className = "ZoneClient";
@@ -319,10 +319,7 @@ ZoneClientHelper::ZoneClientHelper() {
 }
 
 ORBClassHelper* ZoneClientHelper::getInstance() {
-	if (instance == NULL)
-		return instance = new ZoneClientHelper();
-	else
-		return instance;
+		return &instance;
 }
 
 ORBObject* ZoneClientHelper::instantiateObject() {
@@ -353,6 +350,7 @@ ZoneClientServant::ZoneClientServant() {
 
 ZoneClientServant::~ZoneClientServant() {
 }
+
 void ZoneClientServant::_setStub(ORBObjectStub* stub) {
 	_this = (ZoneClient*) stub;
 }

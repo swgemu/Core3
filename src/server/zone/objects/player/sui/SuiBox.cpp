@@ -308,7 +308,7 @@ Player* SuiBoxAdapter::getPlayer() {
  *	SuiBoxHelper
  */
 
-ORBClassHelper* SuiBoxHelper::instance = new SuiBoxHelper();
+SuiBoxHelper SuiBoxHelper::instance;
 
 SuiBoxHelper::SuiBoxHelper() {
 	className = "SuiBox";
@@ -317,10 +317,7 @@ SuiBoxHelper::SuiBoxHelper() {
 }
 
 ORBClassHelper* SuiBoxHelper::getInstance() {
-	if (instance == NULL)
-		return instance = new SuiBoxHelper();
-	else
-		return instance;
+		return &instance;
 }
 
 ORBObject* SuiBoxHelper::instantiateObject() {

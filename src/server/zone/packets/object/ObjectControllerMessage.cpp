@@ -510,6 +510,10 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player, Message* 
 		chatManager = player->getZone()->getChatManager();
 		chatManager->handleGroupChat(player, pack);
 		break;
+	case (0x0315D6D9): // g
+		chatManager = player->getZone()->getChatManager();
+		chatManager->handleGroupChat(player, pack);
+		break;
 	case (0xE007BF31): // mount
 		parseMount(player, pack);
 		break;
@@ -740,19 +744,32 @@ void ObjectControllerMessage::parseGetAttributes(Player* player, Message* pack) 
 			continue;
 		
 		Zone* zone = (Zone*) player->getZone();
+		
 		if (zone == NULL)
 			return;
 
 		SceneObject* object = zone->lookupObject(objid); 
 
 		if (object == NULL) {
-			object = player->getInventoryItem(objid);
+			object = player->getPlayerItem(objid);
 
-			if (object == NULL)
-				object = player->getDatapadItem(objid);
+			if (object == NULL) {
+				SceneObject* target = player->getTarget();
+				
+				if (target != NULL && target != player && target->isPlayer()) {
+					Player* targetPlayer = (Player*) target;
+					
+					try {
+						targetPlayer->wlock(player);
 
-			if (object == NULL)
-				object = player->getWaypoint(objid);
+						object = targetPlayer->getPlayerItem(objid);
+
+						targetPlayer->unlock();
+					} catch (...) {
+						targetPlayer->unlock();
+					}
+				}
+			}
 		}
 
 		if (object != NULL)

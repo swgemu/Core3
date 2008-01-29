@@ -81,7 +81,7 @@ public:
 };
 
 class MissionBagHelper : public ORBClassHelper {
-	static ORBClassHelper* instance;
+	static MissionBagHelper instance;
 
 public:
 	MissionBagHelper();

@@ -136,7 +136,7 @@ int TerminalAdapter::getTerminalType() {
  *	TerminalHelper
  */
 
-ORBClassHelper* TerminalHelper::instance = new TerminalHelper();
+TerminalHelper TerminalHelper::instance;
 
 TerminalHelper::TerminalHelper() {
 	className = "Terminal";
@@ -145,10 +145,7 @@ TerminalHelper::TerminalHelper() {
 }
 
 ORBClassHelper* TerminalHelper::getInstance() {
-	if (instance == NULL)
-		return instance = new TerminalHelper();
-	else
-		return instance;
+		return &instance;
 }
 
 ORBObject* TerminalHelper::instantiateObject() {
@@ -179,6 +176,7 @@ TerminalServant::TerminalServant(unsigned long long oid, int tp) : TangibleObjec
 
 TerminalServant::~TerminalServant() {
 }
+
 void TerminalServant::_setStub(ORBObjectStub* stub) {
 	_this = (Terminal*) stub;
 	TangibleObjectServant::_setStub(stub);

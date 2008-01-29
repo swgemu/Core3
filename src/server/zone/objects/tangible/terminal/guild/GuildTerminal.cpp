@@ -117,7 +117,7 @@ int GuildTerminalAdapter::useObject(Player* player) {
  *	GuildTerminalHelper
  */
 
-ORBClassHelper* GuildTerminalHelper::instance = new GuildTerminalHelper();
+GuildTerminalHelper GuildTerminalHelper::instance;
 
 GuildTerminalHelper::GuildTerminalHelper() {
 	className = "GuildTerminal";
@@ -126,10 +126,7 @@ GuildTerminalHelper::GuildTerminalHelper() {
 }
 
 ORBClassHelper* GuildTerminalHelper::getInstance() {
-	if (instance == NULL)
-		return instance = new GuildTerminalHelper();
-	else
-		return instance;
+		return &instance;
 }
 
 ORBObject* GuildTerminalHelper::instantiateObject() {
@@ -160,6 +157,7 @@ GuildTerminalServant::GuildTerminalServant(unsigned int objCRC, unsigned long lo
 
 GuildTerminalServant::~GuildTerminalServant() {
 }
+
 void GuildTerminalServant::_setStub(ORBObjectStub* stub) {
 	_this = (GuildTerminal*) stub;
 	TerminalServant::_setStub(stub);

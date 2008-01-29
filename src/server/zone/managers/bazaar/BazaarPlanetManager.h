@@ -103,7 +103,7 @@ public:
 };
 
 class BazaarPlanetManagerHelper : public ORBClassHelper {
-	static ORBClassHelper* instance;
+	static BazaarPlanetManagerHelper instance;
 
 public:
 	BazaarPlanetManagerHelper();

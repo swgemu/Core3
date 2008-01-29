@@ -214,7 +214,7 @@ int GuildMapAdapter::size() {
  *	GuildMapHelper
  */
 
-ORBClassHelper* GuildMapHelper::instance = new GuildMapHelper();
+GuildMapHelper GuildMapHelper::instance;
 
 GuildMapHelper::GuildMapHelper() {
 	className = "GuildMap";
@@ -223,10 +223,7 @@ GuildMapHelper::GuildMapHelper() {
 }
 
 ORBClassHelper* GuildMapHelper::getInstance() {
-	if (instance == NULL)
-		return instance = new GuildMapHelper();
-	else
-		return instance;
+		return &instance;
 }
 
 ORBObject* GuildMapHelper::instantiateObject() {
@@ -257,6 +254,7 @@ GuildMapServant::GuildMapServant() {
 
 GuildMapServant::~GuildMapServant() {
 }
+
 void GuildMapServant::_setStub(ORBObjectStub* stub) {
 	_this = (GuildMap*) stub;
 }

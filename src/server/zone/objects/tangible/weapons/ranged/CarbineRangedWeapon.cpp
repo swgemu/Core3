@@ -97,7 +97,7 @@ Packet* CarbineRangedWeaponAdapter::invokeMethod(uint32 methid, ORBMethodInvocat
  *	CarbineRangedWeaponHelper
  */
 
-ORBClassHelper* CarbineRangedWeaponHelper::instance = new CarbineRangedWeaponHelper();
+CarbineRangedWeaponHelper CarbineRangedWeaponHelper::instance;
 
 CarbineRangedWeaponHelper::CarbineRangedWeaponHelper() {
 	className = "CarbineRangedWeapon";
@@ -106,10 +106,7 @@ CarbineRangedWeaponHelper::CarbineRangedWeaponHelper() {
 }
 
 ORBClassHelper* CarbineRangedWeaponHelper::getInstance() {
-	if (instance == NULL)
-		return instance = new CarbineRangedWeaponHelper();
-	else
-		return instance;
+		return &instance;
 }
 
 ORBObject* CarbineRangedWeaponHelper::instantiateObject() {
@@ -144,6 +141,7 @@ CarbineRangedWeaponServant::CarbineRangedWeaponServant(CreatureObject* creature,
 
 CarbineRangedWeaponServant::~CarbineRangedWeaponServant() {
 }
+
 void CarbineRangedWeaponServant::_setStub(ORBObjectStub* stub) {
 	_this = (CarbineRangedWeapon*) stub;
 	RangedWeaponServant::_setStub(stub);

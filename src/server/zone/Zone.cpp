@@ -596,7 +596,7 @@ void ZoneAdapter::inRange(QuadTreeEntry* obj, float range) {
  *	ZoneHelper
  */
 
-ORBClassHelper* ZoneHelper::instance = new ZoneHelper();
+ZoneHelper ZoneHelper::instance;
 
 ZoneHelper::ZoneHelper() {
 	className = "Zone";
@@ -605,10 +605,7 @@ ZoneHelper::ZoneHelper() {
 }
 
 ORBClassHelper* ZoneHelper::getInstance() {
-	if (instance == NULL)
-		return instance = new ZoneHelper();
-	else
-		return instance;
+		return &instance;
 }
 
 ORBObject* ZoneHelper::instantiateObject() {
@@ -639,6 +636,7 @@ ZoneServant::ZoneServant() {
 
 ZoneServant::~ZoneServant() {
 }
+
 void ZoneServant::_setStub(ORBObjectStub* stub) {
 	_this = (Zone*) stub;
 }

@@ -117,7 +117,7 @@ int HolocronAdapter::useObject(Player* player) {
  *	HolocronHelper
  */
 
-ORBClassHelper* HolocronHelper::instance = new HolocronHelper();
+HolocronHelper HolocronHelper::instance;
 
 HolocronHelper::HolocronHelper() {
 	className = "Holocron";
@@ -126,10 +126,7 @@ HolocronHelper::HolocronHelper() {
 }
 
 ORBClassHelper* HolocronHelper::getInstance() {
-	if (instance == NULL)
-		return instance = new HolocronHelper();
-	else
-		return instance;
+		return &instance;
 }
 
 ORBObject* HolocronHelper::instantiateObject() {
@@ -160,6 +157,7 @@ HolocronServant::HolocronServant(unsigned long long oid, int tp) : TangibleObjec
 
 HolocronServant::~HolocronServant() {
 }
+
 void HolocronServant::_setStub(ORBObjectStub* stub) {
 	_this = (Holocron*) stub;
 	TangibleObjectServant::_setStub(stub);

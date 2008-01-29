@@ -109,7 +109,7 @@ public:
 };
 
 class ContainerHelper : public ORBClassHelper {
-	static ORBClassHelper* instance;
+	static ContainerHelper instance;
 
 public:
 	ContainerHelper();

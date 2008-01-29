@@ -227,7 +227,7 @@ string& SpawnLocationAdapter::getPool() {
  *	SpawnLocationHelper
  */
 
-ORBClassHelper* SpawnLocationHelper::instance = new SpawnLocationHelper();
+SpawnLocationHelper SpawnLocationHelper::instance;
 
 SpawnLocationHelper::SpawnLocationHelper() {
 	className = "SpawnLocation";
@@ -236,10 +236,7 @@ SpawnLocationHelper::SpawnLocationHelper() {
 }
 
 ORBClassHelper* SpawnLocationHelper::getInstance() {
-	if (instance == NULL)
-		return instance = new SpawnLocationHelper();
-	else
-		return instance;
+		return &instance;
 }
 
 ORBObject* SpawnLocationHelper::instantiateObject() {
@@ -270,6 +267,7 @@ SpawnLocationServant::SpawnLocationServant() {
 
 SpawnLocationServant::~SpawnLocationServant() {
 }
+
 void SpawnLocationServant::_setStub(ORBObjectStub* stub) {
 	_this = (SpawnLocation*) stub;
 }

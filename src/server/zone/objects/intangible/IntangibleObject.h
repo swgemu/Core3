@@ -90,9 +90,9 @@ public:
 	unsigned int getStatus();
 
 protected:
-	string _return_getName;
-
 	string _return_getDetailName;
+
+	string _return_getName;
 
 };
 
@@ -130,7 +130,7 @@ protected:
 };
 
 class IntangibleObjectHelper : public ORBClassHelper {
-	static ORBClassHelper* instance;
+	static IntangibleObjectHelper instance;
 
 public:
 	IntangibleObjectHelper();

@@ -261,7 +261,7 @@ void SurveyToolAdapter::sampleRequest(Player* player, unicode& resourceName) {
  *	SurveyToolHelper
  */
 
-ORBClassHelper* SurveyToolHelper::instance = new SurveyToolHelper();
+SurveyToolHelper SurveyToolHelper::instance;
 
 SurveyToolHelper::SurveyToolHelper() {
 	className = "SurveyTool";
@@ -270,10 +270,7 @@ SurveyToolHelper::SurveyToolHelper() {
 }
 
 ORBClassHelper* SurveyToolHelper::getInstance() {
-	if (instance == NULL)
-		return instance = new SurveyToolHelper();
-	else
-		return instance;
+		return &instance;
 }
 
 ORBObject* SurveyToolHelper::instantiateObject() {
@@ -308,6 +305,7 @@ SurveyToolServant::SurveyToolServant(unsigned long long oid, const unicode& n, c
 
 SurveyToolServant::~SurveyToolServant() {
 }
+
 void SurveyToolServant::_setStub(ORBObjectStub* stub) {
 	_this = (SurveyTool*) stub;
 	TangibleObjectServant::_setStub(stub);

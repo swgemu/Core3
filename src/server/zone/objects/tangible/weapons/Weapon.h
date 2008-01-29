@@ -303,7 +303,7 @@ public:
 };
 
 class WeaponHelper : public ORBClassHelper {
-	static ORBClassHelper* instance;
+	static WeaponHelper instance;
 
 public:
 	WeaponHelper();

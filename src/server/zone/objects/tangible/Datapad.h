@@ -81,7 +81,7 @@ public:
 };
 
 class DatapadHelper : public ORBClassHelper {
-	static ORBClassHelper* instance;
+	static DatapadHelper instance;
 
 public:
 	DatapadHelper();

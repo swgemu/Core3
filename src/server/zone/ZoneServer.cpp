@@ -566,7 +566,7 @@ unsigned long long ZoneServerAdapter::getNextCreatureID(bool doLock) {
  *	ZoneServerHelper
  */
 
-ORBClassHelper* ZoneServerHelper::instance = new ZoneServerHelper();
+ZoneServerHelper ZoneServerHelper::instance;
 
 ZoneServerHelper::ZoneServerHelper() {
 	className = "ZoneServer";
@@ -575,10 +575,7 @@ ZoneServerHelper::ZoneServerHelper() {
 }
 
 ORBClassHelper* ZoneServerHelper::getInstance() {
-	if (instance == NULL)
-		return instance = new ZoneServerHelper();
-	else
-		return instance;
+		return &instance;
 }
 
 ORBObject* ZoneServerHelper::instantiateObject() {
@@ -609,6 +606,7 @@ ZoneServerServant::ZoneServerServant() {
 
 ZoneServerServant::~ZoneServerServant() {
 }
+
 void ZoneServerServant::_setStub(ORBObjectStub* stub) {
 	_this = (ZoneServer*) stub;
 }

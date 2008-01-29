@@ -704,7 +704,7 @@ int TangibleObjectAdapter::getCondition() {
  *	TangibleObjectHelper
  */
 
-ORBClassHelper* TangibleObjectHelper::instance = new TangibleObjectHelper();
+TangibleObjectHelper TangibleObjectHelper::instance;
 
 TangibleObjectHelper::TangibleObjectHelper() {
 	className = "TangibleObject";
@@ -713,10 +713,7 @@ TangibleObjectHelper::TangibleObjectHelper() {
 }
 
 ORBClassHelper* TangibleObjectHelper::getInstance() {
-	if (instance == NULL)
-		return instance = new TangibleObjectHelper();
-	else
-		return instance;
+		return &instance;
 }
 
 ORBObject* TangibleObjectHelper::instantiateObject() {
@@ -751,6 +748,7 @@ TangibleObjectServant::TangibleObjectServant(unsigned long long oid) : SceneObje
 
 TangibleObjectServant::~TangibleObjectServant() {
 }
+
 void TangibleObjectServant::_setStub(ORBObjectStub* stub) {
 	_this = (TangibleObject*) stub;
 	SceneObjectServant::_setStub(stub);

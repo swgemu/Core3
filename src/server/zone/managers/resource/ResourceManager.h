@@ -91,7 +91,7 @@ public:
 };
 
 class ResourceManagerHelper : public ORBClassHelper {
-	static ORBClassHelper* instance;
+	static ResourceManagerHelper instance;
 
 public:
 	ResourceManagerHelper();

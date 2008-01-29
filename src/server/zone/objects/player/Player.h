@@ -137,6 +137,8 @@ public:
 
 	void removeDatapadItem(unsigned long long oid);
 
+	SceneObject* getPlayerItem(unsigned long long oid);
+
 	void clearQueueAction(unsigned int actioncntr, float timer = 0, unsigned int tab1 = 0, unsigned int tab2 = 0);
 
 	void queueAction(Player* player, unsigned long long target, unsigned int actionCRC, unsigned int actionCntr);
@@ -430,19 +432,19 @@ public:
 	bool getSampleErrorMessage();
 
 protected:
-	string _return_getRaceFileName;
-
-	string _return_getFirstName;
+	string _return_getCertification;
 
 	string _return_getFactionRank;
+
+	string _return_getFirstName;
 
 	string _return_getHairData;
 
 	string _return_getHairObject;
 
-	string _return_getCertification;
-
 	string _return_getNextSkillBox;
+
+	string _return_getRaceFileName;
 
 	string _return_getStartingProfession;
 
@@ -497,6 +499,8 @@ public:
 	SceneObject* getDatapadItem(unsigned long long oid);
 
 	void removeDatapadItem(unsigned long long oid);
+
+	SceneObject* getPlayerItem(unsigned long long oid);
 
 	void clearQueueAction(unsigned int actioncntr, float timer, unsigned int tab1, unsigned int tab2);
 
@@ -816,7 +820,7 @@ protected:
 };
 
 class PlayerHelper : public ORBClassHelper {
-	static ORBClassHelper* instance;
+	static PlayerHelper instance;
 
 public:
 	PlayerHelper();

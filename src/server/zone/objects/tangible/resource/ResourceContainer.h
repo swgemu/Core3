@@ -236,7 +236,7 @@ protected:
 };
 
 class ResourceContainerHelper : public ORBClassHelper {
-	static ORBClassHelper* instance;
+	static ResourceContainerHelper instance;
 
 public:
 	ResourceContainerHelper();
