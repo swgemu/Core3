@@ -192,7 +192,7 @@ void CreatureObject::showFlyText(const string& file, const string& aux, unsigned
 		((CreatureObjectImplementation*) _impl)->showFlyText(file, aux, red, green, blue);
 }
 
-void CreatureObject::sendCombatSpam(CreatureObject* defender, TangibleObject* item, unsigned int damage, const string& skill) {
+void CreatureObject::sendCombatSpam(CreatureObject* defender, TangibleObject* item, unsigned int damage, const string& skill, bool areaSpam) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
@@ -202,10 +202,11 @@ void CreatureObject::sendCombatSpam(CreatureObject* defender, TangibleObject* it
 		invocation.addObjectParameter(item);
 		invocation.addUnsignedIntParameter(damage);
 		invocation.addAsciiParameter(skill);
+		invocation.addBooleanParameter(areaSpam);
 
 		invocation.executeWithVoidReturn();
 	} else
-		((CreatureObjectImplementation*) _impl)->sendCombatSpam(defender, item, damage, skill);
+		((CreatureObjectImplementation*) _impl)->sendCombatSpam(defender, item, damage, skill, areaSpam);
 }
 
 void CreatureObject::addDamage(CreatureObject* creature, unsigned int damage) {
@@ -4014,7 +4015,7 @@ Packet* CreatureObjectAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* 
 		showFlyText(inv->getAsciiParameter(_param0_showFlyText__string_string_char_char_char_), inv->getAsciiParameter(_param1_showFlyText__string_string_char_char_char_), inv->getUnsignedCharParameter(), inv->getUnsignedCharParameter(), inv->getUnsignedCharParameter());
 		break;
 	case 13:
-		sendCombatSpam((CreatureObject*) inv->getObjectParameter(), (TangibleObject*) inv->getObjectParameter(), inv->getUnsignedIntParameter(), inv->getAsciiParameter(_param3_sendCombatSpam__CreatureObject_TangibleObject_int_string_));
+		sendCombatSpam((CreatureObject*) inv->getObjectParameter(), (TangibleObject*) inv->getObjectParameter(), inv->getUnsignedIntParameter(), inv->getAsciiParameter(_param3_sendCombatSpam__CreatureObject_TangibleObject_int_string_bool_), inv->getBooleanParameter());
 		break;
 	case 14:
 		addDamage((CreatureObject*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
@@ -4942,8 +4943,8 @@ void CreatureObjectAdapter::showFlyText(const string& file, const string& aux, u
 	return ((CreatureObjectImplementation*) impl)->showFlyText(file, aux, red, green, blue);
 }
 
-void CreatureObjectAdapter::sendCombatSpam(CreatureObject* defender, TangibleObject* item, unsigned int damage, const string& skill) {
-	return ((CreatureObjectImplementation*) impl)->sendCombatSpam(defender, item, damage, skill);
+void CreatureObjectAdapter::sendCombatSpam(CreatureObject* defender, TangibleObject* item, unsigned int damage, const string& skill, bool areaSpam) {
+	return ((CreatureObjectImplementation*) impl)->sendCombatSpam(defender, item, damage, skill, areaSpam);
 }
 
 void CreatureObjectAdapter::addDamage(CreatureObject* creature, unsigned int damage) {

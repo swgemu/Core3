@@ -266,7 +266,7 @@ protected:
 	
 	Vector<CreatureObject*> defenderList;
 	
-	VectorMap<CreatureObject*, uint64> damageMap;
+	VectorMap<CreatureObject*, uint32> damageMap;
 	
 	// Store buff events so they can be removed on death.
 	Vector<Event*> buffEvents;
@@ -387,7 +387,7 @@ public:
 	void doAnimation(const string& anim);
 	void playEffect(const string& file, const string& aux = "");
 	void showFlyText(const string& file, const string& aux, uint8 red, uint8 green, uint8 blue);
-	void sendCombatSpam(CreatureObject* defender, TangibleObject* item, uint32 damage, const string& skill);
+	void sendCombatSpam(CreatureObject* defender, TangibleObject* item, uint32 damage, const string& skill, bool areaSpam = true);
 
 	void setPosture(uint8 state, bool overrideDizzy = false, bool objectInteraction = false, float objX = 0, float objY = 0, float objZ = 0);
 	

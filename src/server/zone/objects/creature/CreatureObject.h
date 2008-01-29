@@ -101,7 +101,7 @@ public:
 
 	void showFlyText(const string& file, const string& aux, unsigned char red, unsigned char green, unsigned char blue);
 
-	void sendCombatSpam(CreatureObject* defender, TangibleObject* item, unsigned int damage, const string& skill);
+	void sendCombatSpam(CreatureObject* defender, TangibleObject* item, unsigned int damage, const string& skill, bool areaSpam = true);
 
 	void addDamage(CreatureObject* creature, unsigned int damage);
 
@@ -742,7 +742,7 @@ public:
 
 	void showFlyText(const string& file, const string& aux, unsigned char red, unsigned char green, unsigned char blue);
 
-	void sendCombatSpam(CreatureObject* defender, TangibleObject* item, unsigned int damage, const string& skill);
+	void sendCombatSpam(CreatureObject* defender, TangibleObject* item, unsigned int damage, const string& skill, bool areaSpam);
 
 	void addDamage(CreatureObject* creature, unsigned int damage);
 
@@ -1344,7 +1344,7 @@ protected:
 	string _param1_playEffect__string_string_;
 	string _param0_showFlyText__string_string_char_char_char_;
 	string _param1_showFlyText__string_string_char_char_char_;
-	string _param3_sendCombatSpam__CreatureObject_TangibleObject_int_string_;
+	string _param3_sendCombatSpam__CreatureObject_TangibleObject_int_string_bool_;
 	string _param0_getMitigation__string_;
 	string _param0_updateMood__string_;
 	string _param0_setCharacterName__string_;

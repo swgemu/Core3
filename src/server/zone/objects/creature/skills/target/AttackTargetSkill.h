@@ -155,7 +155,7 @@ public:
 		else if (weapon != NULL)
 			reduction = int(target->getArmorResist(weapon->getDamageType()) * damage / 100);
 		else
-			reduction = int(target->getArmorResist(1) * damage / 100);
+			reduction = int(target->getArmorResist(WeaponImplementation::KINETIC) * damage / 100);
 		
 		damage = damage - reduction;
 		
@@ -181,7 +181,7 @@ public:
 		}
 		
 		if (target->isPlayer() && reduction != 0)
-			target->sendCombatSpam(target,(TangibleObject*) armor, -reduction, "armor_damaged");
+			target->sendCombatSpam(target,(TangibleObject*) armor, -reduction, "armor_damaged", false);
 		
 		if (weapon == NULL)
 			return reduction;
@@ -189,8 +189,8 @@ public:
 		if (weapon->getWoundsRatio() > System::random(100)) {
 			target->changeHealthWoundsBar(1, true);
 			if (target->isPlayer()) {
-				target->sendCombatSpam(attacker, NULL, 1, "wounded");
-				target->sendCombatSpam(attacker, NULL, 1, "shock_wound");
+				target->sendCombatSpam(attacker, NULL, 1, "wounded", false);
+				target->sendCombatSpam(attacker, NULL, 1, "shock_wound", false);
 			}
 			if (armor != NULL) {
 				armor->setConditionDamage(armor->getConditionDamage() + 1);
@@ -228,7 +228,7 @@ public:
 		else if (weapon != NULL)
 			reduction = int(target->getArmorResist(weapon->getDamageType()) * damage / 100);
 		else
-			reduction = int(target->getArmorResist(1) * damage / 100);
+			reduction = int(target->getArmorResist(WeaponImplementation::KINETIC) * damage / 100);
 		
 		damage = damage - reduction;
 		
@@ -249,7 +249,7 @@ public:
 		}
 		
 		if (target->isPlayer() && reduction != 0)
-			target->sendCombatSpam(target,(TangibleObject*) armor, -reduction, "armor_damaged");
+			target->sendCombatSpam(target,(TangibleObject*) armor, -reduction, "armor_damaged", false);
 		
 		if (weapon == NULL)
 			return reduction;
@@ -257,8 +257,8 @@ public:
 		if (weapon->getWoundsRatio() > System::random(100)) {
 			target->changeActionWoundsBar(1, true);
 			if (target->isPlayer()) {
-				target->sendCombatSpam(attacker, NULL, 1, "wounded");
-				target->sendCombatSpam(attacker, NULL, 1, "shock_wound");
+				target->sendCombatSpam(attacker, NULL, 1, "wounded", false);
+				target->sendCombatSpam(attacker, NULL, 1, "shock_wound", false);
 			}
 			if (armor != NULL) {
 				armor->setConditionDamage(armor->getConditionDamage() + 1);
@@ -296,7 +296,7 @@ public:
 		else if (weapon != NULL)
 			reduction = int(target->getArmorResist(weapon->getDamageType()) * damage / 100);
 		else
-			reduction = int(target->getArmorResist(1) * damage / 100);
+			reduction = int(target->getArmorResist(WeaponImplementation::KINETIC) * damage / 100);
 		
 		damage = damage - reduction;
 		
@@ -310,7 +310,7 @@ public:
 		}
 		
 		if (target->isPlayer() && reduction != 0)
-			target->sendCombatSpam(target,(TangibleObject*) armor, -reduction, "armor_damaged");
+			target->sendCombatSpam(target,(TangibleObject*) armor, -reduction, "armor_damaged", false);
 		
 		if (weapon == NULL)
 			return reduction;
@@ -318,8 +318,8 @@ public:
 		if (weapon->getWoundsRatio() > System::random(100)) {
 			target->changeMindWoundsBar(1, true);
 			if (target->isPlayer()) {
-				target->sendCombatSpam(attacker, NULL, 1, "wounded");
-				target->sendCombatSpam(attacker, NULL, 1, "shock_wound");
+				target->sendCombatSpam(attacker, NULL, 1, "wounded", false);
+				target->sendCombatSpam(attacker, NULL, 1, "shock_wound", false);
 			}
 			if (armor != NULL) {
 				armor->setConditionDamage(armor->getConditionDamage() + 1);

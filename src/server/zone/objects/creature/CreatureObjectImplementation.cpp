@@ -95,7 +95,7 @@ CreatureObjectImplementation::CreatureObjectImplementation(uint64 oid) : Creatur
 	creatureSkills.setNullValue(NULL);
 	
 	damageMap.setInsertPlan(SortedVector<CreatureObject*>::NO_DUPLICATE);
-	damageMap.setNullValue(NULL);
+	damageMap.setNullValue(0);
 	
 	stfName = "species";
 
@@ -426,7 +426,7 @@ void CreatureObjectImplementation::showFlyText(const string& file, const string&
 	broadcastMessage(fly, rangeLimit);
 }
 
-void CreatureObjectImplementation::sendCombatSpam(CreatureObject* defender, TangibleObject* item, uint32 damage, const string& skill) {
+void CreatureObjectImplementation::sendCombatSpam(CreatureObject* defender, TangibleObject* item, uint32 damage, const string& skill, bool areaSpam) {
 	try {
 		//info("sending combat spam");
 
@@ -434,6 +434,7 @@ void CreatureObjectImplementation::sendCombatSpam(CreatureObject* defender, Tang
 	
 		bool needLimiting = inRangeObjectCount() > 40;
 	
+		if (areaSpam)
 		for (int i = 0; i < inRangeObjectCount(); ++i) {
 			SceneObject* object = (SceneObject*) (((SceneObjectImplementation*) getInRangeObject(i))->_getStub());
 			
@@ -443,6 +444,10 @@ void CreatureObjectImplementation::sendCombatSpam(CreatureObject* defender, Tang
 				CombatSpam* msg = new CombatSpam(_this, defender, item, damage, "cbt_spam", skill, player);
 				player->sendMessage(msg);
 			}
+		}
+		else if (isPlayer()) {
+			CombatSpam* msg = new CombatSpam(_this, defender, item, damage, "cbt_spam", skill, _this);
+			((Player*)_this)->sendMessage(msg);
 		}
 
 		zone->unlock();
@@ -3011,8 +3016,9 @@ float CreatureObjectImplementation::getArmorResist(int resistType) {
 
 bool CreatureObjectImplementation::isLootOwner(CreatureObject* creature) {
 	int maxDmg = 0;
+	int i = 0;
 	
-	for (int i=0; i < damageMap.size(); i++) {
+	for (; i < damageMap.size(); i++) {
 		int damage = damageMap.get(i);
 		
 		if (damage > maxDmg)
@@ -3027,10 +3033,9 @@ bool CreatureObjectImplementation::isLootOwner(CreatureObject* creature) {
 
 void CreatureObjectImplementation::addDamage(CreatureObject* creature, uint32 damage) {
 	
-	damage += damageMap.get(creature);
+	if (damageMap.contains(creature))
+		damageMap.get(creature) += damage;
+	else
+		damageMap.put(creature, damage);
 
-	damageMap.drop(creature);
-	
-	damageMap.put(creature, damage);
-	
 }

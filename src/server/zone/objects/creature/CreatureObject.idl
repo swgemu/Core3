@@ -78,7 +78,7 @@ interface CreatureObject implements SceneObject {
 	void doAnimation(const string anim);
 	void playEffect(const string file, const string aux);
 	void showFlyText(const string file, const string aux, unsigned char red, unsigned char green, unsigned char blue);
-	void sendCombatSpam(CreatureObject defender, TangibleObject item, unsigned int damage, const string skill);
+	void sendCombatSpam(CreatureObject defender, TangibleObject item, unsigned int damage, const string skill, boolean areaSpam = true);
 	
 	void addDamage(CreatureObject creature, unsigned int damage);
 	
