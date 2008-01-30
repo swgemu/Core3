@@ -101,11 +101,12 @@ public:
 	
 	// calc methods
 	void calculateDamageReduction(CreatureObject* creature, CreatureObject* targetCreature, float& damage);
+	int calculatePostureMods(CreatureObject* creature, CreatureObject* targetCreature);
 	void checkMitigation(CreatureObject* creature, CreatureObject* targetCreature, float& minDamage, float& maxDamage);
 	int checkSecondaryDefenses(CreatureObject* creature, CreatureObject* targetCreature);
 	int getHitChance(CreatureObject* creature, CreatureObject* targetCreature, int accuracyBonus);
 	float getWeaponAccuracy(float currentRange, Weapon* weapon);
-	float getTargetDefense(CreatureObject* creature, CreatureObject* targetCreature, Weapon* weapon);
+	uint32 getTargetDefense(CreatureObject* creature, CreatureObject* targetCreature, Weapon* weapon);
 	
 };
 

@@ -631,6 +631,8 @@ public:
 
 	unsigned int getLevel();
 
+	int getCenteredBonus();
+
 	void sendSystemMessage(const string& message);
 
 	void sendSystemMessage(const string& file, const string& str, unsigned long long targetid = 0);
@@ -1271,6 +1273,8 @@ public:
 	CreatureObject* getDefender(int idx);
 
 	unsigned int getLevel();
+
+	int getCenteredBonus();
 
 	void sendSystemMessage(const string& message);
 

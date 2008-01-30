@@ -462,6 +462,8 @@ interface CreatureObject implements SceneObject {
 	
 	unsigned int getLevel();
 	
+	int getCenteredBonus();
+	
 	void sendSystemMessage(const string message);
 	void sendSystemMessage(const string file, const string str, unsigned long targetid = 0);
 	

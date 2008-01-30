@@ -578,9 +578,6 @@ public:
 				}
 			
 				if (areaHit == 0 && weapon->decreaseDot0Uses()) {
-					/*if (creature->isPlayer())
-						weapon->sendTo((Player*) creature);*/
-					
 					weapon->setUpdated(true);
 				}
 			}
@@ -622,9 +619,6 @@ public:
 				}
 				
 				if (areaHit == 0 && weapon->decreaseDot1Uses()) {
-					/*if (creature->isPlayer())
-						weapon->sendTo((Player*) creature);*/
-					
 					weapon->setUpdated(true);
 				}
 			}
@@ -666,9 +660,6 @@ public:
 				}
 				
 				if (areaHit == 0 && weapon->decreaseDot2Uses()) {
-					/*if (creature->isPlayer())
-						weapon->sendTo((Player*) creature);*/
-					
 					weapon->setUpdated(true);
 				}
 			}

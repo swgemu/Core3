@@ -89,6 +89,7 @@ CreatureObjectImplementation::CreatureObjectImplementation(uint64 oid) : Creatur
 	lootContainer = NULL;
 	
 	weaponSpeedModifier = 1;
+	centeredBonus = 0;
 	
 	creatureSkillsCount = 0;
 	creatureSkills.setInsertPlan(SortedVector<Skill*>::NO_DUPLICATE);

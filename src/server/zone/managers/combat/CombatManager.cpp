@@ -760,54 +760,93 @@ int CombatManager::checkSecondaryDefenses(CreatureObject* creature, CreatureObje
 	if (targetCreature->isIntimidated())
 		return 0;
 
-	Weapon* weao = targetCreature->getWeapon();
+	Weapon* targetWeapon = targetCreature->getWeapon();
+	Weapon* playerWeapon = creature->getWeapon();
 
-	if (weao == NULL)
+	if (targetWeapon == NULL)
 		return 0;
 
 	float playerAccuracy = creature->getAccuracy();
-
-	if (playerAccuracy > 250)
-		playerAccuracy = 250;
-
+	float weaponAccuracy = getWeaponAccuracy(creature->getDistanceTo(targetCreature), playerWeapon);
+	
+	weaponAccuracy += calculatePostureMods(creature, targetCreature);
+	
+	int blindState = 0;
+	
 	if (creature->isBlinded())
-		playerAccuracy *= 0.80;
+		blindState = 1;
+	
+	float defTotal = 0;
+	float accTotal = 0;
 
 	int rand = System::random(100);
 
-	if ((weao->getType() == WeaponImplementation::POLEARM) || (weao->getType() == WeaponImplementation::RIFLE)) {
+	if ((targetWeapon->getType() == WeaponImplementation::POLEARM) || (targetWeapon->getType() == WeaponImplementation::RIFLE)) {
 		float block = targetCreature->getSkillMod("block");
+		
+		if (block == 0)
+			return 0;
 
-		if (block > 120)
-			block = 120;
+		if (block > 125)
+			block = 125;
+		
+		defTotal = powf(float((block * 6.5) + (targetCreature->getCenteredBonus() * 1.5)), 4.9);
+		
+		if ((playerAccuracy + weaponAccuracy + blindState) >= 0)
+			accTotal = powf(float((playerAccuracy * 1.2) + weaponAccuracy - (blindState * 50)), 6);
+		
+		int chance = (int)round(((defTotal / (defTotal + accTotal))) * 100);
+		
+		/*cout << "accTotal:[" << accTotal << "] defTotal:[" << defTotal << "]\n";
+		cout << "chance:[" << chance << "]\n";*/
 
-		int chance = (int)(playerAccuracy - block);
-
-		if ((5 > rand) || (rand > chance)) {
+		if ((5 > rand) || (rand < chance)) {
 			doBlock(targetCreature, creature);
 			return 1;
 		}
-	} else if ((weao->getType() == WeaponImplementation::ONEHANDED) || (weao->getType() == WeaponImplementation::PISTOL)) {
+	} else if ((targetWeapon->getType() == WeaponImplementation::ONEHANDED) || (targetWeapon->getType() == WeaponImplementation::PISTOL)) {
 		float dodge = targetCreature->getSkillMod("dodge");
+		
+		if (dodge == 0)
+			return 0;
+		
+		if (dodge > 125)
+			dodge = 125;
 
-		if (dodge > 120)
-			dodge = 120;
+		defTotal = powf(float((dodge * 6.5) + (targetCreature->getCenteredBonus() * 1.5)), 4.9);
 
-		int chance = (int)(playerAccuracy - dodge);
+		if ((playerAccuracy + weaponAccuracy + blindState) >= 0)
+			accTotal = powf(float((playerAccuracy * 1.2) + weaponAccuracy - (blindState * 50)), 6);
 
-		if ((5 > rand) || (rand > chance)) {
+		int chance = (int)round(((defTotal / (defTotal + accTotal))) * 100);
+		
+		/*cout << "accTotal:[" << accTotal << "] defTotal:[" << defTotal << "]\n";
+		cout << "chance:[" << chance << "]\n";*/
+
+		if ((5 > rand) || (rand < chance)) {
 			doDodge(targetCreature, creature);
 			return 2;
 		}
-	} else if ((weao->getType() == WeaponImplementation::CARBINE) || (weao->getType() == WeaponImplementation::TWOHANDED)) {
+	} else if ((targetWeapon->getType() == WeaponImplementation::CARBINE) || (targetWeapon->getType() == WeaponImplementation::TWOHANDED)) {
 		float counterAttack = targetCreature->getSkillMod("counterattack");
+		
+		if (counterAttack == 0)
+			return 0;
 
-		if (counterAttack > 120)
-			counterAttack = 120;
+		if (counterAttack > 125)
+			counterAttack = 125;
 
-		int chance = (int)(playerAccuracy - counterAttack);
+		defTotal = powf(float((counterAttack * 6.5) + (targetCreature->getCenteredBonus() * 1.5)), 4.9);
 
-		if ((5 > rand) || (rand > chance)) {
+		if ((playerAccuracy + weaponAccuracy + blindState) >= 0)
+			accTotal = powf(float((playerAccuracy * 1.2) + weaponAccuracy - (blindState * 50)), 6);
+
+		int chance = (int)round(((defTotal / (defTotal + accTotal))) * 100);
+		
+		/*cout << "accTotal:[" << accTotal << "] defTotal:[" << defTotal << "]\n";
+		cout << "chance:[" << chance << "]\n";*/
+
+		if ((5 > rand) || (rand < chance)) {
 			doCounterAttack(targetCreature, creature);
 			return 3;
 		}
@@ -817,113 +856,129 @@ int CombatManager::checkSecondaryDefenses(CreatureObject* creature, CreatureObje
 }
 
 int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* targetCreature, int accuracyBonus) {
-	float hitChance = 0;
+	int hitChance = 0;
 	Weapon* weapon = creature->getWeapon();
-	uint32 playerPosture = creature->getPosture();
+	
+	float weaponAccuracy = getWeaponAccuracy(creature->getDistanceTo(targetCreature), weapon);
+	weaponAccuracy += calculatePostureMods(creature, targetCreature);
+	
+	// TODO: add Aim mod
 
 	float playerAccuracy = creature->getAccuracy();
-
-	if (playerAccuracy > 250)
-		playerAccuracy = 250;
-
+	
+	uint32 targetDefense = getTargetDefense(creature, targetCreature, weapon); 
+	
+	float defTotal = powf((float)(targetDefense << 1), 2);
+	float accTotal = 0;
+	
+	int blindState = 0; 
+	
 	if (creature->isBlinded())
-		playerAccuracy *= 0.80;
+		blindState = 50;
 
-	hitChance += playerAccuracy;
-
-	float WeaponAccuracy = 30.f;
-
-	if (weapon != NULL)
-		WeaponAccuracy = getWeaponAccuracy(creature->getDistanceTo(targetCreature), weapon);
-
-	hitChance += WeaponAccuracy;
-
-	float defense = getTargetDefense(creature, targetCreature, weapon);
-
-	if (targetCreature->isStunned())
-		defense *= 0.80;
-
-	hitChance -= defense;		
-
-	hitChance = 66 + (hitChance / 2) + accuracyBonus;
-
-	if (playerPosture == CreatureObjectImplementation::CROUCHED_POSTURE)
-		hitChance += 16;
-	else if (playerPosture == CreatureObjectImplementation::PRONE_POSTURE)
-		hitChance += 50;
-
-	//hitChance += aiming;
-
-	//cout << "hitChance:" << (int)hitChance << "\n";
-
-	return (int)hitChance;
+	if ((playerAccuracy + weaponAccuracy - blindState) < 0)
+		accTotal = 0;
+	else
+		accTotal = powf((playerAccuracy * 1.5 + weaponAccuracy - blindState), 2);
+	
+	float primaryDef = defTotal / (defTotal + accTotal);
+	
+	if (creature->isStunned())
+		primaryDef *= 0.33;
+	
+	//cout << "primaryDef:[" << primaryDef << "] accTotal:[" << accTotal << "] defTotal:[" << defTotal << "]\n";
+	
+	hitChance = (int)round(((1 - primaryDef) * 100));
+	
+	//cout << "hitChance:[" << (int)hitChance << "]\n";
+	
+	return hitChance;
 }
 
 float CombatManager::getWeaponAccuracy(float currentRange, Weapon* weapon) {
 	float accuracy;
 
 	float smallRange = 0;
-	float bigRange = 2;
+	float idealRange = 2;
 	float maxRange = 5;
+	
+	float smallMod = 7;
+	float bigMod = 7;
 
 	if (weapon != NULL) {
 		smallRange = (float)weapon->getPointBlankRange();
-		bigRange = (float)weapon->getIdealRange();
+		idealRange = (float)weapon->getIdealRange();
 		maxRange = (float)weapon->getMaxRange();
+
+		smallMod = (float)weapon->getPointBlankAccuracy();
+		bigMod = (float)weapon->getIdealAccuracy();
 	}
 
-	float smallMod = (float)weapon->getPointBlankAccuracy();
-	float bigMod = (float)weapon->getIdealAccuracy();
-
-	if (currentRange > bigRange) {
-		smallMod = (float)weapon->getIdealAccuracy();
-		bigRange = maxRange;
-		bigMod = (float)weapon->getMaxRangeAccuracy();				
+	if (currentRange > idealRange) {
+		if (weapon != NULL) {
+			smallMod = (float)weapon->getIdealAccuracy();
+			bigMod = (float)weapon->getMaxRangeAccuracy();
+		}
+		
+		idealRange = maxRange;				
 	}
 
-	accuracy = smallMod + ((currentRange - smallRange)/(bigRange - smallRange) * (bigMod - smallMod));
+	accuracy = smallMod + ((currentRange - smallRange)/(idealRange - smallRange) * (bigMod - smallMod));
+	
+	//cout << "Weapon accuracy:[" << accuracy << "]\n";
 
 	return accuracy;
 }
 
-float CombatManager::getTargetDefense(CreatureObject* creature, CreatureObject* targetCreature, Weapon* weapon) {
-	float defense = 0;
+int CombatManager::calculatePostureMods(CreatureObject* creature, CreatureObject* targetCreature) {
+	int accuracy = 0;
+	Weapon* weapon = creature->getWeapon();
+	
+	if (targetCreature->isKneeled()) {
+		if (weapon == NULL || weapon->isMelee())
+			accuracy += 16;
+		else
+			accuracy -= 16;
+	} else if (targetCreature->isProne()) {
+		if (weapon == NULL || weapon->isMelee())
+			accuracy += 25;
+		else
+			accuracy -= 25;
+	}
+
+	if (creature->isKneeled()) {
+		if (weapon == NULL || weapon->isMelee())
+			accuracy -= 16;
+		else
+			accuracy += 16;
+	} else if (creature->isProne()) {
+		if (weapon == NULL || weapon->isMelee())
+			accuracy -= 50;
+		else
+			accuracy += 50;
+	}
+	
+	return accuracy;
+}
+
+uint32 CombatManager::getTargetDefense(CreatureObject* creature, CreatureObject* targetCreature, Weapon* weapon) {
+	uint32 defense = 0;
 	uint32 targetPosture = targetCreature->getPosture();
 
 	if (weapon != NULL) {
 		if (weapon->isMelee()) {
-			int melee = targetCreature->getSkillMod("melee_defense");
+			uint32 melee = targetCreature->getSkillMod("melee_defense");
 			defense += melee;
-
-			if (targetPosture == CreatureObjectImplementation::CROUCHED_POSTURE)
-				defense -= 16;
-			else if (targetPosture == CreatureObjectImplementation::PRONE_POSTURE)
-				defense -=25;
-
 		} else if (weapon->isRanged()) {
-			int ranged = targetCreature->getSkillMod("ranged_defense");
+			uint32 ranged = targetCreature->getSkillMod("ranged_defense");
 			defense += ranged;
-
-			if (targetPosture == CreatureObjectImplementation::CROUCHED_POSTURE)
-				defense += 16;
-			else if (targetPosture == CreatureObjectImplementation::PRONE_POSTURE)
-				defense +=25;
 		}
 	} else {		
-
-		int bonus = creature->getSkillMod("unarmed_accuracy");
-		defense -= bonus;
-
-		int melee = targetCreature->getSkillMod("melee_defense");
+		uint32 melee = targetCreature->getSkillMod("melee_defense");
 		defense += melee;
-
-		if (targetPosture == CreatureObjectImplementation::CROUCHED_POSTURE)
-			defense -= 16;
-		else if (targetPosture == CreatureObjectImplementation::PRONE_POSTURE)
-			defense -=25;
 	}
 
-	defense += targetCreature->getDefenseBonus();
+	//defense += targetCreature->getDefenseBonus();
 
 	if (defense > 200)
 		defense = 200;

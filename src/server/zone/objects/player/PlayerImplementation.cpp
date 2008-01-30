@@ -171,7 +171,6 @@ void PlayerImplementation::init() {
  	chatRooms.setInsertPlan(SortedVector<ChatRoom*>::NO_DUPLICATE);
  	
  	centered = false;
- 	centeredBonus = 0;
  	centerOfBeingEvent = new CenterOfBeingEvent(this);
  	
 	lastTestPositionX = 0.f;
@@ -1474,7 +1473,7 @@ void PlayerImplementation::doClone() {
 		else if (faction == String::hashCode("imperial"))
 			doWarp(10.0f, -5480.0f, 0, true);
 		else
-			doWarp(0.5f, 1.5f, 0.3f, 0, 1590892);
+			doWarp(0.5f, 1.5f, 0.3f, 0, 1590892); // ah cloning facility
 		
 		break;
 	}
@@ -1539,7 +1538,7 @@ void PlayerImplementation::doCenterOfBeing() {
 	if (duration == 0 || efficacy == 0)
 		return;
 	
-	defenseBonus += efficacy;
+	//defenseBonus += efficacy;
 	centeredBonus = efficacy;
 	
 	showFlyText("combat_effects", "center_start_fly", 0, 255, 0);
@@ -1555,7 +1554,7 @@ void PlayerImplementation::removeCenterOfBeing() {
 	
 	server->removeEvent(centerOfBeingEvent);
 	
-	defenseBonus -= centeredBonus;
+	//defenseBonus -= centeredBonus;
 	centeredBonus = 0;
 	
 	showFlyText("combat_effects", "center_stop_fly", 255, 0, 0);
@@ -1951,6 +1950,7 @@ void PlayerImplementation::unsetWeaponSkillMods(Weapon* weapon) {
 	setItemSkillMod(weapon->getSkillMod1Type(), -weapon->getSkillMod1Value());
 	setItemSkillMod(weapon->getSkillMod2Type(), -weapon->getSkillMod2Value());
 	
+	accuracy = getSkillMod("unarmed_accuracy"); 
 }
 
 bool PlayerImplementation::setArmorEncumbrance(Armor* armor, bool forced) {
@@ -2351,6 +2351,8 @@ void PlayerImplementation::saveProfessions() {
 void PlayerImplementation::loadProfessions() {
 	ProfessionManager* professionManager = server->getProfessionManager();
 	professionManager->loadProfessions(this);
+	
+	accuracy = getSkillMod("unarmed_accuracy"); 
 }
 
 bool PlayerImplementation::trainSkillBox(const string& name) {

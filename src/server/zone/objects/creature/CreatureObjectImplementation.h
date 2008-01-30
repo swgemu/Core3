@@ -108,6 +108,8 @@ protected:
 
 	// modifiers
 	int weaponSpeedModifier;
+	
+	int centeredBonus;
 
 	//CREO1 operands
 	uint32 skillBoxesUpdateCounter;
@@ -874,6 +876,10 @@ public:
 	
 	inline int getCondition() {
 		return maxCondition - conditionDamage;
+	}
+	
+	inline int getCenteredBonus() {
+		return centeredBonus;
 	}
 	
 	inline uint64 getCreatureLinkID() {

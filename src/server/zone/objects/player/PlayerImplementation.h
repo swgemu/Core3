@@ -149,7 +149,6 @@ class PlayerImplementation : public PlayerServant {
 	int adminLevel;
 	
 	bool centered;
-	int centeredBonus;
 	CenterOfBeingEvent* centerOfBeingEvent;
 	
 	float lastTestPositionX;
