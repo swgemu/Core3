@@ -57,6 +57,12 @@ public:
 			: DeltaMessage(cr->getObjectID(), 0x4352454F, 3) {
 		creo = cr;
 	}
+	
+	void updateCharacterApperance() {
+		string appearance;
+		creo->getCharacterApperance(appearance);
+		addAsciiUpdate(4, appearance);
+	}
 
 	void update06Operand(uint32 value) {
 		addIntUpdate(0x06, value);

@@ -306,7 +306,7 @@ interface CreatureObject implements SceneObject {
 	
 	string getTerrainName();
 
-	string getCharacterApperance();
+	void getCharacterApperance(string appearance);
 	
 	boolean isOvert();
 	

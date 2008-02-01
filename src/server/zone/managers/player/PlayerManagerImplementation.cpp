@@ -111,8 +111,11 @@ bool PlayerManagerImplementation::create(Player* player, uint32 sessionkey) {
 	string info = "";
 	
 	string apperance;
-	BinaryData cust(player->getCharacterApperance());
+	string playApp;
+	player->getCharacterApperance(playApp);
+	BinaryData cust(playApp);
 	cust.encode(apperance);
+	
 	
 	string hairdata;
 	BinaryData hair(player->getHairData());

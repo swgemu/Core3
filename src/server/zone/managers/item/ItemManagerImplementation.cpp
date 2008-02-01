@@ -120,6 +120,11 @@ TangibleObject* ItemManagerImplementation::createPlayerObject(Player* player, Re
 	
 	unicode objectname(result->getString(2));
 	char* objecttemp = result->getString(5);
+	
+	string apperance = result->getString(96);
+	BinaryData cust(apperance);
+	string custStr;
+	cust.decode(custStr);
 
 	TangibleObjectImplementation* item = NULL;
 	
@@ -313,6 +318,8 @@ TangibleObject* ItemManagerImplementation::createPlayerObject(Player* player, Re
 	
 	if (item == NULL)
 		return NULL;
+	
+	item->setCustomizationString(custStr);
 	
 	item->setPersistent(true);
 	
@@ -665,13 +672,19 @@ void ItemManagerImplementation::unloadPlayerItems(Player* player) {
 
 void ItemManagerImplementation::createPlayerItem(Player* player, TangibleObject* item) {
 	try {
+		string apperance;
+		string itemApp;
+		item->getCustomizationString(itemApp);
+		BinaryData cust(itemApp);
+		cust.encode(apperance);
+		
 		stringstream query;
 		query << "INSERT INTO `character_items` "
-			  << "(`item_id`,`character_id`,`name`,`template_crc`,`template_type`,`template_name`,`equipped`)"
+			  << "(`item_id`,`character_id`,`name`,`template_crc`,`template_type`,`template_name`,`equipped`, `appearance`)"
 			  << " VALUES(" << item->getObjectID() << "," << player->getCharacterID() 
 			  << ",'" << item->getName().c_str() << "'," 
 			  << item->getObjectCRC() << "," << item->getObjectSubType() << ",'" << item->getTemplateName() << "',"
-			  << item->isEquipped() << ")";
+			  << item->isEquipped() << ", '" << apperance.substr(0, apperance.size() - 1) << "'" << ")";
 	
 		ServerDatabase::instance()->executeStatement(query);
 		
@@ -683,9 +696,16 @@ void ItemManagerImplementation::createPlayerItem(Player* player, TangibleObject*
 
 void ItemManagerImplementation::savePlayerItem(Player* player, TangibleObject* item) {
 	try {
+		string apperance;
+		string itemApp;
+		item->getCustomizationString(itemApp);
+		BinaryData cust(itemApp);
+		cust.encode(apperance);
+		
 		stringstream query;
 		query << "update `character_items` set equipped = " << item->isEquipped();
 		query << ", character_id = " << player->getCharacterID() << " ";
+		query << ", appearance = '" << apperance.substr(0, apperance.size() - 1) << "' ";
 
 		if (item->isWeapon()) {
 			query << ", condition_damage = " << ((Weapon*) item)->getConditionDamage();
@@ -736,9 +756,15 @@ void ItemManagerImplementation::savePlayerItem(Player* player, TangibleObject* i
 
 void ItemManagerImplementation::createPlayerWeapon(Player* player, Weapon* item) {
 	try { 
+		string apperance;
+		string itemApp;
+		item->getCustomizationString(itemApp);
+		BinaryData cust(itemApp);
+		cust.encode(apperance);
+		
 		stringstream query;
 		query << "INSERT INTO `character_items` "
-			  << "(`item_id`,`character_id`,`name`,`template_crc`,`template_type`,`template_name`,`equipped`,`weapon_type`,`category`,`damage_type`,`min_damage`,`max_damage`,`attack_speed`,`health_attack_cost`,`action_attack_cost`,`mind_attack_cost`,`point_blank_accuracy`,`point_blank_range`,`ideal_range`,`ideal_accuracy`,`max_range`,`max_range_accuracy`,`wounds_ratio`,`armor_piercing`,`condition_damage`,`max_condition`,`dot0_type`,`dot0_attribute`,`dot0_strength`,`dot0_duration`,`dot0_potency`,`dot0_uses`,`dot1_type`,`dot1_attribute`,`dot1_strength`,`dot1_duration`,`dot1_potency`,`dot1_uses`,`dot2_type`,`dot2_attribute`,`dot2_strength`,`dot2_duration`,`dot2_potency`,`dot2_uses`,`sliced`,`skillmod0_type`,`skillmod0_value`,`skillmod1_type`,`skillmod1_value`,`skillmod2_type`,`skillmod2_value`)"
+			  << "(`item_id`,`character_id`,`name`,`template_crc`,`template_type`,`template_name`,`equipped`,`weapon_type`,`category`,`damage_type`,`min_damage`,`max_damage`,`attack_speed`,`health_attack_cost`,`action_attack_cost`,`mind_attack_cost`,`point_blank_accuracy`,`point_blank_range`,`ideal_range`,`ideal_accuracy`,`max_range`,`max_range_accuracy`,`wounds_ratio`,`armor_piercing`,`condition_damage`,`max_condition`,`dot0_type`,`dot0_attribute`,`dot0_strength`,`dot0_duration`,`dot0_potency`,`dot0_uses`,`dot1_type`,`dot1_attribute`,`dot1_strength`,`dot1_duration`,`dot1_potency`,`dot1_uses`,`dot2_type`,`dot2_attribute`,`dot2_strength`,`dot2_duration`,`dot2_potency`,`dot2_uses`,`sliced`,`skillmod0_type`,`skillmod0_value`,`skillmod1_type`,`skillmod1_value`,`skillmod2_type`,`skillmod2_value`, `appearance`)"
 			  << " VALUES(" << item->getObjectID() << "," << player->getCharacterID() 
 			  << ",'\\" << item->getName().c_str() << "'," 
 			  << item->getObjectCRC() << "," << item->getObjectSubType() << ",'" << item->getTemplateName() << "',"  
@@ -755,7 +781,8 @@ void ItemManagerImplementation::createPlayerWeapon(Player* player, Weapon* item)
 			  << item->getDot1Uses() << "," << item->getDot2Type() << "," << item->getDot2Attribute() << "," 
 			  << item->getDot2Strength() << "," << item->getDot2Duration() << "," << item->getDot2Potency() << "," 
 			  << item->getDot2Uses() << "," << item->isSliced() << "," << item->getSkillMod0Type() << "," << item->getSkillMod0Value() << ","
-			  << item->getSkillMod1Type() << "," << item->getSkillMod1Value() << "," << item->getSkillMod2Type() << "," << item->getSkillMod2Value() << ")";
+			  << item->getSkillMod1Type() << "," << item->getSkillMod1Value() << "," << item->getSkillMod2Type() << "," << item->getSkillMod2Value() << ",'" 
+			  << apperance.substr(0, apperance.size() - 1) << "'" << ")";
 		
 		ServerDatabase::instance()->executeStatement(query);
 		
@@ -767,9 +794,15 @@ void ItemManagerImplementation::createPlayerWeapon(Player* player, Weapon* item)
 
 void ItemManagerImplementation::createPlayerArmor(Player* player, Armor* item) {
 	try {
+		string apperance;
+		string itemApp;
+		item->getCustomizationString(itemApp);
+		BinaryData cust(itemApp);
+		cust.encode(apperance);
+		
 		stringstream query;
 		query << "INSERT INTO `character_items` "
-			  << "(`item_id`,`character_id`,`name`,`template_crc`,`template_type`,`template_name`,`equipped`,`armor_piercing`,`armor_type`,`condition_damage`,`max_condition`,`health_encumb`,`action_encumb`,`mind_encumb`,`kinetic`,`kinetic_special`,`energy`,`energy_special`,`electricity`,`electricity_special`,`stun`,`stun_special`,`blast`,`blast_special`,`heat`,`heat_special`,`cold`,`cold_special`,`acid`,`acid_special`,`lightsaber`,`lightsaber_special`,`sliced`,`skillmod0_type`,`skillmod0_value`,`skillmod1_type`,`skillmod1_value`,`skillmod2_type`,`skillmod2_value`,`sockets`,`socket0_type`,`socket0_value`,`socket1_type`,`socket1_value`,`socket2_type`,`socket2_value`,`socket3_type`,`socket3_value`)"
+			  << "(`item_id`,`character_id`,`name`,`template_crc`,`template_type`,`template_name`,`equipped`,`armor_piercing`,`armor_type`,`condition_damage`,`max_condition`,`health_encumb`,`action_encumb`,`mind_encumb`,`kinetic`,`kinetic_special`,`energy`,`energy_special`,`electricity`,`electricity_special`,`stun`,`stun_special`,`blast`,`blast_special`,`heat`,`heat_special`,`cold`,`cold_special`,`acid`,`acid_special`,`lightsaber`,`lightsaber_special`,`sliced`,`skillmod0_type`,`skillmod0_value`,`skillmod1_type`,`skillmod1_value`,`skillmod2_type`,`skillmod2_value`,`sockets`,`socket0_type`,`socket0_value`,`socket1_type`,`socket1_value`,`socket2_type`,`socket2_value`,`socket3_type`,`socket3_value`, `appearance`)"
 			  << " VALUES(" << item->getObjectID() << "," << player->getCharacterID() 
 			  << ",'\\" << item->getName().c_str() << "'," 
 			  << item->getObjectCRC() << "," << item->getObjectSubType() << ",'" << item->getTemplateName() << "',"  
@@ -785,7 +818,8 @@ void ItemManagerImplementation::createPlayerArmor(Player* player, Armor* item) {
 			  << item->getSkillMod1Value() << "," << item->getSkillMod2Type() << "," << item->getSkillMod2Value() << "," << item->getSockets() << ","
 			  << item->getSocket0Type() << "," << item->getSocket0Value() << "," << item->getSocket1Type() << "," 
 			  << item->getSocket1Value() << "," << item->getSocket2Type() << "," << item->getSocket2Value() << ","
-			  << item->getSocket3Type() << "," << item->getSocket3Value()<< ")";
+			  << item->getSocket3Type() << "," << item->getSocket3Value()<< ",'"
+			  << apperance.substr(0, apperance.size() - 1) << "'" << ")";
 		
 		ServerDatabase::instance()->executeStatement(query);
 		

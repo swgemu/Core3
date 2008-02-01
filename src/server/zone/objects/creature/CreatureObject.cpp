@@ -2227,17 +2227,17 @@ string& CreatureObject::getTerrainName() {
 		return ((CreatureObjectImplementation*) _impl)->getTerrainName();
 }
 
-string& CreatureObject::getCharacterApperance() {
+void CreatureObject::getCharacterApperance(string& appearance) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
 		ORBMethodInvocation invocation(this, 170);
+		invocation.addAsciiParameter(appearance);
 
-		invocation.executeWithAsciiReturn(_return_getCharacterApperance);
-		return _return_getCharacterApperance;
+		invocation.executeWithVoidReturn();
 	} else
-		return ((CreatureObjectImplementation*) _impl)->getCharacterApperance();
+		((CreatureObjectImplementation*) _impl)->getCharacterApperance(appearance);
 }
 
 bool CreatureObject::isOvert() {
@@ -4498,7 +4498,7 @@ Packet* CreatureObjectAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* 
 		resp->insertAscii(getTerrainName());
 		break;
 	case 170:
-		resp->insertAscii(getCharacterApperance());
+		getCharacterApperance(inv->getAsciiParameter(_param0_getCharacterApperance__string_));
 		break;
 	case 171:
 		resp->insertBoolean(isOvert());
@@ -5586,8 +5586,8 @@ string& CreatureObjectAdapter::getTerrainName() {
 	return ((CreatureObjectImplementation*) impl)->getTerrainName();
 }
 
-string& CreatureObjectAdapter::getCharacterApperance() {
-	return ((CreatureObjectImplementation*) impl)->getCharacterApperance();
+void CreatureObjectAdapter::getCharacterApperance(string& appearance) {
+	return ((CreatureObjectImplementation*) impl)->getCharacterApperance(appearance);
 }
 
 bool CreatureObjectAdapter::isOvert() {

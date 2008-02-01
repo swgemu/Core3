@@ -79,6 +79,8 @@ public:
 
 	bool isTransferBox();
 
+	bool isColorPicker();
+
 	unsigned long long getBoxID();
 
 	unsigned long long getUsingObjectID();
@@ -111,6 +113,8 @@ public:
 	bool isMessageBox();
 
 	bool isTransferBox();
+
+	bool isColorPicker();
 
 	unsigned long long getBoxID();
 

@@ -45,6 +45,7 @@ which carries forward this exception.
 #include "SuiManager.h"
 
 #include "../../objects.h"
+#include "../../objects/player/sui/colorpicker/SuiColorPicker.h"
 
 #include "../../ZoneProcessServerImplementation.h"
 
@@ -88,6 +89,9 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, Player* player, uint32
 		break;
 	case 0xAFAF:
 		handleTicketCollectorRespones(boxID, player, cancel, atoi(value.c_str()));
+		break;
+	case 0xBABE:
+		handleColorPicker(boxID, player, cancel, value);
 		break;
 	default:
 		//error("Unknown SuiBoxNotification opcode");
@@ -453,6 +457,60 @@ void SuiManager::handleTicketCollectorRespones(uint32 boxID, Player* player, uin
 		player->unlock();
 	} catch (...) {
 		error("Unreported exception caught in SuiManager::handleTicketCollectorRespones");
+		player->unlock();
+	}
+}
+
+void SuiManager::handleColorPicker(uint32 boxID, Player* player, uint32 cancel, const string& value) {
+	try {
+		player->wlock();
+
+		if (!player->hasSuiBox(boxID)) {
+			player->unlock();
+			return;
+		}
+
+		SuiBox* sui = player->getSuiBox(boxID);
+		
+		if (sui->isColorPicker()) {
+			SuiColorPicker* colorPicker = (SuiColorPicker*) sui;
+			
+			int val = atoi(value.c_str());
+			
+			if (val >= 0 && val < 144) {
+				uint64 oID = colorPicker->getObjectID();
+				
+				SceneObject* obj = player->getInventoryItem(oID);
+				
+				if (obj != NULL && obj->isTangible()) {
+					TangibleObject* tano = (TangibleObject*) obj;
+
+					tano->setCustomizationVariable(2, val);
+					tano->setUpdated(true);
+
+					TangibleObjectDeltaMessage3* delta = new TangibleObjectDeltaMessage3(tano);
+					delta->updateCustomizationString();
+					delta->close();
+
+					player->broadcastMessage(delta);
+
+				}
+			}
+		}
+
+		player->removeSuiBox(boxID);
+
+		delete sui;
+
+		player->unlock();
+	} catch (Exception& e) {
+		stringstream msg;
+		msg << "Exception in SuiManager::handleColorPicker" << e.getMessage();
+		error(msg.str());
+
+		player->unlock();
+	} catch (...) {
+		error("Unreported exception caught in SuiManager::handleColorPicker");
 		player->unlock();
 	}
 }

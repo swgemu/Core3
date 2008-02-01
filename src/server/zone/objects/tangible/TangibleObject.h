@@ -97,6 +97,8 @@ public:
 
 	bool isArmor();
 
+	bool isClothing();
+
 	bool isResource();
 
 	bool isTicket();
@@ -111,6 +113,10 @@ public:
 
 	void setConditionDamage(int damage);
 
+	void setCustomizationString(string& cust);
+
+	void setCustomizationVariable(unsigned char type, unsigned int value);
+
 	SceneObject* getContainer();
 
 	unicode& getName();
@@ -119,7 +125,7 @@ public:
 
 	string& getTemplateTypeName();
 
-	string& getCustomizationString();
+	void getCustomizationString(string& appearance);
 
 	int getObjectSubType();
 
@@ -134,8 +140,6 @@ public:
 	int getCondition();
 
 protected:
-	string _return_getCustomizationString;
-
 	string _return_getTemplateName;
 
 	string _return_getTemplateTypeName;
@@ -178,6 +182,8 @@ public:
 
 	bool isArmor();
 
+	bool isClothing();
+
 	bool isResource();
 
 	bool isTicket();
@@ -192,6 +198,10 @@ public:
 
 	void setConditionDamage(int damage);
 
+	void setCustomizationString(string& cust);
+
+	void setCustomizationVariable(unsigned char type, unsigned int value);
+
 	SceneObject* getContainer();
 
 	unicode& getName();
@@ -200,7 +210,7 @@ public:
 
 	string& getTemplateTypeName();
 
-	string& getCustomizationString();
+	void getCustomizationString(string& appearance);
 
 	int getObjectSubType();
 
@@ -214,6 +224,9 @@ public:
 
 	int getCondition();
 
+protected:
+	string _param0_setCustomizationString__string_;
+	string _param0_getCustomizationString__string_;
 };
 
 class TangibleObjectHelper : public ORBClassHelper {

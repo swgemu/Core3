@@ -75,13 +75,10 @@ interface TangibleObject implements SceneObject {
 	
 	boolean isWeapon();
 	boolean isArmor();
-
+	boolean isClothing();
 	boolean isResource();
-
 	boolean isTicket();
-	
 	boolean isTicketCollector();
-
 	boolean isSurveyTool();
 
 	// setters
@@ -91,13 +88,17 @@ interface TangibleObject implements SceneObject {
 
 	void setConditionDamage(int damage);
 	
+	void setCustomizationString(string cust);
+	
+	void setCustomizationVariable(unsigned char type, unsigned int value);
+	
 	// getters
 	SceneObject getContainer();
 
 	unicode getName();
 	string getTemplateName();
 	string getTemplateTypeName();
-	string getCustomizationString();
+	void getCustomizationString(string appearance);
 
 	int getObjectSubType();
 

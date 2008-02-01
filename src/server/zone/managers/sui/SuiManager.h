@@ -54,7 +54,6 @@ class Player;
 class SuiManager : public Logger {
 	ZoneProcessServerImplementation* server;
 	
-	
 public:
 	SuiManager(ZoneProcessServerImplementation* serv);
 	
@@ -73,6 +72,8 @@ public:
 	
 	void handleTicketPurchaseMessageBox(uint32 boxID, Player* player);
 	void handleTicketCollectorRespones(uint32 boxID, Player* player, uint32 cancel, int ticketIndex);
+	
+	void handleColorPicker(uint32 boxID, Player* player, uint32 cancel, const string& value);
 	
 };
 

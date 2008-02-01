@@ -51,6 +51,7 @@ which carries forward this exception.
 #include "../../objects.h"
 
 #include "../../objects/player/sui/listbox/SuiListBoxImplementation.h"
+#include "../../objects/player/sui/colorpicker/SuiColorPickerImplementation.h"
 
 #include "../bazaar/BazaarManager.h"
 #include "../bazaar/BazaarManagerImplementation.h"
@@ -73,11 +74,8 @@ void RadialManager::handleRadialRequest(Player* player, Packet* pack) {
 	
 	SceneObject* object = zone->lookupObject(objectid); 
 	
-	if (object == NULL) {
-		object = player->getInventoryItem(objectid);
-		if (object == NULL)
-			object = player->getDatapadItem(objectid);
-	}
+	if (object == NULL)
+		object = player->getPlayerItem(objectid);
 	
 	if (object == NULL) {
 		sendDefaultRadialResponse(player, omr);
@@ -118,6 +116,11 @@ void RadialManager::handleRadialRequest(Player* player, Packet* pack) {
 			surveyTool = (SurveyTool*) tano;
 			sendRadialResponseForSurveyTools(player, surveyTool, omr);
 			return;
+		case TangibleObjectImplementation::ARMOR:
+			if (sendRadialResponseForClothing(player, (Armor*) tano, omr))
+				return;
+			
+			break;
 		}
 		break;
 	}
@@ -205,6 +208,9 @@ void RadialManager::handleSelection(int radialID, Player* player, SceneObject* o
 		
 		handleVehicleStore(obj);
 		return;
+	case 68: // SERVER_MENU1 using to change color on wearables (temporary)
+		handleWearableColorChange(player, obj);
+		break;
 	case 136: // SURVEY_TOOL_OPTIONS
 		break;
 	case 137: // SURVEY_TOOL_SET_RANGE
@@ -290,7 +296,7 @@ void RadialManager::sendRadialResponseForGuildTerminals(Player* player, GuildTer
 	player->sendMessage(omr);
 }
 
-void RadialManager::sendRadialResponseForBazaar(long objectId, Player* player) {
+void RadialManager::sendRadialResponseForBazaar(uint64 objectId, Player* player) {
 	Zone* zone = player->getZone();
 	
 	BazaarManager* bazaarManager = zone->getZoneServer()->getBazaarManager();
@@ -406,6 +412,28 @@ void RadialManager::handleTrade(Player* player, SceneObject* obj) {
 	}
 }
 
+void RadialManager::handleWearableColorChange(Player* player, SceneObject* obj) {
+	if (!obj->isTangible())
+		return;
+	
+	TangibleObject* tano = (TangibleObject*) obj;
+	
+	if (!tano->isArmor())
+		return;
+	
+	Armor* wearable = (Armor*) tano;
+	
+	if (player->getInventoryItem(wearable->getObjectID()) == NULL)
+		return;
+	
+	SuiColorPickerImplementation* sui = new SuiColorPickerImplementation(player, wearable->getObjectID(), 0xBABE);
+
+	player->addSuiBox(sui->deploy());
+	player->sendMessage(sui->generateMessage());
+	
+	return;
+}
+
 void RadialManager::sendRadialResponseForSurveyTools(Player* player, SurveyTool* surveyTool, ObjectMenuResponse* omr) {
 	omr->addRadialItem(0, 136, 3, "@sui:tool_options");
 	omr->addRadialItem(4, 137, 3, "@sui:survey_range");
@@ -449,4 +477,17 @@ void RadialManager::sendRadialResponseForSurveyToolRange(Player* player, SceneOb
 	player->sendMessage(suiToolRangeBox->generateMessage());
 	
 	player->setSurveyTool((SurveyTool*)obj);
+}
+
+bool RadialManager::sendRadialResponseForClothing(Player* player, Armor* object, ObjectMenuResponse* omr) {
+	if (player->getInventoryItem(object->getObjectID()) != NULL) {
+		omr->addRadialItem(0, 68, 3, "Change color");
+		omr->finish();
+
+		player->sendMessage(omr);
+		
+		return true;
+	}
+	
+	return false;
 }

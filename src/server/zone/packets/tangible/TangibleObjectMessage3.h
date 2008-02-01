@@ -63,7 +63,9 @@ public:
 
 		insertInt(1);
 		
-		insertAscii(tano->getCustomizationString());
+		string app;
+		tano->getCustomizationString(app);
+		insertAscii(app);
 
 		insertInt(0);
 		insertInt(0);

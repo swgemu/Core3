@@ -124,6 +124,8 @@ void ArmorImplementation::initialize() {
 	type = 0;
 	
 	sliced = false;
+	
+	customizationVars.setVariable(2, System::random(150));
 
 	stringstream loggingname;
 	loggingname << "Armor = 0x" << objectID;

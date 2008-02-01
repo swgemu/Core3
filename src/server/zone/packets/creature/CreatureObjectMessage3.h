@@ -63,7 +63,9 @@ public:
 		
 		insertInt(0x0085E5CA);
 
-		insertAscii(creo->getCharacterApperance());
+		string appearance;
+		creo->getCharacterApperance(appearance);
+		insertAscii(appearance);
 
 		insertInt(0);
 		insertInt(0);

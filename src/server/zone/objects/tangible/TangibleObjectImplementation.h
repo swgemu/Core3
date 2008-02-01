@@ -52,6 +52,7 @@ which carries forward this exception.
 #include "../scene/SceneObject.h"
 
 #include "TangibleObject.h"
+#include "CustomizationVariables.h"
 
 class Zone;
 class CreatureObject;
@@ -77,8 +78,8 @@ protected:
 	unicode name;
 	string templateTypeName;
 	string templateName;
-	
-	string customizationString;
+
+	CustomizationVariables customizationVars;
 
 	int objectCount;
 
@@ -269,7 +270,7 @@ public:
 	}
 
 	inline void setCustomizationString(string& cust) {
-		customizationString = cust;
+		customizationVars = cust;
 	}
 	
 	inline void setMaxCondition(int condition) {
@@ -278,6 +279,10 @@ public:
 
 	inline void setConditionDamage(int damage) {
 		conditionDamage = damage;
+	}
+	
+	inline void setCustomizationVariable(uint8 type, uint16 value) {
+		customizationVars.setVariable(type, value);
 	}
 
 	inline bool isPersistent() {
@@ -304,8 +309,8 @@ public:
 		return templateName;
 	}
 
-	inline string& getCustomizationString() {
-		return customizationString;
+	inline void getCustomizationString(string& appearance) {
+		return customizationVars.toString(appearance);
 	}
 
 	inline string& getTemplateTypeName() {
@@ -330,6 +335,10 @@ public:
 	
 	inline bool isArmor() {
 		return (objectSubType == ARMOR);
+	}
+	
+	inline bool isClothing() {
+		return (objectSubType == CLOTHING);
 	}
 	
 	inline bool isResource() {

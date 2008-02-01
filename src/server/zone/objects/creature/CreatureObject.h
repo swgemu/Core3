@@ -415,7 +415,7 @@ public:
 
 	string& getTerrainName();
 
-	string& getCharacterApperance();
+	void getCharacterApperance(string& appearance);
 
 	bool isOvert();
 
@@ -700,8 +700,6 @@ public:
 	bool verifyBankCredits(int creditsToRemove);
 
 protected:
-	string _return_getCharacterApperance;
-
 	string _return_getGuildName;
 
 	string _return_getMood;
@@ -1058,7 +1056,7 @@ public:
 
 	string& getTerrainName();
 
-	string& getCharacterApperance();
+	void getCharacterApperance(string& appearance);
 
 	bool isOvert();
 
@@ -1358,6 +1356,7 @@ protected:
 	string _param0_setRaceName__string_;
 	string _param0_setSpeciesName__string_;
 	string _param0_setMood__string_;
+	string _param0_getCharacterApperance__string_;
 	string _param0_getSkillMod__string_;
 	string _param0_hasSkillMod__string_;
 	string _param0_sendSystemMessage__string_;

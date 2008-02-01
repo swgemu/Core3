@@ -60,6 +60,7 @@ IDL_SOURCES = server/zone/Zone.idl \
 				server/zone/objects/player/sui/messagebox/SuiMessageBox.idl \
 				server/zone/objects/player/sui/transferbox/SuiTransferBox.idl \
 				server/zone/objects/player/sui/inputbox/SuiInputBox.idl \
+				server/zone/objects/player/sui/colorpicker/SuiColorPicker.idl \
 				server/zone/objects/tangible/TangibleObject.idl \
 				server/zone/objects/tangible/Container.idl \
 				server/zone/objects/tangible/Inventory.idl \

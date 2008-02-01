@@ -51,6 +51,7 @@ which carries forward this exception.
 #include "../scene/SceneObjectImplementation.h"
 
 #include "../../objects/player/Races.h"
+#include "../../objects/tangible/CustomizationVariables.h"
 
 #include "skills/Skill.h"
 #include "skillmods/SkillModList.h"
@@ -82,7 +83,7 @@ protected:
 	unicode characterName; //character name
 	string terrainName;
 
-	string customization;
+	CustomizationVariables customization;
 	string raceName; //species
 	string speciesName; //species
 
@@ -1132,8 +1133,8 @@ public:
 		return terrainName;
 	}
 
-	inline string& getCharacterApperance() {
-		return customization;
+	inline void getCharacterApperance(string& appearance) {
+		customization.toString(appearance);
 	}
 	
 	inline string& getRaceName() {

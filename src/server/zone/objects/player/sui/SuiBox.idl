@@ -55,6 +55,7 @@ interface SuiBox {
 	boolean isListBox();
 	boolean isMessageBox();
 	boolean isTransferBox();
+	boolean isColorPicker();
 
 	unsigned long getBoxID();
 	unsigned long getUsingObjectID();

@@ -173,12 +173,24 @@ bool SuiBox::isTransferBox() {
 		return ((SuiBoxImplementation*) _impl)->isTransferBox();
 }
 
-unsigned long long SuiBox::getBoxID() {
+bool SuiBox::isColorPicker() {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
 		ORBMethodInvocation invocation(this, 14);
+
+		return invocation.executeWithBooleanReturn();
+	} else
+		return ((SuiBoxImplementation*) _impl)->isColorPicker();
+}
+
+unsigned long long SuiBox::getBoxID() {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 15);
 
 		return invocation.executeWithUnsignedLongReturn();
 	} else
@@ -190,7 +202,7 @@ unsigned long long SuiBox::getUsingObjectID() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 15);
+		ORBMethodInvocation invocation(this, 16);
 
 		return invocation.executeWithUnsignedLongReturn();
 	} else
@@ -202,7 +214,7 @@ Player* SuiBox::getPlayer() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 16);
+		ORBMethodInvocation invocation(this, 17);
 
 		return (Player*) invocation.executeWithObjectReturn();
 	} else
@@ -245,12 +257,15 @@ Packet* SuiBoxAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* inv) {
 		resp->insertBoolean(isTransferBox());
 		break;
 	case 14:
-		resp->insertLong(getBoxID());
+		resp->insertBoolean(isColorPicker());
 		break;
 	case 15:
-		resp->insertLong(getUsingObjectID());
+		resp->insertLong(getBoxID());
 		break;
 	case 16:
+		resp->insertLong(getUsingObjectID());
+		break;
+	case 17:
 		resp->insertLong(getPlayer()->_getORBObjectID());
 		break;
 	default:
@@ -290,6 +305,10 @@ bool SuiBoxAdapter::isMessageBox() {
 
 bool SuiBoxAdapter::isTransferBox() {
 	return ((SuiBoxImplementation*) impl)->isTransferBox();
+}
+
+bool SuiBoxAdapter::isColorPicker() {
+	return ((SuiBoxImplementation*) impl)->isColorPicker();
 }
 
 unsigned long long SuiBoxAdapter::getBoxID() {

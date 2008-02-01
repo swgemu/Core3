@@ -62,7 +62,9 @@ public:
 
 		insertInt(0);
 		
-		insertAscii(weao->getCustomizationString());
+		string app;
+		weao->getCustomizationString(app);
+		insertAscii(app);
 
 		insertInt(0);
 		insertInt(0);

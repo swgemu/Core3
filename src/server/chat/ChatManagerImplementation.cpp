@@ -71,6 +71,9 @@ which carries forward this exception.
 #include "../zone/managers/player/PlayerMapImplementation.h"
 
 #include "../zone/objects/player/sui/listbox/SuiListBoxImplementation.h"
+#include "../zone/objects/player/sui/colorpicker/SuiColorPickerImplementation.h"
+
+#include "../zone/objects/tangible/CustomizationVariables.h"
 
 ChatManagerImplementation::ChatManagerImplementation(ZoneServer* serv, int initsize) : ChatManagerServant(), Mutex("ChatManager") {
 	server = serv;
@@ -585,12 +588,7 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 				delete guild;
 			}*/
 		} else if (cmd == "@npcc") {
-		 	if (userManager->isAdmin(player->getFirstName())) {
-		 		LairObjectImplementation* lair = new LairObjectImplementation(0x13B1178, player->getNewItemID());
-		 		TangibleObject* tano = lair->deploy();
-		 		tano->initializePosition(player->getPositionX(), 0xFFFFFFFF, player->getPositionY());
-		 		tano->insertToZone(player->getZone());
-		 		
+		 	if (userManager->isAdmin(player->getFirstName())) {	
 		 	}
 		} else if (cmd == "@setAdminLevel") {
 		 	if (userManager->isAdmin(player->getFirstName())) {

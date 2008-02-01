@@ -139,6 +139,8 @@ which carries forward this exception.
 
 #include "packets/tangible/TangibleObjectMessage3.h"
 #include "packets/tangible/TangibleObjectMessage6.h"
+#include "packets/tangible/TangibleObjectDeltaMessage3.h"
+
 #include "packets/tangible/WeaponObjectMessage3.h"
 
 #include "packets/intangible/IntangibleObjectMessage3.h"
