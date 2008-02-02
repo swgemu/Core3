@@ -788,7 +788,7 @@ void ItemManagerImplementation::savePlayerItem(Player* player, TangibleObject* i
 
 void ItemManagerImplementation::createPlayerWeapon(Player* player, Weapon* item) {
 	try { 
-		string apperance;
+		string apperance = "";
 		string itemApp;
 		item->getCustomizationString(itemApp);
 		BinaryData cust(itemApp);
@@ -826,7 +826,7 @@ void ItemManagerImplementation::createPlayerWeapon(Player* player, Weapon* item)
 
 void ItemManagerImplementation::createPlayerArmor(Player* player, Armor* item) {
 	try {
-		string apperance;
+		string apperance = "";
 		string itemApp;
 		item->getCustomizationString(itemApp);
 		BinaryData cust(itemApp);
@@ -887,11 +887,11 @@ void ItemManagerImplementation::createPlayerAttachment(Player* player, Attachmen
 		stringstream query;
 		query << "INSERT INTO `character_items` "
 			  << "(`item_id`,`character_id`,`name`,`template_crc`,`template_type`,`template_name`,"
-			  << "`skillmod0_type`,`skillmod0_value`,`skillmod1_type`,`skillmod1_value`,`skillmod2_type`,`skillmod2_value`)"
+			  << "`skillmod0_type`,`skillmod0_value`,`skillmod1_type`,`skillmod1_value`,`skillmod2_type`,`skillmod2_value`,`appearance`)"
 			  << " VALUES(" << item->getObjectID() << "," << player->getCharacterID() 
 			  << ",'" << item->getName().c_str() << "'," << item->getObjectCRC() << "," << item->getObjectSubType() << ",'" << item->getTemplateName() << "',"
 			  << item->getSkillMod0Type() << "," << item->getSkillMod0Value() << "," << item->getSkillMod1Type() << "," 
-			  << item->getSkillMod1Value() << "," << item->getSkillMod2Type() << "," << item->getSkillMod2Value() << ")";
+			  << item->getSkillMod1Value() << "," << item->getSkillMod2Type() << "," << item->getSkillMod2Value() << ",''" << ")";
 		ServerDatabase::instance()->executeStatement(query);
 
 		item->setPersistent(true);

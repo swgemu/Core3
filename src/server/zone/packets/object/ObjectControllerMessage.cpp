@@ -1034,7 +1034,8 @@ void ObjectControllerMessage::parseServerDestroyObject(Player* player, Message* 
 	
 	TangibleObject* item = (TangibleObject*) player->getInventoryItem(objid);
 	if (item != NULL) {
-		item->setEquipped(0);
+		if (item->isEquipped())
+			player->changeCloth(objid);
 		
 		itemManager->deletePlayerItem(player, item);
 		
