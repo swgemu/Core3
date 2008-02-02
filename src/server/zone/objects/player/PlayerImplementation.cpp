@@ -605,6 +605,7 @@ void PlayerImplementation::resetArmorEncumbrance() {
 		
 		if (item->isEquipped() && item->isArmor()) {
 			item->setEquipped(false);
+			unsetArmorSkillMods((Armor*)item);
 			changeArmor(item->getObjectID(), true);
 		
 		}
@@ -2037,6 +2038,7 @@ void PlayerImplementation::applyAttachment(uint64 attachmentID, uint64 targetID)
 	int attachmentIndex;
 	
 	bool done = false;
+	bool setMods = false;
 
 	while (!done) {
 		done = true;
@@ -2044,7 +2046,17 @@ void PlayerImplementation::applyAttachment(uint64 attachmentID, uint64 targetID)
 		skillModType = attachment->getSkillModType(attachmentIndex);
 		skillModValue = attachment->getSkillModValue(attachmentIndex);
 		
+		if (armor->isEquipped()) {
+			unsetArmorSkillMods(armor);
+			setMods = true;
+		}
+		
 		int armorIndex = armor->addSkillMod(skillModType, skillModValue);
+		
+		if (setMods) {
+			setArmorSkillMods(armor);
+			setMods = false;
+		}
 		
 		switch (armorIndex) {
 		case (-1): // add failed
