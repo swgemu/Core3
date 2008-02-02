@@ -260,7 +260,7 @@ void BazaarManagerImplementation::addSaleItem(Player* player, long long objectid
 		stringstream query2;
 		query2 << "INSERT into `bazaar_items` (objectid, description, item_type, ownerid, ownername,"
 			<< " price, auction, sold, expire, terminalid, planet, buyerid) "
-			<< "VALUES (" << objectid << ",'" << description << "'," << itemType << "," << player->getObjectID()
+			<< "VALUES (" << objectid << ",'\\" << description << "'," << itemType << "," << player->getObjectID()
 			<< ",'" << player->getCharacterName().c_str() << "'," << price << "," << auctionout << ",0," 
 			<< expire << "," << bazaarid << "," << planet << ",0);";
 	
