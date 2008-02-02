@@ -58,7 +58,9 @@ class ItemManager;
 class ObjectControllerMessage : public BaseMessage {
 public:
 	ObjectControllerMessage(uint64 objid, uint32 header1, uint32 header2, bool comp = true);
-		
+	
+	static void parseAttachmentDragDrop(Player* player, Message* pack);
+	
 	static bool parseDataTransform(Player* player, Message* pack);
 	static uint64 parseDataTransformWithParent(Player* player, Message* pack);
 	
@@ -98,7 +100,7 @@ public:
     
     static void parseServerSit(Player* player, Message* pack);
     
-    static void parseServerDestoryObject(Player* player, Message* pack);
+    static void parseServerDestroyObject(Player* player, Message* pack);
     
     static void parseWaypointCreate(Player* player, Message* pack);
     static void parseWaypointCommand(Player* player, Message* pack);

@@ -45,7 +45,7 @@ void LootManager::lootCorpse(Player* player, Creature* creature) {
 		}
 		
 		Container* lootContainer = creature->getLootContainer();
-			
+
 		if (lootContainer != NULL && lootContainer->objectsSize() > 0) {
 			for (int i = lootContainer->objectsSize() - 1; i >= 0; --i) {
 				TangibleObject* lootItem = (TangibleObject*) lootContainer->getObject(i);
@@ -107,12 +107,16 @@ void LootManager::createLoot(Creature* creature) {
 
 	int weaponDropRate = 1500;
 	int armorDropRate = 1500;
-	int junkDropRate = 1250;
+	int junkDropRate = 1100;
 	int creditDropRate = 1500;
+	int attachmentDropRate = 1500;
 	
 	creature->setCashCredits(0);
 
 	int itemcount = System::random(2) + 1;
+	
+	if (creatureLevel == 500)
+		itemcount = itemcount + 10;
 
 	for (int i = 0; i < itemcount; ++i) {
 		if (System::random(armorDropRate) + creatureLevel > 1000) 
@@ -127,6 +131,8 @@ void LootManager::createLoot(Creature* creature) {
 		if (System::random(creditDropRate) + creatureLevel > 1000)
 			creature->setCashCredits(creatureLevel * System::random(1234) / 25);
 		
+		if (System::random(attachmentDropRate) + creatureLevel > 1000)
+			createAttachmentLoot(creature, creatureLevel);
 	}
 }
 
@@ -134,7 +140,9 @@ void LootManager::createWeaponLoot(Creature* creature, int creatureLevel) {
 	Weapon* item = NULL;
 	WeaponImplementation* itemImpl = NULL;
 	
-	switch (System::random(12)) {
+	uint32 objectCRC = creature->getObjectCRC();
+	
+	switch (System::random(13)) {
 	case 0 :	// UNARMED
 		itemImpl = new UnarmedMeleeWeaponImplementation(creature, 
 				"object/weapon/melee/special/shared_vibroknuckler.iff",	unicode("a Vibroknuckler"), "vibroknuckler", false);
@@ -213,7 +221,27 @@ void LootManager::createWeaponLoot(Creature* creature, int creatureLevel) {
 		itemImpl->setDamageType(WeaponImplementation::ACID);
 		itemImpl->setArmorPiercing(WeaponImplementation::MEDIUM);
 		break;
-	case 13 :	// FLAMETHROWER
+	case 13 :	// POLEARM
+		if (objectCRC == 0xAA197516 || objectCRC == 0xF0663601 || objectCRC == 0x158DC349 || 
+			objectCRC == 0xB0DC0219 || objectCRC == 0x1FA893FD || objectCRC == 0x90D8EBF8 ||
+			objectCRC == 0xAC722907 || objectCRC == 0x2D98A9B3 || objectCRC == 0xD84925C2 ||
+			objectCRC == 0x514A2CBF || objectCRC == 0x5861C6A3 || objectCRC == 0x889ADF8D ||
+			objectCRC == 0x44F934A9) {
+				itemImpl = new PolearmMeleeWeaponImplementation(creature, 
+						"object/weapon/melee/polearm/shared_lance_controllerfp_nightsister.iff", unicode("a Nightsister Lance"), "lance_controllerfp_nightsister", false);
+				itemImpl->setDamageType(WeaponImplementation::KINETIC);
+				itemImpl->setArmorPiercing(WeaponImplementation::NONE);
+				itemImpl->setMinDamage(7);
+				itemImpl->setMaxDamage(133);
+				itemImpl->setDot0Attribute(WeaponImplementation::HEALTH);
+				itemImpl->setDot0Type(WeaponImplementation::DISEASE);
+				itemImpl->setDot0Potency(70);
+				itemImpl->setDot0Strength(40);
+				itemImpl->setDot0Duration(1200);
+				itemImpl->setDot0Uses(8000);
+		}
+		break;
+	case 14 :	// FLAMETHROWER
 		RifleRangedWeaponImplementation* flamerImpl = new RifleRangedWeaponImplementation(creature, 
 				"object/weapon/ranged/rifle/shared_rifle_flame_thrower.iff", unicode("a Flamethrower"), "rifle_flame_thrower", false);
 		itemImpl->setDamageType(WeaponImplementation::HEAT);
@@ -562,6 +590,20 @@ void LootManager::createJunkLoot(Creature* creature) {
 	if (itemImpl != NULL) {
 		item = itemImpl->deploy();
 
+		creature->addLootItem(item);
+	}
+}
+
+void LootManager::createAttachmentLoot(Creature* creature, int creatureLevel) {
+	Attachment* item = NULL;
+	AttachmentImplementation* itemImpl = NULL;
+	
+	itemImpl = new AttachmentImplementation(creature->getNewItemID(), AttachmentImplementation::ARMOR);
+	
+	if (itemImpl != NULL) {
+		item = itemImpl->deploy();
+
+		item->setSkillMods(creatureLevel);
 		creature->addLootItem(item);
 	}
 }

@@ -63,7 +63,8 @@ public:
 	void createWeaponLoot(Creature* creature, int creatureLevel);
 	void createArmorLoot(Creature* creature, int creatureLevel);
 	void createJunkLoot(Creature* creature);
-
+	void createAttachmentLoot(Creature* creature, int creatureLevel);
+	
 };
 
 #endif /*LOOTMANAGER_H_*/

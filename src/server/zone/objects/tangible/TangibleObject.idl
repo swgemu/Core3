@@ -76,6 +76,9 @@ interface TangibleObject implements SceneObject {
 	boolean isWeapon();
 	boolean isArmor();
 	boolean isClothing();
+	
+	boolean isAttachment();
+
 	boolean isResource();
 	boolean isTicket();
 	boolean isTicketCollector();

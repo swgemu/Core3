@@ -387,6 +387,8 @@ public:
 	bool setArmorEncumbrance(Armor* armor, bool forced);
 	void unsetArmorEncumbrance(Armor* armor);
 	
+	void applyAttachment(uint64 attachmentID, uint64 targetID);
+	
 	void setItemSkillMod(int type, int value);
 	
 	void setFactionRank(string fac) {

@@ -200,6 +200,14 @@ public:
 	static const int CARBINE = 131083;
 	static const int RIFLE = 131084;
 	
+	static const int WEAPONPOWERUP = 524288;
+	static const int MELEEWEAPONPOWERUP = 524289;
+	static const int RANGEDWEAPONPOWERUP = 524290;
+	static const int THROWNWEAPONPOWERUP = 524291;
+	static const int HEAVYWEAPONPOWERUP = 524292;
+	static const int MINEPOWERUP = 524293;
+	static const int SPECIALHEAVYWEAPONPOWERUP = 524294;
+	
 	static const int DEED = 8388608;
 	static const int BUILDINGDEED = 8388609;
 	static const int INSTALLATIONDEED = 8388610;
@@ -339,6 +347,10 @@ public:
 	
 	inline bool isClothing() {
 		return (objectSubType == CLOTHING);
+	}
+	
+	inline bool isAttachment() {
+		return (objectSubType == ARMORATTACHMENT || objectSubType == CLOTHINGATTACHMENT);
 	}
 	
 	inline bool isResource() {

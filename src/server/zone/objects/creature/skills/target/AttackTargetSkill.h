@@ -197,7 +197,7 @@ public:
 				armor->setUpdated(true);
 			}
 			
-			if (weapon != NULL && System::random(1) == 1) {
+			if (weapon != NULL && System::random(10) == 1) {
 				weapon->setConditionDamage(weapon->getConditionDamage() + 1);
 				weapon->setUpdated(true);
 			}
@@ -265,7 +265,7 @@ public:
 				armor->setUpdated(true);
 			}
 			
-			if (weapon != NULL && System::random(1) == 1) {
+			if (weapon != NULL && System::random(10) == 1) {
 				weapon->setConditionDamage(weapon->getConditionDamage() + 1);
 				weapon->setUpdated(true);
 			}
@@ -326,7 +326,7 @@ public:
 				armor->setUpdated(true);
 			}
 			
-			if (weapon != NULL && System::random(1) == 1) {
+			if (weapon != NULL && System::random(10) == 1) {
 				weapon->setConditionDamage(weapon->getConditionDamage() + 1);
 				weapon->setUpdated(true);
 			}

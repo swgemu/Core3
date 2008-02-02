@@ -59,6 +59,8 @@ import "PlayerObject";
 import "../tangible/weapons/Weapon";
 import "../tangible/wearables/Armor";
 
+import "../tangible/attachment/Attachment";
+
 import "../tangible/Datapad";
 import "../tangible/surveytool/SurveyTool";
 
@@ -156,6 +158,8 @@ interface Player implements CreatureObject {
 	void setWeaponSkillMods(Weapon weapon);
 	void setArmorSkillMods(Armor armor);
 	boolean setArmorEncumbrance(Armor armor, boolean forced);
+	
+	void applyAttachment(unsigned long attachmentID, unsigned long targetID);
 	
 	void createItems();
 	void loadItems();

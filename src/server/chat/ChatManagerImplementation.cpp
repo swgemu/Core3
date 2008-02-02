@@ -774,18 +774,30 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 			
 			player->addSuiBox(sui->deploy());
 			player->sendMessage(sui->generateMessage());
-		} /*else if (cmd == "@open") {
+		}/* else if (cmd == "@open") {
 					CreatureObject* target = (CreatureObject*)player->getTarget();
 					if (target != NULL) {
-						Message* packet = new Message();
-						packet->insertShort(0x04);
-						packet->insertInt(0xDCA57409);
-						packet->insertLong(target->getLootContainer()->getObjectID());
-						packet->insertInt(0);
-						packet->insertShort(0x00);
-						player->sendMessage(packet);
+						
+						Container* lootContainer = target->getLootContainer();
+						
+						if (lootContainer != NULL) {
+							lootContainer->sendTo(player, false);
+						
+							BaseMessage* packet = new BaseMessage();
+							packet->insertShort(0x04);
+							packet->insertInt(0xDCA57409);
+							packet->insertLong(lootContainer->getObjectID());
+							packet->insertInt(0);
+							packet->insertShort(0x00);
+							player->sendMessage(packet);
+							
+							for (int i = 0; i < lootContainer->objectsSize(); ++i)
+								lootContainer->getObject(i)->sendTo(player);
+								
+							lootContainer->close(player);
+						}
 					}
-		}*/ else if (cmd == "@giveItemTemp") {
+		} */else if (cmd == "@giveItemTemp") {
 			//Give TANO
 			string itemType;
 			tokenizer.getStringToken(itemType);
@@ -801,6 +813,14 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 				FireworkImplementation* itemImpl = new FireworkImplementation(player, 0x7C540DEB, unicode("a Firework"), "object/tangible/firework/shared_firework_s04.iff");
 				TangibleObject* item = itemImpl->deploy();
 
+				player->addInventoryItem(item);
+				
+				item->sendTo(player);
+			} else if (userManager->isAdmin(player->getFirstName())&& itemType == "AA") {
+				AttachmentImplementation* itemImpl = new AttachmentImplementation(player->getNewItemID(), AttachmentImplementation::ARMOR);
+				itemImpl->setSkillMods(System::random(500));
+				TangibleObject* item = itemImpl->deploy();
+				
 				player->addInventoryItem(item);
 				
 				item->sendTo(player);
@@ -1369,5 +1389,6 @@ void ChatManagerImplementation::destroyRoom(ChatRoom* room) {
 	
 	delete room;
 }
+
 
 

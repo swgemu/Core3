@@ -112,6 +112,8 @@ which carries forward this exception.
 #include "objects/tangible/surveytool/SurveyToolImplementation.h"
 #include "objects/tangible/resource/ResourceContainer.h"
 #include "objects/tangible/resource/ResourceContainerImplementation.h"
+#include "objects/tangible/attachment/Attachment.h"
+#include "objects/tangible/attachment/AttachmentImplementation.h"
 
 #include "objects/tangible/weapons/Weapon.h"
 #include "objects/tangible/weapons/WeaponImplementation.h"

@@ -477,7 +477,7 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player, Message* 
 		parseSetWaypointName(player, pack);
 		break;
 	case (0xE7AEC4FB):
-		parseServerDestoryObject(player, pack);
+		parseServerDestroyObject(player, pack);
 		break;
 	case (0xC3EDA6B6): // setwaypointactivestatus
 		parseSetWaypointActiveStatus(player, pack);
@@ -554,6 +554,13 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player, Message* 
 	case (0xF7262A75):
 		//parseResourceContainerTransfer(player, pack);
 		break;
+	case (0x8b36dd88): // attach CA/AA to armor/clothing
+		parseAttachmentDragDrop(player, pack);
+		break;
+	case (0xab559978): // attach Powerup to weapon
+//		parsePowerupDragDrop(player, pack);
+		break;
+	
 	default:
 		target = pack->parseLong();
 		
@@ -567,6 +574,20 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player, Message* 
 	}
 	
 	player->clearQueueAction(actioncntr);
+}
+
+void ObjectControllerMessage::parseAttachmentDragDrop(Player* player, Message* pack) {
+	uint64 attachmentID = pack->parseLong();
+	unicode unicodeID;
+	
+	pack->parseUnicode(unicodeID);
+	StringTokenizer tokenizer(unicodeID.c_str());
+	
+	if (tokenizer.hasMoreTokens()) {
+		uint64 targetID = tokenizer.getLongToken();
+		
+		player->applyAttachment(attachmentID, targetID);		
+	}
 }
 
 void ObjectControllerMessage::parseCommandQueueClear(Player* player, Message* pack) {
@@ -1000,7 +1021,7 @@ void ObjectControllerMessage::parseSetWaypointName(Player* player, Message* pack
 	player->addWaypoint(wp);
 }
 
-void ObjectControllerMessage::parseServerDestoryObject(Player* player, Message* pack) {
+void ObjectControllerMessage::parseServerDestroyObject(Player* player, Message* pack) {
 	//NOTE: this is probably used for more than deleteing waypoints.
 	uint64 objid = pack->parseLong(); //get the id
 

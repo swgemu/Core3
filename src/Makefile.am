@@ -107,6 +107,7 @@ core3_IDLS =	server/zone/Zone.cpp \
 		server/zone/objects/tangible/lair/LairObject.cpp \
 		server/zone/objects/tangible/surveytool/SurveyTool.cpp \
 		server/zone/objects/tangible/resource/ResourceContainer.cpp \
+		server/zone/objects/tangible/attachment/Attachment.cpp \
 		server/zone/objects/tangible/holocron/Holocron.cpp \
 		server/zone/objects/tangible/firework/Firework.cpp \
 		server/zone/objects/intangible/IntangibleObject.cpp \
@@ -163,6 +164,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/lair/LairObjectImplementation.cpp \
 		server/zone/objects/tangible/surveytool/SurveyToolImplementation.cpp \
     	server/zone/objects/tangible/resource/ResourceContainerImplementation.cpp \
+    	server/zone/objects/tangible/attachment/AttachmentImplementation.cpp \
     	server/zone/objects/tangible/ticket/TicketImplementation.cpp \
     	server/zone/objects/tangible/ticketcollector/TicketCollectorImplementation.cpp \
 		server/zone/objects/static/StaticObjectImplementation.cpp \

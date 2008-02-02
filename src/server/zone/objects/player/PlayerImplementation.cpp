@@ -2015,6 +2015,68 @@ void PlayerImplementation::unsetArmorEncumbrance(Armor* armor) {
 
 }
 
+void PlayerImplementation::applyAttachment(uint64 attachmentID, uint64 targetID) {
+	
+	Attachment* attachment = (Attachment*) getInventoryItem(attachmentID);
+	Armor* armor = (Armor*) getInventoryItem(targetID);
+		
+	if (armor == NULL || attachment == NULL)
+		return;
+	
+	armor->wlock();
+	attachment->wlock();
+	
+	int mod0Value = attachment->getSkillMod0Value();
+	int mod1Value = attachment->getSkillMod1Value();
+	int mod2Value = attachment->getSkillMod2Value();
+	
+	int skillModType;
+	int skillModValue;
+	
+	int armorIndex;
+	int attachmentIndex;
+	
+	bool done = false;
+
+	while (!done) {
+		done = true;
+		attachmentIndex = attachment->getBestSkillMod();
+		skillModType = attachment->getSkillModType(attachmentIndex);
+		skillModValue = attachment->getSkillModValue(attachmentIndex);
+		
+		int armorIndex = armor->addSkillMod(skillModType, skillModValue);
+		
+		switch (armorIndex) {
+		case (-1): // add failed
+			break;
+		case (-2): // equal or lesser value, remove skill mod from attachment and try again
+			attachment->setSkillModValue(attachmentIndex, 0);
+			attachment->setUpdated(true);
+			done = false;
+			break;
+		case (-3): // we overwrote the skill mod with a higher one.  delete the attachment.
+			armor->unlock();
+			attachment->unlock();
+			attachment->remove(_this);
+			return;
+		default: // skill mod was added successfully
+			armor->unlock();
+			attachment->unlock();
+			attachment->remove(_this);
+			return;
+		}
+	}
+	// this is for the case when we pulled off the skill mod but the attachment only had one mod)
+	if (attachment->isUpdated()) {
+		attachment->setSkillMod0Value(mod0Value);
+		attachment->setSkillMod1Value(mod1Value);
+		attachment->setSkillMod2Value(mod2Value);
+		attachment->setUpdated(false);
+	}
+	armor->unlock();
+	attachment->unlock();
+}
+
 void PlayerImplementation::setOvert() {
 	if (!(pvpStatusBitmask & OVERT_FLAG))
 		pvpStatusBitmask |= OVERT_FLAG;

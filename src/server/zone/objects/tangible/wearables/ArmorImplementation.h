@@ -151,6 +151,15 @@ public:
 	void repairArmor(Player* player);
 	
 	void setArmorStats(int modifier);
+	
+	int addSkillMod(int skillModType, int skillModValue);
+	
+	void setSocket(int index, int type, int value);
+	void setSocketType(int index, int type);
+	void setSocketValue(int index, int type);
+	
+	int getSocketType(int index);
+	int getSocketValue(int index);
 
 	// setters
 	inline void setRating(int rat) {
@@ -294,7 +303,7 @@ public:
 	}
 	
 	inline void setSocket3Type(int socketType) {
-		socket2Type = socketType;
+		socket3Type = socketType;
 	}
 	
 	inline void setSocket0Value(int socketValue) {
@@ -447,15 +456,15 @@ public:
 	}
 	
 	inline int getSocket1Type() {
-		return socket0Type;
+		return socket1Type;
 	}
 	
 	inline int getSocket2Type() {
-		return socket0Type;
+		return socket2Type;
 	}
 	
 	inline int getSocket3Type() {
-		return socket0Type;
+		return socket3Type;
 	}
 	
 	inline int getSocket0Value() {

@@ -131,6 +131,7 @@ TangibleObject* ItemManagerImplementation::createPlayerObject(Player* player, Re
 	WeaponImplementation* weaponitem = NULL;
 	ArmorImplementation* armoritem = NULL;
 	ResourceContainerImplementation* resourceItem = NULL;
+	AttachmentImplementation* attachmentItem = NULL;
 	
 	bool equipped = result->getBoolean(6);
 	
@@ -257,12 +258,12 @@ TangibleObject* ItemManagerImplementation::createPlayerObject(Player* player, Re
 		armoritem->setLightSaber(result->getFloat(47));
 		armoritem->setLightSaberIsSpecial(result->getBoolean(48));
 		armoritem->setSliced(result->getBoolean(67));
-		armoritem->setSkillMod0Type(result->getInt(68));
+		/*armoritem->setSkillMod0Type(result->getInt(68));
 		armoritem->setSkillMod0Value(result->getInt(69));
 		armoritem->setSkillMod1Type(result->getInt(70));
 		armoritem->setSkillMod1Value(result->getInt(71));
 		armoritem->setSkillMod2Type(result->getInt(72));
-		armoritem->setSkillMod2Value(result->getInt(73));
+		armoritem->setSkillMod2Value(result->getInt(73));*/
 		armoritem->setSockets(result->getInt(74));
 		armoritem->setSocket0Type(result->getInt(75));
 		armoritem->setSocket0Value(result->getInt(76));
@@ -310,6 +311,26 @@ TangibleObject* ItemManagerImplementation::createPlayerObject(Player* player, Re
 		resourceItem->setHeatResistance(result->getInt(93));
 		resourceItem->setConductivity(result->getInt(94));
 		resourceItem->setEntangleResistance(result->getInt(95));
+		break;
+	case TangibleObjectImplementation::CLOTHINGATTACHMENT:
+		item = new AttachmentImplementation(objectid, AttachmentImplementation::CLOTHING);
+		attachmentItem = (AttachmentImplementation*) item;
+		attachmentItem->setSkillMod0Type(result->getInt(68));
+		attachmentItem->setSkillMod0Value(result->getInt(69));
+		attachmentItem->setSkillMod1Type(result->getInt(70));
+		attachmentItem->setSkillMod1Value(result->getInt(71));
+		attachmentItem->setSkillMod2Type(result->getInt(72));
+		attachmentItem->setSkillMod2Value(result->getInt(73));
+		break;
+	case TangibleObjectImplementation::ARMORATTACHMENT:
+		item = new AttachmentImplementation(objectid, AttachmentImplementation::ARMOR);
+		attachmentItem = (AttachmentImplementation*) item;
+		attachmentItem->setSkillMod0Type(result->getInt(68));
+		attachmentItem->setSkillMod0Value(result->getInt(69));
+		attachmentItem->setSkillMod1Type(result->getInt(70));
+		attachmentItem->setSkillMod1Value(result->getInt(71));
+		attachmentItem->setSkillMod2Type(result->getInt(72));
+		attachmentItem->setSkillMod2Value(result->getInt(73));
 		break;
 	default:
 		item = new TangibleObjectImplementation(objectid, objectname, objecttemp, objectcrc, equipped);
@@ -661,7 +682,9 @@ void ItemManagerImplementation::unloadPlayerItems(Player* player) {
 			else if (item->isArmor())
 				createPlayerArmor(player, (Armor*) item);
 			else if (item->isResource())
-				createPlayerResource(player, (ResourceContainer*)item);
+				createPlayerResource(player, (ResourceContainer*) item);
+			else if (item->isAttachment())
+				createPlayerAttachment(player, (Attachment*) item);
 			else
 				createPlayerItem(player, item);
 		} else if (item->isUpdated()) {
@@ -696,7 +719,7 @@ void ItemManagerImplementation::createPlayerItem(Player* player, TangibleObject*
 
 void ItemManagerImplementation::savePlayerItem(Player* player, TangibleObject* item) {
 	try {
-		string apperance;
+		string apperance = "";
 		string itemApp;
 		item->getCustomizationString(itemApp);
 		BinaryData cust(itemApp);
@@ -739,9 +762,18 @@ void ItemManagerImplementation::savePlayerItem(Player* player, TangibleObject* i
 			query << ", acid = " << ((Armor*) item)->getAcid();
 			query << ", lightsaber = " << ((Armor*) item)->getLightSaber();
 			
-			query << ", sliced = " << ((Armor*) item)->isSliced() << " ";
+			query << ", sliced = " << ((Armor*) item)->isSliced();
+			
+			query << ", sockets = " << ((Armor*) item)->getSockets();
+			query << ", socket0_type = " << ((Armor*) item)->getSocket0Type();
+			query << ", socket0_value = " << ((Armor*) item)->getSocket0Value();
+			query << ", socket1_type = " << ((Armor*) item)->getSocket1Type();
+			query << ", socket1_value = " << ((Armor*) item)->getSocket1Value();
+			query << ", socket2_type = " << ((Armor*) item)->getSocket2Type();
+			query << ", socket2_value = " << ((Armor*) item)->getSocket2Value();
+			query << ", socket3_type = " << ((Armor*) item)->getSocket3Type();
+			query << ", socket3_value = " << ((Armor*) item)->getSocket3Value() << " ";
 		}
-		
 		else if (item->isResource()) {
 			query << ", contents = " << ((ResourceContainer*)item)->getContents() << " ";
 		}
@@ -842,6 +874,24 @@ void ItemManagerImplementation::createPlayerResource(Player* player, ResourceCon
 			  << "," << item->getFlavor() << "," << item->getPotentialEnergy() << "," << item->getMalleability() << "," << item->getToughness()
 			  << "," << item->getShockResistance() << "," << item->getColdResistance() << "," << item->getHeatResistance()
 			  << "," << item->getConductivity() << "," << item->getEntangleResistance() << ")";
+		ServerDatabase::instance()->executeStatement(query);
+
+		item->setPersistent(true);
+	} catch (DatabaseException& e) {
+		cout << e.getMessage() << "\n";
+	}
+}
+
+void ItemManagerImplementation::createPlayerAttachment(Player* player, Attachment* item) {
+	try {
+		stringstream query;
+		query << "INSERT INTO `character_items` "
+			  << "(`item_id`,`character_id`,`name`,`template_crc`,`template_type`,`template_name`,"
+			  << "`skillmod0_type`,`skillmod0_value`,`skillmod1_type`,`skillmod1_value`,`skillmod2_type`,`skillmod2_value`)"
+			  << " VALUES(" << item->getObjectID() << "," << player->getCharacterID() 
+			  << ",'" << item->getName().c_str() << "'," << item->getObjectCRC() << "," << item->getObjectSubType() << ",'" << item->getTemplateName() << "',"
+			  << item->getSkillMod0Type() << "," << item->getSkillMod0Value() << "," << item->getSkillMod1Type() << "," 
+			  << item->getSkillMod1Value() << "," << item->getSkillMod2Type() << "," << item->getSkillMod2Value() << ")";
 		ServerDatabase::instance()->executeStatement(query);
 
 		item->setPersistent(true);

@@ -565,18 +565,18 @@ void ArmorImplementation::setArmorStats(int modifier) {
 		acid = acid + (modifier / 10) + (luck / 10);
 	}
 	
-	if (playerRoll > 12500 && System::random(3) == 1) {
+	/*if (playerRoll > 45000 && System::random(3) == 1) {
 		skillMod0Type = System::random(28) + 1;
 		skillMod0Value = luck / (System::random(3) + 9);
 	}
-	if (playerRoll > 15000 && System::random(2) == 1) {
+	if (playerRoll > 75000 && System::random(2) == 1) {
 		skillMod1Type = System::random(28) + 1;
 		skillMod1Value = luck / (System::random(3) + 9);
 	}
-	if (playerRoll > 45000) {
+	if (playerRoll > 125000) {
 		skillMod2Type = System::random(28) + 1;
 		skillMod2Value = luck / (System::random(3) + 9);
-	}
+	}*/
 	
 	if (playerRoll > 15000 && System::random(3) == 1) {
 		stun += System::random(9) + 1;
@@ -621,7 +621,7 @@ void ArmorImplementation::setArmorStats(int modifier) {
 	if (mindEncumbrance < 0) 
 		mindEncumbrance = 0;
 	
-	if (skillMod0Value > 25)
+	/*if (skillMod0Value > 25)
 		skillMod0Value = 25;
 
 	if (skillMod1Value > 25)
@@ -638,7 +638,7 @@ void ArmorImplementation::setArmorStats(int modifier) {
 	if (skillMod1Type == skillMod0Type || skillMod1Type == skillMod2Type) {
 		skillMod1Type = 0;
 		skillMod1Value = 0;
-	}
+	}*/
 }
 
 void ArmorImplementation::sliceArmor(Player* player){
@@ -748,4 +748,129 @@ int ArmorImplementation::sliceArmorEncumbrance(){
 	updated = true;
 	
 	return modifier;
+}
+
+void ArmorImplementation::setSocket(int index, int type, int value) {
+	switch (index) {
+	case 0:
+		socket0Value = value;
+		socket0Type = type;
+		break;
+	case 1:
+		socket1Value = value;
+		socket1Type = type;
+		break;
+	case 2:
+		socket2Value = value;
+		socket2Type = type;
+		break;
+	case 3:
+		socket3Value = value;
+		socket3Type = type;
+		break;
+	}
+}
+
+void ArmorImplementation::setSocketValue(int index, int value) {
+	switch (index) {
+	case 0:
+		socket0Value = value;
+		break;
+	case 1:
+		socket1Value = value;
+		break;
+	case 2:
+		socket2Value = value;
+		break;
+	case 3:
+		socket3Value = value;
+		break;
+	}
+}
+
+void ArmorImplementation::setSocketType(int index, int type) {
+	switch (index) {
+	case 0:
+		socket0Type = type;
+		break;
+	case 1:
+		socket1Type = type;
+		break;
+	case 2:
+		socket2Type = type;
+		break;
+	case 3:
+		socket3Type = type;
+		break;
+	}
+}
+
+int ArmorImplementation::getSocketType(int index) {
+	switch (index) {
+	case 0:
+		return socket0Type;
+		break;
+	case 1:
+		return socket1Type;
+		break;
+	case 2:
+		return socket2Type;
+		break;
+	case 3:
+		return socket3Type;
+		break;
+	}
+	return -1;
+}
+
+int ArmorImplementation::getSocketValue(int index) {
+	switch (index) {
+	case 0:
+		return socket0Value;
+		break;
+	case 1:
+		return socket1Value;
+		break;
+	case 2:
+		return socket2Value;
+		break;
+	case 3:
+		return socket3Value;
+		break;
+	}
+	return 0;
+}
+
+int ArmorImplementation::addSkillMod(int skillModType, int skillModValue) {
+
+	if (skillModType == 0 || skillModValue == 0) {
+		return -1;
+	}
+	
+	int i = 0;
+	
+	for (; i < 4; i++) {
+		if (getSocketType(i) == skillModType) {
+			int modValue = getSocketValue(i);
+			
+			if (skillModValue <= modValue)
+				return -2;
+			else if (skillModValue > modValue){
+				setSocketValue(i, skillModValue);
+				updated = true;
+				return -3;
+			}
+		}
+	}
+		
+	if (sockets > 0)
+		for (i = 0; i < 4; i++)
+			if (getSocketValue(i) == 0) {
+				setSocket(i, skillModType, skillModValue);
+				updated = true;
+				sockets--;
+				return i;
+			}
+	
+	return -1;
 }

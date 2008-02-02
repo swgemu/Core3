@@ -42,69 +42,94 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef ITEMMANAGERIMPLEMENTATION_H_
-#define ITEMMANAGERIMPLEMENTATION_H_
+#ifndef ATTACHMENTIMPLEMENTATION_H_
+#define ATTACHMENTIMPLEMENTATION_H_
 
 #include "engine/engine.h"
+#include "Attachment.h"
 
-#include "../../../db/ServerDatabase.h"
+class Player;
 
-#include "../../objects/player/Player.h"
-
-#include "ItemManager.h"
-
-class ZoneServer;
-
-class TangibleObject;
-
-class Weapon;
-class Armor;
-class ResourceContainer;
-
-class ItemManagerImplementation : public ItemManagerServant {
-	ZoneServer* server;
+class AttachmentImplementation : public AttachmentServant {
+protected:
+	int attachmentType;
+		
+	int skillMod0Type;
+	int skillMod0Value;
 	
-	uint64 nextStaticItemID;
+	int skillMod1Type;
+	int skillMod1Value;
+	
+	int skillMod2Type;
+	int skillMod2Value;
 	
 public:
-	ItemManagerImplementation(ZoneServer* serv);
-	
-	void loadStaticWorldObjects();
+	static const int CLOTHING =  1;
+	static const int ARMOR = 2;
 
-	void loadPlayerItems(Player* player);
-	TangibleObject* getPlayerItem(Player* player, uint64 objectid);
-	void loadDefaultPlayerItems(Player* player);
-	void loadDefaultDatapadItems(Player* player);
+public:
+	AttachmentImplementation(uint64 objID, int attachmentType);
 	
-	void loadDefaultPlayerDatapadItems(Player* player);
-	
-	TangibleObject* createPlayerObject(Player* player, ResultSet* result);
-	
-	void unloadPlayerItems(Player* player);
+	virtual ~AttachmentImplementation();
 
-	void createPlayerItem(Player* player, TangibleObject* item);
-
-	void createPlayerWeapon(Player* player, Weapon* item);
-	void createPlayerArmor(Player* player, Armor* item);
-	void createPlayerResource(Player*, ResourceContainer* item);
-	void createPlayerAttachment(Player* player, Attachment* item);
-	void deletePlayerItem(Player* player, TangibleObject* item);
+	void initialize();
 	
-	void savePlayerItem(Player* player, TangibleObject* item);
-
-	void showDbStats(Player* player);
-	void showDbDeleted(Player* player);
+	void remove(Player* player);
 	
-	void purgeDbDeleted(Player* player);
+	void generateAttributes(SceneObject* obj);
+	
+	void generateSkillMods(class AttributeListMessage* alm, int skillModType, int skillModValue);
+	
+	void setSkillModValue(int index, int value);
+	void setSkillModType(int index, int type);
+	
+	void setSkillMods(int modifier);
 
-	// setters and getters
-	inline uint64 getNextStaticObjectID() {
-		return ++nextStaticItemID;
+	inline Attachment* deploy() {
+		return (Attachment*) SceneObjectImplementation::deploy();
+	}
+	inline void setSkillMod0Type(int type) {
+		skillMod0Type = type;
+	}
+	inline void setSkillMod1Type(int type) {
+		skillMod1Type = type;
+	}
+	inline void setSkillMod2Type(int type) {
+		skillMod2Type = type;
+	}	
+	inline void setSkillMod0Value(int value) {
+		skillMod0Value = value;
+	}
+	inline void setSkillMod1Value(int value) {
+		skillMod1Value = value;
+	}
+	inline void setSkillMod2Value(int value) {
+		skillMod2Value = value;
 	}
 	
+	int getSkillModType(int index);
+	int getSkillModValue(int index);
+	
+	int getBestSkillMod();
+	
+	inline int getSkillMod0Type() {
+		return skillMod0Type;
+	}
+	inline int getSkillMod1Type() {
+		return skillMod1Type;
+	}
+	inline int getSkillMod2Type() {
+		return skillMod2Type;
+	}
+	inline int getSkillMod0Value() {
+		return skillMod0Value;
+	}
+	inline int getSkillMod1Value() {
+		return skillMod1Value;
+	}
+	inline int getSkillMod2Value() {
+		return skillMod2Value;
+	}
 };
 
-#endif /*ITEMMANAGERIMPLEMENTATION_H_*/
-
-
-
+#endif /*ATTACHMENTIMPLEMENTATION_H_*/
