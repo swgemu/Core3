@@ -47,7 +47,7 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-class Profession;
+#include "../../objects/player/professions/Profession.h"
 
 class ProfessionMap : public HashTable<string, Profession*> , public HashTableIterator<string, Profession*> {
 	
@@ -64,9 +64,10 @@ class ProfessionMap : public HashTable<string, Profession*> , public HashTableIt
 	}
 
 public:
-	ProfessionMap() : HashTable<string, Profession*>(2000) , HashTableIterator<string, Profession*>(this) {
+	ProfessionMap() : HashTable<string, Profession*>(50) , HashTableIterator<string, Profession*>(this) {
 		setNullValue(NULL);
-	}	
+	}
+
 }; 
 
 #endif /*PROFESSIONMAP_H_*/

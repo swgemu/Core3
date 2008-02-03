@@ -71,6 +71,8 @@ class Weapon;
 
 class Armor;
 
+class Attachment;
+
 class Datapad;
 
 class SurveyTool;
@@ -188,6 +190,8 @@ public:
 	void setArmorSkillMods(Armor* armor);
 
 	bool setArmorEncumbrance(Armor* armor, bool forced);
+
+	void applyAttachment(unsigned long long attachmentID, unsigned long long targetID);
 
 	void createItems();
 
@@ -551,6 +555,8 @@ public:
 	void setArmorSkillMods(Armor* armor);
 
 	bool setArmorEncumbrance(Armor* armor, bool forced);
+
+	void applyAttachment(unsigned long long attachmentID, unsigned long long targetID);
 
 	void createItems();
 

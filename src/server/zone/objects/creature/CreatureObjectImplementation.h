@@ -55,7 +55,6 @@ which carries forward this exception.
 
 #include "skills/Skill.h"
 #include "skillmods/SkillModList.h"
-#include "skills/SkillList.h"
 
 #include "../guild/Guild.h"
 

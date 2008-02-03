@@ -178,8 +178,8 @@ void CreatureManagerImplementation::loadTrainers() {
 		for (int i = 0; professionManager->professionMap.hasNext(); i++) {
 			Profession* prof = professionManager->professionMap.getNextValue();
 			
-			/*if ((int)prof->getName().find("jedi") >= 0 || (int)prof->getName().find("force") >= 0)
-				continue;*/
+			if ((int)prof->getName().find("jedi") >= 0 || (int)prof->getName().find("force") >= 0)
+				continue;
 		
 			TrainerCreature* trainer = spawnTrainer(prof->getName(), "", prof->getName(), 0x8C73B91, -16 - (i*2.25), -5305 );
 		}

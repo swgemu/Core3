@@ -47,7 +47,7 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-#include "Skill.h"
+#include "../../objects/creature/skills/Skill.h"
 
 class SkillList : public HashTable<uint32, Skill*> , public HashTableIterator<uint32, Skill*>{
 	int hash(const uint32& key) {
@@ -55,10 +55,10 @@ class SkillList : public HashTable<uint32, Skill*> , public HashTableIterator<ui
 	}
 
 public:
-	SkillList() : HashTable<uint32, Skill*>(1000), HashTableIterator<uint32, Skill*>(this) {
+	SkillList() : HashTable<uint32, Skill*>(700), HashTableIterator<uint32, Skill*>(this) {
 		setNullValue(NULL);
 	}
-
+		
 	void put(Skill* value) {
 		uint32 crc = value->getNameCRC();
 		HashTable<uint32, Skill*>::put(crc, value);

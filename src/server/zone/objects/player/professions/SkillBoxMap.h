@@ -47,7 +47,7 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-#include "../../objects/player/professions/SkillBox.h"
+#include "SkillBox.h"
 
 class SkillBoxMap : public HashTable<string, SkillBox*> , public HashTableIterator<string, SkillBox*> {
 	
@@ -64,7 +64,7 @@ class SkillBoxMap : public HashTable<string, SkillBox*> , public HashTableIterat
 	}
 
 public:
-	SkillBoxMap() : HashTable<string, SkillBox*>(2000) , HashTableIterator<string, SkillBox*>(this) {
+	SkillBoxMap() : HashTable<string, SkillBox*>(50) , HashTableIterator<string, SkillBox*>(this) {
 		setNullValue(NULL);
 	}	
 }; 

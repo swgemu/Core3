@@ -51,7 +51,7 @@ which carries forward this exception.
 #include "../../objects/creature/skills/skills.h"
 
 #include "../../ZoneProcessServerImplementation.h"
-#include "../../objects/creature/skills/SkillList.h"
+#include "SkillList.h"
 
 SkillList* ScriptAttacksManager::CombatActions = NULL;
 ZoneProcessServerImplementation* ScriptAttacksManager::server = NULL;

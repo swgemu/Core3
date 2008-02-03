@@ -52,9 +52,7 @@ which carries forward this exception.
 #include "../skills/SkillManager.h"
 #include "../../ZoneServer.h"
 
-#include "../../objects/creature/skills/SkillList.h"
 #include "../../objects/player/professions/SkillBox.h"
-#include "SkillBoxMap.h"
 #include "../../objects/player/professions/profession/FourByFourProfession.h"
 #include "../../objects/player/professions/profession/OneByFourProfession.h"
 #include "../../objects/player/professions/profession/PyramidProfession.h"
@@ -73,6 +71,17 @@ ProfessionManager::ProfessionManager(ZoneProcessServerImplementation* serv) {
 
 ProfessionManager::~ProfessionManager() {
 	delete skillManager;
+	
+	for (int i = 0; i < skillBoxMap.size(); ++i)
+		delete skillBoxMap.get(i);
+	
+	for (int i = 0; i < certificationMap.size(); ++i)
+		delete certificationMap.get(i);
+	
+	professionMap.resetIterator();
+	
+	while (professionMap.hasNext())
+		delete professionMap.getNextValue();
 }
 
 void ProfessionManager::loadProfessions(PlayerImplementation* player) {
@@ -428,11 +437,16 @@ void ProfessionManager::loadSkillCommands(SkillBox* skillBox, string& skillComma
 			
 			if (idx >= 0) {
 				Certification* cert = certificationMap.get(command);
-				if (cert == NULL)
+				
+				if (cert == NULL) {
 					cert = new Certification(command);
+					certificationMap.put(command, cert);
+				}
+				
 				skillBox->skillCertifications.add(cert);
 			} else {
 				Skill* skill = skillManager->getSkill(command);
+				
 				if (skill != NULL)
 					skillBox->addSkillCommand(skill);
 			}

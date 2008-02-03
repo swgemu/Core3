@@ -51,7 +51,7 @@ which carries forward this exception.
 
 #include "PlayerObject.h"
 
-#include "../../managers/player/SkillBoxMap.h"
+#include "professions/SkillBoxMap.h"
 #include "professions/XpMap.h"
 
 #include "badges/Badges.h"

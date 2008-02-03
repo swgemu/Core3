@@ -47,8 +47,6 @@ which carries forward this exception.
 
 #include "../skills/SkillManager.h"
 
-#include "../../objects/creature/skills/SkillList.h"
-
 #include "../../objects/player/PlayerImplementation.h"
 #include "../../objects/player/PlayerObjectImplementation.h"
 

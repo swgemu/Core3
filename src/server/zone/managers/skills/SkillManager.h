@@ -47,7 +47,7 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-#include "../../objects/creature/skills/SkillList.h"
+#include "SkillList.h"
 
 class SkillBox;
 class Player;

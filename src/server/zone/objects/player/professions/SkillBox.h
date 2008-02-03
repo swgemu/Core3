@@ -46,7 +46,6 @@ which carries forward this exception.
 #define SKILLBOX_H_
 
 #include "../../../objects/creature/skills/Skill.h"
-#include "../../../objects/creature/skills/SkillList.h"
 #include "../../../objects/creature/skillmods/SkillModList.h"
 
 #include "Certification.h"
@@ -68,18 +67,18 @@ class SkillBox {
 	int skillPointsRequired;
 	int skillRequirementsCount;
 	
-	LinkedList<string> skillRequirements;
+	Vector<string> skillRequirements;
 	SortedVector<SkillBox*> requiredSkills;
-	LinkedList<string> skillPreclusions;
+	Vector<string> skillPreclusions;
 	string skillXpType;
 	
 	int skillXpCost;
 	int skillXpCap;
 	
-	LinkedList<string> skillSpeciesRequired;
+	Vector<string> skillSpeciesRequired;
 	string skillJediStateRequired;
 	
-	LinkedList<string> skillSchematicsGranted;
+	Vector<string> skillSchematicsGranted;
 	
 	bool skillIsSearchable;
 

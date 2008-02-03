@@ -61,6 +61,11 @@ SkillManager::SkillManager(ProfessionManager* profManager) {
 
 SkillManager::~SkillManager() {
 	delete scr;
+	
+	combatActions.resetIterator();
+	
+	while (combatActions.hasNext())
+		delete combatActions.getNextValue();
 }
 
 void SkillManager::loadSkillBox(SkillBox* skillBox, PlayerImplementation* player, bool loadRequirements, bool updateClient) {
