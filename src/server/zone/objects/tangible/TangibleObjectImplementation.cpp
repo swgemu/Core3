@@ -111,6 +111,15 @@ void TangibleObjectImplementation::initialize() {
 	equipped = false;
 	
 	pvpStatusBitmask = 0;
+	
+	itemAttributes = new ItemAttributes();
+}
+
+void TangibleObjectImplementation::parseAttributes() {
+		
+	maxCondition = itemAttributes->getMaxCondition();
+	conditionDamage = (maxCondition - itemAttributes->getCurrentCondition());
+	
 }
 
 void TangibleObjectImplementation::insertToZone(Zone* zone) {

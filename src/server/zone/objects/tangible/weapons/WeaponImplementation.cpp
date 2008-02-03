@@ -52,7 +52,7 @@ which carries forward this exception.
 WeaponImplementation::WeaponImplementation(uint64 objid, uint32 tempCRC, const unicode& n, const string& tempn, bool eqp, int tp, int cat) 
 		: WeaponServant(objid, n, tempn, tempCRC, WEAPON) {
 	type = tp;
-	category = cat;
+	setCategory(cat);
 		
 	equipped = eqp;
 
@@ -66,7 +66,7 @@ WeaponImplementation::WeaponImplementation(CreatureObject* creature, const strin
 	name = n;
 		
 	type = tp;
-	category = cat;
+	setCategory(cat);
 		
 	templateName = tempn;
 
@@ -81,9 +81,9 @@ WeaponImplementation::WeaponImplementation(CreatureObject* creature, const strin
 void WeaponImplementation::initialize() {
 	templateTypeName = "weapon_name";
 
-	conditionDamage = 0;
-	maxCondition = 750;
-	
+	setMaxCondition(750);
+	setConditionDamage(0);
+
 	skillMod0Type = 0;
 	skillMod0Value = 0;
 	
@@ -93,28 +93,28 @@ void WeaponImplementation::initialize() {
 	skillMod2Type = 0;
 	skillMod2Value = 0;
 	
-	damageType = KINETIC;
-	minDamage = 50;
-	maxDamage = 100;
+	setDamageType(KINETIC);
+	setMinDamage(50);
+	setMaxDamage(100);
 	
-	attackSpeed = 1.0f;
+	setAttackSpeed(1.0f);
 	
-	healthAttackCost = 15;
-	actionAttackCost = 10;
-	mindAttackCost = 5;
+	setHealthAttackCost(15);
+	setActionAttackCost(10);
+	setMindAttackCost(5);
 	
 	pointBlankRange = 0;
 	pointBlankAccuracy = 0;
 	
-	idealRange = 2;
-	idealAccuracy = 15;
+	setIdealRange(2);
+	setIdealAccuracy(15);
 			
-	maxRange = 5;
-	maxRangeAccuracy = 0;
+	setMaxRange(5);
+	setMaxRangeAccuracy(0);
 	
-	woundsRatio = 10;
+	setWoundsRatio(10);
 	
-	armorPiercing = NONE;
+	setArmorPiercing(NONE);
 	
 	dot0Type = 0;
 	dot0Attribute = 0;
@@ -145,6 +145,115 @@ void WeaponImplementation::initialize() {
 	
 	setLogging(false);
 	setGlobalLogging(true);
+}
+
+void WeaponImplementation::parseItemAttributes() {
+
+	maxCondition = itemAttributes->getMaxCondition();
+	conditionDamage = maxCondition - itemAttributes->getCurrentCondition();
+	
+	string name = "type";
+	type = itemAttributes->getIntAttribute(name);
+	
+	name = "category";
+	category = itemAttributes->getIntAttribute(name);
+	
+	name = "skillMod0Type";
+	skillMod0Type = itemAttributes->getIntAttribute(name);
+	name = "skillMod0Value";
+	skillMod0Value = itemAttributes->getIntAttribute(name);
+
+	name = "skillMod1Type";
+	skillMod1Type = itemAttributes->getIntAttribute(name);
+	name = "skillMod1Value";
+	skillMod1Value = itemAttributes->getIntAttribute(name);
+	
+	name = "skillMod2Type";
+	skillMod2Type = itemAttributes->getIntAttribute(name);
+	name = "skillMod2Value";
+	skillMod2Value = itemAttributes->getIntAttribute(name);
+	
+	name = "damagetType";
+	damageType = itemAttributes->getIntAttribute(name);
+	
+	name = "attackSpeed";
+	attackSpeed = itemAttributes->getFloatAttribute(name);
+	
+	name = "healthCost";
+	healthAttackCost = itemAttributes->getIntAttribute(name);
+	name = "actionCost";
+	actionAttackCost = itemAttributes->getIntAttribute(name);
+	name = "mindCost";
+	mindAttackCost = itemAttributes->getIntAttribute(name);
+
+	name = "minDamage";
+	minDamage = itemAttributes->getFloatAttribute(name);
+	name = "maxDamage";
+	maxDamage = itemAttributes->getFloatAttribute(name);
+	
+	name = "pointBlankRange";
+	pointBlankRange = itemAttributes->getIntAttribute(name);
+	name = "pointBlankAccuracy";
+	pointBlankAccuracy = itemAttributes->getIntAttribute(name);
+	
+	name = "idealRange";
+	idealRange = itemAttributes->getIntAttribute(name);
+	name = "idealAccuracy";
+	idealAccuracy = itemAttributes->getIntAttribute(name);
+			
+	name = "maxRange";
+	maxRange = itemAttributes->getIntAttribute(name);
+	name = "maxRangeAccuracy";
+	maxRangeAccuracy = itemAttributes->getIntAttribute(name);
+	
+	name = "woundsRatio";
+	woundsRatio = itemAttributes->getIntAttribute(name);
+	
+	name = "armorPiercing";
+	armorPiercing = itemAttributes->getIntAttribute(name);
+	
+	name = "dot0Type";
+	dot0Type = itemAttributes->getIntAttribute(name);
+	name = "dot0Attribute";
+	dot0Attribute = itemAttributes->getIntAttribute(name);
+	name = "dot0Strength";
+	dot0Strength = itemAttributes->getIntAttribute(name);
+	name = "dot0Duration";
+	dot0Duration = itemAttributes->getIntAttribute(name);
+	name = "dot0Potency";
+	dot0Potency = itemAttributes->getIntAttribute(name);
+	name = "dot0Uses";
+	dot0Uses = itemAttributes->getIntAttribute(name);
+
+	name = "dot1Type";
+	dot1Type = itemAttributes->getIntAttribute(name);
+	name = "dot1Attribute";
+	dot1Attribute = itemAttributes->getIntAttribute(name);
+	name = "dot1Strength";
+	dot1Strength = itemAttributes->getIntAttribute(name);
+	name = "dot1Duration";
+	dot1Duration = itemAttributes->getIntAttribute(name);
+	name = "dot1Potency";
+	dot1Potency = itemAttributes->getIntAttribute(name);
+	name = "dot1Uses";
+	dot1Uses = itemAttributes->getIntAttribute(name);
+
+	name = "dot2Type";
+	dot2Type = itemAttributes->getIntAttribute(name);
+	name = "dot2Attribute";
+	dot2Attribute = itemAttributes->getIntAttribute(name);
+	name = "dot2Strength";
+	dot2Strength = itemAttributes->getIntAttribute(name);
+	name = "dot2Duration";
+	dot2Duration = itemAttributes->getIntAttribute(name);
+	name = "dot2Potency";
+	dot2Potency = itemAttributes->getIntAttribute(name);
+	name = "dot2Uses";
+	dot2Uses = itemAttributes->getIntAttribute(name);
+
+	name = "sliced";
+	sliced = itemAttributes->getBooleanAttribute(name);
+		
 }
 
 void WeaponImplementation::sendTo(Player* player, bool doClose) {
@@ -495,24 +604,25 @@ void WeaponImplementation::generateDotAttributes(AttributeListMessage* alm) {
 }
 
 void WeaponImplementation::decayWeapon(int decayRate) {
-	conditionDamage += (maxCondition * decayRate / 100);
+
+	setConditionDamage(conditionDamage + (maxCondition * decayRate / 100));
 
 	if (conditionDamage > maxCondition)
-		conditionDamage = maxCondition;
+		setConditionDamage(maxCondition);
 	
 	if (maxCondition > 0) {
 		float ratio = ((float) conditionDamage) / ((float) maxCondition);
 
 		if (ratio > 0.99) {
-			maxCondition = 1;
-			conditionDamage = 1;
-			maxDamage = 0;
-			minDamage = 0;
+			setMaxCondition(1);
+			setConditionDamage(1);
+			setMaxDamage(0);
+			setMinDamage(0);
 		} else if (ratio > 0.75) {
-			maxDamage = maxDamage - (maxDamage * decayRate / 100);
-			minDamage = minDamage - (minDamage * decayRate / 100);
+			setMaxDamage(maxDamage - (maxDamage * decayRate / 100));
+			setMinDamage(minDamage - (minDamage * decayRate / 100));
 
-			attackSpeed = attackSpeed + (attackSpeed * decayRate / 100);
+			setAttackSpeed(attackSpeed + (attackSpeed * decayRate / 100));
 		}
 	}
 	
@@ -546,8 +656,8 @@ void WeaponImplementation::repairWeapon(Player* player) {
 	
 	player->sendSystemMessage(txt.str());
 
-	maxCondition = (maxCondition - (maxCondition / 100 * decayRate));
-	conditionDamage = 0;
+	setMaxCondition(maxCondition - (maxCondition / 100 * decayRate));
+	setConditionDamage(0);
 	
 	updated = true;
 	
@@ -578,7 +688,7 @@ void WeaponImplementation::setWeaponStats(int modifier){
 	if (playerRoll > 200000) {
 		modifier = modifier + 100;
 		luck = luck + 150;
-		maxDamage = maxDamage * 1.5;
+		setMaxDamage(maxDamage * 1.5);
 		
 		stringstream itemText;
 		itemText << "\\#ffff00" << name.c_str() << " (Legendary)";
@@ -600,114 +710,114 @@ void WeaponImplementation::setWeaponStats(int modifier){
 	}
 	
 	if (luck * System::random(100) > 1700) {
-		minDamage = minDamage + (minDamage * luck / 140) + System::random(luck/10);
-		maxDamage = maxDamage + (maxDamage * luck / 140) + System::random(luck/10);
+		setMinDamage(minDamage + (minDamage * luck / 140) + System::random(luck/10));
+		setMaxDamage(maxDamage + (maxDamage * luck / 140) + System::random(luck/10));
 	}
 	
 	if (luck * System::random(100) > 1700) {	
-		attackSpeed = attackSpeed - (attackSpeed * modifier / 750) - (luck / 500);
+		setAttackSpeed(attackSpeed - (attackSpeed * modifier / 750) - (luck / 500));
 	}
 	
 	if (luck * System::random(100) > 1700) {
-		healthAttackCost = healthAttackCost - (healthAttackCost * luck / 300);
-		actionAttackCost = actionAttackCost - (actionAttackCost * luck / 300);
-		mindAttackCost = mindAttackCost - (mindAttackCost * luck / 300);
+		setHealthAttackCost(healthAttackCost - (healthAttackCost * luck / 300));
+		setActionAttackCost(actionAttackCost - (actionAttackCost * luck / 300));
+		setMindAttackCost(mindAttackCost - (mindAttackCost * luck / 300));
 	}
 
 	if (luck * System::random(100) > 1700)
-		woundsRatio = woundsRatio + (modifier / 15) + (luck / 10);
+		setWoundsRatio(woundsRatio + (modifier / 15) + (luck / 10));
 	
 	if (playerRoll > 12500 && System::random(3) == 1) {
-		skillMod0Type = System::random(28) + 1;
-		skillMod0Value = luck / (System::random(3) + 10);
+		setSkillMod0Type(System::random(28) + 1);
+		setSkillMod0Value(luck / (System::random(3) + 10));
 	}
 	if (playerRoll > 15000 && System::random(2) == 1) {
-		skillMod1Type = System::random(28) + 1;
-		skillMod1Value = luck / (System::random(3) + 10);
+		setSkillMod1Type(System::random(28) + 1);
+		setSkillMod1Value(luck / (System::random(3) + 10));
 	}
 	if (playerRoll > 45000) {
-		skillMod2Type = System::random(28) + 1;
-		skillMod2Value = luck / (System::random(3) + 10);
+		setSkillMod2Type(System::random(28) + 1);
+		setSkillMod2Value(luck / (System::random(3) + 10));
 	}
 	
 	if (playerRoll > 13500 && System::random(1) == 1)	{
 		switch (System::random(4)) {
 		case 1:
-			dot1Type = BLEED;
-			dot1Attribute = (System::random(2) * 3) + 1;
-			dot1Strength = (modifier / 13) + (luck / 2);
-			dot1Duration = ((luck * 4) + modifier) / 7;
-			dot1Potency = System::random(luck / 3) + (luck / 5);
-			dot1Uses = (modifier + luck) * 11;
+			setDot1Type(BLEED);
+			setDot1Attribute((System::random(2) * 3) + 1);
+			setDot1Strength((modifier / 13) + (luck / 2));
+			setDot1Duration(((luck * 4) + modifier) / 7);
+			setDot1Potency(System::random(luck / 3) + (luck / 5));
+			setDot1Uses((modifier + luck) * 11);
 			break;
 		case 2:
-			dot1Type = DISEASE;
-			dot1Attribute = (System::random(2) * 3) + 1;
-			dot1Strength = (modifier / 13) + (luck / 2);
-			dot1Duration = ((luck * 5) + modifier) / 7;
-			dot1Potency = System::random(luck / 3) + (luck / 5);
-			dot1Uses = (modifier + luck) * 11;
-			break;	
+			setDot1Type(DISEASE);
+			setDot1Attribute((System::random(2) * 3) + 1);
+			setDot1Strength((modifier / 13) + (luck / 2));
+			setDot1Duration(((luck * 4) + modifier) / 7);
+			setDot1Potency(System::random(luck / 3) + (luck / 5));
+			setDot1Uses((modifier + luck) * 11);
+			break;
 		case 3:
-			dot1Type = FIRE;
-			dot1Attribute = (System::random(2) * 3) + 1;
-			dot1Strength = (modifier / 13) + (luck / 2);
-			dot1Duration = ((luck * 3) + modifier) / 7;
-			dot1Potency = System::random(luck / 3) + (luck / 5);
-			dot1Uses = (modifier + luck) * 11;
+			setDot1Type(FIRE);
+			setDot1Attribute((System::random(2) * 3) + 1);
+			setDot1Strength((modifier / 13) + (luck / 2));
+			setDot1Duration(((luck * 4) + modifier) / 7);
+			setDot1Potency(System::random(luck / 3) + (luck / 5));
+			setDot1Uses((modifier + luck) * 11);
 			break;
 		case 4:
-			dot1Type = POISON;
-			dot1Attribute = (System::random(2) * 3) + 1;
-			dot1Strength = (modifier / 13) + (luck / 2);
-			dot1Duration = ((luck * 4) + modifier) / 7;
-			dot1Potency = System::random(luck / 3) + (luck / 5);
-			dot1Uses = (modifier + luck) * 11;
+			setDot1Type(POISON);
+			setDot1Attribute((System::random(2) * 3) + 1);
+			setDot1Strength((modifier / 13) + (luck / 2));
+			setDot1Duration(((luck * 4) + modifier) / 7);
+			setDot1Potency(System::random(luck / 3) + (luck / 5));
+			setDot1Uses((modifier + luck) * 11);
 			break;
 		}
 	}
 	
 	if (attackSpeed < 1) 
-		attackSpeed = 1.0f;
+		setAttackSpeed(1.0f);
 	
 	if (healthAttackCost < 0) 
-		healthAttackCost = 0;
+		setHealthAttackCost(0);
 	
 	if (actionAttackCost < 0) 
-		actionAttackCost = 0;
+		setActionAttackCost(0);
 	
 	if (mindAttackCost < 0) 
-		mindAttackCost = 0;
+		setMindAttackCost(0);
 	
 	if (maxDamage > 900)
-		maxDamage = 850 + System::random(50);
+		setMaxDamage(850 + System::random(50));
 	
-	if (type == UNARMED && maxDamage > 500)
-		maxDamage = 450 + System::random(50);
+	if (type == MELEEWEAPON && maxDamage > 500)
+		setMaxDamage(450 + System::random(50));
 	
 	if (dot1Strength > 300)
-		dot1Strength = 250 + System::random(50);
+		setDot1Strength(250 + System::random(50));
 	
 	if (minDamage > maxDamage) 
-		minDamage = round(0.8 * maxDamage);
+		setMinDamage(round(0.8 * maxDamage));
 	
 	if (skillMod0Value > 25)
-		skillMod0Value = 25;
+		setSkillMod0Value(25);
 
 	if (skillMod1Value > 25)
-		skillMod1Value = 25;
+		setSkillMod1Value(25);
 
 	if (skillMod2Value > 25)
-		skillMod2Value = 25;
+		setSkillMod2Value(25);
 	
 	if (skillMod2Type == skillMod1Type || skillMod2Type == skillMod0Type) {
-		skillMod2Type = 0;
-		skillMod2Value = 0;
+		setSkillMod2Type(0);
+		setSkillMod2Value(0);
 	}
 	
 	if (skillMod1Type == skillMod0Type || skillMod1Type == skillMod2Type) {
-		skillMod1Type = 0;
-		skillMod1Value = 0;
+		setSkillMod1Type(0);
+		setSkillMod1Value(0);
 	}
 	
 	equipped = false;
@@ -810,7 +920,6 @@ void WeaponImplementation::generateSkillMods(AttributeListMessage* alm, int skil
 	}
 }
 
-
 void WeaponImplementation::sliceWeapon(Player* player){
 	bool sliceType = System::random(1);
 	int slicePercent;
@@ -849,10 +958,10 @@ int WeaponImplementation::sliceWeaponDamage(){
 		
 	int modifier = System::random(10) + 25;
 	
-	minDamage = (minDamage * modifier / 100) + minDamage;
-	maxDamage = (maxDamage * modifier / 100) + maxDamage;
+	setMinDamage((minDamage * modifier / 100) + minDamage);
+	setMaxDamage((maxDamage * modifier / 100) + maxDamage);
 	
-	sliced = true;
+	setSliced(true);
 	updated = true;
 	
 	return modifier;
@@ -864,12 +973,12 @@ int WeaponImplementation::sliceWeaponSpeed(){
 		
 	int modifier = System::random(10) + 25;
 	
-	attackSpeed = attackSpeed - (attackSpeed * modifier / 100);
+	setAttackSpeed(attackSpeed - (attackSpeed * modifier / 100));
 
 	if (attackSpeed < 1) 
-		attackSpeed = 1.0f;
+		setAttackSpeed(1.0f);
 	
-	sliced = true;
+	setSliced(true);
 	updated = true;
 	
 	return modifier;

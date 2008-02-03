@@ -51,6 +51,8 @@ which carries forward this exception.
 
 #include "../scene/SceneObject.h"
 
+#include "ItemAttributes.h"
+
 #include "TangibleObject.h"
 #include "CustomizationVariables.h"
 
@@ -79,6 +81,8 @@ protected:
 	string templateTypeName;
 	string templateName;
 
+	string attributeString;
+	
 	CustomizationVariables customizationVars;
 
 	int objectCount;
@@ -86,20 +90,15 @@ protected:
 	bool equipped;
 	
 	uint32 pvpStatusBitmask;
+	
+	ItemAttributes* itemAttributes;
 
 public:
-	//static const int ROBE = 1;
-	//static const int WEAPON = 2;
-	//static const int CLOTH = 3;
-	//static const int ARMOR = 4;
 	static const int HAIR = 5;
-	static const int TICKET = 6;
 	static const int TERMINAL = 7;
 	static const int TICKETCOLLECTOR = 8;
-	//static const int INSTRUMENT = 9;
 	static const int LAIR = 10;
 	static const int HOLOCRON = 11;
-	//static const int FIREWORK = 12;
 	static const int SHIPCOMPONENT = 13;
 	
 	static const int RESOURCECONTAINER = 4194304;
@@ -114,10 +113,7 @@ public:
 	static const int ORGANICFOOD = 4194313;
 	static const int ORGANICHIDE = 4194314;
 	static const int ORGANICSTRUCTURAL = 4194315;
-	// static const int RESOURCECONTAINER = 4194316;
-	
-	static const int SURVEYTOOL = 32770;
-	
+		
 	static const int ARMOR = 256;
 	static const int BODYARMOR = 257;
 	static const int HEADARMOR = 258;
@@ -179,7 +175,7 @@ public:
 
 	static const int TOOL = 32768;
 	static const int CRAFTINGTOOL = 32769;
-	//static const int SURVEYTOOL = 32770;
+	static const int SURVEYTOOL = 32770;
 	static const int REPAIRTOOL = 32771;
 	static const int CAMPKIT = 32772;
 	static const int SHIPCOMPONENTREPAIRITEM = 32773;
@@ -199,6 +195,11 @@ public:
 	static const int PISTOL = 131082;
 	static const int CARBINE = 131083;
 	static const int RIFLE = 131084;
+	
+	static const int LIGHTSABER = 33554432;
+	static const int ONEHANDSABER = 33554433;
+	static const int TWOHANDSABER = 33554434;
+	static const int POLEARMSABER = 33554435;
 	
 	static const int WEAPONPOWERUP = 524288;
 	static const int MELEEWEAPONPOWERUP = 524289;
@@ -241,7 +242,14 @@ public:
 	TangibleObjectImplementation(CreatureObject* creature, const unicode& name, const string& tempname, uint32 tempCRC, int tp = 0);
 
 	void initialize();
+
+	// This function should be called for all character items
+	void parseAttributes();
 	
+	virtual void parseItemAttributes() {
+		
+	}
+
 	void insertToZone(Zone* zone);
 	void removeFromZone();
 
@@ -281,12 +289,20 @@ public:
 		customizationVars = cust;
 	}
 	
-	inline void setMaxCondition(int condition) {
-		maxCondition = condition;
+	inline void setCondition(int current, int max){
+		itemAttributes->setCondition(current, max);
+		maxCondition = max;
+		conditionDamage = max - current;
+	}
+	
+	inline void setMaxCondition(int maxCond) {
+		maxCondition = maxCond;
+		itemAttributes->setCondition((maxCond - conditionDamage), maxCond);
 	}
 
 	inline void setConditionDamage(int damage) {
 		conditionDamage = damage;
+		itemAttributes->setCondition((maxCondition - damage), maxCondition);
 	}
 	
 	inline void setCustomizationVariable(uint8 type, uint16 value) {
@@ -329,20 +345,29 @@ public:
 		return objectCount;
 	}
 	
-	bool isEquipped() {
+	inline bool isEquipped() {
 		return equipped;
 	}
 	
+	inline void setAttributes(string& attributestring) {
+		itemAttributes->setAttributes(attributestring);
+	}
+	
+	inline string& getAttributes() {
+		itemAttributes->getAttributeString(attributeString);
+		return attributeString;
+	}
+		
 	inline int getObjectSubType() { 
 		return objectSubType;
 	}
 	
 	inline bool isWeapon() {
-		return (objectSubType == WEAPON);
+		return (objectSubType & WEAPON || objectSubType & LIGHTSABER);
 	}
 	
 	inline bool isArmor() {
-		return (objectSubType == ARMOR);
+		return (objectSubType & ARMOR);
 	}
 	
 	inline bool isClothing() {
@@ -354,12 +379,7 @@ public:
 	}
 	
 	inline bool isResource() {
-		return objectSubType == RESOURCECONTAINER || objectSubType == ENERGYGAS || 
-			objectSubType == ENERGYLIQUID || objectSubType == ENERGYRADIOACTIVE || 
-			objectSubType == ENERGYSOLID || objectSubType == INORGANICCHEMICAL || 
-			objectSubType == INORGANICGAS || objectSubType == INORGANICMINERAL || 
-			objectSubType == WATER || objectSubType == ORGANICFOOD || 
-			objectSubType == ORGANICHIDE || objectSubType == ORGANICSTRUCTURAL;
+		return (objectSubType & RESOURCECONTAINER);
 	}
 	
 	inline bool isSurveyTool() {

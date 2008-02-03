@@ -72,12 +72,33 @@ public:
 
 		instrumentType = insttype;
 		
+		string key = "instrumentType";
+		itemAttributes->setIntAttribute(key, instrumentType);
+		
 		templateTypeName = "obj_n";
 		templateName = tempn;
 		
 		name = n;
 			
 	    setContainer((TangibleObject*) player->getInventory(), 0xFFFFFFFF);
+	}
+	
+	InstrumentImplementation(uint64 objectid, uint32 tempCRC, const unicode& n, const string& tempn, bool equipd)
+		: InstrumentServant(objectid, INSTRUMENT) {
+
+		objectCRC = tempCRC;
+		
+		templateTypeName = "obj_n";
+		templateName = tempn;
+		
+		name = n;
+		
+		equipped = equipd;
+	}
+	
+	void parseItemAttributes() {
+		string key = "instrumentType";
+		instrumentType = itemAttributes->getIntAttribute(key);
 	}
 	
 	int useObject(Player* player) {

@@ -51,38 +51,41 @@ class RifleRangedWeaponImplementation : public RifleRangedWeaponServant {
 
 public:
 	RifleRangedWeaponImplementation(uint64 objid, uint32 tempcrc, const unicode& n, const string& tempn, bool eqp = false) 
-			: RifleRangedWeaponServant(objid, tempcrc, n, tempn, RIFLE, eqp) {
+			: RifleRangedWeaponServant(objid, tempcrc, n, tempn, TangibleObjectImplementation::RIFLE, eqp) {
 		initialize();
 	}
 
 	RifleRangedWeaponImplementation(CreatureObject* creature, const string& temp, const unicode& n, const string& tempn, bool eqp = false) 
-			: RifleRangedWeaponServant(creature, temp, n, tempn, RIFLE, eqp) {
+			: RifleRangedWeaponServant(creature, temp, n, tempn, TangibleObjectImplementation::RIFLE, eqp) {
 		initialize();
 	}
 
 	void initialize() {
-		//objectSubType = RIFLE;
-		damageType = ENERGY;
-		armorPiercing = HEAVY;
-		attackSpeed = 7.4;
+		objectSubType = TangibleObjectImplementation::RIFLE;
+		
+		setType(6);
+		setCategory(0x20);
+		
+		setDamageType(ENERGY);
+		setArmorPiercing(HEAVY);
+		setAttackSpeed(7.4f);
 
-		minDamage = 105;
-		maxDamage = 350;
-		woundsRatio = 15;
+		setMinDamage(105);
+		setMaxDamage(350);
+		setWoundsRatio(15);
 
-		pointBlankAccuracy = -90;
-		pointBlankRange = 0;
+		setPointBlankAccuracy(-90);
+		setPointBlankRange(0);
 
-		idealAccuracy = -32;
-		idealRange = 60;
+		setIdealAccuracy(-32);
+		setIdealRange(60);
 
-		maxRangeAccuracy = 0;
-		maxRange = 64;
+		setMaxRangeAccuracy(0);
+		setMaxRange(64);
 
-		healthAttackCost = 45;
-		actionAttackCost = 39;
-		mindAttackCost = 83;
-		armorPiercing = HEAVY;
+		setHealthAttackCost(45);
+		setActionAttackCost(39);
+		setMindAttackCost(83);
 	}
 	
 };

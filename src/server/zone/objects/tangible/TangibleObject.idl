@@ -112,4 +112,7 @@ interface TangibleObject implements SceneObject {
 	int getConditionDamage();
 	int getMaxCondition();
 	int getCondition();
+	
+	void setAttributes(string attributestring);
+	string getAttributes();
 }

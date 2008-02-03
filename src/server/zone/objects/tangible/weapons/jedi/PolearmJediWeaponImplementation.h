@@ -61,12 +61,15 @@ public:
 	}
 
 	void initialize() {
-		forceCost = 9;
+		setType(9);
+		setCategory(0x30);
+		
+		setForceCost(9);
 
-		attackSpeed = 0.1f;
+		setAttackSpeed(1.0f);
 
-		minDamage = 255;
-		maxDamage = 355;
+		setMinDamage(255);
+		setMaxDamage(355);
 	}
 };
 

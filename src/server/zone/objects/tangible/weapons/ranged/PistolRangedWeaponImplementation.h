@@ -51,38 +51,42 @@ class PistolRangedWeaponImplementation : public PistolRangedWeaponServant {
 	
 public:
 	PistolRangedWeaponImplementation(uint64 objid, uint32 tempcrc, const unicode& n, const string& tempn, bool eqp = false) 
-			: PistolRangedWeaponServant(objid, tempcrc, n, tempn, PISTOL, eqp) {
+			: PistolRangedWeaponServant(objid, tempcrc, n, tempn, TangibleObjectImplementation::PISTOL, eqp) {
 		initialize();
 	}
 
 	PistolRangedWeaponImplementation(CreatureObject* creature, const string& temp, const unicode& n, const string& tempn, bool eqp = false) 
-			: PistolRangedWeaponServant(creature, temp, n, tempn, PISTOL, eqp) {
+			: PistolRangedWeaponServant(creature, temp, n, tempn, TangibleObjectImplementation::PISTOL, eqp) {
 		initialize();
 	}
 
 	void initialize() {
-		//objectSubType = PISTOL;
-		damageType = ENERGY;
-		minDamage = 89;
-		maxDamage = 232;
+		objectSubType = TangibleObjectImplementation::PISTOL;
 		
-		attackSpeed = 3.0f;
+		setType(4);
+		setCategory(0x20);
 		
-		range = 45;
+		setDamageType(ENERGY);
+		setMinDamage(89);
+		setMaxDamage(232);
 		
-		pointBlankAccuracy = -30;
-		pointBlankRange = 0;
+		setAttackSpeed(3.0f);
 		
-		idealAccuracy = 60;
-		idealRange = 30;
+		setRange(45);
+		
+		setPointBlankAccuracy(-30);
+		setPointBlankRange(0);
+		
+		setIdealAccuracy(60);
+		setIdealRange(30);
 			
-		maxRangeAccuracy = -85;
-		maxRange = 44;
-		armorPiercing = LIGHT;
+		setMaxRangeAccuracy(-85);
+		setMaxRange(44);
+		setArmorPiercing(LIGHT);
 		
-		healthAttackCost = 17;
-		actionAttackCost = 30;
-		mindAttackCost = 17;
+		setHealthAttackCost(17);
+		setActionAttackCost(30);
+		setMindAttackCost(17);
 	}
 	
 };

@@ -51,33 +51,37 @@ class PolearmMeleeWeaponImplementation : public PolearmMeleeWeaponServant {
 
 public:
 	PolearmMeleeWeaponImplementation(uint64 objid, uint32 tempcrc, const unicode& n, const string& tempn, bool eqp = false) 
-			: PolearmMeleeWeaponServant(objid, tempcrc, n, tempn, POLEARM, eqp) {
+			: PolearmMeleeWeaponServant(objid, tempcrc, n, tempn, TangibleObjectImplementation::POLEARM, eqp) {
 		initialize();
 	}
 
 	PolearmMeleeWeaponImplementation(CreatureObject* creature, const string& temp, const unicode& n, const string& tempn, bool eqp = false) 
-			: PolearmMeleeWeaponServant(creature, temp, n, tempn, POLEARM, eqp) {
+			: PolearmMeleeWeaponServant(creature, temp, n, tempn, TangibleObjectImplementation::POLEARM, eqp) {
 		initialize();
 	}
 
 	void initialize() {
-		//objectSubType = POLEARM;
-		minDamage = 149;
-		maxDamage = 272;
-		attackSpeed = 4.5f;
+		objectSubType = TangibleObjectImplementation::POLEARM;
 		
-		pointBlankAccuracy = -45;
-		pointBlankRange = 0;
+		setType(3);
+		setCategory(0x10);
 		
-		idealAccuracy = -45;
-		idealRange = 7;
+		setMinDamage(149);
+		setMaxDamage(272);
+		setAttackSpeed(4.5f);
 		
-		maxRangeAccuracy = -45;
-		maxRange = 7;
+		setPointBlankAccuracy(-45);
+		setPointBlankRange(0);
 		
-		healthAttackCost = 91;
-		actionAttackCost = 71;
-		mindAttackCost = 28;
+		setIdealAccuracy(-45);
+		setIdealRange(7);
+		
+		setMaxRangeAccuracy(-45);
+		setMaxRange(7);
+		
+		setHealthAttackCost(91);
+		setActionAttackCost(71);
+		setMindAttackCost(28);
 	}
 };
 

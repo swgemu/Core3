@@ -49,6 +49,7 @@ which carries forward this exception.
 #include "../../creature/CreatureObjectImplementation.h"
 
 #include "../TangibleObject.h"
+//#include "../ItemAttributes.h"
 
 #include "../Inventory.h"
 #include "../InventoryImplementation.h"
@@ -59,6 +60,7 @@ class CombatManager;
 
 class WeaponImplementation : public WeaponServant {
 protected:
+		
 	int type;
 	
 	int category;
@@ -123,7 +125,7 @@ public:
 	static const int MELEE = 0x10;
 	static const int RANGED = 0x20;
 	static const int JEDI = 0x30;
-
+	
 	static const int UNARMED = 0;
 	static const int ONEHANDED = 1;
 	static const int TWOHANDED = 2;
@@ -171,6 +173,8 @@ public:
 
 	void initialize();
 	
+	void parseItemAttributes();
+	
 	void sendTo(Player* player, bool doClose = true);
 	
 	void generateAttributes(SceneObject* obj);
@@ -196,8 +200,9 @@ public:
 
 	// dots
 	inline bool decreaseDot0Uses() {
-		if (dot0Uses != -1) { 
-			--dot0Uses;
+		if (dot0Uses != -1) {
+			string name = "dot0Uses";
+			itemAttributes->setIntAttribute(name, --dot0Uses);
 			return true;
 		} else
 			return false;
@@ -205,7 +210,8 @@ public:
 
 	inline bool decreaseDot1Uses() {
 		if (dot1Uses != -1) { 
-			--dot1Uses;
+			string name = "dot1Uses";
+			itemAttributes->setIntAttribute(name, --dot1Uses);
 			return true;
 		} else
 			return false;
@@ -213,7 +219,8 @@ public:
 
 	inline bool decreaseDot2Uses() {
 		if (dot2Uses != -1) { 
-			--dot2Uses;
+			string name = "dot2Uses";
+			itemAttributes->setIntAttribute(name, --dot2Uses);
 			return true;
 		} else
 			return false;
@@ -222,166 +229,254 @@ public:
 	// setters
 	inline void setDamageType(int type) {
 		damageType = type;
+		string name = "damageType";
+		itemAttributes->setIntAttribute(name, type);
 	}
 	
 	inline void setMinDamage(float minDmg) {
 		minDamage = minDmg;
+		string name = "minDamage";
+		itemAttributes->setFloatAttribute(name, minDmg);
 	}
 
 	inline void setMaxDamage(float maxDmg) {
 		maxDamage = maxDmg;
+		string name = "maxDamage";
+		itemAttributes->setFloatAttribute(name, maxDmg);
 	}
 
 	inline void setAttackSpeed(float attackSpd) {
 		attackSpeed = attackSpd;
+		string name = "attackSpeed";
+		itemAttributes->setFloatAttribute(name, attackSpd);
 	}
 
 	inline void setHealthAttackCost(int healthCost) {
 		healthAttackCost = healthCost;
+		string name = "healthCost";
+		itemAttributes->setIntAttribute(name, healthCost);
 	}
 
 	inline void setActionAttackCost(int actionCost) {
 		actionAttackCost = actionCost;
+		string name = "actionCost";
+		itemAttributes->setIntAttribute(name, actionCost);
 	}
 
 	inline void setMindAttackCost(int mindCost) {
 		mindAttackCost = mindCost;
+		string name = "mindCost";
+		itemAttributes->setIntAttribute(name, mindCost);
 	}
-		
+
+	inline void setType(int tp) {
+		type = tp;
+		string name = "type";
+		itemAttributes->setIntAttribute(name, tp);
+	}
+	
 	inline void setCategory(int cat) {
 		category = cat;
+		string name = "category";
+		itemAttributes->setIntAttribute(name, cat);
 	}
 	
 	inline void setPointBlankRange(int pointBlankRnge) {
 		pointBlankRange = pointBlankRnge;
+		string name = "pointBlankRange";
+		itemAttributes->setIntAttribute(name, pointBlankRnge);
 	}
 	
 	inline void setPointBlankAccuracy(int pointBlankAcc) {
 		pointBlankAccuracy = pointBlankAcc;
+		string name = "pointBlankAccuracy";
+		itemAttributes->setIntAttribute(name, pointBlankAcc);
 	}
 	
 	inline void setMaxRange(int maxRnge) {
 		maxRange = maxRnge;
+		string name = "maxRange";
+		itemAttributes->setIntAttribute(name, maxRnge);		
 	}
 	
 	inline void setMaxRangeAccuracy(int maxRangeAcc) {
 		maxRangeAccuracy = maxRangeAcc;
+		string name = "maxRangeAccuracy";
+		itemAttributes->setIntAttribute(name, maxRangeAcc);
 	}
 	
 	inline void setIdealRange(int idealRnge) {
 		idealRange = idealRnge;
+		string name = "idealRange";
+		itemAttributes->setIntAttribute(name, idealRnge);
 	}
 	
 	inline void setIdealAccuracy(int idealAcc) {
 		idealAccuracy = idealAcc;
+		string name = "idealAccuracy";
+		itemAttributes->setIntAttribute(name, idealAcc);
 	}
 	
 	inline void setWoundsRatio(int woundsRat) {
 		woundsRatio = woundsRat;
+		string name = "woundsRatio";
+		itemAttributes->setIntAttribute(name, woundsRat);
 	}
 	
 	inline void setArmorPiercing(int armorPierce) {
 		armorPiercing = armorPierce;
+		string name = "armorPiercing";
+		itemAttributes->setIntAttribute(name, armorPierce);
 	}
 
 	inline void setDot0Type(int type) {
 		dot0Type = type;
+		string name = "dot0Type";
+		itemAttributes->setIntAttribute(name, type);
 	}
 	
 	inline void setDot0Attribute(int attribute) {
 		dot0Attribute = attribute;
+		string name = "dot0Attribute";
+		itemAttributes->setIntAttribute(name, attribute);
 	}
 	
 	inline void setDot0Strength(int strength) {
 		dot0Strength = strength;
+		string name = "dot0Strength";
+		itemAttributes->setIntAttribute(name, strength);
 	}
 	
 	inline void setDot0Duration(int duration) {
 		dot0Duration = duration;
+		string name = "dot0Duration";
+		itemAttributes->setIntAttribute(name, duration);
 	}
 	
 	inline void setDot0Potency(int potency) {
 		dot0Potency = potency;
+		string name = "dot0Potency";
+		itemAttributes->setIntAttribute(name, potency);
 	}
 	
 	inline void setDot0Uses(int uses) {
 		dot0Uses = uses;
+		string name = "dot0Uses";
+		itemAttributes->setIntAttribute(name, uses);
 	}
 
 	inline void setDot1Type(int type) {
 		dot1Type = type;
+		string name = "dot1Type";
+		itemAttributes->setIntAttribute(name, type);
 	}
 	
 	inline void setDot1Attribute(int attribute) {
 		dot1Attribute = attribute;
+		string name = "dot1Attribute";
+		itemAttributes->setIntAttribute(name, attribute);
 	}
 	
 	inline void setDot1Strength(int strength) {
 		dot1Strength = strength;
+		string name = "dot1Strength";
+		itemAttributes->setIntAttribute(name, strength);
 	}
 	
 	inline void setDot1Duration(int duration) {
 		dot1Duration = duration;
+		string name = "dot1Duration";
+		itemAttributes->setIntAttribute(name, duration);
 	}
 	
 	inline void setDot1Potency(int potency) {
 		dot1Potency = potency;
+		string name = "dot1Potency";
+		itemAttributes->setIntAttribute(name, potency);
 	}
 	
 	inline void setDot1Uses(int uses) {
 		dot1Uses = uses;
+		string name = "dot1Uses";
+		itemAttributes->setIntAttribute(name, uses);
 	}
 	
 	inline void setDot2Type(int type) {
 		dot2Type = type;
+		string name = "dot2Type";
+		itemAttributes->setIntAttribute(name, type);
 	}
 	
 	inline void setDot2Attribute(int attribute) {
 		dot2Attribute = attribute;
+		string name = "dot2Attribute";
+		itemAttributes->setIntAttribute(name, attribute);
 	}
 	
 	inline void setDot2Strength(int strength) {
 		dot2Strength = strength;
+		string name = "dot2Strength";
+		itemAttributes->setIntAttribute(name, strength);
 	}
 	
 	inline void setDot2Duration(int duration) {
 		dot2Duration = duration;
+		string name = "dot2Duration";
+		itemAttributes->setIntAttribute(name, duration);
 	}
 	
 	inline void setDot2Potency(int potency) {
 		dot2Potency = potency;
+		string name = "dot2Potency";
+		itemAttributes->setIntAttribute(name, potency);
 	}
 	
 	inline void setDot2Uses(int uses) {
 		dot2Uses = uses;
+		string name = "dot2Uses";
+		itemAttributes->setIntAttribute(name, uses);
 	}
 
-	inline void setSliced(int hacked) {
+	inline void setSliced(bool hacked) {
 		sliced = hacked;
+		string name = "sliced";
+		itemAttributes->setBooleanAttribute(name, hacked);
 	}
 	
 	inline void setSkillMod0Type(int skillModType) {
 		skillMod0Type = skillModType;
+		string name = "skillMod0Type";
+		itemAttributes->setIntAttribute(name, skillModType);
 	}
 
 	inline void setSkillMod1Type(int skillModType) {
 		skillMod1Type = skillModType;
+		string name = "skillMod1Type";
+		itemAttributes->setIntAttribute(name, skillModType);
 	}
 
 	inline void setSkillMod2Type(int skillModType) {
 		skillMod2Type = skillModType;
+		string name = "skillMod2Type";
+		itemAttributes->setIntAttribute(name, skillModType);
 	}
 	
 	inline void setSkillMod0Value(int skillModValue) {
 		skillMod0Value = skillModValue;
+		string name = "skillMod0Value";
+		itemAttributes->setIntAttribute(name, skillModValue);
 	}
 
 	inline void setSkillMod1Value(int skillModValue) {
 		skillMod1Value = skillModValue;
+		string name = "skillMod1Value";
+		itemAttributes->setIntAttribute(name, skillModValue);
 	}
 	
 	inline void setSkillMod2Value(int skillModValue) {
 		skillMod2Value = skillModValue;
+		string name = "skillMod2Value";
+		itemAttributes->setIntAttribute(name, skillModValue);
 	}
 	
 	// getters

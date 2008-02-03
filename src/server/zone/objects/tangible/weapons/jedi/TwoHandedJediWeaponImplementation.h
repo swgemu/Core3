@@ -61,10 +61,13 @@ public:
 	}
 
 	void initialize() {
-		forceCost = 9;
+		setType(8);
+		setCategory(0x30);
+		
+		setForceCost(9);
 
-		minDamage = 50;		
-		maxDamage = 125;
+		setMinDamage(50);		
+		setMaxDamage(125);
 	}
 };
 

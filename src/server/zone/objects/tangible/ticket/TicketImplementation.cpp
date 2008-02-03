@@ -52,7 +52,7 @@ which carries forward this exception.
 #include "../../../Zone.h"
 
 TicketImplementation::TicketImplementation(Player* player, uint32 tempCRC, const unicode& n, const string& tempn, const string& dpPlanet, const string& dpPoint, const string& arPlanet, const string& arPoint) : 
-	TicketServant(player->getNewItemID(), TICKET) {
+	TicketServant(player->getNewItemID(), TRAVELTICKET) {
 	
 	objectCRC = tempCRC;
 
@@ -62,6 +62,15 @@ TicketImplementation::TicketImplementation(Player* player, uint32 tempCRC, const
 	arrivalPlanet = arPlanet;
 	arrivalPoint = arPoint;
 
+	string key = "departurePlanet";
+	itemAttributes->setStringAttribute(key, departurePlanet);
+	key = "departurePoint";
+	itemAttributes->setStringAttribute(key, departurePoint);
+	key = "arrivalPlanet";
+	itemAttributes->setStringAttribute(key, arrivalPlanet);
+	key = "arrivalPoint";
+	itemAttributes->setStringAttribute(key, arrivalPoint);
+	
 	templateTypeName = "wearables_name";
 	templateName = tempn;
 
@@ -71,6 +80,28 @@ TicketImplementation::TicketImplementation(Player* player, uint32 tempCRC, const
 	
 	setLogging(false);
 	setGlobalLogging(true);
+}
+
+TicketImplementation::TicketImplementation(uint64 objectid, uint32 tempCRC, const unicode& n, const string& tempn) :
+	TicketServant(objectid, TRAVELTICKET) {
+	
+	objectCRC = tempCRC;
+
+	name = n;
+	templateTypeName = "wearables_name";
+	templateName = tempn;
+
+}
+
+void TicketImplementation::parseItemAttributes() {
+	string key = "departurePlanet";
+	departurePlanet = itemAttributes->getStringAttribute(key);
+	key = "departurePoint";
+	departurePoint = itemAttributes->getStringAttribute(key);
+	key = "arrivalPlanet";
+	arrivalPlanet = itemAttributes->getStringAttribute(key);
+	key = "arrivalPoint";
+	arrivalPoint = itemAttributes->getStringAttribute(key);
 }
 
 void TicketImplementation::generateAttributes(SceneObject* obj) {

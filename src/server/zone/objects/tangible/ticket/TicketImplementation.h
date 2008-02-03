@@ -61,6 +61,10 @@ public:
 	TicketImplementation(Player* player, uint32 tempCRC, const unicode& n, const string& tempn, 
 			const string& dpPlanet, const string& dpPoint, const string& arPlanet, const string& arPoint);
 	
+	TicketImplementation(uint64 objectid, uint32 tempCRC, const unicode& n, const string& tempn);
+	
+	void parseItemAttributes();
+
 	void generateAttributes(SceneObject* obj);
 	
 	int useObject(Player* player);

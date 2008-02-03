@@ -59,8 +59,6 @@ interface ItemManager {
 	void unloadPlayerItems(Player player);
 	
 	void createPlayerItem(Player player, TangibleObject item);
-	void createPlayerWeapon(Player player, Weapon item);
-	void createPlayerArmor(Player player, Armor item);
 
 	void savePlayerItem(Player player, TangibleObject item); 
 

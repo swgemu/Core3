@@ -51,38 +51,42 @@ class CarbineRangedWeaponImplementation : public CarbineRangedWeaponServant {
 	
 public:
 	CarbineRangedWeaponImplementation(uint64 objid, uint32 tempcrc, const unicode& n, const string& tempn, bool eqp = false) 
-			: CarbineRangedWeaponServant(objid, tempcrc, n, tempn, CARBINE, eqp) {
+			: CarbineRangedWeaponServant(objid, tempcrc, n, tempn, TangibleObjectImplementation::CARBINE, eqp) {
 		initialize();
 	}
 
 	CarbineRangedWeaponImplementation(CreatureObject* creature, const string& temp, const unicode& n, const string& tempn, bool eqp = false) 
-			: CarbineRangedWeaponServant(creature, temp, n, tempn, CARBINE, eqp) {
+			: CarbineRangedWeaponServant(creature, temp, n, tempn, TangibleObjectImplementation::CARBINE, eqp) {
 		initialize();
 	}
 
 	void initialize() {
-		//objectSubType = CARBINE;
-		damageType = ENERGY;
-		minDamage = 137;
-		maxDamage = 288;
+		objectSubType = TangibleObjectImplementation::CARBINE;
 		
-		attackSpeed = 4.7f;
+		setType(5);
+		setCategory(0x20);
+		
+		setDamageType(ENERGY);
+		setMinDamage(137);
+		setMaxDamage(288);
+		
+		setAttackSpeed(4.7f);
 
-		range = 65;
+		setRange(65);
 		
-		pointBlankAccuracy = -30;
-		pointBlankRange = 0;
+		setPointBlankAccuracy(-30);
+		setPointBlankRange(0);
 		
-		idealAccuracy = 60;
-		idealRange = 45;
+		setIdealAccuracy(60);
+		setIdealRange(45);
 			
-		maxRangeAccuracy = -85;
-		maxRange = 64;
-		armorPiercing = MEDIUM;
+		setMaxRangeAccuracy(-85);
+		setMaxRange(64);
+		setArmorPiercing(MEDIUM);
 		
-		healthAttackCost = 28;
-		actionAttackCost = 46;
-		mindAttackCost = 19;
+		setHealthAttackCost(28);
+		setActionAttackCost(46);
+		setMindAttackCost(19);
 	}
 	
 };

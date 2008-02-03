@@ -60,12 +60,110 @@ ArmorImplementation::ArmorImplementation(CreatureObject* creature, uint32 tempCR
 	initialize();
 }
 
+void ArmorImplementation::parseItemAttributes() {
+	string name = "armorType";
+	type = itemAttributes->getIntAttribute(name);
+
+	maxCondition = itemAttributes->getMaxCondition();
+	conditionDamage = maxCondition - itemAttributes->getCurrentCondition();
+	
+	name = "rating";
+	rating = itemAttributes->getIntAttribute(name);
+	
+	name = "sockets";
+	sockets = itemAttributes->getIntAttribute(name);
+	
+	name = "skillMod0Type";
+	skillMod0Type = itemAttributes->getIntAttribute(name);
+	name = "skillMod0Value";
+	skillMod0Value = itemAttributes->getIntAttribute(name);
+
+	name = "skillMod1Type";
+	skillMod1Type = itemAttributes->getIntAttribute(name);
+	name = "skillMod1Value";
+	skillMod1Value = itemAttributes->getIntAttribute(name);
+	
+	name = "skillMod2Type";
+	skillMod2Type = itemAttributes->getIntAttribute(name);
+	name = "skillMod2Value";
+	skillMod2Value = itemAttributes->getIntAttribute(name);
+	
+	name = "socket0Type";
+	socket0Type = itemAttributes->getIntAttribute(name);
+	name = "socket0Value";
+	socket0Value = itemAttributes->getIntAttribute(name);
+	
+	name = "socket1Type";
+	socket1Type = itemAttributes->getIntAttribute(name);
+	name = "socket1Value";
+	socket1Value = itemAttributes->getIntAttribute(name);
+
+	name = "socket2Type";
+	socket2Type = itemAttributes->getIntAttribute(name);
+	name = "socket2Value";
+	socket2Value = itemAttributes->getIntAttribute(name);
+
+	name = "socket3Type";
+	socket3Type = itemAttributes->getIntAttribute(name);
+	name = "socket3Value";
+	socket3Value = itemAttributes->getIntAttribute(name);
+
+	name = "healthEncumberence";
+	healthEncumbrance = itemAttributes->getIntAttribute(name);
+	name = "actionEncumberence";
+	actionEncumbrance = itemAttributes->getIntAttribute(name);
+	name = "mindEncumberence";
+	mindEncumbrance = itemAttributes->getIntAttribute(name);
+	
+	name = "kinetic";
+	kinetic = itemAttributes->getFloatAttribute(name);
+	name = "energy";
+	energy = itemAttributes->getFloatAttribute(name);
+	name = "electricity";
+	electricity = itemAttributes->getFloatAttribute(name);
+	name = "stun";
+	stun = itemAttributes->getFloatAttribute(name);
+	name = "blast";
+	blast = itemAttributes->getFloatAttribute(name);
+	name = "heat";
+	heat = itemAttributes->getFloatAttribute(name);
+	name = "cold";
+	cold = itemAttributes->getFloatAttribute(name);
+	name = "acid";
+	acid = itemAttributes->getFloatAttribute(name);
+	name = "lightSaber";
+	lightSaber = itemAttributes->getFloatAttribute(name);
+
+	name = "kineticIsSpecial";
+	kineticIsSpecial = itemAttributes->getBooleanAttribute(name);
+	name = "energyIsSpecial";
+	energyIsSpecial = itemAttributes->getBooleanAttribute(name);
+	name = "electricityIsSpecial";
+	electricityIsSpecial = itemAttributes->getBooleanAttribute(name);
+	name = "stunIsSpecial";
+	stunIsSpecial = itemAttributes->getBooleanAttribute(name);
+	name = "blastIsSpecial";
+	blastIsSpecial = itemAttributes->getBooleanAttribute(name);
+	name = "heatIsSpecial";
+	heatIsSpecial = itemAttributes->getBooleanAttribute(name);
+	name = "coldIsSpecial";
+	coldIsSpecial = itemAttributes->getBooleanAttribute(name);
+	name = "acidIsSpecial";
+	acidIsSpecial = itemAttributes->getBooleanAttribute(name);
+	name = "lightSaberIsSpecial";
+	lightSaberIsSpecial = itemAttributes->getBooleanAttribute(name);
+	
+	name = "sliced";
+	sliced = itemAttributes->getBooleanAttribute(name);
+	
+}
+
 void ArmorImplementation::initialize() {
 	objectSubType = ARMOR;
 	
-	rating = LIGHT;
-	conditionDamage = 0;
-	maxCondition = 35000;
+	setRating(LIGHT);
+	setConditionDamage(0);
+	setCondition(35000, 35000);
 	
 	skillMod0Type = 0;
 	skillMod0Value = 0;
@@ -76,7 +174,7 @@ void ArmorImplementation::initialize() {
 	skillMod2Type = 0;
 	skillMod2Value = 0;
 
-	sockets = 4;
+	setSockets(4);
 	
 	socket0Type = 0;
 	socket0Value = 0;
@@ -90,40 +188,40 @@ void ArmorImplementation::initialize() {
 	socket3Type = 0;
 	socket3Value = 0;
 	
-	healthEncumbrance = 100;
-	actionEncumbrance = 100;
-	mindEncumbrance = 100; 	
+	setHealthEncumbrance(100);
+	setActionEncumbrance(100);
+	setMindEncumbrance(100); 	
 	 	
-	kinetic = 30.0f;
+	setKinetic(50.0f);
 	kineticIsSpecial = false;
 
-	energy = 30.0f;
+	setEnergy(50.0f);
 	energyIsSpecial = false;
 
-	electricity = 30.0f;
+	setElectricity(50.0f);
 	electricityIsSpecial = false;
 
-	stun = 0.0f;
+	setStun(0.0f);
 	stunIsSpecial = false;
 
-	blast = 30.0f;
+	setBlast(50.0f);
 	blastIsSpecial = false;
 
-	heat = 30.0f;
+	setHeat(50.0f);
 	heatIsSpecial = false;
 
-	cold = 30.0f;
+	setCold(50.0f);
 	coldIsSpecial = false;
 
-	acid = 30.0f;
+	setAcid(50.0f);
 	acidIsSpecial = false;
 
-	lightSaber = 0.0f;
+	setLightSaber(0.0f);
 	lightSaberIsSpecial = false;
 	
 	type = 0;
 	
-	sliced = false;
+	setSliced(false);
 	
 	customizationVars.setVariable(2, System::random(150));
 
@@ -426,7 +524,7 @@ void ArmorImplementation::generateSkillMods(AttributeListMessage* alm, int skill
 }
 
 void ArmorImplementation::decayArmor(int decayRate) {
-	conditionDamage += (maxCondition * decayRate / 100);
+	setConditionDamage(conditionDamage + (maxCondition * decayRate / 100));
 
 	if (conditionDamage > maxCondition)
 		conditionDamage = maxCondition;
@@ -435,39 +533,40 @@ void ArmorImplementation::decayArmor(int decayRate) {
 		float ratio = ((float) conditionDamage) / ((float) maxCondition);
 
 		if (ratio > 0.99) {
-			rating = 0;
+			setRating(0);
 			maxCondition = 1;
 			conditionDamage = 1;
+			itemAttributes->setCondition(0, 1);
 			
-			kinetic = 0.0f;
-			kineticIsSpecial = false;
-			energy = 0.0f;
-			energyIsSpecial = false;
-			electricity = 0.0f;
-			electricityIsSpecial = false;
-			stun = 0.0f;
-			stunIsSpecial = false;
-			blast = 0.0f;
-			blastIsSpecial = false;
-			heat = 0.0f;
-			heatIsSpecial = false;
-			cold = 0.0f;
-			coldIsSpecial = false;
-			acid = 0.0f;
-			acidIsSpecial = false;
-			lightSaber = 0.0f;
-			lightSaberIsSpecial = false;
+			setKinetic(0.0f);
+			setKineticIsSpecial(false);
+			setEnergy(0.0f);
+			setEnergyIsSpecial(false);
+			setElectricity(0.0f);
+			setElectricityIsSpecial(false);
+			setStun(0.0f);
+			setStunIsSpecial(false);
+			setBlast(0.0f);
+			setBlastIsSpecial(false);
+			setHeat(0.0f);
+			setHeatIsSpecial(false);
+			setCold(0.0f);
+			setColdIsSpecial(false);
+			setAcid(0.0f);
+			setAcidIsSpecial(false);
+			setLightSaber(0.0f);
+			setLightSaberIsSpecial(false);
 			
 		} else if (ratio > 0.75) {
-			kinetic = kinetic - (kinetic * decayRate / 100);
-			energy = energy - (energy * decayRate / 100);
-			electricity = electricity - (electricity * decayRate / 100);
-			stun = stun - (stun * decayRate / 100);
-			blast = blast - (blast * decayRate / 100);
-			heat = heat - (heat * decayRate / 100);
-			cold = cold - (cold * decayRate / 100);
-			acid = acid - (acid * decayRate / 100);
-			lightSaber = lightSaber - (lightSaber* decayRate / 100);
+			setKinetic(kinetic - (kinetic * decayRate / 100));
+			setEnergy(energy - (energy * decayRate / 100));
+			setElectricity(electricity - (electricity * decayRate / 100));
+			setStun(stun - (stun * decayRate / 100));
+			setBlast(blast - (blast * decayRate / 100));
+			setHeat(heat - (heat * decayRate / 100));
+			setCold(cold - (cold * decayRate / 100));
+			setAcid(acid - (acid * decayRate / 100));
+			setLightSaber(lightSaber - (lightSaber* decayRate / 100));
 		}
 	}
 	
@@ -503,6 +602,7 @@ void ArmorImplementation::repairArmor(Player* player) {
 
 	maxCondition = (maxCondition - (maxCondition / 100 * decayRate));
 	conditionDamage = 0;
+	setCondition(maxCondition, maxCondition);
 	
 	updated = true;
 	
@@ -548,21 +648,22 @@ void ArmorImplementation::setArmorStats(int modifier) {
 	}
 	
 	maxCondition = 25000 + (modifier * 10) + (luck * 50);
+	setCondition(maxCondition, maxCondition);
 	
 	if ((luck * System::random(100)) > 2000) {
-		healthEncumbrance = healthEncumbrance - (healthEncumbrance * luck / 300);
-		actionEncumbrance = actionEncumbrance - (actionEncumbrance * luck / 300);
-		mindEncumbrance = mindEncumbrance - (mindEncumbrance * luck / 300);
+		setHealthEncumbrance(healthEncumbrance - (healthEncumbrance * luck / 300));
+		setActionEncumbrance(actionEncumbrance - (actionEncumbrance * luck / 300));
+		setMindEncumbrance(mindEncumbrance - (mindEncumbrance * luck / 300));
 	}
 	
 	if ((luck * System::random(100)) > 2000) {
-		kinetic = kinetic + (modifier / 10) + (luck / 10);
-		energy = energy + (modifier / 10) + (luck / 10);
-		electricity = electricity + (modifier / 10) + (luck / 10);
-		blast = blast + (modifier / 10) + (luck / 10);
-		heat = heat + (modifier / 10) + (luck / 10);
-		cold = cold + (modifier / 10) + (luck / 10);
-		acid = acid + (modifier / 10) + (luck / 10);
+		setKinetic(kinetic + (modifier / 10) + (luck / 10));
+		setEnergy(energy + (modifier / 10) + (luck / 10));
+		setElectricity(electricity + (modifier / 10) + (luck / 10));
+		setBlast(blast + (modifier / 10) + (luck / 10));
+		setHeat(heat + (modifier / 10) + (luck / 10));
+		setCold(cold + (modifier / 10) + (luck / 10));
+		setAcid(acid + (modifier / 10) + (luck / 10));
 	}
 	
 	/*if (playerRoll > 45000 && System::random(3) == 1) {
@@ -579,47 +680,54 @@ void ArmorImplementation::setArmorStats(int modifier) {
 	}*/
 	
 	if (playerRoll > 15000 && System::random(3) == 1) {
-		stun += System::random(9) + 1;
-		stunIsSpecial = true;
+		setStun(stun + System::random(9) + 1);
+		setStunIsSpecial(true);
 	}
 	
-	kineticIsSpecial = System::random(1);
-	energyIsSpecial = System::random(1);
-	electricityIsSpecial = System::random(1);
-	blastIsSpecial = System::random(1);
-	heatIsSpecial = System::random(1);
-	coldIsSpecial = System::random(1);
-	acidIsSpecial = System::random(1);
+	if (System::random(1))
+		setKineticIsSpecial(true);
+	if (System::random(1))
+		setEnergyIsSpecial(true);
+	if (System::random(1))
+		setElectricityIsSpecial(true);
+	if (System::random(1))
+		setBlastIsSpecial(true);
+	if (System::random(1))
+		setHeatIsSpecial(true);
+	if (System::random(1))
+		setColdIsSpecial(true);
+	if (System::random(1))
+		setAcidIsSpecial(true);
 	
 	if (kinetic > 90.0f) 
-		kinetic = 90.0f;
+		setKinetic(90.0f);
 	
 	if (energy > 90.0f) 
-		energy = 90.0f;
+		setEnergy(90.0f);
 	
 	if (electricity > 90.0f) 
-		electricity = 90.0f;
+		setElectricity(90.0f);
 	
 	if (blast > 90.0f) 
-		blast = 90.0f;
+		setBlast(90.0f);
 	
 	if (heat > 90.0f) 
-		heat = 90.0f;
+		setHeat(90.0f);
 	
 	if (cold > 90.0f) 
-		cold = 90.0f;
+		setCold(90.0f);
 	
 	if (acid > 90.0f) 
-		acid = 90.0f;
+		setAcid(90.0f);
 	
 	if (healthEncumbrance < 0) 
-		healthEncumbrance = 0;
+		setHealthEncumbrance(0);
 	
 	if (actionEncumbrance < 0) 
-		actionEncumbrance = 0;
+		setActionEncumbrance(0);
 	
 	if (mindEncumbrance < 0) 
-		mindEncumbrance = 0;
+		setMindEncumbrance(0);
 	
 	/*if (skillMod0Value > 25)
 		skillMod0Value = 25;
@@ -682,53 +790,53 @@ int ArmorImplementation::sliceArmorEffectiveness(){
 	int modifier = System::random(10) + 25;
 
 	if (!kineticIsSpecial) {
-		kinetic = kinetic + (kinetic * modifier / 100);
+		setKinetic(kinetic + (kinetic * modifier / 100));
 		if (kinetic > 90.0f) 
-			kinetic = 90.0f;
+			setKinetic(90.0f);
 	}
 		
 	if (!energyIsSpecial) {
-		energy = energy + (energy * modifier / 100);
+		setEnergy(energy + (energy * modifier / 100));
 		if (energy > 90.0f) 
-			energy = 90.0f;		
+			setEnergy(90.0f);		
 	}
 	if (!electricityIsSpecial) {
-		electricity = electricity + (electricity * modifier / 100);
+		setElectricity(electricity + (electricity * modifier / 100));
 		if (electricity > 90.0f) 
-			electricity = 90.0f;		
+			setElectricity(90.0f);
 	}
 	if (!stunIsSpecial) {
-		stun = stun + (stun * modifier / 100);
+		setStun(stun + (stun * modifier / 100));
 		if (stun > 90.0f)
-			stun = 90.0f;
+			setStun(90.0f);
 	}
 	if (!blastIsSpecial) {
-		blast = blast + (blast * modifier / 100);
+		setBlast(blast + (blast * modifier / 100));
 		if (blast > 90.0f) 
-			blast = 90.0f;
+			setBlast(90.0f);
 	}
 	if (!heatIsSpecial) {
-		heat = heat + (heat * modifier / 100);
+		setHeat(heat + (heat * modifier / 100));
 		if (heat > 90.0f) 
-			heat = 90.0f;
+			setHeat(90.0f);
 	}
 	if (!coldIsSpecial) {
-		cold = cold + (cold * modifier / 100);
+		setCold(cold + (cold * modifier / 100));
 		if (cold > 90.0f) 
-			cold = 90.0f;
+			setCold(90.0f);
 	}
 	if (!acidIsSpecial) {
-		acid = acid + (acid * modifier / 100);
+		setAcid(acid + (acid * modifier / 100));
 		if (acid > 90.0f) 
-			acid = 90.0f;
+			setAcid(90.0f);
 	}
 	if (!lightSaberIsSpecial) {
-		lightSaber = lightSaber + (lightSaber * modifier / 100);
+		setLightSaber(lightSaber + (lightSaber * modifier / 100));
 		if (lightSaber > 90.0f)
-			lightSaber = 90.0f;		
+			setLightSaber(90.0f);
 	}
 
-	sliced = true;
+	setSliced(true);
 	updated = true;
 	
 	return modifier;
@@ -740,11 +848,11 @@ int ArmorImplementation::sliceArmorEncumbrance(){
 		
 	int modifier = System::random(30) + 15;
 	
-	healthEncumbrance = healthEncumbrance - (healthEncumbrance * modifier / 100);
-	actionEncumbrance = actionEncumbrance - (actionEncumbrance * modifier / 100);
-	mindEncumbrance = mindEncumbrance - (mindEncumbrance * modifier / 100);
+	setHealthEncumbrance(healthEncumbrance - (healthEncumbrance * modifier / 100));
+	setActionEncumbrance(actionEncumbrance - (actionEncumbrance * modifier / 100));
+	setMindEncumbrance(mindEncumbrance - (mindEncumbrance * modifier / 100));
 	
-	sliced = true;
+	setSliced(true);
 	updated = true;
 	
 	return modifier;
@@ -753,20 +861,20 @@ int ArmorImplementation::sliceArmorEncumbrance(){
 void ArmorImplementation::setSocket(int index, int type, int value) {
 	switch (index) {
 	case 0:
-		socket0Value = value;
-		socket0Type = type;
+		setSocket0Value(value);
+		setSocket0Type(type);
 		break;
 	case 1:
-		socket1Value = value;
-		socket1Type = type;
+		setSocket1Value(value);
+		setSocket1Type(type);
 		break;
 	case 2:
-		socket2Value = value;
-		socket2Type = type;
+		setSocket2Value(value);
+		setSocket2Type(type);
 		break;
 	case 3:
-		socket3Value = value;
-		socket3Type = type;
+		setSocket3Value(value);
+		setSocket3Type(type);
 		break;
 	}
 }
@@ -774,16 +882,16 @@ void ArmorImplementation::setSocket(int index, int type, int value) {
 void ArmorImplementation::setSocketValue(int index, int value) {
 	switch (index) {
 	case 0:
-		socket0Value = value;
+		setSocket0Value(value);
 		break;
 	case 1:
-		socket1Value = value;
+		setSocket1Value(value);
 		break;
 	case 2:
-		socket2Value = value;
+		setSocket2Value(value);
 		break;
 	case 3:
-		socket3Value = value;
+		setSocket3Value(value);
 		break;
 	}
 }
@@ -791,16 +899,16 @@ void ArmorImplementation::setSocketValue(int index, int value) {
 void ArmorImplementation::setSocketType(int index, int type) {
 	switch (index) {
 	case 0:
-		socket0Type = type;
+		setSocket0Type(type);
 		break;
 	case 1:
-		socket1Type = type;
+		setSocket1Type(type);
 		break;
 	case 2:
-		socket2Type = type;
+		setSocket2Type(type);
 		break;
 	case 3:
-		socket3Type = type;
+		setSocket3Type(type);
 		break;
 	}
 }

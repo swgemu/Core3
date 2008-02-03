@@ -68,16 +68,7 @@ void ItemManagerImplementation::loadPlayerItems(Player* player) {
 		query << "select * from `character_items` where `character_id` = " << player->getCharacterID();
 	
 		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
-		
-		/*if (res->size() == 0) {
-			delete res;
-			
-			loadDefaultPlayerItems(player);
-			loadDefaultPlayerDatapadItems(player);
-			
-			return;
-		}*/
-		
+				
 		while (res->next())	{
 			createPlayerObject(player, res);
 		}
@@ -119,228 +110,119 @@ TangibleObject* ItemManagerImplementation::createPlayerObject(Player* player, Re
 	uint32 objectcrc = result->getUnsignedInt(3);  
 	
 	unicode objectname(result->getString(2));
-	char* objecttemp = result->getString(5);
+	char* objecttemp = result->getString(5); // template_name
 	
-	string apperance = result->getString(96);
-	BinaryData cust(apperance);
+	string appearance = result->getString(10);
+	BinaryData cust(appearance);
 	string custStr;
 	cust.decode(custStr);
 
 	TangibleObjectImplementation* item = NULL;
 	
-	WeaponImplementation* weaponitem = NULL;
-	ArmorImplementation* armoritem = NULL;
-	ResourceContainerImplementation* resourceItem = NULL;
-	AttachmentImplementation* attachmentItem = NULL;
+	bool equipped = result->getBoolean(7);
 	
-	bool equipped = result->getBoolean(6);
-	
-	if (result->getBoolean(7) != 0)	// if NOT deleted
+	if (result->getBoolean(8) != 0) // deleted
 		return NULL;
 	
-	int weapontype;
+	string attributes = result->getString(9);
 	
-	switch (objecttype) {
-	case TangibleObjectImplementation::ROBE:
-		item = new WearableImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
-		break;
-	case TangibleObjectImplementation::WEAPON:
-		weapontype = result->getInt(8);
-		
-		switch (weapontype) {
-		case WeaponImplementation::UNARMED:
+	if (objecttype & TangibleObjectImplementation::WEAPON || objecttype & TangibleObjectImplementation::LIGHTSABER) {	
+		switch (objecttype) {
+		case TangibleObjectImplementation::MELEEWEAPON:
 			item = new UnarmedMeleeWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
 			break;
-		case WeaponImplementation::ONEHANDED:
+		case TangibleObjectImplementation::ONEHANDMELEEWEAPON:
 			item = new OneHandedMeleeWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
 			break;
-		case WeaponImplementation::TWOHANDED:
+		case TangibleObjectImplementation::TWOHANDMELEEWEAPON:
 			item = new TwoHandedMeleeWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
 			break;
-		case WeaponImplementation::POLEARM:
+		case TangibleObjectImplementation::POLEARM:
 			item = new PolearmMeleeWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
 			break;
-		case WeaponImplementation::PISTOL:
+		case TangibleObjectImplementation::PISTOL:
 			item = new PistolRangedWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
 			break;
-		case WeaponImplementation::CARBINE:
+		case TangibleObjectImplementation::CARBINE:
 			item = new CarbineRangedWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
 			break;
-		case WeaponImplementation::RIFLE:
+		case TangibleObjectImplementation::RIFLE:
 			item = new RifleRangedWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
 			break;
-		case WeaponImplementation::ONEHANDSABER:
+		case TangibleObjectImplementation::ONEHANDSABER:
 			item = new OneHandedJediWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
 			break;
-		case WeaponImplementation::TWOHANDSABER:
+		case TangibleObjectImplementation::TWOHANDSABER:
 			item = new TwoHandedJediWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
 			break;
-		case WeaponImplementation::POLEARMSABER:
+		case TangibleObjectImplementation::POLEARMSABER:
 			item = new PolearmJediWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
 			break;
 		}
 		
-		weaponitem = (WeaponImplementation*) item;
-		weaponitem->setCategory(result->getInt(9));
-		weaponitem->setDamageType(result->getInt(10));
-		weaponitem->setMinDamage(result->getFloat(11));
-		weaponitem->setMaxDamage(result->getFloat(12));
-		weaponitem->setAttackSpeed(result->getFloat(13));
-		weaponitem->setHealthAttackCost(result->getInt(14));
-		weaponitem->setActionAttackCost(result->getInt(15));
-		weaponitem->setMindAttackCost(result->getInt(16));
-		weaponitem->setPointBlankAccuracy(result->getInt(17));
-		weaponitem->setPointBlankRange(result->getInt(18));
-		weaponitem->setIdealRange(result->getInt(19));
-		weaponitem->setIdealAccuracy(result->getInt(20));
-		weaponitem->setMaxRange(result->getInt(21));
-		weaponitem->setMaxRangeAccuracy(result->getInt(22));
-		weaponitem->setWoundsRatio(result->getInt(23));
-		weaponitem->setArmorPiercing(result->getInt(24));
-		weaponitem->setConditionDamage(result->getInt(26));
-		weaponitem->setMaxCondition(result->getInt(27));
-		weaponitem->setDot0Type(result->getInt(49));
-		weaponitem->setDot0Attribute(result->getInt(50));
-		weaponitem->setDot0Strength(result->getInt(51));
-		weaponitem->setDot0Duration(result->getInt(52));
-		weaponitem->setDot0Potency(result->getInt(53));
-		weaponitem->setDot0Uses(result->getInt(54));
-		weaponitem->setDot1Type(result->getInt(55));
-		weaponitem->setDot1Attribute(result->getInt(56));
-		weaponitem->setDot1Strength(result->getInt(57));
-		weaponitem->setDot1Duration(result->getInt(58));
-		weaponitem->setDot1Potency(result->getInt(59));
-		weaponitem->setDot1Uses(result->getInt(60));
-		weaponitem->setDot2Type(result->getInt(61));
-		weaponitem->setDot2Attribute(result->getInt(62));
-		weaponitem->setDot2Strength(result->getInt(63));
-		weaponitem->setDot2Duration(result->getInt(64));
-		weaponitem->setDot2Potency(result->getInt(65));
-		weaponitem->setDot2Uses(result->getInt(66));
-		weaponitem->setSliced(result->getBoolean(67));
-		weaponitem->setSkillMod0Type(result->getInt(68));
-		weaponitem->setSkillMod0Value(result->getInt(69));
-		weaponitem->setSkillMod1Type(result->getInt(70));
-		weaponitem->setSkillMod1Value(result->getInt(71));
-		weaponitem->setSkillMod2Type(result->getInt(72));
-		weaponitem->setSkillMod2Value(result->getInt(73));
-		break;
-	case TangibleObjectImplementation::CLOTHING:
+	} else if (objecttype & TangibleObjectImplementation::CLOTHING) {
+		
 		item = new WearableImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
-		break;
-	case TangibleObjectImplementation::ARMOR:
+
+	} else if (objecttype & TangibleObjectImplementation::ARMOR) {
+	
 		item = new ArmorImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
 
-		armoritem = (ArmorImplementation*) item;
-		armoritem->setRating(result->getInt(24));
-		armoritem->setType(result->getInt(25));
-		armoritem->setConditionDamage(result->getInt(26));
-		armoritem->setMaxCondition(result->getInt(27));
-		armoritem->setHealthEncumbrance(result->getInt(28));
-		armoritem->setActionEncumbrance(result->getInt(29));
-		armoritem->setMindEncumbrance(result->getInt(30));	 	
-		armoritem->setKinetic(result->getFloat(31));
-		armoritem->setKineticIsSpecial(result->getBoolean(32));
-		armoritem->setEnergy(result->getFloat(33));
-		armoritem->setEnergyIsSpecial(result->getBoolean(34));
-		armoritem->setElectricity(result->getFloat(35));
-		armoritem->setElectricityIsSpecial(result->getBoolean(36));
-		armoritem->setStun(result->getFloat(37));
-		armoritem->setStunIsSpecial(result->getBoolean(38));
-		armoritem->setBlast(result->getFloat(39));
-		armoritem->setBlastIsSpecial(result->getBoolean(40));
-		armoritem->setHeat(result->getFloat(41));
-		armoritem->setHeatIsSpecial(result->getBoolean(42));
-		armoritem->setCold(result->getFloat(43));
-		armoritem->setColdIsSpecial(result->getBoolean(44));
-		armoritem->setAcid(result->getFloat(45));
-		armoritem->setAcidIsSpecial(result->getBoolean(46));
-		armoritem->setLightSaber(result->getFloat(47));
-		armoritem->setLightSaberIsSpecial(result->getBoolean(48));
-		armoritem->setSliced(result->getBoolean(67));
-		/*armoritem->setSkillMod0Type(result->getInt(68));
-		armoritem->setSkillMod0Value(result->getInt(69));
-		armoritem->setSkillMod1Type(result->getInt(70));
-		armoritem->setSkillMod1Value(result->getInt(71));
-		armoritem->setSkillMod2Type(result->getInt(72));
-		armoritem->setSkillMod2Value(result->getInt(73));*/
-		armoritem->setSockets(result->getInt(74));
-		armoritem->setSocket0Type(result->getInt(75));
-		armoritem->setSocket0Value(result->getInt(76));
-		armoritem->setSocket1Type(result->getInt(77));
-		armoritem->setSocket1Value(result->getInt(78));
-		armoritem->setSocket2Type(result->getInt(79));
-		armoritem->setSocket2Value(result->getInt(80));
-		armoritem->setSocket3Type(result->getInt(81));
-		armoritem->setSocket3Value(result->getInt(82));
-		break;
-	case TangibleObjectImplementation::TRAVELTICKET:
-		break;
-	case TangibleObjectImplementation::TERMINAL:
-		break;
-	case TangibleObjectImplementation::INSTRUMENT:
-		break;
-	case TangibleObjectImplementation::SURVEYTOOL:
-		item = new SurveyToolImplementation(objectid, objectcrc, objectname, objecttemp, player);
-		break;
-	case TangibleObjectImplementation::RESOURCECONTAINER:
-	case TangibleObjectImplementation::ENERGYGAS:
-	case TangibleObjectImplementation::ENERGYLIQUID:
-	case TangibleObjectImplementation::ENERGYRADIOACTIVE:
-	case TangibleObjectImplementation::ENERGYSOLID:
-	case TangibleObjectImplementation::INORGANICCHEMICAL:
-	case TangibleObjectImplementation::INORGANICGAS:
-	case TangibleObjectImplementation::INORGANICMINERAL:
-	case TangibleObjectImplementation::WATER:
-	case TangibleObjectImplementation::ORGANICFOOD:
-	case TangibleObjectImplementation::ORGANICHIDE:
-	case TangibleObjectImplementation::ORGANICSTRUCTURAL:
-		item = new ResourceContainerImplementation(objectid, objectcrc, objectname, objecttemp, player);
+	} else if (objecttype & TangibleObjectImplementation::MISC) {
 		
-		resourceItem = (ResourceContainerImplementation*) item;
-		resourceItem->setResourceID(result->getInt(83));
-		resourceItem->setContents(result->getInt(84));
-		resourceItem->setDecayResistance(result->getInt(85));
-		resourceItem->setQuality(result->getInt(86));
-		resourceItem->setFlavor(result->getInt(87));
-		resourceItem->setPotentialEnergy(result->getInt(88));
-		resourceItem->setMalleability(result->getInt(89));
-		resourceItem->setToughness(result->getInt(90));
-		resourceItem->setShockResistance(result->getInt(91));
-		resourceItem->setColdResistance(result->getInt(92));
-		resourceItem->setHeatResistance(result->getInt(93));
-		resourceItem->setConductivity(result->getInt(94));
-		resourceItem->setEntangleResistance(result->getInt(95));
-		break;
-	case TangibleObjectImplementation::CLOTHINGATTACHMENT:
-		item = new AttachmentImplementation(objectid, AttachmentImplementation::CLOTHING);
-		attachmentItem = (AttachmentImplementation*) item;
-		attachmentItem->setSkillMod0Type(result->getInt(68));
-		attachmentItem->setSkillMod0Value(result->getInt(69));
-		attachmentItem->setSkillMod1Type(result->getInt(70));
-		attachmentItem->setSkillMod1Value(result->getInt(71));
-		attachmentItem->setSkillMod2Type(result->getInt(72));
-		attachmentItem->setSkillMod2Value(result->getInt(73));
-		break;
-	case TangibleObjectImplementation::ARMORATTACHMENT:
-		item = new AttachmentImplementation(objectid, AttachmentImplementation::ARMOR);
-		attachmentItem = (AttachmentImplementation*) item;
-		attachmentItem->setSkillMod0Type(result->getInt(68));
-		attachmentItem->setSkillMod0Value(result->getInt(69));
-		attachmentItem->setSkillMod1Type(result->getInt(70));
-		attachmentItem->setSkillMod1Value(result->getInt(71));
-		attachmentItem->setSkillMod2Type(result->getInt(72));
-		attachmentItem->setSkillMod2Value(result->getInt(73));
-		break;
-	default:
-		item = new TangibleObjectImplementation(objectid, objectname, objecttemp, objectcrc, equipped);
-		break;
+		switch (objecttype) {
+		case TangibleObjectImplementation::TRAVELTICKET:
+			
+			item = new TicketImplementation(objectid, objectcrc, objectname, objecttemp);
+			
+			break;
+		case TangibleObjectImplementation::INSTRUMENT:
+			
+			item = new InstrumentImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
+			
+			break;
+		case TangibleObjectImplementation::CLOTHINGATTACHMENT:
+			
+			item = new AttachmentImplementation(objectid, AttachmentImplementation::CLOTHING);
+
+			break;
+		case TangibleObjectImplementation::ARMORATTACHMENT:
+
+			item = new AttachmentImplementation(objectid, AttachmentImplementation::ARMOR);
+			
+			break;
+		}
+	} else if (objecttype & TangibleObjectImplementation::SURVEYTOOL) {
+	
+		item = new SurveyToolImplementation(objectid, objectcrc, objectname, objecttemp, player);
+
+	} else if (objecttype & TangibleObjectImplementation::RESOURCECONTAINER) {
+		switch (objecttype) {
+		case TangibleObjectImplementation::ENERGYGAS:
+		case TangibleObjectImplementation::ENERGYLIQUID:
+		case TangibleObjectImplementation::ENERGYRADIOACTIVE:
+		case TangibleObjectImplementation::ENERGYSOLID:
+		case TangibleObjectImplementation::INORGANICCHEMICAL:
+		case TangibleObjectImplementation::INORGANICGAS:
+		case TangibleObjectImplementation::INORGANICMINERAL:
+		case TangibleObjectImplementation::WATER:
+		case TangibleObjectImplementation::ORGANICFOOD:
+		case TangibleObjectImplementation::ORGANICHIDE:
+		case TangibleObjectImplementation::ORGANICSTRUCTURAL:
+			item = new ResourceContainerImplementation(objectid, objectcrc, objectname, objecttemp, player);
+
+			break;
+		}
 	}
 	
 	if (item == NULL)
 		return NULL;
 	
+	item->setAttributes(attributes);
+	item->parseItemAttributes();
+	
 	item->setCustomizationString(custStr);
+	
 	
 	item->setPersistent(true);
 	
@@ -364,6 +246,7 @@ TangibleObject* ItemManagerImplementation::createPlayerObject(Player* player, Re
 void ItemManagerImplementation::loadDefaultPlayerItems(Player* player) {
 	Weapon* weapon;
 	WeaponImplementation* weaoImpl;
+
 
 	if (player->getRaceFileName().find("wookie") !=string::npos) {
 		
@@ -506,17 +389,17 @@ void ItemManagerImplementation::loadDefaultPlayerItems(Player* player) {
 	
 	// weapons
 
-	/*weaoImpl = new PolearmJediWeaponImplementation(player, "object/weapon/melee/polearm/crafted_saber/shared_sword_lightsaber_polearm_s2_gen4.iff", 
-	deployItemFor(player, weaoImpl, "Weapon");*/
+	//weaoImpl = new PolearmJediWeaponImplementation(player, "object/weapon/melee/polearm/crafted_saber/shared_sword_lightsaber_polearm_s2_gen4.iff", 
+	//deployItemFor(player, weaoImpl, "Weapon");
 
 	weaoImpl = new OneHandedMeleeWeaponImplementation(player, "object/weapon/melee/baton/shared_baton_gaderiffi.iff", unicode("Teh Pwn"), "baton_gaderiffi", false);
 	weaoImpl->setDamageType(WeaponImplementation::KINETIC);
 	weaoImpl->setArmorPiercing(WeaponImplementation::NONE);
 	player->addInventoryItem(weaoImpl->deploy());
 
-	/*weapon = new Weapon(this, "object/weapon/melee/baton/base/shared_baton_stun.iff", 
-	 unicode("Oru's little baby"), "baton_stun", false);
-	 inventory->addObject(weapon);*/
+	//weapon = new Weapon(this, "object/weapon/melee/baton/base/shared_baton_stun.iff", 
+	//unicode("Oru's little baby"), "baton_stun", false);
+	//inventory->addObject(weapon);
 
 	weaoImpl = new UnarmedMeleeWeaponImplementation(player, "object/weapon/melee/special/shared_vibroknuckler.iff",	unicode("Sticker"), "vibroknuckler", false);
 	player->addInventoryItem(weaoImpl->deploy());
@@ -545,7 +428,7 @@ void ItemManagerImplementation::loadDefaultPlayerItems(Player* player) {
 	weaoImpl->setDamageType(WeaponImplementation::BLAST);
 	weaoImpl->setArmorPiercing(WeaponImplementation::MEDIUM);
 	player->addInventoryItem(weaoImpl->deploy());
-	
+
 	// Survey tools
 	SurveyToolImplementation* minSurvImpl = new SurveyToolImplementation(player, 0xAA9AB32C, unicode("Mineral Survey Tool"), "survey_tool_mineral");
 	player->addInventoryItem(minSurvImpl->deploy());
@@ -575,44 +458,43 @@ void ItemManagerImplementation::loadDefaultPlayerItems(Player* player) {
 	InstrumentImplementation* instruImpl = new InstrumentImplementation(player, 0xD2A2E607, unicode("The Pwn Slitherhorn"), "obj_slitherhorn", InstrumentImplementation::SLITHERHORN);
 	player->addInventoryItem(instruImpl->deploy());
 
-	/*
 	 //Fizz
-	 instrument = new Instrument(player, 0xBC38A9B, unicode("The Pwn Fizz"), "obj_fizzz", Instrument::FIZZ);
-	 player->addInventoryItem(instrument);
+	 //instrument = new Instrument(player, 0xBC38A9B, unicode("The Pwn Fizz"), "obj_fizzz", Instrument::FIZZ);
+	 //player->addInventoryItem(instrument);
 	 
 	 //Fanfar
-	 instrument = new Instrument(player, 0x78A47467, unicode("The Pwn Fanfar"), "obj_fanfar", Instrument::FANFAR);
-	 player->addInventoryItem(instrument);
+	 //instrument = new Instrument(player, 0x78A47467, unicode("The Pwn Fanfar"), "obj_fanfar", Instrument::FANFAR);
+	 //player->addInventoryItem(instrument);
 	 
 	 //Kloohorn
-	 instrument = new Instrument(player, 0xFDFBC3BC, unicode("The Pwn Kloohorn"), "obj_kloo_horn", Instrument::KLOOHORN);
-	 player->addInventoryItem(instrument);
+	 //instrument = new Instrument(player, 0xFDFBC3BC, unicode("The Pwn Kloohorn"), "obj_kloo_horn", Instrument::KLOOHORN);
+	 //player->addInventoryItem(instrument);
 	 
 	 //Mandoviol
-	 instrument = new Instrument(player, 0x6A58CECB, unicode("The Pwn Mandoviol"), "obj_mandoviol", Instrument::MANDOVIOL);
-	 player->addInventoryItem(instrument);
+	 //instrument = new Instrument(player, 0x6A58CECB, unicode("The Pwn Mandoviol"), "obj_mandoviol", Instrument::MANDOVIOL);
+	 //player->addInventoryItem(instrument);
 	 
 	 //Traz
-	 instrument = new Instrument(player, 0x179316A2, unicode("The Pwn Traz"), "obj_traz", Instrument::TRAZ);
-	 player->addInventoryItem(instrument);
+	 //instrument = new Instrument(player, 0x179316A2, unicode("The Pwn Traz"), "obj_traz", Instrument::TRAZ);
+	 //player->addInventoryItem(instrument);
 	 
 	 //Bandfill
-	 instrument = new Instrument(player, 0x31FE6B97, unicode("The Pwn Bandfill"), "obj_bandfill", Instrument::BANDFILL);
-	 player->addInventoryItem(instrument);
+	 //instrument = new Instrument(player, 0x31FE6B97, unicode("The Pwn Bandfill"), "obj_bandfill", Instrument::BANDFILL);
+	 //player->addInventoryItem(instrument);
 	 
 	 //Flutedroopy
-	 instrument = new Instrument(player, 0x46B975A6, unicode("The Pwn Flutedroopy"), "obj_growdi_flute", Instrument::FLUTEDROOPY);
-	 player->addInventoryItem(instrument);
+	 //instrument = new Instrument(player, 0x46B975A6, unicode("The Pwn Flutedroopy"), "obj_growdi_flute", Instrument::FLUTEDROOPY);
+	 //player->addInventoryItem(instrument);
 	 
 	 //Can't equip these, have you drop them in the world.
 	 //Omnibox
-	 instrument = new Instrument(player, 0x77D28DF3, unicode("The Pwn Omnibox"), "obj_ommni_box", Instrument::OMNIBOX);
-	 player->addInventoryItem(instrument);
+	 //instrument = new Instrument(player, 0x77D28DF3, unicode("The Pwn Omnibox"), "obj_ommni_box", Instrument::OMNIBOX);
+	 //player->addInventoryItem(instrument);
 	 
 	 //Nalargon
-	 instrument = new Instrument(player, 0x8FC48010, unicode("The Pwn Nalargon"), "obj_nalargon", Instrument::NALARGON);
-	 player->addInventoryItem(instrument);
-	 */
+	 //instrument = new Instrument(player, 0x8FC48010, unicode("The Pwn Nalargon"), "obj_nalargon", Instrument::NALARGON);
+	 //player->addInventoryItem(instrument);
+
 }
 
 void ItemManagerImplementation::loadDefaultPlayerDatapadItems(Player* player) {
@@ -677,16 +559,7 @@ void ItemManagerImplementation::unloadPlayerItems(Player* player) {
 		TangibleObject* item = (TangibleObject*) inventory->getObject(i);
 		
 		if (!item->isPersistent()) {
-			if (item->isWeapon())
-				createPlayerWeapon(player, (Weapon*) item);
-			else if (item->isArmor())
-				createPlayerArmor(player, (Armor*) item);
-			else if (item->isResource())
-				createPlayerResource(player, (ResourceContainer*) item);
-			else if (item->isAttachment())
-				createPlayerAttachment(player, (Attachment*) item);
-			else
-				createPlayerItem(player, item);
+			createPlayerItem(player, item);
 		} else if (item->isUpdated()) {
 			savePlayerItem(player, item);
 		}
@@ -695,29 +568,32 @@ void ItemManagerImplementation::unloadPlayerItems(Player* player) {
 
 void ItemManagerImplementation::createPlayerItem(Player* player, TangibleObject* item) {
 	try {
-		string apperance;
+		string appearance;
 		string itemApp;
 		item->getCustomizationString(itemApp);
 		BinaryData cust(itemApp);
-		cust.encode(apperance);
+		cust.encode(appearance);
 		
 		stringstream query;
 		query << "INSERT INTO `character_items` "
-			  << "(`item_id`,`character_id`,`name`,`template_crc`,`template_type`,`template_name`,`equipped`, `appearance`)"
+			  << "(`item_id`,`character_id`,`name`,`template_crc`,`template_type`,`template_name`,`equipped`,`attributes`,`appearance`)"
 			  << " VALUES(" << item->getObjectID() << "," << player->getCharacterID() 
 			  << ",'" << item->getName().c_str() << "'," 
 			  << item->getObjectCRC() << "," << item->getObjectSubType() << ",'" << item->getTemplateName() << "',"
-			  << item->isEquipped() << ", '" << apperance.substr(0, apperance.size() - 1) << "'" << ")";
-	
+			  << item->isEquipped() << ",'" << item->getAttributes() 
+			  << "','" << appearance.substr(0, appearance.size() - 1) << "')";
+
 		ServerDatabase::instance()->executeStatement(query);
 		
 		item->setPersistent(true);
+		
 	} catch (DatabaseException& e) {
 		cout << e.getMessage() << "\n";
 	}
 }
 
 void ItemManagerImplementation::savePlayerItem(Player* player, TangibleObject* item) {
+	
 	try {
 		string apperance = "";
 		string itemApp;
@@ -728,173 +604,12 @@ void ItemManagerImplementation::savePlayerItem(Player* player, TangibleObject* i
 		stringstream query;
 		query << "update `character_items` set equipped = " << item->isEquipped();
 		query << ", character_id = " << player->getCharacterID() << " ";
+		query << ", attributes = '" << item->getAttributes() << "' ";
 		query << ", appearance = '" << apperance.substr(0, apperance.size() - 1) << "' ";
-
-		if (item->isWeapon()) {
-			query << ", condition_damage = " << ((Weapon*) item)->getConditionDamage();
-			query << ", max_condition = " << ((Weapon*) item)->getMaxCondition();
-			
-			query << ", min_damage = " << ((Weapon*) item)->getMinDamage();
-			query << ", max_damage = " << ((Weapon*) item)->getMaxDamage();
-			
-			query << ", attack_speed = " << ((Weapon*) item)->getAttackSpeed();
-			
-			query << ", sliced = " << ((Weapon*) item)->isSliced();
-				
-			query << ", dot0_uses = " << ((Weapon*) item)->getDot0Uses();
-			query << ", dot1_uses = " << ((Weapon*) item)->getDot1Uses();
-			query << ", dot2_uses = " << ((Weapon*) item)->getDot2Uses() << " ";
-		} else if (item->isArmor()) {
-			query << ", condition_damage = " << ((Armor*) item)->getConditionDamage();
-			query << ", max_condition = " << ((Armor*) item)->getMaxCondition();
-
-			query << ", health_encumb = " << ((Armor*) item)->getHealthEncumbrance();
-			query << ", action_encumb = " << ((Armor*) item)->getActionEncumbrance();
-			query << ", mind_encumb = " << ((Armor*) item)->getMindEncumbrance();
-			
-			query << ", kinetic = " << ((Armor*) item)->getKinetic();
-			query << ", energy = " << ((Armor*) item)->getEnergy();
-			query << ", electricity = " << ((Armor*) item)->getElectricity();
-			query << ", stun = " << ((Armor*) item)->getStun();
-			query << ", blast = " << ((Armor*) item)->getBlast();
-			query << ", heat = " << ((Armor*) item)->getHeat();
-			query << ", cold = " << ((Armor*) item)->getCold();
-			query << ", acid = " << ((Armor*) item)->getAcid();
-			query << ", lightsaber = " << ((Armor*) item)->getLightSaber();
-			
-			query << ", sliced = " << ((Armor*) item)->isSliced();
-			
-			query << ", sockets = " << ((Armor*) item)->getSockets();
-			query << ", socket0_type = " << ((Armor*) item)->getSocket0Type();
-			query << ", socket0_value = " << ((Armor*) item)->getSocket0Value();
-			query << ", socket1_type = " << ((Armor*) item)->getSocket1Type();
-			query << ", socket1_value = " << ((Armor*) item)->getSocket1Value();
-			query << ", socket2_type = " << ((Armor*) item)->getSocket2Type();
-			query << ", socket2_value = " << ((Armor*) item)->getSocket2Value();
-			query << ", socket3_type = " << ((Armor*) item)->getSocket3Type();
-			query << ", socket3_value = " << ((Armor*) item)->getSocket3Value() << " ";
-		}
-		else if (item->isResource()) {
-			query << ", contents = " << ((ResourceContainer*)item)->getContents() << " ";
-		}
-
 		query << "where item_id = " << item->getObjectID();
 		
 		ServerDatabase::instance()->executeStatement(query);
-	} catch (DatabaseException& e) {
-		cout << e.getMessage() << "\n";
-	}
-}
-
-void ItemManagerImplementation::createPlayerWeapon(Player* player, Weapon* item) {
-	try { 
-		string apperance = "";
-		string itemApp;
-		item->getCustomizationString(itemApp);
-		BinaryData cust(itemApp);
-		cust.encode(apperance);
 		
-		stringstream query;
-		query << "INSERT INTO `character_items` "
-			  << "(`item_id`,`character_id`,`name`,`template_crc`,`template_type`,`template_name`,`equipped`,`weapon_type`,`category`,`damage_type`,`min_damage`,`max_damage`,`attack_speed`,`health_attack_cost`,`action_attack_cost`,`mind_attack_cost`,`point_blank_accuracy`,`point_blank_range`,`ideal_range`,`ideal_accuracy`,`max_range`,`max_range_accuracy`,`wounds_ratio`,`armor_piercing`,`condition_damage`,`max_condition`,`dot0_type`,`dot0_attribute`,`dot0_strength`,`dot0_duration`,`dot0_potency`,`dot0_uses`,`dot1_type`,`dot1_attribute`,`dot1_strength`,`dot1_duration`,`dot1_potency`,`dot1_uses`,`dot2_type`,`dot2_attribute`,`dot2_strength`,`dot2_duration`,`dot2_potency`,`dot2_uses`,`sliced`,`skillmod0_type`,`skillmod0_value`,`skillmod1_type`,`skillmod1_value`,`skillmod2_type`,`skillmod2_value`, `appearance`)"
-			  << " VALUES(" << item->getObjectID() << "," << player->getCharacterID() 
-			  << ",'\\" << item->getName().c_str() << "'," 
-			  << item->getObjectCRC() << "," << item->getObjectSubType() << ",'" << item->getTemplateName() << "',"  
-			  << item->isEquipped() << "," << item->getType() << "," << item->getCategory() << "," << item->getDamageType() << "," 
-			  << item->getMinDamage() << "," << item->getMaxDamage() << "," << item->getAttackSpeed() << "," << item->getHealthAttackCost() << ","
-			  << item->getActionAttackCost() << "," << item->getMindAttackCost() << "," << item->getPointBlankAccuracy() <<  ","  
-			  << item->getPointBlankRange() << "," << item->getIdealRange() << "," << item->getIdealAccuracy() << "," 
-			  << item->getMaxRange() << "," << item->getMaxRangeAccuracy() << "," << item->getWoundsRatio() << "," 
-			  << item->getArmorPiercing() << "," << item->getConditionDamage() << "," << item->getMaxCondition() << "," 
-			  << item->getDot0Type() << "," << item->getDot0Attribute() << "," 
-			  << item->getDot0Strength() << "," << item->getDot0Duration() << "," << item->getDot0Potency() << "," 
-			  << item->getDot0Uses() << "," << item->getDot1Type() << "," << item->getDot1Attribute() << "," 
-			  << item->getDot1Strength() << "," << item->getDot1Duration() << "," << item->getDot1Potency() << "," 
-			  << item->getDot1Uses() << "," << item->getDot2Type() << "," << item->getDot2Attribute() << "," 
-			  << item->getDot2Strength() << "," << item->getDot2Duration() << "," << item->getDot2Potency() << "," 
-			  << item->getDot2Uses() << "," << item->isSliced() << "," << item->getSkillMod0Type() << "," << item->getSkillMod0Value() << ","
-			  << item->getSkillMod1Type() << "," << item->getSkillMod1Value() << "," << item->getSkillMod2Type() << "," << item->getSkillMod2Value() << ",'" 
-			  << apperance.substr(0, apperance.size() - 1) << "'" << ")";
-		
-		ServerDatabase::instance()->executeStatement(query);
-		
-		item->setPersistent(true);
-	} catch (DatabaseException& e) {
-		cout << e.getMessage() << "\n";
-	}
-}
-
-void ItemManagerImplementation::createPlayerArmor(Player* player, Armor* item) {
-	try {
-		string apperance = "";
-		string itemApp;
-		item->getCustomizationString(itemApp);
-		BinaryData cust(itemApp);
-		cust.encode(apperance);
-		
-		stringstream query;
-		query << "INSERT INTO `character_items` "
-			  << "(`item_id`,`character_id`,`name`,`template_crc`,`template_type`,`template_name`,`equipped`,`armor_piercing`,`armor_type`,`condition_damage`,`max_condition`,`health_encumb`,`action_encumb`,`mind_encumb`,`kinetic`,`kinetic_special`,`energy`,`energy_special`,`electricity`,`electricity_special`,`stun`,`stun_special`,`blast`,`blast_special`,`heat`,`heat_special`,`cold`,`cold_special`,`acid`,`acid_special`,`lightsaber`,`lightsaber_special`,`sliced`,`skillmod0_type`,`skillmod0_value`,`skillmod1_type`,`skillmod1_value`,`skillmod2_type`,`skillmod2_value`,`sockets`,`socket0_type`,`socket0_value`,`socket1_type`,`socket1_value`,`socket2_type`,`socket2_value`,`socket3_type`,`socket3_value`, `appearance`)"
-			  << " VALUES(" << item->getObjectID() << "," << player->getCharacterID() 
-			  << ",'\\" << item->getName().c_str() << "'," 
-			  << item->getObjectCRC() << "," << item->getObjectSubType() << ",'" << item->getTemplateName() << "',"  
-			  << item->isEquipped() << "," << item->getRating() << "," << item->getType() << "," << item->getConditionDamage() << ","
-			  << item->getMaxCondition() << "," << item->getHealthEncumbrance() << "," << item->getActionEncumbrance() << "," 
-			  << item->getMindEncumbrance() << "," << item->getKinetic() << "," << item->isKineticSpecial() <<  ","  
-			  << item->getEnergy() << "," << item->isEnergySpecial() << "," << item->getElectricity() << "," 
-			  << item->isElectricitySpecial() << "," << item->getStun() << "," << item->isStunSpecial() << "," 
-			  << item->getBlast() << "," << item->isBlastSpecial() << "," << item->getHeat() << "," << item->isHeatSpecial() << "," 
-			  << item->getCold() << "," << item->isColdSpecial() << "," << item->getAcid() << "," << item->isAcidSpecial() << "," 
-			  << item->getLightSaber() << "," << item->isLightSaberSpecial() << "," << item->isSliced() << ","  
-			  << item->getSkillMod0Type() << "," << item->getSkillMod0Value() << "," << item->getSkillMod1Type() << "," 
-			  << item->getSkillMod1Value() << "," << item->getSkillMod2Type() << "," << item->getSkillMod2Value() << "," << item->getSockets() << ","
-			  << item->getSocket0Type() << "," << item->getSocket0Value() << "," << item->getSocket1Type() << "," 
-			  << item->getSocket1Value() << "," << item->getSocket2Type() << "," << item->getSocket2Value() << ","
-			  << item->getSocket3Type() << "," << item->getSocket3Value()<< ",'"
-			  << apperance.substr(0, apperance.size() - 1) << "'" << ")";
-		
-		ServerDatabase::instance()->executeStatement(query);
-		
-		item->setPersistent(true);
-	} catch (DatabaseException& e) {
-		cout << e.getMessage() << "\n";
-	}
-}
-
-void ItemManagerImplementation::createPlayerResource(Player* player, ResourceContainer* item) {
-	try {
-		stringstream query;
-		query << "INSERT INTO `character_items` "
-			  << "(`item_id`,`character_id`,`name`,`template_crc`,`template_type`,`template_name`,"
-			  << "`resource_id`,`contents`,`res_decay_resist`,`res_quality`,`res_flavor`,`res_potential_energy`,`res_malleability`,"
-			  << "`res_toughness`,`res_shock_resistance`,`res_cold_resist`,`res_heat_resist`,`res_conductivity`,`entangle_resistance`)"
-			  << " VALUES(" << item->getObjectID() << "," << player->getCharacterID() 
-			  << ",'" << item->getName().c_str() << "'," << item->getObjectCRC() << "," << item->getObjectSubType() << ",'" << item->getTemplateName()
-			  << "'," << item->getResourceID() << "," << item->getContents() << "," << item->getDecayResistance() << "," << item->getQuality()
-			  << "," << item->getFlavor() << "," << item->getPotentialEnergy() << "," << item->getMalleability() << "," << item->getToughness()
-			  << "," << item->getShockResistance() << "," << item->getColdResistance() << "," << item->getHeatResistance()
-			  << "," << item->getConductivity() << "," << item->getEntangleResistance() << ")";
-		ServerDatabase::instance()->executeStatement(query);
-
-		item->setPersistent(true);
-	} catch (DatabaseException& e) {
-		cout << e.getMessage() << "\n";
-	}
-}
-
-void ItemManagerImplementation::createPlayerAttachment(Player* player, Attachment* item) {
-	try {
-		stringstream query;
-		query << "INSERT INTO `character_items` "
-			  << "(`item_id`,`character_id`,`name`,`template_crc`,`template_type`,`template_name`,"
-			  << "`skillmod0_type`,`skillmod0_value`,`skillmod1_type`,`skillmod1_value`,`skillmod2_type`,`skillmod2_value`,`appearance`)"
-			  << " VALUES(" << item->getObjectID() << "," << player->getCharacterID() 
-			  << ",'" << item->getName().c_str() << "'," << item->getObjectCRC() << "," << item->getObjectSubType() << ",'" << item->getTemplateName() << "',"
-			  << item->getSkillMod0Type() << "," << item->getSkillMod0Value() << "," << item->getSkillMod1Type() << "," 
-			  << item->getSkillMod1Value() << "," << item->getSkillMod2Type() << "," << item->getSkillMod2Value() << ",''" << ")";
-		ServerDatabase::instance()->executeStatement(query);
-
-		item->setPersistent(true);
 	} catch (DatabaseException& e) {
 		cout << e.getMessage() << "\n";
 	}

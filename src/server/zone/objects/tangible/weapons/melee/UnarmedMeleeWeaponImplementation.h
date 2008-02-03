@@ -51,35 +51,39 @@ class UnarmedMeleeWeaponImplementation : public UnarmedMeleeWeaponServant {
 
 public:
 	UnarmedMeleeWeaponImplementation(uint64 objid, uint32 tempcrc, const unicode& n, const string& tempn, bool eqp = false) 
-			: UnarmedMeleeWeaponServant(objid, tempcrc, n, tempn, UNARMED, eqp) {
+			: UnarmedMeleeWeaponServant(objid, tempcrc, n, tempn, TangibleObjectImplementation::MELEEWEAPON, eqp) {
 		initialize();
 	}
 
 	UnarmedMeleeWeaponImplementation(CreatureObject* creature, const string& temp, const unicode& n, const string& tempn, bool eqp = false) 
-			: UnarmedMeleeWeaponServant(creature, temp, n, tempn, UNARMED, eqp) {
+			: UnarmedMeleeWeaponServant(creature, temp, n, tempn, TangibleObjectImplementation::MELEEWEAPON, eqp) {
 		initialize();
 	}
 
 	void initialize() {
-		//objectSubType = MELEEWEAPON;
-		damageType = KINETIC;
-		minDamage = 58;
-		maxDamage = 172;
-		armorPiercing = LIGHT;
-		attackSpeed = 2.1f;
+		objectSubType = TangibleObjectImplementation::MELEEWEAPON;
 		
-		pointBlankAccuracy = 7;
-		pointBlankRange = 0;
-
-		idealAccuracy = 7;
-		idealRange = 3;
-
-		maxRangeAccuracy = 7;
-		maxRange = 5;
+		setType(0);
+		setCategory(0x10);
 		
-		healthAttackCost = 19;
-		actionAttackCost = 32;
-		mindAttackCost = 19;
+		setDamageType(KINETIC);
+		setMinDamage(58);
+		setMaxDamage(172);
+		setArmorPiercing(LIGHT);
+		setAttackSpeed(2.1f);
+		
+		setPointBlankAccuracy(7);
+		setPointBlankRange(0);
+
+		setIdealAccuracy(7);
+		setIdealRange(3);
+
+		setMaxRangeAccuracy(7);
+		setMaxRange(5);
+		
+		setHealthAttackCost(19);
+		setActionAttackCost(32);
+		setMindAttackCost(19);
 	}
 };
 

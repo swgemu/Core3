@@ -62,16 +62,16 @@ public:
 	}
 
 	void initialize() {
-		minDamage = 50;
-		maxDamage = 125;
+		setMinDamage(50);
+		setMaxDamage(125);
 		
-		attackSpeed = 3.0f;
+		setAttackSpeed(3.0f);
 		
-		healthAttackCost = 15;
-		actionAttackCost = 10;
-		mindAttackCost = 5;
+		setHealthAttackCost(15);
+		setActionAttackCost(10);
+		setMindAttackCost(5);
 		
-		armorPiercing = MEDIUM;
+		setArmorPiercing(MEDIUM);
 	}
 	
 };

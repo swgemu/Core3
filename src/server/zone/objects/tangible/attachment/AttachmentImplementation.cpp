@@ -97,6 +97,25 @@ void AttachmentImplementation::initialize() {
 	equipped = false;
 }
 
+void AttachmentImplementation::parseItemAttributes() {
+	
+	string name = "skillMod0Type";
+	skillMod0Type = itemAttributes->getIntAttribute(name);
+	name = "skillMod0Value";
+	skillMod0Value = itemAttributes->getIntAttribute(name);
+
+	name = "skillMod1Type";
+	skillMod1Type = itemAttributes->getIntAttribute(name);
+	name = "skillMod1Value";
+	skillMod1Value = itemAttributes->getIntAttribute(name);
+	
+	name = "skillMod2Type";
+	skillMod2Type = itemAttributes->getIntAttribute(name);
+	name = "skillMod2Value";
+	skillMod2Value = itemAttributes->getIntAttribute(name);
+	
+}
+
 void AttachmentImplementation::generateAttributes(SceneObject* obj) {
 	if (!obj->isPlayer())
 		return;
@@ -210,13 +229,13 @@ void AttachmentImplementation::generateSkillMods(AttributeListMessage* alm, int 
 void AttachmentImplementation::setSkillModValue(int index, int value) {
 	switch (index) {
 	case 0:
-		skillMod0Value = value;
+		setSkillMod0Value(value);
 		break;
 	case 1:
-		skillMod1Value = value;
+		setSkillMod1Value(value);
 		break;
 	case 2:
-		skillMod2Value = value;
+		setSkillMod2Value(value);
 		break;
 	}
 }
@@ -224,13 +243,13 @@ void AttachmentImplementation::setSkillModValue(int index, int value) {
 void AttachmentImplementation::setSkillModType(int index, int type) {
 	switch (index) {
 	case 0:
-		skillMod0Type = type;
+		setSkillMod0Type(type);
 		break;
 	case 1:
-		skillMod1Type = type;
+		setSkillMod1Type(type);
 		break;
 	case 2:
-		skillMod2Type = type;
+		setSkillMod2Type(type);
 		break;
 	}
 }
@@ -311,34 +330,34 @@ void AttachmentImplementation::setSkillMods(int modifier) {
 		luck = luck + 50;
 	}
 	
-	skillMod0Type = System::random(28) + 1;
-	skillMod0Value = (luck / (System::random(3) + 10)) + 1;
+	setSkillMod0Type(System::random(28) + 1);
+	setSkillMod0Value((luck / (System::random(3) + 10)) + 1);
 	
 	if (System::random(4) == 1) {
-		skillMod1Type = System::random(28) + 1;
-		skillMod1Value = (luck / (System::random(3) + 10)) + 1;
+		setSkillMod1Type(System::random(28) + 1);
+		setSkillMod1Value((luck / (System::random(3) + 10)) + 1);
 	}
 	if (System::random(8) == 1) {
-		skillMod2Type = System::random(28) + 1;
-		skillMod2Value = (luck / (System::random(3) + 10)) + 1;
+		setSkillMod2Type(System::random(28) + 1);
+		setSkillMod2Value((luck / (System::random(3) + 10)) + 1);
 	}
 	if (skillMod0Value > 25)
-		skillMod0Value = 25;
+		setSkillMod0Value(25);
 
 	if (skillMod1Value > 25)
-		skillMod1Value = 25;
+		setSkillMod1Value(25);
 
 	if (skillMod2Value > 25)
-		skillMod2Value = 25;
+		setSkillMod2Value(25);
 	
 	if (skillMod2Type == skillMod1Type || skillMod2Type == skillMod0Type) {
-		skillMod2Type = 0;
-		skillMod2Value = 0;
+		setSkillMod2Type(0);
+		setSkillMod2Value(0);
 	}
 	
 	if (skillMod1Type == skillMod0Type || skillMod1Type == skillMod2Type) {
-		skillMod1Type = 0;
-		skillMod1Value = 0;
+		setSkillMod1Type(0);
+		setSkillMod1Value(0);
 	}
 }
 

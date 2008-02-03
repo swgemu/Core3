@@ -55,6 +55,8 @@ which carries forward this exception.
 #include "../../objects.h"
 #include "../../objects/auction/AuctionController.h"
 
+#include "../../objects/tangible/ItemAttributes.h"
+
 #include "../item/ItemManager.h"
 
 BazaarManagerImplementation::BazaarManagerImplementation(ZoneServer* zoneServer, ZoneProcessServerImplementation* server) : AuctionController(),
@@ -64,7 +66,7 @@ BazaarManagerImplementation::BazaarManagerImplementation(ZoneServer* zoneServer,
 	
 	setLogging(false); 
 	setGlobalLogging(true);
-
+	
 	bazaarTerminals = new BazaarTerminals();
 	
 	info("Setting up bazaars");
@@ -205,7 +207,7 @@ void BazaarManagerImplementation::addSaleItem(Player* player, long long objectid
 	//query1 << "SELECT count(*) from `bazaar_items` WHERE ownerid = " << player->getCharacterID() << ";";
 	//ResultSet* res = ServerDatabase::instance()->executeQuery(query1);
 
-	int numberOfItems = 0; //res->getInt(0);
+	int numberOfItems = 0;
 		
 	//delete res;
 		
@@ -222,6 +224,14 @@ void BazaarManagerImplementation::addSaleItem(Player* player, long long objectid
 	
 	TangibleObject* obj = (TangibleObject*)player->getInventoryItem(objectid);
 	
+	if (obj == NULL) {
+		BaseMessage* msg = new ItemSoldMessage(objectid, 2);
+		player->sendMessage(msg);
+		player->unlock();
+		unlock();
+		return;			
+	}
+	
 	itemType = obj->getObjectSubType();
 
 	if(description.size() == 0) {
@@ -232,14 +242,8 @@ void BazaarManagerImplementation::addSaleItem(Player* player, long long objectid
 	ItemManager* itemManager = player->getZone()->getZoneServer()->getItemManager();
 
 	if(!obj->isPersistent()) {
-		if (obj->isWeapon()) {
-			itemManager->createPlayerWeapon(player, (Weapon *)obj);
-		} else if (obj->isArmor()) {
-			itemManager->createPlayerArmor(player, (Armor *)obj);
-		} else {
-			itemManager->createPlayerItem(player, obj);
-			itemManager->savePlayerItem(player, obj);
-		}
+		itemManager->createPlayerItem(player, obj);
+		itemManager->savePlayerItem(player, obj);
 	} else {
 		itemManager->savePlayerItem(player, obj); // need to save it in case of changes
 	}

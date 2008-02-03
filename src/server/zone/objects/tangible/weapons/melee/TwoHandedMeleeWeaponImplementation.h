@@ -51,33 +51,37 @@ class TwoHandedMeleeWeaponImplementation : public TwoHandedMeleeWeaponServant {
 
 public:
 	TwoHandedMeleeWeaponImplementation(uint64 objid, uint32 tempcrc, const unicode& n, const string& tempn, bool eqp = false) 
-			: TwoHandedMeleeWeaponServant(objid, tempcrc, n, tempn, TWOHANDED, eqp) {
+			: TwoHandedMeleeWeaponServant(objid, tempcrc, n, tempn, TangibleObjectImplementation::TWOHANDMELEEWEAPON, eqp) {
 		initialize();
 	}
 
 	TwoHandedMeleeWeaponImplementation(CreatureObject* creature, const string& temp, const unicode& n, const string& tempn, bool eqp = false) 
-			: TwoHandedMeleeWeaponServant(creature, temp, n, tempn, TWOHANDED, eqp) {
+			: TwoHandedMeleeWeaponServant(creature, temp, n, tempn, TangibleObjectImplementation::TWOHANDMELEEWEAPON, eqp) {
 		initialize();
 	}
 
 	void initialize() {
-		//objectSubType = TWOHANDMELEEWEAPON;
-		minDamage = 156;
-		maxDamage = 308;
-		attackSpeed = 4.7f;
+		objectSubType = TangibleObjectImplementation::TWOHANDMELEEWEAPON;
 		
-		pointBlankAccuracy = -45;
-		pointBlankRange = 0;
-
-		idealAccuracy = -45;
-		idealRange = 5;
-
-		maxRangeAccuracy = -45;
-		maxRange = 5;
+		setType(2);
+		setCategory(0x10);
 		
-		healthAttackCost = 91;
-		actionAttackCost = 28;
-		mindAttackCost = 13;
+		setMinDamage(156);
+		setMaxDamage(308);
+		setAttackSpeed(4.7f);
+		
+		setPointBlankAccuracy(-45);
+		setPointBlankRange(0);
+
+		setIdealAccuracy(-45);
+		setIdealRange(5);
+
+		setMaxRangeAccuracy(-45);
+		setMaxRange(5);
+		
+		setHealthAttackCost(91);
+		setActionAttackCost(28);
+		setMindAttackCost(13);
 	}
 	
 };

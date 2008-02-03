@@ -51,33 +51,37 @@ class OneHandedMeleeWeaponImplementation : public OneHandedMeleeWeaponServant {
 
 public:
 	OneHandedMeleeWeaponImplementation(uint64 objid, uint32 tempcrc, const unicode& n, const string& tempn, bool eqp = false) 
-			: OneHandedMeleeWeaponServant(objid, tempcrc, n, tempn, ONEHANDED, eqp) {
+			: OneHandedMeleeWeaponServant(objid, tempcrc, n, tempn, TangibleObjectImplementation::ONEHANDMELEEWEAPON, eqp) {
 		initialize();
 	}
 
 	OneHandedMeleeWeaponImplementation(CreatureObject* creature, const string& temp, const unicode& n, const string& tempn, bool eqp = false) 
-			: OneHandedMeleeWeaponServant(creature, temp, n, tempn, ONEHANDED, eqp) {
+			: OneHandedMeleeWeaponServant(creature, temp, n, tempn, TangibleObjectImplementation::ONEHANDMELEEWEAPON, eqp) {
 		initialize();
 	}
 
 	void initialize() {
-		//objectSubType = ONEHANDMELEEWEAPON;
-		minDamage = 49;
-		maxDamage = 157;
-		attackSpeed = 2.5f;
+		objectSubType = TangibleObjectImplementation::ONEHANDMELEEWEAPON;
 		
-		pointBlankAccuracy = -13;
-		pointBlankRange = 0;
+		setType(1);
+		setCategory(0x10);
 		
-		idealAccuracy = -13;
-		idealRange = 3;
+		setMinDamage(49);
+		setMaxDamage(157);
+		setAttackSpeed (2.5f);
 		
-		maxRangeAccuracy = -13;
-		maxRange = 5;
+		setPointBlankAccuracy(-13);
+		setPointBlankRange(0);
 		
-		healthAttackCost = 61;
-		actionAttackCost = 33;
-		mindAttackCost = 13;
+		setIdealAccuracy(-13);
+		setIdealRange(3);
+		
+		setMaxRangeAccuracy(-13);
+		setMaxRange(5);
+		
+		setHealthAttackCost(61);
+		setActionAttackCost(33);
+		setMindAttackCost(13);
 	}
 };
 

@@ -84,10 +84,6 @@ public:
 
 	void createPlayerItem(Player* player, TangibleObject* item);
 
-	void createPlayerWeapon(Player* player, Weapon* item);
-	void createPlayerArmor(Player* player, Armor* item);
-	void createPlayerResource(Player*, ResourceContainer* item);
-	void createPlayerAttachment(Player* player, Attachment* item);
 	void deletePlayerItem(Player* player, TangibleObject* item);
 	
 	void savePlayerItem(Player* player, TangibleObject* item);

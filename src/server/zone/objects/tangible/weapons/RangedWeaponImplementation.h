@@ -65,18 +65,18 @@ public:
 	}
 
 	void initialize() {
-		minDamage = 50;
-		maxDamage = 125;
+		setMinDamage(50);
+		setMaxDamage(125);
 		
-		attackSpeed = 7.0f;
+		setAttackSpeed(7.0f);
 		
-		healthAttackCost = 15;
-		actionAttackCost = 10;
-		mindAttackCost = 5;
+		setHealthAttackCost(15);
+		setActionAttackCost(10);
+		setMindAttackCost(5);
 		
-		range = 45;
+		setRange(45);
 		
-		armorPiercing = HEAVY;
+		setArmorPiercing(HEAVY);
 	}
 	
 	inline int getRange() {
@@ -85,6 +85,8 @@ public:
 	
 	void setRange(int rng) {
 		range = rng;
+		string name = "range";
+		itemAttributes->setIntAttribute(name, rng);
 	}
 	
 };

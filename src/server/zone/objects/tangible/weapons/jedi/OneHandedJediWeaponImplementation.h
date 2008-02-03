@@ -51,20 +51,23 @@ class OneHandedJediWeaponImplementation : public OneHandedJediWeaponServant {
 
 public:
 	OneHandedJediWeaponImplementation(uint64 objid, uint32 tempcrc, const unicode& n, const string& tempn, bool eqp = false) 
-			: OneHandedJediWeaponServant(objid, tempcrc, n, tempn, ONEHANDSABER, eqp) {
+			: OneHandedJediWeaponServant(objid, tempcrc, n, tempn, TangibleObjectImplementation::ONEHANDSABER, eqp) {
 		initialize();
 	}
 
 	OneHandedJediWeaponImplementation(CreatureObject* creature, const string& temp, const unicode& n, const string& tempn, bool eqp = false) 
-			: OneHandedJediWeaponServant(creature, temp, n, tempn, ONEHANDSABER, eqp) {
+			: OneHandedJediWeaponServant(creature, temp, n, tempn, TangibleObjectImplementation::ONEHANDSABER, eqp) {
 		initialize();
 	}
 
 	void initialize() {
-		forceCost = 5;
+		setType(7);
+		setCategory(0x30);
+		
+		setForceCost(5);
 
-		minDamage = 50;
-		maxDamage = 125;
+		setMinDamage(50);
+		setMaxDamage(125);
 	}
 	
 };

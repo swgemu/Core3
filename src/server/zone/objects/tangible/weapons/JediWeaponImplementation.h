@@ -63,10 +63,10 @@ public:
 	}
 
 	void initialize() {
-		minDamage = 50;
-		maxDamage = 125;
+		setMinDamage(50);
+		setMaxDamage(125);
 		
-		forceCost = 1;
+		setForceCost(1);
 	}
 	
 	inline int getForceCost() {
@@ -75,6 +75,8 @@ public:
 	
 	void setForceCost(int fcost) {
 		forceCost = fcost;
+		string name = "forceCost";
+		itemAttributes->setIntAttribute(name, fcost);
 	}
 };
 
