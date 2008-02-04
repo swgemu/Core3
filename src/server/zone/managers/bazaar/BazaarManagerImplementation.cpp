@@ -456,28 +456,14 @@ void BazaarManagerImplementation::buyItem(Player* player, long long objectid, in
 			unlock();
 			return;
 		}
-
-
-/* Needs to be altered to use chat mail system
-
-		string sender = "auctioner";
-		uint32 messageId = 123456;
-		unicode header = unicode("@auction:subject_instant_buyer");
-		unicode body = unicode("");
-		
-		Time* systemTime = new Time();
-		uint64 currentTime = systemTime->getMiliTime() / 1000;
-		
-		msg = new ChatPersistentMessageToClient(sender, messageId, (uint8)1, header, body, currentTime, 'N');
-		
-		player->sendMessage(msg);
-*/
 	}
 	else {  // auction
 		
-		BaseMessage* msg = new BidAuctionResponseMessage(objectid, 9);
+		BaseMessage* msg = new BidAuctionResponseMessage(objectid, 2);
 		player->sendMessage(msg);
-
+		player->unlock();
+		unlock();
+		return;		
 	}
 	
 	player->subtractBankCredits(price1);
