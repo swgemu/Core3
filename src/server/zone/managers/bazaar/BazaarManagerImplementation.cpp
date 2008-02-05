@@ -421,16 +421,16 @@ void BazaarManagerImplementation::buyItem(Player* player, long long objectid, in
 	Time* expireTime = new Time();
 	uint64 currentTime = expireTime->getMiliTime() / 1000;
 	uint64 availableTime = currentTime + 2592000;
+	
+	if (player->getBankCredits() < price1) { // Credit Check
+		
+		BaseMessage* msg = new BidAuctionResponseMessage(objectid, 9);
+		player->unlock();
+		unlock();
+		return;
+	}
 
-	if (price1 == price2) { // Instant buy
-
-		if (player->getBankCredits() < price1) {
-			BaseMessage* msg = new BidAuctionResponseMessage(objectid, 9);
-			player->sendMessage(msg);
-			player->unlock();
-			unlock();
-			return;
-		}
+	else if (price1 == price2) { // Instant buy
 		
 		BaseMessage* msg = new BidAuctionResponseMessage(objectid, 0);
 		player->sendMessage(msg);
@@ -441,6 +441,8 @@ void BazaarManagerImplementation::buyItem(Player* player, long long objectid, in
 		item->sold = true;
 		item->expireTime = availableTime;
 		item->buyerID = player->getObjectID();
+		
+		player->subtractBankCredits(price1); 
 		
 		stringstream update;
 		update << "UPDATE `bazaar_items` SET sold = 1, expire = " << availableTime << ", buyerid = "
@@ -456,17 +458,28 @@ void BazaarManagerImplementation::buyItem(Player* player, long long objectid, in
 			unlock();
 			return;
 		}
-	}
-	else {  // auction
+	} else { // For Auction Bids
 		
-		BaseMessage* msg = new BidAuctionResponseMessage(objectid, 2);
+		item->price = price1; 
+		item->buyerID = player->getObjectID(); 
+		         
+		stringstream update; 
+		update << "UPDATE `bazaar_items` SET price = " << price1 << ", buyerid = " << item->buyerID << " where objectid = " << objectid << ";"; 
+		try { 
+	                                 
+		 	ServerDatabase::instance()->executeQuery(update);
+		 	
+		} catch (DatabaseException& e) { 
+		 	cout << "Can't update bazaar_item " << item->id << "\n"; 
+		 	cout << update.str() << "\n"; 
+		 	player->unlock(); 
+		 	unlock(); 
+		 	return; 
+		} 
+                 
+		BaseMessage* msg = new BidAuctionResponseMessage(objectid, 0); 
 		player->sendMessage(msg);
-		player->unlock();
-		unlock();
-		return;		
 	}
-	
-	player->subtractBankCredits(price1);
 
 	player->unlock();
 	unlock();
