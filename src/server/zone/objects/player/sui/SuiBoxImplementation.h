@@ -122,7 +122,7 @@ public:
 	}
 	
 	inline bool isColorPicker() {
-		return boxType = COLORPICKER;
+		return boxType == COLORPICKER;
 	}
 	
 	inline void setCancelButton(bool value) {

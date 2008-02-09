@@ -134,18 +134,17 @@ public:
 
 };
 
-class MountCreatureHelper : public ORBClassHelper {
-	static MountCreatureHelper instance;
-
+class MountCreatureHelper : public ORBClassHelper, public Singleton<MountCreatureHelper> {
 public:
 	MountCreatureHelper();
 
-	static ORBClassHelper* getInstance();
+	void finalizeHelper();
 
 	ORBObject* instantiateObject();
 
 	ORBObjectAdapter* createAdapter(ORBObjectServant* obj);
 
+	friend class SingletonWrapper<MountCreatureHelper>;
 };
 
 #include "../CreatureImplementation.h"

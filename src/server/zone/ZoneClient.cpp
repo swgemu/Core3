@@ -310,16 +310,14 @@ unsigned int ZoneClientAdapter::getSessionKey() {
  *	ZoneClientHelper
  */
 
-ZoneClientHelper ZoneClientHelper::instance;
-
 ZoneClientHelper::ZoneClientHelper() {
 	className = "ZoneClient";
 
 	ObjectRequestBroker::instance()->registerClass(className, this);
 }
 
-ORBClassHelper* ZoneClientHelper::getInstance() {
-		return &instance;
+void ZoneClientHelper::finalizeHelper() {
+	ZoneClientHelper::finalize();
 }
 
 ORBObject* ZoneClientHelper::instantiateObject() {
@@ -327,7 +325,7 @@ ORBObject* ZoneClientHelper::instantiateObject() {
 }
 
 ORBObjectAdapter* ZoneClientHelper::createAdapter(ORBObjectServant* obj) {
-	ORBObjectAdapter* adapter = new ZoneClientAdapter((ZoneClientImplementation*)obj);
+	ORBObjectAdapter* adapter = new ZoneClientAdapter((ZoneClientImplementation*) obj);
 
 	ORBObjectStub* stub = new ZoneClient(obj);
 	stub->_setORBClassName(className);
@@ -345,7 +343,7 @@ ORBObjectAdapter* ZoneClientHelper::createAdapter(ORBObjectServant* obj) {
  */
 
 ZoneClientServant::ZoneClientServant() {
-	_classHelper = ZoneClientHelper::getInstance();
+	_classHelper = ZoneClientHelper::instance();
 }
 
 ZoneClientServant::~ZoneClientServant() {

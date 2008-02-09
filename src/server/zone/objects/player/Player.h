@@ -825,18 +825,17 @@ protected:
 	unicode _param0_setSampleEvent__unicode_bool_;
 };
 
-class PlayerHelper : public ORBClassHelper {
-	static PlayerHelper instance;
-
+class PlayerHelper : public ORBClassHelper, public Singleton<PlayerHelper> {
 public:
 	PlayerHelper();
 
-	static ORBClassHelper* getInstance();
+	void finalizeHelper();
 
 	ORBObject* instantiateObject();
 
 	ORBObjectAdapter* createAdapter(ORBObjectServant* obj);
 
+	friend class SingletonWrapper<PlayerHelper>;
 };
 
 #include "../creature/CreatureObjectImplementation.h"

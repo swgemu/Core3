@@ -301,16 +301,14 @@ GuildMap* GuildManagerAdapter::getGuildMap() {
  *	GuildManagerHelper
  */
 
-GuildManagerHelper GuildManagerHelper::instance;
-
 GuildManagerHelper::GuildManagerHelper() {
 	className = "GuildManager";
 
 	ObjectRequestBroker::instance()->registerClass(className, this);
 }
 
-ORBClassHelper* GuildManagerHelper::getInstance() {
-		return &instance;
+void GuildManagerHelper::finalizeHelper() {
+	GuildManagerHelper::finalize();
 }
 
 ORBObject* GuildManagerHelper::instantiateObject() {
@@ -318,7 +316,7 @@ ORBObject* GuildManagerHelper::instantiateObject() {
 }
 
 ORBObjectAdapter* GuildManagerHelper::createAdapter(ORBObjectServant* obj) {
-	ORBObjectAdapter* adapter = new GuildManagerAdapter((GuildManagerImplementation*)obj);
+	ORBObjectAdapter* adapter = new GuildManagerAdapter((GuildManagerImplementation*) obj);
 
 	ORBObjectStub* stub = new GuildManager(obj);
 	stub->_setORBClassName(className);
@@ -336,7 +334,7 @@ ORBObjectAdapter* GuildManagerHelper::createAdapter(ORBObjectServant* obj) {
  */
 
 GuildManagerServant::GuildManagerServant() {
-	_classHelper = GuildManagerHelper::getInstance();
+	_classHelper = GuildManagerHelper::instance();
 }
 
 GuildManagerServant::~GuildManagerServant() {

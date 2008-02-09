@@ -81,10 +81,6 @@ public:
 
 	void createPlayerItem(Player* player, TangibleObject* item);
 
-	void createPlayerWeapon(Player* player, Weapon* item);
-
-	void createPlayerArmor(Player* player, Armor* item);
-
 	void savePlayerItem(Player* player, TangibleObject* item);
 
 	void deletePlayerItem(Player* player, TangibleObject* item);
@@ -120,10 +116,6 @@ public:
 
 	void createPlayerItem(Player* player, TangibleObject* item);
 
-	void createPlayerWeapon(Player* player, Weapon* item);
-
-	void createPlayerArmor(Player* player, Armor* item);
-
 	void savePlayerItem(Player* player, TangibleObject* item);
 
 	void deletePlayerItem(Player* player, TangibleObject* item);
@@ -138,18 +130,17 @@ public:
 
 };
 
-class ItemManagerHelper : public ORBClassHelper {
-	static ItemManagerHelper instance;
-
+class ItemManagerHelper : public ORBClassHelper, public Singleton<ItemManagerHelper> {
 public:
 	ItemManagerHelper();
 
-	static ORBClassHelper* getInstance();
+	void finalizeHelper();
 
 	ORBObject* instantiateObject();
 
 	ORBObjectAdapter* createAdapter(ORBObjectServant* obj);
 
+	friend class SingletonWrapper<ItemManagerHelper>;
 };
 
 class ItemManagerServant : public ORBObjectServant {

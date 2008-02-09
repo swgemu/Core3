@@ -429,16 +429,14 @@ Creature* CreatureManagerAdapter::getCreature(unsigned long long oid) {
  *	CreatureManagerHelper
  */
 
-CreatureManagerHelper CreatureManagerHelper::instance;
-
 CreatureManagerHelper::CreatureManagerHelper() {
 	className = "CreatureManager";
 
 	ObjectRequestBroker::instance()->registerClass(className, this);
 }
 
-ORBClassHelper* CreatureManagerHelper::getInstance() {
-		return &instance;
+void CreatureManagerHelper::finalizeHelper() {
+	CreatureManagerHelper::finalize();
 }
 
 ORBObject* CreatureManagerHelper::instantiateObject() {
@@ -446,7 +444,7 @@ ORBObject* CreatureManagerHelper::instantiateObject() {
 }
 
 ORBObjectAdapter* CreatureManagerHelper::createAdapter(ORBObjectServant* obj) {
-	ORBObjectAdapter* adapter = new CreatureManagerAdapter((CreatureManagerImplementation*)obj);
+	ORBObjectAdapter* adapter = new CreatureManagerAdapter((CreatureManagerImplementation*) obj);
 
 	ORBObjectStub* stub = new CreatureManager(obj);
 	stub->_setORBClassName(className);
@@ -464,7 +462,7 @@ ORBObjectAdapter* CreatureManagerHelper::createAdapter(ORBObjectServant* obj) {
  */
 
 CreatureManagerServant::CreatureManagerServant() {
-	_classHelper = CreatureManagerHelper::getInstance();
+	_classHelper = CreatureManagerHelper::instance();
 }
 
 CreatureManagerServant::~CreatureManagerServant() {

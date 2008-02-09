@@ -80,18 +80,17 @@ public:
 
 };
 
-class BankHelper : public ORBClassHelper {
-	static BankHelper instance;
-
+class BankHelper : public ORBClassHelper, public Singleton<BankHelper> {
 public:
 	BankHelper();
 
-	static ORBClassHelper* getInstance();
+	void finalizeHelper();
 
 	ORBObject* instantiateObject();
 
 	ORBObjectAdapter* createAdapter(ORBObjectServant* obj);
 
+	friend class SingletonWrapper<BankHelper>;
 };
 
 #include "ContainerImplementation.h"

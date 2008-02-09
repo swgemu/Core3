@@ -92,18 +92,17 @@ public:
 
 };
 
-class TicketCollectorHelper : public ORBClassHelper {
-	static TicketCollectorHelper instance;
-
+class TicketCollectorHelper : public ORBClassHelper, public Singleton<TicketCollectorHelper> {
 public:
 	TicketCollectorHelper();
 
-	static ORBClassHelper* getInstance();
+	void finalizeHelper();
 
 	ORBObject* instantiateObject();
 
 	ORBObjectAdapter* createAdapter(ORBObjectServant* obj);
 
+	friend class SingletonWrapper<TicketCollectorHelper>;
 };
 
 #include "../TangibleObjectImplementation.h"

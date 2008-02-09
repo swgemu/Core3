@@ -1172,16 +1172,14 @@ int WeaponAdapter::getSkillMod2Value() {
  *	WeaponHelper
  */
 
-WeaponHelper WeaponHelper::instance;
-
 WeaponHelper::WeaponHelper() {
 	className = "Weapon";
 
 	ObjectRequestBroker::instance()->registerClass(className, this);
 }
 
-ORBClassHelper* WeaponHelper::getInstance() {
-		return &instance;
+void WeaponHelper::finalizeHelper() {
+	WeaponHelper::finalize();
 }
 
 ORBObject* WeaponHelper::instantiateObject() {
@@ -1189,7 +1187,7 @@ ORBObject* WeaponHelper::instantiateObject() {
 }
 
 ORBObjectAdapter* WeaponHelper::createAdapter(ORBObjectServant* obj) {
-	ORBObjectAdapter* adapter = new WeaponAdapter((WeaponImplementation*)obj);
+	ORBObjectAdapter* adapter = new WeaponAdapter((WeaponImplementation*) obj);
 
 	ORBObjectStub* stub = new Weapon(obj);
 	stub->_setORBClassName(className);
@@ -1207,11 +1205,11 @@ ORBObjectAdapter* WeaponHelper::createAdapter(ORBObjectServant* obj) {
  */
 
 WeaponServant::WeaponServant(unsigned long long oid, int tp) : TangibleObjectImplementation(oid, tp) {
-	_classHelper = WeaponHelper::getInstance();
+	_classHelper = WeaponHelper::instance();
 }
 
 WeaponServant::WeaponServant(unsigned long long oid, const unicode& name, const string& tempname, unsigned int tempcrc, int tp) : TangibleObjectImplementation(oid, name, tempname, tempcrc, tp) {
-	_classHelper = WeaponHelper::getInstance();
+	_classHelper = WeaponHelper::instance();
 }
 
 WeaponServant::~WeaponServant() {

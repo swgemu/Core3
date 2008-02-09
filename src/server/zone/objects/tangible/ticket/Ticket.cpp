@@ -197,16 +197,14 @@ string& TicketAdapter::getArrivalPoint() {
  *	TicketHelper
  */
 
-TicketHelper TicketHelper::instance;
-
 TicketHelper::TicketHelper() {
 	className = "Ticket";
 
 	ObjectRequestBroker::instance()->registerClass(className, this);
 }
 
-ORBClassHelper* TicketHelper::getInstance() {
-		return &instance;
+void TicketHelper::finalizeHelper() {
+	TicketHelper::finalize();
 }
 
 ORBObject* TicketHelper::instantiateObject() {
@@ -214,7 +212,7 @@ ORBObject* TicketHelper::instantiateObject() {
 }
 
 ORBObjectAdapter* TicketHelper::createAdapter(ORBObjectServant* obj) {
-	ORBObjectAdapter* adapter = new TicketAdapter((TicketImplementation*)obj);
+	ORBObjectAdapter* adapter = new TicketAdapter((TicketImplementation*) obj);
 
 	ORBObjectStub* stub = new Ticket(obj);
 	stub->_setORBClassName(className);
@@ -232,7 +230,7 @@ ORBObjectAdapter* TicketHelper::createAdapter(ORBObjectServant* obj) {
  */
 
 TicketServant::TicketServant(unsigned long long oid, int tp) : TangibleObjectImplementation(oid, tp) {
-	_classHelper = TicketHelper::getInstance();
+	_classHelper = TicketHelper::instance();
 }
 
 TicketServant::~TicketServant() {

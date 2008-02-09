@@ -100,18 +100,17 @@ protected:
 	string _param0_setDefaultInput__string_;
 };
 
-class SuiInputBoxHelper : public ORBClassHelper {
-	static SuiInputBoxHelper instance;
-
+class SuiInputBoxHelper : public ORBClassHelper, public Singleton<SuiInputBoxHelper> {
 public:
 	SuiInputBoxHelper();
 
-	static ORBClassHelper* getInstance();
+	void finalizeHelper();
 
 	ORBObject* instantiateObject();
 
 	ORBObjectAdapter* createAdapter(ORBObjectServant* obj);
 
+	friend class SingletonWrapper<SuiInputBoxHelper>;
 };
 
 #include "../SuiBoxImplementation.h"

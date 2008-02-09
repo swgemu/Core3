@@ -227,16 +227,14 @@ string& SpawnLocationAdapter::getPool() {
  *	SpawnLocationHelper
  */
 
-SpawnLocationHelper SpawnLocationHelper::instance;
-
 SpawnLocationHelper::SpawnLocationHelper() {
 	className = "SpawnLocation";
 
 	ObjectRequestBroker::instance()->registerClass(className, this);
 }
 
-ORBClassHelper* SpawnLocationHelper::getInstance() {
-		return &instance;
+void SpawnLocationHelper::finalizeHelper() {
+	SpawnLocationHelper::finalize();
 }
 
 ORBObject* SpawnLocationHelper::instantiateObject() {
@@ -244,7 +242,7 @@ ORBObject* SpawnLocationHelper::instantiateObject() {
 }
 
 ORBObjectAdapter* SpawnLocationHelper::createAdapter(ORBObjectServant* obj) {
-	ORBObjectAdapter* adapter = new SpawnLocationAdapter((SpawnLocationImplementation*)obj);
+	ORBObjectAdapter* adapter = new SpawnLocationAdapter((SpawnLocationImplementation*) obj);
 
 	ORBObjectStub* stub = new SpawnLocation(obj);
 	stub->_setORBClassName(className);
@@ -262,7 +260,7 @@ ORBObjectAdapter* SpawnLocationHelper::createAdapter(ORBObjectServant* obj) {
  */
 
 SpawnLocationServant::SpawnLocationServant() {
-	_classHelper = SpawnLocationHelper::getInstance();
+	_classHelper = SpawnLocationHelper::instance();
 }
 
 SpawnLocationServant::~SpawnLocationServant() {

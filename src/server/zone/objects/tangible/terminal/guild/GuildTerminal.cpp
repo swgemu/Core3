@@ -117,16 +117,14 @@ int GuildTerminalAdapter::useObject(Player* player) {
  *	GuildTerminalHelper
  */
 
-GuildTerminalHelper GuildTerminalHelper::instance;
-
 GuildTerminalHelper::GuildTerminalHelper() {
 	className = "GuildTerminal";
 
 	ObjectRequestBroker::instance()->registerClass(className, this);
 }
 
-ORBClassHelper* GuildTerminalHelper::getInstance() {
-		return &instance;
+void GuildTerminalHelper::finalizeHelper() {
+	GuildTerminalHelper::finalize();
 }
 
 ORBObject* GuildTerminalHelper::instantiateObject() {
@@ -134,7 +132,7 @@ ORBObject* GuildTerminalHelper::instantiateObject() {
 }
 
 ORBObjectAdapter* GuildTerminalHelper::createAdapter(ORBObjectServant* obj) {
-	ORBObjectAdapter* adapter = new GuildTerminalAdapter((GuildTerminalImplementation*)obj);
+	ORBObjectAdapter* adapter = new GuildTerminalAdapter((GuildTerminalImplementation*) obj);
 
 	ORBObjectStub* stub = new GuildTerminal(obj);
 	stub->_setORBClassName(className);
@@ -152,7 +150,7 @@ ORBObjectAdapter* GuildTerminalHelper::createAdapter(ORBObjectServant* obj) {
  */
 
 GuildTerminalServant::GuildTerminalServant(unsigned int objCRC, unsigned long long objid, const unicode& n, const string& tempn, float x, float z, float y, int TerminalType) : TerminalImplementation(objCRC, objid, n, tempn, x, z, y, TerminalType) {
-	_classHelper = GuildTerminalHelper::getInstance();
+	_classHelper = GuildTerminalHelper::instance();
 }
 
 GuildTerminalServant::~GuildTerminalServant() {

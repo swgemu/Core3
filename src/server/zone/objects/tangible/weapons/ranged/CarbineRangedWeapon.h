@@ -80,18 +80,17 @@ public:
 
 };
 
-class CarbineRangedWeaponHelper : public ORBClassHelper {
-	static CarbineRangedWeaponHelper instance;
-
+class CarbineRangedWeaponHelper : public ORBClassHelper, public Singleton<CarbineRangedWeaponHelper> {
 public:
 	CarbineRangedWeaponHelper();
 
-	static ORBClassHelper* getInstance();
+	void finalizeHelper();
 
 	ORBObject* instantiateObject();
 
 	ORBObjectAdapter* createAdapter(ORBObjectServant* obj);
 
+	friend class SingletonWrapper<CarbineRangedWeaponHelper>;
 };
 
 #include "../RangedWeaponImplementation.h"

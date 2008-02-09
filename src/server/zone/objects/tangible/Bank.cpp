@@ -97,16 +97,14 @@ Packet* BankAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* inv) {
  *	BankHelper
  */
 
-BankHelper BankHelper::instance;
-
 BankHelper::BankHelper() {
 	className = "Bank";
 
 	ObjectRequestBroker::instance()->registerClass(className, this);
 }
 
-ORBClassHelper* BankHelper::getInstance() {
-		return &instance;
+void BankHelper::finalizeHelper() {
+	BankHelper::finalize();
 }
 
 ORBObject* BankHelper::instantiateObject() {
@@ -114,7 +112,7 @@ ORBObject* BankHelper::instantiateObject() {
 }
 
 ORBObjectAdapter* BankHelper::createAdapter(ORBObjectServant* obj) {
-	ORBObjectAdapter* adapter = new BankAdapter((BankImplementation*)obj);
+	ORBObjectAdapter* adapter = new BankAdapter((BankImplementation*) obj);
 
 	ORBObjectStub* stub = new Bank(obj);
 	stub->_setORBClassName(className);
@@ -132,7 +130,7 @@ ORBObjectAdapter* BankHelper::createAdapter(ORBObjectServant* obj) {
  */
 
 BankServant::BankServant(unsigned long long oid) : ContainerImplementation(oid) {
-	_classHelper = BankHelper::getInstance();
+	_classHelper = BankHelper::instance();
 }
 
 BankServant::~BankServant() {

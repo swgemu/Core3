@@ -160,16 +160,14 @@ void TrainerCreatureAdapter::selectConversationOption(int option, SceneObject* o
  *	TrainerCreatureHelper
  */
 
-TrainerCreatureHelper TrainerCreatureHelper::instance;
-
 TrainerCreatureHelper::TrainerCreatureHelper() {
 	className = "TrainerCreature";
 
 	ObjectRequestBroker::instance()->registerClass(className, this);
 }
 
-ORBClassHelper* TrainerCreatureHelper::getInstance() {
-		return &instance;
+void TrainerCreatureHelper::finalizeHelper() {
+	TrainerCreatureHelper::finalize();
 }
 
 ORBObject* TrainerCreatureHelper::instantiateObject() {
@@ -177,7 +175,7 @@ ORBObject* TrainerCreatureHelper::instantiateObject() {
 }
 
 ORBObjectAdapter* TrainerCreatureHelper::createAdapter(ORBObjectServant* obj) {
-	ORBObjectAdapter* adapter = new TrainerCreatureAdapter((TrainerCreatureImplementation*)obj);
+	ORBObjectAdapter* adapter = new TrainerCreatureAdapter((TrainerCreatureImplementation*) obj);
 
 	ORBObjectStub* stub = new TrainerCreature(obj);
 	stub->_setORBClassName(className);
@@ -195,7 +193,7 @@ ORBObjectAdapter* TrainerCreatureHelper::createAdapter(ORBObjectServant* obj) {
  */
 
 TrainerCreatureServant::TrainerCreatureServant(unsigned long long oid) : CreatureImplementation(oid) {
-	_classHelper = TrainerCreatureHelper::getInstance();
+	_classHelper = TrainerCreatureHelper::instance();
 }
 
 TrainerCreatureServant::~TrainerCreatureServant() {

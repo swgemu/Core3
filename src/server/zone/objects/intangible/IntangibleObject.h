@@ -129,18 +129,17 @@ protected:
 	string _param0_setDetailName__string_;
 };
 
-class IntangibleObjectHelper : public ORBClassHelper {
-	static IntangibleObjectHelper instance;
-
+class IntangibleObjectHelper : public ORBClassHelper, public Singleton<IntangibleObjectHelper> {
 public:
 	IntangibleObjectHelper();
 
-	static ORBClassHelper* getInstance();
+	void finalizeHelper();
 
 	ORBObject* instantiateObject();
 
 	ORBObjectAdapter* createAdapter(ORBObjectServant* obj);
 
+	friend class SingletonWrapper<IntangibleObjectHelper>;
 };
 
 #include "../scene/SceneObjectImplementation.h"

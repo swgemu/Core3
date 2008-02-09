@@ -76,7 +76,5 @@ void LoginMessageProcessorThread::run() {
 		delete msg;
 	}
 
-	info("stopped");
-
 	server->flushMessages();
 }

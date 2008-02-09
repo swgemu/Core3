@@ -58,6 +58,8 @@ class ObjectManager : public Logger {
 public:
 	ObjectManager(ServiceThread* serv);
 	
+	~ObjectManager();
+	
 	// object methods
 	void add(SceneObject* obj);
 

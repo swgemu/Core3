@@ -97,16 +97,14 @@ Packet* InventoryAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* inv) 
  *	InventoryHelper
  */
 
-InventoryHelper InventoryHelper::instance;
-
 InventoryHelper::InventoryHelper() {
 	className = "Inventory";
 
 	ObjectRequestBroker::instance()->registerClass(className, this);
 }
 
-ORBClassHelper* InventoryHelper::getInstance() {
-		return &instance;
+void InventoryHelper::finalizeHelper() {
+	InventoryHelper::finalize();
 }
 
 ORBObject* InventoryHelper::instantiateObject() {
@@ -114,7 +112,7 @@ ORBObject* InventoryHelper::instantiateObject() {
 }
 
 ORBObjectAdapter* InventoryHelper::createAdapter(ORBObjectServant* obj) {
-	ORBObjectAdapter* adapter = new InventoryAdapter((InventoryImplementation*)obj);
+	ORBObjectAdapter* adapter = new InventoryAdapter((InventoryImplementation*) obj);
 
 	ORBObjectStub* stub = new Inventory(obj);
 	stub->_setORBClassName(className);
@@ -132,7 +130,7 @@ ORBObjectAdapter* InventoryHelper::createAdapter(ORBObjectServant* obj) {
  */
 
 InventoryServant::InventoryServant(unsigned long long oid) : ContainerImplementation(oid) {
-	_classHelper = InventoryHelper::getInstance();
+	_classHelper = InventoryHelper::instance();
 }
 
 InventoryServant::~InventoryServant() {

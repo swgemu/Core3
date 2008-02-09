@@ -117,16 +117,14 @@ int VendorTerminalAdapter::useObject(Player* player) {
  *	VendorTerminalHelper
  */
 
-VendorTerminalHelper VendorTerminalHelper::instance;
-
 VendorTerminalHelper::VendorTerminalHelper() {
 	className = "VendorTerminal";
 
 	ObjectRequestBroker::instance()->registerClass(className, this);
 }
 
-ORBClassHelper* VendorTerminalHelper::getInstance() {
-		return &instance;
+void VendorTerminalHelper::finalizeHelper() {
+	VendorTerminalHelper::finalize();
 }
 
 ORBObject* VendorTerminalHelper::instantiateObject() {
@@ -134,7 +132,7 @@ ORBObject* VendorTerminalHelper::instantiateObject() {
 }
 
 ORBObjectAdapter* VendorTerminalHelper::createAdapter(ORBObjectServant* obj) {
-	ORBObjectAdapter* adapter = new VendorTerminalAdapter((VendorTerminalImplementation*)obj);
+	ORBObjectAdapter* adapter = new VendorTerminalAdapter((VendorTerminalImplementation*) obj);
 
 	ORBObjectStub* stub = new VendorTerminal(obj);
 	stub->_setORBClassName(className);
@@ -152,7 +150,7 @@ ORBObjectAdapter* VendorTerminalHelper::createAdapter(ORBObjectServant* obj) {
  */
 
 VendorTerminalServant::VendorTerminalServant(unsigned int objCRC, unsigned long long objid, const unicode& n, const string& tempn, float x, float z, float y, int TerminalType) : TerminalImplementation(objCRC, objid, n, tempn, x, z, y, TerminalType) {
-	_classHelper = VendorTerminalHelper::getInstance();
+	_classHelper = VendorTerminalHelper::instance();
 }
 
 VendorTerminalServant::~VendorTerminalServant() {

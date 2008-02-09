@@ -78,18 +78,17 @@ public:
 
 };
 
-class ManufactureSchematicHelper : public ORBClassHelper {
-	static ManufactureSchematicHelper instance;
-
+class ManufactureSchematicHelper : public ORBClassHelper, public Singleton<ManufactureSchematicHelper> {
 public:
 	ManufactureSchematicHelper();
 
-	static ORBClassHelper* getInstance();
+	void finalizeHelper();
 
 	ORBObject* instantiateObject();
 
 	ORBObjectAdapter* createAdapter(ORBObjectServant* obj);
 
+	friend class SingletonWrapper<ManufactureSchematicHelper>;
 };
 
 #include "../scene/SceneObjectImplementation.h"

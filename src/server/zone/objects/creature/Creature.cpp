@@ -805,16 +805,14 @@ LairObject* CreatureAdapter::getLair() {
  *	CreatureHelper
  */
 
-CreatureHelper CreatureHelper::instance;
-
 CreatureHelper::CreatureHelper() {
 	className = "Creature";
 
 	ObjectRequestBroker::instance()->registerClass(className, this);
 }
 
-ORBClassHelper* CreatureHelper::getInstance() {
-		return &instance;
+void CreatureHelper::finalizeHelper() {
+	CreatureHelper::finalize();
 }
 
 ORBObject* CreatureHelper::instantiateObject() {
@@ -822,7 +820,7 @@ ORBObject* CreatureHelper::instantiateObject() {
 }
 
 ORBObjectAdapter* CreatureHelper::createAdapter(ORBObjectServant* obj) {
-	ORBObjectAdapter* adapter = new CreatureAdapter((CreatureImplementation*)obj);
+	ORBObjectAdapter* adapter = new CreatureAdapter((CreatureImplementation*) obj);
 
 	ORBObjectStub* stub = new Creature(obj);
 	stub->_setORBClassName(className);
@@ -840,7 +838,7 @@ ORBObjectAdapter* CreatureHelper::createAdapter(ORBObjectServant* obj) {
  */
 
 CreatureServant::CreatureServant(unsigned long long oid) : CreatureObjectImplementation(oid) {
-	_classHelper = CreatureHelper::getInstance();
+	_classHelper = CreatureHelper::instance();
 }
 
 CreatureServant::~CreatureServant() {

@@ -97,16 +97,14 @@ Packet* CarbineRangedWeaponAdapter::invokeMethod(uint32 methid, ORBMethodInvocat
  *	CarbineRangedWeaponHelper
  */
 
-CarbineRangedWeaponHelper CarbineRangedWeaponHelper::instance;
-
 CarbineRangedWeaponHelper::CarbineRangedWeaponHelper() {
 	className = "CarbineRangedWeapon";
 
 	ObjectRequestBroker::instance()->registerClass(className, this);
 }
 
-ORBClassHelper* CarbineRangedWeaponHelper::getInstance() {
-		return &instance;
+void CarbineRangedWeaponHelper::finalizeHelper() {
+	CarbineRangedWeaponHelper::finalize();
 }
 
 ORBObject* CarbineRangedWeaponHelper::instantiateObject() {
@@ -114,7 +112,7 @@ ORBObject* CarbineRangedWeaponHelper::instantiateObject() {
 }
 
 ORBObjectAdapter* CarbineRangedWeaponHelper::createAdapter(ORBObjectServant* obj) {
-	ORBObjectAdapter* adapter = new CarbineRangedWeaponAdapter((CarbineRangedWeaponImplementation*)obj);
+	ORBObjectAdapter* adapter = new CarbineRangedWeaponAdapter((CarbineRangedWeaponImplementation*) obj);
 
 	ORBObjectStub* stub = new CarbineRangedWeapon(obj);
 	stub->_setORBClassName(className);
@@ -132,11 +130,11 @@ ORBObjectAdapter* CarbineRangedWeaponHelper::createAdapter(ORBObjectServant* obj
  */
 
 CarbineRangedWeaponServant::CarbineRangedWeaponServant(unsigned long long objid, unsigned int tempcrc, const unicode& n, const string& tempn, int tp, bool eqp) : RangedWeaponImplementation(objid, tempcrc, n, tempn, tp, eqp) {
-	_classHelper = CarbineRangedWeaponHelper::getInstance();
+	_classHelper = CarbineRangedWeaponHelper::instance();
 }
 
 CarbineRangedWeaponServant::CarbineRangedWeaponServant(CreatureObject* creature, const string& temp, const unicode& n, const string& tempn, int tp, bool eqp) : RangedWeaponImplementation(creature, temp, n, tempn, tp, eqp) {
-	_classHelper = CarbineRangedWeaponHelper::getInstance();
+	_classHelper = CarbineRangedWeaponHelper::instance();
 }
 
 CarbineRangedWeaponServant::~CarbineRangedWeaponServant() {

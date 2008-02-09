@@ -97,16 +97,14 @@ Packet* PolearmMeleeWeaponAdapter::invokeMethod(uint32 methid, ORBMethodInvocati
  *	PolearmMeleeWeaponHelper
  */
 
-PolearmMeleeWeaponHelper PolearmMeleeWeaponHelper::instance;
-
 PolearmMeleeWeaponHelper::PolearmMeleeWeaponHelper() {
 	className = "PolearmMeleeWeapon";
 
 	ObjectRequestBroker::instance()->registerClass(className, this);
 }
 
-ORBClassHelper* PolearmMeleeWeaponHelper::getInstance() {
-		return &instance;
+void PolearmMeleeWeaponHelper::finalizeHelper() {
+	PolearmMeleeWeaponHelper::finalize();
 }
 
 ORBObject* PolearmMeleeWeaponHelper::instantiateObject() {
@@ -114,7 +112,7 @@ ORBObject* PolearmMeleeWeaponHelper::instantiateObject() {
 }
 
 ORBObjectAdapter* PolearmMeleeWeaponHelper::createAdapter(ORBObjectServant* obj) {
-	ORBObjectAdapter* adapter = new PolearmMeleeWeaponAdapter((PolearmMeleeWeaponImplementation*)obj);
+	ORBObjectAdapter* adapter = new PolearmMeleeWeaponAdapter((PolearmMeleeWeaponImplementation*) obj);
 
 	ORBObjectStub* stub = new PolearmMeleeWeapon(obj);
 	stub->_setORBClassName(className);
@@ -132,11 +130,11 @@ ORBObjectAdapter* PolearmMeleeWeaponHelper::createAdapter(ORBObjectServant* obj)
  */
 
 PolearmMeleeWeaponServant::PolearmMeleeWeaponServant(unsigned long long objid, unsigned int tempcrc, const unicode& n, const string& tempn, int tp, bool eqp) : MeleeWeaponImplementation(objid, tempcrc, n, tempn, tp, eqp) {
-	_classHelper = PolearmMeleeWeaponHelper::getInstance();
+	_classHelper = PolearmMeleeWeaponHelper::instance();
 }
 
 PolearmMeleeWeaponServant::PolearmMeleeWeaponServant(CreatureObject* creature, const string& temp, const unicode& n, const string& tempn, int tp, bool eqp) : MeleeWeaponImplementation(creature, temp, n, tempn, tp, eqp) {
-	_classHelper = PolearmMeleeWeaponHelper::getInstance();
+	_classHelper = PolearmMeleeWeaponHelper::instance();
 }
 
 PolearmMeleeWeaponServant::~PolearmMeleeWeaponServant() {

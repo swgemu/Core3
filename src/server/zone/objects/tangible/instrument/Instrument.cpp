@@ -136,16 +136,14 @@ int InstrumentAdapter::getInstrumentType() {
  *	InstrumentHelper
  */
 
-InstrumentHelper InstrumentHelper::instance;
-
 InstrumentHelper::InstrumentHelper() {
 	className = "Instrument";
 
 	ObjectRequestBroker::instance()->registerClass(className, this);
 }
 
-ORBClassHelper* InstrumentHelper::getInstance() {
-		return &instance;
+void InstrumentHelper::finalizeHelper() {
+	InstrumentHelper::finalize();
 }
 
 ORBObject* InstrumentHelper::instantiateObject() {
@@ -153,7 +151,7 @@ ORBObject* InstrumentHelper::instantiateObject() {
 }
 
 ORBObjectAdapter* InstrumentHelper::createAdapter(ORBObjectServant* obj) {
-	ORBObjectAdapter* adapter = new InstrumentAdapter((InstrumentImplementation*)obj);
+	ORBObjectAdapter* adapter = new InstrumentAdapter((InstrumentImplementation*) obj);
 
 	ORBObjectStub* stub = new Instrument(obj);
 	stub->_setORBClassName(className);
@@ -171,7 +169,7 @@ ORBObjectAdapter* InstrumentHelper::createAdapter(ORBObjectServant* obj) {
  */
 
 InstrumentServant::InstrumentServant(unsigned long long oid, int tp) : TangibleObjectImplementation(oid, tp) {
-	_classHelper = InstrumentHelper::getInstance();
+	_classHelper = InstrumentHelper::instance();
 }
 
 InstrumentServant::~InstrumentServant() {

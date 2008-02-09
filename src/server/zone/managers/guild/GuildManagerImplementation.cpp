@@ -65,6 +65,15 @@ GuildManagerImplementation::GuildManagerImplementation(ZoneServer* serv) : Guild
 
 }
 
+GuildManagerImplementation::~GuildManagerImplementation() {
+	removeGuilds();
+	
+	guilds->undeploy();
+	
+	delete guilds;
+	guilds = NULL;
+}
+
 void GuildManagerImplementation::load() {
 	lock();
 	
@@ -217,6 +226,17 @@ bool GuildManagerImplementation::removeGuild(int gid, bool doLock) {
 
 	unlock(doLock);
 	return true;
+}
+
+void GuildManagerImplementation::removeGuilds() {
+	for (int i = 0; i < guilds->size(); ++i) {
+		Guild* guild = guilds->get(i);
+		guild->undeploy();
+		
+		delete guild;
+	}
+	
+	guilds->removeAll();
 }
 
 void GuildManagerImplementation::removePlayersFromGuild(int gid) {

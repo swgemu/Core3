@@ -97,16 +97,14 @@ Packet* OneHandedJediWeaponAdapter::invokeMethod(uint32 methid, ORBMethodInvocat
  *	OneHandedJediWeaponHelper
  */
 
-OneHandedJediWeaponHelper OneHandedJediWeaponHelper::instance;
-
 OneHandedJediWeaponHelper::OneHandedJediWeaponHelper() {
 	className = "OneHandedJediWeapon";
 
 	ObjectRequestBroker::instance()->registerClass(className, this);
 }
 
-ORBClassHelper* OneHandedJediWeaponHelper::getInstance() {
-		return &instance;
+void OneHandedJediWeaponHelper::finalizeHelper() {
+	OneHandedJediWeaponHelper::finalize();
 }
 
 ORBObject* OneHandedJediWeaponHelper::instantiateObject() {
@@ -114,7 +112,7 @@ ORBObject* OneHandedJediWeaponHelper::instantiateObject() {
 }
 
 ORBObjectAdapter* OneHandedJediWeaponHelper::createAdapter(ORBObjectServant* obj) {
-	ORBObjectAdapter* adapter = new OneHandedJediWeaponAdapter((OneHandedJediWeaponImplementation*)obj);
+	ORBObjectAdapter* adapter = new OneHandedJediWeaponAdapter((OneHandedJediWeaponImplementation*) obj);
 
 	ORBObjectStub* stub = new OneHandedJediWeapon(obj);
 	stub->_setORBClassName(className);
@@ -132,11 +130,11 @@ ORBObjectAdapter* OneHandedJediWeaponHelper::createAdapter(ORBObjectServant* obj
  */
 
 OneHandedJediWeaponServant::OneHandedJediWeaponServant(unsigned long long objid, unsigned int tempcrc, const unicode& n, const string& tempn, int tp, bool eqp) : JediWeaponImplementation(objid, tempcrc, n, tempn, tp, eqp) {
-	_classHelper = OneHandedJediWeaponHelper::getInstance();
+	_classHelper = OneHandedJediWeaponHelper::instance();
 }
 
 OneHandedJediWeaponServant::OneHandedJediWeaponServant(CreatureObject* creature, const string& temp, const unicode& n, const string& tempn, int tp, bool eqp) : JediWeaponImplementation(creature, temp, n, tempn, tp, eqp) {
-	_classHelper = OneHandedJediWeaponHelper::getInstance();
+	_classHelper = OneHandedJediWeaponHelper::instance();
 }
 
 OneHandedJediWeaponServant::~OneHandedJediWeaponServant() {

@@ -1367,18 +1367,17 @@ protected:
 	string _param0_applyBuff__string_int_float_;
 };
 
-class CreatureObjectHelper : public ORBClassHelper {
-	static CreatureObjectHelper instance;
-
+class CreatureObjectHelper : public ORBClassHelper, public Singleton<CreatureObjectHelper> {
 public:
 	CreatureObjectHelper();
 
-	static ORBClassHelper* getInstance();
+	void finalizeHelper();
 
 	ORBObject* instantiateObject();
 
 	ORBObjectAdapter* createAdapter(ORBObjectServant* obj);
 
+	friend class SingletonWrapper<CreatureObjectHelper>;
 };
 
 #include "../scene/SceneObjectImplementation.h"

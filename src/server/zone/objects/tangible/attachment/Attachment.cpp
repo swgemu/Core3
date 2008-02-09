@@ -474,19 +474,14 @@ int AttachmentAdapter::getBestSkillMod() {
  *	AttachmentHelper
  */
 
-ORBClassHelper* AttachmentHelper::instance = new AttachmentHelper();
-
 AttachmentHelper::AttachmentHelper() {
 	className = "Attachment";
 
 	ObjectRequestBroker::instance()->registerClass(className, this);
 }
 
-ORBClassHelper* AttachmentHelper::getInstance() {
-	if (instance == NULL)
-		return instance = new AttachmentHelper();
-	else
-		return instance;
+void AttachmentHelper::finalizeHelper() {
+	AttachmentHelper::finalize();
 }
 
 ORBObject* AttachmentHelper::instantiateObject() {
@@ -494,7 +489,7 @@ ORBObject* AttachmentHelper::instantiateObject() {
 }
 
 ORBObjectAdapter* AttachmentHelper::createAdapter(ORBObjectServant* obj) {
-	ORBObjectAdapter* adapter = new AttachmentAdapter((AttachmentImplementation*)obj);
+	ORBObjectAdapter* adapter = new AttachmentAdapter((AttachmentImplementation*) obj);
 
 	ORBObjectStub* stub = new Attachment(obj);
 	stub->_setORBClassName(className);
@@ -512,7 +507,7 @@ ORBObjectAdapter* AttachmentHelper::createAdapter(ORBObjectServant* obj) {
  */
 
 AttachmentServant::AttachmentServant(unsigned int oid, int type) : TangibleObjectImplementation(oid, type) {
-	_classHelper = AttachmentHelper::getInstance();
+	_classHelper = AttachmentHelper::instance();
 }
 
 AttachmentServant::~AttachmentServant() {

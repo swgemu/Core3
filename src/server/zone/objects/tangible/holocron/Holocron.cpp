@@ -117,16 +117,14 @@ int HolocronAdapter::useObject(Player* player) {
  *	HolocronHelper
  */
 
-HolocronHelper HolocronHelper::instance;
-
 HolocronHelper::HolocronHelper() {
 	className = "Holocron";
 
 	ObjectRequestBroker::instance()->registerClass(className, this);
 }
 
-ORBClassHelper* HolocronHelper::getInstance() {
-		return &instance;
+void HolocronHelper::finalizeHelper() {
+	HolocronHelper::finalize();
 }
 
 ORBObject* HolocronHelper::instantiateObject() {
@@ -134,7 +132,7 @@ ORBObject* HolocronHelper::instantiateObject() {
 }
 
 ORBObjectAdapter* HolocronHelper::createAdapter(ORBObjectServant* obj) {
-	ORBObjectAdapter* adapter = new HolocronAdapter((HolocronImplementation*)obj);
+	ORBObjectAdapter* adapter = new HolocronAdapter((HolocronImplementation*) obj);
 
 	ORBObjectStub* stub = new Holocron(obj);
 	stub->_setORBClassName(className);
@@ -152,7 +150,7 @@ ORBObjectAdapter* HolocronHelper::createAdapter(ORBObjectServant* obj) {
  */
 
 HolocronServant::HolocronServant(unsigned long long oid, int tp) : TangibleObjectImplementation(oid, tp) {
-	_classHelper = HolocronHelper::getInstance();
+	_classHelper = HolocronHelper::instance();
 }
 
 HolocronServant::~HolocronServant() {

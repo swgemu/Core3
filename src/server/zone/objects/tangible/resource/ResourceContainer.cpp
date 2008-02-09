@@ -829,16 +829,14 @@ int ResourceContainerAdapter::getMaxContents() {
  *	ResourceContainerHelper
  */
 
-ResourceContainerHelper ResourceContainerHelper::instance;
-
 ResourceContainerHelper::ResourceContainerHelper() {
 	className = "ResourceContainer";
 
 	ObjectRequestBroker::instance()->registerClass(className, this);
 }
 
-ORBClassHelper* ResourceContainerHelper::getInstance() {
-		return &instance;
+void ResourceContainerHelper::finalizeHelper() {
+	ResourceContainerHelper::finalize();
 }
 
 ORBObject* ResourceContainerHelper::instantiateObject() {
@@ -846,7 +844,7 @@ ORBObject* ResourceContainerHelper::instantiateObject() {
 }
 
 ORBObjectAdapter* ResourceContainerHelper::createAdapter(ORBObjectServant* obj) {
-	ORBObjectAdapter* adapter = new ResourceContainerAdapter((ResourceContainerImplementation*)obj);
+	ORBObjectAdapter* adapter = new ResourceContainerAdapter((ResourceContainerImplementation*) obj);
 
 	ORBObjectStub* stub = new ResourceContainer(obj);
 	stub->_setORBClassName(className);
@@ -864,15 +862,15 @@ ORBObjectAdapter* ResourceContainerHelper::createAdapter(ORBObjectServant* obj) 
  */
 
 ResourceContainerServant::ResourceContainerServant(unsigned long long oid, int tp) : TangibleObjectImplementation(oid, tp) {
-	_classHelper = ResourceContainerHelper::getInstance();
+	_classHelper = ResourceContainerHelper::instance();
 }
 
 ResourceContainerServant::ResourceContainerServant(unsigned long long oid, const unicode& n, const string& name, int tempCRC, int tp) : TangibleObjectImplementation(oid, n, name, tempCRC, tp) {
-	_classHelper = ResourceContainerHelper::getInstance();
+	_classHelper = ResourceContainerHelper::instance();
 }
 
 ResourceContainerServant::ResourceContainerServant(CreatureObject* creature, const unicode& n, const string& name, int tempCRC, int tp) : TangibleObjectImplementation(creature, n, name, tempCRC, tp) {
-	_classHelper = ResourceContainerHelper::getInstance();
+	_classHelper = ResourceContainerHelper::instance();
 }
 
 ResourceContainerServant::~ResourceContainerServant() {

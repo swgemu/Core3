@@ -55,7 +55,6 @@ class ScriptAttacksManager : public Lua {
 	static SkillList* CombatActions;
 
 public:
-
 	ScriptAttacksManager(ZoneProcessServerImplementation* serv);
 	
 	void registerFunctions();

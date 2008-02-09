@@ -345,16 +345,14 @@ void BuildingObjectAdapter::inRange(QuadTreeEntry* obj, float range) {
  *	BuildingObjectHelper
  */
 
-BuildingObjectHelper BuildingObjectHelper::instance;
-
 BuildingObjectHelper::BuildingObjectHelper() {
 	className = "BuildingObject";
 
 	ObjectRequestBroker::instance()->registerClass(className, this);
 }
 
-ORBClassHelper* BuildingObjectHelper::getInstance() {
-		return &instance;
+void BuildingObjectHelper::finalizeHelper() {
+	BuildingObjectHelper::finalize();
 }
 
 ORBObject* BuildingObjectHelper::instantiateObject() {
@@ -362,7 +360,7 @@ ORBObject* BuildingObjectHelper::instantiateObject() {
 }
 
 ORBObjectAdapter* BuildingObjectHelper::createAdapter(ORBObjectServant* obj) {
-	ORBObjectAdapter* adapter = new BuildingObjectAdapter((BuildingObjectImplementation*)obj);
+	ORBObjectAdapter* adapter = new BuildingObjectAdapter((BuildingObjectImplementation*) obj);
 
 	ORBObjectStub* stub = new BuildingObject(obj);
 	stub->_setORBClassName(className);
@@ -380,7 +378,7 @@ ORBObjectAdapter* BuildingObjectHelper::createAdapter(ORBObjectServant* obj) {
  */
 
 BuildingObjectServant::BuildingObjectServant(unsigned long long oid) : SceneObjectImplementation(oid) {
-	_classHelper = BuildingObjectHelper::getInstance();
+	_classHelper = BuildingObjectHelper::instance();
 }
 
 BuildingObjectServant::~BuildingObjectServant() {

@@ -95,16 +95,14 @@ Packet* MissionObjectAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* i
  *	MissionObjectHelper
  */
 
-MissionObjectHelper MissionObjectHelper::instance;
-
 MissionObjectHelper::MissionObjectHelper() {
 	className = "MissionObject";
 
 	ObjectRequestBroker::instance()->registerClass(className, this);
 }
 
-ORBClassHelper* MissionObjectHelper::getInstance() {
-		return &instance;
+void MissionObjectHelper::finalizeHelper() {
+	MissionObjectHelper::finalize();
 }
 
 ORBObject* MissionObjectHelper::instantiateObject() {
@@ -112,7 +110,7 @@ ORBObject* MissionObjectHelper::instantiateObject() {
 }
 
 ORBObjectAdapter* MissionObjectHelper::createAdapter(ORBObjectServant* obj) {
-	ORBObjectAdapter* adapter = new MissionObjectAdapter((MissionObjectImplementation*)obj);
+	ORBObjectAdapter* adapter = new MissionObjectAdapter((MissionObjectImplementation*) obj);
 
 	ORBObjectStub* stub = new MissionObject(obj);
 	stub->_setORBClassName(className);
@@ -130,7 +128,7 @@ ORBObjectAdapter* MissionObjectHelper::createAdapter(ORBObjectServant* obj) {
  */
 
 MissionObjectServant::MissionObjectServant(unsigned long long oid) : SceneObjectImplementation(oid) {
-	_classHelper = MissionObjectHelper::getInstance();
+	_classHelper = MissionObjectHelper::instance();
 }
 
 MissionObjectServant::~MissionObjectServant() {

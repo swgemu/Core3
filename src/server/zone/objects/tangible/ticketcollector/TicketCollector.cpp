@@ -140,16 +140,14 @@ void TicketCollectorAdapter::useTicket(Player* player, Ticket* ticket) {
  *	TicketCollectorHelper
  */
 
-TicketCollectorHelper TicketCollectorHelper::instance;
-
 TicketCollectorHelper::TicketCollectorHelper() {
 	className = "TicketCollector";
 
 	ObjectRequestBroker::instance()->registerClass(className, this);
 }
 
-ORBClassHelper* TicketCollectorHelper::getInstance() {
-		return &instance;
+void TicketCollectorHelper::finalizeHelper() {
+	TicketCollectorHelper::finalize();
 }
 
 ORBObject* TicketCollectorHelper::instantiateObject() {
@@ -157,7 +155,7 @@ ORBObject* TicketCollectorHelper::instantiateObject() {
 }
 
 ORBObjectAdapter* TicketCollectorHelper::createAdapter(ORBObjectServant* obj) {
-	ORBObjectAdapter* adapter = new TicketCollectorAdapter((TicketCollectorImplementation*)obj);
+	ORBObjectAdapter* adapter = new TicketCollectorAdapter((TicketCollectorImplementation*) obj);
 
 	ORBObjectStub* stub = new TicketCollector(obj);
 	stub->_setORBClassName(className);
@@ -175,7 +173,7 @@ ORBObjectAdapter* TicketCollectorHelper::createAdapter(ORBObjectServant* obj) {
  */
 
 TicketCollectorServant::TicketCollectorServant(unsigned long long oid, int tp) : TangibleObjectImplementation(oid, tp) {
-	_classHelper = TicketCollectorHelper::getInstance();
+	_classHelper = TicketCollectorHelper::instance();
 }
 
 TicketCollectorServant::~TicketCollectorServant() {

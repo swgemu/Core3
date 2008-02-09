@@ -54,6 +54,11 @@ ObjectManager::ObjectManager(ServiceThread* serv) : Logger("ObjectManager") {
 	setGlobalLogging(true);
 }
 
+ObjectManager::~ObjectManager() {
+	delete objectMap;
+	delete objectCacheMap;
+}
+
 void ObjectManager::add(SceneObject* obj) {
 	uint64 oid = obj->getObjectID();
 	

@@ -126,18 +126,17 @@ public:
 
 };
 
-class ZoneClientHelper : public ORBClassHelper {
-	static ZoneClientHelper instance;
-
+class ZoneClientHelper : public ORBClassHelper, public Singleton<ZoneClientHelper> {
 public:
 	ZoneClientHelper();
 
-	static ORBClassHelper* getInstance();
+	void finalizeHelper();
 
 	ORBObject* instantiateObject();
 
 	ORBObjectAdapter* createAdapter(ORBObjectServant* obj);
 
+	friend class SingletonWrapper<ZoneClientHelper>;
 };
 
 class ZoneClientServant : public ORBObjectServant {

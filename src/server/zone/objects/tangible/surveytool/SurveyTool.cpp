@@ -261,16 +261,14 @@ void SurveyToolAdapter::sampleRequest(Player* player, unicode& resourceName) {
  *	SurveyToolHelper
  */
 
-SurveyToolHelper SurveyToolHelper::instance;
-
 SurveyToolHelper::SurveyToolHelper() {
 	className = "SurveyTool";
 
 	ObjectRequestBroker::instance()->registerClass(className, this);
 }
 
-ORBClassHelper* SurveyToolHelper::getInstance() {
-		return &instance;
+void SurveyToolHelper::finalizeHelper() {
+	SurveyToolHelper::finalize();
 }
 
 ORBObject* SurveyToolHelper::instantiateObject() {
@@ -278,7 +276,7 @@ ORBObject* SurveyToolHelper::instantiateObject() {
 }
 
 ORBObjectAdapter* SurveyToolHelper::createAdapter(ORBObjectServant* obj) {
-	ORBObjectAdapter* adapter = new SurveyToolAdapter((SurveyToolImplementation*)obj);
+	ORBObjectAdapter* adapter = new SurveyToolAdapter((SurveyToolImplementation*) obj);
 
 	ORBObjectStub* stub = new SurveyTool(obj);
 	stub->_setORBClassName(className);
@@ -296,11 +294,11 @@ ORBObjectAdapter* SurveyToolHelper::createAdapter(ORBObjectServant* obj) {
  */
 
 SurveyToolServant::SurveyToolServant(CreatureObject* creature, const unicode& n, const string& tempn, int tempCRC, int tp) : TangibleObjectImplementation(creature, n, tempn, tempCRC, tp) {
-	_classHelper = SurveyToolHelper::getInstance();
+	_classHelper = SurveyToolHelper::instance();
 }
 
 SurveyToolServant::SurveyToolServant(unsigned long long oid, const unicode& n, const string& tempn, int tempCRC, int tp) : TangibleObjectImplementation(oid, n, tempn, tempCRC, tp) {
-	_classHelper = SurveyToolHelper::getInstance();
+	_classHelper = SurveyToolHelper::instance();
 }
 
 SurveyToolServant::~SurveyToolServant() {

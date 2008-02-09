@@ -148,18 +148,17 @@ public:
 
 };
 
-class GroupObjectHelper : public ORBClassHelper {
-	static GroupObjectHelper instance;
-
+class GroupObjectHelper : public ORBClassHelper, public Singleton<GroupObjectHelper> {
 public:
 	GroupObjectHelper();
 
-	static ORBClassHelper* getInstance();
+	void finalizeHelper();
 
 	ORBObject* instantiateObject();
 
 	ORBObjectAdapter* createAdapter(ORBObjectServant* obj);
 
+	friend class SingletonWrapper<GroupObjectHelper>;
 };
 
 #include "../scene/SceneObjectImplementation.h"

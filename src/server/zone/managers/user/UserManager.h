@@ -111,18 +111,17 @@ protected:
 	string _param1_banUserByName__string_string_;
 };
 
-class UserManagerHelper : public ORBClassHelper {
-	static UserManagerHelper instance;
-
+class UserManagerHelper : public ORBClassHelper, public Singleton<UserManagerHelper> {
 public:
 	UserManagerHelper();
 
-	static ORBClassHelper* getInstance();
+	void finalizeHelper();
 
 	ORBObject* instantiateObject();
 
 	ORBObjectAdapter* createAdapter(ORBObjectServant* obj);
 
+	friend class SingletonWrapper<UserManagerHelper>;
 };
 
 class UserManagerServant : public ORBObjectServant {

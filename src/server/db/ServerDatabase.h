@@ -65,7 +65,6 @@ public:
 	}
 	
 	~ServerDatabase() {
-		impl->close();
 		delete impl;
 	}
 	

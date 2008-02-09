@@ -96,36 +96,37 @@ am__objects_1 = Zone.$(OBJEXT) ZoneClient.$(OBJEXT) \
 	MountCreature.$(OBJEXT) Player.$(OBJEXT) \
 	PlayerObject.$(OBJEXT) SuiBox.$(OBJEXT) SuiListBox.$(OBJEXT) \
 	SuiMessageBox.$(OBJEXT) SuiInputBox.$(OBJEXT) \
-	SuiTransferBox.$(OBJEXT) TangibleObject.$(OBJEXT) \
-	Container.$(OBJEXT) Inventory.$(OBJEXT) Datapad.$(OBJEXT) \
-	Bank.$(OBJEXT) MissionBag.$(OBJEXT) Weapon.$(OBJEXT) \
-	JediWeapon.$(OBJEXT) RangedWeapon.$(OBJEXT) \
-	MeleeWeapon.$(OBJEXT) CarbineRangedWeapon.$(OBJEXT) \
-	RifleRangedWeapon.$(OBJEXT) PistolRangedWeapon.$(OBJEXT) \
-	OneHandedMeleeWeapon.$(OBJEXT) TwoHandedMeleeWeapon.$(OBJEXT) \
-	UnarmedMeleeWeapon.$(OBJEXT) PolearmMeleeWeapon.$(OBJEXT) \
-	OneHandedJediWeapon.$(OBJEXT) TwoHandedJediWeapon.$(OBJEXT) \
-	PolearmJediWeapon.$(OBJEXT) HairObject.$(OBJEXT) \
-	Wearable.$(OBJEXT) Armor.$(OBJEXT) Ticket.$(OBJEXT) \
-	Terminal.$(OBJEXT) TravelTerminal.$(OBJEXT) \
+	SuiTransferBox.$(OBJEXT) SuiColorPicker.$(OBJEXT) \
+	TangibleObject.$(OBJEXT) Container.$(OBJEXT) \
+	Inventory.$(OBJEXT) Datapad.$(OBJEXT) Bank.$(OBJEXT) \
+	MissionBag.$(OBJEXT) Weapon.$(OBJEXT) JediWeapon.$(OBJEXT) \
+	RangedWeapon.$(OBJEXT) MeleeWeapon.$(OBJEXT) \
+	CarbineRangedWeapon.$(OBJEXT) RifleRangedWeapon.$(OBJEXT) \
+	PistolRangedWeapon.$(OBJEXT) OneHandedMeleeWeapon.$(OBJEXT) \
+	TwoHandedMeleeWeapon.$(OBJEXT) UnarmedMeleeWeapon.$(OBJEXT) \
+	PolearmMeleeWeapon.$(OBJEXT) OneHandedJediWeapon.$(OBJEXT) \
+	TwoHandedJediWeapon.$(OBJEXT) PolearmJediWeapon.$(OBJEXT) \
+	HairObject.$(OBJEXT) Wearable.$(OBJEXT) Armor.$(OBJEXT) \
+	Ticket.$(OBJEXT) Terminal.$(OBJEXT) TravelTerminal.$(OBJEXT) \
 	GuildTerminal.$(OBJEXT) VendorTerminal.$(OBJEXT) \
 	RegionBazaar.$(OBJEXT) TicketCollector.$(OBJEXT) \
 	Instrument.$(OBJEXT) LairObject.$(OBJEXT) SurveyTool.$(OBJEXT) \
-	ResourceContainer.$(OBJEXT) Holocron.$(OBJEXT) \
-	Firework.$(OBJEXT) IntangibleObject.$(OBJEXT) \
-	StaticObject.$(OBJEXT) FireworkWorld.$(OBJEXT) \
-	GroupObject.$(OBJEXT) Guild.$(OBJEXT) CellObject.$(OBJEXT) \
-	BuildingObject.$(OBJEXT) ManufactureSchematic.$(OBJEXT) \
-	MissionObject.$(OBJEXT) WaypointObject.$(OBJEXT) \
-	ShipComponent.$(OBJEXT) ShipObject.$(OBJEXT) \
-	GuildMap.$(OBJEXT) GuildManager.$(OBJEXT) PlayerMap.$(OBJEXT) \
-	PlayerManager.$(OBJEXT) CreatureManager.$(OBJEXT) \
-	ItemManager.$(OBJEXT) UserManager.$(OBJEXT) \
-	PlanetManager.$(OBJEXT) ResourceTemplate.$(OBJEXT) \
-	SpawnLocation.$(OBJEXT) ResourceManager.$(OBJEXT) \
-	LocalResourceManager.$(OBJEXT) LootManager.$(OBJEXT) \
-	BazaarManager.$(OBJEXT) BazaarPlanetManager.$(OBJEXT) \
-	ChatRoom.$(OBJEXT) ChatManager.$(OBJEXT)
+	ResourceContainer.$(OBJEXT) Attachment.$(OBJEXT) \
+	Holocron.$(OBJEXT) Firework.$(OBJEXT) \
+	IntangibleObject.$(OBJEXT) StaticObject.$(OBJEXT) \
+	FireworkWorld.$(OBJEXT) GroupObject.$(OBJEXT) Guild.$(OBJEXT) \
+	CellObject.$(OBJEXT) BuildingObject.$(OBJEXT) \
+	ManufactureSchematic.$(OBJEXT) MissionObject.$(OBJEXT) \
+	WaypointObject.$(OBJEXT) ShipComponent.$(OBJEXT) \
+	ShipObject.$(OBJEXT) GuildMap.$(OBJEXT) GuildManager.$(OBJEXT) \
+	PlayerMap.$(OBJEXT) PlayerManager.$(OBJEXT) \
+	CreatureManager.$(OBJEXT) ItemManager.$(OBJEXT) \
+	UserManager.$(OBJEXT) PlanetManager.$(OBJEXT) \
+	ResourceTemplate.$(OBJEXT) SpawnLocation.$(OBJEXT) \
+	ResourceManager.$(OBJEXT) LocalResourceManager.$(OBJEXT) \
+	LootManager.$(OBJEXT) BazaarManager.$(OBJEXT) \
+	BazaarPlanetManager.$(OBJEXT) ChatRoom.$(OBJEXT) \
+	ChatManager.$(OBJEXT)
 am_core3_OBJECTS = $(am__objects_1) ServerCore.$(OBJEXT) \
 	ConfigManager.$(OBJEXT) ServerDatabase.$(OBJEXT) \
 	LoginServer.$(OBJEXT) LoginPacketHandler.$(OBJEXT) \
@@ -145,6 +146,7 @@ am_core3_OBJECTS = $(am__objects_1) ServerCore.$(OBJEXT) \
 	LairObjectImplementation.$(OBJEXT) \
 	SurveyToolImplementation.$(OBJEXT) \
 	ResourceContainerImplementation.$(OBJEXT) \
+	AttachmentImplementation.$(OBJEXT) \
 	TicketImplementation.$(OBJEXT) \
 	TicketCollectorImplementation.$(OBJEXT) \
 	StaticObjectImplementation.$(OBJEXT) \
@@ -155,6 +157,7 @@ am_core3_OBJECTS = $(am__objects_1) ServerCore.$(OBJEXT) \
 	SuiMessageBoxImplementation.$(OBJEXT) \
 	SuiInputBoxImplementation.$(OBJEXT) \
 	SuiTransferBoxImplementation.$(OBJEXT) \
+	SuiColorPickerImplementation.$(OBJEXT) \
 	CreatureImplementation.$(OBJEXT) \
 	CreatureObjectImplementation.$(OBJEXT) \
 	ShuttleCreatureImplementation.$(OBJEXT) \
@@ -320,6 +323,7 @@ core3_IDLS = server/zone/Zone.cpp \
 		server/zone/objects/player/sui/messagebox/SuiMessageBox.cpp \
 		server/zone/objects/player/sui/inputbox/SuiInputBox.cpp \
 		server/zone/objects/player/sui/transferbox/SuiTransferBox.cpp \
+		server/zone/objects/player/sui/colorpicker/SuiColorPicker.cpp \
 		server/zone/objects/tangible/TangibleObject.cpp \
 		server/zone/objects/tangible/Container.cpp \
 		server/zone/objects/tangible/Inventory.cpp \
@@ -354,6 +358,7 @@ core3_IDLS = server/zone/Zone.cpp \
 		server/zone/objects/tangible/lair/LairObject.cpp \
 		server/zone/objects/tangible/surveytool/SurveyTool.cpp \
 		server/zone/objects/tangible/resource/ResourceContainer.cpp \
+		server/zone/objects/tangible/attachment/Attachment.cpp \
 		server/zone/objects/tangible/holocron/Holocron.cpp \
 		server/zone/objects/tangible/firework/Firework.cpp \
 		server/zone/objects/intangible/IntangibleObject.cpp \
@@ -376,10 +381,10 @@ core3_IDLS = server/zone/Zone.cpp \
 		server/zone/managers/item/ItemManager.cpp \
 		server/zone/managers/user/UserManager.cpp \
 		server/zone/managers/planet/PlanetManager.cpp \
-    server/zone/managers/resource/ResourceTemplate.cpp \
-    server/zone/managers/resource/SpawnLocation.cpp \
-    server/zone/managers/resource/ResourceManager.cpp \
-    server/zone/managers/resource/LocalResourceManager.cpp \
+    	server/zone/managers/resource/ResourceTemplate.cpp \
+    	server/zone/managers/resource/SpawnLocation.cpp \
+    	server/zone/managers/resource/ResourceManager.cpp \
+    	server/zone/managers/resource/LocalResourceManager.cpp \
 		server/zone/managers/loot/LootManager.cpp \
 		server/zone/managers/bazaar/BazaarManager.cpp \
 		server/zone/managers/bazaar/BazaarPlanetManager.cpp \
@@ -410,6 +415,7 @@ core3_SOURCES = $(core3_IDLS) \
 		server/zone/objects/tangible/lair/LairObjectImplementation.cpp \
 		server/zone/objects/tangible/surveytool/SurveyToolImplementation.cpp \
     	server/zone/objects/tangible/resource/ResourceContainerImplementation.cpp \
+    	server/zone/objects/tangible/attachment/AttachmentImplementation.cpp \
     	server/zone/objects/tangible/ticket/TicketImplementation.cpp \
     	server/zone/objects/tangible/ticketcollector/TicketCollectorImplementation.cpp \
 		server/zone/objects/static/StaticObjectImplementation.cpp \
@@ -420,6 +426,7 @@ core3_SOURCES = $(core3_IDLS) \
 		server/zone/objects/player/sui/messagebox/SuiMessageBoxImplementation.cpp \
 		server/zone/objects/player/sui/inputbox/SuiInputBoxImplementation.cpp \
 		server/zone/objects/player/sui/transferbox/SuiTransferBoxImplementation.cpp \
+		server/zone/objects/player/sui/colorpicker/SuiColorPickerImplementation.cpp \
 		server/zone/objects/creature/CreatureImplementation.cpp \
 		server/zone/objects/creature/CreatureObjectImplementation.cpp \
 		server/zone/objects/creature/shuttle/ShuttleCreatureImplementation.cpp \
@@ -441,8 +448,8 @@ core3_SOURCES = $(core3_IDLS) \
 		server/zone/managers/combat/CommandQueueAction.cpp \
 		server/zone/managers/creature/CreatureManagerImplementation.cpp \
 		server/zone/managers/planet/PlanetManagerImplementation.cpp \
-    server/zone/managers/resource/ResourceManagerImplementation.cpp \
-    server/zone/managers/resource/LocalResourceManagerImplementation.cpp \
+    	server/zone/managers/resource/ResourceManagerImplementation.cpp \
+    	server/zone/managers/resource/LocalResourceManagerImplementation.cpp \
 		server/zone/managers/bazaar/BazaarManagerImplementation.cpp \
 		server/zone/managers/bazaar/BazaarPlanetManagerImplementation.cpp \
 		server/zone/managers/sui/SuiManager.cpp \
@@ -519,6 +526,8 @@ distclean-compile:
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Armor.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ArmorImplementation.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Attachment.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/AttachmentImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Bank.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/BazaarManager.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/BazaarManagerImplementation.Po@am__quote@
@@ -622,6 +631,8 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/StaticObjectImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SuiBox.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SuiBoxImplementation.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SuiColorPicker.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SuiColorPickerImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SuiInputBox.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SuiInputBoxImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SuiListBox.Po@am__quote@
@@ -929,6 +940,20 @@ SuiTransferBox.obj: server/zone/objects/player/sui/transferbox/SuiTransferBox.cp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/player/sui/transferbox/SuiTransferBox.cpp' object='SuiTransferBox.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o SuiTransferBox.obj `if test -f 'server/zone/objects/player/sui/transferbox/SuiTransferBox.cpp'; then $(CYGPATH_W) 'server/zone/objects/player/sui/transferbox/SuiTransferBox.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/player/sui/transferbox/SuiTransferBox.cpp'; fi`
+
+SuiColorPicker.o: server/zone/objects/player/sui/colorpicker/SuiColorPicker.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT SuiColorPicker.o -MD -MP -MF $(DEPDIR)/SuiColorPicker.Tpo -c -o SuiColorPicker.o `test -f 'server/zone/objects/player/sui/colorpicker/SuiColorPicker.cpp' || echo '$(srcdir)/'`server/zone/objects/player/sui/colorpicker/SuiColorPicker.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/SuiColorPicker.Tpo $(DEPDIR)/SuiColorPicker.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/player/sui/colorpicker/SuiColorPicker.cpp' object='SuiColorPicker.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o SuiColorPicker.o `test -f 'server/zone/objects/player/sui/colorpicker/SuiColorPicker.cpp' || echo '$(srcdir)/'`server/zone/objects/player/sui/colorpicker/SuiColorPicker.cpp
+
+SuiColorPicker.obj: server/zone/objects/player/sui/colorpicker/SuiColorPicker.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT SuiColorPicker.obj -MD -MP -MF $(DEPDIR)/SuiColorPicker.Tpo -c -o SuiColorPicker.obj `if test -f 'server/zone/objects/player/sui/colorpicker/SuiColorPicker.cpp'; then $(CYGPATH_W) 'server/zone/objects/player/sui/colorpicker/SuiColorPicker.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/player/sui/colorpicker/SuiColorPicker.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/SuiColorPicker.Tpo $(DEPDIR)/SuiColorPicker.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/player/sui/colorpicker/SuiColorPicker.cpp' object='SuiColorPicker.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o SuiColorPicker.obj `if test -f 'server/zone/objects/player/sui/colorpicker/SuiColorPicker.cpp'; then $(CYGPATH_W) 'server/zone/objects/player/sui/colorpicker/SuiColorPicker.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/player/sui/colorpicker/SuiColorPicker.cpp'; fi`
 
 TangibleObject.o: server/zone/objects/tangible/TangibleObject.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT TangibleObject.o -MD -MP -MF $(DEPDIR)/TangibleObject.Tpo -c -o TangibleObject.o `test -f 'server/zone/objects/tangible/TangibleObject.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/TangibleObject.cpp
@@ -1405,6 +1430,20 @@ ResourceContainer.obj: server/zone/objects/tangible/resource/ResourceContainer.c
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/resource/ResourceContainer.cpp' object='ResourceContainer.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ResourceContainer.obj `if test -f 'server/zone/objects/tangible/resource/ResourceContainer.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/resource/ResourceContainer.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/resource/ResourceContainer.cpp'; fi`
+
+Attachment.o: server/zone/objects/tangible/attachment/Attachment.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT Attachment.o -MD -MP -MF $(DEPDIR)/Attachment.Tpo -c -o Attachment.o `test -f 'server/zone/objects/tangible/attachment/Attachment.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/attachment/Attachment.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/Attachment.Tpo $(DEPDIR)/Attachment.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/attachment/Attachment.cpp' object='Attachment.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o Attachment.o `test -f 'server/zone/objects/tangible/attachment/Attachment.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/attachment/Attachment.cpp
+
+Attachment.obj: server/zone/objects/tangible/attachment/Attachment.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT Attachment.obj -MD -MP -MF $(DEPDIR)/Attachment.Tpo -c -o Attachment.obj `if test -f 'server/zone/objects/tangible/attachment/Attachment.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/attachment/Attachment.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/attachment/Attachment.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/Attachment.Tpo $(DEPDIR)/Attachment.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/attachment/Attachment.cpp' object='Attachment.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o Attachment.obj `if test -f 'server/zone/objects/tangible/attachment/Attachment.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/attachment/Attachment.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/attachment/Attachment.cpp'; fi`
 
 Holocron.o: server/zone/objects/tangible/holocron/Holocron.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT Holocron.o -MD -MP -MF $(DEPDIR)/Holocron.Tpo -c -o Holocron.o `test -f 'server/zone/objects/tangible/holocron/Holocron.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/holocron/Holocron.cpp
@@ -2162,6 +2201,20 @@ ResourceContainerImplementation.obj: server/zone/objects/tangible/resource/Resou
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ResourceContainerImplementation.obj `if test -f 'server/zone/objects/tangible/resource/ResourceContainerImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/resource/ResourceContainerImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/resource/ResourceContainerImplementation.cpp'; fi`
 
+AttachmentImplementation.o: server/zone/objects/tangible/attachment/AttachmentImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT AttachmentImplementation.o -MD -MP -MF $(DEPDIR)/AttachmentImplementation.Tpo -c -o AttachmentImplementation.o `test -f 'server/zone/objects/tangible/attachment/AttachmentImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/attachment/AttachmentImplementation.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/AttachmentImplementation.Tpo $(DEPDIR)/AttachmentImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/attachment/AttachmentImplementation.cpp' object='AttachmentImplementation.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o AttachmentImplementation.o `test -f 'server/zone/objects/tangible/attachment/AttachmentImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/attachment/AttachmentImplementation.cpp
+
+AttachmentImplementation.obj: server/zone/objects/tangible/attachment/AttachmentImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT AttachmentImplementation.obj -MD -MP -MF $(DEPDIR)/AttachmentImplementation.Tpo -c -o AttachmentImplementation.obj `if test -f 'server/zone/objects/tangible/attachment/AttachmentImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/attachment/AttachmentImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/attachment/AttachmentImplementation.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/AttachmentImplementation.Tpo $(DEPDIR)/AttachmentImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/attachment/AttachmentImplementation.cpp' object='AttachmentImplementation.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o AttachmentImplementation.obj `if test -f 'server/zone/objects/tangible/attachment/AttachmentImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/attachment/AttachmentImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/attachment/AttachmentImplementation.cpp'; fi`
+
 TicketImplementation.o: server/zone/objects/tangible/ticket/TicketImplementation.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT TicketImplementation.o -MD -MP -MF $(DEPDIR)/TicketImplementation.Tpo -c -o TicketImplementation.o `test -f 'server/zone/objects/tangible/ticket/TicketImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/ticket/TicketImplementation.cpp
 @am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/TicketImplementation.Tpo $(DEPDIR)/TicketImplementation.Po
@@ -2301,6 +2354,20 @@ SuiTransferBoxImplementation.obj: server/zone/objects/player/sui/transferbox/Sui
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/player/sui/transferbox/SuiTransferBoxImplementation.cpp' object='SuiTransferBoxImplementation.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o SuiTransferBoxImplementation.obj `if test -f 'server/zone/objects/player/sui/transferbox/SuiTransferBoxImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/player/sui/transferbox/SuiTransferBoxImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/player/sui/transferbox/SuiTransferBoxImplementation.cpp'; fi`
+
+SuiColorPickerImplementation.o: server/zone/objects/player/sui/colorpicker/SuiColorPickerImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT SuiColorPickerImplementation.o -MD -MP -MF $(DEPDIR)/SuiColorPickerImplementation.Tpo -c -o SuiColorPickerImplementation.o `test -f 'server/zone/objects/player/sui/colorpicker/SuiColorPickerImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/player/sui/colorpicker/SuiColorPickerImplementation.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/SuiColorPickerImplementation.Tpo $(DEPDIR)/SuiColorPickerImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/player/sui/colorpicker/SuiColorPickerImplementation.cpp' object='SuiColorPickerImplementation.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o SuiColorPickerImplementation.o `test -f 'server/zone/objects/player/sui/colorpicker/SuiColorPickerImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/player/sui/colorpicker/SuiColorPickerImplementation.cpp
+
+SuiColorPickerImplementation.obj: server/zone/objects/player/sui/colorpicker/SuiColorPickerImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT SuiColorPickerImplementation.obj -MD -MP -MF $(DEPDIR)/SuiColorPickerImplementation.Tpo -c -o SuiColorPickerImplementation.obj `if test -f 'server/zone/objects/player/sui/colorpicker/SuiColorPickerImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/player/sui/colorpicker/SuiColorPickerImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/player/sui/colorpicker/SuiColorPickerImplementation.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/SuiColorPickerImplementation.Tpo $(DEPDIR)/SuiColorPickerImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/player/sui/colorpicker/SuiColorPickerImplementation.cpp' object='SuiColorPickerImplementation.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o SuiColorPickerImplementation.obj `if test -f 'server/zone/objects/player/sui/colorpicker/SuiColorPickerImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/player/sui/colorpicker/SuiColorPickerImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/player/sui/colorpicker/SuiColorPickerImplementation.cpp'; fi`
 
 CreatureImplementation.o: server/zone/objects/creature/CreatureImplementation.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT CreatureImplementation.o -MD -MP -MF $(DEPDIR)/CreatureImplementation.Tpo -c -o CreatureImplementation.o `test -f 'server/zone/objects/creature/CreatureImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/creature/CreatureImplementation.cpp

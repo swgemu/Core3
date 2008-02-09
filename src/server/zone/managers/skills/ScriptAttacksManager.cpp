@@ -58,7 +58,9 @@ ZoneProcessServerImplementation* ScriptAttacksManager::server = NULL;
 
 ScriptAttacksManager::ScriptAttacksManager(ZoneProcessServerImplementation* serv) {
 	server = serv;
+	
 	init();
+	
 	registerFunctions();
 	registerGlobals();
 }

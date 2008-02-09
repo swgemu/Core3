@@ -136,16 +136,14 @@ void JediWeaponAdapter::setForceCost(int fcost) {
  *	JediWeaponHelper
  */
 
-JediWeaponHelper JediWeaponHelper::instance;
-
 JediWeaponHelper::JediWeaponHelper() {
 	className = "JediWeapon";
 
 	ObjectRequestBroker::instance()->registerClass(className, this);
 }
 
-ORBClassHelper* JediWeaponHelper::getInstance() {
-		return &instance;
+void JediWeaponHelper::finalizeHelper() {
+	JediWeaponHelper::finalize();
 }
 
 ORBObject* JediWeaponHelper::instantiateObject() {
@@ -153,7 +151,7 @@ ORBObject* JediWeaponHelper::instantiateObject() {
 }
 
 ORBObjectAdapter* JediWeaponHelper::createAdapter(ORBObjectServant* obj) {
-	ORBObjectAdapter* adapter = new JediWeaponAdapter((JediWeaponImplementation*)obj);
+	ORBObjectAdapter* adapter = new JediWeaponAdapter((JediWeaponImplementation*) obj);
 
 	ORBObjectStub* stub = new JediWeapon(obj);
 	stub->_setORBClassName(className);
@@ -171,11 +169,11 @@ ORBObjectAdapter* JediWeaponHelper::createAdapter(ORBObjectServant* obj) {
  */
 
 JediWeaponServant::JediWeaponServant(unsigned long long objid, unsigned int tempcrc, const unicode& n, const string& tempn, bool eqp, int tp, int cat) : WeaponImplementation(objid, tempcrc, n, tempn, eqp, tp, cat) {
-	_classHelper = JediWeaponHelper::getInstance();
+	_classHelper = JediWeaponHelper::instance();
 }
 
 JediWeaponServant::JediWeaponServant(CreatureObject* creature, const string& temp, const unicode& n, const string& tempn, bool eqp, int tp, int cat) : WeaponImplementation(creature, temp, n, tempn, eqp, tp, cat) {
-	_classHelper = JediWeaponHelper::getInstance();
+	_classHelper = JediWeaponHelper::instance();
 }
 
 JediWeaponServant::~JediWeaponServant() {

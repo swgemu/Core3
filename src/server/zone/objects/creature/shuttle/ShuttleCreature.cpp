@@ -236,16 +236,14 @@ int ShuttleCreatureAdapter::getArrivalTime() {
  *	ShuttleCreatureHelper
  */
 
-ShuttleCreatureHelper ShuttleCreatureHelper::instance;
-
 ShuttleCreatureHelper::ShuttleCreatureHelper() {
 	className = "ShuttleCreature";
 
 	ObjectRequestBroker::instance()->registerClass(className, this);
 }
 
-ORBClassHelper* ShuttleCreatureHelper::getInstance() {
-		return &instance;
+void ShuttleCreatureHelper::finalizeHelper() {
+	ShuttleCreatureHelper::finalize();
 }
 
 ORBObject* ShuttleCreatureHelper::instantiateObject() {
@@ -253,7 +251,7 @@ ORBObject* ShuttleCreatureHelper::instantiateObject() {
 }
 
 ORBObjectAdapter* ShuttleCreatureHelper::createAdapter(ORBObjectServant* obj) {
-	ORBObjectAdapter* adapter = new ShuttleCreatureAdapter((ShuttleCreatureImplementation*)obj);
+	ORBObjectAdapter* adapter = new ShuttleCreatureAdapter((ShuttleCreatureImplementation*) obj);
 
 	ORBObjectStub* stub = new ShuttleCreature(obj);
 	stub->_setORBClassName(className);
@@ -271,7 +269,7 @@ ORBObjectAdapter* ShuttleCreatureHelper::createAdapter(ORBObjectServant* obj) {
  */
 
 ShuttleCreatureServant::ShuttleCreatureServant(unsigned long long oid) : CreatureImplementation(oid) {
-	_classHelper = ShuttleCreatureHelper::getInstance();
+	_classHelper = ShuttleCreatureHelper::instance();
 }
 
 ShuttleCreatureServant::~ShuttleCreatureServant() {

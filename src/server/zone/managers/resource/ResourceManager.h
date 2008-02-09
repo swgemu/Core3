@@ -90,18 +90,17 @@ public:
 
 };
 
-class ResourceManagerHelper : public ORBClassHelper {
-	static ResourceManagerHelper instance;
-
+class ResourceManagerHelper : public ORBClassHelper, public Singleton<ResourceManagerHelper> {
 public:
 	ResourceManagerHelper();
 
-	static ORBClassHelper* getInstance();
+	void finalizeHelper();
 
 	ORBObject* instantiateObject();
 
 	ORBObjectAdapter* createAdapter(ORBObjectServant* obj);
 
+	friend class SingletonWrapper<ResourceManagerHelper>;
 };
 
 class ResourceManagerServant : public ORBObjectServant {

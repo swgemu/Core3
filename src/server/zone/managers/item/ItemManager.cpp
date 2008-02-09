@@ -48,7 +48,7 @@ which carries forward this exception.
 
 #include "../../objects/tangible/TangibleObject.h"
 
-#include "../../objects/tangible/Weapons/Weapon.h"
+#include "../../objects/tangible/weapons/Weapon.h"
 
 #include "../../objects/tangible/wearables/Armor.h"
 
@@ -158,40 +158,12 @@ void ItemManager::createPlayerItem(Player* player, TangibleObject* item) {
 		((ItemManagerImplementation*) _impl)->createPlayerItem(player, item);
 }
 
-void ItemManager::createPlayerWeapon(Player* player, Weapon* item) {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 12);
-		invocation.addObjectParameter(player);
-		invocation.addObjectParameter(item);
-
-		invocation.executeWithVoidReturn();
-	} else
-		((ItemManagerImplementation*) _impl)->createPlayerWeapon(player, item);
-}
-
-void ItemManager::createPlayerArmor(Player* player, Armor* item) {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 13);
-		invocation.addObjectParameter(player);
-		invocation.addObjectParameter(item);
-
-		invocation.executeWithVoidReturn();
-	} else
-		((ItemManagerImplementation*) _impl)->createPlayerArmor(player, item);
-}
-
 void ItemManager::savePlayerItem(Player* player, TangibleObject* item) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 14);
+		ORBMethodInvocation invocation(this, 12);
 		invocation.addObjectParameter(player);
 		invocation.addObjectParameter(item);
 
@@ -205,7 +177,7 @@ void ItemManager::deletePlayerItem(Player* player, TangibleObject* item) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 15);
+		ORBMethodInvocation invocation(this, 13);
 		invocation.addObjectParameter(player);
 		invocation.addObjectParameter(item);
 
@@ -219,7 +191,7 @@ void ItemManager::showDbStats(Player* player) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 16);
+		ORBMethodInvocation invocation(this, 14);
 		invocation.addObjectParameter(player);
 
 		invocation.executeWithVoidReturn();
@@ -232,7 +204,7 @@ void ItemManager::showDbDeleted(Player* player) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 17);
+		ORBMethodInvocation invocation(this, 15);
 		invocation.addObjectParameter(player);
 
 		invocation.executeWithVoidReturn();
@@ -245,7 +217,7 @@ void ItemManager::purgeDbDeleted(Player* player) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 18);
+		ORBMethodInvocation invocation(this, 16);
 		invocation.addObjectParameter(player);
 
 		invocation.executeWithVoidReturn();
@@ -258,7 +230,7 @@ unsigned long long ItemManager::getNextStaticObjectID() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 19);
+		ORBMethodInvocation invocation(this, 17);
 
 		return invocation.executeWithUnsignedLongReturn();
 	} else
@@ -295,27 +267,21 @@ Packet* ItemManagerAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* inv
 		createPlayerItem((Player*) inv->getObjectParameter(), (TangibleObject*) inv->getObjectParameter());
 		break;
 	case 12:
-		createPlayerWeapon((Player*) inv->getObjectParameter(), (Weapon*) inv->getObjectParameter());
-		break;
-	case 13:
-		createPlayerArmor((Player*) inv->getObjectParameter(), (Armor*) inv->getObjectParameter());
-		break;
-	case 14:
 		savePlayerItem((Player*) inv->getObjectParameter(), (TangibleObject*) inv->getObjectParameter());
 		break;
-	case 15:
+	case 13:
 		deletePlayerItem((Player*) inv->getObjectParameter(), (TangibleObject*) inv->getObjectParameter());
 		break;
-	case 16:
+	case 14:
 		showDbStats((Player*) inv->getObjectParameter());
 		break;
-	case 17:
+	case 15:
 		showDbDeleted((Player*) inv->getObjectParameter());
 		break;
-	case 18:
+	case 16:
 		purgeDbDeleted((Player*) inv->getObjectParameter());
 		break;
-	case 19:
+	case 17:
 		resp->insertLong(getNextStaticObjectID());
 		break;
 	default:
@@ -349,14 +315,6 @@ void ItemManagerAdapter::createPlayerItem(Player* player, TangibleObject* item) 
 	return ((ItemManagerImplementation*) impl)->createPlayerItem(player, item);
 }
 
-void ItemManagerAdapter::createPlayerWeapon(Player* player, Weapon* item) {
-	return ((ItemManagerImplementation*) impl)->createPlayerWeapon(player, item);
-}
-
-void ItemManagerAdapter::createPlayerArmor(Player* player, Armor* item) {
-	return ((ItemManagerImplementation*) impl)->createPlayerArmor(player, item);
-}
-
 void ItemManagerAdapter::savePlayerItem(Player* player, TangibleObject* item) {
 	return ((ItemManagerImplementation*) impl)->savePlayerItem(player, item);
 }
@@ -385,16 +343,14 @@ unsigned long long ItemManagerAdapter::getNextStaticObjectID() {
  *	ItemManagerHelper
  */
 
-ItemManagerHelper ItemManagerHelper::instance;
-
 ItemManagerHelper::ItemManagerHelper() {
 	className = "ItemManager";
 
 	ObjectRequestBroker::instance()->registerClass(className, this);
 }
 
-ORBClassHelper* ItemManagerHelper::getInstance() {
-		return &instance;
+void ItemManagerHelper::finalizeHelper() {
+	ItemManagerHelper::finalize();
 }
 
 ORBObject* ItemManagerHelper::instantiateObject() {
@@ -402,7 +358,7 @@ ORBObject* ItemManagerHelper::instantiateObject() {
 }
 
 ORBObjectAdapter* ItemManagerHelper::createAdapter(ORBObjectServant* obj) {
-	ORBObjectAdapter* adapter = new ItemManagerAdapter((ItemManagerImplementation*)obj);
+	ORBObjectAdapter* adapter = new ItemManagerAdapter((ItemManagerImplementation*) obj);
 
 	ORBObjectStub* stub = new ItemManager(obj);
 	stub->_setORBClassName(className);
@@ -420,7 +376,7 @@ ORBObjectAdapter* ItemManagerHelper::createAdapter(ORBObjectServant* obj) {
  */
 
 ItemManagerServant::ItemManagerServant() {
-	_classHelper = ItemManagerHelper::getInstance();
+	_classHelper = ItemManagerHelper::instance();
 }
 
 ItemManagerServant::~ItemManagerServant() {

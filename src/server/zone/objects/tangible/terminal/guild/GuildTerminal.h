@@ -84,18 +84,17 @@ public:
 
 };
 
-class GuildTerminalHelper : public ORBClassHelper {
-	static GuildTerminalHelper instance;
-
+class GuildTerminalHelper : public ORBClassHelper, public Singleton<GuildTerminalHelper> {
 public:
 	GuildTerminalHelper();
 
-	static ORBClassHelper* getInstance();
+	void finalizeHelper();
 
 	ORBObject* instantiateObject();
 
 	ORBObjectAdapter* createAdapter(ORBObjectServant* obj);
 
+	friend class SingletonWrapper<GuildTerminalHelper>;
 };
 
 #include "../TerminalImplementation.h"

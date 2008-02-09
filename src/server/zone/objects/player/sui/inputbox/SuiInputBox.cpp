@@ -175,16 +175,14 @@ bool SuiInputBoxAdapter::isFilterBox() {
  *	SuiInputBoxHelper
  */
 
-SuiInputBoxHelper SuiInputBoxHelper::instance;
-
 SuiInputBoxHelper::SuiInputBoxHelper() {
 	className = "SuiInputBox";
 
 	ObjectRequestBroker::instance()->registerClass(className, this);
 }
 
-ORBClassHelper* SuiInputBoxHelper::getInstance() {
-		return &instance;
+void SuiInputBoxHelper::finalizeHelper() {
+	SuiInputBoxHelper::finalize();
 }
 
 ORBObject* SuiInputBoxHelper::instantiateObject() {
@@ -192,7 +190,7 @@ ORBObject* SuiInputBoxHelper::instantiateObject() {
 }
 
 ORBObjectAdapter* SuiInputBoxHelper::createAdapter(ORBObjectServant* obj) {
-	ORBObjectAdapter* adapter = new SuiInputBoxAdapter((SuiInputBoxImplementation*)obj);
+	ORBObjectAdapter* adapter = new SuiInputBoxAdapter((SuiInputBoxImplementation*) obj);
 
 	ORBObjectStub* stub = new SuiInputBox(obj);
 	stub->_setORBClassName(className);
@@ -210,7 +208,7 @@ ORBObjectAdapter* SuiInputBoxHelper::createAdapter(ORBObjectServant* obj) {
  */
 
 SuiInputBoxServant::SuiInputBoxServant(Player* play, unsigned int typeID, unsigned int boxttype) : SuiBoxImplementation(play, typeID, boxttype) {
-	_classHelper = SuiInputBoxHelper::getInstance();
+	_classHelper = SuiInputBoxHelper::instance();
 }
 
 SuiInputBoxServant::~SuiInputBoxServant() {

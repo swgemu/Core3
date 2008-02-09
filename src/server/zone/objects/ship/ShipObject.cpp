@@ -855,16 +855,14 @@ float ShipObjectAdapter::getBackshieldCur() {
  *	ShipObjectHelper
  */
 
-ShipObjectHelper ShipObjectHelper::instance;
-
 ShipObjectHelper::ShipObjectHelper() {
 	className = "ShipObject";
 
 	ObjectRequestBroker::instance()->registerClass(className, this);
 }
 
-ORBClassHelper* ShipObjectHelper::getInstance() {
-		return &instance;
+void ShipObjectHelper::finalizeHelper() {
+	ShipObjectHelper::finalize();
 }
 
 ORBObject* ShipObjectHelper::instantiateObject() {
@@ -872,7 +870,7 @@ ORBObject* ShipObjectHelper::instantiateObject() {
 }
 
 ORBObjectAdapter* ShipObjectHelper::createAdapter(ORBObjectServant* obj) {
-	ORBObjectAdapter* adapter = new ShipObjectAdapter((ShipObjectImplementation*)obj);
+	ORBObjectAdapter* adapter = new ShipObjectAdapter((ShipObjectImplementation*) obj);
 
 	ORBObjectStub* stub = new ShipObject(obj);
 	stub->_setORBClassName(className);
@@ -890,7 +888,7 @@ ORBObjectAdapter* ShipObjectHelper::createAdapter(ORBObjectServant* obj) {
  */
 
 ShipObjectServant::ShipObjectServant() : SceneObjectImplementation() {
-	_classHelper = ShipObjectHelper::getInstance();
+	_classHelper = ShipObjectHelper::instance();
 }
 
 ShipObjectServant::~ShipObjectServant() {

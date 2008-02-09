@@ -113,6 +113,10 @@ public:
 	
 	void shutdown();
 
+	void startManagers();
+
+	void stopManagers();
+	
 	ServiceClient* createConnection(Socket* sock, SocketAddress& addr);
 
 	void handleMessage(ServiceClient* client, Packet* message);
@@ -141,8 +145,6 @@ public:
 		scheduler->fixQueue();
 	}
 	
-	void startManagers();
-
 	// user control methods
 	bool banUser(string& name, string& admin);
 

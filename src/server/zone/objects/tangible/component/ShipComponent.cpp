@@ -448,16 +448,14 @@ bool ShipComponentAdapter::getCompType() {
  *	ShipComponentHelper
  */
 
-ShipComponentHelper ShipComponentHelper::instance;
-
 ShipComponentHelper::ShipComponentHelper() {
 	className = "ShipComponent";
 
 	ObjectRequestBroker::instance()->registerClass(className, this);
 }
 
-ORBClassHelper* ShipComponentHelper::getInstance() {
-		return &instance;
+void ShipComponentHelper::finalizeHelper() {
+	ShipComponentHelper::finalize();
 }
 
 ORBObject* ShipComponentHelper::instantiateObject() {
@@ -465,7 +463,7 @@ ORBObject* ShipComponentHelper::instantiateObject() {
 }
 
 ORBObjectAdapter* ShipComponentHelper::createAdapter(ORBObjectServant* obj) {
-	ORBObjectAdapter* adapter = new ShipComponentAdapter((ShipComponentImplementation*)obj);
+	ORBObjectAdapter* adapter = new ShipComponentAdapter((ShipComponentImplementation*) obj);
 
 	ORBObjectStub* stub = new ShipComponent(obj);
 	stub->_setORBClassName(className);
@@ -483,7 +481,7 @@ ORBObjectAdapter* ShipComponentHelper::createAdapter(ORBObjectServant* obj) {
  */
 
 ShipComponentServant::ShipComponentServant(unsigned long long oid, int tp) : TangibleObjectImplementation(oid, tp) {
-	_classHelper = ShipComponentHelper::getInstance();
+	_classHelper = ShipComponentHelper::instance();
 }
 
 ShipComponentServant::~ShipComponentServant() {

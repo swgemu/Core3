@@ -179,16 +179,14 @@ void StaticObjectAdapter::sendTo(Player* player, bool doClose) {
  *	StaticObjectHelper
  */
 
-StaticObjectHelper StaticObjectHelper::instance;
-
 StaticObjectHelper::StaticObjectHelper() {
 	className = "StaticObject";
 
 	ObjectRequestBroker::instance()->registerClass(className, this);
 }
 
-ORBClassHelper* StaticObjectHelper::getInstance() {
-		return &instance;
+void StaticObjectHelper::finalizeHelper() {
+	StaticObjectHelper::finalize();
 }
 
 ORBObject* StaticObjectHelper::instantiateObject() {
@@ -196,7 +194,7 @@ ORBObject* StaticObjectHelper::instantiateObject() {
 }
 
 ORBObjectAdapter* StaticObjectHelper::createAdapter(ORBObjectServant* obj) {
-	ORBObjectAdapter* adapter = new StaticObjectAdapter((StaticObjectImplementation*)obj);
+	ORBObjectAdapter* adapter = new StaticObjectAdapter((StaticObjectImplementation*) obj);
 
 	ORBObjectStub* stub = new StaticObject(obj);
 	stub->_setORBClassName(className);
@@ -214,7 +212,7 @@ ORBObjectAdapter* StaticObjectHelper::createAdapter(ORBObjectServant* obj) {
  */
 
 StaticObjectServant::StaticObjectServant(unsigned long long oid) : SceneObjectImplementation(oid) {
-	_classHelper = StaticObjectHelper::getInstance();
+	_classHelper = StaticObjectHelper::instance();
 }
 
 StaticObjectServant::~StaticObjectServant() {

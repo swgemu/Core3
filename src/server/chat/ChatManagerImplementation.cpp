@@ -98,6 +98,15 @@ ChatManagerImplementation::ChatManagerImplementation(ZoneServer* serv, int inits
 	initiateRooms();
 }
 
+ChatManagerImplementation::~ChatManagerImplementation() {
+	destroyRooms();
+	
+	playerMap->undeploy();
+	delete playerMap;
+	
+	delete roomMap;
+}
+
 void ChatManagerImplementation::initiateRooms() {
 	gameRooms.setNullValue(NULL);
 	
@@ -123,7 +132,25 @@ void ChatManagerImplementation::initiateRooms() {
 	ChatRoom* general = generalRoomImpl->deploy();
 	core3->addSubRoom(general);
 	addRoom(general);
+}
 
+void ChatManagerImplementation::destroyRooms() {
+	lock();
+	
+	roomMap->resetIterator();
+	
+	while (roomMap->hasNext()) {
+		ChatRoom* room = roomMap->next();
+		room->undeploy();
+		
+		delete room;
+	}
+	
+	roomMap->removeAll();
+	
+	gameRooms.removeAll();
+	
+	unlock();
 }
 
 void ChatManagerImplementation::handleTellMessage(Player* sender, Message* pack) {

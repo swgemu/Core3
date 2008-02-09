@@ -232,16 +232,14 @@ void PlayerMapAdapter::resetIterator() {
  *	PlayerMapHelper
  */
 
-PlayerMapHelper PlayerMapHelper::instance;
-
 PlayerMapHelper::PlayerMapHelper() {
 	className = "PlayerMap";
 
 	ObjectRequestBroker::instance()->registerClass(className, this);
 }
 
-ORBClassHelper* PlayerMapHelper::getInstance() {
-		return &instance;
+void PlayerMapHelper::finalizeHelper() {
+	PlayerMapHelper::finalize();
 }
 
 ORBObject* PlayerMapHelper::instantiateObject() {
@@ -249,7 +247,7 @@ ORBObject* PlayerMapHelper::instantiateObject() {
 }
 
 ORBObjectAdapter* PlayerMapHelper::createAdapter(ORBObjectServant* obj) {
-	ORBObjectAdapter* adapter = new PlayerMapAdapter((PlayerMapImplementation*)obj);
+	ORBObjectAdapter* adapter = new PlayerMapAdapter((PlayerMapImplementation*) obj);
 
 	ORBObjectStub* stub = new PlayerMap(obj);
 	stub->_setORBClassName(className);
@@ -267,7 +265,7 @@ ORBObjectAdapter* PlayerMapHelper::createAdapter(ORBObjectServant* obj) {
  */
 
 PlayerMapServant::PlayerMapServant() {
-	_classHelper = PlayerMapHelper::getInstance();
+	_classHelper = PlayerMapHelper::instance();
 }
 
 PlayerMapServant::~PlayerMapServant() {

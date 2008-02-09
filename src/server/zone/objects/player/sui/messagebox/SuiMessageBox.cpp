@@ -116,16 +116,14 @@ BaseMessage* SuiMessageBoxAdapter::generateMessage() {
  *	SuiMessageBoxHelper
  */
 
-SuiMessageBoxHelper SuiMessageBoxHelper::instance;
-
 SuiMessageBoxHelper::SuiMessageBoxHelper() {
 	className = "SuiMessageBox";
 
 	ObjectRequestBroker::instance()->registerClass(className, this);
 }
 
-ORBClassHelper* SuiMessageBoxHelper::getInstance() {
-		return &instance;
+void SuiMessageBoxHelper::finalizeHelper() {
+	SuiMessageBoxHelper::finalize();
 }
 
 ORBObject* SuiMessageBoxHelper::instantiateObject() {
@@ -133,7 +131,7 @@ ORBObject* SuiMessageBoxHelper::instantiateObject() {
 }
 
 ORBObjectAdapter* SuiMessageBoxHelper::createAdapter(ORBObjectServant* obj) {
-	ORBObjectAdapter* adapter = new SuiMessageBoxAdapter((SuiMessageBoxImplementation*)obj);
+	ORBObjectAdapter* adapter = new SuiMessageBoxAdapter((SuiMessageBoxImplementation*) obj);
 
 	ORBObjectStub* stub = new SuiMessageBox(obj);
 	stub->_setORBClassName(className);
@@ -151,7 +149,7 @@ ORBObjectAdapter* SuiMessageBoxHelper::createAdapter(ORBObjectServant* obj) {
  */
 
 SuiMessageBoxServant::SuiMessageBoxServant(Player* play, unsigned int typeID, unsigned int boxtype) : SuiBoxImplementation(play, typeID, boxtype) {
-	_classHelper = SuiMessageBoxHelper::getInstance();
+	_classHelper = SuiMessageBoxHelper::instance();
 }
 
 SuiMessageBoxServant::~SuiMessageBoxServant() {

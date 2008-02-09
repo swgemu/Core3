@@ -78,18 +78,17 @@ public:
 
 };
 
-class LairObjectHelper : public ORBClassHelper {
-	static LairObjectHelper instance;
-
+class LairObjectHelper : public ORBClassHelper, public Singleton<LairObjectHelper> {
 public:
 	LairObjectHelper();
 
-	static ORBClassHelper* getInstance();
+	void finalizeHelper();
 
 	ORBObject* instantiateObject();
 
 	ORBObjectAdapter* createAdapter(ORBObjectServant* obj);
 
+	friend class SingletonWrapper<LairObjectHelper>;
 };
 
 #include "../TangibleObjectImplementation.h"

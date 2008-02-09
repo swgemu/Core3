@@ -84,18 +84,17 @@ public:
 
 };
 
-class FireworkWorldHelper : public ORBClassHelper {
-	static FireworkWorldHelper instance;
-
+class FireworkWorldHelper : public ORBClassHelper, public Singleton<FireworkWorldHelper> {
 public:
 	FireworkWorldHelper();
 
-	static ORBClassHelper* getInstance();
+	void finalizeHelper();
 
 	ORBObject* instantiateObject();
 
 	ORBObjectAdapter* createAdapter(ORBObjectServant* obj);
 
+	friend class SingletonWrapper<FireworkWorldHelper>;
 };
 
 #include "../../static/StaticObjectImplementation.h"

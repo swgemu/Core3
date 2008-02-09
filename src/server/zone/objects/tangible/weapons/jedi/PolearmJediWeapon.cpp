@@ -97,16 +97,14 @@ Packet* PolearmJediWeaponAdapter::invokeMethod(uint32 methid, ORBMethodInvocatio
  *	PolearmJediWeaponHelper
  */
 
-PolearmJediWeaponHelper PolearmJediWeaponHelper::instance;
-
 PolearmJediWeaponHelper::PolearmJediWeaponHelper() {
 	className = "PolearmJediWeapon";
 
 	ObjectRequestBroker::instance()->registerClass(className, this);
 }
 
-ORBClassHelper* PolearmJediWeaponHelper::getInstance() {
-		return &instance;
+void PolearmJediWeaponHelper::finalizeHelper() {
+	PolearmJediWeaponHelper::finalize();
 }
 
 ORBObject* PolearmJediWeaponHelper::instantiateObject() {
@@ -114,7 +112,7 @@ ORBObject* PolearmJediWeaponHelper::instantiateObject() {
 }
 
 ORBObjectAdapter* PolearmJediWeaponHelper::createAdapter(ORBObjectServant* obj) {
-	ORBObjectAdapter* adapter = new PolearmJediWeaponAdapter((PolearmJediWeaponImplementation*)obj);
+	ORBObjectAdapter* adapter = new PolearmJediWeaponAdapter((PolearmJediWeaponImplementation*) obj);
 
 	ORBObjectStub* stub = new PolearmJediWeapon(obj);
 	stub->_setORBClassName(className);
@@ -132,11 +130,11 @@ ORBObjectAdapter* PolearmJediWeaponHelper::createAdapter(ORBObjectServant* obj) 
  */
 
 PolearmJediWeaponServant::PolearmJediWeaponServant(unsigned long long objid, unsigned int tempcrc, const unicode& n, const string& tempn, int tp, bool eqp) : JediWeaponImplementation(objid, tempcrc, n, tempn, tp, eqp) {
-	_classHelper = PolearmJediWeaponHelper::getInstance();
+	_classHelper = PolearmJediWeaponHelper::instance();
 }
 
 PolearmJediWeaponServant::PolearmJediWeaponServant(CreatureObject* creature, const string& temp, const unicode& n, const string& tempn, int tp, bool eqp) : JediWeaponImplementation(creature, temp, n, tempn, tp, eqp) {
-	_classHelper = PolearmJediWeaponHelper::getInstance();
+	_classHelper = PolearmJediWeaponHelper::instance();
 }
 
 PolearmJediWeaponServant::~PolearmJediWeaponServant() {

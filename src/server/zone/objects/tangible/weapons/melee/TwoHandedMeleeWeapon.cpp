@@ -97,16 +97,14 @@ Packet* TwoHandedMeleeWeaponAdapter::invokeMethod(uint32 methid, ORBMethodInvoca
  *	TwoHandedMeleeWeaponHelper
  */
 
-TwoHandedMeleeWeaponHelper TwoHandedMeleeWeaponHelper::instance;
-
 TwoHandedMeleeWeaponHelper::TwoHandedMeleeWeaponHelper() {
 	className = "TwoHandedMeleeWeapon";
 
 	ObjectRequestBroker::instance()->registerClass(className, this);
 }
 
-ORBClassHelper* TwoHandedMeleeWeaponHelper::getInstance() {
-		return &instance;
+void TwoHandedMeleeWeaponHelper::finalizeHelper() {
+	TwoHandedMeleeWeaponHelper::finalize();
 }
 
 ORBObject* TwoHandedMeleeWeaponHelper::instantiateObject() {
@@ -114,7 +112,7 @@ ORBObject* TwoHandedMeleeWeaponHelper::instantiateObject() {
 }
 
 ORBObjectAdapter* TwoHandedMeleeWeaponHelper::createAdapter(ORBObjectServant* obj) {
-	ORBObjectAdapter* adapter = new TwoHandedMeleeWeaponAdapter((TwoHandedMeleeWeaponImplementation*)obj);
+	ORBObjectAdapter* adapter = new TwoHandedMeleeWeaponAdapter((TwoHandedMeleeWeaponImplementation*) obj);
 
 	ORBObjectStub* stub = new TwoHandedMeleeWeapon(obj);
 	stub->_setORBClassName(className);
@@ -132,11 +130,11 @@ ORBObjectAdapter* TwoHandedMeleeWeaponHelper::createAdapter(ORBObjectServant* ob
  */
 
 TwoHandedMeleeWeaponServant::TwoHandedMeleeWeaponServant(unsigned long long objid, unsigned int tempcrc, const unicode& n, const string& tempn, int tp, bool eqp) : MeleeWeaponImplementation(objid, tempcrc, n, tempn, tp, eqp) {
-	_classHelper = TwoHandedMeleeWeaponHelper::getInstance();
+	_classHelper = TwoHandedMeleeWeaponHelper::instance();
 }
 
 TwoHandedMeleeWeaponServant::TwoHandedMeleeWeaponServant(CreatureObject* creature, const string& temp, const unicode& n, const string& tempn, int tp, bool eqp) : MeleeWeaponImplementation(creature, temp, n, tempn, tp, eqp) {
-	_classHelper = TwoHandedMeleeWeaponHelper::getInstance();
+	_classHelper = TwoHandedMeleeWeaponHelper::instance();
 }
 
 TwoHandedMeleeWeaponServant::~TwoHandedMeleeWeaponServant() {

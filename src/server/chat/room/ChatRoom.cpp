@@ -750,16 +750,14 @@ int ChatRoomAdapter::compareTo(ChatRoom* obj) {
  *	ChatRoomHelper
  */
 
-ChatRoomHelper ChatRoomHelper::instance;
-
 ChatRoomHelper::ChatRoomHelper() {
 	className = "ChatRoom";
 
 	ObjectRequestBroker::instance()->registerClass(className, this);
 }
 
-ORBClassHelper* ChatRoomHelper::getInstance() {
-		return &instance;
+void ChatRoomHelper::finalizeHelper() {
+	ChatRoomHelper::finalize();
 }
 
 ORBObject* ChatRoomHelper::instantiateObject() {
@@ -767,7 +765,7 @@ ORBObject* ChatRoomHelper::instantiateObject() {
 }
 
 ORBObjectAdapter* ChatRoomHelper::createAdapter(ORBObjectServant* obj) {
-	ORBObjectAdapter* adapter = new ChatRoomAdapter((ChatRoomImplementation*)obj);
+	ORBObjectAdapter* adapter = new ChatRoomAdapter((ChatRoomImplementation*) obj);
 
 	ORBObjectStub* stub = new ChatRoom(obj);
 	stub->_setORBClassName(className);
@@ -785,7 +783,7 @@ ORBObjectAdapter* ChatRoomHelper::createAdapter(ORBObjectServant* obj) {
  */
 
 ChatRoomServant::ChatRoomServant() {
-	_classHelper = ChatRoomHelper::getInstance();
+	_classHelper = ChatRoomHelper::instance();
 }
 
 ChatRoomServant::~ChatRoomServant() {

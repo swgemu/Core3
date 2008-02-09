@@ -237,16 +237,14 @@ string& GuildAdapter::getGuildTag() {
  *	GuildHelper
  */
 
-GuildHelper GuildHelper::instance;
-
 GuildHelper::GuildHelper() {
 	className = "Guild";
 
 	ObjectRequestBroker::instance()->registerClass(className, this);
 }
 
-ORBClassHelper* GuildHelper::getInstance() {
-		return &instance;
+void GuildHelper::finalizeHelper() {
+	GuildHelper::finalize();
 }
 
 ORBObject* GuildHelper::instantiateObject() {
@@ -254,7 +252,7 @@ ORBObject* GuildHelper::instantiateObject() {
 }
 
 ORBObjectAdapter* GuildHelper::createAdapter(ORBObjectServant* obj) {
-	ORBObjectAdapter* adapter = new GuildAdapter((GuildImplementation*)obj);
+	ORBObjectAdapter* adapter = new GuildAdapter((GuildImplementation*) obj);
 
 	ORBObjectStub* stub = new Guild(obj);
 	stub->_setORBClassName(className);
@@ -272,7 +270,7 @@ ORBObjectAdapter* GuildHelper::createAdapter(ORBObjectServant* obj) {
  */
 
 GuildServant::GuildServant() {
-	_classHelper = GuildHelper::getInstance();
+	_classHelper = GuildHelper::instance();
 }
 
 GuildServant::~GuildServant() {

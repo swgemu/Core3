@@ -87,6 +87,11 @@ public:
 		guildTagMap.drop(guild->getGuildTag());
 	}
 	
+	void removeAll() {
+		guildMap.removeAll();
+		guildTagMap.removeAll();
+	}
+	
 	inline int size() {
 		return guildMap.size();
 	}

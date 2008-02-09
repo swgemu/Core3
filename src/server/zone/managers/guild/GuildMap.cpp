@@ -138,12 +138,24 @@ void GuildMap::remove(unsigned int gid) {
 		((GuildMapImplementation*) _impl)->remove(gid);
 }
 
-int GuildMap::size() {
+void GuildMap::removeAll() {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
 		ORBMethodInvocation invocation(this, 11);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((GuildMapImplementation*) _impl)->removeAll();
+}
+
+int GuildMap::size() {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 12);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -177,6 +189,9 @@ Packet* GuildMapAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* inv) {
 		remove(inv->getUnsignedIntParameter());
 		break;
 	case 11:
+		removeAll();
+		break;
+	case 12:
 		resp->insertSignedInt(size());
 		break;
 	default:
@@ -206,6 +221,10 @@ void GuildMapAdapter::remove(unsigned int gid) {
 	return ((GuildMapImplementation*) impl)->remove(gid);
 }
 
+void GuildMapAdapter::removeAll() {
+	return ((GuildMapImplementation*) impl)->removeAll();
+}
+
 int GuildMapAdapter::size() {
 	return ((GuildMapImplementation*) impl)->size();
 }
@@ -214,16 +233,14 @@ int GuildMapAdapter::size() {
  *	GuildMapHelper
  */
 
-GuildMapHelper GuildMapHelper::instance;
-
 GuildMapHelper::GuildMapHelper() {
 	className = "GuildMap";
 
 	ObjectRequestBroker::instance()->registerClass(className, this);
 }
 
-ORBClassHelper* GuildMapHelper::getInstance() {
-		return &instance;
+void GuildMapHelper::finalizeHelper() {
+	GuildMapHelper::finalize();
 }
 
 ORBObject* GuildMapHelper::instantiateObject() {
@@ -231,7 +248,7 @@ ORBObject* GuildMapHelper::instantiateObject() {
 }
 
 ORBObjectAdapter* GuildMapHelper::createAdapter(ORBObjectServant* obj) {
-	ORBObjectAdapter* adapter = new GuildMapAdapter((GuildMapImplementation*)obj);
+	ORBObjectAdapter* adapter = new GuildMapAdapter((GuildMapImplementation*) obj);
 
 	ORBObjectStub* stub = new GuildMap(obj);
 	stub->_setORBClassName(className);
@@ -249,7 +266,7 @@ ORBObjectAdapter* GuildMapHelper::createAdapter(ORBObjectServant* obj) {
  */
 
 GuildMapServant::GuildMapServant() {
-	_classHelper = GuildMapHelper::getInstance();
+	_classHelper = GuildMapHelper::instance();
 }
 
 GuildMapServant::~GuildMapServant() {

@@ -80,18 +80,17 @@ public:
 
 };
 
-class MissionBagHelper : public ORBClassHelper {
-	static MissionBagHelper instance;
-
+class MissionBagHelper : public ORBClassHelper, public Singleton<MissionBagHelper> {
 public:
 	MissionBagHelper();
 
-	static ORBClassHelper* getInstance();
+	void finalizeHelper();
 
 	ORBObject* instantiateObject();
 
 	ORBObjectAdapter* createAdapter(ORBObjectServant* obj);
 
+	friend class SingletonWrapper<MissionBagHelper>;
 };
 
 #include "ContainerImplementation.h"

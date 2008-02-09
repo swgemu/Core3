@@ -157,16 +157,14 @@ void SuiTransferBoxAdapter::addOption(const string& itemText, const string& lblT
  *	SuiTransferBoxHelper
  */
 
-SuiTransferBoxHelper SuiTransferBoxHelper::instance;
-
 SuiTransferBoxHelper::SuiTransferBoxHelper() {
 	className = "SuiTransferBox";
 
 	ObjectRequestBroker::instance()->registerClass(className, this);
 }
 
-ORBClassHelper* SuiTransferBoxHelper::getInstance() {
-		return &instance;
+void SuiTransferBoxHelper::finalizeHelper() {
+	SuiTransferBoxHelper::finalize();
 }
 
 ORBObject* SuiTransferBoxHelper::instantiateObject() {
@@ -174,7 +172,7 @@ ORBObject* SuiTransferBoxHelper::instantiateObject() {
 }
 
 ORBObjectAdapter* SuiTransferBoxHelper::createAdapter(ORBObjectServant* obj) {
-	ORBObjectAdapter* adapter = new SuiTransferBoxAdapter((SuiTransferBoxImplementation*)obj);
+	ORBObjectAdapter* adapter = new SuiTransferBoxAdapter((SuiTransferBoxImplementation*) obj);
 
 	ORBObjectStub* stub = new SuiTransferBox(obj);
 	stub->_setORBClassName(className);
@@ -192,7 +190,7 @@ ORBObjectAdapter* SuiTransferBoxHelper::createAdapter(ORBObjectServant* obj) {
  */
 
 SuiTransferBoxServant::SuiTransferBoxServant(Player* play, unsigned int typeID, unsigned int boxtype) : SuiBoxImplementation(play, typeID, boxtype) {
-	_classHelper = SuiTransferBoxHelper::getInstance();
+	_classHelper = SuiTransferBoxHelper::instance();
 }
 
 SuiTransferBoxServant::~SuiTransferBoxServant() {

@@ -244,18 +244,17 @@ protected:
 	string _param1_getChatRoomByGamePath__ChatRoom_string_;
 };
 
-class ChatManagerHelper : public ORBClassHelper {
-	static ChatManagerHelper instance;
-
+class ChatManagerHelper : public ORBClassHelper, public Singleton<ChatManagerHelper> {
 public:
 	ChatManagerHelper();
 
-	static ORBClassHelper* getInstance();
+	void finalizeHelper();
 
 	ORBObject* instantiateObject();
 
 	ORBObjectAdapter* createAdapter(ORBObjectServant* obj);
 
+	friend class SingletonWrapper<ChatManagerHelper>;
 };
 
 class ChatManagerServant : public ORBObjectServant {

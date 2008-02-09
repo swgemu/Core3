@@ -73,9 +73,10 @@ class ChatRoomImplementation : public ChatRoomServant, public Mutex {
 	bool isPublicRoom;
 	
 public:
-
 	ChatRoomImplementation(ZoneServer* serv, const string& Name, uint32 channelId);
 	ChatRoomImplementation(ZoneServer* serv, ChatRoom* Parent, const string& Name, uint32 channelId);
+	
+	virtual ~ChatRoomImplementation();
 	
 	ChatRoom* deploy();
 	
@@ -83,7 +84,9 @@ public:
 	void sendDestroyTo(Player* player);
 	
 	void addSubRoom(ChatRoom* channel);
+	
 	void removeSubRoom(ChatRoom* channel);
+	
 	ChatRoom* getSubRoom(int i);
 	ChatRoom* getSubRoom(const string& name);
 	

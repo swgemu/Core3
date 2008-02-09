@@ -236,18 +236,17 @@ protected:
 	string _param0_setObjectFileName__string_;
 };
 
-class CreatureHelper : public ORBClassHelper {
-	static CreatureHelper instance;
-
+class CreatureHelper : public ORBClassHelper, public Singleton<CreatureHelper> {
 public:
 	CreatureHelper();
 
-	static ORBClassHelper* getInstance();
+	void finalizeHelper();
 
 	ORBObject* instantiateObject();
 
 	ORBObjectAdapter* createAdapter(ORBObjectServant* obj);
 
+	friend class SingletonWrapper<CreatureHelper>;
 };
 
 #include "CreatureObjectImplementation.h"

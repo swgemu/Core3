@@ -117,16 +117,14 @@ int TravelTerminalAdapter::useObject(Player* player) {
  *	TravelTerminalHelper
  */
 
-TravelTerminalHelper TravelTerminalHelper::instance;
-
 TravelTerminalHelper::TravelTerminalHelper() {
 	className = "TravelTerminal";
 
 	ObjectRequestBroker::instance()->registerClass(className, this);
 }
 
-ORBClassHelper* TravelTerminalHelper::getInstance() {
-		return &instance;
+void TravelTerminalHelper::finalizeHelper() {
+	TravelTerminalHelper::finalize();
 }
 
 ORBObject* TravelTerminalHelper::instantiateObject() {
@@ -134,7 +132,7 @@ ORBObject* TravelTerminalHelper::instantiateObject() {
 }
 
 ORBObjectAdapter* TravelTerminalHelper::createAdapter(ORBObjectServant* obj) {
-	ORBObjectAdapter* adapter = new TravelTerminalAdapter((TravelTerminalImplementation*)obj);
+	ORBObjectAdapter* adapter = new TravelTerminalAdapter((TravelTerminalImplementation*) obj);
 
 	ORBObjectStub* stub = new TravelTerminal(obj);
 	stub->_setORBClassName(className);
@@ -152,7 +150,7 @@ ORBObjectAdapter* TravelTerminalHelper::createAdapter(ORBObjectServant* obj) {
  */
 
 TravelTerminalServant::TravelTerminalServant(unsigned int objCRC, unsigned long long objid, const unicode& n, const string& tempn, float x, float z, float y, int TerminalType) : TerminalImplementation(objCRC, objid, n, tempn, x, z, y, TerminalType) {
-	_classHelper = TravelTerminalHelper::getInstance();
+	_classHelper = TravelTerminalHelper::instance();
 }
 
 TravelTerminalServant::~TravelTerminalServant() {

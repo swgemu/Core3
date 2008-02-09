@@ -205,16 +205,14 @@ void BazaarPlanetManagerAdapter::getBazaarData(Player* player, long long objecti
  *	BazaarPlanetManagerHelper
  */
 
-BazaarPlanetManagerHelper BazaarPlanetManagerHelper::instance;
-
 BazaarPlanetManagerHelper::BazaarPlanetManagerHelper() {
 	className = "BazaarPlanetManager";
 
 	ObjectRequestBroker::instance()->registerClass(className, this);
 }
 
-ORBClassHelper* BazaarPlanetManagerHelper::getInstance() {
-		return &instance;
+void BazaarPlanetManagerHelper::finalizeHelper() {
+	BazaarPlanetManagerHelper::finalize();
 }
 
 ORBObject* BazaarPlanetManagerHelper::instantiateObject() {
@@ -222,7 +220,7 @@ ORBObject* BazaarPlanetManagerHelper::instantiateObject() {
 }
 
 ORBObjectAdapter* BazaarPlanetManagerHelper::createAdapter(ORBObjectServant* obj) {
-	ORBObjectAdapter* adapter = new BazaarPlanetManagerAdapter((BazaarPlanetManagerImplementation*)obj);
+	ORBObjectAdapter* adapter = new BazaarPlanetManagerAdapter((BazaarPlanetManagerImplementation*) obj);
 
 	ORBObjectStub* stub = new BazaarPlanetManager(obj);
 	stub->_setORBClassName(className);
@@ -240,7 +238,7 @@ ORBObjectAdapter* BazaarPlanetManagerHelper::createAdapter(ORBObjectServant* obj
  */
 
 BazaarPlanetManagerServant::BazaarPlanetManagerServant() {
-	_classHelper = BazaarPlanetManagerHelper::getInstance();
+	_classHelper = BazaarPlanetManagerHelper::instance();
 }
 
 BazaarPlanetManagerServant::~BazaarPlanetManagerServant() {

@@ -3442,16 +3442,14 @@ bool PlayerAdapter::getSampleErrorMessage() {
  *	PlayerHelper
  */
 
-PlayerHelper PlayerHelper::instance;
-
 PlayerHelper::PlayerHelper() {
 	className = "Player";
 
 	ObjectRequestBroker::instance()->registerClass(className, this);
 }
 
-ORBClassHelper* PlayerHelper::getInstance() {
-		return &instance;
+void PlayerHelper::finalizeHelper() {
+	PlayerHelper::finalize();
 }
 
 ORBObject* PlayerHelper::instantiateObject() {
@@ -3459,7 +3457,7 @@ ORBObject* PlayerHelper::instantiateObject() {
 }
 
 ORBObjectAdapter* PlayerHelper::createAdapter(ORBObjectServant* obj) {
-	ORBObjectAdapter* adapter = new PlayerAdapter((PlayerImplementation*)obj);
+	ORBObjectAdapter* adapter = new PlayerAdapter((PlayerImplementation*) obj);
 
 	ORBObjectStub* stub = new Player(obj);
 	stub->_setORBClassName(className);
@@ -3477,7 +3475,7 @@ ORBObjectAdapter* PlayerHelper::createAdapter(ORBObjectServant* obj) {
  */
 
 PlayerServant::PlayerServant(unsigned long long oid) : CreatureObjectImplementation(oid) {
-	_classHelper = PlayerHelper::getInstance();
+	_classHelper = PlayerHelper::instance();
 }
 
 PlayerServant::~PlayerServant() {

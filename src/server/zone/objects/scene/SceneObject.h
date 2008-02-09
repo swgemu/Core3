@@ -334,18 +334,17 @@ public:
 
 };
 
-class SceneObjectHelper : public ORBClassHelper {
-	static SceneObjectHelper instance;
-
+class SceneObjectHelper : public ORBClassHelper, public Singleton<SceneObjectHelper> {
 public:
 	SceneObjectHelper();
 
-	static ORBClassHelper* getInstance();
+	void finalizeHelper();
 
 	ORBObject* instantiateObject();
 
 	ORBObjectAdapter* createAdapter(ORBObjectServant* obj);
 
+	friend class SingletonWrapper<SceneObjectHelper>;
 };
 
 #include "engine/core/thread/RWLockableImplementation.h"

@@ -83,6 +83,8 @@ public:
 
 	void repairArmor(Player* player);
 
+	int addSkillMod(int skillModType, int skillModValue);
+
 	int getRating();
 
 	int getCondition();
@@ -135,6 +137,14 @@ public:
 
 	bool isSliced();
 
+	void setSocketType(int index, int type);
+
+	void setSocketValue(int index, int type);
+
+	int getSocketType(int index);
+
+	int getSocketValue(int index);
+
 	int getSkillMod0Type();
 
 	int getSkillMod1Type();
@@ -164,6 +174,24 @@ public:
 	int getSocket2Value();
 
 	int getSocket3Value();
+
+	void setSockets(int socket);
+
+	void setSocket0Type(int type);
+
+	void setSocket1Type(int type);
+
+	void setSocket2Type(int type);
+
+	void setSocket3Type(int type);
+
+	void setSocket0Value(int value);
+
+	void setSocket1Value(int value);
+
+	void setSocket2Value(int value);
+
+	void setSocket3Value(int value);
 
 protected:
 };
@@ -188,6 +216,8 @@ public:
 
 	void repairArmor(Player* player);
 
+	int addSkillMod(int skillModType, int skillModValue);
+
 	int getRating();
 
 	int getCondition();
@@ -240,6 +270,14 @@ public:
 
 	bool isSliced();
 
+	void setSocketType(int index, int type);
+
+	void setSocketValue(int index, int type);
+
+	int getSocketType(int index);
+
+	int getSocketValue(int index);
+
 	int getSkillMod0Type();
 
 	int getSkillMod1Type();
@@ -270,20 +308,37 @@ public:
 
 	int getSocket3Value();
 
+	void setSockets(int socket);
+
+	void setSocket0Type(int type);
+
+	void setSocket1Type(int type);
+
+	void setSocket2Type(int type);
+
+	void setSocket3Type(int type);
+
+	void setSocket0Value(int value);
+
+	void setSocket1Value(int value);
+
+	void setSocket2Value(int value);
+
+	void setSocket3Value(int value);
+
 };
 
-class ArmorHelper : public ORBClassHelper {
-	static ArmorHelper instance;
-
+class ArmorHelper : public ORBClassHelper, public Singleton<ArmorHelper> {
 public:
 	ArmorHelper();
 
-	static ORBClassHelper* getInstance();
+	void finalizeHelper();
 
 	ORBObject* instantiateObject();
 
 	ORBObjectAdapter* createAdapter(ORBObjectServant* obj);
 
+	friend class SingletonWrapper<ArmorHelper>;
 };
 
 #include "WearableImplementation.h"

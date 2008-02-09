@@ -440,9 +440,10 @@ void ProfessionManager::loadSkillCommands(SkillBox* skillBox, string& skillComma
 				
 				if (cert == NULL) {
 					cert = new Certification(command);
+
 					certificationMap.put(command, cert);
 				}
-				
+		
 				skillBox->skillCertifications.add(cert);
 			} else {
 				Skill* skill = skillManager->getSkill(command);

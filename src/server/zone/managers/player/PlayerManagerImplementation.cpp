@@ -80,7 +80,10 @@ PlayerManagerImplementation::PlayerManagerImplementation(ItemManager* mgr, ZoneP
 }
 
 PlayerManagerImplementation::~PlayerManagerImplementation() {
-	//delete playerMap;
+	playerMap->undeploy();
+	
+	delete playerMap;
+	playerMap = NULL;
 }
 
 bool PlayerManagerImplementation::create(Player* player, uint32 sessionkey) {	

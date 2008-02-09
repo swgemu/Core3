@@ -110,18 +110,17 @@ public:
 
 };
 
-class GuildHelper : public ORBClassHelper {
-	static GuildHelper instance;
-
+class GuildHelper : public ORBClassHelper, public Singleton<GuildHelper> {
 public:
 	GuildHelper();
 
-	static ORBClassHelper* getInstance();
+	void finalizeHelper();
 
 	ORBObject* instantiateObject();
 
 	ORBObjectAdapter* createAdapter(ORBObjectServant* obj);
 
+	friend class SingletonWrapper<GuildHelper>;
 };
 
 class GuildServant : public ORBObjectServant {

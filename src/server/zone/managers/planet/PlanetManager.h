@@ -126,18 +126,17 @@ protected:
 	string _param0_getShuttle__string_;
 };
 
-class PlanetManagerHelper : public ORBClassHelper {
-	static PlanetManagerHelper instance;
-
+class PlanetManagerHelper : public ORBClassHelper, public Singleton<PlanetManagerHelper> {
 public:
 	PlanetManagerHelper();
 
-	static ORBClassHelper* getInstance();
+	void finalizeHelper();
 
 	ORBObject* instantiateObject();
 
 	ORBObjectAdapter* createAdapter(ORBObjectServant* obj);
 
+	friend class SingletonWrapper<PlanetManagerHelper>;
 };
 
 class PlanetManagerServant : public ORBObjectServant {

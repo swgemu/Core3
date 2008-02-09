@@ -66,16 +66,16 @@ class ServerCore : public Logger {
 	ZoneServerImplementation* zserv;
 
 public:
-	ServerCore() : Logger("Core") {
-		orb = NULL;
-		
-		lserv = NULL;
-		zserv = NULL;
-	}
+	ServerCore();
 
 	void init();
-	void shutdown();
+		
 	void run();
+	
+	void shutdown();
+	
+	void handleCommands();
+	
 	void processConfig();
 
 };

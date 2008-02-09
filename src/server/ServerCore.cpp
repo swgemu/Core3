@@ -53,6 +53,13 @@ which carries forward this exception.
 #include "zone/managers/radial/RadialManager.h"
 #include "zone/managers/group/GroupManager.h"
 
+ServerCore::ServerCore() : Logger("Core") {
+	orb = NULL;
+		
+	lserv = NULL;
+	zserv = NULL;
+}
+
 void ServerCore::init() {
 	info("starting up server..");
 
@@ -66,21 +73,13 @@ void ServerCore::init() {
 			orb = ObjectRequestBroker::initialize(orbaddr);
 		}
 		
-		if (configManager.getMakeLogin()) {
-			int loginPort = configManager.getLoginPort(); 
-			int loginAllowedConnections = configManager.getLoginAllowedConnections();
-			
+		if (configManager.getMakeLogin()) {		
 			lserv = new LoginServer();
-			lserv->start(loginPort, loginAllowedConnections);
 		}
 
 		if (configManager.getMakeZone()) {
-			int zoneAllowedConnections = configManager.getZoneAllowedConnections(); 
-			
 			zserv = new ZoneServerImplementation(configManager.getZoneProcessingThreads());
 			orb->deploy("ZoneSever", zserv);
-			
-			zserv->start(44463, zoneAllowedConnections);
 		}
 	} catch (ServiceException& e) {
 		shutdown();
@@ -91,30 +90,49 @@ void ServerCore::init() {
 	}
 }
 
+void ServerCore::run() {
+	if (lserv != NULL) {
+		int loginPort = configManager.getLoginPort(); 
+		int loginAllowedConnections = configManager.getLoginAllowedConnections();
+
+		lserv->start(loginPort, loginAllowedConnections);
+	}
+	
+	if (zserv != NULL) {
+		int zoneAllowedConnections = configManager.getZoneAllowedConnections(); 
+
+		zserv->start(44463, zoneAllowedConnections);
+	}
+	
+	handleCommands();
+	
+	shutdown();
+}
+
 void ServerCore::shutdown() {
 	info("shutting down server..");
 
 	if (zserv != NULL) {
 		zserv->shutdown();
 		
-		//delete zserv;
+		zserv = NULL;
 	}
 	
 	if (lserv != NULL) {
 		lserv->stop();
 		
-		//delete lserv;
+		delete lserv;
+		lserv = NULL;
 	}
 	
-	if (database != NULL)
-		delete database;
-
-	info("server closed");
+	ObjectRequestBroker::finalize();
 	
-	exit(1);
+	delete database;
+	
+	info("server closed");
 }
 
-void ServerCore::run() {
+void ServerCore::handleCommands() {
 	while (true) {
 		try {
 			string command;
@@ -125,7 +143,7 @@ void ServerCore::run() {
 			cin >> command;
 		
 			if (command == "exit") {
-				shutdown();
+				return;
 			} else if (command == "dumpmem") {
 				#ifdef DEBUG_MEMORY	
 					DumpUnfreed(TRUE);
@@ -166,10 +184,8 @@ void ServerCore::run() {
 			cout << "[ServerCore] unreported Exception caught\n";
 		}
 	}
-
-    return;
 }
-	
+
 void ServerCore::processConfig() {
 	if (!configManager.loadConfigData())
 		info("missing config file.. loading default values\n");

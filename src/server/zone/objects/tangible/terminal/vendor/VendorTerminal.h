@@ -84,18 +84,17 @@ public:
 
 };
 
-class VendorTerminalHelper : public ORBClassHelper {
-	static VendorTerminalHelper instance;
-
+class VendorTerminalHelper : public ORBClassHelper, public Singleton<VendorTerminalHelper> {
 public:
 	VendorTerminalHelper();
 
-	static ORBClassHelper* getInstance();
+	void finalizeHelper();
 
 	ORBObject* instantiateObject();
 
 	ORBObjectAdapter* createAdapter(ORBObjectServant* obj);
 
+	friend class SingletonWrapper<VendorTerminalHelper>;
 };
 
 #include "../TerminalImplementation.h"

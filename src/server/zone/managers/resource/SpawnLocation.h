@@ -104,18 +104,17 @@ public:
 
 };
 
-class SpawnLocationHelper : public ORBClassHelper {
-	static SpawnLocationHelper instance;
-
+class SpawnLocationHelper : public ORBClassHelper, public Singleton<SpawnLocationHelper> {
 public:
 	SpawnLocationHelper();
 
-	static ORBClassHelper* getInstance();
+	void finalizeHelper();
 
 	ORBObject* instantiateObject();
 
 	ORBObjectAdapter* createAdapter(ORBObjectServant* obj);
 
+	friend class SingletonWrapper<SpawnLocationHelper>;
 };
 
 class SpawnLocationServant : public ORBObjectServant {

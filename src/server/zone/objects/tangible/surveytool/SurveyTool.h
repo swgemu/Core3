@@ -121,18 +121,17 @@ protected:
 	unicode _param1_sampleRequest__Player_unicode_;
 };
 
-class SurveyToolHelper : public ORBClassHelper {
-	static SurveyToolHelper instance;
-
+class SurveyToolHelper : public ORBClassHelper, public Singleton<SurveyToolHelper> {
 public:
 	SurveyToolHelper();
 
-	static ORBClassHelper* getInstance();
+	void finalizeHelper();
 
 	ORBObject* instantiateObject();
 
 	ORBObjectAdapter* createAdapter(ORBObjectServant* obj);
 
+	friend class SingletonWrapper<SurveyToolHelper>;
 };
 
 #include "../TangibleObjectImplementation.h"

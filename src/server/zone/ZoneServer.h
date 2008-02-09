@@ -191,18 +191,17 @@ protected:
 	string _param1_banUser__string_string_;
 };
 
-class ZoneServerHelper : public ORBClassHelper {
-	static ZoneServerHelper instance;
-
+class ZoneServerHelper : public ORBClassHelper, public Singleton<ZoneServerHelper> {
 public:
 	ZoneServerHelper();
 
-	static ORBClassHelper* getInstance();
+	void finalizeHelper();
 
 	ORBObject* instantiateObject();
 
 	ORBObjectAdapter* createAdapter(ORBObjectServant* obj);
 
+	friend class SingletonWrapper<ZoneServerHelper>;
 };
 
 class ZoneServerServant : public ORBObjectServant {

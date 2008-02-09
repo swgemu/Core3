@@ -176,16 +176,14 @@ BaseMessage* SuiListBoxAdapter::generateMessage() {
  *	SuiListBoxHelper
  */
 
-SuiListBoxHelper SuiListBoxHelper::instance;
-
 SuiListBoxHelper::SuiListBoxHelper() {
 	className = "SuiListBox";
 
 	ObjectRequestBroker::instance()->registerClass(className, this);
 }
 
-ORBClassHelper* SuiListBoxHelper::getInstance() {
-		return &instance;
+void SuiListBoxHelper::finalizeHelper() {
+	SuiListBoxHelper::finalize();
 }
 
 ORBObject* SuiListBoxHelper::instantiateObject() {
@@ -193,7 +191,7 @@ ORBObject* SuiListBoxHelper::instantiateObject() {
 }
 
 ORBObjectAdapter* SuiListBoxHelper::createAdapter(ORBObjectServant* obj) {
-	ORBObjectAdapter* adapter = new SuiListBoxAdapter((SuiListBoxImplementation*)obj);
+	ORBObjectAdapter* adapter = new SuiListBoxAdapter((SuiListBoxImplementation*) obj);
 
 	ORBObjectStub* stub = new SuiListBox(obj);
 	stub->_setORBClassName(className);
@@ -211,7 +209,7 @@ ORBObjectAdapter* SuiListBoxHelper::createAdapter(ORBObjectServant* obj) {
  */
 
 SuiListBoxServant::SuiListBoxServant(Player* play, unsigned int typeID, unsigned int boxtype) : SuiBoxImplementation(play, typeID, boxtype) {
-	_classHelper = SuiListBoxHelper::getInstance();
+	_classHelper = SuiListBoxHelper::instance();
 }
 
 SuiListBoxServant::~SuiListBoxServant() {

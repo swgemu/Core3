@@ -203,18 +203,17 @@ protected:
 	string _param0_setTitle__string_;
 };
 
-class PlayerObjectHelper : public ORBClassHelper {
-	static PlayerObjectHelper instance;
-
+class PlayerObjectHelper : public ORBClassHelper, public Singleton<PlayerObjectHelper> {
 public:
 	PlayerObjectHelper();
 
-	static ORBClassHelper* getInstance();
+	void finalizeHelper();
 
 	ORBObject* instantiateObject();
 
 	ORBObjectAdapter* createAdapter(ORBObjectServant* obj);
 
+	friend class SingletonWrapper<PlayerObjectHelper>;
 };
 
 #include "../scene/SceneObjectImplementation.h"

@@ -80,18 +80,17 @@ public:
 
 };
 
-class InventoryHelper : public ORBClassHelper {
-	static InventoryHelper instance;
-
+class InventoryHelper : public ORBClassHelper, public Singleton<InventoryHelper> {
 public:
 	InventoryHelper();
 
-	static ORBClassHelper* getInstance();
+	void finalizeHelper();
 
 	ORBObject* instantiateObject();
 
 	ORBObjectAdapter* createAdapter(ORBObjectServant* obj);
 
+	friend class SingletonWrapper<InventoryHelper>;
 };
 
 #include "ContainerImplementation.h"

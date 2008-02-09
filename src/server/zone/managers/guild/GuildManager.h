@@ -125,18 +125,17 @@ protected:
 	string _param0_removeGuild__string_;
 };
 
-class GuildManagerHelper : public ORBClassHelper {
-	static GuildManagerHelper instance;
-
+class GuildManagerHelper : public ORBClassHelper, public Singleton<GuildManagerHelper> {
 public:
 	GuildManagerHelper();
 
-	static ORBClassHelper* getInstance();
+	void finalizeHelper();
 
 	ORBObject* instantiateObject();
 
 	ORBObjectAdapter* createAdapter(ORBObjectServant* obj);
 
+	friend class SingletonWrapper<GuildManagerHelper>;
 };
 
 class GuildManagerServant : public ORBObjectServant {

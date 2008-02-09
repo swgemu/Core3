@@ -48,6 +48,7 @@ which carries forward this exception.
 LoginServer::LoginServer() : DatagramServiceThread("LoginServer") {
 	//setLockName("LoginServerLock");
 
+	phand = NULL;
 	phandler = NULL;
 		
 	processors = NULL;
@@ -57,11 +58,20 @@ LoginServer::LoginServer() : DatagramServiceThread("LoginServer") {
 }
 
 LoginServer::~LoginServer() {
-	/*if (phandler != NULL)
-		delete phandler; 
+	if (phand != NULL) {
+		delete phand;
+		phand = NULL;
+	}
+	
+	if (phandler != NULL) {
+		delete phandler;
+		phandler = NULL;
+	}
 
-	if (processors != NULL)
-		delete processors;*/ 
+	if (processors != NULL) {
+		free(processors);
+		processors = NULL;
+	}
 }
 
 void LoginServer::init() {
@@ -74,6 +84,7 @@ void LoginServer::init() {
 	scheduler->setLogging(false);
 	
 	procThreadCount = 1;
+	
 	processors = (LoginMessageProcessorThread**) malloc(procThreadCount * sizeof(LoginMessageProcessorThread*));
 	
 	for (int i = 0; i < procThreadCount; ++i) {
@@ -107,19 +118,14 @@ void LoginServer::shutdown() {
 
 		flushMessages();
 		processor->stop();
+		
+		delete processor;
 	}
 		
 	scheduler->stop();
 }
 
 LoginClient* LoginServer::createConnection(Socket* sock, SocketAddress& addr) {
-	/*if (ip.substr(0, 14) != "89.132.121.190") {
-		stringstream msg;
-		msg << "IP is banned " << ip;
-		info(msg);
-		continue;
-	}*/
-
 	LoginClient* client = new LoginClient(this, sock, addr);
 
 	info("client connected from \'" + client->getAddress() + "\'");

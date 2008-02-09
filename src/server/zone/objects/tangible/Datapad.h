@@ -80,18 +80,17 @@ public:
 
 };
 
-class DatapadHelper : public ORBClassHelper {
-	static DatapadHelper instance;
-
+class DatapadHelper : public ORBClassHelper, public Singleton<DatapadHelper> {
 public:
 	DatapadHelper();
 
-	static ORBClassHelper* getInstance();
+	void finalizeHelper();
 
 	ORBObject* instantiateObject();
 
 	ORBObjectAdapter* createAdapter(ORBObjectServant* obj);
 
+	friend class SingletonWrapper<DatapadHelper>;
 };
 
 #include "ContainerImplementation.h"

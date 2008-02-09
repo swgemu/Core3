@@ -80,18 +80,17 @@ public:
 
 };
 
-class TwoHandedJediWeaponHelper : public ORBClassHelper {
-	static TwoHandedJediWeaponHelper instance;
-
+class TwoHandedJediWeaponHelper : public ORBClassHelper, public Singleton<TwoHandedJediWeaponHelper> {
 public:
 	TwoHandedJediWeaponHelper();
 
-	static ORBClassHelper* getInstance();
+	void finalizeHelper();
 
 	ORBObject* instantiateObject();
 
 	ORBObjectAdapter* createAdapter(ORBObjectServant* obj);
 
+	friend class SingletonWrapper<TwoHandedJediWeaponHelper>;
 };
 
 #include "../JediWeaponImplementation.h"

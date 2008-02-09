@@ -84,18 +84,17 @@ public:
 
 };
 
-class FireworkHelper : public ORBClassHelper {
-	static FireworkHelper instance;
-
+class FireworkHelper : public ORBClassHelper, public Singleton<FireworkHelper> {
 public:
 	FireworkHelper();
 
-	static ORBClassHelper* getInstance();
+	void finalizeHelper();
 
 	ORBObject* instantiateObject();
 
 	ORBObjectAdapter* createAdapter(ORBObjectServant* obj);
 
+	friend class SingletonWrapper<FireworkHelper>;
 };
 
 #include "../TangibleObjectImplementation.h"

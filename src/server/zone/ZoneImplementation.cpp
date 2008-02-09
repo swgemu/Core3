@@ -69,6 +69,10 @@ ZoneImplementation::ZoneImplementation(ZoneServer* serv, ZoneProcessServerImplem
 	
 	processor = srv;
 	server = serv;
+	
+	creatureManager = NULL;
+	planetManager = NULL;
+	localResourceManager = NULL;
 }
 
 void ZoneImplementation::startManagers() {
@@ -77,19 +81,18 @@ void ZoneImplementation::startManagers() {
 	
 	CreatureManagerImplementation* manImpl = new CreatureManagerImplementation((Zone*) _this, processor);
 	creatureManager = (CreatureManager*) manImpl->deploy("CreatureManager", zoneID);
-	
+
+	creatureManager->init();
+
 	PlanetManagerImplementation* planImpl = new PlanetManagerImplementation((Zone*) _this, processor);
 	planetManager = (PlanetManager*) planImpl->deploy("PlanetManager", zoneID);
-	
-	/*LocalResourceManagerImplementation* locResImpl = new LocalResourceManagerImplementation((Zone*) _this, processor);
-	localResourceManager = (LocalResourceManager*) locResImpl->deploy("LocalResourceManager", zoneID);*/
-	localResourceManager = NULL;
-	
+
 	planetManager->init();
-	
-	creatureManager->init();
-	
-	//localResourceManager->init();
+
+	/*LocalResourceManagerImplementation* locResImpl = new LocalResourceManagerImplementation((Zone*) _this, processor);
+	localResourceManager = (LocalResourceManager*) locResImpl->deploy("LocalResourceManager", zoneID);
+.	
+	localResourceManager->init();*/
 	
 	planetManager->start();
 	
@@ -100,7 +103,21 @@ void ZoneImplementation::stopManagers() {
 	if (zoneID > 9)
 		return;
 	
-	creatureManager->stop();
+	if (creatureManager != NULL) {
+		creatureManager->stop();
+		
+		creatureManager->undeploy();
+		
+		delete creatureManager;
+		creatureManager = NULL;
+	}
+	
+	if (planetManager != NULL) {
+		planetManager->undeploy();
+		
+		delete planetManager;
+		planetManager = NULL;
+	}
 }
 
 void ZoneImplementation::registerObject(SceneObject* obj) {

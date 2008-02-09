@@ -102,15 +102,23 @@ ZoneProcessServerImplementation::ZoneProcessServerImplementation(ZoneServer* ser
 }
 
 ZoneProcessServerImplementation::~ZoneProcessServerImplementation() {
-	/*if (processors != NULL)
-		delete processors;*/
-
-	/*delete chatManager;
+	if (processors != NULL) {
+		free(processors);
+		processors = NULL;
+	}
+	
+	if (zonephandler != NULL) {
+		delete zonephandler;
+		zonephandler = NULL;
+	}
+	
 	delete combatManager;
-
-	delete playerManager;
-	delete professionManager;*/
-	//delete userManager;
+	delete professionManager;
+	delete skillManager;
+	delete radialManager;
+	delete groupManager;
+	delete lootManager;
+	delete suiManager;
 }
 
 void ZoneProcessServerImplementation::init() {
@@ -139,14 +147,14 @@ void ZoneProcessServerImplementation::run() {
 	}
 }
 
-void ZoneProcessServerImplementation::stop() {
-	//ServiceThread::stop();
-	
+void ZoneProcessServerImplementation::stop() {	
 	flushMessages();
 	
 	for (int i = 0; i < procThreadCount; ++i) {
 		ZoneMessageProcessorThread* processor = processors[i];
 		processor->stop();
+		
+		delete processor;
 	}
 
 	scheduler->stop();

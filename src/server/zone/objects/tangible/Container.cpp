@@ -235,16 +235,14 @@ bool ContainerAdapter::isEmpty() {
  *	ContainerHelper
  */
 
-ContainerHelper ContainerHelper::instance;
-
 ContainerHelper::ContainerHelper() {
 	className = "Container";
 
 	ObjectRequestBroker::instance()->registerClass(className, this);
 }
 
-ORBClassHelper* ContainerHelper::getInstance() {
-		return &instance;
+void ContainerHelper::finalizeHelper() {
+	ContainerHelper::finalize();
 }
 
 ORBObject* ContainerHelper::instantiateObject() {
@@ -252,7 +250,7 @@ ORBObject* ContainerHelper::instantiateObject() {
 }
 
 ORBObjectAdapter* ContainerHelper::createAdapter(ORBObjectServant* obj) {
-	ORBObjectAdapter* adapter = new ContainerAdapter((ContainerImplementation*)obj);
+	ORBObjectAdapter* adapter = new ContainerAdapter((ContainerImplementation*) obj);
 
 	ORBObjectStub* stub = new Container(obj);
 	stub->_setORBClassName(className);
@@ -270,7 +268,7 @@ ORBObjectAdapter* ContainerHelper::createAdapter(ORBObjectServant* obj) {
  */
 
 ContainerServant::ContainerServant(unsigned long long oid) : TangibleObjectImplementation(oid) {
-	_classHelper = ContainerHelper::getInstance();
+	_classHelper = ContainerHelper::instance();
 }
 
 ContainerServant::~ContainerServant() {

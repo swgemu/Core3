@@ -97,16 +97,14 @@ Packet* UnarmedMeleeWeaponAdapter::invokeMethod(uint32 methid, ORBMethodInvocati
  *	UnarmedMeleeWeaponHelper
  */
 
-UnarmedMeleeWeaponHelper UnarmedMeleeWeaponHelper::instance;
-
 UnarmedMeleeWeaponHelper::UnarmedMeleeWeaponHelper() {
 	className = "UnarmedMeleeWeapon";
 
 	ObjectRequestBroker::instance()->registerClass(className, this);
 }
 
-ORBClassHelper* UnarmedMeleeWeaponHelper::getInstance() {
-		return &instance;
+void UnarmedMeleeWeaponHelper::finalizeHelper() {
+	UnarmedMeleeWeaponHelper::finalize();
 }
 
 ORBObject* UnarmedMeleeWeaponHelper::instantiateObject() {
@@ -114,7 +112,7 @@ ORBObject* UnarmedMeleeWeaponHelper::instantiateObject() {
 }
 
 ORBObjectAdapter* UnarmedMeleeWeaponHelper::createAdapter(ORBObjectServant* obj) {
-	ORBObjectAdapter* adapter = new UnarmedMeleeWeaponAdapter((UnarmedMeleeWeaponImplementation*)obj);
+	ORBObjectAdapter* adapter = new UnarmedMeleeWeaponAdapter((UnarmedMeleeWeaponImplementation*) obj);
 
 	ORBObjectStub* stub = new UnarmedMeleeWeapon(obj);
 	stub->_setORBClassName(className);
@@ -132,11 +130,11 @@ ORBObjectAdapter* UnarmedMeleeWeaponHelper::createAdapter(ORBObjectServant* obj)
  */
 
 UnarmedMeleeWeaponServant::UnarmedMeleeWeaponServant(unsigned long long objid, unsigned int tempcrc, const unicode& n, const string& tempn, int tp, bool eqp) : MeleeWeaponImplementation(objid, tempcrc, n, tempn, tp, eqp) {
-	_classHelper = UnarmedMeleeWeaponHelper::getInstance();
+	_classHelper = UnarmedMeleeWeaponHelper::instance();
 }
 
 UnarmedMeleeWeaponServant::UnarmedMeleeWeaponServant(CreatureObject* creature, const string& temp, const unicode& n, const string& tempn, int tp, bool eqp) : MeleeWeaponImplementation(creature, temp, n, tempn, tp, eqp) {
-	_classHelper = UnarmedMeleeWeaponHelper::getInstance();
+	_classHelper = UnarmedMeleeWeaponHelper::instance();
 }
 
 UnarmedMeleeWeaponServant::~UnarmedMeleeWeaponServant() {

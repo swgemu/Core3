@@ -350,16 +350,14 @@ bool MountCreatureAdapter::isInWorld() {
  *	MountCreatureHelper
  */
 
-MountCreatureHelper MountCreatureHelper::instance;
-
 MountCreatureHelper::MountCreatureHelper() {
 	className = "MountCreature";
 
 	ObjectRequestBroker::instance()->registerClass(className, this);
 }
 
-ORBClassHelper* MountCreatureHelper::getInstance() {
-		return &instance;
+void MountCreatureHelper::finalizeHelper() {
+	MountCreatureHelper::finalize();
 }
 
 ORBObject* MountCreatureHelper::instantiateObject() {
@@ -367,7 +365,7 @@ ORBObject* MountCreatureHelper::instantiateObject() {
 }
 
 ORBObjectAdapter* MountCreatureHelper::createAdapter(ORBObjectServant* obj) {
-	ORBObjectAdapter* adapter = new MountCreatureAdapter((MountCreatureImplementation*)obj);
+	ORBObjectAdapter* adapter = new MountCreatureAdapter((MountCreatureImplementation*) obj);
 
 	ORBObjectStub* stub = new MountCreature(obj);
 	stub->_setORBClassName(className);
@@ -385,7 +383,7 @@ ORBObjectAdapter* MountCreatureHelper::createAdapter(ORBObjectServant* obj) {
  */
 
 MountCreatureServant::MountCreatureServant(unsigned long long oid) : CreatureImplementation(oid) {
-	_classHelper = MountCreatureHelper::getInstance();
+	_classHelper = MountCreatureHelper::instance();
 }
 
 MountCreatureServant::~MountCreatureServant() {

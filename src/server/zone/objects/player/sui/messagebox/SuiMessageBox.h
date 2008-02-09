@@ -86,18 +86,17 @@ public:
 
 };
 
-class SuiMessageBoxHelper : public ORBClassHelper {
-	static SuiMessageBoxHelper instance;
-
+class SuiMessageBoxHelper : public ORBClassHelper, public Singleton<SuiMessageBoxHelper> {
 public:
 	SuiMessageBoxHelper();
 
-	static ORBClassHelper* getInstance();
+	void finalizeHelper();
 
 	ORBObject* instantiateObject();
 
 	ORBObjectAdapter* createAdapter(ORBObjectServant* obj);
 
+	friend class SingletonWrapper<SuiMessageBoxHelper>;
 };
 
 #include "../SuiBoxImplementation.h"

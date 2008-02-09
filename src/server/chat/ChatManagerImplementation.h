@@ -90,6 +90,8 @@ private:
 
 public:
 	ChatManagerImplementation(ZoneServer* serv, int initsize);
+	
+	~ChatManagerImplementation();
 
 	void addPlayer(Player* player);
 	Player* getPlayer(string& name);
@@ -119,6 +121,8 @@ public:
 
 	// ChatRooms
 	void initiateRooms();
+	
+	void destroyRooms();
 	
 	void handleChatRoomMessage(Player* player, Message* pack);
 	void handleGroupChat(Player* player, Message* pack);

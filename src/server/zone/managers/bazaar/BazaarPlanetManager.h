@@ -102,18 +102,17 @@ public:
 
 };
 
-class BazaarPlanetManagerHelper : public ORBClassHelper {
-	static BazaarPlanetManagerHelper instance;
-
+class BazaarPlanetManagerHelper : public ORBClassHelper, public Singleton<BazaarPlanetManagerHelper> {
 public:
 	BazaarPlanetManagerHelper();
 
-	static ORBClassHelper* getInstance();
+	void finalizeHelper();
 
 	ORBObject* instantiateObject();
 
 	ORBObjectAdapter* createAdapter(ORBObjectServant* obj);
 
+	friend class SingletonWrapper<BazaarPlanetManagerHelper>;
 };
 
 class BazaarPlanetManagerServant : public ORBObjectServant {

@@ -55,5 +55,7 @@ interface GuildMap {
 
 	void remove(unsigned int gid);
 	
+	void removeAll();
+	
 	int size();
 }

@@ -660,16 +660,14 @@ unsigned int PlayerObjectAdapter::getNewWaypointListCount(int cnt) {
  *	PlayerObjectHelper
  */
 
-PlayerObjectHelper PlayerObjectHelper::instance;
-
 PlayerObjectHelper::PlayerObjectHelper() {
 	className = "PlayerObject";
 
 	ObjectRequestBroker::instance()->registerClass(className, this);
 }
 
-ORBClassHelper* PlayerObjectHelper::getInstance() {
-		return &instance;
+void PlayerObjectHelper::finalizeHelper() {
+	PlayerObjectHelper::finalize();
 }
 
 ORBObject* PlayerObjectHelper::instantiateObject() {
@@ -677,7 +675,7 @@ ORBObject* PlayerObjectHelper::instantiateObject() {
 }
 
 ORBObjectAdapter* PlayerObjectHelper::createAdapter(ORBObjectServant* obj) {
-	ORBObjectAdapter* adapter = new PlayerObjectAdapter((PlayerObjectImplementation*)obj);
+	ORBObjectAdapter* adapter = new PlayerObjectAdapter((PlayerObjectImplementation*) obj);
 
 	ORBObjectStub* stub = new PlayerObject(obj);
 	stub->_setORBClassName(className);
@@ -695,7 +693,7 @@ ORBObjectAdapter* PlayerObjectHelper::createAdapter(ORBObjectServant* obj) {
  */
 
 PlayerObjectServant::PlayerObjectServant() : SceneObjectImplementation() {
-	_classHelper = PlayerObjectHelper::getInstance();
+	_classHelper = PlayerObjectHelper::instance();
 }
 
 PlayerObjectServant::~PlayerObjectServant() {

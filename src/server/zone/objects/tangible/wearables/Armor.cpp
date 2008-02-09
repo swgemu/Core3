@@ -158,12 +158,26 @@ void Armor::repairArmor(Player* player) {
 		((ArmorImplementation*) _impl)->repairArmor(player);
 }
 
-int Armor::getRating() {
+int Armor::addSkillMod(int skillModType, int skillModValue) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
 		ORBMethodInvocation invocation(this, 12);
+		invocation.addSignedIntParameter(skillModType);
+		invocation.addSignedIntParameter(skillModValue);
+
+		return invocation.executeWithSignedIntReturn();
+	} else
+		return ((ArmorImplementation*) _impl)->addSkillMod(skillModType, skillModValue);
+}
+
+int Armor::getRating() {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 13);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -175,7 +189,7 @@ int Armor::getCondition() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 13);
+		ORBMethodInvocation invocation(this, 14);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -187,7 +201,7 @@ int Armor::getMaxCondition() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 14);
+		ORBMethodInvocation invocation(this, 15);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -199,7 +213,7 @@ int Armor::getHealthEncumbrance() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 15);
+		ORBMethodInvocation invocation(this, 16);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -211,7 +225,7 @@ int Armor::getActionEncumbrance() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 16);
+		ORBMethodInvocation invocation(this, 17);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -223,7 +237,7 @@ int Armor::getMindEncumbrance() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 17);
+		ORBMethodInvocation invocation(this, 18);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -235,7 +249,7 @@ float Armor::getKinetic() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 18);
+		ORBMethodInvocation invocation(this, 19);
 
 		return invocation.executeWithFloatReturn();
 	} else
@@ -247,7 +261,7 @@ bool Armor::isKineticSpecial() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 19);
+		ORBMethodInvocation invocation(this, 20);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -259,7 +273,7 @@ float Armor::getEnergy() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 20);
+		ORBMethodInvocation invocation(this, 21);
 
 		return invocation.executeWithFloatReturn();
 	} else
@@ -271,7 +285,7 @@ bool Armor::isEnergySpecial() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 21);
+		ORBMethodInvocation invocation(this, 22);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -283,7 +297,7 @@ float Armor::getElectricity() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 22);
+		ORBMethodInvocation invocation(this, 23);
 
 		return invocation.executeWithFloatReturn();
 	} else
@@ -295,7 +309,7 @@ bool Armor::isElectricitySpecial() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 23);
+		ORBMethodInvocation invocation(this, 24);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -307,7 +321,7 @@ float Armor::getStun() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 24);
+		ORBMethodInvocation invocation(this, 25);
 
 		return invocation.executeWithFloatReturn();
 	} else
@@ -319,7 +333,7 @@ bool Armor::isStunSpecial() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 25);
+		ORBMethodInvocation invocation(this, 26);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -331,7 +345,7 @@ float Armor::getBlast() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 26);
+		ORBMethodInvocation invocation(this, 27);
 
 		return invocation.executeWithFloatReturn();
 	} else
@@ -343,7 +357,7 @@ bool Armor::isBlastSpecial() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 27);
+		ORBMethodInvocation invocation(this, 28);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -355,7 +369,7 @@ float Armor::getHeat() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 28);
+		ORBMethodInvocation invocation(this, 29);
 
 		return invocation.executeWithFloatReturn();
 	} else
@@ -367,7 +381,7 @@ bool Armor::isHeatSpecial() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 29);
+		ORBMethodInvocation invocation(this, 30);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -379,7 +393,7 @@ float Armor::getCold() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 30);
+		ORBMethodInvocation invocation(this, 31);
 
 		return invocation.executeWithFloatReturn();
 	} else
@@ -391,7 +405,7 @@ bool Armor::isColdSpecial() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 31);
+		ORBMethodInvocation invocation(this, 32);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -403,7 +417,7 @@ float Armor::getAcid() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 32);
+		ORBMethodInvocation invocation(this, 33);
 
 		return invocation.executeWithFloatReturn();
 	} else
@@ -415,7 +429,7 @@ bool Armor::isAcidSpecial() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 33);
+		ORBMethodInvocation invocation(this, 34);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -427,7 +441,7 @@ float Armor::getLightSaber() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 34);
+		ORBMethodInvocation invocation(this, 35);
 
 		return invocation.executeWithFloatReturn();
 	} else
@@ -439,7 +453,7 @@ bool Armor::isLightSaberSpecial() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 35);
+		ORBMethodInvocation invocation(this, 36);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -451,7 +465,7 @@ int Armor::getType() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 36);
+		ORBMethodInvocation invocation(this, 37);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -463,11 +477,65 @@ bool Armor::isSliced() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 37);
+		ORBMethodInvocation invocation(this, 38);
 
 		return invocation.executeWithBooleanReturn();
 	} else
 		return ((ArmorImplementation*) _impl)->isSliced();
+}
+
+void Armor::setSocketType(int index, int type) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 39);
+		invocation.addSignedIntParameter(index);
+		invocation.addSignedIntParameter(type);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((ArmorImplementation*) _impl)->setSocketType(index, type);
+}
+
+void Armor::setSocketValue(int index, int type) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 40);
+		invocation.addSignedIntParameter(index);
+		invocation.addSignedIntParameter(type);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((ArmorImplementation*) _impl)->setSocketValue(index, type);
+}
+
+int Armor::getSocketType(int index) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 41);
+		invocation.addSignedIntParameter(index);
+
+		return invocation.executeWithSignedIntReturn();
+	} else
+		return ((ArmorImplementation*) _impl)->getSocketType(index);
+}
+
+int Armor::getSocketValue(int index) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 42);
+		invocation.addSignedIntParameter(index);
+
+		return invocation.executeWithSignedIntReturn();
+	} else
+		return ((ArmorImplementation*) _impl)->getSocketValue(index);
 }
 
 int Armor::getSkillMod0Type() {
@@ -475,7 +543,7 @@ int Armor::getSkillMod0Type() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 38);
+		ORBMethodInvocation invocation(this, 43);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -487,7 +555,7 @@ int Armor::getSkillMod1Type() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 39);
+		ORBMethodInvocation invocation(this, 44);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -499,7 +567,7 @@ int Armor::getSkillMod2Type() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 40);
+		ORBMethodInvocation invocation(this, 45);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -511,7 +579,7 @@ int Armor::getSkillMod0Value() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 41);
+		ORBMethodInvocation invocation(this, 46);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -523,7 +591,7 @@ int Armor::getSkillMod1Value() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 42);
+		ORBMethodInvocation invocation(this, 47);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -535,7 +603,7 @@ int Armor::getSkillMod2Value() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 43);
+		ORBMethodInvocation invocation(this, 48);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -547,7 +615,7 @@ int Armor::getSockets() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 44);
+		ORBMethodInvocation invocation(this, 49);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -559,7 +627,7 @@ int Armor::getSocket0Type() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 45);
+		ORBMethodInvocation invocation(this, 50);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -571,7 +639,7 @@ int Armor::getSocket1Type() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 46);
+		ORBMethodInvocation invocation(this, 51);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -583,7 +651,7 @@ int Armor::getSocket2Type() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 47);
+		ORBMethodInvocation invocation(this, 52);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -595,7 +663,7 @@ int Armor::getSocket3Type() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 48);
+		ORBMethodInvocation invocation(this, 53);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -607,7 +675,7 @@ int Armor::getSocket0Value() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 49);
+		ORBMethodInvocation invocation(this, 54);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -619,7 +687,7 @@ int Armor::getSocket1Value() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 50);
+		ORBMethodInvocation invocation(this, 55);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -631,7 +699,7 @@ int Armor::getSocket2Value() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 51);
+		ORBMethodInvocation invocation(this, 56);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -643,11 +711,128 @@ int Armor::getSocket3Value() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 52);
+		ORBMethodInvocation invocation(this, 57);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
 		return ((ArmorImplementation*) _impl)->getSocket3Value();
+}
+
+void Armor::setSockets(int socket) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 58);
+		invocation.addSignedIntParameter(socket);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((ArmorImplementation*) _impl)->setSockets(socket);
+}
+
+void Armor::setSocket0Type(int type) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 59);
+		invocation.addSignedIntParameter(type);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((ArmorImplementation*) _impl)->setSocket0Type(type);
+}
+
+void Armor::setSocket1Type(int type) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 60);
+		invocation.addSignedIntParameter(type);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((ArmorImplementation*) _impl)->setSocket1Type(type);
+}
+
+void Armor::setSocket2Type(int type) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 61);
+		invocation.addSignedIntParameter(type);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((ArmorImplementation*) _impl)->setSocket2Type(type);
+}
+
+void Armor::setSocket3Type(int type) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 62);
+		invocation.addSignedIntParameter(type);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((ArmorImplementation*) _impl)->setSocket3Type(type);
+}
+
+void Armor::setSocket0Value(int value) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 63);
+		invocation.addSignedIntParameter(value);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((ArmorImplementation*) _impl)->setSocket0Value(value);
+}
+
+void Armor::setSocket1Value(int value) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 64);
+		invocation.addSignedIntParameter(value);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((ArmorImplementation*) _impl)->setSocket1Value(value);
+}
+
+void Armor::setSocket2Value(int value) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 65);
+		invocation.addSignedIntParameter(value);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((ArmorImplementation*) _impl)->setSocket2Value(value);
+}
+
+void Armor::setSocket3Value(int value) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 66);
+		invocation.addSignedIntParameter(value);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((ArmorImplementation*) _impl)->setSocket3Value(value);
 }
 
 /*
@@ -680,127 +865,169 @@ Packet* ArmorAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* inv) {
 		repairArmor((Player*) inv->getObjectParameter());
 		break;
 	case 12:
-		resp->insertSignedInt(getRating());
+		resp->insertSignedInt(addSkillMod(inv->getSignedIntParameter(), inv->getSignedIntParameter()));
 		break;
 	case 13:
-		resp->insertSignedInt(getCondition());
+		resp->insertSignedInt(getRating());
 		break;
 	case 14:
-		resp->insertSignedInt(getMaxCondition());
+		resp->insertSignedInt(getCondition());
 		break;
 	case 15:
-		resp->insertSignedInt(getHealthEncumbrance());
+		resp->insertSignedInt(getMaxCondition());
 		break;
 	case 16:
-		resp->insertSignedInt(getActionEncumbrance());
+		resp->insertSignedInt(getHealthEncumbrance());
 		break;
 	case 17:
-		resp->insertSignedInt(getMindEncumbrance());
+		resp->insertSignedInt(getActionEncumbrance());
 		break;
 	case 18:
-		resp->insertFloat(getKinetic());
+		resp->insertSignedInt(getMindEncumbrance());
 		break;
 	case 19:
-		resp->insertBoolean(isKineticSpecial());
+		resp->insertFloat(getKinetic());
 		break;
 	case 20:
-		resp->insertFloat(getEnergy());
+		resp->insertBoolean(isKineticSpecial());
 		break;
 	case 21:
-		resp->insertBoolean(isEnergySpecial());
+		resp->insertFloat(getEnergy());
 		break;
 	case 22:
-		resp->insertFloat(getElectricity());
+		resp->insertBoolean(isEnergySpecial());
 		break;
 	case 23:
-		resp->insertBoolean(isElectricitySpecial());
+		resp->insertFloat(getElectricity());
 		break;
 	case 24:
-		resp->insertFloat(getStun());
+		resp->insertBoolean(isElectricitySpecial());
 		break;
 	case 25:
-		resp->insertBoolean(isStunSpecial());
+		resp->insertFloat(getStun());
 		break;
 	case 26:
-		resp->insertFloat(getBlast());
+		resp->insertBoolean(isStunSpecial());
 		break;
 	case 27:
-		resp->insertBoolean(isBlastSpecial());
+		resp->insertFloat(getBlast());
 		break;
 	case 28:
-		resp->insertFloat(getHeat());
+		resp->insertBoolean(isBlastSpecial());
 		break;
 	case 29:
-		resp->insertBoolean(isHeatSpecial());
+		resp->insertFloat(getHeat());
 		break;
 	case 30:
-		resp->insertFloat(getCold());
+		resp->insertBoolean(isHeatSpecial());
 		break;
 	case 31:
-		resp->insertBoolean(isColdSpecial());
+		resp->insertFloat(getCold());
 		break;
 	case 32:
-		resp->insertFloat(getAcid());
+		resp->insertBoolean(isColdSpecial());
 		break;
 	case 33:
-		resp->insertBoolean(isAcidSpecial());
+		resp->insertFloat(getAcid());
 		break;
 	case 34:
-		resp->insertFloat(getLightSaber());
+		resp->insertBoolean(isAcidSpecial());
 		break;
 	case 35:
-		resp->insertBoolean(isLightSaberSpecial());
+		resp->insertFloat(getLightSaber());
 		break;
 	case 36:
-		resp->insertSignedInt(getType());
+		resp->insertBoolean(isLightSaberSpecial());
 		break;
 	case 37:
-		resp->insertBoolean(isSliced());
+		resp->insertSignedInt(getType());
 		break;
 	case 38:
-		resp->insertSignedInt(getSkillMod0Type());
+		resp->insertBoolean(isSliced());
 		break;
 	case 39:
-		resp->insertSignedInt(getSkillMod1Type());
+		setSocketType(inv->getSignedIntParameter(), inv->getSignedIntParameter());
 		break;
 	case 40:
-		resp->insertSignedInt(getSkillMod2Type());
+		setSocketValue(inv->getSignedIntParameter(), inv->getSignedIntParameter());
 		break;
 	case 41:
-		resp->insertSignedInt(getSkillMod0Value());
+		resp->insertSignedInt(getSocketType(inv->getSignedIntParameter()));
 		break;
 	case 42:
-		resp->insertSignedInt(getSkillMod1Value());
+		resp->insertSignedInt(getSocketValue(inv->getSignedIntParameter()));
 		break;
 	case 43:
-		resp->insertSignedInt(getSkillMod2Value());
+		resp->insertSignedInt(getSkillMod0Type());
 		break;
 	case 44:
-		resp->insertSignedInt(getSockets());
+		resp->insertSignedInt(getSkillMod1Type());
 		break;
 	case 45:
-		resp->insertSignedInt(getSocket0Type());
+		resp->insertSignedInt(getSkillMod2Type());
 		break;
 	case 46:
-		resp->insertSignedInt(getSocket1Type());
+		resp->insertSignedInt(getSkillMod0Value());
 		break;
 	case 47:
-		resp->insertSignedInt(getSocket2Type());
+		resp->insertSignedInt(getSkillMod1Value());
 		break;
 	case 48:
-		resp->insertSignedInt(getSocket3Type());
+		resp->insertSignedInt(getSkillMod2Value());
 		break;
 	case 49:
-		resp->insertSignedInt(getSocket0Value());
+		resp->insertSignedInt(getSockets());
 		break;
 	case 50:
-		resp->insertSignedInt(getSocket1Value());
+		resp->insertSignedInt(getSocket0Type());
 		break;
 	case 51:
-		resp->insertSignedInt(getSocket2Value());
+		resp->insertSignedInt(getSocket1Type());
 		break;
 	case 52:
+		resp->insertSignedInt(getSocket2Type());
+		break;
+	case 53:
+		resp->insertSignedInt(getSocket3Type());
+		break;
+	case 54:
+		resp->insertSignedInt(getSocket0Value());
+		break;
+	case 55:
+		resp->insertSignedInt(getSocket1Value());
+		break;
+	case 56:
+		resp->insertSignedInt(getSocket2Value());
+		break;
+	case 57:
 		resp->insertSignedInt(getSocket3Value());
+		break;
+	case 58:
+		setSockets(inv->getSignedIntParameter());
+		break;
+	case 59:
+		setSocket0Type(inv->getSignedIntParameter());
+		break;
+	case 60:
+		setSocket1Type(inv->getSignedIntParameter());
+		break;
+	case 61:
+		setSocket2Type(inv->getSignedIntParameter());
+		break;
+	case 62:
+		setSocket3Type(inv->getSignedIntParameter());
+		break;
+	case 63:
+		setSocket0Value(inv->getSignedIntParameter());
+		break;
+	case 64:
+		setSocket1Value(inv->getSignedIntParameter());
+		break;
+	case 65:
+		setSocket2Value(inv->getSignedIntParameter());
+		break;
+	case 66:
+		setSocket3Value(inv->getSignedIntParameter());
 		break;
 	default:
 		return NULL;
@@ -831,6 +1058,10 @@ void ArmorAdapter::sliceArmor(Player* player) {
 
 void ArmorAdapter::repairArmor(Player* player) {
 	return ((ArmorImplementation*) impl)->repairArmor(player);
+}
+
+int ArmorAdapter::addSkillMod(int skillModType, int skillModValue) {
+	return ((ArmorImplementation*) impl)->addSkillMod(skillModType, skillModValue);
 }
 
 int ArmorAdapter::getRating() {
@@ -937,6 +1168,22 @@ bool ArmorAdapter::isSliced() {
 	return ((ArmorImplementation*) impl)->isSliced();
 }
 
+void ArmorAdapter::setSocketType(int index, int type) {
+	return ((ArmorImplementation*) impl)->setSocketType(index, type);
+}
+
+void ArmorAdapter::setSocketValue(int index, int type) {
+	return ((ArmorImplementation*) impl)->setSocketValue(index, type);
+}
+
+int ArmorAdapter::getSocketType(int index) {
+	return ((ArmorImplementation*) impl)->getSocketType(index);
+}
+
+int ArmorAdapter::getSocketValue(int index) {
+	return ((ArmorImplementation*) impl)->getSocketValue(index);
+}
+
 int ArmorAdapter::getSkillMod0Type() {
 	return ((ArmorImplementation*) impl)->getSkillMod0Type();
 }
@@ -997,11 +1244,45 @@ int ArmorAdapter::getSocket3Value() {
 	return ((ArmorImplementation*) impl)->getSocket3Value();
 }
 
+void ArmorAdapter::setSockets(int socket) {
+	return ((ArmorImplementation*) impl)->setSockets(socket);
+}
+
+void ArmorAdapter::setSocket0Type(int type) {
+	return ((ArmorImplementation*) impl)->setSocket0Type(type);
+}
+
+void ArmorAdapter::setSocket1Type(int type) {
+	return ((ArmorImplementation*) impl)->setSocket1Type(type);
+}
+
+void ArmorAdapter::setSocket2Type(int type) {
+	return ((ArmorImplementation*) impl)->setSocket2Type(type);
+}
+
+void ArmorAdapter::setSocket3Type(int type) {
+	return ((ArmorImplementation*) impl)->setSocket3Type(type);
+}
+
+void ArmorAdapter::setSocket0Value(int value) {
+	return ((ArmorImplementation*) impl)->setSocket0Value(value);
+}
+
+void ArmorAdapter::setSocket1Value(int value) {
+	return ((ArmorImplementation*) impl)->setSocket1Value(value);
+}
+
+void ArmorAdapter::setSocket2Value(int value) {
+	return ((ArmorImplementation*) impl)->setSocket2Value(value);
+}
+
+void ArmorAdapter::setSocket3Value(int value) {
+	return ((ArmorImplementation*) impl)->setSocket3Value(value);
+}
+
 /*
  *	ArmorHelper
  */
-
-ArmorHelper ArmorHelper::instance;
 
 ArmorHelper::ArmorHelper() {
 	className = "Armor";
@@ -1009,8 +1290,8 @@ ArmorHelper::ArmorHelper() {
 	ObjectRequestBroker::instance()->registerClass(className, this);
 }
 
-ORBClassHelper* ArmorHelper::getInstance() {
-		return &instance;
+void ArmorHelper::finalizeHelper() {
+	ArmorHelper::finalize();
 }
 
 ORBObject* ArmorHelper::instantiateObject() {
@@ -1018,7 +1299,7 @@ ORBObject* ArmorHelper::instantiateObject() {
 }
 
 ORBObjectAdapter* ArmorHelper::createAdapter(ORBObjectServant* obj) {
-	ORBObjectAdapter* adapter = new ArmorAdapter((ArmorImplementation*)obj);
+	ORBObjectAdapter* adapter = new ArmorAdapter((ArmorImplementation*) obj);
 
 	ORBObjectStub* stub = new Armor(obj);
 	stub->_setORBClassName(className);
@@ -1036,11 +1317,11 @@ ORBObjectAdapter* ArmorHelper::createAdapter(ORBObjectServant* obj) {
  */
 
 ArmorServant::ArmorServant(unsigned long long oid, unsigned int tempCRC, const unicode& name, const string& tempn, bool eqp) : WearableImplementation(oid, tempCRC, name, tempn, eqp) {
-	_classHelper = ArmorHelper::getInstance();
+	_classHelper = ArmorHelper::instance();
 }
 
 ArmorServant::ArmorServant(CreatureObject* creature, unsigned int tempCRC, const unicode& n, const string& tempn, bool eqp) : WearableImplementation(creature, tempCRC, n, tempn, eqp) {
-	_classHelper = ArmorHelper::getInstance();
+	_classHelper = ArmorHelper::instance();
 }
 
 ArmorServant::~ArmorServant() {

@@ -95,16 +95,14 @@ Packet* LairObjectAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* inv)
  *	LairObjectHelper
  */
 
-LairObjectHelper LairObjectHelper::instance;
-
 LairObjectHelper::LairObjectHelper() {
 	className = "LairObject";
 
 	ObjectRequestBroker::instance()->registerClass(className, this);
 }
 
-ORBClassHelper* LairObjectHelper::getInstance() {
-		return &instance;
+void LairObjectHelper::finalizeHelper() {
+	LairObjectHelper::finalize();
 }
 
 ORBObject* LairObjectHelper::instantiateObject() {
@@ -112,7 +110,7 @@ ORBObject* LairObjectHelper::instantiateObject() {
 }
 
 ORBObjectAdapter* LairObjectHelper::createAdapter(ORBObjectServant* obj) {
-	ORBObjectAdapter* adapter = new LairObjectAdapter((LairObjectImplementation*)obj);
+	ORBObjectAdapter* adapter = new LairObjectAdapter((LairObjectImplementation*) obj);
 
 	ORBObjectStub* stub = new LairObject(obj);
 	stub->_setORBClassName(className);
@@ -130,7 +128,7 @@ ORBObjectAdapter* LairObjectHelper::createAdapter(ORBObjectServant* obj) {
  */
 
 LairObjectServant::LairObjectServant(unsigned long long oid, int tp) : TangibleObjectImplementation(oid, tp) {
-	_classHelper = LairObjectHelper::getInstance();
+	_classHelper = LairObjectHelper::instance();
 }
 
 LairObjectServant::~LairObjectServant() {

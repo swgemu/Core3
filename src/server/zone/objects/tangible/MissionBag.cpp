@@ -97,16 +97,14 @@ Packet* MissionBagAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* inv)
  *	MissionBagHelper
  */
 
-MissionBagHelper MissionBagHelper::instance;
-
 MissionBagHelper::MissionBagHelper() {
 	className = "MissionBag";
 
 	ObjectRequestBroker::instance()->registerClass(className, this);
 }
 
-ORBClassHelper* MissionBagHelper::getInstance() {
-		return &instance;
+void MissionBagHelper::finalizeHelper() {
+	MissionBagHelper::finalize();
 }
 
 ORBObject* MissionBagHelper::instantiateObject() {
@@ -114,7 +112,7 @@ ORBObject* MissionBagHelper::instantiateObject() {
 }
 
 ORBObjectAdapter* MissionBagHelper::createAdapter(ORBObjectServant* obj) {
-	ORBObjectAdapter* adapter = new MissionBagAdapter((MissionBagImplementation*)obj);
+	ORBObjectAdapter* adapter = new MissionBagAdapter((MissionBagImplementation*) obj);
 
 	ORBObjectStub* stub = new MissionBag(obj);
 	stub->_setORBClassName(className);
@@ -132,7 +130,7 @@ ORBObjectAdapter* MissionBagHelper::createAdapter(ORBObjectServant* obj) {
  */
 
 MissionBagServant::MissionBagServant(unsigned long long oid) : ContainerImplementation(oid) {
-	_classHelper = MissionBagHelper::getInstance();
+	_classHelper = MissionBagHelper::instance();
 }
 
 MissionBagServant::~MissionBagServant() {

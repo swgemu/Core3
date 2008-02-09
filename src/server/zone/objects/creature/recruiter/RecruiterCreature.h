@@ -94,18 +94,17 @@ public:
 
 };
 
-class RecruiterCreatureHelper : public ORBClassHelper {
-	static RecruiterCreatureHelper instance;
-
+class RecruiterCreatureHelper : public ORBClassHelper, public Singleton<RecruiterCreatureHelper> {
 public:
 	RecruiterCreatureHelper();
 
-	static ORBClassHelper* getInstance();
+	void finalizeHelper();
 
 	ORBObject* instantiateObject();
 
 	ORBObjectAdapter* createAdapter(ORBObjectServant* obj);
 
+	friend class SingletonWrapper<RecruiterCreatureHelper>;
 };
 
 #include "../CreatureImplementation.h"

@@ -95,16 +95,14 @@ Packet* WearableAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* inv) {
  *	WearableHelper
  */
 
-WearableHelper WearableHelper::instance;
-
 WearableHelper::WearableHelper() {
 	className = "Wearable";
 
 	ObjectRequestBroker::instance()->registerClass(className, this);
 }
 
-ORBClassHelper* WearableHelper::getInstance() {
-		return &instance;
+void WearableHelper::finalizeHelper() {
+	WearableHelper::finalize();
 }
 
 ORBObject* WearableHelper::instantiateObject() {
@@ -112,7 +110,7 @@ ORBObject* WearableHelper::instantiateObject() {
 }
 
 ORBObjectAdapter* WearableHelper::createAdapter(ORBObjectServant* obj) {
-	ORBObjectAdapter* adapter = new WearableAdapter((WearableImplementation*)obj);
+	ORBObjectAdapter* adapter = new WearableAdapter((WearableImplementation*) obj);
 
 	ORBObjectStub* stub = new Wearable(obj);
 	stub->_setORBClassName(className);
@@ -130,7 +128,7 @@ ORBObjectAdapter* WearableHelper::createAdapter(ORBObjectServant* obj) {
  */
 
 WearableServant::WearableServant(unsigned long long oid, int tp) : TangibleObjectImplementation(oid, tp) {
-	_classHelper = WearableHelper::getInstance();
+	_classHelper = WearableHelper::instance();
 }
 
 WearableServant::~WearableServant() {

@@ -78,18 +78,17 @@ public:
 
 };
 
-class MissionObjectHelper : public ORBClassHelper {
-	static MissionObjectHelper instance;
-
+class MissionObjectHelper : public ORBClassHelper, public Singleton<MissionObjectHelper> {
 public:
 	MissionObjectHelper();
 
-	static ORBClassHelper* getInstance();
+	void finalizeHelper();
 
 	ORBObject* instantiateObject();
 
 	ORBObjectAdapter* createAdapter(ORBObjectServant* obj);
 
+	friend class SingletonWrapper<MissionObjectHelper>;
 };
 
 #include "../scene/SceneObjectImplementation.h"

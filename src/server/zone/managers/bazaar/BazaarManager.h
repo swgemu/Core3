@@ -116,18 +116,17 @@ protected:
 	string _param3_addSaleItem__Player_long_long_string_int_int_bool_;
 };
 
-class BazaarManagerHelper : public ORBClassHelper {
-	static BazaarManagerHelper instance;
-
+class BazaarManagerHelper : public ORBClassHelper, public Singleton<BazaarManagerHelper> {
 public:
 	BazaarManagerHelper();
 
-	static ORBClassHelper* getInstance();
+	void finalizeHelper();
 
 	ORBObject* instantiateObject();
 
 	ORBObjectAdapter* createAdapter(ORBObjectServant* obj);
 
+	friend class SingletonWrapper<BazaarManagerHelper>;
 };
 
 class BazaarManagerServant : public ORBObjectServant {

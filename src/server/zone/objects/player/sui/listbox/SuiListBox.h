@@ -100,18 +100,17 @@ protected:
 	string _param0_addMenuItem__string_long_;
 };
 
-class SuiListBoxHelper : public ORBClassHelper {
-	static SuiListBoxHelper instance;
-
+class SuiListBoxHelper : public ORBClassHelper, public Singleton<SuiListBoxHelper> {
 public:
 	SuiListBoxHelper();
 
-	static ORBClassHelper* getInstance();
+	void finalizeHelper();
 
 	ORBObject* instantiateObject();
 
 	ORBObjectAdapter* createAdapter(ORBObjectServant* obj);
 
+	friend class SingletonWrapper<SuiListBoxHelper>;
 };
 
 #include "../SuiBoxImplementation.h"

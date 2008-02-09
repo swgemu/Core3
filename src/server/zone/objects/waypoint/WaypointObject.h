@@ -117,18 +117,17 @@ protected:
 	string _param0_setPlanetName__string_;
 };
 
-class WaypointObjectHelper : public ORBClassHelper {
-	static WaypointObjectHelper instance;
-
+class WaypointObjectHelper : public ORBClassHelper, public Singleton<WaypointObjectHelper> {
 public:
 	WaypointObjectHelper();
 
-	static ORBClassHelper* getInstance();
+	void finalizeHelper();
 
 	ORBObject* instantiateObject();
 
 	ORBObjectAdapter* createAdapter(ORBObjectServant* obj);
 
+	friend class SingletonWrapper<WaypointObjectHelper>;
 };
 
 #include "../scene/SceneObjectImplementation.h"

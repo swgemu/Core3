@@ -80,18 +80,17 @@ public:
 
 };
 
-class HairObjectHelper : public ORBClassHelper {
-	static HairObjectHelper instance;
-
+class HairObjectHelper : public ORBClassHelper, public Singleton<HairObjectHelper> {
 public:
 	HairObjectHelper();
 
-	static ORBClassHelper* getInstance();
+	void finalizeHelper();
 
 	ORBObject* instantiateObject();
 
 	ORBObjectAdapter* createAdapter(ORBObjectServant* obj);
 
+	friend class SingletonWrapper<HairObjectHelper>;
 };
 
 #include "../TangibleObjectImplementation.h"

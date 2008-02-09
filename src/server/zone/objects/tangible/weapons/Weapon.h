@@ -306,18 +306,17 @@ public:
 
 };
 
-class WeaponHelper : public ORBClassHelper {
-	static WeaponHelper instance;
-
+class WeaponHelper : public ORBClassHelper, public Singleton<WeaponHelper> {
 public:
 	WeaponHelper();
 
-	static ORBClassHelper* getInstance();
+	void finalizeHelper();
 
 	ORBObject* instantiateObject();
 
 	ORBObjectAdapter* createAdapter(ORBObjectServant* obj);
 
+	friend class SingletonWrapper<WeaponHelper>;
 };
 
 #include "../TangibleObjectImplementation.h"

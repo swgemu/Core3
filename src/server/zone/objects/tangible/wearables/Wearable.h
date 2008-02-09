@@ -78,18 +78,17 @@ public:
 
 };
 
-class WearableHelper : public ORBClassHelper {
-	static WearableHelper instance;
-
+class WearableHelper : public ORBClassHelper, public Singleton<WearableHelper> {
 public:
 	WearableHelper();
 
-	static ORBClassHelper* getInstance();
+	void finalizeHelper();
 
 	ORBObject* instantiateObject();
 
 	ORBObjectAdapter* createAdapter(ORBObjectServant* obj);
 
+	friend class SingletonWrapper<WearableHelper>;
 };
 
 #include "../TangibleObjectImplementation.h"

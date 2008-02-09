@@ -116,16 +116,14 @@ int FireworkWorldAdapter::getFireworkType() {
  *	FireworkWorldHelper
  */
 
-FireworkWorldHelper FireworkWorldHelper::instance;
-
 FireworkWorldHelper::FireworkWorldHelper() {
 	className = "FireworkWorld";
 
 	ObjectRequestBroker::instance()->registerClass(className, this);
 }
 
-ORBClassHelper* FireworkWorldHelper::getInstance() {
-		return &instance;
+void FireworkWorldHelper::finalizeHelper() {
+	FireworkWorldHelper::finalize();
 }
 
 ORBObject* FireworkWorldHelper::instantiateObject() {
@@ -133,7 +131,7 @@ ORBObject* FireworkWorldHelper::instantiateObject() {
 }
 
 ORBObjectAdapter* FireworkWorldHelper::createAdapter(ORBObjectServant* obj) {
-	ORBObjectAdapter* adapter = new FireworkWorldAdapter((FireworkWorldImplementation*)obj);
+	ORBObjectAdapter* adapter = new FireworkWorldAdapter((FireworkWorldImplementation*) obj);
 
 	ORBObjectStub* stub = new FireworkWorld(obj);
 	stub->_setORBClassName(className);
@@ -151,7 +149,7 @@ ORBObjectAdapter* FireworkWorldHelper::createAdapter(ORBObjectServant* obj) {
  */
 
 FireworkWorldServant::FireworkWorldServant(unsigned long long oid, int tp) : StaticObjectImplementation(oid, tp) {
-	_classHelper = FireworkWorldHelper::getInstance();
+	_classHelper = FireworkWorldHelper::instance();
 }
 
 FireworkWorldServant::~FireworkWorldServant() {

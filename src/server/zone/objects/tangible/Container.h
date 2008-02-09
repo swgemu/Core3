@@ -108,18 +108,17 @@ public:
 
 };
 
-class ContainerHelper : public ORBClassHelper {
-	static ContainerHelper instance;
-
+class ContainerHelper : public ORBClassHelper, public Singleton<ContainerHelper> {
 public:
 	ContainerHelper();
 
-	static ORBClassHelper* getInstance();
+	void finalizeHelper();
 
 	ORBObject* instantiateObject();
 
 	ORBObjectAdapter* createAdapter(ORBObjectServant* obj);
 
+	friend class SingletonWrapper<ContainerHelper>;
 };
 
 #include "TangibleObjectImplementation.h"

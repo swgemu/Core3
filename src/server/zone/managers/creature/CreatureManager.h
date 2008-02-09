@@ -162,18 +162,17 @@ protected:
 	string _param2_spawnCreatureGroup__int_string_string_int_float_float_int_int_;
 };
 
-class CreatureManagerHelper : public ORBClassHelper {
-	static CreatureManagerHelper instance;
-
+class CreatureManagerHelper : public ORBClassHelper, public Singleton<CreatureManagerHelper> {
 public:
 	CreatureManagerHelper();
 
-	static ORBClassHelper* getInstance();
+	void finalizeHelper();
 
 	ORBObject* instantiateObject();
 
 	ORBObjectAdapter* createAdapter(ORBObjectServant* obj);
 
+	friend class SingletonWrapper<CreatureManagerHelper>;
 };
 
 class CreatureManagerServant : public ORBObjectServant {

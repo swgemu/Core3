@@ -97,16 +97,14 @@ Packet* HairObjectAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* inv)
  *	HairObjectHelper
  */
 
-HairObjectHelper HairObjectHelper::instance;
-
 HairObjectHelper::HairObjectHelper() {
 	className = "HairObject";
 
 	ObjectRequestBroker::instance()->registerClass(className, this);
 }
 
-ORBClassHelper* HairObjectHelper::getInstance() {
-		return &instance;
+void HairObjectHelper::finalizeHelper() {
+	HairObjectHelper::finalize();
 }
 
 ORBObject* HairObjectHelper::instantiateObject() {
@@ -114,7 +112,7 @@ ORBObject* HairObjectHelper::instantiateObject() {
 }
 
 ORBObjectAdapter* HairObjectHelper::createAdapter(ORBObjectServant* obj) {
-	ORBObjectAdapter* adapter = new HairObjectAdapter((HairObjectImplementation*)obj);
+	ORBObjectAdapter* adapter = new HairObjectAdapter((HairObjectImplementation*) obj);
 
 	ORBObjectStub* stub = new HairObject(obj);
 	stub->_setORBClassName(className);
@@ -132,7 +130,7 @@ ORBObjectAdapter* HairObjectHelper::createAdapter(ORBObjectServant* obj) {
  */
 
 HairObjectServant::HairObjectServant(unsigned long long oid, int tp) : TangibleObjectImplementation(oid, tp) {
-	_classHelper = HairObjectHelper::getInstance();
+	_classHelper = HairObjectHelper::instance();
 }
 
 HairObjectServant::~HairObjectServant() {

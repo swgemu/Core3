@@ -94,6 +94,10 @@ ChatRoomImplementation::ChatRoomImplementation(ZoneServer* serv, ChatRoom* Paren
 	//parent->addSubRoom((ChatRoom*) _this);
 }
 
+ChatRoomImplementation::~ChatRoomImplementation() {
+	//subRooms.removeAll();
+}
+
 ChatRoom* ChatRoomImplementation::deploy() {
 	return (ChatRoom*) ORBObjectServant::deploy("ChatRoom", roomID);
 }

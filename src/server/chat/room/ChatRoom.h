@@ -232,18 +232,17 @@ protected:
 	string _param0_setTitle__string_;
 };
 
-class ChatRoomHelper : public ORBClassHelper {
-	static ChatRoomHelper instance;
-
+class ChatRoomHelper : public ORBClassHelper, public Singleton<ChatRoomHelper> {
 public:
 	ChatRoomHelper();
 
-	static ORBClassHelper* getInstance();
+	void finalizeHelper();
 
 	ORBObject* instantiateObject();
 
 	ORBObjectAdapter* createAdapter(ORBObjectServant* obj);
 
+	friend class SingletonWrapper<ChatRoomHelper>;
 };
 
 class ChatRoomServant : public ORBObjectServant {

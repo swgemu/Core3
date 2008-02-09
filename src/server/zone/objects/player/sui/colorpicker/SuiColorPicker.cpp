@@ -135,16 +135,14 @@ BaseMessage* SuiColorPickerAdapter::generateMessage() {
  *	SuiColorPickerHelper
  */
 
-SuiColorPickerHelper SuiColorPickerHelper::instance;
-
 SuiColorPickerHelper::SuiColorPickerHelper() {
 	className = "SuiColorPicker";
 
 	ObjectRequestBroker::instance()->registerClass(className, this);
 }
 
-ORBClassHelper* SuiColorPickerHelper::getInstance() {
-		return &instance;
+void SuiColorPickerHelper::finalizeHelper() {
+	SuiColorPickerHelper::finalize();
 }
 
 ORBObject* SuiColorPickerHelper::instantiateObject() {
@@ -152,7 +150,7 @@ ORBObject* SuiColorPickerHelper::instantiateObject() {
 }
 
 ORBObjectAdapter* SuiColorPickerHelper::createAdapter(ORBObjectServant* obj) {
-	ORBObjectAdapter* adapter = new SuiColorPickerAdapter((SuiColorPickerImplementation*)obj);
+	ORBObjectAdapter* adapter = new SuiColorPickerAdapter((SuiColorPickerImplementation*) obj);
 
 	ORBObjectStub* stub = new SuiColorPicker(obj);
 	stub->_setORBClassName(className);
@@ -170,7 +168,7 @@ ORBObjectAdapter* SuiColorPickerHelper::createAdapter(ORBObjectServant* obj) {
  */
 
 SuiColorPickerServant::SuiColorPickerServant(Player* play, unsigned int typeID, unsigned int boxtype) : SuiBoxImplementation(play, typeID, boxtype) {
-	_classHelper = SuiColorPickerHelper::getInstance();
+	_classHelper = SuiColorPickerHelper::instance();
 }
 
 SuiColorPickerServant::~SuiColorPickerServant() {

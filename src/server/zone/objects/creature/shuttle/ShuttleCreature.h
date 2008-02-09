@@ -116,18 +116,17 @@ public:
 
 };
 
-class ShuttleCreatureHelper : public ORBClassHelper {
-	static ShuttleCreatureHelper instance;
-
+class ShuttleCreatureHelper : public ORBClassHelper, public Singleton<ShuttleCreatureHelper> {
 public:
 	ShuttleCreatureHelper();
 
-	static ORBClassHelper* getInstance();
+	void finalizeHelper();
 
 	ORBObject* instantiateObject();
 
 	ORBObjectAdapter* createAdapter(ORBObjectServant* obj);
 
+	friend class SingletonWrapper<ShuttleCreatureHelper>;
 };
 
 #include "../CreatureImplementation.h"

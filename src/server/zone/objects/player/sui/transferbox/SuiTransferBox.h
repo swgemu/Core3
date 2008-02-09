@@ -98,18 +98,17 @@ protected:
 	string _param2_addOption__string_string_string_;
 };
 
-class SuiTransferBoxHelper : public ORBClassHelper {
-	static SuiTransferBoxHelper instance;
-
+class SuiTransferBoxHelper : public ORBClassHelper, public Singleton<SuiTransferBoxHelper> {
 public:
 	SuiTransferBoxHelper();
 
-	static ORBClassHelper* getInstance();
+	void finalizeHelper();
 
 	ORBObject* instantiateObject();
 
 	ORBObjectAdapter* createAdapter(ORBObjectServant* obj);
 
+	friend class SingletonWrapper<SuiTransferBoxHelper>;
 };
 
 #include "../SuiBoxImplementation.h"

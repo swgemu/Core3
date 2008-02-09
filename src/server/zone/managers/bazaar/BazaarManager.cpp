@@ -280,16 +280,14 @@ void BazaarManagerAdapter::retrieveItem(Player* player, long long objectid, long
  *	BazaarManagerHelper
  */
 
-BazaarManagerHelper BazaarManagerHelper::instance;
-
 BazaarManagerHelper::BazaarManagerHelper() {
 	className = "BazaarManager";
 
 	ObjectRequestBroker::instance()->registerClass(className, this);
 }
 
-ORBClassHelper* BazaarManagerHelper::getInstance() {
-		return &instance;
+void BazaarManagerHelper::finalizeHelper() {
+	BazaarManagerHelper::finalize();
 }
 
 ORBObject* BazaarManagerHelper::instantiateObject() {
@@ -297,7 +295,7 @@ ORBObject* BazaarManagerHelper::instantiateObject() {
 }
 
 ORBObjectAdapter* BazaarManagerHelper::createAdapter(ORBObjectServant* obj) {
-	ORBObjectAdapter* adapter = new BazaarManagerAdapter((BazaarManagerImplementation*)obj);
+	ORBObjectAdapter* adapter = new BazaarManagerAdapter((BazaarManagerImplementation*) obj);
 
 	ORBObjectStub* stub = new BazaarManager(obj);
 	stub->_setORBClassName(className);
@@ -315,7 +313,7 @@ ORBObjectAdapter* BazaarManagerHelper::createAdapter(ORBObjectServant* obj) {
  */
 
 BazaarManagerServant::BazaarManagerServant() {
-	_classHelper = BazaarManagerHelper::getInstance();
+	_classHelper = BazaarManagerHelper::instance();
 }
 
 BazaarManagerServant::~BazaarManagerServant() {

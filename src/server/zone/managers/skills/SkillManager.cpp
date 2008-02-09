@@ -56,6 +56,7 @@ which carries forward this exception.
 SkillManager::SkillManager(ProfessionManager* profManager) {
 	professionManager = profManager;
 	scr = new ScriptAttacksManager(profManager->getZoneProcessServer());
+	
 	bool load = scr->loadSkillsFile(&combatActions);
 }
 
@@ -79,8 +80,10 @@ void SkillManager::loadSkillBox(SkillBox* skillBox, PlayerImplementation* player
 	
 	player->addSkillBox(skillBox, updateClient);
 	player->addSkillPoints(skillBox->getSkillPointsRequired());
+	
 	if (skillBox->getSkillXpType().size() > 1)
 		player->addXp(skillBox->getSkillXpType(), skillBox->getSkillXpCost(), updateClient);
+	
 	loadSkillCommands(skillBox, player, updateClient);
 	loadSkillCertifications(skillBox, player, updateClient);
 	loadSkillMods(skillBox, player, updateClient);

@@ -412,16 +412,14 @@ unsigned int GroupObjectAdapter::getNewListCount(int cnt) {
  *	GroupObjectHelper
  */
 
-GroupObjectHelper GroupObjectHelper::instance;
-
 GroupObjectHelper::GroupObjectHelper() {
 	className = "GroupObject";
 
 	ObjectRequestBroker::instance()->registerClass(className, this);
 }
 
-ORBClassHelper* GroupObjectHelper::getInstance() {
-		return &instance;
+void GroupObjectHelper::finalizeHelper() {
+	GroupObjectHelper::finalize();
 }
 
 ORBObject* GroupObjectHelper::instantiateObject() {
@@ -429,7 +427,7 @@ ORBObject* GroupObjectHelper::instantiateObject() {
 }
 
 ORBObjectAdapter* GroupObjectHelper::createAdapter(ORBObjectServant* obj) {
-	ORBObjectAdapter* adapter = new GroupObjectAdapter((GroupObjectImplementation*)obj);
+	ORBObjectAdapter* adapter = new GroupObjectAdapter((GroupObjectImplementation*) obj);
 
 	ORBObjectStub* stub = new GroupObject(obj);
 	stub->_setORBClassName(className);
@@ -447,7 +445,7 @@ ORBObjectAdapter* GroupObjectHelper::createAdapter(ORBObjectServant* obj) {
  */
 
 GroupObjectServant::GroupObjectServant() : SceneObjectImplementation() {
-	_classHelper = GroupObjectHelper::getInstance();
+	_classHelper = GroupObjectHelper::instance();
 }
 
 GroupObjectServant::~GroupObjectServant() {

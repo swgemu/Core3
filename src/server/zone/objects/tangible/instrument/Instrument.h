@@ -90,18 +90,17 @@ public:
 
 };
 
-class InstrumentHelper : public ORBClassHelper {
-	static InstrumentHelper instance;
-
+class InstrumentHelper : public ORBClassHelper, public Singleton<InstrumentHelper> {
 public:
 	InstrumentHelper();
 
-	static ORBClassHelper* getInstance();
+	void finalizeHelper();
 
 	ORBObject* instantiateObject();
 
 	ORBObjectAdapter* createAdapter(ORBObjectServant* obj);
 
+	friend class SingletonWrapper<InstrumentHelper>;
 };
 
 #include "../TangibleObjectImplementation.h"

@@ -246,18 +246,17 @@ protected:
 	string _param0_setStfName__string_;
 };
 
-class ShipObjectHelper : public ORBClassHelper {
-	static ShipObjectHelper instance;
-
+class ShipObjectHelper : public ORBClassHelper, public Singleton<ShipObjectHelper> {
 public:
 	ShipObjectHelper();
 
-	static ORBClassHelper* getInstance();
+	void finalizeHelper();
 
 	ORBObject* instantiateObject();
 
 	ORBObjectAdapter* createAdapter(ORBObjectServant* obj);
 
+	friend class SingletonWrapper<ShipObjectHelper>;
 };
 
 #include "../scene/SceneObjectImplementation.h"

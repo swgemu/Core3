@@ -86,18 +86,17 @@ public:
 
 };
 
-class TravelTerminalHelper : public ORBClassHelper {
-	static TravelTerminalHelper instance;
-
+class TravelTerminalHelper : public ORBClassHelper, public Singleton<TravelTerminalHelper> {
 public:
 	TravelTerminalHelper();
 
-	static ORBClassHelper* getInstance();
+	void finalizeHelper();
 
 	ORBObject* instantiateObject();
 
 	ORBObjectAdapter* createAdapter(ORBObjectServant* obj);
 
+	friend class SingletonWrapper<TravelTerminalHelper>;
 };
 
 #include "../TerminalImplementation.h"

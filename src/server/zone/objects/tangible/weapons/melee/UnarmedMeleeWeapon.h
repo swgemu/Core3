@@ -80,18 +80,17 @@ public:
 
 };
 
-class UnarmedMeleeWeaponHelper : public ORBClassHelper {
-	static UnarmedMeleeWeaponHelper instance;
-
+class UnarmedMeleeWeaponHelper : public ORBClassHelper, public Singleton<UnarmedMeleeWeaponHelper> {
 public:
 	UnarmedMeleeWeaponHelper();
 
-	static ORBClassHelper* getInstance();
+	void finalizeHelper();
 
 	ORBObject* instantiateObject();
 
 	ORBObjectAdapter* createAdapter(ORBObjectServant* obj);
 
+	friend class SingletonWrapper<UnarmedMeleeWeaponHelper>;
 };
 
 #include "../MeleeWeaponImplementation.h"

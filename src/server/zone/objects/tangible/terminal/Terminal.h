@@ -90,18 +90,17 @@ public:
 
 };
 
-class TerminalHelper : public ORBClassHelper {
-	static TerminalHelper instance;
-
+class TerminalHelper : public ORBClassHelper, public Singleton<TerminalHelper> {
 public:
 	TerminalHelper();
 
-	static ORBClassHelper* getInstance();
+	void finalizeHelper();
 
 	ORBObject* instantiateObject();
 
 	ORBObjectAdapter* createAdapter(ORBObjectServant* obj);
 
+	friend class SingletonWrapper<TerminalHelper>;
 };
 
 #include "../TangibleObjectImplementation.h"

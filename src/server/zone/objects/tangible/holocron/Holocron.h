@@ -84,18 +84,17 @@ public:
 
 };
 
-class HolocronHelper : public ORBClassHelper {
-	static HolocronHelper instance;
-
+class HolocronHelper : public ORBClassHelper, public Singleton<HolocronHelper> {
 public:
 	HolocronHelper();
 
-	static ORBClassHelper* getInstance();
+	void finalizeHelper();
 
 	ORBObject* instantiateObject();
 
 	ORBObjectAdapter* createAdapter(ORBObjectServant* obj);
 
+	friend class SingletonWrapper<HolocronHelper>;
 };
 
 #include "../TangibleObjectImplementation.h"

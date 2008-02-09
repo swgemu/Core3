@@ -131,18 +131,17 @@ protected:
 	string _param0_despawnResource__string_long_;
 };
 
-class LocalResourceManagerHelper : public ORBClassHelper {
-	static LocalResourceManagerHelper instance;
-
+class LocalResourceManagerHelper : public ORBClassHelper, public Singleton<LocalResourceManagerHelper> {
 public:
 	LocalResourceManagerHelper();
 
-	static ORBClassHelper* getInstance();
+	void finalizeHelper();
 
 	ORBObject* instantiateObject();
 
 	ORBObjectAdapter* createAdapter(ORBObjectServant* obj);
 
+	friend class SingletonWrapper<LocalResourceManagerHelper>;
 };
 
 class LocalResourceManagerServant : public ORBObjectServant {

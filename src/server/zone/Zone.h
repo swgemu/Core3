@@ -188,18 +188,17 @@ public:
 
 };
 
-class ZoneHelper : public ORBClassHelper {
-	static ZoneHelper instance;
-
+class ZoneHelper : public ORBClassHelper, public Singleton<ZoneHelper> {
 public:
 	ZoneHelper();
 
-	static ORBClassHelper* getInstance();
+	void finalizeHelper();
 
 	ORBObject* instantiateObject();
 
 	ORBObjectAdapter* createAdapter(ORBObjectServant* obj);
 
+	friend class SingletonWrapper<ZoneHelper>;
 };
 
 class ZoneServant : public ORBObjectServant {

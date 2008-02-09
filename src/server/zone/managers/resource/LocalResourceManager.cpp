@@ -310,16 +310,14 @@ SpawnLocation* LocalResourceManagerAdapter::despawnResource(string& resourceName
  *	LocalResourceManagerHelper
  */
 
-LocalResourceManagerHelper LocalResourceManagerHelper::instance;
-
 LocalResourceManagerHelper::LocalResourceManagerHelper() {
 	className = "LocalResourceManager";
 
 	ObjectRequestBroker::instance()->registerClass(className, this);
 }
 
-ORBClassHelper* LocalResourceManagerHelper::getInstance() {
-		return &instance;
+void LocalResourceManagerHelper::finalizeHelper() {
+	LocalResourceManagerHelper::finalize();
 }
 
 ORBObject* LocalResourceManagerHelper::instantiateObject() {
@@ -327,7 +325,7 @@ ORBObject* LocalResourceManagerHelper::instantiateObject() {
 }
 
 ORBObjectAdapter* LocalResourceManagerHelper::createAdapter(ORBObjectServant* obj) {
-	ORBObjectAdapter* adapter = new LocalResourceManagerAdapter((LocalResourceManagerImplementation*)obj);
+	ORBObjectAdapter* adapter = new LocalResourceManagerAdapter((LocalResourceManagerImplementation*) obj);
 
 	ORBObjectStub* stub = new LocalResourceManager(obj);
 	stub->_setORBClassName(className);
@@ -345,7 +343,7 @@ ORBObjectAdapter* LocalResourceManagerHelper::createAdapter(ORBObjectServant* ob
  */
 
 LocalResourceManagerServant::LocalResourceManagerServant() {
-	_classHelper = LocalResourceManagerHelper::getInstance();
+	_classHelper = LocalResourceManagerHelper::instance();
 }
 
 LocalResourceManagerServant::~LocalResourceManagerServant() {

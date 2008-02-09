@@ -108,18 +108,17 @@ protected:
 	string _param0_remove__string_;
 };
 
-class PlayerMapHelper : public ORBClassHelper {
-	static PlayerMapHelper instance;
-
+class PlayerMapHelper : public ORBClassHelper, public Singleton<PlayerMapHelper> {
 public:
 	PlayerMapHelper();
 
-	static ORBClassHelper* getInstance();
+	void finalizeHelper();
 
 	ORBObject* instantiateObject();
 
 	ORBObjectAdapter* createAdapter(ORBObjectServant* obj);
 
+	friend class SingletonWrapper<PlayerMapHelper>;
 };
 
 class PlayerMapServant : public ORBObjectServant {

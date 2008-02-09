@@ -104,18 +104,17 @@ public:
 
 };
 
-class CellObjectHelper : public ORBClassHelper {
-	static CellObjectHelper instance;
-
+class CellObjectHelper : public ORBClassHelper, public Singleton<CellObjectHelper> {
 public:
 	CellObjectHelper();
 
-	static ORBClassHelper* getInstance();
+	void finalizeHelper();
 
 	ORBObject* instantiateObject();
 
 	ORBObjectAdapter* createAdapter(ORBObjectServant* obj);
 
+	friend class SingletonWrapper<CellObjectHelper>;
 };
 
 #include "../../scene/SceneObjectImplementation.h"

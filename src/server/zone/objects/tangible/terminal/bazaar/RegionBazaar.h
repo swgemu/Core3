@@ -110,18 +110,17 @@ protected:
 	string _param0_setRegion__string_;
 };
 
-class RegionBazaarHelper : public ORBClassHelper {
-	static RegionBazaarHelper instance;
-
+class RegionBazaarHelper : public ORBClassHelper, public Singleton<RegionBazaarHelper> {
 public:
 	RegionBazaarHelper();
 
-	static ORBClassHelper* getInstance();
+	void finalizeHelper();
 
 	ORBObject* instantiateObject();
 
 	ORBObjectAdapter* createAdapter(ORBObjectServant* obj);
 
+	friend class SingletonWrapper<RegionBazaarHelper>;
 };
 
 #include "../../../scene/SceneObjectImplementation.h"

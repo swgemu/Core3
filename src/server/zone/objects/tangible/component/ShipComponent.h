@@ -154,18 +154,17 @@ public:
 
 };
 
-class ShipComponentHelper : public ORBClassHelper {
-	static ShipComponentHelper instance;
-
+class ShipComponentHelper : public ORBClassHelper, public Singleton<ShipComponentHelper> {
 public:
 	ShipComponentHelper();
 
-	static ORBClassHelper* getInstance();
+	void finalizeHelper();
 
 	ORBObject* instantiateObject();
 
 	ORBObjectAdapter* createAdapter(ORBObjectServant* obj);
 
+	friend class SingletonWrapper<ShipComponentHelper>;
 };
 
 #include "../TangibleObjectImplementation.h"

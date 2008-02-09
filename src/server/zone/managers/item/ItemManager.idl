@@ -43,7 +43,8 @@ which carries forward this exception.
 */
 
 import "../../objects/tangible/TangibleObject";
-import "../../objects/tangible/Weapons/Weapon";
+
+import "../../objects/tangible/weapons/Weapon";
 import "../../objects/tangible/wearables/Armor";
 
 import "../../objects/player/Player";

@@ -296,16 +296,14 @@ unsigned int IntangibleObjectAdapter::getStatus() {
  *	IntangibleObjectHelper
  */
 
-IntangibleObjectHelper IntangibleObjectHelper::instance;
-
 IntangibleObjectHelper::IntangibleObjectHelper() {
 	className = "IntangibleObject";
 
 	ObjectRequestBroker::instance()->registerClass(className, this);
 }
 
-ORBClassHelper* IntangibleObjectHelper::getInstance() {
-		return &instance;
+void IntangibleObjectHelper::finalizeHelper() {
+	IntangibleObjectHelper::finalize();
 }
 
 ORBObject* IntangibleObjectHelper::instantiateObject() {
@@ -313,7 +311,7 @@ ORBObject* IntangibleObjectHelper::instantiateObject() {
 }
 
 ORBObjectAdapter* IntangibleObjectHelper::createAdapter(ORBObjectServant* obj) {
-	ORBObjectAdapter* adapter = new IntangibleObjectAdapter((IntangibleObjectImplementation*)obj);
+	ORBObjectAdapter* adapter = new IntangibleObjectAdapter((IntangibleObjectImplementation*) obj);
 
 	ORBObjectStub* stub = new IntangibleObject(obj);
 	stub->_setORBClassName(className);
@@ -331,7 +329,7 @@ ORBObjectAdapter* IntangibleObjectHelper::createAdapter(ORBObjectServant* obj) {
  */
 
 IntangibleObjectServant::IntangibleObjectServant(unsigned long long oid) : SceneObjectImplementation(oid) {
-	_classHelper = IntangibleObjectHelper::getInstance();
+	_classHelper = IntangibleObjectHelper::instance();
 }
 
 IntangibleObjectServant::~IntangibleObjectServant() {

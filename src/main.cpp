@@ -44,23 +44,50 @@ which carries forward this exception.
 
 #include "server/ServerCore.h"
 
-//#include "system/lang/SignalException.h"
+class Test {
+	int value;
+	
+public:
+	Test(int val) {
+		value = val;
+	}
+	
+	int getValue() {
+		return value;
+	}
+	
+};
 
 int main(int argc, char* argv[]) {
+	/*Vector<Test*> vector;
+	
+	for (int i = 0; i < 10; ++i) {
+		vector.add(System::random(i), new Test(i));
+	}
+	
+	vector.add(System::random(10), new Test(10));
+	
+	for (int j = 0; j < 11; ++j) {
+		Test* obj = vector.get(j);
+		cout << obj->getValue() << "\n";
+	}
+	
+	return 1;*/
+	
+	Engine::initialize("core3.log");
+	
 	try {
-		Logger::setGlobalFileLogger("core3.log");
-		
 		ServerCore core;
 		core.init();
 		
 		core.run();
-		
-		Logger::closeGlobalFileLogger();
 	} catch (Exception& e) {
 		cout << e.getMessage() << "\n";
 		e.printStackTrace();
 	} catch (...) {
 		cout << "unreported exception caught main()\n";
 	}
+	
+	Engine::finalize();
 }
 

@@ -127,18 +127,17 @@ protected:
 	string _param0_setPromptText__string_;
 };
 
-class SuiBoxHelper : public ORBClassHelper {
-	static SuiBoxHelper instance;
-
+class SuiBoxHelper : public ORBClassHelper, public Singleton<SuiBoxHelper> {
 public:
 	SuiBoxHelper();
 
-	static ORBClassHelper* getInstance();
+	void finalizeHelper();
 
 	ORBObject* instantiateObject();
 
 	ORBObjectAdapter* createAdapter(ORBObjectServant* obj);
 
+	friend class SingletonWrapper<SuiBoxHelper>;
 };
 
 class SuiBoxServant : public ORBObjectServant {

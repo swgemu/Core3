@@ -459,18 +459,17 @@ protected:
 	string _param0_setContainer__string_;
 };
 
-class ResourceTemplateHelper : public ORBClassHelper {
-	static ResourceTemplateHelper instance;
-
+class ResourceTemplateHelper : public ORBClassHelper, public Singleton<ResourceTemplateHelper> {
 public:
 	ResourceTemplateHelper();
 
-	static ORBClassHelper* getInstance();
+	void finalizeHelper();
 
 	ORBObject* instantiateObject();
 
 	ORBObjectAdapter* createAdapter(ORBObjectServant* obj);
 
+	friend class SingletonWrapper<ResourceTemplateHelper>;
 };
 
 class ResourceTemplateServant : public ORBObjectServant {

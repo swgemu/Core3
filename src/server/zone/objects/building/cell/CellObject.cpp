@@ -200,16 +200,14 @@ int CellObjectAdapter::getChildrenSize() {
  *	CellObjectHelper
  */
 
-CellObjectHelper CellObjectHelper::instance;
-
 CellObjectHelper::CellObjectHelper() {
 	className = "CellObject";
 
 	ObjectRequestBroker::instance()->registerClass(className, this);
 }
 
-ORBClassHelper* CellObjectHelper::getInstance() {
-		return &instance;
+void CellObjectHelper::finalizeHelper() {
+	CellObjectHelper::finalize();
 }
 
 ORBObject* CellObjectHelper::instantiateObject() {
@@ -217,7 +215,7 @@ ORBObject* CellObjectHelper::instantiateObject() {
 }
 
 ORBObjectAdapter* CellObjectHelper::createAdapter(ORBObjectServant* obj) {
-	ORBObjectAdapter* adapter = new CellObjectAdapter((CellObjectImplementation*)obj);
+	ORBObjectAdapter* adapter = new CellObjectAdapter((CellObjectImplementation*) obj);
 
 	ORBObjectStub* stub = new CellObject(obj);
 	stub->_setORBClassName(className);
@@ -235,7 +233,7 @@ ORBObjectAdapter* CellObjectHelper::createAdapter(ORBObjectServant* obj) {
  */
 
 CellObjectServant::CellObjectServant(unsigned long long oid) : SceneObjectImplementation(oid) {
-	_classHelper = CellObjectHelper::getInstance();
+	_classHelper = CellObjectHelper::instance();
 }
 
 CellObjectServant::~CellObjectServant() {

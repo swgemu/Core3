@@ -99,6 +99,8 @@ public:
 
 	bool isClothing();
 
+	bool isAttachment();
+
 	bool isResource();
 
 	bool isTicket();
@@ -139,7 +141,13 @@ public:
 
 	int getCondition();
 
+	void setAttributes(string& attributestring);
+
+	string& getAttributes();
+
 protected:
+	string _return_getAttributes;
+
 	string _return_getTemplateName;
 
 	string _return_getTemplateTypeName;
@@ -184,6 +192,8 @@ public:
 
 	bool isClothing();
 
+	bool isAttachment();
+
 	bool isResource();
 
 	bool isTicket();
@@ -224,23 +234,27 @@ public:
 
 	int getCondition();
 
+	void setAttributes(string& attributestring);
+
+	string& getAttributes();
+
 protected:
 	string _param0_setCustomizationString__string_;
 	string _param0_getCustomizationString__string_;
+	string _param0_setAttributes__string_;
 };
 
-class TangibleObjectHelper : public ORBClassHelper {
-	static TangibleObjectHelper instance;
-
+class TangibleObjectHelper : public ORBClassHelper, public Singleton<TangibleObjectHelper> {
 public:
 	TangibleObjectHelper();
 
-	static ORBClassHelper* getInstance();
+	void finalizeHelper();
 
 	ORBObject* instantiateObject();
 
 	ORBObjectAdapter* createAdapter(ORBObjectServant* obj);
 
+	friend class SingletonWrapper<TangibleObjectHelper>;
 };
 
 #include "../scene/SceneObjectImplementation.h"

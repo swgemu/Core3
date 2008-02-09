@@ -86,18 +86,17 @@ public:
 
 };
 
-class CreatureGroupHelper : public ORBClassHelper {
-	static CreatureGroupHelper instance;
-
+class CreatureGroupHelper : public ORBClassHelper, public Singleton<CreatureGroupHelper> {
 public:
 	CreatureGroupHelper();
 
-	static ORBClassHelper* getInstance();
+	void finalizeHelper();
 
 	ORBObject* instantiateObject();
 
 	ORBObjectAdapter* createAdapter(ORBObjectServant* obj);
 
+	friend class SingletonWrapper<CreatureGroupHelper>;
 };
 
 class CreatureGroupServant : public ORBObjectServant {

@@ -6158,16 +6158,14 @@ bool CreatureObjectAdapter::verifyBankCredits(int creditsToRemove) {
  *	CreatureObjectHelper
  */
 
-CreatureObjectHelper CreatureObjectHelper::instance;
-
 CreatureObjectHelper::CreatureObjectHelper() {
 	className = "CreatureObject";
 
 	ObjectRequestBroker::instance()->registerClass(className, this);
 }
 
-ORBClassHelper* CreatureObjectHelper::getInstance() {
-		return &instance;
+void CreatureObjectHelper::finalizeHelper() {
+	CreatureObjectHelper::finalize();
 }
 
 ORBObject* CreatureObjectHelper::instantiateObject() {
@@ -6175,7 +6173,7 @@ ORBObject* CreatureObjectHelper::instantiateObject() {
 }
 
 ORBObjectAdapter* CreatureObjectHelper::createAdapter(ORBObjectServant* obj) {
-	ORBObjectAdapter* adapter = new CreatureObjectAdapter((CreatureObjectImplementation*)obj);
+	ORBObjectAdapter* adapter = new CreatureObjectAdapter((CreatureObjectImplementation*) obj);
 
 	ORBObjectStub* stub = new CreatureObject(obj);
 	stub->_setORBClassName(className);
@@ -6193,7 +6191,7 @@ ORBObjectAdapter* CreatureObjectHelper::createAdapter(ORBObjectServant* obj) {
  */
 
 CreatureObjectServant::CreatureObjectServant(unsigned long long oid) : SceneObjectImplementation(oid) {
-	_classHelper = CreatureObjectHelper::getInstance();
+	_classHelper = CreatureObjectHelper::instance();
 }
 
 CreatureObjectServant::~CreatureObjectServant() {

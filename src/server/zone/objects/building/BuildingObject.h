@@ -138,18 +138,17 @@ public:
 
 };
 
-class BuildingObjectHelper : public ORBClassHelper {
-	static BuildingObjectHelper instance;
-
+class BuildingObjectHelper : public ORBClassHelper, public Singleton<BuildingObjectHelper> {
 public:
 	BuildingObjectHelper();
 
-	static ORBClassHelper* getInstance();
+	void finalizeHelper();
 
 	ORBObject* instantiateObject();
 
 	ORBObjectAdapter* createAdapter(ORBObjectServant* obj);
 
+	friend class SingletonWrapper<BuildingObjectHelper>;
 };
 
 #include "../scene/SceneObjectImplementation.h"

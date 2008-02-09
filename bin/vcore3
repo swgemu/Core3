@@ -1,0 +1,2 @@
+rm log.txt*
+valgrind --tool=memcheck --leak-check=summary --show-reachable=yes  ./core3

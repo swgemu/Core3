@@ -136,16 +136,14 @@ void RangedWeaponAdapter::setRange(int rng) {
  *	RangedWeaponHelper
  */
 
-RangedWeaponHelper RangedWeaponHelper::instance;
-
 RangedWeaponHelper::RangedWeaponHelper() {
 	className = "RangedWeapon";
 
 	ObjectRequestBroker::instance()->registerClass(className, this);
 }
 
-ORBClassHelper* RangedWeaponHelper::getInstance() {
-		return &instance;
+void RangedWeaponHelper::finalizeHelper() {
+	RangedWeaponHelper::finalize();
 }
 
 ORBObject* RangedWeaponHelper::instantiateObject() {
@@ -153,7 +151,7 @@ ORBObject* RangedWeaponHelper::instantiateObject() {
 }
 
 ORBObjectAdapter* RangedWeaponHelper::createAdapter(ORBObjectServant* obj) {
-	ORBObjectAdapter* adapter = new RangedWeaponAdapter((RangedWeaponImplementation*)obj);
+	ORBObjectAdapter* adapter = new RangedWeaponAdapter((RangedWeaponImplementation*) obj);
 
 	ORBObjectStub* stub = new RangedWeapon(obj);
 	stub->_setORBClassName(className);
@@ -171,11 +169,11 @@ ORBObjectAdapter* RangedWeaponHelper::createAdapter(ORBObjectServant* obj) {
  */
 
 RangedWeaponServant::RangedWeaponServant(unsigned long long objid, unsigned int tempcrc, const unicode& n, const string& tempn, bool eqp, int tp, int cat) : WeaponImplementation(objid, tempcrc, n, tempn, eqp, tp, cat) {
-	_classHelper = RangedWeaponHelper::getInstance();
+	_classHelper = RangedWeaponHelper::instance();
 }
 
 RangedWeaponServant::RangedWeaponServant(CreatureObject* creature, const string& temp, const unicode& n, const string& tempn, bool eqp, int tp, int cat) : WeaponImplementation(creature, temp, n, tempn, eqp, tp, cat) {
-	_classHelper = RangedWeaponHelper::getInstance();
+	_classHelper = RangedWeaponHelper::instance();
 }
 
 RangedWeaponServant::~RangedWeaponServant() {

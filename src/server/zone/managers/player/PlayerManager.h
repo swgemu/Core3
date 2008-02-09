@@ -158,18 +158,17 @@ protected:
 	string _param0_getPlayer__string_;
 };
 
-class PlayerManagerHelper : public ORBClassHelper {
-	static PlayerManagerHelper instance;
-
+class PlayerManagerHelper : public ORBClassHelper, public Singleton<PlayerManagerHelper> {
 public:
 	PlayerManagerHelper();
 
-	static ORBClassHelper* getInstance();
+	void finalizeHelper();
 
 	ORBObject* instantiateObject();
 
 	ORBObjectAdapter* createAdapter(ORBObjectServant* obj);
 
+	friend class SingletonWrapper<PlayerManagerHelper>;
 };
 
 class PlayerManagerServant : public ORBObjectServant {

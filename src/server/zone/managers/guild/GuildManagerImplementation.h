@@ -64,6 +64,8 @@ class GuildManagerImplementation : public GuildManagerServant, public Mutex {
 public:
 	GuildManagerImplementation(ZoneServer* serv);
 	
+	~GuildManagerImplementation();
+	
 	void load();
 
 	bool createGuild(string& tag, string& name);
@@ -73,6 +75,8 @@ public:
 	
 	bool removeGuild(string& tag);
 	bool removeGuild(int gid, bool doLock = true); 
+	
+	void removeGuilds();
 	
 	void removePlayersFromGuild(int gid);
 	

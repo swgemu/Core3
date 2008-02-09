@@ -235,18 +235,17 @@ protected:
 	string _param0_setContainerFile__string_;
 };
 
-class ResourceContainerHelper : public ORBClassHelper {
-	static ResourceContainerHelper instance;
-
+class ResourceContainerHelper : public ORBClassHelper, public Singleton<ResourceContainerHelper> {
 public:
 	ResourceContainerHelper();
 
-	static ORBClassHelper* getInstance();
+	void finalizeHelper();
 
 	ORBObject* instantiateObject();
 
 	ORBObjectAdapter* createAdapter(ORBObjectServant* obj);
 
+	friend class SingletonWrapper<ResourceContainerHelper>;
 };
 
 #include "../TangibleObjectImplementation.h"

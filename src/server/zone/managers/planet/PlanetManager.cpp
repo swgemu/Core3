@@ -296,16 +296,14 @@ unsigned long long PlanetManagerAdapter::getLandingTime() {
  *	PlanetManagerHelper
  */
 
-PlanetManagerHelper PlanetManagerHelper::instance;
-
 PlanetManagerHelper::PlanetManagerHelper() {
 	className = "PlanetManager";
 
 	ObjectRequestBroker::instance()->registerClass(className, this);
 }
 
-ORBClassHelper* PlanetManagerHelper::getInstance() {
-		return &instance;
+void PlanetManagerHelper::finalizeHelper() {
+	PlanetManagerHelper::finalize();
 }
 
 ORBObject* PlanetManagerHelper::instantiateObject() {
@@ -313,7 +311,7 @@ ORBObject* PlanetManagerHelper::instantiateObject() {
 }
 
 ORBObjectAdapter* PlanetManagerHelper::createAdapter(ORBObjectServant* obj) {
-	ORBObjectAdapter* adapter = new PlanetManagerAdapter((PlanetManagerImplementation*)obj);
+	ORBObjectAdapter* adapter = new PlanetManagerAdapter((PlanetManagerImplementation*) obj);
 
 	ORBObjectStub* stub = new PlanetManager(obj);
 	stub->_setORBClassName(className);
@@ -331,7 +329,7 @@ ORBObjectAdapter* PlanetManagerHelper::createAdapter(ORBObjectServant* obj) {
  */
 
 PlanetManagerServant::PlanetManagerServant() {
-	_classHelper = PlanetManagerHelper::getInstance();
+	_classHelper = PlanetManagerHelper::instance();
 }
 
 PlanetManagerServant::~PlanetManagerServant() {

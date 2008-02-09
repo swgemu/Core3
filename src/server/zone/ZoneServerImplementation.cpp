@@ -104,20 +104,18 @@ ZoneServerImplementation::ZoneServerImplementation(int processingThreads) :
 }
 
 ZoneServerImplementation::~ZoneServerImplementation() {
-	if (phandler != NULL)
-		delete phandler; 
+	if (phandler != NULL) {
+		delete phandler;
+		phandler = NULL;
+	}
 
-	/*if (processors != NULL)
-		delete processors;*/
-
-	/*delete chatManager;
-	delete combatManager;
-
-	delete playerManager;
-	delete professionManager;*/
-	//delete userManager;
-			
-	delete objectManager; 
+	if (processor != NULL) {
+		delete processor;
+		processor = NULL;
+	}
+	
+	delete objectManager;
+	objectManager = NULL;
 }
 
 void ZoneServerImplementation::init() {
@@ -133,14 +131,22 @@ void ZoneServerImplementation::init() {
 	for (int i = 0; i < 50; ++i) {
 		ZoneImplementation* zoneImpl = new ZoneImplementation(_this, processor, i);
 		
-		stringstream Name;
-		Name << "Zone" << i;
+		stringstream zname;
+		zname << "Zone" << i;
 		
-		Zone* zone = (Zone*) ObjectRequestBroker::instance()->deploy(Name.str(), zoneImpl);
+		Zone* zone = (Zone*) ObjectRequestBroker::instance()->deploy(zname.str(), zoneImpl);
 		zone->startManagers();
 		
 		zones.add(zone);
 	}
+
+	userManager = NULL;
+	itemManager = NULL;
+	playerManager = NULL;
+	guildManager = NULL;
+	resourceManager = NULL;
+	bazaarManager = NULL;
+	chatManager = NULL;
 	
 	startManagers();
 
@@ -164,9 +170,8 @@ void ZoneServerImplementation::startManagers() {
 	guildManager->load();
 	playerManager->setGuildManager(guildManager);
 
-	/*ResourceManagerImplementation* resImpl = new ResourceManagerImplementation(_this, processor);
-	resourceManager = (ResourceManager*) resImpl->deploy("ResourceManager");*/
-	resourceManager = NULL;
+	//ResourceManagerImplementation* resImpl = new ResourceManagerImplementation(_this, processor);
+	//resourceManager = (ResourceManager*) resImpl->deploy("ResourceManager");
 	
 	BazaarManagerImplementation* bazImpl = new BazaarManagerImplementation(_this, processor);
 	bazaarManager = (BazaarManager*) bazImpl->deploy("BazaarManager");
@@ -178,31 +183,96 @@ void ZoneServerImplementation::startManagers() {
 void ZoneServerImplementation::run() {
 	scheduler->start();
 	
+	processor->start();
+	
 	receiveMessages();
 }
 
 void ZoneServerImplementation::shutdown() {
-	chatManager->broadcastMessage("Server is shutting down in 10 seconds..");
+	if (chatManager != NULL)
+		chatManager->broadcastMessage("Server is shutting down in 10 seconds..");
 	
-	Thread::sleepMili(10000);
+	Thread::sleepMili(1000);
 
 	stop();
 
-	if (resourceManager != NULL)
-		resourceManager->stop();
+	processor->stop();
+
+	stopManagers();
 	
 	for (int i = 0; i < 50; ++i) {
 		Zone* zone = zones.get(i);
 		zone->stopManagers();
+		
+		zone->undeploy();
+		delete zone;
 	}
 
 	zones.removeAll();
-	
-	processor->stop();
 
 	printInfo(true);
-		
+	
 	scheduler->stop();
+	
+	ZoneServer* zoneServer = _this;
+	zoneServer->undeploy();
+	
+	delete zoneServer;
+}
+
+void ZoneServerImplementation::stopManagers() {
+	info("unloading managers..");
+
+	if (userManager != NULL) {
+		userManager->undeploy();
+		
+		delete userManager;
+		userManager = NULL;
+	}
+	
+	if (itemManager != NULL) {
+		itemManager->undeploy();
+		
+		delete itemManager;
+		itemManager = NULL;
+	}
+
+	if (playerManager != NULL) {
+		playerManager->undeploy();
+		
+		delete playerManager;
+		playerManager = NULL;
+	}
+
+	if (guildManager != NULL) {
+		guildManager->undeploy();
+		
+		delete guildManager;
+		guildManager = NULL;
+	}
+	
+	if (resourceManager != NULL) {
+		resourceManager->stop();
+		
+		resourceManager->undeploy();
+		
+		delete resourceManager;
+		resourceManager = NULL;
+	}
+
+	if (bazaarManager != NULL) {
+		bazaarManager->undeploy();
+		
+		delete bazaarManager;
+		bazaarManager = NULL;
+	}
+	
+	if (chatManager != NULL) {
+		chatManager->undeploy();
+		
+		delete chatManager;
+		chatManager = NULL;
+	}
 }
 
 ServiceClient* ZoneServerImplementation::createConnection(Socket* sock, SocketAddress& addr) {

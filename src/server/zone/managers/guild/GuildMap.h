@@ -73,6 +73,8 @@ public:
 
 	void remove(unsigned int gid);
 
+	void removeAll();
+
 	int size();
 
 protected:
@@ -96,24 +98,25 @@ public:
 
 	void remove(unsigned int gid);
 
+	void removeAll();
+
 	int size();
 
 protected:
 	string _param0_get__string_;
 };
 
-class GuildMapHelper : public ORBClassHelper {
-	static GuildMapHelper instance;
-
+class GuildMapHelper : public ORBClassHelper, public Singleton<GuildMapHelper> {
 public:
 	GuildMapHelper();
 
-	static ORBClassHelper* getInstance();
+	void finalizeHelper();
 
 	ORBObject* instantiateObject();
 
 	ORBObjectAdapter* createAdapter(ORBObjectServant* obj);
 
+	friend class SingletonWrapper<GuildMapHelper>;
 };
 
 class GuildMapServant : public ORBObjectServant {

@@ -100,18 +100,17 @@ public:
 
 };
 
-class StaticObjectHelper : public ORBClassHelper {
-	static StaticObjectHelper instance;
-
+class StaticObjectHelper : public ORBClassHelper, public Singleton<StaticObjectHelper> {
 public:
 	StaticObjectHelper();
 
-	static ORBClassHelper* getInstance();
+	void finalizeHelper();
 
 	ORBObject* instantiateObject();
 
 	ORBObjectAdapter* createAdapter(ORBObjectServant* obj);
 
+	friend class SingletonWrapper<StaticObjectHelper>;
 };
 
 #include "../scene/SceneObjectImplementation.h"

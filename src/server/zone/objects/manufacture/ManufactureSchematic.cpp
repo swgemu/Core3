@@ -95,16 +95,14 @@ Packet* ManufactureSchematicAdapter::invokeMethod(uint32 methid, ORBMethodInvoca
  *	ManufactureSchematicHelper
  */
 
-ManufactureSchematicHelper ManufactureSchematicHelper::instance;
-
 ManufactureSchematicHelper::ManufactureSchematicHelper() {
 	className = "ManufactureSchematic";
 
 	ObjectRequestBroker::instance()->registerClass(className, this);
 }
 
-ORBClassHelper* ManufactureSchematicHelper::getInstance() {
-		return &instance;
+void ManufactureSchematicHelper::finalizeHelper() {
+	ManufactureSchematicHelper::finalize();
 }
 
 ORBObject* ManufactureSchematicHelper::instantiateObject() {
@@ -112,7 +110,7 @@ ORBObject* ManufactureSchematicHelper::instantiateObject() {
 }
 
 ORBObjectAdapter* ManufactureSchematicHelper::createAdapter(ORBObjectServant* obj) {
-	ORBObjectAdapter* adapter = new ManufactureSchematicAdapter((ManufactureSchematicImplementation*)obj);
+	ORBObjectAdapter* adapter = new ManufactureSchematicAdapter((ManufactureSchematicImplementation*) obj);
 
 	ORBObjectStub* stub = new ManufactureSchematic(obj);
 	stub->_setORBClassName(className);
@@ -130,7 +128,7 @@ ORBObjectAdapter* ManufactureSchematicHelper::createAdapter(ORBObjectServant* ob
  */
 
 ManufactureSchematicServant::ManufactureSchematicServant(unsigned long long oid) : SceneObjectImplementation(oid) {
-	_classHelper = ManufactureSchematicHelper::getInstance();
+	_classHelper = ManufactureSchematicHelper::instance();
 }
 
 ManufactureSchematicServant::~ManufactureSchematicServant() {

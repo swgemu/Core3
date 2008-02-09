@@ -90,18 +90,17 @@ public:
 
 };
 
-class SuiColorPickerHelper : public ORBClassHelper {
-	static SuiColorPickerHelper instance;
-
+class SuiColorPickerHelper : public ORBClassHelper, public Singleton<SuiColorPickerHelper> {
 public:
 	SuiColorPickerHelper();
 
-	static ORBClassHelper* getInstance();
+	void finalizeHelper();
 
 	ORBObject* instantiateObject();
 
 	ORBObjectAdapter* createAdapter(ORBObjectServant* obj);
 
+	friend class SingletonWrapper<SuiColorPickerHelper>;
 };
 
 #include "../SuiBoxImplementation.h"
