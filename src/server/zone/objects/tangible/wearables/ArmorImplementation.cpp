@@ -976,7 +976,7 @@ int ArmorImplementation::addSkillMod(int skillModType, int skillModValue) {
 			if (getSocketValue(i) == 0) {
 				setSocket(i, skillModType, skillModValue);
 				updated = true;
-				sockets--;
+				setSockets(sockets - 1);
 				return i;
 			}
 	

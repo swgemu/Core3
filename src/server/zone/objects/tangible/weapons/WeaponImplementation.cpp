@@ -173,7 +173,7 @@ void WeaponImplementation::parseItemAttributes() {
 	name = "skillMod2Value";
 	skillMod2Value = itemAttributes->getIntAttribute(name);
 	
-	name = "damagetType";
+	name = "damageType";
 	damageType = itemAttributes->getIntAttribute(name);
 	
 	name = "attackSpeed";

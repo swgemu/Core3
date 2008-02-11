@@ -1878,7 +1878,7 @@ Armor* CreatureObjectImplementation::getArmor(int type) {
 }
 
 void CreatureObjectImplementation::addInventoryItem(TangibleObject* item) {
-	if (item->isEquipped() && item->getObjectSubType() == TangibleObjectImplementation::WEAPON) {
+	if (item->isEquipped() && item->isWeapon()) {
 			item->setContainer(_this, 0x04);
 			setWeapon((Weapon*) item);
 		} else
