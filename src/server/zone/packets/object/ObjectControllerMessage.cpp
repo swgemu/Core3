@@ -560,6 +560,18 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player, Message* 
 	case (0xab559978): // attach Powerup to weapon
 //		parsePowerupDragDrop(player, pack);
 		break;
+	case (0x5FD21EB0):  // Schematic Resources
+		parseRequestDraftSlotsBatch(player, pack);
+		break;
+	case (0x9A8B385C): // Schematic Experimental Properties
+		parseRequestResourceWeightsBatch(player, pack);
+		break;
+	case (0x094AC516): // Request Crafting Session
+		parseRequestCraftingSession(player, pack);
+		break;
+	case (0x89242E02): // Select Draft Schematic
+		parseSelectDraftSchematic(player, pack);
+		break;
 	
 	default:
 		target = pack->parseLong();
@@ -1493,4 +1505,58 @@ void ObjectControllerMessage::parseResourceContainerTransfer(Player* player, Mes
     ResourceContainer* rcot = (ResourceContainer*)player->getInventoryItem(toID);
     
     rcot->transferContents(player, rcof);
+}
+
+void ObjectControllerMessage::parseRequestDraftSlotsBatch(Player* player, Message* packet) {
+	packet->shiftOffset(8);
+	
+	unicode crcAndID;
+	packet->parseUnicode(crcAndID);
+	
+	StringTokenizer tokenizer(crcAndID.c_str());
+		
+	uint32 schematicID;
+	// CHANGE THIS WHEN .getIntToken WORKS RIGHT
+	if(tokenizer.hasMoreTokens())
+		schematicID = tokenizer.getLongToken();
+		
+	//Check to see if the correct obj id is in the players vector of draft schematics
+	DraftSchematic* ds = player->getDraftSchematic(schematicID);
+	if(ds != NULL) {
+		ds->sendIngredientsToPlayer(player);
+	} else {
+		// This eles should never execute
+		player->sendSystemMessage("Draft Schematic Not Found.  Please inform Link of this error.");
+	}
+}	 
+
+
+void ObjectControllerMessage::parseRequestResourceWeightsBatch(Player* player, Message* packet) {
+	packet->shiftOffset(8);
+	
+	unicode id;
+	packet->parseUnicode(id);
+	
+	StringTokenizer tokenizer(id.c_str());
+	
+	uint32 schematicID;
+	if(tokenizer.hasMoreTokens())
+		schematicID = tokenizer.getIntToken();
+		
+	//Check to see if the correct obj id is in the players vector of draft schematics
+	DraftSchematic* ds = player->getDraftSchematic(schematicID);
+	if(ds != NULL) {
+		ds->sendExperimentalPropertiesToPlayer(player);
+	} else {
+		// This eles should never execute
+		player->sendSystemMessage("Draft Schematic Not Found.  Please inform Link of this error.");
+	}	
+}
+
+void ObjectControllerMessage::parseRequestCraftingSession(Player* player, Message* packet) {
+
+}
+	
+void ObjectControllerMessage::parseSelectDraftSchematic(Player* player, Message* packet) {
+
 }

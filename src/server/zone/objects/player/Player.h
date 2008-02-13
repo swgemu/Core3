@@ -87,6 +87,8 @@ class ChatRoom;
 
 class SuiBox;
 
+class DraftSchematic;
+
 #include "../creature/CreatureObject.h"
 
 class Player : public CreatureObject {
@@ -386,6 +388,24 @@ public:
 	int getCertificationListSize();
 
 	string& getCertification(int idx);
+
+	void sendDraftSchematics();
+
+	void addDraftSchematicsFromGroupName(const string& schematicGroupName);
+
+	void subtractDraftSchematicsFromGroupName(const string& schematicGroupName);
+
+	void addDraftSchematic(DraftSchematic* ds);
+
+	void subtractDraftSchematic(DraftSchematic* ds);
+
+	unsigned int getDraftSchematicListSize();
+
+	unsigned int getDraftSchematicUpdateCount(unsigned int count);
+
+	DraftSchematic* getDraftSchematic(unsigned int schematicID);
+
+	DraftSchematic* getDraftSchematic(int index);
 
 	bool isChangingFaction();
 
@@ -752,6 +772,24 @@ public:
 
 	string& getCertification(int idx);
 
+	void sendDraftSchematics();
+
+	void addDraftSchematicsFromGroupName(const string& schematicGroupName);
+
+	void subtractDraftSchematicsFromGroupName(const string& schematicGroupName);
+
+	void addDraftSchematic(DraftSchematic* ds);
+
+	void subtractDraftSchematic(DraftSchematic* ds);
+
+	unsigned int getDraftSchematicListSize();
+
+	unsigned int getDraftSchematicUpdateCount(unsigned int count);
+
+	DraftSchematic* getDraftSchematic(unsigned int schematicID);
+
+	DraftSchematic* getDraftSchematic(int index);
+
 	bool isChangingFaction();
 
 	Datapad* getDatapad();
@@ -821,6 +859,8 @@ protected:
 	string _param0_setRaceFileName__string_;
 	string _param0_setStartingLocation__string_;
 	string _param0_setFactionRank__string_;
+	string _param0_addDraftSchematicsFromGroupName__string_;
+	string _param0_subtractDraftSchematicsFromGroupName__string_;
 	unicode _param0_setSurveyEvent__unicode_;
 	unicode _param0_setSampleEvent__unicode_bool_;
 };

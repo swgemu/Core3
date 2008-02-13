@@ -129,9 +129,13 @@ class PlayerImplementation : public PlayerServant {
 	SkillBoxMap skillBoxes;
 	SortedVector<SkillBox*> skillBoxesToSave;
 	VectorMap<string, Certification*> certificationList;
-
 	int skillPoints;
 	
+	// Draft Schematics
+	uint32 draftSchematicUpdateCount;
+	VectorMap<uint32, DraftSchematic*> draftSchematicList;
+	
+
 	// misc
 	SortedVector<Player*> duelList;
 	CreatureObject* conversatingCreature;
@@ -453,6 +457,31 @@ public:
 	string& getCertification(int idx) {
 		return certificationList.get(idx)->getName();
 	}
+	
+	//Draft Schematics
+	
+	// Draft Schematics granted from a schematicGroupName
+	void sendDraftSchematics();
+	void addDraftSchematicsFromGroupName(const string& schematicGroupName);
+	void subtractDraftSchematicsFromGroupName(const string& schematicGroupName);
+	void addDraftSchematic(DraftSchematic* ds);
+	void subtractDraftSchematic(DraftSchematic* ds);
+	
+	uint32 getDraftSchematicListSize() {
+		return draftSchematicList.size();
+	}
+	
+	uint32 getDraftSchematicUpdateCount(uint32 count) {
+		draftSchematicUpdateCount += count;
+		return draftSchematicUpdateCount;
+	}
+	
+	// Get by key
+	DraftSchematic* getDraftSchematic(uint32 schematicID);
+	// Get by index
+	DraftSchematic* getDraftSchematic(int index);
+	uint32 getSchematicCRC(int index);
+	
 	
 	// badge methods
 	void toggleCharacterBit(uint32 bit);

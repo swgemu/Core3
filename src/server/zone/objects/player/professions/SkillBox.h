@@ -169,6 +169,10 @@ public:
 		return skillCommands.get(index);
 	}
 	
+	inline int getGrantedSchematicListSize() {
+		return skillSchematicsGranted.size();
+	}
+	
 	inline void getGrantedSchematic(string& schematic, int index) {
 		schematic = skillSchematicsGranted.get(index);
 	}

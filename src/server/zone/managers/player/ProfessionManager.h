@@ -75,6 +75,7 @@ private:
 	void loadSkillSpeciesRequired(SkillBox* skillBox, string& skillSpeciesRequired);
 	void loadSkillCommands(SkillBox* skillBox, string& skillCommands);
 	void loadSkillMods(SkillBox* skillBox, string& skillMods);
+	void loadDraftSchematics(SkillBox* skillBox, string& grantedDraftSchematics);
 	
 public:
 

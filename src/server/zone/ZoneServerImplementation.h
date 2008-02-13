@@ -60,6 +60,7 @@ class SceneObject;
 class UserManager;
 
 class PlayerManager;
+class CraftingManager;
 class ItemManager;
 class GuildManager;
 
@@ -83,6 +84,7 @@ class ZoneServerImplementation : public DatagramServiceThread, public ZoneServer
 
 	UserManager* userManager;
 	PlayerManager* playerManager;
+	CraftingManager* craftingManager;
 	ItemManager* itemManager;
 	ChatManager* chatManager;
 	GuildManager* guildManager;
@@ -164,6 +166,10 @@ public:
 	
 	inline UserManager* getUserManager() {
 		return userManager;
+	}
+	
+	inline CraftingManager* getCraftingManager() {
+		return craftingManager;
 	}
 	
 	inline ItemManager* getItemManager() {

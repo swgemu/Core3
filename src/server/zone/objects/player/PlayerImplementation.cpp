@@ -50,6 +50,7 @@ which carries forward this exception.
 
 #include "../../managers/player/PlayerManager.h"
 #include "../../managers/player/ProfessionManager.h"
+#include "../../managers/crafting/CraftingManager.h"
 #include "../../managers/item/ItemManager.h"
 #include "../../managers/combat/CombatManager.h"
 #include "../../managers/guild/GuildManager.h"
@@ -158,6 +159,10 @@ void PlayerImplementation::init() {
 	skillPoints = 0;
 	skillBoxesToSave.setInsertPlan(SortedVector<SkillBox*>::NO_DUPLICATE);
 	certificationList.setInsertPlan(SortedVector<Certification*>::NO_DUPLICATE);
+	
+	// Draft Schematics
+	draftSchematicList.setInsertPlan(SortedVector<DraftSchematic*>::NO_DUPLICATE);
+	draftSchematicUpdateCount = 0;
 	
 	//temp
 	factionRank = "Sexy Tester";
@@ -2208,6 +2213,54 @@ void PlayerImplementation::clearDuelList() {
 		CombatManager* combatManager = server->getCombatManager();
 		
 		combatManager->freeDuelList(_this);
+	}
+}
+
+// Draft Schematics
+
+void PlayerImplementation::addDraftSchematicsFromGroupName(const string& schematicGroupName) {
+	CraftingManager* craftingManager = server->getCraftingManager();
+	craftingManager->addDraftSchematicsFromGroupName(_this, schematicGroupName);
+}
+
+void PlayerImplementation::subtractDraftSchematicsFromGroupName(const string& schematicGroupName) {
+	CraftingManager* craftingManager = server->getCraftingManager();
+	craftingManager->subtractDraftSchematicsFromGroupName(_this, schematicGroupName);
+}
+
+void PlayerImplementation::addDraftSchematic(DraftSchematic* ds) {
+	draftSchematicList.put(ds->getSchematicID(), ds);
+}
+void PlayerImplementation::subtractDraftSchematic(DraftSchematic* ds) {
+	draftSchematicList.drop(ds->getSchematicID());
+}
+
+void PlayerImplementation::sendDraftSchematics() {
+	PlayerObjectDeltaMessage9* dplay9;
+
+	dplay9 = new PlayerObjectDeltaMessage9(_this->getPlayerObject());
+
+	dplay9->updateDraftSchematics();
+
+	dplay9->close();
+	sendMessage(dplay9);
+}
+
+// Get by key
+DraftSchematic* PlayerImplementation::getDraftSchematic(uint32 schematicID) {
+	if(draftSchematicList.contains(schematicID)) {
+		return draftSchematicList.get(schematicID);
+	} else {
+		return NULL;
+	}
+}
+
+// Get by index
+DraftSchematic* PlayerImplementation::getDraftSchematic(int index) {
+	if(index >= 0 && index < draftSchematicList.size()) {
+		return draftSchematicList.get(index);
+	} else {
+		return NULL;
 	}
 }
 

@@ -59,6 +59,8 @@ class GuildManager;
 
 class PlayerManager;
 
+class CraftingManager;
+
 class ItemManager;
 
 class ResourceManager;
@@ -112,6 +114,8 @@ public:
 	PlayerManager* getPlayerManager();
 
 	UserManager* getUserManager();
+
+	CraftingManager* getCraftingManager();
 
 	ItemManager* getItemManager();
 
@@ -171,6 +175,8 @@ public:
 	PlayerManager* getPlayerManager();
 
 	UserManager* getUserManager();
+
+	CraftingManager* getCraftingManager();
 
 	ItemManager* getItemManager();
 

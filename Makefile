@@ -105,6 +105,11 @@ IDL_SOURCES = server/zone/Zone.idl \
 				server/zone/objects/guild/Guild.idl \
 				server/zone/objects/building/cell/CellObject.idl \
 				server/zone/objects/building/BuildingObject.idl \
+				server/zone/managers/crafting/CraftingManager.idl \
+				server/zone/objects/draftschematic/DraftSchematic.idl \
+				server/zone/objects/draftschematic/DraftSchematicGroup.idl \
+				server/zone/objects/draftschematic/DraftSchematicIngredient.idl \
+				server/zone/objects/draftschematic/DraftSchematicExpPropGroup.idl \
 				server/zone/objects/manufacture/ManufactureSchematic.idl \
 				server/zone/objects/mission/MissionObject.idl \
 				server/zone/objects/waypoint/WaypointObject.idl \

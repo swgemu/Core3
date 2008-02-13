@@ -57,6 +57,7 @@ class SceneObject;
 
 class UserManager;
 class PlayerManager;
+class CraftingManager;
 class ItemManager;
 class GuildManager;
 class ChatManager;
@@ -113,6 +114,10 @@ public:
 	
 	inline UserManager* getUserManager() {
 		return server->getUserManager();
+	}
+	
+	inline CraftingManager* getCraftingManager() {
+		return server->getCraftingManager();
 	}
 	
 	inline ItemManager* getItemManager() {

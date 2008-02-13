@@ -50,6 +50,9 @@ which carries forward this exception.
 
 #include "managers/player/ProfessionManager.h"
 
+#include "managers/crafting/CraftingManager.h"
+#include "managers/crafting/CraftingManagerImplementation.h"
+
 #include "managers/item/ItemManager.h"
 #include "managers/item/ItemManagerImplementation.h"
 
@@ -158,6 +161,9 @@ void ZoneServerImplementation::startManagers() {
 	
 	UserManagerImplementation* userImpl = new UserManagerImplementation(_this);
 	userManager = (UserManager*) userImpl->deploy("UserManager");
+	
+	CraftingManagerImplementation* craftingImpl = new CraftingManagerImplementation(_this);
+	craftingManager = (CraftingManager*) craftingImpl->deploy("CraftingManager");
 	
 	ItemManagerImplementation* itemImpl = new ItemManagerImplementation(_this);
 	itemManager = (ItemManager*) itemImpl->deploy("ItemManager");

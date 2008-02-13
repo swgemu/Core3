@@ -74,6 +74,8 @@ import "../../../chat/room/ChatRoom";
 
 import "sui/SuiBox";
 
+import "../draftschematic/DraftSchematic";
+
 interface Player implements CreatureObject {
 	Player(unsigned long oid);
 
@@ -343,6 +345,21 @@ interface Player implements CreatureObject {
 	int getCertificationListSize();
 		
 	string getCertification(int idx);
+	
+	// Draft Schematic stuff
+	void sendDraftSchematics();
+	
+	void addDraftSchematicsFromGroupName(const string schematicGroupName);
+	void subtractDraftSchematicsFromGroupName(const string schematicGroupName);
+	void addDraftSchematic(DraftSchematic ds);
+	void subtractDraftSchematic(DraftSchematic ds);
+	
+	unsigned int getDraftSchematicListSize();	
+	unsigned int getDraftSchematicUpdateCount(unsigned int count);
+	// Get by key
+	DraftSchematic getDraftSchematic(unsigned int schematicID);
+	// Get by index
+	DraftSchematic getDraftSchematic(int index);
 	
 	boolean isChangingFaction();
 	

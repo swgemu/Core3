@@ -49,6 +49,8 @@ which carries forward this exception.
 
 #include "../../objects/player/PlayerObjectImplementation.h"
 
+#include "../../objects/draftschematic/DraftSchematic.h"
+
 class PlayerObjectMessage9 : public BaseLineMessage {
 public:
 	PlayerObjectMessage9(PlayerObjectImplementation* play)
@@ -64,8 +66,7 @@ public:
 		insertLong(0);
 
 		// datapad draft schematics
-		insertInt(0);
-		insertInt(0);
+		insertDraftSchematics(play);
 
 		// crafting?		
 		insertInt(0);
@@ -103,7 +104,20 @@ public:
 		
 		setSize();
 	}
-
+	
+	void insertDraftSchematics(PlayerObjectImplementation* play) {
+		uint32 dsListSize = play->player->getDraftSchematicListSize();
+		uint32 dsUpdateCount = play->player->getDraftSchematicUpdateCount(0);
+		
+		insertInt(dsListSize);
+		insertInt(dsUpdateCount);
+		
+		for (uint32 i = 0; i < dsListSize; i++) {
+			insertInt(play->player->getDraftSchematic(i)->getSchematicCRC());
+			insertInt(play->player->getDraftSchematic(i)->getSchematicID());
+		}
+	}
+	
 	void insertSkills(PlayerObjectImplementation* play) {
 		int certSize = play->player->getCertificationListSize();
 		int skillsSize = play->player->getCreatureSkillsSize();

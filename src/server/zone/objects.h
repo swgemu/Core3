@@ -141,6 +141,15 @@ which carries forward this exception.
 #include "objects/intangible/IntangibleObject.h"
 #include "objects/intangible/IntangibleObjectImplementation.h"
 
+#include "objects/draftschematic/DraftSchematic.h"
+#include "objects/draftschematic/DraftSchematicImplementation.h"
+#include "objects/draftschematic/DraftSchematicGroup.h"
+#include "objects/draftschematic/DraftSchematicGroupImplementation.h"
+#include "objects/draftschematic/DraftSchematicIngredient.h"
+#include "objects/draftschematic/DraftSchematicIngredientImplementation.h"
+#include "objects/draftschematic/DraftSchematicExpPropGroup.h"
+#include "objects/draftschematic/DraftSchematicExpPropGroupImplementation.h"
+
 #include "objects/manufacture/ManufactureSchematic.h"
 #include "objects/manufacture/ManufactureSchematicImplementation.h"
 

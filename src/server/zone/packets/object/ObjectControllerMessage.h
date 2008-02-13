@@ -134,6 +134,14 @@ public:
 	static void parseDismount(Player* player, Message* pack);
 	
 	static void parseTip(Player* player, Message* pack, PlayerManager* playerManager);
+	
+	// Schematics
+	static void parseRequestDraftSlotsBatch(Player* player, Message* pack);
+	static void parseRequestResourceWeightsBatch(Player* player, Message* pack);
+	
+	// Crafting
+	static void parseRequestCraftingSession(Player* player, Message* pack);
+	static void parseSelectDraftSchematic(Player* player, Message* pack);
 };
 
 #endif /*OBJECTCONTROLLERMESSAGE_H_*/

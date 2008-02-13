@@ -117,6 +117,10 @@ core3_IDLS =	server/zone/Zone.cpp \
 		server/zone/objects/guild/Guild.cpp \
 		server/zone/objects/building/cell/CellObject.cpp \
 		server/zone/objects/building/BuildingObject.cpp \
+		server/zone/objects/draftschematic/DraftSchematic.cpp \
+		server/zone/objects/draftschematic/DraftSchematicGroup.cpp \
+		server/zone/objects/draftschematic/DraftSchematicIngredient.cpp \
+		server/zone/objects/draftschematic/DraftSchematicExpPropGroup.cpp \
 		server/zone/objects/manufacture/ManufactureSchematic.cpp \
 		server/zone/objects/mission/MissionObject.cpp \
 		server/zone/objects/waypoint/WaypointObject.cpp \
@@ -126,6 +130,7 @@ core3_IDLS =	server/zone/Zone.cpp \
 		server/zone/managers/guild/GuildManager.cpp \
 		server/zone/managers/player/PlayerMap.cpp \
 		server/zone/managers/player/PlayerManager.cpp \
+		server/zone/managers/crafting/CraftingManager.cpp \
 		server/zone/managers/creature/CreatureManager.cpp \
 		server/zone/managers/item/ItemManager.cpp \
 		server/zone/managers/user/UserManager.cpp \

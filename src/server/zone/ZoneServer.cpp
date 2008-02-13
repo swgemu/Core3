@@ -54,6 +54,8 @@ which carries forward this exception.
 
 #include "managers/player/PlayerManager.h"
 
+#include "managers/crafting/CraftingManager.h"
+
 #include "managers/item/ItemManager.h"
 
 #include "managers/resource/ResourceManager.h"
@@ -296,12 +298,24 @@ UserManager* ZoneServer::getUserManager() {
 		return ((ZoneServerImplementation*) _impl)->getUserManager();
 }
 
-ItemManager* ZoneServer::getItemManager() {
+CraftingManager* ZoneServer::getCraftingManager() {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
 		ORBMethodInvocation invocation(this, 22);
+
+		return (CraftingManager*) invocation.executeWithObjectReturn();
+	} else
+		return ((ZoneServerImplementation*) _impl)->getCraftingManager();
+}
+
+ItemManager* ZoneServer::getItemManager() {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 23);
 
 		return (ItemManager*) invocation.executeWithObjectReturn();
 	} else
@@ -313,7 +327,7 @@ ResourceManager* ZoneServer::getResourceManager() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 23);
+		ORBMethodInvocation invocation(this, 24);
 
 		return (ResourceManager*) invocation.executeWithObjectReturn();
 	} else
@@ -325,7 +339,7 @@ BazaarManager* ZoneServer::getBazaarManager() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 24);
+		ORBMethodInvocation invocation(this, 25);
 
 		return (BazaarManager*) invocation.executeWithObjectReturn();
 	} else
@@ -337,7 +351,7 @@ Zone* ZoneServer::getZone(int index) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 25);
+		ORBMethodInvocation invocation(this, 26);
 		invocation.addSignedIntParameter(index);
 
 		return (Zone*) invocation.executeWithObjectReturn();
@@ -350,7 +364,7 @@ string& ZoneServer::getServerName() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 26);
+		ORBMethodInvocation invocation(this, 27);
 
 		invocation.executeWithAsciiReturn(_return_getServerName);
 		return _return_getServerName;
@@ -363,7 +377,7 @@ int ZoneServer::getConnectionCount() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 27);
+		ORBMethodInvocation invocation(this, 28);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -375,7 +389,7 @@ unsigned long long ZoneServer::getNextCreatureID(bool doLock) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 28);
+		ORBMethodInvocation invocation(this, 29);
 		invocation.addBooleanParameter(doLock);
 
 		return invocation.executeWithUnsignedLongReturn();
@@ -443,24 +457,27 @@ Packet* ZoneServerAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* inv)
 		resp->insertLong(getUserManager()->_getORBObjectID());
 		break;
 	case 22:
-		resp->insertLong(getItemManager()->_getORBObjectID());
+		resp->insertLong(getCraftingManager()->_getORBObjectID());
 		break;
 	case 23:
-		resp->insertLong(getResourceManager()->_getORBObjectID());
+		resp->insertLong(getItemManager()->_getORBObjectID());
 		break;
 	case 24:
-		resp->insertLong(getBazaarManager()->_getORBObjectID());
+		resp->insertLong(getResourceManager()->_getORBObjectID());
 		break;
 	case 25:
-		resp->insertLong(getZone(inv->getSignedIntParameter())->_getORBObjectID());
+		resp->insertLong(getBazaarManager()->_getORBObjectID());
 		break;
 	case 26:
-		resp->insertAscii(getServerName());
+		resp->insertLong(getZone(inv->getSignedIntParameter())->_getORBObjectID());
 		break;
 	case 27:
-		resp->insertSignedInt(getConnectionCount());
+		resp->insertAscii(getServerName());
 		break;
 	case 28:
+		resp->insertSignedInt(getConnectionCount());
+		break;
+	case 29:
 		resp->insertLong(getNextCreatureID(inv->getBooleanParameter()));
 		break;
 	default:
@@ -532,6 +549,10 @@ PlayerManager* ZoneServerAdapter::getPlayerManager() {
 
 UserManager* ZoneServerAdapter::getUserManager() {
 	return ((ZoneServerImplementation*) impl)->getUserManager();
+}
+
+CraftingManager* ZoneServerAdapter::getCraftingManager() {
+	return ((ZoneServerImplementation*) impl)->getCraftingManager();
 }
 
 ItemManager* ZoneServerAdapter::getItemManager() {

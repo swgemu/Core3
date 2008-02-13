@@ -78,10 +78,12 @@ private:
 	void loadSkillCommands(SkillBox* skillBox, PlayerImplementation* player, bool updateClient);
 	void loadSkillMods(SkillBox* skillBox, PlayerImplementation* player, bool updateClient);
 	void loadSkillCertifications(SkillBox* skillBox, PlayerImplementation* player, bool updateClient);
+	void loadDraftSchematics(SkillBox* skillBox, PlayerImplementation* player, bool updateClient);
 	
 	void removeSkillCommands(SkillBox* skillBox, PlayerImplementation* player, bool updateClient);
 	void removeSkillMods(SkillBox* skillBox, PlayerImplementation* player, bool updateClient);
 	void removeSkillCertifications(SkillBox* skillBox, PlayerImplementation* player, bool updateClient);
+	void removeGrantedDraftSchematics(SkillBox* skillBox, PlayerImplementation* player, bool updateClient);
 };
 
 #endif

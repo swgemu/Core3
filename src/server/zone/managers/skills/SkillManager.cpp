@@ -87,6 +87,7 @@ void SkillManager::loadSkillBox(SkillBox* skillBox, PlayerImplementation* player
 	loadSkillCommands(skillBox, player, updateClient);
 	loadSkillCertifications(skillBox, player, updateClient);
 	loadSkillMods(skillBox, player, updateClient);
+	loadDraftSchematics(skillBox, player, updateClient);
 	
 	if (!loadRequirements)
 		return;
@@ -126,6 +127,21 @@ void SkillManager::loadSkillMods(SkillBox* skillBox, PlayerImplementation* playe
 	}
 }
 
+void SkillManager::loadDraftSchematics(SkillBox* skillBox, PlayerImplementation* player, bool updateClient) {
+	if (player == NULL || skillBox == NULL)
+		return;
+		
+	for(int i = 0; i < skillBox->getGrantedSchematicListSize(); i++) {
+		
+		string schematicGroupName = "";
+		skillBox->getGrantedSchematic(schematicGroupName, i);
+		player->addDraftSchematicsFromGroupName(schematicGroupName);
+	}
+	
+	if(updateClient)
+		player->sendDraftSchematics();
+}
+
 void SkillManager::removeSkillBox(SkillBox* skillBox, PlayerImplementation* player, bool updateClient) {
 	if (!player->skillBoxes.containsKey(skillBox->getName()))
 		return;
@@ -139,6 +155,7 @@ void SkillManager::removeSkillBox(SkillBox* skillBox, PlayerImplementation* play
 	removeSkillCommands(skillBox, player, false);
 	removeSkillCertifications(skillBox, player, updateClient);
 	removeSkillMods(skillBox, player, updateClient);
+	removeGrantedDraftSchematics(skillBox, player, updateClient);
 }
 
 void SkillManager::removeSkillCommands(SkillBox* skillBox, PlayerImplementation* player, bool updateClient) {
@@ -169,6 +186,21 @@ void SkillManager::removeSkillMods(SkillBox* skillBox, PlayerImplementation* pla
 		
 		player->addSkillMod(skillMod, -value, updateClient);
 	}
+}
+
+void SkillManager::removeGrantedDraftSchematics(SkillBox* skillBox, PlayerImplementation* player, bool updateClient) {
+	if (player == NULL || skillBox == NULL)
+		return;
+		
+	for(int i = 0; i < skillBox->getGrantedSchematicListSize(); i++) {
+		
+		string schematicGroupName = "";
+		skillBox->getGrantedSchematic(schematicGroupName, i);
+		player->subtractDraftSchematicsFromGroupName(schematicGroupName);
+	}
+	
+	if(updateClient)
+		player->sendDraftSchematics();
 }
 
 void SkillManager::loadSkills(CreatureObject* creature) {	

@@ -50,6 +50,8 @@ which carries forward this exception.
 #include "../../objects/player/PlayerObject.h"
 #include "../../objects/player/Player.h"
 
+#include "../../objects/draftschematic/DraftSchematic.h"
+
 class PlayerObjectDeltaMessage9 : public DeltaMessage {
 	PlayerObject* play;
 	
@@ -68,6 +70,30 @@ public:
 		insertByte(1);
 		insertShort(0);
 		insertAscii(name.c_str());
+	}
+	
+	void setCraftingState(int state) {
+		startUpdate(2);
+		insertInt(state);
+	}
+		
+	void updateDraftSchematics() {
+		Player* player = play->getPlayer();
+		int schematicSize = player->getDraftSchematicListSize();
+		startUpdate(4);
+
+		startList(schematicSize + 1, player->getDraftSchematicUpdateCount(schematicSize + 1));
+
+		// This deletes all the draft schematics on the client
+		insertByte(3);
+		insertShort(0);
+		
+		for (int i = 0; i < schematicSize; i++) {
+			insertByte(1);
+			insertShort(i+1);
+			insertInt(player->getDraftSchematic(i)->getSchematicCRC());
+			insertInt(player->getDraftSchematic(i)->getSchematicID());
+		}
 	}
 		
 	void updateSkilsAndCertifications() {

@@ -374,6 +374,9 @@ SkillBox* ProfessionManager::loadSkillBox(ResultSet* result, Profession* profess
 	string skillMods = result->getString(23);
 	loadSkillMods(skillBox, skillMods);
 		
+	string grantedDraftSchematics = result->getString(24);
+	loadDraftSchematics(skillBox, grantedDraftSchematics);
+	
 	skillBox->setSkillIsSearchable(result->getInt(25));
 		
 	skillBoxMap.put(skillBox->getName(), skillBox);
@@ -469,6 +472,20 @@ void ProfessionManager::loadSkillMods(SkillBox* skillBox, string& skillMods) {
 			int value = atoi(skillMod.substr(index + 1, skillMod.size() - (index + 1)).c_str());
 				
 			skillBox->addSkillMod(skillModName, value);
+		}
+	}
+}
+
+void ProfessionManager::loadDraftSchematics(SkillBox* skillBox, string& grantedDraftSchematics) {
+	if (grantedDraftSchematics.size() > 1) {
+		StringTokenizer tokenizer(grantedDraftSchematics.c_str());
+		tokenizer.setDelimeter(",");
+			
+		while (tokenizer.hasMoreTokens()) {
+			string draftSchematic;
+			tokenizer.getStringToken(draftSchematic);
+				
+			skillBox->addGrantedSchematic(draftSchematic);
 		}
 	}
 }
