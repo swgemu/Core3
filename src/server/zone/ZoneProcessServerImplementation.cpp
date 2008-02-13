@@ -114,7 +114,6 @@ ZoneProcessServerImplementation::~ZoneProcessServerImplementation() {
 	
 	delete combatManager;
 	delete professionManager;
-	delete skillManager;
 	delete radialManager;
 	delete groupManager;
 	delete lootManager;

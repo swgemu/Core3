@@ -124,7 +124,6 @@ ZoneServerImplementation::~ZoneServerImplementation() {
 void ZoneServerImplementation::init() {
 	processor = new ZoneProcessServerImplementation(_this, procThreadCount);
 	processor->init();
-	processor->start();
 	
 	phandler = new BasePacketHandler("ZoneServer", processor->getMessageQueue());
 	phandler->setLogging(false);

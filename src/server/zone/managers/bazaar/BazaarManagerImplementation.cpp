@@ -358,9 +358,8 @@ void BazaarManagerImplementation::checkAuctions() {
 	for (int i = 0; i < items.size(); i++) {
 		AuctionItem* item = items.get(i);
 		
-		if(item->expireTime <= currentTime)
+		if (item->expireTime <= currentTime) {
 			if (item->sold) {
-				
 				bazaarPlanets[item->planet]->removeBazaarItem(item->id);
 				removeItem(item->id);
 				
@@ -371,17 +370,15 @@ void BazaarManagerImplementation::checkAuctions() {
 				del2 << "DELETE from `character_items` WHERE objectid = " << item->id << ";";
 				
 				try {
-					
 					ServerDatabase::instance()->executeQuery(del1);
 					ServerDatabase::instance()->executeQuery(del2);
-
 				} catch (DatabaseException& e) {
 					cout << "Can't delete bazaar_item " << item->id << "\n";
+					
 					unlock();
 					return;
 				}
 			} else {
-				
 				// move to available items
 				bazaarPlanets[item->planet]->removeBazaarItem(item->id);
 				
@@ -394,16 +391,16 @@ void BazaarManagerImplementation::checkAuctions() {
 					<< item->ownerID << " where objectid = " << item->id << ";";
 
 				try {
-					
 					ServerDatabase::instance()->executeQuery(update);
-
 				} catch (DatabaseException& e) {
 					cout << "Can't update bazaar_item " << item->id << "\n";
 					cout << update.str() << "\n";
+					
 					unlock();
 					return;
 				}
 			}
+		}
 	}
 
 	processServer->addEvent(checkEvent, CHECKEVERY * 60000);
