@@ -134,6 +134,7 @@ interface CreatureObject implements SceneObject {
 	boolean clearState(unsigned long state);
 	void updateStates();
 	void clearStates();
+	float calculateBFRatio();
 
 	// HAM methods
 	void resetHAMBars();
@@ -153,6 +154,8 @@ interface CreatureObject implements SceneObject {
 	void changeMaxHealthBar(int hp);
 	void changeMaxStrengthBar(int hp);
 	void changeMaxConstitutionBar(int hp);
+
+	void changeShockWounds(int bf);
 	
 	boolean changeActionBar(int ap, boolean forcedChange = false);
 	boolean changeQuicknessBar(int qc, boolean forcedChange = false);
@@ -177,6 +180,9 @@ interface CreatureObject implements SceneObject {
 	boolean hasStates();
 	boolean hasState(unsigned long state);
 	
+	boolean hasWounds();
+	boolean hasShockWounds();
+
 	boolean isAttackable();
 	boolean isAttackableBy(CreatureObject attacker);
 	
@@ -227,6 +233,8 @@ interface CreatureObject implements SceneObject {
 	void setHealthWounds(unsigned int wounds);
 	void setActionWounds(unsigned int wounds);
 	void setMindWounds(unsigned int wounds);
+
+	void setShockWounds(unsigned int wounds);
 
 	void setWoundsUpdateCounter(unsigned int count);
 	
@@ -365,6 +373,8 @@ interface CreatureObject implements SceneObject {
 	unsigned int getHealthWounds();
 	unsigned int getActionWounds();
 	unsigned int getMindWounds();
+
+	unsigned int getShockWounds();
 	
 	unsigned int getHAMUpdateCounter();
 	unsigned int getNewHAMUpdateCounter(int cnt);

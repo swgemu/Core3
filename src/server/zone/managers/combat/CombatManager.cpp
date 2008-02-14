@@ -791,6 +791,7 @@ int CombatManager::checkSecondaryDefenses(CreatureObject* creature, CreatureObje
 			block = 125;
 		
 		defTotal = powf(float((block * 6.5) + (targetCreature->getCenteredBonus() * 1.5)), 4.9);
+		defTotal -= (defTotal * targetCreature->calculateBFRatio());
 		
 		if ((playerAccuracy + weaponAccuracy + blindState) >= 0)
 			accTotal = powf(float((playerAccuracy * 1.2) + weaponAccuracy - (blindState * 50)), 6);
@@ -814,6 +815,7 @@ int CombatManager::checkSecondaryDefenses(CreatureObject* creature, CreatureObje
 			dodge = 125;
 
 		defTotal = powf(float((dodge * 6.5) + (targetCreature->getCenteredBonus() * 1.5)), 4.9);
+		defTotal -= (defTotal * targetCreature->calculateBFRatio());
 
 		if ((playerAccuracy + weaponAccuracy + blindState) >= 0)
 			accTotal = powf(float((playerAccuracy * 1.2) + weaponAccuracy - (blindState * 50)), 6);
@@ -837,6 +839,7 @@ int CombatManager::checkSecondaryDefenses(CreatureObject* creature, CreatureObje
 			counterAttack = 125;
 
 		defTotal = powf(float((counterAttack * 6.5) + (targetCreature->getCenteredBonus() * 1.5)), 4.9);
+		defTotal -= (defTotal * targetCreature->calculateBFRatio());
 
 		if ((playerAccuracy + weaponAccuracy + blindState) >= 0)
 			accTotal = powf(float((playerAccuracy * 1.2) + weaponAccuracy - (blindState * 50)), 6);
@@ -880,6 +883,8 @@ int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* target
 		accTotal = 0;
 	else
 		accTotal = powf((playerAccuracy * 1.5 + weaponAccuracy - blindState), 2);
+	
+	defTotal -= (defTotal * targetCreature->calculateBFRatio());
 	
 	float primaryDef = defTotal / (defTotal + accTotal);
 	
@@ -973,7 +978,7 @@ uint32 CombatManager::getTargetDefense(CreatureObject* creature, CreatureObject*
 			uint32 ranged = targetCreature->getSkillMod("ranged_defense");
 			defense += ranged;
 		}
-	} else {		
+	} else {
 		uint32 melee = targetCreature->getSkillMod("melee_defense");
 		defense += melee;
 	}
@@ -983,5 +988,5 @@ uint32 CombatManager::getTargetDefense(CreatureObject* creature, CreatureObject*
 	if (defense > 200)
 		defense = 200;
 
-	return defense;
+	return defense - (uint32)(defense * targetCreature->calculateBFRatio());
 }

@@ -56,7 +56,11 @@ which carries forward this exception.
 
 #include "Weapon.h"
 
+#include "../powerup/Powerup.h"
+#include "../powerup/PowerupImplementation.h"
+
 class CombatManager;
+class Powerup;
 
 class WeaponImplementation : public WeaponServant {
 protected:
@@ -118,6 +122,38 @@ protected:
 	int dot2Potency;
 	int dot2Uses;
 	
+	int powerup0Type;
+	int powerup1Type;
+	int powerup2Type;
+	
+	float powerup0Value;
+	float powerup1Value;
+	float powerup2Value;
+	
+	int powerupUses;
+	int powerupType;
+	int powerupSubType;
+
+	float bonusMinDamage;
+	float bonusMaxDamage;
+	
+	float bonusAttackSpeed;
+	
+	int bonusHealthAttackCost;
+	int bonusActionAttackCost;
+	int bonusMindAttackCost;
+	
+	int bonusPointBlankAccuracy;
+	int bonusPointBlankRange;
+	
+	int bonusIdealRange;
+	int bonusIdealAccuracy;
+	
+	int bonusMaxRange;
+	int bonusMaxRangeAccuracy;
+	
+	int bonusWoundsRatio;
+
 	bool sliced;
 	
 public:
@@ -178,13 +214,31 @@ public:
 	void sendTo(Player* player, bool doClose = true);
 	
 	void generateAttributes(SceneObject* obj);
+
 	void generateDotAttributes(class AttributeListMessage* alm);
+	
+	void generatePowerup(class AttributeListMessage* alm);
 	
 	void generateSkillMods(class AttributeListMessage* alm, int skillModType, int skillModValue);
 	
 	void setWeaponStats(int modifier);
 	
 	void decayWeapon(int decayRate);
+	
+	void applyPowerup(Powerup* powerup);
+	void removePowerup();
+	
+	void powerupMinDamage(float powerupValue);
+	void powerupMaxDamage(float powerupValue);
+	void powerupHealthAttackCost(float powerupValue);
+	void powerupActionAttackCost(float powerupValue);
+	void powerupMindAttackCost(float powerupValue);
+	void powerupWoundsRatio(float powerupValue);
+	void powerupAttackSpeed(float powerupValue);
+	void powerupPointBlankAccuracy(float powerupValue);
+	void powerupIdealRange(float powerupValue);
+	void powerupIdealAccuracy(float powerupValue);
+	void powerupMaxRangeAccuracy(float powerupValue);
 
 	// slicing methods
 	void sliceWeapon(Player* player);
@@ -226,6 +280,15 @@ public:
 			return false;
 	}
 
+	inline bool decreasePowerupUses() {
+		if (powerupUses > 0) { 
+			string name = "powerupUses";
+			itemAttributes->setIntAttribute(name, --powerupUses);
+			return true;
+		} else
+			return false;
+	}
+	
 	// setters
 	inline void setDamageType(int type) {
 		damageType = type;
@@ -479,33 +542,170 @@ public:
 		itemAttributes->setIntAttribute(name, skillModValue);
 	}
 	
+	inline void setPowerup0Type(int powerupType) {
+		powerup0Type = powerupType;
+		string name = "powerup0Type";
+		itemAttributes->setIntAttribute(name, powerupType);
+	}
+	
+	inline void setPowerup1Type(int powerupType) {
+		powerup1Type = powerupType;
+		string name = "powerup1Type";
+		itemAttributes->setIntAttribute(name, powerupType);
+	}
+	
+	inline void setPowerup2Type(int powerupType) {
+		powerup2Type = powerupType;
+		string name = "powerup2Type";
+		itemAttributes->setIntAttribute(name, powerupType);
+	}
+	
+	inline void setPowerup0Value(float powerupValue) {
+		powerup0Value = powerupValue;
+		string name = "powerup0Value";
+		itemAttributes->setFloatAttribute(name, powerupValue);
+	}
+	
+	inline void setPowerup1Value(float powerupValue) {
+		powerup1Value = powerupValue;
+		string name = "powerup1Value";
+		itemAttributes->setFloatAttribute(name, powerupValue);
+	}
+	
+	inline void setPowerup2Value(float powerupValue) {
+		powerup2Value = powerupValue;
+		string name = "powerup2Value";
+		itemAttributes->setFloatAttribute(name, powerupValue);
+	}
+	
+	inline void setPowerupUses(int uses) {
+		powerupUses = uses;
+		string name = "powerupUses";
+		itemAttributes->setIntAttribute(name, uses);
+	}
+	
+	inline void setPowerupType(int type) {
+		powerupType = type;
+		string name = "powerupType";
+		itemAttributes->setIntAttribute(name, type);
+	}
+
+	inline void setPowerupSubType(int type) {
+		powerupSubType = type;
+		string name = "powerupSubType";
+		itemAttributes->setIntAttribute(name, type);
+	}
+	
+	inline void setBonusMinDamage(float minDmg) {
+		bonusMinDamage = minDmg;
+		string name = "bonusMinDamage";
+		itemAttributes->setFloatAttribute(name, minDmg);
+	}
+
+	inline void setBonusMaxDamage(float maxDmg) {
+		bonusMaxDamage = maxDmg;
+		string name = "bonusMaxDamage";
+		itemAttributes->setFloatAttribute(name, maxDmg);
+	}
+
+	inline void setBonusAttackSpeed(float attackSpd) {
+		bonusAttackSpeed = attackSpd;
+		string name = "bonusAttackSpeed";
+		itemAttributes->setFloatAttribute(name, attackSpd);
+	}
+
+	inline void setBonusHealthAttackCost(int healthCost) {
+		bonusHealthAttackCost = healthCost;
+		string name = "bonusHealthCost";
+		itemAttributes->setIntAttribute(name, healthCost);
+	}
+
+	inline void setBonusActionAttackCost(int actionCost) {
+		bonusActionAttackCost = actionCost;
+		string name = "bonusActionCost";
+		itemAttributes->setIntAttribute(name, actionCost);
+	}
+
+	inline void setBonusMindAttackCost(int mindCost) {
+		bonusMindAttackCost = mindCost;
+		string name = "bonusMindCost";
+		itemAttributes->setIntAttribute(name, mindCost);
+	}
+	
+	inline void setBonusPointBlankRange(int pointBlankRnge) {
+		bonusPointBlankRange = pointBlankRnge;
+		string name = "bonusPointBlankRange";
+		itemAttributes->setIntAttribute(name, pointBlankRnge);
+	}
+	
+	inline void setBonusPointBlankAccuracy(int pointBlankAcc) {
+		bonusPointBlankAccuracy = pointBlankAcc;
+		string name = "bonusPointBlankAccuracy";
+		itemAttributes->setIntAttribute(name, pointBlankAcc);
+	}
+	
+	inline void setBonusMaxRange(int maxRnge) {
+		bonusMaxRange = maxRnge;
+		string name = "bonusMaxRange";
+		itemAttributes->setIntAttribute(name, maxRnge);		
+	}
+	
+	inline void setBonusMaxRangeAccuracy(int maxRangeAcc) {
+		bonusMaxRangeAccuracy = maxRangeAcc;
+		string name = "bonusMaxRangeAccuracy";
+		itemAttributes->setIntAttribute(name, maxRangeAcc);
+	}
+	
+	inline void setBonusIdealRange(int idealRnge) {
+		bonusIdealRange = idealRnge;
+		string name = "bonusIdealRange";
+		itemAttributes->setIntAttribute(name, idealRnge);
+	}
+	
+	inline void setBonusIdealAccuracy(int idealAcc) {
+		bonusIdealAccuracy = idealAcc;
+		string name = "bonusIdealAccuracy";
+		itemAttributes->setIntAttribute(name, idealAcc);
+	}
+	
+	inline void setBonusWoundsRatio(int woundsRat) {
+		bonusWoundsRatio = woundsRat;
+		string name = "bonusWoundsRatio";
+		itemAttributes->setIntAttribute(name, woundsRat);
+	}
+	
 	// getters
 	inline int getDamageType() {
 		return damageType;
 	}
 	
 	inline float getMinDamage() {
-		return minDamage;
+		return minDamage + bonusMinDamage;
 	}
 
 	inline float getMaxDamage() {
-		return maxDamage;
+		return maxDamage + bonusMaxDamage;
 	}
 
 	inline float getAttackSpeed() {
-		return attackSpeed;
+		float spd = attackSpeed + bonusAttackSpeed;
+		
+		if (spd < 1.0f)
+			return 1.0f;
+		else
+			return spd;
 	}
 
 	inline int getHealthAttackCost() {
-		return healthAttackCost;
+		return healthAttackCost + bonusHealthAttackCost;
 	}
 
 	inline int getActionAttackCost() {
-		return actionAttackCost;
+		return actionAttackCost + bonusActionAttackCost;
 	}
 
 	inline int getMindAttackCost() {
-		return mindAttackCost;
+		return mindAttackCost + bonusMindAttackCost;
 	}
 	
 	inline int getType() {
@@ -529,31 +729,31 @@ public:
 	}
 	
 	inline int getPointBlankRange() {
-		return pointBlankRange;
+		return pointBlankRange + bonusPointBlankRange;
 	}
 	
 	inline int getPointBlankAccuracy() {
-		return pointBlankAccuracy;
+		return pointBlankAccuracy + bonusPointBlankAccuracy;
 	}
 	
 	inline int getMaxRange() {
-		return maxRange;
+		return maxRange + bonusMaxRange;
 	}
 	
 	inline int getMaxRangeAccuracy() {
-		return maxRangeAccuracy;
+		return maxRangeAccuracy + bonusMaxRangeAccuracy;
 	}
 	
 	inline int getIdealRange() {
-		return idealRange;
+		return idealRange + bonusIdealRange;
 	}
 	
 	inline int getIdealAccuracy() {
-		return idealAccuracy;
+		return idealAccuracy + bonusIdealAccuracy;
 	}
 	
 	inline int getWoundsRatio() {
-		return woundsRatio;
+		return woundsRatio + bonusWoundsRatio;
 	}
 	
 	inline int getArmorPiercing() {
@@ -654,6 +854,42 @@ public:
 	
 	inline int getSkillMod2Value() {
 		return skillMod2Value;
+	}
+	
+	inline int getPowerup0Type() {
+		return powerup0Type;
+	}
+
+	inline int getPowerup1Type() {
+		return powerup1Type;
+	}
+
+	inline int getPowerup2Type() {
+		return powerup2Type;
+	}
+	
+	inline float getPowerup0Value() {
+		return powerup0Value;
+	}
+
+	inline float getPowerup1Value() {
+		return powerup1Value;
+	}
+
+	inline float getPowerup2Value() {
+		return powerup2Value;
+	}
+	
+	inline int getPowerupUses() {
+		return powerupUses;
+	}
+	
+	inline int getPowerupType() {
+		return powerupType;
+	}
+	
+	inline int getPowerupSubType() {
+		return powerupSubType;
 	}
 
 	friend class CombatManager;

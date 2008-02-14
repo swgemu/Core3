@@ -558,7 +558,7 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player, Message* 
 		parseAttachmentDragDrop(player, pack);
 		break;
 	case (0xab559978): // attach Powerup to weapon
-//		parsePowerupDragDrop(player, pack);
+		parsePowerupDragDrop(player, pack);
 		break;
 	case (0x5FD21EB0):  // Schematic Resources
 		parseRequestDraftSlotsBatch(player, pack);
@@ -599,6 +599,20 @@ void ObjectControllerMessage::parseAttachmentDragDrop(Player* player, Message* p
 		uint64 targetID = tokenizer.getLongToken();
 		
 		player->applyAttachment(attachmentID, targetID);		
+	}
+}
+
+void ObjectControllerMessage::parsePowerupDragDrop(Player* player, Message* pack) {
+	uint64 powerupID = pack->parseLong();
+	unicode unicodeID;
+	
+	pack->parseUnicode(unicodeID);
+	StringTokenizer tokenizer(unicodeID.c_str());
+	
+	if (tokenizer.hasMoreTokens()) {
+		uint64 targetID = tokenizer.getLongToken();
+		
+		player->applyPowerup(powerupID, targetID);		
 	}
 }
 

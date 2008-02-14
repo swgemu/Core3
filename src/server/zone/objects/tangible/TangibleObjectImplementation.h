@@ -363,10 +363,10 @@ public:
 	}
 	
 	inline bool isWeapon() {
-		return (objectSubType & WEAPON || objectSubType & LIGHTSABER ||
-				objectSubType & ONEHANDMELEEWEAPON || objectSubType & TWOHANDMELEEWEAPON ||
-				objectSubType & POLEARM || objectSubType & MELEEWEAPON || objectSubType & RANGEDWEAPON ||
-				objectSubType & CARBINE || objectSubType & PISTOL || objectSubType & RIFLE);
+		return (objectSubType == WEAPON || objectSubType == LIGHTSABER ||
+				objectSubType == ONEHANDMELEEWEAPON || objectSubType == TWOHANDMELEEWEAPON ||
+				objectSubType == POLEARM || objectSubType == MELEEWEAPON || objectSubType == RANGEDWEAPON ||
+				objectSubType == CARBINE || objectSubType == PISTOL || objectSubType == RIFLE);
 	}
 	
 	inline bool isArmor() {

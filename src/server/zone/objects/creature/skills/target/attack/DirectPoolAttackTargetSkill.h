@@ -212,11 +212,11 @@ public:
 			if (hasCbtSpamHit()) 
 				creature->sendCombatSpam(targetCreature, NULL, -(int32)damage, getCbtSpamHit());
 			
-			if (healthDamage > 0)
+			if (healthDamage < 0)
 				reduction += applyHealthPoolDamage(creature, targetCreature, (int32) healthDamage, System::random(5) + 1);
-			if (actionDamage > 0)
+			if (actionDamage < 0)
 				reduction += applyActionPoolDamage(creature, targetCreature, (int32) actionDamage, System::random(1) + 7);
-			if (mindDamage > 0)
+			if (mindDamage < 0)
 				reduction += applyMindPoolDamage(creature, targetCreature, (int32) mindDamage);
 			
 		} else {

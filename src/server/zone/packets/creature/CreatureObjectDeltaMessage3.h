@@ -92,6 +92,9 @@ public:
 		addIntUpdate(9, creo->getMaxCondition());
 	}
 	
+	void updateShockWounds() {
+		addIntUpdate(15, creo->getShockWounds());
+	}
 	
 	void updateCreatureLinkID() {
 		addLongUpdate(0x0D, creo->getCreatureLinkID());

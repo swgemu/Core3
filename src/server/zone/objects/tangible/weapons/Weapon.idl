@@ -46,6 +46,7 @@ import "../../scene/SceneObject";
 import "../TangibleObject";
 
 import "../../player/Player";
+import "../powerup/Powerup";
 
 interface Weapon implements TangibleObject {
 	Weapon(unsigned long oid, int tp = 0);
@@ -63,9 +64,13 @@ interface Weapon implements TangibleObject {
 	
 	void repairWeapon(Player player);
 
+	void applyPowerup(Powerup powerup);
+	void removePowerup();
+
 	boolean decreaseDot0Uses();
 	boolean decreaseDot1Uses();
 	boolean decreaseDot2Uses();
+	boolean decreasePowerupUses();
 
 	boolean isSliced();
 
@@ -75,7 +80,19 @@ interface Weapon implements TangibleObject {
 	
 	boolean isRanged();
 
-	// setters 
+	// setters
+	void powerupMinDamage(float powerupValue);
+	void powerupMaxDamage(float powerupValue);
+	void powerupHealthAttackCost(float powerupValue);
+	void powerupActionAttackCost(float powerupValue);
+	void powerupMindAttackCost(float powerupValue);
+	void powerupWoundsRatio(float powerupValue);
+	void powerupAttackSpeed(float powerupValue);
+	void powerupPointBlankAccuracy(float powerupValue);
+	void powerupIdealRange(float powerupValue);
+	void powerupIdealAccuracy(float powerupValue);
+	void powerupMaxRangeAccuracy(float powerupValue);
+
 	void setDot0Uses(int uses);
 	void setDot1Uses(int uses);
 	void setDot2Uses(int uses);
@@ -143,5 +160,18 @@ interface Weapon implements TangibleObject {
 	int getSkillMod0Value();
 	int getSkillMod1Value();
 	int getSkillMod2Value();
+
+	int getPowerup0Type();
+	int getPowerup1Type();
+	int getPowerup2Type();
+
+	float getPowerup0Value();
+	float getPowerup1Value();
+	float getPowerup2Value();
+
+	int getPowerupUses();
+
+	int getPowerupType();
+	int getPowerupSubType();
 	
 }

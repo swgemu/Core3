@@ -183,6 +183,8 @@ public:
 
 	void clearStates();
 
+	float calculateBFRatio();
+
 	void resetHAMBars();
 
 	bool changeHAMBars(int hp, int ap, int mp, bool forcedChange = false);
@@ -208,6 +210,8 @@ public:
 	void changeMaxStrengthBar(int hp);
 
 	void changeMaxConstitutionBar(int hp);
+
+	void changeShockWounds(int bf);
 
 	bool changeActionBar(int ap, bool forcedChange = false);
 
@@ -242,6 +246,10 @@ public:
 	bool hasStates();
 
 	bool hasState(unsigned long long state);
+
+	bool hasWounds();
+
+	bool hasShockWounds();
 
 	bool isAttackable();
 
@@ -322,6 +330,8 @@ public:
 	void setActionWounds(unsigned int wounds);
 
 	void setMindWounds(unsigned int wounds);
+
+	void setShockWounds(unsigned int wounds);
 
 	void setWoundsUpdateCounter(unsigned int count);
 
@@ -506,6 +516,8 @@ public:
 	unsigned int getActionWounds();
 
 	unsigned int getMindWounds();
+
+	unsigned int getShockWounds();
 
 	unsigned int getHAMUpdateCounter();
 
@@ -824,6 +836,8 @@ public:
 
 	void clearStates();
 
+	float calculateBFRatio();
+
 	void resetHAMBars();
 
 	bool changeHAMBars(int hp, int ap, int mp, bool forcedChange);
@@ -849,6 +863,8 @@ public:
 	void changeMaxStrengthBar(int hp);
 
 	void changeMaxConstitutionBar(int hp);
+
+	void changeShockWounds(int bf);
 
 	bool changeActionBar(int ap, bool forcedChange);
 
@@ -883,6 +899,10 @@ public:
 	bool hasStates();
 
 	bool hasState(unsigned long long state);
+
+	bool hasWounds();
+
+	bool hasShockWounds();
 
 	bool isAttackable();
 
@@ -963,6 +983,8 @@ public:
 	void setActionWounds(unsigned int wounds);
 
 	void setMindWounds(unsigned int wounds);
+
+	void setShockWounds(unsigned int wounds);
 
 	void setWoundsUpdateCounter(unsigned int count);
 
@@ -1147,6 +1169,8 @@ public:
 	unsigned int getActionWounds();
 
 	unsigned int getMindWounds();
+
+	unsigned int getShockWounds();
 
 	unsigned int getHAMUpdateCounter();
 

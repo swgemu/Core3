@@ -57,6 +57,8 @@ class TangibleObject;
 
 class Player;
 
+class Powerup;
+
 #include "../TangibleObject.h"
 
 class Weapon : public TangibleObject {
@@ -79,11 +81,17 @@ public:
 
 	void repairWeapon(Player* player);
 
+	void applyPowerup(Powerup* powerup);
+
+	void removePowerup();
+
 	bool decreaseDot0Uses();
 
 	bool decreaseDot1Uses();
 
 	bool decreaseDot2Uses();
+
+	bool decreasePowerupUses();
 
 	bool isSliced();
 
@@ -92,6 +100,28 @@ public:
 	bool isMelee();
 
 	bool isRanged();
+
+	void powerupMinDamage(float powerupValue);
+
+	void powerupMaxDamage(float powerupValue);
+
+	void powerupHealthAttackCost(float powerupValue);
+
+	void powerupActionAttackCost(float powerupValue);
+
+	void powerupMindAttackCost(float powerupValue);
+
+	void powerupWoundsRatio(float powerupValue);
+
+	void powerupAttackSpeed(float powerupValue);
+
+	void powerupPointBlankAccuracy(float powerupValue);
+
+	void powerupIdealRange(float powerupValue);
+
+	void powerupIdealAccuracy(float powerupValue);
+
+	void powerupMaxRangeAccuracy(float powerupValue);
 
 	void setDot0Uses(int uses);
 
@@ -180,6 +210,24 @@ public:
 	int getSkillMod1Value();
 
 	int getSkillMod2Value();
+
+	int getPowerup0Type();
+
+	int getPowerup1Type();
+
+	int getPowerup2Type();
+
+	float getPowerup0Value();
+
+	float getPowerup1Value();
+
+	float getPowerup2Value();
+
+	int getPowerupUses();
+
+	int getPowerupType();
+
+	int getPowerupSubType();
 
 protected:
 };
@@ -202,11 +250,17 @@ public:
 
 	void repairWeapon(Player* player);
 
+	void applyPowerup(Powerup* powerup);
+
+	void removePowerup();
+
 	bool decreaseDot0Uses();
 
 	bool decreaseDot1Uses();
 
 	bool decreaseDot2Uses();
+
+	bool decreasePowerupUses();
 
 	bool isSliced();
 
@@ -215,6 +269,28 @@ public:
 	bool isMelee();
 
 	bool isRanged();
+
+	void powerupMinDamage(float powerupValue);
+
+	void powerupMaxDamage(float powerupValue);
+
+	void powerupHealthAttackCost(float powerupValue);
+
+	void powerupActionAttackCost(float powerupValue);
+
+	void powerupMindAttackCost(float powerupValue);
+
+	void powerupWoundsRatio(float powerupValue);
+
+	void powerupAttackSpeed(float powerupValue);
+
+	void powerupPointBlankAccuracy(float powerupValue);
+
+	void powerupIdealRange(float powerupValue);
+
+	void powerupIdealAccuracy(float powerupValue);
+
+	void powerupMaxRangeAccuracy(float powerupValue);
 
 	void setDot0Uses(int uses);
 
@@ -303,6 +379,24 @@ public:
 	int getSkillMod1Value();
 
 	int getSkillMod2Value();
+
+	int getPowerup0Type();
+
+	int getPowerup1Type();
+
+	int getPowerup2Type();
+
+	float getPowerup0Value();
+
+	float getPowerup1Value();
+
+	float getPowerup2Value();
+
+	int getPowerupUses();
+
+	int getPowerupType();
+
+	int getPowerupSubType();
 
 };
 

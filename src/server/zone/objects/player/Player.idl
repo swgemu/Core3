@@ -61,6 +61,8 @@ import "../tangible/wearables/Armor";
 
 import "../tangible/attachment/Attachment";
 
+import "../tangible/powerup/Powerup";
+
 import "../tangible/Datapad";
 import "../tangible/surveytool/SurveyTool";
 
@@ -162,6 +164,8 @@ interface Player implements CreatureObject {
 	boolean setArmorEncumbrance(Armor armor, boolean forced);
 	
 	void applyAttachment(unsigned long attachmentID, unsigned long targetID);
+
+	void applyPowerup(unsigned long powerupID, unsigned long targetID);
 	
 	void createItems();
 	void loadItems();

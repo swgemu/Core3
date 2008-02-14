@@ -96,6 +96,7 @@ IDL_SOURCES = server/zone/Zone.idl \
 				server/zone/objects/tangible/surveytool/SurveyTool.idl \
 				server/zone/objects/tangible/resource/ResourceContainer.idl \
 				server/zone/objects/tangible/attachment/Attachment.idl \
+				server/zone/objects/tangible/powerup/Powerup.idl \
 				server/zone/objects/tangible/holocron/Holocron.idl \
 				server/zone/objects/tangible/firework/Firework.idl \
 				server/zone/objects/static/firework/FireworkWorld.idl \

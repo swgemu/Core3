@@ -244,6 +244,12 @@ void TangibleObjectImplementation::repairItem(Player* player) {
 	maxCondition = (maxCondition - (maxCondition / 100 * decayRate));
 	conditionDamage = 0;
 	
+	TangibleObjectDeltaMessage3* dtano3 = new TangibleObjectDeltaMessage3(_this);
+	dtano3->updateConditionDamage();
+	dtano3->updateMaxCondition();
+	dtano3->close();
+	player->broadcastMessage(dtano3);
+	
 	updated = true;
 }
 

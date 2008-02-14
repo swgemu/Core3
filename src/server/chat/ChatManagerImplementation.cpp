@@ -851,6 +851,14 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 				player->addInventoryItem(item);
 				
 				item->sendTo(player);
+			} else if (userManager->isAdmin(player->getFirstName())&& itemType == "Powerup") {
+				PowerupImplementation* itemImpl = new PowerupImplementation(player->getNewItemID());
+				itemImpl->setPowerupStats(System::random(500));
+				TangibleObject* item = itemImpl->deploy();
+				
+				player->addInventoryItem(item);
+				
+				item->sendTo(player);
 			} else if (itemType == "SurveyTools") {
 				SurveyToolImplementation* minSurvImpl = new SurveyToolImplementation(player, 0xAA9AB32C, unicode("Mineral Survey Tool"), "survey_tool_mineral");
 			 	TangibleObject* tano = minSurvImpl->deploy();

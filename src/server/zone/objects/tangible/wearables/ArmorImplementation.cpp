@@ -604,10 +604,13 @@ void ArmorImplementation::repairArmor(Player* player) {
 	conditionDamage = 0;
 	setCondition(maxCondition, maxCondition);
 	
-	updated = true;
+	TangibleObjectDeltaMessage3* dtano3 = new TangibleObjectDeltaMessage3(_this);
+	dtano3->updateConditionDamage();
+	dtano3->updateMaxCondition();
+	dtano3->close();
+	player->broadcastMessage(dtano3);
 	
-	BaseMessage* tano3 = new TangibleObjectMessage3(_this);
-	player->sendMessage(tano3);
+	updated = true;
 	
 }
 
@@ -647,7 +650,7 @@ void ArmorImplementation::setArmorStats(int modifier) {
 		name = unicode(itemText.str());	
 	}
 	
-	maxCondition = 25000 + (modifier * 10) + (luck * 50);
+	maxCondition = 25000 + (luck * System::random(luck));
 	setCondition(maxCondition, maxCondition);
 	
 	if ((luck * System::random(100)) > 2000) {
@@ -657,13 +660,13 @@ void ArmorImplementation::setArmorStats(int modifier) {
 	}
 	
 	if ((luck * System::random(100)) > 2000) {
-		setKinetic(kinetic + (modifier / 10) + (luck / 10));
-		setEnergy(energy + (modifier / 10) + (luck / 10));
-		setElectricity(electricity + (modifier / 10) + (luck / 10));
-		setBlast(blast + (modifier / 10) + (luck / 10));
-		setHeat(heat + (modifier / 10) + (luck / 10));
-		setCold(cold + (modifier / 10) + (luck / 10));
-		setAcid(acid + (modifier / 10) + (luck / 10));
+		setKinetic(kinetic + (modifier / 20) + (luck / 10));
+		setEnergy(energy + (modifier / 20) + (luck / 10));
+		setElectricity(electricity + (modifier / 20) + (luck / 10));
+		setBlast(blast + (modifier / 20) + (luck / 10));
+		setHeat(heat + (modifier / 20) + (luck / 10));
+		setCold(cold + (modifier / 20) + (luck / 10));
+		setAcid(acid + (modifier / 20) + (luck / 10));
 	}
 	
 	/*if (playerRoll > 45000 && System::random(3) == 1) {

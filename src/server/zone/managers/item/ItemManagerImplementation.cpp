@@ -196,6 +196,10 @@ TangibleObject* ItemManagerImplementation::createPlayerObject(Player* player, Re
 	
 		item = new SurveyToolImplementation(objectid, objectcrc, objectname, objecttemp, player);
 
+	} else if (objecttype & TangibleObjectImplementation::WEAPONPOWERUP) {
+
+		item = new PowerupImplementation(objectid, objectcrc, objectname, objecttemp);
+	
 	} else if (objecttype & TangibleObjectImplementation::RESOURCECONTAINER) {
 		switch (objecttype) {
 		case TangibleObjectImplementation::ENERGYGAS:
@@ -578,7 +582,7 @@ void ItemManagerImplementation::createPlayerItem(Player* player, TangibleObject*
 		query << "INSERT INTO `character_items` "
 			  << "(`item_id`,`character_id`,`name`,`template_crc`,`template_type`,`template_name`,`equipped`,`attributes`,`appearance`)"
 			  << " VALUES(" << item->getObjectID() << "," << player->getCharacterID() 
-			  << ",'" << item->getName().c_str() << "'," 
+			  << ",'\\" << item->getName().c_str() << "'," 
 			  << item->getObjectCRC() << "," << item->getObjectSubType() << ",'" << item->getTemplateName() << "',"
 			  << item->isEquipped() << ",'" << item->getAttributes() 
 			  << "','" << appearance.substr(0, appearance.size() - 1) << "')";

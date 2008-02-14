@@ -147,7 +147,7 @@ public:
 		
 		Weapon* weapon = attacker->getWeapon();
 		Armor* armor = target->getArmor(part);
-		
+				
 		int reduction = 0;
 		
 		if (target->isPlayer())
@@ -158,7 +158,7 @@ public:
 			reduction = int(target->getArmorResist(WeaponImplementation::KINETIC) * damage / 100);
 		
 		damage = damage - reduction;
-		
+				
 		target->changeHealthBar((int32) damage, true);
 		
 		target->addDamage(attacker, -damage);
@@ -183,11 +183,20 @@ public:
 		if (target->isPlayer() && reduction != 0)
 			target->sendCombatSpam(target,(TangibleObject*) armor, -reduction, "armor_damaged", false);
 		
-		if (weapon == NULL)
-			return reduction;
+		int woundsRatio = 5;
 		
-		if (weapon->getWoundsRatio() > System::random(100)) {
+		if (weapon != NULL) {
+			woundsRatio = weapon->getWoundsRatio();
+			
+			if (weapon->decreasePowerupUses())
+					weapon->setUpdated(true);
+				else if (weapon->getPowerupType() > 0)
+					weapon->removePowerup();
+		}
+		
+		if (woundsRatio > System::random(100)) {
 			target->changeHealthWoundsBar(1, true);
+			target->changeShockWounds(1);
 			if (target->isPlayer()) {
 				target->sendCombatSpam(attacker, NULL, 1, "wounded", false);
 				target->sendCombatSpam(attacker, NULL, 1, "shock_wound", false);
@@ -220,7 +229,7 @@ public:
 		
 		Weapon* weapon = attacker->getWeapon();
 		Armor* armor = target->getArmor(part);
-		
+
 		int reduction = 0;
 		
 		if (target->isPlayer())
@@ -251,11 +260,21 @@ public:
 		if (target->isPlayer() && reduction != 0)
 			target->sendCombatSpam(target,(TangibleObject*) armor, -reduction, "armor_damaged", false);
 		
-		if (weapon == NULL)
-			return reduction;
+		int woundsRatio = 5;
 		
-		if (weapon->getWoundsRatio() > System::random(100)) {
+		if (weapon != NULL) {
+			woundsRatio = weapon->getWoundsRatio();
+			
+			if (weapon->decreasePowerupUses())
+					weapon->setUpdated(true);
+				else if (weapon->getPowerupType() > 0)
+					weapon->removePowerup();
+		}
+
+		
+		if (woundsRatio > System::random(100)) {
 			target->changeActionWoundsBar(1, true);
+			target->changeShockWounds(1);
 			if (target->isPlayer()) {
 				target->sendCombatSpam(attacker, NULL, 1, "wounded", false);
 				target->sendCombatSpam(attacker, NULL, 1, "shock_wound", false);
@@ -272,7 +291,7 @@ public:
 		}
 
 		doDotWeaponAttack(attacker, target, 0);
-		
+				
 		return reduction;
 	}
 	
@@ -298,7 +317,7 @@ public:
 		else
 			reduction = int(target->getArmorResist(WeaponImplementation::KINETIC) * damage / 100);
 		
-		damage = damage - reduction;
+		damage -= reduction;
 		
 		target->changeMindBar((int32) damage, true);
 		
@@ -312,11 +331,20 @@ public:
 		if (target->isPlayer() && reduction != 0)
 			target->sendCombatSpam(target,(TangibleObject*) armor, -reduction, "armor_damaged", false);
 		
-		if (weapon == NULL)
-			return reduction;
+		int woundsRatio = 5;
 		
-		if (weapon->getWoundsRatio() > System::random(100)) {
+		if (weapon != NULL) {
+			woundsRatio = weapon->getWoundsRatio();
+			
+			if (weapon->decreasePowerupUses())
+					weapon->setUpdated(true);
+				else if (weapon->getPowerupType() > 0)
+					weapon->removePowerup();
+		}
+		
+		if (woundsRatio > System::random(100)) {
 			target->changeMindWoundsBar(1, true);
+			target->changeShockWounds(1);
 			if (target->isPlayer()) {
 				target->sendCombatSpam(attacker, NULL, 1, "wounded", false);
 				target->sendCombatSpam(attacker, NULL, 1, "shock_wound", false);
@@ -333,7 +361,7 @@ public:
 		}
 		
 		doDotWeaponAttack(attacker, target, 0);
-		
+				
 		return reduction;
 	}
 	
@@ -356,13 +384,40 @@ public:
 		Weapon* weapon = creature->getWeapon();
 		float weaponSpeed;
 		
+		int speedMod = 0;
+		
+		if (creature->isPlayer())
+			if (weapon == NULL)
+				speedMod = ((Player*)creature)->getSkillMod("unarmed_speed");
+			else switch (weapon->getObjectSubType()) {
+			case TangibleObjectImplementation::MELEEWEAPON:
+				speedMod = ((Player*)creature)->getSkillMod("unarmed_speed");
+				break;
+			case TangibleObjectImplementation::ONEHANDMELEEWEAPON:
+				speedMod = ((Player*)creature)->getSkillMod("onehandmelee_speed");
+				break;
+			case TangibleObjectImplementation::TWOHANDMELEEWEAPON:
+				speedMod = ((Player*)creature)->getSkillMod("twohandmelee_speed");
+				break;
+			case TangibleObjectImplementation::POLEARM:
+				speedMod = ((Player*)creature)->getSkillMod("polearm_speed");
+				break;
+			case TangibleObjectImplementation::PISTOL:
+				speedMod = ((Player*)creature)->getSkillMod("pistol_speed");
+				break;
+			case TangibleObjectImplementation::CARBINE:
+				speedMod = ((Player*)creature)->getSkillMod("carbine_speed");
+				break;
+			case TangibleObjectImplementation::RIFLE:
+				speedMod = ((Player*)creature)->getSkillMod("rifle_speed");
+				break;
+			}
+
 		if (weapon != NULL) {
-			weaponSpeed = (float)creature->getWeaponSpeedModifier() * speedRatio * (float)weapon->getAttackSpeed();
+			weaponSpeed = (float)((100.0f - speedMod) / 100.0f) * speedRatio * weapon->getAttackSpeed();
 		} else
-			weaponSpeed = (float)creature->getWeaponSpeedModifier() * 1;
-			
-		//cout << "weaponSpeed:" << weaponSpeed << "\n";
-			
+			weaponSpeed = (float)((100.0f - speedMod) / 100.0f) * 1;
+		
 		return MAX(weaponSpeed, 1.0f);
 	}
 
@@ -374,6 +429,8 @@ public:
 			
 			if (dizzyStateChance != 0) {
 				int targetDefense = targetCreature->getSkillMod("dizzy_defense");
+				targetDefense -= (int)(targetDefense * targetCreature->calculateBFRatio());
+				
 				int rand = System::random(100);
 				
 				if ((5 > rand) || (rand > targetDefense))
@@ -382,6 +439,8 @@ public:
 
 			if (blindStateChance != 0) {
 				int targetDefense = targetCreature->getSkillMod("blind_defense");
+				targetDefense -= (int)(targetDefense * targetCreature->calculateBFRatio());
+				
 				int rand = System::random(100);
 				
 				if ((5 > rand) || (rand > targetDefense))
@@ -390,6 +449,8 @@ public:
 			
 			if (stunStateChance != 0) {
 				int targetDefense = targetCreature->getSkillMod("stun_defense");
+				targetDefense -= (int)(targetDefense * targetCreature->calculateBFRatio());
+				
 				int rand = System::random(100);
 				
 				if ((5 > rand) || (rand > targetDefense))
@@ -398,6 +459,8 @@ public:
 			
 			if (intimidateStateChance != 0) {
 				int targetDefense = targetCreature->getSkillMod("intimidate_defense");
+				targetDefense -= (int)(targetDefense * targetCreature->calculateBFRatio());
+				
 				int rand = System::random(100);
 
 				if ((5 > rand) || (rand > targetDefense))
@@ -418,6 +481,7 @@ public:
 			
 			if (targetCreature->checkKnockdownRecovery()) {
 				int targetDefense = targetCreature->getSkillMod("knockdown_defense");
+				targetDefense -= (int)(targetDefense * targetCreature->calculateBFRatio());
 				int rand = System::random(100);
 				
 				if ((5 > rand) || (rand > targetDefense)) {
@@ -451,6 +515,8 @@ public:
 			
 			if (targetCreature->checkPostureDownRecovery()) {
 				int targetDefense = targetCreature->getSkillMod("posture_change_down_defense");
+				targetDefense -= (int)(targetDefense * targetCreature->calculateBFRatio());
+				
 				int rand = System::random(100);
 				
 				if ((5 > rand) || (rand > targetDefense)) {
@@ -481,6 +547,8 @@ public:
 	void checkPostureUp(CreatureObject* creature, CreatureObject* targetCreature) {
 		if (postureUpStateChance != 0 && targetCreature->checkPostureUpRecovery()) {
 			int targetDefense = targetCreature->getSkillMod("posture_change_up_defense");
+			targetDefense -= (int)(targetDefense * targetCreature->calculateBFRatio());
+			
 			int rand = System::random(100);
 			
 			if ((5 > rand) || (rand > targetDefense)) {

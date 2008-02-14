@@ -1396,14 +1396,14 @@ void PlayerImplementation::doRecovery() {
 		doClone();
 		
 		return;
-	} 
+	}
 	
-	if (!isInCombat() && isOnFullHealth() && !hasStates()) {
+	if (!isInCombat() && isOnFullHealth() && !hasStates() && !hasWounds() && !hasShockWounds()) {
 		return;
 	} else if (lastCombatAction.miliDifference() > 15000)
 		clearCombatState();
 
-	if (!isOnFullHealth())
+	if (!isOnFullHealth() || hasWounds() || hasShockWounds())
 		calculateHAMregen();
 
 	if (hasStates())
@@ -2020,6 +2020,33 @@ void PlayerImplementation::unsetArmorEncumbrance(Armor* armor) {
 	willpower += mindEncumb;
 
 }
+
+void PlayerImplementation::applyPowerup(uint64 powerupID, uint64 targetID) {
+	
+	Powerup* powerup = (Powerup*) getInventoryItem(powerupID);
+	Weapon* weapon = (Weapon*) getInventoryItem(targetID);
+	
+	if (weapon == NULL || powerup == NULL)
+		return;
+	
+	weapon->wlock();
+	powerup->wlock();
+	
+	if (weapon->getPowerupUses() == 0) {
+		stringstream msg;
+		msg << "You attach " << powerup->getName().c_str() << " to your " << weapon->getName().c_str();
+		sendSystemMessage(msg.str());
+		powerup->apply(weapon);
+		weapon->applyPowerup(powerup);
+		powerup->remove(_this);
+	}
+	else
+		sendSystemMessage("This weapon is already powered up!");
+	
+	weapon->unlock();
+	powerup->unlock();
+}
+
 
 void PlayerImplementation::applyAttachment(uint64 attachmentID, uint64 targetID) {
 	

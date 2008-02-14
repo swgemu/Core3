@@ -205,6 +205,8 @@ CreatureObjectImplementation::CreatureObjectImplementation(uint64 oid) : Creatur
 	actionWounds = 0;
 	mindWounds = 0;
 	
+	shockWounds = 0;
+	
 	// misc
 	pvpStatusBitmask = 0x10;
 	faction = 0;
@@ -870,6 +872,8 @@ void CreatureObjectImplementation::doDiseaseTick() {
 			changeActionWoundsBar(diseaseDotStrength);
 		else
 			changeMindWoundsBar(diseaseDotStrength);
+		
+		changeShockWounds(1);
 			
 		playEffect("clienteffect/dot_diseased.cef");
 		
@@ -892,6 +896,9 @@ void CreatureObjectImplementation::doFireTick() {
 			changeMindWoundsBar(fireDotStrength);
 			changeMindBar(-fireDotStrength);
 		}
+		
+		changeShockWounds(1);
+		
 		playEffect("clienteffect/dot_fire.cef");
 		
 		nextFireTick.update();
@@ -1059,6 +1066,10 @@ void CreatureObjectImplementation::changeMaxHealthBar(int32 hp) {
 }
 
 bool CreatureObjectImplementation::changeHealthWoundsBar(int32 wounds, bool forcedChange) {
+
+	if (wounds < 0 && -wounds > healthWounds)
+		wounds = -healthWounds;
+	
 	int32 newHealthWounds = healthWounds + wounds;
 	
 	if (newHealthWounds >= healthMax) {
@@ -1140,6 +1151,10 @@ void CreatureObjectImplementation::changeMaxActionBar(int32 hp) {
 }
 
 bool CreatureObjectImplementation::changeActionWoundsBar(int32 wounds, bool forcedChange) {
+
+	if (wounds < 0 && -wounds > actionWounds)
+		wounds = -actionWounds;
+	
 	int32 newActionWounds = actionWounds + wounds;
 	
 	if (newActionWounds >= actionMax) {
@@ -1221,6 +1236,10 @@ void CreatureObjectImplementation::changeMaxMindBar(int32 hp) {
 }
 
 bool CreatureObjectImplementation::changeMindWoundsBar(int32 wounds, bool forcedChange) {
+
+	if (wounds < 0 && -wounds > mindWounds)
+		wounds = -mindWounds;
+	
 	int32 newMindWounds = mindWounds + wounds;
 	
 	if (newMindWounds >= mindMax) {
@@ -1277,6 +1296,22 @@ void CreatureObjectImplementation::changeMaxWillpowerBar(int32 hp) {
 	int32 newMaxWillpower = willpowerMax + hp;
 
 	setMaxWillpowerBar(newMaxWillpower);
+}
+
+void CreatureObjectImplementation::changeShockWounds(int bf) {
+
+	shockWounds += bf;
+	
+	if ((int)shockWounds < 0)
+		shockWounds = 0;
+	else if (shockWounds > 1000)
+		shockWounds = 1000;
+	
+	CreatureObjectDeltaMessage3* dcreo3 = new CreatureObjectDeltaMessage3(_this);
+	dcreo3->updateShockWounds();
+	dcreo3->close();
+
+	broadcastMessage(dcreo3);	
 }
 
 void CreatureObjectImplementation::changeConditionDamage(int amount) {
@@ -1577,12 +1612,18 @@ void CreatureObjectImplementation::setMaxHAMBars(uint32 hp, uint32 ap, uint32 mp
 }
 
 void CreatureObjectImplementation::calculateHAMregen() {
-	if ((int) constitution < 0 || (int) stamina < 0 || (int) willpower < 0)
+		
+	if ((int) getConstitution() < 0 || (int) getStamina() < 0 || (int) getWillpower() < 0)
 		return;
 	
-	float newHealth = (float)constitution * 13 / 1200 * 3;
-	float newAction = (float)stamina * 13 / 1200 * 3;
-	float newMind = (float)willpower * 13 / 1200 * 3;
+	float newHealth = (float)getConstitution() * 13 / 1200 * 3;
+	float newAction = (float)getStamina() * 13 / 1200 * 3;
+	float newMind = (float)getWillpower() * 13 / 1200 * 3;
+	
+	if (doListening || doWatching) {
+		if (shockWounds != 0 && System::random(1) == 1)
+			changeShockWounds(-System::random(3)-1);		
+	}
 	
 	if (meditating) { 
 		newHealth *= 2; 
@@ -1597,7 +1638,7 @@ void CreatureObjectImplementation::calculateHAMregen() {
 		
 		if (mindWounds != 0 && System::random(3) == 3)
 			changeMindWoundsBar(-100);
-		
+				
 		if (isPoisoned() && System::random(3) == 3)
 			poisonRecoveryTime.update();
 		
@@ -3046,4 +3087,12 @@ void CreatureObjectImplementation::addDamage(CreatureObject* creature, uint32 da
 	else
 		damageMap.put(creature, damage);
 
+}
+
+float CreatureObjectImplementation::calculateBFRatio() {
+
+	if (shockWounds <= 250)
+		return 0;
+	else
+		return (float)((shockWounds-250)/1000);
 }

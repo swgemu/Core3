@@ -42,36 +42,38 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef TANGIBLEOBJECTDELTAMESSAGE3_H_
-#define TANGIBLEOBJECTDELTAMESSAGE3_H_
+import "../TangibleObject";
+import "../../creature/CreatureObject";
+import "../../player/Player";
+import "../weapons/Weapon";
+ 
+include "engine/service/Message";
+ 
+interface Powerup implements TangibleObject {
 
-#include "../../packets/DeltaMessage.h"
+	Powerup(unsigned int oid, int type);
 
-#include "../../objects/tangible/TangibleObject.h"
+	void apply(Weapon weapon);
+	void remove(Player player);
 
-class TangibleObjectDeltaMessage3 : public DeltaMessage {
-	TangibleObject* tano;
-	
-public:
-	TangibleObjectDeltaMessage3(TangibleObject* ta)
-			: DeltaMessage(ta->getObjectID(), 0x4352454F, 3) {
-		tano = ta;
-	}
-	
-	void updateCustomizationString() {
-		string app;
-		tano->getCustomizationString(app);
-		addAsciiUpdate(4, app);
-	}
-	
-	void updateConditionDamage() {
-		addIntUpdate(8, tano->getConditionDamage());
-	}
-	
-	void updateMaxCondition() {
-		addIntUpdate(9, tano->getMaxCondition());
-	}
-	
-};
+	int getPowerup0Type();
+	int getPowerup1Type();
+	int getPowerup2Type();
+	float getPowerup0Value();
+	float getPowerup1Value();
+	float getPowerup2Value();
+	int getPowerupUses();
+	int getPowerupType();
+	int getPowerupSubType();
 
-#endif /*TANGIBLEOBJECTDELTAMESSAGE3_H_*/
+	void setPowerup0Type(int value);
+	void setPowerup1Type(int value);
+	void setPowerup2Type(int value);
+	void setPowerup0Value(float value);
+	void setPowerup1Value(float value);
+	void setPowerup2Value(float value);
+	void setPowerupUses(int value);
+	void setPowerupType(int value);
+	void setPowerupSubType(int value);
+
+}

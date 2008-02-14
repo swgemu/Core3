@@ -103,8 +103,8 @@ void WeaponImplementation::initialize() {
 	setActionAttackCost(10);
 	setMindAttackCost(5);
 	
-	pointBlankRange = 0;
-	pointBlankAccuracy = 0;
+	setPointBlankRange(0);
+	setPointBlankAccuracy(0);
 	
 	setIdealRange(2);
 	setIdealAccuracy(15);
@@ -136,6 +136,32 @@ void WeaponImplementation::initialize() {
 	dot2Duration = 0;
 	dot2Potency = 0;
 	dot2Uses = 0;
+	
+	powerup0Type = 0;
+	powerup1Type = 0;
+	powerup2Type = 0;
+	
+	powerup0Value = 0;
+	powerup1Value = 0;
+	powerup2Value = 0;
+	
+	powerupUses = 0;
+	powerupType = 0;
+	powerupSubType = 0;
+	
+	bonusMinDamage = 0;
+	bonusMaxDamage = 0;
+	bonusAttackSpeed = 0;
+	bonusHealthAttackCost = 0;
+	bonusActionAttackCost = 0;
+	bonusMindAttackCost = 0;
+	bonusPointBlankRange = 0;
+	bonusPointBlankAccuracy = 0;
+	bonusIdealRange = 0;
+	bonusIdealAccuracy = 0;
+	bonusMaxRange = 0;
+	bonusMaxRangeAccuracy = 0;
+	bonusWoundsRatio = 0;
 	
 	sliced = false;
 
@@ -253,7 +279,63 @@ void WeaponImplementation::parseItemAttributes() {
 
 	name = "sliced";
 	sliced = itemAttributes->getBooleanAttribute(name);
-		
+	
+	name = "powerup0Type";
+	powerup0Type = itemAttributes->getIntAttribute(name);
+	name = "powerup1Type";
+	powerup1Type = itemAttributes->getIntAttribute(name);
+	name = "powerup2Type";
+	powerup2Type = itemAttributes->getIntAttribute(name);
+
+	name = "powerup0Value";
+	powerup0Value = itemAttributes->getFloatAttribute(name);
+	name = "powerup1Value";
+	powerup1Value = itemAttributes->getFloatAttribute(name);
+	name = "powerup2Value";
+	powerup2Value = itemAttributes->getFloatAttribute(name);
+
+	name = "powerupType";
+	powerupType = itemAttributes->getIntAttribute(name);
+	name = "powerupSubType";
+	powerupSubType = itemAttributes->getIntAttribute(name);
+	
+	name = "powerupUses";
+	powerupUses = itemAttributes->getIntAttribute(name);
+	
+	name = "bonusAttackSpeed";
+	bonusAttackSpeed = itemAttributes->getFloatAttribute(name);
+	
+	name = "bonusHealthAttackCost";
+	bonusHealthAttackCost = itemAttributes->getIntAttribute(name);
+	name = "bonusActionAttackCost";
+	bonusActionAttackCost = itemAttributes->getIntAttribute(name);
+	name = "bonusMindAttackCost";
+	bonusMindAttackCost = itemAttributes->getIntAttribute(name);
+
+	name = "bonusMinDamage";
+	bonusMinDamage = itemAttributes->getFloatAttribute(name);
+	name = "bonusMaxDamage";
+	bonusMinDamage = itemAttributes->getFloatAttribute(name);
+	
+	name = "bonusPointBlankRange";
+	bonusPointBlankRange = itemAttributes->getIntAttribute(name);
+	name = "bonusPointBlankAccuracy";
+	bonusPointBlankRange = itemAttributes->getIntAttribute(name);
+	
+	name = "bonusIdealRange";
+	bonusIdealRange = itemAttributes->getIntAttribute(name);
+	name = "bonusIdealAccuracy";
+	bonusIdealAccuracy = itemAttributes->getIntAttribute(name);
+			
+	name = "bonusMaxRange";
+	bonusMaxRange = itemAttributes->getIntAttribute(name);
+	
+	name = "bonusMaxRangeAccuracy";
+	bonusMaxRangeAccuracy = itemAttributes->getIntAttribute(name);
+	
+	name = "bonusWoundsRatio";
+	bonusWoundsRatio = itemAttributes->getIntAttribute(name);
+
 }
 
 void WeaponImplementation::sendTo(Player* player, bool doClose) {
@@ -324,7 +406,7 @@ void WeaponImplementation::generateAttributes(SceneObject* obj) {
 	
 	alm->insertAttribute("wpn_armor_pierce_rating", ap);
 	
-	float speed = round(10 * attackSpeed) / 10;
+	float speed = round(10 * getAttackSpeed()) / 10;
 	
 	stringstream spdtxt;
 	
@@ -370,52 +452,56 @@ void WeaponImplementation::generateAttributes(SceneObject* obj) {
 	
 	alm->insertAttribute("damage.wpn_damage_type", dmgtxt);
 
-	float minDmg = round(minDamage);
-	float maxDmg = round(maxDamage);
+	float minDmg = round(getMinDamage());
+	float maxDmg = round(getMaxDamage());
 	
 	alm->insertAttribute("damage.wpn_damage_min", minDmg);
 
 	alm->insertAttribute("damage.wpn_damage_max", maxDmg);
 	
 	stringstream woundsratio;
-	woundsratio << woundsRatio << "%";
+	woundsratio << getWoundsRatio() << "%";
 	
 	alm->insertAttribute("damage.wpn_wound_chance", woundsratio);
 	
 	//Accuracy Modifiers
 	stringstream pblank;
-	if (pointBlankAccuracy >= 0)
+	if (getPointBlankAccuracy() >= 0)
 		pblank << "+";
 		
-	pblank << pointBlankAccuracy << " @ " << pointBlankRange << "m";
+	pblank << getPointBlankAccuracy() << " @ " << getPointBlankRange() << "m";
 	alm->insertAttribute("cat_wpn_rangemods.wpn_range_zero", pblank);
 	
 	stringstream ideal;
-	if (idealAccuracy >= 0)
+	if (getIdealAccuracy() >= 0)
 		ideal << "+";
 		
-	ideal << idealAccuracy << " @ " << idealRange << "m";
+	ideal << getIdealAccuracy() << " @ " << getIdealRange() << "m";
 	alm->insertAttribute("cat_wpn_rangemods.wpn_range_mid", ideal);
 	
 	stringstream maxrange;
-	if (maxRangeAccuracy >= 0)
+	if (getMaxRangeAccuracy() >= 0)
 		maxrange << "+";
 		
-	maxrange << maxRangeAccuracy << " @ " << maxRange << "m";
+	maxrange << getMaxRangeAccuracy() << " @ " << getMaxRange() << "m";
 	alm->insertAttribute("cat_wpn_rangemods.wpn_range_max", maxrange);
 	
 	//Special Attack Costs
-	alm->insertAttribute("cat_wpn_attack_cost.health", healthAttackCost);
+	alm->insertAttribute("cat_wpn_attack_cost.health", getHealthAttackCost());
 	
-	alm->insertAttribute("cat_wpn_attack_cost.action", actionAttackCost);
+	alm->insertAttribute("cat_wpn_attack_cost.action", getActionAttackCost());
 	
-	alm->insertAttribute("cat_wpn_attack_cost.mind", mindAttackCost);
+	alm->insertAttribute("cat_wpn_attack_cost.mind", getMindAttackCost());
 	
-	generateDotAttributes(alm);
+	if (dot0Uses !=0 || dot1Uses != 0 || dot2Uses != 0)
+		generateDotAttributes(alm);
 	
 	if (sliced == 1) 
 		alm->insertAttribute("hacked1", "");
-		
+	
+	if (powerup0Type != 0 || powerup1Type != 0 || powerup2Type != 0)
+		generatePowerup(alm);
+	
 	player->sendMessage(alm);
 }
 
@@ -660,9 +746,12 @@ void WeaponImplementation::repairWeapon(Player* player) {
 	setConditionDamage(0);
 	
 	updated = true;
-	
-	BaseMessage* weao3 = new WeaponObjectMessage3(_this);
-	player->sendMessage(weao3);
+		
+	TangibleObjectDeltaMessage3* dtano3 = new TangibleObjectDeltaMessage3(_this);
+	dtano3->updateConditionDamage();
+	dtano3->updateMaxCondition();
+	dtano3->close();
+	player->broadcastMessage(dtano3);
 }
 
 void WeaponImplementation::setWeaponStats(int modifier){
@@ -692,7 +781,7 @@ void WeaponImplementation::setWeaponStats(int modifier){
 		
 		stringstream itemText;
 		itemText << "\\#ffff00" << name.c_str() << " (Legendary)";
-		name = unicode(itemText.str());	
+		name = unicode(itemText.str());
 	} else if (playerRoll > 45000) {
 		modifier = modifier + 50;
 		luck = luck + 100;
@@ -706,7 +795,7 @@ void WeaponImplementation::setWeaponStats(int modifier){
 
 		stringstream itemText;
 		itemText << "\\#ffff00" << name.c_str();
-		name = unicode(itemText.str());	
+		name = unicode(itemText.str());
 	}
 	
 	if (luck * System::random(100) > 1700) {
@@ -828,6 +917,315 @@ void WeaponImplementation::setWeaponStats(int modifier){
 	unlock();
 }
 
+void WeaponImplementation::generatePowerup(AttributeListMessage* alm) {
+	
+	stringstream val0;
+	stringstream val1;
+	stringstream val2;
+	
+	val0 << "+" << powerup0Value << "%";
+	val1 << "+" << powerup1Value << "%";
+	val2 << "+" << powerup2Value << "%";
+
+	alm->insertAttribute("cat_pup.pup_uses", powerupUses);
+	
+	switch (powerupType) {
+	case PowerupImplementation::MELEE :
+		switch (powerup0Type) {
+		case 1:
+			alm->insertAttribute("cat_pup.pup_wpn_attack_cost_health", val0.str());
+			break;
+		case 2:
+			alm->insertAttribute("cat_pup.pup_wpn_range_attack_mod_zero", val0.str());
+			break;
+		case 3:
+			alm->insertAttribute("cat_pup.pup_wpn_attack_cost_mind", val0.str());
+			break;
+		case 4:
+			alm->insertAttribute("cat_pup.pup_wpn_range_mid", val0.str());
+			break;
+		}
+		switch (powerup1Type) {
+		case 1:
+			alm->insertAttribute("cat_pup.pup_wpn_attack_speed", val1.str());
+			break;
+		case 2:
+			alm->insertAttribute("cat_pup.pup_wpn_range_attack_mod_mid", val1.str());
+			break;
+		case 3:
+			alm->insertAttribute("cat_pup.pup_wpn_damage_min", val1.str());
+			break;
+		case 4:
+			alm->insertAttribute("cat_pup.pup_wpn_wound_chance", val1.str());
+			break;
+		}
+		switch (powerup2Type) {
+		case 1:
+			alm->insertAttribute("cat_pup.pup_wpn_attack_speed", val2.str());
+			break;
+		case 2:
+			alm->insertAttribute("cat_pup.pup_wpn_range_attack_mod_mid", val2.str());
+			break;
+		case 3:
+			alm->insertAttribute("cat_pup.pup_wpn_damage_min", val2.str());
+			break;
+		case 4:
+			alm->insertAttribute("cat_pup.pup_wpn_wound_chance", val2.str());
+			break;
+		}
+		break;
+	case PowerupImplementation::RANGED :
+		switch (powerupSubType) {
+		case PowerupImplementation::BARREL :
+			switch (powerup0Type) {
+			case 1:
+				alm->insertAttribute("cat_pup.pup_wpn_attack_cost_health", val0.str());
+				break;
+			case 2:
+				alm->insertAttribute("cat_pup.pup_wpn_range_attack_mod_zero", val0.str());
+				break;
+			case 3:
+				alm->insertAttribute("cat_pup.pup_wpn_wound_chance", val0.str());
+				break;
+			}
+			switch (powerup1Type) {
+			case 1:
+				alm->insertAttribute("cat_pup.pup_wpn_range_attack_mod_mid", val1.str());
+				break;
+			case 2:
+				alm->insertAttribute("cat_pup.pup_wpn_damage_max", val1.str());
+				break;
+			case 3:
+				alm->insertAttribute("cat_pup.pup_wpn_range_mid", val1.str());
+				break;
+			case 4:
+				alm->insertAttribute("cat_pup.pup_wpn_attack_cost_mind", val1.str());
+			break;
+			}
+			switch (powerup2Type) {
+			case 1:
+				alm->insertAttribute("cat_pup.pup_wpn_range_attack_mod_mid", val2.str());
+				break;
+			case 2:
+				alm->insertAttribute("cat_pup.pup_wpn_damage_max", val2.str());
+				break;
+			case 3:
+				alm->insertAttribute("cat_pup.pup_wpn_range_mid", val2.str());
+				break;
+			case 4:
+				alm->insertAttribute("cat_pup.pup_wpn_attack_cost_mind", val2.str());
+			break;
+			}
+		break;
+		case PowerupImplementation::COUPLER :
+			switch (powerup0Type) {
+			case 1:
+				alm->insertAttribute("cat_pup.pup_wpn_damage_max", val0.str());
+				break;
+			case 2:
+				alm->insertAttribute("cat_pup.pup_wpn_attack_speed", val0.str());
+				break;
+			case 3:
+				alm->insertAttribute("cat_pup.pup_wpn_damage_min", val0.str());
+				break;
+			case 4:
+				alm->insertAttribute("cat_pup.pup_wpn_attack_cost_action", val0.str());
+				break;
+			}
+			switch (powerup1Type) {
+			case 1:
+				alm->insertAttribute("cat_pup.pup_wpn_attack_cost_mind", val1.str());
+				break;
+			case 2:
+				alm->insertAttribute("cat_pup.pup_wpn_range_mid", val1.str());
+				break;
+			case 3:
+				alm->insertAttribute("cat_pup.pup_wpn_range_attack_mod_zero", val1.str());
+				break;
+			}
+			switch (powerup2Type) {
+			case 1:
+				alm->insertAttribute("cat_pup.pup_wpn_attack_cost_mind", val2.str());
+				break;
+			case 2:
+				alm->insertAttribute("cat_pup.pup_wpn_range_mid", val2.str());
+				break;
+			case 3:
+				alm->insertAttribute("cat_pup.pup_wpn_range_attack_mod_zero", val2.str());
+				break;
+			}
+		break;
+		case PowerupImplementation::GRIP :
+			switch (powerup0Type) {
+			case 1:
+				alm->insertAttribute("cat_pup.pup_wpn_range_mid", val0.str());
+				break;
+			case 2:
+				alm->insertAttribute("cat_pup.pup_wpn_range_attack_mod_mid", val0.str());
+				break;
+			case 3:
+				alm->insertAttribute("cat_pup.pup_wpn_attack_speed", val0.str());
+				break;
+			case 4:
+				alm->insertAttribute("cat_pup.pup_wpn_attack_cost_mind", val0.str());
+				break;
+			}
+			switch (powerup1Type) {
+			case 1:
+				alm->insertAttribute("cat_pup.pup_wpn_attack_cost_health", val1.str());
+				break;
+			case 2:
+				alm->insertAttribute("cat_pup.pup_wpn_damage_min", val1.str());
+				break;
+			case 3:
+				alm->insertAttribute("cat_pup.pup_wpn_wound_chance", val1.str());
+				break;
+			case 4:
+				alm->insertAttribute("cat_pup.pup_wpn_range_attack_mod_max", val1.str());
+				break;
+			}
+			switch (powerup2Type) {
+			case 1:
+				alm->insertAttribute("cat_pup.pup_wpn_attack_cost_health", val2.str());
+				break;
+			case 2:
+				alm->insertAttribute("cat_pup.pup_wpn_damage_min", val2.str());
+				break;
+			case 3:
+				alm->insertAttribute("cat_pup.pup_wpn_wound_chance", val2.str());
+				break;
+			case 4:
+				alm->insertAttribute("cat_pup.pup_wpn_range_attack_mod_max", val2.str());
+				break;
+			}
+		break;
+		case PowerupImplementation::MUZZLE :
+			switch (powerup0Type) {
+			case 1:
+				alm->insertAttribute("cat_pup.pup_wpn_attack_cost_mind", val0.str());
+				break;
+			case 2:
+				alm->insertAttribute("cat_pup.pup_wpn_wound_chance", val0.str());
+				break;
+			case 3:
+				alm->insertAttribute("cat_pup.pup_wpn_range_attack_mod_max", val0.str());
+				break;
+			case 4:
+				alm->insertAttribute("cat_pup.pup_wpn_damage_min", val0.str());
+				break;
+			}
+			switch (powerup1Type) {
+			case 1:
+				alm->insertAttribute("cat_pup.pup_wpn_range_attack_mod_zero", val1.str());
+				break;
+			case 2:
+				alm->insertAttribute("cat_pup.pup_wpn_range_attack_mod_max", val1.str());
+				break;
+			case 3:
+				alm->insertAttribute("cat_pup.pup_wpn_attack_cost_health", val1.str());
+				break;
+			case 4:
+				alm->insertAttribute("cat_pup.pup_wpn_damage_min", val1.str());
+				break;
+			}
+			switch (powerup2Type) {
+			case 1:
+				alm->insertAttribute("cat_pup.pup_wpn_range_attack_mod_zero", val2.str());
+				break;
+			case 2:
+				alm->insertAttribute("cat_pup.pup_wpn_range_attack_mod_max", val2.str());
+				break;
+			case 3:
+				alm->insertAttribute("cat_pup.pup_wpn_range_attack_mod_max", val2.str());
+				break;
+			case 4:
+				alm->insertAttribute("cat_pup.pup_wpn_damage_min", val2.str());
+				break;
+			}
+			break;
+		case PowerupImplementation::SCOPE :
+			switch (powerup0Type) {
+			case 1:
+				alm->insertAttribute("cat_pup.pup_wpn_range_attack_mod_max", val0.str());
+				break;
+			case 2:
+				alm->insertAttribute("cat_pup.pup_wpn_attack_cost_mind", val0.str());
+				break;
+			case 3:
+				alm->insertAttribute("cat_pup.pup_wpn_damage_min", val0.str());
+				break;
+			case 4:
+				alm->insertAttribute("cat_pup.pup_wpn_range_attack_mod_mid", val0.str());
+				break;
+			}
+			switch (powerup1Type) {
+			case 1:
+				alm->insertAttribute("cat_pup.pup_wpn_attack_speed", val1.str());
+				break;
+			case 2:
+				alm->insertAttribute("cat_pup.pup_wpn_wound_chance", val1.str());
+				break;
+			case 3:
+				alm->insertAttribute("cat_pup.pup_wpn_attack_cost_action", val1.str());
+				break;
+			}
+			switch (powerup2Type) {
+			case 1:
+				alm->insertAttribute("cat_pup.pup_wpn_attack_speed", val2.str());
+				break;
+			case 2:
+				alm->insertAttribute("cat_pup.pup_wpn_wound_chance", val2.str());
+				break;
+			case 3:
+				alm->insertAttribute("cat_pup.pup_wpn_attack_cost_action", val2.str());
+				break;
+			}
+		break;
+		case PowerupImplementation::STOCK :
+			switch (powerup0Type) {
+			case 1:
+				alm->insertAttribute("cat_pup.pup_wpn_range_attack_mod_max", val0.str());
+				break;
+			case 2:
+				alm->insertAttribute("cat_pup.pup_wpn_range_mid", val0.str());
+				break;
+			case 3:
+				alm->insertAttribute("cat_pup.pup_wpn_attack_cost_health", val0.str());
+				break;
+			}
+			switch (powerup1Type) {
+			case 1:
+				alm->insertAttribute("cat_pup.pup_wpn_damage_max", val1.str());
+				break;
+			case 2:
+				alm->insertAttribute("cat_pup.pup_wpn_range_attack_mod_mid", val1.str());
+				break;
+			case 3:
+				alm->insertAttribute("cat_pup.pup_wpn_attack_cost_action", val1.str());
+				break;
+			case 4:
+				alm->insertAttribute("cat_pup.pup_wpn_attack_speed", val1.str());
+				break;
+			}
+			switch (powerup2Type) {
+			case 1:
+				alm->insertAttribute("cat_pup.pup_wpn_damage_max", val2.str());
+				break;
+			case 2:
+				alm->insertAttribute("cat_pup.pup_wpn_range_attack_mod_mid", val2.str());
+				break;
+			case 3:
+				alm->insertAttribute("cat_pup.pup_wpn_attack_cost_action", val2.str());
+				break;
+			case 4:
+				alm->insertAttribute("cat_pup.pup_wpn_attack_speed", val2.str());
+				break;
+			}
+		break;
+		}
+	}
+}
+
 void WeaponImplementation::generateSkillMods(AttributeListMessage* alm, int skillModType, int skillModValue) {
 	switch (skillModType) {
 	case 1:
@@ -940,7 +1338,10 @@ void WeaponImplementation::sliceWeapon(Player* player){
 				msg << "Weapon speed decreased by " << slicePercent << "%";
 				break;
 			}
-		
+
+			BaseMessage* weao3 = new WeaponObjectMessage3(_this);
+			player->sendMessage(weao3);
+
 		} else
 			msg << "Weapon is already sliced.";
 
@@ -982,4 +1383,98 @@ int WeaponImplementation::sliceWeaponSpeed(){
 	updated = true;
 	
 	return modifier;
+}
+
+void WeaponImplementation::powerupMinDamage(float powerupValue) {
+	setBonusMinDamage(minDamage * powerupValue / 100.0f);
+}
+
+void WeaponImplementation::powerupMaxDamage(float powerupValue) {
+	setBonusMaxDamage(maxDamage * powerupValue / 100.0f);
+}
+
+void WeaponImplementation::powerupHealthAttackCost(float powerupValue) {
+	setBonusHealthAttackCost(int(-healthAttackCost * powerupValue / 100.0f));
+}
+
+void WeaponImplementation::powerupActionAttackCost(float powerupValue) {
+	setBonusActionAttackCost(int(-actionAttackCost * powerupValue / 100.0f));
+}
+
+void WeaponImplementation::powerupMindAttackCost(float powerupValue) {
+	setBonusMindAttackCost(int(-mindAttackCost * powerupValue / 100.0f));
+}
+
+void WeaponImplementation::powerupWoundsRatio(float powerupValue) {
+	setBonusWoundsRatio(int(woundsRatio * powerupValue / 100.0f));
+}
+
+void WeaponImplementation::powerupAttackSpeed(float powerupValue) {
+	setBonusAttackSpeed(-attackSpeed * powerupValue / 100.0f);
+}
+
+void WeaponImplementation::powerupPointBlankAccuracy(float powerupValue) {
+	if (pointBlankAccuracy < 0)
+		setBonusPointBlankAccuracy(int((float)-pointBlankAccuracy * powerupValue / 100.0f));
+	else
+		setBonusPointBlankAccuracy(int((float)pointBlankAccuracy * powerupValue / 100.0f));
+}
+
+void WeaponImplementation::powerupIdealRange(float powerupValue) {
+	int idealRang = int((float)-idealRange * powerupValue / 100.0f);
+		
+	setBonusIdealRange(idealRang);
+}
+
+void WeaponImplementation::powerupIdealAccuracy(float powerupValue) {
+	if (idealAccuracy < 0)
+		setBonusIdealAccuracy(int((float)-idealAccuracy * powerupValue / 100.0f));
+	else
+		setBonusIdealAccuracy(int((float)idealAccuracy * powerupValue / 100.0f));
+}
+
+void WeaponImplementation::powerupMaxRangeAccuracy(float powerupValue) {
+	if (maxRangeAccuracy < 0)
+		setBonusMaxRangeAccuracy(int((float)-maxRangeAccuracy * powerupValue / 100.0f));
+	else
+		setBonusMaxRangeAccuracy(int((float)maxRangeAccuracy * powerupValue / 100.0f));
+}
+
+void WeaponImplementation::applyPowerup(Powerup* powerup) {
+	setPowerupType(powerup->getPowerupType());
+	setPowerupSubType(powerup->getPowerupSubType());
+	setPowerup0Type(powerup->getPowerup0Type());
+	setPowerup1Type(powerup->getPowerup1Type());
+	setPowerup2Type(powerup->getPowerup2Type());
+	setPowerup0Value(powerup->getPowerup0Value());
+	setPowerup1Value(powerup->getPowerup1Value());
+	setPowerup2Value(powerup->getPowerup2Value());
+	setPowerupUses(powerup->getPowerupUses());
+	updated = true;
+}
+
+void WeaponImplementation::removePowerup() {
+	setPowerupType(0);
+	setPowerupSubType(0);
+	setPowerup0Type(0);
+	setPowerup1Type(0);
+	setPowerup2Type(0);
+	setPowerup0Value(0);
+	setPowerup1Value(0);
+	setPowerup2Value(0);
+	setPowerupUses(0);
+	
+	setBonusMinDamage(0);
+	setBonusMaxDamage(0);
+	setBonusAttackSpeed(0);
+	setBonusHealthAttackCost(0);
+	setBonusActionAttackCost(0);
+	setBonusMindAttackCost(0);
+	setBonusPointBlankRange(0);
+	setBonusPointBlankAccuracy(0);
+	setBonusIdealRange(0);
+	setBonusIdealAccuracy(0);
+	setBonusMaxRange(0);
+	setBonusMaxRangeAccuracy(0);
+	setBonusWoundsRatio(0);
 }

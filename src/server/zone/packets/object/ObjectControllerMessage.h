@@ -60,6 +60,7 @@ public:
 	ObjectControllerMessage(uint64 objid, uint32 header1, uint32 header2, bool comp = true);
 	
 	static void parseAttachmentDragDrop(Player* player, Message* pack);
+	static void parsePowerupDragDrop(Player* player, Message* pack);
 	
 	static bool parseDataTransform(Player* player, Message* pack);
 	static uint64 parseDataTransformWithParent(Player* player, Message* pack);

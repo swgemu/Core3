@@ -73,6 +73,8 @@ class Armor;
 
 class Attachment;
 
+class Powerup;
+
 class Datapad;
 
 class SurveyTool;
@@ -194,6 +196,8 @@ public:
 	bool setArmorEncumbrance(Armor* armor, bool forced);
 
 	void applyAttachment(unsigned long long attachmentID, unsigned long long targetID);
+
+	void applyPowerup(unsigned long long powerupID, unsigned long long targetID);
 
 	void createItems();
 
@@ -577,6 +581,8 @@ public:
 	bool setArmorEncumbrance(Armor* armor, bool forced);
 
 	void applyAttachment(unsigned long long attachmentID, unsigned long long targetID);
+
+	void applyPowerup(unsigned long long powerupID, unsigned long long targetID);
 
 	void createItems();
 

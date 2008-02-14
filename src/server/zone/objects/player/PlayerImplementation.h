@@ -392,6 +392,7 @@ public:
 	void unsetArmorEncumbrance(Armor* armor);
 	
 	void applyAttachment(uint64 attachmentID, uint64 targetID);
+	void applyPowerup(uint64 powerupID, uint64 targetID);
 	
 	void setItemSkillMod(int type, int value);
 	

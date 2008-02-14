@@ -111,9 +111,12 @@ public:
 			
 			float medicineUse = (float)creature->getSkillMod("healing_ability");
 			
-			float health = (float)healHealth * (medicineUse / 100);
-			float action = (float)healAction * (medicineUse / 100);
-			float mind = (float)healMind * (medicineUse / 100);
+			float creatureRatio = 1.0f - creature->calculateBFRatio();
+			float targetRatio = 1.0f - creature->calculateBFRatio();
+			
+			float health = (float)healHealth * (medicineUse / 100) * creatureRatio * targetRatio;
+			float action = (float)healAction * (medicineUse / 100) * creatureRatio * targetRatio;
+			float mind = (float)healMind * (medicineUse / 100) * creatureRatio * targetRatio;
 			
 			targetCreature->changeHAMBars((int)health, (int)action, (int)mind);
 		}

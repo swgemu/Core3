@@ -220,6 +220,8 @@ protected:
 	uint32 healthWounds;
 	uint32 actionWounds;
 	uint32 mindWounds;
+	
+	uint32 shockWounds;
 
 	// misc
 	uint32 pvpStatusBitmask;
@@ -441,6 +443,8 @@ public:
 	
 	void changeConditionDamage(int amount);
 	
+	void changeShockWounds(int bf);
+	
 	void resetHAMBars();
 	
 	void setMaxHAMBars(uint32 hp, uint32 ap, uint32 mp);
@@ -476,6 +480,7 @@ public:
 	void setMaxWillpowerBar(uint32 will);
 	
 	void calculateHAMregen();
+	float calculateBFRatio();
 
 	void activateBurstRun();
 	void deactivateBurstRun();
@@ -1115,6 +1120,10 @@ public:
 		mindWounds = wounds;
 	}
 	
+	inline void setShockWounds(uint32 wounds) {
+		shockWounds = wounds;
+	}
+	
 	inline void setWoundsUpdateCounter(uint32 count) {
 		woundsUpdateCounter = count;
 	}
@@ -1373,6 +1382,10 @@ public:
 		return mindWounds;
 	}
 
+	inline uint32 getShockWounds() {
+		return shockWounds;
+	}
+	
 	inline uint32 getHAMUpdateCounter() {
 		return hamUpdateCounter;
 	}
@@ -1419,6 +1432,14 @@ public:
 	
 	inline bool hasStates() {
 		return stateBitmask != 0;
+	}
+	
+	inline bool hasWounds() {
+		return (healthWounds > 0 || actionWounds > 0 || mindWounds > 0);
+	}
+	
+	inline bool hasShockWounds() {
+		return (shockWounds > 0);
 	}
 	
 	inline bool hasState(uint64 state) {

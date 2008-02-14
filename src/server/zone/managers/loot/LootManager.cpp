@@ -110,6 +110,7 @@ void LootManager::createLoot(Creature* creature) {
 	int junkDropRate = 1100;
 	int creditDropRate = 1500;
 	int attachmentDropRate = 1500;
+	int powerupDropRate = 1500;
 	
 	creature->setCashCredits(0);
 
@@ -133,6 +134,9 @@ void LootManager::createLoot(Creature* creature) {
 		
 		if (System::random(attachmentDropRate) + creatureLevel > 1000)
 			createAttachmentLoot(creature, creatureLevel);
+		
+		if (System::random(powerupDropRate) + creatureLevel > 1000)
+			createPowerupLoot(creature, creatureLevel);
 	}
 }
 
@@ -142,82 +146,82 @@ void LootManager::createWeaponLoot(Creature* creature, int creatureLevel) {
 	
 	uint32 objectCRC = creature->getObjectCRC();
 	
-	switch (System::random(13)) {
+	switch (System::random(14)) {
 	case 0 :	// UNARMED
 		itemImpl = new UnarmedMeleeWeaponImplementation(creature, 
-				"object/weapon/melee/special/shared_vibroknuckler.iff",	unicode("a Vibroknuckler"), "vibroknuckler", false);
+				"object/weapon/melee/special/shared_vibroknuckler.iff",	unicode("Vibroknuckler"), "vibroknuckler", false);
 		itemImpl->setDamageType(WeaponImplementation::KINETIC);
 		itemImpl->setArmorPiercing(WeaponImplementation::LIGHT);
 		break;
 	case 1 :	// ONEHANDED
 		itemImpl = new OneHandedMeleeWeaponImplementation(creature, 
-				"object/weapon/melee/baton/shared_baton_gaderiffi.iff", unicode("a Gaderiffi"), "baton_gaderiffi", false);
+				"object/weapon/melee/baton/shared_baton_gaderiffi.iff", unicode("Gaderiffi"), "baton_gaderiffi", false);
 		itemImpl->setDamageType(WeaponImplementation::KINETIC);
 		itemImpl->setArmorPiercing(WeaponImplementation::NONE);
 		break;
 	case 2 :	// TWOHANDED
 		itemImpl = new TwoHandedMeleeWeaponImplementation(creature, 
-				"object/weapon/melee/2h_sword/shared_2h_sword_maul.iff", unicode("a Power Hammer"), "2h_sword_battleaxe", false);
+				"object/weapon/melee/2h_sword/shared_2h_sword_maul.iff", unicode("Power Hammer"), "2h_sword_battleaxe", false);
 		itemImpl->setDamageType(WeaponImplementation::BLAST);
 		itemImpl->setArmorPiercing(WeaponImplementation::MEDIUM);
 		break;
 	case 3 :	// POLEARM
 		itemImpl = new PolearmMeleeWeaponImplementation(creature, 
-				"object/weapon/melee/polearm/shared_lance_vibrolance.iff", unicode("a Vibrolance"), "lance_vibrolance", false);
+				"object/weapon/melee/polearm/shared_lance_vibrolance.iff", unicode("Vibrolance"), "lance_vibrolance", false);
 		itemImpl->setDamageType(WeaponImplementation::ELECTRICITY);
 		itemImpl->setArmorPiercing(WeaponImplementation::LIGHT);
 		break;
 	case 4 :	// PISTOL
 		itemImpl = new PistolRangedWeaponImplementation(creature, 
-				"object/weapon/ranged/pistol/shared_pistol_cdef.iff", unicode("a CDEF Pistol"), "pistol_cdef", false);
+				"object/weapon/ranged/pistol/shared_pistol_cdef.iff", unicode("CDEF Pistol"), "pistol_cdef", false);
 		itemImpl->setDamageType(WeaponImplementation::ENERGY);
 		itemImpl->setArmorPiercing(WeaponImplementation::NONE);
 		break;
 	case 5 :	// CARBINE
 		itemImpl = new CarbineRangedWeaponImplementation(creature,
-				"object/weapon/ranged/carbine/shared_carbine_cdef.iff", unicode("a CDEF Carbine"), "carbine_cdef", false);
+				"object/weapon/ranged/carbine/shared_carbine_cdef.iff", unicode("CDEF Carbine"), "carbine_cdef", false);
 		itemImpl->setDamageType(WeaponImplementation::ENERGY);
 		itemImpl->setArmorPiercing(WeaponImplementation::NONE);
 		break;
 	case 6 :	// RIFLE
 		itemImpl = new RifleRangedWeaponImplementation(creature, 
-				"object/weapon/ranged/rifle/shared_rifle_t21.iff", unicode("a T21 Rifle"), "rifle_t21", false);
+				"object/weapon/ranged/rifle/shared_rifle_t21.iff", unicode("T21 Rifle"), "rifle_t21", false);
 		itemImpl->setDamageType(WeaponImplementation::ENERGY);
 		itemImpl->setArmorPiercing(WeaponImplementation::HEAVY);
 		break;
 	case 7 :	// ONEHANDED
 		itemImpl = new OneHandedMeleeWeaponImplementation(creature, 
-				"object/weapon/melee/baton/shared_baton_stun.iff", unicode("a Stun Baton"), "baton_stun", false);
+				"object/weapon/melee/baton/shared_baton_stun.iff", unicode("Stun Baton"), "baton_stun", false);
 		itemImpl->setDamageType(WeaponImplementation::STUN);
 		itemImpl->setArmorPiercing(WeaponImplementation::NONE);
 		break;
 	case 8 :	// TWOHANDED
 		itemImpl = new TwoHandedMeleeWeaponImplementation(creature, 
-				"object/weapon/melee/2h_sword/shared_2h_sword_scythe.iff", unicode("a Scythe"), "2h_sword_scythe", false);
+				"object/weapon/melee/2h_sword/shared_2h_sword_scythe.iff", unicode("Scythe"), "2h_sword_scythe", false);
 		itemImpl->setDamageType(WeaponImplementation::KINETIC);
 		itemImpl->setArmorPiercing(WeaponImplementation::MEDIUM);
 		break;
 	case 9 :	// POLEARM
 		itemImpl = new PolearmMeleeWeaponImplementation(creature, 
-				"object/weapon/melee/polearm/shared_polearm_vibro_axe.iff", unicode("a Long Vibro Axe"), "lance_vibro_axe", false);
+				"object/weapon/melee/polearm/shared_polearm_vibro_axe.iff", unicode("Long Vibro Axe"), "lance_vibro_axe", false);
 		itemImpl->setDamageType(WeaponImplementation::KINETIC);
 		itemImpl->setArmorPiercing(WeaponImplementation::MEDIUM);
 		break;
 	case 10 :	// PISTOL
 		itemImpl = new PistolRangedWeaponImplementation(creature, 
-				"object/weapon/ranged/pistol/shared_pistol_dx2.iff", unicode("a DX2 Pistol"), "pistol_dx2", false);
+				"object/weapon/ranged/pistol/shared_pistol_dx2.iff", unicode("DX2 Pistol"), "pistol_dx2", false);
 		itemImpl->setDamageType(WeaponImplementation::ACID);
 		itemImpl->setArmorPiercing(WeaponImplementation::LIGHT);
 		break;
 	case 11 :	// CARBINE
 		itemImpl = new CarbineRangedWeaponImplementation(creature, 
-				"object/weapon/ranged/carbine/shared_carbine_dxr6.iff", unicode("a DX6R Carbine"), "carbine_dx6r", false);
+				"object/weapon/ranged/carbine/shared_carbine_dxr6.iff", unicode("DX6R Carbine"), "carbine_dx6r", false);
 		itemImpl->setDamageType(WeaponImplementation::ACID);
 		itemImpl->setArmorPiercing(WeaponImplementation::LIGHT);
 		break;
 	case 12 :	// RIFLE
 		itemImpl = new RifleRangedWeaponImplementation(creature, 
-				"object/weapon/ranged/rifle/shared_rifle_tenloss_dxr6_disruptor_loot.iff", unicode("a DX6R Rifle"), "rifle_tenloss_dxr6", false);
+				"object/weapon/ranged/rifle/shared_rifle_tenloss_dxr6_disruptor_loot.iff", unicode("DX6R Rifle"), "rifle_tenloss_dxr6", false);
 		itemImpl->setDamageType(WeaponImplementation::ACID);
 		itemImpl->setArmorPiercing(WeaponImplementation::MEDIUM);
 		break;
@@ -228,7 +232,7 @@ void LootManager::createWeaponLoot(Creature* creature, int creatureLevel) {
 			objectCRC == 0x514A2CBF || objectCRC == 0x5861C6A3 || objectCRC == 0x889ADF8D ||
 			objectCRC == 0x44F934A9) {
 				itemImpl = new PolearmMeleeWeaponImplementation(creature, 
-						"object/weapon/melee/polearm/shared_lance_controllerfp_nightsister.iff", unicode("a Nightsister Lance"), "lance_controllerfp_nightsister", false);
+						"object/weapon/melee/polearm/shared_lance_controllerfp_nightsister.iff", unicode("Nightsister Lance"), "lance_controllerfp_nightsister", false);
 				itemImpl->setDamageType(WeaponImplementation::KINETIC);
 				itemImpl->setArmorPiercing(WeaponImplementation::NONE);
 				itemImpl->setMinDamage(7);
@@ -241,9 +245,28 @@ void LootManager::createWeaponLoot(Creature* creature, int creatureLevel) {
 				itemImpl->setDot0Uses(8000);
 		}
 		break;
-	case 14 :	// FLAMETHROWER
+	case 14 :	// PISTOL
+		if (creatureLevel > 150) {
+			itemImpl = new PistolRangedWeaponImplementation(creature, 
+					"object/weapon/ranged/pistol/shared_pistol_geonosian_sonic_blaster_loot.iff", unicode("Genosian Sonic Blaster"), "pistol_sonic_blaster", false);
+			itemImpl->setDamageType(WeaponImplementation::STUN);
+			itemImpl->setArmorPiercing(WeaponImplementation::NONE);
+			itemImpl->setAttackSpeed(2.6);
+			itemImpl->setMinDamage(65);
+			itemImpl->setMaxDamage(100);
+			itemImpl->setWoundsRatio(4);
+			
+			itemImpl->setPointBlankAccuracy(18);
+			itemImpl->setPointBlankRange(0);
+			itemImpl->setIdealAccuracy(34);
+			itemImpl->setIdealRange(15);
+			itemImpl->setMaxRangeAccuracy(-90);
+			itemImpl->setMaxRange(48);
+		}
+		break;
+	case 15 :	// FLAMETHROWER
 		RifleRangedWeaponImplementation* flamerImpl = new RifleRangedWeaponImplementation(creature, 
-				"object/weapon/ranged/rifle/shared_rifle_flame_thrower.iff", unicode("a Flamethrower"), "rifle_flame_thrower", false);
+				"object/weapon/ranged/rifle/shared_rifle_flame_thrower.iff", unicode("Flamethrower"), "rifle_flame_thrower", false);
 		itemImpl->setDamageType(WeaponImplementation::HEAT);
 		itemImpl->setArmorPiercing(WeaponImplementation::NONE);
 	}
@@ -515,9 +538,9 @@ void LootManager::createArmorLoot(Creature* creature, int creatureLevel) {
 	}
 		
 	if (itemImpl != NULL) {
-		itemImpl->setHealthEncumbrance((System::random(6) + 7) * 19 / 3 + itemImpl->getType());
-		itemImpl->setActionEncumbrance((System::random(6) + 7) * 18 / 3 + itemImpl->getType());
-		itemImpl->setMindEncumbrance((System::random(7) + 7) * 17 / 3 + itemImpl->getType());		
+		itemImpl->setHealthEncumbrance((System::random(7) + 9) * 19 / 3 + itemImpl->getType());
+		itemImpl->setActionEncumbrance((System::random(8) + 9) * 18 / 3 + itemImpl->getType());
+		itemImpl->setMindEncumbrance((System::random(9) + 9) * 17 / 3 + itemImpl->getType());		
 
 		item = (Armor*) itemImpl->deploy();
 		
@@ -601,9 +624,23 @@ void LootManager::createAttachmentLoot(Creature* creature, int creatureLevel) {
 	itemImpl = new AttachmentImplementation(creature->getNewItemID(), AttachmentImplementation::ARMOR);
 	
 	if (itemImpl != NULL) {
+		itemImpl->setSkillMods(creatureLevel);
+		
 		item = itemImpl->deploy();
+		creature->addLootItem(item);
+	}
+}
 
-		item->setSkillMods(creatureLevel);
+void LootManager::createPowerupLoot(Creature* creature, int creatureLevel) {
+	Powerup* item = NULL;
+	PowerupImplementation* itemImpl = NULL;
+	
+	itemImpl = new PowerupImplementation(creature->getNewItemID());
+	
+	if (itemImpl != NULL) {
+		itemImpl->setPowerupStats(creatureLevel);
+		
+		item = itemImpl->deploy();
 		creature->addLootItem(item);
 	}
 }
