@@ -63,8 +63,8 @@ public:
 	void initialize() {
 		objectSubType = TangibleObjectImplementation::ONEHANDMELEEWEAPON;
 		
-		setType(1);
-		setCategory(0x10);
+		setType(ONEHANDED);
+		setCategory(MELEE);
 		
 		setMinDamage(49);
 		setMaxDamage(157);

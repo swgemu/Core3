@@ -249,6 +249,8 @@ public:
 	virtual void parseItemAttributes() {
 		
 	}
+	
+	void generateSkillMods(class AttributeListMessage* alm, int skillModType, int skillModValue);
 
 	void insertToZone(Zone* zone);
 	void removeFromZone();
@@ -357,16 +359,13 @@ public:
 		itemAttributes->getAttributeString(attributeString);
 		return attributeString;
 	}
-		
+	
 	inline int getObjectSubType() { 
 		return objectSubType;
 	}
 	
 	inline bool isWeapon() {
-		return (objectSubType == WEAPON || objectSubType == LIGHTSABER ||
-				objectSubType == ONEHANDMELEEWEAPON || objectSubType == TWOHANDMELEEWEAPON ||
-				objectSubType == POLEARM || objectSubType == MELEEWEAPON || objectSubType == RANGEDWEAPON ||
-				objectSubType == CARBINE || objectSubType == PISTOL || objectSubType == RIFLE);
+		return (objectSubType & WEAPON);
 	}
 	
 	inline bool isArmor() {

@@ -952,98 +952,6 @@ void WeaponImplementation::generatePowerup(AttributeListMessage* alm) {
 	}
 }
 
-void WeaponImplementation::generateSkillMods(AttributeListMessage* alm, int skillModType, int skillModValue) {
-	switch (skillModType) {
-	case 1:
-		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:melee_defense", skillModValue);
-		break;
-	case 2:
-		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:ranged_defense", skillModValue);
-		break;
-	case 3:
-		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:stun_defense", skillModValue);
-		break;
-	case 4:
-		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:dizzy_defense", skillModValue);
-		break;
-	case 5:
-		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:blind_defense", skillModValue);
-		break;
-	case 6:
-		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:knockdown_defense", skillModValue);
-		break;
-	case 7:
-		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:intimidate_defense", skillModValue);
-		break;
-	case 8:
-		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:pistol_speed", skillModValue);
-		break;
-	case 9:
-		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:carbine_speed", skillModValue);
-		break;
-	case 10:
-		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:rifle_speed", skillModValue);
-		break;
-	case 11:
-		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:unarmed_speed", skillModValue);
-		break;
-	case 12:
-		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:onehandmelee_speed", skillModValue);
-		break;
-	case 13:
-		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:twohandmelee_speed", skillModValue);
-		break;
-	case 14:
-		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:polearm_speed", skillModValue);
-		break;
-	case 15:
-		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:pistol_accuracy", skillModValue);
-		break;
-	case 16:
-		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:carbine_accuracy", skillModValue);
-		break;
-	case 17:
-		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:rifle_accuracy", skillModValue);
-		break;
-	case 18:
-		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:unarmed_accuracy", skillModValue);
-		break;
-	case 19:
-		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:onehandmelee_accuracy", skillModValue);
-		break;
-	case 20:
-		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:twohandmelee_accuracy", skillModValue);
-		break;
-	case 21:
-		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:polearm_accuracy", skillModValue);
-		break;
-	case 22:
-		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:dodge", skillModValue);
-		break;
-	case 23:
-		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:block", skillModValue);
-		break;
-	case 24:
-		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:counterattack", skillModValue);
-		break;
-	case 25:
-		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:resistance_bleeding", skillModValue);
-		break;
-	case 26:
-		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:resistance_disease", skillModValue);
-		break;
-	case 27:
-		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:resistance_fire", skillModValue);
-		break;
-	case 28:
-		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:resistance_poison", skillModValue);
-		break;
-	case 29:
-		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:slope_move", skillModValue);
-		break;
-	}
-}
-
 void WeaponImplementation::sliceWeapon(Player* player){
 	bool sliceType = System::random(1);
 	int slicePercent;
@@ -1114,6 +1022,9 @@ int WeaponImplementation::sliceWeaponSpeed(){
 
 void WeaponImplementation::powerupMinDamage(float powerupValue) {
 	setBonusMinDamage(minDamage * powerupValue / 100.0f);
+
+	if (getMinDamage() > getMaxDamage())
+		setBonusMinDamage(getMaxDamage() - minDamage - 1);
 }
 
 void WeaponImplementation::powerupMaxDamage(float powerupValue) {

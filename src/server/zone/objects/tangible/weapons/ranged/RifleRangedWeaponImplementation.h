@@ -63,8 +63,8 @@ public:
 	void initialize() {
 		objectSubType = TangibleObjectImplementation::RIFLE;
 		
-		setType(6);
-		setCategory(0x20);
+		setType(RIFLE);
+		setCategory(RANGED);
 		
 		setDamageType(ENERGY);
 		setArmorPiercing(HEAVY);

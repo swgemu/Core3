@@ -209,8 +209,6 @@ public:
 	
 	void generatePowerup(class AttributeListMessage* alm);
 	
-	void generateSkillMods(class AttributeListMessage* alm, int skillModType, int skillModValue);
-	
 	void setWeaponStats(int modifier);
 	
 	void decayWeapon(int decayRate);

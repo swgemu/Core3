@@ -2062,10 +2062,6 @@ void PlayerImplementation::applyAttachment(uint64 attachmentID, uint64 targetID)
 	armor->wlock();
 	attachment->wlock();
 	
-	int mod0Value = attachment->getSkillMod0Value();
-	int mod1Value = attachment->getSkillMod1Value();
-	int mod2Value = attachment->getSkillMod2Value();
-	
 	int skillModType;
 	int skillModValue;
 	
@@ -2115,9 +2111,7 @@ void PlayerImplementation::applyAttachment(uint64 attachmentID, uint64 targetID)
 	}
 	// this is for the case when we pulled off the skill mod but the attachment only had one mod)
 	if (attachment->isUpdated()) {
-		attachment->setSkillMod0Value(mod0Value);
-		attachment->setSkillMod1Value(mod1Value);
-		attachment->setSkillMod2Value(mod2Value);
+		attachment->remove(_this);
 		attachment->setUpdated(false);
 	}
 	armor->unlock();

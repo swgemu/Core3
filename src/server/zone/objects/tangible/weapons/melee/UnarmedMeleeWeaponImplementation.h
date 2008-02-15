@@ -63,8 +63,8 @@ public:
 	void initialize() {
 		objectSubType = TangibleObjectImplementation::MELEEWEAPON;
 		
-		setType(0);
-		setCategory(0x10);
+		setType(UNARMED);
+		setCategory(MELEE);
 		
 		setDamageType(KINETIC);
 		setMinDamage(58);
@@ -74,10 +74,10 @@ public:
 		
 		setPointBlankAccuracy(7);
 		setPointBlankRange(0);
-
+		
 		setIdealAccuracy(7);
 		setIdealRange(3);
-
+		
 		setMaxRangeAccuracy(7);
 		setMaxRange(5);
 		

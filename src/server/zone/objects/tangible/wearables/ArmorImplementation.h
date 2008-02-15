@@ -141,9 +141,7 @@ public:
 	void decayArmor(int decayRate);
 	
 	void generateAttributes(SceneObject* obj);
-	
-	void generateSkillMods(class AttributeListMessage* alm, int skillModType, int skillModValue);
-	
+		
 	void sliceArmor(Player* player);
 	
 	int sliceArmorEffectiveness();

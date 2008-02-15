@@ -63,8 +63,8 @@ public:
 	void initialize() {
 		objectSubType = TangibleObjectImplementation::TWOHANDMELEEWEAPON;
 		
-		setType(2);
-		setCategory(0x10);
+		setType(TWOHANDED);
+		setCategory(MELEE);
 		
 		setMinDamage(156);
 		setMaxDamage(308);
@@ -72,10 +72,10 @@ public:
 		
 		setPointBlankAccuracy(-45);
 		setPointBlankRange(0);
-
+		
 		setIdealAccuracy(-45);
 		setIdealRange(5);
-
+		
 		setMaxRangeAccuracy(-45);
 		setMaxRange(5);
 		

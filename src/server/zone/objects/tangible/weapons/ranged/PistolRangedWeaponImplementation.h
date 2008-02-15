@@ -63,8 +63,8 @@ public:
 	void initialize() {
 		objectSubType = TangibleObjectImplementation::PISTOL;
 		
-		setType(4);
-		setCategory(0x20);
+		setType(PISTOL);
+		setCategory(RANGED);
 		
 		setDamageType(ENERGY);
 		setMinDamage(89);
@@ -79,7 +79,7 @@ public:
 		
 		setIdealAccuracy(60);
 		setIdealRange(30);
-			
+		
 		setMaxRangeAccuracy(-85);
 		setMaxRange(44);
 		setArmorPiercing(LIGHT);

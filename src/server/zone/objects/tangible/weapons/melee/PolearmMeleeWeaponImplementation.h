@@ -63,8 +63,8 @@ public:
 	void initialize() {
 		objectSubType = TangibleObjectImplementation::POLEARM;
 		
-		setType(3);
-		setCategory(0x10);
+		setType(POLEARM);
+		setCategory(MELEE);
 		
 		setMinDamage(149);
 		setMaxDamage(272);

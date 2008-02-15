@@ -63,15 +63,15 @@ public:
 	void initialize() {
 		objectSubType = TangibleObjectImplementation::CARBINE;
 		
-		setType(5);
-		setCategory(0x20);
+		setType(CARBINE);
+		setCategory(RANGED);
 		
 		setDamageType(ENERGY);
 		setMinDamage(137);
 		setMaxDamage(288);
 		
 		setAttackSpeed(4.7f);
-
+		
 		setRange(65);
 		
 		setPointBlankAccuracy(-30);
@@ -79,7 +79,7 @@ public:
 		
 		setIdealAccuracy(60);
 		setIdealRange(45);
-			
+		
 		setMaxRangeAccuracy(-85);
 		setMaxRange(64);
 		setArmorPiercing(MEDIUM);
