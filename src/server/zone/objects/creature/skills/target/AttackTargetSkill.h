@@ -190,7 +190,7 @@ public:
 			
 			if (weapon->decreasePowerupUses())
 					weapon->setUpdated(true);
-				else if (weapon->getPowerupType() > 0)
+				else if (weapon->hasPowerup())
 					weapon->removePowerup((Player*)attacker, true);
 		}
 		
@@ -267,7 +267,7 @@ public:
 			
 			if (weapon->decreasePowerupUses())
 					weapon->setUpdated(true);
-				else if (weapon->getPowerupType() > 0)
+			else if (weapon->hasPowerup())
 					weapon->removePowerup((Player*)attacker, true);
 		}
 
@@ -338,7 +338,7 @@ public:
 			
 			if (weapon->decreasePowerupUses())
 					weapon->setUpdated(true);
-				else if (weapon->getPowerupType() > 0)
+			else if (weapon->hasPowerup())
 					weapon->removePowerup((Player*)attacker, true);
 		}
 		

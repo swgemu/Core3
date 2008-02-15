@@ -145,25 +145,12 @@ void Weapon::repairWeapon(Player* player) {
 		((WeaponImplementation*) _impl)->repairWeapon(player);
 }
 
-void Weapon::applyPowerup(Powerup* powerup) {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 11);
-		invocation.addObjectParameter(powerup);
-
-		invocation.executeWithVoidReturn();
-	} else
-		((WeaponImplementation*) _impl)->applyPowerup(powerup);
-}
-
 void Weapon::removePowerup(Player* player, bool notify) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 12);
+		ORBMethodInvocation invocation(this, 11);
 		invocation.addObjectParameter(player);
 		invocation.addBooleanParameter(notify);
 
@@ -177,7 +164,7 @@ bool Weapon::decreaseDot0Uses() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 13);
+		ORBMethodInvocation invocation(this, 12);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -189,7 +176,7 @@ bool Weapon::decreaseDot1Uses() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 14);
+		ORBMethodInvocation invocation(this, 13);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -201,7 +188,7 @@ bool Weapon::decreaseDot2Uses() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 15);
+		ORBMethodInvocation invocation(this, 14);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -213,7 +200,7 @@ bool Weapon::decreasePowerupUses() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 16);
+		ORBMethodInvocation invocation(this, 15);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -225,7 +212,7 @@ bool Weapon::isSliced() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 17);
+		ORBMethodInvocation invocation(this, 16);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -237,7 +224,7 @@ bool Weapon::isJedi() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 18);
+		ORBMethodInvocation invocation(this, 17);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -249,7 +236,7 @@ bool Weapon::isMelee() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 19);
+		ORBMethodInvocation invocation(this, 18);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -261,7 +248,7 @@ bool Weapon::isRanged() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 20);
+		ORBMethodInvocation invocation(this, 19);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -273,7 +260,7 @@ void Weapon::powerupMinDamage(float powerupValue) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 21);
+		ORBMethodInvocation invocation(this, 20);
 		invocation.addFloatParameter(powerupValue);
 
 		invocation.executeWithVoidReturn();
@@ -286,7 +273,7 @@ void Weapon::powerupMaxDamage(float powerupValue) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 22);
+		ORBMethodInvocation invocation(this, 21);
 		invocation.addFloatParameter(powerupValue);
 
 		invocation.executeWithVoidReturn();
@@ -299,7 +286,7 @@ void Weapon::powerupHealthAttackCost(float powerupValue) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 23);
+		ORBMethodInvocation invocation(this, 22);
 		invocation.addFloatParameter(powerupValue);
 
 		invocation.executeWithVoidReturn();
@@ -312,7 +299,7 @@ void Weapon::powerupActionAttackCost(float powerupValue) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 24);
+		ORBMethodInvocation invocation(this, 23);
 		invocation.addFloatParameter(powerupValue);
 
 		invocation.executeWithVoidReturn();
@@ -325,7 +312,7 @@ void Weapon::powerupMindAttackCost(float powerupValue) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 25);
+		ORBMethodInvocation invocation(this, 24);
 		invocation.addFloatParameter(powerupValue);
 
 		invocation.executeWithVoidReturn();
@@ -338,7 +325,7 @@ void Weapon::powerupWoundsRatio(float powerupValue) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 26);
+		ORBMethodInvocation invocation(this, 25);
 		invocation.addFloatParameter(powerupValue);
 
 		invocation.executeWithVoidReturn();
@@ -351,7 +338,7 @@ void Weapon::powerupAttackSpeed(float powerupValue) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 27);
+		ORBMethodInvocation invocation(this, 26);
 		invocation.addFloatParameter(powerupValue);
 
 		invocation.executeWithVoidReturn();
@@ -364,7 +351,7 @@ void Weapon::powerupPointBlankAccuracy(float powerupValue) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 28);
+		ORBMethodInvocation invocation(this, 27);
 		invocation.addFloatParameter(powerupValue);
 
 		invocation.executeWithVoidReturn();
@@ -377,7 +364,7 @@ void Weapon::powerupIdealRange(float powerupValue) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 29);
+		ORBMethodInvocation invocation(this, 28);
 		invocation.addFloatParameter(powerupValue);
 
 		invocation.executeWithVoidReturn();
@@ -390,7 +377,7 @@ void Weapon::powerupIdealAccuracy(float powerupValue) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 30);
+		ORBMethodInvocation invocation(this, 29);
 		invocation.addFloatParameter(powerupValue);
 
 		invocation.executeWithVoidReturn();
@@ -403,7 +390,7 @@ void Weapon::powerupMaxRangeAccuracy(float powerupValue) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 31);
+		ORBMethodInvocation invocation(this, 30);
 		invocation.addFloatParameter(powerupValue);
 
 		invocation.executeWithVoidReturn();
@@ -416,7 +403,7 @@ void Weapon::setDot0Uses(int uses) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 32);
+		ORBMethodInvocation invocation(this, 31);
 		invocation.addSignedIntParameter(uses);
 
 		invocation.executeWithVoidReturn();
@@ -429,7 +416,7 @@ void Weapon::setDot1Uses(int uses) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 33);
+		ORBMethodInvocation invocation(this, 32);
 		invocation.addSignedIntParameter(uses);
 
 		invocation.executeWithVoidReturn();
@@ -442,12 +429,25 @@ void Weapon::setDot2Uses(int uses) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 34);
+		ORBMethodInvocation invocation(this, 33);
 		invocation.addSignedIntParameter(uses);
 
 		invocation.executeWithVoidReturn();
 	} else
 		((WeaponImplementation*) _impl)->setDot2Uses(uses);
+}
+
+void Weapon::setPowerupUses(int uses) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 34);
+		invocation.addSignedIntParameter(uses);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((WeaponImplementation*) _impl)->setPowerupUses(uses);
 }
 
 int Weapon::getType() {
@@ -942,7 +942,7 @@ int Weapon::getSkillMod2Value() {
 		return ((WeaponImplementation*) _impl)->getSkillMod2Value();
 }
 
-int Weapon::getPowerup0Type() {
+int Weapon::getPowerupUses() {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
@@ -951,103 +951,19 @@ int Weapon::getPowerup0Type() {
 
 		return invocation.executeWithSignedIntReturn();
 	} else
-		return ((WeaponImplementation*) _impl)->getPowerup0Type();
+		return ((WeaponImplementation*) _impl)->getPowerupUses();
 }
 
-int Weapon::getPowerup1Type() {
+bool Weapon::hasPowerup() {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
 		ORBMethodInvocation invocation(this, 77);
 
-		return invocation.executeWithSignedIntReturn();
+		return invocation.executeWithBooleanReturn();
 	} else
-		return ((WeaponImplementation*) _impl)->getPowerup1Type();
-}
-
-int Weapon::getPowerup2Type() {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 78);
-
-		return invocation.executeWithSignedIntReturn();
-	} else
-		return ((WeaponImplementation*) _impl)->getPowerup2Type();
-}
-
-float Weapon::getPowerup0Value() {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 79);
-
-		return invocation.executeWithFloatReturn();
-	} else
-		return ((WeaponImplementation*) _impl)->getPowerup0Value();
-}
-
-float Weapon::getPowerup1Value() {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 80);
-
-		return invocation.executeWithFloatReturn();
-	} else
-		return ((WeaponImplementation*) _impl)->getPowerup1Value();
-}
-
-float Weapon::getPowerup2Value() {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 81);
-
-		return invocation.executeWithFloatReturn();
-	} else
-		return ((WeaponImplementation*) _impl)->getPowerup2Value();
-}
-
-int Weapon::getPowerupUses() {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 82);
-
-		return invocation.executeWithSignedIntReturn();
-	} else
-		return ((WeaponImplementation*) _impl)->getPowerupUses();
-}
-
-int Weapon::getPowerupType() {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 83);
-
-		return invocation.executeWithSignedIntReturn();
-	} else
-		return ((WeaponImplementation*) _impl)->getPowerupType();
-}
-
-int Weapon::getPowerupSubType() {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 84);
-
-		return invocation.executeWithSignedIntReturn();
-	} else
-		return ((WeaponImplementation*) _impl)->getPowerupSubType();
+		return ((WeaponImplementation*) _impl)->hasPowerup();
 }
 
 /*
@@ -1077,76 +993,76 @@ Packet* WeaponAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* inv) {
 		repairWeapon((Player*) inv->getObjectParameter());
 		break;
 	case 11:
-		applyPowerup((Powerup*) inv->getObjectParameter());
-		break;
-	case 12:
 		removePowerup((Player*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
-	case 13:
+	case 12:
 		resp->insertBoolean(decreaseDot0Uses());
 		break;
-	case 14:
+	case 13:
 		resp->insertBoolean(decreaseDot1Uses());
 		break;
-	case 15:
+	case 14:
 		resp->insertBoolean(decreaseDot2Uses());
 		break;
-	case 16:
+	case 15:
 		resp->insertBoolean(decreasePowerupUses());
 		break;
-	case 17:
+	case 16:
 		resp->insertBoolean(isSliced());
 		break;
-	case 18:
+	case 17:
 		resp->insertBoolean(isJedi());
 		break;
-	case 19:
+	case 18:
 		resp->insertBoolean(isMelee());
 		break;
-	case 20:
+	case 19:
 		resp->insertBoolean(isRanged());
 		break;
-	case 21:
+	case 20:
 		powerupMinDamage(inv->getFloatParameter());
 		break;
-	case 22:
+	case 21:
 		powerupMaxDamage(inv->getFloatParameter());
 		break;
-	case 23:
+	case 22:
 		powerupHealthAttackCost(inv->getFloatParameter());
 		break;
-	case 24:
+	case 23:
 		powerupActionAttackCost(inv->getFloatParameter());
 		break;
-	case 25:
+	case 24:
 		powerupMindAttackCost(inv->getFloatParameter());
 		break;
-	case 26:
+	case 25:
 		powerupWoundsRatio(inv->getFloatParameter());
 		break;
-	case 27:
+	case 26:
 		powerupAttackSpeed(inv->getFloatParameter());
 		break;
-	case 28:
+	case 27:
 		powerupPointBlankAccuracy(inv->getFloatParameter());
 		break;
-	case 29:
+	case 28:
 		powerupIdealRange(inv->getFloatParameter());
 		break;
-	case 30:
+	case 29:
 		powerupIdealAccuracy(inv->getFloatParameter());
 		break;
-	case 31:
+	case 30:
 		powerupMaxRangeAccuracy(inv->getFloatParameter());
 		break;
-	case 32:
+	case 31:
 		setDot0Uses(inv->getSignedIntParameter());
 		break;
-	case 33:
+	case 32:
 		setDot1Uses(inv->getSignedIntParameter());
 		break;
-	case 34:
+	case 33:
 		setDot2Uses(inv->getSignedIntParameter());
+		break;
+	case 34:
+		setPowerupUses(inv->getSignedIntParameter());
 		break;
 	case 35:
 		resp->insertSignedInt(getType());
@@ -1272,31 +1188,10 @@ Packet* WeaponAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* inv) {
 		resp->insertSignedInt(getSkillMod2Value());
 		break;
 	case 76:
-		resp->insertSignedInt(getPowerup0Type());
-		break;
-	case 77:
-		resp->insertSignedInt(getPowerup1Type());
-		break;
-	case 78:
-		resp->insertSignedInt(getPowerup2Type());
-		break;
-	case 79:
-		resp->insertFloat(getPowerup0Value());
-		break;
-	case 80:
-		resp->insertFloat(getPowerup1Value());
-		break;
-	case 81:
-		resp->insertFloat(getPowerup2Value());
-		break;
-	case 82:
 		resp->insertSignedInt(getPowerupUses());
 		break;
-	case 83:
-		resp->insertSignedInt(getPowerupType());
-		break;
-	case 84:
-		resp->insertSignedInt(getPowerupSubType());
+	case 77:
+		resp->insertBoolean(hasPowerup());
 		break;
 	default:
 		return NULL;
@@ -1323,10 +1218,6 @@ void WeaponAdapter::sliceWeapon(Player* player) {
 
 void WeaponAdapter::repairWeapon(Player* player) {
 	return ((WeaponImplementation*) impl)->repairWeapon(player);
-}
-
-void WeaponAdapter::applyPowerup(Powerup* powerup) {
-	return ((WeaponImplementation*) impl)->applyPowerup(powerup);
 }
 
 void WeaponAdapter::removePowerup(Player* player, bool notify) {
@@ -1419,6 +1310,10 @@ void WeaponAdapter::setDot1Uses(int uses) {
 
 void WeaponAdapter::setDot2Uses(int uses) {
 	return ((WeaponImplementation*) impl)->setDot2Uses(uses);
+}
+
+void WeaponAdapter::setPowerupUses(int uses) {
+	return ((WeaponImplementation*) impl)->setPowerupUses(uses);
 }
 
 int WeaponAdapter::getType() {
@@ -1585,40 +1480,12 @@ int WeaponAdapter::getSkillMod2Value() {
 	return ((WeaponImplementation*) impl)->getSkillMod2Value();
 }
 
-int WeaponAdapter::getPowerup0Type() {
-	return ((WeaponImplementation*) impl)->getPowerup0Type();
-}
-
-int WeaponAdapter::getPowerup1Type() {
-	return ((WeaponImplementation*) impl)->getPowerup1Type();
-}
-
-int WeaponAdapter::getPowerup2Type() {
-	return ((WeaponImplementation*) impl)->getPowerup2Type();
-}
-
-float WeaponAdapter::getPowerup0Value() {
-	return ((WeaponImplementation*) impl)->getPowerup0Value();
-}
-
-float WeaponAdapter::getPowerup1Value() {
-	return ((WeaponImplementation*) impl)->getPowerup1Value();
-}
-
-float WeaponAdapter::getPowerup2Value() {
-	return ((WeaponImplementation*) impl)->getPowerup2Value();
-}
-
 int WeaponAdapter::getPowerupUses() {
 	return ((WeaponImplementation*) impl)->getPowerupUses();
 }
 
-int WeaponAdapter::getPowerupType() {
-	return ((WeaponImplementation*) impl)->getPowerupType();
-}
-
-int WeaponAdapter::getPowerupSubType() {
-	return ((WeaponImplementation*) impl)->getPowerupSubType();
+bool WeaponAdapter::hasPowerup() {
+	return ((WeaponImplementation*) impl)->hasPowerup();
 }
 
 /*

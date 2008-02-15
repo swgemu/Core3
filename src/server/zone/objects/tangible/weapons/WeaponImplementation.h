@@ -122,17 +122,7 @@ protected:
 	int dot2Potency;
 	int dot2Uses;
 	
-	int powerup0Type;
-	int powerup1Type;
-	int powerup2Type;
-	
-	float powerup0Value;
-	float powerup1Value;
-	float powerup2Value;
-	
 	int powerupUses;
-	int powerupType;
-	int powerupSubType;
 
 	float bonusMinDamage;
 	float bonusMaxDamage;
@@ -225,7 +215,6 @@ public:
 	
 	void decayWeapon(int decayRate);
 	
-	void applyPowerup(Powerup* powerup);
 	void removePowerup(Player* player, bool notify);
 	
 	void powerupMinDamage(float powerupValue);
@@ -541,59 +530,11 @@ public:
 		string name = "skillMod2Value";
 		itemAttributes->setIntAttribute(name, skillModValue);
 	}
-	
-	inline void setPowerup0Type(int powerupType) {
-		powerup0Type = powerupType;
-		string name = "powerup0Type";
-		itemAttributes->setIntAttribute(name, powerupType);
-	}
-	
-	inline void setPowerup1Type(int powerupType) {
-		powerup1Type = powerupType;
-		string name = "powerup1Type";
-		itemAttributes->setIntAttribute(name, powerupType);
-	}
-	
-	inline void setPowerup2Type(int powerupType) {
-		powerup2Type = powerupType;
-		string name = "powerup2Type";
-		itemAttributes->setIntAttribute(name, powerupType);
-	}
-	
-	inline void setPowerup0Value(float powerupValue) {
-		powerup0Value = powerupValue;
-		string name = "powerup0Value";
-		itemAttributes->setFloatAttribute(name, powerupValue);
-	}
-	
-	inline void setPowerup1Value(float powerupValue) {
-		powerup1Value = powerupValue;
-		string name = "powerup1Value";
-		itemAttributes->setFloatAttribute(name, powerupValue);
-	}
-	
-	inline void setPowerup2Value(float powerupValue) {
-		powerup2Value = powerupValue;
-		string name = "powerup2Value";
-		itemAttributes->setFloatAttribute(name, powerupValue);
-	}
-	
+		
 	inline void setPowerupUses(int uses) {
 		powerupUses = uses;
 		string name = "powerupUses";
 		itemAttributes->setIntAttribute(name, uses);
-	}
-	
-	inline void setPowerupType(int type) {
-		powerupType = type;
-		string name = "powerupType";
-		itemAttributes->setIntAttribute(name, type);
-	}
-
-	inline void setPowerupSubType(int type) {
-		powerupSubType = type;
-		string name = "powerupSubType";
-		itemAttributes->setIntAttribute(name, type);
 	}
 	
 	inline void setBonusMinDamage(float minDmg) {
@@ -856,40 +797,15 @@ public:
 		return skillMod2Value;
 	}
 	
-	inline int getPowerup0Type() {
-		return powerup0Type;
-	}
-
-	inline int getPowerup1Type() {
-		return powerup1Type;
-	}
-
-	inline int getPowerup2Type() {
-		return powerup2Type;
-	}
-	
-	inline float getPowerup0Value() {
-		return powerup0Value;
-	}
-
-	inline float getPowerup1Value() {
-		return powerup1Value;
-	}
-
-	inline float getPowerup2Value() {
-		return powerup2Value;
-	}
-	
 	inline int getPowerupUses() {
 		return powerupUses;
 	}
 	
-	inline int getPowerupType() {
-		return powerupType;
-	}
-	
-	inline int getPowerupSubType() {
-		return powerupSubType;
+	inline bool hasPowerup() {
+		return (bonusMinDamage != 0 || bonusMaxDamage != 0 || bonusAttackSpeed != 0 ||
+				bonusHealthAttackCost != 0 || bonusActionAttackCost != 0 || bonusMindAttackCost != 0 || 
+				bonusPointBlankRange != 0 || bonusPointBlankAccuracy != 0 || bonusIdealRange != 0 ||
+				bonusIdealAccuracy != 0 || bonusMaxRange != 0 || bonusMaxRangeAccuracy != 0 || bonusWoundsRatio != 0);
 	}
 
 	friend class CombatManager;

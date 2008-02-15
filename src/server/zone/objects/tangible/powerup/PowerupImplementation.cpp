@@ -1004,6 +1004,9 @@ void PowerupImplementation::apply(Weapon* weapon) {
 		break;
 		}
 	}
+	weapon->setPowerupUses(uses);
+	weapon->setUpdated(true);
+	
 }
 
 void PowerupImplementation::parseItemAttributes() {

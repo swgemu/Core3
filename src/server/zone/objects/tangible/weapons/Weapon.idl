@@ -64,7 +64,6 @@ interface Weapon implements TangibleObject {
 	
 	void repairWeapon(Player player);
 
-	void applyPowerup(Powerup powerup);
 	void removePowerup(Player player, boolean notify);
 
 	boolean decreaseDot0Uses();
@@ -96,6 +95,7 @@ interface Weapon implements TangibleObject {
 	void setDot0Uses(int uses);
 	void setDot1Uses(int uses);
 	void setDot2Uses(int uses);
+	void setPowerupUses(int uses);
 
 	// getters
 	int getType();
@@ -161,17 +161,7 @@ interface Weapon implements TangibleObject {
 	int getSkillMod1Value();
 	int getSkillMod2Value();
 
-	int getPowerup0Type();
-	int getPowerup1Type();
-	int getPowerup2Type();
-
-	float getPowerup0Value();
-	float getPowerup1Value();
-	float getPowerup2Value();
-
 	int getPowerupUses();
-
-	int getPowerupType();
-	int getPowerupSubType();
+	boolean hasPowerup();
 	
 }

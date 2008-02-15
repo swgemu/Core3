@@ -81,8 +81,6 @@ public:
 
 	void repairWeapon(Player* player);
 
-	void applyPowerup(Powerup* powerup);
-
 	void removePowerup(Player* player, bool notify);
 
 	bool decreaseDot0Uses();
@@ -128,6 +126,8 @@ public:
 	void setDot1Uses(int uses);
 
 	void setDot2Uses(int uses);
+
+	void setPowerupUses(int uses);
 
 	int getType();
 
@@ -211,23 +211,9 @@ public:
 
 	int getSkillMod2Value();
 
-	int getPowerup0Type();
-
-	int getPowerup1Type();
-
-	int getPowerup2Type();
-
-	float getPowerup0Value();
-
-	float getPowerup1Value();
-
-	float getPowerup2Value();
-
 	int getPowerupUses();
 
-	int getPowerupType();
-
-	int getPowerupSubType();
+	bool hasPowerup();
 
 protected:
 };
@@ -250,8 +236,6 @@ public:
 
 	void repairWeapon(Player* player);
 
-	void applyPowerup(Powerup* powerup);
-
 	void removePowerup(Player* player, bool notify);
 
 	bool decreaseDot0Uses();
@@ -297,6 +281,8 @@ public:
 	void setDot1Uses(int uses);
 
 	void setDot2Uses(int uses);
+
+	void setPowerupUses(int uses);
 
 	int getType();
 
@@ -380,23 +366,9 @@ public:
 
 	int getSkillMod2Value();
 
-	int getPowerup0Type();
-
-	int getPowerup1Type();
-
-	int getPowerup2Type();
-
-	float getPowerup0Value();
-
-	float getPowerup1Value();
-
-	float getPowerup2Value();
-
 	int getPowerupUses();
 
-	int getPowerupType();
-
-	int getPowerupSubType();
+	bool hasPowerup();
 
 };
 
