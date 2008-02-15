@@ -458,6 +458,30 @@ void ItemManagerImplementation::loadDefaultPlayerItems(Player* player) {
 	SurveyToolImplementation* windSurvImpl = new SurveyToolImplementation(player, 0x21C39BD0, unicode("Wind Survey Tool"), "survey_tool_wind");
 	player->addInventoryItem(windSurvImpl->deploy());
 	
+	/*
+	// crafting tools
+	CraftingToolImplementation* clothingTool = new CraftingToolImplementation(player, 0x2CED1748,	unicode("Clothing and Armor Crafting Tool"), "clothing_tool");
+	player->addInventoryItem(clothingTool->deploy());
+ 
+	CraftingToolImplementation* foodTool = new CraftingToolImplementation(player, 0xA9D9972F,	unicode("Food and Chemical Crafting Tool"), "food_tool");
+	player->addInventoryItem(foodTool->deploy());
+ 
+	CraftingToolImplementation* genericTool = new CraftingToolImplementation(player, 0x3EE5146D,	unicode("Generic Crafting Tool"), "generic_tool");
+	player->addInventoryItem(genericTool->deploy());
+ 
+	CraftingToolImplementation* lightsaberTool = new CraftingToolImplementation(player, 0x2CF24272,	unicode("Lightsaber Crafting Tool"), "jedi_tool");
+	player->addInventoryItem(lightsaberTool->deploy());
+ 
+	CraftingToolImplementation* starshipTool = new CraftingToolImplementation(player, 0xAD0E3DB0,	unicode("Starship Crafting Tool"), "space_tool");
+	player->addInventoryItem(starshipTool->deploy());
+ 
+	CraftingToolImplementation* structureTool = new CraftingToolImplementation(player, 0xFEDA0435,	unicode("Structure and Furniture Crafting Tool"), "structure_tool");
+	player->addInventoryItem(structureTool->deploy());
+ 
+	CraftingToolImplementation* weaponTool = new CraftingToolImplementation(player, 0x64F6D031,	unicode("Weapon Droid and General Item Crafting Tool"), "weapon_tool");
+	player->addInventoryItem(weaponTool->deploy());
+	*/
+	
 	//Slitherhorn
 	InstrumentImplementation* instruImpl = new InstrumentImplementation(player, 0xD2A2E607, unicode("The Pwn Slitherhorn"), "obj_slitherhorn", InstrumentImplementation::SLITHERHORN);
 	player->addInventoryItem(instruImpl->deploy());

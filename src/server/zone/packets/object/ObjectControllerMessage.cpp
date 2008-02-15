@@ -572,6 +572,9 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player, Message* 
 	case (0x89242E02): // Select Draft Schematic
 		parseSelectDraftSchematic(player, pack);
 		break;
+	case (0x83250E2A): // Cancel Crafting Session
+		parseCancelCraftingSession(player, pack);
+		break;
 	
 	default:
 		target = pack->parseLong();
@@ -1530,17 +1533,17 @@ void ObjectControllerMessage::parseRequestDraftSlotsBatch(Player* player, Messag
 	StringTokenizer tokenizer(crcAndID.c_str());
 		
 	uint32 schematicID;
+	uint32 schematicCRC;
 	// CHANGE THIS WHEN .getIntToken WORKS RIGHT
 	if(tokenizer.hasMoreTokens())
 		schematicID = tokenizer.getLongToken();
+	if(tokenizer.hasMoreTokens())
+		schematicCRC = tokenizer.getLongToken();
 		
 	//Check to see if the correct obj id is in the players vector of draft schematics
 	DraftSchematic* ds = player->getDraftSchematic(schematicID);
 	if(ds != NULL) {
 		ds->sendIngredientsToPlayer(player);
-	} else {
-		// This eles should never execute
-		player->sendSystemMessage("Draft Schematic Not Found.  Please inform Link of this error.");
 	}
 }	 
 
@@ -1561,16 +1564,35 @@ void ObjectControllerMessage::parseRequestResourceWeightsBatch(Player* player, M
 	DraftSchematic* ds = player->getDraftSchematic(schematicID);
 	if(ds != NULL) {
 		ds->sendExperimentalPropertiesToPlayer(player);
-	} else {
-		// This eles should never execute
-		player->sendSystemMessage("Draft Schematic Not Found.  Please inform Link of this error.");
-	}	
+	}
 }
 
 void ObjectControllerMessage::parseRequestCraftingSession(Player* player, Message* packet) {
-
-}
+	uint64 ctSceneObjID = packet->parseLong();
 	
+	//Check to see if the correct obj id is in the player's datapad
+	CraftingTool* ct = (CraftingTool*)player->getInventoryItem(ctSceneObjID);
+	if(ct != NULL) {
+		ct->sendToolStart(player);
+	} else {
+		// This eles should never execute
+		player->sendSystemMessage("Crafting Tool Not Found.  Please inform Link of this error.");
+	}	
+}
+
+void ObjectControllerMessage::parseCancelCraftingSession(Player* player, Message* packet) {
+	
+	//TODO: Try to find a Cancel Crafting Session server->client packet in live for researching
+
+	// This is just a guess as to what the client wants when it sends a Cancel Crafting Session packet
+	// DPlay9
+	PlayerObjectDeltaMessage9* dplay9 = new PlayerObjectDeltaMessage9(player->getPlayerObject());
+	dplay9->setCraftingState(0);
+	dplay9->close();
+	player->sendMessage(dplay9);
+}
+
 void ObjectControllerMessage::parseSelectDraftSchematic(Player* player, Message* packet) {
 
 }
+

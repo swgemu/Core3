@@ -87,7 +87,7 @@ public:
 		// This deletes all the draft schematics on the client
 		insertByte(3);
 		insertShort(0);
-		
+
 		for (int i = 0; i < schematicSize; i++) {
 			insertByte(1);
 			insertShort(i+1);

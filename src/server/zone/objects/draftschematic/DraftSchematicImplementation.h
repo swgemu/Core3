@@ -142,8 +142,11 @@ public:
 		DraftSchematicIngredient* dsi = (DraftSchematicIngredient*) dsiImp->deploy(ingredientTemplateName);
 		draftSchematicIngredients.add(dsi);
 	}
-
-	//inline void sendResourceRequirementsToPlayer(Player* player) {
+	
+	// THERE IS A BUG WHEN YOU LEAVE YOUR DATAPAD UP AND SURRENDER A SKILL, THE DRAFT SCHEMATICS
+	// STILL ARE IN YOUR DATAPAD, SO IF YOU CLICK THEM, IT WILL SAY SCHEMATIC NOT FOUND AND WILL
+	// SCREW UP THE CLIENT TRYING TO GET THE INGREDIENTS AND EXP PROPS FROM THERE ON UNTIL THE CLIENT
+	// FULLY EXITS THE GAME
 	inline void sendIngredientsToPlayer(Player* player) {
 		
 		ObjectControllerMessage* msg = new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x01BF);

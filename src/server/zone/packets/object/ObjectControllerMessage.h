@@ -142,6 +142,7 @@ public:
 	
 	// Crafting
 	static void parseRequestCraftingSession(Player* player, Message* pack);
+	static void parseCancelCraftingSession(Player* player, Message* packet);
 	static void parseSelectDraftSchematic(Player* player, Message* pack);
 };
 

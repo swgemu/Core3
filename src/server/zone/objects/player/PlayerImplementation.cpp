@@ -162,6 +162,7 @@ void PlayerImplementation::init() {
 	
 	// Draft Schematics
 	draftSchematicList.setInsertPlan(SortedVector<DraftSchematic*>::NO_DUPLICATE);
+	draftSchematicList.setNullValue(NULL);
 	draftSchematicUpdateCount = 0;
 	
 	//temp
@@ -2271,6 +2272,18 @@ void PlayerImplementation::sendDraftSchematics() {
 
 	dplay9->close();
 	sendMessage(dplay9);
+	
+	// Sending all the ingredients and experimental properties when draft schematics are sent
+	// is the only way I can think of at the moment to prevent the bug if the client
+	// leaves their datapad open and they surrender a skill that has draft schematics.
+	// The draft schematics that are suppose to be deleted when surrendering only disappear
+	// when the datapad is refreshed (close datapad, open datapad to refresh), if the client
+	// clicks on a draft schematic he doesn't have, it screws up their retreiveing the information
+	// of the draft schematic because they don't really have that schematic
+	for(int i = 0; i < draftSchematicList.size(); i++) {
+		draftSchematicList.get(i)->sendIngredientsToPlayer(_this);
+		draftSchematicList.get(i)->sendExperimentalPropertiesToPlayer(_this);
+	}
 }
 
 // Get by key

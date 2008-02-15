@@ -110,6 +110,8 @@ which carries forward this exception.
 #include "objects/tangible/firework/FireworkImplementation.h"
 #include "objects/tangible/surveytool/SurveyTool.h"
 #include "objects/tangible/surveytool/SurveyToolImplementation.h"
+#include "objects/tangible/craftingtool/CraftingTool.h"
+#include "objects/tangible/craftingtool/CraftingToolImplementation.h"
 #include "objects/tangible/resource/ResourceContainer.h"
 #include "objects/tangible/resource/ResourceContainerImplementation.h"
 #include "objects/tangible/attachment/Attachment.h"
