@@ -315,12 +315,12 @@ void WeaponImplementation::parseItemAttributes() {
 	name = "bonusMinDamage";
 	bonusMinDamage = itemAttributes->getFloatAttribute(name);
 	name = "bonusMaxDamage";
-	bonusMinDamage = itemAttributes->getFloatAttribute(name);
+	bonusMaxDamage = itemAttributes->getFloatAttribute(name);
 	
 	name = "bonusPointBlankRange";
 	bonusPointBlankRange = itemAttributes->getIntAttribute(name);
 	name = "bonusPointBlankAccuracy";
-	bonusPointBlankRange = itemAttributes->getIntAttribute(name);
+	bonusPointBlankAccuracy = itemAttributes->getIntAttribute(name);
 	
 	name = "bonusIdealRange";
 	bonusIdealRange = itemAttributes->getIntAttribute(name);
