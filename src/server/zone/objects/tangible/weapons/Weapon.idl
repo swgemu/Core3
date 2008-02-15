@@ -65,7 +65,7 @@ interface Weapon implements TangibleObject {
 	void repairWeapon(Player player);
 
 	void applyPowerup(Powerup powerup);
-	void removePowerup();
+	void removePowerup(Player player, boolean notify);
 
 	boolean decreaseDot0Uses();
 	boolean decreaseDot1Uses();

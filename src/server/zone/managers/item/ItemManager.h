@@ -83,7 +83,7 @@ public:
 
 	void savePlayerItem(Player* player, TangibleObject* item);
 
-	void deletePlayerItem(Player* player, TangibleObject* item);
+	void deletePlayerItem(Player* player, TangibleObject* item, bool notify);
 
 	void showDbStats(Player* player);
 
@@ -118,7 +118,7 @@ public:
 
 	void savePlayerItem(Player* player, TangibleObject* item);
 
-	void deletePlayerItem(Player* player, TangibleObject* item);
+	void deletePlayerItem(Player* player, TangibleObject* item, bool notify);
 
 	void showDbStats(Player* player);
 

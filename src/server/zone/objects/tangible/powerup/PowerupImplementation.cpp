@@ -95,14 +95,28 @@ void PowerupImplementation::setPowerupStats(int modifier) {
 	
 	setPowerupType(System::random(1) + 1);
 	setPowerupSubType(System::random(5) + 1);
-	
-	setPowerup0Type(System::random(2) + 1);
+
+	if (type == MELEE) {
+		setPowerup0Type(System::random(3) + 1);
+		setPowerup1Type(System::random(3) + 1);
+		setPowerup2Type(System::random(3) + 1);		
+	} else {
+		if (subType == BARREL || subType == STOCK)
+			setPowerup0Type(System::random(2) + 1);
+		else
+			setPowerup0Type(System::random(3) + 1);
+		
+		if (subType == COUPLER || subType == SCOPE) {
+			setPowerup1Type(System::random(2) + 1);
+			setPowerup2Type(System::random(2) + 1);
+		} else {
+			setPowerup1Type(System::random(3) + 1);
+			setPowerup2Type(System::random(3) + 1);
+		}
+	}
+
 	setPowerup0Value(((float)System::random(modifier) + modifier) / 4.7f);
-	
-	setPowerup1Type(System::random(2) + 1);
-	setPowerup1Value(((float)System::random(modifier) + modifier) / 5.7f);
-	
-	setPowerup2Type(System::random(2) + 1);
+	setPowerup1Value(((float)System::random(modifier) + modifier) / 5.7f);	
 	setPowerup2Value(((float)System::random(modifier) + modifier) / 6.3f);
 	
 	if (powerup2Type == powerup1Type) {
@@ -575,7 +589,7 @@ void PowerupImplementation::generateAttributes(SceneObject* obj) {
 				alm->insertAttribute("cat_pup.pup_wpn_range_attack_mod_max", val0.str());
 				break;
 			case 4:
-				alm->insertAttribute("cat_pup.pup_wpn_damage_min", val0.str());
+				alm->insertAttribute("cat_pup.pup_wpn_damage_max", val0.str());
 				break;
 			}
 			switch (powerup1Type) {
@@ -877,7 +891,7 @@ void PowerupImplementation::apply(Weapon* weapon) {
 				weapon->powerupMaxRangeAccuracy(powerup0Value);
 				break;
 			case 4:
-				weapon->powerupMinDamage(powerup0Value);
+				weapon->powerupMaxDamage(powerup0Value);
 				break;
 			}
 			switch (powerup1Type) {
@@ -1025,7 +1039,7 @@ void PowerupImplementation::parseItemAttributes() {
 void PowerupImplementation::remove(Player* player) {
 	ItemManager* itemManager = player->getZone()->getZoneServer()->getItemManager();
 	
-	itemManager->deletePlayerItem(player, _this);
+	itemManager->deletePlayerItem(player, _this, false);
 	
 	player->removeInventoryItem(objectID);
 	

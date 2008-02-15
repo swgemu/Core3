@@ -188,7 +188,7 @@ RandPoolAtt = {
 	
 	range = 20,
 	damageRatio = 1.0,
-	speedRatio = 1.25,
+	speedRatio = 1.5,
 	areaRange = 0,
 	accuracyBonus = 0,
 		
@@ -219,7 +219,7 @@ RandPoolAtt = {
 	
 	range = 20,
 	damageRatio = 1.0,
-	speedRatio = 1.25,
+	speedRatio = 1.5,
 	areaRange = 0,
 	accuracyBonus = 0,
 		
@@ -280,8 +280,8 @@ RandPoolAtt = {
 	requiredWeaponType = UNARMED,
 	
 	range = 11,
-	damageRatio = 1.15,
-	speedRatio = 1.45,
+	damageRatio = 1.5,
+	speedRatio = 2.0,
 	areaRange = 0,
 	accuracyBonus = 0,
 		
@@ -311,8 +311,8 @@ RandPoolAtt = {
 	requiredWeaponType = UNARMED,
 	
 	range = 11,
-	damageRatio = 1.0,
-	speedRatio = 1.45,
+	damageRatio = 2.0,
+	speedRatio = 2.0,
 	areaRange = 0,
 	accuracyBonus = 0,
 		
@@ -342,8 +342,8 @@ RandPoolAtt = {
 	requiredWeaponType = UNARMED,
 	
 	range = 11,
-	damageRatio = 1.0,
-	speedRatio = 1.45,
+	damageRatio = 2.0,
+	speedRatio = 2.0,
 	areaRange = 0,
 	accuracyBonus = 0,
 		
@@ -373,8 +373,8 @@ RandPoolAtt = {
 	requiredWeaponType = UNARMED,
 	
 	range = 11,
-	damageRatio = 1.15,
-	speedRatio = 1.45,
+	damageRatio = 1.5,
+	speedRatio = 2.0,
 	areaRange = 7,
 	accuracyBonus = 0,
 		
@@ -404,7 +404,7 @@ RandPoolAtt = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 1.15,
+	damageRatio = 2.5,
 	speedRatio = 1.45,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -435,7 +435,7 @@ DirectPoolAtt = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 1.15,
+	damageRatio = 1.5,
 	speedRatio = 1.45,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -477,7 +477,7 @@ RandPoolAtt = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 1.0,
+	damageRatio = 2.0,
 	speedRatio = 1.45,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -508,7 +508,7 @@ RandPoolAtt = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 1.15,
+	damageRatio = 2.0,
 	speedRatio = 1.45,
 	areaRange = 7,
 	accuracyBonus = 0,
@@ -539,8 +539,8 @@ RandPoolAtt = {
 	requiredWeaponType = TWOHANDED,
 	
 	range = 11,
-	damageRatio = 1.15,
-	speedRatio = 1.45,
+	damageRatio = 2.0,
+	speedRatio = 1.5,
 	areaRange = 0,
 	accuracyBonus = 0,
 		
@@ -570,8 +570,8 @@ DirectPoolAtt = {
 	requiredWeaponType = TWOHANDED,
 	
 	range = 11,
-	damageRatio = 1.15,
-	speedRatio = 1.45,
+	damageRatio = 1.5,
+	speedRatio = 1.6,
 	areaRange = 0,
 	accuracyBonus = 0,
 
@@ -612,8 +612,8 @@ RandPoolAtt = {
 	requiredWeaponType = TWOHANDED,
 	
 	range = 11,
-	damageRatio = 1.15,
-	speedRatio = 1.45,
+	damageRatio = 1.5,
+	speedRatio = 1.7,
 	areaRange = 0,
 	accuracyBonus = 0,
 		
@@ -643,8 +643,8 @@ RandPoolAtt = {
 	requiredWeaponType = TWOHANDED,
 	
 	range = 11,
-	damageRatio = 1.15,
-	speedRatio = 1.45,
+	damageRatio = 2.0,
+	speedRatio = 2.3,
 	areaRange = 7,
 	accuracyBonus = 0,
 		
@@ -674,8 +674,8 @@ RandPoolAtt = {
 	requiredWeaponType = POLEARM,
 	
 	range = 11,
-	damageRatio = 1.15,
-	speedRatio = 1.45,
+	damageRatio = 2.0,
+	speedRatio = 1.5,
 	areaRange = 0,
 	accuracyBonus = 0,
 		
@@ -705,8 +705,8 @@ DirectPoolAtt = {
 	requiredWeaponType = POLEARM,
 	
 	range = 11,
-	damageRatio = 1.15,
-	speedRatio = 1.45,
+	damageRatio = 1.5,
+	speedRatio = 1.5,
 	areaRange = 0,
 	accuracyBonus = 0,
 
@@ -747,8 +747,8 @@ RandPoolAtt = {
 	requiredWeaponType = POLEARM,
 	
 	range = 11,
-	damageRatio = 1.0,
-	speedRatio = 1.45,
+	damageRatio = 1.5,
+	speedRatio = 1.6,
 	areaRange = 0,
 	accuracyBonus = 0,
 		
@@ -778,8 +778,8 @@ RandPoolAtt = {
 	requiredWeaponType = POLEARM,
 	
 	range = 11,
-	damageRatio = 1.15,
-	speedRatio = 1.45,
+	damageRatio = 1.5,
+	speedRatio = 1.5,
 	areaRange = 7,
 	accuracyBonus = 0,
 		
@@ -840,8 +840,8 @@ RandPoolAtt = {
 	requiredWeaponType = TWOHANDED,
 	
 	range = 20,
-	damageRatio = 2.0,
-	speedRatio = 1.75,
+	damageRatio = 1,
+	speedRatio = 1.5,
 	areaRange = 0,
 	accuracyBonus = 0,
 		
@@ -872,7 +872,7 @@ RandPoolAtt = {
 	
 	range = 20,
 	damageRatio = 2.0,
-	speedRatio = 1.75,
+	speedRatio = 1.5,
 	areaRange = 0,
 	accuracyBonus = 0,
 		

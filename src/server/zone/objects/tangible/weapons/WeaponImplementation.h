@@ -226,7 +226,7 @@ public:
 	void decayWeapon(int decayRate);
 	
 	void applyPowerup(Powerup* powerup);
-	void removePowerup();
+	void removePowerup(Player* player, bool notify);
 	
 	void powerupMinDamage(float powerupValue);
 	void powerupMaxDamage(float powerupValue);

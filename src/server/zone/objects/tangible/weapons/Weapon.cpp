@@ -158,16 +158,18 @@ void Weapon::applyPowerup(Powerup* powerup) {
 		((WeaponImplementation*) _impl)->applyPowerup(powerup);
 }
 
-void Weapon::removePowerup() {
+void Weapon::removePowerup(Player* player, bool notify) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
 		ORBMethodInvocation invocation(this, 12);
+		invocation.addObjectParameter(player);
+		invocation.addBooleanParameter(notify);
 
 		invocation.executeWithVoidReturn();
 	} else
-		((WeaponImplementation*) _impl)->removePowerup();
+		((WeaponImplementation*) _impl)->removePowerup(player, notify);
 }
 
 bool Weapon::decreaseDot0Uses() {
@@ -1078,7 +1080,7 @@ Packet* WeaponAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* inv) {
 		applyPowerup((Powerup*) inv->getObjectParameter());
 		break;
 	case 12:
-		removePowerup();
+		removePowerup((Player*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
 	case 13:
 		resp->insertBoolean(decreaseDot0Uses());
@@ -1327,8 +1329,8 @@ void WeaponAdapter::applyPowerup(Powerup* powerup) {
 	return ((WeaponImplementation*) impl)->applyPowerup(powerup);
 }
 
-void WeaponAdapter::removePowerup() {
-	return ((WeaponImplementation*) impl)->removePowerup();
+void WeaponAdapter::removePowerup(Player* player, bool notify) {
+	return ((WeaponImplementation*) impl)->removePowerup(player, notify);
 }
 
 bool WeaponAdapter::decreaseDot0Uses() {

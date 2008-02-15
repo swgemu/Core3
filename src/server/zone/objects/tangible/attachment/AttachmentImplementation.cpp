@@ -364,7 +364,7 @@ void AttachmentImplementation::setSkillMods(int modifier) {
 void AttachmentImplementation::remove(Player* player) {
 	ItemManager* itemManager = player->getZone()->getZoneServer()->getItemManager();
 	
-	itemManager->deletePlayerItem(player, _this);
+	itemManager->deletePlayerItem(player, _this, false);
 	
 	player->removeInventoryItem(objectID);
 	

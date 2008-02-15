@@ -83,7 +83,7 @@ public:
 
 	void applyPowerup(Powerup* powerup);
 
-	void removePowerup();
+	void removePowerup(Player* player, bool notify);
 
 	bool decreaseDot0Uses();
 
@@ -252,7 +252,7 @@ public:
 
 	void applyPowerup(Powerup* powerup);
 
-	void removePowerup();
+	void removePowerup(Player* player, bool notify);
 
 	bool decreaseDot0Uses();
 

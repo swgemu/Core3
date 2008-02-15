@@ -46,8 +46,8 @@ DotPoolAtt = {
 	requiredWeaponType = PISTOL,
 	
 	range = 65,
-	damageRatio = 1.25,
-	speedRatio = 1.25,
+	damageRatio = 3.0,
+	speedRatio = 1.9,
 	areaRange = 0,
 	accuracyBonus = 0,
 
@@ -88,8 +88,8 @@ RandPoolAtt = {
 	requiredWeaponType = PISTOL,
 	
 	range = 65,
-	damageRatio = 1.0,
-	speedRatio = 1.05,
+	damageRatio = 2.9,
+	speedRatio = 1.8,
 	areaRange = 0,
 	accuracyBonus = 0,
 		
@@ -120,8 +120,8 @@ DirectPoolAtt = {
 	requiredWeaponType = PISTOL,
 	
 	range = 65,
-	damageRatio = 1.20,
-	speedRatio = 1.25,
+	damageRatio = 2.5,
+	speedRatio = 2.4,
 	areaRange = 0,
 	accuracyBonus = 0,
 
@@ -162,8 +162,8 @@ RandPoolAtt = {
 	requiredWeaponType = PISTOL,
 	
 	range = 65,
-	damageRatio = 1.15,
-	speedRatio = 1.05,
+	damageRatio = 4.3,
+	speedRatio = 3.0,
 	coneAngle = 60,
 	accuracyBonus = 0,
 		
@@ -193,8 +193,8 @@ RandPoolAtt = {
 	requiredWeaponType = PISTOL,
 	
 	range = 65,
-	damageRatio = 1.15,
-	speedRatio = 1.05,
+	damageRatio = 2.0,
+	speedRatio = 2,3,
 	areaRange = 0,
 	accuracyBonus = 0,
 		
@@ -224,8 +224,8 @@ RandPoolAtt = {
 	requiredWeaponType = PISTOL,
 	
 	range = 65,
-	damageRatio = 1.15,
-	speedRatio = 1.05,
+	damageRatio = 2.8,
+	speedRatio = 2.1,
 	areaRange = 0,
 	accuracyBonus = 0,
 		
@@ -255,8 +255,8 @@ RandPoolAtt = {
 	requiredWeaponType = PISTOL,
 	
 	range = 65,
-	damageRatio = 1.85,
-	speedRatio = 1.05,
+	damageRatio = 5.0,
+	speedRatio = 4.0,
 	areaRange = 0,
 	accuracyBonus = 0,
 		
@@ -286,8 +286,8 @@ RandPoolAtt = {
 	requiredWeaponType = PISTOL,
 	
 	range = 65,
-	damageRatio = 1.75,
-	speedRatio = 1.50,
+	damageRatio = 4.0,
+	speedRatio = 2.4,
 	areaRange = 0,
 	accuracyBonus = 0,
 		
@@ -317,8 +317,8 @@ RandPoolAtt = {
 	requiredWeaponType = PISTOL,
 	
 	range = 10,
-	damageRatio = 1.15,
-	speedRatio = 1.50,
+	damageRatio = 2.9,
+	speedRatio = 2.3,
 	areaRange = 0,
 	accuracyBonus = 0,
 		
@@ -348,8 +348,8 @@ RandPoolAtt = {
 	requiredWeaponType = PISTOL,
 	
 	range = 10,
-	damageRatio = 1.15,
-	speedRatio = 1.50,
+	damageRatio = 4.1,
+	speedRatio = 2.5,
 	areaRange = 0,
 	accuracyBonus = 0,
 		
@@ -379,8 +379,8 @@ RandPoolAtt = {
 	requiredWeaponType = PISTOL,
 	
 	range = 15,
-	damageRatio = 1.00,
-	speedRatio = 1.50,
+	damageRatio = 4.2,
+	speedRatio = 3.5,
 	coneAngle = 60,
 	accuracyBonus = 0,
 		
@@ -410,8 +410,8 @@ RandPoolAtt = {
 	requiredWeaponType = PISTOL,
 	
 	range = 65,
-	damageRatio = 1.85,
-	speedRatio = 1.05,
+	damageRatio = 2.7,
+	speedRatio = 2.5,
 	areaRange = 0,
 	accuracyBonus = 0,
 		

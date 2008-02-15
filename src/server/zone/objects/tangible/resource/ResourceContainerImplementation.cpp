@@ -226,7 +226,7 @@ void ResourceContainerImplementation::transferContents(Player* player, ResourceC
     	sendDeltas(player);
     	generateAttributes(player);
     
-    	player->getZone()->getZoneServer()->getItemManager()->deletePlayerItem(player, fromRCO);
+    	player->getZone()->getZoneServer()->getItemManager()->deletePlayerItem(player, fromRCO, true);
     	
     	player->removeInventoryItem(fromRCO->getObjectID());
     	

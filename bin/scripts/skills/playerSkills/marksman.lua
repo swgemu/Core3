@@ -467,8 +467,8 @@ DirectPoolAtt = {
 	requiredWeaponType = CARBINE,
 	
 	range = 45,
-	damageRatio = 1.40,
-	speedRatio = 1.25,
+	damageRatio = 3.0,
+	speedRatio = 1.5,
 	areaRange = 0,
 	accuracyBonus = 0,
 
@@ -509,8 +509,8 @@ DotPoolAtt = {
 	requiredWeaponType = CARBINE,
 	
 	range = 45,
-	damageRatio = 1.40,
-	speedRatio = 1.25,
+	damageRatio = 1.5,
+	speedRatio = 1.6,
 	areaRange = 0,
 	accuracyBonus = 0,
 
@@ -626,8 +626,8 @@ RandPoolAtt = {
 	requiredWeaponType = RANGED,
 	
 	range = 45,
-	damageRatio = 1.15,
-	speedRatio = 1.15,
+	damageRatio = 2.3,
+	speedRatio = 2.0,
 	areaRange = 0,
 	accuracyBonus = 0,
 		
@@ -657,8 +657,8 @@ RandPoolAtt = {
 	requiredWeaponType = RANGED,
 	
 	range = 45,
-	damageRatio = 2.0,
-	speedRatio = 1.60,
+	damageRatio = 5.3,
+	speedRatio = 2.0,
 	areaRange = 0,
 	accuracyBonus = 0,
 		

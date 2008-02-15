@@ -1111,7 +1111,7 @@ void WeaponImplementation::generatePowerup(AttributeListMessage* alm) {
 				alm->insertAttribute("cat_pup.pup_wpn_range_attack_mod_max", val0.str());
 				break;
 			case 4:
-				alm->insertAttribute("cat_pup.pup_wpn_damage_min", val0.str());
+				alm->insertAttribute("cat_pup.pup_wpn_damage_max", val0.str());
 				break;
 			}
 			switch (powerup1Type) {
@@ -1328,6 +1328,7 @@ void WeaponImplementation::sliceWeapon(Player* player){
 		wlock();
 
 		if (!isSliced()) {
+			removePowerup(player, false);
 			switch (sliceType) {
 			case 0:
 				slicePercent = sliceWeaponDamage();
@@ -1453,7 +1454,7 @@ void WeaponImplementation::applyPowerup(Powerup* powerup) {
 	updated = true;
 }
 
-void WeaponImplementation::removePowerup() {
+void WeaponImplementation::removePowerup(Player* player, bool notify) {
 	setPowerupType(0);
 	setPowerupSubType(0);
 	setPowerup0Type(0);
@@ -1477,4 +1478,10 @@ void WeaponImplementation::removePowerup() {
 	setBonusMaxRange(0);
 	setBonusMaxRangeAccuracy(0);
 	setBonusWoundsRatio(0);
+	
+	if (notify) {
+		stringstream txt;
+		txt << "The powerup on your " << name.c_str() << " has expired.";
+		player->sendSystemMessage(txt.str());
+	}
 }

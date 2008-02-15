@@ -619,7 +619,7 @@ void ItemManagerImplementation::savePlayerItem(Player* player, TangibleObject* i
 	}
 }
 
-void ItemManagerImplementation::deletePlayerItem(Player* player, TangibleObject* item) {
+void ItemManagerImplementation::deletePlayerItem(Player* player, TangibleObject* item, bool notify) {
 	try {	
 		stringstream query;
 		query << "update `character_items` set deleted = " << 1 << " where item_id = " << item->getObjectID();
@@ -627,7 +627,8 @@ void ItemManagerImplementation::deletePlayerItem(Player* player, TangibleObject*
 		ServerDatabase::instance()->executeStatement(query);
 
 		stringstream playertxt;
-		playertxt << "You have destroyed " << item->getName().c_str() << ".";
+		if (notify)
+			playertxt << "You have destroyed " << item->getName().c_str() << ".";
 
 		player->sendSystemMessage(playertxt.str());
 	} catch (DatabaseException& e) {

@@ -191,7 +191,7 @@ public:
 			if (weapon->decreasePowerupUses())
 					weapon->setUpdated(true);
 				else if (weapon->getPowerupType() > 0)
-					weapon->removePowerup();
+					weapon->removePowerup((Player*)attacker, true);
 		}
 		
 		if (woundsRatio > System::random(100)) {
@@ -268,7 +268,7 @@ public:
 			if (weapon->decreasePowerupUses())
 					weapon->setUpdated(true);
 				else if (weapon->getPowerupType() > 0)
-					weapon->removePowerup();
+					weapon->removePowerup((Player*)attacker, true);
 		}
 
 		
@@ -339,7 +339,7 @@ public:
 			if (weapon->decreasePowerupUses())
 					weapon->setUpdated(true);
 				else if (weapon->getPowerupType() > 0)
-					weapon->removePowerup();
+					weapon->removePowerup((Player*)attacker, true);
 		}
 		
 		if (woundsRatio > System::random(100)) {

@@ -2034,7 +2034,7 @@ void PlayerImplementation::applyPowerup(uint64 powerupID, uint64 targetID) {
 	
 	if (weapon->getPowerupUses() == 0) {
 		stringstream msg;
-		msg << "You attach " << powerup->getName().c_str() << " to your " << weapon->getName().c_str();
+		msg << "You powerup your " << weapon->getName().c_str() << " with " << powerup->getName().c_str();
 		sendSystemMessage(msg.str());
 		powerup->apply(weapon);
 		weapon->applyPowerup(powerup);

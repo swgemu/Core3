@@ -84,7 +84,7 @@ public:
 
 	void createPlayerItem(Player* player, TangibleObject* item);
 
-	void deletePlayerItem(Player* player, TangibleObject* item);
+	void deletePlayerItem(Player* player, TangibleObject* item, bool notify);
 	
 	void savePlayerItem(Player* player, TangibleObject* item);
 

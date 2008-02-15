@@ -1063,7 +1063,7 @@ void ObjectControllerMessage::parseServerDestroyObject(Player* player, Message* 
 		if (item->isEquipped())
 			player->changeCloth(objid);
 		
-		itemManager->deletePlayerItem(player, item);
+		itemManager->deletePlayerItem(player, item, true);
 		
 		player->removeInventoryItem(objid);
 		

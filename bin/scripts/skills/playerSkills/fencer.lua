@@ -46,7 +46,7 @@ RandPoolAtt = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 1.5,
+	damageRatio = 3.5,
 	speedRatio = 1.25,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -77,7 +77,7 @@ RandPoolAtt = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 1.5,
+	damageRatio = 3.0,
 	speedRatio = 1.25,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -108,7 +108,7 @@ RandPoolAtt = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 2.0,
+	damageRatio = 3.5,
 	speedRatio = 1.8,
 	areaRange = 7,
 	accuracyBonus = 0,
@@ -139,7 +139,7 @@ RandPoolAtt = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 1.2,
+	damageRatio = 4.0,
 	speedRatio = 1.25,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -171,7 +171,7 @@ DotPoolAtt = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 1.15,
+	damageRatio = 1.5,
 	speedRatio = 1.45,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -186,7 +186,7 @@ DotPoolAtt = {
 	fireStrength = 0,
 	fireType = 0,
 
-	bleedingStrength = 0,
+	bleedingStrength = 50,
 	bleedingType = HEALTH,
 
 	poisonStrength = 0,
@@ -213,7 +213,7 @@ RandPoolAtt = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 1.15,
+	damageRatio = 3.0,
 	speedRatio = 1.45,
 	areaRange = 7,
 	accuracyBonus = 0,
@@ -245,7 +245,7 @@ DotPoolAtt = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 2.15,
+	damageRatio = 3.0,
 	speedRatio = 1.45,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -260,7 +260,7 @@ DotPoolAtt = {
 	fireStrength = 0,
 	fireType = 0,
 
-	bleedingStrength = 0,
+	bleedingStrength = 100,
 	bleedingType = HEALTH,
 
 	poisonStrength = 0,
@@ -287,7 +287,7 @@ DirectPoolAtt = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 2.15,
+	damageRatio = 2.5,
 	speedRatio = 1.45,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -329,7 +329,7 @@ DirectPoolAtt = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 2.15,
+	damageRatio = 3.5,
 	speedRatio = 1.45,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -371,7 +371,7 @@ RandPoolAtt = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 1.15,
+	damageRatio = 2.0,
 	speedRatio = 1.45,
 	areaRange = 7,
 	accuracyBonus = 0,
@@ -402,7 +402,7 @@ RandPoolAtt = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 1.55,
+	damageRatio = 2.5,
 	speedRatio = 1.45,
 	areaRange = 7,
 	accuracyBonus = 0,
@@ -433,7 +433,7 @@ RandPoolAtt = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 2.5,
+	damageRatio = 5.0,
 	speedRatio = 1.25,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -456,4 +456,5 @@ RandPoolAtt = {
 AddRandomPoolAttackTargetSkill(RandPoolAtt)
 
 -----------------------------------------------------------------------
+
 

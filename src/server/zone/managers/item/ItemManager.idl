@@ -63,7 +63,7 @@ interface ItemManager {
 
 	void savePlayerItem(Player player, TangibleObject item); 
 
-	void deletePlayerItem(Player player, TangibleObject item);
+	void deletePlayerItem(Player player, TangibleObject item, boolean notify);
 	
 	// stat methods
 	void showDbStats(Player player);

@@ -49,8 +49,8 @@ RandPoolAtt = {
 	requiredWeaponType = RIFLE,
 	
 	range = 65,
-	damageRatio = 2.25,
-	speedRatio = 1.25,
+	damageRatio = 2.0,
+	speedRatio = 2.0,
 	coneAngle = 60,
 	accuracyBonus = 0,
 		
@@ -80,8 +80,8 @@ DotPoolAtt = {
 	requiredWeaponType = RIFLE,
 	
 	range = 65,
-	damageRatio = 2.25,
-	speedRatio = 1.25,
+	damageRatio = 2.0,
+	speedRatio = 2.0,
 	areaRange = 0,
 	accuracyBonus = 0,
 		
@@ -122,8 +122,8 @@ DirectPoolAtt = {
 	requiredWeaponType = RIFLE,
 	
 	range = 65,
-	damageRatio = 2.50,
-	speedRatio = 1.20,
+	damageRatio = 3.0,
+	speedRatio = 2.0,
 	areaRange = 0,
 	accuracyBonus = 0,
 
@@ -195,8 +195,8 @@ RandPoolAtt = {
 	requiredWeaponType = RIFLE,
 	
 	range = 65,
-	damageRatio = 2.25,
-	speedRatio = 1.25,
+	damageRatio = 2.5,
+	speedRatio = 3.0,
 	areaRange = 0,
 	accuracyBonus = 0,
 		
@@ -226,8 +226,8 @@ RandPoolAtt = {
 	requiredWeaponType = RIFLE,
 	
 	range = 65,
-	damageRatio = 2.25,
-	speedRatio = 1.25,
+	damageRatio = 2.0,
+	speedRatio = 2.1,
 	areaRange = 0,
 	accuracyBonus = 0,
 		
@@ -257,8 +257,8 @@ RandPoolAtt = {
 	requiredWeaponType = RIFLE,
 	
 	range = 65,
-	damageRatio = 3.55,
-	speedRatio = 1.25,
+	damageRatio = 2.0,
+	speedRatio = 2.1,
 	areaRange = 0,
 	accuracyBonus = 0,
 		
@@ -288,8 +288,8 @@ RandPoolAtt = {
 	requiredWeaponType = RIFLE,
 	
 	range = 65,
-	damageRatio = 3.25,
-	speedRatio = 1.25,
+	damageRatio = 4.0,
+	speedRatio = 2.6,
 	coneAngle = 60,
 	accuracyBonus = 0,
 		
@@ -319,8 +319,8 @@ RandPoolAtt = {
 	requiredWeaponType = RIFLE,
 	
 	range = 65,
-	damageRatio = 3.25,
-	speedRatio = 1.25,
+	damageRatio = 4.0,
+	speedRatio = 2.6,
 	areaRange = 0,
 	accuracyBonus = 0,
 		
@@ -350,8 +350,8 @@ RandPoolAtt = {
 	requiredWeaponType = RIFLE,
 	
 	range = 65,
-	damageRatio = 3.25,
-	speedRatio = 1.25,
+	damageRatio = 2.5,
+	speedRatio = 2.0,
 	areaRange = 0,
 	accuracyBonus = 0,
 		
@@ -381,8 +381,8 @@ RandPoolAtt = {
 	requiredWeaponType = RIFLE,
 	
 	range = 65,
-	damageRatio = 4.0,
-	speedRatio = 1.25,
+	damageRatio = 2.0,
+	speedRatio = 2.3,
 	coneAngle = 60,
 	accuracyBonus = 0,
 		
@@ -412,8 +412,8 @@ RandPoolAtt = {
 	requiredWeaponType = RIFLE,
 	
 	range = 65,
-	damageRatio = 5.25,
-	speedRatio = 1.5,
+	damageRatio = 5.0,
+	speedRatio = 3.5,
 	coneAngle = 60,
 	accuracyBonus = 0,
 		

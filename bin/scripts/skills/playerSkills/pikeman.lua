@@ -46,8 +46,8 @@ RandPoolAtt = {
 	requiredWeaponType = POLEARM,
 	
 	range = 11,
-	damageRatio = 2.15,
-	speedRatio = 1.45,
+	damageRatio = 2.5,
+	speedRatio = 2.0,
 	areaRange = 0,
 	accuracyBonus = 0,
 		
@@ -78,7 +78,7 @@ RandPoolAtt = {
 	
 	range = 11,
 	damageRatio = 2.0,
-	speedRatio = 1.45,
+	speedRatio = 2.0,
 	areaRange = 7,
 	accuracyBonus = 0,
 		
@@ -108,8 +108,8 @@ RandPoolAtt = {
 	requiredWeaponType = POLEARM,
 	
 	range = 11,
-	damageRatio = 2.25,
-	speedRatio = 1.45,
+	damageRatio = 2.5,
+	speedRatio = 3.0,
 	areaRange = 7,
 	accuracyBonus = 0,
 		
@@ -139,8 +139,8 @@ DirectPoolAtt = {
 	requiredWeaponType = POLEARM,
 	
 	range = 11,
-	damageRatio = 2.15,
-	speedRatio = 1.45,
+	damageRatio = 2.0,
+	speedRatio = 2.0,
 	areaRange = 0,
 	accuracyBonus = 0,
 
@@ -181,8 +181,8 @@ RandPoolAtt = {
 	requiredWeaponType = POLEARM,
 	
 	range = 11,
-	damageRatio = 2.5,
-	speedRatio = 1.45,
+	damageRatio = 1.5,
+	speedRatio = 1.5,
 	areaRange = 7,
 	accuracyBonus = 0,
 		
@@ -212,8 +212,8 @@ DirectPoolAtt = {
 	requiredWeaponType = POLEARM,
 	
 	range = 11,
-	damageRatio = 2.15,
-	speedRatio = 1.45,
+	damageRatio = 2.5,
+	speedRatio = 3.0,
 	areaRange = 0,
 	accuracyBonus = 0,
 
@@ -254,8 +254,8 @@ RandPoolAtt = {
 	requiredWeaponType = POLEARM,
 	
 	range = 11,
-	damageRatio = 3.0,
-	speedRatio = 2.45,
+	damageRatio = 2.75,
+	speedRatio = 3.0,
 	areaRange = 7,
 	accuracyBonus = 0,
 		
@@ -286,7 +286,7 @@ RandPoolAtt = {
 	
 	range = 11,
 	damageRatio = 2.0,
-	speedRatio = 1.45,
+	speedRatio = 1.5,
 	areaRange = 0,
 	accuracyBonus = 0,
 		
@@ -316,8 +316,8 @@ RandPoolAtt = {
 	requiredWeaponType = POLEARM,
 	
 	range = 11,
-	damageRatio = 2.2,
-	speedRatio = 1.45,
+	damageRatio = 2.5,
+	speedRatio = 3.0,
 	areaRange = 7,
 	accuracyBonus = 0,
 		
@@ -347,8 +347,8 @@ DirectPoolAtt = {
 	requiredWeaponType = POLEARM,
 	
 	range = 11,
-	damageRatio = 2.15,
-	speedRatio = 1.05,
+	damageRatio = 1.0,
+	speedRatio = 2.0,
 	areaRange = 0,
 	accuracyBonus = 0,
 
@@ -389,8 +389,8 @@ DirectPoolAtt = {
 	requiredWeaponType = POLEARM,
 	
 	range = 11,
-	damageRatio = 1.50,
-	speedRatio = 1.45,
+	damageRatio = 2.0,
+	speedRatio = 3.0,
 	areaRange = 0,
 	accuracyBonus = 0,
 
@@ -431,8 +431,8 @@ RandPoolAtt = {
 	requiredWeaponType = POLEARM,
 	
 	range = 11,
-	damageRatio = 2.85,
-	speedRatio = 1.45,
+	damageRatio = 4.0,
+	speedRatio = 3.0,
 	areaRange = 0,
 	accuracyBonus = 0,
 		

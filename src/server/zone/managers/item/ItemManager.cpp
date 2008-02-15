@@ -172,7 +172,7 @@ void ItemManager::savePlayerItem(Player* player, TangibleObject* item) {
 		((ItemManagerImplementation*) _impl)->savePlayerItem(player, item);
 }
 
-void ItemManager::deletePlayerItem(Player* player, TangibleObject* item) {
+void ItemManager::deletePlayerItem(Player* player, TangibleObject* item, bool notify) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
@@ -180,10 +180,11 @@ void ItemManager::deletePlayerItem(Player* player, TangibleObject* item) {
 		ORBMethodInvocation invocation(this, 13);
 		invocation.addObjectParameter(player);
 		invocation.addObjectParameter(item);
+		invocation.addBooleanParameter(notify);
 
 		invocation.executeWithVoidReturn();
 	} else
-		((ItemManagerImplementation*) _impl)->deletePlayerItem(player, item);
+		((ItemManagerImplementation*) _impl)->deletePlayerItem(player, item, notify);
 }
 
 void ItemManager::showDbStats(Player* player) {
@@ -270,7 +271,7 @@ Packet* ItemManagerAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* inv
 		savePlayerItem((Player*) inv->getObjectParameter(), (TangibleObject*) inv->getObjectParameter());
 		break;
 	case 13:
-		deletePlayerItem((Player*) inv->getObjectParameter(), (TangibleObject*) inv->getObjectParameter());
+		deletePlayerItem((Player*) inv->getObjectParameter(), (TangibleObject*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
 	case 14:
 		showDbStats((Player*) inv->getObjectParameter());
@@ -319,8 +320,8 @@ void ItemManagerAdapter::savePlayerItem(Player* player, TangibleObject* item) {
 	return ((ItemManagerImplementation*) impl)->savePlayerItem(player, item);
 }
 
-void ItemManagerAdapter::deletePlayerItem(Player* player, TangibleObject* item) {
-	return ((ItemManagerImplementation*) impl)->deletePlayerItem(player, item);
+void ItemManagerAdapter::deletePlayerItem(Player* player, TangibleObject* item, bool notify) {
+	return ((ItemManagerImplementation*) impl)->deletePlayerItem(player, item, notify);
 }
 
 void ItemManagerAdapter::showDbStats(Player* player) {
