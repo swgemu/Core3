@@ -73,6 +73,9 @@ void BazaarPlanetManagerImplementation::removeBazaarItem(long long objectid) {
 	RegionBazaar* bazaar;
 	
 	AuctionItem* item = getItem(objectid);
+	if (item == NULL)
+		return;
+	
 	bazaar = bazaars.get(item->location);
 	if(bazaar == NULL) {
 		return;

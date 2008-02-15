@@ -149,12 +149,26 @@ void ZoneClient::balancePacketCheckupTime() {
 		((ZoneClientImplementation*) _impl)->balancePacketCheckupTime();
 }
 
-void ZoneClient::setPlayer(Player* player) {
+void ZoneClient::info(const string& msg, bool foredLog) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
 		ORBMethodInvocation invocation(this, 12);
+		invocation.addAsciiParameter(msg);
+		invocation.addBooleanParameter(foredLog);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((ZoneClientImplementation*) _impl)->info(msg, foredLog);
+}
+
+void ZoneClient::setPlayer(Player* player) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 13);
 		invocation.addObjectParameter(player);
 
 		invocation.executeWithVoidReturn();
@@ -167,7 +181,7 @@ Player* ZoneClient::getPlayer() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 13);
+		ORBMethodInvocation invocation(this, 14);
 
 		return (Player*) invocation.executeWithObjectReturn();
 	} else
@@ -179,7 +193,7 @@ bool ZoneClient::isAvailable() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 14);
+		ORBMethodInvocation invocation(this, 15);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -191,7 +205,7 @@ string& ZoneClient::getAddress() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 15);
+		ORBMethodInvocation invocation(this, 16);
 
 		invocation.executeWithAsciiReturn(_return_getAddress);
 		return _return_getAddress;
@@ -204,7 +218,7 @@ unsigned int ZoneClient::getSessionKey() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 16);
+		ORBMethodInvocation invocation(this, 17);
 
 		return invocation.executeWithUnsignedIntReturn();
 	} else
@@ -241,18 +255,21 @@ Packet* ZoneClientAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* inv)
 		balancePacketCheckupTime();
 		break;
 	case 12:
-		setPlayer((Player*) inv->getObjectParameter());
+		info(inv->getAsciiParameter(_param0_info__string_bool_), inv->getBooleanParameter());
 		break;
 	case 13:
-		resp->insertLong(getPlayer()->_getORBObjectID());
+		setPlayer((Player*) inv->getObjectParameter());
 		break;
 	case 14:
-		resp->insertBoolean(isAvailable());
+		resp->insertLong(getPlayer()->_getORBObjectID());
 		break;
 	case 15:
-		resp->insertAscii(getAddress());
+		resp->insertBoolean(isAvailable());
 		break;
 	case 16:
+		resp->insertAscii(getAddress());
+		break;
+	case 17:
 		resp->insertInt(getSessionKey());
 		break;
 	default:
@@ -284,6 +301,10 @@ void ZoneClientAdapter::resetPacketCheckupTime() {
 
 void ZoneClientAdapter::balancePacketCheckupTime() {
 	return ((ZoneClientImplementation*) impl)->balancePacketCheckupTime();
+}
+
+void ZoneClientAdapter::info(const string& msg, bool foredLog) {
+	return ((ZoneClientImplementation*) impl)->info(msg, foredLog);
 }
 
 void ZoneClientAdapter::setPlayer(Player* player) {

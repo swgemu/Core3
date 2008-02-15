@@ -61,7 +61,8 @@ public:
 		try {
 			object->wlock();
 			
-			object->finalize();
+			object->clearUndeploymentEvent();
+			//object->finalize();
 
 			object->unlock();
 		} catch (Exception& e) {

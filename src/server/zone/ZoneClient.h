@@ -79,6 +79,8 @@ public:
 
 	void balancePacketCheckupTime();
 
+	void info(const string& msg, bool foredLog = false);
+
 	void setPlayer(Player* player);
 
 	Player* getPlayer();
@@ -114,6 +116,8 @@ public:
 
 	void balancePacketCheckupTime();
 
+	void info(const string& msg, bool foredLog);
+
 	void setPlayer(Player* player);
 
 	Player* getPlayer();
@@ -124,6 +128,8 @@ public:
 
 	unsigned int getSessionKey();
 
+protected:
+	string _param0_info__string_bool_;
 };
 
 class ZoneClientHelper : public ORBClassHelper, public Singleton<ZoneClientHelper> {

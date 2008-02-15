@@ -315,6 +315,7 @@ protected:
 	
 	uint32 lastMovementUpdateStamp;
 	int ignoreMovementTests;
+	Time lastServerMovementStamp;
 	
 	int level;
 	
@@ -810,6 +811,14 @@ public:
 	
 	void updateMood(const string& md);
 
+	inline void updateServerMovementStamp() {
+		lastServerMovementStamp.update();
+	}
+
+	inline uint64 getLastServerMovementStamp() {
+		return lastServerMovementStamp.miliDifference();
+	}
+	
 protected:
 	void sendEntertainingUpdate(uint32 entval, const string& performance, uint32 perfcntr, int instrid);
 	void sendEntertainmentUpdate(uint64 entid, const string& mood, bool updateEntVal = false);
@@ -1709,6 +1718,10 @@ public:
 		return guild->getGuildName();
 	}
 		
+	inline bool isGuilded() {
+		return guild != NULL;
+	}
+		
 	inline void setCashCredits(int credits) {
 		cashCredits = credits;
 	}
@@ -1716,10 +1729,11 @@ public:
 	inline void setBankCredits(int credits) {
 		bankCredits = credits;
 	}
+
 	inline float getTerrainNegotiation() {
 		return (float(getSkillMod("slope_move"))/float(100));
 	}
-
+	
 	friend class CombatManager;
 	friend class SkillManager;
 

@@ -869,6 +869,9 @@ int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* target
 
 	float playerAccuracy = creature->getAccuracy();
 	
+	if (playerAccuracy > 250.f)
+		playerAccuracy = 250.f;
+	
 	uint32 targetDefense = getTargetDefense(creature, targetCreature, weapon); 
 	
 	float defTotal = powf((float)(targetDefense << 1), 2);

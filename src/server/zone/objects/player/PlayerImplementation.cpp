@@ -122,7 +122,7 @@ PlayerImplementation::~PlayerImplementation() {
 		inventory = NULL;
 	}
 	
-	info("undeploying object");
+	info("undeploying player");
 }
 
 void PlayerImplementation::init() {
@@ -444,8 +444,6 @@ void PlayerImplementation::userLogout(int msgCounter) {
 			break;
 		case 0:  // Disconnect!!!
 			info("Safe Logout");
-			
-			setLoggingOut();
 			
 			ClientLogout* packet = new ClientLogout();
 			sendMessage(packet);
@@ -1098,8 +1096,13 @@ void PlayerImplementation::doWarp(float x, float y, float z, float randomizeDist
 }	
 
 void PlayerImplementation::bounceBack() {
-	DataTransform* trans = new DataTransform(_this);
-	sendMessage(trans);
+	if (parent != NULL && parent->isCell()) {
+		DataTransformWithParent* trans = new DataTransformWithParent(_this);
+		sendMessage(trans);
+	} else {
+		DataTransform* trans = new DataTransform(_this);
+		sendMessage(trans);
+	}
 }
 
 void PlayerImplementation::notifySceneReady() {
@@ -1380,7 +1383,6 @@ void PlayerImplementation::doRecovery() {
 		
 			setOffline();
 			
-			owner = NULL;
 			return;
 		} else {
 			info("keeping dead linked player in game");
@@ -1478,7 +1480,8 @@ void PlayerImplementation::doClone() {
 		if (faction == String::hashCode("rebel"))
 			doWarp(-130.0f, -5300.0f, 0, true);
 		else if (faction == String::hashCode("imperial"))
-			doWarp(10.0f, -5480.0f, 0, true);
+			//doWarp(10.0f, -5480.0f, 0, true);
+			doWarp(-2.8f, 0.1f, -4.8f, 0, 3565798);
 		else
 			doWarp(0.5f, 1.5f, 0.3f, 0, 1590892); // ah cloning facility
 		

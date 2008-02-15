@@ -321,8 +321,12 @@ void ZonePacketHandler::handleClientCreateCharacter(Message* pack) {
 	ClientCreateCharacter::parse(pack, playerImpl);
 
 	if (!playerManager->validateName(playerImpl->getFirstName())) {
+		client->info("name refused for character creation");
+
 		BaseMessage* msg = new ClientCreateCharacterFailed("name_declined_in_use");
 		client->sendMessage(msg);
+		
+		client->disconnect();
 		
 		return;
 	}
@@ -350,20 +354,18 @@ void ZonePacketHandler::handleClientCreateCharacter(Message* pack) {
 
 			player->insertToZone(zone);
 			// It'll bounce back to login screen saying the server is offline.
-			
-			player->unlock();
-			
-			player->disconnect();
-			
-			player->wlock();
-			
-			server->removeCachedObject(player->getObjectID());
 		} else {
+			client->info("name refused for character creation");
+
 			BaseMessage* msg = new ClientCreateCharacterFailed("name_declined_in_use");
 			player->sendMessage(msg);
 		}
 	
 		player->unlock();
+		
+		player->disconnect();
+		
+		server->removeCachedObject(player->getObjectID());
 	} catch (Exception& e) {
 		player->unlock();
 		cout << "unreported exception on ZonePacketHandler::handleClientCreateCharacter()\n" << e.getMessage() << "\n";
@@ -386,9 +388,9 @@ void ZonePacketHandler::handleObjectControllerMessage(Message* pack) {
 	uint32 header1 = pack->parseInt();
 	uint32 header2 = pack->parseInt();
 	
-	stringstream msg;
+	/*stringstream msg;
 	msg << "ObjectControllerMessage(0x" << hex << header1 << ", 0x" << header2 << dec << ")";
-	player->info(msg.str());
+	player->info(msg.str());*/
 	
 	try {
 		player->wlock();
@@ -414,7 +416,10 @@ void ZonePacketHandler::handleObjectControllerMessage(Message* pack) {
 				break;
 			case 0xF1:
 				uint64 parent = ObjectControllerMessage::parseDataTransformWithParent(player, pack);
-				player->updateZoneWithParent(parent, true);
+				
+				if (parent != 0)
+					player->updateZoneWithParent(parent, true);
+					
 				break;
 			}
 			break;
@@ -432,7 +437,10 @@ void ZonePacketHandler::handleObjectControllerMessage(Message* pack) {
 				break;
 			case 0xF1:
 				parent = ObjectControllerMessage::parseDataTransformWithParent(player, pack);
-				player->updateZoneWithParent(parent);
+				
+				if (parent != 0)
+					player->updateZoneWithParent(parent);
+					
 				break;
 			case 0x116:
 				ObjectControllerMessage::parseCommandQueueEnqueue(player, pack, processServer);

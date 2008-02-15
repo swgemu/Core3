@@ -87,7 +87,7 @@ DotPoolAtt = {
 		
 	healthAttackChance = 0,
 	actionAttackChance = 0,
-	mindAttackChance = 40,
+	mindAttackChance = 100,
 
 	dotChance = 50,
 	tickStrengthOfHit = 1,
@@ -135,7 +135,7 @@ DirectPoolAtt = {
 	quicknessAttackChance = 0,
 	staminaAttackChance = 0,
 
-	mindAttackChance = 40,
+	mindAttackChance = 100,
 	focusAttackChance = 0,
 	willpowerAttackChance = 0,
 		

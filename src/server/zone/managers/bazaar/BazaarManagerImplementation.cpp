@@ -234,7 +234,7 @@ void BazaarManagerImplementation::addSaleItem(Player* player, long long objectid
 	
 	itemType = obj->getObjectSubType();
 
-	if(description.size() == 0) {
+	if (description.size() == 0) {
 		// Get the item name
 		description = obj->getName().c_str();
 	}
@@ -415,6 +415,13 @@ void BazaarManagerImplementation::buyItem(Player* player, long long objectid, in
 	
 	AuctionItem* item = getItem(objectid);
 	
+	// TODO: handle this case
+	if (item == NULL) {
+		player->unlock();
+		unlock();
+		return;
+	}
+	
 	Time* expireTime = new Time();
 	uint64 currentTime = expireTime->getMiliTime() / 1000;
 	uint64 availableTime = currentTime + 2592000;
@@ -489,6 +496,13 @@ void BazaarManagerImplementation::retrieveItem(Player* player, uint64 objectid, 
 	
 	// Check player is at correct bazaar
 	AuctionItem* item = getItem(objectid);
+	
+	// TODO: handle this case 
+	if (item == NULL) {
+		unlock();
+		return;
+	}
+	
 	BazaarTerminalDetails* location = bazaarTerminals->getBazaarMap()->get(bazaarid);
 	string region = location->getRegion();
 	
@@ -528,6 +542,13 @@ void BazaarManagerImplementation::retrieveItem(Player* player, uint64 objectid, 
 
 	ItemManager* itemManager = processServer->getItemManager();
 	TangibleObject* tano = itemManager->getPlayerItem(player, objectid);
+	
+	// TODO: handle this case
+	if (tano == NULL) {
+		unlock();
+		return;
+	}
+	
 	tano->sendTo(player);
 	
 	msg = new RetrieveAuctionItemResponseMessage(objectid, 0);

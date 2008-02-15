@@ -95,9 +95,11 @@ bool UserManagerImplementation::checkUser(uint32 ipid) {
 		return false;*/
 
 	//uint32 ipid = addr->getIPID();
-	if (server->getConnectionCount() > userCap || isBannedUser(ipid))
+	if (server->getConnectionCount() > userCap || isBannedUser(ipid)) {
+		info("restricting user from logging in");
+		
 		return false;
-	else
+	} else
 		return true;
 }
 

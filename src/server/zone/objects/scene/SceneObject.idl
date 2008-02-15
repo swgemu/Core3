@@ -121,6 +121,8 @@ interface SceneObject implements RWLockable {
 	void setParent(SceneObject par, unsigned int linktype = 0x04);
 	
 	void setZone(Zone zne);
+	
+	void clearUndeploymentEvent();
 
 	// getters
 	int getObjectType();

@@ -82,6 +82,10 @@ public:
 		insertShort(index);
 	}
 	
+	void removeDefenders() {
+		insertByte(4);
+	}
+	
 	void updateWeapon() {
 		addLongUpdate(0x05, creo->getWeaponID());
 	}

@@ -303,14 +303,18 @@ interface Player implements CreatureObject {
 
 	unsigned int getNewSuiBoxID(unsigned int type);
 
-	// getters
-	PlayerObject getPlayerObject();
-	
+	boolean isOnline();
+
+	boolean isOffline();
+
 	boolean isLinkDead();
 	
 	boolean isLoggingIn();
 	
 	boolean isLoggingOut();
+
+	// getters
+	PlayerObject getPlayerObject();
 	
 	CreatureObject getConversatingCreature();
 	
@@ -327,8 +331,6 @@ interface Player implements CreatureObject {
 	int getZoneIndex();
 		
 	string getHairObject();
-	
-	boolean isOnline();
 	
 	ZoneClient getClient();
 	

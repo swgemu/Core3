@@ -70,7 +70,7 @@ which carries forward this exception.
 // End
 class ZoneServer;
 
-class CraftingManagerImplementation : public CraftingManagerServant {
+class CraftingManagerImplementation : public CraftingManagerServant, public Mutex {
 	ZoneServer* server;
 	
 	// Use a groupName to recieve a vector of draftSchematics back
@@ -78,7 +78,7 @@ class CraftingManagerImplementation : public CraftingManagerServant {
 	
 public:
 	CraftingManagerImplementation(ZoneServer* serv) :
-		CraftingManagerServant() {
+		CraftingManagerServant(), Mutex("CraftingManagerMutex") {
 		
 		server = serv;
 		
@@ -86,6 +86,7 @@ public:
 	}
 	
 	inline void loadDraftSchematicsFromDatabase() {
+		lock();
 		
 		ResultSet* result;
 			
@@ -95,20 +96,21 @@ public:
 		result = ServerDatabase::instance()->executeQuery(query);
 		
 		while (result->next()) {
-
 			DraftSchematic* draftSchematic = loadDraftSchematic(result);
 			string groupName = draftSchematic->getGroupName();
+			
 			if (draftSchematic != NULL)
 				if (!draftSchematicsMap.contains(groupName)) {
 					DraftSchematicGroupImplementation* dsgImp = new DraftSchematicGroupImplementation();
 					DraftSchematicGroup* dsg = (DraftSchematicGroup*) dsgImp->deploy(groupName);
 					dsg->addDraftSchematic(draftSchematic);
 					draftSchematicsMap.put(groupName, dsg);
-				}
-				else
+				} else
 					draftSchematicsMap.get(draftSchematic->getGroupName())->addDraftSchematic(draftSchematic);
 		}
 		delete result;
+		
+		unlock();
 	}
 	
 	DraftSchematic* loadDraftSchematic(ResultSet* result) {
@@ -201,7 +203,6 @@ public:
 	}
 
 	Vector<string> parseStringsFromString(const string& unparsedStrings) {
-		
 		string parseHelper;
 		Vector<string> parsedStrings;
 		
@@ -223,7 +224,6 @@ public:
 	}
 	
 	Vector<uint32> parseUnsignedInt32sFromString(const string& unparsedInts) {
-		
 		string parseHelper;
 		Vector<uint32> parsedInts;
 		
@@ -262,10 +262,12 @@ public:
 		}	
 	}*/
 		
-	inline void addDraftSchematicsFromGroupName(Player* player, const string& schematicGroupName) {
+	void addDraftSchematicsFromGroupName(Player* player, const string& schematicGroupName) {
+		lock();
 		
 		if(draftSchematicsMap.contains(schematicGroupName)){
 			DraftSchematicGroup* dsg = draftSchematicsMap.get(schematicGroupName);
+			
 			if(dsg != NULL) {
 				for(int i = 0; i < dsg->getSizeOfDraftSchematicList(); i++) {
 					DraftSchematic* ds = dsg->getDraftSchematic(i);
@@ -273,12 +275,16 @@ public:
 				}
 			}
 		}
+		
+		unlock();
 	}	
 	
-	inline void subtractDraftSchematicsFromGroupName(Player* player, const string& schematicGroupName) {
-				
+	void subtractDraftSchematicsFromGroupName(Player* player, const string& schematicGroupName) {
+		lock();
+		
 		if(draftSchematicsMap.contains(schematicGroupName)){
 			DraftSchematicGroup* dsg = draftSchematicsMap.get(schematicGroupName);
+			
 			if(dsg != NULL) {
 				for(int i = 0; i < dsg->getSizeOfDraftSchematicList(); i++) {
 					DraftSchematic* ds = dsg->getDraftSchematic(i);
@@ -286,6 +292,8 @@ public:
 				}
 			}
 		}
+		
+		unlock();
 	}	
 };
 	

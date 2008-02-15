@@ -193,7 +193,7 @@ void TangibleObjectImplementation::sendTo(Player* player, bool doClose) {
 	
 	if (pvpStatusBitmask != 0) {
 		UpdatePVPStatusMessage* msg = new UpdatePVPStatusMessage(_this, pvpStatusBitmask);
-		client->sendMessage(tano6);
+		client->sendMessage(msg);
 	}
 
 	if (doClose)

@@ -71,7 +71,10 @@ public:
 		insertAscii(Region::getRegionName(player->getRegionID())); //Region Name
 		insertAscii(Planet::getPlanetName(player->getZoneID())); //Planet
  
-		insertAscii(player->getGuildName()); //Guild
+  		if (player->isGuilded())
+			insertAscii(player->getGuildName()); //Guild
+		else
+			insertAscii("");
  
 		insertAscii(player->getPlayerObject()->getCurrentTitle()); //Title	
 	}

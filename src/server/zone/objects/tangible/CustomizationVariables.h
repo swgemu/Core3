@@ -87,7 +87,7 @@ public:
 			}
 		} catch (...) {
 			removeAll();
-			cout << "Exception in CustomizationVariables& operator=(string& custString)\n";
+			//cout << "Exception in CustomizationVariables& operator=(string& custString)\n";
 		}
 		
 		return *this;

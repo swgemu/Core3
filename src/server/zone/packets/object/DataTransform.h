@@ -54,7 +54,6 @@ public:
 	DataTransform(CreatureObject* creo) 
 			: ObjectControllerMessage(creo->getObjectID(), 0x0B, 0x71) {
 				
-		insertInt(0);
 		insertInt(creo->getMovementCounter());
 		
 		insertFloat(creo->getDirectionX());
@@ -65,6 +64,8 @@ public:
 		insertFloat(creo->getPositionX());
 		insertFloat(creo->getPositionZ());
 		insertFloat(creo->getPositionY());
+		
+		insertInt(0);
 	}
 
 };

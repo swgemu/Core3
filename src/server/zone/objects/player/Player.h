@@ -345,13 +345,17 @@ public:
 
 	unsigned int getNewSuiBoxID(unsigned int type);
 
-	PlayerObject* getPlayerObject();
+	bool isOnline();
+
+	bool isOffline();
 
 	bool isLinkDead();
 
 	bool isLoggingIn();
 
 	bool isLoggingOut();
+
+	PlayerObject* getPlayerObject();
 
 	CreatureObject* getConversatingCreature();
 
@@ -370,8 +374,6 @@ public:
 	int getZoneIndex();
 
 	string& getHairObject();
-
-	bool isOnline();
 
 	ZoneClient* getClient();
 
@@ -730,13 +732,17 @@ public:
 
 	unsigned int getNewSuiBoxID(unsigned int type);
 
-	PlayerObject* getPlayerObject();
+	bool isOnline();
+
+	bool isOffline();
 
 	bool isLinkDead();
 
 	bool isLoggingIn();
 
 	bool isLoggingOut();
+
+	PlayerObject* getPlayerObject();
 
 	CreatureObject* getConversatingCreature();
 
@@ -755,8 +761,6 @@ public:
 	int getZoneIndex();
 
 	string& getHairObject();
-
-	bool isOnline();
 
 	ZoneClient* getClient();
 

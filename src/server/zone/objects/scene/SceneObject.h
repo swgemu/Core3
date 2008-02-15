@@ -141,6 +141,8 @@ public:
 
 	void setZone(Zone* zne);
 
+	void clearUndeploymentEvent();
+
 	int getObjectType();
 
 	unsigned long long getObjectID();
@@ -275,6 +277,8 @@ public:
 	void setParent(SceneObject* par, unsigned int linktype);
 
 	void setZone(Zone* zne);
+
+	void clearUndeploymentEvent();
 
 	int getObjectType();
 

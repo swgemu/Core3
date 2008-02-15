@@ -196,6 +196,8 @@ interface CreatureObject implements SceneObject {
 	boolean addQueuedState(unsigned int skillCRC);
 	
 	void setMeditateState();
+
+	boolean isGuilded();
 	
 	// setters
 	void setBaseHealth(unsigned int health);
@@ -304,6 +306,8 @@ interface CreatureObject implements SceneObject {
 	void setIgnoreMovementTests(int times);
 	
 	void setLevel(unsigned int lvl);
+
+	void updateServerMovementStamp();
 
 	// getters
 	unicode getCharacterName();
@@ -455,6 +459,8 @@ interface CreatureObject implements SceneObject {
 	int getMaxCondition();
 	int getCondition();
 	MountCreature getMount();
+
+	unsigned long getLastServerMovementStamp();
 	
 	unsigned long getCreatureLinkID();
 	

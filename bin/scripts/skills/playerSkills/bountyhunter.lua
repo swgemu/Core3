@@ -194,7 +194,7 @@ DirectPoolAtt = {
 	quicknessAttackChance = 0,
 	staminaAttackChance = 0,
 
-	mindAttackChance = 20,
+	mindAttackChance = 100,
 	focusAttackChance = 0,
 	willpowerAttackChance = 0,
 		
@@ -228,7 +228,7 @@ DotPoolAtt = {
 	areaRange = 0,
 	accuracyBonus = 0,
 
-	healthAttackChance = 50,
+	healthAttackChance = 100,
 	actionAttackChance = 0,
 	mindAttackChance = 0,
 
@@ -425,7 +425,7 @@ DirectPoolAtt = {
 	areaRange = 0,
 	accuracyBonus = 0,
 
-	healthAttackChance = 50,
+	healthAttackChance = 100,
 	strengthAttackChance = 0,
 	constitutionAttackChance = 0,
 

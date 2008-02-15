@@ -82,7 +82,7 @@ void ItemManagerImplementation::loadPlayerItems(Player* player) {
 }
 
 TangibleObject* ItemManagerImplementation::getPlayerItem(Player* player, uint64 objectid) {
-	TangibleObject* tano;
+	TangibleObject* tano = NULL;
 
 	try {
 		stringstream query;

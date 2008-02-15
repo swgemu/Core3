@@ -133,6 +133,7 @@ void CreatureManagerImplementation::stop() {
 void CreatureManagerImplementation::loadRecruiters() {
 	if (zone->getZoneID() == 8) {
 		RecruiterCreature* recruiter1 = spawnRecruiter("", "Recruiter", 0x8C73B91, 36, -5336);
+		RecruiterCreature* recruiter2 = spawnRecruiter("", "Recruiter", 0x8C73B91, -1130, -3902);
 	}
 }
 
@@ -144,7 +145,7 @@ void CreatureManagerImplementation::loadTrainers() {
 	ResultSet* result;
 	stringstream query;
 	query << "SELECT * FROM trainers WHERE Planet = " << planetid << ";";
-	result = ServerDatabase::instance()->executeStatement(query.str());
+	result = ServerDatabase::instance()->executeQuery(query);
 	
 	while (result->next()) {
 		string location = result->getString(0);
@@ -184,7 +185,6 @@ void CreatureManagerImplementation::loadTrainers() {
 			TrainerCreature* trainer = spawnTrainer(prof->getName(), "", prof->getName(), 0x8C73B91, -16 - (i*2.25), -5305 );
 		}
 	}
-
 }
 
 void CreatureManagerImplementation::loadStaticCreatures() {

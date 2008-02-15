@@ -269,6 +269,8 @@ public:
 
 	void setMeditateState();
 
+	bool isGuilded();
+
 	void setBaseHealth(unsigned int health);
 
 	void setBaseStrength(unsigned int strength);
@@ -414,6 +416,8 @@ public:
 	void setIgnoreMovementTests(int times);
 
 	void setLevel(unsigned int lvl);
+
+	void updateServerMovementStamp();
 
 	unicode& getCharacterName();
 
@@ -622,6 +626,8 @@ public:
 	int getCondition();
 
 	MountCreature* getMount();
+
+	unsigned long long getLastServerMovementStamp();
 
 	unsigned long long getCreatureLinkID();
 
@@ -922,6 +928,8 @@ public:
 
 	void setMeditateState();
 
+	bool isGuilded();
+
 	void setBaseHealth(unsigned int health);
 
 	void setBaseStrength(unsigned int strength);
@@ -1067,6 +1075,8 @@ public:
 	void setIgnoreMovementTests(int times);
 
 	void setLevel(unsigned int lvl);
+
+	void updateServerMovementStamp();
 
 	unicode& getCharacterName();
 
@@ -1275,6 +1285,8 @@ public:
 	int getCondition();
 
 	MountCreature* getMount();
+
+	unsigned long long getLastServerMovementStamp();
 
 	unsigned long long getCreatureLinkID();
 

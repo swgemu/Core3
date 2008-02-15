@@ -49,7 +49,7 @@ spawnCreatures(juviCanyonKraytDragon, 8, -4703, -4275, 1000, 6, 300 ) -- dune se
 --spawnCreature(canyonKraytDragon, 8, -140, -5157)
 --spawnCreature(canyonKraytDragon, 8, 19, -5086)
 --spawnCreature(canyonKraytDragon, 8, 193, -5241)
-spawnCreature(darthVader, 8, -81, -5338, 250)
+--spawnCreature(darthVader, 8, -81, -5338, 250)
 
 --global clusters
 

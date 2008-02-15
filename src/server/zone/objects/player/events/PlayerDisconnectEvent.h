@@ -60,7 +60,7 @@ public:
 		try {
 			player->wlock();
 
-			if (player->isOnline() || player->isLinkDead())
+			if (!player->isOffline())
 				player->disconnect(true, false);
 			else
 				player->clearDisconnectEvent();	

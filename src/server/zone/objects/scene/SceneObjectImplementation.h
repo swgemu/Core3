@@ -310,6 +310,10 @@ public:
 		keepObject = true;
 	}
 	
+	inline void clearUndeploymentEvent() {
+		undeployEvent = NULL;
+	}
+	
 	// getters
 	inline Zone* getZone() {
 		return zone;

@@ -148,7 +148,7 @@ DirectPoolAtt = {
 	strengthAttackChance = 0,
 	constitutionAttackChance = 0,
 
-	actionAttackChance = 50,
+	actionAttackChance = 100,
 	quicknessAttackChance = 0,
 	staminaAttackChance = 0,
 
@@ -221,7 +221,7 @@ DirectPoolAtt = {
 	strengthAttackChance = 0,
 	constitutionAttackChance = 0,
 
-	actionAttackChance = 50,
+	actionAttackChance = 100,
 	quicknessAttackChance = 0,
 	staminaAttackChance = 0,
 
@@ -353,7 +353,7 @@ DirectPoolAtt = {
 	accuracyBonus = 0,
 
 	healthAttackChance = 0,
-	actionAttackChance = 50,
+	actionAttackChance = 100,
 	mindAttackChance = 0,
 		
 	dotChance = 50,
@@ -395,7 +395,7 @@ DirectPoolAtt = {
 	accuracyBonus = 0,
 
 	healthAttackChance = 0,
-	actionAttackChance = 50,
+	actionAttackChance = 100,
 	mindAttackChance = 0,
 	
 	dotChance = 50,

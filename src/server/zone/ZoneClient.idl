@@ -58,6 +58,8 @@ interface ZoneClient {
 	void resetPacketCheckupTime();
 	void balancePacketCheckupTime();
 
+	void info(const string msg, boolean foredLog = false);
+
 	// setters and getters
 	void setPlayer(Player player);
 	

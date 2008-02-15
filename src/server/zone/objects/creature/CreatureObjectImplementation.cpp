@@ -614,7 +614,8 @@ void CreatureObjectImplementation::removeDefenders() {
 	}
 
 	CreatureObjectDeltaMessage6* dcreo6 = new CreatureObjectDeltaMessage6((CreatureObject*) _this);
-	dcreo6->startDefenderUpdate(defenderList.size());
+	//dcreo6->startDefenderUpdate(defenderList.size());
+	dcreo6->startDefenderUpdate(1);
 	
 	for (int i = 0; i < defenderList.size(); ++i) {
 		CreatureObject* defender = defenderList.get(i);
@@ -622,9 +623,10 @@ void CreatureObjectImplementation::removeDefenders() {
 		info("removing defender");
 		defender->release();
 		
-		dcreo6->removeDefender(i);
+		//dcreo6->removeDefender(i);
 	}
 	
+	dcreo6->removeDefenders();
 	dcreo6->close();
 	broadcastMessage(dcreo6);
 	
@@ -647,7 +649,12 @@ void CreatureObjectImplementation::removeDefender(CreatureObject* defender) {
 			
 			CreatureObjectDeltaMessage6* dcreo6 = new CreatureObjectDeltaMessage6((CreatureObject*) _this);
 			dcreo6->startDefenderUpdate(1);
-			dcreo6->removeDefender(i);
+			
+			if (defenderList.size() == 0)
+				dcreo6->removeDefenders();
+			else
+				dcreo6->removeDefender(i);
+				
 			dcreo6->close();
 	
 			broadcastMessage(dcreo6);
@@ -3081,7 +3088,6 @@ bool CreatureObjectImplementation::isLootOwner(CreatureObject* creature) {
 }
 
 void CreatureObjectImplementation::addDamage(CreatureObject* creature, uint32 damage) {
-	
 	if (damageMap.contains(creature))
 		damageMap.get(creature) += damage;
 	else

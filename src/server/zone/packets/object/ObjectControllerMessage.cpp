@@ -106,42 +106,65 @@ bool ObjectControllerMessage::parseDataTransform(Player* player, Message* pack) 
 		return false;
 	}
 	
-	/*uint32 lastStamp = player->getLastMovementUpdateStamp();
-	int ignoreMovements = player->getIgnoreMovementTests();
+	uint32 lastStamp = player->getLastMovementUpdateStamp();
 	
-	if (ignoreMovements > 0) {
-		player->setIgnoreMovementTests(--ignoreMovements);
-		
+	if (lastStamp == 0 || lastStamp > movementStamp) {
+		player->updateServerMovementStamp();
+			
 		player->setLastMovementUpdateStamp(movementStamp);
+		
 		player->setLastTestPositionX(x);
 		player->setLastTestPositionY(y);
-	} else if (lastStamp < movementStamp) {
-		float deltaStamp = ((float)movementStamp - (float)lastStamp) / 1000.f;
+	} else {
+		uint32 deltaStamp = (movementStamp - lastStamp);
+			
+		uint64 serverStamp = player->getLastServerMovementStamp();
+			
+		player->setLastMovementUpdateStamp(movementStamp);
+					
+		player->updateServerMovementStamp();
+			
+		if (serverStamp + 250 < (uint64)deltaStamp) {
+			stringstream deltas;
+			deltas << "speed hack detected " << "deltaStamp:[" << deltaStamp << "] serversStamp:[" << serverStamp << "]";
+			player->info(deltas.str());
+						
+			player->bounceBack();
+			return false;
+		}
 		
-		if (deltaStamp >= 1) {
+		int ignoreMovements = player->getIgnoreMovementTests();
+		
+		SceneObject* parent = player->getParent();
+		
+		if (ignoreMovements > 0) {
+			player->setIgnoreMovementTests(--ignoreMovements);
+		} else if (parent == NULL || !parent->isCell()) {
 			float lastPosX = player->getLastTestPositionX();
 			float lastPosY = player->getLastTestPositionY();
-			
+
 			float dist = sqrt(((x - lastPosX) * (x - lastPosX)) + ((y - lastPosY) * (y - lastPosY)));
+
+			float speed = dist * 1000 / (float)deltaStamp;
 			
-			float speed = dist / deltaStamp;
-			
-			player->setLastMovementUpdateStamp(movementStamp);
-			player->setLastTestPositionX(x);
-			player->setLastTestPositionY(y);
-			
-			if (speed > (player->getSpeed() * 1.5)) {
+			if (speed > player->getSpeed() * 1.5) {
 				stringstream msg;
-				msg << "speed hack detected (" << speed << " m/s)";
-				player->error(msg.str());
+				msg << "SpeedHack detected on player: [" << player->getFirstName() << "]\n";
+				msg << "Player Speed:" << player->getSpeed() << " caught speed:" << speed << "\n";
+				player->info(msg.str());
 				
-				//player->disconnect(true, false);		
-				player->bounceBack();			
+				player->setLastTestPositionX(x);
+				player->setLastTestPositionY(y);
+				
+				player->bounceBack();
 				return false;
 			}
 		}
-	}*/
-	
+		
+		player->setLastTestPositionX(x);
+		player->setLastTestPositionY(y);
+	}
+		
 	//cout << "Movement counter:" << movementCounter << "\n";
 	
 	player->setMovementCounter(movementCounter);
@@ -181,33 +204,68 @@ uint64 ObjectControllerMessage::parseDataTransformWithParent(Player* player, Mes
 	float y = pack->parseFloat();
 	
 	if (x > 1024.0f || x < -1024.0f || y > 1024.0f || y < -1024.0f) {
-		player->error("position out of bounds...");		
-		return false;
+		stringstream msg;
+		msg << "position out of bounds cell:[" << parent << "]";
+		player->error(msg.str());		
+		return 0;
 	}
 	
-	/*uint32 lastStamp = player->getLastMovementUpdateStamp();
-	int ignoreMovements = player->getIgnoreMovementTests();
-
-	if (ignoreMovements > 0) {
-		player->setIgnoreMovementTests(--ignoreMovements);
-	} else if (lastStamp < movementStamp) {
-		float lastPosX = player->getPositionX();
-		float lastPosY = player->getPositionY();
-
-		float dist = sqrt(((x - lastPosX) * (x - lastPosX)) + ((y - lastPosY) * (y - lastPosY)));
-
-		float deltaStamp = ((float)movementStamp - (float)lastStamp) / 1000.f;
-
-		float speed = dist / deltaStamp;
-
-		if (speed > player->getSpeed() + 5) {
-			cout << "SpeedHack detected on player: [" << player->getFirstName() << "]\n";
-			cout << "Player Speed:" << player->getSpeed() << " caught speed:" << speed << "\n";
-			cout << "disconnecting..\n";
-			player->disconnect(true, false);
+	uint32 lastStamp = player->getLastMovementUpdateStamp();
+	
+	if (lastStamp == 0 || lastStamp > movementStamp) {
+		player->updateServerMovementStamp();
+			
+		player->setLastMovementUpdateStamp(movementStamp);
+		
+		player->setLastTestPositionX(x);
+		player->setLastTestPositionY(y);
+	} else {
+		uint32 deltaStamp = (movementStamp - lastStamp);
+			
+		uint64 serverStamp = player->getLastServerMovementStamp();
+			
+		player->setLastMovementUpdateStamp(movementStamp);
+					
+		player->updateServerMovementStamp();
+			
+		if (serverStamp + 250 < (uint64)deltaStamp) {
+			stringstream deltas;
+			deltas << "speed hack detected " << "deltaStamp:[" << deltaStamp << "] serversStamp:[" << serverStamp << "]";
+			player->info(deltas.str());
+						
+			player->bounceBack();
 			return 0;
 		}
-	}*/
+		
+		int ignoreMovements = player->getIgnoreMovementTests();
+		
+		if (ignoreMovements > 0) {
+			player->setIgnoreMovementTests(--ignoreMovements);
+		} else if (player->getParent() != NULL) {
+			float lastPosX = player->getLastTestPositionX();
+			float lastPosY = player->getLastTestPositionY();
+
+			float dist = sqrt(((x - lastPosX) * (x - lastPosX)) + ((y - lastPosY) * (y - lastPosY)));
+
+			float speed = dist * 1000 / (float)deltaStamp;
+			
+			if (speed > player->getSpeed() * 1.5) {
+				stringstream msg;
+				msg << "SpeedHack detected on player: [" << player->getFirstName() << "]\n";
+				msg << "Player Speed:" << player->getSpeed() << " caught speed:" << speed << "\n";
+				player->info(msg.str());
+				
+				player->setLastTestPositionX(x);
+				player->setLastTestPositionY(y);
+				
+				player->bounceBack();
+				return 0;
+			}
+		}
+		
+		player->setLastTestPositionX(x);
+		player->setLastTestPositionY(y);
+	}
 	
 	player->setDirection(dx, dz, dy , dw);
 	player->setPosition(x, z, y);
@@ -244,9 +302,9 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player, Message* 
 		return;
 	}
 	
-	stringstream msg;
+	/*stringstream msg;
 	msg << "parsing CommandQueueEnqueue actionCRC = (0x" << hex << actionCRC << dec <<  ")";
-	player->info(msg.str());
+	player->info(msg.str());*/
 
 	ChatManager* chatManager;
 	

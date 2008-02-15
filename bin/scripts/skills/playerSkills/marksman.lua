@@ -155,7 +155,7 @@ DirectPoolAtt = {
 	quicknessAttackChance = 0,
 	staminaAttackChance = 0,
 
-	mindAttackChance = 20,
+	mindAttackChance = 100,
 	focusAttackChance = 0,
 	willpowerAttackChance = 0,
 		
@@ -197,7 +197,7 @@ DirectPoolAtt = {
 	quicknessAttackChance = 0,
 	staminaAttackChance = 0,
 
-	mindAttackChance = 40,
+	mindAttackChance = 100,
 	focusAttackChance = 0,
 	willpowerAttackChance = 0,
 		
@@ -239,9 +239,9 @@ DirectPoolAtt = {
 	quicknessAttackChance = 0,
 	staminaAttackChance = 0,
 
-	mindAttackChance = 0,
-	focusAttackChance = 20,
-	willpowerAttackChance = 20,
+	mindAttackChance = 100,
+	focusAttackChance = 0,
+	willpowerAttackChance = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -273,7 +273,7 @@ DirectPoolAtt = {
 	areaRange = 0,
 	accuracyBonus = 0,
 
-	healthAttackChance = 20,
+	healthAttackChance = 100,
 	strengthAttackChance = 0,
 	constitutionAttackChance = 0,
 
@@ -315,7 +315,7 @@ DirectPoolAtt = {
 	areaRange = 0,
 	accuracyBonus = 0,
 
-	healthAttackChance = 40,
+	healthAttackChance = 100,
 	strengthAttackChance = 0,
 	constitutionAttackChance = 0,
 
@@ -357,9 +357,9 @@ DirectPoolAtt = {
 	areaRange = 0,
 	accuracyBonus = 0,
 
-	healthAttackChance = 0,
-	strengthAttackChance = 20,
-	constitutionAttackChance = 20,
+	healthAttackChance = 100,
+	strengthAttackChance = 0,
+	constitutionAttackChance = 0,
 
 	actionAttackChance = 0,
 	quicknessAttackChance = 0,
@@ -403,7 +403,7 @@ DirectPoolAtt = {
 	strengthAttackChance = 0,
 	constitutionAttackChance = 0,
 
-	actionAttackChance = 20,
+	actionAttackChance = 100,
 	quicknessAttackChance = 0,
 	staminaAttackChance = 0,
 
@@ -476,7 +476,7 @@ DirectPoolAtt = {
 	strengthAttackChance = 0,
 	constitutionAttackChance = 0,
 
-	actionAttackChance = 40,
+	actionAttackChance = 100,
 	quicknessAttackChance = 0,
 	staminaAttackChance = 0,
 
@@ -515,7 +515,7 @@ DotPoolAtt = {
 	accuracyBonus = 0,
 
 	healthAttackChance = 0,
-	actionAttackChance = 60,
+	actionAttackChance = 100,
 	mindAttackChance = 0,
 
 	dotChance = 50,

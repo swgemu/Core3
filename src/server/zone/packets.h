@@ -82,6 +82,7 @@ which carries forward this exception.
 #include "packets/object/SitOnObject.h"
 #include "packets/object/PlayersNearYou.h"
 #include "packets/object/DataTransform.h"
+#include "packets/object/DataTransformWithParent.h"
 
 #include "packets/scene/SceneObjectCreateMessage.h"
 #include "packets/scene/SceneObjectCloseMessage.h"

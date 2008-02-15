@@ -114,10 +114,14 @@ void ZoneClientImplementation::closeConnection(bool doLock) {
 		
 		ZoneServer* server = NULL;
 		
-		if (player != NULL && player->getZone() != NULL)
+		if (player != NULL) {
+		 	if (player->getZone() != NULL)
 				server = player->getZone()->getZoneServer();
 
-		player = NULL;
+			player->setClient(NULL);
+			
+			player = NULL;
+		}
 
 		BaseClient::disconnect(false);
 		
