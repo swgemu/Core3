@@ -39,15 +39,15 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-RandPoolAtt = { 
+DirectPoolAtt = { 
 	attackname = "flamesingle1",
-	animation = "",
+	animation = "fire_flame_thrower_single_1_light",
 
 	requiredWeaponType = RANGED,
 	
 	range = 45,
-	damageRatio = 1.25,
-	speedRatio = 1.25,
+	damageRatio = 5,
+	speedRatio = 4,
 	areaRange = 0,
 	accuracyBonus = 0,
 		
@@ -58,6 +58,16 @@ RandPoolAtt = {
 	blindChance = 0,
 	stunChance = 0,
 	intimidateChance = 0,
+
+	healthAttackChance = 80,
+	actionAttackChance = 60,
+	mindAttackChance = 40,
+
+	dotChance = 100,
+	tickStrengthOfHit = 1,
+
+	fireStrength = 0.1,
+	fireType = HEALTH,
 	
 	CbtSpamBlock = "flamesingle1_block",
 	CbtSpamCounter = "flamesingle1_counter",
@@ -66,19 +76,19 @@ RandPoolAtt = {
 	CbtSpamMiss = "flamesingle1_miss",
 }
 
-AddRandomPoolAttackTargetSkill(RandPoolAtt)
+AddDotPoolAttackTargetSkill(DirectPoolAtt)
 
 -----------------------------------------------------------------------
 
-RandPoolAtt = { 
+DirectPoolAtt = { 
 	attackname = "flamecone1",
-	animation = "",
+	animation = "fire_flame_thrower_cone_1_light",
 
 	requiredWeaponType = RANGED,
 	
 	range = 45,
-	damageRatio = 1.25,
-	speedRatio = 1.25,
+	damageRatio = 5,
+	speedRatio = 4,
 	coneAngle = 60,
 	accuracyBonus = 0,
 		
@@ -89,6 +99,16 @@ RandPoolAtt = {
 	blindChance = 0,
 	stunChance = 0,
 	intimidateChance = 0,
+
+	healthAttackChance = 80,
+	actionAttackChance = 60,
+	mindAttackChance = 40,
+
+	dotChance = 100,
+	tickStrengthOfHit = 1,
+
+	fireStrength = 0.1,
+	fireType = HEALTH,
 	
 	CbtSpamBlock = "flamecone1_block",
 	CbtSpamCounter = "flamecone1_counter",
@@ -97,19 +117,19 @@ RandPoolAtt = {
 	CbtSpamMiss = "flamecone1_miss",
 }
 
-AddRandomPoolAttackTargetSkill(RandPoolAtt)
+AddDotPoolAttackTargetSkill(DirectPoolAtt)
 
 -----------------------------------------------------------------------
 
-RandPoolAtt = { 
+DirectPoolAtt = { 
 	attackname = "flamesingle2",
-	animation = "",
+	animation = "fire_flame_thrower_single_2_medium",
 
 	requiredWeaponType = RANGED,
 	
 	range = 45,
-	damageRatio = 1.25,
-	speedRatio = 1.25,
+	damageRatio = 8,
+	speedRatio = 4,
 	coneAngle = 60,
 	accuracyBonus = 0,
 		
@@ -120,6 +140,16 @@ RandPoolAtt = {
 	blindChance = 0,
 	stunChance = 0,
 	intimidateChance = 0,
+
+	healthAttackChance = 80,
+	actionAttackChance = 60,
+	mindAttackChance = 40,
+
+	dotChance = 100,
+	tickStrengthOfHit = 1,
+
+	fireStrength = 0.1,
+	fireType = HEALTH,
 	
 	CbtSpamBlock = "flamesingle2_block",
 	CbtSpamCounter = "flamesingle2_counter",
@@ -128,7 +158,7 @@ RandPoolAtt = {
 	CbtSpamMiss = "flamesingle2_miss",
 }
 
-AddRandomPoolAttackTargetSkill(RandPoolAtt)
+AddDotPoolAttackTargetSkill(DirectPoolAtt)
 
 -----------------------------------------------------------------------
 
@@ -256,15 +286,15 @@ AddRandomPoolAttackTargetSkill(RandPoolAtt)
 
 -----------------------------------------------------------------------
 
-RandPoolAtt = { 
+DirectPoolAtt = { 
 	attackname = "flamecone2",
 	animation = "fire_flamethrower_cone_2_light",
 
 	requiredWeaponType = RANGED,
 	
 	range = 45,
-	damageRatio = 1.25,
-	speedRatio = 1.25,
+	damageRatio = 6,
+	speedRatio = 4,
 	coneAngle = 60,
 	accuracyBonus = 0,
 		
@@ -275,6 +305,16 @@ RandPoolAtt = {
 	blindChance = 0,
 	stunChance = 0,
 	intimidateChance = 0,
+
+	healthAttackChance = 80,
+	actionAttackChance = 60,
+	mindAttackChance = 40,
+
+	dotChance = 100,
+	tickStrengthOfHit = 1,
+
+	fireStrength = 0.1,
+	fireType = HEALTH,
 	
 	CbtSpamBlock = "flamecone1_block",
 	CbtSpamCounter = "flamecone1_counter",
@@ -283,6 +323,6 @@ RandPoolAtt = {
 	CbtSpamMiss = "flamecone1_miss",
 }
 
-AddRandomPoolAttackTargetSkill(RandPoolAtt)
+AddDotPoolAttackTargetSkill(DirectPoolAtt)
 
 -----------------------------------------------------------------------

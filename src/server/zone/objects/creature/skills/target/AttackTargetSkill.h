@@ -412,11 +412,19 @@ public:
 				speedMod = ((Player*)creature)->getSkillMod("rifle_speed");
 				break;
 			}
-
+		
 		if (weapon != NULL) {
 			weaponSpeed = (float)((100.0f - speedMod) / 100.0f) * speedRatio * weapon->getAttackSpeed();
 		} else
 			weaponSpeed = (float)((100.0f - speedMod) / 100.0f) * 1;
+		
+		/*if (creature->isPlayer()) {
+			stringstream txt;
+			txt << "Skill mod = [" << speedMod << "] bonus = [" << ((Player*)creature)->getSkillModBonus("pistol_speed") << "]";
+			txt << "SpeedRatio = [" << speedRatio << "] Weapon Speed = [" << weapon->getAttackSpeed() << "] Final Speed = [" << weaponSpeed << "]";
+			
+			creature->sendSystemMessage(txt.str());
+		}*/
 		
 		return MAX(weaponSpeed, 1.0f);
 	}
@@ -613,32 +621,24 @@ public:
 				switch (weapon->getDot0Type()) {
 				case 1:
 					resist = targetCreature->getSkillMod("resistance_bleeding");
-					if (resist > 25) 
-						resist = 25;
 					
 					if ((int) System::random(100) < (weapon->getDot0Potency() - resist))
 						targetCreature->setBleedingState(weapon->getDot0Strength(), weapon->getDot0Attribute(), weapon->getDot0Duration());
 					break;	
 				case 2:
 					resist = targetCreature->getSkillMod("resistance_disease");
-					if (resist > 25) 
-						resist = 25;
 					
 					if ((int) System::random(100) < (weapon->getDot0Potency() - resist))
 					targetCreature->setDiseasedState(weapon->getDot0Strength(), weapon->getDot0Attribute(), weapon->getDot0Duration());
 					break;	
 				case 3:
 					resist = targetCreature->getSkillMod("resistance_fire");
-					if (resist > 25) 
-						resist = 25;
 					
 					if ((int) System::random(100) < (weapon->getDot0Potency() - resist))
 					targetCreature->setOnFireState(weapon->getDot0Strength(), weapon->getDot0Attribute(), weapon->getDot0Duration());
 					break;	
 				case 4:
 					resist = targetCreature->getSkillMod("resistance_poison");
-					if (resist > 25) 
-						resist = 25;
 					
 					if ((int) System::random(100) < (weapon->getDot0Potency() - resist))
 					targetCreature->setPoisonedState(weapon->getDot0Strength(), weapon->getDot0Attribute(), weapon->getDot0Duration());
@@ -654,32 +654,24 @@ public:
 				switch (weapon->getDot1Type()) {
 				case 1:
 					resist = targetCreature->getSkillMod("resistance_bleeding");
-					if (resist > 25) 
-						resist = 25;
 					
 					if ((int) System::random(100) < (weapon->getDot1Potency() - resist))
 						targetCreature->setBleedingState(weapon->getDot1Strength(), weapon->getDot1Attribute(), weapon->getDot1Duration());
 					break;	
 				case 2:
 					resist = targetCreature->getSkillMod("resistance_disease");
-					if (resist > 25) 
-						resist = 25;
 					
 					if ((int) System::random(100) < (weapon->getDot1Potency() - resist))
 					targetCreature->setDiseasedState(weapon->getDot1Strength(), weapon->getDot1Attribute(), weapon->getDot1Duration());
 					break;	
 				case 3:
 					resist = targetCreature->getSkillMod("resistance_fire");
-					if (resist > 25) 
-						resist = 25;
 					
 					if ((int) System::random(100) < (weapon->getDot1Potency() - resist))
 					targetCreature->setOnFireState(weapon->getDot1Strength(), weapon->getDot1Attribute(), weapon->getDot1Duration());
 					break;	
 				case 4:
 					resist = targetCreature->getSkillMod("resistance_poison");
-					if (resist > 25) 
-						resist = 25;
 					
 					if ((int) System::random(100) < (weapon->getDot1Potency() - resist))
 					targetCreature->setPoisonedState(weapon->getDot1Strength(), weapon->getDot1Attribute(), weapon->getDot1Duration());
@@ -695,32 +687,24 @@ public:
 				switch (weapon->getDot2Type()) {
 				case 1:
 					resist = targetCreature->getSkillMod("resistance_bleeding");
-					if (resist > 25) 
-						resist = 25;
 					
 					if ((int) System::random(100) < (weapon->getDot2Potency() - resist))
 						targetCreature->setBleedingState(weapon->getDot2Strength(), weapon->getDot2Attribute(), weapon->getDot2Duration());
 					break;	
 				case 2:
 					resist = targetCreature->getSkillMod("resistance_disease");
-					if (resist > 25) 
-						resist = 25;
 					
 					if ((int) System::random(100) < (weapon->getDot2Potency() - resist))
 					targetCreature->setDiseasedState(weapon->getDot2Strength(), weapon->getDot2Attribute(), weapon->getDot2Duration());
 					break;	
 				case 3:
 					resist = targetCreature->getSkillMod("resistance_fire");
-					if (resist > 25) 
-						resist = 25;
 					
 					if ((int) System::random(100) < (weapon->getDot2Potency() - resist))
 					targetCreature->setOnFireState(weapon->getDot2Strength(), weapon->getDot2Attribute(), weapon->getDot2Duration());
 					break;	
 				case 4:
 					resist = targetCreature->getSkillMod("resistance_poison");
-					if (resist > 25) 
-						resist = 25;
 					
 					if ((int) System::random(100) < (weapon->getDot2Potency() - resist))
 					targetCreature->setPoisonedState(weapon->getDot2Strength(), weapon->getDot2Attribute(), weapon->getDot2Duration());

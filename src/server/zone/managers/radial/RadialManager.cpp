@@ -116,15 +116,16 @@ void RadialManager::handleRadialRequest(Player* player, Packet* pack) {
 			surveyTool = (SurveyTool*) tano;
 			sendRadialResponseForSurveyTools(player, surveyTool, omr);
 			return;
-		case TangibleObjectImplementation::ARMOR:
-			if (sendRadialResponseForClothing(player, (Armor*) tano, omr))
+		}
+		if (tano->isArmor()) {
+			if (sendRadialResponseForClothing(player, (Armor*)tano, omr))
 				return;
-			
-			break;
+		} else if (tano->isWeapon()) {
+			if (sendRadialResponseForWeapon(player, (Weapon*)tano, omr))
+				return;
 		}
 		break;
 	}
-	
 	sendDefaultRadialResponse(player, omr);
 }
 
@@ -211,10 +212,20 @@ void RadialManager::handleSelection(int radialID, Player* player, SceneObject* o
 	case 68: // SERVER_MENU1 using to change color on wearables (temporary)
 		handleWearableColorChange(player, obj);
 		break;
+	case 69: // SLICING
+		handleSlicing(player, obj);
+		break;
+	case 70: // REPAIR
+		handleRepair(player, obj);
+		break;
+	case 71: // REMOVE POWERUP
+		handleRemovePowerup(player, obj);
+		break;
 	case 136: // SURVEY_TOOL_OPTIONS
 		break;
 	case 137: // SURVEY_TOOL_SET_RANGE
 		sendRadialResponseForSurveyToolRange(player, obj);
+		break;
 	case 187: // SERVER_GUILD_INFO
 		break;
 	case 188: // SERVER_GUILD_MEMBERS
@@ -434,6 +445,49 @@ void RadialManager::handleWearableColorChange(Player* player, SceneObject* obj) 
 	return;
 }
 
+void RadialManager::handleSlicing(Player* player, SceneObject* obj) {
+	if (!obj->isTangible())
+		return;
+	
+	TangibleObject* tano = (TangibleObject*) obj;
+	
+	if (tano->isArmor()) {
+		Armor* armor = (Armor*) tano;
+		if (!armor->isSliced())
+			armor->sliceArmor(player);
+	} else if (tano->isWeapon()) {
+		Weapon* weapon = (Weapon*) tano;
+		if (!weapon->isSliced())
+			weapon->sliceWeapon(player);
+	}
+}
+
+void RadialManager::handleRepair(Player* player, SceneObject* obj) {
+	if (!obj->isTangible())
+		return;
+	
+	TangibleObject* tano = (TangibleObject*) obj;
+	
+	if (tano->isArmor()) {
+		Armor* armor = (Armor*) tano;
+		armor->repairArmor(player);
+	} else if (tano->isWeapon()) {
+		Weapon* weapon = (Weapon*) tano;
+		weapon->repairWeapon(player);
+	}
+}
+
+void RadialManager::handleRemovePowerup(Player* player, SceneObject* obj) {
+	if (!obj->isTangible())
+		return;
+	
+	TangibleObject* tano = (TangibleObject*) obj;
+	
+	Weapon* weapon = (Weapon*) tano;
+	if (weapon->hasPowerup())
+		weapon->removePowerup(player, false);
+}
+
 void RadialManager::sendRadialResponseForSurveyTools(Player* player, SurveyTool* surveyTool, ObjectMenuResponse* omr) {
 	omr->addRadialItem(0, 136, 3, "@sui:tool_options");
 	omr->addRadialItem(4, 137, 3, "@sui:survey_range");
@@ -481,7 +535,14 @@ void RadialManager::sendRadialResponseForSurveyToolRange(Player* player, SceneOb
 
 bool RadialManager::sendRadialResponseForClothing(Player* player, Armor* object, ObjectMenuResponse* omr) {
 	if (player->getInventoryItem(object->getObjectID()) != NULL) {
+		
 		omr->addRadialItem(0, 68, 3, "Change color");
+		
+		if (!object->isSliced())
+			omr->addRadialItem(0, 69, 3, "Slice");
+		
+		omr->addRadialItem(0, 70, 3, "Repair");
+
 		omr->finish();
 
 		player->sendMessage(omr);
@@ -491,3 +552,24 @@ bool RadialManager::sendRadialResponseForClothing(Player* player, Armor* object,
 	
 	return false;
 }
+
+bool RadialManager::sendRadialResponseForWeapon(Player* player, Weapon* object, ObjectMenuResponse* omr) {
+	if (player->getInventoryItem(object->getObjectID()) != NULL) {
+
+		if (!object->isSliced())
+			omr->addRadialItem(0, 69, 3, "Slice");
+		
+		omr->addRadialItem(0, 70, 3, "Repair");
+		
+		if (object->hasPowerup())
+			omr->addRadialItem(0, 71, 3, "Remove Powerup");
+		
+		omr->finish();
+
+		player->sendMessage(omr);
+		return true;
+	}
+	
+	return false;
+}
+

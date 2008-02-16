@@ -54,6 +54,7 @@ class Player;
 class SceneObject;
 class GuildTerminal;
 class SurveyTool;
+class Weapon;
 class Armor;
 
 class RadialManager {
@@ -73,18 +74,19 @@ public:
 	void sendRadialResponseForBazaar(uint64 objectId, Player* player);
 	
 	void handleSelection(int radialID, Player* player, SceneObject* obj);
-	
 	void handleVehicleStore(SceneObject* obj);
 	void handleVehicleGenerate(SceneObject* obj);
-
 	void handleTrade(Player* player, SceneObject* obj);
-	
 	void handleWearableColorChange(Player* player, SceneObject* obj);
+	void handleSlicing(Player* player, SceneObject* obj);
+	void handleRepair(Player* player, SceneObject* obj);
+	void handleRemovePowerup(Player* player, SceneObject* obj);
 	
 	void sendRadialResponseForSurveyTools(Player* player, SurveyTool* surveyTool, ObjectMenuResponse* omr);
 	void sendRadialResponseForSurveyToolRange(Player* player, SceneObject* obj);
-	
-	bool sendRadialResponseForClothing(Player* player, Armor* object, ObjectMenuResponse* omr);
+	bool sendRadialResponseForClothing(Player* player, Armor* object, ObjectMenuResponse* omr);	
+	bool sendRadialResponseForWeapon(Player* player, Weapon* object, ObjectMenuResponse* omr);
+
 };
 
 #endif /*RADIALMANAGER_H_*/

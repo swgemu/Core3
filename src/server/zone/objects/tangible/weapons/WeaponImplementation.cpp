@@ -699,8 +699,13 @@ void WeaponImplementation::repairWeapon(Player* player) {
 		
 		updated = true;
 		
-		BaseMessage* weao3 = new WeaponObjectMessage3(_this);
-		player->sendMessage(weao3);
+		TangibleObjectDeltaMessage3* dtano3 = new TangibleObjectDeltaMessage3(_this);
+		dtano3->updateConditionDamage();
+		dtano3->updateMaxCondition();
+		dtano3->close();
+		player->broadcastMessage(dtano3);
+		
+		generateAttributes(player);
 		
 		return;
 	} else if (roll < 75) {
@@ -752,7 +757,7 @@ void WeaponImplementation::setWeaponStats(int modifier){
 		stringstream itemText;
 		itemText << "\\#ffff00" << name.c_str() << " (Legendary)";
 		name = unicode(itemText.str());
-	} else if (playerRoll > 45000) {
+	} else if (playerRoll > 55000) {
 		modifier = modifier + 50;
 		luck = luck + 100;
 
@@ -769,18 +774,18 @@ void WeaponImplementation::setWeaponStats(int modifier){
 	}
 	
 	if (luck * System::random(100) > 1700) {
-		setMinDamage(minDamage + (minDamage * luck / 140) + System::random(luck/10));
-		setMaxDamage(maxDamage + (maxDamage * luck / 140) + System::random(luck/10));
+		setMinDamage(minDamage + (minDamage * luck / 157.93f));
+		setMaxDamage(maxDamage + (maxDamage * luck / 159.11f));
 	}
 	
 	if (luck * System::random(100) > 1700) {	
-		setAttackSpeed(attackSpeed - (attackSpeed * modifier / 750) - (luck / 500));
+		setAttackSpeed(attackSpeed - (attackSpeed * luck / 357.69f));
 	}
 	
 	if (luck * System::random(100) > 1700) {
-		setHealthAttackCost(healthAttackCost - (healthAttackCost * luck / 300));
-		setActionAttackCost(actionAttackCost - (actionAttackCost * luck / 300));
-		setMindAttackCost(mindAttackCost - (mindAttackCost * luck / 300));
+		setHealthAttackCost(healthAttackCost - (healthAttackCost * luck / 359));
+		setActionAttackCost(actionAttackCost - (actionAttackCost * luck / 359));
+		setMindAttackCost(mindAttackCost - (mindAttackCost * luck / 359));
 	}
 
 	if (luck * System::random(100) > 1700)
@@ -790,7 +795,7 @@ void WeaponImplementation::setWeaponStats(int modifier){
 		setSkillMod0Type(System::random(28) + 1);
 		setSkillMod0Value(luck / (System::random(3) + 10));
 	}
-	if (playerRoll > 15000 && System::random(2) == 1) {
+	if (playerRoll > 25000 && System::random(2) == 1) {
 		setSkillMod1Type(System::random(28) + 1);
 		setSkillMod1Value(luck / (System::random(3) + 10));
 	}
@@ -973,9 +978,8 @@ void WeaponImplementation::sliceWeapon(Player* player){
 				msg << "Weapon speed decreased by " << slicePercent << "%";
 				break;
 			}
-
-			BaseMessage* weao3 = new WeaponObjectMessage3(_this);
-			player->sendMessage(weao3);
+			
+			generateAttributes(player);
 
 		} else
 			msg << "Weapon is already sliced.";
@@ -1100,4 +1104,6 @@ void WeaponImplementation::removePowerup(Player* player, bool notify) {
 		txt << "The powerup on your " << name.c_str() << " has expired.";
 		player->sendSystemMessage(txt.str());
 	}
+	
+	generateAttributes(player);
 }

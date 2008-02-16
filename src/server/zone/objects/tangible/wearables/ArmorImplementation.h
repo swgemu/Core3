@@ -84,7 +84,7 @@ private:
 	float lightSaber;
 	bool lightSaberIsSpecial;
 	
-	int type;
+	int armorType;
 	
 	bool sliced;
 	
@@ -312,13 +312,13 @@ public:
 		}
 	}
 	
-	inline void setType(int armorType) {
+	inline void setType(int armorSlot) {
 		
 		string name = "armorType";
-		type = armorType;
-		itemAttributes->setIntAttribute(name, armorType);
+		armorType = armorSlot;
+		itemAttributes->setIntAttribute(name, armorSlot);
 		
-		switch (armorType) {
+		switch (armorSlot) {
 		case CHEST:
 			objectSubType = TangibleObjectImplementation::BODYARMOR;
 			break;
@@ -538,7 +538,7 @@ public:
 	}
 	
 	inline int getType() {
-		return type;
+		return armorType;
 	}
 	
 	inline bool isSliced() {

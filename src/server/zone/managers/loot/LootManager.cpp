@@ -109,8 +109,8 @@ void LootManager::createLoot(Creature* creature) {
 	int armorDropRate = 1500;
 	int junkDropRate = 1100;
 	int creditDropRate = 1500;
-	int attachmentDropRate = 1500;
-	int powerupDropRate = 1500;
+	int attachmentDropRate = 1250;
+	int powerupDropRate = 1750;
 	
 	creature->setCashCredits(0);
 
@@ -262,13 +262,26 @@ void LootManager::createWeaponLoot(Creature* creature, int creatureLevel) {
 			itemImpl->setIdealRange(15);
 			itemImpl->setMaxRangeAccuracy(-90);
 			itemImpl->setMaxRange(48);
+			creatureLevel += 50;
 		}
 		break;
 	case 15 :	// FLAMETHROWER
-		RifleRangedWeaponImplementation* flamerImpl = new RifleRangedWeaponImplementation(creature, 
-				"object/weapon/ranged/rifle/shared_rifle_flame_thrower.iff", unicode("Flamethrower"), "rifle_flame_thrower", false);
+		itemImpl = new RifleRangedWeaponImplementation(creature, 
+				"object/weapon/ranged/rifle/shared_rifle_flame_thrower.iff", unicode("Flame Thrower"), "rifle_flame_thrower", false);
 		itemImpl->setDamageType(WeaponImplementation::HEAT);
 		itemImpl->setArmorPiercing(WeaponImplementation::NONE);
+		itemImpl->setAttackSpeed(6);
+		itemImpl->setMinDamage(25);
+		itemImpl->setMaxDamage(284);
+		itemImpl->setWoundsRatio(36);
+
+		itemImpl->setPointBlankAccuracy(10);
+		itemImpl->setPointBlankRange(0);
+		itemImpl->setIdealAccuracy(-65);
+		itemImpl->setIdealRange(50);
+		itemImpl->setMaxRangeAccuracy(-120);
+		itemImpl->setMaxRange(64);
+		break;
 	}
 	
 	if (itemImpl != NULL) {

@@ -57,12 +57,17 @@ ArmorImplementation::ArmorImplementation(uint64 objid, uint32 tempCRC, const uni
 
 ArmorImplementation::ArmorImplementation(CreatureObject* creature, uint32 tempCRC, const unicode& n, const string& tempn, bool eqp)
 		: ArmorServant(creature, tempCRC, n, tempn, eqp) {
+	
+	//objectCRC = String::hashCode(temp);
+	name = n;
+	templateName = tempn;
+	
 	initialize();
 }
 
 void ArmorImplementation::parseItemAttributes() {
 	string name = "armorType";
-	type = itemAttributes->getIntAttribute(name);
+	armorType = itemAttributes->getIntAttribute(name);
 
 	maxCondition = itemAttributes->getMaxCondition();
 	conditionDamage = maxCondition - itemAttributes->getCurrentCondition();
@@ -219,7 +224,7 @@ void ArmorImplementation::initialize() {
 	setLightSaber(0.0f);
 	lightSaberIsSpecial = false;
 	
-	type = 0;
+	armorType = 0;
 	
 	setSliced(false);
 	
@@ -542,7 +547,7 @@ void ArmorImplementation::setArmorStats(int modifier) {
 		stringstream itemText;
 		itemText << "\\#ffff00" << name.c_str() << " (Legendary)";
 		name = unicode(itemText.str());	
-	} else if (playerRoll > 45000) {
+	} else if (playerRoll > 55000) {
 		modifier = modifier + 50;
 		luck = luck + 50;
 		
@@ -562,19 +567,21 @@ void ArmorImplementation::setArmorStats(int modifier) {
 	setCondition(maxCondition, maxCondition);
 	
 	if ((luck * System::random(100)) > 2000) {
-		setHealthEncumbrance(healthEncumbrance - (healthEncumbrance * luck / 300));
-		setActionEncumbrance(actionEncumbrance - (actionEncumbrance * luck / 300));
-		setMindEncumbrance(mindEncumbrance - (mindEncumbrance * luck / 300));
+		setHealthEncumbrance(healthEncumbrance - (healthEncumbrance * luck / 357));
+		setActionEncumbrance(actionEncumbrance - (actionEncumbrance * luck / 357));
+		setMindEncumbrance(mindEncumbrance - (mindEncumbrance * luck / 357));
 	}
 	
 	if ((luck * System::random(100)) > 2000) {
-		setKinetic(kinetic + (modifier / 20) + (luck / 10));
-		setEnergy(energy + (modifier / 20) + (luck / 10));
-		setElectricity(electricity + (modifier / 20) + (luck / 10));
-		setBlast(blast + (modifier / 20) + (luck / 10));
-		setHeat(heat + (modifier / 20) + (luck / 10));
-		setCold(cold + (modifier / 20) + (luck / 10));
-		setAcid(acid + (modifier / 20) + (luck / 10));
+		float resistMod = (luck / 367.43f);
+		
+		setKinetic(kinetic + (kinetic * resistMod));
+		setEnergy(energy + (energy * resistMod));
+		setElectricity(electricity + (electricity * resistMod));
+		setBlast(blast + (blast * resistMod));
+		setHeat(heat + (heat * resistMod));
+		setCold(cold + (cold * resistMod));
+		setAcid(acid + (acid * resistMod));
 	}
 	
 	/*if (playerRoll > 45000 && System::random(3) == 1) {
@@ -590,7 +597,7 @@ void ArmorImplementation::setArmorStats(int modifier) {
 		skillMod2Value = luck / (System::random(3) + 9);
 	}*/
 	
-	if (playerRoll > 15000 && System::random(3) == 1) {
+	if (playerRoll > 20000 && System::random(3) == 1) {
 		setStun(stun + System::random(9) + 1);
 		setStunIsSpecial(true);
 	}
@@ -682,7 +689,9 @@ void ArmorImplementation::sliceArmor(Player* player){
 				msg << "Armor encumbrance reduced by " << slicePercent << "%";
 				break;
 			}
-		
+			
+			generateAttributes(player);
+			
 		} else
 			msg << "Armor is already sliced.";
 
