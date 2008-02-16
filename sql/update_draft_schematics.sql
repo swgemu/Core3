@@ -1,5 +1,5 @@
-DROP TABLE IF EXISTS `swgemu`.`draft_schematics`;
-CREATE TABLE  `swgemu`.`draft_schematics` (
+DROP TABLE `draft_schematics`;
+CREATE TABLE `draft_schematics` (
   `draftschematic_id` bigint(20) unsigned NOT NULL,
   `name` text character set ucs2 NOT NULL,
   `object_crc` int(10) unsigned NOT NULL,
@@ -15,7 +15,7 @@ CREATE TABLE  `swgemu`.`draft_schematics` (
   `experimental_property` text NOT NULL,
   `experimental_weights` text NOT NULL,
   PRIMARY KEY  USING BTREE (`draftschematic_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
 
 
 INSERT INTO `draft_schematics` VALUES(1, 'Bofa Treat', 2207249955, 'craftArtisanNewbieGroupA', 3, 1, 'craft_food_ingredients_n, craft_food_ingredients_n, craft_food_ingredients_n', 'dried_fruit, crust, additive', '0, 0, 1', 'organic, cereal, object/tangible/food/crafted/additive/shared_additive_light.iff', '3, 8, 1', '1, 1, 1, 2, 2, 2, 2', 'XX, XX, XX, OQ, PE, FL, OQ, DR, PE, DR, OQ', '0, 0, 0, 1, 2, 2, 1, 1, 3, 3, 1');
