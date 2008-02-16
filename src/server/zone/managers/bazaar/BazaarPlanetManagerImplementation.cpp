@@ -57,26 +57,30 @@ void BazaarPlanetManagerImplementation::setPlanet(int planet) {
 	vendorPlanet = planet;
 }
 
-void BazaarPlanetManagerImplementation::addBazaarItem(AuctionItem* auctionItem) {
+void BazaarPlanetManagerImplementation::addBazaarItem(AuctionItem* item) {
 	RegionBazaar* bazaar;
 	
-	bazaar = bazaars.get(auctionItem->location);
+	bazaar = bazaars.get(item->getLocation());
 	if(bazaar == NULL) {
-		info("Bazaar not found " + auctionItem->location);
+		info("Bazaar not found " + item->getLocation());
 	} else {
-		bazaar->addItem(auctionItem);
-		addItem(auctionItem);
+		bazaar->addItem(item);
+		addItem(item);
 	}
 }
 
-void BazaarPlanetManagerImplementation::removeBazaarItem(long long objectid) {
+void BazaarPlanetManagerImplementation::removeBazaarItem(uint64 objectid) {
 	RegionBazaar* bazaar;
 	
 	AuctionItem* item = getItem(objectid);
-	if (item == NULL)
-		return;
 	
-	bazaar = bazaars.get(item->location);
+	if (item == NULL) {
+		info("unable to retrieve bazaar item: " + objectid);
+		return;
+	}
+	
+	bazaar = bazaars.get(item->getLocation());
+	
 	if(bazaar == NULL) {
 		return;
 	} else {

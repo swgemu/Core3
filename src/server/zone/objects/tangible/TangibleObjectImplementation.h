@@ -365,7 +365,7 @@ public:
 	}
 	
 	inline bool isWeapon() {
-		return (objectSubType & WEAPON);
+		return (objectSubType & WEAPON || objectSubType & LIGHTSABER);
 	}
 	
 	inline bool isArmor() {
@@ -373,7 +373,7 @@ public:
 	}
 	
 	inline bool isClothing() {
-		return (objectSubType == CLOTHING);
+		return (objectSubType & CLOTHING);
 	}
 	
 	inline bool isAttachment() {

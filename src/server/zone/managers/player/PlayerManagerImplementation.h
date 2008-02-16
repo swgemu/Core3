@@ -89,9 +89,13 @@ public:
 
 	void unload(Player* player);
 	
+
 	void doBankTip(Player* sender, Player* receiver, int tipAmount, bool updateTipTo);
 	void doCashTip(Player* sender, Player* receiver, int tipAmount, bool updateTipTo);
 	void modifyOfflineBank(Player* sender, string playerName, int creditAmount);
+	void modifyRecipientOfflineBank(string recipient, int creditAmount);
+	void updatePlayerCreditsFromDatabase(Player* player);
+	void updatePlayerCreditsToDatabase(Player* player);
 	
 	void handleAbortTradeMessage(Player* player, bool doLock = true);
 	void handleAddItemMessage(Player* player, uint64 itemID);

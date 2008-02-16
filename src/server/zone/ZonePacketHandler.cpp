@@ -276,6 +276,7 @@ void ZonePacketHandler::handleSelectCharacter(Message* pack) {
 	if (obj != NULL) {
 		player = (Player*) obj;
 		player->reload(client);
+		playerManager->updatePlayerCreditsFromDatabase(player);
 	} else {
 		player = playerManager->load(characterID);
 		player->setZone(server->getZone(player->getZoneIndex()));

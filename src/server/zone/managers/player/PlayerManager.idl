@@ -70,6 +70,9 @@ interface PlayerManager {
 	void doBankTip(Player sender, Player receiver, int tipAmount, boolean updateTipTo);
 	void doCashTip(Player sender, Player receiver, int tipAmount, boolean updateTipTo);
 	void modifyOfflineBank(Player sender, string receiverName, int creditAmount);
+	void modifyRecipientOfflineBank(string recipient, int creditAmount);
+	void updatePlayerCreditsFromDatabase(Player player);
+	void updatePlayerCreditsToDatabase(Player player);
 	
 	void setGuildManager(GuildManager gmanager);
 

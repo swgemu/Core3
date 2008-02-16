@@ -48,8 +48,10 @@ which carries forward this exception.
 #include "engine/engine.h"
 
 #include "../../objects/auction/AuctionItem.h"
+#include "../../objects/auction/AuctionItemImplementation.h"
 
 class AuctionQueryHeadersResponseMessage : public BaseMessage {
+	
 	Vector<AuctionItem*> itemList;
 	
 	Vector<string> locationList;
@@ -62,50 +64,33 @@ public:
 		insertInt(counter);
 		insertInt(screen); // Vendor screen number
 	}
-	
-	void addAuctionItem(uint64 id, string& name, int price, bool auction, int time, int type,
-			int ownerid, string& owner, bool vendor, string& planet, string& header, long long vendorid, int x, int z) {
 
-		AuctionItem* ai = new AuctionItem();
-		
-		ai->id = id;
-		ai->itemName = name;
-		ai->price = price;
-		ai->remainingTime = time;
-		ai->auction = auction;
-		ai->itemType = type;
-		ai->ownerName = owner;
-		
-		ai->setLocation(planet, header, vendorid, x, z, vendor);
-		
-		addItemToList(ai);
-	}
-	
 	void addItemToList(AuctionItem* ai) {
-		ai->locationPointer = -1;
+
+		ai->setLocationPointer(-1);
 		
 		for (int i = 0; i < locationList.size(); i++) {
-			if (locationList.get(i) == ai->terminalTitle)
-				ai->locationPointer = i;
+			if (locationList.get(i) == ai->getTerminalTitle())
+				ai->setLocationPointer(i);
 		}
 		
-		if (ai->locationPointer == -1) {
-			ai->locationPointer = locationList.size();
+		if (ai->getLocationPointer() == -1) {
+			ai->setLocationPointer(locationList.size());
 			
-			locationList.add(locationList.size(), ai->terminalTitle);
+			locationList.add(locationList.size(), ai->getTerminalTitle());
 		}
 		
-		ai->ownerPointer = -1;
+		ai->setOwnerPointer(-1);
 		
 		for (int i = 0; i < locationList.size(); i++) {
-			if (locationList.get(i) == ai->ownerName)
-				ai->ownerPointer = i;
+			if (locationList.get(i) == ai->getOwnerName())
+				ai->setOwnerPointer(i);
 		}
 		
-		if (ai->ownerPointer == -1) {
-			ai->ownerPointer = locationList.size();
+		if (ai->getOwnerPointer() == -1) {
+			ai->setOwnerPointer(locationList.size());
 			
-			locationList.add(locationList.size(), ai->ownerName);
+			locationList.add(locationList.size(), ai->getOwnerName());
 		}
 		
 		itemList.add(ai);
@@ -129,7 +114,7 @@ public:
 		for (int i = 0; i < itemList.size(); i++) {
 			AuctionItem* il = itemList.get(i);
 			
-	    	unicode name = il->itemName;
+	    	unicode name = il->getItemName();
 	    	insertUnicode(name); //name
 		}
 	}
@@ -142,33 +127,33 @@ public:
 		for (int i = 0; i < itemList.size(); i++) {
 			AuctionItem* il = itemList.get(i);
 	    	
-			insertLong(il->id); //item id
+			insertLong(il->getId()); //item id
 			insertByte(i);  // List item string number
 	    	
-			insertInt(il->price); //item cost.
+			insertInt(il->getPrice()); //item cost.
 	    	
 			Time* expireTime = new Time();
-			uint32 expire = il->expireTime - expireTime->getMiliTime() / 1000;
+			uint32 expire = il->getExpireTime() - expireTime->getMiliTime() / 1000;
 
 			insertInt(expire);
 	    	
-	    	if (il->auction)
+	    	if (il->getAuction())
 	    		insertByte(0);
 	    	else
 	    		insertByte(1);
 	    	
-	    	insertShort(il->locationPointer);
+	    	insertShort(il->getLocationPointer());
 	    	
-	    	insertLong(il->ownerID); // seller ID
-	    	insertShort(il->ownerPointer);
+	    	insertLong(il->getOwnerId()); // seller ID
+	    	insertShort(il->getOwnerPointer());
 
-	    	insertLong(il->buyerID); // buyer ID
+	    	insertLong(il->getBuyerId()); // buyer ID
 	    	
 	    	insertInt(0); 
 	    	insertInt(0);
 	    	insertShort(0);
 
-	    	insertInt(il->itemType); 
+	    	insertInt(il->getItemType()); 
 	    	
 	    	insertInt(0);
 	    	insertInt(0);

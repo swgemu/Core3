@@ -60,14 +60,13 @@ class CheckBazaarStatus;
 
 class BazaarManagerImplementation : public AuctionController, public BazaarManagerServant, public Mutex, public Logger {
 	ZoneProcessServerImplementation* processServer;
-	
+	ZoneServer*	zoneServer;
+
 	CheckBazaarStatus* checkEvent;
 	
 	BazaarPlanetManager* bazaarPlanets[10];
 
 	BazaarTerminals* bazaarTerminals;
-	
-	Vector<uint64>updated;
 
 public:
 	static const int MAXPRICE = 20000;
@@ -95,15 +94,14 @@ public:
 public:
 	BazaarManagerImplementation(ZoneServer* zoneServer, ZoneProcessServerImplementation* server);
 	
-	void newBazaarRequest(long long bazaarID, Player* player, int planet);
-	bool isBazaarTerminal(long long objectID);
+	void newBazaarRequest(uint64 bazaarID, Player* player, int planet);
+	bool isBazaarTerminal(uint64 objectID);
 	
-	void addSaleItem(Player* player, long long objectid, long long bazaarid, string& description, int price, unsigned int duration, bool auction);
-	BazaarPlanetManager* getPlanet(long long bazaarid);
-	RegionBazaar* getBazaar(long long bazaarid);
-	void updateItemStatus(uint64 itemid);
+	void addSaleItem(Player* player, uint64 objectid, uint64 bazaarid, string& description, int price, uint32 duration, bool auction);
+	BazaarPlanetManager* getPlanet(uint64 bazaarid);
+	RegionBazaar* getBazaar(uint64 bazaarid);
 	void checkAuctions();
-	void buyItem(Player* player, long long objectid, int price1, int price2);
+	void buyItem(Player* player, uint64 objectid, int price1, int price2);
 	void retrieveItem(Player* player, uint64 objectid, uint64 bazaarid);
 };
 

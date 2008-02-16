@@ -57,6 +57,7 @@ bin_PROGRAMS = core3
 core3_IDLS =	server/zone/Zone.cpp \
 		server/zone/ZoneClient.cpp \
 		server/zone/ZoneServer.cpp \
+		server/zone/objects/auction/AuctionItem.cpp \
 		server/zone/objects/scene/SceneObject.cpp \
 		server/zone/objects/creature/CreatureObject.cpp \
 		server/zone/objects/creature/Creature.cpp \
@@ -137,10 +138,10 @@ core3_IDLS =	server/zone/Zone.cpp \
 		server/zone/managers/item/ItemManager.cpp \
 		server/zone/managers/user/UserManager.cpp \
 		server/zone/managers/planet/PlanetManager.cpp \
-    	server/zone/managers/resource/ResourceTemplate.cpp \
-    	server/zone/managers/resource/SpawnLocation.cpp \
-    	server/zone/managers/resource/ResourceManager.cpp \
-    	server/zone/managers/resource/LocalResourceManager.cpp \
+    		server/zone/managers/resource/ResourceTemplate.cpp \
+		server/zone/managers/resource/SpawnLocation.cpp \
+		server/zone/managers/resource/ResourceManager.cpp \
+		server/zone/managers/resource/LocalResourceManager.cpp \
 		server/zone/managers/loot/LootManager.cpp \
 		server/zone/managers/bazaar/BazaarManager.cpp \
 		server/zone/managers/bazaar/BazaarPlanetManager.cpp \
@@ -206,8 +207,8 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/combat/CommandQueueAction.cpp \
 		server/zone/managers/creature/CreatureManagerImplementation.cpp \
 		server/zone/managers/planet/PlanetManagerImplementation.cpp \
-    	server/zone/managers/resource/ResourceManagerImplementation.cpp \
-    	server/zone/managers/resource/LocalResourceManagerImplementation.cpp \
+		server/zone/managers/resource/ResourceManagerImplementation.cpp \
+		server/zone/managers/resource/LocalResourceManagerImplementation.cpp \
 		server/zone/managers/bazaar/BazaarManagerImplementation.cpp \
 		server/zone/managers/bazaar/BazaarPlanetManagerImplementation.cpp \
 		server/zone/managers/sui/SuiManager.cpp \

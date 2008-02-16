@@ -89,44 +89,49 @@ am__installdirs = "$(DESTDIR)$(bindir)"
 binPROGRAMS_INSTALL = $(INSTALL_PROGRAM)
 PROGRAMS = $(bin_PROGRAMS)
 am__objects_1 = Zone.$(OBJEXT) ZoneClient.$(OBJEXT) \
-	ZoneServer.$(OBJEXT) SceneObject.$(OBJEXT) \
-	CreatureObject.$(OBJEXT) Creature.$(OBJEXT) \
-	CreatureGroup.$(OBJEXT) ShuttleCreature.$(OBJEXT) \
-	TrainerCreature.$(OBJEXT) RecruiterCreature.$(OBJEXT) \
-	MountCreature.$(OBJEXT) Player.$(OBJEXT) \
-	PlayerObject.$(OBJEXT) SuiBox.$(OBJEXT) SuiListBox.$(OBJEXT) \
-	SuiMessageBox.$(OBJEXT) SuiInputBox.$(OBJEXT) \
-	SuiTransferBox.$(OBJEXT) SuiColorPicker.$(OBJEXT) \
-	TangibleObject.$(OBJEXT) Container.$(OBJEXT) \
-	Inventory.$(OBJEXT) Datapad.$(OBJEXT) Bank.$(OBJEXT) \
-	MissionBag.$(OBJEXT) Weapon.$(OBJEXT) JediWeapon.$(OBJEXT) \
-	RangedWeapon.$(OBJEXT) MeleeWeapon.$(OBJEXT) \
-	CarbineRangedWeapon.$(OBJEXT) RifleRangedWeapon.$(OBJEXT) \
-	PistolRangedWeapon.$(OBJEXT) OneHandedMeleeWeapon.$(OBJEXT) \
-	TwoHandedMeleeWeapon.$(OBJEXT) UnarmedMeleeWeapon.$(OBJEXT) \
-	PolearmMeleeWeapon.$(OBJEXT) OneHandedJediWeapon.$(OBJEXT) \
-	TwoHandedJediWeapon.$(OBJEXT) PolearmJediWeapon.$(OBJEXT) \
-	HairObject.$(OBJEXT) Wearable.$(OBJEXT) Armor.$(OBJEXT) \
-	Ticket.$(OBJEXT) Terminal.$(OBJEXT) TravelTerminal.$(OBJEXT) \
+	ZoneServer.$(OBJEXT) AuctionItem.$(OBJEXT) \
+	SceneObject.$(OBJEXT) CreatureObject.$(OBJEXT) \
+	Creature.$(OBJEXT) CreatureGroup.$(OBJEXT) \
+	ShuttleCreature.$(OBJEXT) TrainerCreature.$(OBJEXT) \
+	RecruiterCreature.$(OBJEXT) MountCreature.$(OBJEXT) \
+	Player.$(OBJEXT) PlayerObject.$(OBJEXT) SuiBox.$(OBJEXT) \
+	SuiListBox.$(OBJEXT) SuiMessageBox.$(OBJEXT) \
+	SuiInputBox.$(OBJEXT) SuiTransferBox.$(OBJEXT) \
+	SuiColorPicker.$(OBJEXT) TangibleObject.$(OBJEXT) \
+	Container.$(OBJEXT) Inventory.$(OBJEXT) Datapad.$(OBJEXT) \
+	Bank.$(OBJEXT) MissionBag.$(OBJEXT) Weapon.$(OBJEXT) \
+	JediWeapon.$(OBJEXT) RangedWeapon.$(OBJEXT) \
+	MeleeWeapon.$(OBJEXT) CarbineRangedWeapon.$(OBJEXT) \
+	RifleRangedWeapon.$(OBJEXT) PistolRangedWeapon.$(OBJEXT) \
+	OneHandedMeleeWeapon.$(OBJEXT) TwoHandedMeleeWeapon.$(OBJEXT) \
+	UnarmedMeleeWeapon.$(OBJEXT) PolearmMeleeWeapon.$(OBJEXT) \
+	OneHandedJediWeapon.$(OBJEXT) TwoHandedJediWeapon.$(OBJEXT) \
+	PolearmJediWeapon.$(OBJEXT) HairObject.$(OBJEXT) \
+	Wearable.$(OBJEXT) Armor.$(OBJEXT) Ticket.$(OBJEXT) \
+	Terminal.$(OBJEXT) TravelTerminal.$(OBJEXT) \
 	GuildTerminal.$(OBJEXT) VendorTerminal.$(OBJEXT) \
 	RegionBazaar.$(OBJEXT) TicketCollector.$(OBJEXT) \
 	Instrument.$(OBJEXT) LairObject.$(OBJEXT) SurveyTool.$(OBJEXT) \
-	ResourceContainer.$(OBJEXT) Attachment.$(OBJEXT) \
-	Holocron.$(OBJEXT) Firework.$(OBJEXT) \
-	IntangibleObject.$(OBJEXT) StaticObject.$(OBJEXT) \
-	FireworkWorld.$(OBJEXT) GroupObject.$(OBJEXT) Guild.$(OBJEXT) \
-	CellObject.$(OBJEXT) BuildingObject.$(OBJEXT) \
+	CraftingTool.$(OBJEXT) ResourceContainer.$(OBJEXT) \
+	Attachment.$(OBJEXT) Powerup.$(OBJEXT) Holocron.$(OBJEXT) \
+	Firework.$(OBJEXT) IntangibleObject.$(OBJEXT) \
+	StaticObject.$(OBJEXT) FireworkWorld.$(OBJEXT) \
+	GroupObject.$(OBJEXT) Guild.$(OBJEXT) CellObject.$(OBJEXT) \
+	BuildingObject.$(OBJEXT) DraftSchematic.$(OBJEXT) \
+	DraftSchematicGroup.$(OBJEXT) \
+	DraftSchematicIngredient.$(OBJEXT) \
+	DraftSchematicExpPropGroup.$(OBJEXT) \
 	ManufactureSchematic.$(OBJEXT) MissionObject.$(OBJEXT) \
 	WaypointObject.$(OBJEXT) ShipComponent.$(OBJEXT) \
 	ShipObject.$(OBJEXT) GuildMap.$(OBJEXT) GuildManager.$(OBJEXT) \
 	PlayerMap.$(OBJEXT) PlayerManager.$(OBJEXT) \
-	CreatureManager.$(OBJEXT) ItemManager.$(OBJEXT) \
-	UserManager.$(OBJEXT) PlanetManager.$(OBJEXT) \
-	ResourceTemplate.$(OBJEXT) SpawnLocation.$(OBJEXT) \
-	ResourceManager.$(OBJEXT) LocalResourceManager.$(OBJEXT) \
-	LootManager.$(OBJEXT) BazaarManager.$(OBJEXT) \
-	BazaarPlanetManager.$(OBJEXT) ChatRoom.$(OBJEXT) \
-	ChatManager.$(OBJEXT)
+	CraftingManager.$(OBJEXT) CreatureManager.$(OBJEXT) \
+	ItemManager.$(OBJEXT) UserManager.$(OBJEXT) \
+	PlanetManager.$(OBJEXT) ResourceTemplate.$(OBJEXT) \
+	SpawnLocation.$(OBJEXT) ResourceManager.$(OBJEXT) \
+	LocalResourceManager.$(OBJEXT) LootManager.$(OBJEXT) \
+	BazaarManager.$(OBJEXT) BazaarPlanetManager.$(OBJEXT) \
+	ChatRoom.$(OBJEXT) ChatManager.$(OBJEXT)
 am_core3_OBJECTS = $(am__objects_1) ServerCore.$(OBJEXT) \
 	ConfigManager.$(OBJEXT) ServerDatabase.$(OBJEXT) \
 	LoginServer.$(OBJEXT) LoginPacketHandler.$(OBJEXT) \
@@ -145,9 +150,10 @@ am_core3_OBJECTS = $(am__objects_1) ServerCore.$(OBJEXT) \
 	TangibleObjectImplementation.$(OBJEXT) \
 	LairObjectImplementation.$(OBJEXT) \
 	SurveyToolImplementation.$(OBJEXT) \
+	CraftingToolImplementation.$(OBJEXT) \
 	ResourceContainerImplementation.$(OBJEXT) \
 	AttachmentImplementation.$(OBJEXT) \
-	TicketImplementation.$(OBJEXT) \
+	PowerupImplementation.$(OBJEXT) TicketImplementation.$(OBJEXT) \
 	TicketCollectorImplementation.$(OBJEXT) \
 	StaticObjectImplementation.$(OBJEXT) \
 	PlayerImplementation.$(OBJEXT) \
@@ -308,6 +314,7 @@ INCLUDES = $(SYSTEM_INCLUDES) \
 core3_IDLS = server/zone/Zone.cpp \
 		server/zone/ZoneClient.cpp \
 		server/zone/ZoneServer.cpp \
+		server/zone/objects/auction/AuctionItem.cpp \
 		server/zone/objects/scene/SceneObject.cpp \
 		server/zone/objects/creature/CreatureObject.cpp \
 		server/zone/objects/creature/Creature.cpp \
@@ -357,8 +364,10 @@ core3_IDLS = server/zone/Zone.cpp \
 		server/zone/objects/tangible/instrument/Instrument.cpp \
 		server/zone/objects/tangible/lair/LairObject.cpp \
 		server/zone/objects/tangible/surveytool/SurveyTool.cpp \
+		server/zone/objects/tangible/craftingtool/CraftingTool.cpp \
 		server/zone/objects/tangible/resource/ResourceContainer.cpp \
 		server/zone/objects/tangible/attachment/Attachment.cpp \
+		server/zone/objects/tangible/powerup/Powerup.cpp \
 		server/zone/objects/tangible/holocron/Holocron.cpp \
 		server/zone/objects/tangible/firework/Firework.cpp \
 		server/zone/objects/intangible/IntangibleObject.cpp \
@@ -368,6 +377,10 @@ core3_IDLS = server/zone/Zone.cpp \
 		server/zone/objects/guild/Guild.cpp \
 		server/zone/objects/building/cell/CellObject.cpp \
 		server/zone/objects/building/BuildingObject.cpp \
+		server/zone/objects/draftschematic/DraftSchematic.cpp \
+		server/zone/objects/draftschematic/DraftSchematicGroup.cpp \
+		server/zone/objects/draftschematic/DraftSchematicIngredient.cpp \
+		server/zone/objects/draftschematic/DraftSchematicExpPropGroup.cpp \
 		server/zone/objects/manufacture/ManufactureSchematic.cpp \
 		server/zone/objects/mission/MissionObject.cpp \
 		server/zone/objects/waypoint/WaypointObject.cpp \
@@ -377,14 +390,15 @@ core3_IDLS = server/zone/Zone.cpp \
 		server/zone/managers/guild/GuildManager.cpp \
 		server/zone/managers/player/PlayerMap.cpp \
 		server/zone/managers/player/PlayerManager.cpp \
+		server/zone/managers/crafting/CraftingManager.cpp \
 		server/zone/managers/creature/CreatureManager.cpp \
 		server/zone/managers/item/ItemManager.cpp \
 		server/zone/managers/user/UserManager.cpp \
 		server/zone/managers/planet/PlanetManager.cpp \
-    	server/zone/managers/resource/ResourceTemplate.cpp \
-    	server/zone/managers/resource/SpawnLocation.cpp \
-    	server/zone/managers/resource/ResourceManager.cpp \
-    	server/zone/managers/resource/LocalResourceManager.cpp \
+    		server/zone/managers/resource/ResourceTemplate.cpp \
+		server/zone/managers/resource/SpawnLocation.cpp \
+		server/zone/managers/resource/ResourceManager.cpp \
+		server/zone/managers/resource/LocalResourceManager.cpp \
 		server/zone/managers/loot/LootManager.cpp \
 		server/zone/managers/bazaar/BazaarManager.cpp \
 		server/zone/managers/bazaar/BazaarPlanetManager.cpp \
@@ -414,8 +428,10 @@ core3_SOURCES = $(core3_IDLS) \
 		server/zone/objects/tangible/TangibleObjectImplementation.cpp \
 		server/zone/objects/tangible/lair/LairObjectImplementation.cpp \
 		server/zone/objects/tangible/surveytool/SurveyToolImplementation.cpp \
+		server/zone/objects/tangible/craftingtool/CraftingToolImplementation.cpp \
     	server/zone/objects/tangible/resource/ResourceContainerImplementation.cpp \
     	server/zone/objects/tangible/attachment/AttachmentImplementation.cpp \
+    	server/zone/objects/tangible/powerup/PowerupImplementation.cpp \
     	server/zone/objects/tangible/ticket/TicketImplementation.cpp \
     	server/zone/objects/tangible/ticketcollector/TicketCollectorImplementation.cpp \
 		server/zone/objects/static/StaticObjectImplementation.cpp \
@@ -448,8 +464,8 @@ core3_SOURCES = $(core3_IDLS) \
 		server/zone/managers/combat/CommandQueueAction.cpp \
 		server/zone/managers/creature/CreatureManagerImplementation.cpp \
 		server/zone/managers/planet/PlanetManagerImplementation.cpp \
-    	server/zone/managers/resource/ResourceManagerImplementation.cpp \
-    	server/zone/managers/resource/LocalResourceManagerImplementation.cpp \
+		server/zone/managers/resource/ResourceManagerImplementation.cpp \
+		server/zone/managers/resource/LocalResourceManagerImplementation.cpp \
 		server/zone/managers/bazaar/BazaarManagerImplementation.cpp \
 		server/zone/managers/bazaar/BazaarPlanetManagerImplementation.cpp \
 		server/zone/managers/sui/SuiManager.cpp \
@@ -528,6 +544,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ArmorImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Attachment.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/AttachmentImplementation.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/AuctionItem.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Bank.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/BazaarManager.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/BazaarManagerImplementation.Po@am__quote@
@@ -546,6 +563,9 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/CommandQueueAction.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ConfigManager.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Container.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/CraftingManager.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/CraftingTool.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/CraftingToolImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Creature.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/CreatureGroup.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/CreatureImplementation.Po@am__quote@
@@ -554,6 +574,10 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/CreatureObject.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/CreatureObjectImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Datapad.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/DraftSchematic.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/DraftSchematicExpPropGroup.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/DraftSchematicGroup.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/DraftSchematicIngredient.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Firework.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/FireworkWorld.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/GroupManager.Po@am__quote@
@@ -604,6 +628,8 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PlayerObjectImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PolearmJediWeapon.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PolearmMeleeWeapon.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Powerup.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PowerupImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ProfessionManager.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/RadialManager.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/RangedWeapon.Po@am__quote@
@@ -730,6 +756,20 @@ ZoneServer.obj: server/zone/ZoneServer.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/ZoneServer.cpp' object='ZoneServer.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ZoneServer.obj `if test -f 'server/zone/ZoneServer.cpp'; then $(CYGPATH_W) 'server/zone/ZoneServer.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/ZoneServer.cpp'; fi`
+
+AuctionItem.o: server/zone/objects/auction/AuctionItem.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT AuctionItem.o -MD -MP -MF $(DEPDIR)/AuctionItem.Tpo -c -o AuctionItem.o `test -f 'server/zone/objects/auction/AuctionItem.cpp' || echo '$(srcdir)/'`server/zone/objects/auction/AuctionItem.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/AuctionItem.Tpo $(DEPDIR)/AuctionItem.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/auction/AuctionItem.cpp' object='AuctionItem.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o AuctionItem.o `test -f 'server/zone/objects/auction/AuctionItem.cpp' || echo '$(srcdir)/'`server/zone/objects/auction/AuctionItem.cpp
+
+AuctionItem.obj: server/zone/objects/auction/AuctionItem.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT AuctionItem.obj -MD -MP -MF $(DEPDIR)/AuctionItem.Tpo -c -o AuctionItem.obj `if test -f 'server/zone/objects/auction/AuctionItem.cpp'; then $(CYGPATH_W) 'server/zone/objects/auction/AuctionItem.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/auction/AuctionItem.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/AuctionItem.Tpo $(DEPDIR)/AuctionItem.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/auction/AuctionItem.cpp' object='AuctionItem.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o AuctionItem.obj `if test -f 'server/zone/objects/auction/AuctionItem.cpp'; then $(CYGPATH_W) 'server/zone/objects/auction/AuctionItem.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/auction/AuctionItem.cpp'; fi`
 
 SceneObject.o: server/zone/objects/scene/SceneObject.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT SceneObject.o -MD -MP -MF $(DEPDIR)/SceneObject.Tpo -c -o SceneObject.o `test -f 'server/zone/objects/scene/SceneObject.cpp' || echo '$(srcdir)/'`server/zone/objects/scene/SceneObject.cpp
@@ -1417,6 +1457,20 @@ SurveyTool.obj: server/zone/objects/tangible/surveytool/SurveyTool.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o SurveyTool.obj `if test -f 'server/zone/objects/tangible/surveytool/SurveyTool.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/surveytool/SurveyTool.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/surveytool/SurveyTool.cpp'; fi`
 
+CraftingTool.o: server/zone/objects/tangible/craftingtool/CraftingTool.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT CraftingTool.o -MD -MP -MF $(DEPDIR)/CraftingTool.Tpo -c -o CraftingTool.o `test -f 'server/zone/objects/tangible/craftingtool/CraftingTool.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/craftingtool/CraftingTool.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/CraftingTool.Tpo $(DEPDIR)/CraftingTool.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/craftingtool/CraftingTool.cpp' object='CraftingTool.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o CraftingTool.o `test -f 'server/zone/objects/tangible/craftingtool/CraftingTool.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/craftingtool/CraftingTool.cpp
+
+CraftingTool.obj: server/zone/objects/tangible/craftingtool/CraftingTool.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT CraftingTool.obj -MD -MP -MF $(DEPDIR)/CraftingTool.Tpo -c -o CraftingTool.obj `if test -f 'server/zone/objects/tangible/craftingtool/CraftingTool.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/craftingtool/CraftingTool.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/craftingtool/CraftingTool.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/CraftingTool.Tpo $(DEPDIR)/CraftingTool.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/craftingtool/CraftingTool.cpp' object='CraftingTool.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o CraftingTool.obj `if test -f 'server/zone/objects/tangible/craftingtool/CraftingTool.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/craftingtool/CraftingTool.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/craftingtool/CraftingTool.cpp'; fi`
+
 ResourceContainer.o: server/zone/objects/tangible/resource/ResourceContainer.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ResourceContainer.o -MD -MP -MF $(DEPDIR)/ResourceContainer.Tpo -c -o ResourceContainer.o `test -f 'server/zone/objects/tangible/resource/ResourceContainer.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/resource/ResourceContainer.cpp
 @am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/ResourceContainer.Tpo $(DEPDIR)/ResourceContainer.Po
@@ -1444,6 +1498,20 @@ Attachment.obj: server/zone/objects/tangible/attachment/Attachment.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/attachment/Attachment.cpp' object='Attachment.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o Attachment.obj `if test -f 'server/zone/objects/tangible/attachment/Attachment.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/attachment/Attachment.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/attachment/Attachment.cpp'; fi`
+
+Powerup.o: server/zone/objects/tangible/powerup/Powerup.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT Powerup.o -MD -MP -MF $(DEPDIR)/Powerup.Tpo -c -o Powerup.o `test -f 'server/zone/objects/tangible/powerup/Powerup.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/powerup/Powerup.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/Powerup.Tpo $(DEPDIR)/Powerup.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/powerup/Powerup.cpp' object='Powerup.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o Powerup.o `test -f 'server/zone/objects/tangible/powerup/Powerup.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/powerup/Powerup.cpp
+
+Powerup.obj: server/zone/objects/tangible/powerup/Powerup.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT Powerup.obj -MD -MP -MF $(DEPDIR)/Powerup.Tpo -c -o Powerup.obj `if test -f 'server/zone/objects/tangible/powerup/Powerup.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/powerup/Powerup.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/powerup/Powerup.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/Powerup.Tpo $(DEPDIR)/Powerup.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/powerup/Powerup.cpp' object='Powerup.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o Powerup.obj `if test -f 'server/zone/objects/tangible/powerup/Powerup.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/powerup/Powerup.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/powerup/Powerup.cpp'; fi`
 
 Holocron.o: server/zone/objects/tangible/holocron/Holocron.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT Holocron.o -MD -MP -MF $(DEPDIR)/Holocron.Tpo -c -o Holocron.o `test -f 'server/zone/objects/tangible/holocron/Holocron.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/holocron/Holocron.cpp
@@ -1571,6 +1639,62 @@ BuildingObject.obj: server/zone/objects/building/BuildingObject.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o BuildingObject.obj `if test -f 'server/zone/objects/building/BuildingObject.cpp'; then $(CYGPATH_W) 'server/zone/objects/building/BuildingObject.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/building/BuildingObject.cpp'; fi`
 
+DraftSchematic.o: server/zone/objects/draftschematic/DraftSchematic.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT DraftSchematic.o -MD -MP -MF $(DEPDIR)/DraftSchematic.Tpo -c -o DraftSchematic.o `test -f 'server/zone/objects/draftschematic/DraftSchematic.cpp' || echo '$(srcdir)/'`server/zone/objects/draftschematic/DraftSchematic.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/DraftSchematic.Tpo $(DEPDIR)/DraftSchematic.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/draftschematic/DraftSchematic.cpp' object='DraftSchematic.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o DraftSchematic.o `test -f 'server/zone/objects/draftschematic/DraftSchematic.cpp' || echo '$(srcdir)/'`server/zone/objects/draftschematic/DraftSchematic.cpp
+
+DraftSchematic.obj: server/zone/objects/draftschematic/DraftSchematic.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT DraftSchematic.obj -MD -MP -MF $(DEPDIR)/DraftSchematic.Tpo -c -o DraftSchematic.obj `if test -f 'server/zone/objects/draftschematic/DraftSchematic.cpp'; then $(CYGPATH_W) 'server/zone/objects/draftschematic/DraftSchematic.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/draftschematic/DraftSchematic.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/DraftSchematic.Tpo $(DEPDIR)/DraftSchematic.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/draftschematic/DraftSchematic.cpp' object='DraftSchematic.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o DraftSchematic.obj `if test -f 'server/zone/objects/draftschematic/DraftSchematic.cpp'; then $(CYGPATH_W) 'server/zone/objects/draftschematic/DraftSchematic.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/draftschematic/DraftSchematic.cpp'; fi`
+
+DraftSchematicGroup.o: server/zone/objects/draftschematic/DraftSchematicGroup.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT DraftSchematicGroup.o -MD -MP -MF $(DEPDIR)/DraftSchematicGroup.Tpo -c -o DraftSchematicGroup.o `test -f 'server/zone/objects/draftschematic/DraftSchematicGroup.cpp' || echo '$(srcdir)/'`server/zone/objects/draftschematic/DraftSchematicGroup.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/DraftSchematicGroup.Tpo $(DEPDIR)/DraftSchematicGroup.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/draftschematic/DraftSchematicGroup.cpp' object='DraftSchematicGroup.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o DraftSchematicGroup.o `test -f 'server/zone/objects/draftschematic/DraftSchematicGroup.cpp' || echo '$(srcdir)/'`server/zone/objects/draftschematic/DraftSchematicGroup.cpp
+
+DraftSchematicGroup.obj: server/zone/objects/draftschematic/DraftSchematicGroup.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT DraftSchematicGroup.obj -MD -MP -MF $(DEPDIR)/DraftSchematicGroup.Tpo -c -o DraftSchematicGroup.obj `if test -f 'server/zone/objects/draftschematic/DraftSchematicGroup.cpp'; then $(CYGPATH_W) 'server/zone/objects/draftschematic/DraftSchematicGroup.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/draftschematic/DraftSchematicGroup.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/DraftSchematicGroup.Tpo $(DEPDIR)/DraftSchematicGroup.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/draftschematic/DraftSchematicGroup.cpp' object='DraftSchematicGroup.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o DraftSchematicGroup.obj `if test -f 'server/zone/objects/draftschematic/DraftSchematicGroup.cpp'; then $(CYGPATH_W) 'server/zone/objects/draftschematic/DraftSchematicGroup.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/draftschematic/DraftSchematicGroup.cpp'; fi`
+
+DraftSchematicIngredient.o: server/zone/objects/draftschematic/DraftSchematicIngredient.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT DraftSchematicIngredient.o -MD -MP -MF $(DEPDIR)/DraftSchematicIngredient.Tpo -c -o DraftSchematicIngredient.o `test -f 'server/zone/objects/draftschematic/DraftSchematicIngredient.cpp' || echo '$(srcdir)/'`server/zone/objects/draftschematic/DraftSchematicIngredient.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/DraftSchematicIngredient.Tpo $(DEPDIR)/DraftSchematicIngredient.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/draftschematic/DraftSchematicIngredient.cpp' object='DraftSchematicIngredient.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o DraftSchematicIngredient.o `test -f 'server/zone/objects/draftschematic/DraftSchematicIngredient.cpp' || echo '$(srcdir)/'`server/zone/objects/draftschematic/DraftSchematicIngredient.cpp
+
+DraftSchematicIngredient.obj: server/zone/objects/draftschematic/DraftSchematicIngredient.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT DraftSchematicIngredient.obj -MD -MP -MF $(DEPDIR)/DraftSchematicIngredient.Tpo -c -o DraftSchematicIngredient.obj `if test -f 'server/zone/objects/draftschematic/DraftSchematicIngredient.cpp'; then $(CYGPATH_W) 'server/zone/objects/draftschematic/DraftSchematicIngredient.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/draftschematic/DraftSchematicIngredient.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/DraftSchematicIngredient.Tpo $(DEPDIR)/DraftSchematicIngredient.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/draftschematic/DraftSchematicIngredient.cpp' object='DraftSchematicIngredient.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o DraftSchematicIngredient.obj `if test -f 'server/zone/objects/draftschematic/DraftSchematicIngredient.cpp'; then $(CYGPATH_W) 'server/zone/objects/draftschematic/DraftSchematicIngredient.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/draftschematic/DraftSchematicIngredient.cpp'; fi`
+
+DraftSchematicExpPropGroup.o: server/zone/objects/draftschematic/DraftSchematicExpPropGroup.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT DraftSchematicExpPropGroup.o -MD -MP -MF $(DEPDIR)/DraftSchematicExpPropGroup.Tpo -c -o DraftSchematicExpPropGroup.o `test -f 'server/zone/objects/draftschematic/DraftSchematicExpPropGroup.cpp' || echo '$(srcdir)/'`server/zone/objects/draftschematic/DraftSchematicExpPropGroup.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/DraftSchematicExpPropGroup.Tpo $(DEPDIR)/DraftSchematicExpPropGroup.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/draftschematic/DraftSchematicExpPropGroup.cpp' object='DraftSchematicExpPropGroup.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o DraftSchematicExpPropGroup.o `test -f 'server/zone/objects/draftschematic/DraftSchematicExpPropGroup.cpp' || echo '$(srcdir)/'`server/zone/objects/draftschematic/DraftSchematicExpPropGroup.cpp
+
+DraftSchematicExpPropGroup.obj: server/zone/objects/draftschematic/DraftSchematicExpPropGroup.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT DraftSchematicExpPropGroup.obj -MD -MP -MF $(DEPDIR)/DraftSchematicExpPropGroup.Tpo -c -o DraftSchematicExpPropGroup.obj `if test -f 'server/zone/objects/draftschematic/DraftSchematicExpPropGroup.cpp'; then $(CYGPATH_W) 'server/zone/objects/draftschematic/DraftSchematicExpPropGroup.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/draftschematic/DraftSchematicExpPropGroup.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/DraftSchematicExpPropGroup.Tpo $(DEPDIR)/DraftSchematicExpPropGroup.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/draftschematic/DraftSchematicExpPropGroup.cpp' object='DraftSchematicExpPropGroup.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o DraftSchematicExpPropGroup.obj `if test -f 'server/zone/objects/draftschematic/DraftSchematicExpPropGroup.cpp'; then $(CYGPATH_W) 'server/zone/objects/draftschematic/DraftSchematicExpPropGroup.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/draftschematic/DraftSchematicExpPropGroup.cpp'; fi`
+
 ManufactureSchematic.o: server/zone/objects/manufacture/ManufactureSchematic.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ManufactureSchematic.o -MD -MP -MF $(DEPDIR)/ManufactureSchematic.Tpo -c -o ManufactureSchematic.o `test -f 'server/zone/objects/manufacture/ManufactureSchematic.cpp' || echo '$(srcdir)/'`server/zone/objects/manufacture/ManufactureSchematic.cpp
 @am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/ManufactureSchematic.Tpo $(DEPDIR)/ManufactureSchematic.Po
@@ -1696,6 +1820,20 @@ PlayerManager.obj: server/zone/managers/player/PlayerManager.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/managers/player/PlayerManager.cpp' object='PlayerManager.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o PlayerManager.obj `if test -f 'server/zone/managers/player/PlayerManager.cpp'; then $(CYGPATH_W) 'server/zone/managers/player/PlayerManager.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/player/PlayerManager.cpp'; fi`
+
+CraftingManager.o: server/zone/managers/crafting/CraftingManager.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT CraftingManager.o -MD -MP -MF $(DEPDIR)/CraftingManager.Tpo -c -o CraftingManager.o `test -f 'server/zone/managers/crafting/CraftingManager.cpp' || echo '$(srcdir)/'`server/zone/managers/crafting/CraftingManager.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/CraftingManager.Tpo $(DEPDIR)/CraftingManager.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/managers/crafting/CraftingManager.cpp' object='CraftingManager.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o CraftingManager.o `test -f 'server/zone/managers/crafting/CraftingManager.cpp' || echo '$(srcdir)/'`server/zone/managers/crafting/CraftingManager.cpp
+
+CraftingManager.obj: server/zone/managers/crafting/CraftingManager.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT CraftingManager.obj -MD -MP -MF $(DEPDIR)/CraftingManager.Tpo -c -o CraftingManager.obj `if test -f 'server/zone/managers/crafting/CraftingManager.cpp'; then $(CYGPATH_W) 'server/zone/managers/crafting/CraftingManager.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/crafting/CraftingManager.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/CraftingManager.Tpo $(DEPDIR)/CraftingManager.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/managers/crafting/CraftingManager.cpp' object='CraftingManager.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o CraftingManager.obj `if test -f 'server/zone/managers/crafting/CraftingManager.cpp'; then $(CYGPATH_W) 'server/zone/managers/crafting/CraftingManager.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/crafting/CraftingManager.cpp'; fi`
 
 CreatureManager.o: server/zone/managers/creature/CreatureManager.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT CreatureManager.o -MD -MP -MF $(DEPDIR)/CreatureManager.Tpo -c -o CreatureManager.o `test -f 'server/zone/managers/creature/CreatureManager.cpp' || echo '$(srcdir)/'`server/zone/managers/creature/CreatureManager.cpp
@@ -2187,6 +2325,20 @@ SurveyToolImplementation.obj: server/zone/objects/tangible/surveytool/SurveyTool
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o SurveyToolImplementation.obj `if test -f 'server/zone/objects/tangible/surveytool/SurveyToolImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/surveytool/SurveyToolImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/surveytool/SurveyToolImplementation.cpp'; fi`
 
+CraftingToolImplementation.o: server/zone/objects/tangible/craftingtool/CraftingToolImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT CraftingToolImplementation.o -MD -MP -MF $(DEPDIR)/CraftingToolImplementation.Tpo -c -o CraftingToolImplementation.o `test -f 'server/zone/objects/tangible/craftingtool/CraftingToolImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/craftingtool/CraftingToolImplementation.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/CraftingToolImplementation.Tpo $(DEPDIR)/CraftingToolImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/craftingtool/CraftingToolImplementation.cpp' object='CraftingToolImplementation.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o CraftingToolImplementation.o `test -f 'server/zone/objects/tangible/craftingtool/CraftingToolImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/craftingtool/CraftingToolImplementation.cpp
+
+CraftingToolImplementation.obj: server/zone/objects/tangible/craftingtool/CraftingToolImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT CraftingToolImplementation.obj -MD -MP -MF $(DEPDIR)/CraftingToolImplementation.Tpo -c -o CraftingToolImplementation.obj `if test -f 'server/zone/objects/tangible/craftingtool/CraftingToolImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/craftingtool/CraftingToolImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/craftingtool/CraftingToolImplementation.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/CraftingToolImplementation.Tpo $(DEPDIR)/CraftingToolImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/craftingtool/CraftingToolImplementation.cpp' object='CraftingToolImplementation.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o CraftingToolImplementation.obj `if test -f 'server/zone/objects/tangible/craftingtool/CraftingToolImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/craftingtool/CraftingToolImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/craftingtool/CraftingToolImplementation.cpp'; fi`
+
 ResourceContainerImplementation.o: server/zone/objects/tangible/resource/ResourceContainerImplementation.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ResourceContainerImplementation.o -MD -MP -MF $(DEPDIR)/ResourceContainerImplementation.Tpo -c -o ResourceContainerImplementation.o `test -f 'server/zone/objects/tangible/resource/ResourceContainerImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/resource/ResourceContainerImplementation.cpp
 @am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/ResourceContainerImplementation.Tpo $(DEPDIR)/ResourceContainerImplementation.Po
@@ -2214,6 +2366,20 @@ AttachmentImplementation.obj: server/zone/objects/tangible/attachment/Attachment
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/attachment/AttachmentImplementation.cpp' object='AttachmentImplementation.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o AttachmentImplementation.obj `if test -f 'server/zone/objects/tangible/attachment/AttachmentImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/attachment/AttachmentImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/attachment/AttachmentImplementation.cpp'; fi`
+
+PowerupImplementation.o: server/zone/objects/tangible/powerup/PowerupImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT PowerupImplementation.o -MD -MP -MF $(DEPDIR)/PowerupImplementation.Tpo -c -o PowerupImplementation.o `test -f 'server/zone/objects/tangible/powerup/PowerupImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/powerup/PowerupImplementation.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/PowerupImplementation.Tpo $(DEPDIR)/PowerupImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/powerup/PowerupImplementation.cpp' object='PowerupImplementation.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o PowerupImplementation.o `test -f 'server/zone/objects/tangible/powerup/PowerupImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/powerup/PowerupImplementation.cpp
+
+PowerupImplementation.obj: server/zone/objects/tangible/powerup/PowerupImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT PowerupImplementation.obj -MD -MP -MF $(DEPDIR)/PowerupImplementation.Tpo -c -o PowerupImplementation.obj `if test -f 'server/zone/objects/tangible/powerup/PowerupImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/powerup/PowerupImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/powerup/PowerupImplementation.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/PowerupImplementation.Tpo $(DEPDIR)/PowerupImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/powerup/PowerupImplementation.cpp' object='PowerupImplementation.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o PowerupImplementation.obj `if test -f 'server/zone/objects/tangible/powerup/PowerupImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/powerup/PowerupImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/powerup/PowerupImplementation.cpp'; fi`
 
 TicketImplementation.o: server/zone/objects/tangible/ticket/TicketImplementation.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT TicketImplementation.o -MD -MP -MF $(DEPDIR)/TicketImplementation.Tpo -c -o TicketImplementation.o `test -f 'server/zone/objects/tangible/ticket/TicketImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/ticket/TicketImplementation.cpp

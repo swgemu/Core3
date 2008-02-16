@@ -211,7 +211,7 @@ Player* PlayerManagerImplementation::load(uint64 charid) {
 Player* PlayerManagerImplementation::loadFromDatabase(PlayerImplementation* player) {
 	ResultSet* character;
 	Player* playerRes = NULL;
-		
+	
 	stringstream query;
 	query << "SELECT * FROM characters WHERE character_id = " << player->getCharacterID();
 
@@ -371,9 +371,12 @@ void PlayerManagerImplementation::unload(Player* player) {
           << ",itemShift=" << player->getItemShift()
           << " WHERE character_id=" << player->getCharacterID() << ";";   
        
-               
-	ServerDatabase::instance()->executeStatement(query);
-	
+    try {
+    	ServerDatabase::instance()->executeStatement(query);
+    } catch(DatabaseException e) {
+    	cerr << "Failed to unload character: " << player->getFirstName() << "\n";
+    }
+    
 	player->saveProfessions();	
 	
 	playerMap->remove(player->getFirstName());
@@ -719,9 +722,15 @@ void PlayerManagerImplementation::modifyOfflineBank(Player* sender, string recei
 	
 	stringstream query;
 	query << "SELECT * FROM characters WHERE lower(firstname) = '" << receiverName << "'";
-
-	ResultSet* character = ServerDatabase::instance()->executeQuery(query);
-
+	ResultSet* character;
+	
+	try {
+		character = ServerDatabase::instance()->executeQuery(query);
+	} catch (DatabaseException& e) {
+		cout << "PlayerManagerImplementation::modifyOfflineBank: failed SQL query: " << query << "\n";
+		return;
+	}
+	
 	if (!character->next()) {
 		delete character;
 		stringstream msg;
@@ -743,8 +752,116 @@ void PlayerManagerImplementation::modifyOfflineBank(Player* sender, string recei
 	query2 << "UPDATE characters SET credits_bank=" << newBankCredits 
 		   << " WHERE lower(firstname)='" << receiverName << "';";   
 
-	ServerDatabase::instance()->executeStatement(query2);
-
+	try {
+		ServerDatabase::instance()->executeStatement(query2);
+	} catch(DatabaseException& e) {
+		cout << "PlayerManagerImplementation::modifyOfflineBank: failed SQL UPDATE: " << query2 << "\n";
+		return;
+	}
+	
 	//now we need to modify the online tippers credits.
 	sender->subtractBankCredits(creditAmount);
 }
+
+void PlayerManagerImplementation::modifyRecipientOfflineBank(string recipient, int creditAmount) {
+	//First we need to get the current bank credits.
+	String::toLower(recipient);
+	MySqlDatabase::escapeString(recipient);
+	
+	Player* play = getPlayer(recipient);
+	
+	if (play != NULL) { 
+		// player online. handle directly
+		play->addBankCredits(creditAmount);
+		return;
+	}
+	
+	stringstream query;
+	query << "SELECT * FROM characters WHERE lower(firstname) = '" << recipient << "'";
+	ResultSet* character;
+	
+	try {
+		character = ServerDatabase::instance()->executeQuery(query);
+	} catch(DatabaseException& e) {
+	 	cout << "PlayerManagerImplementation::modifyRecipientOfflineBank. Failed SQL query: " << query << "\n";
+	 	return;
+	}
+	
+	if (!character->next()) {
+		delete character;
+		stringstream msg;
+		msg << "unknown character name (recipient)" << recipient;
+		throw Exception(msg.str());
+	}
+
+	//Grab the current credits.
+	int currentBankCredits = character->getInt(11);
+
+	//we can dump it now.
+	delete character;
+
+	//Our new credits amount.
+	int newBankCredits = currentBankCredits + creditAmount;
+	
+	//Now we need to update the db.
+	stringstream query2;
+	query2 << "UPDATE characters SET credits_bank='" << newBankCredits 
+		   << "' WHERE lower(firstname)='" << recipient << "'";   
+
+	try {
+		ServerDatabase::instance()->executeStatement(query2);
+	} catch(DatabaseException& e) {
+		cout << "PlayerManagerImplementation::modifyRecipientOfflineBank: failed SQL UPDATE: " << query2.str() << "\n";
+		return;
+	}
+}
+
+void PlayerManagerImplementation::updatePlayerCreditsToDatabase(Player* player) {
+	if (player == NULL)
+		return;
+	
+	stringstream query;
+	
+	query << "UPDATE characters set credits_inv='" << player->getCashCredits() <<
+		"', credits_bank='" << player->getBankCredits() << "' WHERE character_id='" <<
+		player->getCharacterID() << "'";
+	
+	try {
+		ServerDatabase::instance()->executeStatement(query);
+	} catch (DatabaseException e) {
+		cout << "PlayerManagerImplementation::updatePlayerCreditsToDatabase: failed SQL update: " << query.str() << "\n";
+	}
+}
+
+void PlayerManagerImplementation::updatePlayerCreditsFromDatabase(Player* player) {
+	if (player == NULL)
+		return;
+	
+	stringstream query;
+	
+	query << "SELECT credits_inv,credits_bank FROM characters WHERE character_id = '" << player->getCharacterID() << "'";
+	ResultSet* rs = NULL;
+	
+	try {
+		rs = ServerDatabase::instance()->executeQuery(query);
+	} catch(DatabaseException& e) {
+		cout << "PlayerManagerImplmentation::updatePlayerCredits: failed SQL query: " << query.str() << "\n";
+		return;
+	}
+	
+	if (!rs->next()) {
+		delete rs;
+		return;
+	}
+
+	int creditsinv=rs->getInt(0);
+	int creditsbank=rs->getInt(1);
+	
+	player->setCashCredits(creditsinv);
+	player->setBankCredits(creditsbank);
+	
+	BaseMessage* mess = new PlayerMoneyResponseMessage(player);
+	player->sendMessage(mess);
+}
+
+

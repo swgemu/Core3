@@ -62,18 +62,19 @@ public:
 	}
 	
 	inline void addItem(AuctionItem* item) {
-		items.put(item->id, item);
+		items.put(item->getId(), item);
 	}
 	
-	inline void removeItem(long long objectid) {
+	inline void removeItem(uint64 objectid) {
 		if (items.contains(objectid))
 			items.drop(objectid);
 	}
 	
-	inline AuctionItem* getItem(long long objectid) {
+	inline AuctionItem* getItem(uint64 objectid) {
 		if (items.contains(objectid)) {
 			int index = items.find(objectid);
-			return items.get(index);
+			AuctionItem* item = items.get(index);
+			return item;
 		}
 		else
 			return NULL;
@@ -84,37 +85,48 @@ public:
 		AuctionQueryHeadersResponseMessage* reply = new AuctionQueryHeadersResponseMessage(screen, count);
 
 		int displaying = 0;
-		if (screen == 2) {
-			
+		string pname = player->getFirstName();
+		String::toLower(pname);
+		
+		switch(screen) {
+
+		case 2: // All Auctions 
 			for (int i = 0; (i < items.size()) && (displaying < (offset + 100)); i++) {
 				AuctionItem* item = items.get(i);
 				
-				if (!item->sold)
-					if (item->itemType & category) {
+				if (!item->isSold())
+					if (item->getItemType() & category) {
 						if (displaying >= offset)
 							reply->addItemToList(items.get(i));
 						displaying++;
-					} else if ((category == 8192) && (item->itemType < 256)) {
+					} else if ((category == 8192) && (item->getItemType() < 256)) {
 						if (displaying >= offset)
 							reply->addItemToList(items.get(i));
 						displaying++;
-					}				
+					}
 			}
-			
-		} else if (screen == 3) {
-			
-			for (int i = 0; i < items.size(); i++) {
-				if ((items.get(i)->ownerID == player->getObjectID()) && !items.get(i)->sold)
-					reply->addItemToList(items.get(i));
-			}
-			
-		} else if (screen == 5) {
+			break;
 
+		case 3: // My auctions/sales 
 			for (int i = 0; i < items.size(); i++) {
-				if (items.get(i)->buyerID == player->getObjectID())
+				if ((items.get(i)->getOwnerId() == player->getObjectID()) && !items.get(i)->isSold())
 					reply->addItemToList(items.get(i));
 			}
+			break;
 			
+		case 4: // My Bids 
+			for (int i = 0; i < items.size(); i++) {
+				if ((items.get(i)->getBidderName() == pname) && !items.get(i)->isSold())
+					reply->addItemToList(items.get(i));
+			}
+			break;
+			
+		case 5: // Retrieve items screen
+			for (int i = 0; i < items.size(); i++) {
+				if (items.get(i)->getBuyerId() == player->getObjectID())
+					reply->addItemToList(items.get(i));
+			}
+			break;	
 		}
 		
 		if(displaying == (offset + 100))

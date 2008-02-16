@@ -47,6 +47,11 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
+// Status:
+//  0 - Success
+//  1 - You are not allowed to retrieve that item
+// 12 - Inventory full
+
 class RetrieveAuctionItemResponseMessage : public BaseMessage {
 public:
     RetrieveAuctionItemResponseMessage(uint64 objectid, int status) : BaseMessage() {

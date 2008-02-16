@@ -67,7 +67,7 @@ public:
 	
 	void setPlanet(int planet);
 	void addBazaarItem(AuctionItem* auctionItem);
-	void removeBazaarItem(long long objectid);
+	void removeBazaarItem(uint64 objectid);
 	void addBazaar(BazaarTerminalDetails* terminal);
 };
 

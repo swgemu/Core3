@@ -274,12 +274,52 @@ void PlayerManager::modifyOfflineBank(Player* sender, string& receiverName, int 
 		((PlayerManagerImplementation*) _impl)->modifyOfflineBank(sender, receiverName, creditAmount);
 }
 
-void PlayerManager::setGuildManager(GuildManager* gmanager) {
+void PlayerManager::modifyRecipientOfflineBank(string& recipient, int creditAmount) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
 		ORBMethodInvocation invocation(this, 20);
+		invocation.addAsciiParameter(recipient);
+		invocation.addSignedIntParameter(creditAmount);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((PlayerManagerImplementation*) _impl)->modifyRecipientOfflineBank(recipient, creditAmount);
+}
+
+void PlayerManager::updatePlayerCreditsFromDatabase(Player* player) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 21);
+		invocation.addObjectParameter(player);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((PlayerManagerImplementation*) _impl)->updatePlayerCreditsFromDatabase(player);
+}
+
+void PlayerManager::updatePlayerCreditsToDatabase(Player* player) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 22);
+		invocation.addObjectParameter(player);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((PlayerManagerImplementation*) _impl)->updatePlayerCreditsToDatabase(player);
+}
+
+void PlayerManager::setGuildManager(GuildManager* gmanager) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 23);
 		invocation.addObjectParameter(gmanager);
 
 		invocation.executeWithVoidReturn();
@@ -292,7 +332,7 @@ Player* PlayerManager::getPlayer(string& name) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 21);
+		ORBMethodInvocation invocation(this, 24);
 		invocation.addAsciiParameter(name);
 
 		return (Player*) invocation.executeWithObjectReturn();
@@ -305,7 +345,7 @@ GuildManager* PlayerManager::getGuildManager() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 22);
+		ORBMethodInvocation invocation(this, 25);
 
 		return (GuildManager*) invocation.executeWithObjectReturn();
 	} else
@@ -317,7 +357,7 @@ PlayerMap* PlayerManager::getPlayerMap() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 23);
+		ORBMethodInvocation invocation(this, 26);
 
 		return (PlayerMap*) invocation.executeWithObjectReturn();
 	} else
@@ -378,15 +418,24 @@ Packet* PlayerManagerAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* i
 		modifyOfflineBank((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_modifyOfflineBank__Player_string_int_), inv->getSignedIntParameter());
 		break;
 	case 20:
-		setGuildManager((GuildManager*) inv->getObjectParameter());
+		modifyRecipientOfflineBank(inv->getAsciiParameter(_param0_modifyRecipientOfflineBank__string_int_), inv->getSignedIntParameter());
 		break;
 	case 21:
-		resp->insertLong(getPlayer(inv->getAsciiParameter(_param0_getPlayer__string_))->_getORBObjectID());
+		updatePlayerCreditsFromDatabase((Player*) inv->getObjectParameter());
 		break;
 	case 22:
-		resp->insertLong(getGuildManager()->_getORBObjectID());
+		updatePlayerCreditsToDatabase((Player*) inv->getObjectParameter());
 		break;
 	case 23:
+		setGuildManager((GuildManager*) inv->getObjectParameter());
+		break;
+	case 24:
+		resp->insertLong(getPlayer(inv->getAsciiParameter(_param0_getPlayer__string_))->_getORBObjectID());
+		break;
+	case 25:
+		resp->insertLong(getGuildManager()->_getORBObjectID());
+		break;
+	case 26:
 		resp->insertLong(getPlayerMap()->_getORBObjectID());
 		break;
 	default:
@@ -450,6 +499,18 @@ void PlayerManagerAdapter::doCashTip(Player* sender, Player* receiver, int tipAm
 
 void PlayerManagerAdapter::modifyOfflineBank(Player* sender, string& receiverName, int creditAmount) {
 	return ((PlayerManagerImplementation*) impl)->modifyOfflineBank(sender, receiverName, creditAmount);
+}
+
+void PlayerManagerAdapter::modifyRecipientOfflineBank(string& recipient, int creditAmount) {
+	return ((PlayerManagerImplementation*) impl)->modifyRecipientOfflineBank(recipient, creditAmount);
+}
+
+void PlayerManagerAdapter::updatePlayerCreditsFromDatabase(Player* player) {
+	return ((PlayerManagerImplementation*) impl)->updatePlayerCreditsFromDatabase(player);
+}
+
+void PlayerManagerAdapter::updatePlayerCreditsToDatabase(Player* player) {
+	return ((PlayerManagerImplementation*) impl)->updatePlayerCreditsToDatabase(player);
 }
 
 void PlayerManagerAdapter::setGuildManager(GuildManager* gmanager) {

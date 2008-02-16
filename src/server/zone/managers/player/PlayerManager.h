@@ -97,6 +97,12 @@ public:
 
 	void modifyOfflineBank(Player* sender, string& receiverName, int creditAmount);
 
+	void modifyRecipientOfflineBank(string& recipient, int creditAmount);
+
+	void updatePlayerCreditsFromDatabase(Player* player);
+
+	void updatePlayerCreditsToDatabase(Player* player);
+
 	void setGuildManager(GuildManager* gmanager);
 
 	Player* getPlayer(string& name);
@@ -144,6 +150,12 @@ public:
 
 	void modifyOfflineBank(Player* sender, string& receiverName, int creditAmount);
 
+	void modifyRecipientOfflineBank(string& recipient, int creditAmount);
+
+	void updatePlayerCreditsFromDatabase(Player* player);
+
+	void updatePlayerCreditsToDatabase(Player* player);
+
 	void setGuildManager(GuildManager* gmanager);
 
 	Player* getPlayer(string& name);
@@ -155,6 +167,7 @@ public:
 protected:
 	string _param0_validateName__string_;
 	string _param1_modifyOfflineBank__Player_string_int_;
+	string _param0_modifyRecipientOfflineBank__string_int_;
 	string _param0_getPlayer__string_;
 };
 
