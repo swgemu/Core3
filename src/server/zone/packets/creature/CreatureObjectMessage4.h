@@ -106,9 +106,8 @@ public:
 			insertByte(0);
 
 			creo->creatureSkillMods.getNextKeyAndValue(skillmod, value);
-
 			insertAscii(skillmod);
-			insertInt(value);
+			insertInt(value + creo->creatureSkillModBonus.get(skillmod));
 
 			insertInt(0);
 		}

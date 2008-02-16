@@ -1794,91 +1794,91 @@ void PlayerImplementation::changeArmor(uint64 itemid, bool forced) {
 void PlayerImplementation::setItemSkillMod(int type, int value) {
 	switch (type) {
 	case 1:
-		addSkillMod("melee_defense", value, true);
+		addSkillModBonus("melee_defense", value, true);
 		break;
 	case 2:
-		addSkillMod("ranged_defense", value, true);
+		addSkillModBonus("ranged_defense", value, true);
 		break;
 	case 3:
-		addSkillMod("stun_defense", value, true);
+		addSkillModBonus("stun_defense", value, true);
 		break;
 	case 4:
-		addSkillMod("dizzy_defense", value, true);
+		addSkillModBonus("dizzy_defense", value, true);
 		break;
 	case 5:
-		addSkillMod("blind_defense", value, true);
+		addSkillModBonus("blind_defense", value, true);
 		break;
 	case 6:
-		addSkillMod("knockdown_defense", value, true);
+		addSkillModBonus("knockdown_defense", value, true);
 		break;
 	case 7:
-		addSkillMod("intimidate_defense", value, true);
+		addSkillModBonus("intimidate_defense", value, true);
 		break;
 	case 8:
-		addSkillMod("pistol_speed", value, true);
+		addSkillModBonus("pistol_speed", value, true);
 		break;
 	case 9:
-		addSkillMod("carbine_speed", value, true);
+		addSkillModBonus("carbine_speed", value, true);
 		break;
 	case 10:
-		addSkillMod("rifle_speed", value, true);
+		addSkillModBonus("rifle_speed", value, true);
 		break;
 	case 11:
-		addSkillMod("unarmed_speed", value, true);
+		addSkillModBonus("unarmed_speed", value, true);
 		break;
 	case 12:
-		addSkillMod("onehandmelee_speed", value, true);
+		addSkillModBonus("onehandmelee_speed", value, true);
 		break;
 	case 13:
-		addSkillMod("twohandmelee_speed", value, true);
+		addSkillModBonus("twohandmelee_speed", value, true);
 		break;
 	case 14:
-		addSkillMod("polearm_speed", value, true);
+		addSkillModBonus("polearm_speed", value, true);
 		break;
 	case 15:
-		addSkillMod("pistol_accuracy", value, true);
+		addSkillModBonus("pistol_accuracy", value, true);
 		break;
 	case 16:
-		addSkillMod("carbine_accuracy", value, true);
+		addSkillModBonus("carbine_accuracy", value, true);
 		break;
 	case 17:
-		addSkillMod("rifle_accuracy", value, true);
+		addSkillModBonus("rifle_accuracy", value, true);
 		break;
 	case 18:
-		addSkillMod("unarmed_accuracy", value, true);
+		addSkillModBonus("unarmed_accuracy", value, true);
 		break;
 	case 19:
-		addSkillMod("onehandmelee_accuracy", value, true);
+		addSkillModBonus("onehandmelee_accuracy", value, true);
 		break;
 	case 20:
-		addSkillMod("twohandmelee_accuracy", value, true);
+		addSkillModBonus("twohandmelee_accuracy", value, true);
 		break;
 	case 21:
-		addSkillMod("polearm_accuracy", value, true);
+		addSkillModBonus("polearm_accuracy", value, true);
 		break;
 	case 22:
-		addSkillMod("dodge", value, true);
+		addSkillModBonus("dodge", value, true);
 		break;
 	case 23:
-		addSkillMod("block", value, true);
+		addSkillModBonus("block", value, true);
 		break;
 	case 24:
-		addSkillMod("counterattack", value, true);
+		addSkillModBonus("counterattack", value, true);
 		break;
 	case 25:
-		addSkillMod("resistance_bleeding", value, true);
+		addSkillModBonus("resistance_bleeding", value, true);
 		break;
 	case 26:
-		addSkillMod("resistance_disease", value, true);
+		addSkillModBonus("resistance_disease", value, true);
 		break;
 	case 27:
-		addSkillMod("resistance_fire", value, true);
+		addSkillModBonus("resistance_fire", value, true);
 		break;
 	case 28:
-		addSkillMod("resistance_poison", value, true);
+		addSkillModBonus("resistance_poison", value, true);
 		break;
 	case 29:
-		addSkillMod("slope_move", value, true);
+		addSkillModBonus("slope_move", value, true);
 		break;
 	}
 }

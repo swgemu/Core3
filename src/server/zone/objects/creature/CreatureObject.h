@@ -613,6 +613,10 @@ public:
 
 	bool hasSkillMod(const string& name);
 
+	int getSkillModBonus(const string& name);
+
+	bool hasSkillModBonus(const string& name);
+
 	int getAccuracy();
 
 	int getDefenseBonus();
@@ -1272,6 +1276,10 @@ public:
 
 	bool hasSkillMod(const string& name);
 
+	int getSkillModBonus(const string& name);
+
+	bool hasSkillModBonus(const string& name);
+
 	int getAccuracy();
 
 	int getDefenseBonus();
@@ -1395,6 +1403,8 @@ protected:
 	string _param0_getCharacterApperance__string_;
 	string _param0_getSkillMod__string_;
 	string _param0_hasSkillMod__string_;
+	string _param0_getSkillModBonus__string_;
+	string _param0_hasSkillModBonus__string_;
 	string _param0_sendSystemMessage__string_;
 	string _param0_sendSystemMessage__string_string_long_;
 	string _param1_sendSystemMessage__string_string_long_;

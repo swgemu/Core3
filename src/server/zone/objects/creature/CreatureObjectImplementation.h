@@ -149,8 +149,12 @@ protected:
 	float acceleration;
 	float height;
 	SkillModList creatureSkillMods;
+	SkillModList creatureSkillModBonus;
+	
 	uint32 skillModsCounter;
 	string skillMod;
+	
+	uint32 skillModBonusCounter;
 
 	//CREO6 operands
 	uint32 defenderUpdateCounter;
@@ -827,6 +831,9 @@ public:
 	// setters and getters
 	void addSkillMod(const string& name, int mod, bool updateClient = false);
 	void removeSkillMod(const string& name, bool updateClient = false);
+
+	void addSkillModBonus(const string& name, int mod, bool updateClient = false);
+	void removeSkillModBonus(const string& name, bool updateClient = false);
 	
 	bool hasQueuedState(uint32 skillCRC) {
 		return queuedStates.contains(skillCRC);
@@ -844,12 +851,19 @@ public:
 		return &creatureSkillMods;
 	}
 	
+	SkillModList* getSkillModBonusList() {
+		return &creatureSkillModBonus;
+	}
+		
 	void setGroupInviterID(uint64 oid) {
 		groupInviterID = oid;
 	}
 	
 	int getSkillMod(const string& name) {
-		return creatureSkillMods.get(name);
+		int bonus = creatureSkillModBonus.get(name);
+		if (bonus > 25)
+			bonus = 25;
+		return creatureSkillMods.get(name) + bonus;
 	}
 	
 	bool hasSkillMod(const string& name) {
@@ -858,6 +872,19 @@ public:
 	
 	void removeSkillMod(string& name) {
 		creatureSkillMods.remove(name);
+	}
+
+	int getSkillModBonus(const string& name) {
+		int bonus = creatureSkillModBonus.get(name);
+		return bonus;
+	}
+	
+	bool hasSkillModBonus(const string& name) {
+		return creatureSkillModBonus.containsKey(name);
+	}
+	
+	void removeSkillModBonus(string& name) {
+		creatureSkillModBonus.remove(name);
 	}
 		
 	inline int getDamageBonus() {
@@ -1537,6 +1564,14 @@ public:
 	
 	inline uint32 getSkillModsCounter() {
 		return skillModsCounter;
+	}
+	
+	inline uint32 getNewSkillModBonusCounter(int cnt) {
+		return skillModBonusCounter += cnt;
+	}
+	
+	inline uint32 getSkillModBonusCounter() {
+		return skillModBonusCounter;
 	}
 	
 	inline uint32 getLevel() {

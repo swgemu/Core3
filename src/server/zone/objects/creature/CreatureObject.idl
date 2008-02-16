@@ -450,6 +450,10 @@ interface CreatureObject implements SceneObject {
 	int getSkillMod(const string name);
 	
 	boolean hasSkillMod(const string name);
+
+	int getSkillModBonus(const string name);
+	
+	boolean hasSkillModBonus(const string name);
 	
 	int getAccuracy();
 	int getDefenseBonus();

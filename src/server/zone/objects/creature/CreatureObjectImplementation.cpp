@@ -120,6 +120,7 @@ CreatureObjectImplementation::CreatureObjectImplementation(uint64 oid) : Creatur
 	speed = 5.376f;
 	acceleration = 1.549f;
 	skillModsCounter = 0;
+	skillModBonusCounter = 0;
 	
 	// CREO6 operands
 	defenderUpdateCounter = 0;
@@ -874,11 +875,11 @@ void CreatureObjectImplementation::doDiseaseTick() {
 	if (nextDiseaseTick.isPast()) {
 	
 		if (diseaseDotType == 1)
-			changeHealthWoundsBar(diseaseDotStrength);
+			changeHealthWoundsBar(diseaseDotStrength + (shockWounds * diseaseDotStrength / 500));
 		else if (diseaseDotType == 4)
-			changeActionWoundsBar(diseaseDotStrength);
+			changeActionWoundsBar(diseaseDotStrength + (shockWounds * diseaseDotStrength / 500));
 		else
-			changeMindWoundsBar(diseaseDotStrength);
+			changeMindWoundsBar(diseaseDotStrength + (shockWounds * diseaseDotStrength / 500));
 		
 		changeShockWounds(1);
 			
@@ -892,15 +893,15 @@ void CreatureObjectImplementation::doDiseaseTick() {
 void CreatureObjectImplementation::doFireTick() {
 	if (nextFireTick.isPast()) {
 		if (fireDotType == 1){
-			changeHealthWoundsBar(fireDotStrength);
+			changeHealthWoundsBar((fireDotStrength / 5) + (shockWounds * fireDotStrength / 500));
 			changeHealthBar(-fireDotStrength);
 		}
 		else if (fireDotType == 4) {
-			changeActionWoundsBar(fireDotStrength);
+			changeActionWoundsBar((fireDotStrength / 5) + (shockWounds * fireDotStrength / 500));
 			changeActionBar(-fireDotStrength);
 	}
 		else {
-			changeMindWoundsBar(fireDotStrength);
+			changeMindWoundsBar((fireDotStrength / 5) + (shockWounds * fireDotStrength / 500));
 			changeMindBar(-fireDotStrength);
 		}
 		
@@ -2039,6 +2040,48 @@ void CreatureObjectImplementation::removeSkillMod(const string& name, bool updat
 		return;
 		
 	creatureSkillMods.remove(name);
+	
+	if (updateClient) {
+		CreatureObjectDeltaMessage4* dcreo4 = new CreatureObjectDeltaMessage4(this);
+		
+		dcreo4->startSkillModsUpdate(1);
+		dcreo4->removeSkillMod(name, 0);
+		
+		dcreo4->close();
+		((PlayerImplementation*) this)->sendMessage(dcreo4);
+	}
+}
+
+void CreatureObjectImplementation::addSkillModBonus(const string& name, int mod, bool updateClient) {
+	if (creatureSkillModBonus.containsKey(name)) {
+		mod += creatureSkillModBonus.get(name);
+		
+		if (mod <= 0) {
+			removeSkillModBonus(name, updateClient);
+			return;
+		}
+			
+		creatureSkillModBonus.remove(name);
+	}
+		
+	creatureSkillModBonus.put(name, mod);
+	
+	if (updateClient) {
+		CreatureObjectDeltaMessage4* dcreo4 = new CreatureObjectDeltaMessage4(this);
+		
+		dcreo4->startSkillModsUpdate(1);
+		dcreo4->addSkillMod(name, mod + creatureSkillMods.get(name));
+		
+		dcreo4->close();
+		((PlayerImplementation*) this)->sendMessage(dcreo4);
+	}
+}
+
+void CreatureObjectImplementation::removeSkillModBonus(const string& name, bool updateClient) {
+	if (!creatureSkillModBonus.containsKey(name))
+		return;
+		
+	creatureSkillModBonus.remove(name);
 	
 	if (updateClient) {
 		CreatureObjectDeltaMessage4* dcreo4 = new CreatureObjectDeltaMessage4(this);
