@@ -554,8 +554,10 @@ void BazaarManagerImplementation::buyItem(Player* player, uint64 objectid, int p
 			// pay the seller
 			Player* seller = pman->getPlayer(item->getOwnerName());
 			if (seller != NULL) {
+				seller->wlock(player);
 				seller->sendSystemMessage(body2.str());
 				seller->addBankCredits(price1);
+				seller->unlock();
 			} else {
 				pman->modifyRecipientOfflineBank(item->getOwnerName(), price1);
 			}
@@ -590,8 +592,10 @@ void BazaarManagerImplementation::buyItem(Player* player, uint64 objectid, int p
 			body << playername << " outbid you on " << item->getItemName() << ".";
 			
 			if (priorBidder != NULL) {
+				priorBidder->wlock(player);
 				priorBidder->sendSystemMessage(body.str());
 				priorBidder->addBankCredits(item->getPrice());
+				priorBidder->unlock();
 			} else {
 				pman->modifyRecipientOfflineBank(item->getBidderName(), item->getPrice());
 			}
@@ -611,14 +615,15 @@ void BazaarManagerImplementation::buyItem(Player* player, uint64 objectid, int p
 		// no prior bidder, just take the money
 		} else {
 			item->setPrice(price1);
-			item->setBuyerId(0);
+			item->setBuyerId(player->getObjectID());
 			item->setBidderName(playername);
 			
 			player->subtractBankCredits(price1);
 		}
 		
 		stringstream update; 
-		update << "UPDATE `bazaar_items` SET price = " << price1 << ", bidderName = '" << item->getBidderName() << "' where objectid = " << objectid << ";"; 
+		update << "UPDATE `bazaar_items` SET price = " << price1 << ", bidderName = '" << item->getBidderName() << "', buyerid = " << player->getObjectID()
+			<< " where objectid = " << objectid << ";"; 
 		try { 
 	                                 
 		 	ServerDatabase::instance()->executeQuery(update);
