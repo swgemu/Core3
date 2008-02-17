@@ -1096,16 +1096,19 @@ void ObjectControllerMessage::parseWaypointCommand(Player* player, Message* pack
 void ObjectControllerMessage::parseSetWaypointName(Player* player, Message* pack) {
 	uint64 wpId = pack->parseLong(); //get the waypoint id
 	
-	unicode newWpName_u; //new waypoint name
-	pack->parseUnicode(newWpName_u);
-	
 	WaypointObject* wp = player->getWaypoint(wpId);
 	
+	if (wp == NULL)
+		return;
+	
+	unicode newWpName_u; //new waypoint name
+	pack->parseUnicode(newWpName_u);
+
 	string newWpName = newWpName_u.c_str().c_str();
 	wp->setName(newWpName);
 	wp->switchStatus();
 	
-	player->addWaypoint(wp);
+	player->updateWaypoint(wp);
 }
 
 void ObjectControllerMessage::parseServerDestroyObject(Player* player, Message* pack) {
@@ -1135,11 +1138,12 @@ void ObjectControllerMessage::parseServerDestroyObject(Player* player, Message* 
 		
 		delete item;
 	} else if (waypoint != NULL) {
-		player->removeWaypoint(waypoint);
+		if (player->removeWaypoint(waypoint)) {
 		
-		waypoint->undeploy();
+			waypoint->undeploy();
 		
-		delete waypoint;
+			delete waypoint;
+		}
 	}
 }
 

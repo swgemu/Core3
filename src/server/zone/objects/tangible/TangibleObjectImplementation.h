@@ -240,7 +240,9 @@ public:
 	TangibleObjectImplementation(uint64 oid, int tp = 0);
 	TangibleObjectImplementation(uint64 oid, const unicode& name, const string& tempname, uint32 tempCRC, int tp = 0);
 	TangibleObjectImplementation(CreatureObject* creature, const unicode& name, const string& tempname, uint32 tempCRC, int tp = 0);
-
+	
+	~TangibleObjectImplementation();
+	
 	void initialize();
 
 	// This function should be called for all character items

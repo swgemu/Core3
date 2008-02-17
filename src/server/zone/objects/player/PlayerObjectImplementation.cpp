@@ -65,6 +65,7 @@ PlayerObjectImplementation::PlayerObjectImplementation(Player* pl) : SceneObject
 	experienceListCount = 0;
 	waypointListCount = 0;
 	waypointList.setNullValue(NULL);
+	waypointList.setInsertPlan(SortedVector<WaypointObject*>::NO_DUPLICATE);
 
 	forceRegen = 0;
 
@@ -216,30 +217,80 @@ void PlayerObjectImplementation::setForcePower(uint32 fp, bool updateClient) {
 }
 
 void PlayerObjectImplementation::addWaypoint(WaypointObject* wp, bool updateClient) {
-	waypointList.put(wp->getObjectID(), wp);
+	wlock();
 	
-	if (updateClient) {
+	if (waypointList.put(wp->getObjectID(), wp) != -1) {
+		if (updateClient) {
+			PlayerObjectDeltaMessage8* dplay8 = new PlayerObjectDeltaMessage8(this);
+
+			dplay8->startWaypointUpdate();
+			dplay8->addWaypoint(0, wp);
+			dplay8->close();
+			player->sendMessage(dplay8);
+		}
+	}
+	
+	unlock();
+}
+
+bool PlayerObjectImplementation::removeWaypoint(WaypointObject* wp, bool updateClient) {
+	wlock();
+	
+	if (waypointList.drop(wp->getObjectID())) {
+	
+		if (updateClient) {
+			PlayerObjectDeltaMessage8* dplay8 = new PlayerObjectDeltaMessage8(this);
+
+			dplay8->startWaypointUpdate();
+			dplay8->addWaypoint(1, wp);
+			dplay8->close();
+
+			player->sendMessage(dplay8);
+		}
+		
+		unlock();
+		return true;
+	}
+	
+	unlock();
+	return false;
+}
+
+WaypointObject* PlayerObjectImplementation::getWaypoint(uint64 id) {
+	WaypointObject* waypoint = NULL;
+	
+	wlock();
+	
+	waypoint = waypointList.get(id);
+	
+	unlock();
+	
+	return waypoint;
+}
+	
+int PlayerObjectImplementation::getWaypointListSize() {
+	int size = 0;
+	wlock();
+	
+	size = waypointList.size();
+	
+	unlock();
+	
+	return size;
+}
+
+void PlayerObjectImplementation::updateWaypoint(WaypointObject* wp) {
+	wlock();
+	
+	if (waypointList.contains(wp->getObjectID())) {
 		PlayerObjectDeltaMessage8* dplay8 = new PlayerObjectDeltaMessage8(this);
 
 		dplay8->startWaypointUpdate();
 		dplay8->addWaypoint(0, wp);
 		dplay8->close();
-		player->sendMessage(dplay8);
-	}
-}
-
-void PlayerObjectImplementation::removeWaypoint(WaypointObject* wp, bool updateClient) {
-	waypointList.drop(wp->getObjectID());
-	
-	if (updateClient) {
-		PlayerObjectDeltaMessage8* dplay8 = new PlayerObjectDeltaMessage8(this);
-
-		dplay8->startWaypointUpdate();
-		dplay8->addWaypoint(1, wp);
-		dplay8->close();
 
 		player->sendMessage(dplay8);
 	}
 	
-	//delete wp;
+	unlock();
 }

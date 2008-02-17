@@ -190,8 +190,10 @@ interface Player implements CreatureObject {
 	// Waypoint
 	void addWaypoint(WaypointObject wp);
 	
-	void removeWaypoint(WaypointObject wp);
+	boolean removeWaypoint(WaypointObject wp);
 	WaypointObject getWaypoint(unsigned long id);
+	
+	void updateWaypoint(WaypointObject wp);
 	
 	// Experience
 	void addXp(string xpType, int xp, boolean updateClient);

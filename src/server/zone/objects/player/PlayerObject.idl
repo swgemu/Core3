@@ -81,7 +81,9 @@ interface PlayerObject implements SceneObject {
 		
 	void addWaypoint(WaypointObject wp, boolean updateClient);
 	
-	void removeWaypoint(WaypointObject wp, boolean updateClient);
+	boolean removeWaypoint(WaypointObject wp, boolean updateClient);
+	
+	void updateWaypoint(WaypointObject wp);
 	
 	Player getPlayer();
 	

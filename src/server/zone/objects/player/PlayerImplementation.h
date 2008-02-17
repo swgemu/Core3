@@ -534,12 +534,16 @@ public:
 		playerObject->addWaypoint(wp, true);
 	}
 	
-	void removeWaypoint(WaypointObject* wp) {
-		playerObject->removeWaypoint(wp, true);
+	bool removeWaypoint(WaypointObject* wp) {
+		return playerObject->removeWaypoint(wp, true);
 	}
 	
 	WaypointObject* getWaypoint(uint64 id) {
 		return playerObject->getWaypoint(id);
+	}
+	
+	void updateWaypoint(WaypointObject* wp) {
+		playerObject->updateWaypoint(wp);
 	}
 
 	void launchFirework();

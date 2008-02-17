@@ -227,9 +227,11 @@ public:
 
 	void addWaypoint(WaypointObject* wp);
 
-	void removeWaypoint(WaypointObject* wp);
+	bool removeWaypoint(WaypointObject* wp);
 
 	WaypointObject* getWaypoint(unsigned long long id);
+
+	void updateWaypoint(WaypointObject* wp);
 
 	void addXp(string& xpType, int xp, bool updateClient);
 
@@ -616,9 +618,11 @@ public:
 
 	void addWaypoint(WaypointObject* wp);
 
-	void removeWaypoint(WaypointObject* wp);
+	bool removeWaypoint(WaypointObject* wp);
 
 	WaypointObject* getWaypoint(unsigned long long id);
+
+	void updateWaypoint(WaypointObject* wp);
 
 	void addXp(string& xpType, int xp, bool updateClient);
 

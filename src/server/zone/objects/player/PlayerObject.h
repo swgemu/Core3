@@ -109,7 +109,9 @@ public:
 
 	void addWaypoint(WaypointObject* wp, bool updateClient);
 
-	void removeWaypoint(WaypointObject* wp, bool updateClient);
+	bool removeWaypoint(WaypointObject* wp, bool updateClient);
+
+	void updateWaypoint(WaypointObject* wp);
 
 	Player* getPlayer();
 
@@ -178,7 +180,9 @@ public:
 
 	void addWaypoint(WaypointObject* wp, bool updateClient);
 
-	void removeWaypoint(WaypointObject* wp, bool updateClient);
+	bool removeWaypoint(WaypointObject* wp, bool updateClient);
+
+	void updateWaypoint(WaypointObject* wp);
 
 	Player* getPlayer();
 

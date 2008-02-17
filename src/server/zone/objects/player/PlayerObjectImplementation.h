@@ -137,19 +137,15 @@ public:
 		return jediState;
 	}
 	
-	void retriveWaypoints();
+	void updateWaypoint(WaypointObject* wp);
 	
-	WaypointObject* getWaypoint(uint64 id) {
-		return waypointList.get(id);
-	}
+	WaypointObject* getWaypoint(uint64 id);
 	
-	int getWaypointListSize() {
-		return waypointList.size();
-	}
+	int getWaypointListSize();
 	
 	void addWaypoint(WaypointObject* wp, bool updateClient);
 	
-	void removeWaypoint(WaypointObject* wp, bool updateClient);
+	bool removeWaypoint(WaypointObject* wp, bool updateClient);
 	
 	inline Player* getPlayer() {
 		return player;

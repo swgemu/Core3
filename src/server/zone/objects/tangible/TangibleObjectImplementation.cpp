@@ -92,6 +92,10 @@ TangibleObjectImplementation::TangibleObjectImplementation(CreatureObject* creat
 	objectSubType = tp;
 }
 
+TangibleObjectImplementation::~TangibleObjectImplementation() {
+	delete itemAttributes;	
+}
+
 void TangibleObjectImplementation::initialize() { 
 	container = NULL;
 	zone = NULL;

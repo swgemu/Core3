@@ -326,7 +326,7 @@ void PlayerObject::addWaypoint(WaypointObject* wp, bool updateClient) {
 		((PlayerObjectImplementation*) _impl)->addWaypoint(wp, updateClient);
 }
 
-void PlayerObject::removeWaypoint(WaypointObject* wp, bool updateClient) {
+bool PlayerObject::removeWaypoint(WaypointObject* wp, bool updateClient) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
@@ -335,9 +335,22 @@ void PlayerObject::removeWaypoint(WaypointObject* wp, bool updateClient) {
 		invocation.addObjectParameter(wp);
 		invocation.addBooleanParameter(updateClient);
 
+		return invocation.executeWithBooleanReturn();
+	} else
+		return ((PlayerObjectImplementation*) _impl)->removeWaypoint(wp, updateClient);
+}
+
+void PlayerObject::updateWaypoint(WaypointObject* wp) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 26);
+		invocation.addObjectParameter(wp);
+
 		invocation.executeWithVoidReturn();
 	} else
-		((PlayerObjectImplementation*) _impl)->removeWaypoint(wp, updateClient);
+		((PlayerObjectImplementation*) _impl)->updateWaypoint(wp);
 }
 
 Player* PlayerObject::getPlayer() {
@@ -345,7 +358,7 @@ Player* PlayerObject::getPlayer() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 26);
+		ORBMethodInvocation invocation(this, 27);
 
 		return (Player*) invocation.executeWithObjectReturn();
 	} else
@@ -357,7 +370,7 @@ void PlayerObject::setCurrentTitle(string& nTitle, bool updateClient) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 27);
+		ORBMethodInvocation invocation(this, 28);
 		invocation.addAsciiParameter(nTitle);
 		invocation.addBooleanParameter(updateClient);
 
@@ -371,7 +384,7 @@ void PlayerObject::setTitle(string& temptitle) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 28);
+		ORBMethodInvocation invocation(this, 29);
 		invocation.addAsciiParameter(temptitle);
 
 		invocation.executeWithVoidReturn();
@@ -384,7 +397,7 @@ string& PlayerObject::getCurrentTitle() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 29);
+		ORBMethodInvocation invocation(this, 30);
 
 		invocation.executeWithAsciiReturn(_return_getCurrentTitle);
 		return _return_getCurrentTitle;
@@ -397,7 +410,7 @@ unsigned int PlayerObject::getExperienceListCount() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 30);
+		ORBMethodInvocation invocation(this, 31);
 
 		return invocation.executeWithUnsignedIntReturn();
 	} else
@@ -409,7 +422,7 @@ unsigned int PlayerObject::getNewExperienceListCount(int cnt) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 31);
+		ORBMethodInvocation invocation(this, 32);
 		invocation.addSignedIntParameter(cnt);
 
 		return invocation.executeWithUnsignedIntReturn();
@@ -422,7 +435,7 @@ unsigned int PlayerObject::getWaypointListCount() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 32);
+		ORBMethodInvocation invocation(this, 33);
 
 		return invocation.executeWithUnsignedIntReturn();
 	} else
@@ -434,7 +447,7 @@ unsigned int PlayerObject::getNewWaypointListCount(int cnt) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 33);
+		ORBMethodInvocation invocation(this, 34);
 		invocation.addSignedIntParameter(cnt);
 
 		return invocation.executeWithUnsignedIntReturn();
@@ -511,30 +524,33 @@ Packet* PlayerObjectAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* in
 		addWaypoint((WaypointObject*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
 	case 25:
-		removeWaypoint((WaypointObject*) inv->getObjectParameter(), inv->getBooleanParameter());
+		resp->insertBoolean(removeWaypoint((WaypointObject*) inv->getObjectParameter(), inv->getBooleanParameter()));
 		break;
 	case 26:
-		resp->insertLong(getPlayer()->_getORBObjectID());
+		updateWaypoint((WaypointObject*) inv->getObjectParameter());
 		break;
 	case 27:
-		setCurrentTitle(inv->getAsciiParameter(_param0_setCurrentTitle__string_bool_), inv->getBooleanParameter());
+		resp->insertLong(getPlayer()->_getORBObjectID());
 		break;
 	case 28:
-		setTitle(inv->getAsciiParameter(_param0_setTitle__string_));
+		setCurrentTitle(inv->getAsciiParameter(_param0_setCurrentTitle__string_bool_), inv->getBooleanParameter());
 		break;
 	case 29:
-		resp->insertAscii(getCurrentTitle());
+		setTitle(inv->getAsciiParameter(_param0_setTitle__string_));
 		break;
 	case 30:
-		resp->insertInt(getExperienceListCount());
+		resp->insertAscii(getCurrentTitle());
 		break;
 	case 31:
-		resp->insertInt(getNewExperienceListCount(inv->getSignedIntParameter()));
+		resp->insertInt(getExperienceListCount());
 		break;
 	case 32:
-		resp->insertInt(getWaypointListCount());
+		resp->insertInt(getNewExperienceListCount(inv->getSignedIntParameter()));
 		break;
 	case 33:
+		resp->insertInt(getWaypointListCount());
+		break;
+	case 34:
 		resp->insertInt(getNewWaypointListCount(inv->getSignedIntParameter()));
 		break;
 	default:
@@ -620,8 +636,12 @@ void PlayerObjectAdapter::addWaypoint(WaypointObject* wp, bool updateClient) {
 	return ((PlayerObjectImplementation*) impl)->addWaypoint(wp, updateClient);
 }
 
-void PlayerObjectAdapter::removeWaypoint(WaypointObject* wp, bool updateClient) {
+bool PlayerObjectAdapter::removeWaypoint(WaypointObject* wp, bool updateClient) {
 	return ((PlayerObjectImplementation*) impl)->removeWaypoint(wp, updateClient);
+}
+
+void PlayerObjectAdapter::updateWaypoint(WaypointObject* wp) {
+	return ((PlayerObjectImplementation*) impl)->updateWaypoint(wp);
 }
 
 Player* PlayerObjectAdapter::getPlayer() {
