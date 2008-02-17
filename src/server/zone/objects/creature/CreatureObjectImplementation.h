@@ -1186,11 +1186,11 @@ public:
 	}
 
 	inline string& getSpeciesName() {
-		return stfName;
+		return speciesName;
 	}
 
 	inline string& getStfName() {
-		return speciesName;
+		return stfName;
 	}
 	
 	inline uint32 getPositionCounter() {
@@ -1773,7 +1773,7 @@ public:
 	friend class SkillManager;
 
 	friend class CreatureObjectMessage1;
-	friend class CreatureObjectMessage3;
+	//friend class CreatureObjectMessage3;
 	friend class CreatureObjectMessage4;
 	friend class CreatureObjectMessage6;
 	friend class PlayerObjectMessage9;

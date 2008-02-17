@@ -1335,6 +1335,8 @@ void ChatManagerImplementation::destroyRoom(ChatRoom* room) {
 	if (parent != NULL)
 		parent->removeSubRoom(room);
 	
+	room->undeploy();
+	
 	delete room;
 }
 

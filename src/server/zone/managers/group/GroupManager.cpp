@@ -227,8 +227,10 @@ void GroupManager::leaveGroup(GroupObject* group, Player* player) {
 	
 	player->wlock();
 
-	if (destroyGroup)
+	if (destroyGroup) {
+		group->undeploy();
 		delete group;
+	}
 
 }
 
@@ -256,6 +258,8 @@ void GroupManager::disbandGroup(GroupObject* group, Player* player) {
 	}
 	
 	player->wlock();
+	
+	group->undeploy();
 	
 	delete group;
 }

@@ -54,6 +54,7 @@ which carries forward this exception.
 #include "../../intangible/IntangibleObjectImplementation.h"
 
 #include "../../../packets.h"
+#include "../../../packets/creature/CreatureObjectMessage3.h"
 
 #include "../../../ZoneClient.h"
 
@@ -65,8 +66,8 @@ MountCreatureImplementation::MountCreatureImplementation(CreatureObject* linkCre
 
 	mountType = 0;
 
-	stfName = name;  
-	speciesName = stf; 
+	stfName = stf;  
+	speciesName = name; 
 
 	objectCRC = objCRC;
 
@@ -103,8 +104,8 @@ void MountCreatureImplementation::addToDatapad() {
 	IntangibleObjectImplementation* swoopImpl = new IntangibleObjectImplementation((SceneObject*)linkedPlayer->getDatapad(), 
 			itnoCRC, linkedCreature->getNewItemID());
 
-	swoopImpl->setName(stfName);
-	swoopImpl->setDetailName(speciesName);
+	swoopImpl->setName(speciesName);
+	swoopImpl->setDetailName(stfName);
 	swoopImpl->setWorldObject(_this);
 
 	itno = (IntangibleObject*) swoopImpl->deploy();

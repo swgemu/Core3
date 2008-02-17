@@ -115,6 +115,8 @@ void SuiManager::handleStartMusic(uint32 boxID, Player* player, uint32 cancel, c
 		
 		player->removeSuiBox(boxID);
 		
+		sui->undeploy();
+		
 		delete sui;
 		
 		player->unlock();
@@ -145,6 +147,8 @@ void SuiManager::handleStartDancing(uint32 boxID, Player* player, uint32 cancel,
 			player->startDancing(dance);
 		
 		player->removeSuiBox(boxID);
+		
+		sui->undeploy();
 		
 		delete sui;
 		
@@ -182,6 +186,8 @@ void SuiManager::handleSurveyToolRange(uint32 boxID, Player* player, uint32 canc
 		}
 		
 		player->removeSuiBox(boxID);
+		
+		sui->undeploy();
 		
 		delete sui;
 		
@@ -232,6 +238,8 @@ void SuiManager::handleSliceWeapon(uint32 boxID, Player* player, uint32 cancel, 
 
 		player->removeSuiBox(boxID);
 		
+		sui->undeploy();
+		
 		delete sui;
 
 		player->unlock();
@@ -281,6 +289,8 @@ void SuiManager::handleSliceArmor(uint32 boxID, Player* player, uint32 cancel, i
 
 		player->removeSuiBox(boxID);
 		
+		sui->undeploy();
+		
 		delete sui;
 
 		player->unlock();
@@ -327,6 +337,8 @@ void SuiManager::handleRepairWeapon(uint32 boxID, Player* player, uint32 cancel,
 		}
 
 		player->removeSuiBox(boxID);
+		
+		sui->undeploy();
 		
 		delete sui;
 
@@ -375,6 +387,8 @@ void SuiManager::handleRepairArmor(uint32 boxID, Player* player, uint32 cancel, 
 
 		player->removeSuiBox(boxID);
 		
+		sui->undeploy();
+		
 		delete sui;
 
 		player->unlock();
@@ -402,6 +416,8 @@ void SuiManager::handleTicketPurchaseMessageBox(uint32 boxID, Player* player) {
 		SuiBox* sui = player->getSuiBox(boxID);
 
 		player->removeSuiBox(boxID);
+		
+		sui->undeploy();
 
 		delete sui;
 
@@ -446,6 +462,8 @@ void SuiManager::handleTicketCollectorRespones(uint32 boxID, Player* player, uin
 		} 
 
 		player->removeSuiBox(boxID);
+		
+		sui->undeploy();
 		
 		delete sui;
 
@@ -499,6 +517,8 @@ void SuiManager::handleColorPicker(uint32 boxID, Player* player, uint32 cancel, 
 		}
 
 		player->removeSuiBox(boxID);
+		
+		sui->undeploy();
 
 		delete sui;
 

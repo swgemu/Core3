@@ -87,6 +87,8 @@ public:
 
 	virtual ~CreatureObject();
 
+	void info(const string& message, bool forcedLog = false);
+
 	void sendItemsTo(Player* player);
 
 	void sendTo(Player* player, bool doClose = true);
@@ -750,6 +752,8 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, ORBMethodInvocation* inv);
 
+	void info(const string& message, bool forcedLog);
+
 	void sendItemsTo(Player* player);
 
 	void sendTo(Player* player, bool doClose);
@@ -1385,6 +1389,7 @@ public:
 	bool verifyBankCredits(int creditsToRemove);
 
 protected:
+	string _param0_info__string_bool_;
 	string _param0_doAnimation__string_;
 	string _param0_playEffect__string_string_;
 	string _param1_playEffect__string_string_;

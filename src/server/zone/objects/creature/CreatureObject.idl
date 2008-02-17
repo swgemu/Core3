@@ -68,6 +68,8 @@ import "../guild/Guild";
 interface CreatureObject implements SceneObject {
 	CreatureObject(unsigned long oid);
 	
+	void info(const string message, boolean forcedLog = false);
+	
 	void sendItemsTo(Player player);
 	void sendTo(Player player, boolean doClose = true);
 

@@ -144,6 +144,8 @@ void PlayerImplementation::init() {
 	
 	datapad = NULL;
 
+	stfName = "species";
+	
 	// modifiers
 	weaponSpeedModifier = 1;
 

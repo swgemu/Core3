@@ -48,6 +48,7 @@ which carries forward this exception.
 #include "../../ZoneClient.h"
 
 #include "../../packets.h"
+#include "../../packets/creature/CreatureObjectMessage3.h"
 
 #include "../player/Player.h"
 #include "../player/PlayerImplementation.h"
@@ -107,7 +108,7 @@ CreatureObjectImplementation::CreatureObjectImplementation(uint64 oid) : Creatur
 	// CREO3 operands
 	postureState = UPRIGHT_POSTURE;
 	stateBitmask = oldStateBitmask = 0;
-	creatureBitmask = 0x1080;
+	creatureBitmask = 0x80;
 	
 	conditionDamage = 0;
 	maxCondition = 0;
@@ -325,7 +326,7 @@ void CreatureObjectImplementation::sendTo(Player* player, bool doClose) {
 
 	BaseMessage* creo6 = new CreatureObjectMessage6(_this);
 	client->sendMessage(creo6);
-	
+
 	sendFactionStatusTo(player);
 	
 	if (doClose)

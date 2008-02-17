@@ -1130,8 +1130,17 @@ void ObjectControllerMessage::parseServerDestroyObject(Player* player, Message* 
 		
 		BaseMessage* msg = new SceneObjectDestroyMessage(item);
 		player->getClient()->sendMessage(msg);
-	} else if (waypoint != NULL)
+		
+		item->undeploy();
+		
+		delete item;
+	} else if (waypoint != NULL) {
 		player->removeWaypoint(waypoint);
+		
+		waypoint->undeploy();
+		
+		delete waypoint;
+	}
 }
 
 void ObjectControllerMessage::parseSetWaypointActiveStatus(Player* player, Message* pack) {

@@ -117,11 +117,16 @@ int TicketCollectorImplementation::useObject(Player* player) {
 		}
 	}
 	
+	SuiListBox* box = (SuiListBox*)sui->deploy();
+	
 	if (sui->getMenuSize() == 0) {
-		delete sui->deploy();
+		box->undeploy();
+		
+		delete box;
+		
 		player->sendSystemMessage("travel", "no_ticket");
 	} else {
-		player->addSuiBox(sui->deploy());
+		player->addSuiBox(box);
 		player->sendMessage(sui->generateMessage());
 	}
 	
@@ -180,6 +185,8 @@ void TicketCollectorImplementation::useTicket(Player* player, Ticket* ticket) {
 
 		shuttle->sendPlayerTo(player, ticket);
 
+		ticket->undeploy();
+		
 		delete ticket;
 		return;
 	}

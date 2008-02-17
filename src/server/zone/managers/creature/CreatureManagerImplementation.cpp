@@ -140,7 +140,7 @@ void CreatureManagerImplementation::loadRecruiters() {
 void CreatureManagerImplementation::loadTrainers() {
 	ProfessionManager* professionManager = server->getProfessionManager();
 	
-	/*int planetid = zone->getZoneID();
+	int planetid = zone->getZoneID();
 	
 	ResultSet* result;
 	stringstream query;
@@ -171,7 +171,7 @@ void CreatureManagerImplementation::loadTrainers() {
 			TrainerCreature* trainer = spawnTrainer(profession, name, "", crc3, x, y);									
 	}
 		
-	delete result;*/
+	delete result;
 
 	if (zone->getZoneID() == 8) {
 		professionManager->professionMap.resetIterator();
