@@ -519,7 +519,7 @@ void BazaarManagerImplementation::buyItem(Player* player, uint64 objectid, int p
 
 			stringstream update;
 			update << "UPDATE `bazaar_items` SET sold = 1, expire = " << availableTime << ", buyerid = "
-				<< item->getBuyerId() <<", bidderName='" << item->getBidderName() << "' where objectid = " << item->getId() << ";";
+				<< item->getBuyerId() << ", bidderName='" << item->getBidderName() << "' where objectid = " << item->getId() << ";";
 			try {
 			
 				ServerDatabase::instance()->executeStatement(update);
@@ -714,7 +714,7 @@ void BazaarManagerImplementation::retrieveItem(Player* player, uint64 objectid, 
 		}
 	
 	// the bidder is the only one who can get his auction after expiration
-		if (item->isSold() && item->getBidderName() != playername ) {
+		if (item->isSold() && item->getBuyerId() != player->getObjectID()) {
 			msg = new RetrieveAuctionItemResponseMessage(objectid, 1);
 			player->sendMessage(msg);
 			player->unlock();

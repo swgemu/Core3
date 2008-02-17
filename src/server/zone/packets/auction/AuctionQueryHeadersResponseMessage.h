@@ -149,9 +149,9 @@ public:
 
 	    	insertLong(il->getBuyerId()); // buyer ID
 	    	
-	    	insertInt(0); 
-	    	insertInt(0);
 	    	insertShort(0);
+	    	insertInt(il->getPrice()); // my proxy not implemented yet
+	    	insertInt(il->getPrice()); // my bid default to price
 
 	    	insertInt(il->getItemType()); 
 	    	

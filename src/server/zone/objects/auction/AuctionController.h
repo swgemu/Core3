@@ -129,7 +129,7 @@ public:
 			
 		case 5: // Retrieve items screen
 			for (int i = 0; i < items.size(); i++) {
-				if (items.get(i)->getBuyerId() == player->getObjectID())
+				if (items.get(i)->isSold() && items.get(i)->getBuyerId() == player->getObjectID())
 					reply->addItemToList(items.get(i));
 			}
 			break;	
