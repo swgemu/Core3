@@ -95,7 +95,13 @@ public:
 				AuctionItem* item = items.get(i);
 				
 				if (!item->isSold())
-					if (item->getItemType() & category) {
+					if (category & 255) { // Searching a sub category
+						if(item->getItemType() == category) { 
+							if (displaying >= offset)
+								reply->addItemToList(items.get(i));
+							displaying++;
+						}
+					} else if (item->getItemType() & category) {
 						if (displaying >= offset)
 							reply->addItemToList(items.get(i));
 						displaying++;

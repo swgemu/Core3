@@ -183,7 +183,7 @@ which carries forward this exception.
 #include "packets/player/EnterStructurePlacementModeMessage.h"
 
 //vendor/auction stuff:
-#include "packets/auction/AuctionQueryHeadersResponseMessage.h"
+//#include "packets/auction/AuctionQueryHeadersResponseMessage.h"
 #include "packets/auction/BidAuctionResponseMessage.h"
 #include "packets/auction/GetAuctionDetailsResponseMessage.h"
 #include "packets/auction/IsVendorOwnerResponseMessage.h"

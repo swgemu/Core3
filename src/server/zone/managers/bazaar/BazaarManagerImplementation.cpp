@@ -381,6 +381,7 @@ void BazaarManagerImplementation::checkAuctions() {
 
 				bazaarPlanets[item->getPlanet()]->removeBazaarItem(objectId);
 				removeItem(objectId);
+				item->undeploy();
 				
 				stringstream del1;
 				del1 << "DELETE from `bazaar_items` WHERE objectid = " << objectId << ";";
@@ -754,7 +755,9 @@ void BazaarManagerImplementation::retrieveItem(Player* player, uint64 objectid, 
 	msg = new RetrieveAuctionItemResponseMessage(objectid, 0);
 	player->sendMessage(msg);
 	player->unlock();
+	
 	removeItem(objectid);
+	item->undeploy();
 	
 	unlock();
 }
