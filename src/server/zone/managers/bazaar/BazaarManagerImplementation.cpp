@@ -645,7 +645,7 @@ void BazaarManagerImplementation::buyItem(Player* player, uint64 objectid, int p
 			}
 		
 			stringstream update; 
-			update << "UPDATE `bazaar_items` SET price = " << price1 << ", bidderName = '" << item->getBidderName() << "', buyerid = " << player->getObjectID << " where objectid = " << objectid << ";"; 
+			update << "UPDATE `bazaar_items` SET price = " << price1 << ", bidderName = '" << item->getBidderName() << "', buyerid = " << player->getObjectID() << " where objectid = " << objectid << ";"; 
 			try { 
 	                                 
 		 		ServerDatabase::instance()->executeStatement(update);
