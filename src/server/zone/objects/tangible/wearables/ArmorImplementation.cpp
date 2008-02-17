@@ -671,6 +671,9 @@ void ArmorImplementation::sliceArmor(Player* player){
 	bool sliceType = System::random(1);
 	int slicePercent;
 	
+	int min = 0;
+	int max = 0;
+	
 	stringstream msg;
 
 	try {
@@ -679,13 +682,46 @@ void ArmorImplementation::sliceArmor(Player* player){
 		if (isEquipped())
 			msg << "You must unequip this item first.";
 		else if (!isSliced()) {
+			float sliceBonus = 0;
+			
+			switch (player->getSlicingAbility()) {
+			case 3 :
+				if (sliceType == 0) {
+					min = 5;
+					max = 20;
+				} else {
+					min = 5;
+					max = 30;
+				}
+			case 4 :
+				if (sliceType == 0) {
+					min = 5;
+					max = 30;
+				} else {
+					min = 15;
+					max = 40;
+				}
+				break;
+			case 5 :
+				if (sliceType == 0) {
+					min = 11;
+					max = 35;
+				} else {
+					min = 20;
+					max = 45;
+				}
+				break;
+			default :
+				break;
+			}
+			
 			switch (sliceType) {
 			case 0:
-				slicePercent = sliceArmorEffectiveness();
+				slicePercent = sliceArmorEffectiveness(min, max);
 				msg << "Armor effectiveness increased by " << slicePercent << "%";
 				break;
 			case 1:
-				slicePercent = sliceArmorEncumbrance();
+				slicePercent = sliceArmorEncumbrance(min, max);
 				msg << "Armor encumbrance reduced by " << slicePercent << "%";
 				break;
 			}
@@ -703,11 +739,11 @@ void ArmorImplementation::sliceArmor(Player* player){
 	player->sendSystemMessage(msg.str());
 }
 
-int ArmorImplementation::sliceArmorEffectiveness(){
+int ArmorImplementation::sliceArmorEffectiveness(int min, int max){
 	if (sliced) 
 		return 0;
 		
-	int modifier = System::random(10) + 25;
+	int modifier = System::random(max - min) + min;
 
 	if (!kineticIsSpecial) {
 		setKinetic(kinetic + (kinetic * modifier / 100));
@@ -762,11 +798,11 @@ int ArmorImplementation::sliceArmorEffectiveness(){
 	return modifier;
 }
 
-int ArmorImplementation::sliceArmorEncumbrance(){
+int ArmorImplementation::sliceArmorEncumbrance(int min, int max){
 	if (sliced) 
 		return 0;
 		
-	int modifier = System::random(30) + 15;
+	int modifier = System::random(max - min) + min;
 	
 	setHealthEncumbrance(healthEncumbrance - (healthEncumbrance * modifier / 100));
 	setActionEncumbrance(actionEncumbrance - (actionEncumbrance * modifier / 100));

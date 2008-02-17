@@ -56,6 +56,7 @@ RunSkillsFile("playerSkills/pistoleer.lua")
 RunSkillsFile("playerSkills/swordsman.lua")
 RunSkillsFile("playerSkills/medic.lua")
 RunSkillsFile("playerSkills/doctor.lua")
+RunSkillsFile("playerSkills/smuggler.lua")
 RunSkillsFile("playerSkills/passiveSkills.lua")
 
 

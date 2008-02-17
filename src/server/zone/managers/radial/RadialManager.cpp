@@ -538,7 +538,7 @@ bool RadialManager::sendRadialResponseForClothing(Player* player, Armor* object,
 		
 		omr->addRadialItem(0, 68, 3, "Change color");
 		
-		if (!object->isSliced())
+		if (!object->isSliced() && player->getSlicingAbility() >= 3)
 			omr->addRadialItem(0, 69, 3, "Slice");
 		
 		omr->addRadialItem(0, 70, 3, "Repair");
@@ -556,7 +556,7 @@ bool RadialManager::sendRadialResponseForClothing(Player* player, Armor* object,
 bool RadialManager::sendRadialResponseForWeapon(Player* player, Weapon* object, ObjectMenuResponse* omr) {
 	if (player->getInventoryItem(object->getObjectID()) != NULL) {
 
-		if (!object->isSliced())
+		if (!object->isSliced() && player->getSlicingAbility() >= 2)
 			omr->addRadialItem(0, 69, 3, "Slice");
 		
 		omr->addRadialItem(0, 70, 3, "Repair");

@@ -238,15 +238,15 @@ void AttachmentImplementation::setSkillMods(int modifier) {
 		luck = luck + 50;
 	}
 	
-	setSkillMod0Type(System::random(28) + 1);
+	setSkillMod0Type(System::random(30) + 1);
 	setSkillMod0Value((2 * luck / (System::random(3) + 8)) - 25);
 	
 	if (System::random(4) == 1) {
-		setSkillMod1Type(System::random(28) + 1);
+		setSkillMod1Type(System::random(30) + 1);
 		setSkillMod1Value((2 * luck / (System::random(3) + 8)) - 25);
 	}
 	if (System::random(8) == 1) {
-		setSkillMod2Type(System::random(28) + 1);
+		setSkillMod2Type(System::random(30) + 1);
 		setSkillMod2Value((2 * luck / (System::random(3) + 8)) - 25);
 	}
 	if (skillMod0Value > 25)

@@ -109,6 +109,8 @@ public:
 
 	bool isSurveyTool();
 
+	bool isLair();
+
 	void setPersistent(bool pers);
 
 	void setUpdated(bool upd);
@@ -201,6 +203,8 @@ public:
 	bool isTicketCollector();
 
 	bool isSurveyTool();
+
+	bool isLair();
 
 	void setPersistent(bool pers);
 

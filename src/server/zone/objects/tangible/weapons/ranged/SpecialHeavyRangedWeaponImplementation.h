@@ -42,19 +42,54 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#include "LairObjectImplementation.h"
+#ifndef SPECIALHEAVYRANGEDWEAPONIMPLEMENTATION_H_
+#define SPECIALHEAVYRANGEDWEAPONIMPLEMENTATION_H_
 
-#include "../TangibleObjectImplementation.h"
+#include "SpecialHeavyRangedWeapon.h"
 
-LairObjectImplementation::LairObjectImplementation(uint32 objCRC, uint64 oid) : LairObjectServant(oid, LAIR) {
-	objectCRC = objCRC;
+class SpecialHeavyRangedWeaponImplementation : public SpecialHeavyRangedWeaponServant {
 	
-	conditionDamage = 0;
-	maxCondition = 20000;
-	
-	templateTypeName = "lair_n";
-	templateName = "generic_antpile";
-	
-	pvpStatusBitmask = 1;
-}
+public:
+	SpecialHeavyRangedWeaponImplementation(uint64 objid, uint32 tempcrc, const unicode& n, const string& tempn, bool eqp = false) 
+			: SpecialHeavyRangedWeaponServant(objid, tempcrc, n, tempn, TangibleObjectImplementation::SPECIALHEAVYWEAPON, eqp) {
+		initialize();
+	}
 
+	SpecialHeavyRangedWeaponImplementation(CreatureObject* creature, const string& temp, const unicode& n, const string& tempn, bool eqp = false) 
+			: SpecialHeavyRangedWeaponServant(creature, temp, n, tempn, TangibleObjectImplementation::SPECIALHEAVYWEAPON, eqp) {
+		initialize();
+	}
+
+	void initialize() {
+		objectSubType = TangibleObjectImplementation::SPECIALHEAVYWEAPON;
+		
+		setType(SPECIALHEAVYWEAPON);
+		setCategory(RANGED);
+		
+		setDamageType(HEAT);
+		setArmorPiercing(NONE);
+		
+		setAttackSpeed(6.1f);
+		
+		setMinDamage(38);
+		setMaxDamage(426);
+		setWoundsRatio(36);
+		
+		setPointBlankAccuracy(10);
+		setPointBlankRange(0);
+		
+		setIdealAccuracy(-65);
+		setIdealRange(50);
+		
+		setMaxRangeAccuracy(-120);
+		setMaxRange(64);
+
+		setHealthAttackCost(45);
+		setActionAttackCost(39);
+		setMindAttackCost(83);
+		
+	}
+	
+};
+
+#endif /*SPECIALHEAVYRANGEDWEAPONIMPLEMENTATION_H_*/

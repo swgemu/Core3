@@ -78,6 +78,7 @@ IDL_SOURCES = server/zone/Zone.idl \
 				server/zone/objects/tangible/weapons/ranged/PistolRangedWeapon.idl \
 				server/zone/objects/tangible/weapons/ranged/CarbineRangedWeapon.idl \
 				server/zone/objects/tangible/weapons/ranged/RifleRangedWeapon.idl \
+				server/zone/objects/tangible/weapons/ranged/SpecialHeavyRangedWeapon.idl \
 				server/zone/objects/tangible/weapons/melee/OneHandedMeleeWeapon.idl \
 				server/zone/objects/tangible/weapons/melee/TwoHandedMeleeWeapon.idl \
 				server/zone/objects/tangible/weapons/melee/PolearmMeleeWeapon.idl \

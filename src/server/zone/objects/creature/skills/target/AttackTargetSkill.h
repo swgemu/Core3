@@ -411,20 +411,17 @@ public:
 			case TangibleObjectImplementation::RIFLE:
 				speedMod = ((Player*)creature)->getSkillMod("rifle_speed");
 				break;
+			case TangibleObjectImplementation::SPECIALHEAVYWEAPON:
+				if (weapon->getObjectCRC() == 0xC105AB54)
+					speedMod = ((Player*)creature)->getSkillMod("heavy_flame_thrower_speed");
+				speedMod += ((Player*)creature)->getSkillMod("heavyweapon_speed");
+				break;			
 			}
 		
 		if (weapon != NULL) {
 			weaponSpeed = (float)((100.0f - speedMod) / 100.0f) * speedRatio * weapon->getAttackSpeed();
 		} else
 			weaponSpeed = (float)((100.0f - speedMod) / 100.0f) * 1;
-		
-		/*if (creature->isPlayer()) {
-			stringstream txt;
-			txt << "Skill mod = [" << speedMod << "] bonus = [" << ((Player*)creature)->getSkillModBonus("pistol_speed") << "]";
-			txt << "SpeedRatio = [" << speedRatio << "] Weapon Speed = [" << weapon->getAttackSpeed() << "] Final Speed = [" << weaponSpeed << "]";
-			
-			creature->sendSystemMessage(txt.str());
-		}*/
 		
 		return MAX(weaponSpeed, 1.0f);
 	}

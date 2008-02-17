@@ -146,7 +146,7 @@ void LootManager::createWeaponLoot(Creature* creature, int creatureLevel) {
 	
 	uint32 objectCRC = creature->getObjectCRC();
 	
-	switch (System::random(14)) {
+	switch (System::random(15)) {
 	case 0 :	// UNARMED
 		itemImpl = new UnarmedMeleeWeaponImplementation(creature, 
 				"object/weapon/melee/special/shared_vibroknuckler.iff",	unicode("Vibroknuckler"), "vibroknuckler", false);
@@ -266,21 +266,8 @@ void LootManager::createWeaponLoot(Creature* creature, int creatureLevel) {
 		}
 		break;
 	case 15 :	// FLAMETHROWER
-		itemImpl = new RifleRangedWeaponImplementation(creature, 
+		itemImpl = new SpecialHeavyRangedWeaponImplementation(creature, 
 				"object/weapon/ranged/rifle/shared_rifle_flame_thrower.iff", unicode("Flame Thrower"), "rifle_flame_thrower", false);
-		itemImpl->setDamageType(WeaponImplementation::HEAT);
-		itemImpl->setArmorPiercing(WeaponImplementation::NONE);
-		itemImpl->setAttackSpeed(6);
-		itemImpl->setMinDamage(25);
-		itemImpl->setMaxDamage(284);
-		itemImpl->setWoundsRatio(36);
-
-		itemImpl->setPointBlankAccuracy(10);
-		itemImpl->setPointBlankRange(0);
-		itemImpl->setIdealAccuracy(-65);
-		itemImpl->setIdealRange(50);
-		itemImpl->setMaxRangeAccuracy(-120);
-		itemImpl->setMaxRange(64);
 		break;
 	}
 	

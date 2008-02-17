@@ -395,6 +395,8 @@ public:
 
 	string& getCertification(int idx);
 
+	int getSlicingAbility();
+
 	void sendDraftSchematics();
 
 	void addDraftSchematicsFromGroupName(const string& schematicGroupName);
@@ -781,6 +783,8 @@ public:
 	int getCertificationListSize();
 
 	string& getCertification(int idx);
+
+	int getSlicingAbility();
 
 	void sendDraftSchematics();
 

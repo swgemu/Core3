@@ -511,6 +511,16 @@ int CreatureManagerImplementation::addCreature(lua_State *L) {
 	creatureImpl->mindMax = creatureImpl->mind;
 	creatureImpl->focusMax = creatureImpl->focus;
 	creatureImpl->willpowerMax = creatureImpl->willpower;
+
+	creatureImpl->baseHealth = creatureImpl->health;
+	creatureImpl->baseStrength = creatureImpl->strength;
+	creatureImpl->baseConstitution = creatureImpl->constitution;
+	creatureImpl->baseAction = creatureImpl->action;
+	creatureImpl->baseQuickness = creatureImpl->quickness;
+	creatureImpl->baseStamina = creatureImpl->stamina;
+	creatureImpl->baseMind = creatureImpl->mind;
+	creatureImpl->baseFocus = creatureImpl->focus;
+	creatureImpl->baseWillpower = creatureImpl->willpower;	
 	
 	creatureImpl->armor = creature.getIntField("armor");
 
@@ -555,7 +565,7 @@ int CreatureManagerImplementation::addLair(lua_State * L) {
 	LuaObject object(L);
 	
 	int planet = object.getIntField("planet");
-	
+
 	if (planet != instance->getZone()->getZoneID())
 		return 1;
 	
@@ -564,7 +574,8 @@ int CreatureManagerImplementation::addLair(lua_State * L) {
 	LairObjectImplementation* lairImpl = new LairObjectImplementation(objectCRC, instance->getNextCreatureID());
 	float x = object.getFloatField("positionX");
 	float y = object.getFloatField("positionY");
-	float z = object.getFloatField("positionZ"); 
+	float z = object.getFloatField("positionZ");
+	
 	lairImpl->initializePosition(x, z, y);
 	
 	LairObject* lairObject = (LairObject*) lairImpl->deploy();
@@ -575,82 +586,10 @@ int CreatureManagerImplementation::addLair(lua_State * L) {
 	cout << "Spawning Lair with objcrc (" << objectCRC << ")" << "on position [" << x << "," << y << "]\n";
 	object.pop();
 	
-	
 	instance->unlock();
 	
 	return 0;
 	
-	
-	/*LuaObject creature(L);
-
-	if (!creature.isValidTable())
-		return 1;
-
-	int planet = creature.getIntField("planet");
-
-	
-	CreatureImplementation* creatureImpl = new CreatureImplementation(instance->getNextCreatureID());
-
-	string objectName = creature.getStringField("objectName");
-	string stfname = creature.getStringField("stfName");
-	string name = creature.getStringField("name");
-
-	if (!stfname.empty())
-		creatureImpl->speciesName = stfname;
-	else
-		creatureImpl->characterName = unicode(name);
-
-	creatureImpl->objectCRC = creature.getIntField("objectCRC");
-
-	creatureImpl->terrainName = Terrain::getTerrainName(planet);
-
-	//ham stuff
-	creatureImpl->health = creature.getIntField("health");
-	creatureImpl->strength = creature.getIntField("strength");
-	creatureImpl->constitution = creature.getIntField("constitution");
-	creatureImpl->action = creature.getIntField("action");
-	creatureImpl->quickness = creature.getIntField("quickness");
-	creatureImpl->stamina = creature.getIntField("stamina");
-	creatureImpl->mind = creature.getIntField("mind");
-	creatureImpl->focus = creature.getIntField("focus");
-	creatureImpl->willpower = creature.getIntField("willpower");
-
-	creatureImpl->healthMax = creatureImpl->health;
-	creatureImpl->strengthMax = creatureImpl->strength;
-	creatureImpl->constitutionMax = creatureImpl->constitution;
-	creatureImpl->actionMax = creatureImpl->action;
-	creatureImpl->quicknessMax = creatureImpl->quickness;
-	creatureImpl->staminaMax = creatureImpl->stamina;
-	creatureImpl->mindMax = creatureImpl->mind;
-	creatureImpl->focusMax = creatureImpl->focus;
-	creatureImpl->willpowerMax = creatureImpl->willpower;
-
-	creatureImpl->height = creature.getFloatField("height");
-	float x = creature.getFloatField("positionX");
-	float y = creature.getFloatField("positionY");
-	float z = creature.getFloatField("positionZ");
-	creatureImpl->initializePosition(x, z, y);
-	creatureImpl->pvpStatusBitmask = 0x23;
-
-	creatureImpl->accuracy = creature.getIntField("accuracy");
-	creatureImpl->speed = creature.getFloatField("speed");
-	creatureImpl->acceleration = creature.getFloatField("acceleration");
-	creatureImpl->respawnTimer = creature.getIntField("respawnTimer");
-	creatureImpl->level = creature.getIntField("level");
-	creatureImpl->pvpStatusBitmask = creature.getIntField("combatFlags");
-
-	instance->load(creatureImpl);
-
-	stringstream CreatureName;
-	CreatureName << "Creature" << creatureImpl->getObjectID();
-	Creature* creatureObj = (Creature*) ObjectRequestBroker::instance()->deploy(CreatureName.str(), creatureImpl);
-
-	creatureObj->loadItems();
-	creatureObj->insertToZone(instance->zone);
-
-	instance->creatureMap->put(creatureObj->getObjectID(), creatureObj);
-	instance->unlock();*/
-
 }
 
 int CreatureManagerImplementation::runCreatureFile(lua_State* L) {

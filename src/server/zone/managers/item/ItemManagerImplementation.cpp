@@ -158,6 +158,9 @@ TangibleObject* ItemManagerImplementation::createPlayerObject(Player* player, Re
 		case TangibleObjectImplementation::POLEARMSABER:
 			item = new PolearmJediWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
 			break;
+		case TangibleObjectImplementation::SPECIALHEAVYWEAPON:
+			item = new SpecialHeavyRangedWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
+			break;
 		}
 		
 	} else if (objecttype & TangibleObjectImplementation::CLOTHING) {

@@ -203,34 +203,28 @@ public:
 			diseaseResist += targetCreature->getSkillMod("resistance_disease");			
 	
 		if (dotChanceState > 0 && System::random(100) < dotChanceState) {
-			if (tickStrengthOfHit) {
-				fireDotStrength = -(int)damage;
-				bleedingDotStrength = -(int)damage;
-				poisonDotStrength = -(int)damage;
-				diseaseDotStrength = -(int)damage;
-			}
-			
+		
 		if (fireDotType > 0 && dotChanceState > 0 && System::random(100) < (dotChanceState-fireResist)) {
 				if (tickStrengthOfHit)
-					fireDotStrength = -(int)damage;	
+					fireDotStrength = -(int)(damage / 5);	
 				targetCreature->setOnFireState(fireDotStrength, fireDotType, 60);
 		}
 		
 		if (bleedingDotType > 0 && dotChanceState > 0 && System::random(100) < (dotChanceState-bleedResist)) {
 			if (tickStrengthOfHit)
-				bleedingDotStrength = -(int)damage;
+				bleedingDotStrength = -(int)(damage / 5);
 			targetCreature->setBleedingState(bleedingDotStrength, bleedingDotType, 60);
 		}
 		
 		if (poisonDotType > 0 && dotChanceState > 0 && System::random(100) < (dotChanceState-poisonResist)) {
 			if (tickStrengthOfHit)
-				poisonDotStrength = -(int)damage;
+			poisonDotStrength = -(int)(damage / 5);
 			targetCreature->setPoisonedState(poisonDotStrength, poisonDotType, 60);
 		}
 		
 		if (diseaseDotType > 0 && dotChanceState > 0 && System::random(100) < (dotChanceState-diseaseResist)) {
 			if (tickStrengthOfHit)
-				diseaseDotStrength = -(int)damage;
+				diseaseDotStrength = -(int)(damage / 5);
 			targetCreature->setDiseasedState(diseaseDotStrength, diseaseDotType, 60);
 		}
 		

@@ -144,9 +144,9 @@ public:
 		
 	void sliceArmor(Player* player);
 	
-	int sliceArmorEffectiveness();
+	int sliceArmorEffectiveness(int min, int max);
 	
-	int sliceArmorEncumbrance();
+	int sliceArmorEncumbrance(int min, int max);
 	
 	void repairArmor(Player* player);
 	

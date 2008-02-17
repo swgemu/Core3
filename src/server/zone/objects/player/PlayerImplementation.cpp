@@ -1882,6 +1882,12 @@ void PlayerImplementation::setItemSkillMod(int type, int value) {
 	case 29:
 		addSkillModBonus("slope_move", value, true);
 		break;
+	case 30:
+		addSkillModBonus("heavyweapon_speed", value, true);
+		break;
+	case 31:
+		addSkillModBonus("heavyweapon_accuracy", value, true);
+		break;	
 	}
 }
 
@@ -1914,7 +1920,13 @@ void PlayerImplementation::setWeaponSkillMods(Weapon* weapon) {
 		case WeaponImplementation::RIFLE:
 			accuracy = getSkillMod("rifle_accuracy");
 			break;
-					
+
+		case WeaponImplementation::SPECIALHEAVYWEAPON:
+			if (weapon->getObjectCRC() == 0xC105AB54)
+				accuracy = getSkillMod("heavy_flame_thrower_accuracy");
+			accuracy += getSkillMod("heavyweapon_accuracy");
+			break;
+			
 		/*case Weapon::ONEHANDSABER:
 			accuracy = SkillMods.get("");
 			break;
@@ -2615,4 +2627,29 @@ void PlayerImplementation::launchFirework() {
 	}
 
 	delete firework;		
+}
+
+int PlayerImplementation::getSlicingAbility() {
+	
+	string txt0 = "combat_smuggler_novice";
+	string txt1 = "combat_smuggler_slicing_01";
+	string txt2 = "combat_smuggler_slicing_02";
+	string txt3 = "combat_smuggler_slicing_03";
+	string txt4 = "combat_smuggler_slicing_04";
+	string txt5 = "combat_smuggler_master";
+
+	if (hasSkillBox(txt5))
+		return 5;
+	else if (hasSkillBox(txt4))
+		return 4;
+	else if (hasSkillBox(txt3))
+		return 3;
+	else if (hasSkillBox(txt2))
+		return 2;
+	else if (hasSkillBox(txt1))
+		return 1;
+	else if (hasSkillBox(txt0))
+		return 0;
+	
+	return -1;
 }

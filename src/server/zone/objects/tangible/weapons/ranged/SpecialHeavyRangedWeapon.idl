@@ -42,19 +42,11 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#include "LairObjectImplementation.h"
+import "../../../creature/CreatureObject";
 
-#include "../TangibleObjectImplementation.h"
+import "../RangedWeapon";
 
-LairObjectImplementation::LairObjectImplementation(uint32 objCRC, uint64 oid) : LairObjectServant(oid, LAIR) {
-	objectCRC = objCRC;
-	
-	conditionDamage = 0;
-	maxCondition = 20000;
-	
-	templateTypeName = "lair_n";
-	templateName = "generic_antpile";
-	
-	pvpStatusBitmask = 1;
+interface SpecialHeavyRangedWeapon implements RangedWeapon {
+	SpecialHeavyRangedWeapon(unsigned long objid, unsigned int tempcrc, const unicode n, const string tempn, int tp, boolean eqp = false);
+	SpecialHeavyRangedWeapon(CreatureObject creature, const string temp, const unicode n, const string tempn, int tp, boolean eqp = false);
 }
-

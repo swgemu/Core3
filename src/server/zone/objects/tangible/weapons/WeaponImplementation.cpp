@@ -792,15 +792,15 @@ void WeaponImplementation::setWeaponStats(int modifier){
 		setWoundsRatio(woundsRatio + (modifier / 15) + (luck / 10));
 	
 	if (playerRoll > 12500 && System::random(3) == 1) {
-		setSkillMod0Type(System::random(28) + 1);
+		setSkillMod0Type(System::random(30) + 1);
 		setSkillMod0Value(luck / (System::random(3) + 10));
 	}
 	if (playerRoll > 25000 && System::random(2) == 1) {
-		setSkillMod1Type(System::random(28) + 1);
+		setSkillMod1Type(System::random(30) + 1);
 		setSkillMod1Value(luck / (System::random(3) + 10));
 	}
 	if (playerRoll > 45000) {
-		setSkillMod2Type(System::random(28) + 1);
+		setSkillMod2Type(System::random(30) + 1);
 		setSkillMod2Value(luck / (System::random(3) + 10));
 	}
 	
@@ -853,11 +853,14 @@ void WeaponImplementation::setWeaponStats(int modifier){
 	if (mindAttackCost < 0) 
 		setMindAttackCost(0);
 	
-	if (maxDamage > 900)
-		setMaxDamage(850 + System::random(50));
-	
-	if (type == MELEEWEAPON && maxDamage > 500)
+	if (objectSubType == TangibleObjectImplementation::SPECIALHEAVYWEAPON && maxDamage > 1200)
+		setMaxDamage(1150 + System::random(50));
+		
+	else if (objectSubType == TangibleObjectImplementation::MELEEWEAPON && maxDamage > 500)
 		setMaxDamage(450 + System::random(50));
+
+	else if (maxDamage > 900)
+		setMaxDamage(850 + System::random(50));
 	
 	if (dot1Strength > 300)
 		setDot1Strength(250 + System::random(50));
@@ -961,20 +964,43 @@ void WeaponImplementation::sliceWeapon(Player* player){
 	bool sliceType = System::random(1);
 	int slicePercent;
 	
+	int min = 0;
+	int max = 0;
+	
 	stringstream msg;
 
 	try {
 		wlock();
 
 		if (!isSliced()) {
+			
+			int sliceSkill = player->getSlicingAbility();
+			switch (sliceSkill) {
+			case 2 :
+			case 3 :
+				min = 10;
+				max = 25;
+				break;
+			case 4 :
+				min = 10;
+				max = 30;
+				break;
+			case 5 :
+				min = 15;
+				max = 35;
+				break;
+			default :
+				break;
+			}
+			
 			removePowerup(player, false);
 			switch (sliceType) {
 			case 0:
-				slicePercent = sliceWeaponDamage();
+				slicePercent = sliceWeaponDamage(min, max);
 				msg << "Weapon damage increased by " << slicePercent << "%";
 				break;
 			case 1:
-				slicePercent = sliceWeaponSpeed();
+				slicePercent = sliceWeaponSpeed(min, max);
 				msg << "Weapon speed decreased by " << slicePercent << "%";
 				break;
 			}
@@ -992,11 +1018,11 @@ void WeaponImplementation::sliceWeapon(Player* player){
 	player->sendSystemMessage(msg.str());
 }
 
-int WeaponImplementation::sliceWeaponDamage(){
+int WeaponImplementation::sliceWeaponDamage(int min, int max){
 	if (sliced) 
 		return 0;
 		
-	int modifier = System::random(10) + 25;
+	int modifier = System::random(max - min) + min;
 	
 	setMinDamage((minDamage * modifier / 100) + minDamage);
 	setMaxDamage((maxDamage * modifier / 100) + maxDamage);
@@ -1007,11 +1033,11 @@ int WeaponImplementation::sliceWeaponDamage(){
 	return modifier;
 }
 
-int WeaponImplementation::sliceWeaponSpeed(){
+int WeaponImplementation::sliceWeaponSpeed(int min, int max){
 	if (sliced) 
 		return 0;
 		
-	int modifier = System::random(10) + 25;
+	int modifier = System::random(max - min) + min;
 	
 	setAttackSpeed(attackSpeed - (attackSpeed * modifier / 100));
 

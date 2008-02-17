@@ -162,6 +162,8 @@ public:
 	static const int ONEHANDSABER = 7;
 	static const int TWOHANDSABER = 8;
 	static const int POLEARMSABER = 9;
+	static const int HEAVYWEAPON = 10;
+	static const int SPECIALHEAVYWEAPON = 11;
 	
 	static const int NONE = 0;
 	static const int LIGHT = 1;
@@ -230,8 +232,8 @@ public:
 	// slicing methods
 	void sliceWeapon(Player* player);
 
-	int sliceWeaponDamage();
-	int sliceWeaponSpeed();
+	int sliceWeaponDamage(int min, int max);
+	int sliceWeaponSpeed(int min, int max);
 	
 	void repairWeapon(Player* player);
 

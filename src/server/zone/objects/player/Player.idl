@@ -351,6 +351,8 @@ interface Player implements CreatureObject {
 	int getCertificationListSize();
 		
 	string getCertification(int idx);
+
+	int getSlicingAbility();
 	
 	// Draft Schematic stuff
 	void sendDraftSchematics();

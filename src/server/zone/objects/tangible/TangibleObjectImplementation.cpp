@@ -211,6 +211,12 @@ void TangibleObjectImplementation::generateSkillMods(AttributeListMessage* alm, 
 	case 29:
 		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:slope_move", skillModValue);
 		break;
+	case 30:
+		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:heavyweapon_speed", skillModValue);
+		break;	
+	case 31:
+		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:heavyweapon_accuracy", skillModValue);
+		break;	
 	}
 }
 

@@ -43,7 +43,7 @@ DirectPoolAtt = {
 	attackname = "flamesingle1",
 	animation = "fire_flame_thrower_single_1_light",
 
-	requiredWeaponType = RANGED,
+	requiredWeaponType = 11,
 	
 	range = 45,
 	damageRatio = 5,
@@ -66,7 +66,7 @@ DirectPoolAtt = {
 	dotChance = 100,
 	tickStrengthOfHit = 1,
 
-	fireStrength = 0.1,
+	fireStrength = 0,
 	fireType = HEALTH,
 	
 	CbtSpamBlock = "flamesingle1_block",
@@ -84,7 +84,7 @@ DirectPoolAtt = {
 	attackname = "flamecone1",
 	animation = "fire_flame_thrower_cone_1_light",
 
-	requiredWeaponType = RANGED,
+	requiredWeaponType = 11,
 	
 	range = 45,
 	damageRatio = 5,
@@ -107,7 +107,7 @@ DirectPoolAtt = {
 	dotChance = 100,
 	tickStrengthOfHit = 1,
 
-	fireStrength = 0.1,
+	fireStrength = 0,
 	fireType = HEALTH,
 	
 	CbtSpamBlock = "flamecone1_block",
@@ -125,12 +125,12 @@ DirectPoolAtt = {
 	attackname = "flamesingle2",
 	animation = "fire_flame_thrower_single_2_medium",
 
-	requiredWeaponType = RANGED,
+	requiredWeaponType = 11,
 	
 	range = 45,
 	damageRatio = 8,
 	speedRatio = 4,
-	coneAngle = 60,
+	coneAngle = 0,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
@@ -148,7 +148,7 @@ DirectPoolAtt = {
 	dotChance = 100,
 	tickStrengthOfHit = 1,
 
-	fireStrength = 0.1,
+	fireStrength = 0,
 	fireType = HEALTH,
 	
 	CbtSpamBlock = "flamesingle2_block",
@@ -290,7 +290,7 @@ DirectPoolAtt = {
 	attackname = "flamecone2",
 	animation = "fire_flamethrower_cone_2_light",
 
-	requiredWeaponType = RANGED,
+	requiredWeaponType = 11,
 	
 	range = 45,
 	damageRatio = 6,
@@ -313,14 +313,14 @@ DirectPoolAtt = {
 	dotChance = 100,
 	tickStrengthOfHit = 1,
 
-	fireStrength = 0.1,
+	fireStrength = 0,
 	fireType = HEALTH,
 	
-	CbtSpamBlock = "flamecone1_block",
-	CbtSpamCounter = "flamecone1_counter",
-	CbtSpamEvade = "flamecone1_evade",
-	CbtSpamHit = "flamecone1_hit",
-	CbtSpamMiss = "flamecone1_miss",
+	CbtSpamBlock = "flamecone2_block",
+	CbtSpamCounter = "flamecone2_counter",
+	CbtSpamEvade = "flamecone2_evade",
+	CbtSpamHit = "flamecone2_hit",
+	CbtSpamMiss = "flamecone2_miss",
 }
 
 AddDotPoolAttackTargetSkill(DirectPoolAtt)

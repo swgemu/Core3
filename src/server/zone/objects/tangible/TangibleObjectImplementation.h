@@ -403,6 +403,10 @@ public:
 	inline bool isFirework() {
 		return objectSubType == FIREWORK;
 	}
+	
+	inline bool isLair() {
+		return objectSubType == LAIR;
+	}
 
 	inline int getConditionDamage() {
 		return conditionDamage;

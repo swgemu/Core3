@@ -813,6 +813,8 @@ public:
 		return (++suiBoxNextID << 16) + (uint16)type;
 	}
 	
+	int getSlicingAbility();
+	
 	void getPlayersNearYou();
 	
 	void sendGuildList();
