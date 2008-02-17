@@ -288,12 +288,12 @@ void BazaarManagerImplementation::addSaleItem(Player* player, uint64 objectid, u
 			<< ",'" << playername << "'," << price << "," << auctionout << ",0," 
 			<< expire << "," << bazaarid << "," << planet << ",0,'');";
 	
-		ServerDatabase::instance()->executeQuery(query2);
+		ServerDatabase::instance()->executeStatement(query2);
 		
 		stringstream query3;
 		query3 << "UPDATE `character_items` SET character_id = 0 where item_id = " << objectid << ";";
 	
-		ServerDatabase::instance()->executeQuery(query3);
+		ServerDatabase::instance()->executeStatement(query3);
 		
 	} catch(DatabaseException& e) {
 		cout << "Can't add bazaar_item " << objectid << "\n";
@@ -381,7 +381,7 @@ void BazaarManagerImplementation::checkAuctions() {
 
 				bazaarPlanets[item->getPlanet()]->removeBazaarItem(objectId);
 				removeItem(objectId);
-				item->undelpoy();
+				item->undeploy();
 				
 				stringstream del1;
 				del1 << "DELETE from `bazaar_items` WHERE objectid = " << objectId << ";";
@@ -390,8 +390,8 @@ void BazaarManagerImplementation::checkAuctions() {
 				del2 << "DELETE from `character_items` WHERE objectid = " << objectId << ";";
 				
 				try {
-					ServerDatabase::instance()->executeQuery(del1);
-					ServerDatabase::instance()->executeQuery(del2);
+					ServerDatabase::instance()->executeStatement(del1);
+					ServerDatabase::instance()->executeStatement(del2);
 					
 				} catch (DatabaseException& e) {
 					cout << "Can't delete bazaar_item " << objectId << "\n";
@@ -458,7 +458,7 @@ void BazaarManagerImplementation::checkAuctions() {
 					<< item->getOwnerId() << ", ownerName = '" << item->getOwnerName() << "' where objectid = " << item->getId() << ";";
 
 				try {
-					ServerDatabase::instance()->executeQuery(update);
+					ServerDatabase::instance()->executeStatement(update);
 				} catch (DatabaseException& e) {
 					cout << "Can't update bazaar_item " << objectId << "\n";
 					cout << update.str() << "\n";
