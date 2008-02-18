@@ -59,9 +59,12 @@ public:
 	LootManager(ZoneProcessServerImplementation* procServer);
 	
 	void lootCorpse(Player* player, Creature* creature);
+	
 	void createLoot(Creature* creature);
+	
 	void createWeaponLoot(Creature* creature, int creatureLevel);
 	void createArmorLoot(Creature* creature, int creatureLevel);
+	void createClothingLoot(Creature* creature, int creatureLevel);
 	void createJunkLoot(Creature* creature);
 	void createAttachmentLoot(Creature* creature, int creatureLevel);
 	void createPowerupLoot(Creature* creature, int creatureLevel);

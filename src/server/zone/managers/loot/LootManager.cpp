@@ -107,6 +107,7 @@ void LootManager::createLoot(Creature* creature) {
 
 	int weaponDropRate = 1400;
 	int armorDropRate = 1400;
+	//int clothingDropRate = 1400;
 	int junkDropRate = 1100;
 	int creditDropRate = 1500;
 	int attachmentDropRate = 1000;
@@ -122,6 +123,9 @@ void LootManager::createLoot(Creature* creature) {
 	for (int i = 0; i < itemcount; ++i) {
 		if (System::random(armorDropRate) + creatureLevel > 1000) 
 			createArmorLoot(creature, creatureLevel);
+
+		//if (System::random(armorDropRate) + creatureLevel > 1000) 
+		//	createClothingLoot(creature, creatureLevel);
 		
 		if (System::random(weaponDropRate) + creatureLevel > 1000)
 			createWeaponLoot(creature, creatureLevel);
@@ -281,6 +285,9 @@ void LootManager::createWeaponLoot(Creature* creature, int creatureLevel) {
 	case 15 :	// FLAMETHROWER
 		itemImpl = new SpecialHeavyRangedWeaponImplementation(creature, 
 				"object/weapon/ranged/rifle/shared_rifle_flame_thrower.iff", unicode("Flame Thrower"), "rifle_flame_thrower", false);
+		itemImpl->setMinDamage(125);
+		itemImpl->setMaxDamage(377);
+		itemImpl->setWoundsRatio(36);
 		certification = "cert_rifle_flame_thrower";
 		break;
 	case 16 :	// LAUNCHER PISTOL
@@ -624,8 +631,25 @@ void LootManager::createArmorLoot(Creature* creature, int32 creatureLevel) {
 		item->setConditionDamage(System::random(item->getMaxCondition()*3/4));
 		creature->addLootItem(item);
 	}
-	
 }
+
+void LootManager::createClothingLoot(Creature* creature, int32 creatureLevel) {
+	Wearable* item = NULL;
+	WearableImplementation* itemImpl = NULL;
+	
+	uint32 objectCRC = creature->getObjectCRC();
+
+	//TODO: insert clothing loot here
+	
+	if (itemImpl != NULL) {
+		item = (Wearable*) itemImpl->deploy();
+		
+		item->setClothingStats(creatureLevel);
+		item->setConditionDamage(System::random(item->getMaxCondition()*3/4));
+		creature->addLootItem(item);
+	}
+}
+
 
 void LootManager::createJunkLoot(Creature* creature) {
 	TangibleObject* item = NULL;
