@@ -153,36 +153,28 @@ public:
 
 	static const int MELEE = 0x10;
 	static const int RANGED = 0x20;
-	static const int SPECIALHEAVYWEAPON = 0x30;
-	static const int HEAVYWEAPON = 0x40;
-	static const int THROWNWEAPON = 0x50;
-	static const int JEDI = 0x60;
+	static const int JEDI = 0x30;
 	
 	static const int UNARMED = 0;
-	static const int ONEHANDED = 0x12;
-	static const int TWOHANDED = 0x13;
-	static const int POLEARM = 0x14;
-	
-	static const int PISTOL = 0x21;
-	static const int CARBINE = 0x22;
-	static const int RIFLE = 0x23;
-
-	static const int RIFLEBEAM = 0x31;
-	static const int RIFLEFLAMETHROWER = 0x32;
-	static const int RIFLELIGHTNING = 0x33;
-	static const int RIFLEACIDBEAM = 0x34;
-	
-	static const int HEAVYACIDBEAM = 0x41;
-	static const int HEAVYLIGHTNINGBEAM = 0x42;
-	static const int HEAVYPARTICLEBEAM = 0x43;
-	static const int HEAVYROCKETLAUNCHER = 0x44;
-	static const int HEAVYLAUNCHER = 0x45;
-	
-	static const int GRENADE = 0x51;
-
-	static const int ONEHANDSABER = 0x61;
-	static const int TWOHANDSABER = 0x62;
-	static const int POLEARMSABER = 0x63;
+	static const int ONEHANDED = 1;
+	static const int TWOHANDED = 2;
+	static const int POLEARM = 3;
+	static const int PISTOL = 4;
+	static const int CARBINE = 5;
+	static const int RIFLE = 6;
+	static const int ONEHANDSABER = 7;
+	static const int TWOHANDSABER = 8;
+	static const int POLEARMSABER = 9;
+	static const int RIFLEBEAM = 10;
+	static const int RIFLEFLAMETHROWER = 11;
+	static const int RIFLELIGHTNING = 12;
+	static const int RIFLEACIDBEAM = 13;
+	static const int HEAVYACIDBEAM = 14;
+	static const int HEAVYLIGHTNINGBEAM = 15;
+	static const int HEAVYPARTICLEBEAM = 17;
+	static const int HEAVYROCKETLAUNCHER = 18;
+	static const int HEAVYLAUNCHER = 19;
+	static const int GRENADE = 20;
 	
 	static const int NONE = 0;
 	static const int LIGHT = 1;
