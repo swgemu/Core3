@@ -63,7 +63,7 @@ public:
 	void initialize() {
 		objectSubType = TangibleObjectImplementation::SPECIALHEAVYWEAPON;
 		
-		setType(SPECIALHEAVYWEAPON);
+		setType(RIFLEFLAMETHROWER);
 		setCategory(RANGED);
 		
 		setDamageType(HEAT);
@@ -71,8 +71,8 @@ public:
 		
 		setAttackSpeed(6.1f);
 		
-		setMinDamage(38);
-		setMaxDamage(426);
+		setMinDamage(25);
+		setMaxDamage(284);
 		setWoundsRatio(36);
 		
 		setPointBlankAccuracy(10);
@@ -84,10 +84,11 @@ public:
 		setMaxRangeAccuracy(-120);
 		setMaxRange(64);
 
-		setHealthAttackCost(45);
-		setActionAttackCost(39);
-		setMindAttackCost(83);
+		setHealthAttackCost(64);
+		setActionAttackCost(25);
+		setMindAttackCost(35);
 		
+		cert = "cert_rifle_flame_thrower";
 	}
 	
 };

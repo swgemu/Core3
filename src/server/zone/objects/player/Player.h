@@ -397,6 +397,8 @@ public:
 
 	string& getCertification(int idx);
 
+	bool checkCertification(string& certification);
+
 	int getSlicingAbility();
 
 	void sendDraftSchematics();
@@ -788,6 +790,8 @@ public:
 
 	string& getCertification(int idx);
 
+	bool checkCertification(string& certification);
+
 	int getSlicingAbility();
 
 	void sendDraftSchematics();
@@ -877,6 +881,7 @@ protected:
 	string _param0_setRaceFileName__string_;
 	string _param0_setStartingLocation__string_;
 	string _param0_setFactionRank__string_;
+	string _param0_checkCertification__string_;
 	string _param0_addDraftSchematicsFromGroupName__string_;
 	string _param0_subtractDraftSchematicsFromGroupName__string_;
 	unicode _param0_setSurveyEvent__unicode_;

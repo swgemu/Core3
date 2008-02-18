@@ -105,12 +105,12 @@ void LootManager::createLoot(Creature* creature) {
 	if (creatureLevel == 0) 
 		creatureLevel = 1;
 
-	int weaponDropRate = 1500;
-	int armorDropRate = 1500;
+	int weaponDropRate = 1400;
+	int armorDropRate = 1400;
 	int junkDropRate = 1100;
 	int creditDropRate = 1500;
-	int attachmentDropRate = 1250;
-	int powerupDropRate = 1750;
+	int attachmentDropRate = 1000;
+	int powerupDropRate = 1500;
 	
 	creature->setCashCredits(0);
 
@@ -143,33 +143,38 @@ void LootManager::createLoot(Creature* creature) {
 void LootManager::createWeaponLoot(Creature* creature, int creatureLevel) {
 	Weapon* item = NULL;
 	WeaponImplementation* itemImpl = NULL;
+	string certification = "";
 	
 	uint32 objectCRC = creature->getObjectCRC();
 	
-	switch (System::random(15)) {
+	switch (System::random(18)) {
 	case 0 :	// UNARMED
 		itemImpl = new UnarmedMeleeWeaponImplementation(creature, 
 				"object/weapon/melee/special/shared_vibroknuckler.iff",	unicode("Vibroknuckler"), "vibroknuckler", false);
 		itemImpl->setDamageType(WeaponImplementation::KINETIC);
 		itemImpl->setArmorPiercing(WeaponImplementation::LIGHT);
+		certification = "cert_vibroknuckler";
 		break;
 	case 1 :	// ONEHANDED
 		itemImpl = new OneHandedMeleeWeaponImplementation(creature, 
 				"object/weapon/melee/baton/shared_baton_gaderiffi.iff", unicode("Gaderiffi"), "baton_gaderiffi", false);
 		itemImpl->setDamageType(WeaponImplementation::KINETIC);
 		itemImpl->setArmorPiercing(WeaponImplementation::NONE);
+		certification = "cert_baton_gaderiffi";
 		break;
 	case 2 :	// TWOHANDED
 		itemImpl = new TwoHandedMeleeWeaponImplementation(creature, 
 				"object/weapon/melee/2h_sword/shared_2h_sword_maul.iff", unicode("Power Hammer"), "2h_sword_battleaxe", false);
 		itemImpl->setDamageType(WeaponImplementation::BLAST);
 		itemImpl->setArmorPiercing(WeaponImplementation::MEDIUM);
+		certification = "cert_sword_2h_maul";
 		break;
 	case 3 :	// POLEARM
 		itemImpl = new PolearmMeleeWeaponImplementation(creature, 
 				"object/weapon/melee/polearm/shared_lance_vibrolance.iff", unicode("Vibrolance"), "lance_vibrolance", false);
 		itemImpl->setDamageType(WeaponImplementation::ELECTRICITY);
 		itemImpl->setArmorPiercing(WeaponImplementation::LIGHT);
+		certification = "cert_lance_vibrolance";
 		break;
 	case 4 :	// PISTOL
 		itemImpl = new PistolRangedWeaponImplementation(creature, 
@@ -188,42 +193,49 @@ void LootManager::createWeaponLoot(Creature* creature, int creatureLevel) {
 				"object/weapon/ranged/rifle/shared_rifle_t21.iff", unicode("T21 Rifle"), "rifle_t21", false);
 		itemImpl->setDamageType(WeaponImplementation::ENERGY);
 		itemImpl->setArmorPiercing(WeaponImplementation::HEAVY);
+		certification = "cert_rifle_t21";
 		break;
 	case 7 :	// ONEHANDED
 		itemImpl = new OneHandedMeleeWeaponImplementation(creature, 
 				"object/weapon/melee/baton/shared_baton_stun.iff", unicode("Stun Baton"), "baton_stun", false);
 		itemImpl->setDamageType(WeaponImplementation::STUN);
 		itemImpl->setArmorPiercing(WeaponImplementation::NONE);
+		certification = "cert_baton_stun";
 		break;
 	case 8 :	// TWOHANDED
 		itemImpl = new TwoHandedMeleeWeaponImplementation(creature, 
 				"object/weapon/melee/2h_sword/shared_2h_sword_scythe.iff", unicode("Scythe"), "2h_sword_scythe", false);
 		itemImpl->setDamageType(WeaponImplementation::KINETIC);
 		itemImpl->setArmorPiercing(WeaponImplementation::MEDIUM);
+		certification = "cert_2h_sword_scythe";
 		break;
 	case 9 :	// POLEARM
 		itemImpl = new PolearmMeleeWeaponImplementation(creature, 
 				"object/weapon/melee/polearm/shared_polearm_vibro_axe.iff", unicode("Long Vibro Axe"), "lance_vibro_axe", false);
 		itemImpl->setDamageType(WeaponImplementation::KINETIC);
 		itemImpl->setArmorPiercing(WeaponImplementation::MEDIUM);
+		certification = "cert_polearm_vibro_axe";
 		break;
 	case 10 :	// PISTOL
 		itemImpl = new PistolRangedWeaponImplementation(creature, 
 				"object/weapon/ranged/pistol/shared_pistol_dx2.iff", unicode("DX2 Pistol"), "pistol_dx2", false);
 		itemImpl->setDamageType(WeaponImplementation::ACID);
 		itemImpl->setArmorPiercing(WeaponImplementation::LIGHT);
+		certification = "cert_pistol_dx2";
 		break;
 	case 11 :	// CARBINE
 		itemImpl = new CarbineRangedWeaponImplementation(creature, 
 				"object/weapon/ranged/carbine/shared_carbine_dxr6.iff", unicode("DX6R Carbine"), "carbine_dx6r", false);
 		itemImpl->setDamageType(WeaponImplementation::ACID);
 		itemImpl->setArmorPiercing(WeaponImplementation::LIGHT);
+		certification = "cert_carbine_dxr6";
 		break;
 	case 12 :	// RIFLE
 		itemImpl = new RifleRangedWeaponImplementation(creature, 
 				"object/weapon/ranged/rifle/shared_rifle_tenloss_dxr6_disruptor_loot.iff", unicode("DX6R Rifle"), "rifle_tenloss_dxr6", false);
 		itemImpl->setDamageType(WeaponImplementation::ACID);
 		itemImpl->setArmorPiercing(WeaponImplementation::MEDIUM);
+		certification = "cert_rifle_tenloss_dxr6_disruptor";
 		break;
 	case 13 :	// POLEARM
 		if (objectCRC == 0xAA197516 || objectCRC == 0xF0663601 || objectCRC == 0x158DC349 || 
@@ -243,6 +255,7 @@ void LootManager::createWeaponLoot(Creature* creature, int creatureLevel) {
 				itemImpl->setDot0Strength(40);
 				itemImpl->setDot0Duration(1200);
 				itemImpl->setDot0Uses(8000);
+				certification = "cert_lance_controllerfp";
 		}
 		break;
 	case 14 :	// PISTOL
@@ -262,18 +275,81 @@ void LootManager::createWeaponLoot(Creature* creature, int creatureLevel) {
 			itemImpl->setIdealRange(15);
 			itemImpl->setMaxRangeAccuracy(-90);
 			itemImpl->setMaxRange(48);
-			creatureLevel += 50;
+			certification = "cert_pistol_dx2";  // need to add a cert to the db for this
 		}
 		break;
 	case 15 :	// FLAMETHROWER
 		itemImpl = new SpecialHeavyRangedWeaponImplementation(creature, 
 				"object/weapon/ranged/rifle/shared_rifle_flame_thrower.iff", unicode("Flame Thrower"), "rifle_flame_thrower", false);
+		certification = "cert_rifle_flame_thrower";
+		break;
+	case 16 :	// LAUNCHER PISTOL
+		itemImpl = new PistolRangedWeaponImplementation(creature, 
+				"object/weapon/ranged/pistol/shared_pistol_launcher.iff", unicode("Launcher Pistol"), "pistol_launcher", false);
+		itemImpl->setDamageType(WeaponImplementation::BLAST);
+		itemImpl->setArmorPiercing(WeaponImplementation::NONE);
+
+		itemImpl->setAttackSpeed(2.8);
+		itemImpl->setMinDamage(56);
+		itemImpl->setMaxDamage(217);
+		itemImpl->setWoundsRatio(21);
+		
+		itemImpl->setPointBlankAccuracy(0);
+		itemImpl->setPointBlankRange(0);
+		itemImpl->setIdealAccuracy(4);
+		itemImpl->setIdealRange(0);
+		itemImpl->setMaxRangeAccuracy(0);
+		itemImpl->setMaxRange(64);
+		
+		certification = "cert_pistol_launcher";
+
+		break;
+	case 17 :	// LASER CARBINE
+		itemImpl = new CarbineRangedWeaponImplementation(creature,
+				"object/weapon/ranged/carbine/shared_carbine_laser.iff", unicode("Laser Carbine"), "carbine_laser", false);
+		itemImpl->setDamageType(WeaponImplementation::ENERGY);
+		itemImpl->setArmorPiercing(WeaponImplementation::MEDIUM);
+		
+		itemImpl->setAttackSpeed(5.0);
+		itemImpl->setMinDamage(7);
+		itemImpl->setMaxDamage(129);
+		itemImpl->setWoundsRatio(7);
+		
+		itemImpl->setPointBlankAccuracy(-10);
+		itemImpl->setPointBlankRange(0);
+		itemImpl->setIdealAccuracy(3);
+		itemImpl->setIdealRange(50);
+		itemImpl->setMaxRangeAccuracy(-40);
+		itemImpl->setMaxRange(64);
+		
+		certification = "cert_carbine_laser";
+		break;
+	case 18 :	// JAWA ION RIFLE
+		itemImpl = new RifleRangedWeaponImplementation(creature, 
+				"object/weapon/ranged/rifle/shared_rifle_jawa_ion.iff", unicode("Jawa Ion Rifle"), "rifle_jawa_ion", false);
+		itemImpl->setDamageType(WeaponImplementation::STUN);
+		itemImpl->setArmorPiercing(WeaponImplementation::LIGHT);
+		
+		itemImpl->setAttackSpeed(6.8);
+		itemImpl->setMinDamage(53);
+		itemImpl->setMaxDamage(98);
+		itemImpl->setWoundsRatio(4);
+		
+		itemImpl->setPointBlankAccuracy(-50);
+		itemImpl->setPointBlankRange(0);
+		itemImpl->setIdealAccuracy(15);
+		itemImpl->setIdealRange(40);
+		itemImpl->setMaxRangeAccuracy(-80);
+		itemImpl->setMaxRange(64);
+
+		certification = "cert_rifle_jawa_ion";
 		break;
 	}
 	
 	if (itemImpl != NULL) {
 		item = (Weapon*) itemImpl->deploy();
 		
+		item->setCert(certification);
 		item->setWeaponStats(creatureLevel);
 		item->setConditionDamage(System::random(649));
 		creature->addLootItem(item);
@@ -281,7 +357,7 @@ void LootManager::createWeaponLoot(Creature* creature, int creatureLevel) {
 	
 }
 
-void LootManager::createArmorLoot(Creature* creature, int creatureLevel) {
+void LootManager::createArmorLoot(Creature* creature, int32 creatureLevel) {
 	Armor* item = NULL;
 	ArmorImplementation* itemImpl = NULL;
 	

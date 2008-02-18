@@ -147,20 +147,39 @@ void ScriptAttacksManager::registerGlobals() {
 	setGlobalInt("DEAD_POSTURE" ,14);
 	
 	// weapons
-	setGlobalInt("UNARMED", 0);
-	setGlobalInt("ONEHANDED", 1);
-	setGlobalInt("TWOHANDED", 2);
-	setGlobalInt("POLEARM", 3);
-	setGlobalInt("PISTOL", 4);
-	setGlobalInt("CARBINE", 5);
-	setGlobalInt("RIFLE", 6);
-	setGlobalInt("ONEHANDSABER", 7);
-	setGlobalInt("TWOHANDSABER", 8);
-	setGlobalInt("POLEARMSABER", 9);
 	
 	setGlobalInt("MELEE", 0x10);
 	setGlobalInt("RANGED", 0x20);
-	setGlobalInt("JEDI", 0x30);
+	setGlobalInt("SPECIALHEAVYWEAPON", 0x30);
+	setGlobalInt("HEAVYWEAPON", 0x40);
+	setGlobalInt("THROWNWEAPON", 0x50);
+	setGlobalInt("JEDI", 0x60);
+	
+	setGlobalInt("UNARMED", 0);
+	setGlobalInt("ONEHANDED", 0x12);
+	setGlobalInt("TWOHANDED", 0x13);
+	setGlobalInt("POLEARM", 0x14);
+	
+	setGlobalInt("PISTOL", 0x21);
+	setGlobalInt("CARBINE", 0x22);
+	setGlobalInt("RIFLE", 0x23);
+	
+	setGlobalInt("RIFLEBEAM", 0x31);
+	setGlobalInt("RIFLEFLAMETHROWER", 0x32);
+	setGlobalInt("RIFLELIGHTNING", 0x33);
+	setGlobalInt("RIFLEACIDBEAM", 0x34);
+	
+	setGlobalInt("HEAVYACIDBEAM", 0x41);
+	setGlobalInt("HEAVYLIGHTNINGBEAM", 0x42);
+	setGlobalInt("HEAVYPARTICLEBEAM", 0x43);
+	setGlobalInt("HEAVYROCKETLAUNCHER", 0x44);
+	setGlobalInt("HEAVYLAUNCHER", 0x45);
+	
+	setGlobalInt("GRENADE", 0x51);
+	
+	setGlobalInt("ONEHANDSABER", 0x61);
+	setGlobalInt("TWOHANDSABER", 0x62);
+	setGlobalInt("POLEARMSABER", 0x63);
 	
 	setGlobalInt("NONE", 0xFF);
 	

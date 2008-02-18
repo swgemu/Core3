@@ -92,8 +92,14 @@ public:
 		int bodyPart = 0;
 		
 		if (weapon != NULL) {
-			minDamage = weapon->getMinDamage();
-			maxDamage = weapon->getMaxDamage();
+			if (weapon->isCertified()) {
+				minDamage = weapon->getMinDamage();
+				maxDamage = weapon->getMaxDamage();
+			}
+			else {
+				minDamage = weapon->getMinDamage() / 5;
+				maxDamage = weapon->getMaxDamage() / 5;
+			}
 		} else {
 			maxDamage = (float)creature->getSkillMod("unarmed_damage");
 			if (maxDamage < 25)

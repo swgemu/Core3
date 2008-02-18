@@ -245,7 +245,7 @@ bool CommandQueueAction::checkWeapon() {
 		weapon = creature->getWeapon();
 			
 		if (weapon != NULL) {
-			if (requiredWeapon >= 0x10) {
+			if (requiredWeapon == 0x10 || requiredWeapon == 0x20) {
 				if (weapon->getCategory() != requiredWeapon) {
 					clearError(0);
 					if (player != NULL)

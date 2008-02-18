@@ -124,6 +124,11 @@ void PowerupImplementation::setPowerupStats(int modifier) {
 		setPowerup2Value(0);
 	}
 	
+	if (type == RANGED && subType == MUZZLE && powerup0Type == 3 && powerup1Type == 2) {
+			powerup1Type = 0;
+			powerup1Value = 0;
+	}
+	
 	if (powerup0Value > 33.34)
 		setPowerup0Value(33.34);
 	
@@ -614,7 +619,7 @@ void PowerupImplementation::generateAttributes(SceneObject* obj) {
 				alm->insertAttribute("cat_pup.pup_wpn_range_attack_mod_max", val2.str());
 				break;
 			case 3:
-				alm->insertAttribute("cat_pup.pup_wpn_range_attack_mod_max", val2.str());
+				alm->insertAttribute("cat_pup.pup_wpn_attack_cost_health", val2.str());
 				break;
 			case 4:
 				alm->insertAttribute("cat_pup.pup_wpn_damage_min", val2.str());

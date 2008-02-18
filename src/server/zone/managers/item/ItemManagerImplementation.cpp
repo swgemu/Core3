@@ -253,6 +253,8 @@ TangibleObject* ItemManagerImplementation::createPlayerObject(Player* player, Re
 void ItemManagerImplementation::loadDefaultPlayerItems(Player* player) {
 	Weapon* weapon;
 	WeaponImplementation* weaoImpl;
+	
+	string certification;
 
 
 	if (player->getRaceFileName().find("wookie") !=string::npos) {
@@ -402,18 +404,20 @@ void ItemManagerImplementation::loadDefaultPlayerItems(Player* player) {
 	weaoImpl = new OneHandedMeleeWeaponImplementation(player, "object/weapon/melee/baton/shared_baton_gaderiffi.iff", unicode("Teh Pwn"), "baton_gaderiffi", false);
 	weaoImpl->setDamageType(WeaponImplementation::KINETIC);
 	weaoImpl->setArmorPiercing(WeaponImplementation::NONE);
+	certification = "cert_baton_gaderiffi";
+	weaoImpl->setCert(certification);
 	player->addInventoryItem(weaoImpl->deploy());
 
-	//weapon = new Weapon(this, "object/weapon/melee/baton/base/shared_baton_stun.iff", 
-	//unicode("Oru's little baby"), "baton_stun", false);
-	//inventory->addObject(weapon);
-
 	weaoImpl = new UnarmedMeleeWeaponImplementation(player, "object/weapon/melee/special/shared_vibroknuckler.iff",	unicode("Sticker"), "vibroknuckler", false);
+	certification = "cert_vibroknuckler";
+	weaoImpl->setCert(certification);
 	player->addInventoryItem(weaoImpl->deploy());
 
 	weaoImpl = new RifleRangedWeaponImplementation(player, "object/weapon/ranged/rifle/shared_rifle_t21.iff", unicode("Teh Pwn"), "rifle_t21", false);
 	weaoImpl->setDamageType(WeaponImplementation::ENERGY);
 	weaoImpl->setArmorPiercing(WeaponImplementation::HEAVY);
+	certification = "cert_rifle_t21";
+	weaoImpl->setCert(certification);
 	player->addInventoryItem(weaoImpl->deploy());
 
 	weaoImpl = new PistolRangedWeaponImplementation(player, "object/weapon/ranged/pistol/shared_pistol_cdef.iff", unicode("Teh Pwn Pistol"), "pistol_cdef", false);
@@ -429,11 +433,15 @@ void ItemManagerImplementation::loadDefaultPlayerItems(Player* player) {
 	weaoImpl = new PolearmMeleeWeaponImplementation(player, "object/weapon/melee/polearm/shared_lance_vibrolance.iff", unicode("Teh Pwn Lance"), "lance_vibrolance", false);
 	weaoImpl->setDamageType(WeaponImplementation::ELECTRICITY);
 	weaoImpl->setArmorPiercing(WeaponImplementation::LIGHT);
+	certification = "cert_lance_vibrolance";
+	weaoImpl->setCert(certification);
 	player->addInventoryItem(weaoImpl->deploy());
 
 	weaoImpl = new TwoHandedMeleeWeaponImplementation(player, "object/weapon/melee/2h_sword/shared_2h_sword_maul.iff", unicode("Teh Pwn Battle Hammer"), "2h_sword_battleaxe", false);
 	weaoImpl->setDamageType(WeaponImplementation::BLAST);
 	weaoImpl->setArmorPiercing(WeaponImplementation::MEDIUM);
+	certification = "cert_sword_2h_maul";
+	weaoImpl->setCert(certification);
 	player->addInventoryItem(weaoImpl->deploy());
 
 	// Survey tools

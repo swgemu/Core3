@@ -80,7 +80,9 @@ WeaponImplementation::WeaponImplementation(CreatureObject* creature, const strin
 
 void WeaponImplementation::initialize() {
 	templateTypeName = "weapon_name";
-
+	cert = "";
+	certified = true;
+	
 	setMaxCondition(750);
 	setConditionDamage(0);
 
@@ -307,6 +309,8 @@ void WeaponImplementation::parseItemAttributes() {
 	name = "bonusWoundsRatio";
 	bonusWoundsRatio = itemAttributes->getIntAttribute(name);
 
+	name = "cert";
+	cert = itemAttributes->getStringAttribute(name);
 }
 
 void WeaponImplementation::sendTo(Player* player, bool doClose) {
@@ -337,7 +341,10 @@ void WeaponImplementation::generateAttributes(SceneObject* obj) {
 	
 	AttributeListMessage* alm = new AttributeListMessage((Weapon*) _this);
 	
-	alm->insertAttribute("weapon_cert_status", "Yes");
+	if (player->checkCertification(cert))
+		alm->insertAttribute("weapon_cert_status", "Yes");
+	else
+		alm->insertAttribute("weapon_cert_status", "No");
 	
 	stringstream cond;
 	cond << (maxCondition-conditionDamage) << "/" << maxCondition;
@@ -853,8 +860,8 @@ void WeaponImplementation::setWeaponStats(int modifier){
 	if (mindAttackCost < 0) 
 		setMindAttackCost(0);
 	
-	if (objectSubType == TangibleObjectImplementation::SPECIALHEAVYWEAPON && maxDamage > 1200)
-		setMaxDamage(1150 + System::random(50));
+	if (objectSubType == TangibleObjectImplementation::SPECIALHEAVYWEAPON && maxDamage > 1100)
+		setMaxDamage(1050 + System::random(50));
 		
 	else if (objectSubType == TangibleObjectImplementation::MELEEWEAPON && maxDamage > 500)
 		setMaxDamage(450 + System::random(50));

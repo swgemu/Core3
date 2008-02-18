@@ -194,7 +194,7 @@ int AttachmentImplementation::getSkillModValue(int index) {
 
 int AttachmentImplementation::getBestSkillMod() {
 	int index = -1;
-	int skillModValue = -25;
+	int skillModValue = -26;
 	
 	if (skillMod0Value > skillModValue) {
 		skillModValue = skillMod0Value;
@@ -239,15 +239,15 @@ void AttachmentImplementation::setSkillMods(int modifier) {
 	}
 	
 	setSkillMod0Type(System::random(30) + 1);
-	setSkillMod0Value((2 * luck / (System::random(3) + 8)) - 25);
+	setSkillMod0Value((3 * luck / (System::random(3) + 8)) - 25);
 	
 	if (System::random(4) == 1) {
 		setSkillMod1Type(System::random(30) + 1);
-		setSkillMod1Value((2 * luck / (System::random(3) + 8)) - 25);
+		setSkillMod1Value((3 * luck / (System::random(3) + 8)) - 25);
 	}
 	if (System::random(8) == 1) {
 		setSkillMod2Type(System::random(30) + 1);
-		setSkillMod2Value((2 * luck / (System::random(3) + 8)) - 25);
+		setSkillMod2Value((3 * luck / (System::random(3) + 8)) - 25);
 	}
 	if (skillMod0Value > 25)
 		setSkillMod0Value(25);

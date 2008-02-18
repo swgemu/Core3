@@ -463,7 +463,7 @@ RandPoolAtt = {
 	range = 65,
 	damageRatio = 3.0,
 	speedRatio = 2.3,
-	coneAngle = 60,
+	coneAngle = 0,
 	accuracyBonus = 0,
 		
 	knockdownChance = 20,

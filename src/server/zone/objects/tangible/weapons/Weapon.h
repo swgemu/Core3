@@ -99,6 +99,8 @@ public:
 
 	bool isRanged();
 
+	bool isCertified();
+
 	void powerupMinDamage(float powerupValue);
 
 	void powerupMaxDamage(float powerupValue);
@@ -128,6 +130,10 @@ public:
 	void setDot2Uses(int uses);
 
 	void setPowerupUses(int uses);
+
+	void setCert(string& certification);
+
+	void setCertified(bool crt);
 
 	int getType();
 
@@ -215,7 +221,11 @@ public:
 
 	bool hasPowerup();
 
+	string& getCert();
+
 protected:
+	string _return_getCert;
+
 };
 
 class WeaponImplementation;
@@ -254,6 +264,8 @@ public:
 
 	bool isRanged();
 
+	bool isCertified();
+
 	void powerupMinDamage(float powerupValue);
 
 	void powerupMaxDamage(float powerupValue);
@@ -283,6 +295,10 @@ public:
 	void setDot2Uses(int uses);
 
 	void setPowerupUses(int uses);
+
+	void setCert(string& certification);
+
+	void setCertified(bool crt);
 
 	int getType();
 
@@ -370,6 +386,10 @@ public:
 
 	bool hasPowerup();
 
+	string& getCert();
+
+protected:
+	string _param0_setCert__string_;
 };
 
 class WeaponHelper : public ORBClassHelper, public Singleton<WeaponHelper> {

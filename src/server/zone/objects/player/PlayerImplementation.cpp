@@ -1747,7 +1747,7 @@ void PlayerImplementation::changeWeapon(uint64 itemid) {
 			unequipItem(weaponObject);
 			unsetWeaponSkillMods(weaponObject);
 		}
-
+		
 		setWeapon(weapon);
 		equipItem(weapon);
 		
@@ -1760,7 +1760,7 @@ void PlayerImplementation::changeArmor(uint64 itemid, bool forced) {
 	
 	if (obj == NULL || !obj->isTangible())
 		return;
-
+	
 	Armor* armoritem = (Armor*) obj;
 	
 	if (armoritem == NULL) 
@@ -1943,6 +1943,12 @@ void PlayerImplementation::setWeaponSkillMods(Weapon* weapon) {
 	setItemSkillMod(weapon->getSkillMod1Type(), weapon->getSkillMod1Value());
 	setItemSkillMod(weapon->getSkillMod2Type(), weapon->getSkillMod2Value());
 
+	if (checkCertification(weapon->getCert())) {
+		weapon->setCertified(true);
+	} else
+		sendSystemMessage("You are not certified to use this weapon. Damage will be reduced.");
+		weapon->setCertified(false);
+	
 }
 
 void PlayerImplementation::setArmorSkillMods(Armor* armoritem) {

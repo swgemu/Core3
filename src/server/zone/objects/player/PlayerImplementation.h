@@ -459,6 +459,13 @@ public:
 		return certificationList.get(idx)->getName();
 	}
 	
+	bool checkCertification(string certification) {
+		if (certification == "")
+			return true;
+		else
+			return certificationList.contains(certification);
+	}
+	
 	//Draft Schematics
 	
 	// Draft Schematics granted from a schematicGroupName

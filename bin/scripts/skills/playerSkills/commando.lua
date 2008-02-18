@@ -43,7 +43,7 @@ DirectPoolAtt = {
 	attackname = "flamesingle1",
 	animation = "fire_flame_thrower_single_1_light",
 
-	requiredWeaponType = 11,
+	requiredWeaponType = RIFLEFLAMETHROWER,
 	
 	range = 45,
 	damageRatio = 5,
@@ -84,7 +84,7 @@ DirectPoolAtt = {
 	attackname = "flamecone1",
 	animation = "fire_flame_thrower_cone_1_light",
 
-	requiredWeaponType = 11,
+	requiredWeaponType = RIFLEFLAMETHROWER,
 	
 	range = 45,
 	damageRatio = 5,
@@ -125,7 +125,7 @@ DirectPoolAtt = {
 	attackname = "flamesingle2",
 	animation = "fire_flame_thrower_single_2_medium",
 
-	requiredWeaponType = 11,
+	requiredWeaponType = RIFLEFLAMETHROWER,
 	
 	range = 45,
 	damageRatio = 8,
@@ -290,7 +290,7 @@ DirectPoolAtt = {
 	attackname = "flamecone2",
 	animation = "fire_flamethrower_cone_2_light",
 
-	requiredWeaponType = 11,
+	requiredWeaponType = RIFLEFLAMETHROWER,
 	
 	range = 45,
 	damageRatio = 6,

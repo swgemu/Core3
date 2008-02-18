@@ -79,6 +79,8 @@ interface Weapon implements TangibleObject {
 	
 	boolean isRanged();
 
+	boolean isCertified();
+
 	// setters
 	void powerupMinDamage(float powerupValue);
 	void powerupMaxDamage(float powerupValue);
@@ -97,6 +99,8 @@ interface Weapon implements TangibleObject {
 	void setDot2Uses(int uses);
 	void setPowerupUses(int uses);
 
+	void setCert(string& certification);
+	void setCertified(boolean crt);
 	// getters
 	int getType();
 
@@ -163,5 +167,7 @@ interface Weapon implements TangibleObject {
 
 	int getPowerupUses();
 	boolean hasPowerup();
+
+	string& getCert();
 	
 }
