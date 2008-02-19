@@ -466,9 +466,10 @@ public:
 				int targetDefense = targetCreature->getSkillMod("intimidate_defense");
 				targetDefense -= (int)(targetDefense * targetCreature->calculateBFRatio());
 				
-				int rand = System::random(100);
+				int rand = System::random(10);
 
-				if ((5 > rand) || (rand > targetDefense))
+				//if ((5 > rand) || (rand > targetDefense))
+				if (5 >= rand)
 					targetCreature->setIntimidatedState();
 			}
 			

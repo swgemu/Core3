@@ -58,9 +58,9 @@ ShuttleCreatureImplementation::ShuttleCreatureImplementation(const string& Plane
 	planet = Planet;
 	city = City;
 	
-	stfName = "shuttle";
+	speciesName = "shuttle";
 	
-	speciesName = "theme_park_name";
+	stfName = "theme_park_name";
 	
 	objectCRC = 0x764DC035;
 	

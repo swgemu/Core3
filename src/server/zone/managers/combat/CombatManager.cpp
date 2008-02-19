@@ -787,8 +787,8 @@ int CombatManager::checkSecondaryDefenses(CreatureObject* creature, CreatureObje
 		if (block == 0)
 			return 0;
 
-		if (block > 125)
-			block = 125;
+		if (block > 85)
+			block = 85;
 		
 		defTotal = powf(float((block * 6.5) + (targetCreature->getCenteredBonus() * 1.5)), 4.9);
 		defTotal -= (defTotal * targetCreature->calculateBFRatio());
@@ -801,7 +801,7 @@ int CombatManager::checkSecondaryDefenses(CreatureObject* creature, CreatureObje
 		/*cout << "accTotal:[" << accTotal << "] defTotal:[" << defTotal << "]\n";
 		cout << "chance:[" << chance << "]\n";*/
 
-		if ((5 > rand) || (rand < chance)) {
+		if (rand < chance) {
 			doBlock(targetCreature, creature);
 			return 1;
 		}
@@ -811,8 +811,8 @@ int CombatManager::checkSecondaryDefenses(CreatureObject* creature, CreatureObje
 		if (dodge == 0)
 			return 0;
 		
-		if (dodge > 125)
-			dodge = 125;
+		if (dodge > 85)
+			dodge = 85;
 
 		defTotal = powf(float((dodge * 6.5) + (targetCreature->getCenteredBonus() * 1.5)), 4.9);
 		defTotal -= (defTotal * targetCreature->calculateBFRatio());
@@ -825,7 +825,7 @@ int CombatManager::checkSecondaryDefenses(CreatureObject* creature, CreatureObje
 		/*cout << "accTotal:[" << accTotal << "] defTotal:[" << defTotal << "]\n";
 		cout << "chance:[" << chance << "]\n";*/
 
-		if ((5 > rand) || (rand < chance)) {
+		if (rand < chance) {
 			doDodge(targetCreature, creature);
 			return 2;
 		}
@@ -835,8 +835,8 @@ int CombatManager::checkSecondaryDefenses(CreatureObject* creature, CreatureObje
 		if (counterAttack == 0)
 			return 0;
 
-		if (counterAttack > 125)
-			counterAttack = 125;
+		if (counterAttack > 85)
+			counterAttack = 85;
 
 		defTotal = powf(float((counterAttack * 6.5) + (targetCreature->getCenteredBonus() * 1.5)), 4.9);
 		defTotal -= (defTotal * targetCreature->calculateBFRatio());
@@ -849,7 +849,7 @@ int CombatManager::checkSecondaryDefenses(CreatureObject* creature, CreatureObje
 		/*cout << "accTotal:[" << accTotal << "] defTotal:[" << defTotal << "]\n";
 		cout << "chance:[" << chance << "]\n";*/
 
-		if ((5 > rand) || (rand < chance)) {
+		if (rand < chance) {
 			doCounterAttack(targetCreature, creature);
 			return 3;
 		}
@@ -988,8 +988,8 @@ uint32 CombatManager::getTargetDefense(CreatureObject* creature, CreatureObject*
 
 	//defense += targetCreature->getDefenseBonus();
 
-	if (defense > 200)
-		defense = 200;
+	if (defense > 125)
+		defense = 125;
 
 	return defense - (uint32)(defense * targetCreature->calculateBFRatio());
 }

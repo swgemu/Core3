@@ -715,7 +715,7 @@ void PlayerManagerImplementation::doCashTip(Player* sender, Player* receiver, in
 	}
 }
 
-void PlayerManagerImplementation::modifyOfflineBank(Player* sender, string receiverName, int creditAmount) {
+bool PlayerManagerImplementation::modifyOfflineBank(Player* sender, string receiverName, int creditAmount) {
 	//First we need to get the current bank credits.
 	String::toLower(receiverName);
 	MySqlDatabase::escapeString(receiverName);
@@ -728,14 +728,15 @@ void PlayerManagerImplementation::modifyOfflineBank(Player* sender, string recei
 		character = ServerDatabase::instance()->executeQuery(query);
 	} catch (DatabaseException& e) {
 		cout << "PlayerManagerImplementation::modifyOfflineBank: failed SQL query: " << query << "\n";
-		return;
+		return false;
 	}
 	
 	if (!character->next()) {
 		delete character;
-		stringstream msg;
+		/*stringstream msg;
 		msg << "unknown character name" << receiverName;
-		throw Exception(msg.str());
+		throw Exception(msg.str());*/
+		return false;
 	}
 
 	//Grab the current credits.
@@ -756,14 +757,16 @@ void PlayerManagerImplementation::modifyOfflineBank(Player* sender, string recei
 		ServerDatabase::instance()->executeStatement(query2);
 	} catch(DatabaseException& e) {
 		cout << "PlayerManagerImplementation::modifyOfflineBank: failed SQL UPDATE: " << query2 << "\n";
-		return;
+		return false;
 	}
 	
 	//now we need to modify the online tippers credits.
 	sender->subtractBankCredits(creditAmount);
+	
+	return true;
 }
 
-void PlayerManagerImplementation::modifyRecipientOfflineBank(string recipient, int creditAmount) {
+bool PlayerManagerImplementation::modifyRecipientOfflineBank(string recipient, int creditAmount) {
 	//First we need to get the current bank credits.
 	String::toLower(recipient);
 	MySqlDatabase::escapeString(recipient);
@@ -773,7 +776,7 @@ void PlayerManagerImplementation::modifyRecipientOfflineBank(string recipient, i
 	if (play != NULL) { 
 		// player online. handle directly
 		play->addBankCredits(creditAmount);
-		return;
+		return true;
 	}
 	
 	stringstream query;
@@ -784,14 +787,15 @@ void PlayerManagerImplementation::modifyRecipientOfflineBank(string recipient, i
 		character = ServerDatabase::instance()->executeQuery(query);
 	} catch(DatabaseException& e) {
 	 	cout << "PlayerManagerImplementation::modifyRecipientOfflineBank. Failed SQL query: " << query << "\n";
-	 	return;
+	 	return false;
 	}
 	
 	if (!character->next()) {
 		delete character;
-		stringstream msg;
+		/*stringstream msg;
 		msg << "unknown character name (recipient)" << recipient;
-		throw Exception(msg.str());
+		throw Exception(msg.str());*/
+		return false;
 	}
 
 	//Grab the current credits.
@@ -812,8 +816,10 @@ void PlayerManagerImplementation::modifyRecipientOfflineBank(string recipient, i
 		ServerDatabase::instance()->executeStatement(query2);
 	} catch(DatabaseException& e) {
 		cout << "PlayerManagerImplementation::modifyRecipientOfflineBank: failed SQL UPDATE: " << query2.str() << "\n";
-		return;
+		return false;
 	}
+	
+	return true;
 }
 
 void PlayerManagerImplementation::updatePlayerCreditsToDatabase(Player* player) {

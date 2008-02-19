@@ -381,7 +381,7 @@ void BazaarManagerImplementation::checkAuctions() {
 
 				bazaarPlanets[item->getPlanet()]->removeBazaarItem(objectId);
 				removeItem(objectId);
-				item->undeploy();
+				//item->undeploy();
 				
 				stringstream del1;
 				del1 << "DELETE from `bazaar_items` WHERE objectid = " << objectId << ";";
@@ -570,8 +570,13 @@ void BazaarManagerImplementation::buyItem(Player* player, uint64 objectid, int p
 							seller->unlock();
 						error("Unreported1 exception caught in BazaarManagerImplementation::buyItem(Player* player, uint64 objectid, int price1, int price2)");
 					}
-				} else
-					pman->modifyRecipientOfflineBank(item->getOwnerName(), price1);
+				} else {
+					if (!pman->modifyRecipientOfflineBank(item->getOwnerName(), price1)) {
+						player->unlock();
+						unlock();
+						return;
+					}
+				}
 	
 
 			} catch (DatabaseException& e) {
@@ -619,8 +624,14 @@ void BazaarManagerImplementation::buyItem(Player* player, uint64 objectid, int p
 						
 						error("Unreported2 exception caught in BazaarManagerImplementation::buyItem(Player* player, uint64 objectid, int price1, int price2)");
 					}
-				} else
-					pman->modifyRecipientOfflineBank(item->getBidderName(), item->getPrice());
+				} else {
+					if(!pman->modifyRecipientOfflineBank(item->getBidderName(), item->getPrice())) {
+						player->unlock();
+						unlock();
+						
+						return;					
+					}
+				}
 				
 
 			// mail prior bidder with outcome
@@ -811,7 +822,7 @@ void BazaarManagerImplementation::retrieveItem(Player* player, uint64 objectid, 
 		player->sendMessage(msg);
 		player->unlock();
 		removeItem(objectid);
-		item->undeploy();
+		//item->undeploy();
 	
 		unlock();
 	} catch (...) {

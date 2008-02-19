@@ -178,11 +178,12 @@ void ZoneServerImplementation::startManagers() {
 	//ResourceManagerImplementation* resImpl = new ResourceManagerImplementation(_this, processor);
 	//resourceManager = (ResourceManager*) resImpl->deploy("ResourceManager");
 	
+	ChatManagerImplementation* chatImpl = new ChatManagerImplementation(_this, 10000);
+	chatManager = (ChatManager*) chatImpl->deploy("ChatManager");
+	
 	BazaarManagerImplementation* bazImpl = new BazaarManagerImplementation(_this, processor);
 	bazaarManager = (BazaarManager*) bazImpl->deploy("BazaarManager");
 
-	ChatManagerImplementation* chatImpl = new ChatManagerImplementation(_this, 10000);
-	chatManager = (ChatManager*) chatImpl->deploy("ChatManager");
 }
 
 void ZoneServerImplementation::run() {

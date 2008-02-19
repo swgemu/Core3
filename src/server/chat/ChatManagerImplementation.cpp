@@ -434,7 +434,8 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 					tokenizer.getStringToken(name);
 				} catch (...) {
 					SceneObject* target = player->getTarget();
-					if (target->isPlayer())
+					
+					if (target != NULL && target->isPlayer())
 						name = ((Player*) target)->getFirstName();
 				}
 			

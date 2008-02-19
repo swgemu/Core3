@@ -1116,6 +1116,11 @@ void ObjectControllerMessage::parseServerDestroyObject(Player* player, Message* 
 	uint64 objid = pack->parseLong(); //get the id
 
 	ItemManager* itemManager = player->getZone()->getZoneServer()->getItemManager();
+	
+	if (player->getTradeSize() != 0) {
+		player->sendSystemMessage("You cant destroy objects while trading..");
+		return;
+	}
 
 	unicode unkPramString;
 	pack->parseUnicode(unkPramString); //?
@@ -1124,12 +1129,17 @@ void ObjectControllerMessage::parseServerDestroyObject(Player* player, Message* 
 	
 	TangibleObject* item = (TangibleObject*) player->getInventoryItem(objid);
 	if (item != NULL) {
-		if (item->isEquipped())
-			player->changeCloth(objid);
+		if (item->isEquipped()) {
+			//player->changeCloth(objid);
+			player->sendSystemMessage("You must unequip the item before destroying it.");
+			return;
+		}
 		
 		itemManager->deletePlayerItem(player, item, true);
 		
 		player->removeInventoryItem(objid);
+		if (player->getWeapon() == item)
+			player->setWeapon(NULL);
 		
 		BaseMessage* msg = new SceneObjectDestroyMessage(item);
 		player->getClient()->sendMessage(msg);

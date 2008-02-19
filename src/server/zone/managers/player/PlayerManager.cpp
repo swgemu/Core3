@@ -259,7 +259,7 @@ void PlayerManager::doCashTip(Player* sender, Player* receiver, int tipAmount, b
 		((PlayerManagerImplementation*) _impl)->doCashTip(sender, receiver, tipAmount, updateTipTo);
 }
 
-void PlayerManager::modifyOfflineBank(Player* sender, string& receiverName, int creditAmount) {
+bool PlayerManager::modifyOfflineBank(Player* sender, string& receiverName, int creditAmount) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
@@ -269,12 +269,12 @@ void PlayerManager::modifyOfflineBank(Player* sender, string& receiverName, int 
 		invocation.addAsciiParameter(receiverName);
 		invocation.addSignedIntParameter(creditAmount);
 
-		invocation.executeWithVoidReturn();
+		return invocation.executeWithBooleanReturn();
 	} else
-		((PlayerManagerImplementation*) _impl)->modifyOfflineBank(sender, receiverName, creditAmount);
+		return ((PlayerManagerImplementation*) _impl)->modifyOfflineBank(sender, receiverName, creditAmount);
 }
 
-void PlayerManager::modifyRecipientOfflineBank(string& recipient, int creditAmount) {
+bool PlayerManager::modifyRecipientOfflineBank(string& recipient, int creditAmount) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
@@ -283,9 +283,9 @@ void PlayerManager::modifyRecipientOfflineBank(string& recipient, int creditAmou
 		invocation.addAsciiParameter(recipient);
 		invocation.addSignedIntParameter(creditAmount);
 
-		invocation.executeWithVoidReturn();
+		return invocation.executeWithBooleanReturn();
 	} else
-		((PlayerManagerImplementation*) _impl)->modifyRecipientOfflineBank(recipient, creditAmount);
+		return ((PlayerManagerImplementation*) _impl)->modifyRecipientOfflineBank(recipient, creditAmount);
 }
 
 void PlayerManager::updatePlayerCreditsFromDatabase(Player* player) {
@@ -415,10 +415,10 @@ Packet* PlayerManagerAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* i
 		doCashTip((Player*) inv->getObjectParameter(), (Player*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter());
 		break;
 	case 19:
-		modifyOfflineBank((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_modifyOfflineBank__Player_string_int_), inv->getSignedIntParameter());
+		resp->insertBoolean(modifyOfflineBank((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_modifyOfflineBank__Player_string_int_), inv->getSignedIntParameter()));
 		break;
 	case 20:
-		modifyRecipientOfflineBank(inv->getAsciiParameter(_param0_modifyRecipientOfflineBank__string_int_), inv->getSignedIntParameter());
+		resp->insertBoolean(modifyRecipientOfflineBank(inv->getAsciiParameter(_param0_modifyRecipientOfflineBank__string_int_), inv->getSignedIntParameter()));
 		break;
 	case 21:
 		updatePlayerCreditsFromDatabase((Player*) inv->getObjectParameter());
@@ -497,11 +497,11 @@ void PlayerManagerAdapter::doCashTip(Player* sender, Player* receiver, int tipAm
 	return ((PlayerManagerImplementation*) impl)->doCashTip(sender, receiver, tipAmount, updateTipTo);
 }
 
-void PlayerManagerAdapter::modifyOfflineBank(Player* sender, string& receiverName, int creditAmount) {
+bool PlayerManagerAdapter::modifyOfflineBank(Player* sender, string& receiverName, int creditAmount) {
 	return ((PlayerManagerImplementation*) impl)->modifyOfflineBank(sender, receiverName, creditAmount);
 }
 
-void PlayerManagerAdapter::modifyRecipientOfflineBank(string& recipient, int creditAmount) {
+bool PlayerManagerAdapter::modifyRecipientOfflineBank(string& recipient, int creditAmount) {
 	return ((PlayerManagerImplementation*) impl)->modifyRecipientOfflineBank(recipient, creditAmount);
 }
 

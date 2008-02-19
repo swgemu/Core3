@@ -95,9 +95,9 @@ public:
 
 	void doCashTip(Player* sender, Player* receiver, int tipAmount, bool updateTipTo);
 
-	void modifyOfflineBank(Player* sender, string& receiverName, int creditAmount);
+	bool modifyOfflineBank(Player* sender, string& receiverName, int creditAmount);
 
-	void modifyRecipientOfflineBank(string& recipient, int creditAmount);
+	bool modifyRecipientOfflineBank(string& recipient, int creditAmount);
 
 	void updatePlayerCreditsFromDatabase(Player* player);
 
@@ -148,9 +148,9 @@ public:
 
 	void doCashTip(Player* sender, Player* receiver, int tipAmount, bool updateTipTo);
 
-	void modifyOfflineBank(Player* sender, string& receiverName, int creditAmount);
+	bool modifyOfflineBank(Player* sender, string& receiverName, int creditAmount);
 
-	void modifyRecipientOfflineBank(string& recipient, int creditAmount);
+	bool modifyRecipientOfflineBank(string& recipient, int creditAmount);
 
 	void updatePlayerCreditsFromDatabase(Player* player);
 
