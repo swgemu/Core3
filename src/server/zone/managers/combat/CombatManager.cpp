@@ -708,7 +708,7 @@ void CombatManager::calculateDamageReduction(CreatureObject* creature, CreatureO
 
 	//Other factors
 	if (targetCreature->isPlayer())
-		damage = damage / 3;
+		damage = damage / 4;
 
 	if (targetCreature->isKnockedDown())
 		damage *= 1.33f;

@@ -99,6 +99,8 @@ public:
 
 	bool isClothing();
 
+	bool isInstrument();
+
 	bool isAttachment();
 
 	bool isResource();
@@ -193,6 +195,8 @@ public:
 	bool isArmor();
 
 	bool isClothing();
+
+	bool isInstrument();
 
 	bool isAttachment();
 

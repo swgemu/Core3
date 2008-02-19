@@ -100,7 +100,7 @@ protected:
 	int maxRange;
 	int maxRangeAccuracy;
 	
-	int woundsRatio;
+	float woundsRatio;
 	
 	int armorPiercing;
 	
@@ -145,7 +145,7 @@ protected:
 	int bonusMaxRange;
 	int bonusMaxRangeAccuracy;
 	
-	int bonusWoundsRatio;
+	float bonusWoundsRatio;
 
 	bool sliced;
 	
@@ -380,10 +380,10 @@ public:
 		itemAttributes->setIntAttribute(name, idealAcc);
 	}
 	
-	inline void setWoundsRatio(int woundsRat) {
+	inline void setWoundsRatio(float woundsRat) {
 		woundsRatio = woundsRat;
 		string name = "woundsRatio";
-		itemAttributes->setIntAttribute(name, woundsRat);
+		itemAttributes->setFloatAttribute(name, woundsRat);
 	}
 	
 	inline void setArmorPiercing(int armorPierce) {
@@ -620,10 +620,10 @@ public:
 		itemAttributes->setIntAttribute(name, idealAcc);
 	}
 	
-	inline void setBonusWoundsRatio(int woundsRat) {
+	inline void setBonusWoundsRatio(float woundsRat) {
 		bonusWoundsRatio = woundsRat;
 		string name = "bonusWoundsRatio";
-		itemAttributes->setIntAttribute(name, woundsRat);
+		itemAttributes->setFloatAttribute(name, woundsRat);
 	}
 
 	inline void setCert(string certification) {
@@ -718,7 +718,7 @@ public:
 		return idealAccuracy + bonusIdealAccuracy;
 	}
 	
-	inline int getWoundsRatio() {
+	inline float getWoundsRatio() {
 		return woundsRatio + bonusWoundsRatio;
 	}
 	

@@ -165,7 +165,7 @@ public:
 
 	int getIdealAccuracy();
 
-	int getWoundsRatio();
+	float getWoundsRatio();
 
 	int getArmorPiercing();
 
@@ -330,7 +330,7 @@ public:
 
 	int getIdealAccuracy();
 
-	int getWoundsRatio();
+	float getWoundsRatio();
 
 	int getArmorPiercing();
 

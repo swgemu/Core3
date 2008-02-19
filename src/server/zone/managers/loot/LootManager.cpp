@@ -105,13 +105,13 @@ void LootManager::createLoot(Creature* creature) {
 	if (creatureLevel == 0) 
 		creatureLevel = 1;
 
-	int weaponDropRate = 1400;
-	int armorDropRate = 1400;
-	//int clothingDropRate = 1400;
+	int weaponDropRate = 1250;
+	int armorDropRate = 1250;
+	int clothingDropRate = 1250;
 	int junkDropRate = 1100;
 	int creditDropRate = 1500;
 	int attachmentDropRate = 1000;
-	int powerupDropRate = 1500;
+	int powerupDropRate = 1250;
 	
 	creature->setCashCredits(0);
 
@@ -124,8 +124,8 @@ void LootManager::createLoot(Creature* creature) {
 		if (System::random(armorDropRate) + creatureLevel > 1000) 
 			createArmorLoot(creature, creatureLevel);
 
-		//if (System::random(armorDropRate) + creatureLevel > 1000) 
-		//	createClothingLoot(creature, creatureLevel);
+		if (System::random(armorDropRate) + creatureLevel > 1000) 
+			createClothingLoot(creature, creatureLevel);
 		
 		if (System::random(weaponDropRate) + creatureLevel > 1000)
 			createWeaponLoot(creature, creatureLevel);
@@ -151,7 +151,7 @@ void LootManager::createWeaponLoot(Creature* creature, int creatureLevel) {
 	
 	uint32 objectCRC = creature->getObjectCRC();
 	
-	switch (System::random(18)) {
+	switch (System::random(19)) {
 	case 0 :	// UNARMED
 		itemImpl = new UnarmedMeleeWeaponImplementation(creature, 
 				"object/weapon/melee/special/shared_vibroknuckler.iff",	unicode("Vibroknuckler"), "vibroknuckler", false);
@@ -351,8 +351,33 @@ void LootManager::createWeaponLoot(Creature* creature, int creatureLevel) {
 
 		certification = "cert_rifle_jawa_ion";
 		break;
+	case 19 :	// VIBROBLADE
+		itemImpl = new OneHandedMeleeWeaponImplementation(creature,
+				"object/weapon/melee/knife/shared_knife_vibroblade.iff", unicode("A Vibroblade"), "knife_vibroblade", false);
+			itemImpl->setArmorPiercing(WeaponImplementation::LIGHT);
+			itemImpl->setDamageType(WeaponImplementation::KINETIC);
+			
+			itemImpl->setAttackSpeed(4.2);
+			itemImpl->setMinDamage(10);
+			itemImpl->setMaxDamage(59);
+			itemImpl->setWoundsRatio(8.0);
+
+			itemImpl->setPointBlankAccuracy(3);
+			itemImpl->setPointBlankRange(0);
+
+			itemImpl->setIdealAccuracy(3);
+			itemImpl->setIdealRange(3);
+
+			itemImpl->setMaxRangeAccuracy(3);
+			itemImpl->setMaxRange(4);
+
+			itemImpl->setHealthAttackCost(13);
+			itemImpl->setActionAttackCost(46);
+			itemImpl->setMindAttackCost(13);
+
+			certification = "cert_knife_vibroblade";
+			break;
 	}
-	
 	if (itemImpl != NULL) {
 		item = (Weapon*) itemImpl->deploy();
 		
@@ -361,7 +386,6 @@ void LootManager::createWeaponLoot(Creature* creature, int creatureLevel) {
 		item->setConditionDamage(System::random(649));
 		creature->addLootItem(item);
 	}
-	
 }
 
 void LootManager::createArmorLoot(Creature* creature, int32 creatureLevel) {
@@ -638,13 +662,37 @@ void LootManager::createClothingLoot(Creature* creature, int32 creatureLevel) {
 	WearableImplementation* itemImpl = NULL;
 	
 	uint32 objectCRC = creature->getObjectCRC();
-
-	//TODO: insert clothing loot here
+	
+	switch (System::random(5)) {
+	case 0 :
+		itemImpl = new WearableImplementation(creature, 0x29031E7D,
+				unicode("Tusken Boots"), "boots_tusken_raider", false);
+		break;
+	case 1 :
+		itemImpl = new WearableImplementation(creature, 0x67A25943, 
+				unicode("Tusken Gloves"), "gloves_tusken_raider", false);
+		break;
+	case 2 :
+		itemImpl = new WearableImplementation(creature, 0xF7B87D4B, 
+				unicode("Tusken Helmet"), "helmet_tusken_raider", false);
+		break;
+	case 3 :
+		itemImpl = new WearableImplementation(creature, 0x50EF8B3E, 
+				unicode("Tusken Robe"), "robe_tusken_raider", false);
+		break;
+	case 4 :
+		itemImpl = new WearableImplementation(creature, 0xFC978255, 
+				unicode("Chef Hat"), "hat_chef", false);
+		break;
+	case 5 :
+		itemImpl = new WearableImplementation(creature, 0x6CE36E4C, 
+				unicode("Aakuan Shirt"), "aakuan_shirt", false);
+		break;
+	}
 	
 	if (itemImpl != NULL) {
 		item = (Wearable*) itemImpl->deploy();
 		
-		item->setClothingStats(creatureLevel);
 		item->setConditionDamage(System::random(item->getMaxCondition()*3/4));
 		creature->addLootItem(item);
 	}

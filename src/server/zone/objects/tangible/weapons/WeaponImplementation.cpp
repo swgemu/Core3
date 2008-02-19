@@ -225,7 +225,7 @@ void WeaponImplementation::parseItemAttributes() {
 	maxRangeAccuracy = itemAttributes->getIntAttribute(name);
 	
 	name = "woundsRatio";
-	woundsRatio = itemAttributes->getIntAttribute(name);
+	woundsRatio = itemAttributes->getFloatAttribute(name);
 	
 	name = "armorPiercing";
 	armorPiercing = itemAttributes->getIntAttribute(name);
@@ -307,7 +307,7 @@ void WeaponImplementation::parseItemAttributes() {
 	bonusMaxRangeAccuracy = itemAttributes->getIntAttribute(name);
 	
 	name = "bonusWoundsRatio";
-	bonusWoundsRatio = itemAttributes->getIntAttribute(name);
+	bonusWoundsRatio = itemAttributes->getFloatAttribute(name);
 
 	name = "cert";
 	cert = itemAttributes->getStringAttribute(name);
@@ -438,7 +438,10 @@ void WeaponImplementation::generateAttributes(SceneObject* obj) {
 	alm->insertAttribute("damage.wpn_damage_max", maxDmg);
 	
 	stringstream woundsratio;
-	woundsratio << getWoundsRatio() << "%";
+	
+	float wnd = round(10 * getWoundsRatio()) / 10.0f;
+	
+	woundsratio << wnd << "%";
 	
 	alm->insertAttribute("damage.wpn_wound_chance", woundsratio);
 	
@@ -764,7 +767,7 @@ void WeaponImplementation::setWeaponStats(int modifier){
 		stringstream itemText;
 		itemText << "\\#ffff00" << name.c_str() << " (Legendary)";
 		name = unicode(itemText.str());
-	} else if (playerRoll > 55000) {
+	} else if (playerRoll > 65000) {
 		modifier = modifier + 50;
 		luck = luck + 100;
 
@@ -780,23 +783,23 @@ void WeaponImplementation::setWeaponStats(int modifier){
 		name = unicode(itemText.str());
 	}
 	
-	if (luck * System::random(100) > 1700) {
-		setMinDamage(minDamage + (minDamage * luck / 157.93f));
-		setMaxDamage(maxDamage + (maxDamage * luck / 159.11f));
+	if (luck * System::random(100) > 1750) {
+		setMinDamage(minDamage + (minDamage * luck / 167.93f));
+		setMaxDamage(maxDamage + (maxDamage * luck / 169.11f));
 	}
 	
-	if (luck * System::random(100) > 1700) {	
-		setAttackSpeed(attackSpeed - (attackSpeed * luck / 357.69f));
+	if (luck * System::random(100) > 1750) {	
+		setAttackSpeed(attackSpeed - (attackSpeed * luck / 377.69f));
 	}
 	
-	if (luck * System::random(100) > 1700) {
+	if (luck * System::random(100) > 1750) {
 		setHealthAttackCost(healthAttackCost - (healthAttackCost * luck / 359));
 		setActionAttackCost(actionAttackCost - (actionAttackCost * luck / 359));
 		setMindAttackCost(mindAttackCost - (mindAttackCost * luck / 359));
 	}
 
-	if (luck * System::random(100) > 1700)
-		setWoundsRatio(woundsRatio + (modifier / 15) + (luck / 10));
+	if (luck * System::random(100) > 1750)
+		setWoundsRatio(woundsRatio + (woundsRatio * luck / 173));
 	
 	if (playerRoll > 12500 && System::random(3) == 1) {
 		setSkillMod0Type(System::random(30) + 1);
@@ -961,7 +964,10 @@ void WeaponImplementation::generatePowerup(AttributeListMessage* alm) {
 		}
 		if (bonusWoundsRatio != 0) {
 			stringstream txt;
-			txt << "+" << bonusWoundsRatio << "%";
+			
+			float wnd = round(10 * bonusWoundsRatio) / 10.0f;
+			txt << "+" << wnd << "%";
+			
 			alm->insertAttribute("cat_pup.pup_wpn_wound_chance", txt.str());
 		}
 	}
@@ -1081,7 +1087,7 @@ void WeaponImplementation::powerupMindAttackCost(float powerupValue) {
 }
 
 void WeaponImplementation::powerupWoundsRatio(float powerupValue) {
-	setBonusWoundsRatio(int(woundsRatio * powerupValue / 100.0f));
+	setBonusWoundsRatio(woundsRatio * powerupValue / 100.0f);
 }
 
 void WeaponImplementation::powerupAttackSpeed(float powerupValue) {

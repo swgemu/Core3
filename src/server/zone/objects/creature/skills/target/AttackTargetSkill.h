@@ -183,7 +183,7 @@ public:
 		if (target->isPlayer() && reduction != 0)
 			target->sendCombatSpam(target,(TangibleObject*) armor, -reduction, "armor_damaged", false);
 		
-		int woundsRatio = 5;
+		float woundsRatio = 5;
 		
 		if (weapon != NULL) {
 			woundsRatio = weapon->getWoundsRatio();
@@ -194,7 +194,7 @@ public:
 					weapon->removePowerup((Player*)attacker, true);
 		}
 		
-		if (woundsRatio > System::random(100)) {
+		if (woundsRatio + (woundsRatio * target->calculateBFRatio()) > System::random(100)) {
 			target->changeHealthWoundsBar(1, true);
 			target->changeShockWounds(1);
 			if (target->isPlayer()) {
@@ -260,7 +260,7 @@ public:
 		if (target->isPlayer() && reduction != 0)
 			target->sendCombatSpam(target,(TangibleObject*) armor, -reduction, "armor_damaged", false);
 		
-		int woundsRatio = 5;
+		float woundsRatio = 5;
 		
 		if (weapon != NULL) {
 			woundsRatio = weapon->getWoundsRatio();
@@ -272,7 +272,7 @@ public:
 		}
 
 		
-		if (woundsRatio > System::random(100)) {
+		if (woundsRatio + (woundsRatio * target->calculateBFRatio()) > System::random(100)) {
 			target->changeActionWoundsBar(1, true);
 			target->changeShockWounds(1);
 			if (target->isPlayer()) {
@@ -331,7 +331,7 @@ public:
 		if (target->isPlayer() && reduction != 0)
 			target->sendCombatSpam(target,(TangibleObject*) armor, -reduction, "armor_damaged", false);
 		
-		int woundsRatio = 5;
+		float woundsRatio = 5;
 		
 		if (weapon != NULL) {
 			woundsRatio = weapon->getWoundsRatio();
@@ -342,7 +342,7 @@ public:
 					weapon->removePowerup((Player*)attacker, true);
 		}
 		
-		if (woundsRatio > System::random(100)) {
+		if (woundsRatio + (woundsRatio * target->calculateBFRatio()) > System::random(100)) {
 			target->changeMindWoundsBar(1, true);
 			target->changeShockWounds(1);
 			if (target->isPlayer()) {

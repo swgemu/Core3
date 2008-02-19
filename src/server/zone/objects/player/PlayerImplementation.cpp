@@ -1708,7 +1708,7 @@ void PlayerImplementation::changeCloth(uint64 itemid) {
 		if (cloth->isEquipped())
 			changeWeapon(itemid);
 		return;
-	}	
+	}
 	if (cloth->isArmor()) {
 		if (cloth->isEquipped())
 			changeArmor(itemid, false);
@@ -1728,30 +1728,40 @@ void PlayerImplementation::changeWeapon(uint64 itemid) {
 	if (obj == NULL || !obj->isTangible())
 		return;
 
-	Weapon* weapon = (Weapon*) obj;
+	if (((TangibleObject*)obj)->isWeapon()) {
 	
-	if (weapon == NULL) 
-		return;
-	
-	if (centered)
-		removeCenterOfBeing();
-	
-	if (weapon->isEquipped()) {
-		unequipItem(weapon);
-		unsetWeaponSkillMods(weapon);
-		setWeapon(NULL);
+		Weapon* weapon = (Weapon*) obj;
 		
-		accuracy = getSkillMod("unarmed_accuracy");
+		if (weapon == NULL) 
+			return;
+		
+		if (centered)
+			removeCenterOfBeing();
+		
+		if (weapon->isEquipped()) {
+			unequipItem(weapon);
+			unsetWeaponSkillMods(weapon);
+			setWeapon(NULL);
+			
+			accuracy = getSkillMod("unarmed_accuracy");
+		} else {
+			if (weaponObject != NULL) {
+				unequipItem(weaponObject);
+				unsetWeaponSkillMods(weaponObject);
+			}
+			
+			setWeapon(weapon);
+			equipItem(weapon);
+			
+			setWeaponSkillMods(weapon);		
+		}	
 	} else {
-		if (weaponObject != NULL) {
-			unequipItem(weaponObject);
-			unsetWeaponSkillMods(weaponObject);
-		}
+		TangibleObject* item = (TangibleObject*) obj;
 		
-		setWeapon(weapon);
-		equipItem(weapon);
-		
-		setWeaponSkillMods(weapon);		
+		if (item->isEquipped())
+			unequipItem(item);
+		else
+			equipItem(item);
 	}
 }
 
@@ -1945,10 +1955,10 @@ void PlayerImplementation::setWeaponSkillMods(Weapon* weapon) {
 
 	if (checkCertification(weapon->getCert())) {
 		weapon->setCertified(true);
-	} else
+	} else {
 		sendSystemMessage("You are not certified to use this weapon. Damage will be reduced.");
 		weapon->setCertified(false);
-	
+	}
 }
 
 void PlayerImplementation::setArmorSkillMods(Armor* armoritem) {

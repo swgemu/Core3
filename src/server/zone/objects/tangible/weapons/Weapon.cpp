@@ -668,14 +668,14 @@ int Weapon::getIdealAccuracy() {
 		return ((WeaponImplementation*) _impl)->getIdealAccuracy();
 }
 
-int Weapon::getWoundsRatio() {
+float Weapon::getWoundsRatio() {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
 		ORBMethodInvocation invocation(this, 53);
 
-		return invocation.executeWithSignedIntReturn();
+		return invocation.executeWithFloatReturn();
 	} else
 		return ((WeaponImplementation*) _impl)->getWoundsRatio();
 }
@@ -1170,7 +1170,7 @@ Packet* WeaponAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* inv) {
 		resp->insertSignedInt(getIdealAccuracy());
 		break;
 	case 53:
-		resp->insertSignedInt(getWoundsRatio());
+		resp->insertFloat(getWoundsRatio());
 		break;
 	case 54:
 		resp->insertSignedInt(getArmorPiercing());
@@ -1451,7 +1451,7 @@ int WeaponAdapter::getIdealAccuracy() {
 	return ((WeaponImplementation*) impl)->getIdealAccuracy();
 }
 
-int WeaponAdapter::getWoundsRatio() {
+float WeaponAdapter::getWoundsRatio() {
 	return ((WeaponImplementation*) impl)->getWoundsRatio();
 }
 

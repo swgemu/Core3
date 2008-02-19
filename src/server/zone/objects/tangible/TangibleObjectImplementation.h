@@ -367,7 +367,7 @@ public:
 	}
 	
 	inline bool isWeapon() {
-		return (objectSubType & WEAPON || objectSubType & LIGHTSABER);
+		return (objectSubType & WEAPON || objectSubType & LIGHTSABER && objectSubType != INSTRUMENT);
 	}
 	
 	inline bool isArmor() {
@@ -392,6 +392,10 @@ public:
 	
 	inline bool isTicket() {
 		return objectSubType == TRAVELTICKET;
+	}
+	
+	inline bool isInstrument() {
+		return objectSubType == INSTRUMENT;
 	}
 	
 	inline bool isTicketCollector() {
