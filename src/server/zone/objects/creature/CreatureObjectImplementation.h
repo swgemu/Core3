@@ -1127,6 +1127,10 @@ public:
 	inline void setStun(float stu) {
 		stun = stu;
 	}
+	
+	inline void setBlast(float bla) {
+		blast = bla;
+	}
 
 	inline void setHeat(float hea) {
 		heat = hea;
@@ -1373,35 +1377,39 @@ public:
 	}
 	
 	inline float getKinetic() {
-		return kinetic;
+		return kinetic - (kinetic * calculateBFRatio());
 	}
 
 	inline float getEnergy() {
-		return energy;
+		return energy - (energy  * calculateBFRatio());
 	}
 
 	inline float getElectricity() {
-		return electricity;
+		return electricity - (electricity  * calculateBFRatio());
 	}
 
 	inline float getStun() {
-		return stun;
+		return stun - (stun * calculateBFRatio());
+	}
+	
+	inline float getBlast() {
+		return blast - (blast * calculateBFRatio());
 	}
 
 	inline float getHeat() {
-		return heat;
+		return heat - (heat * calculateBFRatio());
 	}
 
 	inline float getCold() {
-		return cold;
+		return cold - (cold * calculateBFRatio());
 	}
 	
 	inline float getAcid() {
-		return acid;
+		return acid - (acid * calculateBFRatio());
 	}
 	
 	inline float getLightSaber() {
-		return lightSaber;
+		return lightSaber - (lightSaber * calculateBFRatio());
 	}
 	
 	float getArmorResist(int resistType);

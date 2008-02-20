@@ -1926,10 +1926,18 @@ void PlayerImplementation::setWeaponSkillMods(Weapon* weapon) {
 		case WeaponImplementation::RIFLE:
 			accuracy = getSkillMod("rifle_accuracy");
 			break;
+			
+		case WeaponImplementation::HEAVYWEAPON:
+			accuracy = getSkillMod("heavyweapon_accuracy");
+			break;
 
 		case WeaponImplementation::SPECIALHEAVYWEAPON:
-			if (weapon->getObjectCRC() == 0xC105AB54)
+			if (weapon->getType() == WeaponImplementation::RIFLEFLAMETHROWER)
 				accuracy = getSkillMod("heavy_flame_thrower_accuracy");
+			
+			else if (weapon->getType() == WeaponImplementation::RIFLELIGHTNING)
+				accuracy = getSkillMod("heavy_rifle_lightning_accuracy");
+			
 			accuracy += getSkillMod("heavyweapon_accuracy");
 			break;
 			

@@ -137,6 +137,8 @@ which carries forward this exception.
 #include "objects/tangible/weapons/ranged/CarbineRangedWeaponImplementation.h"
 #include "objects/tangible/weapons/ranged/SpecialHeavyRangedWeapon.h"
 #include "objects/tangible/weapons/ranged/SpecialHeavyRangedWeaponImplementation.h"
+#include "objects/tangible/weapons/ranged/HeavyRangedWeapon.h"
+#include "objects/tangible/weapons/ranged/HeavyRangedWeaponImplementation.h"
 #include "objects/tangible/weapons/jedi/OneHandedJediWeapon.h"
 #include "objects/tangible/weapons/jedi/OneHandedJediWeaponImplementation.h"
 #include "objects/tangible/weapons/jedi/TwoHandedJediWeapon.h"

@@ -105,8 +105,8 @@ void LootManager::createLoot(Creature* creature) {
 	if (creatureLevel == 0) 
 		creatureLevel = 1;
 
-	int weaponDropRate = 1250;
-	int armorDropRate = 1250;
+	int weaponDropRate = 1400;
+	int armorDropRate = 1400;
 	int clothingDropRate = 1250;
 	int junkDropRate = 1100;
 	int creditDropRate = 1500;
@@ -151,7 +151,7 @@ void LootManager::createWeaponLoot(Creature* creature, int creatureLevel) {
 	
 	uint32 objectCRC = creature->getObjectCRC();
 	
-	switch (System::random(19)) {
+	switch (System::random(21)) {
 	case 0 :	// UNARMED
 		itemImpl = new UnarmedMeleeWeaponImplementation(creature, 
 				"object/weapon/melee/special/shared_vibroknuckler.iff",	unicode("Vibroknuckler"), "vibroknuckler", false);
@@ -211,7 +211,7 @@ void LootManager::createWeaponLoot(Creature* creature, int creatureLevel) {
 				"object/weapon/melee/2h_sword/shared_2h_sword_scythe.iff", unicode("Scythe"), "2h_sword_scythe", false);
 		itemImpl->setDamageType(WeaponImplementation::KINETIC);
 		itemImpl->setArmorPiercing(WeaponImplementation::MEDIUM);
-		certification = "cert_2h_sword_scythe";
+		certification = "cert_sword_2h_scythe";
 		break;
 	case 9 :	// POLEARM
 		itemImpl = new PolearmMeleeWeaponImplementation(creature, 
@@ -239,7 +239,7 @@ void LootManager::createWeaponLoot(Creature* creature, int creatureLevel) {
 				"object/weapon/ranged/rifle/shared_rifle_tenloss_dxr6_disruptor_loot.iff", unicode("DX6R Rifle"), "rifle_tenloss_dxr6", false);
 		itemImpl->setDamageType(WeaponImplementation::ACID);
 		itemImpl->setArmorPiercing(WeaponImplementation::MEDIUM);
-		certification = "cert_rifle_tenloss_dxr6_disruptor";
+		certification = "cert_rifle_t21";  // no cert we need to do it by skill box
 		break;
 	case 13 :	// POLEARM
 		if (objectCRC == 0xAA197516 || objectCRC == 0xF0663601 || objectCRC == 0x158DC349 || 
@@ -354,29 +354,101 @@ void LootManager::createWeaponLoot(Creature* creature, int creatureLevel) {
 	case 19 :	// VIBROBLADE
 		itemImpl = new OneHandedMeleeWeaponImplementation(creature,
 				"object/weapon/melee/knife/shared_knife_vibroblade.iff", unicode("A Vibroblade"), "knife_vibroblade", false);
+		itemImpl->setArmorPiercing(WeaponImplementation::LIGHT);
+		itemImpl->setDamageType(WeaponImplementation::KINETIC);
+		
+		itemImpl->setAttackSpeed(4.2);
+		itemImpl->setMinDamage(10);
+		itemImpl->setMaxDamage(59);
+		itemImpl->setWoundsRatio(8.0);
+
+		itemImpl->setPointBlankAccuracy(3);
+		itemImpl->setPointBlankRange(0);
+
+		itemImpl->setIdealAccuracy(3);
+		itemImpl->setIdealRange(3);
+
+		itemImpl->setMaxRangeAccuracy(3);
+		itemImpl->setMaxRange(4);
+
+		itemImpl->setHealthAttackCost(13);
+		itemImpl->setActionAttackCost(46);
+		itemImpl->setMindAttackCost(13);
+
+		certification = "cert_knife_vibroblade";
+		break;
+	case 20 :	// DE-10 PISTOL
+		if (creatureLevel > 150) {
+			itemImpl = new PistolRangedWeaponImplementation(creature, 
+					"object/weapon/ranged/pistol/shared_pistol_de_10.iff", unicode("DE-10 Pistol"), "pistol_de_10", false);
+			itemImpl->setDamageType(WeaponImplementation::ENERGY);
 			itemImpl->setArmorPiercing(WeaponImplementation::LIGHT);
-			itemImpl->setDamageType(WeaponImplementation::KINETIC);
+			itemImpl->setAttackSpeed(5.6);
+			itemImpl->setMinDamage(128);
+			itemImpl->setMaxDamage(320);
+			itemImpl->setWoundsRatio(38.7);
 			
-			itemImpl->setAttackSpeed(4.2);
-			itemImpl->setMinDamage(10);
-			itemImpl->setMaxDamage(59);
-			itemImpl->setWoundsRatio(8.0);
-
-			itemImpl->setPointBlankAccuracy(3);
+			itemImpl->setPointBlankAccuracy(-2);
 			itemImpl->setPointBlankRange(0);
-
-			itemImpl->setIdealAccuracy(3);
-			itemImpl->setIdealRange(3);
-
-			itemImpl->setMaxRangeAccuracy(3);
-			itemImpl->setMaxRange(4);
-
-			itemImpl->setHealthAttackCost(13);
-			itemImpl->setActionAttackCost(46);
-			itemImpl->setMindAttackCost(13);
-
-			certification = "cert_knife_vibroblade";
-			break;
+			itemImpl->setIdealAccuracy(46);
+			itemImpl->setIdealRange(20);
+			itemImpl->setMaxRangeAccuracy(-80);
+			itemImpl->setMaxRange(64);
+			certification = "cert_pistol_dx2";  // need to add a cert to the db for this
+		}
+		break;
+	case 21 :	// LIGHT LIGHTNING CANNON
+		itemImpl = new SpecialHeavyRangedWeaponImplementation(creature,
+				"object/weapon/ranged/rifle/shared_rifle_lightning.iff", unicode("Light Lightning Cannon"), "rifle_lightning", false);
+		itemImpl->setType(WeaponImplementation::RIFLELIGHTNING);
+		itemImpl->setDamageType(WeaponImplementation::ELECTRICITY);
+		itemImpl->setArmorPiercing(WeaponImplementation::LIGHT);
+		
+		itemImpl->setAttackSpeed(5.6);
+		itemImpl->setMinDamage(127.2);
+		itemImpl->setMaxDamage(257.3);
+		itemImpl->setWoundsRatio(17.2);
+		
+		itemImpl->setPointBlankAccuracy(-30);
+		itemImpl->setPointBlankRange(0);
+		itemImpl->setIdealAccuracy(20);
+		itemImpl->setIdealRange(48);
+		itemImpl->setMaxRangeAccuracy(30);
+		itemImpl->setMaxRange(64);
+		
+		itemImpl->setHealthAttackCost(63);
+		itemImpl->setActionAttackCost(66);
+		itemImpl->setMindAttackCost(63);
+		
+		certification = "cert_rifle_lightning";
+		break;
+	case 22 :	// ROCKET LAUNCHER
+		itemImpl = new HeavyRangedWeaponImplementation(creature,
+				"object/weapon/ranged/heavy/shared_heavy_rocket_launcher.iff", unicode("Rocket Launcher"), "heavy_rocket_launcher", false);
+		itemImpl->setType(WeaponImplementation::HEAVYROCKETLAUNCHER);
+		itemImpl->setDamageType(WeaponImplementation::BLAST);
+		itemImpl->setArmorPiercing(WeaponImplementation::HEAVY);
+		
+		itemImpl->setAttackSpeed(7.0);
+		itemImpl->setMinDamage(617.2);
+		itemImpl->setMaxDamage(987.3);
+		itemImpl->setWoundsRatio(37);
+		
+		itemImpl->setPointBlankAccuracy(-100);
+		itemImpl->setPointBlankRange(0);
+		itemImpl->setIdealAccuracy(20);
+		itemImpl->setIdealRange(48);
+		itemImpl->setMaxRangeAccuracy(30);
+		itemImpl->setMaxRange(64);
+		
+		itemImpl->setHealthAttackCost(113);
+		itemImpl->setActionAttackCost(86);
+		itemImpl->setMindAttackCost(69);
+		
+		itemImpl->setUsesRemaining(creatureLevel / (System::random(5) + 5));
+		
+		certification = "cert_heavy_rocket_launcher";
+		break;
 	}
 	if (itemImpl != NULL) {
 		item = (Weapon*) itemImpl->deploy();

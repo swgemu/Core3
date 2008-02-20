@@ -161,6 +161,9 @@ TangibleObject* ItemManagerImplementation::createPlayerObject(Player* player, Re
 		case TangibleObjectImplementation::SPECIALHEAVYWEAPON:
 			item = new SpecialHeavyRangedWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
 			break;
+		case TangibleObjectImplementation::HEAVYWEAPON:
+			item = new HeavyRangedWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
+			break;
 		}
 		
 	} else if (objecttype & TangibleObjectImplementation::CLOTHING) {

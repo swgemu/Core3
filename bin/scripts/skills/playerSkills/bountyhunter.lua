@@ -260,13 +260,13 @@ AddDotPoolAttackTargetSkill(DotPoolAtt)
 
 RandPoolAtt = { 
 	attackname = "firelightningsingle1",
-	animation = "fire_lightning_rifle_single_1_light",
+	animation = "fire_1_special_single_medium_face",
 
-	requiredWeaponType = RANGED,
+	requiredWeaponType = RIFLELIGHTNING,
 	
 	range = 65,
-	damageRatio = 1.25,
-	speedRatio = 1.25,
+	damageRatio = 3.0,
+	speedRatio = 2.0,
 	areaRange = 0,
 	accuracyBonus = 0,
 		
@@ -291,13 +291,13 @@ AddRandomPoolAttackTargetSkill(RandPoolAtt)
 
 RandPoolAtt = { 
 	attackname = "firelightningcone1",
-	animation = "test_lightning_passive_actors",
+	animation = "fire_area_medium",
 
-	requiredWeaponType = RANGED,
+	requiredWeaponType = RIFLELIGHTNING,
 	
 	range = 65,
-	damageRatio = 1.25,
-	speedRatio = 1.25,
+	damageRatio = 3.0,
+	speedRatio = 2.0,
 	coneAngle = 60,
 	accuracyBonus = 0,
 		
@@ -322,13 +322,13 @@ AddRandomPoolAttackTargetSkill(RandPoolAtt)
 
 RandPoolAtt = { 
 	attackname = "firelightningsingle2",
-	animation = "fire_lightning_rifle_single_2_light",
+	animation = "fire_1_special_single_medium_face",
 
-	requiredWeaponType = RANGED,
+	requiredWeaponType = RIFLELIGHTNING,
 	
 	range = 65,
-	damageRatio = 2.25,
-	speedRatio = 1.55,
+	damageRatio = 5.0,
+	speedRatio = 2.0,
 	areaRange = 0,
 	accuracyBonus = 0,
 		
@@ -384,12 +384,12 @@ AddRandomPoolAttackTargetSkill(RandPoolAtt)
 
 RandPoolAtt = { 
 	attackname = "firelightningcone2",
-	animation = "test_lightning_passive_actors",
+	animation = "fire_area_medium",
 
-	requiredWeaponType = RANGED,
+	requiredWeaponType = RIFLELIGHTNING,
 	
 	range = 65,
-	damageRatio = 2.25,
+	damageRatio = 4.0,
 	speedRatio = 2.0,
 	coneAngle = 60,
 	accuracyBonus = 0,

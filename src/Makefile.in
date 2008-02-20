@@ -103,7 +103,7 @@ am__objects_1 = Zone.$(OBJEXT) ZoneClient.$(OBJEXT) \
 	JediWeapon.$(OBJEXT) RangedWeapon.$(OBJEXT) \
 	MeleeWeapon.$(OBJEXT) CarbineRangedWeapon.$(OBJEXT) \
 	RifleRangedWeapon.$(OBJEXT) PistolRangedWeapon.$(OBJEXT) \
-	SpecialHeavyRangedWeapon.$(OBJEXT) \
+	SpecialHeavyRangedWeapon.$(OBJEXT) HeavyRangedWeapon.$(OBJEXT) \
 	OneHandedMeleeWeapon.$(OBJEXT) TwoHandedMeleeWeapon.$(OBJEXT) \
 	UnarmedMeleeWeapon.$(OBJEXT) PolearmMeleeWeapon.$(OBJEXT) \
 	OneHandedJediWeapon.$(OBJEXT) TwoHandedJediWeapon.$(OBJEXT) \
@@ -346,6 +346,7 @@ core3_IDLS = server/zone/Zone.cpp \
 		server/zone/objects/tangible/weapons/ranged/RifleRangedWeapon.cpp \
 		server/zone/objects/tangible/weapons/ranged/PistolRangedWeapon.cpp \
 		server/zone/objects/tangible/weapons/ranged/SpecialHeavyRangedWeapon.cpp \
+		server/zone/objects/tangible/weapons/ranged/HeavyRangedWeapon.cpp \
 		server/zone/objects/tangible/weapons/melee/OneHandedMeleeWeapon.cpp \
 		server/zone/objects/tangible/weapons/melee/TwoHandedMeleeWeapon.cpp \
 		server/zone/objects/tangible/weapons/melee/UnarmedMeleeWeapon.cpp \
@@ -592,6 +593,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/GuildMap.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/GuildTerminal.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/HairObject.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/HeavyRangedWeapon.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Holocron.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Instrument.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/IntangibleObject.Po@am__quote@
@@ -1193,6 +1195,20 @@ SpecialHeavyRangedWeapon.obj: server/zone/objects/tangible/weapons/ranged/Specia
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/weapons/ranged/SpecialHeavyRangedWeapon.cpp' object='SpecialHeavyRangedWeapon.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o SpecialHeavyRangedWeapon.obj `if test -f 'server/zone/objects/tangible/weapons/ranged/SpecialHeavyRangedWeapon.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/weapons/ranged/SpecialHeavyRangedWeapon.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/weapons/ranged/SpecialHeavyRangedWeapon.cpp'; fi`
+
+HeavyRangedWeapon.o: server/zone/objects/tangible/weapons/ranged/HeavyRangedWeapon.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT HeavyRangedWeapon.o -MD -MP -MF $(DEPDIR)/HeavyRangedWeapon.Tpo -c -o HeavyRangedWeapon.o `test -f 'server/zone/objects/tangible/weapons/ranged/HeavyRangedWeapon.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/weapons/ranged/HeavyRangedWeapon.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/HeavyRangedWeapon.Tpo $(DEPDIR)/HeavyRangedWeapon.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/weapons/ranged/HeavyRangedWeapon.cpp' object='HeavyRangedWeapon.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o HeavyRangedWeapon.o `test -f 'server/zone/objects/tangible/weapons/ranged/HeavyRangedWeapon.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/weapons/ranged/HeavyRangedWeapon.cpp
+
+HeavyRangedWeapon.obj: server/zone/objects/tangible/weapons/ranged/HeavyRangedWeapon.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT HeavyRangedWeapon.obj -MD -MP -MF $(DEPDIR)/HeavyRangedWeapon.Tpo -c -o HeavyRangedWeapon.obj `if test -f 'server/zone/objects/tangible/weapons/ranged/HeavyRangedWeapon.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/weapons/ranged/HeavyRangedWeapon.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/weapons/ranged/HeavyRangedWeapon.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/HeavyRangedWeapon.Tpo $(DEPDIR)/HeavyRangedWeapon.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/weapons/ranged/HeavyRangedWeapon.cpp' object='HeavyRangedWeapon.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o HeavyRangedWeapon.obj `if test -f 'server/zone/objects/tangible/weapons/ranged/HeavyRangedWeapon.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/weapons/ranged/HeavyRangedWeapon.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/weapons/ranged/HeavyRangedWeapon.cpp'; fi`
 
 OneHandedMeleeWeapon.o: server/zone/objects/tangible/weapons/melee/OneHandedMeleeWeapon.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT OneHandedMeleeWeapon.o -MD -MP -MF $(DEPDIR)/OneHandedMeleeWeapon.Tpo -c -o OneHandedMeleeWeapon.o `test -f 'server/zone/objects/tangible/weapons/melee/OneHandedMeleeWeapon.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/weapons/melee/OneHandedMeleeWeapon.cpp

@@ -72,6 +72,8 @@ protected:
 	string cert;
 	bool certified;
 	
+	int usesRemaining;
+	
 	int skillMod0Type;
 	int skillMod0Value;
 
@@ -243,8 +245,8 @@ public:
 	// slicing methods
 	void sliceWeapon(Player* player);
 
-	int sliceWeaponDamage(int min, int max);
-	int sliceWeaponSpeed(int min, int max);
+	void sliceWeaponDamage(int modifier);
+	void sliceWeaponSpeed(int modifier);
 	
 	void repairWeapon(Player* player);
 
@@ -284,6 +286,15 @@ public:
 		if (powerupUses > 0) { 
 			string name = "powerupUses";
 			itemAttributes->setIntAttribute(name, --powerupUses);
+			return true;
+		} else
+			return false;
+	}
+	
+	inline bool decreaseUsesRemaining() {
+		if (usesRemaining > 0) { 
+			string name = "usesRemaining";
+			itemAttributes->setIntAttribute(name, --usesRemaining);
 			return true;
 		} else
 			return false;
@@ -342,6 +353,12 @@ public:
 		category = cat;
 		string name = "category";
 		itemAttributes->setIntAttribute(name, cat);
+	}
+	
+	inline void setUsesRemaining(int charges) {
+		usesRemaining = charges;
+		string name = "usesRemaining";
+		itemAttributes->setIntAttribute(name, charges);
 	}
 	
 	inline void setPointBlankRange(int pointBlankRnge) {
@@ -639,6 +656,10 @@ public:
 	// getters
 	inline int getDamageType() {
 		return damageType;
+	}
+	
+	inline int getUsesRemaining() {
+		return usesRemaining;
 	}
 	
 	inline float getMinDamage() {

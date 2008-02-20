@@ -91,6 +91,8 @@ public:
 
 	bool decreasePowerupUses();
 
+	bool decreaseUsesRemaining();
+
 	bool isSliced();
 
 	bool isJedi();
@@ -131,6 +133,8 @@ public:
 
 	void setPowerupUses(int uses);
 
+	void setUsesRemaining(int charges);
+
 	void setCert(string& certification);
 
 	void setCertified(bool crt);
@@ -140,6 +144,8 @@ public:
 	int getCategory();
 
 	int getDamageType();
+
+	int getUsesRemaining();
 
 	float getMinDamage();
 
@@ -256,6 +262,8 @@ public:
 
 	bool decreasePowerupUses();
 
+	bool decreaseUsesRemaining();
+
 	bool isSliced();
 
 	bool isJedi();
@@ -296,6 +304,8 @@ public:
 
 	void setPowerupUses(int uses);
 
+	void setUsesRemaining(int charges);
+
 	void setCert(string& certification);
 
 	void setCertified(bool crt);
@@ -305,6 +315,8 @@ public:
 	int getCategory();
 
 	int getDamageType();
+
+	int getUsesRemaining();
 
 	float getMinDamage();
 

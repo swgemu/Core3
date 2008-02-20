@@ -173,48 +173,48 @@ void CreatureImplementation::generateAttributes(SceneObject* obj) {
 		}
 		
 		if (kinetic > 0 && kinetic < 100) {
-				stringstream txt;
-				txt << round(kinetic) << "%";
-				alm->insertAttribute("cat_armor_effectiveness.armor_eff_kinetic", txt.str());
+			stringstream txt;
+			txt << round(getKinetic()) << "%";
+			alm->insertAttribute("cat_armor_effectiveness.armor_eff_kinetic", txt.str());
 		}
 		if (energy > 0 && energy < 100) {
 			stringstream txt;
-			txt << round(energy) << "%";
+			txt << round(getEnergy()) << "%";
 			alm->insertAttribute("cat_armor_effectiveness.armor_eff_energy", txt.str());
 		}
 		if (electricity > 0 && electricity < 100) {
 			stringstream txt;
-			txt << round(electricity) << "%";
+			txt << round(getElectricity()) << "%";
 			alm->insertAttribute("cat_armor_effectiveness.armor_eff_elemental_electrical", txt.str());
 		}
 		if (stun > 0 && stun < 100) {
 			stringstream txt;
-			txt << round(stun) << "%";
+			txt << round(getStun()) << "%";
 			alm->insertAttribute("cat_armor_effectiveness.armor_eff_stun", txt.str());
 		}
 		if (blast > 0 && blast < 100) {
 			stringstream txt;
-			txt << round(blast) << "%";
+			txt << round(getBlast()) << "%";
 			alm->insertAttribute("cat_armor_effectiveness.armor_eff_blast", txt.str());
 		}
 		if (heat > 0 && heat < 100) {
 			stringstream txt;
-			txt << round(heat) << "%";
+			txt << round(getHeat()) << "%";
 			alm->insertAttribute("cat_armor_effectiveness.armor_eff_elemental_heat", txt.str());
 		}
 		if (cold > 0 && cold < 100) {
 			stringstream txt;
-			txt << round(cold) << "%";
+			txt << round(getCold()) << "%";
 			alm->insertAttribute("cat_armor_effectiveness.armor_eff_elemental_cold", txt.str());
 		}
 		if (acid > 0 && acid < 100) {
 			stringstream txt;
-			txt << round(acid) << "%";
+			txt << round(getAcid()) << "%";
 			alm->insertAttribute("cat_armor_effectiveness.armor_eff_elemental_acid", txt.str());
 		}
 		if (lightSaber > 0 && lightSaber < 100) {
 			stringstream txt;
-			txt << round(lightSaber) << "%";
+			txt << round(getLightSaber()) << "%";
 			alm->insertAttribute("cat_armor_effectiveness.armor_eff_restraint", txt.str());
 		}
 		
@@ -251,7 +251,7 @@ void CreatureImplementation::generateAttributes(SceneObject* obj) {
 
 void CreatureImplementation::reload() {
 	creatureManager->respawnCreature(_this);
-	
+		
 	resetState();
 
 	insertToZone(zone);
@@ -288,7 +288,13 @@ void CreatureImplementation::loadItems() {
 				"object/weapon/ranged/rifle/shared_rifle_t21.iff", unicode("Teh Pwn"), "rifle_t21", true);
 
 		setImperial();
-	} else if (objectCRC == 0x8C70914) {
+	} else if (objectCRC == 0xFECDC4DE || objectCRC == 0x7EDC1419) {
+		weaponImpl = new RifleRangedWeaponImplementation(_this,
+				"object/weapon/ranged/vehicle/shared_vehicle_atst_ranged.iff", unicode("Imperial Cannon"), "vehicle_atst_ranged");
+		
+		setImperial();
+	}
+	else if (objectCRC == 0x8C70914) {
 		weaponImpl = new OneHandedJediWeaponImplementation(_this, 
 				"object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s4_gen4.iff", 
 				unicode("Darth Saber"), "sword_lightsaber_one_handed_s4_gen4", true);
@@ -301,8 +307,8 @@ void CreatureImplementation::loadItems() {
 		switch (System::random(1)) {
 		case 0 :
 			weaponImpl = new OneHandedMeleeWeaponImplementation(_this, "object/weapon/melee/baton/shared_baton_gaderiffi.iff", unicode("a Gaderiffi"), "baton_gaderiffi", true);
-			weaponImpl->setMinDamage(75 + level);
-			weaponImpl->setMaxDamage(100 + level);
+			weaponImpl->setMinDamage(175 + level);
+			weaponImpl->setMaxDamage(200 + level);
 			weaponImpl->setAttackSpeed(1.5);
 			weaponImpl->setDamageType(WeaponImplementation::KINETIC);
 			weaponImpl->setArmorPiercing(WeaponImplementation::NONE);
@@ -310,8 +316,8 @@ void CreatureImplementation::loadItems() {
 		case 1 :
 			weaponImpl = new OneHandedMeleeWeaponImplementation(_this, 
 					"object/weapon/melee/baton/shared_baton_stun.iff", unicode("a Stun Baton"), "baton_stun", true);
-			weaponImpl->setMinDamage(75 + level);
-			weaponImpl->setMaxDamage(100 + level);
+			weaponImpl->setMinDamage(175 + level);
+			weaponImpl->setMaxDamage(250 + level);
 			weaponImpl->setAttackSpeed(1.5);
 			weaponImpl->setDamageType(WeaponImplementation::STUN);
 			weaponImpl->setArmorPiercing(WeaponImplementation::NONE);
@@ -325,8 +331,8 @@ void CreatureImplementation::loadItems() {
 		case 0 :
 			weaponImpl = new PolearmMeleeWeaponImplementation(_this, 
 					"object/weapon/melee/polearm/shared_lance_vibrolance.iff", unicode("a Vibrolance"), "lance_vibrolance", true);
-			weaponImpl->setMinDamage(150 + level);
-			weaponImpl->setMaxDamage(300 + level);
+			weaponImpl->setMinDamage(250 + level);
+			weaponImpl->setMaxDamage(450 + level);
 			weaponImpl->setAttackSpeed(1.5);
 			weaponImpl->setDamageType(WeaponImplementation::ELECTRICITY);
 			weaponImpl->setArmorPiercing(WeaponImplementation::LIGHT);
@@ -334,8 +340,8 @@ void CreatureImplementation::loadItems() {
 		case 1 :
 			weaponImpl = new PolearmMeleeWeaponImplementation(_this, 
 					"object/weapon/melee/polearm/shared_polearm_vibro_axe.iff", unicode("a Long Vibro Axe"), "lance_vibro_axe", true);
-			weaponImpl->setMinDamage(150 + level);
-			weaponImpl->setMaxDamage(300 + level);
+			weaponImpl->setMinDamage(250 + level);
+			weaponImpl->setMaxDamage(450 + level);
 			weaponImpl->setAttackSpeed(1.5);
 			weaponImpl->setDamageType(WeaponImplementation::KINETIC);
 			weaponImpl->setArmorPiercing(WeaponImplementation::MEDIUM);
@@ -344,8 +350,8 @@ void CreatureImplementation::loadItems() {
 	} else if (objectCRC == 0xFB872285) { // lord nyax
 		weaponImpl = new CarbineRangedWeaponImplementation(_this, 
 				"object/weapon/ranged/carbine/shared_carbine_laser.iff", unicode("a Laser Carbine"), "carbine_laser", true);
-		weaponImpl->setMinDamage(250);
-		weaponImpl->setMaxDamage(450);
+		weaponImpl->setMinDamage(350);
+		weaponImpl->setMaxDamage(550);
 		weaponImpl->setAttackSpeed(1.5);
 		weaponImpl->setDamageType(WeaponImplementation::ENERGY);
 		weaponImpl->setArmorPiercing(WeaponImplementation::MEDIUM);
@@ -836,8 +842,6 @@ bool CreatureImplementation::attack(CreatureObject* target) {
 	if (target->isIncapacitated() || target->isDead() || !isInRange(target, 64)) {
 		deagro();
 
-		doIncapAnimation();
-
 		return false;
 	}
 
@@ -895,6 +899,9 @@ void CreatureImplementation::deagro() {
 		stringstream msg;
 		msg << "deaggroed (0x" << hex << aggroedCreature->getObjectID() << dec << ")";
 		info(msg);
+		
+		if (aggroedCreature->isDead() || aggroedCreature->isIncapacitated())
+			doIncapAnimation();
 	
 		aggroedCreature = NULL;
 	}

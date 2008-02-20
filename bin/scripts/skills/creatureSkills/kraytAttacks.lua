@@ -47,9 +47,9 @@ kraytAttack1 = {
 
 	range = 15,
 
-	damageRatio = 110,
+	damageRatio = 180,
 
-	speedRatio = 3,
+	speedRatio = 2,
 
 	areaRange = 15,
 	accuracyBonus = 0,
@@ -81,9 +81,9 @@ kraytAttack2 = {
 
 	range = 15,
 
-	damageRatio = 120,
+	damageRatio = 220,
 
-	speedRatio = 3,
+	speedRatio = 2,
 
 	areaRange = 15,
 	accuracyBonus = 0,
@@ -115,9 +115,9 @@ kraytAttack3 = {
 
 	range = 15,
 
-	damageRatio = 130,
+	damageRatio = 260,
 
-	speedRatio = 3,
+	speedRatio = 2,
 
 	areaRange = 15,
 	accuracyBonus = 0,
@@ -149,9 +149,9 @@ kraytAttack4 = {
 
 	range = 15,
 
-	damageRatio = 150,
+	damageRatio = 300,
 
-	speedRatio = 3,
+	speedRatio = 2,
 
 	areaRange = 15,
 	accuracyBonus = 0,
@@ -183,9 +183,9 @@ kraytAttack5 = {
 
 	range = 15,
 
-	damageRatio = 160,
+	damageRatio = 340,
 
-	speedRatio = 3,
+	speedRatio = 2,
 
 	areaRange = 15,
 	accuracyBonus = 0,

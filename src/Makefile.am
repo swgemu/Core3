@@ -88,6 +88,7 @@ core3_IDLS =	server/zone/Zone.cpp \
 		server/zone/objects/tangible/weapons/ranged/RifleRangedWeapon.cpp \
 		server/zone/objects/tangible/weapons/ranged/PistolRangedWeapon.cpp \
 		server/zone/objects/tangible/weapons/ranged/SpecialHeavyRangedWeapon.cpp \
+		server/zone/objects/tangible/weapons/ranged/HeavyRangedWeapon.cpp \
 		server/zone/objects/tangible/weapons/melee/OneHandedMeleeWeapon.cpp \
 		server/zone/objects/tangible/weapons/melee/TwoHandedMeleeWeapon.cpp \
 		server/zone/objects/tangible/weapons/melee/UnarmedMeleeWeapon.cpp \

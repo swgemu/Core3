@@ -599,7 +599,7 @@ void ArmorImplementation::setArmorStats(int modifier) {
 	
 	if (playerRoll > 20000 && System::random(3) == 1) {
 		setStun(stun + System::random(9) + 1);
-		setStunIsSpecial(true);
+		setStunIsSpecial(System::random(1));
 	}
 	
 	if (System::random(1))

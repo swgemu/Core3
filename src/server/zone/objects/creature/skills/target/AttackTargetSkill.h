@@ -151,7 +151,7 @@ public:
 		int reduction = 0;
 		
 		if (target->isPlayer())
-			reduction = doArmorResists(armor, weapon, damage);
+			reduction = damage - doArmorResists(armor, weapon, damage);
 		else if (weapon != NULL)
 			reduction = int(target->getArmorResist(weapon->getDamageType()) * damage / 100);
 		else
@@ -185,18 +185,13 @@ public:
 		
 		float woundsRatio = 5;
 		
-		if (weapon != NULL) {
+		if (weapon != NULL)
 			woundsRatio = weapon->getWoundsRatio();
-			
-			if (weapon->decreasePowerupUses())
-					weapon->setUpdated(true);
-				else if (weapon->hasPowerup())
-					weapon->removePowerup((Player*)attacker, true);
-		}
 		
 		if (woundsRatio + (woundsRatio * target->calculateBFRatio()) > System::random(100)) {
 			target->changeHealthWoundsBar(1, true);
 			target->changeShockWounds(1);
+			
 			if (target->isPlayer()) {
 				target->sendCombatSpam(attacker, NULL, 1, "wounded", false);
 				target->sendCombatSpam(attacker, NULL, 1, "shock_wound", false);
@@ -211,8 +206,6 @@ public:
 				weapon->setUpdated(true);
 			}
 		}
-		
-		doDotWeaponAttack(attacker, target, 0);
 		
 		return reduction;
 	}
@@ -233,7 +226,7 @@ public:
 		int reduction = 0;
 		
 		if (target->isPlayer())
-			reduction = doArmorResists(armor, weapon, damage);
+			reduction = damage - doArmorResists(armor, weapon, damage);
 		else if (weapon != NULL)
 			reduction = int(target->getArmorResist(weapon->getDamageType()) * damage / 100);
 		else
@@ -262,19 +255,13 @@ public:
 		
 		float woundsRatio = 5;
 		
-		if (weapon != NULL) {
+		if (weapon != NULL)
 			woundsRatio = weapon->getWoundsRatio();
-			
-			if (weapon->decreasePowerupUses())
-					weapon->setUpdated(true);
-			else if (weapon->hasPowerup())
-					weapon->removePowerup((Player*)attacker, true);
-		}
-
 		
 		if (woundsRatio + (woundsRatio * target->calculateBFRatio()) > System::random(100)) {
 			target->changeActionWoundsBar(1, true);
 			target->changeShockWounds(1);
+			
 			if (target->isPlayer()) {
 				target->sendCombatSpam(attacker, NULL, 1, "wounded", false);
 				target->sendCombatSpam(attacker, NULL, 1, "shock_wound", false);
@@ -289,8 +276,6 @@ public:
 				weapon->setUpdated(true);
 			}
 		}
-
-		doDotWeaponAttack(attacker, target, 0);
 				
 		return reduction;
 	}
@@ -311,7 +296,7 @@ public:
 		int reduction = 0;
 		
 		if (target->isPlayer())
-			reduction = doArmorResists(armor, weapon, damage);
+			reduction = damage - doArmorResists(armor, weapon, damage);
 		else if (weapon != NULL)
 			reduction = int(target->getArmorResist(weapon->getDamageType()) * damage / 100);
 		else
@@ -333,18 +318,13 @@ public:
 		
 		float woundsRatio = 5;
 		
-		if (weapon != NULL) {
+		if (weapon != NULL)
 			woundsRatio = weapon->getWoundsRatio();
-			
-			if (weapon->decreasePowerupUses())
-					weapon->setUpdated(true);
-			else if (weapon->hasPowerup())
-					weapon->removePowerup((Player*)attacker, true);
-		}
 		
 		if (woundsRatio + (woundsRatio * target->calculateBFRatio()) > System::random(100)) {
 			target->changeMindWoundsBar(1, true);
 			target->changeShockWounds(1);
+			
 			if (target->isPlayer()) {
 				target->sendCombatSpam(attacker, NULL, 1, "wounded", false);
 				target->sendCombatSpam(attacker, NULL, 1, "shock_wound", false);
@@ -359,8 +339,6 @@ public:
 				weapon->setUpdated(true);
 			}
 		}
-		
-		doDotWeaponAttack(attacker, target, 0);
 				
 		return reduction;
 	}
@@ -411,11 +389,18 @@ public:
 			case TangibleObjectImplementation::RIFLE:
 				speedMod = ((Player*)creature)->getSkillMod("rifle_speed");
 				break;
+			case TangibleObjectImplementation::HEAVYWEAPON:
+				speedMod = ((Player*)creature)->getSkillMod("heavyweapon_speed");
+				break;
 			case TangibleObjectImplementation::SPECIALHEAVYWEAPON:
-				if (weapon->getObjectCRC() == 0xC105AB54)
+				if (weapon->getType() == WeaponImplementation::RIFLEFLAMETHROWER)
 					speedMod = ((Player*)creature)->getSkillMod("heavy_flame_thrower_speed");
+				
+				else if (weapon->getType() == WeaponImplementation::RIFLELIGHTNING)
+					speedMod = ((Player*)creature)->getSkillMod("heavy_rifle_lightning_speed");
+				
 				speedMod += ((Player*)creature)->getSkillMod("heavyweapon_speed");
-				break;			
+				break;
 			}
 		
 		if (weapon != NULL) {
@@ -717,12 +702,27 @@ public:
 	}
 
 	int doArmorResists(Armor* armor, Weapon* weapon, int dmg) {
+
+		int ap = 0;
+		int ar = 0;
+		
+		if (weapon != NULL) 
+			ap = weapon->getArmorPiercing();
+		if (armor != NULL)
+			ar = armor->getRating() / 16; // this sucks, why are they stored differently?
+				
+		if (ap > ar)
+			dmg = (int)(dmg * powf(1.25f, ap - ar)); // If armor piercing is greater, increase by 25% per level
+		else if (ap < ar)
+			dmg = (int)(dmg * powf(0.5f, ar - ap)); // If armor resist is greater, decrease by half per level
+		
 		float resist = 0;
+		
 		int damageType = WeaponImplementation::KINETIC;
 		
 		if (weapon != NULL)
 			damageType = weapon->getDamageType();
-
+		
 		if (armor != NULL)
 			switch (damageType) {
 			case WeaponImplementation::KINETIC:
@@ -753,8 +753,11 @@ public:
 				resist = armor->getLightSaber();
 				break;
 			}
-	
-		return int(dmg*resist/100);
+		
+		if (resist == 0)
+			return (dmg + (dmg / 2));
+		else
+			return (int)(dmg - (dmg * resist / 100));
 	}
 	
 	bool isArea() {

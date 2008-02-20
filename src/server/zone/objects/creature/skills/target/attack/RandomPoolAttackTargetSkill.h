@@ -89,7 +89,7 @@ public:
 		float minDamage = 0;
 		float maxDamage = 0;
 		int reduction;
-		int bodyPart = 0;
+		int bodyPart = 1;
 		
 		if (weapon != NULL) {
 			if (weapon->isCertified()) {
@@ -146,6 +146,15 @@ public:
 		else if (bodyPart < 10)
 			reduction = applyMindPoolDamage(creature, targetCreature, (int32) damage);
 		
+		if (weapon != NULL) {
+			doDotWeaponAttack(creature, targetCreature, 0);
+			
+			if (weapon->decreasePowerupUses())
+					weapon->setUpdated(true);
+				else if (weapon->hasPowerup())
+					weapon->removePowerup((Player*)creature, true);
+		}
+		
 		return -(int32)(damage - reduction);
 	}
 
@@ -158,9 +167,22 @@ public:
 		
 		if (weapon != NULL) {
 			
-			int healthAttackCost = weapon->getHealthAttackCost();
-			int actionAttackCost = weapon->getActionAttackCost();
-			int mindAttackCost = weapon->getMindAttackCost();
+			int wpnHealth = weapon->getHealthAttackCost();
+			int wpnAction = weapon->getActionAttackCost();
+			int wpnMind = weapon->getMindAttackCost();
+			
+			int healthAttackCost = wpnHealth - (wpnHealth * creature->getStrength() / 1500);
+			int actionAttackCost = wpnAction - (wpnAction * creature->getQuickness() / 1500);
+			int mindAttackCost = wpnMind - (wpnMind * creature->getFocus() / 1500);
+			
+			if (healthAttackCost < 0)
+				healthAttackCost = 0;
+
+			if (actionAttackCost < 0)
+				actionAttackCost = 0;
+
+			if (mindAttackCost < 0)
+				mindAttackCost = 0;
 			
 			if (!player->changeHAMBars(-healthAttackCost, -actionAttackCost, -mindAttackCost))
 				return false;

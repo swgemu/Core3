@@ -77,7 +77,7 @@ atAt = Creature:new {
 	
 	accuracy = 300,
 
-	skills = { "stormTrooperAttack2" }
+	skills = { "stormTrooperAttack3" }
 	-- respawnTimer = 180,
 }
 

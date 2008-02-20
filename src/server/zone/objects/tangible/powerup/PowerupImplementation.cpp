@@ -56,6 +56,8 @@ PowerupImplementation::PowerupImplementation(uint64 objID, uint32 tempCRC, const
 	PowerupServant(objID, WEAPONPOWERUP) {
  
 	objectCRC = tempCRC;
+	objectID = objID;
+	
 	name = n;
 	templateName = tempn;
 	templateTypeName = "weapon_name";
@@ -140,42 +142,42 @@ void PowerupImplementation::setPowerupStats(int modifier) {
 	
 	if (type == MELEE) {
 		objectCRC = 0x520273B1;
-		templateName = "object/tangible/powerup/weapon/shared_melee.iff";
+		templateName = "powerup_weapon_melee";
 	}
 	else if (type == RANGED)
 		switch (subType) {
 		case BARREL:
 			objectCRC = 0x82E7596;
-			templateName = "object/tangible/powerup/weapon/shared_ranged_barrel.iff";
+			templateName = "powerup_weapon_ranged_barrel";
 			break;
 		case COUPLER:
 			objectCRC = 0x60B89822;
-			templateName = "object/tangible/powerup/weapon/shared_ranged_power.iff";
+			templateName = "powerup_weapon_ranged_power";
 			break;
 		case GRIP:
 			objectCRC = 0x4E39F9EB;
-			templateName = "object/tangible/powerup/weapon/shared_ranged_grip.iff";
+			templateName = "powerup_weapon_ranged_grip";
 			break;
 		case MUZZLE:
 			objectCRC = 0x212273E9;
-			templateName = "object/tangible/powerup/weapon/shared_ranged_muzzle.iff";
+			templateName = "powerup_weapon_ranged_muzzle";
 			break;
 		case SCOPE:
 			objectCRC = 0xE0019303;
-			templateName = "object/tangible/powerup/weapon/shared_ranged_scope.iff";
+			templateName = "powerup_weapon_ranged_scope";
 			break;
 		case STOCK:
 			objectCRC = 0xA343A929;
-			templateName = "object/tangible/powerup/weapon/shared_ranged_stock.iff";
+			templateName = "powerup_weapon_ranged_stock";
 			break;
 		default:
 			objectCRC = 0x6195F9A8;
-			templateName = "object/tangible/powerup/weapon/shared_ranged.iff";
+			templateName = "powerup_weapon_ranged";
 			break;
 		}
 	else {
 		objectCRC = 0x6195F9A8;
-		templateName = "object/tangible/powerup/weapon/shared_ranged.iff";
+		templateName = "powerup_weapon_ranged";
 	}
 	
 	generateName();

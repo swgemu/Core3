@@ -681,11 +681,13 @@ void CombatManager::calculateDamageReduction(CreatureObject* creature, CreatureO
 
 	int ar = targetCreature->getArmor();
 
-	if (ap > ar)
-		damage *= powf(1.25f, ap - ar); // If armor piercing is greater, increase by 25% per level
-	else if (ap < ar)
-		damage *= powf(0.5f, ar - ap); // If armor resist is greater, decrease by half per level
-
+	if (targetCreature->isPlayer()) {
+		if (ap > ar)
+			damage *= powf(1.25f, ap - ar); // If armor piercing is greater, increase by 25% per level
+		else if (ap < ar)
+			damage *= powf(0.5f, ar - ap); // If armor resist is greater, decrease by half per level
+	}
+	
 	//if (creature->isPlayer()) { // Debug message
 	//	stringstream msg;
 	//	msg << "(debug) Your weapons damage is adjusted by " << mult << " because its AP is "

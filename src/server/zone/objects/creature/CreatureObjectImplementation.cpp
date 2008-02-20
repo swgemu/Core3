@@ -879,7 +879,7 @@ void CreatureObjectImplementation::doDiseaseTick() {
 		else
 			changeMindWoundsBar(diseaseDotStrength + (shockWounds * diseaseDotStrength / 500));
 		
-		changeShockWounds(1);
+		changeShockWounds(1 + (shockWounds * diseaseDotStrength / 5000));
 			
 		playEffect("clienteffect/dot_diseased.cef");
 		
@@ -903,7 +903,7 @@ void CreatureObjectImplementation::doFireTick() {
 			changeMindBar(-fireDotStrength);
 		}
 		
-		changeShockWounds(1);
+		changeShockWounds(1 + (shockWounds * fireDotStrength / 5000));
 		
 		playEffect("clienteffect/dot_fire.cef");
 		
@@ -3062,31 +3062,31 @@ void CreatureObjectImplementation::removeBuff(const string& type, int value, Eve
 float CreatureObjectImplementation::getArmorResist(int resistType) {
 	switch (resistType) {
 	case 1:
-		return kinetic;
+		return kinetic - (kinetic * calculateBFRatio());
 
 	case 2:
-		return energy;
+		return energy - (energy * calculateBFRatio());
 
 	case 3:
-		return electricity;
+		return electricity - (electricity * calculateBFRatio());
 
 	case 4:
-		return stun;
+		return stun - (stun * calculateBFRatio());
 
 	case 5:
-		return blast;
+		return blast - (blast * calculateBFRatio());
 
 	case 6:
-		return heat;
+		return heat - (heat * calculateBFRatio());
 
 	case 7:
-		return cold;
+		return cold - (cold * calculateBFRatio());
 
 	case 8:
-		return acid;
+		return acid - (acid * calculateBFRatio());
 	
 	case 9:
-		return lightSaber;
+		return lightSaber - (lightSaber * calculateBFRatio());
 	
 	default:
 		return 0;

@@ -367,7 +367,7 @@ public:
 	}
 	
 	inline bool isWeapon() {
-		return (objectSubType & WEAPON || objectSubType & LIGHTSABER && objectSubType != INSTRUMENT);
+		return (objectSubType & WEAPON || objectSubType & LIGHTSABER);
 	}
 	
 	inline bool isArmor() {

@@ -39,11 +39,11 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-spawnCreatures(canyonKraytDragon, 8, 9, -5446, 1400, 2, 300)
-spawnCreatures(canyonKraytDragon, 8, 6805, 4363, 1000, 6, 300)
-spawnCreatures(juviCanyonKraytDragon, 8, 6805, 4363, 1000, 6, 300)
-spawnCreatures(canyonKraytDragon, 8, -4703, -4275, 1000, 6, 300) -- dune sea
-spawnCreatures(juviCanyonKraytDragon, 8, -4703, -4275, 1000, 6, 300 ) -- dune sea
+spawnCreatures(canyonKraytDragon, 8, 9, -5446, 1400, 6, 400)
+spawnCreatures(canyonKraytDragon, 8, 6805, 4363, 1000, 12, 400)
+spawnCreatures(juviCanyonKraytDragon, 8, 6805, 4363, 1000, 8, 400)
+spawnCreatures(canyonKraytDragon, 8, -4703, -4275, 1000, 12, 400) -- dune sea
+spawnCreatures(juviCanyonKraytDragon, 8, -4703, -4275, 1000, 8, 400) -- dune sea
 --spawnCreature(canyonKraytDragon, 8, -187, -5474)
 --spawnCreature(canyonKraytDragon, 8, -301, -5297)
 --spawnCreature(canyonKraytDragon, 8, -140, -5157)

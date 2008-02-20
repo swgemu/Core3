@@ -82,12 +82,12 @@ void AttachmentImplementation::initialize() {
 		objectCRC = 0xDF144F5C;
 		objectSubType = TangibleObjectImplementation::ARMORATTACHMENT;
 		name = unicode("\\#ffff00Armor Attachment");
-		templateName = "object/tangible/gem/shared_armor.iff";
+		templateName = "gem_armor";
 	} else {
 		objectCRC = 0xC0FCFE34;
 		objectSubType = TangibleObjectImplementation::CLOTHINGATTACHMENT;
 		name = unicode("\\#ffff00Clothing Attachment");
-		templateName = "object/tangible/gem/shared_clothing.iff";
+		templateName = "gem_clothing";
 	}
 	
 	templateTypeName = "weapon_name";

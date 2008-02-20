@@ -70,6 +70,7 @@ interface Weapon implements TangibleObject {
 	boolean decreaseDot1Uses();
 	boolean decreaseDot2Uses();
 	boolean decreasePowerupUses();
+	boolean decreaseUsesRemaining();
 
 	boolean isSliced();
 
@@ -98,6 +99,7 @@ interface Weapon implements TangibleObject {
 	void setDot1Uses(int uses);
 	void setDot2Uses(int uses);
 	void setPowerupUses(int uses);
+	void setUsesRemaining(int charges);
 
 	void setCert(string& certification);
 	void setCertified(boolean crt);
@@ -107,6 +109,8 @@ interface Weapon implements TangibleObject {
 	int getCategory();
 
 	int getDamageType();
+
+	int getUsesRemaining();
 
 	float getMinDamage();
 

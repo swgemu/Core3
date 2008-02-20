@@ -47,7 +47,7 @@ stormTrooperAttack1 = {
 
 	range = 64,
 
-	damageRatio = 2,
+	damageRatio = 10,
 
 	speedRatio = 4,
 	coneAngle = 0,
@@ -61,7 +61,7 @@ stormTrooperAttack1 = {
 	dizzyChance = 0,
 	blindChance = 0,
 	stunChance = 0,
-	intimidateChance = 1,
+	intimidateChance = 10,
 	
 	CbtSpamBlock = "attack_block",
 	CbtSpamCounter = "attack_counter",
@@ -79,7 +79,7 @@ stormTrooperAttack2 = {
 
 	range = 64,
 
-	damageRatio = 100,
+	damageRatio = 15,
 
 	speedRatio = 4,
 	coneAngle = 0,
@@ -91,9 +91,9 @@ stormTrooperAttack2 = {
 	postureDownChance = 0,
 	postureUpChance = 0,
 	dizzyChance = 0,
-	blindChance = 1,
-	stunChance = 1,
-	intimidateChance = 1,
+	blindChance = 10,
+	stunChance = 10,
+	intimidateChance = 10,
 	
 	CbtSpamBlock = "attack_block",
 	CbtSpamCounter = "attack_counter",
@@ -103,3 +103,35 @@ stormTrooperAttack2 = {
 }
 
 AddRandomPoolAttackTargetSkill(stormTrooperAttack2)
+stormTrooperAttack3 = {
+	attackname = "stormTrooperAttack3",
+	animation = "creature_attack_ranged_light",
+	
+	requiredWeaponType = RANGED,
+
+	range = 64,
+
+	damageRatio = 25,
+
+	speedRatio = 4,
+	coneAngle = 60,
+
+	areaRange = 30,
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 10,
+	stunChance = 10,
+	intimidateChance = 10,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+}
+
+AddRandomPoolAttackTargetSkill(stormTrooperAttack3)
