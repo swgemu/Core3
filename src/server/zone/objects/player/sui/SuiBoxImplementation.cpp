@@ -59,8 +59,6 @@ SuiBoxImplementation::SuiBoxImplementation(Player* play, uint32 typeID, uint32 b
 }
 
 SuiBoxImplementation::~SuiBoxImplementation() {
-	if (_this != NULL)
-		_this->undeploy();
 }
 
 SuiBox* SuiBoxImplementation::deploy() {

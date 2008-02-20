@@ -55,7 +55,7 @@ which carries forward this exception.
 
 ServerCore::ServerCore() : Logger("Core") {
 	orb = NULL;
-		
+
 	lserv = NULL;
 	zserv = NULL;
 }

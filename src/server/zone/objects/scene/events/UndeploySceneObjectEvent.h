@@ -48,7 +48,7 @@ which carries forward this exception.
 #include "engine/engine.h"
 
 class UndeploySceneObjectEvent : public Event {
-	SceneObject* object;
+	ManagedReference<SceneObject> object;
 	
 public:
 	UndeploySceneObjectEvent(SceneObject* obj) : Event(300000) {
@@ -56,13 +56,11 @@ public:
 	}
 	
 	bool activate() {
-		object->acquire();
-
 		try {
 			object->wlock();
 			
 			object->clearUndeploymentEvent();
-			//object->finalize();
+			object->finalize();
 
 			object->unlock();
 		} catch (Exception& e) {
@@ -74,8 +72,7 @@ public:
 
 			cout << "execption on scene object undeployment\n";
 		}
-		
-		object->release();
+
 		object = NULL;
 		
 		return true;

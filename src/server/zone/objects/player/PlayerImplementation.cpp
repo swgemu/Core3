@@ -668,8 +668,6 @@ void PlayerImplementation::insertToZone(Zone* zone) {
 
 		info("inserting to zone");
 		
-		_this->acquire();
-		
 		zone->registerObject(_this);
 
 		owner->balancePacketCheckupTime();
@@ -926,8 +924,6 @@ void PlayerImplementation::removeFromZone(bool doLock) {
 
 		removeInRangeObjects();
 		
-		_this->release();
-		
 		zone->deleteObject(objectID);
 		
 		zone->unlock(doLock);
@@ -1177,7 +1173,7 @@ bool PlayerImplementation::doAction(CommandQueueAction* action) {
 	
 	updateTarget(action->getTargetID());
 
-	action->setTarget((Player*) targetObject);
+	action->setTarget((Player*) targetObject.get());
 	action->setSkill(skill);
 	
 	if (!action->check())
@@ -1615,7 +1611,7 @@ void PlayerImplementation::lootCorpse() {
 	if (targetObject == NULL || !targetObject->isNonPlayerCreature())
 		return;
 	
-	Creature* target = (Creature*) targetObject;
+	Creature* target = (Creature*) targetObject.get();
 	
 	if (!isIncapacitated() && !isDead() && isInRange(target, 20)) {
 		LootManager* lootManager = server->getLootManager();
@@ -2244,21 +2240,17 @@ bool PlayerImplementation::isInDuelWith(Player* targetPlayer, bool doLock) {
 }
 
 void PlayerImplementation::addToDuelList(Player* targetPlayer) {
-	if (duelList.put(targetPlayer) != -1) {
+	if (duelList.put(targetPlayer) != -1)
 		info("player [" + targetPlayer->getLoggingName() + "] added to duel list");
-
-		targetPlayer->acquire();
-	} else
+	else
 		error("player [" + targetPlayer->getLoggingName() + "] was already in duel list");
 		
 }
 
 void PlayerImplementation::removeFromDuelList(Player* targetPlayer) {
-	if (duelList.drop(targetPlayer)) {
+	if (duelList.drop(targetPlayer))
 		info("player [" + targetPlayer->getLoggingName() + "] removed from duel list");
-
-		targetPlayer->release();
-	} else
+	else
 		error("player [" + targetPlayer->getLoggingName() + "] was not found in duel list for removal");
 }
 

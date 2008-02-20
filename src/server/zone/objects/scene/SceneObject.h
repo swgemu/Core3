@@ -51,7 +51,7 @@ which carries forward this exception.
 
 #include "engine/orb/ObjectRequestBroker.h"
 
-#include "engine/core/thread/RWLockable.h"
+#include "engine/core/ManagedObject.h"
 
 #include "engine/service/proto/BaseMessage.h"
 
@@ -63,9 +63,9 @@ class ZoneClient;
 
 class Player;
 
-#include "engine/core/thread/RWLockable.h"
+#include "engine/core/ManagedObject.h"
 
-class SceneObject : public RWLockable {
+class SceneObject : public ManagedObject {
 public:
 	SceneObject();
 	SceneObject(ORBObjectServant* obj);
@@ -206,7 +206,7 @@ protected:
 
 class SceneObjectImplementation;
 
-class SceneObjectAdapter : public RWLockableAdapter {
+class SceneObjectAdapter : public ManagedObjectAdapter {
 public:
 	SceneObjectAdapter(SceneObjectImplementation* impl);
 
@@ -351,9 +351,9 @@ public:
 	friend class SingletonWrapper<SceneObjectHelper>;
 };
 
-#include "engine/core/thread/RWLockableImplementation.h"
+#include "engine/core/ManagedObjectImplementation.h"
 
-class SceneObjectServant : public RWLockableImplementation {
+class SceneObjectServant : public ManagedObjectImplementation {
 public:
 	SceneObject* _this;
 

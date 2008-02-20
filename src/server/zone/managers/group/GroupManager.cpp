@@ -90,7 +90,8 @@ void GroupManager::inviteToGroup(Player* leader, Player* player) {
 			return;
 		}
 		
-		player->updateGroupInviterId(leader->getObjectID());	
+		player->updateGroupInviterId(leader->getObjectID());
+		
 		player->sendSystemMessage("group", "invite_target", leader->getObjectID());	
 		leader->sendSystemMessage("group", "invite_leader", player->getObjectID());
 
@@ -140,8 +141,6 @@ void GroupManager::joinGroup(Player* player) {
 		}
 		
 		player->info("joining group");
-		
-		player->acquire();
 		
 		group->addPlayer(player);
 		player->setGroup(group);
@@ -212,8 +211,6 @@ void GroupManager::leaveGroup(GroupObject* group, Player* player) {
 		
 		player->info("leaving group");
 
-		player->release();
-
 		if (group->getGroupSize() < 2) {
 			group->disband();
 			destroyGroup = true;
@@ -227,11 +224,8 @@ void GroupManager::leaveGroup(GroupObject* group, Player* player) {
 	
 	player->wlock();
 
-	if (destroyGroup) {
-		group->undeploy();
+	if (destroyGroup)
 		delete group;
-	}
-
 }
 
 void GroupManager::disbandGroup(GroupObject* group, Player* player) {
@@ -259,8 +253,6 @@ void GroupManager::disbandGroup(GroupObject* group, Player* player) {
 	
 	player->wlock();
 	
-	group->undeploy();
-	
 	delete group;
 }
 
@@ -285,7 +277,9 @@ void GroupManager::kickFromGroup(GroupObject* group, Player* player, Player* pla
 		
 		if (player != leader) {
 			player->sendSystemMessage("group", "must_be_leader");
+			
 			group->unlock();
+			
 			player->wlock();
 			return;
 		}
@@ -297,8 +291,6 @@ void GroupManager::kickFromGroup(GroupObject* group, Player* player, Player* pla
 			group->removePlayer(playerToKick);
 
 			playerToKick->info("kikcing from group");
-
-			playerToKick->release();
 		}
 	
 		group->unlock();

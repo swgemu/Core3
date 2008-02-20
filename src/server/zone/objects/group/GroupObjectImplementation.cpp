@@ -53,18 +53,16 @@ which carries forward this exception.
 #include "../../../chat/ChatManager.h"
 
 GroupObjectImplementation::GroupObjectImplementation(uint64 oid, Player* Leader) : SceneObjectImplementation(oid) {
-	leader = Leader;
-	
-	leader->acquire();
-	
-	groupMembers.add(Leader);
-	
 	objectCRC = 0x788CF998; //0x98, 0xF9, 0x8C, 0x78, 
 
 	objectType = SceneObjectImplementation::GROUP;
 	
 	listCount = 0;
+
+	leader = Leader;
 	
+	groupMembers.add(Leader);
+
 	startChannel();
 }
 

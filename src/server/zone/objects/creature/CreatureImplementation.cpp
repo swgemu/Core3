@@ -612,7 +612,6 @@ void CreatureImplementation::notifyPositionUpdate(QuadTreeEntry* obj) {
 			info("aggroing " + player->getFirstName());
 
 			aggroedCreature = player;
-			aggroedCreature->acquire();
 
 			if (isQueued())
 				creatureManager->dequeueActivity(this);
@@ -818,7 +817,6 @@ void CreatureImplementation::doAttack(CreatureObject* target, int damage) {
 		info("new target locked");
 
 		aggroedCreature = target;
-		aggroedCreature->acquire();
 		
 		updateTarget(target);
 
@@ -898,7 +896,6 @@ void CreatureImplementation::deagro() {
 		msg << "deaggroed (0x" << hex << aggroedCreature->getObjectID() << dec << ")";
 		info(msg);
 	
-		aggroedCreature->release();
 		aggroedCreature = NULL;
 	}
 

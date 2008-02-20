@@ -68,7 +68,6 @@ ZoneClientImplementation::ZoneClientImplementation(DatagramServiceThread* serv, 
 }
 
 ZoneClientImplementation::~ZoneClientImplementation() {
-	_this->undeploy();
 }
 
 void ZoneClientImplementation::disconnect() {
@@ -134,4 +133,12 @@ void ZoneClientImplementation::closeConnection(bool doLock) {
 	} catch (...) {
 		unlock(doLock);
 	}
+}
+
+void ZoneClientImplementation::acquire() {
+	_this->acquire();
+}
+
+void ZoneClientImplementation::release() {
+	_this->release();
 }

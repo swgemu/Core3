@@ -80,8 +80,6 @@ PlayerManagerImplementation::PlayerManagerImplementation(ItemManager* mgr, ZoneP
 }
 
 PlayerManagerImplementation::~PlayerManagerImplementation() {
-	playerMap->undeploy();
-	
 	delete playerMap;
 	playerMap = NULL;
 }

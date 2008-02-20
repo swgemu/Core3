@@ -210,7 +210,6 @@ void ZoneServerImplementation::shutdown() {
 		Zone* zone = zones.get(i);
 		zone->stopManagers();
 		
-		zone->undeploy();
 		delete zone;
 	}
 
@@ -221,8 +220,6 @@ void ZoneServerImplementation::shutdown() {
 	scheduler->stop();
 	
 	ZoneServer* zoneServer = _this;
-	zoneServer->undeploy();
-	
 	delete zoneServer;
 }
 
@@ -230,29 +227,21 @@ void ZoneServerImplementation::stopManagers() {
 	info("unloading managers..");
 
 	if (userManager != NULL) {
-		userManager->undeploy();
-		
 		delete userManager;
 		userManager = NULL;
 	}
 	
 	if (itemManager != NULL) {
-		itemManager->undeploy();
-		
 		delete itemManager;
 		itemManager = NULL;
 	}
 
 	if (playerManager != NULL) {
-		playerManager->undeploy();
-		
 		delete playerManager;
 		playerManager = NULL;
 	}
 
 	if (guildManager != NULL) {
-		guildManager->undeploy();
-		
 		delete guildManager;
 		guildManager = NULL;
 	}
@@ -260,22 +249,16 @@ void ZoneServerImplementation::stopManagers() {
 	if (resourceManager != NULL) {
 		resourceManager->stop();
 		
-		resourceManager->undeploy();
-		
 		delete resourceManager;
 		resourceManager = NULL;
 	}
 
 	if (bazaarManager != NULL) {
-		bazaarManager->undeploy();
-		
 		delete bazaarManager;
 		bazaarManager = NULL;
 	}
 	
 	if (chatManager != NULL) {
-		chatManager->undeploy();
-		
 		delete chatManager;
 		chatManager = NULL;
 	}

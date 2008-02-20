@@ -49,15 +49,15 @@ which carries forward this exception.
 #include "../../../objects/creature/skills/skills.h"
 
 class SelfEnhanceEvent : public Event {
-	CreatureObject* creo;
+	ManagedReference<CreatureObject> creo;
+	
 	EnhanceSelfSkill* skill;
 	
 public:
-	SelfEnhanceEvent(CreatureObject* cr, EnhanceSelfSkill* sk) : Event((uint64)sk->getDuration() * 1000){
+	SelfEnhanceEvent(CreatureObject* cr, EnhanceSelfSkill* sk) : Event((uint64) sk->getDuration() * 1000){
 		creo = cr;
-		skill = sk;
 
-		creo->acquire();
+		skill = sk;
 	}
 	
 	bool activate() {
@@ -68,11 +68,10 @@ public:
 			
 			creo->unlock();
 		} catch (...) {
-			cout << "Unreported exception caught in SelfEnhanceEvent(CreatureObject* cr, EnhanceSelfSkill* sk)\n";
+			cout << "Unreported exception caught on SelfEnhanceEvent\n";
+			
 			creo->unlock();
 		}
-		
-		creo->release();
 		
 		return true;
 	}

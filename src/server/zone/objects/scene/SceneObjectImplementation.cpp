@@ -91,10 +91,6 @@ SceneObjectImplementation::SceneObjectImplementation(uint64 oid) : QuadTreeEntry
 }
 
 SceneObjectImplementation::~SceneObjectImplementation() {
-	log("undeploying object");
-	
-	if (!_this->undeploy())
-		error("object was not found in naming directory");
 }
 
 SceneObject* SceneObjectImplementation::deploy() {

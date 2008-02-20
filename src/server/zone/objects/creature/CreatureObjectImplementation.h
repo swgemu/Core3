@@ -164,7 +164,7 @@ protected:
 	uint8 moodid;
 	
 	Weapon* weaponObject;
-	SceneObject* targetObject;
+	ManagedReference<SceneObject> targetObject;
 
 	// HAM variables
 	uint32 hamUpdateCounter;
@@ -272,7 +272,7 @@ protected:
 	
 	DizzyFallDownEvent* dizzyFallDownEvent;
 	
-	Vector<CreatureObject*> defenderList;
+	Vector<ManagedReference<CreatureObject> > defenderList;
 	
 	VectorMap<CreatureObject*, uint32> damageMap;
 	

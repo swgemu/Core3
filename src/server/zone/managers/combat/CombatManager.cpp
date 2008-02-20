@@ -517,8 +517,6 @@ void CombatManager::requestEndDuel(Player* player, Player* targetPlayer) {
 	if (player->isWatching())
 		player->stopWatch(player->getWatchID());
 
-	targetPlayer->acquire();
-		
 	try {
 		targetPlayer->wlock(player);
 	
@@ -527,7 +525,6 @@ void CombatManager::requestEndDuel(Player* player, Player* targetPlayer) {
 			player->sendMessage(csm);
 		
 			targetPlayer->unlock();
-			targetPlayer->release();
 			return;
 		}
 
@@ -554,8 +551,6 @@ void CombatManager::requestEndDuel(Player* player, Player* targetPlayer) {
 	} catch (...) {
 		targetPlayer->unlock();
 	}
-	
-	targetPlayer->release();
 }
 
 void CombatManager::freeDuelList(Player* player) {
@@ -577,8 +572,6 @@ void CombatManager::freeDuelList(Player* player) {
 		Player* targetPlayer = player->getDuelListObject(0);
 		
 		if (targetPlayer != NULL) {
-			targetPlayer->acquire();
-
 			try {
 				targetPlayer->wlock(player);
 
@@ -608,8 +601,6 @@ void CombatManager::freeDuelList(Player* player) {
 			} catch (...) {
 				targetPlayer->unlock();
 			}
-			
-			targetPlayer->release();
 		}
 	}
 }
@@ -641,8 +632,6 @@ void CombatManager::declineDuel(Player* player, Player* targetPlayer) {
 	if (player->isWatching())
 		player->stopWatch(player->getWatchID());
 		
-	targetPlayer->acquire();
-			
 	try {		
 		targetPlayer->wlock(player);
 	
@@ -660,8 +649,6 @@ void CombatManager::declineDuel(Player* player, Player* targetPlayer) {
 	} catch (...) {
 		targetPlayer->unlock();
 	}
-	
-	targetPlayer->release();
 }
 
 void CombatManager::doDodge(CreatureObject* creature, CreatureObject* defender) {

@@ -60,13 +60,13 @@ which carries forward this exception.
  *	SceneObjectStub
  */
 
-SceneObject::SceneObject() : RWLockable(NULL) {
+SceneObject::SceneObject() : ManagedObject(NULL) {
 }
 
-SceneObject::SceneObject(ORBObjectServant* obj) : RWLockable(obj) {
+SceneObject::SceneObject(ORBObjectServant* obj) : ManagedObject(obj) {
 }
 
-SceneObject::SceneObject(SceneObject& ref) : RWLockable(ref) {
+SceneObject::SceneObject(SceneObject& ref) : ManagedObject(ref) {
 }
 
 SceneObject::~SceneObject() {
@@ -867,7 +867,7 @@ bool SceneObject::doKeepObject() {
  *	SceneObjectAdapter
  */
 
-SceneObjectAdapter::SceneObjectAdapter(SceneObjectImplementation* obj) : RWLockableAdapter(obj) {
+SceneObjectAdapter::SceneObjectAdapter(SceneObjectImplementation* obj) : ManagedObjectAdapter(obj) {
 }
 
 Packet* SceneObjectAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* inv) {
@@ -1351,7 +1351,7 @@ ORBObjectAdapter* SceneObjectHelper::createAdapter(ORBObjectServant* obj) {
  *	SceneObjectServant
  */
 
-SceneObjectServant::SceneObjectServant() : RWLockableImplementation() {
+SceneObjectServant::SceneObjectServant() : ManagedObjectImplementation() {
 	_classHelper = SceneObjectHelper::instance();
 }
 
@@ -1360,7 +1360,7 @@ SceneObjectServant::~SceneObjectServant() {
 
 void SceneObjectServant::_setStub(ORBObjectStub* stub) {
 	_this = (SceneObject*) stub;
-	RWLockableServant::_setStub(stub);
+	ManagedObjectServant::_setStub(stub);
 }
 
 ORBObjectStub* SceneObjectServant::_getStub() {

@@ -84,7 +84,7 @@ class CreatureImplementation : public CreatureServant, public Event {
 	// stats
 	int creatureState;
 
-	CreatureObject* aggroedCreature;
+	ManagedReference<CreatureObject> aggroedCreature;
 	
 	bool willAggro;
 	

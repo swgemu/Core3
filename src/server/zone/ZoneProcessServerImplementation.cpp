@@ -113,11 +113,22 @@ ZoneProcessServerImplementation::~ZoneProcessServerImplementation() {
 	}
 	
 	delete combatManager;
+	combatManager = NULL;
+	
 	delete professionManager;
+	professionManager = NULL;
+
 	delete radialManager;
+	radialManager = NULL;
+	
 	delete groupManager;
+	groupManager = NULL;
+	
 	delete lootManager;
+	lootManager = NULL;
+	
 	delete suiManager;
+	suiManager = NULL;
 }
 
 void ZoneProcessServerImplementation::init() {

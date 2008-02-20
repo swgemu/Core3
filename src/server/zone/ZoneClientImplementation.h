@@ -78,13 +78,9 @@ public:
 	
 	void closeConnection(bool doLock = true);
 
-	void acquire() {
-		_this->acquire();
-	}
+	void acquire();
 	
-	void release() {
-		_this->release();
-	}
+	void release();
 	
 	// setters and getters
 	void setPlayer(Player* p) {

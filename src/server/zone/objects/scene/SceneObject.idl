@@ -42,7 +42,7 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-include "engine/core/thread/RWLockable";
+include "engine/core/ManagedObject";
 
 include "engine/service/proto/BaseMessage";
 
@@ -54,7 +54,7 @@ import "../../ZoneClient";
 
 import "../player/Player";
 
-interface SceneObject implements RWLockable {
+interface SceneObject implements ManagedObject {
 	void finalize();
 
 	void redeploy();
