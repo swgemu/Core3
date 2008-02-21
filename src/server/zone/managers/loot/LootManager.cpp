@@ -229,16 +229,35 @@ void LootManager::createWeaponLoot(Creature* creature, int creatureLevel) {
 		break;
 	case 11 :	// CARBINE
 		itemImpl = new CarbineRangedWeaponImplementation(creature, 
-				"object/weapon/ranged/carbine/shared_carbine_dxr6.iff", unicode("DX6R Carbine"), "carbine_dx6r", false);
+				"object/weapon/ranged/carbine/shared_carbine_dxr6.iff", unicode("DXR6 Carbine"), "carbine_dxr6", false);
 		itemImpl->setDamageType(WeaponImplementation::ACID);
 		itemImpl->setArmorPiercing(WeaponImplementation::LIGHT);
 		certification = "cert_carbine_dxr6";
 		break;
 	case 12 :	// RIFLE
 		itemImpl = new RifleRangedWeaponImplementation(creature, 
-				"object/weapon/ranged/rifle/shared_rifle_tenloss_dxr6_disruptor_loot.iff", unicode("DX6R Rifle"), "rifle_tenloss_dxr6", false);
+				"object/weapon/ranged/rifle/shared_rifle_tenloss_dxr6_disruptor_loot.iff", unicode("DXR-6b Disruptor Rifle"), "rifle_tenloss_dxr6", false);
 		itemImpl->setDamageType(WeaponImplementation::ACID);
 		itemImpl->setArmorPiercing(WeaponImplementation::MEDIUM);
+		
+		itemImpl->setAttackSpeed(7.4);
+		itemImpl->setMinDamage(104);
+		itemImpl->setMaxDamage(249);
+		itemImpl->setWoundsRatio(22.7);
+		
+		itemImpl->setPointBlankAccuracy(-60);
+		itemImpl->setPointBlankRange(0);
+
+		itemImpl->setIdealAccuracy(60);
+		itemImpl->setIdealRange(54);
+
+		itemImpl->setMaxRangeAccuracy(20);
+		itemImpl->setMaxRange(64);
+
+		itemImpl->setHealthAttackCost(22);
+		itemImpl->setActionAttackCost(44);
+		itemImpl->setMindAttackCost(54);
+		
 		certification = "cert_rifle_t21";  // no cert we need to do it by skill box
 		break;
 	case 13 :	// POLEARM

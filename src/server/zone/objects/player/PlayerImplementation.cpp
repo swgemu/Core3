@@ -1694,6 +1694,7 @@ void PlayerImplementation::clearBuffs(bool doUpdatePlayer) {
  */
  
 void PlayerImplementation::changeCloth(uint64 itemid) {
+
 	SceneObject* obj = inventory->getObject(itemid);
 	if (obj == NULL || !obj->isTangible())
 		return;
@@ -1719,6 +1720,7 @@ void PlayerImplementation::changeCloth(uint64 itemid) {
 }
 
 void PlayerImplementation::changeWeapon(uint64 itemid) {
+
 	SceneObject* obj = inventory->getObject(itemid);
 	
 	if (obj == NULL || !obj->isTangible())
@@ -1762,34 +1764,45 @@ void PlayerImplementation::changeWeapon(uint64 itemid) {
 }
 
 void PlayerImplementation::changeArmor(uint64 itemid, bool forced) {
+
 	SceneObject* obj = inventory->getObject(itemid);
 	
 	if (obj == NULL || !obj->isTangible())
 		return;
 	
-	Armor* armoritem = (Armor*) obj;
-	
-	if (armoritem == NULL) 
-		return;
-	
-	if (armoritem->isEquipped()) {
-		unequipItem((TangibleObject*) obj);
-		unsetArmorSkillMods(armoritem);
-		unsetArmorEncumbrance(armoritem);
-	} else {
-		Armor* olditem = getArmor(armoritem->getType());
+	if (((TangibleObject*)obj)->isArmor()) {
+		Armor* armoritem = (Armor*) obj;
 		
-		if (olditem != NULL) {
-			unsetArmorSkillMods(olditem);
-			unsetArmorEncumbrance(olditem);
-			unequipItem((TangibleObject*) olditem);
+		if (armoritem == NULL) 
+			return;
+		
+		if (armoritem->isEquipped()) {
+			unequipItem((TangibleObject*) obj);
+			unsetArmorSkillMods(armoritem);
+			unsetArmorEncumbrance(armoritem);
+		} else {
+			Armor* olditem = getArmor(armoritem->getType());
+			
+			if (olditem != NULL) {
+				unsetArmorSkillMods(olditem);
+				unsetArmorEncumbrance(olditem);
+				unequipItem((TangibleObject*) olditem);
+			}
+			
+			if (setArmorEncumbrance(armoritem, forced)) {
+				equipItem((TangibleObject*) obj);
+				setArmorSkillMods(armoritem);
+			} else
+				sendSystemMessage("You don't have enough pool points to do that!");
 		}
+	} else
+	{
+		TangibleObject* item = (TangibleObject*) obj;
 		
-		if (setArmorEncumbrance(armoritem, forced)) {
-			equipItem((TangibleObject*) obj);
-			setArmorSkillMods(armoritem);
-		} else
-			sendSystemMessage("You don't have enough pool points to do that!");
+		if (item->isEquipped())
+			unequipItem(item);
+		else
+			equipItem(item);
 	}
 	
 	BaseMessage* creo6 = new CreatureObjectMessage6(_this);
