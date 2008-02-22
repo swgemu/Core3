@@ -94,7 +94,11 @@ SceneObjectImplementation::~SceneObjectImplementation() {
 }
 
 SceneObject* SceneObjectImplementation::deploy() {
-	return (SceneObject*) ORBObjectServant::deploy("SceneObject", objectID);
+	stringstream name;
+
+	name << "SceneObject 0x" << hex << objectID;
+	
+	return (SceneObject*) ORBObjectServant::deploy(name.str());
 }
 
 void SceneObjectImplementation::redeploy() {
@@ -112,10 +116,11 @@ void SceneObjectImplementation::scheduleUndeploy() {
 }
 
 void SceneObjectImplementation::finalize() {
-	zone->deleteCachedObject(_this);
+	if (zone != NULL)
+		zone->deleteCachedObject(_this);
 
-	if (!keepObject) {
-		info("releasing object reference");
+	if (!keepObject && isPlayer()) {
+		info("finalizing object reference");
 
 		_this->release();
 	}

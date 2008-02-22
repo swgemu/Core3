@@ -68,6 +68,13 @@ public:
 		owner = player;
 		
 		planetName = Planet::getPlanetName(player->getZoneIndex());
+		
+		stringstream name;
+		name << "WaypointObject :" << oid;
+		setLoggingName(name.str());
+	
+		setLogging(false);
+		setGlobalLogging(true);
 	}
 	
 	inline void changeStatus(bool status) {

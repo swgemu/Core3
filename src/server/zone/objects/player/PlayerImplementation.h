@@ -47,7 +47,7 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-#include "../../../db/ServerDatabase.h"
+#include "../../ZoneClient.h"
 
 #include "PlayerObject.h"
 
@@ -55,17 +55,19 @@ which carries forward this exception.
 #include "professions/XpMap.h"
 
 #include "badges/Badges.h"
+
 #include "../terrain/RegionNames.h"
+
 #include "sui/SuiBoxImplementation.h"
 #include "sui/listbox/SuiListBoxImplementation.h"
 
-#include "../../packets/BaseLineMessage.h"
+#include "../../../chat/room/ChatRoom.h"
+
+#include "Player.h"
 
 class PlayerManager;
 class ItemManager;
 class ProfessionManager;
-
-class ZoneClient;
 
 class CommandQueueAction;
 class CommandQueueActionEvent;
@@ -78,14 +80,8 @@ class WaypointObject;
 class Guild;
 class Certification;
 
-class BaseLineMessage;
-
-#include "../../../chat/room/ChatRoom.h"
-
-#include "Player.h"
-
 class PlayerImplementation : public PlayerServant {
-	ZoneClient*	owner;
+	ReferenceSlot<ZoneClient> owner;
 	
 	int onlineStatus;
 	Time logoutTimeStamp;

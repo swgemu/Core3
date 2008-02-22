@@ -118,7 +118,7 @@ PlayerImplementation::~PlayerImplementation() {
 	}
 	
 	if (inventory != NULL) {
-		delete inventory;
+		//delete inventory;
 		inventory = NULL;
 	}
 	

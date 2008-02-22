@@ -51,11 +51,11 @@ which carries forward this exception.
 
 #include "engine/orb/ObjectRequestBroker.h"
 
-class Player;
-
 #include "engine/service/proto/BaseMessage.h"
 
 #include "engine/service/proto/StandaloneBaseMessage.h"
+
+class Player;
 
 class ZoneClient : public ORBObjectStub {
 public:

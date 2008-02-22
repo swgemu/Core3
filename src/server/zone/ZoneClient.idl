@@ -42,10 +42,10 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-import "objects/player/Player";
-
 include "engine/service/proto/BaseMessage";
 include "engine/service/proto/StandaloneBaseMessage";
+
+import "objects/player/Player";
 
 interface ZoneClient {
 	void disconnect(boolean doLock = true);

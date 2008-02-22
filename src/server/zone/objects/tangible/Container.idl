@@ -43,6 +43,7 @@ which carries forward this exception.
 */
 
 import "../scene/SceneObject";
+
 import "TangibleObject";
 
 interface Container implements TangibleObject {

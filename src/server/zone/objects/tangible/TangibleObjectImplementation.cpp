@@ -93,10 +93,24 @@ TangibleObjectImplementation::TangibleObjectImplementation(CreatureObject* creat
 }
 
 TangibleObjectImplementation::~TangibleObjectImplementation() {
+	if (container != NULL) {
+		error("item still in container on delete");
+	
+		raise(SIGSEGV);	
+	}
+	
 	delete itemAttributes;	
 }
 
 void TangibleObjectImplementation::initialize() { 
+	stringstream name;
+	name << "TangibleObject :" << objectID;
+	setLoggingName(name.str());
+	
+	setLogging(false);
+	setGlobalLogging(true);
+	
+	
 	container = NULL;
 	zone = NULL;
 	

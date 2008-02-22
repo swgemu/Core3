@@ -196,9 +196,9 @@ void ZoneServerImplementation::run() {
 
 void ZoneServerImplementation::shutdown() {
 	if (chatManager != NULL)
-		chatManager->broadcastMessage("Server is shutting down in 10 seconds..");
+		chatManager->broadcastMessage("Server is shutting down in 30 seconds..");
 	
-	Thread::sleepMili(1000);
+	Thread::sleepMili(30000);
 
 	stop();
 
@@ -274,7 +274,9 @@ ServiceClient* ZoneServerImplementation::createConnection(Socket* sock, SocketAd
 	if (ip.substr(0, 14) == "89.132.121.190")
 		client->setPacketLoss(25);*/
 	
-	client->deploy("ZoneClient", addr.getNetworkID());
+	stringstream name;
+	name << "ZoneClient " << addr.getFullIPAddress();
+	client->deploy(name.str());
 						
 	info("client connected from \'" + client->getAddress() + "\'");
 	

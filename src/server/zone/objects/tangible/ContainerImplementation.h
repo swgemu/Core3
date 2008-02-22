@@ -71,7 +71,10 @@ public:
 	virtual ~ContainerImplementation() {
 		for (int i = 0; i < items.size(); ++i) {
 			SceneObject* item = items.get(i);
-
+			
+			if (item->isTangible())
+				((TangibleObject*) item)->setContainer(NULL);
+			
 			delete item;
 		}
 		
@@ -92,11 +95,21 @@ public:
 	}
 
 	void removeObject(int index) {
+		SceneObject* item = items.get(index);
+	
 		items.remove(index);
+
+		if (item->isTangible())
+			((TangibleObject*) item)->setContainer(NULL);
 	}
 
 	void removeObject(uint64 oid) {
+		SceneObject* item = items.get(oid);
+		
 		items.drop(oid);
+		
+		if (item != NULL && item->isTangible())
+			((TangibleObject*) item)->setContainer(NULL);
 	}
 
 	int objectsSize() {

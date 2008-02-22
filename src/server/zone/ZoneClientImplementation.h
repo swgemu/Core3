@@ -54,7 +54,7 @@ which carries forward this exception.
 #include "ZoneClient.h"
 
 class ZoneClientImplementation : public BaseClientProxy, public ZoneClientServant {
-	Player* player;
+	ManagedReference<Player> player;
 	
 	uint32 sessionKey;
 	

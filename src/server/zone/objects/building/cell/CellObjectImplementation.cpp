@@ -62,6 +62,12 @@ CellObjectImplementation::CellObjectImplementation(uint64 oid, BuildingObject* b
 	objectType = SceneObjectImplementation::CELL;
 	
 	children.setInsertPlan(SortedVector<SceneObject*>::NO_DUPLICATE);
+	stringstream name;
+	name << "Cell :" << oid;
+	setLoggingName(name.str());
+	
+	setLogging(false);
+	setGlobalLogging(true);
 }
 
 CellObjectImplementation::~CellObjectImplementation() {	
@@ -74,8 +80,13 @@ void CellObjectImplementation::insertToZone(Zone* zone) {
 void CellObjectImplementation::addChild(SceneObject* obj, bool doLock) {
 	wlock(doLock);
 	
-	if (children.put(obj) != -1)
+	if (children.put(obj) != -1) {
+		stringstream object;
+		object << "acquired child:" << obj->getLoggingName();
+		info(object.str());
+		
 		obj->acquire();
+	}
 	
 	unlock(doLock);
 }
@@ -83,8 +94,13 @@ void CellObjectImplementation::addChild(SceneObject* obj, bool doLock) {
 void CellObjectImplementation::removeChild(SceneObject* obj, bool doLock) {
 	wlock(doLock);
 	
-	if (children.drop(obj))
+	if (children.drop(obj)) {
 		obj->release();
+		
+		stringstream object;
+		object << "released child:" << obj->getLoggingName();
+		info(object.str());	
+	}
 	
 	unlock(doLock);
 }

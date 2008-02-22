@@ -1144,10 +1144,10 @@ void ObjectControllerMessage::parseServerDestroyObject(Player* player, Message* 
 		BaseMessage* msg = new SceneObjectDestroyMessage(item);
 		player->getClient()->sendMessage(msg);
 		
-		delete item;
+		//delete item;
 	} else if (waypoint != NULL) {
-		if (player->removeWaypoint(waypoint))
-			delete waypoint;
+		if (player->removeWaypoint(waypoint));
+			//delete waypoint;
 	}
 }
 
