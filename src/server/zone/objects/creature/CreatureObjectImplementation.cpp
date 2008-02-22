@@ -264,6 +264,10 @@ CreatureObjectImplementation::CreatureObjectImplementation(uint64 oid) : Creatur
 	mindBuff = false;
 	focusBuff = false;
 	willpowerBuff = false;
+	
+	spawnPositionX = 0;
+	spawnPositionY = 0;
+	spawnPositionZ = 0;
 
 }
 

@@ -235,6 +235,10 @@ protected:
 	//float oldpositionZ;
 	float oldpositionY;
 	
+	float spawnPositionX;
+	float spawnPositionY;
+	float spawnPositionZ;
+	
 	// combat
 	int fireDotType;
 	int fireDotStrength;

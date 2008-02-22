@@ -270,6 +270,8 @@ void CreatureImplementation::unload() {
 	
 	creatureManager->despawnCreature(_this);
 	
+	setPosition(spawnPositionX, spawnPositionZ, spawnPositionY);
+	
 	info("creature despawned");
 }
 

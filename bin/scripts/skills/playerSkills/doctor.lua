@@ -55,3 +55,54 @@ HealSelfSkill = {
 }
 
 AddHealSelfSkill(HealSelfSkill);
+
+HealSelfSkill = {
+	skillname = "curepoison",
+	effect = "clienteffect/healing_healdamage.cef",
+	animation = "heal_self",
+
+	healHealth = 0,
+	healAction = 0,
+	healMind = -300,
+
+	healPoison = 1,
+
+	speed = 5.0,
+
+}
+
+AddHealSelfSkill(HealSelfSkill);
+
+HealSelfSkill = {
+	skillname = "curedisease",
+	effect = "clienteffect/healing_healdamage.cef",
+	animation = "heal_self",
+
+	healHealth = 0,
+	healAction = 0,
+	healMind = -300,
+
+	healDisease = 1,
+
+	speed = 5.0,
+
+}
+
+AddHealSelfSkill(HealSelfSkill);
+
+HealSelfSkill = {
+	skillname = "extinguishfire",
+	effect = "clienteffect/healing_healdamage.cef",
+	animation = "heal_self",
+
+	healHealth = 0,
+	healAction = 0,
+	healMind = -300,
+
+	healFire = 1,
+
+	speed = 5.0,
+
+}
+
+AddHealSelfSkill(HealSelfSkill);

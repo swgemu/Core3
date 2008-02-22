@@ -540,6 +540,10 @@ int CreatureManagerImplementation::addCreature(lua_State *L) {
 	float z = creature.getFloatField("positionZ");
 	creatureImpl->initializePosition(x, z, y);
 	
+	creatureImpl->spawnPositionX = x;
+	creatureImpl->spawnPositionY = y;
+	creatureImpl->spawnPositionZ = z;	
+	
 	creatureImpl->accuracy = creature.getIntField("accuracy");
 	creatureImpl->speed = creature.getFloatField("speed");
 	creatureImpl->acceleration = creature.getFloatField("acceleration");
