@@ -90,11 +90,11 @@ RandPoolAtt = {
 	stunChance = 0,
 	intimidateChance = 0,
 	
-	CbtSpamBlock = "",
-	CbtSpamCounter = "",
-	CbtSpamEvade = "",
-	CbtSpamHit = "",
-	CbtSpamMiss = "",
+	CbtSpamBlock = "knockdownfire_block",
+	CbtSpamCounter = "knockdownfire_counter",
+	CbtSpamEvade = "knockdownfire_evade",
+	CbtSpamHit = "knockdownfire_hit",
+	CbtSpamMiss = "knockdownfire_miss",
 }
 
 AddRandomPoolAttackTargetSkill(RandPoolAtt)

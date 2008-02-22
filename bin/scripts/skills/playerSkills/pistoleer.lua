@@ -206,11 +206,11 @@ RandPoolAtt = {
 	stunChance = 0,
 	intimidateChance = 0,
 	
-	CbtSpamBlock = "",
-	CbtSpamCounter = "",
-	CbtSpamEvade = "",
-	CbtSpamHit = "",
-	CbtSpamMiss = "",
+	CbtSpamBlock = "disarmshot_block",
+	CbtSpamCounter = "disarmshot_counter",
+	CbtSpamEvade = "disarmshot_evade",
+	CbtSpamHit = "disarmshot_hit",
+	CbtSpamMiss = "disarmshot_miss",
 }
 
 AddRandomPoolAttackTargetSkill(RandPoolAtt)
@@ -237,11 +237,11 @@ RandPoolAtt = {
 	stunChance = 0,
 	intimidateChance = 0,
 	
-	CbtSpamBlock = "",
-	CbtSpamCounter = "",
-	CbtSpamEvade = "",
-	CbtSpamHit = "",
-	CbtSpamMiss = "",
+	CbtSpamBlock = "doubletap_block",
+	CbtSpamCounter = "doubletap_counter",
+	CbtSpamEvade = "doubletap_evade",
+	CbtSpamHit = "doubletap_hit",
+	CbtSpamMiss = "doubletap_miss",
 }
 
 AddRandomPoolAttackTargetSkill(RandPoolAtt)
@@ -268,11 +268,11 @@ RandPoolAtt = {
 	stunChance = 0,
 	intimidateChance = 0,
 	
-	CbtSpamBlock = "",
-	CbtSpamCounter = "",
-	CbtSpamEvade = "",
-	CbtSpamHit = "",
-	CbtSpamMiss = "",
+	CbtSpamBlock = "stoppingshot_block",
+	CbtSpamCounter = "stoppingshot_counter",
+	CbtSpamEvade = "stoppingshot_evade",
+	CbtSpamHit = "stoppingshot_hit",
+	CbtSpamMiss = "stoppingshot_miss",
 }
 
 AddRandomPoolAttackTargetSkill(RandPoolAtt)
@@ -299,11 +299,11 @@ RandPoolAtt = {
 	stunChance = 0,
 	intimidateChance = 0,
 	
-	CbtSpamBlock = "",
-	CbtSpamCounter = "",
-	CbtSpamEvade = "",
-	CbtSpamHit = "",
-	CbtSpamMiss = "",
+	CbtSpamBlock = "fanshot_block",
+	CbtSpamCounter = "fanshot_counter",
+	CbtSpamEvade = "fanshot_evade",
+	CbtSpamHit = "fanshot_hit",
+	CbtSpamMiss = "fanshot_miss",
 }
 
 AddRandomPoolAttackTargetSkill(RandPoolAtt)
@@ -330,11 +330,12 @@ RandPoolAtt = {
 	stunChance = 0,
 	intimidateChance = 0,
 	
-	CbtSpamBlock = "",
-	CbtSpamCounter = "",
-	CbtSpamEvade = "",
-	CbtSpamHit = "",
-	CbtSpamMiss = "",
+	CbtSpamBlock = "pistolwhip_block",
+	CbtSpamCounter = "pistolwhip_counter",
+	CbtSpamEvade = "pistolwhip_evade",
+	CbtSpamHit = "pistolwhip_hit",
+	CbtSpamMiss = "pistolwhip_miss",
+
 }
 
 AddRandomPoolAttackTargetSkill(RandPoolAtt)
@@ -361,11 +362,12 @@ RandPoolAtt = {
 	stunChance = 0,
 	intimidateChance = 0,
 	
-	CbtSpamBlock = "",
-	CbtSpamCounter = "",
-	CbtSpamEvade = "",
-	CbtSpamHit = "",
-	CbtSpamMiss = "",
+	CbtSpamBlock = "pistolsmash_block",
+	CbtSpamCounter = "pistolsmash_counter",
+	CbtSpamEvade = "pistolsmash_evade",
+	CbtSpamHit = "pistolsmash_hit",
+	CbtSpamMiss = "pistolsmash_miss",
+
 }
 
 AddRandomPoolAttackTargetSkill(RandPoolAtt)
@@ -392,11 +394,11 @@ RandPoolAtt = {
 	stunChance = 0,
 	intimidateChance = 0,
 	
-	CbtSpamBlock = "",
-	CbtSpamCounter = "",
-	CbtSpamEvade = "",
-	CbtSpamHit = "",
-	CbtSpamMiss = "",
+	CbtSpamBlock = "multishot_block",
+	CbtSpamCounter = "multishot_counter",
+	CbtSpamEvade = "multishot_evade",
+	CbtSpamHit = "multishot_hit",
+	CbtSpamMiss = "multishot_miss",
 }
 
 AddRandomPoolAttackTargetSkill(RandPoolAtt)
@@ -423,11 +425,11 @@ RandPoolAtt = {
 	stunChance = 0,
 	intimidateChance = 0,
 	
-	CbtSpamBlock = "",
-	CbtSpamCounter = "",
-	CbtSpamEvade = "",
-	CbtSpamHit = "",
-	CbtSpamMiss = "",
+	CbtSpamBlock = "disarmblast_block",
+	CbtSpamCounter = "disarmblast_counter",
+	CbtSpamEvade = "disarmblast_evade",
+	CbtSpamHit = "disarmblast_hit",
+	CbtSpamMiss = "disarmblast_miss",
 }
 
 AddRandomPoolAttackTargetSkill(RandPoolAtt)
