@@ -73,25 +73,12 @@ DraftSchematicExpPropGroup* DraftSchematicExpPropGroup::clone() {
 }
 
 
-DraftSchematicExpPropGroup* DraftSchematicExpPropGroup::deploy(const string& name) {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 6);
-		invocation.addAsciiParameter(name);
-
-		return (DraftSchematicExpPropGroup*) invocation.executeWithObjectReturn();
-	} else
-		return ((DraftSchematicExpPropGroupImplementation*) _impl)->deploy(name);
-}
-
 void DraftSchematicExpPropGroup::addExperimentalProperty(const string& experimentalPropertyType, unsigned int weight) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 7);
+		ORBMethodInvocation invocation(this, 6);
 		invocation.addAsciiParameter(experimentalPropertyType);
 		invocation.addUnsignedIntParameter(weight);
 
@@ -105,7 +92,7 @@ void DraftSchematicExpPropGroup::sendToPlayer(ObjectControllerMessage* msg) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 8);
+		ORBMethodInvocation invocation(this, 7);
 		invocation.addObjectParameter(msg);
 
 		invocation.executeWithVoidReturn();
@@ -118,7 +105,7 @@ bool DraftSchematicExpPropGroup::containsExpPropType(const string& expPropType) 
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 9);
+		ORBMethodInvocation invocation(this, 8);
 		invocation.addAsciiParameter(expPropType);
 
 		return invocation.executeWithBooleanReturn();
@@ -131,7 +118,7 @@ float DraftSchematicExpPropGroup::getExpPropPercentage(const string& expPropType
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 10);
+		ORBMethodInvocation invocation(this, 9);
 		invocation.addAsciiParameter(expPropType);
 
 		return invocation.executeWithFloatReturn();
@@ -144,7 +131,7 @@ unsigned int DraftSchematicExpPropGroup::getExpPropPercentageListSize() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 11);
+		ORBMethodInvocation invocation(this, 10);
 
 		return invocation.executeWithUnsignedIntReturn();
 	} else
@@ -156,7 +143,7 @@ float DraftSchematicExpPropGroup::getExpPropPercentage(unsigned int index) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 12);
+		ORBMethodInvocation invocation(this, 11);
 		invocation.addUnsignedIntParameter(index);
 
 		return invocation.executeWithFloatReturn();
@@ -169,7 +156,7 @@ unsigned char DraftSchematicExpPropGroup::getTypeAndWeight(unsigned int index) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 13);
+		ORBMethodInvocation invocation(this, 12);
 		invocation.addUnsignedIntParameter(index);
 
 		return invocation.executeWithUnsignedCharReturn();
@@ -189,27 +176,24 @@ Packet* DraftSchematicExpPropGroupAdapter::invokeMethod(uint32 methid, ORBMethod
 
 	switch (methid) {
 	case 6:
-		resp->insertLong(deploy(inv->getAsciiParameter(_param0_deploy__string_))->_getORBObjectID());
-		break;
-	case 7:
 		addExperimentalProperty(inv->getAsciiParameter(_param0_addExperimentalProperty__string_int_), inv->getUnsignedIntParameter());
 		break;
-	case 8:
+	case 7:
 		sendToPlayer((ObjectControllerMessage*) inv->getObjectParameter());
 		break;
-	case 9:
+	case 8:
 		resp->insertBoolean(containsExpPropType(inv->getAsciiParameter(_param0_containsExpPropType__string_)));
 		break;
-	case 10:
+	case 9:
 		resp->insertFloat(getExpPropPercentage(inv->getAsciiParameter(_param0_getExpPropPercentage__string_)));
 		break;
-	case 11:
+	case 10:
 		resp->insertInt(getExpPropPercentageListSize());
 		break;
-	case 12:
+	case 11:
 		resp->insertFloat(getExpPropPercentage(inv->getUnsignedIntParameter()));
 		break;
-	case 13:
+	case 12:
 		resp->insertByte(getTypeAndWeight(inv->getUnsignedIntParameter()));
 		break;
 	default:
@@ -217,10 +201,6 @@ Packet* DraftSchematicExpPropGroupAdapter::invokeMethod(uint32 methid, ORBMethod
 	}
 
 	return resp;
-}
-
-DraftSchematicExpPropGroup* DraftSchematicExpPropGroupAdapter::deploy(const string& name) {
-	return ((DraftSchematicExpPropGroupImplementation*) impl)->deploy(name);
 }
 
 void DraftSchematicExpPropGroupAdapter::addExperimentalProperty(const string& experimentalPropertyType, unsigned int weight) {

@@ -45,18 +45,20 @@ which carries forward this exception.
 import "../../packets/object/ObjectControllerMessage";
 
 interface DraftSchematicExpPropGroup {
-	
 	DraftSchematicExpPropGroup();
-	DraftSchematicExpPropGroup deploy(const string name);
 	
 	void addExperimentalProperty(const string experimentalPropertyType, unsigned int weight);
 	
 	void sendToPlayer(ObjectControllerMessage msg);
 	
 	boolean containsExpPropType(const string expPropType);
-	
+
+	// getters	
 	float getExpPropPercentage(const string expPropType);
+	
 	unsigned int getExpPropPercentageListSize();
+	
 	float getExpPropPercentage(unsigned int index);
+	
 	unsigned char getTypeAndWeight(unsigned int index);
 }

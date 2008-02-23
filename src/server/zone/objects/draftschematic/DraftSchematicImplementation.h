@@ -42,12 +42,11 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-//  Author: Link
-// --------------------------------------------------
 #ifndef DRAFTSCHEMATICIMPLEMENTATION_H_
 #define DRAFTSCHEMATICIMPLEMENTATION_H_
 
 #include "engine/engine.h"
+
 #include "../../packets.h"
 
 #include "DraftSchematic.h"
@@ -62,8 +61,6 @@ class Player;
 
 
 class DraftSchematicImplementation : public DraftSchematicServant {
-
-private:
 	// example: 0x838FF623
 	uint32 schematicID;
 	
@@ -89,10 +86,8 @@ private:
 	bool persistent;
 	
 public:
-	
 	DraftSchematicImplementation(uint32 schematicID, const string& objName, uint32 objCRC, const string& groupName, 
 			uint32 complexity, uint32 schematicSize) :	DraftSchematicServant() {
-		
 		this->schematicID = schematicID;
 		this->objName = objName;
 		this->schematicCRC = objCRC;
@@ -103,38 +98,10 @@ public:
 		persistent = false;
 	}
 	
-	inline DraftSchematic* deploy(const string& name) {
-		return (DraftSchematic*) ORBObjectServant::deploy(name);
+	DraftSchematic* deploy() {
+		return (DraftSchematic*) ORBObjectServant::deploy();
 	}
 
-	inline uint32 getSchematicID() {
-		return schematicID;
-	}
-	
-	inline uint32 getSchematicCRC() {
-		return schematicCRC;
-	}
-	
-	inline string& getName() {
-		return objName;
-	}
-		
-	inline string& getGroupName() {
-		return groupName;
-	}
-	
-	inline uint32 getComplexity() {
-		return complexity;
-	}
-	
-	inline uint32 getSchematicSize() {
-		return schematicSize;
-	}
-	
-	void setPersistent(bool status) {
-		persistent = status;
-	}
-	
 	int getIngredientListSize() {
 		return draftSchematicIngredients.size();
 	}
@@ -152,12 +119,13 @@ public:
 	}
 	
 	// Ingredient Methods
-	inline void addIngredient(const string& ingredientTemplateName, const string& ingredientTitleName,
+	void addIngredient(const string& ingredientTemplateName, const string& ingredientTitleName,
 			bool optional, const string& resourceType, uint32 resourceQuantity) {
-		
 		DraftSchematicIngredientImplementation* dsiImp = new DraftSchematicIngredientImplementation(ingredientTemplateName, 
 				ingredientTitleName, optional, resourceType, resourceQuantity);
-		DraftSchematicIngredient* dsi = (DraftSchematicIngredient*) dsiImp->deploy(ingredientTemplateName);
+	
+		DraftSchematicIngredient* dsi = (DraftSchematicIngredient*) dsiImp->deploy();
+		
 		draftSchematicIngredients.add(dsi);
 	}
 	
@@ -165,8 +133,7 @@ public:
 	// STILL ARE IN YOUR DATAPAD, SO IF YOU CLICK THEM, IT WILL SAY SCHEMATIC NOT FOUND AND WILL
 	// SCREW UP THE CLIENT TRYING TO GET THE INGREDIENTS AND EXP PROPS FROM THERE ON UNTIL THE CLIENT
 	// FULLY EXITS THE GAME
-	inline void sendIngredientsToPlayer(Player* player) {
-		
+	void sendIngredientsToPlayer(Player* player) {
 		ObjectControllerMessage* msg = new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x01BF);
 		
 		msg->insertInt(schematicID);  	// ex: 0x838FF623838FF623 (objID is always the crc value in the upper 4 bytes and the lower 4 bytes)
@@ -200,21 +167,20 @@ public:
 	
 	// Experimental Property Methods
 	// UPDATE THIS METHOD WHEN WE CAN PASS VECTORS AROUND IN IDL
-	inline void addExperimentalProperty(uint32 groupNumber, const string& experimentalProperty, uint32 weight) {
-		
-		if(groupNumber < draftSchematicExpPropGroups.size()) {
+	void addExperimentalProperty(uint32 groupNumber, const string& experimentalProperty, uint32 weight) {
+		if (groupNumber < draftSchematicExpPropGroups.size()) {
 			draftSchematicExpPropGroups.get(groupNumber)->addExperimentalProperty(experimentalProperty, weight);
 		} else {
 			DraftSchematicExpPropGroupImplementation* dsEpgImp = new DraftSchematicExpPropGroupImplementation();
-			string expPropName = "ExpProp";  // I dunno why orb deploy methods need names but i hope this works
-			DraftSchematicExpPropGroup* dsEpg = (DraftSchematicExpPropGroup*) dsEpgImp->deploy(expPropName);
+			DraftSchematicExpPropGroup* dsEpg = (DraftSchematicExpPropGroup*) dsEpgImp->deploy();
+			
 			dsEpg->addExperimentalProperty(experimentalProperty, weight);
+			
 			draftSchematicExpPropGroups.add(dsEpg);
 		}
 	}
 	
-	inline void sendExperimentalPropertiesToPlayer(Player* player) {
-		
+	void sendExperimentalPropertiesToPlayer(Player* player) {
 		ObjectControllerMessage* msg = new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x0207);
 				
 		msg->insertInt(schematicID);
@@ -223,9 +189,10 @@ public:
 		uint8 listSize = draftSchematicExpPropGroups.size();
 		
 		/*uint32 padding = 0;
-		if(draftSchematicIngredients.size() > 0) {
+		if (draftSchematicIngredients.size() > 0) {
 			string templateName = draftSchematicIngredients.get(0)->getTemplateName();
-			if(templateName == "craft_chemical_ingredients_n" || templateName == "craft_droid_ingredients_n" 
+			
+			if( templateName == "craft_chemical_ingredients_n" || templateName == "craft_droid_ingredients_n" 
 					|| templateName == "craft_munition_ingredients_n" || templateName == "craft_structure_ingredients_n"
 						|| templateName == "craft_tissue_ingredients_n" || templateName == "craft_vehicle_ingredients_n" 
 							|| templateName == "craft_weapon_ingredients_n") {
@@ -236,20 +203,19 @@ public:
 		}*/
 
 		// Have to run the loop twice.  Ask soe why :/
-		for(int soeFtl = 0; soeFtl < 2; soeFtl++) {
-			
+		for (int soeFtl = 0; soeFtl < 2; soeFtl++) {
 			// The +3 is for the padding
 			//msg->insertByte(listSize + padding);
 			msg->insertByte(listSize);
 			
 			/* This loop adds the padding required for this packet to work
-			for(int soeIsDumb = 0; soeIsDumb < padding; soeIsDumb++) {
+			for (int soeIsDumb = 0; soeIsDumb < padding; soeIsDumb++) {
 				msg->insertByte(1);
 				msg->insertByte(0);
 			}*/
 			
 			// Send all the experimental property data
-			for(int i = 0; i < listSize; i++) {
+			for (int i = 0; i < listSize; i++) {
 				DraftSchematicExpPropGroup* dsEpg = draftSchematicExpPropGroups.get(i);
 				dsEpg->sendToPlayer(msg);
 			}
@@ -257,7 +223,37 @@ public:
 		
 		player->sendMessage(msg);
 	}
+
+	// setters
+	inline void setPersistent(bool status) {
+		persistent = status;
+	}
+
+	//getters
+	inline uint32 getSchematicID() {
+		return schematicID;
+	}
+		
+	inline uint32 getSchematicCRC() {
+		return schematicCRC;
+	}
+		
+	inline string& getName() {
+		return objName;
+	}
+		
+	inline string& getGroupName() {
+		return groupName;
+	}
+	
+	inline uint32 getComplexity() {
+		return complexity;
+	}
+		
+	inline uint32 getSchematicSize() {
+		return schematicSize;
+	}
+
 };
 
 #endif /*DRAFTSCHEMATICIMPLEMENTATION_H_*/
-// --------------------------------------------------

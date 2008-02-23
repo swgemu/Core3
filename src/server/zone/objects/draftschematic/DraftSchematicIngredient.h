@@ -63,8 +63,6 @@ public:
 
 	virtual ~DraftSchematicIngredient();
 
-	DraftSchematicIngredient* deploy(const string& name);
-
 	void helperSendToPlayer(ObjectControllerMessage* msg);
 
 	string& getTemplateName();
@@ -94,8 +92,6 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, ORBMethodInvocation* inv);
 
-	DraftSchematicIngredient* deploy(const string& name);
-
 	void helperSendToPlayer(ObjectControllerMessage* msg);
 
 	string& getTemplateName();
@@ -108,8 +104,6 @@ public:
 
 	bool getOptional();
 
-protected:
-	string _param0_deploy__string_;
 };
 
 class DraftSchematicIngredientHelper : public ORBClassHelper, public Singleton<DraftSchematicIngredientHelper> {

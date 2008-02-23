@@ -45,29 +45,24 @@ which carries forward this exception.
 #ifndef CRAFTINGMANAGERIMPLEMENTATION_H_
 #define CRAFTINGMANAGERIMPLEMENTATION_H_
 
-// this section is what CraftingManagerImplementation.h should have (i think)
 #include "engine/engine.h"
 
 #include "../../../db/ServerDatabase.h"
 
+#include "../../Zone.h"
+#include "../../ZoneServer.h"
+
 #include "CraftingManager.h"
+
 #include "../../objects/draftschematic/DraftSchematic.h"
 #include "../../objects/draftschematic/DraftSchematicImplementation.h"
 #include "../../objects/draftschematic/DraftSchematicGroup.h"
 #include "../../objects/draftschematic/DraftSchematicGroupImplementation.h"
 
-// End
-
-// this section is what CraftingManagerImplementation.cpp should have (i think)
-#include "system/lang.h"
-
 #include "../../objects.h"
 
-#include "../../Zone.h"
-#include "../../ZoneServer.h"
 #include "../../packets.h"
 
-// End
 class ZoneServer;
 
 class CraftingManagerImplementation : public CraftingManagerServant, public Mutex {
@@ -85,7 +80,7 @@ public:
 		loadDraftSchematicsFromDatabase();
 	}
 	
-	inline void loadDraftSchematicsFromDatabase() {
+	void loadDraftSchematicsFromDatabase() {
 		lock();
 		
 		ResultSet* result;
@@ -97,17 +92,21 @@ public:
 		
 		while (result->next()) {
 			DraftSchematic* draftSchematic = loadDraftSchematic(result);
+			
 			string groupName = draftSchematic->getGroupName();
 			
 			if (draftSchematic != NULL)
 				if (!draftSchematicsMap.contains(groupName)) {
 					DraftSchematicGroupImplementation* dsgImp = new DraftSchematicGroupImplementation();
-					DraftSchematicGroup* dsg = (DraftSchematicGroup*) dsgImp->deploy(groupName);
+					DraftSchematicGroup* dsg = (DraftSchematicGroup*) dsgImp->deploy();
+					
 					dsg->addDraftSchematic(draftSchematic);
+					
 					draftSchematicsMap.put(groupName, dsg);
 				} else
 					draftSchematicsMap.get(draftSchematic->getGroupName())->addDraftSchematic(draftSchematic);
 		}
+		
 		delete result;
 		
 		unlock();
@@ -143,7 +142,8 @@ public:
 		
 		DraftSchematicImplementation* dsImpl = new DraftSchematicImplementation(schematicID, objName, objCRC, groupName,
 				complexity, schematicSize);
-		DraftSchematic* ds = (DraftSchematic*)dsImpl->deploy(objName);
+		
+		DraftSchematic* ds = (DraftSchematic*) dsImpl->deploy();
 		
 		// Parse the Ingredient data of DraftSchematic from DB
 
@@ -171,7 +171,7 @@ public:
 		// Add resource requirement sets to schematic
 		// Each vector just parsed should all have the same .size() so any .size() will work
 		// for the amount of times the loop should execute
-		for(int i = 0; i < parsedIngredientTemplateNames.size(); i++) {
+		for (int i = 0; i < parsedIngredientTemplateNames.size(); i++) {
 			ds->addIngredient(parsedIngredientTemplateNames.get(i), parsedIngredientTitleNames.get(i),
 					(bool)parsedOptionalFlags.get(i), parsedResourceTypes.get(i), parsedResourceQuantities.get(i));
 		}
@@ -192,8 +192,8 @@ public:
 
 		// Add experimental properties groups to the draft schematic
 		uint32 iterator = 0;
-		for(uint32 i = 0; i < parsedNumberExperimentalProperties.size(); i++) {
-			for(uint32 j = 0; j < parsedNumberExperimentalProperties.get(i); j++) {
+		for (uint32 i = 0; i < parsedNumberExperimentalProperties.size(); i++) {
+			for (uint32 j = 0; j < parsedNumberExperimentalProperties.get(i); j++) {
 				ds->addExperimentalProperty(i, parsedExperimentalProperties.get(iterator), parsedExperimentalWeights.get(iterator)); 
 				iterator++;
 			}
@@ -206,9 +206,10 @@ public:
 		string parseHelper;
 		Vector<string> parsedStrings;
 		
-		for(int i = 0; i < unparsedStrings.size(); i++) {
-			char currentChar = unparsedStrings.at(i); 
-			if(currentChar != ' ') {
+		for (int i = 0; i < unparsedStrings.size(); i++) {
+			char currentChar = unparsedStrings.at(i);
+			
+			if (currentChar != ' ') {
 				if(currentChar == ',') {
 					parsedStrings.add(parseHelper);
 					parseHelper.clear();
@@ -217,6 +218,7 @@ public:
 				}
 			}
 		}
+		
 		// The last template name has to be added because it was not added during the loop
 		parsedStrings.add(parseHelper);
 
@@ -227,10 +229,11 @@ public:
 		string parseHelper;
 		Vector<uint32> parsedInts;
 		
-		for(int i = 0; i < unparsedInts.size(); i++) {
+		for (int i = 0; i < unparsedInts.size(); i++) {
 			char currentChar = unparsedInts.at(i);
-			if(currentChar != ' ') {
-				if(currentChar == ',') {
+			
+			if (currentChar != ' ') {
+				if (currentChar == ',') {
 					uint32 resourceQuantity = (uint32)atoi(parseHelper.c_str());
 					parsedInts.add(resourceQuantity);
 					parseHelper.clear();
@@ -239,6 +242,7 @@ public:
 				}
 			}
 		}
+		
 		// The last template name has to be added because it was not added during the loop
 		uint32 resourceQuantity = (uint32)atoi(parseHelper.c_str());
 		parsedInts.add(resourceQuantity);
@@ -404,11 +408,11 @@ public:
 	void addDraftSchematicsFromGroupName(Player* player, const string& schematicGroupName) {
 		lock();
 		
-		if(draftSchematicsMap.contains(schematicGroupName)){
+		if (draftSchematicsMap.contains(schematicGroupName)){
 			DraftSchematicGroup* dsg = draftSchematicsMap.get(schematicGroupName);
 			
-			if(dsg != NULL) {
-				for(int i = 0; i < dsg->getSizeOfDraftSchematicList(); i++) {
+			if (dsg != NULL) {
+				for (int i = 0; i < dsg->getSizeOfDraftSchematicList(); i++) {
 					DraftSchematic* ds = dsg->getDraftSchematic(i);
 					player->addDraftSchematic(ds);
 				}
@@ -421,11 +425,11 @@ public:
 	void subtractDraftSchematicsFromGroupName(Player* player, const string& schematicGroupName) {
 		lock();
 		
-		if(draftSchematicsMap.contains(schematicGroupName)){
+		if (draftSchematicsMap.contains(schematicGroupName)){
 			DraftSchematicGroup* dsg = draftSchematicsMap.get(schematicGroupName);
 			
-			if(dsg != NULL) {
-				for(int i = 0; i < dsg->getSizeOfDraftSchematicList(); i++) {
+			if (dsg != NULL) {
+				for (int i = 0; i < dsg->getSizeOfDraftSchematicList(); i++) {
 					DraftSchematic* ds = dsg->getDraftSchematic(i);
 					player->subtractDraftSchematic(ds);
 				}

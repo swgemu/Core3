@@ -206,12 +206,13 @@ void PlayerImplementation::init() {
 	
 	suiBoxNextID = 0;
 	
-	setLogging(false);
+	setLogging(true);
 	setGlobalLogging(true);
 }
 
 Player* PlayerImplementation::create(ZoneClient* client) {
-	Player* player = (Player*) deploy();
+	string orbname = "Player " + firstName;
+	Player* player = (Player*) deploy(orbname);
 
 	PlayerObjectImplementation* playerObjectImpl = new PlayerObjectImplementation(player);
 	playerObject = (PlayerObject*) playerObjectImpl->deploy();
@@ -2324,7 +2325,7 @@ void PlayerImplementation::subtractDraftSchematic(DraftSchematic* ds) {
 void PlayerImplementation::sendDraftSchematics() {
 	PlayerObjectDeltaMessage9* dplay9;
 
-	dplay9 = new PlayerObjectDeltaMessage9(_this->getPlayerObject());
+	dplay9 = new PlayerObjectDeltaMessage9(playerObject);
 
 	dplay9->updateDraftSchematics();
 
@@ -2338,9 +2339,10 @@ void PlayerImplementation::sendDraftSchematics() {
 	// when the datapad is refreshed (close datapad, open datapad to refresh), if the client
 	// clicks on a draft schematic he doesn't have, it screws up their retreiveing the information
 	// of the draft schematic because they don't really have that schematic
-	for(int i = 0; i < draftSchematicList.size(); i++) {
-		draftSchematicList.get(i)->sendIngredientsToPlayer(_this);
-		draftSchematicList.get(i)->sendExperimentalPropertiesToPlayer(_this);
+	for (int i = 0; i < draftSchematicList.size(); i++) {
+		DraftSchematic* schematic = draftSchematicList.get(i); 
+		schematic->sendIngredientsToPlayer(_this);
+		schematic->sendExperimentalPropertiesToPlayer(_this);
 	}
 }
 

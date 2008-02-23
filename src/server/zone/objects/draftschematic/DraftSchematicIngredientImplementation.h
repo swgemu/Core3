@@ -42,9 +42,6 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-//  Author: Link
-// --------------------------------------------------
-
 #ifndef DRAFTSCHEMATICINGREDIENTIMPLEMENTATION_H_
 #define DRAFTSCHEMATICINGREDIENTIMPLEMENTATION_H_
 
@@ -54,8 +51,6 @@ which carries forward this exception.
 #include "DraftSchematicIngredient.h"
 
 class DraftSchematicIngredientImplementation : public DraftSchematicIngredientServant {
-
-private:
 	// example: craft_food_ingredients_n
 	string templateName;
 	// example: dried Fruit
@@ -68,27 +63,26 @@ private:
 	
 	// example: true
 	bool optional;
+	
 public:
-	inline DraftSchematicIngredientImplementation(const string& ingredientTemplateName, const string& ingredientTitleName,
+	DraftSchematicIngredientImplementation(const string& ingredientTemplateName, const string& ingredientTitleName,
 			bool optional, const string& resourceType, uint32 resourceQuantity) : DraftSchematicIngredientServant() {
-		
 		this->templateName = ingredientTemplateName;
 		this->titleName = ingredientTitleName;
 		this->optional = optional;
 		this->resourceType = resourceType;
 		this->resourceQuantity = resourceQuantity;
 	}
-	
-	inline DraftSchematicIngredient* deploy(const string& name) {
-		return (DraftSchematicIngredient*) ORBObjectServant::deploy(name);
+
+	DraftSchematicIngredient* deploy() {
+		return (DraftSchematicIngredient*) ORBObjectServant::deploy();
 	}
-	
-	inline void helperSendToPlayer(ObjectControllerMessage* msg) {
+	void helperSendToPlayer(ObjectControllerMessage* msg) {
 		msg->insertAscii(templateName); // ex: craft_food_ingredients_n
 		msg->insertInt(0);
 		msg->insertAscii(titleName); // ex: dried_fruit
 		
-		if(optional) {
+		if (optional) {
 			msg->insertByte(1);  // ex: additive is optional so insertByte(1);
 		} else {
 			msg->insertByte(0);
@@ -97,42 +91,43 @@ public:
 		msg->insertAscii(templateName);  // ex: craft_food_ingredients_n
 		msg->insertInt(0);
 		msg->insertAscii(titleName);	// ex: dried_fruit
+		
 		unicode uniResourceType(resourceType);
 		msg->insertUnicode(uniResourceType); // ex: organic
 	
 		// When the ingredient is optional, a byte(5) must be sent, byte(4) for when its not optional
-		if(optional) {
+		if (optional) {
 			msg->insertByte(5);
 		} else if(resourceType.compare(0,16, "object/tangible/") == 0) {
 			msg->insertByte(6);
 		} else {
 			msg->insertByte(4);
 		}
-		
+	
 		msg->insertInt(resourceQuantity); // ex: 3
 	}
 	
 	// getters
-	string& getTemplateName() {
+	inline string& getTemplateName() {
 		return templateName;
 	}
 	
-	string& getTitleName() {
+	inline string& getTitleName() {
 		return titleName;
 	}
 	
-	string& getResourceType() {
+	inline string& getResourceType() {
 		return resourceType;
 	}
 
-	uint32 getResourceQuantity() {
+	inline uint32 getResourceQuantity() {
 		return resourceQuantity;
 	}
 	
-	bool getOptional() {
+	inline bool getOptional() {
 		return optional;
 	}
+	
 };
 
 #endif /*DRAFTSCHEMATICINGREDIENTIMPLEMENTATION_H_*/
-// --------------------------------------------------

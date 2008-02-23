@@ -42,9 +42,6 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-//  Author: Link
-// --------------------------------------------------
-
 #ifndef DRAFTSCHEMATICEXPPROPGROUPIMPLEMENTATION_H_
 #define DRAFTSCHEMATICEXPPROPGROUPIMPLEMENTATION_H_
 
@@ -53,26 +50,26 @@ which carries forward this exception.
 #include "DraftSchematicExpPropGroup.h"
 
 class DraftSchematicExpPropGroupImplementation : public DraftSchematicExpPropGroupServant {
-	
-private:
-	
 	Vector<string> keys; // unfortunetly needed when recalculating percentages
+	
 	VectorMap<string, uint8> expPropTypes;
 	VectorMap<string, uint8> expPropWeights;
 	VectorMap<string, float> expPropWeightPercentages;
+	
 	uint32 expPropGroupListSize;
+	
 public:
 	// When they allow passing of vectors, make this constructor take in a Vector of strings and a vector
 	// of uint32 for the types and weights
-	inline DraftSchematicExpPropGroupImplementation() : DraftSchematicExpPropGroupServant() {
+	DraftSchematicExpPropGroupImplementation() : DraftSchematicExpPropGroupServant() {
 		expPropGroupListSize = 0;
 	}
 	
-	inline DraftSchematicExpPropGroup* deploy(const string& name) {
-		return (DraftSchematicExpPropGroup*) ORBObjectServant::deploy(name);
+	DraftSchematicExpPropGroup* deploy() {
+		return (DraftSchematicExpPropGroup*) ORBObjectServant::deploy();
 	}
 	
-	inline void addExperimentalProperty(const string& experimentalPropertyType, uint32 weight) {
+	void addExperimentalProperty(const string& experimentalPropertyType, uint32 weight) {
 		uint8 expPropType = 0;
 		
 		if(experimentalPropertyType == "PO") {
@@ -105,9 +102,12 @@ public:
 			cout << "Incorrect Experimental Property.  Experimental Property given was: " << experimentalPropertyType;
 			return;
 		}
+		
 		expPropTypes.put(experimentalPropertyType, expPropType);
 		expPropWeights.put(experimentalPropertyType, weight % 16);
+		
 		keys.add(experimentalPropertyType);
+		
 		expPropGroupListSize++;
 		
 		RecalculatePercentages();
@@ -133,63 +133,64 @@ public:
 	F obj_attr_n[]:
 	
 	------------------------------- */
-	inline void sendToPlayer(ObjectControllerMessage* msg) {
+	
+	void sendToPlayer(ObjectControllerMessage* msg) {
 		msg->insertByte(expPropGroupListSize);
 							
-		for(int i = 0; i < expPropGroupListSize; i++) {
+		for (int i = 0; i < expPropGroupListSize; i++) {
 			msg->insertByte(getTypeAndWeight(i));
 		}
 	}
 	
-	inline bool containsExpPropType(const string& expPropType) {
+	bool containsExpPropType(const string& expPropType) {
 		return expPropTypes.contains(expPropType);
 	}
 	
 	// Zero is returned if expPropType is not found
-	inline float getExpPropPercentage(const string& expPropType) {
-		if(expPropWeightPercentages.contains(expPropType)) {
+	float getExpPropPercentage(const string& expPropType) {
+		if (expPropWeightPercentages.contains(expPropType))
 			return expPropWeightPercentages.get(expPropType);
-		} else {
+		else
 			return 0;	
-		}
 	}
 	
-	inline uint32 getExpPropPercentageListSize() {
+	uint32 getExpPropPercentageListSize() {
 		return expPropWeightPercentages.size();
 	}
 	
 	// Zero is returned if index is out of bounds
-	inline float getExpPropPercentage(uint32 index) {
-		if(index < expPropWeightPercentages.size()) {
+	float getExpPropPercentage(uint32 index) {
+		if (index < expPropWeightPercentages.size())
 			return expPropWeightPercentages.get(index);
-		} else {
+		else
 			return 0;
-		}
 	}
 
 	// Zero is returned if index is out of bounds
-	inline uint8 getTypeAndWeight(uint32 index) {
-		if(index < expPropTypes.size()) {
+	uint8 getTypeAndWeight(uint32 index) {
+		if (index < expPropTypes.size()) {
 			uint8 typeAndWeight =  expPropTypes.get(index);
+			
 			typeAndWeight = (typeAndWeight << 4);
 			typeAndWeight += expPropWeights.get(index);
+			
 			return typeAndWeight;
-		} else {
+		} else
 			return 0;
-		}
 	}
 	
 private:
-	inline void RecalculatePercentages() {
+	void RecalculatePercentages() {
 		float denominator = 0;
 		
-		for(int i = 0; i < expPropWeights.size(); i++) {
+		for (int i = 0; i < expPropWeights.size(); i++) {
 			denominator += expPropWeights.get(i);
 		}
 		
 		expPropWeightPercentages.removeAll();
-		if(expPropWeights.size() == expPropTypes.size()) {
-			for(int i = 0; i < expPropWeights.size(); i++) {
+		
+		if (expPropWeights.size() == expPropTypes.size()) {
+			for (int i = 0; i < expPropWeights.size(); i++) {
 				float weight = expPropWeights.get(i);
 				expPropWeightPercentages.put(keys.get(i), weight / denominator);
 			}
@@ -198,6 +199,7 @@ private:
 					"are not the same size)\n";
 		}
 	}
+	
 };
 
 #endif /*DRAFTSCHEMATICEXPPROPGROUPIMPLEMENTATION_H_*/

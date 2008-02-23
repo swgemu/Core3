@@ -51,9 +51,9 @@ which carries forward this exception.
 
 #include "engine/orb/ObjectRequestBroker.h"
 
-class Player;
-
 class SceneObject;
+
+class Player;
 
 class DraftSchematicIngredient;
 
@@ -71,7 +71,25 @@ public:
 
 	virtual ~DraftSchematic();
 
-	DraftSchematic* deploy(const string& name);
+	void addIngredient(const string& ingredientTemplateName, const string& ingredientTitleName, bool optional, const string& resourceType, unsigned int resourceQuantity);
+
+	void sendIngredientsToPlayer(Player* player);
+
+	void helperSendIngredientsToPlayer(ObjectControllerMessage* objMsg);
+
+	void addExperimentalProperty(unsigned int groupNumber, const string& experimentalProperty, unsigned int weight);
+
+	void sendExperimentalPropertiesToPlayer(Player* player);
+
+	DraftSchematicIngredient* getIngredient(int index);
+
+	int getIngredientListSize();
+
+	DraftSchematicExpPropGroup* getExpPropGroup(int index);
+
+	int getExpPropGroupListSize();
+
+	void setPersistent(bool status);
 
 	unsigned int getSchematicID();
 
@@ -84,26 +102,6 @@ public:
 	unsigned int getComplexity();
 
 	unsigned int getSchematicSize();
-
-	int getIngredientListSize();
-
-	DraftSchematicIngredient* getIngredient(int index);
-
-	int getExpPropGroupListSize();
-
-	DraftSchematicExpPropGroup* getExpPropGroup(int index);
-
-	void setPersistent(bool status);
-
-	void addIngredient(const string& ingredientTemplateName, const string& ingredientTitleName, bool optional, const string& resourceType, unsigned int resourceQuantity);
-
-	void sendIngredientsToPlayer(Player* player);
-
-	void helperSendIngredientsToPlayer(ObjectControllerMessage* objMsg);
-
-	void addExperimentalProperty(unsigned int groupNumber, const string& experimentalProperty, unsigned int weight);
-
-	void sendExperimentalPropertiesToPlayer(Player* player);
 
 protected:
 	string _return_getGroupName;
@@ -120,7 +118,25 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, ORBMethodInvocation* inv);
 
-	DraftSchematic* deploy(const string& name);
+	void addIngredient(const string& ingredientTemplateName, const string& ingredientTitleName, bool optional, const string& resourceType, unsigned int resourceQuantity);
+
+	void sendIngredientsToPlayer(Player* player);
+
+	void helperSendIngredientsToPlayer(ObjectControllerMessage* objMsg);
+
+	void addExperimentalProperty(unsigned int groupNumber, const string& experimentalProperty, unsigned int weight);
+
+	void sendExperimentalPropertiesToPlayer(Player* player);
+
+	DraftSchematicIngredient* getIngredient(int index);
+
+	int getIngredientListSize();
+
+	DraftSchematicExpPropGroup* getExpPropGroup(int index);
+
+	int getExpPropGroupListSize();
+
+	void setPersistent(bool status);
 
 	unsigned int getSchematicID();
 
@@ -134,28 +150,7 @@ public:
 
 	unsigned int getSchematicSize();
 
-	int getIngredientListSize();
-
-	DraftSchematicIngredient* getIngredient(int index);
-
-	int getExpPropGroupListSize();
-
-	DraftSchematicExpPropGroup* getExpPropGroup(int index);
-
-	void setPersistent(bool status);
-
-	void addIngredient(const string& ingredientTemplateName, const string& ingredientTitleName, bool optional, const string& resourceType, unsigned int resourceQuantity);
-
-	void sendIngredientsToPlayer(Player* player);
-
-	void helperSendIngredientsToPlayer(ObjectControllerMessage* objMsg);
-
-	void addExperimentalProperty(unsigned int groupNumber, const string& experimentalProperty, unsigned int weight);
-
-	void sendExperimentalPropertiesToPlayer(Player* player);
-
 protected:
-	string _param0_deploy__string_;
 	string _param0_addIngredient__string_string_bool_string_int_;
 	string _param1_addIngredient__string_string_bool_string_int_;
 	string _param3_addIngredient__string_string_bool_string_int_;

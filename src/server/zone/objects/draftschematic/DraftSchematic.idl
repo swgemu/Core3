@@ -42,33 +42,15 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-import "../player/Player";
 import "../scene/SceneObject";
+
+import "../player/Player";
 import "DraftSchematicIngredient";
 import "DraftSchematicExpPropGroup";
 import "../../packets/object/ObjectControllerMessage";
 
-interface DraftSchematic{
-	
+interface DraftSchematic {
 	DraftSchematic();
-	
-	DraftSchematic deploy(const string name);
-
-	//getters
-	unsigned int getSchematicID();
-	unsigned int getSchematicCRC();
-	string getName();
-	string getGroupName();
-	unsigned int getComplexity();
-	unsigned int getSchematicSize();
-	
-	int getIngredientListSize();
-	DraftSchematicIngredient getIngredient(int index);
-	int getExpPropGroupListSize();
-	DraftSchematicExpPropGroup getExpPropGroup(int index);
-	
-	// setters
-	void setPersistent(boolean status);
 	
 	// Ingredient Methods
 	void addIngredient(const string ingredientTemplateName, const string ingredientTitleName,
@@ -81,4 +63,29 @@ interface DraftSchematic{
 	void addExperimentalProperty(unsigned int groupNumber, const string experimentalProperty, unsigned int weight);
 	
 	void sendExperimentalPropertiesToPlayer(Player player);
+
+	DraftSchematicIngredient getIngredient(int index);
+
+	int getIngredientListSize();
+	
+	DraftSchematicExpPropGroup getExpPropGroup(int index);
+	
+	int getExpPropGroupListSize();
+
+	// setters
+	void setPersistent(boolean status);
+
+	//getters
+	unsigned int getSchematicID();
+	
+	unsigned int getSchematicCRC();
+	
+	string getName();
+	
+	string getGroupName();
+	
+	unsigned int getComplexity();
+	
+	unsigned int getSchematicSize();
+	
 }

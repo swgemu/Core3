@@ -42,27 +42,23 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-//  Author: Link
-// --------------------------------------------------
 #ifndef DRAFTSCHEMATICGROUPIMPLEMENTATION_H_
 #define DRAFTSCHEMATICGROUPIMPLEMENTATION_H_
 
 #include "DraftSchematic.h"
 
 class DraftSchematicGroupImplementation : public DraftSchematicGroupServant {
-	
-private:
 	Vector<DraftSchematic*> draftSchematics;
 	
 public:
 	DraftSchematicGroupImplementation() : DraftSchematicGroupServant() {
-		// do nothing
 	}
 	
-	inline void addDraftSchematic(DraftSchematic* schematic) {
+	void addDraftSchematic(DraftSchematic* schematic) {
 		draftSchematics.add(schematic);
 	}
 	
+	// getters
 	inline int getSizeOfDraftSchematicList() {
 		return draftSchematics.size();
 	}
@@ -74,4 +70,3 @@ public:
 };
 
 #endif /*DRAFTSCHEMATICGROUPIMPLEMENTATION_H_*/
-// --------------------------------------------------

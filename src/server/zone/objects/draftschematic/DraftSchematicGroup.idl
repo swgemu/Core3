@@ -45,10 +45,11 @@ which carries forward this exception.
 import "DraftSchematic";
 
 interface DraftSchematicGroup {
-	
 	DraftSchematicGroup();
 	
 	void addDraftSchematic(DraftSchematic schematic);
+	
 	int getSizeOfDraftSchematicList();
+	
 	DraftSchematic getDraftSchematic(int index);
 }

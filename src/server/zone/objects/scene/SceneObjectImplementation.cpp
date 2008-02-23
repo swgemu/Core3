@@ -101,6 +101,10 @@ SceneObject* SceneObjectImplementation::deploy() {
 	return (SceneObject*) ORBObjectServant::deploy(name.str());
 }
 
+SceneObject* SceneObjectImplementation::deploy(const string& name) {
+	return (SceneObject*) ORBObjectServant::deploy(name);
+}
+
 void SceneObjectImplementation::redeploy() {
 	if (undeployEvent != NULL) {
 		server->removeEvent(undeployEvent);

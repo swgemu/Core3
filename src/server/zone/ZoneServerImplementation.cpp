@@ -161,9 +161,6 @@ void ZoneServerImplementation::startManagers() {
 	UserManagerImplementation* userImpl = new UserManagerImplementation(_this);
 	userManager = (UserManager*) userImpl->deploy("UserManager");
 	
-	CraftingManagerImplementation* craftingImpl = new CraftingManagerImplementation(_this);
-	craftingManager = (CraftingManager*) craftingImpl->deploy("CraftingManager");
-	
 	ItemManagerImplementation* itemImpl = new ItemManagerImplementation(_this);
 	itemManager = (ItemManager*) itemImpl->deploy("ItemManager");
 
@@ -177,13 +174,15 @@ void ZoneServerImplementation::startManagers() {
 
 	//ResourceManagerImplementation* resImpl = new ResourceManagerImplementation(_this, processor);
 	//resourceManager = (ResourceManager*) resImpl->deploy("ResourceManager");
-	
-	ChatManagerImplementation* chatImpl = new ChatManagerImplementation(_this, 10000);
-	chatManager = (ChatManager*) chatImpl->deploy("ChatManager");
-	
+
+	CraftingManagerImplementation* craftingImpl = new CraftingManagerImplementation(_this);
+	craftingManager = (CraftingManager*) craftingImpl->deploy("CraftingManager");
+
 	BazaarManagerImplementation* bazImpl = new BazaarManagerImplementation(_this, processor);
 	bazaarManager = (BazaarManager*) bazImpl->deploy("BazaarManager");
 
+	ChatManagerImplementation* chatImpl = new ChatManagerImplementation(_this, 10000);
+	chatManager = (ChatManager*) chatImpl->deploy("ChatManager");
 }
 
 void ZoneServerImplementation::run() {
@@ -253,6 +252,11 @@ void ZoneServerImplementation::stopManagers() {
 		resourceManager = NULL;
 	}
 
+	if (craftingManager != NULL) {
+		delete craftingManager;
+		craftingManager = NULL;
+	}
+	
 	if (bazaarManager != NULL) {
 		delete bazaarManager;
 		bazaarManager = NULL;

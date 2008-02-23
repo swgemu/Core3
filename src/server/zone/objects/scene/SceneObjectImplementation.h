@@ -109,6 +109,8 @@ public:
 	void finalize();
 	
 	SceneObject* deploy();
+	SceneObject* deploy(const string& name);
+	
 	void redeploy();
 
 	void scheduleUndeploy();

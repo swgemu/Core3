@@ -73,25 +73,12 @@ DraftSchematicIngredient* DraftSchematicIngredient::clone() {
 }
 
 
-DraftSchematicIngredient* DraftSchematicIngredient::deploy(const string& name) {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 6);
-		invocation.addAsciiParameter(name);
-
-		return (DraftSchematicIngredient*) invocation.executeWithObjectReturn();
-	} else
-		return ((DraftSchematicIngredientImplementation*) _impl)->deploy(name);
-}
-
 void DraftSchematicIngredient::helperSendToPlayer(ObjectControllerMessage* msg) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 7);
+		ORBMethodInvocation invocation(this, 6);
 		invocation.addObjectParameter(msg);
 
 		invocation.executeWithVoidReturn();
@@ -104,7 +91,7 @@ string& DraftSchematicIngredient::getTemplateName() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 8);
+		ORBMethodInvocation invocation(this, 7);
 
 		invocation.executeWithAsciiReturn(_return_getTemplateName);
 		return _return_getTemplateName;
@@ -117,7 +104,7 @@ string& DraftSchematicIngredient::getTitleName() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 9);
+		ORBMethodInvocation invocation(this, 8);
 
 		invocation.executeWithAsciiReturn(_return_getTitleName);
 		return _return_getTitleName;
@@ -130,7 +117,7 @@ string& DraftSchematicIngredient::getResourceType() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 10);
+		ORBMethodInvocation invocation(this, 9);
 
 		invocation.executeWithAsciiReturn(_return_getResourceType);
 		return _return_getResourceType;
@@ -143,7 +130,7 @@ unsigned int DraftSchematicIngredient::getResourceQuantity() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 11);
+		ORBMethodInvocation invocation(this, 10);
 
 		return invocation.executeWithUnsignedIntReturn();
 	} else
@@ -155,7 +142,7 @@ bool DraftSchematicIngredient::getOptional() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 12);
+		ORBMethodInvocation invocation(this, 11);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -174,24 +161,21 @@ Packet* DraftSchematicIngredientAdapter::invokeMethod(uint32 methid, ORBMethodIn
 
 	switch (methid) {
 	case 6:
-		resp->insertLong(deploy(inv->getAsciiParameter(_param0_deploy__string_))->_getORBObjectID());
-		break;
-	case 7:
 		helperSendToPlayer((ObjectControllerMessage*) inv->getObjectParameter());
 		break;
-	case 8:
+	case 7:
 		resp->insertAscii(getTemplateName());
 		break;
-	case 9:
+	case 8:
 		resp->insertAscii(getTitleName());
 		break;
-	case 10:
+	case 9:
 		resp->insertAscii(getResourceType());
 		break;
-	case 11:
+	case 10:
 		resp->insertInt(getResourceQuantity());
 		break;
-	case 12:
+	case 11:
 		resp->insertBoolean(getOptional());
 		break;
 	default:
@@ -199,10 +183,6 @@ Packet* DraftSchematicIngredientAdapter::invokeMethod(uint32 methid, ORBMethodIn
 	}
 
 	return resp;
-}
-
-DraftSchematicIngredient* DraftSchematicIngredientAdapter::deploy(const string& name) {
-	return ((DraftSchematicIngredientImplementation*) impl)->deploy(name);
 }
 
 void DraftSchematicIngredientAdapter::helperSendToPlayer(ObjectControllerMessage* msg) {

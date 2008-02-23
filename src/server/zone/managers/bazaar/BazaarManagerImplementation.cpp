@@ -78,7 +78,7 @@ BazaarManagerImplementation::BazaarManagerImplementation(ZoneServer* zoneserver,
 	// Set up the bazaar planet managers
 	for (int i = 0; i < 10; i++)  {
 		BazaarPlanetManagerImplementation* bpmImpl = new BazaarPlanetManagerImplementation(i);
-		bazaarPlanets[i] = (BazaarPlanetManager*) bpmImpl->deploy("BazaarPlanetManager" );	
+		bazaarPlanets[i] = (BazaarPlanetManager*) bpmImpl->deploy("BazaarPlanetManager", i);	
 	}
 	
 	BazaarMap* bazaarLocations = bazaarTerminals->getBazaarMap();

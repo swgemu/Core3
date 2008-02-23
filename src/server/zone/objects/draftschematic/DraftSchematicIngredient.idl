@@ -45,16 +45,18 @@ which carries forward this exception.
 import "../../packets/object/ObjectControllerMessage";
 
 interface DraftSchematicIngredient {
-	
 	DraftSchematicIngredient(); 
-	DraftSchematicIngredient deploy(const string name);
 		
 	void helperSendToPlayer(ObjectControllerMessage msg);
 	
 	// getters
 	string getTemplateName();
+	
 	string getTitleName();
+	
 	string getResourceType();
+	
 	unsigned int getResourceQuantity();
+	
 	boolean getOptional();
 }

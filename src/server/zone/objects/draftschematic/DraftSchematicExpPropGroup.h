@@ -63,8 +63,6 @@ public:
 
 	virtual ~DraftSchematicExpPropGroup();
 
-	DraftSchematicExpPropGroup* deploy(const string& name);
-
 	void addExperimentalProperty(const string& experimentalPropertyType, unsigned int weight);
 
 	void sendToPlayer(ObjectControllerMessage* msg);
@@ -90,8 +88,6 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, ORBMethodInvocation* inv);
 
-	DraftSchematicExpPropGroup* deploy(const string& name);
-
 	void addExperimentalProperty(const string& experimentalPropertyType, unsigned int weight);
 
 	void sendToPlayer(ObjectControllerMessage* msg);
@@ -107,7 +103,6 @@ public:
 	unsigned char getTypeAndWeight(unsigned int index);
 
 protected:
-	string _param0_deploy__string_;
 	string _param0_addExperimentalProperty__string_int_;
 	string _param0_containsExpPropType__string_;
 	string _param0_getExpPropPercentage__string_;

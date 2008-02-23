@@ -225,8 +225,8 @@ Player* PlayerManagerImplementation::loadFromDatabase(PlayerImplementation* play
 	player->setFirstName(character->getString(3));
 	string surname = character->getString(4);
 	
-	string orbname = "Player" + player->getFirstName();
-	playerRes = (Player*) ObjectRequestBroker::instance()->deploy(orbname, player);
+	string orbname = "Player " + player->getFirstName();
+	playerRes = (Player*) player->deploy(orbname);
 
 	PlayerObjectImplementation* playerObjImpl = new PlayerObjectImplementation(playerRes);
 	PlayerObject* playerObject = (PlayerObject*) playerObjImpl->deploy();
