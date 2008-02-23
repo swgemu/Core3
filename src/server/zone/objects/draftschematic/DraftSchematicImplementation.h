@@ -49,6 +49,7 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 #include "../../packets.h"
+
 #include "DraftSchematic.h"
 
 #include "DraftSchematicIngredient.h"
@@ -58,6 +59,7 @@ which carries forward this exception.
 #include "DraftSchematicExpPropGroupImplementation.h"
 
 class Player;
+
 
 class DraftSchematicImplementation : public DraftSchematicServant {
 
@@ -133,6 +135,22 @@ public:
 		persistent = status;
 	}
 	
+	int getIngredientListSize() {
+		return draftSchematicIngredients.size();
+	}
+	
+	DraftSchematicIngredient* getIngredient(int index) {
+		return draftSchematicIngredients.get(index);
+	}
+	
+	int getExpPropGroupListSize() {
+		return draftSchematicExpPropGroups.size();
+	}
+	
+	DraftSchematicExpPropGroup* getExpPropGroup(int index) {
+		return draftSchematicExpPropGroups.get(index);
+	}
+	
 	// Ingredient Methods
 	inline void addIngredient(const string& ingredientTemplateName, const string& ingredientTitleName,
 			bool optional, const string& resourceType, uint32 resourceQuantity) {
@@ -157,13 +175,19 @@ public:
 		msg->insertInt(schematicSize); // ex: 1
 		msg->insertByte(1);
 		
+		helperSendIngredientsToPlayer(msg);
+		
+		player->sendMessage(msg);
+	}
+	
+	inline void helperSendIngredientsToPlayer(ObjectControllerMessage* objMsg) {
 		int listSize = draftSchematicIngredients.size();
-		msg->insertInt(listSize);
+		objMsg->insertInt(listSize);
 		
 		// Send all the ingredient data
 		for(int i = 0; i < listSize; i++) {
 			DraftSchematicIngredient* dsi = draftSchematicIngredients.get(i);
-			dsi->sendToPlayer(msg);
+			dsi->helperSendToPlayer(objMsg);
 		}
 		
 		/* for debugging
@@ -171,8 +195,7 @@ public:
 		ss << msg->toString();
 		player->info(ss.str());*/
 		
-		msg->insertShort(0);
-		player->sendMessage(msg);
+		objMsg->insertShort(0);
 	}
 	
 	// Experimental Property Methods

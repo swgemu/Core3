@@ -325,6 +325,10 @@ public:
 		return container;
 	}
 	
+	inline void setName(const string& n) {
+		name = n;
+	}
+	
 	inline unicode& getName() {
 		return name;
 	}
@@ -333,6 +337,10 @@ public:
 		return templateID;
 	}
 
+	inline void setTemplateName(const string& tempName) {
+		templateName = tempName;
+	}
+	
 	inline string& getTemplateName() {
 		return templateName;
 	}
@@ -341,6 +349,10 @@ public:
 		return customizationVars.toString(appearance);
 	}
 
+	inline void setTemplateTypeName(const string& tempTypeName) {
+		templateTypeName = tempTypeName;
+	}
+	
 	inline string& getTemplateTypeName() {
 		return templateTypeName;
 	}

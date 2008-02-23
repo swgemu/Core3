@@ -50,6 +50,12 @@ which carries forward this exception.
 
 #include "../scene/SceneObject.h"
 
+#include "DraftSchematicIngredient.h"
+
+#include "DraftSchematicExpPropGroup.h"
+
+#include "../../packets/object/ObjectControllerMessage.h"
+
 #include "DraftSchematic.h"
 
 #include "DraftSchematicImplementation.h"
@@ -162,12 +168,62 @@ unsigned int DraftSchematic::getSchematicSize() {
 		return ((DraftSchematicImplementation*) _impl)->getSchematicSize();
 }
 
-void DraftSchematic::setPersistent(bool status) {
+int DraftSchematic::getIngredientListSize() {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
 		ORBMethodInvocation invocation(this, 13);
+
+		return invocation.executeWithSignedIntReturn();
+	} else
+		return ((DraftSchematicImplementation*) _impl)->getIngredientListSize();
+}
+
+DraftSchematicIngredient* DraftSchematic::getIngredient(int index) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 14);
+		invocation.addSignedIntParameter(index);
+
+		return (DraftSchematicIngredient*) invocation.executeWithObjectReturn();
+	} else
+		return ((DraftSchematicImplementation*) _impl)->getIngredient(index);
+}
+
+int DraftSchematic::getExpPropGroupListSize() {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 15);
+
+		return invocation.executeWithSignedIntReturn();
+	} else
+		return ((DraftSchematicImplementation*) _impl)->getExpPropGroupListSize();
+}
+
+DraftSchematicExpPropGroup* DraftSchematic::getExpPropGroup(int index) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 16);
+		invocation.addSignedIntParameter(index);
+
+		return (DraftSchematicExpPropGroup*) invocation.executeWithObjectReturn();
+	} else
+		return ((DraftSchematicImplementation*) _impl)->getExpPropGroup(index);
+}
+
+void DraftSchematic::setPersistent(bool status) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 17);
 		invocation.addBooleanParameter(status);
 
 		invocation.executeWithVoidReturn();
@@ -180,7 +236,7 @@ void DraftSchematic::addIngredient(const string& ingredientTemplateName, const s
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 14);
+		ORBMethodInvocation invocation(this, 18);
 		invocation.addAsciiParameter(ingredientTemplateName);
 		invocation.addAsciiParameter(ingredientTitleName);
 		invocation.addBooleanParameter(optional);
@@ -197,7 +253,7 @@ void DraftSchematic::sendIngredientsToPlayer(Player* player) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 15);
+		ORBMethodInvocation invocation(this, 19);
 		invocation.addObjectParameter(player);
 
 		invocation.executeWithVoidReturn();
@@ -205,12 +261,25 @@ void DraftSchematic::sendIngredientsToPlayer(Player* player) {
 		((DraftSchematicImplementation*) _impl)->sendIngredientsToPlayer(player);
 }
 
+void DraftSchematic::helperSendIngredientsToPlayer(ObjectControllerMessage* objMsg) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 20);
+		invocation.addObjectParameter(objMsg);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((DraftSchematicImplementation*) _impl)->helperSendIngredientsToPlayer(objMsg);
+}
+
 void DraftSchematic::addExperimentalProperty(unsigned int groupNumber, const string& experimentalProperty, unsigned int weight) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 16);
+		ORBMethodInvocation invocation(this, 21);
 		invocation.addUnsignedIntParameter(groupNumber);
 		invocation.addAsciiParameter(experimentalProperty);
 		invocation.addUnsignedIntParameter(weight);
@@ -225,7 +294,7 @@ void DraftSchematic::sendExperimentalPropertiesToPlayer(Player* player) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 17);
+		ORBMethodInvocation invocation(this, 22);
 		invocation.addObjectParameter(player);
 
 		invocation.executeWithVoidReturn();
@@ -266,18 +335,33 @@ Packet* DraftSchematicAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* 
 		resp->insertInt(getSchematicSize());
 		break;
 	case 13:
-		setPersistent(inv->getBooleanParameter());
+		resp->insertSignedInt(getIngredientListSize());
 		break;
 	case 14:
-		addIngredient(inv->getAsciiParameter(_param0_addIngredient__string_string_bool_string_int_), inv->getAsciiParameter(_param1_addIngredient__string_string_bool_string_int_), inv->getBooleanParameter(), inv->getAsciiParameter(_param3_addIngredient__string_string_bool_string_int_), inv->getUnsignedIntParameter());
+		resp->insertLong(getIngredient(inv->getSignedIntParameter())->_getORBObjectID());
 		break;
 	case 15:
-		sendIngredientsToPlayer((Player*) inv->getObjectParameter());
+		resp->insertSignedInt(getExpPropGroupListSize());
 		break;
 	case 16:
-		addExperimentalProperty(inv->getUnsignedIntParameter(), inv->getAsciiParameter(_param1_addExperimentalProperty__int_string_int_), inv->getUnsignedIntParameter());
+		resp->insertLong(getExpPropGroup(inv->getSignedIntParameter())->_getORBObjectID());
 		break;
 	case 17:
+		setPersistent(inv->getBooleanParameter());
+		break;
+	case 18:
+		addIngredient(inv->getAsciiParameter(_param0_addIngredient__string_string_bool_string_int_), inv->getAsciiParameter(_param1_addIngredient__string_string_bool_string_int_), inv->getBooleanParameter(), inv->getAsciiParameter(_param3_addIngredient__string_string_bool_string_int_), inv->getUnsignedIntParameter());
+		break;
+	case 19:
+		sendIngredientsToPlayer((Player*) inv->getObjectParameter());
+		break;
+	case 20:
+		helperSendIngredientsToPlayer((ObjectControllerMessage*) inv->getObjectParameter());
+		break;
+	case 21:
+		addExperimentalProperty(inv->getUnsignedIntParameter(), inv->getAsciiParameter(_param1_addExperimentalProperty__int_string_int_), inv->getUnsignedIntParameter());
+		break;
+	case 22:
 		sendExperimentalPropertiesToPlayer((Player*) inv->getObjectParameter());
 		break;
 	default:
@@ -315,6 +399,22 @@ unsigned int DraftSchematicAdapter::getSchematicSize() {
 	return ((DraftSchematicImplementation*) impl)->getSchematicSize();
 }
 
+int DraftSchematicAdapter::getIngredientListSize() {
+	return ((DraftSchematicImplementation*) impl)->getIngredientListSize();
+}
+
+DraftSchematicIngredient* DraftSchematicAdapter::getIngredient(int index) {
+	return ((DraftSchematicImplementation*) impl)->getIngredient(index);
+}
+
+int DraftSchematicAdapter::getExpPropGroupListSize() {
+	return ((DraftSchematicImplementation*) impl)->getExpPropGroupListSize();
+}
+
+DraftSchematicExpPropGroup* DraftSchematicAdapter::getExpPropGroup(int index) {
+	return ((DraftSchematicImplementation*) impl)->getExpPropGroup(index);
+}
+
 void DraftSchematicAdapter::setPersistent(bool status) {
 	return ((DraftSchematicImplementation*) impl)->setPersistent(status);
 }
@@ -325,6 +425,10 @@ void DraftSchematicAdapter::addIngredient(const string& ingredientTemplateName, 
 
 void DraftSchematicAdapter::sendIngredientsToPlayer(Player* player) {
 	return ((DraftSchematicImplementation*) impl)->sendIngredientsToPlayer(player);
+}
+
+void DraftSchematicAdapter::helperSendIngredientsToPlayer(ObjectControllerMessage* objMsg) {
+	return ((DraftSchematicImplementation*) impl)->helperSendIngredientsToPlayer(objMsg);
 }
 
 void DraftSchematicAdapter::addExperimentalProperty(unsigned int groupNumber, const string& experimentalProperty, unsigned int weight) {

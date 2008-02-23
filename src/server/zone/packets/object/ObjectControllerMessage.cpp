@@ -58,6 +58,7 @@ which carries forward this exception.
 #include "../../managers/group/GroupManager.h"
 #include "../../managers/resource/ResourceManager.h"
 
+#include "../../managers/combat/CombatManager.h"
 #include "../../../chat/ChatManager.h"
 
 #include "../../objects.h"
@@ -1660,6 +1661,10 @@ void ObjectControllerMessage::parseCancelCraftingSession(Player* player, Message
 	//TODO: Try to find a Cancel Crafting Session server->client packet in live for researching
 
 	// This is just a guess as to what the client wants when it sends a Cancel Crafting Session packet
+	
+	// Clear the current crafting tool for the player
+	player->clearCurrentCraftingTool();
+	
 	// DPlay9
 	PlayerObjectDeltaMessage9* dplay9 = new PlayerObjectDeltaMessage9(player->getPlayerObject());
 	dplay9->setCraftingState(0);
@@ -1669,5 +1674,25 @@ void ObjectControllerMessage::parseCancelCraftingSession(Player* player, Message
 
 void ObjectControllerMessage::parseSelectDraftSchematic(Player* player, Message* packet) {
 
+	packet->shiftOffset(8);
+	
+	unicode uniIndexOfSelectedSchematic;
+	packet->parseUnicode(uniIndexOfSelectedSchematic);
+	
+	StringTokenizer tokenizer(uniIndexOfSelectedSchematic.c_str());
+	
+	int indexOfSelectedSchematic;
+	
+	if(tokenizer.hasMoreTokens())
+		indexOfSelectedSchematic = tokenizer.getIntToken();
+
+	// Find the selected schematic
+	DraftSchematic* ds = player->getDraftSchematic(indexOfSelectedSchematic);
+	if(ds != NULL) {
+		player->prepareCraftingSessionStageTwo(ds);
+	} else {
+		// This eles should never execute
+		player->sendSystemMessage("Selected Draft Schematic was invalid.  Please inform Link of this error.");
+	}
 }
 

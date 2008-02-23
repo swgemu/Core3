@@ -86,7 +86,7 @@ DraftSchematicIngredient* DraftSchematicIngredient::deploy(const string& name) {
 		return ((DraftSchematicIngredientImplementation*) _impl)->deploy(name);
 }
 
-void DraftSchematicIngredient::sendToPlayer(ObjectControllerMessage* msg) {
+void DraftSchematicIngredient::helperSendToPlayer(ObjectControllerMessage* msg) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
@@ -96,7 +96,7 @@ void DraftSchematicIngredient::sendToPlayer(ObjectControllerMessage* msg) {
 
 		invocation.executeWithVoidReturn();
 	} else
-		((DraftSchematicIngredientImplementation*) _impl)->sendToPlayer(msg);
+		((DraftSchematicIngredientImplementation*) _impl)->helperSendToPlayer(msg);
 }
 
 string& DraftSchematicIngredient::getTemplateName() {
@@ -177,7 +177,7 @@ Packet* DraftSchematicIngredientAdapter::invokeMethod(uint32 methid, ORBMethodIn
 		resp->insertLong(deploy(inv->getAsciiParameter(_param0_deploy__string_))->_getORBObjectID());
 		break;
 	case 7:
-		sendToPlayer((ObjectControllerMessage*) inv->getObjectParameter());
+		helperSendToPlayer((ObjectControllerMessage*) inv->getObjectParameter());
 		break;
 	case 8:
 		resp->insertAscii(getTemplateName());
@@ -205,8 +205,8 @@ DraftSchematicIngredient* DraftSchematicIngredientAdapter::deploy(const string& 
 	return ((DraftSchematicIngredientImplementation*) impl)->deploy(name);
 }
 
-void DraftSchematicIngredientAdapter::sendToPlayer(ObjectControllerMessage* msg) {
-	return ((DraftSchematicIngredientImplementation*) impl)->sendToPlayer(msg);
+void DraftSchematicIngredientAdapter::helperSendToPlayer(ObjectControllerMessage* msg) {
+	return ((DraftSchematicIngredientImplementation*) impl)->helperSendToPlayer(msg);
 }
 
 string& DraftSchematicIngredientAdapter::getTemplateName() {

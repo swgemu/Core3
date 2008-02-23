@@ -48,6 +48,11 @@ which carries forward this exception.
 #ifndef DRAFTSCHEMATICINGREDIENTIMPLEMENTATION_H_
 #define DRAFTSCHEMATICINGREDIENTIMPLEMENTATION_H_
 
+
+#include "../../packets.h"
+
+#include "DraftSchematicIngredient.h"
+
 class DraftSchematicIngredientImplementation : public DraftSchematicIngredientServant {
 
 private:
@@ -78,7 +83,7 @@ public:
 		return (DraftSchematicIngredient*) ORBObjectServant::deploy(name);
 	}
 	
-	inline void sendToPlayer(ObjectControllerMessage* msg) {
+	inline void helperSendToPlayer(ObjectControllerMessage* msg) {
 		msg->insertAscii(templateName); // ex: craft_food_ingredients_n
 		msg->insertInt(0);
 		msg->insertAscii(titleName); // ex: dried_fruit

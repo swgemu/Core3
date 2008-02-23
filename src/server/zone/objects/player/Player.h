@@ -91,6 +91,8 @@ class SuiBox;
 
 class DraftSchematic;
 
+class CraftingTool;
+
 #include "../creature/CreatureObject.h"
 
 class Player : public CreatureObject {
@@ -400,6 +402,14 @@ public:
 	bool checkCertification(string& certification);
 
 	int getSlicingAbility();
+
+	CraftingTool* getCurrentCraftingTool();
+
+	void setCurrentCraftingTool(CraftingTool* ct);
+
+	void clearCurrentCraftingTool();
+
+	void prepareCraftingSessionStageTwo(DraftSchematic* ds);
 
 	void sendDraftSchematics();
 
@@ -793,6 +803,14 @@ public:
 	bool checkCertification(string& certification);
 
 	int getSlicingAbility();
+
+	CraftingTool* getCurrentCraftingTool();
+
+	void setCurrentCraftingTool(CraftingTool* ct);
+
+	void clearCurrentCraftingTool();
+
+	void prepareCraftingSessionStageTwo(DraftSchematic* ds);
 
 	void sendDraftSchematics();
 

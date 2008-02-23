@@ -55,8 +55,8 @@ public:
 		insertShort(0x05);
 		insertInt(0x12862153);
 		insertLong(oid);
-		//insertInt(name);
-		insertInt(generateRandomObjectCRC());
+		insertInt(name);
+		//insertInt(generateRandomObjectCRC());
 		insertByte(type);
 		insertInt(0);
 	

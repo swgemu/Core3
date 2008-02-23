@@ -42,84 +42,38 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef PLAYEROBJECTDELTAMESSAGE9_H_
-#define PLAYEROBJECTDELTAMESSAGE9_H_
 
-#include "../DeltaMessage.h"
+#ifndef MANUFACTURESCHEMATICOBJECTDELTAMESSAGE7_H_
+#define MANUFACTURESCHEMATICOBJECTDELTAMESSAGE7_H_
 
-#include "../../objects/player/PlayerObject.h"
-#include "../../objects/player/Player.h"
+#include "../BaseLineMessage.h"
 
 #include "../../objects/draftschematic/DraftSchematic.h"
 
-class PlayerObjectDeltaMessage9 : public DeltaMessage {
-	PlayerObject* play;
-	
+class ManufactureSchematicObjectDeltaMessage7 : public DeltaMessage {
 public:
-	PlayerObjectDeltaMessage9(PlayerObject* pl)
-			: DeltaMessage(pl->getObjectID(), 0x504C4159, 9) {
-		play = pl;
-	}
+	ManufactureSchematicObjectDeltaMessage7(uint64 sceneObjSchematic, DraftSchematic* ds) 
+			: DeltaMessage(sceneObjSchematic, 0x4D53434F, 7) {
 
-	void startSkillListUpdate(int skillsToUpdate) {
-		startUpdate(0);
-		startList(skillsToUpdate, play->getPlayer()->getNewCreatureSkillsCount(skillsToUpdate));
-	}
-	
-	void addSkill(const string& name) {
-		insertByte(1);
 		insertShort(0);
-		insertAscii(name.c_str());
-	}
-	
-	void setCraftingState(int state) {
-		startUpdate(2);
-		insertInt(state);
-	}
-		// startUpdate(1), insertInt(2) closes the datapad (i think)
-	void updateDraftSchematics() {
-		Player* player = play->getPlayer();
-		int schematicSize = player->getDraftSchematicListSize();
-		startUpdate(4);
-
-		startList(schematicSize + 1, player->getDraftSchematicUpdateCount(schematicSize + 1));
-
-		// This deletes all the draft schematics on the client
-		insertByte(3);
-		insertShort(0);
-
-		for (int i = 0; i < schematicSize; i++) {
+		
+		int ingredientListSize = ds->getIngredientListSize();
+		insertInt(ingredientListSize);
+		insertInt(ingredientListSize);
+		
+		for(int i = 0; i < ingredientListSize; i++) {
+			DraftSchematicIngredient* dsi = ds->getIngredient(i);
+			if(dsi != NULL) {
 			insertByte(1);
-			insertShort(i+1);
-			insertInt(player->getDraftSchematic(i)->getSchematicCRC());
-			insertInt(player->getDraftSchematic(i)->getSchematicID());
+			insertShort(i);
+			insertAscii(dsi->getTemplateName());
+			insertInt(0);
+			insertAscii(dsi->getTitleName());
+			} else {
+				cerr << "\n\nError DMSCO7: line 65\n";
+			}
 		}
 	}
-		
-	void updateSkilsAndCertifications() {
-		Player* player = play->getPlayer();
-		
-		int certSize = player->getCertificationListSize();
-		int skillsSize = player->getCreatureSkillsSize();
-		
-		startUpdate(0);
-		startList(certSize + skillsSize + 1, player->getNewCreatureSkillsCount(certSize + skillsSize + 1));
-		
-		insertByte(3);
-		
-		insertShort(certSize + skillsSize);
-		for (int i = 0; i < skillsSize; i++) {
-			insertAscii(player->getSkill(i));
-		}
-				
-		for (int i = 0; i < certSize; i++)
-			insertAscii(player->getCertification(i));
-	}
-	
-	void updateFoodCurrent() {
-		addIntUpdate(0x0A, 100);
-	}
-	
 };
 
-#endif /*PLAYEROBJECTDELTAMESSAGE9_H_*/
+#endif /*MANUFACTURESCHEMATICOBJECTMESSAGE7_H_*/

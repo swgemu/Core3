@@ -54,7 +54,8 @@ class TangibleObjectDeltaMessage3 : public DeltaMessage {
 	
 public:
 	TangibleObjectDeltaMessage3(TangibleObject* ta)
-			: DeltaMessage(ta->getObjectID(), 0x4352454F, 3) {
+			//: DeltaMessage(ta->getObjectID(), 0x4352454F, 3) {
+			: DeltaMessage(ta->getObjectID(), 0x54414E4F, 3) {
 		tano = ta;
 	}
 	

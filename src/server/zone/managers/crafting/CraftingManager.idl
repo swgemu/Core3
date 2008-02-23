@@ -49,6 +49,9 @@ interface CraftingManager {
 
 	CraftingManager();
 	
+	void prepareCraftingSessionStageTwo(Player player, DraftSchematic ds);
+	
+	
 	void addDraftSchematicsFromGroupName(Player player, const string schematicGroupName);
 	void subtractDraftSchematicsFromGroupName(Player player, const string schematicGroupName);
 }

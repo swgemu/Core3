@@ -80,7 +80,7 @@ public:
 		insertFloat(0);
 		insertFloat(0);
 		insertFloat(0);
-		insertFloat(0);
+		insertFloat(1);
 		insertFloat(0);
 		insertFloat(0);
 		insertFloat(0);

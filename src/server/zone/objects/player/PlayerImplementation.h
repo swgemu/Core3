@@ -131,6 +131,8 @@ class PlayerImplementation : public PlayerServant {
 	uint32 draftSchematicUpdateCount;
 	VectorMap<uint32, DraftSchematic*> draftSchematicList;
 	
+	// Crafting
+	CraftingTool* currentCraftingTool;
 
 	// misc
 	SortedVector<Player*> duelList;
@@ -455,6 +457,15 @@ public:
 		return certificationList.get(idx)->getName();
 	}
 	
+
+	// Crafting
+	CraftingTool* getCurrentCraftingTool();
+	void setCurrentCraftingTool(CraftingTool* ct);
+	void clearCurrentCraftingTool();
+	
+	void prepareCraftingSessionStageTwo(DraftSchematic* ds);
+	
+
 	bool checkCertification(string certification) {
 		if (certification == "")
 			return true;
@@ -462,6 +473,7 @@ public:
 			return certificationList.contains(certification);
 	}
 	
+
 	//Draft Schematics
 	
 	// Draft Schematics granted from a schematicGroupName

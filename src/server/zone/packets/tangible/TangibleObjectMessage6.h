@@ -53,7 +53,7 @@ class TangibleObjectMessage6 : public BaseLineMessage {
 public:
 	TangibleObjectMessage6(TangibleObject* tano) 
 			: BaseLineMessage(tano->getObjectID(), 0x54414E4F, 6, 0x02) {
-		insertInt(0x63);
+		insertInt(0x76);
 		insertInt(0);
 		insertInt(0);
 

@@ -65,6 +65,8 @@ public:
 
 	virtual ~CraftingManager();
 
+	void prepareCraftingSessionStageTwo(Player* player, DraftSchematic* ds);
+
 	void addDraftSchematicsFromGroupName(Player* player, const string& schematicGroupName);
 
 	void subtractDraftSchematicsFromGroupName(Player* player, const string& schematicGroupName);
@@ -79,6 +81,8 @@ public:
 	CraftingManagerAdapter(CraftingManagerImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, ORBMethodInvocation* inv);
+
+	void prepareCraftingSessionStageTwo(Player* player, DraftSchematic* ds);
 
 	void addDraftSchematicsFromGroupName(Player* player, const string& schematicGroupName);
 

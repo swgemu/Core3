@@ -49,7 +49,7 @@ interface DraftSchematicIngredient {
 	DraftSchematicIngredient(); 
 	DraftSchematicIngredient deploy(const string name);
 		
-	void sendToPlayer(ObjectControllerMessage msg);
+	void helperSendToPlayer(ObjectControllerMessage msg);
 	
 	// getters
 	string getTemplateName();

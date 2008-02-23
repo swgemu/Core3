@@ -48,6 +48,9 @@ which carries forward this exception.
 #ifndef DRAFTSCHEMATICEXPPROPGROUPIMPLEMENTATION_H_
 #define DRAFTSCHEMATICEXPPROPGROUPIMPLEMENTATION_H_
 
+#include "../../packets.h"
+
+#include "DraftSchematicExpPropGroup.h"
 
 class DraftSchematicExpPropGroupImplementation : public DraftSchematicExpPropGroupServant {
 	

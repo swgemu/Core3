@@ -77,6 +77,7 @@ import "../../../chat/room/ChatRoom";
 import "sui/SuiBox";
 
 import "../draftschematic/DraftSchematic";
+import "../tangible/craftingtool/CraftingTool";
 
 interface Player implements CreatureObject {
 	Player(unsigned long oid);
@@ -357,6 +358,13 @@ interface Player implements CreatureObject {
 	boolean checkCertification(string& certification);
 
 	int getSlicingAbility();
+	
+	// Crafting
+	CraftingTool getCurrentCraftingTool();
+	void setCurrentCraftingTool(CraftingTool ct);
+	void clearCurrentCraftingTool();
+	
+	void prepareCraftingSessionStageTwo(DraftSchematic ds);
 	
 	// Draft Schematic stuff
 	void sendDraftSchematics();

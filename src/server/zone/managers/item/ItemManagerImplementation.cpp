@@ -472,7 +472,6 @@ void ItemManagerImplementation::loadDefaultPlayerItems(Player* player) {
 	SurveyToolImplementation* windSurvImpl = new SurveyToolImplementation(player, 0x21C39BD0, unicode("Wind Survey Tool"), "survey_tool_wind");
 	player->addInventoryItem(windSurvImpl->deploy());
 	
-	/*
 	// crafting tools
 	CraftingToolImplementation* clothingTool = new CraftingToolImplementation(player, 0x2CED1748,	unicode("Clothing and Armor Crafting Tool"), "clothing_tool");
 	player->addInventoryItem(clothingTool->deploy());
@@ -494,7 +493,6 @@ void ItemManagerImplementation::loadDefaultPlayerItems(Player* player) {
  
 	CraftingToolImplementation* weaponTool = new CraftingToolImplementation(player, 0x64F6D031,	unicode("Weapon Droid and General Item Crafting Tool"), "weapon_tool");
 	player->addInventoryItem(weaponTool->deploy());
-	*/
 	
 	//Slitherhorn
 	InstrumentImplementation* instruImpl = new InstrumentImplementation(player, 0xD2A2E607, unicode("The Pwn Slitherhorn"), "obj_slitherhorn", InstrumentImplementation::SLITHERHORN);

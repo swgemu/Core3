@@ -75,12 +75,26 @@ CraftingManager* CraftingManager::clone() {
 }
 
 
-void CraftingManager::addDraftSchematicsFromGroupName(Player* player, const string& schematicGroupName) {
+void CraftingManager::prepareCraftingSessionStageTwo(Player* player, DraftSchematic* ds) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
 		ORBMethodInvocation invocation(this, 6);
+		invocation.addObjectParameter(player);
+		invocation.addObjectParameter(ds);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((CraftingManagerImplementation*) _impl)->prepareCraftingSessionStageTwo(player, ds);
+}
+
+void CraftingManager::addDraftSchematicsFromGroupName(Player* player, const string& schematicGroupName) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 7);
 		invocation.addObjectParameter(player);
 		invocation.addAsciiParameter(schematicGroupName);
 
@@ -94,7 +108,7 @@ void CraftingManager::subtractDraftSchematicsFromGroupName(Player* player, const
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 7);
+		ORBMethodInvocation invocation(this, 8);
 		invocation.addObjectParameter(player);
 		invocation.addAsciiParameter(schematicGroupName);
 
@@ -115,9 +129,12 @@ Packet* CraftingManagerAdapter::invokeMethod(uint32 methid, ORBMethodInvocation*
 
 	switch (methid) {
 	case 6:
-		addDraftSchematicsFromGroupName((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_addDraftSchematicsFromGroupName__Player_string_));
+		prepareCraftingSessionStageTwo((Player*) inv->getObjectParameter(), (DraftSchematic*) inv->getObjectParameter());
 		break;
 	case 7:
+		addDraftSchematicsFromGroupName((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_addDraftSchematicsFromGroupName__Player_string_));
+		break;
+	case 8:
 		subtractDraftSchematicsFromGroupName((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_subtractDraftSchematicsFromGroupName__Player_string_));
 		break;
 	default:
@@ -125,6 +142,10 @@ Packet* CraftingManagerAdapter::invokeMethod(uint32 methid, ORBMethodInvocation*
 	}
 
 	return resp;
+}
+
+void CraftingManagerAdapter::prepareCraftingSessionStageTwo(Player* player, DraftSchematic* ds) {
+	return ((CraftingManagerImplementation*) impl)->prepareCraftingSessionStageTwo(player, ds);
 }
 
 void CraftingManagerAdapter::addDraftSchematicsFromGroupName(Player* player, const string& schematicGroupName) {

@@ -65,7 +65,7 @@ public:
 
 	DraftSchematicIngredient* deploy(const string& name);
 
-	void sendToPlayer(ObjectControllerMessage* msg);
+	void helperSendToPlayer(ObjectControllerMessage* msg);
 
 	string& getTemplateName();
 
@@ -96,7 +96,7 @@ public:
 
 	DraftSchematicIngredient* deploy(const string& name);
 
-	void sendToPlayer(ObjectControllerMessage* msg);
+	void helperSendToPlayer(ObjectControllerMessage* msg);
 
 	string& getTemplateName();
 

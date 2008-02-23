@@ -53,8 +53,9 @@ class TangibleObjectMessage3 : public BaseLineMessage {
 public:
 	TangibleObjectMessage3(TangibleObject* tano) 
 			: BaseLineMessage(tano->getObjectID(), 0x54414E4F, 3, 0x0B) {
-		insertFloat(100);
-
+		//insertFloat(100);
+		insertInt(0);
+		
 		insertAscii(tano->getTemplateTypeName());
 		insertInt(0);
 		insertAscii(tano->getTemplateName());
@@ -79,6 +80,10 @@ public:
 
 		insertByte(1);
 
+		/*insertByte(0);
+		insertInt(0xE8000000);
+		insertInt(0x01000003);*/
+		
 		setSize();
 	}
 	

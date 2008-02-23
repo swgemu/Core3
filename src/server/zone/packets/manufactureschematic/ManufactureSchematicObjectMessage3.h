@@ -42,84 +42,45 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef PLAYEROBJECTDELTAMESSAGE9_H_
-#define PLAYEROBJECTDELTAMESSAGE9_H_
 
-#include "../DeltaMessage.h"
+#ifndef MANUFACTURESCHEMATICOBJECTMESSAGE3_H_
+#define MANUFACTURESCHEMATICOBJECTMESSAGE3_H_
 
-#include "../../objects/player/PlayerObject.h"
-#include "../../objects/player/Player.h"
+#include "../BaseLineMessage.h"
 
 #include "../../objects/draftschematic/DraftSchematic.h"
 
-class PlayerObjectDeltaMessage9 : public DeltaMessage {
-	PlayerObject* play;
-	
+class ManufactureSchematicObjectMessage3 : public BaseLineMessage {
 public:
-	PlayerObjectDeltaMessage9(PlayerObject* pl)
-			: DeltaMessage(pl->getObjectID(), 0x504C4159, 9) {
-		play = pl;
-	}
+	ManufactureSchematicObjectMessage3(uint64 oid, float complexity, unicode& playerName) 
+			: BaseLineMessage(oid, 0x4D53434F, 3, 0x09) {
 
-	void startSkillListUpdate(int skillsToUpdate) {
-		startUpdate(0);
-		startList(skillsToUpdate, play->getPlayer()->getNewCreatureSkillsCount(skillsToUpdate));
-	}
-	
-	void addSkill(const string& name) {
-		insertByte(1);
-		insertShort(0);
-		insertAscii(name.c_str());
-	}
-	
-	void setCraftingState(int state) {
-		startUpdate(2);
-		insertInt(state);
-	}
-		// startUpdate(1), insertInt(2) closes the datapad (i think)
-	void updateDraftSchematics() {
-		Player* player = play->getPlayer();
-		int schematicSize = player->getDraftSchematicListSize();
-		startUpdate(4);
-
-		startList(schematicSize + 1, player->getDraftSchematicUpdateCount(schematicSize + 1));
-
-		// This deletes all the draft schematics on the client
-		insertByte(3);
-		insertShort(0);
-
-		for (int i = 0; i < schematicSize; i++) {
-			insertByte(1);
-			insertShort(i+1);
-			insertInt(player->getDraftSchematic(i)->getSchematicCRC());
-			insertInt(player->getDraftSchematic(i)->getSchematicID());
-		}
-	}
+		insertFloat(complexity);
+		insertAscii("string_id_table");
+		insertInt(0);
 		
-	void updateSkilsAndCertifications() {
-		Player* player = play->getPlayer();
+		insertAscii("");
+		unicode empty = "";
+		insertUnicode(empty);
 		
-		int certSize = player->getCertificationListSize();
-		int skillsSize = player->getCreatureSkillsSize();
+		insertInt(0);
+		insertInt(0x0A);
+		insertInt(1);
+		insertInt(1);
+		insertByte(0);
 		
-		startUpdate(0);
-		startList(certSize + skillsSize + 1, player->getNewCreatureSkillsCount(certSize + skillsSize + 1));
+		insertAscii("crafting");
+		insertInt(0);
+		insertAscii("complexity");
+		insertFloat(complexity);
 		
-		insertByte(3);
-		
-		insertShort(certSize + skillsSize);
-		for (int i = 0; i < skillsSize; i++) {
-			insertAscii(player->getSkill(i));
-		}
+		//unicode playerName = "Link";
+		insertUnicode(playerName);
+		insertInt(0x19);
+		insertFloat(8.0);
 				
-		for (int i = 0; i < certSize; i++)
-			insertAscii(player->getCertification(i));
+		setSize();
 	}
-	
-	void updateFoodCurrent() {
-		addIntUpdate(0x0A, 100);
-	}
-	
 };
 
-#endif /*PLAYEROBJECTDELTAMESSAGE9_H_*/
+#endif /*MANUFACTURESCHEMATICOBJECTMESSAGE3_H_*/

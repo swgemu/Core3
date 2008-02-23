@@ -108,9 +108,8 @@ void CraftingToolImplementation::generateAttributes(SceneObject* obj) {
 void CraftingToolImplementation::sendToolStart(Player* player) {
 	// Craft Start
 	// Tano7
-	TangibleObjectMessage7* tano7 = new TangibleObjectMessage7(_this);
-	tano7->close();
-	player->sendMessage(tano7);
+	//TangibleObjectMessage7* tano7 = new TangibleObjectMessage7(_this);
+	//player->sendMessage(tano7);
 	
 	// DPlay9
 	PlayerObjectDeltaMessage9* dplay9 = new PlayerObjectDeltaMessage9(player->getPlayerObject());
@@ -134,4 +133,18 @@ void CraftingToolImplementation::sendToolStart(Player* player) {
 	}
 	ocm->close();
 	player->sendMessage(ocm);
+
+	// This is inefficent but for now it works fine
+	// Sends all the ingredients and experimental props to the player
+	for(int i = 0; i < draftSchematicListSize; i++) {
+		DraftSchematic* ds = player->getDraftSchematic(i);
+		if(ds != NULL) {
+			ds->sendIngredientsToPlayer(player);
+			ds->sendExperimentalPropertiesToPlayer(player);
+		}
+	}
+	
+	// Set the player's current crafting tool to this instance
+	player->setCurrentCraftingTool(_this);
+
 }

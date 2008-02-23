@@ -113,6 +113,12 @@ public:
 
 	bool isLair();
 
+	void setName(const string& n);
+
+	void setTemplateName(const string& tempName);
+
+	void setTemplateTypeName(const string& tempTypeName);
+
 	void setPersistent(bool pers);
 
 	void setUpdated(bool upd);
@@ -210,6 +216,12 @@ public:
 
 	bool isLair();
 
+	void setName(const string& n);
+
+	void setTemplateName(const string& tempName);
+
+	void setTemplateTypeName(const string& tempTypeName);
+
 	void setPersistent(bool pers);
 
 	void setUpdated(bool upd);
@@ -247,6 +259,9 @@ public:
 	string& getAttributes();
 
 protected:
+	string _param0_setName__string_;
+	string _param0_setTemplateName__string_;
+	string _param0_setTemplateTypeName__string_;
 	string _param0_setCustomizationString__string_;
 	string _param0_getCustomizationString__string_;
 	string _param0_setAttributes__string_;

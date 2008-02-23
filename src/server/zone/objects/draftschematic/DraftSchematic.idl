@@ -44,6 +44,9 @@ which carries forward this exception.
 
 import "../player/Player";
 import "../scene/SceneObject";
+import "DraftSchematicIngredient";
+import "DraftSchematicExpPropGroup";
+import "../../packets/object/ObjectControllerMessage";
 
 interface DraftSchematic{
 	
@@ -59,6 +62,11 @@ interface DraftSchematic{
 	unsigned int getComplexity();
 	unsigned int getSchematicSize();
 	
+	int getIngredientListSize();
+	DraftSchematicIngredient getIngredient(int index);
+	int getExpPropGroupListSize();
+	DraftSchematicExpPropGroup getExpPropGroup(int index);
+	
 	// setters
 	void setPersistent(boolean status);
 	
@@ -67,6 +75,7 @@ interface DraftSchematic{
 			boolean optional, const string resourceType, unsigned int resourceQuantity);
 
 	void sendIngredientsToPlayer(Player player);
+	void helperSendIngredientsToPlayer(ObjectControllerMessage objMsg);
 	
 	// Experimental Property Methods
 	void addExperimentalProperty(unsigned int groupNumber, const string experimentalProperty, unsigned int weight);

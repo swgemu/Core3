@@ -246,6 +246,145 @@ public:
 		return parsedInts;
 	}
 	
+	
+	// Crating Methods
+	void prepareCraftingSessionStageTwo(Player* player, DraftSchematic* ds) {
+		//TODO: Check to see if this scene obj id for the schematic is different
+		// each time you try to enter stage 2 of crafting
+		
+		uint64 sceneObjSchematic = setupDraftSchematicForCSStageTwo(player, ds);
+		
+		//TODO:draftSchematic->getTangibleObject();
+		uint64 sceneObjTano = setupTangibleObjectForCSStageTwo(player);
+		
+		setupIngredientsForCSStageTwo(player, ds, sceneObjSchematic, sceneObjTano);
+		
+	}
+	
+	uint64 setupDraftSchematicForCSStageTwo(Player* player, DraftSchematic* ds) {
+		// Scene Object Create Message
+		uint64 schematicSceneObjID = player->getNewItemID();
+		SceneObjectCreateMessage* soCreateMsg = new SceneObjectCreateMessage(schematicSceneObjID, 0x3819C409);
+		player->sendMessage(soCreateMsg);
+		
+		// Update Containment Message
+		CraftingTool* ct = player->getCurrentCraftingTool();
+		UpdateContainmentMessage* ucMsg = new UpdateContainmentMessage(schematicSceneObjID, ct->getObjectID(), 4);
+		player->sendMessage(ucMsg);
+
+		// MSCO3
+		float complexity = ds->getComplexity();
+		unicode& uniPlayerName = player->getCharacterName();
+		ManufactureSchematicObjectMessage3* msco3 = new ManufactureSchematicObjectMessage3(schematicSceneObjID, 
+				complexity, uniPlayerName);
+		player->sendMessage(msco3);
+		
+		// MSCO6
+		uint32 schematicCRC = ds->getSchematicCRC();
+		ManufactureSchematicObjectMessage6* msco6 = new ManufactureSchematicObjectMessage6(schematicSceneObjID, schematicCRC);
+		player->sendMessage(msco6);
+		
+		// MSCO8
+		ManufactureSchematicObjectMessage8* msco8 = new ManufactureSchematicObjectMessage8(schematicSceneObjID);
+		player->sendMessage(msco8);
+		
+		// MSCO9
+		ManufactureSchematicObjectMessage9* msco9 = new ManufactureSchematicObjectMessage9(schematicSceneObjID);
+		player->sendMessage(msco9);
+		
+		// Scene Object Close
+		SceneObjectCloseMessage* soCloseMsg = new SceneObjectCloseMessage(schematicSceneObjID);
+		player->sendMessage(soCloseMsg);
+
+		return schematicSceneObjID;
+	}
+	
+	uint64 setupTangibleObjectForCSStageTwo(Player* player) {
+		// Scene Object Create Message
+		TangibleObjectImplementation* tanoImpl = new TangibleObjectImplementation(player->getNewItemID());
+		TangibleObject* tano = tanoImpl->deploy();
+		
+		uint64 tanoSceneObjID = tano->getObjectID();
+		SceneObjectCreateMessage* soCreateMsg = new SceneObjectCreateMessage(tanoSceneObjID, 0x77D8BCD7); // bofa treat tangible object CRC
+		player->sendMessage(soCreateMsg);
+
+		// Update Containment Message
+		CraftingTool* ct = player->getCurrentCraftingTool();
+		UpdateContainmentMessage* ucMsg = new UpdateContainmentMessage(tanoSceneObjID, ct->getObjectID(), 0);
+		player->sendMessage(ucMsg);
+	
+		// Tano3
+		tano->setTemplateTypeName("food_name");
+		tano->setTemplateName("bofa_treat");
+		TangibleObjectMessage3* tano3 = new TangibleObjectMessage3(tano);
+		player->sendMessage(tano3);
+		
+		/* Tano6
+		BaseLineMessage* tano6 = new BaseLineMessage(tano->getObjectID(), 0x54414E4F, 6, 0x02);
+		tano6->insertInt(0x76);
+		tano6->insertAscii("food_detail");
+		//tano6->insertInt(0);
+		tano6->insertAscii("bofa_treat");
+		//tano6->insertInt(0);
+		//tano6->insertInt(0);
+		//tano6->insertByte(0);
+		tano6->setSize();
+		player->sendMessage(tano6);*/
+		//TangibleObjectMessage6* tano6 = new TangibleObjectMessage6(tano);
+		//player->sendMessage(tano6);
+		
+		// Scene Object Close
+		SceneObjectCloseMessage* soCloseMsg = new SceneObjectCloseMessage(tanoSceneObjID);
+		player->sendMessage(soCloseMsg);
+		
+		// DTano3
+		TangibleObjectDeltaMessage3* dtano3 = new TangibleObjectDeltaMessage3(tano);
+		dtano3->updateConditionDamage();
+		dtano3->close();
+		player->sendMessage(dtano3);
+		
+		// Dplay9
+		PlayerObjectDeltaMessage9* dplay9 = new PlayerObjectDeltaMessage9(player->getPlayerObject());
+		dplay9->setCraftingState(2);
+		dplay9->close();
+		player->sendMessage(dplay9);
+		
+		return tano->getObjectID();
+	}
+	
+	void setupIngredientsForCSStageTwo(Player* player, DraftSchematic* ds, uint64 sceneObjSchematic, uint64 sceneObjTano) {
+		
+		ObjectControllerMessage* objMsg = new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x0103);
+		
+		objMsg->insertLong(player->getCurrentCraftingTool()->getObjectID());
+		objMsg->insertLong(sceneObjSchematic);
+		objMsg->insertLong(sceneObjTano);
+		objMsg->insertInt(1);
+		objMsg->insertByte(1);
+		
+		ds->helperSendIngredientsToPlayer(objMsg);
+		player->sendMessage(objMsg);
+		
+		ManufactureSchematicObjectMessage7* msco7 = new ManufactureSchematicObjectMessage7(sceneObjSchematic, ds);
+		player->sendMessage(msco7);
+		
+		DeltaMessage* dRcno3 = new DeltaMessage(sceneObjSchematic, 0x4D53434F, 6);
+		dRcno3->addByteUpdate(5, 1);
+		dRcno3->close();
+		player->sendMessage(dRcno3);
+		
+		ManufactureSchematicObjectDeltaMessage7* dMsco7 = new ManufactureSchematicObjectDeltaMessage7(sceneObjSchematic, ds);
+		dMsco7->close();
+		player->sendMessage(dMsco7);
+		
+		ObjectControllerMessage* objMsg2 = new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x010C);
+		objMsg2->insertInt(0x0107);
+		objMsg2->insertLong(0);
+		objMsg2->insertByte(1);
+		player->sendMessage(objMsg2);
+		
+	}
+	
 	/*void WriteDraftSchematicToDB(DraftSchematic* ds) {
 		try { 
 			stringstream query;

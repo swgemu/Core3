@@ -215,6 +215,14 @@ which carries forward this exception.
 #include "packets/resource/ResourceContainerObjectDeltaMessage3.h"
 #include "packets/resource/ResourceContainerObjectDeltaMessage6.h"
 
+// Schematics
+#include "packets/manufactureschematic/ManufactureSchematicObjectMessage3.h"
+#include "packets/manufactureschematic/ManufactureSchematicObjectMessage6.h"
+#include "packets/manufactureschematic/ManufactureSchematicObjectMessage7.h"
+#include "packets/manufactureschematic/ManufactureSchematicObjectMessage8.h"
+#include "packets/manufactureschematic/ManufactureSchematicObjectMessage9.h"
+#include "packets/manufactureschematic/ManufactureSchematicObjectDeltaMessage7.h"
+
 // static objects
 #include "packets/static/StaticObjectMessage3.h"
 #include "packets/static/StaticObjectMessage6.h"

@@ -89,6 +89,10 @@ interface TangibleObject implements SceneObject {
 	boolean isLair();
 
 	// setters
+	void setName(const string n);
+	void setTemplateName(const string tempName);
+	void setTemplateTypeName(const string tempTypeName);	
+	
 	void setPersistent(boolean pers);
 
 	void setUpdated(boolean upd);

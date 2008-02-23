@@ -167,6 +167,9 @@ void PlayerImplementation::init() {
 	draftSchematicList.setNullValue(NULL);
 	draftSchematicUpdateCount = 0;
 	
+	//Crafting
+	currentCraftingTool = NULL;
+	
 	//temp
 	factionRank = "Sexy Tester";
 	rebelPoints = 0; 
@@ -2281,6 +2284,22 @@ void PlayerImplementation::clearDuelList() {
 		
 		combatManager->freeDuelList(_this);
 	}
+}
+
+// Crafting
+CraftingTool* PlayerImplementation::getCurrentCraftingTool() {
+	return currentCraftingTool;
+}
+void PlayerImplementation::setCurrentCraftingTool(CraftingTool* ct) {
+	currentCraftingTool = ct;
+}
+void PlayerImplementation::clearCurrentCraftingTool() {
+	currentCraftingTool = NULL;
+}
+
+void PlayerImplementation::prepareCraftingSessionStageTwo(DraftSchematic* ds) {
+	CraftingManager* craftingManager = server->getCraftingManager();
+	craftingManager->prepareCraftingSessionStageTwo(_this, ds);
 }
 
 // Draft Schematics

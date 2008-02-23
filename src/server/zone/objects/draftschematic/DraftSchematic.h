@@ -55,6 +55,12 @@ class Player;
 
 class SceneObject;
 
+class DraftSchematicIngredient;
+
+class DraftSchematicExpPropGroup;
+
+class ObjectControllerMessage;
+
 class DraftSchematic : public ORBObjectStub {
 public:
 	DraftSchematic();
@@ -79,11 +85,21 @@ public:
 
 	unsigned int getSchematicSize();
 
+	int getIngredientListSize();
+
+	DraftSchematicIngredient* getIngredient(int index);
+
+	int getExpPropGroupListSize();
+
+	DraftSchematicExpPropGroup* getExpPropGroup(int index);
+
 	void setPersistent(bool status);
 
 	void addIngredient(const string& ingredientTemplateName, const string& ingredientTitleName, bool optional, const string& resourceType, unsigned int resourceQuantity);
 
 	void sendIngredientsToPlayer(Player* player);
+
+	void helperSendIngredientsToPlayer(ObjectControllerMessage* objMsg);
 
 	void addExperimentalProperty(unsigned int groupNumber, const string& experimentalProperty, unsigned int weight);
 
@@ -118,11 +134,21 @@ public:
 
 	unsigned int getSchematicSize();
 
+	int getIngredientListSize();
+
+	DraftSchematicIngredient* getIngredient(int index);
+
+	int getExpPropGroupListSize();
+
+	DraftSchematicExpPropGroup* getExpPropGroup(int index);
+
 	void setPersistent(bool status);
 
 	void addIngredient(const string& ingredientTemplateName, const string& ingredientTitleName, bool optional, const string& resourceType, unsigned int resourceQuantity);
 
 	void sendIngredientsToPlayer(Player* player);
+
+	void helperSendIngredientsToPlayer(ObjectControllerMessage* objMsg);
 
 	void addExperimentalProperty(unsigned int groupNumber, const string& experimentalProperty, unsigned int weight);
 
