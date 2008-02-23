@@ -211,11 +211,10 @@ void PlayerImplementation::init() {
 }
 
 Player* PlayerImplementation::create(ZoneClient* client) {
-	string orbname = "Player " + firstName;
-	Player* player = (Player*) deploy(orbname);
+	Player* player = (Player*) deploy("Player " + firstName);
 
 	PlayerObjectImplementation* playerObjectImpl = new PlayerObjectImplementation(player);
-	playerObject = (PlayerObject*) playerObjectImpl->deploy();
+	playerObject = (PlayerObject*) playerObjectImpl->deploy("PlayerObject" + firstName);
 
 	setClient(client);
 	client->setPlayer(player);

@@ -47,6 +47,7 @@ import "../../../player/Player";
 import "../../../scene/SceneObject";
 
 import "../../../auction/AuctionItem";
+
 import "../../../../managers/bazaar/BazaarPlanetManager";
 
 interface RegionBazaar implements SceneObject {
