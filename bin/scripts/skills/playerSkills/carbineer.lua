@@ -119,7 +119,7 @@ DirectPoolAtt = {
 	requiredWeaponType = CARBINE,
 	
 	range = 65,
-	damageRatio = 5.0,
+	damageRatio = 1.6,
 	speedRatio = 2.0,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -192,7 +192,7 @@ DirectPoolAtt = {
 	requiredWeaponType = CARBINE,
 	
 	range = 65,
-	damageRatio = 7.5,
+	damageRatio = 2.5,
 	speedRatio = 2.5,
 	areaRange = 0,
 	accuracyBonus = 0,
