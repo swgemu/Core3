@@ -67,8 +67,7 @@ void ObjectManager::add(SceneObject* obj) {
 		
 		objectMap->put(oid, obj);
 	} else {
-		if (objectMap->put(oid, obj) == NULL)
-			obj->acquire();
+		objectMap->put(oid, obj);
 	}
 }
 
@@ -104,9 +103,6 @@ SceneObject* ObjectManager::getCachedObject(uint64 oid) {
 
 SceneObject* ObjectManager::removeCachedObject(uint64 oid) {
 	SceneObject* obj = objectCacheMap->remove(oid);
-	
-	if (obj != NULL)
-		obj->release();
 	
 	return obj;
 }

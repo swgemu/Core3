@@ -135,7 +135,7 @@ class PlayerImplementation : public PlayerServant {
 	CraftingTool* currentCraftingTool;
 
 	// misc
-	SortedVector<Player*> duelList;
+	ManagedSortedVector<Player> duelList;
 	CreatureObject* conversatingCreature;
 	SortedVector<ChatRoom*> chatRooms;
 	

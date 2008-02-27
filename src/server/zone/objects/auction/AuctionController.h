@@ -52,35 +52,48 @@ which carries forward this exception.
 #include "../../packets/auction/AuctionQueryHeadersResponseMessage.h"
 #include "../../objects/player/Player.h"
 
-class AuctionController {
+class AuctionController : public Mutex {
 
 public:
 	VectorMap<uint64, AuctionItem*> items;
 
-	AuctionController() {
+	AuctionController() : Mutex ("AuctionController") {
+		items.setNullValue(NULL);
+		items.setInsertPlan(SortedVector<VectorMapEntry<uint64, AuctionItem*>*>::NO_DUPLICATE);
+	}
+	
+	inline void addItem(AuctionItem* item, bool doLock = true) {
+		lock(doLock);
 		
-	}
-	
-	inline void addItem(AuctionItem* item) {
 		items.put(item->getId(), item);
+		
+		unlock(doLock);
 	}
 	
-	inline void removeItem(uint64 objectid) {
-		if (items.contains(objectid))
-			items.drop(objectid);
+	inline bool removeItem(uint64 objectid, bool doLock = true) {
+		lock(doLock);
+		
+		bool ret = items.drop(objectid);
+			
+		unlock(doLock);
+		
+		return ret;
 	}
 	
-	inline AuctionItem* getItem(uint64 objectid) {
-		if (items.contains(objectid)) {
-			int index = items.find(objectid);
-			AuctionItem* item = items.get(index);
-			return item;
-		}
-		else
-			return NULL;
+	inline AuctionItem* getItem(uint64 objectid, bool doLock = true) {
+		AuctionItem* item = NULL;
+		
+		lock(doLock);
+		
+		item = items.get(objectid);
+		
+		unlock(doLock);
+		
+		return item;
 	}
 	
 	void getBazaarData(Player* player, long long objectid, int screen, int extent, unsigned int category, int count, int offset) {
+		lock();
 		
 		AuctionQueryHeadersResponseMessage* reply = new AuctionQueryHeadersResponseMessage(screen, count);
 
@@ -142,6 +155,7 @@ public:
 		
 		player->sendMessage(reply);
 		
+		unlock();		
 	}
 };
 

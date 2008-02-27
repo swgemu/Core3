@@ -531,7 +531,7 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 			}
 		} else if (cmd == "@setGuildID") {
 		 	if (userManager->isAdmin(player->getFirstName())) {
-		 		int guildid = tokenizer.getIntToken();
+		 		/*int guildid = tokenizer.getIntToken();
 		 		CreatureObject* target = (CreatureObject*) player->getTarget();
  	           
  	           	if (target == NULL) {
@@ -548,11 +548,11 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 		 			} else
 		 				player->sendSystemMessage("Invalid Guild ID");	
 				} else
-					player->sendSystemMessage("Invalid target.");	
+					player->sendSystemMessage("Invalid target.");	*/
 			}
 		} else if (cmd == "@createGuild") {
 		 	if (userManager->isAdmin(player->getFirstName())) {
-		 		string guildtag;
+		 		/*string guildtag;
 		 		string tmpString;
 		 		stringstream guildname;
 		 		
@@ -576,16 +576,16 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 		 		else
 		 			player->sendSystemMessage("Error creating guild.");
 		 			
-		 		player->wlock();
+		 		player->wlock();*/
 			}
 		} else if (cmd == "@deleteGuildByID") {
 		 	if (userManager->isAdmin(player->getFirstName())) {
-		 		int guildid = tokenizer.getIntToken();
+		 		/*int guildid = tokenizer.getIntToken();
 				
 				if (guildManager->removeGuild(guildid))
 					player->sendSystemMessage("Guild deleted.");
 				else
-					player->sendSystemMessage("Error deleting guild.");	
+					player->sendSystemMessage("Error deleting guild.");	*/
 			}
 			
 		/*} else if (cmd == "@deleteGuildByTag") {

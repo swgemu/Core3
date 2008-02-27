@@ -55,7 +55,11 @@ public:
         
 		insertLong(objectid); //Object Id to set guild for
 		
-		insertAscii(creo->getGuildName()); //Guild name not abbreviated.
+		if (creo->isGuilded())
+			insertAscii(creo->getGuildName()); //Guild name not abbreviated.
+		else
+			insertAscii("");
+		
 		insertShort(0); //??
 	}
 	

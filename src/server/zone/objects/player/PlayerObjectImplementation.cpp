@@ -76,6 +76,8 @@ PlayerObjectImplementation::PlayerObjectImplementation(Player* pl) : SceneObject
 }
 
 PlayerObjectImplementation::~PlayerObjectImplementation() {
+	for (int i = 0; i < waypointList.size(); ++i)
+		delete waypointList.get(i);
 }
 
 void PlayerObjectImplementation::sendToOwner() {

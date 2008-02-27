@@ -77,24 +77,12 @@ SceneObject* SceneObject::clone() {
 }
 
 
-void SceneObject::finalize() {
-	 if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 6);
-
-		invocation.executeWithVoidReturn();
-	} else
-		((SceneObjectImplementation*) _impl)->finalize();
-}
-
 void SceneObject::redeploy() {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 7);
+		ORBMethodInvocation invocation(this, 6);
 
 		invocation.executeWithVoidReturn();
 	} else
@@ -106,7 +94,7 @@ void SceneObject::scheduleUndeploy() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 8);
+		ORBMethodInvocation invocation(this, 7);
 
 		invocation.executeWithVoidReturn();
 	} else
@@ -118,7 +106,7 @@ void SceneObject::sendTo(Player* player, bool doClose) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 9);
+		ORBMethodInvocation invocation(this, 8);
 		invocation.addObjectParameter(player);
 		invocation.addBooleanParameter(doClose);
 
@@ -132,7 +120,7 @@ void SceneObject::sendDestroyTo(Player* player) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 10);
+		ORBMethodInvocation invocation(this, 9);
 		invocation.addObjectParameter(player);
 
 		invocation.executeWithVoidReturn();
@@ -145,7 +133,7 @@ void SceneObject::create(ZoneClient* client) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 11);
+		ORBMethodInvocation invocation(this, 10);
 		invocation.addObjectParameter(client);
 
 		invocation.executeWithVoidReturn();
@@ -158,7 +146,7 @@ void SceneObject::destroy(ZoneClient* client) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 12);
+		ORBMethodInvocation invocation(this, 11);
 		invocation.addObjectParameter(client);
 
 		invocation.executeWithVoidReturn();
@@ -171,7 +159,7 @@ void SceneObject::sendConversationStartTo(SceneObject* obj) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 13);
+		ORBMethodInvocation invocation(this, 12);
 		invocation.addObjectParameter(obj);
 
 		invocation.executeWithVoidReturn();
@@ -184,7 +172,7 @@ void SceneObject::selectConversationOption(int option, SceneObject* obj) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 14);
+		ORBMethodInvocation invocation(this, 13);
 		invocation.addSignedIntParameter(option);
 		invocation.addObjectParameter(obj);
 
@@ -198,7 +186,7 @@ void SceneObject::close(ZoneClient* client) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 15);
+		ORBMethodInvocation invocation(this, 14);
 		invocation.addObjectParameter(client);
 
 		invocation.executeWithVoidReturn();
@@ -211,7 +199,7 @@ bool SceneObject::isInRange(SceneObject* obj, float range) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 16);
+		ORBMethodInvocation invocation(this, 15);
 		invocation.addObjectParameter(obj);
 		invocation.addFloatParameter(range);
 
@@ -225,7 +213,7 @@ bool SceneObject::isInRange(float x, float y, float range) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 17);
+		ORBMethodInvocation invocation(this, 16);
 		invocation.addFloatParameter(x);
 		invocation.addFloatParameter(y);
 		invocation.addFloatParameter(range);
@@ -240,7 +228,7 @@ int SceneObject::inRangeObjectCount() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 18);
+		ORBMethodInvocation invocation(this, 17);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -252,7 +240,7 @@ QuadTreeEntry* SceneObject::getInRangeObject(int idx) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 19);
+		ORBMethodInvocation invocation(this, 18);
 		invocation.addSignedIntParameter(idx);
 
 		return (QuadTreeEntry*) invocation.executeWithObjectReturn();
@@ -265,7 +253,7 @@ void SceneObject::addInRangeObject(QuadTreeEntry* obj) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 20);
+		ORBMethodInvocation invocation(this, 19);
 		invocation.addObjectParameter(obj);
 
 		invocation.executeWithVoidReturn();
@@ -278,7 +266,7 @@ void SceneObject::removeInRangeObject(QuadTreeEntry* obj) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 21);
+		ORBMethodInvocation invocation(this, 20);
 		invocation.addObjectParameter(obj);
 
 		invocation.executeWithVoidReturn();
@@ -291,7 +279,7 @@ bool SceneObject::isInQuadTree() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 22);
+		ORBMethodInvocation invocation(this, 21);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -303,7 +291,7 @@ QuadTreeEntry* SceneObject::getQuadTreeEntry() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 23);
+		ORBMethodInvocation invocation(this, 22);
 
 		return (QuadTreeEntry*) invocation.executeWithObjectReturn();
 	} else
@@ -315,7 +303,7 @@ int SceneObject::compareTo(SceneObject* obj) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 24);
+		ORBMethodInvocation invocation(this, 23);
 		invocation.addObjectParameter(obj);
 
 		return invocation.executeWithSignedIntReturn();
@@ -328,7 +316,7 @@ BaseMessage* SceneObject::link(SceneObject* obj) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 25);
+		ORBMethodInvocation invocation(this, 24);
 		invocation.addObjectParameter(obj);
 
 		return (BaseMessage*) invocation.executeWithObjectReturn();
@@ -341,7 +329,7 @@ void SceneObject::link(ZoneClient* client, SceneObject* obj) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 26);
+		ORBMethodInvocation invocation(this, 25);
 		invocation.addObjectParameter(client);
 		invocation.addObjectParameter(obj);
 
@@ -355,7 +343,7 @@ void SceneObject::randomizePosition(float radius) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 27);
+		ORBMethodInvocation invocation(this, 26);
 		invocation.addFloatParameter(radius);
 
 		invocation.executeWithVoidReturn();
@@ -368,7 +356,7 @@ int SceneObject::useObject(Player* player) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 28);
+		ORBMethodInvocation invocation(this, 27);
 		invocation.addObjectParameter(player);
 
 		return invocation.executeWithSignedIntReturn();
@@ -381,7 +369,7 @@ void SceneObject::initializePosition(float x, float z, float y) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 29);
+		ORBMethodInvocation invocation(this, 28);
 		invocation.addFloatParameter(x);
 		invocation.addFloatParameter(z);
 		invocation.addFloatParameter(y);
@@ -396,7 +384,7 @@ void SceneObject::setPosition(float x, float z, float y) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 30);
+		ORBMethodInvocation invocation(this, 29);
 		invocation.addFloatParameter(x);
 		invocation.addFloatParameter(z);
 		invocation.addFloatParameter(y);
@@ -411,7 +399,7 @@ void SceneObject::setDirection(float x, float z, float y, float w) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 31);
+		ORBMethodInvocation invocation(this, 30);
 		invocation.addFloatParameter(x);
 		invocation.addFloatParameter(z);
 		invocation.addFloatParameter(y);
@@ -427,7 +415,7 @@ void SceneObject::generateAttributes(Player* player) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 32);
+		ORBMethodInvocation invocation(this, 31);
 		invocation.addObjectParameter(player);
 
 		invocation.executeWithVoidReturn();
@@ -440,7 +428,7 @@ void SceneObject::setObjectID(unsigned long long oid) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 33);
+		ORBMethodInvocation invocation(this, 32);
 		invocation.addUnsignedLongParameter(oid);
 
 		invocation.executeWithVoidReturn();
@@ -453,7 +441,7 @@ void SceneObject::setObjectCRC(unsigned int crc) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 34);
+		ORBMethodInvocation invocation(this, 33);
 		invocation.addUnsignedIntParameter(crc);
 
 		invocation.executeWithVoidReturn();
@@ -466,7 +454,7 @@ void SceneObject::setMovementCounter(unsigned int cntr) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 35);
+		ORBMethodInvocation invocation(this, 34);
 		invocation.addUnsignedIntParameter(cntr);
 
 		invocation.executeWithVoidReturn();
@@ -479,7 +467,7 @@ void SceneObject::setZoneIndex(int id) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 36);
+		ORBMethodInvocation invocation(this, 35);
 		invocation.addSignedIntParameter(id);
 
 		invocation.executeWithVoidReturn();
@@ -492,7 +480,7 @@ void SceneObject::setParent(SceneObject* par, unsigned int linktype) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 37);
+		ORBMethodInvocation invocation(this, 36);
 		invocation.addObjectParameter(par);
 		invocation.addUnsignedIntParameter(linktype);
 
@@ -506,7 +494,7 @@ void SceneObject::setZone(Zone* zne) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 38);
+		ORBMethodInvocation invocation(this, 37);
 		invocation.addObjectParameter(zne);
 
 		invocation.executeWithVoidReturn();
@@ -519,7 +507,7 @@ void SceneObject::clearUndeploymentEvent() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 39);
+		ORBMethodInvocation invocation(this, 38);
 
 		invocation.executeWithVoidReturn();
 	} else
@@ -531,7 +519,7 @@ int SceneObject::getObjectType() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 40);
+		ORBMethodInvocation invocation(this, 39);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -543,7 +531,7 @@ unsigned long long SceneObject::getObjectID() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 41);
+		ORBMethodInvocation invocation(this, 40);
 
 		return invocation.executeWithUnsignedLongReturn();
 	} else
@@ -555,7 +543,7 @@ unsigned int SceneObject::getObjectCRC() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 42);
+		ORBMethodInvocation invocation(this, 41);
 
 		return invocation.executeWithUnsignedIntReturn();
 	} else
@@ -567,7 +555,7 @@ unsigned int SceneObject::getMovementCounter() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 43);
+		ORBMethodInvocation invocation(this, 42);
 
 		return invocation.executeWithUnsignedIntReturn();
 	} else
@@ -579,7 +567,7 @@ float SceneObject::getPositionX() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 44);
+		ORBMethodInvocation invocation(this, 43);
 
 		return invocation.executeWithFloatReturn();
 	} else
@@ -591,7 +579,7 @@ float SceneObject::getPositionZ() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 45);
+		ORBMethodInvocation invocation(this, 44);
 
 		return invocation.executeWithFloatReturn();
 	} else
@@ -603,7 +591,7 @@ float SceneObject::getPositionY() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 46);
+		ORBMethodInvocation invocation(this, 45);
 
 		return invocation.executeWithFloatReturn();
 	} else
@@ -615,7 +603,7 @@ int SceneObject::getDirectionAngle() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 47);
+		ORBMethodInvocation invocation(this, 46);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -627,7 +615,7 @@ float SceneObject::getDirectionX() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 48);
+		ORBMethodInvocation invocation(this, 47);
 
 		return invocation.executeWithFloatReturn();
 	} else
@@ -639,7 +627,7 @@ float SceneObject::getDirectionZ() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 49);
+		ORBMethodInvocation invocation(this, 48);
 
 		return invocation.executeWithFloatReturn();
 	} else
@@ -651,7 +639,7 @@ float SceneObject::getDirectionY() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 50);
+		ORBMethodInvocation invocation(this, 49);
 
 		return invocation.executeWithFloatReturn();
 	} else
@@ -663,7 +651,7 @@ float SceneObject::getDirectionW() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 51);
+		ORBMethodInvocation invocation(this, 50);
 
 		return invocation.executeWithFloatReturn();
 	} else
@@ -675,7 +663,7 @@ string& SceneObject::getLoggingName() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 52);
+		ORBMethodInvocation invocation(this, 51);
 
 		invocation.executeWithAsciiReturn(_return_getLoggingName);
 		return _return_getLoggingName;
@@ -688,7 +676,7 @@ bool SceneObject::isPlayer() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 53);
+		ORBMethodInvocation invocation(this, 52);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -700,7 +688,7 @@ bool SceneObject::isNonPlayerCreature() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 54);
+		ORBMethodInvocation invocation(this, 53);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -712,7 +700,7 @@ bool SceneObject::isBuilding() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 55);
+		ORBMethodInvocation invocation(this, 54);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -724,7 +712,7 @@ bool SceneObject::isCell() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 56);
+		ORBMethodInvocation invocation(this, 55);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -736,7 +724,7 @@ bool SceneObject::isTangible() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 57);
+		ORBMethodInvocation invocation(this, 56);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -748,7 +736,7 @@ bool SceneObject::isIntangible() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 58);
+		ORBMethodInvocation invocation(this, 57);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -760,7 +748,7 @@ bool SceneObject::isStatic() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 59);
+		ORBMethodInvocation invocation(this, 58);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -772,7 +760,7 @@ bool SceneObject::isShip() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 60);
+		ORBMethodInvocation invocation(this, 59);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -784,7 +772,7 @@ Zone* SceneObject::getZone() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 61);
+		ORBMethodInvocation invocation(this, 60);
 
 		return (Zone*) invocation.executeWithObjectReturn();
 	} else
@@ -796,7 +784,7 @@ int SceneObject::getZoneID() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 62);
+		ORBMethodInvocation invocation(this, 61);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -808,7 +796,7 @@ SceneObject* SceneObject::getParent() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 63);
+		ORBMethodInvocation invocation(this, 62);
 
 		return (SceneObject*) invocation.executeWithObjectReturn();
 	} else
@@ -820,7 +808,7 @@ unsigned long long SceneObject::getParentID() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 64);
+		ORBMethodInvocation invocation(this, 63);
 
 		return invocation.executeWithUnsignedLongReturn();
 	} else
@@ -832,7 +820,7 @@ bool SceneObject::isMoving() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 65);
+		ORBMethodInvocation invocation(this, 64);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -844,7 +832,7 @@ void SceneObject::switchMovingState() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 66);
+		ORBMethodInvocation invocation(this, 65);
 
 		invocation.executeWithVoidReturn();
 	} else
@@ -856,7 +844,7 @@ bool SceneObject::doKeepObject() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 67);
+		ORBMethodInvocation invocation(this, 66);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -875,189 +863,186 @@ Packet* SceneObjectAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* inv
 
 	switch (methid) {
 	case 6:
-		finalize();
-		break;
-	case 7:
 		redeploy();
 		break;
-	case 8:
+	case 7:
 		scheduleUndeploy();
 		break;
-	case 9:
+	case 8:
 		sendTo((Player*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
-	case 10:
+	case 9:
 		sendDestroyTo((Player*) inv->getObjectParameter());
 		break;
-	case 11:
+	case 10:
 		create((ZoneClient*) inv->getObjectParameter());
 		break;
-	case 12:
+	case 11:
 		destroy((ZoneClient*) inv->getObjectParameter());
 		break;
-	case 13:
+	case 12:
 		sendConversationStartTo((SceneObject*) inv->getObjectParameter());
 		break;
-	case 14:
+	case 13:
 		selectConversationOption(inv->getSignedIntParameter(), (SceneObject*) inv->getObjectParameter());
 		break;
-	case 15:
+	case 14:
 		close((ZoneClient*) inv->getObjectParameter());
 		break;
-	case 16:
+	case 15:
 		resp->insertBoolean(isInRange((SceneObject*) inv->getObjectParameter(), inv->getFloatParameter()));
 		break;
-	case 17:
+	case 16:
 		resp->insertBoolean(isInRange(inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter()));
 		break;
-	case 18:
+	case 17:
 		resp->insertSignedInt(inRangeObjectCount());
 		break;
-	case 19:
+	case 18:
 		resp->insertLong(getInRangeObject(inv->getSignedIntParameter())->_getORBObjectID());
 		break;
-	case 20:
+	case 19:
 		addInRangeObject((QuadTreeEntry*) inv->getObjectParameter());
 		break;
-	case 21:
+	case 20:
 		removeInRangeObject((QuadTreeEntry*) inv->getObjectParameter());
 		break;
-	case 22:
+	case 21:
 		resp->insertBoolean(isInQuadTree());
 		break;
-	case 23:
+	case 22:
 		resp->insertLong(getQuadTreeEntry()->_getORBObjectID());
 		break;
-	case 24:
+	case 23:
 		resp->insertSignedInt(compareTo((SceneObject*) inv->getObjectParameter()));
 		break;
-	case 25:
+	case 24:
 		resp->insertLong(link((SceneObject*) inv->getObjectParameter())->_getORBObjectID());
 		break;
-	case 26:
+	case 25:
 		link((ZoneClient*) inv->getObjectParameter(), (SceneObject*) inv->getObjectParameter());
 		break;
-	case 27:
+	case 26:
 		randomizePosition(inv->getFloatParameter());
 		break;
-	case 28:
+	case 27:
 		resp->insertSignedInt(useObject((Player*) inv->getObjectParameter()));
 		break;
-	case 29:
+	case 28:
 		initializePosition(inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter());
 		break;
-	case 30:
+	case 29:
 		setPosition(inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter());
 		break;
-	case 31:
+	case 30:
 		setDirection(inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter());
 		break;
-	case 32:
+	case 31:
 		generateAttributes((Player*) inv->getObjectParameter());
 		break;
-	case 33:
+	case 32:
 		setObjectID(inv->getUnsignedLongParameter());
 		break;
-	case 34:
+	case 33:
 		setObjectCRC(inv->getUnsignedIntParameter());
 		break;
-	case 35:
+	case 34:
 		setMovementCounter(inv->getUnsignedIntParameter());
 		break;
-	case 36:
+	case 35:
 		setZoneIndex(inv->getSignedIntParameter());
 		break;
-	case 37:
+	case 36:
 		setParent((SceneObject*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
 		break;
-	case 38:
+	case 37:
 		setZone((Zone*) inv->getObjectParameter());
 		break;
-	case 39:
+	case 38:
 		clearUndeploymentEvent();
 		break;
-	case 40:
+	case 39:
 		resp->insertSignedInt(getObjectType());
 		break;
-	case 41:
+	case 40:
 		resp->insertLong(getObjectID());
 		break;
-	case 42:
+	case 41:
 		resp->insertInt(getObjectCRC());
 		break;
-	case 43:
+	case 42:
 		resp->insertInt(getMovementCounter());
 		break;
-	case 44:
+	case 43:
 		resp->insertFloat(getPositionX());
 		break;
-	case 45:
+	case 44:
 		resp->insertFloat(getPositionZ());
 		break;
-	case 46:
+	case 45:
 		resp->insertFloat(getPositionY());
 		break;
-	case 47:
+	case 46:
 		resp->insertSignedInt(getDirectionAngle());
 		break;
-	case 48:
+	case 47:
 		resp->insertFloat(getDirectionX());
 		break;
-	case 49:
+	case 48:
 		resp->insertFloat(getDirectionZ());
 		break;
-	case 50:
+	case 49:
 		resp->insertFloat(getDirectionY());
 		break;
-	case 51:
+	case 50:
 		resp->insertFloat(getDirectionW());
 		break;
-	case 52:
+	case 51:
 		resp->insertAscii(getLoggingName());
 		break;
-	case 53:
+	case 52:
 		resp->insertBoolean(isPlayer());
 		break;
-	case 54:
+	case 53:
 		resp->insertBoolean(isNonPlayerCreature());
 		break;
-	case 55:
+	case 54:
 		resp->insertBoolean(isBuilding());
 		break;
-	case 56:
+	case 55:
 		resp->insertBoolean(isCell());
 		break;
-	case 57:
+	case 56:
 		resp->insertBoolean(isTangible());
 		break;
-	case 58:
+	case 57:
 		resp->insertBoolean(isIntangible());
 		break;
-	case 59:
+	case 58:
 		resp->insertBoolean(isStatic());
 		break;
-	case 60:
+	case 59:
 		resp->insertBoolean(isShip());
 		break;
-	case 61:
+	case 60:
 		resp->insertLong(getZone()->_getORBObjectID());
 		break;
-	case 62:
+	case 61:
 		resp->insertSignedInt(getZoneID());
 		break;
-	case 63:
+	case 62:
 		resp->insertLong(getParent()->_getORBObjectID());
 		break;
-	case 64:
+	case 63:
 		resp->insertLong(getParentID());
 		break;
-	case 65:
+	case 64:
 		resp->insertBoolean(isMoving());
 		break;
-	case 66:
+	case 65:
 		switchMovingState();
 		break;
-	case 67:
+	case 66:
 		resp->insertBoolean(doKeepObject());
 		break;
 	default:
@@ -1065,10 +1050,6 @@ Packet* SceneObjectAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* inv
 	}
 
 	return resp;
-}
-
-void SceneObjectAdapter::finalize() {
-	return ((SceneObjectImplementation*) impl)->finalize();
 }
 
 void SceneObjectAdapter::redeploy() {

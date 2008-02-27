@@ -106,9 +106,9 @@ public:
 
 	virtual ~SceneObjectImplementation();
 
-	void finalize();
+	//void finalize();
 	
-	SceneObject* deploy();
+	virtual SceneObject* deploy();
 	SceneObject* deploy(const string& name);
 	
 	void redeploy();

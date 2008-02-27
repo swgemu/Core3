@@ -63,6 +63,7 @@ public:
 	}
 	
 	virtual ~DatapadImplementation() {
+		setContainer(NULL);
 	}
 	
 };

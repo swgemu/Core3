@@ -569,7 +569,7 @@ void CombatManager::freeDuelList(Player* player) {
 	player->info("freeing duel list");
 		
 	while (player->getDuelListSize() != 0) {
-		Player* targetPlayer = player->getDuelListObject(0);
+		ManagedReference<Player> targetPlayer = player->getDuelListObject(0);
 		
 		if (targetPlayer != NULL) {
 			try {

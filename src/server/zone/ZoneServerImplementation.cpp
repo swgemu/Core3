@@ -178,11 +178,11 @@ void ZoneServerImplementation::startManagers() {
 	CraftingManagerImplementation* craftingImpl = new CraftingManagerImplementation(_this);
 	craftingManager = (CraftingManager*) craftingImpl->deploy("CraftingManager");
 
-	BazaarManagerImplementation* bazImpl = new BazaarManagerImplementation(_this, processor);
-	bazaarManager = (BazaarManager*) bazImpl->deploy("BazaarManager");
-
 	ChatManagerImplementation* chatImpl = new ChatManagerImplementation(_this, 10000);
 	chatManager = (ChatManager*) chatImpl->deploy("ChatManager");
+
+	BazaarManagerImplementation* bazImpl = new BazaarManagerImplementation(_this, processor);
+	bazaarManager = (BazaarManager*) bazImpl->deploy("BazaarManager");
 }
 
 void ZoneServerImplementation::run() {
@@ -194,17 +194,24 @@ void ZoneServerImplementation::run() {
 }
 
 void ZoneServerImplementation::shutdown() {
-	if (chatManager != NULL)
-		chatManager->broadcastMessage("Server is shutting down in 30 seconds..");
-	
-	Thread::sleepMili(30000);
+	chatManager->broadcastMessage("Server is shutting down in 30 seconds..");
+	Thread::sleepMili(10000);
+
+	chatManager->broadcastMessage("Server is shutting down in 20 seconds..");
+	Thread::sleepMili(10000);
+
+	chatManager->broadcastMessage("Server is shutting down in 10 seconds..");
+	Thread::sleepMili(10000);
+
+	chatManager->broadcastMessage("Server is shutting down in 5 seconds..");
+	Thread::sleepMili(5000);
 
 	stop();
 
 	processor->stop();
 
-	stopManagers();
-	
+	scheduler->stop();
+
 	for (int i = 0; i < 50; ++i) {
 		Zone* zone = zones.get(i);
 		zone->stopManagers();
@@ -214,12 +221,11 @@ void ZoneServerImplementation::shutdown() {
 
 	zones.removeAll();
 
+	stopManagers();
+
 	printInfo(true);
 	
-	scheduler->stop();
-	
-	ZoneServer* zoneServer = _this;
-	delete zoneServer;
+	delete _this;
 }
 
 void ZoneServerImplementation::stopManagers() {
@@ -497,7 +503,7 @@ void ZoneServerImplementation::printEvents() {
 uint64 ZoneServerImplementation::getNextCreatureID(bool doLock) {
 	lock(doLock);
 	
-	uint64 nextID = (nextCreatureID += 0x10);
+	uint64 nextID = (nextCreatureID += 0x10000);
 	
 	unlock(doLock);
 	

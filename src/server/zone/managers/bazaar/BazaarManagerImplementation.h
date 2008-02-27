@@ -58,7 +58,7 @@ which carries forward this exception.
 
 class CheckBazaarStatus;
 
-class BazaarManagerImplementation : public AuctionController, public BazaarManagerServant, public Mutex, public Logger {
+class BazaarManagerImplementation : public AuctionController, public BazaarManagerServant, public Logger {
 	ZoneProcessServerImplementation* processServer;
 	ZoneServer*	zoneServer;
 

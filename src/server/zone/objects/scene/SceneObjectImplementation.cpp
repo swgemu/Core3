@@ -91,6 +91,13 @@ SceneObjectImplementation::SceneObjectImplementation(uint64 oid) : QuadTreeEntry
 }
 
 SceneObjectImplementation::~SceneObjectImplementation() {
+	if (isInQuadTree()) {
+		error("Deleting scene object that is in QT");
+		raise(SIGSEGV);
+	}
+	
+	if (zone != NULL)
+		zone->deleteCachedObject(_this);
 }
 
 SceneObject* SceneObjectImplementation::deploy() {
@@ -106,6 +113,8 @@ SceneObject* SceneObjectImplementation::deploy(const string& name) {
 }
 
 void SceneObjectImplementation::redeploy() {
+	//_this->revoke();
+	
 	if (undeployEvent != NULL) {
 		server->removeEvent(undeployEvent);
 		undeployEvent = NULL;
@@ -119,16 +128,13 @@ void SceneObjectImplementation::scheduleUndeploy() {
 	}
 }
 
-void SceneObjectImplementation::finalize() {
-	if (zone != NULL)
-		zone->deleteCachedObject(_this);
-
+/*void SceneObjectImplementation::finalize() {
 	if (!keepObject && isPlayer()) {
 		info("finalizing object reference");
 
 		_this->release();
 	}
-}
+}*/
 
 void SceneObjectImplementation::create(ZoneClient* client) {
 	BaseMessage* msg = new SceneObjectCreateMessage(_this);

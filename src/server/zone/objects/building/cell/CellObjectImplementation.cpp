@@ -84,8 +84,6 @@ void CellObjectImplementation::addChild(SceneObject* obj, bool doLock) {
 		stringstream object;
 		object << "acquired child:" << obj->getLoggingName();
 		info(object.str());
-		
-		obj->acquire();
 	}
 	
 	unlock(doLock);
@@ -95,8 +93,6 @@ void CellObjectImplementation::removeChild(SceneObject* obj, bool doLock) {
 	wlock(doLock);
 	
 	if (children.drop(obj)) {
-		obj->release();
-		
 		stringstream object;
 		object << "released child:" << obj->getLoggingName();
 		info(object.str());	

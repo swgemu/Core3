@@ -56,6 +56,7 @@ interface ItemManager {
 	TangibleObject getPlayerItem(Player player, long objectid);
 	void loadPlayerItems(Player player);
 	void loadDefaultPlayerItems(Player player);
+	void loadDefaultPlayerDatapadItems(Player player);
 	
 	void unloadPlayerItems(Player player);
 	

@@ -131,12 +131,25 @@ void ItemManager::loadDefaultPlayerItems(Player* player) {
 		((ItemManagerImplementation*) _impl)->loadDefaultPlayerItems(player);
 }
 
-void ItemManager::unloadPlayerItems(Player* player) {
+void ItemManager::loadDefaultPlayerDatapadItems(Player* player) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
 		ORBMethodInvocation invocation(this, 10);
+		invocation.addObjectParameter(player);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((ItemManagerImplementation*) _impl)->loadDefaultPlayerDatapadItems(player);
+}
+
+void ItemManager::unloadPlayerItems(Player* player) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 11);
 		invocation.addObjectParameter(player);
 
 		invocation.executeWithVoidReturn();
@@ -149,7 +162,7 @@ void ItemManager::createPlayerItem(Player* player, TangibleObject* item) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 11);
+		ORBMethodInvocation invocation(this, 12);
 		invocation.addObjectParameter(player);
 		invocation.addObjectParameter(item);
 
@@ -163,7 +176,7 @@ void ItemManager::savePlayerItem(Player* player, TangibleObject* item) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 12);
+		ORBMethodInvocation invocation(this, 13);
 		invocation.addObjectParameter(player);
 		invocation.addObjectParameter(item);
 
@@ -177,7 +190,7 @@ void ItemManager::deletePlayerItem(Player* player, TangibleObject* item, bool no
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 13);
+		ORBMethodInvocation invocation(this, 14);
 		invocation.addObjectParameter(player);
 		invocation.addObjectParameter(item);
 		invocation.addBooleanParameter(notify);
@@ -192,7 +205,7 @@ void ItemManager::showDbStats(Player* player) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 14);
+		ORBMethodInvocation invocation(this, 15);
 		invocation.addObjectParameter(player);
 
 		invocation.executeWithVoidReturn();
@@ -205,7 +218,7 @@ void ItemManager::showDbDeleted(Player* player) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 15);
+		ORBMethodInvocation invocation(this, 16);
 		invocation.addObjectParameter(player);
 
 		invocation.executeWithVoidReturn();
@@ -218,7 +231,7 @@ void ItemManager::purgeDbDeleted(Player* player) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 16);
+		ORBMethodInvocation invocation(this, 17);
 		invocation.addObjectParameter(player);
 
 		invocation.executeWithVoidReturn();
@@ -231,7 +244,7 @@ unsigned long long ItemManager::getNextStaticObjectID() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 17);
+		ORBMethodInvocation invocation(this, 18);
 
 		return invocation.executeWithUnsignedLongReturn();
 	} else
@@ -262,27 +275,30 @@ Packet* ItemManagerAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* inv
 		loadDefaultPlayerItems((Player*) inv->getObjectParameter());
 		break;
 	case 10:
-		unloadPlayerItems((Player*) inv->getObjectParameter());
+		loadDefaultPlayerDatapadItems((Player*) inv->getObjectParameter());
 		break;
 	case 11:
-		createPlayerItem((Player*) inv->getObjectParameter(), (TangibleObject*) inv->getObjectParameter());
+		unloadPlayerItems((Player*) inv->getObjectParameter());
 		break;
 	case 12:
-		savePlayerItem((Player*) inv->getObjectParameter(), (TangibleObject*) inv->getObjectParameter());
+		createPlayerItem((Player*) inv->getObjectParameter(), (TangibleObject*) inv->getObjectParameter());
 		break;
 	case 13:
-		deletePlayerItem((Player*) inv->getObjectParameter(), (TangibleObject*) inv->getObjectParameter(), inv->getBooleanParameter());
+		savePlayerItem((Player*) inv->getObjectParameter(), (TangibleObject*) inv->getObjectParameter());
 		break;
 	case 14:
-		showDbStats((Player*) inv->getObjectParameter());
+		deletePlayerItem((Player*) inv->getObjectParameter(), (TangibleObject*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
 	case 15:
-		showDbDeleted((Player*) inv->getObjectParameter());
+		showDbStats((Player*) inv->getObjectParameter());
 		break;
 	case 16:
-		purgeDbDeleted((Player*) inv->getObjectParameter());
+		showDbDeleted((Player*) inv->getObjectParameter());
 		break;
 	case 17:
+		purgeDbDeleted((Player*) inv->getObjectParameter());
+		break;
+	case 18:
 		resp->insertLong(getNextStaticObjectID());
 		break;
 	default:
@@ -306,6 +322,10 @@ void ItemManagerAdapter::loadPlayerItems(Player* player) {
 
 void ItemManagerAdapter::loadDefaultPlayerItems(Player* player) {
 	return ((ItemManagerImplementation*) impl)->loadDefaultPlayerItems(player);
+}
+
+void ItemManagerAdapter::loadDefaultPlayerDatapadItems(Player* player) {
+	return ((ItemManagerImplementation*) impl)->loadDefaultPlayerDatapadItems(player);
 }
 
 void ItemManagerAdapter::unloadPlayerItems(Player* player) {

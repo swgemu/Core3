@@ -62,6 +62,7 @@ public:
 	}
 	
 	virtual ~InventoryImplementation() {
+		setContainer(NULL);
 	}
 	
 };

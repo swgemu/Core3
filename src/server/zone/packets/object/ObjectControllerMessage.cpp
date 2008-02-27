@@ -651,6 +651,11 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player, Message* 
 }
 
 void ObjectControllerMessage::parseAttachmentDragDrop(Player* player, Message* pack) {
+	if (player->getTradeSize() != 0) {
+		player->sendSystemMessage("You cant move objects while trading..");
+		return;
+	}
+	
 	uint64 attachmentID = pack->parseLong();
 	unicode unicodeID;
 	
@@ -665,6 +670,11 @@ void ObjectControllerMessage::parseAttachmentDragDrop(Player* player, Message* p
 }
 
 void ObjectControllerMessage::parsePowerupDragDrop(Player* player, Message* pack) {
+	if (player->getTradeSize() != 0) {
+		player->sendSystemMessage("You cant move objects while trading..");
+		return;
+	}
+	
 	uint64 powerupID = pack->parseLong();
 	unicode unicodeID;
 	
@@ -1139,16 +1149,17 @@ void ObjectControllerMessage::parseServerDestroyObject(Player* player, Message* 
 		itemManager->deletePlayerItem(player, item, true);
 		
 		player->removeInventoryItem(objid);
+		
 		if (player->getWeapon() == item)
 			player->setWeapon(NULL);
 		
 		BaseMessage* msg = new SceneObjectDestroyMessage(item);
 		player->getClient()->sendMessage(msg);
 		
-		//delete item;
+		delete item;
 	} else if (waypoint != NULL) {
 		if (player->removeWaypoint(waypoint));
-			//delete waypoint;
+			delete waypoint;
 	}
 }
 

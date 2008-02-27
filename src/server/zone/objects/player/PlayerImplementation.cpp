@@ -118,8 +118,18 @@ PlayerImplementation::~PlayerImplementation() {
 	}
 	
 	if (inventory != NULL) {
-		//delete inventory;
+		delete inventory;
 		inventory = NULL;
+	}
+	
+	if (datapad != NULL) {
+		delete datapad;
+		datapad = NULL;
+	}
+	
+	if (hairObj != NULL) {
+		delete hairObj;
+		hairObj = NULL;
 	}
 	
 	info("undeploying player");
@@ -206,7 +216,7 @@ void PlayerImplementation::init() {
 	
 	suiBoxNextID = 0;
 	
-	setLogging(true);
+	setLogging(false);
 	setGlobalLogging(true);
 }
 
@@ -339,6 +349,8 @@ void PlayerImplementation::unload() {
 	info("unloading player");
 
 	clearCombatState(); // remove the defenders
+	
+	tradeItems.removeAll();
 	
 	if (firstSampleEvent != NULL) {
 		server->removeEvent(firstSampleEvent);
@@ -522,6 +534,7 @@ void PlayerImplementation::createItems() {
 
 	ItemManager* itemManager = zone->getZoneServer()->getItemManager();
 	itemManager->loadDefaultPlayerItems(_this);
+	itemManager->loadDefaultPlayerDatapadItems(_this);
 
 	if (!hairObject.empty()) {
 		HairObjectImplementation* hairImpl = new HairObjectImplementation(_this, String::hashCode(hairObject), unicode("hair"), "hair");
@@ -1576,8 +1589,8 @@ void PlayerImplementation::doPeace() {
 	//info("trying Peace action");
 	
 	for (int i = 0; i < defenderList.size(); ++i) {
-		CreatureObject* defender = defenderList.get(i);
-		
+		ManagedReference<CreatureObject> defender = defenderList.get(i);
+				
 		try {
 			defender->wlock(_this);
 			
@@ -1594,10 +1607,12 @@ void PlayerImplementation::doPeace() {
 			}
 
 			defender->unlock();
+			
 		} catch (...) {
 			error("unknown exception in PlayerImplementation::doPeace()\n");
 			defender->unlock();
 		}
+		
 	}
 	
 	if (defenderList.size() != 0) {
@@ -2092,6 +2107,12 @@ void PlayerImplementation::applyPowerup(uint64 powerupID, uint64 targetID) {
 		sendSystemMessage(msg.str());
 		powerup->apply(weapon);
 		powerup->remove(_this);
+		
+		weapon->unlock();
+		powerup->unlock();
+		delete powerup;
+		
+		return;
 	}
 	else
 		sendSystemMessage("This weapon is already powered up!");
@@ -2151,11 +2172,15 @@ void PlayerImplementation::applyAttachment(uint64 attachmentID, uint64 targetID)
 			armor->unlock();
 			attachment->unlock();
 			attachment->remove(_this);
+			
+			delete attachment;
 			return;
 		default: // skill mod was added successfully
 			armor->unlock();
 			attachment->unlock();
 			attachment->remove(_this);
+			
+			delete attachment;
 			return;
 		}
 	}
@@ -2163,7 +2188,14 @@ void PlayerImplementation::applyAttachment(uint64 attachmentID, uint64 targetID)
 	if (attachment->isUpdated()) {
 		attachment->remove(_this);
 		attachment->setUpdated(false);
+		
+		armor->unlock();
+		attachment->unlock();
+		
+		delete attachment;
+		return; 
 	}
+	
 	armor->unlock();
 	attachment->unlock();
 }

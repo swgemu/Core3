@@ -63,7 +63,7 @@ which carries forward this exception.
 #include "../../../chat/ChatManager.h"
 
 BazaarManagerImplementation::BazaarManagerImplementation(ZoneServer* zoneserver, ZoneProcessServerImplementation* server) : AuctionController(),
-	BazaarManagerServant(), Mutex("BazaarManager"), Logger("BazaarManager") {
+	BazaarManagerServant(), Logger("BazaarManager") {
 
 	processServer = server;
 	zoneServer = zoneserver;
@@ -254,6 +254,17 @@ void BazaarManagerImplementation::addSaleItem(Player* player, uint64 objectid, u
 		return;			
 	}
 	
+	if (obj->isEquipped()) {
+		BaseMessage* msg = new ItemSoldMessage(objectid, 2);
+		player->sendMessage(msg);
+		
+		player->sendSystemMessage("you mast unequip your item!!");
+		
+		player->unlock();
+		unlock();
+		return;
+	}
+	
 	itemType = obj->getObjectSubType();
 
 	string name = obj->getName().c_str();
@@ -322,13 +333,14 @@ void BazaarManagerImplementation::addSaleItem(Player* player, uint64 objectid, u
 	
 	AuctionItem* it = item->deploy();
 	bazaarPlanets[planet]->addBazaarItem(it);
-	addItem(it);
+	addItem(it, false);
 	
 	string str1 = "base_player";
 	string str2 = "sale_fee";
 	unicode uni = unicode("");
 
 	player->removeInventoryItem(objectid);
+	delete obj;
 	
 	BaseMessage* msg = new ChatSystemMessage(str1, str2, uni, SALESFEE, true);
 	player->sendMessage(msg);
@@ -380,8 +392,11 @@ void BazaarManagerImplementation::checkAuctions() {
 			if (item->isSold()) {
 
 				bazaarPlanets[item->getPlanet()]->removeBazaarItem(objectId);
-				removeItem(objectId);
-				//item->undeploy();
+				if (removeItem(objectId, false)) {
+/*					delete item;
+					// TODO: fix this... item reference is still stored somewhere..
+					i = 0;*/
+				}
 				
 				stringstream del1;
 				del1 << "DELETE from `bazaar_items` WHERE objectid = " << objectId << ";";
@@ -482,7 +497,7 @@ void BazaarManagerImplementation::buyItem(Player* player, uint64 objectid, int p
 	
 		ChatManager *cman = processServer->getChatManager();
 		PlayerManager *pman = processServer->getPlayerManager();
-		AuctionItem* item = getItem(objectid);
+		AuctionItem* item = getItem(objectid, false);
 	
 		string playername = player->getFirstName();
 		String::toLower(playername);
@@ -701,7 +716,7 @@ void BazaarManagerImplementation::retrieveItem(Player* player, uint64 objectid, 
 		player->wlock();
 	
 	// Check player is at correct bazaar
-		AuctionItem* item = getItem(objectid);
+		AuctionItem* item = getItem(objectid, false);
 		string playername = player->getFirstName().c_str();
 	
 	// object was probably already retrieved
@@ -821,8 +836,9 @@ void BazaarManagerImplementation::retrieveItem(Player* player, uint64 objectid, 
 		msg = new RetrieveAuctionItemResponseMessage(objectid, 0);
 		player->sendMessage(msg);
 		player->unlock();
-		removeItem(objectid);
-		//item->undeploy();
+		
+		if (removeItem(objectid, false))
+			;//delete item;
 	
 		unlock();
 	} catch (...) {

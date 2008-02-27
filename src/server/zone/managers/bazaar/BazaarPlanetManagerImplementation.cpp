@@ -95,15 +95,16 @@ void BazaarPlanetManagerImplementation::addBazaar(BazaarTerminalDetails* termina
 	if (bazaars.contains(terminal->getRegion())) {
 		bazaar = bazaars.get(terminal->getRegion());
 	} else {
+		string region = terminal->getRegion();
+		
 		RegionBazaarImplementation* termImpl = new RegionBazaarImplementation();
+		termImpl->setRegion(region);
+		termImpl->setManager(_this);
+		
 		bazaar = (RegionBazaar*) termImpl->deploy();
 
-		info("Adding bazaar for " + terminal->getRegion());
-		bazaars.put(terminal->getRegion(), bazaar);
-		
-		string region = terminal->getRegion();
-		bazaar->setRegion(region);
-		bazaar->setManager(_this);
+		info("Adding bazaar for " + region);
+		bazaars.put(region, bazaar);
 	}
 	
 	terminal->setTerminal(bazaar);

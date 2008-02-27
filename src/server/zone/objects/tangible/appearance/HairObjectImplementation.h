@@ -68,6 +68,10 @@ public:
 		else
 			setContainer((SceneObject*) creature->getInventory(), 0xFFFFFFFF);
 	}
+	
+	~HairObjectImplementation() {
+		setContainer(NULL);
+	}
 
 };
 

@@ -278,6 +278,8 @@ interface Player implements CreatureObject {
 	
 	void setLinkDead();
 	
+	void setLoggingIn();
+	
 	void setAdminLevel(int level);
 	
 	void setLastTestPositionX(float pos);

@@ -59,6 +59,10 @@ public:
 		attributes = new AttributeMap(50);
 	}
 	
+	~ItemAttributes() {
+		delete attributes;
+	}
+	
 	bool attributeExists(string& name) {
 		return attributes->containsKey(name);
 	}

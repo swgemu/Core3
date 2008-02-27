@@ -321,6 +321,8 @@ public:
 
 	void setLinkDead();
 
+	void setLoggingIn();
+
 	void setAdminLevel(int level);
 
 	void setLastTestPositionX(float pos);
@@ -721,6 +723,8 @@ public:
 	bool awardBadge(unsigned int badgeindex);
 
 	void setLinkDead();
+
+	void setLoggingIn();
 
 	void setAdminLevel(int level);
 

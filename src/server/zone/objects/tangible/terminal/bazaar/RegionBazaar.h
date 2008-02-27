@@ -73,7 +73,7 @@ public:
 
 	void addItem(AuctionItem* item);
 
-	void removeItem(long long objectid);
+	bool removeItem(long long objectid);
 
 	void setRegion(string& region);
 
@@ -96,7 +96,7 @@ public:
 
 	void addItem(AuctionItem* item);
 
-	void removeItem(long long objectid);
+	bool removeItem(long long objectid);
 
 	void setRegion(string& region);
 

@@ -46,37 +46,21 @@ which carries forward this exception.
 
 #include "server/ServerCore.h"
 
-class Test {
-	int value;
+void outOfMemoryHandler() {
+	cout << "OutOfMemoryException\n";
 	
-public:
-	Test(int val) {
-		value = val;
-	}
-	
-	int getValue() {
-		return value;
-	}
-	
-};
+	exit(1);
+}
 
 int main(int argc, char* argv[]) {
-	/*Vector<Test*> vector;
-	
-	for (int i = 0; i < 10; ++i) {
-		vector.add(System::random(i), new Test(i));
-	}
-	
-	vector.add(System::random(10), new Test(10));
-	
-	for (int j = 0; j < 11; ++j) {
-		Test* obj = vector.get(j);
-		cout << obj->getValue() << "\n";
-	}
-	
-	return 1;*/
+	set_new_handler(outOfMemoryHandler);
 	
 	Engine::initialize("core3.log");
+
+	/*StackTrace trace;
+	trace.print();
+	
+	return 0;*/
 	
 	try {
 		ServerCore core;

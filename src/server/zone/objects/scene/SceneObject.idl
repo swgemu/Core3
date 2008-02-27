@@ -55,7 +55,7 @@ import "../../ZoneClient";
 import "../player/Player";
 
 interface SceneObject implements ManagedObject {
-	void finalize();
+	//void finalize();
 
 	void redeploy();
 	

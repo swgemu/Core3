@@ -96,15 +96,24 @@ bool PlayerManagerImplementation::create(Player* player, uint32 sessionkey) {
 			surname = "";
 	
 	player->setZoneIndex(8);
+	player->setTerrainName(Terrain::getTerrainName(8));
 
 	player->initializePosition(96.0f, 0, -5334.0f);
 		
 	player->randomizePosition(128);
 	
 	int race = Races::getRaceID(player->getRaceFileName());
+	
+	player->setObjectCRC(Races::getRaceCRC(race));
+	player->setRaceName(Races::getRace(race));		
+	player->setSpeciesName(Races::getSpecies(race));	
+	
 	int gender = 0;
 	int creditsCash = 100000;
 	int creditsBank = 100000;
+	
+	player->setCashCredits(creditsCash);
+	player->setBankCredits(creditsBank);
 	
 	string bio = player->getBiography().c_str();
 	string info = "";
@@ -114,7 +123,6 @@ bool PlayerManagerImplementation::create(Player* player, uint32 sessionkey) {
 	player->getCharacterApperance(playApp);
 	BinaryData cust(playApp);
 	cust.encode(apperance);
-	
 	
 	string hairdata;
 	BinaryData hair(player->getHairData());
@@ -150,6 +158,8 @@ bool PlayerManagerImplementation::create(Player* player, uint32 sessionkey) {
 		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
 	
 		player->setCharacterID(res->getLastAffectedRow());
+		PlayerObject* playerObject = player->getPlayerObject();
+		playerObject->setObjectID(player->getObjectID() + 0x0C);		
 		
 		playerMap->put(player->getFirstName(), player);
 		

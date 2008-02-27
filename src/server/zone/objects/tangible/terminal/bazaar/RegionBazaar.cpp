@@ -92,7 +92,7 @@ void RegionBazaar::addItem(AuctionItem* item) {
 		((RegionBazaarImplementation*) _impl)->addItem(item);
 }
 
-void RegionBazaar::removeItem(long long objectid) {
+bool RegionBazaar::removeItem(long long objectid) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
@@ -100,9 +100,9 @@ void RegionBazaar::removeItem(long long objectid) {
 		ORBMethodInvocation invocation(this, 7);
 		invocation.addSignedLongParameter(objectid);
 
-		invocation.executeWithVoidReturn();
+		return invocation.executeWithBooleanReturn();
 	} else
-		((RegionBazaarImplementation*) _impl)->removeItem(objectid);
+		return ((RegionBazaarImplementation*) _impl)->removeItem(objectid);
 }
 
 void RegionBazaar::setRegion(string& region) {
@@ -180,7 +180,7 @@ Packet* RegionBazaarAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* in
 		addItem((AuctionItem*) inv->getObjectParameter());
 		break;
 	case 7:
-		removeItem(inv->getSignedLongParameter());
+		resp->insertBoolean(removeItem(inv->getSignedLongParameter()));
 		break;
 	case 8:
 		setRegion(inv->getAsciiParameter(_param0_setRegion__string_));
@@ -205,7 +205,7 @@ void RegionBazaarAdapter::addItem(AuctionItem* item) {
 	return ((RegionBazaarImplementation*) impl)->addItem(item);
 }
 
-void RegionBazaarAdapter::removeItem(long long objectid) {
+bool RegionBazaarAdapter::removeItem(long long objectid) {
 	return ((RegionBazaarImplementation*) impl)->removeItem(objectid);
 }
 

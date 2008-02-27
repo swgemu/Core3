@@ -553,7 +553,7 @@ void CreatureObjectImplementation::setDefender(CreatureObject* defender) {
 		
 	setCombatState();
 	
-	CreatureObject* temp = NULL;
+	ManagedReference<CreatureObject> temp = NULL;
 	
 	int i = 0;
 	for (; i < defenderList.size(); i++) {
@@ -562,7 +562,7 @@ void CreatureObjectImplementation::setDefender(CreatureObject* defender) {
 				return;
 			
 			temp = defenderList.get(0);
-			
+
 			defenderList.set(0, defender);
 			defenderList.set(i, temp);
 			

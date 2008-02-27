@@ -75,6 +75,8 @@ public:
 		
 		player->removeInventoryItem(objectID);
 		
+		delete this;
+		
 		return 0;
 	}
 	

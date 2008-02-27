@@ -75,8 +75,6 @@ public:
 
 	virtual ~SceneObject();
 
-	void finalize();
-
 	void redeploy();
 
 	void scheduleUndeploy();
@@ -211,8 +209,6 @@ public:
 	SceneObjectAdapter(SceneObjectImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, ORBMethodInvocation* inv);
-
-	void finalize();
 
 	void redeploy();
 

@@ -353,21 +353,24 @@ void ZonePacketHandler::handleClientCreateCharacter(Message* pack) {
 			player->setZone(zone);
 	
 			player->createItems();
+			player->setLoggingIn();
 
 			player->insertToZone(zone);
-			// It'll bounce back to login screen saying the server is offline.
+			
+			player->unlock();
 		} else {
 			client->info("name refused for character creation");
 
 			BaseMessage* msg = new ClientCreateCharacterFailed("name_declined_in_use");
 			player->sendMessage(msg);
+			
+			player->unlock();
+		
+			player->disconnect();
 		}
-	
-		player->unlock();
+			
+		//server->removeCachedObject(player->getObjectID());
 		
-		player->disconnect();
-		
-		server->removeCachedObject(player->getObjectID());
 	} catch (Exception& e) {
 		player->unlock();
 		cout << "unreported exception on ZonePacketHandler::handleClientCreateCharacter()\n" << e.getMessage() << "\n";

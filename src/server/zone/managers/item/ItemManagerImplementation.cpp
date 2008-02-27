@@ -83,6 +83,11 @@ void ItemManagerImplementation::loadPlayerItems(Player* player) {
 
 TangibleObject* ItemManagerImplementation::getPlayerItem(Player* player, uint64 objectid) {
 	TangibleObject* tano = NULL;
+	
+	SceneObject* item = player->getPlayerItem(objectid);
+	
+	if (item != NULL && item->isTangible())
+		return (TangibleObject*) item;
 
 	try {
 		stringstream query;
