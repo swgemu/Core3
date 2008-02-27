@@ -298,12 +298,38 @@ string& AuctionItem::getItemName() {
 		return ((AuctionItemImplementation*) _impl)->getItemName();
 }
 
-int AuctionItem::getPrice() {
+void AuctionItem::setItemDescription(string& description) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
 		ORBMethodInvocation invocation(this, 24);
+		invocation.addAsciiParameter(description);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((AuctionItemImplementation*) _impl)->setItemDescription(description);
+}
+
+string& AuctionItem::getItemDescription() {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 25);
+
+		invocation.executeWithAsciiReturn(_return_getItemDescription);
+		return _return_getItemDescription;
+	} else
+		return ((AuctionItemImplementation*) _impl)->getItemDescription();
+}
+
+int AuctionItem::getPrice() {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 26);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -315,7 +341,7 @@ void AuctionItem::setPrice(int prc) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 25);
+		ORBMethodInvocation invocation(this, 27);
 		invocation.addSignedIntParameter(prc);
 
 		invocation.executeWithVoidReturn();
@@ -328,7 +354,7 @@ unsigned int AuctionItem::getExpireTime() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 26);
+		ORBMethodInvocation invocation(this, 28);
 
 		return invocation.executeWithUnsignedIntReturn();
 	} else
@@ -340,7 +366,7 @@ void AuctionItem::setExpireTime(unsigned int expiretime) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 27);
+		ORBMethodInvocation invocation(this, 29);
 		invocation.addUnsignedIntParameter(expiretime);
 
 		invocation.executeWithVoidReturn();
@@ -353,7 +379,7 @@ bool AuctionItem::getAuction() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 28);
+		ORBMethodInvocation invocation(this, 30);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -365,7 +391,7 @@ int AuctionItem::getPlanet() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 29);
+		ORBMethodInvocation invocation(this, 31);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -377,7 +403,7 @@ string& AuctionItem::getLocation() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 30);
+		ORBMethodInvocation invocation(this, 32);
 
 		invocation.executeWithAsciiReturn(_return_getLocation);
 		return _return_getLocation;
@@ -451,24 +477,30 @@ Packet* AuctionItemAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* inv
 		resp->insertAscii(getItemName());
 		break;
 	case 24:
-		resp->insertSignedInt(getPrice());
+		setItemDescription(inv->getAsciiParameter(_param0_setItemDescription__string_));
 		break;
 	case 25:
-		setPrice(inv->getSignedIntParameter());
+		resp->insertAscii(getItemDescription());
 		break;
 	case 26:
-		resp->insertInt(getExpireTime());
+		resp->insertSignedInt(getPrice());
 		break;
 	case 27:
-		setExpireTime(inv->getUnsignedIntParameter());
+		setPrice(inv->getSignedIntParameter());
 		break;
 	case 28:
-		resp->insertBoolean(getAuction());
+		resp->insertInt(getExpireTime());
 		break;
 	case 29:
-		resp->insertSignedInt(getPlanet());
+		setExpireTime(inv->getUnsignedIntParameter());
 		break;
 	case 30:
+		resp->insertBoolean(getAuction());
+		break;
+	case 31:
+		resp->insertSignedInt(getPlanet());
+		break;
+	case 32:
 		resp->insertAscii(getLocation());
 		break;
 	default:
@@ -548,6 +580,14 @@ int AuctionItemAdapter::getOwnerPointer() {
 
 string& AuctionItemAdapter::getItemName() {
 	return ((AuctionItemImplementation*) impl)->getItemName();
+}
+
+void AuctionItemAdapter::setItemDescription(string& description) {
+	return ((AuctionItemImplementation*) impl)->setItemDescription(description);
+}
+
+string& AuctionItemAdapter::getItemDescription() {
+	return ((AuctionItemImplementation*) impl)->getItemDescription();
 }
 
 int AuctionItemAdapter::getPrice() {

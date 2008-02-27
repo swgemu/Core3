@@ -97,12 +97,17 @@ public:
 	void newBazaarRequest(uint64 bazaarID, Player* player, int planet);
 	bool isBazaarTerminal(uint64 objectID);
 	
-	void addSaleItem(Player* player, uint64 objectid, uint64 bazaarid, string& description, int price, uint32 duration, bool auction);
+	void addSaleItem(Player* player, uint64 objectid, uint64 bazaarid, unicode& description, int price, uint32 duration, bool auction);
+
 	BazaarPlanetManager* getPlanet(uint64 bazaarid);
 	RegionBazaar* getBazaar(uint64 bazaarid);
+
 	void checkAuctions();
 	void buyItem(Player* player, uint64 objectid, int price1, int price2);
 	void retrieveItem(Player* player, uint64 objectid, uint64 bazaarid);
+	
+	void getItemAttributes(Player* player, uint64 objectId);
+
 };
 
 #endif /*BAZAARMANAGERIMPLEMENTATION_H_*/

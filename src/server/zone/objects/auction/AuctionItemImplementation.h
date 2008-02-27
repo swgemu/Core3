@@ -86,6 +86,7 @@ public:
 	uint64 vendorID;
 	
 	string itemName;
+	string itemDescription;
 	
 	int price;
 	
@@ -188,6 +189,14 @@ public:
 	
 	inline string& getItemName() {
 		return itemName;
+	}
+	
+	inline void setItemDescription(string& description) {
+		itemDescription = description;
+	}
+	
+	inline string& getItemDescription() {
+		return itemDescription;
 	}
 	
 	inline int getPrice() {

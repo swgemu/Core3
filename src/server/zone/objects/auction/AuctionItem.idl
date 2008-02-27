@@ -73,6 +73,8 @@ interface AuctionItem implements RWLockable {
 	int getOwnerPointer();
 	
 	string getItemName();
+	void setItemDescription(string description);
+	string getItemDescription();
 	
 	int getPrice();
 	void setPrice(int prc);

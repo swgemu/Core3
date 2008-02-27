@@ -155,8 +155,8 @@ public:
 
 	    	insertInt(il->getItemType()); 
 	    	
-	    	insertInt(0);
-	    	insertInt(0);
+	    	insertInt(10);
+	    	insertInt(20);  // Vendor entrance fee
 		}
 	}
 	

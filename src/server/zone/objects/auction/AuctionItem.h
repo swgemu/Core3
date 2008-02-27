@@ -101,6 +101,10 @@ public:
 
 	string& getItemName();
 
+	void setItemDescription(string& description);
+
+	string& getItemDescription();
+
 	int getPrice();
 
 	void setPrice(int prc);
@@ -117,6 +121,8 @@ public:
 
 protected:
 	string _return_getBidderName;
+
+	string _return_getItemDescription;
 
 	string _return_getItemName;
 
@@ -172,6 +178,10 @@ public:
 
 	string& getItemName();
 
+	void setItemDescription(string& description);
+
+	string& getItemDescription();
+
 	int getPrice();
 
 	void setPrice(int prc);
@@ -189,6 +199,7 @@ public:
 protected:
 	string _param0_setOwnerName__string_;
 	string _param0_setBidderName__string_;
+	string _param0_setItemDescription__string_;
 };
 
 class AuctionItemHelper : public ORBClassHelper, public Singleton<AuctionItemHelper> {

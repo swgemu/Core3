@@ -42,25 +42,25 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-import "../../objects/auction/AuctionItem";
-import "../../objects/player/Player";
-import "../../objects/tangible/terminal/bazaar/RegionBazaar";
-import "BazaarPlanetManager";
+#ifndef AUCTIONITEMDESCRIPTIONMESSAGE_H_
+#define AUCTIONITEMDESCRIPTIONMESSAGE_H_
 
-interface BazaarManager {
-	void newBazaarRequest(long bazaarID, Player player, int planet);
-	
-	boolean isBazaarTerminal(long objectID);
+#include "engine/engine.h"
 
-	void addSaleItem(Player player, long objectid, long bazaarid, unicode description, int price, int duration, boolean auction);
+class AuctionItemDescriptionMessage : public BaseMessage {
+	
+public:
+	AuctionItemDescriptionMessage(uint64 objectid, unicode& description) {
+		insertShort(2);
+		insertInt(0xFE0E644B);
+		
+		insertLong(objectid);
+		
+		insertUnicode(description);
+		insertInt(0);
+		insertInt(0);
+	}
+	
+};
 
-   	void getBazaarData(Player player, long objectid, int screen, int extent, unsigned int category, int count, int offset);
-	RegionBazaar getBazaar(long bazaarid);
-	BazaarPlanetManager getPlanet(long bazaarid);
-	
-	void buyItem(Player player, long objectid, int price1, int price2);
-	void retrieveItem(Player player, long objectid, long bazaarid);
-	
-	void getItemAttributes(Player player, long objectId);
-	
-}
+#endif /*AUCTIONITEMDESCRIPTIONMESSAGE_H_*/

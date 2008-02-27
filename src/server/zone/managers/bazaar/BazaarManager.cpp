@@ -107,7 +107,7 @@ bool BazaarManager::isBazaarTerminal(long long objectID) {
 		return ((BazaarManagerImplementation*) _impl)->isBazaarTerminal(objectID);
 }
 
-void BazaarManager::addSaleItem(Player* player, long long objectid, long long bazaarid, string& description, int price, int duration, bool auction) {
+void BazaarManager::addSaleItem(Player* player, long long objectid, long long bazaarid, unicode& description, int price, int duration, bool auction) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
@@ -116,7 +116,7 @@ void BazaarManager::addSaleItem(Player* player, long long objectid, long long ba
 		invocation.addObjectParameter(player);
 		invocation.addSignedLongParameter(objectid);
 		invocation.addSignedLongParameter(bazaarid);
-		invocation.addAsciiParameter(description);
+		invocation.addUnicodeParameter(description);
 		invocation.addSignedIntParameter(price);
 		invocation.addSignedIntParameter(duration);
 		invocation.addBooleanParameter(auction);
@@ -202,6 +202,20 @@ void BazaarManager::retrieveItem(Player* player, long long objectid, long long b
 		((BazaarManagerImplementation*) _impl)->retrieveItem(player, objectid, bazaarid);
 }
 
+void BazaarManager::getItemAttributes(Player* player, long long objectId) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 14);
+		invocation.addObjectParameter(player);
+		invocation.addSignedLongParameter(objectId);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((BazaarManagerImplementation*) _impl)->getItemAttributes(player, objectId);
+}
+
 /*
  *	BazaarManagerAdapter
  */
@@ -220,7 +234,7 @@ Packet* BazaarManagerAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* i
 		resp->insertBoolean(isBazaarTerminal(inv->getSignedLongParameter()));
 		break;
 	case 8:
-		addSaleItem((Player*) inv->getObjectParameter(), inv->getSignedLongParameter(), inv->getSignedLongParameter(), inv->getAsciiParameter(_param3_addSaleItem__Player_long_long_string_int_int_bool_), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter());
+		addSaleItem((Player*) inv->getObjectParameter(), inv->getSignedLongParameter(), inv->getSignedLongParameter(), inv->getUnicodeParameter(_param3_addSaleItem__Player_long_long_unicode_int_int_bool_), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter());
 		break;
 	case 9:
 		getBazaarData((Player*) inv->getObjectParameter(), inv->getSignedLongParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getUnsignedIntParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
@@ -237,6 +251,9 @@ Packet* BazaarManagerAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* i
 	case 13:
 		retrieveItem((Player*) inv->getObjectParameter(), inv->getSignedLongParameter(), inv->getSignedLongParameter());
 		break;
+	case 14:
+		getItemAttributes((Player*) inv->getObjectParameter(), inv->getSignedLongParameter());
+		break;
 	default:
 		return NULL;
 	}
@@ -252,7 +269,7 @@ bool BazaarManagerAdapter::isBazaarTerminal(long long objectID) {
 	return ((BazaarManagerImplementation*) impl)->isBazaarTerminal(objectID);
 }
 
-void BazaarManagerAdapter::addSaleItem(Player* player, long long objectid, long long bazaarid, string& description, int price, int duration, bool auction) {
+void BazaarManagerAdapter::addSaleItem(Player* player, long long objectid, long long bazaarid, unicode& description, int price, int duration, bool auction) {
 	return ((BazaarManagerImplementation*) impl)->addSaleItem(player, objectid, bazaarid, description, price, duration, auction);
 }
 
@@ -274,6 +291,10 @@ void BazaarManagerAdapter::buyItem(Player* player, long long objectid, int price
 
 void BazaarManagerAdapter::retrieveItem(Player* player, long long objectid, long long bazaarid) {
 	return ((BazaarManagerImplementation*) impl)->retrieveItem(player, objectid, bazaarid);
+}
+
+void BazaarManagerAdapter::getItemAttributes(Player* player, long long objectId) {
+	return ((BazaarManagerImplementation*) impl)->getItemAttributes(player, objectId);
 }
 
 /*

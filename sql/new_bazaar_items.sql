@@ -4,16 +4,18 @@ Source Host: localhost
 Source Database: swgemu
 Target Host: localhost
 Target Database: swgemu
-Date: 16/02/2008 22:10:51
+Date: 27/02/2008 20:36:46
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+DROP TABLE `bazaar_items`;
 -- ----------------------------
 -- Table structure for bazaar_items
 -- ----------------------------
 CREATE TABLE `bazaar_items` (
   `objectid` bigint(20) unsigned NOT NULL,
-  `description` varchar(45) NOT NULL,
+  `name` varchar(45) NOT NULL,
+  `description` text NOT NULL,
   `item_type` int(10) unsigned NOT NULL,
   `ownerid` bigint(20) unsigned NOT NULL,
   `ownername` varchar(45) NOT NULL,
@@ -27,7 +29,3 @@ CREATE TABLE `bazaar_items` (
   `biddername` varchar(45) NOT NULL,
   PRIMARY KEY  (`objectid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
--- ----------------------------
--- Records 
--- ----------------------------

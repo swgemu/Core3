@@ -73,7 +73,7 @@ public:
 
 	bool isBazaarTerminal(long long objectID);
 
-	void addSaleItem(Player* player, long long objectid, long long bazaarid, string& description, int price, int duration, bool auction);
+	void addSaleItem(Player* player, long long objectid, long long bazaarid, unicode& description, int price, int duration, bool auction);
 
 	void getBazaarData(Player* player, long long objectid, int screen, int extent, unsigned int category, int count, int offset);
 
@@ -84,6 +84,8 @@ public:
 	void buyItem(Player* player, long long objectid, int price1, int price2);
 
 	void retrieveItem(Player* player, long long objectid, long long bazaarid);
+
+	void getItemAttributes(Player* player, long long objectId);
 
 protected:
 };
@@ -100,7 +102,7 @@ public:
 
 	bool isBazaarTerminal(long long objectID);
 
-	void addSaleItem(Player* player, long long objectid, long long bazaarid, string& description, int price, int duration, bool auction);
+	void addSaleItem(Player* player, long long objectid, long long bazaarid, unicode& description, int price, int duration, bool auction);
 
 	void getBazaarData(Player* player, long long objectid, int screen, int extent, unsigned int category, int count, int offset);
 
@@ -112,8 +114,10 @@ public:
 
 	void retrieveItem(Player* player, long long objectid, long long bazaarid);
 
+	void getItemAttributes(Player* player, long long objectId);
+
 protected:
-	string _param3_addSaleItem__Player_long_long_string_int_int_bool_;
+	unicode _param3_addSaleItem__Player_long_long_unicode_int_int_bool_;
 };
 
 class BazaarManagerHelper : public ORBClassHelper, public Singleton<BazaarManagerHelper> {
