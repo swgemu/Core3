@@ -78,7 +78,10 @@ SurveyToolImplementation::SurveyToolImplementation(uint64 object_id, uint32 temp
 		surveyToolType = WIND;
 	}
 	
-	setSurveyToolRange(0);
+	if (player != NULL && player->getSkillMod("surveying") > 0)
+		setSurveyToolRange(64);
+	else
+		setSurveyToolRange(0);
 }
 
 SurveyToolImplementation::SurveyToolImplementation(CreatureObject* creature, uint32 tempCRC, const unicode& n, const string& tempn) 
@@ -108,7 +111,10 @@ SurveyToolImplementation::SurveyToolImplementation(CreatureObject* creature, uin
 		surveyToolType = WIND;
 	}
 	
-	setSurveyToolRange(0);
+	if (creature->isPlayer() && ((Player*)creature)->getSkillMod("surveying") > 0)
+		setSurveyToolRange(64);
+	else
+		setSurveyToolRange(0);
 }
 
 SurveyToolImplementation::~SurveyToolImplementation() {
@@ -211,45 +217,39 @@ void SurveyToolImplementation::sendSampleEffect(Player* player) {
 
 void SurveyToolImplementation::surveyRequest(Player* player, unicode& resource) {
 	string resourceName = resource.c_str().c_str();
-	if (!player->getZone()->getZoneServer()->getResourceManager()->checkResource(player, resourceName, getSurveyToolType())) {
-		player->error("Invalid Resource Selected");
-		return;
-	}
-	
-	if (!player->getCanSample()) {
-		ChatSystemMessage* sysMessage = new ChatSystemMessage("survey","survey_sample");
-		player->sendMessage(sysMessage);
-	} else if (player->getCanSurvey()) {
-		// Send's System Message
-		ChatSystemMessage* sysMessage = new ChatSystemMessage("survey","start_survey",resourceName,0,false);
-		player->sendMessage(sysMessage);
-		// Begin Surveying
-		sendSurveyEffect(player);
-		player->setSurveyEvent(resourceName);
+	if (player->getZone()->getZoneServer()->getResourceManager()->checkResource(player, resourceName, getSurveyToolType())) {
+		if (!player->getCanSample()) {
+			ChatSystemMessage* sysMessage = new ChatSystemMessage("survey","survey_sample");
+			player->sendMessage(sysMessage);
+		} else if (player->getCanSurvey()) {
+			// Send's System Message
+			ChatSystemMessage* sysMessage = new ChatSystemMessage("survey","start_survey",resourceName,0,false);
+			player->sendMessage(sysMessage);
+			// Begin Surveying
+			sendSurveyEffect(player);
+			player->setSurveyEvent(resourceName);
+		}
 	}
 }
 
 void SurveyToolImplementation::sampleRequest(Player* player, unicode& resource) {
 	string resourceName = resource.c_str().c_str();
-	if (!player->getZone()->getZoneServer()->getResourceManager()->checkResource(player, resourceName, getSurveyToolType())) {
-		 player->error("Invalid Resource");
-		 return;
-	}
-	
-	if (!player->getCanSurvey()) {
-		ChatSystemMessage* sysMessage = new ChatSystemMessage("survey","sample_survey");
-		player->sendMessage(sysMessage);
-	} else if (getSurveyToolType() == SOLAR || getSurveyToolType() == WIND) {
-		player->sendSystemMessage("Unable to sample this resource type.");
-	} else if (player->getCanSample()) {
-		if(!player->isKneeled()) {
-			player->changePosture(CreatureObjectImplementation::CROUCHED_POSTURE);
+	if (player->getZone()->getZoneServer()->getResourceManager()->checkResource(player, resourceName, getSurveyToolType())) {
+		if (!player->getCanSurvey()) {
+			ChatSystemMessage* sysMessage = new ChatSystemMessage("survey","sample_survey");
+			player->sendMessage(sysMessage);
+		} else if (getSurveyToolType() == SOLAR || getSurveyToolType() == WIND) {
+			player->sendSystemMessage("Unable to sample this resource type.");
+		} else if (player->getCanSample()) {
+			if(!player->isKneeled()) {
+				player->changePosture(CreatureObjectImplementation::CROUCHED_POSTURE);
+			}
+			ChatSystemMessage* sysMessage = new ChatSystemMessage("survey","start_sampling",resourceName,0,false);
+			player->sendMessage(sysMessage);
+			// Begin Sampling
+			player->setSampleEvent(resourceName, true);
+		} else {
+			player->sendSampleTimeRemaining();
 		}
-		ChatSystemMessage* sysMessage = new ChatSystemMessage("survey","start_sampling",resourceName,0,false);
-		player->sendMessage(sysMessage);
-		// Begin Sampling
-		player->setSampleEvent(resourceName, true);
-	} else {
-		player->sendSampleTimeRemaining();
 	}
 }

@@ -418,13 +418,52 @@ bool ResourceManagerImplementation::checkResource(Player* player, string& resour
 	lock(doLock);
 	
 	ResourceTemplate* resource = resourceMap->get(resourceName);
+	
+	string surveyType, class2, class2re = "";
+	switch(SurveyToolType) {
+	case SurveyToolImplementation::SOLAR:
+		class2 = "Solar Energy";
+		break;
+	case SurveyToolImplementation::CHEMICAL:
+		class2 = "Chemical";
+		break;
+	case SurveyToolImplementation::FLORA:
+		class2 = "Flora";
+		break;
+	case SurveyToolImplementation::GAS:
+		class2 = "Gas";
+		break;
+	case SurveyToolImplementation::GEOTHERMAL:
+		class2 = "Geothermal Energy";
+		break;
+	case SurveyToolImplementation::MINERAL:
+		class2 = "Mineral";
+		class2re = "Radioactive Energy";
+		break;
+	case SurveyToolImplementation::WATER:
+		class2 = "Water";
+		break;
+	case SurveyToolImplementation::WIND:
+		class2 = "Wind Energy";
+		break;
+	default:
+		player->error("Invalid Tool");
+		unlock(doLock);
+		return false;
+	}
+	
 	if (resource != NULL) {
-		for(int i = resource->getSpawnSize() - 1; i >= 0; i--) {
-			SpawnLocation* sl = resource->getSpawn(i);
-			if (sl->getPlanet() == player->getZoneID()) {
-				unlock(doLock);
-				return true;
+		if (resource->getClass2() == class2 || resource->getClass2() == class2re) {		
+			for(int i = resource->getSpawnSize() - 1; i >= 0; i--) {
+				SpawnLocation* sl = resource->getSpawn(i);
+				if (sl->getPlanet() == player->getZoneID()) {
+					unlock(doLock);
+					return true;
+				}
 			}
+		} else {
+			ChatSystemMessage* msg = new ChatSystemMessage("survey","wrong_tool", resourceName, false, 0);
+			player->sendMessage(msg);
 		}
 	}
 	
