@@ -203,32 +203,28 @@ TangibleObject* ItemManagerImplementation::createPlayerObject(Player* player, Re
 			
 			break;
 		}
-	} else if (objecttype & TangibleObjectImplementation::SURVEYTOOL) {
-	
-		item = new SurveyToolImplementation(objectid, objectcrc, objectname, objecttemp, player);
+	} else if (objecttype & TangibleObjectImplementation::RESOURCECONTAINER) {
 
+		item = new ResourceContainerImplementation(objectid, objectcrc, objectname, objecttemp, player);
+	
+	} else if (objecttype & TangibleObjectImplementation::TOOL) {
+		switch (objecttype) {
+		case TangibleObjectImplementation::CRAFTINGTOOL:
+			item = new CraftingToolImplementation(objectid, objectcrc, objectname, objecttemp);
+			break;
+		case TangibleObjectImplementation::SURVEYTOOL:
+			item = new SurveyToolImplementation(objectid, objectcrc, objectname, objecttemp, player);
+			break;
+		case TangibleObjectImplementation::REPAIRTOOL:
+		case TangibleObjectImplementation::CAMPKIT:
+		case TangibleObjectImplementation::SHIPCOMPONENTREPAIRITEM:
+			break;
+		}
 	} else if (objecttype & TangibleObjectImplementation::WEAPONPOWERUP) {
 
 		item = new PowerupImplementation(objectid, objectcrc, objectname, objecttemp);
 	
-	} else if (objecttype & TangibleObjectImplementation::RESOURCECONTAINER) {
-		switch (objecttype) {
-		case TangibleObjectImplementation::ENERGYGAS:
-		case TangibleObjectImplementation::ENERGYLIQUID:
-		case TangibleObjectImplementation::ENERGYRADIOACTIVE:
-		case TangibleObjectImplementation::ENERGYSOLID:
-		case TangibleObjectImplementation::INORGANICCHEMICAL:
-		case TangibleObjectImplementation::INORGANICGAS:
-		case TangibleObjectImplementation::INORGANICMINERAL:
-		case TangibleObjectImplementation::WATER:
-		case TangibleObjectImplementation::ORGANICFOOD:
-		case TangibleObjectImplementation::ORGANICHIDE:
-		case TangibleObjectImplementation::ORGANICSTRUCTURAL:
-			item = new ResourceContainerImplementation(objectid, objectcrc, objectname, objecttemp, player);
-
-			break;
-		}
-	}
+	} 
 	
 	if (item == NULL)
 		return NULL;

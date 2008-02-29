@@ -53,22 +53,20 @@ public:
 	ResourceContainerObjectMessage3(ResourceContainer* rcno)
 			: BaseLineMessage(rcno->getObjectID(), 0x52434E4F, 3, 0x0F) {
 		insertFloat(1.0f);
-		insertAscii(""); // File
-		insertInt(0);
-		insertAscii(""); // Resource Type
-		insertUnicode(rcno->getName()); // Container Name
+		insertAscii(""); // File 
+		insertInt(0); 
+		insertAscii(""); // Resource Type 
+		insertUnicode(rcno->getName()); // Name
 		insertInt(1); // Unknown
 		insertShort(0); // Unknown (Possibly an int w/ the next short.)
-		insertShort(0); // Unknown
-		insertShort(0); // Unknown
-		insertShort(0); // Unknown
-		insertShort(0); // Unknown
 		insertInt(0); // Unknown
 		insertInt(0); // Unknown
-		insertInt(0); // Unknown
+		insertInt(1); // Unknown
+		insertInt(4); // Unknown
+		insertInt(3); // Unknown
 		insertInt(0x64); // Condition (or Max Condition)
 		insertByte(0x01); // Unknown
-		insertInt(rcno->getContents()); // Stack Size
+		insertInt(rcno->getContents()); // Stack Size 
 		insertLong(rcno->getResourceID()); // ResourceID
 		setSize();
 	}

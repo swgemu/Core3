@@ -403,7 +403,7 @@ void ZonePacketHandler::handleObjectControllerMessage(Message* pack) {
 		}
 
 		uint64 parent;
-		
+cout << hex << "Header1 = " << header1 << "\nHeader2 = " << header2 << endl;
 		switch (header1) {
 		case 0x21:
 			switch (header2) {
@@ -458,6 +458,9 @@ void ZonePacketHandler::handleObjectControllerMessage(Message* pack) {
 			break;
 		case 0x83:
 			switch (header2) {
+			case 0x107:
+				ObjectControllerMessage::parseAddCraftingResource(player, pack);
+				break;
 			case 0x126:
 				ObjectControllerMessage::parseObjectTargetUpdate(player, pack);
 				break;

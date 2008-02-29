@@ -108,8 +108,9 @@ void CraftingToolImplementation::generateAttributes(SceneObject* obj) {
 void CraftingToolImplementation::sendToolStart(Player* player) {
 	// Craft Start
 	// Tano7
-	//TangibleObjectMessage7* tano7 = new TangibleObjectMessage7(_this);
-	//player->sendMessage(tano7);
+	
+	TangibleObjectMessage7* tano7 = new TangibleObjectMessage7(_this);
+	player->sendMessage(tano7);
 	
 	// DPlay9
 	PlayerObjectDeltaMessage9* dplay9 = new PlayerObjectDeltaMessage9(player->getPlayerObject());
@@ -120,6 +121,7 @@ void CraftingToolImplementation::sendToolStart(Player* player) {
 	// Tool Start
 	// Obj Controller Msg
 	ObjectControllerMessage* ocm = new ObjectControllerMessage(player->getObjectID(),0x0B, 0x102);
+	
 	ocm->insertLong(getObjectID());
 	ocm->insertLong(0x00);
 	
@@ -131,11 +133,11 @@ void CraftingToolImplementation::sendToolStart(Player* player) {
 		ocm->insertInt(player->getDraftSchematic(i)->getSchematicCRC());
 		ocm->insertInt(4);		// this number decides what tab the schematic goes in (ex: 4 = food tab in crafting window)
 	}
-	ocm->close();
 	player->sendMessage(ocm);
 
 	// This is inefficent but for now it works fine
 	// Sends all the ingredients and experimental props to the player
+	
 	for(int i = 0; i < draftSchematicListSize; i++) {
 		DraftSchematic* ds = player->getDraftSchematic(i);
 		if(ds != NULL) {

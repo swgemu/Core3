@@ -90,60 +90,91 @@ public:
 	void splitContainer(Player* player, int newQuantity);
 	void transferContents(Player* player, ResourceContainer* fromRCO);
 	
+	void parseItemAttributes();
+	
 	inline void setContents(int i) {
 		quantity = i;
+		string temp = "quantity";
+		itemAttributes->setIntAttribute(temp, i);
 	}
 	
 	inline void setDecayResistance(int i) {
 		res_dr = i;
+		string temp = "res_dr";
+		itemAttributes->setIntAttribute(temp, i);
 	}
 	
-	inline void setQuality(int i) {
+	inline void setQuality(int i) { 
 		res_oq = i;
+		string temp = "res_oq";
+		itemAttributes->setIntAttribute(temp, i);
 	}
 
 	inline void setFlavor(int i) {
 		res_fl = i;
+		string temp = "res_fl";
+		itemAttributes->setIntAttribute(temp, i);
 	}
 
 	inline void setPotentialEnergy(int i) {
 		res_pe = i;
+		string temp = "res_pe";
+		itemAttributes->setIntAttribute(temp, i);
 	}
 	
 	inline void setMalleability(int i) {
 		res_m = i;
+		string temp = "res_m";
+		itemAttributes->setIntAttribute(temp, i);
 	}
 
 	inline void setToughness(int i) {
 		res_t = i;
+		string temp = "res_t";
+		itemAttributes->setIntAttribute(temp, i);
 	}
 
 	inline void setShockResistance(int i) {
 		res_sr = i;
+		string temp = "res_sr";
+		itemAttributes->setIntAttribute(temp, i);
 	}
 
 	inline void setColdResistance(int i) {
 		res_cr = i;
+		string temp = "res_cr";
+		itemAttributes->setIntAttribute(temp, i);
 	}
 
 	inline void setHeatResistance(int i) {
 		res_hr = i;
+		string temp = "res_hr";
+		itemAttributes->setIntAttribute(temp, i);
 	}
 
 	inline void setConductivity(int i) {
 		res_c = i;
+		string temp = "res_c";
+		itemAttributes->setIntAttribute(temp, i);
 	}
 	
 	inline void setEntangleResistance(int i) {
 		res_er = i;
+		string temp = "res_er";
+		itemAttributes->setIntAttribute(temp, i);
 	}
 	
 	inline void setResourceName(unicode& n) {
 		name = unicode(n.c_str());
+		string temp = "name"; 
+		string temp2 = n.c_str();
+		itemAttributes->setStringAttribute(temp, temp2);
 	}
 	
 	inline void setResourceID(uint64 rid) {
 		resourceID = rid;
+		string temp = "resourceID";
+		itemAttributes->setUnsignedLongAttribute(temp, resourceID);
 	}
 	
 	inline void setContainerFile(string& tempn) {
@@ -156,6 +187,8 @@ public:
 	
 	inline void setObjectSubType(int subType) {
 		objectSubType = subType;
+		string temp = "resourceType";
+		itemAttributes->setIntAttribute(temp, objectSubType);
 	}
 	
 	inline int getContents() {

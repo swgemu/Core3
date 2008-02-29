@@ -52,27 +52,173 @@ which carries forward this exception.
 
 class ManufactureSchematicObjectDeltaMessage7 : public DeltaMessage {
 public:
-	ManufactureSchematicObjectDeltaMessage7(uint64 sceneObjSchematic, DraftSchematic* ds) 
+	ManufactureSchematicObjectDeltaMessage7(uint64 sceneObjSchematic, DraftSchematic* ds, uint64 resourceID) 
 			: DeltaMessage(sceneObjSchematic, 0x4D53434F, 7) {
 
-		insertShort(0);
-		
-		int ingredientListSize = ds->getIngredientListSize();
-		insertInt(ingredientListSize);
-		insertInt(ingredientListSize);
-		
-		for(int i = 0; i < ingredientListSize; i++) {
-			DraftSchematicIngredient* dsi = ds->getIngredient(i);
-			if(dsi != NULL) {
-			insertByte(1);
-			insertShort(i);
-			insertAscii(dsi->getTemplateName());
-			insertInt(0);
-			insertAscii(dsi->getTitleName());
-			} else {
-				cerr << "\n\nError DMSCO7: line 65\n";
+			startUpdate(0);
+			
+			int ingredientListSize = ds->getIngredientListSize();
+			insertInt(ingredientListSize);
+			insertInt(ingredientListSize);
+			
+			for(int i = 0; i < ingredientListSize; i++) {
+				DraftSchematicIngredient* dsi = ds->getIngredient(i);
+				if(dsi != NULL) {
+				insertByte(1);
+				insertShort(i);
+				insertAscii(dsi->getTemplateName());
+				insertInt(0);
+				insertAscii(dsi->getTitleName());
+				} else {
+					cerr << "\n\nError DMSCO7: line 65\n";
+				}
 			}
-		}
+			
+			// Next Part *************************************************
+			
+			startUpdate(1);
+			insertInt(ingredientListSize+1);
+			insertInt(ingredientListSize+1);
+			
+			for(int i = 0; i < ingredientListSize; i++){
+				addListIntElement(i, 0);
+			}
+			removeListIntElement(0, 4);
+			
+			// Next Part **************************************************
+			
+			startUpdate(2);
+			insertInt(ingredientListSize+1);
+			insertInt(ingredientListSize+1);
+			
+			for(int i = 0; i < ingredientListSize; i++){
+				addListIntElement(i, 0);
+			}
+			removeListIntElement(0, 1);
+			insertLong(resourceID);
+			
+			// Next Part **************************************************
+
+			startUpdate(3);
+			insertInt(ingredientListSize+1);
+			insertInt(ingredientListSize+1);
+			
+			for(int i = 0; i < ingredientListSize; i++){
+				addListIntElement(i, 0);
+			}
+			removeListIntElement(0, 1);
+			insertInt(3); // Resource Quantity
+			
+			// Next Part **************************************************
+
+			startUpdate(4);
+			insertInt(ingredientListSize);
+			insertInt(ingredientListSize);
+			
+			for(int i = 0; i < ingredientListSize; i++){
+				addListIntElement(i, 0);
+			}
+			
+			// Next Part **************************************************
+
+			startUpdate(5);
+			insertInt(ingredientListSize+1);
+			insertInt(ingredientListSize+1);			
+			
+			for(int i = 0; i < ingredientListSize; i++){
+				addListIntElement(i, 0xFFFFFFFF);
+			}
+			removeListIntElement(0, 0);
+			
+			
+			// Next Part (maybe)**************************************************
+			
+			startUpdate(6);
+			insertInt(ingredientListSize*2);
+			insertInt(ingredientListSize*2);			
+			
+			for(int i = 0; i < ingredientListSize; i++){
+				addListIntElement(i, 0xFFFFFFFF);
+				removeListIntElement(i, i);
+			}
+
+			// Next Part (maybe)**************************************************
+			
+			startUpdate(7);
+			insertByte(16);  // No clue, was Decimal 24 for Scatter and 16 for Bofa
+			
+			// Next Part *********************************************************
+			
+			startUpdate(8);
+			insertInt(4);
+			insertInt(4);			
+			
+			
+			// HARDCODED UNTIL FIXED
+			
+			insertByte(1);
+			insertShort(0);
+			insertAscii("crafting");
+			insertInt(0);
+			insertAscii("exp_filling");
+			
+			insertByte(1);
+			insertShort(1);
+			insertAscii("crafting");
+			insertInt(0);
+			insertAscii("exp_flavor");
+			
+			insertByte(1);
+			insertShort(2);
+			insertAscii("crafting");
+			insertInt(0);
+			insertAscii("exp_nutrition");
+			
+			
+			insertByte(1);
+			insertShort(3);
+			insertAscii("crafting");
+			insertInt(0);
+			insertAscii("exp_quantity");
+			
+			// Next Part *********************************************************
+			
+			startUpdate(9);
+			insertInt(1);
+			insertInt(1);
+			
+			addListIntElement(0, 0);
+			
+			// Next Part **************************************************
+			
+			startUpdate(10);
+			insertInt(1);
+			insertInt(1);
+			
+			addListIntElement(0, 0);
+			
+			// Next Part **************************************************
+			
+			startUpdate(11);
+			insertInt(1);
+			insertInt(1);
+			
+			addListIntElement(0, 0);
+			
+			// Next Part **************************************************
+			
+			startUpdate(12);
+			insertInt(1);
+			insertInt(1);
+			
+			addListIntElement(0, 0);
+			
+			// Next Part (???)**************************************************
+			
+			startUpdate(0x14);
+			insertByte(1);
+			
+			// Next Part **************************************************
 	}
 };
 

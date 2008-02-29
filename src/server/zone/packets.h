@@ -221,6 +221,7 @@ which carries forward this exception.
 #include "packets/manufactureschematic/ManufactureSchematicObjectMessage7.h"
 #include "packets/manufactureschematic/ManufactureSchematicObjectMessage8.h"
 #include "packets/manufactureschematic/ManufactureSchematicObjectMessage9.h"
+#include "packets/manufactureschematic/ManufactureSchematicObjectDeltaMessage6.h"
 #include "packets/manufactureschematic/ManufactureSchematicObjectDeltaMessage7.h"
 
 // static objects

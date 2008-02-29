@@ -255,14 +255,16 @@ public:
 	void prepareCraftingSessionStageTwo(Player* player, DraftSchematic* ds) {
 		//TODO: Check to see if this scene obj id for the schematic is different
 		// each time you try to enter stage 2 of crafting
-		
+	
 		uint64 sceneObjSchematic = setupDraftSchematicForCSStageTwo(player, ds);
-		
+
 		//TODO:draftSchematic->getTangibleObject();
-		uint64 sceneObjTano = setupTangibleObjectForCSStageTwo(player);
-		
+		uint64 sceneObjTano = setupTangibleObjectForCSStageTwo(player, sceneObjSchematic, ds->getSchematicCRC());
+
 		setupIngredientsForCSStageTwo(player, ds, sceneObjSchematic, sceneObjTano);
 		
+		player->setCurrentSchematicID(sceneObjSchematic); 
+		player->setCurrentDraftSchematic(ds); 
 	}
 	
 	uint64 setupDraftSchematicForCSStageTwo(Player* player, DraftSchematic* ds) {
@@ -271,8 +273,10 @@ public:
 		SceneObjectCreateMessage* soCreateMsg = new SceneObjectCreateMessage(schematicSceneObjID, 0x3819C409);
 		player->sendMessage(soCreateMsg);
 		
-		// Update Containment Message
 		CraftingTool* ct = player->getCurrentCraftingTool();
+		ct->generateAttributes(player);
+		
+		// Update Containment Message
 		UpdateContainmentMessage* ucMsg = new UpdateContainmentMessage(schematicSceneObjID, ct->getObjectID(), 4);
 		player->sendMessage(ucMsg);
 
@@ -296,14 +300,14 @@ public:
 		ManufactureSchematicObjectMessage9* msco9 = new ManufactureSchematicObjectMessage9(schematicSceneObjID);
 		player->sendMessage(msco9);
 		
-		// Scene Object Close
+		//Scene Object Close
 		SceneObjectCloseMessage* soCloseMsg = new SceneObjectCloseMessage(schematicSceneObjID);
 		player->sendMessage(soCloseMsg);
 
 		return schematicSceneObjID;
 	}
 	
-	uint64 setupTangibleObjectForCSStageTwo(Player* player) {
+	uint64 setupTangibleObjectForCSStageTwo(Player* player, uint64 sceneObjSchematic, uint32 schematicCRC) {			
 		// Scene Object Create Message
 		TangibleObjectImplementation* tanoImpl = new TangibleObjectImplementation(player->getNewItemID());
 		TangibleObject* tano = tanoImpl->deploy();
@@ -318,6 +322,7 @@ public:
 		player->sendMessage(ucMsg);
 	
 		// Tano3
+		tano->setObjectCRC(0x77D8BCD7);
 		tano->setTemplateTypeName("food_name");
 		tano->setTemplateName("bofa_treat");
 		TangibleObjectMessage3* tano3 = new TangibleObjectMessage3(tano);
@@ -342,10 +347,10 @@ public:
 		player->sendMessage(soCloseMsg);
 		
 		// DTano3
-		TangibleObjectDeltaMessage3* dtano3 = new TangibleObjectDeltaMessage3(tano);
-		dtano3->updateConditionDamage();
-		dtano3->close();
-		player->sendMessage(dtano3);
+		//TangibleObjectDeltaMessage3* dtano3 = new TangibleObjectDeltaMessage3(tano);
+		//dtano3->updateConditionDamage();
+		//dtano3->close();
+		//player->sendMessage(dtano3);
 		
 		// Dplay9
 		PlayerObjectDeltaMessage9* dplay9 = new PlayerObjectDeltaMessage9(player->getPlayerObject());
@@ -358,35 +363,73 @@ public:
 	
 	void setupIngredientsForCSStageTwo(Player* player, DraftSchematic* ds, uint64 sceneObjSchematic, uint64 sceneObjTano) {
 		
+		// Object Controller w/ Ingredients
 		ObjectControllerMessage* objMsg = new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x0103);
 		
 		objMsg->insertLong(player->getCurrentCraftingTool()->getObjectID());
 		objMsg->insertLong(sceneObjSchematic);
 		objMsg->insertLong(sceneObjTano);
-		objMsg->insertInt(1);
+		objMsg->insertInt(2);
+		
 		objMsg->insertByte(1);
 		
-		ds->helperSendIngredientsToPlayer(objMsg);
+		ds->helperSendIngredientsToPlayer(objMsg); 
 		player->sendMessage(objMsg);
 		
+		// MSCO7
 		ManufactureSchematicObjectMessage7* msco7 = new ManufactureSchematicObjectMessage7(sceneObjSchematic, ds);
 		player->sendMessage(msco7);
+	
+	}	
+	
+	void addResourceToCraft(Player * player, ResourceContainer * rcno, int slot, int counter){
+
+		uint64 sceneObjSchematic = player->getCurrentSchematicID();
+		DraftSchematic * ds = player->getCurrentDraftSchematic(); 
+
+		ResourceContainerObjectDeltaMessage3* dRcno3 = new ResourceContainerObjectDeltaMessage3(rcno);
+		DraftSchematicIngredient* dsi = ds->getIngredient(slot);
 		
-		DeltaMessage* dRcno3 = new DeltaMessage(sceneObjSchematic, 0x4D53434F, 6);
-		dRcno3->addByteUpdate(5, 1);
+		dRcno3->setQuantity((rcno->getContents() - dsi->getResourceQuantity()));
 		dRcno3->close();
+
 		player->sendMessage(dRcno3);
+			
+		cout << "Sent drnco3\n";
+		int t = time(0);
+		while(time(0) < t + 5);	
 		
-		ManufactureSchematicObjectDeltaMessage7* dMsco7 = new ManufactureSchematicObjectDeltaMessage7(sceneObjSchematic, ds);
+		ManufactureSchematicObjectDeltaMessage6* dMsco6 = new ManufactureSchematicObjectDeltaMessage6(sceneObjSchematic);
+		
+		//cout << "size = " << ds->getIngredientListSize() << " slot = " << slot << endl;
+		
+		dMsco6->insertToResourceSlot(ds->getIngredientListSize(), slot + 1); 
+cout << dMsco6->toString()<< endl;
+		dMsco6->close();
+
+		player->sendMessage(dMsco6); 
+		
+		cout << "Sent dMsco6\n";
+				
+		ManufactureSchematicObjectDeltaMessage7* dMsco7 = new ManufactureSchematicObjectDeltaMessage7(sceneObjSchematic, ds, 
+				rcno->getObjectID());
 		dMsco7->close();
+cout << dMsco7->toString()<< endl;
 		player->sendMessage(dMsco7);
 		
-		ObjectControllerMessage* objMsg2 = new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x010C);
-		objMsg2->insertInt(0x0107);
-		objMsg2->insertLong(0);
-		objMsg2->insertByte(1);
-		player->sendMessage(objMsg2);
+		cout << "Sent dMsco7\n";
 		
+		// Object Controller 
+		ObjectControllerMessage* objMsg = new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x010C);
+
+		objMsg->insertInt(0x107);
+		objMsg->insertInt(0);
+		
+		objMsg->insertByte(0); //?!?!
+		
+		player->sendMessage(objMsg);
+		
+		cout << "Sent obj\n";
 	}
 	
 	/*void WriteDraftSchematicToDB(DraftSchematic* ds) {

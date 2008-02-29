@@ -83,19 +83,21 @@ ResourceContainerImplementation::~ResourceContainerImplementation() {
 }
 
 void ResourceContainerImplementation::init() {
-	quantity = 0;
-
-	res_dr = 0;
-	res_oq = 0;
-	res_fl = 0;
-	res_pe = 0;
-	res_m = 0;
-	res_t = 0;
-	res_sr = 0;
-	res_cr = 0;
-	res_hr = 0;
-	res_c = 0;
-	res_er = 0;
+	setName("");
+	setObjectSubType(0);
+	setResourceID(0);
+	setContents(0);
+	setDecayResistance(0);
+	setQuality(0);
+	setFlavor(0);
+	setPotentialEnergy(0);
+	setMalleability(0);
+	setToughness(0);
+	setShockResistance(0);
+	setColdResistance(0);
+	setHeatResistance(0);
+	setConductivity(0);
+	setEntangleResistance(0);
 }
 
 void ResourceContainerImplementation::sendTo(Player* player, bool doClose) {
@@ -196,6 +198,10 @@ void ResourceContainerImplementation::generateAttributes(SceneObject* obj) {
 }
 
 void ResourceContainerImplementation::splitContainer(Player* player, int newQuantity) {
+	return;
+	
+	// Needs a rewrite
+	
 	int oldQuantity = getContents();
 		
 	if (newQuantity < oldQuantity) {
@@ -246,4 +252,52 @@ void ResourceContainerImplementation::transferContents(Player* player, ResourceC
     }
     
     setUpdated(true); 
+}
+void ResourceContainerImplementation::parseItemAttributes() {
+
+	string temp = "name";
+	name = unicode(itemAttributes->getStringAttribute(temp));
+	
+	temp = "resourceType";
+	objectSubType = itemAttributes->getIntAttribute(temp);
+	    
+	temp = "quantity";
+	quantity = itemAttributes->getIntAttribute(temp);
+	
+	temp = "resourceID";
+	resourceID = itemAttributes->getUnsignedLongAttribute(temp);
+	
+	temp = "res_dr";
+	res_dr = itemAttributes->getIntAttribute(temp);
+	
+	temp = "res_oq";
+	res_oq = itemAttributes->getIntAttribute(temp);
+
+	temp = "res_fl";
+	res_fl = itemAttributes->getIntAttribute(temp);
+	
+	temp = "res_pe";
+	res_pe = itemAttributes->getIntAttribute(temp);
+	
+	temp = "res_m";
+	res_m = itemAttributes->getIntAttribute(temp);
+	
+	temp = "res_t";
+	res_t = itemAttributes->getIntAttribute(temp);
+	
+	temp = "res_sr";
+	res_sr = itemAttributes->getIntAttribute(temp);
+	
+	temp = "res_cr";
+	res_cr = itemAttributes->getIntAttribute(temp);
+	
+	temp = "res_hr";
+	res_hr = itemAttributes->getIntAttribute(temp);
+	
+	temp = "res_c";
+	res_c = itemAttributes->getIntAttribute(temp);
+	
+	temp = "res_er";
+	res_er = itemAttributes->getIntAttribute(temp);
+	
 }

@@ -57,8 +57,10 @@ public:
 			: BaseLineMessage(oid, 0x4D53434F, 7, 0x15) {
 
 		int ingredientListSize = ds->getIngredientListSize();
+		int updateCount = ingredientListSize;
+		
 		insertInt(ingredientListSize);
-		insertInt(ingredientListSize);
+		insertInt(updateCount);
 		
 		for(int i = 0; i < ingredientListSize; i++) {
 			DraftSchematicIngredient* dsi = ds->getIngredient(i);
@@ -74,14 +76,16 @@ public:
 		// NO IDEA WTF THIS IS FOR (doing this cause they were in live's logs)
 		for(int i = 0; i < 6; i++) {
 			insertInt(ingredientListSize);
-			insertInt(ingredientListSize);
+			insertInt(updateCount);
+			
 			for(int j = 0; j < ingredientListSize; j++) {
-				if(j == 4) {
-					insertFloat(1);
-				} else if(j == 5) {
+				if(i == 3) {
+					//insertFloat(1);
+					insertInt(0);
+				} else if(i == 4) {
 					insertInt(0xFFFFFFFF);
-				} else if(j == 6){
-					insertInt(j);
+				} else if(i == 5){
+						insertInt(j);
 				} else {
 					insertInt(0);
 				}
@@ -89,9 +93,13 @@ public:
 		}
 		insertByte(0x0C); 	// no idea
 		
+		
 		int expPropGroupListSize = ds->getExpPropGroupListSize();
-		insertInt(expPropGroupListSize);
-		insertInt(expPropGroupListSize);
+		//insertInt(expPropGroupListSize);
+		//insertInt(expPropGroupListSize);
+		
+		insertInt(4);
+		insertInt(4);
 		
 		/*
 		for(int i = 0; i < expPropGroupListSize; i++) {
@@ -109,12 +117,15 @@ public:
 		insertAscii("crafting");
 		insertInt(0);
 		insertAscii("exp_filling");
+		
 		insertAscii("crafting");
 		insertInt(0);
 		insertAscii("exp_flavor");
+		
 		insertAscii("crafting");
 		insertInt(0);
 		insertAscii("exp_nutrition");
+		
 		insertAscii("crafting");
 		insertInt(0);
 		insertAscii("exp_quantity");
@@ -122,9 +133,11 @@ public:
 		
 		// NO IDEA WTF THIS IS FOR (doing this cause they were in live's logs)
 		for(int i = 0; i < 4; i++) {
-			insertInt(expPropGroupListSize);
-			insertInt(expPropGroupListSize);
-			for(int j = 0; j < expPropGroupListSize; j++) {
+			//insertInt(expPropGroupListSize);
+			//insertInt(updateCount);
+			insertInt(4);
+			insertInt(4);
+			for(int j = 0; j < 4/*expPropGroupListSize*/; j++) {
 				insertInt(0);
 			}
 		}
@@ -133,6 +146,8 @@ public:
 			insertInt(0);
 			insertInt(0);
 		}
+		
+		insertByte(0x00);
 		
 		insertInt(0);
 		

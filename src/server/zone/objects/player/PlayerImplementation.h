@@ -80,6 +80,8 @@ class WaypointObject;
 class Guild;
 class Certification;
 
+class ResourceContainer;
+
 class PlayerImplementation : public PlayerServant {
 	ReferenceSlot<ZoneClient> owner;
 	
@@ -133,6 +135,8 @@ class PlayerImplementation : public PlayerServant {
 	
 	// Crafting
 	CraftingTool* currentCraftingTool;
+	DraftSchematic* currentDraftSchematic;
+	uint64 currentSchematicID;
 
 	// misc
 	ManagedSortedVector<Player> duelList;
@@ -463,7 +467,15 @@ public:
 	void setCurrentCraftingTool(CraftingTool* ct);
 	void clearCurrentCraftingTool();
 	
+	DraftSchematic* getCurrentDraftSchematic();
+	void setCurrentDraftSchematic(DraftSchematic* ds);
+	void clearCurrentDraftSchematic();
+	
+	uint64 getCurrentSchematicID();
+	void setCurrentSchematicID(uint64 schematicID);
+	
 	void prepareCraftingSessionStageTwo(DraftSchematic* ds);
+	void addResourceToCraft(ResourceContainer * rnco, int slot, int counter);
 	
 
 	bool checkCertification(string certification) {

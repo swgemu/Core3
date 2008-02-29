@@ -312,7 +312,7 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player, Message* 
 	CombatManager* combatManager = serv->getCombatManager();
 
 	CommandQueueAction* action;
-	
+
 	switch (actionCRC) {
 	case (0x03B65950): // Logout
 		player->userLogout();
@@ -1706,4 +1706,23 @@ void ObjectControllerMessage::parseSelectDraftSchematic(Player* player, Message*
 		player->sendSystemMessage("Selected Draft Schematic was invalid.  Please inform Link of this error.");
 	}
 }
+void ObjectControllerMessage::parseAddCraftingResource(Player* player, Message* packet) {
 
+	packet->shiftOffset(12);
+	
+	uint64 resourceObjectID = packet->parseLong();
+	
+	int slot = packet->parseInt();
+	
+	packet->shiftOffset(4);
+	
+	int counter = packet->parseByte();
+
+	ResourceContainer * rnco = (ResourceContainer*)player->getInventoryItem(resourceObjectID);
+	if(rnco != NULL) {
+		player->addResourceToCraft(rnco, slot, counter);
+	} else {
+		// This eles should never execute
+		player->sendSystemMessage("Selected Draft Schematic was invalid.  Please inform Link of this error.");
+	}
+}

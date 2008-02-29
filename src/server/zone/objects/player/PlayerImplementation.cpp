@@ -2328,10 +2328,31 @@ void PlayerImplementation::setCurrentCraftingTool(CraftingTool* ct) {
 void PlayerImplementation::clearCurrentCraftingTool() {
 	currentCraftingTool = NULL;
 }
+DraftSchematic* PlayerImplementation::getCurrentDraftSchematic() {
+	return currentDraftSchematic;
+}
+void PlayerImplementation::setCurrentDraftSchematic(DraftSchematic* ds) {
+	currentDraftSchematic = ds;
+}
+void PlayerImplementation::clearCurrentDraftSchematic() { 
+	currentDraftSchematic = NULL;
+}
+uint64 PlayerImplementation::getCurrentSchematicID() {
+	return currentSchematicID;
+}
+void PlayerImplementation::setCurrentSchematicID(uint64 soid) {
+	currentSchematicID = soid;
+}
+
 
 void PlayerImplementation::prepareCraftingSessionStageTwo(DraftSchematic* ds) {
 	CraftingManager* craftingManager = server->getCraftingManager();
 	craftingManager->prepareCraftingSessionStageTwo(_this, ds);
+}
+
+void PlayerImplementation::addResourceToCraft(ResourceContainer * rnco, int slot, int counter) {
+	CraftingManager* craftingManager = server->getCraftingManager();
+	craftingManager->addResourceToCraft(_this, rnco, slot, counter);
 }
 
 // Draft Schematics

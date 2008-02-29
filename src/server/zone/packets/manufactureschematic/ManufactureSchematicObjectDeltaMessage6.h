@@ -43,25 +43,21 @@ which carries forward this exception.
 */
 
 
-#ifndef MANUFACTURESCHEMATICOBJECTMESSAGE6_H_
-#define MANUFACTURESCHEMATICOBJECTMESSAGE6_H_
+#ifndef MANUFACTURESCHEMATICOBJECTDELTAMESSAGE6_H_
+#define MANUFACTURESCHEMATICOBJECTDELTAMESSAGE6_H_
 
 #include "../BaseLineMessage.h"
 
 #include "../../objects/draftschematic/DraftSchematic.h"
 
-class ManufactureSchematicObjectMessage6 : public BaseLineMessage {
+class ManufactureSchematicObjectDeltaMessage6 : public DeltaMessage {
 public:
-	ManufactureSchematicObjectMessage6(uint64 oid, uint32 schematicCRC) 
-			: BaseLineMessage(oid, 0x4D53434F, 6, 0x07) {
-
-		insertInt(0x76); // THIS IS UNKNOWN BUT THIS NUMBER IS FOUND IN TANO6 PACKET
-		insertInt(0);
-
-		insertInt(schematicCRC);
-		insertShort(1);
-		
-		setSize();
+	ManufactureSchematicObjectDeltaMessage6(uint64 sceneObjSchematic) 
+			: DeltaMessage(sceneObjSchematic, 0x4D53434F, 6) {
+	}
+	
+	void insertToResourceSlot(int totalSlots, int slotNumber){
+		addByteUpdate(6, slotNumber);
 	}
 };
 

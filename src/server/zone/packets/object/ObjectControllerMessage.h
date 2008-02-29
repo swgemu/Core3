@@ -144,6 +144,7 @@ public:
 	static void parseRequestCraftingSession(Player* player, Message* pack);
 	static void parseCancelCraftingSession(Player* player, Message* packet);
 	static void parseSelectDraftSchematic(Player* player, Message* pack);
+	static void parseAddCraftingResource(Player* player, Message* packet);
 };
 
 #endif /*OBJECTCONTROLLERMESSAGE_H_*/

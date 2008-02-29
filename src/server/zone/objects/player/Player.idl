@@ -78,6 +78,7 @@ import "sui/SuiBox";
 
 import "../draftschematic/DraftSchematic";
 import "../tangible/craftingtool/CraftingTool";
+import "../tangible/resource/ResourceContainer";
 
 interface Player implements CreatureObject {
 	Player(unsigned long oid);
@@ -365,8 +366,16 @@ interface Player implements CreatureObject {
 	CraftingTool getCurrentCraftingTool();
 	void setCurrentCraftingTool(CraftingTool ct);
 	void clearCurrentCraftingTool();
+
+	DraftSchematic getCurrentDraftSchematic();
+	void setCurrentDraftSchematic(DraftSchematic ds);
+	void clearCurrentDraftSchematic();
+
+	unsigned long getCurrentSchematicID();
+	void setCurrentSchematicID(unsigned long schematicID);
 	
 	void prepareCraftingSessionStageTwo(DraftSchematic ds);
+	void addResourceToCraft(ResourceContainer rnco, int slot, int counter);
 	
 	// Draft Schematic stuff
 	void sendDraftSchematics();
