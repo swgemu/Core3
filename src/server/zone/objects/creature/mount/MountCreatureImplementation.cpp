@@ -110,7 +110,7 @@ void MountCreatureImplementation::addToDatapad() {
 
 	itno = (IntangibleObject*) swoopImpl->deploy();
 	
-	linkedPlayer->addDatapadItem((SceneObject*)itno);
+	linkedPlayer->addDatapadItem((SceneObject*) itno);
 }
 
 void MountCreatureImplementation::sendTo(Player* player, bool doClose) {

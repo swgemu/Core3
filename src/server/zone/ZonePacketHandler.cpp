@@ -403,7 +403,7 @@ void ZonePacketHandler::handleObjectControllerMessage(Message* pack) {
 		}
 
 		uint64 parent;
-cout << hex << "Header1 = " << header1 << "\nHeader2 = " << header2 << endl;
+
 		switch (header1) {
 		case 0x21:
 			switch (header2) {

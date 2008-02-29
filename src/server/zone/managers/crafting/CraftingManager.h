@@ -55,6 +55,8 @@ class Player;
 
 class DraftSchematic;
 
+class ResourceContainer;
+
 class CraftingManager : public ORBObjectStub {
 public:
 	CraftingManager();
@@ -66,6 +68,8 @@ public:
 	virtual ~CraftingManager();
 
 	void prepareCraftingSessionStageTwo(Player* player, DraftSchematic* ds);
+
+	void addResourceToCraft(Player* player, ResourceContainer* rcno, int slot, int counter);
 
 	void addDraftSchematicsFromGroupName(Player* player, const string& schematicGroupName);
 
@@ -83,6 +87,8 @@ public:
 	Packet* invokeMethod(sys::uint32 methid, ORBMethodInvocation* inv);
 
 	void prepareCraftingSessionStageTwo(Player* player, DraftSchematic* ds);
+
+	void addResourceToCraft(Player* player, ResourceContainer* rcno, int slot, int counter);
 
 	void addDraftSchematicsFromGroupName(Player* player, const string& schematicGroupName);
 

@@ -63,6 +63,13 @@ IntangibleObjectImplementation::IntangibleObjectImplementation(SceneObject* cont
 	status = 0;
 }
 
+IntangibleObjectImplementation::~IntangibleObjectImplementation() {
+	if (worldObject != NULL) {
+		worldObject->finalize();
+		worldObject = NULL;
+	}
+}
+
 void IntangibleObjectImplementation::sendTo(Player* player, bool doClose) {
 	ZoneClient* client = player->getClient();
 	if (client == NULL)

@@ -93,6 +93,8 @@ class DraftSchematic;
 
 class CraftingTool;
 
+class ResourceContainer;
+
 #include "../creature/CreatureObject.h"
 
 class Player : public CreatureObject {
@@ -411,7 +413,19 @@ public:
 
 	void clearCurrentCraftingTool();
 
+	DraftSchematic* getCurrentDraftSchematic();
+
+	void setCurrentDraftSchematic(DraftSchematic* ds);
+
+	void clearCurrentDraftSchematic();
+
+	unsigned long long getCurrentSchematicID();
+
+	void setCurrentSchematicID(unsigned long long schematicID);
+
 	void prepareCraftingSessionStageTwo(DraftSchematic* ds);
+
+	void addResourceToCraft(ResourceContainer* rnco, int slot, int counter);
 
 	void sendDraftSchematics();
 
@@ -814,7 +828,19 @@ public:
 
 	void clearCurrentCraftingTool();
 
+	DraftSchematic* getCurrentDraftSchematic();
+
+	void setCurrentDraftSchematic(DraftSchematic* ds);
+
+	void clearCurrentDraftSchematic();
+
+	unsigned long long getCurrentSchematicID();
+
+	void setCurrentSchematicID(unsigned long long schematicID);
+
 	void prepareCraftingSessionStageTwo(DraftSchematic* ds);
+
+	void addResourceToCraft(ResourceContainer* rnco, int slot, int counter);
 
 	void sendDraftSchematics();
 

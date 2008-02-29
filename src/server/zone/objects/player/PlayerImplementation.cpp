@@ -118,11 +118,15 @@ PlayerImplementation::~PlayerImplementation() {
 	}
 	
 	if (inventory != NULL) {
+		info("undeploying player inventory");
+
 		delete inventory;
 		inventory = NULL;
 	}
 	
 	if (datapad != NULL) {
+		info("undeploying player datapad");
+
 		delete datapad;
 		datapad = NULL;
 	}

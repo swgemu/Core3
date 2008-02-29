@@ -57,10 +57,12 @@ class IntangibleObjectImplementation : public IntangibleObjectServant {
 	
 	uint32 status;
 	
-	SceneObject* worldObject;
+	ManagedReference<SceneObject> worldObject;
 	
 public:
 	IntangibleObjectImplementation(SceneObject* container, uint32 objCRC, uint64 id);
+	
+	virtual ~IntangibleObjectImplementation();
 	
 	void sendTo(Player* player, bool doClose = true);
 	void sendDestroyTo(Player* player);

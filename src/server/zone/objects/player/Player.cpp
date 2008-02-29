@@ -84,6 +84,8 @@ which carries forward this exception.
 
 #include "../tangible/craftingtool/CraftingTool.h"
 
+#include "../tangible/resource/ResourceContainer.h"
+
 #include "Player.h"
 
 #include "PlayerImplementation.h"
@@ -2069,12 +2071,74 @@ void Player::clearCurrentCraftingTool() {
 		((PlayerImplementation*) _impl)->clearCurrentCraftingTool();
 }
 
-void Player::prepareCraftingSessionStageTwo(DraftSchematic* ds) {
+DraftSchematic* Player::getCurrentDraftSchematic() {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
 		ORBMethodInvocation invocation(this, 159);
+
+		return (DraftSchematic*) invocation.executeWithObjectReturn();
+	} else
+		return ((PlayerImplementation*) _impl)->getCurrentDraftSchematic();
+}
+
+void Player::setCurrentDraftSchematic(DraftSchematic* ds) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 160);
+		invocation.addObjectParameter(ds);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((PlayerImplementation*) _impl)->setCurrentDraftSchematic(ds);
+}
+
+void Player::clearCurrentDraftSchematic() {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 161);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((PlayerImplementation*) _impl)->clearCurrentDraftSchematic();
+}
+
+unsigned long long Player::getCurrentSchematicID() {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 162);
+
+		return invocation.executeWithUnsignedLongReturn();
+	} else
+		return ((PlayerImplementation*) _impl)->getCurrentSchematicID();
+}
+
+void Player::setCurrentSchematicID(unsigned long long schematicID) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 163);
+		invocation.addUnsignedLongParameter(schematicID);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((PlayerImplementation*) _impl)->setCurrentSchematicID(schematicID);
+}
+
+void Player::prepareCraftingSessionStageTwo(DraftSchematic* ds) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 164);
 		invocation.addObjectParameter(ds);
 
 		invocation.executeWithVoidReturn();
@@ -2082,12 +2146,27 @@ void Player::prepareCraftingSessionStageTwo(DraftSchematic* ds) {
 		((PlayerImplementation*) _impl)->prepareCraftingSessionStageTwo(ds);
 }
 
+void Player::addResourceToCraft(ResourceContainer* rnco, int slot, int counter) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 165);
+		invocation.addObjectParameter(rnco);
+		invocation.addSignedIntParameter(slot);
+		invocation.addSignedIntParameter(counter);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((PlayerImplementation*) _impl)->addResourceToCraft(rnco, slot, counter);
+}
+
 void Player::sendDraftSchematics() {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 160);
+		ORBMethodInvocation invocation(this, 166);
 
 		invocation.executeWithVoidReturn();
 	} else
@@ -2099,7 +2178,7 @@ void Player::addDraftSchematicsFromGroupName(const string& schematicGroupName) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 161);
+		ORBMethodInvocation invocation(this, 167);
 		invocation.addAsciiParameter(schematicGroupName);
 
 		invocation.executeWithVoidReturn();
@@ -2112,7 +2191,7 @@ void Player::subtractDraftSchematicsFromGroupName(const string& schematicGroupNa
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 162);
+		ORBMethodInvocation invocation(this, 168);
 		invocation.addAsciiParameter(schematicGroupName);
 
 		invocation.executeWithVoidReturn();
@@ -2125,7 +2204,7 @@ void Player::addDraftSchematic(DraftSchematic* ds) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 163);
+		ORBMethodInvocation invocation(this, 169);
 		invocation.addObjectParameter(ds);
 
 		invocation.executeWithVoidReturn();
@@ -2138,7 +2217,7 @@ void Player::subtractDraftSchematic(DraftSchematic* ds) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 164);
+		ORBMethodInvocation invocation(this, 170);
 		invocation.addObjectParameter(ds);
 
 		invocation.executeWithVoidReturn();
@@ -2151,7 +2230,7 @@ unsigned int Player::getDraftSchematicListSize() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 165);
+		ORBMethodInvocation invocation(this, 171);
 
 		return invocation.executeWithUnsignedIntReturn();
 	} else
@@ -2163,7 +2242,7 @@ unsigned int Player::getDraftSchematicUpdateCount(unsigned int count) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 166);
+		ORBMethodInvocation invocation(this, 172);
 		invocation.addUnsignedIntParameter(count);
 
 		return invocation.executeWithUnsignedIntReturn();
@@ -2176,7 +2255,7 @@ DraftSchematic* Player::getDraftSchematic(unsigned int schematicID) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 167);
+		ORBMethodInvocation invocation(this, 173);
 		invocation.addUnsignedIntParameter(schematicID);
 
 		return (DraftSchematic*) invocation.executeWithObjectReturn();
@@ -2189,7 +2268,7 @@ DraftSchematic* Player::getDraftSchematic(int index) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 168);
+		ORBMethodInvocation invocation(this, 174);
 		invocation.addSignedIntParameter(index);
 
 		return (DraftSchematic*) invocation.executeWithObjectReturn();
@@ -2202,7 +2281,7 @@ bool Player::isChangingFaction() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 169);
+		ORBMethodInvocation invocation(this, 175);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -2214,7 +2293,7 @@ Datapad* Player::getDatapad() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 170);
+		ORBMethodInvocation invocation(this, 176);
 
 		return (Datapad*) invocation.executeWithObjectReturn();
 	} else
@@ -2226,7 +2305,7 @@ unsigned long long Player::getNewItemID() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 171);
+		ORBMethodInvocation invocation(this, 177);
 
 		return invocation.executeWithUnsignedLongReturn();
 	} else
@@ -2238,7 +2317,7 @@ unsigned int Player::getItemShift() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 172);
+		ORBMethodInvocation invocation(this, 178);
 
 		return invocation.executeWithUnsignedIntReturn();
 	} else
@@ -2250,7 +2329,7 @@ float Player::getLastTestPositionX() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 173);
+		ORBMethodInvocation invocation(this, 179);
 
 		return invocation.executeWithFloatReturn();
 	} else
@@ -2262,7 +2341,7 @@ float Player::getLastTestPositionY() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 174);
+		ORBMethodInvocation invocation(this, 180);
 
 		return invocation.executeWithFloatReturn();
 	} else
@@ -2274,7 +2353,7 @@ unsigned int Player::getForcePower() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 175);
+		ORBMethodInvocation invocation(this, 181);
 
 		return invocation.executeWithUnsignedIntReturn();
 	} else
@@ -2286,7 +2365,7 @@ SurveyTool* Player::getSurveyTool() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 176);
+		ORBMethodInvocation invocation(this, 182);
 
 		return (SurveyTool*) invocation.executeWithObjectReturn();
 	} else
@@ -2298,7 +2377,7 @@ void Player::setSurveyTool(SurveyTool* sTool) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 177);
+		ORBMethodInvocation invocation(this, 183);
 		invocation.addObjectParameter(sTool);
 
 		invocation.executeWithVoidReturn();
@@ -2311,7 +2390,7 @@ void Player::setSurveyWaypoint(WaypointObject* id) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 178);
+		ORBMethodInvocation invocation(this, 184);
 		invocation.addObjectParameter(id);
 
 		invocation.executeWithVoidReturn();
@@ -2324,7 +2403,7 @@ WaypointObject* Player::getSurveyWaypoint() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 179);
+		ORBMethodInvocation invocation(this, 185);
 
 		return (WaypointObject*) invocation.executeWithObjectReturn();
 	} else
@@ -2336,7 +2415,7 @@ bool Player::getCanSurvey() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 180);
+		ORBMethodInvocation invocation(this, 186);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -2348,7 +2427,7 @@ bool Player::getCanSample() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 181);
+		ORBMethodInvocation invocation(this, 187);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -2360,7 +2439,7 @@ void Player::setCanSurvey() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 182);
+		ORBMethodInvocation invocation(this, 188);
 
 		invocation.executeWithVoidReturn();
 	} else
@@ -2372,7 +2451,7 @@ void Player::setCanSample() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 183);
+		ORBMethodInvocation invocation(this, 189);
 
 		invocation.executeWithVoidReturn();
 	} else
@@ -2384,7 +2463,7 @@ void Player::setSurveyEvent(unicode& resourcename) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 184);
+		ORBMethodInvocation invocation(this, 190);
 		invocation.addUnicodeParameter(resourcename);
 
 		invocation.executeWithVoidReturn();
@@ -2397,7 +2476,7 @@ void Player::setSampleEvent(unicode& resourcename, bool firstTime) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 185);
+		ORBMethodInvocation invocation(this, 191);
 		invocation.addUnicodeParameter(resourcename);
 		invocation.addBooleanParameter(firstTime);
 
@@ -2411,7 +2490,7 @@ void Player::setCancelSample(bool val) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 186);
+		ORBMethodInvocation invocation(this, 192);
 		invocation.addBooleanParameter(val);
 
 		invocation.executeWithVoidReturn();
@@ -2424,7 +2503,7 @@ bool Player::getCancelSample() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 187);
+		ORBMethodInvocation invocation(this, 193);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -2436,7 +2515,7 @@ void Player::sendSampleTimeRemaining() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 188);
+		ORBMethodInvocation invocation(this, 194);
 
 		invocation.executeWithVoidReturn();
 	} else
@@ -2448,7 +2527,7 @@ void Player::setSurveyErrorMessage() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 189);
+		ORBMethodInvocation invocation(this, 195);
 
 		invocation.executeWithVoidReturn();
 	} else
@@ -2460,7 +2539,7 @@ void Player::setSampleErrorMessage() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 190);
+		ORBMethodInvocation invocation(this, 196);
 
 		invocation.executeWithVoidReturn();
 	} else
@@ -2472,7 +2551,7 @@ bool Player::getSurveyErrorMessage() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 191);
+		ORBMethodInvocation invocation(this, 197);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -2484,7 +2563,7 @@ bool Player::getSampleErrorMessage() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 192);
+		ORBMethodInvocation invocation(this, 198);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -2962,105 +3041,123 @@ Packet* PlayerAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* inv) {
 		clearCurrentCraftingTool();
 		break;
 	case 159:
-		prepareCraftingSessionStageTwo((DraftSchematic*) inv->getObjectParameter());
+		resp->insertLong(getCurrentDraftSchematic()->_getORBObjectID());
 		break;
 	case 160:
-		sendDraftSchematics();
+		setCurrentDraftSchematic((DraftSchematic*) inv->getObjectParameter());
 		break;
 	case 161:
-		addDraftSchematicsFromGroupName(inv->getAsciiParameter(_param0_addDraftSchematicsFromGroupName__string_));
+		clearCurrentDraftSchematic();
 		break;
 	case 162:
-		subtractDraftSchematicsFromGroupName(inv->getAsciiParameter(_param0_subtractDraftSchematicsFromGroupName__string_));
+		resp->insertLong(getCurrentSchematicID());
 		break;
 	case 163:
-		addDraftSchematic((DraftSchematic*) inv->getObjectParameter());
+		setCurrentSchematicID(inv->getUnsignedLongParameter());
 		break;
 	case 164:
-		subtractDraftSchematic((DraftSchematic*) inv->getObjectParameter());
+		prepareCraftingSessionStageTwo((DraftSchematic*) inv->getObjectParameter());
 		break;
 	case 165:
-		resp->insertInt(getDraftSchematicListSize());
+		addResourceToCraft((ResourceContainer*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
 		break;
 	case 166:
-		resp->insertInt(getDraftSchematicUpdateCount(inv->getUnsignedIntParameter()));
+		sendDraftSchematics();
 		break;
 	case 167:
-		resp->insertLong(getDraftSchematic(inv->getUnsignedIntParameter())->_getORBObjectID());
+		addDraftSchematicsFromGroupName(inv->getAsciiParameter(_param0_addDraftSchematicsFromGroupName__string_));
 		break;
 	case 168:
-		resp->insertLong(getDraftSchematic(inv->getSignedIntParameter())->_getORBObjectID());
+		subtractDraftSchematicsFromGroupName(inv->getAsciiParameter(_param0_subtractDraftSchematicsFromGroupName__string_));
 		break;
 	case 169:
-		resp->insertBoolean(isChangingFaction());
+		addDraftSchematic((DraftSchematic*) inv->getObjectParameter());
 		break;
 	case 170:
-		resp->insertLong(getDatapad()->_getORBObjectID());
+		subtractDraftSchematic((DraftSchematic*) inv->getObjectParameter());
 		break;
 	case 171:
-		resp->insertLong(getNewItemID());
+		resp->insertInt(getDraftSchematicListSize());
 		break;
 	case 172:
-		resp->insertInt(getItemShift());
+		resp->insertInt(getDraftSchematicUpdateCount(inv->getUnsignedIntParameter()));
 		break;
 	case 173:
-		resp->insertFloat(getLastTestPositionX());
+		resp->insertLong(getDraftSchematic(inv->getUnsignedIntParameter())->_getORBObjectID());
 		break;
 	case 174:
-		resp->insertFloat(getLastTestPositionY());
+		resp->insertLong(getDraftSchematic(inv->getSignedIntParameter())->_getORBObjectID());
 		break;
 	case 175:
-		resp->insertInt(getForcePower());
+		resp->insertBoolean(isChangingFaction());
 		break;
 	case 176:
-		resp->insertLong(getSurveyTool()->_getORBObjectID());
+		resp->insertLong(getDatapad()->_getORBObjectID());
 		break;
 	case 177:
-		setSurveyTool((SurveyTool*) inv->getObjectParameter());
+		resp->insertLong(getNewItemID());
 		break;
 	case 178:
-		setSurveyWaypoint((WaypointObject*) inv->getObjectParameter());
+		resp->insertInt(getItemShift());
 		break;
 	case 179:
-		resp->insertLong(getSurveyWaypoint()->_getORBObjectID());
+		resp->insertFloat(getLastTestPositionX());
 		break;
 	case 180:
-		resp->insertBoolean(getCanSurvey());
+		resp->insertFloat(getLastTestPositionY());
 		break;
 	case 181:
-		resp->insertBoolean(getCanSample());
+		resp->insertInt(getForcePower());
 		break;
 	case 182:
-		setCanSurvey();
+		resp->insertLong(getSurveyTool()->_getORBObjectID());
 		break;
 	case 183:
-		setCanSample();
+		setSurveyTool((SurveyTool*) inv->getObjectParameter());
 		break;
 	case 184:
-		setSurveyEvent(inv->getUnicodeParameter(_param0_setSurveyEvent__unicode_));
+		setSurveyWaypoint((WaypointObject*) inv->getObjectParameter());
 		break;
 	case 185:
-		setSampleEvent(inv->getUnicodeParameter(_param0_setSampleEvent__unicode_bool_), inv->getBooleanParameter());
+		resp->insertLong(getSurveyWaypoint()->_getORBObjectID());
 		break;
 	case 186:
-		setCancelSample(inv->getBooleanParameter());
+		resp->insertBoolean(getCanSurvey());
 		break;
 	case 187:
-		resp->insertBoolean(getCancelSample());
+		resp->insertBoolean(getCanSample());
 		break;
 	case 188:
-		sendSampleTimeRemaining();
+		setCanSurvey();
 		break;
 	case 189:
-		setSurveyErrorMessage();
+		setCanSample();
 		break;
 	case 190:
-		setSampleErrorMessage();
+		setSurveyEvent(inv->getUnicodeParameter(_param0_setSurveyEvent__unicode_));
 		break;
 	case 191:
-		resp->insertBoolean(getSurveyErrorMessage());
+		setSampleEvent(inv->getUnicodeParameter(_param0_setSampleEvent__unicode_bool_), inv->getBooleanParameter());
 		break;
 	case 192:
+		setCancelSample(inv->getBooleanParameter());
+		break;
+	case 193:
+		resp->insertBoolean(getCancelSample());
+		break;
+	case 194:
+		sendSampleTimeRemaining();
+		break;
+	case 195:
+		setSurveyErrorMessage();
+		break;
+	case 196:
+		setSampleErrorMessage();
+		break;
+	case 197:
+		resp->insertBoolean(getSurveyErrorMessage());
+		break;
+	case 198:
 		resp->insertBoolean(getSampleErrorMessage());
 		break;
 	default:
@@ -3682,8 +3779,32 @@ void PlayerAdapter::clearCurrentCraftingTool() {
 	return ((PlayerImplementation*) impl)->clearCurrentCraftingTool();
 }
 
+DraftSchematic* PlayerAdapter::getCurrentDraftSchematic() {
+	return ((PlayerImplementation*) impl)->getCurrentDraftSchematic();
+}
+
+void PlayerAdapter::setCurrentDraftSchematic(DraftSchematic* ds) {
+	return ((PlayerImplementation*) impl)->setCurrentDraftSchematic(ds);
+}
+
+void PlayerAdapter::clearCurrentDraftSchematic() {
+	return ((PlayerImplementation*) impl)->clearCurrentDraftSchematic();
+}
+
+unsigned long long PlayerAdapter::getCurrentSchematicID() {
+	return ((PlayerImplementation*) impl)->getCurrentSchematicID();
+}
+
+void PlayerAdapter::setCurrentSchematicID(unsigned long long schematicID) {
+	return ((PlayerImplementation*) impl)->setCurrentSchematicID(schematicID);
+}
+
 void PlayerAdapter::prepareCraftingSessionStageTwo(DraftSchematic* ds) {
 	return ((PlayerImplementation*) impl)->prepareCraftingSessionStageTwo(ds);
+}
+
+void PlayerAdapter::addResourceToCraft(ResourceContainer* rnco, int slot, int counter) {
+	return ((PlayerImplementation*) impl)->addResourceToCraft(rnco, slot, counter);
 }
 
 void PlayerAdapter::sendDraftSchematics() {

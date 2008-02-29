@@ -50,6 +50,8 @@ which carries forward this exception.
 
 #include "../../objects/draftschematic/DraftSchematic.h"
 
+#include "../../objects/tangible/resource/ResourceContainer.h"
+
 #include "CraftingManager.h"
 
 #include "CraftingManagerImplementation.h"
@@ -89,12 +91,28 @@ void CraftingManager::prepareCraftingSessionStageTwo(Player* player, DraftSchema
 		((CraftingManagerImplementation*) _impl)->prepareCraftingSessionStageTwo(player, ds);
 }
 
-void CraftingManager::addDraftSchematicsFromGroupName(Player* player, const string& schematicGroupName) {
+void CraftingManager::addResourceToCraft(Player* player, ResourceContainer* rcno, int slot, int counter) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
 		ORBMethodInvocation invocation(this, 7);
+		invocation.addObjectParameter(player);
+		invocation.addObjectParameter(rcno);
+		invocation.addSignedIntParameter(slot);
+		invocation.addSignedIntParameter(counter);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((CraftingManagerImplementation*) _impl)->addResourceToCraft(player, rcno, slot, counter);
+}
+
+void CraftingManager::addDraftSchematicsFromGroupName(Player* player, const string& schematicGroupName) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 8);
 		invocation.addObjectParameter(player);
 		invocation.addAsciiParameter(schematicGroupName);
 
@@ -108,7 +126,7 @@ void CraftingManager::subtractDraftSchematicsFromGroupName(Player* player, const
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 8);
+		ORBMethodInvocation invocation(this, 9);
 		invocation.addObjectParameter(player);
 		invocation.addAsciiParameter(schematicGroupName);
 
@@ -132,9 +150,12 @@ Packet* CraftingManagerAdapter::invokeMethod(uint32 methid, ORBMethodInvocation*
 		prepareCraftingSessionStageTwo((Player*) inv->getObjectParameter(), (DraftSchematic*) inv->getObjectParameter());
 		break;
 	case 7:
-		addDraftSchematicsFromGroupName((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_addDraftSchematicsFromGroupName__Player_string_));
+		addResourceToCraft((Player*) inv->getObjectParameter(), (ResourceContainer*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
 		break;
 	case 8:
+		addDraftSchematicsFromGroupName((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_addDraftSchematicsFromGroupName__Player_string_));
+		break;
+	case 9:
 		subtractDraftSchematicsFromGroupName((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_subtractDraftSchematicsFromGroupName__Player_string_));
 		break;
 	default:
@@ -146,6 +167,10 @@ Packet* CraftingManagerAdapter::invokeMethod(uint32 methid, ORBMethodInvocation*
 
 void CraftingManagerAdapter::prepareCraftingSessionStageTwo(Player* player, DraftSchematic* ds) {
 	return ((CraftingManagerImplementation*) impl)->prepareCraftingSessionStageTwo(player, ds);
+}
+
+void CraftingManagerAdapter::addResourceToCraft(Player* player, ResourceContainer* rcno, int slot, int counter) {
+	return ((CraftingManagerImplementation*) impl)->addResourceToCraft(player, rcno, slot, counter);
 }
 
 void CraftingManagerAdapter::addDraftSchematicsFromGroupName(Player* player, const string& schematicGroupName) {
