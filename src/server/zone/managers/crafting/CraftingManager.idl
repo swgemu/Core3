@@ -51,9 +51,9 @@ interface CraftingManager {
 	CraftingManager();
 	
 	void prepareCraftingSessionStageTwo(Player player, DraftSchematic ds);
-	void addResourceToCraft(Player player, ResourceContainer rnco, unsigned long unknown, int slot);
-	
+	void addResourceToCraft(Player player, ResourceContainer rcno, int slot, int counter);
 	
 	void addDraftSchematicsFromGroupName(Player player, const string schematicGroupName);
 	void subtractDraftSchematicsFromGroupName(Player player, const string schematicGroupName);
+
 }
