@@ -44,12 +44,14 @@ which carries forward this exception.
 
 import "../../objects/player/Player";
 import "../../objects/draftschematic/DraftSchematic";
+import "../../objects/tangible/resource/ResourceContainer";
 
 interface CraftingManager {
 
 	CraftingManager();
 	
 	void prepareCraftingSessionStageTwo(Player player, DraftSchematic ds);
+	void addResourceToCraft(Player player, ResourceContainer rnco, unsigned long unknown, int slot);
 	
 	
 	void addDraftSchematicsFromGroupName(Player player, const string schematicGroupName);
