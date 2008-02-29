@@ -59,6 +59,11 @@ public:
 		insertAscii(planet); //planet name
 	}
 	
+	~GetMapLocationsResponseMessage() {
+		for (int i = 0; i < locationList.size(); ++i)
+			delete locationList.get(i);
+	}
+	
 	void addBlankList() {
 		insertInt(0);
 	}

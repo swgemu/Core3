@@ -278,9 +278,9 @@ void BazaarManagerImplementation::addSaleItem(Player* player, uint64 objectid, u
 	if(!obj->isUpdated())
 		itemManager->savePlayerItem(player, obj);
 		
-	Time* expireTime = new Time();
-	expireTime->addMiliTime(duration * 1000);
-	uint64 expire = expireTime->getMiliTime() / 1000;
+	Time expireTime;
+	expireTime.addMiliTime(duration * 1000);
+	uint64 expire = expireTime.getMiliTime() / 1000;
 	
 	int auctionout;
 	if(auction)
@@ -383,8 +383,8 @@ void BazaarManagerImplementation::checkAuctions() {
 	
 	info("Checking auctions");
 
-	Time* expireTime = new Time();
-	uint64 currentTime = expireTime->getMiliTime() / 1000;
+	Time expireTime;
+	uint64 currentTime = expireTime.getMiliTime() / 1000;
 	uint64 availableTime = currentTime + 2592000;
 	
 	for (int i = 0; i < items.size(); i++) {
@@ -515,8 +515,8 @@ void BazaarManagerImplementation::buyItem(Player* player, uint64 objectid, int p
 			return;
 		}
 		
-		Time* expireTime = new Time();
-		uint64 currentTime = expireTime->getMiliTime() / 1000;
+		Time expireTime;
+		uint64 currentTime = expireTime.getMiliTime() / 1000;
 		uint64 availableTime = currentTime + 2592000;
 	
 		if (player->getBankCredits() < price1) { // Credit Check

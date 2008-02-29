@@ -73,45 +73,17 @@ public:
 };
 
 class TravelListResponseMessage : public BaseMessage {
-	Vector<TravelPoint*> travelPoints;
+	Vector<TravelPoint> travelPoints;
 	
 public:
     TravelListResponseMessage(const string& planet) : BaseMessage() {
 		insertShort(0x06);
 		insertInt(0x4D32541F);  // CRC
         insertAscii(planet);
-        /*
-        insertInt(2); 
-	    insertAscii("Bestine");
-	    insertAscii("Anchorhead");
-	    //insertAscii("Coronet");
-        
-        insertInt(2);
-        insertFloat(-1090);
-        insertFloat(12.6);
-        insertFloat(-3558);
-               
-        insertFloat(54);
-        insertFloat(52.6);
-        insertFloat(-5332);
-        
-        insertFloat(-338);
-        insertFloat(28);
-        insertFloat(-4634);
-  
-        insertInt(2); 
-        insertInt(0xC8);
-        insertInt(0xC8);
-        //insertInt(0xC8);
-        
-        insertInt(2); 
-        insertByte(1); //??
-        insertByte(1); //??
-        //insertByte(1); //??*/
 	}
     
     void addPoint(const string& name, float x, float z, float y) {
-    	TravelPoint* point = new TravelPoint(name, x, z, y);
+    	TravelPoint point(name, x, z, y);
     	travelPoints.add(point);
     }
     
@@ -120,22 +92,15 @@ public:
     	insertCoords();
     	insertUnknown1();
     	insertUnknown2();
-    	
-    	while (travelPoints.size() > 0) {
-    		TravelPoint* point = travelPoints.get(0);
-    		
-    		travelPoints.remove(0);
-    		delete point;
-    	}
     }
     
     void insertNames() {
     	insertInt(travelPoints.size());
         	
     	for (int i = 0; i < travelPoints.size(); ++i) {
-    		TravelPoint* point = travelPoints.get(i);
+    		TravelPoint point = travelPoints.get(i);
     		
-    		insertAscii(point->name);
+    		insertAscii(point.name);
     	}
     }
     
@@ -143,11 +108,11 @@ public:
     	insertInt(travelPoints.size());
 
     	for (int i = 0; i < travelPoints.size(); ++i) {
-    		TravelPoint* point = travelPoints.get(i);
+    		TravelPoint point = travelPoints.get(i);
 
-    		insertFloat(point->positionX);
-    		insertFloat(point->positionZ);
-    		insertFloat(point->positionY);
+    		insertFloat(point.positionX);
+    		insertFloat(point.positionZ);
+    		insertFloat(point.positionY);
     	}
     }
     
@@ -155,9 +120,9 @@ public:
     	insertInt(travelPoints.size());
 
     	for (int i = 0; i < travelPoints.size(); ++i) {
-    		TravelPoint* point = travelPoints.get(i);
+    		TravelPoint point = travelPoints.get(i);
 
-    		insertInt(point->unknown1);
+    		insertInt(point.unknown1);
     	}
     }
     
@@ -165,9 +130,9 @@ public:
     	insertInt(travelPoints.size());
 
     	for (int i = 0; i < travelPoints.size(); ++i) {
-    		TravelPoint* point = travelPoints.get(i);
+    		TravelPoint point = travelPoints.get(i);
 
-    		insertByte(point->unknown2);
+    		insertByte(point.unknown2);
     	}
     }
 	

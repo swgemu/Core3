@@ -56,6 +56,8 @@ which carries forward this exception.
 #include "ShuttleMap.h"
 #include "CellMap.h"
 #include "BuildingMap.h"
+#include "TicketCollectorMap.h"
+#include "TravelTerminalMap.h"
 #include "../creature/CreatureManager.h"
 
 #include "PlanetManager.h"
@@ -69,16 +71,18 @@ class CreatureManager;
 class ZoneProcessServerImplementation;
 class BuildingObject;
 
-class PlanetManagerImplementation : public PlanetManagerServant, public Mutex {
+class PlanetManagerImplementation : public PlanetManagerServant, public Mutex, public Logger {
 	Zone* zone;
 	
 	ZoneProcessServerImplementation* server;
 	
 	uint64 nextStaticObjectID;
 	
-	ShuttleMap shuttleMap;
+	ShuttleMap* shuttleMap;
 	BuildingMap* buildingMap;
 	CellMap* cellMap;
+	TicketCollectorMap* ticketCollectorMap;
+	TravelTerminalMap* travelTerminalMap;
 	
 	ShuttleLandingEvent* shuttleLandingEvent;
 	ShuttleTakeOffEvent* shuttleTakeOffEvent;
@@ -87,6 +91,7 @@ class PlanetManagerImplementation : public PlanetManagerServant, public Mutex {
 		
 public:
 	PlanetManagerImplementation(Zone* zone, ZoneProcessServerImplementation* serv);
+	~PlanetManagerImplementation();
 	
 	void init();
 	void start();
@@ -107,6 +112,11 @@ private:
 	void loadVendorTerminals();
 	
 	BuildingObject* loadBuilding(uint64 oid, int planet);
+	
+	void clearShuttles();
+	void clearBuildings();
+	void clearTicketCollectors();
+	void clearTravelTerminals();
 
 public:
 	// getters

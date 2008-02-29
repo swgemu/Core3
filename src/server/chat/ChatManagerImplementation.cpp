@@ -612,7 +612,82 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 				delete guild;
 			}*/
 		} else if (cmd == "@npcc") {
-		 	if (userManager->isAdmin(player->getFirstName())) {	
+		 	if (userManager->isAdmin(player->getFirstName())) {
+		 		/*uint64 id = player->getNewItemID();
+		 		uint64 cell1 = player->getNewItemID();
+		 		uint64 cell2 = player->getNewItemID();
+		 		uint64 cell3 = player->getNewItemID();
+		 		
+		 		//buios
+		 		SceneObjectCreateMessage* cr = new SceneObjectCreateMessage(id,0x4BE3D3D2);
+		 		player->sendMessage(cr);
+		 		
+		 		BaseMessage* tano3 = new BuildingObjectMessage3(id);
+		 		player->sendMessage(tano3);
+
+		 		BaseMessage* tano6 = new BuildingObjectMessage6(id);
+		 		player->sendMessage(tano6);
+		 		
+		 		//cell 1 		
+		 		SceneObjectCreateMessage* cr1 = new SceneObjectCreateMessage(cell1, 0xC5401EE);
+		 		player->sendMessage(cr1);
+		 		
+		 		UpdateContainmentMessage* link1 = new UpdateContainmentMessage(cell1, id, 0xFFFFFFFF);
+		 		player->sendMessage(link1);
+		 		
+		 		CellObjectMessage3* cellMsg3 = new CellObjectMessage3(cell1, 1);
+		 		player->sendMessage(cellMsg3);
+		 		
+		 		CellObjectMessage6* cellMsg6 = new CellObjectMessage6(cell1);
+		 		player->sendMessage(cellMsg6);
+		 		
+		 		UpdateCellPermissionsMessage* perm = new UpdateCellPermissionsMessage(cell1);
+		 		player->sendMessage(perm);
+		 		
+		 		SceneObjectCloseMessage* closeCell1 = new SceneObjectCloseMessage(cell1);
+		 		player->sendMessage(closeCell1);
+		 		
+		 		
+		 		//cell 2
+		 		cr1 = new SceneObjectCreateMessage(cell2, 0xC5401EE);
+		 		player->sendMessage(cr1);
+
+		 		link1 = new UpdateContainmentMessage(cell2, id, 0xFFFFFFFF);
+		 		player->sendMessage(link1);
+
+		 		cellMsg3 = new CellObjectMessage3(cell2, 2);
+		 		player->sendMessage(cellMsg3);
+
+		 		cellMsg6 = new CellObjectMessage6(cell2);
+		 		player->sendMessage(cellMsg6);
+
+		 		perm = new UpdateCellPermissionsMessage(cell2);
+		 		player->sendMessage(perm);
+
+		 		closeCell1 = new SceneObjectCloseMessage(cell2);
+		 		player->sendMessage(closeCell1);
+		 		
+		 		//cell 3
+		 		cr1 = new SceneObjectCreateMessage(cell3, 0xC5401EE);
+		 		player->sendMessage(cr1);
+
+		 		link1 = new UpdateContainmentMessage(cell3, id, 0xFFFFFFFF);
+		 		player->sendMessage(link1);
+
+		 		cellMsg3 = new CellObjectMessage3(cell3, 3);
+		 		player->sendMessage(cellMsg3);
+
+		 		cellMsg6 = new CellObjectMessage6(cell3);
+		 		player->sendMessage(cellMsg6);
+
+		 		perm = new UpdateCellPermissionsMessage(cell3);
+		 		player->sendMessage(perm);
+
+		 		closeCell1 = new SceneObjectCloseMessage(cell3);
+		 		player->sendMessage(closeCell1);
+		 		 		
+		 		SceneObjectCloseMessage* cl = new SceneObjectCloseMessage(id);
+		 		player->sendMessage(cl);*/
 		 	}
 		} else if (cmd == "@setAdminLevel") {
 		 	if (userManager->isAdmin(player->getFirstName())) {
@@ -845,8 +920,8 @@ Player* ChatManagerImplementation::removePlayer(string& name) {
 void ChatManagerImplementation::sendMail(const string& sendername, unicode& header, unicode& body, const string& name) {
 	Player* receiver = NULL;
 
-	Time* expireTime = new Time();
-	uint64 currentTime = expireTime->getMiliTime() / 1000;
+	Time expireTime;
+	uint64 currentTime = expireTime.getMiliTime() / 1000;
 
 	string Name = name;
   	String::toLower(Name);

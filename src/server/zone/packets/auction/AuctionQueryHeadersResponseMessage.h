@@ -132,8 +132,8 @@ public:
 	    	
 			insertInt(il->getPrice()); //item cost.
 	    	
-			Time* expireTime = new Time();
-			uint32 expire = il->getExpireTime() - expireTime->getMiliTime() / 1000;
+			Time expireTime;
+			uint32 expire = il->getExpireTime() - expireTime.getMiliTime() / 1000;
 
 			insertInt(expire);
 	    	

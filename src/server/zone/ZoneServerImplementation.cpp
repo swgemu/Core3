@@ -208,8 +208,6 @@ void ZoneServerImplementation::shutdown() {
 
 	stop();
 
-	processor->stop();
-
 	scheduler->stop();
 
 	for (int i = 0; i < 50; ++i) {
@@ -220,9 +218,11 @@ void ZoneServerImplementation::shutdown() {
 	}
 
 	zones.removeAll();
+	
+	processor->stop();
 
 	stopManagers();
-
+	
 	printInfo(true);
 	
 	delete _this;

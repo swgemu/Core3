@@ -75,8 +75,8 @@ public:
 		insertByte(status); // status 'N' 'U' or 'R'
 		
 		if (timestamp == 0) {
-			Time* systemTime = new Time();
-			timestamp = systemTime->getMiliTime() / 1000;
+			Time systemTime;
+			timestamp = systemTime.getMiliTime() / 1000;
 		}
 		insertInt(timestamp);
 		

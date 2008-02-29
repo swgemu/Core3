@@ -58,9 +58,18 @@ BuildingObjectImplementation::BuildingObjectImplementation(uint64 oid, bool stat
 	objectType = SceneObjectImplementation::BUILDING;
 	
 	cells.setInsertPlan(SortedVector<SceneObject*>::NO_DUPLICATE);
+	
+	stringstream name;
+	name << "Building = " << objectID;
+	
+	SceneObjectImplementation::setLoggingName(name.str());
+	SceneObjectImplementation::setLogging(false);
+	SceneObjectImplementation::setGlobalLogging(true);
 }
 
 BuildingObjectImplementation::~BuildingObjectImplementation() {
+	for (int i = 0; i < cells.size(); ++i)
+		delete cells.get(i);
 }
 
 void BuildingObjectImplementation::insertToZone(Zone* zone) {

@@ -42,41 +42,22 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-include "engine/service/proto/BaseMessage";
+#ifndef TRAVELTERMINALMAP_H_
+#define TRAVELTERMINALMAP_H_
 
-include "engine/util/QuadTreeEntry";
+#include "engine/engine.h"
 
-import "cell/CellObject";
-
-import "../scene/SceneObject";
-import "../player/Player";
-import "../creature/CreatureObject";
-
-import "../../Zone";
-
-interface BuildingObject implements SceneObject {
-	BuildingObject(unsigned long oid);
+class TravelTerminalMap : public HashTable<uint64, TravelTerminal*>, public HashTableIterator<uint64, TravelTerminal*> {
 	
-	//void sendTo(Player* player);
-	//void sendDestroyTo(Player* player);
-		
-	void addCell(CellObject cell);
-	
-	void insertToZone(Zone zone);
-	void removeFromZone();
-	
-	void notifyInsertToZone(CreatureObject creature);
-		
-	boolean isStatic();
-	
-	void lock(boolean doLock = true);
-	void unlock(boolean doLock = true);
-	
-	void setSize(float minx, float miny, float maxx, float maxy);
-	void insert(QuadTreeEntry obj);
-	void remove(QuadTreeEntry obj);
-	void removeAll();
-	boolean update(QuadTreeEntry obj);
-	void inRange(QuadTreeEntry obj, float range);
+	int hash(const uint64& key) {
+        return Long::hashCode(key);
+	}
 
-}
+public:
+	TravelTerminalMap(int initsize) : HashTable<uint64, TravelTerminal*>(initsize), HashTableIterator<uint64, TravelTerminal*>(this) {
+		setNullValue(NULL);
+	}
+
+};
+
+#endif /*TRAVELTERMINALMAP_H_*/
