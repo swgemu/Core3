@@ -128,11 +128,10 @@ am__objects_1 = Zone.$(OBJEXT) ZoneClient.$(OBJEXT) \
 	PlayerMap.$(OBJEXT) PlayerManager.$(OBJEXT) \
 	CraftingManager.$(OBJEXT) CreatureManager.$(OBJEXT) \
 	ItemManager.$(OBJEXT) UserManager.$(OBJEXT) \
-	PlanetManager.$(OBJEXT) ResourceTemplate.$(OBJEXT) \
-	SpawnLocation.$(OBJEXT) ResourceManager.$(OBJEXT) \
-	LocalResourceManager.$(OBJEXT) LootManager.$(OBJEXT) \
-	BazaarManager.$(OBJEXT) BazaarPlanetManager.$(OBJEXT) \
-	ChatRoom.$(OBJEXT) ChatManager.$(OBJEXT)
+	PlanetManager.$(OBJEXT) ResourceManager.$(OBJEXT) \
+	LootManager.$(OBJEXT) BazaarManager.$(OBJEXT) \
+	BazaarPlanetManager.$(OBJEXT) ChatRoom.$(OBJEXT) \
+	ChatManager.$(OBJEXT)
 am_core3_OBJECTS = $(am__objects_1) ServerCore.$(OBJEXT) \
 	ConfigManager.$(OBJEXT) ServerDatabase.$(OBJEXT) \
 	LoginServer.$(OBJEXT) LoginPacketHandler.$(OBJEXT) \
@@ -183,7 +182,6 @@ am_core3_OBJECTS = $(am__objects_1) ServerCore.$(OBJEXT) \
 	CreatureManagerImplementation.$(OBJEXT) \
 	PlanetManagerImplementation.$(OBJEXT) \
 	ResourceManagerImplementation.$(OBJEXT) \
-	LocalResourceManagerImplementation.$(OBJEXT) \
 	BazaarManagerImplementation.$(OBJEXT) \
 	BazaarPlanetManagerImplementation.$(OBJEXT) \
 	SuiManager.$(OBJEXT) ChatRoomImplementation.$(OBJEXT) \
@@ -398,10 +396,7 @@ core3_IDLS = server/zone/Zone.cpp \
 		server/zone/managers/item/ItemManager.cpp \
 		server/zone/managers/user/UserManager.cpp \
 		server/zone/managers/planet/PlanetManager.cpp \
-    		server/zone/managers/resource/ResourceTemplate.cpp \
-		server/zone/managers/resource/SpawnLocation.cpp \
-		server/zone/managers/resource/ResourceManager.cpp \
-		server/zone/managers/resource/LocalResourceManager.cpp \
+    server/zone/managers/resource/ResourceManager.cpp \
 		server/zone/managers/loot/LootManager.cpp \
 		server/zone/managers/bazaar/BazaarManager.cpp \
 		server/zone/managers/bazaar/BazaarPlanetManager.cpp \
@@ -432,11 +427,11 @@ core3_SOURCES = $(core3_IDLS) \
 		server/zone/objects/tangible/lair/LairObjectImplementation.cpp \
 		server/zone/objects/tangible/surveytool/SurveyToolImplementation.cpp \
 		server/zone/objects/tangible/craftingtool/CraftingToolImplementation.cpp \
-    	server/zone/objects/tangible/resource/ResourceContainerImplementation.cpp \
+    server/zone/objects/tangible/resource/ResourceContainerImplementation.cpp \
     	server/zone/objects/tangible/attachment/AttachmentImplementation.cpp \
     	server/zone/objects/tangible/powerup/PowerupImplementation.cpp \
-    	server/zone/objects/tangible/ticket/TicketImplementation.cpp \
-    	server/zone/objects/tangible/ticketcollector/TicketCollectorImplementation.cpp \
+    server/zone/objects/tangible/ticket/TicketImplementation.cpp \
+    server/zone/objects/tangible/ticketcollector/TicketCollectorImplementation.cpp \
 		server/zone/objects/static/StaticObjectImplementation.cpp \
 		server/zone/objects/player/PlayerImplementation.cpp \
 		server/zone/objects/player/PlayerObjectImplementation.cpp \
@@ -467,8 +462,7 @@ core3_SOURCES = $(core3_IDLS) \
 		server/zone/managers/combat/CommandQueueAction.cpp \
 		server/zone/managers/creature/CreatureManagerImplementation.cpp \
 		server/zone/managers/planet/PlanetManagerImplementation.cpp \
-		server/zone/managers/resource/ResourceManagerImplementation.cpp \
-		server/zone/managers/resource/LocalResourceManagerImplementation.cpp \
+    server/zone/managers/resource/ResourceManagerImplementation.cpp \
 		server/zone/managers/bazaar/BazaarManagerImplementation.cpp \
 		server/zone/managers/bazaar/BazaarPlanetManagerImplementation.cpp \
 		server/zone/managers/sui/SuiManager.cpp \
@@ -604,8 +598,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/JediWeapon.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/LairObject.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/LairObjectImplementation.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/LocalResourceManager.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/LocalResourceManagerImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/LoginMessageProcessorThread.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/LoginPacketHandler.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/LoginServer.Po@am__quote@
@@ -643,7 +635,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ResourceContainerImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ResourceManager.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ResourceManagerImplementation.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ResourceTemplate.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/RifleRangedWeapon.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SceneObject.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SceneObjectImplementation.Po@am__quote@
@@ -656,7 +647,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ShuttleCreature.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ShuttleCreatureImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SkillManager.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SpawnLocation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SpecialHeavyRangedWeapon.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/StaticObject.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/StaticObjectImplementation.Po@am__quote@
@@ -1924,34 +1914,6 @@ PlanetManager.obj: server/zone/managers/planet/PlanetManager.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o PlanetManager.obj `if test -f 'server/zone/managers/planet/PlanetManager.cpp'; then $(CYGPATH_W) 'server/zone/managers/planet/PlanetManager.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/planet/PlanetManager.cpp'; fi`
 
-ResourceTemplate.o: server/zone/managers/resource/ResourceTemplate.cpp
-@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ResourceTemplate.o -MD -MP -MF $(DEPDIR)/ResourceTemplate.Tpo -c -o ResourceTemplate.o `test -f 'server/zone/managers/resource/ResourceTemplate.cpp' || echo '$(srcdir)/'`server/zone/managers/resource/ResourceTemplate.cpp
-@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/ResourceTemplate.Tpo $(DEPDIR)/ResourceTemplate.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/managers/resource/ResourceTemplate.cpp' object='ResourceTemplate.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ResourceTemplate.o `test -f 'server/zone/managers/resource/ResourceTemplate.cpp' || echo '$(srcdir)/'`server/zone/managers/resource/ResourceTemplate.cpp
-
-ResourceTemplate.obj: server/zone/managers/resource/ResourceTemplate.cpp
-@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ResourceTemplate.obj -MD -MP -MF $(DEPDIR)/ResourceTemplate.Tpo -c -o ResourceTemplate.obj `if test -f 'server/zone/managers/resource/ResourceTemplate.cpp'; then $(CYGPATH_W) 'server/zone/managers/resource/ResourceTemplate.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/resource/ResourceTemplate.cpp'; fi`
-@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/ResourceTemplate.Tpo $(DEPDIR)/ResourceTemplate.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/managers/resource/ResourceTemplate.cpp' object='ResourceTemplate.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ResourceTemplate.obj `if test -f 'server/zone/managers/resource/ResourceTemplate.cpp'; then $(CYGPATH_W) 'server/zone/managers/resource/ResourceTemplate.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/resource/ResourceTemplate.cpp'; fi`
-
-SpawnLocation.o: server/zone/managers/resource/SpawnLocation.cpp
-@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT SpawnLocation.o -MD -MP -MF $(DEPDIR)/SpawnLocation.Tpo -c -o SpawnLocation.o `test -f 'server/zone/managers/resource/SpawnLocation.cpp' || echo '$(srcdir)/'`server/zone/managers/resource/SpawnLocation.cpp
-@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/SpawnLocation.Tpo $(DEPDIR)/SpawnLocation.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/managers/resource/SpawnLocation.cpp' object='SpawnLocation.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o SpawnLocation.o `test -f 'server/zone/managers/resource/SpawnLocation.cpp' || echo '$(srcdir)/'`server/zone/managers/resource/SpawnLocation.cpp
-
-SpawnLocation.obj: server/zone/managers/resource/SpawnLocation.cpp
-@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT SpawnLocation.obj -MD -MP -MF $(DEPDIR)/SpawnLocation.Tpo -c -o SpawnLocation.obj `if test -f 'server/zone/managers/resource/SpawnLocation.cpp'; then $(CYGPATH_W) 'server/zone/managers/resource/SpawnLocation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/resource/SpawnLocation.cpp'; fi`
-@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/SpawnLocation.Tpo $(DEPDIR)/SpawnLocation.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/managers/resource/SpawnLocation.cpp' object='SpawnLocation.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o SpawnLocation.obj `if test -f 'server/zone/managers/resource/SpawnLocation.cpp'; then $(CYGPATH_W) 'server/zone/managers/resource/SpawnLocation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/resource/SpawnLocation.cpp'; fi`
-
 ResourceManager.o: server/zone/managers/resource/ResourceManager.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ResourceManager.o -MD -MP -MF $(DEPDIR)/ResourceManager.Tpo -c -o ResourceManager.o `test -f 'server/zone/managers/resource/ResourceManager.cpp' || echo '$(srcdir)/'`server/zone/managers/resource/ResourceManager.cpp
 @am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/ResourceManager.Tpo $(DEPDIR)/ResourceManager.Po
@@ -1965,20 +1927,6 @@ ResourceManager.obj: server/zone/managers/resource/ResourceManager.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/managers/resource/ResourceManager.cpp' object='ResourceManager.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ResourceManager.obj `if test -f 'server/zone/managers/resource/ResourceManager.cpp'; then $(CYGPATH_W) 'server/zone/managers/resource/ResourceManager.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/resource/ResourceManager.cpp'; fi`
-
-LocalResourceManager.o: server/zone/managers/resource/LocalResourceManager.cpp
-@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT LocalResourceManager.o -MD -MP -MF $(DEPDIR)/LocalResourceManager.Tpo -c -o LocalResourceManager.o `test -f 'server/zone/managers/resource/LocalResourceManager.cpp' || echo '$(srcdir)/'`server/zone/managers/resource/LocalResourceManager.cpp
-@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/LocalResourceManager.Tpo $(DEPDIR)/LocalResourceManager.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/managers/resource/LocalResourceManager.cpp' object='LocalResourceManager.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o LocalResourceManager.o `test -f 'server/zone/managers/resource/LocalResourceManager.cpp' || echo '$(srcdir)/'`server/zone/managers/resource/LocalResourceManager.cpp
-
-LocalResourceManager.obj: server/zone/managers/resource/LocalResourceManager.cpp
-@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT LocalResourceManager.obj -MD -MP -MF $(DEPDIR)/LocalResourceManager.Tpo -c -o LocalResourceManager.obj `if test -f 'server/zone/managers/resource/LocalResourceManager.cpp'; then $(CYGPATH_W) 'server/zone/managers/resource/LocalResourceManager.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/resource/LocalResourceManager.cpp'; fi`
-@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/LocalResourceManager.Tpo $(DEPDIR)/LocalResourceManager.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/managers/resource/LocalResourceManager.cpp' object='LocalResourceManager.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o LocalResourceManager.obj `if test -f 'server/zone/managers/resource/LocalResourceManager.cpp'; then $(CYGPATH_W) 'server/zone/managers/resource/LocalResourceManager.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/resource/LocalResourceManager.cpp'; fi`
 
 LootManager.o: server/zone/managers/loot/LootManager.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT LootManager.o -MD -MP -MF $(DEPDIR)/LootManager.Tpo -c -o LootManager.o `test -f 'server/zone/managers/loot/LootManager.cpp' || echo '$(srcdir)/'`server/zone/managers/loot/LootManager.cpp
@@ -2875,20 +2823,6 @@ ResourceManagerImplementation.obj: server/zone/managers/resource/ResourceManager
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/managers/resource/ResourceManagerImplementation.cpp' object='ResourceManagerImplementation.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ResourceManagerImplementation.obj `if test -f 'server/zone/managers/resource/ResourceManagerImplementation.cpp'; then $(CYGPATH_W) 'server/zone/managers/resource/ResourceManagerImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/resource/ResourceManagerImplementation.cpp'; fi`
-
-LocalResourceManagerImplementation.o: server/zone/managers/resource/LocalResourceManagerImplementation.cpp
-@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT LocalResourceManagerImplementation.o -MD -MP -MF $(DEPDIR)/LocalResourceManagerImplementation.Tpo -c -o LocalResourceManagerImplementation.o `test -f 'server/zone/managers/resource/LocalResourceManagerImplementation.cpp' || echo '$(srcdir)/'`server/zone/managers/resource/LocalResourceManagerImplementation.cpp
-@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/LocalResourceManagerImplementation.Tpo $(DEPDIR)/LocalResourceManagerImplementation.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/managers/resource/LocalResourceManagerImplementation.cpp' object='LocalResourceManagerImplementation.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o LocalResourceManagerImplementation.o `test -f 'server/zone/managers/resource/LocalResourceManagerImplementation.cpp' || echo '$(srcdir)/'`server/zone/managers/resource/LocalResourceManagerImplementation.cpp
-
-LocalResourceManagerImplementation.obj: server/zone/managers/resource/LocalResourceManagerImplementation.cpp
-@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT LocalResourceManagerImplementation.obj -MD -MP -MF $(DEPDIR)/LocalResourceManagerImplementation.Tpo -c -o LocalResourceManagerImplementation.obj `if test -f 'server/zone/managers/resource/LocalResourceManagerImplementation.cpp'; then $(CYGPATH_W) 'server/zone/managers/resource/LocalResourceManagerImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/resource/LocalResourceManagerImplementation.cpp'; fi`
-@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/LocalResourceManagerImplementation.Tpo $(DEPDIR)/LocalResourceManagerImplementation.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/managers/resource/LocalResourceManagerImplementation.cpp' object='LocalResourceManagerImplementation.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o LocalResourceManagerImplementation.obj `if test -f 'server/zone/managers/resource/LocalResourceManagerImplementation.cpp'; then $(CYGPATH_W) 'server/zone/managers/resource/LocalResourceManagerImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/resource/LocalResourceManagerImplementation.cpp'; fi`
 
 BazaarManagerImplementation.o: server/zone/managers/bazaar/BazaarManagerImplementation.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT BazaarManagerImplementation.o -MD -MP -MF $(DEPDIR)/BazaarManagerImplementation.Tpo -c -o BazaarManagerImplementation.o `test -f 'server/zone/managers/bazaar/BazaarManagerImplementation.cpp' || echo '$(srcdir)/'`server/zone/managers/bazaar/BazaarManagerImplementation.cpp

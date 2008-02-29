@@ -2458,26 +2458,26 @@ void Player::setCanSample() {
 		((PlayerImplementation*) _impl)->setCanSample();
 }
 
-void Player::setSurveyEvent(unicode& resourcename) {
+void Player::setSurveyEvent(string& resourcename) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
 		ORBMethodInvocation invocation(this, 190);
-		invocation.addUnicodeParameter(resourcename);
+		invocation.addAsciiParameter(resourcename);
 
 		invocation.executeWithVoidReturn();
 	} else
 		((PlayerImplementation*) _impl)->setSurveyEvent(resourcename);
 }
 
-void Player::setSampleEvent(unicode& resourcename, bool firstTime) {
+void Player::setSampleEvent(string& resourcename, bool firstTime) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
 		ORBMethodInvocation invocation(this, 191);
-		invocation.addUnicodeParameter(resourcename);
+		invocation.addAsciiParameter(resourcename);
 		invocation.addBooleanParameter(firstTime);
 
 		invocation.executeWithVoidReturn();
@@ -3134,10 +3134,10 @@ Packet* PlayerAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* inv) {
 		setCanSample();
 		break;
 	case 190:
-		setSurveyEvent(inv->getUnicodeParameter(_param0_setSurveyEvent__unicode_));
+		setSurveyEvent(inv->getAsciiParameter(_param0_setSurveyEvent__string_));
 		break;
 	case 191:
-		setSampleEvent(inv->getUnicodeParameter(_param0_setSampleEvent__unicode_bool_), inv->getBooleanParameter());
+		setSampleEvent(inv->getAsciiParameter(_param0_setSampleEvent__string_bool_), inv->getBooleanParameter());
 		break;
 	case 192:
 		setCancelSample(inv->getBooleanParameter());
@@ -3903,11 +3903,11 @@ void PlayerAdapter::setCanSample() {
 	return ((PlayerImplementation*) impl)->setCanSample();
 }
 
-void PlayerAdapter::setSurveyEvent(unicode& resourcename) {
+void PlayerAdapter::setSurveyEvent(string& resourcename) {
 	return ((PlayerImplementation*) impl)->setSurveyEvent(resourcename);
 }
 
-void PlayerAdapter::setSampleEvent(unicode& resourcename, bool firstTime) {
+void PlayerAdapter::setSampleEvent(string& resourcename, bool firstTime) {
 	return ((PlayerImplementation*) impl)->setSampleEvent(resourcename, firstTime);
 }
 

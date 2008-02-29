@@ -172,8 +172,8 @@ void ZoneServerImplementation::startManagers() {
 	guildManager->load();
 	playerManager->setGuildManager(guildManager);
 
-	//ResourceManagerImplementation* resImpl = new ResourceManagerImplementation(_this, processor);
-	//resourceManager = (ResourceManager*) resImpl->deploy("ResourceManager");
+	ResourceManagerImplementation* resImpl = new ResourceManagerImplementation(_this, processor);
+	resourceManager = (ResourceManager*) resImpl->deploy("ResourceManager");
 
 	CraftingManagerImplementation* craftingImpl = new CraftingManagerImplementation(_this);
 	craftingManager = (CraftingManager*) craftingImpl->deploy("CraftingManager");

@@ -2609,8 +2609,10 @@ void CreatureObjectImplementation::broadcastMessage(BaseMessage* msg, int range,
 			if (object->isPlayer()) {
 				Player* player = (Player*) object;
 
-				if (range == 128 || isInRange(player, range) || player->getParent() != NULL)
+				if (range == 128 || isInRange(player, range) || player->getParent() != NULL) {
+					//cout << "CreatureObject - sending message to player " << player->getFirstName() << "\n"; 
 					player->sendMessage(msg->clone());
+				}
 			}
 		}
 
@@ -2618,12 +2620,13 @@ void CreatureObjectImplementation::broadcastMessage(BaseMessage* msg, int range,
 
 		zone->unlock(doLock);
 
-		//cout << "finished CreatureObject::broadcastMessage(Message* msg, int range, bool doLock)\n";
 	} catch (...) {
 		error("exception CreatureObject::broadcastMessage(Message* msg, int range, bool doLock)");
 
 		zone->unlock(doLock);
 	}
+	
+	//cout << "finished CreatureObject::broadcastMessage(Message* msg, int range, bool doLock)\n";
 }
 
 void CreatureObjectImplementation::broadcastMessages(Vector<BaseMessage*>& msgs, int range, bool doLock) {

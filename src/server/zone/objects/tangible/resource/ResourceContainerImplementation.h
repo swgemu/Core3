@@ -50,7 +50,7 @@ which carries forward this exception.
 #include "../../../Zone.h"
 #include "../../../ZoneClient.h"
 
-#include "../../../managers/resource/LocalResourceManager.h"
+#include "../../../managers/resource/ResourceManager.h"
 #include "../../../managers/item/ItemManager.h"
 
 #include "ResourceContainer.h"
@@ -166,9 +166,6 @@ public:
 	
 	inline void setResourceName(unicode& n) {
 		name = unicode(n.c_str());
-		string temp = "name"; 
-		string temp2 = n.c_str();
-		itemAttributes->setStringAttribute(temp, temp2);
 	}
 	
 	inline void setResourceID(uint64 rid) {
@@ -187,8 +184,6 @@ public:
 	
 	inline void setObjectSubType(int subType) {
 		objectSubType = subType;
-		string temp = "resourceType";
-		itemAttributes->setIntAttribute(temp, objectSubType);
 	}
 	
 	inline int getContents() {

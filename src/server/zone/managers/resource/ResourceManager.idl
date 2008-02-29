@@ -47,7 +47,17 @@ import "../../objects/tangible/resource/ResourceContainerImplementation";
 
 interface ResourceManager {
 	void theShift();
+	void stop();
 	void clearResources();
 	
-	void stop();
+	boolean checkResource(Player player, string resource_name, int SurveyToolType);
+	
+	void sendSurveyMessage(Player player, string resource_name);
+	void sendSampleMessage(Player player, string resource_name);
+	
+	void setResourceData(ResourceContainerImplementation resContainer);
+	
+	boolean sendSurveyResources(Player player, int SurveyToolType);
+	
+	string getClassSeven(const string str);
 }

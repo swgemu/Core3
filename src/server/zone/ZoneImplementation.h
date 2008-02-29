@@ -60,8 +60,6 @@ class RadialManager;
 
 class PlanetManager;
 
-class LocalResourceManager;
-
 class SceneObject;
 
 class ZoneImplementation : public ZoneServant, public QuadTree {
@@ -77,8 +75,6 @@ class ZoneImplementation : public ZoneServant, public QuadTree {
 	RadialManager* radialManager;
 	
 	PlanetManager* planetManager;
-	
-	LocalResourceManager* localResourceManager;
 	
 	Time galacticTime;
 	
@@ -120,11 +116,6 @@ public:
 	inline PlanetManager* getPlanetManager() {
 		return planetManager;
 	}
-	
-	inline LocalResourceManager* getLocalResourceManager() {
-		return localResourceManager;
-	}
-	
 	
 	ChatManager* getChatManager();
 	 

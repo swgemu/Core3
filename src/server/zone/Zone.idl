@@ -50,7 +50,6 @@ import "../chat/ChatManager";
 
 import "managers/planet/PlanetManager";
 import "managers/creature/CreatureManager";
-import "managers/resource/LocalResourceManager";
 
 include "engine/util/QuadTreeEntry";
 
@@ -79,7 +78,6 @@ interface Zone {
 	ChatManager getChatManager();
 	CreatureManager getCreatureManager();
 	PlanetManager getPlanetManager();
-	LocalResourceManager getLocalResourceManager();
 	
 	unsigned long getGalacticTime();
 	

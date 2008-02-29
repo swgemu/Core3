@@ -83,8 +83,7 @@ ResourceContainerImplementation::~ResourceContainerImplementation() {
 }
 
 void ResourceContainerImplementation::init() {
-	setName("");
-	setObjectSubType(0);
+	setObjectSubType(TangibleObjectImplementation::RESOURCECONTAINER);
 	setResourceID(0);
 	setContents(0);
 	setDecayResistance(0);
@@ -122,8 +121,7 @@ void ResourceContainerImplementation::sendTo(Player* player, bool doClose) {
 		SceneObjectImplementation::close(client);
 	
 	sendDeltas(player);
-	
-	//generateAttributes(player);
+	generateAttributes(player);
 }
 
 void ResourceContainerImplementation::sendDeltas(Player* player) {
@@ -139,8 +137,6 @@ void ResourceContainerImplementation::sendDeltas(Player* player) {
 }
 
 void ResourceContainerImplementation::generateAttributes(SceneObject* obj) {
-	return;
-	
 	if (!obj->isPlayer())
 		return;
 	
@@ -156,10 +152,9 @@ void ResourceContainerImplementation::generateAttributes(SceneObject* obj) {
 	alm->insertAttribute("resource_contents", ssQuantity.str());
 	alm->insertAttribute("resource_name", name.c_str());
 	
-	string res_class7;
-	string resourceName = name.c_str();
-	res_class7 = player->getZone()->getLocalResourceManager()->getClassSeven(resourceName);
-	alm->insertAttribute("resource_class", res_class7);
+	string resClass7 = player->getZone()->getZoneServer()->getResourceManager()->getClassSeven(name.c_str());
+	
+	alm->insertAttribute("resource_class", resClass7);
 	
 	if (res_cr > 0)
 		alm->insertAttribute("res_cold_resist", res_cr);
@@ -198,9 +193,6 @@ void ResourceContainerImplementation::generateAttributes(SceneObject* obj) {
 }
 
 void ResourceContainerImplementation::splitContainer(Player* player, int newQuantity) {
-	return;
-	
-	// Needs a rewrite
 	
 	int oldQuantity = getContents();
 		
@@ -208,11 +200,12 @@ void ResourceContainerImplementation::splitContainer(Player* player, int newQuan
 		ResourceContainerImplementation* newRco = new ResourceContainerImplementation(player->getNewItemID(), getObjectCRC(), getName(), getTemplateName(), player); 
 		newRco->setContents(newQuantity);
 	
-		player->getZone()->getLocalResourceManager()->setResourceData(newRco);
+		player->getZone()->getZoneServer()->getResourceManager()->setResourceData(newRco);
 		
 		player->addInventoryItem(newRco->deploy());
 		
 		newRco->sendTo(player);
+		newRco->generateAttributes(player);
 		newRco->setPersistent(false);
 		
 		setContents(oldQuantity - newQuantity);
@@ -238,7 +231,7 @@ void ResourceContainerImplementation::transferContents(Player* player, ResourceC
     	
     	fromRCO->destroy(player->getClient());
     } else {
-    	int canMove = getMaxContents() - fromContents;
+    	int canMove = getMaxContents() - toContents;
     	
     	setContents(canMove + toContents);
     	sendDeltas(player);
@@ -253,15 +246,9 @@ void ResourceContainerImplementation::transferContents(Player* player, ResourceC
     
     setUpdated(true); 
 }
-void ResourceContainerImplementation::parseItemAttributes() {
 
-	string temp = "name";
-	name = unicode(itemAttributes->getStringAttribute(temp));
-	
-	temp = "resourceType";
-	objectSubType = itemAttributes->getIntAttribute(temp);
-	    
-	temp = "quantity";
+void ResourceContainerImplementation::parseItemAttributes() {
+	string temp = "quantity";
 	quantity = itemAttributes->getIntAttribute(temp);
 	
 	temp = "resourceID";
@@ -299,5 +286,4 @@ void ResourceContainerImplementation::parseItemAttributes() {
 	
 	temp = "res_er";
 	res_er = itemAttributes->getIntAttribute(temp);
-	
 }

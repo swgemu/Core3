@@ -87,7 +87,7 @@ void ResourceManager::theShift() {
 		((ResourceManagerImplementation*) _impl)->theShift();
 }
 
-void ResourceManager::clearResources() {
+void ResourceManager::stop() {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
@@ -96,10 +96,10 @@ void ResourceManager::clearResources() {
 
 		invocation.executeWithVoidReturn();
 	} else
-		((ResourceManagerImplementation*) _impl)->clearResources();
+		((ResourceManagerImplementation*) _impl)->stop();
 }
 
-void ResourceManager::stop() {
+void ResourceManager::clearResources() {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
@@ -108,7 +108,91 @@ void ResourceManager::stop() {
 
 		invocation.executeWithVoidReturn();
 	} else
-		((ResourceManagerImplementation*) _impl)->stop();
+		((ResourceManagerImplementation*) _impl)->clearResources();
+}
+
+bool ResourceManager::checkResource(Player* player, string& resourcename, int SurveyToolType) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 9);
+		invocation.addObjectParameter(player);
+		invocation.addAsciiParameter(resourcename);
+		invocation.addSignedIntParameter(SurveyToolType);
+
+		return invocation.executeWithBooleanReturn();
+	} else
+		return ((ResourceManagerImplementation*) _impl)->checkResource(player, resourcename, SurveyToolType);
+}
+
+void ResourceManager::sendSurveyMessage(Player* player, string& resourcename) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 10);
+		invocation.addObjectParameter(player);
+		invocation.addAsciiParameter(resourcename);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((ResourceManagerImplementation*) _impl)->sendSurveyMessage(player, resourcename);
+}
+
+void ResourceManager::sendSampleMessage(Player* player, string& resourcename) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 11);
+		invocation.addObjectParameter(player);
+		invocation.addAsciiParameter(resourcename);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((ResourceManagerImplementation*) _impl)->sendSampleMessage(player, resourcename);
+}
+
+void ResourceManager::setResourceData(ResourceContainerImplementation* resContainer) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 12);
+		invocation.addObjectParameter(resContainer);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((ResourceManagerImplementation*) _impl)->setResourceData(resContainer);
+}
+
+bool ResourceManager::sendSurveyResources(Player* player, int SurveyToolType) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 13);
+		invocation.addObjectParameter(player);
+		invocation.addSignedIntParameter(SurveyToolType);
+
+		return invocation.executeWithBooleanReturn();
+	} else
+		return ((ResourceManagerImplementation*) _impl)->sendSurveyResources(player, SurveyToolType);
+}
+
+string& ResourceManager::getClassSeven(const string& str) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 14);
+		invocation.addAsciiParameter(str);
+
+		invocation.executeWithAsciiReturn(_return_getClassSeven);
+		return _return_getClassSeven;
+	} else
+		return ((ResourceManagerImplementation*) _impl)->getClassSeven(str);
 }
 
 /*
@@ -126,10 +210,28 @@ Packet* ResourceManagerAdapter::invokeMethod(uint32 methid, ORBMethodInvocation*
 		theShift();
 		break;
 	case 7:
-		clearResources();
+		stop();
 		break;
 	case 8:
-		stop();
+		clearResources();
+		break;
+	case 9:
+		resp->insertBoolean(checkResource((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_checkResource__Player_string_int_), inv->getSignedIntParameter()));
+		break;
+	case 10:
+		sendSurveyMessage((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_sendSurveyMessage__Player_string_));
+		break;
+	case 11:
+		sendSampleMessage((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_sendSampleMessage__Player_string_));
+		break;
+	case 12:
+		setResourceData((ResourceContainerImplementation*) inv->getObjectParameter());
+		break;
+	case 13:
+		resp->insertBoolean(sendSurveyResources((Player*) inv->getObjectParameter(), inv->getSignedIntParameter()));
+		break;
+	case 14:
+		resp->insertAscii(getClassSeven(inv->getAsciiParameter(_param0_getClassSeven__string_)));
 		break;
 	default:
 		return NULL;
@@ -142,12 +244,36 @@ void ResourceManagerAdapter::theShift() {
 	return ((ResourceManagerImplementation*) impl)->theShift();
 }
 
+void ResourceManagerAdapter::stop() {
+	return ((ResourceManagerImplementation*) impl)->stop();
+}
+
 void ResourceManagerAdapter::clearResources() {
 	return ((ResourceManagerImplementation*) impl)->clearResources();
 }
 
-void ResourceManagerAdapter::stop() {
-	return ((ResourceManagerImplementation*) impl)->stop();
+bool ResourceManagerAdapter::checkResource(Player* player, string& resourcename, int SurveyToolType) {
+	return ((ResourceManagerImplementation*) impl)->checkResource(player, resourcename, SurveyToolType);
+}
+
+void ResourceManagerAdapter::sendSurveyMessage(Player* player, string& resourcename) {
+	return ((ResourceManagerImplementation*) impl)->sendSurveyMessage(player, resourcename);
+}
+
+void ResourceManagerAdapter::sendSampleMessage(Player* player, string& resourcename) {
+	return ((ResourceManagerImplementation*) impl)->sendSampleMessage(player, resourcename);
+}
+
+void ResourceManagerAdapter::setResourceData(ResourceContainerImplementation* resContainer) {
+	return ((ResourceManagerImplementation*) impl)->setResourceData(resContainer);
+}
+
+bool ResourceManagerAdapter::sendSurveyResources(Player* player, int SurveyToolType) {
+	return ((ResourceManagerImplementation*) impl)->sendSurveyResources(player, SurveyToolType);
+}
+
+string& ResourceManagerAdapter::getClassSeven(const string& str) {
+	return ((ResourceManagerImplementation*) impl)->getClassSeven(str);
 }
 
 /*

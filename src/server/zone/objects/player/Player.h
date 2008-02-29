@@ -475,9 +475,9 @@ public:
 
 	void setCanSample();
 
-	void setSurveyEvent(unicode& resourcename);
+	void setSurveyEvent(string& resourcename);
 
-	void setSampleEvent(unicode& resourcename, bool firstTime = false);
+	void setSampleEvent(string& resourcename, bool firstTime = false);
 
 	void setCancelSample(bool val);
 
@@ -890,9 +890,9 @@ public:
 
 	void setCanSample();
 
-	void setSurveyEvent(unicode& resourcename);
+	void setSurveyEvent(string& resourcename);
 
-	void setSampleEvent(unicode& resourcename, bool firstTime);
+	void setSampleEvent(string& resourcename, bool firstTime);
 
 	void setCancelSample(bool val);
 
@@ -932,8 +932,8 @@ protected:
 	string _param0_checkCertification__string_;
 	string _param0_addDraftSchematicsFromGroupName__string_;
 	string _param0_subtractDraftSchematicsFromGroupName__string_;
-	unicode _param0_setSurveyEvent__unicode_;
-	unicode _param0_setSampleEvent__unicode_bool_;
+	string _param0_setSurveyEvent__string_;
+	string _param0_setSampleEvent__string_bool_;
 };
 
 class PlayerHelper : public ORBClassHelper, public Singleton<PlayerHelper> {

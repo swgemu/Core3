@@ -52,9 +52,6 @@ which carries forward this exception.
 #include "managers/planet/PlanetManager.h"
 #include "managers/planet/PlanetManagerImplementation.h"
 
-#include "managers/resource/LocalResourceManager.h"
-#include "managers/resource/LocalResourceManagerImplementation.h"
-
 #include "../chat/ChatManager.h"
 
 #include "objects/scene/SceneObject.h"
@@ -72,7 +69,6 @@ ZoneImplementation::ZoneImplementation(ZoneServer* serv, ZoneProcessServerImplem
 	
 	creatureManager = NULL;
 	planetManager = NULL;
-	localResourceManager = NULL;
 }
 
 void ZoneImplementation::startManagers() {
@@ -89,11 +85,6 @@ void ZoneImplementation::startManagers() {
 
 	planetManager->init();
 
-	/*LocalResourceManagerImplementation* locResImpl = new LocalResourceManagerImplementation((Zone*) _this, processor);
-	localResourceManager = (LocalResourceManager*) locResImpl->deploy("LocalResourceManager", zoneID);
-.	
-	localResourceManager->init();*/
-	
 	planetManager->start();
 	
 	creatureManager->start();
@@ -104,7 +95,7 @@ void ZoneImplementation::stopManagers() {
 		return;
 	
 	if (creatureManager != NULL) {
-		creatureManager->stop();
+	creatureManager->stop();
 		
 		delete creatureManager;
 		creatureManager = NULL;

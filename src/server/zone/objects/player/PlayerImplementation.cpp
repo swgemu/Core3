@@ -56,7 +56,7 @@ which carries forward this exception.
 #include "../../managers/guild/GuildManager.h"
 #include "../../managers/group/GroupManager.h"
 #include "../../managers/planet/PlanetManager.h"
-#include "../../managers/resource/LocalResourceManager.h"
+#include "../../managers/resource/ResourceManager.h"
 #include "../../managers/loot/LootManager.h"
 #include "../../managers/sui/SuiManager.h"
 
@@ -682,7 +682,7 @@ void PlayerImplementation::insertToZone(Zone* zone) {
 	
 	if (/*objectID <= 0x15 ||*/ owner == NULL)
 		return;
-	
+
 	try {
 		zone->lock();
 
@@ -1341,8 +1341,8 @@ void PlayerImplementation::changePosture(int post) {
 		}
 		uint64 time = -(sampleEvent->getTimeStamp().miliDifference());
 		server->removeEvent(sampleEvent);
-		unicode u_str = unicode("");
-		sampleEvent = new SampleEvent(_this, u_str, true);
+		string str = "";
+		sampleEvent = new SampleEvent(_this, str, true);
 		server->addEvent(sampleEvent, time);
 		setCancelSample(true);
 	}
@@ -2655,22 +2655,23 @@ void PlayerImplementation::newChangeFactionEvent(uint32 faction) {
 	server->addEvent(changeFactionEvent);
 }
 
-void PlayerImplementation::setSurveyEvent(unicode& resource_name) {
-	surveyEvent = new SurveyEvent(_this, resource_name);
+void PlayerImplementation::setSurveyEvent(string& resourceName) {
+	surveyEvent = new SurveyEvent(_this, resourceName);
 	server->addEvent(surveyEvent, 5000);
 }
 
-void PlayerImplementation::setSampleEvent(unicode& resource_name, bool firstTime) {
+void PlayerImplementation::setSampleEvent(string& resourceName, bool firstTime) {
 	if (getInventoryItem(surveyTool->getObjectID()) == NULL) {
 		ChatSystemMessage* sysMessage = new ChatSystemMessage("survey","sample_gone");
 		sendMessage(sysMessage);
 		return;
 	}
+	
 	if (firstTime) {
-		firstSampleEvent = new SampleEvent(_this, resource_name);
+		firstSampleEvent = new SampleEvent(_this, resourceName);
 		server->addEvent(firstSampleEvent, 2000);
 		
-		sampleEvent = new SampleEvent(_this, resource_name, false, true);
+		sampleEvent = new SampleEvent(_this, resourceName, false, true);
 		server->addEvent(sampleEvent, 14000);
 	} else {
 		firstSampleEvent = NULL;
@@ -2678,13 +2679,15 @@ void PlayerImplementation::setSampleEvent(unicode& resource_name, bool firstTime
 		if (changeActionBar(-200, false) ) {
 			activateRecovery();
 			
-			sampleEvent = new SampleEvent(_this, resource_name);
-			getZone()->getLocalResourceManager()->sendSampleMessage(_this, resource_name);
+			sampleEvent = new SampleEvent(_this, resourceName);
+
+			getZone()->getZoneServer()->getResourceManager()->sendSampleMessage(_this, resourceName);
+			
 			server->addEvent(sampleEvent, 12000);
 		} else {
 			sendSystemMessage("You do not have enough action to do that.");
 			
-			sampleEvent = new SampleEvent(_this, resource_name);
+			sampleEvent = new SampleEvent(_this, resourceName);
 			server->addEvent(sampleEvent, 12000);
 		}
 	}

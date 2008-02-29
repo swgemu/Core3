@@ -67,11 +67,25 @@ public:
 
 	void theShift();
 
-	void clearResources();
-
 	void stop();
 
+	void clearResources();
+
+	bool checkResource(Player* player, string& resourcename, int SurveyToolType);
+
+	void sendSurveyMessage(Player* player, string& resourcename);
+
+	void sendSampleMessage(Player* player, string& resourcename);
+
+	void setResourceData(ResourceContainerImplementation* resContainer);
+
+	bool sendSurveyResources(Player* player, int SurveyToolType);
+
+	string& getClassSeven(const string& str);
+
 protected:
+	string _return_getClassSeven;
+
 };
 
 class ResourceManagerImplementation;
@@ -84,10 +98,27 @@ public:
 
 	void theShift();
 
-	void clearResources();
-
 	void stop();
 
+	void clearResources();
+
+	bool checkResource(Player* player, string& resourcename, int SurveyToolType);
+
+	void sendSurveyMessage(Player* player, string& resourcename);
+
+	void sendSampleMessage(Player* player, string& resourcename);
+
+	void setResourceData(ResourceContainerImplementation* resContainer);
+
+	bool sendSurveyResources(Player* player, int SurveyToolType);
+
+	string& getClassSeven(const string& str);
+
+protected:
+	string _param1_checkResource__Player_string_int_;
+	string _param1_sendSurveyMessage__Player_string_;
+	string _param1_sendSampleMessage__Player_string_;
+	string _param0_getClassSeven__string_;
 };
 
 class ResourceManagerHelper : public ORBClassHelper, public Singleton<ResourceManagerHelper> {

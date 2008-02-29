@@ -49,7 +49,7 @@ which carries forward this exception.
 #include "SurveyTool.h"
 #include "SurveyToolImplementation.h"
 
-#include "../../../managers/resource/LocalResourceManager.h"
+#include "../../../managers/resource/ResourceManager.h"
 
 SurveyToolImplementation::SurveyToolImplementation(uint64 object_id, uint32 tempCRC, const unicode& n, const string& tempn, Player* player) 
 		: SurveyToolServant(object_id, n, tempn, tempCRC, SURVEYTOOL) {
@@ -111,17 +111,16 @@ SurveyToolImplementation::SurveyToolImplementation(CreatureObject* creature, uin
 	setSurveyToolRange(0);
 }
 
-SurveyToolImplementation::~SurveyToolImplementation(){
+SurveyToolImplementation::~SurveyToolImplementation() {
+	
 }
 
 int SurveyToolImplementation::useObject(Player* player) {
-	return 0;
-	
-	LocalResourceManager* resourceManager = player->getZone()->getLocalResourceManager();
+	ResourceManager* resourceManager = player->getZone()->getZoneServer()->getResourceManager();
 	
 	string skillBox = "crafting_artisan_novice";
 	if (player->getSkillBoxesSize() && player->hasSkillBox(skillBox)) {
-		if (surveyToolRange != 0) {
+		if (surveyToolRange > 0) {
 			if (resourceManager->sendSurveyResources(player, getSurveyToolType())) {
 				player->setSurveyTool(_this);
 			}
@@ -210,8 +209,9 @@ void SurveyToolImplementation::sendSampleEffect(Player* player) {
 	player->broadcastMessage(effect);
 }
 
-void SurveyToolImplementation::surveyRequest(Player* player, unicode& resourceName) {
-	if (!player->getZone()->getLocalResourceManager()->checkResource(player, resourceName, getSurveyToolType())) {
+void SurveyToolImplementation::surveyRequest(Player* player, unicode& resource) {
+	string resourceName = resource.c_str().c_str();
+	if (!player->getZone()->getZoneServer()->getResourceManager()->checkResource(player, resourceName, getSurveyToolType())) {
 		player->error("Invalid Resource Selected");
 		return;
 	}
@@ -219,10 +219,7 @@ void SurveyToolImplementation::surveyRequest(Player* player, unicode& resourceNa
 	if (!player->getCanSample()) {
 		ChatSystemMessage* sysMessage = new ChatSystemMessage("survey","survey_sample");
 		player->sendMessage(sysMessage);
-		return;
-	}
-	
-	if (player->getCanSurvey()) {
+	} else if (player->getCanSurvey()) {
 		// Send's System Message
 		ChatSystemMessage* sysMessage = new ChatSystemMessage("survey","start_survey",resourceName,0,false);
 		player->sendMessage(sysMessage);
@@ -232,8 +229,9 @@ void SurveyToolImplementation::surveyRequest(Player* player, unicode& resourceNa
 	}
 }
 
-void SurveyToolImplementation::sampleRequest(Player* player, unicode& resourceName) {
-	if (!player->getZone()->getLocalResourceManager()->checkResource(player, resourceName, getSurveyToolType())) {
+void SurveyToolImplementation::sampleRequest(Player* player, unicode& resource) {
+	string resourceName = resource.c_str().c_str();
+	if (!player->getZone()->getZoneServer()->getResourceManager()->checkResource(player, resourceName, getSurveyToolType())) {
 		 player->error("Invalid Resource");
 		 return;
 	}
@@ -241,15 +239,9 @@ void SurveyToolImplementation::sampleRequest(Player* player, unicode& resourceNa
 	if (!player->getCanSurvey()) {
 		ChatSystemMessage* sysMessage = new ChatSystemMessage("survey","sample_survey");
 		player->sendMessage(sysMessage);
-		return;
-	}
-	
-	if (getSurveyToolType() == SOLAR || getSurveyToolType() == WIND) {
+	} else if (getSurveyToolType() == SOLAR || getSurveyToolType() == WIND) {
 		player->sendSystemMessage("Unable to sample this resource type.");
-		return;
-	}
-	
-	if (player->getCanSample()) {
+	} else if (player->getCanSample()) {
 		if(!player->isKneeled()) {
 			player->changePosture(CreatureObjectImplementation::CROUCHED_POSTURE);
 		}

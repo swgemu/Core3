@@ -115,15 +115,25 @@ public:
 
 	}
 	
-	ChatSystemMessage(const string& file, const string& str, unicode& u_str, int quantity
+	ChatSystemMessage(const string& file, const string& str, string& var, int quantity
 			, bool flipByte) : BaseMessage() {
+		unicode ustr = unicode(var.c_str());
+		createMessage(file, str, ustr, quantity, flipByte);
+	}
+	
+	ChatSystemMessage(const string& file, const string& str, unicode& var, int quantity
+			, bool flipByte) : BaseMessage() {
+		createMessage(file, str, var, quantity, flipByte);
+	}
+	
+	void createMessage(const string& file, const string& str, unicode& var, int quantity, bool flipByte) {
 		insertShort(0x04);
 		insertInt(0x6D2A6413);
 		
 		insertByte(0);
 		insertInt(0);
 		
-		int size = file.size() + str.size() + (2 * u_str.size()) + 0x56;
+		int size = file.size() + str.size() + (2 * var.size()) + 0x56;
 		bool odd = (size & 1);
 		
 		if (odd)
@@ -152,7 +162,8 @@ public:
 		insertLong(0);
 		insertLong(0);
 		insertInt(0);
-		insertUnicode(u_str);
+		
+		insertUnicode(var);
 		insertInt(quantity);
 
 		insertInt(0);
@@ -163,6 +174,7 @@ public:
 		if (odd)
 			insertByte(0);
 	}
+	
 };
 
 #endif /*CHATSYSTEMMESSAGE_H_*/

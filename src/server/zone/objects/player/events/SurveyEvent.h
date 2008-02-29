@@ -50,13 +50,13 @@ which carries forward this exception.
 class SurveyEvent : public Event {
 	Player* player;
 	
-	unicode resource_name;
+	string resourceName;
 	
 public:
-	SurveyEvent(Player* pl, unicode& rn) : Event() {
+	SurveyEvent(Player* pl, string& rn) : Event() {
 		player = pl;
 		
-		resource_name = rn;
+		resourceName = rn;
 	}
 
 	bool activate() {
@@ -64,8 +64,7 @@ public:
 			player->wlock();
 			
 			if (player->isOnline()) {
-				player->getZone()->getLocalResourceManager()->sendSurveyMessage(player, resource_name);
-				
+				player->getZone()->getZoneServer()->getResourceManager()->sendSurveyMessage(player, resourceName);
 				player->setCanSurvey();
 			}
 			

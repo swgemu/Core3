@@ -1,81 +1,41 @@
 /*
-Copyright (C) 2007 <SWGEmu>
- 
-This File is part of Core3.
- 
-This program is free software; you can redistribute 
-it and/or modify it under the terms of the GNU Lesser 
-General Public License as published by the Free Software
-Foundation; either version 2 of the License, 
-or (at your option) any later version.
- 
-This program is distributed in the hope that it will be useful, 
-but WITHOUT ANY WARRANTY; without even the implied warranty of 
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
-See the GNU Lesser General Public License for
-more details.
- 
-You should have received a copy of the GNU Lesser General 
-Public License along with this program; if not, write to
-the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
- 
-Linking Engine3 statically or dynamically with other modules 
-is making a combined work based on Engine3. 
-Thus, the terms and conditions of the GNU Lesser General Public License 
-cover the whole combination.
- 
-In addition, as a special exception, the copyright holders of Engine3 
-give you permission to combine Engine3 program with free software 
-programs or libraries that are released under the GNU LGPL and with 
-code included in the standard release of Core3 under the GNU LGPL 
-license (or modified versions of such code, with unchanged license). 
-You may copy and distribute such a system following the terms of the 
-GNU LGPL for Engine3 and the licenses of the other code concerned, 
-provided that you include the source code of that other code when 
-and as the GNU LGPL requires distribution of source code.
- 
-Note that people who make modified versions of Engine3 are not obligated 
-to grant this special exception for their modified versions; 
-it is their choice whether to do so. The GNU Lesser General Public License 
-gives permission to release a modified version without this exception; 
-this exception also makes it possible to release a modified version 
-which carries forward this exception.
-*/
-
+ *	ResourceManagerImplementationStub
+ */
 #include "engine/engine.h"
 
 #include "../../ZoneServer.h"
 #include "../../ZoneProcessServerImplementation.h"
 
 #include "events/SpawnResourcesEvent.h"
-#include "LocalResourceManager.h"
 
 #include "ResourceManager.h"
 #include "ResourceManagerImplementation.h"
-#include "ResourceTemplate.h"
-#include "ResourceTemplateImplementation.h"
-#include "SpawnLocation.h"
-#include "SpawnLocationImplementation.h"
 
 #include "../../objects/tangible/resource/ResourceContainerImplementation.h"
 #include "../../objects/tangible/surveytool/SurveyToolImplementation.h"
 
 #include "../../packets.h"
 
-ResourceManagerImplementation::ResourceManagerImplementation(ZoneServer* zs, 
-		ZoneProcessServerImplementation* inserv) : ResourceManagerServant(), Logger("ResourceManager") {
-	zoneserver = zs;
-	server = inserv;
-	
+ResourceManagerImplementation::ResourceManagerImplementation(ZoneServer* inserver, 
+		ZoneProcessServerImplementation* inserv) : ResourceManagerServant(), Logger("ResourceManager"), Mutex("ResourceManager") {
 	init();
+	
+	serv = inserv;
 
 	spawnResourcesEvent = new SpawnResourcesEvent(this);
-	server->addEvent(spawnResourcesEvent, 2000);
+	serv->addEvent(spawnResourcesEvent, 1000);
 	//  This dictates the first time the spawner will run
 	//  Spawner does take a good bit of time to populate an
 	//  Empty database.
 }
 void ResourceManagerImplementation::init() {
+	resourceMap = new VectorMap<string, ResourceTemplate*>();
+	resourceMap->setNullValue(NULL);
+	
+	buildResourceMap();
+	
+	info("Finished building resources from database.");
+	
 	averageShiftTime = 3 * 3600000; // In milliseconds
 	//  This is the time between each time the Resource Manager schedules
 	//  itself to run again.  
@@ -100,7 +60,14 @@ void ResourceManagerImplementation::init() {
 	makeNativePoolVector();
 }
 
+void ResourceManagerImplementation::stop() {
+	lock();
+	serv->removeEvent(spawnResourcesEvent);
+	unlock();
+}
+
 void ResourceManagerImplementation::theShift() {
+	lock();
 	// Much of this method can be removed, the output statements
 	// Make it easier to see what the spawner is doing and what
 	// To expect what it runs.
@@ -123,11 +90,12 @@ void ResourceManagerImplementation::theShift() {
 	info("Functions run = " + stringify(numFunctions));
 	info("Name functions run = " + stringify(numNameFunctions));
 	
-	//countResources();
+	countResources();
 	
 	info("Resource Spawner Finished");
 	
-	server->addEvent(spawnResourcesEvent, averageShiftTime);
+	serv->addEvent(spawnResourcesEvent, averageShiftTime);
+	unlock();
 }
 
 void ResourceManagerImplementation::countResources() {  
@@ -174,6 +142,7 @@ void ResourceManagerImplementation::countResources() {
 }
 
 void ResourceManagerImplementation::clearResources() {
+	lock();
 	try {
 		numFunctions++;
 		
@@ -186,6 +155,514 @@ void ResourceManagerImplementation::clearResources() {
 		numQueries++;
 	} catch (...) {
 		cout << "Error in clearResources\n";
+	}
+	unlock();
+}
+
+float ResourceManagerImplementation::getDensity(int planet, string& resname, float inx, float iny) {
+	float density = 0.0f, max_density = 0.0f;
+	
+	try {
+		float x, y, radius, source, distance = 0.0f;
+		
+		SpawnLocation* sl;
+		
+		ResourceTemplate* resource = resourceMap->get(resname);
+		
+		if (resource == NULL)
+			return max_density;
+		
+		for (int i = resource->getSpawnSize() - 1; i >= 0; i--) {
+			sl = resource->getSpawn(i);
+			
+			if (sl->getPlanet() == planet) {
+				x = sl->getX();
+				y = sl->getY();
+				
+				radius = sl->getRadius();
+				
+				source = sl->getMax();
+				
+				if (inx > (x - radius) && inx < (x + radius) && iny > (y - radius) && iny < (y + radius)) {
+					distance = sqrt(((inx - x) * (inx - x)) 
+							+ ((iny - y) * (iny - y)));
+
+					density = ((((radius - distance) / radius) * source) / 100.0f);
+					
+					if (density > max_density)
+						max_density = density;
+				}
+			}
+		}
+	} catch (...) {
+		cout << "Database error in getDensity\n";
+	}
+	
+	return max_density;
+}
+
+void ResourceManagerImplementation::sendSurveyMessage(Player* player, string& resourceName, bool doLock) {
+	// Added by Ritter
+	lock(doLock);
+	Survey* surveyMessage = new Survey();
+	
+	float player_x = player->getPositionX();
+	float player_y = player->getPositionY();
+	
+	float spacer, x, y, res_percent = 0.0f;
+	float wp_x, wp_y, max_res_percent = 0.0f;
+	
+	int points;
+	
+	switch (player->getSurveyTool()->getSurveyToolRange()) {
+	case 128:
+		spacer = 42.6f;
+		points = 4;
+		x = player_x - (1.5 * spacer);
+		y = player_y - (1.5 * spacer);
+		break;
+	case 192:
+		spacer = 64.0f;
+		points = 4;
+		x = player_x - (1.5 * spacer);
+		y = player_y - (1.5 * spacer);
+		break;
+	case 256:
+		spacer = 64.0f;
+		points = 5;
+		x = player_x - (2 * spacer);
+		y = player_y - (2 * spacer);
+		break;
+	case 320:
+		spacer = 80.0f;
+		points = 5;
+		x = player_x - (2 * spacer);
+		y = player_y - (2 * spacer);
+		break;
+	default:
+		spacer = 32.0f;
+		points = 3;
+		x = player_x - spacer;
+		y = player_y - spacer;
+		break;
+	}
+	
+	for (int i = 0; i < points; i++) {
+		for (int j = 0; j < points; j++) {
+			res_percent = getDensity(player->getZoneIndex(), resourceName, x, y);
+			
+			if (res_percent > max_res_percent) {
+				max_res_percent = res_percent;
+				wp_x = x;
+				wp_y = y;
+			}
+			
+			surveyMessage->add(x, y, res_percent);
+			
+			x += spacer;
+		}
+		
+		y += spacer;
+		x -= (points * spacer);
+	}
+	
+	// Send Survey Results
+	player->sendMessage(surveyMessage);
+	
+	if (max_res_percent >= 0.1f) {
+		// Create Waypoint
+		if (player->getSurveyWaypoint() != NULL) {
+			player->removeWaypoint(player->getSurveyWaypoint());
+			player->setSurveyWaypoint(NULL);
+		}
+		
+		WaypointObjectImplementation* wayImpl =	new WaypointObjectImplementation(player, player->getNewItemID());
+		wayImpl->setName("Resource Survey");
+		wayImpl->setPosition(wp_x, 0.0f, wp_y);
+
+		WaypointObject* waypoint = (WaypointObject*) ObjectRequestBroker::instance()->deploy("Resource Survey", wayImpl);
+		waypoint->changeStatus(true);
+		
+		player->setSurveyWaypoint(waypoint);
+		player->addWaypoint(waypoint);
+		
+		// Send Waypoint System Message
+		unicode ustr = "";
+		ChatSystemMessage* endMessage = new ChatSystemMessage("survey", "survey_waypoint", ustr, 0, true);
+		
+		player->sendMessage(endMessage);
+	}
+	unlock(doLock);
+}
+
+void ResourceManagerImplementation::sendSampleMessage(Player* player, string& resourceName, bool doLock) {
+	// Added by Ritter
+	lock(doLock);
+	
+	float density = getDensity(player->getZoneIndex(), resourceName, player->getPositionX(), player->getPositionY());
+	
+	if (density < 0.1f) {
+		ChatSystemMessage* sysMessage = new ChatSystemMessage("survey", "density_below_threshold", resourceName, 0, false);
+		
+		player->sendMessage(sysMessage);
+		
+		player->changePosture(CreatureObjectImplementation::UPRIGHT_POSTURE);
+	} else {
+		int sampleRate = System::random(1000) + (5 * player->getSkillMod("surveying"));
+		
+		if (sampleRate >= 650) {
+			int resQuantity = (sampleRate / 100) * 2 - System::random(13);
+			
+			if (!(resQuantity > 0))
+				resQuantity = 1;
+			
+			ChatSystemMessage* sysMessage = new ChatSystemMessage("survey", "sample_located", resourceName, resQuantity, false);
+			
+			player->getSurveyTool()->sendSampleEffect(player);
+
+			bool makeNewResource = true;
+
+			Inventory* inventory = player->getInventory();
+
+			for (int i = 0; i < inventory->objectsSize(); i++) {
+				TangibleObject* item = (TangibleObject*) inventory->getObject(i);
+				
+				if (item->isResource()) {
+					ResourceContainer* rco = (ResourceContainer*) item;
+					
+					if (rco->getName().c_str() == resourceName.c_str()) {
+						if (rco->getContents() + resQuantity <= rco->getMaxContents()) {
+							rco->setContents(rco->getContents() + resQuantity);
+							rco->sendDeltas(player);
+							rco->generateAttributes(player);
+							
+							rco->setUpdated(true);
+							
+							resQuantity = 0;
+							
+							makeNewResource = false;
+							break;
+						} else if (rco->getContents() < rco->getMaxContents()) {
+							int diff = (rco->getMaxContents() - rco->getContents());
+							
+							if (resQuantity <= diff) {
+								rco->setContents(rco->getContents() + resQuantity);
+							} else {
+								rco->setContents(rco->getContents() + diff);
+								resQuantity = resQuantity - diff;
+							}
+							
+							rco->sendDeltas(player);
+							rco->generateAttributes(player);
+							
+							rco->setUpdated(true);
+						}
+					}
+				}
+			}
+			
+			if (makeNewResource) {
+				ResourceContainerImplementation* rcno = new ResourceContainerImplementation(player->getNewItemID());
+				unicode resname = unicode(resourceName.c_str());
+				rcno->setResourceName(resname);
+				rcno->setContents(resQuantity);
+				setResourceData(rcno);
+				player->addInventoryItem(rcno->deploy());
+				
+				rcno->sendTo(player);
+				
+				rcno->setPersistent(false);
+			}
+			
+			player->sendMessage(sysMessage);
+		} else {
+			ChatSystemMessage* sysMessage = new ChatSystemMessage("survey", "sample_failed", resourceName, 0, false);
+			
+			player->getSurveyTool()->sendSampleEffect(player);
+			
+			player->sendMessage(sysMessage);
+		}
+	}
+	
+	unlock(doLock);
+}
+
+void ResourceManagerImplementation::setResourceData(ResourceContainerImplementation* resContainer) {
+	// Added by Ritter
+	
+	string name = resContainer->getName().c_str();
+	ResourceTemplate* resource = resourceMap->get(name);
+
+	resContainer->setResourceID(resource->getResourceID());
+	
+	resContainer->setDecayResistance(resource->getAtt1Stat());
+	resContainer->setQuality(resource->getAtt2Stat());
+	resContainer->setFlavor(resource->getAtt3Stat());
+	resContainer->setPotentialEnergy(resource->getAtt4Stat());
+	resContainer->setMalleability(resource->getAtt5Stat());
+	resContainer->setToughness(resource->getAtt6Stat());
+	resContainer->setShockResistance(resource->getAtt7Stat());
+	resContainer->setColdResistance(resource->getAtt8Stat());
+	resContainer->setHeatResistance(resource->getAtt9Stat());
+	resContainer->setConductivity(resource->getAtt10Stat());
+	resContainer->setEntangleResistance(resource->getAtt11Stat());
+	
+	resContainer->setContainerFile(resource->getType());
+	resContainer->setObjectCRC(resource->getContainerCRC());
+	resContainer->setObjectSubType(resource->getObjectSubType());
+}
+
+bool ResourceManagerImplementation::checkResource(Player* player, string& resourceName, int SurveyToolType, bool doLock) {
+	// Added by Ritter
+	
+	lock(doLock);
+	
+	ResourceTemplate* resource = resourceMap->get(resourceName);
+	if (resource != NULL) {
+		for(int i = resource->getSpawnSize() - 1; i >= 0; i--) {
+			SpawnLocation* sl = resource->getSpawn(i);
+			if (sl->getPlanet() == player->getZoneID()) {
+				unlock(doLock);
+				return true;
+			}
+		}
+	}
+	
+	unlock(doLock);
+	
+	return false;
+}
+
+bool ResourceManagerImplementation::sendSurveyResources(Player* player, int SurveyToolType, bool doLock) {
+	// Added by Ritter
+	lock(doLock);
+	Vector<string>* resourceList = new Vector<string>();
+	
+	string surveyType, class2, class2re = "";
+	switch(SurveyToolType) {
+	case SurveyToolImplementation::SOLAR:
+		class2 = "Solar Energy";
+		surveyType = "energy_renewable_unlimited_solar";
+		break;
+	case SurveyToolImplementation::CHEMICAL:
+		class2 = "Chemical";
+		surveyType = "chemical";
+		break;
+	case SurveyToolImplementation::FLORA:
+		class2 = "Flora";
+		surveyType = "flora_resources";
+		break;
+	case SurveyToolImplementation::GAS:
+		class2 = "Gas";
+		surveyType = "gas";
+		break;
+	case SurveyToolImplementation::GEOTHERMAL:
+		class2 = "Geothermal Energy";
+		surveyType = "enegy_renewable_site_limited_geothermal";
+		break;
+	case SurveyToolImplementation::MINERAL:
+		class2 = "Mineral";
+		class2re = "Radioactive Energy";
+		surveyType = "mineral";
+		break;
+	case SurveyToolImplementation::WATER:
+		class2 = "Water";
+		surveyType = "water";
+		break;
+	case SurveyToolImplementation::WIND:
+		class2 = "Wind Energy";
+		surveyType = "enegy_renewable_unlimited_wind";
+		break;
+	default:
+		player->error("Invalid Tool");
+		delete resourceList;
+		unlock(doLock);
+		return false;
+	}
+	
+	ResourceListForSurvey* packet = new ResourceListForSurvey();
+	
+	ResourceTemplate* resource;
+
+	for(int i = resourceMap->size() - 1; i > 0; i--) {
+		resource = resourceMap->get(i);
+		if (resource->getSpawnSize() > 0 && (resource->getClass2() == class2 || resource->getClass2() == class2re)) {
+			for(int i = resource->getSpawnSize() - 1; i >= 0; i--) {
+				SpawnLocation* sl = resource->getSpawn(i);
+				if (sl->getPlanet() == player->getZoneID()) {
+					if (!isDuplicate(resourceList, resource->getName())) {
+						packet->addResource(resource->getName(), resource->getType(), resource->getResourceID());
+					}
+				}
+			}
+		}
+	}
+	
+	packet->finish(surveyType, player->getObjectID());
+	
+	player->sendMessage(packet);
+	
+	sendSurveyResourceStats(player, resourceList);
+	
+	delete resourceList;
+	unlock(doLock);
+	return true;
+}
+
+void ResourceManagerImplementation::sendSurveyResourceStats(Player* player, Vector<string>* rList) {
+	// Added by Ritter
+	ResourceTemplate* resource;
+	
+	for (int i = rList->size() - 1; i >= 0; i--) {
+		
+		resource = resourceMap->get(rList->get(i));
+		
+		AttributeListMessage* packet = new AttributeListMessage(resource->getResourceID());
+		
+		if (resource->getAtt1Stat() != 0) {
+			packet->insertAttribute(resource->getAtt1(),resource->getAtt1Stat());
+		}
+		
+		if (resource->getAtt2Stat() != 0) {
+			packet->insertAttribute(resource->getAtt2(),resource->getAtt2Stat());
+		}
+		
+		if (resource->getAtt3Stat() != 0) {
+			packet->insertAttribute(resource->getAtt3(),resource->getAtt3Stat());
+		}
+		
+		if (resource->getAtt4Stat() != 0) {
+			packet->insertAttribute(resource->getAtt4(),resource->getAtt4Stat());
+		}
+		
+		if (resource->getAtt5Stat() != 0) {
+			packet->insertAttribute(resource->getAtt5(),resource->getAtt5Stat());
+		}
+		
+		if (resource->getAtt6Stat() != 0) {
+			packet->insertAttribute(resource->getAtt6(),resource->getAtt6Stat());
+		}
+		
+		if (resource->getAtt7Stat() != 0) {
+			packet->insertAttribute(resource->getAtt7(),resource->getAtt7Stat());
+		}
+		
+		if (resource->getAtt8Stat() != 0) {
+			packet->insertAttribute(resource->getAtt8(),resource->getAtt8Stat());
+		}
+		
+		if (resource->getAtt9Stat() != 0) {
+			packet->insertAttribute(resource->getAtt9(),resource->getAtt9Stat());
+		}
+		
+		if (resource->getAtt10Stat() != 0) {
+			packet->insertAttribute(resource->getAtt10(),resource->getAtt10Stat());
+		}
+		
+		if (resource->getAtt11Stat() != 0) {
+			packet->insertAttribute(resource->getAtt11(),resource->getAtt11Stat());
+		}
+		
+		player->sendMessage(packet);
+	}
+}
+
+string& ResourceManagerImplementation::getClassSeven(const string& resource) {
+	ResourceTemplate* resTemp = resourceMap->get(resource);
+	return resTemp->getClass7();
+}
+
+bool ResourceManagerImplementation::isDuplicate(Vector<string>* rList, string& resource) {
+	// Added by Ritter
+	if (rList->isEmpty()) {
+		rList->add(resource);
+		return false;
+	}
+	
+	for (int i = rList->size() - 1; i >= 0; i--) {
+		if (rList->get(i) == resource) {
+			return true;
+		}
+	}
+	
+	rList->add(resource);
+	
+	return false;
+}
+
+void ResourceManagerImplementation::buildResourceMap() {
+	ResourceTemplate* resTemp;
+	string resname;
+	string query = "SELECT * FROM resource_data";
+	
+	try {
+		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
+		if (res->size() != 0) {
+			while (res->next()) {
+				resname = res->getString(1);
+				resTemp = new ResourceTemplate(res->getString(2));
+				resTemp->setName(resname);
+				resTemp->setResourceID(res->getUnsignedLong(0));
+				
+				resTemp->setClass1(res->getString(3));
+				resTemp->setClass2(res->getString(4));
+				resTemp->setClass3(res->getString(5));
+				resTemp->setClass4(res->getString(6));
+				resTemp->setClass5(res->getString(7));
+				resTemp->setClass6(res->getString(8));
+				resTemp->setClass7(res->getString(9));
+		
+				resTemp->setMaxType(0);
+				resTemp->setMinType(0);
+				resTemp->setMinPool(0);
+				resTemp->setMaxPool(0);
+		
+				resTemp->setAtt1("res_decay_resist");
+				resTemp->setAtt2("res_quality");
+				resTemp->setAtt3("res_flavor");
+				resTemp->setAtt4("res_potential_energy");
+				resTemp->setAtt5("res_malleability");
+				resTemp->setAtt6("res_toughness");
+				resTemp->setAtt7("res_shockresistance");
+				resTemp->setAtt8("res_cold_resist");
+				resTemp->setAtt9("res_heat_resist");
+				resTemp->setAtt10("res_conductivity");
+				resTemp->setAtt11("entangle_resistance");
+		
+				resTemp->setAtt1Stat(res->getInt(10));
+				resTemp->setAtt2Stat(res->getInt(11));
+				resTemp->setAtt3Stat(res->getInt(12));
+				resTemp->setAtt4Stat(res->getInt(13));
+				resTemp->setAtt5Stat(res->getInt(14));
+				resTemp->setAtt6Stat(res->getInt(15));
+				resTemp->setAtt7Stat(res->getInt(16));
+				resTemp->setAtt8Stat(res->getInt(17));
+				resTemp->setAtt9Stat(res->getInt(18));
+				resTemp->setAtt10Stat(res->getInt(19));
+				resTemp->setAtt11Stat(res->getInt(20));
+		
+				resTemp->setContainer(res->getString(23));
+				resTemp->setContainerCRC(res->getUnsignedInt(24));
+				
+				setObjectSubType(resTemp);
+				
+				stringstream query2;
+				query2 << "SELECT * FROM resource_spawns WHERE `resource_name` = '" << resname << "'";
+				ResultSet* res2 = ServerDatabase::instance()->executeQuery(query2);
+				if (res2->size() != 0) {
+					while (res2->next()) {
+						string pool = res2->getString(8);
+						SpawnLocation* sl = new SpawnLocation(res2->getUnsignedLong(0), res2->getInt(2), res2->getFloat(3), res2->getFloat(4), res2->getFloat(5), res2->getFloat(6), pool);
+						resTemp->addSpawn(sl);
+					}
+				}
+				delete res2;
+				resourceMap->put(resname, resTemp);
+			}
+		}
+		delete res;
+	} catch (DatabaseException& e) {
+		cout << "Database error in buildMap\n";
 	}
 }
 
@@ -204,12 +681,12 @@ void ResourceManagerImplementation::removeExpiredResources() {
 			while (res->next()) {
 				uint64 sid = res->getUnsignedLong(0);
 				string rname = res->getString(1);
-				SpawnLocation* sl;
-				for (int i = 0; i < 10; i++) {
-					sl = zoneserver->getZone(i)->getLocalResourceManager()->despawnResource(rname, sid);
+				ResourceTemplate* resource = resourceMap->get(rname);
+				if (resource != NULL) {
+					SpawnLocation* sl = resource->removeSpawn(sid);
+				} else {
+					info("Error removing spawn location.");
 				}
-				if (sl != NULL)
-					delete sl;
 			}
 		
 			stringstream ss;
@@ -284,7 +761,8 @@ void ResourceManagerImplementation::checkRandomPool() {
 
 int ResourceManagerImplementation::randomPoolNeeds() {
 	stringstream query;
-	query << "SELECT DISTINCT rd.resource_name FROM `resource_data` rd "
+	query << "SELECT DISTINCT rd.resource_name, rd.resource_type, rd.class_1,rd.class_2,rd.class_3,"
+		  << "rd.class_4, rd.class_5, rd.class_6, rd.class_7 FROM `resource_data` rd "
 		  << "INNER JOIN `resource_spawns` rs ON rs.resource_name = rd.resource_name "
 		  << "WHERE rs.pool = 'random'";
 
@@ -301,6 +779,7 @@ int ResourceManagerImplementation::randomPoolNeeds() {
 
 void ResourceManagerImplementation::checkFixedPool() {
 	numFunctions++;
+	
 	string restype;
 	int ironCount = fixedPoolIron();
 	
@@ -326,7 +805,8 @@ int ResourceManagerImplementation::fixedPoolIron() {
 	numFunctions++;
 	
 	stringstream query;
-	query << "SELECT DISTINCT rd.resource_name, rd.class_5 FROM `resource_data` rd "
+	query << "SELECT DISTINCT rd.resource_name, rd.resource_type, rd.class_1,rd.class_2,rd.class_3,"
+		  << "rd.class_4, rd.class_5, rd.class_6, rd.class_7 FROM `resource_data` rd "
 		  << "INNER JOIN `resource_spawns` rs ON rs.resource_name = rd.resource_name "
 		  << "WHERE rs.pool = 'fixed'  AND rd.class_5 = 'Iron'";
 
@@ -357,6 +837,7 @@ void ResourceManagerImplementation::checkNativePool() {
 	getFromRandomPool(spawnMe, "native");
 	
 	for (int x = 0; x < spawnMe->size(); x++) {
+		//cout << spawnMe[x] << endl;
 		createResource(spawnMe->get(x), "native", false);
 	}
 }
@@ -364,6 +845,7 @@ void ResourceManagerImplementation::checkNativePool() {
 void ResourceManagerImplementation::poolNeeds(Vector<string>* invector, string pool, Vector<string>* needs) {
 	try {
 		numFunctions++;
+		
 		stringstream query;
 
 		Vector<string> has;
@@ -420,6 +902,7 @@ void ResourceManagerImplementation::poolNeeds(Vector<string>* invector, string p
 				needs->add(invector->get(x));
 			}
 		}
+		
 		delete res;
 	} catch (...) {
 		cout << "Database error in poolNeeds\n";
@@ -480,6 +963,8 @@ string ResourceManagerImplementation::getRandomResourceFromType(string restype, 
 	numFunctions++;
 	
 	try {
+		string outtype = "";
+		
 		stringstream query;
 		query << "SELECT `resource_type`,`class_1`,`class_2`,"
 			  << "`class_3`,`class_4`,`class_5`,`class_6`,`class_7`,`weight` "
@@ -498,11 +983,11 @@ string ResourceManagerImplementation::getRandomResourceFromType(string restype, 
 		numQueries++;
 
 		// This is where the weighted code goes to spawn resource on
-		// Rarity rather than just randomly
+		// Rarity rather than jus t randomly
 
 		int y = (System::random(res->size()-1));
 
-		for (int x = res->size() - 1; x >= 0; x--) {
+		for (int x = 0; x < res->size(); x++) {
 			res->next();
 			
 			if (x == y)
@@ -511,7 +996,6 @@ string ResourceManagerImplementation::getRandomResourceFromType(string restype, 
 		
 		delete res;
 		
-		return "";
 	} catch (...) {
 		cout << "Database error in getRandomResourceFromType\n";
 	}
@@ -526,9 +1010,9 @@ void ResourceManagerImplementation::createResource(string restype, string pool, 
 	
 	int planets[10] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 	
-	int planet, therand, numplanets, thex, they, ther, max; // thex - max should be floats in a perfect world.
+	int planet, therand, thex, they, numplanets;
 
-	ResourceTemplateImplementation* resource = new ResourceTemplateImplementation(restype);
+	ResourceTemplate* resource = new ResourceTemplate(restype);
 
 	generateResourceStats(resource);
 
@@ -543,10 +1027,9 @@ void ResourceManagerImplementation::createResource(string restype, string pool, 
 			for (int y = 0; y < (System::random(maxspawns - minspawns) + minspawns); y++) {
 				thex = System::random(8192 * 2) - 8192;
 				they = System::random(8192 * 2) - 8192;
-				ther = (System::random(maxradius - minradius)+ minradius);
-				max = (System::random(49) + 50);
-				insertSpawn(resource, planet, thex, they, ther,
-						max , pool, jtl);
+
+				insertSpawn(resource, planet, thex, they, (System::random(maxradius - minradius) + minradius),
+						(System::random(49) + 50), pool, jtl);
 			}
 		}
 	} else {
@@ -568,23 +1051,17 @@ void ResourceManagerImplementation::createResource(string restype, string pool, 
 					+ minspawns); y++) {
 				thex = System::random(8192 * 2) - 8192;
 				they = System::random(8192 * 2) - 8192;
-				ther = (System::random(maxradius - minradius)+ minradius);
-				max = (System::random(49) + 50);
-				
+
 				insertSpawn(resource, planet, thex, they,
-						ther, max, pool, jtl);
+						(System::random(maxradius - minradius)+ minradius),
+						(System::random(49) + 50), pool, jtl);
 			}
 		}
 	}
-	
-	ResourceTemplate* rti = (ResourceTemplate*)resource->deploy();
-	for (int i = 0; i < 10; i++) {
-		zoneserver->getZone(i)->getLocalResourceManager()->addResource(rti);
-	}
-	delete resource, rti;
+	resourceMap->put(resource->getName(), resource);
 }
 
-void ResourceManagerImplementation::generateResourceStats(ResourceTemplateImplementation * resource) {
+void ResourceManagerImplementation::generateResourceStats(ResourceTemplate* resource) {
 	string resname;
 
 	try {
@@ -764,7 +1241,7 @@ int ResourceManagerImplementation::getPlanet(const string type) {
 	
 	return 99;
 }
-bool ResourceManagerImplementation::isType(ResourceTemplateImplementation* resource, string type) {
+bool ResourceManagerImplementation::isType(ResourceTemplate* resource, string type) {
 	numFunctions++;
 	
 	if (resource->getClass1() == type || resource->getClass2() == type
@@ -776,7 +1253,7 @@ bool ResourceManagerImplementation::isType(ResourceTemplateImplementation* resou
 		return false;
 }
 
-void ResourceManagerImplementation::insertResource(ResourceTemplateImplementation* resource) {
+void ResourceManagerImplementation::insertResource(ResourceTemplate* resource) {
 	numFunctions++;
 	
 	try {
@@ -817,17 +1294,14 @@ void ResourceManagerImplementation::insertResource(ResourceTemplateImplementatio
 			  << ", " << (long)time(0) << ",'" << resource->getContainer()
 			  << "'," << resource->getContainerCRC()<< ")";
 
-		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
-		uint64 resourceID = res->getLastAffectedRow();
-		resource->setResourceID(resourceID);
-		delete res;
+		ServerDatabase::instance()->executeStatement(query);
 		
 		numInsert++;
 	} catch (...) {
 		cout << "Insert Resource Failed " << endl;
 	}
 }
-void ResourceManagerImplementation::insertSpawn(ResourceTemplateImplementation* resource, int planet_id, 
+void ResourceManagerImplementation::insertSpawn(ResourceTemplate* resource, int planet_id, 
 		float x, float y, float radius, float max, string pool, bool& jtl) {
 	numFunctions++;
 	
@@ -861,11 +1335,10 @@ void ResourceManagerImplementation::insertSpawn(ResourceTemplateImplementation* 
 			  << "," << max << "," << despawn << ",'" << pool << "')";
 
 		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
-		int id = res->getLastAffectedRow();
-
-		resource->addSpawn((SpawnLocation*)(new SpawnLocationImplementation(id, planet_id, x, y, radius, max, pool))->deploy());
-
-		delete res;
+		
+		uint64 id = res->getLastAffectedRow();
+		
+		resource->addSpawn(new SpawnLocation(id, planet_id, x, y, radius, max, pool));
 		
 		numInsert++;
 	} catch (...) {
@@ -1128,12 +1601,9 @@ bool ResourceManagerImplementation::isDumbPhrase(const string inname) {
 			(inname.find("riy") == string::npos) && 
 			(inname.find("anal") == string::npos))
 		return true;
-	else
-		return false;*/
-
-	return false;
+	else*/
+		return false;
 }
-
 bool ResourceManagerImplementation::isProfanity(const string inname) {
 	if ((inname.find("anal") == string::npos) && (inname.find("ass")
 			== string::npos) && (inname.find("asshole") == string::npos)
@@ -1320,3 +1790,39 @@ inline string ResourceManagerImplementation::stringify(const int x) {
 		return o.str();
 }
 
+void ResourceManagerImplementation::setObjectSubType(ResourceTemplate* resImpl) {
+	resImpl->setObjectSubType(TangibleObjectImplementation::RESOURCECONTAINER);
+	if (resImpl->getClass1() == "Inorganic") {
+		if (resImpl->getClass2() == "Mineral") {
+			resImpl->setObjectSubType(TangibleObjectImplementation::INORGANICMINERAL);
+		} else if (resImpl->getClass2() == "Chemical") {
+			resImpl->setObjectSubType(TangibleObjectImplementation::INORGANICCHEMICAL);
+		} else if (resImpl->getClass2() == "Gas") {
+			resImpl->setObjectSubType(TangibleObjectImplementation::INORGANICGAS);
+		} else if (resImpl->getClass2() == "Water") {
+			resImpl->setObjectSubType(TangibleObjectImplementation::WATER);
+		}
+	} else if (resImpl->getClass1() == "Organic") {
+		if (resImpl->getClass3() == "Flora Food") {
+			resImpl->setObjectSubType(TangibleObjectImplementation::ORGANICFOOD);
+		} else if (resImpl->getClass3() == "Flora Structural") {
+			resImpl->setObjectSubType(TangibleObjectImplementation::ORGANICSTRUCTURAL);
+		} else if (resImpl->getClass3() == "Creature Food") {
+			resImpl->setObjectSubType(TangibleObjectImplementation::ORGANICFOOD);
+		} else if (resImpl->getClass3() == "Creature Structural") {
+			if (resImpl->getClass4() == "Bone") {
+				resImpl->setObjectSubType(TangibleObjectImplementation::ORGANICSTRUCTURAL);
+			} else if (resImpl->getClass4() == "Hide") {
+				resImpl->setObjectSubType(TangibleObjectImplementation::ORGANICHIDE);
+			}
+		}
+	} else if (resImpl->getClass1() == "Energy") {
+		if (resImpl->getClass2() == "Wind Energy") {
+			resImpl->setObjectSubType(TangibleObjectImplementation::ENERGYLIQUID);
+		} else if (resImpl->getClass2() == "Solar Energy") {
+			resImpl->setObjectSubType(TangibleObjectImplementation::ENERGYLIQUID);
+		} else if (resImpl->getClass2() == "Radioactive Energy") {
+			resImpl->setObjectSubType(TangibleObjectImplementation::ENERGYRADIOACTIVE);
+		}
+	}
+}

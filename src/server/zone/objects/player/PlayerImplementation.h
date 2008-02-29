@@ -857,8 +857,8 @@ public:
 	}
 	
 	// Survey and Sample Functions
-	void setSurveyEvent(unicode& resource_name);
-	void setSampleEvent(unicode& resource_name, bool firstTime = false);
+	void setSurveyEvent(string& resource_name);
+	void setSampleEvent(string& resource_name, bool firstTime = false);
 	void stopSample();
 	void sendSampleTimeRemaining();
 	
