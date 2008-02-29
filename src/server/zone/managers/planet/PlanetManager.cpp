@@ -103,12 +103,24 @@ void PlanetManager::start() {
 		((PlanetManagerImplementation*) _impl)->start();
 }
 
-unsigned long long PlanetManager::getNextStaticObjectID(bool doLock) {
+void PlanetManager::stop() {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
 		ORBMethodInvocation invocation(this, 8);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((PlanetManagerImplementation*) _impl)->stop();
+}
+
+unsigned long long PlanetManager::getNextStaticObjectID(bool doLock) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 9);
 		invocation.addBooleanParameter(doLock);
 
 		return invocation.executeWithUnsignedLongReturn();
@@ -121,7 +133,7 @@ void PlanetManager::landShuttles() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 9);
+		ORBMethodInvocation invocation(this, 10);
 
 		invocation.executeWithVoidReturn();
 	} else
@@ -133,7 +145,7 @@ void PlanetManager::takeOffShuttles() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 10);
+		ORBMethodInvocation invocation(this, 11);
 
 		invocation.executeWithVoidReturn();
 	} else
@@ -145,7 +157,7 @@ ShuttleCreature* PlanetManager::getShuttle(const string& Shuttle) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 11);
+		ORBMethodInvocation invocation(this, 12);
 		invocation.addAsciiParameter(Shuttle);
 
 		return (ShuttleCreature*) invocation.executeWithObjectReturn();
@@ -158,7 +170,7 @@ void PlanetManager::sendPlanetTravelPointListResponse(Player* player) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 12);
+		ORBMethodInvocation invocation(this, 13);
 		invocation.addObjectParameter(player);
 
 		invocation.executeWithVoidReturn();
@@ -171,7 +183,7 @@ CellObject* PlanetManager::getCell(unsigned long long id) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 13);
+		ORBMethodInvocation invocation(this, 14);
 		invocation.addUnsignedLongParameter(id);
 
 		return (CellObject*) invocation.executeWithObjectReturn();
@@ -184,7 +196,7 @@ BuildingObject* PlanetManager::getBuilding(unsigned long long id) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 14);
+		ORBMethodInvocation invocation(this, 15);
 		invocation.addUnsignedLongParameter(id);
 
 		return (BuildingObject*) invocation.executeWithObjectReturn();
@@ -197,7 +209,7 @@ unsigned long long PlanetManager::getLandingTime() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 15);
+		ORBMethodInvocation invocation(this, 16);
 
 		return invocation.executeWithUnsignedLongReturn();
 	} else
@@ -222,27 +234,30 @@ Packet* PlanetManagerAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* i
 		start();
 		break;
 	case 8:
-		resp->insertLong(getNextStaticObjectID(inv->getBooleanParameter()));
+		stop();
 		break;
 	case 9:
-		landShuttles();
+		resp->insertLong(getNextStaticObjectID(inv->getBooleanParameter()));
 		break;
 	case 10:
-		takeOffShuttles();
+		landShuttles();
 		break;
 	case 11:
-		resp->insertLong(getShuttle(inv->getAsciiParameter(_param0_getShuttle__string_))->_getORBObjectID());
+		takeOffShuttles();
 		break;
 	case 12:
-		sendPlanetTravelPointListResponse((Player*) inv->getObjectParameter());
+		resp->insertLong(getShuttle(inv->getAsciiParameter(_param0_getShuttle__string_))->_getORBObjectID());
 		break;
 	case 13:
-		resp->insertLong(getCell(inv->getUnsignedLongParameter())->_getORBObjectID());
+		sendPlanetTravelPointListResponse((Player*) inv->getObjectParameter());
 		break;
 	case 14:
-		resp->insertLong(getBuilding(inv->getUnsignedLongParameter())->_getORBObjectID());
+		resp->insertLong(getCell(inv->getUnsignedLongParameter())->_getORBObjectID());
 		break;
 	case 15:
+		resp->insertLong(getBuilding(inv->getUnsignedLongParameter())->_getORBObjectID());
+		break;
+	case 16:
 		resp->insertLong(getLandingTime());
 		break;
 	default:
@@ -258,6 +273,10 @@ void PlanetManagerAdapter::init() {
 
 void PlanetManagerAdapter::start() {
 	return ((PlanetManagerImplementation*) impl)->start();
+}
+
+void PlanetManagerAdapter::stop() {
+	return ((PlanetManagerImplementation*) impl)->stop();
 }
 
 unsigned long long PlanetManagerAdapter::getNextStaticObjectID(bool doLock) {

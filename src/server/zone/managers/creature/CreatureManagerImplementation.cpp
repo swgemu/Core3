@@ -126,7 +126,17 @@ void CreatureManagerImplementation::stop() {
 	creatureActivityQueue.flush();
 		
 	join();
+
+	creatureMap->resetIterator();
+	
+	while (creatureMap->hasNext()) {
+		Creature* creature = creatureMap->next();
 		
+		creature->unload();
+		
+		creature->finalize();
+	}
+	
 	info("stopped");
 }
 

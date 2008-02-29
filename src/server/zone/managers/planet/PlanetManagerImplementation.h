@@ -84,7 +84,20 @@ class PlanetManagerImplementation : public PlanetManagerServant, public Mutex {
 	ShuttleTakeOffEvent* shuttleTakeOffEvent;
 	
 	CreatureManager* creatureManager;
+		
+public:
+	PlanetManagerImplementation(Zone* zone, ZoneProcessServerImplementation* serv);
 	
+	void init();
+	void start();
+
+	void stop();
+	
+	void landShuttles();
+	void takeOffShuttles();
+	
+	void sendPlanetTravelPointListResponse(Player* player);
+
 private:
 	void loadStaticPlanetObjects();
 	void loadShuttles();
@@ -94,25 +107,16 @@ private:
 	void loadVendorTerminals();
 	
 	BuildingObject* loadBuilding(uint64 oid, int planet);
-		
-public:
-	PlanetManagerImplementation(Zone* zone, ZoneProcessServerImplementation* serv);
-	
-	void init();
-	void start();
 
-	void landShuttles();
-	void takeOffShuttles();
-	
-	void sendPlanetTravelPointListResponse(Player* player);
-	
+public:
+	// getters
 	ShuttleCreature* getShuttle(const string& Shuttle);
 	
-	CellObject* getCell(uint64 id) {
+	inline CellObject* getCell(uint64 id) {
 		return cellMap->get(id);
 	}
 	
-	BuildingObject* getBuilding(uint64 id) {
+	inline BuildingObject* getBuilding(uint64 id) {
 		return buildingMap->get(id);
 	}
 	

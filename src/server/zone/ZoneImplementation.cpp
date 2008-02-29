@@ -111,6 +111,8 @@ void ZoneImplementation::stopManagers() {
 	}
 	
 	if (planetManager != NULL) {
+		planetManager->stop();
+		
 		delete planetManager;
 		planetManager = NULL;
 	}

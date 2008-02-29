@@ -49,13 +49,16 @@ which carries forward this exception.
 
 #include "../../objects/creature/Creature.h"
 
-class CreatureMap : public HashTable<uint64, Creature*> {
+class CreatureMap : public HashTable<uint64, Creature*>
+		, public HashTableIterator<uint64, Creature*> {
+			
 	int hash(const uint64& key) {
         return Long::hashCode(key);
 	}
 
 public:
-	CreatureMap(int initsize) : HashTable<uint64, Creature*>(initsize) {
+	CreatureMap(int initsize) : HashTable<uint64, Creature*>(initsize)
+			, HashTableIterator<uint64, Creature*>(this) {
 		setNullValue(NULL);
 	}
 

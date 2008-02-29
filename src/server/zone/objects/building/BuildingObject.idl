@@ -64,6 +64,8 @@ interface BuildingObject implements SceneObject {
 	
 	void insertToZone(Zone zone);
 	
+	void removeFromZone();
+	
 	void notifyInsertToZone(CreatureObject creature);
 		
 	boolean isStatic();

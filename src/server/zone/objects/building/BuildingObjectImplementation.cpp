@@ -82,6 +82,35 @@ void BuildingObjectImplementation::insertToZone(Zone* zone) {
 	}
 }
 
+void BuildingObjectImplementation::removeFromZone() {
+	if (zone == NULL)
+		return;
+	
+	try {
+		zone->lock();
+
+    	for (int i = 0; i < inRangeObjectCount(); ++i) {
+			QuadTreeEntry* obj = getInRangeObject(i);
+			
+			if (obj != this)
+				obj->removeInRangeObject(this);
+		}
+
+		removeInRangeObjects();
+
+		zone->remove(this);
+		zone->deleteObject(objectID);
+		
+		zone->unlock();
+		
+		zone = NULL;
+	} catch (...) {
+		cout << "exception BuildingObject::removeFromZone(bool doLock)\n";
+
+		zone->unlock();
+	}
+}
+
 void BuildingObjectImplementation::addCell(CellObject* cell) {
 	cells.put(cell);
 }

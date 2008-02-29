@@ -53,12 +53,14 @@ which carries forward this exception.
 
 SceneObjectImplementation::SceneObjectImplementation() : QuadTreeEntry(), SceneObjectServant(), Logger() {
 	objectID = 0;
-	
+
+	server = NULL;
+	zone = NULL;
+
 	positionX = positionZ = positionY = 0;
 	directionX = directionZ = directionY = 0;
 	
 	parent = NULL;
-	zone = NULL;
 	
 	linkType = 0x04;
 	
@@ -74,13 +76,15 @@ SceneObjectImplementation::SceneObjectImplementation(uint64 oid) : QuadTreeEntry
 	stringstream n;
 	n << hex << "Player::" << objectID;
 	setLockName(n.str()); 
-	
+
+	server = NULL;
+	zone = NULL;
+
 	positionX = positionZ = positionY = 0;
 	directionY = 1; 
 	directionZ = directionX = directionW = 0;
 	
 	parent = NULL;
-	zone = NULL;
 
 	linkType = 0x04;
 	

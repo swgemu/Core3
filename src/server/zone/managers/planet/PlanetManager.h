@@ -75,6 +75,8 @@ public:
 
 	void start();
 
+	void stop();
+
 	unsigned long long getNextStaticObjectID(bool doLock = true);
 
 	void landShuttles();
@@ -105,6 +107,8 @@ public:
 	void init();
 
 	void start();
+
+	void stop();
 
 	unsigned long long getNextStaticObjectID(bool doLock);
 

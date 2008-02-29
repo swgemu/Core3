@@ -81,6 +81,18 @@ void PlanetManagerImplementation::start() {
 		takeOffShuttles();
 }
 
+void PlanetManagerImplementation::stop() {
+	buildingMap->resetIterator();
+	
+	while (buildingMap->hasNext()) {
+		BuildingObject* building = buildingMap->next();
+		
+		building->removeFromZone();
+		
+		building->finalize();
+	}
+}
+
 void PlanetManagerImplementation::loadStaticPlanetObjects() {
 	loadShuttles();	
 	//loadGuildTerminals();
@@ -303,11 +315,15 @@ BuildingObject* PlanetManagerImplementation::loadBuilding(uint64 oid, int planet
 		float type = result->getFloat(11);
 		
 		BuildingObjectImplementation* buioImpl = new BuildingObjectImplementation(oid, true);
+		buioImpl->setZoneProcessServer(server);
+		
 		buio = (BuildingObject*) buioImpl->deploy();
 
 		buio->setObjectCRC(String::hashCode(file));
+			
 		buio->initializePosition(x, z, y);
 		buio->setDirection(oX, oZ, oY, oW);
+		
 		buio->insertToZone(zone);
 		//zone->registerObject(buio);
 

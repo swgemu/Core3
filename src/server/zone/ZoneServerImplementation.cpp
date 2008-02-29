@@ -194,7 +194,7 @@ void ZoneServerImplementation::run() {
 }
 
 void ZoneServerImplementation::shutdown() {
-	chatManager->broadcastMessage("Server is shutting down in 30 seconds..");
+	/*chatManager->broadcastMessage("Server is shutting down in 30 seconds..");
 	Thread::sleepMili(10000);
 
 	chatManager->broadcastMessage("Server is shutting down in 20 seconds..");
@@ -204,7 +204,7 @@ void ZoneServerImplementation::shutdown() {
 	Thread::sleepMili(10000);
 
 	chatManager->broadcastMessage("Server is shutting down in 5 seconds..");
-	Thread::sleepMili(5000);
+	Thread::sleepMili(5000);*/
 
 	stop();
 

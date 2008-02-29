@@ -64,6 +64,8 @@ public:
 	~BuildingObjectImplementation();
 	
 	void insertToZone(Zone* zone);
+
+	void removeFromZone();
 	
 	void sendTo(Player* player, bool doClose = true);
 	void sendDestroyTo(Player* player);

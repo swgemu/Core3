@@ -163,7 +163,7 @@ bool LoginServer::handleError(ServiceClient* client, Exception& e) {
 }
 
 void LoginServer::printInfo() {
-	//lock();
+	lock();
 		
 	stringstream msg;
 	msg << "MessageQueue - size = " << messageQueue.size();
@@ -173,5 +173,5 @@ void LoginServer::printInfo() {
 	msg2 << "Scheduler - size = " << scheduler->getQueueSize();
 	info(msg2, true);
 		
-	//unlock();
+	unlock();
 }

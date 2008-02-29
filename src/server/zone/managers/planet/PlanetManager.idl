@@ -51,7 +51,10 @@ include "engine/util/Coordinate";
 
 interface PlanetManager {
 	void init();
+	
 	void start();
+	
+	void stop();
 		
 	unsigned long getNextStaticObjectID(boolean doLock = true);
 	
