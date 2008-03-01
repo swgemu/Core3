@@ -394,30 +394,19 @@ public:
 		dRcno3->close();
 
 		player->sendMessage(dRcno3);
-			
-		cout << "Sent drnco3\n";
-		int t = time(0);
-		while(time(0) < t + 5);	
 		
 		ManufactureSchematicObjectDeltaMessage6* dMsco6 = new ManufactureSchematicObjectDeltaMessage6(sceneObjSchematic);
 		
-		//cout << "size = " << ds->getIngredientListSize() << " slot = " << slot << endl;
-		
 		dMsco6->insertToResourceSlot(ds->getIngredientListSize(), slot + 1); 
-cout << dMsco6->toString()<< endl;
-		dMsco6->close();
+		dMsco6->close(); 
 
 		player->sendMessage(dMsco6); 
-		
-		cout << "Sent dMsco6\n";
 				
-		ManufactureSchematicObjectDeltaMessage7* dMsco7 = new ManufactureSchematicObjectDeltaMessage7(sceneObjSchematic, ds, 
-				rcno->getObjectID());
-		dMsco7->close();
-cout << dMsco7->toString()<< endl;
-		player->sendMessage(dMsco7);
+		ManufactureSchematicObjectDeltaMessage7* dMsco7 = new ManufactureSchematicObjectDeltaMessage7(sceneObjSchematic);
+		dMsco7->fullUpdate(ds, ds->getIngredientListSize(), 0, slot, rcno->getObjectID(), dsi->getResourceQuantity());
 		
-		cout << "Sent dMsco7\n";
+		dMsco7->close();
+		player->sendMessage(dMsco7);
 		
 		// Object Controller 
 		ObjectControllerMessage* objMsg = new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x010C);
@@ -428,8 +417,6 @@ cout << dMsco7->toString()<< endl;
 		objMsg->insertByte(0); //?!?!
 		
 		player->sendMessage(objMsg);
-		
-		cout << "Sent obj\n";
 	}
 	
 	/*void WriteDraftSchematicToDB(DraftSchematic* ds) {
