@@ -89,6 +89,9 @@ public:
 	inline void setSurveyToolRange(int range) {
 		surveyToolRange = range;	
 	}
+	
+private:
+	void init();
 };
 
 #endif /*SURVEYTOOLIMPLEMENTATION_H_*/

@@ -60,28 +60,7 @@ SurveyToolImplementation::SurveyToolImplementation(uint64 object_id, uint32 temp
 	
 	name = n;
 	
-	if (templateName == "survey_tool_mineral") {
-		surveyToolType = MINERAL;
-	} else if (templateName == "survey_tool_solar") {
-		surveyToolType = SOLAR;
-	} else if (templateName == "survey_tool_chemical") {
-		surveyToolType = CHEMICAL;
-	} else if (templateName == "survey_tool_flora") {
-		surveyToolType = FLORA;
-	} else if (templateName == "survey_tool_gas") {
-		surveyToolType = GAS;
-	} else if (templateName == "survey_tool_geothermal") {
-		surveyToolType = GEOTHERMAL;
-	} else if (templateName == "survey_tool_water") {
-		surveyToolType = WATER;
-	} else if (templateName == "survey_tool_wind") {
-		surveyToolType = WIND;
-	}
-	
-	if (player != NULL && player->getSkillMod("surveying") > 0)
-		setSurveyToolRange(64);
-	else
-		setSurveyToolRange(0);
+	init();
 }
 
 SurveyToolImplementation::SurveyToolImplementation(CreatureObject* creature, uint32 tempCRC, const unicode& n, const string& tempn) 
@@ -93,6 +72,14 @@ SurveyToolImplementation::SurveyToolImplementation(CreatureObject* creature, uin
 	
 	name = n;
 	
+	init();
+}
+
+SurveyToolImplementation::~SurveyToolImplementation() {
+	
+}
+
+void SurveyToolImplementation::init() {
 	if (templateName == "survey_tool_mineral") {
 		surveyToolType = MINERAL;
 	} else if (templateName == "survey_tool_solar") {
@@ -111,14 +98,7 @@ SurveyToolImplementation::SurveyToolImplementation(CreatureObject* creature, uin
 		surveyToolType = WIND;
 	}
 	
-	if (creature->isPlayer() && ((Player*)creature)->getSkillMod("surveying") > 0)
-		setSurveyToolRange(64);
-	else
-		setSurveyToolRange(0);
-}
-
-SurveyToolImplementation::~SurveyToolImplementation() {
-	
+	setSurveyToolRange(0);
 }
 
 int SurveyToolImplementation::useObject(Player* player) {
@@ -126,7 +106,11 @@ int SurveyToolImplementation::useObject(Player* player) {
 	
 	string skillBox = "crafting_artisan_novice";
 	if (player->getSkillBoxesSize() && player->hasSkillBox(skillBox)) {
-		if (surveyToolRange > 0) {
+		// Added to set a default range.  Remove this to disable feature.
+		if (getSurveyToolRange() == 0)
+			setSurveyToolRange(64);
+		
+		if (getSurveyToolRange() > 0) {
 			if (resourceManager->sendSurveyResources(player, getSurveyToolType())) {
 				player->setSurveyTool(_this);
 			}
