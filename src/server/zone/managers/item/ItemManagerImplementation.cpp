@@ -203,12 +203,7 @@ TangibleObject* ItemManagerImplementation::createPlayerObject(Player* player, Re
 			
 			break;
 		}
-	} else if ( (objecttype == TangibleObjectImplementation::RESOURCECONTAINER) || (objecttype == TangibleObjectImplementation::ENERGYGAS) 
-			 || (objecttype == TangibleObjectImplementation::ENERGYLIQUID)  || (objecttype == TangibleObjectImplementation::ENERGYRADIOACTIVE)
-			 || (objecttype == TangibleObjectImplementation::ENERGYSOLID) || (objecttype == TangibleObjectImplementation::INORGANICCHEMICAL)
-			 || (objecttype == TangibleObjectImplementation::INORGANICGAS) || (objecttype == TangibleObjectImplementation::INORGANICMINERAL)
-			 || (objecttype == TangibleObjectImplementation::WATER) || (objecttype == TangibleObjectImplementation::ORGANICFOOD)
-			 || (objecttype == TangibleObjectImplementation::ORGANICHIDE)  || (objecttype == TangibleObjectImplementation::ORGANICSTRUCTURAL) ) {
+	} else if ( objecttype & TangibleObjectImplementation::RESOURCECONTAINER ) {
 		
 		item = new ResourceContainerImplementation(objectid, objectcrc, objectname, objecttemp, player);
 	
