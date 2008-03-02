@@ -362,6 +362,7 @@ void PlayerImplementation::unload() {
 	if (sampleEvent != NULL) {
 		server->removeEvent(sampleEvent);
 	}
+	surveyTool = NULL;
 	
 	// remove from group
 	if (group != NULL && zone != NULL) {
@@ -2661,7 +2662,19 @@ void PlayerImplementation::setSurveyEvent(string& resourceName) {
 }
 
 void PlayerImplementation::setSampleEvent(string& resourceName, bool firstTime) {
-	if (getInventoryItem(surveyTool->getObjectID()) == NULL) {
+	if (surveyTool == NULL) {
+		sendSystemMessage("Please contact Ritter ASAP and log the exact actions you just took for a bug report. Thank you.");
+		return;
+	}
+	
+	if (isInCombat()) {
+		ChatSystemMessage* sysMessage = new ChatSystemMessage("survey","sample_cancel_attack");
+		sendMessage(sysMessage);
+		return;
+	} else if (isMounted()) {
+		sendSystemMessage("You can not sample while riding a mount.");
+		return;
+	} else if (getInventoryItem(surveyTool->getObjectID()) == NULL) {
 		ChatSystemMessage* sysMessage = new ChatSystemMessage("survey","sample_gone");
 		sendMessage(sysMessage);
 		return;

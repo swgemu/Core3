@@ -65,6 +65,8 @@ which carries forward this exception.
 
 #include "Player.h"
 
+#include "../tangible/surveytool/SurveyTool.h"
+
 class PlayerManager;
 class ItemManager;
 class ProfessionManager;
@@ -175,7 +177,7 @@ class PlayerImplementation : public PlayerServant {
 	
 	WaypointObject* surveyWaypoint;
 	
-	SurveyTool* surveyTool;
+	ManagedReference<SurveyTool> surveyTool;
 	
 	bool cancelSample;
 	

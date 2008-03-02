@@ -316,14 +316,15 @@ void ResourceManagerImplementation::sendSampleMessage(Player* player, string& re
 			if (!(resQuantity > 0))
 				resQuantity = 1;
 			
-			ChatSystemMessage* sysMessage = new ChatSystemMessage("survey", "sample_located", resourceName, resQuantity, false);
-			
 			player->getSurveyTool()->sendSampleEffect(player);
-
+			
+			ChatSystemMessage* sysMessage = new ChatSystemMessage("survey", "sample_located", resourceName, resQuantity, false);
+			player->sendMessage(sysMessage);
+			
 			bool makeNewResource = true;
 
 			Inventory* inventory = player->getInventory();
-
+			
 			for (int i = 0; i < inventory->objectsSize(); i++) {
 				TangibleObject* item = (TangibleObject*) inventory->getObject(i);
 				
@@ -362,6 +363,13 @@ void ResourceManagerImplementation::sendSampleMessage(Player* player, string& re
 			}
 			
 			if (makeNewResource) {
+				// NOTE: Figure out how to get max inventory size...
+				if (inventory->getObjectCount() >= 80) {
+					ChatSystemMessage* sysMessage = new ChatSystemMessage("survey", "no_inv_spc");
+					player->sendMessage(sysMessage);
+					return;
+				}
+				
 				ResourceContainerImplementation* rcno = new ResourceContainerImplementation(player->getNewItemID());
 				unicode resname = unicode(resourceName.c_str());
 				rcno->setResourceName(resname);
@@ -374,7 +382,6 @@ void ResourceManagerImplementation::sendSampleMessage(Player* player, string& re
 				rcno->setPersistent(false);
 			}
 			
-			player->sendMessage(sysMessage);
 		} else {
 			ChatSystemMessage* sysMessage = new ChatSystemMessage("survey", "sample_failed", resourceName, 0, false);
 			

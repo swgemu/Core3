@@ -75,7 +75,7 @@ public:
 			if (item->isTangible())
 				((TangibleObject*) item)->setContainer(NULL);
 			
-			delete item;
+			item->finalize();
 		}
 		
 		items.removeAll();
