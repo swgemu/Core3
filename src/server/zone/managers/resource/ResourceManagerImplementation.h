@@ -46,6 +46,7 @@ class ResourceManagerImplementation : public ResourceManagerServant, public Logg
 	
 public:
 	ResourceManagerImplementation(ZoneServer* inserver, ZoneProcessServerImplementation* inserv);
+	~ResourceManagerImplementation();
 	
 	void theShift();
 	void stop();

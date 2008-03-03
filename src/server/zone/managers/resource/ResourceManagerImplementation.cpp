@@ -32,6 +32,35 @@ ResourceManagerImplementation::ResourceManagerImplementation(ZoneServer* inserve
 	setGlobalLogging(true);
 	
 }
+
+ResourceManagerImplementation::~ResourceManagerImplementation() {
+	if (spawnResourcesEvent != NULL) {
+		delete spawnResourcesEvent;
+		spawnResourcesEvent = NULL;
+	}
+	
+	if (minimumpool != NULL) {
+		delete minimumpool;
+		minimumpool = NULL;
+	}
+	
+	if (fixedpool != NULL) {
+		delete fixedpool;
+		fixedpool = NULL;
+	}
+	
+	if (nativepool != NULL) {
+		delete nativepool;
+		nativepool = NULL;
+	}
+	
+	if (resourceMap != NULL) {
+		delete resourceMap;
+		resourceMap = NULL;
+	}
+}
+
+
 void ResourceManagerImplementation::init() {
 	resourceMap = new VectorMap<string, ResourceTemplate*>();
 	resourceMap->setNullValue(NULL);
@@ -66,7 +95,15 @@ void ResourceManagerImplementation::init() {
 
 void ResourceManagerImplementation::stop() {
 	lock();
-	serv->removeEvent(spawnResourcesEvent);
+	
+	if (spawnResourcesEvent->isQueued())
+		serv->removeEvent(spawnResourcesEvent);
+	
+	for (int i = 0; i < resourceMap->size(); ++i)
+		delete resourceMap->get(i);
+	
+	resourceMap->removeAll();
+	
 	unlock();
 }
 
@@ -317,10 +354,8 @@ void ResourceManagerImplementation::sendSampleMessage(Player* player, string& re
 		
 		player->changePosture(CreatureObjectImplementation::UPRIGHT_POSTURE);
 	} else {
-		if (player->getSurveyTool() == NULL) {
-			unlock(doLock);
+		if (player->getSurveyTool() == NULL)
 			return;
-		}
 			
 		int sampleRate = System::random(1000) + (5 * player->getSkillMod("surveying"));
 		
@@ -800,16 +835,16 @@ void ResourceManagerImplementation::checkMinimumPool() {
 	string restype;
 	string exclusion = "";
 	
-	Vector<string> * spawnMe = new Vector<string>;
+	Vector<string> spawnMe;
 
-	poolNeeds(minimumpool, "minimum", spawnMe);
+	poolNeeds(minimumpool, "minimum", &spawnMe);
 
-	info("Minimum pool spawns = " + stringify(spawnMe->size()));
+	info("Minimum pool spawns = " + stringify(spawnMe.size()));
 
-	getFromRandomPool(spawnMe, "minimum");
+	getFromRandomPool(&spawnMe, "minimum");
 
-	for (int x = 0; x < spawnMe->size(); x++) {
-		restype = getRandomResourceFromType(spawnMe->get(x), exclusion);
+	for (int x = 0; x < spawnMe.size(); x++) {
+		restype = getRandomResourceFromType(spawnMe.get(x), exclusion);
 		createResource(restype, "minimum", false);
 	}
 }
@@ -862,14 +897,14 @@ void ResourceManagerImplementation::checkFixedPool() {
 		createResource(restype, "fixed", false);
 	}
 
-	Vector<string> * spawnMe = new Vector<string>;
+	Vector<string> spawnMe;
 
-	poolNeeds(fixedpool, "fixed", spawnMe);
+	poolNeeds(fixedpool, "fixed", &spawnMe);
 	
-	info("Fixed pool JTL spawns = " + stringify(spawnMe->size()));
+	info("Fixed pool JTL spawns = " + stringify(spawnMe.size()));
 
-	for (int x = 0; x < spawnMe->size(); x++) {
-		createResource(spawnMe->get(x), "fixed", true);
+	for (int x = 0; x < spawnMe.size(); x++) {
+		createResource(spawnMe.get(x), "fixed", true);
 	}
 }
 
@@ -900,17 +935,17 @@ void ResourceManagerImplementation::checkNativePool() {
 	string exclusion = " AND (class_1 = 'Organic')";
 	string type = "Organic";
 	
-	Vector<string> * spawnMe = new Vector<string>;
+	Vector<string> spawnMe;
 
-	poolNeeds(nativepool, "native", spawnMe);
+	poolNeeds(nativepool, "native", &spawnMe);
 
-	info("Native pool spawns = " + stringify(spawnMe->size()));
+	info("Native pool spawns = " + stringify(spawnMe.size()));
 
-	getFromRandomPool(spawnMe, "native");
+	getFromRandomPool(&spawnMe, "native");
 	
-	for (int x = 0; x < spawnMe->size(); x++) {
+	for (int x = 0; x < spawnMe.size(); x++) {
 		//cout << spawnMe[x] << endl;
-		createResource(spawnMe->get(x), "native", false);
+		createResource(spawnMe.get(x), "native", false);
 	}
 }
 

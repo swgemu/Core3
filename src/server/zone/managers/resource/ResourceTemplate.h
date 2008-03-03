@@ -70,6 +70,17 @@ public:
 		spawnLocations = new Vector<SpawnLocation*>();
 	}
 	
+	~ResourceTemplate() {
+		if (spawnLocations != NULL) {
+			for (int i = 0; i < spawnLocations->size(); ++i)
+				delete spawnLocations->get(i);
+
+			delete spawnLocations;
+
+			spawnLocations = NULL;
+		}
+	}
+	
 	// Spawn Stuff
 	inline SpawnLocation* getSpawn(int i) {
 		return spawnLocations->get(i);
