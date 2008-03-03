@@ -611,23 +611,14 @@ void CreatureObjectImplementation::addDefender(CreatureObject* defender) {
 }
 
 void CreatureObjectImplementation::removeDefenders() {
-	//info("starting to remove defenders");
+	info("removing all defenders");
 	if (defenderList.size() == 0) {
 		//info("no defenders in list");
 		return;
 	}
 
 	CreatureObjectDeltaMessage6* dcreo6 = new CreatureObjectDeltaMessage6((CreatureObject*) _this);
-	//dcreo6->startDefenderUpdate(defenderList.size());
 	dcreo6->startDefenderUpdate(1);
-	
-	for (int i = 0; i < defenderList.size(); ++i) {
-		CreatureObject* defender = defenderList.get(i);
-
-		info("removing defender");
-
-		//dcreo6->removeDefender(i);
-	}
 	
 	dcreo6->removeDefenders();
 	dcreo6->close();
@@ -989,6 +980,8 @@ void CreatureObjectImplementation::updateMood(const string& md) {
 void CreatureObjectImplementation::clearStates() {
 	stateBitmask = 0;
 	nextAttackDelay.update();
+	
+	removeDefenders();
 	
 	updateStates();
 }

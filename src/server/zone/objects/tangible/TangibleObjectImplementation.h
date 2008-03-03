@@ -379,15 +379,20 @@ public:
 	}
 	
 	inline bool isWeapon() {
-		return (objectSubType & WEAPON || objectSubType & LIGHTSABER);
+		return (objectSubType == WEAPON || objectSubType == LIGHTSABER || objectSubType == MELEEWEAPON
+			|| objectSubType == RANGEDWEAPON || objectSubType == THROWNWEAPON || objectSubType == HEAVYWEAPON || objectSubType == MINE
+			|| objectSubType == SPECIALHEAVYWEAPON || objectSubType == ONEHANDMELEEWEAPON || objectSubType == TWOHANDMELEEWEAPON
+			|| objectSubType == POLEARM || objectSubType == PISTOL || objectSubType == CARBINE || objectSubType == RIFLE);
 	}
 	
 	inline bool isArmor() {
-		return (objectSubType & ARMOR);
+		return (objectSubType == ARMOR || objectSubType == BODYARMOR || objectSubType == HEADARMOR || objectSubType == MISCARMOR
+			|| objectSubType == LEGARMOR || objectSubType ==  ARMARMOR || objectSubType == HANDARMOR || objectSubType == FOOTARMOR
+			|| objectSubType == SHIELDGENERATOR);
 	}
 	
 	inline bool isClothing() {
-		return (objectSubType & CLOTHING);
+		return (objectSubType == CLOTHING);
 	}
 	
 	inline bool isAttachment() {
@@ -395,7 +400,7 @@ public:
 	}
 	
 	inline bool isResource() {
-		return (objectSubType & RESOURCECONTAINER);
+		return (objectSubType == RESOURCECONTAINER);
 	}
 	
 	inline bool isSurveyTool() {

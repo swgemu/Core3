@@ -54,13 +54,13 @@ public:
 	void sendSurveyMessage(Player* player, string& resourceName, bool doLock = true);
 	void sendSampleMessage(Player* player, string& resourceName, bool doLock = true);
 	
-	void setResourceData(ResourceContainerImplementation* resContainer);
+	void setResourceData(ResourceContainerImplementation* resContainer, bool doLock = true);
 	
 	bool sendSurveyResources(Player* player, int SurveyToolType, bool doLock = true);
 	
 	bool checkResource(Player* player, string& resourceName, int SurveyToolType, bool doLock = true);
 	
-	string& getClassSeven(const string& resource);
+	void getClassSeven(const string& resource, string& clas);
 private:
 	void init();
 	

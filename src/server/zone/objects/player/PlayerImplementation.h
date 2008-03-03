@@ -210,6 +210,8 @@ public:
 
 	Player* create(ZoneClient* client);
 	
+	void refuseCreate(ZoneClient* client);
+	
 	void load(ZoneClient* client);
 	void reload(ZoneClient* client);
 
@@ -564,6 +566,9 @@ public:
 	}
 	
 	bool removeWaypoint(WaypointObject* wp) {
+		if (surveyWaypoint = wp)
+			surveyWaypoint = NULL;
+		
 		return playerObject->removeWaypoint(wp, true);
 	}
 	

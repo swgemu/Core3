@@ -97,6 +97,7 @@ ZoneServerImplementation::ZoneServerImplementation(int processingThreads) :
 	currentPlayers = 0;
 	maximumPlayers = 0;
 	totalPlayers = 0;
+	totalDeletedPlayers = 0;
 	
 	nextCreatureID = 0x10000000;
 
@@ -194,7 +195,7 @@ void ZoneServerImplementation::run() {
 }
 
 void ZoneServerImplementation::shutdown() {
-	/*chatManager->broadcastMessage("Server is shutting down in 30 seconds..");
+	chatManager->broadcastMessage("Server is shutting down in 30 seconds..");
 	Thread::sleepMili(10000);
 
 	chatManager->broadcastMessage("Server is shutting down in 20 seconds..");
@@ -204,7 +205,7 @@ void ZoneServerImplementation::shutdown() {
 	Thread::sleepMili(10000);
 
 	chatManager->broadcastMessage("Server is shutting down in 5 seconds..");
-	Thread::sleepMili(5000);*/
+	Thread::sleepMili(5000);
 
 	stop();
 
@@ -486,7 +487,8 @@ void ZoneServerImplementation::printInfo(bool forcedLog) {
 	info(msg3, forcedLog);
 
 	stringstream msg4;
-	msg4 << dec << currentPlayers << " users connected (" << maximumPlayers << " max, " << totalPlayers << " total)";
+	msg4 << dec << currentPlayers << " users connected (" << maximumPlayers << " max, " << totalPlayers << " total, " 
+		 << totalDeletedPlayers << " deleted)";
 	info(msg4, forcedLog);
 		
 	unlock();

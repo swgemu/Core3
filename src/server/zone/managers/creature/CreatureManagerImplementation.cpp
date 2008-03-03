@@ -127,7 +127,7 @@ void CreatureManagerImplementation::stop() {
 		
 	join();
 
-	creatureMap->resetIterator();
+	/*creatureMap->resetIterator();
 	
 	while (creatureMap->hasNext()) {
 		Creature* creature = creatureMap->next();
@@ -135,7 +135,7 @@ void CreatureManagerImplementation::stop() {
 		creature->unload();
 		
 		creature->finalize();
-	}
+	}*/
 	
 	info("stopped");
 }

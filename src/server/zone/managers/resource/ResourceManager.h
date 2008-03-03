@@ -81,11 +81,9 @@ public:
 
 	bool sendSurveyResources(Player* player, int SurveyToolType);
 
-	string& getClassSeven(const string& str);
+	void getClassSeven(const string& str, string& clas);
 
 protected:
-	string _return_getClassSeven;
-
 };
 
 class ResourceManagerImplementation;
@@ -112,13 +110,14 @@ public:
 
 	bool sendSurveyResources(Player* player, int SurveyToolType);
 
-	string& getClassSeven(const string& str);
+	void getClassSeven(const string& str, string& clas);
 
 protected:
 	string _param1_checkResource__Player_string_int_;
 	string _param1_sendSurveyMessage__Player_string_;
 	string _param1_sendSampleMessage__Player_string_;
-	string _param0_getClassSeven__string_;
+	string _param0_getClassSeven__string_string_;
+	string _param1_getClassSeven__string_string_;
 };
 
 class ResourceManagerHelper : public ORBClassHelper, public Singleton<ResourceManagerHelper> {

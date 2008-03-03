@@ -136,6 +136,8 @@ PlayerImplementation::~PlayerImplementation() {
 		hairObj = NULL;
 	}
 	
+	server->getZoneServer()->increaseTotalDeletedPlayers();
+	
 	info("undeploying player");
 }
 
@@ -225,7 +227,13 @@ void PlayerImplementation::init() {
 }
 
 Player* PlayerImplementation::create(ZoneClient* client) {
-	Player* player = (Player*) deploy("Player " + firstName);
+	Player* player = NULL;
+	
+	try {
+		player = (Player*) deploy("Player " + firstName);
+	} catch (Exception& e) {
+		return NULL;
+	}
 
 	PlayerObjectImplementation* playerObjectImpl = new PlayerObjectImplementation(player);
 	playerObject = (PlayerObject*) playerObjectImpl->deploy("PlayerObject" + firstName);
@@ -243,6 +251,15 @@ Player* PlayerImplementation::create(ZoneClient* client) {
 	info("created player");
 	
 	return player;
+}
+
+void PlayerImplementation::refuseCreate(ZoneClient* client) {
+	info("name refused for character creation");
+
+	BaseMessage* msg = new ClientCreateCharacterFailed("name_declined_in_use");
+	client->sendMessage(msg);
+		
+	client->disconnect();
 }
 
 void PlayerImplementation::load(ZoneClient* client) {
@@ -357,12 +374,17 @@ void PlayerImplementation::unload() {
 	tradeItems.removeAll();
 	
 	if (firstSampleEvent != NULL) {
-		server->removeEvent(firstSampleEvent);
+		if (firstSampleEvent->isQueued())
+			server->removeEvent(firstSampleEvent);
+			
+		firstSampleEvent = NULL;
 	}
 	if (sampleEvent != NULL) {
-		server->removeEvent(sampleEvent);
+		if (sampleEvent->isQueued())
+			server->removeEvent(sampleEvent);
+			
+		sampleEvent = NULL;
 	}
-	surveyTool = NULL;
 	
 	// remove from group
 	if (group != NULL && zone != NULL) {
@@ -1125,7 +1147,7 @@ void PlayerImplementation::bounceBack() {
 }
 
 void PlayerImplementation::notifySceneReady() {
-	if (isLoggingIn()) {
+	//if (isLoggingIn()) {
 		setOnline();
 		
 		unicode msg = unicode("Welcome to the Official Core3 Test Center!");
@@ -1141,7 +1163,7 @@ void PlayerImplementation::notifySceneReady() {
 		chatManager->listMail(_this);
 		
 		info("scene ready");
-	}	
+	//}	
 }
 
 void PlayerImplementation::sendSystemMessage(const string& message) {
@@ -1337,15 +1359,24 @@ void PlayerImplementation::changePosture(int post) {
 
 	if (!getCanSample() && !getCancelSample()) {
 		sendSystemMessage("You stop taking resource samples.");
-		if (firstSampleEvent != NULL) {
+		
+		if (firstSampleEvent != NULL && firstSampleEvent->isQueued()) {
 			server->removeEvent(firstSampleEvent);
+			firstSampleEvent = NULL;
 		}
-		uint64 time = -(sampleEvent->getTimeStamp().miliDifference());
-		server->removeEvent(sampleEvent);
-		string str = "";
-		sampleEvent = new SampleEvent(_this, str, true);
-		server->addEvent(sampleEvent, time);
-		setCancelSample(true);
+		
+		if (sampleEvent != NULL) {
+			uint64 time = -(sampleEvent->getTimeStamp().miliDifference());
+			if (sampleEvent->isQueued())
+				server->removeEvent(sampleEvent);
+			
+			sampleEvent = NULL;
+		
+			string str = "";
+			sampleEvent = new SampleEvent(_this, str, true);
+			server->addEvent(sampleEvent, time);
+			setCancelSample(true);
+		}
 	}
 	
 	if (isMounted())
@@ -2115,7 +2146,7 @@ void PlayerImplementation::applyPowerup(uint64 powerupID, uint64 targetID) {
 		
 		weapon->unlock();
 		powerup->unlock();
-		delete powerup;
+		powerup->finalize();
 		
 		return;
 	}
@@ -2178,14 +2209,14 @@ void PlayerImplementation::applyAttachment(uint64 attachmentID, uint64 targetID)
 			attachment->unlock();
 			attachment->remove(_this);
 			
-			delete attachment;
+			attachment->finalize();
 			return;
 		default: // skill mod was added successfully
 			armor->unlock();
 			attachment->unlock();
 			attachment->remove(_this);
 			
-			delete attachment;
+			attachment->finalize();
 			return;
 		}
 	}
@@ -2197,7 +2228,7 @@ void PlayerImplementation::applyAttachment(uint64 attachmentID, uint64 targetID)
 		armor->unlock();
 		attachment->unlock();
 		
-		delete attachment;
+		attachment->finalize();
 		return; 
 	}
 	
@@ -2748,7 +2779,7 @@ void PlayerImplementation::launchFirework() {
 		cout << "unreported Exception on Player::launchFirework()\n";
 	}
 
-	delete firework;		
+	firework->finalize();		
 }
 
 int PlayerImplementation::getSlicingAbility() {

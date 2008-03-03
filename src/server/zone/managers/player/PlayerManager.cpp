@@ -327,12 +327,25 @@ void PlayerManager::setGuildManager(GuildManager* gmanager) {
 		((PlayerManagerImplementation*) _impl)->setGuildManager(gmanager);
 }
 
-Player* PlayerManager::getPlayer(string& name) {
+Player* PlayerManager::putPlayer(Player* player) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
 		ORBMethodInvocation invocation(this, 24);
+		invocation.addObjectParameter(player);
+
+		return (Player*) invocation.executeWithObjectReturn();
+	} else
+		return ((PlayerManagerImplementation*) _impl)->putPlayer(player);
+}
+
+Player* PlayerManager::getPlayer(string& name) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 25);
 		invocation.addAsciiParameter(name);
 
 		return (Player*) invocation.executeWithObjectReturn();
@@ -345,7 +358,7 @@ GuildManager* PlayerManager::getGuildManager() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 25);
+		ORBMethodInvocation invocation(this, 26);
 
 		return (GuildManager*) invocation.executeWithObjectReturn();
 	} else
@@ -357,7 +370,7 @@ PlayerMap* PlayerManager::getPlayerMap() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 26);
+		ORBMethodInvocation invocation(this, 27);
 
 		return (PlayerMap*) invocation.executeWithObjectReturn();
 	} else
@@ -430,12 +443,15 @@ Packet* PlayerManagerAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* i
 		setGuildManager((GuildManager*) inv->getObjectParameter());
 		break;
 	case 24:
-		resp->insertLong(getPlayer(inv->getAsciiParameter(_param0_getPlayer__string_))->_getORBObjectID());
+		resp->insertLong(putPlayer((Player*) inv->getObjectParameter())->_getORBObjectID());
 		break;
 	case 25:
-		resp->insertLong(getGuildManager()->_getORBObjectID());
+		resp->insertLong(getPlayer(inv->getAsciiParameter(_param0_getPlayer__string_))->_getORBObjectID());
 		break;
 	case 26:
+		resp->insertLong(getGuildManager()->_getORBObjectID());
+		break;
+	case 27:
 		resp->insertLong(getPlayerMap()->_getORBObjectID());
 		break;
 	default:
@@ -515,6 +531,10 @@ void PlayerManagerAdapter::updatePlayerCreditsToDatabase(Player* player) {
 
 void PlayerManagerAdapter::setGuildManager(GuildManager* gmanager) {
 	return ((PlayerManagerImplementation*) impl)->setGuildManager(gmanager);
+}
+
+Player* PlayerManagerAdapter::putPlayer(Player* player) {
+	return ((PlayerManagerImplementation*) impl)->putPlayer(player);
 }
 
 Player* PlayerManagerAdapter::getPlayer(string& name) {

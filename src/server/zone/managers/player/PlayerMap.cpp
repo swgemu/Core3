@@ -73,7 +73,7 @@ PlayerMap* PlayerMap::clone() {
 }
 
 
-Player* PlayerMap::put(string& name, Player* player) {
+Player* PlayerMap::put(string& name, Player* player, bool doLock) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
@@ -81,36 +81,39 @@ Player* PlayerMap::put(string& name, Player* player) {
 		ORBMethodInvocation invocation(this, 6);
 		invocation.addAsciiParameter(name);
 		invocation.addObjectParameter(player);
+		invocation.addBooleanParameter(doLock);
 
 		return (Player*) invocation.executeWithObjectReturn();
 	} else
-		return ((PlayerMapImplementation*) _impl)->put(name, player);
+		return ((PlayerMapImplementation*) _impl)->put(name, player, doLock);
 }
 
-Player* PlayerMap::get(string& name) {
+Player* PlayerMap::get(string& name, bool doLock) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
 		ORBMethodInvocation invocation(this, 7);
 		invocation.addAsciiParameter(name);
+		invocation.addBooleanParameter(doLock);
 
 		return (Player*) invocation.executeWithObjectReturn();
 	} else
-		return ((PlayerMapImplementation*) _impl)->get(name);
+		return ((PlayerMapImplementation*) _impl)->get(name, doLock);
 }
 
-Player* PlayerMap::remove(string& name) {
+Player* PlayerMap::remove(string& name, bool doLock) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
 		ORBMethodInvocation invocation(this, 8);
 		invocation.addAsciiParameter(name);
+		invocation.addBooleanParameter(doLock);
 
 		return (Player*) invocation.executeWithObjectReturn();
 	} else
-		return ((PlayerMapImplementation*) _impl)->remove(name);
+		return ((PlayerMapImplementation*) _impl)->remove(name, doLock);
 }
 
 int PlayerMap::size() {
@@ -125,40 +128,67 @@ int PlayerMap::size() {
 		return ((PlayerMapImplementation*) _impl)->size();
 }
 
-Player* PlayerMap::getNextValue() {
+Player* PlayerMap::getNextValue(bool doLock) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
 		ORBMethodInvocation invocation(this, 10);
+		invocation.addBooleanParameter(doLock);
 
 		return (Player*) invocation.executeWithObjectReturn();
 	} else
-		return ((PlayerMapImplementation*) _impl)->getNextValue();
+		return ((PlayerMapImplementation*) _impl)->getNextValue(doLock);
 }
 
-bool PlayerMap::hasNext() {
+bool PlayerMap::hasNext(bool doLock) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
 		ORBMethodInvocation invocation(this, 11);
+		invocation.addBooleanParameter(doLock);
 
 		return invocation.executeWithBooleanReturn();
 	} else
-		return ((PlayerMapImplementation*) _impl)->hasNext();
+		return ((PlayerMapImplementation*) _impl)->hasNext(doLock);
 }
 
-void PlayerMap::resetIterator() {
+void PlayerMap::resetIterator(bool doLock) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
 		ORBMethodInvocation invocation(this, 12);
+		invocation.addBooleanParameter(doLock);
 
 		invocation.executeWithVoidReturn();
 	} else
-		((PlayerMapImplementation*) _impl)->resetIterator();
+		((PlayerMapImplementation*) _impl)->resetIterator(doLock);
+}
+
+void PlayerMap::lock() {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 13);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((PlayerMapImplementation*) _impl)->lock();
+}
+
+void PlayerMap::unlock() {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 14);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((PlayerMapImplementation*) _impl)->unlock();
 }
 
 /*
@@ -173,25 +203,31 @@ Packet* PlayerMapAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* inv) 
 
 	switch (methid) {
 	case 6:
-		resp->insertLong(put(inv->getAsciiParameter(_param0_put__string_Player_), (Player*) inv->getObjectParameter())->_getORBObjectID());
+		resp->insertLong(put(inv->getAsciiParameter(_param0_put__string_Player_bool_), (Player*) inv->getObjectParameter(), inv->getBooleanParameter())->_getORBObjectID());
 		break;
 	case 7:
-		resp->insertLong(get(inv->getAsciiParameter(_param0_get__string_))->_getORBObjectID());
+		resp->insertLong(get(inv->getAsciiParameter(_param0_get__string_bool_), inv->getBooleanParameter())->_getORBObjectID());
 		break;
 	case 8:
-		resp->insertLong(remove(inv->getAsciiParameter(_param0_remove__string_))->_getORBObjectID());
+		resp->insertLong(remove(inv->getAsciiParameter(_param0_remove__string_bool_), inv->getBooleanParameter())->_getORBObjectID());
 		break;
 	case 9:
 		resp->insertSignedInt(size());
 		break;
 	case 10:
-		resp->insertLong(getNextValue()->_getORBObjectID());
+		resp->insertLong(getNextValue(inv->getBooleanParameter())->_getORBObjectID());
 		break;
 	case 11:
-		resp->insertBoolean(hasNext());
+		resp->insertBoolean(hasNext(inv->getBooleanParameter()));
 		break;
 	case 12:
-		resetIterator();
+		resetIterator(inv->getBooleanParameter());
+		break;
+	case 13:
+		lock();
+		break;
+	case 14:
+		unlock();
 		break;
 	default:
 		return NULL;
@@ -200,32 +236,40 @@ Packet* PlayerMapAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* inv) 
 	return resp;
 }
 
-Player* PlayerMapAdapter::put(string& name, Player* player) {
-	return ((PlayerMapImplementation*) impl)->put(name, player);
+Player* PlayerMapAdapter::put(string& name, Player* player, bool doLock) {
+	return ((PlayerMapImplementation*) impl)->put(name, player, doLock);
 }
 
-Player* PlayerMapAdapter::get(string& name) {
-	return ((PlayerMapImplementation*) impl)->get(name);
+Player* PlayerMapAdapter::get(string& name, bool doLock) {
+	return ((PlayerMapImplementation*) impl)->get(name, doLock);
 }
 
-Player* PlayerMapAdapter::remove(string& name) {
-	return ((PlayerMapImplementation*) impl)->remove(name);
+Player* PlayerMapAdapter::remove(string& name, bool doLock) {
+	return ((PlayerMapImplementation*) impl)->remove(name, doLock);
 }
 
 int PlayerMapAdapter::size() {
 	return ((PlayerMapImplementation*) impl)->size();
 }
 
-Player* PlayerMapAdapter::getNextValue() {
-	return ((PlayerMapImplementation*) impl)->getNextValue();
+Player* PlayerMapAdapter::getNextValue(bool doLock) {
+	return ((PlayerMapImplementation*) impl)->getNextValue(doLock);
 }
 
-bool PlayerMapAdapter::hasNext() {
-	return ((PlayerMapImplementation*) impl)->hasNext();
+bool PlayerMapAdapter::hasNext(bool doLock) {
+	return ((PlayerMapImplementation*) impl)->hasNext(doLock);
 }
 
-void PlayerMapAdapter::resetIterator() {
-	return ((PlayerMapImplementation*) impl)->resetIterator();
+void PlayerMapAdapter::resetIterator(bool doLock) {
+	return ((PlayerMapImplementation*) impl)->resetIterator(doLock);
+}
+
+void PlayerMapAdapter::lock() {
+	return ((PlayerMapImplementation*) impl)->lock();
+}
+
+void PlayerMapAdapter::unlock() {
+	return ((PlayerMapImplementation*) impl)->unlock();
 }
 
 /*

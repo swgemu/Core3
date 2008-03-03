@@ -224,10 +224,10 @@ void ChatManagerImplementation::broadcastMessage(Player* player, unicode& messag
 void ChatManagerImplementation::broadcastMessage(const string& message) {
 	lock();
 	
-	playerMap->resetIterator();
+	playerMap->resetIterator(false);
 	
-	while (playerMap->hasNext()) {
-		Player* player = playerMap->getNextValue();
+	while (playerMap->hasNext(false)) {
+		Player* player = playerMap->getNextValue(false);
 		
 		player->sendSystemMessage(message);
 	}
@@ -240,10 +240,11 @@ void ChatManagerImplementation::broadcastMessageRange(Player* player, const stri
 		lock();
 
 		//TODO make it polling the spatial indexer instead of iterating the whole hash table
-		playerMap->resetIterator();
+		playerMap->resetIterator(false);
 	
-		while (playerMap->hasNext()) {
-			Player* trgplayer = playerMap->getNextValue();
+		while (playerMap->hasNext(false)) {
+			Player* trgplayer = playerMap->getNextValue(false);
+			
 			if(player->isInRange((SceneObject*)trgplayer, range)) {
 				trgplayer->sendSystemMessage(message);
 			}
@@ -894,7 +895,7 @@ void ChatManagerImplementation::addPlayer(Player* player) {
 	lock();
 
 	string& name = player->getFirstName();
-	playerMap->put(name, player);
+	playerMap->put(name, player, false);
 	
 	unlock();
 }
@@ -902,7 +903,7 @@ void ChatManagerImplementation::addPlayer(Player* player) {
 Player* ChatManagerImplementation::getPlayer(string& name) {
 	lock();
 
-	Player* player = playerMap->get(name); 
+	Player* player = playerMap->get(name, false); 
 
 	unlock();
 	return player;
@@ -911,7 +912,7 @@ Player* ChatManagerImplementation::getPlayer(string& name) {
 Player* ChatManagerImplementation::removePlayer(string& name) {
 	lock();
 	
-	Player* player = playerMap->remove(name); 
+	Player* player = playerMap->remove(name, false); 
 
 	unlock();
 	return player;

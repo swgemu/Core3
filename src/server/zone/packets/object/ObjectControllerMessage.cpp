@@ -1152,14 +1152,20 @@ void ObjectControllerMessage::parseServerDestroyObject(Player* player, Message* 
 		
 		if (player->getWeapon() == item)
 			player->setWeapon(NULL);
+			
+		if (player->getSurveyTool() == item)
+			player->setSurveyTool(NULL);
+			
+		if (player->getCurrentCraftingTool() == item)
+			player->setCurrentCraftingTool(NULL);
 		
 		BaseMessage* msg = new SceneObjectDestroyMessage(item);
 		player->getClient()->sendMessage(msg);
 		
-		delete item;
+		item->finalize();
 	} else if (waypoint != NULL) {
 		if (player->removeWaypoint(waypoint));
-			delete waypoint;
+			waypoint->finalize();
 	}
 }
 
@@ -1605,10 +1611,31 @@ void ObjectControllerMessage::parseResourceContainerTransfer(Player* player, Mes
     
     uint64 toID = String::toUnsignedLong(toIDString.c_str());
     
-    ResourceContainer* rcof = (ResourceContainer*)player->getInventoryItem(fromID);
-    ResourceContainer* rcot = (ResourceContainer*)player->getInventoryItem(toID);
+    SceneObject* object1 = player->getInventoryItem(fromID);
     
-    rcot->transferContents(player, rcof);
+    if (object1 != NULL && object1->isTangible()) {
+    	TangibleObject* resCof = (TangibleObject*) object1;
+    	
+    	if (resCof->isResource()) {
+    		ResourceContainer* rcof = (ResourceContainer*)resCof;
+    		
+    		SceneObject* object2 = player->getInventoryItem(toID);
+    		
+    		if (object2 != NULL && object2->isTangible()) {
+    			TangibleObject* resCot = (TangibleObject*) object2;
+    			
+    			if (resCot->isResource()) {
+    				ResourceContainer* rcot = (ResourceContainer*) resCot;
+    				
+    				rcot->transferContents(player, rcof);
+    			}
+    		}
+    		
+    		
+    	}
+    	
+    } 
+    
 }
 
 void ObjectControllerMessage::parseRequestDraftSlotsBatch(Player* player, Message* packet) {

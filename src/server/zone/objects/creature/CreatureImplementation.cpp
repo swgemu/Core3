@@ -260,7 +260,7 @@ void CreatureImplementation::reload() {
 }
 
 void CreatureImplementation::unload() {
-	clearCombatState();
+	deagro();
 
 	clearTarget();
 
@@ -544,7 +544,7 @@ void CreatureImplementation::updateCreaturePosition(bool lightUpdate) {
 }
 
 void CreatureImplementation::removeFromZone(bool doLock) {
-	clearCombatState();
+	deagro();
 	
 	try {
 		if (zone == NULL || !isInQuadTree())
@@ -673,8 +673,10 @@ bool CreatureImplementation::activate() {
 			info("queuing more activities");
 			
 			creatureManager->queueActivity(this);
-		} else
+		} else {
 			info("no more activities needed");
+			deagro();
+		}
 			
 		unlock();
 	} catch (Exception& e) {
@@ -746,8 +748,11 @@ void CreatureImplementation::resetState() {
 	mindWounds = 0;
 	
 	damageMap.removeAll();
+	defenderList.removeAll();
 	
 	clearStates();
+	
+	aggroedCreature = NULL;
 	
 	float distance = System::random(64) + 16;
 	randomizePosition(distance);
@@ -810,7 +815,7 @@ bool CreatureImplementation::doMovement() {
 }
 
 void CreatureImplementation::doIncapacitate() {
-	clearCombatState();
+	deagro();
 	setPosture(DEAD_POSTURE);
 }
 

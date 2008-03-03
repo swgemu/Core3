@@ -63,10 +63,10 @@ public:
 		try {
 			player->wlock();
 			
-			if (player->isOnline()) {
+			if (player->isOnline())
 				player->getZone()->getZoneServer()->getResourceManager()->sendSurveyMessage(player, resourceName);
-				player->setCanSurvey();
-			}
+			
+			player->setCanSurvey();
 			
 			player->unlock();
 		} catch (...) {

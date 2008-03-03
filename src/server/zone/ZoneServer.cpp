@@ -250,12 +250,24 @@ void ZoneServer::unlock() {
 		((ZoneServerImplementation*) _impl)->unlock();
 }
 
-ChatManager* ZoneServer::getChatManager() {
+void ZoneServer::increaseTotalDeletedPlayers() {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
 		ORBMethodInvocation invocation(this, 18);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((ZoneServerImplementation*) _impl)->increaseTotalDeletedPlayers();
+}
+
+ChatManager* ZoneServer::getChatManager() {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 19);
 
 		return (ChatManager*) invocation.executeWithObjectReturn();
 	} else
@@ -267,7 +279,7 @@ GuildManager* ZoneServer::getGuildManager() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 19);
+		ORBMethodInvocation invocation(this, 20);
 
 		return (GuildManager*) invocation.executeWithObjectReturn();
 	} else
@@ -279,7 +291,7 @@ PlayerManager* ZoneServer::getPlayerManager() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 20);
+		ORBMethodInvocation invocation(this, 21);
 
 		return (PlayerManager*) invocation.executeWithObjectReturn();
 	} else
@@ -291,7 +303,7 @@ UserManager* ZoneServer::getUserManager() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 21);
+		ORBMethodInvocation invocation(this, 22);
 
 		return (UserManager*) invocation.executeWithObjectReturn();
 	} else
@@ -303,7 +315,7 @@ CraftingManager* ZoneServer::getCraftingManager() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 22);
+		ORBMethodInvocation invocation(this, 23);
 
 		return (CraftingManager*) invocation.executeWithObjectReturn();
 	} else
@@ -315,7 +327,7 @@ ItemManager* ZoneServer::getItemManager() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 23);
+		ORBMethodInvocation invocation(this, 24);
 
 		return (ItemManager*) invocation.executeWithObjectReturn();
 	} else
@@ -327,7 +339,7 @@ ResourceManager* ZoneServer::getResourceManager() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 24);
+		ORBMethodInvocation invocation(this, 25);
 
 		return (ResourceManager*) invocation.executeWithObjectReturn();
 	} else
@@ -339,7 +351,7 @@ BazaarManager* ZoneServer::getBazaarManager() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 25);
+		ORBMethodInvocation invocation(this, 26);
 
 		return (BazaarManager*) invocation.executeWithObjectReturn();
 	} else
@@ -351,7 +363,7 @@ Zone* ZoneServer::getZone(int index) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 26);
+		ORBMethodInvocation invocation(this, 27);
 		invocation.addSignedIntParameter(index);
 
 		return (Zone*) invocation.executeWithObjectReturn();
@@ -364,7 +376,7 @@ string& ZoneServer::getServerName() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 27);
+		ORBMethodInvocation invocation(this, 28);
 
 		invocation.executeWithAsciiReturn(_return_getServerName);
 		return _return_getServerName;
@@ -377,7 +389,7 @@ int ZoneServer::getConnectionCount() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 28);
+		ORBMethodInvocation invocation(this, 29);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -389,7 +401,7 @@ unsigned long long ZoneServer::getNextCreatureID(bool doLock) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 29);
+		ORBMethodInvocation invocation(this, 30);
 		invocation.addBooleanParameter(doLock);
 
 		return invocation.executeWithUnsignedLongReturn();
@@ -445,39 +457,42 @@ Packet* ZoneServerAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* inv)
 		unlock();
 		break;
 	case 18:
-		resp->insertLong(getChatManager()->_getORBObjectID());
+		increaseTotalDeletedPlayers();
 		break;
 	case 19:
-		resp->insertLong(getGuildManager()->_getORBObjectID());
+		resp->insertLong(getChatManager()->_getORBObjectID());
 		break;
 	case 20:
-		resp->insertLong(getPlayerManager()->_getORBObjectID());
+		resp->insertLong(getGuildManager()->_getORBObjectID());
 		break;
 	case 21:
-		resp->insertLong(getUserManager()->_getORBObjectID());
+		resp->insertLong(getPlayerManager()->_getORBObjectID());
 		break;
 	case 22:
-		resp->insertLong(getCraftingManager()->_getORBObjectID());
+		resp->insertLong(getUserManager()->_getORBObjectID());
 		break;
 	case 23:
-		resp->insertLong(getItemManager()->_getORBObjectID());
+		resp->insertLong(getCraftingManager()->_getORBObjectID());
 		break;
 	case 24:
-		resp->insertLong(getResourceManager()->_getORBObjectID());
+		resp->insertLong(getItemManager()->_getORBObjectID());
 		break;
 	case 25:
-		resp->insertLong(getBazaarManager()->_getORBObjectID());
+		resp->insertLong(getResourceManager()->_getORBObjectID());
 		break;
 	case 26:
-		resp->insertLong(getZone(inv->getSignedIntParameter())->_getORBObjectID());
+		resp->insertLong(getBazaarManager()->_getORBObjectID());
 		break;
 	case 27:
-		resp->insertAscii(getServerName());
+		resp->insertLong(getZone(inv->getSignedIntParameter())->_getORBObjectID());
 		break;
 	case 28:
-		resp->insertSignedInt(getConnectionCount());
+		resp->insertAscii(getServerName());
 		break;
 	case 29:
+		resp->insertSignedInt(getConnectionCount());
+		break;
+	case 30:
 		resp->insertLong(getNextCreatureID(inv->getBooleanParameter()));
 		break;
 	default:
@@ -533,6 +548,10 @@ void ZoneServerAdapter::lock() {
 
 void ZoneServerAdapter::unlock() {
 	return ((ZoneServerImplementation*) impl)->unlock();
+}
+
+void ZoneServerAdapter::increaseTotalDeletedPlayers() {
+	return ((ZoneServerImplementation*) impl)->increaseTotalDeletedPlayers();
 }
 
 ChatManager* ZoneServerAdapter::getChatManager() {

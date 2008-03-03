@@ -107,6 +107,8 @@ public:
 
 	void unlock();
 
+	void increaseTotalDeletedPlayers();
+
 	ChatManager* getChatManager();
 
 	GuildManager* getGuildManager();
@@ -167,6 +169,8 @@ public:
 	void lock();
 
 	void unlock();
+
+	void increaseTotalDeletedPlayers();
 
 	ChatManager* getChatManager();
 

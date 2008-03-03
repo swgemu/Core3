@@ -75,6 +75,8 @@ interface PlayerManager {
 	void updatePlayerCreditsToDatabase(Player player);
 	
 	void setGuildManager(GuildManager gmanager);
+	
+	Player putPlayer(Player player);
 
 	Player getPlayer(string name);
 	

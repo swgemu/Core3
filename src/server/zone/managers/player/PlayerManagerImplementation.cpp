@@ -158,6 +158,7 @@ bool PlayerManagerImplementation::create(Player* player, uint32 sessionkey) {
 		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
 	
 		player->setCharacterID(res->getLastAffectedRow());
+		
 		PlayerObject* playerObject = player->getPlayerObject();
 		playerObject->setObjectID(player->getObjectID() + 0x0C);		
 		

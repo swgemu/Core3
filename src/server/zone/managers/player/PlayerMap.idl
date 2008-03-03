@@ -45,18 +45,20 @@ which carries forward this exception.
 import "../../objects/player/Player";
 
 interface PlayerMap {
-	
-	Player put(string name, Player player);
+	Player put(string name, Player player, boolean doLock = true);
 	        
-	Player get(string name);
+	Player get(string name, boolean doLock = true);
 	    
-	Player remove(string name);
+	Player remove(string name, boolean doLock = true);
 	
 	int size();
 	
-	Player getNextValue();
+	Player getNextValue(boolean doLock = true);
 	
-	boolean hasNext();
+	boolean hasNext(boolean doLock = true);
 	
-	void resetIterator();
+	void resetIterator(boolean doLock = true);
+	
+	void lock();
+	void unlock();
 }

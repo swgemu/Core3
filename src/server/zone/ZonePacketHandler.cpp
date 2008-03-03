@@ -276,6 +276,7 @@ void ZonePacketHandler::handleSelectCharacter(Message* pack) {
 		player->reload(client);
 		
 		playerManager->updatePlayerCreditsFromDatabase(player);
+		playerManager->putPlayer(player);
 	} else {
 		player = playerManager->load(characterID);
 		player->setZone(server->getZone(player->getZoneIndex()));
@@ -321,17 +322,15 @@ void ZonePacketHandler::handleClientCreateCharacter(Message* pack) {
 	ClientCreateCharacter::parse(pack, playerImpl);
 
 	if (!playerManager->validateName(playerImpl->getFirstName())) {
-		client->info("name refused for character creation");
-
-		BaseMessage* msg = new ClientCreateCharacterFailed("name_declined_in_use");
-		client->sendMessage(msg);
-		
-		client->disconnect();
-		
+		playerImpl->refuseCreate(client);
 		return;
 	}
 	
 	Player* player = playerImpl->create(client);
+	if (player == NULL) {
+		playerImpl->refuseCreate(client);
+		return;
+	}
 
 	playerImpl->setZoneProcessServer(processServer);
 
@@ -368,7 +367,6 @@ void ZonePacketHandler::handleClientCreateCharacter(Message* pack) {
 		}
 			
 		//server->removeCachedObject(player->getObjectID());
-		
 	} catch (Exception& e) {
 		player->unlock();
 		cout << "unreported exception on ZonePacketHandler::handleClientCreateCharacter()\n" << e.getMessage() << "\n";

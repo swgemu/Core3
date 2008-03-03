@@ -69,14 +69,13 @@ public:
 		try {
 			player->wlock();
 			
+			player->setCanSample();
+			
 			if (player->isOnline() && !firstTime) {
-				if (resetCancelSample) {
-					player->setCanSample();
-					
+				if (resetCancelSample)
 					player->setCancelSample(false);
-				} else {
+				else
 					player->setSampleEvent(resourceName);
-				}
 			}
 			
 			player->unlock();

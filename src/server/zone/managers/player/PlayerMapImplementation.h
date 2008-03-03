@@ -51,7 +51,7 @@ class Player;
 
 #include "PlayerMap.h"
 
-class PlayerMapImplementation : public PlayerMapServant, public HashTable<string, Player*>, public HashTableIterator<string, Player*> {
+class PlayerMapImplementation : public PlayerMapServant, public HashTable<string, Player*>, public HashTableIterator<string, Player*>, public Mutex {
 	int hash(const string& key) {
 	    const char *val = key.c_str();
 		int len = key.size();
@@ -65,8 +65,76 @@ class PlayerMapImplementation : public PlayerMapServant, public HashTable<string
 	}
 
 public:
-	PlayerMapImplementation(int initsize) : PlayerMapServant(), HashTable<string, Player*>(initsize), HashTableIterator<string, Player*>(this) {
+	PlayerMapImplementation(int initsize) : PlayerMapServant(), HashTable<string, Player*>(initsize), HashTableIterator<string, Player*>(this), Mutex("PlayerMap") {
 		setNullValue(NULL);
+	}
+	
+	Player* put(string name, Player* player, bool doLock = true) {
+		Player* play = NULL;
+		
+		lock(doLock);
+		
+		play = HashTable<string, Player*>::put(name, player);
+		
+		unlock(doLock);
+		
+		return play;
+	}
+	        
+	Player* get(string name, bool doLock = true) {
+		Player* player = NULL;
+		
+		lock(doLock);
+		
+		player = HashTable<string, Player*>::get(name);
+		
+		unlock(doLock);
+		
+		return player;
+	}
+	    
+	Player* remove(string name, bool doLock = true) {
+		Player* player = NULL;
+		
+		lock(doLock);
+		
+		player = HashTable<string, Player*>::remove(name);
+		
+		unlock(doLock);
+		
+		return player;
+	}
+		
+	Player* getNextValue(bool doLock = true) {
+		Player* player = NULL;
+		
+		lock(doLock);
+		
+		player = HashTableIterator<string, Player*>::getNextValue();
+		
+		unlock(doLock);
+		
+		return player;
+	}
+	
+	bool hasNext(bool doLock = true) {
+		bool res = false;
+		
+		lock(doLock);
+		
+		res = HashTableIterator<string, Player*>::hasNext();
+		
+		unlock(doLock);
+		
+		return res;
+	}
+	
+	void resetIterator(bool doLock = true) {
+		lock(doLock);
+		
+		HashTableIterator<string, Player*>::resetIterator();
+		
+		unlock(doLock);
 	}
 
 };

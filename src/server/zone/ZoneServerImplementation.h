@@ -96,9 +96,8 @@ class ZoneServerImplementation : public DatagramServiceThread, public ZoneServer
 	int totalSentPackets;
 	int totalResentPackets;
 	
-	int currentPlayers;
-	int maximumPlayers;
-	int totalPlayers;
+	int currentPlayers, maximumPlayers;
+	int totalPlayers, totalDeletedPlayers;
 	
 	uint64 nextCreatureID;
 	
@@ -153,6 +152,14 @@ public:
 	void changeUserCap(int amount = 50);
 
 	int getConnectionCount();
+	
+	inline void increaseTotalDeletedPlayers() {
+		lock();
+		
+		++totalDeletedPlayers;
+		
+		unlock();
+	}
 	
 	// setters and getters	
 	

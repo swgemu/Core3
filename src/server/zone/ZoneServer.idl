@@ -85,6 +85,8 @@ interface ZoneServer {
 	void lock();
 	void unlock();
 	
+	void increaseTotalDeletedPlayers();
+	
 	// getters
 	ChatManager getChatManager();
 	GuildManager getGuildManager();

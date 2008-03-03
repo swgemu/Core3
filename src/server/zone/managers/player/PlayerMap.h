@@ -63,19 +63,23 @@ public:
 
 	virtual ~PlayerMap();
 
-	Player* put(string& name, Player* player);
+	Player* put(string& name, Player* player, bool doLock = true);
 
-	Player* get(string& name);
+	Player* get(string& name, bool doLock = true);
 
-	Player* remove(string& name);
+	Player* remove(string& name, bool doLock = true);
 
 	int size();
 
-	Player* getNextValue();
+	Player* getNextValue(bool doLock = true);
 
-	bool hasNext();
+	bool hasNext(bool doLock = true);
 
-	void resetIterator();
+	void resetIterator(bool doLock = true);
+
+	void lock();
+
+	void unlock();
 
 protected:
 };
@@ -88,24 +92,28 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, ORBMethodInvocation* inv);
 
-	Player* put(string& name, Player* player);
+	Player* put(string& name, Player* player, bool doLock);
 
-	Player* get(string& name);
+	Player* get(string& name, bool doLock);
 
-	Player* remove(string& name);
+	Player* remove(string& name, bool doLock);
 
 	int size();
 
-	Player* getNextValue();
+	Player* getNextValue(bool doLock);
 
-	bool hasNext();
+	bool hasNext(bool doLock);
 
-	void resetIterator();
+	void resetIterator(bool doLock);
+
+	void lock();
+
+	void unlock();
 
 protected:
-	string _param0_put__string_Player_;
-	string _param0_get__string_;
-	string _param0_remove__string_;
+	string _param0_put__string_Player_bool_;
+	string _param0_get__string_bool_;
+	string _param0_remove__string_bool_;
 };
 
 class PlayerMapHelper : public ORBClassHelper, public Singleton<PlayerMapHelper> {

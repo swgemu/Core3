@@ -27,6 +27,10 @@ ResourceManagerImplementation::ResourceManagerImplementation(ZoneServer* inserve
 	//  This dictates the first time the spawner will run
 	//  Spawner does take a good bit of time to populate an
 	//  Empty database.
+	
+	setLogging(false);
+	setGlobalLogging(true);
+	
 }
 void ResourceManagerImplementation::init() {
 	resourceMap = new VectorMap<string, ResourceTemplate*>();
@@ -203,6 +207,9 @@ float ResourceManagerImplementation::getDensity(int planet, string& resname, flo
 
 void ResourceManagerImplementation::sendSurveyMessage(Player* player, string& resourceName, bool doLock) {
 	// Added by Ritter
+	if (player->getSurveyTool() == NULL)
+		return;
+		
 	lock(doLock);
 	Survey* surveyMessage = new Survey();
 	
@@ -280,7 +287,7 @@ void ResourceManagerImplementation::sendSurveyMessage(Player* player, string& re
 		wayImpl->setName("Resource Survey");
 		wayImpl->setPosition(wp_x, 0.0f, wp_y);
 
-		WaypointObject* waypoint = (WaypointObject*) ObjectRequestBroker::instance()->deploy("Resource Survey", wayImpl);
+		WaypointObject* waypoint = (WaypointObject*) wayImpl->deploy();
 		waypoint->changeStatus(true);
 		
 		player->setSurveyWaypoint(waypoint);
@@ -301,6 +308,8 @@ void ResourceManagerImplementation::sendSampleMessage(Player* player, string& re
 	
 	float density = getDensity(player->getZoneIndex(), resourceName, player->getPositionX(), player->getPositionY());
 	
+	unlock(doLock);
+	
 	if (density < 0.1f) {
 		ChatSystemMessage* sysMessage = new ChatSystemMessage("survey", "density_below_threshold", resourceName, 0, false);
 		
@@ -308,6 +317,11 @@ void ResourceManagerImplementation::sendSampleMessage(Player* player, string& re
 		
 		player->changePosture(CreatureObjectImplementation::UPRIGHT_POSTURE);
 	} else {
+		if (player->getSurveyTool() == NULL) {
+			unlock(doLock);
+			return;
+		}
+			
 		int sampleRate = System::random(1000) + (5 * player->getSkillMod("surveying"));
 		
 		if (sampleRate >= 650) {
@@ -390,15 +404,19 @@ void ResourceManagerImplementation::sendSampleMessage(Player* player, string& re
 			player->sendMessage(sysMessage);
 		}
 	}
-	
-	unlock(doLock);
 }
 
-void ResourceManagerImplementation::setResourceData(ResourceContainerImplementation* resContainer) {
+void ResourceManagerImplementation::setResourceData(ResourceContainerImplementation* resContainer, bool doLock) {
 	// Added by Ritter
+	lock(doLock);
 	
 	string name = resContainer->getName().c_str();
 	ResourceTemplate* resource = resourceMap->get(name);
+	
+	if (resource == NULL) {
+		unlock(doLock);
+		return;
+	}
 
 	resContainer->setResourceID(resource->getResourceID());
 	
@@ -417,6 +435,8 @@ void ResourceManagerImplementation::setResourceData(ResourceContainerImplementat
 	resContainer->setContainerFile(resource->getType());
 	resContainer->setObjectCRC(resource->getContainerCRC());
 	resContainer->setObjectSubType(resource->getObjectSubType());
+	
+	unlock(doLock);
 }
 
 bool ResourceManagerImplementation::checkResource(Player* player, string& resourceName, int SurveyToolType, bool doLock) {
@@ -613,9 +633,15 @@ void ResourceManagerImplementation::sendSurveyResourceStats(Player* player, Vect
 	}
 }
 
-string& ResourceManagerImplementation::getClassSeven(const string& resource) {
+void ResourceManagerImplementation::getClassSeven(const string& resource, string& clas) {
+	lock();
+	
 	ResourceTemplate* resTemp = resourceMap->get(resource);
-	return resTemp->getClass7();
+	
+	if (resTemp != NULL)
+		clas = resTemp->getClass7();
+		
+	unlock();
 }
 
 bool ResourceManagerImplementation::isDuplicate(Vector<string>* rList, string& resource) {

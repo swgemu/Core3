@@ -105,6 +105,8 @@ public:
 
 	void setGuildManager(GuildManager* gmanager);
 
+	Player* putPlayer(Player* player);
+
 	Player* getPlayer(string& name);
 
 	GuildManager* getGuildManager();
@@ -157,6 +159,8 @@ public:
 	void updatePlayerCreditsToDatabase(Player* player);
 
 	void setGuildManager(GuildManager* gmanager);
+
+	Player* putPlayer(Player* player);
 
 	Player* getPlayer(string& name);
 

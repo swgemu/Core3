@@ -181,18 +181,18 @@ bool ResourceManager::sendSurveyResources(Player* player, int SurveyToolType) {
 		return ((ResourceManagerImplementation*) _impl)->sendSurveyResources(player, SurveyToolType);
 }
 
-string& ResourceManager::getClassSeven(const string& str) {
+void ResourceManager::getClassSeven(const string& str, string& clas) {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
 		ORBMethodInvocation invocation(this, 14);
 		invocation.addAsciiParameter(str);
+		invocation.addAsciiParameter(clas);
 
-		invocation.executeWithAsciiReturn(_return_getClassSeven);
-		return _return_getClassSeven;
+		invocation.executeWithVoidReturn();
 	} else
-		return ((ResourceManagerImplementation*) _impl)->getClassSeven(str);
+		((ResourceManagerImplementation*) _impl)->getClassSeven(str, clas);
 }
 
 /*
@@ -231,7 +231,7 @@ Packet* ResourceManagerAdapter::invokeMethod(uint32 methid, ORBMethodInvocation*
 		resp->insertBoolean(sendSurveyResources((Player*) inv->getObjectParameter(), inv->getSignedIntParameter()));
 		break;
 	case 14:
-		resp->insertAscii(getClassSeven(inv->getAsciiParameter(_param0_getClassSeven__string_)));
+		getClassSeven(inv->getAsciiParameter(_param0_getClassSeven__string_string_), inv->getAsciiParameter(_param1_getClassSeven__string_string_));
 		break;
 	default:
 		return NULL;
@@ -272,8 +272,8 @@ bool ResourceManagerAdapter::sendSurveyResources(Player* player, int SurveyToolT
 	return ((ResourceManagerImplementation*) impl)->sendSurveyResources(player, SurveyToolType);
 }
 
-string& ResourceManagerAdapter::getClassSeven(const string& str) {
-	return ((ResourceManagerImplementation*) impl)->getClassSeven(str);
+void ResourceManagerAdapter::getClassSeven(const string& str, string& clas) {
+	return ((ResourceManagerImplementation*) impl)->getClassSeven(str, clas);
 }
 
 /*

@@ -343,7 +343,7 @@ void BazaarManagerImplementation::addSaleItem(Player* player, uint64 objectid, u
 	unicode uni = unicode("");
 
 	player->removeInventoryItem(objectid);
-	delete obj;
+	obj->finalize();
 	
 	BaseMessage* msg = new ChatSystemMessage(str1, str2, uni, SALESFEE, true);
 	player->sendMessage(msg);

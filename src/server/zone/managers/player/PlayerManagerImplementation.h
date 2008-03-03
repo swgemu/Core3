@@ -118,6 +118,10 @@ public:
 		return playerMap->get(name);
 	}
 	
+	inline Player* putPlayer(Player* player) {
+		return playerMap->put(player->getFirstName(), player);
+	}
+	
 	inline GuildManager* getGuildManager() {
 		return guildManager;
 	}

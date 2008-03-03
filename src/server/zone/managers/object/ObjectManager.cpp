@@ -56,6 +56,16 @@ ObjectManager::ObjectManager(ServiceThread* serv) : Logger("ObjectManager") {
 
 ObjectManager::~ObjectManager() {
 	delete objectMap;
+	
+	objectCacheMap->resetIterator();
+	
+	while (objectCacheMap->hasNext()) {
+		SceneObject* object = objectCacheMap->next();
+		
+		if (object->isPlayer())
+			info("object \'" + object->_getORBName() + "\' was not cleaned up properly");
+	}
+	
 	delete objectCacheMap;
 }
 

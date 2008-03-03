@@ -139,8 +139,21 @@ void ResourceContainerImplementation::sendDeltas(Player* player) {
 void ResourceContainerImplementation::generateAttributes(SceneObject* obj) {
 	if (!obj->isPlayer())
 		return;
-	
+		
 	Player* player = (Player*) obj;
+		
+	Zone* zone = player->getZone();
+	ResourceManager* resourceManager = NULL;
+	
+	if (zone != NULL) {
+		ZoneServer* serv = zone->getZoneServer();
+		
+		if (serv != NULL)
+			resourceManager = serv->getResourceManager();
+	}
+	
+	if (resourceManager == NULL)
+		return;
 	
 	AttributeListMessage* alm = new AttributeListMessage(_this);
 	alm->insertAttribute("volume", "1");
@@ -151,8 +164,11 @@ void ResourceContainerImplementation::generateAttributes(SceneObject* obj) {
 	
 	alm->insertAttribute("resource_contents", ssQuantity.str());
 	alm->insertAttribute("resource_name", name.c_str());
+
 	
-	string resClass7 = player->getZone()->getZoneServer()->getResourceManager()->getClassSeven(name.c_str());
+	string resClass7;
+	
+	resourceManager->getClassSeven(name.c_str(), resClass7);
 	
 	alm->insertAttribute("resource_class", resClass7);
 	
