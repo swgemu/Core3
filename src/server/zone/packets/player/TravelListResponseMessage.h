@@ -73,7 +73,7 @@ public:
 };
 
 class TravelListResponseMessage : public BaseMessage {
-	Vector<TravelPoint> travelPoints;
+	Vector<TravelPoint*> travelPoints;
 	
 public:
     TravelListResponseMessage(const string& planet) : BaseMessage() {
@@ -81,9 +81,18 @@ public:
 		insertInt(0x4D32541F);  // CRC
         insertAscii(planet);
 	}
+	
+	~TravelListResponseMessage() {
+		while (travelPoints.size() > 0) {
+			TravelPoint* point = travelPoints.get(0);
+			
+			travelPoints.remove(0);
+			delete point;
+		}
+	}
     
     void addPoint(const string& name, float x, float z, float y) {
-    	TravelPoint point(name, x, z, y);
+    	TravelPoint* point = new TravelPoint(name, x, z, y);
     	travelPoints.add(point);
     }
     
@@ -98,9 +107,9 @@ public:
     	insertInt(travelPoints.size());
         	
     	for (int i = 0; i < travelPoints.size(); ++i) {
-    		TravelPoint point = travelPoints.get(i);
+    		TravelPoint* point = travelPoints.get(i);
     		
-    		insertAscii(point.name);
+    		insertAscii(point->name);
     	}
     }
     
@@ -108,11 +117,11 @@ public:
     	insertInt(travelPoints.size());
 
     	for (int i = 0; i < travelPoints.size(); ++i) {
-    		TravelPoint point = travelPoints.get(i);
+    		TravelPoint* point = travelPoints.get(i);
 
-    		insertFloat(point.positionX);
-    		insertFloat(point.positionZ);
-    		insertFloat(point.positionY);
+    		insertFloat(point->positionX);
+    		insertFloat(point->positionZ);
+    		insertFloat(point->positionY);
     	}
     }
     
@@ -120,9 +129,9 @@ public:
     	insertInt(travelPoints.size());
 
     	for (int i = 0; i < travelPoints.size(); ++i) {
-    		TravelPoint point = travelPoints.get(i);
+    		TravelPoint* point = travelPoints.get(i);
 
-    		insertInt(point.unknown1);
+    		insertInt(point->unknown1);
     	}
     }
     
@@ -130,9 +139,9 @@ public:
     	insertInt(travelPoints.size());
 
     	for (int i = 0; i < travelPoints.size(); ++i) {
-    		TravelPoint point = travelPoints.get(i);
+    		TravelPoint* point = travelPoints.get(i);
 
-    		insertByte(point.unknown2);
+    		insertByte(point->unknown2);
     	}
     }
 	

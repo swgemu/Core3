@@ -68,6 +68,7 @@ ZoneClientImplementation::ZoneClientImplementation(DatagramServiceThread* serv, 
 }
 
 ZoneClientImplementation::~ZoneClientImplementation() {
+	player = NULL;
 }
 
 void ZoneClientImplementation::disconnect() {

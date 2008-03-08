@@ -123,6 +123,8 @@ interface SceneObject implements ManagedObject {
 	void setZone(Zone zne);
 	
 	void clearUndeploymentEvent();
+	
+	boolean isUndeploymentScheduled();
 
 	// getters
 	int getObjectType();

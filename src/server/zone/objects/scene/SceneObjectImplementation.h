@@ -316,6 +316,10 @@ public:
 		undeployEvent = NULL;
 	}
 	
+	inline bool isUndeploymentScheduled() {
+		return undeployEvent != NULL;
+	}
+	
 	// getters
 	inline Zone* getZone() {
 		return zone;

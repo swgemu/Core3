@@ -141,6 +141,8 @@ public:
 
 	void clearUndeploymentEvent();
 
+	bool isUndeploymentScheduled();
+
 	int getObjectType();
 
 	unsigned long long getObjectID();
@@ -275,6 +277,8 @@ public:
 	void setZone(Zone* zne);
 
 	void clearUndeploymentEvent();
+
+	bool isUndeploymentScheduled();
 
 	int getObjectType();
 

@@ -9,7 +9,7 @@ General Public License as published by the Free Software
 Foundation; either version 2 of the License, 
 or (at your option) any later version.
  
-This program is distributed in the hope that it will be useful, 
+This program is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of 
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
 See the GNU Lesser General Public License for
@@ -135,6 +135,12 @@ PlayerImplementation::~PlayerImplementation() {
 		delete hairObj;
 		hairObj = NULL;
 	}
+	
+	if (centerOfBeingEvent != NULL) {
+		delete centerOfBeingEvent;
+		centerOfBeingEvent = NULL;
+	}
+
 	
 	server->getZoneServer()->increaseTotalDeletedPlayers();
 	
@@ -373,16 +379,21 @@ void PlayerImplementation::unload() {
 	
 	tradeItems.removeAll();
 	
+	clearBuffs(false);
+	
 	if (firstSampleEvent != NULL) {
 		if (firstSampleEvent->isQueued())
 			server->removeEvent(firstSampleEvent);
 			
+		delete firstSampleEvent;
 		firstSampleEvent = NULL;
 	}
+	
 	if (sampleEvent != NULL) {
 		if (sampleEvent->isQueued())
 			server->removeEvent(sampleEvent);
 			
+		delete sampleEvent;
 		sampleEvent = NULL;
 	}
 	
@@ -430,7 +441,11 @@ void PlayerImplementation::unload() {
 		if (isListening())
 			stopListen(listenID);
 
-		server->removeEvent((Event*) dizzyFallDownEvent);
+		if (dizzyFallDownEvent->isQueued())
+			server->removeEvent((Event*) dizzyFallDownEvent);
+			
+		if (centerOfBeingEvent->isQueued())
+			server->removeEvent(centerOfBeingEvent);
 		
 		if (changeFactionEvent != NULL) {
 			server->removeEvent(changeFactionEvent);
@@ -496,6 +511,8 @@ void PlayerImplementation::userLogout(int msgCounter) {
 	} else {
 		if (logoutEvent != NULL){
 			server->removeEvent(logoutEvent);
+			delete logoutEvent;
+			
 			logoutEvent = NULL;
 		}
 		
@@ -528,6 +545,8 @@ void PlayerImplementation::disconnect(bool closeClient, bool doLock) {
 			
 		if (logoutEvent != NULL) {
 			server->removeEvent(logoutEvent);
+			delete logoutEvent;
+			
 			logoutEvent = NULL;
 		}
 	
@@ -1353,6 +1372,7 @@ void PlayerImplementation::changePosture(int post) {
 		
 		sendSystemMessage("Logout canceled.");
 		server->removeEvent(logoutEvent);
+		delete logoutEvent;
 		
 		logoutEvent = NULL;
 	}
@@ -1362,6 +1382,8 @@ void PlayerImplementation::changePosture(int post) {
 		
 		if (firstSampleEvent != NULL && firstSampleEvent->isQueued()) {
 			server->removeEvent(firstSampleEvent);
+			
+			delete firstSampleEvent;
 			firstSampleEvent = NULL;
 		}
 		
@@ -1369,7 +1391,8 @@ void PlayerImplementation::changePosture(int post) {
 			uint64 time = -(sampleEvent->getTimeStamp().miliDifference());
 			if (sampleEvent->isQueued())
 				server->removeEvent(sampleEvent);
-			
+				
+			delete sampleEvent;			
 			sampleEvent = NULL;
 		
 			string str = "";
@@ -1547,8 +1570,8 @@ void PlayerImplementation::doClone() {
 	
 	resetArmorEncumbrance();
 	
-	//setNeutral();
-	//setCovert();
+	setNeutral();
+	setCovert();
 
 	clearDuelList();		
 	

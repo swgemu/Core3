@@ -606,7 +606,7 @@ void ZonePacketHandler::handleGetMapLocationsRequestMessage(Message* pack) {
 		return;
 	}
 	
-	gmlr->dumpLocationList();
+	//gmlr->dumpLocationList();
 	
 	//these will be used for other locations on the planet map
 	gmlr->addBlankList();

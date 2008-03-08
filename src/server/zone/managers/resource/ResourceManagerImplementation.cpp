@@ -344,9 +344,7 @@ void ResourceManagerImplementation::sendSampleMessage(Player* player, string& re
 	lock(doLock);
 	
 	float density = getDensity(player->getZoneIndex(), resourceName, player->getPositionX(), player->getPositionY());
-	
-	unlock(doLock);
-	
+		
 	if (density < 0.1f) {
 		ChatSystemMessage* sysMessage = new ChatSystemMessage("survey", "density_below_threshold", resourceName, 0, false);
 		
@@ -354,8 +352,10 @@ void ResourceManagerImplementation::sendSampleMessage(Player* player, string& re
 		
 		player->changePosture(CreatureObjectImplementation::UPRIGHT_POSTURE);
 	} else {
-		if (player->getSurveyTool() == NULL)
+		if (player->getSurveyTool() == NULL) {
+			unlock(doLock);
 			return;
+		}
 			
 		int sampleRate = System::random(1000) + (5 * player->getSkillMod("surveying"));
 		
@@ -384,7 +384,6 @@ void ResourceManagerImplementation::sendSampleMessage(Player* player, string& re
 						if (rco->getContents() + resQuantity <= rco->getMaxContents()) {
 							rco->setContents(rco->getContents() + resQuantity);
 							rco->sendDeltas(player);
-							rco->generateAttributes(player);
 							
 							rco->setUpdated(true);
 							
@@ -403,7 +402,6 @@ void ResourceManagerImplementation::sendSampleMessage(Player* player, string& re
 							}
 							
 							rco->sendDeltas(player);
-							rco->generateAttributes(player);
 							
 							rco->setUpdated(true);
 						}
@@ -423,7 +421,7 @@ void ResourceManagerImplementation::sendSampleMessage(Player* player, string& re
 				unicode resname = unicode(resourceName.c_str());
 				rcno->setResourceName(resname);
 				rcno->setContents(resQuantity);
-				setResourceData(rcno);
+				setResourceData(rcno, false);
 				player->addInventoryItem(rcno->deploy());
 				
 				rcno->sendTo(player);
@@ -439,6 +437,8 @@ void ResourceManagerImplementation::sendSampleMessage(Player* player, string& re
 			player->sendMessage(sysMessage);
 		}
 	}
+	
+	unlock(doLock);
 }
 
 void ResourceManagerImplementation::setResourceData(ResourceContainerImplementation* resContainer, bool doLock) {

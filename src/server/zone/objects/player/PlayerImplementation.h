@@ -566,7 +566,7 @@ public:
 	}
 	
 	bool removeWaypoint(WaypointObject* wp) {
-		if (surveyWaypoint = wp)
+		if (surveyWaypoint == wp)
 			surveyWaypoint = NULL;
 		
 		return playerObject->removeWaypoint(wp, true);

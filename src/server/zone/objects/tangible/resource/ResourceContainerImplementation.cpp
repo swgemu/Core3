@@ -121,17 +121,14 @@ void ResourceContainerImplementation::sendTo(Player* player, bool doClose) {
 		SceneObjectImplementation::close(client);
 	
 	sendDeltas(player);
-	generateAttributes(player);
 }
 
 void ResourceContainerImplementation::sendDeltas(Player* player) {
-	ZoneClient* client = player->getClient();
-	
 	ResourceContainerObjectDeltaMessage3* rcnod3 = new ResourceContainerObjectDeltaMessage3(_this);
 	rcnod3->setQuantity(quantity);
 	rcnod3->close();
 	
-	client->sendMessage(rcnod3);
+	player->sendMessage(rcnod3);
 	//Message* rcnod6 = new ResourceContainerObjectDeltaMessage6(_this);
 	//client->sendMessage(rcnod6);
 }

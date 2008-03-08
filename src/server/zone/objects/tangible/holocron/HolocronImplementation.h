@@ -49,6 +49,9 @@ which carries forward this exception.
 
 #include "Holocron.h"
 
+#include "../../../Zone.h"
+#include "../../../managers/item/ItemManager.h"
+
 class HolocronImplementation : public HolocronServant {
 protected:
 	Player* ply;
@@ -73,9 +76,20 @@ public:
 		
 		_this->sendDestroyTo(player);
 		
-		player->removeInventoryItem(objectID);
+		Zone* zone = player->getZone();
 		
-		delete this;
+		if (zone != NULL) {
+			ZoneServer* zoneServer = zone->getZoneServer();
+			
+			ItemManager* itemManager;
+			if (zoneServer != NULL && ((itemManager = zoneServer->getItemManager()) != NULL)) {				
+				player->removeInventoryItem(objectID);
+				
+				itemManager->deletePlayerItem(player, _this, true);
+				
+				finalize();
+			}
+		}
 		
 		return 0;
 	}

@@ -192,6 +192,10 @@ void ZoneServerImplementation::run() {
 	processor->start();
 	
 	receiveMessages();
+
+	/*processor->stop();
+
+	scheduler->stop();*/
 }
 
 void ZoneServerImplementation::shutdown() {
@@ -209,7 +213,7 @@ void ZoneServerImplementation::shutdown() {
 
 	stop();
 
-	scheduler->stop();
+	stopManagers();
 
 	for (int i = 0; i < 50; ++i) {
 		Zone* zone = zones.get(i);
@@ -219,10 +223,6 @@ void ZoneServerImplementation::shutdown() {
 	}
 
 	zones.removeAll();
-	
-	processor->stop();
-
-	stopManagers();
 	
 	printInfo(true);
 	

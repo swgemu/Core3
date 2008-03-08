@@ -50,18 +50,22 @@ which carries forward this exception.
 #include "MapLocation.h"
 
 class GetMapLocationsResponseMessage : public BaseMessage {
-	Vector<MapLocation*> locationList;
+	int listSize;
+	string planetName;
 public:
 	GetMapLocationsResponseMessage(string planet) : BaseMessage() {
+		planetName = planet;
 		insertShort(0x05);
 		insertInt(0x9F80464C);  // CRC
 
-		insertAscii(planet); //planet name
+		insertAscii(planetName); //planet name
+		
+		insertInt(listSize = 0); //size
 	}
 	
-	~GetMapLocationsResponseMessage() {
-		for (int i = 0; i < locationList.size(); ++i)
-			delete locationList.get(i);
+	void updateListSize(int num) {
+		listSize += num;
+		insertInt(12 + planetName.size(), listSize); 
 	}
 	
 	void addBlankList() {
@@ -76,36 +80,20 @@ public:
 	}
 	
 	void addMapLocation(int id, string name, float x, float y, uint8 type1, uint8 type2, uint8 type3) {
-		MapLocation* ml = new MapLocation();
-		ml->id = id;
-		ml->name = unicode(name);
-		ml->x = x;
-		ml->y = y;
-		ml->type1 = type1;
-		ml->type2 = type2;
-		ml->type3 = type3;
-		locationList.add(ml);
-	}
-	
-	void dumpLocationList() {
-		int lsize = locationList.size();
-		insertInt(lsize);
+		insertLong((uint64)id); //ID 1
+		unicode uniName = name;
+	    insertUnicode(uniName); //name
+	    insertFloat(x); //X
+	    insertFloat(y); //Y
+	    insertByte(type1); //type
+	    insertByte(type2);
+	    insertByte(type3);
 		
-		for (int i = 0; i < locationList.size(); i++) {
-			MapLocation* ml = locationList.get(i);
-			
-			insertLong(ml->id); //ID 1
-	    	insertUnicode(ml->name); //name
-	    	insertFloat(ml->x); //X
-	    	insertFloat(ml->y); //Y
-	    	insertByte(ml->type1); //type
-	    	insertByte(ml->type2);
-	    	insertByte(ml->type3);
-		}
+		updateListSize(1);		
 	}
 	
 	inline int getListSize() {
-		return locationList.size();
+		return listSize;
 	}
 	
 };

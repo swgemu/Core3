@@ -51,6 +51,9 @@ which carries forward this exception.
 #include "../../creature/shuttle/ShuttleCreature.h"
 #include "../../player/sui/listbox/SuiListBoxImplementation.h"
 
+#include "../../../Zone.h"
+#include "../../../managers/item/ItemManager.h"
+
 #include "../../../packets.h"
 
 TicketCollectorImplementation::TicketCollectorImplementation(ShuttleCreature* shutle, uint64 objid, const unicode& n, 
@@ -180,10 +183,22 @@ void TicketCollectorImplementation::useTicket(Player* player, Ticket* ticket) {
 	
 	if ((ticket->getDeparturePoint() == city) &&  (ticket->getDeparturePlanet() == planet)) {
 		player->removeInventoryItem(ticket->getObjectID());
+		
+		Zone* zone = player->getZone();
+		
+		if (zone != NULL) {
+			ZoneServer* zoneServer = zone->getZoneServer();
+			
+			ItemManager* itemManager;
+			if (zoneServer != NULL && ((itemManager = zoneServer->getItemManager()) != NULL)) {
+				
+				itemManager->deletePlayerItem(player, ticket, false);
+			}
+		}
 
 		shuttle->sendPlayerTo(player, ticket);
 
-		delete ticket;
+		ticket->finalize();
 		return;
 	}
 

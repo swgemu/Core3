@@ -59,8 +59,10 @@ public:
 		try {
 			object->wlock();
 			
-			object->clearUndeploymentEvent();
-			object->finalize();
+			if (object->isUndeploymentScheduled()) {
+				object->clearUndeploymentEvent();
+				object->finalize();
+			}
 
 			object->unlock();
 		} catch (Exception& e) {

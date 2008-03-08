@@ -93,7 +93,7 @@ SceneObject* ObjectManager::remove(uint64 oid) {
 		return NULL;
 
 	objectCacheMap->put(oid, obj);
-
+	
 	obj->scheduleUndeploy();	
 	
 	return obj;
@@ -104,8 +104,12 @@ SceneObject* ObjectManager::getCachedObject(uint64 oid) {
 
 	if (obj != NULL) {
 		objectCacheMap->remove(oid);
+		
+		obj->wlock();
 
 		obj->redeploy();
+		
+		obj->unlock();
 	}
 	
 	return obj;

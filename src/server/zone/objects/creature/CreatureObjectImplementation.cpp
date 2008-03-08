@@ -272,10 +272,13 @@ CreatureObjectImplementation::CreatureObjectImplementation(uint64 oid) : Creatur
 }
 
 CreatureObjectImplementation::~CreatureObjectImplementation() {
-	/*delete inventory;
-	
-	if (hairObj != NULL)
-		delete hairObj;*/
+	if (dizzyFallDownEvent != NULL) {
+		if (dizzyFallDownEvent->isQueued())
+			server->removeEvent(dizzyFallDownEvent);
+			
+		delete dizzyFallDownEvent;
+		dizzyFallDownEvent = NULL;
+	}
 }
 
 void CreatureObjectImplementation::sendToOwner(Player* player, bool doClose) {
@@ -2916,6 +2919,7 @@ void CreatureObjectImplementation::removeBuffs(bool doUpdateCreature) {
 	for (int i = 0; i < buffEvents.size(); i++) {
 		Event* e = buffEvents.get(i);
 		server->removeEvent(e);
+		delete e;
 	}
 
 	buffEvents.removeAll();
