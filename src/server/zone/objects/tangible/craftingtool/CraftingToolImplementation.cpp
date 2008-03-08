@@ -102,6 +102,9 @@ void CraftingToolImplementation::generateAttributes(SceneObject* obj) {
 	alm->insertAttribute("craft_tool_effectiveness", effectiveness);
 	if (isReady())
 		alm->insertAttribute("craft_tool_status", "@crafting:tool_status_ready");
+	alm->insertAttribute("crafter", "Kyle");
+	alm->insertAttribute("serial_number", "(98u1p5d5)");
+	
 	player->sendMessage(alm);
 }
  

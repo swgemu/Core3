@@ -55,15 +55,15 @@ public:
 		DeltaMessage(sceneObjSchematic, 0x4D53434F, 7) {
 	}
 
-	void fullUpdate(DraftSchematic* ds, int size, int counter, int slot,
+	void fullUpdate(DraftSchematic* ds, int size, int slot,
 			uint64 resourceID, int quantity) {
 		updateIngredientList(ds);
-		updateSlot(size, counter, slot);
-		updateResource(size, counter, slot, resourceID);
-		updateQuantity(size, counter, slot, quantity);
-		update4(size, counter, slot);
-		update5(size, counter, slot);
-		update6(size, counter, slot);
+		updateSlot(size+1, size+1, slot);
+		updateResource(size+1, size+1, slot, resourceID);
+		updateQuantity(size+1, size+1, slot, quantity);
+		update4(size, size, slot);
+		update5(size+1, size+1, slot);
+		update6(size*2, size*2, slot);
 		update7();
 		updateExperimentalValues();
 		update9();
@@ -78,8 +78,8 @@ public:
 		startUpdate(0);
 
 		int ingredientListSize = ds->getIngredientListSize();
-		insertInt(ingredientListSize);
-		insertInt(ingredientListSize);
+		
+		startList(ingredientListSize, ingredientListSize);
 
 		for (int i = 0; i < ingredientListSize; i++) {
 			DraftSchematicIngredient* dsi = ds->getIngredient(i);
@@ -99,14 +99,9 @@ public:
 
 		startUpdate(1);
 
-		if (size != 0) {
-			counter = size + 1;
-		}
+		startList(size, counter);
 
-		insertInt(size+1);
-		insertInt(counter);
-
-		for (int i = 0; i < size; i++) {
+		for (int i = 0; i < size - 1; i++) {
 			addListIntElement(i, 0);
 		}
 		removeListIntElement(slot, 4);
@@ -115,14 +110,9 @@ public:
 	void updateResource(int size, int counter, int slot, uint64 resourceID) {
 		startUpdate(2);
 
-		if (size != 0) {
-			counter = size + 1;
-		}
+		startList(size, counter);
 
-		insertInt(size+1);
-		insertInt(counter);
-
-		for (int i = 0; i < size; i++) {
+		for (int i = 0; i < size - 1; i++) {
 			addListIntElement(i, 0);
 		}
 		removeListIntElement(slot, 1);
@@ -133,14 +123,9 @@ public:
 
 		startUpdate(3);
 
-		if (size != 0) {
-			counter = size + 1;
-		}
+		startList(size, counter);
 
-		insertInt(size+1);
-		insertInt(counter);
-
-		for (int i = 0; i < size; i++) {
+		for (int i = 0; i < size-1; i++) {
 			addListIntElement(i, 0);
 		}
 		removeListIntElement(slot, 1);
@@ -152,44 +137,33 @@ public:
 
 		startUpdate(4);
 
-		if (size != 0) {
-			counter = size;
-		}
-
-		insertInt(size);
-		insertInt(counter);
+		startList(size, counter);
 
 		for (int i = 0; i < size; i++) {
-			addListIntElement(i, 0);
+			if(i == slot){
+				addListIntElement(i, 0);
+			} else {
+				addListFloatElement(i, 1.0f);
+			}
 		}
 	}
 
 	void update5(int size, int counter, int slot) {
 		startUpdate(5);
 
-		if (size != 0) {
-			counter = size + 1;
-		}
+		startList(size, counter);
 
-		insertInt(size+1);
-		insertInt(counter);
-
-		for (int i = 0; i < size; i++) {
+		for (int i = 0; i < size-1; i++) {
 			addListIntElement(i, 0xFFFFFFFF);
 		}
-		removeListIntElement(0, 0);
+		removeListIntElement(slot, 0);
 	}
 
 	void update6(int size, int counter, int slot) {
 
 		startUpdate(6);
 
-		if (size != 0) {
-			counter = size*2;
-		}
-
-		insertInt(size*2);
-		insertInt(counter);
+		startList(size*2, counter*2);
 
 		for (int i = 0; i < size; i++) {
 			addListIntElement(i, 0xFFFFFFFF);
@@ -199,7 +173,7 @@ public:
 	void update7() {
 
 		startUpdate(7);
-		insertByte(16); // No clue, was Decimal 24 for Scatter and 16 for Bofa
+		insertByte(0x10); // No clue, was Decimal 24 for Scatter and 16 for Bofa
 
 	}
 
@@ -238,36 +212,44 @@ public:
 	}
 	void update9() {
 		startUpdate(9);
-		insertInt(1);
-		insertInt(1);
+		
+		startList(4, 4);
 
-		addListIntElement(0, 0);
+		for (int i = 0; i < 4; i++) {
+			addListIntElement(i, 0);
+		}
 	}
 
 	void update10() {
 
 		startUpdate(10);
-		insertInt(1);
-		insertInt(1);
+		
+		startList(4, 4);
 
-		addListIntElement(0, 0);
+		for (int i = 0; i < 4; i++) {
+			addListIntElement(i, 0);
+		}
 	}
 
 	void update11() {
 
 		startUpdate(11);
-		insertInt(1);
-		insertInt(1);
+		
+		startList(4, 4);
 
-		addListIntElement(0, 0);
+		for (int i = 0; i < 4; i++) {
+			addListIntElement(i, 0);
+		}
 	}
 	void update12() {
 
 		startUpdate(12);
-		insertInt(1);
-		insertInt(1);
 
-		addListIntElement(0, 0);
+		startList(4, 4);
+
+		for (int i = 0; i < 4; i++) {
+			addListIntElement(i, 0);
+		}
 	}
 
 	void update14() {

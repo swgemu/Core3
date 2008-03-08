@@ -76,12 +76,20 @@ public:
 		// NO IDEA WTF THIS IS FOR (doing this cause they were in live's logs)
 		for(int i = 0; i < 6; i++) {
 			insertInt(ingredientListSize);
-			insertInt(updateCount);
+			if(i == 5){
+				insertInt(updateCount*2);
+			} else {
+				insertInt(updateCount);
+			}
 			
 			for(int j = 0; j < ingredientListSize; j++) {
 				if(i == 3) {
-					//insertFloat(1);
-					insertInt(0);
+					if(j == 0){
+						insertInt(0);
+					}
+					else {
+						insertFloat(1);
+					}
 				} else if(i == 4) {
 					insertInt(0xFFFFFFFF);
 				} else if(i == 5){

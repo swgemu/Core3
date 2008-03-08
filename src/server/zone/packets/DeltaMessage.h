@@ -124,6 +124,12 @@ public:
 		insertShort(index);
 		insertInt(value);
 	}
+	
+	inline void addListFloatElement(uint16 index, float value) {
+		insertByte(0x01);
+		insertShort(index);
+		insertFloat(value);
+	}
 
 	inline void addListLongElement(uint16 index, uint64 value) {
 		insertByte(0x01);
@@ -140,6 +146,12 @@ public:
 		insertByte(0x02);
 		insertShort(index);
 		insertInt(value);
+	}
+	
+	inline void removeListFloatElement(uint16 index, float value) {
+		insertByte(0x02);
+		insertShort(index);
+		insertFloat(value);
 	}
 
 	inline void removeListLongElement(uint16 index, uint64 value) {
