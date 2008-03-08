@@ -255,7 +255,7 @@ public:
 	void prepareCraftingSessionStageTwo(Player* player, DraftSchematic* ds) {
 		//TODO: Check to see if this scene obj id for the schematic is different
 		// each time you try to enter stage 2 of crafting
-	
+		
 		uint64 sceneObjSchematic = setupDraftSchematicForCSStageTwo(player, ds);
 
 		//TODO:draftSchematic->getTangibleObject();
@@ -382,8 +382,9 @@ public:
 	
 	}	
 	
+	
 	void addResourceToCraft(Player * player, ResourceContainer * rcno, int slot, int counter){
-
+		
 		uint64 sceneObjSchematic = player->getCurrentSchematicID();
 		DraftSchematic * ds = player->getCurrentDraftSchematic(); 
 
@@ -402,13 +403,16 @@ public:
 
 		player->sendMessage(dMsco6); 
 				
+		
 		ManufactureSchematicObjectDeltaMessage7* dMsco7 = new ManufactureSchematicObjectDeltaMessage7(sceneObjSchematic);
-		dMsco7->fullUpdate(ds, ds->getIngredientListSize(), 0, slot, rcno->getObjectID(), dsi->getResourceQuantity());
+		dMsco7->fullUpdate(ds, ds->getIngredientListSize(), slot, 
+				rcno->getObjectID(), dsi->getResourceQuantity());
 		
 		dMsco7->close();
-		player->sendMessage(dMsco7);
 		
-		// Object Controller 
+		player->sendMessage(dMsco7); 
+		
+		//Object Controller 
 		ObjectControllerMessage* objMsg = new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x010C);
 
 		objMsg->insertInt(0x107);
@@ -434,6 +438,26 @@ public:
 			cout << e.getMessage() << "\n";
 		}	
 	}*/
+	
+	void sendInventory(Player * player){
+		
+		uint64 toolID = player->getCurrentCraftingTool()->getObjectID();
+		
+		TangibleObject * tano;
+		Inventory * inv = player->getInventory();
+		
+		tano = (TangibleObject*) inv->getObject(toolID);
+		tano->generateAttributes(player);
+		
+		for(int i =0;i < inv->getObjectCount(); ++i){
+			
+			tano = (TangibleObject*)inv->getObject(i);
+			
+			if(tano->getObjectID() != toolID){
+				tano->generateAttributes(player);
+			}
+		}
+	}
 		
 	void addDraftSchematicsFromGroupName(Player* player, const string& schematicGroupName) {
 		lock();
