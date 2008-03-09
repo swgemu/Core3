@@ -373,12 +373,13 @@ void ResourceManagerImplementation::sendSampleMessage(Player* player, string& re
 			bool makeNewResource = true;
 
 			Inventory* inventory = player->getInventory();
+			
 			ResourceContainer* rco;
 			
 			for (int i = 0; i < inventory->objectsSize(); i++) {
 				TangibleObject* item = (TangibleObject*) inventory->getObject(i);
 				
-				if (item->isResource() && (item->getName().c_str() == resourceName.c_str())) {
+				if (item != NULL && item->isResource() && (item->getName().c_str() == resourceName.c_str())) {
 					rco = (ResourceContainer*) item;
 					
 					if (rco->getContents() + resQuantity <= rco->getMaxContents()) {
@@ -427,7 +428,6 @@ void ResourceManagerImplementation::sendSampleMessage(Player* player, string& re
 				player->addInventoryItem(rco);
 				
 				rcio->sendTo(player);
-				rcio->generateAttributes(player);
 				
 				rcio->setPersistent(false);
 			}

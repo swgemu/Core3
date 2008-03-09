@@ -1589,8 +1589,8 @@ void ObjectControllerMessage::parseResourceContainerSplit(Player* player, Messag
 	int newQuantity = atoi(quantityString.c_str());
 	
 	ResourceContainer* rco = (ResourceContainer*)player->getInventoryItem(objectID);
-	
-	rco->splitContainer(player, newQuantity);
+	if (rco != NULL)
+		rco->splitContainer(player, newQuantity);
 }
 
 void ObjectControllerMessage::parseResourceContainerTransfer(Player* player, Message* packet) {

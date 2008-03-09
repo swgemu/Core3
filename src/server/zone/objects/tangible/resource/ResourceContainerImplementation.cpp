@@ -203,7 +203,6 @@ void ResourceContainerImplementation::splitContainer(Player* player, int newQuan
 		player->addInventoryItem(newRco->deploy());
 		
 		newRco->sendTo(player);
-		newRco->generateAttributes(player);
 		newRco->setPersistent(false);
 		
 		setContents(oldQuantity - newQuantity);
