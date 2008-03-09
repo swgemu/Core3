@@ -2732,8 +2732,10 @@ void PlayerImplementation::setSampleEvent(string& resourceName, bool firstTime) 
 		ChatSystemMessage* sysMessage = new ChatSystemMessage("survey","sample_gone");
 		sendMessage(sysMessage);
 		return;
+	} else if (getPosture() != CreatureObjectImplementation::CROUCHED_POSTURE) {
+		return;
 	}
-	
+		
 	if (firstTime) {
 		firstSampleEvent = new SampleEvent(_this, resourceName);
 		server->addEvent(firstSampleEvent, 2000);
@@ -2753,9 +2755,7 @@ void PlayerImplementation::setSampleEvent(string& resourceName, bool firstTime) 
 			server->addEvent(sampleEvent, 12000);
 		} else {
 			sendSystemMessage("You do not have enough action to do that.");
-			
-			sampleEvent = new SampleEvent(_this, resourceName);
-			server->addEvent(sampleEvent, 12000);
+			changePosture(CreatureObjectImplementation::UPRIGHT_POSTURE);
 		}
 	}
 }

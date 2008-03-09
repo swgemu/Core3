@@ -69,6 +69,7 @@ private:
 	int res_hr;
 	int res_c;
 	int res_er;
+	string res_class7;
 	
 	uint64 resourceID;
 	
@@ -164,6 +165,12 @@ public:
 		itemAttributes->setIntAttribute(temp, i);
 	}
 	
+	inline void setClassSeven(string& str) {
+		res_class7 = str;
+		string temp = "res_class7";
+		itemAttributes->setStringAttribute(temp, str);
+	}
+	
 	inline void setResourceName(unicode& n) {
 		name = unicode(n.c_str());
 	}
@@ -236,6 +243,10 @@ public:
 	
 	inline int getEntangleResistance() {
 		return res_er;
+	}
+	
+	inline string& getClassSeven() {
+		return res_class7;
 	}
 	
 	inline uint64 getResourceID() {

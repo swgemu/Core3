@@ -53,6 +53,7 @@ ResourceContainerImplementation::ResourceContainerImplementation(uint64 oid)
 	objectCRC = 741847407;
 	
 	templateTypeName = "obj_n";
+	
 	name = unicode("");
 	templateName = "";
 	
@@ -97,6 +98,8 @@ void ResourceContainerImplementation::init() {
 	setHeatResistance(0);
 	setConductivity(0);
 	setEntangleResistance(0);
+	string temp = "";
+	setClassSeven(temp);
 }
 
 void ResourceContainerImplementation::sendTo(Player* player, bool doClose) {
@@ -139,19 +142,6 @@ void ResourceContainerImplementation::generateAttributes(SceneObject* obj) {
 		
 	Player* player = (Player*) obj;
 		
-	Zone* zone = player->getZone();
-	ResourceManager* resourceManager = NULL;
-	
-	if (zone != NULL) {
-		ZoneServer* serv = zone->getZoneServer();
-		
-		if (serv != NULL)
-			resourceManager = serv->getResourceManager();
-	}
-	
-	if (resourceManager == NULL)
-		return;
-	
 	AttributeListMessage* alm = new AttributeListMessage(_this);
 	alm->insertAttribute("volume", "1");
 	alm->insertAttribute("condition", "100/100");
@@ -162,12 +152,7 @@ void ResourceContainerImplementation::generateAttributes(SceneObject* obj) {
 	alm->insertAttribute("resource_contents", ssQuantity.str());
 	alm->insertAttribute("resource_name", name.c_str());
 
-	
-	string resClass7;
-	
-	resourceManager->getClassSeven(name.c_str(), resClass7);
-	
-	alm->insertAttribute("resource_class", resClass7);
+	alm->insertAttribute("resource_class", res_class7);
 	
 	if (res_cr > 0)
 		alm->insertAttribute("res_cold_resist", res_cr);
@@ -223,7 +208,6 @@ void ResourceContainerImplementation::splitContainer(Player* player, int newQuan
 		
 		setContents(oldQuantity - newQuantity);
 		sendDeltas(player);
-		generateAttributes(player);
 		setUpdated(true);
 	}
 }
@@ -236,7 +220,6 @@ void ResourceContainerImplementation::transferContents(Player* player, ResourceC
     if (fromContents + toContents <= getMaxContents()) {
     	setContents(fromContents + toContents);
     	sendDeltas(player);
-    	generateAttributes(player);
     
     	player->getZone()->getZoneServer()->getItemManager()->deletePlayerItem(player, fromRCO, true);
     	
@@ -248,11 +231,9 @@ void ResourceContainerImplementation::transferContents(Player* player, ResourceC
     	
     	setContents(canMove + toContents);
     	sendDeltas(player);
-    	generateAttributes(player);
     	
     	fromRCO->setContents(fromContents - canMove);
     	fromRCO->sendDeltas(player);
-    	fromRCO->generateAttributes(player);
     	
     	fromRCO->setUpdated(true); 
     }
@@ -299,4 +280,7 @@ void ResourceContainerImplementation::parseItemAttributes() {
 	
 	temp = "res_er";
 	res_er = itemAttributes->getIntAttribute(temp);
+	
+	temp = "res_class7";
+	res_class7 = itemAttributes->getStringAttribute(temp);
 }

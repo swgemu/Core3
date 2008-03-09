@@ -344,7 +344,7 @@ void ResourceManagerImplementation::sendSampleMessage(Player* player, string& re
 	lock(doLock);
 	
 	float density = getDensity(player->getZoneIndex(), resourceName, player->getPositionX(), player->getPositionY());
-		
+	
 	if (density < 0.1f) {
 		ChatSystemMessage* sysMessage = new ChatSystemMessage("survey", "density_below_threshold", resourceName, 0, false);
 		
@@ -373,38 +373,37 @@ void ResourceManagerImplementation::sendSampleMessage(Player* player, string& re
 			bool makeNewResource = true;
 
 			Inventory* inventory = player->getInventory();
+			ResourceContainer* rco;
 			
 			for (int i = 0; i < inventory->objectsSize(); i++) {
 				TangibleObject* item = (TangibleObject*) inventory->getObject(i);
 				
-				if (item->isResource()) {
-					ResourceContainer* rco = (ResourceContainer*) item;
+				if (item->isResource() && (item->getName().c_str() == resourceName.c_str())) {
+					rco = (ResourceContainer*) item;
 					
-					if (rco->getName().c_str() == resourceName.c_str()) {
-						if (rco->getContents() + resQuantity <= rco->getMaxContents()) {
+					if (rco->getContents() + resQuantity <= rco->getMaxContents()) {
+						rco->setContents(rco->getContents() + resQuantity);
+						rco->sendDeltas(player);
+						
+						rco->setUpdated(true);
+						
+						resQuantity = 0;
+						
+						makeNewResource = false;
+						break;
+					} else if (rco->getContents() < rco->getMaxContents()) {
+						int diff = (rco->getMaxContents() - rco->getContents());
+						
+						if (resQuantity <= diff) {
 							rco->setContents(rco->getContents() + resQuantity);
-							rco->sendDeltas(player);
-							
-							rco->setUpdated(true);
-							
-							resQuantity = 0;
-							
-							makeNewResource = false;
-							break;
-						} else if (rco->getContents() < rco->getMaxContents()) {
-							int diff = (rco->getMaxContents() - rco->getContents());
-							
-							if (resQuantity <= diff) {
-								rco->setContents(rco->getContents() + resQuantity);
-							} else {
-								rco->setContents(rco->getContents() + diff);
-								resQuantity = resQuantity - diff;
-							}
-							
-							rco->sendDeltas(player);
-							
-							rco->setUpdated(true);
+						} else {
+							rco->setContents(rco->getContents() + diff);
+							resQuantity = resQuantity - diff;
 						}
+						
+						rco->sendDeltas(player);
+						
+						rco->setUpdated(true);
 					}
 				}
 			}
@@ -414,19 +413,32 @@ void ResourceManagerImplementation::sendSampleMessage(Player* player, string& re
 				if (inventory->getObjectCount() >= 80) {
 					ChatSystemMessage* sysMessage = new ChatSystemMessage("survey", "no_inv_spc");
 					player->sendMessage(sysMessage);
+					unlock(doLock);
 					return;
 				}
 				
-				ResourceContainerImplementation* rcno = new ResourceContainerImplementation(player->getNewItemID());
+				ResourceContainerImplementation* rcio = new ResourceContainerImplementation(player->getNewItemID());
 				unicode resname = unicode(resourceName.c_str());
-				rcno->setResourceName(resname);
-				rcno->setContents(resQuantity);
-				setResourceData(rcno, false);
-				player->addInventoryItem(rcno->deploy());
+				rcio->setResourceName(resname);
+				rcio->setContents(resQuantity);
+				setResourceData(rcio, false);
 				
-				rcno->sendTo(player);
+				rco = (ResourceContainer*)rcio->deploy();
+				player->addInventoryItem(rco);
 				
-				rcno->setPersistent(false);
+				rcio->sendTo(player);
+				rcio->generateAttributes(player);
+				
+				rcio->setPersistent(false);
+			}
+			
+			if (rco->getObjectSubType() == TangibleObjectImplementation::ENERGYRADIOACTIVE) {
+				int wound = (sampleRate / 70) - System::random(9);
+				if (wound > 0) {
+					player->changeHealthWoundsBar(wound, false);
+					player->changeActionWoundsBar(wound, false);
+					player->changeMindWoundsBar(wound, false);
+				}
 			}
 			
 		} else {
@@ -466,6 +478,7 @@ void ResourceManagerImplementation::setResourceData(ResourceContainerImplementat
 	resContainer->setHeatResistance(resource->getAtt9Stat());
 	resContainer->setConductivity(resource->getAtt10Stat());
 	resContainer->setEntangleResistance(resource->getAtt11Stat());
+	resContainer->setClassSeven(resource->getClass7());
 	
 	resContainer->setContainerFile(resource->getType());
 	resContainer->setObjectCRC(resource->getContainerCRC());
@@ -1898,7 +1911,6 @@ inline string ResourceManagerImplementation::stringify(const int x) {
 }
 
 void ResourceManagerImplementation::setObjectSubType(ResourceTemplate* resImpl) {
-	resImpl->setObjectSubType(TangibleObjectImplementation::RESOURCECONTAINER);
 	if (resImpl->getClass1() == "Inorganic") {
 		if (resImpl->getClass2() == "Mineral") {
 			resImpl->setObjectSubType(TangibleObjectImplementation::INORGANICMINERAL);

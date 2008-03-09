@@ -1612,30 +1612,19 @@ void ObjectControllerMessage::parseResourceContainerTransfer(Player* player, Mes
     uint64 toID = String::toUnsignedLong(toIDString.c_str());
     
     SceneObject* object1 = player->getInventoryItem(fromID);
+    SceneObject* object2 = player->getInventoryItem(toID);
     
-    if (object1 != NULL && object1->isTangible()) {
+    if (object1 != NULL && object2 != NULL && object1->isTangible() && object2->isTangible()) {
     	TangibleObject* resCof = (TangibleObject*) object1;
-    	
-    	if (resCof->isResource()) {
+    	TangibleObject* resCot = (TangibleObject*) object2;
+    	if (resCof->isResource() && resCot->isResource()) {
     		ResourceContainer* rcof = (ResourceContainer*)resCof;
-    		
-    		SceneObject* object2 = player->getInventoryItem(toID);
-    		
-    		if (object2 != NULL && object2->isTangible()) {
-    			TangibleObject* resCot = (TangibleObject*) object2;
-    			
-    			if (resCot->isResource()) {
-    				ResourceContainer* rcot = (ResourceContainer*) resCot;
-    				
-    				rcot->transferContents(player, rcof);
-    			}
-    		}
-    		
-    		
+    		ResourceContainer* rcot = (ResourceContainer*) resCot;
+			rcot->transferContents(player, rcof);
+			return;
     	}
-    	
-    } 
-    
+    }
+    cout << "Error in OCM\n";
 }
 
 void ObjectControllerMessage::parseRequestDraftSlotsBatch(Player* player, Message* packet) {

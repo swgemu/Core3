@@ -400,7 +400,7 @@ public:
 	}
 	
 	inline bool isResource() {
-		return (objectSubType == RESOURCECONTAINER);
+		return (objectSubType & RESOURCECONTAINER);
 	}
 	
 	inline bool isSurveyTool() {

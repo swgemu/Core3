@@ -78,6 +78,7 @@ interface ResourceContainer implements TangibleObject {
 	void setHeatResistance(int i);
 	void setConductivity(int i);
 	void setEntangleResistance(int i);
+	void setClassSeven(string str);
 	void setResourceName(unicode n);
 	void setContainerFile(string tempn);
 	void setObjectCRC(int tempCRC);
@@ -96,6 +97,7 @@ interface ResourceContainer implements TangibleObject {
 	int getHeatResistance();
 	int getConductivity();
 	int getEntangleResistance();
+	string getClassSeven();
 	unsigned long getResourceID();
 	
 	int getMaxContents();

@@ -107,6 +107,8 @@ public:
 
 	void setEntangleResistance(int i);
 
+	void setClassSeven(string& str);
+
 	void setResourceName(unicode& n);
 
 	void setContainerFile(string& tempn);
@@ -141,11 +143,15 @@ public:
 
 	int getEntangleResistance();
 
+	string& getClassSeven();
+
 	unsigned long long getResourceID();
 
 	int getMaxContents();
 
 protected:
+	string _return_getClassSeven;
+
 };
 
 class ResourceContainerImplementation;
@@ -192,6 +198,8 @@ public:
 
 	void setEntangleResistance(int i);
 
+	void setClassSeven(string& str);
+
 	void setResourceName(unicode& n);
 
 	void setContainerFile(string& tempn);
@@ -226,11 +234,14 @@ public:
 
 	int getEntangleResistance();
 
+	string& getClassSeven();
+
 	unsigned long long getResourceID();
 
 	int getMaxContents();
 
 protected:
+	string _param0_setClassSeven__string_;
 	unicode _param0_setResourceName__unicode_;
 	string _param0_setContainerFile__string_;
 };
