@@ -79,12 +79,24 @@ PlayerManager* PlayerManager::clone() {
 }
 
 
-bool PlayerManager::create(Player* player, unsigned int sessionkey) {
+void PlayerManager::stop() {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
 		ORBMethodInvocation invocation(this, 6);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((PlayerManagerImplementation*) _impl)->stop();
+}
+
+bool PlayerManager::create(Player* player, unsigned int sessionkey) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 7);
 		invocation.addObjectParameter(player);
 		invocation.addUnsignedIntParameter(sessionkey);
 
@@ -98,7 +110,7 @@ bool PlayerManager::validateName(string& name) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 7);
+		ORBMethodInvocation invocation(this, 8);
 		invocation.addAsciiParameter(name);
 
 		return invocation.executeWithBooleanReturn();
@@ -111,7 +123,7 @@ Player* PlayerManager::load(unsigned long long charid) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 8);
+		ORBMethodInvocation invocation(this, 9);
 		invocation.addUnsignedLongParameter(charid);
 
 		return (Player*) invocation.executeWithObjectReturn();
@@ -124,7 +136,7 @@ void PlayerManager::unload(Player* player) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 9);
+		ORBMethodInvocation invocation(this, 10);
 		invocation.addObjectParameter(player);
 
 		invocation.executeWithVoidReturn();
@@ -137,7 +149,7 @@ void PlayerManager::handleAbortTradeMessage(Player* player) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 10);
+		ORBMethodInvocation invocation(this, 11);
 		invocation.addObjectParameter(player);
 
 		invocation.executeWithVoidReturn();
@@ -150,7 +162,7 @@ void PlayerManager::handleAddItemMessage(Player* player, unsigned long long item
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 11);
+		ORBMethodInvocation invocation(this, 12);
 		invocation.addObjectParameter(player);
 		invocation.addUnsignedLongParameter(itemID);
 
@@ -164,7 +176,7 @@ void PlayerManager::handleGiveMoneyMessage(Player* player, unsigned int value) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 12);
+		ORBMethodInvocation invocation(this, 13);
 		invocation.addObjectParameter(player);
 		invocation.addUnsignedIntParameter(value);
 
@@ -178,7 +190,7 @@ void PlayerManager::handleAcceptTransactionMessage(Player* player) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 13);
+		ORBMethodInvocation invocation(this, 14);
 		invocation.addObjectParameter(player);
 
 		invocation.executeWithVoidReturn();
@@ -191,7 +203,7 @@ void PlayerManager::handleUnAcceptTransactionMessage(Player* player) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 14);
+		ORBMethodInvocation invocation(this, 15);
 		invocation.addObjectParameter(player);
 
 		invocation.executeWithVoidReturn();
@@ -204,7 +216,7 @@ void PlayerManager::handleVerifyTradeMessage(Player* player) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 15);
+		ORBMethodInvocation invocation(this, 16);
 		invocation.addObjectParameter(player);
 
 		invocation.executeWithVoidReturn();
@@ -217,7 +229,7 @@ void PlayerManager::moveItem(Player* sender, Player* receiver, TangibleObject* i
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 16);
+		ORBMethodInvocation invocation(this, 17);
 		invocation.addObjectParameter(sender);
 		invocation.addObjectParameter(receiver);
 		invocation.addObjectParameter(item);
@@ -232,7 +244,7 @@ void PlayerManager::doBankTip(Player* sender, Player* receiver, int tipAmount, b
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 17);
+		ORBMethodInvocation invocation(this, 18);
 		invocation.addObjectParameter(sender);
 		invocation.addObjectParameter(receiver);
 		invocation.addSignedIntParameter(tipAmount);
@@ -248,7 +260,7 @@ void PlayerManager::doCashTip(Player* sender, Player* receiver, int tipAmount, b
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 18);
+		ORBMethodInvocation invocation(this, 19);
 		invocation.addObjectParameter(sender);
 		invocation.addObjectParameter(receiver);
 		invocation.addSignedIntParameter(tipAmount);
@@ -264,7 +276,7 @@ bool PlayerManager::modifyOfflineBank(Player* sender, string& receiverName, int 
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 19);
+		ORBMethodInvocation invocation(this, 20);
 		invocation.addObjectParameter(sender);
 		invocation.addAsciiParameter(receiverName);
 		invocation.addSignedIntParameter(creditAmount);
@@ -279,7 +291,7 @@ bool PlayerManager::modifyRecipientOfflineBank(string& recipient, int creditAmou
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 20);
+		ORBMethodInvocation invocation(this, 21);
 		invocation.addAsciiParameter(recipient);
 		invocation.addSignedIntParameter(creditAmount);
 
@@ -293,7 +305,7 @@ void PlayerManager::updatePlayerCreditsFromDatabase(Player* player) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 21);
+		ORBMethodInvocation invocation(this, 22);
 		invocation.addObjectParameter(player);
 
 		invocation.executeWithVoidReturn();
@@ -306,7 +318,7 @@ void PlayerManager::updatePlayerCreditsToDatabase(Player* player) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 22);
+		ORBMethodInvocation invocation(this, 23);
 		invocation.addObjectParameter(player);
 
 		invocation.executeWithVoidReturn();
@@ -319,7 +331,7 @@ void PlayerManager::setGuildManager(GuildManager* gmanager) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 23);
+		ORBMethodInvocation invocation(this, 24);
 		invocation.addObjectParameter(gmanager);
 
 		invocation.executeWithVoidReturn();
@@ -332,7 +344,7 @@ Player* PlayerManager::putPlayer(Player* player) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 24);
+		ORBMethodInvocation invocation(this, 25);
 		invocation.addObjectParameter(player);
 
 		return (Player*) invocation.executeWithObjectReturn();
@@ -345,7 +357,7 @@ Player* PlayerManager::getPlayer(string& name) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 25);
+		ORBMethodInvocation invocation(this, 26);
 		invocation.addAsciiParameter(name);
 
 		return (Player*) invocation.executeWithObjectReturn();
@@ -358,7 +370,7 @@ GuildManager* PlayerManager::getGuildManager() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 26);
+		ORBMethodInvocation invocation(this, 27);
 
 		return (GuildManager*) invocation.executeWithObjectReturn();
 	} else
@@ -370,7 +382,7 @@ PlayerMap* PlayerManager::getPlayerMap() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 27);
+		ORBMethodInvocation invocation(this, 28);
 
 		return (PlayerMap*) invocation.executeWithObjectReturn();
 	} else
@@ -389,69 +401,72 @@ Packet* PlayerManagerAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* i
 
 	switch (methid) {
 	case 6:
-		resp->insertBoolean(create((Player*) inv->getObjectParameter(), inv->getUnsignedIntParameter()));
+		stop();
 		break;
 	case 7:
-		resp->insertBoolean(validateName(inv->getAsciiParameter(_param0_validateName__string_)));
+		resp->insertBoolean(create((Player*) inv->getObjectParameter(), inv->getUnsignedIntParameter()));
 		break;
 	case 8:
-		resp->insertLong(load(inv->getUnsignedLongParameter())->_getORBObjectID());
+		resp->insertBoolean(validateName(inv->getAsciiParameter(_param0_validateName__string_)));
 		break;
 	case 9:
-		unload((Player*) inv->getObjectParameter());
+		resp->insertLong(load(inv->getUnsignedLongParameter())->_getORBObjectID());
 		break;
 	case 10:
-		handleAbortTradeMessage((Player*) inv->getObjectParameter());
+		unload((Player*) inv->getObjectParameter());
 		break;
 	case 11:
-		handleAddItemMessage((Player*) inv->getObjectParameter(), inv->getUnsignedLongParameter());
+		handleAbortTradeMessage((Player*) inv->getObjectParameter());
 		break;
 	case 12:
-		handleGiveMoneyMessage((Player*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
+		handleAddItemMessage((Player*) inv->getObjectParameter(), inv->getUnsignedLongParameter());
 		break;
 	case 13:
-		handleAcceptTransactionMessage((Player*) inv->getObjectParameter());
+		handleGiveMoneyMessage((Player*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
 		break;
 	case 14:
-		handleUnAcceptTransactionMessage((Player*) inv->getObjectParameter());
+		handleAcceptTransactionMessage((Player*) inv->getObjectParameter());
 		break;
 	case 15:
-		handleVerifyTradeMessage((Player*) inv->getObjectParameter());
+		handleUnAcceptTransactionMessage((Player*) inv->getObjectParameter());
 		break;
 	case 16:
-		moveItem((Player*) inv->getObjectParameter(), (Player*) inv->getObjectParameter(), (TangibleObject*) inv->getObjectParameter());
+		handleVerifyTradeMessage((Player*) inv->getObjectParameter());
 		break;
 	case 17:
-		doBankTip((Player*) inv->getObjectParameter(), (Player*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter());
+		moveItem((Player*) inv->getObjectParameter(), (Player*) inv->getObjectParameter(), (TangibleObject*) inv->getObjectParameter());
 		break;
 	case 18:
-		doCashTip((Player*) inv->getObjectParameter(), (Player*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter());
+		doBankTip((Player*) inv->getObjectParameter(), (Player*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter());
 		break;
 	case 19:
-		resp->insertBoolean(modifyOfflineBank((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_modifyOfflineBank__Player_string_int_), inv->getSignedIntParameter()));
+		doCashTip((Player*) inv->getObjectParameter(), (Player*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter());
 		break;
 	case 20:
-		resp->insertBoolean(modifyRecipientOfflineBank(inv->getAsciiParameter(_param0_modifyRecipientOfflineBank__string_int_), inv->getSignedIntParameter()));
+		resp->insertBoolean(modifyOfflineBank((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_modifyOfflineBank__Player_string_int_), inv->getSignedIntParameter()));
 		break;
 	case 21:
-		updatePlayerCreditsFromDatabase((Player*) inv->getObjectParameter());
+		resp->insertBoolean(modifyRecipientOfflineBank(inv->getAsciiParameter(_param0_modifyRecipientOfflineBank__string_int_), inv->getSignedIntParameter()));
 		break;
 	case 22:
-		updatePlayerCreditsToDatabase((Player*) inv->getObjectParameter());
+		updatePlayerCreditsFromDatabase((Player*) inv->getObjectParameter());
 		break;
 	case 23:
-		setGuildManager((GuildManager*) inv->getObjectParameter());
+		updatePlayerCreditsToDatabase((Player*) inv->getObjectParameter());
 		break;
 	case 24:
-		resp->insertLong(putPlayer((Player*) inv->getObjectParameter())->_getORBObjectID());
+		setGuildManager((GuildManager*) inv->getObjectParameter());
 		break;
 	case 25:
-		resp->insertLong(getPlayer(inv->getAsciiParameter(_param0_getPlayer__string_))->_getORBObjectID());
+		resp->insertLong(putPlayer((Player*) inv->getObjectParameter())->_getORBObjectID());
 		break;
 	case 26:
-		resp->insertLong(getGuildManager()->_getORBObjectID());
+		resp->insertLong(getPlayer(inv->getAsciiParameter(_param0_getPlayer__string_))->_getORBObjectID());
 		break;
 	case 27:
+		resp->insertLong(getGuildManager()->_getORBObjectID());
+		break;
+	case 28:
 		resp->insertLong(getPlayerMap()->_getORBObjectID());
 		break;
 	default:
@@ -459,6 +474,10 @@ Packet* PlayerManagerAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* i
 	}
 
 	return resp;
+}
+
+void PlayerManagerAdapter::stop() {
+	return ((PlayerManagerImplementation*) impl)->stop();
 }
 
 bool PlayerManagerAdapter::create(Player* player, unsigned int sessionkey) {

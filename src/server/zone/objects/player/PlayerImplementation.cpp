@@ -228,7 +228,7 @@ void PlayerImplementation::init() {
 	
 	suiBoxNextID = 0;
 	
-	setLogging(false);
+	setLogging(true);
 	setGlobalLogging(true);
 }
 

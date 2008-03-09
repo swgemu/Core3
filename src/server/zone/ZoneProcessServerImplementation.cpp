@@ -98,6 +98,8 @@ ZoneProcessServerImplementation::ZoneProcessServerImplementation(ZoneServer* ser
 	lootManager = new LootManager(this);
 	suiManager = new SuiManager(this);
 
+	setLogging(false);
+	
 	scheduler->setLogging(false);
 }
 
@@ -151,14 +153,20 @@ void ZoneProcessServerImplementation::init() {
 void ZoneProcessServerImplementation::run() {
 	scheduler->start();
 
+	info("starting processor instances..");
+	
 	for (int i = 0; i < procThreadCount; ++i) {
 		ZoneMessageProcessorThread* processor = processors[i];
 		processor->start(this);
 	}
+
+	info("processor instances started");
 }
 
 void ZoneProcessServerImplementation::stop() {	
 	flushMessages();
+
+	info("stopping processor instances..");
 	
 	for (int i = 0; i < procThreadCount; ++i) {
 		ZoneMessageProcessorThread* processor = processors[i];
@@ -166,6 +174,8 @@ void ZoneProcessServerImplementation::stop() {
 		
 		delete processor;
 	}
+
+	info("processor instances stopped");
 
 	scheduler->stop();
 }

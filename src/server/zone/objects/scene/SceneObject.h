@@ -79,6 +79,8 @@ public:
 
 	void scheduleUndeploy();
 
+	void removeUndeploymentEvent();
+
 	void sendTo(Player* player, bool doClose = true);
 
 	void sendDestroyTo(Player* player);
@@ -126,6 +128,10 @@ public:
 	void setDirection(float x, float z, float y, float w);
 
 	void generateAttributes(Player* player);
+
+	void info(const string& message, bool forcedLog = false);
+
+	void error(const string& message);
 
 	void setObjectID(unsigned long long oid);
 
@@ -216,6 +222,8 @@ public:
 
 	void scheduleUndeploy();
 
+	void removeUndeploymentEvent();
+
 	void sendTo(Player* player, bool doClose);
 
 	void sendDestroyTo(Player* player);
@@ -263,6 +271,10 @@ public:
 	void setDirection(float x, float z, float y, float w);
 
 	void generateAttributes(Player* player);
+
+	void info(const string& message, bool forcedLog);
+
+	void error(const string& message);
 
 	void setObjectID(unsigned long long oid);
 
@@ -336,6 +348,9 @@ public:
 
 	bool doKeepObject();
 
+protected:
+	string _param0_info__string_bool_;
+	string _param0_error__string_;
 };
 
 class SceneObjectHelper : public ORBClassHelper, public Singleton<SceneObjectHelper> {

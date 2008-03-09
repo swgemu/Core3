@@ -55,8 +55,10 @@ interface PlayerMap {
 	
 	Player getNextValue(boolean doLock = true);
 	
-	boolean hasNext(boolean doLock = true);
+	Player next();
 	
+	boolean hasNext(boolean doLock = true);
+
 	void resetIterator(boolean doLock = true);
 	
 	void lock();

@@ -118,8 +118,50 @@ ZoneServerImplementation::~ZoneServerImplementation() {
 		processor = NULL;
 	}
 	
-	delete objectManager;
-	objectManager = NULL;
+	if (objectManager != NULL) {
+		delete objectManager;
+		objectManager = NULL;
+	}
+
+	if (userManager != NULL) {
+		delete userManager;
+		userManager = NULL;
+	}
+	
+	if (itemManager != NULL) {
+		delete itemManager;
+		itemManager = NULL;
+	}
+
+	if (playerManager != NULL) {
+		delete playerManager;
+		playerManager = NULL;
+	}
+
+	if (guildManager != NULL) {
+		delete guildManager;
+		guildManager = NULL;
+	}
+	
+	if (resourceManager != NULL) {
+		delete resourceManager;
+		resourceManager = NULL;
+	}
+
+	if (craftingManager != NULL) {
+		delete craftingManager;
+		craftingManager = NULL;
+	}
+	
+	if (bazaarManager != NULL) {
+		delete bazaarManager;
+		bazaarManager = NULL;
+	}
+	
+	if (chatManager != NULL) {
+		delete chatManager;
+		chatManager = NULL;
+	}
 }
 
 void ZoneServerImplementation::init() {
@@ -192,14 +234,12 @@ void ZoneServerImplementation::run() {
 	processor->start();
 	
 	receiveMessages();
-
-	/*processor->stop();
-
-	scheduler->stop();*/
+	
+	shutdown();
 }
 
 void ZoneServerImplementation::shutdown() {
-	chatManager->broadcastMessage("Server is shutting down in 30 seconds..");
+	/*chatManager->broadcastMessage("Server is shutting down in 30 seconds..");
 	Thread::sleepMili(10000);
 
 	chatManager->broadcastMessage("Server is shutting down in 20 seconds..");
@@ -209,12 +249,14 @@ void ZoneServerImplementation::shutdown() {
 	Thread::sleepMili(10000);
 
 	chatManager->broadcastMessage("Server is shutting down in 5 seconds..");
-	Thread::sleepMili(5000);
-
-	stop();
+	Thread::sleepMili(5000);*/
+	
+	processor->stop();
 
 	stopManagers();
 
+	info("shutting down zones", true);
+	
 	for (int i = 0; i < 50; ++i) {
 		Zone* zone = zones.get(i);
 		zone->stopManagers();
@@ -223,56 +265,22 @@ void ZoneServerImplementation::shutdown() {
 	}
 
 	zones.removeAll();
-	
+
 	printInfo(true);
 	
 	delete _this;
 }
 
 void ZoneServerImplementation::stopManagers() {
-	info("unloading managers..");
+	info("stopping managers..");
 
-	if (userManager != NULL) {
-		delete userManager;
-		userManager = NULL;
-	}
+	/*if (playerManager != NULL)
+		playerManager->stop();*/
 	
-	if (itemManager != NULL) {
-		delete itemManager;
-		itemManager = NULL;
-	}
-
-	if (playerManager != NULL) {
-		delete playerManager;
-		playerManager = NULL;
-	}
-
-	if (guildManager != NULL) {
-		delete guildManager;
-		guildManager = NULL;
-	}
-	
-	if (resourceManager != NULL) {
+	if (resourceManager != NULL)
 		resourceManager->stop();
-		
-		delete resourceManager;
-		resourceManager = NULL;
-	}
-
-	if (craftingManager != NULL) {
-		delete craftingManager;
-		craftingManager = NULL;
-	}
 	
-	if (bazaarManager != NULL) {
-		delete bazaarManager;
-		bazaarManager = NULL;
-	}
-	
-	if (chatManager != NULL) {
-		delete chatManager;
-		chatManager = NULL;
-	}
+	info("managers stopped", true);
 }
 
 ServiceClient* ZoneServerImplementation::createConnection(Socket* sock, SocketAddress& addr) {

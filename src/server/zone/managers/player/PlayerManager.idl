@@ -50,6 +50,7 @@ import "../../objects/tangible/TangibleObject";
 import "PlayerMap";
 
 interface PlayerManager {
+	void stop();
 	
 	boolean create(Player player, unsigned int sessionkey);	
 	boolean validateName(string name);

@@ -141,12 +141,24 @@ Player* PlayerMap::getNextValue(bool doLock) {
 		return ((PlayerMapImplementation*) _impl)->getNextValue(doLock);
 }
 
-bool PlayerMap::hasNext(bool doLock) {
+Player* PlayerMap::next() {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
 		ORBMethodInvocation invocation(this, 11);
+
+		return (Player*) invocation.executeWithObjectReturn();
+	} else
+		return ((PlayerMapImplementation*) _impl)->next();
+}
+
+bool PlayerMap::hasNext(bool doLock) {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 12);
 		invocation.addBooleanParameter(doLock);
 
 		return invocation.executeWithBooleanReturn();
@@ -159,7 +171,7 @@ void PlayerMap::resetIterator(bool doLock) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 12);
+		ORBMethodInvocation invocation(this, 13);
 		invocation.addBooleanParameter(doLock);
 
 		invocation.executeWithVoidReturn();
@@ -172,7 +184,7 @@ void PlayerMap::lock() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 13);
+		ORBMethodInvocation invocation(this, 14);
 
 		invocation.executeWithVoidReturn();
 	} else
@@ -184,7 +196,7 @@ void PlayerMap::unlock() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 14);
+		ORBMethodInvocation invocation(this, 15);
 
 		invocation.executeWithVoidReturn();
 	} else
@@ -218,15 +230,18 @@ Packet* PlayerMapAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* inv) 
 		resp->insertLong(getNextValue(inv->getBooleanParameter())->_getORBObjectID());
 		break;
 	case 11:
-		resp->insertBoolean(hasNext(inv->getBooleanParameter()));
+		resp->insertLong(next()->_getORBObjectID());
 		break;
 	case 12:
-		resetIterator(inv->getBooleanParameter());
+		resp->insertBoolean(hasNext(inv->getBooleanParameter()));
 		break;
 	case 13:
-		lock();
+		resetIterator(inv->getBooleanParameter());
 		break;
 	case 14:
+		lock();
+		break;
+	case 15:
 		unlock();
 		break;
 	default:
@@ -254,6 +269,10 @@ int PlayerMapAdapter::size() {
 
 Player* PlayerMapAdapter::getNextValue(bool doLock) {
 	return ((PlayerMapImplementation*) impl)->getNextValue(doLock);
+}
+
+Player* PlayerMapAdapter::next() {
+	return ((PlayerMapImplementation*) impl)->next();
 }
 
 bool PlayerMapAdapter::hasNext(bool doLock) {

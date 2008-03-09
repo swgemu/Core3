@@ -79,7 +79,7 @@ void ServerCore::init() {
 
 		if (configManager.getMakeZone()) {
 			zserv = new ZoneServerImplementation(configManager.getZoneProcessingThreads());
-			orb->deploy("ZoneSever", zserv);
+			orb->deploy("ZoneServer", zserv);
 		}
 	} catch (ServiceException& e) {
 		shutdown();
@@ -104,7 +104,11 @@ void ServerCore::run() {
 		zserv->start(44463, zoneAllowedConnections);
 	}
 	
+	info("initialized", true);
+	
 	handleCommands();
+	
+	Thread::sleepMili(500);
 	
 	shutdown();
 }
@@ -113,7 +117,7 @@ void ServerCore::shutdown() {
 	info("shutting down server..");
 
 	if (zserv != NULL) {
-		zserv->shutdown();
+		zserv->stop();
 		
 		zserv = NULL;
 	}

@@ -73,6 +73,8 @@ public:
 
 	Player* getNextValue(bool doLock = true);
 
+	Player* next();
+
 	bool hasNext(bool doLock = true);
 
 	void resetIterator(bool doLock = true);
@@ -101,6 +103,8 @@ public:
 	int size();
 
 	Player* getNextValue(bool doLock);
+
+	Player* next();
 
 	bool hasNext(bool doLock);
 

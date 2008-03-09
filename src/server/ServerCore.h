@@ -53,6 +53,8 @@ which carries forward this exception.
 #include "db/ServerDatabase.h"
 
 #include "login/LoginServer.h"
+
+#include "zone/ZoneServer.h"
 #include "zone/ZoneServerImplementation.h"
 
 class ServerCore : public Logger {
@@ -77,6 +79,11 @@ public:
 	void handleCommands();
 	
 	void processConfig();
+	
+	// getters
+	static ZoneServer* getZoneServer() {
+			return (ZoneServer*) ObjectRequestBroker::instance()->lookUp("ZoneServer");
+	}
 
 };
 

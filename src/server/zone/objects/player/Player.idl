@@ -230,10 +230,6 @@ interface Player implements CreatureObject {
 		
 	void sendSystemMessage(const string file, const string str, unsigned long targetid = 0);
 
-	// logger methods
-	void info(const string message, boolean forcedLog = false);
-	void error(const string message);
-
 	// setters
 	void setConversatingCreature(CreatureObject conversator);
 	void setFirstName(const string name);

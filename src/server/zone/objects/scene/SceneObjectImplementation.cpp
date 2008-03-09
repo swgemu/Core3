@@ -42,7 +42,10 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
+#include "../../../ServerCore.h"
+
 #include "../../ZoneClient.h"
+
 #include "../../ZoneProcessServerImplementation.h"
 
 #include "../../Zone.h"
@@ -95,19 +98,12 @@ SceneObjectImplementation::SceneObjectImplementation(uint64 oid) : QuadTreeEntry
 }
 
 SceneObjectImplementation::~SceneObjectImplementation() {
-	if (isInQuadTree()) {
-		error("Deleting scene object that is in QT");
-		raise(SIGSEGV);
-	}
-	
-	if (zone != NULL)
-		zone->deleteCachedObject(_this);
+	undeploy();
 }
 
 SceneObject* SceneObjectImplementation::deploy() {
 	stringstream name;
-
-	name << "SceneObject 0x" << hex << objectID;
+	name << "SceneObject(" << objectType << ")  0x" << hex << objectID;
 	
 	return (SceneObject*) ORBObjectServant::deploy(name.str());
 }
@@ -121,12 +117,7 @@ void SceneObjectImplementation::redeploy() {
 	
 	//_this->revoke();
 	
-	if (undeployEvent != NULL) {
-		server->removeEvent(undeployEvent);
-		
-		delete undeployEvent;
-		undeployEvent = NULL;
-	}
+	removeUndeploymentEvent();
 }
 
 void SceneObjectImplementation::scheduleUndeploy() {
@@ -136,13 +127,28 @@ void SceneObjectImplementation::scheduleUndeploy() {
 	}
 }
 
-/*void SceneObjectImplementation::finalize() {
-	if (!keepObject && isPlayer()) {
-		info("finalizing object reference");
-
-		_this->release();
+void SceneObjectImplementation::undeploy() {
+	if (isInQuadTree()) {
+		error("Deleting scene object that is in QT");
+		raise(SIGSEGV);
 	}
-}*/
+
+	removeUndeploymentEvent();
+	
+	if (zone != NULL)
+		zone->deleteObject(_this);
+
+	ServerCore::getZoneServer()->removeCachedObject(objectID);
+}
+
+void SceneObjectImplementation::removeUndeploymentEvent() {
+	if (undeployEvent != NULL) {
+		server->removeEvent(undeployEvent);
+		
+		delete undeployEvent;
+		undeployEvent = NULL;
+	}
+}
 
 void SceneObjectImplementation::create(ZoneClient* client) {
 	BaseMessage* msg = new SceneObjectCreateMessage(_this);

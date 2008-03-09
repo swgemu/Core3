@@ -57,6 +57,8 @@ ObjectManager::ObjectManager(ServiceThread* serv) : Logger("ObjectManager") {
 ObjectManager::~ObjectManager() {
 	delete objectMap;
 	
+	info("cleaning up objects..");
+	
 	objectCacheMap->resetIterator();
 	
 	while (objectCacheMap->hasNext()) {
@@ -65,7 +67,9 @@ ObjectManager::~ObjectManager() {
 		if (object->isPlayer())
 			info("object \'" + object->_getORBName() + "\' was not cleaned up properly");
 	}
-	
+
+	info("objects cleaned up", true);
+
 	delete objectCacheMap;
 }
 
@@ -92,6 +96,8 @@ SceneObject* ObjectManager::remove(uint64 oid) {
 	if (obj == NULL)
 		return NULL;
 
+	obj->info("removed from ObjectManager", true);
+	
 	objectCacheMap->put(oid, obj);
 	
 	obj->scheduleUndeploy();	
@@ -117,6 +123,9 @@ SceneObject* ObjectManager::getCachedObject(uint64 oid) {
 
 SceneObject* ObjectManager::removeCachedObject(uint64 oid) {
 	SceneObject* obj = objectCacheMap->remove(oid);
-	
+
+	if (obj != NULL)
+		obj->info("removed from ObjectManager cache", true);
+
 	return obj;
 }

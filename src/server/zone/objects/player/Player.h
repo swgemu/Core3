@@ -273,10 +273,6 @@ public:
 
 	void sendSystemMessage(const string& file, const string& str, unsigned long long targetid = 0);
 
-	void info(const string& message, bool forcedLog = false);
-
-	void error(const string& message);
-
 	void setConversatingCreature(CreatureObject* conversator);
 
 	void setFirstName(const string& name);
@@ -688,10 +684,6 @@ public:
 
 	void sendSystemMessage(const string& file, const string& str, unsigned long long targetid);
 
-	void info(const string& message, bool forcedLog);
-
-	void error(const string& message);
-
 	void setConversatingCreature(CreatureObject* conversator);
 
 	void setFirstName(const string& name);
@@ -918,8 +910,6 @@ protected:
 	unicode _param0_sendSystemMessage__unicode_;
 	string _param0_sendSystemMessage__string_string_long_;
 	string _param1_sendSystemMessage__string_string_long_;
-	string _param0_info__string_bool_;
-	string _param0_error__string_;
 	string _param0_setFirstName__string_;
 	string _param0_setBiography__string_;
 	unicode _param0_setBiography__unicode_;

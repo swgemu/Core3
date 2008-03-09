@@ -69,6 +69,8 @@ public:
 
 	virtual ~PlayerManager();
 
+	void stop();
+
 	bool create(Player* player, unsigned int sessionkey);
 
 	bool validateName(string& name);
@@ -123,6 +125,8 @@ public:
 	PlayerManagerAdapter(PlayerManagerImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, ORBMethodInvocation* inv);
+
+	void stop();
 
 	bool create(Player* player, unsigned int sessionkey);
 

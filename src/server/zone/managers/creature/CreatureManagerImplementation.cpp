@@ -127,15 +127,16 @@ void CreatureManagerImplementation::stop() {
 		
 	join();
 
-	/*creatureMap->resetIterator();
+	creatureMap->resetIterator();
 	
 	while (creatureMap->hasNext()) {
 		Creature* creature = creatureMap->next();
 		
 		creature->unload();
 		
+		creature->removeUndeploymentEvent();
 		creature->finalize();
-	}*/
+	}
 	
 	info("stopped");
 }

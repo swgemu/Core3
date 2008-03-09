@@ -40,7 +40,7 @@
 # this exception also makes it possible to release a modified version 
 # which carries forward this exception.
 
-AM_CXXFLAGS=-ggdb -Wall -Wextra -Wno-unused -Wno-sign-compare
+AM_CXXFLAGS=-ggdb -Wall -Wextra -Wno-unused -Wno-sign-compare -Wno-write-strings
 
 ENGINE3_PATH=../../../../MMOEngine
 

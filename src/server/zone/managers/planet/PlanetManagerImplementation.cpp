@@ -215,7 +215,6 @@ void PlanetManagerImplementation::loadShuttles() {
 		terminal->insertToZone(zone);
 		travelTerminalMap->put(terminal->getObjectID(), terminal);
 
-
 		coordinates = new Coordinate(47, 52.6, -5333);
 		shuttle = creatureManager->spawnShuttle(planetName, "Anchorhead", coordinates, 47, -5317, 52.6);
 		shuttle->setDirection(0, 0, 0.70654386, 0.70766926); 
@@ -339,6 +338,8 @@ void PlanetManagerImplementation::loadVendorTerminals() {
 	VendorTerminalImplementation* termImpl = new VendorTerminalImplementation(zone->getZoneServer()->getBazaarManager(), getNextStaticObjectID(false), 46, 52, -5352);
 	termImpl->setDirection(0, 0, 0, 0);
 	
+	termImpl->setZoneProcessServer(server);
+	
 	VendorTerminal* vendorTerminal = (VendorTerminal*) termImpl->deploy();
 	vendorTerminal->insertToZone(zone);
 	
@@ -375,7 +376,7 @@ void PlanetManagerImplementation::loadBuildings() {
 		
 		float type = result->getFloat(11);
 		
-		if ((int)file.find("object/cell/") >= 0) {
+		if ((int) file.find("object/cell/") >= 0) {
 			BuildingObject* buio = buildingMap->get(parentId);
 			
 			if (buio == NULL)

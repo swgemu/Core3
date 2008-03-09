@@ -114,6 +114,10 @@ public:
 	void redeploy();
 
 	void scheduleUndeploy();
+	
+	void undeploy();
+
+	void removeUndeploymentEvent();
 
 	void create(ZoneClient* client);
 	void destroy(ZoneClient* client);

@@ -82,13 +82,14 @@ public:
 	PlayerManagerImplementation(ItemManager* mgr, ZoneProcessServerImplementation* srv);
 	~PlayerManagerImplementation();
 
+	void stop();
+	
 	bool create(Player* player, uint32 sessionkey);	
 	bool validateName(string& cname);
 
 	Player* load(uint64 charid);
 
 	void unload(Player* player);
-	
 
 	void doBankTip(Player* sender, Player* receiver, int tipAmount, bool updateTipTo);
 	void doCashTip(Player* sender, Player* receiver, int tipAmount, bool updateTipTo);

@@ -54,6 +54,8 @@ which carries forward this exception.
 #include "../../objects/tangible/weapons/JediWeapon.h"
 
 #include "../../../ServerCore.h"
+
+#include "../../ZoneClient.h"
 #include "../../ZoneServer.h"
 
 #include "../../objects.h"
@@ -82,6 +84,26 @@ PlayerManagerImplementation::PlayerManagerImplementation(ItemManager* mgr, ZoneP
 PlayerManagerImplementation::~PlayerManagerImplementation() {
 	delete playerMap;
 	playerMap = NULL;
+}
+
+void PlayerManagerImplementation::stop() {
+	playerMap->resetIterator();
+	
+	while (playerMap->hasNext()) {
+		Player* player = playerMap->next();
+		
+		player->wlock();
+		
+		ZoneClient* client = player->getClient();
+		
+		if (client != NULL)
+			client->disconnect();
+		
+		player->removeUndeploymentEvent();
+		player->finalize();
+		
+		player->unlock();
+	}
 }
 
 bool PlayerManagerImplementation::create(Player* player, uint32 sessionkey) {	

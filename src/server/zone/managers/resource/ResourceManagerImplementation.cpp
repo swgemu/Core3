@@ -67,7 +67,7 @@ void ResourceManagerImplementation::init() {
 	
 	buildResourceMap();
 	
-	info("Finished building resources from database.");
+	info("resources built from database.");
 	
 	averageShiftTime = 3 * 3600000; // In milliseconds
 	//  This is the time between each time the Resource Manager schedules
@@ -117,7 +117,7 @@ void ResourceManagerImplementation::theShift() {
 	numInsert = 0;
 	numNameFunctions = 0;
 
-	info("Starting resource spawner");
+	info("starting resource spawner");
 
 	removeExpiredResources();
 
@@ -133,7 +133,7 @@ void ResourceManagerImplementation::theShift() {
 	
 	countResources();
 	
-	info("Resource Spawner Finished");
+	info("resource Spawner Finished");
 	
 	serv->addEvent(spawnResourcesEvent, averageShiftTime);
 	unlock();
