@@ -1621,10 +1621,8 @@ void ObjectControllerMessage::parseResourceContainerTransfer(Player* player, Mes
     		ResourceContainer* rcof = (ResourceContainer*)resCof;
     		ResourceContainer* rcot = (ResourceContainer*) resCot;
 			rcot->transferContents(player, rcof);
-			return;
     	}
     }
-    cout << "Error in OCM\n";
 }
 
 void ObjectControllerMessage::parseRequestDraftSlotsBatch(Player* player, Message* packet) {
