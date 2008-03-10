@@ -61,16 +61,16 @@ public:
 		updateSlot(size+1, size+1, slot);
 		updateResource(size+1, size+1, slot, resourceID);
 		updateQuantity(size+1, size+1, slot, quantity);
-		update4(size, size, slot);
+		//update4(size, size, slot);
 		update5(size+1, size+1, slot);
-		update6(size*2, size*2, slot);
-		update7();
-		updateExperimentalValues();
-		update9();
-		update10();
-		update11();
-		update12();
-		update14();
+		//update6(size, size, slot);
+		//update7();
+		//updateExperimentalValues();
+		//update9();
+		//update10();
+		//update11();
+		//update12();
+		//update14();
 	}
 
 	void updateIngredientList(DraftSchematic * ds) {
@@ -140,11 +140,11 @@ public:
 		startList(size, counter);
 
 		for (int i = 0; i < size; i++) {
-			if(i == slot){
+//			if(i == slot){
 				addListIntElement(i, 0);
-			} else {
-				addListFloatElement(i, 1.0f);
-			}
+//			} else {
+//				addListFloatElement(i, 1.0f);
+//			}
 		}
 	}
 
@@ -180,76 +180,100 @@ public:
 	void updateExperimentalValues() {
 
 		startUpdate(8);
-		insertInt(4);
-		insertInt(4);
-
-		// HARDCODED UNTIL FIXED
-
+		insertInt(1);
+		insertInt(1);
 		insertByte(1);
 		insertShort(0);
 		insertAscii("crafting");
 		insertInt(0);
-		insertAscii("exp_filling");
-
-		insertByte(1);
-		insertShort(1);
-		insertAscii("crafting");
-		insertInt(0);
-		insertAscii("exp_flavor");
-
-		insertByte(1);
-		insertShort(2);
-		insertAscii("crafting");
-		insertInt(0);
-		insertAscii("exp_nutrition");
-
-		insertByte(1);
-		insertShort(3);
-		insertAscii("crafting");
-		insertInt(0);
-		insertAscii("exp_quantity");
+		insertAscii("mechanism");
+		
+//		insertInt(4);
+//		insertInt(4);
+//
+//		// HARDCODED UNTIL FIXED
+//
+//		insertByte(1);
+//		insertShort(0);
+//		insertAscii("crafting");
+//		insertInt(0);
+//		insertAscii("exp_filling");
+//
+//		insertByte(1);
+//		insertShort(1);
+//		insertAscii("crafting");
+//		insertInt(0);
+//		insertAscii("exp_flavor");
+//
+//		insertByte(1);
+//		insertShort(2);
+//		insertAscii("crafting");
+//		insertInt(0);
+//		insertAscii("exp_nutrition");
+//
+//		insertByte(1);
+//		insertShort(3);
+//		insertAscii("crafting");
+//		insertInt(0);
+//		insertAscii("exp_quantity");
 
 	}
 	void update9() {
 		startUpdate(9);
-		
-		startList(4, 4);
-
-		for (int i = 0; i < 4; i++) {
-			addListIntElement(i, 0);
-		}
+		insertInt(1);
+		insertInt(1);
+		insertInt(1);
+		insertByte(0);
+		insertShort(0);
+//		startList(4, 4);
+//
+//		for (int i = 0; i < 4; i++) {
+//			addListIntElement(i, 0);
+//		}
 	}
 
 	void update10() {
 
 		startUpdate(10);
-		
-		startList(4, 4);
-
-		for (int i = 0; i < 4; i++) {
-			addListIntElement(i, 0);
-		}
+		insertInt(1);
+		insertInt(1);
+		insertInt(1);
+		insertByte(0);
+		insertShort(0);
+//		startList(4, 4);
+//
+//		for (int i = 0; i < 4; i++) {
+//			addListIntElement(i, 0);
+//		}
 	}
 
 	void update11() {
 
 		startUpdate(11);
-		
-		startList(4, 4);
-
-		for (int i = 0; i < 4; i++) {
-			addListIntElement(i, 0);
-		}
+		insertInt(1);
+		insertInt(1);
+		insertInt(1);
+		insertByte(0);
+		insertShort(0);
+//		startList(4, 4);
+//
+//		for (int i = 0; i < 4; i++) {
+//			addListIntElement(i, 0);
+//		}
 	}
 	void update12() {
 
 		startUpdate(12);
-
-		startList(4, 4);
-
-		for (int i = 0; i < 4; i++) {
-			addListIntElement(i, 0);
-		}
+		insertInt(1);
+		insertInt(1);
+		insertInt(1);
+		insertByte(0);
+		insertShort(0);
+//		startList(4, 4);
+//
+//		for (int i = 0; i < 4; i++) {
+//			addListIntElement(i, 0);
+//		}
 	}
 
 	void update14() {

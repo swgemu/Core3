@@ -418,7 +418,7 @@ public:
 		objMsg->insertInt(0x107);
 		objMsg->insertInt(0);
 		
-		objMsg->insertByte(0); //?!?!
+		objMsg->insertByte(1); //?!?!
 		
 		player->sendMessage(objMsg);
 	}
