@@ -274,6 +274,7 @@ public:
 		player->sendMessage(soCreateMsg);
 		
 		CraftingTool* ct = player->getCurrentCraftingTool();
+		
 		ct->generateAttributes(player);
 		
 		// Update Containment Message
@@ -316,8 +317,9 @@ public:
 		SceneObjectCreateMessage* soCreateMsg = new SceneObjectCreateMessage(tanoSceneObjID, 0x77D8BCD7); // bofa treat tangible object CRC
 		player->sendMessage(soCreateMsg);
 
-		// Update Containment Message
 		CraftingTool* ct = player->getCurrentCraftingTool();
+		
+		// Update Containment Message
 		UpdateContainmentMessage* ucMsg = new UpdateContainmentMessage(tanoSceneObjID, ct->getObjectID(), 0);
 		player->sendMessage(ucMsg);
 	
@@ -379,7 +381,6 @@ public:
 		// MSCO7
 		ManufactureSchematicObjectMessage7* msco7 = new ManufactureSchematicObjectMessage7(sceneObjSchematic, ds);
 		player->sendMessage(msco7);
-	
 	}	
 	
 	
@@ -405,8 +406,14 @@ public:
 				
 		
 		ManufactureSchematicObjectDeltaMessage7* dMsco7 = new ManufactureSchematicObjectDeltaMessage7(sceneObjSchematic);
-		dMsco7->fullUpdate(ds, ds->getIngredientListSize(), slot, 
-				rcno->getObjectID(), dsi->getResourceQuantity());
+// Need to make this not static
+		if(slot == 0){
+			dMsco7->fullUpdate(ds, ds->getIngredientListSize(), slot, rcno->getObjectID(), dsi->getResourceQuantity());
+		}
+		else {
+			dMsco7->partialUpdate(slot, ds->getIngredientListSize() + slot + 1, rcno->getObjectID(), dsi->getResourceQuantity());	
+			
+		}
 		
 		dMsco7->close();
 		
@@ -417,8 +424,8 @@ public:
 
 		objMsg->insertInt(0x107);
 		objMsg->insertInt(0);
-		
-		objMsg->insertByte(1); //?!?!
+
+		objMsg->insertByte(counter); //?!?!
 		
 		player->sendMessage(objMsg);
 	}
