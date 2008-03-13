@@ -103,8 +103,14 @@ public:
 		
 		checkMitigation(creature, targetCreature, minDamage, maxDamage);
 					
-		float damage = -damageRatio * (System::random((int)maxDamage - (int)minDamage) + (int)minDamage);
-			
+		int average = 0;
+		
+		int diff = (int)maxDamage - (int)minDamage;
+		if (diff >= 0)
+			average = System::random(diff) + (int)minDamage;
+		
+		float damage = -damageRatio * average;
+		
 		calculateDamageReduction(creature, targetCreature, damage);
 	
 		int pool = System::random(100);

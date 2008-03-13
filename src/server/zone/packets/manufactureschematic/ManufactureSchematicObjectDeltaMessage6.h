@@ -57,8 +57,7 @@ public:
 	}
 	
 	void insertToResourceSlot(int totalSlots, int slotNumber){
-		startUpdate(5);
-		insertByte(slotNumber);
+		addByteUpdate(5, slotNumber);
 	}
 };
 
