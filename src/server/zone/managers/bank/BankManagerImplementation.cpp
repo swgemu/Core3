@@ -42,23 +42,48 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-import "../Player";
+#include "BankManagerImplementation.h"
 
-interface SuiBox {
+BankManagerImplementation::BankManagerImplementation(ZoneServer* zoneserver, ZoneProcessServerImplementation* server) :
+	BankManagerServant(), Logger("BankManager") {
+
+	processServer = server;
+	zoneServer = zoneserver;
 	
-	void setPromptTitle(const string name);
-	void setPromptText(const string name);
-	void setCancelButton(boolean value);
-	void setUsingObjectID(unsigned long oid);
-
-	boolean isInputBox();
-	boolean isListBox();
-	boolean isMessageBox();
-	boolean isTransferBox();
-	boolean isColorPicker();
-	boolean isBankTransferBox();
-
-	unsigned long getBoxID();
-	unsigned long getUsingObjectID();
-	Player getPlayer();
+	bankTerminals = new BankTerminals();
+	
+	setLogging(false); 
+	setGlobalLogging(true);
+	
+	info("Populating the bank terminal details");
+	
+	try {
+		stringstream query;
+		query << "SELECT * from `staticobjects` where `file` like '%terminal_bank%';";
+	
+		ResultSet* terminals = ServerDatabase::instance()->executeQuery(query);
+		
+		while (terminals->next()) {
+			
+			int planet = terminals->getUnsignedInt(0);
+			uint64 objectID = terminals->getUnsignedLong(1);
+			float x = terminals->getFloat(8);
+			float z = terminals->getFloat(9);
+			
+			bankTerminals->addTerminal(objectID, planet, (int)x, (int)z);
+		
+		}
+	} catch (DatabaseException& e) {
+		cout << "Can't get details of bank terminals\n";
+	}
+	
+	info("Terminals populated");
 }
+
+bool BankManagerImplementation::isBankTerminal(uint64 objectid) {
+	if (bankTerminals->isBankTerminal(objectid) != NULL)
+		return true;
+	else
+		return false;	
+}
+

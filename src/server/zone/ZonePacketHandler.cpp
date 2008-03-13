@@ -794,11 +794,14 @@ void ZonePacketHandler::handleSuiEventNotification(Message* pack) {
 	uint32 unk1 = pack->parseInt();
 	uint32 unk2 = pack->parseInt();
 	unicode value;
+	unicode value2;
 	
 	if (unk2 != 0)
 		pack->parseUnicode(value);
+	if (unk2 > 1)
+		pack->parseUnicode(value2);
 	
-	processServer->getSuiManager()->handleSuiEventNotification(opcode, player, cancel, value.c_str());
+	processServer->getSuiManager()->handleSuiEventNotification(opcode, player, cancel, value.c_str(), value2.c_str());
 }
 
 void ZonePacketHandler::handleAbortTradeMessage(Message* pack) {

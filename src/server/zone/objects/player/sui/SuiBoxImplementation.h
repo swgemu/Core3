@@ -73,6 +73,7 @@ public:
 	const static int MESSAGEBOX = 2;
 	const static int TRANSFERBOX = 3;
 	const static int COLORPICKER = 4;
+	const static int BANKTRANSFERBOX = 5;
 	
 public:
 	SuiBoxImplementation(Player* play, uint32 typeID, uint32 boxtype);
@@ -119,6 +120,10 @@ public:
 	
 	inline bool isTransferBox() {
 		return boxType == TRANSFERBOX;
+	}
+	
+	inline bool isBankTransferBox() {
+		return boxType == BANKTRANSFERBOX;
 	}
 	
 	inline bool isColorPicker() {

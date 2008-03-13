@@ -52,9 +52,12 @@ which carries forward this exception.
 
 #include "../../objects/player/sui/listbox/SuiListBoxImplementation.h"
 #include "../../objects/player/sui/colorpicker/SuiColorPickerImplementation.h"
+#include "../../objects/player/sui/banktransferbox/SuiBankTransferBoxImplementation.h"
 
 #include "../bazaar/BazaarManager.h"
 #include "../bazaar/BazaarManagerImplementation.h"
+#include "../bank/BankManager.h"
+#include "../bank/BankManagerImplementation.h"
 
 RadialManager::RadialManager() {
 }
@@ -155,6 +158,14 @@ void RadialManager::handleRadialSelect(Player* player, Packet* pack) {
 			return;
 		}
 
+		BankManager* bankManager = zone->getZoneServer()->getBankManager();
+		if (bankManager->isBankTerminal(objectID)) {
+			sendRadialResponseForBank(objectID, player);
+			
+			player->unlock();
+			return;
+		}
+		
 		if (obj == NULL) {
 			obj = player->getInventoryItem(objectID);
 
@@ -315,6 +326,18 @@ void RadialManager::sendRadialResponseForBazaar(uint64 objectId, Player* player)
 	if (bazaar != NULL)
 		bazaar->newBazaarRequest(objectId, player, player->getZoneID());
 	
+}
+
+void RadialManager::sendRadialResponseForBank(uint64 objectId, Player* player) {
+	Zone* zone = player->getZone();
+	
+	SuiBankTransferBoxImplementation* sui = new SuiBankTransferBoxImplementation(player, 0xD65E);
+	
+	sui->addCash(player->getCashCredits());
+	sui->addBank(player->getBankCredits());
+	
+	player->addSuiBox(sui->deploy());
+	player->sendMessage(sui->generateMessage());
 }
 
 void RadialManager::handleVehicleStore(SceneObject* obj) {

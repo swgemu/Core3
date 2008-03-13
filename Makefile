@@ -60,6 +60,7 @@ IDL_SOURCES = server/zone/Zone.idl \
 				server/zone/objects/player/sui/listbox/SuiListBox.idl \
 				server/zone/objects/player/sui/messagebox/SuiMessageBox.idl \
 				server/zone/objects/player/sui/transferbox/SuiTransferBox.idl \
+				server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.idl \
 				server/zone/objects/player/sui/inputbox/SuiInputBox.idl \
 				server/zone/objects/player/sui/colorpicker/SuiColorPicker.idl \
 				server/zone/objects/tangible/TangibleObject.idl \
@@ -120,6 +121,7 @@ IDL_SOURCES = server/zone/Zone.idl \
 				server/zone/objects/waypoint/WaypointObject.idl \
 				server/zone/managers/bazaar/BazaarManager.idl \
 				server/zone/managers/bazaar/BazaarPlanetManager.idl \
+				server/zone/managers/bank/BankManager.idl \
 				server/zone/objects/tangible/component/ShipComponent.idl \
 				server/zone/objects/ship/ShipObject.idl \
 				server/zone/managers/guild/GuildMap.idl \

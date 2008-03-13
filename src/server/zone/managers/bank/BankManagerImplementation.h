@@ -42,23 +42,25 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-import "../Player";
+#ifndef BANKMANAGERIMPLEMENTATION_H_
+#define BANKMANAGERIMPLEMENTATION_H_
 
-interface SuiBox {
+#include "engine/engine.h"
+
+#include "../../objects.h"
+
+#include "BankManager.h"
+#include "BankTerminals.h"
+
+class BankManagerImplementation : public BankManagerServant, public Logger {
+	ZoneProcessServerImplementation* processServer;
+	ZoneServer*	zoneServer;
 	
-	void setPromptTitle(const string name);
-	void setPromptText(const string name);
-	void setCancelButton(boolean value);
-	void setUsingObjectID(unsigned long oid);
+	BankTerminals* bankTerminals;
 
-	boolean isInputBox();
-	boolean isListBox();
-	boolean isMessageBox();
-	boolean isTransferBox();
-	boolean isColorPicker();
-	boolean isBankTransferBox();
+public:
+	BankManagerImplementation(ZoneServer* zoneServer, ZoneProcessServerImplementation* server);
+	bool isBankTerminal(uint64 objectid);
+};
 
-	unsigned long getBoxID();
-	unsigned long getUsingObjectID();
-	Player getPlayer();
-}
+#endif /*BANKMANAGERIMPLEMENTATION_H_*/

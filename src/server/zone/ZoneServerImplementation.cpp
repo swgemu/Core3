@@ -70,6 +70,8 @@ which carries forward this exception.
 
 #include "managers/bazaar/BazaarManager.h"
 #include "managers/bazaar/BazaarManagerImplementation.h"
+#include "managers/bank/BankManager.h"
+#include "managers/bank/BankManagerImplementation.h"
 
 #include "ZoneClient.h"
 #include "ZoneClientImplementation.h"
@@ -157,6 +159,11 @@ ZoneServerImplementation::~ZoneServerImplementation() {
 		delete bazaarManager;
 		bazaarManager = NULL;
 	}
+
+	if (bankManager != NULL) {
+		delete bankManager;
+		bankManager = NULL;
+	}
 	
 	if (chatManager != NULL) {
 		delete chatManager;
@@ -191,6 +198,7 @@ void ZoneServerImplementation::init() {
 	guildManager = NULL;
 	resourceManager = NULL;
 	bazaarManager = NULL;
+	bankManager = NULL;
 	chatManager = NULL;
 	
 	startManagers();
@@ -226,6 +234,9 @@ void ZoneServerImplementation::startManagers() {
 
 	BazaarManagerImplementation* bazImpl = new BazaarManagerImplementation(_this, processor);
 	bazaarManager = (BazaarManager*) bazImpl->deploy("BazaarManager");
+
+	BankManagerImplementation* bankImpl = new BankManagerImplementation(_this, processor);
+	bankManager = (BankManager*) bankImpl->deploy("BankManager");
 }
 
 void ZoneServerImplementation::run() {

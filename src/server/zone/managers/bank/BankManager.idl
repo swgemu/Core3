@@ -42,23 +42,8 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-import "../Player";
+import "../../objects/player/Player";
 
-interface SuiBox {
-	
-	void setPromptTitle(const string name);
-	void setPromptText(const string name);
-	void setCancelButton(boolean value);
-	void setUsingObjectID(unsigned long oid);
-
-	boolean isInputBox();
-	boolean isListBox();
-	boolean isMessageBox();
-	boolean isTransferBox();
-	boolean isColorPicker();
-	boolean isBankTransferBox();
-
-	unsigned long getBoxID();
-	unsigned long getUsingObjectID();
-	Player getPlayer();
+interface BankManager {
+	boolean isBankTerminal(long objectid);
 }

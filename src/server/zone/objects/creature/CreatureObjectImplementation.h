@@ -786,6 +786,8 @@ public:
 	// cash transaction methods
 	void addCashCredits(uint32 credits);
 	void addBankCredits(uint32 credits);
+	void updateCashCredits(uint32 credits);
+	void updateBankCredits(uint32 credits);
 	void subtractCashCredits(uint32 credits);
 	void subtractBankCredits(uint32 credits);
 

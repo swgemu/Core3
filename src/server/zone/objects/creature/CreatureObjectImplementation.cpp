@@ -2768,6 +2768,26 @@ void CreatureObjectImplementation::addBankCredits(uint32 credits) {
 	((PlayerImplementation*) this)->sendMessage(delta);
 }
 
+void CreatureObjectImplementation::updateCashCredits(uint32 credits) {
+	cashCredits = credits;
+	
+	CreatureObjectDeltaMessage1* delta = new CreatureObjectDeltaMessage1(this);
+	delta->updateCashCredits();
+	delta->close();
+	
+	((PlayerImplementation*) this)->sendMessage(delta);
+}
+
+void CreatureObjectImplementation::updateBankCredits(uint32 credits) {
+	bankCredits = credits;
+	
+	CreatureObjectDeltaMessage1* delta = new CreatureObjectDeltaMessage1(this);
+	delta->updateBankCredits();
+	delta->close();
+
+	((PlayerImplementation*) this)->sendMessage(delta);
+}
+
 void CreatureObjectImplementation::subtractCashCredits(uint32 credits) {
 	cashCredits = cashCredits - credits;
 	

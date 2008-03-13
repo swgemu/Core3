@@ -73,6 +73,7 @@ core3_IDLS =	server/zone/Zone.cpp \
 		server/zone/objects/player/sui/messagebox/SuiMessageBox.cpp \
 		server/zone/objects/player/sui/inputbox/SuiInputBox.cpp \
 		server/zone/objects/player/sui/transferbox/SuiTransferBox.cpp \
+		server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.cpp \
 		server/zone/objects/player/sui/colorpicker/SuiColorPicker.cpp \
 		server/zone/objects/tangible/TangibleObject.cpp \
 		server/zone/objects/tangible/Container.cpp \
@@ -140,10 +141,11 @@ core3_IDLS =	server/zone/Zone.cpp \
 		server/zone/managers/item/ItemManager.cpp \
 		server/zone/managers/user/UserManager.cpp \
 		server/zone/managers/planet/PlanetManager.cpp \
-    server/zone/managers/resource/ResourceManager.cpp \
+		server/zone/managers/resource/ResourceManager.cpp \
 		server/zone/managers/loot/LootManager.cpp \
 		server/zone/managers/bazaar/BazaarManager.cpp \
 		server/zone/managers/bazaar/BazaarPlanetManager.cpp \
+		server/zone/managers/bank/BankManager.cpp \
 		server/chat/room/ChatRoom.cpp \
 		server/chat/ChatManager.cpp
 
@@ -171,11 +173,11 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/lair/LairObjectImplementation.cpp \
 		server/zone/objects/tangible/surveytool/SurveyToolImplementation.cpp \
 		server/zone/objects/tangible/craftingtool/CraftingToolImplementation.cpp \
-    server/zone/objects/tangible/resource/ResourceContainerImplementation.cpp \
-    	server/zone/objects/tangible/attachment/AttachmentImplementation.cpp \
-    	server/zone/objects/tangible/powerup/PowerupImplementation.cpp \
-    server/zone/objects/tangible/ticket/TicketImplementation.cpp \
-    server/zone/objects/tangible/ticketcollector/TicketCollectorImplementation.cpp \
+		server/zone/objects/tangible/resource/ResourceContainerImplementation.cpp \
+		server/zone/objects/tangible/attachment/AttachmentImplementation.cpp \
+		server/zone/objects/tangible/powerup/PowerupImplementation.cpp \
+		server/zone/objects/tangible/ticket/TicketImplementation.cpp \
+		server/zone/objects/tangible/ticketcollector/TicketCollectorImplementation.cpp \
 		server/zone/objects/static/StaticObjectImplementation.cpp \
 		server/zone/objects/player/PlayerImplementation.cpp \
 		server/zone/objects/player/PlayerObjectImplementation.cpp \
@@ -184,6 +186,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/player/sui/messagebox/SuiMessageBoxImplementation.cpp \
 		server/zone/objects/player/sui/inputbox/SuiInputBoxImplementation.cpp \
 		server/zone/objects/player/sui/transferbox/SuiTransferBoxImplementation.cpp \
+		server/zone/objects/player/sui/banktransferbox/SuiBankTransferBoxImplementation.cpp \
 		server/zone/objects/player/sui/colorpicker/SuiColorPickerImplementation.cpp \
 		server/zone/objects/creature/CreatureImplementation.cpp \
 		server/zone/objects/creature/CreatureObjectImplementation.cpp \
@@ -206,9 +209,10 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/combat/CommandQueueAction.cpp \
 		server/zone/managers/creature/CreatureManagerImplementation.cpp \
 		server/zone/managers/planet/PlanetManagerImplementation.cpp \
-    server/zone/managers/resource/ResourceManagerImplementation.cpp \
+		server/zone/managers/resource/ResourceManagerImplementation.cpp \
 		server/zone/managers/bazaar/BazaarManagerImplementation.cpp \
 		server/zone/managers/bazaar/BazaarPlanetManagerImplementation.cpp \
+		server/zone/managers/bank/BankManagerImplementation.cpp \
 		server/zone/managers/sui/SuiManager.cpp \
 		server/chat/room/ChatRoomImplementation.cpp \
 		server/chat/ChatManagerImplementation.cpp \

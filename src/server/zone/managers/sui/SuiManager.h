@@ -57,7 +57,7 @@ class SuiManager : public Logger {
 public:
 	SuiManager(ZoneProcessServerImplementation* serv);
 	
-	void handleSuiEventNotification(uint32 boxID, Player* player, uint32 cancel, const string& value);
+	void handleSuiEventNotification(uint32 boxID, Player* player, uint32 cancel, const string& value, const string& value2);
 	
 	void handleStartMusic(uint32 boxID, Player* player, uint32 cancel, const string& song);
 	void handleStartDancing(uint32 boxID, Player* player, uint32 cancel, const string& dance);
@@ -75,6 +75,7 @@ public:
 	
 	void handleColorPicker(uint32 boxID, Player* player, uint32 cancel, const string& value);
 	
+	void handleBakTransfer(uint32 boxID, Player* player, int cash, int bank);
 };
 
 #endif /*SUIMANAGER_H_*/

@@ -69,6 +69,7 @@ class ChatManager;
 class ResourceManager;
 
 class BazaarManager;
+class BankManager;
 
 #include "ZoneServer.h"
 
@@ -92,6 +93,7 @@ class ZoneServerImplementation : public DatagramServiceThread, public ZoneServer
 	ResourceManager* resourceManager;
 	
 	BazaarManager* bazaarManager;
+	BankManager* bankManager;
 	
 	int totalSentPackets;
 	int totalResentPackets;
@@ -197,6 +199,10 @@ public:
 	
 	inline BazaarManager* getBazaarManager() {
 		return bazaarManager;
+	}
+	
+	inline BankManager* getBankManager() {
+		return bankManager;
 	}
 	
 	inline Zone* getZone(int index) {

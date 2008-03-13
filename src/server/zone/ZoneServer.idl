@@ -53,6 +53,7 @@ import "managers/crafting/CraftingManager";
 import "managers/item/ItemManager";
 import "managers/resource/ResourceManager";
 import "managers/bazaar/BazaarManager";
+import "managers/bank/BankManager";
 
 import "../chat/ChatManager";
 
@@ -96,6 +97,7 @@ interface ZoneServer {
 	ItemManager getItemManager();
 	ResourceManager getResourceManager();
 	BazaarManager getBazaarManager();
+	BankManager getBankManager();
 	
 	Zone getZone(int index);
 	

@@ -56,7 +56,7 @@ SuiManager::SuiManager(ZoneProcessServerImplementation* serv) : Logger("SuiManag
 	setLogging(false);
 }
 
-void SuiManager::handleSuiEventNotification(uint32 boxID, Player* player, uint32 cancel, const string& value) {
+void SuiManager::handleSuiEventNotification(uint32 boxID, Player* player, uint32 cancel, const string& value, const string& value2) {
 	uint16 type = (uint16) boxID;
 	
 	int range;
@@ -92,6 +92,10 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, Player* player, uint32
 		break;
 	case 0xBABE:
 		handleColorPicker(boxID, player, cancel, value);
+		break;
+	case 0xD65E:
+		cout << "Bank transfer " << value << " " << value2 << "\n";
+		handleBakTransfer(boxID, player, atoi(value.c_str()), atoi(value2.c_str()));
 		break;
 	default:
 		//error("Unknown SuiBoxNotification opcode");
@@ -511,6 +515,34 @@ void SuiManager::handleColorPicker(uint32 boxID, Player* player, uint32 cancel, 
 		player->unlock();
 	} catch (...) {
 		error("Unreported exception caught in SuiManager::handleColorPicker");
+		player->unlock();
+	}
+}
+
+void SuiManager::handleBakTransfer(uint32 boxID, Player* player, int cash, int bank) {
+	try {
+		player->wlock();
+
+		if (!player->hasSuiBox(boxID)) {
+			player->unlock();
+			return;
+		}
+
+		player->removeSuiBox(boxID);
+		
+		player->updateCashCredits(cash);
+		player->updateBankCredits(bank);
+		
+		player->unlock();
+		
+	}catch (Exception& e) {
+		stringstream msg;
+		msg << "Exception in SuiManager::handleBankTransfer" << e.getMessage();
+		error(msg.str());
+
+		player->unlock();
+	} catch (...) {
+		error("Unreported exception caught in SuiManager::handleBankTransfer");
 		player->unlock();
 	}
 }
