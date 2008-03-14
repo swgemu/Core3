@@ -105,6 +105,11 @@ int SurveyToolImplementation::useObject(Player* player) {
 	ResourceManager* resourceManager = player->getZone()->getZoneServer()->getResourceManager();
 	
 	string skillBox = "crafting_artisan_novice";
+	if (player->getParent() != NULL && player->getParent()->isCell()) {
+		player->sendSystemMessage("You cannot perform survey-related actions inside a structure.");
+		return 0;
+	}
+	
 	if (player->getSkillBoxesSize() && player->hasSkillBox(skillBox)) {
 		// Added to set a default range.  Remove this to disable feature.
 		if (getSurveyToolRange() == 0)
@@ -201,6 +206,11 @@ void SurveyToolImplementation::sendSampleEffect(Player* player) {
 
 void SurveyToolImplementation::surveyRequest(Player* player, unicode& resource) {
 	string resourceName = resource.c_str().c_str();
+	if (player->getParent() != NULL && player->getParent()->isCell()) {
+		player->sendSystemMessage("You cannot perform survey-related actions inside a structure.");
+		return;
+	}
+	
 	if (player->getZone()->getZoneServer()->getResourceManager()->checkResource(player, resourceName, getSurveyToolType())) {
 		if (!player->getCanSample()) {
 			ChatSystemMessage* sysMessage = new ChatSystemMessage("survey","survey_sample");
@@ -218,6 +228,11 @@ void SurveyToolImplementation::surveyRequest(Player* player, unicode& resource) 
 
 void SurveyToolImplementation::sampleRequest(Player* player, unicode& resource) {
 	string resourceName = resource.c_str().c_str();
+	if (player->getParent() != NULL && player->getParent()->isCell()) {
+		player->sendSystemMessage("You cannot perform survey-related actions inside a structure.");
+		return;
+	}
+	
 	if (player->getZone()->getZoneServer()->getResourceManager()->checkResource(player, resourceName, getSurveyToolType())) {
 		if (!player->getCanSurvey()) {
 			ChatSystemMessage* sysMessage = new ChatSystemMessage("survey","sample_survey");

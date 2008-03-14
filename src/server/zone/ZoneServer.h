@@ -67,6 +67,8 @@ class ResourceManager;
 
 class BazaarManager;
 
+class BankManager;
+
 class ChatManager;
 
 class Zone;
@@ -124,6 +126,8 @@ public:
 	ResourceManager* getResourceManager();
 
 	BazaarManager* getBazaarManager();
+
+	BankManager* getBankManager();
 
 	Zone* getZone(int index);
 
@@ -187,6 +191,8 @@ public:
 	ResourceManager* getResourceManager();
 
 	BazaarManager* getBazaarManager();
+
+	BankManager* getBankManager();
 
 	Zone* getZone(int index);
 

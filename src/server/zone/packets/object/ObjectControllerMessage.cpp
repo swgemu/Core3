@@ -1541,7 +1541,7 @@ void ObjectControllerMessage::parseSurveyRequest(Player* player, Message* packet
 	
 	if (player->getSkillBoxesSize() && player->hasSkillBox(skillBox)) {
 		if (player->getSurveyTool() == NULL) {
-			player->sendSystemMessage("Please reopen survey tool.");
+			player->sendSystemMessage("You must use a survey tool once from the Inventory before you can do this.");
 			return;
 		}
 		player->getSurveyTool()->surveyRequest(player, resourceName);
@@ -1561,7 +1561,7 @@ void ObjectControllerMessage::parseSampleRequest(Player* player, Message* packet
 	
 	if (player->getSkillBoxesSize() && player->hasSkillBox(skillBox)) {
 		if (player->getSurveyTool() == NULL) {
-			player->sendSystemMessage("Please reopen survey tool.");
+			player->sendSystemMessage("You must use a survey tool once from the Inventory before you can do this.");
 			return;
 		}
 		player->getSurveyTool()->sampleRequest(player, resourceName);

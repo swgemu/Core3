@@ -81,6 +81,8 @@ public:
 
 	bool isColorPicker();
 
+	bool isBankTransferBox();
+
 	unsigned long long getBoxID();
 
 	unsigned long long getUsingObjectID();
@@ -115,6 +117,8 @@ public:
 	bool isTransferBox();
 
 	bool isColorPicker();
+
+	bool isBankTransferBox();
 
 	unsigned long long getBoxID();
 

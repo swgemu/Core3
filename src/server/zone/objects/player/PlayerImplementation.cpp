@@ -2721,7 +2721,10 @@ void PlayerImplementation::setSampleEvent(string& resourceName, bool firstTime) 
 		return;
 	}
 	
-	if (isInCombat()) {
+	if (getParent() != NULL && getParent()->isCell()) {
+		sendSystemMessage("You cannot perform survey-related actions inside a structure.");
+		return;
+	} else if (isInCombat()) {
 		ChatSystemMessage* sysMessage = new ChatSystemMessage("survey","sample_cancel_attack");
 		sendMessage(sysMessage);
 		return;

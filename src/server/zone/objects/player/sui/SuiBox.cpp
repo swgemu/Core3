@@ -185,12 +185,24 @@ bool SuiBox::isColorPicker() {
 		return ((SuiBoxImplementation*) _impl)->isColorPicker();
 }
 
-unsigned long long SuiBox::getBoxID() {
+bool SuiBox::isBankTransferBox() {
 	 if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
 		ORBMethodInvocation invocation(this, 15);
+
+		return invocation.executeWithBooleanReturn();
+	} else
+		return ((SuiBoxImplementation*) _impl)->isBankTransferBox();
+}
+
+unsigned long long SuiBox::getBoxID() {
+	 if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 16);
 
 		return invocation.executeWithUnsignedLongReturn();
 	} else
@@ -202,7 +214,7 @@ unsigned long long SuiBox::getUsingObjectID() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 16);
+		ORBMethodInvocation invocation(this, 17);
 
 		return invocation.executeWithUnsignedLongReturn();
 	} else
@@ -214,7 +226,7 @@ Player* SuiBox::getPlayer() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 17);
+		ORBMethodInvocation invocation(this, 18);
 
 		return (Player*) invocation.executeWithObjectReturn();
 	} else
@@ -260,12 +272,15 @@ Packet* SuiBoxAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* inv) {
 		resp->insertBoolean(isColorPicker());
 		break;
 	case 15:
-		resp->insertLong(getBoxID());
+		resp->insertBoolean(isBankTransferBox());
 		break;
 	case 16:
-		resp->insertLong(getUsingObjectID());
+		resp->insertLong(getBoxID());
 		break;
 	case 17:
+		resp->insertLong(getUsingObjectID());
+		break;
+	case 18:
 		resp->insertLong(getPlayer()->_getORBObjectID());
 		break;
 	default:
@@ -309,6 +324,10 @@ bool SuiBoxAdapter::isTransferBox() {
 
 bool SuiBoxAdapter::isColorPicker() {
 	return ((SuiBoxImplementation*) impl)->isColorPicker();
+}
+
+bool SuiBoxAdapter::isBankTransferBox() {
+	return ((SuiBoxImplementation*) impl)->isBankTransferBox();
 }
 
 unsigned long long SuiBoxAdapter::getBoxID() {

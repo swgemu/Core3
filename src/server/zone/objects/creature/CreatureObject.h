@@ -709,6 +709,10 @@ public:
 
 	void addBankCredits(unsigned int credits);
 
+	void updateCashCredits(unsigned int credits);
+
+	void updateBankCredits(unsigned int credits);
+
 	void subtractCashCredits(unsigned int credits);
 
 	void subtractBankCredits(unsigned int credits);
@@ -1373,6 +1377,10 @@ public:
 	void addCashCredits(unsigned int credits);
 
 	void addBankCredits(unsigned int credits);
+
+	void updateCashCredits(unsigned int credits);
+
+	void updateBankCredits(unsigned int credits);
 
 	void subtractCashCredits(unsigned int credits);
 
