@@ -74,7 +74,7 @@ GuildMap* GuildMap::clone() {
 
 
 void GuildMap::add(Guild* guild) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -87,7 +87,7 @@ void GuildMap::add(Guild* guild) {
 }
 
 Guild* GuildMap::get(int index) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -100,7 +100,7 @@ Guild* GuildMap::get(int index) {
 }
 
 Guild* GuildMap::get(unsigned int gid) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -113,7 +113,7 @@ Guild* GuildMap::get(unsigned int gid) {
 }
 
 Guild* GuildMap::get(string& tag) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -126,7 +126,7 @@ Guild* GuildMap::get(string& tag) {
 }
 
 void GuildMap::remove(unsigned int gid) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -139,7 +139,7 @@ void GuildMap::remove(unsigned int gid) {
 }
 
 void GuildMap::removeAll() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -151,7 +151,7 @@ void GuildMap::removeAll() {
 }
 
 int GuildMap::size() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {

@@ -93,9 +93,15 @@ public:
 
 	SceneObject* removeObject(unsigned long long oid, bool doLock = true);
 
+	SceneObject* removeObject(SceneObject* obj, bool doLock = true);
+
+	bool destroyObject(SceneObject* obj, bool doLock = true);
+
 	SceneObject* getCachedObject(unsigned long long oid, bool doLock = true);
 
 	SceneObject* removeCachedObject(unsigned long long oid, bool doLock = true);
+
+	SceneObject* removeCachedObject(SceneObject* obj, bool doLock = true);
 
 	bool banUser(string& name, string& admin);
 
@@ -158,9 +164,15 @@ public:
 
 	SceneObject* removeObject(unsigned long long oid, bool doLock);
 
+	SceneObject* removeObject(SceneObject* obj, bool doLock);
+
+	bool destroyObject(SceneObject* obj, bool doLock);
+
 	SceneObject* getCachedObject(unsigned long long oid, bool doLock);
 
 	SceneObject* removeCachedObject(unsigned long long oid, bool doLock);
+
+	SceneObject* removeCachedObject(SceneObject* obj, bool doLock);
 
 	bool banUser(string& name, string& admin);
 

@@ -74,7 +74,7 @@ PlayerMap* PlayerMap::clone() {
 
 
 Player* PlayerMap::put(string& name, Player* player, bool doLock) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -89,7 +89,7 @@ Player* PlayerMap::put(string& name, Player* player, bool doLock) {
 }
 
 Player* PlayerMap::get(string& name, bool doLock) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -103,7 +103,7 @@ Player* PlayerMap::get(string& name, bool doLock) {
 }
 
 Player* PlayerMap::remove(string& name, bool doLock) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -117,7 +117,7 @@ Player* PlayerMap::remove(string& name, bool doLock) {
 }
 
 int PlayerMap::size() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -129,7 +129,7 @@ int PlayerMap::size() {
 }
 
 Player* PlayerMap::getNextValue(bool doLock) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -142,7 +142,7 @@ Player* PlayerMap::getNextValue(bool doLock) {
 }
 
 Player* PlayerMap::next() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -154,7 +154,7 @@ Player* PlayerMap::next() {
 }
 
 bool PlayerMap::hasNext(bool doLock) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -167,7 +167,7 @@ bool PlayerMap::hasNext(bool doLock) {
 }
 
 void PlayerMap::resetIterator(bool doLock) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -180,7 +180,7 @@ void PlayerMap::resetIterator(bool doLock) {
 }
 
 void PlayerMap::lock() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -192,7 +192,7 @@ void PlayerMap::lock() {
 }
 
 void PlayerMap::unlock() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {

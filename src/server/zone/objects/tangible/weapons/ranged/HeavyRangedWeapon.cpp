@@ -78,7 +78,7 @@ HeavyRangedWeapon* HeavyRangedWeapon::clone() {
 
 
 int HeavyRangedWeapon::useObject(Player* player) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {

@@ -78,7 +78,7 @@ CraftingManager* CraftingManager::clone() {
 
 
 void CraftingManager::prepareCraftingSessionStageTwo(Player* player, DraftSchematic* ds) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -92,7 +92,7 @@ void CraftingManager::prepareCraftingSessionStageTwo(Player* player, DraftSchema
 }
 
 void CraftingManager::addResourceToCraft(Player* player, ResourceContainer* rcno, int slot, int counter) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -108,7 +108,7 @@ void CraftingManager::addResourceToCraft(Player* player, ResourceContainer* rcno
 }
 
 void CraftingManager::addDraftSchematicsFromGroupName(Player* player, const string& schematicGroupName) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -122,7 +122,7 @@ void CraftingManager::addDraftSchematicsFromGroupName(Player* player, const stri
 }
 
 void CraftingManager::subtractDraftSchematicsFromGroupName(Player* player, const string& schematicGroupName) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {

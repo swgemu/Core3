@@ -413,6 +413,26 @@ SceneObject* ZoneServerImplementation::removeObject(uint64 oid, bool doLock) {
 	return obj;
 }
 
+SceneObject* ZoneServerImplementation::removeObject(SceneObject* obj, bool doLock) {
+	return removeObject(obj->getObjectID(), doLock);
+}
+
+bool ZoneServerImplementation::destroyObject(SceneObject* obj, bool doLock) {
+	bool res = false;
+	
+	try {
+		lock(doLock);
+
+		res = objectManager->destroy(obj);
+
+		unlock(doLock);
+	} catch (...) {
+		unlock(doLock);
+	}
+	
+	return res;
+}
+
 SceneObject* ZoneServerImplementation::getCachedObject(uint64 oid, bool doLock) {
 	SceneObject* obj = NULL;
 	
@@ -443,6 +463,10 @@ SceneObject* ZoneServerImplementation::removeCachedObject(uint64 oid, bool doLoc
 	}
 
 	return obj;
+}
+
+SceneObject* ZoneServerImplementation::removeCachedObject(SceneObject* obj, bool doLock) {
+	return removeCachedObject(obj->getObjectID(), doLock);
 }
 
 bool ZoneServerImplementation::banUser(string& name, string& admin) {

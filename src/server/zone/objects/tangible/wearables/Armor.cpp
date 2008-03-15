@@ -80,7 +80,7 @@ Armor* Armor::clone() {
 
 
 void Armor::sendTo(Player* player, bool doClose) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -94,7 +94,7 @@ void Armor::sendTo(Player* player, bool doClose) {
 }
 
 void Armor::decayArmor(int decayRate) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -107,7 +107,7 @@ void Armor::decayArmor(int decayRate) {
 }
 
 void Armor::generateAttributes(SceneObject* obj) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -120,7 +120,7 @@ void Armor::generateAttributes(SceneObject* obj) {
 }
 
 void Armor::setArmorStats(int modifier) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -133,7 +133,7 @@ void Armor::setArmorStats(int modifier) {
 }
 
 void Armor::sliceArmor(Player* player) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -146,7 +146,7 @@ void Armor::sliceArmor(Player* player) {
 }
 
 void Armor::repairArmor(Player* player) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -159,7 +159,7 @@ void Armor::repairArmor(Player* player) {
 }
 
 int Armor::addSkillMod(int skillModType, int skillModValue) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -173,7 +173,7 @@ int Armor::addSkillMod(int skillModType, int skillModValue) {
 }
 
 int Armor::getRating() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -185,7 +185,7 @@ int Armor::getRating() {
 }
 
 int Armor::getCondition() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -197,7 +197,7 @@ int Armor::getCondition() {
 }
 
 int Armor::getMaxCondition() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -209,7 +209,7 @@ int Armor::getMaxCondition() {
 }
 
 int Armor::getHealthEncumbrance() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -221,7 +221,7 @@ int Armor::getHealthEncumbrance() {
 }
 
 int Armor::getActionEncumbrance() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -233,7 +233,7 @@ int Armor::getActionEncumbrance() {
 }
 
 int Armor::getMindEncumbrance() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -245,7 +245,7 @@ int Armor::getMindEncumbrance() {
 }
 
 float Armor::getKinetic() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -257,7 +257,7 @@ float Armor::getKinetic() {
 }
 
 bool Armor::isKineticSpecial() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -269,7 +269,7 @@ bool Armor::isKineticSpecial() {
 }
 
 float Armor::getEnergy() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -281,7 +281,7 @@ float Armor::getEnergy() {
 }
 
 bool Armor::isEnergySpecial() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -293,7 +293,7 @@ bool Armor::isEnergySpecial() {
 }
 
 float Armor::getElectricity() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -305,7 +305,7 @@ float Armor::getElectricity() {
 }
 
 bool Armor::isElectricitySpecial() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -317,7 +317,7 @@ bool Armor::isElectricitySpecial() {
 }
 
 float Armor::getStun() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -329,7 +329,7 @@ float Armor::getStun() {
 }
 
 bool Armor::isStunSpecial() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -341,7 +341,7 @@ bool Armor::isStunSpecial() {
 }
 
 float Armor::getBlast() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -353,7 +353,7 @@ float Armor::getBlast() {
 }
 
 bool Armor::isBlastSpecial() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -365,7 +365,7 @@ bool Armor::isBlastSpecial() {
 }
 
 float Armor::getHeat() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -377,7 +377,7 @@ float Armor::getHeat() {
 }
 
 bool Armor::isHeatSpecial() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -389,7 +389,7 @@ bool Armor::isHeatSpecial() {
 }
 
 float Armor::getCold() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -401,7 +401,7 @@ float Armor::getCold() {
 }
 
 bool Armor::isColdSpecial() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -413,7 +413,7 @@ bool Armor::isColdSpecial() {
 }
 
 float Armor::getAcid() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -425,7 +425,7 @@ float Armor::getAcid() {
 }
 
 bool Armor::isAcidSpecial() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -437,7 +437,7 @@ bool Armor::isAcidSpecial() {
 }
 
 float Armor::getLightSaber() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -449,7 +449,7 @@ float Armor::getLightSaber() {
 }
 
 bool Armor::isLightSaberSpecial() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -461,7 +461,7 @@ bool Armor::isLightSaberSpecial() {
 }
 
 int Armor::getType() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -473,7 +473,7 @@ int Armor::getType() {
 }
 
 bool Armor::isSliced() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -485,7 +485,7 @@ bool Armor::isSliced() {
 }
 
 void Armor::setSocketType(int index, int type) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -499,7 +499,7 @@ void Armor::setSocketType(int index, int type) {
 }
 
 void Armor::setSocketValue(int index, int type) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -513,7 +513,7 @@ void Armor::setSocketValue(int index, int type) {
 }
 
 int Armor::getSocketType(int index) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -526,7 +526,7 @@ int Armor::getSocketType(int index) {
 }
 
 int Armor::getSocketValue(int index) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -539,7 +539,7 @@ int Armor::getSocketValue(int index) {
 }
 
 int Armor::getSkillMod0Type() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -551,7 +551,7 @@ int Armor::getSkillMod0Type() {
 }
 
 int Armor::getSkillMod1Type() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -563,7 +563,7 @@ int Armor::getSkillMod1Type() {
 }
 
 int Armor::getSkillMod2Type() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -575,7 +575,7 @@ int Armor::getSkillMod2Type() {
 }
 
 int Armor::getSkillMod0Value() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -587,7 +587,7 @@ int Armor::getSkillMod0Value() {
 }
 
 int Armor::getSkillMod1Value() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -599,7 +599,7 @@ int Armor::getSkillMod1Value() {
 }
 
 int Armor::getSkillMod2Value() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -611,7 +611,7 @@ int Armor::getSkillMod2Value() {
 }
 
 int Armor::getSockets() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -623,7 +623,7 @@ int Armor::getSockets() {
 }
 
 int Armor::getSocket0Type() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -635,7 +635,7 @@ int Armor::getSocket0Type() {
 }
 
 int Armor::getSocket1Type() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -647,7 +647,7 @@ int Armor::getSocket1Type() {
 }
 
 int Armor::getSocket2Type() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -659,7 +659,7 @@ int Armor::getSocket2Type() {
 }
 
 int Armor::getSocket3Type() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -671,7 +671,7 @@ int Armor::getSocket3Type() {
 }
 
 int Armor::getSocket0Value() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -683,7 +683,7 @@ int Armor::getSocket0Value() {
 }
 
 int Armor::getSocket1Value() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -695,7 +695,7 @@ int Armor::getSocket1Value() {
 }
 
 int Armor::getSocket2Value() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -707,7 +707,7 @@ int Armor::getSocket2Value() {
 }
 
 int Armor::getSocket3Value() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -719,7 +719,7 @@ int Armor::getSocket3Value() {
 }
 
 void Armor::setSockets(int socket) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -732,7 +732,7 @@ void Armor::setSockets(int socket) {
 }
 
 void Armor::setSocket0Type(int type) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -745,7 +745,7 @@ void Armor::setSocket0Type(int type) {
 }
 
 void Armor::setSocket1Type(int type) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -758,7 +758,7 @@ void Armor::setSocket1Type(int type) {
 }
 
 void Armor::setSocket2Type(int type) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -771,7 +771,7 @@ void Armor::setSocket2Type(int type) {
 }
 
 void Armor::setSocket3Type(int type) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -784,7 +784,7 @@ void Armor::setSocket3Type(int type) {
 }
 
 void Armor::setSocket0Value(int value) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -797,7 +797,7 @@ void Armor::setSocket0Value(int value) {
 }
 
 void Armor::setSocket1Value(int value) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -810,7 +810,7 @@ void Armor::setSocket1Value(int value) {
 }
 
 void Armor::setSocket2Value(int value) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -823,7 +823,7 @@ void Armor::setSocket2Value(int value) {
 }
 
 void Armor::setSocket3Value(int value) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {

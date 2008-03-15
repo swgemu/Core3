@@ -101,6 +101,15 @@ SceneObjectImplementation::~SceneObjectImplementation() {
 	undeploy();
 }
 
+bool SceneObject::destroy() {
+	bool destroying = ServerCore::getZoneServer()->destroyObject(this);
+	
+	if (destroying)
+		delete this;
+	
+	return destroying;
+}
+
 SceneObject* SceneObjectImplementation::deploy() {
 	stringstream name;
 	name << "SceneObject(" << objectType << ")  0x" << hex << objectID;
@@ -135,10 +144,9 @@ void SceneObjectImplementation::undeploy() {
 
 	removeUndeploymentEvent();
 	
-	if (zone != NULL)
-		zone->deleteObject(_this);
-
-	ServerCore::getZoneServer()->removeCachedObject(objectID);
+	/*if (zone != NULL)
+		//zone->deleteObject(_this);
+		error("object is still in Zone");*/
 }
 
 void SceneObjectImplementation::removeUndeploymentEvent() {

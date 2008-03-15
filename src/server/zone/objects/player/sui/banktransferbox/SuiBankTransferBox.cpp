@@ -76,7 +76,7 @@ SuiBankTransferBox* SuiBankTransferBox::clone() {
 
 
 BaseMessage* SuiBankTransferBox::generateMessage() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -88,7 +88,7 @@ BaseMessage* SuiBankTransferBox::generateMessage() {
 }
 
 BaseMessage* SuiBankTransferBox::getMessage() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -100,7 +100,7 @@ BaseMessage* SuiBankTransferBox::getMessage() {
 }
 
 void SuiBankTransferBox::addOption(const string& itemText, const string& lblType, const string& itemType) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {

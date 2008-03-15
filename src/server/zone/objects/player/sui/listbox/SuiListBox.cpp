@@ -76,7 +76,7 @@ SuiListBox* SuiListBox::clone() {
 
 
 void SuiListBox::addMenuItem(const string& item, unsigned long long objectID) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -90,7 +90,7 @@ void SuiListBox::addMenuItem(const string& item, unsigned long long objectID) {
 }
 
 int SuiListBox::getMenuSize() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -102,7 +102,7 @@ int SuiListBox::getMenuSize() {
 }
 
 unsigned long long SuiListBox::getMenuObjectID(int idx) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -115,7 +115,7 @@ unsigned long long SuiListBox::getMenuObjectID(int idx) {
 }
 
 BaseMessage* SuiListBox::generateMessage() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {

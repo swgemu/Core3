@@ -76,7 +76,7 @@ Guild* Guild::clone() {
 
 
 void Guild::sendGuildListTo(Player* player, bool doLock) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -90,7 +90,7 @@ void Guild::sendGuildListTo(Player* player, bool doLock) {
 }
 
 void Guild::updateGuildFor(Player* player) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -103,7 +103,7 @@ void Guild::updateGuildFor(Player* player) {
 }
 
 void Guild::deleteGuildFor(Player* player) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -116,7 +116,7 @@ void Guild::deleteGuildFor(Player* player) {
 }
 
 void Guild::setGuildManager(GuildManager* gmanager) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -129,7 +129,7 @@ void Guild::setGuildManager(GuildManager* gmanager) {
 }
 
 unsigned int Guild::getGuildID() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -141,7 +141,7 @@ unsigned int Guild::getGuildID() {
 }
 
 string& Guild::getGuildName() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -154,7 +154,7 @@ string& Guild::getGuildName() {
 }
 
 string& Guild::getGuildTag() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {

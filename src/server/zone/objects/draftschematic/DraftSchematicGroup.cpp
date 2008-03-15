@@ -74,7 +74,7 @@ DraftSchematicGroup* DraftSchematicGroup::clone() {
 
 
 void DraftSchematicGroup::addDraftSchematic(DraftSchematic* schematic) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -87,7 +87,7 @@ void DraftSchematicGroup::addDraftSchematic(DraftSchematic* schematic) {
 }
 
 int DraftSchematicGroup::getSizeOfDraftSchematicList() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -99,7 +99,7 @@ int DraftSchematicGroup::getSizeOfDraftSchematicList() {
 }
 
 DraftSchematic* DraftSchematicGroup::getDraftSchematic(int index) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {

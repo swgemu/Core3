@@ -78,7 +78,7 @@ MountCreature* MountCreature::clone() {
 
 
 void MountCreature::setMountType(int type) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -91,7 +91,7 @@ void MountCreature::setMountType(int type) {
 }
 
 int MountCreature::getMountType() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -103,7 +103,7 @@ int MountCreature::getMountType() {
 }
 
 bool MountCreature::isVehicle() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -115,7 +115,7 @@ bool MountCreature::isVehicle() {
 }
 
 bool MountCreature::isPet() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -127,7 +127,7 @@ bool MountCreature::isPet() {
 }
 
 bool MountCreature::isDisabled() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -139,7 +139,7 @@ bool MountCreature::isDisabled() {
 }
 
 CreatureObject* MountCreature::getLinkedCreature() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -151,7 +151,7 @@ CreatureObject* MountCreature::getLinkedCreature() {
 }
 
 IntangibleObject* MountCreature::getITNO() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -163,7 +163,7 @@ IntangibleObject* MountCreature::getITNO() {
 }
 
 void MountCreature::call() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -175,7 +175,7 @@ void MountCreature::call() {
 }
 
 void MountCreature::store(bool doLock) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -188,7 +188,7 @@ void MountCreature::store(bool doLock) {
 }
 
 int MountCreature::useObject(Player* player) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -201,7 +201,7 @@ int MountCreature::useObject(Player* player) {
 }
 
 void MountCreature::addToDatapad() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -213,7 +213,7 @@ void MountCreature::addToDatapad() {
 }
 
 void MountCreature::setInstantMount(bool val) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -226,7 +226,7 @@ void MountCreature::setInstantMount(bool val) {
 }
 
 bool MountCreature::isInWorld() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {

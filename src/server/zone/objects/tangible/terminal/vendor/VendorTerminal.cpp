@@ -76,7 +76,7 @@ VendorTerminal* VendorTerminal::clone() {
 
 
 int VendorTerminal::useObject(Player* player) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {

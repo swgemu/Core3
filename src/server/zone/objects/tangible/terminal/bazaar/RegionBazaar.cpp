@@ -80,7 +80,7 @@ RegionBazaar* RegionBazaar::clone() {
 
 
 void RegionBazaar::addItem(AuctionItem* item) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -93,7 +93,7 @@ void RegionBazaar::addItem(AuctionItem* item) {
 }
 
 bool RegionBazaar::removeItem(long long objectid) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -106,7 +106,7 @@ bool RegionBazaar::removeItem(long long objectid) {
 }
 
 void RegionBazaar::setRegion(string& region) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -119,7 +119,7 @@ void RegionBazaar::setRegion(string& region) {
 }
 
 void RegionBazaar::setManager(BazaarPlanetManager* manager) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -132,7 +132,7 @@ void RegionBazaar::setManager(BazaarPlanetManager* manager) {
 }
 
 void RegionBazaar::newBazaarRequest(long long bazaarID, Player* player, int planet) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -147,7 +147,7 @@ void RegionBazaar::newBazaarRequest(long long bazaarID, Player* player, int plan
 }
 
 void RegionBazaar::getBazaarData(Player* player, long long objectid, int screen, int extent, int category, int count, int offset) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {

@@ -80,7 +80,7 @@ Weapon* Weapon::clone() {
 
 
 void Weapon::sendTo(Player* player, bool doClose) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -94,7 +94,7 @@ void Weapon::sendTo(Player* player, bool doClose) {
 }
 
 void Weapon::decayWeapon(int decayRate) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -107,7 +107,7 @@ void Weapon::decayWeapon(int decayRate) {
 }
 
 void Weapon::setWeaponStats(int modifier) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -120,7 +120,7 @@ void Weapon::setWeaponStats(int modifier) {
 }
 
 void Weapon::sliceWeapon(Player* player) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -133,7 +133,7 @@ void Weapon::sliceWeapon(Player* player) {
 }
 
 void Weapon::repairWeapon(Player* player) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -146,7 +146,7 @@ void Weapon::repairWeapon(Player* player) {
 }
 
 void Weapon::removePowerup(Player* player, bool notify) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -160,7 +160,7 @@ void Weapon::removePowerup(Player* player, bool notify) {
 }
 
 bool Weapon::decreaseDot0Uses() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -172,7 +172,7 @@ bool Weapon::decreaseDot0Uses() {
 }
 
 bool Weapon::decreaseDot1Uses() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -184,7 +184,7 @@ bool Weapon::decreaseDot1Uses() {
 }
 
 bool Weapon::decreaseDot2Uses() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -196,7 +196,7 @@ bool Weapon::decreaseDot2Uses() {
 }
 
 bool Weapon::decreasePowerupUses() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -208,7 +208,7 @@ bool Weapon::decreasePowerupUses() {
 }
 
 bool Weapon::decreaseUsesRemaining() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -220,7 +220,7 @@ bool Weapon::decreaseUsesRemaining() {
 }
 
 bool Weapon::isSliced() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -232,7 +232,7 @@ bool Weapon::isSliced() {
 }
 
 bool Weapon::isJedi() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -244,7 +244,7 @@ bool Weapon::isJedi() {
 }
 
 bool Weapon::isMelee() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -256,7 +256,7 @@ bool Weapon::isMelee() {
 }
 
 bool Weapon::isRanged() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -268,7 +268,7 @@ bool Weapon::isRanged() {
 }
 
 bool Weapon::isCertified() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -280,7 +280,7 @@ bool Weapon::isCertified() {
 }
 
 void Weapon::powerupMinDamage(float powerupValue) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -293,7 +293,7 @@ void Weapon::powerupMinDamage(float powerupValue) {
 }
 
 void Weapon::powerupMaxDamage(float powerupValue) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -306,7 +306,7 @@ void Weapon::powerupMaxDamage(float powerupValue) {
 }
 
 void Weapon::powerupHealthAttackCost(float powerupValue) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -319,7 +319,7 @@ void Weapon::powerupHealthAttackCost(float powerupValue) {
 }
 
 void Weapon::powerupActionAttackCost(float powerupValue) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -332,7 +332,7 @@ void Weapon::powerupActionAttackCost(float powerupValue) {
 }
 
 void Weapon::powerupMindAttackCost(float powerupValue) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -345,7 +345,7 @@ void Weapon::powerupMindAttackCost(float powerupValue) {
 }
 
 void Weapon::powerupWoundsRatio(float powerupValue) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -358,7 +358,7 @@ void Weapon::powerupWoundsRatio(float powerupValue) {
 }
 
 void Weapon::powerupAttackSpeed(float powerupValue) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -371,7 +371,7 @@ void Weapon::powerupAttackSpeed(float powerupValue) {
 }
 
 void Weapon::powerupPointBlankAccuracy(float powerupValue) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -384,7 +384,7 @@ void Weapon::powerupPointBlankAccuracy(float powerupValue) {
 }
 
 void Weapon::powerupIdealRange(float powerupValue) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -397,7 +397,7 @@ void Weapon::powerupIdealRange(float powerupValue) {
 }
 
 void Weapon::powerupIdealAccuracy(float powerupValue) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -410,7 +410,7 @@ void Weapon::powerupIdealAccuracy(float powerupValue) {
 }
 
 void Weapon::powerupMaxRangeAccuracy(float powerupValue) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -423,7 +423,7 @@ void Weapon::powerupMaxRangeAccuracy(float powerupValue) {
 }
 
 void Weapon::setDot0Uses(int uses) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -436,7 +436,7 @@ void Weapon::setDot0Uses(int uses) {
 }
 
 void Weapon::setDot1Uses(int uses) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -449,7 +449,7 @@ void Weapon::setDot1Uses(int uses) {
 }
 
 void Weapon::setDot2Uses(int uses) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -462,7 +462,7 @@ void Weapon::setDot2Uses(int uses) {
 }
 
 void Weapon::setPowerupUses(int uses) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -475,7 +475,7 @@ void Weapon::setPowerupUses(int uses) {
 }
 
 void Weapon::setUsesRemaining(int charges) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -488,7 +488,7 @@ void Weapon::setUsesRemaining(int charges) {
 }
 
 void Weapon::setCert(string& certification) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -501,7 +501,7 @@ void Weapon::setCert(string& certification) {
 }
 
 void Weapon::setCertified(bool crt) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -514,7 +514,7 @@ void Weapon::setCertified(bool crt) {
 }
 
 int Weapon::getType() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -526,7 +526,7 @@ int Weapon::getType() {
 }
 
 int Weapon::getCategory() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -538,7 +538,7 @@ int Weapon::getCategory() {
 }
 
 int Weapon::getDamageType() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -550,7 +550,7 @@ int Weapon::getDamageType() {
 }
 
 int Weapon::getUsesRemaining() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -562,7 +562,7 @@ int Weapon::getUsesRemaining() {
 }
 
 float Weapon::getMinDamage() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -574,7 +574,7 @@ float Weapon::getMinDamage() {
 }
 
 float Weapon::getMaxDamage() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -586,7 +586,7 @@ float Weapon::getMaxDamage() {
 }
 
 float Weapon::getAttackSpeed() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -598,7 +598,7 @@ float Weapon::getAttackSpeed() {
 }
 
 int Weapon::getHealthAttackCost() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -610,7 +610,7 @@ int Weapon::getHealthAttackCost() {
 }
 
 int Weapon::getActionAttackCost() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -622,7 +622,7 @@ int Weapon::getActionAttackCost() {
 }
 
 int Weapon::getMindAttackCost() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -634,7 +634,7 @@ int Weapon::getMindAttackCost() {
 }
 
 int Weapon::getPointBlankRange() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -646,7 +646,7 @@ int Weapon::getPointBlankRange() {
 }
 
 int Weapon::getPointBlankAccuracy() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -658,7 +658,7 @@ int Weapon::getPointBlankAccuracy() {
 }
 
 int Weapon::getMaxRange() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -670,7 +670,7 @@ int Weapon::getMaxRange() {
 }
 
 int Weapon::getMaxRangeAccuracy() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -682,7 +682,7 @@ int Weapon::getMaxRangeAccuracy() {
 }
 
 int Weapon::getIdealRange() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -694,7 +694,7 @@ int Weapon::getIdealRange() {
 }
 
 int Weapon::getIdealAccuracy() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -706,7 +706,7 @@ int Weapon::getIdealAccuracy() {
 }
 
 float Weapon::getWoundsRatio() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -718,7 +718,7 @@ float Weapon::getWoundsRatio() {
 }
 
 int Weapon::getArmorPiercing() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -730,7 +730,7 @@ int Weapon::getArmorPiercing() {
 }
 
 int Weapon::getDot0Type() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -742,7 +742,7 @@ int Weapon::getDot0Type() {
 }
 
 int Weapon::getDot0Attribute() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -754,7 +754,7 @@ int Weapon::getDot0Attribute() {
 }
 
 int Weapon::getDot0Strength() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -766,7 +766,7 @@ int Weapon::getDot0Strength() {
 }
 
 int Weapon::getDot0Duration() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -778,7 +778,7 @@ int Weapon::getDot0Duration() {
 }
 
 int Weapon::getDot0Potency() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -790,7 +790,7 @@ int Weapon::getDot0Potency() {
 }
 
 int Weapon::getDot0Uses() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -802,7 +802,7 @@ int Weapon::getDot0Uses() {
 }
 
 int Weapon::getDot1Type() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -814,7 +814,7 @@ int Weapon::getDot1Type() {
 }
 
 int Weapon::getDot1Attribute() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -826,7 +826,7 @@ int Weapon::getDot1Attribute() {
 }
 
 int Weapon::getDot1Strength() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -838,7 +838,7 @@ int Weapon::getDot1Strength() {
 }
 
 int Weapon::getDot1Duration() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -850,7 +850,7 @@ int Weapon::getDot1Duration() {
 }
 
 int Weapon::getDot1Potency() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -862,7 +862,7 @@ int Weapon::getDot1Potency() {
 }
 
 int Weapon::getDot1Uses() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -874,7 +874,7 @@ int Weapon::getDot1Uses() {
 }
 
 int Weapon::getDot2Type() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -886,7 +886,7 @@ int Weapon::getDot2Type() {
 }
 
 int Weapon::getDot2Attribute() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -898,7 +898,7 @@ int Weapon::getDot2Attribute() {
 }
 
 int Weapon::getDot2Strength() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -910,7 +910,7 @@ int Weapon::getDot2Strength() {
 }
 
 int Weapon::getDot2Duration() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -922,7 +922,7 @@ int Weapon::getDot2Duration() {
 }
 
 int Weapon::getDot2Potency() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -934,7 +934,7 @@ int Weapon::getDot2Potency() {
 }
 
 int Weapon::getDot2Uses() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -946,7 +946,7 @@ int Weapon::getDot2Uses() {
 }
 
 int Weapon::getSkillMod0Type() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -958,7 +958,7 @@ int Weapon::getSkillMod0Type() {
 }
 
 int Weapon::getSkillMod1Type() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -970,7 +970,7 @@ int Weapon::getSkillMod1Type() {
 }
 
 int Weapon::getSkillMod2Type() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -982,7 +982,7 @@ int Weapon::getSkillMod2Type() {
 }
 
 int Weapon::getSkillMod0Value() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -994,7 +994,7 @@ int Weapon::getSkillMod0Value() {
 }
 
 int Weapon::getSkillMod1Value() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1006,7 +1006,7 @@ int Weapon::getSkillMod1Value() {
 }
 
 int Weapon::getSkillMod2Value() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1018,7 +1018,7 @@ int Weapon::getSkillMod2Value() {
 }
 
 int Weapon::getPowerupUses() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1030,7 +1030,7 @@ int Weapon::getPowerupUses() {
 }
 
 bool Weapon::hasPowerup() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1042,7 +1042,7 @@ bool Weapon::hasPowerup() {
 }
 
 string& Weapon::getCert() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {

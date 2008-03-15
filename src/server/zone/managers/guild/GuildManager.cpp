@@ -78,7 +78,7 @@ GuildManager* GuildManager::clone() {
 
 
 void GuildManager::lock(bool doLock) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -91,7 +91,7 @@ void GuildManager::lock(bool doLock) {
 }
 
 void GuildManager::unlock(bool doLock) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -104,7 +104,7 @@ void GuildManager::unlock(bool doLock) {
 }
 
 void GuildManager::load() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -116,7 +116,7 @@ void GuildManager::load() {
 }
 
 bool GuildManager::createGuild(string& tag, string& name) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -130,7 +130,7 @@ bool GuildManager::createGuild(string& tag, string& name) {
 }
 
 Guild* GuildManager::getGuild(string& tag, bool doLock) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -144,7 +144,7 @@ Guild* GuildManager::getGuild(string& tag, bool doLock) {
 }
 
 Guild* GuildManager::getGuild(unsigned int gid, bool doLock) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -158,7 +158,7 @@ Guild* GuildManager::getGuild(unsigned int gid, bool doLock) {
 }
 
 bool GuildManager::removeGuild(string& tag) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -171,7 +171,7 @@ bool GuildManager::removeGuild(string& tag) {
 }
 
 bool GuildManager::removeGuild(int gid, bool doLock) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -185,7 +185,7 @@ bool GuildManager::removeGuild(int gid, bool doLock) {
 }
 
 void GuildManager::removePlayersFromGuild(int gid) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -198,7 +198,7 @@ void GuildManager::removePlayersFromGuild(int gid) {
 }
 
 GuildMap* GuildManager::getGuildMap() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {

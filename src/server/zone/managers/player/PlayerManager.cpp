@@ -80,7 +80,7 @@ PlayerManager* PlayerManager::clone() {
 
 
 void PlayerManager::stop() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -92,7 +92,7 @@ void PlayerManager::stop() {
 }
 
 bool PlayerManager::create(Player* player, unsigned int sessionkey) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -106,7 +106,7 @@ bool PlayerManager::create(Player* player, unsigned int sessionkey) {
 }
 
 bool PlayerManager::validateName(string& name) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -119,7 +119,7 @@ bool PlayerManager::validateName(string& name) {
 }
 
 Player* PlayerManager::load(unsigned long long charid) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -132,7 +132,7 @@ Player* PlayerManager::load(unsigned long long charid) {
 }
 
 void PlayerManager::unload(Player* player) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -145,7 +145,7 @@ void PlayerManager::unload(Player* player) {
 }
 
 void PlayerManager::handleAbortTradeMessage(Player* player) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -158,7 +158,7 @@ void PlayerManager::handleAbortTradeMessage(Player* player) {
 }
 
 void PlayerManager::handleAddItemMessage(Player* player, unsigned long long itemID) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -172,7 +172,7 @@ void PlayerManager::handleAddItemMessage(Player* player, unsigned long long item
 }
 
 void PlayerManager::handleGiveMoneyMessage(Player* player, unsigned int value) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -186,7 +186,7 @@ void PlayerManager::handleGiveMoneyMessage(Player* player, unsigned int value) {
 }
 
 void PlayerManager::handleAcceptTransactionMessage(Player* player) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -199,7 +199,7 @@ void PlayerManager::handleAcceptTransactionMessage(Player* player) {
 }
 
 void PlayerManager::handleUnAcceptTransactionMessage(Player* player) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -212,7 +212,7 @@ void PlayerManager::handleUnAcceptTransactionMessage(Player* player) {
 }
 
 void PlayerManager::handleVerifyTradeMessage(Player* player) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -225,7 +225,7 @@ void PlayerManager::handleVerifyTradeMessage(Player* player) {
 }
 
 void PlayerManager::moveItem(Player* sender, Player* receiver, TangibleObject* item) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -240,7 +240,7 @@ void PlayerManager::moveItem(Player* sender, Player* receiver, TangibleObject* i
 }
 
 void PlayerManager::doBankTip(Player* sender, Player* receiver, int tipAmount, bool updateTipTo) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -256,7 +256,7 @@ void PlayerManager::doBankTip(Player* sender, Player* receiver, int tipAmount, b
 }
 
 void PlayerManager::doCashTip(Player* sender, Player* receiver, int tipAmount, bool updateTipTo) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -272,7 +272,7 @@ void PlayerManager::doCashTip(Player* sender, Player* receiver, int tipAmount, b
 }
 
 bool PlayerManager::modifyOfflineBank(Player* sender, string& receiverName, int creditAmount) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -287,7 +287,7 @@ bool PlayerManager::modifyOfflineBank(Player* sender, string& receiverName, int 
 }
 
 bool PlayerManager::modifyRecipientOfflineBank(string& recipient, int creditAmount) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -301,7 +301,7 @@ bool PlayerManager::modifyRecipientOfflineBank(string& recipient, int creditAmou
 }
 
 void PlayerManager::updatePlayerCreditsFromDatabase(Player* player) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -314,7 +314,7 @@ void PlayerManager::updatePlayerCreditsFromDatabase(Player* player) {
 }
 
 void PlayerManager::updatePlayerCreditsToDatabase(Player* player) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -327,7 +327,7 @@ void PlayerManager::updatePlayerCreditsToDatabase(Player* player) {
 }
 
 void PlayerManager::setGuildManager(GuildManager* gmanager) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -340,7 +340,7 @@ void PlayerManager::setGuildManager(GuildManager* gmanager) {
 }
 
 Player* PlayerManager::putPlayer(Player* player) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -353,7 +353,7 @@ Player* PlayerManager::putPlayer(Player* player) {
 }
 
 Player* PlayerManager::getPlayer(string& name) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -366,7 +366,7 @@ Player* PlayerManager::getPlayer(string& name) {
 }
 
 GuildManager* PlayerManager::getGuildManager() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -378,7 +378,7 @@ GuildManager* PlayerManager::getGuildManager() {
 }
 
 PlayerMap* PlayerManager::getPlayerMap() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {

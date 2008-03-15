@@ -80,7 +80,7 @@ ShipObject* ShipObject::clone() {
 
 
 void ShipObject::init() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -92,7 +92,7 @@ void ShipObject::init() {
 }
 
 void ShipObject::sendToOwner(bool inSpace) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -105,7 +105,7 @@ void ShipObject::sendToOwner(bool inSpace) {
 }
 
 void ShipObject::sendTo(Player* player, bool inSpace, bool doClose) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -120,7 +120,7 @@ void ShipObject::sendTo(Player* player, bool inSpace, bool doClose) {
 }
 
 void ShipObject::setShipBody(IntangibleObject* tsb) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -133,7 +133,7 @@ void ShipObject::setShipBody(IntangibleObject* tsb) {
 }
 
 IntangibleObject* ShipObject::getShipBody() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -145,7 +145,7 @@ IntangibleObject* ShipObject::getShipBody() {
 }
 
 void ShipObject::setStfName(const string& Name) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -158,7 +158,7 @@ void ShipObject::setStfName(const string& Name) {
 }
 
 string& ShipObject::getStfName() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -171,7 +171,7 @@ string& ShipObject::getStfName() {
 }
 
 unicode& ShipObject::getOwnerName() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -184,7 +184,7 @@ unicode& ShipObject::getOwnerName() {
 }
 
 int ShipObject::getComponentListSize() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -196,7 +196,7 @@ int ShipObject::getComponentListSize() {
 }
 
 void ShipObject::calcActiveComponentListSize() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -208,7 +208,7 @@ void ShipObject::calcActiveComponentListSize() {
 }
 
 int ShipObject::getActiveComponentListSize() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -220,7 +220,7 @@ int ShipObject::getActiveComponentListSize() {
 }
 
 void ShipObject::addComponent(ShipComponent* tsc) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -233,7 +233,7 @@ void ShipObject::addComponent(ShipComponent* tsc) {
 }
 
 void ShipObject::removeComponent(int compId) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -246,7 +246,7 @@ void ShipObject::removeComponent(int compId) {
 }
 
 ShipComponent* ShipObject::getComponent(int compId) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -259,7 +259,7 @@ ShipComponent* ShipObject::getComponent(int compId) {
 }
 
 unsigned int ShipObject::getNextUnkShip1UpdateCnt() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -271,7 +271,7 @@ unsigned int ShipObject::getNextUnkShip1UpdateCnt() {
 }
 
 unsigned int ShipObject::getNextUnkShip1UpdateCnt2() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -283,7 +283,7 @@ unsigned int ShipObject::getNextUnkShip1UpdateCnt2() {
 }
 
 unsigned int ShipObject::getNextEnergyDrainUpdateCnt() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -295,7 +295,7 @@ unsigned int ShipObject::getNextEnergyDrainUpdateCnt() {
 }
 
 unsigned int ShipObject::getNextCompMassUpdateCnt() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -307,7 +307,7 @@ unsigned int ShipObject::getNextCompMassUpdateCnt() {
 }
 
 unsigned int ShipObject::getNextUnkShip1UpdateCnt3() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -319,7 +319,7 @@ unsigned int ShipObject::getNextUnkShip1UpdateCnt3() {
 }
 
 void ShipObject::setTotalMass(float ttm) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -332,7 +332,7 @@ void ShipObject::setTotalMass(float ttm) {
 }
 
 float ShipObject::getShieldChargeRate() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -344,7 +344,7 @@ float ShipObject::getShieldChargeRate() {
 }
 
 float ShipObject::getCapacitorChargeRate() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -356,7 +356,7 @@ float ShipObject::getCapacitorChargeRate() {
 }
 
 void ShipObject::setTotalEnergy(float tte) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -369,7 +369,7 @@ void ShipObject::setTotalEnergy(float tte) {
 }
 
 float ShipObject::getTotalEnergy() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -381,7 +381,7 @@ float ShipObject::getTotalEnergy() {
 }
 
 float ShipObject::getChassisCur() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -393,7 +393,7 @@ float ShipObject::getChassisCur() {
 }
 
 float ShipObject::getChassisMax() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -405,7 +405,7 @@ float ShipObject::getChassisMax() {
 }
 
 unsigned int ShipObject::getNextCurArmorUpdateCnt() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -417,7 +417,7 @@ unsigned int ShipObject::getNextCurArmorUpdateCnt() {
 }
 
 unsigned int ShipObject::getNextMaxArmorUpdateCnt() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -429,7 +429,7 @@ unsigned int ShipObject::getNextMaxArmorUpdateCnt() {
 }
 
 unsigned int ShipObject::getNextCurHitpointsUpdateCnt() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -441,7 +441,7 @@ unsigned int ShipObject::getNextCurHitpointsUpdateCnt() {
 }
 
 unsigned int ShipObject::getNextMaxHitpointsUpdateCnt() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -453,7 +453,7 @@ unsigned int ShipObject::getNextMaxHitpointsUpdateCnt() {
 }
 
 unsigned int ShipObject::getNextUnkShip3UpdateCnt() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -465,7 +465,7 @@ unsigned int ShipObject::getNextUnkShip3UpdateCnt() {
 }
 
 float ShipObject::getFrontshieldMax() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -477,7 +477,7 @@ float ShipObject::getFrontshieldMax() {
 }
 
 float ShipObject::getBackshieldMax() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -489,7 +489,7 @@ float ShipObject::getBackshieldMax() {
 }
 
 float ShipObject::getTotalMass() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -501,7 +501,7 @@ float ShipObject::getTotalMass() {
 }
 
 float ShipObject::getWeaponCharge() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -513,7 +513,7 @@ float ShipObject::getWeaponCharge() {
 }
 
 unsigned int ShipObject::getNextCrcUpdateCnt() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -525,7 +525,7 @@ unsigned int ShipObject::getNextCrcUpdateCnt() {
 }
 
 float ShipObject::getMaxSpeed() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -537,7 +537,7 @@ float ShipObject::getMaxSpeed() {
 }
 
 float ShipObject::getFrontshieldCur() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -549,7 +549,7 @@ float ShipObject::getFrontshieldCur() {
 }
 
 float ShipObject::getBackshieldCur() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {

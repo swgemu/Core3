@@ -80,7 +80,7 @@ Powerup* Powerup::clone() {
 
 
 void Powerup::apply(Weapon* weapon) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -93,7 +93,7 @@ void Powerup::apply(Weapon* weapon) {
 }
 
 void Powerup::remove(Player* player) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -106,7 +106,7 @@ void Powerup::remove(Player* player) {
 }
 
 int Powerup::getPowerup0Type() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -118,7 +118,7 @@ int Powerup::getPowerup0Type() {
 }
 
 int Powerup::getPowerup1Type() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -130,7 +130,7 @@ int Powerup::getPowerup1Type() {
 }
 
 int Powerup::getPowerup2Type() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -142,7 +142,7 @@ int Powerup::getPowerup2Type() {
 }
 
 float Powerup::getPowerup0Value() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -154,7 +154,7 @@ float Powerup::getPowerup0Value() {
 }
 
 float Powerup::getPowerup1Value() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -166,7 +166,7 @@ float Powerup::getPowerup1Value() {
 }
 
 float Powerup::getPowerup2Value() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -178,7 +178,7 @@ float Powerup::getPowerup2Value() {
 }
 
 int Powerup::getPowerupUses() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -190,7 +190,7 @@ int Powerup::getPowerupUses() {
 }
 
 int Powerup::getPowerupType() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -202,7 +202,7 @@ int Powerup::getPowerupType() {
 }
 
 int Powerup::getPowerupSubType() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -214,7 +214,7 @@ int Powerup::getPowerupSubType() {
 }
 
 void Powerup::setPowerup0Type(int value) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -227,7 +227,7 @@ void Powerup::setPowerup0Type(int value) {
 }
 
 void Powerup::setPowerup1Type(int value) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -240,7 +240,7 @@ void Powerup::setPowerup1Type(int value) {
 }
 
 void Powerup::setPowerup2Type(int value) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -253,7 +253,7 @@ void Powerup::setPowerup2Type(int value) {
 }
 
 void Powerup::setPowerup0Value(float value) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -266,7 +266,7 @@ void Powerup::setPowerup0Value(float value) {
 }
 
 void Powerup::setPowerup1Value(float value) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -279,7 +279,7 @@ void Powerup::setPowerup1Value(float value) {
 }
 
 void Powerup::setPowerup2Value(float value) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -292,7 +292,7 @@ void Powerup::setPowerup2Value(float value) {
 }
 
 void Powerup::setPowerupUses(int value) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -305,7 +305,7 @@ void Powerup::setPowerupUses(int value) {
 }
 
 void Powerup::setPowerupType(int value) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -318,7 +318,7 @@ void Powerup::setPowerupType(int value) {
 }
 
 void Powerup::setPowerupSubType(int value) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {

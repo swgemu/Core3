@@ -66,6 +66,8 @@ public:
 	SceneObject* get(uint64 oid);
 
 	SceneObject* remove(uint64 oid);
+	
+	bool destroy(SceneObject* obj);
 
 	SceneObject* getCachedObject(uint64 oid);
 

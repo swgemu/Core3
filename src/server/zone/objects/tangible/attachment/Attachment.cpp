@@ -78,7 +78,7 @@ Attachment* Attachment::clone() {
 
 
 void Attachment::remove(Player* player) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -91,7 +91,7 @@ void Attachment::remove(Player* player) {
 }
 
 void Attachment::setSkillMod0Type(int type) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -104,7 +104,7 @@ void Attachment::setSkillMod0Type(int type) {
 }
 
 void Attachment::setSkillMod1Type(int type) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -117,7 +117,7 @@ void Attachment::setSkillMod1Type(int type) {
 }
 
 void Attachment::setSkillMod2Type(int type) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -130,7 +130,7 @@ void Attachment::setSkillMod2Type(int type) {
 }
 
 void Attachment::setSkillMod0Value(int value) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -143,7 +143,7 @@ void Attachment::setSkillMod0Value(int value) {
 }
 
 void Attachment::setSkillMod1Value(int value) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -156,7 +156,7 @@ void Attachment::setSkillMod1Value(int value) {
 }
 
 void Attachment::setSkillMod2Value(int value) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -169,7 +169,7 @@ void Attachment::setSkillMod2Value(int value) {
 }
 
 void Attachment::setSkillModValue(int index, int value) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -183,7 +183,7 @@ void Attachment::setSkillModValue(int index, int value) {
 }
 
 void Attachment::setSkillModType(int index, int type) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -197,7 +197,7 @@ void Attachment::setSkillModType(int index, int type) {
 }
 
 void Attachment::setSkillMods(int modifier) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -210,7 +210,7 @@ void Attachment::setSkillMods(int modifier) {
 }
 
 int Attachment::getSkillMod0Type() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -222,7 +222,7 @@ int Attachment::getSkillMod0Type() {
 }
 
 int Attachment::getSkillMod1Type() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -234,7 +234,7 @@ int Attachment::getSkillMod1Type() {
 }
 
 int Attachment::getSkillMod2Type() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -246,7 +246,7 @@ int Attachment::getSkillMod2Type() {
 }
 
 int Attachment::getSkillMod0Value() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -258,7 +258,7 @@ int Attachment::getSkillMod0Value() {
 }
 
 int Attachment::getSkillMod1Value() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -270,7 +270,7 @@ int Attachment::getSkillMod1Value() {
 }
 
 int Attachment::getSkillMod2Value() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -282,7 +282,7 @@ int Attachment::getSkillMod2Value() {
 }
 
 int Attachment::getSkillModType(int index) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -295,7 +295,7 @@ int Attachment::getSkillModType(int index) {
 }
 
 int Attachment::getSkillModValue(int index) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -308,7 +308,7 @@ int Attachment::getSkillModValue(int index) {
 }
 
 int Attachment::getBestSkillMod() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {

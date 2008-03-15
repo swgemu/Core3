@@ -78,7 +78,7 @@ TangibleObject* TangibleObject::clone() {
 
 
 void TangibleObject::insertToZone(Zone* zone) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -91,7 +91,7 @@ void TangibleObject::insertToZone(Zone* zone) {
 }
 
 void TangibleObject::removeFromZone() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -103,7 +103,7 @@ void TangibleObject::removeFromZone() {
 }
 
 void TangibleObject::close(Player* player) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -116,7 +116,7 @@ void TangibleObject::close(Player* player) {
 }
 
 void TangibleObject::setEquipped(bool eqp) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -129,7 +129,7 @@ void TangibleObject::setEquipped(bool eqp) {
 }
 
 void TangibleObject::setContainer(SceneObject* cont, unsigned int type) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -143,7 +143,7 @@ void TangibleObject::setContainer(SceneObject* cont, unsigned int type) {
 }
 
 void TangibleObject::sendTo(Player* player, bool doClose) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -157,7 +157,7 @@ void TangibleObject::sendTo(Player* player, bool doClose) {
 }
 
 void TangibleObject::repairItem(Player* player) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -170,7 +170,7 @@ void TangibleObject::repairItem(Player* player) {
 }
 
 void TangibleObject::decay(int decayRate) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -183,7 +183,7 @@ void TangibleObject::decay(int decayRate) {
 }
 
 bool TangibleObject::isPersistent() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -195,7 +195,7 @@ bool TangibleObject::isPersistent() {
 }
 
 bool TangibleObject::isUpdated() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -207,7 +207,7 @@ bool TangibleObject::isUpdated() {
 }
 
 bool TangibleObject::isEquipped() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -219,7 +219,7 @@ bool TangibleObject::isEquipped() {
 }
 
 bool TangibleObject::isWeapon() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -231,7 +231,7 @@ bool TangibleObject::isWeapon() {
 }
 
 bool TangibleObject::isArmor() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -243,7 +243,7 @@ bool TangibleObject::isArmor() {
 }
 
 bool TangibleObject::isClothing() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -255,7 +255,7 @@ bool TangibleObject::isClothing() {
 }
 
 bool TangibleObject::isInstrument() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -267,7 +267,7 @@ bool TangibleObject::isInstrument() {
 }
 
 bool TangibleObject::isAttachment() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -279,7 +279,7 @@ bool TangibleObject::isAttachment() {
 }
 
 bool TangibleObject::isResource() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -291,7 +291,7 @@ bool TangibleObject::isResource() {
 }
 
 bool TangibleObject::isTicket() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -303,7 +303,7 @@ bool TangibleObject::isTicket() {
 }
 
 bool TangibleObject::isTicketCollector() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -315,7 +315,7 @@ bool TangibleObject::isTicketCollector() {
 }
 
 bool TangibleObject::isSurveyTool() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -327,7 +327,7 @@ bool TangibleObject::isSurveyTool() {
 }
 
 bool TangibleObject::isLair() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -339,7 +339,7 @@ bool TangibleObject::isLair() {
 }
 
 void TangibleObject::setName(const string& n) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -352,7 +352,7 @@ void TangibleObject::setName(const string& n) {
 }
 
 void TangibleObject::setTemplateName(const string& tempName) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -365,7 +365,7 @@ void TangibleObject::setTemplateName(const string& tempName) {
 }
 
 void TangibleObject::setTemplateTypeName(const string& tempTypeName) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -378,7 +378,7 @@ void TangibleObject::setTemplateTypeName(const string& tempTypeName) {
 }
 
 void TangibleObject::setPersistent(bool pers) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -391,7 +391,7 @@ void TangibleObject::setPersistent(bool pers) {
 }
 
 void TangibleObject::setUpdated(bool upd) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -404,7 +404,7 @@ void TangibleObject::setUpdated(bool upd) {
 }
 
 void TangibleObject::setConditionDamage(int damage) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -417,7 +417,7 @@ void TangibleObject::setConditionDamage(int damage) {
 }
 
 void TangibleObject::setCustomizationString(string& cust) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -430,7 +430,7 @@ void TangibleObject::setCustomizationString(string& cust) {
 }
 
 void TangibleObject::setCustomizationVariable(unsigned char type, unsigned int value) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -444,7 +444,7 @@ void TangibleObject::setCustomizationVariable(unsigned char type, unsigned int v
 }
 
 SceneObject* TangibleObject::getContainer() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -456,7 +456,7 @@ SceneObject* TangibleObject::getContainer() {
 }
 
 unicode& TangibleObject::getName() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -469,7 +469,7 @@ unicode& TangibleObject::getName() {
 }
 
 string& TangibleObject::getTemplateName() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -482,7 +482,7 @@ string& TangibleObject::getTemplateName() {
 }
 
 string& TangibleObject::getTemplateTypeName() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -495,7 +495,7 @@ string& TangibleObject::getTemplateTypeName() {
 }
 
 void TangibleObject::getCustomizationString(string& appearance) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -508,7 +508,7 @@ void TangibleObject::getCustomizationString(string& appearance) {
 }
 
 int TangibleObject::getObjectSubType() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -520,7 +520,7 @@ int TangibleObject::getObjectSubType() {
 }
 
 unsigned int TangibleObject::getTemplateID() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -532,7 +532,7 @@ unsigned int TangibleObject::getTemplateID() {
 }
 
 int TangibleObject::getObjectCount() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -544,7 +544,7 @@ int TangibleObject::getObjectCount() {
 }
 
 int TangibleObject::getConditionDamage() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -556,7 +556,7 @@ int TangibleObject::getConditionDamage() {
 }
 
 int TangibleObject::getMaxCondition() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -568,7 +568,7 @@ int TangibleObject::getMaxCondition() {
 }
 
 int TangibleObject::getCondition() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -580,7 +580,7 @@ int TangibleObject::getCondition() {
 }
 
 void TangibleObject::setAttributes(string& attributestring) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -593,7 +593,7 @@ void TangibleObject::setAttributes(string& attributestring) {
 }
 
 string& TangibleObject::getAttributes() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {

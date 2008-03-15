@@ -74,7 +74,7 @@ DraftSchematicExpPropGroup* DraftSchematicExpPropGroup::clone() {
 
 
 void DraftSchematicExpPropGroup::addExperimentalProperty(const string& experimentalPropertyType, unsigned int weight) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -88,7 +88,7 @@ void DraftSchematicExpPropGroup::addExperimentalProperty(const string& experimen
 }
 
 void DraftSchematicExpPropGroup::sendToPlayer(ObjectControllerMessage* msg) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -101,7 +101,7 @@ void DraftSchematicExpPropGroup::sendToPlayer(ObjectControllerMessage* msg) {
 }
 
 bool DraftSchematicExpPropGroup::containsExpPropType(const string& expPropType) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -114,7 +114,7 @@ bool DraftSchematicExpPropGroup::containsExpPropType(const string& expPropType) 
 }
 
 float DraftSchematicExpPropGroup::getExpPropPercentage(const string& expPropType) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -127,7 +127,7 @@ float DraftSchematicExpPropGroup::getExpPropPercentage(const string& expPropType
 }
 
 unsigned int DraftSchematicExpPropGroup::getExpPropPercentageListSize() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -139,7 +139,7 @@ unsigned int DraftSchematicExpPropGroup::getExpPropPercentageListSize() {
 }
 
 float DraftSchematicExpPropGroup::getExpPropPercentage(unsigned int index) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -152,7 +152,7 @@ float DraftSchematicExpPropGroup::getExpPropPercentage(unsigned int index) {
 }
 
 unsigned char DraftSchematicExpPropGroup::getTypeAndWeight(unsigned int index) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {

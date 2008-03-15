@@ -80,7 +80,7 @@ BazaarManager* BazaarManager::clone() {
 
 
 void BazaarManager::newBazaarRequest(long long bazaarID, Player* player, int planet) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -95,7 +95,7 @@ void BazaarManager::newBazaarRequest(long long bazaarID, Player* player, int pla
 }
 
 bool BazaarManager::isBazaarTerminal(long long objectID) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -108,7 +108,7 @@ bool BazaarManager::isBazaarTerminal(long long objectID) {
 }
 
 void BazaarManager::addSaleItem(Player* player, long long objectid, long long bazaarid, unicode& description, int price, int duration, bool auction) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -127,7 +127,7 @@ void BazaarManager::addSaleItem(Player* player, long long objectid, long long ba
 }
 
 void BazaarManager::getBazaarData(Player* player, long long objectid, int screen, int extent, unsigned int category, int count, int offset) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -146,7 +146,7 @@ void BazaarManager::getBazaarData(Player* player, long long objectid, int screen
 }
 
 RegionBazaar* BazaarManager::getBazaar(long long bazaarid) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -159,7 +159,7 @@ RegionBazaar* BazaarManager::getBazaar(long long bazaarid) {
 }
 
 BazaarPlanetManager* BazaarManager::getPlanet(long long bazaarid) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -172,7 +172,7 @@ BazaarPlanetManager* BazaarManager::getPlanet(long long bazaarid) {
 }
 
 void BazaarManager::buyItem(Player* player, long long objectid, int price1, int price2) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -188,7 +188,7 @@ void BazaarManager::buyItem(Player* player, long long objectid, int price1, int 
 }
 
 void BazaarManager::retrieveItem(Player* player, long long objectid, long long bazaarid) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -203,7 +203,7 @@ void BazaarManager::retrieveItem(Player* player, long long objectid, long long b
 }
 
 void BazaarManager::getItemAttributes(Player* player, long long objectId) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {

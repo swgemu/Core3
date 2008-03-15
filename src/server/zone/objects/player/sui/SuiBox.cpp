@@ -74,7 +74,7 @@ SuiBox* SuiBox::clone() {
 
 
 void SuiBox::setPromptTitle(const string& name) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -87,7 +87,7 @@ void SuiBox::setPromptTitle(const string& name) {
 }
 
 void SuiBox::setPromptText(const string& name) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -100,7 +100,7 @@ void SuiBox::setPromptText(const string& name) {
 }
 
 void SuiBox::setCancelButton(bool value) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -113,7 +113,7 @@ void SuiBox::setCancelButton(bool value) {
 }
 
 void SuiBox::setUsingObjectID(unsigned long long oid) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -126,7 +126,7 @@ void SuiBox::setUsingObjectID(unsigned long long oid) {
 }
 
 bool SuiBox::isInputBox() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -138,7 +138,7 @@ bool SuiBox::isInputBox() {
 }
 
 bool SuiBox::isListBox() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -150,7 +150,7 @@ bool SuiBox::isListBox() {
 }
 
 bool SuiBox::isMessageBox() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -162,7 +162,7 @@ bool SuiBox::isMessageBox() {
 }
 
 bool SuiBox::isTransferBox() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -174,7 +174,7 @@ bool SuiBox::isTransferBox() {
 }
 
 bool SuiBox::isColorPicker() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -186,7 +186,7 @@ bool SuiBox::isColorPicker() {
 }
 
 bool SuiBox::isBankTransferBox() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -198,7 +198,7 @@ bool SuiBox::isBankTransferBox() {
 }
 
 unsigned long long SuiBox::getBoxID() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -210,7 +210,7 @@ unsigned long long SuiBox::getBoxID() {
 }
 
 unsigned long long SuiBox::getUsingObjectID() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -222,7 +222,7 @@ unsigned long long SuiBox::getUsingObjectID() {
 }
 
 Player* SuiBox::getPlayer() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {

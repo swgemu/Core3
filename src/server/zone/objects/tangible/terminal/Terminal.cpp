@@ -76,7 +76,7 @@ Terminal* Terminal::clone() {
 
 
 int Terminal::useObject(Player* player) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -89,7 +89,7 @@ int Terminal::useObject(Player* player) {
 }
 
 int Terminal::getTerminalType() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {

@@ -112,7 +112,7 @@ Player* Player::clone() {
 
 
 Player* Player::create(ZoneClient* client) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -125,7 +125,7 @@ Player* Player::create(ZoneClient* client) {
 }
 
 void Player::load(ZoneClient* client) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -138,7 +138,7 @@ void Player::load(ZoneClient* client) {
 }
 
 void Player::reload(ZoneClient* client) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -151,7 +151,7 @@ void Player::reload(ZoneClient* client) {
 }
 
 void Player::unload() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -163,7 +163,7 @@ void Player::unload() {
 }
 
 void Player::disconnect(bool closeClient, bool doLock) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -177,7 +177,7 @@ void Player::disconnect(bool closeClient, bool doLock) {
 }
 
 void Player::logout(bool doLock) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -190,7 +190,7 @@ void Player::logout(bool doLock) {
 }
 
 void Player::userLogout(int msgCounter) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -203,7 +203,7 @@ void Player::userLogout(int msgCounter) {
 }
 
 void Player::clearLogoutEvent() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -215,7 +215,7 @@ void Player::clearLogoutEvent() {
 }
 
 void Player::insertToZone(Zone* zone) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -228,7 +228,7 @@ void Player::insertToZone(Zone* zone) {
 }
 
 void Player::reinsertToZone(Zone* zone) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -241,7 +241,7 @@ void Player::reinsertToZone(Zone* zone) {
 }
 
 void Player::updateZone(bool lightUpdate) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -254,7 +254,7 @@ void Player::updateZone(bool lightUpdate) {
 }
 
 void Player::updateZoneWithParent(unsigned long long cell, bool lightUpdate) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -268,7 +268,7 @@ void Player::updateZoneWithParent(unsigned long long cell, bool lightUpdate) {
 }
 
 void Player::switchMap(int planetid) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -281,7 +281,7 @@ void Player::switchMap(int planetid) {
 }
 
 void Player::doWarp(float x, float y, float z, float randomizeDistance, unsigned long long parentID) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -298,7 +298,7 @@ void Player::doWarp(float x, float y, float z, float randomizeDistance, unsigned
 }
 
 void Player::bounceBack() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -310,7 +310,7 @@ void Player::bounceBack() {
 }
 
 void Player::sendTo(Player* player) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -323,7 +323,7 @@ void Player::sendTo(Player* player) {
 }
 
 void Player::notifySceneReady() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -335,7 +335,7 @@ void Player::notifySceneReady() {
 }
 
 void Player::addDatapadItem(SceneObject* item) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -348,7 +348,7 @@ void Player::addDatapadItem(SceneObject* item) {
 }
 
 SceneObject* Player::getDatapadItem(unsigned long long oid) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -361,7 +361,7 @@ SceneObject* Player::getDatapadItem(unsigned long long oid) {
 }
 
 void Player::removeDatapadItem(unsigned long long oid) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -374,7 +374,7 @@ void Player::removeDatapadItem(unsigned long long oid) {
 }
 
 SceneObject* Player::getPlayerItem(unsigned long long oid) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -387,7 +387,7 @@ SceneObject* Player::getPlayerItem(unsigned long long oid) {
 }
 
 void Player::clearQueueAction(unsigned int actioncntr, float timer, unsigned int tab1, unsigned int tab2) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -403,7 +403,7 @@ void Player::clearQueueAction(unsigned int actioncntr, float timer, unsigned int
 }
 
 void Player::queueAction(Player* player, unsigned long long target, unsigned int actionCRC, unsigned int actionCntr) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -419,7 +419,7 @@ void Player::queueAction(Player* player, unsigned long long target, unsigned int
 }
 
 void Player::deleteQueueAction(unsigned int actioncntr) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -432,7 +432,7 @@ void Player::deleteQueueAction(unsigned int actioncntr) {
 }
 
 void Player::changePosture(int post) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -445,7 +445,7 @@ void Player::changePosture(int post) {
 }
 
 void Player::doCenterOfBeing() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -457,7 +457,7 @@ void Player::doCenterOfBeing() {
 }
 
 void Player::removeCenterOfBeing() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -469,7 +469,7 @@ void Player::removeCenterOfBeing() {
 }
 
 void Player::doPeace() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -481,7 +481,7 @@ void Player::doPeace() {
 }
 
 void Player::kill() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -493,7 +493,7 @@ void Player::kill() {
 }
 
 void Player::lootCorpse() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -505,7 +505,7 @@ void Player::lootCorpse() {
 }
 
 void Player::addTradeItem(TangibleObject* item) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -518,7 +518,7 @@ void Player::addTradeItem(TangibleObject* item) {
 }
 
 void Player::clearTradeItems() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -530,7 +530,7 @@ void Player::clearTradeItems() {
 }
 
 int Player::getTradeSize() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -542,7 +542,7 @@ int Player::getTradeSize() {
 }
 
 TangibleObject* Player::getTradeItem(int idx) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -555,7 +555,7 @@ TangibleObject* Player::getTradeItem(int idx) {
 }
 
 void Player::setAcceptedTrade(bool val) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -568,7 +568,7 @@ void Player::setAcceptedTrade(bool val) {
 }
 
 bool Player::hasAcceptedTrade() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -580,7 +580,7 @@ bool Player::hasAcceptedTrade() {
 }
 
 void Player::setVerifiedTrade(bool val) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -593,7 +593,7 @@ void Player::setVerifiedTrade(bool val) {
 }
 
 bool Player::hasVerifiedTrade() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -605,7 +605,7 @@ bool Player::hasVerifiedTrade() {
 }
 
 void Player::setMoneyToTrade(unsigned int value) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -618,7 +618,7 @@ void Player::setMoneyToTrade(unsigned int value) {
 }
 
 unsigned int Player::getMoneyToTrade() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -630,7 +630,7 @@ unsigned int Player::getMoneyToTrade() {
 }
 
 void Player::changeCloth(unsigned long long itemid) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -643,7 +643,7 @@ void Player::changeCloth(unsigned long long itemid) {
 }
 
 void Player::changeWeapon(unsigned long long itemid) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -656,7 +656,7 @@ void Player::changeWeapon(unsigned long long itemid) {
 }
 
 void Player::changeArmor(unsigned long long itemid, bool forced) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -670,7 +670,7 @@ void Player::changeArmor(unsigned long long itemid, bool forced) {
 }
 
 void Player::setWeaponSkillMods(Weapon* weapon) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -683,7 +683,7 @@ void Player::setWeaponSkillMods(Weapon* weapon) {
 }
 
 void Player::setArmorSkillMods(Armor* armor) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -696,7 +696,7 @@ void Player::setArmorSkillMods(Armor* armor) {
 }
 
 bool Player::setArmorEncumbrance(Armor* armor, bool forced) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -710,7 +710,7 @@ bool Player::setArmorEncumbrance(Armor* armor, bool forced) {
 }
 
 void Player::applyAttachment(unsigned long long attachmentID, unsigned long long targetID) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -724,7 +724,7 @@ void Player::applyAttachment(unsigned long long attachmentID, unsigned long long
 }
 
 void Player::applyPowerup(unsigned long long powerupID, unsigned long long targetID) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -738,7 +738,7 @@ void Player::applyPowerup(unsigned long long powerupID, unsigned long long targe
 }
 
 void Player::createItems() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -750,7 +750,7 @@ void Player::createItems() {
 }
 
 void Player::loadItems() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -762,7 +762,7 @@ void Player::loadItems() {
 }
 
 void Player::createBaseStats() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -774,7 +774,7 @@ void Player::createBaseStats() {
 }
 
 void Player::decayInventory() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -786,7 +786,7 @@ void Player::decayInventory() {
 }
 
 void Player::saveProfessions() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -798,7 +798,7 @@ void Player::saveProfessions() {
 }
 
 void Player::loadProfessions() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -810,7 +810,7 @@ void Player::loadProfessions() {
 }
 
 bool Player::trainSkillBox(const string& name) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -823,7 +823,7 @@ bool Player::trainSkillBox(const string& name) {
 }
 
 void Player::surrenderSkillBox(const string& name) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -836,7 +836,7 @@ void Player::surrenderSkillBox(const string& name) {
 }
 
 void Player::resetSkillBoxesIterator() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -848,7 +848,7 @@ void Player::resetSkillBoxesIterator() {
 }
 
 int Player::getSkillBoxesSize() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -860,7 +860,7 @@ int Player::getSkillBoxesSize() {
 }
 
 string& Player::getNextSkillBox() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -873,7 +873,7 @@ string& Player::getNextSkillBox() {
 }
 
 bool Player::hasNextSkillBox() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -885,7 +885,7 @@ bool Player::hasNextSkillBox() {
 }
 
 bool Player::hasSkillBox(string& skillBox) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -898,7 +898,7 @@ bool Player::hasSkillBox(string& skillBox) {
 }
 
 void Player::addWaypoint(WaypointObject* wp) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -911,7 +911,7 @@ void Player::addWaypoint(WaypointObject* wp) {
 }
 
 bool Player::removeWaypoint(WaypointObject* wp) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -924,7 +924,7 @@ bool Player::removeWaypoint(WaypointObject* wp) {
 }
 
 WaypointObject* Player::getWaypoint(unsigned long long id) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -937,7 +937,7 @@ WaypointObject* Player::getWaypoint(unsigned long long id) {
 }
 
 void Player::updateWaypoint(WaypointObject* wp) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -950,7 +950,7 @@ void Player::updateWaypoint(WaypointObject* wp) {
 }
 
 void Player::addXp(string& xpType, int xp, bool updateClient) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -965,7 +965,7 @@ void Player::addXp(string& xpType, int xp, bool updateClient) {
 }
 
 void Player::removeXp(string& xpType, int xp, bool updateClient) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -980,7 +980,7 @@ void Player::removeXp(string& xpType, int xp, bool updateClient) {
 }
 
 void Player::removeFromDuelList(Player* targetPlayer) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -993,7 +993,7 @@ void Player::removeFromDuelList(Player* targetPlayer) {
 }
 
 void Player::addToDuelList(Player* targetPlayer) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1006,7 +1006,7 @@ void Player::addToDuelList(Player* targetPlayer) {
 }
 
 bool Player::isInDuelWith(Player* targetPlayer, bool doLock) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1020,7 +1020,7 @@ bool Player::isInDuelWith(Player* targetPlayer, bool doLock) {
 }
 
 Player* Player::getDuelListObject(int index) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1033,7 +1033,7 @@ Player* Player::getDuelListObject(int index) {
 }
 
 bool Player::requestedDuelTo(Player* targetPlayer) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1046,7 +1046,7 @@ bool Player::requestedDuelTo(Player* targetPlayer) {
 }
 
 bool Player::isDuelListEmpty() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1058,7 +1058,7 @@ bool Player::isDuelListEmpty() {
 }
 
 int Player::getDuelListSize() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1070,7 +1070,7 @@ int Player::getDuelListSize() {
 }
 
 bool Player::setGuild(unsigned int gid) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1083,7 +1083,7 @@ bool Player::setGuild(unsigned int gid) {
 }
 
 void Player::setGuild(Guild* gild) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1096,7 +1096,7 @@ void Player::setGuild(Guild* gild) {
 }
 
 bool Player::updateGuild(unsigned int gid) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1109,7 +1109,7 @@ bool Player::updateGuild(unsigned int gid) {
 }
 
 void Player::updateGuild(Guild* guild) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1122,7 +1122,7 @@ void Player::updateGuild(Guild* guild) {
 }
 
 void Player::addChatRoom(ChatRoom* room) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1135,7 +1135,7 @@ void Player::addChatRoom(ChatRoom* room) {
 }
 
 void Player::removeChatRoom(ChatRoom* room) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1148,7 +1148,7 @@ void Player::removeChatRoom(ChatRoom* room) {
 }
 
 void Player::sendSystemMessage(const string& msg) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1161,7 +1161,7 @@ void Player::sendSystemMessage(const string& msg) {
 }
 
 void Player::sendSystemMessage(unicode& msg) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1174,7 +1174,7 @@ void Player::sendSystemMessage(unicode& msg) {
 }
 
 void Player::sendSystemMessage(const string& file, const string& str, unsigned long long targetid) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1189,7 +1189,7 @@ void Player::sendSystemMessage(const string& file, const string& str, unsigned l
 }
 
 void Player::setConversatingCreature(CreatureObject* conversator) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1202,7 +1202,7 @@ void Player::setConversatingCreature(CreatureObject* conversator) {
 }
 
 void Player::setFirstName(const string& name) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1215,7 +1215,7 @@ void Player::setFirstName(const string& name) {
 }
 
 void Player::setBiography(const string& bio) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1228,7 +1228,7 @@ void Player::setBiography(const string& bio) {
 }
 
 void Player::setBiography(unicode& bio) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1241,7 +1241,7 @@ void Player::setBiography(unicode& bio) {
 }
 
 void Player::setHairData(string& hair) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1254,7 +1254,7 @@ void Player::setHairData(string& hair) {
 }
 
 bool Player::changeForceBar(int fp) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1267,7 +1267,7 @@ bool Player::changeForceBar(int fp) {
 }
 
 void Player::setCharacterID(unsigned long long id) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1280,7 +1280,7 @@ void Player::setCharacterID(unsigned long long id) {
 }
 
 void Player::setStartingProfession(const string& prof) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1293,7 +1293,7 @@ void Player::setStartingProfession(const string& prof) {
 }
 
 void Player::setHairObject(const string& hair) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1306,7 +1306,7 @@ void Player::setHairObject(const string& hair) {
 }
 
 void Player::setPlayerObject(PlayerObject* obj) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1319,7 +1319,7 @@ void Player::setPlayerObject(PlayerObject* obj) {
 }
 
 void Player::setOnline() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1331,7 +1331,7 @@ void Player::setOnline() {
 }
 
 void Player::clearDisconnectEvent() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1343,7 +1343,7 @@ void Player::clearDisconnectEvent() {
 }
 
 void Player::setClient(ZoneClient* client) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1356,7 +1356,7 @@ void Player::setClient(ZoneClient* client) {
 }
 
 void Player::setOvert() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1368,7 +1368,7 @@ void Player::setOvert() {
 }
 
 void Player::setCovert() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1380,7 +1380,7 @@ void Player::setCovert() {
 }
 
 void Player::newChangeFactionEvent(unsigned int faction) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1393,7 +1393,7 @@ void Player::newChangeFactionEvent(unsigned int faction) {
 }
 
 void Player::setRaceFileName(string& name) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1406,7 +1406,7 @@ void Player::setRaceFileName(string& name) {
 }
 
 void Player::setStartingLocation(string& loc) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1419,7 +1419,7 @@ void Player::setStartingLocation(string& loc) {
 }
 
 void Player::setFactionRank(string& fac) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1432,7 +1432,7 @@ void Player::setFactionRank(string& fac) {
 }
 
 void Player::setItemShift(unsigned int shift) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1445,7 +1445,7 @@ void Player::setItemShift(unsigned int shift) {
 }
 
 void Player::toggleCharacterBit(unsigned int bit) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1458,7 +1458,7 @@ void Player::toggleCharacterBit(unsigned int bit) {
 }
 
 bool Player::awardBadge(unsigned int badgeindex) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1471,7 +1471,7 @@ bool Player::awardBadge(unsigned int badgeindex) {
 }
 
 void Player::setLinkDead() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1483,7 +1483,7 @@ void Player::setLinkDead() {
 }
 
 void Player::setLoggingIn() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1495,7 +1495,7 @@ void Player::setLoggingIn() {
 }
 
 void Player::setAdminLevel(int level) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1508,7 +1508,7 @@ void Player::setAdminLevel(int level) {
 }
 
 void Player::setLastTestPositionX(float pos) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1521,7 +1521,7 @@ void Player::setLastTestPositionX(float pos) {
 }
 
 void Player::setLastTestPositionY(float pos) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1534,7 +1534,7 @@ void Player::setLastTestPositionY(float pos) {
 }
 
 void Player::setTradeRequestedPlayer(unsigned long long ID) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1547,7 +1547,7 @@ void Player::setTradeRequestedPlayer(unsigned long long ID) {
 }
 
 unsigned long long Player::getTradeRequestedPlayer() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1559,7 +1559,7 @@ unsigned long long Player::getTradeRequestedPlayer() {
 }
 
 void Player::launchFirework() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1571,7 +1571,7 @@ void Player::launchFirework() {
 }
 
 void Player::sendMessage(BaseMessage* msg) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1584,7 +1584,7 @@ void Player::sendMessage(BaseMessage* msg) {
 }
 
 void Player::sendMessage(StandaloneBaseMessage* msg) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1597,7 +1597,7 @@ void Player::sendMessage(StandaloneBaseMessage* msg) {
 }
 
 bool Player::isJedi() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1609,7 +1609,7 @@ bool Player::isJedi() {
 }
 
 bool Player::hasSuiBox(unsigned int boxID) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1622,7 +1622,7 @@ bool Player::hasSuiBox(unsigned int boxID) {
 }
 
 void Player::removeSuiBox(unsigned int boxID) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1635,7 +1635,7 @@ void Player::removeSuiBox(unsigned int boxID) {
 }
 
 SuiBox* Player::getSuiBox(unsigned int boxID) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1648,7 +1648,7 @@ SuiBox* Player::getSuiBox(unsigned int boxID) {
 }
 
 void Player::addSuiBox(SuiBox* sui) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1661,7 +1661,7 @@ void Player::addSuiBox(SuiBox* sui) {
 }
 
 unsigned int Player::getNewSuiBoxID(unsigned int type) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1674,7 +1674,7 @@ unsigned int Player::getNewSuiBoxID(unsigned int type) {
 }
 
 bool Player::isOnline() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1686,7 +1686,7 @@ bool Player::isOnline() {
 }
 
 bool Player::isOffline() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1698,7 +1698,7 @@ bool Player::isOffline() {
 }
 
 bool Player::isLinkDead() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1710,7 +1710,7 @@ bool Player::isLinkDead() {
 }
 
 bool Player::isLoggingIn() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1722,7 +1722,7 @@ bool Player::isLoggingIn() {
 }
 
 bool Player::isLoggingOut() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1734,7 +1734,7 @@ bool Player::isLoggingOut() {
 }
 
 PlayerObject* Player::getPlayerObject() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1746,7 +1746,7 @@ PlayerObject* Player::getPlayerObject() {
 }
 
 CreatureObject* Player::getConversatingCreature() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1758,7 +1758,7 @@ CreatureObject* Player::getConversatingCreature() {
 }
 
 string& Player::getFirstName() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1771,7 +1771,7 @@ string& Player::getFirstName() {
 }
 
 string& Player::getRaceFileName() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1784,7 +1784,7 @@ string& Player::getRaceFileName() {
 }
 
 unicode& Player::getBiography() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1797,7 +1797,7 @@ unicode& Player::getBiography() {
 }
 
 string& Player::getHairData() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1810,7 +1810,7 @@ string& Player::getHairData() {
 }
 
 unsigned long long Player::getCharacterID() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1822,7 +1822,7 @@ unsigned long long Player::getCharacterID() {
 }
 
 string& Player::getStartingProfession() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1835,7 +1835,7 @@ string& Player::getStartingProfession() {
 }
 
 int Player::getZoneIndex() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1847,7 +1847,7 @@ int Player::getZoneIndex() {
 }
 
 string& Player::getHairObject() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1860,7 +1860,7 @@ string& Player::getHairObject() {
 }
 
 ZoneClient* Player::getClient() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1872,7 +1872,7 @@ ZoneClient* Player::getClient() {
 }
 
 GroupObject* Player::getGroupObject() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1884,7 +1884,7 @@ GroupObject* Player::getGroupObject() {
 }
 
 string& Player::getFactionRank() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1897,7 +1897,7 @@ string& Player::getFactionRank() {
 }
 
 unsigned int Player::getRebelPoints() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1909,7 +1909,7 @@ unsigned int Player::getRebelPoints() {
 }
 
 unsigned int Player::getImperialPoints() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1921,7 +1921,7 @@ unsigned int Player::getImperialPoints() {
 }
 
 int Player::getPvpRating() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1933,7 +1933,7 @@ int Player::getPvpRating() {
 }
 
 void Player::getPlayersNearYou() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1945,7 +1945,7 @@ void Player::getPlayersNearYou() {
 }
 
 int Player::getRegionID() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1957,7 +1957,7 @@ int Player::getRegionID() {
 }
 
 int Player::getCertificationListSize() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1969,7 +1969,7 @@ int Player::getCertificationListSize() {
 }
 
 string& Player::getCertification(int idx) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1983,7 +1983,7 @@ string& Player::getCertification(int idx) {
 }
 
 bool Player::checkCertification(string& certification) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1996,7 +1996,7 @@ bool Player::checkCertification(string& certification) {
 }
 
 int Player::getSlicingAbility() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2008,7 +2008,7 @@ int Player::getSlicingAbility() {
 }
 
 CraftingTool* Player::getCurrentCraftingTool() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2020,7 +2020,7 @@ CraftingTool* Player::getCurrentCraftingTool() {
 }
 
 void Player::setCurrentCraftingTool(CraftingTool* ct) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2033,7 +2033,7 @@ void Player::setCurrentCraftingTool(CraftingTool* ct) {
 }
 
 void Player::clearCurrentCraftingTool() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2045,7 +2045,7 @@ void Player::clearCurrentCraftingTool() {
 }
 
 DraftSchematic* Player::getCurrentDraftSchematic() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2057,7 +2057,7 @@ DraftSchematic* Player::getCurrentDraftSchematic() {
 }
 
 void Player::setCurrentDraftSchematic(DraftSchematic* ds) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2070,7 +2070,7 @@ void Player::setCurrentDraftSchematic(DraftSchematic* ds) {
 }
 
 void Player::clearCurrentDraftSchematic() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2082,7 +2082,7 @@ void Player::clearCurrentDraftSchematic() {
 }
 
 unsigned long long Player::getCurrentSchematicID() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2094,7 +2094,7 @@ unsigned long long Player::getCurrentSchematicID() {
 }
 
 void Player::setCurrentSchematicID(unsigned long long schematicID) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2107,7 +2107,7 @@ void Player::setCurrentSchematicID(unsigned long long schematicID) {
 }
 
 void Player::prepareCraftingSessionStageTwo(DraftSchematic* ds) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2120,7 +2120,7 @@ void Player::prepareCraftingSessionStageTwo(DraftSchematic* ds) {
 }
 
 void Player::addResourceToCraft(ResourceContainer* rnco, int slot, int counter) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2135,7 +2135,7 @@ void Player::addResourceToCraft(ResourceContainer* rnco, int slot, int counter) 
 }
 
 void Player::sendDraftSchematics() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2147,7 +2147,7 @@ void Player::sendDraftSchematics() {
 }
 
 void Player::addDraftSchematicsFromGroupName(const string& schematicGroupName) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2160,7 +2160,7 @@ void Player::addDraftSchematicsFromGroupName(const string& schematicGroupName) {
 }
 
 void Player::subtractDraftSchematicsFromGroupName(const string& schematicGroupName) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2173,7 +2173,7 @@ void Player::subtractDraftSchematicsFromGroupName(const string& schematicGroupNa
 }
 
 void Player::addDraftSchematic(DraftSchematic* ds) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2186,7 +2186,7 @@ void Player::addDraftSchematic(DraftSchematic* ds) {
 }
 
 void Player::subtractDraftSchematic(DraftSchematic* ds) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2199,7 +2199,7 @@ void Player::subtractDraftSchematic(DraftSchematic* ds) {
 }
 
 unsigned int Player::getDraftSchematicListSize() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2211,7 +2211,7 @@ unsigned int Player::getDraftSchematicListSize() {
 }
 
 unsigned int Player::getDraftSchematicUpdateCount(unsigned int count) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2224,7 +2224,7 @@ unsigned int Player::getDraftSchematicUpdateCount(unsigned int count) {
 }
 
 DraftSchematic* Player::getDraftSchematic(unsigned int schematicID) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2237,7 +2237,7 @@ DraftSchematic* Player::getDraftSchematic(unsigned int schematicID) {
 }
 
 DraftSchematic* Player::getDraftSchematic(int index) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2250,7 +2250,7 @@ DraftSchematic* Player::getDraftSchematic(int index) {
 }
 
 bool Player::isChangingFaction() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2262,7 +2262,7 @@ bool Player::isChangingFaction() {
 }
 
 Datapad* Player::getDatapad() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2274,7 +2274,7 @@ Datapad* Player::getDatapad() {
 }
 
 unsigned long long Player::getNewItemID() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2286,7 +2286,7 @@ unsigned long long Player::getNewItemID() {
 }
 
 unsigned int Player::getItemShift() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2298,7 +2298,7 @@ unsigned int Player::getItemShift() {
 }
 
 float Player::getLastTestPositionX() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2310,7 +2310,7 @@ float Player::getLastTestPositionX() {
 }
 
 float Player::getLastTestPositionY() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2322,7 +2322,7 @@ float Player::getLastTestPositionY() {
 }
 
 unsigned int Player::getForcePower() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2334,7 +2334,7 @@ unsigned int Player::getForcePower() {
 }
 
 SurveyTool* Player::getSurveyTool() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2346,7 +2346,7 @@ SurveyTool* Player::getSurveyTool() {
 }
 
 void Player::setSurveyTool(SurveyTool* sTool) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2359,7 +2359,7 @@ void Player::setSurveyTool(SurveyTool* sTool) {
 }
 
 void Player::setSurveyWaypoint(WaypointObject* id) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2372,7 +2372,7 @@ void Player::setSurveyWaypoint(WaypointObject* id) {
 }
 
 WaypointObject* Player::getSurveyWaypoint() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2384,7 +2384,7 @@ WaypointObject* Player::getSurveyWaypoint() {
 }
 
 bool Player::getCanSurvey() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2396,7 +2396,7 @@ bool Player::getCanSurvey() {
 }
 
 bool Player::getCanSample() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2408,7 +2408,7 @@ bool Player::getCanSample() {
 }
 
 void Player::setCanSurvey() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2420,7 +2420,7 @@ void Player::setCanSurvey() {
 }
 
 void Player::setCanSample() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2432,7 +2432,7 @@ void Player::setCanSample() {
 }
 
 void Player::setSurveyEvent(string& resourcename) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2445,7 +2445,7 @@ void Player::setSurveyEvent(string& resourcename) {
 }
 
 void Player::setSampleEvent(string& resourcename, bool firstTime) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2459,7 +2459,7 @@ void Player::setSampleEvent(string& resourcename, bool firstTime) {
 }
 
 void Player::setCancelSample(bool val) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2472,7 +2472,7 @@ void Player::setCancelSample(bool val) {
 }
 
 bool Player::getCancelSample() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2484,7 +2484,7 @@ bool Player::getCancelSample() {
 }
 
 void Player::sendSampleTimeRemaining() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2496,7 +2496,7 @@ void Player::sendSampleTimeRemaining() {
 }
 
 void Player::setSurveyErrorMessage() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2508,7 +2508,7 @@ void Player::setSurveyErrorMessage() {
 }
 
 void Player::setSampleErrorMessage() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2520,7 +2520,7 @@ void Player::setSampleErrorMessage() {
 }
 
 bool Player::getSurveyErrorMessage() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2532,7 +2532,7 @@ bool Player::getSurveyErrorMessage() {
 }
 
 bool Player::getSampleErrorMessage() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {

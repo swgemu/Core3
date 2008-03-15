@@ -76,7 +76,7 @@ JediWeapon* JediWeapon::clone() {
 
 
 int JediWeapon::getForceCost() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -88,7 +88,7 @@ int JediWeapon::getForceCost() {
 }
 
 void JediWeapon::setForceCost(int fcost) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {

@@ -78,7 +78,7 @@ StaticObject* StaticObject::clone() {
 
 
 void StaticObject::insertToZone(Zone* zone) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -91,7 +91,7 @@ void StaticObject::insertToZone(Zone* zone) {
 }
 
 void StaticObject::removeFromZone() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -103,7 +103,7 @@ void StaticObject::removeFromZone() {
 }
 
 void StaticObject::close(Player* player) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -116,7 +116,7 @@ void StaticObject::close(Player* player) {
 }
 
 void StaticObject::sendTo(Player* player, bool doClose) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {

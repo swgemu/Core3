@@ -76,7 +76,7 @@ Ticket* Ticket::clone() {
 
 
 int Ticket::useObject(Player* player) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -89,7 +89,7 @@ int Ticket::useObject(Player* player) {
 }
 
 string& Ticket::getDeparturePlanet() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -102,7 +102,7 @@ string& Ticket::getDeparturePlanet() {
 }
 
 string& Ticket::getDeparturePoint() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -115,7 +115,7 @@ string& Ticket::getDeparturePoint() {
 }
 
 string& Ticket::getArrivalPlanet() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -128,7 +128,7 @@ string& Ticket::getArrivalPlanet() {
 }
 
 string& Ticket::getArrivalPoint() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {

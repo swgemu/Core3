@@ -76,7 +76,7 @@ Firework* Firework::clone() {
 
 
 int Firework::useObject(Player* player) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {

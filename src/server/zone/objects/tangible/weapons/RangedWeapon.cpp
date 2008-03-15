@@ -76,7 +76,7 @@ RangedWeapon* RangedWeapon::clone() {
 
 
 int RangedWeapon::getRange() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -88,7 +88,7 @@ int RangedWeapon::getRange() {
 }
 
 void RangedWeapon::setRange(int rng) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {

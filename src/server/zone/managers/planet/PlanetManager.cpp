@@ -80,7 +80,7 @@ PlanetManager* PlanetManager::clone() {
 
 
 void PlanetManager::init() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -92,7 +92,7 @@ void PlanetManager::init() {
 }
 
 void PlanetManager::start() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -104,7 +104,7 @@ void PlanetManager::start() {
 }
 
 void PlanetManager::stop() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -116,7 +116,7 @@ void PlanetManager::stop() {
 }
 
 unsigned long long PlanetManager::getNextStaticObjectID(bool doLock) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -129,7 +129,7 @@ unsigned long long PlanetManager::getNextStaticObjectID(bool doLock) {
 }
 
 void PlanetManager::landShuttles() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -141,7 +141,7 @@ void PlanetManager::landShuttles() {
 }
 
 void PlanetManager::takeOffShuttles() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -153,7 +153,7 @@ void PlanetManager::takeOffShuttles() {
 }
 
 ShuttleCreature* PlanetManager::getShuttle(const string& Shuttle) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -166,7 +166,7 @@ ShuttleCreature* PlanetManager::getShuttle(const string& Shuttle) {
 }
 
 void PlanetManager::sendPlanetTravelPointListResponse(Player* player) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -179,7 +179,7 @@ void PlanetManager::sendPlanetTravelPointListResponse(Player* player) {
 }
 
 CellObject* PlanetManager::getCell(unsigned long long id) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -192,7 +192,7 @@ CellObject* PlanetManager::getCell(unsigned long long id) {
 }
 
 BuildingObject* PlanetManager::getBuilding(unsigned long long id) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -205,7 +205,7 @@ BuildingObject* PlanetManager::getBuilding(unsigned long long id) {
 }
 
 unsigned long long PlanetManager::getLandingTime() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {

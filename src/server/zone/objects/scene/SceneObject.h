@@ -75,6 +75,8 @@ public:
 
 	virtual ~SceneObject();
 
+	bool destroy();
+
 	void redeploy();
 
 	void scheduleUndeploy();

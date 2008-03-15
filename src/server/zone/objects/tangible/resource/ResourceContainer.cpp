@@ -80,7 +80,7 @@ ResourceContainer* ResourceContainer::clone() {
 
 
 void ResourceContainer::init() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -92,7 +92,7 @@ void ResourceContainer::init() {
 }
 
 void ResourceContainer::sendTo(Player* player, bool doClose) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -106,7 +106,7 @@ void ResourceContainer::sendTo(Player* player, bool doClose) {
 }
 
 void ResourceContainer::sendDeltas(Player* player) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -119,7 +119,7 @@ void ResourceContainer::sendDeltas(Player* player) {
 }
 
 void ResourceContainer::generateAttributes(SceneObject* obj) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -132,7 +132,7 @@ void ResourceContainer::generateAttributes(SceneObject* obj) {
 }
 
 void ResourceContainer::splitContainer(Player* player, int newQuantity) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -146,7 +146,7 @@ void ResourceContainer::splitContainer(Player* player, int newQuantity) {
 }
 
 void ResourceContainer::transferContents(Player* player, ResourceContainer* fromRCO) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -160,7 +160,7 @@ void ResourceContainer::transferContents(Player* player, ResourceContainer* from
 }
 
 void ResourceContainer::setContents(int i) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -173,7 +173,7 @@ void ResourceContainer::setContents(int i) {
 }
 
 void ResourceContainer::setDecayResistance(int i) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -186,7 +186,7 @@ void ResourceContainer::setDecayResistance(int i) {
 }
 
 void ResourceContainer::setQuality(int i) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -199,7 +199,7 @@ void ResourceContainer::setQuality(int i) {
 }
 
 void ResourceContainer::setFlavor(int i) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -212,7 +212,7 @@ void ResourceContainer::setFlavor(int i) {
 }
 
 void ResourceContainer::setPotentialEnergy(int i) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -225,7 +225,7 @@ void ResourceContainer::setPotentialEnergy(int i) {
 }
 
 void ResourceContainer::setMalleability(int i) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -238,7 +238,7 @@ void ResourceContainer::setMalleability(int i) {
 }
 
 void ResourceContainer::setToughness(int i) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -251,7 +251,7 @@ void ResourceContainer::setToughness(int i) {
 }
 
 void ResourceContainer::setShockResistance(int i) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -264,7 +264,7 @@ void ResourceContainer::setShockResistance(int i) {
 }
 
 void ResourceContainer::setColdResistance(int i) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -277,7 +277,7 @@ void ResourceContainer::setColdResistance(int i) {
 }
 
 void ResourceContainer::setHeatResistance(int i) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -290,7 +290,7 @@ void ResourceContainer::setHeatResistance(int i) {
 }
 
 void ResourceContainer::setConductivity(int i) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -303,7 +303,7 @@ void ResourceContainer::setConductivity(int i) {
 }
 
 void ResourceContainer::setEntangleResistance(int i) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -316,7 +316,7 @@ void ResourceContainer::setEntangleResistance(int i) {
 }
 
 void ResourceContainer::setClassSeven(string& str) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -329,7 +329,7 @@ void ResourceContainer::setClassSeven(string& str) {
 }
 
 void ResourceContainer::setResourceName(unicode& n) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -342,7 +342,7 @@ void ResourceContainer::setResourceName(unicode& n) {
 }
 
 void ResourceContainer::setContainerFile(string& tempn) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -355,7 +355,7 @@ void ResourceContainer::setContainerFile(string& tempn) {
 }
 
 void ResourceContainer::setObjectCRC(int tempCRC) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -368,7 +368,7 @@ void ResourceContainer::setObjectCRC(int tempCRC) {
 }
 
 void ResourceContainer::setResourceID(unsigned long long rid) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -381,7 +381,7 @@ void ResourceContainer::setResourceID(unsigned long long rid) {
 }
 
 void ResourceContainer::setObjectSubType(int subType) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -394,7 +394,7 @@ void ResourceContainer::setObjectSubType(int subType) {
 }
 
 int ResourceContainer::getContents() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -406,7 +406,7 @@ int ResourceContainer::getContents() {
 }
 
 int ResourceContainer::getDecayResistance() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -418,7 +418,7 @@ int ResourceContainer::getDecayResistance() {
 }
 
 int ResourceContainer::getQuality() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -430,7 +430,7 @@ int ResourceContainer::getQuality() {
 }
 
 int ResourceContainer::getFlavor() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -442,7 +442,7 @@ int ResourceContainer::getFlavor() {
 }
 
 int ResourceContainer::getPotentialEnergy() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -454,7 +454,7 @@ int ResourceContainer::getPotentialEnergy() {
 }
 
 int ResourceContainer::getMalleability() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -466,7 +466,7 @@ int ResourceContainer::getMalleability() {
 }
 
 int ResourceContainer::getToughness() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -478,7 +478,7 @@ int ResourceContainer::getToughness() {
 }
 
 int ResourceContainer::getShockResistance() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -490,7 +490,7 @@ int ResourceContainer::getShockResistance() {
 }
 
 int ResourceContainer::getColdResistance() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -502,7 +502,7 @@ int ResourceContainer::getColdResistance() {
 }
 
 int ResourceContainer::getHeatResistance() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -514,7 +514,7 @@ int ResourceContainer::getHeatResistance() {
 }
 
 int ResourceContainer::getConductivity() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -526,7 +526,7 @@ int ResourceContainer::getConductivity() {
 }
 
 int ResourceContainer::getEntangleResistance() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -538,7 +538,7 @@ int ResourceContainer::getEntangleResistance() {
 }
 
 string& ResourceContainer::getClassSeven() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -551,7 +551,7 @@ string& ResourceContainer::getClassSeven() {
 }
 
 unsigned long long ResourceContainer::getResourceID() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -563,7 +563,7 @@ unsigned long long ResourceContainer::getResourceID() {
 }
 
 int ResourceContainer::getMaxContents() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {

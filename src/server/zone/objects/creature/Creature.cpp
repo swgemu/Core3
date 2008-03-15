@@ -84,7 +84,7 @@ Creature* Creature::clone() {
 
 
 void Creature::init() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -96,7 +96,7 @@ void Creature::init() {
 }
 
 void Creature::unload() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -108,7 +108,7 @@ void Creature::unload() {
 }
 
 void Creature::insertToZone(Zone* zone) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -121,7 +121,7 @@ void Creature::insertToZone(Zone* zone) {
 }
 
 void Creature::updateZone() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -133,7 +133,7 @@ void Creature::updateZone() {
 }
 
 void Creature::removeFromZone(bool doLock) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -146,7 +146,7 @@ void Creature::removeFromZone(bool doLock) {
 }
 
 void Creature::loadItems() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -158,7 +158,7 @@ void Creature::loadItems() {
 }
 
 bool Creature::activate() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -170,7 +170,7 @@ bool Creature::activate() {
 }
 
 bool Creature::isActive() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -182,7 +182,7 @@ bool Creature::isActive() {
 }
 
 void Creature::removeFromQueue() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -194,7 +194,7 @@ void Creature::removeFromQueue() {
 }
 
 bool Creature::doMovement() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -206,7 +206,7 @@ bool Creature::doMovement() {
 }
 
 void Creature::doIncapacitate() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -218,7 +218,7 @@ void Creature::doIncapacitate() {
 }
 
 void Creature::doStandUp() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -230,7 +230,7 @@ void Creature::doStandUp() {
 }
 
 void Creature::doAttack(CreatureObject* target, int damage) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -244,7 +244,7 @@ void Creature::doAttack(CreatureObject* target, int damage) {
 }
 
 bool Creature::attack(CreatureObject* target) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -257,7 +257,7 @@ bool Creature::attack(CreatureObject* target) {
 }
 
 void Creature::activateRecovery() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -269,7 +269,7 @@ void Creature::activateRecovery() {
 }
 
 bool Creature::doRecovery() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -281,7 +281,7 @@ bool Creature::doRecovery() {
 }
 
 void Creature::doStatesRecovery() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -293,7 +293,7 @@ void Creature::doStatesRecovery() {
 }
 
 void Creature::queueRespawn() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -305,7 +305,7 @@ void Creature::queueRespawn() {
 }
 
 void Creature::addPatrolPoint(float x, float y, bool doLock) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -320,7 +320,7 @@ void Creature::addPatrolPoint(float x, float y, bool doLock) {
 }
 
 void Creature::resetPatrolPoints(bool doLock) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -333,7 +333,7 @@ void Creature::resetPatrolPoints(bool doLock) {
 }
 
 int Creature::compareTo(Creature* creature) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -346,7 +346,7 @@ int Creature::compareTo(Creature* creature) {
 }
 
 void Creature::setLair(LairObject* Lair) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -359,7 +359,7 @@ void Creature::setLair(LairObject* Lair) {
 }
 
 void Creature::setCreatureGroup(CreatureGroup* group) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -372,7 +372,7 @@ void Creature::setCreatureGroup(CreatureGroup* group) {
 }
 
 void Creature::setObjectFileName(string& name) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -385,7 +385,7 @@ void Creature::setObjectFileName(string& name) {
 }
 
 void Creature::setType(int tp) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -398,7 +398,7 @@ void Creature::setType(int tp) {
 }
 
 void Creature::setRespawnTimer(unsigned int seconds) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -411,7 +411,7 @@ void Creature::setRespawnTimer(unsigned int seconds) {
 }
 
 int Creature::getType() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -423,7 +423,7 @@ int Creature::getType() {
 }
 
 bool Creature::isTrainer() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -435,7 +435,7 @@ bool Creature::isTrainer() {
 }
 
 bool Creature::isRecruiter() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -447,7 +447,7 @@ bool Creature::isRecruiter() {
 }
 
 bool Creature::isMount() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -459,7 +459,7 @@ bool Creature::isMount() {
 }
 
 string& Creature::getName() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -472,7 +472,7 @@ string& Creature::getName() {
 }
 
 int Creature::getZoneIndex() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -484,7 +484,7 @@ int Creature::getZoneIndex() {
 }
 
 Zone* Creature::getZone() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -496,7 +496,7 @@ Zone* Creature::getZone() {
 }
 
 unsigned long long Creature::getNewItemID() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -508,7 +508,7 @@ unsigned long long Creature::getNewItemID() {
 }
 
 unsigned int Creature::getRespawnTimer() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -520,7 +520,7 @@ unsigned int Creature::getRespawnTimer() {
 }
 
 LairObject* Creature::getLair() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {

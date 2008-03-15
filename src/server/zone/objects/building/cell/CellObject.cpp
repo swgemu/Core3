@@ -78,7 +78,7 @@ CellObject* CellObject::clone() {
 
 
 void CellObject::insertToZone(Zone* zone) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -91,7 +91,7 @@ void CellObject::insertToZone(Zone* zone) {
 }
 
 void CellObject::addChild(SceneObject* object, bool doLock) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -105,7 +105,7 @@ void CellObject::addChild(SceneObject* object, bool doLock) {
 }
 
 void CellObject::removeChild(SceneObject* object, bool doLock) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -119,7 +119,7 @@ void CellObject::removeChild(SceneObject* object, bool doLock) {
 }
 
 SceneObject* CellObject::getChild(int idx) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -132,7 +132,7 @@ SceneObject* CellObject::getChild(int idx) {
 }
 
 int CellObject::getChildrenSize() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {

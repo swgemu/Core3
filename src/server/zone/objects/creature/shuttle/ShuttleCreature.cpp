@@ -78,7 +78,7 @@ ShuttleCreature* ShuttleCreature::clone() {
 
 
 void ShuttleCreature::doTakeOff() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -90,7 +90,7 @@ void ShuttleCreature::doTakeOff() {
 }
 
 void ShuttleCreature::doLanding() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -102,7 +102,7 @@ void ShuttleCreature::doLanding() {
 }
 
 void ShuttleCreature::sendPlayerTo(Player* player, Ticket* ticker) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -116,7 +116,7 @@ void ShuttleCreature::sendPlayerTo(Player* player, Ticket* ticker) {
 }
 
 string& ShuttleCreature::getCity() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -129,7 +129,7 @@ string& ShuttleCreature::getCity() {
 }
 
 string& ShuttleCreature::getPlanet() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -142,7 +142,7 @@ string& ShuttleCreature::getPlanet() {
 }
 
 Coordinate* ShuttleCreature::getArrivalPoint() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -154,7 +154,7 @@ Coordinate* ShuttleCreature::getArrivalPoint() {
 }
 
 int ShuttleCreature::getArrivalTime() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {

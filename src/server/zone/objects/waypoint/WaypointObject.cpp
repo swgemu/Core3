@@ -74,7 +74,7 @@ WaypointObject* WaypointObject::clone() {
 
 
 void WaypointObject::changeStatus(bool status) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -87,7 +87,7 @@ void WaypointObject::changeStatus(bool status) {
 }
 
 void WaypointObject::setName(const string& Name) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -100,7 +100,7 @@ void WaypointObject::setName(const string& Name) {
 }
 
 void WaypointObject::setPlanetName(const string& planet) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -113,7 +113,7 @@ void WaypointObject::setPlanetName(const string& planet) {
 }
 
 void WaypointObject::switchStatus() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -125,7 +125,7 @@ void WaypointObject::switchStatus() {
 }
 
 unsigned int WaypointObject::getPlanetCRC() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -137,7 +137,7 @@ unsigned int WaypointObject::getPlanetCRC() {
 }
 
 bool WaypointObject::getStatus() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -149,7 +149,7 @@ bool WaypointObject::getStatus() {
 }
 
 string& WaypointObject::getName() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -162,7 +162,7 @@ string& WaypointObject::getName() {
 }
 
 string& WaypointObject::getPlanetName() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {

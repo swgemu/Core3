@@ -76,7 +76,7 @@ SuiColorPicker* SuiColorPicker::clone() {
 
 
 unsigned long long SuiColorPicker::getObjectID() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -88,7 +88,7 @@ unsigned long long SuiColorPicker::getObjectID() {
 }
 
 BaseMessage* SuiColorPicker::generateMessage() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {

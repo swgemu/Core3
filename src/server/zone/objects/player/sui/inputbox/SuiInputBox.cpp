@@ -76,7 +76,7 @@ SuiInputBox* SuiInputBox::clone() {
 
 
 BaseMessage* SuiInputBox::generateMessage() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -88,7 +88,7 @@ BaseMessage* SuiInputBox::generateMessage() {
 }
 
 void SuiInputBox::setMaxInputSize(int size) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -101,7 +101,7 @@ void SuiInputBox::setMaxInputSize(int size) {
 }
 
 void SuiInputBox::setDefaultInput(const string& text) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -114,7 +114,7 @@ void SuiInputBox::setDefaultInput(const string& text) {
 }
 
 bool SuiInputBox::isFilterBox() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {

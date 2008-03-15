@@ -74,7 +74,7 @@ ZoneClient* ZoneClient::clone() {
 
 
 void ZoneClient::disconnect(bool doLock) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -87,7 +87,7 @@ void ZoneClient::disconnect(bool doLock) {
 }
 
 void ZoneClient::closeConnection(bool doLock) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -100,7 +100,7 @@ void ZoneClient::closeConnection(bool doLock) {
 }
 
 void ZoneClient::sendMessage(BaseMessage* msg) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -113,7 +113,7 @@ void ZoneClient::sendMessage(BaseMessage* msg) {
 }
 
 void ZoneClient::sendMessage(StandaloneBaseMessage* msg) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -126,7 +126,7 @@ void ZoneClient::sendMessage(StandaloneBaseMessage* msg) {
 }
 
 void ZoneClient::resetPacketCheckupTime() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -138,7 +138,7 @@ void ZoneClient::resetPacketCheckupTime() {
 }
 
 void ZoneClient::balancePacketCheckupTime() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -150,7 +150,7 @@ void ZoneClient::balancePacketCheckupTime() {
 }
 
 void ZoneClient::info(const string& msg, bool foredLog) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -164,7 +164,7 @@ void ZoneClient::info(const string& msg, bool foredLog) {
 }
 
 void ZoneClient::setPlayer(Player* player) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -177,7 +177,7 @@ void ZoneClient::setPlayer(Player* player) {
 }
 
 Player* ZoneClient::getPlayer() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -189,7 +189,7 @@ Player* ZoneClient::getPlayer() {
 }
 
 bool ZoneClient::isAvailable() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -201,7 +201,7 @@ bool ZoneClient::isAvailable() {
 }
 
 string& ZoneClient::getAddress() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -214,7 +214,7 @@ string& ZoneClient::getAddress() {
 }
 
 unsigned int ZoneClient::getSessionKey() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {

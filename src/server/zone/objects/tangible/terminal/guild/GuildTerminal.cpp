@@ -76,7 +76,7 @@ GuildTerminal* GuildTerminal::clone() {
 
 
 int GuildTerminal::useObject(Player* player) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {

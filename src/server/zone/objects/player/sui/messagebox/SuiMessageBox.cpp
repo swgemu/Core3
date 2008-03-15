@@ -76,7 +76,7 @@ SuiMessageBox* SuiMessageBox::clone() {
 
 
 BaseMessage* SuiMessageBox::generateMessage() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {

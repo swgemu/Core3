@@ -76,7 +76,7 @@ Instrument* Instrument::clone() {
 
 
 int Instrument::useObject(Player* player) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -89,7 +89,7 @@ int Instrument::useObject(Player* player) {
 }
 
 int Instrument::getInstrumentType() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {

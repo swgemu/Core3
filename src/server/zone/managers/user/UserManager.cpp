@@ -72,7 +72,7 @@ UserManager* UserManager::clone() {
 
 
 bool UserManager::checkUser(unsigned int ipid) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -85,7 +85,7 @@ bool UserManager::checkUser(unsigned int ipid) {
 }
 
 bool UserManager::isAdmin(const string& name) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -98,7 +98,7 @@ bool UserManager::isAdmin(const string& name) {
 }
 
 void UserManager::parseBanList() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -110,7 +110,7 @@ void UserManager::parseBanList() {
 }
 
 void UserManager::banUser(const string& ipaddr) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -123,7 +123,7 @@ void UserManager::banUser(const string& ipaddr) {
 }
 
 bool UserManager::banUserByName(string& name, string& admin) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -137,7 +137,7 @@ bool UserManager::banUserByName(string& name, string& admin) {
 }
 
 void UserManager::changeUserCap(int amount) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -150,7 +150,7 @@ void UserManager::changeUserCap(int amount) {
 }
 
 bool UserManager::isBannedUser(unsigned int ipid) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -163,7 +163,7 @@ bool UserManager::isBannedUser(unsigned int ipid) {
 }
 
 int UserManager::getUserCap() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {

@@ -82,7 +82,7 @@ Zone* Zone::clone() {
 
 
 void Zone::startManagers() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -94,7 +94,7 @@ void Zone::startManagers() {
 }
 
 void Zone::stopManagers() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -106,7 +106,7 @@ void Zone::stopManagers() {
 }
 
 void Zone::lock(bool doLock) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -119,7 +119,7 @@ void Zone::lock(bool doLock) {
 }
 
 void Zone::unlock(bool doLock) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -132,7 +132,7 @@ void Zone::unlock(bool doLock) {
 }
 
 void Zone::registerObject(SceneObject* obj) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -145,7 +145,7 @@ void Zone::registerObject(SceneObject* obj) {
 }
 
 SceneObject* Zone::lookupObject(unsigned long long oid) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -158,7 +158,7 @@ SceneObject* Zone::lookupObject(unsigned long long oid) {
 }
 
 SceneObject* Zone::deleteObject(unsigned long long oid) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -171,7 +171,7 @@ SceneObject* Zone::deleteObject(unsigned long long oid) {
 }
 
 SceneObject* Zone::deleteObject(SceneObject* obj) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -184,7 +184,7 @@ SceneObject* Zone::deleteObject(SceneObject* obj) {
 }
 
 SceneObject* Zone::deleteCachedObject(SceneObject* obj) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -197,7 +197,7 @@ SceneObject* Zone::deleteCachedObject(SceneObject* obj) {
 }
 
 int Zone::getZoneID() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -209,7 +209,7 @@ int Zone::getZoneID() {
 }
 
 ZoneServer* Zone::getZoneServer() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -221,7 +221,7 @@ ZoneServer* Zone::getZoneServer() {
 }
 
 ChatManager* Zone::getChatManager() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -233,7 +233,7 @@ ChatManager* Zone::getChatManager() {
 }
 
 CreatureManager* Zone::getCreatureManager() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -245,7 +245,7 @@ CreatureManager* Zone::getCreatureManager() {
 }
 
 PlanetManager* Zone::getPlanetManager() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -257,7 +257,7 @@ PlanetManager* Zone::getPlanetManager() {
 }
 
 unsigned long long Zone::getGalacticTime() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -269,7 +269,7 @@ unsigned long long Zone::getGalacticTime() {
 }
 
 unsigned int Zone::getWeatherId() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -281,7 +281,7 @@ unsigned int Zone::getWeatherId() {
 }
 
 float Zone::getWeatherCloudX() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -293,7 +293,7 @@ float Zone::getWeatherCloudX() {
 }
 
 float Zone::getWeatherCloudY() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -305,7 +305,7 @@ float Zone::getWeatherCloudY() {
 }
 
 void Zone::setSize(float minx, float miny, float maxx, float maxy) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -321,7 +321,7 @@ void Zone::setSize(float minx, float miny, float maxx, float maxy) {
 }
 
 void Zone::insert(QuadTreeEntry* obj) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -334,7 +334,7 @@ void Zone::insert(QuadTreeEntry* obj) {
 }
 
 void Zone::remove(QuadTreeEntry* obj) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -347,7 +347,7 @@ void Zone::remove(QuadTreeEntry* obj) {
 }
 
 void Zone::removeAll() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -359,7 +359,7 @@ void Zone::removeAll() {
 }
 
 bool Zone::update(QuadTreeEntry* obj) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -372,7 +372,7 @@ bool Zone::update(QuadTreeEntry* obj) {
 }
 
 void Zone::inRange(QuadTreeEntry* obj, float range) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {

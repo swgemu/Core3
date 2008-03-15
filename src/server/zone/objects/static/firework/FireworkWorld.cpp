@@ -76,7 +76,7 @@ FireworkWorld* FireworkWorld::clone() {
 
 
 int FireworkWorld::getFireworkType() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {

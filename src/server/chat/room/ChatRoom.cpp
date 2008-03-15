@@ -76,7 +76,7 @@ ChatRoom* ChatRoom::clone() {
 
 
 void ChatRoom::sendTo(Player* player) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -89,7 +89,7 @@ void ChatRoom::sendTo(Player* player) {
 }
 
 void ChatRoom::sendDestroyTo(Player* player) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -102,7 +102,7 @@ void ChatRoom::sendDestroyTo(Player* player) {
 }
 
 void ChatRoom::addSubRoom(ChatRoom* channel) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -115,7 +115,7 @@ void ChatRoom::addSubRoom(ChatRoom* channel) {
 }
 
 void ChatRoom::removeSubRoom(ChatRoom* channel) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -128,7 +128,7 @@ void ChatRoom::removeSubRoom(ChatRoom* channel) {
 }
 
 ChatRoom* ChatRoom::getSubRoom(int i) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -141,7 +141,7 @@ ChatRoom* ChatRoom::getSubRoom(int i) {
 }
 
 ChatRoom* ChatRoom::getSubRoom(const string& name) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -154,7 +154,7 @@ ChatRoom* ChatRoom::getSubRoom(const string& name) {
 }
 
 void ChatRoom::addPlayer(Player* player, bool doLock) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -168,7 +168,7 @@ void ChatRoom::addPlayer(Player* player, bool doLock) {
 }
 
 void ChatRoom::removePlayer(Player* player, bool doLock) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -182,7 +182,7 @@ void ChatRoom::removePlayer(Player* player, bool doLock) {
 }
 
 void ChatRoom::removePlayer(const string& player) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -195,7 +195,7 @@ void ChatRoom::removePlayer(const string& player) {
 }
 
 void ChatRoom::broadcastMessage(BaseMessage* msg) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -208,7 +208,7 @@ void ChatRoom::broadcastMessage(BaseMessage* msg) {
 }
 
 bool ChatRoom::hasPlayer(Player* player) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -221,7 +221,7 @@ bool ChatRoom::hasPlayer(Player* player) {
 }
 
 bool ChatRoom::hasPlayer(const string& name) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -234,7 +234,7 @@ bool ChatRoom::hasPlayer(const string& name) {
 }
 
 void ChatRoom::removeAllPlayers() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -246,7 +246,7 @@ void ChatRoom::removeAllPlayers() {
 }
 
 void ChatRoom::setPrivate() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -258,7 +258,7 @@ void ChatRoom::setPrivate() {
 }
 
 void ChatRoom::setPublic() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -270,7 +270,7 @@ void ChatRoom::setPublic() {
 }
 
 bool ChatRoom::isPublic() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -282,7 +282,7 @@ bool ChatRoom::isPublic() {
 }
 
 bool ChatRoom::isPrivate() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -294,7 +294,7 @@ bool ChatRoom::isPrivate() {
 }
 
 Player* ChatRoom::getPlayer(int idx) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -307,7 +307,7 @@ Player* ChatRoom::getPlayer(int idx) {
 }
 
 int ChatRoom::getPlayerSize() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -319,7 +319,7 @@ int ChatRoom::getPlayerSize() {
 }
 
 void ChatRoom::setName(const string& Name) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -332,7 +332,7 @@ void ChatRoom::setName(const string& Name) {
 }
 
 string& ChatRoom::getName() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -345,7 +345,7 @@ string& ChatRoom::getName() {
 }
 
 string& ChatRoom::getFullPath() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -358,7 +358,7 @@ string& ChatRoom::getFullPath() {
 }
 
 string& ChatRoom::getOwner() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -371,7 +371,7 @@ string& ChatRoom::getOwner() {
 }
 
 string& ChatRoom::getCreator() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -384,7 +384,7 @@ string& ChatRoom::getCreator() {
 }
 
 unicode& ChatRoom::getTitle() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -397,7 +397,7 @@ unicode& ChatRoom::getTitle() {
 }
 
 string& ChatRoom::getServerName() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -410,7 +410,7 @@ string& ChatRoom::getServerName() {
 }
 
 void ChatRoom::setOwner(const string& Owner) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -423,7 +423,7 @@ void ChatRoom::setOwner(const string& Owner) {
 }
 
 void ChatRoom::setCreator(const string& Creator) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -436,7 +436,7 @@ void ChatRoom::setCreator(const string& Creator) {
 }
 
 void ChatRoom::setTitle(const string& Title) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -449,7 +449,7 @@ void ChatRoom::setTitle(const string& Title) {
 }
 
 unsigned int ChatRoom::getRoomID() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -461,7 +461,7 @@ unsigned int ChatRoom::getRoomID() {
 }
 
 int ChatRoom::getSubRoomsSize() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -473,7 +473,7 @@ int ChatRoom::getSubRoomsSize() {
 }
 
 ChatRoom* ChatRoom::getParent() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -485,7 +485,7 @@ ChatRoom* ChatRoom::getParent() {
 }
 
 int ChatRoom::compareTo(ChatRoom* obj) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {

@@ -55,6 +55,8 @@ import "../../ZoneClient";
 import "../player/Player";
 
 interface SceneObject implements ManagedObject {
+	native boolean destroy();
+
 	void redeploy();
 	
 	void scheduleUndeploy();

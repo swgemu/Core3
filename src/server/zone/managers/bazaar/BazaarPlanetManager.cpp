@@ -78,7 +78,7 @@ BazaarPlanetManager* BazaarPlanetManager::clone() {
 
 
 void BazaarPlanetManager::setPlanet(int planet) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -91,7 +91,7 @@ void BazaarPlanetManager::setPlanet(int planet) {
 }
 
 void BazaarPlanetManager::addBazaarItem(AuctionItem* item) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -104,7 +104,7 @@ void BazaarPlanetManager::addBazaarItem(AuctionItem* item) {
 }
 
 void BazaarPlanetManager::removeBazaarItem(long long objectid) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -117,7 +117,7 @@ void BazaarPlanetManager::removeBazaarItem(long long objectid) {
 }
 
 void BazaarPlanetManager::addBazaar(BazaarTerminalDetails* terminal) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -130,7 +130,7 @@ void BazaarPlanetManager::addBazaar(BazaarTerminalDetails* terminal) {
 }
 
 void BazaarPlanetManager::getBazaarData(Player* player, long long objectid, int screen, int extent, unsigned int category, int count, int offset) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {

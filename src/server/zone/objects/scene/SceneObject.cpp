@@ -78,7 +78,7 @@ SceneObject* SceneObject::clone() {
 
 
 void SceneObject::redeploy() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -90,7 +90,7 @@ void SceneObject::redeploy() {
 }
 
 void SceneObject::scheduleUndeploy() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -102,7 +102,7 @@ void SceneObject::scheduleUndeploy() {
 }
 
 void SceneObject::removeUndeploymentEvent() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -114,7 +114,7 @@ void SceneObject::removeUndeploymentEvent() {
 }
 
 void SceneObject::sendTo(Player* player, bool doClose) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -128,7 +128,7 @@ void SceneObject::sendTo(Player* player, bool doClose) {
 }
 
 void SceneObject::sendDestroyTo(Player* player) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -141,7 +141,7 @@ void SceneObject::sendDestroyTo(Player* player) {
 }
 
 void SceneObject::create(ZoneClient* client) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -154,7 +154,7 @@ void SceneObject::create(ZoneClient* client) {
 }
 
 void SceneObject::destroy(ZoneClient* client) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -167,7 +167,7 @@ void SceneObject::destroy(ZoneClient* client) {
 }
 
 void SceneObject::sendConversationStartTo(SceneObject* obj) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -180,7 +180,7 @@ void SceneObject::sendConversationStartTo(SceneObject* obj) {
 }
 
 void SceneObject::selectConversationOption(int option, SceneObject* obj) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -194,7 +194,7 @@ void SceneObject::selectConversationOption(int option, SceneObject* obj) {
 }
 
 void SceneObject::close(ZoneClient* client) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -207,7 +207,7 @@ void SceneObject::close(ZoneClient* client) {
 }
 
 bool SceneObject::isInRange(SceneObject* obj, float range) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -221,7 +221,7 @@ bool SceneObject::isInRange(SceneObject* obj, float range) {
 }
 
 bool SceneObject::isInRange(float x, float y, float range) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -236,7 +236,7 @@ bool SceneObject::isInRange(float x, float y, float range) {
 }
 
 int SceneObject::inRangeObjectCount() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -248,7 +248,7 @@ int SceneObject::inRangeObjectCount() {
 }
 
 QuadTreeEntry* SceneObject::getInRangeObject(int idx) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -261,7 +261,7 @@ QuadTreeEntry* SceneObject::getInRangeObject(int idx) {
 }
 
 void SceneObject::addInRangeObject(QuadTreeEntry* obj) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -274,7 +274,7 @@ void SceneObject::addInRangeObject(QuadTreeEntry* obj) {
 }
 
 void SceneObject::removeInRangeObject(QuadTreeEntry* obj) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -287,7 +287,7 @@ void SceneObject::removeInRangeObject(QuadTreeEntry* obj) {
 }
 
 bool SceneObject::isInQuadTree() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -299,7 +299,7 @@ bool SceneObject::isInQuadTree() {
 }
 
 QuadTreeEntry* SceneObject::getQuadTreeEntry() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -311,7 +311,7 @@ QuadTreeEntry* SceneObject::getQuadTreeEntry() {
 }
 
 int SceneObject::compareTo(SceneObject* obj) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -324,7 +324,7 @@ int SceneObject::compareTo(SceneObject* obj) {
 }
 
 BaseMessage* SceneObject::link(SceneObject* obj) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -337,7 +337,7 @@ BaseMessage* SceneObject::link(SceneObject* obj) {
 }
 
 void SceneObject::link(ZoneClient* client, SceneObject* obj) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -351,7 +351,7 @@ void SceneObject::link(ZoneClient* client, SceneObject* obj) {
 }
 
 void SceneObject::randomizePosition(float radius) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -364,7 +364,7 @@ void SceneObject::randomizePosition(float radius) {
 }
 
 int SceneObject::useObject(Player* player) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -377,7 +377,7 @@ int SceneObject::useObject(Player* player) {
 }
 
 void SceneObject::initializePosition(float x, float z, float y) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -392,7 +392,7 @@ void SceneObject::initializePosition(float x, float z, float y) {
 }
 
 void SceneObject::setPosition(float x, float z, float y) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -407,7 +407,7 @@ void SceneObject::setPosition(float x, float z, float y) {
 }
 
 void SceneObject::setDirection(float x, float z, float y, float w) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -423,7 +423,7 @@ void SceneObject::setDirection(float x, float z, float y, float w) {
 }
 
 void SceneObject::generateAttributes(Player* player) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -436,7 +436,7 @@ void SceneObject::generateAttributes(Player* player) {
 }
 
 void SceneObject::info(const string& message, bool forcedLog) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -450,7 +450,7 @@ void SceneObject::info(const string& message, bool forcedLog) {
 }
 
 void SceneObject::error(const string& message) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -463,7 +463,7 @@ void SceneObject::error(const string& message) {
 }
 
 void SceneObject::setObjectID(unsigned long long oid) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -476,7 +476,7 @@ void SceneObject::setObjectID(unsigned long long oid) {
 }
 
 void SceneObject::setObjectCRC(unsigned int crc) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -489,7 +489,7 @@ void SceneObject::setObjectCRC(unsigned int crc) {
 }
 
 void SceneObject::setMovementCounter(unsigned int cntr) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -502,7 +502,7 @@ void SceneObject::setMovementCounter(unsigned int cntr) {
 }
 
 void SceneObject::setZoneIndex(int id) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -515,7 +515,7 @@ void SceneObject::setZoneIndex(int id) {
 }
 
 void SceneObject::setParent(SceneObject* par, unsigned int linktype) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -529,7 +529,7 @@ void SceneObject::setParent(SceneObject* par, unsigned int linktype) {
 }
 
 void SceneObject::setZone(Zone* zne) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -542,7 +542,7 @@ void SceneObject::setZone(Zone* zne) {
 }
 
 void SceneObject::clearUndeploymentEvent() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -554,7 +554,7 @@ void SceneObject::clearUndeploymentEvent() {
 }
 
 bool SceneObject::isUndeploymentScheduled() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -566,7 +566,7 @@ bool SceneObject::isUndeploymentScheduled() {
 }
 
 int SceneObject::getObjectType() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -578,7 +578,7 @@ int SceneObject::getObjectType() {
 }
 
 unsigned long long SceneObject::getObjectID() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -590,7 +590,7 @@ unsigned long long SceneObject::getObjectID() {
 }
 
 unsigned int SceneObject::getObjectCRC() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -602,7 +602,7 @@ unsigned int SceneObject::getObjectCRC() {
 }
 
 unsigned int SceneObject::getMovementCounter() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -614,7 +614,7 @@ unsigned int SceneObject::getMovementCounter() {
 }
 
 float SceneObject::getPositionX() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -626,7 +626,7 @@ float SceneObject::getPositionX() {
 }
 
 float SceneObject::getPositionZ() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -638,7 +638,7 @@ float SceneObject::getPositionZ() {
 }
 
 float SceneObject::getPositionY() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -650,7 +650,7 @@ float SceneObject::getPositionY() {
 }
 
 int SceneObject::getDirectionAngle() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -662,7 +662,7 @@ int SceneObject::getDirectionAngle() {
 }
 
 float SceneObject::getDirectionX() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -674,7 +674,7 @@ float SceneObject::getDirectionX() {
 }
 
 float SceneObject::getDirectionZ() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -686,7 +686,7 @@ float SceneObject::getDirectionZ() {
 }
 
 float SceneObject::getDirectionY() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -698,7 +698,7 @@ float SceneObject::getDirectionY() {
 }
 
 float SceneObject::getDirectionW() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -710,7 +710,7 @@ float SceneObject::getDirectionW() {
 }
 
 string& SceneObject::getLoggingName() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -723,7 +723,7 @@ string& SceneObject::getLoggingName() {
 }
 
 bool SceneObject::isPlayer() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -735,7 +735,7 @@ bool SceneObject::isPlayer() {
 }
 
 bool SceneObject::isNonPlayerCreature() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -747,7 +747,7 @@ bool SceneObject::isNonPlayerCreature() {
 }
 
 bool SceneObject::isBuilding() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -759,7 +759,7 @@ bool SceneObject::isBuilding() {
 }
 
 bool SceneObject::isCell() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -771,7 +771,7 @@ bool SceneObject::isCell() {
 }
 
 bool SceneObject::isTangible() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -783,7 +783,7 @@ bool SceneObject::isTangible() {
 }
 
 bool SceneObject::isIntangible() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -795,7 +795,7 @@ bool SceneObject::isIntangible() {
 }
 
 bool SceneObject::isStatic() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -807,7 +807,7 @@ bool SceneObject::isStatic() {
 }
 
 bool SceneObject::isShip() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -819,7 +819,7 @@ bool SceneObject::isShip() {
 }
 
 Zone* SceneObject::getZone() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -831,7 +831,7 @@ Zone* SceneObject::getZone() {
 }
 
 int SceneObject::getZoneID() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -843,7 +843,7 @@ int SceneObject::getZoneID() {
 }
 
 SceneObject* SceneObject::getParent() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -855,7 +855,7 @@ SceneObject* SceneObject::getParent() {
 }
 
 unsigned long long SceneObject::getParentID() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -867,7 +867,7 @@ unsigned long long SceneObject::getParentID() {
 }
 
 bool SceneObject::isMoving() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -879,7 +879,7 @@ bool SceneObject::isMoving() {
 }
 
 void SceneObject::switchMovingState() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -891,7 +891,7 @@ void SceneObject::switchMovingState() {
 }
 
 bool SceneObject::doKeepObject() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {

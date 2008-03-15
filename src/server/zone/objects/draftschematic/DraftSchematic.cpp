@@ -82,7 +82,7 @@ DraftSchematic* DraftSchematic::clone() {
 
 
 void DraftSchematic::addIngredient(const string& ingredientTemplateName, const string& ingredientTitleName, bool optional, const string& resourceType, unsigned int resourceQuantity) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -99,7 +99,7 @@ void DraftSchematic::addIngredient(const string& ingredientTemplateName, const s
 }
 
 void DraftSchematic::sendIngredientsToPlayer(Player* player) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -112,7 +112,7 @@ void DraftSchematic::sendIngredientsToPlayer(Player* player) {
 }
 
 void DraftSchematic::helperSendIngredientsToPlayer(ObjectControllerMessage* objMsg) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -125,7 +125,7 @@ void DraftSchematic::helperSendIngredientsToPlayer(ObjectControllerMessage* objM
 }
 
 void DraftSchematic::addExperimentalProperty(unsigned int groupNumber, const string& experimentalProperty, unsigned int weight) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -140,7 +140,7 @@ void DraftSchematic::addExperimentalProperty(unsigned int groupNumber, const str
 }
 
 void DraftSchematic::sendExperimentalPropertiesToPlayer(Player* player) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -153,7 +153,7 @@ void DraftSchematic::sendExperimentalPropertiesToPlayer(Player* player) {
 }
 
 DraftSchematicIngredient* DraftSchematic::getIngredient(int index) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -166,7 +166,7 @@ DraftSchematicIngredient* DraftSchematic::getIngredient(int index) {
 }
 
 int DraftSchematic::getIngredientListSize() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -178,7 +178,7 @@ int DraftSchematic::getIngredientListSize() {
 }
 
 DraftSchematicExpPropGroup* DraftSchematic::getExpPropGroup(int index) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -191,7 +191,7 @@ DraftSchematicExpPropGroup* DraftSchematic::getExpPropGroup(int index) {
 }
 
 int DraftSchematic::getExpPropGroupListSize() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -203,7 +203,7 @@ int DraftSchematic::getExpPropGroupListSize() {
 }
 
 void DraftSchematic::setPersistent(bool status) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -216,7 +216,7 @@ void DraftSchematic::setPersistent(bool status) {
 }
 
 unsigned int DraftSchematic::getSchematicID() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -228,7 +228,7 @@ unsigned int DraftSchematic::getSchematicID() {
 }
 
 unsigned int DraftSchematic::getSchematicCRC() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -240,7 +240,7 @@ unsigned int DraftSchematic::getSchematicCRC() {
 }
 
 string& DraftSchematic::getName() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -253,7 +253,7 @@ string& DraftSchematic::getName() {
 }
 
 string& DraftSchematic::getGroupName() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -266,7 +266,7 @@ string& DraftSchematic::getGroupName() {
 }
 
 unsigned int DraftSchematic::getComplexity() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -278,7 +278,7 @@ unsigned int DraftSchematic::getComplexity() {
 }
 
 unsigned int DraftSchematic::getSchematicSize() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {

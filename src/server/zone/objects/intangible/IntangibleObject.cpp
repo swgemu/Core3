@@ -76,7 +76,7 @@ IntangibleObject* IntangibleObject::clone() {
 
 
 void IntangibleObject::sendTo(Player* player, bool doClose) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -90,7 +90,7 @@ void IntangibleObject::sendTo(Player* player, bool doClose) {
 }
 
 void IntangibleObject::sendDestroyTo(Player* player) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -103,7 +103,7 @@ void IntangibleObject::sendDestroyTo(Player* player) {
 }
 
 void IntangibleObject::setName(const string& name) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -116,7 +116,7 @@ void IntangibleObject::setName(const string& name) {
 }
 
 void IntangibleObject::setDetailName(const string& detail) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -129,7 +129,7 @@ void IntangibleObject::setDetailName(const string& detail) {
 }
 
 void IntangibleObject::setWorldObject(SceneObject* obj) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -142,7 +142,7 @@ void IntangibleObject::setWorldObject(SceneObject* obj) {
 }
 
 void IntangibleObject::updateStatus(unsigned int stat) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -155,7 +155,7 @@ void IntangibleObject::updateStatus(unsigned int stat) {
 }
 
 string& IntangibleObject::getName() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -168,7 +168,7 @@ string& IntangibleObject::getName() {
 }
 
 string& IntangibleObject::getDetailName() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -181,7 +181,7 @@ string& IntangibleObject::getDetailName() {
 }
 
 SceneObject* IntangibleObject::getWorldObject() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -193,7 +193,7 @@ SceneObject* IntangibleObject::getWorldObject() {
 }
 
 unsigned int IntangibleObject::getStatus() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {

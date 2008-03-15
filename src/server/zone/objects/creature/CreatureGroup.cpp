@@ -76,7 +76,7 @@ CreatureGroup* CreatureGroup::clone() {
 
 
 void CreatureGroup::addCreature(Creature* creature) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -89,7 +89,7 @@ void CreatureGroup::addCreature(Creature* creature) {
 }
 
 void CreatureGroup::setTarget(CreatureObject* targ) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {

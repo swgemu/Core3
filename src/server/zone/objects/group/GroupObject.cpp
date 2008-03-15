@@ -78,7 +78,7 @@ GroupObject* GroupObject::clone() {
 
 
 void GroupObject::sendTo(Player* player) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -91,7 +91,7 @@ void GroupObject::sendTo(Player* player) {
 }
 
 void GroupObject::broadcastMessage(BaseMessage* msg) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -104,7 +104,7 @@ void GroupObject::broadcastMessage(BaseMessage* msg) {
 }
 
 void GroupObject::addPlayer(Player* player) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -117,7 +117,7 @@ void GroupObject::addPlayer(Player* player) {
 }
 
 void GroupObject::removePlayer(Player* player) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -130,7 +130,7 @@ void GroupObject::removePlayer(Player* player) {
 }
 
 void GroupObject::disband() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -142,7 +142,7 @@ void GroupObject::disband() {
 }
 
 void GroupObject::makeLeader(Player* player) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -155,7 +155,7 @@ void GroupObject::makeLeader(Player* player) {
 }
 
 bool GroupObject::hasMember(Player* player) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -168,7 +168,7 @@ bool GroupObject::hasMember(Player* player) {
 }
 
 void GroupObject::startChannel() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -180,7 +180,7 @@ void GroupObject::startChannel() {
 }
 
 ChatRoom* GroupObject::getGroupChannel() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -192,7 +192,7 @@ ChatRoom* GroupObject::getGroupChannel() {
 }
 
 int GroupObject::getListSize() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -204,7 +204,7 @@ int GroupObject::getListSize() {
 }
 
 int GroupObject::getGroupSize() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -216,7 +216,7 @@ int GroupObject::getGroupSize() {
 }
 
 Player* GroupObject::getGroupMember(int index) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -229,7 +229,7 @@ Player* GroupObject::getGroupMember(int index) {
 }
 
 void GroupObject::addMember(Player* player) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -242,7 +242,7 @@ void GroupObject::addMember(Player* player) {
 }
 
 Player* GroupObject::getLeader() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -254,7 +254,7 @@ Player* GroupObject::getLeader() {
 }
 
 unsigned int GroupObject::getListCount() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -266,7 +266,7 @@ unsigned int GroupObject::getListCount() {
 }
 
 unsigned int GroupObject::getNewListCount(int cnt) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {

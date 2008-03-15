@@ -132,10 +132,14 @@ public:
 	SceneObject* getObject(uint64 oid, bool doLock = true);
 
 	SceneObject* removeObject(uint64 oid, bool doLock = true);
+	SceneObject* removeObject(SceneObject* obj, bool doLock = true);
+	
+	bool destroyObject(SceneObject* obj, bool doLock = true);
 
 	SceneObject* getCachedObject(uint64 oid, bool doLock = true);
 
 	SceneObject* removeCachedObject(uint64 oid, bool doLock = true);
+	SceneObject* removeCachedObject(SceneObject* obj, bool doLock = true);
 
 	// server methods
 	void addTotalSentPacket(int count);

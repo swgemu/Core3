@@ -80,7 +80,7 @@ ItemManager* ItemManager::clone() {
 
 
 void ItemManager::loadStaticWorldObjects() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -92,7 +92,7 @@ void ItemManager::loadStaticWorldObjects() {
 }
 
 TangibleObject* ItemManager::getPlayerItem(Player* player, long long objectid) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -106,7 +106,7 @@ TangibleObject* ItemManager::getPlayerItem(Player* player, long long objectid) {
 }
 
 void ItemManager::loadPlayerItems(Player* player) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -119,7 +119,7 @@ void ItemManager::loadPlayerItems(Player* player) {
 }
 
 void ItemManager::loadDefaultPlayerItems(Player* player) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -132,7 +132,7 @@ void ItemManager::loadDefaultPlayerItems(Player* player) {
 }
 
 void ItemManager::loadDefaultPlayerDatapadItems(Player* player) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -145,7 +145,7 @@ void ItemManager::loadDefaultPlayerDatapadItems(Player* player) {
 }
 
 void ItemManager::unloadPlayerItems(Player* player) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -158,7 +158,7 @@ void ItemManager::unloadPlayerItems(Player* player) {
 }
 
 void ItemManager::createPlayerItem(Player* player, TangibleObject* item) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -172,7 +172,7 @@ void ItemManager::createPlayerItem(Player* player, TangibleObject* item) {
 }
 
 void ItemManager::savePlayerItem(Player* player, TangibleObject* item) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -186,7 +186,7 @@ void ItemManager::savePlayerItem(Player* player, TangibleObject* item) {
 }
 
 void ItemManager::deletePlayerItem(Player* player, TangibleObject* item, bool notify) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -201,7 +201,7 @@ void ItemManager::deletePlayerItem(Player* player, TangibleObject* item, bool no
 }
 
 void ItemManager::showDbStats(Player* player) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -214,7 +214,7 @@ void ItemManager::showDbStats(Player* player) {
 }
 
 void ItemManager::showDbDeleted(Player* player) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -227,7 +227,7 @@ void ItemManager::showDbDeleted(Player* player) {
 }
 
 void ItemManager::purgeDbDeleted(Player* player) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -240,7 +240,7 @@ void ItemManager::purgeDbDeleted(Player* player) {
 }
 
 unsigned long long ItemManager::getNextStaticObjectID() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {

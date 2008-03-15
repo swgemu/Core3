@@ -76,7 +76,7 @@ Holocron* Holocron::clone() {
 
 
 int Holocron::useObject(Player* player) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {

@@ -78,7 +78,7 @@ RecruiterCreature* RecruiterCreature::clone() {
 
 
 void RecruiterCreature::sendConversationStartTo(SceneObject* obj) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -91,7 +91,7 @@ void RecruiterCreature::sendConversationStartTo(SceneObject* obj) {
 }
 
 void RecruiterCreature::sendFactions(Player* player) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -104,7 +104,7 @@ void RecruiterCreature::sendFactions(Player* player) {
 }
 
 void RecruiterCreature::selectConversationOption(int option, SceneObject* obj) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {

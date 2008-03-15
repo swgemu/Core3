@@ -76,7 +76,7 @@ ResourceManager* ResourceManager::clone() {
 
 
 void ResourceManager::theShift() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -88,7 +88,7 @@ void ResourceManager::theShift() {
 }
 
 void ResourceManager::stop() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -100,7 +100,7 @@ void ResourceManager::stop() {
 }
 
 void ResourceManager::clearResources() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -112,7 +112,7 @@ void ResourceManager::clearResources() {
 }
 
 bool ResourceManager::checkResource(Player* player, string& resourcename, int SurveyToolType) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -127,7 +127,7 @@ bool ResourceManager::checkResource(Player* player, string& resourcename, int Su
 }
 
 void ResourceManager::sendSurveyMessage(Player* player, string& resourcename) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -141,7 +141,7 @@ void ResourceManager::sendSurveyMessage(Player* player, string& resourcename) {
 }
 
 void ResourceManager::sendSampleMessage(Player* player, string& resourcename) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -155,7 +155,7 @@ void ResourceManager::sendSampleMessage(Player* player, string& resourcename) {
 }
 
 void ResourceManager::setResourceData(ResourceContainerImplementation* resContainer) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -168,7 +168,7 @@ void ResourceManager::setResourceData(ResourceContainerImplementation* resContai
 }
 
 bool ResourceManager::sendSurveyResources(Player* player, int SurveyToolType) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -182,7 +182,7 @@ bool ResourceManager::sendSurveyResources(Player* player, int SurveyToolType) {
 }
 
 void ResourceManager::getClassSeven(const string& str, string& clas) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {

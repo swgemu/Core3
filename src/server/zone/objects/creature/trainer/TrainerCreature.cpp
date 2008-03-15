@@ -78,7 +78,7 @@ TrainerCreature* TrainerCreature::clone() {
 
 
 void TrainerCreature::sendConversationStartTo(SceneObject* obj) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -91,7 +91,7 @@ void TrainerCreature::sendConversationStartTo(SceneObject* obj) {
 }
 
 void TrainerCreature::sendSkillBoxes(Player* player) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -104,7 +104,7 @@ void TrainerCreature::sendSkillBoxes(Player* player) {
 }
 
 void TrainerCreature::selectConversationOption(int option, SceneObject* obj) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {

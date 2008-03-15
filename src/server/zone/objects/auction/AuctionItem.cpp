@@ -72,7 +72,7 @@ AuctionItem* AuctionItem::clone() {
 
 
 unsigned long long AuctionItem::getId() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -84,7 +84,7 @@ unsigned long long AuctionItem::getId() {
 }
 
 unsigned long long AuctionItem::getOwnerId() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -96,7 +96,7 @@ unsigned long long AuctionItem::getOwnerId() {
 }
 
 void AuctionItem::setOwnerId(unsigned long long ownerid) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -109,7 +109,7 @@ void AuctionItem::setOwnerId(unsigned long long ownerid) {
 }
 
 void AuctionItem::setOwnerName(string& name) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -122,7 +122,7 @@ void AuctionItem::setOwnerName(string& name) {
 }
 
 unsigned long long AuctionItem::getBuyerId() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -134,7 +134,7 @@ unsigned long long AuctionItem::getBuyerId() {
 }
 
 void AuctionItem::setBuyerId(unsigned long long buyerid) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -147,7 +147,7 @@ void AuctionItem::setBuyerId(unsigned long long buyerid) {
 }
 
 string& AuctionItem::getBidderName() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -160,7 +160,7 @@ string& AuctionItem::getBidderName() {
 }
 
 void AuctionItem::setBidderName(string& name) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -173,7 +173,7 @@ void AuctionItem::setBidderName(string& name) {
 }
 
 unsigned int AuctionItem::getItemType() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -185,7 +185,7 @@ unsigned int AuctionItem::getItemType() {
 }
 
 bool AuctionItem::isSold() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -197,7 +197,7 @@ bool AuctionItem::isSold() {
 }
 
 void AuctionItem::setSold(bool sld) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -210,7 +210,7 @@ void AuctionItem::setSold(bool sld) {
 }
 
 string& AuctionItem::getTerminalTitle() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -223,7 +223,7 @@ string& AuctionItem::getTerminalTitle() {
 }
 
 string& AuctionItem::getOwnerName() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -236,7 +236,7 @@ string& AuctionItem::getOwnerName() {
 }
 
 void AuctionItem::setLocationPointer(int locpt) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -249,7 +249,7 @@ void AuctionItem::setLocationPointer(int locpt) {
 }
 
 int AuctionItem::getLocationPointer() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -261,7 +261,7 @@ int AuctionItem::getLocationPointer() {
 }
 
 void AuctionItem::setOwnerPointer(int ownpt) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -274,7 +274,7 @@ void AuctionItem::setOwnerPointer(int ownpt) {
 }
 
 int AuctionItem::getOwnerPointer() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -286,7 +286,7 @@ int AuctionItem::getOwnerPointer() {
 }
 
 string& AuctionItem::getItemName() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -299,7 +299,7 @@ string& AuctionItem::getItemName() {
 }
 
 void AuctionItem::setItemDescription(string& description) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -312,7 +312,7 @@ void AuctionItem::setItemDescription(string& description) {
 }
 
 string& AuctionItem::getItemDescription() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -325,7 +325,7 @@ string& AuctionItem::getItemDescription() {
 }
 
 int AuctionItem::getPrice() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -337,7 +337,7 @@ int AuctionItem::getPrice() {
 }
 
 void AuctionItem::setPrice(int prc) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -350,7 +350,7 @@ void AuctionItem::setPrice(int prc) {
 }
 
 unsigned int AuctionItem::getExpireTime() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -362,7 +362,7 @@ unsigned int AuctionItem::getExpireTime() {
 }
 
 void AuctionItem::setExpireTime(unsigned int expiretime) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -375,7 +375,7 @@ void AuctionItem::setExpireTime(unsigned int expiretime) {
 }
 
 bool AuctionItem::getAuction() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -387,7 +387,7 @@ bool AuctionItem::getAuction() {
 }
 
 int AuctionItem::getPlanet() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -399,7 +399,7 @@ int AuctionItem::getPlanet() {
 }
 
 string& AuctionItem::getLocation() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {

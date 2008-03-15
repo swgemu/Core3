@@ -70,10 +70,14 @@ interface ZoneServer {
 	SceneObject getObject(unsigned long oid, boolean doLock = true);
 
 	SceneObject removeObject(unsigned long oid, boolean doLock = true);
+	SceneObject removeObject(SceneObject obj, boolean doLock = true);
+
+	boolean destroyObject(SceneObject obj, boolean doLock = true);
 
 	SceneObject getCachedObject(unsigned long oid, boolean doLock = true);
 
 	SceneObject removeCachedObject(unsigned long oid, boolean doLock = true);
+	SceneObject removeCachedObject(SceneObject obj, boolean doLock = true);
 
 	// administration methods
 	boolean banUser(string name, string admin);

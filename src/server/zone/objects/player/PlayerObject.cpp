@@ -80,7 +80,7 @@ PlayerObject* PlayerObject::clone() {
 
 
 void PlayerObject::sendToOwner() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -92,7 +92,7 @@ void PlayerObject::sendToOwner() {
 }
 
 void PlayerObject::sendTo(Player* player, bool doClose) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -106,7 +106,7 @@ void PlayerObject::sendTo(Player* player, bool doClose) {
 }
 
 void PlayerObject::addExperience(const string& xpType, int xp, bool updateClient) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -121,7 +121,7 @@ void PlayerObject::addExperience(const string& xpType, int xp, bool updateClient
 }
 
 void PlayerObject::removeExperience(const string& xpType, int xp, bool updateClient) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -136,7 +136,7 @@ void PlayerObject::removeExperience(const string& xpType, int xp, bool updateCli
 }
 
 bool PlayerObject::setCharacterBit(unsigned int bit, bool updateClient) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -150,7 +150,7 @@ bool PlayerObject::setCharacterBit(unsigned int bit, bool updateClient) {
 }
 
 bool PlayerObject::clearCharacterBit(unsigned int bit, bool updateClient) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -164,7 +164,7 @@ bool PlayerObject::clearCharacterBit(unsigned int bit, bool updateClient) {
 }
 
 void PlayerObject::setForcePower(unsigned int fp, bool updateClient) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -178,7 +178,7 @@ void PlayerObject::setForcePower(unsigned int fp, bool updateClient) {
 }
 
 void PlayerObject::setForcePowerMax(int fp) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -191,7 +191,7 @@ void PlayerObject::setForcePowerMax(int fp) {
 }
 
 void PlayerObject::setForceRegen(int fp) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -204,7 +204,7 @@ void PlayerObject::setForceRegen(int fp) {
 }
 
 unsigned int PlayerObject::getForcePower() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -216,7 +216,7 @@ unsigned int PlayerObject::getForcePower() {
 }
 
 unsigned int PlayerObject::getForcePowerMax() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -228,7 +228,7 @@ unsigned int PlayerObject::getForcePowerMax() {
 }
 
 unsigned int PlayerObject::getForceRegen() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -240,7 +240,7 @@ unsigned int PlayerObject::getForceRegen() {
 }
 
 bool PlayerObject::isJedi() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -252,7 +252,7 @@ bool PlayerObject::isJedi() {
 }
 
 bool PlayerObject::isOnFullForce() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -264,7 +264,7 @@ bool PlayerObject::isOnFullForce() {
 }
 
 unsigned int PlayerObject::getCharacterBitmask() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -276,7 +276,7 @@ unsigned int PlayerObject::getCharacterBitmask() {
 }
 
 int PlayerObject::getWaypointListSize() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -288,7 +288,7 @@ int PlayerObject::getWaypointListSize() {
 }
 
 unsigned int PlayerObject::getJediState() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -300,7 +300,7 @@ unsigned int PlayerObject::getJediState() {
 }
 
 WaypointObject* PlayerObject::getWaypoint(unsigned long long id) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -313,7 +313,7 @@ WaypointObject* PlayerObject::getWaypoint(unsigned long long id) {
 }
 
 void PlayerObject::addWaypoint(WaypointObject* wp, bool updateClient) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -327,7 +327,7 @@ void PlayerObject::addWaypoint(WaypointObject* wp, bool updateClient) {
 }
 
 bool PlayerObject::removeWaypoint(WaypointObject* wp, bool updateClient) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -341,7 +341,7 @@ bool PlayerObject::removeWaypoint(WaypointObject* wp, bool updateClient) {
 }
 
 void PlayerObject::updateWaypoint(WaypointObject* wp) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -354,7 +354,7 @@ void PlayerObject::updateWaypoint(WaypointObject* wp) {
 }
 
 Player* PlayerObject::getPlayer() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -366,7 +366,7 @@ Player* PlayerObject::getPlayer() {
 }
 
 void PlayerObject::setCurrentTitle(string& nTitle, bool updateClient) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -380,7 +380,7 @@ void PlayerObject::setCurrentTitle(string& nTitle, bool updateClient) {
 }
 
 void PlayerObject::setTitle(string& temptitle) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -393,7 +393,7 @@ void PlayerObject::setTitle(string& temptitle) {
 }
 
 string& PlayerObject::getCurrentTitle() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -406,7 +406,7 @@ string& PlayerObject::getCurrentTitle() {
 }
 
 unsigned int PlayerObject::getExperienceListCount() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -418,7 +418,7 @@ unsigned int PlayerObject::getExperienceListCount() {
 }
 
 unsigned int PlayerObject::getNewExperienceListCount(int cnt) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -431,7 +431,7 @@ unsigned int PlayerObject::getNewExperienceListCount(int cnt) {
 }
 
 unsigned int PlayerObject::getWaypointListCount() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -443,7 +443,7 @@ unsigned int PlayerObject::getWaypointListCount() {
 }
 
 unsigned int PlayerObject::getNewWaypointListCount(int cnt) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {

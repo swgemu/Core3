@@ -80,7 +80,7 @@ SurveyTool* SurveyTool::clone() {
 
 
 int SurveyTool::useObject(Player* player) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -93,7 +93,7 @@ int SurveyTool::useObject(Player* player) {
 }
 
 int SurveyTool::getSurveyToolType() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -105,7 +105,7 @@ int SurveyTool::getSurveyToolType() {
 }
 
 int SurveyTool::getSurveyToolRange() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -117,7 +117,7 @@ int SurveyTool::getSurveyToolRange() {
 }
 
 void SurveyTool::setSurveyToolRange(int range) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -130,7 +130,7 @@ void SurveyTool::setSurveyToolRange(int range) {
 }
 
 void SurveyTool::sendSurveyEffect(Player* player) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -143,7 +143,7 @@ void SurveyTool::sendSurveyEffect(Player* player) {
 }
 
 void SurveyTool::sendSampleEffect(Player* player) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -156,7 +156,7 @@ void SurveyTool::sendSampleEffect(Player* player) {
 }
 
 void SurveyTool::surveyRequest(Player* player, unicode& resourceName) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -170,7 +170,7 @@ void SurveyTool::surveyRequest(Player* player, unicode& resourceName) {
 }
 
 void SurveyTool::sampleRequest(Player* player, unicode& resourceName) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {

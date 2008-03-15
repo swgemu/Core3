@@ -86,7 +86,7 @@ CreatureManager* CreatureManager::clone() {
 
 
 void CreatureManager::init() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -98,7 +98,7 @@ void CreatureManager::init() {
 }
 
 void CreatureManager::start() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -110,7 +110,7 @@ void CreatureManager::start() {
 }
 
 void CreatureManager::stop() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -122,7 +122,7 @@ void CreatureManager::stop() {
 }
 
 void CreatureManager::loadTrainers() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -134,7 +134,7 @@ void CreatureManager::loadTrainers() {
 }
 
 void CreatureManager::loadRecruiters() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -146,7 +146,7 @@ void CreatureManager::loadRecruiters() {
 }
 
 void CreatureManager::unloadCreature(Creature* creature) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -159,7 +159,7 @@ void CreatureManager::unloadCreature(Creature* creature) {
 }
 
 Creature* CreatureManager::spawnCreature(const string& stfname, const string& name, int objCrc, float x, float y, int bitmask, bool doLock) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -178,7 +178,7 @@ Creature* CreatureManager::spawnCreature(const string& stfname, const string& na
 }
 
 TrainerCreature* CreatureManager::spawnTrainer(const string& profession, const string& stfname, const string& name, int objCrc, float x, float y, bool doLock) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -197,7 +197,7 @@ TrainerCreature* CreatureManager::spawnTrainer(const string& profession, const s
 }
 
 ShuttleCreature* CreatureManager::spawnShuttle(const string& Planet, const string& City, Coordinate* playerSpawnPoint, float x, float y, float z, bool doLock) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -216,7 +216,7 @@ ShuttleCreature* CreatureManager::spawnShuttle(const string& Planet, const strin
 }
 
 RecruiterCreature* CreatureManager::spawnRecruiter(const string& stfname, const string& name, int objCrc, float x, float y, bool doLock) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -234,7 +234,7 @@ RecruiterCreature* CreatureManager::spawnRecruiter(const string& stfname, const 
 }
 
 CreatureGroup* CreatureManager::spawnCreatureGroup(int count, const string& stfname, const string& name, int objCrc, float x, float y, int bitmask, int layout) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -254,7 +254,7 @@ CreatureGroup* CreatureManager::spawnCreatureGroup(int count, const string& stfn
 }
 
 void CreatureManager::registerFunctions() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -266,7 +266,7 @@ void CreatureManager::registerFunctions() {
 }
 
 void CreatureManager::registerGlobals() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -278,7 +278,7 @@ void CreatureManager::registerGlobals() {
 }
 
 void CreatureManager::loadCreatureFile() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -290,7 +290,7 @@ void CreatureManager::loadCreatureFile() {
 }
 
 Creature* CreatureManager::getCreature(unsigned long long oid) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {

@@ -82,7 +82,7 @@ BuildingObject* BuildingObject::clone() {
 
 
 void BuildingObject::addCell(CellObject* cell) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -95,7 +95,7 @@ void BuildingObject::addCell(CellObject* cell) {
 }
 
 void BuildingObject::insertToZone(Zone* zone) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -108,7 +108,7 @@ void BuildingObject::insertToZone(Zone* zone) {
 }
 
 void BuildingObject::removeFromZone() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -120,7 +120,7 @@ void BuildingObject::removeFromZone() {
 }
 
 void BuildingObject::notifyInsertToZone(CreatureObject* creature) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -133,7 +133,7 @@ void BuildingObject::notifyInsertToZone(CreatureObject* creature) {
 }
 
 bool BuildingObject::isStatic() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -145,7 +145,7 @@ bool BuildingObject::isStatic() {
 }
 
 void BuildingObject::lock(bool doLock) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -158,7 +158,7 @@ void BuildingObject::lock(bool doLock) {
 }
 
 void BuildingObject::unlock(bool doLock) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -171,7 +171,7 @@ void BuildingObject::unlock(bool doLock) {
 }
 
 void BuildingObject::setSize(float minx, float miny, float maxx, float maxy) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -187,7 +187,7 @@ void BuildingObject::setSize(float minx, float miny, float maxx, float maxy) {
 }
 
 void BuildingObject::insert(QuadTreeEntry* obj) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -200,7 +200,7 @@ void BuildingObject::insert(QuadTreeEntry* obj) {
 }
 
 void BuildingObject::remove(QuadTreeEntry* obj) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -213,7 +213,7 @@ void BuildingObject::remove(QuadTreeEntry* obj) {
 }
 
 void BuildingObject::removeAll() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -225,7 +225,7 @@ void BuildingObject::removeAll() {
 }
 
 bool BuildingObject::update(QuadTreeEntry* obj) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -238,7 +238,7 @@ bool BuildingObject::update(QuadTreeEntry* obj) {
 }
 
 void BuildingObject::inRange(QuadTreeEntry* obj, float range) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {

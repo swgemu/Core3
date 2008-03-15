@@ -76,7 +76,7 @@ Container* Container::clone() {
 
 
 void Container::addObject(SceneObject* obj) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -89,7 +89,7 @@ void Container::addObject(SceneObject* obj) {
 }
 
 SceneObject* Container::getObject(int index) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -102,7 +102,7 @@ SceneObject* Container::getObject(int index) {
 }
 
 SceneObject* Container::getObject(unsigned long long oid) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -115,7 +115,7 @@ SceneObject* Container::getObject(unsigned long long oid) {
 }
 
 void Container::removeObject(int index) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -128,7 +128,7 @@ void Container::removeObject(int index) {
 }
 
 void Container::removeObject(unsigned long long oid) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -141,7 +141,7 @@ void Container::removeObject(unsigned long long oid) {
 }
 
 int Container::objectsSize() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -153,7 +153,7 @@ int Container::objectsSize() {
 }
 
 bool Container::isEmpty() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {

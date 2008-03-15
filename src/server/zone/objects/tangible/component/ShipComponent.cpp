@@ -76,7 +76,7 @@ ShipComponent* ShipComponent::clone() {
 
 
 void ShipComponent::erase() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -88,7 +88,7 @@ void ShipComponent::erase() {
 }
 
 int ShipComponent::useObject(Player* player) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -101,7 +101,7 @@ int ShipComponent::useObject(Player* player) {
 }
 
 unsigned int ShipComponent::getComponentCrc() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -113,7 +113,7 @@ unsigned int ShipComponent::getComponentCrc() {
 }
 
 void ShipComponent::setComponentCrc(unsigned int tcc) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -126,7 +126,7 @@ void ShipComponent::setComponentCrc(unsigned int tcc) {
 }
 
 float ShipComponent::getCurArmor() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -138,7 +138,7 @@ float ShipComponent::getCurArmor() {
 }
 
 void ShipComponent::setCurArmor(float tca) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -151,7 +151,7 @@ void ShipComponent::setCurArmor(float tca) {
 }
 
 float ShipComponent::getMaxArmor() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -163,7 +163,7 @@ float ShipComponent::getMaxArmor() {
 }
 
 void ShipComponent::setMaxArmor(float tma) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -176,7 +176,7 @@ void ShipComponent::setMaxArmor(float tma) {
 }
 
 float ShipComponent::getCurHitpoints() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -188,7 +188,7 @@ float ShipComponent::getCurHitpoints() {
 }
 
 void ShipComponent::setCurHitpoints(float tch) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -201,7 +201,7 @@ void ShipComponent::setCurHitpoints(float tch) {
 }
 
 float ShipComponent::getMaxHitpoints() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -213,7 +213,7 @@ float ShipComponent::getMaxHitpoints() {
 }
 
 void ShipComponent::setMaxHitpoints(float tmh) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -226,7 +226,7 @@ void ShipComponent::setMaxHitpoints(float tmh) {
 }
 
 float ShipComponent::getEnergyDrain() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -238,7 +238,7 @@ float ShipComponent::getEnergyDrain() {
 }
 
 void ShipComponent::setEnergyDrain(float ted) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -251,7 +251,7 @@ void ShipComponent::setEnergyDrain(float ted) {
 }
 
 float ShipComponent::getMass() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -263,7 +263,7 @@ float ShipComponent::getMass() {
 }
 
 void ShipComponent::setMass(float tm) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -276,7 +276,7 @@ void ShipComponent::setMass(float tm) {
 }
 
 void ShipComponent::setCompType(int tct) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -289,7 +289,7 @@ void ShipComponent::setCompType(int tct) {
 }
 
 bool ShipComponent::getCompType() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {

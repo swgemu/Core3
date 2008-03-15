@@ -76,7 +76,7 @@ ChatManager* ChatManager::clone() {
 
 
 void ChatManager::addPlayer(Player* player) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -89,7 +89,7 @@ void ChatManager::addPlayer(Player* player) {
 }
 
 Player* ChatManager::getPlayer(string& name) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -102,7 +102,7 @@ Player* ChatManager::getPlayer(string& name) {
 }
 
 Player* ChatManager::removePlayer(string& name) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -115,7 +115,7 @@ Player* ChatManager::removePlayer(string& name) {
 }
 
 void ChatManager::sendMail(const string& sendername, unicode& header, unicode& body, const string& name) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -131,7 +131,7 @@ void ChatManager::sendMail(const string& sendername, unicode& header, unicode& b
 }
 
 void ChatManager::sendMailBody(Player* receiver, unsigned int mailid) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -145,7 +145,7 @@ void ChatManager::sendMailBody(Player* receiver, unsigned int mailid) {
 }
 
 void ChatManager::listMail(Player* ply) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -158,7 +158,7 @@ void ChatManager::listMail(Player* ply) {
 }
 
 void ChatManager::deleteMail(unsigned int mailid) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -171,7 +171,7 @@ void ChatManager::deleteMail(unsigned int mailid) {
 }
 
 void ChatManager::handleTellMessage(Player* player, Message* pack) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -185,7 +185,7 @@ void ChatManager::handleTellMessage(Player* player, Message* pack) {
 }
 
 void ChatManager::handleMessage(Player* player, Message* pack) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -199,7 +199,7 @@ void ChatManager::handleMessage(Player* player, Message* pack) {
 }
 
 void ChatManager::handleEmote(Player* player, Message* pack) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -213,7 +213,7 @@ void ChatManager::handleEmote(Player* player, Message* pack) {
 }
 
 void ChatManager::handleMood(Player* player, Message* pack) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -227,7 +227,7 @@ void ChatManager::handleMood(Player* player, Message* pack) {
 }
 
 void ChatManager::sendSystemMessage(Player* player, unicode& message) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -241,7 +241,7 @@ void ChatManager::sendSystemMessage(Player* player, unicode& message) {
 }
 
 void ChatManager::broadcastMessage(Player* player, unicode& message, unsigned long long target, unsigned int moodid, unsigned int mood2) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -258,7 +258,7 @@ void ChatManager::broadcastMessage(Player* player, unicode& message, unsigned lo
 }
 
 void ChatManager::broadcastMessage(const string& message) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -271,7 +271,7 @@ void ChatManager::broadcastMessage(const string& message) {
 }
 
 void ChatManager::broadcastMessageRange(Player* player, const string& message, float range) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -286,7 +286,7 @@ void ChatManager::broadcastMessageRange(Player* player, const string& message, f
 }
 
 void ChatManager::handleGameCommand(Player* player, const string& command) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -300,7 +300,7 @@ void ChatManager::handleGameCommand(Player* player, const string& command) {
 }
 
 void ChatManager::initiateRooms() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -312,7 +312,7 @@ void ChatManager::initiateRooms() {
 }
 
 void ChatManager::handleChatRoomMessage(Player* player, Message* pack) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -326,7 +326,7 @@ void ChatManager::handleChatRoomMessage(Player* player, Message* pack) {
 }
 
 void ChatManager::handleGroupChat(Player* player, Message* pack) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -340,7 +340,7 @@ void ChatManager::handleGroupChat(Player* player, Message* pack) {
 }
 
 void ChatManager::handleCreateRoom(Player* player, Message* pack) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -354,7 +354,7 @@ void ChatManager::handleCreateRoom(Player* player, Message* pack) {
 }
 
 void ChatManager::handleChatEnterRoomById(Player* player, Message* pack) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -368,7 +368,7 @@ void ChatManager::handleChatEnterRoomById(Player* player, Message* pack) {
 }
 
 void ChatManager::handleChatDestroyRoom(Player* player, Message* pack) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -382,7 +382,7 @@ void ChatManager::handleChatDestroyRoom(Player* player, Message* pack) {
 }
 
 void ChatManager::handleChatRemoveAvatarFromRoom(Player* player, Message* pack) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -396,7 +396,7 @@ void ChatManager::handleChatRemoveAvatarFromRoom(Player* player, Message* pack) 
 }
 
 ChatRoom* ChatManager::getChatRoom(unsigned int id) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -409,7 +409,7 @@ ChatRoom* ChatManager::getChatRoom(unsigned int id) {
 }
 
 void ChatManager::addRoom(ChatRoom* channel) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -422,7 +422,7 @@ void ChatManager::addRoom(ChatRoom* channel) {
 }
 
 void ChatManager::removeRoom(ChatRoom* channel) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -435,7 +435,7 @@ void ChatManager::removeRoom(ChatRoom* channel) {
 }
 
 void ChatManager::sendRoomList(Player* player) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -448,7 +448,7 @@ void ChatManager::sendRoomList(Player* player) {
 }
 
 ChatRoom* ChatManager::createGroupRoom(unsigned int groupID, Player* creator) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -462,7 +462,7 @@ ChatRoom* ChatManager::createGroupRoom(unsigned int groupID, Player* creator) {
 }
 
 ChatRoom* ChatManager::createRoomByFullPath(const string& path) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -475,7 +475,7 @@ ChatRoom* ChatManager::createRoomByFullPath(const string& path) {
 }
 
 void ChatManager::destroyRoom(ChatRoom* room) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -488,7 +488,7 @@ void ChatManager::destroyRoom(ChatRoom* room) {
 }
 
 void ChatManager::printRoomTree(ChatRoom* channel) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -501,7 +501,7 @@ void ChatManager::printRoomTree(ChatRoom* channel) {
 }
 
 ChatRoom* ChatManager::getChatRoomByFullPath(const string& path) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -514,7 +514,7 @@ ChatRoom* ChatManager::getChatRoomByFullPath(const string& path) {
 }
 
 ChatRoom* ChatManager::getGameRoom(const string& game) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -527,7 +527,7 @@ ChatRoom* ChatManager::getGameRoom(const string& game) {
 }
 
 ChatRoom* ChatManager::getChatRoomByGamePath(ChatRoom* game, const string& path) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -541,7 +541,7 @@ ChatRoom* ChatManager::getChatRoomByGamePath(ChatRoom* game, const string& path)
 }
 
 unsigned int ChatManager::getNextRoomID() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -553,7 +553,7 @@ unsigned int ChatManager::getNextRoomID() {
 }
 
 int ChatManager::getPlayerCount() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -565,7 +565,7 @@ int ChatManager::getPlayerCount() {
 }
 
 bool ChatManager::isMute() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {

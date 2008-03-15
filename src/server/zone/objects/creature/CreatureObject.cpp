@@ -94,7 +94,7 @@ CreatureObject* CreatureObject::clone() {
 
 
 void CreatureObject::info(const string& message, bool forcedLog) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -108,7 +108,7 @@ void CreatureObject::info(const string& message, bool forcedLog) {
 }
 
 void CreatureObject::sendItemsTo(Player* player) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -121,7 +121,7 @@ void CreatureObject::sendItemsTo(Player* player) {
 }
 
 void CreatureObject::sendTo(Player* player, bool doClose) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -135,7 +135,7 @@ void CreatureObject::sendTo(Player* player, bool doClose) {
 }
 
 void CreatureObject::sendDestroyTo(Player* player) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -148,7 +148,7 @@ void CreatureObject::sendDestroyTo(Player* player) {
 }
 
 void CreatureObject::doCombatAnimation(CreatureObject* defender, unsigned int animcrc, bool hit) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -163,7 +163,7 @@ void CreatureObject::doCombatAnimation(CreatureObject* defender, unsigned int an
 }
 
 void CreatureObject::doAnimation(const string& anim) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -176,7 +176,7 @@ void CreatureObject::doAnimation(const string& anim) {
 }
 
 void CreatureObject::playEffect(const string& file, const string& aux) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -190,7 +190,7 @@ void CreatureObject::playEffect(const string& file, const string& aux) {
 }
 
 void CreatureObject::showFlyText(const string& file, const string& aux, unsigned char red, unsigned char green, unsigned char blue) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -207,7 +207,7 @@ void CreatureObject::showFlyText(const string& file, const string& aux, unsigned
 }
 
 void CreatureObject::sendCombatSpam(CreatureObject* defender, TangibleObject* item, unsigned int damage, const string& skill, bool areaSpam) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -224,7 +224,7 @@ void CreatureObject::sendCombatSpam(CreatureObject* defender, TangibleObject* it
 }
 
 void CreatureObject::addDamage(CreatureObject* creature, unsigned int damage) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -238,7 +238,7 @@ void CreatureObject::addDamage(CreatureObject* creature, unsigned int damage) {
 }
 
 unsigned int CreatureObject::getDamage(CreatureObject* creature) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -251,7 +251,7 @@ unsigned int CreatureObject::getDamage(CreatureObject* creature) {
 }
 
 bool CreatureObject::isLootOwner(CreatureObject* creature) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -264,7 +264,7 @@ bool CreatureObject::isLootOwner(CreatureObject* creature) {
 }
 
 unsigned int CreatureObject::getMitigation(const string& mit) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -277,7 +277,7 @@ unsigned int CreatureObject::getMitigation(const string& mit) {
 }
 
 bool CreatureObject::isIncapacitated() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -289,7 +289,7 @@ bool CreatureObject::isIncapacitated() {
 }
 
 bool CreatureObject::isDead() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -301,7 +301,7 @@ bool CreatureObject::isDead() {
 }
 
 bool CreatureObject::isKnockedDown() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -313,7 +313,7 @@ bool CreatureObject::isKnockedDown() {
 }
 
 bool CreatureObject::isKneeled() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -325,7 +325,7 @@ bool CreatureObject::isKneeled() {
 }
 
 bool CreatureObject::isProne() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -337,7 +337,7 @@ bool CreatureObject::isProne() {
 }
 
 bool CreatureObject::isInCombat() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -349,7 +349,7 @@ bool CreatureObject::isInCombat() {
 }
 
 bool CreatureObject::isDizzied() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -361,7 +361,7 @@ bool CreatureObject::isDizzied() {
 }
 
 bool CreatureObject::isStunned() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -373,7 +373,7 @@ bool CreatureObject::isStunned() {
 }
 
 bool CreatureObject::isBlinded() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -385,7 +385,7 @@ bool CreatureObject::isBlinded() {
 }
 
 bool CreatureObject::isIntimidated() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -397,7 +397,7 @@ bool CreatureObject::isIntimidated() {
 }
 
 bool CreatureObject::isDiseased() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -409,7 +409,7 @@ bool CreatureObject::isDiseased() {
 }
 
 bool CreatureObject::isPoisoned() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -421,7 +421,7 @@ bool CreatureObject::isPoisoned() {
 }
 
 bool CreatureObject::isBleeding() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -433,7 +433,7 @@ bool CreatureObject::isBleeding() {
 }
 
 bool CreatureObject::isOnFire() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -445,7 +445,7 @@ bool CreatureObject::isOnFire() {
 }
 
 bool CreatureObject::isMounted() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -457,7 +457,7 @@ bool CreatureObject::isMounted() {
 }
 
 bool CreatureObject::isRidingCreature() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -469,7 +469,7 @@ bool CreatureObject::isRidingCreature() {
 }
 
 bool CreatureObject::isMeditating() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -481,7 +481,7 @@ bool CreatureObject::isMeditating() {
 }
 
 bool CreatureObject::isPeaced() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -493,7 +493,7 @@ bool CreatureObject::isPeaced() {
 }
 
 void CreatureObject::updateKnockdownRecovery() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -505,7 +505,7 @@ void CreatureObject::updateKnockdownRecovery() {
 }
 
 void CreatureObject::updateMood(const string& md) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -518,7 +518,7 @@ void CreatureObject::updateMood(const string& md) {
 }
 
 bool CreatureObject::checkKnockdownRecovery() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -530,7 +530,7 @@ bool CreatureObject::checkKnockdownRecovery() {
 }
 
 void CreatureObject::updatePostureDownRecovery() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -542,7 +542,7 @@ void CreatureObject::updatePostureDownRecovery() {
 }
 
 void CreatureObject::updatePostureUpRecovery() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -554,7 +554,7 @@ void CreatureObject::updatePostureUpRecovery() {
 }
 
 bool CreatureObject::checkPostureDownRecovery() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -566,7 +566,7 @@ bool CreatureObject::checkPostureDownRecovery() {
 }
 
 bool CreatureObject::checkPostureUpRecovery() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -578,7 +578,7 @@ bool CreatureObject::checkPostureUpRecovery() {
 }
 
 void CreatureObject::setCombatState() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -590,7 +590,7 @@ void CreatureObject::setCombatState() {
 }
 
 void CreatureObject::clearCombatState(bool removedefenders) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -603,7 +603,7 @@ void CreatureObject::clearCombatState(bool removedefenders) {
 }
 
 void CreatureObject::setDefender(CreatureObject* defender) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -616,7 +616,7 @@ void CreatureObject::setDefender(CreatureObject* defender) {
 }
 
 void CreatureObject::addDefender(CreatureObject* defender) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -629,7 +629,7 @@ void CreatureObject::addDefender(CreatureObject* defender) {
 }
 
 void CreatureObject::removeDefenders() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -641,7 +641,7 @@ void CreatureObject::removeDefenders() {
 }
 
 void CreatureObject::removeDefender(CreatureObject* defender) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -654,7 +654,7 @@ void CreatureObject::removeDefender(CreatureObject* defender) {
 }
 
 bool CreatureObject::hasDefender(CreatureObject* defender) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -667,7 +667,7 @@ bool CreatureObject::hasDefender(CreatureObject* defender) {
 }
 
 bool CreatureObject::setState(unsigned long long state) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -680,7 +680,7 @@ bool CreatureObject::setState(unsigned long long state) {
 }
 
 bool CreatureObject::clearState(unsigned long long state) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -693,7 +693,7 @@ bool CreatureObject::clearState(unsigned long long state) {
 }
 
 void CreatureObject::updateStates() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -705,7 +705,7 @@ void CreatureObject::updateStates() {
 }
 
 void CreatureObject::clearStates() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -717,7 +717,7 @@ void CreatureObject::clearStates() {
 }
 
 float CreatureObject::calculateBFRatio() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -729,7 +729,7 @@ float CreatureObject::calculateBFRatio() {
 }
 
 void CreatureObject::resetHAMBars() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -741,7 +741,7 @@ void CreatureObject::resetHAMBars() {
 }
 
 bool CreatureObject::changeHAMBars(int hp, int ap, int mp, bool forcedChange) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -757,7 +757,7 @@ bool CreatureObject::changeHAMBars(int hp, int ap, int mp, bool forcedChange) {
 }
 
 bool CreatureObject::changeHAMWounds(int hpwnd, int apwnd, int mpwnd, bool forcedChange) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -773,7 +773,7 @@ bool CreatureObject::changeHAMWounds(int hpwnd, int apwnd, int mpwnd, bool force
 }
 
 void CreatureObject::changeMaxHAMBars(int hp, int ap, int mp) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -788,7 +788,7 @@ void CreatureObject::changeMaxHAMBars(int hp, int ap, int mp) {
 }
 
 bool CreatureObject::changeHealthWoundsBar(int wounds, bool forcedChange) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -802,7 +802,7 @@ bool CreatureObject::changeHealthWoundsBar(int wounds, bool forcedChange) {
 }
 
 bool CreatureObject::changeActionWoundsBar(int wounds, bool forcedChange) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -816,7 +816,7 @@ bool CreatureObject::changeActionWoundsBar(int wounds, bool forcedChange) {
 }
 
 bool CreatureObject::changeMindWoundsBar(int wounds, bool forcedChange) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -830,7 +830,7 @@ bool CreatureObject::changeMindWoundsBar(int wounds, bool forcedChange) {
 }
 
 bool CreatureObject::changeHealthBar(int hp, bool forcedChange) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -844,7 +844,7 @@ bool CreatureObject::changeHealthBar(int hp, bool forcedChange) {
 }
 
 bool CreatureObject::changeStrengthBar(int st, bool forcedChange) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -858,7 +858,7 @@ bool CreatureObject::changeStrengthBar(int st, bool forcedChange) {
 }
 
 bool CreatureObject::changeConstitutionBar(int cs, bool forcedChange) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -872,7 +872,7 @@ bool CreatureObject::changeConstitutionBar(int cs, bool forcedChange) {
 }
 
 void CreatureObject::changeMaxHealthBar(int hp) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -885,7 +885,7 @@ void CreatureObject::changeMaxHealthBar(int hp) {
 }
 
 void CreatureObject::changeMaxStrengthBar(int hp) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -898,7 +898,7 @@ void CreatureObject::changeMaxStrengthBar(int hp) {
 }
 
 void CreatureObject::changeMaxConstitutionBar(int hp) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -911,7 +911,7 @@ void CreatureObject::changeMaxConstitutionBar(int hp) {
 }
 
 void CreatureObject::changeShockWounds(int bf) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -924,7 +924,7 @@ void CreatureObject::changeShockWounds(int bf) {
 }
 
 bool CreatureObject::changeActionBar(int ap, bool forcedChange) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -938,7 +938,7 @@ bool CreatureObject::changeActionBar(int ap, bool forcedChange) {
 }
 
 bool CreatureObject::changeQuicknessBar(int qc, bool forcedChange) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -952,7 +952,7 @@ bool CreatureObject::changeQuicknessBar(int qc, bool forcedChange) {
 }
 
 bool CreatureObject::changeStaminaBar(int st, bool forcedChange) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -966,7 +966,7 @@ bool CreatureObject::changeStaminaBar(int st, bool forcedChange) {
 }
 
 void CreatureObject::changeMaxActionBar(int hp) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -979,7 +979,7 @@ void CreatureObject::changeMaxActionBar(int hp) {
 }
 
 void CreatureObject::changeMaxQuicknessBar(int hp) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -992,7 +992,7 @@ void CreatureObject::changeMaxQuicknessBar(int hp) {
 }
 
 void CreatureObject::changeMaxStaminaBar(int hp) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1005,7 +1005,7 @@ void CreatureObject::changeMaxStaminaBar(int hp) {
 }
 
 bool CreatureObject::changeMindBar(int mp, bool forcedChange) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1019,7 +1019,7 @@ bool CreatureObject::changeMindBar(int mp, bool forcedChange) {
 }
 
 bool CreatureObject::changeFocusBar(int fc, bool forcedChange) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1033,7 +1033,7 @@ bool CreatureObject::changeFocusBar(int fc, bool forcedChange) {
 }
 
 bool CreatureObject::changeWillpowerBar(int wl, bool forcedChange) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1047,7 +1047,7 @@ bool CreatureObject::changeWillpowerBar(int wl, bool forcedChange) {
 }
 
 void CreatureObject::changeMaxMindBar(int hp) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1060,7 +1060,7 @@ void CreatureObject::changeMaxMindBar(int hp) {
 }
 
 void CreatureObject::changeMaxFocusBar(int hp) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1073,7 +1073,7 @@ void CreatureObject::changeMaxFocusBar(int hp) {
 }
 
 void CreatureObject::changeMaxWillpowerBar(int hp) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1086,7 +1086,7 @@ void CreatureObject::changeMaxWillpowerBar(int hp) {
 }
 
 bool CreatureObject::hasAttackDelay() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1098,7 +1098,7 @@ bool CreatureObject::hasAttackDelay() {
 }
 
 void CreatureObject::clearAttackDelay() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1110,7 +1110,7 @@ void CreatureObject::clearAttackDelay() {
 }
 
 bool CreatureObject::isOnFullHealth() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1122,7 +1122,7 @@ bool CreatureObject::isOnFullHealth() {
 }
 
 bool CreatureObject::hasStates() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1134,7 +1134,7 @@ bool CreatureObject::hasStates() {
 }
 
 bool CreatureObject::hasState(unsigned long long state) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1147,7 +1147,7 @@ bool CreatureObject::hasState(unsigned long long state) {
 }
 
 bool CreatureObject::hasWounds() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1159,7 +1159,7 @@ bool CreatureObject::hasWounds() {
 }
 
 bool CreatureObject::hasShockWounds() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1171,7 +1171,7 @@ bool CreatureObject::hasShockWounds() {
 }
 
 bool CreatureObject::isAttackable() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1183,7 +1183,7 @@ bool CreatureObject::isAttackable() {
 }
 
 bool CreatureObject::isAttackableBy(CreatureObject* attacker) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1196,7 +1196,7 @@ bool CreatureObject::isAttackableBy(CreatureObject* attacker) {
 }
 
 bool CreatureObject::isListening() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1208,7 +1208,7 @@ bool CreatureObject::isListening() {
 }
 
 bool CreatureObject::isWatching() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1220,7 +1220,7 @@ bool CreatureObject::isWatching() {
 }
 
 void CreatureObject::activateBurstRun() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1232,7 +1232,7 @@ void CreatureObject::activateBurstRun() {
 }
 
 bool CreatureObject::hasQueuedState(unsigned int skillCRC) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1245,7 +1245,7 @@ bool CreatureObject::hasQueuedState(unsigned int skillCRC) {
 }
 
 bool CreatureObject::removeQueuedState(unsigned int skillCRC) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1258,7 +1258,7 @@ bool CreatureObject::removeQueuedState(unsigned int skillCRC) {
 }
 
 bool CreatureObject::addQueuedState(unsigned int skillCRC) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1271,7 +1271,7 @@ bool CreatureObject::addQueuedState(unsigned int skillCRC) {
 }
 
 void CreatureObject::setMeditateState() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1283,7 +1283,7 @@ void CreatureObject::setMeditateState() {
 }
 
 bool CreatureObject::isGuilded() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1295,7 +1295,7 @@ bool CreatureObject::isGuilded() {
 }
 
 void CreatureObject::setBaseHealth(unsigned int health) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1308,7 +1308,7 @@ void CreatureObject::setBaseHealth(unsigned int health) {
 }
 
 void CreatureObject::setBaseStrength(unsigned int strength) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1321,7 +1321,7 @@ void CreatureObject::setBaseStrength(unsigned int strength) {
 }
 
 void CreatureObject::setBaseConstitution(unsigned int constituition) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1334,7 +1334,7 @@ void CreatureObject::setBaseConstitution(unsigned int constituition) {
 }
 
 void CreatureObject::setBaseAction(unsigned int action) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1347,7 +1347,7 @@ void CreatureObject::setBaseAction(unsigned int action) {
 }
 
 void CreatureObject::setBaseQuickness(unsigned int quickness) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1360,7 +1360,7 @@ void CreatureObject::setBaseQuickness(unsigned int quickness) {
 }
 
 void CreatureObject::setBaseStamina(unsigned int stamina) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1373,7 +1373,7 @@ void CreatureObject::setBaseStamina(unsigned int stamina) {
 }
 
 void CreatureObject::setBaseMind(unsigned int mind) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1386,7 +1386,7 @@ void CreatureObject::setBaseMind(unsigned int mind) {
 }
 
 void CreatureObject::setBaseFocus(unsigned int focus) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1399,7 +1399,7 @@ void CreatureObject::setBaseFocus(unsigned int focus) {
 }
 
 void CreatureObject::setBaseWillpower(unsigned int willpower) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1412,7 +1412,7 @@ void CreatureObject::setBaseWillpower(unsigned int willpower) {
 }
 
 void CreatureObject::setHealth(unsigned int health) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1425,7 +1425,7 @@ void CreatureObject::setHealth(unsigned int health) {
 }
 
 void CreatureObject::setStrength(unsigned int strength) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1438,7 +1438,7 @@ void CreatureObject::setStrength(unsigned int strength) {
 }
 
 void CreatureObject::setConstitution(unsigned int constituition) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1451,7 +1451,7 @@ void CreatureObject::setConstitution(unsigned int constituition) {
 }
 
 void CreatureObject::setAction(unsigned int action) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1464,7 +1464,7 @@ void CreatureObject::setAction(unsigned int action) {
 }
 
 void CreatureObject::setQuickness(unsigned int quickness) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1477,7 +1477,7 @@ void CreatureObject::setQuickness(unsigned int quickness) {
 }
 
 void CreatureObject::setStamina(unsigned int stamina) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1490,7 +1490,7 @@ void CreatureObject::setStamina(unsigned int stamina) {
 }
 
 void CreatureObject::setMind(unsigned int mind) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1503,7 +1503,7 @@ void CreatureObject::setMind(unsigned int mind) {
 }
 
 void CreatureObject::setFocus(unsigned int focus) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1516,7 +1516,7 @@ void CreatureObject::setFocus(unsigned int focus) {
 }
 
 void CreatureObject::setWillpower(unsigned int willpower) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1529,7 +1529,7 @@ void CreatureObject::setWillpower(unsigned int willpower) {
 }
 
 void CreatureObject::setHealthMax(unsigned int health) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1542,7 +1542,7 @@ void CreatureObject::setHealthMax(unsigned int health) {
 }
 
 void CreatureObject::setStrengthMax(unsigned int strength) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1555,7 +1555,7 @@ void CreatureObject::setStrengthMax(unsigned int strength) {
 }
 
 void CreatureObject::setConstitutionMax(unsigned int constituition) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1568,7 +1568,7 @@ void CreatureObject::setConstitutionMax(unsigned int constituition) {
 }
 
 void CreatureObject::setActionMax(unsigned int action) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1581,7 +1581,7 @@ void CreatureObject::setActionMax(unsigned int action) {
 }
 
 void CreatureObject::setQuicknessMax(unsigned int quickness) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1594,7 +1594,7 @@ void CreatureObject::setQuicknessMax(unsigned int quickness) {
 }
 
 void CreatureObject::setStaminaMax(unsigned int stamina) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1607,7 +1607,7 @@ void CreatureObject::setStaminaMax(unsigned int stamina) {
 }
 
 void CreatureObject::setMindMax(unsigned int mind) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1620,7 +1620,7 @@ void CreatureObject::setMindMax(unsigned int mind) {
 }
 
 void CreatureObject::setFocusMax(unsigned int focus) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1633,7 +1633,7 @@ void CreatureObject::setFocusMax(unsigned int focus) {
 }
 
 void CreatureObject::setWillpowerMax(unsigned int willpower) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1646,7 +1646,7 @@ void CreatureObject::setWillpowerMax(unsigned int willpower) {
 }
 
 void CreatureObject::setArmor(unsigned int ar) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1659,7 +1659,7 @@ void CreatureObject::setArmor(unsigned int ar) {
 }
 
 void CreatureObject::setHealthWounds(unsigned int wounds) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1672,7 +1672,7 @@ void CreatureObject::setHealthWounds(unsigned int wounds) {
 }
 
 void CreatureObject::setActionWounds(unsigned int wounds) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1685,7 +1685,7 @@ void CreatureObject::setActionWounds(unsigned int wounds) {
 }
 
 void CreatureObject::setMindWounds(unsigned int wounds) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1698,7 +1698,7 @@ void CreatureObject::setMindWounds(unsigned int wounds) {
 }
 
 void CreatureObject::setShockWounds(unsigned int wounds) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1711,7 +1711,7 @@ void CreatureObject::setShockWounds(unsigned int wounds) {
 }
 
 void CreatureObject::setWoundsUpdateCounter(unsigned int count) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1724,7 +1724,7 @@ void CreatureObject::setWoundsUpdateCounter(unsigned int count) {
 }
 
 void CreatureObject::changeConditionDamage(int amount) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1737,7 +1737,7 @@ void CreatureObject::changeConditionDamage(int amount) {
 }
 
 void CreatureObject::setPosture(unsigned char state, bool overrideDizzy, bool objectInteraction, float objX, float objY, float objZ) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1755,7 +1755,7 @@ void CreatureObject::setPosture(unsigned char state, bool overrideDizzy, bool ob
 }
 
 void CreatureObject::setDizziedState() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1767,7 +1767,7 @@ void CreatureObject::setDizziedState() {
 }
 
 void CreatureObject::setStunnedState() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1779,7 +1779,7 @@ void CreatureObject::setStunnedState() {
 }
 
 void CreatureObject::setBlindedState() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1791,7 +1791,7 @@ void CreatureObject::setBlindedState() {
 }
 
 void CreatureObject::setIntimidatedState() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1803,7 +1803,7 @@ void CreatureObject::setIntimidatedState() {
 }
 
 void CreatureObject::setPoisonedState(int str, int type, int duration) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1818,7 +1818,7 @@ void CreatureObject::setPoisonedState(int str, int type, int duration) {
 }
 
 void CreatureObject::setBleedingState(int str, int type, int duration) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1833,7 +1833,7 @@ void CreatureObject::setBleedingState(int str, int type, int duration) {
 }
 
 void CreatureObject::setDiseasedState(int str, int type, int duration) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1848,7 +1848,7 @@ void CreatureObject::setDiseasedState(int str, int type, int duration) {
 }
 
 void CreatureObject::setOnFireState(int str, int type, int duration) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1863,7 +1863,7 @@ void CreatureObject::setOnFireState(int str, int type, int duration) {
 }
 
 bool CreatureObject::setNextAttackDelay(int del) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1876,7 +1876,7 @@ bool CreatureObject::setNextAttackDelay(int del) {
 }
 
 void CreatureObject::setCharacterName(const string& name) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1889,7 +1889,7 @@ void CreatureObject::setCharacterName(const string& name) {
 }
 
 void CreatureObject::setCharacterName(unicode& name) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1902,7 +1902,7 @@ void CreatureObject::setCharacterName(unicode& name) {
 }
 
 void CreatureObject::setTerrainName(const string& name) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1915,7 +1915,7 @@ void CreatureObject::setTerrainName(const string& name) {
 }
 
 void CreatureObject::setCharacterApperance(string& cust) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1928,7 +1928,7 @@ void CreatureObject::setCharacterApperance(string& cust) {
 }
 
 void CreatureObject::setRaceName(const string& name) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1941,7 +1941,7 @@ void CreatureObject::setRaceName(const string& name) {
 }
 
 void CreatureObject::setSpeciesName(const string& name) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1954,7 +1954,7 @@ void CreatureObject::setSpeciesName(const string& name) {
 }
 
 void CreatureObject::setFaction(unsigned int fac) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1967,7 +1967,7 @@ void CreatureObject::setFaction(unsigned int fac) {
 }
 
 void CreatureObject::setHeight(float h) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1980,7 +1980,7 @@ void CreatureObject::setHeight(float h) {
 }
 
 void CreatureObject::setMood(unsigned char mdid) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -1993,7 +1993,7 @@ void CreatureObject::setMood(unsigned char mdid) {
 }
 
 void CreatureObject::setMood(const string& m) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2006,7 +2006,7 @@ void CreatureObject::setMood(const string& m) {
 }
 
 void CreatureObject::setGroup(GroupObject* Group) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2019,7 +2019,7 @@ void CreatureObject::setGroup(GroupObject* Group) {
 }
 
 void CreatureObject::setMount(MountCreature* mount) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2032,7 +2032,7 @@ void CreatureObject::setMount(MountCreature* mount) {
 }
 
 void CreatureObject::removeGroup() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2044,7 +2044,7 @@ void CreatureObject::removeGroup() {
 }
 
 bool CreatureObject::isInAGroup() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2056,7 +2056,7 @@ bool CreatureObject::isInAGroup() {
 }
 
 void CreatureObject::setGroupID(unsigned long long gid) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2069,7 +2069,7 @@ void CreatureObject::setGroupID(unsigned long long gid) {
 }
 
 void CreatureObject::updateGroupId(unsigned long long id) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2082,7 +2082,7 @@ void CreatureObject::updateGroupId(unsigned long long id) {
 }
 
 void CreatureObject::updateGroupInviterId(unsigned long long id) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2095,7 +2095,7 @@ void CreatureObject::updateGroupInviterId(unsigned long long id) {
 }
 
 void CreatureObject::setDefenderID(long long did) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2108,7 +2108,7 @@ void CreatureObject::setDefenderID(long long did) {
 }
 
 void CreatureObject::updateTarget(unsigned long long targ) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2121,7 +2121,7 @@ void CreatureObject::updateTarget(unsigned long long targ) {
 }
 
 void CreatureObject::updateTarget(SceneObject* targ) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2134,7 +2134,7 @@ void CreatureObject::updateTarget(SceneObject* targ) {
 }
 
 void CreatureObject::setActionCounter(unsigned int actioncntr) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2147,7 +2147,7 @@ void CreatureObject::setActionCounter(unsigned int actioncntr) {
 }
 
 void CreatureObject::setWeapon(Weapon* wep) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2160,7 +2160,7 @@ void CreatureObject::setWeapon(Weapon* wep) {
 }
 
 void CreatureObject::setCreatureLinkID(unsigned long long creatureID) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2173,7 +2173,7 @@ void CreatureObject::setCreatureLinkID(unsigned long long creatureID) {
 }
 
 void CreatureObject::setAccuracy(int acc) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2186,7 +2186,7 @@ void CreatureObject::setAccuracy(int acc) {
 }
 
 void CreatureObject::setDamageBonus(int bonus) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2199,7 +2199,7 @@ void CreatureObject::setDamageBonus(int bonus) {
 }
 
 void CreatureObject::setDefenseBonus(int bonus) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2212,7 +2212,7 @@ void CreatureObject::setDefenseBonus(int bonus) {
 }
 
 void CreatureObject::setLastMovementUpdateStamp(unsigned int tme) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2225,7 +2225,7 @@ void CreatureObject::setLastMovementUpdateStamp(unsigned int tme) {
 }
 
 void CreatureObject::setIgnoreMovementTests(int times) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2238,7 +2238,7 @@ void CreatureObject::setIgnoreMovementTests(int times) {
 }
 
 void CreatureObject::setLevel(unsigned int lvl) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2251,7 +2251,7 @@ void CreatureObject::setLevel(unsigned int lvl) {
 }
 
 void CreatureObject::updateServerMovementStamp() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2263,7 +2263,7 @@ void CreatureObject::updateServerMovementStamp() {
 }
 
 unicode& CreatureObject::getCharacterName() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2276,7 +2276,7 @@ unicode& CreatureObject::getCharacterName() {
 }
 
 string& CreatureObject::getStfName() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2289,7 +2289,7 @@ string& CreatureObject::getStfName() {
 }
 
 string& CreatureObject::getSpeciesName() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2302,7 +2302,7 @@ string& CreatureObject::getSpeciesName() {
 }
 
 string& CreatureObject::getRaceName() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2315,7 +2315,7 @@ string& CreatureObject::getRaceName() {
 }
 
 string& CreatureObject::getTerrainName() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2328,7 +2328,7 @@ string& CreatureObject::getTerrainName() {
 }
 
 void CreatureObject::getCharacterApperance(string& appearance) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2341,7 +2341,7 @@ void CreatureObject::getCharacterApperance(string& appearance) {
 }
 
 bool CreatureObject::isOvert() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2353,7 +2353,7 @@ bool CreatureObject::isOvert() {
 }
 
 unsigned long long CreatureObject::getStateBitmask() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2365,7 +2365,7 @@ unsigned long long CreatureObject::getStateBitmask() {
 }
 
 unsigned int CreatureObject::getCreatureBitmask() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2377,7 +2377,7 @@ unsigned int CreatureObject::getCreatureBitmask() {
 }
 
 unsigned char CreatureObject::getPosture() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2389,7 +2389,7 @@ unsigned char CreatureObject::getPosture() {
 }
 
 unsigned int CreatureObject::getFaction() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2401,7 +2401,7 @@ unsigned int CreatureObject::getFaction() {
 }
 
 bool CreatureObject::isRebel() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2413,7 +2413,7 @@ bool CreatureObject::isRebel() {
 }
 
 bool CreatureObject::isNeutral() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2425,7 +2425,7 @@ bool CreatureObject::isNeutral() {
 }
 
 bool CreatureObject::isImperial() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2437,7 +2437,7 @@ bool CreatureObject::isImperial() {
 }
 
 unsigned int CreatureObject::getPvpStatusBitmask() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2449,7 +2449,7 @@ unsigned int CreatureObject::getPvpStatusBitmask() {
 }
 
 unsigned int CreatureObject::getBankCredits() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2461,7 +2461,7 @@ unsigned int CreatureObject::getBankCredits() {
 }
 
 unsigned int CreatureObject::getCashCredits() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2473,7 +2473,7 @@ unsigned int CreatureObject::getCashCredits() {
 }
 
 unsigned int CreatureObject::getWoundsUpdateCounter() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2485,7 +2485,7 @@ unsigned int CreatureObject::getWoundsUpdateCounter() {
 }
 
 unsigned int CreatureObject::getNewWoundsUpdateCounter(int upd) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2498,7 +2498,7 @@ unsigned int CreatureObject::getNewWoundsUpdateCounter(int upd) {
 }
 
 unsigned int CreatureObject::getBaseHealth() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2510,7 +2510,7 @@ unsigned int CreatureObject::getBaseHealth() {
 }
 
 unsigned int CreatureObject::getBaseStrength() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2522,7 +2522,7 @@ unsigned int CreatureObject::getBaseStrength() {
 }
 
 unsigned int CreatureObject::getBaseConstitution() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2534,7 +2534,7 @@ unsigned int CreatureObject::getBaseConstitution() {
 }
 
 unsigned int CreatureObject::getBaseAction() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2546,7 +2546,7 @@ unsigned int CreatureObject::getBaseAction() {
 }
 
 unsigned int CreatureObject::getBaseQuickness() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2558,7 +2558,7 @@ unsigned int CreatureObject::getBaseQuickness() {
 }
 
 unsigned int CreatureObject::getBaseStamina() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2570,7 +2570,7 @@ unsigned int CreatureObject::getBaseStamina() {
 }
 
 unsigned int CreatureObject::getBaseMind() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2582,7 +2582,7 @@ unsigned int CreatureObject::getBaseMind() {
 }
 
 unsigned int CreatureObject::getBaseFocus() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2594,7 +2594,7 @@ unsigned int CreatureObject::getBaseFocus() {
 }
 
 unsigned int CreatureObject::getBaseWillpower() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2606,7 +2606,7 @@ unsigned int CreatureObject::getBaseWillpower() {
 }
 
 unsigned int CreatureObject::getHealth() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2618,7 +2618,7 @@ unsigned int CreatureObject::getHealth() {
 }
 
 unsigned int CreatureObject::getStrength() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2630,7 +2630,7 @@ unsigned int CreatureObject::getStrength() {
 }
 
 unsigned int CreatureObject::getConstitution() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2642,7 +2642,7 @@ unsigned int CreatureObject::getConstitution() {
 }
 
 unsigned int CreatureObject::getAction() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2654,7 +2654,7 @@ unsigned int CreatureObject::getAction() {
 }
 
 unsigned int CreatureObject::getQuickness() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2666,7 +2666,7 @@ unsigned int CreatureObject::getQuickness() {
 }
 
 unsigned int CreatureObject::getStamina() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2678,7 +2678,7 @@ unsigned int CreatureObject::getStamina() {
 }
 
 unsigned int CreatureObject::getMind() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2690,7 +2690,7 @@ unsigned int CreatureObject::getMind() {
 }
 
 unsigned int CreatureObject::getFocus() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2702,7 +2702,7 @@ unsigned int CreatureObject::getFocus() {
 }
 
 unsigned int CreatureObject::getWillpower() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2714,7 +2714,7 @@ unsigned int CreatureObject::getWillpower() {
 }
 
 unsigned int CreatureObject::getHealthMax() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2726,7 +2726,7 @@ unsigned int CreatureObject::getHealthMax() {
 }
 
 unsigned int CreatureObject::getStrengthMax() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2738,7 +2738,7 @@ unsigned int CreatureObject::getStrengthMax() {
 }
 
 unsigned int CreatureObject::getConstitutionMax() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2750,7 +2750,7 @@ unsigned int CreatureObject::getConstitutionMax() {
 }
 
 unsigned int CreatureObject::getActionMax() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2762,7 +2762,7 @@ unsigned int CreatureObject::getActionMax() {
 }
 
 unsigned int CreatureObject::getQuicknessMax() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2774,7 +2774,7 @@ unsigned int CreatureObject::getQuicknessMax() {
 }
 
 unsigned int CreatureObject::getStaminaMax() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2786,7 +2786,7 @@ unsigned int CreatureObject::getStaminaMax() {
 }
 
 unsigned int CreatureObject::getMindMax() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2798,7 +2798,7 @@ unsigned int CreatureObject::getMindMax() {
 }
 
 unsigned int CreatureObject::getFocusMax() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2810,7 +2810,7 @@ unsigned int CreatureObject::getFocusMax() {
 }
 
 unsigned int CreatureObject::getWillpowerMax() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2822,7 +2822,7 @@ unsigned int CreatureObject::getWillpowerMax() {
 }
 
 unsigned int CreatureObject::getArmor() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2834,7 +2834,7 @@ unsigned int CreatureObject::getArmor() {
 }
 
 float CreatureObject::getArmorResist(int resistType) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2847,7 +2847,7 @@ float CreatureObject::getArmorResist(int resistType) {
 }
 
 unsigned int CreatureObject::getHealthWounds() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2859,7 +2859,7 @@ unsigned int CreatureObject::getHealthWounds() {
 }
 
 unsigned int CreatureObject::getActionWounds() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2871,7 +2871,7 @@ unsigned int CreatureObject::getActionWounds() {
 }
 
 unsigned int CreatureObject::getMindWounds() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2883,7 +2883,7 @@ unsigned int CreatureObject::getMindWounds() {
 }
 
 unsigned int CreatureObject::getShockWounds() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2895,7 +2895,7 @@ unsigned int CreatureObject::getShockWounds() {
 }
 
 unsigned int CreatureObject::getHAMUpdateCounter() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2907,7 +2907,7 @@ unsigned int CreatureObject::getHAMUpdateCounter() {
 }
 
 unsigned int CreatureObject::getNewHAMUpdateCounter(int cnt) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2920,7 +2920,7 @@ unsigned int CreatureObject::getNewHAMUpdateCounter(int cnt) {
 }
 
 unsigned int CreatureObject::getHAMMaxUpdateCounter() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2932,7 +2932,7 @@ unsigned int CreatureObject::getHAMMaxUpdateCounter() {
 }
 
 unsigned int CreatureObject::getNewHAMMaxUpdateCounter(int cnt) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2945,7 +2945,7 @@ unsigned int CreatureObject::getNewHAMMaxUpdateCounter(int cnt) {
 }
 
 unsigned int CreatureObject::getHealthEncumbrance() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2957,7 +2957,7 @@ unsigned int CreatureObject::getHealthEncumbrance() {
 }
 
 unsigned int CreatureObject::getActionEncumbrance() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2969,7 +2969,7 @@ unsigned int CreatureObject::getActionEncumbrance() {
 }
 
 unsigned int CreatureObject::getMindEncumbrance() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2981,7 +2981,7 @@ unsigned int CreatureObject::getMindEncumbrance() {
 }
 
 unsigned long long CreatureObject::getTargetID() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -2993,7 +2993,7 @@ unsigned long long CreatureObject::getTargetID() {
 }
 
 SceneObject* CreatureObject::getTarget() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -3005,7 +3005,7 @@ SceneObject* CreatureObject::getTarget() {
 }
 
 unsigned long long CreatureObject::getWeaponID() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -3017,7 +3017,7 @@ unsigned long long CreatureObject::getWeaponID() {
 }
 
 unsigned long long CreatureObject::getGroupID() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -3029,7 +3029,7 @@ unsigned long long CreatureObject::getGroupID() {
 }
 
 unsigned long long CreatureObject::getGuildID() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -3041,7 +3041,7 @@ unsigned long long CreatureObject::getGuildID() {
 }
 
 Guild* CreatureObject::getGuild() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -3053,7 +3053,7 @@ Guild* CreatureObject::getGuild() {
 }
 
 float CreatureObject::getSpeed() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -3065,7 +3065,7 @@ float CreatureObject::getSpeed() {
 }
 
 float CreatureObject::getAcceleration() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -3077,7 +3077,7 @@ float CreatureObject::getAcceleration() {
 }
 
 unsigned long long CreatureObject::getDefenderID() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -3089,7 +3089,7 @@ unsigned long long CreatureObject::getDefenderID() {
 }
 
 unsigned int CreatureObject::getDefenderUpdateCounter() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -3101,7 +3101,7 @@ unsigned int CreatureObject::getDefenderUpdateCounter() {
 }
 
 unsigned int CreatureObject::getNewDefenderUpdateCounter(int cnt) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -3114,7 +3114,7 @@ unsigned int CreatureObject::getNewDefenderUpdateCounter(int cnt) {
 }
 
 string& CreatureObject::getPerformanceName() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -3127,7 +3127,7 @@ string& CreatureObject::getPerformanceName() {
 }
 
 unsigned int CreatureObject::getPerformanceCounter() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -3139,7 +3139,7 @@ unsigned int CreatureObject::getPerformanceCounter() {
 }
 
 unsigned int CreatureObject::getInstrumentID() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -3151,7 +3151,7 @@ unsigned int CreatureObject::getInstrumentID() {
 }
 
 string& CreatureObject::getMood() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -3164,7 +3164,7 @@ string& CreatureObject::getMood() {
 }
 
 unsigned char CreatureObject::getMoodID() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -3176,7 +3176,7 @@ unsigned char CreatureObject::getMoodID() {
 }
 
 unsigned long long CreatureObject::getGroupInviterID() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -3188,7 +3188,7 @@ unsigned long long CreatureObject::getGroupInviterID() {
 }
 
 unsigned long long CreatureObject::getGroupInviteCounter() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -3200,7 +3200,7 @@ unsigned long long CreatureObject::getGroupInviteCounter() {
 }
 
 unsigned long long CreatureObject::getNewGroupInviteCounter() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -3212,7 +3212,7 @@ unsigned long long CreatureObject::getNewGroupInviteCounter() {
 }
 
 unsigned long long CreatureObject::getWatchID() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -3224,7 +3224,7 @@ unsigned long long CreatureObject::getWatchID() {
 }
 
 unsigned long long CreatureObject::getListenID() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -3236,7 +3236,7 @@ unsigned long long CreatureObject::getListenID() {
 }
 
 string& CreatureObject::getGuildName() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -3249,7 +3249,7 @@ string& CreatureObject::getGuildName() {
 }
 
 int CreatureObject::getWeaponSpeedModifier() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -3261,7 +3261,7 @@ int CreatureObject::getWeaponSpeedModifier() {
 }
 
 unsigned int CreatureObject::getSkillBoxesUpdateCounter() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -3273,7 +3273,7 @@ unsigned int CreatureObject::getSkillBoxesUpdateCounter() {
 }
 
 unsigned int CreatureObject::getSkillModsCounter() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -3285,7 +3285,7 @@ unsigned int CreatureObject::getSkillModsCounter() {
 }
 
 unsigned int CreatureObject::getNewSkillModsCounter(int cnt) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -3298,7 +3298,7 @@ unsigned int CreatureObject::getNewSkillModsCounter(int cnt) {
 }
 
 SceneObject* CreatureObject::getInventoryItem(unsigned long long oid) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -3311,7 +3311,7 @@ SceneObject* CreatureObject::getInventoryItem(unsigned long long oid) {
 }
 
 void CreatureObject::removeInventoryItem(unsigned long long oid) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -3324,7 +3324,7 @@ void CreatureObject::removeInventoryItem(unsigned long long oid) {
 }
 
 SceneObject* CreatureObject::getLootItem(unsigned long long oid) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -3337,7 +3337,7 @@ SceneObject* CreatureObject::getLootItem(unsigned long long oid) {
 }
 
 void CreatureObject::removeLootItem(unsigned long long oid) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -3350,7 +3350,7 @@ void CreatureObject::removeLootItem(unsigned long long oid) {
 }
 
 void CreatureObject::broadcastMessage(BaseMessage* msg, int range, bool doLock) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -3365,7 +3365,7 @@ void CreatureObject::broadcastMessage(BaseMessage* msg, int range, bool doLock) 
 }
 
 Inventory* CreatureObject::getInventory() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -3377,7 +3377,7 @@ Inventory* CreatureObject::getInventory() {
 }
 
 Container* CreatureObject::getLootContainer() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -3389,7 +3389,7 @@ Container* CreatureObject::getLootContainer() {
 }
 
 unsigned long long CreatureObject::getNewItemID() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -3401,7 +3401,7 @@ unsigned long long CreatureObject::getNewItemID() {
 }
 
 Weapon* CreatureObject::getWeapon() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -3413,7 +3413,7 @@ Weapon* CreatureObject::getWeapon() {
 }
 
 Armor* CreatureObject::getArmor(int type) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -3426,7 +3426,7 @@ Armor* CreatureObject::getArmor(int type) {
 }
 
 int CreatureObject::getSkillMod(const string& name) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -3439,7 +3439,7 @@ int CreatureObject::getSkillMod(const string& name) {
 }
 
 bool CreatureObject::hasSkillMod(const string& name) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -3452,7 +3452,7 @@ bool CreatureObject::hasSkillMod(const string& name) {
 }
 
 int CreatureObject::getSkillModBonus(const string& name) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -3465,7 +3465,7 @@ int CreatureObject::getSkillModBonus(const string& name) {
 }
 
 bool CreatureObject::hasSkillModBonus(const string& name) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -3478,7 +3478,7 @@ bool CreatureObject::hasSkillModBonus(const string& name) {
 }
 
 int CreatureObject::getAccuracy() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -3490,7 +3490,7 @@ int CreatureObject::getAccuracy() {
 }
 
 int CreatureObject::getDefenseBonus() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -3502,7 +3502,7 @@ int CreatureObject::getDefenseBonus() {
 }
 
 int CreatureObject::getDamageBonus() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -3514,7 +3514,7 @@ int CreatureObject::getDamageBonus() {
 }
 
 int CreatureObject::getConditionDamage() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -3526,7 +3526,7 @@ int CreatureObject::getConditionDamage() {
 }
 
 int CreatureObject::getMaxCondition() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -3538,7 +3538,7 @@ int CreatureObject::getMaxCondition() {
 }
 
 int CreatureObject::getCondition() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -3550,7 +3550,7 @@ int CreatureObject::getCondition() {
 }
 
 MountCreature* CreatureObject::getMount() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -3562,7 +3562,7 @@ MountCreature* CreatureObject::getMount() {
 }
 
 unsigned long long CreatureObject::getLastServerMovementStamp() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -3574,7 +3574,7 @@ unsigned long long CreatureObject::getLastServerMovementStamp() {
 }
 
 unsigned long long CreatureObject::getCreatureLinkID() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -3586,7 +3586,7 @@ unsigned long long CreatureObject::getCreatureLinkID() {
 }
 
 float CreatureObject::getDistanceTo(CreatureObject* targetCreature) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -3599,7 +3599,7 @@ float CreatureObject::getDistanceTo(CreatureObject* targetCreature) {
 }
 
 float CreatureObject::getHeight() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -3611,7 +3611,7 @@ float CreatureObject::getHeight() {
 }
 
 unsigned int CreatureObject::getCreatureSkillsCount() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -3623,7 +3623,7 @@ unsigned int CreatureObject::getCreatureSkillsCount() {
 }
 
 unsigned int CreatureObject::getNewCreatureSkillsCount(int cnt) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -3636,7 +3636,7 @@ unsigned int CreatureObject::getNewCreatureSkillsCount(int cnt) {
 }
 
 unsigned int CreatureObject::getLastMovementUpdateStamp() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -3648,7 +3648,7 @@ unsigned int CreatureObject::getLastMovementUpdateStamp() {
 }
 
 int CreatureObject::getIgnoreMovementTests() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -3660,7 +3660,7 @@ int CreatureObject::getIgnoreMovementTests() {
 }
 
 unsigned int CreatureObject::getDefenderListSize() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -3672,7 +3672,7 @@ unsigned int CreatureObject::getDefenderListSize() {
 }
 
 CreatureObject* CreatureObject::getDefender(int idx) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -3685,7 +3685,7 @@ CreatureObject* CreatureObject::getDefender(int idx) {
 }
 
 unsigned int CreatureObject::getLevel() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -3697,7 +3697,7 @@ unsigned int CreatureObject::getLevel() {
 }
 
 int CreatureObject::getCenteredBonus() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -3709,7 +3709,7 @@ int CreatureObject::getCenteredBonus() {
 }
 
 void CreatureObject::sendSystemMessage(const string& message) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -3722,7 +3722,7 @@ void CreatureObject::sendSystemMessage(const string& message) {
 }
 
 void CreatureObject::sendSystemMessage(const string& file, const string& str, unsigned long long targetid) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -3737,7 +3737,7 @@ void CreatureObject::sendSystemMessage(const string& file, const string& str, un
 }
 
 void CreatureObject::addInventoryItem(TangibleObject* item) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -3750,7 +3750,7 @@ void CreatureObject::addInventoryItem(TangibleObject* item) {
 }
 
 void CreatureObject::addLootItem(TangibleObject* item) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -3763,7 +3763,7 @@ void CreatureObject::addLootItem(TangibleObject* item) {
 }
 
 void CreatureObject::startDancing(const string& anim) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -3776,7 +3776,7 @@ void CreatureObject::startDancing(const string& anim) {
 }
 
 void CreatureObject::startPlayingMusic(const string& anim) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -3789,7 +3789,7 @@ void CreatureObject::startPlayingMusic(const string& anim) {
 }
 
 void CreatureObject::startWatch(unsigned long long entid) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -3802,7 +3802,7 @@ void CreatureObject::startWatch(unsigned long long entid) {
 }
 
 void CreatureObject::startListen(unsigned long long entid) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -3815,7 +3815,7 @@ void CreatureObject::startListen(unsigned long long entid) {
 }
 
 void CreatureObject::stopWatch(unsigned long long entid, bool doSendPackets, bool forced, bool doLock) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -3831,7 +3831,7 @@ void CreatureObject::stopWatch(unsigned long long entid, bool doSendPackets, boo
 }
 
 void CreatureObject::stopListen(unsigned long long entid, bool doSendPackets, bool forced, bool doLock) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -3847,7 +3847,7 @@ void CreatureObject::stopListen(unsigned long long entid, bool doSendPackets, bo
 }
 
 bool CreatureObject::isPlayingMusic() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -3859,7 +3859,7 @@ bool CreatureObject::isPlayingMusic() {
 }
 
 bool CreatureObject::isDancing() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -3871,7 +3871,7 @@ bool CreatureObject::isDancing() {
 }
 
 void CreatureObject::stopDancing() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -3883,7 +3883,7 @@ void CreatureObject::stopDancing() {
 }
 
 void CreatureObject::stopPlayingMusic() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -3895,7 +3895,7 @@ void CreatureObject::stopPlayingMusic() {
 }
 
 void CreatureObject::addListener(CreatureObject* creature) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -3908,7 +3908,7 @@ void CreatureObject::addListener(CreatureObject* creature) {
 }
 
 void CreatureObject::addWatcher(CreatureObject* creature) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -3921,7 +3921,7 @@ void CreatureObject::addWatcher(CreatureObject* creature) {
 }
 
 void CreatureObject::removeListener(CreatureObject* creature) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -3934,7 +3934,7 @@ void CreatureObject::removeListener(CreatureObject* creature) {
 }
 
 void CreatureObject::removeWatcher(CreatureObject* creature) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -3947,7 +3947,7 @@ void CreatureObject::removeWatcher(CreatureObject* creature) {
 }
 
 void CreatureObject::activateRecovery() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -3959,7 +3959,7 @@ void CreatureObject::activateRecovery() {
 }
 
 int CreatureObject::getCreatureSkillsSize() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -3971,7 +3971,7 @@ int CreatureObject::getCreatureSkillsSize() {
 }
 
 string& CreatureObject::getSkill(int idx) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -3985,7 +3985,7 @@ string& CreatureObject::getSkill(int idx) {
 }
 
 bool CreatureObject::hasSkill(unsigned int skillCRC) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -3998,7 +3998,7 @@ bool CreatureObject::hasSkill(unsigned int skillCRC) {
 }
 
 void CreatureObject::mountCreature(MountCreature* mnt, bool lockMount) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -4012,7 +4012,7 @@ void CreatureObject::mountCreature(MountCreature* mnt, bool lockMount) {
 }
 
 void CreatureObject::dismount(bool lockMount, bool ignoreCooldown) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -4026,7 +4026,7 @@ void CreatureObject::dismount(bool lockMount, bool ignoreCooldown) {
 }
 
 void CreatureObject::addCashCredits(unsigned int credits) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -4039,7 +4039,7 @@ void CreatureObject::addCashCredits(unsigned int credits) {
 }
 
 void CreatureObject::addBankCredits(unsigned int credits) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -4052,7 +4052,7 @@ void CreatureObject::addBankCredits(unsigned int credits) {
 }
 
 void CreatureObject::updateCashCredits(unsigned int credits) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -4065,7 +4065,7 @@ void CreatureObject::updateCashCredits(unsigned int credits) {
 }
 
 void CreatureObject::updateBankCredits(unsigned int credits) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -4078,7 +4078,7 @@ void CreatureObject::updateBankCredits(unsigned int credits) {
 }
 
 void CreatureObject::subtractCashCredits(unsigned int credits) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -4091,7 +4091,7 @@ void CreatureObject::subtractCashCredits(unsigned int credits) {
 }
 
 void CreatureObject::subtractBankCredits(unsigned int credits) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -4104,7 +4104,7 @@ void CreatureObject::subtractBankCredits(unsigned int credits) {
 }
 
 void CreatureObject::setCashCredits(int credits) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -4117,7 +4117,7 @@ void CreatureObject::setCashCredits(int credits) {
 }
 
 void CreatureObject::setBankCredits(int credits) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -4130,7 +4130,7 @@ void CreatureObject::setBankCredits(int credits) {
 }
 
 void CreatureObject::applyBuff(const string& type, int value, float duration) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -4145,7 +4145,7 @@ void CreatureObject::applyBuff(const string& type, int value, float duration) {
 }
 
 bool CreatureObject::verifyCashCredits(int creditsToRemove) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -4158,7 +4158,7 @@ bool CreatureObject::verifyCashCredits(int creditsToRemove) {
 }
 
 bool CreatureObject::verifyBankCredits(int creditsToRemove) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {

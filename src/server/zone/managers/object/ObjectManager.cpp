@@ -105,17 +105,24 @@ SceneObject* ObjectManager::remove(uint64 oid) {
 	return obj;
 }
 
+bool ObjectManager::destroy(SceneObject* obj) {
+	uint64 oid = obj->getObjectID(); 
+	
+	if (!objectCacheMap->containsKey(oid))
+		return false;
+
+	objectCacheMap->remove(oid);
+	
+	return true;
+}
+
 SceneObject* ObjectManager::getCachedObject(uint64 oid) {
 	SceneObject* obj = objectCacheMap->get(oid);
 
 	if (obj != NULL) {
 		objectCacheMap->remove(oid);
 		
-		obj->wlock();
-
 		obj->redeploy();
-		
-		obj->unlock();
 	}
 	
 	return obj;

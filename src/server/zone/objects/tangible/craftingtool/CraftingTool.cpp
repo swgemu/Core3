@@ -80,7 +80,7 @@ CraftingTool* CraftingTool::clone() {
 
 
 void CraftingTool::sendTo(Player* player, bool doClose) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -94,7 +94,7 @@ void CraftingTool::sendTo(Player* player, bool doClose) {
 }
 
 void CraftingTool::generateAttributes(Player* player) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -107,7 +107,7 @@ void CraftingTool::generateAttributes(Player* player) {
 }
 
 int CraftingTool::useObject(Player* player) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -120,7 +120,7 @@ int CraftingTool::useObject(Player* player) {
 }
 
 void CraftingTool::sendToolStart(Player* player) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -133,7 +133,7 @@ void CraftingTool::sendToolStart(Player* player) {
 }
 
 void CraftingTool::setToolEffectiveness(float eff) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -146,7 +146,7 @@ void CraftingTool::setToolEffectiveness(float eff) {
 }
 
 float CraftingTool::getToolEffectiveness() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -158,7 +158,7 @@ float CraftingTool::getToolEffectiveness() {
 }
 
 bool CraftingTool::isReady() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {

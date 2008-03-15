@@ -76,7 +76,7 @@ SuiTransferBox* SuiTransferBox::clone() {
 
 
 BaseMessage* SuiTransferBox::generateMessage() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -88,7 +88,7 @@ BaseMessage* SuiTransferBox::generateMessage() {
 }
 
 BaseMessage* SuiTransferBox::getMessage() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -100,7 +100,7 @@ BaseMessage* SuiTransferBox::getMessage() {
 }
 
 void SuiTransferBox::addOption(const string& itemText, const string& lblType, const string& itemType) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {

@@ -78,7 +78,7 @@ TicketCollector* TicketCollector::clone() {
 
 
 int TicketCollector::useObject(Player* player) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -91,7 +91,7 @@ int TicketCollector::useObject(Player* player) {
 }
 
 void TicketCollector::useTicket(Player* player, Ticket* ticket) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {

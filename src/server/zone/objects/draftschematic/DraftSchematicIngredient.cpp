@@ -74,7 +74,7 @@ DraftSchematicIngredient* DraftSchematicIngredient::clone() {
 
 
 void DraftSchematicIngredient::helperSendToPlayer(ObjectControllerMessage* msg) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -87,7 +87,7 @@ void DraftSchematicIngredient::helperSendToPlayer(ObjectControllerMessage* msg) 
 }
 
 string& DraftSchematicIngredient::getTemplateName() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -100,7 +100,7 @@ string& DraftSchematicIngredient::getTemplateName() {
 }
 
 string& DraftSchematicIngredient::getTitleName() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -113,7 +113,7 @@ string& DraftSchematicIngredient::getTitleName() {
 }
 
 string& DraftSchematicIngredient::getResourceType() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -126,7 +126,7 @@ string& DraftSchematicIngredient::getResourceType() {
 }
 
 unsigned int DraftSchematicIngredient::getResourceQuantity() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
@@ -138,7 +138,7 @@ unsigned int DraftSchematicIngredient::getResourceQuantity() {
 }
 
 bool DraftSchematicIngredient::getOptional() {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {

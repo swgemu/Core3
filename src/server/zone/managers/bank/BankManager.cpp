@@ -74,7 +74,7 @@ BankManager* BankManager::clone() {
 
 
 bool BankManager::isBankTerminal(long long objectid) {
-	 if (!deployed)
+	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
