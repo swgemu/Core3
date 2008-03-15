@@ -212,7 +212,7 @@ void SurveyToolImplementation::surveyRequest(Player* player, unicode& resource) 
 	}
 	
 	if (player->getZone()->getZoneServer()->getResourceManager()->checkResource(player, resourceName, getSurveyToolType())) {
-		if (!player->getCanSample()) {
+		if (!player->getCanSample() && !player->getCancelSample()) {
 			ChatSystemMessage* sysMessage = new ChatSystemMessage("survey","survey_sample");
 			player->sendMessage(sysMessage);
 		} else if (player->getCanSurvey()) {
