@@ -353,6 +353,9 @@ void ZonePacketHandler::handleClientCreateCharacter(Message* pack) {
 			player->setLoggingIn();
 
 			player->insertToZone(zone);
+			/*server->addObject(player);
+			
+			server->removeObject(player->getObjectID());*/
 			
 			player->unlock();
 		} else {

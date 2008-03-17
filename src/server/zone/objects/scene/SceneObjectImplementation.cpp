@@ -124,7 +124,7 @@ SceneObject* SceneObjectImplementation::deploy(const string& name) {
 void SceneObjectImplementation::redeploy() {
 	info("redeploying object");
 	
-	//_this->revoke();
+	_this->revoke();
 	
 	removeUndeploymentEvent();
 }

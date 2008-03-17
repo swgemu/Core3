@@ -94,7 +94,6 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, Player* player, uint32
 		handleColorPicker(boxID, player, cancel, value);
 		break;
 	case 0xD65E:
-		cout << "Bank transfer " << value << " " << value2 << "\n";
 		handleBakTransfer(boxID, player, atoi(value.c_str()), atoi(value2.c_str()));
 		break;
 	default:
@@ -527,8 +526,13 @@ void SuiManager::handleBakTransfer(uint32 boxID, Player* player, int cash, int b
 			player->unlock();
 			return;
 		}
-
+		
 		player->removeSuiBox(boxID);
+		
+		SuiBox* sui = player->getSuiBox(boxID);
+		
+		if (sui != NULL)
+			delete sui;
 		
 		player->updateCashCredits(cash);
 		player->updateBankCredits(bank);

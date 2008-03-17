@@ -2321,8 +2321,19 @@ void CreatureObjectImplementation::stopPlayingMusic() {
 }
 
 void CreatureObjectImplementation::startWatch(uint64 entid) {
-	CreatureObject* creature = (CreatureObject*) zone->lookupObject(entid);
-	if (creature == NULL || creature == _this)
+	SceneObject* object = zone->lookupObject(entid);
+	
+	if (object == NULL)
+		return;
+		
+	if (!object->isPlayer() && !object->isNonPlayerCreature()) {
+		sendSystemMessage("You cannot start watching an object.");
+		return;
+	}
+	
+	CreatureObject* creature = (CreatureObject*) object;
+	
+	if (creature == _this)
 		return;
 	
 	creature->wlock(_this);
@@ -2372,8 +2383,19 @@ void CreatureObjectImplementation::startWatch(uint64 entid) {
 }
 
 void CreatureObjectImplementation::startListen(uint64 entid) {
-	CreatureObject* creature = (CreatureObject*) zone->lookupObject(entid);
-	if (creature == NULL || creature == _this)
+	SceneObject* object = zone->lookupObject(entid);
+	
+	if (object == NULL)
+		return;
+		
+	if (!object->isPlayer() && !object->isNonPlayerCreature()) {
+		sendSystemMessage("You cannot start listening an object.");
+		return;
+	}
+	
+	CreatureObject* creature = (CreatureObject*) object;
+	
+	if (creature == _this)
 		return;
 		
 	creature->wlock(_this);
@@ -2423,7 +2445,17 @@ void CreatureObjectImplementation::startListen(uint64 entid) {
 }
 
 void CreatureObjectImplementation::stopWatch(uint64 entid, bool doSendPackets, bool forced, bool doLock) {
-	CreatureObject* creature = (CreatureObject*) zone->lookupObject(entid);
+	SceneObject* object = zone->lookupObject(entid);
+	
+	if (object == NULL)
+		return;
+	
+	if (!object->isPlayer() && !object->isNonPlayerCreature()) {
+		sendSystemMessage("You cannot stop watching an object.");
+		return;
+	}
+	
+	CreatureObject* creature = (CreatureObject*) object;
 	
 	string entName;
 	if (creature != NULL) {
@@ -2466,7 +2498,17 @@ void CreatureObjectImplementation::stopWatch(uint64 entid, bool doSendPackets, b
 }
 
 void CreatureObjectImplementation::stopListen(uint64 entid, bool doSendPackets, bool forced, bool doLock) {
-	CreatureObject* creature = (CreatureObject*) zone->lookupObject(entid);
+	SceneObject* object = zone->lookupObject(entid);
+	
+	if (object == NULL)
+		return;
+
+	if (!object->isPlayer() && !object->isNonPlayerCreature()) {
+		sendSystemMessage("You cannot stop listening an object.");
+		return;
+	}
+
+	CreatureObject* creature = (CreatureObject*) object;
 
 	string entName;
 	if (creature != NULL) {

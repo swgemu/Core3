@@ -113,26 +113,26 @@ PlayerImplementation::~PlayerImplementation() {
 	}
 
 	if (playerObject != NULL) {
-		delete playerObject;
+		playerObject->finalize();
 		playerObject = NULL;
 	}
 	
 	if (inventory != NULL) {
 		info("undeploying player inventory");
 
-		delete inventory;
+		inventory->finalize();
 		inventory = NULL;
 	}
 	
 	if (datapad != NULL) {
 		info("undeploying player datapad");
 
-		delete datapad;
+		datapad->finalize();
 		datapad = NULL;
 	}
 	
 	if (hairObj != NULL) {
-		delete hairObj;
+		hairObj->finalize();
 		hairObj = NULL;
 	}
 	
@@ -140,7 +140,6 @@ PlayerImplementation::~PlayerImplementation() {
 		delete centerOfBeingEvent;
 		centerOfBeingEvent = NULL;
 	}
-
 	
 	server->getZoneServer()->increaseTotalDeletedPlayers();
 	
@@ -228,7 +227,7 @@ void PlayerImplementation::init() {
 	
 	suiBoxNextID = 0;
 	
-	setLogging(true);
+	setLogging(false);
 	setGlobalLogging(true);
 }
 
@@ -482,9 +481,11 @@ void PlayerImplementation::logout(bool doLock) {
 void PlayerImplementation::userLogout(int msgCounter) {
 	if (msgCounter < 0 || msgCounter > 3)
 		msgCounter = 3;
+		
 	if (!isSitting()) {
 		changePosture(CreatureObjectImplementation::SITTING_POSTURE);
 	}
+	
 	if (!isInCombat() && isSitting()) {
 		logoutEvent = new PlayerLogoutEvent(_this, msgCounter);
 		

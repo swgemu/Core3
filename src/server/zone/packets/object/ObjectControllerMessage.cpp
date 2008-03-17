@@ -857,7 +857,12 @@ void ObjectControllerMessage::parseGetAttributes(Player* player, Message* pack) 
 	StringTokenizer ids(objectid.c_str());
 	
 	while (ids.hasMoreTokens()) {
-		uint64 objid = ids.getLongToken();
+		uint64 objid = 0;
+		
+		try {
+			objid = ids.getLongToken();
+		} catch (...) {
+		}
 		
 		if (objid == 0)
 			continue;
@@ -1572,6 +1577,11 @@ void ObjectControllerMessage::parseSampleRequest(Player* player, Message* packet
 }
 
 void ObjectControllerMessage::parseResourceContainerSplit(Player* player, Message* packet) {
+	if (player->getTradeSize() != 0) {
+		player->sendSystemMessage("You cant move objects while trading..");
+		return;
+	}
+	
 	uint64 objectID = packet->parseLong();
 	
 	unicode resourceQuantity;
@@ -1594,6 +1604,11 @@ void ObjectControllerMessage::parseResourceContainerSplit(Player* player, Messag
 }
 
 void ObjectControllerMessage::parseResourceContainerTransfer(Player* player, Message* packet) {
+	if (player->getTradeSize() != 0) {
+		player->sendSystemMessage("You cant move objects while trading..");
+		return;
+	}
+	
 	uint64 fromID = packet->parseLong();
 	
 	unicode ustr;
