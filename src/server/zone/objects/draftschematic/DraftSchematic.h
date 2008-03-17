@@ -85,9 +85,15 @@ public:
 
 	int getIngredientListSize();
 
-	DraftSchematicExpPropGroup* getExpPropGroup(int index);
+	void addExpPropTitle(const string& title);
+
+	int getExpPropTitlesListSize();
+
+	string& getExpPropTitle(int index);
 
 	int getExpPropGroupListSize();
+
+	DraftSchematicExpPropGroup* getExpPropGroup(int index);
 
 	void setPersistent(bool status);
 
@@ -104,6 +110,8 @@ public:
 	unsigned int getSchematicSize();
 
 protected:
+	string _return_getExpPropTitle;
+
 	string _return_getGroupName;
 
 	string _return_getName;
@@ -132,9 +140,15 @@ public:
 
 	int getIngredientListSize();
 
-	DraftSchematicExpPropGroup* getExpPropGroup(int index);
+	void addExpPropTitle(const string& title);
+
+	int getExpPropTitlesListSize();
+
+	string& getExpPropTitle(int index);
 
 	int getExpPropGroupListSize();
+
+	DraftSchematicExpPropGroup* getExpPropGroup(int index);
 
 	void setPersistent(bool status);
 
@@ -155,6 +169,7 @@ protected:
 	string _param1_addIngredient__string_string_bool_string_int_;
 	string _param3_addIngredient__string_string_bool_string_int_;
 	string _param1_addExperimentalProperty__int_string_int_;
+	string _param0_addExpPropTitle__string_;
 };
 
 class DraftSchematicHelper : public ORBClassHelper, public Singleton<DraftSchematicHelper> {

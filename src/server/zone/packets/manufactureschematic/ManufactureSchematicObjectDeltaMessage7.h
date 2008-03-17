@@ -48,6 +48,7 @@
 #include "../BaseLineMessage.h"
 
 #include "../../objects/draftschematic/DraftSchematic.h"
+#include "../../objects/draftschematic/DraftSchematicExpPropGroup.h"
 
 class ManufactureSchematicObjectDeltaMessage7 : public DeltaMessage {
 public:
@@ -65,7 +66,7 @@ public:
 		update5(size+1, size+1, slot);
 		update6(size, size, slot);
 		update7();
-		updateExperimentalValues();
+		updateExperimentalValues(ds);
 		update9();
 		update10();
 		update11();
@@ -185,11 +186,29 @@ public:
 
 	}
 
-	void updateExperimentalValues() {
+	void updateExperimentalValues(DraftSchematic* ds) {
 
 		startUpdate(8);
 		
-		insertInt(4);
+		int expPropGroupListSize = ds->getExpPropTitlesListSize();
+		insertInt(expPropGroupListSize);
+		insertInt(expPropGroupListSize);
+		
+		//insertInt(4);
+		//insertInt(4);
+		
+		for(int i = 0; i < expPropGroupListSize; i++) {
+			string title = ds->getExpPropTitle(i);
+			
+			insertByte(1);
+			insertShort(i);
+			insertAscii("crafting");  // I think this is always "crafting"
+			insertInt(0);
+			insertAscii(title);
+		}
+		
+		
+		/*insertInt(4);
 		insertInt(4);
 
 		// HARDCODED UNTIL FIXED
@@ -216,7 +235,7 @@ public:
 		insertShort(3);
 		insertAscii("crafting");
 		insertInt(0);
-		insertAscii("exp_quantity");
+		insertAscii("exp_quantity");*/
 
 	}
 	void update9() {

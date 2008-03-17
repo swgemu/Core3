@@ -60,7 +60,8 @@ interface DraftSchematic {
 	void helperSendIngredientsToPlayer(ObjectControllerMessage objMsg);
 	
 	// Experimental Property Methods
-	void addExperimentalProperty(unsigned int groupNumber, const string experimentalProperty, unsigned int weight);
+	void addExperimentalProperty(unsigned int groupNumber,  
+		const string experimentalProperty, unsigned int weight);
 	
 	void sendExperimentalPropertiesToPlayer(Player player);
 
@@ -68,10 +69,14 @@ interface DraftSchematic {
 
 	int getIngredientListSize();
 	
-	DraftSchematicExpPropGroup getExpPropGroup(int index);
+	
+	void addExpPropTitle(const string title);
+	int getExpPropTitlesListSize();
+	string getExpPropTitle(int index);
 	
 	int getExpPropGroupListSize();
-
+	DraftSchematicExpPropGroup getExpPropGroup(int index);
+	
 	// setters
 	void setPersistent(boolean status);
 

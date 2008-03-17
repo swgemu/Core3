@@ -50,6 +50,7 @@ which carries forward this exception.
 
 #include "../../objects/draftschematic/DraftSchematic.h"
 #include "../../objects/draftschematic/DraftSchematicIngredient.h"
+#include "../../objects/draftschematic/DraftSchematicExpPropGroup.h"
 
 class ManufactureSchematicObjectMessage7 : public BaseLineMessage {
 public:
@@ -102,27 +103,23 @@ public:
 		insertByte(0x0C); 	// no idea
 		
 		
-		int expPropGroupListSize = ds->getExpPropGroupListSize();
-		//insertInt(expPropGroupListSize);
-		//insertInt(expPropGroupListSize);
+		int expPropGroupListSize = ds->getExpPropTitlesListSize();
+		insertInt(expPropGroupListSize);
+		insertInt(expPropGroupListSize);
 		
-		insertInt(4);
-		insertInt(4);
+		//insertInt(4);
+		//insertInt(4);
 		
-		/*
 		for(int i = 0; i < expPropGroupListSize; i++) {
-			DraftSchematicExpPropGroup* dsEpg = ds->getExpPropGroup();
-			if(dsi != NULL) {
-				insertAscii(dsi->getTemplateName());
-				insertInt(0);
-				insertAscii(dsi->getTitleName());
-			} else {
-				cerr << "\n\nInvalid dsi: MSCO7 line 63.\n\n";
-			}
-		}*/
+			string title = ds->getExpPropTitle(i);
+			
+			insertAscii("crafting");  // I think this is always "crafting"
+			insertInt(0);
+			insertAscii(title);
+		}
 		
-		// Hardcodeing these.  Above is what it should be
-		insertAscii("crafting");
+		// Hardcoding these.  Above is what it should be
+		/*insertAscii("crafting");
 		insertInt(0);
 		insertAscii("exp_filling");
 		
@@ -136,18 +133,22 @@ public:
 		
 		insertAscii("crafting");
 		insertInt(0);
-		insertAscii("exp_quantity");
+		insertAscii("exp_quantity");*/
 								
 		
 		// NO IDEA WTF THIS IS FOR (doing this cause they were in live's logs)
 		for(int i = 0; i < 4; i++) {
-			//insertInt(expPropGroupListSize);
-			//insertInt(updateCount);
-			insertInt(4);
-			insertInt(4);
-			for(int j = 0; j < 4/*expPropGroupListSize*/; j++) {
+			insertInt(expPropGroupListSize);
+			insertInt(expPropGroupListSize);
+			for(int j = 0; j < expPropGroupListSize; j++) {
 				insertInt(0);
 			}
+			
+			//insertInt(4);
+			//insertInt(4);
+			/*for(int j = 0; j < 4; j++) {
+				insertInt(0);
+			}*/
 		}
 		
 		for(int i = 0; i < 4; i++) {

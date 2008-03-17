@@ -190,6 +190,14 @@ public:
 		string unparExperimentalWeights = result->getString(13);
 		Vector<uint32> parsedExperimentalWeights = parseUnsignedInt32sFromString(unparExperimentalWeights);
 
+		// example: exp_filling, exp_flavor, exp_nutrition, exp_quantity
+		string unparExperimentalGroupTitles = result->getString(14);
+		Vector<string> parsedExperimentalGroupTitles = parseStringsFromString(unparExperimentalGroupTitles);
+
+		for(int i = 0; i < parsedExperimentalGroupTitles.size(); i++) {
+			ds->addExpPropTitle(parsedExperimentalGroupTitles.get(i));
+		}
+		
 		// Add experimental properties groups to the draft schematic
 		uint32 iterator = 0;
 		for (uint32 i = 0; i < parsedNumberExperimentalProperties.size(); i++) {

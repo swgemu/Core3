@@ -78,10 +78,12 @@ class DraftSchematicImplementation : public DraftSchematicServant {
 	uint32 schematicSize;
 	
 	// Ingredient List
-	Vector<DraftSchematicIngredient*> draftSchematicIngredients;
+	Vector<DraftSchematicIngredient*> dsIngredients;
 	
-	// Experimental Property List
-	Vector<DraftSchematicExpPropGroup*> draftSchematicExpPropGroups;
+	// Experimental Property List With Padding
+	Vector<DraftSchematicExpPropGroup*> dsExpPropGroups;
+
+	Vector<string> expPropTitleList;
 	
 	bool persistent;
 	
@@ -103,19 +105,19 @@ public:
 	}
 
 	int getIngredientListSize() {
-		return draftSchematicIngredients.size();
+		return dsIngredients.size();
 	}
 	
 	DraftSchematicIngredient* getIngredient(int index) {
-		return draftSchematicIngredients.get(index);
+		return dsIngredients.get(index);
 	}
 	
 	int getExpPropGroupListSize() {
-		return draftSchematicExpPropGroups.size();
+		return dsExpPropGroups.size();
 	}
 	
 	DraftSchematicExpPropGroup* getExpPropGroup(int index) {
-		return draftSchematicExpPropGroups.get(index);
+		return dsExpPropGroups.get(index);
 	}
 	
 	// Ingredient Methods
@@ -126,7 +128,7 @@ public:
 	
 		DraftSchematicIngredient* dsi = (DraftSchematicIngredient*) dsiImp->deploy();
 		
-		draftSchematicIngredients.add(dsi);
+		dsIngredients.add(dsi);
 	}
 	
 	// THERE IS A BUG WHEN YOU LEAVE YOUR DATAPAD UP AND SURRENDER A SKILL, THE DRAFT SCHEMATICS
@@ -148,12 +150,12 @@ public:
 	}
 	
 	inline void helperSendIngredientsToPlayer(ObjectControllerMessage* objMsg) {
-		int listSize = draftSchematicIngredients.size();
+		int listSize = dsIngredients.size();
 		objMsg->insertInt(listSize);
 		
 		// Send all the ingredient data
 		for(int i = 0; i < listSize; i++) {
-			DraftSchematicIngredient* dsi = draftSchematicIngredients.get(i);
+			DraftSchematicIngredient* dsi = dsIngredients.get(i);
 			dsi->helperSendToPlayer(objMsg);
 		}
 		
@@ -165,18 +167,30 @@ public:
 		objMsg->insertShort(0);
 	}
 	
+	void addExpPropTitle(const string& title) {
+		expPropTitleList.add(title);
+	}
+	
+	int getExpPropTitlesListSize() {
+		return expPropTitleList.size();
+	}
+	
+	string& getExpPropTitle(int index) {
+		return expPropTitleList.get(index);
+	}
+	
 	// Experimental Property Methods
 	// UPDATE THIS METHOD WHEN WE CAN PASS VECTORS AROUND IN IDL
 	void addExperimentalProperty(uint32 groupNumber, const string& experimentalProperty, uint32 weight) {
-		if (groupNumber < draftSchematicExpPropGroups.size()) {
-			draftSchematicExpPropGroups.get(groupNumber)->addExperimentalProperty(experimentalProperty, weight);
+		if (groupNumber < dsExpPropGroups.size()) {
+			dsExpPropGroups.get(groupNumber)->addExperimentalProperty(experimentalProperty, weight);
 		} else {
 			DraftSchematicExpPropGroupImplementation* dsEpgImp = new DraftSchematicExpPropGroupImplementation();
 			DraftSchematicExpPropGroup* dsEpg = (DraftSchematicExpPropGroup*) dsEpgImp->deploy();
 			
 			dsEpg->addExperimentalProperty(experimentalProperty, weight);
 			
-			draftSchematicExpPropGroups.add(dsEpg);
+			dsExpPropGroups.add(dsEpg);
 		}
 	}
 	
@@ -186,7 +200,7 @@ public:
 		msg->insertInt(schematicID);
 		msg->insertInt(schematicCRC);
 		
-		uint8 listSize = draftSchematicExpPropGroups.size();
+		uint8 listSize = dsExpPropGroups.size();
 		
 		/*uint32 padding = 0;
 		if (draftSchematicIngredients.size() > 0) {
@@ -216,7 +230,7 @@ public:
 			
 			// Send all the experimental property data
 			for (int i = 0; i < listSize; i++) {
-				DraftSchematicExpPropGroup* dsEpg = draftSchematicExpPropGroups.get(i);
+				DraftSchematicExpPropGroup* dsEpg = dsExpPropGroups.get(i);
 				dsEpg->sendToPlayer(msg);
 			}
 		}

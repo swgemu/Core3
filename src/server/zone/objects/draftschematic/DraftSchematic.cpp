@@ -177,20 +177,20 @@ int DraftSchematic::getIngredientListSize() {
 		return ((DraftSchematicImplementation*) _impl)->getIngredientListSize();
 }
 
-DraftSchematicExpPropGroup* DraftSchematic::getExpPropGroup(int index) {
+void DraftSchematic::addExpPropTitle(const string& title) {
 	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
 		ORBMethodInvocation invocation(this, 13);
-		invocation.addSignedIntParameter(index);
+		invocation.addAsciiParameter(title);
 
-		return (DraftSchematicExpPropGroup*) invocation.executeWithObjectReturn();
+		invocation.executeWithVoidReturn();
 	} else
-		return ((DraftSchematicImplementation*) _impl)->getExpPropGroup(index);
+		((DraftSchematicImplementation*) _impl)->addExpPropTitle(title);
 }
 
-int DraftSchematic::getExpPropGroupListSize() {
+int DraftSchematic::getExpPropTitlesListSize() {
 	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
@@ -199,7 +199,46 @@ int DraftSchematic::getExpPropGroupListSize() {
 
 		return invocation.executeWithSignedIntReturn();
 	} else
+		return ((DraftSchematicImplementation*) _impl)->getExpPropTitlesListSize();
+}
+
+string& DraftSchematic::getExpPropTitle(int index) {
+	if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 15);
+		invocation.addSignedIntParameter(index);
+
+		invocation.executeWithAsciiReturn(_return_getExpPropTitle);
+		return _return_getExpPropTitle;
+	} else
+		return ((DraftSchematicImplementation*) _impl)->getExpPropTitle(index);
+}
+
+int DraftSchematic::getExpPropGroupListSize() {
+	if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 16);
+
+		return invocation.executeWithSignedIntReturn();
+	} else
 		return ((DraftSchematicImplementation*) _impl)->getExpPropGroupListSize();
+}
+
+DraftSchematicExpPropGroup* DraftSchematic::getExpPropGroup(int index) {
+	if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 17);
+		invocation.addSignedIntParameter(index);
+
+		return (DraftSchematicExpPropGroup*) invocation.executeWithObjectReturn();
+	} else
+		return ((DraftSchematicImplementation*) _impl)->getExpPropGroup(index);
 }
 
 void DraftSchematic::setPersistent(bool status) {
@@ -207,7 +246,7 @@ void DraftSchematic::setPersistent(bool status) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 15);
+		ORBMethodInvocation invocation(this, 18);
 		invocation.addBooleanParameter(status);
 
 		invocation.executeWithVoidReturn();
@@ -220,7 +259,7 @@ unsigned int DraftSchematic::getSchematicID() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 16);
+		ORBMethodInvocation invocation(this, 19);
 
 		return invocation.executeWithUnsignedIntReturn();
 	} else
@@ -232,7 +271,7 @@ unsigned int DraftSchematic::getSchematicCRC() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 17);
+		ORBMethodInvocation invocation(this, 20);
 
 		return invocation.executeWithUnsignedIntReturn();
 	} else
@@ -244,7 +283,7 @@ string& DraftSchematic::getName() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 18);
+		ORBMethodInvocation invocation(this, 21);
 
 		invocation.executeWithAsciiReturn(_return_getName);
 		return _return_getName;
@@ -257,7 +296,7 @@ string& DraftSchematic::getGroupName() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 19);
+		ORBMethodInvocation invocation(this, 22);
 
 		invocation.executeWithAsciiReturn(_return_getGroupName);
 		return _return_getGroupName;
@@ -270,7 +309,7 @@ unsigned int DraftSchematic::getComplexity() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 20);
+		ORBMethodInvocation invocation(this, 23);
 
 		return invocation.executeWithUnsignedIntReturn();
 	} else
@@ -282,7 +321,7 @@ unsigned int DraftSchematic::getSchematicSize() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 21);
+		ORBMethodInvocation invocation(this, 24);
 
 		return invocation.executeWithUnsignedIntReturn();
 	} else
@@ -322,30 +361,39 @@ Packet* DraftSchematicAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* 
 		resp->insertSignedInt(getIngredientListSize());
 		break;
 	case 13:
-		resp->insertLong(getExpPropGroup(inv->getSignedIntParameter())->_getORBObjectID());
+		addExpPropTitle(inv->getAsciiParameter(_param0_addExpPropTitle__string_));
 		break;
 	case 14:
-		resp->insertSignedInt(getExpPropGroupListSize());
+		resp->insertSignedInt(getExpPropTitlesListSize());
 		break;
 	case 15:
-		setPersistent(inv->getBooleanParameter());
+		resp->insertAscii(getExpPropTitle(inv->getSignedIntParameter()));
 		break;
 	case 16:
-		resp->insertInt(getSchematicID());
+		resp->insertSignedInt(getExpPropGroupListSize());
 		break;
 	case 17:
-		resp->insertInt(getSchematicCRC());
+		resp->insertLong(getExpPropGroup(inv->getSignedIntParameter())->_getORBObjectID());
 		break;
 	case 18:
-		resp->insertAscii(getName());
+		setPersistent(inv->getBooleanParameter());
 		break;
 	case 19:
-		resp->insertAscii(getGroupName());
+		resp->insertInt(getSchematicID());
 		break;
 	case 20:
-		resp->insertInt(getComplexity());
+		resp->insertInt(getSchematicCRC());
 		break;
 	case 21:
+		resp->insertAscii(getName());
+		break;
+	case 22:
+		resp->insertAscii(getGroupName());
+		break;
+	case 23:
+		resp->insertInt(getComplexity());
+		break;
+	case 24:
 		resp->insertInt(getSchematicSize());
 		break;
 	default:
@@ -383,12 +431,24 @@ int DraftSchematicAdapter::getIngredientListSize() {
 	return ((DraftSchematicImplementation*) impl)->getIngredientListSize();
 }
 
-DraftSchematicExpPropGroup* DraftSchematicAdapter::getExpPropGroup(int index) {
-	return ((DraftSchematicImplementation*) impl)->getExpPropGroup(index);
+void DraftSchematicAdapter::addExpPropTitle(const string& title) {
+	return ((DraftSchematicImplementation*) impl)->addExpPropTitle(title);
+}
+
+int DraftSchematicAdapter::getExpPropTitlesListSize() {
+	return ((DraftSchematicImplementation*) impl)->getExpPropTitlesListSize();
+}
+
+string& DraftSchematicAdapter::getExpPropTitle(int index) {
+	return ((DraftSchematicImplementation*) impl)->getExpPropTitle(index);
 }
 
 int DraftSchematicAdapter::getExpPropGroupListSize() {
 	return ((DraftSchematicImplementation*) impl)->getExpPropGroupListSize();
+}
+
+DraftSchematicExpPropGroup* DraftSchematicAdapter::getExpPropGroup(int index) {
+	return ((DraftSchematicImplementation*) impl)->getExpPropGroup(index);
 }
 
 void DraftSchematicAdapter::setPersistent(bool status) {
