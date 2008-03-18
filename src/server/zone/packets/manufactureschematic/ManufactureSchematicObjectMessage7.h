@@ -117,25 +117,7 @@ public:
 			insertInt(0);
 			insertAscii(title);
 		}
-		
-		// Hardcoding these.  Above is what it should be
-		/*insertAscii("crafting");
-		insertInt(0);
-		insertAscii("exp_filling");
-		
-		insertAscii("crafting");
-		insertInt(0);
-		insertAscii("exp_flavor");
-		
-		insertAscii("crafting");
-		insertInt(0);
-		insertAscii("exp_nutrition");
-		
-		insertAscii("crafting");
-		insertInt(0);
-		insertAscii("exp_quantity");*/
 								
-		
 		// NO IDEA WTF THIS IS FOR (doing this cause they were in live's logs)
 		for(int i = 0; i < 4; i++) {
 			insertInt(expPropGroupListSize);

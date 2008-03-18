@@ -66,20 +66,23 @@ public:
 		update5(size+1, size+1, slot);
 		update6(size, size, slot);
 		update7();
-		updateExperimentalValues(ds);
-		update9();
-		update10();
-		update11();
-		update12();
-		update14();
+		initializeExperimentalValues(ds);
 	}
 	
-	void partialUpdate(int slot, int counter, uint64 resourceID, int quantity) {
+	void partialUpdate(int slot, int counter, uint64 resourceID, int quantity) { 
 		updateSlot(1, counter, slot);
 		updateResource(1, counter, slot, resourceID);
 		updateQuantity(1, counter, slot, quantity);
 		update5(1, counter, slot);
 		update7();	
+	}
+	
+	void updateForAssembly(){
+		sendWeirdCrap();
+		update9();
+		update0B();
+		update0C();
+		update12();
 	}
 
 	void updateIngredientList(DraftSchematic * ds) {
@@ -186,16 +189,15 @@ public:
 
 	}
 
-	void updateExperimentalValues(DraftSchematic* ds) {
+	void initializeExperimentalValues(DraftSchematic* ds) {
 
 		startUpdate(8);
 		
 		int expPropGroupListSize = ds->getExpPropTitlesListSize();
+		
 		insertInt(expPropGroupListSize);
 		insertInt(expPropGroupListSize);
 		
-		//insertInt(4);
-		//insertInt(4);
 		
 		for(int i = 0; i < expPropGroupListSize; i++) {
 			string title = ds->getExpPropTitle(i);
@@ -206,84 +208,138 @@ public:
 			insertInt(0);
 			insertAscii(title);
 		}
-		
-		
-		/*insertInt(4);
-		insertInt(4);
-
-		// HARDCODED UNTIL FIXED
-
-		insertByte(1);
-		insertShort(0);
-		insertAscii("crafting");
-		insertInt(0);
-		insertAscii("exp_filling");
-
-		insertByte(1);
-    	insertShort(1);
-		insertAscii("crafting");
-		insertInt(0);
-		insertAscii("exp_flavor");
-
-		insertByte(1);
-		insertShort(2);
-		insertAscii("crafting");
-		insertInt(0);
-    	insertAscii("exp_nutrition");
-
-		insertByte(1);
-		insertShort(3);
-		insertAscii("crafting");
-		insertInt(0);
-		insertAscii("exp_quantity");*/
-
-	}
-	void update9() {
+				
+		// Initialize update 9************
 		startUpdate(9);
 
 		startList(4, 4);
 
 		for (int i = 0; i < 4; i++) {
-			addListIntElement(i, 0);
+			addListFloatElement(i, 0); 
 		}
-	}
-
-	void update10() {
-
+		//*********************************
+		// Initialize update 0A************
 		startUpdate(10);
 
 		startList(4, 4);
 
 		for (int i = 0; i < 4; i++) {
-			addListIntElement(i, 0);
+			addListFloatElement(i, 0);
 		}
-	}
-
-	void update11() {
-
+		//*********************************
+		// Initialize update 0B************
 		startUpdate(11);
 
 		startList(4, 4);
 
 		for (int i = 0; i < 4; i++) {
-			addListIntElement(i, 0);
+			addListFloatElement(i, 0);
 		}
-	}
-	void update12() {
-
+		//*********************************
+		// Initialize update 0C************
 		startUpdate(12);
 
 		startList(4, 4);
 
 		for (int i = 0; i < 4; i++) {
-			addListIntElement(i, 0);
+			addListFloatElement(i, 0);
+		}
+		//*********************************
+		
+	}
+	
+	// This should send the experimental values shown in the Screen after hitting assemble
+	void update9() {
+		startUpdate(9);
+
+		startList(4, 8);
+
+		for (int i = 0; i < 4; i++) {
+			removeListFloatElement(i, 0.15);
 		}
 	}
 
+	void update0A() {
+
+		startUpdate(0x0A);
+
+		startList(4, 8);
+
+		for (int i = 0; i < 4; i++) {
+			removeListFloatElement(i, 1.0);
+		}
+	}
+
+	void update0B() {
+
+		startUpdate(0x0B);
+
+		startList(4, 8);
+
+		for (int i = 0; i < 4; i++) {
+			removeListFloatElement(i, 1.0);
+		}
+	}
+	void update0C() {
+
+		startUpdate(0x0C);
+
+		startList(4, 8);
+
+		for (int i = 0; i < 4; i++) {
+			removeListFloatElement(i, 0.50);
+		}
+	}
+
+	void update12(){
+		startUpdate(0x12);
+		insertFloat(0x42BFAAAB);
+	}
+	
 	void update14() {
 
 		startUpdate(0x14);
 		insertByte(1);
+	}
+	
+	void sendWeirdCrap(){
+		startUpdate(0);
+		startList(1,4);
+		insertByte(0);
+		insertShort(2);
+		
+		startUpdate(1);
+		startList(1,6);
+		insertByte(0);
+		insertShort(2);
+		
+		startUpdate(2);
+		startList(1,6);
+		insertByte(0);
+		insertShort(2);
+		
+		startUpdate(3);
+		startList(1,6);
+		insertByte(0);
+		insertShort(2);
+		
+		startUpdate(4);
+		startList(1,4);
+		insertByte(0);
+		insertShort(2);
+		
+		startUpdate(5);
+		startList(1,6);
+		insertByte(0);
+		insertShort(2);
+		
+		startUpdate(6);
+		startList(1,7);
+		insertByte(0);
+		insertShort(2);
+		
+		update7();
+		
 	}
 
 };
