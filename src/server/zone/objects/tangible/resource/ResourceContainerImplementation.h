@@ -77,7 +77,7 @@ public:
 	static const int MAXQUANTITY = 100000;
 	
 	ResourceContainerImplementation(uint64 oid);
-	ResourceContainerImplementation(uint64 objectid, uint32 tempCRC, const unicode& n, const string& tempn, Player* player);
+	ResourceContainerImplementation(uint64 objectid, uint32 tempCRC, const unicode& n, const string& tempn);
 	ResourceContainerImplementation(CreatureObject* creature, uint32 tempCRC, const unicode& n, const string& tempn);
 	
 	~ResourceContainerImplementation();

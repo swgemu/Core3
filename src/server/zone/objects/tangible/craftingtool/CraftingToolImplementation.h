@@ -51,10 +51,18 @@ which carries forward this exception.
 class CreatureObject;
 class SceneObject;
 class Player;
+class CreateObjectEvent;
+
  
 class CraftingToolImplementation : public CraftingToolServant {
 protected:
 	float effectiveness;
+	int state;
+	TangibleObject * currentTano;
+	DraftSchematic * currentDs;
+	
+	// To see if is first resource inserted in a crafting session
+	int insertCount;
  
 public:
 	static const int CLOTHING = 1; // Clothing and Armor Crafting Tool
@@ -77,15 +85,52 @@ public:
 	int useObject(Player* player);
  
 	void sendToolStart(Player* player);
- 
-	void setToolEffectiveness(float eff) {
+	
+	// Setters
+	inline void setToolEffectiveness(float eff) {
 		effectiveness = eff;
 	}
- 
+	
+	inline void setCraftingState(int s){
+		state = s;
+	}
+	
+	inline void setTano(TangibleObject * tano){
+		currentTano = tano;
+	}
+	
+	inline void setDs(DraftSchematic * ds){
+		currentDs = ds;
+	}
+	
+	inline void setInsertCount(int count){
+		insertCount = count;
+	}
+	
+	inline void increaseInsertCount(){
+		insertCount++;
+	}
+	
+	// Getters
+	inline int getCraftingState(){
+		return state;
+	}
 	float getToolEffectiveness() {
 		return effectiveness;
 	}
  
+	inline TangibleObject* getTano(){
+		return currentTano;
+	}
+	
+	inline DraftSchematic* getDs(){
+		return currentDs;
+	}
+	
+	inline int getInsertCount(){
+		return insertCount;
+	}
+	
 	bool isReady() {
 		return true;
 	}

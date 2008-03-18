@@ -61,7 +61,7 @@ ResourceContainerImplementation::ResourceContainerImplementation(uint64 oid)
 }
 
 ResourceContainerImplementation::ResourceContainerImplementation(uint64 oid, uint32 tempCRC, const unicode& n, 
-		const string& tempn, Player* player) : ResourceContainerServant(oid, n, tempn, tempCRC, RESOURCECONTAINER) {
+		const string& tempn) : ResourceContainerServant(oid, n, tempn, tempCRC, RESOURCECONTAINER) {
 	templateTypeName = "obj_n";
 	
 	name = n;
@@ -195,7 +195,7 @@ void ResourceContainerImplementation::splitContainer(Player* player, int newQuan
 	int oldQuantity = getContents();
 		
 	if (newQuantity < oldQuantity) {
-		ResourceContainerImplementation* newRco = new ResourceContainerImplementation(player->getNewItemID(), getObjectCRC(), getName(), getTemplateName(), player); 
+		ResourceContainerImplementation* newRco = new ResourceContainerImplementation(player->getNewItemID(), getObjectCRC(), getName(), getTemplateName()); 
 		newRco->setContents(newQuantity);
 	
 		player->getZone()->getZoneServer()->getResourceManager()->setResourceData(newRco);

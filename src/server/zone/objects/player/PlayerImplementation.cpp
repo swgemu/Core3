@@ -2388,32 +2388,32 @@ void PlayerImplementation::setCurrentCraftingTool(CraftingTool* ct) {
 void PlayerImplementation::clearCurrentCraftingTool() {
 	currentCraftingTool = NULL;
 }
-DraftSchematic* PlayerImplementation::getCurrentDraftSchematic() {
-	return currentDraftSchematic;
-}
-void PlayerImplementation::setCurrentDraftSchematic(DraftSchematic* ds) {
-	currentDraftSchematic = ds;
-}
-void PlayerImplementation::clearCurrentDraftSchematic() { 
-	currentDraftSchematic = NULL;
-}
-uint64 PlayerImplementation::getCurrentSchematicID() {
-	return currentSchematicID;
-}
-void PlayerImplementation::setCurrentSchematicID(uint64 soid) {
-	currentSchematicID = soid;
-}
 
-
-void PlayerImplementation::prepareCraftingSessionStageTwo(DraftSchematic* ds) {
+void PlayerImplementation::prepareCraftingSession(CraftingTool * ct, DraftSchematic* ds) {
 	CraftingManager* craftingManager = server->getCraftingManager();
-	craftingManager->prepareCraftingSessionStageTwo(_this, ds);
+	craftingManager->prepareCraftingSession(_this, ct, ds);
 }
 
 void PlayerImplementation::addResourceToCraft(ResourceContainer * rnco, int slot, int counter) {
 	CraftingManager* craftingManager = server->getCraftingManager();
 	craftingManager->addResourceToCraft(_this, rnco, slot, counter);
 }
+
+void PlayerImplementation::nextCraftingStage(string test) {
+	CraftingManager* craftingManager = server->getCraftingManager();
+	craftingManager->nextCraftingStage(_this, test);
+}
+
+void PlayerImplementation::craftingCustomization(string name, int condition) {
+	CraftingManager* craftingManager = server->getCraftingManager();
+	craftingManager->craftingCustomization(_this, name, condition);
+}
+
+void PlayerImplementation::createPrototype(string test) {
+	CraftingManager* craftingManager = server->getCraftingManager();
+	craftingManager->createPrototype(_this, test);
+}
+
 
 // Draft Schematics
 

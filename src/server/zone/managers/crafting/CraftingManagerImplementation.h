@@ -51,6 +51,7 @@ which carries forward this exception.
 
 #include "../../Zone.h"
 #include "../../ZoneServer.h"
+#include "../../ZoneProcessServerImplementation.h"
 
 #include "CraftingManager.h"
 
@@ -63,19 +64,25 @@ which carries forward this exception.
 
 #include "../../packets.h"
 
+#include "events/CreateObjectEvent.h"
+
 class ZoneServer;
 
 class CraftingManagerImplementation : public CraftingManagerServant, public Mutex {
 	ZoneServer* server;
+	ZoneProcessServerImplementation * processor;
+	
+	CreateObjectEvent * createObjectEvent;
 	
 	// Use a groupName to recieve a vector of draftSchematics back
 	VectorMap<string, DraftSchematicGroup*> draftSchematicsMap;
 	
 public:
-	CraftingManagerImplementation(ZoneServer* serv) :
+	CraftingManagerImplementation(ZoneServer* serv, ZoneProcessServerImplementation* proc) :
 		CraftingManagerServant(), Mutex("CraftingManagerMutex") {
 		
 		server = serv;
+		processor = proc;
 		
 		loadDraftSchematicsFromDatabase();
 	}
@@ -207,6 +214,10 @@ public:
 			}
 		}
 
+		// Save schematics tano attributes
+		string tanoAttributes = result->getString(15);
+		ds->setTanoAttributes(tanoAttributes);
+		
 		return ds;
 	}
 
@@ -259,183 +270,456 @@ public:
 	}
 	
 	
-	// Crating Methods
-	void prepareCraftingSessionStageTwo(Player* player, DraftSchematic* ds) {
-		//TODO: Check to see if this scene obj id for the schematic is different
-		// each time you try to enter stage 2 of crafting
-		
-		uint64 sceneObjSchematic = setupDraftSchematicForCSStageTwo(player, ds);
+	// Crafting Methods
+	void prepareCraftingSession(Player* player, CraftingTool * ct, DraftSchematic* ds) {
+	
+		createDraftSchematic(player, ct, ds);
 
-		//TODO:draftSchematic->getTangibleObject();
-		uint64 sceneObjTano = setupTangibleObjectForCSStageTwo(player, sceneObjSchematic, ds->getSchematicCRC());
+		createTangibleObject(player, ct, ds);
 
-		setupIngredientsForCSStageTwo(player, ds, sceneObjSchematic, sceneObjTano);
-		
-		player->setCurrentSchematicID(sceneObjSchematic); 
-		player->setCurrentDraftSchematic(ds); 
+		setupIngredients(player, ct, ds);
+
 	}
 	
-	uint64 setupDraftSchematicForCSStageTwo(Player* player, DraftSchematic* ds) {
-		// Scene Object Create Message
-		uint64 schematicSceneObjID = player->getNewItemID();
-		SceneObjectCreateMessage* soCreateMsg = new SceneObjectCreateMessage(schematicSceneObjID, 0x3819C409);
+	void createDraftSchematic(Player* player, CraftingTool * ct, DraftSchematic* ds) {
+		
+		// Scene Object Create the DraftSchematic
+		ds->setObjectID(player->getNewItemID());
+
+		SceneObjectCreateMessage* soCreateMsg = new SceneObjectCreateMessage(ds->getObjectID(), 0x3819C409);
 		player->sendMessage(soCreateMsg);
 		
-		CraftingTool* ct = player->getCurrentCraftingTool();
-		
-		ct->generateAttributes(player);
-		
 		// Update Containment Message
-		UpdateContainmentMessage* ucMsg = new UpdateContainmentMessage(schematicSceneObjID, ct->getObjectID(), 4);
+		UpdateContainmentMessage* ucMsg = new UpdateContainmentMessage(ds->getObjectID(), ct->getObjectID(), 4);
 		player->sendMessage(ucMsg);
 
 		// MSCO3
 		float complexity = ds->getComplexity();
 		unicode& uniPlayerName = player->getCharacterName();
-		ManufactureSchematicObjectMessage3* msco3 = new ManufactureSchematicObjectMessage3(schematicSceneObjID, 
+		ManufactureSchematicObjectMessage3* msco3 = new ManufactureSchematicObjectMessage3(ds->getObjectID(), 
 				complexity, uniPlayerName);
 		player->sendMessage(msco3);
 		
 		// MSCO6
 		uint32 schematicCRC = ds->getSchematicCRC();
-		ManufactureSchematicObjectMessage6* msco6 = new ManufactureSchematicObjectMessage6(schematicSceneObjID, schematicCRC);
+		ManufactureSchematicObjectMessage6* msco6 = new ManufactureSchematicObjectMessage6(ds->getObjectID(), ds->getSchematicCRC());
 		player->sendMessage(msco6);
 		
 		// MSCO8
-		ManufactureSchematicObjectMessage8* msco8 = new ManufactureSchematicObjectMessage8(schematicSceneObjID);
+		ManufactureSchematicObjectMessage8* msco8 = new ManufactureSchematicObjectMessage8(ds->getObjectID());
 		player->sendMessage(msco8);
 		
 		// MSCO9
-		ManufactureSchematicObjectMessage9* msco9 = new ManufactureSchematicObjectMessage9(schematicSceneObjID);
+		ManufactureSchematicObjectMessage9* msco9 = new ManufactureSchematicObjectMessage9(ds->getObjectID());
 		player->sendMessage(msco9);
 		
 		//Scene Object Close
-		SceneObjectCloseMessage* soCloseMsg = new SceneObjectCloseMessage(schematicSceneObjID);
+		SceneObjectCloseMessage* soCloseMsg = new SceneObjectCloseMessage(ds->getObjectID());
 		player->sendMessage(soCloseMsg);
-
-		return schematicSceneObjID;
+		
+		ct->setDs(ds);
 	}
 	
-	uint64 setupTangibleObjectForCSStageTwo(Player* player, uint64 sceneObjSchematic, uint32 schematicCRC) {			
-		// Scene Object Create Message
-		TangibleObjectImplementation* tanoImpl = new TangibleObjectImplementation(player->getNewItemID());
-		TangibleObject* tano = tanoImpl->deploy();
+	void createTangibleObject(Player* player, CraftingTool * ct, DraftSchematic* ds) {			
 		
-		uint64 tanoSceneObjID = tano->getObjectID();
-		SceneObjectCreateMessage* soCreateMsg = new SceneObjectCreateMessage(tanoSceneObjID, 0x77D8BCD7); // bofa treat tangible object CRC
+		// Generates the tangible for crafting
+		TangibleObject* tano = generateTangibleObject(player, ds);
+		
+		// Scene Object Create Message
+		SceneObjectCreateMessage* soCreateMsg = new SceneObjectCreateMessage(tano->getObjectID(), tano->getObjectCRC());
 		player->sendMessage(soCreateMsg);
-
-		CraftingTool* ct = player->getCurrentCraftingTool();
 		
 		// Update Containment Message
-		UpdateContainmentMessage* ucMsg = new UpdateContainmentMessage(tanoSceneObjID, ct->getObjectID(), 0);
+		UpdateContainmentMessage* ucMsg = new UpdateContainmentMessage(tano->getObjectID(), ct->getObjectID(), 0);
 		player->sendMessage(ucMsg);
 	
 		// Tano3
-		tano->setObjectCRC(0x77D8BCD7);
-		tano->setTemplateTypeName("food_name");
-		tano->setTemplateName("bofa_treat");
 		TangibleObjectMessage3* tano3 = new TangibleObjectMessage3(tano);
 		player->sendMessage(tano3);
 		
-		/* Tano6
-		BaseLineMessage* tano6 = new BaseLineMessage(tano->getObjectID(), 0x54414E4F, 6, 0x02);
-		tano6->insertInt(0x76);
-		tano6->insertAscii("food_detail");
-		//tano6->insertInt(0);
-		tano6->insertAscii("bofa_treat");
-		//tano6->insertInt(0);
-		//tano6->insertInt(0);
-		//tano6->insertByte(0);
-		tano6->setSize();
-		player->sendMessage(tano6);*/
-		//TangibleObjectMessage6* tano6 = new TangibleObjectMessage6(tano);
-		//player->sendMessage(tano6);
-		
 		// Scene Object Close
-		SceneObjectCloseMessage* soCloseMsg = new SceneObjectCloseMessage(tanoSceneObjID);
+		SceneObjectCloseMessage* soCloseMsg = new SceneObjectCloseMessage(tano->getObjectID());
 		player->sendMessage(soCloseMsg);
-		
-		// DTano3
-		//TangibleObjectDeltaMessage3* dtano3 = new TangibleObjectDeltaMessage3(tano);
-		//dtano3->updateConditionDamage();
-		//dtano3->close();
-		//player->sendMessage(dtano3);
 		
 		// Dplay9
 		PlayerObjectDeltaMessage9* dplay9 = new PlayerObjectDeltaMessage9(player->getPlayerObject());
 		dplay9->setCraftingState(2);
+		ct->setCraftingState(2);
 		dplay9->close();
 		player->sendMessage(dplay9);
 		
-		return tano->getObjectID();
+		ct->setTano(tano);
+		ct->setInsertCount(1);
 	}
 	
-	void setupIngredientsForCSStageTwo(Player* player, DraftSchematic* ds, uint64 sceneObjSchematic, uint64 sceneObjTano) {
+	void setupIngredients(Player* player, CraftingTool * ct, DraftSchematic* ds) {
 		
 		// Object Controller w/ Ingredients
-		ObjectControllerMessage* objMsg = new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x0103);
-		
-		objMsg->insertLong(player->getCurrentCraftingTool()->getObjectID());
-		objMsg->insertLong(sceneObjSchematic);
-		objMsg->insertLong(sceneObjTano);
-		objMsg->insertInt(2);
-		
-		objMsg->insertByte(1);
-		
+		ObjectControllerMessage* objMsg = new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x0103);	
+		objMsg->insertLong(ct->getObjectID());
+		objMsg->insertLong(ds->getObjectID());
+		objMsg->insertLong(ct->getTano()->getObjectID());
+		objMsg->insertInt(2);		
+		objMsg->insertByte(1);		
 		ds->helperSendIngredientsToPlayer(objMsg); 
 		player->sendMessage(objMsg);
 		
 		// MSCO7
-		ManufactureSchematicObjectMessage7* msco7 = new ManufactureSchematicObjectMessage7(sceneObjSchematic, ds);
+		ManufactureSchematicObjectMessage7* msco7 = new ManufactureSchematicObjectMessage7(ds->getObjectID(), ds);
 		player->sendMessage(msco7);
 	}	
 	
 	
 	void addResourceToCraft(Player * player, ResourceContainer * rcno, int slot, int counter){
-		
-		uint64 sceneObjSchematic = player->getCurrentSchematicID();
-		DraftSchematic * ds = player->getCurrentDraftSchematic(); 
+
+		CraftingTool * ct = player->getCurrentCraftingTool();
+		DraftSchematic * ds = ct->getDs(); 
 
 		ResourceContainerObjectDeltaMessage3* dRcno3 = new ResourceContainerObjectDeltaMessage3(rcno);
-		DraftSchematicIngredient* dsi = ds->getIngredient(slot);
-		
+		DraftSchematicIngredient* dsi = ds->getIngredient(slot);		
 		dRcno3->setQuantity((rcno->getContents() - dsi->getResourceQuantity()));
 		dRcno3->close();
-
 		player->sendMessage(dRcno3);
 		
-		ManufactureSchematicObjectDeltaMessage6* dMsco6 = new ManufactureSchematicObjectDeltaMessage6(sceneObjSchematic);
 		
-		dMsco6->insertToResourceSlot(ds->getIngredientListSize(), slot + 1); 
-		dMsco6->close(); 
-
+		ManufactureSchematicObjectDeltaMessage6* dMsco6 = new ManufactureSchematicObjectDeltaMessage6(ds->getObjectID());
+		dMsco6->insertToResourceSlot(ct->getInsertCount());//slot + 1);
+		dMsco6->close();
 		player->sendMessage(dMsco6); 
 				
 		
-		ManufactureSchematicObjectDeltaMessage7* dMsco7 = new ManufactureSchematicObjectDeltaMessage7(sceneObjSchematic);
-// Need to make this not static
-		if(slot == 0){
+		ManufactureSchematicObjectDeltaMessage7* dMsco7 = new ManufactureSchematicObjectDeltaMessage7(ds->getObjectID());
+		if(ct->getInsertCount() == 1){
 			dMsco7->fullUpdate(ds, ds->getIngredientListSize(), slot, rcno->getObjectID(), dsi->getResourceQuantity());
 		}
 		else {
-			dMsco7->partialUpdate(slot, ds->getIngredientListSize() + slot + 1, rcno->getObjectID(), dsi->getResourceQuantity());	
-			
+			dMsco7->partialUpdate(slot, ds->getIngredientListSize() + ct->getInsertCount(), rcno->getObjectID(), dsi->getResourceQuantity());		
 		}
-		
 		dMsco7->close();
-		
 		player->sendMessage(dMsco7); 
+		
 		
 		//Object Controller 
 		ObjectControllerMessage* objMsg = new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x010C);
-
 		objMsg->insertInt(0x107);
 		objMsg->insertInt(0);
-
-		objMsg->insertByte(counter); //?!?!
-		
+		objMsg->insertByte(counter);
 		player->sendMessage(objMsg);
+		
+		ct->increaseInsertCount();
+	}
+	void nextCraftingStage(Player * player, string test){
+		
+		CraftingTool * ct = player->getCurrentCraftingTool();
+		DraftSchematic * ds = ct->getDs(); 
+		
+		int counter = atoi(test.c_str());
+		
+		if(ct->getCraftingState() == 5){
+			
+			finishStage1(player, counter);
+			
+		}
+		else if(ct->getCraftingState() == 6){
+			
+			finishStage2(player, counter);
+			
+		} else {
+			
+			assembleWithoutExperimenting(player, ct, ds, counter);
+			
+		}
+		
+	}
+	void createPrototype(Player * player, string test){
+		
+		CraftingTool * ct = player->getCurrentCraftingTool();
+		DraftSchematic * ds = ct->getDs(); 
+		
+		StringTokenizer tokenizer(test);
+
+		int counter = tokenizer.getIntToken();
+		int practice = tokenizer.getIntToken();		
+
+		//Object Controller - Closes Window
+		ObjectControllerMessage* objMsg = new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x010C);
+		objMsg->insertInt(0x10A);
+		objMsg->insertInt(1);
+		objMsg->insertByte(counter); //?!?! 		
+		player->sendMessage(objMsg);
+		
+		//if(practice == 1){
+			createObjectInInventory(player, 5);
+		//}
+		
+	}
+	void assembleWithoutExperimenting(Player * player, CraftingTool * ct, DraftSchematic * ds, int counter){
+		
+		ManufactureSchematicObjectDeltaMessage3* dMsco3 = new ManufactureSchematicObjectDeltaMessage3(ds->getObjectID());
+		dMsco3->updateCraftedValues(ds);
+		dMsco3->close();
+		player->sendMessage(dMsco3);
+		
+
+		ManufactureSchematicObjectDeltaMessage7* dMsco7 = new ManufactureSchematicObjectDeltaMessage7(ds->getObjectID());
+		dMsco7->updateForAssembly();
+		dMsco7->close();	
+		player->sendMessage(dMsco7); 
+		
+
+			
+		PlayerObjectDeltaMessage9* dplay9 = new PlayerObjectDeltaMessage9(player->getPlayerObject());
+		dplay9->insertShort(5);
+		dplay9->insertInt(0x0B);
+		dplay9->setCraftingState(4);
+		ct->setCraftingState(4);
+		dplay9->close();
+		player->sendMessage(dplay9);
+		
+		
+		TangibleObjectMessage3* tano3 = new TangibleObjectMessage3(ct->getTano());
+		player->sendMessage(tano3);
+		
+		
+		//Object Controller  
+		ObjectControllerMessage* objMsg = new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x01BE);
+		objMsg->insertInt(0x109);
+		objMsg->insertInt(1);
+		
+		objMsg->insertByte(counter); //?!?! 		
+		player->sendMessage(objMsg);
+	}
+	void craftingCustomization(Player * player, string name, int condition){
+		
+		CraftingTool * ct = player->getCurrentCraftingTool();
+		DraftSchematic * ds = ct->getDs(); 	
+		
+		TangibleObjectDeltaMessage3* dtano3 = new TangibleObjectDeltaMessage3(ct->getTano());
+		dtano3->updateName(name);
+		dtano3->close();
+		player->sendMessage(dtano3);
+		
+		ManufactureSchematicObjectDeltaMessage3* dMsco3 = new ManufactureSchematicObjectDeltaMessage3(ds->getObjectID());
+		dMsco3->updateName(name);
+		dMsco3->updateCondition(condition);
+		dMsco3->close();
+		player->sendMessage(dMsco3);
+		
+		//Object Controller  
+		ObjectControllerMessage* objMsg = new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x010C);
+		objMsg->insertInt(0x15A);
+		objMsg->insertInt(0);
+		objMsg->insertByte(0);		
+		player->sendMessage(objMsg);
+		
+		ct->setCraftingState(5);
+		
+	}
+	void finishStage1(Player * player, int counter){
+		
+		CraftingTool* ct = player->getCurrentCraftingTool();
+		
+		PlayerObjectDeltaMessage9* dplay9 = new PlayerObjectDeltaMessage9(player->getPlayerObject());
+		//dplay9->insertShort(5);
+		//dplay9->insertInt(0xFFFFFFFF);
+		dplay9->setCraftingState(5);
+		dplay9->close();
+		player->sendMessage(dplay9);
+		
+		
+		//Object Controller 
+		ObjectControllerMessage* objMsg = new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x01BE);
+		objMsg->insertInt(0x109);
+		objMsg->insertInt(4);
+		objMsg->insertByte(counter); //?!?! 		
+		player->sendMessage(objMsg);
+		
+		ct->setCraftingState(6);
+	}
+	
+	void finishStage2(Player * player, int counter){
+		
+		CraftingTool* ct = player->getCurrentCraftingTool();
+		
+		PlayerObjectDeltaMessage9* dplay9 = new PlayerObjectDeltaMessage9(player->getPlayerObject());
+		dplay9->insertShort(5);
+		dplay9->insertInt(0xFFFFFFFF);
+		dplay9->setCraftingState(0);
+		ct->setCraftingState(0);
+		dplay9->close();
+		player->sendMessage(dplay9);
+		
+		//Object Controller 
+		ObjectControllerMessage* objMsg = new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x010C);
+		objMsg->insertInt(0x10A);
+		objMsg->insertInt(1);
+		objMsg->insertByte(counter); //?!?! 		
+		player->sendMessage(objMsg);
+		
+	}
+	
+	void createObjectInInventory(Player * player, int timer){
+		
+		CraftingTool* ct = player->getCurrentCraftingTool();
+		
+		createObjectEvent = new CreateObjectEvent(player, ct);
+		
+		if(processor != NULL){
+			processor->addEvent(createObjectEvent, timer);
+		}
+		else{
+			cout << "Serv == NULL\n"; 
+		}
+	}
+	
+	TangibleObject * generateTangibleObject(Player * player, DraftSchematic * ds) {
+
+		ItemManager * itemManager = player->getZone()->getZoneServer()->getItemManager();
+
+		string attributes = ds->getTanoAttributes();
+
+		ItemAttributes* itemAttributes = new ItemAttributes();
+		itemAttributes->setAttributes(attributes);
+
+		uint64 objectid = player->getNewItemID();
+
+		string temp = "objecttype";
+		int objecttype = itemAttributes->getIntAttribute(temp);
+
+		temp = "objectcrc";
+		uint32 objectcrc = itemAttributes->getUnsignedLongAttribute(temp);
+
+		unicode objectname = ds->getName();
+
+		temp = "objecttemp";
+		string objecttemp = itemAttributes->getStringAttribute(temp);
+
+		//(objectid, objectcrc, objectname, objecttemp, false); 
+		// Set these defaults in case
+		/*string appearance = result->getString(10);
+		 BinaryData cust(appearance);
+		 string custStr;
+		 cust.decode(custStr);*/
+
+		TangibleObjectImplementation* item = NULL;
+
+		bool equipped = false;
+
+		// Set these defaults in case
+		//string attributes = result->getString(9);
+
+		if (objecttype & TangibleObjectImplementation::WEAPON || objecttype
+				& TangibleObjectImplementation::LIGHTSABER) {
+			switch (objecttype) {
+			case TangibleObjectImplementation::MELEEWEAPON:
+				item = new UnarmedMeleeWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
+				break;
+			case TangibleObjectImplementation::ONEHANDMELEEWEAPON:
+				item = new OneHandedMeleeWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
+				break;
+			case TangibleObjectImplementation::TWOHANDMELEEWEAPON:
+				item = new TwoHandedMeleeWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
+				break;
+			case TangibleObjectImplementation::POLEARM:
+				item = new PolearmMeleeWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
+				break;
+			case TangibleObjectImplementation::PISTOL:
+				item = new PistolRangedWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
+				break;
+			case TangibleObjectImplementation::CARBINE:
+				item = new CarbineRangedWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
+				break;
+			case TangibleObjectImplementation::RIFLE:
+				item = new RifleRangedWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
+				break;
+			case TangibleObjectImplementation::ONEHANDSABER:
+				item = new OneHandedJediWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
+				break;
+			case TangibleObjectImplementation::TWOHANDSABER:
+				item = new TwoHandedJediWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
+				break;
+			case TangibleObjectImplementation::POLEARMSABER:
+				item = new PolearmJediWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
+				break;
+			case TangibleObjectImplementation::SPECIALHEAVYWEAPON:
+				item = new SpecialHeavyRangedWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
+				break;
+			case TangibleObjectImplementation::HEAVYWEAPON:
+				item = new HeavyRangedWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
+				break;
+			}
+
+		} else if (objecttype & TangibleObjectImplementation::CLOTHING) {
+
+			item = new WearableImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
+
+		} else if (objecttype & TangibleObjectImplementation::ARMOR) {
+
+			item = new ArmorImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
+
+		} else if (objecttype & TangibleObjectImplementation::MISC) {
+
+			switch (objecttype) {
+			case TangibleObjectImplementation::TRAVELTICKET:
+
+				item = new TicketImplementation(objectid, objectcrc, objectname, objecttemp);
+
+				break;
+			case TangibleObjectImplementation::INSTRUMENT:
+
+				item = new InstrumentImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
+
+				break;
+			case TangibleObjectImplementation::CLOTHINGATTACHMENT:
+
+				item = new AttachmentImplementation(objectid, AttachmentImplementation::CLOTHING);
+
+				break;
+			case TangibleObjectImplementation::ARMORATTACHMENT:
+
+				item = new AttachmentImplementation(objectid, AttachmentImplementation::ARMOR);
+
+				break;
+			}
+		} else if (objecttype & TangibleObjectImplementation::RESOURCECONTAINER) {
+
+			item = new ResourceContainerImplementation(objectid, objectcrc, objectname, objecttemp);
+
+		} else if (objecttype & TangibleObjectImplementation::TOOL) {
+			switch (objecttype) {
+			case TangibleObjectImplementation::CRAFTINGTOOL:
+				item = new CraftingToolImplementation(objectid, objectcrc, objectname, objecttemp);
+				break;
+			case TangibleObjectImplementation::SURVEYTOOL:
+				item = new SurveyToolImplementation(objectid, objectcrc, objectname, objecttemp);
+				break;
+			case TangibleObjectImplementation::REPAIRTOOL:
+			case TangibleObjectImplementation::CAMPKIT:
+			case TangibleObjectImplementation::SHIPCOMPONENTREPAIRITEM:
+				break;
+			}
+		} else if (objecttype & TangibleObjectImplementation::WEAPONPOWERUP) {
+
+			item = new PowerupImplementation(objectid, objectcrc, objectname, objecttemp);
+
+		}
+
+		if (item == NULL)
+			item = new TangibleObjectImplementation(objectid, objectname, objecttemp, objectcrc);
+
+		//item->setAttributes(attributes);
+		//item->parseItemAttributes();
+
+		//item->setCustomizationString(custStr);
+
+
+		//item->setPersistent(true);
+
+		TangibleObject* tano = (TangibleObject*) item->deploy();
+
+		//player->addInventoryItem(tano);
+
+		return tano;
 	}
 	
 	/*void WriteDraftSchematicToDB(DraftSchematic* ds) {
@@ -453,26 +737,6 @@ public:
 			cout << e.getMessage() << "\n";
 		}	
 	}*/
-	
-	void sendInventory(Player * player){
-		
-		uint64 toolID = player->getCurrentCraftingTool()->getObjectID();
-		
-		TangibleObject * tano;
-		Inventory * inv = player->getInventory();
-		
-		tano = (TangibleObject*) inv->getObject(toolID);
-		tano->generateAttributes(player);
-		
-		for(int i =0;i < inv->getObjectCount(); ++i){
-			
-			tano = (TangibleObject*)inv->getObject(i);
-			
-			if(tano->getObjectID() != toolID){
-				tano->generateAttributes(player);
-			}
-		}
-	}
 		
 	void addDraftSchematicsFromGroupName(Player* player, const string& schematicGroupName) {
 		lock();

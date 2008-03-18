@@ -49,7 +49,8 @@ which carries forward this exception.
 
 #include "../../packets.h"
 
-#include "DraftSchematic.h"
+#include "DraftSchematic.h" 
+#include "DraftSchematicImplementation.h"
 
 #include "DraftSchematicIngredient.h"
 #include "DraftSchematicIngredientImplementation.h"
@@ -68,7 +69,7 @@ class DraftSchematicImplementation : public DraftSchematicServant {
 	uint32 schematicCRC; 
 	
 	// example: Bofa Treat
-	string objName;
+	string objName; 
 	// example: craftArtisanNewbieGroupA
 	string groupName;
 	
@@ -77,6 +78,9 @@ class DraftSchematicImplementation : public DraftSchematicServant {
 	// example: 1
 	uint32 schematicSize;
 	
+	// For when it becomes and object during crafting
+	uint64 objectID;
+	
 	// Ingredient List
 	Vector<DraftSchematicIngredient*> dsIngredients;
 	
@@ -84,6 +88,9 @@ class DraftSchematicImplementation : public DraftSchematicServant {
 	Vector<DraftSchematicExpPropGroup*> dsExpPropGroups;
 
 	Vector<string> expPropTitleList;
+	
+	// Tano Attributes
+	string tanoAttributes;
 	
 	bool persistent;
 	
@@ -94,16 +101,38 @@ public:
 		this->objName = objName;
 		this->schematicCRC = objCRC;
 		this->groupName = groupName;
-		this->complexity = complexity;
-		this->schematicSize = schematicSize;
+		this->complexity = complexity; 
+		this->schematicSize = schematicSize; 
 		
 		persistent = false;
+	}
+	
+	DraftSchematicImplementation(DraftSchematic* ds) :	DraftSchematicServant() {
+		DraftSchematicImplementation* dsImp = (DraftSchematicImplementation*) ds->_getImplementation();	
+		this->schematicID = dsImp->schematicID;
+		this->objName = dsImp->objName;
+		this->schematicCRC = dsImp->schematicCRC;
+		this->groupName = dsImp->groupName;
+		this->complexity = dsImp->complexity;
+		this->schematicSize = dsImp->schematicSize;
+ 
+		persistent = dsImp->persistent;
+ 
+		this->dsIngredients = dsImp->dsIngredients;
+		this->dsExpPropGroups = dsImp->dsExpPropGroups;
+		this->expPropTitleList = dsImp->expPropTitleList;
+	}
+ 
+	DraftSchematic* dsClone(DraftSchematic* ds) { 
+		DraftSchematicImplementation* dsImpl = new DraftSchematicImplementation(ds);
+		DraftSchematic* newDS = (DraftSchematic*) dsImpl->deploy();
+		return newDS;
 	}
 	
 	DraftSchematic* deploy() {
 		return (DraftSchematic*) ORBObjectServant::deploy();
 	}
-
+	
 	int getIngredientListSize() {
 		return dsIngredients.size();
 	}
@@ -242,6 +271,13 @@ public:
 	inline void setPersistent(bool status) {
 		persistent = status;
 	}
+	inline void setObjectID(uint64 objID){
+		objectID = objID;
+	}
+	
+	inline void setTanoAttributes(string attributes){
+		tanoAttributes = attributes;
+	}
 
 	//getters
 	inline uint32 getSchematicID() {
@@ -266,6 +302,14 @@ public:
 		
 	inline uint32 getSchematicSize() {
 		return schematicSize;
+	}
+	
+	inline uint64 getObjectID(){
+		return objectID;
+	}
+	
+	inline string& getTanoAttributes(){
+		return tanoAttributes;
 	}
 
 };

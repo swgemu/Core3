@@ -64,12 +64,14 @@ CraftingToolImplementation::CraftingToolImplementation(CreatureObject* creature,
 	init();
 }
  
-CraftingToolImplementation::~CraftingToolImplementation(){
+CraftingToolImplementation::~CraftingToolImplementation(){ 
  
 }
  
 void CraftingToolImplementation::init() {
+	
 	setToolEffectiveness(-15.0f);
+	setCraftingState(0);
 }
  
 int CraftingToolImplementation::useObject(Player* player) {
@@ -118,6 +120,7 @@ void CraftingToolImplementation::sendToolStart(Player* player) {
 	// DPlay9
 	PlayerObjectDeltaMessage9* dplay9 = new PlayerObjectDeltaMessage9(player->getPlayerObject());
 	dplay9->setCraftingState(1);
+	setCraftingState(1);
 	dplay9->close();
 	player->sendMessage(dplay9);
 	
@@ -149,7 +152,5 @@ void CraftingToolImplementation::sendToolStart(Player* player) {
 		}
 	}
 	
-	// Set the player's current crafting tool to this instance
 	player->setCurrentCraftingTool(_this);
-
 }

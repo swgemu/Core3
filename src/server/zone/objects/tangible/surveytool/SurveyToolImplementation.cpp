@@ -51,7 +51,7 @@ which carries forward this exception.
 
 #include "../../../managers/resource/ResourceManager.h"
 
-SurveyToolImplementation::SurveyToolImplementation(uint64 object_id, uint32 tempCRC, const unicode& n, const string& tempn, Player* player) 
+SurveyToolImplementation::SurveyToolImplementation(uint64 object_id, uint32 tempCRC, const unicode& n, const string& tempn) 
 		: SurveyToolServant(object_id, n, tempn, tempCRC, SURVEYTOOL) {
 	objectCRC = tempCRC;
 	templateTypeName = "obj_n";

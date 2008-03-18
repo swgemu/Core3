@@ -111,6 +111,12 @@ public:
 		startUpdate(type);
 		insertAscii(val.c_str());
 	}
+	
+	inline void addUnicodeUpdate(uint16 type, const string& val) {
+		startUpdate(type);
+		unicode v = unicode(val);
+		insertUnicode(v);
+	}
 
 	inline void startList(uint32 cnt, uint32 updcnt) {
 		insertInt(cnt);

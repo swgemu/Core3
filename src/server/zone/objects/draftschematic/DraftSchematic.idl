@@ -51,7 +51,10 @@ import "../../packets/object/ObjectControllerMessage";
 
 interface DraftSchematic {
 	DraftSchematic();
-	
+	DraftSchematic(DraftSchematic ds);
+
+	DraftSchematic dsClone(DraftSchematic ds);
+
 	// Ingredient Methods
 	void addIngredient(const string ingredientTemplateName, const string ingredientTitleName,
 			boolean optional, const string resourceType, unsigned int resourceQuantity);
@@ -80,6 +83,10 @@ interface DraftSchematic {
 	// setters
 	void setPersistent(boolean status);
 
+	void setObjectID(unsigned long objID);
+
+	void setTanoAttributes(string attributes);
+
 	//getters
 	unsigned int getSchematicID();
 	
@@ -92,5 +99,9 @@ interface DraftSchematic {
 	unsigned int getComplexity();
 	
 	unsigned int getSchematicSize();
+
+	unsigned int getObjectID();
+
+	string getTanoAttributes();
 	
 }

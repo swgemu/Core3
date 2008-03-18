@@ -65,7 +65,7 @@ public:
 	static const int WIND = 8;
 	
 public:
-	SurveyToolImplementation(uint64 object_id, uint32 tempCRC, const unicode& n, const string& tempn, Player* player);
+	SurveyToolImplementation(uint64 object_id, uint32 tempCRC, const unicode& n, const string& tempn);
 	SurveyToolImplementation(CreatureObject* creature, uint32 tempCRC, const unicode& n, const string& tempn);
 	
 	~SurveyToolImplementation();

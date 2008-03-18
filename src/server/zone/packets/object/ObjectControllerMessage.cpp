@@ -634,7 +634,13 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player, Message* 
 	case (0x83250E2A): // Cancel Crafting Session
 		parseCancelCraftingSession(player, pack);
 		break;
-	
+	case (0x6AD8ED4D): // Next crafting stage
+		parseNextCraftingStage(player, pack);
+		break;
+	case (0xD61FF415): // Create Prototype
+		parseCreatePrototype(player, pack);
+		break;
+		
 	default:
 		target = pack->parseLong();
 		
@@ -1160,9 +1166,6 @@ void ObjectControllerMessage::parseServerDestroyObject(Player* player, Message* 
 			
 		if (player->getSurveyTool() == item)
 			player->setSurveyTool(NULL);
-			
-		if (player->getCurrentCraftingTool() == item)
-			player->setCurrentCraftingTool(NULL);
 		
 		BaseMessage* msg = new SceneObjectDestroyMessage(item);
 		player->getClient()->sendMessage(msg);
@@ -1702,38 +1705,46 @@ void ObjectControllerMessage::parseCancelCraftingSession(Player* player, Message
 
 	// This is just a guess as to what the client wants when it sends a Cancel Crafting Session packet
 	
-	// Clear the current crafting tool for the player
-	player->clearCurrentCraftingTool();
-	
 	// DPlay9
 	PlayerObjectDeltaMessage9* dplay9 = new PlayerObjectDeltaMessage9(player->getPlayerObject());
 	dplay9->setCraftingState(0);
 	dplay9->close();
 	player->sendMessage(dplay9);
+	
+	// Clean up crafting here, delete, sceneremove unneeded objects
+	//CraftingTool * ct = player->getCurrentCraftingTool();
+	
+cout << "Crafting Closed!\n";
 }
 
 void ObjectControllerMessage::parseSelectDraftSchematic(Player* player, Message* packet) {
 
 	packet->shiftOffset(8);
-	
+		
 	unicode uniIndexOfSelectedSchematic;
 	packet->parseUnicode(uniIndexOfSelectedSchematic);
-	
+		
 	StringTokenizer tokenizer(uniIndexOfSelectedSchematic.c_str());
-	
+		
 	int indexOfSelectedSchematic;
-	
+		
 	if(tokenizer.hasMoreTokens())
 		indexOfSelectedSchematic = tokenizer.getIntToken();
-
+	
 	// Find the selected schematic
-	DraftSchematic* ds = player->getDraftSchematic(indexOfSelectedSchematic);
+	DraftSchematic* ds = player->getDraftSchematic(indexOfSelectedSchematic); 
+	
+	// This will be replaced but the built in cloning method when available
+	//DraftSchematic* ds2 = ds->dsClone(ds);
+	
 	if(ds != NULL) {
-		player->prepareCraftingSessionStageTwo(ds);
+		CraftingTool * ct = player->getCurrentCraftingTool();
+		player->prepareCraftingSession(ct, ds);
 	} else {
 		// This eles should never execute
 		player->sendSystemMessage("Selected Draft Schematic was invalid.  Please inform Link of this error.");
 	}
+
 }
 void ObjectControllerMessage::parseAddCraftingResource(Player* player, Message* packet) {
 
@@ -1752,6 +1763,44 @@ void ObjectControllerMessage::parseAddCraftingResource(Player* player, Message* 
 		player->addResourceToCraft(rnco, slot, counter);
 	} else {
 		// This eles should never execute
-		player->sendSystemMessage("Selected Draft Schematic was invalid.  Please inform Link of this error.");
+		player->sendSystemMessage("Add resource invalid, contact kyle");
 	}
+}
+void ObjectControllerMessage::parseNextCraftingStage(Player* player, Message* packet) {
+
+	packet->shiftOffset(8);
+	
+	unicode test;
+	packet->parseUnicode(test);
+	
+	string test2 = test.c_str();
+	
+	player->nextCraftingStage(test2);
+	
+}
+void ObjectControllerMessage::parseCraftCustomization(Player* player, Message* packet){
+	
+	packet->shiftOffset(12);
+	
+	unicode n;
+	packet->parseUnicode(n);
+	
+	string name = n.c_str();
+	
+	packet->shiftOffset(1);
+	
+    int condition = packet->parseInt();
+    
+    player->craftingCustomization(name, condition);
+}
+void ObjectControllerMessage::parseCreatePrototype(Player* player, Message* packet){
+	
+	packet->shiftOffset(8);
+	
+	unicode test;
+	packet->parseUnicode(test);
+	
+	string test2 = test.c_str();
+	
+	player->createPrototype(test2);
 }

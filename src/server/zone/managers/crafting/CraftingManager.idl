@@ -45,14 +45,18 @@ which carries forward this exception.
 import "../../objects/player/Player";
 import "../../objects/draftschematic/DraftSchematic";
 import "../../objects/tangible/resource/ResourceContainer";
+import "../../objects/tangible/craftingtool/CraftingTool";
 
 interface CraftingManager {
 
 	CraftingManager();
 	
-	void prepareCraftingSessionStageTwo(Player player, DraftSchematic ds);
+	void prepareCraftingSession(Player player, CraftingTool ct, DraftSchematic ds);
 	void addResourceToCraft(Player player, ResourceContainer rcno, int slot, int counter);
-	
+	void nextCraftingStage(Player player, string test);
+	void craftingCustomization(Player player, string name, int condition);
+	void createPrototype(Player player, string test);
+
 	void addDraftSchematicsFromGroupName(Player player, const string schematicGroupName);
 	void subtractDraftSchematicsFromGroupName(Player player, const string schematicGroupName);
 

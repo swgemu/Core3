@@ -226,7 +226,7 @@ void ZoneServerImplementation::startManagers() {
 	ResourceManagerImplementation* resImpl = new ResourceManagerImplementation(_this, processor);
 	resourceManager = (ResourceManager*) resImpl->deploy("ResourceManager");
 
-	CraftingManagerImplementation* craftingImpl = new CraftingManagerImplementation(_this);
+	CraftingManagerImplementation* craftingImpl = new CraftingManagerImplementation(_this, processor);
 	craftingManager = (CraftingManager*) craftingImpl->deploy("CraftingManager");
 
 	ChatManagerImplementation* chatImpl = new ChatManagerImplementation(_this, 10000);

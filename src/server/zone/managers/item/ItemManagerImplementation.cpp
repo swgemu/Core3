@@ -205,7 +205,7 @@ TangibleObject* ItemManagerImplementation::createPlayerObject(Player* player, Re
 		}
 	} else if ( objecttype & TangibleObjectImplementation::RESOURCECONTAINER ) {
 		
-		item = new ResourceContainerImplementation(objectid, objectcrc, objectname, objecttemp, player);
+		item = new ResourceContainerImplementation(objectid, objectcrc, objectname, objecttemp);
 	
 	} else if (objecttype & TangibleObjectImplementation::TOOL) {
 		switch (objecttype) {
@@ -213,7 +213,7 @@ TangibleObject* ItemManagerImplementation::createPlayerObject(Player* player, Re
 			item = new CraftingToolImplementation(objectid, objectcrc, objectname, objecttemp);
 			break;
 		case TangibleObjectImplementation::SURVEYTOOL:
-			item = new SurveyToolImplementation(objectid, objectcrc, objectname, objecttemp, player);
+			item = new SurveyToolImplementation(objectid, objectcrc, objectname, objecttemp);
 			break;
 		case TangibleObjectImplementation::REPAIRTOOL:
 		case TangibleObjectImplementation::CAMPKIT:

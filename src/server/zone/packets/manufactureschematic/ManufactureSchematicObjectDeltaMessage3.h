@@ -42,45 +42,71 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef TANGIBLEOBJECTDELTAMESSAGE3_H_
-#define TANGIBLEOBJECTDELTAMESSAGE3_H_
 
-#include "../../packets/DeltaMessage.h"
+#ifndef MANUFACTURESCHEMATICOBJECTDELTAMESSAGE3_H_
+#define MANUFACTURESCHEMATICOBJECTDELTAMESSAGE3_H_
 
-#include "../../objects/tangible/TangibleObject.h"
+#include "../BaseLineMessage.h"
 
-class TangibleObjectDeltaMessage3 : public DeltaMessage {
-	TangibleObject* tano;
-	
+#include "../../objects/draftschematic/DraftSchematic.h"
+
+class ManufactureSchematicObjectDeltaMessage3 : public DeltaMessage {
 public:
-	TangibleObjectDeltaMessage3(TangibleObject* ta)
-			//: DeltaMessage(ta->getObjectID(), 0x4352454F, 3) {
-			: DeltaMessage(ta->getObjectID(), 0x54414E4F, 3) {
-		tano = ta;
-	}
-	
-	void updateCustomizationString() {
-		string app;
-		tano->getCustomizationString(app);
-		addAsciiUpdate(4, app);
+	ManufactureSchematicObjectDeltaMessage3(uint64 sceneObjSchematic) 
+			: DeltaMessage(sceneObjSchematic, 0x4D53434F, 3) {
 	}
 	
 	void updateName(string name) {
 		addUnicodeUpdate(2, name);
 	}
 	
-	void updateCraftingTimer(int timer) {
-		addIntUpdate(7, timer);
+	void updateCondition(int condition) {
+		addIntUpdate(4, condition);
 	}
 	
-	void updateConditionDamage() {
-		addIntUpdate(8, tano->getConditionDamage());
+	void updateCraftedValues(DraftSchematic * ds){
+		startUpdate(5);
+		
+		startList(6, 8);
+		
+		
+		insertByte(0);
+		insertAscii("crafting");
+		insertInt(0);
+		insertAscii("xp");
+		insertFloat(20.0);
+		
+		insertByte(0);
+		insertAscii("crafting");
+		insertInt(0);
+		insertAscii("hitPoints");
+		insertFloat(1000.0);
+		
+		insertByte(0);
+		insertAscii("crafting");
+		insertInt(0);
+		insertAscii("nutrition");
+		insertFloat(85.0);
+		
+		insertByte(0);
+		insertAscii("crafting");
+		insertInt(0);
+		insertAscii("flavor");
+		insertFloat(85.0);
+		
+		insertByte(0);
+		insertAscii("crafting");
+		insertInt(0);
+		insertAscii("quantity");
+		insertFloat(85.0);
+		
+		insertByte(0);
+		insertAscii("crafting");
+		insertInt(0);
+		insertAscii("filling");
+		insertFloat(85.0);
+		
 	}
-	
-	void updateMaxCondition() {
-		addIntUpdate(9, tano->getMaxCondition());
-	}
-	
 };
 
-#endif /*TANGIBLEOBJECTDELTAMESSAGE3_H_*/
+#endif /*MANUFACTURESCHEMATICOBJECTMESSAGE3_H_*/

@@ -465,6 +465,9 @@ void ZonePacketHandler::handleObjectControllerMessage(Message* pack) {
 			case 0x126:
 				ObjectControllerMessage::parseObjectTargetUpdate(player, pack);
 				break;
+			case 0x15A:
+				ObjectControllerMessage::parseCraftCustomization(player, pack);
+				break;
 			}
 			break;
 		default:

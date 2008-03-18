@@ -471,15 +471,11 @@ public:
 	void setCurrentCraftingTool(CraftingTool* ct);
 	void clearCurrentCraftingTool();
 	
-	DraftSchematic* getCurrentDraftSchematic();
-	void setCurrentDraftSchematic(DraftSchematic* ds);
-	void clearCurrentDraftSchematic();
-	
-	uint64 getCurrentSchematicID();
-	void setCurrentSchematicID(uint64 schematicID);
-	
-	void prepareCraftingSessionStageTwo(DraftSchematic* ds);
+	void prepareCraftingSession(CraftingTool * ct, DraftSchematic* ds);
 	void addResourceToCraft(ResourceContainer * rnco, int slot, int counter);
+	void nextCraftingStage(string test);
+	void craftingCustomization(string name, int condition);
+	void createPrototype(string test);
 	
 
 	bool checkCertification(string certification) {

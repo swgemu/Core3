@@ -46,6 +46,7 @@ import "../TangibleObject";
 import "../../../packets";
 import "../../player/Player";
 import "../../creature/CreatureObject";
+import "../../draftschematic/DraftSchematic";
  
 include "engine/service/Message";
  
@@ -60,8 +61,20 @@ interface CraftingTool implements TangibleObject {
  
 	void sendToolStart(Player player);
  
+	//setters
 	void setToolEffectiveness(float eff);
+	void setCraftingState(int s);
+	void setTano(TangibleObject tano);
+	void setDs(DraftSchematic ds);
+	void setInsertCount(int count);
+	void increaseInsertCount();
+
+	//getters
 	float getToolEffectiveness();
+	int getCraftingState();
+	TangibleObject getTano();
+	DraftSchematic getDs();
+	int getInsertCount();
  
 	boolean isReady();
 }
