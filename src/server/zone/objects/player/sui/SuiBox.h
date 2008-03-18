@@ -54,14 +54,15 @@ which carries forward this exception.
 class Player;
 
 class SuiBox : public ORBObjectStub {
-public:
+protected:
 	SuiBox();
 	SuiBox(ORBObjectServant* obj);
 	SuiBox(SuiBox& ref);
 
-	SuiBox* clone();
-
 	virtual ~SuiBox();
+
+public:
+	SuiBox* clone();
 
 	void setPromptTitle(const string& name);
 
@@ -89,7 +90,7 @@ public:
 
 	Player* getPlayer();
 
-protected:
+	friend class SuiBoxHelper;
 };
 
 class SuiBoxImplementation;

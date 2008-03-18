@@ -60,14 +60,15 @@ class Armor;
 class Player;
 
 class ItemManager : public ORBObjectStub {
-public:
+protected:
 	ItemManager();
 	ItemManager(ORBObjectServant* obj);
 	ItemManager(ItemManager& ref);
 
-	ItemManager* clone();
-
 	virtual ~ItemManager();
+
+public:
+	ItemManager* clone();
 
 	void loadStaticWorldObjects();
 
@@ -95,7 +96,7 @@ public:
 
 	unsigned long long getNextStaticObjectID();
 
-protected:
+	friend class ItemManagerHelper;
 };
 
 class ItemManagerImplementation;

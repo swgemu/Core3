@@ -56,16 +56,17 @@ class TangibleObject;
 #include "../TangibleObject.h"
 
 class Wearable : public TangibleObject {
-public:
+protected:
 	Wearable();
 	Wearable(ORBObjectServant* obj);
 	Wearable(Wearable& ref);
 
-	Wearable* clone();
-
 	virtual ~Wearable();
 
-protected:
+public:
+	Wearable* clone();
+
+	friend class WearableHelper;
 };
 
 class WearableImplementation;

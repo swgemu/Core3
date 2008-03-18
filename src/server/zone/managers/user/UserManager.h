@@ -52,14 +52,15 @@ which carries forward this exception.
 #include "engine/orb/ObjectRequestBroker.h"
 
 class UserManager : public ORBObjectStub {
-public:
+protected:
 	UserManager();
 	UserManager(ORBObjectServant* obj);
 	UserManager(UserManager& ref);
 
-	UserManager* clone();
-
 	virtual ~UserManager();
+
+public:
+	UserManager* clone();
 
 	bool checkUser(unsigned int ipid);
 
@@ -77,7 +78,7 @@ public:
 
 	int getUserCap();
 
-protected:
+	friend class UserManagerHelper;
 };
 
 class UserManagerImplementation;

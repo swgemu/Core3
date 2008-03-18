@@ -58,18 +58,19 @@ class Player;
 #include "../TangibleObject.h"
 
 class Firework : public TangibleObject {
-public:
+protected:
 	Firework();
 	Firework(ORBObjectServant* obj);
 	Firework(Firework& ref);
 
-	Firework* clone();
-
 	virtual ~Firework();
+
+public:
+	Firework* clone();
 
 	int useObject(Player* player);
 
-protected:
+	friend class FireworkHelper;
 };
 
 class FireworkImplementation;

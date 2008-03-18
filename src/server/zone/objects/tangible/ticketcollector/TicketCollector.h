@@ -62,20 +62,21 @@ class Ticket;
 #include "../TangibleObject.h"
 
 class TicketCollector : public TangibleObject {
-public:
+protected:
 	TicketCollector();
 	TicketCollector(ORBObjectServant* obj);
 	TicketCollector(TicketCollector& ref);
 
-	TicketCollector* clone();
-
 	virtual ~TicketCollector();
+
+public:
+	TicketCollector* clone();
 
 	int useObject(Player* player);
 
 	void useTicket(Player* player, Ticket* ticket);
 
-protected:
+	friend class TicketCollectorHelper;
 };
 
 class TicketCollectorImplementation;

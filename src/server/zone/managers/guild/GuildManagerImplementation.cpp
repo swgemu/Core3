@@ -68,7 +68,7 @@ GuildManagerImplementation::GuildManagerImplementation(ZoneServer* serv) : Guild
 GuildManagerImplementation::~GuildManagerImplementation() {
 	removeGuilds();
 	
-	delete guilds;
+	guilds->finalize();
 	guilds = NULL;
 }
 
@@ -229,7 +229,7 @@ bool GuildManagerImplementation::removeGuild(int gid, bool doLock) {
 void GuildManagerImplementation::removeGuilds() {
 	for (int i = 0; i < guilds->size(); ++i) {
 		Guild* guild = guilds->get(i);
-		delete guild;
+		guild->finalize();
 	}
 	
 	guilds->removeAll();

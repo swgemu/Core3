@@ -58,16 +58,17 @@ class CreatureObject;
 #include "Container.h"
 
 class Datapad : public Container {
-public:
+protected:
 	Datapad();
 	Datapad(ORBObjectServant* obj);
 	Datapad(Datapad& ref);
 
-	Datapad* clone();
-
 	virtual ~Datapad();
 
-protected:
+public:
+	Datapad* clone();
+
+	friend class DatapadHelper;
 };
 
 class DatapadImplementation;

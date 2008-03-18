@@ -66,14 +66,15 @@ class Player;
 #include "engine/core/ManagedObject.h"
 
 class SceneObject : public ManagedObject {
-public:
+protected:
 	SceneObject();
 	SceneObject(ORBObjectServant* obj);
 	SceneObject(SceneObject& ref);
 
-	SceneObject* clone();
-
 	virtual ~SceneObject();
+
+public:
+	SceneObject* clone();
 
 	bool destroy();
 
@@ -210,6 +211,8 @@ public:
 protected:
 	string _return_getLoggingName;
 
+
+	friend class SceneObjectHelper;
 };
 
 class SceneObjectImplementation;

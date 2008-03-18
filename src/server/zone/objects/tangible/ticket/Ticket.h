@@ -60,14 +60,15 @@ class Player;
 #include "../TangibleObject.h"
 
 class Ticket : public TangibleObject {
-public:
+protected:
 	Ticket();
 	Ticket(ORBObjectServant* obj);
 	Ticket(Ticket& ref);
 
-	Ticket* clone();
-
 	virtual ~Ticket();
+
+public:
+	Ticket* clone();
 
 	int useObject(Player* player);
 
@@ -88,6 +89,8 @@ protected:
 
 	string _return_getDeparturePoint;
 
+
+	friend class TicketHelper;
 };
 
 class TicketImplementation;

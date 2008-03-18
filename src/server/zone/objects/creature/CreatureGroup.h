@@ -56,20 +56,21 @@ class Creature;
 class CreatureObject;
 
 class CreatureGroup : public ORBObjectStub {
-public:
+protected:
 	CreatureGroup();
 	CreatureGroup(ORBObjectServant* obj);
 	CreatureGroup(CreatureGroup& ref);
 
-	CreatureGroup* clone();
-
 	virtual ~CreatureGroup();
+
+public:
+	CreatureGroup* clone();
 
 	void addCreature(Creature* creature);
 
 	void setTarget(CreatureObject* targ);
 
-protected:
+	friend class CreatureGroupHelper;
 };
 
 class CreatureGroupImplementation;

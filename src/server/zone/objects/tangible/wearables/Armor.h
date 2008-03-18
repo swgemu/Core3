@@ -62,14 +62,15 @@ class SceneObject;
 #include "Wearable.h"
 
 class Armor : public Wearable {
-public:
+protected:
 	Armor();
 	Armor(ORBObjectServant* obj);
 	Armor(Armor& ref);
 
-	Armor* clone();
-
 	virtual ~Armor();
+
+public:
+	Armor* clone();
 
 	void sendTo(Player* player, bool doClose = true);
 
@@ -193,7 +194,7 @@ public:
 
 	void setSocket3Value(int value);
 
-protected:
+	friend class ArmorHelper;
 };
 
 class ArmorImplementation;

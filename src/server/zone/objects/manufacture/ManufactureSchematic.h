@@ -56,16 +56,17 @@ class SceneObject;
 #include "../scene/SceneObject.h"
 
 class ManufactureSchematic : public SceneObject {
-public:
+protected:
 	ManufactureSchematic();
 	ManufactureSchematic(ORBObjectServant* obj);
 	ManufactureSchematic(ManufactureSchematic& ref);
 
-	ManufactureSchematic* clone();
-
 	virtual ~ManufactureSchematic();
 
-protected:
+public:
+	ManufactureSchematic* clone();
+
+	friend class ManufactureSchematicHelper;
 };
 
 class ManufactureSchematicImplementation;

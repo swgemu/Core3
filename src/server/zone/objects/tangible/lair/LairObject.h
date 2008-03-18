@@ -56,16 +56,17 @@ class TangibleObject;
 #include "../TangibleObject.h"
 
 class LairObject : public TangibleObject {
-public:
+protected:
 	LairObject();
 	LairObject(ORBObjectServant* obj);
 	LairObject(LairObject& ref);
 
-	LairObject* clone();
-
 	virtual ~LairObject();
 
-protected:
+public:
+	LairObject* clone();
+
+	friend class LairObjectHelper;
 };
 
 class LairObjectImplementation;

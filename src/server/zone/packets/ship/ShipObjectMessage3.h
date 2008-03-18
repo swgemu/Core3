@@ -106,7 +106,8 @@ public:
 	void insertCurArmorList(ShipObject* ship) {
 		insertInt(ship->getActiveComponentListSize());
 		insertInt(ship->getNextCurArmorUpdateCnt());
-		for(int i = 0; i < ship->getComponentListSize(); i++) {
+		
+		/*for(int i = 0; i < ship->getComponentListSize(); i++) {
 			ShipComponent* tsc = new ShipComponent();
 			tsc = ship->getComponent(i);
 			if(tsc->getComponentCrc() != 0) {
@@ -115,13 +116,14 @@ public:
 				insertFloat(tsc->getCurArmor());
 			}
 			delete tsc;
-		}
+		}*/
 	}
 	
 	void insertMaxArmorList(ShipObject* ship) {
 		insertInt(ship->getActiveComponentListSize());
 		insertInt(ship->getNextMaxArmorUpdateCnt());
-		for(int i = 0; i < ship->getComponentListSize(); i++) {
+		
+		/*for(int i = 0; i < ship->getComponentListSize(); i++) {
 			ShipComponent* tsc = new ShipComponent();
 			tsc = ship->getComponent(i);
 			if(tsc->getComponentCrc() != 0) {
@@ -130,13 +132,14 @@ public:
 				insertFloat(tsc->getMaxArmor());
 			}
 			delete tsc;
-		}
+		}*/
 	}
 	
 	void insertCurHitpointsList(ShipObject* ship) {
 		insertInt(ship->getActiveComponentListSize());
 		insertInt(ship->getNextCurHitpointsUpdateCnt());
-		for(int i = 0; i < ship->getComponentListSize(); i++) {
+		
+		/*for(int i = 0; i < ship->getComponentListSize(); i++) {
 			ShipComponent* tsc = new ShipComponent();
 			tsc = ship->getComponent(i);
 			if(tsc->getComponentCrc() != 0) {
@@ -145,13 +148,14 @@ public:
 				insertFloat(tsc->getCurHitpoints());
 			}
 			delete tsc;
-		}
+		}*/
 	}
 	
 	void insertMaxHitpointsList(ShipObject* ship) {
 		insertInt(ship->getActiveComponentListSize());
 		insertInt(ship->getNextMaxHitpointsUpdateCnt());
-		for(int i = 0; i < ship->getComponentListSize(); i++) {
+		
+		/*for(int i = 0; i < ship->getComponentListSize(); i++) {
 			ShipComponent* tsc = new ShipComponent();
 			tsc = ship->getComponent(i);
 			if(tsc->getComponentCrc() != 0) {
@@ -160,14 +164,15 @@ public:
 				insertFloat(tsc->getMaxHitpoints());
 			}
 			delete tsc;
-		}
+		}*/
 	}
 	
 	//this list sets unk values for active components to 0x02 (int)
 	void insertUnkList(ShipObject* ship) {
 		insertInt(ship->getActiveComponentListSize());
 		insertInt(ship->getNextUnkShip3UpdateCnt());
-		for(int i = 0; i < ship->getComponentListSize(); i++) {
+		
+		/*for(int i = 0; i < ship->getComponentListSize(); i++) {
 			ShipComponent* tsc = new ShipComponent();
 			tsc = ship->getComponent(i);
 			if(tsc->getComponentCrc() != 0) {
@@ -176,7 +181,7 @@ public:
 				insertInt(0x02);
 			}
 			delete tsc;
-		}
+		}*/
 	}
 		
 };

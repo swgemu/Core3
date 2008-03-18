@@ -82,7 +82,7 @@ PlayerManagerImplementation::PlayerManagerImplementation(ItemManager* mgr, ZoneP
 }
 
 PlayerManagerImplementation::~PlayerManagerImplementation() {
-	delete playerMap;
+	playerMap->finalize();
 	playerMap = NULL;
 }
 

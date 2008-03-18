@@ -58,16 +58,17 @@ class MeleeWeapon;
 #include "../MeleeWeapon.h"
 
 class PolearmMeleeWeapon : public MeleeWeapon {
-public:
+protected:
 	PolearmMeleeWeapon();
 	PolearmMeleeWeapon(ORBObjectServant* obj);
 	PolearmMeleeWeapon(PolearmMeleeWeapon& ref);
 
-	PolearmMeleeWeapon* clone();
-
 	virtual ~PolearmMeleeWeapon();
 
-protected:
+public:
+	PolearmMeleeWeapon* clone();
+
+	friend class PolearmMeleeWeaponHelper;
 };
 
 class PolearmMeleeWeaponImplementation;

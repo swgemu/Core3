@@ -56,14 +56,15 @@ class SceneObject;
 #include "../scene/SceneObject.h"
 
 class WaypointObject : public SceneObject {
-public:
+protected:
 	WaypointObject();
 	WaypointObject(ORBObjectServant* obj);
 	WaypointObject(WaypointObject& ref);
 
-	WaypointObject* clone();
-
 	virtual ~WaypointObject();
+
+public:
+	WaypointObject* clone();
 
 	void changeStatus(bool status);
 
@@ -86,6 +87,8 @@ protected:
 
 	string _return_getPlanetName;
 
+
+	friend class WaypointObjectHelper;
 };
 
 class WaypointObjectImplementation;

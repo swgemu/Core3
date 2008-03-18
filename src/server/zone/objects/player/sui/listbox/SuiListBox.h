@@ -60,14 +60,15 @@ class Player;
 #include "../SuiBox.h"
 
 class SuiListBox : public SuiBox {
-public:
+protected:
 	SuiListBox();
 	SuiListBox(ORBObjectServant* obj);
 	SuiListBox(SuiListBox& ref);
 
-	SuiListBox* clone();
-
 	virtual ~SuiListBox();
+
+public:
+	SuiListBox* clone();
 
 	void addMenuItem(const string& item, unsigned long long objectID);
 
@@ -77,7 +78,7 @@ public:
 
 	BaseMessage* generateMessage();
 
-protected:
+	friend class SuiListBoxHelper;
 };
 
 class SuiListBoxImplementation;

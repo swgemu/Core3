@@ -123,7 +123,7 @@ int TicketCollectorImplementation::useObject(Player* player) {
 	SuiListBox* box = (SuiListBox*)sui->deploy();
 	
 	if (sui->getMenuSize() == 0) {
-		delete box;
+		box->finalize();
 		
 		player->sendSystemMessage("travel", "no_ticket");
 	} else {

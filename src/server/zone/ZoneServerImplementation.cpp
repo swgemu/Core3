@@ -126,47 +126,47 @@ ZoneServerImplementation::~ZoneServerImplementation() {
 	}
 
 	if (userManager != NULL) {
-		delete userManager;
+		userManager->finalize();
 		userManager = NULL;
 	}
 	
 	if (itemManager != NULL) {
-		delete itemManager;
+		itemManager->finalize();
 		itemManager = NULL;
 	}
 
 	if (playerManager != NULL) {
-		delete playerManager;
+		playerManager->finalize();
 		playerManager = NULL;
 	}
 
 	if (guildManager != NULL) {
-		delete guildManager;
+		guildManager->finalize();
 		guildManager = NULL;
 	}
 	
 	if (resourceManager != NULL) {
-		delete resourceManager;
+		resourceManager->finalize();
 		resourceManager = NULL;
 	}
 
 	if (craftingManager != NULL) {
-		delete craftingManager;
+		craftingManager->finalize();
 		craftingManager = NULL;
 	}
 	
 	if (bazaarManager != NULL) {
-		delete bazaarManager;
+		bazaarManager->finalize();
 		bazaarManager = NULL;
 	}
 
 	if (bankManager != NULL) {
-		delete bankManager;
+		bankManager->finalize();
 		bankManager = NULL;
 	}
 	
 	if (chatManager != NULL) {
-		delete chatManager;
+		chatManager->finalize();
 		chatManager = NULL;
 	}
 }
@@ -272,14 +272,14 @@ void ZoneServerImplementation::shutdown() {
 		Zone* zone = zones.get(i);
 		zone->stopManagers();
 		
-		delete zone;
+		zone->finalize();
 	}
 
 	zones.removeAll();
 
 	printInfo(true);
 	
-	delete _this;
+	 _this->finalize();
 }
 
 void ZoneServerImplementation::stopManagers() {

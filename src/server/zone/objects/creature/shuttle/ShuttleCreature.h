@@ -62,14 +62,15 @@ class Ticket;
 #include "../Creature.h"
 
 class ShuttleCreature : public Creature {
-public:
+protected:
 	ShuttleCreature();
 	ShuttleCreature(ORBObjectServant* obj);
 	ShuttleCreature(ShuttleCreature& ref);
 
-	ShuttleCreature* clone();
-
 	virtual ~ShuttleCreature();
+
+public:
+	ShuttleCreature* clone();
 
 	void doTakeOff();
 
@@ -90,6 +91,8 @@ protected:
 
 	string _return_getPlanet;
 
+
+	friend class ShuttleCreatureHelper;
 };
 
 class ShuttleCreatureImplementation;

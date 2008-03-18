@@ -60,14 +60,15 @@ class Player;
 #include "../TangibleObject.h"
 
 class ShipComponent : public TangibleObject {
-public:
+protected:
 	ShipComponent();
 	ShipComponent(ORBObjectServant* obj);
 	ShipComponent(ShipComponent& ref);
 
-	ShipComponent* clone();
-
 	virtual ~ShipComponent();
+
+public:
+	ShipComponent* clone();
 
 	void erase();
 
@@ -105,7 +106,7 @@ public:
 
 	bool getCompType();
 
-protected:
+	friend class ShipComponentHelper;
 };
 
 class ShipComponentImplementation;

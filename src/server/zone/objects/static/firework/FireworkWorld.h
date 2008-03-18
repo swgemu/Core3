@@ -58,18 +58,19 @@ class Player;
 #include "../../static/StaticObject.h"
 
 class FireworkWorld : public StaticObject {
-public:
+protected:
 	FireworkWorld();
 	FireworkWorld(ORBObjectServant* obj);
 	FireworkWorld(FireworkWorld& ref);
 
-	FireworkWorld* clone();
-
 	virtual ~FireworkWorld();
+
+public:
+	FireworkWorld* clone();
 
 	int getFireworkType();
 
-protected:
+	friend class FireworkWorldHelper;
 };
 
 class FireworkWorldImplementation;

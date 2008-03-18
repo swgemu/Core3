@@ -56,14 +56,15 @@ class Player;
 class ResourceContainerImplementation;
 
 class ResourceManager : public ORBObjectStub {
-public:
+protected:
 	ResourceManager();
 	ResourceManager(ORBObjectServant* obj);
 	ResourceManager(ResourceManager& ref);
 
-	ResourceManager* clone();
-
 	virtual ~ResourceManager();
+
+public:
+	ResourceManager* clone();
 
 	void theShift();
 
@@ -83,7 +84,7 @@ public:
 
 	void getClassSeven(const string& str, string& clas);
 
-protected:
+	friend class ResourceManagerHelper;
 };
 
 class ResourceManagerImplementation;

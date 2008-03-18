@@ -58,16 +58,17 @@ class CreatureObject;
 #include "Container.h"
 
 class MissionBag : public Container {
-public:
+protected:
 	MissionBag();
 	MissionBag(ORBObjectServant* obj);
 	MissionBag(MissionBag& ref);
 
-	MissionBag* clone();
-
 	virtual ~MissionBag();
 
-protected:
+public:
+	MissionBag* clone();
+
+	friend class MissionBagHelper;
 };
 
 class MissionBagImplementation;

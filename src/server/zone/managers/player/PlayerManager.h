@@ -60,14 +60,15 @@ class TangibleObject;
 class PlayerMap;
 
 class PlayerManager : public ORBObjectStub {
-public:
+protected:
 	PlayerManager();
 	PlayerManager(ORBObjectServant* obj);
 	PlayerManager(PlayerManager& ref);
 
-	PlayerManager* clone();
-
 	virtual ~PlayerManager();
+
+public:
+	PlayerManager* clone();
 
 	void stop();
 
@@ -115,7 +116,7 @@ public:
 
 	PlayerMap* getPlayerMap();
 
-protected:
+	friend class PlayerManagerHelper;
 };
 
 class PlayerManagerImplementation;

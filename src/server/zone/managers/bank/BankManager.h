@@ -54,18 +54,19 @@ which carries forward this exception.
 class Player;
 
 class BankManager : public ORBObjectStub {
-public:
+protected:
 	BankManager();
 	BankManager(ORBObjectServant* obj);
 	BankManager(BankManager& ref);
 
-	BankManager* clone();
-
 	virtual ~BankManager();
+
+public:
+	BankManager* clone();
 
 	bool isBankTerminal(long long objectid);
 
-protected:
+	friend class BankManagerHelper;
 };
 
 class BankManagerImplementation;

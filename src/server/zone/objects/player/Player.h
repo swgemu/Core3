@@ -98,14 +98,15 @@ class ResourceContainer;
 #include "../creature/CreatureObject.h"
 
 class Player : public CreatureObject {
-public:
+protected:
 	Player();
 	Player(ORBObjectServant* obj);
 	Player(Player& ref);
 
-	Player* clone();
-
 	virtual ~Player();
+
+public:
+	Player* clone();
 
 	Player* create(ZoneClient* client);
 
@@ -409,19 +410,15 @@ public:
 
 	void clearCurrentCraftingTool();
 
-	DraftSchematic* getCurrentDraftSchematic();
-
-	void setCurrentDraftSchematic(DraftSchematic* ds);
-
-	void clearCurrentDraftSchematic();
-
-	unsigned long long getCurrentSchematicID();
-
-	void setCurrentSchematicID(unsigned long long schematicID);
-
-	void prepareCraftingSessionStageTwo(DraftSchematic* ds);
+	void prepareCraftingSession(CraftingTool* ct, DraftSchematic* ds);
 
 	void addResourceToCraft(ResourceContainer* rnco, int slot, int counter);
+
+	void nextCraftingStage(string& test);
+
+	void craftingCustomization(string& name, int condition);
+
+	void createPrototype(string& test);
 
 	void sendDraftSchematics();
 
@@ -508,6 +505,8 @@ protected:
 
 	unicode _return_getBiography;
 
+
+	friend class PlayerHelper;
 };
 
 class PlayerImplementation;
@@ -820,19 +819,15 @@ public:
 
 	void clearCurrentCraftingTool();
 
-	DraftSchematic* getCurrentDraftSchematic();
-
-	void setCurrentDraftSchematic(DraftSchematic* ds);
-
-	void clearCurrentDraftSchematic();
-
-	unsigned long long getCurrentSchematicID();
-
-	void setCurrentSchematicID(unsigned long long schematicID);
-
-	void prepareCraftingSessionStageTwo(DraftSchematic* ds);
+	void prepareCraftingSession(CraftingTool* ct, DraftSchematic* ds);
 
 	void addResourceToCraft(ResourceContainer* rnco, int slot, int counter);
+
+	void nextCraftingStage(string& test);
+
+	void craftingCustomization(string& name, int condition);
+
+	void createPrototype(string& test);
 
 	void sendDraftSchematics();
 
@@ -920,6 +915,9 @@ protected:
 	string _param0_setStartingLocation__string_;
 	string _param0_setFactionRank__string_;
 	string _param0_checkCertification__string_;
+	string _param0_nextCraftingStage__string_;
+	string _param0_craftingCustomization__string_int_;
+	string _param0_createPrototype__string_;
 	string _param0_addDraftSchematicsFromGroupName__string_;
 	string _param0_subtractDraftSchematicsFromGroupName__string_;
 	string _param0_setSurveyEvent__string_;

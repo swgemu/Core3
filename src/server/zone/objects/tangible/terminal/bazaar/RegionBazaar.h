@@ -62,14 +62,15 @@ class BazaarPlanetManager;
 #include "../../../scene/SceneObject.h"
 
 class RegionBazaar : public SceneObject {
-public:
+protected:
 	RegionBazaar();
 	RegionBazaar(ORBObjectServant* obj);
 	RegionBazaar(RegionBazaar& ref);
 
-	RegionBazaar* clone();
-
 	virtual ~RegionBazaar();
+
+public:
+	RegionBazaar* clone();
 
 	void addItem(AuctionItem* item);
 
@@ -83,7 +84,7 @@ public:
 
 	void getBazaarData(Player* player, long long objectid, int screen, int extent, int category, int count, int offset);
 
-protected:
+	friend class RegionBazaarHelper;
 };
 
 class RegionBazaarImplementation;

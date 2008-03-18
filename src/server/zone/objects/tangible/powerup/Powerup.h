@@ -64,14 +64,15 @@ class Weapon;
 #include "../TangibleObject.h"
 
 class Powerup : public TangibleObject {
-public:
+protected:
 	Powerup();
 	Powerup(ORBObjectServant* obj);
 	Powerup(Powerup& ref);
 
-	Powerup* clone();
-
 	virtual ~Powerup();
+
+public:
+	Powerup* clone();
 
 	void apply(Weapon* weapon);
 
@@ -113,7 +114,7 @@ public:
 
 	void setPowerupSubType(int value);
 
-protected:
+	friend class PowerupHelper;
 };
 
 class PowerupImplementation;

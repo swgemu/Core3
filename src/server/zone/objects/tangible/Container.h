@@ -58,14 +58,15 @@ class TangibleObject;
 #include "TangibleObject.h"
 
 class Container : public TangibleObject {
-public:
+protected:
 	Container();
 	Container(ORBObjectServant* obj);
 	Container(Container& ref);
 
-	Container* clone();
-
 	virtual ~Container();
+
+public:
+	Container* clone();
 
 	void addObject(SceneObject* obj);
 
@@ -81,7 +82,7 @@ public:
 
 	bool isEmpty();
 
-protected:
+	friend class ContainerHelper;
 };
 
 class ContainerImplementation;

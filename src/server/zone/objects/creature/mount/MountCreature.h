@@ -60,14 +60,15 @@ class IntangibleObject;
 #include "../Creature.h"
 
 class MountCreature : public Creature {
-public:
+protected:
 	MountCreature();
 	MountCreature(ORBObjectServant* obj);
 	MountCreature(MountCreature& ref);
 
-	MountCreature* clone();
-
 	virtual ~MountCreature();
+
+public:
+	MountCreature* clone();
 
 	void setMountType(int type);
 
@@ -95,7 +96,7 @@ public:
 
 	bool isInWorld();
 
-protected:
+	friend class MountCreatureHelper;
 };
 
 class MountCreatureImplementation;

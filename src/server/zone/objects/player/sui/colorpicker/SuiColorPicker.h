@@ -60,20 +60,21 @@ class Player;
 #include "../SuiBox.h"
 
 class SuiColorPicker : public SuiBox {
-public:
+protected:
 	SuiColorPicker();
 	SuiColorPicker(ORBObjectServant* obj);
 	SuiColorPicker(SuiColorPicker& ref);
 
-	SuiColorPicker* clone();
-
 	virtual ~SuiColorPicker();
+
+public:
+	SuiColorPicker* clone();
 
 	unsigned long long getObjectID();
 
 	BaseMessage* generateMessage();
 
-protected:
+	friend class SuiColorPickerHelper;
 };
 
 class SuiColorPickerImplementation;

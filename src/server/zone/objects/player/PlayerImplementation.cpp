@@ -109,7 +109,8 @@ PlayerImplementation::~PlayerImplementation() {
 	clearBuffs(false);
 	
 	for (int i = 0; i < suiBoxes.size(); ++i) {
-		delete suiBoxes.get(i);
+		SuiBox* box =  suiBoxes.get(i);
+		box->finalize();
 	}
 
 	if (playerObject != NULL) {

@@ -50,16 +50,16 @@ which carries forward this exception.
 #include "../../objects/tangible/Inventory.h" 
 
 #include "../../objects/creature/Creature.h"
-#include "../../objects/creature/CreatureGroup.h"
 #include "../../objects/creature/CreatureObject.h"
+
 #include "../../objects/creature/trainer/TrainerCreature.h"
 #include "../../objects/creature/recruiter/RecruiterCreature.h"
 #include "../../objects/creature/shuttle/ShuttleCreature.h"
 
-#include "../skills/SkillManager.h"
+#include "../../objects/creature/CreatureGroup.h"
+#include "../../objects/creature/CreatureGroupImplementation.h"
 
-/*#include "../creature/events/CreatureAIEvent.h"
-#include "../creature/events/CreatureAIAttackEvent.h"*/
+#include "../skills/SkillManager.h"
 
 #include "CreatureManager.h"
 #include "CreatureManagerImplementation.h"
@@ -205,7 +205,8 @@ CreatureGroup* CreatureManagerImplementation::spawnCreatureGroup(int count, cons
 	try {
 		lock();
 
-		CreatureGroup* group = new CreatureGroup();
+		CreatureGroupImplementation* groupImpl = new CreatureGroupImplementation();
+		CreatureGroup* group = (CreatureGroup*)  groupImpl->deploy();
 
 		for (int i = 0; i < count; i++) {
 			Creature* creature = spawnCreature(stfname, name, objCrc, x, y, bitmask, false);

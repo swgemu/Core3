@@ -60,18 +60,19 @@ class Player;
 #include "../SuiBox.h"
 
 class SuiMessageBox : public SuiBox {
-public:
+protected:
 	SuiMessageBox();
 	SuiMessageBox(ORBObjectServant* obj);
 	SuiMessageBox(SuiMessageBox& ref);
 
-	SuiMessageBox* clone();
-
 	virtual ~SuiMessageBox();
+
+public:
+	SuiMessageBox* clone();
 
 	BaseMessage* generateMessage();
 
-protected:
+	friend class SuiMessageBoxHelper;
 };
 
 class SuiMessageBoxImplementation;

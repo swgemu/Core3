@@ -58,16 +58,17 @@ class CreatureObject;
 #include "Container.h"
 
 class Bank : public Container {
-public:
+protected:
 	Bank();
 	Bank(ORBObjectServant* obj);
 	Bank(Bank& ref);
 
-	Bank* clone();
-
 	virtual ~Bank();
 
-protected:
+public:
+	Bank* clone();
+
+	friend class BankHelper;
 };
 
 class BankImplementation;

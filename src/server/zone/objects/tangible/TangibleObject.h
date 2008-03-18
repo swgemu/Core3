@@ -62,14 +62,15 @@ class Zone;
 #include "../scene/SceneObject.h"
 
 class TangibleObject : public SceneObject {
-public:
+protected:
 	TangibleObject();
 	TangibleObject(ORBObjectServant* obj);
 	TangibleObject(TangibleObject& ref);
 
-	TangibleObject* clone();
-
 	virtual ~TangibleObject();
+
+public:
+	TangibleObject* clone();
 
 	void insertToZone(Zone* zone);
 
@@ -164,6 +165,8 @@ protected:
 
 	unicode _return_getName;
 
+
+	friend class TangibleObjectHelper;
 };
 
 class TangibleObjectImplementation;

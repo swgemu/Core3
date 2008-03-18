@@ -58,16 +58,17 @@ class MeleeWeapon;
 #include "../MeleeWeapon.h"
 
 class UnarmedMeleeWeapon : public MeleeWeapon {
-public:
+protected:
 	UnarmedMeleeWeapon();
 	UnarmedMeleeWeapon(ORBObjectServant* obj);
 	UnarmedMeleeWeapon(UnarmedMeleeWeapon& ref);
 
-	UnarmedMeleeWeapon* clone();
-
 	virtual ~UnarmedMeleeWeapon();
 
-protected:
+public:
+	UnarmedMeleeWeapon* clone();
+
+	friend class UnarmedMeleeWeaponHelper;
 };
 
 class UnarmedMeleeWeaponImplementation;

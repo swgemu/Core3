@@ -62,14 +62,15 @@ class TangibleObject;
 #include "../TangibleObject.h"
 
 class ResourceContainer : public TangibleObject {
-public:
+protected:
 	ResourceContainer();
 	ResourceContainer(ORBObjectServant* obj);
 	ResourceContainer(ResourceContainer& ref);
 
-	ResourceContainer* clone();
-
 	virtual ~ResourceContainer();
+
+public:
+	ResourceContainer* clone();
 
 	void init();
 
@@ -152,6 +153,8 @@ public:
 protected:
 	string _return_getClassSeven;
 
+
+	friend class ResourceContainerHelper;
 };
 
 class ResourceContainerImplementation;

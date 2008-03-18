@@ -56,14 +56,15 @@ class Player;
 class GuildManager;
 
 class Guild : public ORBObjectStub {
-public:
+protected:
 	Guild();
 	Guild(ORBObjectServant* obj);
 	Guild(Guild& ref);
 
-	Guild* clone();
-
 	virtual ~Guild();
+
+public:
+	Guild* clone();
 
 	void sendGuildListTo(Player* player, bool doLock = true);
 
@@ -84,6 +85,8 @@ protected:
 
 	string _return_getGuildTag;
 
+
+	friend class GuildHelper;
 };
 
 class GuildImplementation;

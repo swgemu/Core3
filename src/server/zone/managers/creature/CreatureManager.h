@@ -68,14 +68,15 @@ class ShuttleCreature;
 #include "engine/util/Coordinate.h"
 
 class CreatureManager : public ORBObjectStub {
-public:
+protected:
 	CreatureManager();
 	CreatureManager(ORBObjectServant* obj);
 	CreatureManager(CreatureManager& ref);
 
-	CreatureManager* clone();
-
 	virtual ~CreatureManager();
+
+public:
+	CreatureManager* clone();
 
 	void init();
 
@@ -107,7 +108,7 @@ public:
 
 	Creature* getCreature(unsigned long long oid);
 
-protected:
+	friend class CreatureManagerHelper;
 };
 
 class CreatureManagerImplementation;

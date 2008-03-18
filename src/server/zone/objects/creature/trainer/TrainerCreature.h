@@ -62,14 +62,15 @@ class SceneObject;
 #include "../Creature.h"
 
 class TrainerCreature : public Creature {
-public:
+protected:
 	TrainerCreature();
 	TrainerCreature(ORBObjectServant* obj);
 	TrainerCreature(TrainerCreature& ref);
 
-	TrainerCreature* clone();
-
 	virtual ~TrainerCreature();
+
+public:
+	TrainerCreature* clone();
 
 	void sendConversationStartTo(SceneObject* obj);
 
@@ -77,7 +78,7 @@ public:
 
 	void selectConversationOption(int option, SceneObject* obj);
 
-protected:
+	friend class TrainerCreatureHelper;
 };
 
 class TrainerCreatureImplementation;

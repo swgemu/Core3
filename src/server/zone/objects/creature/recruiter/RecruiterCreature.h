@@ -60,14 +60,15 @@ class Player;
 #include "../Creature.h"
 
 class RecruiterCreature : public Creature {
-public:
+protected:
 	RecruiterCreature();
 	RecruiterCreature(ORBObjectServant* obj);
 	RecruiterCreature(RecruiterCreature& ref);
 
-	RecruiterCreature* clone();
-
 	virtual ~RecruiterCreature();
+
+public:
+	RecruiterCreature* clone();
 
 	void sendConversationStartTo(SceneObject* obj);
 
@@ -75,7 +76,7 @@ public:
 
 	void selectConversationOption(int option, SceneObject* obj);
 
-protected:
+	friend class RecruiterCreatureHelper;
 };
 
 class RecruiterCreatureImplementation;

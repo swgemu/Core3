@@ -62,14 +62,15 @@ class Zone;
 #include "../scene/SceneObject.h"
 
 class StaticObject : public SceneObject {
-public:
+protected:
 	StaticObject();
 	StaticObject(ORBObjectServant* obj);
 	StaticObject(StaticObject& ref);
 
-	StaticObject* clone();
-
 	virtual ~StaticObject();
+
+public:
+	StaticObject* clone();
 
 	void insertToZone(Zone* zone);
 
@@ -79,7 +80,7 @@ public:
 
 	void sendTo(Player* player, bool doClose = true);
 
-protected:
+	friend class StaticObjectHelper;
 };
 
 class StaticObjectImplementation;

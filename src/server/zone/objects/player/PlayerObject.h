@@ -62,14 +62,15 @@ class WaypointObject;
 #include "../scene/SceneObject.h"
 
 class PlayerObject : public SceneObject {
-public:
+protected:
 	PlayerObject();
 	PlayerObject(ORBObjectServant* obj);
 	PlayerObject(PlayerObject& ref);
 
-	PlayerObject* clone();
-
 	virtual ~PlayerObject();
+
+public:
+	PlayerObject* clone();
 
 	void sendToOwner();
 
@@ -132,6 +133,8 @@ public:
 protected:
 	string _return_getCurrentTitle;
 
+
+	friend class PlayerObjectHelper;
 };
 
 class PlayerObjectImplementation;

@@ -58,16 +58,17 @@ class TangibleObject;
 #include "../TangibleObject.h"
 
 class HairObject : public TangibleObject {
-public:
+protected:
 	HairObject();
 	HairObject(ORBObjectServant* obj);
 	HairObject(HairObject& ref);
 
-	HairObject* clone();
-
 	virtual ~HairObject();
 
-protected:
+public:
+	HairObject* clone();
+
+	friend class HairObjectHelper;
 };
 
 class HairObjectImplementation;

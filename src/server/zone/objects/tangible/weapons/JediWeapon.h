@@ -58,20 +58,21 @@ class Weapon;
 #include "Weapon.h"
 
 class JediWeapon : public Weapon {
-public:
+protected:
 	JediWeapon();
 	JediWeapon(ORBObjectServant* obj);
 	JediWeapon(JediWeapon& ref);
 
-	JediWeapon* clone();
-
 	virtual ~JediWeapon();
+
+public:
+	JediWeapon* clone();
 
 	int getForceCost();
 
 	void setForceCost(int fcost);
 
-protected:
+	friend class JediWeaponHelper;
 };
 
 class JediWeaponImplementation;

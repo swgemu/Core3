@@ -58,18 +58,19 @@ class Player;
 #include "../Terminal.h"
 
 class GuildTerminal : public Terminal {
-public:
+protected:
 	GuildTerminal();
 	GuildTerminal(ORBObjectServant* obj);
 	GuildTerminal(GuildTerminal& ref);
 
-	GuildTerminal* clone();
-
 	virtual ~GuildTerminal();
+
+public:
+	GuildTerminal* clone();
 
 	int useObject(Player* player);
 
-protected:
+	friend class GuildTerminalHelper;
 };
 
 class GuildTerminalImplementation;

@@ -64,14 +64,15 @@ class CreatureObject;
 #include "../TangibleObject.h"
 
 class SurveyTool : public TangibleObject {
-public:
+protected:
 	SurveyTool();
 	SurveyTool(ORBObjectServant* obj);
 	SurveyTool(SurveyTool& ref);
 
-	SurveyTool* clone();
-
 	virtual ~SurveyTool();
+
+public:
+	SurveyTool* clone();
 
 	int useObject(Player* player);
 
@@ -89,7 +90,7 @@ public:
 
 	void sampleRequest(Player* player, unicode& resourceName);
 
-protected:
+	friend class SurveyToolHelper;
 };
 
 class SurveyToolImplementation;

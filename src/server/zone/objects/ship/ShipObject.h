@@ -62,14 +62,15 @@ class ShipComponent;
 #include "../scene/SceneObject.h"
 
 class ShipObject : public SceneObject {
-public:
+protected:
 	ShipObject();
 	ShipObject(ORBObjectServant* obj);
 	ShipObject(ShipObject& ref);
 
-	ShipObject* clone();
-
 	virtual ~ShipObject();
+
+public:
+	ShipObject* clone();
 
 	void init();
 
@@ -154,6 +155,8 @@ protected:
 
 	unicode _return_getOwnerName;
 
+
+	friend class ShipObjectHelper;
 };
 
 class ShipObjectImplementation;

@@ -54,14 +54,15 @@ which carries forward this exception.
 class Guild;
 
 class GuildMap : public ORBObjectStub {
-public:
+protected:
 	GuildMap();
 	GuildMap(ORBObjectServant* obj);
 	GuildMap(GuildMap& ref);
 
-	GuildMap* clone();
-
 	virtual ~GuildMap();
+
+public:
+	GuildMap* clone();
 
 	void add(Guild* guild);
 
@@ -77,7 +78,7 @@ public:
 
 	int size();
 
-protected:
+	friend class GuildMapHelper;
 };
 
 class GuildMapImplementation;

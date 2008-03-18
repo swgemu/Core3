@@ -60,14 +60,15 @@ class RegionBazaar;
 class BazaarPlanetManager;
 
 class BazaarManager : public ORBObjectStub {
-public:
+protected:
 	BazaarManager();
 	BazaarManager(ORBObjectServant* obj);
 	BazaarManager(BazaarManager& ref);
 
-	BazaarManager* clone();
-
 	virtual ~BazaarManager();
+
+public:
+	BazaarManager* clone();
 
 	void newBazaarRequest(long long bazaarID, Player* player, int planet);
 
@@ -87,7 +88,7 @@ public:
 
 	void getItemAttributes(Player* player, long long objectId);
 
-protected:
+	friend class BazaarManagerHelper;
 };
 
 class BazaarManagerImplementation;

@@ -62,14 +62,17 @@ class DraftSchematicExpPropGroup;
 class ObjectControllerMessage;
 
 class DraftSchematic : public ORBObjectStub {
-public:
+protected:
 	DraftSchematic();
 	DraftSchematic(ORBObjectServant* obj);
 	DraftSchematic(DraftSchematic& ref);
 
+	virtual ~DraftSchematic();
+
+public:
 	DraftSchematic* clone();
 
-	virtual ~DraftSchematic();
+	DraftSchematic* dsClone(DraftSchematic* ds);
 
 	void addIngredient(const string& ingredientTemplateName, const string& ingredientTitleName, bool optional, const string& resourceType, unsigned int resourceQuantity);
 
@@ -97,6 +100,10 @@ public:
 
 	void setPersistent(bool status);
 
+	void setObjectID(unsigned long long objID);
+
+	void setTanoAttributes(string& attributes);
+
 	unsigned int getSchematicID();
 
 	unsigned int getSchematicCRC();
@@ -109,6 +116,10 @@ public:
 
 	unsigned int getSchematicSize();
 
+	unsigned int getObjectID();
+
+	string& getTanoAttributes();
+
 protected:
 	string _return_getExpPropTitle;
 
@@ -116,6 +127,10 @@ protected:
 
 	string _return_getName;
 
+	string _return_getTanoAttributes;
+
+
+	friend class DraftSchematicHelper;
 };
 
 class DraftSchematicImplementation;
@@ -126,6 +141,8 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, ORBMethodInvocation* inv);
 
+	DraftSchematic* dsClone(DraftSchematic* ds);
+
 	void addIngredient(const string& ingredientTemplateName, const string& ingredientTitleName, bool optional, const string& resourceType, unsigned int resourceQuantity);
 
 	void sendIngredientsToPlayer(Player* player);
@@ -152,6 +169,10 @@ public:
 
 	void setPersistent(bool status);
 
+	void setObjectID(unsigned long long objID);
+
+	void setTanoAttributes(string& attributes);
+
 	unsigned int getSchematicID();
 
 	unsigned int getSchematicCRC();
@@ -164,12 +185,17 @@ public:
 
 	unsigned int getSchematicSize();
 
+	unsigned int getObjectID();
+
+	string& getTanoAttributes();
+
 protected:
 	string _param0_addIngredient__string_string_bool_string_int_;
 	string _param1_addIngredient__string_string_bool_string_int_;
 	string _param3_addIngredient__string_string_bool_string_int_;
 	string _param1_addExperimentalProperty__int_string_int_;
 	string _param0_addExpPropTitle__string_;
+	string _param0_setTanoAttributes__string_;
 };
 
 class DraftSchematicHelper : public ORBClassHelper, public Singleton<DraftSchematicHelper> {

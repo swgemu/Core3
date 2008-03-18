@@ -58,18 +58,19 @@ class Player;
 #include "../Terminal.h"
 
 class VendorTerminal : public Terminal {
-public:
+protected:
 	VendorTerminal();
 	VendorTerminal(ORBObjectServant* obj);
 	VendorTerminal(VendorTerminal& ref);
 
-	VendorTerminal* clone();
-
 	virtual ~VendorTerminal();
+
+public:
+	VendorTerminal* clone();
 
 	int useObject(Player* player);
 
-protected:
+	friend class VendorTerminalHelper;
 };
 
 class VendorTerminalImplementation;

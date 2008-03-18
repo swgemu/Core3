@@ -76,14 +76,15 @@ class Zone;
 #include "../db/ServerDatabase.h"
 
 class ZoneServer : public ORBObjectStub {
-public:
+protected:
 	ZoneServer();
 	ZoneServer(ORBObjectServant* obj);
 	ZoneServer(ZoneServer& ref);
 
-	ZoneServer* clone();
-
 	virtual ~ZoneServer();
+
+public:
+	ZoneServer* clone();
 
 	void startManagers();
 
@@ -146,6 +147,8 @@ public:
 protected:
 	string _return_getServerName;
 
+
+	friend class ZoneServerHelper;
 };
 
 class ZoneServerImplementation;

@@ -58,14 +58,15 @@ class Player;
 class GuildMap;
 
 class GuildManager : public ORBObjectStub {
-public:
+protected:
 	GuildManager();
 	GuildManager(ORBObjectServant* obj);
 	GuildManager(GuildManager& ref);
 
-	GuildManager* clone();
-
 	virtual ~GuildManager();
+
+public:
+	GuildManager* clone();
 
 	void lock(bool doLock = true);
 
@@ -87,7 +88,7 @@ public:
 
 	GuildMap* getGuildMap();
 
-protected:
+	friend class GuildManagerHelper;
 };
 
 class GuildManagerImplementation;

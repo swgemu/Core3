@@ -60,14 +60,15 @@ class Player;
 #include "../scene/SceneObject.h"
 
 class IntangibleObject : public SceneObject {
-public:
+protected:
 	IntangibleObject();
 	IntangibleObject(ORBObjectServant* obj);
 	IntangibleObject(IntangibleObject& ref);
 
-	IntangibleObject* clone();
-
 	virtual ~IntangibleObject();
+
+public:
+	IntangibleObject* clone();
 
 	void sendTo(Player* player, bool doClose = true);
 
@@ -94,6 +95,8 @@ protected:
 
 	string _return_getName;
 
+
+	friend class IntangibleObjectHelper;
 };
 
 class IntangibleObjectImplementation;

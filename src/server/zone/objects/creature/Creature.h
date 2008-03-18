@@ -66,14 +66,15 @@ class LairObject;
 #include "CreatureObject.h"
 
 class Creature : public CreatureObject {
-public:
+protected:
 	Creature();
 	Creature(ORBObjectServant* obj);
 	Creature(Creature& ref);
 
-	Creature* clone();
-
 	virtual ~Creature();
+
+public:
+	Creature* clone();
 
 	void init();
 
@@ -150,6 +151,8 @@ public:
 protected:
 	string _return_getName;
 
+
+	friend class CreatureHelper;
 };
 
 class CreatureImplementation;

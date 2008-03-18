@@ -60,14 +60,15 @@ class Player;
 #include "../SuiBox.h"
 
 class SuiTransferBox : public SuiBox {
-public:
+protected:
 	SuiTransferBox();
 	SuiTransferBox(ORBObjectServant* obj);
 	SuiTransferBox(SuiTransferBox& ref);
 
-	SuiTransferBox* clone();
-
 	virtual ~SuiTransferBox();
+
+public:
+	SuiTransferBox* clone();
 
 	BaseMessage* generateMessage();
 
@@ -75,7 +76,7 @@ public:
 
 	void addOption(const string& itemText, const string& lblType, const string& itemType);
 
-protected:
+	friend class SuiTransferBoxHelper;
 };
 
 class SuiTransferBoxImplementation;

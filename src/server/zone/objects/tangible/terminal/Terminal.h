@@ -60,20 +60,21 @@ class Player;
 #include "../TangibleObject.h"
 
 class Terminal : public TangibleObject {
-public:
+protected:
 	Terminal();
 	Terminal(ORBObjectServant* obj);
 	Terminal(Terminal& ref);
 
-	Terminal* clone();
-
 	virtual ~Terminal();
+
+public:
+	Terminal* clone();
 
 	int useObject(Player* player);
 
 	int getTerminalType();
 
-protected:
+	friend class TerminalHelper;
 };
 
 class TerminalImplementation;

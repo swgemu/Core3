@@ -58,14 +58,15 @@ which carries forward this exception.
 class Player;
 
 class ZoneClient : public ORBObjectStub {
-public:
+protected:
 	ZoneClient();
 	ZoneClient(ORBObjectServant* obj);
 	ZoneClient(ZoneClient& ref);
 
-	ZoneClient* clone();
-
 	virtual ~ZoneClient();
+
+public:
+	ZoneClient* clone();
 
 	void disconnect(bool doLock = true);
 
@@ -94,6 +95,8 @@ public:
 protected:
 	string _return_getAddress;
 
+
+	friend class ZoneClientHelper;
 };
 
 class ZoneClientImplementation;

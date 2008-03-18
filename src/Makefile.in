@@ -101,12 +101,13 @@ am__objects_1 = Zone.$(OBJEXT) ZoneClient.$(OBJEXT) \
 	Player.$(OBJEXT) PlayerObject.$(OBJEXT) SuiBox.$(OBJEXT) \
 	SuiListBox.$(OBJEXT) SuiMessageBox.$(OBJEXT) \
 	SuiInputBox.$(OBJEXT) SuiTransferBox.$(OBJEXT) \
-	SuiColorPicker.$(OBJEXT) TangibleObject.$(OBJEXT) \
-	Container.$(OBJEXT) Inventory.$(OBJEXT) Datapad.$(OBJEXT) \
-	Bank.$(OBJEXT) MissionBag.$(OBJEXT) Weapon.$(OBJEXT) \
-	JediWeapon.$(OBJEXT) RangedWeapon.$(OBJEXT) \
-	MeleeWeapon.$(OBJEXT) CarbineRangedWeapon.$(OBJEXT) \
-	RifleRangedWeapon.$(OBJEXT) PistolRangedWeapon.$(OBJEXT) \
+	SuiBankTransferBox.$(OBJEXT) SuiColorPicker.$(OBJEXT) \
+	TangibleObject.$(OBJEXT) Container.$(OBJEXT) \
+	Inventory.$(OBJEXT) Datapad.$(OBJEXT) Bank.$(OBJEXT) \
+	MissionBag.$(OBJEXT) Weapon.$(OBJEXT) JediWeapon.$(OBJEXT) \
+	RangedWeapon.$(OBJEXT) MeleeWeapon.$(OBJEXT) \
+	CarbineRangedWeapon.$(OBJEXT) RifleRangedWeapon.$(OBJEXT) \
+	PistolRangedWeapon.$(OBJEXT) \
 	SpecialHeavyRangedWeapon.$(OBJEXT) HeavyRangedWeapon.$(OBJEXT) \
 	OneHandedMeleeWeapon.$(OBJEXT) TwoHandedMeleeWeapon.$(OBJEXT) \
 	UnarmedMeleeWeapon.$(OBJEXT) PolearmMeleeWeapon.$(OBJEXT) \
@@ -134,8 +135,8 @@ am__objects_1 = Zone.$(OBJEXT) ZoneClient.$(OBJEXT) \
 	ItemManager.$(OBJEXT) UserManager.$(OBJEXT) \
 	PlanetManager.$(OBJEXT) ResourceManager.$(OBJEXT) \
 	LootManager.$(OBJEXT) BazaarManager.$(OBJEXT) \
-	BazaarPlanetManager.$(OBJEXT) ChatRoom.$(OBJEXT) \
-	ChatManager.$(OBJEXT)
+	BazaarPlanetManager.$(OBJEXT) BankManager.$(OBJEXT) \
+	ChatRoom.$(OBJEXT) ChatManager.$(OBJEXT)
 am_core3_OBJECTS = $(am__objects_1) ServerCore.$(OBJEXT) \
 	ConfigManager.$(OBJEXT) ServerDatabase.$(OBJEXT) \
 	LoginServer.$(OBJEXT) LoginPacketHandler.$(OBJEXT) \
@@ -167,6 +168,7 @@ am_core3_OBJECTS = $(am__objects_1) ServerCore.$(OBJEXT) \
 	SuiMessageBoxImplementation.$(OBJEXT) \
 	SuiInputBoxImplementation.$(OBJEXT) \
 	SuiTransferBoxImplementation.$(OBJEXT) \
+	SuiBankTransferBoxImplementation.$(OBJEXT) \
 	SuiColorPickerImplementation.$(OBJEXT) \
 	CreatureImplementation.$(OBJEXT) \
 	CreatureObjectImplementation.$(OBJEXT) \
@@ -188,7 +190,8 @@ am_core3_OBJECTS = $(am__objects_1) ServerCore.$(OBJEXT) \
 	ResourceManagerImplementation.$(OBJEXT) \
 	BazaarManagerImplementation.$(OBJEXT) \
 	BazaarPlanetManagerImplementation.$(OBJEXT) \
-	SuiManager.$(OBJEXT) ChatRoomImplementation.$(OBJEXT) \
+	BankManagerImplementation.$(OBJEXT) SuiManager.$(OBJEXT) \
+	ChatRoomImplementation.$(OBJEXT) \
 	ChatManagerImplementation.$(OBJEXT) \
 	ObjectControllerMessage.$(OBJEXT) main.$(OBJEXT)
 core3_OBJECTS = $(am_core3_OBJECTS)
@@ -327,6 +330,7 @@ core3_IDLS = server/zone/Zone.cpp \
 		server/zone/objects/player/sui/messagebox/SuiMessageBox.cpp \
 		server/zone/objects/player/sui/inputbox/SuiInputBox.cpp \
 		server/zone/objects/player/sui/transferbox/SuiTransferBox.cpp \
+		server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.cpp \
 		server/zone/objects/player/sui/colorpicker/SuiColorPicker.cpp \
 		server/zone/objects/tangible/TangibleObject.cpp \
 		server/zone/objects/tangible/Container.cpp \
@@ -394,10 +398,11 @@ core3_IDLS = server/zone/Zone.cpp \
 		server/zone/managers/item/ItemManager.cpp \
 		server/zone/managers/user/UserManager.cpp \
 		server/zone/managers/planet/PlanetManager.cpp \
-    server/zone/managers/resource/ResourceManager.cpp \
+		server/zone/managers/resource/ResourceManager.cpp \
 		server/zone/managers/loot/LootManager.cpp \
 		server/zone/managers/bazaar/BazaarManager.cpp \
 		server/zone/managers/bazaar/BazaarPlanetManager.cpp \
+		server/zone/managers/bank/BankManager.cpp \
 		server/chat/room/ChatRoom.cpp \
 		server/chat/ChatManager.cpp
 
@@ -425,11 +430,11 @@ core3_SOURCES = $(core3_IDLS) \
 		server/zone/objects/tangible/lair/LairObjectImplementation.cpp \
 		server/zone/objects/tangible/surveytool/SurveyToolImplementation.cpp \
 		server/zone/objects/tangible/craftingtool/CraftingToolImplementation.cpp \
-    server/zone/objects/tangible/resource/ResourceContainerImplementation.cpp \
-    	server/zone/objects/tangible/attachment/AttachmentImplementation.cpp \
-    	server/zone/objects/tangible/powerup/PowerupImplementation.cpp \
-    server/zone/objects/tangible/ticket/TicketImplementation.cpp \
-    server/zone/objects/tangible/ticketcollector/TicketCollectorImplementation.cpp \
+		server/zone/objects/tangible/resource/ResourceContainerImplementation.cpp \
+		server/zone/objects/tangible/attachment/AttachmentImplementation.cpp \
+		server/zone/objects/tangible/powerup/PowerupImplementation.cpp \
+		server/zone/objects/tangible/ticket/TicketImplementation.cpp \
+		server/zone/objects/tangible/ticketcollector/TicketCollectorImplementation.cpp \
 		server/zone/objects/static/StaticObjectImplementation.cpp \
 		server/zone/objects/player/PlayerImplementation.cpp \
 		server/zone/objects/player/PlayerObjectImplementation.cpp \
@@ -438,6 +443,7 @@ core3_SOURCES = $(core3_IDLS) \
 		server/zone/objects/player/sui/messagebox/SuiMessageBoxImplementation.cpp \
 		server/zone/objects/player/sui/inputbox/SuiInputBoxImplementation.cpp \
 		server/zone/objects/player/sui/transferbox/SuiTransferBoxImplementation.cpp \
+		server/zone/objects/player/sui/banktransferbox/SuiBankTransferBoxImplementation.cpp \
 		server/zone/objects/player/sui/colorpicker/SuiColorPickerImplementation.cpp \
 		server/zone/objects/creature/CreatureImplementation.cpp \
 		server/zone/objects/creature/CreatureObjectImplementation.cpp \
@@ -460,9 +466,10 @@ core3_SOURCES = $(core3_IDLS) \
 		server/zone/managers/combat/CommandQueueAction.cpp \
 		server/zone/managers/creature/CreatureManagerImplementation.cpp \
 		server/zone/managers/planet/PlanetManagerImplementation.cpp \
-    server/zone/managers/resource/ResourceManagerImplementation.cpp \
+		server/zone/managers/resource/ResourceManagerImplementation.cpp \
 		server/zone/managers/bazaar/BazaarManagerImplementation.cpp \
 		server/zone/managers/bazaar/BazaarPlanetManagerImplementation.cpp \
+		server/zone/managers/bank/BankManagerImplementation.cpp \
 		server/zone/managers/sui/SuiManager.cpp \
 		server/chat/room/ChatRoomImplementation.cpp \
 		server/chat/ChatManagerImplementation.cpp \
@@ -541,6 +548,8 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/AttachmentImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/AuctionItem.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Bank.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/BankManager.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/BankManagerImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/BazaarManager.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/BazaarManagerImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/BazaarPlanetManager.Po@am__quote@
@@ -648,6 +657,8 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SpecialHeavyRangedWeapon.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/StaticObject.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/StaticObjectImplementation.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SuiBankTransferBox.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SuiBankTransferBoxImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SuiBox.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SuiBoxImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SuiColorPicker.Po@am__quote@
@@ -973,6 +984,20 @@ SuiTransferBox.obj: server/zone/objects/player/sui/transferbox/SuiTransferBox.cp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/player/sui/transferbox/SuiTransferBox.cpp' object='SuiTransferBox.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o SuiTransferBox.obj `if test -f 'server/zone/objects/player/sui/transferbox/SuiTransferBox.cpp'; then $(CYGPATH_W) 'server/zone/objects/player/sui/transferbox/SuiTransferBox.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/player/sui/transferbox/SuiTransferBox.cpp'; fi`
+
+SuiBankTransferBox.o: server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.cpp
+@am__fastdepCXX_TRUE@	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT SuiBankTransferBox.o -MD -MP -MF "$(DEPDIR)/SuiBankTransferBox.Tpo" -c -o SuiBankTransferBox.o `test -f 'server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.cpp' || echo '$(srcdir)/'`server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.cpp; \
+@am__fastdepCXX_TRUE@	then mv -f "$(DEPDIR)/SuiBankTransferBox.Tpo" "$(DEPDIR)/SuiBankTransferBox.Po"; else rm -f "$(DEPDIR)/SuiBankTransferBox.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.cpp' object='SuiBankTransferBox.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o SuiBankTransferBox.o `test -f 'server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.cpp' || echo '$(srcdir)/'`server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.cpp
+
+SuiBankTransferBox.obj: server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.cpp
+@am__fastdepCXX_TRUE@	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT SuiBankTransferBox.obj -MD -MP -MF "$(DEPDIR)/SuiBankTransferBox.Tpo" -c -o SuiBankTransferBox.obj `if test -f 'server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.cpp'; then $(CYGPATH_W) 'server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.cpp'; fi`; \
+@am__fastdepCXX_TRUE@	then mv -f "$(DEPDIR)/SuiBankTransferBox.Tpo" "$(DEPDIR)/SuiBankTransferBox.Po"; else rm -f "$(DEPDIR)/SuiBankTransferBox.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.cpp' object='SuiBankTransferBox.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o SuiBankTransferBox.obj `if test -f 'server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.cpp'; then $(CYGPATH_W) 'server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.cpp'; fi`
 
 SuiColorPicker.o: server/zone/objects/player/sui/colorpicker/SuiColorPicker.cpp
 @am__fastdepCXX_TRUE@	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT SuiColorPicker.o -MD -MP -MF "$(DEPDIR)/SuiColorPicker.Tpo" -c -o SuiColorPicker.o `test -f 'server/zone/objects/player/sui/colorpicker/SuiColorPicker.cpp' || echo '$(srcdir)/'`server/zone/objects/player/sui/colorpicker/SuiColorPicker.cpp; \
@@ -1968,6 +1993,20 @@ BazaarPlanetManager.obj: server/zone/managers/bazaar/BazaarPlanetManager.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o BazaarPlanetManager.obj `if test -f 'server/zone/managers/bazaar/BazaarPlanetManager.cpp'; then $(CYGPATH_W) 'server/zone/managers/bazaar/BazaarPlanetManager.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/bazaar/BazaarPlanetManager.cpp'; fi`
 
+BankManager.o: server/zone/managers/bank/BankManager.cpp
+@am__fastdepCXX_TRUE@	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT BankManager.o -MD -MP -MF "$(DEPDIR)/BankManager.Tpo" -c -o BankManager.o `test -f 'server/zone/managers/bank/BankManager.cpp' || echo '$(srcdir)/'`server/zone/managers/bank/BankManager.cpp; \
+@am__fastdepCXX_TRUE@	then mv -f "$(DEPDIR)/BankManager.Tpo" "$(DEPDIR)/BankManager.Po"; else rm -f "$(DEPDIR)/BankManager.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/managers/bank/BankManager.cpp' object='BankManager.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o BankManager.o `test -f 'server/zone/managers/bank/BankManager.cpp' || echo '$(srcdir)/'`server/zone/managers/bank/BankManager.cpp
+
+BankManager.obj: server/zone/managers/bank/BankManager.cpp
+@am__fastdepCXX_TRUE@	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT BankManager.obj -MD -MP -MF "$(DEPDIR)/BankManager.Tpo" -c -o BankManager.obj `if test -f 'server/zone/managers/bank/BankManager.cpp'; then $(CYGPATH_W) 'server/zone/managers/bank/BankManager.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/bank/BankManager.cpp'; fi`; \
+@am__fastdepCXX_TRUE@	then mv -f "$(DEPDIR)/BankManager.Tpo" "$(DEPDIR)/BankManager.Po"; else rm -f "$(DEPDIR)/BankManager.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/managers/bank/BankManager.cpp' object='BankManager.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o BankManager.obj `if test -f 'server/zone/managers/bank/BankManager.cpp'; then $(CYGPATH_W) 'server/zone/managers/bank/BankManager.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/bank/BankManager.cpp'; fi`
+
 ChatRoom.o: server/chat/room/ChatRoom.cpp
 @am__fastdepCXX_TRUE@	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ChatRoom.o -MD -MP -MF "$(DEPDIR)/ChatRoom.Tpo" -c -o ChatRoom.o `test -f 'server/chat/room/ChatRoom.cpp' || echo '$(srcdir)/'`server/chat/room/ChatRoom.cpp; \
 @am__fastdepCXX_TRUE@	then mv -f "$(DEPDIR)/ChatRoom.Tpo" "$(DEPDIR)/ChatRoom.Po"; else rm -f "$(DEPDIR)/ChatRoom.Tpo"; exit 1; fi
@@ -2500,6 +2539,20 @@ SuiTransferBoxImplementation.obj: server/zone/objects/player/sui/transferbox/Sui
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o SuiTransferBoxImplementation.obj `if test -f 'server/zone/objects/player/sui/transferbox/SuiTransferBoxImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/player/sui/transferbox/SuiTransferBoxImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/player/sui/transferbox/SuiTransferBoxImplementation.cpp'; fi`
 
+SuiBankTransferBoxImplementation.o: server/zone/objects/player/sui/banktransferbox/SuiBankTransferBoxImplementation.cpp
+@am__fastdepCXX_TRUE@	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT SuiBankTransferBoxImplementation.o -MD -MP -MF "$(DEPDIR)/SuiBankTransferBoxImplementation.Tpo" -c -o SuiBankTransferBoxImplementation.o `test -f 'server/zone/objects/player/sui/banktransferbox/SuiBankTransferBoxImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/player/sui/banktransferbox/SuiBankTransferBoxImplementation.cpp; \
+@am__fastdepCXX_TRUE@	then mv -f "$(DEPDIR)/SuiBankTransferBoxImplementation.Tpo" "$(DEPDIR)/SuiBankTransferBoxImplementation.Po"; else rm -f "$(DEPDIR)/SuiBankTransferBoxImplementation.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/player/sui/banktransferbox/SuiBankTransferBoxImplementation.cpp' object='SuiBankTransferBoxImplementation.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o SuiBankTransferBoxImplementation.o `test -f 'server/zone/objects/player/sui/banktransferbox/SuiBankTransferBoxImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/player/sui/banktransferbox/SuiBankTransferBoxImplementation.cpp
+
+SuiBankTransferBoxImplementation.obj: server/zone/objects/player/sui/banktransferbox/SuiBankTransferBoxImplementation.cpp
+@am__fastdepCXX_TRUE@	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT SuiBankTransferBoxImplementation.obj -MD -MP -MF "$(DEPDIR)/SuiBankTransferBoxImplementation.Tpo" -c -o SuiBankTransferBoxImplementation.obj `if test -f 'server/zone/objects/player/sui/banktransferbox/SuiBankTransferBoxImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/player/sui/banktransferbox/SuiBankTransferBoxImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/player/sui/banktransferbox/SuiBankTransferBoxImplementation.cpp'; fi`; \
+@am__fastdepCXX_TRUE@	then mv -f "$(DEPDIR)/SuiBankTransferBoxImplementation.Tpo" "$(DEPDIR)/SuiBankTransferBoxImplementation.Po"; else rm -f "$(DEPDIR)/SuiBankTransferBoxImplementation.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/player/sui/banktransferbox/SuiBankTransferBoxImplementation.cpp' object='SuiBankTransferBoxImplementation.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o SuiBankTransferBoxImplementation.obj `if test -f 'server/zone/objects/player/sui/banktransferbox/SuiBankTransferBoxImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/player/sui/banktransferbox/SuiBankTransferBoxImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/player/sui/banktransferbox/SuiBankTransferBoxImplementation.cpp'; fi`
+
 SuiColorPickerImplementation.o: server/zone/objects/player/sui/colorpicker/SuiColorPickerImplementation.cpp
 @am__fastdepCXX_TRUE@	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT SuiColorPickerImplementation.o -MD -MP -MF "$(DEPDIR)/SuiColorPickerImplementation.Tpo" -c -o SuiColorPickerImplementation.o `test -f 'server/zone/objects/player/sui/colorpicker/SuiColorPickerImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/player/sui/colorpicker/SuiColorPickerImplementation.cpp; \
 @am__fastdepCXX_TRUE@	then mv -f "$(DEPDIR)/SuiColorPickerImplementation.Tpo" "$(DEPDIR)/SuiColorPickerImplementation.Po"; else rm -f "$(DEPDIR)/SuiColorPickerImplementation.Tpo"; exit 1; fi
@@ -2849,6 +2902,20 @@ BazaarPlanetManagerImplementation.obj: server/zone/managers/bazaar/BazaarPlanetM
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/managers/bazaar/BazaarPlanetManagerImplementation.cpp' object='BazaarPlanetManagerImplementation.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o BazaarPlanetManagerImplementation.obj `if test -f 'server/zone/managers/bazaar/BazaarPlanetManagerImplementation.cpp'; then $(CYGPATH_W) 'server/zone/managers/bazaar/BazaarPlanetManagerImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/bazaar/BazaarPlanetManagerImplementation.cpp'; fi`
+
+BankManagerImplementation.o: server/zone/managers/bank/BankManagerImplementation.cpp
+@am__fastdepCXX_TRUE@	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT BankManagerImplementation.o -MD -MP -MF "$(DEPDIR)/BankManagerImplementation.Tpo" -c -o BankManagerImplementation.o `test -f 'server/zone/managers/bank/BankManagerImplementation.cpp' || echo '$(srcdir)/'`server/zone/managers/bank/BankManagerImplementation.cpp; \
+@am__fastdepCXX_TRUE@	then mv -f "$(DEPDIR)/BankManagerImplementation.Tpo" "$(DEPDIR)/BankManagerImplementation.Po"; else rm -f "$(DEPDIR)/BankManagerImplementation.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/managers/bank/BankManagerImplementation.cpp' object='BankManagerImplementation.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o BankManagerImplementation.o `test -f 'server/zone/managers/bank/BankManagerImplementation.cpp' || echo '$(srcdir)/'`server/zone/managers/bank/BankManagerImplementation.cpp
+
+BankManagerImplementation.obj: server/zone/managers/bank/BankManagerImplementation.cpp
+@am__fastdepCXX_TRUE@	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT BankManagerImplementation.obj -MD -MP -MF "$(DEPDIR)/BankManagerImplementation.Tpo" -c -o BankManagerImplementation.obj `if test -f 'server/zone/managers/bank/BankManagerImplementation.cpp'; then $(CYGPATH_W) 'server/zone/managers/bank/BankManagerImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/bank/BankManagerImplementation.cpp'; fi`; \
+@am__fastdepCXX_TRUE@	then mv -f "$(DEPDIR)/BankManagerImplementation.Tpo" "$(DEPDIR)/BankManagerImplementation.Po"; else rm -f "$(DEPDIR)/BankManagerImplementation.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/managers/bank/BankManagerImplementation.cpp' object='BankManagerImplementation.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o BankManagerImplementation.obj `if test -f 'server/zone/managers/bank/BankManagerImplementation.cpp'; then $(CYGPATH_W) 'server/zone/managers/bank/BankManagerImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/bank/BankManagerImplementation.cpp'; fi`
 
 SuiManager.o: server/zone/managers/sui/SuiManager.cpp
 @am__fastdepCXX_TRUE@	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT SuiManager.o -MD -MP -MF "$(DEPDIR)/SuiManager.Tpo" -c -o SuiManager.o `test -f 'server/zone/managers/sui/SuiManager.cpp' || echo '$(srcdir)/'`server/zone/managers/sui/SuiManager.cpp; \

@@ -97,14 +97,14 @@ void ZoneImplementation::stopManagers() {
 	if (creatureManager != NULL) {
 	creatureManager->stop();
 		
-		delete creatureManager;
+		creatureManager->finalize();
 		creatureManager = NULL;
 	}
 	
 	if (planetManager != NULL) {
 		planetManager->stop();
 		
-		delete planetManager;
+		planetManager->finalize();
 		planetManager = NULL;
 	}
 }

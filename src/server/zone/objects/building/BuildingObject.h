@@ -68,14 +68,15 @@ class Zone;
 #include "../scene/SceneObject.h"
 
 class BuildingObject : public SceneObject {
-public:
+protected:
 	BuildingObject();
 	BuildingObject(ORBObjectServant* obj);
 	BuildingObject(BuildingObject& ref);
 
-	BuildingObject* clone();
-
 	virtual ~BuildingObject();
+
+public:
+	BuildingObject* clone();
 
 	void addCell(CellObject* cell);
 
@@ -103,7 +104,7 @@ public:
 
 	void inRange(QuadTreeEntry* obj, float range);
 
-protected:
+	friend class BuildingObjectHelper;
 };
 
 class BuildingObjectImplementation;

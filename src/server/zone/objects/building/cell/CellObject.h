@@ -62,14 +62,15 @@ class Zone;
 #include "../../scene/SceneObject.h"
 
 class CellObject : public SceneObject {
-public:
+protected:
 	CellObject();
 	CellObject(ORBObjectServant* obj);
 	CellObject(CellObject& ref);
 
-	CellObject* clone();
-
 	virtual ~CellObject();
+
+public:
+	CellObject* clone();
 
 	void insertToZone(Zone* zone);
 
@@ -81,7 +82,7 @@ public:
 
 	int getChildrenSize();
 
-protected:
+	friend class CellObjectHelper;
 };
 
 class CellObjectImplementation;

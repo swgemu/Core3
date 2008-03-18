@@ -60,14 +60,15 @@ class RegionBazaar;
 #include "BazaarTerminalDetails.h"
 
 class BazaarPlanetManager : public ORBObjectStub {
-public:
+protected:
 	BazaarPlanetManager();
 	BazaarPlanetManager(ORBObjectServant* obj);
 	BazaarPlanetManager(BazaarPlanetManager& ref);
 
-	BazaarPlanetManager* clone();
-
 	virtual ~BazaarPlanetManager();
+
+public:
+	BazaarPlanetManager* clone();
 
 	void setPlanet(int planet);
 
@@ -79,7 +80,7 @@ public:
 
 	void getBazaarData(Player* player, long long objectid, int screen, int extent, unsigned int category, int count, int offset);
 
-protected:
+	friend class BazaarPlanetManagerHelper;
 };
 
 class BazaarPlanetManagerImplementation;

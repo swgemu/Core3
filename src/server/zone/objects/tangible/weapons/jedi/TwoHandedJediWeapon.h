@@ -58,16 +58,17 @@ class JediWeapon;
 #include "../JediWeapon.h"
 
 class TwoHandedJediWeapon : public JediWeapon {
-public:
+protected:
 	TwoHandedJediWeapon();
 	TwoHandedJediWeapon(ORBObjectServant* obj);
 	TwoHandedJediWeapon(TwoHandedJediWeapon& ref);
 
-	TwoHandedJediWeapon* clone();
-
 	virtual ~TwoHandedJediWeapon();
 
-protected:
+public:
+	TwoHandedJediWeapon* clone();
+
+	friend class TwoHandedJediWeaponHelper;
 };
 
 class TwoHandedJediWeaponImplementation;

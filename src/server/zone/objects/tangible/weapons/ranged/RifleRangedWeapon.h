@@ -58,16 +58,17 @@ class RangedWeapon;
 #include "../RangedWeapon.h"
 
 class RifleRangedWeapon : public RangedWeapon {
-public:
+protected:
 	RifleRangedWeapon();
 	RifleRangedWeapon(ORBObjectServant* obj);
 	RifleRangedWeapon(RifleRangedWeapon& ref);
 
-	RifleRangedWeapon* clone();
-
 	virtual ~RifleRangedWeapon();
 
-protected:
+public:
+	RifleRangedWeapon* clone();
+
+	friend class RifleRangedWeaponHelper;
 };
 
 class RifleRangedWeaponImplementation;

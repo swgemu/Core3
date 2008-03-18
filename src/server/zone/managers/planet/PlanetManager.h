@@ -62,14 +62,15 @@ class CellObject;
 #include "engine/util/Coordinate.h"
 
 class PlanetManager : public ORBObjectStub {
-public:
+protected:
 	PlanetManager();
 	PlanetManager(ORBObjectServant* obj);
 	PlanetManager(PlanetManager& ref);
 
-	PlanetManager* clone();
-
 	virtual ~PlanetManager();
+
+public:
+	PlanetManager* clone();
 
 	void init();
 
@@ -93,7 +94,7 @@ public:
 
 	unsigned long long getLandingTime();
 
-protected:
+	friend class PlanetManagerHelper;
 };
 
 class PlanetManagerImplementation;

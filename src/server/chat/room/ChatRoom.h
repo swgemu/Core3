@@ -58,14 +58,15 @@ class ZoneServer;
 class Player;
 
 class ChatRoom : public ORBObjectStub {
-public:
+protected:
 	ChatRoom();
 	ChatRoom(ORBObjectServant* obj);
 	ChatRoom(ChatRoom& ref);
 
-	ChatRoom* clone();
-
 	virtual ~ChatRoom();
+
+public:
+	ChatRoom* clone();
 
 	void sendTo(Player* player);
 
@@ -146,6 +147,8 @@ protected:
 
 	unicode _return_getTitle;
 
+
+	friend class ChatRoomHelper;
 };
 
 class ChatRoomImplementation;

@@ -113,7 +113,8 @@ public:
 		*/
 		insertInt(ship->getActiveComponentListSize());
 		insertInt(ship->getNextCrcUpdateCnt());
-		for(int i = 0; i < ship->getComponentListSize(); i++) {
+		
+		/*for(int i = 0; i < ship->getComponentListSize(); i++) {
 			ShipComponent* tsc = new ShipComponent();
 			tsc = ship->getComponent(i);
 			if(tsc->getComponentCrc() != 0) {
@@ -122,7 +123,7 @@ public:
 				insertInt(tsc->getComponentCrc());
 			}
 			delete tsc;
-		}
+		}*/
 	}
 };
 

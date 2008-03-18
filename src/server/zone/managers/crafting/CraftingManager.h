@@ -57,25 +57,34 @@ class DraftSchematic;
 
 class ResourceContainer;
 
+class CraftingTool;
+
 class CraftingManager : public ORBObjectStub {
-public:
+protected:
 	CraftingManager();
 	CraftingManager(ORBObjectServant* obj);
 	CraftingManager(CraftingManager& ref);
 
-	CraftingManager* clone();
-
 	virtual ~CraftingManager();
 
-	void prepareCraftingSessionStageTwo(Player* player, DraftSchematic* ds);
+public:
+	CraftingManager* clone();
+
+	void prepareCraftingSession(Player* player, CraftingTool* ct, DraftSchematic* ds);
 
 	void addResourceToCraft(Player* player, ResourceContainer* rcno, int slot, int counter);
+
+	void nextCraftingStage(Player* player, string& test);
+
+	void craftingCustomization(Player* player, string& name, int condition);
+
+	void createPrototype(Player* player, string& test);
 
 	void addDraftSchematicsFromGroupName(Player* player, const string& schematicGroupName);
 
 	void subtractDraftSchematicsFromGroupName(Player* player, const string& schematicGroupName);
 
-protected:
+	friend class CraftingManagerHelper;
 };
 
 class CraftingManagerImplementation;
@@ -86,15 +95,24 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, ORBMethodInvocation* inv);
 
-	void prepareCraftingSessionStageTwo(Player* player, DraftSchematic* ds);
+	void prepareCraftingSession(Player* player, CraftingTool* ct, DraftSchematic* ds);
 
 	void addResourceToCraft(Player* player, ResourceContainer* rcno, int slot, int counter);
+
+	void nextCraftingStage(Player* player, string& test);
+
+	void craftingCustomization(Player* player, string& name, int condition);
+
+	void createPrototype(Player* player, string& test);
 
 	void addDraftSchematicsFromGroupName(Player* player, const string& schematicGroupName);
 
 	void subtractDraftSchematicsFromGroupName(Player* player, const string& schematicGroupName);
 
 protected:
+	string _param1_nextCraftingStage__Player_string_;
+	string _param1_craftingCustomization__Player_string_int_;
+	string _param1_createPrototype__Player_string_;
 	string _param1_addDraftSchematicsFromGroupName__Player_string_;
 	string _param1_subtractDraftSchematicsFromGroupName__Player_string_;
 };

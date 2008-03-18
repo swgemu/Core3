@@ -62,14 +62,15 @@ class ChatRoom;
 #include "../scene/SceneObject.h"
 
 class GroupObject : public SceneObject {
-public:
+protected:
 	GroupObject();
 	GroupObject(ORBObjectServant* obj);
 	GroupObject(GroupObject& ref);
 
-	GroupObject* clone();
-
 	virtual ~GroupObject();
+
+public:
+	GroupObject* clone();
 
 	void sendTo(Player* player);
 
@@ -103,7 +104,7 @@ public:
 
 	unsigned int getNewListCount(int cnt);
 
-protected:
+	friend class GroupObjectHelper;
 };
 
 class GroupObjectImplementation;

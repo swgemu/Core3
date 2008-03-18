@@ -54,14 +54,15 @@ which carries forward this exception.
 class Player;
 
 class PlayerMap : public ORBObjectStub {
-public:
+protected:
 	PlayerMap();
 	PlayerMap(ORBObjectServant* obj);
 	PlayerMap(PlayerMap& ref);
 
-	PlayerMap* clone();
-
 	virtual ~PlayerMap();
+
+public:
+	PlayerMap* clone();
 
 	Player* put(string& name, Player* player, bool doLock = true);
 
@@ -83,7 +84,7 @@ public:
 
 	void unlock();
 
-protected:
+	friend class PlayerMapHelper;
 };
 
 class PlayerMapImplementation;

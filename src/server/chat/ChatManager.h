@@ -58,14 +58,15 @@ class ChatRoom;
 class Player;
 
 class ChatManager : public ORBObjectStub {
-public:
+protected:
 	ChatManager();
 	ChatManager(ORBObjectServant* obj);
 	ChatManager(ChatManager& ref);
 
-	ChatManager* clone();
-
 	virtual ~ChatManager();
+
+public:
+	ChatManager* clone();
 
 	void addPlayer(Player* player);
 
@@ -141,7 +142,7 @@ public:
 
 	bool isMute();
 
-protected:
+	friend class ChatManagerHelper;
 };
 
 class ChatManagerImplementation;

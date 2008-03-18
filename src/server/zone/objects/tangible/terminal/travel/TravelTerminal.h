@@ -60,18 +60,19 @@ class Player;
 #include "../Terminal.h"
 
 class TravelTerminal : public Terminal {
-public:
+protected:
 	TravelTerminal();
 	TravelTerminal(ORBObjectServant* obj);
 	TravelTerminal(TravelTerminal& ref);
 
-	TravelTerminal* clone();
-
 	virtual ~TravelTerminal();
+
+public:
+	TravelTerminal* clone();
 
 	int useObject(Player* player);
 
-protected:
+	friend class TravelTerminalHelper;
 };
 
 class TravelTerminalImplementation;

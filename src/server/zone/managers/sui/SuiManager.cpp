@@ -118,7 +118,7 @@ void SuiManager::handleStartMusic(uint32 boxID, Player* player, uint32 cancel, c
 		
 		player->removeSuiBox(boxID);
 		
-		delete sui;
+		sui->finalize();
 		
 		player->unlock();
 	} catch (Exception& e) {
@@ -149,7 +149,7 @@ void SuiManager::handleStartDancing(uint32 boxID, Player* player, uint32 cancel,
 		
 		player->removeSuiBox(boxID);
 		
-		delete sui;
+		sui->finalize();
 		
 		player->unlock();
 	} catch (Exception& e) {
@@ -186,7 +186,7 @@ void SuiManager::handleSurveyToolRange(uint32 boxID, Player* player, uint32 canc
 		
 		player->removeSuiBox(boxID);
 		
-		delete sui;
+		sui->finalize();
 		
 		player->unlock();
 	} catch (Exception& e) {
@@ -235,7 +235,7 @@ void SuiManager::handleSliceWeapon(uint32 boxID, Player* player, uint32 cancel, 
 
 		player->removeSuiBox(boxID);
 		
-		delete sui;
+		sui->finalize();
 
 		player->unlock();
 	} catch (Exception& e) {
@@ -284,7 +284,7 @@ void SuiManager::handleSliceArmor(uint32 boxID, Player* player, uint32 cancel, i
 
 		player->removeSuiBox(boxID);
 		
-		delete sui;
+		sui->finalize();
 
 		player->unlock();
 	} catch (Exception& e) {
@@ -331,7 +331,7 @@ void SuiManager::handleRepairWeapon(uint32 boxID, Player* player, uint32 cancel,
 
 		player->removeSuiBox(boxID);
 		
-		delete sui;
+		sui->finalize();
 
 		player->unlock();
 	} catch (Exception& e) {
@@ -378,7 +378,7 @@ void SuiManager::handleRepairArmor(uint32 boxID, Player* player, uint32 cancel, 
 
 		player->removeSuiBox(boxID);
 		
-		delete sui;
+		sui->finalize();
 
 		player->unlock();
 	} catch (Exception& e) {
@@ -406,7 +406,7 @@ void SuiManager::handleTicketPurchaseMessageBox(uint32 boxID, Player* player) {
 
 		player->removeSuiBox(boxID);
 		
-		delete sui;
+		sui->finalize();
 
 		player->unlock();
 	} catch (Exception& e) {
@@ -450,7 +450,7 @@ void SuiManager::handleTicketCollectorRespones(uint32 boxID, Player* player, uin
 
 		player->removeSuiBox(boxID);
 		
-		delete sui;
+		sui->finalize();
 
 		player->unlock();
 	} catch (Exception& e) {
@@ -503,7 +503,7 @@ void SuiManager::handleColorPicker(uint32 boxID, Player* player, uint32 cancel, 
 
 		player->removeSuiBox(boxID);
 		
-		delete sui;
+		sui->finalize();
 
 		player->unlock();
 	} catch (Exception& e) {
@@ -532,7 +532,7 @@ void SuiManager::handleBakTransfer(uint32 boxID, Player* player, int cash, int b
 		SuiBox* sui = player->getSuiBox(boxID);
 		
 		if (sui != NULL)
-			delete sui;
+			sui->finalize();
 		
 		player->updateCashCredits(cash);
 		player->updateBankCredits(bank);

@@ -54,6 +54,8 @@ which carries forward this exception.
 
 #include "../../creature/CreatureObject.h"
 
+#include "../../draftschematic/DraftSchematic.h"
+
 #include "CraftingTool.h"
 
 #include "CraftingToolImplementation.h"
@@ -145,16 +147,128 @@ void CraftingTool::setToolEffectiveness(float eff) {
 		((CraftingToolImplementation*) _impl)->setToolEffectiveness(eff);
 }
 
-float CraftingTool::getToolEffectiveness() {
+void CraftingTool::setCraftingState(int s) {
 	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
 		ORBMethodInvocation invocation(this, 11);
+		invocation.addSignedIntParameter(s);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((CraftingToolImplementation*) _impl)->setCraftingState(s);
+}
+
+void CraftingTool::setTano(TangibleObject* tano) {
+	if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 12);
+		invocation.addObjectParameter(tano);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((CraftingToolImplementation*) _impl)->setTano(tano);
+}
+
+void CraftingTool::setDs(DraftSchematic* ds) {
+	if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 13);
+		invocation.addObjectParameter(ds);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((CraftingToolImplementation*) _impl)->setDs(ds);
+}
+
+void CraftingTool::setInsertCount(int count) {
+	if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 14);
+		invocation.addSignedIntParameter(count);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((CraftingToolImplementation*) _impl)->setInsertCount(count);
+}
+
+void CraftingTool::increaseInsertCount() {
+	if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 15);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((CraftingToolImplementation*) _impl)->increaseInsertCount();
+}
+
+float CraftingTool::getToolEffectiveness() {
+	if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 16);
 
 		return invocation.executeWithFloatReturn();
 	} else
 		return ((CraftingToolImplementation*) _impl)->getToolEffectiveness();
+}
+
+int CraftingTool::getCraftingState() {
+	if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 17);
+
+		return invocation.executeWithSignedIntReturn();
+	} else
+		return ((CraftingToolImplementation*) _impl)->getCraftingState();
+}
+
+TangibleObject* CraftingTool::getTano() {
+	if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 18);
+
+		return (TangibleObject*) invocation.executeWithObjectReturn();
+	} else
+		return ((CraftingToolImplementation*) _impl)->getTano();
+}
+
+DraftSchematic* CraftingTool::getDs() {
+	if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 19);
+
+		return (DraftSchematic*) invocation.executeWithObjectReturn();
+	} else
+		return ((CraftingToolImplementation*) _impl)->getDs();
+}
+
+int CraftingTool::getInsertCount() {
+	if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 20);
+
+		return invocation.executeWithSignedIntReturn();
+	} else
+		return ((CraftingToolImplementation*) _impl)->getInsertCount();
 }
 
 bool CraftingTool::isReady() {
@@ -162,7 +276,7 @@ bool CraftingTool::isReady() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 12);
+		ORBMethodInvocation invocation(this, 21);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -196,9 +310,36 @@ Packet* CraftingToolAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* in
 		setToolEffectiveness(inv->getFloatParameter());
 		break;
 	case 11:
-		resp->insertFloat(getToolEffectiveness());
+		setCraftingState(inv->getSignedIntParameter());
 		break;
 	case 12:
+		setTano((TangibleObject*) inv->getObjectParameter());
+		break;
+	case 13:
+		setDs((DraftSchematic*) inv->getObjectParameter());
+		break;
+	case 14:
+		setInsertCount(inv->getSignedIntParameter());
+		break;
+	case 15:
+		increaseInsertCount();
+		break;
+	case 16:
+		resp->insertFloat(getToolEffectiveness());
+		break;
+	case 17:
+		resp->insertSignedInt(getCraftingState());
+		break;
+	case 18:
+		resp->insertLong(getTano()->_getORBObjectID());
+		break;
+	case 19:
+		resp->insertLong(getDs()->_getORBObjectID());
+		break;
+	case 20:
+		resp->insertSignedInt(getInsertCount());
+		break;
+	case 21:
 		resp->insertBoolean(isReady());
 		break;
 	default:
@@ -228,8 +369,44 @@ void CraftingToolAdapter::setToolEffectiveness(float eff) {
 	return ((CraftingToolImplementation*) impl)->setToolEffectiveness(eff);
 }
 
+void CraftingToolAdapter::setCraftingState(int s) {
+	return ((CraftingToolImplementation*) impl)->setCraftingState(s);
+}
+
+void CraftingToolAdapter::setTano(TangibleObject* tano) {
+	return ((CraftingToolImplementation*) impl)->setTano(tano);
+}
+
+void CraftingToolAdapter::setDs(DraftSchematic* ds) {
+	return ((CraftingToolImplementation*) impl)->setDs(ds);
+}
+
+void CraftingToolAdapter::setInsertCount(int count) {
+	return ((CraftingToolImplementation*) impl)->setInsertCount(count);
+}
+
+void CraftingToolAdapter::increaseInsertCount() {
+	return ((CraftingToolImplementation*) impl)->increaseInsertCount();
+}
+
 float CraftingToolAdapter::getToolEffectiveness() {
 	return ((CraftingToolImplementation*) impl)->getToolEffectiveness();
+}
+
+int CraftingToolAdapter::getCraftingState() {
+	return ((CraftingToolImplementation*) impl)->getCraftingState();
+}
+
+TangibleObject* CraftingToolAdapter::getTano() {
+	return ((CraftingToolImplementation*) impl)->getTano();
+}
+
+DraftSchematic* CraftingToolAdapter::getDs() {
+	return ((CraftingToolImplementation*) impl)->getDs();
+}
+
+int CraftingToolAdapter::getInsertCount() {
+	return ((CraftingToolImplementation*) impl)->getInsertCount();
 }
 
 bool CraftingToolAdapter::isReady() {

@@ -81,12 +81,25 @@ DraftSchematic* DraftSchematic::clone() {
 }
 
 
-void DraftSchematic::addIngredient(const string& ingredientTemplateName, const string& ingredientTitleName, bool optional, const string& resourceType, unsigned int resourceQuantity) {
+DraftSchematic* DraftSchematic::dsClone(DraftSchematic* ds) {
 	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
 		ORBMethodInvocation invocation(this, 6);
+		invocation.addObjectParameter(ds);
+
+		return (DraftSchematic*) invocation.executeWithObjectReturn();
+	} else
+		return ((DraftSchematicImplementation*) _impl)->dsClone(ds);
+}
+
+void DraftSchematic::addIngredient(const string& ingredientTemplateName, const string& ingredientTitleName, bool optional, const string& resourceType, unsigned int resourceQuantity) {
+	if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 7);
 		invocation.addAsciiParameter(ingredientTemplateName);
 		invocation.addAsciiParameter(ingredientTitleName);
 		invocation.addBooleanParameter(optional);
@@ -103,7 +116,7 @@ void DraftSchematic::sendIngredientsToPlayer(Player* player) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 7);
+		ORBMethodInvocation invocation(this, 8);
 		invocation.addObjectParameter(player);
 
 		invocation.executeWithVoidReturn();
@@ -116,7 +129,7 @@ void DraftSchematic::helperSendIngredientsToPlayer(ObjectControllerMessage* objM
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 8);
+		ORBMethodInvocation invocation(this, 9);
 		invocation.addObjectParameter(objMsg);
 
 		invocation.executeWithVoidReturn();
@@ -129,7 +142,7 @@ void DraftSchematic::addExperimentalProperty(unsigned int groupNumber, const str
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 9);
+		ORBMethodInvocation invocation(this, 10);
 		invocation.addUnsignedIntParameter(groupNumber);
 		invocation.addAsciiParameter(experimentalProperty);
 		invocation.addUnsignedIntParameter(weight);
@@ -144,7 +157,7 @@ void DraftSchematic::sendExperimentalPropertiesToPlayer(Player* player) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 10);
+		ORBMethodInvocation invocation(this, 11);
 		invocation.addObjectParameter(player);
 
 		invocation.executeWithVoidReturn();
@@ -157,7 +170,7 @@ DraftSchematicIngredient* DraftSchematic::getIngredient(int index) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 11);
+		ORBMethodInvocation invocation(this, 12);
 		invocation.addSignedIntParameter(index);
 
 		return (DraftSchematicIngredient*) invocation.executeWithObjectReturn();
@@ -170,7 +183,7 @@ int DraftSchematic::getIngredientListSize() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 12);
+		ORBMethodInvocation invocation(this, 13);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -182,7 +195,7 @@ void DraftSchematic::addExpPropTitle(const string& title) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 13);
+		ORBMethodInvocation invocation(this, 14);
 		invocation.addAsciiParameter(title);
 
 		invocation.executeWithVoidReturn();
@@ -195,7 +208,7 @@ int DraftSchematic::getExpPropTitlesListSize() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 14);
+		ORBMethodInvocation invocation(this, 15);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -207,7 +220,7 @@ string& DraftSchematic::getExpPropTitle(int index) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 15);
+		ORBMethodInvocation invocation(this, 16);
 		invocation.addSignedIntParameter(index);
 
 		invocation.executeWithAsciiReturn(_return_getExpPropTitle);
@@ -221,7 +234,7 @@ int DraftSchematic::getExpPropGroupListSize() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 16);
+		ORBMethodInvocation invocation(this, 17);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -233,7 +246,7 @@ DraftSchematicExpPropGroup* DraftSchematic::getExpPropGroup(int index) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 17);
+		ORBMethodInvocation invocation(this, 18);
 		invocation.addSignedIntParameter(index);
 
 		return (DraftSchematicExpPropGroup*) invocation.executeWithObjectReturn();
@@ -246,7 +259,7 @@ void DraftSchematic::setPersistent(bool status) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 18);
+		ORBMethodInvocation invocation(this, 19);
 		invocation.addBooleanParameter(status);
 
 		invocation.executeWithVoidReturn();
@@ -254,12 +267,38 @@ void DraftSchematic::setPersistent(bool status) {
 		((DraftSchematicImplementation*) _impl)->setPersistent(status);
 }
 
+void DraftSchematic::setObjectID(unsigned long long objID) {
+	if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 20);
+		invocation.addUnsignedLongParameter(objID);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((DraftSchematicImplementation*) _impl)->setObjectID(objID);
+}
+
+void DraftSchematic::setTanoAttributes(string& attributes) {
+	if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 21);
+		invocation.addAsciiParameter(attributes);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((DraftSchematicImplementation*) _impl)->setTanoAttributes(attributes);
+}
+
 unsigned int DraftSchematic::getSchematicID() {
 	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 19);
+		ORBMethodInvocation invocation(this, 22);
 
 		return invocation.executeWithUnsignedIntReturn();
 	} else
@@ -271,7 +310,7 @@ unsigned int DraftSchematic::getSchematicCRC() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 20);
+		ORBMethodInvocation invocation(this, 23);
 
 		return invocation.executeWithUnsignedIntReturn();
 	} else
@@ -283,7 +322,7 @@ string& DraftSchematic::getName() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 21);
+		ORBMethodInvocation invocation(this, 24);
 
 		invocation.executeWithAsciiReturn(_return_getName);
 		return _return_getName;
@@ -296,7 +335,7 @@ string& DraftSchematic::getGroupName() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 22);
+		ORBMethodInvocation invocation(this, 25);
 
 		invocation.executeWithAsciiReturn(_return_getGroupName);
 		return _return_getGroupName;
@@ -309,7 +348,7 @@ unsigned int DraftSchematic::getComplexity() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 23);
+		ORBMethodInvocation invocation(this, 26);
 
 		return invocation.executeWithUnsignedIntReturn();
 	} else
@@ -321,11 +360,36 @@ unsigned int DraftSchematic::getSchematicSize() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 24);
+		ORBMethodInvocation invocation(this, 27);
 
 		return invocation.executeWithUnsignedIntReturn();
 	} else
 		return ((DraftSchematicImplementation*) _impl)->getSchematicSize();
+}
+
+unsigned int DraftSchematic::getObjectID() {
+	if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 28);
+
+		return invocation.executeWithUnsignedIntReturn();
+	} else
+		return ((DraftSchematicImplementation*) _impl)->getObjectID();
+}
+
+string& DraftSchematic::getTanoAttributes() {
+	if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 29);
+
+		invocation.executeWithAsciiReturn(_return_getTanoAttributes);
+		return _return_getTanoAttributes;
+	} else
+		return ((DraftSchematicImplementation*) _impl)->getTanoAttributes();
 }
 
 /*
@@ -340,67 +404,86 @@ Packet* DraftSchematicAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* 
 
 	switch (methid) {
 	case 6:
-		addIngredient(inv->getAsciiParameter(_param0_addIngredient__string_string_bool_string_int_), inv->getAsciiParameter(_param1_addIngredient__string_string_bool_string_int_), inv->getBooleanParameter(), inv->getAsciiParameter(_param3_addIngredient__string_string_bool_string_int_), inv->getUnsignedIntParameter());
+		resp->insertLong(dsClone((DraftSchematic*) inv->getObjectParameter())->_getORBObjectID());
 		break;
 	case 7:
-		sendIngredientsToPlayer((Player*) inv->getObjectParameter());
+		addIngredient(inv->getAsciiParameter(_param0_addIngredient__string_string_bool_string_int_), inv->getAsciiParameter(_param1_addIngredient__string_string_bool_string_int_), inv->getBooleanParameter(), inv->getAsciiParameter(_param3_addIngredient__string_string_bool_string_int_), inv->getUnsignedIntParameter());
 		break;
 	case 8:
-		helperSendIngredientsToPlayer((ObjectControllerMessage*) inv->getObjectParameter());
+		sendIngredientsToPlayer((Player*) inv->getObjectParameter());
 		break;
 	case 9:
-		addExperimentalProperty(inv->getUnsignedIntParameter(), inv->getAsciiParameter(_param1_addExperimentalProperty__int_string_int_), inv->getUnsignedIntParameter());
+		helperSendIngredientsToPlayer((ObjectControllerMessage*) inv->getObjectParameter());
 		break;
 	case 10:
-		sendExperimentalPropertiesToPlayer((Player*) inv->getObjectParameter());
+		addExperimentalProperty(inv->getUnsignedIntParameter(), inv->getAsciiParameter(_param1_addExperimentalProperty__int_string_int_), inv->getUnsignedIntParameter());
 		break;
 	case 11:
-		resp->insertLong(getIngredient(inv->getSignedIntParameter())->_getORBObjectID());
+		sendExperimentalPropertiesToPlayer((Player*) inv->getObjectParameter());
 		break;
 	case 12:
-		resp->insertSignedInt(getIngredientListSize());
+		resp->insertLong(getIngredient(inv->getSignedIntParameter())->_getORBObjectID());
 		break;
 	case 13:
-		addExpPropTitle(inv->getAsciiParameter(_param0_addExpPropTitle__string_));
+		resp->insertSignedInt(getIngredientListSize());
 		break;
 	case 14:
-		resp->insertSignedInt(getExpPropTitlesListSize());
+		addExpPropTitle(inv->getAsciiParameter(_param0_addExpPropTitle__string_));
 		break;
 	case 15:
-		resp->insertAscii(getExpPropTitle(inv->getSignedIntParameter()));
+		resp->insertSignedInt(getExpPropTitlesListSize());
 		break;
 	case 16:
-		resp->insertSignedInt(getExpPropGroupListSize());
+		resp->insertAscii(getExpPropTitle(inv->getSignedIntParameter()));
 		break;
 	case 17:
-		resp->insertLong(getExpPropGroup(inv->getSignedIntParameter())->_getORBObjectID());
+		resp->insertSignedInt(getExpPropGroupListSize());
 		break;
 	case 18:
-		setPersistent(inv->getBooleanParameter());
+		resp->insertLong(getExpPropGroup(inv->getSignedIntParameter())->_getORBObjectID());
 		break;
 	case 19:
-		resp->insertInt(getSchematicID());
+		setPersistent(inv->getBooleanParameter());
 		break;
 	case 20:
-		resp->insertInt(getSchematicCRC());
+		setObjectID(inv->getUnsignedLongParameter());
 		break;
 	case 21:
-		resp->insertAscii(getName());
+		setTanoAttributes(inv->getAsciiParameter(_param0_setTanoAttributes__string_));
 		break;
 	case 22:
-		resp->insertAscii(getGroupName());
+		resp->insertInt(getSchematicID());
 		break;
 	case 23:
-		resp->insertInt(getComplexity());
+		resp->insertInt(getSchematicCRC());
 		break;
 	case 24:
+		resp->insertAscii(getName());
+		break;
+	case 25:
+		resp->insertAscii(getGroupName());
+		break;
+	case 26:
+		resp->insertInt(getComplexity());
+		break;
+	case 27:
 		resp->insertInt(getSchematicSize());
+		break;
+	case 28:
+		resp->insertInt(getObjectID());
+		break;
+	case 29:
+		resp->insertAscii(getTanoAttributes());
 		break;
 	default:
 		return NULL;
 	}
 
 	return resp;
+}
+
+DraftSchematic* DraftSchematicAdapter::dsClone(DraftSchematic* ds) {
+	return ((DraftSchematicImplementation*) impl)->dsClone(ds);
 }
 
 void DraftSchematicAdapter::addIngredient(const string& ingredientTemplateName, const string& ingredientTitleName, bool optional, const string& resourceType, unsigned int resourceQuantity) {
@@ -455,6 +538,14 @@ void DraftSchematicAdapter::setPersistent(bool status) {
 	return ((DraftSchematicImplementation*) impl)->setPersistent(status);
 }
 
+void DraftSchematicAdapter::setObjectID(unsigned long long objID) {
+	return ((DraftSchematicImplementation*) impl)->setObjectID(objID);
+}
+
+void DraftSchematicAdapter::setTanoAttributes(string& attributes) {
+	return ((DraftSchematicImplementation*) impl)->setTanoAttributes(attributes);
+}
+
 unsigned int DraftSchematicAdapter::getSchematicID() {
 	return ((DraftSchematicImplementation*) impl)->getSchematicID();
 }
@@ -477,6 +568,14 @@ unsigned int DraftSchematicAdapter::getComplexity() {
 
 unsigned int DraftSchematicAdapter::getSchematicSize() {
 	return ((DraftSchematicImplementation*) impl)->getSchematicSize();
+}
+
+unsigned int DraftSchematicAdapter::getObjectID() {
+	return ((DraftSchematicImplementation*) impl)->getObjectID();
+}
+
+string& DraftSchematicAdapter::getTanoAttributes() {
+	return ((DraftSchematicImplementation*) impl)->getTanoAttributes();
 }
 
 /*

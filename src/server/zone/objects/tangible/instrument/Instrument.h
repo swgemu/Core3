@@ -60,20 +60,21 @@ class Player;
 #include "../TangibleObject.h"
 
 class Instrument : public TangibleObject {
-public:
+protected:
 	Instrument();
 	Instrument(ORBObjectServant* obj);
 	Instrument(Instrument& ref);
 
-	Instrument* clone();
-
 	virtual ~Instrument();
+
+public:
+	Instrument* clone();
 
 	int useObject(Player* player);
 
 	int getInstrumentType();
 
-protected:
+	friend class InstrumentHelper;
 };
 
 class InstrumentImplementation;

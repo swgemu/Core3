@@ -78,14 +78,15 @@ class Guild;
 #include "../scene/SceneObject.h"
 
 class CreatureObject : public SceneObject {
-public:
+protected:
 	CreatureObject();
 	CreatureObject(ORBObjectServant* obj);
 	CreatureObject(CreatureObject& ref);
 
-	CreatureObject* clone();
-
 	virtual ~CreatureObject();
+
+public:
+	CreatureObject* clone();
 
 	void info(const string& message, bool forcedLog = false);
 
@@ -746,6 +747,8 @@ protected:
 
 	unicode _return_getCharacterName;
 
+
+	friend class CreatureObjectHelper;
 };
 
 class CreatureObjectImplementation;

@@ -104,8 +104,11 @@ SceneObjectImplementation::~SceneObjectImplementation() {
 bool SceneObject::destroy() {
 	bool destroying = ServerCore::getZoneServer()->destroyObject(this);
 	
-	if (destroying)
+	if (destroying) {
+		info("destroying object");
+
 		delete this;
+	}
 	
 	return destroying;
 }

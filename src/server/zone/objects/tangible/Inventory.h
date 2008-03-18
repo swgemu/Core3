@@ -58,16 +58,17 @@ class CreatureObject;
 #include "Container.h"
 
 class Inventory : public Container {
-public:
+protected:
 	Inventory();
 	Inventory(ORBObjectServant* obj);
 	Inventory(Inventory& ref);
 
-	Inventory* clone();
-
 	virtual ~Inventory();
 
-protected:
+public:
+	Inventory* clone();
+
+	friend class InventoryHelper;
 };
 
 class InventoryImplementation;

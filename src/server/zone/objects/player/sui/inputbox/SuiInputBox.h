@@ -60,14 +60,15 @@ class Player;
 #include "../SuiBox.h"
 
 class SuiInputBox : public SuiBox {
-public:
+protected:
 	SuiInputBox();
 	SuiInputBox(ORBObjectServant* obj);
 	SuiInputBox(SuiInputBox& ref);
 
-	SuiInputBox* clone();
-
 	virtual ~SuiInputBox();
+
+public:
+	SuiInputBox* clone();
 
 	BaseMessage* generateMessage();
 
@@ -77,7 +78,7 @@ public:
 
 	bool isFilterBox();
 
-protected:
+	friend class SuiInputBoxHelper;
 };
 
 class SuiInputBoxImplementation;

@@ -52,6 +52,8 @@ which carries forward this exception.
 
 #include "../../objects/tangible/resource/ResourceContainer.h"
 
+#include "../../objects/tangible/craftingtool/CraftingTool.h"
+
 #include "CraftingManager.h"
 
 #include "CraftingManagerImplementation.h"
@@ -77,18 +79,19 @@ CraftingManager* CraftingManager::clone() {
 }
 
 
-void CraftingManager::prepareCraftingSessionStageTwo(Player* player, DraftSchematic* ds) {
+void CraftingManager::prepareCraftingSession(Player* player, CraftingTool* ct, DraftSchematic* ds) {
 	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
 		ORBMethodInvocation invocation(this, 6);
 		invocation.addObjectParameter(player);
+		invocation.addObjectParameter(ct);
 		invocation.addObjectParameter(ds);
 
 		invocation.executeWithVoidReturn();
 	} else
-		((CraftingManagerImplementation*) _impl)->prepareCraftingSessionStageTwo(player, ds);
+		((CraftingManagerImplementation*) _impl)->prepareCraftingSession(player, ct, ds);
 }
 
 void CraftingManager::addResourceToCraft(Player* player, ResourceContainer* rcno, int slot, int counter) {
@@ -107,12 +110,55 @@ void CraftingManager::addResourceToCraft(Player* player, ResourceContainer* rcno
 		((CraftingManagerImplementation*) _impl)->addResourceToCraft(player, rcno, slot, counter);
 }
 
-void CraftingManager::addDraftSchematicsFromGroupName(Player* player, const string& schematicGroupName) {
+void CraftingManager::nextCraftingStage(Player* player, string& test) {
 	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
 		ORBMethodInvocation invocation(this, 8);
+		invocation.addObjectParameter(player);
+		invocation.addAsciiParameter(test);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((CraftingManagerImplementation*) _impl)->nextCraftingStage(player, test);
+}
+
+void CraftingManager::craftingCustomization(Player* player, string& name, int condition) {
+	if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 9);
+		invocation.addObjectParameter(player);
+		invocation.addAsciiParameter(name);
+		invocation.addSignedIntParameter(condition);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((CraftingManagerImplementation*) _impl)->craftingCustomization(player, name, condition);
+}
+
+void CraftingManager::createPrototype(Player* player, string& test) {
+	if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 10);
+		invocation.addObjectParameter(player);
+		invocation.addAsciiParameter(test);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((CraftingManagerImplementation*) _impl)->createPrototype(player, test);
+}
+
+void CraftingManager::addDraftSchematicsFromGroupName(Player* player, const string& schematicGroupName) {
+	if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 11);
 		invocation.addObjectParameter(player);
 		invocation.addAsciiParameter(schematicGroupName);
 
@@ -126,7 +172,7 @@ void CraftingManager::subtractDraftSchematicsFromGroupName(Player* player, const
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 9);
+		ORBMethodInvocation invocation(this, 12);
 		invocation.addObjectParameter(player);
 		invocation.addAsciiParameter(schematicGroupName);
 
@@ -147,15 +193,24 @@ Packet* CraftingManagerAdapter::invokeMethod(uint32 methid, ORBMethodInvocation*
 
 	switch (methid) {
 	case 6:
-		prepareCraftingSessionStageTwo((Player*) inv->getObjectParameter(), (DraftSchematic*) inv->getObjectParameter());
+		prepareCraftingSession((Player*) inv->getObjectParameter(), (CraftingTool*) inv->getObjectParameter(), (DraftSchematic*) inv->getObjectParameter());
 		break;
 	case 7:
 		addResourceToCraft((Player*) inv->getObjectParameter(), (ResourceContainer*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
 		break;
 	case 8:
-		addDraftSchematicsFromGroupName((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_addDraftSchematicsFromGroupName__Player_string_));
+		nextCraftingStage((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_nextCraftingStage__Player_string_));
 		break;
 	case 9:
+		craftingCustomization((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_craftingCustomization__Player_string_int_), inv->getSignedIntParameter());
+		break;
+	case 10:
+		createPrototype((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_createPrototype__Player_string_));
+		break;
+	case 11:
+		addDraftSchematicsFromGroupName((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_addDraftSchematicsFromGroupName__Player_string_));
+		break;
+	case 12:
 		subtractDraftSchematicsFromGroupName((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_subtractDraftSchematicsFromGroupName__Player_string_));
 		break;
 	default:
@@ -165,12 +220,24 @@ Packet* CraftingManagerAdapter::invokeMethod(uint32 methid, ORBMethodInvocation*
 	return resp;
 }
 
-void CraftingManagerAdapter::prepareCraftingSessionStageTwo(Player* player, DraftSchematic* ds) {
-	return ((CraftingManagerImplementation*) impl)->prepareCraftingSessionStageTwo(player, ds);
+void CraftingManagerAdapter::prepareCraftingSession(Player* player, CraftingTool* ct, DraftSchematic* ds) {
+	return ((CraftingManagerImplementation*) impl)->prepareCraftingSession(player, ct, ds);
 }
 
 void CraftingManagerAdapter::addResourceToCraft(Player* player, ResourceContainer* rcno, int slot, int counter) {
 	return ((CraftingManagerImplementation*) impl)->addResourceToCraft(player, rcno, slot, counter);
+}
+
+void CraftingManagerAdapter::nextCraftingStage(Player* player, string& test) {
+	return ((CraftingManagerImplementation*) impl)->nextCraftingStage(player, test);
+}
+
+void CraftingManagerAdapter::craftingCustomization(Player* player, string& name, int condition) {
+	return ((CraftingManagerImplementation*) impl)->craftingCustomization(player, name, condition);
+}
+
+void CraftingManagerAdapter::createPrototype(Player* player, string& test) {
+	return ((CraftingManagerImplementation*) impl)->createPrototype(player, test);
 }
 
 void CraftingManagerAdapter::addDraftSchematicsFromGroupName(Player* player, const string& schematicGroupName) {

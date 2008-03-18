@@ -101,7 +101,8 @@ ChatManagerImplementation::ChatManagerImplementation(ZoneServer* serv, int inits
 ChatManagerImplementation::~ChatManagerImplementation() {
 	destroyRooms();
 	
-	delete playerMap;
+	playerMap->finalize();
+	
 	delete roomMap;
 }
 
@@ -139,7 +140,7 @@ void ChatManagerImplementation::destroyRooms() {
 	
 	while (roomMap->hasNext()) {
 		ChatRoom* room = roomMap->next();
-		delete room;
+		room->finalize();
 	}
 	
 	roomMap->removeAll();
@@ -1408,7 +1409,7 @@ void ChatManagerImplementation::destroyRoom(ChatRoom* room) {
 	if (parent != NULL)
 		parent->removeSubRoom(room);
 	
-	delete room;
+	room->finalize();
 }
 
 

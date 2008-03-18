@@ -62,14 +62,15 @@ class Player;
 #include "../TangibleObject.h"
 
 class Attachment : public TangibleObject {
-public:
+protected:
 	Attachment();
 	Attachment(ORBObjectServant* obj);
 	Attachment(Attachment& ref);
 
-	Attachment* clone();
-
 	virtual ~Attachment();
+
+public:
+	Attachment* clone();
 
 	void remove(Player* player);
 
@@ -109,7 +110,7 @@ public:
 
 	int getBestSkillMod();
 
-protected:
+	friend class AttachmentHelper;
 };
 
 class AttachmentImplementation;

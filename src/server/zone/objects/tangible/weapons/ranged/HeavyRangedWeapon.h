@@ -60,18 +60,19 @@ class RangedWeapon;
 #include "../RangedWeapon.h"
 
 class HeavyRangedWeapon : public RangedWeapon {
-public:
+protected:
 	HeavyRangedWeapon();
 	HeavyRangedWeapon(ORBObjectServant* obj);
 	HeavyRangedWeapon(HeavyRangedWeapon& ref);
 
-	HeavyRangedWeapon* clone();
-
 	virtual ~HeavyRangedWeapon();
+
+public:
+	HeavyRangedWeapon* clone();
 
 	int useObject(Player* player);
 
-protected:
+	friend class HeavyRangedWeaponHelper;
 };
 
 class HeavyRangedWeaponImplementation;

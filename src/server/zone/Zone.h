@@ -64,14 +64,15 @@ class CreatureManager;
 #include "engine/util/QuadTreeEntry.h"
 
 class Zone : public ORBObjectStub {
-public:
+protected:
 	Zone();
 	Zone(ORBObjectServant* obj);
 	Zone(Zone& ref);
 
-	Zone* clone();
-
 	virtual ~Zone();
+
+public:
+	Zone* clone();
 
 	void startManagers();
 
@@ -121,7 +122,7 @@ public:
 
 	void inRange(QuadTreeEntry* obj, float range);
 
-protected:
+	friend class ZoneHelper;
 };
 
 class ZoneImplementation;

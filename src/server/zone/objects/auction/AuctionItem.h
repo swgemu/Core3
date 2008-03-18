@@ -56,14 +56,15 @@ which carries forward this exception.
 #include "engine/core/thread/RWLockable.h"
 
 class AuctionItem : public RWLockable {
-public:
+protected:
 	AuctionItem();
 	AuctionItem(ORBObjectServant* obj);
 	AuctionItem(AuctionItem& ref);
 
-	AuctionItem* clone();
-
 	virtual ~AuctionItem();
+
+public:
+	AuctionItem* clone();
 
 	unsigned long long getId();
 
@@ -132,6 +133,8 @@ protected:
 
 	string _return_getTerminalTitle;
 
+
+	friend class AuctionItemHelper;
 };
 
 class AuctionItemImplementation;

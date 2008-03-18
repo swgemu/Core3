@@ -68,8 +68,10 @@ BuildingObjectImplementation::BuildingObjectImplementation(uint64 oid, bool stat
 }
 
 BuildingObjectImplementation::~BuildingObjectImplementation() {
-	for (int i = 0; i < cells.size(); ++i)
-		delete cells.get(i);
+	for (int i = 0; i < cells.size(); ++i) {
+		CellObject* cell = cells.get(i);
+		cell->finalize();
+	}
 }
 
 void BuildingObjectImplementation::insertToZone(Zone* zone) {

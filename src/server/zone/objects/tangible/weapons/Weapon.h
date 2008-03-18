@@ -62,14 +62,15 @@ class Powerup;
 #include "../TangibleObject.h"
 
 class Weapon : public TangibleObject {
-public:
+protected:
 	Weapon();
 	Weapon(ORBObjectServant* obj);
 	Weapon(Weapon& ref);
 
-	Weapon* clone();
-
 	virtual ~Weapon();
+
+public:
+	Weapon* clone();
 
 	void sendTo(Player* player, bool doClose = true);
 
@@ -232,6 +233,8 @@ public:
 protected:
 	string _return_getCert;
 
+
+	friend class WeaponHelper;
 };
 
 class WeaponImplementation;

@@ -225,7 +225,7 @@ void GroupManager::leaveGroup(GroupObject* group, Player* player) {
 	player->wlock();
 
 	if (destroyGroup)
-		delete group;
+		group->finalize();
 }
 
 void GroupManager::disbandGroup(GroupObject* group, Player* player) {
@@ -253,7 +253,7 @@ void GroupManager::disbandGroup(GroupObject* group, Player* player) {
 	
 	player->wlock();
 	
-	delete group;
+	group->finalize();
 }
 
 void GroupManager::kickFromGroup(GroupObject* group, Player* player, Player* playerToKick) {
@@ -325,7 +325,7 @@ void GroupManager::kickFromGroup(GroupObject* group, Player* player, Player* pla
 	
 		}
 	} else
-		delete group;
+		group->finalize();
 	
 	player->wlock();
 }

@@ -56,16 +56,17 @@ class SceneObject;
 #include "../scene/SceneObject.h"
 
 class MissionObject : public SceneObject {
-public:
+protected:
 	MissionObject();
 	MissionObject(ORBObjectServant* obj);
 	MissionObject(MissionObject& ref);
 
-	MissionObject* clone();
-
 	virtual ~MissionObject();
 
-protected:
+public:
+	MissionObject* clone();
+
+	friend class MissionObjectHelper;
 };
 
 class MissionObjectImplementation;

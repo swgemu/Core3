@@ -58,18 +58,19 @@ class Player;
 #include "../TangibleObject.h"
 
 class Holocron : public TangibleObject {
-public:
+protected:
 	Holocron();
 	Holocron(ORBObjectServant* obj);
 	Holocron(Holocron& ref);
 
-	Holocron* clone();
-
 	virtual ~Holocron();
+
+public:
+	Holocron* clone();
 
 	int useObject(Player* player);
 
-protected:
+	friend class HolocronHelper;
 };
 
 class HolocronImplementation;
