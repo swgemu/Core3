@@ -72,6 +72,8 @@ void CraftingToolImplementation::init() {
 	
 	setToolEffectiveness(-15.0f);
 	setCraftingState(0);
+	currentDs = NULL;
+	currentTano = NULL;
 }
  
 int CraftingToolImplementation::useObject(Player* player) {

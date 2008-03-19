@@ -1734,9 +1734,6 @@ void ObjectControllerMessage::parseSelectDraftSchematic(Player* player, Message*
 	// Find the selected schematic
 	DraftSchematic* ds = player->getDraftSchematic(indexOfSelectedSchematic); 
 	
-	// This will be replaced but the built in cloning method when available
-	//DraftSchematic* ds2 = ds->dsClone(ds);
-	
 	if(ds != NULL) {
 		CraftingTool * ct = player->getCurrentCraftingTool();
 		player->prepareCraftingSession(ct, ds);

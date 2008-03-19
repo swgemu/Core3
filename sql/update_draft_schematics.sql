@@ -1,4 +1,4 @@
-/*
+﻿/*
 MySQL Data Transfer
 Source Host: 192.168.1.180
 Source Database: swgemu
@@ -13,12 +13,12 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 CREATE TABLE `draft_schematics` (
   `draftschematic_id` bigint(20) unsigned NOT NULL,
-  `name` text CHARACTER SET ucs2 NOT NULL,
+  `name` text NOT NULL,
   `object_crc` int(10) unsigned NOT NULL,
   `group_name` tinytext NOT NULL,
   `complexity` int(10) unsigned NOT NULL,
   `schematic_size` int(10) unsigned NOT NULL,
-  `ingredient_template_names` text CHARACTER SET ucs2 NOT NULL,
+  `ingredient_template_names` text NOT NULL,
   `ingredient_title_names` text NOT NULL,
   `ingredient_optional` text NOT NULL,
   `resource_types` text NOT NULL,
@@ -28,8 +28,8 @@ CREATE TABLE `draft_schematics` (
   `experimental_weights` text NOT NULL,
   `experimental_group_title` text NOT NULL,
   `tano_attributes` text NOT NULL,
-  PRIMARY KEY (`draftschematic_id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+  PRIMARY KEY (`draftschematic_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records 

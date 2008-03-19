@@ -118,15 +118,20 @@ public:
  
 		persistent = dsImp->persistent;
  
-		this->dsIngredients = dsImp->dsIngredients;
-		this->dsExpPropGroups = dsImp->dsExpPropGroups;
-		this->expPropTitleList = dsImp->expPropTitleList;
+		dsImp->dsIngredients.clone(this->dsIngredients);
+		dsImp->dsExpPropGroups.clone(this->dsExpPropGroups);
+		dsImp->expPropTitleList.clone(this->expPropTitleList);
+		this->tanoAttributes = dsImp->tanoAttributes;
 	}
  
 	DraftSchematic* dsClone(DraftSchematic* ds) { 
-		DraftSchematicImplementation* dsImpl = new DraftSchematicImplementation(ds);
-		DraftSchematic* newDS = (DraftSchematic*) dsImpl->deploy();
-		return newDS;
+		if(ds != NULL) {
+			DraftSchematicImplementation* dsImpl = new DraftSchematicImplementation(ds);
+			DraftSchematic* newDS = (DraftSchematic*) dsImpl->deploy();
+			return newDS;
+		} else {
+			return NULL;
+		}
 	}
 	
 	DraftSchematic* deploy() {

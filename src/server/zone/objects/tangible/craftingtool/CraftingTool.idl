@@ -57,6 +57,8 @@ interface CraftingTool implements TangibleObject {
 	void sendTo(Player player, boolean doClose = true);
 	void generateAttributes(Player player);
  
+ 	void cleanUp();
+ 
 	int useObject(Player player);
  
 	void sendToolStart(Player player);

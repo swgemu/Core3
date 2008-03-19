@@ -96,11 +96,35 @@ public:
 	}
 	
 	inline void setTano(TangibleObject * tano){
+		if(currentTano != NULL) {
+			currentTano->finalize();
+			currentTano = NULL;
+		}
+
 		currentTano = tano;
 	}
 	
 	inline void setDs(DraftSchematic * ds){
-		currentDs = ds;
+		if(currentDs != NULL) {
+			currentDs->finalize();
+			currentDs = NULL;
+		}
+			
+		// This will be replaced but the built in cloning method when available
+		DraftSchematic* clonedDS = ds->dsClone(ds);
+		currentDs = clonedDS;
+	}
+	
+	inline void cleanUp() {
+		if(currentDs != NULL) {
+			currentDs->finalize();
+			currentDs = NULL;
+		}
+		
+		if(currentTano != NULL) {
+			currentTano->finalize();
+			currentTano = NULL;
+		}
 	}
 	
 	inline void setInsertCount(int count){

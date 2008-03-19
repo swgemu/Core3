@@ -272,16 +272,20 @@ public:
 	
 	// Crafting Methods
 	void prepareCraftingSession(Player* player, CraftingTool * ct, DraftSchematic* ds) {
-	
-		createDraftSchematic(player, ct, ds);
+		
+		// link the DS to the crafting tool (the ds gets cloned)
+		ct->setDs(ds);
+		
+		createDraftSchematic(player, ct);
 
-		createTangibleObject(player, ct, ds);
+		createTangibleObject(player, ct);
 
-		setupIngredients(player, ct, ds);
+		setupIngredients(player, ct);
 
 	}
 	
-	void createDraftSchematic(Player* player, CraftingTool * ct, DraftSchematic* ds) {
+	void createDraftSchematic(Player* player, CraftingTool * ct) {
+		DraftSchematic* ds = ct->getDs();
 		
 		// Scene Object Create the DraftSchematic
 		ds->setObjectID(player->getNewItemID());
@@ -317,10 +321,11 @@ public:
 		SceneObjectCloseMessage* soCloseMsg = new SceneObjectCloseMessage(ds->getObjectID());
 		player->sendMessage(soCloseMsg);
 		
-		ct->setDs(ds);
 	}
 	
-	void createTangibleObject(Player* player, CraftingTool * ct, DraftSchematic* ds) {			
+	void createTangibleObject(Player* player, CraftingTool * ct) {			
+		
+		DraftSchematic* ds = ct->getDs();
 		
 		// Generates the tangible for crafting
 		TangibleObject* tano = generateTangibleObject(player, ds);
@@ -352,7 +357,9 @@ public:
 		ct->setInsertCount(1);
 	}
 	
-	void setupIngredients(Player* player, CraftingTool * ct, DraftSchematic* ds) {
+	void setupIngredients(Player* player, CraftingTool * ct) {
+		
+		DraftSchematic* ds = ct->getDs();
 		
 		// Object Controller w/ Ingredients
 		ObjectControllerMessage* objMsg = new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x0103);	
