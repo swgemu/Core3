@@ -186,6 +186,22 @@ void BazaarManagerImplementation::addSaleItem(Player* player, uint64 objectid, u
 	lock();
 	
 	player->wlock();
+	
+	// Check if the item is already for sale
+	if (items.find(objectid) >= 0) {
+		
+		stringstream str;
+		str << player->getCharacterName().c_str() << " trying to add objectid "
+			<< objectid << " to the bazaar again";
+		error(str.str());
+		
+		BaseMessage* msg = new ItemSoldMessage(objectid, 6);
+		player->sendMessage(msg);
+		
+		player->unlock();
+		unlock();
+		return;
+	}
 
 	if (price > MAXPRICE) {
 		BaseMessage* msg = new ItemSoldMessage(objectid, 14);
