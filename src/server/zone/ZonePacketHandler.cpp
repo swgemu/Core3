@@ -462,6 +462,9 @@ void ZonePacketHandler::handleObjectControllerMessage(Message* pack) {
 			case 0x107:
 				ObjectControllerMessage::parseAddCraftingResource(player, pack);
 				break;
+			case 0x108:
+				ObjectControllerMessage::parseRemoveCraftingResource(player, pack);
+				break;
 			case 0x126:
 				ObjectControllerMessage::parseObjectTargetUpdate(player, pack);
 				break;

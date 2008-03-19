@@ -2400,6 +2400,11 @@ void PlayerImplementation::addResourceToCraft(ResourceContainer * rnco, int slot
 	craftingManager->addResourceToCraft(_this, rnco, slot, counter);
 }
 
+void PlayerImplementation::removeResourceFromCraft(uint64 resID, int slot, int counter) {
+	CraftingManager* craftingManager = server->getCraftingManager();
+	craftingManager->removeResourceFromCraft(_this, resID, slot, counter);
+}
+
 void PlayerImplementation::nextCraftingStage(string test) {
 	CraftingManager* craftingManager = server->getCraftingManager();
 	craftingManager->nextCraftingStage(_this, test);

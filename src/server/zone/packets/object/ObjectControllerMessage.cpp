@@ -1763,6 +1763,21 @@ void ObjectControllerMessage::parseAddCraftingResource(Player* player, Message* 
 		player->sendSystemMessage("Add resource invalid, contact kyle");
 	}
 }
+void ObjectControllerMessage::parseRemoveCraftingResource(Player* player, Message* packet) {
+
+	packet->shiftOffset(12);
+	
+	int slot = packet->parseInt();
+	
+	uint64 resID = packet->parseLong();
+	
+	//packet->shiftOffset(4);
+	
+	int counter = packet->parseByte();
+
+	player->removeResourceFromCraft(resID, slot, counter);
+
+}
 void ObjectControllerMessage::parseNextCraftingStage(Player* player, Message* packet) {
 
 	packet->shiftOffset(8);
