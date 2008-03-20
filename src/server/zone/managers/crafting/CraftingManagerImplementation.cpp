@@ -117,9 +117,12 @@ DraftSchematic* CraftingManagerImplementation::loadDraftSchematic(
 
 	// I have no idea what the schematicSize is used for :D, but it's a part of all draft schematics
 	uint32 schematicSize = result->getUnsignedInt(5);
+	
+	// The number that tells the client which crafting tool tab to put the DS in
+	int craftingToolTab = result->getUnsignedInt(16);
 
 	DraftSchematicImplementation* dsImpl = new DraftSchematicImplementation(schematicID, objName, objCRC, groupName,
-			complexity, schematicSize);
+			complexity, schematicSize, craftingToolTab);
 
 	DraftSchematic* ds = (DraftSchematic*) dsImpl->deploy();
 

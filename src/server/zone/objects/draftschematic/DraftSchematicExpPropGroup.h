@@ -54,15 +54,14 @@ which carries forward this exception.
 class ObjectControllerMessage;
 
 class DraftSchematicExpPropGroup : public ORBObjectStub {
-protected:
+public:
 	DraftSchematicExpPropGroup();
 	DraftSchematicExpPropGroup(ORBObjectServant* obj);
 	DraftSchematicExpPropGroup(DraftSchematicExpPropGroup& ref);
 
-	virtual ~DraftSchematicExpPropGroup();
-
-public:
 	DraftSchematicExpPropGroup* clone();
+
+	virtual ~DraftSchematicExpPropGroup();
 
 	void addExperimentalProperty(const string& experimentalPropertyType, unsigned int weight);
 
@@ -78,7 +77,7 @@ public:
 
 	unsigned char getTypeAndWeight(unsigned int index);
 
-	friend class DraftSchematicExpPropGroupHelper;
+protected:
 };
 
 class DraftSchematicExpPropGroupImplementation;

@@ -104,4 +104,6 @@ interface DraftSchematic {
 
 	string getTanoAttributes();
 	
+	int getCraftingToolTab();
+	
 }

@@ -137,9 +137,10 @@ void CraftingToolImplementation::sendToolStart(Player* player) {
 	ocm->insertInt(draftSchematicListSize);
 	
 	for(int i = 0; i < draftSchematicListSize; i++) {
-		ocm->insertInt(player->getDraftSchematic(i)->getSchematicID());
-		ocm->insertInt(player->getDraftSchematic(i)->getSchematicCRC());
-		ocm->insertInt(4);		// this number decides what tab the schematic goes in (ex: 4 = food tab in crafting window)
+		DraftSchematic* ds = player->getDraftSchematic(i);
+		ocm->insertInt(ds->getSchematicID());
+		ocm->insertInt(ds->getSchematicCRC());
+		ocm->insertInt(ds->getCraftingToolTab());		// this number decides what tab the schematic goes in (ex: 4 = food tab in crafting window)
 	}
 	player->sendMessage(ocm);
 
