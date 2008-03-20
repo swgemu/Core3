@@ -205,6 +205,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/user/UserManagerImplementation.cpp \
 		server/zone/managers/radial/RadialManager.cpp \
 		server/zone/managers/group/GroupManager.cpp \
+		server/zone/managers/crafting/CraftingManagerImplementation.cpp \
 		server/zone/managers/combat/CombatManager.cpp \
 		server/zone/managers/combat/CommandQueueAction.cpp \
 		server/zone/managers/creature/CreatureManagerImplementation.cpp \
