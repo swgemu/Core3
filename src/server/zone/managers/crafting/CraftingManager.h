@@ -74,6 +74,8 @@ public:
 
 	void addResourceToCraft(Player* player, ResourceContainer* rcno, int slot, int counter);
 
+	void removeResourceFromCraft(Player* player, unsigned int resID, int slot, int counter);
+
 	void nextCraftingStage(Player* player, string& test);
 
 	void craftingCustomization(Player* player, string& name, int condition);
@@ -98,6 +100,8 @@ public:
 	void prepareCraftingSession(Player* player, CraftingTool* ct, DraftSchematic* ds);
 
 	void addResourceToCraft(Player* player, ResourceContainer* rcno, int slot, int counter);
+
+	void removeResourceFromCraft(Player* player, unsigned int resID, int slot, int counter);
 
 	void nextCraftingStage(Player* player, string& test);
 

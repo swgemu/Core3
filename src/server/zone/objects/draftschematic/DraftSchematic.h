@@ -120,6 +120,8 @@ public:
 
 	string& getTanoAttributes();
 
+	int getCraftingToolTab();
+
 protected:
 	string _return_getExpPropTitle;
 
@@ -188,6 +190,8 @@ public:
 	unsigned int getObjectID();
 
 	string& getTanoAttributes();
+
+	int getCraftingToolTab();
 
 protected:
 	string _param0_addIngredient__string_string_bool_string_int_;

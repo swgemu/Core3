@@ -108,8 +108,6 @@ void ServerCore::run() {
 	
 	handleCommands();
 	
-	Thread::sleepMili(500);
-	
 	shutdown();
 }
 

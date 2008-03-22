@@ -392,6 +392,18 @@ string& DraftSchematic::getTanoAttributes() {
 		return ((DraftSchematicImplementation*) _impl)->getTanoAttributes();
 }
 
+int DraftSchematic::getCraftingToolTab() {
+	if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 30);
+
+		return invocation.executeWithSignedIntReturn();
+	} else
+		return ((DraftSchematicImplementation*) _impl)->getCraftingToolTab();
+}
+
 /*
  *	DraftSchematicAdapter
  */
@@ -474,6 +486,9 @@ Packet* DraftSchematicAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* 
 		break;
 	case 29:
 		resp->insertAscii(getTanoAttributes());
+		break;
+	case 30:
+		resp->insertSignedInt(getCraftingToolTab());
 		break;
 	default:
 		return NULL;
@@ -576,6 +591,10 @@ unsigned int DraftSchematicAdapter::getObjectID() {
 
 string& DraftSchematicAdapter::getTanoAttributes() {
 	return ((DraftSchematicImplementation*) impl)->getTanoAttributes();
+}
+
+int DraftSchematicAdapter::getCraftingToolTab() {
+	return ((DraftSchematicImplementation*) impl)->getCraftingToolTab();
 }
 
 /*

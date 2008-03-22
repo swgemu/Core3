@@ -80,6 +80,8 @@ public:
 
 	void generateAttributes(Player* player);
 
+	void cleanUp();
+
 	int useObject(Player* player);
 
 	void sendToolStart(Player* player);
@@ -122,6 +124,8 @@ public:
 	void sendTo(Player* player, bool doClose);
 
 	void generateAttributes(Player* player);
+
+	void cleanUp();
 
 	int useObject(Player* player);
 

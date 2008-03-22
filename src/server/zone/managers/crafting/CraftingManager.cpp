@@ -110,12 +110,28 @@ void CraftingManager::addResourceToCraft(Player* player, ResourceContainer* rcno
 		((CraftingManagerImplementation*) _impl)->addResourceToCraft(player, rcno, slot, counter);
 }
 
-void CraftingManager::nextCraftingStage(Player* player, string& test) {
+void CraftingManager::removeResourceFromCraft(Player* player, unsigned int resID, int slot, int counter) {
 	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
 		ORBMethodInvocation invocation(this, 8);
+		invocation.addObjectParameter(player);
+		invocation.addUnsignedIntParameter(resID);
+		invocation.addSignedIntParameter(slot);
+		invocation.addSignedIntParameter(counter);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((CraftingManagerImplementation*) _impl)->removeResourceFromCraft(player, resID, slot, counter);
+}
+
+void CraftingManager::nextCraftingStage(Player* player, string& test) {
+	if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 9);
 		invocation.addObjectParameter(player);
 		invocation.addAsciiParameter(test);
 
@@ -129,7 +145,7 @@ void CraftingManager::craftingCustomization(Player* player, string& name, int co
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 9);
+		ORBMethodInvocation invocation(this, 10);
 		invocation.addObjectParameter(player);
 		invocation.addAsciiParameter(name);
 		invocation.addSignedIntParameter(condition);
@@ -144,7 +160,7 @@ void CraftingManager::createPrototype(Player* player, string& test) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 10);
+		ORBMethodInvocation invocation(this, 11);
 		invocation.addObjectParameter(player);
 		invocation.addAsciiParameter(test);
 
@@ -158,7 +174,7 @@ void CraftingManager::addDraftSchematicsFromGroupName(Player* player, const stri
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 11);
+		ORBMethodInvocation invocation(this, 12);
 		invocation.addObjectParameter(player);
 		invocation.addAsciiParameter(schematicGroupName);
 
@@ -172,7 +188,7 @@ void CraftingManager::subtractDraftSchematicsFromGroupName(Player* player, const
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 12);
+		ORBMethodInvocation invocation(this, 13);
 		invocation.addObjectParameter(player);
 		invocation.addAsciiParameter(schematicGroupName);
 
@@ -199,18 +215,21 @@ Packet* CraftingManagerAdapter::invokeMethod(uint32 methid, ORBMethodInvocation*
 		addResourceToCraft((Player*) inv->getObjectParameter(), (ResourceContainer*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
 		break;
 	case 8:
-		nextCraftingStage((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_nextCraftingStage__Player_string_));
+		removeResourceFromCraft((Player*) inv->getObjectParameter(), inv->getUnsignedIntParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
 		break;
 	case 9:
-		craftingCustomization((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_craftingCustomization__Player_string_int_), inv->getSignedIntParameter());
+		nextCraftingStage((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_nextCraftingStage__Player_string_));
 		break;
 	case 10:
-		createPrototype((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_createPrototype__Player_string_));
+		craftingCustomization((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_craftingCustomization__Player_string_int_), inv->getSignedIntParameter());
 		break;
 	case 11:
-		addDraftSchematicsFromGroupName((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_addDraftSchematicsFromGroupName__Player_string_));
+		createPrototype((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_createPrototype__Player_string_));
 		break;
 	case 12:
+		addDraftSchematicsFromGroupName((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_addDraftSchematicsFromGroupName__Player_string_));
+		break;
+	case 13:
 		subtractDraftSchematicsFromGroupName((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_subtractDraftSchematicsFromGroupName__Player_string_));
 		break;
 	default:
@@ -226,6 +245,10 @@ void CraftingManagerAdapter::prepareCraftingSession(Player* player, CraftingTool
 
 void CraftingManagerAdapter::addResourceToCraft(Player* player, ResourceContainer* rcno, int slot, int counter) {
 	return ((CraftingManagerImplementation*) impl)->addResourceToCraft(player, rcno, slot, counter);
+}
+
+void CraftingManagerAdapter::removeResourceFromCraft(Player* player, unsigned int resID, int slot, int counter) {
+	return ((CraftingManagerImplementation*) impl)->removeResourceFromCraft(player, resID, slot, counter);
 }
 
 void CraftingManagerAdapter::nextCraftingStage(Player* player, string& test) {

@@ -414,6 +414,8 @@ public:
 
 	void addResourceToCraft(ResourceContainer* rnco, int slot, int counter);
 
+	void removeResourceFromCraft(unsigned long long resID, int slot, int counter);
+
 	void nextCraftingStage(string& test);
 
 	void craftingCustomization(string& name, int condition);
@@ -822,6 +824,8 @@ public:
 	void prepareCraftingSession(CraftingTool* ct, DraftSchematic* ds);
 
 	void addResourceToCraft(ResourceContainer* rnco, int slot, int counter);
+
+	void removeResourceFromCraft(unsigned long long resID, int slot, int counter);
 
 	void nextCraftingStage(string& test);
 

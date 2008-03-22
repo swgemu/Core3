@@ -108,12 +108,24 @@ void CraftingTool::generateAttributes(Player* player) {
 		((CraftingToolImplementation*) _impl)->generateAttributes(player);
 }
 
-int CraftingTool::useObject(Player* player) {
+void CraftingTool::cleanUp() {
 	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
 		ORBMethodInvocation invocation(this, 8);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((CraftingToolImplementation*) _impl)->cleanUp();
+}
+
+int CraftingTool::useObject(Player* player) {
+	if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 9);
 		invocation.addObjectParameter(player);
 
 		return invocation.executeWithSignedIntReturn();
@@ -126,7 +138,7 @@ void CraftingTool::sendToolStart(Player* player) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 9);
+		ORBMethodInvocation invocation(this, 10);
 		invocation.addObjectParameter(player);
 
 		invocation.executeWithVoidReturn();
@@ -139,7 +151,7 @@ void CraftingTool::setToolEffectiveness(float eff) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 10);
+		ORBMethodInvocation invocation(this, 11);
 		invocation.addFloatParameter(eff);
 
 		invocation.executeWithVoidReturn();
@@ -152,7 +164,7 @@ void CraftingTool::setCraftingState(int s) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 11);
+		ORBMethodInvocation invocation(this, 12);
 		invocation.addSignedIntParameter(s);
 
 		invocation.executeWithVoidReturn();
@@ -165,7 +177,7 @@ void CraftingTool::setTano(TangibleObject* tano) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 12);
+		ORBMethodInvocation invocation(this, 13);
 		invocation.addObjectParameter(tano);
 
 		invocation.executeWithVoidReturn();
@@ -178,7 +190,7 @@ void CraftingTool::setDs(DraftSchematic* ds) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 13);
+		ORBMethodInvocation invocation(this, 14);
 		invocation.addObjectParameter(ds);
 
 		invocation.executeWithVoidReturn();
@@ -191,7 +203,7 @@ void CraftingTool::setInsertCount(int count) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 14);
+		ORBMethodInvocation invocation(this, 15);
 		invocation.addSignedIntParameter(count);
 
 		invocation.executeWithVoidReturn();
@@ -204,7 +216,7 @@ void CraftingTool::increaseInsertCount() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 15);
+		ORBMethodInvocation invocation(this, 16);
 
 		invocation.executeWithVoidReturn();
 	} else
@@ -216,7 +228,7 @@ float CraftingTool::getToolEffectiveness() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 16);
+		ORBMethodInvocation invocation(this, 17);
 
 		return invocation.executeWithFloatReturn();
 	} else
@@ -228,7 +240,7 @@ int CraftingTool::getCraftingState() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 17);
+		ORBMethodInvocation invocation(this, 18);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -240,7 +252,7 @@ TangibleObject* CraftingTool::getTano() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 18);
+		ORBMethodInvocation invocation(this, 19);
 
 		return (TangibleObject*) invocation.executeWithObjectReturn();
 	} else
@@ -252,7 +264,7 @@ DraftSchematic* CraftingTool::getDs() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 19);
+		ORBMethodInvocation invocation(this, 20);
 
 		return (DraftSchematic*) invocation.executeWithObjectReturn();
 	} else
@@ -264,7 +276,7 @@ int CraftingTool::getInsertCount() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 20);
+		ORBMethodInvocation invocation(this, 21);
 
 		return invocation.executeWithSignedIntReturn();
 	} else
@@ -276,7 +288,7 @@ bool CraftingTool::isReady() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		ORBMethodInvocation invocation(this, 21);
+		ORBMethodInvocation invocation(this, 22);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -301,45 +313,48 @@ Packet* CraftingToolAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* in
 		generateAttributes((Player*) inv->getObjectParameter());
 		break;
 	case 8:
-		resp->insertSignedInt(useObject((Player*) inv->getObjectParameter()));
+		cleanUp();
 		break;
 	case 9:
-		sendToolStart((Player*) inv->getObjectParameter());
+		resp->insertSignedInt(useObject((Player*) inv->getObjectParameter()));
 		break;
 	case 10:
-		setToolEffectiveness(inv->getFloatParameter());
+		sendToolStart((Player*) inv->getObjectParameter());
 		break;
 	case 11:
-		setCraftingState(inv->getSignedIntParameter());
+		setToolEffectiveness(inv->getFloatParameter());
 		break;
 	case 12:
-		setTano((TangibleObject*) inv->getObjectParameter());
+		setCraftingState(inv->getSignedIntParameter());
 		break;
 	case 13:
-		setDs((DraftSchematic*) inv->getObjectParameter());
+		setTano((TangibleObject*) inv->getObjectParameter());
 		break;
 	case 14:
-		setInsertCount(inv->getSignedIntParameter());
+		setDs((DraftSchematic*) inv->getObjectParameter());
 		break;
 	case 15:
-		increaseInsertCount();
+		setInsertCount(inv->getSignedIntParameter());
 		break;
 	case 16:
-		resp->insertFloat(getToolEffectiveness());
+		increaseInsertCount();
 		break;
 	case 17:
-		resp->insertSignedInt(getCraftingState());
+		resp->insertFloat(getToolEffectiveness());
 		break;
 	case 18:
-		resp->insertLong(getTano()->_getORBObjectID());
+		resp->insertSignedInt(getCraftingState());
 		break;
 	case 19:
-		resp->insertLong(getDs()->_getORBObjectID());
+		resp->insertLong(getTano()->_getORBObjectID());
 		break;
 	case 20:
-		resp->insertSignedInt(getInsertCount());
+		resp->insertLong(getDs()->_getORBObjectID());
 		break;
 	case 21:
+		resp->insertSignedInt(getInsertCount());
+		break;
+	case 22:
 		resp->insertBoolean(isReady());
 		break;
 	default:
@@ -355,6 +370,10 @@ void CraftingToolAdapter::sendTo(Player* player, bool doClose) {
 
 void CraftingToolAdapter::generateAttributes(Player* player) {
 	return ((CraftingToolImplementation*) impl)->generateAttributes(player);
+}
+
+void CraftingToolAdapter::cleanUp() {
+	return ((CraftingToolImplementation*) impl)->cleanUp();
 }
 
 int CraftingToolAdapter::useObject(Player* player) {

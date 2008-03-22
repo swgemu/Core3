@@ -169,6 +169,13 @@ ZoneServerImplementation::~ZoneServerImplementation() {
 		chatManager->finalize();
 		chatManager = NULL;
 	}
+	
+	for (int i = 0; i < 50; ++i) {
+		Zone* zone = zones.get(i);
+		zone->finalize();
+	}
+
+	zones.removeAll();
 }
 
 void ZoneServerImplementation::init() {
@@ -271,12 +278,10 @@ void ZoneServerImplementation::shutdown() {
 	for (int i = 0; i < 50; ++i) {
 		Zone* zone = zones.get(i);
 		zone->stopManagers();
-		
-		zone->finalize();
 	}
 
-	zones.removeAll();
-
+	scheduler->stop();
+	
 	printInfo(true);
 	
 	 _this->finalize();
