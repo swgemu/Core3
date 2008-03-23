@@ -350,14 +350,12 @@ void ZonePacketHandler::handleClientCreateCharacter(Message* pack) {
 			player->setZone(zone);
 	
 			player->createItems();
-			player->setLoggingIn();
-
-			player->insertToZone(zone);
 			/*server->addObject(player);
 			
 			server->removeObject(player->getObjectID());*/
 			
 			player->unlock();
+			playerImpl->unload(); // force a save of items, client will relogin
 		} else {
 			client->info("name refused for character creation");
 

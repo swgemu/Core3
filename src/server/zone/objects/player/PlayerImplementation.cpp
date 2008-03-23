@@ -419,7 +419,7 @@ void PlayerImplementation::unload() {
 		mnt->unlock();
 	}
 
-	if (zone != NULL && isInQuadTree()) {
+	if (zone != NULL) {
 		ZoneServer* zserver = zone->getZoneServer();
 		
 		ItemManager* itemManager = zserver->getItemManager();
@@ -427,37 +427,40 @@ void PlayerImplementation::unload() {
 
 		PlayerManager* playerManager = zserver->getPlayerManager();
 		playerManager->unload(_this);
-
-		clearDuelList();
-
-		if (isDancing())
-			stopDancing();
-		else if (isPlayingMusic())
-			stopPlayingMusic();
-			
-		if (isWatching())
-			stopWatch(watchID);
-			
-		if (isListening())
-			stopListen(listenID);
-
-		if (dizzyFallDownEvent->isQueued())
-			server->removeEvent((Event*) dizzyFallDownEvent);
-			
-		if (centerOfBeingEvent->isQueued())
-			server->removeEvent(centerOfBeingEvent);
 		
-		if (changeFactionEvent != NULL) {
-			server->removeEvent(changeFactionEvent);
-			delete changeFactionEvent;
+		if(isInQuadTree()) {
+	
+			clearDuelList();
+	
+			if (isDancing())
+				stopDancing();
+			else if (isPlayingMusic())
+				stopPlayingMusic();
+				
+			if (isWatching())
+				stopWatch(watchID);
+				
+			if (isListening())
+				stopListen(listenID);
+	
+			if (dizzyFallDownEvent->isQueued())
+				server->removeEvent((Event*) dizzyFallDownEvent);
+				
+			if (centerOfBeingEvent->isQueued())
+				server->removeEvent(centerOfBeingEvent);
 			
-			changeFactionEvent = NULL;
+			if (changeFactionEvent != NULL) {
+				server->removeEvent(changeFactionEvent);
+				delete changeFactionEvent;
+				
+				changeFactionEvent = NULL;
+			}
+			
+			clearTarget();
+			
+			removeFromZone(true);
+			//zone = NULL;
 		}
-		
-		clearTarget();
-		
-		removeFromZone(true);
-		//zone = NULL;
 	}
 }
 
