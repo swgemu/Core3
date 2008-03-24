@@ -114,7 +114,7 @@ void LootManager::createLoot(Creature* creature) {
 	int powerupDropRate = 5;
 	
 	int rateMod = int((creatureLevel / 50) * 2);
-cout << "Name = " << creature->getName() << "   Level = " << creatureLevel << endl;
+
 	creature->setCashCredits(0);
 
 	int itemcount = System::random(2) + 1;
