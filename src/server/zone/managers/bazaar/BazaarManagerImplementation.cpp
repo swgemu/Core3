@@ -412,6 +412,7 @@ void BazaarManagerImplementation::checkAuctions() {
 
 				bazaarPlanets[item->getPlanet()]->removeBazaarItem(objectId);
 				if (removeItem(objectId, false)) {
+					item->undeploy();
 /*					delete item;
 					// TODO: fix this... item reference is still stored somewhere..
 					i = 0;*/
@@ -856,9 +857,9 @@ void BazaarManagerImplementation::retrieveItem(Player* player, uint64 objectid, 
 		msg = new RetrieveAuctionItemResponseMessage(objectid, 0);
 		player->sendMessage(msg);
 		player->unlock();
-		
+		 
 		if (removeItem(objectid, false))
-			;//delete item;
+			item->undeploy();
 	
 		unlock();
 	} catch (...) {
