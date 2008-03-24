@@ -93,6 +93,13 @@ void PowerupImplementation::initialize() {
 
 void PowerupImplementation::setPowerupStats(int modifier) {
 	
+	int maxLevel = 80;
+	
+	if(modifier > maxLevel){
+		modifier = maxLevel;
+		modifier += System::random(modifier - maxLevel);
+	}
+	
 	setPowerupUses(100);
 	
 	setPowerupType(System::random(1) + 1);

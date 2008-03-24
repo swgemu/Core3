@@ -105,14 +105,16 @@ void LootManager::createLoot(Creature* creature) {
 	if (creatureLevel == 0) 
 		creatureLevel = 1;
 
-	int weaponDropRate = 1400;
-	int armorDropRate = 1400;
-	int clothingDropRate = 1250;
-	int junkDropRate = 1100;
-	int creditDropRate = 1500;
-	int attachmentDropRate = 1000;
-	int powerupDropRate = 1250;
+	int weaponDropRate = 5;
+	int armorDropRate = 5;
+	int clothingDropRate = 8;
+	int junkDropRate = 18;
+	int creditDropRate = 80;
+	int attachmentDropRate = 2;
+	int powerupDropRate = 5;
 	
+	int rateMod = int((creatureLevel / 50) * 2);
+cout << "Name = " << creature->getName() << "   Level = " << creatureLevel << endl;
 	creature->setCashCredits(0);
 
 	int itemcount = System::random(2) + 1;
@@ -121,27 +123,32 @@ void LootManager::createLoot(Creature* creature) {
 		itemcount = itemcount + 10;
 
 	for (int i = 0; i < itemcount; ++i) {
-		if (System::random(armorDropRate) + creatureLevel > 1000) 
-			createArmorLoot(creature, creatureLevel);
-
-		if (System::random(armorDropRate) + creatureLevel > 1000) 
-			createClothingLoot(creature, creatureLevel);
 		
-		if (System::random(weaponDropRate) + creatureLevel > 1000)
-			createWeaponLoot(creature, creatureLevel);
-		
-		if (System::random(junkDropRate) > 1000)
-			createJunkLoot(creature);
-		
-		if (System::random(creditDropRate) + creatureLevel > 1000)
-			creature->setCashCredits(creatureLevel * System::random(1234) / 25);
-		
-		if (System::random(attachmentDropRate) + creatureLevel > 1000)
+		if ((System::random(100) - rateMod) <= attachmentDropRate){
 			createAttachmentLoot(creature, creatureLevel);
-		
-		if (System::random(powerupDropRate) + creatureLevel > 1000)
+					
+		} else if ((System::random(100) - rateMod) <= armorDropRate){
+			createArmorLoot(creature, creatureLevel);
+			
+		} else if ((System::random(100) - rateMod) <= weaponDropRate){
+			createWeaponLoot(creature, creatureLevel);
+
+		} else if ((System::random(100) - rateMod) <= powerupDropRate){
 			createPowerupLoot(creature, creatureLevel);
+			
+		} else if ((System::random(100) - rateMod) <= clothingDropRate) {
+			createClothingLoot(creature, creatureLevel);
+			
+		} else if ((System::random(100) - rateMod) <= attachmentDropRate){
+			createAttachmentLoot(creature, creatureLevel);
+				
+		} else if ((System::random(100) - rateMod) <= junkDropRate){
+			createJunkLoot(creature);
+		}
 	}
+	
+	if (System::random(100) - rateMod <= creditDropRate)
+		creature->setCashCredits(creatureLevel * (System::random(5) + 2));
 }
 
 void LootManager::createWeaponLoot(Creature* creature, int creatureLevel) {

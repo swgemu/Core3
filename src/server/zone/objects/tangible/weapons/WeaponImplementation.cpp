@@ -750,6 +750,13 @@ void WeaponImplementation::repairWeapon(Player* player) {
 void WeaponImplementation::setWeaponStats(int modifier){
 	wlock();
 	
+	int maxLevel = 80;
+	
+	if(modifier > maxLevel){
+		modifier = maxLevel;
+		modifier += System::random(modifier - maxLevel);
+	}
+	
 	int luck = (System::random(100)) + (modifier/4);
 	
 	if (System::random(1000) == 7) 

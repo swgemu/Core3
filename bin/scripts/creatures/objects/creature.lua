@@ -46,7 +46,7 @@ Creature = Object:new {
 	
 	stfName = "",
 	name = "",
-	level = 50,
+	level = 15,
 	objectCRC = 0,
 	planet = 0,
 

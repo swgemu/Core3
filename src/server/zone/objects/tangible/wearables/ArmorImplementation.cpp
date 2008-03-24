@@ -197,28 +197,28 @@ void ArmorImplementation::initialize() {
 	setActionEncumbrance(100);
 	setMindEncumbrance(100); 	
 	 	
-	setKinetic(50.0f);
+	setKinetic(10.0f);
 	kineticIsSpecial = false;
 
-	setEnergy(50.0f);
+	setEnergy(10.0f);
 	energyIsSpecial = false;
 
-	setElectricity(50.0f);
+	setElectricity(10.0f);
 	electricityIsSpecial = false;
 
 	setStun(0.0f);
 	stunIsSpecial = false;
 
-	setBlast(50.0f);
+	setBlast(10.0f);
 	blastIsSpecial = false;
 
-	setHeat(50.0f);
+	setHeat(10.0f);
 	heatIsSpecial = false;
 
-	setCold(50.0f);
+	setCold(10.0f);
 	coldIsSpecial = false;
 
-	setAcid(50.0f);
+	setAcid(10.0f);
 	acidIsSpecial = false;
 
 	setLightSaber(0.0f);
@@ -528,6 +528,14 @@ void ArmorImplementation::repairArmor(Player* player) {
 }
 
 void ArmorImplementation::setArmorStats(int modifier) {	
+	
+	int maxLevel = 80;
+	
+	if(modifier > maxLevel){
+		modifier = maxLevel;
+		modifier += System::random(modifier - maxLevel);
+	}
+	
 	int luck = (System::random(100)) + (modifier / 4);
 	
 	if (System::random(1000) == 7) 
@@ -617,26 +625,26 @@ void ArmorImplementation::setArmorStats(int modifier) {
 	if (System::random(1))
 		setAcidIsSpecial(true);
 	
-	if (kinetic > 90.0f) 
-		setKinetic(90.0f);
+	if (kinetic > 87.0f) 
+		setKinetic(87.0f);
 	
-	if (energy > 90.0f) 
-		setEnergy(90.0f);
+	if (energy > 87.0f) 
+		setEnergy(87.0f);
 	
-	if (electricity > 90.0f) 
-		setElectricity(90.0f);
+	if (electricity > 87.0f) 
+		setElectricity(87.0f);
 	
-	if (blast > 90.0f) 
-		setBlast(90.0f);
+	if (blast > 87.0f) 
+		setBlast(87.0f);
 	
-	if (heat > 90.0f) 
-		setHeat(90.0f);
+	if (heat > 87.0f) 
+		setHeat(87.0f);
 	
-	if (cold > 90.0f) 
-		setCold(90.0f);
+	if (cold > 87.0f) 
+		setCold(87.0f);
 	
-	if (acid > 90.0f) 
-		setAcid(90.0f);
+	if (acid > 87.0f) 
+		setAcid(87.0f);
 	
 	if (healthEncumbrance < 0) 
 		setHealthEncumbrance(0);
