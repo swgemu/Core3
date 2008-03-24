@@ -54,9 +54,11 @@ which carries forward this exception.
 
 #include "../../../chat/room/ChatRoom.h"
 
+#include "GroupObject.h"
+
 class CreatureObject;
 
-class GroupObjectImplementation : public SceneObjectImplementation {
+class GroupObjectImplementation : public GroupObjectServant {
 	Player* leader;
 	
 	Vector<Player*> groupMembers;

@@ -54,14 +54,15 @@ which carries forward this exception.
 class ObjectControllerMessage;
 
 class DraftSchematicIngredient : public ORBObjectStub {
-public:
+protected:
 	DraftSchematicIngredient();
 	DraftSchematicIngredient(ORBObjectServant* obj);
 	DraftSchematicIngredient(DraftSchematicIngredient& ref);
 
-	DraftSchematicIngredient* clone();
-
 	virtual ~DraftSchematicIngredient();
+
+public:
+	DraftSchematicIngredient* clone();
 
 	void helperSendToPlayer(ObjectControllerMessage* msg);
 
@@ -82,6 +83,8 @@ protected:
 
 	string _return_getTitleName;
 
+
+	friend class DraftSchematicIngredientHelper;
 };
 
 class DraftSchematicIngredientImplementation;

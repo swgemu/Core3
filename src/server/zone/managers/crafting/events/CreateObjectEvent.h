@@ -61,6 +61,8 @@ public:
 	
 	bool activate() {
 		try {
+			player->wlock();
+			
 			TangibleObject * tano = ct->getTano();
 			
 			player->addInventoryItem(tano);
@@ -68,9 +70,12 @@ public:
 			tano->sendTo(player);
 			
 			tano->setPersistent(false);
-cout << "Added to inventory\n";
+			//cout << "Added to inventory\n";
+			
+			player->unlock();
 		} catch (...) {
 			cout << "Unreported exception caught in CreateObjectEvent::activate\n";
+			player->unlock();
 		}
 		
 		return true;

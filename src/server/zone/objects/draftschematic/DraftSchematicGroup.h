@@ -54,14 +54,15 @@ which carries forward this exception.
 class DraftSchematic;
 
 class DraftSchematicGroup : public ORBObjectStub {
-public:
+protected:
 	DraftSchematicGroup();
 	DraftSchematicGroup(ORBObjectServant* obj);
 	DraftSchematicGroup(DraftSchematicGroup& ref);
 
-	DraftSchematicGroup* clone();
-
 	virtual ~DraftSchematicGroup();
+
+public:
+	DraftSchematicGroup* clone();
 
 	void addDraftSchematic(DraftSchematic* schematic);
 
@@ -69,7 +70,7 @@ public:
 
 	DraftSchematic* getDraftSchematic(int index);
 
-protected:
+	friend class DraftSchematicGroupHelper;
 };
 
 class DraftSchematicGroupImplementation;

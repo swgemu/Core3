@@ -449,6 +449,9 @@ void RadialManager::handleTrade(Player* player, SceneObject* obj) {
 void RadialManager::handleWearableColorChange(Player* player, SceneObject* obj) {
 	if (!obj->isTangible())
 		return;
+		
+	if (player->getTradeSize() != 0)
+		return;
 	
 	TangibleObject* tano = (TangibleObject*) obj;
 	
@@ -471,6 +474,9 @@ void RadialManager::handleWearableColorChange(Player* player, SceneObject* obj) 
 void RadialManager::handleSlicing(Player* player, SceneObject* obj) {
 	if (!obj->isTangible())
 		return;
+		
+	if (player->getTradeSize() != 0)
+		return;
 	
 	TangibleObject* tano = (TangibleObject*) obj;
 	
@@ -488,6 +494,9 @@ void RadialManager::handleSlicing(Player* player, SceneObject* obj) {
 void RadialManager::handleRepair(Player* player, SceneObject* obj) {
 	if (!obj->isTangible())
 		return;
+		
+	if (player->getTradeSize() != 0)
+		return;
 	
 	TangibleObject* tano = (TangibleObject*) obj;
 	
@@ -502,6 +511,9 @@ void RadialManager::handleRepair(Player* player, SceneObject* obj) {
 
 void RadialManager::handleRemovePowerup(Player* player, SceneObject* obj) {
 	if (!obj->isTangible())
+		return;
+		
+	if (player->getTradeSize() != 0)
 		return;
 	
 	TangibleObject* tano = (TangibleObject*) obj;

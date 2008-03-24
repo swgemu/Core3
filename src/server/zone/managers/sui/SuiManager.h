@@ -75,7 +75,7 @@ public:
 	
 	void handleColorPicker(uint32 boxID, Player* player, uint32 cancel, const string& value);
 	
-	void handleBakTransfer(uint32 boxID, Player* player, int cash, int bank);
+	void handleBankTransfer(uint32 boxID, Player* player, int cash, int bank);
 };
 
 #endif /*SUIMANAGER_H_*/

@@ -169,7 +169,7 @@ public:
 	GroupObject* _this;
 
 public:
-	GroupObjectServant();
+	GroupObjectServant(unsigned long long oid);
 	virtual ~GroupObjectServant();
 
 	void _setStub(ORBObjectStub* stub);

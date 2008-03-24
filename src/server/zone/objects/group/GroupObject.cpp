@@ -444,7 +444,7 @@ ORBObjectAdapter* GroupObjectHelper::createAdapter(ORBObjectServant* obj) {
  *	GroupObjectServant
  */
 
-GroupObjectServant::GroupObjectServant() : SceneObjectImplementation() {
+GroupObjectServant::GroupObjectServant(unsigned long long oid) : SceneObjectImplementation(oid) {
 	_classHelper = GroupObjectHelper::instance();
 }
 

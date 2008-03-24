@@ -620,25 +620,25 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player, Message* 
 		parsePowerupDragDrop(player, pack);
 		break;
 	case (0x5FD21EB0):  // Schematic Resources
-		parseRequestDraftSlotsBatch(player, pack);
+		//parseRequestDraftSlotsBatch(player, pack);
 		break;
 	case (0x9A8B385C): // Schematic Experimental Properties
-		parseRequestResourceWeightsBatch(player, pack);
+		//parseRequestResourceWeightsBatch(player, pack);
 		break;
 	case (0x094AC516): // Request Crafting Session
-		parseRequestCraftingSession(player, pack);
+		//parseRequestCraftingSession(player, pack);
 		break;
 	case (0x89242E02): // Select Draft Schematic
-		parseSelectDraftSchematic(player, pack);
+		//parseSelectDraftSchematic(player, pack);
 		break;
 	case (0x83250E2A): // Cancel Crafting Session
-		parseCancelCraftingSession(player, pack);
+		//parseCancelCraftingSession(player, pack);
 		break;
 	case (0x6AD8ED4D): // Next crafting stage
-		parseNextCraftingStage(player, pack);
+		//parseNextCraftingStage(player, pack);
 		break;
 	case (0xD61FF415): // Create Prototype
-		parseCreatePrototype(player, pack);
+		//parseCreatePrototype(player, pack);
 		break;
 		
 	default:
@@ -1714,7 +1714,7 @@ void ObjectControllerMessage::parseCancelCraftingSession(Player* player, Message
 	// Clean up crafting here, delete, sceneremove unneeded objects
 	//CraftingTool * ct = player->getCurrentCraftingTool();
 	
-cout << "Crafting Closed!\n";
+	//cout << "Crafting Closed!\n";
 }
 
 void ObjectControllerMessage::parseSelectDraftSchematic(Player* player, Message* packet) {

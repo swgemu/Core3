@@ -51,6 +51,7 @@ import "../player/Player";
 import "../../../chat/room/ChatRoom";
 
 interface GroupObject implements SceneObject {
+	GroupObject(unsigned long oid);
 	
 	void sendTo(Player player);
 

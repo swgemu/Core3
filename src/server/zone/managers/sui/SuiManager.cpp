@@ -94,7 +94,7 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, Player* player, uint32
 		handleColorPicker(boxID, player, cancel, value);
 		break;
 	case 0xD65E:
-		handleBakTransfer(boxID, player, atoi(value.c_str()), atoi(value2.c_str()));
+		handleBankTransfer(boxID, player, atoi(value.c_str()), atoi(value2.c_str()));
 		break;
 	default:
 		//error("Unknown SuiBoxNotification opcode");
@@ -518,7 +518,7 @@ void SuiManager::handleColorPicker(uint32 boxID, Player* player, uint32 cancel, 
 	}
 }
 
-void SuiManager::handleBakTransfer(uint32 boxID, Player* player, int cash, int bank) {
+void SuiManager::handleBankTransfer(uint32 boxID, Player* player, int cash, int bank) {
 	try {
 		player->wlock();
 
@@ -527,19 +527,22 @@ void SuiManager::handleBakTransfer(uint32 boxID, Player* player, int cash, int b
 			return;
 		}
 		
-		player->removeSuiBox(boxID);
-		
 		SuiBox* sui = player->getSuiBox(boxID);
 		
-		if (sui != NULL)
-			sui->finalize();
+		player->removeSuiBox(boxID);
 		
-		player->updateCashCredits(cash);
-		player->updateBankCredits(bank);
+		sui->finalize();
+		
+		uint32 currentCash = player->getCashCredits();
+		uint32 currentBank = player->getBankCredits();
+		
+		if ((currentCash + currentBank) == ((uint32)cash + (uint32)bank)) {
+			player->updateCashCredits(cash);
+			player->updateBankCredits(bank);
+		}
 		
 		player->unlock();
-		
-	}catch (Exception& e) {
+	} catch (Exception& e) {
 		stringstream msg;
 		msg << "Exception in SuiManager::handleBankTransfer" << e.getMessage();
 		error(msg.str());
