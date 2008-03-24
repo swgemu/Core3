@@ -532,6 +532,23 @@ void BazaarManagerImplementation::buyItem(Player* player, uint64 objectid, int p
 			return;
 		}
 		
+		if (price1 > MAXPRICE || price2 > MAXPRICE) {
+			BaseMessage* msg = new BidAuctionResponseMessage(objectid, 14);
+			player->sendMessage(msg);
+			
+			player->unlock();
+			unlock();
+			return;
+			
+		} else if (price1 < 1 || price2 < 1) {
+			BaseMessage* msg = new BidAuctionResponseMessage(objectid, 4);
+			player->sendMessage(msg);
+			
+			player->unlock();
+			unlock();
+			return;
+		}
+
 		Time expireTime;
 		uint64 currentTime = expireTime.getMiliTime() / 1000;
 		uint64 availableTime = currentTime + 2592000;
