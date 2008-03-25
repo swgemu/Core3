@@ -98,7 +98,8 @@ IDL_SOURCES = server/zone/Zone.idl \
 				server/zone/objects/tangible/instrument/Instrument.idl \
 				server/zone/objects/tangible/lair/LairObject.idl \
 				server/zone/objects/tangible/surveytool/SurveyTool.idl \
-				server/zone/objects/tangible/craftingtool/CraftingTool.idl \
+				server/zone/objects/tangible/crafting/CraftingTool.idl \
+				server/zone/objects/tangible/crafting/CraftingStation.idl \
 				server/zone/objects/tangible/resource/ResourceContainer.idl \
 				server/zone/objects/tangible/attachment/Attachment.idl \
 				server/zone/objects/tangible/powerup/Powerup.idl \

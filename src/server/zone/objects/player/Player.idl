@@ -77,7 +77,7 @@ import "../../../chat/room/ChatRoom";
 import "sui/SuiBox";
 
 import "../draftschematic/DraftSchematic";
-import "../tangible/craftingtool/CraftingTool";
+import "../tangible/crafting/CraftingTool";
 import "../tangible/resource/ResourceContainer";
 
 interface Player implements CreatureObject {

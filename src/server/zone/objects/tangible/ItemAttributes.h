@@ -105,7 +105,7 @@ public:
 	uint64  getUnsignedLongAttribute(string& name) {
 		if (attributes->containsKey(name)) {
 			string value = attributes->get(name);
-			return atol(value.c_str());
+			return atoll(value.c_str());
 		} else {
 			return 0L;
 		}

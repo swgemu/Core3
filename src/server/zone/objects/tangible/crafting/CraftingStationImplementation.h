@@ -41,25 +41,48 @@ gives permission to release a modified version without this exception;
 this exception also makes it possible to release a modified version 
 which carries forward this exception.
 */
+ 
+#ifndef CRAFTINGSTATIONIMPLEMENTATION_H_
+#define CRAFTINGSTATIONIMPLEMENTATION_H_
+ 
+#include "../../../packets.h"
+#include "CraftingStation.h"
+ 
+class CreatureObject;
+class SceneObject;
+class Player;
+ 
+class CraftingStationImplementation : public CraftingStationServant {
+protected:
+	float effectiveness;
 
-import "../../objects/player/Player";
-import "../../objects/draftschematic/DraftSchematic";
-import "../../objects/tangible/resource/ResourceContainer";
-import "../../objects/tangible/crafting/CraftingTool";
-import "../../objects/tangible/crafting/CraftingStation";
+public:
+	static const int CLOTHING = 1; // Clothing and Armor Crafting Station
+	static const int FOOD = 2; // Food and Chemical Crafting Station
+	static const int SPACE = 3; // Starship Crafting Station
+	static const int STRUCTURE = 4; // Structure and Furniture Crafting Station
+	static const int WEAPON = 5; // Weapon Droid and General Item Crafting Station
+ 
+public:
+	CraftingStationImplementation(uint64 object_id, uint32 tempCRC, const unicode& n, const string& tempn);
+	CraftingStationImplementation(CreatureObject* creature, uint32 tempCRC, const unicode& n, const string& tempn);
+	~CraftingStationImplementation();
+ 
+	void init();
 
-interface CraftingManager {
-
-	CraftingManager();
+	void generateAttributes(SceneObject* player);
+ 
+	int useObject(Player* player);
 	
-	void prepareCraftingSession(Player player, CraftingTool ct, DraftSchematic ds);
-	void addResourceToCraft(Player player, ResourceContainer rcno, int slot, int counter);
-	void removeResourceFromCraft(Player player, unsigned int resID, int slot, int counter);
-	void nextCraftingStage(Player player, string test);
-	void craftingCustomization(Player player, string name, int condition);
-	void createPrototype(Player player, string test);
-
-	void addDraftSchematicsFromGroupName(Player player, const string schematicGroupName);
-	void subtractDraftSchematicsFromGroupName(Player player, const string schematicGroupName);
-
-}
+	// Setters
+	inline void setStationEffectiveness(float eff) {
+		effectiveness = eff;
+	}
+	// Getters
+	
+	float getStationEffectiveness() {
+		return effectiveness;
+	}
+};
+ 
+#endif /*CRAFTINGSTATIONIMPLEMENTATION_H_*/

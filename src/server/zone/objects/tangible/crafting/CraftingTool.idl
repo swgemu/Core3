@@ -47,6 +47,7 @@ import "../../../packets";
 import "../../player/Player";
 import "../../creature/CreatureObject";
 import "../../draftschematic/DraftSchematic";
+import "CraftingStation";
  
 include "engine/service/Message";
  

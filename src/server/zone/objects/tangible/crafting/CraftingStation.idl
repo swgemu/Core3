@@ -41,25 +41,31 @@ gives permission to release a modified version without this exception;
 this exception also makes it possible to release a modified version 
 which carries forward this exception.
 */
+ 
+import "../TangibleObject";
+import "../../../packets";
+import "../../player/Player";
+import "../../creature/CreatureObject";
+//import "../../draftschematic/DraftSchematic";
+ 
+include "engine/service/Message";
+ 
+interface CraftingStation implements TangibleObject {
+	CraftingStation(unsigned long oid, const unicode n, const string tempn, int tempCRC, int tp);
+	CraftingStation(CreatureObject creature, const unicode n, const string tempn, int tempCRC, int tp);
+ 
+	//void sendTo(Player player, boolean doClose = true);
+	void generateAttributes(Player player);
+ 
+ 	//void cleanUp();
+ 
+	int useObject(Player player);
+ 
+	//void sendToolStart(Player player);
+ 
+	//setters
+	void setStationEffectiveness(float eff);
 
-import "../../objects/player/Player";
-import "../../objects/draftschematic/DraftSchematic";
-import "../../objects/tangible/resource/ResourceContainer";
-import "../../objects/tangible/crafting/CraftingTool";
-import "../../objects/tangible/crafting/CraftingStation";
-
-interface CraftingManager {
-
-	CraftingManager();
-	
-	void prepareCraftingSession(Player player, CraftingTool ct, DraftSchematic ds);
-	void addResourceToCraft(Player player, ResourceContainer rcno, int slot, int counter);
-	void removeResourceFromCraft(Player player, unsigned int resID, int slot, int counter);
-	void nextCraftingStage(Player player, string test);
-	void craftingCustomization(Player player, string name, int condition);
-	void createPrototype(Player player, string test);
-
-	void addDraftSchematicsFromGroupName(Player player, const string schematicGroupName);
-	void subtractDraftSchematicsFromGroupName(Player player, const string schematicGroupName);
-
+	//getters
+	float getStationEffectiveness();
 }

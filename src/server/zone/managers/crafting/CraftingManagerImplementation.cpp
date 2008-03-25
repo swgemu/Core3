@@ -594,7 +594,7 @@ TangibleObject * CraftingManagerImplementation::generateTangibleObject(
 	int objecttype = itemAttributes->getIntAttribute(temp);
 
 	temp = "objectcrc";
-	uint32 objectcrc = itemAttributes->getUnsignedLongAttribute(temp);
+	uint64 objectcrc = itemAttributes->getUnsignedLongAttribute(temp);
 
 	unicode objectname = ds->getName();
 
@@ -686,6 +686,12 @@ TangibleObject * CraftingManagerImplementation::generateTangibleObject(
 
 			item = new AttachmentImplementation(objectid, AttachmentImplementation::ARMOR);
 
+			break;
+		
+		case TangibleObjectImplementation::CRAFTINGSTATION:
+
+			item = new CraftingStationImplementation(objectid, objectcrc, objectname, objecttemp);
+			
 			break;
 		}
 	} else if (objecttype & TangibleObjectImplementation::RESOURCECONTAINER) {

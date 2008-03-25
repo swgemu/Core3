@@ -132,99 +132,103 @@ TangibleObject* ItemManagerImplementation::createPlayerObject(Player* player, Re
 	string attributes = result->getString(9);
 	
 	if (objecttype & TangibleObjectImplementation::WEAPON || objecttype & TangibleObjectImplementation::LIGHTSABER) {	
-		switch (objecttype) {
-		case TangibleObjectImplementation::MELEEWEAPON:
-			item = new UnarmedMeleeWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
-			break;
-		case TangibleObjectImplementation::ONEHANDMELEEWEAPON:
-			item = new OneHandedMeleeWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
-			break;
-		case TangibleObjectImplementation::TWOHANDMELEEWEAPON:
-			item = new TwoHandedMeleeWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
-			break;
-		case TangibleObjectImplementation::POLEARM:
-			item = new PolearmMeleeWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
-			break;
-		case TangibleObjectImplementation::PISTOL:
-			item = new PistolRangedWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
-			break;
-		case TangibleObjectImplementation::CARBINE:
-			item = new CarbineRangedWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
-			break;
-		case TangibleObjectImplementation::RIFLE:
-			item = new RifleRangedWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
-			break;
-		case TangibleObjectImplementation::ONEHANDSABER:
-			item = new OneHandedJediWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
-			break;
-		case TangibleObjectImplementation::TWOHANDSABER:
-			item = new TwoHandedJediWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
-			break;
-		case TangibleObjectImplementation::POLEARMSABER:
-			item = new PolearmJediWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
-			break;
-		case TangibleObjectImplementation::SPECIALHEAVYWEAPON:
-			item = new SpecialHeavyRangedWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
-			break;
-		case TangibleObjectImplementation::HEAVYWEAPON:
-			item = new HeavyRangedWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
-			break;
-		}
+			switch (objecttype) {
+			case TangibleObjectImplementation::MELEEWEAPON:
+				item = new UnarmedMeleeWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
+				break;
+			case TangibleObjectImplementation::ONEHANDMELEEWEAPON:
+				item = new OneHandedMeleeWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
+				break;
+			case TangibleObjectImplementation::TWOHANDMELEEWEAPON:
+				item = new TwoHandedMeleeWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
+				break;
+			case TangibleObjectImplementation::POLEARM:
+				item = new PolearmMeleeWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
+				break;
+			case TangibleObjectImplementation::PISTOL:
+				item = new PistolRangedWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
+				break;
+			case TangibleObjectImplementation::CARBINE:
+				item = new CarbineRangedWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
+				break;
+			case TangibleObjectImplementation::RIFLE:
+				item = new RifleRangedWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
+				break;
+			case TangibleObjectImplementation::ONEHANDSABER:
+				item = new OneHandedJediWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
+				break;
+			case TangibleObjectImplementation::TWOHANDSABER:
+				item = new TwoHandedJediWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
+				break;
+			case TangibleObjectImplementation::POLEARMSABER:
+				item = new PolearmJediWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
+				break;
+			case TangibleObjectImplementation::SPECIALHEAVYWEAPON:
+				item = new SpecialHeavyRangedWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
+				break;
+			case TangibleObjectImplementation::HEAVYWEAPON:
+				item = new HeavyRangedWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
+				break;
+			}
+			
+		} else if (objecttype & TangibleObjectImplementation::CLOTHING) {
+			
+			item = new WearableImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
+
+		} else if (objecttype & TangibleObjectImplementation::ARMOR) {
 		
-	} else if (objecttype & TangibleObjectImplementation::CLOTHING) {
+			item = new ArmorImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
+
+		} else if (objecttype & TangibleObjectImplementation::MISC) {
+			
+			switch (objecttype) {
+			case TangibleObjectImplementation::TRAVELTICKET:
+				
+				item = new TicketImplementation(objectid, objectcrc, objectname, objecttemp);
+				
+				break;
+			case TangibleObjectImplementation::INSTRUMENT:
+				
+				item = new InstrumentImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
+				
+				break;
+			case TangibleObjectImplementation::CLOTHINGATTACHMENT:
+				
+				item = new AttachmentImplementation(objectid, AttachmentImplementation::CLOTHING);
+
+				break;
+			case TangibleObjectImplementation::ARMORATTACHMENT:
+
+				item = new AttachmentImplementation(objectid, AttachmentImplementation::ARMOR);
+				
+				break;
+			case TangibleObjectImplementation::CRAFTINGSTATION:
+
+				item = new CraftingStationImplementation(objectid, objectcrc, objectname, objecttemp);
+				
+				break;
+			}
+		} else if ( objecttype & TangibleObjectImplementation::RESOURCECONTAINER ) {
+			
+			item = new ResourceContainerImplementation(objectid, objectcrc, objectname, objecttemp);
 		
-		item = new WearableImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
+		} else if (objecttype & TangibleObjectImplementation::TOOL) {
+			switch (objecttype) {
+			case TangibleObjectImplementation::CRAFTINGTOOL:
+				item = new CraftingToolImplementation(objectid, objectcrc, objectname, objecttemp);
+				break;
+			case TangibleObjectImplementation::SURVEYTOOL:
+				item = new SurveyToolImplementation(objectid, objectcrc, objectname, objecttemp);
+				break;
+			case TangibleObjectImplementation::REPAIRTOOL:
+			case TangibleObjectImplementation::CAMPKIT:
+			case TangibleObjectImplementation::SHIPCOMPONENTREPAIRITEM:
+				break;
+			}
+		} else if (objecttype & TangibleObjectImplementation::WEAPONPOWERUP) {
 
-	} else if (objecttype & TangibleObjectImplementation::ARMOR) {
-	
-		item = new ArmorImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
-
-	} else if (objecttype & TangibleObjectImplementation::MISC) {
-		
-		switch (objecttype) {
-		case TangibleObjectImplementation::TRAVELTICKET:
-			
-			item = new TicketImplementation(objectid, objectcrc, objectname, objecttemp);
-			
-			break;
-		case TangibleObjectImplementation::INSTRUMENT:
-			
-			item = new InstrumentImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
-			
-			break;
-		case TangibleObjectImplementation::CLOTHINGATTACHMENT:
-			
-			item = new AttachmentImplementation(objectid, AttachmentImplementation::CLOTHING);
-
-			break;
-		case TangibleObjectImplementation::ARMORATTACHMENT:
-
-			item = new AttachmentImplementation(objectid, AttachmentImplementation::ARMOR);
-			
-			break;
-		}
-	} else if ( objecttype & TangibleObjectImplementation::RESOURCECONTAINER ) {
-		
-		item = new ResourceContainerImplementation(objectid, objectcrc, objectname, objecttemp);
-	
-	} else if (objecttype & TangibleObjectImplementation::TOOL) {
-		switch (objecttype) {
-		case TangibleObjectImplementation::CRAFTINGTOOL:
-			item = new CraftingToolImplementation(objectid, objectcrc, objectname, objecttemp);
-			break;
-		case TangibleObjectImplementation::SURVEYTOOL:
-			item = new SurveyToolImplementation(objectid, objectcrc, objectname, objecttemp);
-			break;
-		case TangibleObjectImplementation::REPAIRTOOL:
-		case TangibleObjectImplementation::CAMPKIT:
-		case TangibleObjectImplementation::SHIPCOMPONENTREPAIRITEM:
-			break;
-		}
-	} else if (objecttype & TangibleObjectImplementation::WEAPONPOWERUP) {
-
-		item = new PowerupImplementation(objectid, objectcrc, objectname, objecttemp);
-	
-	} 
+			item = new PowerupImplementation(objectid, objectcrc, objectname, objecttemp);
+		} 
 	
 	if (item == NULL)
 		return NULL;
