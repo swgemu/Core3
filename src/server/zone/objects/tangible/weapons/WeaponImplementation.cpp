@@ -948,7 +948,7 @@ void WeaponImplementation::generatePowerup(AttributeListMessage* alm) {
 			
 			stringstream spdtxt;
 			
-			spdtxt << round(10*spd)/10;
+			spdtxt << round(10 * spd)/10;
 			
 			if ((int(round(spd * 10)) % 10) == 0)
 				spdtxt << ".0";

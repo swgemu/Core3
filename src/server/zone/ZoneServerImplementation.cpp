@@ -283,8 +283,6 @@ void ZoneServerImplementation::shutdown() {
 	scheduler->stop();
 	
 	printInfo(true);
-	
-	 _this->finalize();
 }
 
 void ZoneServerImplementation::stopManagers() {

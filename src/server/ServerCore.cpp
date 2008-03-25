@@ -116,6 +116,7 @@ void ServerCore::shutdown() {
 
 	if (zserv != NULL) {
 		zserv->stop();
+		zserv->_getStub()->finalize();
 		
 		zserv = NULL;
 	}

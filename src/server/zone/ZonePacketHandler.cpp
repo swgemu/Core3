@@ -323,12 +323,16 @@ void ZonePacketHandler::handleClientCreateCharacter(Message* pack) {
 
 	if (!playerManager->validateName(playerImpl->getFirstName())) {
 		playerImpl->refuseCreate(client);
+		
+		delete playerImpl;
 		return;
 	}
 	
 	Player* player = playerImpl->create(client);
 	if (player == NULL) {
 		playerImpl->refuseCreate(client);
+
+		delete playerImpl;
 		return;
 	}
 
@@ -350,9 +354,6 @@ void ZonePacketHandler::handleClientCreateCharacter(Message* pack) {
 			player->setZone(zone);
 	
 			player->createItems();
-			/*server->addObject(player);
-			
-			server->removeObject(player->getObjectID());*/
 			
 			player->unlock();
 			playerImpl->unload(); // force a save of items, client will relogin
@@ -367,7 +368,7 @@ void ZonePacketHandler::handleClientCreateCharacter(Message* pack) {
 			player->disconnect();
 		}
 			
-		//server->removeCachedObject(player->getObjectID());
+		player->finalize();
 	} catch (Exception& e) {
 		player->unlock();
 		cout << "unreported exception on ZonePacketHandler::handleClientCreateCharacter()\n" << e.getMessage() << "\n";
