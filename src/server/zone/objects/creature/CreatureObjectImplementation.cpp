@@ -61,6 +61,7 @@ which carries forward this exception.
 
 #include "../tangible/weapons/Weapon.h"
 #include "../tangible/wearables/Armor.h"
+#include "../tangible/instrument/Instrument.h"
 
 #include "../tangible/appearance/HairObject.h"
 #include "../tangible/appearance/HairObjectImplementation.h"
@@ -1897,6 +1898,20 @@ uint64 CreatureObjectImplementation::getWeaponID() {
 		return 0;
 }
 
+Instrument* CreatureObjectImplementation::getInstrument() {
+	if (inventory == NULL)
+		return NULL;
+
+	for (int i=0; i < inventory->objectsSize(); i++) {
+		TangibleObject* item = (TangibleObject*) inventory->getObject(i);
+
+		if (item->isInstrument() && item->isEquipped())
+				return (Instrument*) item;
+	}
+
+	return NULL;
+}
+
 Armor* CreatureObjectImplementation::getArmor(int type) {
 	if (inventory == NULL)
 		return NULL;
@@ -2089,65 +2104,182 @@ void CreatureObjectImplementation::startDancing(const string& anim) {
 		sendSystemMessage("You are already dancing.");
 		return;
 	}
+	
+	// TODO: This needs to be cleaned up and refactored	
+	Vector<string> availableDances;
 
-	if (anim == "") {
-		if (isPlayer()) {
-			PlayerImplementation* player = (PlayerImplementation*) this;
+	if (isPlayer()) {
+		PlayerImplementation* player = (PlayerImplementation*) this;
 
+		string skillBox = "social_entertainer_novice";
+		if (player->getSkillBoxesSize() && player->hasSkillBox(skillBox)) {
+			availableDances.add("basic");
+			availableDances.add("rhythmic");				
+		} else
+		{
+			sendSystemMessage("You do not have sufficient abilities to start dancing.");
+			return;
+		}
+
+	
+		skillBox = "social_entertainer_dance_01";
+		if (player->getSkillBoxesSize() && player->hasSkillBox(skillBox))
+			availableDances.add("basic2");
+	
+		skillBox = "social_entertainer_dance_02";
+		if (player->getSkillBoxesSize() && player->hasSkillBox(skillBox))
+			availableDances.add("rhythmic2");
+					
+		skillBox = "social_entertainer_dance_03";
+		if (player->getSkillBoxesSize() && player->hasSkillBox(skillBox))
+			availableDances.add("footloose");
+	
+		skillBox = "social_entertainer_dance_04";
+		if (player->getSkillBoxesSize() && player->hasSkillBox(skillBox))
+			availableDances.add("formal");
+	
+		skillBox = "social_entertainer_master";
+		if (player->getSkillBoxesSize() && player->hasSkillBox(skillBox)) {
+			availableDances.add("footloose2");				
+			availableDances.add("formal2");
+		}
+					
+		skillBox = "social_dancer_novice";
+		if (player->getSkillBoxesSize() && player->hasSkillBox(skillBox)) {
+			availableDances.add("poplock");
+			availableDances.add("popular");
+		}
+	
+		
+		skillBox = "social_dancer_knowledge_01";
+		if (player->getSkillBoxesSize() && player->hasSkillBox(skillBox)) {
+			availableDances.add("popular2");
+			availableDances.add("tumble");
+		}
+	
+		skillBox = "social_dancer_knowledge_02";
+		if (player->getSkillBoxesSize() && player->hasSkillBox(skillBox)) {
+			availableDances.add("poplock2"); 
+			availableDances.add("tumble2");
+		}
+	
+	
+		skillBox = "social_dancer_knowledge_03";
+		if (player->getSkillBoxesSize() && player->hasSkillBox(skillBox)) {
+			availableDances.add("breakdance");
+			availableDances.add("lyrical"); 
+		}
+	
+		skillBox = "social_dancer_knowledge_04";
+		if (player->getSkillBoxesSize() && player->hasSkillBox(skillBox)) {
+			availableDances.add("breakdance2");
+			availableDances.add("exotic");		
+			availableDances.add("exotic2");
+		}
+	
+		skillBox = "social_dancer_master";
+		if (player->getSkillBoxesSize() && player->hasSkillBox(skillBox)) {
+			availableDances.add("exotic3");
+			availableDances.add("exotic4");
+			availableDances.add("lyrical2");
+			availableDances.add("theatrical");
+			availableDances.add("theatrical2");
+			availableDances.add("unknown1");
+			availableDances.add("unknown2");
+			availableDances.add("unknown3");
+			availableDances.add("unknown4");
+			availableDances.add("unknown5");
+			availableDances.add("unknown6");
+			availableDances.add("unknown7");
+			availableDances.add("unknown8");		
+		}
+		
+		if (anim == "") {
 			SuiListBoxImplementation* sui = new SuiListBoxImplementation((Player*) _this, 0x414E);
 			sui->setPromptTitle("Available dances");
 			sui->setPromptText("Pick a dance");
 
-			for(int i = 0; i < 20; i++)
-				sui->addMenuItem(dances[i]);
-			
+			// TODO: tie this somehow back to the database - the commands
+			// aren't quite the right place since the actionCRC for startdance 
+			// is the same for all of them
+			for (int i = 0; i < availableDances.size(); ++i) {
+				string dance = availableDances.get(i);
+				sui->addMenuItem(dance);
+			}
+				
 			player->addSuiBox(sui->deploy());
 
 			player->sendMessage(sui->generateMessage());
+
 			return;
 		}
 	}
-
-	if (anim == "basic" || anim == "0") {
+	
+	
+	if (anim == "basic" || "basic" == availableDances.get(atoi(anim.c_str()))) { // anim == "0"
 		sendEntertainingUpdate(0x3C4CCCCD, "dance_1", 0x07339FF8, 0xDD);
-	} else if (anim == "rhythmic" || anim == "1") {
+	} else if (anim == "rhythmic" || "rhythmic" == availableDances.get(atoi(anim.c_str()))) {
 		sendEntertainingUpdate(0x3C4CCCCD, "dance_3", 0x07339FF8, 0xDD);
-	} else if (anim == "basic2" || anim == "2") {
+	} else if (anim == "basic2" || "basic2" == availableDances.get(atoi(anim.c_str()))) {
 		sendEntertainingUpdate(0x3C4CCCCD, "dance_2", 0x07339FF8, 0xDD);
-	} else if (anim == "rhythmic2" || anim == "3") {
+	} else if (anim == "rhythmic2" || "rhythmic2" == availableDances.get(atoi(anim.c_str()))) {
 		sendEntertainingUpdate(0x3C4CCCCD, "dance_4", 0x07339FF8, 0xDD);
-	} else if (anim == "footloose" || anim == "4") {
+	} else if (anim == "footloose" || "footloose" == availableDances.get(atoi(anim.c_str()))) {
 		sendEntertainingUpdate(0x3C4CCCCD, "dance_15", 0x07339FF8, 0xDD);
-	} else if (anim == "formal" || anim == "5") {
+	} else if (anim == "formal" || "forma" == availableDances.get(atoi(anim.c_str()))) {
 		sendEntertainingUpdate(0x3C4CCCCD, "dance_17", 0x07339FF8, 0xDD);
-	} else if (anim == "footloose2" || anim == "6") {
+	} else if (anim == "footloose2" || "footloose2" == availableDances.get(atoi(anim.c_str()))) {
 		sendEntertainingUpdate(0x3C4CCCCD, "dance_16", 0x07339FF8, 0xDD);
-	} else if (anim == "formal2" || anim == "7") {
+	} else if (anim == "formal2" || "formal2" == availableDances.get(atoi(anim.c_str()))) {
 		sendEntertainingUpdate(0x3C4CCCCD, "dance_18", 0x07339FF8, 0xDD);
-	} else if (anim == "popular" || anim == "8") {
+	} else if (anim == "popular" || "popular" == availableDances.get(atoi(anim.c_str()))) {
 		sendEntertainingUpdate(0x3C4CCCCD, "dance_9", 0x07339FF8, 0xDD);
-	} else if (anim == "poplock" || anim == "9") {
+	} else if (anim == "poplock" || "poplock" == availableDances.get(atoi(anim.c_str()))) {
 		sendEntertainingUpdate(0x3C4CCCCD, "dance_13", 0x07339FF8, 0xDD);
-	} else if (anim == "popular2" || anim == "10") {
+	} else if (anim == "popular2" || "popular2" == availableDances.get(atoi(anim.c_str()))) {
 		sendEntertainingUpdate(0x3C4CCCCD, "dance_10", 0x07339FF8, 0xDD);
-	} else if (anim == "poplock2" || anim == "11") {
+	} else if (anim == "poplock2" || "poplock2" == availableDances.get(atoi(anim.c_str()))) {
 		sendEntertainingUpdate(0x3C4CCCCD, "dance_14", 0x07339FF8, 0xDD);
-	} else if (anim == "lyrical" || anim == "12") {
+	} else if (anim == "lyrical" || "lyrical" == availableDances.get(atoi(anim.c_str()))) {
 		sendEntertainingUpdate(0x3C4CCCCD, "dance_11", 0x07339FF8, 0xDD);
-	} else if (anim == "exotic" || anim == "13") {
+	} else if (anim == "exotic" || "exotic" == availableDances.get(atoi(anim.c_str()))) {
 		sendEntertainingUpdate(0x3C4CCCCD, "dance_5", 0x07339FF8, 0xDD);
-	} else if (anim == "exotic2" || anim == "14") {
+	} else if (anim == "exotic2" || "exoitic2" == availableDances.get(atoi(anim.c_str()))) {
 		sendEntertainingUpdate(0x3C4CCCCD, "dance_6", 0x07339FF8, 0xDD);
-	} else if (anim == "lyrical2" || anim == "15") {
+	} else if (anim == "lyrical2" || "lyrical2" == availableDances.get(atoi(anim.c_str()))) {
 		sendEntertainingUpdate(0x3C4CCCCD, "dance_12", 0x07339FF8, 0xDD);
-	} else if (anim == "exotic3" || anim == "16") {
+	} else if (anim == "exotic3" || "exotic3" == availableDances.get(atoi(anim.c_str()))) {
 		sendEntertainingUpdate(0x3C4CCCCD, "dance_7", 0x07339FF8, 0xDD);
-	} else if (anim == "exotic4" || anim == "17") {
+	} else if (anim == "exotic4" || "exotic4" == availableDances.get(atoi(anim.c_str()))) {
 		sendEntertainingUpdate(0x3C4CCCCD, "dance_8", 0x07339FF8, 0xDD);
-	} else if (anim == "theatrical" || anim == "18") {
+	} else if (anim == "theatrical" || "theatrical" == availableDances.get(atoi(anim.c_str()))) {
 		sendEntertainingUpdate(0x3C4CCCCD, "dance_21", 0x07339FF8, 0xDD);
-	} else if (anim == "theatrical2" || anim == "19") {
+	} else if (anim == "theatrical2" || "theatrical2" == availableDances.get(atoi(anim.c_str()))) {
 		sendEntertainingUpdate(0x3C4CCCCD, "dance_22", 0x07339FF8, 0xDD);
+	} else if (anim == "unknown1" || "nknown1" == availableDances.get(atoi(anim.c_str()))) {
+		sendEntertainingUpdate(0x3C4CCCCD, "dance_19", 0x07339FF8, 0xDD);
+	} else if (anim == "unknown2" || "unknown2" == availableDances.get(atoi(anim.c_str()))) {
+		sendEntertainingUpdate(0x3C4CCCCD, "dance_20", 0x07339FF8, 0xDD);
+	} else if (anim == "unknown3" || "unknown3" == availableDances.get(atoi(anim.c_str()))) {
+		sendEntertainingUpdate(0x3C4CCCCD, "dance_23", 0x07339FF8, 0xDD);
+	} else if (anim == "unknown4" || "unknown4" == availableDances.get(atoi(anim.c_str()))) {
+		sendEntertainingUpdate(0x3C4CCCCD, "dance_24", 0x07339FF8, 0xDD);
+	} else if (anim == "unknown5" || "unknown5" == availableDances.get(atoi(anim.c_str()))) {
+		sendEntertainingUpdate(0x3C4CCCCD, "dance_25", 0x07339FF8, 0xDD);
+	} else if (anim == "unknown6" || "unknown6" == availableDances.get(atoi(anim.c_str()))) {
+		sendEntertainingUpdate(0x3C4CCCCD, "dance_26", 0x07339FF8, 0xDD);
+	} else if (anim == "unknown7" || "unknown7" == availableDances.get(atoi(anim.c_str()))) {
+		sendEntertainingUpdate(0x3C4CCCCD, "dance_27", 0x07339FF8, 0xDD);
+	} else if (anim == "unknown8" || "unknown8" == availableDances.get(atoi(anim.c_str()))) {
+		sendEntertainingUpdate(0x3C4CCCCD, "dance_28", 0x07339FF8, 0xDD);
+	} else if (anim == "breakdance" || "breakdance" == availableDances.get(atoi(anim.c_str()))) {
+		sendEntertainingUpdate(0x3C4CCCCD, "dance_29", 0x07339FF8, 0xDD);
+	} else if (anim == "breakdance2" || "breakdance2" == availableDances.get(atoi(anim.c_str()))) {
+		sendEntertainingUpdate(0x3C4CCCCD, "dance_30", 0x07339FF8, 0xDD);
+	} else if (anim == "tumble" || "tumble" == availableDances.get(atoi(anim.c_str()))) {
+		sendEntertainingUpdate(0x3C4CCCCD, "dance_31", 0x07339FF8, 0xDD);
+	} else if (anim == "tumble2" || "tumble2" == availableDances.get(atoi(anim.c_str()))) {
+		sendEntertainingUpdate(0x3C4CCCCD, "dance_32", 0x07339FF8, 0xDD);
 	} else {
 		sendSystemMessage("Invalid dance name.");
 		return;
@@ -2159,6 +2291,12 @@ void CreatureObjectImplementation::startDancing(const string& anim) {
 	setDancing(true);
 
 	sendSystemMessage("You start dancing.");
+
+	// Tick every 10 seconds HAM costs
+	if (isPlayer()) { 
+		PlayerImplementation* player = (PlayerImplementation*) this;
+		player->setEntertainerEvent(); 
+	}
 }
 
 void CreatureObjectImplementation::startPlayingMusic(const string& music) {
@@ -2169,81 +2307,165 @@ void CreatureObjectImplementation::startPlayingMusic(const string& music) {
 		sendSystemMessage("You are already playing music.");
 		return;
 	}
+	
+	Instrument* instrument = getInstrument();
+	if(instrument == NULL)
+	{
+		sendSystemMessage("You must first equip an instrument.");
+		return;
+	} 
+	
+	// TODO: Need to refactor this code
+	Vector<string> availableSongs;
 
-	if (music == "") {
-		if (isPlayer()) {
-			PlayerImplementation* player = (PlayerImplementation*) this;
+	if (isPlayer()) {
+		PlayerImplementation* player = (PlayerImplementation*) this;
 
+		string skillBox = "social_entertainer_novice";
+		if (player->getSkillBoxesSize() && player->hasSkillBox(skillBox))
+			availableSongs.add("starwars1");				
+		else
+		{
+			sendSystemMessage("You do not have sufficient abilities to play music.");
+			return;
+		}
+
+		skillBox = "social_entertainer_music_01";
+		if (player->getSkillBoxesSize() && player->hasSkillBox(skillBox))
+			availableSongs.add("rock");
+
+		skillBox = "social_entertainer_music_02";
+		if (player->getSkillBoxesSize() && player->hasSkillBox(skillBox))
+			availableSongs.add("starwars2");
+					
+		skillBox = "social_entertainer_music_03";
+		if (player->getSkillBoxesSize() && player->hasSkillBox(skillBox))
+			availableSongs.add("folk");
+
+		skillBox = "social_entertainer_music_04";
+		if (player->getSkillBoxesSize() && player->hasSkillBox(skillBox))
+			availableSongs.add("starwars3");
+
+		skillBox = "social_entertainer_master";
+		if (player->getSkillBoxesSize() && player->hasSkillBox(skillBox))
+			availableSongs.add("ceremonial");			
+					
+		skillBox = "social_musician_novice";
+		if (player->getSkillBoxesSize() && player->hasSkillBox(skillBox))
+			availableSongs.add("starwars4"); 
+
+		skillBox = "social_musician_knowledge_01";
+		if (player->getSkillBoxesSize() && player->hasSkillBox(skillBox))
+			availableSongs.add("ballad");
+
+		skillBox = "social_musician_knowledge_02";
+		if (player->getSkillBoxesSize() && player->hasSkillBox(skillBox))
+			availableSongs.add("funk"); 
+
+
+		skillBox = "social_musician_knowledge_03";
+		if (player->getSkillBoxesSize() && player->hasSkillBox(skillBox))
+			availableSongs.add("waltz"); 
+
+		skillBox = "social_musician_knowledge_04";
+		if (player->getSkillBoxesSize() && player->hasSkillBox(skillBox))
+			availableSongs.add("jazz");
+
+
+		skillBox = "social_dancer_master";
+		if (player->getSkillBoxesSize() && player->hasSkillBox(skillBox)) {
+			availableSongs.add("virtuoso");
+			availableSongs.add("western");
+		}
+
+		if (music == "") {
 			SuiListBoxImplementation* sui = new SuiListBoxImplementation((Player*) _this, 0x5553);
 			sui->setPromptText("Available songs");
 			sui->setPromptTitle("Pick a song");
 
-			for (int i = 0; i < 11; i++)
-				sui->addMenuItem(songs[i]);
-			
+			for (int i = 0; i < availableSongs.size(); ++i) {
+				string song = availableSongs.get(i);
+				sui->addMenuItem(song);
+			}
+				
 			player->addSuiBox(sui->deploy());
-			
+				
 			player->sendMessage(sui->generateMessage());
+			return;
 		}
-		
-		return;
 	}
 
+
+
 	int instrid;
-	if (music == "starwars1" || music == "0") {
+	if (music == "starwars1" || "starwars1" == availableSongs.get(atoi(music.c_str()))) { // music == "0"
 		instrid = 1;
-	} else if (music == "rock" || music == "1") {
+	} else if (music == "rock" || "rock" == availableSongs.get(atoi(music.c_str()))) {
 		instrid = 11;
-	} else if (music == "starwars2" || music == "2") {
+	} else if (music == "starwars2" || "starwars2" == availableSongs.get(atoi(music.c_str()))) {
 		instrid = 21;
-	} else if (music == "folk" || music == "3") {
+	} else if (music == "folk" || "folk" == availableSongs.get(atoi(music.c_str()))) {
 		instrid = 31;
-	} else if (music == "starwars3" || music == "4") {
+	} else if (music == "starwars3" || "starwars3" == availableSongs.get(atoi(music.c_str()))) {
 		instrid = 41;
-	} else if (music == "ceremonial" || music == "5") {
+	} else if (music == "ceremonial" || "ceremonial" == availableSongs.get(atoi(music.c_str()))) {
 		instrid = 51;
-	} else if (music == "ballad" || music == "6") {
+	} else if (music == "ballad" || "ballad" == availableSongs.get(atoi(music.c_str()))) {
 		instrid = 61;
-	} else if (music == "waltz" || music == "7") {
+	} else if (music == "waltz" || "waltz" == availableSongs.get(atoi(music.c_str()))) {
 		instrid = 71;
-	} else if (music == "jazz" || music == "8") {
+	} else if (music == "jazz" || "jazz" == availableSongs.get(atoi(music.c_str()))) {
 		instrid = 81;
-	} else if (music == "virtuoso" || music == "9") {
+	} else if (music == "virtuoso" || "virtuoso" == availableSongs.get(atoi(music.c_str()))) {
 		instrid = 91;
-	} else if (music == "western" || music == "10") {
+	} else if (music == "western" || "western" == availableSongs.get(atoi(music.c_str()))) {
 		instrid = 101;
+	} else if (music == "starwars4" || "starwars4" == availableSongs.get(atoi(music.c_str()))) {
+		instrid = 111;
+	} else if (music == "funk" || "funk" == availableSongs.get(atoi(music.c_str()))) {
+		instrid = 121;
 	} else {
 		sendSystemMessage("Invalid music name.");
 		return;
 	}
 
-    // Need to find what instrument is equipped
-	string instrument = "slitherhorn";
-
-	if (instrument == "slitherhorn") {
-		instrid += 0;
-	} else if (instrument == "fizz") {
-		instrid += 1;
-	} else if (instrument == "fanfar") {
-		instrid += 2;
-	} else if (instrument == "kloo_horn") {
-		instrid += 3;
-	} else if (instrument == "mandoviol") {
-		instrid += 4;
-	} else if (instrument == "traz") {
-		instrid += 5;
-	} else if (instrument == "bandfill") {
-		instrid += 6;
-	} else if (instrument == "flute_droopy") {
-		instrid += 7;
-	} else if (instrument == "ommni_box") {
-		instrid += 8;
-	} else if (instrument == "nalargon") {
-		instrid += 9;
-	} else {
-		sendSystemMessage("Instrument not equipped");
-		return;
+	// refactor later to use the consts
+	switch(instrument->getInstrumentType()) {
+		case 0: //SLITHERHORN:
+			instrid += 0;
+			break;
+		case 1: //FIZZ:
+			instrid += 1;
+			break;
+		case 2: //FANFAR:
+			instrid += 2;
+			break;
+		case 3: //KLOOHORN:
+			instrid += 3;
+			break;
+		case 4: //MANDOVIOL:
+			instrid += 4;
+			break;
+		case 5: //TRAZ:
+			instrid += 5;
+			break;
+		case 6: //BANDFILL:
+			instrid += 6;
+			break;
+		case 7: //FLUTEDROOPY:
+			instrid += 7;
+			break;
+		case 8: //OMNIBOX:
+			instrid += 8;
+			break;
+		case 9: //NALARGON:
+			instrid += 9;
+			break;
+		default:
+			sendSystemMessage("Bad instrument type.");
+			return;
 	}
+	
 
 	info("started playing music");
 
@@ -2253,6 +2475,12 @@ void CreatureObjectImplementation::startPlayingMusic(const string& music) {
 	sendEntertainingUpdate(0x3C4CCCCD, "music_3", 0x07352BAC, instrid);
 
 	sendSystemMessage("You start to play music.");
+	
+	// Tick every 10 seconds HAM costs
+	if (isPlayer()) { 
+		PlayerImplementation* player = (PlayerImplementation*) this;
+		player->setEntertainerEvent(); 
+	}
 }
 void CreatureObjectImplementation::stopDancing() {
 	if (isPlayer())

@@ -64,14 +64,15 @@ class CreatureObject;
 #include "../TangibleObject.h"
 
 class CraftingStation : public TangibleObject {
-public:
+protected:
 	CraftingStation();
 	CraftingStation(ORBObjectServant* obj);
 	CraftingStation(CraftingStation& ref);
 
-	CraftingStation* clone();
-
 	virtual ~CraftingStation();
+
+public:
+	CraftingStation* clone();
 
 	void generateAttributes(Player* player);
 
@@ -81,7 +82,7 @@ public:
 
 	float getStationEffectiveness();
 
-protected:
+	friend class CraftingStationHelper;
 };
 
 class CraftingStationImplementation;

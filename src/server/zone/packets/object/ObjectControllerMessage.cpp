@@ -311,7 +311,7 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player, Message* 
 	
 	CombatManager* combatManager = serv->getCombatManager();
 
-	CommandQueueAction* action;
+	// CommandQueueAction* action; - not used anymore?
 
 	switch (actionCRC) {
 	case (0x03B65950): // Logout
@@ -644,11 +644,29 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player, Message* 
 	default:
 		target = pack->parseLong();
 		
-		/*stringstream opc;
-		opc << "Opc: " << hex << actionCRC;
+	    string actionModifier = "";
+	    
+	    // fancy if statement
+	    switch (actionCRC) // modifier for entertainer-type commands /dazzle 2 vs /dazzle 1
+	    { // they're dumb and all have the same action crc
+	    	case (0xB008CBFA): //colorlights
+	    	case (0x9C7713A5): //dazzle
+	    	case (0xED4AA746): //spotlight
+	    	case (0xD536B419): //smokebomb
+	    	case (0x2434AC3A): //distract
+	    	case (0x6CB6978F): //ventriloquism
+	    	case (0x35ED32BE): //firejet
+	    		unicode option = unicode("");
+	    	    pack->parseUnicode(option);
+	    	    actionModifier = option.c_str();
+			    //if(skillOptionID <=0 ) skillOptionID = 1; // default to level 1
+	    }
+
+	    /*stringstream opc;
+		opc << "Opc: " << hex << actionCRC << " modifier: " << dec << actionModifier;
 		player->sendSystemMessage(opc.str());*/
 		
-		player->queueAction(player, target, actionCRC, actioncntr);
+		player->queueAction(player, target, actionCRC, actioncntr, actionModifier);
 
 		return;
 	}
@@ -951,23 +969,53 @@ void ObjectControllerMessage::parseStartMusic(Player* player, Message* pack) {
 }
 
 void ObjectControllerMessage::parseFlourish(Player* player, Message* pack) {
+
+	//player->getSkill()
 	pack->shiftOffset(8);
 
     unicode flourishID;
     pack->parseUnicode(flourishID);
     
-    int fID = atoi(flourishID.c_str().c_str());
+    int fid = atoi(flourishID.c_str().c_str());
     
     //now we need to determine whether its a music or a dance flourish.
-    if (player->isDancing()) {
-    	stringstream msg;
-		msg << "skill_action_" << fID;
-    	player->doAnimation(msg.str());
-    } else if (player->isPlayingMusic()) {
-    	Flourish* fl = new Flourish(player,fID);
-		player->broadcastMessage(fl);
-    }
+    
+	string skillbox = "social_entertainer_novice";
 	
+	if (!player->getSkillBoxesSize() || !player->hasSkillBox(skillbox)) {
+		player->sendSystemMessage("You do not have sufficient abilities to Flourish.");
+		return;
+	}
+	
+	if (!player->isDancing() && !player->isPlayingMusic()) {
+		player->sendSystemMessage("You must be playing music or dancing to Flourish..");
+		return;		
+	}
+
+	float baseActionDrain = -40 + (player->getQuickness() / 37.5);
+	float flourishActionDrain = baseActionDrain / 2.0;
+	
+	int actionDrain = round((flourishActionDrain * 10+ 0.5) / 10.0); // Round to nearest dec for actual int cost
+
+    /*stringstream opc;
+	opc << "ActionDrain: " << dec << ActionDrain;
+	player->sendSystemMessage(opc.str());*/
+	
+	if (player->changeActionBar(actionDrain, false) ) {		
+		player->activateRecovery();
+		
+		if (player->isDancing()) {
+	    	stringstream msg;
+			msg << "skill_action_" << fid;
+	    	player->doAnimation(msg.str());
+	    } else if (player->isPlayingMusic()) {
+	    	Flourish* flourish = new Flourish(player, fid);
+			player->broadcastMessage(flourish);
+	    }
+		
+	} else {
+		player->sendSystemMessage("You do not have enough action to do that.");
+	}	
 }
 
 void ObjectControllerMessage::parseStopMusic(Player* player, Message* pack) {

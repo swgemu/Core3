@@ -52,7 +52,9 @@ which carries forward this exception.
 
 #include "../../objects/tangible/resource/ResourceContainer.h"
 
-#include "../../objects/tangible/craftingtool/CraftingTool.h"
+#include "../../objects/tangible/crafting/CraftingTool.h"
+
+#include "../../objects/tangible/crafting/CraftingStation.h"
 
 #include "CraftingManager.h"
 

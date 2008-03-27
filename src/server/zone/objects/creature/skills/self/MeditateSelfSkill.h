@@ -53,7 +53,7 @@ public:
 	MeditateSelfSkill(const string& name, const string& effect, ZoneProcessServerImplementation* serv) : SelfSkill(name, effect.c_str(), MEDITATE, serv) {
 	}
 	
-	void doSkill(CreatureObject* creature) {
+	void doSkill(CreatureObject* creature, string& modifier) {
 		creature->setMeditateState();
 	}
 	

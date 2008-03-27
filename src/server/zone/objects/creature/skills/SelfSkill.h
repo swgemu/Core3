@@ -64,7 +64,7 @@ public:
 		setEffect(string(aname));
 	}
 	
-	virtual void doSkill(CreatureObject* creature) {
+	virtual void doSkill(CreatureObject* creature, string& modifier) {
 	}
 	
 	virtual void doAnimations(CreatureObject* creature) {

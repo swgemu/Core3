@@ -175,6 +175,9 @@ class PlayerImplementation : public PlayerServant {
 	Event* sampleEvent;
 	Event* firstSampleEvent;
 	
+	// Entertainer - Dance + Music
+	Event* entertainerEvent;
+	
 	WaypointObject* surveyWaypoint;
 	
 	ManagedReference<SurveyTool> surveyTool;
@@ -327,7 +330,8 @@ public:
 	}
 
 	// combat methods
-	void queueAction(Player* player, uint64 target, uint32 actionCRC, uint32 actionCntr);
+	void queueAction(Player* player, uint64 target, uint32 actionCRC, uint32 actionCntr, string& amod);
+	
 	bool doAction(CommandQueueAction* action);
 
 	void clearQueueAction(uint32 actioncntr, float timer = 0.0, uint32 tab1 = 0, uint32 tab2 = 0);
@@ -929,6 +933,9 @@ public:
 	inline bool getCancelSample() {
 		return cancelSample;
 	}
+	
+	// Entertainer tick
+	void setEntertainerEvent();
 	
 	friend class PlayerManager;
 	friend class ProfessionManager;

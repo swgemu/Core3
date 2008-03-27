@@ -84,6 +84,10 @@ void ScriptAttacksManager::registerFunctions() {
 	lua_register(getLuaState(), "AddWoundsDirectPoolAttackTargetSkill", AddWoundsDirectPoolAttackTargetSkill);
 	lua_register(getLuaState(), "AddPassiveSkill", AddPassiveSkill);
 	lua_register(getLuaState(), "AddMeditateSkill", AddMeditateSkill);
+	lua_register(getLuaState(), "AddEntertainSkill", AddEntertainSkill);
+	lua_register(getLuaState(), "AddDanceSkill", AddDanceSkill);
+	lua_register(getLuaState(), "AddMusicSkill", AddMusicSkill);
+	
 }
 
 void ScriptAttacksManager::registerGlobals() {
@@ -993,6 +997,54 @@ int ScriptAttacksManager::AddMeditateSkill(lua_State* L) {
 	
 	meditate = new MeditateSelfSkill(skillname, effect, server);
 	CombatActions->put(meditate);
+	
+	return 0;
+}
+
+int ScriptAttacksManager::AddEntertainSkill(lua_State* L) {
+	LuaObject skill(L);
+	if (!skill.isValidTable())
+		return 0;
+	
+	EntertainSelfSkill* entertain;
+	string skillname = skill.getStringField("skillname");
+		
+	string effect_prefix = skill.getStringField("effect_prefix");
+	
+	entertain = new EntertainSelfSkill(skillname, effect_prefix, server);
+	CombatActions->put(entertain);
+	
+	return 0;
+}
+
+int ScriptAttacksManager::AddDanceSkill(lua_State* L) {
+	LuaObject skill(L);
+	if (!skill.isValidTable())
+		return 0;
+
+	DanceSelfSkill* dance;
+	string skillname = skill.getStringField("skillname");
+		
+	string effect_prefix = skill.getStringField("effect_prefix");
+	
+	dance = new DanceSelfSkill(skillname, effect_prefix, server);
+	CombatActions->put(dance);
+
+	return 0;
+}
+
+int ScriptAttacksManager::AddMusicSkill(lua_State* L) {
+	LuaObject skill(L);
+	if (!skill.isValidTable())
+		return 0;
+
+	MusicSelfSkill* music;
+	string skillname = skill.getStringField("skillname");
+		
+	string effect_prefix = skill.getStringField("effect_prefix");
+	
+	music = new MusicSelfSkill(skillname, effect_prefix, server);
+	CombatActions->put(music);
 	
 	return 0;
 }

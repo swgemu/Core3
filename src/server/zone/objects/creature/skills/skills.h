@@ -61,6 +61,10 @@ which carries forward this exception.
 #include "self/ChangePostureSelfSkill.h"
 #include "self/MeditateSelfSkill.h"
 
+#include "self/EntertainSelfSkill.h"
+#include "self/DanceSelfSkill.h"
+#include "self/MusicSelfSkill.h"
+
 #include "PassiveSkill.h"
 
 

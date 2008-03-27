@@ -503,43 +503,42 @@ void ItemManagerImplementation::loadDefaultPlayerItems(Player* player) {
 	InstrumentImplementation* instruImpl = new InstrumentImplementation(player, 0xD2A2E607, unicode("The Pwn Slitherhorn"), "obj_slitherhorn", InstrumentImplementation::SLITHERHORN);
 	player->addInventoryItem(instruImpl->deploy());
 
-	 //Fizz
-	 //instrument = new Instrument(player, 0xBC38A9B, unicode("The Pwn Fizz"), "obj_fizzz", Instrument::FIZZ);
-	 //player->addInventoryItem(instrument);
-	 
-	 //Fanfar
-	 //instrument = new Instrument(player, 0x78A47467, unicode("The Pwn Fanfar"), "obj_fanfar", Instrument::FANFAR);
-	 //player->addInventoryItem(instrument);
-	 
-	 //Kloohorn
-	 //instrument = new Instrument(player, 0xFDFBC3BC, unicode("The Pwn Kloohorn"), "obj_kloo_horn", Instrument::KLOOHORN);
-	 //player->addInventoryItem(instrument);
-	 
-	 //Mandoviol
-	 //instrument = new Instrument(player, 0x6A58CECB, unicode("The Pwn Mandoviol"), "obj_mandoviol", Instrument::MANDOVIOL);
-	 //player->addInventoryItem(instrument);
-	 
-	 //Traz
-	 //instrument = new Instrument(player, 0x179316A2, unicode("The Pwn Traz"), "obj_traz", Instrument::TRAZ);
-	 //player->addInventoryItem(instrument);
-	 
-	 //Bandfill
-	 //instrument = new Instrument(player, 0x31FE6B97, unicode("The Pwn Bandfill"), "obj_bandfill", Instrument::BANDFILL);
-	 //player->addInventoryItem(instrument);
-	 
-	 //Flutedroopy
-	 //instrument = new Instrument(player, 0x46B975A6, unicode("The Pwn Flutedroopy"), "obj_growdi_flute", Instrument::FLUTEDROOPY);
-	 //player->addInventoryItem(instrument);
-	 
-	 //Can't equip these, have you drop them in the world.
-	 //Omnibox
-	 //instrument = new Instrument(player, 0x77D28DF3, unicode("The Pwn Omnibox"), "obj_ommni_box", Instrument::OMNIBOX);
-	 //player->addInventoryItem(instrument);
-	 
-	 //Nalargon
-	 //instrument = new Instrument(player, 0x8FC48010, unicode("The Pwn Nalargon"), "obj_nalargon", Instrument::NALARGON);
-	 //player->addInventoryItem(instrument);
+	//Fizz
+	instruImpl = new InstrumentImplementation(player, 0xBC38A9B, unicode("The Pwn Fizz"), "obj_fizzz", InstrumentImplementation::FIZZ); 
+	player->addInventoryItem(instruImpl->deploy()); 	 
+	
+	//Fanfar
+	instruImpl = new InstrumentImplementation(player, 0x78A47467, unicode("The Pwn Fanfar"), "obj_fanfar", InstrumentImplementation::FANFAR); 
+	player->addInventoryItem(instruImpl->deploy());  
+	
+	//Kloohorn
+	instruImpl = new InstrumentImplementation(player, 0xFDFBC3BC, unicode("The Pwn Kloohorn"), "obj_kloo_horn", InstrumentImplementation::KLOOHORN); 
+	player->addInventoryItem(instruImpl->deploy()); 
+	
+	//Mandoviol
+	instruImpl = new InstrumentImplementation(player, 0x6A58CECB, unicode("The Pwn Mandoviol"), "obj_mandoviol", InstrumentImplementation::MANDOVIOL); 
+	player->addInventoryItem(instruImpl->deploy());
+	
+	//Traz
+	instruImpl = new InstrumentImplementation(player, 0x179316A2, unicode("The Pwn Traz"), "obj_traz", InstrumentImplementation::TRAZ); 
+	player->addInventoryItem(instruImpl->deploy()); 
 
+	//Bandfill
+	instruImpl = new InstrumentImplementation(player, 0x31FE6B97, unicode("The Pwn Bandfill"), "obj_bandfill", InstrumentImplementation::BANDFILL); 
+	player->addInventoryItem(instruImpl->deploy()); 	 
+	
+	//Flutedroopy
+	instruImpl = new InstrumentImplementation(player, 0x46B975A6, unicode("The Pwn Flutedroopy"), "obj_growdi_flute", InstrumentImplementation::FLUTEDROOPY); 
+	player->addInventoryItem(instruImpl->deploy());
+	
+	//Can't equip these, have you drop them in the world.
+	//Omnibox
+	//instruImpl = new InstrumentImplementation(player, 0x77D28DF3, unicode("The Pwn Omnibox"), "obj_ommni_box", InstrumentImplementation::OMNIBOX); 
+	//player->addInventoryItem(instruImpl->deploy());
+	
+	//Nalargon
+	//instruImpl = new InstrumentImplementation(player, 0x8FC48010, unicode("The Pwn Nalargon"), "obj_nalargon", InstrumentImplementation::NALARGON); 
+	//player->addInventoryItem(instruImpl->deploy()); 
 }
 
 void ItemManagerImplementation::loadDefaultPlayerDatapadItems(Player* player) {

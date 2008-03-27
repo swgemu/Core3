@@ -136,7 +136,8 @@ float CombatManager::doSelfSkill(CommandQueueAction* action) {
 	if (!selfskill->calculateCost(creature))
 		return 0.0f;
 	
-	selfskill->doSkill(creature);
+	string actionModifier = action->getActionModifier();
+	selfskill->doSkill(creature, actionModifier);
 	
 	if (selfskill->isEnhanceSkill()) {
 		EnhanceSelfSkill* enhance = (EnhanceSelfSkill*) selfskill;

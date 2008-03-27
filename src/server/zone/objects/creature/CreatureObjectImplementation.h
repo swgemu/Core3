@@ -68,6 +68,7 @@ class HairObject;
 class TangibleObject;
 class Weapon;
 class Armor;
+class Instrument;
 
 class GroupObject;
 class MountCreature;
@@ -1230,6 +1231,8 @@ public:
 	inline Weapon* getWeapon() {
 		return weaponObject;
 	}
+	
+	Instrument* getInstrument();
 	
 	Armor* getArmor(int type);
 

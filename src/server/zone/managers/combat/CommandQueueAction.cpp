@@ -51,11 +51,13 @@ which carries forward this exception.
 #include "../../objects/creature/CreatureObject.h"
 #include "../../objects/tangible/weapons/Weapon.h"
 
-CommandQueueAction::CommandQueueAction(CreatureObject* cr, uint64 targid, uint32 acrc, uint32 acntr) {
+CommandQueueAction::CommandQueueAction(CreatureObject* cr, uint64 targid, uint32 acrc, uint32 acntr, string& amod) {
 	actionCRC = acrc;
 	actionCounter = acntr;
 
 	targetID = targid;
+	
+	actionModifier = amod;
 
 	creature = cr;
 	if (creature->isPlayer())

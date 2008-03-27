@@ -82,7 +82,7 @@ which carries forward this exception.
 
 #include "../draftschematic/DraftSchematic.h"
 
-#include "../tangible/craftingtool/CraftingTool.h"
+#include "../tangible/crafting/CraftingTool.h"
 
 #include "../tangible/resource/ResourceContainer.h"
 
@@ -402,7 +402,7 @@ void Player::clearQueueAction(unsigned int actioncntr, float timer, unsigned int
 		((PlayerImplementation*) _impl)->clearQueueAction(actioncntr, timer, tab1, tab2);
 }
 
-void Player::queueAction(Player* player, unsigned long long target, unsigned int actionCRC, unsigned int actionCntr) {
+void Player::queueAction(Player* player, unsigned long long target, unsigned int actionCRC, unsigned int actionCntr, string& actionModifier) {
 	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
@@ -412,10 +412,11 @@ void Player::queueAction(Player* player, unsigned long long target, unsigned int
 		invocation.addUnsignedLongParameter(target);
 		invocation.addUnsignedIntParameter(actionCRC);
 		invocation.addUnsignedIntParameter(actionCntr);
+		invocation.addAsciiParameter(actionModifier);
 
 		invocation.executeWithVoidReturn();
 	} else
-		((PlayerImplementation*) _impl)->queueAction(player, target, actionCRC, actionCntr);
+		((PlayerImplementation*) _impl)->queueAction(player, target, actionCRC, actionCntr, actionModifier);
 }
 
 void Player::deleteQueueAction(unsigned int actioncntr) {
@@ -2537,6 +2538,18 @@ bool Player::getSampleErrorMessage() {
 		return ((PlayerImplementation*) _impl)->getSampleErrorMessage();
 }
 
+void Player::setEntertainerEvent() {
+	if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 196);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((PlayerImplementation*) _impl)->setEntertainerEvent();
+}
+
 /*
  *	PlayerAdapter
  */
@@ -2615,7 +2628,7 @@ Packet* PlayerAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* inv) {
 		clearQueueAction(inv->getUnsignedIntParameter(), inv->getFloatParameter(), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter());
 		break;
 	case 28:
-		queueAction((Player*) inv->getObjectParameter(), inv->getUnsignedLongParameter(), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter());
+		queueAction((Player*) inv->getObjectParameter(), inv->getUnsignedLongParameter(), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter(), inv->getAsciiParameter(_param4_queueAction__Player_long_int_int_string_));
 		break;
 	case 29:
 		deleteQueueAction(inv->getUnsignedIntParameter());
@@ -3118,6 +3131,9 @@ Packet* PlayerAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* inv) {
 	case 195:
 		resp->insertBoolean(getSampleErrorMessage());
 		break;
+	case 196:
+		setEntertainerEvent();
+		break;
 	default:
 		return NULL;
 	}
@@ -3213,8 +3229,8 @@ void PlayerAdapter::clearQueueAction(unsigned int actioncntr, float timer, unsig
 	return ((PlayerImplementation*) impl)->clearQueueAction(actioncntr, timer, tab1, tab2);
 }
 
-void PlayerAdapter::queueAction(Player* player, unsigned long long target, unsigned int actionCRC, unsigned int actionCntr) {
-	return ((PlayerImplementation*) impl)->queueAction(player, target, actionCRC, actionCntr);
+void PlayerAdapter::queueAction(Player* player, unsigned long long target, unsigned int actionCRC, unsigned int actionCntr, string& actionModifier) {
+	return ((PlayerImplementation*) impl)->queueAction(player, target, actionCRC, actionCntr, actionModifier);
 }
 
 void PlayerAdapter::deleteQueueAction(unsigned int actioncntr) {
@@ -3883,6 +3899,10 @@ bool PlayerAdapter::getSurveyErrorMessage() {
 
 bool PlayerAdapter::getSampleErrorMessage() {
 	return ((PlayerImplementation*) impl)->getSampleErrorMessage();
+}
+
+void PlayerAdapter::setEntertainerEvent() {
+	return ((PlayerImplementation*) impl)->setEntertainerEvent();
 }
 
 /*

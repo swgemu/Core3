@@ -73,6 +73,9 @@ public:
 	static const int ENHANCE = 3;
 	static const int PASSIVE = 4;
 	static const int MEDITATE = 5;
+	static const int ENTERTAIN = 6;
+	static const int DANCE = 7;
+	static const int MUSIC = 8;
 	static const int OTHER = 0;
 	
 	static const int TARGET = 1;
@@ -148,6 +151,17 @@ public:
 		return type == MEDITATE;
 	}
 	
+	inline bool isEntertainSkill() {
+		return type == ENTERTAIN;
+	}
+
+	inline bool isDanceSkill() {
+		return type == DANCE;
+	}
+	
+	inline bool isMusicSkill() {
+		return type == MUSIC;
+	}
 	inline uint32 getNameCRC() {
 		return nameCRC;
 	}

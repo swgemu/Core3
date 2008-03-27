@@ -42,7 +42,7 @@
 -- Load files
 
 -- Player skills
---RunSkillsFile("playerSkills/jedi.lua")
+RunSkillsFile("playerSkills/jedi.lua")
 RunSkillsFile("playerSkills/brawler.lua")
 RunSkillsFile("playerSkills/teraskasiartist.lua")
 RunSkillsFile("playerSkills/fencer.lua")
@@ -58,6 +58,9 @@ RunSkillsFile("playerSkills/medic.lua")
 RunSkillsFile("playerSkills/doctor.lua")
 RunSkillsFile("playerSkills/smuggler.lua")
 RunSkillsFile("playerSkills/passiveSkills.lua")
+RunSkillsFile("playerSkills/entertainer.lua")
+RunSkillsFile("playerSkills/dancer.lua")
+RunSkillsFile("playerSkills/musician.lua")
 
 
 -- CreatureSkills

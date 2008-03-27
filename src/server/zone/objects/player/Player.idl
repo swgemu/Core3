@@ -124,7 +124,7 @@ interface Player implements CreatureObject {
 	
 	// Combat
 	void clearQueueAction(unsigned int actioncntr, float timer = 0, unsigned int tab1 = 0, unsigned int tab2 = 0);
-	void queueAction(Player player, unsigned long target, unsigned int actionCRC, unsigned int actionCntr);
+	void queueAction(Player player, unsigned long target, unsigned int actionCRC, unsigned int actionCntr, string actionModifier);
 	void deleteQueueAction(unsigned int actioncntr);
 	
 	void changePosture(int post);
@@ -416,4 +416,6 @@ interface Player implements CreatureObject {
 	void setSampleErrorMessage();
 	boolean getSurveyErrorMessage();
 	boolean getSampleErrorMessage();
+	
+	void setEntertainerEvent();
 }

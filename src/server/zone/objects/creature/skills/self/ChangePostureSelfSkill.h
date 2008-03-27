@@ -61,11 +61,10 @@ public:
 		posture = 0;
 	}
 	
-	void doSkill(CreatureObject* creature) {
-		
+
+	void doSkill(CreatureObject* creature, string& modifier) {
 		creature->setPosture(posture);
 		doAnimations(creature);
-		
 	}
 	
 	void doAnimations(CreatureObject* creature) {

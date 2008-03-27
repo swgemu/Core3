@@ -68,14 +68,15 @@ class CraftingStation;
 #include "../TangibleObject.h"
 
 class CraftingTool : public TangibleObject {
-public:
+protected:
 	CraftingTool();
 	CraftingTool(ORBObjectServant* obj);
 	CraftingTool(CraftingTool& ref);
 
-	CraftingTool* clone();
-
 	virtual ~CraftingTool();
+
+public:
+	CraftingTool* clone();
 
 	void sendTo(Player* player, bool doClose = true);
 
@@ -111,7 +112,7 @@ public:
 
 	bool isReady();
 
-protected:
+	friend class CraftingToolHelper;
 };
 
 class CraftingToolImplementation;

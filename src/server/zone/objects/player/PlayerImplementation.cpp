@@ -82,6 +82,7 @@ which carries forward this exception.
 #include "events/ChangeFactionEvent.h"
 #include "events/CenterOfBeingEvent.h"
 #include "events/SurveyEvent.h"
+#include "events/EntertainerEvent.h"
 #include "events/SampleEvent.h"
 
 #include "../creature/events/DizzyFallDownEvent.h"
@@ -215,6 +216,7 @@ void PlayerImplementation::init() {
 	verifiedTrade = false;
 
 	surveyEvent = NULL;
+	entertainerEvent = NULL;
 	sampleEvent = NULL;
 	firstSampleEvent = NULL;
 	surveyWaypoint = NULL;
@@ -1205,17 +1207,19 @@ void PlayerImplementation::sendSystemMessage(unicode& message) {
 	sendMessage(smsg);
 }
 
-void PlayerImplementation::queueAction(Player* player, uint64 target, uint32 actionCRC, uint32 actionCntr) {
+void PlayerImplementation::queueAction(Player* player, uint64 target, uint32 actionCRC, uint32 actionCntr, string& amod) {
 	stringstream ident;
 	ident << "0x" << hex << actionCRC << " (" << actionCntr << ")"; 
 	
 	//info("queing action " + ident.str());
 	
-	if (isDancing() || isPlayingMusic()) {
+	// Try to queue some music skills
+	Skill* skill = creatureSkills.get(actionCRC);
+	if ((isDancing() || isPlayingMusic()) && (skill != NULL) && !(skill->isEntertainSkill() || skill->isDanceSkill() || skill->isMusicSkill())) {
 		player->sendSystemMessage("You cant use skills while dancing/playing music!");
 		clearQueueAction(actionCntr);
 	} else if (commandQueue.size() < 15) {
-		CommandQueueAction* action = new CommandQueueAction(player, target, actionCRC, actionCntr);
+		CommandQueueAction* action = new CommandQueueAction(player, target, actionCRC, actionCntr, amod);
 
 		if (!doAction(action))
 			delete action;
@@ -1835,6 +1839,96 @@ void PlayerImplementation::changeWeapon(uint64 itemid) {
 			
 			setWeaponSkillMods(weapon);		
 		}	
+	} else if (((TangibleObject*)obj)->isInstrument()){
+		
+		Instrument* device = (Instrument*) obj;
+		int instrument = device->getInstrumentType();
+		
+		string skillBox;
+		// Needs to be refactored
+		switch(instrument)
+		{
+		case 1: //SLITHERHORN
+			skillBox = "social_entertainer_novice";
+			if (!getSkillBoxesSize() || !hasSkillBox(skillBox)) {
+				sendSystemMessage("You do not have sufficient abilities to equip " + device->getName().c_str() + ".");
+				return;
+			}
+			break;
+		case 2: // FIZZ
+			skillBox = "social_entertainer_music_01";
+			if (!getSkillBoxesSize() || !hasSkillBox(skillBox)) {
+				sendSystemMessage("You do not have sufficient abilities to equip " + device->getName().c_str() + ".");
+				return;
+			}
+			break;
+		case 3: // FANFAR
+			skillBox = "social_entertainer_music_03";
+			if (!getSkillBoxesSize() || !hasSkillBox(skillBox)) {
+				sendSystemMessage("You do not have sufficient abilities to equip " + device->getName().c_str() + ".");
+				return;
+			}
+			break;
+		case 4: // KLOOHORN
+			skillBox = "social_entertainer_music_04";
+			if (!getSkillBoxesSize() || !hasSkillBox(skillBox)) {
+				sendSystemMessage("You do not have sufficient abilities to equip " + device->getName().c_str() + ".");
+				return;
+			}
+			break;
+		case 5: // MANDOVIOL
+			skillBox = "social_entertainer_master";
+			if (!getSkillBoxesSize() || !hasSkillBox(skillBox)) {
+				sendSystemMessage("You do not have sufficient abilities to equip " + device->getName().c_str() + ".");
+				return;
+			}
+			break;
+		case 6: // TRAZ
+			skillBox = "social_musician_novice";
+			if (!getSkillBoxesSize() || !hasSkillBox(skillBox)) {
+				sendSystemMessage("You do not have sufficient abilities to equip " + device->getName().c_str() + ".");
+				return;
+			}
+			break;
+		case 7: // BANDFILL
+			skillBox = "social_musician_knowledge_02";
+			if (!getSkillBoxesSize() || !hasSkillBox(skillBox)) {
+				sendSystemMessage("You do not have sufficient abilities to equip " + device->getName().c_str() + ".");
+				return;
+			}
+			break;
+		case 8: // FLUTEDROOPY
+			skillBox = "social_musician_knowledge_03";
+			if (!getSkillBoxesSize() || !hasSkillBox(skillBox)) {
+				sendSystemMessage("You do not have sufficient abilities to equip " + device->getName().c_str() + ".");
+				return;
+			}
+			break;
+		case 9: // OMNIBOX
+			skillBox = "social_musician_knowledge_04";
+			if (!getSkillBoxesSize() || !hasSkillBox(skillBox)) {
+				sendSystemMessage("You do not have sufficient abilities to equip " + device->getName().c_str() + ".");
+				return;
+			}
+			break;
+		case 10: // NALARGON
+			skillBox = "social_musician_master";
+			if (!getSkillBoxesSize() || !hasSkillBox(skillBox)) {
+				sendSystemMessage("You do not have sufficient abilities to equip " + device->getName().c_str() + ".");
+				return;
+			}
+			break;
+		default :
+			sendSystemMessage("You do not have sufficient abilities to equip " + device->getName().c_str() + ".");
+			return;
+		}
+		
+		TangibleObject* item = (TangibleObject*) obj;
+		
+		if (item->isEquipped())
+			unequipItem(item);
+		else
+			equipItem(item);
 	} else {
 		TangibleObject* item = (TangibleObject*) obj;
 		
@@ -2718,6 +2812,11 @@ void PlayerImplementation::surrenderSkillBox(const string& name) {
 void PlayerImplementation::newChangeFactionEvent(uint32 faction) {
 	changeFactionEvent = new ChangeFactionEvent(this, faction);
 	server->addEvent(changeFactionEvent);
+}
+
+void PlayerImplementation::setEntertainerEvent() {
+	entertainerEvent = new EntertainerEvent(_this);
+	server->addEvent(entertainerEvent, 10000);
 }
 
 void PlayerImplementation::setSurveyEvent(string& resourceName) {

@@ -59,6 +59,8 @@ class ResourceContainer;
 
 class CraftingTool;
 
+class CraftingStation;
+
 class CraftingManager : public ORBObjectStub {
 protected:
 	CraftingManager();

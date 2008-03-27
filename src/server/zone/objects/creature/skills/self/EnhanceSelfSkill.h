@@ -91,7 +91,7 @@ public:
 		requiredState = 0;
 	}
 	
-	void doSkill(CreatureObject* creature) {
+	void doSkill(CreatureObject* creature, string& modifier) {
 		calculateEnhancements(creature);
 		doAnimations(creature);
 		

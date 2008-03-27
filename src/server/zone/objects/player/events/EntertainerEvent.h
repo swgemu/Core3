@@ -42,54 +42,53 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef SCRIPTATTACKSMANAGER_H_
-#define SCRIPTATTACKSMANAGER_H_
+#ifndef ENTERTAINEREVENT_H_
+#define ENTERTAINEREVENT_H_
 
-#include "engine/engine.h"
+#include "../Player.h"
+
+class EntertainerEvent : public Event {
+	Player* player;
 	
-class ZoneProcessServerImplementation;
-class SkillList;
-
-class ScriptAttacksManager : public Lua {
-	static ZoneProcessServerImplementation* server;
-	static SkillList* CombatActions;
-
 public:
-	ScriptAttacksManager(ZoneProcessServerImplementation* serv);
-	
-	void registerFunctions();
-	void registerGlobals();
-	
-	bool loadSkillsFile(SkillList* cmbtActions) {
-		CombatActions = cmbtActions;
-		info("Loading skills...");
-		return runFile("scripts/skills/skills.lua");
+	EntertainerEvent(Player* pl) : Event() {
+		player = pl;		
 	}
-	
-	//lua functions
-	static int RunSkillsFile(lua_State* L);
-	
-	// AddSkills functions
-	static int AddRandomPoolAttackTargetSkill(lua_State* L);
-	static int AddForceRandomPoolAttackTargetSkill(lua_State* L);
-	static int AddForceDotPoolAttackTargetSkill(lua_State *L);
-	static int AddDirectPoolAttackTargetSkill(lua_State* L);
-	static int AddForceHealSelfSkill(lua_State* L);
-	static int AddHealSelfSkill(lua_State* L);
-	static int AddDeBuffAttackTargetSkill(lua_State* L);
-	static int AddEnhanceSelfSkill(lua_State* L);
-	static int AddDotPoolAttackTargetSkill(lua_State *L);
-	static int AddChangePostureSelfSkill(lua_State* L);
-	static int AddWoundsDirectPoolAttackTargetSkill(lua_State* L);
-	static int AddPassiveSkill(lua_State* L);
-	static int AddMeditateSkill(lua_State* L);
-	static int AddHealTargetSkill(lua_State* L);
 
-	static int AddEntertainSkill(lua_State* L);
-	static int AddDanceSkill(lua_State* L);
-	static int AddMusicSkill(lua_State* L);
-	
+	bool activate() {
+		try {
+			if(!player->isDancing() && !player->isPlayingMusic())
+				return true; // don't tick action if they aren't doing anything
+
+			float baseActionDrain = -40 + (player->getQuickness() / 37.5);
+			int actionDrain = round((baseActionDrain * 10 + 0.5) / 10.0); // Round to nearest dec for actual int cost
+
+		    /*stringstream opc;
+			opc << "ActionDrain: " << dec << ActionDrain;
+			player->sendSystemMessage(opc.str());*/
+			
+			if (player->changeActionBar(actionDrain, false) ) {		
+				player->activateRecovery(); 
+			} else {
+				if (player->isDancing()) {
+					player->stopDancing();
+					player->sendSystemMessage("You do not have enough action to continue dancing.");
+				}
+				
+				if (player->isPlayingMusic()) {
+					player->stopPlayingMusic();
+					player->sendSystemMessage("You do not have enough action to continue playing.");
+				}
+			}
+			
+			player->setEntertainerEvent(); // Renew 10 seconds tick
+		} catch (...) {
+			cout << "Unhandled EntertainerEvent exception.\n";
+		}
+		
+		return true;
+	}
+
 };
 
-
-#endif /*SCRIPTATTACKSMANAGER_H_*/
+#endif /*ENTERTAINEREVENT_H_*/

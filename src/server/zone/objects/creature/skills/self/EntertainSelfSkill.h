@@ -42,54 +42,42 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef SCRIPTATTACKSMANAGER_H_
-#define SCRIPTATTACKSMANAGER_H_
+#ifndef ENTERTAINSELFSKILL_H_
+#define ENTERTAINSELFSKILL_H_
 
-#include "engine/engine.h"
-	
-class ZoneProcessServerImplementation;
-class SkillList;
+#include "../SelfSkill.h"
 
-class ScriptAttacksManager : public Lua {
-	static ZoneProcessServerImplementation* server;
-	static SkillList* CombatActions;
+class EntertainSelfSkill : public SelfSkill {
 
 public:
-	ScriptAttacksManager(ZoneProcessServerImplementation* serv);
-	
-	void registerFunctions();
-	void registerGlobals();
-	
-	bool loadSkillsFile(SkillList* cmbtActions) {
-		CombatActions = cmbtActions;
-		info("Loading skills...");
-		return runFile("scripts/skills/skills.lua");
+	EntertainSelfSkill(const string& name, const string& effect, ZoneProcessServerImplementation* serv) : SelfSkill(name, effect.c_str(), ENTERTAIN, serv) {
 	}
 	
-	//lua functions
-	static int RunSkillsFile(lua_State* L);
-	
-	// AddSkills functions
-	static int AddRandomPoolAttackTargetSkill(lua_State* L);
-	static int AddForceRandomPoolAttackTargetSkill(lua_State* L);
-	static int AddForceDotPoolAttackTargetSkill(lua_State *L);
-	static int AddDirectPoolAttackTargetSkill(lua_State* L);
-	static int AddForceHealSelfSkill(lua_State* L);
-	static int AddHealSelfSkill(lua_State* L);
-	static int AddDeBuffAttackTargetSkill(lua_State* L);
-	static int AddEnhanceSelfSkill(lua_State* L);
-	static int AddDotPoolAttackTargetSkill(lua_State *L);
-	static int AddChangePostureSelfSkill(lua_State* L);
-	static int AddWoundsDirectPoolAttackTargetSkill(lua_State* L);
-	static int AddPassiveSkill(lua_State* L);
-	static int AddMeditateSkill(lua_State* L);
-	static int AddHealTargetSkill(lua_State* L);
+	void doSkill(CreatureObject* creature, string& modifier) {
+		int actionModifier = atoi(modifier.c_str());
 
-	static int AddEntertainSkill(lua_State* L);
-	static int AddDanceSkill(lua_State* L);
-	static int AddMusicSkill(lua_State* L);
+		
+		if(actionModifier > 3 or actionModifier < 1)
+			actionModifier = 3;
+		
+		// This returns a prefix for entertain skills - need to add an actionModifier and .cef
+		//cout << "doing skill, effect: " << getEffectName() << dec << actionModifier << ".cef";
+		
+    	stringstream effect;
+		effect << getEffectName() << dec << actionModifier << ".cef";
+		creature->playEffect(effect.str(), "");
+	}
 	
+	float calculateSpeed(CreatureObject* creature) {
+		return 1.0;
+	}
+	
+	bool calculateCost(CreatureObject* creature) {
+		if (creature->isDancing() || creature->isPlayingMusic())
+			return true;
+		else
+			return false;
+	}
 };
+#endif /*ENTERTAINSELFSKILL_H_*/
 
-
-#endif /*SCRIPTATTACKSMANAGER_H_*/

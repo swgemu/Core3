@@ -86,7 +86,7 @@ public:
 		healFire = false;
 	}
 	
-	void doSkill(CreatureObject* creature) {
+	void doSkill(CreatureObject* creature, string& modifier) {
 		calculateHeal(creature);
 		doAnimations(creature);
 	}

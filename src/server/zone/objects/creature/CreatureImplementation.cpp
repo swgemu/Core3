@@ -883,7 +883,8 @@ bool CreatureImplementation::attack(CreatureObject* target) {
 
 	info("queuing attacking");
 
-	CommandQueueAction* action = new CommandQueueAction(_this, target->getObjectID(), actionCRC, 0);
+	string modifier = "";
+	CommandQueueAction* action = new CommandQueueAction(_this, target->getObjectID(), 0, actionCRC, modifier);
 
 	action->setSkill(skill);
 	action->setTarget(target);
