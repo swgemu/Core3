@@ -1,4 +1,4 @@
-﻿/*
+/*
 MySQL Data Transfer
 Source Host: 192.168.1.180
 Source Database: swgemu
@@ -11,6 +11,7 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 -- Table structure for draft_schematics
 -- ----------------------------
+DROP TABLE IF EXISTS `draft_schematics`;
 CREATE TABLE `draft_schematics` (
   `draftschematic_id` bigint(20) unsigned NOT NULL,
   `name` text NOT NULL,

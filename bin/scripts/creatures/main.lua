@@ -99,6 +99,8 @@ function spawnLair(creatures, lair, posX, posY, posZ)
 end
 
 -- Creature objects
+
+RunCreatureFile("objects/creatures/kraytDragonAncient.lua")
 RunCreatureFile("objects/creatures/canyonKraytDragon.lua")
 RunCreatureFile("objects/creatures/darthVader.lua")
 RunCreatureFile("objects/creatures/wompRat.lua")
