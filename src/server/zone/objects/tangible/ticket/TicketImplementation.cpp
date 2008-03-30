@@ -111,11 +111,8 @@ void TicketImplementation::generateAttributes(SceneObject* obj) {
 	Player* player = (Player*) obj;
 
 	AttributeListMessage* tattr = new AttributeListMessage(_this);
-	tattr->insertAttribute("travel_departure_planet", getDeparturePlanet());
-	tattr->insertAttribute("travel_departure_point", getDeparturePoint());
-	tattr->insertAttribute("travel_arrival_planet", getArrivalPlanet());
-	tattr->insertAttribute("travel_arrival_point", getArrivalPoint());
 
+	addAttributes(tattr);
 	player->sendMessage(tattr);
 }
 
@@ -157,4 +154,12 @@ int TicketImplementation::useObject(Player* player) {
 	player->sendSystemMessage("travel", "boarding_too_far");
 	
 	return 0;
+}
+
+void TicketImplementation::addAttributes(AttributeListMessage* alm) {
+
+	alm->insertAttribute("travel_departure_planet", getDeparturePlanet());
+	alm->insertAttribute("travel_departure_point", getDeparturePoint());
+	alm->insertAttribute("travel_arrival_planet", getArrivalPlanet());
+	alm->insertAttribute("travel_arrival_point", getArrivalPoint());
 }

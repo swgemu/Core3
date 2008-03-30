@@ -267,7 +267,7 @@ public:
 	
 	virtual void decay(int decayRate);
 	
-	void addAttributes(AttributeListMessage* alm);
+	virtual void addAttributes(AttributeListMessage* alm);
 
 	inline TangibleObject* deploy() {
 		return (TangibleObject*) SceneObjectImplementation::deploy();

@@ -351,145 +351,7 @@ void WeaponImplementation::generateAttributes(SceneObject* obj) {
 	else
 		alm->insertAttribute("weapon_cert_status", "No");
 	
-	stringstream cond;
-	cond << (maxCondition-conditionDamage) << "/" << maxCondition;
-	
-	alm->insertAttribute("condition", cond);
-	
-	alm->insertAttribute("volume", "1");
-	
-	if (usesRemaining > 0)
-		alm->insertAttribute("count", usesRemaining);
-	
-	if (skillMod0Type > 0)
-		generateSkillMods(alm, skillMod0Type, skillMod0Value);
-	
-	if (skillMod1Type > 0)
-		generateSkillMods(alm, skillMod1Type, skillMod1Value);
-	
-	if (skillMod2Type > 0)
-		generateSkillMods(alm, skillMod2Type, skillMod2Value);
-
-	string ap;
-	
-	switch (armorPiercing) {
-	case NONE:
-		ap = "None";
-		break;
-	case LIGHT:
-		ap = "Light";
-		break;
-	case MEDIUM:
-		ap = "Medium";
-		break;
-	case HEAVY:
-		ap = "Heavy";
-		break;
-	default:
-		ap = "Unknown";
-		break;
-	}
-	
-	alm->insertAttribute("wpn_armor_pierce_rating", ap);
-	
-	float speed = round(10 * getAttackSpeed()) / 10;
-	
-	stringstream spdtxt;
-	
-	spdtxt << speed;
-	
-	if ((int(round(speed * 10)) % 10) == 0)
-		spdtxt << ".0";
-	
-	alm->insertAttribute("wpn_attack_speed", spdtxt.str());
-	
-	//Damage Information
-	stringstream dmgtxt;
-
-	switch (damageType) {
-	case KINETIC:
-		dmgtxt << "Kinetic";
-		break;
-	case ENERGY:
-		dmgtxt << "Energy";
-		break;
-	case ELECTRICITY:
-		dmgtxt << "Electricity";
-		break;
-	case STUN:
-		dmgtxt << "Stun";
-		break;
-	case BLAST:
-		dmgtxt << "Blast";
-		break;
-	case HEAT:
-		dmgtxt << "Heat";
-		break;
-	case COLD:
-		dmgtxt << "Cold";
-		break;
-	case ACID:
-		dmgtxt << "Acid";
-		break;
-	case LIGHTSABER:
-		dmgtxt << "Lightsaber";
-		break;
-	}
-	
-	alm->insertAttribute("damage.wpn_damage_type", dmgtxt);
-
-	float minDmg = round(getMinDamage());
-	float maxDmg = round(getMaxDamage());
-	
-	alm->insertAttribute("damage.wpn_damage_min", minDmg);
-
-	alm->insertAttribute("damage.wpn_damage_max", maxDmg);
-	
-	stringstream woundsratio;
-	
-	float wnd = round(10 * getWoundsRatio()) / 10.0f;
-	
-	woundsratio << wnd << "%";
-	
-	alm->insertAttribute("damage.wpn_wound_chance", woundsratio);
-	
-	//Accuracy Modifiers
-	stringstream pblank;
-	if (getPointBlankAccuracy() >= 0)
-		pblank << "+";
-		
-	pblank << getPointBlankAccuracy() << " @ " << getPointBlankRange() << "m";
-	alm->insertAttribute("cat_wpn_rangemods.wpn_range_zero", pblank);
-	
-	stringstream ideal;
-	if (getIdealAccuracy() >= 0)
-		ideal << "+";
-		
-	ideal << getIdealAccuracy() << " @ " << getIdealRange() << "m";
-	alm->insertAttribute("cat_wpn_rangemods.wpn_range_mid", ideal);
-	
-	stringstream maxrange;
-	if (getMaxRangeAccuracy() >= 0)
-		maxrange << "+";
-		
-	maxrange << getMaxRangeAccuracy() << " @ " << getMaxRange() << "m";
-	alm->insertAttribute("cat_wpn_rangemods.wpn_range_max", maxrange);
-	
-	//Special Attack Costs
-	alm->insertAttribute("cat_wpn_attack_cost.health", getHealthAttackCost());
-	
-	alm->insertAttribute("cat_wpn_attack_cost.action", getActionAttackCost());
-	
-	alm->insertAttribute("cat_wpn_attack_cost.mind", getMindAttackCost());
-	
-	if (dot0Uses !=0 || dot1Uses != 0 || dot2Uses != 0)
-		generateDotAttributes(alm);
-	
-	if (sliced == 1) 
-		alm->insertAttribute("hacked1", "");
-	
-	generatePowerup(alm);
-	
+	addAttributes(alm);
 	player->sendMessage(alm);
 }
 
@@ -1171,4 +1033,147 @@ void WeaponImplementation::removePowerup(Player* player, bool notify) {
 	}
 	
 	generateAttributes(player);
+}
+
+void WeaponImplementation::addAttributes(AttributeListMessage* alm) {
+
+	stringstream cond;
+	cond << (maxCondition-conditionDamage) << "/" << maxCondition;
+	
+	alm->insertAttribute("condition", cond);
+	
+	alm->insertAttribute("volume", "1");
+	
+	if (usesRemaining > 0)
+		alm->insertAttribute("count", usesRemaining);
+	
+	if (skillMod0Type > 0)
+		generateSkillMods(alm, skillMod0Type, skillMod0Value);
+	
+	if (skillMod1Type > 0)
+		generateSkillMods(alm, skillMod1Type, skillMod1Value);
+	
+	if (skillMod2Type > 0)
+		generateSkillMods(alm, skillMod2Type, skillMod2Value);
+
+	string ap;
+	
+	switch (armorPiercing) {
+	case NONE:
+		ap = "None";
+		break;
+	case LIGHT:
+		ap = "Light";
+		break;
+	case MEDIUM:
+		ap = "Medium";
+		break;
+	case HEAVY:
+		ap = "Heavy";
+		break;
+	default:
+		ap = "Unknown";
+		break;
+	}
+	
+	alm->insertAttribute("wpn_armor_pierce_rating", ap);
+	
+	float speed = round(10 * getAttackSpeed()) / 10;
+	
+	stringstream spdtxt;
+	
+	spdtxt << speed;
+	
+	if ((int(round(speed * 10)) % 10) == 0)
+		spdtxt << ".0";
+	
+	alm->insertAttribute("wpn_attack_speed", spdtxt.str());
+	
+	//Damage Information
+	stringstream dmgtxt;
+
+	switch (damageType) {
+	case KINETIC:
+		dmgtxt << "Kinetic";
+		break;
+	case ENERGY:
+		dmgtxt << "Energy";
+		break;
+	case ELECTRICITY:
+		dmgtxt << "Electricity";
+		break;
+	case STUN:
+		dmgtxt << "Stun";
+		break;
+	case BLAST:
+		dmgtxt << "Blast";
+		break;
+	case HEAT:
+		dmgtxt << "Heat";
+		break;
+	case COLD:
+		dmgtxt << "Cold";
+		break;
+	case ACID:
+		dmgtxt << "Acid";
+		break;
+	case LIGHTSABER:
+		dmgtxt << "Lightsaber";
+		break;
+	}
+	
+	alm->insertAttribute("damage.wpn_damage_type", dmgtxt);
+
+	float minDmg = round(getMinDamage());
+	float maxDmg = round(getMaxDamage());
+	
+	alm->insertAttribute("damage.wpn_damage_min", minDmg);
+
+	alm->insertAttribute("damage.wpn_damage_max", maxDmg);
+	
+	stringstream woundsratio;
+	
+	float wnd = round(10 * getWoundsRatio()) / 10.0f;
+	
+	woundsratio << wnd << "%";
+	
+	alm->insertAttribute("damage.wpn_wound_chance", woundsratio);
+	
+	//Accuracy Modifiers
+	stringstream pblank;
+	if (getPointBlankAccuracy() >= 0)
+		pblank << "+";
+		
+	pblank << getPointBlankAccuracy() << " @ " << getPointBlankRange() << "m";
+	alm->insertAttribute("cat_wpn_rangemods.wpn_range_zero", pblank);
+	
+	stringstream ideal;
+	if (getIdealAccuracy() >= 0)
+		ideal << "+";
+		
+	ideal << getIdealAccuracy() << " @ " << getIdealRange() << "m";
+	alm->insertAttribute("cat_wpn_rangemods.wpn_range_mid", ideal);
+	
+	stringstream maxrange;
+	if (getMaxRangeAccuracy() >= 0)
+		maxrange << "+";
+		
+	maxrange << getMaxRangeAccuracy() << " @ " << getMaxRange() << "m";
+	alm->insertAttribute("cat_wpn_rangemods.wpn_range_max", maxrange);
+	
+	//Special Attack Costs
+	alm->insertAttribute("cat_wpn_attack_cost.health", getHealthAttackCost());
+	
+	alm->insertAttribute("cat_wpn_attack_cost.action", getActionAttackCost());
+	
+	alm->insertAttribute("cat_wpn_attack_cost.mind", getMindAttackCost());
+	
+	if (dot0Uses !=0 || dot1Uses != 0 || dot2Uses != 0)
+		generateDotAttributes(alm);
+	
+	if (sliced == 1) 
+		alm->insertAttribute("hacked1", "");
+	
+	generatePowerup(alm);
+	
 }

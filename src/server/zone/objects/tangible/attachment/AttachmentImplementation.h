@@ -79,6 +79,7 @@ public:
 	void remove(Player* player);
 	
 	void generateAttributes(SceneObject* obj);
+	void addAttributes(AttributeListMessage* alm);
 		
 	void setSkillModValue(int index, int value);
 	void setSkillModType(int index, int type);

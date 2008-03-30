@@ -263,174 +263,8 @@ void ArmorImplementation::generateAttributes(SceneObject* obj) {
 	Player* player = (Player*) obj;
 	
 	AttributeListMessage* alm = new AttributeListMessage((TangibleObject*) _this);
-	
-	stringstream conditionStr;
-	conditionStr << getCondition() << '/' << maxCondition;
-	alm->insertAttribute("Condition", conditionStr);
-	
-	alm->insertAttribute("Volume", "1");
-	
-	alm->insertAttribute("Sockets", sockets);
-	
-	if (skillMod0Type != 0)
-		generateSkillMods(alm, skillMod0Type, skillMod0Value);
-	
-	if (skillMod1Type != 0)
-		generateSkillMods(alm, skillMod1Type, skillMod1Value);
-	
-	if (skillMod2Type != 0)
-		generateSkillMods(alm, skillMod2Type, skillMod2Value);
-	
-	if (socket0Type != 0)
-		generateSkillMods(alm, socket0Type, socket0Value);
-	
-	if (socket1Type != 0)
-		generateSkillMods(alm, socket1Type, socket1Value);
-	
-	if (socket2Type != 0)
-		generateSkillMods(alm, socket2Type, socket2Value);
-	
-	if (socket3Type != 0)
-		generateSkillMods(alm, socket3Type, socket3Value);
-	
-	//Armor Rating
-	if (rating == LIGHT)
-		alm->insertAttribute("armorrating", "Light");
-	else if (rating == MEDIUM)
-		alm->insertAttribute("armorrating", "Medium");
-	else if (rating == HEAVY)
-		alm->insertAttribute("armorrating", "Heavy");
-	
-	//Check for special protections
-	if (kineticIsSpecial && kinetic >= 0.5) {
-		stringstream txt;
-		txt << round(kinetic) << "%";
-		alm->insertAttribute("cat_armor_special_protection.armor_eff_kinetic", txt.str());
-	}
-	if (energyIsSpecial && energy >= 0.5) {
-		stringstream txt;
-		txt << round(energy) << "%";
-		alm->insertAttribute("cat_armor_special_protection.armor_eff_energy", txt.str());
-	}
-	if (electricityIsSpecial && electricity >= 0.5) {
-		stringstream txt;
-		txt << round(electricity) << "%";
-		alm->insertAttribute("cat_armor_special_protection.armor_eff_elemental_electrical", txt.str());
-	}
-	if (stunIsSpecial && stun >= 0.5) {
-		stringstream txt;
-		txt << round(stun) << "%";
-		alm->insertAttribute("cat_armor_special_protection.armor_eff_stun", txt.str());
-	}
-	if (blastIsSpecial && blast >= 0.5) {
-		stringstream txt;
-		txt << round(blast) << "%";
-		alm->insertAttribute("cat_armor_special_protection.armor_eff_blast", txt.str());
-	}
-	if (heatIsSpecial && heat >= 0.5) {
-		stringstream txt;
-		txt << round(heat) << "%";
-		alm->insertAttribute("cat_armor_special_protection.armor_eff_elemental_heat", txt.str());
-	}
-	if (coldIsSpecial && cold >= 0.5) {
-		stringstream txt;
-		txt << round(cold) << "%";
-		alm->insertAttribute("cat_armor_special_protection.armor_eff_elemental_cold", txt.str());
-	}
-	if (acidIsSpecial && acid >= 0.5) {
-		stringstream txt;
-		txt << round(acid) << "%";
-		alm->insertAttribute("cat_armor_special_protection.armor_eff_elemental_acid", txt.str());
-	}
-	if (lightSaberIsSpecial && lightSaberIsSpecial >= 0.5) {
-		stringstream txt;
-		txt << round(lightSaber) << "%";
-		alm->insertAttribute("cat_armor_special_protection.armor_eff_restraint", txt.str());
-	}
-	//Check for Effectiveness protections(Normal)
-	if (!kineticIsSpecial && kinetic >= 0.5) {
-		stringstream txt;
-		txt << round(kinetic) << "%";
-		alm->insertAttribute("cat_armor_effectiveness.armor_eff_kinetic", txt.str());
-	}
-	if (!energyIsSpecial && energy >= 0.5) {
-		stringstream txt;
-		txt << round(energy) << "%";
-		alm->insertAttribute("cat_armor_effectiveness.armor_eff_energy", txt.str());
-	}
-	if (!electricityIsSpecial && electricity >= 0.5) {
-		stringstream txt;
-		txt << round(electricity) << "%";
-		alm->insertAttribute("cat_armor_effectiveness.armor_eff_elemental_electrical", txt.str());
-	}
-	if (!stunIsSpecial && stun >= 0.5) {
-		stringstream txt;
-		txt << round(stun) << "%";
-		alm->insertAttribute("cat_armor_effectiveness.armor_eff_stun", txt.str());
-	}
-	if (!blastIsSpecial && blast >= 0.5) {
-		stringstream txt;
-		txt << round(blast) << "%";
-		alm->insertAttribute("cat_armor_effectiveness.armor_eff_blast", txt.str());
-	}
-	if (!heatIsSpecial && heat >= 0.5) {
-		stringstream txt;
-		txt << round(heat) << "%";
-		alm->insertAttribute("cat_armor_effectiveness.armor_eff_elemental_heat", txt.str());
-	}
-	if (!coldIsSpecial && cold >= 0.5) {
-		stringstream txt;
-		txt << round(cold) << "%";
-		alm->insertAttribute("cat_armor_effectiveness.armor_eff_elemental_cold", txt.str());
-	}
-	if (!acidIsSpecial && acid >= 0.5) {
-		stringstream txt;
-		txt << round(acid) << "%";
-		alm->insertAttribute("cat_armor_effectiveness.armor_eff_elemental_acid", txt.str());
-	}
-	if (!lightSaberIsSpecial && lightSaber >= 0.5) {
-		stringstream txt;
-		txt << round(lightSaber) << "%";
-		alm->insertAttribute("cat_armor_effectiveness.armor_eff_restraint", txt.str());
-	}
-	
-	//Vulnerabilities
-	if (kinetic < 0.5)
-		alm->insertAttribute("cat_armor_vulnerability.armor_eff_kinetic", "-");
-	
-	if (energy < 0.5)
-		alm->insertAttribute("cat_armor_vulnerability.armor_eff_energy", "-");
-	
-	if (electricity < 0.5)
-		alm->insertAttribute("cat_armor_vulnerability.armor_eff_elemental_electrical", "-");
-	
-	if (stun < 0.5)
-		alm->insertAttribute("cat_armor_vulnerability.armor_eff_stun", "-");
-	
-	if (blast < 0.5)
-		alm->insertAttribute("cat_armor_vulnerability.armor_eff_blast", "-");
-	
-	if (heat < 0.5)
-		alm->insertAttribute("cat_armor_vulnerability.armor_eff_elemental_heat", "-");
-	
-	if (cold < 0.5)
-		alm->insertAttribute("cat_armor_vulnerability.armor_eff_elemental_cold", "-");
-	
-	if (acid < 0.5)
-		alm->insertAttribute("cat_armor_vulnerability.armor_eff_elemental_acid", "-");
-	
-	if (lightSaber < 0.5)
-		alm->insertAttribute("cat_armor_vulnerability.armor_eff_restraint", "-");
-	
-	//Encumbrances
-	alm->insertAttribute("cat_armor_encumbrance.health", healthEncumbrance);
-	
-	alm->insertAttribute("cat_armor_encumbrance.action", actionEncumbrance);
-	
-	alm->insertAttribute("cat_armor_encumbrance.mind", mindEncumbrance);
-	
-	if (sliced == 1) 
-		alm->insertAttribute("hacked", "");
+
+	addAttributes(alm);
 	
 	player->sendMessage(alm);
 	
@@ -946,3 +780,175 @@ int ArmorImplementation::addSkillMod(int skillModType, int skillModValue) {
 	
 	return -1;
 }
+
+void ArmorImplementation::addAttributes(AttributeListMessage* alm) {
+	stringstream conditionStr;
+	conditionStr << getCondition() << '/' << maxCondition;
+	alm->insertAttribute("Condition", conditionStr);
+	
+	alm->insertAttribute("Volume", "1");
+	
+	alm->insertAttribute("Sockets", sockets);
+	
+	if (skillMod0Type != 0)
+		generateSkillMods(alm, skillMod0Type, skillMod0Value);
+	
+	if (skillMod1Type != 0)
+		generateSkillMods(alm, skillMod1Type, skillMod1Value);
+	
+	if (skillMod2Type != 0)
+		generateSkillMods(alm, skillMod2Type, skillMod2Value);
+	
+	if (socket0Type != 0)
+		generateSkillMods(alm, socket0Type, socket0Value);
+	
+	if (socket1Type != 0)
+		generateSkillMods(alm, socket1Type, socket1Value);
+	
+	if (socket2Type != 0)
+		generateSkillMods(alm, socket2Type, socket2Value);
+	
+	if (socket3Type != 0)
+		generateSkillMods(alm, socket3Type, socket3Value);
+	
+	//Armor Rating
+	if (rating == LIGHT)
+		alm->insertAttribute("armorrating", "Light");
+	else if (rating == MEDIUM)
+		alm->insertAttribute("armorrating", "Medium");
+	else if (rating == HEAVY)
+		alm->insertAttribute("armorrating", "Heavy");
+	
+	//Check for special protections
+	if (kineticIsSpecial && kinetic >= 0.5) {
+		stringstream txt;
+		txt << round(kinetic) << "%";
+		alm->insertAttribute("cat_armor_special_protection.armor_eff_kinetic", txt.str());
+	}
+	if (energyIsSpecial && energy >= 0.5) {
+		stringstream txt;
+		txt << round(energy) << "%";
+		alm->insertAttribute("cat_armor_special_protection.armor_eff_energy", txt.str());
+	}
+	if (electricityIsSpecial && electricity >= 0.5) {
+		stringstream txt;
+		txt << round(electricity) << "%";
+		alm->insertAttribute("cat_armor_special_protection.armor_eff_elemental_electrical", txt.str());
+	}
+	if (stunIsSpecial && stun >= 0.5) {
+		stringstream txt;
+		txt << round(stun) << "%";
+		alm->insertAttribute("cat_armor_special_protection.armor_eff_stun", txt.str());
+	}
+	if (blastIsSpecial && blast >= 0.5) {
+		stringstream txt;
+		txt << round(blast) << "%";
+		alm->insertAttribute("cat_armor_special_protection.armor_eff_blast", txt.str());
+	}
+	if (heatIsSpecial && heat >= 0.5) {
+		stringstream txt;
+		txt << round(heat) << "%";
+		alm->insertAttribute("cat_armor_special_protection.armor_eff_elemental_heat", txt.str());
+	}
+	if (coldIsSpecial && cold >= 0.5) {
+		stringstream txt;
+		txt << round(cold) << "%";
+		alm->insertAttribute("cat_armor_special_protection.armor_eff_elemental_cold", txt.str());
+	}
+	if (acidIsSpecial && acid >= 0.5) {
+		stringstream txt;
+		txt << round(acid) << "%";
+		alm->insertAttribute("cat_armor_special_protection.armor_eff_elemental_acid", txt.str());
+	}
+	if (lightSaberIsSpecial && lightSaberIsSpecial >= 0.5) {
+		stringstream txt;
+		txt << round(lightSaber) << "%";
+		alm->insertAttribute("cat_armor_special_protection.armor_eff_restraint", txt.str());
+	}
+	//Check for Effectiveness protections(Normal)
+	if (!kineticIsSpecial && kinetic >= 0.5) {
+		stringstream txt;
+		txt << round(kinetic) << "%";
+		alm->insertAttribute("cat_armor_effectiveness.armor_eff_kinetic", txt.str());
+	}
+	if (!energyIsSpecial && energy >= 0.5) {
+		stringstream txt;
+		txt << round(energy) << "%";
+		alm->insertAttribute("cat_armor_effectiveness.armor_eff_energy", txt.str());
+	}
+	if (!electricityIsSpecial && electricity >= 0.5) {
+		stringstream txt;
+		txt << round(electricity) << "%";
+		alm->insertAttribute("cat_armor_effectiveness.armor_eff_elemental_electrical", txt.str());
+	}
+	if (!stunIsSpecial && stun >= 0.5) {
+		stringstream txt;
+		txt << round(stun) << "%";
+		alm->insertAttribute("cat_armor_effectiveness.armor_eff_stun", txt.str());
+	}
+	if (!blastIsSpecial && blast >= 0.5) {
+		stringstream txt;
+		txt << round(blast) << "%";
+		alm->insertAttribute("cat_armor_effectiveness.armor_eff_blast", txt.str());
+	}
+	if (!heatIsSpecial && heat >= 0.5) {
+		stringstream txt;
+		txt << round(heat) << "%";
+		alm->insertAttribute("cat_armor_effectiveness.armor_eff_elemental_heat", txt.str());
+	}
+	if (!coldIsSpecial && cold >= 0.5) {
+		stringstream txt;
+		txt << round(cold) << "%";
+		alm->insertAttribute("cat_armor_effectiveness.armor_eff_elemental_cold", txt.str());
+	}
+	if (!acidIsSpecial && acid >= 0.5) {
+		stringstream txt;
+		txt << round(acid) << "%";
+		alm->insertAttribute("cat_armor_effectiveness.armor_eff_elemental_acid", txt.str());
+	}
+	if (!lightSaberIsSpecial && lightSaber >= 0.5) {
+		stringstream txt;
+		txt << round(lightSaber) << "%";
+		alm->insertAttribute("cat_armor_effectiveness.armor_eff_restraint", txt.str());
+	}
+	
+	//Vulnerabilities
+	if (kinetic < 0.5)
+		alm->insertAttribute("cat_armor_vulnerability.armor_eff_kinetic", "-");
+	
+	if (energy < 0.5)
+		alm->insertAttribute("cat_armor_vulnerability.armor_eff_energy", "-");
+	
+	if (electricity < 0.5)
+		alm->insertAttribute("cat_armor_vulnerability.armor_eff_elemental_electrical", "-");
+	
+	if (stun < 0.5)
+		alm->insertAttribute("cat_armor_vulnerability.armor_eff_stun", "-");
+	
+	if (blast < 0.5)
+		alm->insertAttribute("cat_armor_vulnerability.armor_eff_blast", "-");
+	
+	if (heat < 0.5)
+		alm->insertAttribute("cat_armor_vulnerability.armor_eff_elemental_heat", "-");
+	
+	if (cold < 0.5)
+		alm->insertAttribute("cat_armor_vulnerability.armor_eff_elemental_cold", "-");
+	
+	if (acid < 0.5)
+		alm->insertAttribute("cat_armor_vulnerability.armor_eff_elemental_acid", "-");
+	
+	if (lightSaber < 0.5)
+		alm->insertAttribute("cat_armor_vulnerability.armor_eff_restraint", "-");
+	
+	//Encumbrances
+	alm->insertAttribute("cat_armor_encumbrance.health", healthEncumbrance);
+	
+	alm->insertAttribute("cat_armor_encumbrance.action", actionEncumbrance);
+	
+	alm->insertAttribute("cat_armor_encumbrance.mind", mindEncumbrance);
+	
+	if (sliced == 1) 
+		alm->insertAttribute("hacked", "");
+
+}
+

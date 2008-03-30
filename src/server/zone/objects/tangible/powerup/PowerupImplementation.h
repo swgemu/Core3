@@ -48,6 +48,8 @@ public:
 	
 	void parseItemAttributes();
 	
+	void addAttributes(AttributeListMessage* alm);
+	
 	void setPowerupStats(int modifier);
 	
 	void apply(Weapon* weapon);

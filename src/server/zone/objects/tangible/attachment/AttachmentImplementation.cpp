@@ -123,13 +123,7 @@ void AttachmentImplementation::generateAttributes(SceneObject* obj) {
 	Player* player = (Player*) obj;
 	
 	AttributeListMessage* alm = new AttributeListMessage(_this);
-	
-	if (skillMod0Value != 0)
-		generateSkillMods(alm,skillMod0Type,skillMod0Value);
-	if (skillMod1Value != 0)
-		generateSkillMods(alm,skillMod1Type,skillMod1Value);
-	if (skillMod2Value != 0)
-		generateSkillMods(alm,skillMod2Type,skillMod2Value);
+	addAttributes(alm);
 	
 	player->sendMessage(alm);
 }
@@ -305,4 +299,15 @@ void AttachmentImplementation::remove(Player* player) {
 	BaseMessage* msg = new SceneObjectDestroyMessage(objectID);
 	player->sendMessage(msg);
 	
+}
+
+void AttachmentImplementation::addAttributes(AttributeListMessage* alm) {
+
+	if (skillMod0Value != 0)
+		generateSkillMods(alm,skillMod0Type,skillMod0Value);
+	if (skillMod1Value != 0)
+		generateSkillMods(alm,skillMod1Type,skillMod1Value);
+	if (skillMod2Value != 0)
+		generateSkillMods(alm,skillMod2Type,skillMod2Value);
+
 }

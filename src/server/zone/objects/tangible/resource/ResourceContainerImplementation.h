@@ -93,6 +93,8 @@ public:
 	
 	void parseItemAttributes();
 	
+	void addAttributes(AttributeListMessage* alm);
+	
 	inline void setContents(int i) {
 		quantity = i;
 		string temp = "quantity";

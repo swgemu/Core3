@@ -102,12 +102,7 @@ void CraftingToolImplementation::generateAttributes(SceneObject* obj) {
 		return;
 	Player* player = (Player*) obj;
 	AttributeListMessage* alm = new AttributeListMessage(_this);
-	alm->insertAttribute("volume", "1");
-	alm->insertAttribute("craft_tool_effectiveness", effectiveness);
-	if (isReady())
-		alm->insertAttribute("craft_tool_status", "@crafting:tool_status_ready");
-	alm->insertAttribute("crafter", "Kyle");
-	alm->insertAttribute("serial_number", "(98u1p5d5)");
+	addAttributes(alm);
 	
 	player->sendMessage(alm);
 }
@@ -156,4 +151,16 @@ void CraftingToolImplementation::sendToolStart(Player* player) {
 	}
 	
 	player->setCurrentCraftingTool(_this);
+}
+
+void CraftingToolImplementation::addAttributes(AttributeListMessage* alm) {
+
+	alm->insertAttribute("condition", "100/100");
+	alm->insertAttribute("volume", "1");
+	alm->insertAttribute("craft_tool_effectiveness", effectiveness);
+	if (isReady())
+		alm->insertAttribute("craft_tool_status", "@crafting:tool_status_ready");
+	alm->insertAttribute("crafter", "Kyle");
+	alm->insertAttribute("serial_number", "(98u1p5d5)");
+	
 }

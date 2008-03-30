@@ -69,6 +69,8 @@ public:
 	
 	int useObject(Player* player);
 	
+	void addAttributes(AttributeListMessage* alm);
+	
 	inline string& getDeparturePlanet() {
 		return departurePlanet;
 	}

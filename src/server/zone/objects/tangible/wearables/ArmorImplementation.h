@@ -160,6 +160,8 @@ public:
 	
 	int getSocketType(int index);
 	int getSocketValue(int index);
+	
+	void addAttributes(AttributeListMessage* alm);
 
 	// setters
 	inline void setRating(int rat) {

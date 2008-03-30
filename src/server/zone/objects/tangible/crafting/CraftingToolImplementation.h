@@ -81,6 +81,7 @@ public:
 	void init();
 	void sendTo(Player* player, bool doClose = true);
 	void generateAttributes(SceneObject* player);
+	void addAttributes(AttributeListMessage* alm);
  
 	int useObject(Player* player);
  

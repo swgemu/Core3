@@ -242,6 +242,8 @@ public:
 	void powerupIdealAccuracy(float powerupValue);
 	void powerupMaxRangeAccuracy(float powerupValue);
 
+	void addAttributes(AttributeListMessage* alm);
+	
 	// slicing methods
 	void sliceWeapon(Player* player);
 

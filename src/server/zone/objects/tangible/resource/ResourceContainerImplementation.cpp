@@ -143,50 +143,8 @@ void ResourceContainerImplementation::generateAttributes(SceneObject* obj) {
 	Player* player = (Player*) obj;
 		
 	AttributeListMessage* alm = new AttributeListMessage(_this);
-	alm->insertAttribute("volume", "1");
-	alm->insertAttribute("condition", "100/100");
-	
-	stringstream ssQuantity;
-	ssQuantity << quantity << "/" << getMaxContents();
-	
-	alm->insertAttribute("resource_contents", ssQuantity.str());
-	alm->insertAttribute("resource_name", name.c_str());
+	addAttributes(alm);
 
-	alm->insertAttribute("resource_class", res_class7);
-	
-	if (res_cr > 0)
-		alm->insertAttribute("res_cold_resist", res_cr);
-	
-	if (res_c > 0)
-		alm->insertAttribute("res_conductivity", res_c);
-	
-	if (res_dr > 0)
-		alm->insertAttribute("res_decay_resist", res_dr);
-	
-	if (res_hr > 0)
-		alm->insertAttribute("res_heat_resist", res_hr);
-	
-	if (res_m > 0)
-		alm->insertAttribute("res_malleability", res_m);
-	
-	if (res_fl > 0)
-		alm->insertAttribute("res_flavor", res_fl);
-	
-	if (res_pe > 0)
-		alm->insertAttribute("res_potential_energy", res_pe);
-	
-	if (res_oq > 0)
-		alm->insertAttribute("res_quality", res_oq);
-	
-	if (res_sr > 0)
-		alm->insertAttribute("res_shock_resistance", res_sr);
-	
-	if (res_t > 0)
-		alm->insertAttribute("res_toughness", res_t);
-	
-	if (res_er > 0)
-		alm->insertAttribute("entangle_resistance", res_er);
-	
 	player->sendMessage(alm);
 }
 
@@ -282,4 +240,51 @@ void ResourceContainerImplementation::parseItemAttributes() {
 	
 	temp = "res_class7";
 	res_class7 = itemAttributes->getStringAttribute(temp);
+}
+
+void ResourceContainerImplementation::addAttributes(AttributeListMessage* alm) {
+
+	alm->insertAttribute("condition", "100/100");
+	alm->insertAttribute("volume", "1");
+	
+	stringstream ssQuantity;
+	ssQuantity << quantity << "/" << getMaxContents();
+	
+	alm->insertAttribute("resource_contents", ssQuantity.str());
+	alm->insertAttribute("resource_name", name.c_str());
+
+	alm->insertAttribute("resource_class", res_class7);
+	
+	if (res_cr > 0)
+		alm->insertAttribute("res_cold_resist", res_cr);
+	
+	if (res_c > 0)
+		alm->insertAttribute("res_conductivity", res_c);
+	
+	if (res_dr > 0)
+		alm->insertAttribute("res_decay_resist", res_dr);
+	
+	if (res_hr > 0)
+		alm->insertAttribute("res_heat_resist", res_hr);
+	
+	if (res_m > 0)
+		alm->insertAttribute("res_malleability", res_m);
+	
+	if (res_fl > 0)
+		alm->insertAttribute("res_flavor", res_fl);
+	
+	if (res_pe > 0)
+		alm->insertAttribute("res_potential_energy", res_pe);
+	
+	if (res_oq > 0)
+		alm->insertAttribute("res_quality", res_oq);
+	
+	if (res_sr > 0)
+		alm->insertAttribute("res_shock_resistance", res_sr);
+	
+	if (res_t > 0)
+		alm->insertAttribute("res_toughness", res_t);
+	
+	if (res_er > 0)
+		alm->insertAttribute("entangle_resistance", res_er);	
 }
