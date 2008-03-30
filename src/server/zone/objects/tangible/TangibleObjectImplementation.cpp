@@ -377,3 +377,12 @@ void TangibleObjectImplementation::decay(int decayRate) {
 	
 	updated = true;
 }
+
+void TangibleObjectImplementation::addAttributes(AttributeListMessage* alm) {
+	stringstream cond;
+	cond << (maxCondition-conditionDamage) << "/" << maxCondition;
+	
+	alm->insertAttribute("condition", cond);
+	
+	alm->insertAttribute("volume", "1");
+}

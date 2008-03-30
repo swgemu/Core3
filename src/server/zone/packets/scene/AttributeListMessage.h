@@ -47,8 +47,11 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
+#include "../../objects/scene/SceneObject.h"
+
 class AttributeListMessage : public BaseMessage {
 	int listcount;
+	int countLocation;
 public:
 	AttributeListMessage(SceneObject* object) : BaseMessage() {
 		insertShort(0x03);
@@ -58,7 +61,7 @@ public:
 		insertInt(0); // list count
 		
 		listcount = 0;
-		
+		countLocation = 18;
 	}
 	
 	AttributeListMessage(uint64 objectID) : BaseMessage() {
@@ -67,6 +70,21 @@ public:
 		insertLong(objectID);
 		insertInt(0); // list count
 		listcount = 0;
+		countLocation = 18;
+	}
+	
+	// For bazaar/vendor items
+	AttributeListMessage(uint64 objectid, unicode& description) : BaseMessage() {
+		insertShort(2);
+		insertInt(0xFE0E644B);
+		
+		insertLong(objectid);		
+		
+		insertUnicode(description);
+		
+		insertInt(0); // list count
+		listcount = 0;
+		countLocation = 22 + description.size() * 2;
 	}
 	
 	void insertAttribute(const string& attribute, string& value) {
@@ -116,7 +134,7 @@ public:
 	}
 	
 	void updateListCount() {
-		insertInt(18, ++listcount);
+		insertInt(countLocation, ++listcount);
 	}
 	
 	

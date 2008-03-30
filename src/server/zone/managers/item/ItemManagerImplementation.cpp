@@ -83,8 +83,10 @@ void ItemManagerImplementation::loadPlayerItems(Player* player) {
 
 TangibleObject* ItemManagerImplementation::getPlayerItem(Player* player, uint64 objectid) {
 	TangibleObject* tano = NULL;
+	SceneObject* item = NULL;
 	
-	SceneObject* item = player->getPlayerItem(objectid);
+	if (player != NULL)
+		SceneObject* item = player->getPlayerItem(objectid);
 	
 	if (item != NULL && item->isTangible())
 		return (TangibleObject*) item;
@@ -243,18 +245,19 @@ TangibleObject* ItemManagerImplementation::createPlayerObject(Player* player, Re
 	
 	TangibleObject* tano = (TangibleObject*) item->deploy();
 	
-	player->addInventoryItem(tano);
+	if (player != NULL) {
+		player->addInventoryItem(tano);
 	
-	if (equipped && tano->isWeapon()) {
-		player->setWeapon((Weapon*) tano);
-		player->setWeaponSkillMods((Weapon*) tano);
+		if (equipped && tano->isWeapon()) {
+			player->setWeapon((Weapon*) tano);
+			player->setWeaponSkillMods((Weapon*) tano);
+		}
+	
+		if (equipped && tano->isArmor()) {
+			tano->setEquipped(false);
+			player->changeArmor(tano->getObjectID(), true);
+		}
 	}
-	
-	if (equipped && tano->isArmor()) {
-		tano->setEquipped(false);
-		player->changeArmor(tano->getObjectID(), true);
-	}
-	
 	return tano;
 }
 

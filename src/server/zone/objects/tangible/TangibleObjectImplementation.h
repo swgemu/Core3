@@ -266,6 +266,8 @@ public:
 	void repairItem(Player* player);
 	
 	virtual void decay(int decayRate);
+	
+	void addAttributes(AttributeListMessage* alm);
 
 	inline TangibleObject* deploy() {
 		return (TangibleObject*) SceneObjectImplementation::deploy();

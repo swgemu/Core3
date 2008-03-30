@@ -48,6 +48,7 @@ import "../player/Player";
 import "../../Zone";
 
 include "engine/service/Message";
+include "../../packets/Scene/AttributeListMessage";
 
 interface TangibleObject implements SceneObject {
 	TangibleObject();
@@ -123,4 +124,6 @@ interface TangibleObject implements SceneObject {
 	
 	void setAttributes(string attributestring);
 	string getAttributes();
+	
+	void addAttributes(AttributeListMessage alm);
 }

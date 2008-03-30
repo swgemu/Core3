@@ -54,7 +54,7 @@ which carries forward this exception.
 #include "../../packets.h"
 #include "../../objects.h"
 #include "../../objects/auction/AuctionController.h"
-#include "../../packets/auction/AuctionItemDescriptionMessage.h"
+#include "../../packets/scene/AttributelistMessage.h"
 
 #include "../../objects/tangible/ItemAttributes.h"
 
@@ -894,6 +894,9 @@ void BazaarManagerImplementation::getItemAttributes(Player* player, uint64 objec
 	lock();
 	player->wlock();
 		
+	ItemManager* itemManager = zoneServer->getItemManager();
+	TangibleObject* object = itemManager->getPlayerItem(NULL, objectid);
+	
 	unicode description;
 	AuctionItem* item = getItem(objectid, false);
 	if(item == NULL)
@@ -901,9 +904,13 @@ void BazaarManagerImplementation::getItemAttributes(Player* player, uint64 objec
 	else
 		description = unicode(item->getItemDescription());
 	
-	BaseMessage* msg = new AuctionItemDescriptionMessage(objectid, description);
+	AttributeListMessage* msg = new AttributeListMessage(objectid, description);
+	
+	object->addAttributes(msg);
+	msg->insertInt(0);
 	player->sendMessage(msg);
 
+	object->undeploy();
 	player->unlock();
 	unlock();
 }
