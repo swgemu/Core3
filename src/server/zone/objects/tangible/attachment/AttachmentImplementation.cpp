@@ -207,11 +207,13 @@ int AttachmentImplementation::getBestSkillMod() {
 
 void AttachmentImplementation::setSkillMods(int modifier) {
 	
-	int maxLevel = 80;
-	
+	int maxLevel = 120;
+
 	if(modifier > maxLevel){
+		int diff = System::random(modifier - maxLevel);
+
 		modifier = maxLevel;
-		modifier += System::random(modifier - maxLevel);
+		modifier += diff;
 	}
 	
 	int luck = (System::random(100)) + (modifier/4);
@@ -241,15 +243,15 @@ void AttachmentImplementation::setSkillMods(int modifier) {
 	}
 	
 	setSkillMod0Type(System::random(30) + 1);
-	setSkillMod0Value((3 * luck / (System::random(3) + 8)) - 25);
+	setSkillMod0Value(getModValue(luck, modifier));
 	
 	if (System::random(15) == 1) {
 		setSkillMod1Type(System::random(30) + 1);
-		setSkillMod1Value((3 * luck / (System::random(3) + 8)) - 25);
+		setSkillMod1Value(getModValue(luck, modifier));
 	}
 	if (System::random(30) == 1) {
 		setSkillMod2Type(System::random(30) + 1);
-		setSkillMod2Value((3 * luck / (System::random(3) + 8)) - 25);
+		setSkillMod2Value(getModValue(luck, modifier));
 	}
 	if (skillMod0Value > 25)
 		setSkillMod0Value(25);
@@ -287,6 +289,30 @@ void AttachmentImplementation::setSkillMods(int modifier) {
 		setSkillMod1Type(0);
 		setSkillMod1Value(0);
 	}
+}
+
+int AttachmentImplementation::getModValue(int luck, int modifier){
+	
+	int min, mod, result;
+	
+	if(modifier > 180){
+		min = 10;
+		mod = modifier % 25;
+	} else if(modifier > 130){
+		min = 3;
+		mod = modifier % 7;
+	} else {
+		min = 1;
+		mod = modifier % 2;
+	}
+	
+	result = min + mod;
+	if(mod == 0){
+		result *= -1;
+	}
+	
+	return result;
+	
 }
 
 void AttachmentImplementation::remove(Player* player) {

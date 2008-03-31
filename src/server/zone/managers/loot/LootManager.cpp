@@ -124,11 +124,13 @@ void LootManager::createLoot(Creature* creature) {
 			createAttachmentLoot(creature, creatureLevel);
 		} else if (lootchance < 25 + 5 * creaturechancemodifier) {
 			createPowerupLoot(creature, creatureLevel);
-		} else {
+		} else if (lootchance < 25 + 5 * creaturechancemodifier) {
 			createJunkLoot(creature);
-			creature->setCashCredits(creatureLevel * System::random(1234) / 25);
 		}
+
 	}
+	
+	creature->setCashCredits(creatureLevel * System::random(1234) / 25);
 }
 
 void LootManager::createWeaponLoot(Creature* creature, int creatureLevel) {
