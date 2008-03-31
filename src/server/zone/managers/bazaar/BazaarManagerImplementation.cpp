@@ -54,7 +54,7 @@ which carries forward this exception.
 #include "../../packets.h"
 #include "../../objects.h"
 #include "../../objects/auction/AuctionController.h"
-#include "../../packets/scene/AttributelistMessage.h"
+#include "../../packets/scene/AttributeListMessage.h"
 
 #include "../../objects/tangible/ItemAttributes.h"
 
