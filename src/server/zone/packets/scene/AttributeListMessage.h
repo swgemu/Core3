@@ -52,6 +52,7 @@ which carries forward this exception.
 class AttributeListMessage : public BaseMessage {
 	int listcount;
 	int countLocation;
+	
 public:
 	AttributeListMessage(SceneObject* object) : BaseMessage() {
 		insertShort(0x03);

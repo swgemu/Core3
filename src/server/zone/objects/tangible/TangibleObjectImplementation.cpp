@@ -96,7 +96,7 @@ TangibleObjectImplementation::~TangibleObjectImplementation() {
 	if (container != NULL) {
 		error("item still in container on delete");
 	
-		raise(SIGSEGV);	
+		//raise(SIGSEGV);
 	}
 	
 	delete itemAttributes;	

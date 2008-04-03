@@ -412,10 +412,7 @@ void BazaarManagerImplementation::checkAuctions() {
 
 				bazaarPlanets[item->getPlanet()]->removeBazaarItem(objectId);
 				if (removeItem(objectId, false)) {
-					item->undeploy();
-/*					delete item;
-					// TODO: fix this... item reference is still stored somewhere..
-					i = 0;*/
+					//item->finalize(); FOR GODS SAKE WE CANT DELETE THIS HERE, the reference is still stored somewhere else
 				}
 				
 				stringstream del1;
@@ -875,8 +872,8 @@ void BazaarManagerImplementation::retrieveItem(Player* player, uint64 objectid, 
 		player->sendMessage(msg);
 		player->unlock();
 		 
-		if (removeItem(objectid, false))
-			item->undeploy();
+		if (removeItem(objectid, false));
+			//item->finalize();  FOR GODS SAKE WE CANT DELETE THIS HERE, the reference is still stored somewhere else
 	
 		unlock();
 	} catch (...) {
@@ -897,6 +894,12 @@ void BazaarManagerImplementation::getItemAttributes(Player* player, uint64 objec
 	ItemManager* itemManager = zoneServer->getItemManager();
 	TangibleObject* object = itemManager->getPlayerItem(NULL, objectid);
 	
+	if (object == NULL) {
+		player->unlock();
+		unlock();
+		return;
+	}
+	
 	unicode description;
 	AuctionItem* item = getItem(objectid, false);
 	if(item == NULL)
@@ -910,7 +913,7 @@ void BazaarManagerImplementation::getItemAttributes(Player* player, uint64 objec
 	msg->insertInt(0);
 	player->sendMessage(msg);
 
-	object->undeploy();
+	object->finalize();
 	player->unlock();
 	unlock();
 }

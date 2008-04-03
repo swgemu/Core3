@@ -137,8 +137,10 @@ PlayerImplementation::~PlayerImplementation() {
 		hairObj->finalize();
 		hairObj = NULL;
 	}
-	
+
 	if (centerOfBeingEvent != NULL) {
+		server->removeEvent(centerOfBeingEvent);
+		
 		delete centerOfBeingEvent;
 		centerOfBeingEvent = NULL;
 	}
@@ -235,13 +237,7 @@ void PlayerImplementation::init() {
 }
 
 Player* PlayerImplementation::create(ZoneClient* client) {
-	Player* player = NULL;
-	
-	try {
-		player = (Player*) deploy("Player " + firstName);
-	} catch (Exception& e) {
-		return NULL;
-	}
+	Player* player = (Player*) deploy("Player " + firstName);
 
 	PlayerObjectImplementation* playerObjectImpl = new PlayerObjectImplementation(player);
 	playerObject = (PlayerObject*) playerObjectImpl->deploy("PlayerObject" + firstName);
@@ -399,6 +395,14 @@ void PlayerImplementation::unload() {
 		sampleEvent = NULL;
 	}
 	
+	if (entertainerEvent != NULL) {
+		if (entertainerEvent->isQueued())
+			server->removeEvent(entertainerEvent);
+			
+		delete entertainerEvent;
+		entertainerEvent = NULL;
+	}
+	
 	// remove from group
 	if (group != NULL && zone != NULL) {
 		GroupManager* groupManager = server->getGroupManager();
@@ -445,12 +449,13 @@ void PlayerImplementation::unload() {
 			if (isListening())
 				stopListen(listenID);
 	
-			if (dizzyFallDownEvent->isQueued())
-				server->removeEvent((Event*) dizzyFallDownEvent);
+			if (dizzyFallDownEvent != NULL && dizzyFallDownEvent->isQueued()) {
+				server->removeEvent(dizzyFallDownEvent);
 				
-			if (centerOfBeingEvent->isQueued())
-				server->removeEvent(centerOfBeingEvent);
-			
+				delete dizzyFallDownEvent;
+				dizzyFallDownEvent = NULL;
+			}
+		
 			if (changeFactionEvent != NULL) {
 				server->removeEvent(changeFactionEvent);
 				delete changeFactionEvent;
@@ -729,7 +734,7 @@ void PlayerImplementation::sendPersonalContainers() {
 void PlayerImplementation::insertToZone(Zone* zone) {
 	PlayerImplementation::zone = zone;
 	
-	if (/*objectID <= 0x15 ||*/ owner == NULL)
+	if (owner == NULL)
 		return;
 
 	try {

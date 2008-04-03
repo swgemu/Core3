@@ -605,6 +605,19 @@ string& TangibleObject::getAttributes() {
 		return ((TangibleObjectImplementation*) _impl)->getAttributes();
 }
 
+void TangibleObject::addAttributes(AttributeListMessage* alm) {
+	if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 48);
+		invocation.addObjectParameter(alm);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((TangibleObjectImplementation*) _impl)->addAttributes(alm);
+}
+
 /*
  *	TangibleObjectAdapter
  */
@@ -741,6 +754,9 @@ Packet* TangibleObjectAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* 
 		break;
 	case 47:
 		resp->insertAscii(getAttributes());
+		break;
+	case 48:
+		addAttributes((AttributeListMessage*) inv->getObjectParameter());
 		break;
 	default:
 		return NULL;
@@ -915,6 +931,10 @@ void TangibleObjectAdapter::setAttributes(string& attributestring) {
 
 string& TangibleObjectAdapter::getAttributes() {
 	return ((TangibleObjectImplementation*) impl)->getAttributes();
+}
+
+void TangibleObjectAdapter::addAttributes(AttributeListMessage* alm) {
+	return ((TangibleObjectImplementation*) impl)->addAttributes(alm);
 }
 
 /*

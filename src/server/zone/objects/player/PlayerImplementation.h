@@ -934,6 +934,10 @@ public:
 		return cancelSample;
 	}
 	
+	inline void clearEntertainerEvent() {
+		entertainerEvent = NULL;
+	}
+	
 	// Entertainer tick
 	void setEntertainerEvent();
 	

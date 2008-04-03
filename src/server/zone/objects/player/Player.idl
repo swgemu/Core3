@@ -418,4 +418,5 @@ interface Player implements CreatureObject {
 	boolean getSampleErrorMessage();
 	
 	void setEntertainerEvent();
+	void clearEntertainerEvent();
 }

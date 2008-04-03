@@ -324,17 +324,11 @@ void ZonePacketHandler::handleClientCreateCharacter(Message* pack) {
 	if (!playerManager->validateName(playerImpl->getFirstName())) {
 		playerImpl->refuseCreate(client);
 		
-		delete playerImpl;
+		//delete playerImpl;
 		return;
 	}
 	
 	Player* player = playerImpl->create(client);
-	if (player == NULL) {
-		playerImpl->refuseCreate(client);
-
-		delete playerImpl;
-		return;
-	}
 
 	playerImpl->setZoneProcessServer(processServer);
 
@@ -353,10 +347,15 @@ void ZonePacketHandler::handleClientCreateCharacter(Message* pack) {
 			Zone* zone = server->getZone(player->getZoneIndex());
 			player->setZone(zone);
 	
+			zone->registerObject(player);
+	
 			player->createItems();
+
+			player->unload(); // force a save of items, client will relogin
 			
+			zone->deleteObject(player->getObjectID());
+						
 			player->unlock();
-			playerImpl->unload(); // force a save of items, client will relogin
 		} else {
 			client->info("name refused for character creation");
 
@@ -366,9 +365,9 @@ void ZonePacketHandler::handleClientCreateCharacter(Message* pack) {
 			player->unlock();
 		
 			player->disconnect();
-		}
 			
-		player->finalize();
+			player->finalize();
+		}			
 	} catch (Exception& e) {
 		player->unlock();
 		cout << "unreported exception on ZonePacketHandler::handleClientCreateCharacter()\n" << e.getMessage() << "\n";
@@ -924,7 +923,8 @@ void ZonePacketHandler::handleBazaarScreens(Message* pack) {
    	}
    	else if (extent == 2) {
    		RegionBazaar* bazaar = bazaarManager->getBazaar(bazaarId);
-   		bazaar->getBazaarData(player, bazaarId, screen, extent, category, counter, offset);
+   		if (bazaar != NULL)
+   			bazaar->getBazaarData(player, bazaarId, screen, extent, category, counter, offset);
    	}
 }
 

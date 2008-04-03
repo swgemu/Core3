@@ -2550,6 +2550,18 @@ void Player::setEntertainerEvent() {
 		((PlayerImplementation*) _impl)->setEntertainerEvent();
 }
 
+void Player::clearEntertainerEvent() {
+	if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		ORBMethodInvocation invocation(this, 197);
+
+		invocation.executeWithVoidReturn();
+	} else
+		((PlayerImplementation*) _impl)->clearEntertainerEvent();
+}
+
 /*
  *	PlayerAdapter
  */
@@ -3133,6 +3145,9 @@ Packet* PlayerAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* inv) {
 		break;
 	case 196:
 		setEntertainerEvent();
+		break;
+	case 197:
+		clearEntertainerEvent();
 		break;
 	default:
 		return NULL;
@@ -3903,6 +3918,10 @@ bool PlayerAdapter::getSampleErrorMessage() {
 
 void PlayerAdapter::setEntertainerEvent() {
 	return ((PlayerImplementation*) impl)->setEntertainerEvent();
+}
+
+void PlayerAdapter::clearEntertainerEvent() {
+	return ((PlayerImplementation*) impl)->clearEntertainerEvent();
 }
 
 /*

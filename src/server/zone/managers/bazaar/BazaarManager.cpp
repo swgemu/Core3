@@ -79,13 +79,13 @@ BazaarManager* BazaarManager::clone() {
 }
 
 
-void BazaarManager::newBazaarRequest(long long bazaarID, Player* player, int planet) {
+void BazaarManager::newBazaarRequest(unsigned long long bazaarID, Player* player, int planet) {
 	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
 		ORBMethodInvocation invocation(this, 6);
-		invocation.addSignedLongParameter(bazaarID);
+		invocation.addUnsignedLongParameter(bazaarID);
 		invocation.addObjectParameter(player);
 		invocation.addSignedIntParameter(planet);
 
@@ -94,28 +94,28 @@ void BazaarManager::newBazaarRequest(long long bazaarID, Player* player, int pla
 		((BazaarManagerImplementation*) _impl)->newBazaarRequest(bazaarID, player, planet);
 }
 
-bool BazaarManager::isBazaarTerminal(long long objectID) {
+bool BazaarManager::isBazaarTerminal(unsigned long long objectID) {
 	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
 		ORBMethodInvocation invocation(this, 7);
-		invocation.addSignedLongParameter(objectID);
+		invocation.addUnsignedLongParameter(objectID);
 
 		return invocation.executeWithBooleanReturn();
 	} else
 		return ((BazaarManagerImplementation*) _impl)->isBazaarTerminal(objectID);
 }
 
-void BazaarManager::addSaleItem(Player* player, long long objectid, long long bazaarid, unicode& description, int price, int duration, bool auction) {
+void BazaarManager::addSaleItem(Player* player, unsigned long long objectid, unsigned long long bazaarid, unicode& description, int price, int duration, bool auction) {
 	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
 		ORBMethodInvocation invocation(this, 8);
 		invocation.addObjectParameter(player);
-		invocation.addSignedLongParameter(objectid);
-		invocation.addSignedLongParameter(bazaarid);
+		invocation.addUnsignedLongParameter(objectid);
+		invocation.addUnsignedLongParameter(bazaarid);
 		invocation.addUnicodeParameter(description);
 		invocation.addSignedIntParameter(price);
 		invocation.addSignedIntParameter(duration);
@@ -126,14 +126,14 @@ void BazaarManager::addSaleItem(Player* player, long long objectid, long long ba
 		((BazaarManagerImplementation*) _impl)->addSaleItem(player, objectid, bazaarid, description, price, duration, auction);
 }
 
-void BazaarManager::getBazaarData(Player* player, long long objectid, int screen, int extent, unsigned int category, int count, int offset) {
+void BazaarManager::getBazaarData(Player* player, unsigned long long objectid, int screen, int extent, unsigned int category, int count, int offset) {
 	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
 		ORBMethodInvocation invocation(this, 9);
 		invocation.addObjectParameter(player);
-		invocation.addSignedLongParameter(objectid);
+		invocation.addUnsignedLongParameter(objectid);
 		invocation.addSignedIntParameter(screen);
 		invocation.addSignedIntParameter(extent);
 		invocation.addUnsignedIntParameter(category);
@@ -145,40 +145,40 @@ void BazaarManager::getBazaarData(Player* player, long long objectid, int screen
 		((BazaarManagerImplementation*) _impl)->getBazaarData(player, objectid, screen, extent, category, count, offset);
 }
 
-RegionBazaar* BazaarManager::getBazaar(long long bazaarid) {
+RegionBazaar* BazaarManager::getBazaar(unsigned long long bazaarid) {
 	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
 		ORBMethodInvocation invocation(this, 10);
-		invocation.addSignedLongParameter(bazaarid);
+		invocation.addUnsignedLongParameter(bazaarid);
 
 		return (RegionBazaar*) invocation.executeWithObjectReturn();
 	} else
 		return ((BazaarManagerImplementation*) _impl)->getBazaar(bazaarid);
 }
 
-BazaarPlanetManager* BazaarManager::getPlanet(long long bazaarid) {
+BazaarPlanetManager* BazaarManager::getPlanet(unsigned long long bazaarid) {
 	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
 		ORBMethodInvocation invocation(this, 11);
-		invocation.addSignedLongParameter(bazaarid);
+		invocation.addUnsignedLongParameter(bazaarid);
 
 		return (BazaarPlanetManager*) invocation.executeWithObjectReturn();
 	} else
 		return ((BazaarManagerImplementation*) _impl)->getPlanet(bazaarid);
 }
 
-void BazaarManager::buyItem(Player* player, long long objectid, int price1, int price2) {
+void BazaarManager::buyItem(Player* player, unsigned long long objectid, int price1, int price2) {
 	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
 		ORBMethodInvocation invocation(this, 12);
 		invocation.addObjectParameter(player);
-		invocation.addSignedLongParameter(objectid);
+		invocation.addUnsignedLongParameter(objectid);
 		invocation.addSignedIntParameter(price1);
 		invocation.addSignedIntParameter(price2);
 
@@ -187,14 +187,14 @@ void BazaarManager::buyItem(Player* player, long long objectid, int price1, int 
 		((BazaarManagerImplementation*) _impl)->buyItem(player, objectid, price1, price2);
 }
 
-void BazaarManager::retrieveItem(Player* player, long long objectid, long long bazaarid) {
+void BazaarManager::retrieveItem(Player* player, unsigned long long objectid, long long bazaarid) {
 	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
 		ORBMethodInvocation invocation(this, 13);
 		invocation.addObjectParameter(player);
-		invocation.addSignedLongParameter(objectid);
+		invocation.addUnsignedLongParameter(objectid);
 		invocation.addSignedLongParameter(bazaarid);
 
 		invocation.executeWithVoidReturn();
@@ -202,14 +202,14 @@ void BazaarManager::retrieveItem(Player* player, long long objectid, long long b
 		((BazaarManagerImplementation*) _impl)->retrieveItem(player, objectid, bazaarid);
 }
 
-void BazaarManager::getItemAttributes(Player* player, long long objectId) {
+void BazaarManager::getItemAttributes(Player* player, unsigned long long objectId) {
 	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
 		ORBMethodInvocation invocation(this, 14);
 		invocation.addObjectParameter(player);
-		invocation.addSignedLongParameter(objectId);
+		invocation.addUnsignedLongParameter(objectId);
 
 		invocation.executeWithVoidReturn();
 	} else
@@ -228,31 +228,31 @@ Packet* BazaarManagerAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* i
 
 	switch (methid) {
 	case 6:
-		newBazaarRequest(inv->getSignedLongParameter(), (Player*) inv->getObjectParameter(), inv->getSignedIntParameter());
+		newBazaarRequest(inv->getUnsignedLongParameter(), (Player*) inv->getObjectParameter(), inv->getSignedIntParameter());
 		break;
 	case 7:
-		resp->insertBoolean(isBazaarTerminal(inv->getSignedLongParameter()));
+		resp->insertBoolean(isBazaarTerminal(inv->getUnsignedLongParameter()));
 		break;
 	case 8:
-		addSaleItem((Player*) inv->getObjectParameter(), inv->getSignedLongParameter(), inv->getSignedLongParameter(), inv->getUnicodeParameter(_param3_addSaleItem__Player_long_long_unicode_int_int_bool_), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter());
+		addSaleItem((Player*) inv->getObjectParameter(), inv->getUnsignedLongParameter(), inv->getUnsignedLongParameter(), inv->getUnicodeParameter(_param3_addSaleItem__Player_long_long_unicode_int_int_bool_), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter());
 		break;
 	case 9:
-		getBazaarData((Player*) inv->getObjectParameter(), inv->getSignedLongParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getUnsignedIntParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
+		getBazaarData((Player*) inv->getObjectParameter(), inv->getUnsignedLongParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getUnsignedIntParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
 		break;
 	case 10:
-		resp->insertLong(getBazaar(inv->getSignedLongParameter())->_getORBObjectID());
+		resp->insertLong(getBazaar(inv->getUnsignedLongParameter())->_getORBObjectID());
 		break;
 	case 11:
-		resp->insertLong(getPlanet(inv->getSignedLongParameter())->_getORBObjectID());
+		resp->insertLong(getPlanet(inv->getUnsignedLongParameter())->_getORBObjectID());
 		break;
 	case 12:
-		buyItem((Player*) inv->getObjectParameter(), inv->getSignedLongParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
+		buyItem((Player*) inv->getObjectParameter(), inv->getUnsignedLongParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
 		break;
 	case 13:
-		retrieveItem((Player*) inv->getObjectParameter(), inv->getSignedLongParameter(), inv->getSignedLongParameter());
+		retrieveItem((Player*) inv->getObjectParameter(), inv->getUnsignedLongParameter(), inv->getSignedLongParameter());
 		break;
 	case 14:
-		getItemAttributes((Player*) inv->getObjectParameter(), inv->getSignedLongParameter());
+		getItemAttributes((Player*) inv->getObjectParameter(), inv->getUnsignedLongParameter());
 		break;
 	default:
 		return NULL;
@@ -261,39 +261,39 @@ Packet* BazaarManagerAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* i
 	return resp;
 }
 
-void BazaarManagerAdapter::newBazaarRequest(long long bazaarID, Player* player, int planet) {
+void BazaarManagerAdapter::newBazaarRequest(unsigned long long bazaarID, Player* player, int planet) {
 	return ((BazaarManagerImplementation*) impl)->newBazaarRequest(bazaarID, player, planet);
 }
 
-bool BazaarManagerAdapter::isBazaarTerminal(long long objectID) {
+bool BazaarManagerAdapter::isBazaarTerminal(unsigned long long objectID) {
 	return ((BazaarManagerImplementation*) impl)->isBazaarTerminal(objectID);
 }
 
-void BazaarManagerAdapter::addSaleItem(Player* player, long long objectid, long long bazaarid, unicode& description, int price, int duration, bool auction) {
+void BazaarManagerAdapter::addSaleItem(Player* player, unsigned long long objectid, unsigned long long bazaarid, unicode& description, int price, int duration, bool auction) {
 	return ((BazaarManagerImplementation*) impl)->addSaleItem(player, objectid, bazaarid, description, price, duration, auction);
 }
 
-void BazaarManagerAdapter::getBazaarData(Player* player, long long objectid, int screen, int extent, unsigned int category, int count, int offset) {
+void BazaarManagerAdapter::getBazaarData(Player* player, unsigned long long objectid, int screen, int extent, unsigned int category, int count, int offset) {
 	return ((BazaarManagerImplementation*) impl)->getBazaarData(player, objectid, screen, extent, category, count, offset);
 }
 
-RegionBazaar* BazaarManagerAdapter::getBazaar(long long bazaarid) {
+RegionBazaar* BazaarManagerAdapter::getBazaar(unsigned long long bazaarid) {
 	return ((BazaarManagerImplementation*) impl)->getBazaar(bazaarid);
 }
 
-BazaarPlanetManager* BazaarManagerAdapter::getPlanet(long long bazaarid) {
+BazaarPlanetManager* BazaarManagerAdapter::getPlanet(unsigned long long bazaarid) {
 	return ((BazaarManagerImplementation*) impl)->getPlanet(bazaarid);
 }
 
-void BazaarManagerAdapter::buyItem(Player* player, long long objectid, int price1, int price2) {
+void BazaarManagerAdapter::buyItem(Player* player, unsigned long long objectid, int price1, int price2) {
 	return ((BazaarManagerImplementation*) impl)->buyItem(player, objectid, price1, price2);
 }
 
-void BazaarManagerAdapter::retrieveItem(Player* player, long long objectid, long long bazaarid) {
+void BazaarManagerAdapter::retrieveItem(Player* player, unsigned long long objectid, long long bazaarid) {
 	return ((BazaarManagerImplementation*) impl)->retrieveItem(player, objectid, bazaarid);
 }
 
-void BazaarManagerAdapter::getItemAttributes(Player* player, long long objectId) {
+void BazaarManagerAdapter::getItemAttributes(Player* player, unsigned long long objectId) {
 	return ((BazaarManagerImplementation*) impl)->getItemAttributes(player, objectId);
 }
 

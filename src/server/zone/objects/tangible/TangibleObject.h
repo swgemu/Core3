@@ -59,6 +59,8 @@ class Zone;
 
 #include "engine/service/Message.h"
 
+#include "../../packets/scene/AttributeListMessage.h"
+
 #include "../scene/SceneObject.h"
 
 class TangibleObject : public SceneObject {
@@ -155,6 +157,8 @@ public:
 	void setAttributes(string& attributestring);
 
 	string& getAttributes();
+
+	void addAttributes(AttributeListMessage* alm);
 
 protected:
 	string _return_getAttributes;
@@ -260,6 +264,8 @@ public:
 	void setAttributes(string& attributestring);
 
 	string& getAttributes();
+
+	void addAttributes(AttributeListMessage* alm);
 
 protected:
 	string _param0_setName__string_;

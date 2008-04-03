@@ -48,6 +48,7 @@ import "../player/Player";
 import "../../Zone";
 
 include "engine/service/Message";
+
 include "../../packets/scene/AttributeListMessage";
 
 interface TangibleObject implements SceneObject {

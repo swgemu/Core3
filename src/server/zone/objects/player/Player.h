@@ -490,6 +490,8 @@ public:
 
 	void setEntertainerEvent();
 
+	void clearEntertainerEvent();
+
 protected:
 	string _return_getCertification;
 
@@ -902,6 +904,8 @@ public:
 	bool getSampleErrorMessage();
 
 	void setEntertainerEvent();
+
+	void clearEntertainerEvent();
 
 protected:
 	string _param4_queueAction__Player_long_int_int_string_;

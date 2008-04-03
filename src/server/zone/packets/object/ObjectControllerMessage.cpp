@@ -995,7 +995,7 @@ void ObjectControllerMessage::parseFlourish(Player* player, Message* pack) {
 	float baseActionDrain = -40 + (player->getQuickness() / 37.5);
 	float flourishActionDrain = baseActionDrain / 2.0;
 	
-	int actionDrain = round((flourishActionDrain * 10+ 0.5) / 10.0); // Round to nearest dec for actual int cost
+	int actionDrain = (int)round((flourishActionDrain * 10+ 0.5) / 10.0); // Round to nearest dec for actual int cost
 
     /*stringstream opc;
 	opc << "ActionDrain: " << dec << ActionDrain;

@@ -83,7 +83,8 @@ protected:
 	unicode characterName; //character name
 	string terrainName;
 
-	CustomizationVariables customization;
+	//CustomizationVariables customization; TODO: fix problems with zabrak and twileks
+	string customization;
 	string raceName; //species
 	string speciesName; //species
 
@@ -1189,7 +1190,8 @@ public:
 	}
 
 	inline void getCharacterApperance(string& appearance) {
-		customization.toString(appearance);
+		//customization.toString(appearance); // TODO: fix problems with zabraks and twileks
+		appearance = customization;
 	}
 	
 	inline string& getRaceName() {

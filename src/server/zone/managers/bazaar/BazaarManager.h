@@ -70,23 +70,23 @@ protected:
 public:
 	BazaarManager* clone();
 
-	void newBazaarRequest(long long bazaarID, Player* player, int planet);
+	void newBazaarRequest(unsigned long long bazaarID, Player* player, int planet);
 
-	bool isBazaarTerminal(long long objectID);
+	bool isBazaarTerminal(unsigned long long objectID);
 
-	void addSaleItem(Player* player, long long objectid, long long bazaarid, unicode& description, int price, int duration, bool auction);
+	void addSaleItem(Player* player, unsigned long long objectid, unsigned long long bazaarid, unicode& description, int price, int duration, bool auction);
 
-	void getBazaarData(Player* player, long long objectid, int screen, int extent, unsigned int category, int count, int offset);
+	void getBazaarData(Player* player, unsigned long long objectid, int screen, int extent, unsigned int category, int count, int offset);
 
-	RegionBazaar* getBazaar(long long bazaarid);
+	RegionBazaar* getBazaar(unsigned long long bazaarid);
 
-	BazaarPlanetManager* getPlanet(long long bazaarid);
+	BazaarPlanetManager* getPlanet(unsigned long long bazaarid);
 
-	void buyItem(Player* player, long long objectid, int price1, int price2);
+	void buyItem(Player* player, unsigned long long objectid, int price1, int price2);
 
-	void retrieveItem(Player* player, long long objectid, long long bazaarid);
+	void retrieveItem(Player* player, unsigned long long objectid, long long bazaarid);
 
-	void getItemAttributes(Player* player, long long objectId);
+	void getItemAttributes(Player* player, unsigned long long objectId);
 
 	friend class BazaarManagerHelper;
 };
@@ -99,23 +99,23 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, ORBMethodInvocation* inv);
 
-	void newBazaarRequest(long long bazaarID, Player* player, int planet);
+	void newBazaarRequest(unsigned long long bazaarID, Player* player, int planet);
 
-	bool isBazaarTerminal(long long objectID);
+	bool isBazaarTerminal(unsigned long long objectID);
 
-	void addSaleItem(Player* player, long long objectid, long long bazaarid, unicode& description, int price, int duration, bool auction);
+	void addSaleItem(Player* player, unsigned long long objectid, unsigned long long bazaarid, unicode& description, int price, int duration, bool auction);
 
-	void getBazaarData(Player* player, long long objectid, int screen, int extent, unsigned int category, int count, int offset);
+	void getBazaarData(Player* player, unsigned long long objectid, int screen, int extent, unsigned int category, int count, int offset);
 
-	RegionBazaar* getBazaar(long long bazaarid);
+	RegionBazaar* getBazaar(unsigned long long bazaarid);
 
-	BazaarPlanetManager* getPlanet(long long bazaarid);
+	BazaarPlanetManager* getPlanet(unsigned long long bazaarid);
 
-	void buyItem(Player* player, long long objectid, int price1, int price2);
+	void buyItem(Player* player, unsigned long long objectid, int price1, int price2);
 
-	void retrieveItem(Player* player, long long objectid, long long bazaarid);
+	void retrieveItem(Player* player, unsigned long long objectid, long long bazaarid);
 
-	void getItemAttributes(Player* player, long long objectId);
+	void getItemAttributes(Player* player, unsigned long long objectId);
 
 protected:
 	unicode _param3_addSaleItem__Player_long_long_unicode_int_int_bool_;
