@@ -152,7 +152,7 @@ public:
 
 	void clearQueueAction(unsigned int actioncntr, float timer = 0, unsigned int tab1 = 0, unsigned int tab2 = 0);
 
-	void queueAction(Player* player, unsigned long long target, unsigned int actionCRC, unsigned int actionCntr, string& actionModifier);
+	void queueAction(Player* player, unsigned long long target, unsigned int actionCRC, unsigned int actionCntr, const string& actionModifier);
 
 	void deleteQueueAction(unsigned int actioncntr);
 
@@ -567,7 +567,7 @@ public:
 
 	void clearQueueAction(unsigned int actioncntr, float timer, unsigned int tab1, unsigned int tab2);
 
-	void queueAction(Player* player, unsigned long long target, unsigned int actionCRC, unsigned int actionCntr, string& actionModifier);
+	void queueAction(Player* player, unsigned long long target, unsigned int actionCRC, unsigned int actionCntr, const string& actionModifier);
 
 	void deleteQueueAction(unsigned int actioncntr);
 

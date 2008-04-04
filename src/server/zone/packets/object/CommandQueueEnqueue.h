@@ -42,83 +42,21 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef COMMANDQUEUEACTION_H_
-#define COMMANDQUEUEACTION_H_
+#ifndef COMMANDQUEUEENQUEUE_H_
+#define COMMANDQUEUEENQUEUE_H_
 
-#include "engine/engine.h"
+#include "ObjectControllerMessage.h"
 
-class Weapon;
-class CreatureObject;
-class Player;
-class Skill;
-
-class CommandQueueAction {
-	CreatureObject* creature;
-	Player* player;
-	CreatureObject* target;
-	Skill* skill;
-	Weapon* weapon;
-
-	uint32 actionCRC;
-	uint32 actionCounter;
-	uint64 targetID;
-	
-	string actionModifier;
-
+class CommandQueueEnqueue : public ObjectControllerMessage {
 public:
-	CommandQueueAction(CreatureObject* cr, uint64 targid, uint32 acrc, uint32 acntr, const string& amod);
-
-	bool check();
-	bool validate();
-	bool checkWeapon();
-	
-	bool checkHealSkill();
-	
-	void clearError(uint32 tab1, uint32 tab2 = 0) {
-		clear(0.0f, tab1, tab2);
+	CommandQueueEnqueue(CreatureObject* creo, uint32 actioncnt, uint32 actionCRC) 
+			: ObjectControllerMessage(creo->getObjectID(), 0x0B, 0x116) {
+		insertInt(actioncnt);
+		insertInt(actionCRC);
+		insertLong(creo->getTargetID());
+		insertInt(0); // unicode shit
 	}
 
-	void clear(float timer, uint32 tab1 = 0, uint32 tab2 = 0);
-
-	void setTarget(CreatureObject* targ) {
-		target = targ;
-	}
-
-	void setSkill(Skill* sk) {
-		skill = sk;
-	}
-
-	void setActionModifier(string& modifier) {
-		actionModifier = modifier;
-	}
-	
-	inline CreatureObject* getCreature() {
-		return creature;
-	}
-
-	inline CreatureObject* getTarget() {
-		return target;
-	}
-
-	inline uint32 getActionCRC() {
-		return actionCRC;
-	}
-
-	inline uint32 getActionCounter() {
-		return actionCounter;
-	}
-
-	inline uint64 getTargetID() {
-		return targetID;
-	}
-
-	inline string& getActionModifier() {
-		return actionModifier;
-	}
-	
-	inline Skill* getSkill() {
-		return skill;
-	}	
 };
 
-#endif /*COMMANDQUEUEACTION_H_*/
+#endif /*COMMANDQUEUEENQUEUE_H_*/

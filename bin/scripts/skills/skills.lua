@@ -42,6 +42,7 @@
 -- Load files
 
 -- Player skills
+RunSkillsFile("defaultSkill.lua")
 --RunSkillsFile("playerSkills/jedi.lua")
 RunSkillsFile("playerSkills/brawler.lua")
 RunSkillsFile("playerSkills/teraskasiartist.lua")

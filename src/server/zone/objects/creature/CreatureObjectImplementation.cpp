@@ -101,6 +101,8 @@ CreatureObjectImplementation::CreatureObjectImplementation(uint64 oid) : Creatur
 	damageMap.setNullValue(0);
 	
 	stfName = "species";
+	
+	actionCounter = 0;
 
 	// CREO1 operands
 	cashCredits = 25000;
@@ -172,7 +174,7 @@ CreatureObjectImplementation::CreatureObjectImplementation(uint64 oid) : Creatur
 	actionEncumbrance = 0;
 	mindEncumbrance = 0;
 	
-	armor=0;
+	armor = 0;
 	
 	kinetic = 0;
 	energy = 0;

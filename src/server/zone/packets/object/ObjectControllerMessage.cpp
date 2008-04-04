@@ -303,6 +303,8 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player, Message* 
 		return;
 	}
 	
+	player->setActionCounter(actioncntr);
+	
 	/*stringstream msg;
 	msg << "parsing CommandQueueEnqueue actionCRC = (0x" << hex << actionCRC << dec <<  ")";
 	player->info(msg.str());*/
@@ -341,7 +343,6 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player, Message* 
 			player->clearQueueAction(actioncntr, 0, 1, 16);
 			return;
 		}
-		player->setActionCounter(actioncntr);
 		player->changePosture(CreatureObjectImplementation::CROUCHED_POSTURE);
 		break;
  	case 0x335676c7: // equip, change weapon.
@@ -361,7 +362,6 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player, Message* 
 			player->clearQueueAction(actioncntr, 0, 1, 16);
 			return;
 		}
-		player->setActionCounter(actioncntr);
 		player->changePosture(CreatureObjectImplementation::PRONE_POSTURE);
 		break;
 	case (0xB719FA26):
@@ -379,7 +379,6 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player, Message* 
 			player->clearQueueAction(actioncntr, 0, 1, 16);
 			return;
 		}
-		player->setActionCounter(actioncntr);
 		player->changePosture(CreatureObjectImplementation::UPRIGHT_POSTURE);
 		return;
 	case (0x468B3802):
@@ -666,7 +665,7 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player, Message* 
 		opc << "Opc: " << hex << actionCRC << " modifier: " << dec << actionModifier;
 		player->sendSystemMessage(opc.str());*/
 		
-		player->queueAction(player, target, actionCRC, actioncntr, actionModifier);
+		player->queueAction(player, target, actionCRC, actioncntr, actionModifier.c_str());
 
 		return;
 	}

@@ -65,6 +65,7 @@ class CombatManager {
 	
 private:
 	bool doAction(CreatureObject* attacker, CreatureObject* targetCreature, TargetSkill* skill, CombatAction* actionMessage);
+	uint32 getDefaultAttackAnimation(CreatureObject* creature);
 	
 public:
 	CombatManager(ZoneProcessServerImplementation* srv);

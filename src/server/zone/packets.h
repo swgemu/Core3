@@ -65,6 +65,7 @@ which carries forward this exception.
 #include "packets/object/CombatAction.h"
 #include "packets/object/CombatSpam.h"
 #include "packets/object/ShowFlyText.h"
+#include "packets/object/CommandQueueEnqueue.h"
 #include "packets/object/CommandQueueRemove.h"
 #include "packets/object/SpatialChat.h"
 #include "packets/object/PostureMessage.h"

@@ -402,7 +402,7 @@ void Player::clearQueueAction(unsigned int actioncntr, float timer, unsigned int
 		((PlayerImplementation*) _impl)->clearQueueAction(actioncntr, timer, tab1, tab2);
 }
 
-void Player::queueAction(Player* player, unsigned long long target, unsigned int actionCRC, unsigned int actionCntr, string& actionModifier) {
+void Player::queueAction(Player* player, unsigned long long target, unsigned int actionCRC, unsigned int actionCntr, const string& actionModifier) {
 	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
@@ -3244,7 +3244,7 @@ void PlayerAdapter::clearQueueAction(unsigned int actioncntr, float timer, unsig
 	return ((PlayerImplementation*) impl)->clearQueueAction(actioncntr, timer, tab1, tab2);
 }
 
-void PlayerAdapter::queueAction(Player* player, unsigned long long target, unsigned int actionCRC, unsigned int actionCntr, string& actionModifier) {
+void PlayerAdapter::queueAction(Player* player, unsigned long long target, unsigned int actionCRC, unsigned int actionCntr, const string& actionModifier) {
 	return ((PlayerImplementation*) impl)->queueAction(player, target, actionCRC, actionCntr, actionModifier);
 }
 

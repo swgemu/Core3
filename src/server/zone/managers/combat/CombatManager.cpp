@@ -110,7 +110,12 @@ float CombatManager::doTargetSkill(CommandQueueAction* action) {
 	if (!checkSkill(creature, targetCreature, tskill))
 		return 0.0f;
 	
-	CombatAction* actionMessage = new CombatAction(creature, tskill->getAnimCRC());
+	uint32 animCRC = tskill->getAnimCRC();
+	
+	if (animCRC == 0)
+		animCRC = getDefaultAttackAnimation(creature);
+	
+	CombatAction* actionMessage = new CombatAction(creature, animCRC);
 	
 	if (!doAction(creature, targetCreature, tskill, actionMessage)) {
 		delete actionMessage;
@@ -260,9 +265,11 @@ bool CombatManager::doAction(CreatureObject* attacker, CreatureObject* targetCre
 				attacker->setDefender(targetCreature);
 			
 			targetCreature->addDefender(attacker);
+			attacker->clearState(CreatureObjectImplementation::PEACE_STATE);
 		}
 		
 		int damage = skill->doSkill(attacker, targetCreature, false);
+		
 		if (actionMessage != NULL) //disabled untill we figure out how to make it work for more defenders
 			actionMessage->addDefender(targetCreature, damage > 0); 
 		
@@ -272,7 +279,6 @@ bool CombatManager::doAction(CreatureObject* attacker, CreatureObject* targetCre
 			if (!skill->isArea())
 				attacker->clearCombatState(true);
 		} else if (targetCreature->isDead()) {
-
 			attacker->sendSystemMessage("base_player", "prose_target_dead", targetCreature->getObjectID());
 
 			if (!skill->isArea())
@@ -412,6 +418,24 @@ float CombatManager::getConeAngle(CreatureObject* targetCreature, float Creature
 	float degrees = angle * 180 / M_PI;
 	
 	return degrees;
+}
+
+uint32 CombatManager::getDefaultAttackAnimation(CreatureObject* creature) {
+	//Pre: creature wlocked
+	
+	Weapon* weapon = creature->getWeapon();
+	
+	if (weapon == NULL)
+		return 0x99476628;
+	
+	switch (weapon->getCategory()) {
+		case (WeaponImplementation::MELEE):
+			return 0x43C4FFD0;
+		case (WeaponImplementation::RANGED):
+			return 0x506E9D4C;
+	}
+	
+	return 0;	
 }
 
 void CombatManager::requestDuel(Player* player, uint64 targetID) {

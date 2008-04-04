@@ -1212,14 +1212,15 @@ void PlayerImplementation::sendSystemMessage(unicode& message) {
 	sendMessage(smsg);
 }
 
-void PlayerImplementation::queueAction(Player* player, uint64 target, uint32 actionCRC, uint32 actionCntr, string& amod) {
-	stringstream ident;
+void PlayerImplementation::queueAction(Player* player, uint64 target, uint32 actionCRC, uint32 actionCntr, const string& amod) {
+	/*stringstream ident;
 	ident << "0x" << hex << actionCRC << " (" << actionCntr << ")"; 
 	
-	//info("queing action " + ident.str());
+	info("queing action " + ident.str());*/
 	
 	// Try to queue some music skills
 	Skill* skill = creatureSkills.get(actionCRC);
+	
 	if ((isDancing() || isPlayingMusic()) && (skill != NULL) && !(skill->isEntertainSkill() || skill->isDanceSkill() || skill->isMusicSkill())) {
 		player->sendSystemMessage("You cant use skills while dancing/playing music!");
 		clearQueueAction(actionCntr);
@@ -1490,8 +1491,12 @@ void PlayerImplementation::doRecovery() {
 	
 	if (!isInCombat() && isOnFullHealth() && !hasStates() && !hasWounds() && !hasShockWounds()) {
 		return;
-	} else if (lastCombatAction.miliDifference() > 15000)
+	} else if (lastCombatAction.miliDifference() > 15000) {
 		clearCombatState();
+	} else if (targetObject != NULL && !hasState(PEACE_STATE)
+			&& (commandQueue.size() == 0)) {
+		queueAction(_this, getTargetID(), 0xA8FEF90A, ++actionCounter, "");
+	}
 
 	if (!isOnFullHealth() || hasWounds() || hasShockWounds())
 		calculateHAMregen();

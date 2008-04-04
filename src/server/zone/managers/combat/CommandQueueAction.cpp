@@ -51,7 +51,7 @@ which carries forward this exception.
 #include "../../objects/creature/CreatureObject.h"
 #include "../../objects/tangible/weapons/Weapon.h"
 
-CommandQueueAction::CommandQueueAction(CreatureObject* cr, uint64 targid, uint32 acrc, uint32 acntr, string& amod) {
+CommandQueueAction::CommandQueueAction(CreatureObject* cr, uint64 targid, uint32 acrc, uint32 acntr, const string& amod) {
 	actionCRC = acrc;
 	actionCounter = acntr;
 
@@ -137,8 +137,17 @@ bool CommandQueueAction::validate() {
 			if (skill->isAttackSkill()) {
 				try {
 					target->wlock(creature);
-
-					if (!creature->isInRange(target->getPositionX(), target->getPositionY(), skill->getRange())) {
+					
+					Weapon* weapon = creature->getWeapon();
+					
+					int range;
+					
+					if (weapon != NULL)
+						range = MIN((int)skill->getRange(), weapon->getMaxRange());
+					else
+						range = 10;
+						
+					if (!creature->isInRange(target->getPositionX(), target->getPositionY(), range)) {
 						target->unlock();
 						clearError(4);		
 						return false;
