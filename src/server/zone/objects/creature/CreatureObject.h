@@ -724,9 +724,9 @@ public:
 
 	void applyBuff(const string& type, int value, float duration);
 
-	bool verifyCashCredits(int creditsToRemove);
+	bool verifyCashCredits(unsigned int creditsToRemove);
 
-	bool verifyBankCredits(int creditsToRemove);
+	bool verifyBankCredits(unsigned int creditsToRemove);
 
 protected:
 	string _return_getGuildName;
@@ -1395,9 +1395,9 @@ public:
 
 	void applyBuff(const string& type, int value, float duration);
 
-	bool verifyCashCredits(int creditsToRemove);
+	bool verifyCashCredits(unsigned int creditsToRemove);
 
-	bool verifyBankCredits(int creditsToRemove);
+	bool verifyBankCredits(unsigned int creditsToRemove);
 
 protected:
 	string _param0_info__string_bool_;

@@ -83,7 +83,7 @@ protected:
 	unicode characterName; //character name
 	string terrainName;
 
-	//CustomizationVariables customization; TODO: fix problems with zabrak and twileks
+	//CustomizationVariables customization;
 	string customization;
 	string raceName; //species
 	string speciesName; //species
@@ -793,8 +793,8 @@ public:
 	void subtractCashCredits(uint32 credits);
 	void subtractBankCredits(uint32 credits);
 
-	bool verifyCashCredits(int creditsToRemove);
-	bool verifyBankCredits(int creditsToRemove);
+	bool verifyCashCredits(uint32 creditsToRemove);
+	bool verifyBankCredits(uint32 creditsToRemove);
 
 	// misc		
 	virtual uint64 getNewItemID() = 0;
@@ -1190,7 +1190,7 @@ public:
 	}
 
 	inline void getCharacterApperance(string& appearance) {
-		//customization.toString(appearance); // TODO: fix problems with zabraks and twileks
+		//customization.toString(appearance);
 		appearance = customization;
 	}
 	

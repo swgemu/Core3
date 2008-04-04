@@ -1383,8 +1383,11 @@ void ObjectControllerMessage::parseTip(Player* player, Message* pack, PlayerMana
 
 	StringTokenizer tokenizer(tipParams.c_str());
 	tokenizer.setDelimeter(" ");
+	
+	if (!tokenizer.hasMoreTokens())
+		return;
 
-	int tipAmount;
+	uint32 tipAmount;
 
 	if (tipToId == 0) {
 		//either player not in range. Or not online. So lets do a bank tip.
@@ -1396,10 +1399,13 @@ void ObjectControllerMessage::parseTip(Player* player, Message* pack, PlayerMana
 		if (!playerManager->validateName(tipToName)) {
 			//Ok so the player exists. So lets parse the rest of the packet now.
 
+			if (!tokenizer.hasMoreTokens())
+				return;
+			
 			string tips; 
 			tokenizer.getStringToken(tips);
 
-			tipAmount = atoi(tips.c_str());
+			tipAmount = atol(tips.c_str());
 
 			if (tipAmount == 0) {
 				//Invalid Tip Amount/Parameter.
@@ -1420,8 +1426,8 @@ void ObjectControllerMessage::parseTip(Player* player, Message* pack, PlayerMana
 			if (tiptoPlayer == NULL) {
 				//The player exists but they are offline. So Still do the tip.
 				//Do stuff like altering the db here since they arent online.	
-				playerManager->modifyOfflineBank(player, tipToName, tipAmount);
-				player->sendSystemMessage("Player not online. Credits should be transferred.");
+				if (playerManager->modifyOfflineBank(player, tipToName, tipAmount))
+					player->sendSystemMessage("Player not online. Credits should be transferred.");
 				return;
 			} else {
 				//Player is online. Tip their stuff and send mail etc;
@@ -1455,6 +1461,9 @@ void ObjectControllerMessage::parseTip(Player* player, Message* pack, PlayerMana
 			//Ok so we know its a player.
 			//If its a player in range, the client will omit any text referencing the name.
 			//So the next param SHOULD be the tip amount.
+			if (!tokenizer.hasMoreTokens())
+				return;
+			
 			string tips; 
 			tokenizer.getStringToken(tips);
 			tipAmount = atoi(tips.c_str());
@@ -1497,12 +1506,18 @@ void ObjectControllerMessage::parseTip(Player* player, Message* pack, PlayerMana
 			//The current target is not a player.
 			//So we have to parse for a valid player name. (THIS IS ONLY FOR BANK TIPS)
 
+			if (!tokenizer.hasMoreTokens())
+				return;
+			
 			string tipToName;
 			tokenizer.getStringToken(tipToName);
 
 			//Before we go any further we should validate the player name.
 			if (!playerManager->validateName(tipToName)) {
 				//They exist at least. Now lets grab the tip amount.
+				if (!tokenizer.hasMoreTokens())
+					return;
+				
 				string tips; 
 				tokenizer.getStringToken(tips);
 				tipAmount = atoi(tips.c_str());

@@ -207,7 +207,7 @@ void LootManager::createWeaponLoot(Creature* creature, int creatureLevel) {
 				"object/weapon/melee/polearm/shared_polearm_vibro_axe.iff", unicode("Long Vibro Axe"), "lance_vibro_axe", false);
 		itemImpl->setDamageType(WeaponImplementation::KINETIC);
 		itemImpl->setArmorPiercing(WeaponImplementation::MEDIUM);
-		certification = "cert_polearm_vibro_axe";
+		certification = "cert_lance_vibro_axe";
 		break;
 	case 10 :	// PISTOL
 		itemImpl = new PistolRangedWeaponImplementation(creature, 

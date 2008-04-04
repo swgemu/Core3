@@ -3080,7 +3080,7 @@ void CreatureObjectImplementation::subtractBankCredits(uint32 credits) {
 	((PlayerImplementation*) this)->sendMessage(delta);
 }
 
-bool CreatureObjectImplementation::verifyCashCredits(int creditsToRemove) {
+bool CreatureObjectImplementation::verifyCashCredits(uint32 creditsToRemove) {
 	 if (cashCredits >= creditsToRemove) {
 	 	return true;
 	 } else {
@@ -3088,7 +3088,7 @@ bool CreatureObjectImplementation::verifyCashCredits(int creditsToRemove) {
 	}
 }
 
-bool CreatureObjectImplementation::verifyBankCredits(int creditsToRemove) {
+bool CreatureObjectImplementation::verifyBankCredits(uint32 creditsToRemove) {
 	 if (bankCredits >= creditsToRemove) {
 	 	return true;
 	 } else {

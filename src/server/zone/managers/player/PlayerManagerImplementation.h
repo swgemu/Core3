@@ -91,10 +91,10 @@ public:
 
 	void unload(Player* player);
 
-	void doBankTip(Player* sender, Player* receiver, int tipAmount, bool updateTipTo);
-	void doCashTip(Player* sender, Player* receiver, int tipAmount, bool updateTipTo);
-	bool modifyOfflineBank(Player* sender, string playerName, int creditAmount);
-	bool modifyRecipientOfflineBank(string recipient, int creditAmount);
+	void doBankTip(Player* sender, Player* receiver, uint32 tipAmount, bool updateTipTo);
+	void doCashTip(Player* sender, Player* receiver, uint32 tipAmount, bool updateTipTo);
+	bool modifyOfflineBank(Player* sender, string playerName, uint32 creditAmount);
+	bool modifyRecipientOfflineBank(string recipient, uint32 creditAmount);
 	void updatePlayerCreditsFromDatabase(Player* player);
 	void updatePlayerCreditsToDatabase(Player* player);
 	

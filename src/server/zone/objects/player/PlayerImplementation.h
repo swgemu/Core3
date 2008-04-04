@@ -118,6 +118,7 @@ class PlayerImplementation : public PlayerServant {
 	int itemShift;
 	
 	int deathCount;
+	Time firstIncapacitationTime;
 	int pvpRating;
 	
 	// Faction Stuff

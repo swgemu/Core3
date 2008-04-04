@@ -1352,6 +1352,15 @@ void PlayerImplementation::doIncapacitate() {
 	
 	if (isMounted())
 		dismount(true, true);
+
+	if (deathCount == 0) {
+		firstIncapacitationTime.update();
+		firstIncapacitationTime.addMiliTime(900000);
+	} else if (deathCount != 0 && firstIncapacitationTime.isPast()) {
+		deathCount = 0;
+		firstIncapacitationTime.update();
+		firstIncapacitationTime.addMiliTime(900000);
+	}
 	
 	if (++deathCount < 3) {
 		// send incapacitation timer

@@ -540,6 +540,6 @@ interface CreatureObject implements SceneObject {
 	// Buff method
 	void applyBuff(const string type, int value, float duration);
 	
-	boolean verifyCashCredits(int creditsToRemove);
-	boolean verifyBankCredits(int creditsToRemove);
+	boolean verifyCashCredits(unsigned int creditsToRemove);
+	boolean verifyBankCredits(unsigned int creditsToRemove);
 }

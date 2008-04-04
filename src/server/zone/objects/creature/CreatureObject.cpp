@@ -4144,26 +4144,26 @@ void CreatureObject::applyBuff(const string& type, int value, float duration) {
 		((CreatureObjectImplementation*) _impl)->applyBuff(type, value, duration);
 }
 
-bool CreatureObject::verifyCashCredits(int creditsToRemove) {
+bool CreatureObject::verifyCashCredits(unsigned int creditsToRemove) {
 	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
 		ORBMethodInvocation invocation(this, 324);
-		invocation.addSignedIntParameter(creditsToRemove);
+		invocation.addUnsignedIntParameter(creditsToRemove);
 
 		return invocation.executeWithBooleanReturn();
 	} else
 		return ((CreatureObjectImplementation*) _impl)->verifyCashCredits(creditsToRemove);
 }
 
-bool CreatureObject::verifyBankCredits(int creditsToRemove) {
+bool CreatureObject::verifyBankCredits(unsigned int creditsToRemove) {
 	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
 		ORBMethodInvocation invocation(this, 325);
-		invocation.addSignedIntParameter(creditsToRemove);
+		invocation.addUnsignedIntParameter(creditsToRemove);
 
 		return invocation.executeWithBooleanReturn();
 	} else
@@ -5136,10 +5136,10 @@ Packet* CreatureObjectAdapter::invokeMethod(uint32 methid, ORBMethodInvocation* 
 		applyBuff(inv->getAsciiParameter(_param0_applyBuff__string_int_float_), inv->getSignedIntParameter(), inv->getFloatParameter());
 		break;
 	case 324:
-		resp->insertBoolean(verifyCashCredits(inv->getSignedIntParameter()));
+		resp->insertBoolean(verifyCashCredits(inv->getUnsignedIntParameter()));
 		break;
 	case 325:
-		resp->insertBoolean(verifyBankCredits(inv->getSignedIntParameter()));
+		resp->insertBoolean(verifyBankCredits(inv->getUnsignedIntParameter()));
 		break;
 	default:
 		return NULL;
@@ -6420,11 +6420,11 @@ void CreatureObjectAdapter::applyBuff(const string& type, int value, float durat
 	return ((CreatureObjectImplementation*) impl)->applyBuff(type, value, duration);
 }
 
-bool CreatureObjectAdapter::verifyCashCredits(int creditsToRemove) {
+bool CreatureObjectAdapter::verifyCashCredits(unsigned int creditsToRemove) {
 	return ((CreatureObjectImplementation*) impl)->verifyCashCredits(creditsToRemove);
 }
 
-bool CreatureObjectAdapter::verifyBankCredits(int creditsToRemove) {
+bool CreatureObjectAdapter::verifyBankCredits(unsigned int creditsToRemove) {
 	return ((CreatureObjectImplementation*) impl)->verifyBankCredits(creditsToRemove);
 }
 

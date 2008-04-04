@@ -132,6 +132,11 @@ bool CommandQueueAction::validate() {
 		return false;
 	}
 	
+	if (creature->isKnockedDown()) {
+		clearError(1, 18);		
+		return false;
+	}
+	
 	if (skill->isTargetSkill()) {
 		if (target != creature) {
 			if (skill->isAttackSkill()) {
@@ -194,11 +199,6 @@ bool CommandQueueAction::validate() {
 	if (skill->isAttackSkill()) {
 		if (target == creature) {
 			clearError(3);
-			return false;
-		}
-		
-		if (creature->isKnockedDown()) {
-			clearError(1, 18);		
 			return false;
 		}
 		

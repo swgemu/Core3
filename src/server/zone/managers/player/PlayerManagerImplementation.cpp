@@ -670,7 +670,7 @@ void PlayerManagerImplementation::moveItem(Player* sender, Player* receiver, Tan
 	target->sendSystemMessage(targettxt.str());*/
 }
 
-void PlayerManagerImplementation::doBankTip(Player* sender, Player* receiver, int tipAmount, bool updateTipTo) {
+void PlayerManagerImplementation::doBankTip(Player* sender, Player* receiver, uint32 tipAmount, bool updateTipTo) {
 	//Pre: sender wlocked
 	if (!sender->verifyBankCredits(tipAmount)) {
 		sender->sendSystemMessage("You lack the required funds to do that. (Bank Tip.)");
@@ -718,7 +718,7 @@ void PlayerManagerImplementation::doBankTip(Player* sender, Player* receiver, in
 	}
 }
 
-void PlayerManagerImplementation::doCashTip(Player* sender, Player* receiver, int tipAmount, bool updateTipTo) {
+void PlayerManagerImplementation::doCashTip(Player* sender, Player* receiver, uint32 tipAmount, bool updateTipTo) {
 	// Pre: sender wlocked
 	if (!sender->verifyCashCredits(tipAmount)) {
 		sender->sendSystemMessage("You lack the required funds to do that. (Cash Tip.)");
@@ -746,8 +746,14 @@ void PlayerManagerImplementation::doCashTip(Player* sender, Player* receiver, in
 	}
 }
 
-bool PlayerManagerImplementation::modifyOfflineBank(Player* sender, string receiverName, int creditAmount) {
+bool PlayerManagerImplementation::modifyOfflineBank(Player* sender, string receiverName, uint32 creditAmount) {
 	//First we need to get the current bank credits.
+	
+	if (!sender->verifyBankCredits(creditAmount)) {
+		sender->sendSystemMessage("You lack the required funds to do that. (Bank Tip.)");
+		return false;
+	}
+	
 	String::toLower(receiverName);
 	MySqlDatabase::escapeString(receiverName);
 	
@@ -771,13 +777,13 @@ bool PlayerManagerImplementation::modifyOfflineBank(Player* sender, string recei
 	}
 
 	//Grab the current credits.
-	int currentBankCredits = character->getInt(11);
+	uint32 currentBankCredits = character->getInt(11);
 
 	//we can dump it now.
 	delete character;
 
 	//Our new credits amount.
-	int newBankCredits = currentBankCredits + creditAmount;
+	uint32 newBankCredits = currentBankCredits + creditAmount;
 
 	//Now we need to update the db.
 	stringstream query2;
@@ -797,7 +803,7 @@ bool PlayerManagerImplementation::modifyOfflineBank(Player* sender, string recei
 	return true;
 }
 
-bool PlayerManagerImplementation::modifyRecipientOfflineBank(string recipient, int creditAmount) {
+bool PlayerManagerImplementation::modifyRecipientOfflineBank(string recipient, uint32 creditAmount) {
 	//First we need to get the current bank credits.
 	String::toLower(recipient);
 	MySqlDatabase::escapeString(recipient);
@@ -830,13 +836,13 @@ bool PlayerManagerImplementation::modifyRecipientOfflineBank(string recipient, i
 	}
 
 	//Grab the current credits.
-	int currentBankCredits = character->getInt(11);
+	uint32 currentBankCredits = character->getInt(11);
 
 	//we can dump it now.
 	delete character;
 
 	//Our new credits amount.
-	int newBankCredits = currentBankCredits + creditAmount;
+	uint32 newBankCredits = currentBankCredits + creditAmount;
 	
 	//Now we need to update the db.
 	stringstream query2;
