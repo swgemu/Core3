@@ -6,7 +6,7 @@ DROP TABLE `planetmap`;
 CREATE TABLE `planetmap` (
   `index` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `planet` varchar(45) NOT NULL,
-  `location_name` varchar(45) NOT NULL,
+  `location_name` varchar(65) NOT NULL,
   `x` float NOT NULL,
   `y` float NOT NULL,
   `type1` int(10) unsigned NOT NULL,
