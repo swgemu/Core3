@@ -2306,14 +2306,14 @@ void CreatureObjectImplementation::startPlayingMusic(const string& music) {
 		stopDancing();
 
 	if (isPlayingMusic()) {
-		sendSystemMessage("You are already playing music.");
+		sendSystemMessage("performance", "already_performing_self");
 		return;
 	}
 	
 	Instrument* instrument = getInstrument();
 	if(instrument == NULL)
 	{
-		sendSystemMessage("You must first equip an instrument.");
+		sendSystemMessage("performance", "music_no_instrument");
 		return;
 	} 
 	
@@ -2778,6 +2778,48 @@ void CreatureObjectImplementation::stopListen(uint64 entid, bool doSendPackets, 
 	
 	doListening = false;
 	listenID = 0;
+}
+
+
+void CreatureObjectImplementation::doFlourish(const string& modifier)
+{
+	cout << "doing flourish: " << modifier;
+	
+    int fid = atoi(modifier.c_str());
+
+    if(modifier == "") fid = 1; // default a blank flourish to #1
+    
+    if(fid < 1 || fid > 8) {
+    	sendSystemMessage("performance", "flourish_format");
+    	return;
+    }
+    
+	if (!isDancing() && !isPlayingMusic()) {
+		sendSystemMessage("performance", "flourish_not_performing");
+		return;		
+	}
+
+	float baseActionDrain = -40 + (getQuickness() / 37.5);
+	float flourishActionDrain = baseActionDrain / 2.0;
+	
+	int actionDrain = (int)round((flourishActionDrain * 10+ 0.5) / 10.0); // Round to nearest dec for actual int cost
+	
+	if (changeActionBar(actionDrain, false) ) {		
+		activateRecovery();
+		
+		if (isDancing()) {
+	    	stringstream msg;
+			msg << "skill_action_" << fid;
+	    	doAnimation(msg.str());
+	    } else if (isPlayingMusic()) {
+	    	Flourish* flourish = new Flourish(_this, fid);
+			broadcastMessage(flourish);
+	    }
+		sendSystemMessage("performance", "flourish_perform");
+
+	} else {
+		sendSystemMessage("performance", "flourish_too_tired");
+	}	
 }
 
 void CreatureObjectImplementation::sendEntertainingUpdate(uint32 entval, const string& performance, uint32 perfcntr, int instrid) {

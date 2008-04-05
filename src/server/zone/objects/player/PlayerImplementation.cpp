@@ -1794,6 +1794,8 @@ void PlayerImplementation::clearBuffs(bool doUpdatePlayer) {
 	removeBuffs(doUpdatePlayer);
 }
 
+
+
 /*
  *	Item manipulation methods 
  */

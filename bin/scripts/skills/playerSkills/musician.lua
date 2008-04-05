@@ -44,13 +44,13 @@ firejetSkill = {
 	skillname = "firejet",
 	effect_prefix = "clienteffect/entertainer_distract_level_"
 }
-AddMusicSkill(firejetSkill)
+AddMusicEffectSkill(firejetSkill)
 
 -- This is a MusicTarget skill
 ventriloquismSkill = {
 	skillname = "ventriloquism",
 	effect_prefix = "clienteffect/entertainer_ventriloquism_level_"
 }
-AddMusicSkill(ventriloquismSkill)
+AddMusicEffectSkill(ventriloquismSkill)
 
 

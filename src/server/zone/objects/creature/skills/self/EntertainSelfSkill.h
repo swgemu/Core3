@@ -48,36 +48,41 @@ which carries forward this exception.
 #include "../SelfSkill.h"
 
 class EntertainSelfSkill : public SelfSkill {
+protected:
+		
 
 public:
-	EntertainSelfSkill(const string& name, const string& effect, ZoneProcessServerImplementation* serv) : SelfSkill(name, effect.c_str(), ENTERTAIN, serv) {
+	EntertainSelfSkill(const string& name, ZoneProcessServerImplementation* serv): SelfSkill(name, "", ENTERTAIN, serv) {
+
 	}
 	
-	void doSkill(CreatureObject* creature, string& modifier) {
-		int actionModifier = atoi(modifier.c_str());
 
-		
-		if(actionModifier > 3 or actionModifier < 1)
-			actionModifier = 3;
-		
-		// This returns a prefix for entertain skills - need to add an actionModifier and .cef
-		//cout << "doing skill, effect: " << getEffectName() << dec << actionModifier << ".cef";
-		
-    	stringstream effect;
-		effect << getEffectName() << dec << actionModifier << ".cef";
-		creature->playEffect(effect.str(), "");
+	void doSkill(CreatureObject* creature, string& modifier) {
+		if(getSkillName() == "startdance")
+			creature->startDancing(modifier);
+		else if(getSkillName() == "startmusic")
+			creature->startPlayingMusic(modifier);
+		else if(getSkillName() == "stopdance")
+			creature->stopDancing();
+		else if(getSkillName() == "stopmusic")
+			creature->stopPlayingMusic();	
+		else if(getSkillName() == "flourish")
+			creature->doFlourish(modifier);
+	}
+
+	virtual bool isUsefull(CreatureObject* creature) {
+		return true;
 	}
 	
 	float calculateSpeed(CreatureObject* creature) {
 		return 1.0;
 	}
 	
-	bool calculateCost(CreatureObject* creature) {
-		if (creature->isDancing() || creature->isPlayingMusic())
-			return true;
-		else
-			return false;
+	bool calculateCost(CreatureObject* creature) {		
+		return true;
 	}
+	
+	
 };
-#endif /*ENTERTAINSELFSKILL_H_*/
 
+#endif /*ENTERTAINSELFSKILL_H_*/

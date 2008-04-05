@@ -86,8 +86,9 @@ public:
 	static int AddHealTargetSkill(lua_State* L);
 
 	static int AddEntertainSkill(lua_State* L);
-	static int AddDanceSkill(lua_State* L);
-	static int AddMusicSkill(lua_State* L);
+	static int AddEntertainEffectSkill(lua_State* L);
+	static int AddDanceEffectSkill(lua_State* L);
+	static int AddMusicEffectSkill(lua_State* L);
 	
 };
 

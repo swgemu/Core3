@@ -515,6 +515,8 @@ interface CreatureObject implements SceneObject {
 	void removeListener(CreatureObject creature);
 	void removeWatcher(CreatureObject creature);
 	
+	void doFlourish(const string modifier);
+	
 	void activateRecovery();
 	
 	// Skill methods

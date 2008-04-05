@@ -441,21 +441,7 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player, Message* 
 	case (0xA6F95839): //showpvprating
 	    parseShowPvpRating(player, pack);
 	    break;
-	case (0x7B1DCBE0): //startdance
-		if (player->isMounted()) {
-			player->clearQueueAction(actioncntr, 0, 1, 16);
-			return;
-		}
-		parseStartDance(player, pack);
-		break;
-	case (0xDDD1E8F1): //startmusic
-		if (player->isMounted()) {
-			player->clearQueueAction(actioncntr, 0, 1, 16);
-			return;
-		}
-		parseStartMusic(player, pack);
-		break;
-	case (0xC8998CE9): //flourish
+/*	case (0xC8998CE9): //flourish
 		if (player->isMounted()) {
 			player->clearQueueAction(actioncntr, 0, 1, 16);
 			return;
@@ -475,7 +461,7 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player, Message* 
 			return;
 		}
 		parseStopDance(player, pack);
-		break;
+		break;*/
 	case (0xEC93CA43): //watch
 		if (player->isMounted()) {
 			player->clearQueueAction(actioncntr, 0, 1, 16);
@@ -648,6 +634,10 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player, Message* 
 	    // fancy if statement
 	    switch (actionCRC) // modifier for entertainer-type commands /dazzle 2 vs /dazzle 1
 	    { // they're dumb and all have the same action crc
+	    	case (0xC8998CE9): //flourish
+	    	case (0x7B1DCBE0): //startdance
+	    	case (0xDDD1E8F1): //startmusic
+	    	//	target = player->getObjectID(); // Fake Queue Action on this - the parseLong is blank
 	    	case (0xB008CBFA): //colorlights
 	    	case (0x9C7713A5): //dazzle
 	    	case (0xED4AA746): //spotlight
@@ -949,81 +939,7 @@ void ObjectControllerMessage::parseShowPvpRating(Player* player, Message* pack) 
 	player->sendSystemMessage(msg.str());
 }
 
-void ObjectControllerMessage::parseStartDance(Player* player, Message* pack) {
-	pack->shiftOffset(8); //shift past the blank long.
-	
-	unicode anim;
-	pack->parseUnicode(anim);
-	
-	player->startDancing(anim.c_str());
-}
 
-void ObjectControllerMessage::parseStartMusic(Player* player, Message* pack) {
-	pack->shiftOffset(8); //shift past the blank long.
-	
-	unicode music;
-	pack->parseUnicode(music);
-	
-	player->startPlayingMusic(music.c_str());
-}
-
-void ObjectControllerMessage::parseFlourish(Player* player, Message* pack) {
-
-	//player->getSkill()
-	pack->shiftOffset(8);
-
-    unicode flourishID;
-    pack->parseUnicode(flourishID);
-    
-    int fid = atoi(flourishID.c_str().c_str());
-    
-    //now we need to determine whether its a music or a dance flourish.
-    
-	string skillbox = "social_entertainer_novice";
-	
-	if (!player->getSkillBoxesSize() || !player->hasSkillBox(skillbox)) {
-		player->sendSystemMessage("You do not have sufficient abilities to Flourish.");
-		return;
-	}
-	
-	if (!player->isDancing() && !player->isPlayingMusic()) {
-		player->sendSystemMessage("You must be playing music or dancing to Flourish..");
-		return;		
-	}
-
-	float baseActionDrain = -40 + (player->getQuickness() / 37.5);
-	float flourishActionDrain = baseActionDrain / 2.0;
-	
-	int actionDrain = (int)round((flourishActionDrain * 10+ 0.5) / 10.0); // Round to nearest dec for actual int cost
-
-    /*stringstream opc;
-	opc << "ActionDrain: " << dec << ActionDrain;
-	player->sendSystemMessage(opc.str());*/
-	
-	if (player->changeActionBar(actionDrain, false) ) {		
-		player->activateRecovery();
-		
-		if (player->isDancing()) {
-	    	stringstream msg;
-			msg << "skill_action_" << fid;
-	    	player->doAnimation(msg.str());
-	    } else if (player->isPlayingMusic()) {
-	    	Flourish* flourish = new Flourish(player, fid);
-			player->broadcastMessage(flourish);
-	    }
-		
-	} else {
-		player->sendSystemMessage("You do not have enough action to do that.");
-	}	
-}
-
-void ObjectControllerMessage::parseStopMusic(Player* player, Message* pack) {
-	    player->stopPlayingMusic();
-}
-
-void ObjectControllerMessage::parseStopDance(Player* player, Message* pack) {
-		player->stopDancing();
-}
 
 void ObjectControllerMessage::parseWatch(Player* player, Message* pack) {
 	uint64 watchID = pack->parseLong();

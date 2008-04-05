@@ -387,7 +387,8 @@ public:
 	void newChangeFactionEvent(uint32 faction);
 	
 	bool isInDuelWith(Player* targetPlayer, bool doLock = true);
-	
+
+
 	// item methods
 	void changeCloth(uint64 itemid);
 	void changeWeapon(uint64 itemid);

@@ -89,11 +89,8 @@ public:
     
     static void parseShowPvpRating(Player* player, Message* pack);
     
-    static void parseStartDance(Player* player, Message* pack);
-    static void parseStartMusic(Player* player, Message* pack);
-    static void parseFlourish(Player* player, Message* pack);
-    static void parseStopMusic(Player* player, Message* pack);
-    static void parseStopDance(Player* player, Message* pack);
+
+    //static void parseFlourish(Player* player, Message* pack);
     static void parseWatch(Player* player, Message* pack);
     static void parseListen(Player* player, Message* pack);
    	static void parseStopWatch(Player* player, Message* pack);
