@@ -276,7 +276,7 @@ void BazaarManagerImplementation::addSaleItem(Player* player, uint64 objectid, u
 		BaseMessage* msg = new ItemSoldMessage(objectid, 2);
 		player->sendMessage(msg);
 		
-		player->sendSystemMessage("you mast unequip your item!!");
+		player->sendSystemMessage("you must unequip your item!!");
 		
 		player->unlock();
 		unlock();
@@ -291,7 +291,7 @@ void BazaarManagerImplementation::addSaleItem(Player* player, uint64 objectid, u
 
 	if(!obj->isPersistent())
 		itemManager->createPlayerItem(player, obj);
-	if(!obj->isUpdated())
+	if(obj->isUpdated())
 		itemManager->savePlayerItem(player, obj);
 		
 	Time expireTime;
