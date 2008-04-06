@@ -74,12 +74,12 @@ ZonePacketHandler::ZonePacketHandler(const string& s, ZoneProcessServerImplement
 } 
 
 void ZonePacketHandler::handleMessage(Message* pack) {
-	//info("parsing " + pack->toString());
-	
+	/*info("parsing " + pack->toString());*/
+
 	uint16 opcount = pack->parseShort();
 	uint32 opcode = pack->parseInt();
 	
-	//cout << "processing opcount:[" << opcount << "] opcode:[" << hex << opcode << "]\n";
+	/*cout << "processing opcount:[" << opcount << "] opcode:[" << hex << opcode << "]\n";*/
 	
 	switch (opcount) {
 	case 1:
@@ -133,6 +133,9 @@ void ZonePacketHandler::handleMessage(Message* pack) {
 			break;
 		case 0xD36EFAE4: // Item attributes request
 			handleGetAuctionItemAttributes(pack);
+			break;
+		case 0xD6D1B6D1: //ClientRandomNameRequest
+			handleClientRandomNameRequest(pack);
 			break;
 		}
 		
@@ -255,6 +258,7 @@ void ZonePacketHandler::handleClientPermissionsMessage(Message* pack) {
 
 }
 
+
 void ZonePacketHandler::handleSelectCharacter(Message* pack) {
 	PlayerManager* playerManager = server->getPlayerManager();
 	
@@ -312,6 +316,7 @@ void ZonePacketHandler::handleCmdSceneReady(Message* pack) {
 }
 
 void ZonePacketHandler::handleClientCreateCharacter(Message* pack) {
+	
 	PlayerManager* playerManager = server->getPlayerManager();
 
 	ZoneClientImplementation* clientimpl = (ZoneClientImplementation*) pack->getClient();
@@ -321,10 +326,18 @@ void ZonePacketHandler::handleClientCreateCharacter(Message* pack) {
 
 	ClientCreateCharacter::parse(pack, playerImpl);
 
-	if (!playerManager->validateName(playerImpl->getFirstName())) {
-		playerImpl->refuseCreate(client);
-		
-		//delete playerImpl;
+
+	if(playerImpl->getFirstName() == "")
+	{	
+		BaseMessage* msg = new ClientCreateCharacterFailed("name_declined_empty");
+		client->sendMessage(msg);
+		return;
+	}
+
+
+	if (!playerManager->validateName(playerImpl->getFirstName())) {		
+		BaseMessage* msg = new ClientCreateCharacterFailed("name_declined_in_use");
+		client->sendMessage(msg);
 		return;
 	}
 	
@@ -379,6 +392,12 @@ void ZonePacketHandler::handleClientCreateCharacter(Message* pack) {
 
 void ZonePacketHandler::handleClientRandomNameRequest(Message* pack) {
 	ZoneClientImplementation* client = (ZoneClientImplementation*) pack->getClient();
+
+	string racefile;		
+	pack->parseAscii(racefile);
+	
+	BaseMessage* msg = new ClientRandomNameReponse(racefile);
+	client->sendMessage(msg);
 }
 
 void ZonePacketHandler::handleObjectControllerMessage(Message* pack) {
@@ -392,7 +411,7 @@ void ZonePacketHandler::handleObjectControllerMessage(Message* pack) {
 	
 	/*stringstream msg;
 	msg << "ObjectControllerMessage(0x" << hex << header1 << ", 0x" << header2 << dec << ")";
-	player->info(msg.str());*/
+	player->info(msg.str()); */
 	
 	try {
 		player->wlock();

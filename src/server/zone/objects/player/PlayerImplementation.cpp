@@ -593,7 +593,7 @@ void PlayerImplementation::createItems() {
 	ItemManager* itemManager = zone->getZoneServer()->getItemManager();
 	itemManager->loadDefaultPlayerItems(_this);
 	itemManager->loadDefaultPlayerDatapadItems(_this);
-
+	
 	if (!hairObject.empty()) {
 		HairObjectImplementation* hairImpl = new HairObjectImplementation(_this, String::hashCode(hairObject), unicode("hair"), "hair");
 		hairImpl->setCustomizationString(hairData);
@@ -625,17 +625,17 @@ void PlayerImplementation::createBaseStats() {
 	
 	int hamValues[9];
 	
-	if (startingProfession == "artisan")
+	if (startingProfession == "crafting_artisan")
 		memcpy(hamValues, professionHams[0], sizeof(hamValues));
-	else if (startingProfession == "brawler")
+	else if (startingProfession == "combat_brawler")
 		memcpy(hamValues, professionHams[1], sizeof(hamValues));
-	else if (startingProfession == "entertainer")
+	else if (startingProfession == "social_entertainer")
 		memcpy(hamValues, professionHams[2], sizeof(hamValues));
-	else if (startingProfession == "marksman")
+	else if (startingProfession == "combat_marksman")
 		memcpy(hamValues, professionHams[3], sizeof(hamValues));
-	else if (startingProfession == "medic")
+	else if (startingProfession == "science_medic")
 		memcpy(hamValues, professionHams[4], sizeof(hamValues));
-	else if (startingProfession == "scout")
+	else if (startingProfession == "outdoors_scout")
 		memcpy(hamValues, professionHams[5], sizeof(hamValues));
 	else
 		memcpy(hamValues, professionHams[6], sizeof(hamValues));
@@ -660,6 +660,9 @@ void PlayerImplementation::createBaseStats() {
 	baseWillpower = hamValues[8];
 }
 
+void PlayerImplementation::trainStartingProfession() {
+	trainSkillBox(startingProfession + "_novice");
+}
 void PlayerImplementation::decayInventory() {
 	if (inventory != NULL)
 		for (int i = 0; i < inventory->objectsSize(); i++) {

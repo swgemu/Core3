@@ -107,7 +107,7 @@ bool UserManagerImplementation::isAdmin(const string& name) {
 	if (name == "ramsey" || name == "ultyma" ||
 			name == "seaseme" || name == "theanswer" || 
 			name == "oru" || name == "smusatto" ||
-			name == "phantm" || name == "vash")
+			name == "phantm" || name == "vash" || name == "mcmahon")
 			
 		return true;
 	else

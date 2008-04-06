@@ -60,11 +60,45 @@ colorlightsSkill = {
 }
 AddEntertainEffectSkill(colorlightsSkill)
 
-flourishSkill = {
-	skillname = "flourish"
+flourish1Skill = {
+	skillname = "flourish+1"
 }
-AddEntertainSkill(flourishSkill)
+AddEntertainSkill(flourish1Skill)
 
+flourish2Skill = {
+	skillname = "flourish+2"
+}
+AddEntertainSkill(flourish2Skill)
+
+flourish3Skill = {
+	skillname = "flourish+3"
+}
+AddEntertainSkill(flourish3Skill)
+
+flourish4Skill = {
+	skillname = "flourish+4"
+}
+AddEntertainSkill(flourish4Skill)
+
+flourish5Skill = {
+	skillname = "flourish+5"
+}
+AddEntertainSkill(flourish5Skill)
+
+flourish6Skill = {
+	skillname = "flourish+6"
+}
+AddEntertainSkill(flourish6Skill)
+
+flourish7Skill = {
+	skillname = "flourish+7"
+}
+AddEntertainSkill(flourish7Skill)
+
+flourish8Skill = {
+	skillname = "flourish+8"
+}
+AddEntertainSkill(flourish8Skill)
 
 startdanceSkill = {
 	skillname = "startdance"
@@ -87,4 +121,161 @@ stopmusicSkill = {
 AddEntertainSkill(stopmusicSkill)
 
 
+-- Dances
 
+startdanceBasicSkill = {
+	skillname = "startdance+basic"
+}
+AddEntertainSkill(startdanceBasicSkill)
+
+startdanceRhythmicSkill = {
+	skillname = "startdance+rhythmic"
+}
+AddEntertainSkill(startdanceRhythmicSkill)
+
+startdanceBasic2Skill = {
+	skillname = "startdance+basic2"
+}
+AddEntertainSkill(startdanceBasic2Skill)
+
+startdanceRhythmic2Skill = {
+	skillname = "startdance+rhythmic2"
+}
+AddEntertainSkill(startdanceRhythmic2Skill)
+
+startdanceFootlooseSkill = {
+	skillname = "startdance+footloose"
+}
+AddEntertainSkill(startdanceFootlooseSkill)
+
+startdanceFormalSkill = {
+	skillname = "startdance+formal"
+}
+AddEntertainSkill(startdanceFormalSkill)
+
+startdanceFootloose2Skill = {
+	skillname = "startdance+footloose2"
+}
+AddEntertainSkill(startdanceFootloose2Skill)
+
+startdanceFormal2Skill = {
+	skillname = "startdance+formal2"
+}
+AddEntertainSkill(startdanceFormal2Skill)
+
+startdancePopularSkill = {
+	skillname = "startdance+popular"
+}
+AddEntertainSkill(startdancePopularSkill)
+
+startdancePoplockSkill = {
+	skillname = "startdance+poplock"
+}
+AddEntertainSkill(startdancePoplockSkill)
+
+startdancePopular2Skill = {
+	skillname = "startdance+popular2"
+}
+AddEntertainSkill(startdancePopular2Skill)
+
+startdancePoplock2Skill = {
+	skillname = "startdance+poplock2"
+}
+AddEntertainSkill(startdancePoplock2Skill)
+
+startdanceLyricalSkill = {
+	skillname = "startdance+lyrical"
+}
+AddEntertainSkill(startdanceLyricalSkill)
+
+startdanceExoticSkill = {
+	skillname = "startdance+exotic",
+}
+AddEntertainSkill(startdanceExoticSkill)
+
+startdanceExotic2Skill = {
+	skillname = "startdance+exotic2"
+}
+AddEntertainSkill(startdanceExotic2Skill)
+
+startdanceLyrical2Skill = {
+	skillname = "startdance+lyrical2"
+}
+AddEntertainSkill(startdanceLyrical2Skill)
+
+startdanceExotic3Skill = {
+	skillname = "startdance+exotic3"
+}
+AddEntertainSkill(startdanceExotic3Skill)
+
+startdanceExotic4Skill = {
+	skillname = "startdance+exotic4"
+}
+AddEntertainSkill(startdanceExotic4Skill)
+
+startdanceTheatricalSkill = {
+	skillname = "startdance+theatrical"
+}
+AddEntertainSkill(startdanceTheatricalSkill)
+
+startdanceTheatrical2Skill = {
+	skillname = "startdance+theatrical2"
+}
+AddEntertainSkill(startdanceTheatrical2Skill)	
+
+-- Music Songs
+
+startmusicStarwars1Skill = {
+	skillname = "startmusic+starwars1"
+}
+AddEntertainSkill(startmusicStarwars1Skill)
+
+startmusicRockSkill = {
+	skillname = "startmusic+rock"
+}
+AddEntertainSkill(startmusicRockSkill)
+
+startmusicStarwars2Skill = {
+	skillname = "startmusic+starwars2"
+}
+AddEntertainSkill(startmusicStarwars2Skill)
+
+startmusicFolkSkill = {
+	skillname = "startmusic+folk"
+}
+AddEntertainSkill(startmusicFolkSkill)
+
+startmusicStarwars3Skill = {
+	skillname = "startmusic+starwars3"
+}
+AddEntertainSkill(startmusicStarwars3Skill)
+
+startmusicCeremonialSkill = {
+	skillname = "startmusic+ceremonial"
+}
+AddEntertainSkill(startmusicCeremonialSkill)
+
+startmusicBalladSkill = {
+	skillname = "startmusic+ballad"
+}
+AddEntertainSkill(startmusicBalladSkill)
+
+startmusicWaltzSkill = {
+	skillname = "startmusic+waltz"
+}
+AddEntertainSkill(startmusicWaltzSkill)
+
+startmusicJazzSkill = {
+	skillname = "startmusic+jazz"
+}
+AddEntertainSkill(startmusicJazzSkill)
+
+startmusicVirtuosoSkill = {
+	skillname = "startmusic+virtuoso"
+}
+AddEntertainSkill(startmusicVirtuosoSkill)
+
+startmusicWesternSkill = {
+	skillname = "startmusic+western"
+}
+AddEntertainSkill(startmusicWesternSkill)

@@ -2214,9 +2214,24 @@ void CreatureObjectImplementation::startDancing(const string& anim) {
 			player->sendMessage(sui->generateMessage());
 
 			return;
+		} else
+		{
+			stringstream dance;
+			dance << "startdance+";
+
+			if(isdigit(anim[0]))
+				dance << availableDances.get(atoi(anim.c_str()));
+			else
+				dance << anim;
+			
+			if(player->getSkill(dance.str()) == NULL) {
+				sendSystemMessage("performance", "dance_lack_skill_self");
+				return;
+			}
 		}
 	}
 	
+	//sendSystemMessage("anim: " + anim);
 	
 	if (anim == "basic" || "basic" == availableDances.get(atoi(anim.c_str()))) { // anim == "0"
 		sendEntertainingUpdate(0x3C4CCCCD, "dance_1", 0x07339FF8, 0xDD);
@@ -2258,7 +2273,7 @@ void CreatureObjectImplementation::startDancing(const string& anim) {
 		sendEntertainingUpdate(0x3C4CCCCD, "dance_21", 0x07339FF8, 0xDD);
 	} else if (anim == "theatrical2" || "theatrical2" == availableDances.get(atoi(anim.c_str()))) {
 		sendEntertainingUpdate(0x3C4CCCCD, "dance_22", 0x07339FF8, 0xDD);
-	} else if (anim == "unknown1" || "nknown1" == availableDances.get(atoi(anim.c_str()))) {
+	} else if (anim == "unknown1" || "unknown1" == availableDances.get(atoi(anim.c_str()))) {
 		sendEntertainingUpdate(0x3C4CCCCD, "dance_19", 0x07339FF8, 0xDD);
 	} else if (anim == "unknown2" || "unknown2" == availableDances.get(atoi(anim.c_str()))) {
 		sendEntertainingUpdate(0x3C4CCCCD, "dance_20", 0x07339FF8, 0xDD);
@@ -2283,7 +2298,7 @@ void CreatureObjectImplementation::startDancing(const string& anim) {
 	} else if (anim == "tumble2" || "tumble2" == availableDances.get(atoi(anim.c_str()))) {
 		sendEntertainingUpdate(0x3C4CCCCD, "dance_32", 0x07339FF8, 0xDD);
 	} else {
-		sendSystemMessage("Invalid dance name.");
+		sendSystemMessage("performance", "dance_lack_skill_self");
 		return;
 	}
 
@@ -2394,6 +2409,20 @@ void CreatureObjectImplementation::startPlayingMusic(const string& music) {
 				
 			player->sendMessage(sui->generateMessage());
 			return;
+		} else
+		{
+			stringstream song;
+			song << "startmusic+";
+
+			if(isdigit(music[0]))
+				song << availableSongs.get(atoi(music.c_str()));
+			else
+				song << music;
+			
+			if(player->getSkill(song.str()) == NULL) {
+				sendSystemMessage("performance", "music_lack_skill_song_self");
+				return;
+			}
 		}
 	}
 
@@ -2427,7 +2456,7 @@ void CreatureObjectImplementation::startPlayingMusic(const string& music) {
 	} else if (music == "funk" || "funk" == availableSongs.get(atoi(music.c_str()))) {
 		instrid = 121;
 	} else {
-		sendSystemMessage("Invalid music name.");
+		sendSystemMessage("performance", "music_invalid_song");
 		return;
 	}
 
@@ -2469,14 +2498,12 @@ void CreatureObjectImplementation::startPlayingMusic(const string& music) {
 	}
 	
 
-	info("started playing music");
+	sendSystemMessage("performance", "music_start_self");
 
 	setPosture(9);
 	setPlayingMusic(true);
 
 	sendEntertainingUpdate(0x3C4CCCCD, "music_3", 0x07352BAC, instrid);
-
-	sendSystemMessage("You start to play music.");
 	
 	// Tick every 10 seconds HAM costs
 	if (isPlayer()) { 
@@ -2485,8 +2512,7 @@ void CreatureObjectImplementation::startPlayingMusic(const string& music) {
 	}
 }
 void CreatureObjectImplementation::stopDancing() {
-	if (isPlayer())
-		sendSystemMessage("You stop dancing.");
+	sendSystemMessage("performance", "dance_stop_self");
 	
 	info("stopped dancing");
 
@@ -2500,7 +2526,8 @@ void CreatureObjectImplementation::stopDancing() {
 			creo->wlock(_this);
 
 			info("stopping dance for [" + creo->getCharacterName().c_str() + "]");
-		
+			// dance_stop_other	%TU stops dancing.
+
 			creo->stopWatch(objectID, true, true, false);
 		
 			if (!creo->isListening())
@@ -2517,8 +2544,7 @@ void CreatureObjectImplementation::stopDancing() {
 }
 
 void CreatureObjectImplementation::stopPlayingMusic() {
-	if (isPlayer())
-		sendSystemMessage("You stop playing music.");
+	sendSystemMessage("performance", "music_stop_self");
 
 	info("stopped playing music");
 
@@ -2556,6 +2582,11 @@ void CreatureObjectImplementation::startWatch(uint64 entid) {
 	if (object == NULL)
 		return;
 		
+	if(object->isNonPlayerCreature()) {
+		sendSystemMessage("performance", "dance_watch_npc");
+		return;
+	}
+
 	if (!object->isPlayer() && !object->isNonPlayerCreature()) {
 		sendSystemMessage("You cannot start watching an object.");
 		return;
@@ -2782,17 +2813,34 @@ void CreatureObjectImplementation::stopListen(uint64 entid, bool doSendPackets, 
 
 
 void CreatureObjectImplementation::doFlourish(const string& modifier)
-{
-	cout << "doing flourish: " << modifier;
-	
-    int fid = atoi(modifier.c_str());
+{	
+	if(isPlayer()) {
+		PlayerImplementation* player = (PlayerImplementation*) this;
 
-    if(modifier == "") fid = 1; // default a blank flourish to #1
-    
-    if(fid < 1 || fid > 8) {
+		string skillBox = "social_entertainer_novice";
+		if (!player->getSkillBoxesSize() || !player->hasSkillBox(skillBox)) {
+			// TODO: sendSystemMessage("cmd_err", "ability_prose", creature);
+			sendSystemMessage("You do not have sufficient abilities to Flourish");
+			return;
+		}		
+	}
+
+	
+	int fid = atoi(modifier.c_str());
+
+    if(modifier == "") {
     	sendSystemMessage("performance", "flourish_format");
     	return;
     }
+    	
+    	fid = 1; // default a blank flourish to #1
+    
+    if(fid < 1 || fid > 8) {
+    	sendSystemMessage("performance", "flourish_not_valid");
+    	sendSystemMessage("performance", "flourish_format");
+    }
+    
+	
     
 	if (!isDancing() && !isPlayingMusic()) {
 		sendSystemMessage("performance", "flourish_not_performing");

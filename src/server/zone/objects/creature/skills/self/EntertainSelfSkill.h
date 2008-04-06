@@ -66,8 +66,6 @@ public:
 			creature->stopDancing();
 		else if(getSkillName() == "stopmusic")
 			creature->stopPlayingMusic();	
-		else if(getSkillName() == "flourish")
-			creature->doFlourish(modifier);
 	}
 
 	virtual bool isUsefull(CreatureObject* creature) {

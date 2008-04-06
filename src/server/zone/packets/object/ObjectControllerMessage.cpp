@@ -441,13 +441,14 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player, Message* 
 	case (0xA6F95839): //showpvprating
 	    parseShowPvpRating(player, pack);
 	    break;
-/*	case (0xC8998CE9): //flourish
+	case (0xC8998CE9): //flourish
 		if (player->isMounted()) {
 			player->clearQueueAction(actioncntr, 0, 1, 16);
 			return;
 		}
 		parseFlourish(player, pack);
 		break;
+/*
 	case (0x4A0D52DD): //stopmusic
 		if (player->isMounted()) {
 			player->clearQueueAction(actioncntr, 0, 1, 16);
@@ -634,7 +635,6 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player, Message* 
 	    // fancy if statement
 	    switch (actionCRC) // modifier for entertainer-type commands /dazzle 2 vs /dazzle 1
 	    { // they're dumb and all have the same action crc
-	    	case (0xC8998CE9): //flourish
 	    	case (0x7B1DCBE0): //startdance
 	    	case (0xDDD1E8F1): //startmusic
 	    	//	target = player->getObjectID(); // Fake Queue Action on this - the parseLong is blank
@@ -961,6 +961,16 @@ void ObjectControllerMessage::parseStopListen(Player* player, Message* pack) {
 	uint64 listenID = pack->parseLong();
 
 	player->stopListen(listenID);
+}
+
+void ObjectControllerMessage::parseFlourish(Player* player, Message* pack) { 
+	pack->parseLong(); // skip passed target 
+	
+	unicode option = unicode("");
+	pack->parseUnicode(option);
+	string actionModifier = option.c_str();
+	
+	player->doFlourish(actionModifier);
 }
 
 void ObjectControllerMessage::parseServerSit(Player* player, Message* pack) {

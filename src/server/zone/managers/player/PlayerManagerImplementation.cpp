@@ -150,7 +150,9 @@ bool PlayerManagerImplementation::create(Player* player, uint32 sessionkey) {
 	BinaryData hair(player->getHairData());
 	hair.encode(hairdata);
 
+	player->trainStartingProfession();
 	player->createBaseStats();
+	
 
 	try {
 		stringstream query;
@@ -906,5 +908,7 @@ void PlayerManagerImplementation::updatePlayerCreditsFromDatabase(Player* player
 	BaseMessage* mess = new PlayerMoneyResponseMessage(player);
 	player->sendMessage(mess);
 }
+
+
 
 

@@ -415,7 +415,7 @@ public:
 	// Profession Methods
 	void saveProfessions();
 	void loadProfessions();
-	
+	void trainStartingProfession();
 	bool trainSkillBox(const string& name);
 	void surrenderSkillBox(const string& name);
 	
