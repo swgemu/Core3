@@ -248,6 +248,11 @@ TangibleObject* ItemManagerImplementation::createPlayerObject(Player* player, Re
 	if (player != NULL) {
 		player->addInventoryItem(tano);
 	
+		if (equipped && tano->isClothing()) {
+			tano->setEquipped(false);
+			player->changeArmor(tano->getObjectID(), true);
+		}
+		
 		if (equipped && tano->isWeapon()) {
 			player->setWeapon((Weapon*) tano);
 			player->setWeaponSkillMods((Weapon*) tano);
