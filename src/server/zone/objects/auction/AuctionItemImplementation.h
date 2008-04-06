@@ -101,7 +101,7 @@ public:
 	bool updated;
 	
 	AuctionItem* deploy() {
-		return (AuctionItem*) ORBObjectServant::deploy("AuctionItem", id);
+		return (AuctionItem*) DistributedObjectServant::deploy("AuctionItem", id);
 	}
 
 	void setLocation(string& planet, string& header, long long vendorid, int x, int z, bool vendor) {

@@ -164,7 +164,7 @@ public:
 	}
 	
 	DraftSchematic* deploy() {
-		return (DraftSchematic*) ORBObjectServant::deploy();
+		return (DraftSchematic*) DistributedObjectServant::deploy();
 	}
 	
 	int getIngredientListSize() {

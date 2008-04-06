@@ -75,7 +75,7 @@ public:
 	}
 
 	DraftSchematicIngredient* deploy() {
-		return (DraftSchematicIngredient*) ORBObjectServant::deploy();
+		return (DraftSchematicIngredient*) DistributedObjectServant::deploy();
 	}
 	void helperSendToPlayer(ObjectControllerMessage* msg) {
 		msg->insertAscii(templateName); // ex: craft_food_ingredients_n

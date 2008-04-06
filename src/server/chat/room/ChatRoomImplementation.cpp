@@ -99,7 +99,7 @@ ChatRoomImplementation::~ChatRoomImplementation() {
 }
 
 ChatRoom* ChatRoomImplementation::deploy() {
-	return (ChatRoom*) ORBObjectServant::deploy("ChatRoom", roomID);
+	return (ChatRoom*) DistributedObjectServant::deploy("ChatRoom", roomID);
 }
 
 void ChatRoomImplementation::sendTo(Player* player) {

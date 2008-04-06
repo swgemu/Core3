@@ -65,5 +65,5 @@ SuiBox* SuiBoxImplementation::deploy() {
 	stringstream name;
 	name << "SuiBox:" << player->getFirstName();
 	
-	return (SuiBox*) ORBObjectServant::deploy(name.str(), (uint64)boxID);
+	return (SuiBox*) DistributedObjectServant::deploy(name.str(), (uint64)boxID);
 }

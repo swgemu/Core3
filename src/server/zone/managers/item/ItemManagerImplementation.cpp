@@ -568,7 +568,7 @@ void ItemManagerImplementation::loadDefaultPlayerDatapadItems(Player* player) {
 	 String::hashCode("object/intangible/vehicle/shared_vehicle_pcd_base.iff"), 0x3F6E7BA7, player->getNewItemID());
 	 stringstream Land2;
 	 Land2 << "Mount" << land2Impl->getObjectID();
-	 MountCreature* land2 = (MountCreature*) ObjectRequestBroker::instance()->deploy(Land2.str(), land2Impl);
+	 MountCreature* land2 = (MountCreature*) DistributedObjectBroker::instance()->deploy(Land2.str(), land2Impl);
 	 land2->addToDatapad();*/
 
 	// x34
@@ -595,7 +595,7 @@ void ItemManagerImplementation::loadDefaultPlayerDatapadItems(Player* player) {
 	 jetImpl->setInstantMount(true);
 	 stringstream Jet;
 	 Jet << "Mount" << jetImpl->getObjectID();
-	 MountCreature* jet = (MountCreature*) ObjectRequestBroker::instance()->deploy(Jet.str(), jetImpl);
+	 MountCreature* jet = (MountCreature*) DistributedObjectBroker::instance()->deploy(Jet.str(), jetImpl);
 	 jet->addToDatapad();*/	
 }
 

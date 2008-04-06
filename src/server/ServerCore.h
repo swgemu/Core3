@@ -57,12 +57,12 @@ which carries forward this exception.
 #include "zone/ZoneServer.h"
 #include "zone/ZoneServerImplementation.h"
 
-class ServerCore : public Logger {
+class ServerCore : public Core, public Logger {
 	ConfigManager configManager;
 	
 	ServerDatabase* database;
 	
-	ObjectRequestBroker* orb;
+	DistributedObjectBroker* orb;
 	
 	LoginServer* lserv;
 	ZoneServerImplementation* zserv;
@@ -82,7 +82,7 @@ public:
 	
 	// getters
 	static ZoneServer* getZoneServer() {
-			return (ZoneServer*) ObjectRequestBroker::instance()->lookUp("ZoneServer");
+		return (ZoneServer*) DistributedObjectBroker::instance()->lookUp("ZoneServer");
 	}
 
 };

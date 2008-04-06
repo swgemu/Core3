@@ -42,7 +42,15 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef PROXYSERVER_H_
-#define PROXYSERVER_H_
+#ifndef LOGINPROXYSERVER_H_
+#define LOGINPROXYSERVER_H_
 
-#endif /*PROXYSERVER_H_*/
+#include "engine/engine.h"
+
+class LoginProxyServer : public DatagramProxyService {
+public:
+	LoginProxyServer();
+	
+};
+
+#endif /*LOGINPROXYSERVER_H_*/

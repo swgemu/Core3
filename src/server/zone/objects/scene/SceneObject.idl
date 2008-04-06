@@ -42,8 +42,6 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-include "engine/core/ManagedObject";
-
 include "engine/service/proto/BaseMessage";
 
 include "engine/util/QuadTreeEntry";

@@ -54,7 +54,9 @@ which carries forward this exception.
 
 #include "SceneObjectImplementation.h"
 
-SceneObjectImplementation::SceneObjectImplementation() : QuadTreeEntry(), SceneObjectServant(), Logger() {
+#include "engine/core/ManagedObjectImplementation.h"
+
+SceneObjectImplementation::SceneObjectImplementation() : SceneObjectServant(), QuadTreeEntry(), Logger() {
 	objectID = 0;
 
 	server = NULL;
@@ -73,7 +75,7 @@ SceneObjectImplementation::SceneObjectImplementation() : QuadTreeEntry(), SceneO
 	keepObject = false;
 }
 
-SceneObjectImplementation::SceneObjectImplementation(uint64 oid) : QuadTreeEntry(), SceneObjectServant(), Logger() {
+SceneObjectImplementation::SceneObjectImplementation(uint64 oid) : SceneObjectServant(),QuadTreeEntry(), Logger() {
 	objectID = oid;
 	
 	stringstream n;
@@ -105,7 +107,7 @@ bool SceneObject::destroy() {
 	bool destroying = ServerCore::getZoneServer()->destroyObject(this);
 	
 	if (destroying) {
-		//log("destroying object");
+		info("destroying object");
 
 		delete this;
 	}
@@ -113,15 +115,19 @@ bool SceneObject::destroy() {
 	return destroying;
 }
 
+bool SceneObjectImplementation::destroy() {
+	return _this->destroy();
+}
+
 SceneObject* SceneObjectImplementation::deploy() {
 	stringstream name;
 	name << "SceneObject(" << objectType << ")  0x" << hex << objectID;
 	
-	return (SceneObject*) ORBObjectServant::deploy(name.str());
+	return (SceneObject*) DistributedObjectServant::deploy(name.str());
 }
 
 SceneObject* SceneObjectImplementation::deploy(const string& name) {
-	return (SceneObject*) ORBObjectServant::deploy(name);
+	return (SceneObject*) DistributedObjectServant::deploy(name);
 }
 
 void SceneObjectImplementation::redeploy() {
@@ -209,4 +215,28 @@ void SceneObjectImplementation::generateAttributes(SceneObject* obj) {
 
 	AttributeListMessage* alm = new AttributeListMessage(_this);
 	player->sendMessage(alm);
+}
+
+void SceneObjectImplementation::lock(bool doLock) {
+	ManagedObjectImplementation::wlock(doLock);
+}
+
+void SceneObjectImplementation::lock(ManagedObject* obj) {
+	ManagedObjectImplementation::wlock(obj);
+}
+
+void SceneObjectImplementation::wlock(bool doLock) {
+	ManagedObjectImplementation::wlock(doLock);
+}
+
+void SceneObjectImplementation::wlock(ManagedObject* obj) {
+	ManagedObjectImplementation::wlock(obj);
+}
+
+void SceneObjectImplementation::unlock(bool doLock) {
+	ManagedObjectImplementation::unlock(doLock);
+}
+
+void SceneObjectImplementation::setLockName(const string& name) {
+	//ManagedObjectImplementation::setLockName(name);
 }

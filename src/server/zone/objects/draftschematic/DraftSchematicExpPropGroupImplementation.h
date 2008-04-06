@@ -66,7 +66,7 @@ public:
 	}
 	
 	DraftSchematicExpPropGroup* deploy() {
-		return (DraftSchematicExpPropGroup*) ORBObjectServant::deploy();
+		return (DraftSchematicExpPropGroup*) DistributedObjectServant::deploy();
 	}
 	
 	void addExperimentalProperty(const string& experimentalPropertyType, uint32 weight) {

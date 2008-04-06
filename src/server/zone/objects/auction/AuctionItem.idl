@@ -42,10 +42,7 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-include "engine/core/thread/RWLockable";
-
-interface AuctionItem implements RWLockable {
-
+interface AuctionItem implements ManagedObject {
 	unsigned long getId();
 	unsigned long getOwnerId();
 	void setOwnerId(unsigned long ownerid);

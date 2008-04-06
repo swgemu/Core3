@@ -62,7 +62,7 @@ public:
 	}
 	
 	SceneObject* deploy() {
-		return (SceneObject*) ORBObjectServant::deploy(bazaarRegion);
+		return (SceneObject*) DistributedObjectServant::deploy(bazaarRegion);
 	}
 	
 	void newBazaarRequest(long bazaarID, Player* player, int planet) {

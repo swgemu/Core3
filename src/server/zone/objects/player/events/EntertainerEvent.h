@@ -57,16 +57,11 @@ public:
 
 	bool activate() {
 		try {
-			player->wlock();
-			
-			if (!player->isDancing() && !player->isPlayingMusic()) {
-				player->clearEntertainerEvent();
-				player->unlock();
+			if(!player->isDancing() && !player->isPlayingMusic())
 				return true; // don't tick action if they aren't doing anything
-			}
 
 			float baseActionDrain = -40 + (player->getQuickness() / 37.5);
-			int actionDrain = (int)round((baseActionDrain * 10 + 0.5) / 10.0); // Round to nearest dec for actual int cost
+			int actionDrain = (int) ((baseActionDrain * 10.0f + 0.5f) / 10.0f); // Round to nearest dec for actual int cost
 
 		    /*stringstream opc;
 			opc << "ActionDrain: " << dec << ActionDrain;
@@ -87,11 +82,8 @@ public:
 			}
 			
 			player->setEntertainerEvent(); // Renew 10 seconds tick
-			
-			player->unlock();
 		} catch (...) {
 			cout << "Unhandled EntertainerEvent exception.\n";
-			player->unlock();
 		}
 		
 		return true;

@@ -59,7 +59,7 @@ class Player;
 
 class ZoneProcessServerImplementation;
 
-class SceneObjectImplementation : public QuadTreeEntry, public SceneObjectServant, public Logger {
+class SceneObjectImplementation : public SceneObjectServant, public QuadTreeEntry, public Logger {
 
 protected:
 	ZoneProcessServerImplementation* server;
@@ -106,8 +106,8 @@ public:
 
 	virtual ~SceneObjectImplementation();
 
-	//void finalize();
-	
+	bool destroy();
+		
 	virtual SceneObject* deploy();
 	SceneObject* deploy(const string& name);
 	
@@ -151,7 +151,18 @@ public:
 	}
 
 	virtual void generateAttributes(SceneObject* obj);
-	
+
+	//TODO: figure out why gcc don't fookin see these shit from ManagedObjectImplementation directly
+	void lock(bool doLock = true);
+	void lock(ManagedObject* obj);
+
+	void wlock(bool doLock = true);
+	void wlock(ManagedObject* obj);
+
+	void unlock(bool doLock = true);
+
+	void setLockName(const string& name);
+
 	// setters and getters
 	inline void setMovementCounter(uint32 cnt) {
 		movementCounter = cnt;

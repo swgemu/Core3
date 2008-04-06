@@ -65,7 +65,7 @@ ObjectManager::~ObjectManager() {
 		SceneObject* object = objectCacheMap->next();
 		
 		if (object->isPlayer())
-			info("object \'" + object->_getORBName() + "\' was not cleaned up properly");
+			info("object \'" + object->_getName() + "\' was not cleaned up properly");
 	}
 
 	info("objects cleaned up", true);

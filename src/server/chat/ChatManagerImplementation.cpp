@@ -760,7 +760,7 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
             /*packet->insertInt(0);
             packet->insertShort(0);*/
             
-            Thread::sleepMili(5000);
+            Thread::sleep(5000);
             
             player->sendMessage(packet);
 		} else if(cmd == "@systemMessage") {

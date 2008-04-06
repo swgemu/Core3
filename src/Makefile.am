@@ -220,4 +220,5 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/chat/room/ChatRoomImplementation.cpp \
 		server/chat/ChatManagerImplementation.cpp \
 		server/zone/packets/object/ObjectControllerMessage.cpp \
+		server/proxy/LoginProxyServer.cpp \
 		main.cpp

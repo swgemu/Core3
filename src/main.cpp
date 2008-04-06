@@ -46,22 +46,7 @@ which carries forward this exception.
 
 #include "server/ServerCore.h"
 
-void outOfMemoryHandler() {
-	cout << "OutOfMemoryException\n";
-	
-	exit(1);
-}
-
 int main(int argc, char* argv[]) {
-	set_new_handler(outOfMemoryHandler);
-	
-	Engine::initialize("core3.log");
-
-	/*StackTrace trace;
-	trace.print();
-	
-	return 0;*/
-	
 	try {
 		ServerCore core;
 		core.init();
@@ -74,6 +59,6 @@ int main(int argc, char* argv[]) {
 		cout << "unreported exception caught main()\n";
 	}
 	
-	Engine::finalize();
+	return 0;
 }
 

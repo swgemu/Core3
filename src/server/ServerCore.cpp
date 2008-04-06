@@ -53,7 +53,7 @@ which carries forward this exception.
 #include "zone/managers/radial/RadialManager.h"
 #include "zone/managers/group/GroupManager.h"
 
-ServerCore::ServerCore() : Logger("Core") {
+ServerCore::ServerCore() : Core("core3.log"), Logger("Core") {
 	orb = NULL;
 
 	lserv = NULL;
@@ -70,7 +70,7 @@ void ServerCore::init() {
 		
 		if (configManager.getMakeZone()) {
 			string& orbaddr = configManager.getORBNamingDirectoryAddress();
-			orb = ObjectRequestBroker::initialize(orbaddr);
+			orb = DistributedObjectBroker::initialize(orbaddr);
 		}
 		
 		if (configManager.getMakeLogin()) {		
@@ -128,7 +128,7 @@ void ServerCore::shutdown() {
 		lserv = NULL;
 	}
 	
-	ObjectRequestBroker::finalize();
+	DistributedObjectBroker::finalize();
 	
 	delete database;
 	
@@ -140,7 +140,7 @@ void ServerCore::handleCommands() {
 		try {
 			string command;
 	
-			Thread::sleepMili(500);
+			Thread::sleep(500);
 		
 			cout << "> ";
 			cin >> command;

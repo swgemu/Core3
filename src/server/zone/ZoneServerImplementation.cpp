@@ -193,7 +193,7 @@ void ZoneServerImplementation::init() {
 		stringstream zname;
 		zname << "Zone" << i;
 		
-		Zone* zone = (Zone*) ObjectRequestBroker::instance()->deploy(zname.str(), zoneImpl);
+		Zone* zone = (Zone*) DistributedObjectBroker::instance()->deploy(zname.str(), zoneImpl);
 		zone->startManagers();
 		
 		zones.add(zone);
@@ -258,16 +258,16 @@ void ZoneServerImplementation::run() {
 
 void ZoneServerImplementation::shutdown() {
 	chatManager->broadcastMessage("Server is shutting down in 30 seconds..");
-	Thread::sleepMili(10000);
+	Thread::sleep(10000);
 
 	chatManager->broadcastMessage("Server is shutting down in 20 seconds..");
-	Thread::sleepMili(10000);
+	Thread::sleep(10000);
 
 	chatManager->broadcastMessage("Server is shutting down in 10 seconds..");
-	Thread::sleepMili(10000);
+	Thread::sleep(10000);
 
 	chatManager->broadcastMessage("Server is shutting down in 5 seconds..");
-	Thread::sleepMili(5000);
+	Thread::sleep(5000);
 	
 	processor->stop();
 

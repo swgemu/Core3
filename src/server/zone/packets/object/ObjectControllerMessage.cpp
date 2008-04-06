@@ -831,10 +831,7 @@ void ObjectControllerMessage::parsePurchaseTicket(Player* player, Message *pack)
 	TicketImplementation* ticketImpl = new TicketImplementation(player, 0xDAA0DE83, unicode("Travel Ticket"), "travel_ticket", 
     	departurePlanet, departurePoint, arrivalPlanet, arrivalPoint);
     	
-    stringstream Name;
-    Name << "Ticket" << ticketImpl->getObjectID();
-    
-    Ticket* ticket = (Ticket*) ObjectRequestBroker::instance()->deploy(Name.str(), ticketImpl);
+    Ticket* ticket = (Ticket*) ticketImpl->deploy();
 	
 	player->addInventoryItem(ticket);
     ticket->sendTo(player, true);
@@ -1028,9 +1025,10 @@ void ObjectControllerMessage::parseWaypointCreate(Player* player, Message* pack)
 		WaypointObjectImplementation* wayImpl = new WaypointObjectImplementation(player, player->getNewItemID());
 		wayImpl->setPlanetName(planet);
 		wayImpl->setPosition(x, z, y);
-		stringstream Name;
-		Name << "Waypoint" << wayImpl->getObjectID();
-		WaypointObject* waypoint = (WaypointObject*)ObjectRequestBroker::instance()->deploy(Name.str(), wayImpl);
+		
+		stringstream name;
+		name << "Waypoint" << wayImpl->getObjectID();
+		WaypointObject* waypoint = (WaypointObject*) wayImpl->deploy(name.str());
 		
 		player->addWaypoint(waypoint);
 		
@@ -1067,9 +1065,10 @@ void ObjectControllerMessage::parseWaypointCommand(Player* player, Message* pack
 
 		WaypointObjectImplementation* wayImpl = new WaypointObjectImplementation(player, player->getNewItemID());
 		wayImpl->setPosition(x, 0, y);
-		stringstream Name;
-		Name << "Waypoint" << wayImpl->getObjectID();
-		WaypointObject* waypoint = (WaypointObject*)ObjectRequestBroker::instance()->deploy(Name.str(), wayImpl);
+		
+		stringstream name;
+		name << "Waypoint" << wayImpl->getObjectID();
+		WaypointObject* waypoint = (WaypointObject*) wayImpl->deploy(name.str());
 
 		player->addWaypoint(waypoint);
 

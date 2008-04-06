@@ -61,7 +61,7 @@ GuildImplementation::GuildImplementation(uint32 gid, const string& name, const s
 }
 
 Guild* GuildImplementation::deploy() {
-	return (Guild*) ORBObjectServant::deploy("Guild", guildID);
+	return (Guild*) DistributedObjectServant::deploy("Guild", guildID);
 }
 
 void GuildImplementation::sendGuildListTo(Player* player, bool doLock) {

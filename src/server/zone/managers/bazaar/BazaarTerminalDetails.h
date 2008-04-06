@@ -47,7 +47,7 @@ which carries forward this exception.
 
 #include "../../objects/tangible/terminal/bazaar/RegionBazaar.h"
 
-class BazaarTerminalDetails : public ORBObject {
+class BazaarTerminalDetails : public DistributedObject {
 	int bazaarPlanet;
 	string bazaarRegion;
 	int bazaarX;

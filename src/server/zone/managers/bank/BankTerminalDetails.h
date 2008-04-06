@@ -47,7 +47,7 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-class BankTerminalDetails : public ORBObject {
+class BankTerminalDetails : public DistributedObject {
 	int bankPlanet;
 	int bankX;
 	int bankZ;
