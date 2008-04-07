@@ -79,8 +79,11 @@ public:
 
 	void getCharacterName(unicode& name) {
 		name.append(characters->getString(3));
-		name.append(" ");
-		name.append(characters->getString(4));
+		string surname = characters->getString(4);
+		if(surname.length() > 0) {
+			name.append(" ");
+			name.append(surname);
+		}
 	}
 
 	uint32 getCharacterRaceCRC() {
