@@ -786,47 +786,47 @@ void LootManager::createJunkLoot(Creature* creature) {
 	switch (System::random(10)) {
 	case 0 :
 		itemImpl = new TangibleObjectImplementation(creature, unicode("a Viewscreen (broken)"), 
-				"object/tangible/loot/tool/shared_viewscreen_broken_s2.iff", 0xBC03F94);
+				"object/tangible/loot/tool/shared_viewscreen_broken_s2.iff", 0xBC03F94, TangibleObjectImplementation::GENERICITEM);
 		break;
 	case 1 :
 		itemImpl = new TangibleObjectImplementation(creature, unicode("Binoculars (broken)"), 
-				"object/tangible/loot/tool/shared_binoculars_broken_s1.iff", 0x1E84585F);
+				"object/tangible/loot/tool/shared_binoculars_broken_s1.iff", 0x1E84585F, TangibleObjectImplementation::GENERICITEM);
 		break;
 	case 2 :
 		itemImpl = new TangibleObjectImplementation(creature, unicode("a Human Skull"), 
-				"object/tangible/loot/misc/shared_loot_skull_human.iff", 0x25B24532);
+				"object/tangible/loot/misc/shared_loot_skull_human.iff", 0x25B24532, TangibleObjectImplementation::GENERICITEM);
 		break;
 	case 3 :
 		itemImpl = new TangibleObjectImplementation(creature, unicode("an Impulse Detector (broken)"), 
-				"/tangible/loot/tool/shared_impulse_detector_broken_s3.iff", 0x2D13F714);
+				"/tangible/loot/tool/shared_impulse_detector_broken_s3.iff", 0x2D13F714, TangibleObjectImplementation::GENERICITEM);
 		break;
 	case 4 :
 		itemImpl = new TangibleObjectImplementation(creature, unicode("a Cage"), 
-				"object/tangible/loot/misc/shared_cage_s01.iff", 0x3238DD4A);
+				"object/tangible/loot/misc/shared_cage_s01.iff", 0x3238DD4A, TangibleObjectImplementation::GENERICITEM);
 		break;
 	case 5 :
 		itemImpl = new TangibleObjectImplementation(creature, unicode("a Rare Artifact"), 
-				"object/tangible/loot/misc/shared_artifact_rare_s01.iff", 0x3393694D);
+				"object/tangible/loot/misc/shared_artifact_rare_s01.iff", 0x3393694D, TangibleObjectImplementation::GENERICITEM);
 		break;
 	case 6 :
 		itemImpl = new TangibleObjectImplementation(creature, unicode("Holocron Splinters"), 
-				"object/tangible/loot/misc/shared_holocron_splinters_sith_s01.iff", 0x3CEA7897);
+				"object/tangible/loot/misc/shared_holocron_splinters_sith_s01.iff", 0x3CEA7897, TangibleObjectImplementation::GENERICITEM);
 		break;
 	case 7 :
 		itemImpl = new TangibleObjectImplementation(creature, unicode("a Calibrator (broken)"), 
-				"object/tangible/loot/tool/shared_calibrator_broken.iff", 0x5289E0D9);
+				"object/tangible/loot/tool/shared_calibrator_broken.iff", 0x5289E0D9, TangibleObjectImplementation::GENERICITEM);
 		break;
 	case 8 :
 		itemImpl = new TangibleObjectImplementation(creature, unicode("a Corrupt Datadisk"), 
-				"object/tangible/loot/misc/shared_datadisk_corrupt.iff", 0x5F4B8D76);
+				"object/tangible/loot/misc/shared_datadisk_corrupt.iff", 0x5F4B8D76, TangibleObjectImplementation::GENERICITEM);
 		break;
 	case 9 :
 		itemImpl = new TangibleObjectImplementation(creature, unicode("Jawa Beads"), 
-				"object/tangible/loot/misc/shared_jawa_beads.iff", 0x619F4DFD);
+				"object/tangible/loot/misc/shared_jawa_beads.iff", 0x619F4DFD, TangibleObjectImplementation::GENERICITEM);
 		break;
 	case 10 :
 		itemImpl = new TangibleObjectImplementation(creature, unicode("a Briefcase"), 
-				"object/tangible/loot/misc/shared_briefcase_s01.iff", 0x6C34F325);
+				"object/tangible/loot/misc/shared_briefcase_s01.iff", 0x6C34F325, TangibleObjectImplementation::GENERICITEM);
 		break;
 	case 11 :
 		itemImpl = new FireworkImplementation(((Player*)creature), 0x7C540DEB, 
