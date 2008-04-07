@@ -68,6 +68,7 @@ which carries forward this exception.
 #include "../../ZoneProcessServerImplementation.h"
 
 #include "../../managers/combat/CommandQueueAction.h"
+#include "../../managers/loot/LootManager.h"
 
 CreatureImplementation::CreatureImplementation(uint64 oid, CreatureGroup* group) : CreatureServant(oid), Event() {
 	objectID = oid;
@@ -113,6 +114,8 @@ void CreatureImplementation::init() {
 	// stats
 	aggroedCreature = NULL;
 	willAggro = false;
+	
+	lootCreated = false;
 	
 	setObjectKeeping(true);
 	
@@ -263,6 +266,8 @@ void CreatureImplementation::unload() {
 	deagro();
 
 	clearTarget();
+	
+	clearLootItems();
 
 	if (zone != NULL && isInQuadTree()) {
 		removeFromZone(true);
@@ -275,12 +280,26 @@ void CreatureImplementation::unload() {
 	info("creature despawned");
 }
 
+void CreatureImplementation::clearLootItems() {
+	while (!lootContainer->isEmpty()) {
+		SceneObject* object = lootContainer->getObject((int)0);
+		
+		lootContainer->removeObject((int)0);
+		
+		object->finalize();
+	}
+	
+	setCashCredits(0);
+	
+	lootCreated = false;
+}
+
 void CreatureImplementation::loadItems() {
 	InventoryImplementation* invImpl = new InventoryImplementation(_this);
 	inventory = (Inventory*) invImpl->deploy();
 	
-	ContainerImplementation* containerImpl = new ContainerImplementation(getNewItemID());
-	lootContainer = (Container*) containerImpl->deploy();
+	CreatureInventoryImplementation* containerImpl = new CreatureInventoryImplementation(_this);
+	lootContainer = (CreatureInventory*) containerImpl->deploy();
 	
 	Weapon* weapon = NULL;
 	WeaponImplementation* weaponImpl = NULL;

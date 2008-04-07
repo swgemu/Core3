@@ -42,94 +42,48 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-import "CreatureObject";
-import "CreatureGroup";
+#include "CreatureInventory.h"
+#include "CreatureInventoryImplementation.h"
 
-import "../../Zone";
+#include "../../creature/CreatureObject.h"
 
-import "../player/Player";
+#include "../../../packets.h"
 
-import "../tangible/wearables/Armor";
+CreatureInventoryImplementation::CreatureInventoryImplementation(CreatureObject* creature) :
+	CreatureInventoryServant(creature->getNewItemID()) {
+	
+	objectCRC = 0x2110791C;
+	
+	container = creature;
+}
 
-import "../tangible/lair/LairObject";
+void CreatureInventoryImplementation::sendTo(Player* player, bool doClose) {
+	ZoneClient* client = player->getClient();
+	
+	if (client == NULL)
+		return;
 
-interface Creature implements CreatureObject {
-	Creature(unsigned long oid);
+	SceneObjectImplementation::create(client);
 
-	void init();
-	
-	void unload();
+	if (container != NULL)
+		link(client, container);
 
-	// spatial methods
-	void insertToZone(Zone zone);
-	void updateZone();
-	
-	//void update(unsigned int time);
-	
-	void removeFromZone(boolean doLock = true);
-	
-	void loadItems();
+	BaseMessage* tano3 = new TangibleObjectMessage3((TangibleObject*) _this);
+	client->sendMessage(tano3);
 
-	// combat methods	
-	boolean activate();
+	BaseMessage* tano6 = new TangibleObjectMessage6((TangibleObject*) _this);
+	client->sendMessage(tano6);
 	
-	boolean isActive();
-	
-	void removeFromQueue();
+	sendItemsTo(player);
 
-	boolean doMovement();
+	if (doClose)
+		SceneObjectImplementation::close(client);
+}
 
-	void doIncapacitate();
-	void doStandUp();
-	
-	//void agro(boolean all);
-	
-	void doAttack(CreatureObject target, int damage);
-	boolean attack(CreatureObject target);
+void CreatureInventoryImplementation::sendItemsTo(Player* player) {
+	for (int i = 0; i < objectsSize(); ++i) {
+		SceneObject* item = getObject(i);
 
-	void activateRecovery();
-	boolean doRecovery();
-	void doStatesRecovery();
-	
-	void queueRespawn();
-
-	// waypoint methods
-	
-	void addPatrolPoint(float x, float y, boolean doLock = true);
-	void resetPatrolPoints(boolean doLock = true);
-
-	int compareTo(Creature creature);
-
-	// setters and getters
-	void setLair(LairObject Lair);
-
-	void setCreatureGroup(CreatureGroup group);
-	
-	void setObjectFileName(string name);
-	
-	void setType(int tp);
-	
-	void setRespawnTimer(unsigned int seconds);
-	
-	void setLootCreated(boolean value);
-	
-	int getType();
-	
-	boolean isTrainer();
-	boolean isRecruiter();
-	boolean isMount();
-
-	string getName();
-
-	int getZoneIndex();
-
-	Zone getZone();
-	
-	unsigned long getNewItemID();
-	
-	unsigned int getRespawnTimer();
-	
-	LairObject getLair();
-	
-	boolean hasLootCreated();
+		item->sendTo(player);
+	}
 }

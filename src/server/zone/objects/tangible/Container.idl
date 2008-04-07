@@ -43,6 +43,7 @@ which carries forward this exception.
 */
 
 import "../scene/SceneObject";
+import "../player/Player";
 
 import "TangibleObject";
 
@@ -60,6 +61,8 @@ interface Container implements TangibleObject {
 	void removeObject(unsigned long oid);
 
 	int objectsSize();
+	
+	void openTo(Player player);
 	
 	boolean isEmpty();
 }

@@ -19,6 +19,8 @@ class SceneObject;
 
 class CreatureObject;
 
+class Creature;
+
 class TangibleObject;
 
 class PlayerObject;
@@ -122,7 +124,9 @@ public:
 
 	void kill();
 
-	void lootCorpse();
+	void lootCorpse(bool lootAll = false);
+
+	void lootObject(Creature* creature, SceneObject* object);
 
 	void addTradeItem(TangibleObject* item);
 
@@ -171,6 +175,8 @@ public:
 	void saveProfessions();
 
 	void loadProfessions();
+
+	void trainStartingProfession();
 
 	bool trainSkillBox(const string& name);
 
@@ -538,7 +544,9 @@ public:
 
 	void kill();
 
-	void lootCorpse();
+	void lootCorpse(bool lootAll);
+
+	void lootObject(Creature* creature, SceneObject* object);
 
 	void addTradeItem(TangibleObject* item);
 
@@ -587,6 +595,8 @@ public:
 	void saveProfessions();
 
 	void loadProfessions();
+
+	void trainStartingProfession();
 
 	bool trainSkillBox(const string& name);
 

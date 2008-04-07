@@ -49,42 +49,20 @@ which carries forward this exception.
 
 #include "Container.h"
 
+class Player;
+
 class ContainerImplementation : public ContainerServant {
 protected:
 	VectorMap<uint64, SceneObject*> items;
 	 
 public:
-	ContainerImplementation(uint64 oid) : ContainerServant(oid) {
-		objectCRC = 0x3969E83B;
+	ContainerImplementation(uint64 oid);
 		
-		items.setInsertPlan(SortedVector<VectorMapEntry<uint64, SceneObject*>*>::NO_DUPLICATE);
-		items.setNullValue(NULL);
-
-		stringstream loggingname;
-		loggingname << "Container = 0x" << oid;
-		setLoggingName(loggingname.str());
+	virtual ~ContainerImplementation();
 	
-		setLogging(false);
-		setGlobalLogging(true);
-	}
-		
-	virtual ~ContainerImplementation() {
-		for (int i = 0; i < items.size(); ++i) {
-			SceneObject* item = items.get(i);
-			
-			if (item->isTangible())
-				((TangibleObject*) item)->setContainer(NULL);
-			
-			item->finalize();
-		}
-		
-		items.removeAll();
-	}
+	void addObject(SceneObject* obj);
 	
-	void addObject(SceneObject* obj) {
-		uint64 oid = obj->getObjectID(); 
-		items.put(oid, obj);
-	}
+	void openTo(Player* player);
 
 	SceneObject* getObject(int index) {
 		return items.get(index);
@@ -94,23 +72,9 @@ public:
 		return items.get(oid);
 	}
 
-	void removeObject(int index) {
-		SceneObject* item = items.get(index);
-	
-		items.remove(index);
+	void removeObject(int index);
 
-		if (item->isTangible())
-			((TangibleObject*) item)->setContainer(NULL);
-	}
-
-	void removeObject(uint64 oid) {
-		SceneObject* item = items.get(oid);
-		
-		items.drop(oid);
-		
-		if (item != NULL && item->isTangible())
-			((TangibleObject*) item)->setContainer(NULL);
-	}
+	void removeObject(uint64 oid);
 
 	int objectsSize() {
 		return items.size();

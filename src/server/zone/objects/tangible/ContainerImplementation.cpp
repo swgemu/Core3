@@ -42,94 +42,64 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-import "CreatureObject";
-import "CreatureGroup";
+#include "ContainerImplementation.h"
 
-import "../../Zone";
+#include "TangibleObject.h"
+#include "../player/Player.h"
 
-import "../player/Player";
+#include "../../packets/scene/ClientOpenContainerMessage.h"
 
-import "../tangible/wearables/Armor";
+ContainerImplementation::ContainerImplementation(uint64 oid) : ContainerServant(oid) {
+	objectCRC = 0x3969E83B;
 
-import "../tangible/lair/LairObject";
+	items.setInsertPlan(SortedVector<VectorMapEntry<uint64, SceneObject*>*>::NO_DUPLICATE);
+	items.setNullValue(NULL);
 
-interface Creature implements CreatureObject {
-	Creature(unsigned long oid);
+	stringstream loggingname;
+	loggingname << "Container = 0x" << oid;
+	setLoggingName(loggingname.str());
 
-	void init();
-	
-	void unload();
+	setLogging(false);
+	setGlobalLogging(true);
+}
 
-	// spatial methods
-	void insertToZone(Zone zone);
-	void updateZone();
-	
-	//void update(unsigned int time);
-	
-	void removeFromZone(boolean doLock = true);
-	
-	void loadItems();
+ContainerImplementation::~ContainerImplementation() {
+	for (int i = 0; i < items.size(); ++i) {
+		SceneObject* item = items.get(i);
 
-	// combat methods	
-	boolean activate();
-	
-	boolean isActive();
-	
-	void removeFromQueue();
+		if (item->isTangible())
+			((TangibleObject*) item)->setContainer(NULL);
 
-	boolean doMovement();
+		item->finalize();
+	}
 
-	void doIncapacitate();
-	void doStandUp();
-	
-	//void agro(boolean all);
-	
-	void doAttack(CreatureObject target, int damage);
-	boolean attack(CreatureObject target);
+	items.removeAll();
+}
 
-	void activateRecovery();
-	boolean doRecovery();
-	void doStatesRecovery();
-	
-	void queueRespawn();
+void ContainerImplementation::addObject(SceneObject* obj) {
+	uint64 oid = obj->getObjectID(); 
+	items.put(oid, obj);
+}
 
-	// waypoint methods
-	
-	void addPatrolPoint(float x, float y, boolean doLock = true);
-	void resetPatrolPoints(boolean doLock = true);
+void ContainerImplementation::removeObject(int index) {
+	SceneObject* item = items.get(index);
 
-	int compareTo(Creature creature);
+	items.remove(index);
 
-	// setters and getters
-	void setLair(LairObject Lair);
+	if (item->isTangible())
+		((TangibleObject*) item)->setContainer(NULL);
+}
 
-	void setCreatureGroup(CreatureGroup group);
-	
-	void setObjectFileName(string name);
-	
-	void setType(int tp);
-	
-	void setRespawnTimer(unsigned int seconds);
-	
-	void setLootCreated(boolean value);
-	
-	int getType();
-	
-	boolean isTrainer();
-	boolean isRecruiter();
-	boolean isMount();
+void ContainerImplementation::removeObject(uint64 oid) {
+	SceneObject* item = items.get(oid);
 
-	string getName();
+	items.drop(oid);
 
-	int getZoneIndex();
+	if (item != NULL && item->isTangible())
+		((TangibleObject*) item)->setContainer(NULL);
+}
 
-	Zone getZone();
-	
-	unsigned long getNewItemID();
-	
-	unsigned int getRespawnTimer();
-	
-	LairObject getLair();
-	
-	boolean hasLootCreated();
+void ContainerImplementation::openTo(Player* player) {
+	ClientOpenContainerMessage* msg = new ClientOpenContainerMessage(_this);
+	player->sendMessage(msg);
 }

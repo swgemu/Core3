@@ -1505,7 +1505,7 @@ void PlayerImplementation::doRecovery() {
 		return;
 	} else if (lastCombatAction.miliDifference() > 15000) {
 		clearCombatState();
-	} else if (targetObject != NULL && !hasState(PEACE_STATE)
+	} else if (isInCombat() && targetObject != NULL && !hasState(PEACE_STATE)
 			&& (commandQueue.size() == 0)) {
 		queueAction(_this, getTargetID(), 0xA8FEF90A, ++actionCounter, "");
 	}
@@ -1715,7 +1715,7 @@ void PlayerImplementation::doPeace() {
 	//info("finished doPeace");
 }
 
-void PlayerImplementation::lootCorpse() {
+void PlayerImplementation::lootCorpse(bool lootAll) {
 	if (targetObject == NULL || !targetObject->isNonPlayerCreature())
 		return;
 	
@@ -1723,8 +1723,18 @@ void PlayerImplementation::lootCorpse() {
 	
 	if (!isIncapacitated() && !isDead() && isInRange(target, 20)) {
 		LootManager* lootManager = server->getLootManager();
-		lootManager->lootCorpse(_this, target);
+		
+		if (lootAll)
+			lootManager->lootCorpse(_this, target);
+		else
+			lootManager->showLoot(_this, target);
 	}
+}
+
+void PlayerImplementation::lootObject(Creature* creature, SceneObject* object) {
+	LootManager* lootManager = server->getLootManager();
+	
+	lootManager->lootObject(_this, creature, object->getObjectID());
 }
 
 void PlayerImplementation::calculateForceRegen() {

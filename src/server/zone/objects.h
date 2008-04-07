@@ -120,6 +120,8 @@ which carries forward this exception.
 #include "objects/tangible/attachment/AttachmentImplementation.h"
 #include "objects/tangible/powerup/Powerup.h"
 #include "objects/tangible/powerup/PowerupImplementation.h"
+#include "objects/tangible/inventory/CreatureInventory.h"
+#include "objects/tangible/inventory/CreatureInventoryImplementation.h"
 
 #include "objects/tangible/weapons/Weapon.h"
 #include "objects/tangible/weapons/WeaponImplementation.h"

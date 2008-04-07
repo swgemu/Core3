@@ -31,43 +31,15 @@ void LootManager::lootCorpse(Player* player, Creature* creature) {
 		
 		createLoot(creature);
 		
-		int credits = creature->getCashCredits();
-		
-		if (credits > 0) {	
-			creature->setCashCredits(0);
-
-			player->addCashCredits(credits);
-
-			stringstream creditText;
-			creditText << "You loot " << credits << " credits from corpse of " << creature->getCharacterName().c_str() << ".";
-
-			player->sendSystemMessage(creditText.str());
-		}
+		lootCredits(player, creature);
 		
 		Container* lootContainer = creature->getLootContainer();
 
 		if (lootContainer != NULL && lootContainer->objectsSize() > 0) {
 			for (int i = lootContainer->objectsSize() - 1; i >= 0; --i) {
 				TangibleObject* lootItem = (TangibleObject*) lootContainer->getObject(i);
-				
-				lootContainer->removeObject(i);
 
-				lootItem->setObjectID(player->getNewItemID());
-				player->addInventoryItem(lootItem);
-
-				lootItem->sendTo(player);
-
-				lootItem->setPersistent(false);
-				
-				if (player->getGroupObject()!=NULL) {
-					stringstream grouptxt;
-					grouptxt << player->getCharacterName().c_str() << " looted " << lootItem->getName().c_str() << "\\#ffffff from " << creature->getCharacterName().c_str();
-					
-					unicode utxt = unicode(grouptxt.str());
-					BaseMessage* packet = new ChatSystemMessage(utxt);
-
-					player->getGroupObject()->broadcastMessage(packet);
-				}
+				moveObject(lootItem, player, creature);
 			}
 			
 			player->sendSystemMessage("You have completely looted the corpse of all items.");
@@ -88,16 +60,133 @@ void LootManager::lootCorpse(Player* player, Creature* creature) {
 	}
 }
 
+void LootManager::moveObject(TangibleObject* object, Player* player, Creature* creature) {
+	// Pre: everything wlocked
+	SceneObjectDestroyMessage* msg = new SceneObjectDestroyMessage(object);
+	creature->broadcastMessage(msg);
+
+	Container* lootContainer = creature->getLootContainer();
+	lootContainer->removeObject(object->getObjectID());
+
+	object->setObjectID(player->getNewItemID());
+	player->addInventoryItem(object);
+
+	object->sendTo(player);
+
+	object->setPersistent(false);
+
+	if (player->getGroupObject() != NULL) {
+		stringstream grouptxt;
+		grouptxt << player->getCharacterName().c_str() << " looted " << object->getName().c_str() << "\\#ffffff from " << creature->getCharacterName().c_str();
+
+		unicode utxt = unicode(grouptxt.str());
+		BaseMessage* packet = new ChatSystemMessage(utxt);
+
+		player->getGroupObject()->broadcastMessage(packet);
+	}
+}
+
+void LootManager::lootCredits(Player* player, Creature* creature) {
+	// Pre: player && creature wlocked
+	
+	int credits = creature->getCashCredits();
+			
+	if (credits > 0) {	
+		creature->setCashCredits(0);
+
+		player->addCashCredits(credits);
+
+		stringstream creditText;
+		creditText << "You loot " << credits << " credits from corpse of " << creature->getCharacterName().c_str() << ".";
+
+		player->sendSystemMessage(creditText.str());
+	}
+}
+
+void LootManager::showLoot(Player* player, Creature* creature) {
+	try {
+		creature->wlock(player);
+		
+		if (!creature->isInQuadTree()) {
+			creature->unlock();
+			return;
+		}
+
+		if (!creature->isDead()) {
+			creature->unlock();
+			return;
+		}
+		
+		if (!creature->isLootOwner(player)) {
+			player->sendSystemMessage("You do not have permission to access this corpse.");
+			creature->unlock();
+			return;
+		}
+		
+		createLoot(creature);
+		
+		lootCredits(player, creature);
+		
+		Container* lootContainer = creature->getLootContainer();
+		lootContainer->sendTo(player);
+		
+		lootContainer->openTo(player);
+		
+		creature->unlock();
+	} catch (...) {
+		cout << "Unreported exception caugh in void LootManager::showLoot(Player* player, Creature* creature)";
+		creature->unlock();
+	}
+}
+
+void LootManager::lootObject(Player* player, Creature* creature, uint64 objectID) {
+	//Pre: player wlocked
+	
+	try {
+		creature->wlock(player);
+		
+		if (!creature->isLootOwner(player)) {
+			player->sendSystemMessage("You do not have permission to access this corpse.");
+			creature->unlock();
+			return;
+		}
+		
+		Container* lootContainer = creature->getLootContainer();
+		
+		if (lootContainer == NULL) {
+			creature->unlock();
+			return;
+		}
+		
+		SceneObject* lootItem = (SceneObject*) lootContainer->getObject(objectID);
+		
+		if (lootItem == NULL || !lootItem->isTangible()) {
+			creature->unlock();
+			return;
+		}
+		
+		moveObject((TangibleObject*) lootItem, player, creature);
+		
+		creature->unlock();
+	} catch (...) {
+		cout << "Unreported exception caugh in void LootManager::lootObject(Player* player, Creature* creature, uint64 objectID)";
+		creature->unlock();
+	}
+}
+
 void LootManager::createLoot(Creature* creature) {
 	//Pre: creature wlocked
 	//Post: creature wlocked
+	
+	if (creature->hasLootCreated())
+		return;
 	
 	Container* lootContainer = creature->getLootContainer();
 	
 	if (lootContainer == NULL)
 		return;
 	
-	if (lootContainer != NULL && lootContainer->objectsSize() > 0)
+	if (lootContainer->objectsSize() > 0)
 		return;
 		
 	int creatureLevel = creature->getLevel();
@@ -131,6 +220,8 @@ void LootManager::createLoot(Creature* creature) {
 	}
 	
 	creature->setCashCredits(creatureLevel * System::random(1234) / 25);
+	
+	creature->setLootCreated(true);
 }
 
 void LootManager::createWeaponLoot(Creature* creature, int creatureLevel) {

@@ -42,94 +42,19 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-import "CreatureObject";
-import "CreatureGroup";
+#ifndef CREATUREINVENTORYIMPLEMENTATION_H_
+#define CREATUREINVENTORYIMPLEMENTATION_H_
 
-import "../../Zone";
+#include "CreatureInventory.h"
 
-import "../player/Player";
+class CreatureInventoryImplementation : public CreatureInventoryServant {
+public:
+	CreatureInventoryImplementation(CreatureObject* creature);
+	
+	void sendTo(Player* player, bool doClose = true);
+	
+	void sendItemsTo(Player* player);
+};
 
-import "../tangible/wearables/Armor";
 
-import "../tangible/lair/LairObject";
-
-interface Creature implements CreatureObject {
-	Creature(unsigned long oid);
-
-	void init();
-	
-	void unload();
-
-	// spatial methods
-	void insertToZone(Zone zone);
-	void updateZone();
-	
-	//void update(unsigned int time);
-	
-	void removeFromZone(boolean doLock = true);
-	
-	void loadItems();
-
-	// combat methods	
-	boolean activate();
-	
-	boolean isActive();
-	
-	void removeFromQueue();
-
-	boolean doMovement();
-
-	void doIncapacitate();
-	void doStandUp();
-	
-	//void agro(boolean all);
-	
-	void doAttack(CreatureObject target, int damage);
-	boolean attack(CreatureObject target);
-
-	void activateRecovery();
-	boolean doRecovery();
-	void doStatesRecovery();
-	
-	void queueRespawn();
-
-	// waypoint methods
-	
-	void addPatrolPoint(float x, float y, boolean doLock = true);
-	void resetPatrolPoints(boolean doLock = true);
-
-	int compareTo(Creature creature);
-
-	// setters and getters
-	void setLair(LairObject Lair);
-
-	void setCreatureGroup(CreatureGroup group);
-	
-	void setObjectFileName(string name);
-	
-	void setType(int tp);
-	
-	void setRespawnTimer(unsigned int seconds);
-	
-	void setLootCreated(boolean value);
-	
-	int getType();
-	
-	boolean isTrainer();
-	boolean isRecruiter();
-	boolean isMount();
-
-	string getName();
-
-	int getZoneIndex();
-
-	Zone getZone();
-	
-	unsigned long getNewItemID();
-	
-	unsigned int getRespawnTimer();
-	
-	LairObject getLair();
-	
-	boolean hasLootCreated();
-}
+#endif /*CREATUREINVENTORYIMPLEMENTATION_H_*/

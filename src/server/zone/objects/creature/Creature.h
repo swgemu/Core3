@@ -84,6 +84,8 @@ public:
 
 	void setRespawnTimer(unsigned int seconds);
 
+	void setLootCreated(bool value);
+
 	int getType();
 
 	bool isTrainer();
@@ -103,6 +105,8 @@ public:
 	unsigned int getRespawnTimer();
 
 	LairObject* getLair();
+
+	bool hasLootCreated();
 
 protected:
 	string _return_getName;
@@ -171,6 +175,8 @@ public:
 
 	void setRespawnTimer(unsigned int seconds);
 
+	void setLootCreated(bool value);
+
 	int getType();
 
 	bool isTrainer();
@@ -190,6 +196,8 @@ public:
 	unsigned int getRespawnTimer();
 
 	LairObject* getLair();
+
+	bool hasLootCreated();
 
 protected:
 	string _param0_setObjectFileName__string_;

@@ -9,6 +9,8 @@
 
 class SceneObject;
 
+class Player;
+
 class TangibleObject;
 
 #include "TangibleObject.h"
@@ -36,6 +38,8 @@ public:
 
 	int objectsSize();
 
+	void openTo(Player* player);
+
 	bool isEmpty();
 
 protected:
@@ -61,6 +65,8 @@ public:
 	void removeObject(unsigned long long oid);
 
 	int objectsSize();
+
+	void openTo(Player* player);
 
 	bool isEmpty();
 

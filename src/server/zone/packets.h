@@ -98,6 +98,7 @@ which carries forward this exception.
 #include "packets/scene/ServerWeatherMessage.h"
 #include "packets/scene/GameSceneChangedMessage.h"
 #include "packets/scene/PlayClientEffectLocMessage.h"
+#include "packets/scene/ClientOpenContainerMessage.h"
 
 #include "packets/ship/ShipObjectMessage1.h"
 #include "packets/ship/ShipObjectMessage3.h"

@@ -57,6 +57,7 @@ which carries forward this exception.
 #include "../../managers/radial/RadialManager.h"
 #include "../../managers/group/GroupManager.h"
 #include "../../managers/resource/ResourceManager.h"
+#include "../../managers/loot/LootManager.h"
 
 #include "../../managers/combat/CombatManager.h"
 #include "../../../chat/ChatManager.h"
@@ -349,9 +350,10 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player, Message* 
 		target = pack->parseLong();
 		player->changeWeapon(target);
  		break;
-	case 0x82f75977: // equip, unequip, change clothes.  unequip weapon, unequip armor.
-		target = pack->parseLong();
-		player->changeCloth(target);
+	case 0x82f75977: // transferitemmisc
+		/*target = pack->parseLong();
+		player->changeCloth(target);*/
+		parseTransferItemMisc(player, pack);
 		break;
 	case 0x18726ca1: // equip, change armor
 		target = pack->parseLong();
@@ -626,7 +628,12 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player, Message* 
 	case (0xD61FF415): // Create Prototype
 		//parseCreatePrototype(player, pack);
 		break;
-		
+	case (0xEF3CBEDB): //loot
+		player->lootCorpse(false);
+		break;
+	case (0x3CD5C98D): // lootall
+		player->lootCorpse();
+		break;
 	default:
 		target = pack->parseLong();
 		
@@ -890,17 +897,31 @@ void ObjectControllerMessage::parseGetAttributes(Player* player, Message* pack) 
 			if (object == NULL) {
 				SceneObject* target = player->getTarget();
 				
-				if (target != NULL && target != player && target->isPlayer()) {
-					Player* targetPlayer = (Player*) target;
+				if (target != NULL && target != player) {
+					if (target->isPlayer()) {
+						Player* targetPlayer = (Player*) target;
 					
-					try {
-						targetPlayer->wlock(player);
+						try {
+							targetPlayer->wlock(player);
 
-						object = targetPlayer->getPlayerItem(objid);
+							object = targetPlayer->getPlayerItem(objid);
 
-						targetPlayer->unlock();
-					} catch (...) {
-						targetPlayer->unlock();
+							targetPlayer->unlock();
+						} catch (...) {
+							targetPlayer->unlock();
+						}
+					} else if (target->isNonPlayerCreature()) {
+						Creature* creature = (Creature*) target;
+						
+						try {
+							creature->wlock(player);
+							
+							object = creature->getLootItem(objid);
+							
+							creature->unlock();
+						} catch (...) {
+							creature->unlock();
+						}
 					}
 				}
 			}
@@ -1802,4 +1823,38 @@ void ObjectControllerMessage::parseCreatePrototype(Player* player, Message* pack
 	string test2 = test.c_str();
 	
 	player->createPrototype(test2);
+}
+
+void ObjectControllerMessage::parsePickup(Player* player, Message* pack) {
+	//cout << pack->toString() << "\n";
+}
+
+void ObjectControllerMessage::parseTransferItemMisc(Player* player, Message* pack) {
+	uint64 target = pack->parseLong();
+	
+	SceneObject* object = player->getPlayerItem(target);
+	
+	if (object != NULL) {
+		player->changeCloth(target);
+		return;
+	}
+	
+	SceneObject* targetObject = player->getTarget();
+	
+	if (targetObject != NULL && targetObject != player && targetObject->isNonPlayerCreature()) {
+		Creature* creature = (Creature*) targetObject;
+
+		try {
+			creature->wlock(player);
+
+			object = creature->getLootItem(target);
+
+			creature->unlock();
+		} catch (...) {
+			creature->unlock();
+		}
+		
+		if (object != NULL)
+			player->lootObject(creature, object);
+	}
 }

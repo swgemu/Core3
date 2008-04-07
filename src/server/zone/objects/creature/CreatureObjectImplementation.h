@@ -77,6 +77,7 @@ class DizzyFallDownEvent;
 class MountCreature;
 class BuildingObject;
 class CreatureObjectServant;
+class CreatureInventory;
 
 class CreatureObjectImplementation : public CreatureObjectServant {
 protected:
@@ -101,7 +102,7 @@ protected:
 
 	//creature objects
 	Inventory* inventory;
-	Container* lootContainer;
+	CreatureInventory* lootContainer;
 	HairObject* hairObj;
 	
 	Time lastCombatAction;
@@ -1621,7 +1622,7 @@ public:
 	}
 	
 	inline Container* getLootContainer() {
-		return lootContainer;
+		return (Container*)lootContainer;
 	}
 
 	// entertainer

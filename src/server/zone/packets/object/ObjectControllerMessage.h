@@ -147,6 +147,10 @@ public:
 	static void parseNextCraftingStage(Player* player, Message* packet);
 	static void parseCraftCustomization(Player* player, Message* packet);
 	static void parseCreatePrototype(Player* player, Message* packet);
+
+	static void parsePickup(Player* player, Message* pack);
+	
+	static void parseTransferItemMisc(Player* player, Message* pack);
 };
 
 #endif /*OBJECTCONTROLLERMESSAGE_H_*/

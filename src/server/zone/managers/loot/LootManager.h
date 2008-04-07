@@ -45,20 +45,31 @@ which carries forward this exception.
 #ifndef LOOTMANAGER_H_
 #define LOOTMANAGER_H_
 
+#include "engine/engine.h"
+
 class Player;
 class Creature;
 class Container;
 class ZoneProcessServerImplementation;
+class TangibleObject;
 
 class ChatSystemMessage;
 
 class LootManager {
 	ZoneProcessServerImplementation* processServer;
 	
+private:
+	void moveObject(TangibleObject* object, Player* player, Creature* creature);
+	void lootCredits(Player* player, Creature* creature);
+	
 public:
 	LootManager(ZoneProcessServerImplementation* procServer);
 	
 	void lootCorpse(Player* player, Creature* creature);
+	
+	void showLoot(Player* player, Creature* creature);
+	
+	void lootObject(Player* player, Creature* creature, uint64 objectID);
 	
 	void createLoot(Creature* creature);
 	

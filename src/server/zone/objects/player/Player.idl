@@ -51,6 +51,7 @@ import "../../Zone";
 import "../scene/SceneObject";
 
 import "../creature/CreatureObject";
+import "../creature/Creature";
 
 import "../tangible/TangibleObject";
 
@@ -136,7 +137,8 @@ interface Player implements CreatureObject {
 	
 	void kill();
 	
-	void lootCorpse();
+	void lootCorpse(boolean lootAll = false);
+	void lootObject(Creature creature, SceneObject object);
 	
 	// trade
 	void addTradeItem(TangibleObject item);

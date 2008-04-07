@@ -205,7 +205,7 @@ void RadialManager::handleSelection(int radialID, Player* player, SceneObject* o
 		player->lootCorpse(); 
 		break; 
 	case 36:  // LOOT_ALL 
-		player->lootCorpse(); 
+		player->lootCorpse(true); 
 		break; 
 	case 45: // Open vendor
 		sendRadialResponseForBazaar(obj->getObjectID(), player);

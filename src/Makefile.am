@@ -117,6 +117,7 @@ core3_IDLS =	server/zone/Zone.cpp \
 		server/zone/objects/tangible/powerup/Powerup.cpp \
 		server/zone/objects/tangible/holocron/Holocron.cpp \
 		server/zone/objects/tangible/firework/Firework.cpp \
+		server/zone/objects/tangible/inventory/CreatureInventory.cpp \
 		server/zone/objects/intangible/IntangibleObject.cpp \
 		server/zone/objects/static/StaticObject.cpp \
 		server/zone/objects/static/firework/FireworkWorld.cpp \
@@ -168,6 +169,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/guild/GuildImplementation.cpp \
 		server/zone/objects/group/GroupObjectImplementation.cpp \
 		server/zone/objects/intangible/IntangibleObjectImplementation.cpp \
+		server/zone/objects/tangible/ContainerImplementation.cpp \
 		server/zone/objects/tangible/wearables/ArmorImplementation.cpp \
 		server/zone/objects/tangible/weapons/WeaponImplementation.cpp \
 		server/zone/objects/tangible/TangibleObjectImplementation.cpp \
@@ -180,6 +182,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/powerup/PowerupImplementation.cpp \
 		server/zone/objects/tangible/ticket/TicketImplementation.cpp \
 		server/zone/objects/tangible/ticketcollector/TicketCollectorImplementation.cpp \
+		server/zone/objects/tangible/inventory/CreatureInventoryImplementation.cpp \
 		server/zone/objects/static/StaticObjectImplementation.cpp \
 		server/zone/objects/player/PlayerImplementation.cpp \
 		server/zone/objects/player/PlayerObjectImplementation.cpp \

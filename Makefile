@@ -105,6 +105,7 @@ IDL_SOURCES = server/zone/Zone.idl \
 				server/zone/objects/tangible/powerup/Powerup.idl \
 				server/zone/objects/tangible/holocron/Holocron.idl \
 				server/zone/objects/tangible/firework/Firework.idl \
+				server/zone/objects/tangible/inventory/CreatureInventory.idl \
 				server/zone/objects/static/firework/FireworkWorld.idl \
 				server/zone/objects/static/StaticObject.idl \
 				server/zone/objects/intangible/IntangibleObject.idl \

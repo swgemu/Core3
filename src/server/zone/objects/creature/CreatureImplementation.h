@@ -90,6 +90,8 @@ class CreatureImplementation : public CreatureServant, public Event {
 	
 	uint32 respawnTimer;
 	
+	bool lootCreated;
+	
 	// Lair
 	LairObject* lair;
 	
@@ -115,6 +117,8 @@ public:
 	
 	void reload();
 	void unload();
+	
+	void clearLootItems();
 	
 	void generateAttributes(SceneObject* obj);
 
@@ -213,6 +217,10 @@ public:
 		lair = Lair;
 	}
 	
+	inline void setLootCreated(bool value) {
+		lootCreated = value;
+	}
+	
 	inline int getType() {
 		return type;
 	}
@@ -271,6 +279,10 @@ public:
 	
 	inline LairObject* getLair() {
 		return lair;
+	}
+	
+	inline bool hasLootCreated() {
+		return lootCreated == true;
 	}
 	
 	friend class CreatureManagerImplementation;

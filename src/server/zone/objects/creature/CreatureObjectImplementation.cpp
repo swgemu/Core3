@@ -62,6 +62,7 @@ which carries forward this exception.
 #include "../tangible/weapons/Weapon.h"
 #include "../tangible/wearables/Armor.h"
 #include "../tangible/instrument/Instrument.h"
+#include "../tangible/inventory/CreatureInventory.h"
 
 #include "../tangible/appearance/HairObject.h"
 #include "../tangible/appearance/HairObjectImplementation.h"
@@ -1960,7 +1961,10 @@ void CreatureObjectImplementation::addLootItem(TangibleObject* item) {
 }
 
 TangibleObject* CreatureObjectImplementation::getLootItem(uint64 oid) {
-	return (TangibleObject*) lootContainer->getObject(oid);
+	if (lootContainer != NULL)
+		return (TangibleObject*) lootContainer->getObject(oid);
+	else
+		return NULL;
 }
 
 void CreatureObjectImplementation::removeLootItem(SceneObject* item) {

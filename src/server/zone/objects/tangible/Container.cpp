@@ -4,6 +4,8 @@
 
 #include "../scene/SceneObject.h"
 
+#include "../player/Player.h"
+
 #include "TangibleObject.h"
 
 #include "Container.h"
@@ -108,12 +110,25 @@ int Container::objectsSize() {
 		return ((ContainerImplementation*) _impl)->objectsSize();
 }
 
-bool Container::isEmpty() {
+void Container::openTo(Player* player) {
 	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
 		DistributedMethod method(this, 12);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		((ContainerImplementation*) _impl)->openTo(player);
+}
+
+bool Container::isEmpty() {
+	if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		DistributedMethod method(this, 13);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -150,6 +165,9 @@ Packet* ContainerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertSignedInt(objectsSize());
 		break;
 	case 12:
+		openTo((Player*) inv->getObjectParameter());
+		break;
+	case 13:
 		resp->insertBoolean(isEmpty());
 		break;
 	default:
@@ -181,6 +199,10 @@ void ContainerAdapter::removeObject(unsigned long long oid) {
 
 int ContainerAdapter::objectsSize() {
 	return ((ContainerImplementation*) impl)->objectsSize();
+}
+
+void ContainerAdapter::openTo(Player* player) {
+	return ((ContainerImplementation*) impl)->openTo(player);
 }
 
 bool ContainerAdapter::isEmpty() {

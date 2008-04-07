@@ -366,12 +366,25 @@ void Creature::setRespawnTimer(unsigned int seconds) {
 		((CreatureImplementation*) _impl)->setRespawnTimer(seconds);
 }
 
-int Creature::getType() {
+void Creature::setLootCreated(bool value) {
 	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
 		DistributedMethod method(this, 32);
+		method.addBooleanParameter(value);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureImplementation*) _impl)->setLootCreated(value);
+}
+
+int Creature::getType() {
+	if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		DistributedMethod method(this, 33);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -383,7 +396,7 @@ bool Creature::isTrainer() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		DistributedMethod method(this, 33);
+		DistributedMethod method(this, 34);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -395,7 +408,7 @@ bool Creature::isRecruiter() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		DistributedMethod method(this, 34);
+		DistributedMethod method(this, 35);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -407,7 +420,7 @@ bool Creature::isMount() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		DistributedMethod method(this, 35);
+		DistributedMethod method(this, 36);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -419,7 +432,7 @@ string& Creature::getName() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		DistributedMethod method(this, 36);
+		DistributedMethod method(this, 37);
 
 		method.executeWithAsciiReturn(_return_getName);
 		return _return_getName;
@@ -432,7 +445,7 @@ int Creature::getZoneIndex() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		DistributedMethod method(this, 37);
+		DistributedMethod method(this, 38);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -444,7 +457,7 @@ Zone* Creature::getZone() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		DistributedMethod method(this, 38);
+		DistributedMethod method(this, 39);
 
 		return (Zone*) method.executeWithObjectReturn();
 	} else
@@ -456,7 +469,7 @@ unsigned long long Creature::getNewItemID() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		DistributedMethod method(this, 39);
+		DistributedMethod method(this, 40);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -468,7 +481,7 @@ unsigned int Creature::getRespawnTimer() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		DistributedMethod method(this, 40);
+		DistributedMethod method(this, 41);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -480,11 +493,23 @@ LairObject* Creature::getLair() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		DistributedMethod method(this, 41);
+		DistributedMethod method(this, 42);
 
 		return (LairObject*) method.executeWithObjectReturn();
 	} else
 		return ((CreatureImplementation*) _impl)->getLair();
+}
+
+bool Creature::hasLootCreated() {
+	if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		DistributedMethod method(this, 43);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((CreatureImplementation*) _impl)->hasLootCreated();
 }
 
 /*
@@ -577,34 +602,40 @@ Packet* CreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		setRespawnTimer(inv->getUnsignedIntParameter());
 		break;
 	case 32:
-		resp->insertSignedInt(getType());
+		setLootCreated(inv->getBooleanParameter());
 		break;
 	case 33:
-		resp->insertBoolean(isTrainer());
+		resp->insertSignedInt(getType());
 		break;
 	case 34:
-		resp->insertBoolean(isRecruiter());
+		resp->insertBoolean(isTrainer());
 		break;
 	case 35:
-		resp->insertBoolean(isMount());
+		resp->insertBoolean(isRecruiter());
 		break;
 	case 36:
-		resp->insertAscii(getName());
+		resp->insertBoolean(isMount());
 		break;
 	case 37:
-		resp->insertSignedInt(getZoneIndex());
+		resp->insertAscii(getName());
 		break;
 	case 38:
-		resp->insertLong(getZone()->_getObjectID());
+		resp->insertSignedInt(getZoneIndex());
 		break;
 	case 39:
-		resp->insertLong(getNewItemID());
+		resp->insertLong(getZone()->_getObjectID());
 		break;
 	case 40:
-		resp->insertInt(getRespawnTimer());
+		resp->insertLong(getNewItemID());
 		break;
 	case 41:
+		resp->insertInt(getRespawnTimer());
+		break;
+	case 42:
 		resp->insertLong(getLair()->_getObjectID());
+		break;
+	case 43:
+		resp->insertBoolean(hasLootCreated());
 		break;
 	default:
 		return NULL;
@@ -717,6 +748,10 @@ void CreatureAdapter::setRespawnTimer(unsigned int seconds) {
 	return ((CreatureImplementation*) impl)->setRespawnTimer(seconds);
 }
 
+void CreatureAdapter::setLootCreated(bool value) {
+	return ((CreatureImplementation*) impl)->setLootCreated(value);
+}
+
 int CreatureAdapter::getType() {
 	return ((CreatureImplementation*) impl)->getType();
 }
@@ -755,6 +790,10 @@ unsigned int CreatureAdapter::getRespawnTimer() {
 
 LairObject* CreatureAdapter::getLair() {
 	return ((CreatureImplementation*) impl)->getLair();
+}
+
+bool CreatureAdapter::hasLootCreated() {
+	return ((CreatureImplementation*) impl)->hasLootCreated();
 }
 
 /*

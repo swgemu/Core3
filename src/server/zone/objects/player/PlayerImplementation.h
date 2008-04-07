@@ -357,7 +357,8 @@ public:
 	
 	void doPeace();
 
-	void lootCorpse();
+	void lootCorpse(bool lootAll = false);
+	void lootObject(Creature* creature, SceneObject* object);
 	
 	void kill();
 
