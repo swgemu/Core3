@@ -94,12 +94,12 @@ protected:
 	ItemAttributes* itemAttributes;
 
 public:
-	static const int HAIR = 0xF0000001;
-	static const int TERMINAL = 0xF0000002;
-	static const int TICKETCOLLECTOR = 0xF0000003;
-	static const int LAIR = 0xF0000004;
-	static const int HOLOCRON = 0xF0000005;
-	static const int SHIPCOMPONENT = 0xF0000006;
+	static const int HAIR = 0x30000001;
+	static const int TERMINAL = 0x30000002;
+	static const int TICKETCOLLECTOR = 0x30000003;
+	static const int LAIR = 0x30000004;
+	static const int HOLOCRON = 0x30000005;
+	static const int SHIPCOMPONENT = 0x30000006;
 	
 	static const int ARMOR = 0x100;
 	static const int BODYARMOR = 0x101;

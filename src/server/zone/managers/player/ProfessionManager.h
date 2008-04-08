@@ -86,6 +86,8 @@ public:
 	void loadProfessions(PlayerImplementation* player);
 	void saveProfessions(PlayerImplementation* player);
 	
+	void loadDefaultSkills(PlayerImplementation* player);
+	
 	bool trainSkillBox(SkillBox* skillBox, PlayerImplementation* player, bool updateClient = true);
 	bool trainSkillBox(const string& skillBox, PlayerImplementation* player, bool updateClient = true);
 	void surrenderSkillBox(SkillBox* skillBox, PlayerImplementation* player, bool updateClient = true);

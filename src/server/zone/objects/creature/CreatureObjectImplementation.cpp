@@ -2818,10 +2818,11 @@ void CreatureObjectImplementation::stopListen(uint64 entid, bool doSendPackets, 
 
 void CreatureObjectImplementation::doFlourish(const string& modifier)
 {	
-	if(isPlayer()) {
+	if (isPlayer()) {
 		PlayerImplementation* player = (PlayerImplementation*) this;
 
 		string skillBox = "social_entertainer_novice";
+		
 		if (!player->getSkillBoxesSize() || !player->hasSkillBox(skillBox)) {
 			// TODO: sendSystemMessage("cmd_err", "ability_prose", creature);
 			sendSystemMessage("You do not have sufficient abilities to Flourish");
@@ -2832,19 +2833,17 @@ void CreatureObjectImplementation::doFlourish(const string& modifier)
 	
 	int fid = atoi(modifier.c_str());
 
-    if(modifier == "") {
+    if (modifier == "") {
     	sendSystemMessage("performance", "flourish_format");
     	return;
     }
     	
-    	fid = 1; // default a blank flourish to #1
+    fid = 1; // default a blank flourish to #1
     
-    if(fid < 1 || fid > 8) {
+    if (fid < 1 || fid > 8) {
     	sendSystemMessage("performance", "flourish_not_valid");
     	sendSystemMessage("performance", "flourish_format");
     }
-    
-	
     
 	if (!isDancing() && !isPlayingMusic()) {
 		sendSystemMessage("performance", "flourish_not_performing");
@@ -2867,75 +2866,101 @@ void CreatureObjectImplementation::doFlourish(const string& modifier)
 	    	Flourish* flourish = new Flourish(_this, fid);
 			broadcastMessage(flourish);
 	    }
+		
 		sendSystemMessage("performance", "flourish_perform");
-
 	} else {
 		sendSystemMessage("performance", "flourish_too_tired");
 	}	
 }
 
-void CreatureObjectImplementation::doHealBattleFatigue()
-{
-	//if(!isPlayer()) return;
+void CreatureObjectImplementation::doHealBattleFatigue() {
+	/*if (!isPlayer()) 
+		return;*/
 	
-	int bf_ability = 0;
-	SortedVector<CreatureObject*> *patrons = NULL;
-
+	int bfAbility = 0;
 	
-	//PlayerImplementation* player = (PlayerImplementation*) this;
+	SortedVector<CreatureObject*>* patrons = NULL;
 		
-	if(isDancing()) {
-		bf_ability = getSkillMod("healing_dance_ability");
+	if (isDancing()) {
+		bfAbility = getSkillMod("healing_dance_ability");
 		patrons = &watchers;
-	} else if(isPlayingMusic()) {
-		bf_ability = getSkillMod("healing_music_ability");
+	} else if (isPlayingMusic()) {
+		bfAbility = getSkillMod("healing_music_ability");
 		patrons = &listeners;
 	}
-	if(patrons && patrons->size())
-	for (int i = 0; i < patrons->size(); ++i) {
-		CreatureObject* obj = patrons->get(i);
-		
-		
-		// 10 minutes * 60 seconds  = 600 / 10 second increments = 60 total ticks to heal
-		// 1k BF / 60 = 17 bf/tick for master ent @ 100 skill
-		// skill ability / 100 = modifier from 17
-		//float rate = 10 * 60 / 10
-		int bf_heal = -1 * (int)(17.0 * (bf_ability / 100.0));
-		cout << " doing doHealBattleFatigue on " << obj << "(0x" << obj->getObjectID() << ") healing rate: " << dec << bf_heal;
-		obj->changeShockWounds(bf_heal);
-	}
-	else
-		cout << "no patrons";
 	
+	if (patrons && patrons->size()) {
+		for (int i = 0; i < patrons->size(); ++i) {
+			CreatureObject* obj = patrons->get(i);
+		
+			// 10 minutes * 60 seconds  = 600 / 10 second increments = 60 total ticks to heal
+			// 1k BF / 60 = 17 bf/tick for master ent @ 100 skill
+			// skill ability / 100 = modifier from 17
+			//float rate = 10 * 60 / 10
+			int bfHeal = -1 * (int)(17.0 * (bfAbility / 100.0));
+			
+			//cout << " doing doHealBattleFatigue on " << obj << "(0x" << obj->getObjectID() << ") healing rate: " << dec << bfHeal;
+			
+			try {
+				if (obj != _this)
+					obj->wlock(_this);
+			
+				obj->changeShockWounds(bfHeal);
+				
+				if (obj != _this)
+					obj->unlock();			
+			} catch (...) {
+				if (obj != _this)
+					obj->unlock();
+				
+				error("Unreported exception in CreatureObjectImplementation::doHealBattleFatigue()");
+			}
+		}
+	} /*else
+		cout << "no patrons";*/
 }
 
-void CreatureObjectImplementation::doHealMindWounds()
-{
-	//if(!isPlayer()) return;
+void CreatureObjectImplementation::doHealMindWounds() {
+	/*if (!isPlayer()) 
+		return;*/
 	
-	int wound_ability = 0;
-	SortedVector<CreatureObject*> *patrons = NULL;
+	int woundAbility = 0;
+	
+	SortedVector<CreatureObject*>* patrons = NULL;
 		
-	if(isDancing()) {
-		wound_ability = getSkillMod("healing_dance_wound");
+	if (isDancing()) {
+		woundAbility = getSkillMod("healing_dance_wound");
 		patrons = &watchers;
-	} else if(isPlayingMusic()) {
-		wound_ability = getSkillMod("healing_music_wound");
+	} else if (isPlayingMusic()) {
+		woundAbility = getSkillMod("healing_music_wound");
 		patrons = &listeners;
 	}
-	if(patrons && patrons->size())
-	for (int i = 0; i < patrons->size(); ++i) {
-		CreatureObject* obj = patrons->get(i);
-		
-		
-		// 50 as a base rate per 10 sec
-		int wound_heal = -1 * (int)(50.0 * (wound_ability / 100.0));
-		cout << " doing doHealMindWounds on " << obj << "(0x" << obj->getObjectID() << ") healing rate: " << dec << wound_heal;
-		obj->changeMindWoundsBar(wound_heal, false);
-	}
-	else
-		cout << "no patrons";
 	
+	if (patrons && patrons->size()) {
+		for (int i = 0; i < patrons->size(); ++i) {
+			CreatureObject* obj = patrons->get(i);
+
+			// 50 as a base rate per 10 sec
+			int woundHeal = -1 * (int)(50.0 * (woundAbility / 100.0));
+			//cout << " doing doHealMindWounds on " << obj << "(0x" << obj->getObjectID() << ") healing rate: " << dec << woundHeal;
+			
+			try {
+				if (obj != _this)
+					obj->wlock(_this);
+				
+				obj->changeMindWoundsBar(woundHeal, false);
+				
+				if (obj != _this)
+					obj->unlock();
+			} catch (...) {
+				if (obj != _this)
+					obj->unlock();
+				
+				error("Unreported exception caught in CreatureObjectImplementation::doHealMindWounds()");
+			}
+		}
+	} /*else
+		cout << "no patrons";*/
 }
 
 void CreatureObjectImplementation::sendEntertainingUpdate(uint32 entval, const string& performance, uint32 perfcntr, int instrid) {

@@ -662,7 +662,11 @@ void PlayerImplementation::createBaseStats() {
 
 void PlayerImplementation::trainStartingProfession() {
 	trainSkillBox(startingProfession + "_novice");
+	
+	ProfessionManager* professionManager = server->getProfessionManager();
+	professionManager->loadDefaultSkills(this);
 }
+
 void PlayerImplementation::decayInventory() {
 	if (inventory != NULL)
 		for (int i = 0; i < inventory->objectsSize(); i++) {

@@ -57,8 +57,13 @@ public:
 
 	bool activate() {
 		try {
-			if(!player->isDancing() && !player->isPlayingMusic())
+			player->wlock();
+			
+			if(!player->isDancing() && !player->isPlayingMusic()) {
+				player->clearEntertainerEvent();
+				player->unlock();
 				return true; // don't tick action if they aren't doing anything
+			}
 
 			// Heal BF
 			player->doHealBattleFatigue();
@@ -93,7 +98,10 @@ public:
 			}
 			
 			player->setEntertainerEvent(); // Renew 10 seconds tick
+			
+			player->unlock();
 		} catch (...) {
+			player->unlock();
 			cout << "Unhandled EntertainerEvent exception.\n";
 		}
 		

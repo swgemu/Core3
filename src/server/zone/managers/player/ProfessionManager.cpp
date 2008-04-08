@@ -128,9 +128,13 @@ void ProfessionManager::loadProfessions(PlayerImplementation* player) {
 	
 	delete result;
 	
+	loadDefaultSkills(player);
+}
+
+void ProfessionManager::loadDefaultSkills(PlayerImplementation* player) {
 	// Load default skills..
 	Skill* defaultAttackSkill = skillManager->getSkill("attack");
-	
+
 	if (defaultAttackSkill != NULL)
 		player->creatureSkills.put(defaultAttackSkill->getNameCRC(), defaultAttackSkill);
 }

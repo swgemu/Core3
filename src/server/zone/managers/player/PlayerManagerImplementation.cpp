@@ -153,7 +153,6 @@ bool PlayerManagerImplementation::create(Player* player, uint32 sessionkey) {
 	player->trainStartingProfession();
 	player->createBaseStats();
 	
-
 	try {
 		stringstream query;
     	query << "INSERT INTO `characters` "

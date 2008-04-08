@@ -652,6 +652,10 @@ public:
 
 	void doFlourish(const string& modifier);
 
+	void doHealBattleFatigue();
+
+	void doHealMindWounds();
+
 	void activateRecovery();
 
 	int getCreatureSkillsSize();
@@ -1325,6 +1329,10 @@ public:
 	void removeWatcher(CreatureObject* creature);
 
 	void doFlourish(const string& modifier);
+
+	void doHealBattleFatigue();
+
+	void doHealMindWounds();
 
 	void activateRecovery();
 

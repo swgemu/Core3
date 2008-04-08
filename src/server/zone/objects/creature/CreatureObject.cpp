@@ -3915,12 +3915,36 @@ void CreatureObject::doFlourish(const string& modifier) {
 		((CreatureObjectImplementation*) _impl)->doFlourish(modifier);
 }
 
-void CreatureObject::activateRecovery() {
+void CreatureObject::doHealBattleFatigue() {
 	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
 		DistributedMethod method(this, 310);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->doHealBattleFatigue();
+}
+
+void CreatureObject::doHealMindWounds() {
+	if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		DistributedMethod method(this, 311);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->doHealMindWounds();
+}
+
+void CreatureObject::activateRecovery() {
+	if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		DistributedMethod method(this, 312);
 
 		method.executeWithVoidReturn();
 	} else
@@ -3932,7 +3956,7 @@ int CreatureObject::getCreatureSkillsSize() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		DistributedMethod method(this, 311);
+		DistributedMethod method(this, 313);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -3944,7 +3968,7 @@ string& CreatureObject::getSkill(int idx) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		DistributedMethod method(this, 312);
+		DistributedMethod method(this, 314);
 		method.addSignedIntParameter(idx);
 
 		method.executeWithAsciiReturn(_return_getSkill);
@@ -3958,7 +3982,7 @@ bool CreatureObject::hasSkill(unsigned int skillCRC) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		DistributedMethod method(this, 313);
+		DistributedMethod method(this, 315);
 		method.addUnsignedIntParameter(skillCRC);
 
 		return method.executeWithBooleanReturn();
@@ -3971,7 +3995,7 @@ void CreatureObject::mountCreature(MountCreature* mnt, bool lockMount) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		DistributedMethod method(this, 314);
+		DistributedMethod method(this, 316);
 		method.addObjectParameter(mnt);
 		method.addBooleanParameter(lockMount);
 
@@ -3985,7 +4009,7 @@ void CreatureObject::dismount(bool lockMount, bool ignoreCooldown) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		DistributedMethod method(this, 315);
+		DistributedMethod method(this, 317);
 		method.addBooleanParameter(lockMount);
 		method.addBooleanParameter(ignoreCooldown);
 
@@ -3999,7 +4023,7 @@ void CreatureObject::addCashCredits(unsigned int credits) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		DistributedMethod method(this, 316);
+		DistributedMethod method(this, 318);
 		method.addUnsignedIntParameter(credits);
 
 		method.executeWithVoidReturn();
@@ -4012,7 +4036,7 @@ void CreatureObject::addBankCredits(unsigned int credits) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		DistributedMethod method(this, 317);
+		DistributedMethod method(this, 319);
 		method.addUnsignedIntParameter(credits);
 
 		method.executeWithVoidReturn();
@@ -4025,7 +4049,7 @@ void CreatureObject::updateCashCredits(unsigned int credits) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		DistributedMethod method(this, 318);
+		DistributedMethod method(this, 320);
 		method.addUnsignedIntParameter(credits);
 
 		method.executeWithVoidReturn();
@@ -4038,7 +4062,7 @@ void CreatureObject::updateBankCredits(unsigned int credits) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		DistributedMethod method(this, 319);
+		DistributedMethod method(this, 321);
 		method.addUnsignedIntParameter(credits);
 
 		method.executeWithVoidReturn();
@@ -4051,7 +4075,7 @@ void CreatureObject::subtractCashCredits(unsigned int credits) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		DistributedMethod method(this, 320);
+		DistributedMethod method(this, 322);
 		method.addUnsignedIntParameter(credits);
 
 		method.executeWithVoidReturn();
@@ -4064,7 +4088,7 @@ void CreatureObject::subtractBankCredits(unsigned int credits) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		DistributedMethod method(this, 321);
+		DistributedMethod method(this, 323);
 		method.addUnsignedIntParameter(credits);
 
 		method.executeWithVoidReturn();
@@ -4077,7 +4101,7 @@ void CreatureObject::setCashCredits(int credits) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		DistributedMethod method(this, 322);
+		DistributedMethod method(this, 324);
 		method.addSignedIntParameter(credits);
 
 		method.executeWithVoidReturn();
@@ -4090,7 +4114,7 @@ void CreatureObject::setBankCredits(int credits) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		DistributedMethod method(this, 323);
+		DistributedMethod method(this, 325);
 		method.addSignedIntParameter(credits);
 
 		method.executeWithVoidReturn();
@@ -4103,7 +4127,7 @@ void CreatureObject::applyBuff(const string& type, int value, float duration) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		DistributedMethod method(this, 324);
+		DistributedMethod method(this, 326);
 		method.addAsciiParameter(type);
 		method.addSignedIntParameter(value);
 		method.addFloatParameter(duration);
@@ -4118,7 +4142,7 @@ bool CreatureObject::verifyCashCredits(unsigned int creditsToRemove) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		DistributedMethod method(this, 325);
+		DistributedMethod method(this, 327);
 		method.addUnsignedIntParameter(creditsToRemove);
 
 		return method.executeWithBooleanReturn();
@@ -4131,7 +4155,7 @@ bool CreatureObject::verifyBankCredits(unsigned int creditsToRemove) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		DistributedMethod method(this, 326);
+		DistributedMethod method(this, 328);
 		method.addUnsignedIntParameter(creditsToRemove);
 
 		return method.executeWithBooleanReturn();
@@ -5063,54 +5087,60 @@ Packet* CreatureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		doFlourish(inv->getAsciiParameter(_param0_doFlourish__string_));
 		break;
 	case 310:
-		activateRecovery();
+		doHealBattleFatigue();
 		break;
 	case 311:
-		resp->insertSignedInt(getCreatureSkillsSize());
+		doHealMindWounds();
 		break;
 	case 312:
-		resp->insertAscii(getSkill(inv->getSignedIntParameter()));
+		activateRecovery();
 		break;
 	case 313:
-		resp->insertBoolean(hasSkill(inv->getUnsignedIntParameter()));
+		resp->insertSignedInt(getCreatureSkillsSize());
 		break;
 	case 314:
-		mountCreature((MountCreature*) inv->getObjectParameter(), inv->getBooleanParameter());
+		resp->insertAscii(getSkill(inv->getSignedIntParameter()));
 		break;
 	case 315:
-		dismount(inv->getBooleanParameter(), inv->getBooleanParameter());
+		resp->insertBoolean(hasSkill(inv->getUnsignedIntParameter()));
 		break;
 	case 316:
-		addCashCredits(inv->getUnsignedIntParameter());
+		mountCreature((MountCreature*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
 	case 317:
-		addBankCredits(inv->getUnsignedIntParameter());
+		dismount(inv->getBooleanParameter(), inv->getBooleanParameter());
 		break;
 	case 318:
-		updateCashCredits(inv->getUnsignedIntParameter());
+		addCashCredits(inv->getUnsignedIntParameter());
 		break;
 	case 319:
-		updateBankCredits(inv->getUnsignedIntParameter());
+		addBankCredits(inv->getUnsignedIntParameter());
 		break;
 	case 320:
-		subtractCashCredits(inv->getUnsignedIntParameter());
+		updateCashCredits(inv->getUnsignedIntParameter());
 		break;
 	case 321:
-		subtractBankCredits(inv->getUnsignedIntParameter());
+		updateBankCredits(inv->getUnsignedIntParameter());
 		break;
 	case 322:
-		setCashCredits(inv->getSignedIntParameter());
+		subtractCashCredits(inv->getUnsignedIntParameter());
 		break;
 	case 323:
-		setBankCredits(inv->getSignedIntParameter());
+		subtractBankCredits(inv->getUnsignedIntParameter());
 		break;
 	case 324:
-		applyBuff(inv->getAsciiParameter(_param0_applyBuff__string_int_float_), inv->getSignedIntParameter(), inv->getFloatParameter());
+		setCashCredits(inv->getSignedIntParameter());
 		break;
 	case 325:
-		resp->insertBoolean(verifyCashCredits(inv->getUnsignedIntParameter()));
+		setBankCredits(inv->getSignedIntParameter());
 		break;
 	case 326:
+		applyBuff(inv->getAsciiParameter(_param0_applyBuff__string_int_float_), inv->getSignedIntParameter(), inv->getFloatParameter());
+		break;
+	case 327:
+		resp->insertBoolean(verifyCashCredits(inv->getUnsignedIntParameter()));
+		break;
+	case 328:
 		resp->insertBoolean(verifyBankCredits(inv->getUnsignedIntParameter()));
 		break;
 	default:
@@ -6334,6 +6364,14 @@ void CreatureObjectAdapter::removeWatcher(CreatureObject* creature) {
 
 void CreatureObjectAdapter::doFlourish(const string& modifier) {
 	return ((CreatureObjectImplementation*) impl)->doFlourish(modifier);
+}
+
+void CreatureObjectAdapter::doHealBattleFatigue() {
+	return ((CreatureObjectImplementation*) impl)->doHealBattleFatigue();
+}
+
+void CreatureObjectAdapter::doHealMindWounds() {
+	return ((CreatureObjectImplementation*) impl)->doHealMindWounds();
 }
 
 void CreatureObjectAdapter::activateRecovery() {
