@@ -2874,6 +2874,70 @@ void CreatureObjectImplementation::doFlourish(const string& modifier)
 	}	
 }
 
+void CreatureObjectImplementation::doHealBattleFatigue()
+{
+	//if(!isPlayer()) return;
+	
+	int bf_ability = 0;
+	SortedVector<CreatureObject*> *patrons = NULL;
+
+	
+	//PlayerImplementation* player = (PlayerImplementation*) this;
+		
+	if(isDancing()) {
+		bf_ability = getSkillMod("healing_dance_ability");
+		patrons = &watchers;
+	} else if(isPlayingMusic()) {
+		bf_ability = getSkillMod("healing_music_ability");
+		patrons = &listeners;
+	}
+	if(patrons && patrons->size())
+	for (int i = 0; i < patrons->size(); ++i) {
+		CreatureObject* obj = patrons->get(i);
+		
+		
+		// 10 minutes * 60 seconds  = 600 / 10 second increments = 60 total ticks to heal
+		// 1k BF / 60 = 17 bf/tick for master ent @ 100 skill
+		// skill ability / 100 = modifier from 17
+		//float rate = 10 * 60 / 10
+		int bf_heal = -1 * (int)(17.0 * (bf_ability / 100.0));
+		cout << " doing doHealBattleFatigue on " << obj << "(0x" << obj->getObjectID() << ") healing rate: " << dec << bf_heal;
+		obj->changeShockWounds(bf_heal);
+	}
+	else
+		cout << "no patrons";
+	
+}
+
+void CreatureObjectImplementation::doHealMindWounds()
+{
+	//if(!isPlayer()) return;
+	
+	int wound_ability = 0;
+	SortedVector<CreatureObject*> *patrons = NULL;
+		
+	if(isDancing()) {
+		wound_ability = getSkillMod("healing_dance_wound");
+		patrons = &watchers;
+	} else if(isPlayingMusic()) {
+		wound_ability = getSkillMod("healing_music_wound");
+		patrons = &listeners;
+	}
+	if(patrons && patrons->size())
+	for (int i = 0; i < patrons->size(); ++i) {
+		CreatureObject* obj = patrons->get(i);
+		
+		
+		// 50 as a base rate per 10 sec
+		int wound_heal = -1 * (int)(50.0 * (wound_ability / 100.0));
+		cout << " doing doHealMindWounds on " << obj << "(0x" << obj->getObjectID() << ") healing rate: " << dec << wound_heal;
+		obj->changeMindWoundsBar(wound_heal, false);
+	}
+	else
+		cout << "no patrons";
+	
+}
+
 void CreatureObjectImplementation::sendEntertainingUpdate(uint32 entval, const string& performance, uint32 perfcntr, int instrid) {
 		if (isPlayer()) {
 			CreatureObjectDeltaMessage4* dcreo4 = new CreatureObjectDeltaMessage4(this);

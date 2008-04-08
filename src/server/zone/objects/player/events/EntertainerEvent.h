@@ -60,6 +60,17 @@ public:
 			if(!player->isDancing() && !player->isPlayingMusic())
 				return true; // don't tick action if they aren't doing anything
 
+			// Heal BF
+			player->doHealBattleFatigue();
+			
+			// Heal Mind Wounds
+			player->doHealMindWounds();
+			
+			// Heal Mind Wounds
+			//changeShockWounds
+			
+			
+			// Tick Action
 			float baseActionDrain = -40 + (player->getQuickness() / 37.5);
 			int actionDrain = (int) ((baseActionDrain * 10.0f + 0.5f) / 10.0f); // Round to nearest dec for actual int cost
 

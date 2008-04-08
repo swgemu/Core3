@@ -774,6 +774,8 @@ public:
 	void stopListen(uint64 entid, bool doSendPackets = true, bool forced = false, bool doLock = true);
 
 	void doFlourish(const string& modifier = "");
+	void doHealBattleFatigue();
+	void doHealMindWounds();
 	
 	// guild methods
 	void sendGuildTo();

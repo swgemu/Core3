@@ -516,6 +516,8 @@ interface CreatureObject implements SceneObject {
 	void removeWatcher(CreatureObject creature);
 	
 	void doFlourish(const string modifier);
+	void doHealBattleFatigue();
+	void doHealMindWounds();
 	
 	void activateRecovery();
 	

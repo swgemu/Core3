@@ -334,6 +334,11 @@ Player* PlayerManagerImplementation::loadFromDatabase(PlayerImplementation* play
 	player->setBaseFocus(character->getInt(42));
 	player->setBaseWillpower(character->getInt(43));
 	
+	//player->setHealthWounds(character->getInt(44)); // HealthWounds
+	//player->setActionWounds(character->getInt(45)); //ActionWounds
+	player->setMindWounds(character->getInt(46));
+	player->setShockWounds(character->getInt(47));
+	
 	player->resetHAMBars();
 	
 	player->loadProfessions();
