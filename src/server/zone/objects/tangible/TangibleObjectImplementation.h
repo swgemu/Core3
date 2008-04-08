@@ -94,147 +94,148 @@ protected:
 	ItemAttributes* itemAttributes;
 
 public:
-	static const int HAIR = 5;
-	static const int TERMINAL = 7;
-	static const int TICKETCOLLECTOR = 8;
-	static const int LAIR = 10;
-	static const int HOLOCRON = 11;
-	static const int SHIPCOMPONENT = 13;
+	static const int HAIR = 0xF0000001;
+	static const int TERMINAL = 0xF0000002;
+	static const int TICKETCOLLECTOR = 0xF0000003;
+	static const int LAIR = 0xF0000004;
+	static const int HOLOCRON = 0xF0000005;
+	static const int SHIPCOMPONENT = 0xF0000006;
 	
-	static const int RESOURCECONTAINER = 4194304;
-	static const int ENERGYGAS = 4194305;
-	static const int ENERGYLIQUID = 4194306;
-	static const int ENERGYRADIOACTIVE = 4194307;
-	static const int ENERGYSOLID = 4194308;
-	static const int INORGANICCHEMICAL = 4194309;
-	static const int INORGANICGAS = 4194310;
-	static const int INORGANICMINERAL = 4194311;
-	static const int WATER = 4194312;
-	static const int ORGANICFOOD = 4194313;
-	static const int ORGANICHIDE = 4194314;
-	static const int ORGANICSTRUCTURAL = 4194315;
-		
-	static const int ARMOR = 256;
-	static const int BODYARMOR = 257;
-	static const int HEADARMOR = 258;
-	static const int MISCARMOR = 259;
-	static const int LEGARMOR = 260;
-	static const int ARMARMOR = 261;
-	static const int HANDARMOR = 262;
-	static const int FOOTARMOR = 263;
-	static const int SHIELDGENERATOR = 264;
+	static const int ARMOR = 0x100;
+	static const int BODYARMOR = 0x101;
+	static const int HEADARMOR = 0x102;
+	static const int MISCARMOR = 0x103;
+	static const int LEGARMOR = 0x104;
+	static const int ARMARMOR = 0x105;
+	static const int HANDARMOR = 0x106;
+	static const int FOOTARMOR = 0x107;
+	static const int SHIELDGENERATOR = 0x108;
 	
-	static const int DATA = 2048;
-	static const int DRAFTSCHEMATIC = 2049;
-	static const int MANUFACTURINGSCHEMATIC = 2050;
-	static const int MISSIONOBJECT = 2051;
-	static const int TOKEN = 2052;
-	static const int WAYPOINT = 2053;
-	static const int DATA2 = 2054;
-	static const int PETCONTROLDEVICE = 2055;
-	static const int VEHICLECONTROLDEVICE = 2056;
-	static const int SHIPCONTROLDEVICE = 2058;
-	static const int DROIDCONTROLDEVICE = 2059;
+	static const int DATA = 0x800;
+	static const int DRAFTSCHEMATIC = 0x801;
+	static const int MANUFACTURINGSCHEMATIC = 0x802;
+	static const int MISSIONOBJECT = 0x803;
+	static const int TOKEN = 0x804;
+	static const int WAYPOINT = 0x805;
+	static const int DATA2 = 0x806;
+	static const int PETCONTROLDEVICE = 0x807;
+	static const int VEHICLECONTROLDEVICE = 0x808;
+	static const int SHIPCONTROLDEVICE = 0x80A;
+	static const int DROIDCONTROLDEVICE = 0x80B;
+	
+	static const int MISC = 0x2000;
+	static const int AMMUNITION = 0x2001;
+	static const int CHEMICAL = 0x2002;
+	static const int CONTAINER = 0x2005;
+	static const int CRAFTINGSTATION = 0x2006;
+	static const int ELECTRONICS = 0x2008;
+	static const int FLORA = 0x2009;
+	static const int FOOD = 0x200A;
+	static const int FURNITURE = 0x200B;
+	static const int INSTRUMENT = 0x200C;
+	static const int PHARMACEUTICAL = 0x200D;
+	static const int SIGN = 0x200F;
+	static const int COUNTER = 0x2010;
+	static const int FACTORYCRATE = 0x2011;
+	static const int TRAVELTICKET = 0x2012;
+	static const int GENERICITEM = 0x2013;
+	static const int TRAP = 0x2014;
+	static const int WEARABLECONTAINER = 0x2015;
+	static const int FISHINGPOLE = 0x2016;
+	static const int FISHINGBAIT = 0x2017;
+	static const int DRINK = 0x2018;
+	static const int FIREWORK = 0x2019;
+	static const int ITEM = 0x201A;
+	static const int PETMEDECINE = 0x201B;
+	static const int FIREWORKSHOW = 0x201C;
+	static const int CLOTHINGATTACHMENT = 0x201D;
+	static const int LIVESAMPLE = 0x201E;
+	static const int ARMORATTACHMENT = 0x201F;
+	static const int COMMUNITYCRAFTINGPROJECT = 0x2020;
+	static const int CRYSTAL = 0x2021;
+	static const int DROIDPROGRAMMINGCHIP = 0x2022;
+	static const int ASTEROID = 0x2023;
+	static const int PILOTCHAIR = 0x2024;
+	static const int OPERATIONSCHAIR = 0x2025;
+	static const int TURRETACCESSLADDER = 0x2026;
+	static const int CONTAINER2 = 0x2027;
+	
+	static const int TOOL = 0x8000;
+	static const int CRAFTINGTOOL = 0x8001;
+	static const int SURVEYTOOL = 0x8002;
+	static const int REPAIRTOOL = 0x8003;
+	static const int CAMPKIT = 0x8004;
+	static const int SHIPCOMPONENTREPAIRITEM = 0x8005;
+	
+	static const int VEHICLE = 0x10000;
+	static const int HOVERVEHICLE = 0x10001;
+	
+	static const int WEAPON = 0x20000;
+	static const int MELEEWEAPON = 0x20001;
+	static const int RANGEDWEAPON = 0x20002;
+	static const int THROWNWEAPON = 0x20003;
+	static const int HEAVYWEAPON = 0x20004;
+	static const int MINE = 0x20005;
+	static const int SPECIALHEAVYWEAPON = 0x20006;
+	static const int ONEHANDMELEEWEAPON = 0x20007;
+	static const int TWOHANDMELEEWEAPON = 0x20008;
+	static const int POLEARM = 0x20009;
+	static const int PISTOL = 0x2000A;
+	static const int CARBINE = 0x2000B;
+	static const int RIFLE = 0x2000C;
+	
+	static const int RESOURCECONTAINER = 0x400000;
+	static const int ENERGYGAS = 0x400001;
+	static const int ENERGYLIQUID = 0x400002;
+	static const int ENERGYRADIOACTIVE = 0x400003;
+	static const int ENERGYSOLID = 0x400004;
+	static const int INORGANICCHEMICAL = 0x400005;
+	static const int INORGANICGAS = 0x400006;
+	static const int INORGANICMINERAL = 0x400007;
+	static const int WATER = 0x400008;
+	static const int ORGANICFOOD = 0x400009;
+	static const int ORGANICHIDE = 0x40000A;
+	static const int ORGANICSTRUCTURAL = 0x40000B;
+	
+	static const int WEAPONPOWERUP = 0x80000;
+	static const int MELEEWEAPONPOWERUP = 0x80001;
+	static const int RANGEDWEAPONPOWERUP = 0x80002;
+	static const int THROWNWEAPONPOWERUP = 0x80003;
+	static const int HEAVYWEAPONPOWERUP = 0x80004;
+	static const int MINEPOWERUP = 0x80005;
+	static const int SPECIALHEAVYWEAPONPOWERUP = 0x80006;
+	
+	static const int LIGHTSABER = 0x2000000;
+	static const int ONEHANDSABER = 0x2000001;
+	static const int TWOHANDSABER = 0x2000002;
+	static const int POLEARMSABER = 0x2000003;
+	
+	static const int DEED = 0x800000;
+	static const int BUILDINGDEED = 0x800001;
+	static const int INSTALLATIONDEED = 0x800002;
+	static const int PETDEED = 0x800003;
+	static const int DROIDDEED = 0x800004;
+	static const int VEHICLEDEED = 0x800005;
 
-	static const int MISC = 8192;
-	static const int AMMUNITION = 8193;
-	static const int CHEMICAL = 8194;
-	static const int CONTAINER = 8197;
-	static const int CRAFTINGSTATION = 8198;
-	static const int ELECTRONICS = 8200;
-	static const int FLORA = 8201;
-	static const int FOOD = 8202;
-	static const int FURNITURE = 8203;
-	static const int INSTRUMENT = 8204;
-	static const int PHARMACEUTICAL = 8205;
-	static const int SIGN = 8207;
-	static const int COUNTER = 8208;
-	static const int FACTORYCRATE = 8209;
-	static const int TRAVELTICKET = 8210;
-	static const int GENERICITEM = 8211;
-	static const int TRAP = 8212;
-	static const int WEARABLECONTAINER = 8213;
-	static const int FISHINGPOLE = 8214;
-	static const int FISHINGBAIT = 8215;
-	static const int DRINK = 8216;
-	static const int FIREWORK = 8217;
-	static const int ITEM = 8218;
-	static const int PETMEDECINE = 8219;
-	static const int FIREWORKSHOW = 8220;
-	static const int CLOTHINGATTACHMENT = 8221;
-	static const int LIVESAMPLE = 8222;
-	static const int ARMORATTACHMENT = 8223;
-	static const int COMMUNITYCRAFTINGPROJECT = 8224;
-	static const int CRYSTAL = 8225;
-	static const int DROIDPROGRAMMINGCHIP = 8226;
-	static const int ASTEROID = 8227;
-	static const int PILOTCHAIR = 8228;
-	static const int OPERATIONSCHAIR = 8229;
-	static const int TURRETACCESSLADDER = 8230;
-	static const int CONTAINER2 = 8231;
-
-	static const int TOOL = 32768;
-	static const int CRAFTINGTOOL = 32769;
-	static const int SURVEYTOOL = 32770;
-	static const int REPAIRTOOL = 32771;
-	static const int CAMPKIT = 32772;
-	static const int SHIPCOMPONENTREPAIRITEM = 32773;
-	static const int VEHICLE = 65536;
-	static const int HOVERVEHICLE = 65537;
-	
-	static const int WEAPON = 131072;
-	static const int MELEEWEAPON = 131073;
-	static const int RANGEDWEAPON = 131074;
-	static const int THROWNWEAPON = 131075;
-	static const int HEAVYWEAPON = 131076;
-	static const int MINE = 131077;
-	static const int SPECIALHEAVYWEAPON = 131078;
-	static const int ONEHANDMELEEWEAPON = 131079;
-	static const int TWOHANDMELEEWEAPON = 131080;
-	static const int POLEARM = 131081;
-	static const int PISTOL = 131082;
-	static const int CARBINE = 131083;
-	static const int RIFLE = 131084;
-	
-	static const int LIGHTSABER = 33554432;
-	static const int ONEHANDSABER = 33554433;
-	static const int TWOHANDSABER = 33554434;
-	static const int POLEARMSABER = 33554435;
-	
-	static const int WEAPONPOWERUP = 524288;
-	static const int MELEEWEAPONPOWERUP = 524289;
-	static const int RANGEDWEAPONPOWERUP = 524290;
-	static const int THROWNWEAPONPOWERUP = 524291;
-	static const int HEAVYWEAPONPOWERUP = 524292;
-	static const int MINEPOWERUP = 524293;
-	static const int SPECIALHEAVYWEAPONPOWERUP = 524294;
-	
-	static const int DEED = 8388608;
-	static const int BUILDINGDEED = 8388609;
-	static const int INSTALLATIONDEED = 8388610;
-	static const int PETDEED = 8388611;
-	static const int DROIDDEED = 8388612;
-	static const int VEHICLEDEED = 8388613;
-
-	static const int CLOTHING = 16777216;
-	static const int BANDOLIER = 16777217;
-	static const int BELT = 16777218;
-	static const int BODYSUIT = 16777219;
-	static const int CAPE = 16777220;
-	static const int CLOAK = 16777221;
-	static const int FOOTWEAR = 16777222;
-	static const int DRESS = 16777223;
-	static const int HANDWEAR = 16777224;
-	static const int EYEWEAR = 16777225;
-	static const int HEADWEAR = 16777226;
-	static const int JACKET = 16777227;
-	static const int PANTS = 16777228;
-	static const int ROBE = 16777229;
-	static const int SHIRT = 16777230;
-	static const int VEST = 16777231;
-	static const int WOOKIEGARB = 16777232;
-	static const int MISCCLOTHING = 16777233;
-	static const int SKIRT = 16777234;
+	static const int CLOTHING = 0x1000000;
+	static const int BANDOLIER = 0x1000001;
+	static const int BELT = 0x1000002;
+	static const int BODYSUIT = 0x1000003;
+	static const int CAPE = 0x1000004;
+	static const int CLOAK = 0x1000005;
+	static const int FOOTWEAR = 0x1000006;
+	static const int DRESS = 0x1000007;
+	static const int HANDWEAR = 0x1000008;
+	static const int EYEWEAR = 0x1000009;
+	static const int HEADWEAR = 0x100000A;
+	static const int JACKET = 0x100000B;
+	static const int PANTS = 0x100000C;
+	static const int ROBE = 0x100000D;
+	static const int SHIRT = 0x100000E;
+	static const int VEST = 0x100000F;
+	static const int WOOKIEGARB = 0x1000010;
+	static const int MISCCLOTHING = 0x1000011;
+	static const int SKIRT = 0x1000012;
 
 public:
 	TangibleObjectImplementation(uint64 oid, int tp = 0);
@@ -381,20 +382,15 @@ public:
 	}
 	
 	inline bool isWeapon() {
-		return (objectSubType == WEAPON || objectSubType == LIGHTSABER || objectSubType == MELEEWEAPON
-			|| objectSubType == RANGEDWEAPON || objectSubType == THROWNWEAPON || objectSubType == HEAVYWEAPON || objectSubType == MINE
-			|| objectSubType == SPECIALHEAVYWEAPON || objectSubType == ONEHANDMELEEWEAPON || objectSubType == TWOHANDMELEEWEAPON
-			|| objectSubType == POLEARM || objectSubType == PISTOL || objectSubType == CARBINE || objectSubType == RIFLE);
+		return (objectSubType & WEAPON || objectSubType & LIGHTSABER);
 	}
 	
 	inline bool isArmor() {
-		return (objectSubType == ARMOR || objectSubType == BODYARMOR || objectSubType == HEADARMOR || objectSubType == MISCARMOR
-			|| objectSubType == LEGARMOR || objectSubType ==  ARMARMOR || objectSubType == HANDARMOR || objectSubType == FOOTARMOR
-			|| objectSubType == SHIELDGENERATOR);
+		return (objectSubType & ARMOR);
 	}
 	
 	inline bool isClothing() {
-		return (objectSubType == CLOTHING);
+		return (objectSubType & CLOTHING);
 	}
 	
 	inline bool isAttachment() {

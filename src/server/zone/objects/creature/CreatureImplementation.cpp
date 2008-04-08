@@ -268,11 +268,12 @@ void CreatureImplementation::unload() {
 	clearTarget();
 	
 	clearLootItems();
-
-	if (zone != NULL && isInQuadTree()) {
-		removeFromZone(true);
-	}
 	
+	resetPatrolPoints(false);
+
+	if (zone != NULL && isInQuadTree())
+		removeFromZone(true);
+
 	creatureManager->despawnCreature(_this);
 	
 	setPosition(spawnPositionX, spawnPositionZ, spawnPositionY);
@@ -773,6 +774,10 @@ void CreatureImplementation::resetState() {
 	
 	aggroedCreature = NULL;
 	
+	clearLootItems();
+	
+	resetPatrolPoints(false);
+	
 	float distance = System::random(64) + 16;
 	randomizePosition(distance);
 }
@@ -810,8 +815,10 @@ bool CreatureImplementation::doMovement() {
 	if (dist < 5) {
 		info("reached destintaion");
 		
-		if (aggroedCreature == NULL)
-			patrolPoints.remove(0);
+		if (aggroedCreature == NULL) {
+			Coordinate* coord = patrolPoints.remove(0);
+			coord->finalize();
+		}
 
 		return false;
 	}
@@ -1080,7 +1087,7 @@ void CreatureImplementation::resetPatrolPoints(bool doLock) {
 		while (!patrolPoints.isEmpty()) {
 			Coordinate* point = patrolPoints.remove(0);
 			
-			delete point;
+			point->finalize();
 		}
 		
 		//patrolPoints.removeAll();
