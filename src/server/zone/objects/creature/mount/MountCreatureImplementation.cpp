@@ -137,6 +137,15 @@ void MountCreatureImplementation::sendTo(Player* player, bool doClose) {
 		close(client);
 }
 
+void MountCreatureImplementation::sendRadialResponseTo(Player* player, ObjectMenuResponse* omr) {
+	omr->addRadialItem(0, 205, 1, "@pet/pet_menu:menu_enter_exit");
+	omr->addRadialItem(0, 61, 3);
+
+	omr->finish();
+
+	player->sendMessage(omr);
+}
+
 void MountCreatureImplementation::call() {
 	if (isInQuadTree())
 		return;

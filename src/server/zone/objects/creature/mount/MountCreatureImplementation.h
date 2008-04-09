@@ -75,6 +75,8 @@ public:
 	
 	void sendTo(Player* player, bool doClose = true);
 	
+	void sendRadialResponseTo(Player* player, ObjectMenuResponse* omr);
+	
 	void call();
 	void store(bool doLock = true);
 

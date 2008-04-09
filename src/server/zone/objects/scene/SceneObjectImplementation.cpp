@@ -217,6 +217,12 @@ void SceneObjectImplementation::generateAttributes(SceneObject* obj) {
 	player->sendMessage(alm);
 }
 
+void SceneObjectImplementation::sendRadialResponseTo(Player* player, ObjectMenuResponse* omr) {
+	omr->finish();
+	
+	player->sendMessage(omr);
+}
+
 void SceneObjectImplementation::lock(bool doLock) {
 	ManagedObjectImplementation::wlock(doLock);
 }

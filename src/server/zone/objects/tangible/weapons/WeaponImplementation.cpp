@@ -338,6 +338,23 @@ void WeaponImplementation::sendTo(Player* player, bool doClose) {
 		SceneObjectImplementation::close(client);
 }
 
+void WeaponImplementation::sendRadialResponseTo(Player* player, ObjectMenuResponse* omr) {
+	if (player->getInventoryItem(getObjectID()) != NULL) {
+
+		if (!isSliced() && player->getSlicingAbility() >= 2)
+			omr->addRadialItem(0, 69, 3, "Slice");
+
+		omr->addRadialItem(0, 70, 3, "Repair");
+
+		if (hasPowerup())
+			omr->addRadialItem(0, 71, 3, "Remove Powerup");
+
+		omr->finish();
+
+		player->sendMessage(omr);
+	}
+}
+
 void WeaponImplementation::generateAttributes(SceneObject* obj) {
 	if (!obj->isPlayer())
 		return;

@@ -11,6 +11,8 @@
 
 #include "engine/util/QuadTreeEntry.h"
 
+class ObjectMenuResponse;
+
 class Zone;
 
 class ZoneClient;
@@ -41,6 +43,8 @@ public:
 	void sendTo(Player* player, bool doClose = true);
 
 	void sendDestroyTo(Player* player);
+
+	void sendRadialResponseTo(Player* player, ObjectMenuResponse* omr);
 
 	void create(ZoneClient* client);
 
@@ -190,6 +194,8 @@ public:
 	void sendTo(Player* player, bool doClose);
 
 	void sendDestroyTo(Player* player);
+
+	void sendRadialResponseTo(Player* player, ObjectMenuResponse* omr);
 
 	void create(ZoneClient* client);
 

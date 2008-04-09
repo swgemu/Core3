@@ -52,6 +52,8 @@ which carries forward this exception.
 
 #include "../TerminalImplementation.h"
 
+#include "../../../../packets.h"
+
 class GuildTerminalImplementation : public GuildTerminalServant {
 	GuildManager* guildManager;
 	
@@ -81,6 +83,29 @@ public:
 		wlock();
 		
 		return 0;
+	}
+	
+	void sendRadialResponseTo(Player* player, ObjectMenuResponse* omr) {
+		Guild* guild = player->getGuild();
+		
+		if (guild == NULL) {
+			//send create guild, etc.. options
+		} else {
+			// check if if player has privilegies
+		}
+		// First root options
+		omr->addRadialItem(0, 194, 3, "@guild:menu_guild_management");
+		omr->addRadialItem(0, 195, 3, "@guild:menu_member_management");
+
+		// Suboptions
+		omr->addRadialItem(2, 190, 3, "@guild:menu_enemies");
+		omr->addRadialItem(2, 187, 3, "@guild:menu_info");
+
+		omr->addRadialItem(3, 188, 3, "@guild:menu_members");
+
+		omr->finish();
+
+		player->sendMessage(omr);
 	}
 
 };

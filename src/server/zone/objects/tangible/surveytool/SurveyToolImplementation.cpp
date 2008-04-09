@@ -130,6 +130,14 @@ int SurveyToolImplementation::useObject(Player* player) {
 	return 0;
 }
 
+void SurveyToolImplementation::sendRadialResponseTo(Player* player, ObjectMenuResponse* omr) {
+	omr->addRadialItem(0, 136, 3, "@sui:tool_options");
+	omr->addRadialItem(4, 137, 3, "@sui:survey_range");
+	omr->finish();
+
+	player->sendMessage(omr);
+}
+
 void SurveyToolImplementation::sendSurveyEffect(Player* player) {
 	PlayClientEffectLoc* effect;
 	

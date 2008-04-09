@@ -59,6 +59,8 @@ class Player;
 
 class ZoneProcessServerImplementation;
 
+class ObjectMenuResponse;
+
 class SceneObjectImplementation : public SceneObjectServant, public QuadTreeEntry, public Logger {
 
 protected:
@@ -145,6 +147,8 @@ public:
 	
 	virtual void selectConversationOption(int option, SceneObject* obj) {
 	}
+	
+	virtual void sendRadialResponseTo(Player* player, ObjectMenuResponse* omr);
 	
 	virtual int useObject(Player* player) {
 		return 0;

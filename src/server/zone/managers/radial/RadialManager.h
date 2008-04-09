@@ -69,8 +69,6 @@ public:
 	void handleRadialSelect(Player* player, Packet* pack);
 	
 	void sendDefaultRadialResponse(Player* player, ObjectMenuResponse* omr);
-	void sendRadialResponseForMounts(Player* player, MountCreature* mount, ObjectMenuResponse* omr);
-	void sendRadialResponseForGuildTerminals(Player* player, GuildTerminal* guildTerm, ObjectMenuResponse* omr);
 	void sendRadialResponseForBazaar(uint64 objectId, Player* player);
 	void sendRadialResponseForBank(uint64 objectId, Player* player);
 	
@@ -83,11 +81,7 @@ public:
 	void handleRepair(Player* player, SceneObject* obj);
 	void handleRemovePowerup(Player* player, SceneObject* obj);
 	
-	void sendRadialResponseForSurveyTools(Player* player, SurveyTool* surveyTool, ObjectMenuResponse* omr);
 	void sendRadialResponseForSurveyToolRange(Player* player, SceneObject* obj);
-	bool sendRadialResponseForClothing(Player* player, Armor* object, ObjectMenuResponse* omr);	
-	bool sendRadialResponseForWeapon(Player* player, Weapon* object, ObjectMenuResponse* omr);
-
 };
 
 #endif /*RADIALMANAGER_H_*/

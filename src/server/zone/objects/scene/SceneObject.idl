@@ -46,6 +46,8 @@ include "engine/service/proto/BaseMessage";
 
 include "engine/util/QuadTreeEntry";
 
+import "../../packets/object/ObjectMenuResponse";
+
 import "../../Zone";
 
 import "../../ZoneClient";
@@ -64,6 +66,8 @@ interface SceneObject implements ManagedObject {
 	// client methods
 	void sendTo(Player player, boolean doClose = true);
 	void sendDestroyTo(Player player);
+	
+	void sendRadialResponseTo(Player player, ObjectMenuResponse omr);
 	
 	void create(ZoneClient client);
 	void destroy(ZoneClient client);

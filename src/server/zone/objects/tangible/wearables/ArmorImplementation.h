@@ -138,6 +138,8 @@ public:
 	
 	void sendTo(Player* player, bool doClose = true);
 	
+	void sendRadialResponseTo(Player* player, ObjectMenuResponse* omr);
+	
 	void decayArmor(int decayRate);
 	
 	void generateAttributes(SceneObject* obj);

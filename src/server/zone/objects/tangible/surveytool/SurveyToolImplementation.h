@@ -72,6 +72,8 @@ public:
 	
 	int useObject(Player* player);
 	
+	void sendRadialResponseTo(Player* player, ObjectMenuResponse* omr);
+	
 	void sendSurveyEffect(Player* player);
 	void sendSampleEffect(Player* player);
 	

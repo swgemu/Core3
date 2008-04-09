@@ -72,8 +72,11 @@ void RadialManager::handleRadialRequest(Player* player, Packet* pack) {
 	omr = parseDefaults(player, objectid, pack);
 	
 	Zone* zone = player->getZone();
-	if (zone == NULL)
+	
+	if (zone == NULL) {
+		delete omr;
 		return;
+	}
 	
 	SceneObject* object = zone->lookupObject(objectid); 
 	
@@ -82,54 +85,8 @@ void RadialManager::handleRadialRequest(Player* player, Packet* pack) {
 	
 	if (object == NULL) {
 		sendDefaultRadialResponse(player, omr);
-		return;
-	}
-
-	TangibleObject* tano = NULL;
-	Creature* creature = NULL;
-	Terminal* terminal = NULL;
-	SurveyTool* surveyTool = NULL;
-	GuildTerminal* guildTerminal = NULL;
-	
-	switch (object->getObjectType()) {
-	case SceneObjectImplementation::NONPLAYERCREATURE:
-		creature = (Creature*)object;
-		
-		if (creature->isMount() && (player->getMount() == (MountCreature*)creature)) {
-			sendRadialResponseForMounts(player, (MountCreature*)creature, omr);
-			return;
-		}
-		
-		break;
-	case SceneObjectImplementation::TANGIBLE:
-		tano = (TangibleObject*) object;
-		
-		switch (tano->getObjectSubType()) {
-		case TangibleObjectImplementation::TERMINAL:
-			terminal = (Terminal*) tano;
-			
-			switch (terminal->getTerminalType()) {
-			case TerminalImplementation::GUILD:
-				GuildTerminal* guildTerminal = (GuildTerminal*) terminal;
-				sendRadialResponseForGuildTerminals(player, guildTerminal, omr);
-				return;
-			}
-			break;		
-		case TangibleObjectImplementation::SURVEYTOOL:
-			surveyTool = (SurveyTool*) tano;
-			sendRadialResponseForSurveyTools(player, surveyTool, omr);
-			return;
-		}
-		if (tano->isArmor()) {
-			if (sendRadialResponseForClothing(player, (Armor*)tano, omr))
-				return;
-		} else if (tano->isWeapon()) {
-			if (sendRadialResponseForWeapon(player, (Weapon*)tano, omr))
-				return;
-		}
-		break;
-	}
-	sendDefaultRadialResponse(player, omr);
+	} else	
+		object->sendRadialResponseTo(player, omr);
 }
 
 void RadialManager::handleRadialSelect(Player* player, Packet* pack) {
@@ -142,6 +99,7 @@ void RadialManager::handleRadialSelect(Player* player, Packet* pack) {
 		uint8 radialID = pack->parseByte();
 		
 		Zone* zone = player->getZone();
+		
 		if (zone == NULL) {
 			player->unlock();
 			return;
@@ -151,6 +109,7 @@ void RadialManager::handleRadialSelect(Player* player, Packet* pack) {
 		
 		//TODO: Get a bazaar object to pass to the next functions
 		BazaarManager* bazaarManager = zone->getZoneServer()->getBazaarManager();
+		
 		if (bazaarManager->isBazaarTerminal(objectID)) {
 			sendRadialResponseForBazaar(objectID, player);
 			
@@ -159,6 +118,7 @@ void RadialManager::handleRadialSelect(Player* player, Packet* pack) {
 		}
 
 		BankManager* bankManager = zone->getZoneServer()->getBankManager();
+		
 		if (bankManager->isBankTerminal(objectID)) {
 			sendRadialResponseForBank(objectID, player);
 			
@@ -281,38 +241,6 @@ ObjectMenuResponse* RadialManager::parseDefaults(Player* player, uint64 objectid
 }
 
 void RadialManager::sendDefaultRadialResponse(Player* player, ObjectMenuResponse* omr) {
-	omr->finish();
-
-	player->sendMessage(omr);
-}
-
-void RadialManager::sendRadialResponseForMounts(Player* player, MountCreature* mount, ObjectMenuResponse* omr) {
-	omr->addRadialItem(0,205,1, "@pet/pet_menu:menu_enter_exit");
-	omr->addRadialItem(0,61,3);
-
-	omr->finish();
-
-	player->sendMessage(omr);
-}
-
-void RadialManager::sendRadialResponseForGuildTerminals(Player* player, GuildTerminal* guildTerm, ObjectMenuResponse* omr) {
-	Guild* guild = player->getGuild();
-	if (guild == NULL) {
-		//send create guild, etc.. options
-	} else {
-		// check if if player has privilegies
-	}
-	// First root options
-	omr->addRadialItem(0,194,3, "@guild:menu_guild_management");
-	omr->addRadialItem(0,195,3, "@guild:menu_member_management");
-	
-	// Suboptions
-	omr->addRadialItem(2,190,3, "@guild:menu_enemies");
-	omr->addRadialItem(2,187,3, "@guild:menu_info");
-	
-	
-	omr->addRadialItem(3,188,3, "@guild:menu_members");
-
 	omr->finish();
 
 	player->sendMessage(omr);
@@ -523,14 +451,6 @@ void RadialManager::handleRemovePowerup(Player* player, SceneObject* obj) {
 		weapon->removePowerup(player, false);
 }
 
-void RadialManager::sendRadialResponseForSurveyTools(Player* player, SurveyTool* surveyTool, ObjectMenuResponse* omr) {
-	omr->addRadialItem(0, 136, 3, "@sui:tool_options");
-	omr->addRadialItem(4, 137, 3, "@sui:survey_range");
-	omr->finish();
-	
-	player->sendMessage(omr);
-}
-
 void RadialManager::sendRadialResponseForSurveyToolRange(Player* player, SceneObject* obj) {
 	string skillBox = "crafting_artisan_novice";
 	
@@ -567,44 +487,3 @@ void RadialManager::sendRadialResponseForSurveyToolRange(Player* player, SceneOb
 	
 	player->setSurveyTool((SurveyTool*)obj);
 }
-
-bool RadialManager::sendRadialResponseForClothing(Player* player, Armor* object, ObjectMenuResponse* omr) {
-	if (player->getInventoryItem(object->getObjectID()) != NULL) {
-		
-		omr->addRadialItem(0, 68, 3, "Change color");
-		
-		if (!object->isSliced() && player->getSlicingAbility() >= 3)
-			omr->addRadialItem(0, 69, 3, "Slice");
-		
-		omr->addRadialItem(0, 70, 3, "Repair");
-
-		omr->finish();
-
-		player->sendMessage(omr);
-		
-		return true;
-	}
-	
-	return false;
-}
-
-bool RadialManager::sendRadialResponseForWeapon(Player* player, Weapon* object, ObjectMenuResponse* omr) {
-	if (player->getInventoryItem(object->getObjectID()) != NULL) {
-
-		if (!object->isSliced() && player->getSlicingAbility() >= 2)
-			omr->addRadialItem(0, 69, 3, "Slice");
-		
-		omr->addRadialItem(0, 70, 3, "Repair");
-		
-		if (object->hasPowerup())
-			omr->addRadialItem(0, 71, 3, "Remove Powerup");
-		
-		omr->finish();
-
-		player->sendMessage(omr);
-		return true;
-	}
-	
-	return false;
-}
-

@@ -218,6 +218,8 @@ public:
 	
 	void sendTo(Player* player, bool doClose = true);
 	
+	void sendRadialResponseTo(Player* player, ObjectMenuResponse* omr);
+	
 	void generateAttributes(SceneObject* obj);
 
 	void generateDotAttributes(class AttributeListMessage* alm);
