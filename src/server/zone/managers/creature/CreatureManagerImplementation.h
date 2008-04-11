@@ -123,10 +123,7 @@ public:
 	//creature naming
 	string makeStormTrooperName();
 	string makeCreatureName(string charname);
-	char chooseNextLetter(const char lastLetter, const char letterBeforeLast);
-	bool isProfanity(const string inname);
-	inline bool isVowel(const char inChar);
-	inline char chooseLetterExcluding(const char exclude[]);
+
 	inline string stringify(const int x);
 
 	//lua functions

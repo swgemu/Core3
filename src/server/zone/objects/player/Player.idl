@@ -236,6 +236,7 @@ interface Player implements CreatureObject {
 	// setters
 	void setConversatingCreature(CreatureObject conversator);
 	void setFirstName(const string name);
+	void setLastName(const string name);
 	
 	void setBiography(const string bio);
 	void setBiography(unicode bio);
@@ -324,6 +325,7 @@ interface Player implements CreatureObject {
 	CreatureObject getConversatingCreature();
 	
 	string getFirstName();
+	string getLastName();
 	string getRaceFileName();
 	
 	unicode getBiography();

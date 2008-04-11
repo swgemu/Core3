@@ -240,6 +240,8 @@ public:
 
 	void setFirstName(const string& name);
 
+	void setLastName(const string& name);
+
 	void setBiography(const string& bio);
 
 	void setBiography(unicode& bio);
@@ -327,6 +329,8 @@ public:
 	CreatureObject* getConversatingCreature();
 
 	string& getFirstName();
+
+	string& getLastName();
 
 	string& getRaceFileName();
 
@@ -464,6 +468,8 @@ protected:
 	string _return_getHairData;
 
 	string _return_getHairObject;
+
+	string _return_getLastName;
 
 	string _return_getNextSkillBox;
 
@@ -660,6 +666,8 @@ public:
 
 	void setFirstName(const string& name);
 
+	void setLastName(const string& name);
+
 	void setBiography(const string& bio);
 
 	void setBiography(unicode& bio);
@@ -747,6 +755,8 @@ public:
 	CreatureObject* getConversatingCreature();
 
 	string& getFirstName();
+
+	string& getLastName();
 
 	string& getRaceFileName();
 
@@ -886,6 +896,7 @@ protected:
 	string _param0_sendSystemMessage__string_string_long_;
 	string _param1_sendSystemMessage__string_string_long_;
 	string _param0_setFirstName__string_;
+	string _param0_setLastName__string_;
 	string _param0_setBiography__string_;
 	unicode _param0_setBiography__unicode_;
 	string _param0_setHairData__string_;

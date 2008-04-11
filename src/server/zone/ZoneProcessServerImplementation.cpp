@@ -81,6 +81,7 @@ which carries forward this exception.
 #include "managers/skills/SkillManager.h"
 #include "managers/loot/LootManager.h"
 #include "managers/sui/SuiManager.h"
+#include "managers/name/NameManager.h"
 
 ZoneProcessServerImplementation::ZoneProcessServerImplementation(ZoneServer* serv, int processingThreads) 
 		: ServiceMessageHandlerThread("ZoneProcessorServer") {
@@ -97,7 +98,8 @@ ZoneProcessServerImplementation::ZoneProcessServerImplementation(ZoneServer* ser
 	groupManager = new GroupManager();
 	lootManager = new LootManager(this);
 	suiManager = new SuiManager(this);
-
+	nameManager = new NameManager(this);
+	
 	setLogging(false);
 	
 	scheduler->setLogging(false);
@@ -131,6 +133,9 @@ ZoneProcessServerImplementation::~ZoneProcessServerImplementation() {
 	
 	delete suiManager;
 	suiManager = NULL;
+	
+	delete nameManager;
+	nameManager = NULL;
 }
 
 void ZoneProcessServerImplementation::init() {

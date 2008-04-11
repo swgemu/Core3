@@ -59,8 +59,9 @@ public:
 		try {
 			player->wlock();
 			
-			if(!player->isDancing() && !player->isPlayingMusic()) {
+			if (!player->isDancing() && !player->isPlayingMusic()) {
 				player->clearEntertainerEvent();
+			
 				player->unlock();
 				return true; // don't tick action if they aren't doing anything
 			}
@@ -73,8 +74,7 @@ public:
 			
 			// Heal Mind Wounds
 			//changeShockWounds
-			
-			
+						
 			// Tick Action
 			float baseActionDrain = -40 + (player->getQuickness() / 37.5);
 			int actionDrain = (int) ((baseActionDrain * 10.0f + 0.5f) / 10.0f); // Round to nearest dec for actual int cost
@@ -83,7 +83,7 @@ public:
 			opc << "ActionDrain: " << dec << ActionDrain;
 			player->sendSystemMessage(opc.str());*/
 			
-			if (player->changeActionBar(actionDrain, false) ) {		
+			if (player->changeActionBar(actionDrain, false)) {		
 				player->activateRecovery(); 
 			} else {
 				if (player->isDancing()) {

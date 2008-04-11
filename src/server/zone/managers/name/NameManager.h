@@ -42,30 +42,84 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef CLIENTRANDOMNAMERESPONSE_H_
-#define CLIENTRANDOMNAMERESPONSE_H_
+#ifndef NAMEMANAGER_H_
+#define NAMEMANAGER_H_
 
 #include "engine/engine.h"
 
-class ClientRandomNameReponse : public BaseMessage {
-public:
-	ClientRandomNameReponse(string race_iff, string name) : BaseMessage() {
+class ZoneServer;
+
+#include "../../objects/creature/CreatureObject.h"
+
+class CreatureObject;
+class ZoneProcessServerImplementation;
+
+class BannedNameSet : public HashSet<string> {
+	int hash(const string& str) {
+		int h = 0;
+		for (int i = 0; i < str.length(); i++) {
+		    h = 31*h + str.at(i);
+		}
 		
-		//stringstream random_name; // TODO: Incorporate with ResourceManager to create pretty names
-		//random_name << "Tester" << System::random(10000);
-
-		unicode unicode_name = unicode(name);
-		insertShort(0x04);
-		insertInt(0xE85FB868); //opcode: ClientRandomNameReponse
-		insertAscii(race_iff);
-		insertUnicode(unicode_name); //Insert a randomly generated name here, dont need to do that now..
-		insertAscii("ui", 0x02); //STF file to use loading the desciption for Approval_Type. Pretty much static unless we really need a custom approval_type message
-		insertInt(0x00); //spacer
-		insertAscii("name_approved", 0x0D); //needed for the generated name to display.
-
-		setCompression(false);
+		return h;
 	}
-	
+   
+public:
+	BannedNameSet() : HashSet<string>() {
+	}
+
 };
 
-#endif /*CLIENTRANDOMNAMERESPONSE_H_*/
+class NameManagerResult {
+public:
+	static const uint8 DECLINED_EMPTY = 0;
+	static const uint8 DECLINED_DEVELOPER = 1;
+	static const uint8 DECLINED_FICT_RESERVED = 2;
+	static const uint8 DECLINED_PROFANE = 3;
+	static const uint8 DECLINED_RACE_INAPP = 4;
+	static const uint8 DECLINED_SYNTAX = 5;
+	static const uint8 DECLINED_RESERVED = 6;
+	static const uint8 ACCEPTED	= 7;
+};
+
+class NameManager :  public Logger {
+	ZoneProcessServerImplementation* server;
+	
+	Vector<string>* profaneNames;
+	BannedNameSet* developerNames;
+	BannedNameSet* fictionNames;
+	BannedNameSet* reservedNames;
+	
+	void fillNames();
+	
+	char chooseNextLetter(const char, const char);
+	
+	inline bool isReserved(string);
+	
+	inline bool isDeveloper(string);
+	
+	inline bool isFiction(string);
+	
+	inline bool isVowel(const char);
+	
+	int addPrefix(char* name);
+	
+	void addSuffix(char* name, int location);
+	
+	char chooseLetterExcluding(const char*);
+	
+public:
+	NameManager(ZoneProcessServerImplementation* serv);
+	
+	~NameManager();
+	
+	bool isProfane(string name);
+	
+	int validateName(CreatureObject * obj);
+	
+	const string makeCreatureName(bool surname = true);
+	
+	const string makeResourceName(bool isOrganic);
+};
+
+#endif /*NAMEMANAGER_H_*/

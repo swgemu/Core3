@@ -2897,7 +2897,7 @@ void CreatureObjectImplementation::doHealBattleFatigue() {
 			// 1k BF / 60 = 17 bf/tick for master ent @ 100 skill
 			// skill ability / 100 = modifier from 17
 			//float rate = 10 * 60 / 10
-			int bfHeal = -1 * (int)(17.0 * (bfAbility / 100.0));
+			int bfHeal = -1 * (int) (17.0f * (bfAbility / 100.0f));
 			
 			//cout << " doing doHealBattleFatigue on " << obj << "(0x" << obj->getObjectID() << ") healing rate: " << dec << bfHeal;
 			
@@ -2941,7 +2941,7 @@ void CreatureObjectImplementation::doHealMindWounds() {
 			CreatureObject* obj = patrons->get(i);
 
 			// 50 as a base rate per 10 sec
-			int woundHeal = -1 * (int)(50.0 * (woundAbility / 100.0));
+			int woundHeal = -1 * (int)(50.0f * (woundAbility / 100.0f));
 			//cout << " doing doHealMindWounds on " << obj << "(0x" << obj->getObjectID() << ") healing rate: " << dec << woundHeal;
 			
 			try {

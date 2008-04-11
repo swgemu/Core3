@@ -109,19 +109,10 @@ private:
 	string checkInsertValue(int inval);
 
 	bool checkResourceName(const string instring);
-	bool isProfanity(const string inname);
 	bool isDumbPhrase(const string inname);
 
 	// Resource Naming Scheme
 	void makeResourceName(string& resname, bool isOrganic);
-
-	bool isVowel(const char inChar);
-
-	char chooseNextLetter(const char lastLetter, const char letterBeforeLast);
-	char chooseLetterExcluding(const char exclude[]);
-
-	int addPrefix(char* name);
-	void addSuffix(char* name, int location);
 
 	string stringify(const int x);
 	

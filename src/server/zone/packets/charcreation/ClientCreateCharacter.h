@@ -48,6 +48,7 @@ which carries forward this exception.
 #include "engine/engine.h"
 
 #include "../../objects/player/PlayerImplementation.h"
+#include "../../objects/player/Races.h"
 
 class ClientCreateCharacter : public BaseMessage {
 public:
@@ -61,14 +62,23 @@ public:
 		player->setCharacterName(characterName);
 	
 		int idx = characterName.indexOf(' ');
-		if (idx != -1)
+		if (idx != -1) {
 			player->setFirstName(characterName.substring(0, idx).c_str());
-		else
-			player->setFirstName(characterName.c_str()); 
+			player->setLastName(characterName.substring(idx + 1, characterName.size()).c_str());
+		}
+		else {
+			player->setFirstName(characterName.c_str());
+			player->setLastName("");
+		}
+			 
 
 		string racefile;		
 		pack->parseAscii(racefile);
 		player->setRaceFileName(racefile);
+		
+		int raceid = Races::getRaceID(racefile);
+		player->setRaceName(Races::getRace(raceid));		
+		player->setSpeciesName(Races::getSpecies(raceid));
 
 		string location;		
 		pack->parseAscii(location);

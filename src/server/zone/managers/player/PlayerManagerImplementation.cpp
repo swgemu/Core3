@@ -110,13 +110,6 @@ bool PlayerManagerImplementation::create(Player* player, uint32 sessionkey) {
 	int accountID = sessionkey;
 	int galaxyID = 2;
 	
-	string surname;
-	
-	if ((player->getFirstName().size() + 1) < player->getCharacterName().size())
-			surname = player->getCharacterName().substring(player->getFirstName().size() + 1, player->getCharacterName().size()).c_str();
-		else
-			surname = "";
-	
 	player->setZoneIndex(8);
 	player->setTerrainName(Terrain::getTerrainName(8));
 
@@ -165,7 +158,7 @@ bool PlayerManagerImplementation::create(Player* player, uint32 sessionkey) {
 	          << "`stamina`,`mind`,`focus`,`willpower`"
 	          << ") VALUES ("
     	      << accountID << "," << galaxyID << ",'" 
-	          << player->getFirstName() << "','" << surname << "','" 
+	          << player->getFirstName() << "','" << player->getLastName() << "','" 
 	          << apperance.substr(0, apperance.size() - 1) << "','" 
 	          << player->getStartingProfession() << "'," <<  race << "," << gender << ",10," 
     	      << creditsCash << "," << creditsBank << ",0," 
@@ -202,25 +195,14 @@ bool PlayerManagerImplementation::validateName(string& cname) {
 	string name = cname;
 	String::toLower(name);
 	try {
-		string query = "SELECT * FROM characters WHERE lower(firstname) = \'" + name + "\'";
+		string query = "SELECT * FROM characters WHERE lower(firstname) = \"" + name + "\"";
 
 		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
 		bool nameExists = res->next();		
 		
 		delete res;
-		
-		bool valid = true;
-		
-		if (strchr(name.c_str(),'#') || strchr(name.c_str(),';') || strchr(name.c_str(),'!') || strchr(name.c_str(),'@') || strchr(name.c_str(),'$') || 
-			strchr(name.c_str(),'%') || strchr(name.c_str(),'^') || strchr(name.c_str(),'&') || strchr(name.c_str(),'*') || strchr(name.c_str(),'{') || 
-			strchr(name.c_str(),'}') || strchr(name.c_str(),'(') || strchr(name.c_str(),')') || strchr(name.c_str(),'+') || strchr(name.c_str(),'=') || 
-			strchr(name.c_str(),'~') || strchr(name.c_str(),'`') || strchr(name.c_str(),'[') || strchr(name.c_str(),']') || strchr(name.c_str(),'/') 
-			|| strchr(name.c_str(),'>') || strchr(name.c_str(),'<') || strchr(name.c_str(),'?') || strchr(name.c_str(),'/') || strchr(name.c_str(),'|') 
-			|| strchr(name.c_str(),'`')) {
-			valid = false;
-		}
 
-		return !nameExists && valid;
+		return !nameExists;
 	} catch (DatabaseException& e) {
 		return false;
 	}
@@ -257,7 +239,7 @@ Player* PlayerManagerImplementation::loadFromDatabase(PlayerImplementation* play
 	}
 
 	player->setFirstName(character->getString(3));
-	string surname = character->getString(4);
+	player->setLastName(character->getString(4));
 	
 	string orbname = "Player " + player->getFirstName();
 	playerRes = (Player*) player->deploy(orbname);
@@ -267,8 +249,8 @@ Player* PlayerManagerImplementation::loadFromDatabase(PlayerImplementation* play
 	
 	player->setPlayerObject(playerObject);
 
-	if (surname.size() != 0)
-		player->setCharacterName(player->getFirstName() + " " + surname);
+	if (player->getLastName() != "")
+		player->setCharacterName(player->getFirstName() + " " + player->getLastName());
 	else
 		player->setCharacterName(player->getFirstName());
 		
@@ -912,6 +894,9 @@ void PlayerManagerImplementation::updatePlayerCreditsFromDatabase(Player* player
 	BaseMessage* mess = new PlayerMoneyResponseMessage(player);
 	player->sendMessage(mess);
 }
+
+
+
 
 
 

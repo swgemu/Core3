@@ -94,7 +94,8 @@ class PlayerImplementation : public PlayerServant {
 	uint64 baseID;
 
 	string firstName;
-
+	string lastName;
+	
 	string raceFile; //race iff, defines the race file of the character being created.
 
 	string startingLocation; //start location iff string
@@ -651,6 +652,10 @@ public:
 		firstName = name;
 	}
 	
+	inline void setLastName(const string& name) {
+		lastName = name;
+	}
+	
 	inline void setCharacterID(uint64 id) {
 		characterID = id;
 		baseID = id << 32;
@@ -720,6 +725,10 @@ public:
 
 	inline string& getFirstName() {
 		return firstName;
+	}
+	
+	inline string& getLastName() {
+		return lastName;
 	}
 	
 	inline ZoneClient* getClient() {
