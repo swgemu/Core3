@@ -220,6 +220,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/bazaar/BazaarPlanetManagerImplementation.cpp \
 		server/zone/managers/bank/BankManagerImplementation.cpp \
 		server/zone/managers/sui/SuiManager.cpp \
+		server/zone/managers/name/NameManager.cpp \
 		server/chat/room/ChatRoomImplementation.cpp \
 		server/chat/ChatManagerImplementation.cpp \
 		server/zone/packets/object/ObjectControllerMessage.cpp \
