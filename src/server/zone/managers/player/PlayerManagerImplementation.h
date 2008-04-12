@@ -86,7 +86,7 @@ public:
 	
 	bool create(Player* player, uint32 sessionkey);	
 	bool validateName(string& cname);
-
+	BaseMessage* attemptPlayerCreation(Player* player, ZoneClient* client);
 	Player* load(uint64 charid);
 
 	void unload(Player* player);

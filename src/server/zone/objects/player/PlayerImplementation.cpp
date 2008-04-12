@@ -1816,6 +1816,29 @@ void PlayerImplementation::clearBuffs(bool doUpdatePlayer) {
 /*
  *	Item manipulation methods 
  */
+
+void PlayerImplementation::addInventoryItem(TangibleObject* item) {
+	CreatureObjectImplementation::addInventoryItem(item);
+	
+	if(item->isEquipped())
+		equipPlayerItem(item);
+
+}
+
+void PlayerImplementation::equipPlayerItem(TangibleObject* item) {
+	if (item->isEquipped())
+		item->setEquipped(false);
+	
+	if (item->isWeapon()) {
+		changeWeapon(item->getObjectID());
+	} else if (item->isArmor()) {
+		changeArmor(item->getObjectID(), true);
+	} else if (item->isClothing()) {
+		changeCloth(item->getObjectID());
+	} else if (item->isInstrument()) {
+		changeWeapon(item->getObjectID());
+	}
+}
  
 void PlayerImplementation::changeCloth(uint64 itemid) {
 

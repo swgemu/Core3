@@ -46,14 +46,17 @@ import "../guild/GuildManager";
 
 import "../../objects/player/Player";
 import "../../objects/tangible/TangibleObject";
-
+import "../../ZoneClient";
 import "PlayerMap";
+
+include "engine/service/proto/BaseMessage";
 
 interface PlayerManager {
 	void stop();
 	
 	boolean create(Player player, unsigned int sessionkey);	
 	boolean validateName(string name);
+	BaseMessage attemptPlayerCreation(Player player, ZoneClient client);
 
 	Player load(unsigned long charid);
 

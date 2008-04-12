@@ -119,9 +119,24 @@ void LoginPacketHandler::handleDeleteCharacterMessage(Message* pack) {
 		stringstream query;
 		
 		query << "DELETE FROM characters WHERE character_id = '" << charId <<"' and galaxy_id = '" << ServerId << "';";
-					   
 		ServerDatabase::instance()->executeStatement(query);
-
+		
+		query.str(""); // clear stream
+		query << "DELETE FROM character_items WHERE character_id = '" << charId <<"';";
+		ServerDatabase::instance()->executeStatement(query);
+		
+		query.str(""); // clear stream
+		query << "DELETE FROM character_faction WHERE character_id = '" << charId <<"';";
+		ServerDatabase::instance()->executeStatement(query);
+		
+		query.str(""); // clear stream
+		query << "DELETE FROM character_profession WHERE character_id = '" << charId <<"';";
+		ServerDatabase::instance()->executeStatement(query);
+		
+		query.str(""); // clear stream
+		query << "DELETE FROM character_badge WHERE character_id = '" << charId <<"';";
+		ServerDatabase::instance()->executeStatement(query);
+		
 		dbDelete = 0;
     } catch(DatabaseException& e) {
    		dbDelete = 1;
@@ -130,4 +145,5 @@ void LoginPacketHandler::handleDeleteCharacterMessage(Message* pack) {
    	Message* msg = new DeleteCharacterReplyMessage(dbDelete);
 	client->sendMessage(msg);
 }
+
 

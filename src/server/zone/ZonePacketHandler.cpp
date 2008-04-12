@@ -318,8 +318,6 @@ void ZonePacketHandler::handleCmdSceneReady(Message* pack) {
 
 void ZonePacketHandler::handleClientCreateCharacter(Message* pack) {
 	PlayerManager* playerManager = server->getPlayerManager();
-
-	NameManager* nameManager = processServer->getNameManager(); 
 	
 	ZoneClientImplementation* clientimpl = (ZoneClientImplementation*) pack->getClient();
 	ZoneClient* client = (ZoneClient*) clientimpl->_getStub();
@@ -328,95 +326,10 @@ void ZonePacketHandler::handleClientCreateCharacter(Message* pack) {
 
 	ClientCreateCharacter::parse(pack, playerImpl);
 
-	Player* player = playerImpl->create(client);
-
-	int res = nameManager->validateName(player); 
-	
-	if (res != NameManagerResult::ACCEPTED) { 
-		BaseMessage* msg; 
-
-		switch (res) {
-		case NameManagerResult::DECLINED_EMPTY:
-			msg = new ClientCreateCharacterFailed("name_declined_empty");
-			break;
-		case NameManagerResult::DECLINED_DEVELOPER:
-			msg = new ClientCreateCharacterFailed("name_declined_developer");
-			break;
-		case NameManagerResult::DECLINED_FICT_RESERVED:
-			msg = new ClientCreateCharacterFailed("name_declined_fictionally_reserved");
-			break;
-		case NameManagerResult::DECLINED_PROFANE:
-			msg = new ClientCreateCharacterFailed("name_declined_profane");
-			break;
-		case NameManagerResult::DECLINED_RACE_INAPP:
-			msg = new ClientCreateCharacterFailed("name_declined_racially_inappropriate");
-			break;
-		case NameManagerResult::DECLINED_SYNTAX:
-			msg = new ClientCreateCharacterFailed("name_declined_syntax");
-			break;
-		case NameManagerResult::DECLINED_RESERVED:
-			msg = new ClientCreateCharacterFailed("name_declined_reserved");
-			break;
-		default:
-			msg = new ClientCreateCharacterFailed("name_declined_retry");
-			break;
-		}
-
-		client->sendMessage(msg);
-		return;
-	}
-	
-	if (!playerManager->validateName(playerImpl->getFirstName())) {		
-		BaseMessage* msg = new ClientCreateCharacterFailed("name_declined_in_use");
-		client->sendMessage(msg);
-		return;
-	}
-
 	playerImpl->setZoneProcessServer(processServer);
-
-	try {
-		player->wlock();
-
-		uint32 skey = client->getSessionKey();
-		
-		if (playerManager->create(player, skey)) {
-			BaseMessage* hb = new HeartBeat();
-			client->sendMessage(hb);
-			
-			BaseMessage* msg = new ClientCreateCharacterSuccess(player->getCharacterID());
-			player->sendMessage(msg);
-			
-			Zone* zone = server->getZone(player->getZoneIndex());
-			player->setZone(zone);
 	
-			zone->registerObject(player);
-	
-			player->createItems();
-
-			player->unload(); // force a save of items, client will relogin
-			
-			zone->deleteObject(player->getObjectID());
-						
-			player->unlock();
-		} else {
-			client->info("name refused for character creation");
-
-			BaseMessage* msg = new ClientCreateCharacterFailed("name_declined_in_use");
-			player->sendMessage(msg);
-			
-			player->unlock();
-		
-			player->disconnect();
-			
-			player->finalize();
-		}			
-	} catch (Exception& e) {
-		player->unlock();
-		cout << "unreported exception on ZonePacketHandler::handleClientCreateCharacter()\n" << e.getMessage() << "\n";
-	} catch (...) {
-		player->unlock();
-		cout << "unreported exception on ZonePacketHandler::handleClientCreateCharacter()\n";
-	}
+	BaseMessage* msg = playerManager->attemptPlayerCreation(playerImpl->create(client), client);
+	client->sendMessage(msg);
 }
 
 void ZonePacketHandler::handleClientRandomNameRequest(Message* pack) {

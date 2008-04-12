@@ -70,6 +70,7 @@ which carries forward this exception.
 #include "../guild/GuildManager.h"
 #include "../planet/PlanetManager.h"
 #include "../item/ItemManager.h"
+#include "../name/NameManager.h"
 #include "../../../chat/ChatManager.h"
 
 PlayerManagerImplementation::PlayerManagerImplementation(ItemManager* mgr, ZoneProcessServerImplementation* srv) : PlayerManagerServant() {
@@ -143,7 +144,6 @@ bool PlayerManagerImplementation::create(Player* player, uint32 sessionkey) {
 	BinaryData hair(player->getHairData());
 	hair.encode(hairdata);
 
-	player->trainStartingProfession();
 	player->createBaseStats();
 	
 	try {
@@ -186,6 +186,98 @@ bool PlayerManagerImplementation::create(Player* player, uint32 sessionkey) {
 	}
 
 	return true;
+}
+
+BaseMessage* PlayerManagerImplementation::attemptPlayerCreation(Player * player, ZoneClient * client) {
+	NameManager * nm = server->getNameManager();
+	BaseMessage* msg;
+	
+	//Check to see if name is valid
+	int res = nm->validateName(player); 
+		
+	if (res != NameManagerResult::ACCEPTED) { 
+		 
+		switch (res) {
+		case NameManagerResult::DECLINED_EMPTY:
+			msg = new ClientCreateCharacterFailed("name_declined_empty");
+			break;
+		case NameManagerResult::DECLINED_DEVELOPER:
+			msg = new ClientCreateCharacterFailed("name_declined_developer");
+			break;
+		case NameManagerResult::DECLINED_FICT_RESERVED:
+			msg = new ClientCreateCharacterFailed("name_declined_fictionally_reserved");
+			break;
+		case NameManagerResult::DECLINED_PROFANE:
+			msg = new ClientCreateCharacterFailed("name_declined_profane");
+			break;
+		case NameManagerResult::DECLINED_RACE_INAPP:
+			msg = new ClientCreateCharacterFailed("name_declined_racially_inappropriate");
+			break;
+		case NameManagerResult::DECLINED_SYNTAX:
+			msg = new ClientCreateCharacterFailed("name_declined_syntax");
+			break;
+		case NameManagerResult::DECLINED_RESERVED:
+			msg = new ClientCreateCharacterFailed("name_declined_reserved");
+			break;
+		default:
+			msg = new ClientCreateCharacterFailed("name_declined_retry");
+			break;
+		}
+
+		return msg; //Name failed filters
+	}
+	
+	//Name passes filters, does it already exist?
+	if (!validateName(player->getFirstName())) {		
+		msg = new ClientCreateCharacterFailed("name_declined_in_use");
+		return msg; //Name already taken
+	}
+	
+	//Player name is valid, attempt to create player
+	try {
+		player->wlock();
+			
+		if (create(player, client->getSessionKey())) {
+			BaseMessage* hb = new HeartBeat();
+			client->sendMessage(hb);
+				
+			msg = new ClientCreateCharacterSuccess(player->getCharacterID());
+				
+			Zone* zone = server->getZoneServer()->getZone(player->getZoneIndex());
+			player->setZone(zone);
+		
+			zone->registerObject(player);
+		
+			player->createItems();
+			player->trainStartingProfession();
+			
+			player->unload(); // force a save of items, client will relogin
+				
+			zone->deleteObject(player->getObjectID());
+							
+			player->unlock();
+		} else {
+			client->info("name refused for character creation");
+
+			msg = new ClientCreateCharacterFailed("name_declined_retry");
+				
+			player->unlock();
+			
+			player->disconnect();
+				
+			player->finalize();
+		}
+		
+		return msg; //return success or fail packet
+	} catch (Exception& e) {
+		player->unlock();
+		cout << "unreported exception on PlayerManagerImplementation::attemptPlayerCreation()\n" << e.getMessage() << "\n";
+		return new ClientCreateCharacterFailed("name_declined_internal_error"); //something went wrong
+	} catch (...) {
+		player->unlock();
+		cout << "unreported exception on PlayerManagerImplementation::attemptPlayerCreation()\n";
+		return new ClientCreateCharacterFailed("name_declined_internal_error"); //something went wrong
+	}
 }
 
 bool PlayerManagerImplementation::validateName(string& cname) {

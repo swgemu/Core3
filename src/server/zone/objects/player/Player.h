@@ -172,6 +172,10 @@ public:
 
 	void decayInventory();
 
+	void addInventoryItem(TangibleObject* item);
+
+	void equipPlayerItem(TangibleObject* item);
+
 	void saveProfessions();
 
 	void loadProfessions();
@@ -597,6 +601,10 @@ public:
 	void createBaseStats();
 
 	void decayInventory();
+
+	void addInventoryItem(TangibleObject* item);
+
+	void equipPlayerItem(TangibleObject* item);
 
 	void saveProfessions();
 

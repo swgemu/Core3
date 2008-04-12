@@ -13,7 +13,11 @@ class Player;
 
 class TangibleObject;
 
+class ZoneClient;
+
 class PlayerMap;
+
+#include "engine/service/proto/BaseMessage.h"
 
 class PlayerManager : public DistributedObjectStub {
 protected:
@@ -31,6 +35,8 @@ public:
 	bool create(Player* player, unsigned int sessionkey);
 
 	bool validateName(string& name);
+
+	BaseMessage* attemptPlayerCreation(Player* player, ZoneClient* client);
 
 	Player* load(unsigned long long charid);
 
@@ -89,6 +95,8 @@ public:
 	bool create(Player* player, unsigned int sessionkey);
 
 	bool validateName(string& name);
+
+	BaseMessage* attemptPlayerCreation(Player* player, ZoneClient* client);
 
 	Player* load(unsigned long long charid);
 
