@@ -48,6 +48,7 @@ which carries forward this exception.
 #include "engine/engine.h"
 
 #include "SkillList.h"
+#include "performance/PerformanceManager.h"
 
 class SkillBox;
 class Player;
@@ -61,6 +62,7 @@ class SkillManager {
 	SkillList combatActions;
 	ScriptAttacksManager* scr;
 	ProfessionManager* professionManager; 
+	PerformanceManager* performanceManager;
 	
 public:
 
@@ -73,6 +75,9 @@ public:
 	void removeSkillBox(SkillBox* skillBox, PlayerImplementation* player, bool updateClient = false);
 		
 	Skill* getSkill(const string& name);
+	
+	Performance* getDance(const string& name);
+	Performance* getSong(const string& name, int instrumentType);
 	
 private:
 	void loadSkillCommands(SkillBox* skillBox, PlayerImplementation* player, bool updateClient);

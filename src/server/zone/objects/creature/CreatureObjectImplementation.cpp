@@ -62,6 +62,7 @@ which carries forward this exception.
 #include "../tangible/weapons/Weapon.h"
 #include "../tangible/wearables/Armor.h"
 #include "../tangible/instrument/Instrument.h"
+#include "../tangible/instrument/InstrumentImplementation.h"
 #include "../tangible/inventory/CreatureInventory.h"
 
 #include "../tangible/appearance/HairObject.h"
@@ -80,8 +81,9 @@ which carries forward this exception.
 #include "../building/BuildingObject.h"
 
 #include "skills/PassiveSkill.h"
+#include "skills/EntertainerSkill.h"
 
-#include "skills/EntertainerSkills.h"
+#include "../../managers/skills/SkillManager.h"
 
 CreatureObjectImplementation::CreatureObjectImplementation(uint64 oid) : CreatureObjectServant(oid + 0x15) {
 	objectType = NONPLAYERCREATURE;
@@ -191,6 +193,7 @@ CreatureObjectImplementation::CreatureObjectImplementation(uint64 oid) : Creatur
 	performanceCounter = 0;
 	
 	instrumentID = 0;
+	performanceName = "";
 	
 	doDancing = false;
 	doPlayingMusic = false;
@@ -2228,6 +2231,7 @@ void CreatureObjectImplementation::startDancing(const string& anim) {
 			else
 				dance << anim;
 			
+			
 			if(player->getSkill(dance.str()) == NULL) {
 				sendSystemMessage("performance", "dance_lack_skill_self");
 				return;
@@ -2235,49 +2239,47 @@ void CreatureObjectImplementation::startDancing(const string& anim) {
 		}
 	}
 	
-	//sendSystemMessage("anim: " + anim);
-	
-	if (anim == "basic" || "basic" == availableDances.get(atoi(anim.c_str()))) { // anim == "0"
+	if (anim == "basic" || (isdigit(anim[0]) && "basic" == availableDances.get(atoi(anim.c_str())))) { // anim == "0"
 		sendEntertainingUpdate(0x3C4CCCCD, "dance_1", 0x07339FF8, 0xDD);
-	} else if (anim == "rhythmic" || "rhythmic" == availableDances.get(atoi(anim.c_str()))) {
+	} else if (anim == "rhythmic" || (isdigit(anim[0]) && "rhythmic" == availableDances.get(atoi(anim.c_str())))) {
 		sendEntertainingUpdate(0x3C4CCCCD, "dance_3", 0x07339FF8, 0xDD);
-	} else if (anim == "basic2" || "basic2" == availableDances.get(atoi(anim.c_str()))) {
+	} else if (anim == "basic2" || (isdigit(anim[0]) && "basic2" == availableDances.get(atoi(anim.c_str())))) {
 		sendEntertainingUpdate(0x3C4CCCCD, "dance_2", 0x07339FF8, 0xDD);
-	} else if (anim == "rhythmic2" || "rhythmic2" == availableDances.get(atoi(anim.c_str()))) {
+	} else if (anim == "rhythmic2" || (isdigit(anim[0]) && "rhythmic2" == availableDances.get(atoi(anim.c_str())))) {
 		sendEntertainingUpdate(0x3C4CCCCD, "dance_4", 0x07339FF8, 0xDD);
-	} else if (anim == "footloose" || "footloose" == availableDances.get(atoi(anim.c_str()))) {
+	} else if (anim == "footloose" || (isdigit(anim[0]) && "footloose" == availableDances.get(atoi(anim.c_str())))) {
 		sendEntertainingUpdate(0x3C4CCCCD, "dance_15", 0x07339FF8, 0xDD);
-	} else if (anim == "formal" || "forma" == availableDances.get(atoi(anim.c_str()))) {
+	} else if (anim == "formal" || (isdigit(anim[0]) && "forma" == availableDances.get(atoi(anim.c_str())))) {
 		sendEntertainingUpdate(0x3C4CCCCD, "dance_17", 0x07339FF8, 0xDD);
-	} else if (anim == "footloose2" || "footloose2" == availableDances.get(atoi(anim.c_str()))) {
+	} else if (anim == "footloose2" || (isdigit(anim[0]) && "footloose2" == availableDances.get(atoi(anim.c_str())))) {
 		sendEntertainingUpdate(0x3C4CCCCD, "dance_16", 0x07339FF8, 0xDD);
-	} else if (anim == "formal2" || "formal2" == availableDances.get(atoi(anim.c_str()))) {
+	} else if (anim == "formal2" || (isdigit(anim[0]) && "formal2" == availableDances.get(atoi(anim.c_str())))) {
 		sendEntertainingUpdate(0x3C4CCCCD, "dance_18", 0x07339FF8, 0xDD);
-	} else if (anim == "popular" || "popular" == availableDances.get(atoi(anim.c_str()))) {
+	} else if (anim == "popular" || (isdigit(anim[0]) && "popular" == availableDances.get(atoi(anim.c_str())))) {
 		sendEntertainingUpdate(0x3C4CCCCD, "dance_9", 0x07339FF8, 0xDD);
-	} else if (anim == "poplock" || "poplock" == availableDances.get(atoi(anim.c_str()))) {
+	} else if (anim == "poplock" || (isdigit(anim[0]) && "poplock" == availableDances.get(atoi(anim.c_str())))) {
 		sendEntertainingUpdate(0x3C4CCCCD, "dance_13", 0x07339FF8, 0xDD);
-	} else if (anim == "popular2" || "popular2" == availableDances.get(atoi(anim.c_str()))) {
+	} else if (anim == "popular2" || (isdigit(anim[0]) && "popular2" == availableDances.get(atoi(anim.c_str())))) {
 		sendEntertainingUpdate(0x3C4CCCCD, "dance_10", 0x07339FF8, 0xDD);
-	} else if (anim == "poplock2" || "poplock2" == availableDances.get(atoi(anim.c_str()))) {
+	} else if (anim == "poplock2" || (isdigit(anim[0]) && "poplock2" == availableDances.get(atoi(anim.c_str())))) {
 		sendEntertainingUpdate(0x3C4CCCCD, "dance_14", 0x07339FF8, 0xDD);
-	} else if (anim == "lyrical" || "lyrical" == availableDances.get(atoi(anim.c_str()))) {
+	} else if (anim == "lyrical" || (isdigit(anim[0]) && "lyrical" == availableDances.get(atoi(anim.c_str())))) {
 		sendEntertainingUpdate(0x3C4CCCCD, "dance_11", 0x07339FF8, 0xDD);
-	} else if (anim == "exotic" || "exotic" == availableDances.get(atoi(anim.c_str()))) {
+	} else if (anim == "exotic" || (isdigit(anim[0]) && "exotic" == availableDances.get(atoi(anim.c_str())))) {
 		sendEntertainingUpdate(0x3C4CCCCD, "dance_5", 0x07339FF8, 0xDD);
-	} else if (anim == "exotic2" || "exoitic2" == availableDances.get(atoi(anim.c_str()))) {
+	} else if (anim == "exotic2" || (isdigit(anim[0]) && "exoitic2" == availableDances.get(atoi(anim.c_str())))) {
 		sendEntertainingUpdate(0x3C4CCCCD, "dance_6", 0x07339FF8, 0xDD);
-	} else if (anim == "lyrical2" || "lyrical2" == availableDances.get(atoi(anim.c_str()))) {
+	} else if (anim == "lyrical2" || (isdigit(anim[0]) && "lyrical2" == availableDances.get(atoi(anim.c_str())))) {
 		sendEntertainingUpdate(0x3C4CCCCD, "dance_12", 0x07339FF8, 0xDD);
-	} else if (anim == "exotic3" || "exotic3" == availableDances.get(atoi(anim.c_str()))) {
+	} else if (anim == "exotic3" || (isdigit(anim[0]) && "exotic3" == availableDances.get(atoi(anim.c_str())))) {
 		sendEntertainingUpdate(0x3C4CCCCD, "dance_7", 0x07339FF8, 0xDD);
-	} else if (anim == "exotic4" || "exotic4" == availableDances.get(atoi(anim.c_str()))) {
+	} else if (anim == "exotic4" || (isdigit(anim[0]) && "exotic4" == availableDances.get(atoi(anim.c_str())))) {
 		sendEntertainingUpdate(0x3C4CCCCD, "dance_8", 0x07339FF8, 0xDD);
-	} else if (anim == "theatrical" || "theatrical" == availableDances.get(atoi(anim.c_str()))) {
+	} else if (anim == "theatrical" || (isdigit(anim[0]) && "theatrical" == availableDances.get(atoi(anim.c_str())))) {
 		sendEntertainingUpdate(0x3C4CCCCD, "dance_21", 0x07339FF8, 0xDD);
-	} else if (anim == "theatrical2" || "theatrical2" == availableDances.get(atoi(anim.c_str()))) {
+	} else if (anim == "theatrical2" || (isdigit(anim[0]) && "theatrical2" == availableDances.get(atoi(anim.c_str())))) {
 		sendEntertainingUpdate(0x3C4CCCCD, "dance_22", 0x07339FF8, 0xDD);
-	} else if (anim == "unknown1" || "unknown1" == availableDances.get(atoi(anim.c_str()))) {
+/*	} else if (anim == "unknown1" || "unknown1" == availableDances.get(atoi(anim.c_str()))) {
 		sendEntertainingUpdate(0x3C4CCCCD, "dance_19", 0x07339FF8, 0xDD);
 	} else if (anim == "unknown2" || "unknown2" == availableDances.get(atoi(anim.c_str()))) {
 		sendEntertainingUpdate(0x3C4CCCCD, "dance_20", 0x07339FF8, 0xDD);
@@ -2292,14 +2294,14 @@ void CreatureObjectImplementation::startDancing(const string& anim) {
 	} else if (anim == "unknown7" || "unknown7" == availableDances.get(atoi(anim.c_str()))) {
 		sendEntertainingUpdate(0x3C4CCCCD, "dance_27", 0x07339FF8, 0xDD);
 	} else if (anim == "unknown8" || "unknown8" == availableDances.get(atoi(anim.c_str()))) {
-		sendEntertainingUpdate(0x3C4CCCCD, "dance_28", 0x07339FF8, 0xDD);
-	} else if (anim == "breakdance" || "breakdance" == availableDances.get(atoi(anim.c_str()))) {
+		sendEntertainingUpdate(0x3C4CCCCD, "dance_28", 0x07339FF8, 0xDD);*/
+	} else if (anim == "breakdance" || (isdigit(anim[0]) && "breakdance" == availableDances.get(atoi(anim.c_str())))) {
 		sendEntertainingUpdate(0x3C4CCCCD, "dance_29", 0x07339FF8, 0xDD);
-	} else if (anim == "breakdance2" || "breakdance2" == availableDances.get(atoi(anim.c_str()))) {
+	} else if (anim == "breakdance2" || (isdigit(anim[0]) && "breakdance2" == availableDances.get(atoi(anim.c_str())))) {
 		sendEntertainingUpdate(0x3C4CCCCD, "dance_30", 0x07339FF8, 0xDD);
-	} else if (anim == "tumble" || "tumble" == availableDances.get(atoi(anim.c_str()))) {
+	} else if (anim == "tumble" || (isdigit(anim[0]) && "tumble" == availableDances.get(atoi(anim.c_str())))) {
 		sendEntertainingUpdate(0x3C4CCCCD, "dance_31", 0x07339FF8, 0xDD);
-	} else if (anim == "tumble2" || "tumble2" == availableDances.get(atoi(anim.c_str()))) {
+	} else if (anim == "tumble2" || (isdigit(anim[0]) && "tumble2" == availableDances.get(atoi(anim.c_str())))) {
 		sendEntertainingUpdate(0x3C4CCCCD, "dance_32", 0x07339FF8, 0xDD);
 	} else {
 		sendSystemMessage("performance", "dance_lack_skill_self");
@@ -2308,7 +2310,8 @@ void CreatureObjectImplementation::startDancing(const string& anim) {
 
 	info("started dancing");
 
-	setPosture(9);
+	setPosture(CreatureObjectImplementation::SKILLANIMATING_POSTURE);
+	setPerformanceName(isdigit(anim[0]) ? availableDances.get(atoi(anim.c_str())) : anim);
 	setDancing(true);
 
 	sendSystemMessage("You start dancing.");
@@ -2383,7 +2386,6 @@ void CreatureObjectImplementation::startPlayingMusic(const string& music) {
 		if (player->getSkillBoxesSize() && player->hasSkillBox(skillBox))
 			availableSongs.add("funk"); 
 
-
 		skillBox = "social_musician_knowledge_03";
 		if (player->getSkillBoxesSize() && player->hasSkillBox(skillBox))
 			availableSongs.add("waltz"); 
@@ -2392,8 +2394,7 @@ void CreatureObjectImplementation::startPlayingMusic(const string& music) {
 		if (player->getSkillBoxesSize() && player->hasSkillBox(skillBox))
 			availableSongs.add("jazz");
 
-
-		skillBox = "social_dancer_master";
+		skillBox = "social_musician_master";
 		if (player->getSkillBoxesSize() && player->hasSkillBox(skillBox)) {
 			availableSongs.add("virtuoso");
 			availableSongs.add("western");
@@ -2430,71 +2431,80 @@ void CreatureObjectImplementation::startPlayingMusic(const string& music) {
 		}
 	}
 
-
-
 	int instrid;
-	if (music == "starwars1" || "starwars1" == availableSongs.get(atoi(music.c_str()))) { // music == "0"
+	if (music == "starwars1" || (isdigit(music[0]) && "starwars1" == availableSongs.get(atoi(music.c_str())))) { // music == "0"
 		instrid = 1;
-	} else if (music == "rock" || "rock" == availableSongs.get(atoi(music.c_str()))) {
+	} else if (music == "rock" || (isdigit(music[0]) && "rock" == availableSongs.get(atoi(music.c_str())))) {
 		instrid = 11;
-	} else if (music == "starwars2" || "starwars2" == availableSongs.get(atoi(music.c_str()))) {
+	} else if (music == "starwars2" || (isdigit(music[0]) && "starwars2" == availableSongs.get(atoi(music.c_str())))) {
 		instrid = 21;
-	} else if (music == "folk" || "folk" == availableSongs.get(atoi(music.c_str()))) {
+	} else if (music == "folk" || (isdigit(music[0]) && "folk" == availableSongs.get(atoi(music.c_str())))) {
 		instrid = 31;
-	} else if (music == "starwars3" || "starwars3" == availableSongs.get(atoi(music.c_str()))) {
+	} else if (music == "starwars3" || (isdigit(music[0]) && "starwars3" == availableSongs.get(atoi(music.c_str())))) {
 		instrid = 41;
-	} else if (music == "ceremonial" || "ceremonial" == availableSongs.get(atoi(music.c_str()))) {
+	} else if (music == "ceremonial" || (isdigit(music[0]) && "ceremonial" == availableSongs.get(atoi(music.c_str())))) {
 		instrid = 51;
-	} else if (music == "ballad" || "ballad" == availableSongs.get(atoi(music.c_str()))) {
+	} else if (music == "ballad" || (isdigit(music[0]) && "ballad" == availableSongs.get(atoi(music.c_str())))) {
 		instrid = 61;
-	} else if (music == "waltz" || "waltz" == availableSongs.get(atoi(music.c_str()))) {
+	} else if (music == "waltz" || (isdigit(music[0]) && "waltz" == availableSongs.get(atoi(music.c_str())))) {
 		instrid = 71;
-	} else if (music == "jazz" || "jazz" == availableSongs.get(atoi(music.c_str()))) {
+	} else if (music == "jazz" || (isdigit(music[0]) && "jazz" == availableSongs.get(atoi(music.c_str())))) {
 		instrid = 81;
-	} else if (music == "virtuoso" || "virtuoso" == availableSongs.get(atoi(music.c_str()))) {
+	} else if (music == "virtuoso" || (isdigit(music[0]) && "virtuoso" == availableSongs.get(atoi(music.c_str())))) {
 		instrid = 91;
-	} else if (music == "western" || "western" == availableSongs.get(atoi(music.c_str()))) {
+	} else if (music == "western" || (isdigit(music[0]) && "western" == availableSongs.get(atoi(music.c_str())))) {
 		instrid = 101;
-	} else if (music == "starwars4" || "starwars4" == availableSongs.get(atoi(music.c_str()))) {
+	} else if (music == "starwars4" || (isdigit(music[0]) && "starwars4" == availableSongs.get(atoi(music.c_str())))) {
 		instrid = 111;
-	} else if (music == "funk" || "funk" == availableSongs.get(atoi(music.c_str()))) {
+	} else if (music == "funk" || (isdigit(music[0]) && "funk" == availableSongs.get(atoi(music.c_str())))) {
 		instrid = 121;
 	} else {
 		sendSystemMessage("performance", "music_invalid_song");
 		return;
 	}
 
-	// refactor later to use the consts
+	string instrumentAnimation = "";
+	
 	switch(instrument->getInstrumentType()) {
-		case 0: //SLITHERHORN:
+		case InstrumentImplementation::SLITHERHORN: //SLITHERHORN: yeah!
 			instrid += 0;
+			instrumentAnimation = "music_3";
 			break;
-		case 1: //FIZZ:
+		case InstrumentImplementation::FIZZ: // yeah
 			instrid += 1;
+			instrumentAnimation = "music_3";
 			break;
-		case 2: //FANFAR:
+		case InstrumentImplementation::FANFAR: //FANFAR yeah
 			instrid += 2;
-			break;
-		case 3: //KLOOHORN:
+			instrumentAnimation = "music_3";
+			break;			
+		case InstrumentImplementation::KLOOHORN: // yeah
 			instrid += 3;
+			instrumentAnimation = "music_3";
 			break;
-		case 4: //MANDOVIOL:
+		case InstrumentImplementation::MANDOVIOL: //MANDOVIOL
 			instrid += 4;
+			instrumentAnimation = "music_5";
 			break;
-		case 5: //TRAZ:
+		case InstrumentImplementation::TRAZ: //TRAZ yeah
 			instrid += 5;
+			instrumentAnimation = "music_3";
 			break;
-		case 6: //BANDFILL:
+		case InstrumentImplementation::BANDFILL: // yeah
 			instrid += 6;
+			instrumentAnimation = "music_1";
 			break;
-		case 7: //FLUTEDROOPY:
+		case InstrumentImplementation::FLUTEDROOPY: //
 			instrid += 7;
+			instrumentAnimation = "music_3";
 			break;
-		case 8: //OMNIBOX:
+		case InstrumentImplementation::OMNIBOX: //OMNIBOX:
 			instrid += 8;
+			instrumentAnimation = "music_4";
 			break;
-		case 9: //NALARGON:
+		case InstrumentImplementation::NALARGON: //NALARGON:
 			instrid += 9;
+			instrumentAnimation = "music_3";
 			break;
 		default:
 			sendSystemMessage("Bad instrument type.");
@@ -2504,10 +2514,14 @@ void CreatureObjectImplementation::startPlayingMusic(const string& music) {
 
 	sendSystemMessage("performance", "music_start_self");
 
-	setPosture(9);
+	setPosture(CreatureObjectImplementation::SKILLANIMATING_POSTURE);
+	setPerformanceName(isdigit(music[0]) ? availableSongs.get(atoi(music.c_str())) : music);
 	setPlayingMusic(true);
 
-	sendEntertainingUpdate(0x3C4CCCCD, "music_3", 0x07352BAC, instrid);
+	
+	// instrid instrument->getInstrumentType()
+	sendEntertainingUpdate(0x3C4CCCCD, instrumentAnimation, 0x07352BAC, instrid);
+	
 	
 	// Tick every 10 seconds HAM costs
 	if (isPlayer()) { 
@@ -2521,6 +2535,7 @@ void CreatureObjectImplementation::stopDancing() {
 	info("stopped dancing");
 
 	setDancing(false);
+	setPerformanceName("");
 	sendEntertainingUpdate(0x3F4D70A4, "", 0, 0);
 
 	while (!watchers.isEmpty()) {
@@ -2553,6 +2568,7 @@ void CreatureObjectImplementation::stopPlayingMusic() {
 	info("stopped playing music");
 
 	setPlayingMusic(false);
+	setPerformanceName("");
 	setListenID(0);
 	
 	sendEntertainingUpdate(0x3F4D70A4, "", 0, 0);
@@ -2850,7 +2866,26 @@ void CreatureObjectImplementation::doFlourish(const string& modifier)
 		return;		
 	}
 
-	float baseActionDrain = -40 + (getQuickness() / 37.5);
+	SkillManager* skillManager = server->getSkillManager();
+	Performance* performance = NULL;
+	
+	if(isDancing())
+		performance = skillManager->getDance(getPerformanceName());
+	else if(isPlayingMusic() && getInstrument())
+		performance = skillManager->getSong(getPerformanceName(), getInstrument()->getInstrumentType());
+	else
+		return;
+	
+	if(!performance) { // shouldn't happen
+		stringstream msg;
+		msg << "Performance was null.  Please report to McMahon! Name: " << getPerformanceName() << " and Type: " << dec << getInstrument()->getInstrumentType();
+
+		sendSystemMessage(msg.str());
+		return;
+	}
+	float baseActionDrain =  -1 * performance->getActionPointsPerLoop();
+	
+	//float baseActionDrain = -40 + (getQuickness() / 37.5);
 	float flourishActionDrain = baseActionDrain / 2.0;
 	
 	int actionDrain = (int)round((flourishActionDrain * 10+ 0.5) / 10.0); // Round to nearest dec for actual int cost
@@ -2873,21 +2908,37 @@ void CreatureObjectImplementation::doFlourish(const string& modifier)
 	}	
 }
 
-void CreatureObjectImplementation::doHealBattleFatigue() {
+void CreatureObjectImplementation::doHealShockWounds() {
 	/*if (!isPlayer()) 
 		return;*/
 	
 	int bfAbility = 0;
 	
 	SortedVector<CreatureObject*>* patrons = NULL;
-		
-	if (isDancing()) {
+	SkillManager* skillManager = server->getSkillManager();
+	Performance* performance = NULL;
+	
+	if(isDancing()) {
 		bfAbility = getSkillMod("healing_dance_ability");
+		performance = skillManager->getDance(getPerformanceName());
 		patrons = &watchers;
-	} else if (isPlayingMusic()) {
+	}
+	else if(isPlayingMusic() && getInstrument()) {
 		bfAbility = getSkillMod("healing_music_ability");
 		patrons = &listeners;
+		performance = skillManager->getSong(getPerformanceName(), getInstrument()->getInstrumentType());
+	}	
+	else
+		return;
+	
+	if(!performance) { // shouldn't happen
+		stringstream msg;
+		msg << "Performance was null.  Please report to McMahon! Name: " << getPerformanceName() << " and Type: " << dec << getInstrument()->getInstrumentType();
+
+		sendSystemMessage(msg.str());
+		return;
 	}
+	int shockHeal = -1 * performance->getHealShockWound();
 	
 	if (patrons && patrons->size()) {
 		for (int i = 0; i < patrons->size(); ++i) {
@@ -2897,7 +2948,7 @@ void CreatureObjectImplementation::doHealBattleFatigue() {
 			// 1k BF / 60 = 17 bf/tick for master ent @ 100 skill
 			// skill ability / 100 = modifier from 17
 			//float rate = 10 * 60 / 10
-			int bfHeal = -1 * (int) (17.0f * (bfAbility / 100.0f));
+			//int shockHeal = -1 * (int) (17.0f * (bfAbility / 100.0f));
 			
 			//cout << " doing doHealBattleFatigue on " << obj << "(0x" << obj->getObjectID() << ") healing rate: " << dec << bfHeal;
 			
@@ -2905,7 +2956,7 @@ void CreatureObjectImplementation::doHealBattleFatigue() {
 				if (obj != _this)
 					obj->wlock(_this);
 			
-				obj->changeShockWounds(bfHeal);
+				obj->changeShockWounds(shockHeal);
 				
 				if (obj != _this)
 					obj->unlock();			
@@ -2913,7 +2964,7 @@ void CreatureObjectImplementation::doHealBattleFatigue() {
 				if (obj != _this)
 					obj->unlock();
 				
-				error("Unreported exception in CreatureObjectImplementation::doHealBattleFatigue()");
+				error("Unreported exception in CreatureObjectImplementation::doHealShockWounds()");
 			}
 		}
 	} /*else
@@ -2936,12 +2987,32 @@ void CreatureObjectImplementation::doHealMindWounds() {
 		patrons = &listeners;
 	}
 	
+	SkillManager* skillManager = server->getSkillManager();
+	Performance* performance = NULL;
+	
+	if(isDancing())
+		performance = skillManager->getDance(getPerformanceName());
+	else if(isPlayingMusic() && getInstrument())
+		performance = skillManager->getSong(getPerformanceName(), getInstrument()->getInstrumentType());
+	else
+		return;
+	
+	if(!performance) { // shouldn't happen
+		stringstream msg;
+		msg << "Performance was null.  Please report to McMahon! Name: " << getPerformanceName() << " and Type: " << dec << getInstrument()->getInstrumentType();
+
+		sendSystemMessage(msg.str());
+		return;
+	}
+	int woundHeal = -1 * performance->getHealMindWound();
+
+	
 	if (patrons && patrons->size()) {
 		for (int i = 0; i < patrons->size(); ++i) {
 			CreatureObject* obj = patrons->get(i);
 
 			// 50 as a base rate per 10 sec
-			int woundHeal = -1 * (int)(50.0f * (woundAbility / 100.0f));
+			//int woundHeal = -1 * (int)(50.0f * (woundAbility / 100.0f));
 			//cout << " doing doHealMindWounds on " << obj << "(0x" << obj->getObjectID() << ") healing rate: " << dec << woundHeal;
 			
 			try {
@@ -2963,6 +3034,45 @@ void CreatureObjectImplementation::doHealMindWounds() {
 		cout << "no patrons";*/
 }
 
+
+void CreatureObjectImplementation::doPerformanceAction() {
+	/*if (!isPlayer()) 
+		return;*/
+	
+	SkillManager* skillManager = server->getSkillManager();
+	Performance* performance = NULL;
+	
+	if(isDancing())
+		performance = skillManager->getDance(getPerformanceName());
+	else if(isPlayingMusic() && getInstrument())
+		performance = skillManager->getSong(getPerformanceName(), getInstrument()->getInstrumentType());
+	else
+		return;
+	
+	if(!performance) { // shouldn't happen
+		stringstream msg;
+		msg << "Performance was null.  Please report to McMahon! Name: " << getPerformanceName() << " and Type: " << dec << getInstrument()->getInstrumentType();
+
+		sendSystemMessage(msg.str());
+		return;
+	}
+	int actionDrain = -1 * performance->getActionPointsPerLoop();
+	
+	if (changeActionBar(actionDrain, false)) {		
+		activateRecovery(); 
+	} else {
+		if (isDancing()) {
+			stopDancing();
+			sendSystemMessage("performance", "dance_too_tired");
+		}
+		
+		if (isPlayingMusic()) {
+			stopPlayingMusic();
+			sendSystemMessage("performance", "music_too_tired");
+		}
+	}
+}
+
 void CreatureObjectImplementation::sendEntertainingUpdate(uint32 entval, const string& performance, uint32 perfcntr, int instrid) {
 		if (isPlayer()) {
 			CreatureObjectDeltaMessage4* dcreo4 = new CreatureObjectDeltaMessage4(this);
@@ -2977,13 +3087,13 @@ void CreatureObjectImplementation::sendEntertainingUpdate(uint32 entval, const s
 		}
 			
 		CreatureObjectDeltaMessage6* dcreo6 = new CreatureObjectDeltaMessage6(_this);
-		dcreo6->updatePerformanceName(performance);
+		dcreo6->updatePerformanceAnimation(performance);
 		dcreo6->updatePerformanceCounter(perfcntr);
 		dcreo6->updateInstrumentID(instrid);
 		dcreo6->close();
 		broadcastMessage(dcreo6);
 
-		setPerformanceName(performance);
+		setPerformanceAnimation(performance);
 		setPerformanceCounter(0);
 		setInstrumentID(instrid);
 }

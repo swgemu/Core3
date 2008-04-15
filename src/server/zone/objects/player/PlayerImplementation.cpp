@@ -90,6 +90,7 @@ which carries forward this exception.
 #include "professions/Certification.h"
 
 #include "../../managers/combat/CommandQueueAction.h"
+#include "../../managers/skills/SkillManager.h"
 
 PlayerImplementation::PlayerImplementation() : PlayerServant(0) {
 	init();
@@ -1909,70 +1910,70 @@ void PlayerImplementation::changeWeapon(uint64 itemid) {
 		// Needs to be refactored
 		switch(instrument)
 		{
-		case 1: //SLITHERHORN
+		case InstrumentImplementation::SLITHERHORN: //SLITHERHORN
 			skillBox = "social_entertainer_novice";
 			if (!getSkillBoxesSize() || !hasSkillBox(skillBox)) {
 				sendSystemMessage("You do not have sufficient abilities to equip " + device->getName().c_str() + ".");
 				return;
 			}
 			break;
-		case 2: // FIZZ
+		case InstrumentImplementation::FIZZ: // FIZZ
 			skillBox = "social_entertainer_music_01";
 			if (!getSkillBoxesSize() || !hasSkillBox(skillBox)) {
 				sendSystemMessage("You do not have sufficient abilities to equip " + device->getName().c_str() + ".");
 				return;
 			}
 			break;
-		case 3: // FANFAR
+		case InstrumentImplementation::FANFAR: // FANFAR
 			skillBox = "social_entertainer_music_03";
 			if (!getSkillBoxesSize() || !hasSkillBox(skillBox)) {
 				sendSystemMessage("You do not have sufficient abilities to equip " + device->getName().c_str() + ".");
 				return;
 			}
 			break;
-		case 4: // KLOOHORN
+		case InstrumentImplementation::KLOOHORN: // KLOOHORN
 			skillBox = "social_entertainer_music_04";
 			if (!getSkillBoxesSize() || !hasSkillBox(skillBox)) {
 				sendSystemMessage("You do not have sufficient abilities to equip " + device->getName().c_str() + ".");
 				return;
 			}
 			break;
-		case 5: // MANDOVIOL
+		case InstrumentImplementation::MANDOVIOL: // MANDOVIOL
 			skillBox = "social_entertainer_master";
 			if (!getSkillBoxesSize() || !hasSkillBox(skillBox)) {
 				sendSystemMessage("You do not have sufficient abilities to equip " + device->getName().c_str() + ".");
 				return;
 			}
 			break;
-		case 6: // TRAZ
+		case InstrumentImplementation::TRAZ: // TRAZ
 			skillBox = "social_musician_novice";
 			if (!getSkillBoxesSize() || !hasSkillBox(skillBox)) {
 				sendSystemMessage("You do not have sufficient abilities to equip " + device->getName().c_str() + ".");
 				return;
 			}
 			break;
-		case 7: // BANDFILL
+		case InstrumentImplementation::BANDFILL: // BANDFILL
 			skillBox = "social_musician_knowledge_02";
 			if (!getSkillBoxesSize() || !hasSkillBox(skillBox)) {
 				sendSystemMessage("You do not have sufficient abilities to equip " + device->getName().c_str() + ".");
 				return;
 			}
 			break;
-		case 8: // FLUTEDROOPY
+		case InstrumentImplementation::FLUTEDROOPY: // FLUTEDROOPY
 			skillBox = "social_musician_knowledge_03";
 			if (!getSkillBoxesSize() || !hasSkillBox(skillBox)) {
 				sendSystemMessage("You do not have sufficient abilities to equip " + device->getName().c_str() + ".");
 				return;
 			}
 			break;
-		case 9: // OMNIBOX
+		case InstrumentImplementation::OMNIBOX: // OMNIBOX
 			skillBox = "social_musician_knowledge_04";
 			if (!getSkillBoxesSize() || !hasSkillBox(skillBox)) {
 				sendSystemMessage("You do not have sufficient abilities to equip " + device->getName().c_str() + ".");
 				return;
 			}
 			break;
-		case 10: // NALARGON
+		case InstrumentImplementation::NALARGON: // NALARGON
 			skillBox = "social_musician_master";
 			if (!getSkillBoxesSize() || !hasSkillBox(skillBox)) {
 				sendSystemMessage("You do not have sufficient abilities to equip " + device->getName().c_str() + ".");
@@ -1986,13 +1987,19 @@ void PlayerImplementation::changeWeapon(uint64 itemid) {
 		
 		TangibleObject* item = (TangibleObject*) obj;
 		
+		if (isPlayingMusic())
+			stopPlayingMusic();
+		
 		if (item->isEquipped())
+		{
 			unequipItem(item);
+		}
 		else
 			equipItem(item);
 	} else {
 		TangibleObject* item = (TangibleObject*) obj;
 		
+		sendSystemMessage("triggered here.");
 		if (item->isEquipped())
 			unequipItem(item);
 		else
@@ -2875,9 +2882,29 @@ void PlayerImplementation::newChangeFactionEvent(uint32 faction) {
 	server->addEvent(changeFactionEvent);
 }
 
+
 void PlayerImplementation::setEntertainerEvent() {
 	entertainerEvent = new EntertainerEvent(_this);
-	server->addEvent(entertainerEvent, 10000);
+	
+	SkillManager* skillManager = server->getSkillManager();
+	Performance* performance = NULL;
+	
+	if(isDancing())
+		performance = skillManager->getDance(getPerformanceName());
+	else if(isPlayingMusic() && getInstrument())
+		performance = skillManager->getSong(getPerformanceName(), getInstrument()->getInstrumentType());
+	else
+		return;
+	
+	if(!performance) { // shouldn't happen
+		stringstream msg;
+		msg << "Performance was null in setEntertainerEvent.  Please report to McMahon! Name: " << getPerformanceName() << " and Type: " << dec << getInstrument()->getInstrumentType();
+
+		sendSystemMessage(msg.str());
+		return;
+	}
+	
+	server->addEvent(entertainerEvent, performance->getLoopDuration() * 1000);
 }
 
 void PlayerImplementation::setSurveyEvent(string& resourceName) {

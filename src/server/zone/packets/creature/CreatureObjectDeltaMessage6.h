@@ -396,7 +396,7 @@ public:
 		addAsciiUpdate(0x04, creo->getMood());
 	}
 
-	void updatePerformanceName(string pAnimation) {
+	void updatePerformanceAnimation(string pAnimation) {
 		startUpdate(0x03);
 		insertAscii(pAnimation);	
 	}

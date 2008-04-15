@@ -66,36 +66,15 @@ public:
 				return true; // don't tick action if they aren't doing anything
 			}
 
-			// Heal BF
-			player->doHealBattleFatigue();
-			
+/*			if(player->getParent()->isCell()) - need to check if they're in a valid structure
+				player->sendSystemMessage("call: player->getParent()->isCell() true");
+*/
+			// Heal BF/ShockWounds
+			player->doHealShockWounds();
 			// Heal Mind Wounds
 			player->doHealMindWounds();
-			
-			// Heal Mind Wounds
-			//changeShockWounds
-						
 			// Tick Action
-			float baseActionDrain = -40 + (player->getQuickness() / 37.5);
-			int actionDrain = (int) ((baseActionDrain * 10.0f + 0.5f) / 10.0f); // Round to nearest dec for actual int cost
-
-		    /*stringstream opc;
-			opc << "ActionDrain: " << dec << ActionDrain;
-			player->sendSystemMessage(opc.str());*/
-			
-			if (player->changeActionBar(actionDrain, false)) {		
-				player->activateRecovery(); 
-			} else {
-				if (player->isDancing()) {
-					player->stopDancing();
-					player->sendSystemMessage("You do not have enough action to continue dancing.");
-				}
-				
-				if (player->isPlayingMusic()) {
-					player->stopPlayingMusic();
-					player->sendSystemMessage("You do not have enough action to continue playing.");
-				}
-			}
+			player->doPerformanceAction();
 			
 			player->setEntertainerEvent(); // Renew 10 seconds tick
 			

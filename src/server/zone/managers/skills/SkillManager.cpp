@@ -53,14 +53,21 @@ which carries forward this exception.
 #include "ScriptAttacksManager.h"
 #include "../../ZoneProcessServerImplementation.h"
 
+#include "performance/PerformanceManager.h"
+
 SkillManager::SkillManager(ProfessionManager* profManager) {
 	professionManager = profManager;
 	scr = new ScriptAttacksManager(profManager->getZoneProcessServer());
 	
 	bool load = scr->loadSkillsFile(&combatActions);
+	
+	performanceManager = new PerformanceManager();
 }
 
 SkillManager::~SkillManager() {
+	
+	delete performanceManager;
+	
 	delete scr;
 	
 	combatActions.resetIterator();
@@ -210,3 +217,14 @@ Skill* SkillManager::getSkill(const string& name) {
 	return combatActions.getSkill(name);
 }
 
+Performance* SkillManager::getDance(const string& name) {
+	if(performanceManager == NULL) return NULL; 
+	
+	return performanceManager->getDance(name);
+}
+
+Performance* SkillManager::getSong(const string& name, int instrumentType) {
+	if(performanceManager == NULL) return NULL;
+	
+	return performanceManager->getSong(name, instrumentType);
+}

@@ -53,17 +53,33 @@ class InstrumentImplementation : public InstrumentServant {
 protected:
 	int instrumentType;
 public:
-	static const int SLITHERHORN = 1;
-	static const int FIZZ = 2;
-	static const int FANFAR = 3;
-	static const int KLOOHORN = 4;
-	static const int MANDOVIOL = 5;
-	static const int TRAZ = 6;
-	static const int BANDFILL = 7;
-	static const int FLUTEDROOPY = 8;
-	static const int OMNIBOX = 9;
-	static const int NALARGON = 10;
 	
+	// Redoing consts to match the Audio ID in TRE for instruments
+	
+	/* Redoing instrument consts to match the instrumentAudioId in TRE
+	 * The actual packets for triggering sound is different & in creature
+	 * implementation as well as the appropriate animation for each inst type
+	1	traz
+	2	slitherhorn
+	3	fanfar
+	4	flutedroopy
+	5	kloohorn
+	6	fizz
+	7	bandfill
+	8	omnibox
+	9	nalargon
+	10	mandoviol*/
+
+	static const int TRAZ = 1;
+	static const int SLITHERHORN = 2;
+	static const int FANFAR = 3;
+	static const int FLUTEDROOPY = 4;
+	static const int KLOOHORN = 5;
+	static const int FIZZ = 6;
+	static const int BANDFILL = 7;
+	static const int OMNIBOX = 8;
+	static const int NALARGON = 9;
+	static const int MANDOVIOL = 10;
 	
 public:
 	InstrumentImplementation(Player* player, uint32 tempCRC, const unicode& n, const string& tempn, int insttype) 
@@ -74,7 +90,7 @@ public:
 		
 		string key = "instrumentType";
 		itemAttributes->setIntAttribute(key, instrumentType);
-		
+				
 		templateTypeName = "obj_n";
 		templateName = tempn;
 		
@@ -82,10 +98,10 @@ public:
 			
 	    setContainer((TangibleObject*) player->getInventory(), 0xFFFFFFFF);
 	}
-	
+
 	InstrumentImplementation(uint64 objectid, uint32 tempCRC, const unicode& n, const string& tempn, bool equipd)
 		: InstrumentServant(objectid, INSTRUMENT) {
-
+		
 		objectCRC = tempCRC;
 		
 		templateTypeName = "obj_n";

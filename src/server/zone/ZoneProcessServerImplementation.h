@@ -165,7 +165,6 @@ public:
 	inline NameManager* getNameManager() {
 			return nameManager;
 	}
-	
 };
 
 #endif /*ZONEPROCESSSERVERIMPLEMENTATION_H_*/

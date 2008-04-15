@@ -206,6 +206,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/player/ProfessionManager.cpp \
 		server/zone/managers/skills/SkillManager.cpp \
 		server/zone/managers/skills/ScriptAttacksManager.cpp \
+		server/zone/managers/skills/performance/PerformanceManager.cpp \
 		server/zone/managers/item/ItemManagerImplementation.cpp \
 		server/zone/managers/user/UserManagerImplementation.cpp \
 		server/zone/managers/radial/RadialManager.cpp \

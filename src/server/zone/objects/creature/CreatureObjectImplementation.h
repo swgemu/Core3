@@ -294,10 +294,11 @@ protected:
 	GroupObject* group;
 	
 	// Entertainer stuff
-	string performanceName;
+	string performanceAnimation;
 	uint32 performanceCounter;
+	string performanceName;
 	
-	int instrumentID;
+	int instrumentID; // instrument + song
 	
 	bool doDancing;
 	bool doPlayingMusic;
@@ -767,15 +768,16 @@ public:
 
 	void stopDancing();
 	void stopPlayingMusic();
-	
+		
 	void startWatch(uint64 entid);
 	void startListen(uint64 entid);
 	void stopWatch(uint64 entid, bool doSendPackets = true, bool forced = false, bool doLock = true);
 	void stopListen(uint64 entid, bool doSendPackets = true, bool forced = false, bool doLock = true);
 
 	void doFlourish(const string& modifier = "");
-	void doHealBattleFatigue();
+	void doHealShockWounds();
 	void doHealMindWounds();
+	void doPerformanceAction();
 	
 	// guild methods
 	void sendGuildTo();
@@ -1662,8 +1664,8 @@ public:
 		}
 	}
 	
-	inline string& getPerformanceName() {
-		return performanceName;	
+	inline string& getPerformanceAnimation() {
+		return performanceAnimation;	
 	}
 
 	inline uint32 getPerformanceCounter() {
@@ -1672,6 +1674,10 @@ public:
 	
 	inline int getInstrumentID() {
 		return instrumentID;
+	}
+
+	inline string& getPerformanceName() {
+		return performanceName;	
 	}
 	
 	inline uint32 getSkillBoxesUpdateCounter() {
@@ -1682,8 +1688,8 @@ public:
 		accuracy = acc;
 	}
 	
-	inline void setPerformanceName(const string& performancename) {
-		performanceName = performancename;
+	inline void setPerformanceAnimation(const string& performanceanimation) {
+		performanceAnimation = performanceanimation;
 	}
 	
 	inline void setPerformanceCounter(uint32 performancecounter) {
@@ -1692,6 +1698,10 @@ public:
 	
 	inline void setInstrumentID(int value) {
 		instrumentID = value;	
+	}
+
+	inline void setPerformanceName(const string& performancename) {
+		performanceName = performancename;
 	}
 	
 	inline void setDancing(bool value) {

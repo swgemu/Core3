@@ -408,10 +408,13 @@ interface CreatureObject implements SceneObject {
 	unsigned int getDefenderUpdateCounter();
 	unsigned int getNewDefenderUpdateCounter(int cnt);
 	
-	string getPerformanceName();
+
+	string getPerformanceAnimation();
 	unsigned int getPerformanceCounter();
 	
 	unsigned int getInstrumentID();
+	
+	string getPerformanceName();
 	
 	string getMood();
 	unsigned char getMoodID();
@@ -516,8 +519,9 @@ interface CreatureObject implements SceneObject {
 	void removeWatcher(CreatureObject creature);
 	
 	void doFlourish(const string modifier);
-	void doHealBattleFatigue();
+	void doHealShockWounds();
 	void doHealMindWounds();
+	void doPerformanceAction();
 	
 	void activateRecovery();
 	
