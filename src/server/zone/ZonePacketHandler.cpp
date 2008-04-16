@@ -339,8 +339,9 @@ void ZonePacketHandler::handleClientRandomNameRequest(Message* pack) {
 	
 	string racefile;		
 	pack->parseAscii(racefile);
+	bool notwook = (racefile.find("wookie") == string::npos);
 	
-	BaseMessage* msg = new ClientRandomNameReponse(racefile, nameManager->makeCreatureName());
+	BaseMessage* msg = new ClientRandomNameReponse(racefile, nameManager->makeCreatureName(notwook));
 	client->sendMessage(msg);
 }
 

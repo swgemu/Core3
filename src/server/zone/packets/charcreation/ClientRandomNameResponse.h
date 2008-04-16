@@ -50,10 +50,6 @@ which carries forward this exception.
 class ClientRandomNameReponse : public BaseMessage {
 public:
 	ClientRandomNameReponse(string race_iff, string name) : BaseMessage() {
-		
-		//stringstream random_name; // TODO: Incorporate with ResourceManager to create pretty names
-		//random_name << "Tester" << System::random(10000);
-
 		unicode unicode_name = unicode(name);
 		insertShort(0x04);
 		insertInt(0xE85FB868); //opcode: ClientRandomNameReponse
