@@ -2846,19 +2846,17 @@ void CreatureObjectImplementation::doFlourish(const string& modifier)
 		}		
 	}
 
-	
 	int fid = atoi(modifier.c_str());
 
     if (modifier == "") {
     	sendSystemMessage("performance", "flourish_format");
     	return;
     }
-    	
-    fid = 1; // default a blank flourish to #1
-    
+    	    
     if (fid < 1 || fid > 8) {
     	sendSystemMessage("performance", "flourish_not_valid");
     	sendSystemMessage("performance", "flourish_format");
+    	return;
     }
     
 	if (!isDancing() && !isPlayingMusic()) {
