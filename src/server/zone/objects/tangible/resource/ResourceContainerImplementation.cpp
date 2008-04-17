@@ -100,6 +100,7 @@ void ResourceContainerImplementation::init() {
 	setEntangleResistance(0);
 	string temp = "";
 	setClassSeven(temp);
+	setResourceName(temp);
 }
 
 void ResourceContainerImplementation::sendTo(Player* player, bool doClose) {
@@ -154,6 +155,7 @@ void ResourceContainerImplementation::splitContainer(Player* player, int newQuan
 		
 	if (newQuantity < oldQuantity) {
 		ResourceContainerImplementation* newRco = new ResourceContainerImplementation(player->getNewItemID(), getObjectCRC(), getName(), getTemplateName()); 
+		newRco->setResourceName(getResourceName());
 		newRco->setContents(newQuantity);
 	
 		player->getZone()->getZoneServer()->getResourceManager()->setResourceData(newRco);
@@ -240,6 +242,9 @@ void ResourceContainerImplementation::parseItemAttributes() {
 	
 	temp = "res_class7";
 	res_class7 = itemAttributes->getStringAttribute(temp);
+	
+	temp = "res_name";
+	res_name = itemAttributes->getStringAttribute(temp);
 }
 
 void ResourceContainerImplementation::addAttributes(AttributeListMessage* alm) {
@@ -251,7 +256,7 @@ void ResourceContainerImplementation::addAttributes(AttributeListMessage* alm) {
 	ssQuantity << quantity << "/" << getMaxContents();
 	
 	alm->insertAttribute("resource_contents", ssQuantity.str());
-	alm->insertAttribute("resource_name", name.c_str());
+	alm->insertAttribute("resource_name", res_name);
 
 	alm->insertAttribute("resource_class", res_class7);
 	

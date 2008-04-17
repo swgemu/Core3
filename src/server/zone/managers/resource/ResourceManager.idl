@@ -60,4 +60,5 @@ interface ResourceManager {
 	boolean sendSurveyResources(Player player, int SurveyToolType);
 	
 	void getClassSeven(const string str, string clas);
+	void getResourceContainerName(const string str, string name);
 }

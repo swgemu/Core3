@@ -381,7 +381,7 @@ void ResourceManagerImplementation::sendSampleMessage(Player* player, string& re
 			for (int i = 0; i < inventory->objectsSize(); i++) {
 				TangibleObject* item = (TangibleObject*) inventory->getObject(i);
 				
-				if (item != NULL && item->isResource() && (item->getName().c_str() == resourceName.c_str())) {
+				if (item != NULL && item->isResource() && (((ResourceContainer*)item)->getResourceName().c_str() == resourceName.c_str())) {
 					rco = (ResourceContainer*) item;
 					
 					if (rco->getContents() + resQuantity <= rco->getMaxContents()) {
@@ -421,7 +421,12 @@ void ResourceManagerImplementation::sendSampleMessage(Player* player, string& re
 				}
 				
 				ResourceContainerImplementation* rcio = new ResourceContainerImplementation(player->getNewItemID());
-				unicode resname = unicode(resourceName.c_str());
+				string resname = resourceName.c_str();
+
+				string contName;
+				getResourceContainerName(resname, contName, false);
+				unicode cName = unicode(contName.c_str());
+				rcio->setName(cName);
 				rcio->setResourceName(resname);
 				rcio->setContents(resQuantity);
 				setResourceData(rcio, false);
@@ -459,7 +464,7 @@ void ResourceManagerImplementation::setResourceData(ResourceContainerImplementat
 	// Added by Ritter
 	lock(doLock);
 	
-	string name = resContainer->getName().c_str();
+	string name = resContainer->getResourceName().c_str();
 	ResourceTemplate* resource = resourceMap->get(name);
 	
 	if (resource == NULL) {
@@ -467,6 +472,11 @@ void ResourceManagerImplementation::setResourceData(ResourceContainerImplementat
 		return;
 	}
 
+	string contName;
+	getResourceContainerName(name, contName, false);
+	unicode cName = unicode(contName.c_str());
+	resContainer->setName(cName);
+	
 	resContainer->setResourceID(resource->getResourceID());
 	
 	resContainer->setDecayResistance(resource->getAtt1Stat());
@@ -683,15 +693,37 @@ void ResourceManagerImplementation::sendSurveyResourceStats(Player* player, Vect
 	}
 }
 
-void ResourceManagerImplementation::getClassSeven(const string& resource, string& clas) {
-	lock();
+void ResourceManagerImplementation::getClassSeven(const string& resource, string& clas, bool doLock) {
+	lock(doLock);
 	
 	ResourceTemplate* resTemp = resourceMap->get(resource);
 	
 	if (resTemp != NULL)
 		clas = resTemp->getClass7();
 		
-	unlock();
+	unlock(doLock);
+}
+
+void ResourceManagerImplementation::getResourceContainerName(const string& resource, string& name, bool doLock) {
+	lock(doLock);
+	
+	ResourceTemplate* resTemp = resourceMap->get(resource);
+	
+	if (resTemp != NULL)
+		if ( resTemp->getClass6() != "" )
+			name = resTemp->getClass6();
+		else if ( resTemp->getClass5() != "" )
+			name = resTemp->getClass5();
+		else if ( resTemp->getClass4() != "" )
+			name = resTemp->getClass4();
+		else if ( resTemp->getClass3() != "" )
+			name = resTemp->getClass3();
+		else if ( resTemp->getClass2() != "" )
+			name = resTemp->getClass2();
+		else if ( resTemp->getClass1() != "" )
+			name = resTemp->getClass1();
+			
+	unlock(doLock);
 }
 
 bool ResourceManagerImplementation::isDuplicate(Vector<string>* rList, string& resource) {

@@ -61,7 +61,8 @@ public:
 	
 	bool checkResource(Player* player, string& resourceName, int SurveyToolType, bool doLock = true);
 	
-	void getClassSeven(const string& resource, string& clas);
+	void getClassSeven(const string& resource, string& clas, bool doLock = true);
+	void getResourceContainerName(const string& resource, string& name, bool doLock = true);
 private:
 	void init();
 	

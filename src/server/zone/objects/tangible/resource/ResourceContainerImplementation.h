@@ -70,6 +70,7 @@ private:
 	int res_c;
 	int res_er;
 	string res_class7;
+	string res_name;
 	
 	uint64 resourceID;
 	
@@ -173,14 +174,20 @@ public:
 		itemAttributes->setStringAttribute(temp, str);
 	}
 	
-	inline void setResourceName(unicode& n) {
-		name = unicode(n.c_str());
+	inline void setResourceName(string& str) {
+		res_name = str;
+		string temp = "res_name";
+		itemAttributes->setStringAttribute(temp, str);
 	}
 	
 	inline void setResourceID(uint64 rid) {
 		resourceID = rid;
 		string temp = "resourceID";
 		itemAttributes->setUnsignedLongAttribute(temp, resourceID);
+	}
+	
+	inline void setName(unicode& n) {
+		name = unicode(n.c_str());
 	}
 	
 	inline void setContainerFile(string& tempn) {
@@ -249,6 +256,10 @@ public:
 	
 	inline string& getClassSeven() {
 		return res_class7;
+	}
+	
+	inline string& getResourceName() {
+		return res_name;
 	}
 	
 	inline uint64 getResourceID() {
