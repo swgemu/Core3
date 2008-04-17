@@ -49,13 +49,23 @@ which carries forward this exception.
 #include "../../Zone.h"
 #include "../../ZoneServer.h"
 
+#include "../player/PlayerManager.h"
+
 #include "ItemManagerImplementation.h"
 
+ItemManagerImplementation * ItemManagerImplementation::instance = NULL;
+
 ItemManagerImplementation::ItemManagerImplementation(ZoneServer* serv) :
-	ItemManagerServant() {
+	ItemManagerServant(), Lua() {
 	server = serv;
 
 	nextStaticItemID = 0x90000000;
+	
+	Lua::init();
+	registerFunctions();
+	registerGlobals();
+	runFile("scripts/professions/main.lua");
+	instance = this;
 }
 
 void ItemManagerImplementation::loadStaticWorldObjects() {
@@ -110,13 +120,125 @@ TangibleObject* ItemManagerImplementation::getPlayerItem(Player* player, uint64 
 	return tano;
 }
 
+TangibleObjectImplementation* ItemManagerImplementation::createPlayerObjectTemplate(int objecttype, uint64 objectid, uint32 objectcrc, unicode objectname, char* objecttemp, bool equipped) {
+	
+	TangibleObjectImplementation* item = NULL;
+	
+	if (objecttype & TangibleObjectImplementation::WEAPON || objecttype & TangibleObjectImplementation::LIGHTSABER) {	
+		switch (objecttype) {
+		case TangibleObjectImplementation::MELEEWEAPON:
+			item = new UnarmedMeleeWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
+			break;
+		case TangibleObjectImplementation::ONEHANDMELEEWEAPON:
+			item = new OneHandedMeleeWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
+			break;
+		case TangibleObjectImplementation::TWOHANDMELEEWEAPON:
+			item = new TwoHandedMeleeWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
+			break;
+		case TangibleObjectImplementation::POLEARM:
+			item = new PolearmMeleeWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
+			break;
+		case TangibleObjectImplementation::PISTOL:
+			item = new PistolRangedWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
+			break;
+		case TangibleObjectImplementation::CARBINE:
+			item = new CarbineRangedWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
+			break;
+		case TangibleObjectImplementation::RIFLE:
+			item = new RifleRangedWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
+			break;
+		case TangibleObjectImplementation::ONEHANDSABER:
+			item = new OneHandedJediWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
+			break;
+		case TangibleObjectImplementation::TWOHANDSABER:
+			item = new TwoHandedJediWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
+			break;
+		case TangibleObjectImplementation::POLEARMSABER:
+			item = new PolearmJediWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
+			break;
+		case TangibleObjectImplementation::SPECIALHEAVYWEAPON:
+			item = new SpecialHeavyRangedWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
+			break;
+		case TangibleObjectImplementation::HEAVYWEAPON:
+			item = new HeavyRangedWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
+			break;
+		}
+		
+	} else if (objecttype & TangibleObjectImplementation::CLOTHING) {
+		
+		item = new WearableImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
+
+	} else if (objecttype & TangibleObjectImplementation::ARMOR) {
+			
+		item = new ArmorImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
+
+	} else if (objecttype & TangibleObjectImplementation::MISC) {
+				
+		switch (objecttype) {
+		case TangibleObjectImplementation::TRAVELTICKET:
+				
+			item = new TicketImplementation(objectid, objectcrc, objectname, objecttemp);
+					
+			break;
+		case TangibleObjectImplementation::INSTRUMENT:
+					
+			item = new InstrumentImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
+					
+			break;
+		case TangibleObjectImplementation::CLOTHINGATTACHMENT:
+					
+			item = new AttachmentImplementation(objectid, AttachmentImplementation::CLOTHING);
+
+			break;
+		case TangibleObjectImplementation::ARMORATTACHMENT:
+
+			item = new AttachmentImplementation(objectid, AttachmentImplementation::ARMOR);
+					
+			break;
+		case TangibleObjectImplementation::CRAFTINGSTATION:
+
+			item = new CraftingStationImplementation(objectid, objectcrc, objectname, objecttemp);
+					
+			break;
+			
+		default:
+
+			item = new TangibleObjectImplementation(objectid, objectname, objecttemp, objectcrc);
+							
+			break;
+		}
+	} else if ( objecttype & TangibleObjectImplementation::RESOURCECONTAINER ) {
+				
+		item = new ResourceContainerImplementation(objectid, objectcrc, objectname, objecttemp);
+			
+	} else if (objecttype & TangibleObjectImplementation::TOOL) {
+		switch (objecttype) {
+		case TangibleObjectImplementation::CRAFTINGTOOL:
+			item = new CraftingToolImplementation(objectid, objectcrc, objectname, objecttemp);
+			break;
+		case TangibleObjectImplementation::SURVEYTOOL:
+			item = new SurveyToolImplementation(objectid, objectcrc, objectname, objecttemp);
+			break;
+		case TangibleObjectImplementation::REPAIRTOOL:
+		case TangibleObjectImplementation::CAMPKIT:
+		case TangibleObjectImplementation::SHIPCOMPONENTREPAIRITEM:
+			break;
+		}
+	} else if (objecttype & TangibleObjectImplementation::WEAPONPOWERUP) {
+
+		item = new PowerupImplementation(objectid, objectcrc, objectname, objecttemp);
+	} 
+	
+	return item;
+}
+
 TangibleObject* ItemManagerImplementation::createPlayerObject(Player* player, ResultSet* result) {
 	uint64 objectid = result->getUnsignedLong(0);
 
 	int objecttype = result->getInt(4);
 	uint32 objectcrc = result->getUnsignedInt(3);  
 	
-	unicode objectname(result->getString(2));
+	string objectname = result->getString(2);
 	char* objecttemp = result->getString(5); // template_name
 	
 	string appearance = result->getString(10);
@@ -124,8 +246,6 @@ TangibleObject* ItemManagerImplementation::createPlayerObject(Player* player, Re
 	string custStr;
 	cust.decode(custStr);
 
-	TangibleObjectImplementation* item = NULL;
-	
 	bool equipped = result->getBoolean(7);
 	
 	if (result->getBoolean(8) != 0) // deleted
@@ -133,107 +253,13 @@ TangibleObject* ItemManagerImplementation::createPlayerObject(Player* player, Re
 	
 	string attributes = result->getString(9);
 	
-	if (objecttype & TangibleObjectImplementation::WEAPON || objecttype & TangibleObjectImplementation::LIGHTSABER) {	
-			switch (objecttype) {
-			case TangibleObjectImplementation::MELEEWEAPON:
-				item = new UnarmedMeleeWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
-				break;
-			case TangibleObjectImplementation::ONEHANDMELEEWEAPON:
-				item = new OneHandedMeleeWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
-				break;
-			case TangibleObjectImplementation::TWOHANDMELEEWEAPON:
-				item = new TwoHandedMeleeWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
-				break;
-			case TangibleObjectImplementation::POLEARM:
-				item = new PolearmMeleeWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
-				break;
-			case TangibleObjectImplementation::PISTOL:
-				item = new PistolRangedWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
-				break;
-			case TangibleObjectImplementation::CARBINE:
-				item = new CarbineRangedWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
-				break;
-			case TangibleObjectImplementation::RIFLE:
-				item = new RifleRangedWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
-				break;
-			case TangibleObjectImplementation::ONEHANDSABER:
-				item = new OneHandedJediWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
-				break;
-			case TangibleObjectImplementation::TWOHANDSABER:
-				item = new TwoHandedJediWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
-				break;
-			case TangibleObjectImplementation::POLEARMSABER:
-				item = new PolearmJediWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
-				break;
-			case TangibleObjectImplementation::SPECIALHEAVYWEAPON:
-				item = new SpecialHeavyRangedWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
-				break;
-			case TangibleObjectImplementation::HEAVYWEAPON:
-				item = new HeavyRangedWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
-				break;
-			}
-			
-		} else if (objecttype & TangibleObjectImplementation::CLOTHING) {
-			
-			item = new WearableImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
+	TangibleObjectImplementation* item = createPlayerObjectTemplate(objecttype, objectid, objectcrc, unicode(objectname), objecttemp, equipped);
 
-		} else if (objecttype & TangibleObjectImplementation::ARMOR) {
-		
-			item = new ArmorImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
-
-		} else if (objecttype & TangibleObjectImplementation::MISC) {
-			
-			switch (objecttype) {
-			case TangibleObjectImplementation::TRAVELTICKET:
-				
-				item = new TicketImplementation(objectid, objectcrc, objectname, objecttemp);
-				
-				break;
-			case TangibleObjectImplementation::INSTRUMENT:
-				
-				item = new InstrumentImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
-				
-				break;
-			case TangibleObjectImplementation::CLOTHINGATTACHMENT:
-				
-				item = new AttachmentImplementation(objectid, AttachmentImplementation::CLOTHING);
-
-				break;
-			case TangibleObjectImplementation::ARMORATTACHMENT:
-
-				item = new AttachmentImplementation(objectid, AttachmentImplementation::ARMOR);
-				
-				break;
-			case TangibleObjectImplementation::CRAFTINGSTATION:
-
-				item = new CraftingStationImplementation(objectid, objectcrc, objectname, objecttemp);
-				
-				break;
-			}
-		} else if ( objecttype & TangibleObjectImplementation::RESOURCECONTAINER ) {
-			
-			item = new ResourceContainerImplementation(objectid, objectcrc, objectname, objecttemp);
-		
-		} else if (objecttype & TangibleObjectImplementation::TOOL) {
-			switch (objecttype) {
-			case TangibleObjectImplementation::CRAFTINGTOOL:
-				item = new CraftingToolImplementation(objectid, objectcrc, objectname, objecttemp);
-				break;
-			case TangibleObjectImplementation::SURVEYTOOL:
-				item = new SurveyToolImplementation(objectid, objectcrc, objectname, objecttemp);
-				break;
-			case TangibleObjectImplementation::REPAIRTOOL:
-			case TangibleObjectImplementation::CAMPKIT:
-			case TangibleObjectImplementation::SHIPCOMPONENTREPAIRITEM:
-				break;
-			}
-		} else if (objecttype & TangibleObjectImplementation::WEAPONPOWERUP) {
-
-			item = new PowerupImplementation(objectid, objectcrc, objectname, objecttemp);
-		} 
-	
-	if (item == NULL)
+	if (item == NULL) {
+		cout << "NULL ITEM" << endl;
 		return NULL;
+	}
+		
 	
 	item->setAttributes(attributes);
 	item->parseItemAttributes();
@@ -251,287 +277,255 @@ TangibleObject* ItemManagerImplementation::createPlayerObject(Player* player, Re
 	return tano;
 }
 
-void ItemManagerImplementation::loadDefaultPlayerItems(Player* player) {
-	Weapon* weapon;
-	WeaponImplementation* weaoImpl;
+void ItemManagerImplementation::registerFunctions() {
+	lua_register(getLuaState(), "AddPlayerItem", addPlayerItem);
+	lua_register(getLuaState(), "RunProfessionFile", runProfessionFile);
+}
+
+void ItemManagerImplementation::registerGlobals() {
+	//Object Types
+	setGlobalInt("HAIR", TangibleObjectImplementation::HAIR);
+	setGlobalInt("TERMINAL", TangibleObjectImplementation::TERMINAL);
+	setGlobalInt("TICKETCOLLECTOR", TangibleObjectImplementation::TICKETCOLLECTOR);
+	setGlobalInt("LAIR", TangibleObjectImplementation::LAIR);
+	setGlobalInt("HOLOCRON", TangibleObjectImplementation::HOLOCRON);
+	setGlobalInt("SHIPCOMPONENT", TangibleObjectImplementation::SHIPCOMPONENT);
+	setGlobalInt("ARMOR", TangibleObjectImplementation::ARMOR);
+	setGlobalInt("BODYARMOR", TangibleObjectImplementation::BODYARMOR);
+	setGlobalInt("HEADARMOR", TangibleObjectImplementation::HEADARMOR);
+	setGlobalInt("MISCARMOR", TangibleObjectImplementation::MISCARMOR);
+	setGlobalInt("LEGARMOR", TangibleObjectImplementation::LEGARMOR);
+	setGlobalInt("ARMARMOR", TangibleObjectImplementation::ARMARMOR);
+	setGlobalInt("HANDARMOR", TangibleObjectImplementation::HANDARMOR);
+	setGlobalInt("FOOTARMOR", TangibleObjectImplementation::FOOTARMOR);
+	setGlobalInt("SHIELDGENERATOR", TangibleObjectImplementation::SHIELDGENERATOR);
+	setGlobalInt("DATA", TangibleObjectImplementation::DATA);
+	setGlobalInt("DRAFTSCHEMATIC", TangibleObjectImplementation::DRAFTSCHEMATIC);
+	setGlobalInt("MANUFACTURINGSCHEMATIC", TangibleObjectImplementation::MANUFACTURINGSCHEMATIC);
+	setGlobalInt("MISSIONOBJECT", TangibleObjectImplementation::MISSIONOBJECT);
+	setGlobalInt("TOKEN", TangibleObjectImplementation::TOKEN);
+	setGlobalInt("WAYPOINT", TangibleObjectImplementation::WAYPOINT);
+	setGlobalInt("DATA2", TangibleObjectImplementation::DATA2);
+	setGlobalInt("PETCONTROLDEVICE", TangibleObjectImplementation::PETCONTROLDEVICE);
+	setGlobalInt("VEHICLECONTROLDEVICE", TangibleObjectImplementation::VEHICLECONTROLDEVICE);
+	setGlobalInt("SHIPCONTROLDEVICE", TangibleObjectImplementation::SHIPCONTROLDEVICE);
+	setGlobalInt("DROIDCONTROLDEVICE", TangibleObjectImplementation::DROIDCONTROLDEVICE);
+	setGlobalInt("MISC", TangibleObjectImplementation::MISC);
+	setGlobalInt("AMMUNITION", TangibleObjectImplementation::AMMUNITION);
+	setGlobalInt("CHEMICAL", TangibleObjectImplementation::CHEMICAL);
+	setGlobalInt("CONTAINER", TangibleObjectImplementation::CONTAINER);
+	setGlobalInt("CRAFTINGSTATION", TangibleObjectImplementation::CRAFTINGSTATION);
+	setGlobalInt("ELECTRONICS", TangibleObjectImplementation::ELECTRONICS);
+	setGlobalInt("FLORA", TangibleObjectImplementation::FLORA);
+	setGlobalInt("FOOD", TangibleObjectImplementation::FOOD);
+	setGlobalInt("FURNITURE", TangibleObjectImplementation::FURNITURE);
+	setGlobalInt("INSTRUMENT", TangibleObjectImplementation::INSTRUMENT);
+	setGlobalInt("PHARMACEUTICAL", TangibleObjectImplementation::PHARMACEUTICAL);
+	setGlobalInt("SIGN", TangibleObjectImplementation::SIGN);
+	setGlobalInt("COUNTER", TangibleObjectImplementation::COUNTER);
+	setGlobalInt("FACTORYCRATE", TangibleObjectImplementation::FACTORYCRATE);
+	setGlobalInt("TRAVELTICKET", TangibleObjectImplementation::TRAVELTICKET);
+	setGlobalInt("GENERICITEM", TangibleObjectImplementation::GENERICITEM);
+	setGlobalInt("TRAP", TangibleObjectImplementation::TRAP);
+	setGlobalInt("WEARABLECONTAINER", TangibleObjectImplementation::WEARABLECONTAINER);
+	setGlobalInt("FISHINGPOLE", TangibleObjectImplementation::FISHINGPOLE);
+	setGlobalInt("FISHINGBAIT", TangibleObjectImplementation::FISHINGBAIT);
+	setGlobalInt("DRINK", TangibleObjectImplementation::DRINK);
+	setGlobalInt("FIREWORK", TangibleObjectImplementation::FIREWORK);
+	setGlobalInt("ITEM", TangibleObjectImplementation::ITEM);
+	setGlobalInt("PETMEDECINE", TangibleObjectImplementation::PETMEDECINE);
+	setGlobalInt("FIREWORKSHOW", TangibleObjectImplementation::FIREWORKSHOW);
+	setGlobalInt("CLOTHINGATTACHMENT", TangibleObjectImplementation::CLOTHINGATTACHMENT);
+	setGlobalInt("LIVESAMPLE", TangibleObjectImplementation::LIVESAMPLE);
+	setGlobalInt("ARMORATTACHMENT", TangibleObjectImplementation::ARMORATTACHMENT);
+	setGlobalInt("COMMUNITYCRAFTINGPROJECT", TangibleObjectImplementation::COMMUNITYCRAFTINGPROJECT);
+	setGlobalInt("CRYSTAL", TangibleObjectImplementation::CRYSTAL);
+	setGlobalInt("DROIDPROGRAMMINGCHIP", TangibleObjectImplementation::DROIDPROGRAMMINGCHIP);
+	setGlobalInt("ASTEROID", TangibleObjectImplementation::ASTEROID);
+	setGlobalInt("PILOTCHAIR", TangibleObjectImplementation::PILOTCHAIR);
+	setGlobalInt("OPERATIONSCHAIR", TangibleObjectImplementation::OPERATIONSCHAIR);
+	setGlobalInt("TURRETACCESSLADDER", TangibleObjectImplementation::TURRETACCESSLADDER);
+	setGlobalInt("CONTAINER2", TangibleObjectImplementation::CONTAINER2);
+	setGlobalInt("TOOL", TangibleObjectImplementation::TOOL);
+	setGlobalInt("CRAFTINGTOOL", TangibleObjectImplementation::CRAFTINGTOOL);
+	setGlobalInt("SURVEYTOOL", TangibleObjectImplementation::SURVEYTOOL);
+	setGlobalInt("REPAIRTOOL", TangibleObjectImplementation::REPAIRTOOL);
+	setGlobalInt("CAMPKIT", TangibleObjectImplementation::CAMPKIT);
+	setGlobalInt("SHIPCOMPONENTREPAIRITEM", TangibleObjectImplementation::SHIPCOMPONENTREPAIRITEM);
+	setGlobalInt("VEHICLE", TangibleObjectImplementation::VEHICLE);
+	setGlobalInt("HOVERVEHICLE", TangibleObjectImplementation::HOVERVEHICLE);
+	setGlobalInt("WEAPON", TangibleObjectImplementation::WEAPON);
+	setGlobalInt("MELEEWEAPON", TangibleObjectImplementation::MELEEWEAPON);
+	setGlobalInt("RANGEDWEAPON", TangibleObjectImplementation::RANGEDWEAPON);
+	setGlobalInt("THROWNWEAPON", TangibleObjectImplementation::THROWNWEAPON);
+	setGlobalInt("HEAVYWEAPON", TangibleObjectImplementation::HEAVYWEAPON);
+	setGlobalInt("MINE", TangibleObjectImplementation::MINE);
+	setGlobalInt("SPECIALHEAVYWEAPON", TangibleObjectImplementation::SPECIALHEAVYWEAPON);
+	setGlobalInt("ONEHANDMELEEWEAPON", TangibleObjectImplementation::ONEHANDMELEEWEAPON);
+	setGlobalInt("TWOHANDMELEEWEAPON", TangibleObjectImplementation::TWOHANDMELEEWEAPON);
+	setGlobalInt("POLEARM", TangibleObjectImplementation::POLEARM);
+	setGlobalInt("PISTOL", TangibleObjectImplementation::PISTOL);
+	setGlobalInt("CARBINE", TangibleObjectImplementation::CARBINE);
+	setGlobalInt("RIFLE", TangibleObjectImplementation::RIFLE);
+	setGlobalInt("RESOURCECONTAINER", TangibleObjectImplementation::RESOURCECONTAINER);
+	setGlobalInt("ENERGYGAS", TangibleObjectImplementation::ENERGYGAS);
+	setGlobalInt("ENERGYLIQUID", TangibleObjectImplementation::ENERGYLIQUID);
+	setGlobalInt("ENERGYRADIOACTIVE", TangibleObjectImplementation::ENERGYRADIOACTIVE);
+	setGlobalInt("ENERGYSOLID", TangibleObjectImplementation::ENERGYSOLID);
+	setGlobalInt("INORGANICCHEMICAL", TangibleObjectImplementation::INORGANICCHEMICAL);
+	setGlobalInt("INORGANICGAS", TangibleObjectImplementation::INORGANICGAS);
+	setGlobalInt("INORGANICMINERAL", TangibleObjectImplementation::INORGANICMINERAL);
+	setGlobalInt("WATER", TangibleObjectImplementation::WATER);
+	setGlobalInt("ORGANICFOOD", TangibleObjectImplementation::ORGANICFOOD);
+	setGlobalInt("ORGANICHIDE", TangibleObjectImplementation::ORGANICHIDE);
+	setGlobalInt("ORGANICSTRUCTURAL", TangibleObjectImplementation::ORGANICSTRUCTURAL);
+	setGlobalInt("WEAPONPOWERUP", TangibleObjectImplementation::WEAPONPOWERUP);
+	setGlobalInt("MELEEWEAPONPOWERUP", TangibleObjectImplementation::MELEEWEAPONPOWERUP);
+	setGlobalInt("RANGEDWEAPONPOWERUP", TangibleObjectImplementation::RANGEDWEAPONPOWERUP);
+	setGlobalInt("THROWNWEAPONPOWERUP", TangibleObjectImplementation::THROWNWEAPONPOWERUP);
+	setGlobalInt("HEAVYWEAPONPOWERUP", TangibleObjectImplementation::HEAVYWEAPONPOWERUP);
+	setGlobalInt("MINEPOWERUP", TangibleObjectImplementation::MINEPOWERUP);
+	setGlobalInt("SPECIALHEAVYWEAPONPOWERUP", TangibleObjectImplementation::SPECIALHEAVYWEAPONPOWERUP);
+	setGlobalInt("LIGHTSABER", TangibleObjectImplementation::LIGHTSABER);
+	setGlobalInt("ONEHANDSABER", TangibleObjectImplementation::ONEHANDSABER);
+	setGlobalInt("TWOHANDSABER", TangibleObjectImplementation::TWOHANDSABER);
+	setGlobalInt("POLEARMSABER", TangibleObjectImplementation::POLEARMSABER);
+	setGlobalInt("DEED", TangibleObjectImplementation::DEED);
+	setGlobalInt("BUILDINGDEED", TangibleObjectImplementation::BUILDINGDEED);
+	setGlobalInt("INSTALLATIONDEED", TangibleObjectImplementation::INSTALLATIONDEED);
+	setGlobalInt("PETDEED", TangibleObjectImplementation::PETDEED);
+	setGlobalInt("DROIDDEED", TangibleObjectImplementation::DROIDDEED);
+	setGlobalInt("VEHICLEDEED", TangibleObjectImplementation::VEHICLEDEED);
+	setGlobalInt("CLOTHING", TangibleObjectImplementation::CLOTHING);
+	setGlobalInt("BANDOLIER", TangibleObjectImplementation::BANDOLIER);
+	setGlobalInt("BELT", TangibleObjectImplementation::BELT);
+	setGlobalInt("BODYSUIT", TangibleObjectImplementation::BODYSUIT);
+	setGlobalInt("CAPE", TangibleObjectImplementation::CAPE);
+	setGlobalInt("CLOAK", TangibleObjectImplementation::CLOAK);
+	setGlobalInt("FOOTWEAR", TangibleObjectImplementation::FOOTWEAR);
+	setGlobalInt("DRESS", TangibleObjectImplementation::DRESS);
+	setGlobalInt("HANDWEAR", TangibleObjectImplementation::HANDWEAR);
+	setGlobalInt("EYEWEAR", TangibleObjectImplementation::EYEWEAR);
+	setGlobalInt("HEADWEAR", TangibleObjectImplementation::HEADWEAR);
+	setGlobalInt("JACKET", TangibleObjectImplementation::JACKET);
+	setGlobalInt("PANTS", TangibleObjectImplementation::PANTS);
+	setGlobalInt("ROBE", TangibleObjectImplementation::ROBE);
+	setGlobalInt("SHIRT", TangibleObjectImplementation::SHIRT);
+	setGlobalInt("VEST", TangibleObjectImplementation::VEST);
+	setGlobalInt("WOOKIEGARB", TangibleObjectImplementation::WOOKIEGARB);
+	setGlobalInt("MISCCLOTHING", TangibleObjectImplementation::MISCCLOTHING);
+	setGlobalInt("SKIRT", TangibleObjectImplementation::SKIRT);
+	setGlobalInt("ITHOGARB", TangibleObjectImplementation::ITHOGARB);
 	
-	string certification;
-
-
-	if (player->getRaceFileName().find("wookie") !=string::npos) {
-		
-		// Wookie clothing
-		WearableImplementation* hoodImpl = new WearableImplementation(player, 0xF504D4EC, unicode("Wookie Hood"), "wke_hood_s02", true);
-		player->addInventoryItem(hoodImpl->deploy());
-
-		WearableImplementation* skirtImpl = new WearableImplementation(player, 0x756D77B0, unicode("Wookie Skirt"), "wke_skirt_s02", true);
-		player->addInventoryItem(skirtImpl->deploy());
-		
-		WearableImplementation* shirtImpl = new WearableImplementation(player, 0x7D7652BA, unicode("Wookie Shirt"), "wke_shirt_s02", true);
-		player->addInventoryItem(shirtImpl->deploy());
-
-		
-		// Wookie armor
-		ArmorImplementation	* chestImpl = new ArmorImplementation(player, 0xE11CC6F9, unicode("Kasshyykian Hunting Armor Chestplate"), "armor_kashyyykian_hunting_chest_plate", false);
-		chestImpl->setType(ArmorImplementation::CHEST);
-		player->addInventoryItem(chestImpl->deploy());
-
-		ArmorImplementation* pantsImpl = new ArmorImplementation(player, 0xF198491B, unicode("Kasshyykian Hunting Armor Leggings"), "armor_kashyyykian_hunting_leggings", false);
-		pantsImpl->setType(ArmorImplementation::LEG);
-		player->addInventoryItem(pantsImpl->deploy());
-
-		ArmorImplementation* bracerlImpl = new ArmorImplementation(player, 0x7EBC9404, unicode("Kasshyykian Hunting Armor Bracer"), "armor_kashyyykian_hunting_bracer_l", false);
-		bracerlImpl->setType(ArmorImplementation::BRACERL);
-		player->addInventoryItem(bracerlImpl->deploy());
-
-		ArmorImplementation* bracerrImpl = new ArmorImplementation(player, 0xE69D197, unicode("Kasshyykian Hunting Armor Bracer"), "armor_kashyyykian_hunting_bracer_r", false);
-		bracerrImpl->setType(ArmorImplementation::BRACERR);
-		player->addInventoryItem(bracerrImpl->deploy());
-
-		weaoImpl = new RifleRangedWeaponImplementation(player, "object/weapon/ranged/rifle/shared_rifle_bowcaster.iff", unicode("Bowcaster"), "bowcaster", false);
-		weaoImpl->setDamageType(WeaponImplementation::ENERGY);
-		weaoImpl->setArmorPiercing(WeaponImplementation::HEAVY);
-		player->addInventoryItem(weaoImpl->deploy());
-
-	} else if (player->getRaceFileName().find("ithorian") !=string::npos) {
-		
-		// clothes
-		WearableImplementation* shirtImpl = new WearableImplementation(player, 0xA141D2A4, unicode("Ithorian Shirt"), "ith_shirt_s02", true);
-		player->addInventoryItem(shirtImpl->deploy());
-
-		WearableImplementation* pantsImpl = new WearableImplementation(player, 0x9849E919, unicode("Sexah Pants"), "ith_pants_s02", true);
-		player->addInventoryItem(pantsImpl->deploy());
-
-		WearableImplementation* vestImpl = new WearableImplementation(player, 0xB8CF50D5, unicode("Sexah Vest"), "ith_vest_s02", true);
-		player->addInventoryItem(vestImpl->deploy());
-
-
-		// armors
-		ArmorImplementation	* chestImpl = new ArmorImplementation(player, 0x169D55D8, unicode("Ithorian Sentinel Armor Chestplate"), "ith_armor_s03_chest_plate", false);
-		chestImpl->setType(ArmorImplementation::CHEST);
-		player->addInventoryItem(chestImpl->deploy());
-
-		ArmorImplementation* helmetImpl = new ArmorImplementation(player, 0x24E0753F, unicode("Ithorian Sentinel Armor Helmet"), "ith_armor_s03_helmet", false);
-		helmetImpl->setType(ArmorImplementation::HEAD);
-		player->addInventoryItem(helmetImpl->deploy());
-
-		ArmorImplementation* bootsImpl = new ArmorImplementation(player, 0xECE5898D, unicode("Ithorian Sentinel Armor Boots"), "ith_armor_s03_boots", false);
-		bootsImpl->setType(ArmorImplementation::FOOT);
-		player->addInventoryItem(bootsImpl->deploy());
-
-		ArmorImplementation* glovesImpl = new ArmorImplementation(player, 0x92209437, unicode("Ithorian Sentinel Armor Gloves"), "ith_armor_s03_gloves", false);
-		glovesImpl->setType(ArmorImplementation::HAND);
-		player->addInventoryItem(glovesImpl->deploy());
+	//Armor Piercing
+	setGlobalInt("WEAPON_NONE", WeaponImplementation::NONE);
+	setGlobalInt("WEAPON_LIGHT", WeaponImplementation::LIGHT);
+	setGlobalInt("WEAPON_MEDIUM", WeaponImplementation::MEDIUM);
+	setGlobalInt("WEAPON_HEAVY", WeaponImplementation::HEAVY);
 	
-		ArmorImplementation* pants2Impl = new ArmorImplementation(player, 0x2F35FD70, unicode("Ithorian Sentinel Armor Leggings"), "ith_armor_s03_leggings", false);
-		pants2Impl->setType(ArmorImplementation::LEG);
-		player->addInventoryItem(pants2Impl->deploy());
-
-		ArmorImplementation* biceplImpl = new ArmorImplementation(player, 0x877F6265, unicode("Ithorian Sentinel Armor Bicep"), "ith_armor_s03_bicep_l", false);
-		biceplImpl->setType(ArmorImplementation::BICEPL);
-		player->addInventoryItem(biceplImpl->deploy());
-
-		ArmorImplementation* biceprImpl = new ArmorImplementation(player, 0xF7AA27F6, unicode("Ithorian Sentinel Armor Bicep"), "ith_armor_s03_bicep_r", false);
-		biceprImpl->setType(ArmorImplementation::BICEPR);
-		player->addInventoryItem(biceprImpl->deploy());
-
-		ArmorImplementation* bracerlImpl = new ArmorImplementation(player, 0xA011206F, unicode("Ithorian Sentinel Armor Bracer"), "ith_armor_s03_bracer_l", false);
-		bracerlImpl->setType(ArmorImplementation::BRACERL);
-		player->addInventoryItem(bracerlImpl->deploy());
-
-		ArmorImplementation* bracerrImpl = new ArmorImplementation(player, 0xD0C465FC, unicode("Ithorian Sentinel Armor Bracer"), "ith_armor_s03_bracer_r", false);
-		bracerrImpl->setType(ArmorImplementation::BRACERR);
-		player->addInventoryItem(bracerrImpl->deploy());
-
-	} else {
-		
-		// clothes
-		WearableImplementation* shirtImpl = new WearableImplementation(player, 0x0E08CD84, unicode("Sexah Shirt"), "shirt_s16", true);
-		player->addInventoryItem(shirtImpl->deploy());
-
-		WearableImplementation* pantsImpl = new WearableImplementation(player, 0x1D2E8B9A, unicode("Sexah Pants"), "pants_s21", true);
-		player->addInventoryItem(pantsImpl->deploy());
-
-		WearableImplementation* shoesImpl = new WearableImplementation(player, 0x08878496, unicode("Sexah Shoes"), "shoes_s02", true);
-		player->addInventoryItem(shoesImpl->deploy());
-
-		WearableImplementation* vestImpl = new WearableImplementation(player, 0x717D3696, unicode("Sexah Vest"), "vest_s09", true);
-		player->addInventoryItem(vestImpl->deploy());
-
-		// armors
-		ArmorImplementation	* chestImpl = new ArmorImplementation(player, 0x7B476F26, unicode("Composite Chestplate"), "armor_composite_chestplate", false);
-		chestImpl->setType(ArmorImplementation::CHEST);
-		player->addInventoryItem(chestImpl->deploy());
-
-		ArmorImplementation* helmetImpl = new ArmorImplementation(player, 0x9AF51EAA, unicode("Composite Helmet"), "armor_composite_helmet", false);
-		helmetImpl->setType(ArmorImplementation::HEAD);
-		player->addInventoryItem(helmetImpl->deploy());
-
-		ArmorImplementation* bootsImpl = new ArmorImplementation(player, 0xDB91E9DB, unicode("Composite Boots"), "armor_composite_boots", false);
-		bootsImpl->setType(ArmorImplementation::FOOT);
-		player->addInventoryItem(bootsImpl->deploy());
-
-		ArmorImplementation* glovesImpl = new ArmorImplementation(player, 0x2C35FFA2, unicode("Composite Gloves"), "armor_composite_gloves", false);
-		glovesImpl->setType(ArmorImplementation::HAND);
-		player->addInventoryItem(glovesImpl->deploy());
+	//Damage Type
+	setGlobalInt("WEAPON_KINETIC", WeaponImplementation::KINETIC);
+	setGlobalInt("WEAPON_ENERGY", WeaponImplementation::ENERGY);
+	setGlobalInt("WEAPON_ELECTRICITY", WeaponImplementation::ELECTRICITY);
+	setGlobalInt("WEAPON_STUN", WeaponImplementation::STUN);
+	setGlobalInt("WEAPON_BLAST", WeaponImplementation::BLAST);
+	setGlobalInt("WEAPON_HEAT", WeaponImplementation::HEAT);
+	setGlobalInt("WEAPON_COLD", WeaponImplementation::COLD);
+	setGlobalInt("WEAPON_ACID", WeaponImplementation::ACID);
+	setGlobalInt("WEAPON_LIGHTSABER", WeaponImplementation::LIGHTSABER);
 	
-		ArmorImplementation* pants2Impl = new ArmorImplementation(player, 0xC294C432, unicode("Composite Leggings"), "armor_composite_pants", false);
-		pants2Impl->setType(ArmorImplementation::LEG);
-		player->addInventoryItem(pants2Impl->deploy());
+	//Armor Type
+	setGlobalInt("ARMOR_CHEST", ArmorImplementation::CHEST);
+	setGlobalInt("ARMOR_HAND", ArmorImplementation::HAND);
+	setGlobalInt("ARMOR_BRACERL", ArmorImplementation::BRACERL);
+	setGlobalInt("ARMOR_BICEPL", ArmorImplementation::BICEPL);
+	setGlobalInt("ARMOR_BRACERR", ArmorImplementation::BRACERR);
+	setGlobalInt("ARMOR_BICEPR", ArmorImplementation::BICEPR);
+	setGlobalInt("ARMOR_LEG", ArmorImplementation::LEG);
+	setGlobalInt("ARMOR_FOOT", ArmorImplementation::FOOT);
+	setGlobalInt("ARMOR_HEAD", ArmorImplementation::HEAD);
+	setGlobalInt("ARMOR_BELT", ArmorImplementation::BELT);
+	
+	//Instrument Type
+	setGlobalInt("INSTR_TRAZ", InstrumentImplementation::TRAZ);
+	setGlobalInt("INSTR_SLITHERHORN", InstrumentImplementation::SLITHERHORN);
+	setGlobalInt("INSTR_FANFAR", InstrumentImplementation::FANFAR);
+	setGlobalInt("INSTR_FLUTEDROOPY", InstrumentImplementation::FLUTEDROOPY);
+	setGlobalInt("INSTR_KLOOHORN", InstrumentImplementation::KLOOHORN);
+	setGlobalInt("INSTR_FIZZ", InstrumentImplementation::FIZZ);
+	setGlobalInt("INSTR_BANDFILL", InstrumentImplementation::BANDFILL);
+	setGlobalInt("INSTR_OMNIBOX", InstrumentImplementation::OMNIBOX);
+	setGlobalInt("INSTR_NALARGON", InstrumentImplementation::NALARGON);
+	setGlobalInt("INSTR_MANDOVIOL", InstrumentImplementation::MANDOVIOL);
+}
 
-		ArmorImplementation* biceplImpl = new ArmorImplementation(player, 0x13A4DA11, unicode("Composite Bicep"), "armor_composite_bicep_l", false);
-		biceplImpl->setType(ArmorImplementation::BICEPL);
-		player->addInventoryItem(biceplImpl->deploy());
+int ItemManagerImplementation::runProfessionFile(lua_State* L) {
+	string filename = getStringParameter(L);
+	
+	runFile("scripts/professions/" + filename, L);
+	
+	return 0;
+}
 
-		ArmorImplementation* biceprImpl = new ArmorImplementation(player, 0x63719F82, unicode("Composite Bicep"), "armor_composite_bicep_r", false);
-		biceprImpl->setType(ArmorImplementation::BICEPR);
-		player->addInventoryItem(biceprImpl->deploy());
+int ItemManagerImplementation::addPlayerItem(lua_State * l) {
+	LuaObject item(l);
 
-		ArmorImplementation* bracerlImpl = new ArmorImplementation(player, 0x4DB0192D, unicode("Composite Bracer"), "armor_composite_bracer_l", false);
-		bracerlImpl->setType(ArmorImplementation::BRACERL);
-		player->addInventoryItem(bracerlImpl->deploy());
-
-		ArmorImplementation* bracerrImpl = new ArmorImplementation(player, 0x3D655CBE, unicode("Composite Bracer"), "armor_composite_bracer_r", false);
-		bracerrImpl->setType(ArmorImplementation::BRACERR);
-		player->addInventoryItem(bracerrImpl->deploy());
-
+	if (!item.isValidTable())
+			return 1;
+	
+	Player* player = instance->getPlayerManager()->getPlayer(*(new string(item.getStringField("owner"))));
+	int crc = item.getIntField("objectCRC");
+	string name = item.getStringField("objectName");
+	string templ = item.getStringField("templateName");
+	bool equipped = bool(item.getByteField("equipped"));
+	int type = item.getIntField("objectType");
+	
+	TangibleObjectImplementation* itemImpl = createPlayerObjectTemplate(type, player->getNewItemID(), crc, unicode(name), (char *) templ.c_str(), equipped);
+	itemImpl->setObjectSubType(type);
+	
+	//ADD ATTRIBUTES
+	if (type & TangibleObjectImplementation::ARMOR) {		
+		int armorType = item.getIntField("armorType");
+		
+		((ArmorImplementation*) itemImpl)->setType(armorType);
+	} else if (type & TangibleObjectImplementation::INSTRUMENT) {		
+		int instType = item.getIntField("instrumentType");
+				
+		((InstrumentImplementation*) itemImpl)->setInstrumentType(instType);
+	} else if (type & TangibleObjectImplementation::WEAPON) {
+		int damageType = item.getIntField("damageType");
+		int ap = item.getIntField("armorPiercing");
+		string cert = item.getStringField("certification");
+		
+		((WeaponImplementation*) itemImpl)->setDamageType(damageType);
+		((WeaponImplementation*) itemImpl)->setArmorPiercing(ap);
+		if(!cert.empty())
+			((WeaponImplementation*) itemImpl)->setCert(cert);
 	}
-	
-	// weapons
 
-	//weaoImpl = new PolearmJediWeaponImplementation(player, "object/weapon/melee/polearm/crafted_saber/shared_sword_lightsaber_polearm_s2_gen4.iff", 
-	//deployItemFor(player, weaoImpl, "Weapon");
+	player->addInventoryItem(itemImpl->deploy());
+	
+	return 0;
+}
 
-	weaoImpl = new OneHandedMeleeWeaponImplementation(player, "object/weapon/melee/baton/shared_baton_gaderiffi.iff", unicode("Teh Pwn"), "baton_gaderiffi", false);
-	weaoImpl->setDamageType(WeaponImplementation::KINETIC);
-	weaoImpl->setArmorPiercing(WeaponImplementation::NONE);
-	certification = "cert_baton_gaderiffi";
-	weaoImpl->setCert(certification);
-	player->addInventoryItem(weaoImpl->deploy());
-
-	weaoImpl = new UnarmedMeleeWeaponImplementation(player, "object/weapon/melee/special/shared_vibroknuckler.iff",	unicode("Sticker"), "vibroknuckler", false);
-	certification = "cert_vibroknuckler";
-	weaoImpl->setCert(certification);
-	player->addInventoryItem(weaoImpl->deploy());
-
-	weaoImpl = new RifleRangedWeaponImplementation(player, "object/weapon/ranged/rifle/shared_rifle_t21.iff", unicode("Teh Pwn"), "rifle_t21", false);
-	weaoImpl->setDamageType(WeaponImplementation::ENERGY);
-	weaoImpl->setArmorPiercing(WeaponImplementation::HEAVY);
-	certification = "cert_rifle_t21";
-	weaoImpl->setCert(certification);
-	player->addInventoryItem(weaoImpl->deploy());
-
-	weaoImpl = new PistolRangedWeaponImplementation(player, "object/weapon/ranged/pistol/shared_pistol_cdef.iff", unicode("Teh Pwn Pistol"), "pistol_cdef", false);
-	weaoImpl->setDamageType(WeaponImplementation::ENERGY);
-	weaoImpl->setArmorPiercing(WeaponImplementation::NONE);
-	player->addInventoryItem(weaoImpl->deploy());
-
-	weaoImpl = new CarbineRangedWeaponImplementation(player, "object/weapon/ranged/carbine/shared_carbine_cdef.iff", unicode("Teh Pwn Carbine"), "carbine_cdef", false);
-	weaoImpl->setDamageType(WeaponImplementation::ENERGY);
-	weaoImpl->setArmorPiercing(WeaponImplementation::NONE);
-	player->addInventoryItem(weaoImpl->deploy());
-
-	weaoImpl = new PolearmMeleeWeaponImplementation(player, "object/weapon/melee/polearm/shared_lance_vibrolance.iff", unicode("Teh Pwn Lance"), "lance_vibrolance", false);
-	weaoImpl->setDamageType(WeaponImplementation::ELECTRICITY);
-	weaoImpl->setArmorPiercing(WeaponImplementation::LIGHT);
-	certification = "cert_lance_vibrolance";
-	weaoImpl->setCert(certification);
-	player->addInventoryItem(weaoImpl->deploy());
-
-	weaoImpl = new TwoHandedMeleeWeaponImplementation(player, "object/weapon/melee/2h_sword/shared_2h_sword_maul.iff", unicode("Teh Pwn Battle Hammer"), "2h_sword_battleaxe", false);
-	weaoImpl->setDamageType(WeaponImplementation::BLAST);
-	weaoImpl->setArmorPiercing(WeaponImplementation::MEDIUM);
-	certification = "cert_sword_2h_maul";
-	weaoImpl->setCert(certification);
-	player->addInventoryItem(weaoImpl->deploy());
-
-	// Survey tools
-	SurveyToolImplementation* minSurvImpl = new SurveyToolImplementation(player, 0xAA9AB32C, unicode("Mineral Survey Tool"), "survey_tool_mineral");
-	player->addInventoryItem(minSurvImpl->deploy());
+void ItemManagerImplementation::loadDefaultPlayerItems(Player* player) {
+	string prof = player->getStartingProfession();
+	prof = prof.substr(prof.find_first_of("_") + 1);
 	
-	SurveyToolImplementation* solSurvImpl = new SurveyToolImplementation(player, 0x8B95C48D, unicode("Solar Survey Tool"), "survey_tool_solar");
-	player->addInventoryItem(solSurvImpl->deploy());
-		
-	SurveyToolImplementation* chemSurvImpl = new SurveyToolImplementation(player, 0x85A7C02A, unicode("Chemical Survey Tool"), "survey_tool_chemical");
-	player->addInventoryItem(chemSurvImpl->deploy());
-			
-	SurveyToolImplementation* floSurvImpl = new SurveyToolImplementation(player, 0x4F38AD50, unicode("Flora Survey Tool"), "survey_tool_flora");
-	player->addInventoryItem(floSurvImpl->deploy());
+	string race = player->getRaceFileName();
+	int ls = race.find_last_of("/");
+	int fu = race.find_first_of("_");
+	int dot = race.find_last_of(".");
 	
-	SurveyToolImplementation* gasSurvImpl = new SurveyToolImplementation(player, 0x3F1F6443, unicode("Gas Survey Tool"), "survey_tool_gas");
-	player->addInventoryItem(gasSurvImpl->deploy());
+	string species = race.substr(ls + 1, fu - ls - 1);
+	string sex = race.substr(fu + 1, dot - fu -1);
 	
-	//SurveyToolImplementation* geoSurvImpl = new SurveyToolImplementation(player, 0xAA9AB32C, unicode("Geothermal Survey Tool"), "survey_tool_geothermal");
-	//player->addInventoryItem(geoSurvImpl->deploy());
-
-	SurveyToolImplementation* watSurvImpl = new SurveyToolImplementation(player, 0x81AE2438, unicode("Water Survey Tool"), "survey_tool_water");
-	player->addInventoryItem(watSurvImpl->deploy());
-	
-	SurveyToolImplementation* windSurvImpl = new SurveyToolImplementation(player, 0x21C39BD0, unicode("Wind Survey Tool"), "survey_tool_wind");
-	player->addInventoryItem(windSurvImpl->deploy());
-	
-	// crafting tools
-	/*CraftingToolImplementation* clothingTool = new CraftingToolImplementation(player, 0x2CED1748,	unicode("Clothing and Armor Crafting Tool"), "clothing_tool");
-	player->addInventoryItem(clothingTool->deploy());
- 
-	CraftingToolImplementation* foodTool = new CraftingToolImplementation(player, 0xA9D9972F,	unicode("Food and Chemical Crafting Tool"), "food_tool");
-	player->addInventoryItem(foodTool->deploy());
- 
-	CraftingToolImplementation* genericTool = new CraftingToolImplementation(player, 0x3EE5146D,	unicode("Generic Crafting Tool"), "generic_tool");
-	player->addInventoryItem(genericTool->deploy());
- 
-	CraftingToolImplementation* lightsaberTool = new CraftingToolImplementation(player, 0x2CF24272,	unicode("Lightsaber Crafting Tool"), "jedi_tool");
-	player->addInventoryItem(lightsaberTool->deploy());
- 
-	CraftingToolImplementation* starshipTool = new CraftingToolImplementation(player, 0xAD0E3DB0,	unicode("Starship Crafting Tool"), "space_tool");
-	player->addInventoryItem(starshipTool->deploy());
- 
-	CraftingToolImplementation* structureTool = new CraftingToolImplementation(player, 0xFEDA0435,	unicode("Structure and Furniture Crafting Tool"), "structure_tool");
-	player->addInventoryItem(structureTool->deploy());
- 
-	CraftingToolImplementation* weaponTool = new CraftingToolImplementation(player, 0x64F6D031,	unicode("Weapon Droid and General Item Crafting Tool"), "weapon_tool");
-	player->addInventoryItem(weaponTool->deploy());*/
-	
-	//Slitherhorn
-	InstrumentImplementation* instruImpl = new InstrumentImplementation(player, 0xD2A2E607, unicode("The Pwn Slitherhorn"), "obj_slitherhorn", InstrumentImplementation::SLITHERHORN);
-	player->addInventoryItem(instruImpl->deploy());
-
-	//Fizz
-	instruImpl = new InstrumentImplementation(player, 0xBC38A9B, unicode("The Pwn Fizz"), "obj_fizzz", InstrumentImplementation::FIZZ); 
-	player->addInventoryItem(instruImpl->deploy()); 	 
-	
-	//Fanfar
-	instruImpl = new InstrumentImplementation(player, 0x78A47467, unicode("The Pwn Fanfar"), "obj_fanfar", InstrumentImplementation::FANFAR); 
-	player->addInventoryItem(instruImpl->deploy());  
-	
-	//Kloohorn
-	instruImpl = new InstrumentImplementation(player, 0xFDFBC3BC, unicode("The Pwn Kloohorn"), "obj_kloo_horn", InstrumentImplementation::KLOOHORN); 
-	player->addInventoryItem(instruImpl->deploy()); 
-	
-	//Mandoviol
-	instruImpl = new InstrumentImplementation(player, 0x6A58CECB, unicode("The Pwn Mandoviol"), "obj_mandoviol", InstrumentImplementation::MANDOVIOL); 
-	player->addInventoryItem(instruImpl->deploy());
-	
-	//Traz
-	instruImpl = new InstrumentImplementation(player, 0x179316A2, unicode("The Pwn Traz"), "obj_traz", InstrumentImplementation::TRAZ); 
-	player->addInventoryItem(instruImpl->deploy()); 
-
-	//Bandfill
-	instruImpl = new InstrumentImplementation(player, 0x31FE6B97, unicode("The Pwn Bandfill"), "obj_bandfill", InstrumentImplementation::BANDFILL); 
-	player->addInventoryItem(instruImpl->deploy()); 	 
-	
-	//Flutedroopy
-	instruImpl = new InstrumentImplementation(player, 0x46B975A6, unicode("The Pwn Flutedroopy"), "obj_growdi_flute", InstrumentImplementation::FLUTEDROOPY); 
-	player->addInventoryItem(instruImpl->deploy());
-	
-	//Can't equip these, have you drop them in the world.
-	//Omnibox
-	//instruImpl = new InstrumentImplementation(player, 0x77D28DF3, unicode("The Pwn Omnibox"), "obj_ommni_box", InstrumentImplementation::OMNIBOX); 
-	//player->addInventoryItem(instruImpl->deploy());
-	
-	//Nalargon
-	//instruImpl = new InstrumentImplementation(player, 0x8FC48010, unicode("The Pwn Nalargon"), "obj_nalargon", InstrumentImplementation::NALARGON); 
-	//player->addInventoryItem(instruImpl->deploy()); 
+	LuaFunction createItems(getLuaState(), "createItems", 1);
+	createItems << player->getFirstName();
+	createItems << prof;
+	createItems << species;
+	createItems << sex;
+	callFunction(&createItems);
 }
 
 void ItemManagerImplementation::loadDefaultPlayerDatapadItems(Player* player) {

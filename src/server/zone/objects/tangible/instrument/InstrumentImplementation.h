@@ -124,6 +124,10 @@ public:
 	inline int getInstrumentType() {
 		return instrumentType;	
 	}
+	
+	inline void setInstrumentType(const int type) {
+		instrumentType = type;
+	}
 };
 
 #endif /*INSTRUMENTIMPLEMENTATION_H_*/

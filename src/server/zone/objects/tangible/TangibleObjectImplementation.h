@@ -236,6 +236,7 @@ public:
 	static const int WOOKIEGARB = 0x1000010;
 	static const int MISCCLOTHING = 0x1000011;
 	static const int SKIRT = 0x1000012;
+	static const int ITHOGARB = 0x1000013;
 
 public:
 	TangibleObjectImplementation(uint64 oid, int tp = 0);
@@ -375,6 +376,10 @@ public:
 	inline string& getAttributes() {
 		itemAttributes->getAttributeString(attributeString);
 		return attributeString;
+	}
+	
+	inline void setObjectSubType(const int type) {
+		objectSubType = type;
 	}
 	
 	inline int getObjectSubType() { 

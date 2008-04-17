@@ -61,11 +61,16 @@ class Weapon;
 class Armor;
 class ResourceContainer;
 
-class ItemManagerImplementation : public ItemManagerServant {
+class ItemManagerImplementation : public ItemManagerServant, public Lua {
 	ZoneServer* server;
 	
 	uint64 nextStaticItemID;
 	
+	void registerFunctions();
+	void registerGlobals();
+	static int addPlayerItem(lua_State * l);
+	static int runProfessionFile(lua_State* L);
+	static ItemManagerImplementation * instance;
 public:
 	ItemManagerImplementation(ZoneServer* serv);
 	
@@ -79,6 +84,8 @@ public:
 	void loadDefaultPlayerDatapadItems(Player* player);
 	
 	TangibleObject* createPlayerObject(Player* player, ResultSet* result);
+	static TangibleObjectImplementation * createPlayerObjectTemplate(int objecttype, uint64 objectid, uint32 objectcrc, unicode objectname, char* objecttemp, bool equipped);
+
 	
 	void unloadPlayerItems(Player* player);
 
@@ -96,6 +103,11 @@ public:
 	// setters and getters
 	inline uint64 getNextStaticObjectID() {
 		return ++nextStaticItemID;
+	}
+	
+	inline PlayerManager * getPlayerManager()
+	{
+		return server->getPlayerManager();
 	}
 	
 };
