@@ -421,13 +421,12 @@ void ResourceManagerImplementation::sendSampleMessage(Player* player, string& re
 				}
 				
 				ResourceContainerImplementation* rcio = new ResourceContainerImplementation(player->getNewItemID());
-				string resname = resourceName.c_str();
 
 				string contName;
-				getResourceContainerName(resname, contName, false);
+				getResourceContainerName(resourceName, contName, false);
 				unicode cName = unicode(contName.c_str());
 				rcio->setName(cName);
-				rcio->setResourceName(resname);
+				rcio->setResourceName(resourceName);
 				rcio->setContents(resQuantity);
 				setResourceData(rcio, false);
 				
@@ -464,8 +463,8 @@ void ResourceManagerImplementation::setResourceData(ResourceContainerImplementat
 	// Added by Ritter
 	lock(doLock);
 	
-	string name = resContainer->getResourceName().c_str();
-	ResourceTemplate* resource = resourceMap->get(name);
+	string resourceName = resContainer->getResourceName().c_str();
+	ResourceTemplate* resource = resourceMap->get(resourceName);
 	
 	if (resource == NULL) {
 		unlock(doLock);
@@ -473,7 +472,7 @@ void ResourceManagerImplementation::setResourceData(ResourceContainerImplementat
 	}
 
 	string contName;
-	getResourceContainerName(name, contName, false);
+	getResourceContainerName(resourceName, contName, false);
 	unicode cName = unicode(contName.c_str());
 	resContainer->setName(cName);
 	
