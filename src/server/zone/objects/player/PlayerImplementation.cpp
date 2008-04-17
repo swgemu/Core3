@@ -2904,7 +2904,7 @@ void PlayerImplementation::setEntertainerEvent() {
 		return;
 	}
 	
-	server->addEvent(entertainerEvent, performance->getLoopDuration() * 1000);
+	server->addEvent(entertainerEvent, (uint64) performance->getLoopDuration() * 1000);
 }
 
 void PlayerImplementation::setSurveyEvent(string& resourceName) {

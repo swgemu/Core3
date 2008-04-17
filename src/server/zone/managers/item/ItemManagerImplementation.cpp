@@ -203,7 +203,7 @@ TangibleObjectImplementation* ItemManagerImplementation::createPlayerObjectTempl
 			
 		default:
 
-			item = new TangibleObjectImplementation(objectid, objectname, objecttemp, objectcrc);
+			item = new TangibleObjectImplementation(objectid, objectname, objecttemp, objectcrc, objecttype);
 							
 			break;
 		}
