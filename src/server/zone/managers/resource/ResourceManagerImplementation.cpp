@@ -380,8 +380,7 @@ void ResourceManagerImplementation::sendSampleMessage(Player* player, string& re
 			
 			for (int i = 0; i < inventory->objectsSize(); i++) {
 				TangibleObject* item = (TangibleObject*) inventory->getObject(i);
-				
-				if (item != NULL && item->isResource() && (((ResourceContainer*)item)->getResourceName().c_str() == resourceName.c_str())) {
+				if (item != NULL && item->isResource() && strcmp(((ResourceContainer*)item)->getResourceName().c_str(), resourceName.c_str()) == 0) {
 					rco = (ResourceContainer*) item;
 					
 					if (rco->getContents() + resQuantity <= rco->getMaxContents()) {
@@ -539,7 +538,7 @@ bool ResourceManagerImplementation::checkResource(Player* player, string& resour
 	}
 	
 	if (resource != NULL) {
-		if (resource->getClass2() == class2 || resource->getClass2() == class2re) {		
+		if (strcmp(resource->getClass2().c_str(), class2.c_str()) == 0 || strcmp(resource->getClass2().c_str(), class2re.c_str()) == 0) {		
 			for(int i = resource->getSpawnSize() - 1; i >= 0; i--) {
 				SpawnLocation* sl = resource->getSpawn(i);
 				if (sl->getPlanet() == player->getZoneID()) {
@@ -611,7 +610,7 @@ bool ResourceManagerImplementation::sendSurveyResources(Player* player, int Surv
 
 	for(int i = resourceMap->size() - 1; i > 0; i--) {
 		resource = resourceMap->get(i);
-		if (resource->getSpawnSize() > 0 && (resource->getClass2() == class2 || resource->getClass2() == class2re)) {
+		if (resource->getSpawnSize() > 0 && (strcmp(resource->getClass2().c_str(), class2.c_str()) == 0 || strcmp(resource->getClass2().c_str(), class2re.c_str()) == 0)) {
 			for(int i = resource->getSpawnSize() - 1; i >= 0; i--) {
 				SpawnLocation* sl = resource->getSpawn(i);
 				if (sl->getPlanet() == player->getZoneID()) {
