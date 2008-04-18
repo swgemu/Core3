@@ -1240,6 +1240,8 @@ void ArmorAdapter::setSocket3Value(int value) {
  *	ArmorHelper
  */
 
+ArmorHelper* ArmorHelper::staticInitializer = ArmorHelper::instance();
+
 ArmorHelper::ArmorHelper() {
 	className = "Armor";
 

@@ -43,6 +43,8 @@ public:
 };
 
 class FireworkWorldHelper : public DistributedObjectClassHelper, public Singleton<FireworkWorldHelper> {
+	static FireworkWorldHelper* staticInitializer;
+
 public:
 	FireworkWorldHelper();
 

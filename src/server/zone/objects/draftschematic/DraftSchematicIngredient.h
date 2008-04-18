@@ -66,6 +66,8 @@ public:
 };
 
 class DraftSchematicIngredientHelper : public DistributedObjectClassHelper, public Singleton<DraftSchematicIngredientHelper> {
+	static DraftSchematicIngredientHelper* staticInitializer;
+
 public:
 	DraftSchematicIngredientHelper();
 

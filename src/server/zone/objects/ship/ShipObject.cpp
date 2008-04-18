@@ -811,6 +811,8 @@ float ShipObjectAdapter::getBackshieldCur() {
  *	ShipObjectHelper
  */
 
+ShipObjectHelper* ShipObjectHelper::staticInitializer = ShipObjectHelper::instance();
+
 ShipObjectHelper::ShipObjectHelper() {
 	className = "ShipObject";
 

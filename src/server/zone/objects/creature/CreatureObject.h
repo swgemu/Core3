@@ -9,6 +9,8 @@
 
 #include "engine/service/proto/BaseMessage.h"
 
+#include "engine/service/proto/StandaloneBaseMessage.h"
+
 class SceneObject;
 
 class Inventory;
@@ -518,11 +520,13 @@ public:
 
 	unsigned int getNewDefenderUpdateCounter(int cnt);
 
-	string& getPerformanceName();
+	string& getPerformanceAnimation();
 
 	unsigned int getPerformanceCounter();
 
 	unsigned int getInstrumentID();
+
+	string& getPerformanceName();
 
 	string& getMood();
 
@@ -557,6 +561,8 @@ public:
 	void removeLootItem(unsigned long long oid);
 
 	void broadcastMessage(BaseMessage* msg, int range = 128, bool doLock = true);
+
+	void broadcastMessage(StandaloneBaseMessage* msg, int range = 128, bool doLock = true);
 
 	Inventory* getInventory();
 
@@ -652,9 +658,11 @@ public:
 
 	void doFlourish(const string& modifier);
 
-	void doHealBattleFatigue();
+	void doHealShockWounds();
 
 	void doHealMindWounds();
+
+	void doPerformanceAction();
 
 	void activateRecovery();
 
@@ -694,6 +702,8 @@ protected:
 	string _return_getGuildName;
 
 	string _return_getMood;
+
+	string _return_getPerformanceAnimation;
 
 	string _return_getPerformanceName;
 
@@ -1196,11 +1206,13 @@ public:
 
 	unsigned int getNewDefenderUpdateCounter(int cnt);
 
-	string& getPerformanceName();
+	string& getPerformanceAnimation();
 
 	unsigned int getPerformanceCounter();
 
 	unsigned int getInstrumentID();
+
+	string& getPerformanceName();
 
 	string& getMood();
 
@@ -1235,6 +1247,8 @@ public:
 	void removeLootItem(unsigned long long oid);
 
 	void broadcastMessage(BaseMessage* msg, int range, bool doLock);
+
+	void broadcastMessage(StandaloneBaseMessage* msg, int range, bool doLock);
 
 	Inventory* getInventory();
 
@@ -1330,9 +1344,11 @@ public:
 
 	void doFlourish(const string& modifier);
 
-	void doHealBattleFatigue();
+	void doHealShockWounds();
 
 	void doHealMindWounds();
+
+	void doPerformanceAction();
 
 	void activateRecovery();
 
@@ -1400,6 +1416,8 @@ protected:
 };
 
 class CreatureObjectHelper : public DistributedObjectClassHelper, public Singleton<CreatureObjectHelper> {
+	static CreatureObjectHelper* staticInitializer;
+
 public:
 	CreatureObjectHelper();
 

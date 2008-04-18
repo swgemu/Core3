@@ -43,6 +43,8 @@ public:
 };
 
 class GuildTerminalHelper : public DistributedObjectClassHelper, public Singleton<GuildTerminalHelper> {
+	static GuildTerminalHelper* staticInitializer;
+
 public:
 	GuildTerminalHelper();
 

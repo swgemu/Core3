@@ -36,6 +36,8 @@ public:
 };
 
 class MissionObjectHelper : public DistributedObjectClassHelper, public Singleton<MissionObjectHelper> {
+	static MissionObjectHelper* staticInitializer;
+
 public:
 	MissionObjectHelper();
 

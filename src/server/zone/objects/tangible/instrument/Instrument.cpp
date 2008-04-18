@@ -92,6 +92,8 @@ int InstrumentAdapter::getInstrumentType() {
  *	InstrumentHelper
  */
 
+InstrumentHelper* InstrumentHelper::staticInitializer = InstrumentHelper::instance();
+
 InstrumentHelper::InstrumentHelper() {
 	className = "Instrument";
 

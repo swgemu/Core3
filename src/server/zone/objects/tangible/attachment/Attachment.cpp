@@ -430,6 +430,8 @@ int AttachmentAdapter::getBestSkillMod() {
  *	AttachmentHelper
  */
 
+AttachmentHelper* AttachmentHelper::staticInitializer = AttachmentHelper::instance();
+
 AttachmentHelper::AttachmentHelper() {
 	className = "Attachment";
 

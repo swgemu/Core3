@@ -90,6 +90,8 @@ protected:
 };
 
 class SuiBoxHelper : public DistributedObjectClassHelper, public Singleton<SuiBoxHelper> {
+	static SuiBoxHelper* staticInitializer;
+
 public:
 	SuiBoxHelper();
 

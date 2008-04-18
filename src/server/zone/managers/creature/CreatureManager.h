@@ -36,6 +36,8 @@ public:
 
 	void init();
 
+	void loadCreatures();
+
 	void start();
 
 	void stop();
@@ -77,6 +79,8 @@ public:
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	void init();
+
+	void loadCreatures();
 
 	void start();
 
@@ -121,6 +125,8 @@ protected:
 };
 
 class CreatureManagerHelper : public DistributedObjectClassHelper, public Singleton<CreatureManagerHelper> {
+	static CreatureManagerHelper* staticInitializer;
+
 public:
 	CreatureManagerHelper();
 

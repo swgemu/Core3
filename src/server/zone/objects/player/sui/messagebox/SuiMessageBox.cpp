@@ -72,6 +72,8 @@ BaseMessage* SuiMessageBoxAdapter::generateMessage() {
  *	SuiMessageBoxHelper
  */
 
+SuiMessageBoxHelper* SuiMessageBoxHelper::staticInitializer = SuiMessageBoxHelper::instance();
+
 SuiMessageBoxHelper::SuiMessageBoxHelper() {
 	className = "SuiMessageBox";
 

@@ -646,6 +646,8 @@ unsigned long long ZoneServerAdapter::getNextCreatureID(bool doLock) {
  *	ZoneServerHelper
  */
 
+ZoneServerHelper* ZoneServerHelper::staticInitializer = ZoneServerHelper::instance();
+
 ZoneServerHelper::ZoneServerHelper() {
 	className = "ZoneServer";
 

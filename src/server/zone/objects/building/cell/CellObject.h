@@ -63,6 +63,8 @@ public:
 };
 
 class CellObjectHelper : public DistributedObjectClassHelper, public Singleton<CellObjectHelper> {
+	static CellObjectHelper* staticInitializer;
+
 public:
 	CellObjectHelper();
 

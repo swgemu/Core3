@@ -131,6 +131,8 @@ bool SuiInputBoxAdapter::isFilterBox() {
  *	SuiInputBoxHelper
  */
 
+SuiInputBoxHelper* SuiInputBoxHelper::staticInitializer = SuiInputBoxHelper::instance();
+
 SuiInputBoxHelper::SuiInputBoxHelper() {
 	className = "SuiInputBox";
 

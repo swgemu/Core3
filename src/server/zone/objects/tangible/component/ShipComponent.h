@@ -113,6 +113,8 @@ public:
 };
 
 class ShipComponentHelper : public DistributedObjectClassHelper, public Singleton<ShipComponentHelper> {
+	static ShipComponentHelper* staticInitializer;
+
 public:
 	ShipComponentHelper();
 

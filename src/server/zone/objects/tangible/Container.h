@@ -73,6 +73,8 @@ public:
 };
 
 class ContainerHelper : public DistributedObjectClassHelper, public Singleton<ContainerHelper> {
+	static ContainerHelper* staticInitializer;
+
 public:
 	ContainerHelper();
 

@@ -79,6 +79,8 @@ protected:
 };
 
 class PlayerMapHelper : public DistributedObjectClassHelper, public Singleton<PlayerMapHelper> {
+	static PlayerMapHelper* staticInitializer;
+
 public:
 	PlayerMapHelper();
 

@@ -895,10 +895,8 @@ bool CreatureImplementation::doMovement() {
 	if (dist < maxDistance) {
 		info("reached destintaion");
 		
-		if (aggroedCreature == NULL) {
-			PatrolPoint* coord = patrolPoints.remove(0);
-			delete coord;
-		}
+		if (aggroedCreature == NULL)
+			resetPatrolPoints(false);
 		
 		actualSpeed = 0;
 		
@@ -931,9 +929,20 @@ bool CreatureImplementation::doMovement() {
 		newPositionY = positionY + (actualSpeed * (dy / dist));
 	}
 	
+	if (cellID != 0) {
+		SceneObject* obj = zone->lookupObject(cellID);
+		
+		if (obj == NULL || !obj->isCell()) {
+			resetPatrolPoints(false);
+			
+			actualSpeed = 0;
+			return false;
+		}
+	}
+	
 	nextPosition->setPosition(newPositionX, newPositionZ, newPositionY);
 	nextPosition->setCellID(cellID);
-	
+
 	/*stringstream angleMsg;
 	angleMsg << "angle = " << directionangle * 180 / M_PI << " (" << dx << "," << dy << ")\n";
 	info(angleMsg.str());*/
@@ -1259,10 +1268,10 @@ void CreatureImplementation::addRandomPatrolPoint(float radius, bool doLock) {
 	float angle = (45 + System::random(200)) / 3.14;
 	float distance = radius + System::random((int) radius);
 				
-	positionX += cos(angle) * distance; 
-	positionY += sin(angle) * distance; 
+	float newPositionX = positionX + cos(angle) * distance; 
+	float newPositionY = positionY + sin(angle) * distance; 
 	
-	PatrolPoint* cord = new PatrolPoint(positionX, positionZ, positionY, getParentID());
+	PatrolPoint* cord = new PatrolPoint(newPositionX, positionZ, newPositionY, getParentID());
 	
 	addPatrolPoint(cord, doLock);
 }

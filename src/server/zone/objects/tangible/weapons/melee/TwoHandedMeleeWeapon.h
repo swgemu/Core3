@@ -38,6 +38,8 @@ public:
 };
 
 class TwoHandedMeleeWeaponHelper : public DistributedObjectClassHelper, public Singleton<TwoHandedMeleeWeaponHelper> {
+	static TwoHandedMeleeWeaponHelper* staticInitializer;
+
 public:
 	TwoHandedMeleeWeaponHelper();
 

@@ -897,6 +897,8 @@ void TangibleObjectAdapter::addAttributes(AttributeListMessage* alm) {
  *	TangibleObjectHelper
  */
 
+TangibleObjectHelper* TangibleObjectHelper::staticInitializer = TangibleObjectHelper::instance();
+
 TangibleObjectHelper::TangibleObjectHelper() {
 	className = "TangibleObject";
 

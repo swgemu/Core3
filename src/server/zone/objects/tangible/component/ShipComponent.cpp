@@ -404,6 +404,8 @@ bool ShipComponentAdapter::getCompType() {
  *	ShipComponentHelper
  */
 
+ShipComponentHelper* ShipComponentHelper::staticInitializer = ShipComponentHelper::instance();
+
 ShipComponentHelper::ShipComponentHelper() {
 	className = "ShipComponent";
 

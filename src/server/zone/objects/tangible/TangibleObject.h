@@ -234,6 +234,8 @@ protected:
 };
 
 class TangibleObjectHelper : public DistributedObjectClassHelper, public Singleton<TangibleObjectHelper> {
+	static TangibleObjectHelper* staticInitializer;
+
 public:
 	TangibleObjectHelper();
 

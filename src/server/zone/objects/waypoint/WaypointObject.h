@@ -77,6 +77,8 @@ protected:
 };
 
 class WaypointObjectHelper : public DistributedObjectClassHelper, public Singleton<WaypointObjectHelper> {
+	static WaypointObjectHelper* staticInitializer;
+
 public:
 	WaypointObjectHelper();
 

@@ -257,6 +257,8 @@ void BazaarManagerAdapter::getItemAttributes(Player* player, unsigned long long 
  *	BazaarManagerHelper
  */
 
+BazaarManagerHelper* BazaarManagerHelper::staticInitializer = BazaarManagerHelper::instance();
+
 BazaarManagerHelper::BazaarManagerHelper() {
 	className = "BazaarManager";
 

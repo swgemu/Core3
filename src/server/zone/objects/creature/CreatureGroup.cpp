@@ -93,6 +93,8 @@ void CreatureGroupAdapter::setTarget(CreatureObject* targ) {
  *	CreatureGroupHelper
  */
 
+CreatureGroupHelper* CreatureGroupHelper::staticInitializer = CreatureGroupHelper::instance();
+
 CreatureGroupHelper::CreatureGroupHelper() {
 	className = "CreatureGroup";
 

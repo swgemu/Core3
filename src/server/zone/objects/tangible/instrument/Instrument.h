@@ -49,6 +49,8 @@ public:
 };
 
 class InstrumentHelper : public DistributedObjectClassHelper, public Singleton<InstrumentHelper> {
+	static InstrumentHelper* staticInitializer;
+
 public:
 	InstrumentHelper();
 

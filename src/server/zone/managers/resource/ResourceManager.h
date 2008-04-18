@@ -40,6 +40,8 @@ public:
 
 	void getClassSeven(const string& str, string& clas);
 
+	void getResourceContainerName(const string& str, string& name);
+
 protected:
 	friend class ResourceManagerHelper;
 };
@@ -70,15 +72,21 @@ public:
 
 	void getClassSeven(const string& str, string& clas);
 
+	void getResourceContainerName(const string& str, string& name);
+
 protected:
 	string _param1_checkResource__Player_string_int_;
 	string _param1_sendSurveyMessage__Player_string_;
 	string _param1_sendSampleMessage__Player_string_;
 	string _param0_getClassSeven__string_string_;
 	string _param1_getClassSeven__string_string_;
+	string _param0_getResourceContainerName__string_string_;
+	string _param1_getResourceContainerName__string_string_;
 };
 
 class ResourceManagerHelper : public DistributedObjectClassHelper, public Singleton<ResourceManagerHelper> {
+	static ResourceManagerHelper* staticInitializer;
+
 public:
 	ResourceManagerHelper();
 

@@ -287,6 +287,8 @@ public:
 };
 
 class ArmorHelper : public DistributedObjectClassHelper, public Singleton<ArmorHelper> {
+	static ArmorHelper* staticInitializer;
+
 public:
 	ArmorHelper();
 

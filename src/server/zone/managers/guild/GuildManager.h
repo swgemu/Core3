@@ -84,6 +84,8 @@ protected:
 };
 
 class GuildManagerHelper : public DistributedObjectClassHelper, public Singleton<GuildManagerHelper> {
+	static GuildManagerHelper* staticInitializer;
+
 public:
 	GuildManagerHelper();
 

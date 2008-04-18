@@ -251,6 +251,8 @@ void PlayerMapAdapter::unlock() {
  *	PlayerMapHelper
  */
 
+PlayerMapHelper* PlayerMapHelper::staticInitializer = PlayerMapHelper::instance();
+
 PlayerMapHelper::PlayerMapHelper() {
 	className = "PlayerMap";
 

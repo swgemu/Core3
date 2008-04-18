@@ -217,6 +217,8 @@ void SurveyToolAdapter::sampleRequest(Player* player, unicode& resourceName) {
  *	SurveyToolHelper
  */
 
+SurveyToolHelper* SurveyToolHelper::staticInitializer = SurveyToolHelper::instance();
+
 SurveyToolHelper::SurveyToolHelper() {
 	className = "SurveyTool";
 

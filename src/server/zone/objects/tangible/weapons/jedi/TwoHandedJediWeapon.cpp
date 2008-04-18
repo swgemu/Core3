@@ -53,6 +53,8 @@ Packet* TwoHandedJediWeaponAdapter::invokeMethod(uint32 methid, DistributedMetho
  *	TwoHandedJediWeaponHelper
  */
 
+TwoHandedJediWeaponHelper* TwoHandedJediWeaponHelper::staticInitializer = TwoHandedJediWeaponHelper::instance();
+
 TwoHandedJediWeaponHelper::TwoHandedJediWeaponHelper() {
 	className = "TwoHandedJediWeapon";
 

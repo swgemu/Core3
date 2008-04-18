@@ -51,6 +51,8 @@ Packet* ManufactureSchematicAdapter::invokeMethod(uint32 methid, DistributedMeth
  *	ManufactureSchematicHelper
  */
 
+ManufactureSchematicHelper* ManufactureSchematicHelper::staticInitializer = ManufactureSchematicHelper::instance();
+
 ManufactureSchematicHelper::ManufactureSchematicHelper() {
 	className = "ManufactureSchematic";
 

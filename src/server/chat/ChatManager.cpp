@@ -813,6 +813,8 @@ bool ChatManagerAdapter::isMute() {
  *	ChatManagerHelper
  */
 
+ChatManagerHelper* ChatManagerHelper::staticInitializer = ChatManagerHelper::instance();
+
 ChatManagerHelper::ChatManagerHelper() {
 	className = "ChatManager";
 

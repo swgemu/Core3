@@ -51,6 +51,8 @@ Packet* MissionObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
  *	MissionObjectHelper
  */
 
+MissionObjectHelper* MissionObjectHelper::staticInitializer = MissionObjectHelper::instance();
+
 MissionObjectHelper::MissionObjectHelper() {
 	className = "MissionObject";
 

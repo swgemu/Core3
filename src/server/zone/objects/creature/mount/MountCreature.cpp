@@ -306,6 +306,8 @@ bool MountCreatureAdapter::isInWorld() {
  *	MountCreatureHelper
  */
 
+MountCreatureHelper* MountCreatureHelper::staticInitializer = MountCreatureHelper::instance();
+
 MountCreatureHelper::MountCreatureHelper() {
 	className = "MountCreature";
 

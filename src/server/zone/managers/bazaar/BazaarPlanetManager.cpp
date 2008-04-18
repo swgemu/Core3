@@ -161,6 +161,8 @@ void BazaarPlanetManagerAdapter::getBazaarData(Player* player, long long objecti
  *	BazaarPlanetManagerHelper
  */
 
+BazaarPlanetManagerHelper* BazaarPlanetManagerHelper::staticInitializer = BazaarPlanetManagerHelper::instance();
+
 BazaarPlanetManagerHelper::BazaarPlanetManagerHelper() {
 	className = "BazaarPlanetManager";
 

@@ -59,6 +59,8 @@ public:
 };
 
 class StaticObjectHelper : public DistributedObjectClassHelper, public Singleton<StaticObjectHelper> {
+	static StaticObjectHelper* staticInitializer;
+
 public:
 	StaticObjectHelper();
 

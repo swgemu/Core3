@@ -116,6 +116,8 @@ void RecruiterCreatureAdapter::selectConversationOption(int option, SceneObject*
  *	RecruiterCreatureHelper
  */
 
+RecruiterCreatureHelper* RecruiterCreatureHelper::staticInitializer = RecruiterCreatureHelper::instance();
+
 RecruiterCreatureHelper::RecruiterCreatureHelper() {
 	className = "RecruiterCreature";
 

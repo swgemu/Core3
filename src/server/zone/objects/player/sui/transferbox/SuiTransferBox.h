@@ -57,6 +57,8 @@ protected:
 };
 
 class SuiTransferBoxHelper : public DistributedObjectClassHelper, public Singleton<SuiTransferBoxHelper> {
+	static SuiTransferBoxHelper* staticInitializer;
+
 public:
 	SuiTransferBoxHelper();
 

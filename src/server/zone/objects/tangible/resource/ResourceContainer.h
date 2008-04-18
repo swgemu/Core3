@@ -66,9 +66,11 @@ public:
 
 	void setClassSeven(string& str);
 
-	void setResourceName(unicode& n);
+	void setResourceName(string& str);
 
 	void setContainerFile(string& tempn);
+
+	void setName(unicode& n);
 
 	void setObjectCRC(int tempCRC);
 
@@ -102,12 +104,16 @@ public:
 
 	string& getClassSeven();
 
+	string& getResourceName();
+
 	unsigned long long getResourceID();
 
 	int getMaxContents();
 
 protected:
 	string _return_getClassSeven;
+
+	string _return_getResourceName;
 
 
 	friend class ResourceContainerHelper;
@@ -159,9 +165,11 @@ public:
 
 	void setClassSeven(string& str);
 
-	void setResourceName(unicode& n);
+	void setResourceName(string& str);
 
 	void setContainerFile(string& tempn);
+
+	void setName(unicode& n);
 
 	void setObjectCRC(int tempCRC);
 
@@ -195,17 +203,22 @@ public:
 
 	string& getClassSeven();
 
+	string& getResourceName();
+
 	unsigned long long getResourceID();
 
 	int getMaxContents();
 
 protected:
 	string _param0_setClassSeven__string_;
-	unicode _param0_setResourceName__unicode_;
+	string _param0_setResourceName__string_;
 	string _param0_setContainerFile__string_;
+	unicode _param0_setName__unicode_;
 };
 
 class ResourceContainerHelper : public DistributedObjectClassHelper, public Singleton<ResourceContainerHelper> {
+	static ResourceContainerHelper* staticInitializer;
+
 public:
 	ResourceContainerHelper();
 

@@ -252,6 +252,8 @@ unsigned int IntangibleObjectAdapter::getStatus() {
  *	IntangibleObjectHelper
  */
 
+IntangibleObjectHelper* IntangibleObjectHelper::staticInitializer = IntangibleObjectHelper::instance();
+
 IntangibleObjectHelper::IntangibleObjectHelper() {
 	className = "IntangibleObject";
 

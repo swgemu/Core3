@@ -53,6 +53,8 @@ Packet* OneHandedJediWeaponAdapter::invokeMethod(uint32 methid, DistributedMetho
  *	OneHandedJediWeaponHelper
  */
 
+OneHandedJediWeaponHelper* OneHandedJediWeaponHelper::staticInitializer = OneHandedJediWeaponHelper::instance();
+
 OneHandedJediWeaponHelper::OneHandedJediWeaponHelper() {
 	className = "OneHandedJediWeapon";
 

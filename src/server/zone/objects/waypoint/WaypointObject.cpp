@@ -208,6 +208,8 @@ string& WaypointObjectAdapter::getPlanetName() {
  *	WaypointObjectHelper
  */
 
+WaypointObjectHelper* WaypointObjectHelper::staticInitializer = WaypointObjectHelper::instance();
+
 WaypointObjectHelper::WaypointObjectHelper() {
 	className = "WaypointObject";
 

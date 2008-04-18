@@ -257,6 +257,8 @@ GuildMap* GuildManagerAdapter::getGuildMap() {
  *	GuildManagerHelper
  */
 
+GuildManagerHelper* GuildManagerHelper::staticInitializer = GuildManagerHelper::instance();
+
 GuildManagerHelper::GuildManagerHelper() {
 	className = "GuildManager";
 

@@ -76,6 +76,8 @@ public:
 };
 
 class ShuttleCreatureHelper : public DistributedObjectClassHelper, public Singleton<ShuttleCreatureHelper> {
+	static ShuttleCreatureHelper* staticInitializer;
+
 public:
 	ShuttleCreatureHelper();
 

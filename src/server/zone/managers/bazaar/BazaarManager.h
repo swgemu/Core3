@@ -79,6 +79,8 @@ protected:
 };
 
 class BazaarManagerHelper : public DistributedObjectClassHelper, public Singleton<BazaarManagerHelper> {
+	static BazaarManagerHelper* staticInitializer;
+
 public:
 	BazaarManagerHelper();
 

@@ -125,6 +125,8 @@ public:
 };
 
 class PowerupHelper : public DistributedObjectClassHelper, public Singleton<PowerupHelper> {
+	static PowerupHelper* staticInitializer;
+
 public:
 	PowerupHelper();
 

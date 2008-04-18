@@ -51,6 +51,8 @@ Packet* LairObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
  *	LairObjectHelper
  */
 
+LairObjectHelper* LairObjectHelper::staticInitializer = LairObjectHelper::instance();
+
 LairObjectHelper::LairObjectHelper() {
 	className = "LairObject";
 

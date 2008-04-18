@@ -191,6 +191,8 @@ unsigned char DraftSchematicExpPropGroupAdapter::getTypeAndWeight(unsigned int i
  *	DraftSchematicExpPropGroupHelper
  */
 
+DraftSchematicExpPropGroupHelper* DraftSchematicExpPropGroupHelper::staticInitializer = DraftSchematicExpPropGroupHelper::instance();
+
 DraftSchematicExpPropGroupHelper::DraftSchematicExpPropGroupHelper() {
 	className = "DraftSchematicExpPropGroup";
 

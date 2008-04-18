@@ -271,6 +271,8 @@ unsigned long long PlanetManagerAdapter::getLandingTime() {
  *	PlanetManagerHelper
  */
 
+PlanetManagerHelper* PlanetManagerHelper::staticInitializer = PlanetManagerHelper::instance();
+
 PlanetManagerHelper::PlanetManagerHelper() {
 	className = "PlanetManager";
 

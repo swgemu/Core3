@@ -531,6 +531,8 @@ void ZoneAdapter::inRange(QuadTreeEntry* obj, float range) {
  *	ZoneHelper
  */
 
+ZoneHelper* ZoneHelper::staticInitializer = ZoneHelper::instance();
+
 ZoneHelper::ZoneHelper() {
 	className = "Zone";
 

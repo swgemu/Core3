@@ -55,6 +55,8 @@ public:
 };
 
 class TrainerCreatureHelper : public DistributedObjectClassHelper, public Singleton<TrainerCreatureHelper> {
+	static TrainerCreatureHelper* staticInitializer;
+
 public:
 	TrainerCreatureHelper();
 

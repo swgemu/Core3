@@ -208,6 +208,8 @@ int UserManagerAdapter::getUserCap() {
  *	UserManagerHelper
  */
 
+UserManagerHelper* UserManagerHelper::staticInitializer = UserManagerHelper::instance();
+
 UserManagerHelper::UserManagerHelper() {
 	className = "UserManager";
 

@@ -47,6 +47,8 @@ public:
 };
 
 class DraftSchematicGroupHelper : public DistributedObjectClassHelper, public Singleton<DraftSchematicGroupHelper> {
+	static DraftSchematicGroupHelper* staticInitializer;
+
 public:
 	DraftSchematicGroupHelper();
 

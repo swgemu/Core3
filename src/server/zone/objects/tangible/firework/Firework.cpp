@@ -73,6 +73,8 @@ int FireworkAdapter::useObject(Player* player) {
  *	FireworkHelper
  */
 
+FireworkHelper* FireworkHelper::staticInitializer = FireworkHelper::instance();
+
 FireworkHelper::FireworkHelper() {
 	className = "Firework";
 

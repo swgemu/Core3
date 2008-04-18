@@ -45,6 +45,8 @@ public:
 };
 
 class TravelTerminalHelper : public DistributedObjectClassHelper, public Singleton<TravelTerminalHelper> {
+	static TravelTerminalHelper* staticInitializer;
+
 public:
 	TravelTerminalHelper();
 

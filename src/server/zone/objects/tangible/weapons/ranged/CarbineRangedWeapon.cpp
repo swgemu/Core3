@@ -53,6 +53,8 @@ Packet* CarbineRangedWeaponAdapter::invokeMethod(uint32 methid, DistributedMetho
  *	CarbineRangedWeaponHelper
  */
 
+CarbineRangedWeaponHelper* CarbineRangedWeaponHelper::staticInitializer = CarbineRangedWeaponHelper::instance();
+
 CarbineRangedWeaponHelper::CarbineRangedWeaponHelper() {
 	className = "CarbineRangedWeapon";
 

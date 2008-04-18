@@ -81,6 +81,8 @@ protected:
 };
 
 class CraftingManagerHelper : public DistributedObjectClassHelper, public Singleton<CraftingManagerHelper> {
+	static CraftingManagerHelper* staticInitializer;
+
 public:
 	CraftingManagerHelper();
 

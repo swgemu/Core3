@@ -53,6 +53,8 @@ Packet* MissionBagAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
  *	MissionBagHelper
  */
 
+MissionBagHelper* MissionBagHelper::staticInitializer = MissionBagHelper::instance();
+
 MissionBagHelper::MissionBagHelper() {
 	className = "MissionBag";
 

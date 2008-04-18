@@ -53,6 +53,8 @@ Packet* UnarmedMeleeWeaponAdapter::invokeMethod(uint32 methid, DistributedMethod
  *	UnarmedMeleeWeaponHelper
  */
 
+UnarmedMeleeWeaponHelper* UnarmedMeleeWeaponHelper::staticInitializer = UnarmedMeleeWeaponHelper::instance();
+
 UnarmedMeleeWeaponHelper::UnarmedMeleeWeaponHelper() {
 	className = "UnarmedMeleeWeapon";
 

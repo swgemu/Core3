@@ -53,6 +53,8 @@ Packet* BankAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
  *	BankHelper
  */
 
+BankHelper* BankHelper::staticInitializer = BankHelper::instance();
+
 BankHelper::BankHelper() {
 	className = "Bank";
 

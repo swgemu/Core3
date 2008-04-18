@@ -800,6 +800,8 @@ bool CreatureAdapter::hasLootCreated() {
  *	CreatureHelper
  */
 
+CreatureHelper* CreatureHelper::staticInitializer = CreatureHelper::instance();
+
 CreatureHelper::CreatureHelper() {
 	className = "Creature";
 

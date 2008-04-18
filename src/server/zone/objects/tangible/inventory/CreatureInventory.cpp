@@ -51,6 +51,8 @@ Packet* CreatureInventoryAdapter::invokeMethod(uint32 methid, DistributedMethod*
  *	CreatureInventoryHelper
  */
 
+CreatureInventoryHelper* CreatureInventoryHelper::staticInitializer = CreatureInventoryHelper::instance();
+
 CreatureInventoryHelper::CreatureInventoryHelper() {
 	className = "CreatureInventory";
 

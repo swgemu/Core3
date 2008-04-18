@@ -302,6 +302,8 @@ Player* SuiBoxAdapter::getPlayer() {
  *	SuiBoxHelper
  */
 
+SuiBoxHelper* SuiBoxHelper::staticInitializer = SuiBoxHelper::instance();
+
 SuiBoxHelper::SuiBoxHelper() {
 	className = "SuiBox";
 

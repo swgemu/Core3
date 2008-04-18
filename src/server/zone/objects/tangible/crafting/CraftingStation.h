@@ -61,6 +61,8 @@ public:
 };
 
 class CraftingStationHelper : public DistributedObjectClassHelper, public Singleton<CraftingStationHelper> {
+	static CraftingStationHelper* staticInitializer;
+
 public:
 	CraftingStationHelper();
 

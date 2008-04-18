@@ -107,6 +107,8 @@ public:
 };
 
 class GroupObjectHelper : public DistributedObjectClassHelper, public Singleton<GroupObjectHelper> {
+	static GroupObjectHelper* staticInitializer;
+
 public:
 	GroupObjectHelper();
 

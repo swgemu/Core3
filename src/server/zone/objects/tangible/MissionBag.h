@@ -38,6 +38,8 @@ public:
 };
 
 class MissionBagHelper : public DistributedObjectClassHelper, public Singleton<MissionBagHelper> {
+	static MissionBagHelper* staticInitializer;
+
 public:
 	MissionBagHelper();
 

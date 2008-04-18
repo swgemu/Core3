@@ -258,7 +258,7 @@ TangibleObject* ItemManagerImplementation::createPlayerObject(Player* player, Re
 	TangibleObjectImplementation* item = createPlayerObjectTemplate(objecttype, objectid, objectcrc, unicode(objectname), objecttemp, equipped);
 
 	if (item == NULL) {
-		cout << "NULL ITEM" << endl;
+		//cout << "NULL ITEM objectType:[" << objecttype << "] objectname[" << objectname << "]" << endl;
 		return NULL;
 	}
 		

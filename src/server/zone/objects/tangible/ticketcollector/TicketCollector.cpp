@@ -96,6 +96,8 @@ void TicketCollectorAdapter::useTicket(Player* player, Ticket* ticket) {
  *	TicketCollectorHelper
  */
 
+TicketCollectorHelper* TicketCollectorHelper::staticInitializer = TicketCollectorHelper::instance();
+
 TicketCollectorHelper::TicketCollectorHelper() {
 	className = "TicketCollector";
 

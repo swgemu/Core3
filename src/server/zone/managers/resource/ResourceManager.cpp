@@ -151,6 +151,20 @@ void ResourceManager::getClassSeven(const string& str, string& clas) {
 		((ResourceManagerImplementation*) _impl)->getClassSeven(str, clas);
 }
 
+void ResourceManager::getResourceContainerName(const string& str, string& name) {
+	if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		DistributedMethod method(this, 15);
+		method.addAsciiParameter(str);
+		method.addAsciiParameter(name);
+
+		method.executeWithVoidReturn();
+	} else
+		((ResourceManagerImplementation*) _impl)->getResourceContainerName(str, name);
+}
+
 /*
  *	ResourceManagerAdapter
  */
@@ -188,6 +202,9 @@ Packet* ResourceManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		break;
 	case 14:
 		getClassSeven(inv->getAsciiParameter(_param0_getClassSeven__string_string_), inv->getAsciiParameter(_param1_getClassSeven__string_string_));
+		break;
+	case 15:
+		getResourceContainerName(inv->getAsciiParameter(_param0_getResourceContainerName__string_string_), inv->getAsciiParameter(_param1_getResourceContainerName__string_string_));
 		break;
 	default:
 		return NULL;
@@ -232,9 +249,15 @@ void ResourceManagerAdapter::getClassSeven(const string& str, string& clas) {
 	return ((ResourceManagerImplementation*) impl)->getClassSeven(str, clas);
 }
 
+void ResourceManagerAdapter::getResourceContainerName(const string& str, string& name) {
+	return ((ResourceManagerImplementation*) impl)->getResourceContainerName(str, name);
+}
+
 /*
  *	ResourceManagerHelper
  */
+
+ResourceManagerHelper* ResourceManagerHelper::staticInitializer = ResourceManagerHelper::instance();
 
 ResourceManagerHelper::ResourceManagerHelper() {
 	className = "ResourceManager";

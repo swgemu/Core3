@@ -92,6 +92,8 @@ void RangedWeaponAdapter::setRange(int rng) {
  *	RangedWeaponHelper
  */
 
+RangedWeaponHelper* RangedWeaponHelper::staticInitializer = RangedWeaponHelper::instance();
+
 RangedWeaponHelper::RangedWeaponHelper() {
 	className = "RangedWeapon";
 

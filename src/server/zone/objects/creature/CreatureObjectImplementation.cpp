@@ -2535,7 +2535,7 @@ void CreatureObjectImplementation::stopDancing() {
 	sendEntertainingUpdate(0x3F4D70A4, "", 0, 0);
 
 	while (!watchers.isEmpty()) {
-		CreatureObject* creo = watchers.get(0);	
+		ManagedReference<CreatureObject> creo = watchers.get(0);	
 
 		try {
 			creo->wlock(_this);
@@ -2570,7 +2570,7 @@ void CreatureObjectImplementation::stopPlayingMusic() {
 	sendEntertainingUpdate(0x3F4D70A4, "", 0, 0);
 	
 	while (!listeners.isEmpty()) {
-		CreatureObject* creo = listeners.get(0);
+		ManagedReference<CreatureObject> creo = listeners.get(0);
 		
 		try {
 			creo->wlock(_this);
@@ -2908,7 +2908,7 @@ void CreatureObjectImplementation::doHealShockWounds() {
 	
 	int bfAbility = 0;
 	
-	SortedVector<CreatureObject*>* patrons = NULL;
+	ManagedSortedVector<CreatureObject>* patrons = NULL;
 	SkillManager* skillManager = server->getSkillManager();
 	Performance* performance = NULL;
 	
@@ -2971,7 +2971,7 @@ void CreatureObjectImplementation::doHealMindWounds() {
 	
 	int woundAbility = 0;
 	
-	SortedVector<CreatureObject*>* patrons = NULL;
+	ManagedSortedVector<CreatureObject>* patrons = NULL;
 		
 	if (isDancing()) {
 		woundAbility = getSkillMod("healing_dance_wound");

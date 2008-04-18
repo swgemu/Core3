@@ -43,6 +43,8 @@ public:
 };
 
 class VendorTerminalHelper : public DistributedObjectClassHelper, public Singleton<VendorTerminalHelper> {
+	static VendorTerminalHelper* staticInitializer;
+
 public:
 	VendorTerminalHelper();
 

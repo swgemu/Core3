@@ -36,6 +36,8 @@ public:
 };
 
 class LairObjectHelper : public DistributedObjectClassHelper, public Singleton<LairObjectHelper> {
+	static LairObjectHelper* staticInitializer;
+
 public:
 	LairObjectHelper();
 

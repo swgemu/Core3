@@ -192,6 +192,8 @@ int ShuttleCreatureAdapter::getArrivalTime() {
  *	ShuttleCreatureHelper
  */
 
+ShuttleCreatureHelper* ShuttleCreatureHelper::staticInitializer = ShuttleCreatureHelper::instance();
+
 ShuttleCreatureHelper::ShuttleCreatureHelper() {
 	className = "ShuttleCreature";
 

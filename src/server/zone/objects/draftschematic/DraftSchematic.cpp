@@ -557,6 +557,8 @@ int DraftSchematicAdapter::getCraftingToolTab() {
  *	DraftSchematicHelper
  */
 
+DraftSchematicHelper* DraftSchematicHelper::staticInitializer = DraftSchematicHelper::instance();
+
 DraftSchematicHelper::DraftSchematicHelper() {
 	className = "DraftSchematic";
 

@@ -189,6 +189,8 @@ int GuildMapAdapter::size() {
  *	GuildMapHelper
  */
 
+GuildMapHelper* GuildMapHelper::staticInitializer = GuildMapHelper::instance();
+
 GuildMapHelper::GuildMapHelper() {
 	className = "GuildMap";
 

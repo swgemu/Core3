@@ -70,6 +70,8 @@ public:
 };
 
 class TicketHelper : public DistributedObjectClassHelper, public Singleton<TicketHelper> {
+	static TicketHelper* staticInitializer;
+
 public:
 	TicketHelper();
 

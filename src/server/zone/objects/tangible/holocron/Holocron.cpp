@@ -73,6 +73,8 @@ int HolocronAdapter::useObject(Player* player) {
  *	HolocronHelper
  */
 
+HolocronHelper* HolocronHelper::staticInitializer = HolocronHelper::instance();
+
 HolocronHelper::HolocronHelper() {
 	className = "Holocron";
 

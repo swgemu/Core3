@@ -636,6 +636,8 @@ unsigned int PlayerObjectAdapter::getNewWaypointListCount(int cnt) {
  *	PlayerObjectHelper
  */
 
+PlayerObjectHelper* PlayerObjectHelper::staticInitializer = PlayerObjectHelper::instance();
+
 PlayerObjectHelper::PlayerObjectHelper() {
 	className = "PlayerObject";
 

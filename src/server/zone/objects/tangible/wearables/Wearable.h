@@ -36,6 +36,8 @@ public:
 };
 
 class WearableHelper : public DistributedObjectClassHelper, public Singleton<WearableHelper> {
+	static WearableHelper* staticInitializer;
+
 public:
 	WearableHelper();
 

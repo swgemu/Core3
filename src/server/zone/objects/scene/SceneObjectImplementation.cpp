@@ -107,7 +107,7 @@ bool SceneObject::destroy() {
 	bool destroying = ServerCore::getZoneServer()->destroyObject(this);
 	
 	if (destroying) {
-		info("destroying object");
+		//info("destroying object");
 
 		delete this;
 	}

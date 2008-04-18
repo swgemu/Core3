@@ -51,6 +51,8 @@ Packet* WearableAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
  *	WearableHelper
  */
 
+WearableHelper* WearableHelper::staticInitializer = WearableHelper::instance();
+
 WearableHelper::WearableHelper() {
 	className = "Wearable";
 

@@ -47,6 +47,8 @@ public:
 };
 
 class RangedWeaponHelper : public DistributedObjectClassHelper, public Singleton<RangedWeaponHelper> {
+	static RangedWeaponHelper* staticInitializer;
+
 public:
 	RangedWeaponHelper();
 

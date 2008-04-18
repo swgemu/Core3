@@ -132,6 +132,8 @@ BaseMessage* SuiListBoxAdapter::generateMessage() {
  *	SuiListBoxHelper
  */
 
+SuiListBoxHelper* SuiListBoxHelper::staticInitializer = SuiListBoxHelper::instance();
+
 SuiListBoxHelper::SuiListBoxHelper() {
 	className = "SuiListBox";
 

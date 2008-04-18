@@ -38,6 +38,8 @@ public:
 };
 
 class HairObjectHelper : public DistributedObjectClassHelper, public Singleton<HairObjectHelper> {
+	static HairObjectHelper* staticInitializer;
+
 public:
 	HairObjectHelper();
 

@@ -53,6 +53,8 @@ Packet* InventoryAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
  *	InventoryHelper
  */
 
+InventoryHelper* InventoryHelper::staticInitializer = InventoryHelper::instance();
+
 InventoryHelper::InventoryHelper() {
 	className = "Inventory";
 

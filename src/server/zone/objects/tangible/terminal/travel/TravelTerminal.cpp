@@ -73,6 +73,8 @@ int TravelTerminalAdapter::useObject(Player* player) {
  *	TravelTerminalHelper
  */
 
+TravelTerminalHelper* TravelTerminalHelper::staticInitializer = TravelTerminalHelper::instance();
+
 TravelTerminalHelper::TravelTerminalHelper() {
 	className = "TravelTerminal";
 

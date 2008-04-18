@@ -323,6 +323,8 @@ protected:
 };
 
 class SceneObjectHelper : public DistributedObjectClassHelper, public Singleton<SceneObjectHelper> {
+	static SceneObjectHelper* staticInitializer;
+
 public:
 	SceneObjectHelper();
 

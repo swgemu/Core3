@@ -345,6 +345,10 @@ void ChatManagerImplementation::handleMood(Player* player, Message* pack) {
 	pack->parseUnicode(mood);
 	
 	StringTokenizer tokenizer(mood.c_str());
+	
+	if (!tokenizer.hasMoreTokens())
+		return;
+
 	uint8 moodid = (uint8)tokenizer.getIntToken();
 	
 	player->setMood(moodid);	

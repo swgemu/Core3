@@ -101,6 +101,8 @@ public:
 };
 
 class BuildingObjectHelper : public DistributedObjectClassHelper, public Singleton<BuildingObjectHelper> {
+	static BuildingObjectHelper* staticInitializer;
+
 public:
 	BuildingObjectHelper();
 
