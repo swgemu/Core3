@@ -40,58 +40,21 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-itemMap = { }
+object = {
+	profession = "",
+	species = "",
+	sex = "",
+	item = { }
+}
 
-function addToItemMap(class, itemcontainer)
-	itemMap[class] = itemcontainer
-end
-
-function createItems(Name, Profession, Species, Sex)
-	local ic = itemMap[Profession]
-	local gen = itemMap["general"]
-
-	createItemsInList(ic.global_class_items, Name)
-	createItemsInList(gen.global_class_items, Name)
-
-	if Species == "ithorian" then
-		if Sex == "male" then
-			createItemsInList(ic.itho_male_items, Name)
-			createItemsInList(gen.itho_male_items, Name)
-		else
-			createItemsInList(ic.itho_female_items, Name)
-			createItemsInList(gen.itho_female_items, Name)
-		end
-	elseif Species == "wookiee" then
-		if Sex == "male" then
-			createItemsInList(ic.wook_male_items, Name)
-			createItemsInList(gen.wook_male_items, Name)
-		else
-			createItemsInList(ic.wook_female_items, Name)
-			createItemsInList(gen.wook_female_items, Name)
-		end
-	elseif Species == "trandoshan" then
-		if Sex == "male" then
-			createItemsInList(ic.tran_male_items, Name)
-			createItemsInList(gen.tran_male_items, Name)
-		else
-			createItemsInList(ic.tran_female_items, Name)
-			createItemsInList(gen.tran_female_items, Name)
-		end
-	else
-		if Sex == "male" then
-			createItemsInList(ic.humanoid_male_items, Name)
-			createItemsInList(gen.humanoid_male_items, Name)
-		else
-			createItemsInList(ic.humanoid_female_items, Name)
-			createItemsInList(gen.humanoid_female_items, Name)
-		end
-	end
-end
-
-function createItemsInList(List, Name)
+function createItemsFromList(Profession, Species, Sex, List)
 	for element in list_iter(List) do
-		element.owner = Name
-		AddPlayerItem(element)
+		local ob = object
+		ob.profession = Profession
+		ob.species = Species
+		ob.sex = Sex
+		ob.item = element
+		AddPlayerItem(ob)
 	end
 end
 

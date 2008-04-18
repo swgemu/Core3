@@ -43,7 +43,7 @@
 
 -------------------Male Humanoid Items------------------------------------
 mboots = {
-	owner = "",
+	
 
 	objectName = "Paneled Boots",
 
@@ -57,7 +57,7 @@ mboots = {
 }
 
 mjacket = {
-	owner = "",
+	
 
 	objectName = "Padded Jacket",
 
@@ -71,7 +71,7 @@ mjacket = {
 }
 
 mpants = {
-	owner = "",
+	
 
 	objectName = "Pocketed Work Pants",
 
@@ -89,7 +89,7 @@ marksman_humanoid_male_items = {mboots, mjacket, mpants}
 --------------------------Female Humanoid Items---------------------------
 
 fshoes = {
-	owner = "",
+	
 
 	objectName = "Casual Shoes",
 
@@ -103,7 +103,7 @@ fshoes = {
 }
 
 fshirt = {
-	owner = "",
+	
 
 	objectName = "Sports Wrap",
 
@@ -117,7 +117,7 @@ fshirt = {
 }
 
 fpants = {
-	owner = "",
+	
 
 	objectName = "Pantaloons",
 
@@ -131,7 +131,7 @@ fpants = {
 }
 
 fvest = {
-	owner = "",
+	
 
 	objectName = "Mangy Vest",
 
@@ -157,7 +157,7 @@ marksman_trandoshan_female_items = {fshirt, fpants, fvest}
 --------------------------Male Ithorian Items---------------------------
 
 mijacket = {
-	owner = "",
+	
 
 	objectName = "Ithorian Cargo Jacket",
 
@@ -171,7 +171,7 @@ mijacket = {
 }
 
 mipants = {
-	owner = "",
+	
 
 	objectName = "Ithorian Camos",
 
@@ -185,7 +185,7 @@ mipants = {
 }
 
 mishirt = {
-	owner = "",
+	
 
 	objectName = "Ithorian Tight Fit Shirt",
 
@@ -210,7 +210,7 @@ marksman_wookie_female_items = { }
 ----------------------Marksman Items (All Species)------------------------
 
 cdef_pistol = {
-	owner = "",
+	
 
 	objectName = "CDEF Pistol",
 
@@ -230,7 +230,7 @@ cdef_pistol = {
 }
 
 cdef_carbine = {
-	owner = "",
+	
 
 	objectName = "CDEF Carbine",
 
@@ -250,7 +250,7 @@ cdef_carbine = {
 }
 
 cdef_rifle = {
-	owner = "",
+	
 
 	objectName = "CDEF Rifle",
 
@@ -271,16 +271,12 @@ cdef_rifle = {
 
 general_marksman_items = {cdef_pistol, cdef_carbine, cdef_rifle}
 
-itemContainer = {
-	humanoid_male_items = marksman_humanoid_male_items,
-	humanoid_female_items = marksman_humanoid_female_items,
-	tran_male_items = marksman_trandoshan_male_items,
-	tran_female_items = marksman_trandoshan_female_items,
-	itho_male_items = marksman_ithorian_male_items,
-	itho_female_items = marksman_ithorian_female_items,
-	wook_male_items = marksman_wookie_male_items,
-	wook_female_items = marksman_wookie_female_items,
-	global_class_items = general_marksman_items
-}
-
-addToItemMap("marksman", itemContainer)
+createItemsFromList("marksman", "humanoid", "male", marksman_humanoid_male_items)
+createItemsFromList("marksman", "humanoid", "female", marksman_humanoid_female_items)
+createItemsFromList("marksman", "trandoshan", "male", marksman_trandoshan_male_items)
+createItemsFromList("marksman", "trandoshan", "female", marksman_trandoshan_female_items)
+createItemsFromList("marksman", "ithorian", "male", marksman_ithorian_male_items)
+createItemsFromList("marksman", "ithorian", "female", marksman_ithorian_female_items)
+createItemsFromList("marksman", "wookiee", "male", marksman_wookie_male_items)
+createItemsFromList("marksman", "wookiee", "female", marksman_wookie_female_items)
+createItemsFromList("marksman", "all", "both", general_marksman_items)

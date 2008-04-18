@@ -43,8 +43,7 @@
 
 ---------------------Male Humanoid Items------------------------------------
 mboots = {
-	owner = "",
-
+	
 	objectName = "Sturdy Boots",
 
 	templateName = "boots_s05",
@@ -57,8 +56,7 @@ mboots = {
 }
 
 mjacket = {
-	owner = "",
-
+	
 	objectName = "Cold Weather Jacket",
 
 	templateName = "jacket_s16",
@@ -71,8 +69,7 @@ mjacket = {
 }
 
 mshirt = {
-	owner = "",
-
+	
 	objectName = "Formfitting Undershirt",
 
 	templateName = "shirt_s14",
@@ -85,8 +82,7 @@ mshirt = {
 }
 
 mpants = {
-	owner = "",
-
+	
 	objectName = "Large Pocket Pants",
 
 	templateName = "pants_s14",
@@ -99,8 +95,7 @@ mpants = {
 }
 
 mshirt = {
-	owner = "",
-
+	
 	objectName = "Brawler Shirt",
 
 	templateName = "shirt_s14",
@@ -117,8 +112,7 @@ brawler_humanoid_male_items = {mboots, mjacket, mpants, mshirt}
 --------------------------Female Humanoid Items---------------------------
 
 fboots = {
-	owner = "",
-
+	
 	objectName = "Sturdy Boots",
 
 	templateName = "boots_s05",
@@ -131,8 +125,7 @@ fboots = {
 }
 
 fshirt = {
-	owner = "",
-
+	
 	objectName = "Shortsleeve Shirt",
 
 	templateName = "shirt_s27",
@@ -145,8 +138,7 @@ fshirt = {
 }
 
 fpants = {
-	owner = "",
-
+	
 	objectName = "Basic Camos",
 
 	templateName = "pants_s07",
@@ -159,8 +151,7 @@ fpants = {
 }
 
 fgloves = {
-	owner = "",
-
+	
 	objectName = "Cold Weather Gloves",
 
 	templateName = "gloves_s03",
@@ -186,8 +177,7 @@ brawler_trandoshan_female_items = {fshirt, fpants, fgloves}
 --------------------------Male Ithorian Items---------------------------
 
 mipants = {
-	owner = "",
-
+	
 	objectName = "Ithorian Reinforced Trousers",
 
 	templateName = "ith_pants_s04",
@@ -200,8 +190,7 @@ mipants = {
 }
 
 mishirt = {
-	owner = "",
-
+	
 	objectName = "Ithorian Frilly Shirt",
 
 	templateName = "ith_shirt_s02",
@@ -218,8 +207,7 @@ brawler_ithorian_male_items = {mipants, mishirt}
 --------------------------Female Ithorian Items---------------------------
 
 fipants = {
-	owner = "",
-
+	
 	objectName = "Ithorian Padded Trousers",
 
 	templateName = "ith_pants_s07",
@@ -232,7 +220,6 @@ fipants = {
 }
 
 fishirt = {
-	owner = "",
 
 	objectName = "Ithorian Frilly Shirt",
 
@@ -246,8 +233,7 @@ fishirt = {
 }
 
 figloves = {
-	owner = "",
-
+	
 	objectName = "Ithorian Brawling Gloves",
 
 	templateName = "ith_gloves_s01",
@@ -267,8 +253,7 @@ brawler_wookie_female_items = { }
 -------------------Brawler Items (All Species)--------------------
 
 surv_knife = {
-	owner = "",
-
+	
 	objectName = "Survival Knife",
 
 	templateName = "object/weapon/melee/knife/shared_knife_survival.iff",
@@ -288,16 +273,12 @@ surv_knife = {
 
 general_brawler_items = {surv_knife}
 
-itemContainer = {
-	humanoid_male_items = brawler_humanoid_male_items,
-	humanoid_female_items = brawler_humanoid_female_items,
-	tran_male_items = brawler_trandoshan_male_items,
-	tran_female_items = brawler_trandoshan_female_items,
-	itho_male_items = brawler_ithorian_male_items,
-	itho_female_items = brawler_ithorian_female_items,
-	wook_male_items = brawler_wookie_male_items,
-	wook_female_items = brawler_wookie_female_items,
-	global_class_items = general_brawler_items
-}
-
-addToItemMap("brawler", itemContainer)
+createItemsFromList("brawler", "humanoid", "male", brawler_humanoid_male_items)
+createItemsFromList("brawler", "humanoid", "female", brawler_humanoid_female_items)
+createItemsFromList("brawler", "trandoshan", "male", brawler_trandoshan_male_items)
+createItemsFromList("brawler", "trandoshan", "female", brawler_trandoshan_female_items)
+createItemsFromList("brawler", "ithorian", "male", brawler_ithorian_male_items)
+createItemsFromList("brawler", "ithorian", "female", brawler_ithorian_female_items)
+createItemsFromList("brawler", "wookiee", "male", brawler_wookie_male_items)
+createItemsFromList("brawler", "wookiee", "female", brawler_wookie_female_items)
+createItemsFromList("brawler", "all", "both", general_brawler_items)

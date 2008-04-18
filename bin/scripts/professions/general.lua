@@ -43,7 +43,7 @@
 
 ---------------------Male Humanoid Items------------------------------------
 mchestplate = {
-	owner = "",
+	
 
 	objectName = "Composite Chestplate",
 
@@ -59,7 +59,7 @@ mchestplate = {
 }
 
 mhelmet = {
-	owner = "",
+	
 
 	objectName = "Composite Helmet",
 
@@ -75,7 +75,7 @@ mhelmet = {
 }
 
 mboots = {
-	owner = "",
+	
 
 	objectName = "Composite Boots",
 
@@ -91,7 +91,7 @@ mboots = {
 }
 
 mgloves = {
-	owner = "",
+	
 
 	objectName = "Composite Gloves",
 
@@ -107,7 +107,7 @@ mgloves = {
 }
 
 mleggings = {
-	owner = "",
+	
 
 	objectName = "Composite Leggings",
 
@@ -123,7 +123,7 @@ mleggings = {
 }
 
 mbicepl = {
-	owner = "",
+	
 
 	objectName = "Composite Bicep",
 
@@ -139,7 +139,7 @@ mbicepl = {
 }
 
 mbicepr = {
-	owner = "",
+	
 
 	objectName = "Composite Bicep",
 
@@ -155,7 +155,7 @@ mbicepr = {
 }
 
 mbracerl = {
-	owner = "",
+	
 
 	objectName = "Composite Bracer",
 
@@ -171,7 +171,7 @@ mbracerl = {
 }
 
 mbracerr = {
-	owner = "",
+	
 
 	objectName = "Composite Bracer",
 
@@ -199,12 +199,12 @@ general_trandoshan_male_items = {mchestplate, mgloves, mleggings, mhelmet, mbrac
 
 --------------------------Female Trandoshan Items---------------------------
 
-general_humanoid_female_items = {mchestplate, mgloves, mleggings, mhelmet, mbracerr, mbracerl, mbicepl, mbicepr}
+general_trandoshan_female_items = {mchestplate, mgloves, mleggings, mhelmet, mbracerr, mbracerl, mbicepl, mbicepr}
 
 --------------------------Male Ithorian Items---------------------------
 
 ichestplate = {
-	owner = "",
+	
 
 	objectName = "Ithorian Sentinel Armor Chestplate",
 
@@ -220,7 +220,7 @@ ichestplate = {
 }
 
 ihelmet = {
-	owner = "",
+	
 
 	objectName = "Ithorian Sentinel Armor Helmet",
 
@@ -236,7 +236,7 @@ ihelmet = {
 }
 
 iboots = {
-	owner = "",
+	
 
 	objectName = "Ithorian Sentinel Armor Boots",
 
@@ -252,7 +252,7 @@ iboots = {
 }
 
 igloves = {
-	owner = "",
+	
 
 	objectName = "Ithorian Sentinel Armor Gloves",
 
@@ -268,7 +268,7 @@ igloves = {
 }
 
 ileggings = {
-	owner = "",
+	
 
 	objectName = "Ithorian Sentinel Armor Leggings",
 
@@ -284,7 +284,7 @@ ileggings = {
 }
 
 ibicepl = {
-	owner = "",
+	
 
 	objectName = "Ithorian Sentinel Armor Bicep",
 
@@ -300,7 +300,7 @@ ibicepl = {
 }
 
 ibicepr = {
-	owner = "",
+	
 
 	objectName = "Ithorian Sentinel Armor Bicep",
 
@@ -316,7 +316,7 @@ ibicepr = {
 }
 
 ibracerl = {
-	owner = "",
+	
 
 	objectName = "Ithorian Sentinel Armor Bracer",
 
@@ -332,7 +332,7 @@ ibracerl = {
 }
 
 imbracerr = {
-	owner = "",
+	
 
 	objectName = "Ithorian Sentinel Armor Bracer",
 
@@ -356,7 +356,7 @@ general_ithorian_female_items = {ichestplate, igloves, ileggings, ihelmet, ibrac
 --------------------------Male Wookiee Items---------------------------
 
 wookchest = {
-	owner = "",
+	
 
 	objectName = "Kasshyykian Hunting Armor Chestplate",
 
@@ -372,7 +372,7 @@ wookchest = {
 }
 
 wookleg = {
-	owner = "",
+	
 
 	objectName = "Kasshyykian Hunting Armor Leggings",
 
@@ -388,7 +388,7 @@ wookleg = {
 }
 
 wookbracerl = {
-	owner = "",
+	
 
 	objectName = "Kasshyykian Hunting Armor Bracer",
 
@@ -404,7 +404,7 @@ wookbracerl = {
 }
 
 wookbracerr = {
-	owner = "",
+	
 
 	objectName = "Kasshyykian Hunting Armor Bracer",
 
@@ -420,7 +420,7 @@ wookbracerr = {
 }
 
 bowcaster = {
-	owner = "",
+	
 
 	objectName = "Bowcaster",
 
@@ -448,7 +448,7 @@ general_wookie_female_items = {wookchest, wookleg, wookbracerl, wookbracerr, bow
 --------------------------General Items (All Species)---------------------------
 
 maroj_melon = {
-	owner = "",
+	
 
 	objectName = "Maroj Melon",
 
@@ -460,7 +460,7 @@ maroj_melon = {
 }
 
 g_baton = {
-	owner = "",
+	
 
 	objectName = "Gaderiffi Baton",
 
@@ -480,7 +480,7 @@ g_baton = {
 }
 
 vk = {
-	owner = "",
+	
 
 	objectName = "Vibroknuckler",
 
@@ -500,7 +500,7 @@ vk = {
 }
 
 t21 = {
-	owner = "",
+	
 
 	objectName = "T21 Rifle",
 
@@ -520,7 +520,7 @@ t21 = {
 }
 
 viblance = {
-	owner = "",
+	
 
 	objectName = "Vibrolance",
 
@@ -540,7 +540,7 @@ viblance = {
 }
 
 mst = {
-	owner = "",
+	
 
 	objectName = "Mineral Survey Tool",
 
@@ -552,7 +552,7 @@ mst = {
 }
 
 sst = {
-	owner = "",
+	
 
 	objectName = "Solar Survey Tool",
 
@@ -565,7 +565,7 @@ sst = {
 
 
 cst = {
-	owner = "",
+	
 
 	objectName = "Chemical Survey Tool",
 
@@ -578,7 +578,7 @@ cst = {
 
 
 fst = {
-	owner = "",
+	
 
 	objectName = "Flora Survey Tool",
 
@@ -591,7 +591,7 @@ fst = {
 
 
 gst = {
-	owner = "",
+	
 
 	objectName = "Gas Survey Tool",
 
@@ -604,7 +604,7 @@ gst = {
 
 
 watst = {
-	owner = "",
+	
 
 	objectName = "Water Survey Tool",
 
@@ -617,7 +617,7 @@ watst = {
 
 
 wndst = {
-	owner = "",
+	
 
 	objectName = "Wind Survey Tool",
 
@@ -629,7 +629,7 @@ wndst = {
 }
 
 fizz = {
-	owner = "",
+	
 
 	objectName = "a Fizz",
 
@@ -646,7 +646,7 @@ fizz = {
 }
 
 fanfar = {
-	owner = "",
+	
 
 	objectName = "a Fanfar",
 
@@ -662,7 +662,7 @@ fanfar = {
 }
 
 kloohorn = {
-	owner = "",
+	
 
 	objectName = "a Kloohorn",
 
@@ -678,7 +678,7 @@ kloohorn = {
 }
 
 mand = {
-	owner = "",
+	
 
 	objectName = "a Mandoviol",
 
@@ -694,7 +694,7 @@ mand = {
 }
 
 traz = {
-	owner = "",
+	
 
 	objectName = "a Traz",
 
@@ -710,7 +710,7 @@ traz = {
 }
 
 bandfill = {
-	owner = "",
+	
 
 	objectName = "a Bandfill",
 
@@ -726,7 +726,7 @@ bandfill = {
 }
 
 flute = {
-	owner = "",
+	
 
 	objectName = "a Flutedroopy",
 
@@ -746,16 +746,12 @@ general_general_items = {maroj_melon, g_baton, vk, t21, viblance,
 			 mst, sst, cst, fst, gst, watst, wndst, fizz, 
 			fanfar, kloohorn, mand, traz, bandfill, flute}
 
-itemContainer = {
-	humanoid_male_items = general_humanoid_male_items,
-	humanoid_female_items = general_humanoid_female_items,
-	tran_male_items = general_trandoshan_male_items,
-	tran_female_items = general_trandoshan_female_items,
-	itho_male_items = general_ithorian_male_items,
-	itho_female_items = general_ithorian_female_items,
-	wook_male_items = general_wookie_male_items,
-	wook_female_items = general_wookie_female_items,
-	global_class_items = general_general_items
-}
-
-addToItemMap("general", itemContainer)
+createItemsFromList("general", "humanoid", "male", general_humanoid_male_items)
+createItemsFromList("general", "humanoid", "female", general_humanoid_female_items)
+createItemsFromList("general", "trandoshan", "male", general_trandoshan_male_items)
+createItemsFromList("general", "trandoshan", "female", general_trandoshan_female_items)
+createItemsFromList("general", "ithorian", "male", general_ithorian_male_items)
+createItemsFromList("general", "ithorian", "female", general_ithorian_female_items)
+createItemsFromList("general", "wookiee", "male", general_wookie_male_items)
+createItemsFromList("general", "wookiee", "female", general_wookie_female_items)
+createItemsFromList("general", "all", "both", general_general_items)

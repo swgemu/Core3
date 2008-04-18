@@ -43,7 +43,7 @@
 
 ---------------------Male Humanoid Items------------------------------------
 mshoes = {
-	owner = "",
+	
 
 	objectName = "Casual Shoes",
 
@@ -57,7 +57,7 @@ mshoes = {
 }
 
 mjacket = {
-	owner = "",
+	
 
 	objectName = "Sleeveless Jacket",
 
@@ -71,7 +71,7 @@ mjacket = {
 }
 
 mpants = {
-	owner = "",
+	
 
 	objectName = "Work Slacks",
 
@@ -85,7 +85,7 @@ mpants = {
 }
 
 mshirt = {
-	owner = "",
+	
 
 	objectName = "Reinforced Work Shirt",
 
@@ -103,7 +103,7 @@ medic_humanoid_male_items = {mshoes, mjacket, mpants, mshirt}
 --------------------------Female Humanoid Items---------------------------
 
 fboots = {
-	owner = "",
+	
 
 	objectName = "Hide Boots",
 
@@ -117,7 +117,7 @@ fboots = {
 }
 
 fbodysuit = {
-	owner = "",
+	
 
 	objectName = "Reinforced Jumpsuit",
 
@@ -143,7 +143,7 @@ medic_trandoshan_female_items = {fbodysuit}
 --------------------------Male Ithorian Items---------------------------
 
 mijacket = {
-	owner = "",
+	
 
 	objectName = "Ithorian Med Team Jacket",
 
@@ -157,7 +157,7 @@ mijacket = {
 }
 
 mipants = {
-	owner = "",
+	
 
 	objectName = "Ithorian Cargo Pants",
 
@@ -171,7 +171,7 @@ mipants = {
 }
 
 mishirt = {
-	owner = "",
+	
 
 	objectName = "Ithorian Easy Fit Shirt",
 
@@ -189,7 +189,7 @@ medic_ithorian_male_items = {mijacket, mipants, mishirt}
 --------------------------Female Ithorian Items---------------------------
 
 fipants = {
-	owner = "",
+	
 
 	objectName = "Ithorian Striped Pants",
 
@@ -203,7 +203,7 @@ fipants = {
 }
 
 fishirt = {
-	owner = "",
+	
 
 	objectName = "Ithorian Long Sweater",
 
@@ -224,7 +224,7 @@ medic_wookie_female_items = { }
 -------------------Medic Items (All Species)--------------------
 
 cdef_pistol = {
-	owner = "",
+	
 
 	objectName = "CDEF Pistol",
 
@@ -244,7 +244,7 @@ cdef_pistol = {
 }
 
 surv_knife = {
-	owner = "",
+	
 
 	objectName = "Survival Knife",
 
@@ -265,16 +265,12 @@ surv_knife = {
 
 general_medic_items = {cdef_pistol, surv_knife}
 
-itemContainer = {
-	humanoid_male_items = medic_humanoid_male_items,
-	humanoid_female_items = medic_humanoid_female_items,
-	tran_male_items = medic_trandoshan_male_items,
-	tran_female_items = medic_trandoshan_female_items,
-	itho_male_items = medic_ithorian_male_items,
-	itho_female_items = medic_ithorian_female_items,
-	wook_male_items = medic_wookie_male_items,
-	wook_female_items = medic_wookie_female_items,
-	global_class_items = general_medic_items
-}
-
-addToItemMap("medic", itemContainer)
+createItemsFromList("medic", "humanoid", "male", medic_humanoid_male_items)
+createItemsFromList("medic", "humanoid", "female", medic_humanoid_female_items)
+createItemsFromList("medic", "trandoshan", "male", medic_trandoshan_male_items)
+createItemsFromList("medic", "trandoshan", "female", medic_trandoshan_female_items)
+createItemsFromList("medic", "ithorian", "male", medic_ithorian_male_items)
+createItemsFromList("medic", "ithorian", "female", medic_ithorian_female_items)
+createItemsFromList("medic", "wookiee", "male", medic_wookie_male_items)
+createItemsFromList("medic", "wookiee", "female", medic_wookie_female_items)
+createItemsFromList("medic", "all", "both", general_medic_items)

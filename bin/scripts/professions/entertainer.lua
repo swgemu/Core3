@@ -43,7 +43,7 @@
 
 ---------------------Male Humanoid Items------------------------------------
 mshoes = {
-	owner = "",
+	
 
 	objectName = "Dress Shoes",
 
@@ -57,7 +57,7 @@ mshoes = {
 }
 
 mpants = {
-	owner = "",
+	
 
 	objectName = "Striped Slacks",
 
@@ -71,7 +71,7 @@ mpants = {
 }
 
 mshirt = {
-	owner = "",
+	
 
 	objectName = "Muscle Shirt",
 
@@ -89,7 +89,7 @@ entertainer_humanoid_male_items = {mshoes, mpants, mshirt}
 --------------------------Female Humanoid Items---------------------------
 
 fshoes = {
-	owner = "",
+	
 
 	objectName = "Dress Slippers",
 
@@ -103,7 +103,7 @@ fshoes = {
 }
 
 fshirt = {
-	owner = "",
+	
 
 	objectName = "Flex-form Shirt",
 
@@ -117,7 +117,7 @@ fshirt = {
 }
 
 fpants = {
-	owner = "",
+	
 
 	objectName = "Desert Crawlers",
 
@@ -143,7 +143,7 @@ entertainer_trandoshan_female_items = {fshirt, fpants}
 --------------------------Male Ithorian Items---------------------------
 
 mishirt = {
-	owner = "",
+	
 
 	objectName = "Ithorian Knitted Shirt",
 
@@ -157,7 +157,7 @@ mishirt = {
 }
 
 mipants = {
-	owner = "",
+	
 
 	objectName = "Ithorian Baggies",
 
@@ -175,7 +175,7 @@ entertainer_ithorian_male_items = {mipants, mishirt}
 --------------------------Female Ithorian Items---------------------------
 
 fipants = {
-	owner = "",
+	
 
 	objectName = "Ithorian Buckle Pants",
 
@@ -189,7 +189,7 @@ fipants = {
 }
 
 fishirt = {
-	owner = "",
+	
 
 	objectName = "Ithorian Fade Dyed Shirt",
 
@@ -210,7 +210,7 @@ entertainer_wookie_female_items = { }
 -------------------Entertainer Items (All Species)--------------------
 
 cdef_pistol = {
-	owner = "",
+	
 
 	objectName = "CDEF Pistol",
 
@@ -230,7 +230,7 @@ cdef_pistol = {
 }
 
 surv_knife = {
-	owner = "",
+	
 
 	objectName = "Survival Knife",
 
@@ -250,7 +250,7 @@ surv_knife = {
 }
 
 shorn = {
-	owner = "",
+	
 
 	objectName = "a Slitherhorn",
 
@@ -267,16 +267,12 @@ shorn = {
 
 general_entertainer_items = {cdef_pistol, surv_knife, shorn}
 
-itemContainer = {
-	humanoid_male_items = entertainer_humanoid_male_items,
-	humanoid_female_items = entertainer_humanoid_female_items,
-	tran_male_items = entertainer_trandoshan_male_items,
-	tran_female_items = entertainer_trandoshan_female_items,
-	itho_male_items = entertainer_ithorian_male_items,
-	itho_female_items = entertainer_ithorian_female_items,
-	wook_male_items = entertainer_wookie_male_items,
-	wook_female_items = entertainer_wookie_female_items,
-	global_class_items = general_entertainer_items
-}
-
-addToItemMap("entertainer", itemContainer)
+createItemsFromList("entertainer", "humanoid", "male", entertainer_humanoid_male_items)
+createItemsFromList("entertainer", "humanoid", "female", entertainer_humanoid_female_items)
+createItemsFromList("entertainer", "trandoshan", "male", entertainer_trandoshan_male_items)
+createItemsFromList("entertainer", "trandoshan", "female", entertainer_trandoshan_female_items)
+createItemsFromList("entertainer", "ithorian", "male", entertainer_ithorian_male_items)
+createItemsFromList("entertainer", "ithorian", "female", entertainer_ithorian_female_items)
+createItemsFromList("entertainer", "wookiee", "male", entertainer_wookie_male_items)
+createItemsFromList("entertainer", "wookiee", "female", entertainer_wookie_female_items)
+createItemsFromList("entertainer", "all", "both", general_entertainer_items)

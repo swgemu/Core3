@@ -53,6 +53,8 @@ which carries forward this exception.
 
 #include "ItemManager.h"
 
+#include "StartingItemList.h"
+
 class ZoneServer;
 
 class TangibleObject;
@@ -66,11 +68,13 @@ class ItemManagerImplementation : public ItemManagerServant, public Lua {
 	
 	uint64 nextStaticItemID;
 	
+	static StartingItemList * startingItems;
+	
 	void registerFunctions();
 	void registerGlobals();
 	static int addPlayerItem(lua_State * l);
 	static int runProfessionFile(lua_State* L);
-	static ItemManagerImplementation * instance;
+
 public:
 	ItemManagerImplementation(ZoneServer* serv);
 	
@@ -103,11 +107,6 @@ public:
 	// setters and getters
 	inline uint64 getNextStaticObjectID() {
 		return ++nextStaticItemID;
-	}
-	
-	inline PlayerManager * getPlayerManager()
-	{
-		return server->getPlayerManager();
 	}
 	
 };

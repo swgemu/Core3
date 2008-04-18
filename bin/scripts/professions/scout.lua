@@ -43,7 +43,7 @@
 
 ---------------------Male Humanoid Items------------------------------------
 mshoes = {
-	owner = "",
+	
 
 	objectName = "Casual Shoes",
 
@@ -57,7 +57,7 @@ mshoes = {
 }
 
 mvest = {
-	owner = "",
+	
 
 	objectName = "Cargo Vest",
 
@@ -71,7 +71,7 @@ mvest = {
 }
 
 mpants = {
-	owner = "",
+	
 
 	objectName = "Paramilitary Camos",
 
@@ -85,7 +85,7 @@ mpants = {
 }
 
 mshirt = {
-	owner = "",
+	
 
 	objectName = "Longsleeve Shirt",
 
@@ -103,7 +103,7 @@ scout_humanoid_male_items = {mshoes, mvest, mpants, mshirt}
 --------------------------Female Humanoid Items---------------------------
 
 fshoes = {
-	owner = "",
+	
 
 	objectName = "Casual Shoes",
 
@@ -117,7 +117,7 @@ fshoes = {
 }
 
 fshirt = {
-	owner = "",
+	
 
 	objectName = "Lined Workshirt",
 
@@ -131,7 +131,7 @@ fshirt = {
 }
 
 fpants = {
-	owner = "",
+	
 
 	objectName = "Paramilitary Camos",
 
@@ -160,7 +160,7 @@ scout_trandoshan_female_items = {fshirt, fpants}
 --------------------------Male Ithorian Items---------------------------
 
 mishirt = {
-	owner = "",
+	
 
 	objectName = "Ithorian Half Sweater",
 
@@ -174,7 +174,7 @@ mishirt = {
 }
 
 mipants = {
-	owner = "",
+	
 
 	objectName = "Strange Ithorian Pants",
 
@@ -199,7 +199,7 @@ scout_wookie_female_items = { }
 -------------------Scout Items (All Species)--------------------
 
 cdef_pistol = {
-	owner = "",
+	
 
 	objectName = "CDEF Pistol",
 
@@ -220,16 +220,12 @@ cdef_pistol = {
 
 general_scout_items = {cdef_pistol}
 
-itemContainer = {
-	humanoid_male_items = scout_humanoid_male_items,
-	humanoid_female_items = scout_humanoid_female_items,
-	tran_male_items = scout_trandoshan_male_items,
-	tran_female_items = scout_trandoshan_female_items,
-	itho_male_items = scout_ithorian_male_items,
-	itho_female_items = scout_ithorian_female_items,
-	wook_male_items = scout_wookie_male_items,
-	wook_female_items = scout_wookie_female_items,
-	global_class_items = general_scout_items
-}
-
-addToItemMap("scout", itemContainer)
+createItemsFromList("scout", "humanoid", "male", scout_humanoid_male_items)
+createItemsFromList("scout", "humanoid", "female", scout_humanoid_female_items)
+createItemsFromList("scout", "trandoshan", "male", scout_trandoshan_male_items)
+createItemsFromList("scout", "trandoshan", "female", scout_trandoshan_female_items)
+createItemsFromList("scout", "ithorian", "male", scout_ithorian_male_items)
+createItemsFromList("scout", "ithorian", "female", scout_ithorian_female_items)
+createItemsFromList("scout", "wookiee", "male", scout_wookie_male_items)
+createItemsFromList("scout", "wookiee", "female", scout_wookie_female_items)
+createItemsFromList("scout", "all", "both", general_scout_items)

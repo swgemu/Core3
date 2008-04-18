@@ -42,8 +42,7 @@
 
 
 ---------------------Male Humanoid Items------------------------------------
-mshoes = {
-	owner = "",
+mshoes = {	
 
 	objectName = "Dress Shoes",
 
@@ -57,8 +56,7 @@ mshoes = {
 }
 
 mpants = {
-	owner = "",
-
+	
 	objectName = "Crafters Pants",
 
 	templateName = "pants_s29",
@@ -70,8 +68,7 @@ mpants = {
 	equipped = "1"
 }
 
-mshirt = {
-	owner = "",
+mshirt = {	
 
 	objectName = "Soft Undershirt",
 
@@ -89,8 +86,7 @@ artisan_humanoid_male_items = {mshoes, mpants, mshirt}
 --------------------------Female Humanoid Items---------------------------
 
 fshoes = {
-	owner = "",
-
+	
 	objectName = "Sandals",
 
 	templateName = "shoes_s07",
@@ -103,8 +99,7 @@ fshoes = {
 }
 
 fshirt = {
-	owner = "",
-
+	
 	objectName = "Flared Cuff Shirt Shirt",
 
 	templateName = "shirt_s12",
@@ -117,8 +112,7 @@ fshirt = {
 }
 
 fskirt = {
-	owner = "",
-
+	
 	objectName = "Wrapped Skirt",
 
 	templateName = "skirt_s10",
@@ -143,8 +137,7 @@ artisan_trandoshan_female_items = {fshirt, fskirt}
 --------------------------Male Ithorian Items---------------------------
 
 mishirt = {
-	owner = "",
-
+	
 	objectName = "Ithorian Mystic Shirt",
 
 	templateName = "ith_shirt_s10",
@@ -157,8 +150,7 @@ mishirt = {
 }
 
 mipants = {
-	owner = "",
-
+	
 	objectName = "Ithorian Patrol Pants",
 
 	templateName = "ith_pants_s06",
@@ -170,8 +162,7 @@ mipants = {
 	equipped = "1"
 }
 
-mivest = {
-	owner = "",
+mivest = {	
 
 	objectName = "Ithorian Dress Vest",
 
@@ -189,8 +180,7 @@ artisan_ithorian_male_items = {mipants, mishirt, mivest}
 --------------------------Female Ithorian Items---------------------------
 
 fipants = {
-	owner = "",
-
+	
 	objectName = "Ithorian Patrol Pants",
 
 	templateName = "ith_pants_s06",
@@ -203,8 +193,7 @@ fipants = {
 }
 
 fishirt = {
-	owner = "",
-
+	
 	objectName = "Ithorian Striped Shirt",
 
 	templateName = "ith_shirt_s05",
@@ -217,8 +206,7 @@ fishirt = {
 }
 
 fivest = {
-	owner = "",
-
+	
 	objectName = "Ithorian Dress Vest",
 
 	templateName = "ith_vest_s02",
@@ -240,8 +228,7 @@ artisan_wookie_female_items = { }
 -------------------Artisan Items (All Species)--------------------
 
 cdef_pistol = {
-	owner = "",
-
+	
 	objectName = "CDEF Pistol",
 
 	templateName = "object/weapon/ranged/pistol/shared_pistol_cdef.iff",
@@ -260,7 +247,6 @@ cdef_pistol = {
 }
 
 surv_knife = {
-	owner = "",
 
 	objectName = "Survival Knife",
 
@@ -281,16 +267,13 @@ surv_knife = {
 
 general_artisan_items = {cdef_pistol, surv_knife}
 
-itemContainer = {
-	humanoid_male_items = artisan_humanoid_male_items,
-	humanoid_female_items = artisan_humanoid_female_items,
-	tran_male_items = artisan_trandoshan_male_items,
-	tran_female_items = artisan_trandoshan_female_items,
-	itho_male_items = artisan_ithorian_male_items,
-	itho_female_items = artisan_ithorian_female_items,
-	wook_male_items = artisan_wookie_male_items,
-	wook_female_items = artisan_wookie_female_items,
-	global_class_items = general_artisan_items
-}
 
-addToItemMap("artisan", itemContainer)
+createItemsFromList("artisan", "humanoid", "male", artisan_humanoid_male_items)
+createItemsFromList("artisan", "humanoid", "female", artisan_humanoid_female_items)
+createItemsFromList("artisan", "trandoshan", "male", artisan_trandoshan_male_items)
+createItemsFromList("artisan", "trandoshan", "female", artisan_trandoshan_female_items)
+createItemsFromList("artisan", "ithorian", "male", artisan_ithorian_male_items)
+createItemsFromList("artisan", "ithorian", "female", artisan_ithorian_female_items)
+createItemsFromList("artisan", "wookiee", "male", artisan_wookie_male_items)
+createItemsFromList("artisan", "wookiee", "female", artisan_wookie_female_items)
+createItemsFromList("artisan", "all", "both", general_artisan_items)

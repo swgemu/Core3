@@ -53,7 +53,7 @@ which carries forward this exception.
 
 #include "ItemManagerImplementation.h"
 
-ItemManagerImplementation * ItemManagerImplementation::instance = NULL;
+StartingItemList * ItemManagerImplementation::startingItems = NULL;
 
 ItemManagerImplementation::ItemManagerImplementation(ZoneServer* serv) :
 	ItemManagerServant(), Lua() {
@@ -61,11 +61,12 @@ ItemManagerImplementation::ItemManagerImplementation(ZoneServer* serv) :
 
 	nextStaticItemID = 0x90000000;
 	
+	startingItems = new StartingItemList();
+	
 	Lua::init();
 	registerFunctions();
 	registerGlobals();
 	runFile("scripts/professions/main.lua");
-	instance = this;
 }
 
 void ItemManagerImplementation::loadStaticWorldObjects() {
@@ -469,19 +470,22 @@ int ItemManagerImplementation::runProfessionFile(lua_State* L) {
 }
 
 int ItemManagerImplementation::addPlayerItem(lua_State * l) {
-	LuaObject item(l);
-
-	if (!item.isValidTable())
-			return 1;
 	
-	Player* player = instance->getPlayerManager()->getPlayer(*(new string(item.getStringField("owner"))));
+	LuaObject itemwrapper(l);
+	
+	string species = itemwrapper.getStringField("species");
+	string sex = itemwrapper.getStringField("sex");
+	string profession = itemwrapper.getStringField("profession");
+	
+	LuaObject item(itemwrapper.getObjectField("item"));
+	
 	int crc = item.getIntField("objectCRC");
 	string name = item.getStringField("objectName");
 	string templ = item.getStringField("templateName");
 	bool equipped = bool(item.getByteField("equipped"));
 	int type = item.getIntField("objectType");
 	
-	TangibleObjectImplementation* itemImpl = createPlayerObjectTemplate(type, player->getNewItemID(), crc, unicode(name), (char *) templ.c_str(), equipped);
+	TangibleObjectImplementation* itemImpl = createPlayerObjectTemplate(type, 1, crc, unicode(name), (char *) templ.c_str(), equipped);
 	itemImpl->setObjectSubType(type);
 	
 	//ADD ATTRIBUTES
@@ -503,8 +507,8 @@ int ItemManagerImplementation::addPlayerItem(lua_State * l) {
 		if(!cert.empty())
 			((WeaponImplementation*) itemImpl)->setCert(cert);
 	}
-
-	player->addInventoryItem(itemImpl->deploy());
+	
+	startingItems->addItemToProfession(profession, species, sex, itemImpl);
 	
 	return 0;
 }
@@ -521,12 +525,41 @@ void ItemManagerImplementation::loadDefaultPlayerItems(Player* player) {
 	string species = race.substr(ls + 1, fu - ls - 1);
 	string sex = race.substr(fu + 1, dot - fu -1);
 	
-	LuaFunction createItems(getLuaState(), "createItems", 1);
-	createItems << player->getFirstName();
-	createItems << prof;
-	createItems << species;
-	createItems << sex;
-	callFunction(&createItems);
+	string gen = "general";
+	string all = "all";
+	Vector<TangibleObjectImplementation *> * items;
+	
+	//Make profession items for species
+	items = startingItems->getProfessionItems(prof, species, sex);
+	for (int j = 0; j < items->size(); ++j) {
+		TangibleObjectImplementation * obj = items->get(j);
+		obj->setObjectID(player->getNewItemID());
+		player->addInventoryItem(obj->deploy());
+	}
+	
+	//Make profession items for that apply to all species
+	items = startingItems->getProfessionItems(prof, all, sex);
+	for (int j = 0; j < items->size(); ++j) {
+		TangibleObjectImplementation * obj = items->get(j);
+		obj->setObjectID(player->getNewItemID());
+		player->addInventoryItem(obj->deploy());
+	}
+	
+	//Make general items for species
+	items = startingItems->getProfessionItems(gen, species, sex);
+	for (int j = 0; j < items->size(); ++j) {
+		TangibleObjectImplementation * obj = items->get(j);
+		obj->setObjectID(player->getNewItemID());
+		player->addInventoryItem(obj->deploy());
+	}
+	
+	//Make general items that apple to all species
+	items = startingItems->getProfessionItems(gen, all, sex);
+	for (int j = 0; j < items->size(); ++j) {
+		TangibleObjectImplementation * obj = items->get(j);
+		obj->setObjectID(player->getNewItemID());
+		player->addInventoryItem(obj->deploy());
+	}
 }
 
 void ItemManagerImplementation::loadDefaultPlayerDatapadItems(Player* player) {
