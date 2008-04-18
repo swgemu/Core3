@@ -102,8 +102,11 @@ void CreatureManagerImplementation::init() {
 	registerGlobals();
 	
 	instance = this;
+}
+
+void CreatureManagerImplementation::loadCreatures() {
 	loadCreatureFile();
-	
+
 	loadTrainers();
 	loadRecruiters();
 	loadStaticCreatures();
@@ -330,7 +333,8 @@ ShuttleCreature* CreatureManagerImplementation::spawnShuttle(const string& Plane
 		shuttleImpl->height = 1.0f;
 		shuttleImpl->initializePosition(x, z, y);
 		
-		load(shuttleImpl);
+		shuttleImpl->setCreatureManager(this);
+		shuttleImpl->setZoneProcessServer(server);
 		
 		ShuttleCreature* shuttle = (ShuttleCreature*) shuttleImpl->deploy();
 		
@@ -548,14 +552,16 @@ int CreatureManagerImplementation::addCreature(lua_State *L) {
 	creatureImpl->lightSaber = creature.getFloatField("lightSaber");	
 
 	creatureImpl->height = creature.getFloatField("height");
+	
+	uint64 cellID = creature.getLongField("cellID");
+	
 	float x = creature.getFloatField("positionX");
 	float y = creature.getFloatField("positionY");
 	float z = creature.getFloatField("positionZ");
+	
 	creatureImpl->initializePosition(x, z, y);
 	
-	creatureImpl->spawnPositionX = x;
-	creatureImpl->spawnPositionY = y;
-	creatureImpl->spawnPositionZ = z;	
+	creatureImpl->setSpawnPosition(x, z, y, cellID);
 	
 	creatureImpl->accuracy = creature.getIntField("accuracy");
 	creatureImpl->speed = creature.getFloatField("speed");
@@ -563,7 +569,7 @@ int CreatureManagerImplementation::addCreature(lua_State *L) {
 	creatureImpl->respawnTimer = creature.getIntField("respawnTimer");
 	creatureImpl->level = creature.getIntField("level");
 	creatureImpl->pvpStatusBitmask = creature.getIntField("combatFlags");
-	creatureImpl->parent = instance->getZone()->lookupObject(creature.getLongField("cellID"));
+	creatureImpl->parent = instance->getZone()->lookupObject(cellID);
 
 	instance->load(creatureImpl);
 

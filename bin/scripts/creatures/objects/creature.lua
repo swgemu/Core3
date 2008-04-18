@@ -91,7 +91,9 @@ Creature = Object:new {
 
 	skills = { },
 
-	cellID = 0
+	cellID = 0, 
+
+	randomizeRespawnPoint = false
 }
 
 -- setters

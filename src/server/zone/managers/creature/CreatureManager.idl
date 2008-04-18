@@ -54,8 +54,9 @@ import "../../objects/creature/shuttle/ShuttleCreature";
 include "engine/util/Coordinate";
 
 interface CreatureManager {
-	
 	void init();
+	
+	void loadCreatures();
 
 	void start();
 	

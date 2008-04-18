@@ -77,14 +77,16 @@ void ZoneImplementation::startManagers() {
 	
 	CreatureManagerImplementation* manImpl = new CreatureManagerImplementation((Zone*) _this, processor);
 	creatureManager = (CreatureManager*) manImpl->deploy("CreatureManager", zoneID);
-
+	
 	creatureManager->init();
 
 	PlanetManagerImplementation* planImpl = new PlanetManagerImplementation((Zone*) _this, processor);
 	planetManager = (PlanetManager*) planImpl->deploy("PlanetManager", zoneID);
 
 	planetManager->init();
-
+	
+	creatureManager->loadCreatures();
+	
 	planetManager->start();
 	
 	creatureManager->start();
@@ -95,7 +97,7 @@ void ZoneImplementation::stopManagers() {
 		return;
 	
 	if (creatureManager != NULL) {
-	creatureManager->stop();
+		creatureManager->stop();
 		
 		creatureManager->finalize();
 		creatureManager = NULL;

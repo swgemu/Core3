@@ -42,61 +42,88 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef LIGHTUPDATETRANSFORMMESSAGE_H_
-#define LIGHTUPDATETRANSFORMMESSAGE_H_
+#ifndef PATROLPOINT_H_
+#define PATROLPOINT_H_
 
-#include "engine/engine.h"
+#include "system/lang.h"
 
-#include "../../objects/scene/SceneObjectImplementation.h"
-
-class LightUpdateTransformMessage : public StandaloneBaseMessage {
+class PatrolPoint {
+	float positionX;
+	float positionY;
+	float positionZ;
+	
+	uint64 cellID;
+	
+	bool reached;
+	
 public:
-	LightUpdateTransformMessage(SceneObject* scno) : StandaloneBaseMessage(50) {
-		insertShort(0x08);
-		insertInt(0x1B24F808);
-	    insertLong(scno->getObjectID());
+	PatrolPoint() {
+		positionX = 0;
+		positionZ = 0;
+		positionY = 0;
 
-		// add coordinates
-		insertSignedShort((int16) (scno->getPositionX() * 4));
-		insertSignedShort((int16) (scno->getPositionZ() * 4));
-		insertSignedShort((int16) (scno->getPositionY() * 4));
+		cellID = 0;
 
-		// add movement counter
-		insertInt(scno->getMovementCounter());
-		
-		insertByte(0); // unknown
-		
-		// add direction
-		insertByte(scno->getDirectionAngle());
-		
-		/*cout << "Position Update [" << player->getObjectID() << "] (" 
-			 << (int) (player->getPositionX()) << "," << (int) (player->getPositionZ()) << "," 
-			 << (int) (player->getPositionY()) << ") - Dir = " << (int) (player->getDirectionAngle()) << "\n";*/
+		reached = false;
+	}
+
+	PatrolPoint(float posX, float posZ, float posY, uint64 cellid = 0) {
+		positionX = posX;
+		positionZ = posZ;
+		positionY = posY;
+
+		cellID = cellid;
+
+		reached = false;
 	}
 	
-	LightUpdateTransformMessage(SceneObject* scno, float posX, float posZ, float posY) : StandaloneBaseMessage(50) {
-		insertShort(0x08);
-		insertInt(0x1B24F808);
-		insertLong(scno->getObjectID());
-
-		// add coordinates
-		insertSignedShort((int16) (posX * 4));
-		insertSignedShort((int16) (posZ * 4));
-		insertSignedShort((int16) (posY * 4));
-
-		// add movement counter
-		insertInt(scno->getMovementCounter());
-
-		insertByte(0); // unknown
-
-		// add direction
-		insertByte(scno->getDirectionAngle());
-
-		/*cout << "Position Update [" << player->getObjectID() << "] (" 
-				 << (int) (player->getPositionX()) << "," << (int) (player->getPositionZ()) << "," 
-				 << (int) (player->getPositionY()) << ") - Dir = " << (int) (player->getDirectionAngle()) << "\n";*/
+	//getters
+	inline float getPositionX() {
+		return positionX;
 	}
-
+	
+	inline float getPositionY() {
+		return positionY;
+	}
+	
+	inline float getPositionZ() {
+		return positionZ;
+	}
+	
+	inline uint64 getCellID() {
+		return cellID;
+	}
+	
+	inline bool isReached() {
+		return reached;
+	}
+	
+	//setters
+	inline void setPosition(float x, float z, float y) {
+		positionX = x;
+		positionZ = z;
+		positionY = y;
+	}
+	
+	inline void setPositionX(float x) {
+		positionX = x;
+	}
+	
+	inline void setPositionZ(float z) {
+		positionZ = z;
+	}
+	
+	inline void setPositionY(float y) {
+		positionY = y;
+	}
+	
+	inline void setCellID(uint64 cellid) {
+		cellID = cellid;
+	}
+	
+	inline void setReached(bool value) {
+		reached = value;
+	}
 };
 
-#endif /*LIGHTUPDATETRANSFORMMESSAGE_H_*/
+#endif /*PATROLPOINT_H_*/

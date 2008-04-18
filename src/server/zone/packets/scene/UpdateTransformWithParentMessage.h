@@ -74,6 +74,32 @@ public:
 			 << (int) (player->getPositionX()) << "," << (int) (player->getPositionZ()) << "," 
 			 << (int) (player->getPositionY()) << ") - Dir = " << (int) (player->getDirectionAngle()) << "\n";*/
 	}
+	
+	UpdateTransformWithParentMessage(SceneObject* object, float posX, float posZ, float posY, uint64 parentID) : 
+		BaseMessage(50) {
+		
+		insertShort(0x08);
+		insertInt(0xC867AB5A);
+		insertLong(parentID);
+		insertLong(object->getObjectID());
+
+		// add coordinates
+		insertSignedShort((int16) (posX * 8));
+		insertSignedShort((int16) (posZ * 8));
+		insertSignedShort((int16) (posY * 8));
+
+		// add movement counter
+		insertInt(object->getMovementCounter());
+
+		insertByte(0); // unknown
+
+		// add direction
+		insertByte(object->getDirectionAngle());
+
+		/*cout << "Position Update [" << player->getObjectID() << "] (" 
+				 << (int) (player->getPositionX()) << "," << (int) (player->getPositionZ()) << "," 
+				 << (int) (player->getPositionY()) << ") - Dir = " << (int) (player->getDirectionAngle()) << "\n";*/
+	}
 
 };
 

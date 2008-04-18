@@ -86,6 +86,17 @@ CreatureImplementation::CreatureImplementation(uint64 oid, CreatureGroup* group)
 }
 
 CreatureImplementation::~CreatureImplementation() {
+	if (nextPosition != NULL) {
+		delete nextPosition;
+		
+		nextPosition = NULL;
+	}
+	
+	if (spawnPosition != NULL) {
+		delete spawnPosition;
+		
+		spawnPosition = NULL;
+	}
 }
 
 void CreatureImplementation::init() {
@@ -110,6 +121,16 @@ void CreatureImplementation::init() {
 	lair = NULL;
 	
 	level = 250;
+	
+	nextPosition = new PatrolPoint();
+	
+	spawnPosition = new PatrolPoint();
+	
+	randomizeRespawn = false;
+	
+	actualSpeed = 0.f;
+	
+	movementCounter = 0;
 
 	// stats
 	aggroedCreature = NULL;
@@ -276,7 +297,12 @@ void CreatureImplementation::unload() {
 
 	creatureManager->despawnCreature(_this);
 	
-	setPosition(spawnPositionX, spawnPositionZ, spawnPositionY);
+	setPosition(spawnPosition->getPositionX(), spawnPosition->getPositionZ(), spawnPosition->getPositionY());
+	
+	uint64 respawnCellID = spawnPosition->getCellID();
+	
+	if (respawnCellID != 0)
+		parent = zone->lookupObject(respawnCellID);
 	
 	info("creature despawned");
 }
@@ -308,11 +334,13 @@ void CreatureImplementation::loadItems() {
 	if (objectCRC == 0xBA7F23CD) { //storm trooper
 		weaponImpl = new RifleRangedWeaponImplementation(_this, 
 				"object/weapon/ranged/rifle/shared_rifle_t21.iff", unicode("Teh Pwn"), "rifle_t21", true);
+		weaponImpl->setAttackSpeed(1.5f);
 
 		setImperial();
 	} else if (objectCRC == 0xFECDC4DE || objectCRC == 0x7EDC1419) {
 		weaponImpl = new RifleRangedWeaponImplementation(_this,
 				"object/weapon/ranged/vehicle/shared_vehicle_atst_ranged.iff", unicode("Imperial Cannon"), "vehicle_atst_ranged");
+		weaponImpl->setAttackSpeed(1.5f);
 		
 		setImperial();
 	}
@@ -400,9 +428,10 @@ void CreatureImplementation::insertToZone(Zone* zone) {
 		zone->registerObject(_this);
 
 		if (parent != NULL) {
-			((CellObject*)parent)->addChild(_this);
 			BuildingObject* building = (BuildingObject*)parent->getParent();
+			
 			insertToBuilding(building);
+			
 			building->notifyInsertToZone(_this);
 		} else { 
 			zone->insert(this);
@@ -437,7 +466,7 @@ void CreatureImplementation::insertToBuilding(BuildingObject* building) {
 		broadcastMessage(link(parent), 128, false);
 
 	} catch (...) {
-		error("exception PlayerImplementation::insertToBuilding(BuildingObject* building)");
+		error("exception CreatureImplementation::insertToBuilding(BuildingObject* building)");
 
 		//building->unlock(doLock);
 	}
@@ -466,8 +495,6 @@ void CreatureImplementation::updateZone(bool lightUpdate) {
 		zone->inRange(this, 128);
 
 		updateCreaturePosition(lightUpdate);
-
-		++movementCounter;
 
 		zone->unlock();
 	} catch (...) {
@@ -537,6 +564,8 @@ void CreatureImplementation::updateZoneWithParent(uint64 par, bool lightUpdate) 
 }
 
 void CreatureImplementation::updateCreaturePosition(bool lightUpdate) {
+	++movementCounter;
+	
 	for (int i = 0; i < inRangeObjectCount(); ++i) {
 		SceneObject* obj = (SceneObject*) (((SceneObjectImplementation*) getInRangeObject(i))->_getStub());
 		if (obj->isPlayer()) {
@@ -616,7 +645,7 @@ void CreatureImplementation::removeFromBuilding(BuildingObject* building) {
 
 		//building->unlock(doLock);
 	} catch (...) {
-		error("exception PlayerImplementation::removeFromBuilding(BuildingObject* building, bool doLock)");
+		error("exception CreatureImplementation::removeFromBuilding(BuildingObject* building, bool doLock)");
 
 		//building->unlock(doLock);
 	}
@@ -645,8 +674,10 @@ void CreatureImplementation::notifyPositionUpdate(QuadTreeEntry* obj) {
 				creatureManager->dequeueActivity(this);
 			
 			creatureManager->queueActivity(this, 10);
-		} else if (!doRandomMovement && patrolPoints.isEmpty() && System::random(200) < 1) {
+		} else if ((parent == NULL) && !doRandomMovement && patrolPoints.isEmpty() && System::random(200) < 1) {
 			doRandomMovement = true;
+			
+			positionZ = obj->getPositionZ();
 
 			//cout << hex << player->getObjectID() << " initiating movement of " << objectID << "\n";
 			
@@ -777,33 +808,76 @@ void CreatureImplementation::resetState() {
 	clearLootItems();
 	
 	resetPatrolPoints(false);
+
+	if (randomizeRespawn) {
+		float distance = System::random(64) + 16;
+		randomizePosition(distance);
+	}
+}
+
+void CreatureImplementation::broadcastNextPositionUpdate(PatrolPoint* point) {
+	BaseMessage* msg;
+
+	++movementCounter;
 	
-	float distance = System::random(64) + 16;
-	randomizePosition(distance);
+	if (point == NULL) {
+		if (parent != NULL)
+			msg = new UpdateTransformWithParentMessage(_this);
+		else
+			msg = new UpdateTransformMessage(_this);
+	} else {
+		if (point->getCellID() != 0)
+			msg = new UpdateTransformWithParentMessage(_this, point->getPositionX(), point->getPositionZ(), point->getPositionY(), point->getCellID()); 
+		else
+			msg = new UpdateTransformMessage(_this, point->getPositionX(), point->getPositionZ(), point->getPositionY());
+	}
+	
+	broadcastMessage(msg);
+}
+
+void CreatureImplementation::setNextPosition() {
+	setPosition(nextPosition->getPositionX(), nextPosition->getPositionZ(), nextPosition->getPositionY());
+	uint64 newCell = nextPosition->getCellID();
+
+	stringstream reachedPosition;
+	reachedPosition << "(" << positionX << ", " << positionY << ")"; 
+	info("reached " + reachedPosition.str());
+
+	if (newCell != 0)
+		updateZoneWithParent(newCell);
+	else
+		updateZone();
 }
 
 bool CreatureImplementation::doMovement() {
+	if (actualSpeed != 0)
+		setNextPosition();
+	
 	if (isKnockedDown())
 		return true;
 		
 	if (isKneeled())
 		doStandUp();
 
-	float waypointX, waypointY;
-	float actualspeed = speed;
+	float waypointX, waypointY, waypointZ;
+	uint64 cellID = 0;
+	
+	float maxSpeed = speed;
 
 	if (aggroedCreature != NULL) {
 		waypointX = aggroedCreature->getPositionX();
+		waypointZ = aggroedCreature->getPositionZ();
 		waypointY = aggroedCreature->getPositionY();
+		cellID = aggroedCreature->getParentID();
 		
-		actualspeed *= 1.4f;
 	} else if (!patrolPoints.isEmpty()) {
-		Coordinate* waypoint = patrolPoints.get(0);
+		PatrolPoint* waypoint = patrolPoints.get(0);
 	
 		waypointX = waypoint->getPositionX();
+		waypointZ = positionZ;
 		waypointY = waypoint->getPositionY();
-
-		actualspeed *= 0.5f;
+		
+		cellID = waypoint->getCellID();
 	} else
 		return false;
 	
@@ -811,31 +885,66 @@ bool CreatureImplementation::doMovement() {
 	float dy = waypointY - positionY;
 	
 	float dist = sqrt(dx * dx + dy * dy);
+	float directionangle = atan2(dy, dx);
 	
-	if (dist < 5) {
+	float maxDistance = 5;
+	
+	if (weaponObject != NULL)
+		maxDistance = weaponObject->getMaxRange();
+		
+	if (dist < maxDistance) {
 		info("reached destintaion");
 		
 		if (aggroedCreature == NULL) {
-			Coordinate* coord = patrolPoints.remove(0);
-			coord->finalize();
+			PatrolPoint* coord = patrolPoints.remove(0);
+			delete coord;
 		}
-
+		
+		actualSpeed = 0;
+		
+		float radians =  M_PI / 2 - directionangle;
+		uint8 newDirectionAngle = (uint8)((radians / 6.283f) * 100);
+		
+		if (newDirectionAngle != directionAngle) {
+			setRadialDirection(radians);
+			
+			broadcastNextPositionUpdate();
+		}
+		
 		return false;
 	}
 	
-	positionX += actualspeed * (dx / dist);
-	positionY += actualspeed * (dy / dist);
+	float newPositionX, newPositionZ, newPositionY;
 	
-	float directionangle = atan2(dy, dx);
-	//cout << "angle = " << directionangle * 180 / M_PI << " (" << dx << "," << dy << ")\n";
+	newPositionZ = waypointZ;
+
+	if (actualSpeed < maxSpeed)
+		actualSpeed += acceleration;
+	else
+		actualSpeed = maxSpeed;
+	
+	if (((parent != NULL) && (cellID == 0)) || (parent == NULL && cellID != 0)) {
+		newPositionX = waypointX;
+		newPositionY = waypointY;
+	} else {
+		newPositionX = positionX + (actualSpeed * (dx / dist));
+		newPositionY = positionY + (actualSpeed * (dy / dist));
+	}
+	
+	nextPosition->setPosition(newPositionX, newPositionZ, newPositionY);
+	nextPosition->setCellID(cellID);
+	
+	/*stringstream angleMsg;
+	angleMsg << "angle = " << directionangle * 180 / M_PI << " (" << dx << "," << dy << ")\n";
+	info(angleMsg.str());*/
 	
 	setRadialDirection(M_PI / 2 - directionangle);
 	
 	stringstream position;
-	position << "(" << positionX << ", " << positionY << ")"; 
+	position << "(" << newPositionX << ", " << newPositionY << ")"; 
 	info("moving to " + position.str());
-
-	updateZone();
+	
+	broadcastNextPositionUpdate(nextPosition);
 	
 	return true;
 }
@@ -872,14 +981,27 @@ bool CreatureImplementation::attack(CreatureObject* target) {
 	if (target == NULL || target == _this || !target->isPlayer())
 		return false;
 
-	if (target->isIncapacitated() || target->isDead() || !isInRange(target, 64)) {
+	if (target->isIncapacitated() || target->isDead()) {
 		deagro();
 
 		return false;
 	}
+	
+	if (!isInRange(target, 70)) {
+		if (((parent != NULL) && (nextPosition->getCellID() == 0)) 
+				|| (parent == NULL && nextPosition->getCellID() != 0))
+			return true;
+		else {
+			deagro();
 
-	if (!nextAttackDelay.isPast())
+			return false;
+		}
+	}
+
+	if (!nextAttackDelay.isPast()) {
+		lastCombatAction.update();
 		return true;
+	}
 	
 	CombatManager* combatManager = server->getCombatManager();
 
@@ -904,7 +1026,9 @@ bool CreatureImplementation::attack(CreatureObject* target) {
 	if (isDead() || isKnockedDown())
 		return false;
 
-	if (!isInRange(target, skill->getRange()))
+	if (weaponObject != NULL && (!isInRange(target, weaponObject->getMaxRange()))) {
+		return true;
+	} else if (!isInRange(target, skill->getRange()))
 		return true;
 
 	info("queuing attacking");
@@ -924,6 +1048,14 @@ bool CreatureImplementation::attack(CreatureObject* target) {
 	}
 	
 	lastCombatAction.update();
+	
+	float delay = skill->getSpeedRatio();
+	
+	if (weaponObject != NULL)
+		delay = delay * weaponObject->getAttackSpeed();
+	
+	nextAttackDelay.update();
+	nextAttackDelay.addMiliTime((uint64)(delay * 1000));
 
 	return true;
 }
@@ -1064,7 +1196,7 @@ void CreatureImplementation::queueRespawn() {
 	creatureManager->queueActivity(this, respawnTimer * 1000);
 }
 
-void CreatureImplementation::setPatrolPoint(Coordinate* cord, bool doLock) {
+void CreatureImplementation::setPatrolPoint(PatrolPoint* cord, bool doLock) {
 	try {
 		wlock(doLock);
 		
@@ -1085,9 +1217,9 @@ void CreatureImplementation::resetPatrolPoints(bool doLock) {
 		wlock(doLock);
 		
 		while (!patrolPoints.isEmpty()) {
-			Coordinate* point = patrolPoints.remove(0);
+			PatrolPoint* point = patrolPoints.remove(0);
 			
-			point->finalize();
+			delete point;
 		}
 		
 		//patrolPoints.removeAll();
@@ -1100,14 +1232,14 @@ void CreatureImplementation::resetPatrolPoints(bool doLock) {
 }
 
 void CreatureImplementation::addPatrolPoint(float x, float y, bool doLock) {
-	addPatrolPoint(new Coordinate(x , positionZ, y), doLock);
+	addPatrolPoint(new PatrolPoint(x , positionZ, y, getParentID()), doLock);
 }
 
 void CreatureImplementation::addPatrolPoint(SceneObject* obj, bool doLock) {
-	addPatrolPoint(new Coordinate(obj->getPositionX() , positionZ, obj->getPositionY()), doLock);
+	addPatrolPoint(new PatrolPoint(obj->getPositionX() , obj->getPositionZ(), obj->getPositionY(), obj->getParentID()), doLock);
 }
 
-void CreatureImplementation::addPatrolPoint(Coordinate* cord, bool doLock) {
+void CreatureImplementation::addPatrolPoint(PatrolPoint* cord, bool doLock) {
 	try {
 		wlock(doLock);
 		
@@ -1123,9 +1255,14 @@ void CreatureImplementation::addPatrolPoint(Coordinate* cord, bool doLock) {
 	}
 }
 
-void CreatureImplementation::addRandomPatrolPoint(float distance, bool doLock) {
-	Coordinate* cord = new Coordinate(positionX, positionZ, positionY);
-	cord->randomizePosition(distance);
+void CreatureImplementation::addRandomPatrolPoint(float radius, bool doLock) {
+	float angle = (45 + System::random(200)) / 3.14;
+	float distance = radius + System::random((int) radius);
+				
+	positionX += cos(angle) * distance; 
+	positionY += sin(angle) * distance; 
+	
+	PatrolPoint* cord = new PatrolPoint(positionX, positionZ, positionY, getParentID());
 	
 	addPatrolPoint(cord, doLock);
 }

@@ -271,10 +271,6 @@ CreatureObjectImplementation::CreatureObjectImplementation(uint64 oid) : Creatur
 	mindBuff = false;
 	focusBuff = false;
 	willpowerBuff = false;
-	
-	spawnPositionX = 0;
-	spawnPositionY = 0;
-	spawnPositionZ = 0;
 
 }
 
@@ -3171,6 +3167,41 @@ void CreatureObjectImplementation::broadcastMessage(BaseMessage* msg, int range,
 				if (range == 128 || isInRange(player, range) || player->getParent() != NULL) {
 					//cout << "CreatureObject - sending message to player " << player->getFirstName() << "\n"; 
 					player->sendMessage(msg->clone());
+				}
+			}
+		}
+
+		delete msg;
+
+		zone->unlock(doLock);
+
+	} catch (...) {
+		error("exception CreatureObject::broadcastMessage(Message* msg, int range, bool doLock)");
+
+		zone->unlock(doLock);
+	}
+	
+	//cout << "finished CreatureObject::broadcastMessage(Message* msg, int range, bool doLock)\n";
+}
+
+void CreatureObjectImplementation::broadcastMessage(StandaloneBaseMessage* msg, int range, bool doLock) {
+	if (zone == NULL)
+		return;
+	
+	try {
+		//cout << "CreatureObject::broadcastMessage(Message* msg, int range, bool doLock)\n";
+		zone->lock(doLock);
+
+		for (int i = 0; i < inRangeObjectCount(); ++i) {
+			SceneObjectImplementation* scno = (SceneObjectImplementation*) getInRangeObject(i);
+			SceneObject* object = (SceneObject*) scno->_getStub();
+			
+			if (object->isPlayer()) {
+				Player* player = (Player*) object;
+
+				if (range == 128 || isInRange(player, range) || player->getParent() != NULL) {
+					//cout << "CreatureObject - sending message to player " << player->getFirstName() << "\n"; 
+					player->sendMessage((StandaloneBaseMessage*)msg->clone());
 				}
 			}
 		}

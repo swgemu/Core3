@@ -194,6 +194,13 @@ bool CommandQueueAction::validate() {
 				return checkHealSkill();
 			}
 		}
+		
+		if (target->getParent() != creature->getParent()) {
+			clearError(0);
+			stringstream msg;
+			msg << "You cant see your target";
+			creature->sendSystemMessage(msg.str());
+		}
 	}
 
 	if (skill->isAttackSkill()) {

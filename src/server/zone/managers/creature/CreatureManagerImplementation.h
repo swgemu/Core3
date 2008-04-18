@@ -87,6 +87,7 @@ public:
 	~CreatureManagerImplementation();
 	
 	void init();
+	void loadCreatures();
 
 	void run();
 

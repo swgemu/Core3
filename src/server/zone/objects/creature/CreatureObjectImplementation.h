@@ -233,14 +233,6 @@ protected:
 	// misc
 	uint32 pvpStatusBitmask;
 	uint32 faction;
-	int interp_update;
-	float oldpositionX;
-	//float oldpositionZ;
-	float oldpositionY;
-	
-	float spawnPositionX;
-	float spawnPositionY;
-	float spawnPositionZ;
 	
 	// combat
 	int fireDotType;
@@ -816,6 +808,7 @@ public:
 	void sendDestroyTo(Player* player);
 
 	void broadcastMessage(BaseMessage* msg, int range = 128, bool doLock = true);
+	void broadcastMessage(StandaloneBaseMessage* msg, int range = 128, bool doLock = true);
 	void broadcastMessages(Vector<BaseMessage*>& msgs, int range = 128, bool doLock = true);
 	
 	void sendSystemMessage(const string& message);

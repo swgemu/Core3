@@ -55,6 +55,8 @@ which carries forward this exception.
 
 #include "Creature.h"
 
+#include "PatrolPoint.h"
+
 class CreatureManagerImplementation;
 class CreatureGroup;
 class LairObject;
@@ -69,7 +71,7 @@ class CreatureImplementation : public CreatureServant, public Event {
 	string creatureName;
 	string objectFile; //object iff
 	
-	Vector<Coordinate*> patrolPoints;
+	Vector<PatrolPoint*> patrolPoints;
 	
 	bool doRandomMovement;
 	
@@ -88,13 +90,24 @@ class CreatureImplementation : public CreatureServant, public Event {
 	
 	bool willAggro;
 	
-	uint32 respawnTimer;
-	
 	bool lootCreated;
 	
 	// Lair
 	LairObject* lair;
 	
+	// movement
+	PatrolPoint* nextPosition;
+	float actualSpeed;
+	
+	//respawn
+	PatrolPoint* spawnPosition;
+	bool randomizeRespawn;
+	uint32 respawnTimer;
+	
+private:
+	void broadcastNextPositionUpdate(PatrolPoint* point = NULL);
+	void setNextPosition();
+
 public:
 
 	const static int CREATURE = 1;
@@ -169,13 +182,13 @@ public:
 	void doIncapAnimation();
 	
 	// waypoint methods
-	void setPatrolPoint(Coordinate* cord, bool doLock = true );	
+	void setPatrolPoint(PatrolPoint* cord, bool doLock = true );	
 
 	void addPatrolPoint(float x, float y, bool doLock = true);	
-	void addPatrolPoint(Coordinate* cord, bool doLock = true);
+	void addPatrolPoint(PatrolPoint* cord, bool doLock = true);
 	void addPatrolPoint(SceneObject* obj, bool doLock = true);
 
-	void addRandomPatrolPoint(float distance = 30, bool doLock = true);	
+	void addRandomPatrolPoint(float radius = 30, bool doLock = true);	
 
 	void resetPatrolPoints(bool doLock = true);
 
@@ -219,6 +232,11 @@ public:
 	
 	inline void setLootCreated(bool value) {
 		lootCreated = value;
+	}
+	
+	void setSpawnPosition(float posX, float posZ, float posY, uint64 cellid = 0) {
+		spawnPosition->setPosition(posX, posZ, posY);
+		spawnPosition->setCellID(cellid);
 	}
 	
 	inline int getType() {
@@ -283,6 +301,10 @@ public:
 	
 	inline bool hasLootCreated() {
 		return lootCreated == true;
+	}
+	
+	inline bool isMoving() {
+		return actualSpeed != 0;
 	}
 	
 	friend class CreatureManagerImplementation;

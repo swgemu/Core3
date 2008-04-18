@@ -43,6 +43,7 @@ which carries forward this exception.
 */
 
 include "engine/service/proto/BaseMessage";
+include "engine/service/proto/StandaloneBaseMessage";
 
 import "../scene/SceneObject";
 
@@ -441,6 +442,7 @@ interface CreatureObject implements SceneObject {
 	void removeLootItem(unsigned long oid);
 		
 	void broadcastMessage(BaseMessage msg, int range = 128, boolean doLock = true);
+	void broadcastMessage(StandaloneBaseMessage msg, int range = 128, boolean doLock = true);
 	
 	Inventory getInventory();
 

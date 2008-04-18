@@ -187,6 +187,9 @@ void CombatManager::handleAreaAction(CreatureObject* creature, CreatureObject* t
 			if (!creature->isPlayer() && !targetCreature->isPlayer())
 				continue;
 			
+			if (creature->getParent() != targetCreature->getParent())
+				continue;
+			
 			if (skill->isCone()) {
 				if (!(creature->isInRange(targetCreature, skill->getRange())))
 					continue;
