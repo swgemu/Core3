@@ -49,11 +49,11 @@ MakePing = 1
 ORB = ""
 
 
-DBHost = "127.0.0.1"
+DBHost = "192.168.1.100"
 DBPort = 3306
 DBName = "swgemu"
 DBUser = "swgemu"
-DBPass = "praised0l3"
+DBPass = "123456"
 
 LoginPort = 44453
 LoginAllowedConnections = 3000
