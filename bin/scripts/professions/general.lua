@@ -424,9 +424,9 @@ bowcaster = {
 
 	objectName = "Bowcaster",
 
-	templateName = "bowcaster",
+	templateName = "object/weapon/ranged/rifle/shared_rifle_bowcaster.iff",
 
-	objectCRC = 3496137221,
+	objectCRC = 2976096139,
 
 	objectType = RIFLE,
 
