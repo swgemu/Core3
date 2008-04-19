@@ -281,9 +281,11 @@ TangibleObject* ItemManagerImplementation::createPlayerObject(Player* player, Re
 
 //Temporary Fix until we get a global clone() method implemented
 //TODO: remove this function when a global clone() method is implemented for all objects
-TangibleObjectImplementation * ItemManagerImplementation::clonePlayerObjectTemplate(TangibleObjectImplementation * templ) {
-	TangibleObjectImplementation * newTempl = createPlayerObjectTemplate(templ->getObjectSubType(), templ->getObjectID(), templ->getObjectCRC(), templ->getName(), (char*) templ->getTemplateName().c_str(), templ->isEquipped());
+TangibleObjectImplementation * ItemManagerImplementation::clonePlayerObjectTemplate(TangibleObjectImplementation * templ) {	
+	//the name is passed in a hackish way to stop buffer overflows.. anyone know why it was doing that?
+	TangibleObjectImplementation * newTempl = createPlayerObjectTemplate(templ->getObjectSubType(), templ->getObjectID(), templ->getObjectCRC(), unicode(templ->getName().c_str()), (char *) templ->getTemplateName().c_str(), templ->isEquipped());
 	newTempl->setAttributes(templ->getAttributes());
+	newTempl->parseItemAttributes();
 	
 	return newTempl;
 }
@@ -570,6 +572,7 @@ void ItemManagerImplementation::loadDefaultPlayerItems(Player* player) {
 		obj->setObjectID(player->getNewItemID());
 		player->addInventoryItem(obj->deploy());
 	}
+	
 }
 
 void ItemManagerImplementation::loadDefaultPlayerDatapadItems(Player* player) {
