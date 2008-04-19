@@ -89,7 +89,8 @@ public:
 	
 	TangibleObject* createPlayerObject(Player* player, ResultSet* result);
 	static TangibleObjectImplementation * createPlayerObjectTemplate(int objecttype, uint64 objectid, uint32 objectcrc, unicode objectname, char* objecttemp, bool equipped);
-
+	//TODO: remove this function when a global clone() function is available for all objects
+	TangibleObjectImplementation * clonePlayerObjectTemplate(TangibleObjectImplementation * templ);
 	
 	void unloadPlayerItems(Player* player);
 

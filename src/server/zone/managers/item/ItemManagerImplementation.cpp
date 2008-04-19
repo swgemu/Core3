@@ -279,6 +279,15 @@ TangibleObject* ItemManagerImplementation::createPlayerObject(Player* player, Re
 	return tano;
 }
 
+//Temporary Fix until we get a global clone() method implemented
+//TODO: remove this function when a global clone() method is implemented for all objects
+TangibleObjectImplementation * ItemManagerImplementation::clonePlayerObjectTemplate(TangibleObjectImplementation * templ) {
+	TangibleObjectImplementation * newTempl = createPlayerObjectTemplate(templ->getObjectSubType(), templ->getObjectID(), templ->getObjectCRC(), templ->getName(), (char*) templ->getTemplateName().c_str(), templ->isEquipped());
+	newTempl->setAttributes(templ->getAttributes());
+	
+	return newTempl;
+}
+
 void ItemManagerImplementation::registerFunctions() {
 	lua_register(getLuaState(), "AddPlayerItem", addPlayerItem);
 	lua_register(getLuaState(), "RunProfessionFile", runProfessionFile);
@@ -513,6 +522,7 @@ int ItemManagerImplementation::addPlayerItem(lua_State * l) {
 	return 0;
 }
 
+//TODO: Modify this function when a global clone() function is available for all objects
 void ItemManagerImplementation::loadDefaultPlayerItems(Player* player) {
 	string prof = player->getStartingProfession();
 	prof = prof.substr(prof.find_first_of("_") + 1);
@@ -532,7 +542,7 @@ void ItemManagerImplementation::loadDefaultPlayerItems(Player* player) {
 	//Make profession items for species
 	items = startingItems->getProfessionItems(prof, species, sex);
 	for (int j = 0; j < items->size(); ++j) {
-		TangibleObjectImplementation * obj = items->get(j);
+		TangibleObjectImplementation * obj = clonePlayerObjectTemplate(items->get(j));
 		obj->setObjectID(player->getNewItemID());
 		player->addInventoryItem(obj->deploy());
 	}
@@ -540,7 +550,7 @@ void ItemManagerImplementation::loadDefaultPlayerItems(Player* player) {
 	//Make profession items for that apply to all species
 	items = startingItems->getProfessionItems(prof, all, sex);
 	for (int j = 0; j < items->size(); ++j) {
-		TangibleObjectImplementation * obj = items->get(j);
+		TangibleObjectImplementation * obj = clonePlayerObjectTemplate(items->get(j));
 		obj->setObjectID(player->getNewItemID());
 		player->addInventoryItem(obj->deploy());
 	}
@@ -548,7 +558,7 @@ void ItemManagerImplementation::loadDefaultPlayerItems(Player* player) {
 	//Make general items for species
 	items = startingItems->getProfessionItems(gen, species, sex);
 	for (int j = 0; j < items->size(); ++j) {
-		TangibleObjectImplementation * obj = items->get(j);
+		TangibleObjectImplementation * obj = clonePlayerObjectTemplate(items->get(j));
 		obj->setObjectID(player->getNewItemID());
 		player->addInventoryItem(obj->deploy());
 	}
@@ -556,7 +566,7 @@ void ItemManagerImplementation::loadDefaultPlayerItems(Player* player) {
 	//Make general items that apple to all species
 	items = startingItems->getProfessionItems(gen, all, sex);
 	for (int j = 0; j < items->size(); ++j) {
-		TangibleObjectImplementation * obj = items->get(j);
+		TangibleObjectImplementation * obj = clonePlayerObjectTemplate(items->get(j));
 		obj->setObjectID(player->getNewItemID());
 		player->addInventoryItem(obj->deploy());
 	}
