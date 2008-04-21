@@ -924,8 +924,6 @@ protected:
 };
 
 class PlayerHelper : public DistributedObjectClassHelper, public Singleton<PlayerHelper> {
-	static PlayerHelper* staticInitializer;
-
 public:
 	PlayerHelper();
 

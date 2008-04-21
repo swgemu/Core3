@@ -38,8 +38,6 @@ public:
 };
 
 class PistolRangedWeaponHelper : public DistributedObjectClassHelper, public Singleton<PistolRangedWeaponHelper> {
-	static PistolRangedWeaponHelper* staticInitializer;
-
 public:
 	PistolRangedWeaponHelper();
 

@@ -153,8 +153,6 @@ string& TicketAdapter::getArrivalPoint() {
  *	TicketHelper
  */
 
-TicketHelper* TicketHelper::staticInitializer = TicketHelper::instance();
-
 TicketHelper::TicketHelper() {
 	className = "Ticket";
 

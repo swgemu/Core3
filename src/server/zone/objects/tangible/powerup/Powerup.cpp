@@ -448,8 +448,6 @@ void PowerupAdapter::setPowerupSubType(int value) {
  *	PowerupHelper
  */
 
-PowerupHelper* PowerupHelper::staticInitializer = PowerupHelper::instance();
-
 PowerupHelper::PowerupHelper() {
 	className = "Powerup";
 

@@ -404,8 +404,6 @@ Creature* CreatureManagerAdapter::getCreature(unsigned long long oid) {
  *	CreatureManagerHelper
  */
 
-CreatureManagerHelper* CreatureManagerHelper::staticInitializer = CreatureManagerHelper::instance();
-
 CreatureManagerHelper::CreatureManagerHelper() {
 	className = "CreatureManager";
 

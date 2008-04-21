@@ -53,8 +53,6 @@ Packet* DatapadAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
  *	DatapadHelper
  */
 
-DatapadHelper* DatapadHelper::staticInitializer = DatapadHelper::instance();
-
 DatapadHelper::DatapadHelper() {
 	className = "Datapad";
 

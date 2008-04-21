@@ -92,8 +92,6 @@ int TerminalAdapter::getTerminalType() {
  *	TerminalHelper
  */
 
-TerminalHelper* TerminalHelper::staticInitializer = TerminalHelper::instance();
-
 TerminalHelper::TerminalHelper() {
 	className = "Terminal";
 

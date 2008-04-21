@@ -49,8 +49,6 @@ public:
 };
 
 class SuiColorPickerHelper : public DistributedObjectClassHelper, public Singleton<SuiColorPickerHelper> {
-	static SuiColorPickerHelper* staticInitializer;
-
 public:
 	SuiColorPickerHelper();
 

@@ -38,8 +38,6 @@ public:
 };
 
 class PolearmJediWeaponHelper : public DistributedObjectClassHelper, public Singleton<PolearmJediWeaponHelper> {
-	static PolearmJediWeaponHelper* staticInitializer;
-
 public:
 	PolearmJediWeaponHelper();
 

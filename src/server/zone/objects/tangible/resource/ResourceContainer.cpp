@@ -865,8 +865,6 @@ int ResourceContainerAdapter::getMaxContents() {
  *	ResourceContainerHelper
  */
 
-ResourceContainerHelper* ResourceContainerHelper::staticInitializer = ResourceContainerHelper::instance();
-
 ResourceContainerHelper::ResourceContainerHelper() {
 	className = "ResourceContainer";
 

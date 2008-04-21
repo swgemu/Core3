@@ -116,8 +116,6 @@ void TrainerCreatureAdapter::selectConversationOption(int option, SceneObject* o
  *	TrainerCreatureHelper
  */
 
-TrainerCreatureHelper* TrainerCreatureHelper::staticInitializer = TrainerCreatureHelper::instance();
-
 TrainerCreatureHelper::TrainerCreatureHelper() {
 	className = "TrainerCreature";
 

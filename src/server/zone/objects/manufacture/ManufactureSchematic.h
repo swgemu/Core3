@@ -36,8 +36,6 @@ public:
 };
 
 class ManufactureSchematicHelper : public DistributedObjectClassHelper, public Singleton<ManufactureSchematicHelper> {
-	static ManufactureSchematicHelper* staticInitializer;
-
 public:
 	ManufactureSchematicHelper();
 

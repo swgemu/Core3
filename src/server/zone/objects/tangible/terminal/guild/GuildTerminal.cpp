@@ -73,8 +73,6 @@ int GuildTerminalAdapter::useObject(Player* player) {
  *	GuildTerminalHelper
  */
 
-GuildTerminalHelper* GuildTerminalHelper::staticInitializer = GuildTerminalHelper::instance();
-
 GuildTerminalHelper::GuildTerminalHelper() {
 	className = "GuildTerminal";
 

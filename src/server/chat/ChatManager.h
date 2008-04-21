@@ -203,8 +203,6 @@ protected:
 };
 
 class ChatManagerHelper : public DistributedObjectClassHelper, public Singleton<ChatManagerHelper> {
-	static ChatManagerHelper* staticInitializer;
-
 public:
 	ChatManagerHelper();
 

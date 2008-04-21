@@ -71,8 +71,6 @@ bool BankManagerAdapter::isBankTerminal(long long objectid) {
  *	BankManagerHelper
  */
 
-BankManagerHelper* BankManagerHelper::staticInitializer = BankManagerHelper::instance();
-
 BankManagerHelper::BankManagerHelper() {
 	className = "BankManager";
 

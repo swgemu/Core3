@@ -57,8 +57,6 @@ protected:
 };
 
 class SuiBankTransferBoxHelper : public DistributedObjectClassHelper, public Singleton<SuiBankTransferBoxHelper> {
-	static SuiBankTransferBoxHelper* staticInitializer;
-
 public:
 	SuiBankTransferBoxHelper();
 

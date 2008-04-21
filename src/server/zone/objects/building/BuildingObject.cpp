@@ -320,8 +320,6 @@ void BuildingObjectAdapter::inRange(QuadTreeEntry* obj, float range) {
  *	BuildingObjectHelper
  */
 
-BuildingObjectHelper* BuildingObjectHelper::staticInitializer = BuildingObjectHelper::instance();
-
 BuildingObjectHelper::BuildingObjectHelper() {
 	className = "BuildingObject";
 

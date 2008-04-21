@@ -73,8 +73,6 @@ int VendorTerminalAdapter::useObject(Player* player) {
  *	VendorTerminalHelper
  */
 
-VendorTerminalHelper* VendorTerminalHelper::staticInitializer = VendorTerminalHelper::instance();
-
 VendorTerminalHelper::VendorTerminalHelper() {
 	className = "VendorTerminal";
 

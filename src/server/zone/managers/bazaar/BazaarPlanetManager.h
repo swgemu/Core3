@@ -61,8 +61,6 @@ public:
 };
 
 class BazaarPlanetManagerHelper : public DistributedObjectClassHelper, public Singleton<BazaarPlanetManagerHelper> {
-	static BazaarPlanetManagerHelper* staticInitializer;
-
 public:
 	BazaarPlanetManagerHelper();
 

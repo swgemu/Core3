@@ -51,8 +51,6 @@ public:
 };
 
 class TicketCollectorHelper : public DistributedObjectClassHelper, public Singleton<TicketCollectorHelper> {
-	static TicketCollectorHelper* staticInitializer;
-
 public:
 	TicketCollectorHelper();
 

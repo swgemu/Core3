@@ -53,8 +53,6 @@ Packet* MeleeWeaponAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
  *	MeleeWeaponHelper
  */
 
-MeleeWeaponHelper* MeleeWeaponHelper::staticInitializer = MeleeWeaponHelper::instance();
-
 MeleeWeaponHelper::MeleeWeaponHelper() {
 	className = "MeleeWeapon";
 

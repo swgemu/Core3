@@ -75,8 +75,6 @@ int HeavyRangedWeaponAdapter::useObject(Player* player) {
  *	HeavyRangedWeaponHelper
  */
 
-HeavyRangedWeaponHelper* HeavyRangedWeaponHelper::staticInitializer = HeavyRangedWeaponHelper::instance();
-
 HeavyRangedWeaponHelper::HeavyRangedWeaponHelper() {
 	className = "HeavyRangedWeapon";
 

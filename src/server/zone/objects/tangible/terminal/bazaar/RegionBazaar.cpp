@@ -185,8 +185,6 @@ void RegionBazaarAdapter::getBazaarData(Player* player, long long objectid, int 
  *	RegionBazaarHelper
  */
 
-RegionBazaarHelper* RegionBazaarHelper::staticInitializer = RegionBazaarHelper::instance();
-
 RegionBazaarHelper::RegionBazaarHelper() {
 	className = "RegionBazaar";
 

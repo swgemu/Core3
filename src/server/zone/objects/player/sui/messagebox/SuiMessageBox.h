@@ -45,8 +45,6 @@ public:
 };
 
 class SuiMessageBoxHelper : public DistributedObjectClassHelper, public Singleton<SuiMessageBoxHelper> {
-	static SuiMessageBoxHelper* staticInitializer;
-
 public:
 	SuiMessageBoxHelper();
 

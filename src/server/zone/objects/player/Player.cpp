@@ -4007,8 +4007,6 @@ void PlayerAdapter::clearEntertainerEvent() {
  *	PlayerHelper
  */
 
-PlayerHelper* PlayerHelper::staticInitializer = PlayerHelper::instance();
-
 PlayerHelper::PlayerHelper() {
 	className = "Player";
 

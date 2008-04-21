@@ -1585,8 +1585,6 @@ string& WeaponAdapter::getCert() {
  *	WeaponHelper
  */
 
-WeaponHelper* WeaponHelper::staticInitializer = WeaponHelper::instance();
-
 WeaponHelper::WeaponHelper() {
 	className = "Weapon";
 

@@ -659,6 +659,7 @@ TangibleObject * CraftingManagerImplementation::generateTangibleObject(
 	} else if (objecttype & TangibleObjectImplementation::CLOTHING) {
 
 		item = new WearableImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
+		item->setObjectSubType(objecttype);
 
 	} else if (objecttype & TangibleObjectImplementation::ARMOR) {
 

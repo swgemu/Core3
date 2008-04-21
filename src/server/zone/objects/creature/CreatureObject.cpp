@@ -6507,8 +6507,6 @@ bool CreatureObjectAdapter::verifyBankCredits(unsigned int creditsToRemove) {
  *	CreatureObjectHelper
  */
 
-CreatureObjectHelper* CreatureObjectHelper::staticInitializer = CreatureObjectHelper::instance();
-
 CreatureObjectHelper::CreatureObjectHelper() {
 	className = "CreatureObject";
 

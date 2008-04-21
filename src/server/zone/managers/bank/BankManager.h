@@ -39,8 +39,6 @@ public:
 };
 
 class BankManagerHelper : public DistributedObjectClassHelper, public Singleton<BankManagerHelper> {
-	static BankManagerHelper* staticInitializer;
-
 public:
 	BankManagerHelper();
 

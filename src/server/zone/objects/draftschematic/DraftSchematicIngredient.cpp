@@ -169,8 +169,6 @@ bool DraftSchematicIngredientAdapter::getOptional() {
  *	DraftSchematicIngredientHelper
  */
 
-DraftSchematicIngredientHelper* DraftSchematicIngredientHelper::staticInitializer = DraftSchematicIngredientHelper::instance();
-
 DraftSchematicIngredientHelper::DraftSchematicIngredientHelper() {
 	className = "DraftSchematicIngredient";
 

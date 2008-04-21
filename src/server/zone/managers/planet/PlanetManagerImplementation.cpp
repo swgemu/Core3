@@ -187,130 +187,67 @@ void PlanetManagerImplementation::loadStaticPlanetObjects() {
 }
 
 void PlanetManagerImplementation::loadShuttles() {
+	int planetid = zone->getZoneID();
 	lock();
 	
 	ShuttleCreature* shuttle;
 	TravelTerminal* terminal;
 	TicketCollector* colector;
 	Coordinate* coordinates;
-	
+
 	string planetName = Planet::getPlanetName(zone->getZoneID());
 	
-	if (zone->getZoneID() == 8) {
-		coordinates = new Coordinate(-1093, 12.6, -3562);
-		shuttle = creatureManager->spawnShuttle(planetName, "Bestine", coordinates, -1078, -3564, 12.6);
-		shuttleMap->put("Bestine", shuttle);
+	stringstream query;
+	query << "SELECT * FROM shuttles WHERE planet_id = " << planetid << ";";
 
-		TicketCollectorImplementation* colImpl = new TicketCollectorImplementation(shuttle, getNextStaticObjectID(false), unicode("Ticket Collector"), "ticket_travel", -1090, 12.6, -3554.9);
-		colImpl->setZoneProcessServer(server);
-		colImpl->setDirection(0, 0, -0.64, 0.76);
-		colector = (TicketCollector*) colImpl->deploy();
-		colector->insertToZone(zone);
-		ticketCollectorMap->put(colImpl->getObjectID(), colector);
+	ResultSet* shut = ServerDatabase::instance()->executeQuery(query);
 
-		TravelTerminalImplementation* termImpl = new TravelTerminalImplementation(shuttle, getNextStaticObjectID(false), -1092, 12.6, -3570.9);
-		termImpl->setZoneProcessServer(server);
-		termImpl->setDirection(0, 0, -0.64, 0.76);
-		terminal = (TravelTerminal*) termImpl->deploy();
-		terminal->insertToZone(zone);
-		travelTerminalMap->put(terminal->getObjectID(), terminal);
-
-		coordinates = new Coordinate(47, 52.6, -5333);
-		shuttle = creatureManager->spawnShuttle(planetName, "Anchorhead", coordinates, 47, -5317, 52.6);
-		shuttle->setDirection(0, 0, 0.70654386, 0.70766926); 
-		shuttleMap->put("Anchorhead", shuttle);
-
-		colImpl = new TicketCollectorImplementation(shuttle, getNextStaticObjectID(false), unicode("Ticket Collector"), "ticket_travel", 38, 52.6, -5332);
-		colImpl->setZoneProcessServer(server);
-		colector = (TicketCollector*) colImpl->deploy();
-		colector->insertToZone(zone);
-		ticketCollectorMap->put(colImpl->getObjectID(), colector);
-
-		termImpl = new TravelTerminalImplementation(shuttle, getNextStaticObjectID(false), 54, 52.6, -5332);
-		termImpl->setZoneProcessServer(server);
-		terminal = (TravelTerminal*) termImpl->deploy();
-		terminal->insertToZone(zone);
-		travelTerminalMap->put(terminal->getObjectID(), terminal);
-	} else if (zone->getZoneID() == 2) {
-		coordinates = new Coordinate(617, 6, 3090);
-		shuttle = creatureManager->spawnShuttle(planetName, "TradeOutpost", coordinates, 593.9, 3089, 13.1256);
-		shuttle->setDirection(0, 0, -0.71, 0.70);
-		shuttleMap->put("TradeOutpost", shuttle);
-
-		TicketCollectorImplementation* colImpl = new TicketCollectorImplementation(shuttle, getNextStaticObjectID(false), unicode("Ticket Collector"), "ticket_travel", 598, 6, 3095);
-		colImpl->setZoneProcessServer(server);
-		colImpl->setDirection(0, 0, 1, 0);
-		colector = (TicketCollector*) colImpl->deploy();
-		colector->insertToZone(zone);
-		ticketCollectorMap->put(colImpl->getObjectID(), colector);
-
-		TravelTerminalImplementation* termImpl = new TravelTerminalImplementation(shuttle, getNextStaticObjectID(false), 605, 6, 3090);
-		termImpl->setZoneProcessServer(server);
-		termImpl->setDirection(0, 0, 1, 0);
-		terminal = (TravelTerminal*) termImpl->deploy();
-		terminal->insertToZone(zone);
-		travelTerminalMap->put(terminal->getObjectID(), terminal);
-
-		coordinates = new Coordinate(-52, 18, -1585);
-		shuttle = creatureManager->spawnShuttle(planetName, "ScienceOutpost", coordinates, -74, -1583, 25.086);
-		shuttle->setDirection(0, 0, 1, 0);
-		shuttleMap->put("ScienceOutpost", shuttle);
-
-		colImpl = new TicketCollectorImplementation(shuttle, getNextStaticObjectID(false), unicode("Ticket Collector"), "ticket_travel", -68.9, 18, -1578);
-		colImpl->setZoneProcessServer(server);
-		colImpl->setDirection(0, 0, 1, 0);
-		colector = (TicketCollector*) colImpl->deploy();
-		colector->insertToZone(zone);
-		ticketCollectorMap->put(colImpl->getObjectID(), colector);
-
-		termImpl = new TravelTerminalImplementation(shuttle, getNextStaticObjectID(false), -63, 18, -1583);
-		termImpl->setZoneProcessServer(server);
-		termImpl->setDirection(0, 0, 1, 0);
-		terminal = (TravelTerminal*) termImpl->deploy();
-		terminal->insertToZone(zone);
-		travelTerminalMap->put(terminal->getObjectID(), terminal);
-	} else if (zone->getZoneID() == 0) {
-		coordinates = new Coordinate(-331.2, 28, -4639.2);
-		shuttle = creatureManager->spawnShuttle(planetName, "Coronet#1", coordinates, -320, -4620, 28.6);
-		shuttle->setDirection(0, 0, -0.71, 0.70);
-		shuttleMap->put("Coronet#1", shuttle);
-
-		TicketCollectorImplementation* colImpl = new TicketCollectorImplementation(shuttle, getNextStaticObjectID(false), unicode("Ticket Collector"), "ticket_travel", -338, 28.6, -4634);
-		colImpl->setZoneProcessServer(server);
-		colImpl->setDirection(0, 0, 1, 0);
-		colector = (TicketCollector*) colImpl->deploy();
-		colector->insertToZone(zone);
-		ticketCollectorMap->put(colImpl->getObjectID(), colector);
-
-		TravelTerminalImplementation* termImpl = new TravelTerminalImplementation(shuttle, getNextStaticObjectID(false), -319, 28.6, -4633);
-		termImpl->setZoneProcessServer(server);
-		termImpl->setDirection(0, 0, 1, 0);
-		terminal = (TravelTerminal*) termImpl->deploy();
-		terminal->insertToZone(zone);
-		travelTerminalMap->put(terminal->getObjectID(), terminal);
+	while (shut->next()) {
+		string shuttleName = shut->getString(2);
+		float playerSpawnX = shut->getFloat(3);
+		float playerSpawnY = shut->getFloat(4);
+		float playerSpawnZ = shut->getFloat(5);
+		float shutx = shut->getFloat(6);
+		float shuty = shut->getFloat(7);
+		float shutz = shut->getFloat(8);
+		float shutdiry = shut->getFloat(9);
+		float shutdirw = shut->getFloat(10);
+		float colx = shut->getFloat(11);
+		float coly = shut->getFloat(12);
+		float tickdiry = shut->getFloat(13);
+		float tickdirw = shut->getFloat(14);
+		float termx = shut->getFloat(15);
+		float termy = shut->getFloat(16);
 		
-		coordinates = new Coordinate(-27.9, 28, -4406);
-		shuttle = creatureManager->spawnShuttle(planetName, "Coronet#2", coordinates, -18, -4388, 28.6);
-		shuttle->setDirection(0, 0, -0.71, 0.70);
-		shuttleMap->put("Coronet#2", shuttle);
+		coordinates = new Coordinate(playerSpawnX, playerSpawnZ, playerSpawnY);
+		shuttle = creatureManager->spawnShuttle(planetName, shuttleName, coordinates, shutx, shuty, shutz);
+		shuttle->setDirection(0, 0, shutdiry, shutdirw);
+		shuttleMap->put(shuttleName, shuttle);
 
-		colImpl = new TicketCollectorImplementation(shuttle, getNextStaticObjectID(false), unicode("Ticket Collector"), "ticket_travel", -34.2, 28.6, -4402);
+		TicketCollectorImplementation* colImpl = new TicketCollectorImplementation(shuttle, getNextStaticObjectID(false), 
+				unicode("Ticket Collector"), "ticket_travel", colx, playerSpawnZ, coly);
 		colImpl->setZoneProcessServer(server);
-		colImpl->setDirection(0, 0, 1, 0);
+		colImpl->setDirection(0, 0, tickdiry, tickdirw);
 		colector = (TicketCollector*) colImpl->deploy();
 		colector->insertToZone(zone);
 		ticketCollectorMap->put(colImpl->getObjectID(), colector);
 
-		termImpl = new TravelTerminalImplementation(shuttle, getNextStaticObjectID(false), -15, 28.6, -4402);
+		TravelTerminalImplementation* termImpl = new TravelTerminalImplementation(shuttle, getNextStaticObjectID(false), 
+				termx, playerSpawnZ, termy);
 		termImpl->setZoneProcessServer(server);
-		termImpl->setDirection(0, 0, 1, 0);
+		termImpl->setDirection(0, 0, tickdiry, tickdirw);
 		terminal = (TravelTerminal*) termImpl->deploy();
 		terminal->insertToZone(zone);
-		travelTerminalMap->put(terminal->getObjectID(), terminal);
+		travelTerminalMap->put(terminal->getObjectID(), terminal); 
 	}
+	delete shut;
 	
 	unlock();
+	
 }
+
+	
+
 
 void PlanetManagerImplementation::loadTrainers() {
 }

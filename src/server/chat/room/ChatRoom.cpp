@@ -706,8 +706,6 @@ int ChatRoomAdapter::compareTo(ChatRoom* obj) {
  *	ChatRoomHelper
  */
 
-ChatRoomHelper* ChatRoomHelper::staticInitializer = ChatRoomHelper::instance();
-
 ChatRoomHelper::ChatRoomHelper() {
 	className = "ChatRoom";
 

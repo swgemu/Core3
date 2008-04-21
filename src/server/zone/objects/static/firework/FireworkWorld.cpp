@@ -72,8 +72,6 @@ int FireworkWorldAdapter::getFireworkType() {
  *	FireworkWorldHelper
  */
 
-FireworkWorldHelper* FireworkWorldHelper::staticInitializer = FireworkWorldHelper::instance();
-
 FireworkWorldHelper::FireworkWorldHelper() {
 	className = "FireworkWorld";
 

@@ -38,8 +38,6 @@ public:
 };
 
 class CarbineRangedWeaponHelper : public DistributedObjectClassHelper, public Singleton<CarbineRangedWeaponHelper> {
-	static CarbineRangedWeaponHelper* staticInitializer;
-
 public:
 	CarbineRangedWeaponHelper();
 

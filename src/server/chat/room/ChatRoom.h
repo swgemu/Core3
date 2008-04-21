@@ -193,8 +193,6 @@ protected:
 };
 
 class ChatRoomHelper : public DistributedObjectClassHelper, public Singleton<ChatRoomHelper> {
-	static ChatRoomHelper* staticInitializer;
-
 public:
 	ChatRoomHelper();
 

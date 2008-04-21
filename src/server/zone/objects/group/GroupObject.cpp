@@ -368,8 +368,6 @@ unsigned int GroupObjectAdapter::getNewListCount(int cnt) {
  *	GroupObjectHelper
  */
 
-GroupObjectHelper* GroupObjectHelper::staticInitializer = GroupObjectHelper::instance();
-
 GroupObjectHelper::GroupObjectHelper() {
 	className = "GroupObject";
 

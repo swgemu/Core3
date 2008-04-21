@@ -207,8 +207,6 @@ protected:
 };
 
 class ShipObjectHelper : public DistributedObjectClassHelper, public Singleton<ShipObjectHelper> {
-	static ShipObjectHelper* staticInitializer;
-
 public:
 	ShipObjectHelper();
 

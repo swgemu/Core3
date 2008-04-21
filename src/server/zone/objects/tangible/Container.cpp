@@ -213,8 +213,6 @@ bool ContainerAdapter::isEmpty() {
  *	ContainerHelper
  */
 
-ContainerHelper* ContainerHelper::staticInitializer = ContainerHelper::instance();
-
 ContainerHelper::ContainerHelper() {
 	className = "Container";
 

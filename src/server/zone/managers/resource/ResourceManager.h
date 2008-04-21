@@ -85,8 +85,6 @@ protected:
 };
 
 class ResourceManagerHelper : public DistributedObjectClassHelper, public Singleton<ResourceManagerHelper> {
-	static ResourceManagerHelper* staticInitializer;
-
 public:
 	ResourceManagerHelper();
 

@@ -217,8 +217,6 @@ protected:
 };
 
 class ResourceContainerHelper : public DistributedObjectClassHelper, public Singleton<ResourceContainerHelper> {
-	static ResourceContainerHelper* staticInitializer;
-
 public:
 	ResourceContainerHelper();
 

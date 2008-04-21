@@ -43,8 +43,6 @@ public:
 };
 
 class HolocronHelper : public DistributedObjectClassHelper, public Singleton<HolocronHelper> {
-	static HolocronHelper* staticInitializer;
-
 public:
 	HolocronHelper();
 

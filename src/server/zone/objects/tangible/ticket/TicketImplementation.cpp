@@ -62,6 +62,18 @@ TicketImplementation::TicketImplementation(Player* player, uint32 tempCRC, const
 	arrivalPlanet = arPlanet;
 	arrivalPoint = arPoint;
 
+	//Replace Underscores with spaces
+	int pos = 0;
+	while ((pos = departurePoint.find("_", pos)) != string::npos ) {
+		departurePoint.replace( pos, 1, " " );
+	    pos++;
+	}
+	pos = 0;
+	while ((pos = arrivalPoint.find("_", pos)) != string::npos ) {
+		arrivalPoint.replace( pos, 1, " " );
+		pos++;
+	}
+	   
 	string key = "departurePlanet";
 	itemAttributes->setStringAttribute(key, departurePlanet);
 	key = "departurePoint";

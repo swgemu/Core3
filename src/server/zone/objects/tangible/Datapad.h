@@ -38,8 +38,6 @@ public:
 };
 
 class DatapadHelper : public DistributedObjectClassHelper, public Singleton<DatapadHelper> {
-	static DatapadHelper* staticInitializer;
-
 public:
 	DatapadHelper();
 

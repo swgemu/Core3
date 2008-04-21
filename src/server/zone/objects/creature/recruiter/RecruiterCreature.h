@@ -53,8 +53,6 @@ public:
 };
 
 class RecruiterCreatureHelper : public DistributedObjectClassHelper, public Singleton<RecruiterCreatureHelper> {
-	static RecruiterCreatureHelper* staticInitializer;
-
 public:
 	RecruiterCreatureHelper();
 

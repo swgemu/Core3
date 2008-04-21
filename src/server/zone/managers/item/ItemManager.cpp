@@ -320,8 +320,6 @@ unsigned long long ItemManagerAdapter::getNextStaticObjectID() {
  *	ItemManagerHelper
  */
 
-ItemManagerHelper* ItemManagerHelper::staticInitializer = ItemManagerHelper::instance();
-
 ItemManagerHelper::ItemManagerHelper() {
 	className = "ItemManager";
 

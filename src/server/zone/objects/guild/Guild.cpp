@@ -193,8 +193,6 @@ string& GuildAdapter::getGuildTag() {
  *	GuildHelper
  */
 
-GuildHelper* GuildHelper::staticInitializer = GuildHelper::instance();
-
 GuildHelper::GuildHelper() {
 	className = "Guild";
 

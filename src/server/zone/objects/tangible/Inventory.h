@@ -38,8 +38,6 @@ public:
 };
 
 class InventoryHelper : public DistributedObjectClassHelper, public Singleton<InventoryHelper> {
-	static InventoryHelper* staticInitializer;
-
 public:
 	InventoryHelper();
 

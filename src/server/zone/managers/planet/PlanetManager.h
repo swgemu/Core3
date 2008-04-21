@@ -89,8 +89,6 @@ protected:
 };
 
 class PlanetManagerHelper : public DistributedObjectClassHelper, public Singleton<PlanetManagerHelper> {
-	static PlanetManagerHelper* staticInitializer;
-
 public:
 	PlanetManagerHelper();
 

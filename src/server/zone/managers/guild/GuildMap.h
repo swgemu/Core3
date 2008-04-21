@@ -65,8 +65,6 @@ protected:
 };
 
 class GuildMapHelper : public DistributedObjectClassHelper, public Singleton<GuildMapHelper> {
-	static GuildMapHelper* staticInitializer;
-
 public:
 	GuildMapHelper();
 

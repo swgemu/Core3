@@ -113,8 +113,6 @@ void SuiTransferBoxAdapter::addOption(const string& itemText, const string& lblT
  *	SuiTransferBoxHelper
  */
 
-SuiTransferBoxHelper* SuiTransferBoxHelper::staticInitializer = SuiTransferBoxHelper::instance();
-
 SuiTransferBoxHelper::SuiTransferBoxHelper() {
 	className = "SuiTransferBox";
 

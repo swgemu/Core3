@@ -110,8 +110,6 @@ DraftSchematic* DraftSchematicGroupAdapter::getDraftSchematic(int index) {
  *	DraftSchematicGroupHelper
  */
 
-DraftSchematicGroupHelper* DraftSchematicGroupHelper::staticInitializer = DraftSchematicGroupHelper::instance();
-
 DraftSchematicGroupHelper::DraftSchematicGroupHelper() {
 	className = "DraftSchematicGroup";
 

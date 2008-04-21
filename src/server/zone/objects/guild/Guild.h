@@ -70,8 +70,6 @@ public:
 };
 
 class GuildHelper : public DistributedObjectClassHelper, public Singleton<GuildHelper> {
-	static GuildHelper* staticInitializer;
-
 public:
 	GuildHelper();
 

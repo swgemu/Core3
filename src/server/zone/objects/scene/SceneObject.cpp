@@ -1377,8 +1377,6 @@ bool SceneObjectAdapter::doKeepObject() {
  *	SceneObjectHelper
  */
 
-SceneObjectHelper* SceneObjectHelper::staticInitializer = SceneObjectHelper::instance();
-
 SceneObjectHelper::SceneObjectHelper() {
 	className = "SceneObject";
 

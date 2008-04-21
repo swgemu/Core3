@@ -53,8 +53,6 @@ Packet* RifleRangedWeaponAdapter::invokeMethod(uint32 methid, DistributedMethod*
  *	RifleRangedWeaponHelper
  */
 
-RifleRangedWeaponHelper* RifleRangedWeaponHelper::staticInitializer = RifleRangedWeaponHelper::instance();
-
 RifleRangedWeaponHelper::RifleRangedWeaponHelper() {
 	className = "RifleRangedWeapon";
 

@@ -69,8 +69,6 @@ protected:
 };
 
 class RegionBazaarHelper : public DistributedObjectClassHelper, public Singleton<RegionBazaarHelper> {
-	static RegionBazaarHelper* staticInitializer;
-
 public:
 	RegionBazaarHelper();
 

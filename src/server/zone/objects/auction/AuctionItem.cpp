@@ -578,8 +578,6 @@ string& AuctionItemAdapter::getLocation() {
  *	AuctionItemHelper
  */
 
-AuctionItemHelper* AuctionItemHelper::staticInitializer = AuctionItemHelper::instance();
-
 AuctionItemHelper::AuctionItemHelper() {
 	className = "AuctionItem";
 

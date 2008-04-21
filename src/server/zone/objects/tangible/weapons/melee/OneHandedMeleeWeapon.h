@@ -38,8 +38,6 @@ public:
 };
 
 class OneHandedMeleeWeaponHelper : public DistributedObjectClassHelper, public Singleton<OneHandedMeleeWeaponHelper> {
-	static OneHandedMeleeWeaponHelper* staticInitializer;
-
 public:
 	OneHandedMeleeWeaponHelper();
 

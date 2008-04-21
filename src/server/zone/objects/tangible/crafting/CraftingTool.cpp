@@ -394,8 +394,6 @@ bool CraftingToolAdapter::isReady() {
  *	CraftingToolHelper
  */
 
-CraftingToolHelper* CraftingToolHelper::staticInitializer = CraftingToolHelper::instance();
-
 CraftingToolHelper::CraftingToolHelper() {
 	className = "CraftingTool";
 

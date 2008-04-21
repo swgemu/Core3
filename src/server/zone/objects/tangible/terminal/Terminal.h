@@ -49,8 +49,6 @@ public:
 };
 
 class TerminalHelper : public DistributedObjectClassHelper, public Singleton<TerminalHelper> {
-	static TerminalHelper* staticInitializer;
-
 public:
 	TerminalHelper();
 

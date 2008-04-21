@@ -160,8 +160,6 @@ protected:
 };
 
 class AuctionItemHelper : public DistributedObjectClassHelper, public Singleton<AuctionItemHelper> {
-	static AuctionItemHelper* staticInitializer;
-
 public:
 	AuctionItemHelper();
 

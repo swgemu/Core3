@@ -146,8 +146,6 @@ protected:
 };
 
 class PlayerManagerHelper : public DistributedObjectClassHelper, public Singleton<PlayerManagerHelper> {
-	static PlayerManagerHelper* staticInitializer;
-
 public:
 	PlayerManagerHelper();
 

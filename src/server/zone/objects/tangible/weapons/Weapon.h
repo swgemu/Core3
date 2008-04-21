@@ -364,8 +364,6 @@ protected:
 };
 
 class WeaponHelper : public DistributedObjectClassHelper, public Singleton<WeaponHelper> {
-	static WeaponHelper* staticInitializer;
-
 public:
 	WeaponHelper();
 

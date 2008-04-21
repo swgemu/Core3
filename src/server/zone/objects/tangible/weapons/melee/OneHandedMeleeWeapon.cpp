@@ -53,8 +53,6 @@ Packet* OneHandedMeleeWeaponAdapter::invokeMethod(uint32 methid, DistributedMeth
  *	OneHandedMeleeWeaponHelper
  */
 
-OneHandedMeleeWeaponHelper* OneHandedMeleeWeaponHelper::staticInitializer = OneHandedMeleeWeaponHelper::instance();
-
 OneHandedMeleeWeaponHelper::OneHandedMeleeWeaponHelper() {
 	className = "OneHandedMeleeWeapon";
 

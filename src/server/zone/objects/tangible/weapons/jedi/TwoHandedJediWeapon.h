@@ -38,8 +38,6 @@ public:
 };
 
 class TwoHandedJediWeaponHelper : public DistributedObjectClassHelper, public Singleton<TwoHandedJediWeaponHelper> {
-	static TwoHandedJediWeaponHelper* staticInitializer;
-
 public:
 	TwoHandedJediWeaponHelper();
 

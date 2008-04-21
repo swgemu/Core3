@@ -89,8 +89,6 @@ protected:
 };
 
 class IntangibleObjectHelper : public DistributedObjectClassHelper, public Singleton<IntangibleObjectHelper> {
-	static IntangibleObjectHelper* staticInitializer;
-
 public:
 	IntangibleObjectHelper();
 

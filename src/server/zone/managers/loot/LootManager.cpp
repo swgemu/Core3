@@ -838,26 +838,32 @@ void LootManager::createClothingLoot(Creature* creature, int32 creatureLevel) {
 	case 0 :
 		itemImpl = new WearableImplementation(creature, 0x29031E7D,
 				unicode("Tusken Boots"), "boots_tusken_raider", false);
+		itemImpl->setObjectSubType(TangibleObjectImplementation::FOOTWEAR);
 		break;
 	case 1 :
 		itemImpl = new WearableImplementation(creature, 0x67A25943, 
 				unicode("Tusken Gloves"), "gloves_tusken_raider", false);
+		itemImpl->setObjectSubType(TangibleObjectImplementation::HANDWEAR);
 		break;
 	case 2 :
 		itemImpl = new WearableImplementation(creature, 0xF7B87D4B, 
 				unicode("Tusken Helmet"), "helmet_tusken_raider", false);
+		itemImpl->setObjectSubType(TangibleObjectImplementation::HEADWEAR);
 		break;
 	case 3 :
 		itemImpl = new WearableImplementation(creature, 0x50EF8B3E, 
 				unicode("Tusken Robe"), "robe_tusken_raider", false);
+		itemImpl->setObjectSubType(TangibleObjectImplementation::ROBE);
 		break;
 	case 4 :
 		itemImpl = new WearableImplementation(creature, 0xFC978255, 
 				unicode("Chef Hat"), "hat_chef", false);
+		itemImpl->setObjectSubType(TangibleObjectImplementation::HEADWEAR);
 		break;
 	case 5 :
 		itemImpl = new WearableImplementation(creature, 0x6CE36E4C, 
 				unicode("Aakuan Shirt"), "aakuan_shirt", false);
+		itemImpl->setObjectSubType(TangibleObjectImplementation::SHIRT);
 		break;
 	}
 	

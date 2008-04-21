@@ -113,8 +113,6 @@ void SuiBankTransferBoxAdapter::addOption(const string& itemText, const string& 
  *	SuiBankTransferBoxHelper
  */
 
-SuiBankTransferBoxHelper* SuiBankTransferBoxHelper::staticInitializer = SuiBankTransferBoxHelper::instance();
-
 SuiBankTransferBoxHelper::SuiBankTransferBoxHelper() {
 	className = "SuiBankTransferBox";
 

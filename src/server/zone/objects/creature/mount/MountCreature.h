@@ -93,8 +93,6 @@ public:
 };
 
 class MountCreatureHelper : public DistributedObjectClassHelper, public Singleton<MountCreatureHelper> {
-	static MountCreatureHelper* staticInitializer;
-
 public:
 	MountCreatureHelper();
 

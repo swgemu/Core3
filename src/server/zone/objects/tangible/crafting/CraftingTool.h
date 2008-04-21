@@ -117,8 +117,6 @@ public:
 };
 
 class CraftingToolHelper : public DistributedObjectClassHelper, public Singleton<CraftingToolHelper> {
-	static CraftingToolHelper* staticInitializer;
-
 public:
 	CraftingToolHelper();
 

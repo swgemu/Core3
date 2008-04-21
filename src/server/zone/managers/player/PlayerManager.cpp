@@ -551,8 +551,6 @@ PlayerMap* PlayerManagerAdapter::getPlayerMap() {
  *	PlayerManagerHelper
  */
 
-PlayerManagerHelper* PlayerManagerHelper::staticInitializer = PlayerManagerHelper::instance();
-
 PlayerManagerHelper::PlayerManagerHelper() {
 	className = "PlayerManager";
 

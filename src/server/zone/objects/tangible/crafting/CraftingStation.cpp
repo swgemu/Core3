@@ -136,8 +136,6 @@ float CraftingStationAdapter::getStationEffectiveness() {
  *	CraftingStationHelper
  */
 
-CraftingStationHelper* CraftingStationHelper::staticInitializer = CraftingStationHelper::instance();
-
 CraftingStationHelper::CraftingStationHelper() {
 	className = "CraftingStation";
 

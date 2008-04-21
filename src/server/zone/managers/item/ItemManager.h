@@ -93,8 +93,6 @@ public:
 };
 
 class ItemManagerHelper : public DistributedObjectClassHelper, public Singleton<ItemManagerHelper> {
-	static ItemManagerHelper* staticInitializer;
-
 public:
 	ItemManagerHelper();
 

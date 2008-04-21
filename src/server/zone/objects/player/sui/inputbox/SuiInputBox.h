@@ -59,8 +59,6 @@ protected:
 };
 
 class SuiInputBoxHelper : public DistributedObjectClassHelper, public Singleton<SuiInputBoxHelper> {
-	static SuiInputBoxHelper* staticInitializer;
-
 public:
 	SuiInputBoxHelper();
 

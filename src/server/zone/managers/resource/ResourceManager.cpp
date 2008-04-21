@@ -257,8 +257,6 @@ void ResourceManagerAdapter::getResourceContainerName(const string& str, string&
  *	ResourceManagerHelper
  */
 
-ResourceManagerHelper* ResourceManagerHelper::staticInitializer = ResourceManagerHelper::instance();
-
 ResourceManagerHelper::ResourceManagerHelper() {
 	className = "ResourceManager";
 

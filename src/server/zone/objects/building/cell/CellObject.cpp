@@ -156,8 +156,6 @@ int CellObjectAdapter::getChildrenSize() {
  *	CellObjectHelper
  */
 
-CellObjectHelper* CellObjectHelper::staticInitializer = CellObjectHelper::instance();
-
 CellObjectHelper::CellObjectHelper() {
 	className = "CellObject";
 

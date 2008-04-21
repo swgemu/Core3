@@ -45,8 +45,6 @@ public:
 };
 
 class HeavyRangedWeaponHelper : public DistributedObjectClassHelper, public Singleton<HeavyRangedWeaponHelper> {
-	static HeavyRangedWeaponHelper* staticInitializer;
-
 public:
 	HeavyRangedWeaponHelper();
 

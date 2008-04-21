@@ -70,8 +70,6 @@ protected:
 };
 
 class UserManagerHelper : public DistributedObjectClassHelper, public Singleton<UserManagerHelper> {
-	static UserManagerHelper* staticInitializer;
-
 public:
 	UserManagerHelper();
 

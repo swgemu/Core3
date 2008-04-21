@@ -91,8 +91,6 @@ BaseMessage* SuiColorPickerAdapter::generateMessage() {
  *	SuiColorPickerHelper
  */
 
-SuiColorPickerHelper* SuiColorPickerHelper::staticInitializer = SuiColorPickerHelper::instance();
-
 SuiColorPickerHelper::SuiColorPickerHelper() {
 	className = "SuiColorPicker";
 

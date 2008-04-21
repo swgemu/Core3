@@ -135,8 +135,6 @@ void StaticObjectAdapter::sendTo(Player* player, bool doClose) {
  *	StaticObjectHelper
  */
 
-StaticObjectHelper* StaticObjectHelper::staticInitializer = StaticObjectHelper::instance();
-
 StaticObjectHelper::StaticObjectHelper() {
 	className = "StaticObject";
 

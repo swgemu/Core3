@@ -53,8 +53,6 @@ Packet* HairObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
  *	HairObjectHelper
  */
 
-HairObjectHelper* HairObjectHelper::staticInitializer = HairObjectHelper::instance();
-
 HairObjectHelper::HairObjectHelper() {
 	className = "HairObject";
 

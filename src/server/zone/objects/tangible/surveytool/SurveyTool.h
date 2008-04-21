@@ -80,8 +80,6 @@ protected:
 };
 
 class SurveyToolHelper : public DistributedObjectClassHelper, public Singleton<SurveyToolHelper> {
-	static SurveyToolHelper* staticInitializer;
-
 public:
 	SurveyToolHelper();
 

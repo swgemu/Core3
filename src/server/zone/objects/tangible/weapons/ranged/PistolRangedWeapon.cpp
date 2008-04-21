@@ -53,8 +53,6 @@ Packet* PistolRangedWeaponAdapter::invokeMethod(uint32 methid, DistributedMethod
  *	PistolRangedWeaponHelper
  */
 
-PistolRangedWeaponHelper* PistolRangedWeaponHelper::staticInitializer = PistolRangedWeaponHelper::instance();
-
 PistolRangedWeaponHelper::PistolRangedWeaponHelper() {
 	className = "PistolRangedWeapon";
 
