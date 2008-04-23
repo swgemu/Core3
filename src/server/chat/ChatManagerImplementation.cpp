@@ -374,7 +374,7 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 			if (userManager->isAdmin(player->getFirstName())) {
 				player->sendSystemMessage("Command List: map, warp, printRoomTree, banUser, kill, muteChat, "
 						"users, setWeather, ticketPurchase, awardBadge, setGuildID, createGuild"
-						"deleteGuildByID, npcc, setAdminLevel, dbStats, dbShowDeleted, dbPurge"); 
+						"deleteGuildByID, npcc, setAdminLevel, dbStats, dbShowDeleted, dbPurge, getDirection"); 
 			}
 		} else if (cmd == "@map") {
 			if (userManager->isAdmin(player->getFirstName())) {
@@ -888,6 +888,16 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 			} else {
 				player->sendSystemMessage("Unknown Item Type.");
 			}
+		} else if (cmd == "@getDirection") {
+			SceneObject* target = player->getTarget();
+			
+			if(target == NULL)
+				target = player;
+			
+			stringstream ss;
+			ss << "oX: " << target->getDirectionX() << endl << "oZ: " << target->getDirectionZ() << endl;
+			ss << "oY: " << target->getDirectionY() << endl << "oW: " << target->getDirectionW();
+			player->sendSystemMessage(ss.str());
 		} else {
 			player->sendSystemMessage("Unknown Command: " + cmd);
 		}

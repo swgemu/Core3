@@ -1873,6 +1873,9 @@ void PlayerImplementation::changeWeapon(uint64 itemid) {
 	
 	if (obj == NULL || !obj->isTangible())
 		return;
+	
+	if(this->isPlayingMusic())
+		this->stopPlayingMusic();
 
 	if (((TangibleObject*)obj)->isWeapon()) {
 	

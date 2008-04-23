@@ -59,8 +59,8 @@ public:
 		insertLong(creo->getParentID());
 		
 		insertFloat(creo->getDirectionX());
-		insertFloat(creo->getDirectionZ());
 		insertFloat(creo->getDirectionY());
+		insertFloat(creo->getDirectionZ());
 		insertFloat(creo->getDirectionW());
 		
 		insertFloat(creo->getPositionX());

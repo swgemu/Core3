@@ -504,7 +504,7 @@ int ItemManagerImplementation::addPlayerItem(lua_State * l) {
 		int armorType = item.getIntField("armorType");
 		
 		((ArmorImplementation*) itemImpl)->setType(armorType);
-	} else if (type & TangibleObjectImplementation::INSTRUMENT) {		
+	} else if (type == TangibleObjectImplementation::INSTRUMENT) {		
 		int instType = item.getIntField("instrumentType");
 				
 		((InstrumentImplementation*) itemImpl)->setInstrumentType(instType);

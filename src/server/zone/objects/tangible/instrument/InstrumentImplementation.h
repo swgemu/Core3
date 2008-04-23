@@ -127,6 +127,9 @@ public:
 	
 	inline void setInstrumentType(const int type) {
 		instrumentType = type;
+		
+		string key = "instrumentType";
+		itemAttributes->setIntAttribute(key, instrumentType);
 	}
 };
 

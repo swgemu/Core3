@@ -93,8 +93,8 @@ bool ObjectControllerMessage::parseDataTransform(Player* player, Message* pack) 
 	uint32 movementCounter = pack->parseInt();
 	
 	float dx = pack->parseFloat();
-	float dz = pack->parseFloat();
 	float dy = pack->parseFloat();
+	float dz = pack->parseFloat();
 	float dw = pack->parseFloat();
 	
 	//cout << "dir vector x:" << dx << " dz:" << dz << " dy:" << dy << " dw:" << dw << "\n";
@@ -197,8 +197,8 @@ uint64 ObjectControllerMessage::parseDataTransformWithParent(Player* player, Mes
 		return 0;
 	
 	float dx = pack->parseFloat();
-	float dz = pack->parseFloat();
 	float dy = pack->parseFloat();
+	float dz = pack->parseFloat();
 	float dw = pack->parseFloat();
 
 	float x = pack->parseFloat();
