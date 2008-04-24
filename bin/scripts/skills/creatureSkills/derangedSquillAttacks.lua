@@ -54,10 +54,10 @@ derangedSquillAttack1 = {
 	areaRange = 0,
 	accuracyBonus = 0,
 		
-	knockdownChance = 1,
+	knockdownChance = 0,
 	postureDownChance = 0,
 	postureUpChance = 0,
-	dizzyChance = 1,
+	dizzyChance = 0,
 	blindChance = 0,
 	stunChance = 0,
 	intimidateChance = 0,
@@ -72,3 +72,107 @@ derangedSquillAttack1 = {
 AddRandomPoolAttackTargetSkill(derangedSquillAttack1)
 
 -----------------------------------------------
+
+derangedSquillAttack2 = {
+	attackname = "derangedSquillAttack2",
+	animation = "creature_attack_light",
+	
+	requiredWeaponType = NONE,
+
+	range = 10,
+
+	damageRatio = 20,
+
+	speedRatio = 3,
+
+	areaRange = 0,
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+}
+
+AddRandomPoolAttackTargetSkill(derangedSquillAttack2)
+
+-----------------------------------------------
+
+derangedSquillAttack3 = {
+	attackname = "derangedSquillAttack3",
+	animation = "creature_attack_light",
+	
+	requiredWeaponType = NONE,
+
+	range = 10,
+
+	damageRatio = 20,
+
+	speedRatio = 3,
+
+	areaRange = 0,
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 1,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+}
+
+AddRandomPoolAttackTargetSkill(derangedSquillAttack3)
+
+-----------------------------------------------
+
+derangedSquillAttack4 = {
+	attackname = "derangedSquillAttack4",
+	animation = "creature_attack_light",
+	
+	requiredWeaponType = NONE,
+
+	range = 10,
+
+	damageRatio = 20,
+
+	speedRatio = 3,
+
+	areaRange = 0,
+	accuracyBonus = 0,
+		
+	knockdownChance = 1,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+}
+
+AddRandomPoolAttackTargetSkill(derangedSquillAttack4)
+
+-----------------------------------------------
+
+

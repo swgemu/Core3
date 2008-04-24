@@ -49,20 +49,28 @@ canyonKraytDragon = Creature:new {
 	
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
-	health = 350000,
+	health = 370000,
 	strength = 5000,
 	constitution = 5000,
 
-	action = 350000,
+	action = 370000,
 	quickness = 5000,
 	stamina = 5000,
 
-	mind = 350000,
+	mind = 370000,
 	focus = 5000,
 	willpower = 5000,
 	
-	armor = 3, -- from allakhazam
-
+    armor = 3, -- from http://web.archive.org/web/20050505183535/http://swg.allakhazam.com/db/bestiary.html?swgbeast=2462
+    kinetic = 60, 
+    energy = 60, 
+    electricity = 60, 
+    stun = 60, 
+    blast = 60, 
+    heat = 60, 
+    cold = 20, 
+    acid = 60, 
+    lightSaber = 0, 
 	height = 3,
 	
 	accuracy = 300,

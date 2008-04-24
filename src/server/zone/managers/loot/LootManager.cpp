@@ -231,7 +231,7 @@ void LootManager::createWeaponLoot(Creature* creature, int creatureLevel) {
 	
 	uint32 objectCRC = creature->getObjectCRC();
 	
-	switch (System::random(21)) {
+	switch (System::random(23)) {
 	case 0 :	// UNARMED
 		itemImpl = new UnarmedMeleeWeaponImplementation(creature, 
 				"object/weapon/melee/special/shared_vibroknuckler.iff",	unicode("Vibroknuckler"), "vibroknuckler", false);
@@ -547,6 +547,15 @@ void LootManager::createWeaponLoot(Creature* creature, int creatureLevel) {
 		itemImpl->setUsesRemaining(creatureLevel / (System::random(5) + 5));
 		
 		certification = "cert_heavy_rocket_launcher";
+		break;
+	case 23 :	// RIFLE
+		if ((objectCRC == 0xE158FEC1 ) && System::random(10) >= 7) {
+			itemImpl = new RifleRangedWeaponImplementation(creature,
+				 	"object/weapon/ranged/rifle/shared_rifle_tusken.iff", unicode("a Tusken Rifle"), "rifle_tusken", false);
+			itemImpl->setDamageType(WeaponImplementation::KINETIC);
+			itemImpl->setArmorPiercing(WeaponImplementation::HEAVY);
+			certification = "cert_rifle_t21";
+		}
 		break;
 	}
 	if (itemImpl != NULL) {

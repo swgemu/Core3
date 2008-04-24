@@ -39,44 +39,47 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-darthVader = Creature:new {
-	objectName = "darthVader", -- name of the lua Object
+tuskenKing = Creature:new {
+	objectName = "tuskenKing", -- name of the lua Object
 	
-	stfName = "Darth Vader",
-	objectCRC = 147261716,
-	
-	level = 400,
-	
-	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
+	name = "a Tusken King",
+	objectCRC = 344809642,
+	socialGroup = "tusken",
+	named = TRUE,
 
-	health = 390000,
+	level = 100,
+	
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+
+	health = 78000,
 	strength = 1000,
 	constitution = 1000,
 
-	action = 390000,
+	action = 78000,
 	quickness = 1000,
 	stamina = 1000,
 
-	mind = 390000,
+	mind = 78000,
 	focus = 1000,
 	willpower = 1000,
-	
-	armor = 2, -- Just a guess
-    kinetic = 60, 
-    energy = 50, 
-    electricity = 60, 
-    stun = 60, 
-    blast = 60, 
-    heat = 60, 
-    cold = 60, 
-    acid = 60, 
-    lightSaber = 0, 
+
 	height = 1,
-	
+
+	armor = 2,
+	kinetic = 45,
+	energy = 35,
+	electricity = 50,
+	stun = 5,
+	blast = 5,
+	heat = 80,
+	cold = 0,
+	acid = 5,
+	lightSaber = 0,
+
 	accuracy = 300,
 
-	skills = { "darthAttack1", "darthAttack2", "darthAttack3", "darthAttack4" }
+	skills = { "tuskenAttack40", "tuskenAttack41", "tuskenAttack42", "tuskenAttack43", "tuskenAttack44", "tuskenAttack45", "tuskenAttack46", "tuskenAttack47", "tuskenAttack48", "tuskenAttack49", "tuskenAttack50", "tuskenAttack51"  }
 	-- respawnTimer = 180,
 }
 
-Creatures:addCreature(darthVader, 147261716) --- Add to global creature table
+Creatures:addCreature(tuskenKing, 344809642) --- Add to global creature table

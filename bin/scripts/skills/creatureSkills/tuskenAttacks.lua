@@ -39,14 +39,16 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-RandPoolAtt = { 
-	attackname = "melee1hhit2",
+
+
+tuskenAttack40 = { 
+	attackname = "tuskenAttack40",
 	animation = "combo_4a_medium",
 
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 3.5,
+	damageRatio = 4.5,
 	speedRatio = 1.25,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -66,33 +68,21 @@ RandPoolAtt = {
 	CbtSpamMiss = "melee_miss",
 }
 
-AddRandomPoolAttackTargetSkill(RandPoolAtt)
+AddRandomPoolAttackTargetSkill(tuskenAttack40)
 
 -----------------------------------------------------------------------
 
-DirectPoolAtt = { 
-	attackname = "melee1hscatterhit1",
+tuskenAttack41 = { 
+	attackname = "tuskenAttack41",
 	animation = "combo_3b_light",
 
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 3.0,
+	damageRatio = 4.5,
 	speedRatio = 1.25,
 	areaRange = 0,
 	accuracyBonus = 0,
-
-	healthAttackChance = 100,
-	strengthAttackChance = 0,
-	constitutionAttackChance = 0,
-	
-	actionAttackChance = 100,
-	quicknessAttackChance = 0,
-	staminaAttackChance = 0,
-
-	mindAttackChance = 100,
-	focusAttackChance = 0,
-	willpowerAttackChance = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -109,18 +99,18 @@ DirectPoolAtt = {
 	CbtSpamMiss = "melee_miss",
 }
 
-AddDirectPoolAttackTargetSkill(DirectPoolAtt)
+AddRandomPoolAttackTargetSkill(tuskenAttack41)
 
 -----------------------------------------------------------------------
 
-RandPoolAtt = { 
-	attackname = "melee1hdizzyhit2",
+tuskenAttack42 = { 
+	attackname = "tuskenAttack42",
 	animation = "combo_2d_medium",
 
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 3.5,
+	damageRatio = 4.0,
 	speedRatio = 1.8,
 	areaRange = 7,
 	accuracyBonus = 0,
@@ -128,7 +118,7 @@ RandPoolAtt = {
 	knockdownChance = 0,
 	postureDownChance = 0,
 	postureUpChance = 0,
-	dizzyChance = 40,
+	dizzyChance = 1,
 	blindChance = 0,
 	stunChance = 0,
 	intimidateChance = 0,
@@ -140,33 +130,21 @@ RandPoolAtt = {
 	CbtSpamMiss = "melee_miss",
 }
 
-AddRandomPoolAttackTargetSkill(RandPoolAtt)
+AddRandomPoolAttackTargetSkill(tuskenAttack42)
 
 -----------------------------------------------------------------------
 
-DirectPoolAtt = { 
-	attackname = "melee1hscatterhit2",
+tuskenAttack43 = { 
+	attackname = "tuskenAttack43",
 	animation = "combo_5b_light",
 
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 4.0,
+	damageRatio = 4.2,
 	speedRatio = 1.25,
 	areaRange = 0,
 	accuracyBonus = 0,
-
-	healthAttackChance = 100,
-	strengthAttackChance = 0,
-	constitutionAttackChance = 0,
-	
-	actionAttackChance = 100,
-	quicknessAttackChance = 0,
-	staminaAttackChance = 0,
-
-	mindAttackChance = 100,
-	focusAttackChance = 0,
-	willpowerAttackChance = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -183,34 +161,34 @@ DirectPoolAtt = {
 	CbtSpamMiss = "melee_miss",
 }
 
-AddDirectPoolAttackTargetSkill(DirectPoolAtt)
+AddRandomPoolAttackTargetSkill(tuskenAttack43)
 
 -----------------------------------------------------------------------
 
 
-DotPoolAtt = { 
-	attackname = "melee1hhealthhit1",
+tuskenAttack44 = { 
+	attackname = "tuskenAttack44",
 	animation = "counter_low_left_light",
 
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 1.5,
+	damageRatio = 4.15,
 	speedRatio = 1.45,
 	areaRange = 0,
 	accuracyBonus = 0,
 
-	healthAttackChance = 100,
+	healthAttackChance = 50,
 	actionAttackChance = 0,
 	mindAttackChance = 0,
 
-	dotChance = 50,
+	dotChance = 5,
 	tickStrengthOfHit = 1,
 
 	fireStrength = 0,
 	fireType = 0,
 
-	bleedingStrength = 50,
+	bleedingStrength = 0,
 	bleedingType = HEALTH,
 
 	poisonStrength = 0,
@@ -226,18 +204,18 @@ DotPoolAtt = {
 	CbtSpamMiss = "melee_miss",
 }
 
-AddDotPoolAttackTargetSkill(DotPoolAtt)
+AddDotPoolAttackTargetSkill(tuskenAttack44)
 
 -----------------------------------------------------------------------
 
-RandPoolAtt = { 
-	attackname = "melee1hspinattack2",
+tuskenAttack45 = { 
+	attackname = "tuskenAttack45",
 	animation = "lower_posture_2hmelee_6",
 
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 3.0,
+	damageRatio = 4.15,
 	speedRatio = 1.45,
 	areaRange = 7,
 	accuracyBonus = 0,
@@ -257,34 +235,34 @@ RandPoolAtt = {
 	CbtSpamMiss = "melee_miss",
 }
 
-AddRandomPoolAttackTargetSkill(RandPoolAtt)
+AddRandomPoolAttackTargetSkill(tuskenAttack45)
 
 -----------------------------------------------------------------------
 
 
-DotPoolAtt = { 
-	attackname = "melee1hhealthhit2",
+tuskenAttack46 = { 
+	attackname = "tuskenAttack46",
 	animation = "combo_3c_light",
 
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 3.0,
+	damageRatio = 4.15,
 	speedRatio = 1.45,
 	areaRange = 0,
 	accuracyBonus = 0,
 
-	healthAttackChance = 100,
+	healthAttackChance = 50,
 	actionAttackChance = 0,
 	mindAttackChance = 0,
 
-	dotChance = 50,
+	dotChance = 5,
 	tickStrengthOfHit = 1,
 
 	fireStrength = 0,
 	fireType = 0,
 
-	bleedingStrength = 100,
+	bleedingStrength = 0,
 	bleedingType = HEALTH,
 
 	poisonStrength = 0,
@@ -300,23 +278,23 @@ DotPoolAtt = {
 	CbtSpamMiss = "melee_miss",
 }
 
-AddDotPoolAttackTargetSkill(DotPoolAtt)
+AddDotPoolAttackTargetSkill(tuskenAttack46)
 
 -----------------------------------------------------------------------
 
-DirectPoolAtt = { 
-	attackname = "melee1hbodyhit2",
+tuskenAttack47 = { 
+	attackname = "tuskenAttack47",
 	animation = "combo_4b_medium",
 
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 2.5,
+	damageRatio = 4.15,
 	speedRatio = 1.45,
 	areaRange = 0,
 	accuracyBonus = 0,
 
-	healthAttackChance = 100,
+	healthAttackChance = 50,
 	strengthAttackChance = 0,
 	constitutionAttackChance = 0,
 
@@ -342,23 +320,23 @@ DirectPoolAtt = {
 	CbtSpamMiss = "melee_miss",
 }
 
-AddDirectPoolAttackTargetSkill(DirectPoolAtt)
+AddDirectPoolAttackTargetSkill(tuskenAttack47)
 
 -----------------------------------------------------------------------
 
-DirectPoolAtt = { 
-	attackname = "melee1hbodyhit3",
+tuskenAttack48 = { 
+	attackname = "tuskenAttack48",
 	animation = "combo_3a_light",
 
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 3.5,
+	damageRatio = 4.15,
 	speedRatio = 1.45,
 	areaRange = 0,
 	accuracyBonus = 0,
 
-	healthAttackChance = 100,
+	healthAttackChance = 50,
 	strengthAttackChance = 0,
 	constitutionAttackChance = 0,
 
@@ -384,18 +362,18 @@ DirectPoolAtt = {
 	CbtSpamMiss = "melee_miss",
 }
 
-AddDirectPoolAttackTargetSkill(DirectPoolAtt)
+AddDirectPoolAttackTargetSkill(tuskenAttack48)
 
 -----------------------------------------------------------------------
 
-RandPoolAtt = { 
-	attackname = "melee1hblindhit1",
+tuskenAttack49 = { 
+	attackname = "tuskenAttack49",
 	animation = "combo_4b_medium",
 
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 2.0,
+	damageRatio = 4.15,
 	speedRatio = 1.45,
 	areaRange = 7,
 	accuracyBonus = 0,
@@ -404,7 +382,7 @@ RandPoolAtt = {
 	postureDownChance = 0,
 	postureUpChance = 0,
 	dizzyChance = 0,
-	blindChance = 30,
+	blindChance = 1,
 	stunChance = 0,
 	intimidateChance = 0,
 	
@@ -415,18 +393,18 @@ RandPoolAtt = {
 	CbtSpamMiss = "melee_miss",
 }
 
-AddRandomPoolAttackTargetSkill(RandPoolAtt)
+AddRandomPoolAttackTargetSkill(tuskenAttack49)
 
 -----------------------------------------------------------------------
 
-RandPoolAtt = { 
-	attackname = "melee1hblindhit2",
+tuskenAttack50 = { 
+	attackname = "tuskenAttack50",
 	animation = "combo_2b_medium",
 
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 2.5,
+	damageRatio = 4.55,
 	speedRatio = 1.45,
 	areaRange = 7,
 	accuracyBonus = 0,
@@ -435,7 +413,7 @@ RandPoolAtt = {
 	postureDownChance = 0,
 	postureUpChance = 0,
 	dizzyChance = 0,
-	blindChance = 35,
+	blindChance = 1,
 	stunChance = 0,
 	intimidateChance = 0,
 	
@@ -446,18 +424,18 @@ RandPoolAtt = {
 	CbtSpamMiss = "melee_miss",
 }
 
-AddRandomPoolAttackTargetSkill(RandPoolAtt)
+AddRandomPoolAttackTargetSkill(tuskenAttack50)
 
 -----------------------------------------------------------------------
 
-RandPoolAtt = { 
-	attackname = "melee1hhit3",
+tuskenAttack51 = { 
+	attackname = "tuskenAttack51",
 	animation = "combo_5a_light",
 
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 5.0,
+	damageRatio = 4.5,
 	speedRatio = 1.25,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -466,7 +444,7 @@ RandPoolAtt = {
 	postureDownChance = 0,
 	postureUpChance = 0,
 	dizzyChance = 0,
-	blindChance = 40,
+	blindChance = 1,
 	stunChance = 0,
 	intimidateChance = 0,
 	
@@ -477,9 +455,103 @@ RandPoolAtt = {
 	CbtSpamMiss = "melee_miss",
 }
 
-AddRandomPoolAttackTargetSkill(RandPoolAtt)
+AddRandomPoolAttackTargetSkill(tuskenAttack51)
 
 -----------------------------------------------------------------------
 
+tuskenRangedAttack1 = {
+	attackname = "tuskenRangedAttack1",
+	animation = "creature_attack_ranged_light",
+	
+	requiredWeaponType = RANGED,
 
+	range = 64,
 
+	damageRatio = 10,
+
+	speedRatio = 4,
+	coneAngle = 0,
+
+	areaRange = 0,
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 5,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+}
+
+AddRandomPoolAttackTargetSkill(tuskenRangedAttack1)
+tuskenRangedAttack2 = {
+	attackname = "tuskenRangedAttack2",
+	animation = "creature_attack_ranged_light",
+	
+	requiredWeaponType = RANGED,
+
+	range = 64,
+
+	damageRatio = 15,
+
+	speedRatio = 4,
+	coneAngle = 0,
+
+	areaRange = 0,
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 5,
+	stunChance = 5,
+	intimidateChance = 3,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+}
+
+AddRandomPoolAttackTargetSkill(tuskenRangedAttack2)
+tuskenRangedAttack3 = {
+	attackname = "tuskenRangedAttack3",
+	animation = "creature_attack_ranged_light",
+	
+	requiredWeaponType = RANGED,
+
+	range = 64,
+
+	damageRatio = 10,
+
+	speedRatio = 4,
+	coneAngle = 60,
+
+	areaRange = 30,
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 5,
+	stunChance = 5,
+	intimidateChance = 3,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+}
+
+AddRandomPoolAttackTargetSkill(tuskenRangedAttack3)

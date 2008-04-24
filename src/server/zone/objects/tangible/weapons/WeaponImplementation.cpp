@@ -569,8 +569,8 @@ void WeaponImplementation::decayWeapon(int decayRate) {
 		if (ratio > 0.99 || decayRate == 100 || maxCondition < 0) {
 			setMaxCondition(1);
 			setConditionDamage(1);
-			setMaxDamage(0);
-			setMinDamage(0);
+			setMaxDamage(1);
+			setMinDamage(1);
 		} else if (ratio > 0.75) {
 			setMaxDamage(maxDamage - (maxDamage * decayRate / 100));
 			setMinDamage(minDamage - (minDamage * decayRate / 100));

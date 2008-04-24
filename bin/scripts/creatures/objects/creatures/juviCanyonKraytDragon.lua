@@ -49,19 +49,28 @@ juviCanyonKraytDragon = Creature:new {
 	
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
-	health = 54000,
+	health = 48000,
 	strength = 5000,
 	constitution = 5000,
 
-	action = 54000,
+	action = 48000,
 	quickness = 5000,
 	stamina = 5000,
 
-	mind = 54000,
+	mind = 48000,
 	focus = 5000,
 	willpower = 5000,
 	
-	armor = 2, -- from allakhazam
+    armor = 2, -- from http://web.archive.org/web/20050505183605/http://swg.allakhazam.com/db/bestiary.html?swgbeast=2520
+    kinetic = 60, 
+    energy = 60, 
+    electricity = 15, 
+    stun = 15, 
+    blast = 15, 
+    heat = 15, 
+    cold = 10, 
+    acid = 15, 
+    lightSaber = 0, 
 
 	height = .5,
 	

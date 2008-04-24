@@ -39,44 +39,47 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-darthVader = Creature:new {
-	objectName = "darthVader", -- name of the lua Object
+tuskenSniper = Creature:new {
+	objectName = "tuskenSniper", -- name of the lua Object
 	
-	stfName = "Darth Vader",
-	objectCRC = 147261716,
-	
-	level = 400,
-	
-	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
+	name = "a Tusken Sniper",
+	objectCRC = 3780705985,
+	socialGroup = "tusken",
+	named = TRUE,
 
-	health = 390000,
+	level = 22,
+	
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+
+	health = 2400,
 	strength = 1000,
 	constitution = 1000,
-
-	action = 390000,
+	
+	action = 2400,
 	quickness = 1000,
 	stamina = 1000,
 
-	mind = 390000,
+	mind = 2400,
 	focus = 1000,
 	willpower = 1000,
-	
-	armor = 2, -- Just a guess
-    kinetic = 60, 
-    energy = 50, 
-    electricity = 60, 
-    stun = 60, 
-    blast = 60, 
-    heat = 60, 
-    cold = 60, 
-    acid = 60, 
-    lightSaber = 0, 
+
 	height = 1,
-	
+
+	armor = 0,
+	kinetic = 10,
+	energy = 10,
+	electricity = 30,
+	stun = 0,
+	blast = 10,
+	heat = 30,
+	cold = 0,
+	acid = 0,
+	lightSaber = 0,
+
 	accuracy = 300,
 
-	skills = { "darthAttack1", "darthAttack2", "darthAttack3", "darthAttack4" }
+	skills = { "tuskenRangedAttack1", "tuskenRangedAttack2", "tuskenRangedAttack3" }
 	-- respawnTimer = 180,
 }
 
-Creatures:addCreature(darthVader, 147261716) --- Add to global creature table
+Creatures:addCreature(tuskenSniper, 3780705985) --- Add to global creature table

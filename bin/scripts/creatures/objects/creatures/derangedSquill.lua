@@ -63,7 +63,7 @@ derangedSquill = Creature:new {
 	
 	accuracy = 300,
 
-	skills = { "derangedSquillAttack1" }
+	skills = { "derangedSquillAttack1", "derangedSquillAttack2", "derangedSquillAttack3", "derangedSquillAttack4" }
 	-- respawnTimer = 60,
 }
 

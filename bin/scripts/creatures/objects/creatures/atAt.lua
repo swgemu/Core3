@@ -62,12 +62,12 @@ atAt = Creature:new {
 	focus = 50000,
 	willpower = 50000,
 	
-	armor = 3,
+	armor = 3, -- from http://web.archive.org/web/20050513205858/http://swg.allakhazam.com/db/bestiary.html?swgbeast=3736
 	kinetic = 90,
 	energy = 90,
 	electricity = 90,
-	stun = 90,
-	blast = 90,
+	stun = 100,
+	blast = 10,
 	heat = 90,
 	cold = 90,
 	acid = 90,

@@ -41,5 +41,9 @@
 --which carries forward this exception.
 
 RunCreatureFile("spawns/tatooine/staticSpawns.lua")
+RunCreatureFile("spawns/tatooine/forttusken.lua")
+
+
+
 --RunCreatureFile("spawns/dathomir/staticSpawns.lua")
 --RunCreatureFile("spawns/corellia/staticSpawns.lua")

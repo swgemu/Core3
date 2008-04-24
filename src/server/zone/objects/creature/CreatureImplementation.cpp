@@ -350,10 +350,9 @@ void CreatureImplementation::loadItems() {
 				unicode("Darth Saber"), "sword_lightsaber_one_handed_s4_gen4", true);
 		weaponImpl->setDamageType(WeaponImplementation::LIGHTSABER);
 		weaponImpl->setArmorPiercing(WeaponImplementation::NONE);
-	} else if (objectCRC == 0xD84925C2 || objectCRC == 0x90D8EBF8 || objectCRC == 0x1FA893FD || objectCRC == 0x2E831404 || 
-			   objectCRC == 0x2D98A9B3 || objectCRC == 0x2B0C220E || objectCRC == 0x476794EB || objectCRC == 0x4A889CCF ||
-			   objectCRC == 0x6D029623 || objectCRC == 0x4A48B6CC || objectCRC == 0x1527DF01 || objectCRC == 0xE158FEC1) { 
-		// low level NS, SMC, Rebel General, Tusken Raider		
+	} else if (objectCRC == 0x2B0C220E || objectCRC == 0x476794EB || objectCRC == 0x4A889CCF ||
+			   objectCRC == 0x6D029623 || objectCRC == 0x4A48B6CC || objectCRC == 0x1527DF01) { 
+		// low level SMC, Rebel General		
 		switch (System::random(1)) {
 		case 0 :
 			weaponImpl = new OneHandedMeleeWeaponImplementation(_this, "object/weapon/melee/baton/shared_baton_gaderiffi.iff", unicode("a Gaderiffi"), "baton_gaderiffi", true);
@@ -373,10 +372,27 @@ void CreatureImplementation::loadItems() {
 			weaponImpl->setArmorPiercing(WeaponImplementation::NONE);
 			break;
 		}
-	} else if (objectCRC == 0xF0663601 || objectCRC == 0xAC722907 || objectCRC == 0x889ADF8D || objectCRC == 0xC4E5A41E || 
-			   objectCRC == 0x44F934A9 || objectCRC == 0x6BABDCC0 || objectCRC == 0x35F5AD39 || objectCRC == 0x113E9DB3 ||
-			   objectCRC == 0x6050E92E || objectCRC == 0x46ABF8A1 || objectCRC == 0x71F874   || objectCRC == 0x148D60AA) {
-		// High level NS, SMC, Rebel Surface Marshal, Elite Tusken
+	} else if (objectCRC == 0xE158FEC1) {
+		//ranged tusken raider
+		weaponImpl = new RifleRangedWeaponImplementation(_this, "object/weapon/ranged/rifle/shared_rifle_tusken.iff", unicode("a Tusken Rifle"), "rifle_tusken", true);
+		weaponImpl->setMinDamage(175 + level);
+			weaponImpl->setMaxDamage(200 + level);
+			weaponImpl->setAttackSpeed(4);
+			weaponImpl->setDamageType(WeaponImplementation::KINETIC);
+			weaponImpl->setArmorPiercing(WeaponImplementation::MEDIUM);
+	
+	} else if (objectCRC ==0x148D60AA) {
+		//melee tusken raider
+		weaponImpl = new OneHandedMeleeWeaponImplementation(_this, "object/weapon/melee/baton/shared_baton_gaderiffi.iff", unicode("a Gaderiffi"), "baton_gaderiffi", true);
+			weaponImpl->setMinDamage(175 + level);
+			weaponImpl->setMaxDamage(200 + level);
+			weaponImpl->setAttackSpeed(1.5);
+			weaponImpl->setDamageType(WeaponImplementation::KINETIC);
+			weaponImpl->setArmorPiercing(WeaponImplementation::NONE);
+
+	} else if (objectCRC == 0x6BABDCC0 || objectCRC == 0x35F5AD39 || objectCRC == 0x113E9DB3 ||
+			   objectCRC == 0x6050E92E || objectCRC == 0x46ABF8A1 || objectCRC == 0x71F874) {
+		// High level SMC, Rebel Surface Marshal
 		switch (System::random(1)) {
 		case 0 :
 			weaponImpl = new PolearmMeleeWeaponImplementation(_this, 
@@ -395,6 +411,77 @@ void CreatureImplementation::loadItems() {
 			weaponImpl->setAttackSpeed(1.5);
 			weaponImpl->setDamageType(WeaponImplementation::KINETIC);
 			weaponImpl->setArmorPiercing(WeaponImplementation::MEDIUM);
+			break;
+		}
+
+		} else if (objectCRC == 0xD84925C2 || objectCRC == 0x90D8EBF8 || objectCRC == 0x1FA893FD || objectCRC == 0x2E831404 || 
+				   objectCRC == 0x2D98A9B3) { 
+		// low level NS		
+		switch (System::random(1)) {
+		case 0 :
+			weaponImpl = new OneHandedMeleeWeaponImplementation(_this, 
+					"object/weapon/melee/baton/shared_baton_gaderiffi.iff", unicode("a Gaderiffi"), "baton_gaderiffi", true);
+			weaponImpl->setMinDamage(175 + level);
+			weaponImpl->setMaxDamage(200 + level);
+			weaponImpl->setAttackSpeed(1.5);
+			weaponImpl->setDamageType(WeaponImplementation::KINETIC);
+			weaponImpl->setArmorPiercing(WeaponImplementation::NONE);
+			break;
+		case 1 :
+			weaponImpl = new OneHandedMeleeWeaponImplementation(_this, 
+					"object/weapon/melee/baton/shared_baton_stun.iff", unicode("a Stun Baton"), "baton_stun", true);
+			weaponImpl->setMinDamage(175 + level);
+			weaponImpl->setMaxDamage(250 + level);
+			weaponImpl->setAttackSpeed(1.5);
+			weaponImpl->setDamageType(WeaponImplementation::STUN);
+			weaponImpl->setArmorPiercing(WeaponImplementation::NONE);
+			break;
+		}	
+	
+	} else if (objectCRC == 0xF0663601 || objectCRC == 0xAC722907 || objectCRC == 0x889ADF8D || objectCRC == 0xC4E5A41E || 
+			   objectCRC == 0x44F934A9) {
+		// High Level NS
+		switch (System::random(1)) {
+		case 0 :
+			weaponImpl = new PolearmMeleeWeaponImplementation(_this, 
+					"object/weapon/melee/polearm/shared_lance_vibrolance.iff", unicode("a Vibrolance"), "lance_vibrolance", true);
+			weaponImpl->setMinDamage(250 + level);
+			weaponImpl->setMaxDamage(450 + level);
+			weaponImpl->setAttackSpeed(1.5);
+			weaponImpl->setDamageType(WeaponImplementation::ELECTRICITY);
+			weaponImpl->setArmorPiercing(WeaponImplementation::LIGHT);
+			break;
+		case 1 :
+			weaponImpl = new PolearmMeleeWeaponImplementation(_this, 
+					"object/weapon/melee/polearm/shared_polearm_vibro_axe.iff", unicode("a Long Vibro Axe"), "lance_vibro_axe", true);
+			weaponImpl->setMinDamage(250 + level);
+			weaponImpl->setMaxDamage(450 + level);
+			weaponImpl->setAttackSpeed(1.5);
+			weaponImpl->setDamageType(WeaponImplementation::KINETIC);
+			weaponImpl->setArmorPiercing(WeaponImplementation::MEDIUM);
+			break;
+		}
+				
+	} else if (objectCRC == 0xAA197516) { 
+		// NS Queen
+		switch (System::random(1)) {
+		case 0 :
+			weaponImpl = new OneHandedMeleeWeaponImplementation(_this, 
+				"object/weapon/melee/baton/shared_baton_gaderiffi.iff", unicode("a Gaderiffi"), "baton_gaderiffi", true);
+			weaponImpl->setMinDamage(800 + level);
+			weaponImpl->setMaxDamage(1600 + level);
+			weaponImpl->setAttackSpeed(1.5);
+			weaponImpl->setDamageType(WeaponImplementation::KINETIC);
+			weaponImpl->setArmorPiercing(WeaponImplementation::NONE);
+			break;
+		case 1 :
+			weaponImpl = new OneHandedMeleeWeaponImplementation(_this, 
+					"object/weapon/melee/baton/shared_baton_stun.iff", unicode("a Stun Baton"), "baton_stun", true);
+			weaponImpl->setMinDamage(900 + level);
+			weaponImpl->setMaxDamage(1700 + level);
+			weaponImpl->setAttackSpeed(1.5);
+			weaponImpl->setDamageType(WeaponImplementation::STUN);
+			weaponImpl->setArmorPiercing(WeaponImplementation::NONE);
 			break;
 		}
 	} else if (objectCRC == 0xFB872285) { // lord nyax
