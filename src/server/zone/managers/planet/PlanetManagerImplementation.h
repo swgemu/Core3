@@ -107,6 +107,7 @@ private:
 	void loadStaticPlanetObjects();
 	void loadShuttles();
 	void loadTrainers();
+	int guessBuildingType(uint64 oid, string file);
 	void loadBuildings();
 	void loadGuildTerminals();
 	void loadVendorTerminals();

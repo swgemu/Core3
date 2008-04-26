@@ -66,17 +66,25 @@ public:
 				return true; // don't tick action if they aren't doing anything
 			}
 
-/*			if(player->getParent()->isCell()) - need to check if they're in a valid structure
-				player->sendSystemMessage("call: player->getParent()->isCell() true");
-*/
-			// Heal BF/ShockWounds
-			player->doHealShockWounds();
-			// Heal Mind Wounds
-			player->doHealMindWounds();
+			if (player->isInBuilding()) {
+
+				int buildingType = player->getBuildingType();
+				if(
+					buildingType == BuildingObjectImplementation::CANTINA ||
+					buildingType == BuildingObjectImplementation::GUILD_THEATER ||
+					buildingType == BuildingObjectImplementation::TAVERN )
+				{
+					// Heal BF/ShockWounds
+					player->doHealShockWounds();
+					// Heal Mind Wounds
+					player->doHealMindWounds();
+				}
+			}
+			
 			// Tick Action
 			player->doPerformanceAction();
 			
-			player->setEntertainerEvent(); // Renew 10 seconds tick
+			player->setEntertainerEvent(); // Renew tick
 			
 			player->unlock();
 		} catch (...) {

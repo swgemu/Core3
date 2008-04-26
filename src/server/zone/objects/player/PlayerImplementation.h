@@ -951,6 +951,9 @@ public:
 		entertainerEvent = NULL;
 	}
 	
+	bool isInBuilding();
+	int getBuildingType();
+	
 	// Entertainer tick
 	void setEntertainerEvent();
 	

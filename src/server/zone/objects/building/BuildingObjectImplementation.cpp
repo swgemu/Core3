@@ -55,6 +55,9 @@ BuildingObjectImplementation::BuildingObjectImplementation(uint64 oid, bool stat
 	
 	staticBuilding = staticBuild;
 	
+	buildingType = UNKNOWN; // default building Type
+	
+	
 	objectType = SceneObjectImplementation::BUILDING;
 	
 	cells.setInsertPlan(SortedVector<SceneObject*>::NO_DUPLICATE);

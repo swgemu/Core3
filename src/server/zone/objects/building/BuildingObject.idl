@@ -69,6 +69,9 @@ interface BuildingObject implements SceneObject {
 		
 	boolean isStatic();
 	
+	int getBuildingType();
+	void setBuildingType(int type);
+	
 	void lock(boolean doLock = true);
 	void unlock(boolean doLock = true);
 	

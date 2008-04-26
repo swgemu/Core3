@@ -56,9 +56,100 @@ class Zone;
 class BuildingObjectImplementation : public QuadTree, public BuildingObjectServant {
 	SortedVector<CellObject*> cells;
 	
+	int buildingType;
+	
 	bool staticBuilding;
 	
 public:
+	
+	// Using the Building Types from Planet Map - comment out the non buildings :)
+	static const int UNKNOWN = 1;
+	static const int BANK = 2;
+	static const int CANTINA = 3;
+	static const int CAPITOL = 4;
+	static const int CLONING_FACILITY = 5;
+	static const int GARAGE = 6;
+	//static const int GUILD = 7; // Should just be a "parent" type?
+	static const int GUILD_COMBAT = 8;
+	static const int GUILD_COMMERCE = 9;
+	static const int GUILD_THEATER = 10;
+	static const int GUILD_UNIVERSITY = 11;
+	static const int HOTEL = 12;
+	static const int MEDICAL_CENTER = 13;
+	static const int SHUTTLEPORT = 14;
+	static const int STARPORT = 15;
+	static const int THEMEPARK = 16;
+/*	static const int CITY = 17;
+	static const int WAYPOINT = 18;
+	static const int TRAINER = 19; //category
+	static const int trainer_brawler = 20;
+	static const int trainer_artisan = 21;
+	static const int trainer_scout = 22;
+	static const int trainer_marksman = 23;
+	static const int trainer_entertainer = 24;
+	static const int trainer_medic = 25;*/
+	static const int JUNKSHOP = 26;
+	static const int TAVERN = 27;
+	static const int BARRACKS = 28;
+/*	static const int vendor = 29; // category
+	static const int vendor_armor = 30;
+	static const int vendor_clothing = 31;
+	static const int vendor_components = 32;
+	static const int vendor_droids = 33;
+	static const int vendor_equipment = 34;
+	static const int vendor_food = 35;
+	static const int vendor_housing = 36;
+	static const int vendor_resources = 37;
+	static const int vendor_tools = 38;
+	static const int vendor_weapons = 39;
+	static const int vendor_junk = 40;
+	static const int terminal = 41;
+	static const int terminal_bank = 42;
+	static const int terminal_bazaar = 43;
+	static const int terminal_mission = 44;
+	static const int REBEL = 45; // SHould just be category
+	static const int IMPERIAL = 46;*/
+	static const int REBEL_HQ = 47;
+	static const int IMPERIAL_HQ = 48;
+	/*static const int CAMP = 49;*/
+	static const int CITYHALL = 50;
+	static const int THEATER = 51;
+/*	static const int vendor_pets = 52;
+	static const int vendor_medical = 53; 
+	static const int POI = 54;
+	static const int GARAGE = 55; // weird duplicate of garage = 6? */
+	static const int MUSEUM = 56;
+	static const int SALON = 57;
+/*	static const int space = 58; // parent category
+	static const int space_recruiter = 59;
+	static const int space_chassis_broker = 60;
+	static const int space_chassis = 61;
+	static const int trainer_starfighter_engineer = 62;
+	static const int trainer_shipwright = 63;
+	static const int trainer_pilot_privateer = 64;
+	static const int trainer_pilot_rebel = 65;
+	static const int trainer_pilot_imperial = 66;
+	static const int vendor_ships = 67; */
+	// SF = PvP bases
+	static const int SF_REBEL_FORWARD_BASE = 68;
+	static const int SF_IMPERIAL_FORWARD_BASE = 69;
+	static const int SF_REBEL_MINOR_BASE = 70;
+	static const int SF_IMPERIAL_MINOR_BASE = 71;
+	static const int SF_REBEL_MAJOR_BASE = 72;
+	static const int SF_IMPERIAL_MAJOR_BASE = 73;
+	/** Overlaps with the non SF version...this is where I start to diverge from planetmapcategories
+	sf_rebel_hq = 47
+	sf_imperial_hq = 48 */
+	static const int SF_REBEL_HQ = 74;
+	static const int SF_IMPERIAL_HQ = 75;
+	// Weren't in here but lets create non SF types of faction buildings (HQs are 47/48)
+	static const int REBEL_FORWARD_BASE = 76;
+	static const int IMPERIAL_FORWARD_BASE = 77;
+	static const int REBEL_MINOR_BASE = 78;
+	static const int IMPERIAL_MINOR_BASE = 79;
+	static const int REBEL_MAJOR_BASE = 80;
+	static const int IMPERIAL_MAJOR_BASE = 81;
+	
 	
 	BuildingObjectImplementation(uint64 oid, bool staticBuild);
 	~BuildingObjectImplementation();
@@ -81,6 +172,14 @@ public:
 	
 	inline bool isStatic() {
 		return staticBuilding == true;
+	}
+	
+	inline int getBuildingType() {
+		return buildingType;
+	}
+	
+	inline void setBuildingType(const int type) {
+		buildingType = type;
 	}
 	
 	void lock(bool doLock = true) {
