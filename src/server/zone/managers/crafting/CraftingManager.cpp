@@ -233,8 +233,6 @@ void CraftingManagerAdapter::subtractDraftSchematicsFromGroupName(Player* player
  *	CraftingManagerHelper
  */
 
-CraftingManagerHelper* CraftingManagerHelper::staticInitializer = CraftingManagerHelper::instance();
-
 CraftingManagerHelper::CraftingManagerHelper() {
 	className = "CraftingManager";
 

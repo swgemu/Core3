@@ -114,7 +114,7 @@ public:
 		if (diff >= 0)
 			average = System::random(diff) + (int)minDamage;
 		
-		float damage = -damageRatio * average;
+		float damage = damageRatio * average;
 		
 		calculateDamageReduction(creature, targetCreature, damage);
 	
@@ -142,7 +142,7 @@ public:
 		}
 		
 		if (hasCbtSpamHit())
-			creature->sendCombatSpam(targetCreature, NULL, -(int32) damage, getCbtSpamHit());
+			creature->sendCombatSpam(targetCreature, NULL, (int32) damage, getCbtSpamHit());
 		
 		if (bodyPart < 7)
 			reduction = applyHealthPoolDamage(creature, targetCreature, (int32) damage, bodyPart);
@@ -160,7 +160,7 @@ public:
 					weapon->removePowerup((Player*)creature, true);
 		}
 		
-		return -(int32)(damage - reduction);
+		return (int32)(damage - reduction);
 	}
 
 	virtual bool calculateCost(CreatureObject* creature) {

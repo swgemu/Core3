@@ -53,8 +53,6 @@ Packet* SpecialHeavyRangedWeaponAdapter::invokeMethod(uint32 methid, Distributed
  *	SpecialHeavyRangedWeaponHelper
  */
 
-SpecialHeavyRangedWeaponHelper* SpecialHeavyRangedWeaponHelper::staticInitializer = SpecialHeavyRangedWeaponHelper::instance();
-
 SpecialHeavyRangedWeaponHelper::SpecialHeavyRangedWeaponHelper() {
 	className = "SpecialHeavyRangedWeapon";
 

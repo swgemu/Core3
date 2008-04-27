@@ -154,6 +154,12 @@ public:
 
 	void changeMaxHAMBars(int hp, int ap, int mp);
 
+	bool takeHealthDamage(int damage);
+
+	bool takeActionDamage(int damage);
+
+	bool takeMindDamage(int damage);
+
 	bool changeHealthWoundsBar(int wounds, bool forcedChange = false);
 
 	bool changeActionWoundsBar(int wounds, bool forcedChange = false);
@@ -839,6 +845,12 @@ public:
 	bool changeHAMWounds(int hpwnd, int apwnd, int mpwnd, bool forcedChange);
 
 	void changeMaxHAMBars(int hp, int ap, int mp);
+
+	bool takeHealthDamage(int damage);
+
+	bool takeActionDamage(int damage);
+
+	bool takeMindDamage(int damage);
 
 	bool changeHealthWoundsBar(int wounds, bool forcedChange);
 

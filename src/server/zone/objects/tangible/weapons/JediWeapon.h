@@ -47,8 +47,6 @@ public:
 };
 
 class JediWeaponHelper : public DistributedObjectClassHelper, public Singleton<JediWeaponHelper> {
-	static JediWeaponHelper* staticInitializer;
-
 public:
 	JediWeaponHelper();
 

@@ -159,8 +159,6 @@ protected:
 };
 
 class DraftSchematicHelper : public DistributedObjectClassHelper, public Singleton<DraftSchematicHelper> {
-	static DraftSchematicHelper* staticInitializer;
-
 public:
 	DraftSchematicHelper();
 

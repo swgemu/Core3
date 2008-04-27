@@ -204,8 +204,6 @@ protected:
 };
 
 class CreatureHelper : public DistributedObjectClassHelper, public Singleton<CreatureHelper> {
-	static CreatureHelper* staticInitializer;
-
 public:
 	CreatureHelper();
 

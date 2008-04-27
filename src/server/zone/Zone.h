@@ -141,8 +141,6 @@ public:
 };
 
 class ZoneHelper : public DistributedObjectClassHelper, public Singleton<ZoneHelper> {
-	static ZoneHelper* staticInitializer;
-
 public:
 	ZoneHelper();
 

@@ -43,8 +43,6 @@ public:
 };
 
 class FireworkHelper : public DistributedObjectClassHelper, public Singleton<FireworkHelper> {
-	static FireworkHelper* staticInitializer;
-
 public:
 	FireworkHelper();
 

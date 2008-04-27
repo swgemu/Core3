@@ -119,8 +119,6 @@ public:
 };
 
 class AttachmentHelper : public DistributedObjectClassHelper, public Singleton<AttachmentHelper> {
-	static AttachmentHelper* staticInitializer;
-
 public:
 	AttachmentHelper();
 

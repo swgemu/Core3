@@ -146,6 +146,10 @@ interface CreatureObject implements SceneObject {
 	boolean changeHAMWounds(int hpwnd, int apwnd, int mpwnd, boolean forcedChange = false);
 	void changeMaxHAMBars(int hp, int ap, int mp);
 	
+	boolean takeHealthDamage(int damage); // Instead of having to pass negative damage values
+	boolean takeActionDamage(int damage); // we can now pass damage to a damage function 
+	boolean takeMindDamage(int damage);   // using positive values for damage
+
 	boolean changeHealthWoundsBar(int wounds, boolean forcedChange = false);
 	boolean changeActionWoundsBar(int wounds, boolean forcedChange = false);
 	boolean changeMindWoundsBar(int wounds, boolean forcedChange = false);

@@ -414,6 +414,10 @@ public:
 	void updateStates();
 	void clearStates();
 	
+	bool takeHealthDamage(int32 damage); // Instead of having to pass negative damage values
+	bool takeActionDamage(int32 damage); // we can now pass damage to a damage function 
+	bool takeMindDamage(int32 damage);   // using positive values for damage
+
 	bool changeHAMBars(int32 hp, int32 ap, int32 mp, bool forcedChange = false);
 	bool changeHAMWounds(int32 hpwnd, int32 apwnd, int32 mpwnd, bool forcedChange = false);
 	void changeMaxHAMBars(int32 hp, int32 ap, int32 mp);

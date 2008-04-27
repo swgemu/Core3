@@ -44,6 +44,10 @@ public:
 
 	bool isStatic();
 
+	int getBuildingType();
+
+	void setBuildingType(int type);
+
 	void lock(bool doLock = true);
 
 	void unlock(bool doLock = true);
@@ -81,6 +85,10 @@ public:
 	void notifyInsertToZone(CreatureObject* creature);
 
 	bool isStatic();
+
+	int getBuildingType();
+
+	void setBuildingType(int type);
 
 	void lock(bool doLock);
 

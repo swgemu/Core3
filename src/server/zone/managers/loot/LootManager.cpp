@@ -551,10 +551,10 @@ void LootManager::createWeaponLoot(Creature* creature, int creatureLevel) {
 	case 23 :	// RIFLE
 		if ((objectCRC == 0xE158FEC1 ) && System::random(10) >= 7) {
 			itemImpl = new RifleRangedWeaponImplementation(creature,
-				 	"object/weapon/ranged/rifle/shared_rifle_tusken.iff", unicode("a Tusken Rifle"), "rifle_tusken", false);
-			itemImpl->setDamageType(WeaponImplementation::KINETIC);
-			itemImpl->setArmorPiercing(WeaponImplementation::HEAVY);
-			certification = "cert_rifle_t21";
+				 	"object/weapon/ranged/rifle/shared_rifle_tusken.iff", unicode("Tusken Rifle"), "rifle_tusken", false);
+			itemImpl->setDamageType(WeaponImplementation::ENERGY);
+			itemImpl->setArmorPiercing(WeaponImplementation::LIGHT);
+			certification = "cert_rifle_tusken";
 		}
 		break;
 	}

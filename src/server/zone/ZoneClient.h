@@ -92,8 +92,6 @@ protected:
 };
 
 class ZoneClientHelper : public DistributedObjectClassHelper, public Singleton<ZoneClientHelper> {
-	static ZoneClientHelper* staticInitializer;
-
 public:
 	ZoneClientHelper();
 

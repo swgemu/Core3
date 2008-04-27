@@ -53,8 +53,6 @@ Packet* PolearmMeleeWeaponAdapter::invokeMethod(uint32 methid, DistributedMethod
  *	PolearmMeleeWeaponHelper
  */
 
-PolearmMeleeWeaponHelper* PolearmMeleeWeaponHelper::staticInitializer = PolearmMeleeWeaponHelper::instance();
-
 PolearmMeleeWeaponHelper::PolearmMeleeWeaponHelper() {
 	className = "PolearmMeleeWeapon";
 

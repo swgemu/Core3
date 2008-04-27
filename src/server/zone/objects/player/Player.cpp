@@ -44,6 +44,8 @@
 
 #include "../tangible/resource/ResourceContainer.h"
 
+#include "../building/BuildingObject.h"
+
 #include "Player.h"
 
 #include "PlayerImplementation.h"
@@ -2575,12 +2577,36 @@ bool Player::getSampleErrorMessage() {
 		return ((PlayerImplementation*) _impl)->getSampleErrorMessage();
 }
 
-void Player::setEntertainerEvent() {
+bool Player::isInBuilding() {
 	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
 		DistributedMethod method(this, 202);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((PlayerImplementation*) _impl)->isInBuilding();
+}
+
+int Player::getBuildingType() {
+	if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		DistributedMethod method(this, 203);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((PlayerImplementation*) _impl)->getBuildingType();
+}
+
+void Player::setEntertainerEvent() {
+	if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		DistributedMethod method(this, 204);
 
 		method.executeWithVoidReturn();
 	} else
@@ -2592,7 +2618,7 @@ void Player::clearEntertainerEvent() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		DistributedMethod method(this, 203);
+		DistributedMethod method(this, 205);
 
 		method.executeWithVoidReturn();
 	} else
@@ -3199,9 +3225,15 @@ Packet* PlayerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertBoolean(getSampleErrorMessage());
 		break;
 	case 202:
-		setEntertainerEvent();
+		resp->insertBoolean(isInBuilding());
 		break;
 	case 203:
+		resp->insertSignedInt(getBuildingType());
+		break;
+	case 204:
+		setEntertainerEvent();
+		break;
+	case 205:
 		clearEntertainerEvent();
 		break;
 	default:
@@ -3993,6 +4025,14 @@ bool PlayerAdapter::getSurveyErrorMessage() {
 
 bool PlayerAdapter::getSampleErrorMessage() {
 	return ((PlayerImplementation*) impl)->getSampleErrorMessage();
+}
+
+bool PlayerAdapter::isInBuilding() {
+	return ((PlayerImplementation*) impl)->isInBuilding();
+}
+
+int PlayerAdapter::getBuildingType() {
+	return ((PlayerImplementation*) impl)->getBuildingType();
 }
 
 void PlayerAdapter::setEntertainerEvent() {

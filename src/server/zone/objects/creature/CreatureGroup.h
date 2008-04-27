@@ -45,8 +45,6 @@ public:
 };
 
 class CreatureGroupHelper : public DistributedObjectClassHelper, public Singleton<CreatureGroupHelper> {
-	static CreatureGroupHelper* staticInitializer;
-
 public:
 	CreatureGroupHelper();
 

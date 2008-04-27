@@ -100,12 +100,37 @@ bool BuildingObject::isStatic() {
 		return ((BuildingObjectImplementation*) _impl)->isStatic();
 }
 
-void BuildingObject::lock(bool doLock) {
+int BuildingObject::getBuildingType() {
 	if (!deployed)
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
 		DistributedMethod method(this, 11);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((BuildingObjectImplementation*) _impl)->getBuildingType();
+}
+
+void BuildingObject::setBuildingType(int type) {
+	if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		DistributedMethod method(this, 12);
+		method.addSignedIntParameter(type);
+
+		method.executeWithVoidReturn();
+	} else
+		((BuildingObjectImplementation*) _impl)->setBuildingType(type);
+}
+
+void BuildingObject::lock(bool doLock) {
+	if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		DistributedMethod method(this, 13);
 		method.addBooleanParameter(doLock);
 
 		method.executeWithVoidReturn();
@@ -118,7 +143,7 @@ void BuildingObject::unlock(bool doLock) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, 14);
 		method.addBooleanParameter(doLock);
 
 		method.executeWithVoidReturn();
@@ -131,7 +156,7 @@ void BuildingObject::setSize(float minx, float miny, float maxx, float maxy) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 15);
 		method.addFloatParameter(minx);
 		method.addFloatParameter(miny);
 		method.addFloatParameter(maxx);
@@ -147,7 +172,7 @@ void BuildingObject::insert(QuadTreeEntry* obj) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 16);
 		method.addObjectParameter(obj);
 
 		method.executeWithVoidReturn();
@@ -160,7 +185,7 @@ void BuildingObject::remove(QuadTreeEntry* obj) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, 17);
 		method.addObjectParameter(obj);
 
 		method.executeWithVoidReturn();
@@ -173,7 +198,7 @@ void BuildingObject::removeAll() {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 18);
 
 		method.executeWithVoidReturn();
 	} else
@@ -185,7 +210,7 @@ bool BuildingObject::update(QuadTreeEntry* obj) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 19);
 		method.addObjectParameter(obj);
 
 		return method.executeWithBooleanReturn();
@@ -198,7 +223,7 @@ void BuildingObject::inRange(QuadTreeEntry* obj, float range) {
 		throw ObjectNotDeployedException(this);
 
 	if (_impl == NULL) {
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 20);
 		method.addObjectParameter(obj);
 		method.addFloatParameter(range);
 
@@ -234,27 +259,33 @@ Packet* BuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		resp->insertBoolean(isStatic());
 		break;
 	case 11:
-		lock(inv->getBooleanParameter());
+		resp->insertSignedInt(getBuildingType());
 		break;
 	case 12:
-		unlock(inv->getBooleanParameter());
+		setBuildingType(inv->getSignedIntParameter());
 		break;
 	case 13:
-		setSize(inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter());
+		lock(inv->getBooleanParameter());
 		break;
 	case 14:
-		insert((QuadTreeEntry*) inv->getObjectParameter());
+		unlock(inv->getBooleanParameter());
 		break;
 	case 15:
-		remove((QuadTreeEntry*) inv->getObjectParameter());
+		setSize(inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter());
 		break;
 	case 16:
-		removeAll();
+		insert((QuadTreeEntry*) inv->getObjectParameter());
 		break;
 	case 17:
-		resp->insertBoolean(update((QuadTreeEntry*) inv->getObjectParameter()));
+		remove((QuadTreeEntry*) inv->getObjectParameter());
 		break;
 	case 18:
+		removeAll();
+		break;
+	case 19:
+		resp->insertBoolean(update((QuadTreeEntry*) inv->getObjectParameter()));
+		break;
+	case 20:
 		inRange((QuadTreeEntry*) inv->getObjectParameter(), inv->getFloatParameter());
 		break;
 	default:
@@ -282,6 +313,14 @@ void BuildingObjectAdapter::notifyInsertToZone(CreatureObject* creature) {
 
 bool BuildingObjectAdapter::isStatic() {
 	return ((BuildingObjectImplementation*) impl)->isStatic();
+}
+
+int BuildingObjectAdapter::getBuildingType() {
+	return ((BuildingObjectImplementation*) impl)->getBuildingType();
+}
+
+void BuildingObjectAdapter::setBuildingType(int type) {
+	return ((BuildingObjectImplementation*) impl)->setBuildingType(type);
 }
 
 void BuildingObjectAdapter::lock(bool doLock) {

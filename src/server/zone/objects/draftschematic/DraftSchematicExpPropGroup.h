@@ -67,8 +67,6 @@ protected:
 };
 
 class DraftSchematicExpPropGroupHelper : public DistributedObjectClassHelper, public Singleton<DraftSchematicExpPropGroupHelper> {
-	static DraftSchematicExpPropGroupHelper* staticInitializer;
-
 public:
 	DraftSchematicExpPropGroupHelper();
 

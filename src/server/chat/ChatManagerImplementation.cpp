@@ -156,7 +156,6 @@ void ChatManagerImplementation::handleTellMessage(Player* sender, Message* pack)
 	
 	uint32 seq = ChatInstantMessageToCharacter::parse(pack, game, galaxy, name, message);
 
-	String::toLower(name);
 	Player* receiver = getPlayer(name);
 
 	if (receiver == NULL || !receiver->isOnline() || receiver->isLoggingOut()) {
@@ -910,6 +909,7 @@ void ChatManagerImplementation::addPlayer(Player* player) {
 	lock();
 
 	string& name = player->getFirstName();
+	String::toLower(name);
 	playerMap->put(name, player, false);
 	
 	unlock();
@@ -917,7 +917,8 @@ void ChatManagerImplementation::addPlayer(Player* player) {
 
 Player* ChatManagerImplementation::getPlayer(string& name) {
 	lock();
-
+	
+	String::toLower(name);
 	Player* player = playerMap->get(name, false); 
 
 	unlock();
@@ -927,8 +928,9 @@ Player* ChatManagerImplementation::getPlayer(string& name) {
 Player* ChatManagerImplementation::removePlayer(string& name) {
 	lock();
 	
+	String::toLower(name);
 	Player* player = playerMap->remove(name, false); 
-
+	
 	unlock();
 	return player;
 }

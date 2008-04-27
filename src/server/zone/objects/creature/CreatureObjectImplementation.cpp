@@ -991,7 +991,56 @@ void CreatureObjectImplementation::clearStates() {
 	
 	updateStates();
 }
+bool CreatureObjectImplementation::takeHealthDamage(int32 damage)
+{
+	int32 newHealth = health - damage;
 
+	if (newHealth <= 0) 
+		{
+			setHealthBar(0);
+			doIncapacitate();
+			return false;
+		}
+		
+	setHealthBar(MIN(newHealth, healthMax - healthWounds));
+
+	return true;
+
+}
+
+bool CreatureObjectImplementation::takeActionDamage(int32 damage)
+{
+	int32 newAction = action - damage;
+
+	if (newAction <= 0)
+	{
+		setActionBar(0);
+		doIncapacitate();
+		return false; 
+	}
+
+	setActionBar(MIN(newAction, actionMax - actionWounds));
+
+	return true;
+
+}
+
+bool CreatureObjectImplementation::takeMindDamage(int32 damage)
+{
+	int32 newMind = mind - damage;
+
+	if (newMind <= 0)
+	{
+		setMindBar(0);
+		doIncapacitate();
+		return false; 
+	}
+
+	setActionBar(MIN(newMind, mindMax - mindWounds));
+
+	return true;
+
+}
 bool CreatureObjectImplementation::changeHAMBars(int32 hp, int32 ap, int32 mp, bool forcedChange) {
 	int32 newHealth = health + hp;
 	int32 newAction = action + ap;

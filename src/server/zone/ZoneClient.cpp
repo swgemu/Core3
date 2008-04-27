@@ -287,8 +287,6 @@ unsigned int ZoneClientAdapter::getSessionKey() {
  *	ZoneClientHelper
  */
 
-ZoneClientHelper* ZoneClientHelper::staticInitializer = ZoneClientHelper::instance();
-
 ZoneClientHelper::ZoneClientHelper() {
 	className = "ZoneClient";
 

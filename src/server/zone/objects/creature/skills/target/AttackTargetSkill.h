@@ -124,8 +124,8 @@ public:
 		
 		requiredWeaponType = 0xFF; // NONE
 	}
+	
 
-	virtual int calculateDamage(CreatureObject* creature, CreatureObject* targetCreature) = 0;
 	virtual bool calculateCost(CreatureObject* creature) {
 		return creature->changeMindBar(-50);
 	}
@@ -149,19 +149,26 @@ public:
 		Armor* armor = target->getArmor(part);
 				
 		int reduction = 0;
-		
+		int APARreduction = 0;
+
 		if (target->isPlayer())
-			reduction = damage - doArmorResists(armor, weapon, damage);
+			reduction = doArmorResists(armor, weapon, damage);
 		else if (weapon != NULL)
 			reduction = int(target->getArmorResist(weapon->getDamageType()) * damage / 100);
 		else
 			reduction = int(target->getArmorResist(WeaponImplementation::KINETIC) * damage / 100);
 		
-		damage = damage - reduction;
 				
-		target->changeHealthBar((int32) damage, true);
+		if (reduction > 0)
+				APARreduction = doArmorAPARReductions(target->getArmor(part),attacker->getWeapon(),damage,true);
+		else
+				APARreduction = doArmorAPARReductions(target->getArmor(part),attacker->getWeapon(),damage,true);
+	
+		damage = damage - reduction - APARreduction;
+
+		target->takeHealthDamage(damage);
 		
-		target->addDamage(attacker, -damage);
+		target->addDamage(attacker, damage);
 			
 		if (part < 3) {
 			if (attacker->isPlayer()) {
@@ -181,7 +188,7 @@ public:
 		}
 		
 		if (target->isPlayer() && reduction != 0)
-			target->sendCombatSpam(target,(TangibleObject*) armor, -reduction, "armor_damaged", false);
+			target->sendCombatSpam(target,(TangibleObject*) armor, (reduction + APARreduction), "armor_damaged", false);
 		
 		float woundsRatio = 5;
 		
@@ -224,19 +231,26 @@ public:
 		Armor* armor = target->getArmor(part);
 
 		int reduction = 0;
-		
+		int APARreduction = 0;
+
 		if (target->isPlayer())
-			reduction = damage - doArmorResists(armor, weapon, damage);
+			reduction = doArmorResists(armor, weapon, damage);
 		else if (weapon != NULL)
 			reduction = int(target->getArmorResist(weapon->getDamageType()) * damage / 100);
 		else
 			reduction = int(target->getArmorResist(WeaponImplementation::KINETIC) * damage / 100);
 		
-		damage = damage - reduction;
+		if (reduction > 0)
+			APARreduction = doArmorAPARReductions(target->getArmor(part),attacker->getWeapon(),damage,true);
+		else
+			APARreduction = doArmorAPARReductions(target->getArmor(part),attacker->getWeapon(),damage,true);
 		
-		target->changeActionBar((int32) damage, true);
+		damage = damage - reduction - APARreduction;
 		
-		target->addDamage(attacker, -damage);
+	
+
+		target->takeActionDamage(damage);
+		target->addDamage(attacker, damage);
 		
 		if (part == 7) {  // below is sending flytext for the wrong parts...
 			if (attacker->isPlayer()) {
@@ -251,7 +265,7 @@ public:
 		}
 		
 		if (target->isPlayer() && reduction != 0)
-			target->sendCombatSpam(target,(TangibleObject*) armor, -reduction, "armor_damaged", false);
+			target->sendCombatSpam(target,(TangibleObject*) armor, (reduction+ APARreduction), "armor_damaged", false);
 		
 		float woundsRatio = 5;
 		
@@ -294,19 +308,27 @@ public:
 		Armor* armor = target->getArmor(9);
 		
 		int reduction = 0;
-		
+		int APARreduction= 0;
+
 		if (target->isPlayer())
-			reduction = damage - doArmorResists(armor, weapon, damage);
+			reduction = doArmorResists(armor, weapon, damage);
 		else if (weapon != NULL)
 			reduction = int(target->getArmorResist(weapon->getDamageType()) * damage / 100);
 		else
 			reduction = int(target->getArmorResist(WeaponImplementation::KINETIC) * damage / 100);
 		
-		damage -= reduction;
 		
-		target->changeMindBar((int32) damage, true);
+		if (reduction > 0)
+			APARreduction = doArmorAPARReductions(target->getArmor(9),attacker->getWeapon(),damage,true);
+		else
+			APARreduction = doArmorAPARReductions(target->getArmor(9),attacker->getWeapon(),damage,true);
+
+		damage = damage - reduction - APARreduction;
 		
-		target->addDamage(attacker, -damage);
+	
+		target->takeMindDamage(damage);
+		
+		target->addDamage(attacker, damage);
 		
 		if (attacker->isPlayer()) {
 			ShowFlyText* fly = new ShowFlyText(target, "combat_effects", "hit_head", 0, 0, 0xFF);
@@ -314,7 +336,7 @@ public:
 		}
 		
 		if (target->isPlayer() && reduction != 0)
-			target->sendCombatSpam(target,(TangibleObject*) armor, -reduction, "armor_damaged", false);
+			target->sendCombatSpam(target,(TangibleObject*) armor, (reduction+ APARreduction), "armor_damaged", false);
 		
 		float woundsRatio = 5;
 		
@@ -701,21 +723,38 @@ public:
 		}
 	}
 
-	int doArmorResists(Armor* armor, Weapon* weapon, int dmg) {
-
+	// The following function adjusts incoming damage for Armor Piercing and Armor Rating. 
+	// The Values are:
+	// @@ Armor* armor  -- Armor of the Defender
+	// @@ Weapon* weapon -- Weapon of the Attacker
+	// @@ int damage -- initial incoming damage
+	// @@ bool isresisted -- To decide if the Benefit of AP/AR should be applied, IE. if Damage is stun, and armor has no stun resistance, you would not reduce damage by 50%, however you could still recieve the 25% inrease in damage from a Peircing weapon
+	// ## Returns - apar damage reduction.
+	int doArmorAPARReductions(Armor* armor, Weapon* weapon, int damage, bool isresisted = false)
+	{
 		int ap = 0;
 		int ar = 0;
-		
+		int APARreduction = 0;
+
 		if (weapon != NULL) 
 			ap = weapon->getArmorPiercing();
 		if (armor != NULL)
 			ar = armor->getRating() / 16; // this sucks, why are they stored differently?
-				
-		if (ap > ar)
-			dmg = (int)(dmg * powf(1.25f, ap - ar)); // If armor piercing is greater, increase by 25% per level
-		else if (ap < ar)
-			dmg = (int)(dmg * powf(0.5f, ar - ap)); // If armor resist is greater, decrease by half per level
+
 		
+		if (ap > ar)
+			APARreduction = (damage - (int)(damage * powf(1.25f, ap - ar))); // If armor piercing is greater, increase by 25% per level
+		
+		if (ap < ar && isresisted)  // If damage type was resisted, and If armor rating is greater, decrease by half per level
+			APARreduction = (damage - (int)(damage * powf(0.5f, ar - ap))); 
+
+		return APARreduction;
+	}
+
+	int doArmorResists(Armor* armor, Weapon* weapon, int dmg)
+	{
+			
+	
 		float resist = 0;
 		
 		int damageType = WeaponImplementation::KINETIC;
@@ -755,9 +794,10 @@ public:
 			}
 		
 		if (resist == 0)
-			return (dmg + (dmg / 2));
+			return 0;
 		else
-			return (int)(dmg - (dmg * resist / 100));
+			return (int)(dmg * (resist / 100));
+
 	}
 	
 	bool isArea() {

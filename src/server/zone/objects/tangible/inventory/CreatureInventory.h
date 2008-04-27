@@ -36,8 +36,6 @@ public:
 };
 
 class CreatureInventoryHelper : public DistributedObjectClassHelper, public Singleton<CreatureInventoryHelper> {
-	static CreatureInventoryHelper* staticInitializer;
-
 public:
 	CreatureInventoryHelper();
 

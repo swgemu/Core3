@@ -92,8 +92,6 @@ void JediWeaponAdapter::setForceCost(int fcost) {
  *	JediWeaponHelper
  */
 
-JediWeaponHelper* JediWeaponHelper::staticInitializer = JediWeaponHelper::instance();
-
 JediWeaponHelper::JediWeaponHelper() {
 	className = "JediWeapon";
 
