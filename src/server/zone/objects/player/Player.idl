@@ -81,8 +81,6 @@ import "../draftschematic/DraftSchematic";
 import "../tangible/crafting/CraftingTool";
 import "../tangible/resource/ResourceContainer";
 
-import "../building/BuildingObject";
-
 interface Player implements CreatureObject {
 	Player(unsigned long oid);
 
@@ -426,9 +424,6 @@ interface Player implements CreatureObject {
 	void setSampleErrorMessage();
 	boolean getSurveyErrorMessage();
 	boolean getSampleErrorMessage();
-	
-	boolean isInBuilding();
-	int getBuildingType();
 	
 	void setEntertainerEvent();
 	void clearEntertainerEvent();

@@ -950,9 +950,7 @@ public:
 	inline void clearEntertainerEvent() {
 		entertainerEvent = NULL;
 	}
-	
-	bool isInBuilding();
-	int getBuildingType();
+
 	
 	// Entertainer tick
 	void setEntertainerEvent();

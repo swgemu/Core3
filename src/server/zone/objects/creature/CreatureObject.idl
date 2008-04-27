@@ -62,6 +62,7 @@ import "../group/GroupObject";
 import "../player/Player";
 
 import "../building/BuildingObject";
+
 import "../creature/mount/MountCreature";
 
 import "../guild/Guild";
@@ -503,8 +504,8 @@ interface CreatureObject implements SceneObject {
 	void addLootItem(TangibleObject item);
 	
 	// Ent methods
-	void startDancing(const string anim);
-	void startPlayingMusic(const string anim);
+	void startDancing(const string anim, boolean changeDance = false);
+	void startPlayingMusic(const string anim, boolean changeMusic = false);
 	
 	void startWatch(unsigned long entid);
 	void startListen(unsigned long entid);
@@ -523,11 +524,14 @@ interface CreatureObject implements SceneObject {
 	
 	void removeListener(CreatureObject creature);
 	void removeWatcher(CreatureObject creature);
-	
+
 	void doFlourish(const string modifier);
-	void doHealShockWounds();
-	void doHealMindWounds();
+	void doEntertainerPatronEffects(boolean healShock = false, boolean healWounds = false, boolean addBuff = false);
 	void doPerformanceAction();
+	
+	boolean isInBuilding();
+	SceneObject getBuilding();
+	int getBuildingType();
 	
 	void activateRecovery();
 	

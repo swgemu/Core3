@@ -634,9 +634,9 @@ public:
 
 	void addLootItem(TangibleObject* item);
 
-	void startDancing(const string& anim);
+	void startDancing(const string& anim, bool changeDance = false);
 
-	void startPlayingMusic(const string& anim);
+	void startPlayingMusic(const string& anim, bool changeMusic = false);
 
 	void startWatch(unsigned long long entid);
 
@@ -664,11 +664,15 @@ public:
 
 	void doFlourish(const string& modifier);
 
-	void doHealShockWounds();
-
-	void doHealMindWounds();
+	void doEntertainerPatronEffects(bool healShock = false, bool healWounds = false, bool addBuff = false);
 
 	void doPerformanceAction();
+
+	bool isInBuilding();
+
+	SceneObject* getBuilding();
+
+	int getBuildingType();
 
 	void activateRecovery();
 
@@ -1326,9 +1330,9 @@ public:
 
 	void addLootItem(TangibleObject* item);
 
-	void startDancing(const string& anim);
+	void startDancing(const string& anim, bool changeDance);
 
-	void startPlayingMusic(const string& anim);
+	void startPlayingMusic(const string& anim, bool changeMusic);
 
 	void startWatch(unsigned long long entid);
 
@@ -1356,11 +1360,15 @@ public:
 
 	void doFlourish(const string& modifier);
 
-	void doHealShockWounds();
-
-	void doHealMindWounds();
+	void doEntertainerPatronEffects(bool healShock, bool healWounds, bool addBuff);
 
 	void doPerformanceAction();
+
+	bool isInBuilding();
+
+	SceneObject* getBuilding();
+
+	int getBuildingType();
 
 	void activateRecovery();
 
@@ -1421,8 +1429,8 @@ protected:
 	string _param0_sendSystemMessage__string_;
 	string _param0_sendSystemMessage__string_string_long_;
 	string _param1_sendSystemMessage__string_string_long_;
-	string _param0_startDancing__string_;
-	string _param0_startPlayingMusic__string_;
+	string _param0_startDancing__string_bool_;
+	string _param0_startPlayingMusic__string_bool_;
 	string _param0_doFlourish__string_;
 	string _param0_applyBuff__string_int_float_;
 };

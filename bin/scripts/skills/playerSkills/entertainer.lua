@@ -120,6 +120,15 @@ stopmusicSkill = {
 }
 AddEntertainSkill(stopmusicSkill)
 
+changedanceSkill = {
+	skillname = "changedance"
+}
+AddEntertainSkill(changedanceSkill)
+
+changemusicSkill = {
+	skillname = "changemusic"
+}
+AddEntertainSkill(changemusicSkill)
 
 -- Dances
 
@@ -255,10 +264,20 @@ startmusicCeremonialSkill = {
 }
 AddEntertainSkill(startmusicCeremonialSkill)
 
+startmusicStarwars4Skill = {
+	skillname = "startmusic+starwars4"
+}
+AddEntertainSkill(startmusicStarwars4Skill)
+
 startmusicBalladSkill = {
 	skillname = "startmusic+ballad"
 }
 AddEntertainSkill(startmusicBalladSkill)
+
+startmusicFunkSkill = {
+	skillname = "startmusic+funk"
+}
+AddEntertainSkill(startmusicFunkSkill)
 
 startmusicWaltzSkill = {
 	skillname = "startmusic+waltz"
@@ -279,3 +298,4 @@ startmusicWesternSkill = {
 	skillname = "startmusic+western"
 }
 AddEntertainSkill(startmusicWesternSkill)
+

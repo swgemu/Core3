@@ -2150,14 +2150,21 @@ void CreatureObjectImplementation::removeSkillModBonus(const string& name, bool 
 	}
 }
 
-void CreatureObjectImplementation::startDancing(const string& anim) {
-	if (isPlayingMusic())
-		stopPlayingMusic();
-
-	if (isDancing()) {
-		sendSystemMessage("You are already dancing.");
+void CreatureObjectImplementation::startDancing(const string& modifier, bool changeDance) {
+	
+	if (isDancing() && !changeDance) {
+		sendSystemMessage("performance", "already_performing_self");
+		return;
+	} else if(!isDancing() && changeDance) {
+		sendSystemMessage("performance", "dance_must_be_performing_self");
 		return;
 	}
+	
+	if (isPlayingMusic())
+		stopPlayingMusic();
+	
+	string anim = modifier; //leave original modifier alone
+	String::toLower(anim); // lets /startDance Tumble and /startDance tumble both work
 	
 	// TODO: This needs to be cleaned up and refactored	
 	Vector<string> availableDances;
@@ -2236,20 +2243,16 @@ void CreatureObjectImplementation::startDancing(const string& anim) {
 			availableDances.add("exotic3");
 			availableDances.add("exotic4");
 			availableDances.add("lyrical2");
-			availableDances.add("theatrical");
-			availableDances.add("theatrical2");
-			availableDances.add("unknown1");
-			availableDances.add("unknown2");
-			availableDances.add("unknown3");
-			availableDances.add("unknown4");
-			availableDances.add("unknown5");
-			availableDances.add("unknown6");
-			availableDances.add("unknown7");
-			availableDances.add("unknown8");		
+			// Comment out the quest dances for now
+			//availableDances.add("theatrical"); // this is given by a quest
+			//availableDances.add("theatrical2"); // this is given by a quest	
 		}
 		
 		if (anim == "") {
-			SuiListBoxImplementation* sui = new SuiListBoxImplementation((Player*) _this, 0x414E);
+			uint32 boxID = 0x414E; // default startdance
+			if(changeDance)
+				boxID = 0x4B4E; // differentiate changedance
+			SuiListBoxImplementation* sui = new SuiListBoxImplementation((Player*) _this, boxID);
 			sui->setPromptTitle("Available dances");
 			sui->setPromptText("Pick a dance");
 
@@ -2359,7 +2362,10 @@ void CreatureObjectImplementation::startDancing(const string& anim) {
 	setPerformanceName(isdigit(anim[0]) ? availableDances.get(atoi(anim.c_str())) : anim);
 	setDancing(true);
 
-	sendSystemMessage("You start dancing.");
+	if(!changeDance)
+		sendSystemMessage("performance", "dance_start_self");
+	else
+		
 
 	// Tick every 10 seconds HAM costs
 	if (isPlayer()) { 
@@ -2368,14 +2374,18 @@ void CreatureObjectImplementation::startDancing(const string& anim) {
 	}
 }
 
-void CreatureObjectImplementation::startPlayingMusic(const string& music) {
-	if (isDancing())
-		stopDancing();
-
-	if (isPlayingMusic()) {
+void CreatureObjectImplementation::startPlayingMusic(const string& modifier, bool changeMusic) {
+	
+	if (isPlayingMusic() && !changeMusic) {
 		sendSystemMessage("performance", "already_performing_self");
 		return;
+	} else if(!isPlayingMusic() && changeMusic) {
+		sendSystemMessage("performance", "music_must_be_performing_self");
+		return;
 	}
+	
+	if (isDancing())
+		stopDancing();
 	
 	Instrument* instrument = getInstrument();
 	if(instrument == NULL)
@@ -2383,6 +2393,9 @@ void CreatureObjectImplementation::startPlayingMusic(const string& music) {
 		sendSystemMessage("performance", "music_no_instrument");
 		return;
 	} 
+	
+	string music = modifier; //leave original modifier alone
+	String::toLower(music); // lets /startMusic StarWars1 and /startMusic Starwars1 both work
 	
 	// TODO: Need to refactor this code
 	Vector<string> availableSongs;
@@ -2442,11 +2455,14 @@ void CreatureObjectImplementation::startPlayingMusic(const string& music) {
 		skillBox = "social_musician_master";
 		if (player->getSkillBoxesSize() && player->hasSkillBox(skillBox)) {
 			availableSongs.add("virtuoso");
-			availableSongs.add("western");
+			//availableSongs.add("western"); //add back in later - this isn't in the skills tree
 		}
 
 		if (music == "") {
-			SuiListBoxImplementation* sui = new SuiListBoxImplementation((Player*) _this, 0x5553);
+			uint32 boxID = 0x5553; // default startmusic
+			if(changeMusic)
+				boxID = 0x5A53; // differentiate changemusic
+			SuiListBoxImplementation* sui = new SuiListBoxImplementation((Player*) _this, boxID);
 			sui->setPromptText("Available songs");
 			sui->setPromptTitle("Pick a song");
 
@@ -2555,7 +2571,6 @@ void CreatureObjectImplementation::startPlayingMusic(const string& music) {
 			sendSystemMessage("Bad instrument type.");
 			return;
 	}
-	
 
 	sendSystemMessage("performance", "music_start_self");
 
@@ -2951,96 +2966,27 @@ void CreatureObjectImplementation::doFlourish(const string& modifier)
 	}	
 }
 
-void CreatureObjectImplementation::doHealShockWounds() {
-	/*if (!isPlayer()) 
-		return;*/
-	
-	int bfAbility = 0;
-	
+void CreatureObjectImplementation::doEntertainerPatronEffects(bool healShock, bool healWounds, bool addBuff) {
+		
 	ManagedSortedVector<CreatureObject>* patrons = NULL;
+
 	SkillManager* skillManager = server->getSkillManager();
 	Performance* performance = NULL;
-	
-	if(isDancing()) {
-		bfAbility = getSkillMod("healing_dance_ability");
-		performance = skillManager->getDance(getPerformanceName());
-		patrons = &watchers;
-	}
-	else if(isPlayingMusic() && getInstrument()) {
-		bfAbility = getSkillMod("healing_music_ability");
-		patrons = &listeners;
-		performance = skillManager->getSong(getPerformanceName(), getInstrument()->getInstrumentType());
-	}	
-	else
+
+	if(getPerformanceName() == "")
 		return;
 	
-	if(!performance) { // shouldn't happen
-		stringstream msg;
-		msg << "Performance was null.  Please report to McMahon! Name: " << getPerformanceName() << " and Type: " << dec << getInstrument()->getInstrumentType();
-
-		sendSystemMessage(msg.str());
-		return;
-	}
-	int shockHeal = -1 * performance->getHealShockWound();
-	
-	if (patrons && patrons->size()) {
-		for (int i = 0; i < patrons->size(); ++i) {
-			CreatureObject* obj = patrons->get(i);
-		
-			// 10 minutes * 60 seconds  = 600 / 10 second increments = 60 total ticks to heal
-			// 1k BF / 60 = 17 bf/tick for master ent @ 100 skill
-			// skill ability / 100 = modifier from 17
-			//float rate = 10 * 60 / 10
-			//int shockHeal = -1 * (int) (17.0f * (bfAbility / 100.0f));
-			
-			//cout << " doing doHealBattleFatigue on " << obj << "(0x" << obj->getObjectID() << ") healing rate: " << dec << bfHeal;
-			
-			try {
-				if (obj != _this)
-					obj->wlock(_this);
-			
-				obj->changeShockWounds(shockHeal);
-				
-				if (obj != _this)
-					obj->unlock();			
-			} catch (...) {
-				if (obj != _this)
-					obj->unlock();
-				
-				error("Unreported exception in CreatureObjectImplementation::doHealShockWounds()");
-			}
-		}
-	} /*else
-		cout << "no patrons";*/
-}
-
-void CreatureObjectImplementation::doHealMindWounds() {
-	/*if (!isPlayer()) 
-		return;*/
-	
-	int woundAbility = 0;
-	
-	ManagedSortedVector<CreatureObject>* patrons = NULL;
-		
 	if (isDancing()) {
-		woundAbility = getSkillMod("healing_dance_wound");
+		//woundAbility = getSkillMod("healing_dance_wound");
 		patrons = &watchers;
-	} else if (isPlayingMusic()) {
-		woundAbility = getSkillMod("healing_music_wound");
-		patrons = &listeners;
-	}
-	
-	SkillManager* skillManager = server->getSkillManager();
-	Performance* performance = NULL;
-	
-	if(isDancing())
 		performance = skillManager->getDance(getPerformanceName());
-	else if(isPlayingMusic() && getInstrument())
+	} else if (isPlayingMusic() && getInstrument() != NULL) {
+		//woundAbility = getSkillMod("healing_music_wound");
+		patrons = &listeners;
 		performance = skillManager->getSong(getPerformanceName(), getInstrument()->getInstrumentType());
-	else
-		return;
+	} else return;
 	
-	if(!performance) { // shouldn't happen
+	if(performance == NULL) { // shouldn't happen
 		stringstream msg;
 		msg << "Performance was null.  Please report to McMahon! Name: " << getPerformanceName() << " and Type: " << dec << getInstrument()->getInstrumentType();
 
@@ -3048,21 +2994,57 @@ void CreatureObjectImplementation::doHealMindWounds() {
 		return;
 	}
 	int woundHeal = -1 * performance->getHealMindWound();
-
+	int shockHeal = -1 * performance->getHealShockWound();
 	
-	if (patrons && patrons->size()) {
+	if (patrons != NULL && patrons->size() > 0) {
 		for (int i = 0; i < patrons->size(); ++i) {
 			CreatureObject* obj = patrons->get(i);
 
-			// 50 as a base rate per 10 sec
-			//int woundHeal = -1 * (int)(50.0f * (woundAbility / 100.0f));
-			//cout << " doing doHealMindWounds on " << obj << "(0x" << obj->getObjectID() << ") healing rate: " << dec << woundHeal;
 			
 			try {
 				if (obj != _this)
 					obj->wlock(_this);
+				 
+				//performance->get
+				//if (!isInRange(obj->getPositionX(), obj->getPositionY(), skill->getRange())) {
+					//obj->stopListen()
+				//}
+				// verify patron is in the same building as performer
 				
-				obj->changeMindWoundsBar(woundHeal, false);
+				bool patronInRange = false;
+				
+				if(obj->getParent() != NULL && obj->getParent()->isCell() )					
+				{
+					SceneObject *pp = obj->getParent();
+					BuildingObject* pb = (BuildingObject*)pp->getParent();
+					
+					if(pb == getBuilding())
+						patronInRange = true;
+				}
+				
+				if(patronInRange)
+				{
+					if(healShock)
+						obj->changeMindWoundsBar(woundHeal, false);
+					if(healWounds)
+						obj->changeShockWounds(shockHeal);
+				} else
+				{
+					
+					if(isDancing()) {
+						obj->stopWatch(objectID, true, true, false);
+					
+						if (!obj->isListening())
+							sendEntertainmentUpdate(0, "", true);
+						
+					} else if(isPlayingMusic()) {
+						obj->stopListen(objectID, true, true, false);
+						
+						if (!obj->isWatching())
+							sendEntertainmentUpdate(0, "", true);
+					}
+
+				}
 				
 				if (obj != _this)
 					obj->unlock();
@@ -3075,7 +3057,9 @@ void CreatureObjectImplementation::doHealMindWounds() {
 		}
 	} /*else
 		cout << "no patrons";*/
+	
 }
+
 
 
 void CreatureObjectImplementation::doPerformanceAction() {
@@ -3158,6 +3142,36 @@ void CreatureObjectImplementation::sendEntertainmentUpdate(uint64 entid, const s
 	codm6->close();
 	broadcastMessage(codm6);
 }
+
+bool CreatureObjectImplementation::isInBuilding() {
+	if(getParent() != NULL && getParent()->isCell())
+		return true;
+	
+	return false;
+}	
+
+int CreatureObjectImplementation::getBuildingType() {
+	if (parent != NULL && parent->isCell()) {
+		CellObject* cell = (CellObject*) parent;
+		BuildingObject* building = (BuildingObject*)parent->getParent();
+		
+		return building->getBuildingType();
+	}
+
+	return 0;
+}
+
+SceneObject *CreatureObjectImplementation::getBuilding() {
+	if (parent != NULL && parent->isCell()) {
+		CellObject* cell = (CellObject*) parent;
+		BuildingObject* building = (BuildingObject*)parent->getParent();
+		
+		return building;
+	}
+
+	return NULL;
+}
+
 
 void CreatureObjectImplementation::sendGuildTo() {
 	CreatureObjectDeltaMessage6* codm6 = new CreatureObjectDeltaMessage6(_this);

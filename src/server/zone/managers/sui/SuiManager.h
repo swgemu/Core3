@@ -59,8 +59,8 @@ public:
 	
 	void handleSuiEventNotification(uint32 boxID, Player* player, uint32 cancel, const string& value, const string& value2);
 	
-	void handleStartMusic(uint32 boxID, Player* player, uint32 cancel, const string& song);
-	void handleStartDancing(uint32 boxID, Player* player, uint32 cancel, const string& dance);
+	void handleStartMusic(uint32 boxID, Player* player, uint32 cancel, const string& song, bool change = false);
+	void handleStartDancing(uint32 boxID, Player* player, uint32 cancel, const string& dance, bool change = false);
 	
 	void handleSurveyToolRange(uint32 boxID, Player* player, uint32 cancel, int range);
 	

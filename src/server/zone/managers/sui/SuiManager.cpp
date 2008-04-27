@@ -63,10 +63,16 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, Player* player, uint32
 	
 	switch (type) {
 	case 0x5553:
-		handleStartMusic(boxID, player, cancel, value.c_str());
+		handleStartMusic(boxID, player, cancel, value.c_str(), false);
 		break;
 	case 0x414E:
-		handleStartDancing(boxID, player, cancel, value.c_str());
+		handleStartDancing(boxID, player, cancel, value.c_str(), false);
+		break;
+	case 0x5A53: // changemusic
+		handleStartMusic(boxID, player, cancel, value.c_str(), true);
+		break;
+	case 0x4B4E: // changedance
+		handleStartDancing(boxID, player, cancel, value.c_str(), true);
 		break;
 	case 0x7259:
 		range = (atoi(value.c_str()) * 64) + 64;
@@ -102,7 +108,7 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, Player* player, uint32
 	}
 }
 
-void SuiManager::handleStartMusic(uint32 boxID, Player* player, uint32 cancel, const string& song) {
+void SuiManager::handleStartMusic(uint32 boxID, Player* player, uint32 cancel, const string& song, bool change) {
 	try {
 		player->wlock();
 		
@@ -114,7 +120,7 @@ void SuiManager::handleStartMusic(uint32 boxID, Player* player, uint32 cancel, c
 		SuiBox* sui = player->getSuiBox(boxID);
 		
 		if (cancel != 1)
-			player->startPlayingMusic(song);
+			player->startPlayingMusic(song, change);
 		
 		player->removeSuiBox(boxID);
 		
@@ -133,7 +139,7 @@ void SuiManager::handleStartMusic(uint32 boxID, Player* player, uint32 cancel, c
 	}
 }
 
-void SuiManager::handleStartDancing(uint32 boxID, Player* player, uint32 cancel, const string& dance) {
+void SuiManager::handleStartDancing(uint32 boxID, Player* player, uint32 cancel, const string& dance, bool change) {
 	try {
 		player->wlock();
 		
@@ -145,7 +151,7 @@ void SuiManager::handleStartDancing(uint32 boxID, Player* player, uint32 cancel,
 		SuiBox* sui = player->getSuiBox(boxID);
 		
 		if (cancel != 1)
-			player->startDancing(dance);
+			player->startDancing(dance, change);
 		
 		player->removeSuiBox(boxID);
 		

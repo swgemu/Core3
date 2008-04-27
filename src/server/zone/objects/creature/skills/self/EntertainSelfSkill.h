@@ -59,13 +59,17 @@ public:
 
 	void doSkill(CreatureObject* creature, string& modifier) {
 		if(getSkillName() == "startdance")
-			creature->startDancing(modifier);
+			creature->startDancing(modifier, false);
 		else if(getSkillName() == "startmusic")
-			creature->startPlayingMusic(modifier);
+			creature->startPlayingMusic(modifier, false);
 		else if(getSkillName() == "stopdance")
 			creature->stopDancing();
 		else if(getSkillName() == "stopmusic")
 			creature->stopPlayingMusic();	
+		else if(getSkillName() == "changedance")
+			creature->startDancing(modifier, true);
+		else if(getSkillName() == "changemusic")
+			creature->startPlayingMusic(modifier, true);
 	}
 
 	virtual bool isUsefull(CreatureObject* creature) {

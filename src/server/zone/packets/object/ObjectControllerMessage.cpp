@@ -450,6 +450,21 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player, Message* 
 		}
 		parseFlourish(player, pack);
 		break;
+	case (0xB5220E24): //changemusic
+		if (player->isMounted()) {
+			player->clearQueueAction(actioncntr, 0, 1, 16);
+			return;
+		}
+		parseChangeMusic(player, pack);
+		break;
+	case (0x13EE2D35): //changedance
+		if (player->isMounted()) {
+			player->clearQueueAction(actioncntr, 0, 1, 16);
+			return;
+		}
+		parseChangeDance(player, pack);
+		break;
+		
 /*
 	case (0x4A0D52DD): //stopmusic
 		if (player->isMounted()) {
@@ -992,6 +1007,26 @@ void ObjectControllerMessage::parseFlourish(Player* player, Message* pack) {
 	string actionModifier = option.c_str();
 	
 	player->doFlourish(actionModifier);
+}
+
+void ObjectControllerMessage::parseChangeMusic(Player* player, Message* pack) { 
+	pack->parseLong(); // skip passed target 
+	
+	unicode option = unicode("");
+	pack->parseUnicode(option);
+	string actionModifier = option.c_str();
+	
+	player->startPlayingMusic(actionModifier, true);
+}
+
+void ObjectControllerMessage::parseChangeDance(Player* player, Message* pack) { 
+	pack->parseLong(); // skip passed target 
+	
+	unicode option = unicode("");
+	pack->parseUnicode(option);
+	string actionModifier = option.c_str();
+	
+	player->startDancing(actionModifier, true);
 }
 
 void ObjectControllerMessage::parseServerSit(Player* player, Message* pack) {

@@ -759,8 +759,8 @@ public:
 	void removeLootItem(uint64 oid);
 	
 	// Entertainer methods
-	void startDancing(const string& anim);
-	void startPlayingMusic(const string& anim);
+	void startDancing(const string& anim, bool changeDance = false);
+	void startPlayingMusic(const string& anim, bool changeMusic = false);
 
 	void stopDancing();
 	void stopPlayingMusic();
@@ -771,10 +771,13 @@ public:
 	void stopListen(uint64 entid, bool doSendPackets = true, bool forced = false, bool doLock = true);
 
 	void doFlourish(const string& modifier = "");
-	void doHealShockWounds();
-	void doHealMindWounds();
+	void doEntertainerPatronEffects(bool healShock = false, bool healWounds = false, bool addBuff = false);
 	void doPerformanceAction();
 	
+	bool isInBuilding();
+	SceneObject *getBuilding();
+	int getBuildingType();
+
 	// guild methods
 	void sendGuildTo();
 	

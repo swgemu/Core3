@@ -53,8 +53,6 @@ class CraftingTool;
 
 class ResourceContainer;
 
-class BuildingObject;
-
 #include "../creature/CreatureObject.h"
 
 class Player : public CreatureObject {
@@ -459,10 +457,6 @@ public:
 	bool getSurveyErrorMessage();
 
 	bool getSampleErrorMessage();
-
-	bool isInBuilding();
-
-	int getBuildingType();
 
 	void setEntertainerEvent();
 
@@ -893,10 +887,6 @@ public:
 	bool getSurveyErrorMessage();
 
 	bool getSampleErrorMessage();
-
-	bool isInBuilding();
-
-	int getBuildingType();
 
 	void setEntertainerEvent();
 

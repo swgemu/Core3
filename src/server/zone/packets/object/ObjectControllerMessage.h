@@ -96,6 +96,8 @@ public:
    	static void parseStopWatch(Player* player, Message* pack);
     static void parseStopListen(Player* player, Message* pack);
     static void parseFlourish(Player* player, Message* pack);
+    static void parseChangeMusic(Player* player, Message* pack);
+    static void parseChangeDance(Player* player, Message* pack);
     
     static void parseServerSit(Player* player, Message* pack);
     

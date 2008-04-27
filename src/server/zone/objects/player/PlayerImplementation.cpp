@@ -2885,26 +2885,6 @@ void PlayerImplementation::newChangeFactionEvent(uint32 faction) {
 	server->addEvent(changeFactionEvent);
 }
 
-bool PlayerImplementation::isInBuilding() {
-	if(getParent() != NULL && getParent()->isCell())
-		return true;
-	
-	return false;
-}
-
-int PlayerImplementation::getBuildingType() {
-	if (parent != NULL && parent->isCell()) {
-		CellObject* cell = (CellObject*) parent;
-		BuildingObject* building = (BuildingObject*)parent->getParent();
-		
-		return building->getBuildingType();
-	}
-
-	return 0;
-}
-
-	
-
 void PlayerImplementation::setEntertainerEvent() {
 	entertainerEvent = new EntertainerEvent(_this);
 	

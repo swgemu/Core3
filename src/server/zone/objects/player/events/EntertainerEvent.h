@@ -66,6 +66,8 @@ public:
 				return true; // don't tick action if they aren't doing anything
 			}
 
+			
+
 			if (player->isInBuilding()) {
 
 				int buildingType = player->getBuildingType();
@@ -74,10 +76,10 @@ public:
 					buildingType == BuildingObjectImplementation::GUILD_THEATER ||
 					buildingType == BuildingObjectImplementation::TAVERN )
 				{
-					// Heal BF/ShockWounds
-					player->doHealShockWounds();
-					// Heal Mind Wounds
-					player->doHealMindWounds();
+					
+					// healShock, healWounds, addBuff
+					player->doEntertainerPatronEffects(true, true, true);
+				
 				}
 			}
 			
