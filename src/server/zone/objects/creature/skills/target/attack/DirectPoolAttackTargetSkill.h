@@ -185,7 +185,7 @@ public:
 				}
 		
 				if (mindPoolAttackChance != 0 && rand < mindPoolAttackChance) {
-					mindDamage = -damageRatio * average;
+					mindDamage = damageRatio * average;
 					calculateDamageReduction(creature, targetCreature, mindDamage);
 
 					damage += mindDamage;
