@@ -162,7 +162,7 @@ public:
 		if (reduction > 0)
 				APARreduction = doArmorAPARReductions(target->getArmor(part),attacker->getWeapon(),damage,true);
 		else
-				APARreduction = doArmorAPARReductions(target->getArmor(part),attacker->getWeapon(),damage,true);
+				APARreduction = doArmorAPARReductions(target->getArmor(part),attacker->getWeapon(),damage,false);
 	
 		damage = damage - reduction - APARreduction;
 
@@ -187,9 +187,11 @@ public:
 			}
 		}
 		
-		if (target->isPlayer() && reduction != 0)
+		if (target->isPlayer() && ((reduction+APARreduction) > 0))  // if total damage reduction is positive, tell the player what their expensive armor did for them
 			target->sendCombatSpam(target,(TangibleObject*) armor, (reduction + APARreduction), "armor_damaged", false);
-		
+		else if (target->isPlayer() && APARreduction <0 && reduction != 0)  // In this case the APAR calulation increased the damage (Ie. T21 (Heavy piercing) against Composite (light rating) adds 50% damage, giving APARreduction a negative value, so only show the % reduction the armor normally gives
+			target->sendCombatSpam(target,(TangibleObject*) armor, (reduction), "armor_damaged", false);
+
 		float woundsRatio = 5;
 		
 		if (weapon != NULL)
@@ -243,7 +245,7 @@ public:
 		if (reduction > 0)
 			APARreduction = doArmorAPARReductions(target->getArmor(part),attacker->getWeapon(),damage,true);
 		else
-			APARreduction = doArmorAPARReductions(target->getArmor(part),attacker->getWeapon(),damage,true);
+			APARreduction = doArmorAPARReductions(target->getArmor(part),attacker->getWeapon(),damage,false);
 		
 		damage = damage - reduction - APARreduction;
 		
@@ -264,8 +266,10 @@ public:
 			}
 		}
 		
-		if (target->isPlayer() && reduction != 0)
-			target->sendCombatSpam(target,(TangibleObject*) armor, (reduction+ APARreduction), "armor_damaged", false);
+		if (target->isPlayer() && ((reduction+APARreduction) > 0))  // if total damage reduction is positive, tell the player what their expensive armor did for them
+			target->sendCombatSpam(target,(TangibleObject*) armor, (reduction + APARreduction), "armor_damaged", false);
+		else if (target->isPlayer() && APARreduction <0 && reduction != 0)  // In this case the APAR calulation increased the damage (Ie. T21 (Heavy piercing) against Composite (light rating) adds 50% damage, giving APARreduction a negative value, so only show the % reduction the armor normally gives
+			target->sendCombatSpam(target,(TangibleObject*) armor, (reduction), "armor_damaged", false);
 		
 		float woundsRatio = 5;
 		
@@ -321,7 +325,7 @@ public:
 		if (reduction > 0)
 			APARreduction = doArmorAPARReductions(target->getArmor(9),attacker->getWeapon(),damage,true);
 		else
-			APARreduction = doArmorAPARReductions(target->getArmor(9),attacker->getWeapon(),damage,true);
+			APARreduction = doArmorAPARReductions(target->getArmor(9),attacker->getWeapon(),damage,false);
 
 		damage = damage - reduction - APARreduction;
 		
@@ -335,9 +339,11 @@ public:
 			((Player*)attacker)->sendMessage(fly);
 		}
 		
-		if (target->isPlayer() && reduction != 0)
-			target->sendCombatSpam(target,(TangibleObject*) armor, (reduction+ APARreduction), "armor_damaged", false);
-		
+		if (target->isPlayer() && ((reduction+APARreduction) > 0))  // if total damage reduction is positive, tell the player what their expensive armor did for them
+			target->sendCombatSpam(target,(TangibleObject*) armor, (reduction + APARreduction), "armor_damaged", false);
+		else if (target->isPlayer() && APARreduction <0 && reduction != 0)  // In this case the APAR calulation increased the damage (Ie. T21 (Heavy piercing) against Composite (light rating) adds 50% damage, giving APARreduction a negative value, so only show the % reduction the armor normally gives
+			target->sendCombatSpam(target,(TangibleObject*) armor, (reduction), "armor_damaged", false);
+
 		float woundsRatio = 5;
 		
 		if (weapon != NULL)

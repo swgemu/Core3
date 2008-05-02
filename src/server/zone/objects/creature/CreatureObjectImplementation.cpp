@@ -1036,7 +1036,7 @@ bool CreatureObjectImplementation::takeMindDamage(int32 damage)
 		return false; 
 	}
 
-	setActionBar(MIN(newMind, mindMax - mindWounds));
+	setMindBar(MIN(newMind, mindMax - mindWounds));
 
 	return true;
 
