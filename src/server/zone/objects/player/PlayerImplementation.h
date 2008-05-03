@@ -339,6 +339,7 @@ public:
 	}
 
 	// combat methods
+	void queueFlourish(const string& modifier, uint64 target, uint32 actionCntr);	
 	void queueAction(Player* player, uint64 target, uint32 actionCRC, uint32 actionCntr, const string& amod);
 	
 	bool doAction(CommandQueueAction* action);

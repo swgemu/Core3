@@ -41,6 +41,41 @@
 --which carries forward this exception.
 
 
+-- Core Commands
+
+startdanceSkill = {
+	skillname = "startdance"
+}
+AddEntertainSkill(startdanceSkill)
+
+startmusicSkill = {
+	skillname = "startmusic"
+}
+AddEntertainSkill(startmusicSkill)
+
+stopdanceSkill = {
+	skillname = "stopdance"
+}
+AddEntertainSkill(stopdanceSkill)
+
+stopmusicSkill = {
+	skillname = "stopmusic"
+}
+AddEntertainSkill(stopmusicSkill)
+
+changedanceSkill = {
+	skillname = "changedance"
+}
+AddEntertainSkill(changedanceSkill)
+
+changemusicSkill = {
+	skillname = "changemusic"
+}
+AddEntertainSkill(changemusicSkill)
+
+
+-- Effects
+
 spotlightSkill = {
 	skillname = "spotlight",
 	effect_prefix = "clienteffect/entertainer_spot_light_level_"
@@ -59,6 +94,8 @@ colorlightsSkill = {
 	effect_prefix = "clienteffect/entertainer_color_lights_level_"
 }
 AddEntertainEffectSkill(colorlightsSkill)
+
+-- Flourishes 
 
 flourish1Skill = {
 	skillname = "flourish+1"
@@ -100,35 +137,6 @@ flourish8Skill = {
 }
 AddEntertainSkill(flourish8Skill)
 
-startdanceSkill = {
-	skillname = "startdance"
-}
-AddEntertainSkill(startdanceSkill)
-
-startmusicSkill = {
-	skillname = "startmusic"
-}
-AddEntertainSkill(startmusicSkill)
-
-stopdanceSkill = {
-	skillname = "stopdance"
-}
-AddEntertainSkill(stopdanceSkill)
-
-stopmusicSkill = {
-	skillname = "stopmusic"
-}
-AddEntertainSkill(stopmusicSkill)
-
-changedanceSkill = {
-	skillname = "changedance"
-}
-AddEntertainSkill(changedanceSkill)
-
-changemusicSkill = {
-	skillname = "changemusic"
-}
-AddEntertainSkill(changemusicSkill)
 
 -- Dances
 

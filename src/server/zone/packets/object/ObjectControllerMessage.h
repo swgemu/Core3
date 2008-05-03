@@ -90,7 +90,7 @@ public:
     static void parseShowPvpRating(Player* player, Message* pack);
     
 
-    //static void parseFlourish(Player* player, Message* pack);
+    static void parseFlourish(Player* player, Message* pack, uint32 actionCntr);
     static void parseWatch(Player* player, Message* pack);
     static void parseListen(Player* player, Message* pack);
    	static void parseStopWatch(Player* player, Message* pack);

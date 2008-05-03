@@ -2891,7 +2891,6 @@ void CreatureObjectImplementation::stopListen(uint64 entid, bool doSendPackets, 
 	listenID = 0;
 }
 
-
 void CreatureObjectImplementation::doFlourish(const string& modifier)
 {	
 	if (isPlayer()) {
@@ -2908,7 +2907,9 @@ void CreatureObjectImplementation::doFlourish(const string& modifier)
 
 	int fid = atoi(modifier.c_str());
 
-    if (modifier == "") {
+	// Should be handled by queueFlourish()
+
+/*    if (modifier == "") {
     	sendSystemMessage("performance", "flourish_format");
     	return;
     }
@@ -2917,7 +2918,7 @@ void CreatureObjectImplementation::doFlourish(const string& modifier)
     	sendSystemMessage("performance", "flourish_not_valid");
     	sendSystemMessage("performance", "flourish_format");
     	return;
-    }
+    } */
     
 	if (!isDancing() && !isPlayingMusic()) {
 		sendSystemMessage("performance", "flourish_not_performing");

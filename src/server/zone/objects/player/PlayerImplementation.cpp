@@ -1220,11 +1220,51 @@ void PlayerImplementation::sendSystemMessage(unicode& message) {
 	sendMessage(smsg);
 }
 
+
+
+void PlayerImplementation::queueFlourish(const string& modifier, uint64 target, uint32 actionCntr)
+{	
+	//TODO: Refactor this part later somehow?
+	if (!isPlayer())
+		return;
+
+	//PlayerImplementation* player = (PlayerImplementation*) this;
+
+
+	string skillBox = "social_entertainer_novice";
+	
+	if (!getSkillBoxesSize() || !hasSkillBox(skillBox)) {
+		// TODO: sendSystemMessage("cmd_err", "ability_prose", creature);
+		sendSystemMessage("You do not have sufficient abilities to Flourish");
+		return;
+	}		
+
+	int fid = atoi(modifier.c_str());
+
+    if (modifier == "") {
+    	sendSystemMessage("performance", "flourish_format");
+    	return;
+    }
+    	    
+    if (fid < 1 || fid > 8) {
+    	sendSystemMessage("performance", "flourish_not_valid");
+    	sendSystemMessage("performance", "flourish_format");
+    	return;
+    }
+    
+    uint32 actionCRC = String::hashCode("flourish+" + modifier); // get the CRC for flourish+1, etc
+    
+    PlayerObject* po = getPlayerObject();    
+    queueAction(po->getPlayer(), target, actionCRC, actionCntr, modifier);
+	
+}
+
+
 void PlayerImplementation::queueAction(Player* player, uint64 target, uint32 actionCRC, uint32 actionCntr, const string& amod) {
 	/*stringstream ident;
 	ident << "0x" << hex << actionCRC << " (" << actionCntr << ")"; 
 	
-	info("queing action " + ident.str());*/
+	sendSystemMessage("queing action " + ident.str());*/
 	
 	// Try to queue some music skills
 	Skill* skill = creatureSkills.get(actionCRC);
@@ -1240,7 +1280,7 @@ void PlayerImplementation::queueAction(Player* player, uint64 target, uint32 act
 	} else
 		clearQueueAction(actionCntr);
 
-	//info("queing action " + ident.str() + " finished");
+	/*sendSystemMessage("queing action " + ident.str() + " finished");*/
 
 	return;
 }
@@ -1255,7 +1295,6 @@ bool PlayerImplementation::doAction(CommandQueueAction* action) {
 		action->clearError(2);
 		return false;
 	}
-	
 	updateTarget(action->getTargetID());
 
 	action->setTarget((Player*) targetObject.get());
@@ -1275,8 +1314,9 @@ bool PlayerImplementation::doAction(CommandQueueAction* action) {
 		nextAction.update();
 
 		activateQueueAction(action);
+		
 	}
-	
+
 	return true;
 }
 
@@ -1300,16 +1340,15 @@ void PlayerImplementation::activateQueueAction(CommandQueueAction* action) {
 	}
 	
 	/*stringstream msg;
-	msg << "activating action "<< hex << "0x" << action->getActionCRC() << " (" 
+	msg << "activating action " << action->getSkill()->getSkillName() << " " << hex << "0x" << action->getActionCRC() << " (" 
 		<< action->getActionCounter() << ")";
-	info(msg.str());*/
+	sendSystemMessage(msg.str());*/
 	
 	CombatManager* combatManager = server->getCombatManager();
 
 	if (!isIncapacitated() && !isDead()) {
 		if (action->validate()) {
 			float time = combatManager->handleAction(action);
-
 			action->clear(time);
 			uint64 ctime = nextAction.getMiliTime();
 			

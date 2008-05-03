@@ -108,6 +108,8 @@ public:
 
 	SceneObject* getPlayerItem(unsigned long long oid);
 
+	void queueFlourish(const string& modifier, unsigned long long target, unsigned int actionCntr);
+
 	void clearQueueAction(unsigned int actioncntr, float timer = 0, unsigned int tab1 = 0, unsigned int tab2 = 0);
 
 	void queueAction(Player* player, unsigned long long target, unsigned int actionCRC, unsigned int actionCntr, const string& actionModifier);
@@ -550,6 +552,8 @@ public:
 
 	SceneObject* getPlayerItem(unsigned long long oid);
 
+	void queueFlourish(const string& modifier, unsigned long long target, unsigned int actionCntr);
+
 	void clearQueueAction(unsigned int actioncntr, float timer, unsigned int tab1, unsigned int tab2);
 
 	void queueAction(Player* player, unsigned long long target, unsigned int actionCRC, unsigned int actionCntr, const string& actionModifier);
@@ -913,6 +917,7 @@ public:
 	string& getLastNpcConvMessStr();
 
 protected:
+	string _param0_queueFlourish__string_long_int_;
 	string _param4_queueAction__Player_long_int_int_string_;
 	string _param0_trainSkillBox__string_;
 	string _param0_surrenderSkillBox__string_;

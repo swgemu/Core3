@@ -58,6 +58,7 @@ public:
 	
 
 	void doSkill(CreatureObject* creature, string& modifier) {
+		/*creature->sendSystemMessage("doSkill called" + getSkillName() + " and modifier: " + modifier); */
 		if(getSkillName() == "startdance")
 			creature->startDancing(modifier, false);
 		else if(getSkillName() == "startmusic")
@@ -70,6 +71,9 @@ public:
 			creature->startDancing(modifier, true);
 		else if(getSkillName() == "changemusic")
 			creature->startPlayingMusic(modifier, true);
+		else if(getSkillName().length() >= 8 && getSkillName().substr(0, 8) == "flourish")
+			creature->doFlourish(modifier);
+
 	}
 
 	virtual bool isUsefull(CreatureObject* creature) {

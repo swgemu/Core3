@@ -448,7 +448,7 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player, Message* 
 			player->clearQueueAction(actioncntr, 0, 1, 16);
 			return;
 		}
-		parseFlourish(player, pack);
+		parseFlourish(player, pack, actioncntr);
 		break;
 	case (0xB5220E24): //changemusic
 		if (player->isMounted()) {
@@ -667,6 +667,7 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player, Message* 
 	    	case (0x2434AC3A): //distract
 	    	case (0x6CB6978F): //ventriloquism
 	    	case (0x35ED32BE): //firejet
+	    	case (0xC8998CE9): // flourish
 	    		unicode option = unicode("");
 	    	    pack->parseUnicode(option);
 	    	    actionModifier = option.c_str();
@@ -999,14 +1000,16 @@ void ObjectControllerMessage::parseStopListen(Player* player, Message* pack) {
 	player->stopListen(listenID);
 }
 
-void ObjectControllerMessage::parseFlourish(Player* player, Message* pack) { 
-	pack->parseLong(); // skip passed target 
+void ObjectControllerMessage::parseFlourish(Player* player, Message* pack, uint32 actionCntr) { 
+	uint64 target = pack->parseLong(); // skip passed target 
 	
 	unicode option = unicode("");
 	pack->parseUnicode(option);
 	string actionModifier = option.c_str();
 	
-	player->doFlourish(actionModifier);
+	player->queueFlourish(actionModifier, target, actionCntr);
+	//player->queueFlourish()
+	//player->doFlourish(actionModifier);
 }
 
 void ObjectControllerMessage::parseChangeMusic(Player* player, Message* pack) { 
