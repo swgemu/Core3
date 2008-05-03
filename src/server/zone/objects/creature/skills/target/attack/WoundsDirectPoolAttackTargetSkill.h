@@ -109,7 +109,7 @@ public:
 		if (diff >= 0)
 			average = System::random(diff) + (int)minDamage;
 		
-		float damage = -damageRatio * average;
+		float damage = damageRatio * average;
 		
 		calculateDamageReduction(creature, targetCreature, damage);
 	
@@ -137,32 +137,32 @@ public:
 		}
 
 		if (hasCbtSpamHit()) 
-			creature->sendCombatSpam(targetCreature, NULL, -(int32)damage, getCbtSpamHit());
+			creature->sendCombatSpam(targetCreature, NULL, (int32)damage, getCbtSpamHit());
 		
 		if (bodyPart < 7) {
 			reduction = applyHealthPoolDamage(creature, targetCreature, (int32) damage, bodyPart);
-			applyHealthPoolWoundsDamage(targetCreature, -(int32) damage / 25);
+			applyHealthPoolWoundsDamage(targetCreature, (int32) damage / 25);
 		} else if (bodyPart  < 9) {
 			reduction = applyActionPoolDamage(creature, targetCreature, (int32) damage, bodyPart);
-			applyActionPoolWoundsDamage(targetCreature, -(int32) damage / 25);
+			applyActionPoolWoundsDamage(targetCreature, (int32) damage / 25);
 		} else {
 			reduction = applyMindPoolDamage(creature, targetCreature, (int32) damage);
-			applyMindPoolWoundsDamage(targetCreature, -(int32) damage / 25);
+			applyMindPoolWoundsDamage(targetCreature, (int32) damage / 25);
 		}
 		
-		return -(int32)damage - reduction;
+		return (int32)damage - reduction;
 	}
 	
 	void applyHealthPoolWoundsDamage(CreatureObject* targetCreature, int32 damage) {
-		targetCreature->changeHealthWoundsBar(damage);
+		targetCreature->changeHealthWoundsBar(-damage);
 	}
 	
 	void applyActionPoolWoundsDamage(CreatureObject* targetCreature, int32 damage) {
-		targetCreature->changeActionWoundsBar(damage);
+		targetCreature->changeActionWoundsBar(-damage);
 	}
 	
 	void applyMindPoolWoundsDamage(CreatureObject* targetCreature, int32 damage) {
-		targetCreature->changeMindWoundsBar(damage);
+		targetCreature->changeMindWoundsBar(-damage);
 	}
 	
 };

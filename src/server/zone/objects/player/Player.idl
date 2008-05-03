@@ -427,4 +427,10 @@ interface Player implements CreatureObject {
 	
 	void setEntertainerEvent();
 	void clearEntertainerEvent();
+
+	void setLastNpcConvStr(const string conv);
+	void setLastNpcConvMessStr(const string mess);
+
+	string getLastNpcConvStr();
+	string getLastNpcConvMessStr();
 }

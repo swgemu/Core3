@@ -152,6 +152,15 @@ void CreatureManagerImplementation::loadRecruiters() {
 	}
 }
 
+void CreatureManagerImplementation::loadBlueFrogs() {
+	if (zone->getZoneID() == 8) {
+		spawnBlueFrog(45, -5352, -.11083, .993839);
+		spawnBlueFrog(59, -5336, 1, 0);
+		spawnBlueFrog(119, -5354, .723221, -.690617);
+		spawnBlueFrog(-87, -5332, -.0339502, .999424);
+	}
+}
+
 void CreatureManagerImplementation::loadTrainers() {
 	ProfessionManager* professionManager = server->getProfessionManager();
 	
@@ -238,6 +247,37 @@ CreatureGroup* CreatureManagerImplementation::spawnCreatureGroup(int count, cons
 		error("unreported Exception caught on spawnWave()");
 		unlock();
 		
+		return NULL;
+	}
+}
+
+BlueFrogCreature* CreatureManagerImplementation::spawnBlueFrog(float x, float y, float oY, float oW, bool doLock) {
+	try {
+		lock(doLock);
+			
+		BlueFrogCreatureImplementation* bfImpl = new BlueFrogCreatureImplementation(getNextCreatureID());
+
+		bfImpl->terrainName = Terrain::getTerrainName(zone->getZoneID());
+		
+		bfImpl->height = 1.0f;
+		bfImpl->initializePosition(x, 0, y);
+		bfImpl->setDirection(0,0,oY,oW);
+		bfImpl->pvpStatusBitmask = 0;//0x01 + 0x02 + 0x20;
+			
+		load(bfImpl);
+			
+		BlueFrogCreature* bf = (BlueFrogCreature*) bfImpl->deploy();
+			
+		bf->insertToZone(zone);
+			
+		creatureMap->put(bf->getObjectID(), bf);
+
+		unlock(doLock);
+		return bf;
+	} catch (...) {
+		error("unreported Exception caught on spawnBlueFrog()"); 
+
+		unlock(doLock);
 		return NULL;
 	}
 }
@@ -684,5 +724,6 @@ inline string CreatureManagerImplementation::stringify(const int x) {
 	else
 		return o.str();
 }
+
 
 

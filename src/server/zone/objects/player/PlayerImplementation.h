@@ -67,6 +67,8 @@ which carries forward this exception.
 
 #include "../tangible/surveytool/SurveyTool.h"
 
+#include "engine/service/Message.h"
+
 class PlayerManager;
 class ItemManager;
 class ProfessionManager;
@@ -192,6 +194,10 @@ class PlayerImplementation : public PlayerServant {
 	// SuiEvents
 	VectorMap<uint32, SuiBox*> suiBoxes;
 	uint32 suiBoxNextID;
+	
+	//npc conversation
+	string lastNpcConvoMessage;
+	string lastNpcConvo;
 	
 public:
 	static const int ONLINE = 1;
@@ -954,6 +960,23 @@ public:
 	
 	// Entertainer tick
 	void setEntertainerEvent();
+	
+	//NPC Conversation Methods
+	inline void setLastNpcConvStr(const string& conv) {
+		lastNpcConvo = conv;
+	}
+	
+	inline void setLastNpcConvMessStr(const string& mess) {
+		lastNpcConvoMessage = mess;
+	}
+
+	inline string& getLastNpcConvStr() {
+		return lastNpcConvo;
+	}
+    
+	inline string& getLastNpcConvMessStr() {
+		return lastNpcConvoMessage;
+	}
 	
 	friend class PlayerManager;
 	friend class ProfessionManager;

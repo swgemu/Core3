@@ -462,6 +462,14 @@ public:
 
 	void clearEntertainerEvent();
 
+	void setLastNpcConvStr(const string& conv);
+
+	void setLastNpcConvMessStr(const string& mess);
+
+	string& getLastNpcConvStr();
+
+	string& getLastNpcConvMessStr();
+
 protected:
 	string _return_getCertification;
 
@@ -474,6 +482,10 @@ protected:
 	string _return_getHairObject;
 
 	string _return_getLastName;
+
+	string _return_getLastNpcConvMessStr;
+
+	string _return_getLastNpcConvStr;
 
 	string _return_getNextSkillBox;
 
@@ -892,6 +904,14 @@ public:
 
 	void clearEntertainerEvent();
 
+	void setLastNpcConvStr(const string& conv);
+
+	void setLastNpcConvMessStr(const string& mess);
+
+	string& getLastNpcConvStr();
+
+	string& getLastNpcConvMessStr();
+
 protected:
 	string _param4_queueAction__Player_long_int_int_string_;
 	string _param0_trainSkillBox__string_;
@@ -921,6 +941,8 @@ protected:
 	string _param0_subtractDraftSchematicsFromGroupName__string_;
 	string _param0_setSurveyEvent__string_;
 	string _param0_setSampleEvent__string_bool_;
+	string _param0_setLastNpcConvStr__string_;
+	string _param0_setLastNpcConvMessStr__string_;
 };
 
 class PlayerHelper : public DistributedObjectClassHelper, public Singleton<PlayerHelper> {

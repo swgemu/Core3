@@ -151,19 +151,19 @@ public:
 					damage = damage / 2;
 					
 				if (healthPoolAttackChance != 0 && System::random(100) < healthPoolAttackChance) {
-					healthDamage = -damageRatio * average;
+					healthDamage = damageRatio * average;
 					calculateDamageReduction(creature, targetCreature, healthDamage);
 					bodyPart = System::random(5)+1;
 					
 					damage += healthDamage;
 				} else if (actionPoolAttackChance != 0 && System::random(100) < actionPoolAttackChance) {
-					actionDamage = -damageRatio * average;
+					actionDamage = damageRatio * average;
 					calculateDamageReduction(creature, targetCreature,  actionDamage);
 					bodyPart = System::random(1)+7;
 
 					damage += actionDamage;
 				} else if (mindPoolAttackChance != 0 && System::random(100) < mindPoolAttackChance) {
-					mindDamage = -damageRatio * average;
+					mindDamage = damageRatio * average;
 					calculateDamageReduction(creature, targetCreature,  mindDamage);
 					bodyPart = 9;
 
@@ -180,7 +180,7 @@ public:
 		 		checkDots(targetCreature, damage);
 
 			if (hasCbtSpamHit()) 
-				creature->sendCombatSpam(targetCreature, NULL, -(int32)damage, getCbtSpamHit());
+				creature->sendCombatSpam(targetCreature, NULL, (int32)damage, getCbtSpamHit());
 			
 			if (bodyPart < 7)
 				reduction = applyHealthPoolDamage(creature, targetCreature, (int32) healthDamage, bodyPart);
@@ -203,7 +203,7 @@ public:
 			return 0;
 		}
 		
-		return -(int32)damage - reduction;
+		return (int32)damage - reduction;
 	}
 	
 	void checkDots(CreatureObject* targetCreature, float damage) {
@@ -225,25 +225,25 @@ public:
 		
 		if (fireDotType > 0 && dotChanceState > 0 && System::random(100) < (dotChanceState-fireResist)) {
 				if (tickStrengthOfHit)
-					fireDotStrength = -(int)(damage / 5);	
+					fireDotStrength = (int)(damage / 5);	
 				targetCreature->setOnFireState(fireDotStrength, fireDotType, 60);
 		}
 		
 		if (bleedingDotType > 0 && dotChanceState > 0 && System::random(100) < (dotChanceState-bleedResist)) {
 			if (tickStrengthOfHit)
-				bleedingDotStrength = -(int)(damage / 5);
+				bleedingDotStrength = (int)(damage / 5);
 			targetCreature->setBleedingState(bleedingDotStrength, bleedingDotType, 60);
 		}
 		
 		if (poisonDotType > 0 && dotChanceState > 0 && System::random(100) < (dotChanceState-poisonResist)) {
 			if (tickStrengthOfHit)
-			poisonDotStrength = -(int)(damage / 5);
+			poisonDotStrength = (int)(damage / 5);
 			targetCreature->setPoisonedState(poisonDotStrength, poisonDotType, 60);
 		}
 		
 		if (diseaseDotType > 0 && dotChanceState > 0 && System::random(100) < (dotChanceState-diseaseResist)) {
 			if (tickStrengthOfHit)
-				diseaseDotStrength = -(int)(damage / 5);
+				diseaseDotStrength = (int)(damage / 5);
 			targetCreature->setDiseasedState(diseaseDotStrength, diseaseDotType, 60);
 		}
 		

@@ -220,11 +220,11 @@ public:
 	}
 	
 	void applyStrengthPoolDamage(CreatureObject* target, int32 damage) {
-		target->changeStrengthBar((int32) damage, true);
+		target->changeStrengthBar(-(int32) damage, true);
 	}
 	
 	void applyConstitutionPoolDamage(CreatureObject* target, int32 damage) {
-		target->changeConstitutionBar((int32) damage, true);
+		target->changeConstitutionBar(-(int32) damage, true);
 	}
 
 	int applyActionPoolDamage(CreatureObject* attacker, CreatureObject* target, int32 damage, int part = 7) {
@@ -299,11 +299,11 @@ public:
 	}
 	
 	void applyQuicknessPoolDamage(CreatureObject* target, int32 damage) {
-		target->changeQuicknessBar((int32) damage, true);
+		target->changeQuicknessBar(-(int32) damage, true);
 	}
 	
 	void applyStaminaPoolDamage(CreatureObject* target, int32 damage) {
-		target->changeStaminaBar((int32) damage, true);
+		target->changeStaminaBar(-(int32) damage, true);
 	}	
 
 	int applyMindPoolDamage(CreatureObject* attacker, CreatureObject* target, int32 damage) {
@@ -372,11 +372,11 @@ public:
 	}
 	
 	void applyFocusPoolDamage(CreatureObject* target, int32 damage) {
-		target->changeFocusBar((int32) damage, true);
+		target->changeFocusBar(-(int32) damage, true);
 	}
 	
 	void applyWillpowerPoolDamage(CreatureObject* target, int32 damage) {
-		target->changeWillpowerBar((int32) damage, true);
+		target->changeWillpowerBar(-(int32) damage, true);
 	}
 
 	void doMiss(CreatureObject* creature, CreatureObject* target, int32 damage) {

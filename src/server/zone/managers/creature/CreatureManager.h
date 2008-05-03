@@ -46,6 +46,8 @@ public:
 
 	void loadRecruiters();
 
+	void loadBlueFrogs();
+
 	void unloadCreature(Creature* creature);
 
 	Creature* spawnCreature(const string& stfname, const string& name, int objCrc, float x, float y, int bitmask = 00, bool doLock = true);
@@ -89,6 +91,8 @@ public:
 	void loadTrainers();
 
 	void loadRecruiters();
+
+	void loadBlueFrogs();
 
 	void unloadCreature(Creature* creature);
 

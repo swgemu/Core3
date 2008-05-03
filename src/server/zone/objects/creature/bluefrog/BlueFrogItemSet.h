@@ -42,32 +42,52 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef FORCERANDOMPOOLATTACKTARGETSKILL_H_
-#define FORCERANDOMPOOLATTACKTARGETSKILL_H_
+#ifndef BLUEFROGITEMSET_H_
+#define BLUEFROGITEMSET_H_
 
-#include "../RandomPoolAttackTargetSkill.h"
+#include "engine/engine.h"
+#include "../../tangible/TangibleObjectImplementation.h"
+#include "BFVector.h"
+#include "BFVectorImplementation.h"
 
-class ForceRandomPoolAttackTargetSkill : public RandomPoolAttackTargetSkill {
-public:
-	ForceRandomPoolAttackTargetSkill(const string& name, const string& anim, ZoneProcessServerImplementation* serv) : RandomPoolAttackTargetSkill(name, anim, serv) {
+class TangibleObjectImplementation;
+
+class BlueFrogItemSet : public HashTable<string, Vector<TangibleObjectImplementation *> *> {
+	BFVector * itemList;
+public:	
+	BlueFrogItemSet() {
+		BFVectorImplementation * itemListImpl = new BFVectorImplementation();
+		itemList = (BFVector*) itemListImpl->deploy();
 	}
-
-	bool calculateCost(CreatureObject* creature) {
-		if (!creature->isPlayer())
-			return true;
-			
-		Player* player = (Player*) creature;
-		JediWeapon* weapon = (JediWeapon*) (player->getWeapon());
-		
-		if (weapon != NULL) {
-			int32 forceCost = (int32) (weapon->getForceCost() * damageRatio);
-			if (!player->changeForceBar(-forceCost))
-				return false;
+	
+	int hash(const string& str) {
+		int h = 0;
+		for (int i = 0; i < str.length(); i++) {
+		    h = 31*h + str.at(i);
 		}
 		
-		return true; 
+		return h;
 	}
-
+	
+	void addItem(string setName, TangibleObjectImplementation * item) {
+		if (containsKey(setName)) {
+			get(setName)->add(item);
+		} else {
+			Vector<TangibleObjectImplementation *> * v = new Vector<TangibleObjectImplementation *>();
+			v->add(item);
+			put(setName, v);
+			itemList->add(setName);
+		}
+	}
+	
+	inline BFVector * listContents() {
+		return itemList;
+	}
+	
+	inline Vector<TangibleObjectImplementation *> * getItems(string set) {
+		return get(set);
+	}
 };
 
-#endif /*FORCERANDOMPOOLATTACKTARGETSKILL_H_*/
+
+#endif /*BLUEFROGITEMSET_H_*/

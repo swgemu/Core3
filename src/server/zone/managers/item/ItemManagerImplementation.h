@@ -54,6 +54,8 @@ which carries forward this exception.
 #include "ItemManager.h"
 
 #include "StartingItemList.h"
+#include "../../objects/creature/bluefrog/BlueFrogItemSet.h"
+#include "../../objects/creature/bluefrog/BlueFrogProfessionSet.h"
 
 class ZoneServer;
 
@@ -69,11 +71,24 @@ class ItemManagerImplementation : public ItemManagerServant, public Lua {
 	uint64 nextStaticItemID;
 	
 	static StartingItemList * startingItems;
+	static BlueFrogItemSet * bfItemSet;
+	static BlueFrogProfessionSet * bfProfSet;
+	
+	static bool bfEnabled;
 	
 	void registerFunctions();
 	void registerGlobals();
 	static int addPlayerItem(lua_State * l);
+	static int addBFItem(lua_State * l);
+	static int addBFProf(lua_State * l);
 	static int runProfessionFile(lua_State* L);
+	static int runBlueFrogFile(lua_State* L);
+	
+	static int enableBlueFrogs(lua_State* L) {
+		bfEnabled = true;
+		
+		return 1;
+	}
 
 public:
 	ItemManagerImplementation(ZoneServer* serv);
@@ -89,8 +104,12 @@ public:
 	
 	TangibleObject* createPlayerObject(Player* player, ResultSet* result);
 	static TangibleObjectImplementation * createPlayerObjectTemplate(int objecttype, uint64 objectid, uint32 objectcrc, unicode objectname, char* objecttemp, bool equipped);
+	static TangibleObjectImplementation * createTemplateFromLua(LuaObject item);
+	
 	//TODO: remove this function when a global clone() function is available for all objects
 	TangibleObjectImplementation * clonePlayerObjectTemplate(TangibleObjectImplementation * templ);
+	
+	void giveBFItemSet(Player * player, string& set);
 	
 	void unloadPlayerItems(Player* player);
 
@@ -110,9 +129,26 @@ public:
 		return ++nextStaticItemID;
 	}
 	
+	inline bool blueFrogsEnabled() {
+		return bfEnabled;
+	}
+	
+	inline BFVector * getBFItemList() {
+		return bfItemSet->listContents();
+	}
+	
+	inline BFVector * getBFProfList() {
+		return bfProfSet->listContents();
+	}
+	
+	inline string& getBFProf(string& key) {
+		return bfProfSet->get(key);
+	}
+	
 };
 
 #endif /*ITEMMANAGERIMPLEMENTATION_H_*/
+
 
 
 

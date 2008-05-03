@@ -55,6 +55,7 @@ which carries forward this exception.
 #include "../player/ProfessionManager.h"
 
 #include "../../objects/creature/CreatureImplementation.h"
+#include "../../objects/creature/bluefrog/BlueFrogCreature.h"
 
 #include "CreatureMap.h"
 
@@ -97,6 +98,7 @@ public:
 	void loadTrainers();
 	void loadRecruiters();
 	void loadStaticCreatures();
+	void loadBlueFrogs();
 
 	void load(CreatureImplementation* creature);
 	void unloadCreature(Creature* creature);
@@ -106,7 +108,7 @@ public:
 	TrainerCreature* spawnTrainer(const string& profession, const string& stfname, const string& name, int objCrc, float x, float y, bool doLock = true);
 	ShuttleCreature* spawnShuttle(const string& Planet, const string& City, Coordinate* playerSpawnPoint, float x, float y, float z, bool doLock = true);
 	RecruiterCreature* spawnRecruiter(const string& stfname, const string& name, int objCrc, float x, float y, bool doLock = true);
-
+	BlueFrogCreature* spawnBlueFrog(float x, float y, float oY, float oW, bool doLock = true);
 	CreatureGroup* spawnCreatureGroup(int count, const string& stfname, const string& name, int objCrc, float x, float y, int bitmask = 0x00, int layout = LINE_LAYOUT);
 
 	void despawnCreature(Creature* creature);

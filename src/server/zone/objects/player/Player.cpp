@@ -2599,6 +2599,58 @@ void Player::clearEntertainerEvent() {
 		((PlayerImplementation*) _impl)->clearEntertainerEvent();
 }
 
+void Player::setLastNpcConvStr(const string& conv) {
+	if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		DistributedMethod method(this, 204);
+		method.addAsciiParameter(conv);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerImplementation*) _impl)->setLastNpcConvStr(conv);
+}
+
+void Player::setLastNpcConvMessStr(const string& mess) {
+	if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		DistributedMethod method(this, 205);
+		method.addAsciiParameter(mess);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerImplementation*) _impl)->setLastNpcConvMessStr(mess);
+}
+
+string& Player::getLastNpcConvStr() {
+	if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		DistributedMethod method(this, 206);
+
+		method.executeWithAsciiReturn(_return_getLastNpcConvStr);
+		return _return_getLastNpcConvStr;
+	} else
+		return ((PlayerImplementation*) _impl)->getLastNpcConvStr();
+}
+
+string& Player::getLastNpcConvMessStr() {
+	if (!deployed)
+		throw ObjectNotDeployedException(this);
+
+	if (_impl == NULL) {
+		DistributedMethod method(this, 207);
+
+		method.executeWithAsciiReturn(_return_getLastNpcConvMessStr);
+		return _return_getLastNpcConvMessStr;
+	} else
+		return ((PlayerImplementation*) _impl)->getLastNpcConvMessStr();
+}
+
 /*
  *	PlayerAdapter
  */
@@ -3203,6 +3255,18 @@ Packet* PlayerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case 203:
 		clearEntertainerEvent();
+		break;
+	case 204:
+		setLastNpcConvStr(inv->getAsciiParameter(_param0_setLastNpcConvStr__string_));
+		break;
+	case 205:
+		setLastNpcConvMessStr(inv->getAsciiParameter(_param0_setLastNpcConvMessStr__string_));
+		break;
+	case 206:
+		resp->insertAscii(getLastNpcConvStr());
+		break;
+	case 207:
+		resp->insertAscii(getLastNpcConvMessStr());
 		break;
 	default:
 		return NULL;
@@ -4001,6 +4065,22 @@ void PlayerAdapter::setEntertainerEvent() {
 
 void PlayerAdapter::clearEntertainerEvent() {
 	return ((PlayerImplementation*) impl)->clearEntertainerEvent();
+}
+
+void PlayerAdapter::setLastNpcConvStr(const string& conv) {
+	return ((PlayerImplementation*) impl)->setLastNpcConvStr(conv);
+}
+
+void PlayerAdapter::setLastNpcConvMessStr(const string& mess) {
+	return ((PlayerImplementation*) impl)->setLastNpcConvMessStr(mess);
+}
+
+string& PlayerAdapter::getLastNpcConvStr() {
+	return ((PlayerImplementation*) impl)->getLastNpcConvStr();
+}
+
+string& PlayerAdapter::getLastNpcConvMessStr() {
+	return ((PlayerImplementation*) impl)->getLastNpcConvMessStr();
 }
 
 /*

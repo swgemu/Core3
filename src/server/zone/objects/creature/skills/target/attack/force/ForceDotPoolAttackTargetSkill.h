@@ -60,8 +60,8 @@ public:
 		JediWeapon* weapon = (JediWeapon*) (player->getWeapon());
 		
 		if (weapon != NULL) {
-			int32 forceCost = (int32) (-weapon->getForceCost() * damageRatio);
-			if (!player->changeForceBar(forceCost))
+			int32 forceCost = (int32) (weapon->getForceCost() * damageRatio);
+			if (!player->changeForceBar(-forceCost))
 				return false;
 		}
 		

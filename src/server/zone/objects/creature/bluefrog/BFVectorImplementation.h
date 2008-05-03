@@ -42,32 +42,31 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef FORCERANDOMPOOLATTACKTARGETSKILL_H_
-#define FORCERANDOMPOOLATTACKTARGETSKILL_H_
+#ifndef BFVECTORIMPLEMENTATION_H_
+#define BFVECTORIMPLEMENTATION_H_
 
-#include "../RandomPoolAttackTargetSkill.h"
+#include "engine/engine.h"
 
-class ForceRandomPoolAttackTargetSkill : public RandomPoolAttackTargetSkill {
+class BFVectorImplementation : public BFVectorServant {
+	Vector<string> * vector;
+	
 public:
-	ForceRandomPoolAttackTargetSkill(const string& name, const string& anim, ZoneProcessServerImplementation* serv) : RandomPoolAttackTargetSkill(name, anim, serv) {
+	BFVectorImplementation() : BFVectorServant() {
+		vector = new Vector<string>();
 	}
-
-	bool calculateCost(CreatureObject* creature) {
-		if (!creature->isPlayer())
-			return true;
-			
-		Player* player = (Player*) creature;
-		JediWeapon* weapon = (JediWeapon*) (player->getWeapon());
-		
-		if (weapon != NULL) {
-			int32 forceCost = (int32) (weapon->getForceCost() * damageRatio);
-			if (!player->changeForceBar(-forceCost))
-				return false;
-		}
-		
-		return true; 
+	
+	inline unsigned int size() {
+		return vector->size();
 	}
-
+	
+	inline void add(string item) {
+		vector->add(item);
+	}
+	
+	inline string& get(unsigned int index) {
+		return vector->get(index);
+	}
+	
 };
 
-#endif /*FORCERANDOMPOOLATTACKTARGETSKILL_H_*/
+#endif /*BFVECTORIMPLEMENTATION_H_*/

@@ -50,10 +50,14 @@ which carries forward this exception.
 #include "../../ZoneServer.h"
 
 #include "../player/PlayerManager.h"
+#include "../creature/CreatureManager.h"
 
 #include "ItemManagerImplementation.h"
 
 StartingItemList * ItemManagerImplementation::startingItems = NULL;
+BlueFrogItemSet * ItemManagerImplementation::bfItemSet = NULL;
+BlueFrogProfessionSet * ItemManagerImplementation::bfProfSet = NULL;
+bool ItemManagerImplementation::bfEnabled = false;
 
 ItemManagerImplementation::ItemManagerImplementation(ZoneServer* serv) :
 	ItemManagerServant(), Lua() {
@@ -62,11 +66,17 @@ ItemManagerImplementation::ItemManagerImplementation(ZoneServer* serv) :
 	nextStaticItemID = 0x90000000;
 	
 	startingItems = new StartingItemList();
+	bfItemSet = new BlueFrogItemSet();
+	bfProfSet = new BlueFrogProfessionSet();
 	
 	Lua::init();
 	registerFunctions();
 	registerGlobals();
-	runFile("scripts/professions/main.lua");
+	runFile("scripts/items/starting/main.lua");
+	runFile("scripts/items/bluefrog/main.lua");
+	
+	if(bfEnabled)
+		server->getZone(8)->getCreatureManager()->loadBlueFrogs();
 }
 
 void ItemManagerImplementation::loadStaticWorldObjects() {
@@ -293,6 +303,10 @@ TangibleObjectImplementation * ItemManagerImplementation::clonePlayerObjectTempl
 void ItemManagerImplementation::registerFunctions() {
 	lua_register(getLuaState(), "AddPlayerItem", addPlayerItem);
 	lua_register(getLuaState(), "RunProfessionFile", runProfessionFile);
+	lua_register(getLuaState(), "SetBlueFrogsEnabled", enableBlueFrogs);
+	lua_register(getLuaState(), "RunBlueFrogFile", runBlueFrogFile);
+	lua_register(getLuaState(), "AddBFItem", addBFItem);
+	lua_register(getLuaState(), "AddBFProf", addBFProf);
 }
 
 void ItemManagerImplementation::registerGlobals() {
@@ -475,21 +489,20 @@ void ItemManagerImplementation::registerGlobals() {
 int ItemManagerImplementation::runProfessionFile(lua_State* L) {
 	string filename = getStringParameter(L);
 	
-	runFile("scripts/professions/" + filename, L);
+	runFile("scripts/items/starting/" + filename, L);
 	
 	return 0;
 }
 
-int ItemManagerImplementation::addPlayerItem(lua_State * l) {
+int ItemManagerImplementation::runBlueFrogFile(lua_State* L) {
+	string filename = getStringParameter(L);
 	
-	LuaObject itemwrapper(l);
+	runFile("scripts/items/bluefrog/" + filename, L);
 	
-	string species = itemwrapper.getStringField("species");
-	string sex = itemwrapper.getStringField("sex");
-	string profession = itemwrapper.getStringField("profession");
-	
-	LuaObject item(itemwrapper.getObjectField("item"));
-	
+	return 0;
+}
+
+TangibleObjectImplementation * ItemManagerImplementation::createTemplateFromLua(LuaObject item) {
 	int crc = item.getIntField("objectCRC");
 	string name = item.getStringField("objectName");
 	string templ = item.getStringField("templateName");
@@ -519,9 +532,64 @@ int ItemManagerImplementation::addPlayerItem(lua_State * l) {
 			((WeaponImplementation*) itemImpl)->setCert(cert);
 	}
 	
+	return itemImpl;
+}
+int ItemManagerImplementation::addPlayerItem(lua_State * l) {
+	
+	LuaObject itemwrapper(l);
+	
+	string species = itemwrapper.getStringField("species");
+	string sex = itemwrapper.getStringField("sex");
+	string profession = itemwrapper.getStringField("profession");
+	
+	LuaObject item(itemwrapper.getObjectField("item"));
+	
+	
+	TangibleObjectImplementation* itemImpl = createTemplateFromLua(item);
+	
 	startingItems->addItemToProfession(profession, species, sex, itemImpl);
 	
 	return 0;
+}
+
+int ItemManagerImplementation::addBFItem(lua_State * l) {
+	
+	LuaObject itemwrapper(l);
+	
+	string name = itemwrapper.getStringField("name");
+	
+	LuaObject item(itemwrapper.getObjectField("item"));
+	
+	TangibleObjectImplementation* itemImpl = createTemplateFromLua(item);
+	
+	bfItemSet->addItem(name, itemImpl);
+	
+	return 0;
+}
+
+int ItemManagerImplementation::addBFProf(lua_State * l) {
+	
+	LuaObject itemwrapper(l);
+	
+	string name = itemwrapper.getStringField("name");
+	
+	string prof = itemwrapper.getStringField("prof");	
+	
+	bfProfSet->addProfession(name, prof);
+	
+	return 0;
+}
+
+void ItemManagerImplementation::giveBFItemSet(Player * player, string& set) {
+	Vector<TangibleObjectImplementation *> * itemSet = bfItemSet->get(set);
+	
+	for(int i = 0; i < itemSet->size(); i++) {
+		TangibleObjectImplementation * templ = clonePlayerObjectTemplate(itemSet->get(i));
+		templ->setObjectID(player->getNewItemID());
+		TangibleObject * obj = templ->deploy();
+		player->addInventoryItem(obj);
+		obj->sendTo(player);
+	}
 }
 
 //TODO: Modify this function when a global clone() function is available for all objects

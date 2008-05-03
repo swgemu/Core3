@@ -42,32 +42,42 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef FORCERANDOMPOOLATTACKTARGETSKILL_H_
-#define FORCERANDOMPOOLATTACKTARGETSKILL_H_
+#ifndef BLUEFROGCREATUREIMPLEMENTATION_H_
+#define BLUEFROGCREATUREIMPLEMENTATION_H_
 
-#include "../RandomPoolAttackTargetSkill.h"
+class Player;
+class Profession;
+class SceneObject;
+class SkillBox;
 
-class ForceRandomPoolAttackTargetSkill : public RandomPoolAttackTargetSkill {
+#include "BlueFrogCreature.h"
+#include "../../../managers/player/ProfessionManager.h"
+#include "../../player/professions/SkillBox.h"
+#include "../../player/professions/SkillBoxMap.h"
+
+class BlueFrogCreatureImplementation : public BlueFrogCreatureServant {
+	Profession* profession;
+	
 public:
-	ForceRandomPoolAttackTargetSkill(const string& name, const string& anim, ZoneProcessServerImplementation* serv) : RandomPoolAttackTargetSkill(name, anim, serv) {
-	}
-
-	bool calculateCost(CreatureObject* creature) {
-		if (!creature->isPlayer())
-			return true;
-			
-		Player* player = (Player*) creature;
-		JediWeapon* weapon = (JediWeapon*) (player->getWeapon());
+	BlueFrogCreatureImplementation(uint64 oid);
+	~BlueFrogCreatureImplementation();
+	
 		
-		if (weapon != NULL) {
-			int32 forceCost = (int32) (weapon->getForceCost() * damageRatio);
-			if (!player->changeForceBar(-forceCost))
-				return false;
-		}
-		
-		return true; 
-	}
 
+	void sendConversationStartTo(SceneObject* obj);
+	void sendMessage1(Player* player);
+	void sendChoices1(Player* player);
+	void sendSelectProfessionMessage(Player* player);
+	void sendProfessionChoices(Player* player);
+	void sendSelectItemMessage(Player* player);
+	void sendItemChoices(Player* player);
+
+	void selectConversationOption(int option, SceneObject* obj);
+	
+	bool trainProfession(Player * player, string prof);
+	bool trainSkill(Player * player, SkillBox * skill);
+	
 };
 
-#endif /*FORCERANDOMPOOLATTACKTARGETSKILL_H_*/
+
+#endif

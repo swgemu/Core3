@@ -42,32 +42,11 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef FORCERANDOMPOOLATTACKTARGETSKILL_H_
-#define FORCERANDOMPOOLATTACKTARGETSKILL_H_
 
-#include "../RandomPoolAttackTargetSkill.h"
-
-class ForceRandomPoolAttackTargetSkill : public RandomPoolAttackTargetSkill {
-public:
-	ForceRandomPoolAttackTargetSkill(const string& name, const string& anim, ZoneProcessServerImplementation* serv) : RandomPoolAttackTargetSkill(name, anim, serv) {
-	}
-
-	bool calculateCost(CreatureObject* creature) {
-		if (!creature->isPlayer())
-			return true;
-			
-		Player* player = (Player*) creature;
-		JediWeapon* weapon = (JediWeapon*) (player->getWeapon());
-		
-		if (weapon != NULL) {
-			int32 forceCost = (int32) (weapon->getForceCost() * damageRatio);
-			if (!player->changeForceBar(-forceCost))
-				return false;
-		}
-		
-		return true; 
-	}
-
-};
-
-#endif /*FORCERANDOMPOOLATTACKTARGETSKILL_H_*/
+interface BFVector {
+	BFVector();
+	
+	unsigned int size();
+	void add(string item);
+	string get(unsigned int index);
+}

@@ -65,6 +65,7 @@ interface CreatureManager {
 	// creature loading methods
 	void loadTrainers();
 	void loadRecruiters();
+	void loadBlueFrogs();
 
 	//void load(Creature creature);
 	void unloadCreature(Creature creature);

@@ -100,7 +100,11 @@ public:
 	inline ZoneProcessServerImplementation* getZoneProcessServer() {
 		return server;
 	}
-		
+	
+	inline SkillBox* getSkillBox(string prof) {
+		return skillBoxMap.get(prof);
+	}
+	
 	friend class SkillManager;
 	friend class CreatureManagerImplementation;
 };

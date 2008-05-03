@@ -42,6 +42,8 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
+import "../../objects/creature/bluefrog/BFVector";
+
 import "../../objects/tangible/TangibleObject";
 
 import "../../objects/tangible/weapons/Weapon";
@@ -74,5 +76,12 @@ interface ItemManager {
 	
 	// getters
 	unsigned long getNextStaticObjectID();
+
+	BFVector getBFItemList();
 	
+	BFVector getBFProfList();
+
+	string getBFProf(string key);
+
+	void giveBFItemSet(Player player, string set);
 }

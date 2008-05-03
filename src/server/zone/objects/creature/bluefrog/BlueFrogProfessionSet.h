@@ -42,32 +42,44 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef FORCERANDOMPOOLATTACKTARGETSKILL_H_
-#define FORCERANDOMPOOLATTACKTARGETSKILL_H_
+#ifndef BLUEFROGPROFESSIONSET_H_
+#define BLUEFROGPROFESSIONSET_H_
 
-#include "../RandomPoolAttackTargetSkill.h"
+#include "engine/engine.h"
 
-class ForceRandomPoolAttackTargetSkill : public RandomPoolAttackTargetSkill {
-public:
-	ForceRandomPoolAttackTargetSkill(const string& name, const string& anim, ZoneProcessServerImplementation* serv) : RandomPoolAttackTargetSkill(name, anim, serv) {
+#include "BFVector.h"
+#include "BFVectorImplementation.h"
+
+class BlueFrogProfessionSet : public HashTable<string, string> {
+	BFVector * profList;
+public:	
+	BlueFrogProfessionSet() {
+		BFVectorImplementation * profListImpl = new BFVectorImplementation();
+		profList = (BFVector*) profListImpl->deploy();
 	}
-
-	bool calculateCost(CreatureObject* creature) {
-		if (!creature->isPlayer())
-			return true;
-			
-		Player* player = (Player*) creature;
-		JediWeapon* weapon = (JediWeapon*) (player->getWeapon());
-		
-		if (weapon != NULL) {
-			int32 forceCost = (int32) (weapon->getForceCost() * damageRatio);
-			if (!player->changeForceBar(-forceCost))
-				return false;
+	
+	int hash(const string& str) {
+		int h = 0;
+		for (int i = 0; i < str.length(); i++) {
+		    h = 31*h + str.at(i);
 		}
 		
-		return true; 
+		return h;
 	}
-
+	
+	void addProfession(string name, string prof) {
+		put(name, prof);
+		profList->add(name);
+	}
+	
+	inline BFVector * listContents() {
+		return profList;
+	}
+	
+	inline string getProfession(string key) {
+		return get(key);
+	}
 };
 
-#endif /*FORCERANDOMPOOLATTACKTARGETSKILL_H_*/
+
+#endif /*BLUEFROGPROFESSIONSET_H_*/

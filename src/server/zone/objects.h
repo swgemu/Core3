@@ -56,6 +56,8 @@ which carries forward this exception.
 #include "objects/creature/CreatureObjectImplementation.h"
 #include "objects/creature/trainer/TrainerCreature.h"
 #include "objects/creature/trainer/TrainerCreatureImplementation.h"
+#include "objects/creature/bluefrog/BlueFrogCreature.h"
+#include "objects/creature/bluefrog/BlueFrogCreatureImplementation.h"
 #include "objects/creature/shuttle/ShuttleCreature.h"
 #include "objects/creature/shuttle/ShuttleCreatureImplementation.h"
 #include "objects/creature/recruiter/RecruiterCreature.h"

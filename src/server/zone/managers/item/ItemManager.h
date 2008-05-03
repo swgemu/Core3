@@ -7,6 +7,8 @@
 
 #include "engine/orb/DistributedObjectBroker.h"
 
+class BFVector;
+
 class TangibleObject;
 
 class Weapon;
@@ -52,7 +54,18 @@ public:
 
 	unsigned long long getNextStaticObjectID();
 
+	BFVector* getBFItemList();
+
+	BFVector* getBFProfList();
+
+	string& getBFProf(string& key);
+
+	void giveBFItemSet(Player* player, string& set);
+
 protected:
+	string _return_getBFProf;
+
+
 	friend class ItemManagerHelper;
 };
 
@@ -90,6 +103,17 @@ public:
 
 	unsigned long long getNextStaticObjectID();
 
+	BFVector* getBFItemList();
+
+	BFVector* getBFProfList();
+
+	string& getBFProf(string& key);
+
+	void giveBFItemSet(Player* player, string& set);
+
+protected:
+	string _param0_getBFProf__string_;
+	string _param1_giveBFItemSet__Player_string_;
 };
 
 class ItemManagerHelper : public DistributedObjectClassHelper, public Singleton<ItemManagerHelper> {
