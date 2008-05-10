@@ -7,28 +7,27 @@
 
 #include "engine/orb/DistributedObjectBroker.h"
 
-class SceneObject;
-
-class Player;
-
-class Zone;
-
 #include "engine/service/Message.h"
 
 #include "../../packets/scene/AttributeListMessage.h"
 
+class Zone;
+
+class SceneObject;
+
+class CreatureObject;
+
+class Player;
+
 #include "../scene/SceneObject.h"
 
 class TangibleObject : public SceneObject {
-protected:
-	TangibleObject();
-	TangibleObject(DistributedObjectServant* obj);
-	TangibleObject(TangibleObject& ref);
-
-	virtual ~TangibleObject();
-
 public:
-	TangibleObject* clone();
+	TangibleObject(unsigned long long oid, int tp = 0);
+
+	TangibleObject(unsigned long long oid, const unicode& n, const string& tempname, unsigned int tempCRC, int tp = 0);
+
+	TangibleObject(CreatureObject* creature, const unicode& n, const string& tempname, unsigned int tempCRC, int tp = 0);
 
 	void insertToZone(Zone* zone);
 
@@ -45,6 +44,8 @@ public:
 	void repairItem(Player* player);
 
 	void decay(int decayRate);
+
+	void parseItemAttributes();
 
 	bool isPersistent();
 
@@ -71,22 +72,6 @@ public:
 	bool isSurveyTool();
 
 	bool isLair();
-
-	void setName(const string& n);
-
-	void setTemplateName(const string& tempName);
-
-	void setTemplateTypeName(const string& tempTypeName);
-
-	void setPersistent(bool pers);
-
-	void setUpdated(bool upd);
-
-	void setConditionDamage(int damage);
-
-	void setCustomizationString(string& cust);
-
-	void setCustomizationVariable(unsigned char type, unsigned int value);
 
 	SceneObject* getContainer();
 
@@ -116,16 +101,34 @@ public:
 
 	void addAttributes(AttributeListMessage* alm);
 
+	void setName(const string& n);
+
+	void setTemplateName(const string& tempName);
+
+	void setTemplateTypeName(const string& tempTypeName);
+
+	void setObjectSubType(const int type);
+
+	void setPersistent(bool pers);
+
+	void setUpdated(bool upd);
+
+	void setConditionDamage(int damage);
+
+	void setCustomizationString(string& cust);
+
+	void setCustomizationVariable(unsigned char type, unsigned int value);
+
 protected:
+	TangibleObject(DummyConstructorParameter* param);
+
+	virtual ~TangibleObject();
+
 	string _return_getAttributes;
-
 	string _return_getTemplateName;
-
 	string _return_getTemplateTypeName;
 
-
 	unicode _return_getName;
-
 
 	friend class TangibleObjectHelper;
 };
@@ -154,6 +157,8 @@ public:
 
 	void decay(int decayRate);
 
+	void parseItemAttributes();
+
 	bool isPersistent();
 
 	bool isUpdated();
@@ -179,22 +184,6 @@ public:
 	bool isSurveyTool();
 
 	bool isLair();
-
-	void setName(const string& n);
-
-	void setTemplateName(const string& tempName);
-
-	void setTemplateTypeName(const string& tempTypeName);
-
-	void setPersistent(bool pers);
-
-	void setUpdated(bool upd);
-
-	void setConditionDamage(int damage);
-
-	void setCustomizationString(string& cust);
-
-	void setCustomizationVariable(unsigned char type, unsigned int value);
 
 	SceneObject* getContainer();
 
@@ -224,16 +213,36 @@ public:
 
 	void addAttributes(AttributeListMessage* alm);
 
+	void setName(const string& n);
+
+	void setTemplateName(const string& tempName);
+
+	void setTemplateTypeName(const string& tempTypeName);
+
+	void setObjectSubType(const int type);
+
+	void setPersistent(bool pers);
+
+	void setUpdated(bool upd);
+
+	void setConditionDamage(int damage);
+
+	void setCustomizationString(string& cust);
+
+	void setCustomizationVariable(unsigned char type, unsigned int value);
+
 protected:
+	string _param0_getCustomizationString__string_;
+	string _param0_setAttributes__string_;
 	string _param0_setName__string_;
 	string _param0_setTemplateName__string_;
 	string _param0_setTemplateTypeName__string_;
 	string _param0_setCustomizationString__string_;
-	string _param0_getCustomizationString__string_;
-	string _param0_setAttributes__string_;
 };
 
 class TangibleObjectHelper : public DistributedObjectClassHelper, public Singleton<TangibleObjectHelper> {
+	static TangibleObjectHelper* staticInitializer;
+
 public:
 	TangibleObjectHelper();
 
@@ -241,7 +250,7 @@ public:
 
 	DistributedObject* instantiateObject();
 
-	DistributedObjectAdapter* createAdapter(DistributedObjectServant* obj);
+	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class SingletonWrapper<TangibleObjectHelper>;
 };

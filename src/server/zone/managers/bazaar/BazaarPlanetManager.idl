@@ -50,9 +50,16 @@ import "../../objects/tangible/terminal/bazaar/RegionBazaar";
 #include "BazaarTerminalDetails";
 
 interface BazaarPlanetManager {
+	BazaarPlanetManager(int planet) {
+		super(planet);
+	}
+	
 	void setPlanet(int planet);
+	
 	void addBazaarItem(AuctionItem item);
 	void removeBazaarItem(long objectid);
+	
 	void addBazaar(BazaarTerminalDetails terminal);
+	
    	void getBazaarData(Player player, long objectid, int screen, int extent, unsigned int category, int count, int offset);
 }

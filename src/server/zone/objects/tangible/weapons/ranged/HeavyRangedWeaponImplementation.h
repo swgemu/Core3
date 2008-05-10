@@ -45,6 +45,8 @@ which carries forward this exception.
 #ifndef HEAVYRANGEDWEAPONIMPLEMENTATION_H_
 #define HEAVYRANGEDWEAPONIMPLEMENTATION_H_
 
+#include "../../../player/Player.h"
+
 #include "HeavyRangedWeapon.h"
 
 class HeavyRangedWeaponImplementation : public HeavyRangedWeaponServant {
@@ -94,36 +96,34 @@ public:
 	}
 	
 	int useObject(Player* player) {
+		SceneObject* obj = player->getTarget();
+	
+		if (obj == NULL) {
+			player->sendSystemMessage("Invalid target");
+			return 0;
+		}
+	
+		if (!obj->isPlayer() && !obj->isNonPlayerCreature()) {
+			player->sendSystemMessage("Invalid target");
+			return 0;
+		}
+	
+		player->sendSystemMessage("Firing rocket");	
+	
+		/*player->doCombatAnimation((CreatureObject*)obj, 0x683374B3, true);
+	
+		int healthDmg = System::random((int)maxDamage - (int)minDamage) + (int)minDamage;
+		int actionDmg = System::random((int)maxDamage - (int)minDamage) + (int)minDamage;
+		int mindDmg = System::random((int)maxDamage - (int)minDamage) + (int)minDamage;
+	
+		((CreatureObject*)obj)->changeHAMBars(-healthDmg, -actionDmg, -mindDmg, true);
 		
-	SceneObject* obj = player->getTarget();
-	
-	if (obj == NULL) {
-		player->sendSystemMessage("Invalid target");
+		if (!decreaseUsesRemaining()) {
+			//remove(player, false);
+			return 0;
+		}
+		 */
 		return 0;
-	}
-	
-	if (!obj->isPlayer() && !obj->isNonPlayerCreature()) {
-		player->sendSystemMessage("Invalid target");
-		return 0;
-	}
-	
-	player->sendSystemMessage("Firing rocket");	
-	
-	/*player->doCombatAnimation((CreatureObject*)obj, 0x683374B3, true);
-	
-	int healthDmg = System::random((int)maxDamage - (int)minDamage) + (int)minDamage;
-	int actionDmg = System::random((int)maxDamage - (int)minDamage) + (int)minDamage;
-	int mindDmg = System::random((int)maxDamage - (int)minDamage) + (int)minDamage;
-	
-	((CreatureObject*)obj)->changeHAMBars(-healthDmg, -actionDmg, -mindDmg, true);
-		
-	if (!decreaseUsesRemaining()) {
-		//remove(player, false);
-		return 0;
-	}
-	*/
-	return 0;
-	
 	}
 	
 	/*void remove(Player* player) {
@@ -135,7 +135,6 @@ public:
 		
 		BaseMessage* msg = new SceneObjectDestroyMessage(objectID);
 		player->sendMessage(msg);
-		
 	}*/
 	
 };

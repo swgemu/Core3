@@ -82,10 +82,18 @@ import "../tangible/crafting/CraftingTool";
 import "../tangible/resource/ResourceContainer";
 
 interface Player implements CreatureObject {
-	Player(unsigned long oid);
+	Player() {
+		super(unsigned long oid);
+	}
 
-	Player create(ZoneClient client);
+	Player(unsigned long oid) {
+		super(oid);
+	}
+	
+	void create(ZoneClient client);
 
+	void refuseCreate(ZoneClient client);
+	
 	void load(ZoneClient client);
 	void reload(ZoneClient client);
 	void unload();

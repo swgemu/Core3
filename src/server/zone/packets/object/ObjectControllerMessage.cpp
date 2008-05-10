@@ -851,19 +851,17 @@ void ObjectControllerMessage::parsePurchaseTicket(Player* player, Message *pack)
         return;
 
 	// create ticket item 
-	TicketImplementation* ticketImpl = new TicketImplementation(player, 0xDAA0DE83, unicode("Travel Ticket"), "travel_ticket", 
+	Ticket* ticket = new Ticket(player, 0xDAA0DE83, unicode("Travel Ticket"), "travel_ticket", 
     	departurePlanet, departurePoint, arrivalPlanet, arrivalPoint);
     	
-    Ticket* ticket = (Ticket*) ticketImpl->deploy();
-	
 	player->addInventoryItem(ticket);
     ticket->sendTo(player, true);
     
-    SuiMessageBoxImplementation* sui = new SuiMessageBoxImplementation(player, 0xDAAD);
+    SuiMessageBox* sui = new SuiMessageBox(player, 0xDAAD);
     sui->setPromptTitle("@base_player:swg");
     sui->setPromptText("@travel:ticket_purchase_complete");
     
-    player->addSuiBox(sui->deploy());
+    player->addSuiBox(sui);
     player->sendMessage(sui->generateMessage());
 }
 
@@ -1091,13 +1089,9 @@ void ObjectControllerMessage::parseWaypointCreate(Player* player, Message* pack)
 		if (z < -8192 || z > 8192)
 			z = 0;
 		
-		WaypointObjectImplementation* wayImpl = new WaypointObjectImplementation(player, player->getNewItemID());
-		wayImpl->setPlanetName(planet);
-		wayImpl->setPosition(x, z, y);
-		
-		stringstream name;
-		name << "Waypoint" << wayImpl->getObjectID();
-		WaypointObject* waypoint = (WaypointObject*) wayImpl->deploy(name.str());
+		WaypointObject* waypoint = new WaypointObject(player, player->getNewItemID());
+		waypoint->setPlanetName(planet);
+		waypoint->setPosition(x, z, y);
 		
 		player->addWaypoint(waypoint);
 		
@@ -1132,13 +1126,9 @@ void ObjectControllerMessage::parseWaypointCommand(Player* player, Message* pack
 		if (y < -8192 || y > 8192)
 			y = 0;
 
-		WaypointObjectImplementation* wayImpl = new WaypointObjectImplementation(player, player->getNewItemID());
-		wayImpl->setPosition(x, 0, y);
+		WaypointObject* waypoint = new WaypointObject(player, player->getNewItemID());
+		waypoint->setPosition(x, 0, y);
 		
-		stringstream name;
-		name << "Waypoint" << wayImpl->getObjectID();
-		WaypointObject* waypoint = (WaypointObject*) wayImpl->deploy(name.str());
-
 		player->addWaypoint(waypoint);
 
 	} catch (...) {

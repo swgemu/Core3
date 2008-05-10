@@ -18,15 +18,8 @@ class ChatRoom;
 #include "../scene/SceneObject.h"
 
 class GroupObject : public SceneObject {
-protected:
-	GroupObject();
-	GroupObject(DistributedObjectServant* obj);
-	GroupObject(GroupObject& ref);
-
-	virtual ~GroupObject();
-
 public:
-	GroupObject* clone();
+	GroupObject(unsigned long long oid, Player* leader);
 
 	void sendTo(Player* player);
 
@@ -61,6 +54,10 @@ public:
 	unsigned int getNewListCount(int cnt);
 
 protected:
+	GroupObject(DummyConstructorParameter* param);
+
+	virtual ~GroupObject();
+
 	friend class GroupObjectHelper;
 };
 
@@ -107,6 +104,8 @@ public:
 };
 
 class GroupObjectHelper : public DistributedObjectClassHelper, public Singleton<GroupObjectHelper> {
+	static GroupObjectHelper* staticInitializer;
+
 public:
 	GroupObjectHelper();
 
@@ -114,7 +113,7 @@ public:
 
 	DistributedObject* instantiateObject();
 
-	DistributedObjectAdapter* createAdapter(DistributedObjectServant* obj);
+	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class SingletonWrapper<GroupObjectHelper>;
 };

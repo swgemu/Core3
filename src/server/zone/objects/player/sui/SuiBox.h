@@ -10,16 +10,7 @@
 class Player;
 
 class SuiBox : public DistributedObjectStub {
-protected:
-	SuiBox();
-	SuiBox(DistributedObjectServant* obj);
-	SuiBox(SuiBox& ref);
-
-	virtual ~SuiBox();
-
 public:
-	SuiBox* clone();
-
 	void setPromptTitle(const string& name);
 
 	void setPromptText(const string& name);
@@ -47,6 +38,10 @@ public:
 	Player* getPlayer();
 
 protected:
+	SuiBox(DummyConstructorParameter* param);
+
+	virtual ~SuiBox();
+
 	friend class SuiBoxHelper;
 };
 
@@ -90,6 +85,8 @@ protected:
 };
 
 class SuiBoxHelper : public DistributedObjectClassHelper, public Singleton<SuiBoxHelper> {
+	static SuiBoxHelper* staticInitializer;
+
 public:
 	SuiBoxHelper();
 
@@ -97,7 +94,7 @@ public:
 
 	DistributedObject* instantiateObject();
 
-	DistributedObjectAdapter* createAdapter(DistributedObjectServant* obj);
+	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class SingletonWrapper<SuiBoxHelper>;
 };

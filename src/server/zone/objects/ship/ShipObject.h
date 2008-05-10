@@ -18,15 +18,8 @@ class ShipComponent;
 #include "../scene/SceneObject.h"
 
 class ShipObject : public SceneObject {
-protected:
-	ShipObject();
-	ShipObject(DistributedObjectServant* obj);
-	ShipObject(ShipObject& ref);
-
-	virtual ~ShipObject();
-
 public:
-	ShipObject* clone();
+	ShipObject(unsigned long long oid, Player* owner);
 
 	void init();
 
@@ -107,11 +100,13 @@ public:
 	float getBackshieldCur();
 
 protected:
+	ShipObject(DummyConstructorParameter* param);
+
+	virtual ~ShipObject();
+
 	string _return_getStfName;
 
-
 	unicode _return_getOwnerName;
-
 
 	friend class ShipObjectHelper;
 };
@@ -207,6 +202,8 @@ protected:
 };
 
 class ShipObjectHelper : public DistributedObjectClassHelper, public Singleton<ShipObjectHelper> {
+	static ShipObjectHelper* staticInitializer;
+
 public:
 	ShipObjectHelper();
 
@@ -214,7 +211,7 @@ public:
 
 	DistributedObject* instantiateObject();
 
-	DistributedObjectAdapter* createAdapter(DistributedObjectServant* obj);
+	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class SingletonWrapper<ShipObjectHelper>;
 };
@@ -226,7 +223,7 @@ public:
 	ShipObject* _this;
 
 public:
-	ShipObjectServant();
+	ShipObjectServant(unsigned long long oid);
 	virtual ~ShipObjectServant();
 
 	void _setStub(DistributedObjectStub* stub);

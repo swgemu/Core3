@@ -75,13 +75,13 @@ void ZoneImplementation::startManagers() {
 	if (zoneID > 9)
 		return;
 	
-	CreatureManagerImplementation* manImpl = new CreatureManagerImplementation((Zone*) _this, processor);
-	creatureManager = (CreatureManager*) manImpl->deploy("CreatureManager", zoneID);
+	creatureManager = new CreatureManager(_this, processor);
+	creatureManager->deploy("CreatureManager", zoneID);
 	
 	creatureManager->init();
 
-	PlanetManagerImplementation* planImpl = new PlanetManagerImplementation((Zone*) _this, processor);
-	planetManager = (PlanetManager*) planImpl->deploy("PlanetManager", zoneID);
+	planetManager = new PlanetManager(_this, processor);
+	planetManager->deploy("PlanetManager", zoneID);
 
 	planetManager->init();
 	

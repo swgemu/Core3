@@ -42,12 +42,18 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-import "../../static/StaticObject";
-
 import "../../player/Player";
 
+import "../../static/StaticObject";
+
 interface FireworkWorld implements StaticObject {
-	FireworkWorld(unsigned long oid, int tp);
+	FireworkWorld(Player player) {
+		super(unsigned long oid, int tp);
+	}
+
+	FireworkWorld(Player player, int tp) {
+		super(unsigned long oid, tp);
+	}
 	
 	int getFireworkType();
 }

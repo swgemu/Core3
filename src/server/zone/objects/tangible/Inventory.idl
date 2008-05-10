@@ -43,8 +43,11 @@ which carries forward this exception.
 */
 
 import "Container";
+
 import "../creature/CreatureObject";
 
 interface Inventory implements Container {
-	Inventory(unsigned long oid);
+	Inventory(CreatureObject creature) {
+		super(unsigned long oid);
+	}
 }

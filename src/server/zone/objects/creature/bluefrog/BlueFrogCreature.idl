@@ -49,6 +49,8 @@ import "../../scene/SceneObject";
 include "../../player/professions/Profession";
 
 interface BlueFrogCreature implements Creature {
-	BlueFrogCreature(unsigned long oid);
+	BlueFrogCreature(unsigned long oid) {
+		super(oid);
+	}
 
 }

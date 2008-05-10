@@ -48,7 +48,9 @@ which carries forward this exception.
 #include "CraftingStationImplementation.h"
 #include "../../../ZoneClient.h"
  
-CraftingStationImplementation::CraftingStationImplementation(uint64 object_id, uint32 tempCRC, const unicode& n, const string& tempn) : CraftingStationServant(object_id, n, tempn, tempCRC, CRAFTINGTOOL) {
+CraftingStationImplementation::CraftingStationImplementation(uint64 object_id, uint32 tempCRC, 
+		const unicode& n, const string& tempn) : CraftingStationServant(object_id, n, tempn, tempCRC, 
+				CRAFTINGTOOL) {
 	objectCRC = tempCRC;
 	templateTypeName = "obj_n";
 	templateName = tempn;
@@ -56,7 +58,9 @@ CraftingStationImplementation::CraftingStationImplementation(uint64 object_id, u
 	init();
 }
  
-CraftingStationImplementation::CraftingStationImplementation(CreatureObject* creature, uint32 tempCRC, const unicode& n, const string& tempn) : CraftingStationServant(creature, n, tempn, tempCRC, CRAFTINGTOOL) {
+CraftingStationImplementation::CraftingStationImplementation(CreatureObject* creature, uint32 tempCRC, 
+		const unicode& n, const string& tempn) : CraftingStationServant(creature, n, tempn, tempCRC, 
+				CRAFTINGTOOL) {
 	objectCRC = tempCRC;
 	templateTypeName = "obj_n";
 	templateName = tempn;

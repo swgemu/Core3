@@ -7,7 +7,7 @@
 
 #include "engine/orb/DistributedObjectBroker.h"
 
-class BFVector;
+class ZoneServer;
 
 class TangibleObject;
 
@@ -15,18 +15,13 @@ class Weapon;
 
 class Armor;
 
+class BFVector;
+
 class Player;
 
 class ItemManager : public DistributedObjectStub {
-protected:
-	ItemManager();
-	ItemManager(DistributedObjectServant* obj);
-	ItemManager(ItemManager& ref);
-
-	virtual ~ItemManager();
-
 public:
-	ItemManager* clone();
+	ItemManager(ZoneServer* server);
 
 	void loadStaticWorldObjects();
 
@@ -63,8 +58,11 @@ public:
 	void giveBFItemSet(Player* player, string& set);
 
 protected:
-	string _return_getBFProf;
+	ItemManager(DummyConstructorParameter* param);
 
+	virtual ~ItemManager();
+
+	string _return_getBFProf;
 
 	friend class ItemManagerHelper;
 };
@@ -117,6 +115,8 @@ protected:
 };
 
 class ItemManagerHelper : public DistributedObjectClassHelper, public Singleton<ItemManagerHelper> {
+	static ItemManagerHelper* staticInitializer;
+
 public:
 	ItemManagerHelper();
 
@@ -124,7 +124,7 @@ public:
 
 	DistributedObject* instantiateObject();
 
-	DistributedObjectAdapter* createAdapter(DistributedObjectServant* obj);
+	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class SingletonWrapper<ItemManagerHelper>;
 };

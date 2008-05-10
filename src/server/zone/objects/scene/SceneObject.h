@@ -11,6 +11,8 @@
 
 #include "engine/util/QuadTreeEntry.h"
 
+#include "../../ZoneProcessServerImplementation.h"
+
 class ObjectMenuResponse;
 
 class Zone;
@@ -22,16 +24,7 @@ class Player;
 #include "engine/core/ManagedObject.h"
 
 class SceneObject : public ManagedObject {
-protected:
-	SceneObject();
-	SceneObject(DistributedObjectServant* obj);
-	SceneObject(SceneObject& ref);
-
-	virtual ~SceneObject();
-
 public:
-	SceneObject* clone();
-
 	bool destroy();
 
 	void redeploy();
@@ -93,6 +86,8 @@ public:
 	void info(const string& message, bool forcedLog = false);
 
 	void error(const string& message);
+
+	void setZoneProcessServer(ZoneProcessServerImplementation* processor);
 
 	void setObjectID(unsigned long long oid);
 
@@ -167,10 +162,13 @@ public:
 	bool doKeepObject();
 
 protected:
+	SceneObject(DummyConstructorParameter* param);
+
+	virtual ~SceneObject();
+
 	bool _destroy();
 
 	string _return_getLoggingName;
-
 
 	friend class SceneObjectHelper;
 };
@@ -323,6 +321,8 @@ protected:
 };
 
 class SceneObjectHelper : public DistributedObjectClassHelper, public Singleton<SceneObjectHelper> {
+	static SceneObjectHelper* staticInitializer;
+
 public:
 	SceneObjectHelper();
 
@@ -330,7 +330,7 @@ public:
 
 	DistributedObject* instantiateObject();
 
-	DistributedObjectAdapter* createAdapter(DistributedObjectServant* obj);
+	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class SingletonWrapper<SceneObjectHelper>;
 };

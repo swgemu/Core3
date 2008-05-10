@@ -51,8 +51,8 @@ which carries forward this exception.
 
 #include "objects/player/Player.h"
 
-ZoneClientImplementation::ZoneClientImplementation(DatagramServiceThread* serv, Socket* sock, SocketAddress& addr) 
-		: BaseClientProxy(sock, addr), ZoneClientServant() {
+ZoneClientImplementation::ZoneClientImplementation(DatagramServiceThread* serv, Socket* sock, SocketAddress* addr) 
+		: BaseClientProxy(sock, *addr), ZoneClientServant() {
 	init(serv);
 
 	player = NULL;
@@ -61,7 +61,7 @@ ZoneClientImplementation::ZoneClientImplementation(DatagramServiceThread* serv, 
 	disconnecting = false;
 
 	stringstream loggingname;
-	loggingname << "ZoneClient " << addr.getFullIPAddress();
+	loggingname << "ZoneClient " << addr->getFullIPAddress();
 
 	setLoggingName(loggingname.str());
 	setLogging(false);

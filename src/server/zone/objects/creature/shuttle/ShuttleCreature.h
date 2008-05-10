@@ -7,26 +7,19 @@
 
 #include "engine/orb/DistributedObjectBroker.h"
 
+#include "engine/util/Coordinate.h"
+
 class Creature;
 
 class Player;
 
 class Ticket;
 
-#include "engine/util/Coordinate.h"
-
 #include "../Creature.h"
 
 class ShuttleCreature : public Creature {
-protected:
-	ShuttleCreature();
-	ShuttleCreature(DistributedObjectServant* obj);
-	ShuttleCreature(ShuttleCreature& ref);
-
-	virtual ~ShuttleCreature();
-
 public:
-	ShuttleCreature* clone();
+	ShuttleCreature(const string& planet, const string& city, Coordinate* playerSpawnPoint, unsigned long long oid);
 
 	void doTakeOff();
 
@@ -43,10 +36,12 @@ public:
 	int getArrivalTime();
 
 protected:
+	ShuttleCreature(DummyConstructorParameter* param);
+
+	virtual ~ShuttleCreature();
+
 	string _return_getCity;
-
 	string _return_getPlanet;
-
 
 	friend class ShuttleCreatureHelper;
 };
@@ -76,6 +71,8 @@ public:
 };
 
 class ShuttleCreatureHelper : public DistributedObjectClassHelper, public Singleton<ShuttleCreatureHelper> {
+	static ShuttleCreatureHelper* staticInitializer;
+
 public:
 	ShuttleCreatureHelper();
 
@@ -83,7 +80,7 @@ public:
 
 	DistributedObject* instantiateObject();
 
-	DistributedObjectAdapter* createAdapter(DistributedObjectServant* obj);
+	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class SingletonWrapper<ShuttleCreatureHelper>;
 };

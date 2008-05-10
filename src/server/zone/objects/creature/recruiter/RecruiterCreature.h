@@ -16,15 +16,8 @@ class Player;
 #include "../Creature.h"
 
 class RecruiterCreature : public Creature {
-protected:
-	RecruiterCreature();
-	RecruiterCreature(DistributedObjectServant* obj);
-	RecruiterCreature(RecruiterCreature& ref);
-
-	virtual ~RecruiterCreature();
-
 public:
-	RecruiterCreature* clone();
+	RecruiterCreature(unsigned long long oid);
 
 	void sendConversationStartTo(SceneObject* obj);
 
@@ -33,6 +26,10 @@ public:
 	void selectConversationOption(int option, SceneObject* obj);
 
 protected:
+	RecruiterCreature(DummyConstructorParameter* param);
+
+	virtual ~RecruiterCreature();
+
 	friend class RecruiterCreatureHelper;
 };
 
@@ -53,6 +50,8 @@ public:
 };
 
 class RecruiterCreatureHelper : public DistributedObjectClassHelper, public Singleton<RecruiterCreatureHelper> {
+	static RecruiterCreatureHelper* staticInitializer;
+
 public:
 	RecruiterCreatureHelper();
 
@@ -60,7 +59,7 @@ public:
 
 	DistributedObject* instantiateObject();
 
-	DistributedObjectAdapter* createAdapter(DistributedObjectServant* obj);
+	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class SingletonWrapper<RecruiterCreatureHelper>;
 };

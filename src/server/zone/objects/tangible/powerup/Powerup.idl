@@ -42,38 +42,56 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-import "../TangibleObject";
+include "engine/service/Message";
+
 import "../../creature/CreatureObject";
+
 import "../../player/Player";
+
+import "../TangibleObject";
+
 import "../weapons/Weapon";
  
-include "engine/service/Message";
- 
 interface Powerup implements TangibleObject {
+	Powerup(unsigned long oid) {
+		super(oid, int type);
+	}
 
-	Powerup(unsigned int oid, int type);
+	Powerup(unsigned long oid, unsigned int tempCRC, const unicode n, const string tempn) {
+		super(oid, int type);
+	}
 
 	void apply(Weapon weapon);
+
 	void remove(Player player);
 
+	// getters
 	int getPowerup0Type();
 	int getPowerup1Type();
 	int getPowerup2Type();
+	
 	float getPowerup0Value();
 	float getPowerup1Value();
 	float getPowerup2Value();
+	
 	int getPowerupUses();
+	
 	int getPowerupType();
 	int getPowerupSubType();
 
+	// setters
+	void setPowerupStats(int modifier);
+	
 	void setPowerup0Type(int value);
 	void setPowerup1Type(int value);
 	void setPowerup2Type(int value);
+
 	void setPowerup0Value(float value);
 	void setPowerup1Value(float value);
 	void setPowerup2Value(float value);
+	
 	void setPowerupUses(int value);
+	
 	void setPowerupType(int value);
 	void setPowerupSubType(int value);
-
 }

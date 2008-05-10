@@ -42,13 +42,16 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-import "../TangibleObject";
-import "../../player/Player";
-
 include "engine/service/Message";
 
+import "../../player/Player";
+
+import "../TangibleObject";
+
 interface ShipComponent implements TangibleObject {
-	ShipComponent(unsigned long oid, int tp);
+	ShipComponent(Player player, unsigned int tempCRC, const unicode n, const string tempn) {
+		super(unsigned long oid, int tp);
+	}
 
 	void erase();
 	

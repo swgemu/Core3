@@ -45,6 +45,8 @@ which carries forward this exception.
 #ifndef INVENTORYIMPLEMENTATION_H_
 #define INVENTORYIMPLEMENTATION_H_
 
+#include "../creature/CreatureObject.h"
+
 #include "Container.h"
 
 #include "Inventory.h"

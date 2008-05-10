@@ -7,26 +7,23 @@
 
 #include "engine/orb/DistributedObjectBroker.h"
 
-class TangibleObject;
-
 class Player;
+
+class TangibleObject;
 
 #include "../TangibleObject.h"
 
 class Firework : public TangibleObject {
-protected:
-	Firework();
-	Firework(DistributedObjectServant* obj);
-	Firework(Firework& ref);
-
-	virtual ~Firework();
-
 public:
-	Firework* clone();
+	Firework(Player* player, unsigned int tempCRC, const unicode& n, const string& tempn);
 
 	int useObject(Player* player);
 
 protected:
+	Firework(DummyConstructorParameter* param);
+
+	virtual ~Firework();
+
 	friend class FireworkHelper;
 };
 
@@ -43,6 +40,8 @@ public:
 };
 
 class FireworkHelper : public DistributedObjectClassHelper, public Singleton<FireworkHelper> {
+	static FireworkHelper* staticInitializer;
+
 public:
 	FireworkHelper();
 
@@ -50,7 +49,7 @@ public:
 
 	DistributedObject* instantiateObject();
 
-	DistributedObjectAdapter* createAdapter(DistributedObjectServant* obj);
+	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class SingletonWrapper<FireworkHelper>;
 };

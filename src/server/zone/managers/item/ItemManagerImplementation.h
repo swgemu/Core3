@@ -103,11 +103,13 @@ public:
 	void loadDefaultPlayerDatapadItems(Player* player);
 	
 	TangibleObject* createPlayerObject(Player* player, ResultSet* result);
-	static TangibleObjectImplementation * createPlayerObjectTemplate(int objecttype, uint64 objectid, uint32 objectcrc, unicode objectname, char* objecttemp, bool equipped);
-	static TangibleObjectImplementation * createTemplateFromLua(LuaObject item);
+	static TangibleObject* createPlayerObjectTemplate(int objecttype, uint64 objectid, uint32 objectcrc, 
+			unicode objectname, const string& objecttemp, bool equipped);
+
+	static TangibleObject* createTemplateFromLua(LuaObject item);
 	
 	//TODO: remove this function when a global clone() function is available for all objects
-	TangibleObjectImplementation * clonePlayerObjectTemplate(TangibleObjectImplementation * templ);
+	TangibleObject* clonePlayerObjectTemplate(TangibleObject* templ);
 	
 	void giveBFItemSet(Player * player, string& set);
 	

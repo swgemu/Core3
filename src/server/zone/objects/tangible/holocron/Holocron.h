@@ -7,26 +7,23 @@
 
 #include "engine/orb/DistributedObjectBroker.h"
 
-class TangibleObject;
-
 class Player;
+
+class TangibleObject;
 
 #include "../TangibleObject.h"
 
 class Holocron : public TangibleObject {
-protected:
-	Holocron();
-	Holocron(DistributedObjectServant* obj);
-	Holocron(Holocron& ref);
-
-	virtual ~Holocron();
-
 public:
-	Holocron* clone();
+	Holocron(Player* player, unsigned int tempCRC, const unicode& n, const string& tempn);
 
 	int useObject(Player* player);
 
 protected:
+	Holocron(DummyConstructorParameter* param);
+
+	virtual ~Holocron();
+
 	friend class HolocronHelper;
 };
 
@@ -43,6 +40,8 @@ public:
 };
 
 class HolocronHelper : public DistributedObjectClassHelper, public Singleton<HolocronHelper> {
+	static HolocronHelper* staticInitializer;
+
 public:
 	HolocronHelper();
 
@@ -50,7 +49,7 @@ public:
 
 	DistributedObject* instantiateObject();
 
-	DistributedObjectAdapter* createAdapter(DistributedObjectServant* obj);
+	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class SingletonWrapper<HolocronHelper>;
 };

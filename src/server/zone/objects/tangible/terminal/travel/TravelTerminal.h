@@ -7,28 +7,27 @@
 
 #include "engine/orb/DistributedObjectBroker.h"
 
-class Terminal;
+#include "engine/service/Message.h"
 
 class Player;
 
-#include "engine/service/Message.h"
+class ShuttleCreature;
+
+class Terminal;
 
 #include "../Terminal.h"
 
 class TravelTerminal : public Terminal {
-protected:
-	TravelTerminal();
-	TravelTerminal(DistributedObjectServant* obj);
-	TravelTerminal(TravelTerminal& ref);
-
-	virtual ~TravelTerminal();
-
 public:
-	TravelTerminal* clone();
+	TravelTerminal(ShuttleCreature* shutle, unsigned long long objid, float x, float z, float y);
 
 	int useObject(Player* player);
 
 protected:
+	TravelTerminal(DummyConstructorParameter* param);
+
+	virtual ~TravelTerminal();
+
 	friend class TravelTerminalHelper;
 };
 
@@ -45,6 +44,8 @@ public:
 };
 
 class TravelTerminalHelper : public DistributedObjectClassHelper, public Singleton<TravelTerminalHelper> {
+	static TravelTerminalHelper* staticInitializer;
+
 public:
 	TravelTerminalHelper();
 
@@ -52,7 +53,7 @@ public:
 
 	DistributedObject* instantiateObject();
 
-	DistributedObjectAdapter* createAdapter(DistributedObjectServant* obj);
+	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class SingletonWrapper<TravelTerminalHelper>;
 };

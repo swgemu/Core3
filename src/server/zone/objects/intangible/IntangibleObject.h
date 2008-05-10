@@ -7,24 +7,17 @@
 
 #include "engine/orb/DistributedObjectBroker.h"
 
+#include "engine/service/Message.h"
+
 class SceneObject;
 
 class Player;
 
-#include "engine/service/Message.h"
-
 #include "../scene/SceneObject.h"
 
 class IntangibleObject : public SceneObject {
-protected:
-	IntangibleObject();
-	IntangibleObject(DistributedObjectServant* obj);
-	IntangibleObject(IntangibleObject& ref);
-
-	virtual ~IntangibleObject();
-
 public:
-	IntangibleObject* clone();
+	IntangibleObject(SceneObject* container, unsigned int objCRC, unsigned long long oid);
 
 	void sendTo(Player* player, bool doClose = true);
 
@@ -47,10 +40,12 @@ public:
 	unsigned int getStatus();
 
 protected:
+	IntangibleObject(DummyConstructorParameter* param);
+
+	virtual ~IntangibleObject();
+
 	string _return_getDetailName;
-
 	string _return_getName;
-
 
 	friend class IntangibleObjectHelper;
 };
@@ -89,6 +84,8 @@ protected:
 };
 
 class IntangibleObjectHelper : public DistributedObjectClassHelper, public Singleton<IntangibleObjectHelper> {
+	static IntangibleObjectHelper* staticInitializer;
+
 public:
 	IntangibleObjectHelper();
 
@@ -96,7 +93,7 @@ public:
 
 	DistributedObject* instantiateObject();
 
-	DistributedObjectAdapter* createAdapter(DistributedObjectServant* obj);
+	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class SingletonWrapper<IntangibleObjectHelper>;
 };

@@ -16,21 +16,18 @@ class Player;
 #include "../SuiBox.h"
 
 class SuiColorPicker : public SuiBox {
-protected:
-	SuiColorPicker();
-	SuiColorPicker(DistributedObjectServant* obj);
-	SuiColorPicker(SuiColorPicker& ref);
-
-	virtual ~SuiColorPicker();
-
 public:
-	SuiColorPicker* clone();
+	SuiColorPicker(Player* player, unsigned int typeID, unsigned int boxtype);
 
 	unsigned long long getObjectID();
 
 	BaseMessage* generateMessage();
 
 protected:
+	SuiColorPicker(DummyConstructorParameter* param);
+
+	virtual ~SuiColorPicker();
+
 	friend class SuiColorPickerHelper;
 };
 
@@ -49,6 +46,8 @@ public:
 };
 
 class SuiColorPickerHelper : public DistributedObjectClassHelper, public Singleton<SuiColorPickerHelper> {
+	static SuiColorPickerHelper* staticInitializer;
+
 public:
 	SuiColorPickerHelper();
 
@@ -56,7 +55,7 @@ public:
 
 	DistributedObject* instantiateObject();
 
-	DistributedObjectAdapter* createAdapter(DistributedObjectServant* obj);
+	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class SingletonWrapper<SuiColorPickerHelper>;
 };
@@ -68,7 +67,7 @@ public:
 	SuiColorPicker* _this;
 
 public:
-	SuiColorPickerServant(Player* play, unsigned int typeID, unsigned int boxtype);
+	SuiColorPickerServant(Player* player, unsigned int typeID, unsigned int boxtype);
 	virtual ~SuiColorPickerServant();
 
 	void _setStub(DistributedObjectStub* stub);

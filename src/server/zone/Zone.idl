@@ -45,6 +45,7 @@ which carries forward this exception.
 import "objects/scene/SceneObject";
 
 import "ZoneServer";
+include "ZoneProcessServerImplementation";
 
 import "../chat/ChatManager";
 
@@ -54,6 +55,10 @@ import "managers/creature/CreatureManager";
 include "engine/util/QuadTreeEntry";
 
 interface Zone {
+	Zone(ZoneServer zserv, ZoneProcessServerImplementation processor, int zoneid) {
+		super(zserv, processor, zoneid);
+	}
+
 	void startManagers();
 	
 	void stopManagers();
@@ -70,7 +75,19 @@ interface Zone {
 
 	SceneObject deleteCachedObject(SceneObject obj);
 
-	// setters and getters
+	//QT methods
+	void setSize(float minx, float miny, float maxx, float maxy);
+
+	void insert(QuadTreeEntry obj);
+
+	void remove(QuadTreeEntry obj);
+	void removeAll();
+
+	boolean update(QuadTreeEntry obj);
+
+	void inRange(QuadTreeEntry obj, float range);
+	
+	// getters
 	int getZoneID();
 
 	ZoneServer getZoneServer();
@@ -86,13 +103,4 @@ interface Zone {
 	float getWeatherCloudX();
 	
 	float getWeatherCloudY();
-	
-	//QT methods
-	void setSize(float minx, float miny, float maxx, float maxy);
-	void insert(QuadTreeEntry obj);
-	void remove(QuadTreeEntry obj);
-	void removeAll();
-	boolean update(QuadTreeEntry obj);
-	void inRange(QuadTreeEntry obj, float range);
-
 }

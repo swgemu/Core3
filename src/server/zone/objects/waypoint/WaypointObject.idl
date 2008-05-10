@@ -44,8 +44,12 @@ which carries forward this exception.
 
 import "../scene/SceneObject";
 
+import "../player/Player";
+
 interface WaypointObject implements SceneObject {
-	WaypointObject(unsigned long oid);
+	WaypointObject(Player player, unsigned long oid) {
+		super(oid);
+	}
 	
 	void changeStatus(boolean status);
 

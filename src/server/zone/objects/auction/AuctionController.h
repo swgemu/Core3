@@ -65,7 +65,7 @@ public:
 	inline void addItem(AuctionItem* item, bool doLock = true) {
 		lock(doLock);
 		
-		items.put(item->getId(), item);
+		items.put(item->getID(), item);
 		
 		unlock(doLock);
 	}
@@ -128,7 +128,7 @@ public:
 
 		case 3: // My auctions/sales 
 			for (int i = 0; i < items.size(); i++) {
-				if ((items.get(i)->getOwnerId() == player->getObjectID()) && !items.get(i)->isSold())
+				if ((items.get(i)->getOwnerID() == player->getObjectID()) && !items.get(i)->isSold())
 					reply->addItemToList(items.get(i));
 			}
 			break;
@@ -142,7 +142,7 @@ public:
 			
 		case 5: // Retrieve items screen
 			for (int i = 0; i < items.size(); i++) {
-				if (items.get(i)->isSold() && items.get(i)->getBuyerId() == player->getObjectID())
+				if (items.get(i)->isSold() && items.get(i)->getBuyerID() == player->getObjectID())
 					reply->addItemToList(items.get(i));
 			}
 			break;	

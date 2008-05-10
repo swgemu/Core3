@@ -64,8 +64,9 @@ class ServerCore : public Core, public Logger {
 	
 	DistributedObjectBroker* orb;
 	
-	LoginServer* lserv;
-	ZoneServerImplementation* zserv;
+	LoginServer* loginServer;
+	
+	static ZoneServer* zoneServer;
 
 public:
 	ServerCore();
@@ -82,7 +83,7 @@ public:
 	
 	// getters
 	static ZoneServer* getZoneServer() {
-		return (ZoneServer*) DistributedObjectBroker::instance()->lookUp("ZoneServer");
+		return zoneServer;
 	}
 
 };

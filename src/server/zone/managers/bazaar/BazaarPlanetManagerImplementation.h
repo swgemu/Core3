@@ -55,7 +55,7 @@ which carries forward this exception.
 #include "BazaarTerminals.h"
 
 #include "../../objects/tangible/terminal/bazaar/RegionBazaar.h"
-#include "../../objects/tangible/terminal/bazaar/RegionBazaarImplementation.h"
+
 #include "../../objects/auction/AuctionController.h"
 
 class BazaarPlanetManagerImplementation : public AuctionController, public BazaarPlanetManagerServant, public Logger {

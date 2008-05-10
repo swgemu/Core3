@@ -50,7 +50,9 @@ import "../../Zone";
 include "engine/service/Message";
 
 interface StaticObject implements SceneObject {
-	StaticObject(unsigned long oid);
+	StaticObject(unsigned long oid, int type) {
+		super(oid);
+	}
 
 	void insertToZone(Zone zone);
 	void removeFromZone();

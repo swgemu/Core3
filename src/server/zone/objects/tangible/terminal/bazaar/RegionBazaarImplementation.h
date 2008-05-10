@@ -49,26 +49,28 @@ which carries forward this exception.
 
 #include "RegionBazaar.h"
 
-#include "../../../../objects/auction/AuctionController.h"
-#include "../../../../packets.h"
+#include "../../../../managers/bazaar/BazaarTerminalDetails.h"
+
+#include "../../../auction/AuctionController.h"
+
+#include "../../../terrain/PlanetNames.h"
+
+#include "../../../../packets/auction/BazaarDisplayUI.h"
+#include "../../../../packets/auction/IsVendorOwnerResponseMessage.h"
 
 class RegionBazaarImplementation : public AuctionController, public RegionBazaarServant  {
 	string bazaarRegion;
+	
 	BazaarPlanetManager* planetManager;
 	
 public:
 	RegionBazaarImplementation() : AuctionController(), RegionBazaarServant() {
-	
-	}
-	
-	SceneObject* deploy() {
-		return (SceneObject*) DistributedObjectServant::deploy(bazaarRegion);
 	}
 	
 	void newBazaarRequest(long bazaarID, Player* player, int planet) {
 		BazaarTerminalDetails* location;
 		
-		string planetString = PlanetNames[planet];
+		string planetString = Planet::getPlanetName(planet);
 
 		IsVendorOwnerResponseMessage* msg = new IsVendorOwnerResponseMessage(false, bazaarID, planetString, bazaarRegion, 0, 0);
 		player->sendMessage(msg);

@@ -47,12 +47,12 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-#include "../../objects/player/PlayerImplementation.h"
+#include "../../objects/player/Player.h"
 #include "../../objects/player/Races.h"
 
 class ClientCreateCharacter : public BaseMessage {
 public:
-	static void parse(Packet* pack, PlayerImplementation* player) {
+	static void parse(Packet* pack, Player* player) {
 		string customization;
 		pack->parseAscii(customization);
 		player->setCharacterApperance(customization);

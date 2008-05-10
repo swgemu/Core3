@@ -16,15 +16,8 @@ class RegionBazaar;
 #include "BazaarTerminalDetails.h"
 
 class BazaarPlanetManager : public DistributedObjectStub {
-protected:
-	BazaarPlanetManager();
-	BazaarPlanetManager(DistributedObjectServant* obj);
-	BazaarPlanetManager(BazaarPlanetManager& ref);
-
-	virtual ~BazaarPlanetManager();
-
 public:
-	BazaarPlanetManager* clone();
+	BazaarPlanetManager(int planet);
 
 	void setPlanet(int planet);
 
@@ -37,6 +30,10 @@ public:
 	void getBazaarData(Player* player, long long objectid, int screen, int extent, unsigned int category, int count, int offset);
 
 protected:
+	BazaarPlanetManager(DummyConstructorParameter* param);
+
+	virtual ~BazaarPlanetManager();
+
 	friend class BazaarPlanetManagerHelper;
 };
 
@@ -61,6 +58,8 @@ public:
 };
 
 class BazaarPlanetManagerHelper : public DistributedObjectClassHelper, public Singleton<BazaarPlanetManagerHelper> {
+	static BazaarPlanetManagerHelper* staticInitializer;
+
 public:
 	BazaarPlanetManagerHelper();
 
@@ -68,7 +67,7 @@ public:
 
 	DistributedObject* instantiateObject();
 
-	DistributedObjectAdapter* createAdapter(DistributedObjectServant* obj);
+	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class SingletonWrapper<BazaarPlanetManagerHelper>;
 };

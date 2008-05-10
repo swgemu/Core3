@@ -61,7 +61,6 @@ class BuildingObjectImplementation : public QuadTree, public BuildingObjectServa
 	bool staticBuilding;
 	
 public:
-	
 	// Using the Building Types from Planet Map - comment out the non buildings :)
 	static const int UNKNOWN = 1;
 	static const int BANK = 2;
@@ -150,8 +149,9 @@ public:
 	static const int REBEL_MAJOR_BASE = 80;
 	static const int IMPERIAL_MAJOR_BASE = 81;
 	
-	
+public:
 	BuildingObjectImplementation(uint64 oid, bool staticBuild);
+	
 	~BuildingObjectImplementation();
 	
 	void insertToZone(Zone* zone);

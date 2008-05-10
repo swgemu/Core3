@@ -46,9 +46,11 @@ import "Creature";
 import "CreatureObject";
 
 interface CreatureGroup {
+	CreatureGroup() {
+		super();
+	}
 	
 	void addCreature(Creature creature);
 	
 	void setTarget(CreatureObject targ);
-	
 }

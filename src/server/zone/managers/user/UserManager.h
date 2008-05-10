@@ -7,16 +7,11 @@
 
 #include "engine/orb/DistributedObjectBroker.h"
 
+class ZoneServer;
+
 class UserManager : public DistributedObjectStub {
-protected:
-	UserManager();
-	UserManager(DistributedObjectServant* obj);
-	UserManager(UserManager& ref);
-
-	virtual ~UserManager();
-
 public:
-	UserManager* clone();
+	UserManager(ZoneServer* server);
 
 	bool checkUser(unsigned int ipid);
 
@@ -35,6 +30,10 @@ public:
 	int getUserCap();
 
 protected:
+	UserManager(DummyConstructorParameter* param);
+
+	virtual ~UserManager();
+
 	friend class UserManagerHelper;
 };
 
@@ -70,6 +69,8 @@ protected:
 };
 
 class UserManagerHelper : public DistributedObjectClassHelper, public Singleton<UserManagerHelper> {
+	static UserManagerHelper* staticInitializer;
+
 public:
 	UserManagerHelper();
 
@@ -77,7 +78,7 @@ public:
 
 	DistributedObject* instantiateObject();
 
-	DistributedObjectAdapter* createAdapter(DistributedObjectServant* obj);
+	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class SingletonWrapper<UserManagerHelper>;
 };

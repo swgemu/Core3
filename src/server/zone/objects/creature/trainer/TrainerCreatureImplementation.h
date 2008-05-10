@@ -57,6 +57,7 @@ class TrainerCreatureImplementation : public TrainerCreatureServant {
 	
 public:
 	TrainerCreatureImplementation(uint64 oid, Profession* prof);
+	
 	~TrainerCreatureImplementation();
 	
 	bool train(SkillBox* skillBox, Player* player);	

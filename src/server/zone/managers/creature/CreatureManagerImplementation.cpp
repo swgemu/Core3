@@ -50,6 +50,7 @@ which carries forward this exception.
 #include "../../objects/tangible/Inventory.h" 
 
 #include "../../objects/creature/Creature.h"
+#include "../../objects/creature/CreatureImplementation.h"
 #include "../../objects/creature/CreatureObject.h"
 
 #include "../../objects/creature/trainer/TrainerCreature.h"
@@ -57,7 +58,6 @@ which carries forward this exception.
 #include "../../objects/creature/shuttle/ShuttleCreature.h"
 
 #include "../../objects/creature/CreatureGroup.h"
-#include "../../objects/creature/CreatureGroupImplementation.h"
 
 #include "../skills/SkillManager.h"
 #include "../name/NameManager.h"
@@ -218,8 +218,8 @@ CreatureGroup* CreatureManagerImplementation::spawnCreatureGroup(int count, cons
 	try {
 		lock();
 
-		CreatureGroupImplementation* groupImpl = new CreatureGroupImplementation();
-		CreatureGroup* group = (CreatureGroup*)  groupImpl->deploy();
+		CreatureGroup* group = new CreatureGroup();
+		group->deploy();
 
 		for (int i = 0; i < count; i++) {
 			Creature* creature = spawnCreature(stfname, name, objCrc, x, y, bitmask, false);
@@ -255,25 +255,23 @@ BlueFrogCreature* CreatureManagerImplementation::spawnBlueFrog(float x, float y,
 	try {
 		lock(doLock);
 			
-		BlueFrogCreatureImplementation* bfImpl = new BlueFrogCreatureImplementation(getNextCreatureID());
+		BlueFrogCreature* bluefrog = new BlueFrogCreature(getNextCreatureID());
 
-		bfImpl->terrainName = Terrain::getTerrainName(zone->getZoneID());
+		bluefrog->setTerrainName(Terrain::getTerrainName(zone->getZoneID()));
 		
-		bfImpl->height = 1.0f;
-		bfImpl->initializePosition(x, 0, y);
-		bfImpl->setDirection(0,0,oY,oW);
-		bfImpl->pvpStatusBitmask = 0;//0x01 + 0x02 + 0x20;
+		bluefrog->setHeight(1.0f);
+		bluefrog->initializePosition(x, 0, y);
+		bluefrog->setDirection(0, 0, oY, oW);
+		bluefrog->setPvpStatusBitmask(0);//0x01 + 0x02 + 0x20;
 			
-		load(bfImpl);
+		load(bluefrog);
 			
-		BlueFrogCreature* bf = (BlueFrogCreature*) bfImpl->deploy();
+		bluefrog->insertToZone(zone);
 			
-		bf->insertToZone(zone);
-			
-		creatureMap->put(bf->getObjectID(), bf);
+		creatureMap->put(bluefrog->getObjectID(), bluefrog);
 
 		unlock(doLock);
-		return bf;
+		return bluefrog;
 	} catch (...) {
 		error("unreported Exception caught on spawnBlueFrog()"); 
 
@@ -288,25 +286,23 @@ TrainerCreature* CreatureManagerImplementation::spawnTrainer(const string& profe
 		
 		Profession* prof = server->getProfessionManager()->professionMap.get(profession);
 		
-		TrainerCreatureImplementation* trainerImpl = new TrainerCreatureImplementation(getNextCreatureID(), prof);
+		TrainerCreature* trainer = new TrainerCreature(getNextCreatureID(), prof);
+		trainer->deploy();
 
 		if (!stfname.empty())
-			trainerImpl->speciesName = stfname;
+			trainer->setSpeciesName(stfname);
 		else
-			trainerImpl->characterName = unicode(name);
+			trainer->setCharacterName(unicode(name));
 			
-		trainerImpl->objectFile = "";
-		trainerImpl->objectCRC = objCrc;
-
-		trainerImpl->terrainName = Terrain::getTerrainName(zone->getZoneID());
+		trainer->setObjectCRC(objCrc);
+		trainer->setObjectFileName("");
+		
+		trainer->setTerrainName(Terrain::getTerrainName(zone->getZoneID()));
 	
-		trainerImpl->height = 1.0f;
-		trainerImpl->initializePosition(x, 0, y);
-		trainerImpl->pvpStatusBitmask = 0;//0x01 + 0x02 + 0x20;
+		trainer->setHeight(1.0f);
+		trainer->initializePosition(x, 0, y);
 		
-		load(trainerImpl);
-		
-		TrainerCreature* trainer = (TrainerCreature*) trainerImpl->deploy();
+		load(trainer);
 		
 		trainer->insertToZone(zone);
 		
@@ -326,34 +322,31 @@ RecruiterCreature* CreatureManagerImplementation::spawnRecruiter(const string& s
 	try {
 		lock(doLock);
 		
-		RecruiterCreatureImplementation* recruiterImpl = new RecruiterCreatureImplementation(getNextCreatureID());
+		RecruiterCreature* recruiter = new RecruiterCreature(getNextCreatureID());
+		recruiter->deploy();
 	
 		if (!stfname.empty())
-			recruiterImpl->speciesName = stfname;
+			recruiter->setSpeciesName(stfname);
 		else
-			recruiterImpl->characterName = unicode(name);
+			recruiter->setCharacterName(unicode(name));
 
-		recruiterImpl->objectFile = "";
-		recruiterImpl->objectCRC = objCrc;
+		recruiter->setObjectFileName("");
+		recruiter->setObjectCRC(objCrc);
 
-		recruiterImpl->terrainName = Terrain::getTerrainName(zone->getZoneID());
+		recruiter->setTerrainName(Terrain::getTerrainName(zone->getZoneID()));
 	
-		//ham stuff
-		
-		recruiterImpl->height = 1.0f;
-		recruiterImpl->initializePosition(x, 0, y);
-		recruiterImpl->pvpStatusBitmask = 0;//0x01 + 0x02 + 0x20;
+		recruiter->setHeight(1.0f);
+		recruiter->initializePosition(x, 0, y);
+		recruiter->setPvpStatusBitmask(0);
 
-		load(recruiterImpl);
+		load(recruiter);
 		
-		RecruiterCreature* creature = (RecruiterCreature*) recruiterImpl->deploy();
+		recruiter->insertToZone(zone);
 		
-		creature->insertToZone(zone);
-		
-		creatureMap->put(creature->getObjectID(), creature);
+		creatureMap->put(recruiter->getObjectID(), recruiter);
 
 		unlock(doLock);
-		return creature;
+		return recruiter;
 	} catch (...) {
 		error("unreported Exception caught on spawnRecruiter()"); 
 
@@ -366,17 +359,16 @@ ShuttleCreature* CreatureManagerImplementation::spawnShuttle(const string& Plane
 	try {
 		lock(doLock);
 		
-		ShuttleCreatureImplementation* shuttleImpl = new ShuttleCreatureImplementation(Planet, City, playerSpawnPoint, getNextCreatureID());
+		ShuttleCreature* shuttle = new ShuttleCreature(Planet, City, playerSpawnPoint, getNextCreatureID());
+		shuttle->deploy();
 		
-		shuttleImpl->terrainName = Terrain::getTerrainName(zone->getZoneID());
+		shuttle->setTerrainName(Terrain::getTerrainName(zone->getZoneID()));
 	
-		shuttleImpl->height = 1.0f;
-		shuttleImpl->initializePosition(x, z, y);
+		shuttle->setHeight(1.0f);
+		shuttle->initializePosition(x, z, y);
 		
-		shuttleImpl->setCreatureManager(this);
-		shuttleImpl->setZoneProcessServer(server);
-		
-		ShuttleCreature* shuttle = (ShuttleCreature*) shuttleImpl->deploy();
+		shuttle->setCreatureManager(this);
+		shuttle->setZoneProcessServer(server);
 		
 		shuttle->insertToZone(zone);
 		
@@ -396,46 +388,45 @@ Creature* CreatureManagerImplementation::spawnCreature(const string& stfname, co
 	try {
 		lock(doLock);
 		
-		CreatureImplementation* creatureImpl = new CreatureImplementation(getNextCreatureID());
+		Creature* creature = new Creature(getNextCreatureID());
+		creature->deploy();
 		
 		if (!stfname.empty())
-			creatureImpl->speciesName = stfname;
+			creature->setSpeciesName(stfname);
 		else
-			creatureImpl->characterName = unicode(name);
+			creature->setCharacterName(unicode(name));
 
-		creatureImpl->objectFile = "";
-		creatureImpl->objectCRC = objCrc;
+		creature->setObjectFileName("");
+		creature->setObjectCRC(objCrc);
 
-		creatureImpl->terrainName = Terrain::getTerrainName(zone->getZoneID());
+		creature->setTerrainName(Terrain::getTerrainName(zone->getZoneID()));
 	
 		//ham stuff
-		creatureImpl->health = 10000;
-		creatureImpl->strength = 10000;
-		creatureImpl->constitution = 10000;
-		creatureImpl->action = 10000;
-		creatureImpl->quickness = 10000;
-		creatureImpl->stamina = 10000;
-		creatureImpl->mind = 10000;
-		creatureImpl->focus = 10000;
-		creatureImpl->willpower = 10000;
+		creature->setHealth(10000);
+		creature->setStrength(10000);
+		creature->setConstitution(10000);
+		creature->setAction(10000);
+		creature->setQuickness(10000);
+		creature->setStamina(10000);
+		creature->setMind(10000);
+		creature->setFocus(10000);
+		creature->setWillpower(10000);
 
-		creatureImpl->healthMax = 10000;
-		creatureImpl->strengthMax = 10000;
-		creatureImpl->constitutionMax = 10000;
-		creatureImpl->actionMax = 10000;
-		creatureImpl->quicknessMax = 10000;
-		creatureImpl->staminaMax = 10000;
-		creatureImpl->mindMax = 10000;
-		creatureImpl->focusMax = 10000;
-		creatureImpl->willpowerMax = 10000;
+		creature->setHealthMax(10000);
+		creature->setStrengthMax(10000);
+		creature->setConstitutionMax(10000);
+		creature->setActionMax(10000);
+		creature->setQuicknessMax(10000);
+		creature->setStaminaMax(10000);
+		creature->setMindMax(10000);
+		creature->setFocusMax(10000);
+		creature->setWillpowerMax(10000);
 
-		creatureImpl->height = 1.0f;
-		creatureImpl->initializePosition(x, 0, y);
-		creatureImpl->pvpStatusBitmask = bitmask;//0x01 + 0x02 + 0x20;
+		creature->setHeight(1.0f);
+		creature->initializePosition(x, 0, y);
+		creature->setPvpStatusBitmask(bitmask);
 
-		load(creatureImpl);
-		
-		Creature* creature = (Creature*) creatureImpl->deploy();
+		load(creature);
 		
 		creature->loadItems();
 		creature->insertToZone(zone);
@@ -470,13 +461,13 @@ void CreatureManagerImplementation::respawnCreature(Creature* creature) {
 	unlock();
 }
 
-void CreatureManagerImplementation::load(CreatureImplementation* creature) {
+void CreatureManagerImplementation::load(Creature* creature) {
 	creature->setCreatureManager(this);
 	creature->setZoneProcessServer(server);
 	
 	// Load skills from lua's
 	LuaFunction getCreature(getLuaState(), "getCreature", 1);
-	getCreature << creature->objectCRC; // push first argument	
+	getCreature << creature->getObjectCRC(); // push first argument	
 	callFunction(&getCreature);
 	
 	LuaObject result(getLuaState());
@@ -514,111 +505,110 @@ void CreatureManagerImplementation::unloadCreature(Creature* creature) {
 }
 
 int CreatureManagerImplementation::addCreature(lua_State *L) {
-	LuaObject creature(L);
+	LuaObject creatureConfig(L);
 	
-	if (!creature.isValidTable())
+	if (!creatureConfig.isValidTable())
 		return 1;
 	
-	int planet = creature.getIntField("planet");
+	int planet = creatureConfig.getIntField("planet");
 	
 	if (planet != instance->getZone()->getZoneID())
 		return 1;
 	
 	instance->lock();
 	
-	CreatureImplementation* creatureImpl = new CreatureImplementation(instance->getNextCreatureID());
+	Creature* creature = new Creature(instance->getNextCreatureID());
+	creature->deploy();
 	
-	string objectName = creature.getStringField("objectName");
-	string stfname = creature.getStringField("stfName");
-	string name = creature.getStringField("name");
+	string objectName = creatureConfig.getStringField("objectName");
+	string stfname = creatureConfig.getStringField("stfName");
+	string name = creatureConfig.getStringField("name");
 
-	creatureImpl->objectCRC = creature.getIntField("objectCRC");
+	creature->setObjectCRC(creatureConfig.getIntField("objectCRC"));
 
 	if (!stfname.empty())
-		creatureImpl->characterName = stfname;
+		creature->setCharacterName(stfname);
 	else	
-		if (creatureImpl->objectCRC == 0xBA7F23CD)
-			creatureImpl->characterName = unicode(instance->makeStormTrooperName());
+		if (creature->getObjectCRC() == 0xBA7F23CD)
+			creature->setCharacterName(unicode(instance->makeStormTrooperName()));
 		else
-			creatureImpl->characterName = unicode(instance->makeCreatureName(name));
+			creature->setCharacterName(unicode(instance->makeCreatureName(name)));
 	
-	creatureImpl->terrainName = Terrain::getTerrainName(planet);
+	creature->setTerrainName(Terrain::getTerrainName(planet));
 
 	//ham stuff
-	creatureImpl->health = creature.getIntField("health");
-	creatureImpl->strength = creature.getIntField("strength");
-	creatureImpl->constitution = creature.getIntField("constitution");
-	creatureImpl->action = creature.getIntField("action");
-	creatureImpl->quickness = creature.getIntField("quickness");
-	creatureImpl->stamina = creature.getIntField("stamina");
-	creatureImpl->mind = creature.getIntField("mind");
-	creatureImpl->focus = creature.getIntField("focus");
-	creatureImpl->willpower = creature.getIntField("willpower");
+	creature->setHealth(creatureConfig.getIntField("health"));
+	creature->setStrength(creatureConfig.getIntField("strength"));
+	creature->setConstitution(creatureConfig.getIntField("constitution"));
+	creature->setAction(creatureConfig.getIntField("action"));
+	creature->setQuickness(creatureConfig.getIntField("quickness"));
+	creature->setStamina(creatureConfig.getIntField("stamina"));
+	creature->setMind(creatureConfig.getIntField("mind"));
+	creature->setFocus(creatureConfig.getIntField("focus"));
+	creature->setWillpower(creatureConfig.getIntField("willpower"));
 
-	creatureImpl->health = creatureImpl->health + (creatureImpl->health * (System::random(100)) / 1111);
-	creatureImpl->action = creatureImpl->action + (creatureImpl->action * (System::random(100)) / 1111);
-	creatureImpl->mind = creatureImpl->mind + (creatureImpl->mind * (System::random(100)) / 1111);
+	creature->setHealth(creature->getHealth() + (creature->getHealth() * (System::random(100)) / 1111));
+	creature->setAction(creature->getAction() + (creature->getAction() * (System::random(100)) / 1111));
+	creature->setMind(creature->getMind() + (creature->getMind() * (System::random(100)) / 1111));
 	
-	creatureImpl->healthMax = creatureImpl->health;
-	creatureImpl->strengthMax = creatureImpl->strength;
-	creatureImpl->constitutionMax = creatureImpl->constitution;
-	creatureImpl->actionMax = creatureImpl->action;
-	creatureImpl->quicknessMax = creatureImpl->quickness;
-	creatureImpl->staminaMax = creatureImpl->stamina;
-	creatureImpl->mindMax = creatureImpl->mind;
-	creatureImpl->focusMax = creatureImpl->focus;
-	creatureImpl->willpowerMax = creatureImpl->willpower;
+	creature->setHealthMax(creature->getHealth());
+	creature->setStrengthMax(creature->getStrength());
+	creature->setConstitutionMax(creature->getConstitution());
+	creature->setActionMax(creature->getAction());
+	creature->setQuicknessMax(creature->getQuickness());
+	creature->setStaminaMax(creature->getStamina());
+	creature->setMindMax(creature->getMind());
+	creature->setFocusMax(creature->getFocus());
+	creature->setWillpowerMax(creature->getWillpower());
 
-	creatureImpl->baseHealth = creatureImpl->health;
-	creatureImpl->baseStrength = creatureImpl->strength;
-	creatureImpl->baseConstitution = creatureImpl->constitution;
-	creatureImpl->baseAction = creatureImpl->action;
-	creatureImpl->baseQuickness = creatureImpl->quickness;
-	creatureImpl->baseStamina = creatureImpl->stamina;
-	creatureImpl->baseMind = creatureImpl->mind;
-	creatureImpl->baseFocus = creatureImpl->focus;
-	creatureImpl->baseWillpower = creatureImpl->willpower;	
+	creature->setBaseHealth(creature->getHealth());
+	creature->setBaseStrength(creature->getStrength());
+	creature->setBaseConstitution(creature->getConstitution());
+	creature->setBaseAction(creature->getAction());
+	creature->setBaseQuickness(creature->getQuickness());
+	creature->setBaseStamina(creature->getStamina());
+	creature->setBaseMind(creature->getMind());
+	creature->setBaseFocus(creature->getFocus());
+	creature->setBaseWillpower(creature->getWillpower());
 	
-	creatureImpl->armor = creature.getIntField("armor");
+	creature->setArmor(creatureConfig.getIntField("armor"));
 
-	creatureImpl->kinetic = creature.getFloatField("kinetic");
-	creatureImpl->energy = creature.getFloatField("energy");
-	creatureImpl->electricity = creature.getFloatField("electricity");
-	creatureImpl->stun = creature.getFloatField("stun");
-	creatureImpl->blast = creature.getFloatField("blast");
-	creatureImpl->heat = creature.getFloatField("heat");
-	creatureImpl->cold = creature.getFloatField("cold");
-	creatureImpl->acid = creature.getFloatField("acid");
-	creatureImpl->lightSaber = creature.getFloatField("lightSaber");	
+	creature->setKinetic(creatureConfig.getFloatField("kinetic"));
+	creature->setEnergy(creatureConfig.getFloatField("energy"));
+	creature->setElectricity(creatureConfig.getFloatField("electricity"));
+	creature->setStun(creatureConfig.getFloatField("stun"));
+	creature->setBlast(creatureConfig.getFloatField("blast"));
+	creature->setHeat(creatureConfig.getFloatField("heat"));
+	creature->setCold(creatureConfig.getFloatField("cold"));
+	creature->setAcid(creatureConfig.getFloatField("acid"));
+	creature->setLightSaber(creatureConfig.getFloatField("lightSaber"));	
 
-	creatureImpl->height = creature.getFloatField("height");
+	creature->setHeight(creatureConfig.getFloatField("height"));
 	
-	uint64 cellID = creature.getLongField("cellID");
+	uint64 cellID = creatureConfig.getLongField("cellID");
 	
-	float x = creature.getFloatField("positionX");
-	float y = creature.getFloatField("positionY");
-	float z = creature.getFloatField("positionZ");
+	float x = creatureConfig.getFloatField("positionX");
+	float y = creatureConfig.getFloatField("positionY");
+	float z = creatureConfig.getFloatField("positionZ");
 	
-	creatureImpl->initializePosition(x, z, y);
+	creature->initializePosition(x, z, y);
 	
-	creatureImpl->setSpawnPosition(x, z, y, cellID);
+	creature->setSpawnPosition(x, z, y, cellID);
 	
-	creatureImpl->accuracy = creature.getIntField("accuracy");
-	creatureImpl->speed = creature.getFloatField("speed");
-	creatureImpl->acceleration = creature.getFloatField("acceleration");
-	creatureImpl->respawnTimer = creature.getIntField("respawnTimer");
-	creatureImpl->level = creature.getIntField("level");
-	creatureImpl->pvpStatusBitmask = creature.getIntField("combatFlags");
-	creatureImpl->parent = instance->getZone()->lookupObject(cellID);
+	creature->setAccuracy(creatureConfig.getIntField("accuracy"));
+	creature->setSpeed(creatureConfig.getFloatField("speed"));
+	creature->setAcceleration(creatureConfig.getFloatField("acceleration"));
+	creature->setRespawnTimer(creatureConfig.getIntField("respawnTimer"));
+	creature->setLevel(creatureConfig.getIntField("level"));
+	creature->setPvpStatusBitmask(creatureConfig.getIntField("combatFlags"));
+	creature->setParent(instance->getZone()->lookupObject(cellID));
 
-	instance->load(creatureImpl);
+	instance->load(creature);
 
-	Creature* creatureObj = (Creature*) creatureImpl->deploy();
+	creature->loadItems();
+	creature->insertToZone(instance->zone);
 
-	creatureObj->loadItems();
-	creatureObj->insertToZone(instance->zone);
-
-	instance->creatureMap->put(creatureObj->getObjectID(), creatureObj);
+	instance->creatureMap->put(creature->getObjectID(), creature);
 	instance->unlock();
 
 	return 0;
@@ -634,17 +624,16 @@ int CreatureManagerImplementation::addLair(lua_State * L) {
 	
 	instance->lock();
 	uint32 objectCRC = object.getIntField("objectCRC");
-	LairObjectImplementation* lairImpl = new LairObjectImplementation(objectCRC, instance->getNextCreatureID());
+	
+	LairObject* lair = new LairObject(objectCRC, instance->getNextCreatureID());
 	float x = object.getFloatField("positionX");
 	float y = object.getFloatField("positionY");
 	float z = object.getFloatField("positionZ");
 	
-	lairImpl->initializePosition(x, z, y);
+	lair->initializePosition(x, z, y);
 	
-	LairObject* lairObject = (LairObject*) lairImpl->deploy();
-
 	//lairObject->loadItems();
-	lairObject->insertToZone(instance->zone);
+	lair->insertToZone(instance->getZone());
 	
 	cout << "Spawning Lair with objcrc (" << objectCRC << ")" << "on position [" << x << "," << y << "]\n";
 	object.pop();

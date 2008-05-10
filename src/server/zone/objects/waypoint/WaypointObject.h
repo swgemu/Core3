@@ -9,18 +9,13 @@
 
 class SceneObject;
 
+class Player;
+
 #include "../scene/SceneObject.h"
 
 class WaypointObject : public SceneObject {
-protected:
-	WaypointObject();
-	WaypointObject(DistributedObjectServant* obj);
-	WaypointObject(WaypointObject& ref);
-
-	virtual ~WaypointObject();
-
 public:
-	WaypointObject* clone();
+	WaypointObject(Player* player, unsigned long long oid);
 
 	void changeStatus(bool status);
 
@@ -39,10 +34,12 @@ public:
 	string& getPlanetName();
 
 protected:
+	WaypointObject(DummyConstructorParameter* param);
+
+	virtual ~WaypointObject();
+
 	string _return_getName;
-
 	string _return_getPlanetName;
-
 
 	friend class WaypointObjectHelper;
 };
@@ -77,6 +74,8 @@ protected:
 };
 
 class WaypointObjectHelper : public DistributedObjectClassHelper, public Singleton<WaypointObjectHelper> {
+	static WaypointObjectHelper* staticInitializer;
+
 public:
 	WaypointObjectHelper();
 
@@ -84,7 +83,7 @@ public:
 
 	DistributedObject* instantiateObject();
 
-	DistributedObjectAdapter* createAdapter(DistributedObjectServant* obj);
+	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class SingletonWrapper<WaypointObjectHelper>;
 };

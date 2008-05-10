@@ -42,8 +42,12 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
+import "../../creature/CreatureObject";
+
 import "../Container";
 
 interface CreatureInventory implements Container {
-	CreatureInventory(unsigned long oid);
+	CreatureInventory(CreatureObject creature) {
+		super(unsigned long oid);
+	}
 }

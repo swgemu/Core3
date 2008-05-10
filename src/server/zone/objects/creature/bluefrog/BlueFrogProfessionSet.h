@@ -48,18 +48,18 @@ which carries forward this exception.
 #include "engine/engine.h"
 
 #include "BFVector.h"
-#include "BFVectorImplementation.h"
 
 class BlueFrogProfessionSet : public HashTable<string, string> {
 	BFVector * profList;
+	
 public:	
 	BlueFrogProfessionSet() {
-		BFVectorImplementation * profListImpl = new BFVectorImplementation();
-		profList = (BFVector*) profListImpl->deploy();
+		profList = new BFVector();
 	}
 	
 	int hash(const string& str) {
 		int h = 0;
+		
 		for (int i = 0; i < str.length(); i++) {
 		    h = 31*h + str.at(i);
 		}
@@ -72,7 +72,7 @@ public:
 		profList->add(name);
 	}
 	
-	inline BFVector * listContents() {
+	inline BFVector* listContents() {
 		return profList;
 	}
 	

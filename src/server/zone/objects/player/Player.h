@@ -56,17 +56,14 @@ class ResourceContainer;
 #include "../creature/CreatureObject.h"
 
 class Player : public CreatureObject {
-protected:
-	Player();
-	Player(DistributedObjectServant* obj);
-	Player(Player& ref);
-
-	virtual ~Player();
-
 public:
-	Player* clone();
+	Player();
 
-	Player* create(ZoneClient* client);
+	Player(unsigned long long oid);
+
+	void create(ZoneClient* client);
+
+	void refuseCreate(ZoneClient* client);
 
 	void load(ZoneClient* client);
 
@@ -473,31 +470,23 @@ public:
 	string& getLastNpcConvMessStr();
 
 protected:
+	Player(DummyConstructorParameter* param);
+
+	virtual ~Player();
+
 	string _return_getCertification;
-
 	string _return_getFactionRank;
-
 	string _return_getFirstName;
-
 	string _return_getHairData;
-
 	string _return_getHairObject;
-
 	string _return_getLastName;
-
 	string _return_getLastNpcConvMessStr;
-
 	string _return_getLastNpcConvStr;
-
 	string _return_getNextSkillBox;
-
 	string _return_getRaceFileName;
-
 	string _return_getStartingProfession;
 
-
 	unicode _return_getBiography;
-
 
 	friend class PlayerHelper;
 };
@@ -510,7 +499,9 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	Player* create(ZoneClient* client);
+	void create(ZoneClient* client);
+
+	void refuseCreate(ZoneClient* client);
 
 	void load(ZoneClient* client);
 
@@ -951,6 +942,8 @@ protected:
 };
 
 class PlayerHelper : public DistributedObjectClassHelper, public Singleton<PlayerHelper> {
+	static PlayerHelper* staticInitializer;
+
 public:
 	PlayerHelper();
 
@@ -958,7 +951,7 @@ public:
 
 	DistributedObject* instantiateObject();
 
-	DistributedObjectAdapter* createAdapter(DistributedObjectServant* obj);
+	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class SingletonWrapper<PlayerHelper>;
 };

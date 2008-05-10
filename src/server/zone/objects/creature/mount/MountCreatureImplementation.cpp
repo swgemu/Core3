@@ -101,15 +101,13 @@ void MountCreatureImplementation::addToDatapad() {
 	
 	Player* linkedPlayer = (Player*)linkedCreature;
 	
-	IntangibleObjectImplementation* swoopImpl = new IntangibleObjectImplementation((SceneObject*)linkedPlayer->getDatapad(), 
+	itno = new IntangibleObject((SceneObject*) linkedPlayer->getDatapad(), 
 			itnoCRC, linkedCreature->getNewItemID());
 
-	swoopImpl->setName(speciesName);
-	swoopImpl->setDetailName(stfName);
-	swoopImpl->setWorldObject(_this);
+	itno->setName(speciesName);
+	itno->setDetailName(stfName);
+	itno->setWorldObject(_this);
 
-	itno = (IntangibleObject*) swoopImpl->deploy();
-	
 	linkedPlayer->addDatapadItem((SceneObject*) itno);
 }
 
@@ -248,15 +246,14 @@ IntangibleObject* MountCreatureImplementation::getITNO() {
 		if (!linkedCreature->isPlayer())
 			return NULL;
 		
-		Player* player = (Player*)linkedCreature;
-		IntangibleObjectImplementation* itnoImpl = new IntangibleObjectImplementation((SceneObject*)player->getDatapad(), 
+		Player* player = (Player*) linkedCreature;
+		
+		itno = new IntangibleObject((SceneObject*) player->getDatapad(), 
 				itnoCRC, linkedCreature->getNewItemID());
 
-		itnoImpl->setName(stfName);
-		itnoImpl->setDetailName(speciesName);
-		itnoImpl->setWorldObject(_this);
-
-		itno = (IntangibleObject*) itnoImpl->deploy();
+		itno->setName(stfName);
+		itno->setDetailName(speciesName);
+		itno->setWorldObject(_this);
 	}
 	
 	return itno;

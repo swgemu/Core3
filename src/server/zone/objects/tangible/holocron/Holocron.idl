@@ -42,12 +42,14 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-import "../TangibleObject";
-
 import "../../player/Player";
 
+import "../TangibleObject";
+
 interface Holocron implements TangibleObject {
-	Holocron(unsigned long oid, int tp);
+	Holocron(Player player, unsigned int tempCRC, const unicode n, const string tempn) {
+		super(unsigned long oid, int tp);
+	}
 
 	int useObject(Player player);
 	

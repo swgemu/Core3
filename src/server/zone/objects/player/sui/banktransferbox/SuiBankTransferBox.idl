@@ -48,7 +48,13 @@ import "../../Player";
 include "engine/service/proto/BaseMessage";
 
 interface SuiBankTransferBox implements SuiBox {
-	SuiBankTransferBox(Player play, unsigned int typeID, unsigned int boxtype);
+	SuiBankTransferBox(Player player, unsigned int boxtype) {
+		super(player, int typeID, boxtype);
+	}
+
+	void addCash(int cash);
+
+	void addBank(int bank);
 	
 	BaseMessage generateMessage();
 

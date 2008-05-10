@@ -10,15 +10,8 @@
 class Guild;
 
 class GuildMap : public DistributedObjectStub {
-protected:
-	GuildMap();
-	GuildMap(DistributedObjectServant* obj);
-	GuildMap(GuildMap& ref);
-
-	virtual ~GuildMap();
-
 public:
-	GuildMap* clone();
+	GuildMap();
 
 	void add(Guild* guild);
 
@@ -35,6 +28,10 @@ public:
 	int size();
 
 protected:
+	GuildMap(DummyConstructorParameter* param);
+
+	virtual ~GuildMap();
+
 	friend class GuildMapHelper;
 };
 
@@ -65,6 +62,8 @@ protected:
 };
 
 class GuildMapHelper : public DistributedObjectClassHelper, public Singleton<GuildMapHelper> {
+	static GuildMapHelper* staticInitializer;
+
 public:
 	GuildMapHelper();
 
@@ -72,7 +71,7 @@ public:
 
 	DistributedObject* instantiateObject();
 
-	DistributedObjectAdapter* createAdapter(DistributedObjectServant* obj);
+	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class SingletonWrapper<GuildMapHelper>;
 };

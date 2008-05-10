@@ -41,18 +41,25 @@ gives permission to release a modified version without this exception;
 this exception also makes it possible to release a modified version 
 which carries forward this exception.
 */
- 
-import "../TangibleObject";
-import "../../../packets";
+
+include "engine/service/Message";
+
 import "../../player/Player";
+
 import "../../creature/CreatureObject";
+
+import "../TangibleObject";
+
 //import "../../draftschematic/DraftSchematic";
  
-include "engine/service/Message";
- 
 interface CraftingStation implements TangibleObject {
-	CraftingStation(unsigned long oid, const unicode n, const string tempn, int tempCRC, int tp);
-	CraftingStation(CreatureObject creature, const unicode n, const string tempn, int tempCRC, int tp);
+	CraftingStation(unsigned long oid, unsigned int tempCRC, const unicode n, const string tempn) {
+		super(oid, n, tempn, tempCRC, int tp);
+	}
+	
+	CraftingStation(CreatureObject creature, unsigned int tempCRC, const unicode n, const string tempn) {
+		super(creature, n, tempn, tempCRC, int tp);
+	}
  
 	//void sendTo(Player player, boolean doClose = true);
 	void generateAttributes(Player player);

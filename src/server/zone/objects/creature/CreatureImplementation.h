@@ -210,7 +210,7 @@ public:
 		creatureGroup = group;
 	}
 	
-	inline void setObjectFileName(string& name) {
+	inline void setObjectFileName(const string& name) {
 		objectFile = name;
 	}
 	

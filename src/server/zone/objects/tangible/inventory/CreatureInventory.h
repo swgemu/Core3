@@ -7,20 +7,20 @@
 
 #include "engine/orb/DistributedObjectBroker.h"
 
+class CreatureObject;
+
 class Container;
 
 #include "../Container.h"
 
 class CreatureInventory : public Container {
+public:
+	CreatureInventory(CreatureObject* creature);
+
 protected:
-	CreatureInventory();
-	CreatureInventory(DistributedObjectServant* obj);
-	CreatureInventory(CreatureInventory& ref);
+	CreatureInventory(DummyConstructorParameter* param);
 
 	virtual ~CreatureInventory();
-
-public:
-	CreatureInventory* clone();
 
 	friend class CreatureInventoryHelper;
 };
@@ -36,6 +36,8 @@ public:
 };
 
 class CreatureInventoryHelper : public DistributedObjectClassHelper, public Singleton<CreatureInventoryHelper> {
+	static CreatureInventoryHelper* staticInitializer;
+
 public:
 	CreatureInventoryHelper();
 
@@ -43,7 +45,7 @@ public:
 
 	DistributedObject* instantiateObject();
 
-	DistributedObjectAdapter* createAdapter(DistributedObjectServant* obj);
+	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class SingletonWrapper<CreatureInventoryHelper>;
 };

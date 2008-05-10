@@ -14,15 +14,13 @@ class CreatureObject;
 #include "Container.h"
 
 class MissionBag : public Container {
+public:
+	MissionBag(CreatureObject* creature);
+
 protected:
-	MissionBag();
-	MissionBag(DistributedObjectServant* obj);
-	MissionBag(MissionBag& ref);
+	MissionBag(DummyConstructorParameter* param);
 
 	virtual ~MissionBag();
-
-public:
-	MissionBag* clone();
 
 	friend class MissionBagHelper;
 };
@@ -38,6 +36,8 @@ public:
 };
 
 class MissionBagHelper : public DistributedObjectClassHelper, public Singleton<MissionBagHelper> {
+	static MissionBagHelper* staticInitializer;
+
 public:
 	MissionBagHelper();
 
@@ -45,7 +45,7 @@ public:
 
 	DistributedObject* instantiateObject();
 
-	DistributedObjectAdapter* createAdapter(DistributedObjectServant* obj);
+	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class SingletonWrapper<MissionBagHelper>;
 };

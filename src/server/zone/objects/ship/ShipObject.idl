@@ -43,13 +43,18 @@ which carries forward this exception.
 */
 
 import "../scene/SceneObject";
+
 import "../player/Player";
+
 import "../intangible/IntangibleObject";
 
 import "../tangible/component/ShipComponent";
 
 interface ShipObject implements SceneObject {
-
+	ShipObject(unsigned long oid, Player owner) {
+		super(oid);
+	}
+	
 	// ShipObjectImplementation(unsigned long oid, Player SOwner);
 	
 	void init();

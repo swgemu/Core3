@@ -12,15 +12,13 @@ class SceneObject;
 #include "../scene/SceneObject.h"
 
 class MissionObject : public SceneObject {
+public:
+	MissionObject(unsigned long long oid);
+
 protected:
-	MissionObject();
-	MissionObject(DistributedObjectServant* obj);
-	MissionObject(MissionObject& ref);
+	MissionObject(DummyConstructorParameter* param);
 
 	virtual ~MissionObject();
-
-public:
-	MissionObject* clone();
 
 	friend class MissionObjectHelper;
 };
@@ -36,6 +34,8 @@ public:
 };
 
 class MissionObjectHelper : public DistributedObjectClassHelper, public Singleton<MissionObjectHelper> {
+	static MissionObjectHelper* staticInitializer;
+
 public:
 	MissionObjectHelper();
 
@@ -43,7 +43,7 @@ public:
 
 	DistributedObject* instantiateObject();
 
-	DistributedObjectAdapter* createAdapter(DistributedObjectServant* obj);
+	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class SingletonWrapper<MissionObjectHelper>;
 };

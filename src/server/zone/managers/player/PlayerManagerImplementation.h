@@ -75,21 +75,26 @@ class PlayerManagerImplementation : public PlayerManagerServant {
 	GuildManager* guildManager;
 	
 private:
-	Player* loadFromDatabase(PlayerImplementation* player);
-	void loadWaypoints(PlayerImplementation* player);
+	void loadFromDatabase(Player* player);
+	
+	void loadWaypoints(Player* player);
 
 public:
 	PlayerManagerImplementation(ItemManager* mgr, ZoneProcessServerImplementation* srv);
+	
 	~PlayerManagerImplementation();
 
 	void stop();
 	
 	bool create(Player* player, uint32 sessionkey);	
-	bool validateName(string& cname);
-	BaseMessage* attemptPlayerCreation(Player* player, ZoneClient* client);
+
 	Player* load(uint64 charid);
 
 	void unload(Player* player);
+
+	bool validateName(string& cname);
+	
+	BaseMessage* attemptPlayerCreation(Player* player, ZoneClient* client);
 
 	void doBankTip(Player* sender, Player* receiver, uint32 tipAmount, bool updateTipTo);
 	void doCashTip(Player* sender, Player* receiver, uint32 tipAmount, bool updateTipTo);
@@ -107,10 +112,12 @@ public:
 	
 	void moveItem(Player* sender, Player* receiver, TangibleObject* item);
 
+	// setters
 	inline void setGuildManager(GuildManager* gmanager) {
 		guildManager = gmanager;
 	}
 
+	// getters
 	inline PlayerMap* getPlayerMap() {
 		return playerMap;
 	}
@@ -125,8 +132,7 @@ public:
 	
 	inline GuildManager* getGuildManager() {
 		return guildManager;
-	}
-	
+	}	
 };
 
 #endif /*PLAYERMANAGERIMPLEMENTATION_H_*/

@@ -14,21 +14,20 @@ class Weapon;
 #include "Weapon.h"
 
 class JediWeapon : public Weapon {
-protected:
-	JediWeapon();
-	JediWeapon(DistributedObjectServant* obj);
-	JediWeapon(JediWeapon& ref);
-
-	virtual ~JediWeapon();
-
 public:
-	JediWeapon* clone();
+	JediWeapon(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, int tp, bool eqp = false);
+
+	JediWeapon(CreatureObject* creature, const string& temp, const unicode& n, const string& tempn, int tp, bool eqp = false);
 
 	int getForceCost();
 
 	void setForceCost(int fcost);
 
 protected:
+	JediWeapon(DummyConstructorParameter* param);
+
+	virtual ~JediWeapon();
+
 	friend class JediWeaponHelper;
 };
 
@@ -47,6 +46,8 @@ public:
 };
 
 class JediWeaponHelper : public DistributedObjectClassHelper, public Singleton<JediWeaponHelper> {
+	static JediWeaponHelper* staticInitializer;
+
 public:
 	JediWeaponHelper();
 
@@ -54,7 +55,7 @@ public:
 
 	DistributedObject* instantiateObject();
 
-	DistributedObjectAdapter* createAdapter(DistributedObjectServant* obj);
+	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class SingletonWrapper<JediWeaponHelper>;
 };
@@ -66,7 +67,7 @@ public:
 	JediWeapon* _this;
 
 public:
-	JediWeaponServant(unsigned long long objid, unsigned int tempcrc, const unicode& n, const string& tempn, bool eqp, int tp, int cat);
+	JediWeaponServant(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, bool eqp, int tp, int cat);
 	JediWeaponServant(CreatureObject* creature, const string& temp, const unicode& n, const string& tempn, bool eqp, int tp, int cat);
 	virtual ~JediWeaponServant();
 

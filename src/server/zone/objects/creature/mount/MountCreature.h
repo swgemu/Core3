@@ -9,6 +9,8 @@
 
 class Creature;
 
+class CreatureObject;
+
 class Player;
 
 class IntangibleObject;
@@ -16,15 +18,8 @@ class IntangibleObject;
 #include "../Creature.h"
 
 class MountCreature : public Creature {
-protected:
-	MountCreature();
-	MountCreature(DistributedObjectServant* obj);
-	MountCreature(MountCreature& ref);
-
-	virtual ~MountCreature();
-
 public:
-	MountCreature* clone();
+	MountCreature(CreatureObject* linkCreature, const string& name, const string& stf, unsigned int itnocrc, unsigned int objCRC, unsigned long long oid);
 
 	void setMountType(int type);
 
@@ -53,6 +48,10 @@ public:
 	bool isInWorld();
 
 protected:
+	MountCreature(DummyConstructorParameter* param);
+
+	virtual ~MountCreature();
+
 	friend class MountCreatureHelper;
 };
 
@@ -93,6 +92,8 @@ public:
 };
 
 class MountCreatureHelper : public DistributedObjectClassHelper, public Singleton<MountCreatureHelper> {
+	static MountCreatureHelper* staticInitializer;
+
 public:
 	MountCreatureHelper();
 
@@ -100,7 +101,7 @@ public:
 
 	DistributedObject* instantiateObject();
 
-	DistributedObjectAdapter* createAdapter(DistributedObjectServant* obj);
+	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class SingletonWrapper<MountCreatureHelper>;
 };

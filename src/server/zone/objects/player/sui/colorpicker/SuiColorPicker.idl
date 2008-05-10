@@ -48,7 +48,9 @@ import "../../Player";
 include "engine/service/proto/BaseMessage";
 
 interface SuiColorPicker implements SuiBox {
-	SuiColorPicker(Player play, unsigned int typeID, unsigned int boxtype);
+	SuiColorPicker(Player player, unsigned int typeID, unsigned int boxtype) {
+		super(player, typeID, boxtype);
+	}
 	
 	unsigned long getObjectID();
 	

@@ -98,10 +98,6 @@ ChatRoomImplementation::~ChatRoomImplementation() {
 	//subRooms.removeAll();
 }
 
-ChatRoom* ChatRoomImplementation::deploy() {
-	return (ChatRoom*) DistributedObjectServant::deploy("ChatRoom", roomID);
-}
-
 void ChatRoomImplementation::sendTo(Player* player) {
 	ChatRoomList* crl = new ChatRoomList();
 	crl->addChannel((ChatRoom*) _this);

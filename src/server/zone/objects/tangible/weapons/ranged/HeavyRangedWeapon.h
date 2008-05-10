@@ -16,19 +16,18 @@ class RangedWeapon;
 #include "../RangedWeapon.h"
 
 class HeavyRangedWeapon : public RangedWeapon {
-protected:
-	HeavyRangedWeapon();
-	HeavyRangedWeapon(DistributedObjectServant* obj);
-	HeavyRangedWeapon(HeavyRangedWeapon& ref);
-
-	virtual ~HeavyRangedWeapon();
-
 public:
-	HeavyRangedWeapon* clone();
+	HeavyRangedWeapon(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, bool eqp = false);
+
+	HeavyRangedWeapon(CreatureObject* creature, const string& temp, const unicode& n, const string& tempn, bool eqp = false);
 
 	int useObject(Player* player);
 
 protected:
+	HeavyRangedWeapon(DummyConstructorParameter* param);
+
+	virtual ~HeavyRangedWeapon();
+
 	friend class HeavyRangedWeaponHelper;
 };
 
@@ -45,6 +44,8 @@ public:
 };
 
 class HeavyRangedWeaponHelper : public DistributedObjectClassHelper, public Singleton<HeavyRangedWeaponHelper> {
+	static HeavyRangedWeaponHelper* staticInitializer;
+
 public:
 	HeavyRangedWeaponHelper();
 
@@ -52,7 +53,7 @@ public:
 
 	DistributedObject* instantiateObject();
 
-	DistributedObjectAdapter* createAdapter(DistributedObjectServant* obj);
+	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class SingletonWrapper<HeavyRangedWeaponHelper>;
 };
@@ -64,7 +65,7 @@ public:
 	HeavyRangedWeapon* _this;
 
 public:
-	HeavyRangedWeaponServant(unsigned long long objid, unsigned int tempcrc, const unicode& n, const string& tempn, int tp, bool eqp);
+	HeavyRangedWeaponServant(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, int tp, bool eqp);
 	HeavyRangedWeaponServant(CreatureObject* creature, const string& temp, const unicode& n, const string& tempn, int tp, bool eqp);
 	virtual ~HeavyRangedWeaponServant();
 

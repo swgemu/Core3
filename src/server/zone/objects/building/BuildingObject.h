@@ -24,15 +24,8 @@ class Zone;
 #include "../scene/SceneObject.h"
 
 class BuildingObject : public SceneObject {
-protected:
-	BuildingObject();
-	BuildingObject(DistributedObjectServant* obj);
-	BuildingObject(BuildingObject& ref);
-
-	virtual ~BuildingObject();
-
 public:
-	BuildingObject* clone();
+	BuildingObject(unsigned long long oid, bool staticBuilding);
 
 	void addCell(CellObject* cell);
 
@@ -65,6 +58,10 @@ public:
 	void inRange(QuadTreeEntry* obj, float range);
 
 protected:
+	BuildingObject(DummyConstructorParameter* param);
+
+	virtual ~BuildingObject();
+
 	friend class BuildingObjectHelper;
 };
 
@@ -109,6 +106,8 @@ public:
 };
 
 class BuildingObjectHelper : public DistributedObjectClassHelper, public Singleton<BuildingObjectHelper> {
+	static BuildingObjectHelper* staticInitializer;
+
 public:
 	BuildingObjectHelper();
 
@@ -116,7 +115,7 @@ public:
 
 	DistributedObject* instantiateObject();
 
-	DistributedObjectAdapter* createAdapter(DistributedObjectServant* obj);
+	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class SingletonWrapper<BuildingObjectHelper>;
 };

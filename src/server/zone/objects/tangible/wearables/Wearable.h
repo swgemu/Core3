@@ -7,20 +7,24 @@
 
 #include "engine/orb/DistributedObjectBroker.h"
 
+class CreatureObject;
+
 class TangibleObject;
 
 #include "../TangibleObject.h"
 
 class Wearable : public TangibleObject {
+public:
+	Wearable(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, bool eqp = false);
+
+	Wearable(CreatureObject* creature, unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, bool eqp = false);
+
+	Wearable(CreatureObject* creature, unsigned int tempCRC, const unicode& n, const string& tempn, bool eqp = false);
+
 protected:
-	Wearable();
-	Wearable(DistributedObjectServant* obj);
-	Wearable(Wearable& ref);
+	Wearable(DummyConstructorParameter* param);
 
 	virtual ~Wearable();
-
-public:
-	Wearable* clone();
 
 	friend class WearableHelper;
 };
@@ -36,6 +40,8 @@ public:
 };
 
 class WearableHelper : public DistributedObjectClassHelper, public Singleton<WearableHelper> {
+	static WearableHelper* staticInitializer;
+
 public:
 	WearableHelper();
 
@@ -43,7 +49,7 @@ public:
 
 	DistributedObject* instantiateObject();
 
-	DistributedObjectAdapter* createAdapter(DistributedObjectServant* obj);
+	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class SingletonWrapper<WearableHelper>;
 };

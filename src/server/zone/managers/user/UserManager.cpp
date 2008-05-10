@@ -6,32 +6,29 @@
 
 #include "UserManagerImplementation.h"
 
+#include "server/zone/ZoneServer.h"
+
 /*
  *	UserManagerStub
  */
 
-UserManager::UserManager() : DistributedObjectStub(NULL) {
+UserManager::UserManager(ZoneServer* server) {
+	_impl = new UserManagerImplementation(server);
+	_impl->_setStub(this);
 }
 
-UserManager::UserManager(DistributedObjectServant* obj) : DistributedObjectStub(obj) {
-}
-
-UserManager::UserManager(UserManager& ref) : DistributedObjectStub(ref) {
+UserManager::UserManager(DummyConstructorParameter* param) {
+	_impl = NULL;
 }
 
 UserManager::~UserManager() {
 }
 
-UserManager* UserManager::clone() {
-	return new UserManager(*this);
-}
-
-
 bool UserManager::checkUser(unsigned int ipid) {
-	if (!deployed)
-		throw ObjectNotDeployedException(this);
-
 	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
 		DistributedMethod method(this, 6);
 		method.addUnsignedIntParameter(ipid);
 
@@ -41,10 +38,10 @@ bool UserManager::checkUser(unsigned int ipid) {
 }
 
 bool UserManager::isAdmin(const string& name) {
-	if (!deployed)
-		throw ObjectNotDeployedException(this);
-
 	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
 		DistributedMethod method(this, 7);
 		method.addAsciiParameter(name);
 
@@ -54,10 +51,10 @@ bool UserManager::isAdmin(const string& name) {
 }
 
 void UserManager::parseBanList() {
-	if (!deployed)
-		throw ObjectNotDeployedException(this);
-
 	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
 		DistributedMethod method(this, 8);
 
 		method.executeWithVoidReturn();
@@ -66,10 +63,10 @@ void UserManager::parseBanList() {
 }
 
 void UserManager::banUser(const string& ipaddr) {
-	if (!deployed)
-		throw ObjectNotDeployedException(this);
-
 	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
 		DistributedMethod method(this, 9);
 		method.addAsciiParameter(ipaddr);
 
@@ -79,10 +76,10 @@ void UserManager::banUser(const string& ipaddr) {
 }
 
 bool UserManager::banUserByName(string& name, string& admin) {
-	if (!deployed)
-		throw ObjectNotDeployedException(this);
-
 	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
 		DistributedMethod method(this, 10);
 		method.addAsciiParameter(name);
 		method.addAsciiParameter(admin);
@@ -93,10 +90,10 @@ bool UserManager::banUserByName(string& name, string& admin) {
 }
 
 void UserManager::changeUserCap(int amount) {
-	if (!deployed)
-		throw ObjectNotDeployedException(this);
-
 	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
 		DistributedMethod method(this, 11);
 		method.addSignedIntParameter(amount);
 
@@ -106,10 +103,10 @@ void UserManager::changeUserCap(int amount) {
 }
 
 bool UserManager::isBannedUser(unsigned int ipid) {
-	if (!deployed)
-		throw ObjectNotDeployedException(this);
-
 	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
 		DistributedMethod method(this, 12);
 		method.addUnsignedIntParameter(ipid);
 
@@ -119,10 +116,10 @@ bool UserManager::isBannedUser(unsigned int ipid) {
 }
 
 int UserManager::getUserCap() {
-	if (!deployed)
-		throw ObjectNotDeployedException(this);
-
 	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
 		DistributedMethod method(this, 13);
 
 		return method.executeWithSignedIntReturn();
@@ -208,6 +205,8 @@ int UserManagerAdapter::getUserCap() {
  *	UserManagerHelper
  */
 
+UserManagerHelper* UserManagerHelper::staticInitializer = UserManagerHelper::instance();
+
 UserManagerHelper::UserManagerHelper() {
 	className = "UserManager";
 
@@ -219,19 +218,16 @@ void UserManagerHelper::finalizeHelper() {
 }
 
 DistributedObject* UserManagerHelper::instantiateObject() {
-	return new UserManager();
+	return new UserManager(DummyConstructorParameter::instance());
 }
 
-DistributedObjectAdapter* UserManagerHelper::createAdapter(DistributedObjectServant* obj) {
-	DistributedObjectAdapter* adapter = new UserManagerAdapter((UserManagerImplementation*) obj);
+DistributedObjectAdapter* UserManagerHelper::createAdapter(DistributedObjectStub* obj) {
+	DistributedObjectAdapter* adapter = new UserManagerAdapter((UserManagerImplementation*) obj->_getImplementation());
 
-	DistributedObjectStub* stub = new UserManager(obj);
-	stub->_setClassName(className);
-	stub->_setClassHelper(this);
+	obj->_setClassName(className);
+	obj->_setClassHelper(this);
 
-	adapter->setStub(stub);
-
-	obj->_setStub(stub);
+	adapter->setStub(obj);
 
 	return adapter;
 }

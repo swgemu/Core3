@@ -106,11 +106,8 @@ private:
 
 public:
 	ShipObjectImplementation(uint64 oid, Player* SOwner);
+
 	~ShipObjectImplementation();
-	
-	inline ShipObject* deploy() {
-		return (ShipObject*) SceneObjectImplementation::deploy();
-	}
 	
 	void init();
 

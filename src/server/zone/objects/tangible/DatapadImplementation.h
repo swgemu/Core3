@@ -45,7 +45,10 @@ which carries forward this exception.
 #ifndef DATAPADIMPLEMENTATION_H_
 #define DATAPADIMPLEMENTATION_H_
 
+#include "../creature/CreatureObject.h"
+
 #include "Container.h"
+
 #include "Datapad.h"
 
 class DatapadImplementation : public DatapadServant {

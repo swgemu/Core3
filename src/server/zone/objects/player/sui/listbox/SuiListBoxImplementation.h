@@ -67,6 +67,7 @@ public:
 	
 public:
 	SuiListBoxImplementation(Player* player, uint32 boxType, int listBoxType = 0);
+	
 	~SuiListBoxImplementation();
 	
 	void addMenuItem(const string& name, uint64 objectID = 0) {

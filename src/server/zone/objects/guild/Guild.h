@@ -12,15 +12,8 @@ class Player;
 class GuildManager;
 
 class Guild : public DistributedObjectStub {
-protected:
-	Guild();
-	Guild(DistributedObjectServant* obj);
-	Guild(Guild& ref);
-
-	virtual ~Guild();
-
 public:
-	Guild* clone();
+	Guild(unsigned int gid, const string& name, const string& tag);
 
 	void sendGuildListTo(Player* player, bool doLock = true);
 
@@ -37,10 +30,12 @@ public:
 	string& getGuildTag();
 
 protected:
+	Guild(DummyConstructorParameter* param);
+
+	virtual ~Guild();
+
 	string _return_getGuildName;
-
 	string _return_getGuildTag;
-
 
 	friend class GuildHelper;
 };
@@ -70,6 +65,8 @@ public:
 };
 
 class GuildHelper : public DistributedObjectClassHelper, public Singleton<GuildHelper> {
+	static GuildHelper* staticInitializer;
+
 public:
 	GuildHelper();
 
@@ -77,7 +74,7 @@ public:
 
 	DistributedObject* instantiateObject();
 
-	DistributedObjectAdapter* createAdapter(DistributedObjectServant* obj);
+	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class SingletonWrapper<GuildHelper>;
 };

@@ -46,18 +46,19 @@ which carries forward this exception.
 #define BLUEFROGITEMSET_H_
 
 #include "engine/engine.h"
+
 #include "../../tangible/TangibleObjectImplementation.h"
+
 #include "BFVector.h"
-#include "BFVectorImplementation.h"
 
 class TangibleObjectImplementation;
 
-class BlueFrogItemSet : public HashTable<string, Vector<TangibleObjectImplementation *> *> {
-	BFVector * itemList;
+class BlueFrogItemSet : public HashTable<string, Vector<TangibleObject*>*> {
+	BFVector* itemList;
+	
 public:	
 	BlueFrogItemSet() {
-		BFVectorImplementation * itemListImpl = new BFVectorImplementation();
-		itemList = (BFVector*) itemListImpl->deploy();
+		itemList = new BFVector();
 	}
 	
 	int hash(const string& str) {
@@ -69,22 +70,24 @@ public:
 		return h;
 	}
 	
-	void addItem(string setName, TangibleObjectImplementation * item) {
+	void addItem(string setName, TangibleObject* item) {
 		if (containsKey(setName)) {
 			get(setName)->add(item);
 		} else {
-			Vector<TangibleObjectImplementation *> * v = new Vector<TangibleObjectImplementation *>();
+			Vector<TangibleObject*>* v = new Vector<TangibleObject*>();
 			v->add(item);
+			
 			put(setName, v);
+			
 			itemList->add(setName);
 		}
 	}
 	
-	inline BFVector * listContents() {
+	inline BFVector* listContents() {
 		return itemList;
 	}
 	
-	inline Vector<TangibleObjectImplementation *> * getItems(string set) {
+	inline Vector<TangibleObject*>* getItems(string set) {
 		return get(set);
 	}
 };

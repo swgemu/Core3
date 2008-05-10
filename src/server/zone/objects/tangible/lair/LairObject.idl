@@ -45,6 +45,8 @@ which carries forward this exception.
 import "../TangibleObject";
 
 interface LairObject implements TangibleObject {
-	LairObject(unsigned long oid, int tp);
+	LairObject(unsigned int objCRC, unsigned long oid) {
+		super(oid, int tp);
+	}
 	
 }

@@ -7,26 +7,19 @@
 
 #include "engine/orb/DistributedObjectBroker.h"
 
-class Creature;
-
-class Player;
+#include "../../player/professions/Profession.h"
 
 class SceneObject;
 
-#include "../../player/professions/Profession.h"
+class Player;
+
+class Creature;
 
 #include "../Creature.h"
 
 class TrainerCreature : public Creature {
-protected:
-	TrainerCreature();
-	TrainerCreature(DistributedObjectServant* obj);
-	TrainerCreature(TrainerCreature& ref);
-
-	virtual ~TrainerCreature();
-
 public:
-	TrainerCreature* clone();
+	TrainerCreature(unsigned long long oid, Profession* prof);
 
 	void sendConversationStartTo(SceneObject* obj);
 
@@ -35,6 +28,10 @@ public:
 	void selectConversationOption(int option, SceneObject* obj);
 
 protected:
+	TrainerCreature(DummyConstructorParameter* param);
+
+	virtual ~TrainerCreature();
+
 	friend class TrainerCreatureHelper;
 };
 
@@ -55,6 +52,8 @@ public:
 };
 
 class TrainerCreatureHelper : public DistributedObjectClassHelper, public Singleton<TrainerCreatureHelper> {
+	static TrainerCreatureHelper* staticInitializer;
+
 public:
 	TrainerCreatureHelper();
 
@@ -62,7 +61,7 @@ public:
 
 	DistributedObject* instantiateObject();
 
-	DistributedObjectAdapter* createAdapter(DistributedObjectServant* obj);
+	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class SingletonWrapper<TrainerCreatureHelper>;
 };

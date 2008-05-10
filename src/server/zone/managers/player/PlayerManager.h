@@ -7,6 +7,8 @@
 
 #include "engine/orb/DistributedObjectBroker.h"
 
+class ItemManager;
+
 class GuildManager;
 
 class Player;
@@ -15,20 +17,15 @@ class TangibleObject;
 
 class ZoneClient;
 
+#include "server/zone/ZoneProcessServerImplementation.h"
+
 class PlayerMap;
 
 #include "engine/service/proto/BaseMessage.h"
 
 class PlayerManager : public DistributedObjectStub {
-protected:
-	PlayerManager();
-	PlayerManager(DistributedObjectServant* obj);
-	PlayerManager(PlayerManager& ref);
-
-	virtual ~PlayerManager();
-
 public:
-	PlayerManager* clone();
+	PlayerManager(ItemManager* itemManager, ZoneProcessServerImplementation* processor);
 
 	void stop();
 
@@ -79,6 +76,10 @@ public:
 	PlayerMap* getPlayerMap();
 
 protected:
+	PlayerManager(DummyConstructorParameter* param);
+
+	virtual ~PlayerManager();
+
 	friend class PlayerManagerHelper;
 };
 
@@ -146,6 +147,8 @@ protected:
 };
 
 class PlayerManagerHelper : public DistributedObjectClassHelper, public Singleton<PlayerManagerHelper> {
+	static PlayerManagerHelper* staticInitializer;
+
 public:
 	PlayerManagerHelper();
 
@@ -153,7 +156,7 @@ public:
 
 	DistributedObject* instantiateObject();
 
-	DistributedObjectAdapter* createAdapter(DistributedObjectServant* obj);
+	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class SingletonWrapper<PlayerManagerHelper>;
 };

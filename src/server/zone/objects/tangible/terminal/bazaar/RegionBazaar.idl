@@ -51,10 +51,17 @@ import "../../../auction/AuctionItem";
 import "../../../../managers/bazaar/BazaarPlanetManager";
 
 interface RegionBazaar implements SceneObject {
+	RegionBazaar();
+	
 	void addItem(AuctionItem item);
+	
 	boolean removeItem(long objectid);
+	
 	void setRegion(string region);
+	
 	void setManager(BazaarPlanetManager manager);
+	
 	void newBazaarRequest(long bazaarID, Player player, int planet);
+	
 	void getBazaarData(Player player, long objectid, int screen, int extent, int category, int count, int offset);
 }

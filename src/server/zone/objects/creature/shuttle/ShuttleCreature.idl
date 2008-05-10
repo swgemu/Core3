@@ -42,15 +42,19 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
+include "engine/util/Coordinate";
+
 import "../Creature";
 
 import "../../player/Player";
+
 import "../../tangible/ticket/Ticket";
 
-include "engine/util/Coordinate";
-
 interface ShuttleCreature implements Creature {
-	ShuttleCreature(unsigned long oid);
+	ShuttleCreature(const string planet, const string city, 
+			Coordinate playerSpawnPoint, unsigned long oid) {
+		super(oid);
+	}
 
 	void doTakeOff();
 	void doLanding();

@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef PLANETNAMES_H_
 #define PLANETNAMES_H_
 
-const static char* PlanetNames[] = {
+const static char* planetNames[] = {
 		"corellia",
 		"dantooine",
 		"dathomir",
@@ -96,15 +96,14 @@ const static char* PlanetNames[] = {
 };
 
 class Planet {
-	
 public:
 	inline const static char* getPlanetName(int id) {
-		return PlanetNames[id];
+		return planetNames[id];
 	}
 	
 	const static int getPlanetID(const string& name) {
 		for (int i = 0; i < 10; ++i) {
-			if (name == PlanetNames[i])
+			if (name == planetNames[i])
 				return i;
 		}
 		

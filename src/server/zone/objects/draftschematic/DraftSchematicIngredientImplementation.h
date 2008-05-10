@@ -74,9 +74,6 @@ public:
 		this->resourceQuantity = resourceQuantity;
 	}
 
-	DraftSchematicIngredient* deploy() {
-		return (DraftSchematicIngredient*) DistributedObjectServant::deploy();
-	}
 	void helperSendToPlayer(ObjectControllerMessage* msg) {
 		msg->insertAscii(templateName); // ex: craft_food_ingredients_n
 		msg->insertInt(0);

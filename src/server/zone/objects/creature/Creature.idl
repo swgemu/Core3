@@ -42,8 +42,7 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-import "CreatureObject";
-import "CreatureGroup";
+import "../../managers/creature/CreatureManagerImplementation";
 
 import "../../Zone";
 
@@ -53,8 +52,14 @@ import "../tangible/wearables/Armor";
 
 import "../tangible/lair/LairObject";
 
+import "CreatureObject";
+
+import "CreatureGroup";
+
 interface Creature implements CreatureObject {
-	Creature(unsigned long oid);
+	Creature(unsigned long oid, CreatureGroup group = NULL) {
+		super(oid);
+	}
 
 	void init();
 	
@@ -94,25 +99,14 @@ interface Creature implements CreatureObject {
 	void queueRespawn();
 
 	// waypoint methods
-	
 	void addPatrolPoint(float x, float y, boolean doLock = true);
 	void resetPatrolPoints(boolean doLock = true);
 
+	void setSpawnPosition(float posX, float posZ, float posY, unsigned long cellid = 0);
+	
 	int compareTo(Creature creature);
 
-	// setters and getters
-	void setLair(LairObject Lair);
-
-	void setCreatureGroup(CreatureGroup group);
-	
-	void setObjectFileName(string name);
-	
-	void setType(int tp);
-	
-	void setRespawnTimer(unsigned int seconds);
-	
-	void setLootCreated(boolean value);
-	
+	// getters
 	int getType();
 	
 	boolean isTrainer();
@@ -132,4 +126,19 @@ interface Creature implements CreatureObject {
 	LairObject getLair();
 	
 	boolean hasLootCreated();
+
+	// setters
+	local void setCreatureManager(CreatureManagerImplementation manager);
+	
+	void setLair(LairObject Lair);
+
+	void setCreatureGroup(CreatureGroup group);
+	
+	void setObjectFileName(const string name);
+	
+	void setType(int tp);
+	
+	void setRespawnTimer(unsigned int seconds);
+	
+	void setLootCreated(boolean value);
 }

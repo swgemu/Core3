@@ -14,15 +14,15 @@ class MeleeWeapon;
 #include "../MeleeWeapon.h"
 
 class OneHandedMeleeWeapon : public MeleeWeapon {
+public:
+	OneHandedMeleeWeapon(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, bool eqp = false);
+
+	OneHandedMeleeWeapon(CreatureObject* creature, const string& temp, const unicode& n, const string& tempn, bool eqp = false);
+
 protected:
-	OneHandedMeleeWeapon();
-	OneHandedMeleeWeapon(DistributedObjectServant* obj);
-	OneHandedMeleeWeapon(OneHandedMeleeWeapon& ref);
+	OneHandedMeleeWeapon(DummyConstructorParameter* param);
 
 	virtual ~OneHandedMeleeWeapon();
-
-public:
-	OneHandedMeleeWeapon* clone();
 
 	friend class OneHandedMeleeWeaponHelper;
 };
@@ -38,6 +38,8 @@ public:
 };
 
 class OneHandedMeleeWeaponHelper : public DistributedObjectClassHelper, public Singleton<OneHandedMeleeWeaponHelper> {
+	static OneHandedMeleeWeaponHelper* staticInitializer;
+
 public:
 	OneHandedMeleeWeaponHelper();
 
@@ -45,7 +47,7 @@ public:
 
 	DistributedObject* instantiateObject();
 
-	DistributedObjectAdapter* createAdapter(DistributedObjectServant* obj);
+	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class SingletonWrapper<OneHandedMeleeWeaponHelper>;
 };
@@ -57,7 +59,7 @@ public:
 	OneHandedMeleeWeapon* _this;
 
 public:
-	OneHandedMeleeWeaponServant(unsigned long long objid, unsigned int tempcrc, const unicode& n, const string& tempn, int tp, bool eqp);
+	OneHandedMeleeWeaponServant(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, int tp, bool eqp);
 	OneHandedMeleeWeaponServant(CreatureObject* creature, const string& temp, const unicode& n, const string& tempn, int tp, bool eqp);
 	virtual ~OneHandedMeleeWeaponServant();
 

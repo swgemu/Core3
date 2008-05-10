@@ -45,9 +45,14 @@ which carries forward this exception.
 import "../../objects/guild/Guild";
 import "../../objects/player/Player";
 
+import "server/zone/ZoneServer";
+
 import "GuildMap";
 
 interface GuildManager {
+	GuildManager(ZoneServer server) {
+		super(server);
+	}
 	
 	void lock(boolean doLock = true);
 	void unlock(boolean doLock = true);

@@ -17,16 +17,13 @@ class CraftingTool;
 
 class CraftingStation;
 
+class ZoneServer;
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
 class CraftingManager : public DistributedObjectStub {
-protected:
-	CraftingManager();
-	CraftingManager(DistributedObjectServant* obj);
-	CraftingManager(CraftingManager& ref);
-
-	virtual ~CraftingManager();
-
 public:
-	CraftingManager* clone();
+	CraftingManager(ZoneServer* server, ZoneProcessServerImplementation* processor);
 
 	void prepareCraftingSession(Player* player, CraftingTool* ct, DraftSchematic* ds);
 
@@ -45,6 +42,10 @@ public:
 	void subtractDraftSchematicsFromGroupName(Player* player, const string& schematicGroupName);
 
 protected:
+	CraftingManager(DummyConstructorParameter* param);
+
+	virtual ~CraftingManager();
+
 	friend class CraftingManagerHelper;
 };
 
@@ -81,6 +82,8 @@ protected:
 };
 
 class CraftingManagerHelper : public DistributedObjectClassHelper, public Singleton<CraftingManagerHelper> {
+	static CraftingManagerHelper* staticInitializer;
+
 public:
 	CraftingManagerHelper();
 
@@ -88,7 +91,7 @@ public:
 
 	DistributedObject* instantiateObject();
 
-	DistributedObjectAdapter* createAdapter(DistributedObjectServant* obj);
+	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class SingletonWrapper<CraftingManagerHelper>;
 };

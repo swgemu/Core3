@@ -42,15 +42,20 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-import "../../scene/SceneObject";
-import "../../player/Player";
+import "../../../Zone";
 
 include "engine/service/Message";
 
-import "../../../Zone";
+import "../../scene/SceneObject";
+
+import "../../player/Player";
+
+import "../BuildingObject";
 
 interface CellObject implements SceneObject {
-	CellObject(unsigned long oid);
+	CellObject(unsigned long oid, BuildingObject buio) {
+		super(oid);
+	}
 	
 	void insertToZone(Zone zone);
 	

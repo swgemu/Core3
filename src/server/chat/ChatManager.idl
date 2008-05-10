@@ -48,7 +48,13 @@ import "room/ChatRoom";
 
 import "../zone/objects/player/Player";
 
+import "server/zone/ZoneServer";
+
 interface ChatManager {
+	ChatManager(ZoneServer server, int initPlayers) {
+		super(server, initPlayers);
+	}
+	
 	void addPlayer(Player player);
 	Player getPlayer(string name);
 	Player removePlayer(string name);

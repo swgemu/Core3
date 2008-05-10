@@ -7,28 +7,21 @@
 
 #include "engine/orb/DistributedObjectBroker.h"
 
-class TangibleObject;
-
-class packets;
+#include "engine/service/Message.h"
 
 class Player;
 
 class CreatureObject;
 
-#include "engine/service/Message.h"
+class TangibleObject;
 
 #include "../TangibleObject.h"
 
 class CraftingStation : public TangibleObject {
-protected:
-	CraftingStation();
-	CraftingStation(DistributedObjectServant* obj);
-	CraftingStation(CraftingStation& ref);
-
-	virtual ~CraftingStation();
-
 public:
-	CraftingStation* clone();
+	CraftingStation(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn);
+
+	CraftingStation(CreatureObject* creature, unsigned int tempCRC, const unicode& n, const string& tempn);
 
 	void generateAttributes(Player* player);
 
@@ -39,6 +32,10 @@ public:
 	float getStationEffectiveness();
 
 protected:
+	CraftingStation(DummyConstructorParameter* param);
+
+	virtual ~CraftingStation();
+
 	friend class CraftingStationHelper;
 };
 
@@ -61,6 +58,8 @@ public:
 };
 
 class CraftingStationHelper : public DistributedObjectClassHelper, public Singleton<CraftingStationHelper> {
+	static CraftingStationHelper* staticInitializer;
+
 public:
 	CraftingStationHelper();
 
@@ -68,7 +67,7 @@ public:
 
 	DistributedObject* instantiateObject();
 
-	DistributedObjectAdapter* createAdapter(DistributedObjectServant* obj);
+	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class SingletonWrapper<CraftingStationHelper>;
 };
@@ -80,8 +79,8 @@ public:
 	CraftingStation* _this;
 
 public:
-	CraftingStationServant(unsigned long long oid, const unicode& n, const string& tempn, int tempCRC, int tp);
-	CraftingStationServant(CreatureObject* creature, const unicode& n, const string& tempn, int tempCRC, int tp);
+	CraftingStationServant(unsigned long long oid, const unicode& n, const string& tempn, unsigned int tempCRC, int tp);
+	CraftingStationServant(CreatureObject* creature, const unicode& n, const string& tempn, unsigned int tempCRC, int tp);
 	virtual ~CraftingStationServant();
 
 	void _setStub(DistributedObjectStub* stub);

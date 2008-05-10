@@ -7,26 +7,21 @@
 
 #include "engine/orb/DistributedObjectBroker.h"
 
-class Wearable;
-
 class Player;
 
 class CreatureObject;
 
 class SceneObject;
 
+class Wearable;
+
 #include "Wearable.h"
 
 class Armor : public Wearable {
-protected:
-	Armor();
-	Armor(DistributedObjectServant* obj);
-	Armor(Armor& ref);
-
-	virtual ~Armor();
-
 public:
-	Armor* clone();
+	Armor(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, bool eqp = false);
+
+	Armor(CreatureObject* creature, unsigned int tempCRC, const unicode& n, const string& tempn, bool eqp = false);
 
 	void sendTo(Player* player, bool doClose = true);
 
@@ -94,10 +89,6 @@ public:
 
 	bool isSliced();
 
-	void setSocketType(int index, int type);
-
-	void setSocketValue(int index, int type);
-
 	int getSocketType(int index);
 
 	int getSocketValue(int index);
@@ -132,6 +123,18 @@ public:
 
 	int getSocket3Value();
 
+	void setType(int armorSlot);
+
+	void setHealthEncumbrance(int healthEnc);
+
+	void setActionEncumbrance(int actionEnc);
+
+	void setMindEncumbrance(int mindEnc);
+
+	void setSocketType(int index, int type);
+
+	void setSocketValue(int index, int type);
+
 	void setSockets(int socket);
 
 	void setSocket0Type(int type);
@@ -151,6 +154,10 @@ public:
 	void setSocket3Value(int value);
 
 protected:
+	Armor(DummyConstructorParameter* param);
+
+	virtual ~Armor();
+
 	friend class ArmorHelper;
 };
 
@@ -228,10 +235,6 @@ public:
 
 	bool isSliced();
 
-	void setSocketType(int index, int type);
-
-	void setSocketValue(int index, int type);
-
 	int getSocketType(int index);
 
 	int getSocketValue(int index);
@@ -266,6 +269,18 @@ public:
 
 	int getSocket3Value();
 
+	void setType(int armorSlot);
+
+	void setHealthEncumbrance(int healthEnc);
+
+	void setActionEncumbrance(int actionEnc);
+
+	void setMindEncumbrance(int mindEnc);
+
+	void setSocketType(int index, int type);
+
+	void setSocketValue(int index, int type);
+
 	void setSockets(int socket);
 
 	void setSocket0Type(int type);
@@ -287,6 +302,8 @@ public:
 };
 
 class ArmorHelper : public DistributedObjectClassHelper, public Singleton<ArmorHelper> {
+	static ArmorHelper* staticInitializer;
+
 public:
 	ArmorHelper();
 
@@ -294,7 +311,7 @@ public:
 
 	DistributedObject* instantiateObject();
 
-	DistributedObjectAdapter* createAdapter(DistributedObjectServant* obj);
+	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class SingletonWrapper<ArmorHelper>;
 };
@@ -306,7 +323,7 @@ public:
 	Armor* _this;
 
 public:
-	ArmorServant(unsigned long long oid, unsigned int tempCRC, const unicode& name, const string& tempn, bool eqp);
+	ArmorServant(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, bool eqp);
 	ArmorServant(CreatureObject* creature, unsigned int tempCRC, const unicode& n, const string& tempn, bool eqp);
 	virtual ~ArmorServant();
 

@@ -9,18 +9,15 @@
 
 class Player;
 
-class ResourceContainerImplementation;
+class ResourceContainer;
+
+class ZoneServer;
+
+class ZoneProcessServerImplementation;
 
 class ResourceManager : public DistributedObjectStub {
-protected:
-	ResourceManager();
-	ResourceManager(DistributedObjectServant* obj);
-	ResourceManager(ResourceManager& ref);
-
-	virtual ~ResourceManager();
-
 public:
-	ResourceManager* clone();
+	ResourceManager(ZoneServer* server, ZoneProcessServerImplementation* processor);
 
 	void theShift();
 
@@ -34,7 +31,7 @@ public:
 
 	void sendSampleMessage(Player* player, string& resourcename);
 
-	void setResourceData(ResourceContainerImplementation* resContainer);
+	void setResourceData(ResourceContainer* resContainer);
 
 	bool sendSurveyResources(Player* player, int SurveyToolType);
 
@@ -43,6 +40,10 @@ public:
 	void getResourceContainerName(const string& str, string& name);
 
 protected:
+	ResourceManager(DummyConstructorParameter* param);
+
+	virtual ~ResourceManager();
+
 	friend class ResourceManagerHelper;
 };
 
@@ -66,7 +67,7 @@ public:
 
 	void sendSampleMessage(Player* player, string& resourcename);
 
-	void setResourceData(ResourceContainerImplementation* resContainer);
+	void setResourceData(ResourceContainer* resContainer);
 
 	bool sendSurveyResources(Player* player, int SurveyToolType);
 
@@ -85,6 +86,8 @@ protected:
 };
 
 class ResourceManagerHelper : public DistributedObjectClassHelper, public Singleton<ResourceManagerHelper> {
+	static ResourceManagerHelper* staticInitializer;
+
 public:
 	ResourceManagerHelper();
 
@@ -92,7 +95,7 @@ public:
 
 	DistributedObject* instantiateObject();
 
-	DistributedObjectAdapter* createAdapter(DistributedObjectServant* obj);
+	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class SingletonWrapper<ResourceManagerHelper>;
 };

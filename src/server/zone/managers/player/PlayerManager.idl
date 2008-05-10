@@ -42,16 +42,24 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
+import "../item/ItemManager";
 import "../guild/GuildManager";
 
 import "../../objects/player/Player";
 import "../../objects/tangible/TangibleObject";
-import "../../ZoneClient";
+
+import "server/zone/ZoneClient";
+include "server/zone/ZoneProcessServerImplementation";
+
 import "PlayerMap";
 
 include "engine/service/proto/BaseMessage";
 
 interface PlayerManager {
+	PlayerManager(ItemManager itemManager, ZoneProcessServerImplementation processor) {
+		super(itemManager, processor);
+	}
+	
 	void stop();
 	
 	boolean create(Player player, unsigned int sessionkey);	

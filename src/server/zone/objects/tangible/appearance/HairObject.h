@@ -14,15 +14,13 @@ class TangibleObject;
 #include "../TangibleObject.h"
 
 class HairObject : public TangibleObject {
+public:
+	HairObject(CreatureObject* creature, unsigned int tempCRC, const unicode& n, const string& tempn, bool eqp = true);
+
 protected:
-	HairObject();
-	HairObject(DistributedObjectServant* obj);
-	HairObject(HairObject& ref);
+	HairObject(DummyConstructorParameter* param);
 
 	virtual ~HairObject();
-
-public:
-	HairObject* clone();
 
 	friend class HairObjectHelper;
 };
@@ -38,6 +36,8 @@ public:
 };
 
 class HairObjectHelper : public DistributedObjectClassHelper, public Singleton<HairObjectHelper> {
+	static HairObjectHelper* staticInitializer;
+
 public:
 	HairObjectHelper();
 
@@ -45,7 +45,7 @@ public:
 
 	DistributedObject* instantiateObject();
 
-	DistributedObjectAdapter* createAdapter(DistributedObjectServant* obj);
+	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class SingletonWrapper<HairObjectHelper>;
 };

@@ -43,8 +43,11 @@ which carries forward this exception.
 */
 
 import "Container";
+
 import "../creature/CreatureObject";
 
 interface Datapad implements Container {
-	Datapad(unsigned long oid);
+	Datapad(CreatureObject creature) {
+		super(unsigned long oid);
+	}
 }

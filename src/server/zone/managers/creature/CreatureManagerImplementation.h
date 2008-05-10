@@ -54,6 +54,7 @@ which carries forward this exception.
 
 #include "../player/ProfessionManager.h"
 
+#include "../../objects/creature/Creature.h"
 #include "../../objects/creature/CreatureImplementation.h"
 #include "../../objects/creature/bluefrog/BlueFrogCreature.h"
 
@@ -62,8 +63,6 @@ which carries forward this exception.
 #include "CreatureManager.h"
 
 class ZoneProcessServerImplementation;
-
-class Creature;
 
 class CreatureManagerImplementation : public CreatureManagerServant, public Thread, public Mutex, public Lua {
 	Zone* zone;
@@ -100,7 +99,7 @@ public:
 	void loadStaticCreatures();
 	void loadBlueFrogs();
 
-	void load(CreatureImplementation* creature);
+	void load(Creature* creature);
 	void unloadCreature(Creature* creature);
 	
 	// creation methods

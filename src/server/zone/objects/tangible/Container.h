@@ -16,15 +16,8 @@ class TangibleObject;
 #include "TangibleObject.h"
 
 class Container : public TangibleObject {
-protected:
-	Container();
-	Container(DistributedObjectServant* obj);
-	Container(Container& ref);
-
-	virtual ~Container();
-
 public:
-	Container* clone();
+	Container(unsigned long long oid);
 
 	void addObject(SceneObject* obj);
 
@@ -43,6 +36,10 @@ public:
 	bool isEmpty();
 
 protected:
+	Container(DummyConstructorParameter* param);
+
+	virtual ~Container();
+
 	friend class ContainerHelper;
 };
 
@@ -73,6 +70,8 @@ public:
 };
 
 class ContainerHelper : public DistributedObjectClassHelper, public Singleton<ContainerHelper> {
+	static ContainerHelper* staticInitializer;
+
 public:
 	ContainerHelper();
 
@@ -80,7 +79,7 @@ public:
 
 	DistributedObject* instantiateObject();
 
-	DistributedObjectAdapter* createAdapter(DistributedObjectServant* obj);
+	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class SingletonWrapper<ContainerHelper>;
 };

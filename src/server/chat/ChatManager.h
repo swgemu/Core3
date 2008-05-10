@@ -13,16 +13,11 @@ class ChatRoom;
 
 class Player;
 
+class ZoneServer;
+
 class ChatManager : public DistributedObjectStub {
-protected:
-	ChatManager();
-	ChatManager(DistributedObjectServant* obj);
-	ChatManager(ChatManager& ref);
-
-	virtual ~ChatManager();
-
 public:
-	ChatManager* clone();
+	ChatManager(ZoneServer* server, int initPlayers);
 
 	void addPlayer(Player* player);
 
@@ -99,6 +94,10 @@ public:
 	bool isMute();
 
 protected:
+	ChatManager(DummyConstructorParameter* param);
+
+	virtual ~ChatManager();
+
 	friend class ChatManagerHelper;
 };
 
@@ -203,6 +202,8 @@ protected:
 };
 
 class ChatManagerHelper : public DistributedObjectClassHelper, public Singleton<ChatManagerHelper> {
+	static ChatManagerHelper* staticInitializer;
+
 public:
 	ChatManagerHelper();
 
@@ -210,7 +211,7 @@ public:
 
 	DistributedObject* instantiateObject();
 
-	DistributedObjectAdapter* createAdapter(DistributedObjectServant* obj);
+	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class SingletonWrapper<ChatManagerHelper>;
 };

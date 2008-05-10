@@ -59,6 +59,7 @@ class ShuttleCreatureImplementation : public ShuttleCreatureServant {
 	
 public:
 	ShuttleCreatureImplementation(const string& Planet, const string& City, Coordinate* playerSpawnPoint, uint64 oid);
+	
 	~ShuttleCreatureImplementation();
 	
 	void doTakeOff();

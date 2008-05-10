@@ -42,14 +42,21 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-import "../TangibleObject";
-import "../../player/Player";
-import "../ticket/Ticket";
-
 include "engine/service/Message";
 
+import "../../player/Player";
+
+import "../../creature/shuttle/ShuttleCreature";
+
+import "../TangibleObject";
+
+import "../ticket/Ticket";
+
 interface TicketCollector implements TangibleObject {
-	TicketCollector(unsigned long oid, int tp);
+	TicketCollector(ShuttleCreature shutle, unsigned long oid, const unicode n, 
+			const string tempn, float x, float z, float y) {
+		super(oid, int tp);
+	}
 	
 	int useObject(Player player);
 	

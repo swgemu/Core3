@@ -150,20 +150,20 @@ void ResourceContainerImplementation::generateAttributes(SceneObject* obj) {
 }
 
 void ResourceContainerImplementation::splitContainer(Player* player, int newQuantity) {
-	
 	int oldQuantity = getContents();
 		
 	if (newQuantity < oldQuantity) {
-		ResourceContainerImplementation* newRco = new ResourceContainerImplementation(player->getNewItemID(), getObjectCRC(), getName(), getTemplateName()); 
-		newRco->setResourceName(getResourceName());
-		newRco->setContents(newQuantity);
+		ResourceContainer* container = new ResourceContainer(player->getNewItemID(), getObjectCRC(), getName(), getTemplateName()); 
+		container->setResourceName(getResourceName());
+		container->setContents(newQuantity);
 	
-		player->getZone()->getZoneServer()->getResourceManager()->setResourceData(newRco);
+		ResourceManager* resourceManager = player->getZone()->getZoneServer()->getResourceManager(); 
+		resourceManager->setResourceData(container);
 		
-		player->addInventoryItem(newRco->deploy());
+		player->addInventoryItem(container);
 		
-		newRco->sendTo(player);
-		newRco->setPersistent(false);
+		container->sendTo(player);
+		container->setPersistent(false);
 		
 		setContents(oldQuantity - newQuantity);
 		sendDeltas(player);
@@ -172,7 +172,6 @@ void ResourceContainerImplementation::splitContainer(Player* player, int newQuan
 }
 
 void ResourceContainerImplementation::transferContents(Player* player, ResourceContainer* fromRCO) {
-
     int fromContents = fromRCO->getContents();
     int toContents = getContents();
     

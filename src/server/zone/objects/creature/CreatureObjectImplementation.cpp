@@ -522,9 +522,9 @@ void CreatureObjectImplementation::setPosture(uint8 state, bool overrideDizzy, b
 		broadcastMessages(msgs);
 		
 		if (postureState == PRONE_POSTURE)
-			setSpeed(2.688, 0.7745);
+			updateSpeed(2.688, 0.7745);
 		else if (postureState == UPRIGHT_POSTURE)
-			setSpeed(5.376, 1.549f);
+			updateSpeed(5.376, 1.549f);
 	}
 }
 
@@ -1794,11 +1794,11 @@ void CreatureObjectImplementation::deactivateBurstRun() {
 	}
 }
 
-void CreatureObjectImplementation::setSpeed(float Speed, float Acceleration) {
+void CreatureObjectImplementation::updateSpeed(float speed, float acceleration) {
 	setIgnoreMovementTests(10);
 		
-	speed = Speed; 
-	acceleration = Acceleration;
+	CreatureObjectImplementation::speed = speed; 
+	CreatureObjectImplementation::acceleration = acceleration;
 
 	if (isPlayer()) {
 		CreatureObjectDeltaMessage4* dcreo4 = new CreatureObjectDeltaMessage4(this);
@@ -2250,9 +2250,11 @@ void CreatureObjectImplementation::startDancing(const string& modifier, bool cha
 		
 		if (anim == "") {
 			uint32 boxID = 0x414E; // default startdance
+			
 			if(changeDance)
 				boxID = 0x4B4E; // differentiate changedance
-			SuiListBoxImplementation* sui = new SuiListBoxImplementation((Player*) _this, boxID);
+			
+			SuiListBox* sui = new SuiListBox((Player*) _this, boxID);
 			sui->setPromptTitle("Available dances");
 			sui->setPromptText("Pick a dance");
 
@@ -2264,13 +2266,12 @@ void CreatureObjectImplementation::startDancing(const string& modifier, bool cha
 				sui->addMenuItem(dance);
 			}
 				
-			player->addSuiBox(sui->deploy());
+			player->addSuiBox(sui);
 
 			player->sendMessage(sui->generateMessage());
 
 			return;
-		} else
-		{
+		} else {
 			stringstream dance;
 			dance << "startdance+";
 
@@ -2460,9 +2461,11 @@ void CreatureObjectImplementation::startPlayingMusic(const string& modifier, boo
 
 		if (music == "") {
 			uint32 boxID = 0x5553; // default startmusic
-			if(changeMusic)
+			
+			if (changeMusic)
 				boxID = 0x5A53; // differentiate changemusic
-			SuiListBoxImplementation* sui = new SuiListBoxImplementation((Player*) _this, boxID);
+			
+			SuiListBox* sui = new SuiListBox((Player*) _this, boxID);
 			sui->setPromptText("Available songs");
 			sui->setPromptTitle("Pick a song");
 
@@ -2471,7 +2474,7 @@ void CreatureObjectImplementation::startPlayingMusic(const string& modifier, boo
 				sui->addMenuItem(song);
 			}
 				
-			player->addSuiBox(sui->deploy());
+			player->addSuiBox(sui);
 				
 			player->sendMessage(sui->generateMessage());
 			return;
@@ -3368,7 +3371,7 @@ void CreatureObjectImplementation::mountCreature(MountCreature* mnt, bool lockMo
 	mount->setState(MOUNTEDCREATURE_STATE);
 	mount->updateStates();
 	
-	setSpeed(mount->getSpeed(), mount->getAcceleration());
+	updateSpeed(mount->getSpeed(), mount->getAcceleration());
 	setState(RIDINGMOUNT_STATE);
 	updateStates();
 	
@@ -3396,7 +3399,7 @@ void CreatureObjectImplementation::dismount(bool lockMount, bool ignoreCooldown)
 	mount->clearState(MOUNTEDCREATURE_STATE);
 	mount->updateStates();
 
-	setSpeed(5.376f, 1.549f);
+	updateSpeed(5.376f, 1.549f);
 	clearState(RIDINGMOUNT_STATE);
 	updateStates();
 

@@ -78,8 +78,6 @@ public:
 	
 	virtual ~ChatRoomImplementation();
 	
-	ChatRoom* deploy();
-	
 	void sendTo(Player* player);
 	void sendDestroyTo(Player* player);
 	

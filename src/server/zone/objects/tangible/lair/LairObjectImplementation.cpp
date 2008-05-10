@@ -46,7 +46,8 @@ which carries forward this exception.
 
 #include "../TangibleObjectImplementation.h"
 
-LairObjectImplementation::LairObjectImplementation(uint32 objCRC, uint64 oid) : LairObjectServant(oid, LAIR) {
+LairObjectImplementation::LairObjectImplementation(uint32 objCRC, uint64 oid) 
+		: LairObjectServant(oid, LAIR) {
 	objectCRC = objCRC;
 	
 	conditionDamage = 0;

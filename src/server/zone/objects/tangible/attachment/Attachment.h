@@ -18,15 +18,8 @@ class Player;
 #include "../TangibleObject.h"
 
 class Attachment : public TangibleObject {
-protected:
-	Attachment();
-	Attachment(DistributedObjectServant* obj);
-	Attachment(Attachment& ref);
-
-	virtual ~Attachment();
-
 public:
-	Attachment* clone();
+	Attachment(unsigned long long objID, int attachmentType);
 
 	void remove(Player* player);
 
@@ -67,6 +60,10 @@ public:
 	int getBestSkillMod();
 
 protected:
+	Attachment(DummyConstructorParameter* param);
+
+	virtual ~Attachment();
+
 	friend class AttachmentHelper;
 };
 
@@ -119,6 +116,8 @@ public:
 };
 
 class AttachmentHelper : public DistributedObjectClassHelper, public Singleton<AttachmentHelper> {
+	static AttachmentHelper* staticInitializer;
+
 public:
 	AttachmentHelper();
 
@@ -126,7 +125,7 @@ public:
 
 	DistributedObject* instantiateObject();
 
-	DistributedObjectAdapter* createAdapter(DistributedObjectServant* obj);
+	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class SingletonWrapper<AttachmentHelper>;
 };
@@ -138,7 +137,7 @@ public:
 	Attachment* _this;
 
 public:
-	AttachmentServant(unsigned int oid, int type);
+	AttachmentServant(unsigned long long objID, int attachmentType);
 	virtual ~AttachmentServant();
 
 	void _setStub(DistributedObjectStub* stub);

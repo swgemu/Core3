@@ -61,7 +61,7 @@ class ZoneClientImplementation : public BaseClientProxy, public ZoneClientServan
 	bool disconnecting;
 	
 public:
-	ZoneClientImplementation(DatagramServiceThread* serv, Socket* sock, SocketAddress& addr);
+	ZoneClientImplementation(DatagramServiceThread* serv, Socket* sock, SocketAddress* addr);
 		
 	virtual ~ZoneClientImplementation();
 	

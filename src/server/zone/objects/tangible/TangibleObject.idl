@@ -42,18 +42,26 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-import "../scene/SceneObject";
-import "../player/Player";
-
-import "../../Zone";
-
 include "engine/service/Message";
 
 include "../../packets/scene/AttributeListMessage";
 
+import "../../Zone";
+
+import "../scene/SceneObject";
+
+import "../creature/CreatureObject";
+
+import "../player/Player";
+
 interface TangibleObject implements SceneObject {
-	TangibleObject();
-	TangibleObject(unsigned long oid);
+	TangibleObject(unsigned long oid, int tp = 0);
+	
+	TangibleObject(unsigned long oid, const unicode n, const string tempname, unsigned int tempCRC, int tp = 0) {
+		super(oid);
+	}
+
+	TangibleObject(CreatureObject creature, const unicode n, const string tempname, unsigned int tempCRC, int tp = 0);
 
 	void insertToZone(Zone zone);
 	void removeFromZone();
@@ -70,6 +78,9 @@ interface TangibleObject implements SceneObject {
 	
 	void decay(int decayRate);
 
+	void parseItemAttributes();
+	
+	// getters
 	boolean isPersistent();
 	boolean isUpdated();
 	
@@ -90,22 +101,6 @@ interface TangibleObject implements SceneObject {
 
 	boolean isLair();
 
-	// setters
-	void setName(const string n);
-	void setTemplateName(const string tempName);
-	void setTemplateTypeName(const string tempTypeName);	
-	
-	void setPersistent(boolean pers);
-
-	void setUpdated(boolean upd);
-
-	void setConditionDamage(int damage);
-	
-	void setCustomizationString(string cust);
-	
-	void setCustomizationVariable(unsigned char type, unsigned int value);
-	
-	// getters
 	SceneObject getContainer();
 
 	unicode getName();
@@ -127,4 +122,21 @@ interface TangibleObject implements SceneObject {
 	string getAttributes();
 	
 	void addAttributes(AttributeListMessage alm);
+
+	// setters
+	void setName(const string n);
+	void setTemplateName(const string tempName);
+	void setTemplateTypeName(const string tempTypeName);	
+
+	void setObjectSubType(const int type);
+	
+	void setPersistent(boolean pers);
+
+	void setUpdated(boolean upd);
+
+	void setConditionDamage(int damage);
+	
+	void setCustomizationString(string cust);
+	
+	void setCustomizationVariable(unsigned char type, unsigned int value);
 }

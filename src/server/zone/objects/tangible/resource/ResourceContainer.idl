@@ -51,9 +51,17 @@ import "../../player/Player";
 import "../TangibleObject";
 
 interface ResourceContainer implements TangibleObject {
-	ResourceContainer(unsigned long oid, int tp);
-	ResourceContainer(unsigned long oid, const unicode n, const string name, int tempCRC, int tp);
-	ResourceContainer(CreatureObject creature, const unicode n, const string name, int tempCRC, int tp);
+	ResourceContainer(unsigned long oid) {
+		super(oid, int tp);
+	}
+	
+	ResourceContainer(unsigned long oid, unsigned int tempCRC, const unicode n, const string tempn) {
+		super(oid, n, tempn, tempCRC, int tp);
+	}
+	
+	ResourceContainer(CreatureObject creature, unsigned int tempCRC, const unicode n, const string tempn) {
+		super(creature, n, tempn, tempCRC, int tp);
+	}
 
 	void init();
 	

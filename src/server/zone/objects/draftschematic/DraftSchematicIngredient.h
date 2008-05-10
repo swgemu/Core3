@@ -10,15 +10,8 @@
 class ObjectControllerMessage;
 
 class DraftSchematicIngredient : public DistributedObjectStub {
-protected:
-	DraftSchematicIngredient();
-	DraftSchematicIngredient(DistributedObjectServant* obj);
-	DraftSchematicIngredient(DraftSchematicIngredient& ref);
-
-	virtual ~DraftSchematicIngredient();
-
 public:
-	DraftSchematicIngredient* clone();
+	DraftSchematicIngredient(const string& ingredientTemplateName, const string& ingredientTitleName, bool optional, const string& resourceType, unsigned int resourceQuantity);
 
 	void helperSendToPlayer(ObjectControllerMessage* msg);
 
@@ -33,12 +26,13 @@ public:
 	bool getOptional();
 
 protected:
+	DraftSchematicIngredient(DummyConstructorParameter* param);
+
+	virtual ~DraftSchematicIngredient();
+
 	string _return_getResourceType;
-
 	string _return_getTemplateName;
-
 	string _return_getTitleName;
-
 
 	friend class DraftSchematicIngredientHelper;
 };
@@ -66,6 +60,8 @@ public:
 };
 
 class DraftSchematicIngredientHelper : public DistributedObjectClassHelper, public Singleton<DraftSchematicIngredientHelper> {
+	static DraftSchematicIngredientHelper* staticInitializer;
+
 public:
 	DraftSchematicIngredientHelper();
 
@@ -73,7 +69,7 @@ public:
 
 	DistributedObject* instantiateObject();
 
-	DistributedObjectAdapter* createAdapter(DistributedObjectServant* obj);
+	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class SingletonWrapper<DraftSchematicIngredientHelper>;
 };

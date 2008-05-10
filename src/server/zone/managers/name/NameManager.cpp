@@ -467,7 +467,7 @@ char NameManager::chooseLetterExcluding(const char exclude[]) {
 	
 	char x = 97 + System::random(25);
 
-	for (int i = 0; i < 25; i++) {
+	for (int i = 0; i < 25 && exclude[i] != '\0'; i++) {
 		if (x == exclude[i]) {
 			x = 97 + System::random(25);
 

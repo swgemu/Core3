@@ -72,11 +72,7 @@ void CraftingManagerImplementation::loadDraftSchematicsFromDatabase() {
 
 		if (draftSchematic != NULL)
 			if (!draftSchematicsMap.contains(groupName)) {
-				DraftSchematicGroupImplementation* dsgImp =
-						new DraftSchematicGroupImplementation();
-				DraftSchematicGroup* dsg =
-						(DraftSchematicGroup*) dsgImp->deploy();
-
+				DraftSchematicGroup* dsg = new DraftSchematicGroup();
 				dsg->addDraftSchematic(draftSchematic);
 
 				draftSchematicsMap.put(groupName, dsg);
@@ -121,10 +117,8 @@ DraftSchematic* CraftingManagerImplementation::loadDraftSchematic(
 	// The number that tells the client which crafting tool tab to put the DS in
 	int craftingToolTab = result->getUnsignedInt(16);
 
-	DraftSchematicImplementation* dsImpl = new DraftSchematicImplementation(schematicID, objName, objCRC, groupName,
+	DraftSchematic* draftSchematic = new DraftSchematic(schematicID, objName, objCRC, groupName,
 			complexity, schematicSize, craftingToolTab);
-
-	DraftSchematic* ds = (DraftSchematic*) dsImpl->deploy();
 
 	// Parse the Ingredient data of DraftSchematic from DB
 
@@ -157,10 +151,9 @@ DraftSchematic* CraftingManagerImplementation::loadDraftSchematic(
 	// Each vector just parsed should all have the same .size() so any .size() will work
 	// for the amount of times the loop should execute
 	for (int i = 0; i < parsedIngredientTemplateNames.size(); i++) {
-		ds->addIngredient(parsedIngredientTemplateNames.get(i),
-				parsedIngredientTitleNames.get(i),
-				(bool)parsedOptionalFlags.get(i), parsedResourceTypes.get(i),
-				parsedResourceQuantities.get(i));
+		draftSchematic->addIngredient(parsedIngredientTemplateNames.get(i),
+				parsedIngredientTitleNames.get(i), (bool)parsedOptionalFlags.get(i), 
+				parsedResourceTypes.get(i),	parsedResourceQuantities.get(i));
 	}
 
 	// Parse Experimental Properties of Draft Schematic from DB
@@ -186,14 +179,14 @@ DraftSchematic* CraftingManagerImplementation::loadDraftSchematic(
 			parseStringsFromString(unparExperimentalGroupTitles);
 
 	for (int i = 0; i < parsedExperimentalGroupTitles.size(); i++) {
-		ds->addExpPropTitle(parsedExperimentalGroupTitles.get(i));
+		draftSchematic->addExpPropTitle(parsedExperimentalGroupTitles.get(i));
 	}
 
 	// Add experimental properties groups to the draft schematic
 	uint32 iterator = 0;
 	for (uint32 i = 0; i < parsedNumberExperimentalProperties.size(); i++) {
 		for (uint32 j = 0; j < parsedNumberExperimentalProperties.get(i); j++) {
-			ds->addExperimentalProperty(i,
+			draftSchematic->addExperimentalProperty(i,
 					parsedExperimentalProperties.get(iterator),
 					parsedExperimentalWeights.get(iterator));
 			iterator++;
@@ -202,9 +195,9 @@ DraftSchematic* CraftingManagerImplementation::loadDraftSchematic(
 
 	// Save schematics tano attributes
 	string tanoAttributes = result->getString(15);
-	ds->setTanoAttributes(tanoAttributes);
+	draftSchematic->setTanoAttributes(tanoAttributes);
 
-	return ds;
+	return draftSchematic;
 }
 
 Vector<string> CraftingManagerImplementation::parseStringsFromString(
@@ -564,9 +557,7 @@ void CraftingManagerImplementation::finishStage2(Player * player, int counter) {
 
 }
 
-void CraftingManagerImplementation::createObjectInInventory(Player * player,
-		int timer) {
-
+void CraftingManagerImplementation::createObjectInInventory(Player * player, int timer) {
 	CraftingTool* ct = player->getCurrentCraftingTool();
 
 	createObjectEvent = new CreateObjectEvent(player, ct);
@@ -578,9 +569,7 @@ void CraftingManagerImplementation::createObjectInInventory(Player * player,
 	}
 }
 
-TangibleObject * CraftingManagerImplementation::generateTangibleObject(
-		Player * player, DraftSchematic * ds) {
-
+TangibleObject* CraftingManagerImplementation::generateTangibleObject(Player* player, DraftSchematic* ds) {
 	ItemManager * itemManager = player->getZone()->getZoneServer()->getItemManager();
 
 	string attributes = ds->getTanoAttributes();
@@ -608,7 +597,7 @@ TangibleObject * CraftingManagerImplementation::generateTangibleObject(
 	 string custStr;
 	 cust.decode(custStr);*/
 
-	TangibleObjectImplementation* item = NULL;
+	TangibleObject* item = NULL;
 
 	bool equipped = false;
 
@@ -619,93 +608,76 @@ TangibleObject * CraftingManagerImplementation::generateTangibleObject(
 			& TangibleObjectImplementation::LIGHTSABER) {
 		switch (objecttype) {
 		case TangibleObjectImplementation::MELEEWEAPON:
-			item = new UnarmedMeleeWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
+			item = new UnarmedMeleeWeapon(objectid, objectcrc, objectname, objecttemp, equipped);
 			break;
 		case TangibleObjectImplementation::ONEHANDMELEEWEAPON:
-			item = new OneHandedMeleeWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
+			item = new OneHandedMeleeWeapon(objectid, objectcrc, objectname, objecttemp, equipped);
 			break;
 		case TangibleObjectImplementation::TWOHANDMELEEWEAPON:
-			item = new TwoHandedMeleeWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
+			item = new TwoHandedMeleeWeapon(objectid, objectcrc, objectname, objecttemp, equipped);
 			break;
 		case TangibleObjectImplementation::POLEARM:
-			item = new PolearmMeleeWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
+			item = new PolearmMeleeWeapon(objectid, objectcrc, objectname, objecttemp, equipped);
 			break;
 		case TangibleObjectImplementation::PISTOL:
-			item = new PistolRangedWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
+			item = new PistolRangedWeapon(objectid, objectcrc, objectname, objecttemp, equipped);
 			break;
 		case TangibleObjectImplementation::CARBINE:
-			item = new CarbineRangedWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
+			item = new CarbineRangedWeapon(objectid, objectcrc, objectname, objecttemp, equipped);
 			break;
 		case TangibleObjectImplementation::RIFLE:
-			item = new RifleRangedWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
+			item = new RifleRangedWeapon(objectid, objectcrc, objectname, objecttemp, equipped);
 			break;
 		case TangibleObjectImplementation::ONEHANDSABER:
-			item = new OneHandedJediWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
+			item = new OneHandedJediWeapon(objectid, objectcrc, objectname, objecttemp, equipped);
 			break;
 		case TangibleObjectImplementation::TWOHANDSABER:
-			item = new TwoHandedJediWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
+			item = new TwoHandedJediWeapon(objectid, objectcrc, objectname, objecttemp, equipped);
 			break;
 		case TangibleObjectImplementation::POLEARMSABER:
-			item = new PolearmJediWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
+			item = new PolearmJediWeapon(objectid, objectcrc, objectname, objecttemp, equipped);
 			break;
 		case TangibleObjectImplementation::SPECIALHEAVYWEAPON:
-			item = new SpecialHeavyRangedWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
+			item = new SpecialHeavyRangedWeapon(objectid, objectcrc, objectname, objecttemp, equipped);
 			break;
 		case TangibleObjectImplementation::HEAVYWEAPON:
-			item = new HeavyRangedWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
+			item = new HeavyRangedWeapon(objectid, objectcrc, objectname, objecttemp, equipped);
 			break;
 		}
 
 	} else if (objecttype & TangibleObjectImplementation::CLOTHING) {
-
-		item = new WearableImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
+		item = new Wearable(objectid, objectcrc, objectname, objecttemp, equipped);
 		item->setObjectSubType(objecttype);
-
 	} else if (objecttype & TangibleObjectImplementation::ARMOR) {
-
-		item = new ArmorImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
-
+		item = new Armor(objectid, objectcrc, objectname, objecttemp, equipped);
 	} else if (objecttype & TangibleObjectImplementation::MISC) {
 
 		switch (objecttype) {
 		case TangibleObjectImplementation::TRAVELTICKET:
-
-			item = new TicketImplementation(objectid, objectcrc, objectname, objecttemp);
-
+			item = new Ticket(objectid, objectcrc, objectname, objecttemp);
 			break;
 		case TangibleObjectImplementation::INSTRUMENT:
-
-			item = new InstrumentImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
-
+			item = new Instrument(objectid, objectcrc, objectname, objecttemp, equipped);
 			break;
 		case TangibleObjectImplementation::CLOTHINGATTACHMENT:
-
-			item = new AttachmentImplementation(objectid, AttachmentImplementation::CLOTHING);
-
+			item = new Attachment(objectid, AttachmentImplementation::CLOTHING);
 			break;
 		case TangibleObjectImplementation::ARMORATTACHMENT:
-
-			item = new AttachmentImplementation(objectid, AttachmentImplementation::ARMOR);
-
+			item = new Attachment(objectid, AttachmentImplementation::ARMOR);
 			break;
-		
 		case TangibleObjectImplementation::CRAFTINGSTATION:
-
-			item = new CraftingStationImplementation(objectid, objectcrc, objectname, objecttemp);
-			
+			item = new CraftingStation(objectid, objectcrc, objectname, objecttemp);
 			break;
 		}
 	} else if (objecttype & TangibleObjectImplementation::RESOURCECONTAINER) {
-
-		item = new ResourceContainerImplementation(objectid, objectcrc, objectname, objecttemp);
-
+		item = new ResourceContainer(objectid, objectcrc, objectname, objecttemp);
 	} else if (objecttype & TangibleObjectImplementation::TOOL) {
 		switch (objecttype) {
 		case TangibleObjectImplementation::CRAFTINGTOOL:
-			item = new CraftingToolImplementation(objectid, objectcrc, objectname, objecttemp);
+			item = new CraftingTool(objectid, objectcrc, objectname, objecttemp);
 			break;
 		case TangibleObjectImplementation::SURVEYTOOL:
-			item = new SurveyToolImplementation(objectid, objectcrc, objectname, objecttemp);
+			item = new SurveyTool(objectid, objectcrc, objectname, objecttemp);
 			break;
 		case TangibleObjectImplementation::REPAIRTOOL:
 		case TangibleObjectImplementation::CAMPKIT:
@@ -713,13 +685,11 @@ TangibleObject * CraftingManagerImplementation::generateTangibleObject(
 			break;
 		}
 	} else if (objecttype & TangibleObjectImplementation::WEAPONPOWERUP) {
-
-		item = new PowerupImplementation(objectid, objectcrc, objectname, objecttemp);
-
+		item = new Powerup(objectid, objectcrc, objectname, objecttemp);
 	}
 
 	if (item == NULL)
-		item = new TangibleObjectImplementation(objectid, objectname, objecttemp, objectcrc);
+		item = new TangibleObject(objectid, objectname, objecttemp, objectcrc);
 
 	//item->setAttributes(attributes);
 	//item->parseItemAttributes();
@@ -729,11 +699,9 @@ TangibleObject * CraftingManagerImplementation::generateTangibleObject(
 
 	//item->setPersistent(true);
 
-	TangibleObject* tano = (TangibleObject*) item->deploy();
-
 	//player->addInventoryItem(tano);
 
-	return tano;
+	return item;
 }
 
 /*void CraftingManagerImplementation::WriteDraftSchematicToDB(DraftSchematic* ds) {

@@ -18,15 +18,8 @@ class Zone;
 #include "../scene/SceneObject.h"
 
 class StaticObject : public SceneObject {
-protected:
-	StaticObject();
-	StaticObject(DistributedObjectServant* obj);
-	StaticObject(StaticObject& ref);
-
-	virtual ~StaticObject();
-
 public:
-	StaticObject* clone();
+	StaticObject(unsigned long long oid, int type);
 
 	void insertToZone(Zone* zone);
 
@@ -37,6 +30,10 @@ public:
 	void sendTo(Player* player, bool doClose = true);
 
 protected:
+	StaticObject(DummyConstructorParameter* param);
+
+	virtual ~StaticObject();
+
 	friend class StaticObjectHelper;
 };
 
@@ -59,6 +56,8 @@ public:
 };
 
 class StaticObjectHelper : public DistributedObjectClassHelper, public Singleton<StaticObjectHelper> {
+	static StaticObjectHelper* staticInitializer;
+
 public:
 	StaticObjectHelper();
 
@@ -66,7 +65,7 @@ public:
 
 	DistributedObject* instantiateObject();
 
-	DistributedObjectAdapter* createAdapter(DistributedObjectServant* obj);
+	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class SingletonWrapper<StaticObjectHelper>;
 };

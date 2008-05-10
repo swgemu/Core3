@@ -110,9 +110,6 @@ public:
 
 	bool destroy();
 		
-	virtual SceneObject* deploy();
-	SceneObject* deploy(const string& name);
-	
 	void redeploy();
 
 	void scheduleUndeploy();

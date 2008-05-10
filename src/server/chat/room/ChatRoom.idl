@@ -45,10 +45,18 @@ which carries forward this exception.
 include "engine/service/proto/BaseMessage";
 
 import "../../zone/ZoneServer";
+
 import "../../zone/objects/player/Player";
 
 interface ChatRoom {
+	ChatRoom(ZoneServer server, const string name, unsigned int cid) {
+		super(server, name, cid);
+	}
 	
+	ChatRoom(ZoneServer server, ChatRoom parent, const string name, unsigned int cid) {
+		super(server, parent, name, cid);
+	}
+
 	void sendTo(Player player);
 	void sendDestroyTo(Player player);
 	
@@ -108,5 +116,4 @@ interface ChatRoom {
 	ChatRoom getParent();
 	
 	int compareTo(ChatRoom obj);
-	
 }

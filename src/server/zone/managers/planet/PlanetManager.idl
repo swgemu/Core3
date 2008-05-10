@@ -42,14 +42,23 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
+include "engine/util/Coordinate";
+
+import "server/zone/Zone";
+include "server/zone/ZoneProcessServerImplementation";
+
 import "../../objects/player/Player";
+
 import "../../objects/creature/shuttle/ShuttleCreature";
+
 import "../../objects/building/BuildingObject";
 import "../../objects/building/cell/CellObject";
 
-include "engine/util/Coordinate";
-
 interface PlanetManager {
+	PlanetManager(Zone zone, ZoneProcessServerImplementation processor) {
+		super(zone, processor);
+	}
+
 	void init();
 	
 	void start();

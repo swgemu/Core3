@@ -219,7 +219,7 @@ public:
 
 	void init();
 
-	Player* create(ZoneClient* client);
+	void create(ZoneClient* client);
 	
 	void refuseCreate(ZoneClient* client);
 	

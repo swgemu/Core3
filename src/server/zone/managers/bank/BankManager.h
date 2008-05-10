@@ -9,20 +9,21 @@
 
 class Player;
 
+class ZoneServer;
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
 class BankManager : public DistributedObjectStub {
-protected:
-	BankManager();
-	BankManager(DistributedObjectServant* obj);
-	BankManager(BankManager& ref);
-
-	virtual ~BankManager();
-
 public:
-	BankManager* clone();
+	BankManager(ZoneServer* server, ZoneProcessServerImplementation* processor);
 
 	bool isBankTerminal(long long objectid);
 
 protected:
+	BankManager(DummyConstructorParameter* param);
+
+	virtual ~BankManager();
+
 	friend class BankManagerHelper;
 };
 
@@ -39,6 +40,8 @@ public:
 };
 
 class BankManagerHelper : public DistributedObjectClassHelper, public Singleton<BankManagerHelper> {
+	static BankManagerHelper* staticInitializer;
+
 public:
 	BankManagerHelper();
 
@@ -46,7 +49,7 @@ public:
 
 	DistributedObject* instantiateObject();
 
-	DistributedObjectAdapter* createAdapter(DistributedObjectServant* obj);
+	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class SingletonWrapper<BankManagerHelper>;
 };

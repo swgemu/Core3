@@ -45,6 +45,9 @@ which carries forward this exception.
 import "../../objects/guild/Guild";
 
 interface GuildMap {
+	GuildMap() {
+		super();
+	}
 	
 	void add(Guild guild);
 	

@@ -42,12 +42,16 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
+import "server/zone/managers/guild/GuildManager";
+
 import "../Terminal";
+
 import "../../../player/Player";
 
 interface GuildTerminal implements Terminal {
-	GuildTerminal(unsigned int objCRC, unsigned long objid, 
-				const unicode n, const string tempn, float x, float z, float y, int TerminalType);
+	GuildTerminal(GuildManager guildmanager, unsigned long objid, float x, float z, float y) {
+		super(unsigned int objCRC, objid, const unicode n, const string tempn, x, z, y, int TerminalType);
+	}
 	
 	int useObject(Player player);
 }

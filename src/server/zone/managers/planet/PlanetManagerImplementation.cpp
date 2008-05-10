@@ -224,26 +224,26 @@ void PlanetManagerImplementation::loadShuttles() {
 		shuttle->setDirection(0, 0, shutdiry, shutdirw);
 		shuttleMap->put(shuttleName, shuttle);
 
-		TicketCollectorImplementation* colImpl = new TicketCollectorImplementation(shuttle, getNextStaticObjectID(false), 
+		colector = new TicketCollector(shuttle, getNextStaticObjectID(false), 
 				unicode("Ticket Collector"), "ticket_travel", colx, playerSpawnZ, coly);
-		colImpl->setZoneProcessServer(server);
-		colImpl->setDirection(0, 0, tickdiry, tickdirw);
-		colector = (TicketCollector*) colImpl->deploy();
+		colector->setZoneProcessServer(server);
+		colector->setDirection(0, 0, tickdiry, tickdirw);
+		
 		colector->insertToZone(zone);
-		ticketCollectorMap->put(colImpl->getObjectID(), colector);
+		ticketCollectorMap->put(colector->getObjectID(), colector);
 
-		TravelTerminalImplementation* termImpl = new TravelTerminalImplementation(shuttle, getNextStaticObjectID(false), 
+		terminal = new TravelTerminal(shuttle, getNextStaticObjectID(false), 
 				termx, playerSpawnZ, termy);
-		termImpl->setZoneProcessServer(server);
-		termImpl->setDirection(0, 0, tickdiry, tickdirw);
-		terminal = (TravelTerminal*) termImpl->deploy();
+		terminal->setZoneProcessServer(server);
+		terminal->setDirection(0, 0, tickdiry, tickdirw);
+		
 		terminal->insertToZone(zone);
 		travelTerminalMap->put(terminal->getObjectID(), terminal); 
 	}
+	
 	delete shut;
 	
 	unlock();
-	
 }
 
 	
@@ -258,10 +258,9 @@ void PlanetManagerImplementation::loadGuildTerminals() {
 	
 	lock();
 	
-	GuildTerminalImplementation* guildImpl = new GuildTerminalImplementation(server->getGuildManager(), getNextStaticObjectID(false), 44, 52, -5352);
+	GuildTerminal* guildterminal = new GuildTerminal(server->getGuildManager(), getNextStaticObjectID(false), 44, 52, -5352);
 	
-	GuildTerminal* guildTerminal = (GuildTerminal*) guildImpl->deploy();
-	guildTerminal->insertToZone(zone);
+	guildterminal->insertToZone(zone);
 	
 	unlock();
 }
@@ -272,12 +271,11 @@ void PlanetManagerImplementation::loadVendorTerminals() {
 	
 	lock();
 	
-	VendorTerminalImplementation* termImpl = new VendorTerminalImplementation(zone->getZoneServer()->getBazaarManager(), getNextStaticObjectID(false), 46, 52, -5352);
-	termImpl->setDirection(0, 0, 0, 0);
+	VendorTerminal* vendorTerminal = new VendorTerminal(zone->getZoneServer()->getBazaarManager(), getNextStaticObjectID(false), 46, 52, -5352);
+	vendorTerminal->setDirection(0, 0, 0, 0);
 	
-	termImpl->setZoneProcessServer(server);
+	vendorTerminal->setZoneProcessServer(server);
 	
-	VendorTerminal* vendorTerminal = (VendorTerminal*) termImpl->deploy();
 	vendorTerminal->insertToZone(zone);
 	
 	unlock();
@@ -319,8 +317,7 @@ void PlanetManagerImplementation::loadBuildings() {
 			if (buio == NULL)
 				buio = loadBuilding(parentId, planetid);
 			
-			CellObjectImplementation* cellImpl = new CellObjectImplementation(oid, buio);
-			CellObject* cell = (CellObject*) cellImpl->deploy(); 
+			CellObject* cell = new CellObject(oid, buio);
 			
 			cell->setObjectCRC(String::hashCode(file));
 			cell->initializePosition(x, z, y);
@@ -472,11 +469,9 @@ BuildingObject* PlanetManagerImplementation::loadBuilding(uint64 oid, int planet
 
 		float type = result->getFloat(11);
 		
-		BuildingObjectImplementation* buioImpl = new BuildingObjectImplementation(oid, true);
-		buioImpl->setZoneProcessServer(server);
+		buio = new BuildingObject(oid, true);
+		buio->setZoneProcessServer(server);
 		
-		buio = (BuildingObject*) buioImpl->deploy();
-
 		buio->setObjectCRC(String::hashCode(file));
 		
 		buio->setBuildingType(guessBuildingType(oid, file));

@@ -53,11 +53,13 @@ which carries forward this exception.
 #include "zone/managers/radial/RadialManager.h"
 #include "zone/managers/group/GroupManager.h"
 
+ZoneServer* ServerCore::zoneServer;
+
 ServerCore::ServerCore() : Core("core3.log"), Logger("Core") {
 	orb = NULL;
 
-	lserv = NULL;
-	zserv = NULL;
+	loginServer = NULL;
+	zoneServer = NULL;
 }
 
 void ServerCore::init() {
@@ -74,12 +76,12 @@ void ServerCore::init() {
 		}
 		
 		if (configManager.getMakeLogin()) {		
-			lserv = new LoginServer();
+			loginServer = new LoginServer();
 		}
 
 		if (configManager.getMakeZone()) {
-			zserv = new ZoneServerImplementation(configManager.getZoneProcessingThreads());
-			orb->deploy("ZoneServer", zserv);
+			zoneServer = new ZoneServer(configManager.getZoneProcessingThreads());
+			zoneServer->deploy("ZoneServer");
 		}
 	} catch (ServiceException& e) {
 		shutdown();
@@ -91,17 +93,17 @@ void ServerCore::init() {
 }
 
 void ServerCore::run() {
-	if (lserv != NULL) {
+	if (loginServer != NULL) {
 		int loginPort = configManager.getLoginPort(); 
 		int loginAllowedConnections = configManager.getLoginAllowedConnections();
 
-		lserv->start(loginPort, loginAllowedConnections);
+		loginServer->start(loginPort, loginAllowedConnections);
 	}
 	
-	if (zserv != NULL) {
+	if (zoneServer != NULL) {
 		int zoneAllowedConnections = configManager.getZoneAllowedConnections(); 
 
-		zserv->start(44463, zoneAllowedConnections);
+		zoneServer->start(44463, zoneAllowedConnections);
 	}
 	
 	info("initialized", true);
@@ -114,18 +116,18 @@ void ServerCore::run() {
 void ServerCore::shutdown() {
 	info("shutting down server..");
 
-	if (zserv != NULL) {
-		zserv->stop();
-		zserv->_getStub()->finalize();
+	if (zoneServer != NULL) {
+		zoneServer->stop();
+		zoneServer->finalize();
 		
-		zserv = NULL;
+		zoneServer = NULL;
 	}
 	
-	if (lserv != NULL) {
-		lserv->stop();
+	if (loginServer != NULL) {
+		loginServer->stop();
 		
-		delete lserv;
-		lserv = NULL;
+		delete loginServer;
+		loginServer = NULL;
 	}
 	
 	DistributedObjectBroker::finalize();
@@ -154,24 +156,24 @@ void ServerCore::handleCommands() {
 			} else if (command == "logQuadTree") {
 				QuadTree::setLogging(!QuadTree::doLog());
 			} else if (command == "info") {
-				if (lserv != NULL)
-					lserv->printInfo();
+				if (loginServer != NULL)
+					loginServer->printInfo();
 					
-				if (zserv != NULL)
-					zserv->printInfo();
+				if (zoneServer != NULL)
+					zoneServer->printInfo();
 			} else if (command == "icap") {
-				if (zserv != NULL)
-					zserv->changeUserCap();
+				if (zoneServer != NULL)
+					zoneServer->changeUserCap();
 			} else if (command == "dcap") {
-				if (zserv != NULL)
-					zserv->changeUserCap(-50);
+				if (zoneServer != NULL)
+					zoneServer->changeUserCap(-50);
 			} else if (command == "fixQueue") {
-				if (zserv != NULL)
-					zserv->fixScheduler();
+				if (zoneServer != NULL)
+					zoneServer->fixScheduler();
 			} else if (command == "crash") {
-				zserv = NULL;
+				zoneServer = NULL;
 				
-				zserv->fixScheduler();
+				zoneServer->fixScheduler();
 			} else if (command == "help") { 
 				cout << "available commands:\n"; 
 				cout << "\texit, logQuadTree, info, icap, dcap, fixQueue, crash, about.\n"; 			

@@ -10,15 +10,8 @@
 class DraftSchematic;
 
 class DraftSchematicGroup : public DistributedObjectStub {
-protected:
-	DraftSchematicGroup();
-	DraftSchematicGroup(DistributedObjectServant* obj);
-	DraftSchematicGroup(DraftSchematicGroup& ref);
-
-	virtual ~DraftSchematicGroup();
-
 public:
-	DraftSchematicGroup* clone();
+	DraftSchematicGroup();
 
 	void addDraftSchematic(DraftSchematic* schematic);
 
@@ -27,6 +20,10 @@ public:
 	DraftSchematic* getDraftSchematic(int index);
 
 protected:
+	DraftSchematicGroup(DummyConstructorParameter* param);
+
+	virtual ~DraftSchematicGroup();
+
 	friend class DraftSchematicGroupHelper;
 };
 
@@ -47,6 +44,8 @@ public:
 };
 
 class DraftSchematicGroupHelper : public DistributedObjectClassHelper, public Singleton<DraftSchematicGroupHelper> {
+	static DraftSchematicGroupHelper* staticInitializer;
+
 public:
 	DraftSchematicGroupHelper();
 
@@ -54,7 +53,7 @@ public:
 
 	DistributedObject* instantiateObject();
 
-	DistributedObjectAdapter* createAdapter(DistributedObjectServant* obj);
+	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class SingletonWrapper<DraftSchematicGroupHelper>;
 };

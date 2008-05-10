@@ -10,15 +10,8 @@
 class ObjectControllerMessage;
 
 class DraftSchematicExpPropGroup : public DistributedObjectStub {
-protected:
-	DraftSchematicExpPropGroup();
-	DraftSchematicExpPropGroup(DistributedObjectServant* obj);
-	DraftSchematicExpPropGroup(DraftSchematicExpPropGroup& ref);
-
-	virtual ~DraftSchematicExpPropGroup();
-
 public:
-	DraftSchematicExpPropGroup* clone();
+	DraftSchematicExpPropGroup();
 
 	void addExperimentalProperty(const string& experimentalPropertyType, unsigned int weight);
 
@@ -35,6 +28,10 @@ public:
 	unsigned char getTypeAndWeight(unsigned int index);
 
 protected:
+	DraftSchematicExpPropGroup(DummyConstructorParameter* param);
+
+	virtual ~DraftSchematicExpPropGroup();
+
 	friend class DraftSchematicExpPropGroupHelper;
 };
 
@@ -67,6 +64,8 @@ protected:
 };
 
 class DraftSchematicExpPropGroupHelper : public DistributedObjectClassHelper, public Singleton<DraftSchematicExpPropGroupHelper> {
+	static DraftSchematicExpPropGroupHelper* staticInitializer;
+
 public:
 	DraftSchematicExpPropGroupHelper();
 
@@ -74,7 +73,7 @@ public:
 
 	DistributedObject* instantiateObject();
 
-	DistributedObjectAdapter* createAdapter(DistributedObjectServant* obj);
+	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class SingletonWrapper<DraftSchematicExpPropGroupHelper>;
 };

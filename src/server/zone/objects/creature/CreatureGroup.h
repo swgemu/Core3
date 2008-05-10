@@ -12,21 +12,18 @@ class Creature;
 class CreatureObject;
 
 class CreatureGroup : public DistributedObjectStub {
-protected:
-	CreatureGroup();
-	CreatureGroup(DistributedObjectServant* obj);
-	CreatureGroup(CreatureGroup& ref);
-
-	virtual ~CreatureGroup();
-
 public:
-	CreatureGroup* clone();
+	CreatureGroup();
 
 	void addCreature(Creature* creature);
 
 	void setTarget(CreatureObject* targ);
 
 protected:
+	CreatureGroup(DummyConstructorParameter* param);
+
+	virtual ~CreatureGroup();
+
 	friend class CreatureGroupHelper;
 };
 
@@ -45,6 +42,8 @@ public:
 };
 
 class CreatureGroupHelper : public DistributedObjectClassHelper, public Singleton<CreatureGroupHelper> {
+	static CreatureGroupHelper* staticInitializer;
+
 public:
 	CreatureGroupHelper();
 
@@ -52,7 +51,7 @@ public:
 
 	DistributedObject* instantiateObject();
 
-	DistributedObjectAdapter* createAdapter(DistributedObjectServant* obj);
+	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class SingletonWrapper<CreatureGroupHelper>;
 };

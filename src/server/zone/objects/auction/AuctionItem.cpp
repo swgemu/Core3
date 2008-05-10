@@ -10,167 +10,82 @@
  *	AuctionItemStub
  */
 
-AuctionItem::AuctionItem() : ManagedObject(NULL) {
+AuctionItem::AuctionItem(unsigned long long objectid) : ManagedObject(DummyConstructorParameter::instance()) {
+	_impl = new AuctionItemImplementation(objectid);
+	_impl->_setStub(this);
 }
 
-AuctionItem::AuctionItem(DistributedObjectServant* obj) : ManagedObject(obj) {
+AuctionItem::AuctionItem(unsigned long long objectid, string& name, int itemprice, int time, bool isauction, int type, string& owner) : ManagedObject(DummyConstructorParameter::instance()) {
+	_impl = new AuctionItemImplementation(objectid, name, itemprice, time, isauction, type, owner);
+	_impl->_setStub(this);
 }
 
-AuctionItem::AuctionItem(AuctionItem& ref) : ManagedObject(ref) {
+AuctionItem::AuctionItem(DummyConstructorParameter* param) : ManagedObject(param) {
 }
 
 AuctionItem::~AuctionItem() {
 }
 
-AuctionItem* AuctionItem::clone() {
-	return new AuctionItem(*this);
-}
-
-
-unsigned long long AuctionItem::getId() {
-	if (!deployed)
-		throw ObjectNotDeployedException(this);
-
+void AuctionItem::setLocation(string& planet, string& header, unsigned long long vendorid, int x, int z, bool vendor) {
 	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
 		DistributedMethod method(this, 6);
+		method.addAsciiParameter(planet);
+		method.addAsciiParameter(header);
+		method.addUnsignedLongParameter(vendorid);
+		method.addSignedIntParameter(x);
+		method.addSignedIntParameter(z);
+		method.addBooleanParameter(vendor);
 
-		return method.executeWithUnsignedLongReturn();
+		method.executeWithVoidReturn();
 	} else
-		return ((AuctionItemImplementation*) _impl)->getId();
+		((AuctionItemImplementation*) _impl)->setLocation(planet, header, vendorid, x, z, vendor);
 }
 
-unsigned long long AuctionItem::getOwnerId() {
-	if (!deployed)
-		throw ObjectNotDeployedException(this);
-
+int AuctionItem::getPlanet() {
 	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
 		DistributedMethod method(this, 7);
 
-		return method.executeWithUnsignedLongReturn();
+		return method.executeWithSignedIntReturn();
 	} else
-		return ((AuctionItemImplementation*) _impl)->getOwnerId();
+		return ((AuctionItemImplementation*) _impl)->getPlanet();
 }
 
-void AuctionItem::setOwnerId(unsigned long long ownerid) {
-	if (!deployed)
-		throw ObjectNotDeployedException(this);
-
+unsigned long long AuctionItem::getID() {
 	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
 		DistributedMethod method(this, 8);
-		method.addUnsignedLongParameter(ownerid);
-
-		method.executeWithVoidReturn();
-	} else
-		((AuctionItemImplementation*) _impl)->setOwnerId(ownerid);
-}
-
-void AuctionItem::setOwnerName(string& name) {
-	if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		DistributedMethod method(this, 9);
-		method.addAsciiParameter(name);
-
-		method.executeWithVoidReturn();
-	} else
-		((AuctionItemImplementation*) _impl)->setOwnerName(name);
-}
-
-unsigned long long AuctionItem::getBuyerId() {
-	if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		DistributedMethod method(this, 10);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
-		return ((AuctionItemImplementation*) _impl)->getBuyerId();
+		return ((AuctionItemImplementation*) _impl)->getID();
 }
 
-void AuctionItem::setBuyerId(unsigned long long buyerid) {
-	if (!deployed)
-		throw ObjectNotDeployedException(this);
-
+unsigned long long AuctionItem::getOwnerID() {
 	if (_impl == NULL) {
-		DistributedMethod method(this, 11);
-		method.addUnsignedLongParameter(buyerid);
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
 
-		method.executeWithVoidReturn();
+		DistributedMethod method(this, 9);
+
+		return method.executeWithUnsignedLongReturn();
 	} else
-		((AuctionItemImplementation*) _impl)->setBuyerId(buyerid);
-}
-
-string& AuctionItem::getBidderName() {
-	if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		DistributedMethod method(this, 12);
-
-		method.executeWithAsciiReturn(_return_getBidderName);
-		return _return_getBidderName;
-	} else
-		return ((AuctionItemImplementation*) _impl)->getBidderName();
-}
-
-void AuctionItem::setBidderName(string& name) {
-	if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		DistributedMethod method(this, 13);
-		method.addAsciiParameter(name);
-
-		method.executeWithVoidReturn();
-	} else
-		((AuctionItemImplementation*) _impl)->setBidderName(name);
-}
-
-unsigned int AuctionItem::getItemType() {
-	if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		DistributedMethod method(this, 14);
-
-		return method.executeWithUnsignedIntReturn();
-	} else
-		return ((AuctionItemImplementation*) _impl)->getItemType();
-}
-
-bool AuctionItem::isSold() {
-	if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		DistributedMethod method(this, 15);
-
-		return method.executeWithBooleanReturn();
-	} else
-		return ((AuctionItemImplementation*) _impl)->isSold();
-}
-
-void AuctionItem::setSold(bool sld) {
-	if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		DistributedMethod method(this, 16);
-		method.addBooleanParameter(sld);
-
-		method.executeWithVoidReturn();
-	} else
-		((AuctionItemImplementation*) _impl)->setSold(sld);
+		return ((AuctionItemImplementation*) _impl)->getOwnerID();
 }
 
 string& AuctionItem::getTerminalTitle() {
-	if (!deployed)
-		throw ObjectNotDeployedException(this);
-
 	if (_impl == NULL) {
-		DistributedMethod method(this, 17);
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 10);
 
 		method.executeWithAsciiReturn(_return_getTerminalTitle);
 		return _return_getTerminalTitle;
@@ -179,11 +94,11 @@ string& AuctionItem::getTerminalTitle() {
 }
 
 string& AuctionItem::getOwnerName() {
-	if (!deployed)
-		throw ObjectNotDeployedException(this);
-
 	if (_impl == NULL) {
-		DistributedMethod method(this, 18);
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 11);
 
 		method.executeWithAsciiReturn(_return_getOwnerName);
 		return _return_getOwnerName;
@@ -191,24 +106,109 @@ string& AuctionItem::getOwnerName() {
 		return ((AuctionItemImplementation*) _impl)->getOwnerName();
 }
 
-void AuctionItem::setLocationPointer(int locpt) {
-	if (!deployed)
-		throw ObjectNotDeployedException(this);
-
+unsigned long long AuctionItem::getBuyerID() {
 	if (_impl == NULL) {
-		DistributedMethod method(this, 19);
-		method.addSignedIntParameter(locpt);
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
 
-		method.executeWithVoidReturn();
+		DistributedMethod method(this, 12);
+
+		return method.executeWithUnsignedLongReturn();
 	} else
-		((AuctionItemImplementation*) _impl)->setLocationPointer(locpt);
+		return ((AuctionItemImplementation*) _impl)->getBuyerID();
+}
+
+string& AuctionItem::getBidderName() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 13);
+
+		method.executeWithAsciiReturn(_return_getBidderName);
+		return _return_getBidderName;
+	} else
+		return ((AuctionItemImplementation*) _impl)->getBidderName();
+}
+
+unsigned int AuctionItem::getItemType() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 14);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((AuctionItemImplementation*) _impl)->getItemType();
+}
+
+bool AuctionItem::isSold() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 15);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((AuctionItemImplementation*) _impl)->isSold();
+}
+
+unsigned long long AuctionItem::getVendorID() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 16);
+
+		return method.executeWithUnsignedLongReturn();
+	} else
+		return ((AuctionItemImplementation*) _impl)->getVendorID();
+}
+
+bool AuctionItem::getAuction() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 17);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((AuctionItemImplementation*) _impl)->getAuction();
+}
+
+string& AuctionItem::getLocation() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 18);
+
+		method.executeWithAsciiReturn(_return_getLocation);
+		return _return_getLocation;
+	} else
+		return ((AuctionItemImplementation*) _impl)->getLocation();
+}
+
+int AuctionItem::getPrice() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 19);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((AuctionItemImplementation*) _impl)->getPrice();
 }
 
 int AuctionItem::getLocationPointer() {
-	if (!deployed)
-		throw ObjectNotDeployedException(this);
-
 	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
 		DistributedMethod method(this, 20);
 
 		return method.executeWithSignedIntReturn();
@@ -216,36 +216,36 @@ int AuctionItem::getLocationPointer() {
 		return ((AuctionItemImplementation*) _impl)->getLocationPointer();
 }
 
-void AuctionItem::setOwnerPointer(int ownpt) {
-	if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		DistributedMethod method(this, 21);
-		method.addSignedIntParameter(ownpt);
-
-		method.executeWithVoidReturn();
-	} else
-		((AuctionItemImplementation*) _impl)->setOwnerPointer(ownpt);
-}
-
 int AuctionItem::getOwnerPointer() {
-	if (!deployed)
-		throw ObjectNotDeployedException(this);
-
 	if (_impl == NULL) {
-		DistributedMethod method(this, 22);
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 21);
 
 		return method.executeWithSignedIntReturn();
 	} else
 		return ((AuctionItemImplementation*) _impl)->getOwnerPointer();
 }
 
-string& AuctionItem::getItemName() {
-	if (!deployed)
-		throw ObjectNotDeployedException(this);
-
+string& AuctionItem::getItemDescription() {
 	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 22);
+
+		method.executeWithAsciiReturn(_return_getItemDescription);
+		return _return_getItemDescription;
+	} else
+		return ((AuctionItemImplementation*) _impl)->getItemDescription();
+}
+
+string& AuctionItem::getItemName() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
 		DistributedMethod method(this, 23);
 
 		method.executeWithAsciiReturn(_return_getItemName);
@@ -254,12 +254,141 @@ string& AuctionItem::getItemName() {
 		return ((AuctionItemImplementation*) _impl)->getItemName();
 }
 
-void AuctionItem::setItemDescription(string& description) {
-	if (!deployed)
-		throw ObjectNotDeployedException(this);
-
+unsigned int AuctionItem::getExpireTime() {
 	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
 		DistributedMethod method(this, 24);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((AuctionItemImplementation*) _impl)->getExpireTime();
+}
+
+void AuctionItem::setOwnerID(unsigned long long ownerid) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 25);
+		method.addUnsignedLongParameter(ownerid);
+
+		method.executeWithVoidReturn();
+	} else
+		((AuctionItemImplementation*) _impl)->setOwnerID(ownerid);
+}
+
+void AuctionItem::setOwnerName(const string& name) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 26);
+		method.addAsciiParameter(name);
+
+		method.executeWithVoidReturn();
+	} else
+		((AuctionItemImplementation*) _impl)->setOwnerName(name);
+}
+
+void AuctionItem::setVendorID(unsigned long long vid) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 27);
+		method.addUnsignedLongParameter(vid);
+
+		method.executeWithVoidReturn();
+	} else
+		((AuctionItemImplementation*) _impl)->setVendorID(vid);
+}
+
+void AuctionItem::setPlanet(int planet) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 28);
+		method.addSignedIntParameter(planet);
+
+		method.executeWithVoidReturn();
+	} else
+		((AuctionItemImplementation*) _impl)->setPlanet(planet);
+}
+
+void AuctionItem::setBidderName(const string& name) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 29);
+		method.addAsciiParameter(name);
+
+		method.executeWithVoidReturn();
+	} else
+		((AuctionItemImplementation*) _impl)->setBidderName(name);
+}
+
+void AuctionItem::setSold(bool sld) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 30);
+		method.addBooleanParameter(sld);
+
+		method.executeWithVoidReturn();
+	} else
+		((AuctionItemImplementation*) _impl)->setSold(sld);
+}
+
+void AuctionItem::setLocationPointer(int locpt) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 31);
+		method.addSignedIntParameter(locpt);
+
+		method.executeWithVoidReturn();
+	} else
+		((AuctionItemImplementation*) _impl)->setLocationPointer(locpt);
+}
+
+void AuctionItem::setItemType(int type) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 32);
+		method.addSignedIntParameter(type);
+
+		method.executeWithVoidReturn();
+	} else
+		((AuctionItemImplementation*) _impl)->setItemType(type);
+}
+
+void AuctionItem::setItemName(const string& name) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 33);
+		method.addAsciiParameter(name);
+
+		method.executeWithVoidReturn();
+	} else
+		((AuctionItemImplementation*) _impl)->setItemName(name);
+}
+
+void AuctionItem::setItemDescription(const string& description) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 34);
 		method.addAsciiParameter(description);
 
 		method.executeWithVoidReturn();
@@ -267,37 +396,12 @@ void AuctionItem::setItemDescription(string& description) {
 		((AuctionItemImplementation*) _impl)->setItemDescription(description);
 }
 
-string& AuctionItem::getItemDescription() {
-	if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		DistributedMethod method(this, 25);
-
-		method.executeWithAsciiReturn(_return_getItemDescription);
-		return _return_getItemDescription;
-	} else
-		return ((AuctionItemImplementation*) _impl)->getItemDescription();
-}
-
-int AuctionItem::getPrice() {
-	if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		DistributedMethod method(this, 26);
-
-		return method.executeWithSignedIntReturn();
-	} else
-		return ((AuctionItemImplementation*) _impl)->getPrice();
-}
-
 void AuctionItem::setPrice(int prc) {
-	if (!deployed)
-		throw ObjectNotDeployedException(this);
-
 	if (_impl == NULL) {
-		DistributedMethod method(this, 27);
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 35);
 		method.addSignedIntParameter(prc);
 
 		method.executeWithVoidReturn();
@@ -305,24 +409,38 @@ void AuctionItem::setPrice(int prc) {
 		((AuctionItemImplementation*) _impl)->setPrice(prc);
 }
 
-unsigned int AuctionItem::getExpireTime() {
-	if (!deployed)
-		throw ObjectNotDeployedException(this);
-
+void AuctionItem::setAuction(bool val) {
 	if (_impl == NULL) {
-		DistributedMethod method(this, 28);
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
 
-		return method.executeWithUnsignedIntReturn();
+		DistributedMethod method(this, 36);
+		method.addBooleanParameter(val);
+
+		method.executeWithVoidReturn();
 	} else
-		return ((AuctionItemImplementation*) _impl)->getExpireTime();
+		((AuctionItemImplementation*) _impl)->setAuction(val);
+}
+
+void AuctionItem::setBuyerID(unsigned long long bid) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 37);
+		method.addUnsignedLongParameter(bid);
+
+		method.executeWithVoidReturn();
+	} else
+		((AuctionItemImplementation*) _impl)->setBuyerID(bid);
 }
 
 void AuctionItem::setExpireTime(unsigned int expiretime) {
-	if (!deployed)
-		throw ObjectNotDeployedException(this);
-
 	if (_impl == NULL) {
-		DistributedMethod method(this, 29);
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 38);
 		method.addUnsignedIntParameter(expiretime);
 
 		method.executeWithVoidReturn();
@@ -330,41 +448,17 @@ void AuctionItem::setExpireTime(unsigned int expiretime) {
 		((AuctionItemImplementation*) _impl)->setExpireTime(expiretime);
 }
 
-bool AuctionItem::getAuction() {
-	if (!deployed)
-		throw ObjectNotDeployedException(this);
-
+void AuctionItem::setOwnerPointer(int ownpt) {
 	if (_impl == NULL) {
-		DistributedMethod method(this, 30);
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
 
-		return method.executeWithBooleanReturn();
+		DistributedMethod method(this, 39);
+		method.addSignedIntParameter(ownpt);
+
+		method.executeWithVoidReturn();
 	} else
-		return ((AuctionItemImplementation*) _impl)->getAuction();
-}
-
-int AuctionItem::getPlanet() {
-	if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		DistributedMethod method(this, 31);
-
-		return method.executeWithSignedIntReturn();
-	} else
-		return ((AuctionItemImplementation*) _impl)->getPlanet();
-}
-
-string& AuctionItem::getLocation() {
-	if (!deployed)
-		throw ObjectNotDeployedException(this);
-
-	if (_impl == NULL) {
-		DistributedMethod method(this, 32);
-
-		method.executeWithAsciiReturn(_return_getLocation);
-		return _return_getLocation;
-	} else
-		return ((AuctionItemImplementation*) _impl)->getLocation();
+		((AuctionItemImplementation*) _impl)->setOwnerPointer(ownpt);
 }
 
 /*
@@ -379,28 +473,28 @@ Packet* AuctionItemAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 
 	switch (methid) {
 	case 6:
-		resp->insertLong(getId());
+		setLocation(inv->getAsciiParameter(_param0_setLocation__string_string_long_int_int_bool_), inv->getAsciiParameter(_param1_setLocation__string_string_long_int_int_bool_), inv->getUnsignedLongParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter());
 		break;
 	case 7:
-		resp->insertLong(getOwnerId());
+		resp->insertSignedInt(getPlanet());
 		break;
 	case 8:
-		setOwnerId(inv->getUnsignedLongParameter());
+		resp->insertLong(getID());
 		break;
 	case 9:
-		setOwnerName(inv->getAsciiParameter(_param0_setOwnerName__string_));
+		resp->insertLong(getOwnerID());
 		break;
 	case 10:
-		resp->insertLong(getBuyerId());
+		resp->insertAscii(getTerminalTitle());
 		break;
 	case 11:
-		setBuyerId(inv->getUnsignedLongParameter());
+		resp->insertAscii(getOwnerName());
 		break;
 	case 12:
-		resp->insertAscii(getBidderName());
+		resp->insertLong(getBuyerID());
 		break;
 	case 13:
-		setBidderName(inv->getAsciiParameter(_param0_setBidderName__string_));
+		resp->insertAscii(getBidderName());
 		break;
 	case 14:
 		resp->insertInt(getItemType());
@@ -409,55 +503,76 @@ Packet* AuctionItemAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		resp->insertBoolean(isSold());
 		break;
 	case 16:
-		setSold(inv->getBooleanParameter());
+		resp->insertLong(getVendorID());
 		break;
 	case 17:
-		resp->insertAscii(getTerminalTitle());
+		resp->insertBoolean(getAuction());
 		break;
 	case 18:
-		resp->insertAscii(getOwnerName());
+		resp->insertAscii(getLocation());
 		break;
 	case 19:
-		setLocationPointer(inv->getSignedIntParameter());
+		resp->insertSignedInt(getPrice());
 		break;
 	case 20:
 		resp->insertSignedInt(getLocationPointer());
 		break;
 	case 21:
-		setOwnerPointer(inv->getSignedIntParameter());
+		resp->insertSignedInt(getOwnerPointer());
 		break;
 	case 22:
-		resp->insertSignedInt(getOwnerPointer());
+		resp->insertAscii(getItemDescription());
 		break;
 	case 23:
 		resp->insertAscii(getItemName());
 		break;
 	case 24:
-		setItemDescription(inv->getAsciiParameter(_param0_setItemDescription__string_));
-		break;
-	case 25:
-		resp->insertAscii(getItemDescription());
-		break;
-	case 26:
-		resp->insertSignedInt(getPrice());
-		break;
-	case 27:
-		setPrice(inv->getSignedIntParameter());
-		break;
-	case 28:
 		resp->insertInt(getExpireTime());
 		break;
+	case 25:
+		setOwnerID(inv->getUnsignedLongParameter());
+		break;
+	case 26:
+		setOwnerName(inv->getAsciiParameter(_param0_setOwnerName__string_));
+		break;
+	case 27:
+		setVendorID(inv->getUnsignedLongParameter());
+		break;
+	case 28:
+		setPlanet(inv->getSignedIntParameter());
+		break;
 	case 29:
-		setExpireTime(inv->getUnsignedIntParameter());
+		setBidderName(inv->getAsciiParameter(_param0_setBidderName__string_));
 		break;
 	case 30:
-		resp->insertBoolean(getAuction());
+		setSold(inv->getBooleanParameter());
 		break;
 	case 31:
-		resp->insertSignedInt(getPlanet());
+		setLocationPointer(inv->getSignedIntParameter());
 		break;
 	case 32:
-		resp->insertAscii(getLocation());
+		setItemType(inv->getSignedIntParameter());
+		break;
+	case 33:
+		setItemName(inv->getAsciiParameter(_param0_setItemName__string_));
+		break;
+	case 34:
+		setItemDescription(inv->getAsciiParameter(_param0_setItemDescription__string_));
+		break;
+	case 35:
+		setPrice(inv->getSignedIntParameter());
+		break;
+	case 36:
+		setAuction(inv->getBooleanParameter());
+		break;
+	case 37:
+		setBuyerID(inv->getUnsignedLongParameter());
+		break;
+	case 38:
+		setExpireTime(inv->getUnsignedIntParameter());
+		break;
+	case 39:
+		setOwnerPointer(inv->getSignedIntParameter());
 		break;
 	default:
 		return NULL;
@@ -466,48 +581,20 @@ Packet* AuctionItemAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 	return resp;
 }
 
-unsigned long long AuctionItemAdapter::getId() {
-	return ((AuctionItemImplementation*) impl)->getId();
+void AuctionItemAdapter::setLocation(string& planet, string& header, unsigned long long vendorid, int x, int z, bool vendor) {
+	return ((AuctionItemImplementation*) impl)->setLocation(planet, header, vendorid, x, z, vendor);
 }
 
-unsigned long long AuctionItemAdapter::getOwnerId() {
-	return ((AuctionItemImplementation*) impl)->getOwnerId();
+int AuctionItemAdapter::getPlanet() {
+	return ((AuctionItemImplementation*) impl)->getPlanet();
 }
 
-void AuctionItemAdapter::setOwnerId(unsigned long long ownerid) {
-	return ((AuctionItemImplementation*) impl)->setOwnerId(ownerid);
+unsigned long long AuctionItemAdapter::getID() {
+	return ((AuctionItemImplementation*) impl)->getID();
 }
 
-void AuctionItemAdapter::setOwnerName(string& name) {
-	return ((AuctionItemImplementation*) impl)->setOwnerName(name);
-}
-
-unsigned long long AuctionItemAdapter::getBuyerId() {
-	return ((AuctionItemImplementation*) impl)->getBuyerId();
-}
-
-void AuctionItemAdapter::setBuyerId(unsigned long long buyerid) {
-	return ((AuctionItemImplementation*) impl)->setBuyerId(buyerid);
-}
-
-string& AuctionItemAdapter::getBidderName() {
-	return ((AuctionItemImplementation*) impl)->getBidderName();
-}
-
-void AuctionItemAdapter::setBidderName(string& name) {
-	return ((AuctionItemImplementation*) impl)->setBidderName(name);
-}
-
-unsigned int AuctionItemAdapter::getItemType() {
-	return ((AuctionItemImplementation*) impl)->getItemType();
-}
-
-bool AuctionItemAdapter::isSold() {
-	return ((AuctionItemImplementation*) impl)->isSold();
-}
-
-void AuctionItemAdapter::setSold(bool sld) {
-	return ((AuctionItemImplementation*) impl)->setSold(sld);
+unsigned long long AuctionItemAdapter::getOwnerID() {
+	return ((AuctionItemImplementation*) impl)->getOwnerID();
 }
 
 string& AuctionItemAdapter::getTerminalTitle() {
@@ -518,65 +605,123 @@ string& AuctionItemAdapter::getOwnerName() {
 	return ((AuctionItemImplementation*) impl)->getOwnerName();
 }
 
-void AuctionItemAdapter::setLocationPointer(int locpt) {
-	return ((AuctionItemImplementation*) impl)->setLocationPointer(locpt);
+unsigned long long AuctionItemAdapter::getBuyerID() {
+	return ((AuctionItemImplementation*) impl)->getBuyerID();
 }
 
-int AuctionItemAdapter::getLocationPointer() {
-	return ((AuctionItemImplementation*) impl)->getLocationPointer();
+string& AuctionItemAdapter::getBidderName() {
+	return ((AuctionItemImplementation*) impl)->getBidderName();
 }
 
-void AuctionItemAdapter::setOwnerPointer(int ownpt) {
-	return ((AuctionItemImplementation*) impl)->setOwnerPointer(ownpt);
+unsigned int AuctionItemAdapter::getItemType() {
+	return ((AuctionItemImplementation*) impl)->getItemType();
 }
 
-int AuctionItemAdapter::getOwnerPointer() {
-	return ((AuctionItemImplementation*) impl)->getOwnerPointer();
+bool AuctionItemAdapter::isSold() {
+	return ((AuctionItemImplementation*) impl)->isSold();
 }
 
-string& AuctionItemAdapter::getItemName() {
-	return ((AuctionItemImplementation*) impl)->getItemName();
-}
-
-void AuctionItemAdapter::setItemDescription(string& description) {
-	return ((AuctionItemImplementation*) impl)->setItemDescription(description);
-}
-
-string& AuctionItemAdapter::getItemDescription() {
-	return ((AuctionItemImplementation*) impl)->getItemDescription();
-}
-
-int AuctionItemAdapter::getPrice() {
-	return ((AuctionItemImplementation*) impl)->getPrice();
-}
-
-void AuctionItemAdapter::setPrice(int prc) {
-	return ((AuctionItemImplementation*) impl)->setPrice(prc);
-}
-
-unsigned int AuctionItemAdapter::getExpireTime() {
-	return ((AuctionItemImplementation*) impl)->getExpireTime();
-}
-
-void AuctionItemAdapter::setExpireTime(unsigned int expiretime) {
-	return ((AuctionItemImplementation*) impl)->setExpireTime(expiretime);
+unsigned long long AuctionItemAdapter::getVendorID() {
+	return ((AuctionItemImplementation*) impl)->getVendorID();
 }
 
 bool AuctionItemAdapter::getAuction() {
 	return ((AuctionItemImplementation*) impl)->getAuction();
 }
 
-int AuctionItemAdapter::getPlanet() {
-	return ((AuctionItemImplementation*) impl)->getPlanet();
-}
-
 string& AuctionItemAdapter::getLocation() {
 	return ((AuctionItemImplementation*) impl)->getLocation();
+}
+
+int AuctionItemAdapter::getPrice() {
+	return ((AuctionItemImplementation*) impl)->getPrice();
+}
+
+int AuctionItemAdapter::getLocationPointer() {
+	return ((AuctionItemImplementation*) impl)->getLocationPointer();
+}
+
+int AuctionItemAdapter::getOwnerPointer() {
+	return ((AuctionItemImplementation*) impl)->getOwnerPointer();
+}
+
+string& AuctionItemAdapter::getItemDescription() {
+	return ((AuctionItemImplementation*) impl)->getItemDescription();
+}
+
+string& AuctionItemAdapter::getItemName() {
+	return ((AuctionItemImplementation*) impl)->getItemName();
+}
+
+unsigned int AuctionItemAdapter::getExpireTime() {
+	return ((AuctionItemImplementation*) impl)->getExpireTime();
+}
+
+void AuctionItemAdapter::setOwnerID(unsigned long long ownerid) {
+	return ((AuctionItemImplementation*) impl)->setOwnerID(ownerid);
+}
+
+void AuctionItemAdapter::setOwnerName(const string& name) {
+	return ((AuctionItemImplementation*) impl)->setOwnerName(name);
+}
+
+void AuctionItemAdapter::setVendorID(unsigned long long vid) {
+	return ((AuctionItemImplementation*) impl)->setVendorID(vid);
+}
+
+void AuctionItemAdapter::setPlanet(int planet) {
+	return ((AuctionItemImplementation*) impl)->setPlanet(planet);
+}
+
+void AuctionItemAdapter::setBidderName(const string& name) {
+	return ((AuctionItemImplementation*) impl)->setBidderName(name);
+}
+
+void AuctionItemAdapter::setSold(bool sld) {
+	return ((AuctionItemImplementation*) impl)->setSold(sld);
+}
+
+void AuctionItemAdapter::setLocationPointer(int locpt) {
+	return ((AuctionItemImplementation*) impl)->setLocationPointer(locpt);
+}
+
+void AuctionItemAdapter::setItemType(int type) {
+	return ((AuctionItemImplementation*) impl)->setItemType(type);
+}
+
+void AuctionItemAdapter::setItemName(const string& name) {
+	return ((AuctionItemImplementation*) impl)->setItemName(name);
+}
+
+void AuctionItemAdapter::setItemDescription(const string& description) {
+	return ((AuctionItemImplementation*) impl)->setItemDescription(description);
+}
+
+void AuctionItemAdapter::setPrice(int prc) {
+	return ((AuctionItemImplementation*) impl)->setPrice(prc);
+}
+
+void AuctionItemAdapter::setAuction(bool val) {
+	return ((AuctionItemImplementation*) impl)->setAuction(val);
+}
+
+void AuctionItemAdapter::setBuyerID(unsigned long long bid) {
+	return ((AuctionItemImplementation*) impl)->setBuyerID(bid);
+}
+
+void AuctionItemAdapter::setExpireTime(unsigned int expiretime) {
+	return ((AuctionItemImplementation*) impl)->setExpireTime(expiretime);
+}
+
+void AuctionItemAdapter::setOwnerPointer(int ownpt) {
+	return ((AuctionItemImplementation*) impl)->setOwnerPointer(ownpt);
 }
 
 /*
  *	AuctionItemHelper
  */
+
+AuctionItemHelper* AuctionItemHelper::staticInitializer = AuctionItemHelper::instance();
 
 AuctionItemHelper::AuctionItemHelper() {
 	className = "AuctionItem";
@@ -589,19 +734,16 @@ void AuctionItemHelper::finalizeHelper() {
 }
 
 DistributedObject* AuctionItemHelper::instantiateObject() {
-	return new AuctionItem();
+	return new AuctionItem(DummyConstructorParameter::instance());
 }
 
-DistributedObjectAdapter* AuctionItemHelper::createAdapter(DistributedObjectServant* obj) {
-	DistributedObjectAdapter* adapter = new AuctionItemAdapter((AuctionItemImplementation*) obj);
+DistributedObjectAdapter* AuctionItemHelper::createAdapter(DistributedObjectStub* obj) {
+	DistributedObjectAdapter* adapter = new AuctionItemAdapter((AuctionItemImplementation*) obj->_getImplementation());
 
-	DistributedObjectStub* stub = new AuctionItem(obj);
-	stub->_setClassName(className);
-	stub->_setClassHelper(this);
+	obj->_setClassName(className);
+	obj->_setClassHelper(this);
 
-	adapter->setStub(stub);
-
-	obj->_setStub(stub);
+	adapter->setStub(obj);
 
 	return adapter;
 }

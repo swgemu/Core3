@@ -11,18 +11,13 @@ class Guild;
 
 class Player;
 
+class ZoneServer;
+
 class GuildMap;
 
 class GuildManager : public DistributedObjectStub {
-protected:
-	GuildManager();
-	GuildManager(DistributedObjectServant* obj);
-	GuildManager(GuildManager& ref);
-
-	virtual ~GuildManager();
-
 public:
-	GuildManager* clone();
+	GuildManager(ZoneServer* server);
 
 	void lock(bool doLock = true);
 
@@ -45,6 +40,10 @@ public:
 	GuildMap* getGuildMap();
 
 protected:
+	GuildManager(DummyConstructorParameter* param);
+
+	virtual ~GuildManager();
+
 	friend class GuildManagerHelper;
 };
 
@@ -84,6 +83,8 @@ protected:
 };
 
 class GuildManagerHelper : public DistributedObjectClassHelper, public Singleton<GuildManagerHelper> {
+	static GuildManagerHelper* staticInitializer;
+
 public:
 	GuildManagerHelper();
 
@@ -91,7 +92,7 @@ public:
 
 	DistributedObject* instantiateObject();
 
-	DistributedObjectAdapter* createAdapter(DistributedObjectServant* obj);
+	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class SingletonWrapper<GuildManagerHelper>;
 };

@@ -42,14 +42,18 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-import "../Creature";
-import "../../player/Player";
-import "../../scene/SceneObject";
-
 include "../../player/professions/Profession";
 
+import "../../scene/SceneObject";
+
+import "../../player/Player";
+
+import "../Creature";
+
 interface TrainerCreature implements Creature {
-	TrainerCreature(unsigned long oid);
+	TrainerCreature(unsigned long oid, Profession prof) {
+		super(oid);
+	}
 
 	void sendConversationStartTo(SceneObject obj);
 	void sendSkillBoxes(Player player);

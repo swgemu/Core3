@@ -61,8 +61,6 @@ class GuildImplementation : public GuildServant {
 public:
 	GuildImplementation(uint32 gid, const string& name, const string& tag);
 
-	Guild* deploy();
-
 	void sendGuildListTo(Player* player, bool doLock = true);
 
 	void updateGuildFor(Player* player);

@@ -14,15 +14,13 @@ class CreatureObject;
 #include "Container.h"
 
 class Bank : public Container {
+public:
+	Bank(CreatureObject* creature);
+
 protected:
-	Bank();
-	Bank(DistributedObjectServant* obj);
-	Bank(Bank& ref);
+	Bank(DummyConstructorParameter* param);
 
 	virtual ~Bank();
-
-public:
-	Bank* clone();
 
 	friend class BankHelper;
 };
@@ -38,6 +36,8 @@ public:
 };
 
 class BankHelper : public DistributedObjectClassHelper, public Singleton<BankHelper> {
+	static BankHelper* staticInitializer;
+
 public:
 	BankHelper();
 
@@ -45,7 +45,7 @@ public:
 
 	DistributedObject* instantiateObject();
 
-	DistributedObjectAdapter* createAdapter(DistributedObjectServant* obj);
+	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class SingletonWrapper<BankHelper>;
 };

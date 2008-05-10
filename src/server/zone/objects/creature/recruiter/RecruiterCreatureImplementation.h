@@ -56,7 +56,6 @@ which carries forward this exception.
 
 class RecruiterCreatureImplementation : public RecruiterCreatureServant {
 public:
-
 	RecruiterCreatureImplementation(uint64 oid) : RecruiterCreatureServant(oid) {
 		setType(CreatureImplementation::RECRUITER);
 

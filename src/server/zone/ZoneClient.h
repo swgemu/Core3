@@ -7,22 +7,23 @@
 
 #include "engine/orb/DistributedObjectBroker.h"
 
+#include "system/net/Socket.h"
+
+#include "system/net/SocketAddress.h"
+
+#include "engine/service/DatagramServiceThread.h"
+
 #include "engine/service/proto/BaseMessage.h"
 
 #include "engine/service/proto/StandaloneBaseMessage.h"
 
+class ZoneServer;
+
 class Player;
 
 class ZoneClient : public DistributedObjectStub {
-protected:
-	ZoneClient();
-	ZoneClient(DistributedObjectServant* obj);
-	ZoneClient(ZoneClient& ref);
-
-	virtual ~ZoneClient();
-
 public:
-	ZoneClient* clone();
+	ZoneClient(DatagramServiceThread* server, Socket* sock, SocketAddress* addr);
 
 	void disconnect(bool doLock = true);
 
@@ -49,8 +50,11 @@ public:
 	unsigned int getSessionKey();
 
 protected:
-	string _return_getAddress;
+	ZoneClient(DummyConstructorParameter* param);
 
+	virtual ~ZoneClient();
+
+	string _return_getAddress;
 
 	friend class ZoneClientHelper;
 };
@@ -92,6 +96,8 @@ protected:
 };
 
 class ZoneClientHelper : public DistributedObjectClassHelper, public Singleton<ZoneClientHelper> {
+	static ZoneClientHelper* staticInitializer;
+
 public:
 	ZoneClientHelper();
 
@@ -99,7 +105,7 @@ public:
 
 	DistributedObject* instantiateObject();
 
-	DistributedObjectAdapter* createAdapter(DistributedObjectServant* obj);
+	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class SingletonWrapper<ZoneClientHelper>;
 };

@@ -42,12 +42,22 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
+include "system/net/Socket";
+include "system/net/SocketAddress";
+
+include "engine/service/DatagramServiceThread";
 include "engine/service/proto/BaseMessage";
 include "engine/service/proto/StandaloneBaseMessage";
+
+import "ZoneServer";
 
 import "objects/player/Player";
 
 interface ZoneClient {
+	ZoneClient(DatagramServiceThread server, Socket sock, SocketAddress addr) {
+		super(server, sock, addr);
+	}
+	
 	void disconnect(boolean doLock = true);
 
 	void closeConnection(boolean doLock = true);

@@ -7,6 +7,8 @@
 
 #include "engine/orb/DistributedObjectBroker.h"
 
+class GuildManager;
+
 class Terminal;
 
 class Player;
@@ -14,19 +16,16 @@ class Player;
 #include "../Terminal.h"
 
 class GuildTerminal : public Terminal {
-protected:
-	GuildTerminal();
-	GuildTerminal(DistributedObjectServant* obj);
-	GuildTerminal(GuildTerminal& ref);
-
-	virtual ~GuildTerminal();
-
 public:
-	GuildTerminal* clone();
+	GuildTerminal(GuildManager* guildmanager, unsigned long long objid, float x, float z, float y);
 
 	int useObject(Player* player);
 
 protected:
+	GuildTerminal(DummyConstructorParameter* param);
+
+	virtual ~GuildTerminal();
+
 	friend class GuildTerminalHelper;
 };
 
@@ -43,6 +42,8 @@ public:
 };
 
 class GuildTerminalHelper : public DistributedObjectClassHelper, public Singleton<GuildTerminalHelper> {
+	static GuildTerminalHelper* staticInitializer;
+
 public:
 	GuildTerminalHelper();
 
@@ -50,7 +51,7 @@ public:
 
 	DistributedObject* instantiateObject();
 
-	DistributedObjectAdapter* createAdapter(DistributedObjectServant* obj);
+	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class SingletonWrapper<GuildTerminalHelper>;
 };

@@ -7,24 +7,17 @@
 
 #include "engine/orb/DistributedObjectBroker.h"
 
-class TangibleObject;
+#include "engine/service/Message.h"
 
 class Player;
 
-#include "engine/service/Message.h"
+class TangibleObject;
 
 #include "../TangibleObject.h"
 
 class ShipComponent : public TangibleObject {
-protected:
-	ShipComponent();
-	ShipComponent(DistributedObjectServant* obj);
-	ShipComponent(ShipComponent& ref);
-
-	virtual ~ShipComponent();
-
 public:
-	ShipComponent* clone();
+	ShipComponent(Player* player, unsigned int tempCRC, const unicode& n, const string& tempn);
 
 	void erase();
 
@@ -63,6 +56,10 @@ public:
 	bool getCompType();
 
 protected:
+	ShipComponent(DummyConstructorParameter* param);
+
+	virtual ~ShipComponent();
+
 	friend class ShipComponentHelper;
 };
 
@@ -113,6 +110,8 @@ public:
 };
 
 class ShipComponentHelper : public DistributedObjectClassHelper, public Singleton<ShipComponentHelper> {
+	static ShipComponentHelper* staticInitializer;
+
 public:
 	ShipComponentHelper();
 
@@ -120,7 +119,7 @@ public:
 
 	DistributedObject* instantiateObject();
 
-	DistributedObjectAdapter* createAdapter(DistributedObjectServant* obj);
+	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class SingletonWrapper<ShipComponentHelper>;
 };

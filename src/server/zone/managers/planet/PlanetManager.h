@@ -7,6 +7,12 @@
 
 #include "engine/orb/DistributedObjectBroker.h"
 
+#include "engine/util/Coordinate.h"
+
+class Zone;
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
 class Player;
 
 class ShuttleCreature;
@@ -15,18 +21,9 @@ class BuildingObject;
 
 class CellObject;
 
-#include "engine/util/Coordinate.h"
-
 class PlanetManager : public DistributedObjectStub {
-protected:
-	PlanetManager();
-	PlanetManager(DistributedObjectServant* obj);
-	PlanetManager(PlanetManager& ref);
-
-	virtual ~PlanetManager();
-
 public:
-	PlanetManager* clone();
+	PlanetManager(Zone* zone, ZoneProcessServerImplementation* processor);
 
 	void init();
 
@@ -51,6 +48,10 @@ public:
 	unsigned long long getLandingTime();
 
 protected:
+	PlanetManager(DummyConstructorParameter* param);
+
+	virtual ~PlanetManager();
+
 	friend class PlanetManagerHelper;
 };
 
@@ -89,6 +90,8 @@ protected:
 };
 
 class PlanetManagerHelper : public DistributedObjectClassHelper, public Singleton<PlanetManagerHelper> {
+	static PlanetManagerHelper* staticInitializer;
+
 public:
 	PlanetManagerHelper();
 
@@ -96,7 +99,7 @@ public:
 
 	DistributedObject* instantiateObject();
 
-	DistributedObjectAdapter* createAdapter(DistributedObjectServant* obj);
+	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class SingletonWrapper<PlanetManagerHelper>;
 };

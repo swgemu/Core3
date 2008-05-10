@@ -74,8 +74,8 @@ which carries forward this exception.
 #include "../../../chat/ChatManager.h"
 
 PlayerManagerImplementation::PlayerManagerImplementation(ItemManager* mgr, ZoneProcessServerImplementation* srv) : PlayerManagerServant() {
-	PlayerMapImplementation* mapImpl = new PlayerMapImplementation(3000);
-	playerMap = (PlayerMap*) mapImpl->deploy("PlayerMap");
+	playerMap = new PlayerMap(3000);
+	playerMap->deploy("PlayerMap");
 	
 	itemManager = mgr;
 	
@@ -301,23 +301,19 @@ bool PlayerManagerImplementation::validateName(string& cname) {
 }
 
 Player* PlayerManagerImplementation::load(uint64 charid) {
-	PlayerImplementation* playerImpl = new PlayerImplementation(charid);
-	playerImpl->setZoneProcessServer(server);
+	Player* player = new Player(charid);
+	player->setZoneProcessServer(server);
 	
-	Player* player = loadFromDatabase(playerImpl);
+	loadFromDatabase(player);
 	
-	if (player == NULL)
-		return NULL;
-			
 	playerMap->put(player->getFirstName(), player);
 	
 	return player;
 }
 
-Player* PlayerManagerImplementation::loadFromDatabase(PlayerImplementation* player) {
+void PlayerManagerImplementation::loadFromDatabase(Player* player) {
 	ResultSet* character;
-	Player* playerRes = NULL;
-	
+
 	stringstream query;
 	query << "SELECT * FROM characters WHERE character_id = " << player->getCharacterID();
 
@@ -334,10 +330,9 @@ Player* PlayerManagerImplementation::loadFromDatabase(PlayerImplementation* play
 	player->setLastName(character->getString(4));
 	
 	string orbname = "Player " + player->getFirstName();
-	playerRes = (Player*) player->deploy(orbname);
+	player->deploy(orbname);
 
-	PlayerObjectImplementation* playerObjImpl = new PlayerObjectImplementation(playerRes);
-	PlayerObject* playerObject = (PlayerObject*) playerObjImpl->deploy();
+	PlayerObject* playerObject = new PlayerObject(player);
 	
 	player->setPlayerObject(playerObject);
 
@@ -425,10 +420,9 @@ Player* PlayerManagerImplementation::loadFromDatabase(PlayerImplementation* play
 	loadWaypoints(player);
 	
 	delete character;
-	return playerRes;
 }
 
-void PlayerManagerImplementation::loadWaypoints(PlayerImplementation* player) {
+void PlayerManagerImplementation::loadWaypoints(Player* player) {
 	/*PlayerObject* play = player->getPlayerObject();
 		
 	if (play == NULL)

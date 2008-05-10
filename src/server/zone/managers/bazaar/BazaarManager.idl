@@ -43,11 +43,21 @@ which carries forward this exception.
 */
 
 import "../../objects/auction/AuctionItem";
+
 import "../../objects/player/Player";
+
 import "../../objects/tangible/terminal/bazaar/RegionBazaar";
+
 import "BazaarPlanetManager";
 
+import "server/zone/ZoneServer";
+include "server/zone/ZoneProcessServerImplementation";
+
 interface BazaarManager {
+	BazaarManager(ZoneServer server, ZoneProcessServerImplementation processor) {
+		super(server, processor);
+	}
+	
 	void newBazaarRequest(unsigned long bazaarID, Player player, int planet);
 	
 	boolean isBazaarTerminal(unsigned long objectID);

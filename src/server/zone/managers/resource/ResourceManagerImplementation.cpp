@@ -322,11 +322,10 @@ void ResourceManagerImplementation::sendSurveyMessage(Player* player, string& re
 			player->setSurveyWaypoint(NULL);
 		}
 		
-		WaypointObjectImplementation* wayImpl =	new WaypointObjectImplementation(player, player->getNewItemID());
-		wayImpl->setName("Resource Survey");
-		wayImpl->setPosition(wp_x, 0.0f, wp_y);
+		WaypointObject* waypoint = new WaypointObject(player, player->getNewItemID());
+		waypoint->setName("Resource Survey");
+		waypoint->setPosition(wp_x, 0.0f, wp_y);
 
-		WaypointObject* waypoint = (WaypointObject*) wayImpl->deploy();
 		waypoint->changeStatus(true);
 		
 		player->setSurveyWaypoint(waypoint);
@@ -419,22 +418,23 @@ void ResourceManagerImplementation::sendSampleMessage(Player* player, string& re
 					return;
 				}
 				
-				ResourceContainerImplementation* rcio = new ResourceContainerImplementation(player->getNewItemID());
+				rco = new ResourceContainer(player->getNewItemID());
 
 				string contName;
 				getResourceContainerName(resourceName, contName, false);
-				unicode cName = unicode(contName.c_str());
-				rcio->setName(cName);
-				rcio->setResourceName(resourceName);
-				rcio->setContents(resQuantity);
-				setResourceData(rcio, false);
 				
-				rco = (ResourceContainer*)rcio->deploy();
+				unicode cName = unicode(contName.c_str());
+				rco->setName(cName);
+				rco->setResourceName(resourceName);
+				rco->setContents(resQuantity);
+				
+				setResourceData(rco, false);
+				
 				player->addInventoryItem(rco);
 				
-				rcio->sendTo(player);
+				rco->sendTo(player);
 				
-				rcio->setPersistent(false);
+				rco->setPersistent(false);
 			}
 			
 			if (rco->getObjectSubType() == TangibleObjectImplementation::ENERGYRADIOACTIVE) {
@@ -458,7 +458,7 @@ void ResourceManagerImplementation::sendSampleMessage(Player* player, string& re
 	unlock(doLock);
 }
 
-void ResourceManagerImplementation::setResourceData(ResourceContainerImplementation* resContainer, bool doLock) {
+void ResourceManagerImplementation::setResourceData(ResourceContainer* resContainer, bool doLock) {
 	// Added by Ritter
 	lock(doLock);
 	

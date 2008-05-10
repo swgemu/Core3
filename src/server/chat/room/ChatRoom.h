@@ -14,15 +14,10 @@ class ZoneServer;
 class Player;
 
 class ChatRoom : public DistributedObjectStub {
-protected:
-	ChatRoom();
-	ChatRoom(DistributedObjectServant* obj);
-	ChatRoom(ChatRoom& ref);
-
-	virtual ~ChatRoom();
-
 public:
-	ChatRoom* clone();
+	ChatRoom(ZoneServer* server, const string& name, unsigned int cid);
+
+	ChatRoom(ZoneServer* server, ChatRoom* parent, const string& name, unsigned int cid);
 
 	void sendTo(Player* player);
 
@@ -91,19 +86,17 @@ public:
 	int compareTo(ChatRoom* obj);
 
 protected:
+	ChatRoom(DummyConstructorParameter* param);
+
+	virtual ~ChatRoom();
+
 	string _return_getCreator;
-
 	string _return_getFullPath;
-
 	string _return_getName;
-
 	string _return_getOwner;
-
 	string _return_getServerName;
 
-
 	unicode _return_getTitle;
-
 
 	friend class ChatRoomHelper;
 };
@@ -193,6 +186,8 @@ protected:
 };
 
 class ChatRoomHelper : public DistributedObjectClassHelper, public Singleton<ChatRoomHelper> {
+	static ChatRoomHelper* staticInitializer;
+
 public:
 	ChatRoomHelper();
 
@@ -200,7 +195,7 @@ public:
 
 	DistributedObject* instantiateObject();
 
-	DistributedObjectAdapter* createAdapter(DistributedObjectServant* obj);
+	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class SingletonWrapper<ChatRoomHelper>;
 };

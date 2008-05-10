@@ -85,6 +85,7 @@ public:
 	
 public:
 	PlayerObjectImplementation(Player* player);
+	
 	~PlayerObjectImplementation();
 
 	void sendToOwner();

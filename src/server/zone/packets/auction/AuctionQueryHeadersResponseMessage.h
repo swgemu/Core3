@@ -127,7 +127,7 @@ public:
 		for (int i = 0; i < itemList.size(); i++) {
 			AuctionItem* il = itemList.get(i);
 	    	
-			insertLong(il->getId()); //item id
+			insertLong(il->getID()); //item id
 			insertByte(i);  // List item string number
 	    	
 			insertInt(il->getPrice()); //item cost.
@@ -144,10 +144,10 @@ public:
 	    	
 	    	insertShort(il->getLocationPointer());
 	    	
-	    	insertLong(il->getOwnerId()); // seller ID
+	    	insertLong(il->getOwnerID()); // seller ID
 	    	insertShort(il->getOwnerPointer());
 
-	    	insertLong(il->getBuyerId()); // buyer ID
+	    	insertLong(il->getBuyerID()); // buyer ID
 	    	
 	    	insertShort(0);
 	    	insertInt(il->getPrice()); // my proxy not implemented yet

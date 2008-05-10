@@ -77,9 +77,8 @@ public:
 	
 public:
 	SuiBoxImplementation(Player* play, uint32 typeID, uint32 boxtype);
-	~SuiBoxImplementation();
 	
-	SuiBox* deploy();
+	~SuiBoxImplementation();
 	
 	virtual BaseMessage* generateMessage() = 0;
 	

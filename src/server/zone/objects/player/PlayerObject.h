@@ -7,26 +7,19 @@
 
 #include "engine/orb/DistributedObjectBroker.h"
 
+class Zone;
+
 class SceneObject;
 
 class Player;
-
-class Zone;
 
 class WaypointObject;
 
 #include "../scene/SceneObject.h"
 
 class PlayerObject : public SceneObject {
-protected:
-	PlayerObject();
-	PlayerObject(DistributedObjectServant* obj);
-	PlayerObject(PlayerObject& ref);
-
-	virtual ~PlayerObject();
-
 public:
-	PlayerObject* clone();
+	PlayerObject(Player* player);
 
 	void sendToOwner();
 
@@ -87,8 +80,11 @@ public:
 	unsigned int getNewWaypointListCount(int cnt);
 
 protected:
-	string _return_getCurrentTitle;
+	PlayerObject(DummyConstructorParameter* param);
 
+	virtual ~PlayerObject();
+
+	string _return_getCurrentTitle;
 
 	friend class PlayerObjectHelper;
 };
@@ -167,6 +163,8 @@ protected:
 };
 
 class PlayerObjectHelper : public DistributedObjectClassHelper, public Singleton<PlayerObjectHelper> {
+	static PlayerObjectHelper* staticInitializer;
+
 public:
 	PlayerObjectHelper();
 
@@ -174,7 +172,7 @@ public:
 
 	DistributedObject* instantiateObject();
 
-	DistributedObjectAdapter* createAdapter(DistributedObjectServant* obj);
+	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class SingletonWrapper<PlayerObjectHelper>;
 };

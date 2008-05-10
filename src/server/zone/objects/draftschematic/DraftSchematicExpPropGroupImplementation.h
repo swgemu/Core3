@@ -65,10 +65,6 @@ public:
 		expPropGroupListSize = 0;
 	}
 	
-	DraftSchematicExpPropGroup* deploy() {
-		return (DraftSchematicExpPropGroup*) DistributedObjectServant::deploy();
-	}
-	
 	void addExperimentalProperty(const string& experimentalPropertyType, uint32 weight) {
 		uint8 expPropType = 0;
 		

@@ -7,30 +7,27 @@
 
 #include "engine/orb/DistributedObjectBroker.h"
 
-class TangibleObject;
+#include "engine/service/Message.h"
 
 class Player;
 
-#include "engine/service/Message.h"
+class TangibleObject;
 
 #include "../TangibleObject.h"
 
 class Terminal : public TangibleObject {
-protected:
-	Terminal();
-	Terminal(DistributedObjectServant* obj);
-	Terminal(Terminal& ref);
-
-	virtual ~Terminal();
-
 public:
-	Terminal* clone();
+	Terminal(unsigned int objCRC, unsigned long long oid, const unicode& n, const string& tempn, float x, float z, float y, int TerminalType);
 
 	int useObject(Player* player);
 
 	int getTerminalType();
 
 protected:
+	Terminal(DummyConstructorParameter* param);
+
+	virtual ~Terminal();
+
 	friend class TerminalHelper;
 };
 
@@ -49,6 +46,8 @@ public:
 };
 
 class TerminalHelper : public DistributedObjectClassHelper, public Singleton<TerminalHelper> {
+	static TerminalHelper* staticInitializer;
+
 public:
 	TerminalHelper();
 
@@ -56,7 +55,7 @@ public:
 
 	DistributedObject* instantiateObject();
 
-	DistributedObjectAdapter* createAdapter(DistributedObjectServant* obj);
+	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class SingletonWrapper<TerminalHelper>;
 };

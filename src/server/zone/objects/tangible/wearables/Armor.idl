@@ -42,17 +42,23 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-import "Wearable";
-
 import "../../player/Player";
+
 import "../../creature/CreatureObject";
 
 import "../../scene/SceneObject";
 
+import "Wearable";
+
 interface Armor implements Wearable {
-	Armor(unsigned long oid, unsigned int tempCRC, const unicode name, const string tempn, boolean eqp = false);
-	Armor(CreatureObject creature, unsigned int tempCRC, const unicode n, const string tempn, boolean eqp = false);
-	
+	Armor(unsigned long oid, unsigned int tempCRC, const unicode n, const string tempn, boolean eqp = false) {
+		super(oid, tempCRC, n, tempn, eqp);
+	}
+
+	Armor(CreatureObject creature, unsigned int tempCRC, const unicode n, const string tempn, boolean eqp = false) {
+		super(creature, tempCRC, n, tempn, eqp);
+	}
+
 	void sendTo(Player player, boolean doClose = true);
 	
 	void decayArmor(int decayRate);
@@ -67,7 +73,7 @@ interface Armor implements Wearable {
 	
 	int addSkillMod(int skillModType, int skillModValue);
 	
-	// setters and getters
+	// getters
 	int getRating();
 	
 	int getCondition();
@@ -120,9 +126,6 @@ interface Armor implements Wearable {
 	
 	boolean isSliced();
 	
-	void setSocketType(int index, int type);
-	void setSocketValue(int index, int type);
-	
 	int getSocketType(int index);
 	int getSocketValue(int index);
 	
@@ -145,7 +148,17 @@ interface Armor implements Wearable {
 	int getSocket1Value();
 	int getSocket2Value();
 	int getSocket3Value();
+
+	// setters
+	void setType(int armorSlot);
 	
+	void setHealthEncumbrance(int healthEnc);
+	void setActionEncumbrance(int actionEnc);
+	void setMindEncumbrance(int mindEnc);
+	
+	void setSocketType(int index, int type);
+	void setSocketValue(int index, int type);
+
 	void setSockets(int socket);
 	
 	void setSocket0Type(int type);

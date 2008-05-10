@@ -78,11 +78,6 @@ public:
 	void sendDestroyTo(Player* player);
 
 	void close(Player* player);
-
-	inline StaticObject* deploy() {
-		return (StaticObject*) SceneObjectImplementation::deploy();
-	}
-		
 };
 
 #endif /*STATICOBJECTIMPLEMENTATION_H_*/

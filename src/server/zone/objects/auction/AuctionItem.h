@@ -10,83 +10,90 @@
 #include "engine/core/ManagedObject.h"
 
 class AuctionItem : public ManagedObject {
-protected:
-	AuctionItem();
-	AuctionItem(DistributedObjectServant* obj);
-	AuctionItem(AuctionItem& ref);
-
-	virtual ~AuctionItem();
-
 public:
-	AuctionItem* clone();
+	AuctionItem(unsigned long long objectid);
 
-	unsigned long long getId();
+	AuctionItem(unsigned long long objectid, string& name, int itemprice, int time, bool isauction, int type, string& owner);
 
-	unsigned long long getOwnerId();
+	void setLocation(string& planet, string& header, unsigned long long vendorid, int x, int z, bool vendor);
 
-	void setOwnerId(unsigned long long ownerid);
+	int getPlanet();
 
-	void setOwnerName(string& name);
+	unsigned long long getID();
 
-	unsigned long long getBuyerId();
-
-	void setBuyerId(unsigned long long buyerid);
-
-	string& getBidderName();
-
-	void setBidderName(string& name);
-
-	unsigned int getItemType();
-
-	bool isSold();
-
-	void setSold(bool sld);
+	unsigned long long getOwnerID();
 
 	string& getTerminalTitle();
 
 	string& getOwnerName();
 
-	void setLocationPointer(int locpt);
+	unsigned long long getBuyerID();
 
-	int getLocationPointer();
+	string& getBidderName();
 
-	void setOwnerPointer(int ownpt);
+	unsigned int getItemType();
 
-	int getOwnerPointer();
+	bool isSold();
 
-	string& getItemName();
-
-	void setItemDescription(string& description);
-
-	string& getItemDescription();
-
-	int getPrice();
-
-	void setPrice(int prc);
-
-	unsigned int getExpireTime();
-
-	void setExpireTime(unsigned int expiretime);
+	unsigned long long getVendorID();
 
 	bool getAuction();
 
-	int getPlanet();
-
 	string& getLocation();
 
+	int getPrice();
+
+	int getLocationPointer();
+
+	int getOwnerPointer();
+
+	string& getItemDescription();
+
+	string& getItemName();
+
+	unsigned int getExpireTime();
+
+	void setOwnerID(unsigned long long ownerid);
+
+	void setOwnerName(const string& name);
+
+	void setVendorID(unsigned long long vid);
+
+	void setPlanet(int planet);
+
+	void setBidderName(const string& name);
+
+	void setSold(bool sld);
+
+	void setLocationPointer(int locpt);
+
+	void setItemType(int type);
+
+	void setItemName(const string& name);
+
+	void setItemDescription(const string& description);
+
+	void setPrice(int prc);
+
+	void setAuction(bool val);
+
+	void setBuyerID(unsigned long long bid);
+
+	void setExpireTime(unsigned int expiretime);
+
+	void setOwnerPointer(int ownpt);
+
 protected:
+	AuctionItem(DummyConstructorParameter* param);
+
+	virtual ~AuctionItem();
+
 	string _return_getBidderName;
-
 	string _return_getItemDescription;
-
 	string _return_getItemName;
-
 	string _return_getLocation;
-
 	string _return_getOwnerName;
-
 	string _return_getTerminalTitle;
-
 
 	friend class AuctionItemHelper;
 };
@@ -99,67 +106,86 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	unsigned long long getId();
+	void setLocation(string& planet, string& header, unsigned long long vendorid, int x, int z, bool vendor);
 
-	unsigned long long getOwnerId();
+	int getPlanet();
 
-	void setOwnerId(unsigned long long ownerid);
+	unsigned long long getID();
 
-	void setOwnerName(string& name);
-
-	unsigned long long getBuyerId();
-
-	void setBuyerId(unsigned long long buyerid);
-
-	string& getBidderName();
-
-	void setBidderName(string& name);
-
-	unsigned int getItemType();
-
-	bool isSold();
-
-	void setSold(bool sld);
+	unsigned long long getOwnerID();
 
 	string& getTerminalTitle();
 
 	string& getOwnerName();
 
-	void setLocationPointer(int locpt);
+	unsigned long long getBuyerID();
 
-	int getLocationPointer();
+	string& getBidderName();
 
-	void setOwnerPointer(int ownpt);
+	unsigned int getItemType();
 
-	int getOwnerPointer();
+	bool isSold();
 
-	string& getItemName();
-
-	void setItemDescription(string& description);
-
-	string& getItemDescription();
-
-	int getPrice();
-
-	void setPrice(int prc);
-
-	unsigned int getExpireTime();
-
-	void setExpireTime(unsigned int expiretime);
+	unsigned long long getVendorID();
 
 	bool getAuction();
 
-	int getPlanet();
-
 	string& getLocation();
 
+	int getPrice();
+
+	int getLocationPointer();
+
+	int getOwnerPointer();
+
+	string& getItemDescription();
+
+	string& getItemName();
+
+	unsigned int getExpireTime();
+
+	void setOwnerID(unsigned long long ownerid);
+
+	void setOwnerName(const string& name);
+
+	void setVendorID(unsigned long long vid);
+
+	void setPlanet(int planet);
+
+	void setBidderName(const string& name);
+
+	void setSold(bool sld);
+
+	void setLocationPointer(int locpt);
+
+	void setItemType(int type);
+
+	void setItemName(const string& name);
+
+	void setItemDescription(const string& description);
+
+	void setPrice(int prc);
+
+	void setAuction(bool val);
+
+	void setBuyerID(unsigned long long bid);
+
+	void setExpireTime(unsigned int expiretime);
+
+	void setOwnerPointer(int ownpt);
+
 protected:
+	string _param0_setLocation__string_string_long_int_int_bool_;
+	string _param1_setLocation__string_string_long_int_int_bool_;
 	string _param0_setOwnerName__string_;
 	string _param0_setBidderName__string_;
+	string _param0_setItemName__string_;
 	string _param0_setItemDescription__string_;
 };
 
 class AuctionItemHelper : public DistributedObjectClassHelper, public Singleton<AuctionItemHelper> {
+	static AuctionItemHelper* staticInitializer;
+
 public:
 	AuctionItemHelper();
 
@@ -167,7 +193,7 @@ public:
 
 	DistributedObject* instantiateObject();
 
-	DistributedObjectAdapter* createAdapter(DistributedObjectServant* obj);
+	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class SingletonWrapper<AuctionItemHelper>;
 };

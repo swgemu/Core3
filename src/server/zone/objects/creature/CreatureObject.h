@@ -33,18 +33,13 @@ class MountCreature;
 
 class Guild;
 
+class Skill;
+
 #include "../scene/SceneObject.h"
 
 class CreatureObject : public SceneObject {
-protected:
-	CreatureObject();
-	CreatureObject(DistributedObjectServant* obj);
-	CreatureObject(CreatureObject& ref);
-
-	virtual ~CreatureObject();
-
 public:
-	CreatureObject* clone();
+	CreatureObject(unsigned long long oid);
 
 	void info(const string& message, bool forcedLog = false);
 
@@ -208,24 +203,6 @@ public:
 
 	void clearAttackDelay();
 
-	bool isOnFullHealth();
-
-	bool hasStates();
-
-	bool hasState(unsigned long long state);
-
-	bool hasWounds();
-
-	bool hasShockWounds();
-
-	bool isAttackable();
-
-	bool isAttackableBy(CreatureObject* attacker);
-
-	bool isListening();
-
-	bool isWatching();
-
 	void activateBurstRun();
 
 	bool hasQueuedState(unsigned int skillCRC);
@@ -237,118 +214,6 @@ public:
 	void setMeditateState();
 
 	bool isGuilded();
-
-	void setBaseHealth(unsigned int health);
-
-	void setBaseStrength(unsigned int strength);
-
-	void setBaseConstitution(unsigned int constituition);
-
-	void setBaseAction(unsigned int action);
-
-	void setBaseQuickness(unsigned int quickness);
-
-	void setBaseStamina(unsigned int stamina);
-
-	void setBaseMind(unsigned int mind);
-
-	void setBaseFocus(unsigned int focus);
-
-	void setBaseWillpower(unsigned int willpower);
-
-	void setHealth(unsigned int health);
-
-	void setStrength(unsigned int strength);
-
-	void setConstitution(unsigned int constituition);
-
-	void setAction(unsigned int action);
-
-	void setQuickness(unsigned int quickness);
-
-	void setStamina(unsigned int stamina);
-
-	void setMind(unsigned int mind);
-
-	void setFocus(unsigned int focus);
-
-	void setWillpower(unsigned int willpower);
-
-	void setHealthMax(unsigned int health);
-
-	void setStrengthMax(unsigned int strength);
-
-	void setConstitutionMax(unsigned int constituition);
-
-	void setActionMax(unsigned int action);
-
-	void setQuicknessMax(unsigned int quickness);
-
-	void setStaminaMax(unsigned int stamina);
-
-	void setMindMax(unsigned int mind);
-
-	void setFocusMax(unsigned int focus);
-
-	void setWillpowerMax(unsigned int willpower);
-
-	void setArmor(unsigned int ar);
-
-	void setHealthWounds(unsigned int wounds);
-
-	void setActionWounds(unsigned int wounds);
-
-	void setMindWounds(unsigned int wounds);
-
-	void setShockWounds(unsigned int wounds);
-
-	void setWoundsUpdateCounter(unsigned int count);
-
-	void changeConditionDamage(int amount);
-
-	void setPosture(unsigned char state, bool overrideDizzy = false, bool objectInteraction = false, float objX = 0, float objY = 0, float objZ = 0);
-
-	void setDizziedState();
-
-	void setStunnedState();
-
-	void setBlindedState();
-
-	void setIntimidatedState();
-
-	void setPoisonedState(int str, int type, int duration);
-
-	void setBleedingState(int str, int type, int duration);
-
-	void setDiseasedState(int str, int type, int duration);
-
-	void setOnFireState(int str, int type, int duration);
-
-	bool setNextAttackDelay(int del);
-
-	void setCharacterName(const string& name);
-
-	void setCharacterName(unicode& name);
-
-	void setTerrainName(const string& name);
-
-	void setCharacterApperance(string& cust);
-
-	void setRaceName(const string& name);
-
-	void setSpeciesName(const string& name);
-
-	void setFaction(unsigned int fac);
-
-	void setHeight(float h);
-
-	void setMood(unsigned char mdid);
-
-	void setMood(const string& m);
-
-	void setGroup(GroupObject* Group);
-
-	void setMount(MountCreature* mount);
 
 	void removeGroup();
 
@@ -385,6 +250,170 @@ public:
 	void setLevel(unsigned int lvl);
 
 	void updateServerMovementStamp();
+
+	SceneObject* getInventoryItem(unsigned long long oid);
+
+	void removeInventoryItem(unsigned long long oid);
+
+	SceneObject* getLootItem(unsigned long long oid);
+
+	void removeLootItem(unsigned long long oid);
+
+	void broadcastMessage(BaseMessage* msg, int range = 128, bool doLock = true);
+
+	void broadcastMessage(StandaloneBaseMessage* msg, int range = 128, bool doLock = true);
+
+	Inventory* getInventory();
+
+	Container* getLootContainer();
+
+	unsigned long long getNewItemID();
+
+	Weapon* getWeapon();
+
+	Armor* getArmor(int type);
+
+	void addSkill(Skill* skill);
+
+	int getSkillMod(const string& name);
+
+	bool hasSkillMod(const string& name);
+
+	int getSkillModBonus(const string& name);
+
+	bool hasSkillModBonus(const string& name);
+
+	int getAccuracy();
+
+	int getDefenseBonus();
+
+	int getDamageBonus();
+
+	int getConditionDamage();
+
+	int getMaxCondition();
+
+	int getCondition();
+
+	MountCreature* getMount();
+
+	unsigned long long getLastServerMovementStamp();
+
+	unsigned long long getCreatureLinkID();
+
+	float getDistanceTo(CreatureObject* targetCreature);
+
+	float getHeight();
+
+	unsigned int getCreatureSkillsCount();
+
+	unsigned int getNewCreatureSkillsCount(int cnt);
+
+	unsigned int getLastMovementUpdateStamp();
+
+	int getIgnoreMovementTests();
+
+	unsigned int getDefenderListSize();
+
+	CreatureObject* getDefender(int idx);
+
+	unsigned int getLevel();
+
+	int getCenteredBonus();
+
+	void sendSystemMessage(const string& message);
+
+	void sendSystemMessage(const string& file, const string& str, unsigned long long targetid = 0);
+
+	void addInventoryItem(TangibleObject* item);
+
+	void addLootItem(TangibleObject* item);
+
+	void startDancing(const string& anim, bool changeDance = false);
+
+	void startPlayingMusic(const string& anim, bool changeDance = false);
+
+	void startWatch(unsigned long long entid);
+
+	void startListen(unsigned long long entid);
+
+	void stopWatch(unsigned long long entid, bool doSendPackets = true, bool forced = false, bool doLock = true);
+
+	void stopListen(unsigned long long entid, bool doSendPackets = true, bool forced = false, bool doLock = true);
+
+	bool isPlayingMusic();
+
+	bool isDancing();
+
+	void stopDancing();
+
+	void stopPlayingMusic();
+
+	void addListener(CreatureObject* creature);
+
+	void addWatcher(CreatureObject* creature);
+
+	void removeListener(CreatureObject* creature);
+
+	void removeWatcher(CreatureObject* creature);
+
+	void doFlourish(const string& modifier);
+
+	void doPerformanceAction();
+
+	void doEntertainerPatronEffects(bool healShock = false, bool healWounds = false, bool addBuff = false);
+
+	void activateRecovery();
+
+	int getCreatureSkillsSize();
+
+	string& getSkill(int idx);
+
+	bool hasSkill(unsigned int skillCRC);
+
+	void mountCreature(MountCreature* mnt, bool lockMount = true);
+
+	void dismount(bool lockMount = true, bool ignoreCooldown = true);
+
+	void addCashCredits(unsigned int credits);
+
+	void addBankCredits(unsigned int credits);
+
+	void updateCashCredits(unsigned int credits);
+
+	void updateBankCredits(unsigned int credits);
+
+	void subtractCashCredits(unsigned int credits);
+
+	void subtractBankCredits(unsigned int credits);
+
+	void setCashCredits(int credits);
+
+	void setBankCredits(int credits);
+
+	void applyBuff(const string& type, int value, float duration);
+
+	bool verifyCashCredits(unsigned int creditsToRemove);
+
+	bool verifyBankCredits(unsigned int creditsToRemove);
+
+	bool isOnFullHealth();
+
+	bool hasStates();
+
+	bool hasState(unsigned long long state);
+
+	bool hasWounds();
+
+	bool hasShockWounds();
+
+	bool isAttackable();
+
+	bool isAttackableBy(CreatureObject* attacker);
+
+	bool isListening();
+
+	bool isWatching();
 
 	unicode& getCharacterName();
 
@@ -548,6 +577,10 @@ public:
 
 	unsigned long long getListenID();
 
+	bool isInBuilding();
+
+	int getBuildingType();
+
 	string& getGuildName();
 
 	int getWeaponSpeedModifier();
@@ -558,178 +591,158 @@ public:
 
 	unsigned int getNewSkillModsCounter(int cnt);
 
-	SceneObject* getInventoryItem(unsigned long long oid);
+	void setBaseHealth(unsigned int health);
 
-	void removeInventoryItem(unsigned long long oid);
+	void setBaseStrength(unsigned int strength);
 
-	SceneObject* getLootItem(unsigned long long oid);
+	void setBaseConstitution(unsigned int constituition);
 
-	void removeLootItem(unsigned long long oid);
+	void setBaseAction(unsigned int action);
 
-	void broadcastMessage(BaseMessage* msg, int range = 128, bool doLock = true);
+	void setBaseQuickness(unsigned int quickness);
 
-	void broadcastMessage(StandaloneBaseMessage* msg, int range = 128, bool doLock = true);
+	void setBaseStamina(unsigned int stamina);
 
-	Inventory* getInventory();
+	void setBaseMind(unsigned int mind);
 
-	Container* getLootContainer();
+	void setBaseFocus(unsigned int focus);
 
-	unsigned long long getNewItemID();
+	void setBaseWillpower(unsigned int willpower);
 
-	Weapon* getWeapon();
+	void setHealth(unsigned int health);
 
-	Armor* getArmor(int type);
+	void setStrength(unsigned int strength);
 
-	int getSkillMod(const string& name);
+	void setConstitution(unsigned int constituition);
 
-	bool hasSkillMod(const string& name);
+	void setAction(unsigned int action);
 
-	int getSkillModBonus(const string& name);
+	void setQuickness(unsigned int quickness);
 
-	bool hasSkillModBonus(const string& name);
+	void setStamina(unsigned int stamina);
 
-	int getAccuracy();
+	void setMind(unsigned int mind);
 
-	int getDefenseBonus();
+	void setFocus(unsigned int focus);
 
-	int getDamageBonus();
+	void setWillpower(unsigned int willpower);
 
-	int getConditionDamage();
+	void setHealthMax(unsigned int health);
 
-	int getMaxCondition();
+	void setStrengthMax(unsigned int strength);
 
-	int getCondition();
+	void setConstitutionMax(unsigned int constituition);
 
-	MountCreature* getMount();
+	void setActionMax(unsigned int action);
 
-	unsigned long long getLastServerMovementStamp();
+	void setQuicknessMax(unsigned int quickness);
 
-	unsigned long long getCreatureLinkID();
+	void setStaminaMax(unsigned int stamina);
 
-	float getDistanceTo(CreatureObject* targetCreature);
+	void setMindMax(unsigned int mind);
 
-	float getHeight();
+	void setFocusMax(unsigned int focus);
 
-	unsigned int getCreatureSkillsCount();
+	void setWillpowerMax(unsigned int willpower);
 
-	unsigned int getNewCreatureSkillsCount(int cnt);
+	void setArmor(unsigned int ar);
 
-	unsigned int getLastMovementUpdateStamp();
+	void setHealthWounds(unsigned int wounds);
 
-	int getIgnoreMovementTests();
+	void setActionWounds(unsigned int wounds);
 
-	unsigned int getDefenderListSize();
+	void setMindWounds(unsigned int wounds);
 
-	CreatureObject* getDefender(int idx);
+	void setShockWounds(unsigned int wounds);
 
-	unsigned int getLevel();
+	void setWoundsUpdateCounter(unsigned int count);
 
-	int getCenteredBonus();
+	void setSpeed(float spd);
 
-	void sendSystemMessage(const string& message);
+	void setAcceleration(float acc);
 
-	void sendSystemMessage(const string& file, const string& str, unsigned long long targetid = 0);
+	void setKinetic(float kin);
 
-	void addInventoryItem(TangibleObject* item);
+	void setEnergy(float ene);
 
-	void addLootItem(TangibleObject* item);
+	void setElectricity(float ele);
 
-	void startDancing(const string& anim, bool changeDance = false);
+	void setStun(float stu);
 
-	void startPlayingMusic(const string& anim, bool changeMusic = false);
+	void setBlast(float bla);
 
-	void startWatch(unsigned long long entid);
+	void setHeat(float hea);
 
-	void startListen(unsigned long long entid);
+	void setCold(float col);
 
-	void stopWatch(unsigned long long entid, bool doSendPackets = true, bool forced = false, bool doLock = true);
+	void setAcid(float aci);
 
-	void stopListen(unsigned long long entid, bool doSendPackets = true, bool forced = false, bool doLock = true);
+	void setLightSaber(float lig);
 
-	bool isPlayingMusic();
+	void changeConditionDamage(int amount);
 
-	bool isDancing();
+	void setPosture(unsigned char state, bool overrideDizzy = false, bool objectInteraction = false, float objX = 0, float objY = 0, float objZ = 0);
 
-	void stopDancing();
+	void setPvpStatusBitmask(unsigned int mask);
 
-	void stopPlayingMusic();
+	void setDizziedState();
 
-	void addListener(CreatureObject* creature);
+	void setStunnedState();
 
-	void addWatcher(CreatureObject* creature);
+	void setBlindedState();
 
-	void removeListener(CreatureObject* creature);
+	void setIntimidatedState();
 
-	void removeWatcher(CreatureObject* creature);
+	void setPoisonedState(int str, int type, int duration);
 
-	void doFlourish(const string& modifier);
+	void setBleedingState(int str, int type, int duration);
 
-	void doEntertainerPatronEffects(bool healShock = false, bool healWounds = false, bool addBuff = false);
+	void setDiseasedState(int str, int type, int duration);
 
-	void doPerformanceAction();
+	void setOnFireState(int str, int type, int duration);
 
-	bool isInBuilding();
+	bool setNextAttackDelay(int del);
 
-	SceneObject* getBuilding();
+	void setCharacterName(const string& name);
 
-	int getBuildingType();
+	void setCharacterName(const unicode& name);
 
-	void activateRecovery();
+	void setTerrainName(const string& name);
 
-	int getCreatureSkillsSize();
+	void setCharacterApperance(string& cust);
 
-	string& getSkill(int idx);
+	void setRaceName(const string& name);
 
-	bool hasSkill(unsigned int skillCRC);
+	void setSpeciesName(const string& name);
 
-	void mountCreature(MountCreature* mnt, bool lockMount = true);
+	void setFaction(unsigned int fac);
 
-	void dismount(bool lockMount = true, bool ignoreCooldown = true);
+	void setHeight(float h);
 
-	void addCashCredits(unsigned int credits);
+	void setMood(unsigned char mdid);
 
-	void addBankCredits(unsigned int credits);
+	void setMood(const string& m);
 
-	void updateCashCredits(unsigned int credits);
+	void setGroup(GroupObject* Group);
 
-	void updateBankCredits(unsigned int credits);
-
-	void subtractCashCredits(unsigned int credits);
-
-	void subtractBankCredits(unsigned int credits);
-
-	void setCashCredits(int credits);
-
-	void setBankCredits(int credits);
-
-	void applyBuff(const string& type, int value, float duration);
-
-	bool verifyCashCredits(unsigned int creditsToRemove);
-
-	bool verifyBankCredits(unsigned int creditsToRemove);
+	void setMount(MountCreature* mount);
 
 protected:
+	CreatureObject(DummyConstructorParameter* param);
+
+	virtual ~CreatureObject();
+
 	string _return_getGuildName;
-
 	string _return_getMood;
-
 	string _return_getPerformanceAnimation;
-
 	string _return_getPerformanceName;
-
 	string _return_getRaceName;
-
 	string _return_getSkill;
-
 	string _return_getSpeciesName;
-
 	string _return_getStfName;
-
 	string _return_getTerrainName;
 
-
 	unicode _return_getCharacterName;
-
 
 	friend class CreatureObjectHelper;
 };
@@ -904,24 +917,6 @@ public:
 
 	void clearAttackDelay();
 
-	bool isOnFullHealth();
-
-	bool hasStates();
-
-	bool hasState(unsigned long long state);
-
-	bool hasWounds();
-
-	bool hasShockWounds();
-
-	bool isAttackable();
-
-	bool isAttackableBy(CreatureObject* attacker);
-
-	bool isListening();
-
-	bool isWatching();
-
 	void activateBurstRun();
 
 	bool hasQueuedState(unsigned int skillCRC);
@@ -933,118 +928,6 @@ public:
 	void setMeditateState();
 
 	bool isGuilded();
-
-	void setBaseHealth(unsigned int health);
-
-	void setBaseStrength(unsigned int strength);
-
-	void setBaseConstitution(unsigned int constituition);
-
-	void setBaseAction(unsigned int action);
-
-	void setBaseQuickness(unsigned int quickness);
-
-	void setBaseStamina(unsigned int stamina);
-
-	void setBaseMind(unsigned int mind);
-
-	void setBaseFocus(unsigned int focus);
-
-	void setBaseWillpower(unsigned int willpower);
-
-	void setHealth(unsigned int health);
-
-	void setStrength(unsigned int strength);
-
-	void setConstitution(unsigned int constituition);
-
-	void setAction(unsigned int action);
-
-	void setQuickness(unsigned int quickness);
-
-	void setStamina(unsigned int stamina);
-
-	void setMind(unsigned int mind);
-
-	void setFocus(unsigned int focus);
-
-	void setWillpower(unsigned int willpower);
-
-	void setHealthMax(unsigned int health);
-
-	void setStrengthMax(unsigned int strength);
-
-	void setConstitutionMax(unsigned int constituition);
-
-	void setActionMax(unsigned int action);
-
-	void setQuicknessMax(unsigned int quickness);
-
-	void setStaminaMax(unsigned int stamina);
-
-	void setMindMax(unsigned int mind);
-
-	void setFocusMax(unsigned int focus);
-
-	void setWillpowerMax(unsigned int willpower);
-
-	void setArmor(unsigned int ar);
-
-	void setHealthWounds(unsigned int wounds);
-
-	void setActionWounds(unsigned int wounds);
-
-	void setMindWounds(unsigned int wounds);
-
-	void setShockWounds(unsigned int wounds);
-
-	void setWoundsUpdateCounter(unsigned int count);
-
-	void changeConditionDamage(int amount);
-
-	void setPosture(unsigned char state, bool overrideDizzy, bool objectInteraction, float objX, float objY, float objZ);
-
-	void setDizziedState();
-
-	void setStunnedState();
-
-	void setBlindedState();
-
-	void setIntimidatedState();
-
-	void setPoisonedState(int str, int type, int duration);
-
-	void setBleedingState(int str, int type, int duration);
-
-	void setDiseasedState(int str, int type, int duration);
-
-	void setOnFireState(int str, int type, int duration);
-
-	bool setNextAttackDelay(int del);
-
-	void setCharacterName(const string& name);
-
-	void setCharacterName(unicode& name);
-
-	void setTerrainName(const string& name);
-
-	void setCharacterApperance(string& cust);
-
-	void setRaceName(const string& name);
-
-	void setSpeciesName(const string& name);
-
-	void setFaction(unsigned int fac);
-
-	void setHeight(float h);
-
-	void setMood(unsigned char mdid);
-
-	void setMood(const string& m);
-
-	void setGroup(GroupObject* Group);
-
-	void setMount(MountCreature* mount);
 
 	void removeGroup();
 
@@ -1081,6 +964,168 @@ public:
 	void setLevel(unsigned int lvl);
 
 	void updateServerMovementStamp();
+
+	SceneObject* getInventoryItem(unsigned long long oid);
+
+	void removeInventoryItem(unsigned long long oid);
+
+	SceneObject* getLootItem(unsigned long long oid);
+
+	void removeLootItem(unsigned long long oid);
+
+	void broadcastMessage(BaseMessage* msg, int range, bool doLock);
+
+	void broadcastMessage(StandaloneBaseMessage* msg, int range, bool doLock);
+
+	Inventory* getInventory();
+
+	Container* getLootContainer();
+
+	unsigned long long getNewItemID();
+
+	Weapon* getWeapon();
+
+	Armor* getArmor(int type);
+
+	int getSkillMod(const string& name);
+
+	bool hasSkillMod(const string& name);
+
+	int getSkillModBonus(const string& name);
+
+	bool hasSkillModBonus(const string& name);
+
+	int getAccuracy();
+
+	int getDefenseBonus();
+
+	int getDamageBonus();
+
+	int getConditionDamage();
+
+	int getMaxCondition();
+
+	int getCondition();
+
+	MountCreature* getMount();
+
+	unsigned long long getLastServerMovementStamp();
+
+	unsigned long long getCreatureLinkID();
+
+	float getDistanceTo(CreatureObject* targetCreature);
+
+	float getHeight();
+
+	unsigned int getCreatureSkillsCount();
+
+	unsigned int getNewCreatureSkillsCount(int cnt);
+
+	unsigned int getLastMovementUpdateStamp();
+
+	int getIgnoreMovementTests();
+
+	unsigned int getDefenderListSize();
+
+	CreatureObject* getDefender(int idx);
+
+	unsigned int getLevel();
+
+	int getCenteredBonus();
+
+	void sendSystemMessage(const string& message);
+
+	void sendSystemMessage(const string& file, const string& str, unsigned long long targetid);
+
+	void addInventoryItem(TangibleObject* item);
+
+	void addLootItem(TangibleObject* item);
+
+	void startDancing(const string& anim, bool changeDance);
+
+	void startPlayingMusic(const string& anim, bool changeDance);
+
+	void startWatch(unsigned long long entid);
+
+	void startListen(unsigned long long entid);
+
+	void stopWatch(unsigned long long entid, bool doSendPackets, bool forced, bool doLock);
+
+	void stopListen(unsigned long long entid, bool doSendPackets, bool forced, bool doLock);
+
+	bool isPlayingMusic();
+
+	bool isDancing();
+
+	void stopDancing();
+
+	void stopPlayingMusic();
+
+	void addListener(CreatureObject* creature);
+
+	void addWatcher(CreatureObject* creature);
+
+	void removeListener(CreatureObject* creature);
+
+	void removeWatcher(CreatureObject* creature);
+
+	void doFlourish(const string& modifier);
+
+	void doPerformanceAction();
+
+	void doEntertainerPatronEffects(bool healShock, bool healWounds, bool addBuff);
+
+	void activateRecovery();
+
+	int getCreatureSkillsSize();
+
+	string& getSkill(int idx);
+
+	bool hasSkill(unsigned int skillCRC);
+
+	void mountCreature(MountCreature* mnt, bool lockMount);
+
+	void dismount(bool lockMount, bool ignoreCooldown);
+
+	void addCashCredits(unsigned int credits);
+
+	void addBankCredits(unsigned int credits);
+
+	void updateCashCredits(unsigned int credits);
+
+	void updateBankCredits(unsigned int credits);
+
+	void subtractCashCredits(unsigned int credits);
+
+	void subtractBankCredits(unsigned int credits);
+
+	void setCashCredits(int credits);
+
+	void setBankCredits(int credits);
+
+	void applyBuff(const string& type, int value, float duration);
+
+	bool verifyCashCredits(unsigned int creditsToRemove);
+
+	bool verifyBankCredits(unsigned int creditsToRemove);
+
+	bool isOnFullHealth();
+
+	bool hasStates();
+
+	bool hasState(unsigned long long state);
+
+	bool hasWounds();
+
+	bool hasShockWounds();
+
+	bool isAttackable();
+
+	bool isAttackableBy(CreatureObject* attacker);
+
+	bool isListening();
+
+	bool isWatching();
 
 	unicode& getCharacterName();
 
@@ -1244,6 +1289,10 @@ public:
 
 	unsigned long long getListenID();
 
+	bool isInBuilding();
+
+	int getBuildingType();
+
 	string& getGuildName();
 
 	int getWeaponSpeedModifier();
@@ -1254,155 +1303,141 @@ public:
 
 	unsigned int getNewSkillModsCounter(int cnt);
 
-	SceneObject* getInventoryItem(unsigned long long oid);
+	void setBaseHealth(unsigned int health);
 
-	void removeInventoryItem(unsigned long long oid);
+	void setBaseStrength(unsigned int strength);
 
-	SceneObject* getLootItem(unsigned long long oid);
+	void setBaseConstitution(unsigned int constituition);
 
-	void removeLootItem(unsigned long long oid);
+	void setBaseAction(unsigned int action);
 
-	void broadcastMessage(BaseMessage* msg, int range, bool doLock);
+	void setBaseQuickness(unsigned int quickness);
 
-	void broadcastMessage(StandaloneBaseMessage* msg, int range, bool doLock);
+	void setBaseStamina(unsigned int stamina);
 
-	Inventory* getInventory();
+	void setBaseMind(unsigned int mind);
 
-	Container* getLootContainer();
+	void setBaseFocus(unsigned int focus);
 
-	unsigned long long getNewItemID();
+	void setBaseWillpower(unsigned int willpower);
 
-	Weapon* getWeapon();
+	void setHealth(unsigned int health);
 
-	Armor* getArmor(int type);
+	void setStrength(unsigned int strength);
 
-	int getSkillMod(const string& name);
+	void setConstitution(unsigned int constituition);
 
-	bool hasSkillMod(const string& name);
+	void setAction(unsigned int action);
 
-	int getSkillModBonus(const string& name);
+	void setQuickness(unsigned int quickness);
 
-	bool hasSkillModBonus(const string& name);
+	void setStamina(unsigned int stamina);
 
-	int getAccuracy();
+	void setMind(unsigned int mind);
 
-	int getDefenseBonus();
+	void setFocus(unsigned int focus);
 
-	int getDamageBonus();
+	void setWillpower(unsigned int willpower);
 
-	int getConditionDamage();
+	void setHealthMax(unsigned int health);
 
-	int getMaxCondition();
+	void setStrengthMax(unsigned int strength);
 
-	int getCondition();
+	void setConstitutionMax(unsigned int constituition);
 
-	MountCreature* getMount();
+	void setActionMax(unsigned int action);
 
-	unsigned long long getLastServerMovementStamp();
+	void setQuicknessMax(unsigned int quickness);
 
-	unsigned long long getCreatureLinkID();
+	void setStaminaMax(unsigned int stamina);
 
-	float getDistanceTo(CreatureObject* targetCreature);
+	void setMindMax(unsigned int mind);
 
-	float getHeight();
+	void setFocusMax(unsigned int focus);
 
-	unsigned int getCreatureSkillsCount();
+	void setWillpowerMax(unsigned int willpower);
 
-	unsigned int getNewCreatureSkillsCount(int cnt);
+	void setArmor(unsigned int ar);
 
-	unsigned int getLastMovementUpdateStamp();
+	void setHealthWounds(unsigned int wounds);
 
-	int getIgnoreMovementTests();
+	void setActionWounds(unsigned int wounds);
 
-	unsigned int getDefenderListSize();
+	void setMindWounds(unsigned int wounds);
 
-	CreatureObject* getDefender(int idx);
+	void setShockWounds(unsigned int wounds);
 
-	unsigned int getLevel();
+	void setWoundsUpdateCounter(unsigned int count);
 
-	int getCenteredBonus();
+	void setSpeed(float spd);
 
-	void sendSystemMessage(const string& message);
+	void setAcceleration(float acc);
 
-	void sendSystemMessage(const string& file, const string& str, unsigned long long targetid);
+	void setKinetic(float kin);
 
-	void addInventoryItem(TangibleObject* item);
+	void setEnergy(float ene);
 
-	void addLootItem(TangibleObject* item);
+	void setElectricity(float ele);
 
-	void startDancing(const string& anim, bool changeDance);
+	void setStun(float stu);
 
-	void startPlayingMusic(const string& anim, bool changeMusic);
+	void setBlast(float bla);
 
-	void startWatch(unsigned long long entid);
+	void setHeat(float hea);
 
-	void startListen(unsigned long long entid);
+	void setCold(float col);
 
-	void stopWatch(unsigned long long entid, bool doSendPackets, bool forced, bool doLock);
+	void setAcid(float aci);
 
-	void stopListen(unsigned long long entid, bool doSendPackets, bool forced, bool doLock);
+	void setLightSaber(float lig);
 
-	bool isPlayingMusic();
+	void changeConditionDamage(int amount);
 
-	bool isDancing();
+	void setPosture(unsigned char state, bool overrideDizzy, bool objectInteraction, float objX, float objY, float objZ);
 
-	void stopDancing();
+	void setPvpStatusBitmask(unsigned int mask);
 
-	void stopPlayingMusic();
+	void setDizziedState();
 
-	void addListener(CreatureObject* creature);
+	void setStunnedState();
 
-	void addWatcher(CreatureObject* creature);
+	void setBlindedState();
 
-	void removeListener(CreatureObject* creature);
+	void setIntimidatedState();
 
-	void removeWatcher(CreatureObject* creature);
+	void setPoisonedState(int str, int type, int duration);
 
-	void doFlourish(const string& modifier);
+	void setBleedingState(int str, int type, int duration);
 
-	void doEntertainerPatronEffects(bool healShock, bool healWounds, bool addBuff);
+	void setDiseasedState(int str, int type, int duration);
 
-	void doPerformanceAction();
+	void setOnFireState(int str, int type, int duration);
 
-	bool isInBuilding();
+	bool setNextAttackDelay(int del);
 
-	SceneObject* getBuilding();
+	void setCharacterName(const string& name);
 
-	int getBuildingType();
+	void setCharacterName(const unicode& name);
 
-	void activateRecovery();
+	void setTerrainName(const string& name);
 
-	int getCreatureSkillsSize();
+	void setCharacterApperance(string& cust);
 
-	string& getSkill(int idx);
+	void setRaceName(const string& name);
 
-	bool hasSkill(unsigned int skillCRC);
+	void setSpeciesName(const string& name);
 
-	void mountCreature(MountCreature* mnt, bool lockMount);
+	void setFaction(unsigned int fac);
 
-	void dismount(bool lockMount, bool ignoreCooldown);
+	void setHeight(float h);
 
-	void addCashCredits(unsigned int credits);
+	void setMood(unsigned char mdid);
 
-	void addBankCredits(unsigned int credits);
+	void setMood(const string& m);
 
-	void updateCashCredits(unsigned int credits);
+	void setGroup(GroupObject* Group);
 
-	void updateBankCredits(unsigned int credits);
-
-	void subtractCashCredits(unsigned int credits);
-
-	void subtractBankCredits(unsigned int credits);
-
-	void setCashCredits(int credits);
-
-	void setBankCredits(int credits);
-
-	void applyBuff(const string& type, int value, float duration);
-
-	bool verifyCashCredits(unsigned int creditsToRemove);
-
-	bool verifyBankCredits(unsigned int creditsToRemove);
+	void setMount(MountCreature* mount);
 
 protected:
 	string _param0_info__string_bool_;
@@ -1414,14 +1449,6 @@ protected:
 	string _param3_sendCombatSpam__CreatureObject_TangibleObject_int_string_bool_;
 	string _param0_getMitigation__string_;
 	string _param0_updateMood__string_;
-	string _param0_setCharacterName__string_;
-	unicode _param0_setCharacterName__unicode_;
-	string _param0_setTerrainName__string_;
-	string _param0_setCharacterApperance__string_;
-	string _param0_setRaceName__string_;
-	string _param0_setSpeciesName__string_;
-	string _param0_setMood__string_;
-	string _param0_getCharacterApperance__string_;
 	string _param0_getSkillMod__string_;
 	string _param0_hasSkillMod__string_;
 	string _param0_getSkillModBonus__string_;
@@ -1433,9 +1460,19 @@ protected:
 	string _param0_startPlayingMusic__string_bool_;
 	string _param0_doFlourish__string_;
 	string _param0_applyBuff__string_int_float_;
+	string _param0_getCharacterApperance__string_;
+	string _param0_setCharacterName__string_;
+	unicode _param0_setCharacterName__unicode_;
+	string _param0_setTerrainName__string_;
+	string _param0_setCharacterApperance__string_;
+	string _param0_setRaceName__string_;
+	string _param0_setSpeciesName__string_;
+	string _param0_setMood__string_;
 };
 
 class CreatureObjectHelper : public DistributedObjectClassHelper, public Singleton<CreatureObjectHelper> {
+	static CreatureObjectHelper* staticInitializer;
+
 public:
 	CreatureObjectHelper();
 
@@ -1443,7 +1480,7 @@ public:
 
 	DistributedObject* instantiateObject();
 
-	DistributedObjectAdapter* createAdapter(DistributedObjectServant* obj);
+	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class SingletonWrapper<CreatureObjectHelper>;
 };

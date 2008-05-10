@@ -52,9 +52,8 @@ which carries forward this exception.
 
 #include "../../../packets.h"
 
-PowerupImplementation::PowerupImplementation(uint64 objID, uint32 tempCRC, const unicode& n, const string& tempn) :
-	PowerupServant(objID, WEAPONPOWERUP) {
- 
+PowerupImplementation::PowerupImplementation(uint64 objID, uint32 tempCRC, const unicode& n, const string& tempn) 
+		: PowerupServant(objID, WEAPONPOWERUP) {
 	objectCRC = tempCRC;
 	objectID = objID;
 	
@@ -65,9 +64,8 @@ PowerupImplementation::PowerupImplementation(uint64 objID, uint32 tempCRC, const
 	initialize();
 }
 
-PowerupImplementation::PowerupImplementation(uint64 objID) :
-	PowerupServant(objID, WEAPONPOWERUP) {
-
+PowerupImplementation::PowerupImplementation(uint64 objID) 
+		: PowerupServant(objID, WEAPONPOWERUP) {
 	templateTypeName = "weapon_name";
 	
 	initialize();

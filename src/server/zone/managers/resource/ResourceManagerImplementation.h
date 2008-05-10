@@ -7,14 +7,21 @@
 
 #include "../../ZoneServer.h"
 #include "../../ZoneProcessServerImplementation.h"
+
 #include "../../objects/player/Player.h"
+
 #include "../../objects/tangible/Inventory.h"
+
 #include "../../objects/waypoint/WaypointObjectImplementation.h"
+
 #include "../../objects/tangible/surveytool/SurveyTool.h"
+
 #include "../../objects/tangible/resource/ResourceContainer.h"
+
 #include "ResourceManager.h"
+
 #include "ResourceTemplate.h"
-#include "ResourceTemplate.h"
+
 #include "SpawnLocation.h"
 
 class SpawnResourcesEvent;
@@ -55,7 +62,7 @@ public:
 	void sendSurveyMessage(Player* player, string& resourceName, bool doLock = true);
 	void sendSampleMessage(Player* player, string& resourceName, bool doLock = true);
 	
-	void setResourceData(ResourceContainerImplementation* resContainer, bool doLock = true);
+	void setResourceData(ResourceContainer* resContainer, bool doLock = true);
 	
 	bool sendSurveyResources(Player* player, int SurveyToolType, bool doLock = true);
 	
@@ -63,6 +70,7 @@ public:
 	
 	void getClassSeven(const string& resource, string& clas, bool doLock = true);
 	void getResourceContainerName(const string& resource, string& name, bool doLock = true);
+	
 private:
 	void init();
 	

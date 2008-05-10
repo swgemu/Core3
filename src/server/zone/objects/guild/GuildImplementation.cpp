@@ -60,10 +60,6 @@ GuildImplementation::GuildImplementation(uint32 gid, const string& name, const s
 	guildManager = NULL;
 }
 
-Guild* GuildImplementation::deploy() {
-	return (Guild*) DistributedObjectServant::deploy("Guild", guildID);
-}
-
 void GuildImplementation::sendGuildListTo(Player* player, bool doLock) {
 	SceneObjectCreateMessage* socm = new SceneObjectCreateMessage(0xDEADBABE, 0x7D40E2E6);
 	player->sendMessage(socm);

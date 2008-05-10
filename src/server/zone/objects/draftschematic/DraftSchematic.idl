@@ -50,8 +50,11 @@ import "DraftSchematicExpPropGroup";
 import "../../packets/object/ObjectControllerMessage";
 
 interface DraftSchematic {
-	DraftSchematic();
 	DraftSchematic(DraftSchematic ds);
+
+	DraftSchematic(unsigned int schematicID, const string objName, unsigned int objCRC, 
+			const string groupName, unsigned int complexity, unsigned int schematicSize, 
+			int craftingToolTab);
 
 	DraftSchematic dsClone(DraftSchematic ds);
 

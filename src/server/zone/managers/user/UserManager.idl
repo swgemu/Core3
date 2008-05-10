@@ -42,8 +42,12 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
+import "server/zone/ZoneServer";
 
 interface UserManager {
+	UserManager(ZoneServer server) {
+		super(server);
+	}
 	
 	boolean checkUser(unsigned int ipid);
 	boolean isAdmin(const string name);

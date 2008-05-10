@@ -60,8 +60,8 @@ GuildManagerImplementation::GuildManagerImplementation(ZoneServer* serv) : Guild
 	
 	playerManager = server->getPlayerManager();
 	
-	GuildMapImplementation* guildMapImpl = new GuildMapImplementation();
-	guilds = (GuildMap*) guildMapImpl->deploy("GuildMap");
+	guilds = new GuildMap();
+	guilds->deploy("GuildMap");
 
 }
 
@@ -84,11 +84,11 @@ void GuildManagerImplementation::load() {
 	
 	while (guildList->next()) {
 		uint32 gid = guildList->getInt(0);
+		
 		string tag = guildList->getString(1);
 		string name = guildList->getString(2);	
 		
-		GuildImplementation* guildImpl = new GuildImplementation(gid, name, tag);
-		Guild* guild = (Guild*) guildImpl->deploy();
+		Guild* guild = new Guild(gid, name, tag);
 		
 		guild->setGuildManager((GuildManager*) _this);
 		
@@ -97,8 +97,7 @@ void GuildManagerImplementation::load() {
 		
 	delete guildList;
 	
-	GuildImplementation* guildImpl2 = new GuildImplementation(0, "", "");
-	defaultGuild = guildImpl2->deploy();
+	Guild* defaultGuild = new Guild(0, "", "");
 	
 	defaultGuild->setGuildManager((GuildManager*) _this);
 	
@@ -141,8 +140,7 @@ bool GuildManagerImplementation::createGuild(string& tag, string& name) {
 		return false;
 	}
 	
-	GuildImplementation* guildImpl = new GuildImplementation(gid, name, tag);
-	Guild* guild = guildImpl->deploy();
+	Guild* guild = new Guild(gid, name, tag);
 	
 	guild->setGuildManager((GuildManager*) _this);
 	

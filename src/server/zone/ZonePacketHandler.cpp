@@ -322,22 +322,26 @@ void ZonePacketHandler::handleClientCreateCharacter(Message* pack) {
 	ZoneClientImplementation* clientimpl = (ZoneClientImplementation*) pack->getClient();
 	ZoneClient* client = (ZoneClient*) clientimpl->_getStub();
 	
-	PlayerImplementation* playerImpl = new PlayerImplementation();
+	Player* player = new Player();
 
-	ClientCreateCharacter::parse(pack, playerImpl);
+	ClientCreateCharacter::parse(pack, player);
 	
-	string& firstName = playerImpl->getFirstName();
+	string& firstName = player->getFirstName();
 
 	if (DistributedObjectBroker::instance()->lookUp("Player " + firstName) != NULL || !playerManager->validateName(firstName)) {
-		playerImpl->refuseCreate(client);
-		
-		//delete playerImpl;
+		player->refuseCreate(client);
+
+		//player->finalize();
 		return;
 	}
 
-	playerImpl->setZoneProcessServer(processServer);
-	
-	BaseMessage* msg = playerManager->attemptPlayerCreation(playerImpl->create(client), client);
+	player->setZoneProcessServer(processServer);
+
+	player->deploy("Player " + firstName);
+
+	player->create(client);
+
+	BaseMessage* msg = playerManager->attemptPlayerCreation(player, client);
 	client->sendMessage(msg);
 }
 

@@ -317,7 +317,6 @@ public:
 	}
 	
 	inline void setType(int armorSlot) {
-		
 		string name = "armorType";
 		armorType = armorSlot;
 		itemAttributes->setIntAttribute(name, armorSlot);

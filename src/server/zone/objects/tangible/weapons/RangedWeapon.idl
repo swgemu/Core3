@@ -47,8 +47,13 @@ import "../../creature/CreatureObject";
 import "Weapon";
 
 interface RangedWeapon implements Weapon {
-	RangedWeapon(unsigned long objid, unsigned int tempcrc, const unicode n, const string tempn, boolean eqp, int tp, int cat);
-	RangedWeapon(CreatureObject creature, const string temp, const unicode n, const string tempn, boolean eqp, int tp, int cat);
+	RangedWeapon(unsigned long oid, unsigned int tempCRC, const unicode n, const string tempn, int tp, boolean eqp = false) {
+		super(oid, tempCRC, n, tempn, eqp, tp, int cat);
+	}
+	
+	RangedWeapon(CreatureObject creature, const string temp, const unicode n, const string tempn, int tp, boolean eqp = false) {
+		super(creature, temp, n, tempn, eqp, tp, int cat);
+	}
 	
 	// setters and getters
 	int getRange();

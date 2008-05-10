@@ -46,36 +46,35 @@ which carries forward this exception.
 #define STARTINGITEMLIST_H_
 
 #include "engine/engine.h"
-#include "../../objects/tangible/TangibleObjectImplementation.h"
 
-class TangibleObjectImplementation;
+#include "../../objects/tangible/TangibleObject.h"
 
 class StartingProfession {
-	Vector<TangibleObjectImplementation *> * all;
-	Vector<TangibleObjectImplementation *> * humanoidMale;
-	Vector<TangibleObjectImplementation *> * humanoidFemale;
-	Vector<TangibleObjectImplementation *> * trandoMale;
-	Vector<TangibleObjectImplementation *> * trandoFemale;
-	Vector<TangibleObjectImplementation *> * ithoMale;
-	Vector<TangibleObjectImplementation *> * ithoFemale;
-	Vector<TangibleObjectImplementation *> * wookMale;
-	Vector<TangibleObjectImplementation *> * wookFemale;
+	Vector<TangibleObject*>* all;
+	Vector<TangibleObject*>* humanoidMale;
+	Vector<TangibleObject*>* humanoidFemale;
+	Vector<TangibleObject*>* trandoMale;
+	Vector<TangibleObject*>* trandoFemale;
+	Vector<TangibleObject*>* ithoMale;
+	Vector<TangibleObject*>* ithoFemale;
+	Vector<TangibleObject*>* wookMale;
+	Vector<TangibleObject*>* wookFemale;
 	
 public:	
 	StartingProfession() {
-		all = new Vector<TangibleObjectImplementation *>();
-		humanoidMale = new Vector<TangibleObjectImplementation *>();
-		humanoidFemale = new Vector<TangibleObjectImplementation *>();
-		trandoMale = new Vector<TangibleObjectImplementation *>();
-		trandoFemale = new Vector<TangibleObjectImplementation *>();
-		ithoMale = new Vector<TangibleObjectImplementation *>();
-		ithoFemale = new Vector<TangibleObjectImplementation *>();
-		wookMale = new Vector<TangibleObjectImplementation *>();
-		wookFemale = new Vector<TangibleObjectImplementation *>();
+		all = new Vector<TangibleObject*>();
+		humanoidMale = new Vector<TangibleObject*>();
+		humanoidFemale = new Vector<TangibleObject*>();
+		trandoMale = new Vector<TangibleObject*>();
+		trandoFemale = new Vector<TangibleObject*>();
+		ithoMale = new Vector<TangibleObject*>();
+		ithoFemale = new Vector<TangibleObject*>();
+		wookMale = new Vector<TangibleObject*>();
+		wookFemale = new Vector<TangibleObject*>();
 	}
 	
-	Vector<TangibleObjectImplementation *> * get(string species, string sex) {
-		if(species.compare("all") == 0) {
+	Vector<TangibleObject*>* get(string species, string sex) {
+		if (species.compare("all") == 0) {
 			return all;
 		} else if (species.compare("ithorian") == 0) {
 			if(sex.compare("male") == 0) {
@@ -122,16 +121,18 @@ public:
 
 class StartingItemList {
 	StartingItemProfessionSet * professions;
+	
 public:
 	StartingItemList() {
 		professions = new StartingItemProfessionSet();
 		init();
 	}
-	void addItemToProfession(string profession, string species, string sex, TangibleObjectImplementation * item) {
+	
+	void addItemToProfession(string profession, string species, string sex, TangibleObject* item) {
 		professions->get(profession)->get(species, sex)->add(item);
 	}
 	
-	Vector<TangibleObjectImplementation *> * getProfessionItems(string profession, string species, string sex) {
+	Vector<TangibleObject*>* getProfessionItems(string profession, string species, string sex) {
 		return (professions->get(profession)->get(species, sex));
 	}
 	
@@ -144,8 +145,6 @@ public:
 		professions->put("medic", new StartingProfession());
 		professions->put("scout", new StartingProfession());	
 	}
-	
-	
 };
 
 #endif /*STARTINGITEMLIST_H_*/

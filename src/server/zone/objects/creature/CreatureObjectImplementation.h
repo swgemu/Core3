@@ -597,7 +597,8 @@ public:
 	
 	uint32 getMitigation(const string& mit);
 	
-	virtual void activateRecovery() = 0;
+	virtual void activateRecovery() {
+	}
 		
 	// dots
 	void setPoisonedState(int str, int type, int duration);
@@ -610,7 +611,8 @@ public:
 	void doDiseaseTick();
 	void doFireTick();
 
-	virtual void doIncapacitate() = 0;
+	virtual void doIncapacitate() {
+	}
 
 	bool isOnFullHealth() {
 		return (health == healthMax - healthWounds) && (action == actionMax - actionWounds) && (mind == mindMax - mindWounds);
@@ -775,7 +777,7 @@ public:
 	void doPerformanceAction();
 	
 	bool isInBuilding();
-	SceneObject *getBuilding();
+	SceneObject* getBuilding();
 	int getBuildingType();
 
 	// guild methods
@@ -803,7 +805,9 @@ public:
 	bool verifyBankCredits(uint32 creditsToRemove);
 
 	// misc		
-	virtual uint64 getNewItemID() = 0;
+	virtual uint64 getNewItemID() {
+		return 0;
+	}
 
 	// client level methods
 	void sendToOwner(Player* player, bool doClose = true);
@@ -821,7 +825,7 @@ public:
 	void sendSystemMessage(const string& message);
 	void sendSystemMessage(const string& file, const string& str, uint64 targetid = 0);
 	
-	void setSpeed(float Speed, float Acceleration);
+	void updateSpeed(float speed, float acceleration);
 	
 	void updateGroupId(uint64 id);
 	void updateGroupInviterId(uint64 id);
@@ -974,7 +978,7 @@ public:
 		characterName = name;
 	}
 
-	inline void setCharacterName(unicode& name) {
+	inline void setCharacterName(const unicode& name) {
 		characterName = name;
 	}
 
@@ -982,7 +986,7 @@ public:
 		terrainName = name;
 	}
 
-	inline void setCharacterApperance(string cust) {
+	inline void setCharacterApperance(const string& cust) {
 		customization = cust;
 	}
 
@@ -1124,7 +1128,7 @@ public:
 	}
 
 	inline void setArmor(uint32 ar) {
-		armor=ar;
+		armor = ar;
 	}
 
 	inline void setKinetic(float kin) {
@@ -1186,7 +1190,15 @@ public:
 	inline void setDefenderID(uint64 did) {
 		defenderID = did;
 	}
-	
+
+	inline void setSpeed(float spd) {
+		speed = spd;
+	}
+
+	inline void setAcceleration(float acc) {
+		acceleration = acc;
+	}
+
 	// getters
 	inline unicode& getCharacterName() {
 		return characterName;

@@ -251,7 +251,6 @@ public:
 	void parseAttributes();
 	
 	virtual void parseItemAttributes() {
-		
 	}
 	
 	void generateSkillMods(class AttributeListMessage* alm, int skillModType, int skillModValue);
@@ -271,10 +270,6 @@ public:
 	
 	virtual void addAttributes(AttributeListMessage* alm);
 
-	inline TangibleObject* deploy() {
-		return (TangibleObject*) SceneObjectImplementation::deploy();
-	}
-	
 	// setters and getters
 	inline void setContainer(SceneObject* cont, uint32 type = 0x04) {
 		container = cont;

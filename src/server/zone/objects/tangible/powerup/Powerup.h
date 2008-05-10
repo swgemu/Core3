@@ -7,28 +7,23 @@
 
 #include "engine/orb/DistributedObjectBroker.h"
 
-class TangibleObject;
+#include "engine/service/Message.h"
 
 class CreatureObject;
 
 class Player;
 
-class Weapon;
+class TangibleObject;
 
-#include "engine/service/Message.h"
+class Weapon;
 
 #include "../TangibleObject.h"
 
 class Powerup : public TangibleObject {
-protected:
-	Powerup();
-	Powerup(DistributedObjectServant* obj);
-	Powerup(Powerup& ref);
-
-	virtual ~Powerup();
-
 public:
-	Powerup* clone();
+	Powerup(unsigned long long oid);
+
+	Powerup(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn);
 
 	void apply(Weapon* weapon);
 
@@ -52,6 +47,8 @@ public:
 
 	int getPowerupSubType();
 
+	void setPowerupStats(int modifier);
+
 	void setPowerup0Type(int value);
 
 	void setPowerup1Type(int value);
@@ -71,6 +68,10 @@ public:
 	void setPowerupSubType(int value);
 
 protected:
+	Powerup(DummyConstructorParameter* param);
+
+	virtual ~Powerup();
+
 	friend class PowerupHelper;
 };
 
@@ -104,6 +105,8 @@ public:
 
 	int getPowerupSubType();
 
+	void setPowerupStats(int modifier);
+
 	void setPowerup0Type(int value);
 
 	void setPowerup1Type(int value);
@@ -125,6 +128,8 @@ public:
 };
 
 class PowerupHelper : public DistributedObjectClassHelper, public Singleton<PowerupHelper> {
+	static PowerupHelper* staticInitializer;
+
 public:
 	PowerupHelper();
 
@@ -132,7 +137,7 @@ public:
 
 	DistributedObject* instantiateObject();
 
-	DistributedObjectAdapter* createAdapter(DistributedObjectServant* obj);
+	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class SingletonWrapper<PowerupHelper>;
 };
@@ -144,7 +149,7 @@ public:
 	Powerup* _this;
 
 public:
-	PowerupServant(unsigned int oid, int type);
+	PowerupServant(unsigned long long oid, int type);
 	virtual ~PowerupServant();
 
 	void _setStub(DistributedObjectStub* stub);

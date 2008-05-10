@@ -42,15 +42,19 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-import "../Terminal";
-import "../../../player/Player";
-
 include "engine/service/Message";
 
+import "../../../player/Player";
+
+import "../../../creature/shuttle/ShuttleCreature";
+
+import "../Terminal";
+
 interface TravelTerminal implements Terminal {
-	TravelTerminal(unsigned int objCRC, unsigned long objid, 
-			const unicode n, const string tempn, float x, float z, float y, int TerminalType);
-	
+	TravelTerminal(ShuttleCreature shutle, unsigned long objid, float x, float z, float y) {
+		super(unsigned int objCRC, objid, const unicode n, const string tempn, x, z, y, int TerminalType); 
+	}
+			
 	int useObject(Player player);
 
 }

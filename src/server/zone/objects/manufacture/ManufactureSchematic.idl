@@ -45,5 +45,7 @@ which carries forward this exception.
 import "../scene/SceneObject";
 
 interface ManufactureSchematic implements SceneObject {
-	ManufactureSchematic(unsigned long oid);
+	ManufactureSchematic(unsigned long oid) {
+		super(oid);
+	}
 }

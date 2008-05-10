@@ -42,8 +42,20 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
+import "../../creature/CreatureObject";
+
 import "../TangibleObject";
 
 interface Wearable implements TangibleObject {
-	Wearable(unsigned long oid, int tp = 0);
+	Wearable(unsigned long oid, unsigned int tempCRC, const unicode n, const string tempn, boolean eqp = false) {
+			super(oid, int tp);
+	}
+
+	Wearable(CreatureObject creature, unsigned long oid, unsigned int tempCRC, const unicode n, const string tempn, boolean eqp = false) {
+		super(oid, int tp);
+	}
+
+	Wearable(CreatureObject creature, unsigned int tempCRC, const unicode n, const string tempn, boolean eqp = false) {
+		super(unsigned long oid, int tp);
+	}
 }

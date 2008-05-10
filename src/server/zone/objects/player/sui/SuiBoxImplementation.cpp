@@ -60,10 +60,3 @@ SuiBoxImplementation::SuiBoxImplementation(Player* play, uint32 typeID, uint32 b
 
 SuiBoxImplementation::~SuiBoxImplementation() {
 }
-
-SuiBox* SuiBoxImplementation::deploy() {
-	stringstream name;
-	name << "SuiBox:" << player->getFirstName();
-	
-	return (SuiBox*) DistributedObjectServant::deploy(name.str(), (uint64)boxID);
-}

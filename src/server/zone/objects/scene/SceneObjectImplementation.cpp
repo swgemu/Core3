@@ -78,9 +78,9 @@ SceneObjectImplementation::SceneObjectImplementation() : SceneObjectServant(), Q
 SceneObjectImplementation::SceneObjectImplementation(uint64 oid) : SceneObjectServant(),QuadTreeEntry(), Logger() {
 	objectID = oid;
 	
-	stringstream n;
-	n << hex << "Player::" << objectID;
-	setLockName(n.str()); 
+	stringstream name;
+	name << "SceneObject(" << objectType << ")  0x" << hex << objectID;
+	//setDeployingName(name.str());
 
 	server = NULL;
 	zone = NULL;
@@ -117,17 +117,6 @@ bool SceneObject::destroy() {
 
 bool SceneObjectImplementation::destroy() {
 	return _this->destroy();
-}
-
-SceneObject* SceneObjectImplementation::deploy() {
-	stringstream name;
-	name << "SceneObject(" << objectType << ")  0x" << hex << objectID;
-	
-	return (SceneObject*) DistributedObjectServant::deploy(name.str());
-}
-
-SceneObject* SceneObjectImplementation::deploy(const string& name) {
-	return (SceneObject*) DistributedObjectServant::deploy(name);
 }
 
 void SceneObjectImplementation::redeploy() {

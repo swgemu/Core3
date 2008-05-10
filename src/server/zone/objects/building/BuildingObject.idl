@@ -55,7 +55,9 @@ import "../creature/CreatureObject";
 import "../../Zone";
 
 interface BuildingObject implements SceneObject {
-	BuildingObject(unsigned long oid);
+	BuildingObject(unsigned long oid, boolean staticBuilding) {
+		super(oid);
+	}
 	
 	//void sendTo(Player* player);
 	//void sendDestroyTo(Player* player);

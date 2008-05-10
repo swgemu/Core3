@@ -10,15 +10,8 @@
 class Player;
 
 class PlayerMap : public DistributedObjectStub {
-protected:
-	PlayerMap();
-	PlayerMap(DistributedObjectServant* obj);
-	PlayerMap(PlayerMap& ref);
-
-	virtual ~PlayerMap();
-
 public:
-	PlayerMap* clone();
+	PlayerMap(int initsize);
 
 	Player* put(string& name, Player* player, bool doLock = true);
 
@@ -41,6 +34,10 @@ public:
 	void unlock();
 
 protected:
+	PlayerMap(DummyConstructorParameter* param);
+
+	virtual ~PlayerMap();
+
 	friend class PlayerMapHelper;
 };
 
@@ -79,6 +76,8 @@ protected:
 };
 
 class PlayerMapHelper : public DistributedObjectClassHelper, public Singleton<PlayerMapHelper> {
+	static PlayerMapHelper* staticInitializer;
+
 public:
 	PlayerMapHelper();
 
@@ -86,7 +85,7 @@ public:
 
 	DistributedObject* instantiateObject();
 
-	DistributedObjectAdapter* createAdapter(DistributedObjectServant* obj);
+	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class SingletonWrapper<PlayerMapHelper>;
 };

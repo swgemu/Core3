@@ -14,15 +14,15 @@ class JediWeapon;
 #include "../JediWeapon.h"
 
 class PolearmJediWeapon : public JediWeapon {
+public:
+	PolearmJediWeapon(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, bool eqp = false);
+
+	PolearmJediWeapon(CreatureObject* creature, const string& temp, const unicode& n, const string& tempn, bool eqp = false);
+
 protected:
-	PolearmJediWeapon();
-	PolearmJediWeapon(DistributedObjectServant* obj);
-	PolearmJediWeapon(PolearmJediWeapon& ref);
+	PolearmJediWeapon(DummyConstructorParameter* param);
 
 	virtual ~PolearmJediWeapon();
-
-public:
-	PolearmJediWeapon* clone();
 
 	friend class PolearmJediWeaponHelper;
 };
@@ -38,6 +38,8 @@ public:
 };
 
 class PolearmJediWeaponHelper : public DistributedObjectClassHelper, public Singleton<PolearmJediWeaponHelper> {
+	static PolearmJediWeaponHelper* staticInitializer;
+
 public:
 	PolearmJediWeaponHelper();
 
@@ -45,7 +47,7 @@ public:
 
 	DistributedObject* instantiateObject();
 
-	DistributedObjectAdapter* createAdapter(DistributedObjectServant* obj);
+	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class SingletonWrapper<PolearmJediWeaponHelper>;
 };
@@ -57,7 +59,7 @@ public:
 	PolearmJediWeapon* _this;
 
 public:
-	PolearmJediWeaponServant(unsigned long long objid, unsigned int tempcrc, const unicode& n, const string& tempn, int tp, bool eqp);
+	PolearmJediWeaponServant(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, int tp, bool eqp);
 	PolearmJediWeaponServant(CreatureObject* creature, const string& temp, const unicode& n, const string& tempn, int tp, bool eqp);
 	virtual ~PolearmJediWeaponServant();
 

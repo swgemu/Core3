@@ -7,32 +7,31 @@
 
 #include "engine/orb/DistributedObjectBroker.h"
 
-class TangibleObject;
+#include "engine/service/Message.h"
 
 class Player;
 
-class Ticket;
+class ShuttleCreature;
 
-#include "engine/service/Message.h"
+class TangibleObject;
+
+class Ticket;
 
 #include "../TangibleObject.h"
 
 class TicketCollector : public TangibleObject {
-protected:
-	TicketCollector();
-	TicketCollector(DistributedObjectServant* obj);
-	TicketCollector(TicketCollector& ref);
-
-	virtual ~TicketCollector();
-
 public:
-	TicketCollector* clone();
+	TicketCollector(ShuttleCreature* shutle, unsigned long long oid, const unicode& n, const string& tempn, float x, float z, float y);
 
 	int useObject(Player* player);
 
 	void useTicket(Player* player, Ticket* ticket);
 
 protected:
+	TicketCollector(DummyConstructorParameter* param);
+
+	virtual ~TicketCollector();
+
 	friend class TicketCollectorHelper;
 };
 
@@ -51,6 +50,8 @@ public:
 };
 
 class TicketCollectorHelper : public DistributedObjectClassHelper, public Singleton<TicketCollectorHelper> {
+	static TicketCollectorHelper* staticInitializer;
+
 public:
 	TicketCollectorHelper();
 
@@ -58,7 +59,7 @@ public:
 
 	DistributedObject* instantiateObject();
 
-	DistributedObjectAdapter* createAdapter(DistributedObjectServant* obj);
+	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class SingletonWrapper<TicketCollectorHelper>;
 };

@@ -16,17 +16,10 @@ class Player;
 #include "../SuiBox.h"
 
 class SuiListBox : public SuiBox {
-protected:
-	SuiListBox();
-	SuiListBox(DistributedObjectServant* obj);
-	SuiListBox(SuiListBox& ref);
-
-	virtual ~SuiListBox();
-
 public:
-	SuiListBox* clone();
+	SuiListBox(Player* player, unsigned int typeID, unsigned int boxtype = 0);
 
-	void addMenuItem(const string& item, unsigned long long objectID);
+	void addMenuItem(const string& item, unsigned long long objectID = 0);
 
 	int getMenuSize();
 
@@ -35,6 +28,10 @@ public:
 	BaseMessage* generateMessage();
 
 protected:
+	SuiListBox(DummyConstructorParameter* param);
+
+	virtual ~SuiListBox();
+
 	friend class SuiListBoxHelper;
 };
 
@@ -59,6 +56,8 @@ protected:
 };
 
 class SuiListBoxHelper : public DistributedObjectClassHelper, public Singleton<SuiListBoxHelper> {
+	static SuiListBoxHelper* staticInitializer;
+
 public:
 	SuiListBoxHelper();
 
@@ -66,7 +65,7 @@ public:
 
 	DistributedObject* instantiateObject();
 
-	DistributedObjectAdapter* createAdapter(DistributedObjectServant* obj);
+	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class SingletonWrapper<SuiListBoxHelper>;
 };
@@ -78,7 +77,7 @@ public:
 	SuiListBox* _this;
 
 public:
-	SuiListBoxServant(Player* play, unsigned int typeID, unsigned int boxtype);
+	SuiListBoxServant(Player* player, unsigned int typeID, unsigned int boxtype);
 	virtual ~SuiListBoxServant();
 
 	void _setStub(DistributedObjectStub* stub);

@@ -42,13 +42,17 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-import "../TangibleObject";
-import "../../player/Player";
-
 include "engine/service/Message";
 
+import "../../player/Player";
+
+import "../TangibleObject";
+
 interface Terminal implements TangibleObject {
-	Terminal(unsigned long oid, int tp);
+	Terminal(unsigned int objCRC, unsigned long oid, const unicode n, const string tempn, 
+			float x, float z, float y, int TerminalType) {
+		super(oid, int tp);
+	}
 	
 	int useObject(Player player);
 	

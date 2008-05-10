@@ -48,7 +48,9 @@ import "../../Player";
 include "engine/service/proto/BaseMessage";
 
 interface SuiInputBox implements SuiBox {
-	SuiInputBox(Player play, unsigned int typeID, unsigned int boxttype);
+	SuiInputBox(Player player, unsigned int typeID, unsigned int boxttype) {
+		super(player, typeID, boxttype);
+	}
 	
 	BaseMessage generateMessage();
 	

@@ -43,8 +43,12 @@ which carries forward this exception.
 */
 
 import "../../creature/CreatureObject";
+
 import "../TangibleObject";
 
 interface HairObject implements TangibleObject {
-	HairObject(unsigned long oid, int tp);
+	HairObject(CreatureObject creature, unsigned int tempCRC, const unicode n, 
+			const string tempn, boolean eqp = true) {
+		super(unsigned long oid, int tp);
+	}
 }

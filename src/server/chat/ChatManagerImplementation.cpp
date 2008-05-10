@@ -86,8 +86,8 @@ ChatManagerImplementation::ChatManagerImplementation(ZoneServer* serv, int inits
 	resourceManager = server->getResourceManager();
 	//playerMap = new PlayerMap(initsize);
 	
-	PlayerMapImplementation* mapImpl = new PlayerMapImplementation(initsize);
-	playerMap = (PlayerMap*) mapImpl->deploy("ChatPlayerMap");
+	playerMap = new PlayerMap(initsize);
+	playerMap->deploy("ChatPlayerMap");
 
 	roomMap = new ChatRoomMap(10000);
 				
@@ -109,28 +109,28 @@ ChatManagerImplementation::~ChatManagerImplementation() {
 void ChatManagerImplementation::initiateRooms() {
 	gameRooms.setNullValue(NULL);
 	
-	ChatRoomImplementation* mainRoomImpl = new ChatRoomImplementation(server, "SWG", getNextRoomID());
-	ChatRoom* mainRoom = mainRoomImpl->deploy();
+	ChatRoom* mainRoom = new ChatRoom(server, "SWG", getNextRoomID());
+	mainRoom->deploy();
 	mainRoom->setPrivate();
 	addRoom(mainRoom);
 	gameRooms.put("SWG", mainRoom);
 	
-	ChatRoomImplementation* core3Impl = new ChatRoomImplementation(server, mainRoom, server->getServerName(), getNextRoomID());
-	ChatRoom* core3 = core3Impl->deploy();
-	core3->setPrivate();
-	mainRoom->addSubRoom(core3);
-	addRoom(core3);
+	ChatRoom* core3Room = new ChatRoom(server, mainRoom, server->getServerName(), getNextRoomID());
+	core3Room->deploy();
+	core3Room->setPrivate();
+	mainRoom->addSubRoom(core3Room);
+	addRoom(core3Room);
 	
-	ChatRoomImplementation* groupRoomImpl = new ChatRoomImplementation(server, core3, "group", getNextRoomID());
-	groupRoom = groupRoomImpl->deploy();
+	ChatRoom* groupRoom = new ChatRoom(server, core3Room, "group", getNextRoomID());
+	groupRoom->deploy();
 	groupRoom->setPrivate();
-	core3->addSubRoom(groupRoom);
+	core3Room->addSubRoom(groupRoom);
 	addRoom(groupRoom);
 	
-	ChatRoomImplementation* generalRoomImpl = new ChatRoomImplementation(server, core3, "general", getNextRoomID());
-	ChatRoom* general = generalRoomImpl->deploy();
-	core3->addSubRoom(general);
-	addRoom(general);
+	ChatRoom* generalRoom = new ChatRoom(server, core3Room, "general", getNextRoomID());
+	generalRoom->deploy();
+	core3Room->addSubRoom(generalRoom);
+	addRoom(generalRoom);
 }
 
 void ChatManagerImplementation::destroyRooms() {
@@ -820,70 +820,57 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 			tokenizer.getStringToken(itemType);
 			
 			if (userManager->isAdmin(player->getFirstName()) && itemType == "Holocron") {
-				HolocronImplementation* itemImpl = new HolocronImplementation(player, 0x9BA06548, unicode("Holocron"), "object/tangible/jedi/shared_jedi_holocron_light.iff");
-				TangibleObject* item = itemImpl->deploy();
-
+				Holocron* item = new Holocron(player, 0x9BA06548, unicode("Holocron"), "object/tangible/jedi/shared_jedi_holocron_light.iff");
 				player->addInventoryItem(item);
 
 				item->sendTo(player);
 			} else if (userManager->isAdmin(player->getFirstName())&& itemType == "Firework") {
-				FireworkImplementation* itemImpl = new FireworkImplementation(player, 0x7C540DEB, unicode("a Firework"), "object/tangible/firework/shared_firework_s04.iff");
-				TangibleObject* item = itemImpl->deploy();
-
+				Firework* item = new Firework(player, 0x7C540DEB, unicode("a Firework"), "object/tangible/firework/shared_firework_s04.iff");
 				player->addInventoryItem(item);
 				
 				item->sendTo(player);
 			} else if (userManager->isAdmin(player->getFirstName())&& itemType == "AA") {
-				AttachmentImplementation* itemImpl = new AttachmentImplementation(player->getNewItemID(), AttachmentImplementation::ARMOR);
-				itemImpl->setSkillMods(System::random(500));
-				TangibleObject* item = itemImpl->deploy();
+				Attachment* item = new Attachment(player->getNewItemID(), AttachmentImplementation::ARMOR);
+				item->setSkillMods(System::random(500));
 				
 				player->addInventoryItem(item);
 				
 				item->sendTo(player);
 			} else if (userManager->isAdmin(player->getFirstName())&& itemType == "Powerup") {
-				PowerupImplementation* itemImpl = new PowerupImplementation(player->getNewItemID());
-				itemImpl->setPowerupStats(System::random(500));
-				TangibleObject* item = itemImpl->deploy();
+				Powerup* item = new Powerup(player->getNewItemID());
+				item->setPowerupStats(System::random(500));
 				
 				player->addInventoryItem(item);
 				
 				item->sendTo(player);
 			} else if (itemType == "SurveyTools") {
-				SurveyToolImplementation* minSurvImpl = new SurveyToolImplementation(player, 0xAA9AB32C, unicode("Mineral Survey Tool"), "survey_tool_mineral");
-			 	TangibleObject* tano = minSurvImpl->deploy();
-			 	player->addInventoryItem(tano);
-			 	tano->sendTo(player);
+				SurveyTool* minSurv = new SurveyTool(player, 0xAA9AB32C, unicode("Mineral Survey Tool"), "survey_tool_mineral");
+				player->addInventoryItem(minSurv);
+				minSurv->sendTo(player);
 			 	
-			 	SurveyToolImplementation* solSurvImpl = new SurveyToolImplementation(player, 0x8B95C48D, unicode("Solar Survey Tool"), "survey_tool_solar");
-			 	tano = solSurvImpl->deploy();
-			 	player->addInventoryItem(tano);
-			 	tano->sendTo(player);
+			 	SurveyTool* solSurv = new SurveyTool(player, 0x8B95C48D, unicode("Solar Survey Tool"), "survey_tool_solar");
+			 	player->addInventoryItem(solSurv);
+			 	solSurv->sendTo(player);
 			 	
-			 	SurveyToolImplementation* chemSurvImpl = new SurveyToolImplementation(player, 0x85A7C02A, unicode("Chemical Survey Tool"), "survey_tool_chemical");
-			 	tano = chemSurvImpl->deploy();
-			 	player->addInventoryItem(tano);
-			 	tano->sendTo(player);
+			 	SurveyTool* chemSurv = new SurveyTool(player, 0x85A7C02A, unicode("Chemical Survey Tool"), "survey_tool_chemical");
+			 	player->addInventoryItem(chemSurv);
+			 	chemSurv->sendTo(player);
 			 	
-			 	SurveyToolImplementation* floSurvImpl = new SurveyToolImplementation(player, 0x4F38AD50, unicode("Flora Survey Tool"), "survey_tool_flora");
-			 	tano = floSurvImpl->deploy();
-			 	player->addInventoryItem(tano);
-			 	tano->sendTo(player);
+			 	SurveyTool* floSurv = new SurveyTool(player, 0x4F38AD50, unicode("Flora Survey Tool"), "survey_tool_flora");
+			 	player->addInventoryItem(floSurv);
+			 	floSurv->sendTo(player);
 			 	
-			 	SurveyToolImplementation* gasSurvImpl = new SurveyToolImplementation(player, 0x3F1F6443, unicode("Gas Survey Tool"), "survey_tool_gas");
-			 	tano = gasSurvImpl->deploy();
-			 	player->addInventoryItem(tano);
-			 	tano->sendTo(player);
+			 	SurveyTool* gasSurv = new SurveyTool(player, 0x3F1F6443, unicode("Gas Survey Tool"), "survey_tool_gas");
+			 	player->addInventoryItem(gasSurv);
+			 	gasSurv->sendTo(player);
 			 	
-			 	SurveyToolImplementation* watSurvImpl = new SurveyToolImplementation(player, 0x81AE2438, unicode("Water Survey Tool"), "survey_tool_water");
-			 	tano = watSurvImpl->deploy();
-			 	player->addInventoryItem(tano);
-			 	tano->sendTo(player);
+			 	SurveyTool* watSurv = new SurveyTool(player, 0x81AE2438, unicode("Water Survey Tool"), "survey_tool_water");
+			 	player->addInventoryItem(watSurv);
+			 	watSurv->sendTo(player);
 			 	
-			 	SurveyToolImplementation* windSurvImpl = new SurveyToolImplementation(player, 0x21C39BD0, unicode("Wind Survey Tool"), "survey_tool_wind");
-			 	tano = windSurvImpl->deploy();
-			 	player->addInventoryItem(tano);
-			 	tano->sendTo(player);
+			 	SurveyTool* windSurv = new SurveyTool(player, 0x21C39BD0, unicode("Wind Survey Tool"), "survey_tool_wind");
+			 	player->addInventoryItem(windSurv);
+			 	windSurv->sendTo(player);
 			} else {
 				player->sendSystemMessage("Unknown Item Type.");
 			}
@@ -1270,8 +1257,9 @@ ChatRoom* ChatManagerImplementation::createRoomByFullPath(const string& path) {
 	if (room->isPrivate())
 		return NULL;
 		
-	ChatRoomImplementation* newRoomImpl = new ChatRoomImplementation(server, room, channel, getNextRoomID());
-	ChatRoom* newRoom = newRoomImpl->deploy();
+	ChatRoom* newRoom = new ChatRoom(server, room, channel, getNextRoomID());
+	newRoom->deploy();
+	
 	room->addSubRoom(newRoom);
 	
 	return newRoom;	
@@ -1391,22 +1379,25 @@ ChatRoom* ChatManagerImplementation::createGroupRoom(uint32 groupID, Player* cre
 	stringstream name;
 	name << groupID;
 	
-	ChatRoomImplementation* groupImpl = new ChatRoomImplementation(server, groupRoom, name.str(), getNextRoomID());
-	ChatRoom* group = groupImpl->deploy();
-	group->setPrivate();
-	groupRoom->addSubRoom(group);
-	addRoom(group);
+	ChatRoom* groupRoom = new ChatRoom(server, groupRoom, name.str(), getNextRoomID());
+	groupRoom->deploy();
 	
-	ChatRoomImplementation* groupChatImpl = new ChatRoomImplementation(server, group, "GroupChat", getNextRoomID());
-	ChatRoom* groupChat = groupChatImpl->deploy();
-	groupChat->setTitle(name.str());
-	groupChat->setPrivate();
-	groupChat->sendTo(creator);
-	groupChat->addPlayer(creator, false);
-	group->addSubRoom(groupChat);
-	addRoom(groupChat);
+	groupRoom->setPrivate();
+	groupRoom->addSubRoom(groupRoom);
+	addRoom(groupRoom);
 	
-	return groupChat;
+	ChatRoom* groupChatRoom = new ChatRoom(server, groupRoom, "GroupChat", getNextRoomID());
+	groupChatRoom->deploy();
+	
+	groupChatRoom->setTitle(name.str());
+	groupChatRoom->setPrivate();
+	groupChatRoom->sendTo(creator);
+	groupChatRoom->addPlayer(creator, false);
+	
+	groupRoom->addSubRoom(groupChatRoom);
+	addRoom(groupChatRoom);
+	
+	return groupChatRoom;
 }
 
 void ChatManagerImplementation::destroyRoom(ChatRoom* room) {

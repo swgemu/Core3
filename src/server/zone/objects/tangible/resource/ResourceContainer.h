@@ -18,15 +18,12 @@ class TangibleObject;
 #include "../TangibleObject.h"
 
 class ResourceContainer : public TangibleObject {
-protected:
-	ResourceContainer();
-	ResourceContainer(DistributedObjectServant* obj);
-	ResourceContainer(ResourceContainer& ref);
-
-	virtual ~ResourceContainer();
-
 public:
-	ResourceContainer* clone();
+	ResourceContainer(unsigned long long oid);
+
+	ResourceContainer(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn);
+
+	ResourceContainer(CreatureObject* creature, unsigned int tempCRC, const unicode& n, const string& tempn);
 
 	void init();
 
@@ -111,10 +108,12 @@ public:
 	int getMaxContents();
 
 protected:
+	ResourceContainer(DummyConstructorParameter* param);
+
+	virtual ~ResourceContainer();
+
 	string _return_getClassSeven;
-
 	string _return_getResourceName;
-
 
 	friend class ResourceContainerHelper;
 };
@@ -217,6 +216,8 @@ protected:
 };
 
 class ResourceContainerHelper : public DistributedObjectClassHelper, public Singleton<ResourceContainerHelper> {
+	static ResourceContainerHelper* staticInitializer;
+
 public:
 	ResourceContainerHelper();
 
@@ -224,7 +225,7 @@ public:
 
 	DistributedObject* instantiateObject();
 
-	DistributedObjectAdapter* createAdapter(DistributedObjectServant* obj);
+	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class SingletonWrapper<ResourceContainerHelper>;
 };
@@ -237,8 +238,8 @@ public:
 
 public:
 	ResourceContainerServant(unsigned long long oid, int tp);
-	ResourceContainerServant(unsigned long long oid, const unicode& n, const string& name, int tempCRC, int tp);
-	ResourceContainerServant(CreatureObject* creature, const unicode& n, const string& name, int tempCRC, int tp);
+	ResourceContainerServant(unsigned long long oid, const unicode& n, const string& tempn, unsigned int tempCRC, int tp);
+	ResourceContainerServant(CreatureObject* creature, const unicode& n, const string& tempn, unsigned int tempCRC, int tp);
 	virtual ~ResourceContainerServant();
 
 	void _setStub(DistributedObjectStub* stub);

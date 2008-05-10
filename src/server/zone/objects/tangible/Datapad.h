@@ -14,15 +14,13 @@ class CreatureObject;
 #include "Container.h"
 
 class Datapad : public Container {
+public:
+	Datapad(CreatureObject* creature);
+
 protected:
-	Datapad();
-	Datapad(DistributedObjectServant* obj);
-	Datapad(Datapad& ref);
+	Datapad(DummyConstructorParameter* param);
 
 	virtual ~Datapad();
-
-public:
-	Datapad* clone();
 
 	friend class DatapadHelper;
 };
@@ -38,6 +36,8 @@ public:
 };
 
 class DatapadHelper : public DistributedObjectClassHelper, public Singleton<DatapadHelper> {
+	static DatapadHelper* staticInitializer;
+
 public:
 	DatapadHelper();
 
@@ -45,7 +45,7 @@ public:
 
 	DistributedObject* instantiateObject();
 
-	DistributedObjectAdapter* createAdapter(DistributedObjectServant* obj);
+	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class SingletonWrapper<DatapadHelper>;
 };

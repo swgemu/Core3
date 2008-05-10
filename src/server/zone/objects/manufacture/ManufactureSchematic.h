@@ -12,15 +12,13 @@ class SceneObject;
 #include "../scene/SceneObject.h"
 
 class ManufactureSchematic : public SceneObject {
+public:
+	ManufactureSchematic(unsigned long long oid);
+
 protected:
-	ManufactureSchematic();
-	ManufactureSchematic(DistributedObjectServant* obj);
-	ManufactureSchematic(ManufactureSchematic& ref);
+	ManufactureSchematic(DummyConstructorParameter* param);
 
 	virtual ~ManufactureSchematic();
-
-public:
-	ManufactureSchematic* clone();
 
 	friend class ManufactureSchematicHelper;
 };
@@ -36,6 +34,8 @@ public:
 };
 
 class ManufactureSchematicHelper : public DistributedObjectClassHelper, public Singleton<ManufactureSchematicHelper> {
+	static ManufactureSchematicHelper* staticInitializer;
+
 public:
 	ManufactureSchematicHelper();
 
@@ -43,7 +43,7 @@ public:
 
 	DistributedObject* instantiateObject();
 
-	DistributedObjectAdapter* createAdapter(DistributedObjectServant* obj);
+	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class SingletonWrapper<ManufactureSchematicHelper>;
 };

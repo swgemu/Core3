@@ -9,24 +9,21 @@
 
 class SceneObject;
 
-class TangibleObject;
+class CreatureObject;
 
 class Player;
+
+class TangibleObject;
 
 class Powerup;
 
 #include "../TangibleObject.h"
 
 class Weapon : public TangibleObject {
-protected:
-	Weapon();
-	Weapon(DistributedObjectServant* obj);
-	Weapon(Weapon& ref);
-
-	virtual ~Weapon();
-
 public:
-	Weapon* clone();
+	Weapon(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, bool eqp, int tp, int cat);
+
+	Weapon(CreatureObject* creature, const string& temp, const unicode& n, const string& tempn, bool eqp, int tp, int cat);
 
 	void sendTo(Player* player, bool doClose = true);
 
@@ -59,42 +56,6 @@ public:
 	bool isRanged();
 
 	bool isCertified();
-
-	void powerupMinDamage(float powerupValue);
-
-	void powerupMaxDamage(float powerupValue);
-
-	void powerupHealthAttackCost(float powerupValue);
-
-	void powerupActionAttackCost(float powerupValue);
-
-	void powerupMindAttackCost(float powerupValue);
-
-	void powerupWoundsRatio(float powerupValue);
-
-	void powerupAttackSpeed(float powerupValue);
-
-	void powerupPointBlankAccuracy(float powerupValue);
-
-	void powerupIdealRange(float powerupValue);
-
-	void powerupIdealAccuracy(float powerupValue);
-
-	void powerupMaxRangeAccuracy(float powerupValue);
-
-	void setDot0Uses(int uses);
-
-	void setDot1Uses(int uses);
-
-	void setDot2Uses(int uses);
-
-	void setPowerupUses(int uses);
-
-	void setUsesRemaining(int charges);
-
-	void setCert(string& certification);
-
-	void setCertified(bool crt);
 
 	int getType();
 
@@ -186,9 +147,90 @@ public:
 
 	string& getCert();
 
-protected:
-	string _return_getCert;
+	void setType(int type);
 
+	void setDamageType(int type);
+
+	void setMinDamage(float minDmg);
+
+	void setMaxDamage(float maxDmg);
+
+	void setAttackSpeed(float attackSpd);
+
+	void setHealthAttackCost(int healthCost);
+
+	void setActionAttackCost(int actionCost);
+
+	void setMindAttackCost(int mindCost);
+
+	void setWoundsRatio(float woundsRat);
+
+	void setArmorPiercing(int armorPierce);
+
+	void setDot0Type(int type);
+
+	void setDot0Attribute(int attribute);
+
+	void setDot0Strength(int strength);
+
+	void setDot0Duration(int duration);
+
+	void setDot0Potency(int potency);
+
+	void setDot0Uses(int uses);
+
+	void setDot1Uses(int uses);
+
+	void setDot2Uses(int uses);
+
+	void setPointBlankRange(int pointBlankRnge);
+
+	void setPointBlankAccuracy(int pointBlankAcc);
+
+	void setMaxRange(int maxRnge);
+
+	void setMaxRangeAccuracy(int maxRangeAcc);
+
+	void setIdealRange(int idealRnge);
+
+	void setIdealAccuracy(int idealAcc);
+
+	void powerupMinDamage(float powerupValue);
+
+	void powerupMaxDamage(float powerupValue);
+
+	void powerupHealthAttackCost(float powerupValue);
+
+	void powerupActionAttackCost(float powerupValue);
+
+	void powerupMindAttackCost(float powerupValue);
+
+	void powerupWoundsRatio(float powerupValue);
+
+	void powerupAttackSpeed(float powerupValue);
+
+	void powerupPointBlankAccuracy(float powerupValue);
+
+	void powerupIdealRange(float powerupValue);
+
+	void powerupIdealAccuracy(float powerupValue);
+
+	void powerupMaxRangeAccuracy(float powerupValue);
+
+	void setPowerupUses(int uses);
+
+	void setUsesRemaining(int charges);
+
+	void setCert(string& certification);
+
+	void setCertified(bool crt);
+
+protected:
+	Weapon(DummyConstructorParameter* param);
+
+	virtual ~Weapon();
+
+	string _return_getCert;
 
 	friend class WeaponHelper;
 };
@@ -233,42 +275,6 @@ public:
 
 	bool isCertified();
 
-	void powerupMinDamage(float powerupValue);
-
-	void powerupMaxDamage(float powerupValue);
-
-	void powerupHealthAttackCost(float powerupValue);
-
-	void powerupActionAttackCost(float powerupValue);
-
-	void powerupMindAttackCost(float powerupValue);
-
-	void powerupWoundsRatio(float powerupValue);
-
-	void powerupAttackSpeed(float powerupValue);
-
-	void powerupPointBlankAccuracy(float powerupValue);
-
-	void powerupIdealRange(float powerupValue);
-
-	void powerupIdealAccuracy(float powerupValue);
-
-	void powerupMaxRangeAccuracy(float powerupValue);
-
-	void setDot0Uses(int uses);
-
-	void setDot1Uses(int uses);
-
-	void setDot2Uses(int uses);
-
-	void setPowerupUses(int uses);
-
-	void setUsesRemaining(int charges);
-
-	void setCert(string& certification);
-
-	void setCertified(bool crt);
-
 	int getType();
 
 	int getCategory();
@@ -359,11 +365,91 @@ public:
 
 	string& getCert();
 
+	void setType(int type);
+
+	void setDamageType(int type);
+
+	void setMinDamage(float minDmg);
+
+	void setMaxDamage(float maxDmg);
+
+	void setAttackSpeed(float attackSpd);
+
+	void setHealthAttackCost(int healthCost);
+
+	void setActionAttackCost(int actionCost);
+
+	void setMindAttackCost(int mindCost);
+
+	void setWoundsRatio(float woundsRat);
+
+	void setArmorPiercing(int armorPierce);
+
+	void setDot0Type(int type);
+
+	void setDot0Attribute(int attribute);
+
+	void setDot0Strength(int strength);
+
+	void setDot0Duration(int duration);
+
+	void setDot0Potency(int potency);
+
+	void setDot0Uses(int uses);
+
+	void setDot1Uses(int uses);
+
+	void setDot2Uses(int uses);
+
+	void setPointBlankRange(int pointBlankRnge);
+
+	void setPointBlankAccuracy(int pointBlankAcc);
+
+	void setMaxRange(int maxRnge);
+
+	void setMaxRangeAccuracy(int maxRangeAcc);
+
+	void setIdealRange(int idealRnge);
+
+	void setIdealAccuracy(int idealAcc);
+
+	void powerupMinDamage(float powerupValue);
+
+	void powerupMaxDamage(float powerupValue);
+
+	void powerupHealthAttackCost(float powerupValue);
+
+	void powerupActionAttackCost(float powerupValue);
+
+	void powerupMindAttackCost(float powerupValue);
+
+	void powerupWoundsRatio(float powerupValue);
+
+	void powerupAttackSpeed(float powerupValue);
+
+	void powerupPointBlankAccuracy(float powerupValue);
+
+	void powerupIdealRange(float powerupValue);
+
+	void powerupIdealAccuracy(float powerupValue);
+
+	void powerupMaxRangeAccuracy(float powerupValue);
+
+	void setPowerupUses(int uses);
+
+	void setUsesRemaining(int charges);
+
+	void setCert(string& certification);
+
+	void setCertified(bool crt);
+
 protected:
 	string _param0_setCert__string_;
 };
 
 class WeaponHelper : public DistributedObjectClassHelper, public Singleton<WeaponHelper> {
+	static WeaponHelper* staticInitializer;
+
 public:
 	WeaponHelper();
 
@@ -371,7 +457,7 @@ public:
 
 	DistributedObject* instantiateObject();
 
-	DistributedObjectAdapter* createAdapter(DistributedObjectServant* obj);
+	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class SingletonWrapper<WeaponHelper>;
 };
@@ -383,8 +469,8 @@ public:
 	Weapon* _this;
 
 public:
+	WeaponServant(unsigned long long oid, const unicode& n, const string& tempn, unsigned int tempCRC, int tp);
 	WeaponServant(unsigned long long oid, int tp);
-	WeaponServant(unsigned long long oid, const unicode& name, const string& tempname, unsigned int tempcrc, int tp);
 	virtual ~WeaponServant();
 
 	void _setStub(DistributedObjectStub* stub);

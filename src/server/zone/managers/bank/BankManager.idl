@@ -44,6 +44,14 @@ which carries forward this exception.
 
 import "../../objects/player/Player";
 
+import "server/zone/ZoneServer";
+include "server/zone/ZoneProcessServerImplementation";
+
+
 interface BankManager {
+	BankManager(ZoneServer server, ZoneProcessServerImplementation processor) {
+		super(server, processor);
+	}
+
 	boolean isBankTerminal(long objectid);
 }

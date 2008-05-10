@@ -7,28 +7,21 @@
 
 #include "engine/orb/DistributedObjectBroker.h"
 
-class TangibleObject;
-
-class packets;
+#include "engine/service/Message.h"
 
 class Player;
 
 class CreatureObject;
 
-#include "engine/service/Message.h"
+class TangibleObject;
 
 #include "../TangibleObject.h"
 
 class SurveyTool : public TangibleObject {
-protected:
-	SurveyTool();
-	SurveyTool(DistributedObjectServant* obj);
-	SurveyTool(SurveyTool& ref);
-
-	virtual ~SurveyTool();
-
 public:
-	SurveyTool* clone();
+	SurveyTool(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn);
+
+	SurveyTool(CreatureObject* creature, unsigned int tempCRC, const unicode& n, const string& tempn);
 
 	int useObject(Player* player);
 
@@ -47,6 +40,10 @@ public:
 	void sampleRequest(Player* player, unicode& resourceName);
 
 protected:
+	SurveyTool(DummyConstructorParameter* param);
+
+	virtual ~SurveyTool();
+
 	friend class SurveyToolHelper;
 };
 
@@ -80,6 +77,8 @@ protected:
 };
 
 class SurveyToolHelper : public DistributedObjectClassHelper, public Singleton<SurveyToolHelper> {
+	static SurveyToolHelper* staticInitializer;
+
 public:
 	SurveyToolHelper();
 
@@ -87,7 +86,7 @@ public:
 
 	DistributedObject* instantiateObject();
 
-	DistributedObjectAdapter* createAdapter(DistributedObjectServant* obj);
+	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class SingletonWrapper<SurveyToolHelper>;
 };
@@ -99,8 +98,8 @@ public:
 	SurveyTool* _this;
 
 public:
-	SurveyToolServant(CreatureObject* creature, const unicode& n, const string& tempn, int tempCRC, int tp);
-	SurveyToolServant(unsigned long long oid, const unicode& n, const string& tempn, int tempCRC, int tp);
+	SurveyToolServant(unsigned long long oid, const unicode& n, const string& tempn, unsigned int tempCRC, int tp);
+	SurveyToolServant(CreatureObject* creature, const unicode& n, const string& tempn, unsigned int tempCRC, int tp);
 	virtual ~SurveyToolServant();
 
 	void _setStub(DistributedObjectStub* stub);

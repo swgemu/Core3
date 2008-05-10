@@ -64,7 +64,6 @@ class Powerup;
 
 class WeaponImplementation : public WeaponServant {
 protected:
-	
 	int type;
 	
 	int category;

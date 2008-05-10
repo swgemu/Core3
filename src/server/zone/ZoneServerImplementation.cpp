@@ -188,12 +188,9 @@ void ZoneServerImplementation::init() {
 	info("initializing zones", true);
 	
 	for (int i = 0; i < 50; ++i) {
-		ZoneImplementation* zoneImpl = new ZoneImplementation(_this, processor, i);
+		Zone* zone = new Zone(_this, processor, i);
+		zone->deploy("Zone", i);
 		
-		stringstream zname;
-		zname << "Zone" << i;
-		
-		Zone* zone = (Zone*) DistributedObjectBroker::instance()->deploy(zname.str(), zoneImpl);
 		zone->startManagers();
 		
 		zones.add(zone);
@@ -216,34 +213,35 @@ void ZoneServerImplementation::init() {
 void ZoneServerImplementation::startManagers() {
 	info("loading managers..");
 	
-	UserManagerImplementation* userImpl = new UserManagerImplementation(_this);
-	userManager = (UserManager*) userImpl->deploy("UserManager");
+	userManager = new UserManager(_this);
+	userManager->deploy("UserManager");
 	
-	ItemManagerImplementation* itemImpl = new ItemManagerImplementation(_this);
-	itemManager = (ItemManager*) itemImpl->deploy("ItemManager");
+	itemManager = new ItemManager(_this);
+	itemManager->deploy("ItemManager");
 
-	PlayerManagerImplementation* playerImpl = new PlayerManagerImplementation(itemManager, processor);
-	playerManager = (PlayerManager*) playerImpl->deploy("PlayerManager");
+	playerManager = new PlayerManager(itemManager, processor);
+	playerManager->deploy("PlayerManager");
 	
-	GuildManagerImplementation* guildImpl = new GuildManagerImplementation(_this);
-	guildManager = (GuildManager*) guildImpl->deploy("GuildManager");
+	guildManager = new GuildManager(_this);
+	guildManager->deploy("GuildManager");
+	
 	guildManager->load();
 	playerManager->setGuildManager(guildManager);
 
-	ResourceManagerImplementation* resImpl = new ResourceManagerImplementation(_this, processor);
-	resourceManager = (ResourceManager*) resImpl->deploy("ResourceManager");
+	resourceManager = new ResourceManager(_this, processor);
+	resourceManager->deploy("ResourceManager");
 
-	CraftingManagerImplementation* craftingImpl = new CraftingManagerImplementation(_this, processor);
-	craftingManager = (CraftingManager*) craftingImpl->deploy("CraftingManager");
+	craftingManager = new CraftingManager(_this, processor);
+	craftingManager->deploy("CraftingManager");
 
-	ChatManagerImplementation* chatImpl = new ChatManagerImplementation(_this, 10000);
-	chatManager = (ChatManager*) chatImpl->deploy("ChatManager");
+	chatManager = new ChatManager(_this, 10000);
+	chatManager->deploy("ChatManager");
 
-	BazaarManagerImplementation* bazImpl = new BazaarManagerImplementation(_this, processor);
-	bazaarManager = (BazaarManager*) bazImpl->deploy("BazaarManager");
+	bazaarManager = new BazaarManager(_this, processor);
+	bazaarManager->deploy("BazaarManager");
 
-	BankManagerImplementation* bankImpl = new BankManagerImplementation(_this, processor);
-	bankManager = (BankManager*) bankImpl->deploy("BankManager");
+	bankManager = new BankManager(_this, processor);
+	bankManager->deploy("BankManager");
 }
 
 void ZoneServerImplementation::run() {
@@ -301,19 +299,13 @@ ServiceClient* ZoneServerImplementation::createConnection(Socket* sock, SocketAd
 	if (!userManager->checkUser(addr.getIPID()))
 		return NULL;
 			
-	ZoneClientImplementation* client = new ZoneClientImplementation(this, sock, addr);
-
-	/*string ip = fromAddr.getFullIPAddress();
-	if (ip.substr(0, 14) == "89.132.121.190")
-		client->setPacketLoss(25);*/
-	
-	stringstream name;
-	name << "ZoneClient " << addr.getFullIPAddress();
-	client->deploy(name.str());
+	ZoneClient* client = new ZoneClient(this, sock, &addr);
+	client->deploy("ZoneClient " + addr.getFullIPAddress());
 						
 	info("client connected from \'" + client->getAddress() + "\'");
 	
-	return client;
+	ZoneClientImplementation* clientImpl = (ZoneClientImplementation*) client->_getImplementation();
+	return clientImpl;
 }
 
 void ZoneServerImplementation::handleMessage(ServiceClient* client, Packet* message) {

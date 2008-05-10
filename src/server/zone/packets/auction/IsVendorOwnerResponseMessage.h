@@ -47,6 +47,8 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
+#include "../BaseLineMessage.h"
+
 class IsVendorOwnerResponseMessage : public BaseMessage {
 public:
     IsVendorOwnerResponseMessage(bool vendor, long objectId, string& planet, string& header, int x, int z ) {

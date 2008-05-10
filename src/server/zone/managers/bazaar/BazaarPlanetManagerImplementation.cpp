@@ -43,13 +43,14 @@ which carries forward this exception.
 */
 
 #include "BazaarPlanetManagerImplementation.h"
+
 #include "../../objects/terrain/PlanetNames.h"
 
 BazaarPlanetManagerImplementation::BazaarPlanetManagerImplementation(int planet) : AuctionController(), BazaarPlanetManagerServant() , Logger("BazaarPlanetManager") {
 	setLogging(false); 
 	setGlobalLogging(true);
 
-	info("Starting BazaarPlanetManager for " + (string)PlanetNames[planet]);
+	info("Starting BazaarPlanetManager for " + string(Planet::getPlanetName(planet)));
 	vendorPlanet = planet;
 }
 
@@ -97,13 +98,12 @@ void BazaarPlanetManagerImplementation::addBazaar(BazaarTerminalDetails* termina
 	} else {
 		string region = terminal->getRegion();
 		
-		RegionBazaarImplementation* termImpl = new RegionBazaarImplementation();
-		termImpl->setRegion(region);
-		termImpl->setManager(_this);
+		RegionBazaar* bazaar = new RegionBazaar();
+		bazaar->setRegion(region);
+		bazaar->setManager(_this);
 		
-		bazaar = (RegionBazaar*) termImpl->deploy();
-
 		info("Adding bazaar for " + region);
+		
 		bazaars.put(region, bazaar);
 	}
 	

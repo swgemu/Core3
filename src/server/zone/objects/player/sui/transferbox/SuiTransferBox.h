@@ -16,15 +16,8 @@ class Player;
 #include "../SuiBox.h"
 
 class SuiTransferBox : public SuiBox {
-protected:
-	SuiTransferBox();
-	SuiTransferBox(DistributedObjectServant* obj);
-	SuiTransferBox(SuiTransferBox& ref);
-
-	virtual ~SuiTransferBox();
-
 public:
-	SuiTransferBox* clone();
+	SuiTransferBox(Player* player, unsigned int boxtype);
 
 	BaseMessage* generateMessage();
 
@@ -33,6 +26,10 @@ public:
 	void addOption(const string& itemText, const string& lblType, const string& itemType);
 
 protected:
+	SuiTransferBox(DummyConstructorParameter* param);
+
+	virtual ~SuiTransferBox();
+
 	friend class SuiTransferBoxHelper;
 };
 
@@ -57,6 +54,8 @@ protected:
 };
 
 class SuiTransferBoxHelper : public DistributedObjectClassHelper, public Singleton<SuiTransferBoxHelper> {
+	static SuiTransferBoxHelper* staticInitializer;
+
 public:
 	SuiTransferBoxHelper();
 
@@ -64,7 +63,7 @@ public:
 
 	DistributedObject* instantiateObject();
 
-	DistributedObjectAdapter* createAdapter(DistributedObjectServant* obj);
+	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class SingletonWrapper<SuiTransferBoxHelper>;
 };
@@ -76,7 +75,7 @@ public:
 	SuiTransferBox* _this;
 
 public:
-	SuiTransferBoxServant(Player* play, unsigned int typeID, unsigned int boxtype);
+	SuiTransferBoxServant(Player* player, unsigned int typeID, unsigned int boxtype);
 	virtual ~SuiTransferBoxServant();
 
 	void _setStub(DistributedObjectStub* stub);

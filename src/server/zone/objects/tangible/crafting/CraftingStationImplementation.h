@@ -66,6 +66,7 @@ public:
 public:
 	CraftingStationImplementation(uint64 object_id, uint32 tempCRC, const unicode& n, const string& tempn);
 	CraftingStationImplementation(CreatureObject* creature, uint32 tempCRC, const unicode& n, const string& tempn);
+	
 	~CraftingStationImplementation();
  
 	void init();

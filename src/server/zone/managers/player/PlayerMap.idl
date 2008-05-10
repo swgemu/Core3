@@ -45,6 +45,10 @@ which carries forward this exception.
 import "../../objects/player/Player";
 
 interface PlayerMap {
+	PlayerMap(int initsize) {
+		super(initsize);
+	}
+	
 	Player put(string name, Player player, boolean doLock = true);
 	        
 	Player get(string name, boolean doLock = true);

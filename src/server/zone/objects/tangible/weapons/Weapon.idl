@@ -43,15 +43,24 @@ which carries forward this exception.
 */
 
 import "../../scene/SceneObject";
-import "../TangibleObject";
+
+import "../../creature/CreatureObject";
 
 import "../../player/Player";
+
+import "../TangibleObject";
+
 import "../powerup/Powerup";
 
 interface Weapon implements TangibleObject {
-	Weapon(unsigned long oid, int tp = 0);
-	Weapon(unsigned long oid, const unicode name, const string tempname, unsigned int tempcrc, int tp = 0);
+	Weapon(unsigned long oid, unsigned int tempCRC, const unicode n, const string tempn, boolean eqp, int tp, int cat) {
+		super(oid, n, tempn, tempCRC, tp);
+	}
 	
+	Weapon(CreatureObject creature, const string temp, const unicode n, const string tempn, boolean eqp, int tp, int cat) {
+		super(unsigned long oid, tp);
+	}
+
 	void sendTo(Player player, boolean doClose = true);
 	
 	//void generateAttributes(SceneObject obj);
@@ -72,6 +81,7 @@ interface Weapon implements TangibleObject {
 	boolean decreasePowerupUses();
 	boolean decreaseUsesRemaining();
 
+	// getters
 	boolean isSliced();
 
 	boolean isJedi();
@@ -81,29 +91,7 @@ interface Weapon implements TangibleObject {
 	boolean isRanged();
 
 	boolean isCertified();
-
-	// setters
-	void powerupMinDamage(float powerupValue);
-	void powerupMaxDamage(float powerupValue);
-	void powerupHealthAttackCost(float powerupValue);
-	void powerupActionAttackCost(float powerupValue);
-	void powerupMindAttackCost(float powerupValue);
-	void powerupWoundsRatio(float powerupValue);
-	void powerupAttackSpeed(float powerupValue);
-	void powerupPointBlankAccuracy(float powerupValue);
-	void powerupIdealRange(float powerupValue);
-	void powerupIdealAccuracy(float powerupValue);
-	void powerupMaxRangeAccuracy(float powerupValue);
-
-	void setDot0Uses(int uses);
-	void setDot1Uses(int uses);
-	void setDot2Uses(int uses);
-	void setPowerupUses(int uses);
-	void setUsesRemaining(int charges);
-
-	void setCert(string& certification);
-	void setCertified(boolean crt);
-	// getters
+	
 	int getType();
 
 	int getCategory();
@@ -173,5 +161,54 @@ interface Weapon implements TangibleObject {
 	boolean hasPowerup();
 
 	string& getCert();
+
+	// setters
+	void setType(int type);
 	
+	void setDamageType(int type);
+	void setMinDamage(float minDmg);
+	void setMaxDamage(float maxDmg);
+	void setAttackSpeed(float attackSpd);
+	
+	void setHealthAttackCost(int healthCost);
+	void setActionAttackCost(int actionCost);
+	void setMindAttackCost(int mindCost);
+	
+	void setWoundsRatio(float woundsRat);
+	
+	void setArmorPiercing(int armorPierce);
+
+	void setDot0Type(int type);
+	void setDot0Attribute(int attribute);
+	void setDot0Strength(int strength);
+	void setDot0Duration(int duration);
+	void setDot0Potency(int potency);
+	void setDot0Uses(int uses);
+	void setDot1Uses(int uses);
+	void setDot2Uses(int uses);
+	
+	void setPointBlankRange(int pointBlankRnge);
+	void setPointBlankAccuracy(int pointBlankAcc);
+	void setMaxRange(int maxRnge);
+	void setMaxRangeAccuracy(int maxRangeAcc);
+	void setIdealRange(int idealRnge);
+	void setIdealAccuracy(int idealAcc);
+	
+	void powerupMinDamage(float powerupValue);
+	void powerupMaxDamage(float powerupValue);
+	void powerupHealthAttackCost(float powerupValue);
+	void powerupActionAttackCost(float powerupValue);
+	void powerupMindAttackCost(float powerupValue);
+	void powerupWoundsRatio(float powerupValue);
+	void powerupAttackSpeed(float powerupValue);
+	void powerupPointBlankAccuracy(float powerupValue);
+	void powerupIdealRange(float powerupValue);
+	void powerupIdealAccuracy(float powerupValue);
+	void powerupMaxRangeAccuracy(float powerupValue);
+
+	void setPowerupUses(int uses);
+	void setUsesRemaining(int charges);
+
+	void setCert(string& certification);
+	void setCertified(boolean crt);
 }

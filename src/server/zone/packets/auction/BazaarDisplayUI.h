@@ -46,8 +46,11 @@ which carries forward this exception.
 #define BAZAARDISPLAYUI_H_
 
 #include "engine/engine.h"
+
 #include "../../objects/player/Player.h"
 #include "../../objects/player/PlayerObject.h"
+
+#include "../BaseLineMessage.h"
 
 class BazaarDisplayUI : public BaseMessage {
 	

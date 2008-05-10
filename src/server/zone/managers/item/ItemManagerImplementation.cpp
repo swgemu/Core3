@@ -131,105 +131,85 @@ TangibleObject* ItemManagerImplementation::getPlayerItem(Player* player, uint64 
 	return tano;
 }
 
-TangibleObjectImplementation* ItemManagerImplementation::createPlayerObjectTemplate(int objecttype, uint64 objectid, uint32 objectcrc, unicode objectname, char* objecttemp, bool equipped) {
-	
-	TangibleObjectImplementation* item = NULL;
+TangibleObject* ItemManagerImplementation::createPlayerObjectTemplate(int objecttype, uint64 objectid, 
+		uint32 objectcrc, unicode objectname, const string& objecttemp, bool equipped) {
+	TangibleObject* item = NULL;
 	
 	if (objecttype & TangibleObjectImplementation::WEAPON || objecttype & TangibleObjectImplementation::LIGHTSABER) {	
 		switch (objecttype) {
 		case TangibleObjectImplementation::MELEEWEAPON:
-			item = new UnarmedMeleeWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
+			item = new UnarmedMeleeWeapon(objectid, objectcrc, objectname, objecttemp, equipped);
 			break;
 		case TangibleObjectImplementation::ONEHANDMELEEWEAPON:
-			item = new OneHandedMeleeWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
+			item = new OneHandedMeleeWeapon(objectid, objectcrc, objectname, objecttemp, equipped);
 			break;
 		case TangibleObjectImplementation::TWOHANDMELEEWEAPON:
-			item = new TwoHandedMeleeWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
+			item = new TwoHandedMeleeWeapon(objectid, objectcrc, objectname, objecttemp, equipped);
 			break;
 		case TangibleObjectImplementation::POLEARM:
-			item = new PolearmMeleeWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
+			item = new PolearmMeleeWeapon(objectid, objectcrc, objectname, objecttemp, equipped);
 			break;
 		case TangibleObjectImplementation::PISTOL:
-			item = new PistolRangedWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
+			item = new PistolRangedWeapon(objectid, objectcrc, objectname, objecttemp, equipped);
 			break;
 		case TangibleObjectImplementation::CARBINE:
-			item = new CarbineRangedWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
+			item = new CarbineRangedWeapon(objectid, objectcrc, objectname, objecttemp, equipped);
 			break;
 		case TangibleObjectImplementation::RIFLE:
-			item = new RifleRangedWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
+			item = new RifleRangedWeapon(objectid, objectcrc, objectname, objecttemp, equipped);
 			break;
 		case TangibleObjectImplementation::ONEHANDSABER:
-			item = new OneHandedJediWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
+			item = new OneHandedJediWeapon(objectid, objectcrc, objectname, objecttemp, equipped);
 			break;
 		case TangibleObjectImplementation::TWOHANDSABER:
-			item = new TwoHandedJediWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
+			item = new TwoHandedJediWeapon(objectid, objectcrc, objectname, objecttemp, equipped);
 			break;
 		case TangibleObjectImplementation::POLEARMSABER:
-			item = new PolearmJediWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
+			item = new PolearmJediWeapon(objectid, objectcrc, objectname, objecttemp, equipped);
 			break;
 		case TangibleObjectImplementation::SPECIALHEAVYWEAPON:
-			item = new SpecialHeavyRangedWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
+			item = new SpecialHeavyRangedWeapon(objectid, objectcrc, objectname, objecttemp, equipped);
 			break;
 		case TangibleObjectImplementation::HEAVYWEAPON:
-			item = new HeavyRangedWeaponImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
+			item = new HeavyRangedWeapon(objectid, objectcrc, objectname, objecttemp, equipped);
 			break;
 		}
 		
 	} else if (objecttype & TangibleObjectImplementation::CLOTHING) {
-		
-		item = new WearableImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
+		item = new Wearable(objectid, objectcrc, objectname, objecttemp, equipped);
 		item->setObjectSubType(objecttype);
-		
 	} else if (objecttype & TangibleObjectImplementation::ARMOR) {
-			
-		item = new ArmorImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
-
+		item = new Armor(objectid, objectcrc, objectname, objecttemp, equipped);
 	} else if (objecttype & TangibleObjectImplementation::MISC) {
-				
 		switch (objecttype) {
 		case TangibleObjectImplementation::TRAVELTICKET:
-				
-			item = new TicketImplementation(objectid, objectcrc, objectname, objecttemp);
-					
+			item = new Ticket(objectid, objectcrc, objectname, objecttemp);
 			break;
 		case TangibleObjectImplementation::INSTRUMENT:
-					
-			item = new InstrumentImplementation(objectid, objectcrc, objectname, objecttemp, equipped);
-					
+			item = new Instrument(objectid, objectcrc, objectname, objecttemp, equipped);
 			break;
 		case TangibleObjectImplementation::CLOTHINGATTACHMENT:
-					
-			item = new AttachmentImplementation(objectid, AttachmentImplementation::CLOTHING);
-
+			item = new Attachment(objectid, AttachmentImplementation::CLOTHING);
 			break;
 		case TangibleObjectImplementation::ARMORATTACHMENT:
-
-			item = new AttachmentImplementation(objectid, AttachmentImplementation::ARMOR);
-					
+			item = new Attachment(objectid, AttachmentImplementation::ARMOR);
 			break;
 		case TangibleObjectImplementation::CRAFTINGSTATION:
-
-			item = new CraftingStationImplementation(objectid, objectcrc, objectname, objecttemp);
-					
+			item = new CraftingStation(objectid, objectcrc, objectname, objecttemp);
 			break;
-			
 		default:
-
-			item = new TangibleObjectImplementation(objectid, objectname, objecttemp, objectcrc, objecttype);
-							
+			item = new TangibleObject(objectid, objectname, objecttemp, objectcrc, objecttype);
 			break;
 		}
 	} else if ( objecttype & TangibleObjectImplementation::RESOURCECONTAINER ) {
-				
-		item = new ResourceContainerImplementation(objectid, objectcrc, objectname, objecttemp);
-			
+		item = new ResourceContainer(objectid, objectcrc, objectname, objecttemp);
 	} else if (objecttype & TangibleObjectImplementation::TOOL) {
 		switch (objecttype) {
 		case TangibleObjectImplementation::CRAFTINGTOOL:
-			item = new CraftingToolImplementation(objectid, objectcrc, objectname, objecttemp);
+			item = new CraftingTool(objectid, objectcrc, objectname, objecttemp);
 			break;
 		case TangibleObjectImplementation::SURVEYTOOL:
-			item = new SurveyToolImplementation(objectid, objectcrc, objectname, objecttemp);
+			item = new SurveyTool(objectid, objectcrc, objectname, objecttemp);
 			break;
 		case TangibleObjectImplementation::REPAIRTOOL:
 		case TangibleObjectImplementation::CAMPKIT:
@@ -237,8 +217,7 @@ TangibleObjectImplementation* ItemManagerImplementation::createPlayerObjectTempl
 			break;
 		}
 	} else if (objecttype & TangibleObjectImplementation::WEAPONPOWERUP) {
-
-		item = new PowerupImplementation(objectid, objectcrc, objectname, objecttemp);
+		item = new Powerup(objectid, objectcrc, objectname, objecttemp);
 	} 
 	
 	return item;
@@ -254,7 +233,9 @@ TangibleObject* ItemManagerImplementation::createPlayerObject(Player* player, Re
 	char* objecttemp = result->getString(5); // template_name
 	
 	string appearance = result->getString(10);
+
 	BinaryData cust(appearance);
+
 	string custStr;
 	cust.decode(custStr);
 
@@ -265,35 +246,31 @@ TangibleObject* ItemManagerImplementation::createPlayerObject(Player* player, Re
 	
 	string attributes = result->getString(9);
 	
-	TangibleObjectImplementation* item = createPlayerObjectTemplate(objecttype, objectid, objectcrc, unicode(objectname), objecttemp, equipped);
+	TangibleObject* item = createPlayerObjectTemplate(objecttype, objectid, objectcrc, unicode(objectname), objecttemp, equipped);
 
 	if (item == NULL) {
 		//cout << "NULL ITEM objectType:[" << objecttype << "] objectname[" << objectname << "]" << endl;
 		return NULL;
 	}
-		
 	
 	item->setAttributes(attributes);
 	item->parseItemAttributes();
 	
 	item->setCustomizationString(custStr);
 	
-	
 	item->setPersistent(true);
 	
-	TangibleObject* tano = (TangibleObject*) item->deploy();
-	
 	if (player != NULL) 
-		player->addInventoryItem(tano);
+		player->addInventoryItem(item);
 	
-	return tano;
+	return item;
 }
 
 //Temporary Fix until we get a global clone() method implemented
 //TODO: remove this function when a global clone() method is implemented for all objects
-TangibleObjectImplementation * ItemManagerImplementation::clonePlayerObjectTemplate(TangibleObjectImplementation * templ) {	
+TangibleObject* ItemManagerImplementation::clonePlayerObjectTemplate(TangibleObject* templ) {	
 	//the name is passed in a hackish way to stop buffer overflows.. anyone know why it was doing that?
-	TangibleObjectImplementation * newTempl = createPlayerObjectTemplate(templ->getObjectSubType(), templ->getObjectID(), templ->getObjectCRC(), unicode(templ->getName().c_str()), (char *) templ->getTemplateName().c_str(), templ->isEquipped());
+	TangibleObject* newTempl = createPlayerObjectTemplate(templ->getObjectSubType(), templ->getObjectID(), templ->getObjectCRC(), unicode(templ->getName().c_str()), (char *) templ->getTemplateName().c_str(), templ->isEquipped());
 	newTempl->setAttributes(templ->getAttributes());
 	newTempl->parseItemAttributes();
 	
@@ -496,73 +473,72 @@ int ItemManagerImplementation::runProfessionFile(lua_State* L) {
 
 int ItemManagerImplementation::runBlueFrogFile(lua_State* L) {
 	string filename = getStringParameter(L);
-	
+
 	runFile("scripts/items/bluefrog/" + filename, L);
 	
 	return 0;
 }
 
-TangibleObjectImplementation * ItemManagerImplementation::createTemplateFromLua(LuaObject item) {
-	int crc = item.getIntField("objectCRC");
-	string name = item.getStringField("objectName");
-	string templ = item.getStringField("templateName");
-	bool equipped = bool(item.getByteField("equipped"));
-	int type = item.getIntField("objectType");
+TangibleObject* ItemManagerImplementation::createTemplateFromLua(LuaObject itemconfig) {
+	int crc = itemconfig.getIntField("objectCRC");
+	string name = itemconfig.getStringField("objectName");
+	string templ = itemconfig.getStringField("templateName");
+	bool equipped = bool(itemconfig.getByteField("equipped"));
+	int type = itemconfig.getIntField("objectType");
 	
-	TangibleObjectImplementation* itemImpl = createPlayerObjectTemplate(type, 1, crc, unicode(name), (char *) templ.c_str(), equipped);
-	itemImpl->setObjectSubType(type);
+	TangibleObject* item = createPlayerObjectTemplate(type, 1, crc, unicode(name), templ, equipped);
+	item->setObjectSubType(type);
 	
 	//ADD ATTRIBUTES
 	if (type & TangibleObjectImplementation::ARMOR) {		
-		int armorType = item.getIntField("armorType");
+		int armorType = itemconfig.getIntField("armorType");
 		
-		((ArmorImplementation*) itemImpl)->setType(armorType);
+		((Armor*) item)->setType(armorType);
 	} else if (type == TangibleObjectImplementation::INSTRUMENT) {		
-		int instType = item.getIntField("instrumentType");
+		int instType = itemconfig.getIntField("instrumentType");
 				
-		((InstrumentImplementation*) itemImpl)->setInstrumentType(instType);
+		((Instrument*) item)->setInstrumentType(instType);
 	} else if (type & TangibleObjectImplementation::WEAPON) {
-		int damageType = item.getIntField("damageType");
-		int ap = item.getIntField("armorPiercing");
-		string cert = item.getStringField("certification");
+		int damageType = itemconfig.getIntField("damageType");
+		int ap = itemconfig.getIntField("armorPiercing");
+		string cert = itemconfig.getStringField("certification");
 		
-		((WeaponImplementation*) itemImpl)->setDamageType(damageType);
-		((WeaponImplementation*) itemImpl)->setArmorPiercing(ap);
-		if(!cert.empty())
-			((WeaponImplementation*) itemImpl)->setCert(cert);
+		Weapon* weapon = (Weapon*) item;
+		weapon->setDamageType(damageType);
+		weapon->setArmorPiercing(ap);
+		
+		if (!cert.empty())
+			weapon->setCert(cert);
 	}
 	
-	return itemImpl;
+	return item;
 }
 int ItemManagerImplementation::addPlayerItem(lua_State * l) {
-	
 	LuaObject itemwrapper(l);
 	
 	string species = itemwrapper.getStringField("species");
 	string sex = itemwrapper.getStringField("sex");
 	string profession = itemwrapper.getStringField("profession");
 	
-	LuaObject item(itemwrapper.getObjectField("item"));
+	LuaObject itemconfig(itemwrapper.getObjectField("item"));
 	
+	TangibleObject* item = createTemplateFromLua(itemconfig);
 	
-	TangibleObjectImplementation* itemImpl = createTemplateFromLua(item);
-	
-	startingItems->addItemToProfession(profession, species, sex, itemImpl);
+	startingItems->addItemToProfession(profession, species, sex, item);
 	
 	return 0;
 }
 
 int ItemManagerImplementation::addBFItem(lua_State * l) {
-	
 	LuaObject itemwrapper(l);
 	
 	string name = itemwrapper.getStringField("name");
 	
-	LuaObject item(itemwrapper.getObjectField("item"));
+	LuaObject itemconfig(itemwrapper.getObjectField("item"));
 	
-	TangibleObjectImplementation* itemImpl = createTemplateFromLua(item);
+	TangibleObject* item = createTemplateFromLua(itemconfig);
 	
-	bfItemSet->addItem(name, itemImpl);
+	bfItemSet->addItem(name, item);
 	
 	return 0;
 }
@@ -581,14 +557,15 @@ int ItemManagerImplementation::addBFProf(lua_State * l) {
 }
 
 void ItemManagerImplementation::giveBFItemSet(Player * player, string& set) {
-	Vector<TangibleObjectImplementation *> * itemSet = bfItemSet->get(set);
+	Vector<TangibleObject*>* itemSet = bfItemSet->get(set);
 	
-	for(int i = 0; i < itemSet->size(); i++) {
-		TangibleObjectImplementation * templ = clonePlayerObjectTemplate(itemSet->get(i));
-		templ->setObjectID(player->getNewItemID());
-		TangibleObject * obj = templ->deploy();
-		player->addInventoryItem(obj);
-		obj->sendTo(player);
+	for (int i = 0; i < itemSet->size(); i++) {
+		TangibleObject* item = clonePlayerObjectTemplate(itemSet->get(i));
+		item->setObjectID(player->getNewItemID());
+		
+		player->addInventoryItem(item);
+		
+		item->sendTo(player);
 	}
 }
 
@@ -607,59 +584,57 @@ void ItemManagerImplementation::loadDefaultPlayerItems(Player* player) {
 	
 	string gen = "general";
 	string all = "all";
-	Vector<TangibleObjectImplementation *> * items;
+	
+	Vector<TangibleObject*>* items;
 	
 	//Make profession items for species
 	items = startingItems->getProfessionItems(prof, species, sex);
 	for (int j = 0; j < items->size(); ++j) {
-		TangibleObjectImplementation * obj = clonePlayerObjectTemplate(items->get(j));
+		TangibleObject* obj = clonePlayerObjectTemplate(items->get(j));
 		obj->setObjectID(player->getNewItemID());
-		player->addInventoryItem(obj->deploy());
+		player->addInventoryItem(obj);
 	}
 	
 	//Make profession items for that apply to all species
 	items = startingItems->getProfessionItems(prof, all, sex);
 	for (int j = 0; j < items->size(); ++j) {
-		TangibleObjectImplementation * obj = clonePlayerObjectTemplate(items->get(j));
+		TangibleObject* obj = clonePlayerObjectTemplate(items->get(j));
 		obj->setObjectID(player->getNewItemID());
-		player->addInventoryItem(obj->deploy());
+		player->addInventoryItem(obj);
 	}
 	
 	//Make general items for species
 	items = startingItems->getProfessionItems(gen, species, sex);
 	for (int j = 0; j < items->size(); ++j) {
-		TangibleObjectImplementation * obj = clonePlayerObjectTemplate(items->get(j));
+		TangibleObject* obj = clonePlayerObjectTemplate(items->get(j));
 		obj->setObjectID(player->getNewItemID());
-		player->addInventoryItem(obj->deploy());
+		player->addInventoryItem(obj);
 	}
 	
 	//Make general items that apple to all species
 	items = startingItems->getProfessionItems(gen, all, sex);
 	for (int j = 0; j < items->size(); ++j) {
-		TangibleObjectImplementation * obj = clonePlayerObjectTemplate(items->get(j));
+		TangibleObject* obj = clonePlayerObjectTemplate(items->get(j));
 		obj->setObjectID(player->getNewItemID());
-		player->addInventoryItem(obj->deploy());
+		player->addInventoryItem(obj);
 	}
 	
 }
 
 void ItemManagerImplementation::loadDefaultPlayerDatapadItems(Player* player) {
 	// SWOOP
-	MountCreatureImplementation* swoopImpl = new MountCreatureImplementation(player, "speederbike_swoop", "monster_name",
+	MountCreature* swoop = new MountCreature(player, "speederbike_swoop", "monster_name",
 			String::hashCode("object/intangible/vehicle/shared_speederbike_swoop_pcd.iff"), 0xAF6D9F4F, player->getNewItemID());
-	MountCreature* swoop = (MountCreature*) swoopImpl->deploy();
 	swoop->addToDatapad();
 
 	// flash speeder	
-	MountCreatureImplementation* flashImpl = new MountCreatureImplementation(player, "speederbike_flash", "monster_name", String::hashCode("object/intangible/vehicle/shared_speederbike_flash_pcd.iff"), 
+	MountCreature* flash = new MountCreature(player, "speederbike_flash", "monster_name", String::hashCode("object/intangible/vehicle/shared_speederbike_flash_pcd.iff"), 
 			0x4E3534, player->getNewItemID());
-	MountCreature* flash = (MountCreature*) flashImpl->deploy();
 	flash->addToDatapad();
 
 	// landspeeder
-	MountCreatureImplementation* landImpl = new MountCreatureImplementation(player, "landspeeder_x31", "monster_name",
+	MountCreature* land = new MountCreature(player, "landspeeder_x31", "monster_name",
 		String::hashCode("object/intangible/vehicle/shared_landspeeder_x31_pcd.iff"), 0x273A9C02, player->getNewItemID());
-	MountCreature* land = (MountCreature*) landImpl->deploy();
 	land->addToDatapad();
 
 	// xp 38 doesnt work
@@ -671,21 +646,18 @@ void ItemManagerImplementation::loadDefaultPlayerDatapadItems(Player* player) {
 	 land2->addToDatapad();*/
 
 	// x34
-	MountCreatureImplementation* land3Impl = new MountCreatureImplementation(player, "landspeeder_x34", "monster_name",
+	MountCreature* land3 = new MountCreature(player, "landspeeder_x34", "monster_name",
 		String::hashCode("object/intangible/vehicle/shared_landspeeder_x34_pcd.iff"), 0x4EC3780C, player->getNewItemID());
-	MountCreature* land3 = (MountCreature*) land3Impl->deploy();
 	land3->addToDatapad();
 
 	// av21
-	MountCreatureImplementation* land4Impl = new MountCreatureImplementation(player, "landspeeder_av21", "monster_name",
+	MountCreature* land4 = new MountCreature(player, "landspeeder_av21", "monster_name",
 		String::hashCode("object/intangible/vehicle/shared_landspeeder_av21_pcd.iff"), 0xA965DDBA, player->getNewItemID());
-	MountCreature* land4 = (MountCreature*) land4Impl->deploy();
 	land4->addToDatapad();
 
 	// speederbike
-	MountCreatureImplementation* speedImpl = new MountCreatureImplementation(player, "speederbike", "monster_name",
+	MountCreature* speed = new MountCreature(player, "speederbike", "monster_name",
 		String::hashCode("object/intangible/vehicle/shared_speederbike_pcd.iff"), 0x729517EF, player->getNewItemID());
-	MountCreature* speed = (MountCreature*) speedImpl->deploy();
 	speed->addToDatapad();
 
 	// jetpack

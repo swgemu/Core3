@@ -7,30 +7,31 @@
 
 #include "engine/orb/DistributedObjectBroker.h"
 
-class TangibleObject;
+#include "engine/service/Message.h"
 
 class Player;
 
-#include "engine/service/Message.h"
+class TangibleObject;
 
 #include "../TangibleObject.h"
 
 class Instrument : public TangibleObject {
-protected:
-	Instrument();
-	Instrument(DistributedObjectServant* obj);
-	Instrument(Instrument& ref);
-
-	virtual ~Instrument();
-
 public:
-	Instrument* clone();
+	Instrument(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, int insttype);
+
+	Instrument(Player* player, unsigned int tempCRC, const unicode& n, const string& tempn, int insttype);
 
 	int useObject(Player* player);
 
 	int getInstrumentType();
 
+	void setInstrumentType(const int type);
+
 protected:
+	Instrument(DummyConstructorParameter* param);
+
+	virtual ~Instrument();
+
 	friend class InstrumentHelper;
 };
 
@@ -46,9 +47,13 @@ public:
 
 	int getInstrumentType();
 
+	void setInstrumentType(const int type);
+
 };
 
 class InstrumentHelper : public DistributedObjectClassHelper, public Singleton<InstrumentHelper> {
+	static InstrumentHelper* staticInitializer;
+
 public:
 	InstrumentHelper();
 
@@ -56,7 +61,7 @@ public:
 
 	DistributedObject* instantiateObject();
 
-	DistributedObjectAdapter* createAdapter(DistributedObjectServant* obj);
+	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class SingletonWrapper<InstrumentHelper>;
 };

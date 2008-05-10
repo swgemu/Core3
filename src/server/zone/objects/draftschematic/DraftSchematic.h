@@ -18,15 +18,10 @@ class DraftSchematicExpPropGroup;
 class ObjectControllerMessage;
 
 class DraftSchematic : public DistributedObjectStub {
-protected:
-	DraftSchematic();
-	DraftSchematic(DistributedObjectServant* obj);
-	DraftSchematic(DraftSchematic& ref);
-
-	virtual ~DraftSchematic();
-
 public:
-	DraftSchematic* clone();
+	DraftSchematic(DraftSchematic* ds);
+
+	DraftSchematic(unsigned int schematicID, const string& objName, unsigned int objCRC, const string& groupName, unsigned int complexity, unsigned int schematicSize, int craftingToolTab);
 
 	DraftSchematic* dsClone(DraftSchematic* ds);
 
@@ -79,14 +74,14 @@ public:
 	int getCraftingToolTab();
 
 protected:
+	DraftSchematic(DummyConstructorParameter* param);
+
+	virtual ~DraftSchematic();
+
 	string _return_getExpPropTitle;
-
 	string _return_getGroupName;
-
 	string _return_getName;
-
 	string _return_getTanoAttributes;
-
 
 	friend class DraftSchematicHelper;
 };
@@ -159,6 +154,8 @@ protected:
 };
 
 class DraftSchematicHelper : public DistributedObjectClassHelper, public Singleton<DraftSchematicHelper> {
+	static DraftSchematicHelper* staticInitializer;
+
 public:
 	DraftSchematicHelper();
 
@@ -166,7 +163,7 @@ public:
 
 	DistributedObject* instantiateObject();
 
-	DistributedObjectAdapter* createAdapter(DistributedObjectServant* obj);
+	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class SingletonWrapper<DraftSchematicHelper>;
 };

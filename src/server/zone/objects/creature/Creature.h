@@ -7,9 +7,7 @@
 
 #include "engine/orb/DistributedObjectBroker.h"
 
-class CreatureObject;
-
-class CreatureGroup;
+class CreatureManagerImplementation;
 
 class Zone;
 
@@ -19,18 +17,15 @@ class Armor;
 
 class LairObject;
 
+class CreatureObject;
+
+class CreatureGroup;
+
 #include "CreatureObject.h"
 
 class Creature : public CreatureObject {
-protected:
-	Creature();
-	Creature(DistributedObjectServant* obj);
-	Creature(Creature& ref);
-
-	virtual ~Creature();
-
 public:
-	Creature* clone();
+	Creature(unsigned long long oid, CreatureGroup* group = NULL);
 
 	void init();
 
@@ -72,19 +67,9 @@ public:
 
 	void resetPatrolPoints(bool doLock = true);
 
+	void setSpawnPosition(float posX, float posZ, float posY, unsigned long long cellid = 0);
+
 	int compareTo(Creature* creature);
-
-	void setLair(LairObject* Lair);
-
-	void setCreatureGroup(CreatureGroup* group);
-
-	void setObjectFileName(string& name);
-
-	void setType(int tp);
-
-	void setRespawnTimer(unsigned int seconds);
-
-	void setLootCreated(bool value);
 
 	int getType();
 
@@ -108,9 +93,26 @@ public:
 
 	bool hasLootCreated();
 
-protected:
-	string _return_getName;
+	void setCreatureManager(CreatureManagerImplementation* manager);
 
+	void setLair(LairObject* Lair);
+
+	void setCreatureGroup(CreatureGroup* group);
+
+	void setObjectFileName(const string& name);
+
+	void setType(int tp);
+
+	void setRespawnTimer(unsigned int seconds);
+
+	void setLootCreated(bool value);
+
+protected:
+	Creature(DummyConstructorParameter* param);
+
+	virtual ~Creature();
+
+	string _return_getName;
 
 	friend class CreatureHelper;
 };
@@ -163,19 +165,9 @@ public:
 
 	void resetPatrolPoints(bool doLock);
 
+	void setSpawnPosition(float posX, float posZ, float posY, unsigned long long cellid);
+
 	int compareTo(Creature* creature);
-
-	void setLair(LairObject* Lair);
-
-	void setCreatureGroup(CreatureGroup* group);
-
-	void setObjectFileName(string& name);
-
-	void setType(int tp);
-
-	void setRespawnTimer(unsigned int seconds);
-
-	void setLootCreated(bool value);
 
 	int getType();
 
@@ -199,11 +191,25 @@ public:
 
 	bool hasLootCreated();
 
+	void setLair(LairObject* Lair);
+
+	void setCreatureGroup(CreatureGroup* group);
+
+	void setObjectFileName(const string& name);
+
+	void setType(int tp);
+
+	void setRespawnTimer(unsigned int seconds);
+
+	void setLootCreated(bool value);
+
 protected:
 	string _param0_setObjectFileName__string_;
 };
 
 class CreatureHelper : public DistributedObjectClassHelper, public Singleton<CreatureHelper> {
+	static CreatureHelper* staticInitializer;
+
 public:
 	CreatureHelper();
 
@@ -211,7 +217,7 @@ public:
 
 	DistributedObject* instantiateObject();
 
-	DistributedObjectAdapter* createAdapter(DistributedObjectServant* obj);
+	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class SingletonWrapper<CreatureHelper>;
 };

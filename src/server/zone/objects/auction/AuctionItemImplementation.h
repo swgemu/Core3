@@ -50,39 +50,19 @@ which carries forward this exception.
 #include "AuctionItem.h"
 
 class AuctionItemImplementation : public AuctionItemServant {
-	
-public:
-	AuctionItemImplementation(uint64 objectid) : AuctionItemServant() {
-		id = objectid;
-	}
-	
-	AuctionItemImplementation(uint64 objectid, string& name, int itemprice, int time, bool isauction, int type, string& owner) 
-		: AuctionItemServant() {
-
-		id = objectid;
-		itemType = type;
-		itemName = name;
-		
-		price = price;
-		remainingTime = time;
-		auction = auction;
-
-		ownerName = owner;
-	}
-	
 	uint64 id;
 	int itemType;
 	
 	uint64 ownerID;
 	string ownerName;
-	short ownerPointer;
+	uint16 ownerPointer;
 	string bidderName;
 	
-	short planet;
+	uint16 planet;
 	string region;
 	string location;
 	string terminalTitle;
-	short locationPointer;
+	uint16 locationPointer;
 	uint64 vendorID;
 	
 	string itemName;
@@ -100,10 +80,24 @@ public:
 
 	bool updated;
 	
-	AuctionItem* deploy() {
-		return (AuctionItem*) DistributedObjectServant::deploy("AuctionItem", id);
+public:
+	AuctionItemImplementation(uint64 objectid) : AuctionItemServant() {
+		id = objectid;
 	}
+	
+	AuctionItemImplementation(uint64 objectid, string& name, int itemprice, int time, bool isauction, int type, string& owner) 
+			: AuctionItemServant() {
+		id = objectid;
+		itemType = type;
+		itemName = name;
+		
+		price = price;
+		remainingTime = time;
+		auction = auction;
 
+		ownerName = owner;
+	}
+	
 	void setLocation(string& planet, string& header, long long vendorid, int x, int z, bool vendor) {
 		location = header;
 		
@@ -119,10 +113,6 @@ public:
 		terminalTitle = title.str();
 	}
 	
-	inline uint64 getId() {
-		return id;
-	}
-	
 	inline bool isSold() {
 		return sold;
 	}
@@ -135,28 +125,20 @@ public:
 		return itemType;
 	}
 	
-	inline uint64 getOwnerId() {
+	inline uint64 getOwnerID() {
 		return ownerID;
 	}
 	
-	inline void setOwnerId(uint64 ownerid) {
+	inline void setOwnerID(uint64 ownerid) {
 		ownerID = ownerid;
-	}
-	
-	inline uint64 getBuyerId() {
-		return buyerID;
 	}
 	
 	inline string& getBidderName() {
 		return bidderName;
 	}
 	
-	inline void setBidderName(string& name) {
+	inline void setBidderName(const string& name) {
 		bidderName = name;
-	}
-	
-	inline void setBuyerId(uint64 buyerid) {
-		buyerID = buyerid;
 	}
 	
 	inline string& getTerminalTitle() {
@@ -167,8 +149,8 @@ public:
 		return ownerName;
 	}
 		
-	inline void setOwnerName(string& name) {
-		ownerName =name;
+	inline void setOwnerName(const string& name) {
+		ownerName = name;
 	}
 	
 	inline void setLocationPointer(int locpt) {
@@ -185,18 +167,6 @@ public:
 	
 	inline int getOwnerPointer() {
 		return ownerPointer;
-	}
-	
-	inline string& getItemName() {
-		return itemName;
-	}
-	
-	inline void setItemDescription(string& description) {
-		itemDescription = description;
-	}
-	
-	inline string& getItemDescription() {
-		return itemDescription;
 	}
 	
 	inline int getPrice() {
@@ -217,10 +187,6 @@ public:
 	
 	inline bool getAuction() {
 		return auction;
-	}
-	
-	inline int getPlanet() {
-		return planet;
 	}
 	
 	inline string& getLocation() {
@@ -250,6 +216,59 @@ public:
 			" updated: " << updated << "\n";
 	}
 
+	// getters
+	inline uint64 getID() {
+		return id;
+	}
+
+	inline uint16 getPlanet() {
+		return planet;
+	}
+	
+	inline uint64 getVendorID() {
+		return vendorID;
+	}
+
+	inline string& getItemName() {
+		return itemName;
+	}
+
+	inline string& getItemDescription() {
+		return itemDescription;
+	}
+
+	inline uint64 getBuyerID() {
+		return buyerID;
+	}
+
+	// setters
+	inline void setVendorID(uint64 vid) {
+		vendorID = vid;
+	}
+	
+	inline void setPlanet(uint16 planet) {
+		this->planet = planet;
+	}
+
+	inline void setItemType(int type) {
+		itemType = type;
+	}
+	
+	inline void setItemName(const string& name) {
+		itemName = name;
+	}
+
+	inline void setItemDescription(const string& description) {
+		itemDescription = description;
+	}
+	
+	inline void setAuction(bool val) {
+		auction = val;
+	}
+
+	inline void setBuyerID(uint64 bid) {
+		buyerID = bid;
+	}
 };
 
 #endif /*AUCTIONITEMIMPLEMENTATION_H_*/

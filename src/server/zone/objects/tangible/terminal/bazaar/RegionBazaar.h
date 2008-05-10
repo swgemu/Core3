@@ -18,15 +18,8 @@ class BazaarPlanetManager;
 #include "../../../scene/SceneObject.h"
 
 class RegionBazaar : public SceneObject {
-protected:
-	RegionBazaar();
-	RegionBazaar(DistributedObjectServant* obj);
-	RegionBazaar(RegionBazaar& ref);
-
-	virtual ~RegionBazaar();
-
 public:
-	RegionBazaar* clone();
+	RegionBazaar();
 
 	void addItem(AuctionItem* item);
 
@@ -41,6 +34,10 @@ public:
 	void getBazaarData(Player* player, long long objectid, int screen, int extent, int category, int count, int offset);
 
 protected:
+	RegionBazaar(DummyConstructorParameter* param);
+
+	virtual ~RegionBazaar();
+
 	friend class RegionBazaarHelper;
 };
 
@@ -69,6 +66,8 @@ protected:
 };
 
 class RegionBazaarHelper : public DistributedObjectClassHelper, public Singleton<RegionBazaarHelper> {
+	static RegionBazaarHelper* staticInitializer;
+
 public:
 	RegionBazaarHelper();
 
@@ -76,7 +75,7 @@ public:
 
 	DistributedObject* instantiateObject();
 
-	DistributedObjectAdapter* createAdapter(DistributedObjectServant* obj);
+	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class SingletonWrapper<RegionBazaarHelper>;
 };

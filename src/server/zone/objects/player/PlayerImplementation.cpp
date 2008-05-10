@@ -237,14 +237,11 @@ void PlayerImplementation::init() {
 	setGlobalLogging(true);
 }
 
-Player* PlayerImplementation::create(ZoneClient* client) {
-	Player* player = (Player*) deploy("Player " + firstName);
-
-	PlayerObjectImplementation* playerObjectImpl = new PlayerObjectImplementation(player);
-	playerObject = (PlayerObject*) playerObjectImpl->deploy("PlayerObject" + firstName);
+void PlayerImplementation::create(ZoneClient* client) {
+	playerObject = new PlayerObject(_this);
 
 	setClient(client);
-	client->setPlayer(player);
+	client->setPlayer(_this);
 
 	string logName = "Player = " + firstName;
 
@@ -254,8 +251,6 @@ Player* PlayerImplementation::create(ZoneClient* client) {
 	setLoggingName(logName);
 
 	info("created player");
-	
-	return player;
 }
 
 void PlayerImplementation::refuseCreate(ZoneClient* client) {
@@ -585,39 +580,31 @@ void PlayerImplementation::disconnect(bool closeClient, bool doLock) {
 }
 
 void PlayerImplementation::createItems() {
-	InventoryImplementation* invImpl = new InventoryImplementation(_this);
-	inventory = (Inventory*) invImpl->deploy();
+	inventory = new Inventory(_this);
 		
-	DatapadImplementation* datapadImpl = new DatapadImplementation(_this);
-	datapad = (Datapad*) datapadImpl->deploy();
+	datapad = new Datapad(_this);
 
 	ItemManager* itemManager = zone->getZoneServer()->getItemManager();
 	itemManager->loadDefaultPlayerItems(_this);
 	itemManager->loadDefaultPlayerDatapadItems(_this);
 	
 	if (!hairObject.empty()) {
-		HairObjectImplementation* hairImpl = new HairObjectImplementation(_this, String::hashCode(hairObject), unicode("hair"), "hair");
-		hairImpl->setCustomizationString(hairData);
-		
-		hairObj = (HairObject*) hairImpl->deploy();
+		hairObj = new HairObject(_this, String::hashCode(hairObject), unicode("hair"), "hair");
+		hairObj->setCustomizationString(hairData);
 	}
 }
 
 void PlayerImplementation::loadItems() {
-	InventoryImplementation* invImpl = new InventoryImplementation(_this);
-	inventory = (Inventory*) invImpl->deploy();
+	inventory = new Inventory(_this);
 		
-	DatapadImplementation* datapadImpl = new DatapadImplementation(_this);
-	datapad = (Datapad*) datapadImpl->deploy();
+	datapad = new Datapad(_this);
 
 	ItemManager* itemManager = zone->getZoneServer()->getItemManager();
 	itemManager->loadPlayerItems(_this);
 
 	if (!hairObject.empty()) {
-		HairObjectImplementation* hairImpl = new HairObjectImplementation(_this, String::hashCode(hairObject), unicode("hair"), "hair");
-		hairImpl->setCustomizationString(hairData);
-		
-		hairObj = (HairObject*) hairImpl->deploy();
+		hairObj = new HairObject(_this, String::hashCode(hairObject), unicode("hair"), "hair");
+		hairObj->setCustomizationString(hairData);
 	}
 }
 
@@ -3012,11 +2999,9 @@ void PlayerImplementation::sendSampleTimeRemaining() {
 
 void PlayerImplementation::launchFirework() {
 	//Create the firework in the world.
-	FireworkWorldImplementation* fwwImpl = new FireworkWorldImplementation(_this);
-	fwwImpl->setZoneProcessServer(server);
-	fwwImpl->setDirection(0, 0, -0.64, 0.76);
-
-	FireworkWorld* firework = (FireworkWorld*) fwwImpl->deploy();
+	FireworkWorld* firework = new FireworkWorld(_this);
+	firework->setZoneProcessServer(server);
+	firework->setDirection(0, 0, -0.64, 0.76);
 
 	setPosture(CROUCHED_POSTURE);
 
@@ -3047,7 +3032,6 @@ void PlayerImplementation::launchFirework() {
 }
 
 int PlayerImplementation::getSlicingAbility() {
-	
 	string txt0 = "combat_smuggler_novice";
 	string txt1 = "combat_smuggler_slicing_01";
 	string txt2 = "combat_smuggler_slicing_02";

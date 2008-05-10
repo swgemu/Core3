@@ -42,16 +42,21 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-import "../../objects/creature/bluefrog/BFVector";
+import "server/zone/ZoneServer";
 
 import "../../objects/tangible/TangibleObject";
 
 import "../../objects/tangible/weapons/Weapon";
 import "../../objects/tangible/wearables/Armor";
 
+import "../../objects/creature/bluefrog/BFVector";
+
 import "../../objects/player/Player";
 
 interface ItemManager {
+	ItemManager(ZoneServer server) {
+		super(server);
+	}
 	
 	void loadStaticWorldObjects();
 

@@ -46,6 +46,8 @@ include "engine/service/proto/BaseMessage";
 
 include "engine/util/QuadTreeEntry";
 
+include "../../ZoneProcessServerImplementation";
+
 import "../../packets/object/ObjectMenuResponse";
 
 import "../../Zone";
@@ -116,6 +118,8 @@ interface SceneObject implements ManagedObject {
 	void error(const string message);
 
 	// setters
+	local void setZoneProcessServer(ZoneProcessServerImplementation processor);
+	
 	void setObjectID(unsigned long oid);
 
 	void setObjectCRC(unsigned int crc);

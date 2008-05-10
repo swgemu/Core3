@@ -51,9 +51,9 @@ which carries forward this exception.
 
 #include "../../../Zone.h"
 
-TicketImplementation::TicketImplementation(Player* player, uint32 tempCRC, const unicode& n, const string& tempn, const string& dpPlanet, const string& dpPoint, const string& arPlanet, const string& arPoint) : 
-	TicketServant(player->getNewItemID(), TRAVELTICKET) {
-	
+TicketImplementation::TicketImplementation(Player* player, uint32 tempCRC, const unicode& n, const string& tempn, const string& dpPlanet, 
+		const string& dpPoint, const string& arPlanet, const string& arPoint) 
+		: TicketServant(player->getNewItemID(), TRAVELTICKET) {
 	objectCRC = tempCRC;
 
 	name = n;

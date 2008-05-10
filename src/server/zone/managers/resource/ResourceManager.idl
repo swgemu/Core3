@@ -43,9 +43,18 @@ which carries forward this exception.
 */
 
 import "../../objects/player/Player";
-import "../../objects/tangible/resource/ResourceContainerImplementation";
+
+import "../../objects/tangible/resource/ResourceContainer";
+
+import "server/zone/ZoneServer";
+
+import "server/zone/ZoneProcessServerImplementation";
 
 interface ResourceManager {
+	ResourceManager(ZoneServer server, ZoneProcessServerImplementation processor) {
+		super(server, processor);
+	}
+	
 	void theShift();
 	void stop();
 	void clearResources();
@@ -55,7 +64,7 @@ interface ResourceManager {
 	void sendSurveyMessage(Player player, string resource_name);
 	void sendSampleMessage(Player player, string resource_name);
 	
-	void setResourceData(ResourceContainerImplementation resContainer);
+	void setResourceData(ResourceContainer resContainer);
 	
 	boolean sendSurveyResources(Player player, int SurveyToolType);
 	

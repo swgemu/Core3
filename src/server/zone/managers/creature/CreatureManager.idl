@@ -42,18 +42,26 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-import "../../Zone";
+include "engine/util/Coordinate";
+
+import "server/zone/Zone";
+include "server/zone/ZoneProcessServerImplementation";
 
 import "../../objects/creature/Creature";
 import "../../objects/creature/CreatureObject";
 import "../../objects/creature/CreatureGroup";
+
 import "../../objects/creature/trainer/TrainerCreature";
+
 import "../../objects/creature/recruiter/RecruiterCreature";
+
 import "../../objects/creature/shuttle/ShuttleCreature";
 
-include "engine/util/Coordinate";
-
 interface CreatureManager {
+	CreatureManager(Zone zone, ZoneProcessServerImplementation processor) {
+		super(zone, processor);
+	}
+	
 	void init();
 	
 	void loadCreatures();

@@ -11,6 +11,8 @@ class SceneObject;
 
 class ZoneServer;
 
+#include "ZoneProcessServerImplementation.h"
+
 class ChatManager;
 
 class PlanetManager;
@@ -20,15 +22,8 @@ class CreatureManager;
 #include "engine/util/QuadTreeEntry.h"
 
 class Zone : public DistributedObjectStub {
-protected:
-	Zone();
-	Zone(DistributedObjectServant* obj);
-	Zone(Zone& ref);
-
-	virtual ~Zone();
-
 public:
-	Zone* clone();
+	Zone(ZoneServer* zserv, ZoneProcessServerImplementation* processor, int zoneid);
 
 	void startManagers();
 
@@ -48,6 +43,18 @@ public:
 
 	SceneObject* deleteCachedObject(SceneObject* obj);
 
+	void setSize(float minx, float miny, float maxx, float maxy);
+
+	void insert(QuadTreeEntry* obj);
+
+	void remove(QuadTreeEntry* obj);
+
+	void removeAll();
+
+	bool update(QuadTreeEntry* obj);
+
+	void inRange(QuadTreeEntry* obj, float range);
+
 	int getZoneID();
 
 	ZoneServer* getZoneServer();
@@ -66,19 +73,11 @@ public:
 
 	float getWeatherCloudY();
 
-	void setSize(float minx, float miny, float maxx, float maxy);
-
-	void insert(QuadTreeEntry* obj);
-
-	void remove(QuadTreeEntry* obj);
-
-	void removeAll();
-
-	bool update(QuadTreeEntry* obj);
-
-	void inRange(QuadTreeEntry* obj, float range);
-
 protected:
+	Zone(DummyConstructorParameter* param);
+
+	virtual ~Zone();
+
 	friend class ZoneHelper;
 };
 
@@ -108,6 +107,18 @@ public:
 
 	SceneObject* deleteCachedObject(SceneObject* obj);
 
+	void setSize(float minx, float miny, float maxx, float maxy);
+
+	void insert(QuadTreeEntry* obj);
+
+	void remove(QuadTreeEntry* obj);
+
+	void removeAll();
+
+	bool update(QuadTreeEntry* obj);
+
+	void inRange(QuadTreeEntry* obj, float range);
+
 	int getZoneID();
 
 	ZoneServer* getZoneServer();
@@ -126,21 +137,11 @@ public:
 
 	float getWeatherCloudY();
 
-	void setSize(float minx, float miny, float maxx, float maxy);
-
-	void insert(QuadTreeEntry* obj);
-
-	void remove(QuadTreeEntry* obj);
-
-	void removeAll();
-
-	bool update(QuadTreeEntry* obj);
-
-	void inRange(QuadTreeEntry* obj, float range);
-
 };
 
 class ZoneHelper : public DistributedObjectClassHelper, public Singleton<ZoneHelper> {
+	static ZoneHelper* staticInitializer;
+
 public:
 	ZoneHelper();
 
@@ -148,7 +149,7 @@ public:
 
 	DistributedObject* instantiateObject();
 
-	DistributedObjectAdapter* createAdapter(DistributedObjectServant* obj);
+	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class SingletonWrapper<ZoneHelper>;
 };

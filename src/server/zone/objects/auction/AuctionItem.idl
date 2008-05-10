@@ -43,45 +43,78 @@ which carries forward this exception.
 */
 
 interface AuctionItem implements ManagedObject {
-	unsigned long getId();
-	unsigned long getOwnerId();
-	void setOwnerId(unsigned long ownerid);
-	void setOwnerName(string name);
+	AuctionItem(unsigned long objectid);
 	
-	unsigned long getBuyerId();
-	void setBuyerId(unsigned long buyerid);
+	AuctionItem(unsigned long objectid, string name, int itemprice, int time, 
+			boolean isauction, int type, string owner); 
+
+	void setLocation(string planet, string header, unsigned long vendorid, int x, int z, boolean vendor);
+
+	// getters
+	int getPlanet();
+
+	unsigned long getID();
 	
-	string getBidderName();
-	void setBidderName(string name);
-	
-	unsigned int getItemType();	
-	
-	boolean isSold();
-	void setSold(boolean sld);
-	
+	unsigned long getOwnerID();
+
 	string getTerminalTitle();
 	
 	string getOwnerName();
 
-	void setLocationPointer(int locpt);
-	int getLocationPointer();
+	unsigned long getBuyerID();
+
+	string getBidderName();
+
+	unsigned int getItemType();	
 	
-	void setOwnerPointer(int ownpt);	
-	int getOwnerPointer();
-	
-	string getItemName();
-	void setItemDescription(string description);
-	string getItemDescription();
-	
-	int getPrice();
-	void setPrice(int prc);
-	
-	unsigned int getExpireTime();
-	void setExpireTime(unsigned int expiretime);
+	boolean isSold();
+
+	unsigned long getVendorID();
 	
 	boolean getAuction();
 
-	int getPlanet();
 	string getLocation();
+
+	int getPrice();
+
+	int getLocationPointer();
 	
+	int getOwnerPointer();
+	
+	string getItemDescription();
+
+	string getItemName();
+
+	unsigned int getExpireTime();
+	
+	// setters
+	void setOwnerID(unsigned long ownerid);
+
+	void setOwnerName(const string name);
+
+	void setVendorID(unsigned long vid);
+	
+	void setPlanet(int planet);
+
+	void setBidderName(const string name);
+
+	void setSold(boolean sld);
+	
+	void setLocationPointer(int locpt);
+
+	void setItemType(int type);
+	
+	void setItemName(const string name);
+	
+	void setItemDescription(const string description);
+	
+	void setPrice(int prc);
+
+	void setAuction(boolean val);
+	
+	void setBuyerID(unsigned long bid);
+	
+	void setExpireTime(unsigned int expiretime);
+
+	void setOwnerPointer(int ownpt);	
 }

@@ -56,7 +56,6 @@ class CellObjectImplementation : public CellObjectServant {
 	SortedVector<SceneObject*> children;
 
 public:
-	
 	CellObjectImplementation(uint64 oid, BuildingObject* buio);
 	~CellObjectImplementation();
 	

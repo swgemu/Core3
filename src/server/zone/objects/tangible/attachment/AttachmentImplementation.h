@@ -87,10 +87,6 @@ public:
 	void setSkillMods(int modifier);
 	int getModValue(int luck, int modifier);
 
-	inline Attachment* deploy() {
-		return (Attachment*) SceneObjectImplementation::deploy();
-	}
-	
 	inline void setSkillMod0Type(int skillModType) {
 		skillMod0Type = skillModType;
 		string name = "skillMod0Type";

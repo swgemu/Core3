@@ -154,17 +154,11 @@ public:
 	}
  
 	DraftSchematic* dsClone(DraftSchematic* ds) { 
-		if(ds != NULL) {
-			DraftSchematicImplementation* dsImpl = new DraftSchematicImplementation(ds);
-			DraftSchematic* newDS = (DraftSchematic*) dsImpl->deploy();
-			return newDS;
+		if (ds != NULL) {
+			return new DraftSchematic(ds);
 		} else {
 			return NULL;
 		}
-	}
-	
-	DraftSchematic* deploy() {
-		return (DraftSchematic*) DistributedObjectServant::deploy();
 	}
 	
 	int getIngredientListSize() {
@@ -186,12 +180,10 @@ public:
 	// Ingredient Methods
 	void addIngredient(const string& ingredientTemplateName, const string& ingredientTitleName,
 			bool optional, const string& resourceType, uint32 resourceQuantity) {
-		DraftSchematicIngredientImplementation* dsiImp = new DraftSchematicIngredientImplementation(ingredientTemplateName, 
+		DraftSchematicIngredient* ingreedient = new DraftSchematicIngredient(ingredientTemplateName, 
 				ingredientTitleName, optional, resourceType, resourceQuantity);
 	
-		DraftSchematicIngredient* dsi = (DraftSchematicIngredient*) dsiImp->deploy();
-		
-		dsIngredients.add(dsi);
+		dsIngredients.add(ingreedient);
 	}
 	
 	// THERE IS A BUG WHEN YOU LEAVE YOUR DATAPAD UP AND SURRENDER A SKILL, THE DRAFT SCHEMATICS
@@ -248,9 +240,7 @@ public:
 		if (groupNumber < dsExpPropGroups.size()) {
 			dsExpPropGroups.get(groupNumber)->addExperimentalProperty(experimentalProperty, weight);
 		} else {
-			DraftSchematicExpPropGroupImplementation* dsEpgImp = new DraftSchematicExpPropGroupImplementation();
-			DraftSchematicExpPropGroup* dsEpg = (DraftSchematicExpPropGroup*) dsEpgImp->deploy();
-			
+			DraftSchematicExpPropGroup* dsEpg = new DraftSchematicExpPropGroup();
 			dsEpg->addExperimentalProperty(experimentalProperty, weight);
 			
 			dsExpPropGroups.add(dsEpg);

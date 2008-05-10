@@ -7,26 +7,25 @@
 
 #include "engine/orb/DistributedObjectBroker.h"
 
-class StaticObject;
-
 class Player;
+
+class StaticObject;
 
 #include "../../static/StaticObject.h"
 
 class FireworkWorld : public StaticObject {
-protected:
-	FireworkWorld();
-	FireworkWorld(DistributedObjectServant* obj);
-	FireworkWorld(FireworkWorld& ref);
-
-	virtual ~FireworkWorld();
-
 public:
-	FireworkWorld* clone();
+	FireworkWorld(Player* player);
+
+	FireworkWorld(Player* player, int tp);
 
 	int getFireworkType();
 
 protected:
+	FireworkWorld(DummyConstructorParameter* param);
+
+	virtual ~FireworkWorld();
+
 	friend class FireworkWorldHelper;
 };
 
@@ -43,6 +42,8 @@ public:
 };
 
 class FireworkWorldHelper : public DistributedObjectClassHelper, public Singleton<FireworkWorldHelper> {
+	static FireworkWorldHelper* staticInitializer;
+
 public:
 	FireworkWorldHelper();
 
@@ -50,7 +51,7 @@ public:
 
 	DistributedObject* instantiateObject();
 
-	DistributedObjectAdapter* createAdapter(DistributedObjectServant* obj);
+	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class SingletonWrapper<FireworkWorldHelper>;
 };

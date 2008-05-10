@@ -259,12 +259,12 @@ void RadialManager::sendRadialResponseForBazaar(uint64 objectId, Player* player)
 void RadialManager::sendRadialResponseForBank(uint64 objectId, Player* player) {
 	Zone* zone = player->getZone();
 	
-	SuiBankTransferBoxImplementation* sui = new SuiBankTransferBoxImplementation(player, 0xD65E);
+	SuiBankTransferBox* sui = new SuiBankTransferBox(player, 0xD65E);
 	
 	sui->addCash(player->getCashCredits());
 	sui->addBank(player->getBankCredits());
 	
-	player->addSuiBox(sui->deploy());
+	player->addSuiBox(sui);
 	player->sendMessage(sui->generateMessage());
 }
 
@@ -391,9 +391,9 @@ void RadialManager::handleWearableColorChange(Player* player, SceneObject* obj) 
 	if (player->getInventoryItem(wearable->getObjectID()) == NULL)
 		return;
 	
-	SuiColorPickerImplementation* sui = new SuiColorPickerImplementation(player, wearable->getObjectID(), 0xBABE);
+	SuiColorPicker* sui = new SuiColorPicker(player, wearable->getObjectID(), 0xBABE);
 
-	player->addSuiBox(sui->deploy());
+	player->addSuiBox(sui);
 	player->sendMessage(sui->generateMessage());
 	
 	return;
@@ -463,7 +463,7 @@ void RadialManager::sendRadialResponseForSurveyToolRange(Player* player, SceneOb
 	
 	int surveyMod = player->getSkillMod(surveying);
 	
-	SuiListBoxImplementation* suiToolRangeBox = new SuiListBoxImplementation(player, 0x7259);
+	SuiListBox* suiToolRangeBox = new SuiListBox(player, 0x7259);
 	suiToolRangeBox->setPromptTitle("@base_player:swg");
 	suiToolRangeBox->setPromptText("@survey:select_range");
 	
@@ -482,8 +482,8 @@ void RadialManager::sendRadialResponseForSurveyToolRange(Player* player, SceneOb
 	if (surveyMod > 80)
 		suiToolRangeBox->addMenuItem("320m x 5pts");
 	
-	player->addSuiBox(suiToolRangeBox->deploy());
+	player->addSuiBox(suiToolRangeBox);
 	player->sendMessage(suiToolRangeBox->generateMessage());
 	
-	player->setSurveyTool((SurveyTool*)obj);
+	player->setSurveyTool((SurveyTool*) obj);
 }

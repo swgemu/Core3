@@ -62,6 +62,14 @@ import "Zone";
 include "../db/ServerDatabase";
 
 interface ZoneServer {
+	ZoneServer(int threadcount) {
+		super(threadcount);
+	}
+
+	void start(int port, int conn);
+
+	void stop();
+
 	void startManagers();
 
 	// object methods	
@@ -91,7 +99,11 @@ interface ZoneServer {
 	void unlock();
 	
 	void increaseTotalDeletedPlayers();
+
+	void printInfo();
 	
+	void fixScheduler();
+
 	// getters
 	ChatManager getChatManager();
 	GuildManager getGuildManager();

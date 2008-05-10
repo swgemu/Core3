@@ -49,8 +49,9 @@ import "../../player/Player";
 include "engine/service/Message";
  
 interface Attachment implements TangibleObject {
- 
-	Attachment(unsigned int oid, int type);
+	Attachment(unsigned long objID, int attachmentType) {
+		super(objID, attachmentType);
+	}
 	
 	void remove(Player player);
 

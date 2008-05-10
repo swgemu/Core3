@@ -16,15 +16,12 @@ class Player;
 #include "../SuiBox.h"
 
 class SuiBankTransferBox : public SuiBox {
-protected:
-	SuiBankTransferBox();
-	SuiBankTransferBox(DistributedObjectServant* obj);
-	SuiBankTransferBox(SuiBankTransferBox& ref);
-
-	virtual ~SuiBankTransferBox();
-
 public:
-	SuiBankTransferBox* clone();
+	SuiBankTransferBox(Player* player, unsigned int boxtype);
+
+	void addCash(int cash);
+
+	void addBank(int bank);
 
 	BaseMessage* generateMessage();
 
@@ -33,6 +30,10 @@ public:
 	void addOption(const string& itemText, const string& lblType, const string& itemType);
 
 protected:
+	SuiBankTransferBox(DummyConstructorParameter* param);
+
+	virtual ~SuiBankTransferBox();
+
 	friend class SuiBankTransferBoxHelper;
 };
 
@@ -43,6 +44,10 @@ public:
 	SuiBankTransferBoxAdapter(SuiBankTransferBoxImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	void addCash(int cash);
+
+	void addBank(int bank);
 
 	BaseMessage* generateMessage();
 
@@ -57,6 +62,8 @@ protected:
 };
 
 class SuiBankTransferBoxHelper : public DistributedObjectClassHelper, public Singleton<SuiBankTransferBoxHelper> {
+	static SuiBankTransferBoxHelper* staticInitializer;
+
 public:
 	SuiBankTransferBoxHelper();
 
@@ -64,7 +71,7 @@ public:
 
 	DistributedObject* instantiateObject();
 
-	DistributedObjectAdapter* createAdapter(DistributedObjectServant* obj);
+	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class SingletonWrapper<SuiBankTransferBoxHelper>;
 };
@@ -76,7 +83,7 @@ public:
 	SuiBankTransferBox* _this;
 
 public:
-	SuiBankTransferBoxServant(Player* play, unsigned int typeID, unsigned int boxtype);
+	SuiBankTransferBoxServant(Player* player, int typeID, unsigned int boxtype);
 	virtual ~SuiBankTransferBoxServant();
 
 	void _setStub(DistributedObjectStub* stub);

@@ -16,15 +16,8 @@ class Player;
 #include "../SuiBox.h"
 
 class SuiInputBox : public SuiBox {
-protected:
-	SuiInputBox();
-	SuiInputBox(DistributedObjectServant* obj);
-	SuiInputBox(SuiInputBox& ref);
-
-	virtual ~SuiInputBox();
-
 public:
-	SuiInputBox* clone();
+	SuiInputBox(Player* player, unsigned int typeID, unsigned int boxttype);
 
 	BaseMessage* generateMessage();
 
@@ -35,6 +28,10 @@ public:
 	bool isFilterBox();
 
 protected:
+	SuiInputBox(DummyConstructorParameter* param);
+
+	virtual ~SuiInputBox();
+
 	friend class SuiInputBoxHelper;
 };
 
@@ -59,6 +56,8 @@ protected:
 };
 
 class SuiInputBoxHelper : public DistributedObjectClassHelper, public Singleton<SuiInputBoxHelper> {
+	static SuiInputBoxHelper* staticInitializer;
+
 public:
 	SuiInputBoxHelper();
 
@@ -66,7 +65,7 @@ public:
 
 	DistributedObject* instantiateObject();
 
-	DistributedObjectAdapter* createAdapter(DistributedObjectServant* obj);
+	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class SingletonWrapper<SuiInputBoxHelper>;
 };
@@ -78,7 +77,7 @@ public:
 	SuiInputBox* _this;
 
 public:
-	SuiInputBoxServant(Player* play, unsigned int typeID, unsigned int boxttype);
+	SuiInputBoxServant(Player* player, unsigned int typeID, unsigned int boxttype);
 	virtual ~SuiInputBoxServant();
 
 	void _setStub(DistributedObjectStub* stub);

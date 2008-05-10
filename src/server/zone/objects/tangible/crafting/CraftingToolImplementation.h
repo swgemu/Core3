@@ -76,6 +76,7 @@ public:
 public:
 	CraftingToolImplementation(uint64 object_id, uint32 tempCRC, const unicode& n, const string& tempn);
 	CraftingToolImplementation(CreatureObject* creature, uint32 tempCRC, const unicode& n, const string& tempn);
+	
 	~CraftingToolImplementation();
  
 	void init();

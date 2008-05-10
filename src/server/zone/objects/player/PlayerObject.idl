@@ -42,14 +42,18 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-import "../scene/SceneObject";
-import "Player";
-
 import "../../Zone";
+
+import "../scene/SceneObject";
+
+import "Player";
 
 import "../waypoint/WaypointObject";
 
 interface PlayerObject implements SceneObject {
+	PlayerObject(Player player) {
+		super();
+	}
 
 	void sendToOwner();
 	void sendTo(Player player, boolean doClose = true);

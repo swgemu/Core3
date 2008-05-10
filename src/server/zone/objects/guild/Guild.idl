@@ -46,6 +46,7 @@ import "../player/Player";
 import "../../managers/guild/GuildManager";
 
 interface Guild {
+	Guild(unsigned int gid, const string name, const string tag);
 	
 	void sendGuildListTo(Player player, boolean doLock = true);
 

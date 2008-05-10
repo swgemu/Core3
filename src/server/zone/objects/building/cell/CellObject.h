@@ -7,26 +7,21 @@
 
 #include "engine/orb/DistributedObjectBroker.h"
 
+class Zone;
+
+#include "engine/service/Message.h"
+
 class SceneObject;
 
 class Player;
 
-#include "engine/service/Message.h"
-
-class Zone;
+class BuildingObject;
 
 #include "../../scene/SceneObject.h"
 
 class CellObject : public SceneObject {
-protected:
-	CellObject();
-	CellObject(DistributedObjectServant* obj);
-	CellObject(CellObject& ref);
-
-	virtual ~CellObject();
-
 public:
-	CellObject* clone();
+	CellObject(unsigned long long oid, BuildingObject* buio);
 
 	void insertToZone(Zone* zone);
 
@@ -39,6 +34,10 @@ public:
 	int getChildrenSize();
 
 protected:
+	CellObject(DummyConstructorParameter* param);
+
+	virtual ~CellObject();
+
 	friend class CellObjectHelper;
 };
 
@@ -63,6 +62,8 @@ public:
 };
 
 class CellObjectHelper : public DistributedObjectClassHelper, public Singleton<CellObjectHelper> {
+	static CellObjectHelper* staticInitializer;
+
 public:
 	CellObjectHelper();
 
@@ -70,7 +71,7 @@ public:
 
 	DistributedObject* instantiateObject();
 
-	DistributedObjectAdapter* createAdapter(DistributedObjectServant* obj);
+	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class SingletonWrapper<CellObjectHelper>;
 };

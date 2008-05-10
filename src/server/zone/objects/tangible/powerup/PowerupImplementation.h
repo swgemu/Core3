@@ -56,10 +56,6 @@ public:
 	
 	void remove(Player* player);
 
-	inline Powerup* deploy() {
-		return (Powerup*) SceneObjectImplementation::deploy();
-	}
-	
 	inline void setPowerupType(int value) {
 		type = value;
 		string name = "type";

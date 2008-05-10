@@ -7,32 +7,25 @@
 
 #include "engine/orb/DistributedObjectBroker.h"
 
-class TangibleObject;
+#include "engine/service/Message.h"
 
-class packets;
+class CreatureObject;
 
 class Player;
 
-class CreatureObject;
+class TangibleObject;
 
 class DraftSchematic;
 
 class CraftingStation;
 
-#include "engine/service/Message.h"
-
 #include "../TangibleObject.h"
 
 class CraftingTool : public TangibleObject {
-protected:
-	CraftingTool();
-	CraftingTool(DistributedObjectServant* obj);
-	CraftingTool(CraftingTool& ref);
-
-	virtual ~CraftingTool();
-
 public:
-	CraftingTool* clone();
+	CraftingTool(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn);
+
+	CraftingTool(CreatureObject* creature, unsigned int tempCRC, const unicode& n, const string& tempn);
 
 	void sendTo(Player* player, bool doClose = true);
 
@@ -69,6 +62,10 @@ public:
 	bool isReady();
 
 protected:
+	CraftingTool(DummyConstructorParameter* param);
+
+	virtual ~CraftingTool();
+
 	friend class CraftingToolHelper;
 };
 
@@ -117,6 +114,8 @@ public:
 };
 
 class CraftingToolHelper : public DistributedObjectClassHelper, public Singleton<CraftingToolHelper> {
+	static CraftingToolHelper* staticInitializer;
+
 public:
 	CraftingToolHelper();
 
@@ -124,7 +123,7 @@ public:
 
 	DistributedObject* instantiateObject();
 
-	DistributedObjectAdapter* createAdapter(DistributedObjectServant* obj);
+	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class SingletonWrapper<CraftingToolHelper>;
 };
@@ -136,8 +135,8 @@ public:
 	CraftingTool* _this;
 
 public:
-	CraftingToolServant(unsigned long long oid, const unicode& n, const string& tempn, int tempCRC, int tp);
-	CraftingToolServant(CreatureObject* creature, const unicode& n, const string& tempn, int tempCRC, int tp);
+	CraftingToolServant(unsigned long long oid, const unicode& n, const string& tempn, unsigned int tempCRC, int type);
+	CraftingToolServant(CreatureObject* creature, const unicode& n, const string& tempn, unsigned int tempCRC, int type);
 	virtual ~CraftingToolServant();
 
 	void _setStub(DistributedObjectStub* stub);

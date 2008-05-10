@@ -48,7 +48,9 @@ import "../player/Player";
 import "TangibleObject";
 
 interface Container implements TangibleObject {
-	Container(unsigned long oid);
+	Container(unsigned long oid) {
+		super(oid);
+	}
 	
 	void addObject(SceneObject obj);
 

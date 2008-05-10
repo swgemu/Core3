@@ -7,26 +7,25 @@
 
 #include "engine/orb/DistributedObjectBroker.h"
 
-class Terminal;
+class BazaarManager;
 
 class Player;
+
+class Terminal;
 
 #include "../Terminal.h"
 
 class VendorTerminal : public Terminal {
-protected:
-	VendorTerminal();
-	VendorTerminal(DistributedObjectServant* obj);
-	VendorTerminal(VendorTerminal& ref);
-
-	virtual ~VendorTerminal();
-
 public:
-	VendorTerminal* clone();
+	VendorTerminal(BazaarManager* bazaarmanager, unsigned long long objid, float x, float z, float y);
 
 	int useObject(Player* player);
 
 protected:
+	VendorTerminal(DummyConstructorParameter* param);
+
+	virtual ~VendorTerminal();
+
 	friend class VendorTerminalHelper;
 };
 
@@ -43,6 +42,8 @@ public:
 };
 
 class VendorTerminalHelper : public DistributedObjectClassHelper, public Singleton<VendorTerminalHelper> {
+	static VendorTerminalHelper* staticInitializer;
+
 public:
 	VendorTerminalHelper();
 
@@ -50,7 +51,7 @@ public:
 
 	DistributedObject* instantiateObject();
 
-	DistributedObjectAdapter* createAdapter(DistributedObjectServant* obj);
+	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class SingletonWrapper<VendorTerminalHelper>;
 };

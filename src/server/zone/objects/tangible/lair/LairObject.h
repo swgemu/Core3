@@ -12,15 +12,13 @@ class TangibleObject;
 #include "../TangibleObject.h"
 
 class LairObject : public TangibleObject {
+public:
+	LairObject(unsigned int objCRC, unsigned long long oid);
+
 protected:
-	LairObject();
-	LairObject(DistributedObjectServant* obj);
-	LairObject(LairObject& ref);
+	LairObject(DummyConstructorParameter* param);
 
 	virtual ~LairObject();
-
-public:
-	LairObject* clone();
 
 	friend class LairObjectHelper;
 };
@@ -36,6 +34,8 @@ public:
 };
 
 class LairObjectHelper : public DistributedObjectClassHelper, public Singleton<LairObjectHelper> {
+	static LairObjectHelper* staticInitializer;
+
 public:
 	LairObjectHelper();
 
@@ -43,7 +43,7 @@ public:
 
 	DistributedObject* instantiateObject();
 
-	DistributedObjectAdapter* createAdapter(DistributedObjectServant* obj);
+	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class SingletonWrapper<LairObjectHelper>;
 };

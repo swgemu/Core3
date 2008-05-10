@@ -97,7 +97,7 @@ int TicketCollectorImplementation::useObject(Player* player) {
 
 	Inventory* inventory = player->getInventory();
 	
-	SuiListBoxImplementation* sui = new SuiListBoxImplementation(player, 0xAFAF);
+	SuiListBox* sui = new SuiListBox(player, 0xAFAF);
 	sui->setPromptTitle("@travel:ticket_collector_name");
 	sui->setPromptText("@travel:boarding_ticket_selection");
 	sui->setCancelButton(true);
@@ -120,14 +120,12 @@ int TicketCollectorImplementation::useObject(Player* player) {
 		}
 	}
 	
-	SuiListBox* box = (SuiListBox*)sui->deploy();
-	
 	if (sui->getMenuSize() == 0) {
-		box->finalize();
+		sui->finalize();
 		
 		player->sendSystemMessage("travel", "no_ticket");
 	} else {
-		player->addSuiBox(box);
+		player->addSuiBox(sui);
 		player->sendMessage(sui->generateMessage());
 	}
 	

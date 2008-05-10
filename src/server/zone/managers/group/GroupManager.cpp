@@ -166,8 +166,7 @@ GroupObject* GroupManager::createGroup(Player* leader) {
 	
 	ZoneServer* server = leader->getZone()->getZoneServer();
 	
-	GroupObjectImplementation* groupImpl = new GroupObjectImplementation(server->getNextCreatureID(), leader);
-	GroupObject* group = (GroupObject*) groupImpl->deploy();
+	GroupObject* group = new GroupObject(server->getNextCreatureID(), leader);
 	
 	group->setZone(leader->getZone());
 	group->sendTo(leader);

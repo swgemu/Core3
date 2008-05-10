@@ -32,15 +32,12 @@ class Zone;
 #include "../db/ServerDatabase.h"
 
 class ZoneServer : public DistributedObjectStub {
-protected:
-	ZoneServer();
-	ZoneServer(DistributedObjectServant* obj);
-	ZoneServer(ZoneServer& ref);
-
-	virtual ~ZoneServer();
-
 public:
-	ZoneServer* clone();
+	ZoneServer(int threadcount);
+
+	void start(int port, int conn);
+
+	void stop();
 
 	void startManagers();
 
@@ -74,6 +71,10 @@ public:
 
 	void increaseTotalDeletedPlayers();
 
+	void printInfo();
+
+	void fixScheduler();
+
 	ChatManager* getChatManager();
 
 	GuildManager* getGuildManager();
@@ -101,8 +102,11 @@ public:
 	unsigned long long getNextCreatureID(bool doLock = true);
 
 protected:
-	string _return_getServerName;
+	ZoneServer(DummyConstructorParameter* param);
 
+	virtual ~ZoneServer();
+
+	string _return_getServerName;
 
 	friend class ZoneServerHelper;
 };
@@ -114,6 +118,10 @@ public:
 	ZoneServerAdapter(ZoneServerImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	void start(int port, int conn);
+
+	void stop();
 
 	void startManagers();
 
@@ -147,6 +155,10 @@ public:
 
 	void increaseTotalDeletedPlayers();
 
+	void printInfo();
+
+	void fixScheduler();
+
 	ChatManager* getChatManager();
 
 	GuildManager* getGuildManager();
@@ -179,6 +191,8 @@ protected:
 };
 
 class ZoneServerHelper : public DistributedObjectClassHelper, public Singleton<ZoneServerHelper> {
+	static ZoneServerHelper* staticInitializer;
+
 public:
 	ZoneServerHelper();
 
@@ -186,7 +200,7 @@ public:
 
 	DistributedObject* instantiateObject();
 
-	DistributedObjectAdapter* createAdapter(DistributedObjectServant* obj);
+	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class SingletonWrapper<ZoneServerHelper>;
 };

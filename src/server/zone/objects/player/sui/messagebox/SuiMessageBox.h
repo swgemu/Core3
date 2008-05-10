@@ -16,19 +16,16 @@ class Player;
 #include "../SuiBox.h"
 
 class SuiMessageBox : public SuiBox {
-protected:
-	SuiMessageBox();
-	SuiMessageBox(DistributedObjectServant* obj);
-	SuiMessageBox(SuiMessageBox& ref);
-
-	virtual ~SuiMessageBox();
-
 public:
-	SuiMessageBox* clone();
+	SuiMessageBox(Player* player, unsigned int boxtype);
 
 	BaseMessage* generateMessage();
 
 protected:
+	SuiMessageBox(DummyConstructorParameter* param);
+
+	virtual ~SuiMessageBox();
+
 	friend class SuiMessageBoxHelper;
 };
 
@@ -45,6 +42,8 @@ public:
 };
 
 class SuiMessageBoxHelper : public DistributedObjectClassHelper, public Singleton<SuiMessageBoxHelper> {
+	static SuiMessageBoxHelper* staticInitializer;
+
 public:
 	SuiMessageBoxHelper();
 
@@ -52,7 +51,7 @@ public:
 
 	DistributedObject* instantiateObject();
 
-	DistributedObjectAdapter* createAdapter(DistributedObjectServant* obj);
+	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class SingletonWrapper<SuiMessageBoxHelper>;
 };
@@ -64,7 +63,7 @@ public:
 	SuiMessageBox* _this;
 
 public:
-	SuiMessageBoxServant(Player* play, unsigned int typeID, unsigned int boxtype);
+	SuiMessageBoxServant(Player* player, unsigned int typeID, unsigned int boxtype);
 	virtual ~SuiMessageBoxServant();
 
 	void _setStub(DistributedObjectStub* stub);

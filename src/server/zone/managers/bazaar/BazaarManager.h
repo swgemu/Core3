@@ -15,16 +15,13 @@ class RegionBazaar;
 
 class BazaarPlanetManager;
 
+class ZoneServer;
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
 class BazaarManager : public DistributedObjectStub {
-protected:
-	BazaarManager();
-	BazaarManager(DistributedObjectServant* obj);
-	BazaarManager(BazaarManager& ref);
-
-	virtual ~BazaarManager();
-
 public:
-	BazaarManager* clone();
+	BazaarManager(ZoneServer* server, ZoneProcessServerImplementation* processor);
 
 	void newBazaarRequest(unsigned long long bazaarID, Player* player, int planet);
 
@@ -45,6 +42,10 @@ public:
 	void getItemAttributes(Player* player, unsigned long long objectId);
 
 protected:
+	BazaarManager(DummyConstructorParameter* param);
+
+	virtual ~BazaarManager();
+
 	friend class BazaarManagerHelper;
 };
 
@@ -79,6 +80,8 @@ protected:
 };
 
 class BazaarManagerHelper : public DistributedObjectClassHelper, public Singleton<BazaarManagerHelper> {
+	static BazaarManagerHelper* staticInitializer;
+
 public:
 	BazaarManagerHelper();
 
@@ -86,7 +89,7 @@ public:
 
 	DistributedObject* instantiateObject();
 
-	DistributedObjectAdapter* createAdapter(DistributedObjectServant* obj);
+	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class SingletonWrapper<BazaarManagerHelper>;
 };

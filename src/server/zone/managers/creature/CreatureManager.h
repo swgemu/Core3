@@ -7,7 +7,11 @@
 
 #include "engine/orb/DistributedObjectBroker.h"
 
+#include "engine/util/Coordinate.h"
+
 class Zone;
+
+#include "server/zone/ZoneProcessServerImplementation.h"
 
 class Creature;
 
@@ -21,18 +25,9 @@ class RecruiterCreature;
 
 class ShuttleCreature;
 
-#include "engine/util/Coordinate.h"
-
 class CreatureManager : public DistributedObjectStub {
-protected:
-	CreatureManager();
-	CreatureManager(DistributedObjectServant* obj);
-	CreatureManager(CreatureManager& ref);
-
-	virtual ~CreatureManager();
-
 public:
-	CreatureManager* clone();
+	CreatureManager(Zone* zone, ZoneProcessServerImplementation* processor);
 
 	void init();
 
@@ -69,6 +64,10 @@ public:
 	Creature* getCreature(unsigned long long oid);
 
 protected:
+	CreatureManager(DummyConstructorParameter* param);
+
+	virtual ~CreatureManager();
+
 	friend class CreatureManagerHelper;
 };
 
@@ -129,6 +128,8 @@ protected:
 };
 
 class CreatureManagerHelper : public DistributedObjectClassHelper, public Singleton<CreatureManagerHelper> {
+	static CreatureManagerHelper* staticInitializer;
+
 public:
 	CreatureManagerHelper();
 
@@ -136,7 +137,7 @@ public:
 
 	DistributedObject* instantiateObject();
 
-	DistributedObjectAdapter* createAdapter(DistributedObjectServant* obj);
+	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class SingletonWrapper<CreatureManagerHelper>;
 };

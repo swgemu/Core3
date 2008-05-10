@@ -14,15 +14,13 @@ class CreatureObject;
 #include "Container.h"
 
 class Inventory : public Container {
+public:
+	Inventory(CreatureObject* creature);
+
 protected:
-	Inventory();
-	Inventory(DistributedObjectServant* obj);
-	Inventory(Inventory& ref);
+	Inventory(DummyConstructorParameter* param);
 
 	virtual ~Inventory();
-
-public:
-	Inventory* clone();
 
 	friend class InventoryHelper;
 };
@@ -38,6 +36,8 @@ public:
 };
 
 class InventoryHelper : public DistributedObjectClassHelper, public Singleton<InventoryHelper> {
+	static InventoryHelper* staticInitializer;
+
 public:
 	InventoryHelper();
 
@@ -45,7 +45,7 @@ public:
 
 	DistributedObject* instantiateObject();
 
-	DistributedObjectAdapter* createAdapter(DistributedObjectServant* obj);
+	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class SingletonWrapper<InventoryHelper>;
 };
