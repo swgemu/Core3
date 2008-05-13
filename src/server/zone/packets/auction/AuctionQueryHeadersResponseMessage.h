@@ -67,29 +67,32 @@ public:
 
 	void addItemToList(AuctionItem* ai) {
 
-		ai->setLocationPointer(-1);
+		//ai->setLocationPointer(-1);
+		int pointer = -1;
 		
 		for (int i = 0; i < locationList.size(); i++) {
-			if (locationList.get(i) == ai->getTerminalTitle())
+			if (!locationList.get(i).compare(ai->getTerminalTitle())) {
+				pointer = i;
 				ai->setLocationPointer(i);
+			}
 		}
 		
-		if (ai->getLocationPointer() == -1) {
+		if (pointer == -1) {
 			ai->setLocationPointer(locationList.size());
-			
 			locationList.add(locationList.size(), ai->getTerminalTitle());
 		}
 		
-		ai->setOwnerPointer(-1);
+		pointer = -1;
 		
 		for (int i = 0; i < locationList.size(); i++) {
-			if (locationList.get(i) == ai->getOwnerName())
+			if (!locationList.get(i).compare(ai->getOwnerName())){
+				pointer = i;
 				ai->setOwnerPointer(i);
+			}
 		}
 		
-		if (ai->getOwnerPointer() == -1) {
+		if (pointer == -1) {
 			ai->setOwnerPointer(locationList.size());
-			
 			locationList.add(locationList.size(), ai->getOwnerName());
 		}
 		
