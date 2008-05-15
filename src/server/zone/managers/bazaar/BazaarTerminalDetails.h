@@ -60,6 +60,8 @@ public:
 		bazaarRegion=region;
 		bazaarX=x;
 		bazaarZ=z;
+		
+		terminal = NULL;
 	}
 	
 	inline int getPlanet() {
@@ -90,7 +92,7 @@ public:
 class BazaarMap : public HashTable<uint64, BazaarTerminalDetails*>, public HashTableIterator<uint64, BazaarTerminalDetails*> {
 	
 	int hash(const uint64& key) {
-        return key;
+        return Long::hashCode(key);
 	}
 
 public:

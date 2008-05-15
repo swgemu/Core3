@@ -60,6 +60,8 @@ public:
 			object->wlock();
 			
 			if (object->isUndeploymentScheduled()) {
+				object->info("undeploying");
+				
 				object->clearUndeploymentEvent();
 				object->finalize();
 			}

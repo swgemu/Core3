@@ -42,13 +42,13 @@ void RegionBazaar::addItem(AuctionItem* item) {
 		((RegionBazaarImplementation*) _impl)->addItem(item);
 }
 
-bool RegionBazaar::removeItem(long long objectid) {
+bool RegionBazaar::removeItem(unsigned long long objectid) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 7);
-		method.addSignedLongParameter(objectid);
+		method.addUnsignedLongParameter(objectid);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -81,13 +81,13 @@ void RegionBazaar::setManager(BazaarPlanetManager* manager) {
 		((RegionBazaarImplementation*) _impl)->setManager(manager);
 }
 
-void RegionBazaar::newBazaarRequest(long long bazaarID, Player* player, int planet) {
+void RegionBazaar::newBazaarRequest(unsigned long long bazaarID, Player* player, int planet) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 10);
-		method.addSignedLongParameter(bazaarID);
+		method.addUnsignedLongParameter(bazaarID);
 		method.addObjectParameter(player);
 		method.addSignedIntParameter(planet);
 
@@ -96,14 +96,14 @@ void RegionBazaar::newBazaarRequest(long long bazaarID, Player* player, int plan
 		((RegionBazaarImplementation*) _impl)->newBazaarRequest(bazaarID, player, planet);
 }
 
-void RegionBazaar::getBazaarData(Player* player, long long objectid, int screen, int extent, int category, int count, int offset) {
+void RegionBazaar::getBazaarData(Player* player, unsigned long long objectid, int screen, int extent, int category, int count, int offset) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 11);
 		method.addObjectParameter(player);
-		method.addSignedLongParameter(objectid);
+		method.addUnsignedLongParameter(objectid);
 		method.addSignedIntParameter(screen);
 		method.addSignedIntParameter(extent);
 		method.addSignedIntParameter(category);
@@ -130,7 +130,7 @@ Packet* RegionBazaarAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		addItem((AuctionItem*) inv->getObjectParameter());
 		break;
 	case 7:
-		resp->insertBoolean(removeItem(inv->getSignedLongParameter()));
+		resp->insertBoolean(removeItem(inv->getUnsignedLongParameter()));
 		break;
 	case 8:
 		setRegion(inv->getAsciiParameter(_param0_setRegion__string_));
@@ -139,10 +139,10 @@ Packet* RegionBazaarAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		setManager((BazaarPlanetManager*) inv->getObjectParameter());
 		break;
 	case 10:
-		newBazaarRequest(inv->getSignedLongParameter(), (Player*) inv->getObjectParameter(), inv->getSignedIntParameter());
+		newBazaarRequest(inv->getUnsignedLongParameter(), (Player*) inv->getObjectParameter(), inv->getSignedIntParameter());
 		break;
 	case 11:
-		getBazaarData((Player*) inv->getObjectParameter(), inv->getSignedLongParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
+		getBazaarData((Player*) inv->getObjectParameter(), inv->getUnsignedLongParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
 		break;
 	default:
 		return NULL;
@@ -155,7 +155,7 @@ void RegionBazaarAdapter::addItem(AuctionItem* item) {
 	return ((RegionBazaarImplementation*) impl)->addItem(item);
 }
 
-bool RegionBazaarAdapter::removeItem(long long objectid) {
+bool RegionBazaarAdapter::removeItem(unsigned long long objectid) {
 	return ((RegionBazaarImplementation*) impl)->removeItem(objectid);
 }
 
@@ -167,11 +167,11 @@ void RegionBazaarAdapter::setManager(BazaarPlanetManager* manager) {
 	return ((RegionBazaarImplementation*) impl)->setManager(manager);
 }
 
-void RegionBazaarAdapter::newBazaarRequest(long long bazaarID, Player* player, int planet) {
+void RegionBazaarAdapter::newBazaarRequest(unsigned long long bazaarID, Player* player, int planet) {
 	return ((RegionBazaarImplementation*) impl)->newBazaarRequest(bazaarID, player, planet);
 }
 
-void RegionBazaarAdapter::getBazaarData(Player* player, long long objectid, int screen, int extent, int category, int count, int offset) {
+void RegionBazaarAdapter::getBazaarData(Player* player, unsigned long long objectid, int screen, int extent, int category, int count, int offset) {
 	return ((RegionBazaarImplementation*) impl)->getBazaarData(player, objectid, screen, extent, category, count, offset);
 }
 

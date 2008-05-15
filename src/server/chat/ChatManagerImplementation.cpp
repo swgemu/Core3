@@ -121,7 +121,7 @@ void ChatManagerImplementation::initiateRooms() {
 	mainRoom->addSubRoom(core3Room);
 	addRoom(core3Room);
 	
-	ChatRoom* groupRoom = new ChatRoom(server, core3Room, "group", getNextRoomID());
+	groupRoom = new ChatRoom(server, core3Room, "group", getNextRoomID());
 	groupRoom->deploy();
 	groupRoom->setPrivate();
 	core3Room->addSubRoom(groupRoom);
@@ -1379,22 +1379,24 @@ ChatRoom* ChatManagerImplementation::createGroupRoom(uint32 groupID, Player* cre
 	stringstream name;
 	name << groupID;
 	
-	ChatRoom* groupRoom = new ChatRoom(server, groupRoom, name.str(), getNextRoomID());
-	groupRoom->deploy();
+	ChatRoom* newGroupRoom = new ChatRoom(server, groupRoom, name.str(), getNextRoomID());
+	newGroupRoom->deploy();
 	
-	groupRoom->setPrivate();
-	groupRoom->addSubRoom(groupRoom);
-	addRoom(groupRoom);
+	newGroupRoom->setPrivate();
+	groupRoom->addSubRoom(newGroupRoom);
+	addRoom(newGroupRoom);
 	
-	ChatRoom* groupChatRoom = new ChatRoom(server, groupRoom, "GroupChat", getNextRoomID());
+	ChatRoom* groupChatRoom = new ChatRoom(server, newGroupRoom, "GroupChat", getNextRoomID());
 	groupChatRoom->deploy();
 	
 	groupChatRoom->setTitle(name.str());
 	groupChatRoom->setPrivate();
+	
 	groupChatRoom->sendTo(creator);
+	
 	groupChatRoom->addPlayer(creator, false);
 	
-	groupRoom->addSubRoom(groupChatRoom);
+	newGroupRoom->addSubRoom(groupChatRoom);
 	addRoom(groupChatRoom);
 	
 	return groupChatRoom;

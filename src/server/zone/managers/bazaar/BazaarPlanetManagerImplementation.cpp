@@ -91,14 +91,15 @@ void BazaarPlanetManagerImplementation::removeBazaarItem(uint64 objectid) {
 }
 
 void BazaarPlanetManagerImplementation::addBazaar(BazaarTerminalDetails* terminal) {
-	RegionBazaar* bazaar;
+	RegionBazaar* bazaar = NULL;
 
 	if (bazaars.contains(terminal->getRegion())) {
 		bazaar = bazaars.get(terminal->getRegion());
 	} else {
 		string region = terminal->getRegion();
 		
-		RegionBazaar* bazaar = new RegionBazaar();
+		bazaar = new RegionBazaar();
+		bazaar->deploy("RegionBazaar:" + region);
 		bazaar->setRegion(region);
 		bazaar->setManager(_this);
 		

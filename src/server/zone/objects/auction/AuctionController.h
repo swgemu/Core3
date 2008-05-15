@@ -92,7 +92,7 @@ public:
 		return item;
 	}
 	
-	void getBazaarData(Player* player, long long objectid, int screen, int extent, unsigned int category, int count, int offset) {
+	void getBazaarData(Player* player, uint64 objectid, int screen, int extent, unsigned int category, int count, int offset) {
 		lock();
 		
 		AuctionQueryHeadersResponseMessage* reply = new AuctionQueryHeadersResponseMessage(screen, count);

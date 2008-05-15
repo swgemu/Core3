@@ -65,9 +65,10 @@ class RegionBazaarImplementation : public AuctionController, public RegionBazaar
 	
 public:
 	RegionBazaarImplementation() : AuctionController(), RegionBazaarServant() {
+		bazaarRegion = "";
 	}
 	
-	void newBazaarRequest(long bazaarID, Player* player, int planet) {
+	void newBazaarRequest(uint64 bazaarID, Player* player, int planet) {
 		BazaarTerminalDetails* location;
 		
 		string planetString = Planet::getPlanetName(planet);
@@ -79,7 +80,7 @@ public:
 		player->sendMessage(msg2);
 	}
 
-	void setRegion(string& region) {
+	void setRegion(string region) {
 		bazaarRegion = region;
 	}
 	

@@ -23,15 +23,15 @@ public:
 
 	void addItem(AuctionItem* item);
 
-	bool removeItem(long long objectid);
+	bool removeItem(unsigned long long objectid);
 
 	void setRegion(string& region);
 
 	void setManager(BazaarPlanetManager* manager);
 
-	void newBazaarRequest(long long bazaarID, Player* player, int planet);
+	void newBazaarRequest(unsigned long long bazaarID, Player* player, int planet);
 
-	void getBazaarData(Player* player, long long objectid, int screen, int extent, int category, int count, int offset);
+	void getBazaarData(Player* player, unsigned long long objectid, int screen, int extent, int category, int count, int offset);
 
 protected:
 	RegionBazaar(DummyConstructorParameter* param);
@@ -51,15 +51,15 @@ public:
 
 	void addItem(AuctionItem* item);
 
-	bool removeItem(long long objectid);
+	bool removeItem(unsigned long long objectid);
 
 	void setRegion(string& region);
 
 	void setManager(BazaarPlanetManager* manager);
 
-	void newBazaarRequest(long long bazaarID, Player* player, int planet);
+	void newBazaarRequest(unsigned long long bazaarID, Player* player, int planet);
 
-	void getBazaarData(Player* player, long long objectid, int screen, int extent, int category, int count, int offset);
+	void getBazaarData(Player* player, unsigned long long objectid, int screen, int extent, int category, int count, int offset);
 
 protected:
 	string _param0_setRegion__string_;

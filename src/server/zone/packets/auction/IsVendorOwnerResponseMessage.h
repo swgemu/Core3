@@ -51,7 +51,7 @@ which carries forward this exception.
 
 class IsVendorOwnerResponseMessage : public BaseMessage {
 public:
-    IsVendorOwnerResponseMessage(bool vendor, long objectId, string& planet, string& header, int x, int z ) {
+    IsVendorOwnerResponseMessage(bool vendor, uint64 objectId, string& planet, string& header, int x, int z ) {
 		insertShort(3);
 		insertInt(0xCE04173E);
 		

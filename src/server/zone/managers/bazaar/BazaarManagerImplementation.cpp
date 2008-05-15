@@ -396,8 +396,7 @@ RegionBazaar* BazaarManagerImplementation::getBazaar(uint64 bazaarid) {
 
 	if ((location = bazaarTerminals->isBazaarTerminal(bazaarid)) != NULL) {
 		return location->getTerminal();
-	}
-	else
+	} else
 		return NULL;
 }
 
@@ -430,13 +429,22 @@ void BazaarManagerImplementation::checkAuctions() {
 				
 				try {
 					ServerDatabase::instance()->executeStatement(del1);
-					ServerDatabase::instance()->executeStatement(del2);
-					
+		
 				} catch (DatabaseException& e) {
 					cout << "Can't delete bazaar_item " << objectId << "\n";
 					
-					unlock();
-					return;
+					/*unlock();
+					return;*/
+				}
+				
+				try {
+					ServerDatabase::instance()->executeStatement(del2);
+					
+				} catch (DatabaseException& e) {
+					cout << "Can't delete character_item " << objectId << "\n";
+					
+					/*unlock();
+					return;*/
 				}
 			} else {
 				ChatManager* cman = processServer->getChatManager();

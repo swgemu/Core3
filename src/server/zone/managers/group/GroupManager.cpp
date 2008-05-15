@@ -125,9 +125,16 @@ void GroupManager::joinGroup(Player* player) {
 			group = createGroup(inviter);
 			
 		inviter->unlock();
+	} catch (Exception& e) {
+		e.printStackTrace();
+		inviter->unlock();
+		
+		return;
 	} catch (...) {
 		cout << "Exception in GroupManager::joinGroup(Player* player)\n";
 		inviter->unlock();
+		
+		return;
 	}
 	
 	try {
@@ -135,7 +142,9 @@ void GroupManager::joinGroup(Player* player) {
 		
 		if (group->getGroupSize() == 20) {
 			group->unlock();
+			
 			player->updateGroupInviterId(0);
+			
 			player->sendSystemMessage("group", "full");
 			return;
 		}
@@ -169,6 +178,7 @@ GroupObject* GroupManager::createGroup(Player* leader) {
 	GroupObject* group = new GroupObject(server->getNextCreatureID(), leader);
 	
 	group->setZone(leader->getZone());
+	
 	group->sendTo(leader);
 
 	leader->setGroup(group);

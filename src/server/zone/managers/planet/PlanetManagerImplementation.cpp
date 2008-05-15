@@ -284,8 +284,8 @@ void PlanetManagerImplementation::loadVendorTerminals() {
 void PlanetManagerImplementation::loadBuildings() {
 	int planetid = zone->getZoneID();
 	
-	if (planetid != 8)
-		return;
+	/*if (planetid != 8)
+		return;*/
 	
 	lock();
 	
@@ -296,6 +296,7 @@ void PlanetManagerImplementation::loadBuildings() {
 	
 	while (result->next()) {
 		uint64 oid = result->getUnsignedLong(1);
+		
 		uint64 parentId = result->getUnsignedLong(2);
 		
 		string file = result->getString(3);
@@ -322,11 +323,14 @@ void PlanetManagerImplementation::loadBuildings() {
 			cell->setObjectCRC(String::hashCode(file));
 			cell->initializePosition(x, z, y);
 			cell->setDirection(oX, oZ, oY, oW);
-			//cell->insertToZone(zone);
 			zone->registerObject(cell);
 			
 			buio->addCell(cell);
-			cellMap->put(oid, cell);
+			
+			if (cellMap->put(oid, cell) != NULL) {
+				cout << "Error CELL/BUILDING already exists\n";
+				raise(SIGSEGV);
+			}
 		}
 	}
 	
@@ -480,9 +484,11 @@ BuildingObject* PlanetManagerImplementation::loadBuilding(uint64 oid, int planet
 		buio->setDirection(oX, oZ, oY, oW);
 		
 		buio->insertToZone(zone);
-		//zone->registerObject(buio);
 
-		buildingMap->put(oid, buio);
+		if (buildingMap->put(oid, buio) != NULL) {
+			cout << "Error CELL/BUILDING already exists\n";
+			raise(SIGSEGV);
+		}
 	}
 	
 	delete result;

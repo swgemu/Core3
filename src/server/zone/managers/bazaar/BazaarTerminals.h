@@ -101,12 +101,8 @@ public:
 
 	}
 	
-	BazaarTerminalDetails* isBazaarTerminal(long objectid) {
-		if( bazaarLocations->containsKey(objectid) ) {
-			return bazaarLocations->get(objectid);
-		} else {
-			return NULL;
-		}
+	BazaarTerminalDetails* isBazaarTerminal(uint64 objectid) {
+		return bazaarLocations->get(objectid);
 	}
 	
 	BazaarMap* getBazaarMap() {

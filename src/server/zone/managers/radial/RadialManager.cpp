@@ -250,7 +250,9 @@ void RadialManager::sendRadialResponseForBazaar(uint64 objectId, Player* player)
 	Zone* zone = player->getZone();
 	
 	BazaarManager* bazaarManager = zone->getZoneServer()->getBazaarManager();
+	
 	RegionBazaar* bazaar = bazaarManager->getBazaar(objectId);
+	
 	if (bazaar != NULL)
 		bazaar->newBazaarRequest(objectId, player, player->getZoneID());
 	
