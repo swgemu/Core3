@@ -49,13 +49,14 @@ which carries forward this exception.
 
 class Weapon;
 class CreatureObject;
+class SceneObject;
 class Player;
 class Skill;
 
 class CommandQueueAction {
 	CreatureObject* creature;
 	Player* player;
-	CreatureObject* target;
+	SceneObject* target;
 	Skill* skill;
 	Weapon* weapon;
 
@@ -80,7 +81,7 @@ public:
 
 	void clear(float timer, uint32 tab1 = 0, uint32 tab2 = 0);
 
-	void setTarget(CreatureObject* targ) {
+	void setTarget(SceneObject* targ) {
 		target = targ;
 	}
 
@@ -96,7 +97,7 @@ public:
 		return creature;
 	}
 
-	inline CreatureObject* getTarget() {
+	inline SceneObject* getTarget() {
 		return target;
 	}
 

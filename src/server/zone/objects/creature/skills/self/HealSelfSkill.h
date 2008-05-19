@@ -91,7 +91,7 @@ public:
 		doAnimations(creature);
 	}
 	
-	bool isUsefull(CreatureObject* creature) {
+	bool isUseful(CreatureObject* creature) {
 		if (creature->isOnFullHealth() && !creature->hasStates())
 			return false;
 		return true;

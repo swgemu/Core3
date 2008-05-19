@@ -553,13 +553,13 @@ void CreatureObjectImplementation::setCombatState() {
 	}
 }
 
-void CreatureObjectImplementation::setDefender(CreatureObject* defender) {
+void CreatureObjectImplementation::setDefender(SceneObject* defender) {
 	if (defender == _this)
 		return;
 		
 	setCombatState();
 	
-	ManagedReference<CreatureObject> temp = NULL;
+	ManagedReference<SceneObject> temp = NULL;
 	
 	int i = 0;
 	for (; i < defenderList.size(); i++) {
@@ -593,7 +593,7 @@ void CreatureObjectImplementation::setDefender(CreatureObject* defender) {
 	broadcastMessage(dcreo6);
 }
 
-void CreatureObjectImplementation::addDefender(CreatureObject* defender) {
+void CreatureObjectImplementation::addDefender(SceneObject* defender) {
 	if (defender == _this)
 		return;
 		
@@ -636,7 +636,7 @@ void CreatureObjectImplementation::removeDefenders() {
 	info("removed all defenders");
 }
 
-void CreatureObjectImplementation::removeDefender(CreatureObject* defender) {
+void CreatureObjectImplementation::removeDefender(SceneObject* defender) {
 	if (zone == NULL)
 		return;
 	
@@ -670,7 +670,7 @@ void CreatureObjectImplementation::removeDefender(CreatureObject* defender) {
 	//info("finished removing defender");
 }
 
-bool CreatureObjectImplementation::hasDefender(CreatureObject* defender) {
+bool CreatureObjectImplementation::hasDefender(SceneObject* defender) {
 	for (int i = 0; i < defenderList.size(); ++i) {
 		if (defenderList.get(i) == defender)
 			return true;

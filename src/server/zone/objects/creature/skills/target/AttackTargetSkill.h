@@ -126,11 +126,13 @@ public:
 	}
 	
 
+	virtual int calculateDamage(CreatureObject* creature, SceneObject* target) = 0;
+	
 	virtual bool calculateCost(CreatureObject* creature) {
 		return creature->changeMindBar(-50);
 	}
 	
-	void doAnimations(CreatureObject* creature, CreatureObject* targetCreature, bool doAnimations = true) {
+	void doAnimations(CreatureObject* creature, SceneObject* target, bool doAnimations = true) {
 		/*
 		if (secondaryAnim.size() != 0)
 			player->playSecondaryAnim(secondaryAnim);

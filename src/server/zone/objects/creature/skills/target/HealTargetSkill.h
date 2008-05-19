@@ -100,9 +100,17 @@ public:
 			creature->doAnimation("heal_other");
 	}
 	
-	int doSkill(CreatureObject* creature, CreatureObject* targetCreature, bool doAnimation = true) {
-		calculateHeal(creature, targetCreature);
-		doAnimations(creature, targetCreature);
+	int doSkill(CreatureObject* creature, SceneObject* target, bool doAnimation = true) {
+		if(target->isNonPlayerCreature() || target->isPlayer()) {
+			CreatureObject* targetCreature = (CreatureObject*)target;
+			calculateHeal(creature, targetCreature);
+			doAnimations(creature, targetCreature);
+		} else if(target->isAttackableObject() && creature->isPlayer()) {
+			CreatureObject* targetCreature = creature;
+			calculateHeal(creature, targetCreature);
+			doAnimations(creature, targetCreature);
+		}
+		// TODO: Creatures need to be able to heal lairs
 		return 0;
 	}
 

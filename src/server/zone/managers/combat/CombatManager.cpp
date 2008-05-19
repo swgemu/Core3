@@ -77,7 +77,7 @@ float CombatManager::handleAction(CommandQueueAction* action) {
 
 float CombatManager::doTargetSkill(CommandQueueAction* action) {
 	CreatureObject* creature = action->getCreature();
-	CreatureObject* targetCreature = action->getTarget();
+	SceneObject* target = action->getTarget();
 
 	if (creature->isWatching())
 		creature->stopWatch(creature->getWatchID());
@@ -92,22 +92,22 @@ float CombatManager::doTargetSkill(CommandQueueAction* action) {
 			return 0.0f;
 
 		try {
-			if (creature != targetCreature)
-				targetCreature->wlock(creature);
+			if (creature != target)
+				target->wlock(creature);
 			
-				tskill->doSkill(creature, targetCreature);
+				tskill->doSkill(creature, target);
 			
-			if (creature != targetCreature)
-				targetCreature->unlock();
+			if (creature != target)
+				target->unlock();
 		} catch (...) {
-			if (creature != targetCreature)
-				targetCreature->unlock();
+			if (creature != target)
+				target->unlock();
 		}
 
 		return tskill->calculateSpeed(creature);
 	}
 
-	if (!checkSkill(creature, targetCreature, tskill))
+	if (!checkSkill(creature, target, tskill))
 		return 0.0f;
 	
 	uint32 animCRC = tskill->getAnimCRC();
@@ -117,13 +117,13 @@ float CombatManager::doTargetSkill(CommandQueueAction* action) {
 	
 	CombatAction* actionMessage = new CombatAction(creature, animCRC);
 	
-	if (!doAction(creature, targetCreature, tskill, actionMessage)) {
+	if (!doAction(creature, target, tskill, actionMessage)) {
 		delete actionMessage;
 		return 0.0f;
 	}
 
 	if (tskill->isArea())
-		handleAreaAction(creature, targetCreature, action, actionMessage);
+		handleAreaAction(creature, target, action, actionMessage);
 		
 	creature->broadcastMessage(actionMessage);
 
@@ -135,7 +135,7 @@ float CombatManager::doSelfSkill(CommandQueueAction* action) {
 
 	SelfSkill* selfskill = (SelfSkill*) action->getSkill();
 		
-	if (!selfskill->isUsefull(creature))
+	if (!selfskill->isUseful(creature))
 		return 0.0f;
 		
 	if (!selfskill->calculateCost(creature))
@@ -157,7 +157,7 @@ float CombatManager::doSelfSkill(CommandQueueAction* action) {
 }
 
 
-void CombatManager::handleAreaAction(CreatureObject* creature, CreatureObject* target, CommandQueueAction* action, CombatAction* actionMessage) {
+void CombatManager::handleAreaAction(CreatureObject* creature, SceneObject* target, CommandQueueAction* action, CombatAction* actionMessage) {
 	TargetSkill* skill = (TargetSkill*) action->getSkill();
 	
 	float CreatureVectorX = creature->getPositionX();
@@ -173,39 +173,39 @@ void CombatManager::handleAreaAction(CreatureObject* creature, CreatureObject* t
 		for (int i = 0; i < creature->inRangeObjectCount(); i++) {
 			SceneObject* object = (SceneObject*) (((SceneObjectImplementation*) creature->getInRangeObject(i))->_this);
 						
-			if (!object->isPlayer() && !object->isNonPlayerCreature())
+			if (!object->isPlayer() && !object->isNonPlayerCreature() && !object->isAttackableObject())
 				continue;
 			
-			CreatureObject* targetCreature = (CreatureObject*) object;
+			SceneObject* targetObject = (SceneObject*) object;
 		
-			if (targetCreature == creature || targetCreature == target)
+			if (targetObject == creature || targetObject == target)
 				continue;
 			
-			if (!targetCreature->isAttackableBy(creature))
+			if (!targetObject->isAttackableBy(creature))
 				continue;
 			
-			if (!creature->isPlayer() && !targetCreature->isPlayer())
+			if (!creature->isPlayer() && !targetObject->isPlayer())
 				continue;
 			
-			if (creature->getParent() != targetCreature->getParent())
+			if (creature->getParent() != targetObject->getParent())
 				continue;
 			
 			if (skill->isCone()) {
-				if (!(creature->isInRange(targetCreature, skill->getRange())))
+				if (!(creature->isInRange(targetObject, skill->getRange())))
 					continue;
 				
-				float angle = getConeAngle(targetCreature, CreatureVectorX, CreatureVectorY, DirectionVectorX, DirectionVectorY);
+				float angle = getConeAngle(targetObject, CreatureVectorX, CreatureVectorY, DirectionVectorX, DirectionVectorY);
 				float coneAngle = skill->getConeAngle() / 2;
 			
 				if (angle > coneAngle || angle < -coneAngle)
 					continue;
 				
-			} else if (!(creature->isInRange(targetCreature, skill->getAreaRange())))
+			} else if (!(creature->isInRange(targetObject, skill->getAreaRange())))
 				continue;
 			
 			zone->unlock();
 
-			doAction(creature, targetCreature, skill, NULL);
+			doAction(creature, targetObject, skill, NULL);
 
 			zone->lock();
 		}
@@ -218,12 +218,15 @@ void CombatManager::handleAreaAction(CreatureObject* creature, CreatureObject* t
 	}
 }
 
-bool CombatManager::doAction(CreatureObject* attacker, CreatureObject* targetCreature, TargetSkill* skill, CombatAction* actionMessage) {
+bool CombatManager::doAction(CreatureObject* attacker, SceneObject* target, TargetSkill* skill, CombatAction* actionMessage) {
 	try {
-		targetCreature->wlock(attacker);
+		target->wlock(attacker);
 		
-		if (targetCreature->isPlayer()) {
-			Player* targetPlayer = (Player*) targetCreature;
+		Creature* targetCreature = NULL;
+		
+		if (target->isPlayer()) {
+			targetCreature = (Creature*) target;
+			Player* targetPlayer = (Player*) target;
 	
 			if (attacker->isPlayer()) {
 				Player* player = (Player*) attacker;
@@ -239,12 +242,14 @@ bool CombatManager::doAction(CreatureObject* attacker, CreatureObject* targetCre
 			}
 		}
 		
-		if (targetCreature->isIncapacitated() || targetCreature->isDead()) {
-			targetCreature->unlock();
-			return false;
-		}
-		
-		if (targetCreature->isNonPlayerCreature()) {
+		if (target->isNonPlayerCreature()) {
+			targetCreature = (Creature*) target;
+			
+			if (targetCreature->isIncapacitated() || targetCreature->isDead()) {
+				target->unlock();
+				return false;
+			}
+
 			Creature* creature = (Creature*)targetCreature;
 			if (creature->isMount()) {
 				if (!skill->isAttackSkill()) {
@@ -254,66 +259,80 @@ bool CombatManager::doAction(CreatureObject* attacker, CreatureObject* targetCre
 										
 				return handleMountDamage(attacker, (MountCreature*)creature);
 			}
+		} else if (target->isAttackableObject()) {
+			AttackableObject* targetObject = (AttackableObject*) target;
+			if (targetObject->isDestroyed()) {
+				target->unlock();
+				return false;
+			}
 		}
 			
 		if (skill->isAttackSkill()) {
-			if (targetCreature->isPlayingMusic())
-				targetCreature->stopPlayingMusic();
-			else if (targetCreature->isDancing())
-				targetCreature->stopDancing();
+			if (targetCreature != NULL) {
+				if (targetCreature->isPlayingMusic())
+					targetCreature->stopPlayingMusic();
+				else if (targetCreature->isDancing())
+					targetCreature->stopDancing();
+			}
 			
 			if (skill->isArea()) 
-				attacker->addDefender(targetCreature);
+				attacker->addDefender(target);
 			else
-				attacker->setDefender(targetCreature);
+				attacker->setDefender(target);
 			
-			targetCreature->addDefender(attacker);
+			target->addDefender(attacker);
 			attacker->clearState(CreatureObjectImplementation::PEACE_STATE);
 		}
 		
-		int damage = skill->doSkill(attacker, targetCreature, false);
+		int damage = skill->doSkill(attacker, target, false);
 		
-		if (actionMessage != NULL) //disabled untill we figure out how to make it work for more defenders
+		if (actionMessage != NULL && targetCreature != NULL) //disabled untill we figure out how to make it work for more defenders
 			actionMessage->addDefender(targetCreature, damage > 0); 
 		
-		if (targetCreature->isIncapacitated()) {
-			attacker->sendSystemMessage("base_player", "prose_target_incap", targetCreature->getObjectID());
+		if (targetCreature != NULL) {
+			if (targetCreature->isIncapacitated()) {
+				attacker->sendSystemMessage("base_player", "prose_target_incap", targetCreature->getObjectID());
 			
-			if (!skill->isArea())
-				attacker->clearCombatState(true);
-		} else if (targetCreature->isDead()) {
-			attacker->sendSystemMessage("base_player", "prose_target_dead", targetCreature->getObjectID());
+				if (!skill->isArea())
+					attacker->clearCombatState(true);
+			} else if (targetCreature->isDead()) {
+				attacker->sendSystemMessage("base_player", "prose_target_dead", targetCreature->getObjectID());
 
-			if (!skill->isArea())
-				attacker->clearCombatState(true);
-		}
-					
-		if (!targetCreature->isIncapacitated() && skill->isAttackSkill()) {
-			AttackTargetSkill* askill = (AttackTargetSkill*) skill;
-			askill->calculateStates(attacker, targetCreature);
-			
-			if(targetCreature->isNonPlayerCreature()) {
- 	        	Creature* creature = (Creature*) targetCreature;
- 	        	if (!creature->isMount())
- 	        		creature->doAttack(attacker, damage);
+				if (!skill->isArea())
+					attacker->clearCombatState(true);
 			}
-					
-			targetCreature->activateRecovery();
-		}
+
+			if (!targetCreature->isIncapacitated() && skill->isAttackSkill()) {
+				AttackTargetSkill* askill = (AttackTargetSkill*) skill;
+				askill->calculateStates(attacker, targetCreature);
 			
-		targetCreature->unlock();
+				if(targetCreature->isNonPlayerCreature()) {
+					Creature* creature = (Creature*) targetCreature;
+					if (!creature->isMount())
+						creature->doAttack(attacker, damage);
+				}
+					
+				targetCreature->activateRecovery();
+			}
+		}
+		else {
+			AttackableObject* targetObject = (AttackableObject*) target;
+			targetObject->doDamage(damage);
+		}
+		
+		target->unlock();
 	} catch (Exception& e) {
 		cout << "Exception in doAction(CreatureObject* attacker, CreatureObject* targetCreature, TargetSkill* skill)\n" 
 			 << e.getMessage() << "\n"; 
 		e.printStackTrace();
 		
-		targetCreature->unlock();
+		target->unlock();
 		
 		return false;
 	} catch (...) {
 		cout << "exception in doAction(CreatureObject* attacker, CreatureObject* targetCreature, TargetSkill* skill)";
 		
-		targetCreature->unlock();
+		target->unlock();
 		
 		return false;
 	}
@@ -400,11 +419,11 @@ bool CombatManager::canAttack(Player* player, Player* targetPlayer) {
 	return true;
 }
 
-bool CombatManager::checkSkill(CreatureObject* creature, CreatureObject* targetCreature, TargetSkill* skill) {
-	if (targetCreature == NULL)
+bool CombatManager::checkSkill(CreatureObject* creature, SceneObject* target, TargetSkill* skill) {
+	if (target == NULL)
 		return false;
 		
-	if (!skill->isUsefull(creature, targetCreature))
+	if (!skill->isUseful(creature, target))
 		return false;
 			
 	if (!skill->calculateCost(creature))
@@ -413,9 +432,9 @@ bool CombatManager::checkSkill(CreatureObject* creature, CreatureObject* targetC
 	return true;	
 }
 
-float CombatManager::getConeAngle(CreatureObject* targetCreature, float CreatureVectorX, float CreatureVectorY, float DirectionVectorX, float DirectionVectorY) {
-	float Target1 = targetCreature->getPositionX() - CreatureVectorX;
-	float Target2 = targetCreature->getPositionY() - CreatureVectorY;
+float CombatManager::getConeAngle(SceneObject* target, float CreatureVectorX, float CreatureVectorY, float DirectionVectorX, float DirectionVectorY) {
+	float Target1 = target->getPositionX() - CreatureVectorX;
+	float Target2 = target->getPositionY() - CreatureVectorY;
 		
 	float angle = atan2(Target2, Target1) - atan2(DirectionVectorY, DirectionVectorX);
 	float degrees = angle * 180 / M_PI;

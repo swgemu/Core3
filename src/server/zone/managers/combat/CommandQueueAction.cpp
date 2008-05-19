@@ -87,29 +87,16 @@ bool CommandQueueAction::check() {
 			return false;
 		}
 	
-		target = (CreatureObject*)player->getTarget();
+		target = player->getTarget();
 		
 		if (target == NULL)
 			target = creature;
 		
-		if (!(target->isNonPlayerCreature() || target->isPlayer())) {
+		if (!(target->isNonPlayerCreature() || target->isPlayer() || target->isAttackableObject())) {
 			clearError(3);
 			return false;
 		}
-		
-		/*else {
-			string name = target->getCharacterName().c_str();
-			
-			if (name.compare("Oru ") == 0) {
-				clear(0);
-
-				player->sendSystemMessage("\"cant touch this..\"");
-				player->changeHealthBar(-10000);
-
-				return false;
-			}
-		}*/
-		
+				
 		return true;
 	}
 	
@@ -148,6 +135,7 @@ bool CommandQueueAction::validate() {
 					int range;
 					
 					if (weapon != NULL)
+						//TODO: This will break lunge as weapon range is less than lunge range
 						range = MIN((int)skill->getRange(), weapon->getMaxRange());
 					else
 						range = 10;
@@ -164,10 +152,14 @@ bool CommandQueueAction::validate() {
 						return false;
 					}
 
-					if (target->isIncapacitated() || target->isDead()) {
-						clearError(3);
-						target->unlock();
-						return false;
+					if (!target->isAttackableObject()) {
+						CreatureObject* targetCreature = (CreatureObject*) target;
+
+						if (targetCreature->isIncapacitated() || targetCreature->isDead()) {
+							clearError(3);
+							target->unlock();
+							return false;
+						}
 					}
 
 					if (target->isPlayer()) {
@@ -217,7 +209,13 @@ bool CommandQueueAction::validate() {
 }
 
 bool CommandQueueAction::checkHealSkill() {
-	CreatureObject* targetObject = target;
+
+	if (target->isAttackableObject()) {
+		clearError(3);
+		return false;
+	}
+	
+	CreatureObject* targetObject = (CreatureObject*) target;
 	if (targetObject != creature) {
 		try {
 			targetObject->wlock(creature);
@@ -241,7 +239,7 @@ bool CommandQueueAction::checkHealSkill() {
 				return false;
 			}
 
-			if (target->isDead()) {
+			if (targetObject->isDead()) {
 				clearError(3);
 				targetObject->unlock();
 				return false;

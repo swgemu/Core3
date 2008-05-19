@@ -1033,6 +1033,7 @@ void PlayerImplementation::notifyInsert(QuadTreeEntry* obj) {
 	Creature* creature;
 	TangibleObject* tangible;
 	StaticObject* statico;
+	AttackableObject* attacko;
 	
 	if (parent == scno)
 		return;
@@ -1073,6 +1074,11 @@ void PlayerImplementation::notifyInsert(QuadTreeEntry* obj) {
 	case SceneObjectImplementation::BUILDING:
 		BuildingObject* buio = (BuildingObject*) scno;
 		buio->sendTo(_this);
+		break;
+		
+	case SceneObjectImplementation::ATTACKABLE:
+		attacko = (AttackableObject*) scno;
+		attacko->sendTo(_this);
 		break;
 	}
 }
@@ -1710,7 +1716,7 @@ void PlayerImplementation::doPeace() {
 	//info("trying Peace action");
 	
 	for (int i = 0; i < defenderList.size(); ++i) {
-		ManagedReference<CreatureObject> defender = defenderList.get(i);
+		ManagedReference<SceneObject> defender = defenderList.get(i);
 				
 		try {
 			defender->wlock(_this);

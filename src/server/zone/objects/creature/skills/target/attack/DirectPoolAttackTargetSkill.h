@@ -63,8 +63,8 @@ public:
 		willpowerPoolAttackChance = 0;
 	}
 	
-	int doSkill(CreatureObject* creature, CreatureObject* targetCreature, bool doAnimation = true) {
-		int damage = calculateDamage(creature, targetCreature);
+	int doSkill(CreatureObject* creature, SceneObject* target, bool doAnimation = true) {
+		int damage = calculateDamage(creature, target);
 		
 		/*if (doAnimation) {
 			if (animCRC == 0 && creature->isPlayer()) {
@@ -77,16 +77,24 @@ public:
 				creature->doCombatAnimation(targetCreature, animCRC, (damage > 0));
 		}*/
 		
-		if (damage && targetCreature->hasAttackDelay())
-			targetCreature->clearAttackDelay();
+		if (target->isPlayer() || target->isNonPlayerCreature()) {
+			CreatureObject* targetCreature = (CreatureObject*) target;
+			if (damage && targetCreature->hasAttackDelay())
+				targetCreature->clearAttackDelay();
+		}
 		
-		doAnimations(creature, targetCreature);
-		
+		doAnimations(creature, target);
+
 		return damage;
 	}
 	
-	int calculateDamage(CreatureObject* creature, CreatureObject* targetCreature) {
+	int calculateDamage(CreatureObject* creature, SceneObject* target) {
 		Weapon* weapon = creature->getWeapon();
+		
+		CreatureObject* targetCreature = NULL;
+		if (target->isPlayer() || target->isNonPlayerCreature())
+			targetCreature = (CreatureObject*) target;
+
 		float minDamage = 0;
 		float maxDamage = 0;
 		float healthDamage = 0;
@@ -110,7 +118,8 @@ public:
 			minDamage = maxDamage / 2;
 		}
 		
-		checkMitigation(creature, targetCreature, minDamage, maxDamage);
+		if (targetCreature != NULL)
+			checkMitigation(creature, targetCreature, minDamage, maxDamage);
 
 		float damage = 0;
 		int average = 0;
@@ -119,127 +128,132 @@ public:
 		if (diff >= 0)
 			average = System::random(diff) + (int)minDamage;
 		
-		int rand = System::random(100);
+		if (targetCreature != NULL) {
+
+			int rand = System::random(100);
 		
-		if (getHitChance(creature, targetCreature) > rand) {
+			if (getHitChance(creature, targetCreature) > rand) {
 			
-			int secondaryDefense = checkSecondaryDefenses(creature, targetCreature);
+				int secondaryDefense = checkSecondaryDefenses(creature, targetCreature);
 			
-			if (secondaryDefense < 2) {
-				if (secondaryDefense == 1)
-					damage = damage / 2;
+				if (secondaryDefense < 2) {
+					if (secondaryDefense == 1)
+						damage = damage / 2;
 					
-				if (healthPoolAttackChance != 0 && rand < healthPoolAttackChance) {
-					healthDamage = damageRatio * average;
-					calculateDamageReduction(creature, targetCreature, healthDamage);
+					if (healthPoolAttackChance != 0 && rand < healthPoolAttackChance) {
+						healthDamage = damageRatio * average;
+						calculateDamageReduction(creature, targetCreature, healthDamage);
 	
-					damage += healthDamage;
-				}
+						damage += healthDamage;
+					}
 		
-				if (strengthPoolAttackChance != 0 && rand < strengthPoolAttackChance) {
+					if (strengthPoolAttackChance != 0 && rand < strengthPoolAttackChance) {
 			
-					float strengthDamage = damageRatio * average;
-					calculateDamageReduction(creature, targetCreature, strengthDamage);
+						float strengthDamage = damageRatio * average;
+						calculateDamageReduction(creature, targetCreature, strengthDamage);
 
-					applyStrengthPoolDamage(targetCreature, (int32) strengthDamage);
+						applyStrengthPoolDamage(targetCreature, (int32) strengthDamage);
 	
-					damage += strengthDamage;
-				}
+						damage += strengthDamage;
+					}
 		
-				if (constitutionPoolAttackChance != 0 && rand < constitutionPoolAttackChance) {
+					if (constitutionPoolAttackChance != 0 && rand < constitutionPoolAttackChance) {
 		
-					float constitutionDamage = damageRatio * average;
-					calculateDamageReduction(creature, targetCreature, constitutionDamage);
+						float constitutionDamage = damageRatio * average;
+						calculateDamageReduction(creature, targetCreature, constitutionDamage);
 
-					applyConstitutionPoolDamage(targetCreature, (int32) constitutionDamage);
+						applyConstitutionPoolDamage(targetCreature, (int32) constitutionDamage);
 	
-					damage += constitutionDamage;
-				}
+						damage += constitutionDamage;
+					}
 	
 		
-				if (actionPoolAttackChance != 0 && rand < actionPoolAttackChance) {
-					actionDamage = damageRatio * average;
-					calculateDamageReduction(creature, targetCreature, actionDamage);
+					if (actionPoolAttackChance != 0 && rand < actionPoolAttackChance) {
+						actionDamage = damageRatio * average;
+						calculateDamageReduction(creature, targetCreature, actionDamage);
 
-					damage += actionDamage;
-				}
+						damage += actionDamage;
+					}
 		
-				if (quicknessPoolAttackChance != 0 && rand < quicknessPoolAttackChance) {
+					if (quicknessPoolAttackChance != 0 && rand < quicknessPoolAttackChance) {
 		
-					float quicknessDamage = damageRatio * average;
-					calculateDamageReduction(creature, targetCreature, quicknessDamage);
+						float quicknessDamage = damageRatio * average;
+						calculateDamageReduction(creature, targetCreature, quicknessDamage);
 
-					applyQuicknessPoolDamage(targetCreature, (int32) quicknessDamage);
+						applyQuicknessPoolDamage(targetCreature, (int32) quicknessDamage);
 	
-					damage += quicknessDamage;
-				}
+						damage += quicknessDamage;
+					}
 		
-				if (staminaPoolAttackChance != 0 && rand < staminaPoolAttackChance) {
+					if (staminaPoolAttackChance != 0 && rand < staminaPoolAttackChance) {
 		
-					float staminaDamage = damageRatio * average;
-					calculateDamageReduction(creature, targetCreature, staminaDamage);
+						float staminaDamage = damageRatio * average;
+						calculateDamageReduction(creature, targetCreature, staminaDamage);
 
-					applyStaminaPoolDamage(targetCreature, (int32)staminaDamage);
+						applyStaminaPoolDamage(targetCreature, (int32)staminaDamage);
 	
-					damage += staminaDamage;
-				}
+						damage += staminaDamage;
+					}
 		
-				if (mindPoolAttackChance != 0 && rand < mindPoolAttackChance) {
-					mindDamage = damageRatio * average;
-					calculateDamageReduction(creature, targetCreature, mindDamage);
+					if (mindPoolAttackChance != 0 && rand < mindPoolAttackChance) {
+						mindDamage = damageRatio * average;
+						calculateDamageReduction(creature, targetCreature, mindDamage);
 
-					damage += mindDamage;
-				}
+						damage += mindDamage;
+					}
 		
-				if (focusPoolAttackChance != 0 && rand < focusPoolAttackChance) {
+					if (focusPoolAttackChance != 0 && rand < focusPoolAttackChance) {
 		
-					float focusDamage = damageRatio * average;
-					calculateDamageReduction(creature, targetCreature, focusDamage);
+						float focusDamage = damageRatio * average;
+						calculateDamageReduction(creature, targetCreature, focusDamage);
 
-					applyFocusPoolDamage(targetCreature, (int32) focusDamage);
+						applyFocusPoolDamage(targetCreature, (int32) focusDamage);
 	
-					damage += focusDamage;
-				}
+						damage += focusDamage;
+					}
 		
-				if (willpowerPoolAttackChance != 0 && rand < willpowerPoolAttackChance) {
+					if (willpowerPoolAttackChance != 0 && rand < willpowerPoolAttackChance) {
 		
-					float willpowerDamage = damageRatio * average;
-					calculateDamageReduction(creature, targetCreature, willpowerDamage);
+						float willpowerDamage = damageRatio * average;
+						calculateDamageReduction(creature, targetCreature, willpowerDamage);
 
-					applyWillpowerPoolDamage(targetCreature, (int32) willpowerDamage);
+						applyWillpowerPoolDamage(targetCreature, (int32) willpowerDamage);
 	
-					damage += willpowerDamage;
+						damage += willpowerDamage;
+					}
+				} else
+					return 0;				
+
+				if (damage == 0) {
+					doMiss(creature, targetCreature, (int32) damage);
+					return 0;
 				}
-			} else
-				return 0;				
 
-			if (damage == 0) {
-				doMiss(creature, targetCreature, (int32) damage);
-				return 0;
-			}
-
-			if (hasCbtSpamHit()) 
-				creature->sendCombatSpam(targetCreature, NULL, (int32)damage, getCbtSpamHit());
+				if (hasCbtSpamHit()) 
+					creature->sendCombatSpam(targetCreature, NULL, (int32)damage, getCbtSpamHit());
 			
-			if (healthDamage > 0)
-				reduction = applyHealthPoolDamage(creature, targetCreature, (int32) healthDamage, System::random(5) + 1);
-			if (actionDamage > 0)
-				reduction = applyActionPoolDamage(creature, targetCreature, (int32) actionDamage, System::random(1) + 7);
-			if (mindDamage > 0)
-				reduction = applyMindPoolDamage(creature, targetCreature, (int32) mindDamage);
+				if (healthDamage > 0)
+					reduction = applyHealthPoolDamage(creature, targetCreature, (int32) healthDamage, System::random(5) + 1);
+				if (actionDamage > 0)
+					reduction = applyActionPoolDamage(creature, targetCreature, (int32) actionDamage, System::random(1) + 7);
+				if (mindDamage > 0)
+					reduction = applyMindPoolDamage(creature, targetCreature, (int32) mindDamage);
 			
-			if (weapon != NULL) {
-				doDotWeaponAttack(creature, targetCreature, 0);
+				if (weapon != NULL) {
+					doDotWeaponAttack(creature, targetCreature, 0);
 				
-				if (weapon->decreasePowerupUses())
+					if (weapon->decreasePowerupUses())
 						weapon->setUpdated(true);
 					else if (weapon->hasPowerup())
 						weapon->removePowerup((Player*)creature, true);
-			}
+				}
 			
+			} else {
+				doMiss(creature, targetCreature, (int32) damage);
+				return 0;
+			}
 		} else {
-			doMiss(creature, targetCreature, (int32) damage);
-			return 0;
+			return (int32)damageRatio * average;
 		}
 
 		return (int32)damage - reduction;

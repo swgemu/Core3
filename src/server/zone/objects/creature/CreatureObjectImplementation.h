@@ -271,7 +271,7 @@ protected:
 	
 	DizzyFallDownEvent* dizzyFallDownEvent;
 	
-	Vector<ManagedReference<CreatureObject> > defenderList;
+	Vector<ManagedReference<SceneObject> > defenderList;
 	
 	VectorMap<CreatureObject*, uint32> damageMap;
 	
@@ -400,11 +400,11 @@ public:
 
 	void setPosture(uint8 state, bool overrideDizzy = false, bool objectInteraction = false, float objX = 0, float objY = 0, float objZ = 0);
 	
-	void setDefender(CreatureObject* defender);
-	void addDefender(CreatureObject* defender);
-	void removeDefender(CreatureObject* defender);
+	void setDefender(SceneObject* defender);
+	void addDefender(SceneObject* defender);
+	void removeDefender(SceneObject* defender);
 	void removeDefenders();
-	bool hasDefender(CreatureObject* defender);
+	bool hasDefender(SceneObject* defender);
 	
 	void setCombatState();
 	void clearCombatState(bool removeDefenders = true);
@@ -1233,7 +1233,7 @@ public:
 		return defenderList.size();
 	}
 	
-	inline CreatureObject* getDefender(int idx) {
+	inline SceneObject* getDefender(int idx) {
 		return defenderList.get(idx);
 	}
 

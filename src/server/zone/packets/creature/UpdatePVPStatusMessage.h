@@ -48,6 +48,7 @@ which carries forward this exception.
 #include "engine/engine.h"
 
 #include "../../objects/tangible/TangibleObject.h"
+#include "../../objects/attackable/AttackableObject.h"
 
 #include "../../objects/creature/CreatureObject.h"
 #include "../../objects/creature/CreatureObjectImplementation.h"
@@ -73,6 +74,15 @@ public:
 	}
 	
 	UpdatePVPStatusMessage(TangibleObject* tano, uint32 pvpBitmask) : BaseMessage() {
+		insertShort(0x04);
+		insertInt(0x08A1C126);  // CRC
+		insertInt(pvpBitmask);
+		insertInt(0);
+
+		insertLong(tano->getObjectID());
+	}
+	
+	UpdatePVPStatusMessage(AttackableObject* tano, uint32 pvpBitmask) : BaseMessage() {
 		insertShort(0x04);
 		insertInt(0x08A1C126);  // CRC
 		insertInt(pvpBitmask);

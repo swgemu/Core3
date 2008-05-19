@@ -63,8 +63,8 @@ public:
 		willpowerPoolAttackChance = 0;
 	}
 	
-	int doSkill(CreatureObject* creature, CreatureObject* targetCreature, bool doAnimation = true) {
-		int damage = calculateDamage(creature, targetCreature);
+	int doSkill(CreatureObject* creature, SceneObject* target, bool doAnimation = true) {
+		int damage = calculateDamage(creature, target);
 		
 		/*if (doAnimation) {
 			if (animCRC == 0 && creature->isPlayer()) {
@@ -76,16 +76,24 @@ public:
 			} else
 				creature->doCombatAnimation(targetCreature, animCRC, (damage > 0));
 		}*/
-		if (damage && targetCreature->hasAttackDelay())
-			targetCreature->clearAttackDelay();
+		if (target->isPlayer() || target->isNonPlayerCreature()) {
+			CreatureObject* targetCreature = (CreatureObject*) target;
+			if (damage && targetCreature->hasAttackDelay())
+				targetCreature->clearAttackDelay();
+		}
 		
-		doAnimations(creature, targetCreature);
+		doAnimations(creature, target);
 		
 		return damage;
 	}
 	
-	virtual int calculateDamage(CreatureObject* creature, CreatureObject* targetCreature) {
+	virtual int calculateDamage(CreatureObject* creature, SceneObject* target) {
 		Weapon* weapon = creature->getWeapon();
+		
+		CreatureObject* targetCreature = NULL;
+		if (target->isPlayer() || target->isNonPlayerCreature())
+			targetCreature = (CreatureObject*) target;
+
 		float minDamage = 0;
 		float maxDamage = 0;
 		int reduction;
@@ -104,60 +112,68 @@ public:
 			maxDamage = (float)creature->getSkillMod("unarmed_damage");
 			if (maxDamage < 25)
 				maxDamage = 25;
-			minDamage = maxDamage / 2;
-		}
+				minDamage = maxDamage / 2;
+			}
 		
-		checkMitigation(creature, targetCreature, minDamage, maxDamage);
+		if (targetCreature != NULL)
+			checkMitigation(creature, targetCreature, minDamage, maxDamage);
+		
+		float damage = 0;
 		int average = 0;
 		
 		int diff = (int)maxDamage - (int)minDamage;
 		if (diff >= 0)
 			average = System::random(diff) + (int)minDamage;
 		
-		float damage = damageRatio * average;
+		if (targetCreature != NULL) {
 		
-		calculateDamageReduction(creature, targetCreature, damage);
+			damage = damageRatio * average;
+		
+			calculateDamageReduction(creature, targetCreature, damage);
 	
-		int pool = System::random(100);
+			int pool = System::random(100);
 		
-		if (getHitChance(creature, targetCreature) > System::random(100)) {
-			int secondaryDefense = checkSecondaryDefenses(creature, targetCreature);
+			if (getHitChance(creature, targetCreature) > System::random(100)) {
+				int secondaryDefense = checkSecondaryDefenses(creature, targetCreature);
 			
-			if (secondaryDefense < 2) {
-				if (secondaryDefense == 1)
-					damage = damage / 2;
+				if (secondaryDefense < 2) {
+					if (secondaryDefense == 1)
+						damage = damage / 2;
 				
-				if (pool < healthPoolAttackChance)
-					bodyPart = System::random(5)+1;
-				else if (pool < healthPoolAttackChance + actionPoolAttackChance)
-					bodyPart = System::random(1)+7;
-				else if (pool < 100)
-					bodyPart = 9;
+					if (pool < healthPoolAttackChance)
+						bodyPart = System::random(5)+1;
+					else if (pool < healthPoolAttackChance + actionPoolAttackChance)
+						bodyPart = System::random(1)+7;
+					else if (pool < 100)
+						bodyPart = 9;
 
-			} else
+				} else
+					return 0;
+			} else {
+				doMiss(creature, targetCreature, (int32) damage);
 				return 0;
-		} else {
-			doMiss(creature, targetCreature, (int32) damage);
-			return 0;
-		}
+			}
 		
-		if (hasCbtSpamHit())
-			creature->sendCombatSpam(targetCreature, NULL, (int32) damage, getCbtSpamHit());
+			if (hasCbtSpamHit())
+				creature->sendCombatSpam(targetCreature, NULL, (int32) damage, getCbtSpamHit());
 		
-		if (bodyPart < 7)
-			reduction = applyHealthPoolDamage(creature, targetCreature, (int32) damage, bodyPart);
-		else if (bodyPart < 9)
-			reduction = applyActionPoolDamage(creature, targetCreature, (int32) damage, bodyPart);
-		else if (bodyPart < 10)
-			reduction = applyMindPoolDamage(creature, targetCreature, (int32) damage);
+			if (bodyPart < 7)
+				reduction = applyHealthPoolDamage(creature, targetCreature, (int32) damage, bodyPart);
+			else if (bodyPart < 9)
+				reduction = applyActionPoolDamage(creature, targetCreature, (int32) damage, bodyPart);
+			else if (bodyPart < 10)
+				reduction = applyMindPoolDamage(creature, targetCreature, (int32) damage);
 		
-		if (weapon != NULL) {
-			doDotWeaponAttack(creature, targetCreature, 0);
+			if (weapon != NULL) {
+				doDotWeaponAttack(creature, targetCreature, 0);
 			
-			if (weapon->decreasePowerupUses())
+				if (weapon->decreasePowerupUses())
 					weapon->setUpdated(true);
 				else if (weapon->hasPowerup())
 					weapon->removePowerup((Player*)creature, true);
+			}
+		} else {
+			return (int32)damageRatio * average;
 		}
 		
 		return (int32)(damage - reduction);

@@ -70,7 +70,7 @@ public:
 	virtual void doAnimations(CreatureObject* creature) {
 	}
 	
-	virtual bool isUsefull(CreatureObject* creature) {
+	virtual bool isUseful(CreatureObject* creature) {
 		return true;
 	}
 	

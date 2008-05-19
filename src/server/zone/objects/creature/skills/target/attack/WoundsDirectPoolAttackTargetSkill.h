@@ -52,9 +52,9 @@ public:
 	WoundsDirectPoolAttackTargetSkill(const string& name, const string& anim, ZoneProcessServerImplementation* serv) : DirectPoolAttackTargetSkill(name, anim, serv) {
 	}
 	
-	int doSkill(CreatureObject* creature, CreatureObject* targetCreature, bool doAnimation = true) {
+	int doSkill(CreatureObject* creature, SceneObject* target, bool doAnimation = true) {
 		
-		int damage = calculateDamage(creature, targetCreature);
+		int damage = calculateDamage(creature, target);
 		
 		/*if (doAnimation) {
 			if (animCRC == 0 && creature->isPlayer()) {
@@ -66,18 +66,23 @@ public:
 			} else
 				creature->doCombatAnimation(targetCreature, animCRC, (damage > 0));
 		}*/
-		if (damage && targetCreature->hasAttackDelay())
-			targetCreature->clearAttackDelay();
-		
-		doAnimations(creature, targetCreature);
+		if (target->isPlayer() || target->isNonPlayerCreature()) {
+			CreatureObject* targetCreature = (CreatureObject*) target;
+			if (damage && targetCreature->hasAttackDelay())
+				targetCreature->clearAttackDelay();
+		}
+				
+		doAnimations(creature, target);
 		
 		return damage;
 	}
 	
-	int calculateDamage(CreatureObject* creature, CreatureObject* targetCreature) {
-		
+	int calculateDamage(CreatureObject* creature, SceneObject* target) {
 		Weapon* weapon = creature->getWeapon();
-		Weapon* targetWeapon = targetCreature->getWeapon();
+
+		CreatureObject* targetCreature = NULL;
+		if (target->isPlayer() || target->isNonPlayerCreature())
+			targetCreature = (CreatureObject*) target;
 		
 		float minDamage = 0;
 		float maxDamage = 0;
@@ -101,8 +106,9 @@ public:
 			minDamage = maxDamage / 2;
 		}
 		
-		checkMitigation(creature, targetCreature, minDamage, maxDamage);
-					
+		if (targetCreature != NULL)
+			checkMitigation(creature, targetCreature, minDamage, maxDamage);
+
 		int average = 0;
 		
 		int diff = (int)maxDamage - (int)minDamage;
@@ -111,9 +117,11 @@ public:
 		
 		float damage = damageRatio * average;
 		
-		calculateDamageReduction(creature, targetCreature, damage);
+		if (targetCreature != NULL) {
+
+			calculateDamageReduction(creature, targetCreature, damage);
 	
-		int pool = System::random(100);
+			int pool = System::random(100);
 		
 			if (getHitChance(creature, targetCreature) > System::random(100)) {
 				
@@ -128,28 +136,30 @@ public:
 						bodyPart = System::random(1)+7;
 					else if (pool < mindPoolAttackChance)
 						bodyPart = 9;
-					
-				} else
-					return 0;
+					} else
+						return 0;
+			} else {
+				doMiss(creature, targetCreature, (int32) damage);
+				return 0;
+			}
+
+			if (hasCbtSpamHit()) 
+				creature->sendCombatSpam(targetCreature, NULL, (int32)damage, getCbtSpamHit());
+		
+			if (bodyPart < 7) {
+				reduction = applyHealthPoolDamage(creature, targetCreature, (int32) damage, bodyPart);
+				applyHealthPoolWoundsDamage(targetCreature, (int32) damage / 25);
+			} else if (bodyPart  < 9) {
+				reduction = applyActionPoolDamage(creature, targetCreature, (int32) damage, bodyPart);
+				applyActionPoolWoundsDamage(targetCreature, (int32) damage / 25);
+			} else {
+				reduction = applyMindPoolDamage(creature, targetCreature, (int32) damage);
+				applyMindPoolWoundsDamage(targetCreature, (int32) damage / 25);
+			}
 		} else {
-			doMiss(creature, targetCreature, (int32) damage);
-			return 0;
+			return (int32)damage;
 		}
 
-		if (hasCbtSpamHit()) 
-			creature->sendCombatSpam(targetCreature, NULL, (int32)damage, getCbtSpamHit());
-		
-		if (bodyPart < 7) {
-			reduction = applyHealthPoolDamage(creature, targetCreature, (int32) damage, bodyPart);
-			applyHealthPoolWoundsDamage(targetCreature, (int32) damage / 25);
-		} else if (bodyPart  < 9) {
-			reduction = applyActionPoolDamage(creature, targetCreature, (int32) damage, bodyPart);
-			applyActionPoolWoundsDamage(targetCreature, (int32) damage / 25);
-		} else {
-			reduction = applyMindPoolDamage(creature, targetCreature, (int32) damage);
-			applyMindPoolWoundsDamage(targetCreature, (int32) damage / 25);
-		}
-		
 		return (int32)damage - reduction;
 	}
 	

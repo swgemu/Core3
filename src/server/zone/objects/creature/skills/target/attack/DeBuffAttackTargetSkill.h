@@ -90,8 +90,8 @@ public:
 		
 	}
 	
-	int doSkill(CreatureObject* creature, CreatureObject* targetCreature, bool doAnimation = true) {
-		int damage = calculateDamage(creature, targetCreature);
+	int doSkill(CreatureObject* creature, SceneObject* target, bool doAnimation = true) {
+		int damage = calculateDamage(creature, target);
 		
 		/*if (doAnimation) {
 			if (animCRC == 0 && creature->isPlayer()) {
@@ -104,12 +104,16 @@ public:
 				creature->doCombatAnimation(targetCreature, animCRC, (damage > 0));
 		}*/
 		
-		doAnimations(creature, targetCreature);
+		if(damage == 0)
+			return 0;
+		
+		doAnimations(creature, target);
 		
 		return damage;
 	}
 	
-	void doAnimations(CreatureObject* creature, CreatureObject* targetCreature) {
+	void doAnimations(CreatureObject* creature, SceneObject* target) {
+		CreatureObject* targetCreature = (CreatureObject*) target;
 		if (FlyText.size() != 0)
 			targetCreature->showFlyText("combat_effects", FlyText , 0, 255, 0);
 			
@@ -121,7 +125,7 @@ public:
 		return speed;
 	}
 
-	int calculateDamage(CreatureObject* creature, CreatureObject* targetCreature) {
+	int calculateDamage(CreatureObject* creature, SceneObject* target) {
 		/* 
 		player->AddMeleeAccuracy(MeleeAccuracyPenalty, time);
 		player->AddMeleeDamage(MeleeDamagePenalty, time);
@@ -133,6 +137,12 @@ public:
 	 	player->AddSpeed(SpeedPenalty, time);
 	    
 		*/
+		CreatureObject* targetCreature = NULL;
+		if (target->isPlayer() || target->isNonPlayerCreature())
+			targetCreature = (CreatureObject*) target;
+		else
+			return 0;
+
 		if (nextAttackDelay > 0) {
 			if (targetCreature->setNextAttackDelay((int)nextAttackDelay*1000)) {
 				stringstream msg;

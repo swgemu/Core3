@@ -76,7 +76,7 @@ public:
 
 	}
 
-	virtual bool isUsefull(CreatureObject* creature) {
+	virtual bool isUseful(CreatureObject* creature) {
 		return true;
 	}
 	

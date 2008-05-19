@@ -57,6 +57,7 @@ bin_PROGRAMS = core3
 core3_IDLS =	server/zone/Zone.cpp \
 		server/zone/ZoneClient.cpp \
 		server/zone/ZoneServer.cpp \
+		server/zone/objects/attackable/AttackableObject.cpp \
 		server/zone/objects/auction/AuctionItem.cpp \
 		server/zone/objects/scene/SceneObject.cpp \
 		server/zone/objects/creature/CreatureObject.cpp \
@@ -166,6 +167,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/ZonePacketHandler.cpp \
 		server/zone/ZoneProcessServerImplementation.cpp \
 		server/zone/ZoneMessageProcessorThread.cpp \
+		server/zone/objects/attackable/AttackableObjectImplementation.cpp \
 		server/zone/objects/building/BuildingObjectImplementation.cpp \
 		server/zone/objects/building/cell/CellObjectImplementation.cpp \
 		server/zone/objects/guild/GuildImplementation.cpp \

@@ -166,7 +166,7 @@ public:
 			creature->clearState(state);
 	}
 	
-	bool isUsefull(CreatureObject* creature) {
+	bool isUseful(CreatureObject* creature) {
 		if (creature->hasQueuedState(nameCRC))
 			return false;
 		else

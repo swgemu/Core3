@@ -51,6 +51,7 @@ class SceneObject;
 class ZoneServer;
 class Player;
 class CreatureObject;
+class AttackableObject;
 class MountCreature;
 class Weapon;
 
@@ -64,14 +65,14 @@ class CombatManager {
 	ZoneProcessServerImplementation* server;
 	
 private:
-	bool doAction(CreatureObject* attacker, CreatureObject* targetCreature, TargetSkill* skill, CombatAction* actionMessage);
+	bool doAction(CreatureObject* attacker, SceneObject* target, TargetSkill* skill, CombatAction* actionMessage);
 	uint32 getDefaultAttackAnimation(CreatureObject* creature);
 	
 public:
 	CombatManager(ZoneProcessServerImplementation* srv);
 
 	float handleAction(CommandQueueAction* action);
-	void handleAreaAction(CreatureObject* creature, CreatureObject* target, CommandQueueAction* action, CombatAction* actionMessage);
+	void handleAreaAction(CreatureObject* creature, SceneObject* target, CommandQueueAction* action, CombatAction* actionMessage);
 	
 	float doTargetSkill(CommandQueueAction* action);
 	float doSelfSkill(CommandQueueAction* action);
@@ -80,8 +81,8 @@ public:
 		
 	// misc methods
 	bool canAttack(Player* player, Player* targetPlayer);
-	float getConeAngle(CreatureObject* targetCreature, float CreatureVectorX, float CreatureVectorY, float DirectionVectorX, float DirectionVectorY);
-	bool checkSkill(CreatureObject* creature, CreatureObject* targetCreature, TargetSkill* skill);
+	float getConeAngle(SceneObject* targetCreature, float CreatureVectorX, float CreatureVectorY, float DirectionVectorX, float DirectionVectorY);
+	bool checkSkill(CreatureObject* creature, SceneObject* target, TargetSkill* skill);
 	
 	void requestDuel(Player* player, uint64 targetID);
 	void requestDuel(Player* player, Player* targetPlayer);

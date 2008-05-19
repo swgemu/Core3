@@ -113,7 +113,6 @@ interface CreatureObject implements SceneObject {
 	boolean isMounted();
 	boolean isRidingCreature();
 	boolean isMeditating();
-	boolean isPeaced();
 	
 	void updateKnockdownRecovery();
 	
@@ -128,15 +127,6 @@ interface CreatureObject implements SceneObject {
 	boolean checkPostureDownRecovery();
 	
 	boolean checkPostureUpRecovery();
-	
-	void setCombatState();
-	void clearCombatState(boolean removedefenders = true);
-	
-	void setDefender(CreatureObject defender);
-	void addDefender(CreatureObject defender);
-	void removeDefenders();
-	void removeDefender(CreatureObject defender);
-	boolean hasDefender(CreatureObject defender);
 
 	boolean setState(unsigned long state);
 	boolean clearState(unsigned long state);
@@ -279,9 +269,6 @@ interface CreatureObject implements SceneObject {
 	
 	unsigned int getLastMovementUpdateStamp();
 	int getIgnoreMovementTests();
-	
-	unsigned int getDefenderListSize();
-	CreatureObject getDefender(int idx);
 	
 	unsigned int getLevel();
 	

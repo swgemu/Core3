@@ -56,6 +56,8 @@ import "../../ZoneClient";
 
 import "../player/Player";
 
+import "../creature/CreatureObject";
+
 interface SceneObject implements ManagedObject {
 	native boolean destroy();
 
@@ -181,6 +183,8 @@ interface SceneObject implements ManagedObject {
 	
 	boolean isShip();
 	
+	boolean isAttackableObject();
+	
 	Zone getZone();
 	
 	int getZoneID();
@@ -195,4 +199,20 @@ interface SceneObject implements ManagedObject {
 	
 	boolean doKeepObject();
 	
+	// Virtual functions for combat
+	void setCombatState();
+	void clearCombatState(boolean removedefenders = true);
+	
+	void setDefender(SceneObject defender);
+	void addDefender(SceneObject defender);
+
+	void removeDefenders();
+	void removeDefender(SceneObject defender);
+
+	boolean hasDefender(SceneObject defender);
+	SceneObject getDefender(int idx);
+	unsigned int getDefenderListSize();
+	
+	boolean isPeaced();
+	boolean isAttackableBy(CreatureObject creature);
 }

@@ -42,87 +42,35 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef TARGETRSKILL_H_
-#define TARGETRSKILL_H_
+import "../scene/SceneObject";
 
-#include "../CreatureObject.h"
-#include "../CreatureObjectImplementation.h"
+import "../../Zone";
 
-#include "../../player/Player.h"
-
-#include "../../tangible/weapons/Weapon.h"
-#include "../../tangible/weapons/WeaponImplementation.h"
-
-#include "Skill.h"
-
-class TargetSkill : public Skill {
-protected:
-
-	string secondaryAnim;
-	
-	string selfMessage;
-	string targetMessage;
-	
-	bool isConeSkill;
-	int coneAngle;
-	
-public:
-	TargetSkill(const string& name, const string& anim, int tp, ZoneProcessServerImplementation* serv) : Skill(name, tp, TARGET, serv) {
-		setAnimation(anim);
-		
-		isConeSkill = false;
-		coneAngle = 0;		
-	}
-	
-	virtual int doSkill(CreatureObject* creature, SceneObject* target, bool doAnimation = true) = 0;
-	
-	virtual void doAnimations(CreatureObject* creature, SceneObject* target) {
-	}
-	
-	virtual bool isUseful(CreatureObject* creature, SceneObject* target) {
-		return true;
-	}
-	
-	virtual bool isArea() {
-		return isConeSkill;
-	}
-	
-	virtual bool calculateCost(CreatureObject* creature) = 0;
-	
-	virtual float calculateSpeed(CreatureObject* creature) = 0;
-	
-	void setSecondaryAnim(const string& name) {
-		secondaryAnim = name;
-	}
-	
-	void setSelfMessage(const string& name) {
-		selfMessage = name;
-	}
-	
-	void setTargetMessage(const string& name) {
-		targetMessage = name;
-	}
-	
-	inline bool isCone() {
-		return isConeSkill;
-	}
-	
-	inline float getConeAngle() {
-		return (float)coneAngle;
-	}
-	
-	inline void setCone(bool cone) {
-		isConeSkill = cone;
-	}
-	
-	inline void setConeAngle(int angle) {
-		coneAngle = angle;
-		if (angle > 0)
-			isConeSkill = true;
+interface AttackableObject implements SceneObject {
+	AttackableObject(unsigned long oid) {
+		super(oid);
 	}
 
-	void doDotWeaponAttack(CreatureObject* creature, SceneObject* target, bool areaHit);
-	
-};
+	void insertToZone(Zone zone);
+	void removeFromZone();		
 
-#endif /*TARGETSKILL_H_*/
+	void setTemplateName(string name);
+	string getTemplateTypeName();
+	string getTemplateName();
+
+	unicode getName();
+
+	string getTemplateDetailName();
+	string getTemplateDetail();
+	
+	void getCustomizationString(string app);
+	
+	void setConditionDamage(unsigned int cond);
+	void setMaxCondition(unsigned int maxcond);
+	int getConditionDamage();
+	int getMaxCondition();
+
+	void doDamage(int damage);
+	
+	boolean isDestroyed();
+}

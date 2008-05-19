@@ -101,6 +101,7 @@ public:
 	static const int INTANGIBLE = 7;
 	static const int STATIC = 8;
 	static const int SHIP = 9;
+	static const int ATTACKABLE = 10;
 	
 public:
 	SceneObjectImplementation();
@@ -287,6 +288,10 @@ public:
 		return objectType == SHIP;
 	}
 
+	inline bool isAttackableObject() {
+		return objectType == ATTACKABLE;
+	}
+	
 	int compareTo(SceneObject* obj) {
 		uint64 id = obj->getObjectID();
 		
@@ -400,6 +405,55 @@ public:
 		return keepObject;
 	}
 	
+	// Virtual combat functions
+	virtual void setDefender(SceneObject* defender) {
+		cout << "setDefender should not get here" << endl;
+	}
+	
+	virtual void addDefender(SceneObject* defender) {
+		cout << "addDefender should not get here" << endl;
+	}
+	
+	virtual void removeDefender(SceneObject* defender) {
+		cout << "removeDefender should not get here" << endl;
+	}
+	
+	virtual void removeDefenders() {
+		cout << "removeDefenders should not get here" << endl;
+	}
+	
+	virtual bool hasDefender(SceneObject* defender) {
+		cout << "hasDefender should not get here" << endl;
+		return false;
+	}
+	
+	virtual void setCombatState() {
+		cout << "setCombatState should not get here" << endl;
+	}
+	
+	virtual void clearCombatState(bool removeDefenders = true) {
+		cout << "clearCombatState should not get here" << endl;
+	}
+	
+	virtual SceneObject* getDefender(int idx) {
+		cout << "getDefender should not get here" << endl;
+		return NULL;
+	}
+	
+	virtual bool isPeaced() {
+		cout << "isPeaced should not get here" << endl;
+		return true;
+	}
+	
+	virtual uint32 getDefenderListSize() {
+		cout << "getDefenderListSize should not get here" << endl;
+		return 0;
+	}
+
+	virtual bool isAttackableBy(CreatureObject* creature) {
+		return false;
+	}
+
 };
 
 #endif /*SCENEOBJECTIMPLEMENTATION_H_*/
