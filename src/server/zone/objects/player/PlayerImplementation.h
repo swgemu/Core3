@@ -288,7 +288,8 @@ public:
 	void addInventoryItem(TangibleObject* item);
 	void equipPlayerItem(TangibleObject* item);
 	SceneObject* getPlayerItem(uint64 oid);
-
+	bool isAllowedBySpecies(TangibleObject* item);
+	
 	// trade mehtods
 	void addTradeItem(TangibleObject* item) {
 		for (int i = 0; i < tradeItems.size(); ++i) {

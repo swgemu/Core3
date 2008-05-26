@@ -44,8 +44,5 @@ RunBlueFrogFile("composite_armor_set.lua");
 RunBlueFrogFile("instrument_set.lua");
 RunBlueFrogFile("surveying_kit.lua");
 RunBlueFrogFile("weapon_set.lua");
-
---I'm disabling wookie and Ithorian armor, until we do the DB wipe
---so there aren't a bunch of idiots running around wearing it as humans
---RunBlueFrogFile("wookiee_armor_set.lua");
---RunBlueFrogFile("ith_armor_set.lua");
+RunBlueFrogFile("wookiee_armor_set.lua");
+RunBlueFrogFile("ith_armor_set.lua");

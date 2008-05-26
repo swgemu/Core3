@@ -122,7 +122,20 @@ wndst = {
 	objectType = SURVEYTOOL
 }
 
+crafting_tool = {
+	
+	objectName = "Generic Crafting Tool",
 
-surveying_kit = {mst, sst, cst, fst, gst, watst, wndst}
+	templateName = "generic_tool",
 
-addBFItemSet("Surveying Kit" , surveying_kit);
+	objectCRC = "1055200365",
+
+	objectType = CRAFTINGTOOL,
+
+	equipped = "0"
+}
+
+
+surveying_kit = {mst, sst, cst, fst, gst, watst, wndst, crafting_tool}
+
+addBFItemSet("Crafting & Surveying Kit" , surveying_kit);

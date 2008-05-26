@@ -1873,6 +1873,27 @@ void PlayerImplementation::equipPlayerItem(TangibleObject* item) {
 	}
 }
  
+bool PlayerImplementation::isAllowedBySpecies(TangibleObject * item) {
+	int type = item->getObjectSubType();
+	bool ithoonly = ((type == TangibleObjectImplementation::ITHOGARB) ||
+			(item->getTemplateName().find("ith_armor") != string::npos));
+	bool wookonly = ((type == TangibleObjectImplementation::WOOKIEGARB) ||
+			(item->getTemplateName().find("armor_kashyyykian") != string::npos));
+	bool footwear = ((type == TangibleObjectImplementation::FOOTWEAR) ||
+			(type == TangibleObjectImplementation::FOOTARMOR));
+	
+	string species = this->getSpeciesName();
+	
+	if (species.compare("ithorian") == 0) {
+		return ithoonly;
+	} else if (species.compare("wookiee") == 0) {
+		return wookonly;
+	} else if (species.compare("trandoshan") == 0) {
+		return !ithoonly && !wookonly && !footwear;
+	} else {
+		return !ithoonly && !wookonly;
+	}			
+}
 void PlayerImplementation::changeCloth(uint64 itemid) {
 
 	SceneObject* obj = inventory->getObject(itemid);
@@ -1889,6 +1910,12 @@ void PlayerImplementation::changeCloth(uint64 itemid) {
 	if (cloth->isArmor()) {
 		if (cloth->isEquipped())
 			changeArmor(itemid, false);
+		return;
+	}
+	
+	if(!isAllowedBySpecies(cloth)) {
+		cloth->setEquipped(false);
+		sendSystemMessage("Your species can not wear this item.");
 		return;
 	}
 	
@@ -2054,6 +2081,12 @@ void PlayerImplementation::changeArmor(uint64 itemid, bool forced) {
 		
 		if (armoritem == NULL) 
 			return;
+		
+		if(!isAllowedBySpecies(armoritem)) {
+			armoritem->setEquipped(false);
+			sendSystemMessage("Your species can not wear this item.");
+			return;
+		}
 		
 		if (armoritem->isEquipped()) {
 			unequipItem((TangibleObject*) obj);
