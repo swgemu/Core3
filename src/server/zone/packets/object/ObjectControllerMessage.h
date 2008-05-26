@@ -149,6 +149,9 @@ public:
 	static void parseNextCraftingStage(Player* player, Message* packet);
 	static void parseCraftCustomization(Player* player, Message* packet);
 	static void parseCreatePrototype(Player* player, Message* packet);
+	static void parseCreateSchematic(Player* player, Message* packet);
+	static void parseExperimentation(Player* player, Message* packet);
+	
 
 	static void parsePickup(Player* player, Message* pack);
 	

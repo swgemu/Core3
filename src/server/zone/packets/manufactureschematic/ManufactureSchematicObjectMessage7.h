@@ -51,20 +51,21 @@ which carries forward this exception.
 #include "../../objects/draftschematic/DraftSchematic.h"
 #include "../../objects/draftschematic/DraftSchematicIngredient.h"
 #include "../../objects/draftschematic/DraftSchematicExpPropGroup.h"
+#include "../../objects/draftschematic/DraftSchematicValues.h"
 
 class ManufactureSchematicObjectMessage7 : public BaseLineMessage {
 public:
-	ManufactureSchematicObjectMessage7(uint64 oid, DraftSchematic* ds) 
+	ManufactureSchematicObjectMessage7(uint64 oid, DraftSchematic* draftSchematic) 
 			: BaseLineMessage(oid, 0x4D53434F, 7, 0x15) {
 
-		int ingredientListSize = ds->getIngredientListSize();
+		int ingredientListSize = draftSchematic->getIngredientListSize();
 		int updateCount = ingredientListSize;
 		
 		insertInt(ingredientListSize);
 		insertInt(updateCount);
 		
 		for(int i = 0; i < ingredientListSize; i++) {
-			DraftSchematicIngredient* dsi = ds->getIngredient(i);
+			DraftSchematicIngredient* dsi = draftSchematic->getIngredient(i);
 			if(dsi != NULL) {
 				insertAscii(dsi->getTemplateName());
 				insertInt(0);
@@ -84,14 +85,14 @@ public:
 			}
 			
 			for(int j = 0; j < ingredientListSize; j++) {
-				if(i == 3) {
+				/*if(i == 3) {
 					if(j == 0){
 						insertInt(0);
 					}
 					else {
 						insertFloat(1);
-					}
-				} else if(i == 4) {
+					}*/
+				if(i == 4) {
 					insertInt(0xFFFFFFFF);
 				} else if(i == 5){
 						insertInt(j);
@@ -102,16 +103,15 @@ public:
 		}
 		insertByte(0x0C); 	// no idea
 		
+		DraftSchematicValues * craftingValues = draftSchematic->getCraftingValues();
 		
-		int expPropGroupListSize = ds->getExpPropTitlesListSize();
-		insertInt(expPropGroupListSize);
-		insertInt(expPropGroupListSize);
+		int titleCount = craftingValues->getExperimentalPropertyTitleSize();
 		
-		//insertInt(4);
-		//insertInt(4);
+		insertInt(titleCount);
+		insertInt(titleCount);
 		
-		for(int i = 0; i < expPropGroupListSize; i++) {
-			string title = ds->getExpPropTitle(i);
+		for(int i = 0; i < titleCount; i++) {
+			string title = craftingValues->getExperimentalPropertyTitle(i);
 			
 			insertAscii("crafting");  // I think this is always "crafting"
 			insertInt(0);
@@ -120,9 +120,9 @@ public:
 								
 		// NO IDEA WTF THIS IS FOR (doing this cause they were in live's logs)
 		for(int i = 0; i < 4; i++) {
-			insertInt(expPropGroupListSize);
-			insertInt(expPropGroupListSize);
-			for(int j = 0; j < expPropGroupListSize; j++) {
+			insertInt(titleCount);
+			insertInt(titleCount);
+			for(int j = 0; j < titleCount; j++) {
 				insertInt(0);
 			}
 			

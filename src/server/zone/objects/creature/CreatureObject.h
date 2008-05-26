@@ -101,8 +101,6 @@ public:
 
 	bool isMeditating();
 
-	bool isPeaced();
-
 	void updateKnockdownRecovery();
 
 	void updateMood(const string& md);
@@ -116,20 +114,6 @@ public:
 	bool checkPostureDownRecovery();
 
 	bool checkPostureUpRecovery();
-
-	void setCombatState();
-
-	void clearCombatState(bool removedefenders = true);
-
-	void setDefender(CreatureObject* defender);
-
-	void addDefender(CreatureObject* defender);
-
-	void removeDefenders();
-
-	void removeDefender(CreatureObject* defender);
-
-	bool hasDefender(CreatureObject* defender);
 
 	bool setState(unsigned long long state);
 
@@ -312,10 +296,6 @@ public:
 	unsigned int getLastMovementUpdateStamp();
 
 	int getIgnoreMovementTests();
-
-	unsigned int getDefenderListSize();
-
-	CreatureObject* getDefender(int idx);
 
 	unsigned int getLevel();
 
@@ -815,8 +795,6 @@ public:
 
 	bool isMeditating();
 
-	bool isPeaced();
-
 	void updateKnockdownRecovery();
 
 	void updateMood(const string& md);
@@ -830,20 +808,6 @@ public:
 	bool checkPostureDownRecovery();
 
 	bool checkPostureUpRecovery();
-
-	void setCombatState();
-
-	void clearCombatState(bool removedefenders);
-
-	void setDefender(CreatureObject* defender);
-
-	void addDefender(CreatureObject* defender);
-
-	void removeDefenders();
-
-	void removeDefender(CreatureObject* defender);
-
-	bool hasDefender(CreatureObject* defender);
 
 	bool setState(unsigned long long state);
 
@@ -1024,10 +988,6 @@ public:
 	unsigned int getLastMovementUpdateStamp();
 
 	int getIgnoreMovementTests();
-
-	unsigned int getDefenderListSize();
-
-	CreatureObject* getDefender(int idx);
 
 	unsigned int getLevel();
 

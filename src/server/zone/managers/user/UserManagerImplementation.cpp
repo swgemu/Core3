@@ -105,13 +105,7 @@ bool UserManagerImplementation::checkUser(uint32 ipid) {
 
 //TODO: We need a less static way of doing this.
 bool UserManagerImplementation::isAdmin(const string& name) {
-	if (name == "ramsey" || name == "ultyma" || name == "seaseme" || 
-		name == "theanswer" || name == "oru" || name == "smusatto" ||
-		name == "phantm" || name == "vash" || name == "mcmahon" || name == "bobius")
-			
-		return true;
-	else
-		return false;
+	return true;
 }
 
 void UserManagerImplementation::banUser(const string& ipaddr) {

@@ -265,7 +265,46 @@ surv_knife = {
 	equipped = "0"
 }
 
-general_artisan_items = {cdef_pistol, surv_knife}
+crafting_tool = {
+	
+	objectName = "Generic Crafting Tool",
+
+	templateName = "generic_tool",
+
+	objectCRC = "1055200365",
+
+	objectType = CRAFTINGTOOL,
+
+	equipped = "0"
+}
+
+mineral_survey_tool = {
+	
+	objectName = "Mineral Survey Tool",
+
+	templateName = "survey_tool_mineral",
+
+	objectCRC = "2862265132",
+
+	objectType = SURVEYTOOL,
+
+	equipped = "0"
+}
+
+chemical_survey_tool = {
+	
+	objectName = "Chemical Survey Tool",
+
+	templateName = "survey_tool_chemical",
+
+	objectCRC = "2242363434",
+
+	objectType = SURVEYTOOL,
+
+	equipped = "0"
+}
+
+general_artisan_items = {cdef_pistol, surv_knife, crafting_tool, mineral_survey_tool, chemical_survey_tool}
 
 
 createItemsFromList("artisan", "humanoid", "male", artisan_humanoid_male_items)

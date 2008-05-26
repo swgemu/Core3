@@ -163,6 +163,10 @@ which carries forward this exception.
 #include "objects/draftschematic/DraftSchematicIngredientImplementation.h"
 #include "objects/draftschematic/DraftSchematicExpPropGroup.h"
 #include "objects/draftschematic/DraftSchematicExpPropGroupImplementation.h"
+#include "objects/draftschematic/DraftSchematicAttribute.h"
+#include "objects/draftschematic/DraftSchematicAttributeImplementation.h"
+#include "objects/draftschematic/DraftSchematicValues.h"
+#include "objects/draftschematic/DraftSchematicValuesImplementation.h"
 
 #include "objects/manufacture/ManufactureSchematic.h"
 #include "objects/manufacture/ManufactureSchematicImplementation.h"

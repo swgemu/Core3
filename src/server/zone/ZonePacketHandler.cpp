@@ -80,8 +80,6 @@ void ZonePacketHandler::handleMessage(Message* pack) {
 	uint16 opcount = pack->parseShort();
 	uint32 opcode = pack->parseInt();
 	
-	/*cout << "processing opcount:[" << opcount << "] opcode:[" << hex << opcode << "]\n";*/
-	
 	switch (opcount) {
 	case 1:
 		switch (opcode) {
@@ -434,6 +432,9 @@ void ZonePacketHandler::handleObjectControllerMessage(Message* pack) {
 			break;
 		case 0x83:
 			switch (header2) {
+			case 0x106:
+				ObjectControllerMessage::parseExperimentation(player, pack);
+				break;
 			case 0x107:
 				ObjectControllerMessage::parseAddCraftingResource(player, pack);
 				break;

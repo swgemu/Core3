@@ -89,22 +89,22 @@ am__installdirs = "$(DESTDIR)$(bindir)"
 binPROGRAMS_INSTALL = $(INSTALL_PROGRAM)
 PROGRAMS = $(bin_PROGRAMS)
 am__objects_1 = Zone.$(OBJEXT) ZoneClient.$(OBJEXT) \
-	ZoneServer.$(OBJEXT) AuctionItem.$(OBJEXT) \
-	SceneObject.$(OBJEXT) CreatureObject.$(OBJEXT) \
-	Creature.$(OBJEXT) CreatureGroup.$(OBJEXT) \
-	ShuttleCreature.$(OBJEXT) TrainerCreature.$(OBJEXT) \
-	BlueFrogCreature.$(OBJEXT) BFVector.$(OBJEXT) \
-	RecruiterCreature.$(OBJEXT) MountCreature.$(OBJEXT) \
-	Player.$(OBJEXT) PlayerObject.$(OBJEXT) SuiBox.$(OBJEXT) \
-	SuiListBox.$(OBJEXT) SuiMessageBox.$(OBJEXT) \
-	SuiInputBox.$(OBJEXT) SuiTransferBox.$(OBJEXT) \
-	SuiBankTransferBox.$(OBJEXT) SuiColorPicker.$(OBJEXT) \
-	TangibleObject.$(OBJEXT) Container.$(OBJEXT) \
-	Inventory.$(OBJEXT) Datapad.$(OBJEXT) Bank.$(OBJEXT) \
-	MissionBag.$(OBJEXT) Weapon.$(OBJEXT) JediWeapon.$(OBJEXT) \
-	RangedWeapon.$(OBJEXT) MeleeWeapon.$(OBJEXT) \
-	CarbineRangedWeapon.$(OBJEXT) RifleRangedWeapon.$(OBJEXT) \
-	PistolRangedWeapon.$(OBJEXT) \
+	ZoneServer.$(OBJEXT) AttackableObject.$(OBJEXT) \
+	AuctionItem.$(OBJEXT) SceneObject.$(OBJEXT) \
+	CreatureObject.$(OBJEXT) Creature.$(OBJEXT) \
+	CreatureGroup.$(OBJEXT) ShuttleCreature.$(OBJEXT) \
+	TrainerCreature.$(OBJEXT) BlueFrogCreature.$(OBJEXT) \
+	BFVector.$(OBJEXT) RecruiterCreature.$(OBJEXT) \
+	MountCreature.$(OBJEXT) Player.$(OBJEXT) \
+	PlayerObject.$(OBJEXT) SuiBox.$(OBJEXT) SuiListBox.$(OBJEXT) \
+	SuiMessageBox.$(OBJEXT) SuiInputBox.$(OBJEXT) \
+	SuiTransferBox.$(OBJEXT) SuiBankTransferBox.$(OBJEXT) \
+	SuiColorPicker.$(OBJEXT) TangibleObject.$(OBJEXT) \
+	Container.$(OBJEXT) Inventory.$(OBJEXT) Datapad.$(OBJEXT) \
+	Bank.$(OBJEXT) MissionBag.$(OBJEXT) Weapon.$(OBJEXT) \
+	JediWeapon.$(OBJEXT) RangedWeapon.$(OBJEXT) \
+	MeleeWeapon.$(OBJEXT) CarbineRangedWeapon.$(OBJEXT) \
+	RifleRangedWeapon.$(OBJEXT) PistolRangedWeapon.$(OBJEXT) \
 	SpecialHeavyRangedWeapon.$(OBJEXT) HeavyRangedWeapon.$(OBJEXT) \
 	OneHandedMeleeWeapon.$(OBJEXT) TwoHandedMeleeWeapon.$(OBJEXT) \
 	UnarmedMeleeWeapon.$(OBJEXT) PolearmMeleeWeapon.$(OBJEXT) \
@@ -125,16 +125,17 @@ am__objects_1 = Zone.$(OBJEXT) ZoneClient.$(OBJEXT) \
 	DraftSchematicGroup.$(OBJEXT) \
 	DraftSchematicIngredient.$(OBJEXT) \
 	DraftSchematicExpPropGroup.$(OBJEXT) \
-	ManufactureSchematic.$(OBJEXT) MissionObject.$(OBJEXT) \
-	WaypointObject.$(OBJEXT) ShipComponent.$(OBJEXT) \
-	ShipObject.$(OBJEXT) GuildMap.$(OBJEXT) GuildManager.$(OBJEXT) \
-	PlayerMap.$(OBJEXT) PlayerManager.$(OBJEXT) \
-	CraftingManager.$(OBJEXT) CreatureManager.$(OBJEXT) \
-	ItemManager.$(OBJEXT) UserManager.$(OBJEXT) \
-	PlanetManager.$(OBJEXT) ResourceManager.$(OBJEXT) \
-	LootManager.$(OBJEXT) BazaarManager.$(OBJEXT) \
-	BazaarPlanetManager.$(OBJEXT) BankManager.$(OBJEXT) \
-	ChatRoom.$(OBJEXT) ChatManager.$(OBJEXT)
+	DraftSchematicAttribute.$(OBJEXT) \
+	DraftSchematicValues.$(OBJEXT) ManufactureSchematic.$(OBJEXT) \
+	MissionObject.$(OBJEXT) WaypointObject.$(OBJEXT) \
+	ShipComponent.$(OBJEXT) ShipObject.$(OBJEXT) \
+	GuildMap.$(OBJEXT) GuildManager.$(OBJEXT) PlayerMap.$(OBJEXT) \
+	PlayerManager.$(OBJEXT) CraftingManager.$(OBJEXT) \
+	CreatureManager.$(OBJEXT) ItemManager.$(OBJEXT) \
+	UserManager.$(OBJEXT) PlanetManager.$(OBJEXT) \
+	ResourceManager.$(OBJEXT) LootManager.$(OBJEXT) \
+	BazaarManager.$(OBJEXT) BazaarPlanetManager.$(OBJEXT) \
+	BankManager.$(OBJEXT) ChatRoom.$(OBJEXT) ChatManager.$(OBJEXT)
 am_core3_OBJECTS = $(am__objects_1) ServerCore.$(OBJEXT) \
 	ConfigManager.$(OBJEXT) ServerDatabase.$(OBJEXT) \
 	LoginServer.$(OBJEXT) LoginPacketHandler.$(OBJEXT) \
@@ -144,6 +145,7 @@ am_core3_OBJECTS = $(am__objects_1) ServerCore.$(OBJEXT) \
 	ZoneServerImplementation.$(OBJEXT) ZonePacketHandler.$(OBJEXT) \
 	ZoneProcessServerImplementation.$(OBJEXT) \
 	ZoneMessageProcessorThread.$(OBJEXT) \
+	AttackableObjectImplementation.$(OBJEXT) \
 	BuildingObjectImplementation.$(OBJEXT) \
 	CellObjectImplementation.$(OBJEXT) \
 	GuildImplementation.$(OBJEXT) \
@@ -323,6 +325,7 @@ INCLUDES = $(SYSTEM_INCLUDES) \
 core3_IDLS = server/zone/Zone.cpp \
 		server/zone/ZoneClient.cpp \
 		server/zone/ZoneServer.cpp \
+		server/zone/objects/attackable/AttackableObject.cpp \
 		server/zone/objects/auction/AuctionItem.cpp \
 		server/zone/objects/scene/SceneObject.cpp \
 		server/zone/objects/creature/CreatureObject.cpp \
@@ -397,6 +400,8 @@ core3_IDLS = server/zone/Zone.cpp \
 		server/zone/objects/draftschematic/DraftSchematicGroup.cpp \
 		server/zone/objects/draftschematic/DraftSchematicIngredient.cpp \
 		server/zone/objects/draftschematic/DraftSchematicExpPropGroup.cpp \
+		server/zone/objects/draftschematic/DraftSchematicAttribute.cpp \
+		server/zone/objects/draftschematic/DraftSchematicValues.cpp \
 		server/zone/objects/manufacture/ManufactureSchematic.cpp \
 		server/zone/objects/mission/MissionObject.cpp \
 		server/zone/objects/waypoint/WaypointObject.cpp \
@@ -432,6 +437,7 @@ core3_SOURCES = $(core3_IDLS) \
 		server/zone/ZonePacketHandler.cpp \
 		server/zone/ZoneProcessServerImplementation.cpp \
 		server/zone/ZoneMessageProcessorThread.cpp \
+		server/zone/objects/attackable/AttackableObjectImplementation.cpp \
 		server/zone/objects/building/BuildingObjectImplementation.cpp \
 		server/zone/objects/building/cell/CellObjectImplementation.cpp \
 		server/zone/objects/guild/GuildImplementation.cpp \
@@ -567,6 +573,8 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ArmorImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Attachment.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/AttachmentImplementation.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/AttackableObject.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/AttackableObjectImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/AuctionItem.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/BFVector.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Bank.Po@am__quote@
@@ -609,9 +617,11 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/CreatureObjectImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Datapad.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/DraftSchematic.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/DraftSchematicAttribute.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/DraftSchematicExpPropGroup.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/DraftSchematicGroup.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/DraftSchematicIngredient.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/DraftSchematicValues.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Firework.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/FireworkWorld.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/GroupManager.Po@am__quote@
@@ -793,6 +803,20 @@ ZoneServer.obj: server/zone/ZoneServer.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/ZoneServer.cpp' object='ZoneServer.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ZoneServer.obj `if test -f 'server/zone/ZoneServer.cpp'; then $(CYGPATH_W) 'server/zone/ZoneServer.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/ZoneServer.cpp'; fi`
+
+AttackableObject.o: server/zone/objects/attackable/AttackableObject.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT AttackableObject.o -MD -MP -MF $(DEPDIR)/AttackableObject.Tpo -c -o AttackableObject.o `test -f 'server/zone/objects/attackable/AttackableObject.cpp' || echo '$(srcdir)/'`server/zone/objects/attackable/AttackableObject.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/AttackableObject.Tpo $(DEPDIR)/AttackableObject.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/attackable/AttackableObject.cpp' object='AttackableObject.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o AttackableObject.o `test -f 'server/zone/objects/attackable/AttackableObject.cpp' || echo '$(srcdir)/'`server/zone/objects/attackable/AttackableObject.cpp
+
+AttackableObject.obj: server/zone/objects/attackable/AttackableObject.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT AttackableObject.obj -MD -MP -MF $(DEPDIR)/AttackableObject.Tpo -c -o AttackableObject.obj `if test -f 'server/zone/objects/attackable/AttackableObject.cpp'; then $(CYGPATH_W) 'server/zone/objects/attackable/AttackableObject.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/attackable/AttackableObject.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/AttackableObject.Tpo $(DEPDIR)/AttackableObject.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/attackable/AttackableObject.cpp' object='AttackableObject.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o AttackableObject.obj `if test -f 'server/zone/objects/attackable/AttackableObject.cpp'; then $(CYGPATH_W) 'server/zone/objects/attackable/AttackableObject.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/attackable/AttackableObject.cpp'; fi`
 
 AuctionItem.o: server/zone/objects/auction/AuctionItem.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT AuctionItem.o -MD -MP -MF $(DEPDIR)/AuctionItem.Tpo -c -o AuctionItem.o `test -f 'server/zone/objects/auction/AuctionItem.cpp' || echo '$(srcdir)/'`server/zone/objects/auction/AuctionItem.cpp
@@ -1830,6 +1854,34 @@ DraftSchematicExpPropGroup.obj: server/zone/objects/draftschematic/DraftSchemati
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o DraftSchematicExpPropGroup.obj `if test -f 'server/zone/objects/draftschematic/DraftSchematicExpPropGroup.cpp'; then $(CYGPATH_W) 'server/zone/objects/draftschematic/DraftSchematicExpPropGroup.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/draftschematic/DraftSchematicExpPropGroup.cpp'; fi`
 
+DraftSchematicAttribute.o: server/zone/objects/draftschematic/DraftSchematicAttribute.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT DraftSchematicAttribute.o -MD -MP -MF $(DEPDIR)/DraftSchematicAttribute.Tpo -c -o DraftSchematicAttribute.o `test -f 'server/zone/objects/draftschematic/DraftSchematicAttribute.cpp' || echo '$(srcdir)/'`server/zone/objects/draftschematic/DraftSchematicAttribute.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/DraftSchematicAttribute.Tpo $(DEPDIR)/DraftSchematicAttribute.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/draftschematic/DraftSchematicAttribute.cpp' object='DraftSchematicAttribute.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o DraftSchematicAttribute.o `test -f 'server/zone/objects/draftschematic/DraftSchematicAttribute.cpp' || echo '$(srcdir)/'`server/zone/objects/draftschematic/DraftSchematicAttribute.cpp
+
+DraftSchematicAttribute.obj: server/zone/objects/draftschematic/DraftSchematicAttribute.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT DraftSchematicAttribute.obj -MD -MP -MF $(DEPDIR)/DraftSchematicAttribute.Tpo -c -o DraftSchematicAttribute.obj `if test -f 'server/zone/objects/draftschematic/DraftSchematicAttribute.cpp'; then $(CYGPATH_W) 'server/zone/objects/draftschematic/DraftSchematicAttribute.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/draftschematic/DraftSchematicAttribute.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/DraftSchematicAttribute.Tpo $(DEPDIR)/DraftSchematicAttribute.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/draftschematic/DraftSchematicAttribute.cpp' object='DraftSchematicAttribute.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o DraftSchematicAttribute.obj `if test -f 'server/zone/objects/draftschematic/DraftSchematicAttribute.cpp'; then $(CYGPATH_W) 'server/zone/objects/draftschematic/DraftSchematicAttribute.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/draftschematic/DraftSchematicAttribute.cpp'; fi`
+
+DraftSchematicValues.o: server/zone/objects/draftschematic/DraftSchematicValues.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT DraftSchematicValues.o -MD -MP -MF $(DEPDIR)/DraftSchematicValues.Tpo -c -o DraftSchematicValues.o `test -f 'server/zone/objects/draftschematic/DraftSchematicValues.cpp' || echo '$(srcdir)/'`server/zone/objects/draftschematic/DraftSchematicValues.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/DraftSchematicValues.Tpo $(DEPDIR)/DraftSchematicValues.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/draftschematic/DraftSchematicValues.cpp' object='DraftSchematicValues.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o DraftSchematicValues.o `test -f 'server/zone/objects/draftschematic/DraftSchematicValues.cpp' || echo '$(srcdir)/'`server/zone/objects/draftschematic/DraftSchematicValues.cpp
+
+DraftSchematicValues.obj: server/zone/objects/draftschematic/DraftSchematicValues.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT DraftSchematicValues.obj -MD -MP -MF $(DEPDIR)/DraftSchematicValues.Tpo -c -o DraftSchematicValues.obj `if test -f 'server/zone/objects/draftschematic/DraftSchematicValues.cpp'; then $(CYGPATH_W) 'server/zone/objects/draftschematic/DraftSchematicValues.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/draftschematic/DraftSchematicValues.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/DraftSchematicValues.Tpo $(DEPDIR)/DraftSchematicValues.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/draftschematic/DraftSchematicValues.cpp' object='DraftSchematicValues.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o DraftSchematicValues.obj `if test -f 'server/zone/objects/draftschematic/DraftSchematicValues.cpp'; then $(CYGPATH_W) 'server/zone/objects/draftschematic/DraftSchematicValues.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/draftschematic/DraftSchematicValues.cpp'; fi`
+
 ManufactureSchematic.o: server/zone/objects/manufacture/ManufactureSchematic.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ManufactureSchematic.o -MD -MP -MF $(DEPDIR)/ManufactureSchematic.Tpo -c -o ManufactureSchematic.o `test -f 'server/zone/objects/manufacture/ManufactureSchematic.cpp' || echo '$(srcdir)/'`server/zone/objects/manufacture/ManufactureSchematic.cpp
 @am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/ManufactureSchematic.Tpo $(DEPDIR)/ManufactureSchematic.Po
@@ -2291,6 +2343,20 @@ ZoneMessageProcessorThread.obj: server/zone/ZoneMessageProcessorThread.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/ZoneMessageProcessorThread.cpp' object='ZoneMessageProcessorThread.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ZoneMessageProcessorThread.obj `if test -f 'server/zone/ZoneMessageProcessorThread.cpp'; then $(CYGPATH_W) 'server/zone/ZoneMessageProcessorThread.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/ZoneMessageProcessorThread.cpp'; fi`
+
+AttackableObjectImplementation.o: server/zone/objects/attackable/AttackableObjectImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT AttackableObjectImplementation.o -MD -MP -MF $(DEPDIR)/AttackableObjectImplementation.Tpo -c -o AttackableObjectImplementation.o `test -f 'server/zone/objects/attackable/AttackableObjectImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/attackable/AttackableObjectImplementation.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/AttackableObjectImplementation.Tpo $(DEPDIR)/AttackableObjectImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/attackable/AttackableObjectImplementation.cpp' object='AttackableObjectImplementation.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o AttackableObjectImplementation.o `test -f 'server/zone/objects/attackable/AttackableObjectImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/attackable/AttackableObjectImplementation.cpp
+
+AttackableObjectImplementation.obj: server/zone/objects/attackable/AttackableObjectImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT AttackableObjectImplementation.obj -MD -MP -MF $(DEPDIR)/AttackableObjectImplementation.Tpo -c -o AttackableObjectImplementation.obj `if test -f 'server/zone/objects/attackable/AttackableObjectImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/attackable/AttackableObjectImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/attackable/AttackableObjectImplementation.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/AttackableObjectImplementation.Tpo $(DEPDIR)/AttackableObjectImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/attackable/AttackableObjectImplementation.cpp' object='AttackableObjectImplementation.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o AttackableObjectImplementation.obj `if test -f 'server/zone/objects/attackable/AttackableObjectImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/attackable/AttackableObjectImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/attackable/AttackableObjectImplementation.cpp'; fi`
 
 BuildingObjectImplementation.o: server/zone/objects/building/BuildingObjectImplementation.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT BuildingObjectImplementation.o -MD -MP -MF $(DEPDIR)/BuildingObjectImplementation.Tpo -c -o BuildingObjectImplementation.o `test -f 'server/zone/objects/building/BuildingObjectImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/building/BuildingObjectImplementation.cpp

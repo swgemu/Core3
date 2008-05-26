@@ -69,6 +69,10 @@ interface ItemManager {
 	
 	void createPlayerItem(Player player, TangibleObject item);
 
+	TangibleObject initializeTangibleForCrafting(int objecttype,
+			unsigned long objectid, unsigned long objectcrc, string objectn,
+			string objecttemp, boolean equipped);
+
 	void savePlayerItem(Player player, TangibleObject item); 
 
 	void deletePlayerItem(Player player, TangibleObject item, boolean notify);

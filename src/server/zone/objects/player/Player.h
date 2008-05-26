@@ -389,7 +389,11 @@ public:
 
 	void craftingCustomization(string& name, int condition);
 
-	void createPrototype(string& test);
+	void createPrototype(string& count);
+
+	void createSchematic(string& count);
+
+	void handleExperimenting(int count, int numRowsAttempted, string& expstring);
 
 	void sendDraftSchematics();
 
@@ -827,7 +831,11 @@ public:
 
 	void craftingCustomization(string& name, int condition);
 
-	void createPrototype(string& test);
+	void createPrototype(string& count);
+
+	void createSchematic(string& count);
+
+	void handleExperimenting(int count, int numRowsAttempted, string& expstring);
 
 	void sendDraftSchematics();
 
@@ -933,6 +941,8 @@ protected:
 	string _param0_nextCraftingStage__string_;
 	string _param0_craftingCustomization__string_int_;
 	string _param0_createPrototype__string_;
+	string _param0_createSchematic__string_;
+	string _param2_handleExperimenting__int_int_string_;
 	string _param0_addDraftSchematicsFromGroupName__string_;
 	string _param0_subtractDraftSchematicsFromGroupName__string_;
 	string _param0_setSurveyEvent__string_;

@@ -492,7 +492,9 @@ public:
 	void removeResourceFromCraft(uint64 resID, int slot, int counter);
 	void nextCraftingStage(string test);
 	void craftingCustomization(string name, int condition);
-	void createPrototype(string test);
+	void createPrototype(string count);
+	void createSchematic(string count);
+	void handleExperimenting(int count, int numRowsAttempted, string expstring);
 	
 
 	bool checkCertification(string certification) {

@@ -2602,7 +2602,7 @@ void PlayerImplementation::addResourceToCraft(ResourceContainer * rnco, int slot
 
 void PlayerImplementation::removeResourceFromCraft(uint64 resID, int slot, int counter) {
 	CraftingManager* craftingManager = server->getCraftingManager();
-	craftingManager->removeResourceFromCraft(_this, resID, slot, counter);
+	craftingManager->removeResourceFromCraft(_this, slot, counter);
 }
 
 void PlayerImplementation::nextCraftingStage(string test) {
@@ -2615,12 +2615,20 @@ void PlayerImplementation::craftingCustomization(string name, int condition) {
 	craftingManager->craftingCustomization(_this, name, condition);
 }
 
-void PlayerImplementation::createPrototype(string test) {
+void PlayerImplementation::createPrototype(string count) {
 	CraftingManager* craftingManager = server->getCraftingManager();
-	craftingManager->createPrototype(_this, test);
+	craftingManager->createPrototype(_this, count);
 }
 
+void PlayerImplementation::createSchematic(string count) {
+	CraftingManager* craftingManager = server->getCraftingManager();
+	craftingManager->createSchematic(_this, count);
+}
 
+void PlayerImplementation::handleExperimenting(int count, int numRowsAttempted, string expstring) {
+	CraftingManager* craftingManager = server->getCraftingManager();
+	craftingManager->handleExperimenting(_this, count, numRowsAttempted, expstring);
+}
 // Draft Schematics
 
 void PlayerImplementation::addDraftSchematicsFromGroupName(const string& schematicGroupName) {

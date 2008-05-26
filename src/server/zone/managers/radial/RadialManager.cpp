@@ -192,6 +192,9 @@ void RadialManager::handleSelection(int radialID, Player* player, SceneObject* o
 	case 71: // REMOVE POWERUP
 		handleRemovePowerup(player, obj);
 		break;
+	case 130: // Crafting tool hopper item retrieval
+		handleOpenCraftingToolHopper(player, obj);
+		break;
 	case 136: // SURVEY_TOOL_OPTIONS
 		break;
 	case 137: // SURVEY_TOOL_SET_RANGE
@@ -453,6 +456,15 @@ void RadialManager::handleRemovePowerup(Player* player, SceneObject* obj) {
 		weapon->removePowerup(player, false);
 }
 
+
+void RadialManager::sendRadialResponseForSurveyTools(Player* player, SurveyTool* surveyTool, ObjectMenuResponse* omr) {
+	omr->addRadialItem(0, 136, 3, "@sui:tool_options");
+	omr->addRadialItem(4, 137, 3, "@sui:survey_range");
+	omr->finish();
+	
+	player->sendMessage(omr);
+}
+
 void RadialManager::sendRadialResponseForSurveyToolRange(Player* player, SceneObject* obj) {
 	string skillBox = "crafting_artisan_novice";
 	
@@ -489,3 +501,16 @@ void RadialManager::sendRadialResponseForSurveyToolRange(Player* player, SceneOb
 	
 	player->setSurveyTool((SurveyTool*) obj);
 }
+void RadialManager::handleOpenCraftingToolHopper(Player* player, SceneObject* obj) {
+	if (!obj->isTangible())
+		return;
+	
+	CraftingTool* ct = (CraftingTool*) obj;
+
+	if(ct != NULL){
+	
+		ct->retriveHopperItem(player);	
+		
+	}
+}
+

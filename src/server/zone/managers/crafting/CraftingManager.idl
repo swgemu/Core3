@@ -58,17 +58,23 @@ interface CraftingManager {
 		super(server, processor);
 	}
 	
-	void prepareCraftingSession(Player player, CraftingTool ct, DraftSchematic ds);
+	void prepareCraftingSession(Player player, CraftingTool craftingTool, DraftSchematic draftSchematic);
 	
 	void addResourceToCraft(Player player, ResourceContainer rcno, int slot, int counter);
-	
-	void removeResourceFromCraft(Player player, unsigned int resID, int slot, int counter);
+	void removeResourceFromCraft(Player player, int slot, int counter);
 	
 	void nextCraftingStage(Player player, string test);
 	
 	void craftingCustomization(Player player, string name, int condition);
-	
-	void createPrototype(Player player, string test);
+	void handleExperimenting(Player player, int counter, int numRowsAttempted, string expstring);
+	void createPrototype(Player player, string count);
+	void createSchematic(Player player, string count);
+
+	void putResourceBackInInventory(Player player, string name, int quantity);
+
+	float getWeightedValue(Player player, CraftingTool craftingTool, DraftSchematic draftSchematic, int type);
+	float getAssemblyPercentage(float value);
+	float calculateAssemblyValueModifier(CraftingTool craftingTool);
 
 	void addDraftSchematicsFromGroupName(Player player, const string schematicGroupName);
 	void subtractDraftSchematicsFromGroupName(Player player, const string schematicGroupName);

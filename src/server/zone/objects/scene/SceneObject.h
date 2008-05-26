@@ -21,6 +21,8 @@ class ZoneClient;
 
 class Player;
 
+class CreatureObject;
+
 #include "engine/core/ManagedObject.h"
 
 class SceneObject : public ManagedObject {
@@ -147,6 +149,8 @@ public:
 
 	bool isShip();
 
+	bool isAttackableObject();
+
 	Zone* getZone();
 
 	int getZoneID();
@@ -160,6 +164,28 @@ public:
 	void switchMovingState();
 
 	bool doKeepObject();
+
+	void setCombatState();
+
+	void clearCombatState(bool removedefenders = true);
+
+	void setDefender(SceneObject* defender);
+
+	void addDefender(SceneObject* defender);
+
+	void removeDefenders();
+
+	void removeDefender(SceneObject* defender);
+
+	bool hasDefender(SceneObject* defender);
+
+	SceneObject* getDefender(int idx);
+
+	unsigned int getDefenderListSize();
+
+	bool isPeaced();
+
+	bool isAttackableBy(CreatureObject* creature);
 
 protected:
 	SceneObject(DummyConstructorParameter* param);
@@ -301,6 +327,8 @@ public:
 
 	bool isShip();
 
+	bool isAttackableObject();
+
 	Zone* getZone();
 
 	int getZoneID();
@@ -314,6 +342,28 @@ public:
 	void switchMovingState();
 
 	bool doKeepObject();
+
+	void setCombatState();
+
+	void clearCombatState(bool removedefenders);
+
+	void setDefender(SceneObject* defender);
+
+	void addDefender(SceneObject* defender);
+
+	void removeDefenders();
+
+	void removeDefender(SceneObject* defender);
+
+	bool hasDefender(SceneObject* defender);
+
+	SceneObject* getDefender(int idx);
+
+	unsigned int getDefenderListSize();
+
+	bool isPeaced();
+
+	bool isAttackableBy(CreatureObject* creature);
 
 protected:
 	string _param0_info__string_bool_;

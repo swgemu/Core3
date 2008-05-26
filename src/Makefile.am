@@ -132,6 +132,8 @@ core3_IDLS =	server/zone/Zone.cpp \
 		server/zone/objects/draftschematic/DraftSchematicGroup.cpp \
 		server/zone/objects/draftschematic/DraftSchematicIngredient.cpp \
 		server/zone/objects/draftschematic/DraftSchematicExpPropGroup.cpp \
+		server/zone/objects/draftschematic/DraftSchematicAttribute.cpp \
+		server/zone/objects/draftschematic/DraftSchematicValues.cpp \
 		server/zone/objects/manufacture/ManufactureSchematic.cpp \
 		server/zone/objects/mission/MissionObject.cpp \
 		server/zone/objects/waypoint/WaypointObject.cpp \

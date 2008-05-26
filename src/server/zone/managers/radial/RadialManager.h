@@ -54,6 +54,7 @@ class Player;
 class SceneObject;
 class GuildTerminal;
 class SurveyTool;
+class CraftingTool;
 class Weapon;
 class Armor;
 
@@ -80,7 +81,9 @@ public:
 	void handleSlicing(Player* player, SceneObject* obj);
 	void handleRepair(Player* player, SceneObject* obj);
 	void handleRemovePowerup(Player* player, SceneObject* obj);
+	void handleOpenCraftingToolHopper(Player* player, SceneObject* obj);
 	
+	void sendRadialResponseForSurveyTools(Player* player, SurveyTool* surveyTool, ObjectMenuResponse* omr);
 	void sendRadialResponseForSurveyToolRange(Player* player, SceneObject* obj);
 };
 

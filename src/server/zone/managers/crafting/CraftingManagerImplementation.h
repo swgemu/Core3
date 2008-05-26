@@ -65,46 +65,147 @@
 #include "../../packets.h"
 
 #include "events/CreateObjectEvent.h"
+#include "events/UpdateToolCountdownEvent.h"
 
 class ZoneServer;
 
 class CraftingManagerImplementation : public CraftingManagerServant,
-	public Mutex {
+	public Mutex, public Lua {
+	
 	ZoneServer* server;
 	ZoneProcessServerImplementation * processor;
 
 	CreateObjectEvent * createObjectEvent;
+	UpdateToolCountdownEvent * updateToolCountdownEvent;
 
 	// Use a groupName to recieve a vector of draftSchematics back
 	VectorMap<string, DraftSchematicGroup*> draftSchematicsMap;
+	
+	static CraftingManagerImplementation* instance;
+	
+	static const double CONSTE = 2.71828182845904523536;
+	
+	// Crafting error messages
+	static const short SLOTOK = 0x00;
+	static const short SLOTNOSERVER = 0x01; // No server for Owner
+	static const short SLOTNOTASSEMBLYSTAGE = 0x02; // Not in crafting assembly stage
+	static const short SLOTNOTCUSTOMIZATIONSTAGE = 0x03; // Not in crafting customization stage
+	static const short SLOTNOSCHEMATIC = 0x04; // No Draft Schematic Found
+	static const short SLOTNOTOOL = 0x05; // No Crafting tool Found
+	static const short SLOTNOMANUFACTURE = 0x06; // No manufacturing schematic found
+	static const short SLOTINVALID = 0x07; // Invalid Slot Chosen
+	static const short SLOTINVALIDOPTION = 0x08; // Invalid Slot Option Chosen
+	static const short SLOTINVALIDINGREDIENTSIZE = 0x09; // Invalid ingredient size for slot
+	static const short SLOTFULL = 0x0A; // Slot Full
+	static const short SLOTINVALIDINGREDIENT = 0x0B; // Invalid Ingredient
+	static const short SLOTINGREDIENTNOTININVENTORY = 0x0C; // Ingredient not in inventory
+	static const short SLOTBADCRATE = 0x0D; // Cannot remove resource from crate
+	static const short SLOTBADRESOURCEFORSLOT = 0x0E; // Bad resource for Slot
+	static const short SLOTCOMPONENTDAMAGED = 0x0F; // Component too damaged for use
+	static const short SLOTNOCOMPONENTTRANSFER = 0x10; // Cannot transfer componenet
+	static const short SLOTBADCOMPONENT = 0x11; // Bad component for slot
+	static const short SLOTNOINVENTORY = 0x12; // Inventory Missing
+	static const short SLOTBADSTATIONHOPPER = 0x13; // Bad station Hopper
+	static const short SLOTBADTARGETCONTAINER = 0x14; // Bad target container
+	static const short SLOTEMPTYISEMPTY = 0x15; // Empty slot is empty
+	static const short SLOTFAILEDRESOURCECREATE = 0x16; // Cannot create resource container
+	static const short SLOTEMPTYSLOTASSEMBLE = 0x17; // Trying to assemble with empty slot
+	static const short SLOTPARTIALSLOTASSEMBLE = 0x18; // Trying to assemble with patially full slot
+	static const short SLOTPROTOTYPENOTFOUND = 0x19; // Prototype not found
+	static const short SLOTBADNAME = 0x1A; // Rename object and resend
+	static const short SLOTMYSTERY = 0x1B; // Didn't read this one
+	static const short SLOTFAILEDTOTRANSFER = 0x1C; // Failed to transfer resources to station
+	
 
 public:
-	CraftingManagerImplementation(ZoneServer* serv, ZoneProcessServerImplementation* proc);
 	
-	void loadDraftSchematicsFromDatabase();
-	DraftSchematic* loadDraftSchematic(ResultSet* result);
-	Vector<string> parseStringsFromString(const string& unparsedStrings);
-	Vector<uint32> parseUnsignedInt32sFromString(const string& unparsedInts);
+	void init();
+	
+	// LUA Methods
+	void registerFunctions();
+	void loadDraftSchematicFile() {
+		runFile("scripts/crafting/main.lua");
+	}
 
-	// Crafting Methods
-	void prepareCraftingSession(Player* player, CraftingTool * ct, DraftSchematic* ds);
-	void createDraftSchematic(Player* player, CraftingTool * ct);
-	void createTangibleObject(Player* player, CraftingTool * ct);
-	void setupIngredients(Player* player, CraftingTool * ct);
+	static int runDraftSchematicFile(lua_State* L);
+
+	static int addDraftSchematicToServer(lua_State *L);
+	void mapDraftSchematic(DraftSchematic* draftSchematic);
+	// End LUA Methods
+	
+	CraftingManagerImplementation(ZoneServer* serv, ZoneProcessServerImplementation* proc);
+
+	
+	// Methods to setup the crafting sequence
+	void prepareCraftingSession(Player* player, CraftingTool * craftingTool, DraftSchematic* draftSchematic);
+	void createDraftSchematic(Player* player, CraftingTool * craftingTool, DraftSchematic* draftSchematic);
+	void createTangibleObject(Player* player, CraftingTool * craftingTool, DraftSchematic* draftSchematic);
+	void setupIngredients(Player* player, CraftingTool * craftingTool, DraftSchematic* draftSchematic);
+	
+	
+	// Methods relating to adding Items to the crafting process
 	void addResourceToCraft(Player * player, ResourceContainer * rcno, int slot, int counter);
-	void removeResourceFromCraft(Player * player, uint64 resID, int slot, int counter);
+	bool slotIsFull(Player * player, ResourceContainer * rcno, CraftingTool * craftingTool, 
+			string& resname, int slot, int quantity, int quantityInSlot, int counter);
+	ResourceContainer * transferResourcesToSchematic(Player * player, ResourceContainer * rcno, 
+			CraftingTool * craftingTool, int quantity, string name);
+	
+	// Methods relating to removing Items to the crafting process
+	
+	void removeResourceFromCraft(Player * player, int slot, int counter);
+	void putResourceBackInInventory(Player * player, string name, int quantity);
+	
+	//
+	
 	void nextCraftingStage(Player * player, string test);
-	void createPrototype(Player * player, string test);
-	void assembleWithoutExperimenting(Player * player, CraftingTool * ct, DraftSchematic * ds, int counter);
+	void createPrototype(Player * player, string count);
+	void createSchematic(Player * player, string count);
+	
+	// Resource Handling
+
+
+	
+	void enableExperimentation(Player * player, CraftingTool * craftingTool);
+	
+	void initialAssembly(Player * player, CraftingTool * craftingTool, DraftSchematic * draftSchematic, int counter, int stage);
+	void experimentRow(DraftSchematicValues * craftingValues, 
+			int rowEffected, int pointsAttempted, float failure, int assemblyResult);
+	void setInitialCraftingValues(Player * player, CraftingTool * craftingTool, DraftSchematic * draftSchematic);
+	
+	void finishAssembly(Player * player, CraftingTool * craftingTool, DraftSchematic * draftSchematic, int counter);
+	void handleExperimenting(Player * player, int counter, int numRowsAttempted, string expstring);
 	void craftingCustomization(Player * player, string name, int condition);
 	void finishStage1(Player * player, int counter);
 	void finishStage2(Player * player, int counter);
-	void createObjectInInventory(Player * player, int timer);
+	void createObjectInInventory(Player * player, int timer, bool create);
 
-	TangibleObject * generateTangibleObject(Player * player, DraftSchematic * ds);
+	TangibleObject * generateTangibleObject(Player * player, DraftSchematic * draftSchematic);
+
+	
+	void sendSlotMessage(Player * player, int counter, short message);
+	ResourceContainer * makeNewResourceStack(Player * player, string name, int quantity);
+	
+	void calculateAssemblySuccess(Player * player, CraftingTool * craftingTool, DraftSchematic * draftSchematic, float modifier);
+	int calculateAssemblyFailureRate(Player * player, CraftingTool * craftingTool, float assemblyPoints);
+	float calculateExperimentationFailureRate(Player * player, CraftingTool * craftingTool, DraftSchematic * draftSchematic, int pointsUsed);
+	void calculateExperimentationSuccess(Player * player, CraftingTool * craftingTool, DraftSchematic * draftSchematic, float failure);
+	float calculateAssemblyModifier(CraftingTool * craftingTool);
+	float calculateAssemblyValueModifier(CraftingTool * craftingTool);
+	float calculateExperimentationValueModifier(int assemblyResult, int pointsAttempted, float failure);
+	
+	float getLog(float value);
+	
+	float getWeightedValue(Player * player, CraftingTool * craftingTool, DraftSchematic * draftSchematic, int type);
+	float getAssemblyPercentage(float value);
+	int lookUpResourceAttribute(Player * player, CraftingTool * craftingTool, int type,  int slot);
+	
+	string generateCraftedSerial();
 
 	void addDraftSchematicsFromGroupName(Player* player, const string& schematicGroupName);
 	void subtractDraftSchematicsFromGroupName(Player* player, const string& schematicGroupName);
+	
+	Vector<string> parseStringsFromString(const string& unparsedStrings);
+	Vector<uint32> parseUnsignedInt32sFromString(const string& unparsedInts);
 };
 
 #endif /*CRAFTINGMANAGERIMPLEMENTATION_H_*/

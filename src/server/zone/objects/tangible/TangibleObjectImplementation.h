@@ -56,16 +56,20 @@ which carries forward this exception.
 #include "TangibleObject.h"
 #include "CustomizationVariables.h"
 
+#include "../../packets/scene/AttributeListMessage.h"
+
+#include "../draftschematic/DraftSchematicValues.h"
+
 class Zone;
 class CreatureObject;
 class Player;
-class BuildingObject;
+class BuildingObject; 
 
 class TangibleObjectImplementation : public TangibleObjectServant {
 protected:
 	Zone* zone;
 	
-	int conditionDamage;
+	int conditionDamage; 
 	int maxCondition;
 
 	bool persistent, updated;
@@ -92,6 +96,9 @@ protected:
 	uint32 pvpStatusBitmask;
 	
 	ItemAttributes* itemAttributes;
+	
+	string craftersName;
+	string craftedSerial;
 
 public:
 	static const int HAIR = 0x30000001;
@@ -253,6 +260,11 @@ public:
 	virtual void parseItemAttributes() {
 	}
 	
+	virtual void updateCraftingValues(DraftSchematicValues * craftingValues) {
+		
+	}
+
+	
 	void generateSkillMods(class AttributeListMessage* alm, int skillModType, int skillModValue);
 
 	void insertToZone(Zone* zone);
@@ -263,13 +275,13 @@ public:
 	void sendDestroyTo(Player* player);
 
 	void close(Player* player);
-	
+	 
 	void repairItem(Player* player);
 	
 	virtual void decay(int decayRate);
 	
 	virtual void addAttributes(AttributeListMessage* alm);
-
+	
 	// setters and getters
 	inline void setContainer(SceneObject* cont, uint32 type = 0x04) {
 		container = cont;
@@ -310,6 +322,18 @@ public:
 	
 	inline void setCustomizationVariable(uint8 type, uint16 value) {
 		customizationVars.setVariable(type, value);
+	}
+	
+	inline void setCraftersName(string& n){
+		craftersName = n;
+		string temp = "craftersname";
+		itemAttributes->setStringAttribute(temp, n);
+	}
+	
+	inline void setCraftedSerial(string& s){
+		craftedSerial = s;
+		string temp = "craftedserial";
+		itemAttributes->setStringAttribute(temp, s);
 	}
 
 	inline bool isPersistent() {
@@ -377,6 +401,14 @@ public:
 		objectSubType = type;
 	}
 	
+	inline string& getCraftersName(){
+		return craftersName;
+	}
+	
+	inline string& getCraftedSerial(){
+		return craftedSerial;
+	}
+	
 	inline int getObjectSubType() { 
 		return objectSubType;
 	}
@@ -440,6 +472,8 @@ public:
 	inline int getCondition() {
 		return maxCondition - conditionDamage;
 	}
+	
+	
 };
 
 #endif /*TANGIBLEOBJECTIMPLEMENTATION_H_*/

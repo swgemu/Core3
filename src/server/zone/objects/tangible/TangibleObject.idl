@@ -54,6 +54,8 @@ import "../creature/CreatureObject";
 
 import "../player/Player";
 
+import "../draftschematic/DraftSchematicValues";
+
 interface TangibleObject implements SceneObject {
 	TangibleObject(unsigned long oid, int tp = 0);
 	
@@ -62,6 +64,10 @@ interface TangibleObject implements SceneObject {
 	}
 
 	TangibleObject(CreatureObject creature, const unicode n, const string tempname, unsigned int tempCRC, int tp = 0);
+
+	void generateAttributes(Player player);
+
+	void updateCraftingValues(DraftSchematicValues craftingValues);
 
 	void insertToZone(Zone zone);
 	void removeFromZone();
@@ -101,6 +107,8 @@ interface TangibleObject implements SceneObject {
 
 	boolean isLair();
 
+	void setCraftersName(string n);
+	void setCraftedSerial(string s);
 	SceneObject getContainer();
 
 	unicode getName();
@@ -117,6 +125,9 @@ interface TangibleObject implements SceneObject {
 	int getConditionDamage();
 	int getMaxCondition();
 	int getCondition();
+
+	string getCraftersName();
+	string getCraftedSerial();
 	
 	void setAttributes(string attributestring);
 	string getAttributes();

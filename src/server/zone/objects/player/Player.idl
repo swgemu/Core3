@@ -385,7 +385,9 @@ interface Player implements CreatureObject {
 	void removeResourceFromCraft(unsigned long resID, int slot, int counter);
 	void nextCraftingStage(string test);
 	void craftingCustomization(string name, int condition);
-	void createPrototype(string test);
+	void createPrototype(string count);
+	void createSchematic(string count);
+	void handleExperimenting(int count, int numRowsAttempted, string expstring);
 	
 	// Draft Schematic stuff
 	void sendDraftSchematics();

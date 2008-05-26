@@ -49,7 +49,10 @@ import "../../creature/CreatureObject";
 import "../../player/Player";
 
 import "../TangibleObject";
-
+import "../../scene/SceneObject";
+import "../Container";
+import "../../../packets";
+import "../../player/Player";
 import "../../draftschematic/DraftSchematic";
 
 import "CraftingStation";
@@ -64,9 +67,12 @@ interface CraftingTool implements TangibleObject {
 	}
  
 	void sendTo(Player player, boolean doClose = true);
-	void generateAttributes(Player player);
+	void generateAttributes(SceneObject obj);
+
+	void clearResourceSlots();
+	void retriveHopperItem(Player  player);
  
- 	void cleanUp();
+ 	void cleanUp(Player player);
  
 	int useObject(Player player);
  
@@ -75,17 +81,34 @@ interface CraftingTool implements TangibleObject {
 	//setters
 	void setToolEffectiveness(float eff);
 	void setCraftingState(int s);
-	void setTano(TangibleObject tano);
-	void setDs(DraftSchematic ds);
+	void setWorkingTano(TangibleObject tano);
+	void setWorkingDraftSchematic(DraftSchematic draftSchematic);
 	void setInsertCount(int count);
+	void setStatusReady();
+	void setStatusWorking();
+	void setStatusFinished();
+	void setAssemblyResults(int results);
+	void setRecoverResources(boolean in);
+
 	void increaseInsertCount();
+	void addResourceToSlot(int slot, string name, unsigned long resID, int quantity);
+	void addTempResourceID(unsigned long resID);
 
 	//getters
 	float getToolEffectiveness();
 	int getCraftingState();
-	TangibleObject getTano();
-	DraftSchematic getDs();
+	TangibleObject getWorkingTano();
+	DraftSchematic getWorkingDraftSchematic();
 	int getInsertCount();
- 
+	int getResourceInSlot(string resname, int slot);
+	unsigned long getResourceIDInSlot(int slot);
+	int getSlotCount();
+	Container getHopper(Player player);
+	int getAssemblyResults();
+	float getCraftingToolModifier();
+
+	boolean isExperimenting();
 	boolean isReady();
+	boolean isFinished();
+	boolean isWorking();
 }

@@ -266,6 +266,27 @@ TangibleObject* ItemManagerImplementation::createPlayerObject(Player* player, Re
 	return item;
 }
 
+TangibleObject* ItemManagerImplementation::initializeTangibleForCrafting(
+		int objecttype, uint64 objectid, uint32 objectcrc, string objectn,
+		string objecttemp, bool equipped){
+ 
+	unicode objectname(objectn);
+
+	TangibleObject * item = NULL;
+	
+	item = createPlayerObjectTemplate(objecttype, objectid, objectcrc,
+			objectname.c_str(), objecttemp, equipped);
+	
+	if (item == NULL) {
+		
+		cout << "NULL ITEM" << endl;
+		return NULL;
+		
+	}
+	
+	return item;
+}
+
 //Temporary Fix until we get a global clone() method implemented
 //TODO: remove this function when a global clone() method is implemented for all objects
 TangibleObject* ItemManagerImplementation::clonePlayerObjectTemplate(TangibleObject* templ) {	

@@ -15,6 +15,14 @@ class Player;
 
 class TangibleObject;
 
+class SceneObject;
+
+class Container;
+
+class packets;
+
+class Player;
+
 class DraftSchematic;
 
 class CraftingStation;
@@ -29,9 +37,13 @@ public:
 
 	void sendTo(Player* player, bool doClose = true);
 
-	void generateAttributes(Player* player);
+	void generateAttributes(SceneObject* obj);
 
-	void cleanUp();
+	void clearResourceSlots();
+
+	void retriveHopperItem(Player* player);
+
+	void cleanUp(Player* player);
 
 	int useObject(Player* player);
 
@@ -41,25 +53,57 @@ public:
 
 	void setCraftingState(int s);
 
-	void setTano(TangibleObject* tano);
+	void setWorkingTano(TangibleObject* tano);
 
-	void setDs(DraftSchematic* ds);
+	void setWorkingDraftSchematic(DraftSchematic* draftSchematic);
 
 	void setInsertCount(int count);
 
+	void setStatusReady();
+
+	void setStatusWorking();
+
+	void setStatusFinished();
+
+	void setAssemblyResults(int results);
+
+	void setRecoverResources(bool in);
+
 	void increaseInsertCount();
+
+	void addResourceToSlot(int slot, string& name, unsigned long long resID, int quantity);
+
+	void addTempResourceID(unsigned long long resID);
 
 	float getToolEffectiveness();
 
 	int getCraftingState();
 
-	TangibleObject* getTano();
+	TangibleObject* getWorkingTano();
 
-	DraftSchematic* getDs();
+	DraftSchematic* getWorkingDraftSchematic();
 
 	int getInsertCount();
 
+	int getResourceInSlot(string& resname, int slot);
+
+	unsigned long long getResourceIDInSlot(int slot);
+
+	int getSlotCount();
+
+	Container* getHopper(Player* player);
+
+	int getAssemblyResults();
+
+	float getCraftingToolModifier();
+
+	bool isExperimenting();
+
 	bool isReady();
+
+	bool isFinished();
+
+	bool isWorking();
 
 protected:
 	CraftingTool(DummyConstructorParameter* param);
@@ -79,9 +123,13 @@ public:
 
 	void sendTo(Player* player, bool doClose);
 
-	void generateAttributes(Player* player);
+	void generateAttributes(SceneObject* obj);
 
-	void cleanUp();
+	void clearResourceSlots();
+
+	void retriveHopperItem(Player* player);
+
+	void cleanUp(Player* player);
 
 	int useObject(Player* player);
 
@@ -91,26 +139,61 @@ public:
 
 	void setCraftingState(int s);
 
-	void setTano(TangibleObject* tano);
+	void setWorkingTano(TangibleObject* tano);
 
-	void setDs(DraftSchematic* ds);
+	void setWorkingDraftSchematic(DraftSchematic* draftSchematic);
 
 	void setInsertCount(int count);
 
+	void setStatusReady();
+
+	void setStatusWorking();
+
+	void setStatusFinished();
+
+	void setAssemblyResults(int results);
+
+	void setRecoverResources(bool in);
+
 	void increaseInsertCount();
+
+	void addResourceToSlot(int slot, string& name, unsigned long long resID, int quantity);
+
+	void addTempResourceID(unsigned long long resID);
 
 	float getToolEffectiveness();
 
 	int getCraftingState();
 
-	TangibleObject* getTano();
+	TangibleObject* getWorkingTano();
 
-	DraftSchematic* getDs();
+	DraftSchematic* getWorkingDraftSchematic();
 
 	int getInsertCount();
 
+	int getResourceInSlot(string& resname, int slot);
+
+	unsigned long long getResourceIDInSlot(int slot);
+
+	int getSlotCount();
+
+	Container* getHopper(Player* player);
+
+	int getAssemblyResults();
+
+	float getCraftingToolModifier();
+
+	bool isExperimenting();
+
 	bool isReady();
 
+	bool isFinished();
+
+	bool isWorking();
+
+protected:
+	string _param1_addResourceToSlot__int_string_long_int_;
+	string _param0_getResourceInSlot__string_int_;
 };
 
 class CraftingToolHelper : public DistributedObjectClassHelper, public Singleton<CraftingToolHelper> {

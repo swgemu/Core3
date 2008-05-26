@@ -100,6 +100,7 @@ TangibleObjectImplementation::~TangibleObjectImplementation() {
 	}
 	
 	delete itemAttributes;	
+
 }
 
 void TangibleObjectImplementation::initialize() { 
@@ -131,9 +132,10 @@ void TangibleObjectImplementation::initialize() {
 	pvpStatusBitmask = 0;
 	
 	itemAttributes = new ItemAttributes();
+	
 }
 
-void TangibleObjectImplementation::parseAttributes() {
+void TangibleObjectImplementation::parseAttributes() { 
 		
 	maxCondition = itemAttributes->getMaxCondition();
 	conditionDamage = (maxCondition - itemAttributes->getCurrentCondition());

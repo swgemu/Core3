@@ -231,7 +231,7 @@ uint64 ObjectControllerMessage::parseDataTransformWithParent(Player* player, Mes
 		player->updateServerMovementStamp();
 			
 		if (serverStamp + 250 < (uint64)deltaStamp) {
-			stringstream deltas;
+			stringstream deltas; 
 			deltas << "speed hack detected " << "deltaStamp:[" << deltaStamp << "] serversStamp:[" << serverStamp << "]";
 			player->info(deltas.str());
 						
@@ -623,26 +623,30 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player, Message* 
 		parsePowerupDragDrop(player, pack);
 		break;
 	case (0x5FD21EB0):  // Schematic Resources
-		//parseRequestDraftSlotsBatch(player, pack);
+		parseRequestDraftSlotsBatch(player, pack);
 		break;
 	case (0x9A8B385C): // Schematic Experimental Properties
-		//parseRequestResourceWeightsBatch(player, pack);
+		parseRequestResourceWeightsBatch(player, pack);
 		break;
 	case (0x094AC516): // Request Crafting Session
-		//parseRequestCraftingSession(player, pack);
+		parseRequestCraftingSession(player, pack);
 		break;
 	case (0x89242E02): // Select Draft Schematic
-		//parseSelectDraftSchematic(player, pack);
+		parseSelectDraftSchematic(player, pack);
 		break;
 	case (0x83250E2A): // Cancel Crafting Session
-		//parseCancelCraftingSession(player, pack);
+		parseCancelCraftingSession(player, pack);
 		break;
 	case (0x6AD8ED4D): // Next crafting stage
-		//parseNextCraftingStage(player, pack);
+		parseNextCraftingStage(player, pack);
 		break;
 	case (0xD61FF415): // Create Prototype
-		//parseCreatePrototype(player, pack);
+		parseCreatePrototype(player, pack);
 		break;
+	case (0xF4B66795): // Create Schematic
+		parseCreateSchematic(player, pack);
+		break;
+		
 	case (0xEF3CBEDB): //loot
 		player->lootCorpse(false);
 		break;
@@ -941,9 +945,12 @@ void ObjectControllerMessage::parseGetAttributes(Player* player, Message* pack) 
 			}
 		}
 
-		if (object != NULL)
+		if (object != NULL){
+
 			object->generateAttributes(player);
-		else {
+			
+		} else {
+
 			AttributeListMessage* msg = new AttributeListMessage(objid);
 			player->sendMessage(msg);
 		}
@@ -1728,10 +1735,22 @@ void ObjectControllerMessage::parseRequestCraftingSession(Player* player, Messag
 	//Check to see if the correct obj id is in the player's datapad
 	CraftingTool* ct = (CraftingTool*)player->getInventoryItem(ctSceneObjID);
 	if(ct != NULL) {
-		ct->sendToolStart(player);
+		if(ct->isReady()){
+			
+			ct->sendToolStart(player);
+			
+		} else if(ct->isFinished()){
+			
+			player->sendSystemMessage("Cannot start crafting session with item in hopper");
+			
+		} else {
+			
+			player->sendSystemMessage("Crafting tool is busy");
+			
+		}
 	} else {
-		// This eles should never execute
-		player->sendSystemMessage("Crafting Tool Not Found.  Please inform Link of this error.");
+		// This case is reached if double clicking on a crafting station
+		player->sendSystemMessage("Crafting station clicked, feature not yet implementated");
 	}	
 }
 
@@ -1740,74 +1759,102 @@ void ObjectControllerMessage::parseCancelCraftingSession(Player* player, Message
 	//TODO: Try to find a Cancel Crafting Session server->client packet in live for researching
 
 	// This is just a guess as to what the client wants when it sends a Cancel Crafting Session packet
+	CraftingTool * ct = player->getCurrentCraftingTool();
 	
-	// DPlay9
-	PlayerObjectDeltaMessage9* dplay9 = new PlayerObjectDeltaMessage9(player->getPlayerObject());
-	dplay9->setCraftingState(0);
-	dplay9->close();
-	player->sendMessage(dplay9);
+	if(ct != NULL){
+		// DPlay9
+		PlayerObjectDeltaMessage9* dplay9 = new PlayerObjectDeltaMessage9(player->getPlayerObject());
+		dplay9->setCraftingState(0);
+		ct->setCraftingState(0);
+		dplay9->close();
+		player->sendMessage(dplay9);
+		
+		// Clean up crafting here, delete, sceneremove unneeded objects
+		ct->cleanUp(player);
+	}
 	
-	// Clean up crafting here, delete, sceneremove unneeded objects
-	//CraftingTool * ct = player->getCurrentCraftingTool();
-	
-	//cout << "Crafting Closed!\n";
 }
 
-void ObjectControllerMessage::parseSelectDraftSchematic(Player* player, Message* packet) {
+void ObjectControllerMessage::parseSelectDraftSchematic(Player* player,
+		Message* packet) {
 
 	packet->shiftOffset(8);
-		
+
 	unicode uniIndexOfSelectedSchematic;
 	packet->parseUnicode(uniIndexOfSelectedSchematic);
-		
+
 	StringTokenizer tokenizer(uniIndexOfSelectedSchematic.c_str());
-		
+
 	int indexOfSelectedSchematic;
-		
-	if(tokenizer.hasMoreTokens())
+
+	if (tokenizer.hasMoreTokens())
 		indexOfSelectedSchematic = tokenizer.getIntToken();
-	
+
 	// Find the selected schematic
-	DraftSchematic* ds = player->getDraftSchematic(indexOfSelectedSchematic); 
-	
-	if(ds != NULL) {
-		CraftingTool * ct = player->getCurrentCraftingTool();
-		player->prepareCraftingSession(ct, ds);
+	DraftSchematic* draftSchematic = player->getDraftSchematic(indexOfSelectedSchematic);
+
+	if (draftSchematic != NULL) {
+		
+		CraftingTool * craftingTool = player->getCurrentCraftingTool();
+
+		if (craftingTool != NULL) {
+
+			try {
+
+				craftingTool->lock();
+
+				player->prepareCraftingSession(craftingTool, draftSchematic);
+
+				craftingTool->unlock();
+
+			}
+			catch(...) {
+
+				craftingTool->unlock();
+
+			}
+
+		}
 	} else {
 		// This eles should never execute
 		player->sendSystemMessage("Selected Draft Schematic was invalid.  Please inform Link of this error.");
 	}
 
 }
-void ObjectControllerMessage::parseAddCraftingResource(Player* player, Message* packet) {
+void ObjectControllerMessage::parseAddCraftingResource(Player* player,
+		Message* packet) {
 
 	packet->shiftOffset(12);
-	
+
 	uint64 resourceObjectID = packet->parseLong();
-	
+
 	int slot = packet->parseInt();
-	
+
 	packet->shiftOffset(4);
-	
+
 	int counter = packet->parseByte();
 
-	ResourceContainer * rnco = (ResourceContainer*)player->getInventoryItem(resourceObjectID);
-	if(rnco != NULL) {
-		player->addResourceToCraft(rnco, slot, counter);
+	ResourceContainer * rnco =
+			(ResourceContainer*)player->getInventoryItem(resourceObjectID);
+
+	if (rnco != NULL) {
+
+			player->addResourceToCraft(rnco, slot, counter);
+
 	} else {
+
 		// This eles should never execute
 		player->sendSystemMessage("Add resource invalid, contact kyle");
+
 	}
 }
 void ObjectControllerMessage::parseRemoveCraftingResource(Player* player, Message* packet) {
-
+	
 	packet->shiftOffset(12);
 	
 	int slot = packet->parseInt();
 	
 	uint64 resID = packet->parseLong();
-	
-	//packet->shiftOffset(4);
 	
 	int counter = packet->parseByte();
 
@@ -1818,12 +1865,12 @@ void ObjectControllerMessage::parseNextCraftingStage(Player* player, Message* pa
 
 	packet->shiftOffset(8);
 	
-	unicode test;
-	packet->parseUnicode(test);
+	unicode d;
+	packet->parseUnicode(d);
 	
-	string test2 = test.c_str();
+	string data = d.c_str();
 	
-	player->nextCraftingStage(test2);
+	player->nextCraftingStage(data);
 	
 }
 void ObjectControllerMessage::parseCraftCustomization(Player* player, Message* packet){
@@ -1837,20 +1884,62 @@ void ObjectControllerMessage::parseCraftCustomization(Player* player, Message* p
 	
 	packet->shiftOffset(1);
 	
-    int condition = packet->parseInt();
-    
+    int condition = packet->parseInt(); 
+     
     player->craftingCustomization(name, condition);
 }
 void ObjectControllerMessage::parseCreatePrototype(Player* player, Message* packet){
 	
 	packet->shiftOffset(8);
 	
-	unicode test;
-	packet->parseUnicode(test);
+	unicode d;
+	packet->parseUnicode(d);
 	
-	string test2 = test.c_str();
+	string count = d.c_str();
 	
-	player->createPrototype(test2);
+	player->createPrototype(count);
+}
+
+void ObjectControllerMessage::parseCreateSchematic(Player* player, Message* packet){
+	
+	packet->shiftOffset(8);
+	
+	unicode d;
+	packet->parseUnicode(d);
+	
+	string count = d.c_str();
+	
+	player->createSchematic(count);
+}
+
+void ObjectControllerMessage::parseExperimentation(Player * player, Message* pack) {
+	ZoneClientImplementation* client = (ZoneClientImplementation*) pack->getClient();
+
+	if (player == NULL)
+		return;
+	
+	pack->shiftOffset(12);
+
+	int counter = pack->parseByte();
+	
+	int numRowsAttempted = pack->parseInt();
+	
+	int rowEffected, pointsAttempted;
+	stringstream ss;
+	
+	for(int i = 0; i < numRowsAttempted; ++i){
+		
+		rowEffected = pack->parseInt();
+		pointsAttempted = pack->parseInt();
+		
+		ss << rowEffected << " " << pointsAttempted << " ";
+		
+	}
+	
+	string expstring = ss.str(); 
+	
+	player->handleExperimenting(counter, numRowsAttempted, expstring);
+   	
 }
 
 void ObjectControllerMessage::parsePickup(Player* player, Message* pack) {

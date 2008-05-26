@@ -38,17 +38,18 @@ void DraftSchematicExpPropGroup::addExperimentalProperty(const string& experimen
 		((DraftSchematicExpPropGroupImplementation*) _impl)->addExperimentalProperty(experimentalPropertyType, weight);
 }
 
-void DraftSchematicExpPropGroup::sendToPlayer(ObjectControllerMessage* msg) {
+void DraftSchematicExpPropGroup::sendToPlayer(ObjectControllerMessage* msg, int count) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 7);
 		method.addObjectParameter(msg);
+		method.addSignedIntParameter(count);
 
 		method.executeWithVoidReturn();
 	} else
-		((DraftSchematicExpPropGroupImplementation*) _impl)->sendToPlayer(msg);
+		((DraftSchematicExpPropGroupImplementation*) _impl)->sendToPlayer(msg, count);
 }
 
 bool DraftSchematicExpPropGroup::containsExpPropType(const string& expPropType) {
@@ -130,7 +131,7 @@ Packet* DraftSchematicExpPropGroupAdapter::invokeMethod(uint32 methid, Distribut
 		addExperimentalProperty(inv->getAsciiParameter(_param0_addExperimentalProperty__string_int_), inv->getUnsignedIntParameter());
 		break;
 	case 7:
-		sendToPlayer((ObjectControllerMessage*) inv->getObjectParameter());
+		sendToPlayer((ObjectControllerMessage*) inv->getObjectParameter(), inv->getSignedIntParameter());
 		break;
 	case 8:
 		resp->insertBoolean(containsExpPropType(inv->getAsciiParameter(_param0_containsExpPropType__string_)));
@@ -158,8 +159,8 @@ void DraftSchematicExpPropGroupAdapter::addExperimentalProperty(const string& ex
 	return ((DraftSchematicExpPropGroupImplementation*) impl)->addExperimentalProperty(experimentalPropertyType, weight);
 }
 
-void DraftSchematicExpPropGroupAdapter::sendToPlayer(ObjectControllerMessage* msg) {
-	return ((DraftSchematicExpPropGroupImplementation*) impl)->sendToPlayer(msg);
+void DraftSchematicExpPropGroupAdapter::sendToPlayer(ObjectControllerMessage* msg, int count) {
+	return ((DraftSchematicExpPropGroupImplementation*) impl)->sendToPlayer(msg, count);
 }
 
 bool DraftSchematicExpPropGroupAdapter::containsExpPropType(const string& expPropType) {

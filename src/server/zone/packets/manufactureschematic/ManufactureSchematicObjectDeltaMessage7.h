@@ -49,6 +49,7 @@
 
 #include "../../objects/draftschematic/DraftSchematic.h"
 #include "../../objects/draftschematic/DraftSchematicExpPropGroup.h"
+#include "../../objects/draftschematic/DraftSchematicValues.h"
 
 class ManufactureSchematicObjectDeltaMessage7 : public DeltaMessage {
 public:
@@ -56,9 +57,9 @@ public:
 		DeltaMessage(sceneObjSchematic, 0x4D53434F, 7) {
 	}
 
-	void fullUpdate(DraftSchematic* ds, int size, int slot,
+	void fullUpdate(DraftSchematic* draftSchematic, int size, int slot,
 			uint64 resourceID, int quantity) {
-		updateIngredientList(ds);
+		updateIngredientList(draftSchematic);
 		updateSlot(size+1, size+1, slot);
 		updateResource(size+1, size+1, slot, resourceID);
 		updateQuantity(size+1, size+1, slot, quantity);
@@ -66,7 +67,7 @@ public:
 		update5(size+1, size+1, slot);
 		update6(size, size, slot);
 		update7();
-		initializeExperimentalValues(ds);
+		initializeExperimentalValues(draftSchematic);
 	}
 	
 	void partialUpdate(int slot, int counter, uint64 resourceID, int quantity) { 
@@ -77,24 +78,43 @@ public:
 		update7();	
 	}
 	
-	void updateForAssembly(){
-		sendWeirdCrap();
-		update9();
-		update0B();
-		update0C();
-		update12();
+	void removeResource(int slot, int counter){
+		startUpdate(1);
+		startList(1, counter);
+		removeListIntElement(slot, 0);
+		
+		startUpdate(2);
+		startList(1, counter);
+		removeListIntElement(slot, 0);
+
+		startUpdate(3);
+		startList(1, counter);
+		removeListIntElement(slot, 0);
+		
+		startUpdate(5);
+		startList(1, counter);
+		removeListIntElement(slot, 0xFFFFFFFF);
+		
+		update7();	
+	}
+	
+	void updateForAssembly(DraftSchematic * draftSchematic){
+		update9(draftSchematic);
+		update0B(draftSchematic);
+		update0C(draftSchematic);
+		update12(draftSchematic);
 	}
 
-	void updateIngredientList(DraftSchematic * ds) {
+	void updateIngredientList(DraftSchematic * draftSchematic) {
 
 		startUpdate(0);
 
-		int ingredientListSize = ds->getIngredientListSize();
+		int ingredientListSize = draftSchematic->getIngredientListSize();
 		
 		startList(ingredientListSize, ingredientListSize);
 
 		for (int i = 0; i < ingredientListSize; i++) {
-			DraftSchematicIngredient* dsi = ds->getIngredient(i);
+			DraftSchematicIngredient* dsi = draftSchematic->getIngredient(i);
 			if (dsi != NULL) {
 				insertByte(1);
 				insertShort(i);
@@ -189,18 +209,21 @@ public:
 
 	}
 
-	void initializeExperimentalValues(DraftSchematic* ds) {
+	void initializeExperimentalValues(DraftSchematic* draftSchematic) {
 
+		DraftSchematicValues * craftingValues = draftSchematic->getCraftingValues();
+		
 		startUpdate(8);
 		
-		int expPropGroupListSize = ds->getExpPropTitlesListSize();
+		int titleCount = craftingValues->getExperimentalPropertyTitleSize();
+		int counter = draftSchematic->getExpCounter();
 		
-		insertInt(expPropGroupListSize);
-		insertInt(expPropGroupListSize);
+		insertInt(titleCount);
+		insertInt(titleCount);
 		
 		
-		for(int i = 0; i < expPropGroupListSize; i++) {
-			string title = ds->getExpPropTitle(i);
+		for(int i = 0; i < titleCount; i++) {
+			string title = craftingValues->getExperimentalPropertyTitle(i);
 			
 			insertByte(1);
 			insertShort(i);
@@ -212,134 +235,115 @@ public:
 		// Initialize update 9************
 		startUpdate(9);
 
-		startList(4, 4);
+		startList(titleCount, titleCount);  // titleCount, counter
 
-		for (int i = 0; i < 4; i++) {
+		for (int i = 0; i < titleCount; i++) {
 			addListFloatElement(i, 0); 
 		}
 		//*********************************
 		// Initialize update 0A************
-		startUpdate(10);
+		startUpdate(0x0A);
 
-		startList(4, 4);
+		startList(titleCount, titleCount);
 
-		for (int i = 0; i < 4; i++) {
-			addListFloatElement(i, 0);
+		for (int i = 0; i < titleCount; i++) {
+			addListFloatElement(i, counter);
 		}
 		//*********************************
 		// Initialize update 0B************
-		startUpdate(11);
+		startUpdate(0x0B);
 
-		startList(4, 4);
+		startList(titleCount, titleCount);
 
-		for (int i = 0; i < 4; i++) {
-			addListFloatElement(i, 0);
+		for (int i = 0; i < titleCount; i++) {
+			addListFloatElement(i, counter);
 		}
 		//*********************************
 		// Initialize update 0C************
-		startUpdate(12);
+		startUpdate(0x0C);
 
-		startList(4, 4);
+		startList(titleCount, titleCount);
 
-		for (int i = 0; i < 4; i++) {
-			addListFloatElement(i, 0);
+		for (int i = 0; i < titleCount; i++) {
+			addListFloatElement(i, counter);
 		}
 		//*********************************
 		
 	}
 	
 	// This should send the experimental values shown in the Screen after hitting assemble
-	void update9() {
+	void update9(DraftSchematic * draftSchematic) {
 		startUpdate(9);
+		
+		DraftSchematicValues * craftingValues = draftSchematic->getCraftingValues();
+		
+		int titleCount = craftingValues->getExperimentalPropertyTitleSize();
 
-		startList(4, 8);
+		startList(titleCount, draftSchematic->getExpCounter());
+		
+		for (int i = 0; i < titleCount; ++i) {
 
-		for (int i = 0; i < 4; i++) {
-			removeListFloatElement(i, 0.15);
+			removeListFloatElement(i, craftingValues->getCurrentPercentage(i));
+			
 		}
 	}
 
-	void update0A() {
+	void update0A(DraftSchematic * draftSchematic) {
+		
+		DraftSchematicValues * craftingValues = draftSchematic->getCraftingValues();
 
 		startUpdate(0x0A);
 
-		startList(4, 8);
+		int titleCount = craftingValues->getExperimentalPropertyTitleSize();
 
-		for (int i = 0; i < 4; i++) {
+		startList(titleCount, draftSchematic->getExpCounter());
+
+		for (int i = 0; i < titleCount; i++) {
 			removeListFloatElement(i, 1.0);
 		}
 	}
-
-	void update0B() {
+	// I think this is usually 1.0
+	void update0B(DraftSchematic * draftSchematic) {
+		
+		DraftSchematicValues * craftingValues = draftSchematic->getCraftingValues();
 
 		startUpdate(0x0B);
 
-		startList(4, 8);
+		int titleCount = craftingValues->getExperimentalPropertyTitleSize();
 
-		for (int i = 0; i < 4; i++) {
-			removeListFloatElement(i, 1.0);
+		startList(titleCount, draftSchematic->getExpCounter());
+
+		for (int i = 0; i < titleCount; i++) {
+			removeListFloatElement(i, 1.0f);
 		}
 	}
-	void update0C() {
+	// This is the MAX experimental value.  How many bars
+	void update0C(DraftSchematic * draftSchematic) {
+		
+		DraftSchematicValues * craftingValues = draftSchematic->getCraftingValues();
 
 		startUpdate(0x0C);
 
-		startList(4, 8);
+		int titleCount = craftingValues->getExperimentalPropertyTitleSize();
 
-		for (int i = 0; i < 4; i++) {
-			removeListFloatElement(i, 0.50);
+		startList(titleCount, draftSchematic->getExpCounter());
+
+		for (int i = 0; i < titleCount; i++) {
+
+			removeListFloatElement(i, craftingValues->getMaxPercentage(i));
+			
 		}
 	}
 
-	void update12(){
-		startUpdate(0x12);
-		insertFloat(0x42BFAAAB);
+	void update12(DraftSchematic * draftSchematic){
+		startUpdate(0x12); 
+		insertFloat(39.0f);//draftSchematic->getExpFailure());
 	}
 	
 	void update14() {
 
 		startUpdate(0x14);
 		insertByte(1);
-	}
-	
-	void sendWeirdCrap(){
-		startUpdate(0);
-		startList(1,4);
-		insertByte(0);
-		insertShort(2);
-		
-		startUpdate(1);
-		startList(1,6);
-		insertByte(0);
-		insertShort(2);
-		
-		startUpdate(2);
-		startList(1,6);
-		insertByte(0);
-		insertShort(2);
-		
-		startUpdate(3);
-		startList(1,6);
-		insertByte(0);
-		insertShort(2);
-		
-		startUpdate(4);
-		startList(1,4);
-		insertByte(0);
-		insertShort(2);
-		
-		startUpdate(5);
-		startList(1,6);
-		insertByte(0);
-		insertShort(2);
-		
-		startUpdate(6);
-		startList(1,7);
-		insertByte(0);
-		insertShort(2);
-		
-		update7();
-		
 	}
 
 };

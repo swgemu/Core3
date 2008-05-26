@@ -37,6 +37,8 @@ public:
 
 	void createPlayerItem(Player* player, TangibleObject* item);
 
+	TangibleObject* initializeTangibleForCrafting(int objecttype, unsigned long long objectid, unsigned long long objectcrc, string& objectn, string& objecttemp, bool equipped);
+
 	void savePlayerItem(Player* player, TangibleObject* item);
 
 	void deletePlayerItem(Player* player, TangibleObject* item, bool notify);
@@ -89,6 +91,8 @@ public:
 
 	void createPlayerItem(Player* player, TangibleObject* item);
 
+	TangibleObject* initializeTangibleForCrafting(int objecttype, unsigned long long objectid, unsigned long long objectcrc, string& objectn, string& objecttemp, bool equipped);
+
 	void savePlayerItem(Player* player, TangibleObject* item);
 
 	void deletePlayerItem(Player* player, TangibleObject* item, bool notify);
@@ -110,6 +114,8 @@ public:
 	void giveBFItemSet(Player* player, string& set);
 
 protected:
+	string _param3_initializeTangibleForCrafting__int_long_long_string_string_bool_;
+	string _param4_initializeTangibleForCrafting__int_long_long_string_string_bool_;
 	string _param0_getBFProf__string_;
 	string _param1_giveBFItemSet__Player_string_;
 };

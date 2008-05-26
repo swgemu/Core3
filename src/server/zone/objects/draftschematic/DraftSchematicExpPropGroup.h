@@ -15,7 +15,7 @@ public:
 
 	void addExperimentalProperty(const string& experimentalPropertyType, unsigned int weight);
 
-	void sendToPlayer(ObjectControllerMessage* msg);
+	void sendToPlayer(ObjectControllerMessage* msg, int count);
 
 	bool containsExpPropType(const string& expPropType);
 
@@ -45,7 +45,7 @@ public:
 
 	void addExperimentalProperty(const string& experimentalPropertyType, unsigned int weight);
 
-	void sendToPlayer(ObjectControllerMessage* msg);
+	void sendToPlayer(ObjectControllerMessage* msg, int count);
 
 	bool containsExpPropType(const string& expPropType);
 

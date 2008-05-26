@@ -45,24 +45,45 @@ which carries forward this exception.
 #ifndef CRAFTINGTOOLIMPLEMENTATION_H_
 #define CRAFTINGTOOLIMPLEMENTATION_H_
  
+#include "../../../managers/crafting/CraftingManager.h"
+
 #include "../../../packets.h"
 #include "CraftingTool.h"
+#include "../ContainerImplementation.h"
  
 class CreatureObject;
 class SceneObject;
 class Player;
 class CreateObjectEvent;
+class Container;
 
  
 class CraftingToolImplementation : public CraftingToolServant {
 protected:
 	float effectiveness;
+	int tooltype;
 	int state;
 	TangibleObject * currentTano;
-	DraftSchematic * currentDs;
+	DraftSchematic * currentDraftSchematic;
+	Vector<string> resourceSlots;
+	Vector<uint64> resourceSlotsID;
+	Vector<int> resourceSlotsCount;
+	Vector<uint64> partialResources;
+	Container* hopper;
 	
+	string status;
+	int assemblyResults; 
+	
+	int assemblyMod;
+	int experimentationMod;
+	 
 	// To see if is first resource inserted in a crafting session
 	int insertCount;
+	
+	bool experimentingEnabled;
+	bool recoverResources;
+	
+	float craftingToolModifier;
  
 public:
 	static const int CLOTHING = 1; // Clothing and Armor Crafting Tool
@@ -80,57 +101,75 @@ public:
 	~CraftingToolImplementation();
  
 	void init();
+	
+	int useObject(Player* player);	
 	void sendTo(Player* player, bool doClose = true);
-	void generateAttributes(SceneObject* player);
+	
+	void sendRadialResponseTo(Player* player, ObjectMenuResponse* omr);
+	
+	void updateCraftingValues(DraftSchematicValues * craftingValues);
+	
+	void parseItemAttributes();
+	void generateAttributes(SceneObject* obj);
 	void addAttributes(AttributeListMessage* alm);
- 
-	int useObject(Player* player);
- 
+	
 	void sendToolStart(Player* player);
 	
+	void setWorkingTano(TangibleObject * tano);
+	void setWorkingDraftSchematic(DraftSchematic * draftSchematic);
+	
+	void clearResourceSlots();
+	
+	Container * getHopper(Player * player);
+	void retriveHopperItem(Player * player);
+	
+	void cleanUp(Player * player);
+  
+	void updateCraftedValues(Player * player, DraftSchematic * draftSchematic);
 	// Setters
+
 	inline void setToolEffectiveness(float eff) {
 		effectiveness = eff;
+		string temp = "effectiveness";
+		itemAttributes->setFloatAttribute(temp, eff);
 	}
 	
 	inline void setCraftingState(int s){
 		state = s;
 	}
 	
-	inline void setTano(TangibleObject * tano){
-		if(currentTano != NULL) {
-			currentTano->finalize();
-			currentTano = NULL;
-		}
-
-		currentTano = tano;
+	inline void setStatusReady(){
+		status = "@crafting:tool_status_ready";
 	}
 	
-	inline void setDs(DraftSchematic * ds){
-		if(currentDs != NULL) {
-			currentDs->finalize();
-			currentDs = NULL;
-		}
-			
-		// This will be replaced but the built in cloning method when available
-		DraftSchematic* clonedDS = ds->dsClone(ds);
-		currentDs = clonedDS;
+	inline void setStatusWorking(){
+		status = "@crafting:tool_status_working";
 	}
 	
-	inline void cleanUp() {
-		if(currentDs != NULL) {
-			currentDs->finalize();
-			currentDs = NULL;
-		}
-		
-		if(currentTano != NULL) {
-			currentTano->finalize();
-			currentTano = NULL;
-		}
+	inline void setStatusFinished(){
+		status = "@crafting:tool_status_finished";
 	}
 	
 	inline void setInsertCount(int count){
 		insertCount = count;
+	}
+	
+	inline void setAssemblyResults(int results){
+		assemblyResults = results;
+	}
+	
+	inline void setRecoverResources(bool in){
+		recoverResources = in;
+	}
+	
+	inline void addResourceToSlot(int slot, string name, uint64 resID, int quantity){
+		resourceSlots.setElementAt(slot, name);
+		resourceSlotsCount.setElementAt(slot, quantity);
+		resourceSlotsID.setElementAt(slot, resID);
+	}
+	
+	inline void addTempResourceID(uint64 resID){
+		partialResources.add(resID);
 	}
 	
 	inline void increaseInsertCount(){
@@ -145,20 +184,53 @@ public:
 		return effectiveness;
 	}
  
-	inline TangibleObject* getTano(){
+	inline TangibleObject* getWorkingTano(){
 		return currentTano;
 	}
 	
-	inline DraftSchematic* getDs(){
-		return currentDs;
+	inline DraftSchematic* getWorkingDraftSchematic(){
+		return currentDraftSchematic; 
 	}
 	
 	inline int getInsertCount(){
-		return insertCount;
+		return insertCount; 
 	}
 	
+	inline int getResourceInSlot(string& resname, int slot){
+		resname =  resourceSlots.get(slot);
+		return  resourceSlotsCount.get(slot);
+	}
+	
+	inline uint64 getResourceIDInSlot(int slot){
+		return  resourceSlotsID.get(slot);
+	}
+	
+	inline int getSlotCount(){
+		return  resourceSlotsID.size();
+	}
+	
+	inline int getAssemblyResults(){
+		return assemblyResults;
+	}
+	
+	inline float getCraftingToolModifier(){
+		return assemblyResults;
+	}
+
 	bool isReady() {
-		return true;
+		return status == "@crafting:tool_status_ready";
+	}
+	
+	bool isFinished() {
+		return status == "@crafting:tool_status_finished";
+	}
+	
+	bool isWorking() {
+		return status == "@crafting:tool_status_working";
+	}
+	
+	bool isExperimenting() {
+		return experimentingEnabled;
 	}
 };
  

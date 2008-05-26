@@ -65,6 +65,10 @@ public:
 		addAsciiUpdate(4, app);
 	}
 	
+	void updateComplexity(float complexity) {
+		addFloatUpdate(0, complexity);
+	}
+	
 	void updateName(string name) {
 		addUnicodeUpdate(2, name);
 	}

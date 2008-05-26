@@ -126,12 +126,30 @@ void ItemManager::createPlayerItem(Player* player, TangibleObject* item) {
 		((ItemManagerImplementation*) _impl)->createPlayerItem(player, item);
 }
 
-void ItemManager::savePlayerItem(Player* player, TangibleObject* item) {
+TangibleObject* ItemManager::initializeTangibleForCrafting(int objecttype, unsigned long long objectid, unsigned long long objectcrc, string& objectn, string& objecttemp, bool equipped) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 13);
+		method.addSignedIntParameter(objecttype);
+		method.addUnsignedLongParameter(objectid);
+		method.addUnsignedLongParameter(objectcrc);
+		method.addAsciiParameter(objectn);
+		method.addAsciiParameter(objecttemp);
+		method.addBooleanParameter(equipped);
+
+		return (TangibleObject*) method.executeWithObjectReturn();
+	} else
+		return ((ItemManagerImplementation*) _impl)->initializeTangibleForCrafting(objecttype, objectid, objectcrc, objectn, objecttemp, equipped);
+}
+
+void ItemManager::savePlayerItem(Player* player, TangibleObject* item) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 14);
 		method.addObjectParameter(player);
 		method.addObjectParameter(item);
 
@@ -145,7 +163,7 @@ void ItemManager::deletePlayerItem(Player* player, TangibleObject* item, bool no
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 15);
 		method.addObjectParameter(player);
 		method.addObjectParameter(item);
 		method.addBooleanParameter(notify);
@@ -160,7 +178,7 @@ void ItemManager::showDbStats(Player* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, 16);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -173,7 +191,7 @@ void ItemManager::showDbDeleted(Player* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 17);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -186,7 +204,7 @@ void ItemManager::purgeDbDeleted(Player* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 18);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -199,7 +217,7 @@ unsigned long long ItemManager::getNextStaticObjectID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 19);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -211,7 +229,7 @@ BFVector* ItemManager::getBFItemList() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, 20);
 
 		return (BFVector*) method.executeWithObjectReturn();
 	} else
@@ -223,7 +241,7 @@ BFVector* ItemManager::getBFProfList() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, 21);
 
 		return (BFVector*) method.executeWithObjectReturn();
 	} else
@@ -235,7 +253,7 @@ string& ItemManager::getBFProf(string& key) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, 22);
 		method.addAsciiParameter(key);
 
 		method.executeWithAsciiReturn(_return_getBFProf);
@@ -249,7 +267,7 @@ void ItemManager::giveBFItemSet(Player* player, string& set) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 22);
+		DistributedMethod method(this, 23);
 		method.addObjectParameter(player);
 		method.addAsciiParameter(set);
 
@@ -291,33 +309,36 @@ Packet* ItemManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		createPlayerItem((Player*) inv->getObjectParameter(), (TangibleObject*) inv->getObjectParameter());
 		break;
 	case 13:
-		savePlayerItem((Player*) inv->getObjectParameter(), (TangibleObject*) inv->getObjectParameter());
+		resp->insertLong(initializeTangibleForCrafting(inv->getSignedIntParameter(), inv->getUnsignedLongParameter(), inv->getUnsignedLongParameter(), inv->getAsciiParameter(_param3_initializeTangibleForCrafting__int_long_long_string_string_bool_), inv->getAsciiParameter(_param4_initializeTangibleForCrafting__int_long_long_string_string_bool_), inv->getBooleanParameter())->_getObjectID());
 		break;
 	case 14:
-		deletePlayerItem((Player*) inv->getObjectParameter(), (TangibleObject*) inv->getObjectParameter(), inv->getBooleanParameter());
+		savePlayerItem((Player*) inv->getObjectParameter(), (TangibleObject*) inv->getObjectParameter());
 		break;
 	case 15:
-		showDbStats((Player*) inv->getObjectParameter());
+		deletePlayerItem((Player*) inv->getObjectParameter(), (TangibleObject*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
 	case 16:
-		showDbDeleted((Player*) inv->getObjectParameter());
+		showDbStats((Player*) inv->getObjectParameter());
 		break;
 	case 17:
-		purgeDbDeleted((Player*) inv->getObjectParameter());
+		showDbDeleted((Player*) inv->getObjectParameter());
 		break;
 	case 18:
-		resp->insertLong(getNextStaticObjectID());
+		purgeDbDeleted((Player*) inv->getObjectParameter());
 		break;
 	case 19:
-		resp->insertLong(getBFItemList()->_getObjectID());
+		resp->insertLong(getNextStaticObjectID());
 		break;
 	case 20:
-		resp->insertLong(getBFProfList()->_getObjectID());
+		resp->insertLong(getBFItemList()->_getObjectID());
 		break;
 	case 21:
-		resp->insertAscii(getBFProf(inv->getAsciiParameter(_param0_getBFProf__string_)));
+		resp->insertLong(getBFProfList()->_getObjectID());
 		break;
 	case 22:
+		resp->insertAscii(getBFProf(inv->getAsciiParameter(_param0_getBFProf__string_)));
+		break;
+	case 23:
 		giveBFItemSet((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_giveBFItemSet__Player_string_));
 		break;
 	default:
@@ -353,6 +374,10 @@ void ItemManagerAdapter::unloadPlayerItems(Player* player) {
 
 void ItemManagerAdapter::createPlayerItem(Player* player, TangibleObject* item) {
 	return ((ItemManagerImplementation*) impl)->createPlayerItem(player, item);
+}
+
+TangibleObject* ItemManagerAdapter::initializeTangibleForCrafting(int objecttype, unsigned long long objectid, unsigned long long objectcrc, string& objectn, string& objecttemp, bool equipped) {
+	return ((ItemManagerImplementation*) impl)->initializeTangibleForCrafting(objecttype, objectid, objectcrc, objectn, objecttemp, equipped);
 }
 
 void ItemManagerAdapter::savePlayerItem(Player* player, TangibleObject* item) {

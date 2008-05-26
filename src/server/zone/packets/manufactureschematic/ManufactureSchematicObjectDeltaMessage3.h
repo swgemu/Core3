@@ -49,11 +49,16 @@ which carries forward this exception.
 #include "../BaseLineMessage.h"
 
 #include "../../objects/draftschematic/DraftSchematic.h"
+#include "../../objects/draftschematic/DraftSchematicValues.h"
 
 class ManufactureSchematicObjectDeltaMessage3 : public DeltaMessage {
 public:
 	ManufactureSchematicObjectDeltaMessage3(uint64 sceneObjSchematic) 
 			: DeltaMessage(sceneObjSchematic, 0x4D53434F, 3) {
+	}
+	
+	void updateComplexity(float complexity) {
+		addFloatUpdate(0, complexity);
 	}
 	
 	void updateName(string name) {
@@ -64,48 +69,31 @@ public:
 		addIntUpdate(4, condition);
 	}
 	
-	void updateCraftedValues(DraftSchematic * ds){
+	void updateCraftedValues(DraftSchematic * draftSchematic){
+		
+		DraftSchematicValues * craftingValues = draftSchematic->getCraftingValues();
+		
+		string name;
+		float value;
+		
+		int count = craftingValues->getValuesToSendSize();
+	
 		startUpdate(5);
 		
-		startList(6, 8);
+		startList(count, count);
 		
+		for(int i = 0; i < count; ++i){
 		
-		insertByte(0);
-		insertAscii("crafting");
-		insertInt(0);
-		insertAscii("xp");
-		insertFloat(20.0);
+			insertByte(0);
+			insertAscii("crafting");
+			insertInt(0);
+			name = craftingValues->getValuesToSend(i);
+			value = craftingValues->getCurrentValue(name);
+			
+			insertAscii(name);
+			insertFloat(value);
 		
-		insertByte(0);
-		insertAscii("crafting");
-		insertInt(0);
-		insertAscii("hitPoints");
-		insertFloat(1000.0);
-		
-		insertByte(0);
-		insertAscii("crafting");
-		insertInt(0);
-		insertAscii("nutrition");
-		insertFloat(85.0);
-		
-		insertByte(0);
-		insertAscii("crafting");
-		insertInt(0);
-		insertAscii("flavor");
-		insertFloat(85.0);
-		
-		insertByte(0);
-		insertAscii("crafting");
-		insertInt(0);
-		insertAscii("quantity");
-		insertFloat(85.0);
-		
-		insertByte(0);
-		insertAscii("crafting");
-		insertInt(0);
-		insertAscii("filling");
-		insertFloat(85.0);
-		
+		}
 	}
 };
 

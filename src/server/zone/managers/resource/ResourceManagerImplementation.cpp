@@ -85,8 +85,8 @@ void ResourceManagerImplementation::init() {
 	//  *** Default is 1 day (86400) ***
 	//  *** Good testing period is (40) ***
 	
-	maxspawns = 20;  //  Mmaximum number of spawns per planet
-	minspawns = 12;  //  Minimum number of spawns per planet
+	maxspawns = 40;  //  Mmaximum number of spawns per planet
+	minspawns = 25;  //  Minimum number of spawns per planet
 	maxradius = 2000;   //  Maximum Spawn radius of resource on map
 	minradius = 400;    //  Minimum Spawn radius of resource on map
 	
@@ -1054,7 +1054,6 @@ void ResourceManagerImplementation::poolNeeds(Vector<string>* invector, string p
 				needs->add(invector->get(x));
 			}
 		}
-		
 		delete res;
 	} catch (...) {
 		cout << "Database error in poolNeeds\n";
@@ -1162,7 +1161,7 @@ void ResourceManagerImplementation::createResource(string restype, string pool, 
 	
 	int planets[10] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 	
-	int planet, therand, thex, they, numplanets;
+	int planet, therand, thex, they, numplanets, numspawns;
 
 	ResourceTemplate* resource = new ResourceTemplate(restype);
 
@@ -1198,9 +1197,10 @@ void ResourceManagerImplementation::createResource(string restype, string pool, 
 					break;
 				}
 			}
-
-			for (int y = 0; y < (System::random(maxspawns - minspawns)
-					+ minspawns); y++) {
+	
+			numspawns = System::random(maxspawns - minspawns) + minspawns;
+				
+			for (int y = 0; y < numspawns; y++) {
 				thex = System::random(8192 * 2) - 8192;
 				they = System::random(8192 * 2) - 8192;
 

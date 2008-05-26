@@ -25,17 +25,29 @@ class CraftingManager : public DistributedObjectStub {
 public:
 	CraftingManager(ZoneServer* server, ZoneProcessServerImplementation* processor);
 
-	void prepareCraftingSession(Player* player, CraftingTool* ct, DraftSchematic* ds);
+	void prepareCraftingSession(Player* player, CraftingTool* craftingTool, DraftSchematic* draftSchematic);
 
 	void addResourceToCraft(Player* player, ResourceContainer* rcno, int slot, int counter);
 
-	void removeResourceFromCraft(Player* player, unsigned int resID, int slot, int counter);
+	void removeResourceFromCraft(Player* player, int slot, int counter);
 
 	void nextCraftingStage(Player* player, string& test);
 
 	void craftingCustomization(Player* player, string& name, int condition);
 
-	void createPrototype(Player* player, string& test);
+	void handleExperimenting(Player* player, int counter, int numRowsAttempted, string& expstring);
+
+	void createPrototype(Player* player, string& count);
+
+	void createSchematic(Player* player, string& count);
+
+	void putResourceBackInInventory(Player* player, string& name, int quantity);
+
+	float getWeightedValue(Player* player, CraftingTool* craftingTool, DraftSchematic* draftSchematic, int type);
+
+	float getAssemblyPercentage(float value);
+
+	float calculateAssemblyValueModifier(CraftingTool* craftingTool);
 
 	void addDraftSchematicsFromGroupName(Player* player, const string& schematicGroupName);
 
@@ -57,17 +69,29 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	void prepareCraftingSession(Player* player, CraftingTool* ct, DraftSchematic* ds);
+	void prepareCraftingSession(Player* player, CraftingTool* craftingTool, DraftSchematic* draftSchematic);
 
 	void addResourceToCraft(Player* player, ResourceContainer* rcno, int slot, int counter);
 
-	void removeResourceFromCraft(Player* player, unsigned int resID, int slot, int counter);
+	void removeResourceFromCraft(Player* player, int slot, int counter);
 
 	void nextCraftingStage(Player* player, string& test);
 
 	void craftingCustomization(Player* player, string& name, int condition);
 
-	void createPrototype(Player* player, string& test);
+	void handleExperimenting(Player* player, int counter, int numRowsAttempted, string& expstring);
+
+	void createPrototype(Player* player, string& count);
+
+	void createSchematic(Player* player, string& count);
+
+	void putResourceBackInInventory(Player* player, string& name, int quantity);
+
+	float getWeightedValue(Player* player, CraftingTool* craftingTool, DraftSchematic* draftSchematic, int type);
+
+	float getAssemblyPercentage(float value);
+
+	float calculateAssemblyValueModifier(CraftingTool* craftingTool);
 
 	void addDraftSchematicsFromGroupName(Player* player, const string& schematicGroupName);
 
@@ -76,7 +100,10 @@ public:
 protected:
 	string _param1_nextCraftingStage__Player_string_;
 	string _param1_craftingCustomization__Player_string_int_;
+	string _param3_handleExperimenting__Player_int_int_string_;
 	string _param1_createPrototype__Player_string_;
+	string _param1_createSchematic__Player_string_;
+	string _param1_putResourceBackInInventory__Player_string_int_;
 	string _param1_addDraftSchematicsFromGroupName__Player_string_;
 	string _param1_subtractDraftSchematicsFromGroupName__Player_string_;
 };

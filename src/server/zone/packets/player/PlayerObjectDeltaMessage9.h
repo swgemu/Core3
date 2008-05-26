@@ -72,6 +72,16 @@ public:
 		insertAscii(name.c_str());
 	}
 	
+	void setExperimentationEnabled(bool experimenting) {
+		startUpdate(1);
+		if(experimenting){
+			insertInt(4);  // 3
+		}
+		else {
+			insertInt(1);
+		}
+	}
+	
 	void setCraftingState(int state) {
 		startUpdate(2);
 		insertInt(state);
@@ -96,6 +106,11 @@ public:
 		}
 	}
 		
+	void setExperimentationPoints(int points){
+		startUpdate(5);
+		insertInt(points); // Number of experimentation points
+	}
+	
 	void updateSkilsAndCertifications() {
 		Player* player = play->getPlayer();
 		

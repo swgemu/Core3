@@ -159,7 +159,7 @@ void ResourceContainerImplementation::splitContainer(Player* player, int newQuan
 	
 		ResourceManager* resourceManager = player->getZone()->getZoneServer()->getResourceManager(); 
 		resourceManager->setResourceData(container);
-		
+		 
 		player->addInventoryItem(container);
 		
 		container->sendTo(player);
@@ -256,7 +256,7 @@ void ResourceContainerImplementation::addAttributes(AttributeListMessage* alm) {
 	
 	alm->insertAttribute("resource_contents", ssQuantity.str());
 	alm->insertAttribute("resource_name", res_name);
-
+	
 	alm->insertAttribute("resource_class", res_class7);
 	
 	if (res_cr > 0)

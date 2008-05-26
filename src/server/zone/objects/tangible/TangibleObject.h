@@ -19,6 +19,8 @@ class CreatureObject;
 
 class Player;
 
+class DraftSchematicValues;
+
 #include "../scene/SceneObject.h"
 
 class TangibleObject : public SceneObject {
@@ -28,6 +30,10 @@ public:
 	TangibleObject(unsigned long long oid, const unicode& n, const string& tempname, unsigned int tempCRC, int tp = 0);
 
 	TangibleObject(CreatureObject* creature, const unicode& n, const string& tempname, unsigned int tempCRC, int tp = 0);
+
+	void generateAttributes(Player* player);
+
+	void updateCraftingValues(DraftSchematicValues* craftingValues);
 
 	void insertToZone(Zone* zone);
 
@@ -73,6 +79,10 @@ public:
 
 	bool isLair();
 
+	void setCraftersName(string& n);
+
+	void setCraftedSerial(string& s);
+
 	SceneObject* getContainer();
 
 	unicode& getName();
@@ -94,6 +104,10 @@ public:
 	int getMaxCondition();
 
 	int getCondition();
+
+	string& getCraftersName();
+
+	string& getCraftedSerial();
 
 	void setAttributes(string& attributestring);
 
@@ -125,6 +139,8 @@ protected:
 	virtual ~TangibleObject();
 
 	string _return_getAttributes;
+	string _return_getCraftedSerial;
+	string _return_getCraftersName;
 	string _return_getTemplateName;
 	string _return_getTemplateTypeName;
 
@@ -140,6 +156,10 @@ public:
 	TangibleObjectAdapter(TangibleObjectImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	void generateAttributes(Player* player);
+
+	void updateCraftingValues(DraftSchematicValues* craftingValues);
 
 	void insertToZone(Zone* zone);
 
@@ -185,6 +205,10 @@ public:
 
 	bool isLair();
 
+	void setCraftersName(string& n);
+
+	void setCraftedSerial(string& s);
+
 	SceneObject* getContainer();
 
 	unicode& getName();
@@ -206,6 +230,10 @@ public:
 	int getMaxCondition();
 
 	int getCondition();
+
+	string& getCraftersName();
+
+	string& getCraftedSerial();
 
 	void setAttributes(string& attributestring);
 
@@ -232,6 +260,8 @@ public:
 	void setCustomizationVariable(unsigned char type, unsigned int value);
 
 protected:
+	string _param0_setCraftersName__string_;
+	string _param0_setCraftedSerial__string_;
 	string _param0_getCustomizationString__string_;
 	string _param0_setAttributes__string_;
 	string _param0_setName__string_;

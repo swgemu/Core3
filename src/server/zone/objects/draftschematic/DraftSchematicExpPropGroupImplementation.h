@@ -66,7 +66,7 @@ public:
 	}
 	
 	void addExperimentalProperty(const string& experimentalPropertyType, uint32 weight) {
-		uint8 expPropType = 0;
+		uint8 expPropType = 0x00;
 		
 		if(experimentalPropertyType == "PO") {
 			// nothing needs to be done
@@ -93,14 +93,18 @@ public:
 		} else if (experimentalPropertyType == "BK") {
 			expPropType = 0x0B;
 		} else if (experimentalPropertyType == "XX"){
-			// do nothing
+			expPropType = 0x00;
 		} else {
 			cout << "Incorrect Experimental Property.  Experimental Property given was: " << experimentalPropertyType;
 			return;
 		}
 		
 		expPropTypes.put(experimentalPropertyType, expPropType);
-		expPropWeights.put(experimentalPropertyType, weight % 16);
+		
+		if(expPropType != 0x00)
+			expPropWeights.put(experimentalPropertyType, weight % 16);
+		else
+			expPropWeights.put(experimentalPropertyType, 0x00);
 		
 		keys.add(experimentalPropertyType);
 		
@@ -130,11 +134,17 @@ public:
 	
 	------------------------------- */
 	
-	void sendToPlayer(ObjectControllerMessage* msg) {
-		msg->insertByte(expPropGroupListSize);
-							
-		for (int i = 0; i < expPropGroupListSize; i++) {
-			msg->insertByte(getTypeAndWeight(i));
+	void sendToPlayer(ObjectControllerMessage* msg, int count) {
+
+		if (getTypeAndWeight(0) == 0) {
+			msg->insertByte(0);
+		} else {
+			msg->insertByte(expPropGroupListSize);
+
+			for (int i = 0; i < expPropGroupListSize; i++) {
+
+				msg->insertByte(getTypeAndWeight(i));
+			}
 		}
 	}
 	
@@ -172,7 +182,7 @@ public:
 			
 			return typeAndWeight;
 		} else
-			return 0;
+			return 0x00;  // 0
 	}
 	
 private:
