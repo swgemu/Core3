@@ -54,7 +54,9 @@ which carries forward this exception.
 #include "../../objects/tangible/CustomizationVariables.h"
 
 #include "skills/Skill.h"
+#include "../../managers/skills/SkillManager.h"
 #include "skillmods/SkillModList.h"
+#include "buffs/BuffList.h"
 
 #include "../guild/Guild.h"
 
@@ -153,7 +155,8 @@ protected:
 	float height;
 	SkillModList creatureSkillMods;
 	SkillModList creatureSkillModBonus;
-	
+	BuffList creatureBuffs;
+
 	uint32 skillModsCounter;
 	string skillMod;
 	
@@ -297,6 +300,7 @@ protected:
 	bool doListening;
 	bool doWatching;
 	
+	// TODO: Deprecate
 	bool healthBuff;
 	bool strengthBuff;
 	bool constitutionBuff;
@@ -312,6 +316,12 @@ protected:
 	
 	ManagedSortedVector<CreatureObject> listeners;
 	ManagedSortedVector<CreatureObject> watchers;
+	
+	float danceBuffDuration; // track the duration
+	float musicBuffDuration;
+
+	float danceBuffStrength; // track the duration
+	float musicBuffStrength;
 	
 	bool sittingOnObject;
 
@@ -468,25 +478,25 @@ public:
 	void setStrengthBar(uint32 st);
 	void setConstitutionBar(uint32 cst);
 	
-	void setMaxHealthBar(uint32 hp);
-	void setMaxStrengthBar(uint32 st);
-	void setMaxConstitutionBar(uint32 cst);
+	void setMaxHealthBar(uint32 hp, bool updateClient = true);
+	void setMaxStrengthBar(uint32 st, bool updateClient = true);
+	void setMaxConstitutionBar(uint32 cst, bool updateClient = true);
 	
 	void setActionBar(uint32 ap);
 	void setQuicknessBar(uint32 qck);
 	void setStaminaBar(uint32 sta);
 	
-	void setMaxActionBar(uint32 ap);
-	void setMaxQuicknessBar(uint32 qck);
-	void setMaxStaminaBar(uint32 sta);
+	void setMaxActionBar(uint32 ap, bool updateClient = true);
+	void setMaxQuicknessBar(uint32 qck, bool updateClient = true);
+	void setMaxStaminaBar(uint32 sta, bool updateClient = true);
 	
 	void setMindBar(uint32 mp);
 	void setFocusBar(uint32 fc);
 	void setWillpowerBar(uint32 will);
 	
-	void setMaxMindBar(uint32 mp);
-	void setMaxFocusBar(uint32 fc);
-	void setMaxWillpowerBar(uint32 will);
+	void setMaxMindBar(uint32 mp, bool updateClient = true);
+	void setMaxFocusBar(uint32 fc, bool updateClient = true);
+	void setMaxWillpowerBar(uint32 will, bool updateClient = true);
 	
 	void calculateHAMregen();
 	float calculateBFRatio();
@@ -771,15 +781,19 @@ public:
 	void startListen(uint64 entid);
 	void stopWatch(uint64 entid, bool doSendPackets = true, bool forced = false, bool doLock = true);
 	void stopListen(uint64 entid, bool doSendPackets = true, bool forced = false, bool doLock = true);
-
+	void activateEntertainerBuff(int performanceType);
+	
 	void doFlourish(const string& modifier = "");
+	void addEntertainerFlourishBuff();
+	// Rename to Tick Patron?
 	void doEntertainerPatronEffects(bool healShock = false, bool healWounds = false, bool addBuff = false);
 	void doPerformanceAction();
 	
 	bool isInBuilding();
 	SceneObject* getBuilding();
 	int getBuildingType();
-
+	bool canGiveEntertainBuff();
+		
 	// guild methods
 	void sendGuildTo();
 	
@@ -788,8 +802,12 @@ public:
 	void dismount(bool lockMount = true, bool ignoreCooldown = false);
 
 	// buffing methods
-	void applyBuff(const string& type, int value, float duration);
-	void removeBuff(const string& type, int value, Event* event);
+	void addBuff(int buffCRC, float duration); // Mostly Debugging purposes
+	//void applyBuff(const string& type, int value, float duration);
+	void applyBuff(Buff *buff);
+	//void removeBuff(const string& type, int value, Event* event);
+	void removeBuff(const uint32 buffCRC, bool remove = true);
+	
 	
 	void removeBuffs(bool doUpdateCreature = true);
 
@@ -873,12 +891,17 @@ public:
 	SkillModList* getSkillModBonusList() {
 		return &creatureSkillModBonus;
 	}
-		
+
+	BuffList* getBuffsList() {
+		return &creatureBuffs;
+	}
+	
 	void setGroupInviterID(uint64 oid) {
 		groupInviterID = oid;
 	}
 	
 	int getSkillMod(const string& name) {
+		// TODO: Add Buffs
 		int bonus = creatureSkillModBonus.get(name);
 		if (bonus > 25)
 			bonus = 25;
@@ -893,15 +916,36 @@ public:
 		creatureSkillMods.remove(name);
 	}
 
+	Buff* getBuff(const uint32& buffCRC) {
+		Buff *b = creatureBuffs.get(buffCRC);
+		return b;
+	}
+	
 	int getSkillModBonus(const string& name) {
 		int bonus = creatureSkillModBonus.get(name);
 		return bonus;
 	}
 	
+	bool hasBuff(const uint32 buffCRC) {
+		return creatureBuffs.containsKey(buffCRC);
+	}
+
+	bool hasSpice() {
+		creatureBuffs.resetIterator();
+		
+		while (creatureBuffs.hasNext()) {
+			Buff *buff = creatureBuffs.getNextValue();
+			if(buff != NULL && buff->getBuffType() == BuffType::SPICE)
+				return true;
+		}
+		
+		return false;
+	}
+	
 	bool hasSkillModBonus(const string& name) {
 		return creatureSkillModBonus.containsKey(name);
 	}
-	
+
 	void removeSkillModBonus(string& name) {
 		creatureSkillModBonus.remove(name);
 	}
@@ -1698,6 +1742,81 @@ public:
 	
 	inline void setAccuracy(int acc) {
 		accuracy = acc;
+	}
+	
+	inline void addEntertainerBuffDuration(int performanceType, float duration) {
+		switch(performanceType) {
+		case PerformanceType::DANCE:
+			danceBuffDuration += duration;
+			if(danceBuffDuration > (120.0f + (10.0f/60.0f)) ) // 2 hrs 10 seconds
+				danceBuffDuration = (120.0f + (10.0f/60.0f)); // 2hrs 10 seconds
+			break;
+		case PerformanceType::MUSIC:
+			musicBuffDuration += duration;
+			if(musicBuffDuration > (120.0f + (10.0f/60.0f)) ) // 2 hrs 10 seconds
+				musicBuffDuration = (120.0f + (10.0f/60.0f)); // 2hrs 10 seconds
+			break;
+		}
+	}	
+	
+	inline void addEntertainerBuffStrength(int performanceType, float strength) {
+		switch(performanceType) {
+		case PerformanceType::DANCE:
+			danceBuffStrength += strength;
+			if(danceBuffStrength > 125.0f)
+				danceBuffStrength = 125.0f; // 125% cap
+			break;
+		case PerformanceType::MUSIC:
+			musicBuffStrength += strength;
+			if(musicBuffStrength > 125.0f)
+				musicBuffStrength = 125.0f; // 125% cap
+			break;
+		}
+	}	
+	inline void setEntertainerBuffDuration(int performanceType, float duration) {
+		switch(performanceType) {
+		case PerformanceType::DANCE:
+			danceBuffDuration = duration;
+			break;
+		case PerformanceType::MUSIC:
+			musicBuffDuration = duration;
+			break;
+		}
+	}	
+	
+	inline void setEntertainerBuffStrength(int performanceType, float strength) {
+		switch(performanceType) {
+		case PerformanceType::DANCE:
+			danceBuffStrength = strength;
+			break;
+		case PerformanceType::MUSIC:
+			musicBuffStrength = strength;
+			break;
+		}
+	}	
+	
+	inline float getEntertainerBuffDuration(int performanceType) {
+		switch(performanceType) {
+		case PerformanceType::DANCE:
+			return danceBuffDuration;
+			break;
+		case PerformanceType::MUSIC:
+			return musicBuffDuration;
+			break;
+		}
+		return 0.0f;
+	}
+
+	inline float getEntertainerBuffStrength(int performanceType) {
+		switch(performanceType) {
+		case PerformanceType::DANCE:
+			return danceBuffStrength;
+			break;
+		case PerformanceType::MUSIC:
+			return musicBuffStrength;
+			break;
+		}
+		return 0.0f;
 	}
 	
 	inline void setPerformanceAnimation(const string& performanceanimation) {

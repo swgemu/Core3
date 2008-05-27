@@ -48,7 +48,6 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-
 class PerformanceType {
 public:
 	static const int DANCE  = -1788534963;

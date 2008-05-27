@@ -42,77 +42,26 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef CREATUREOBJECTMESSAGE4_H_
-#define CREATUREOBJECTMESSAGE4_H_
+#ifndef BUFFLIST_H_
+#define BUFFLIST_H_
 
-#include "../../packets/BaseLineMessage.h"
+#include "engine/engine.h"
+#include "Buff.h"
 
-#include "../../objects/creature/CreatureObjectImplementation.h"
+class BuffList : public HashTable<uint32, Buff*> , public HashTableIterator<uint32, Buff*> {
+	
+	int hash(const uint32& key) {
+        return key;
+	}
 
-class CreatureObjectMessage4 : public BaseLineMessage {
+
 public:
-	CreatureObjectMessage4(CreatureObjectImplementation* creo)
-			: BaseLineMessage(creo->getObjectID(), 0x4352454F, 4, 0x0E) {
-		//
-		insertFloat(1);
-		insertFloat(1);
+	BuffList() : HashTable<uint32, Buff*>(50) , HashTableIterator<uint32, Buff*>(this) {
+		setNullValue(NULL);
+	}	
+}; 
 
-		// encumberances
-		insertInt(3);
-		insertInt(3);
-		insertInt(creo->getHealthEncumbrance());
-		insertInt(creo->getActionEncumbrance());
-		insertInt(creo->getMindEncumbrance());
+#endif /*BUFFLIST_H_*/
 
-		// skill mods
-		insertSkillMods(creo);
 
-		//
-		insertFloat(1);
-		insertFloat(1);
 
-		// listenToID
-		insertLong(0);
-
-		insertFloat(creo->speed);
-	
-		insertFloat(1.00625f);		
-	
-		insertFloat(creo->getTerrainNegotiation());  // Terrain Negotiation
-
-		// turn radius
-		insertFloat(1);		
-
-		insertFloat(creo->acceleration);
-		insertFloat(0.0125f);
-
-		//
-		insertInt(0);
-		insertInt(0);
-		
-		setSize();
-	}
-
-	// TODO: this needs to be cleaner for dealing with values
-	void insertSkillMods(CreatureObjectImplementation* creo) {
-		string skillmod;
-		int value;
-
-		creo->creatureSkillMods.resetIterator();
-
-		insertInt(creo->creatureSkillMods.size());
-		insertInt(creo->skillModsCounter);
-
-		while (creo->creatureSkillMods.hasNext()) {
-			insertByte(0);
-
-			creo->creatureSkillMods.getNextKeyAndValue(skillmod, value);
-			insertAscii(skillmod);
-			insertInt(value + creo->creatureSkillModBonus.get(skillmod));
-
-			insertInt(0);
-		}
-	}
-};
-
-#endif /*CREATUREOBJECTMESSAGE4_H_*/

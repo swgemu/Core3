@@ -35,6 +35,8 @@ class Guild;
 
 class Skill;
 
+class Buff;
+
 #include "../scene/SceneObject.h"
 
 class CreatureObject : public SceneObject {
@@ -182,6 +184,42 @@ public:
 	void changeMaxFocusBar(int hp);
 
 	void changeMaxWillpowerBar(int hp);
+
+	void setHealthBar(unsigned int hp);
+
+	void setStrengthBar(unsigned int st);
+
+	void setConstitutionBar(unsigned int cst);
+
+	void setMaxHealthBar(unsigned int hp, bool updateClient = true);
+
+	void setMaxStrengthBar(unsigned int st, bool updateClient = true);
+
+	void setMaxConstitutionBar(unsigned int cst, bool updateClient = true);
+
+	void setActionBar(unsigned int ap);
+
+	void setQuicknessBar(unsigned int qck);
+
+	void setStaminaBar(unsigned int sta);
+
+	void setMaxActionBar(unsigned int ap, bool updateClient = true);
+
+	void setMaxQuicknessBar(unsigned int qck, bool updateClient = true);
+
+	void setMaxStaminaBar(unsigned int sta, bool updateClient = true);
+
+	void setMindBar(unsigned int mp);
+
+	void setFocusBar(unsigned int fc);
+
+	void setWillpowerBar(unsigned int will);
+
+	void setMaxMindBar(unsigned int mp, bool updateClient = true);
+
+	void setMaxFocusBar(unsigned int fc, bool updateClient = true);
+
+	void setMaxWillpowerBar(unsigned int will, bool updateClient = true);
 
 	bool hasAttackDelay();
 
@@ -343,6 +381,14 @@ public:
 
 	void doEntertainerPatronEffects(bool healShock = false, bool healWounds = false, bool addBuff = false);
 
+	void addEntertainerFlourishBuff();
+
+	void addEntertainerBuffDuration(int performanceType, float duration);
+
+	void setEntertainerBuffDuration(int performanceType, float duration);
+
+	float getEntertainerBuffDuration(int performanceType);
+
 	void activateRecovery();
 
 	int getCreatureSkillsSize();
@@ -371,7 +417,11 @@ public:
 
 	void setBankCredits(int credits);
 
-	void applyBuff(const string& type, int value, float duration);
+	void addBuff(int buffCRC, float duration);
+
+	void applyBuff(Buff* buff);
+
+	bool hasSpice();
 
 	bool verifyCashCredits(unsigned int creditsToRemove);
 
@@ -877,6 +927,42 @@ public:
 
 	void changeMaxWillpowerBar(int hp);
 
+	void setHealthBar(unsigned int hp);
+
+	void setStrengthBar(unsigned int st);
+
+	void setConstitutionBar(unsigned int cst);
+
+	void setMaxHealthBar(unsigned int hp, bool updateClient);
+
+	void setMaxStrengthBar(unsigned int st, bool updateClient);
+
+	void setMaxConstitutionBar(unsigned int cst, bool updateClient);
+
+	void setActionBar(unsigned int ap);
+
+	void setQuicknessBar(unsigned int qck);
+
+	void setStaminaBar(unsigned int sta);
+
+	void setMaxActionBar(unsigned int ap, bool updateClient);
+
+	void setMaxQuicknessBar(unsigned int qck, bool updateClient);
+
+	void setMaxStaminaBar(unsigned int sta, bool updateClient);
+
+	void setMindBar(unsigned int mp);
+
+	void setFocusBar(unsigned int fc);
+
+	void setWillpowerBar(unsigned int will);
+
+	void setMaxMindBar(unsigned int mp, bool updateClient);
+
+	void setMaxFocusBar(unsigned int fc, bool updateClient);
+
+	void setMaxWillpowerBar(unsigned int will, bool updateClient);
+
 	bool hasAttackDelay();
 
 	void clearAttackDelay();
@@ -1035,6 +1121,14 @@ public:
 
 	void doEntertainerPatronEffects(bool healShock, bool healWounds, bool addBuff);
 
+	void addEntertainerFlourishBuff();
+
+	void addEntertainerBuffDuration(int performanceType, float duration);
+
+	void setEntertainerBuffDuration(int performanceType, float duration);
+
+	float getEntertainerBuffDuration(int performanceType);
+
 	void activateRecovery();
 
 	int getCreatureSkillsSize();
@@ -1063,7 +1157,11 @@ public:
 
 	void setBankCredits(int credits);
 
-	void applyBuff(const string& type, int value, float duration);
+	void addBuff(int buffCRC, float duration);
+
+	void applyBuff(Buff* buff);
+
+	bool hasSpice();
 
 	bool verifyCashCredits(unsigned int creditsToRemove);
 
@@ -1419,7 +1517,6 @@ protected:
 	string _param0_startDancing__string_bool_;
 	string _param0_startPlayingMusic__string_bool_;
 	string _param0_doFlourish__string_;
-	string _param0_applyBuff__string_int_float_;
 	string _param0_getCharacterApperance__string_;
 	string _param0_setCharacterName__string_;
 	unicode _param0_setCharacterName__unicode_;

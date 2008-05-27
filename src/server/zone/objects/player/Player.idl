@@ -146,6 +146,11 @@ interface Player implements CreatureObject {
 	
 	void kill();
 	
+	void addBuff(unsigned int buffcrc, float time);
+	
+
+	
+	
 	void lootCorpse(boolean lootAll = false);
 	void lootObject(Creature creature, SceneObject object);
 	
@@ -255,8 +260,11 @@ interface Player implements CreatureObject {
 	
 	void setHairData(string hair);
 	
-	boolean changeForceBar(int fp);
+	boolean changeForcePowerBar(int fp);
 	
+	void setForcePowerBar(int fp);
+	void setMaxForcePowerBar(int fp, boolean updateClient = true);
+
 	void setCharacterID(unsigned long id);
 	
 	void setStartingProfession(const string prof);

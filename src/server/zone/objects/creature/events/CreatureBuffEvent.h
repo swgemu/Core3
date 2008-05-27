@@ -49,27 +49,25 @@ which carries forward this exception.
 
 class CreatureBuffEvent : public Event {
 	CreatureObjectImplementation* creo;
-	
-	string buffType;
-	int buffValue;
-	
+
+	uint32 buffCRC;	
 public:
-	CreatureBuffEvent(CreatureObjectImplementation* cr, const string& type,
-			float duration, int value) : Event((int) (duration * 1000)) {
+	CreatureBuffEvent(CreatureObjectImplementation* cr, uint32 crc,
+			float duration) : Event((int) (duration * 1000)) {
 		creo = cr;
 		
-	    buffType = type;
-	    buffValue = value;
+		buffCRC = crc;
 	}
 	
 	bool activate() {
 		try {
 			creo->wlock();
 
-			creo->removeBuff(buffType, buffValue, this);
+			creo->removeBuff(buffCRC);
 
 			creo->unlock();
 		} catch (...) {
+			creo->sendSystemMessage("BuffEvent activate error");
 			creo->unlock();
 		}
 		

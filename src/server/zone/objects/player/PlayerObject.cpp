@@ -113,40 +113,66 @@ bool PlayerObject::clearCharacterBit(unsigned int bit, bool updateClient) {
 		return ((PlayerObjectImplementation*) _impl)->clearCharacterBit(bit, updateClient);
 }
 
-void PlayerObject::setForcePower(unsigned int fp, bool updateClient) {
+void PlayerObject::setForcePowerBar(unsigned int fp) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 12);
 		method.addUnsignedIntParameter(fp);
-		method.addBooleanParameter(updateClient);
 
 		method.executeWithVoidReturn();
 	} else
-		((PlayerObjectImplementation*) _impl)->setForcePower(fp, updateClient);
+		((PlayerObjectImplementation*) _impl)->setForcePowerBar(fp);
 }
 
-void PlayerObject::setForcePowerMax(int fp) {
+void PlayerObject::setMaxForcePowerBar(unsigned int fp, bool updateClient) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 13);
-		method.addSignedIntParameter(fp);
+		method.addUnsignedIntParameter(fp);
+		method.addBooleanParameter(updateClient);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerObjectImplementation*) _impl)->setMaxForcePowerBar(fp, updateClient);
+}
+
+void PlayerObject::setForcePower(unsigned int fp) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 14);
+		method.addUnsignedIntParameter(fp);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerObjectImplementation*) _impl)->setForcePower(fp);
+}
+
+void PlayerObject::setForcePowerMax(unsigned int fp) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 15);
+		method.addUnsignedIntParameter(fp);
 
 		method.executeWithVoidReturn();
 	} else
 		((PlayerObjectImplementation*) _impl)->setForcePowerMax(fp);
 }
 
-void PlayerObject::setForceRegen(int fp) {
+void PlayerObject::setForceRegen(unsigned int fp) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
-		method.addSignedIntParameter(fp);
+		DistributedMethod method(this, 16);
+		method.addUnsignedIntParameter(fp);
 
 		method.executeWithVoidReturn();
 	} else
@@ -158,7 +184,7 @@ unsigned int PlayerObject::getForcePower() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, 17);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -170,7 +196,7 @@ unsigned int PlayerObject::getForcePowerMax() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 18);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -182,7 +208,7 @@ unsigned int PlayerObject::getForceRegen() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 19);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -194,7 +220,7 @@ bool PlayerObject::isJedi() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 20);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -206,7 +232,7 @@ bool PlayerObject::isOnFullForce() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, 21);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -218,7 +244,7 @@ unsigned int PlayerObject::getCharacterBitmask() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, 22);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -230,7 +256,7 @@ int PlayerObject::getWaypointListSize() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, 23);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -242,7 +268,7 @@ unsigned int PlayerObject::getJediState() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 22);
+		DistributedMethod method(this, 24);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -254,7 +280,7 @@ WaypointObject* PlayerObject::getWaypoint(unsigned long long id) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 23);
+		DistributedMethod method(this, 25);
 		method.addUnsignedLongParameter(id);
 
 		return (WaypointObject*) method.executeWithObjectReturn();
@@ -267,7 +293,7 @@ void PlayerObject::addWaypoint(WaypointObject* wp, bool updateClient) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 24);
+		DistributedMethod method(this, 26);
 		method.addObjectParameter(wp);
 		method.addBooleanParameter(updateClient);
 
@@ -281,7 +307,7 @@ bool PlayerObject::removeWaypoint(WaypointObject* wp, bool updateClient) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 25);
+		DistributedMethod method(this, 27);
 		method.addObjectParameter(wp);
 		method.addBooleanParameter(updateClient);
 
@@ -295,7 +321,7 @@ void PlayerObject::updateWaypoint(WaypointObject* wp) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 26);
+		DistributedMethod method(this, 28);
 		method.addObjectParameter(wp);
 
 		method.executeWithVoidReturn();
@@ -308,7 +334,7 @@ Player* PlayerObject::getPlayer() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 27);
+		DistributedMethod method(this, 29);
 
 		return (Player*) method.executeWithObjectReturn();
 	} else
@@ -320,7 +346,7 @@ void PlayerObject::setCurrentTitle(string& nTitle, bool updateClient) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 28);
+		DistributedMethod method(this, 30);
 		method.addAsciiParameter(nTitle);
 		method.addBooleanParameter(updateClient);
 
@@ -334,7 +360,7 @@ void PlayerObject::setTitle(string& temptitle) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 29);
+		DistributedMethod method(this, 31);
 		method.addAsciiParameter(temptitle);
 
 		method.executeWithVoidReturn();
@@ -347,7 +373,7 @@ string& PlayerObject::getCurrentTitle() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 30);
+		DistributedMethod method(this, 32);
 
 		method.executeWithAsciiReturn(_return_getCurrentTitle);
 		return _return_getCurrentTitle;
@@ -360,7 +386,7 @@ unsigned int PlayerObject::getExperienceListCount() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 31);
+		DistributedMethod method(this, 33);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -372,7 +398,7 @@ unsigned int PlayerObject::getNewExperienceListCount(int cnt) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 32);
+		DistributedMethod method(this, 34);
 		method.addSignedIntParameter(cnt);
 
 		return method.executeWithUnsignedIntReturn();
@@ -385,7 +411,7 @@ unsigned int PlayerObject::getWaypointListCount() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 33);
+		DistributedMethod method(this, 35);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -397,7 +423,7 @@ unsigned int PlayerObject::getNewWaypointListCount(int cnt) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 34);
+		DistributedMethod method(this, 36);
 		method.addSignedIntParameter(cnt);
 
 		return method.executeWithUnsignedIntReturn();
@@ -435,72 +461,78 @@ Packet* PlayerObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		resp->insertBoolean(clearCharacterBit(inv->getUnsignedIntParameter(), inv->getBooleanParameter()));
 		break;
 	case 12:
-		setForcePower(inv->getUnsignedIntParameter(), inv->getBooleanParameter());
+		setForcePowerBar(inv->getUnsignedIntParameter());
 		break;
 	case 13:
-		setForcePowerMax(inv->getSignedIntParameter());
+		setMaxForcePowerBar(inv->getUnsignedIntParameter(), inv->getBooleanParameter());
 		break;
 	case 14:
-		setForceRegen(inv->getSignedIntParameter());
+		setForcePower(inv->getUnsignedIntParameter());
 		break;
 	case 15:
-		resp->insertInt(getForcePower());
+		setForcePowerMax(inv->getUnsignedIntParameter());
 		break;
 	case 16:
-		resp->insertInt(getForcePowerMax());
+		setForceRegen(inv->getUnsignedIntParameter());
 		break;
 	case 17:
-		resp->insertInt(getForceRegen());
+		resp->insertInt(getForcePower());
 		break;
 	case 18:
-		resp->insertBoolean(isJedi());
+		resp->insertInt(getForcePowerMax());
 		break;
 	case 19:
-		resp->insertBoolean(isOnFullForce());
+		resp->insertInt(getForceRegen());
 		break;
 	case 20:
-		resp->insertInt(getCharacterBitmask());
+		resp->insertBoolean(isJedi());
 		break;
 	case 21:
-		resp->insertSignedInt(getWaypointListSize());
+		resp->insertBoolean(isOnFullForce());
 		break;
 	case 22:
-		resp->insertInt(getJediState());
+		resp->insertInt(getCharacterBitmask());
 		break;
 	case 23:
-		resp->insertLong(getWaypoint(inv->getUnsignedLongParameter())->_getObjectID());
+		resp->insertSignedInt(getWaypointListSize());
 		break;
 	case 24:
-		addWaypoint((WaypointObject*) inv->getObjectParameter(), inv->getBooleanParameter());
+		resp->insertInt(getJediState());
 		break;
 	case 25:
-		resp->insertBoolean(removeWaypoint((WaypointObject*) inv->getObjectParameter(), inv->getBooleanParameter()));
+		resp->insertLong(getWaypoint(inv->getUnsignedLongParameter())->_getObjectID());
 		break;
 	case 26:
-		updateWaypoint((WaypointObject*) inv->getObjectParameter());
+		addWaypoint((WaypointObject*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
 	case 27:
-		resp->insertLong(getPlayer()->_getObjectID());
+		resp->insertBoolean(removeWaypoint((WaypointObject*) inv->getObjectParameter(), inv->getBooleanParameter()));
 		break;
 	case 28:
-		setCurrentTitle(inv->getAsciiParameter(_param0_setCurrentTitle__string_bool_), inv->getBooleanParameter());
+		updateWaypoint((WaypointObject*) inv->getObjectParameter());
 		break;
 	case 29:
-		setTitle(inv->getAsciiParameter(_param0_setTitle__string_));
+		resp->insertLong(getPlayer()->_getObjectID());
 		break;
 	case 30:
-		resp->insertAscii(getCurrentTitle());
+		setCurrentTitle(inv->getAsciiParameter(_param0_setCurrentTitle__string_bool_), inv->getBooleanParameter());
 		break;
 	case 31:
-		resp->insertInt(getExperienceListCount());
+		setTitle(inv->getAsciiParameter(_param0_setTitle__string_));
 		break;
 	case 32:
-		resp->insertInt(getNewExperienceListCount(inv->getSignedIntParameter()));
+		resp->insertAscii(getCurrentTitle());
 		break;
 	case 33:
-		resp->insertInt(getWaypointListCount());
+		resp->insertInt(getExperienceListCount());
 		break;
 	case 34:
+		resp->insertInt(getNewExperienceListCount(inv->getSignedIntParameter()));
+		break;
+	case 35:
+		resp->insertInt(getWaypointListCount());
+		break;
+	case 36:
 		resp->insertInt(getNewWaypointListCount(inv->getSignedIntParameter()));
 		break;
 	default:
@@ -534,15 +566,23 @@ bool PlayerObjectAdapter::clearCharacterBit(unsigned int bit, bool updateClient)
 	return ((PlayerObjectImplementation*) impl)->clearCharacterBit(bit, updateClient);
 }
 
-void PlayerObjectAdapter::setForcePower(unsigned int fp, bool updateClient) {
-	return ((PlayerObjectImplementation*) impl)->setForcePower(fp, updateClient);
+void PlayerObjectAdapter::setForcePowerBar(unsigned int fp) {
+	return ((PlayerObjectImplementation*) impl)->setForcePowerBar(fp);
 }
 
-void PlayerObjectAdapter::setForcePowerMax(int fp) {
+void PlayerObjectAdapter::setMaxForcePowerBar(unsigned int fp, bool updateClient) {
+	return ((PlayerObjectImplementation*) impl)->setMaxForcePowerBar(fp, updateClient);
+}
+
+void PlayerObjectAdapter::setForcePower(unsigned int fp) {
+	return ((PlayerObjectImplementation*) impl)->setForcePower(fp);
+}
+
+void PlayerObjectAdapter::setForcePowerMax(unsigned int fp) {
 	return ((PlayerObjectImplementation*) impl)->setForcePowerMax(fp);
 }
 
-void PlayerObjectAdapter::setForceRegen(int fp) {
+void PlayerObjectAdapter::setForceRegen(unsigned int fp) {
 	return ((PlayerObjectImplementation*) impl)->setForceRegen(fp);
 }
 

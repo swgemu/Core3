@@ -69,6 +69,8 @@ import "../guild/Guild";
 
 import "skills/Skill";
 
+import "buffs/Buff";
+
 interface CreatureObject implements SceneObject {
 	CreatureObject(unsigned long oid) {
 		super(oid);
@@ -174,6 +176,30 @@ interface CreatureObject implements SceneObject {
 	void changeMaxMindBar(int hp);
 	void changeMaxFocusBar(int hp);
 	void changeMaxWillpowerBar(int hp);
+
+	void setHealthBar(unsigned int hp);
+	void setStrengthBar(unsigned int st);
+	void setConstitutionBar(unsigned int cst);
+	
+	void setMaxHealthBar(unsigned int hp, boolean updateClient = true);
+	void setMaxStrengthBar(unsigned int st, boolean updateClient = true);
+	void setMaxConstitutionBar(unsigned int cst, boolean updateClient = true);
+	
+	void setActionBar(unsigned int ap);
+	void setQuicknessBar(unsigned int qck);
+	void setStaminaBar(unsigned int sta);
+	
+	void setMaxActionBar(unsigned int ap, boolean updateClient = true);
+	void setMaxQuicknessBar(unsigned int qck, boolean updateClient = true);
+	void setMaxStaminaBar(unsigned int sta, boolean updateClient = true);
+	
+	void setMindBar(unsigned int mp);
+	void setFocusBar(unsigned int fc);
+	void setWillpowerBar(unsigned int will);
+	
+	void setMaxMindBar(unsigned int mp, boolean updateClient = true);
+	void setMaxFocusBar(unsigned int fc, boolean updateClient = true);
+	void setMaxWillpowerBar(unsigned int will, boolean updateClient = true);
 	
 	boolean hasAttackDelay();
 	void clearAttackDelay();
@@ -309,6 +335,12 @@ interface CreatureObject implements SceneObject {
 	void doPerformanceAction();
 	
 	void doEntertainerPatronEffects(boolean healShock = false, boolean healWounds = false, boolean addBuff = false);	
+	void addEntertainerFlourishBuff();
+
+	void addEntertainerBuffDuration(int performanceType, float duration);
+	void setEntertainerBuffDuration(int performanceType, float duration);
+	float getEntertainerBuffDuration(int performanceType);
+	
 	void activateRecovery();
 	
 	// Skill methods
@@ -332,7 +364,9 @@ interface CreatureObject implements SceneObject {
 	void setBankCredits(int credits);
 	
 	// Buff method
-	void applyBuff(const string type, int value, float duration);
+	void addBuff(int buffCRC, float duration);
+	void applyBuff(Buff buff);
+	boolean hasSpice();
 	
 	boolean verifyCashCredits(unsigned int creditsToRemove);
 	boolean verifyBankCredits(unsigned int creditsToRemove);

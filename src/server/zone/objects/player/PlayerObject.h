@@ -33,11 +33,15 @@ public:
 
 	bool clearCharacterBit(unsigned int bit, bool updateClient = false);
 
-	void setForcePower(unsigned int fp, bool updateClient = false);
+	void setForcePowerBar(unsigned int fp);
 
-	void setForcePowerMax(int fp);
+	void setMaxForcePowerBar(unsigned int fp, bool updateClient = true);
 
-	void setForceRegen(int fp);
+	void setForcePower(unsigned int fp);
+
+	void setForcePowerMax(unsigned int fp);
+
+	void setForceRegen(unsigned int fp);
 
 	unsigned int getForcePower();
 
@@ -109,11 +113,15 @@ public:
 
 	bool clearCharacterBit(unsigned int bit, bool updateClient);
 
-	void setForcePower(unsigned int fp, bool updateClient);
+	void setForcePowerBar(unsigned int fp);
 
-	void setForcePowerMax(int fp);
+	void setMaxForcePowerBar(unsigned int fp, bool updateClient);
 
-	void setForceRegen(int fp);
+	void setForcePower(unsigned int fp);
+
+	void setForcePowerMax(unsigned int fp);
+
+	void setForceRegen(unsigned int fp);
 
 	unsigned int getForcePower();
 

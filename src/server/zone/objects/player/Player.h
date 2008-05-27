@@ -123,6 +123,8 @@ public:
 
 	void kill();
 
+	void addBuff(unsigned int buffcrc, float time);
+
 	void lootCorpse(bool lootAll = false);
 
 	void lootObject(Creature* creature, SceneObject* object);
@@ -251,7 +253,11 @@ public:
 
 	void setHairData(string& hair);
 
-	bool changeForceBar(int fp);
+	bool changeForcePowerBar(int fp);
+
+	void setForcePowerBar(int fp);
+
+	void setMaxForcePowerBar(int fp, bool updateClient = true);
 
 	void setCharacterID(unsigned long long id);
 
@@ -565,6 +571,8 @@ public:
 
 	void kill();
 
+	void addBuff(unsigned int buffcrc, float time);
+
 	void lootCorpse(bool lootAll);
 
 	void lootObject(Creature* creature, SceneObject* object);
@@ -693,7 +701,11 @@ public:
 
 	void setHairData(string& hair);
 
-	bool changeForceBar(int fp);
+	bool changeForcePowerBar(int fp);
+
+	void setForcePowerBar(int fp);
+
+	void setMaxForcePowerBar(int fp, bool updateClient);
 
 	void setCharacterID(unsigned long long id);
 

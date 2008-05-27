@@ -43,6 +43,11 @@
 
 -- Core Commands
 
+imagedesignSkill = {
+	skillname = "imagedesign"
+}
+AddEntertainSkill(imagedesignSkill)
+
 startdanceSkill = {
 	skillname = "startdance"
 }

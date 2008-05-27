@@ -64,10 +64,16 @@ interface PlayerObject implements SceneObject {
 	boolean setCharacterBit(unsigned int bit, boolean updateClient = false);
 	boolean clearCharacterBit(unsigned int bit, boolean updateClient = false);
 	
-	void setForcePower(unsigned int fp, boolean updateClient = false);
-	void setForcePowerMax(int fp);
-	void setForceRegen(int fp);
+	// client actions
+	void setForcePowerBar(unsigned int fp);
+	void setMaxForcePowerBar(unsigned int fp, boolean updateClient = true);
+	
+	// force setters
+	void setForcePower(unsigned int fp);
+	void setForcePowerMax(unsigned int fp);
+	void setForceRegen(unsigned int fp);
 
+	// force getters
 	unsigned int getForcePower();
 	unsigned int getForcePowerMax();
 	unsigned int getForceRegen();

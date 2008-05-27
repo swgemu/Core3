@@ -1634,7 +1634,7 @@ void PlayerImplementation::doClone() {
 	
 	decayInventory();
 
-	changeForceBar(0);
+	changeForcePowerBar(0);
 	
 	resetArmorEncumbrance();
 	
@@ -1777,19 +1777,19 @@ void PlayerImplementation::lootObject(Creature* creature, SceneObject* object) {
 void PlayerImplementation::calculateForceRegen() {
 	if (isJedi() && !playerObject->isOnFullForce()) {
 		if (getPosture() == SITTING_POSTURE)
-			changeForceBar(playerObject->getForceRegen());
+			changeForcePowerBar(playerObject->getForceRegen());
 		else
-			changeForceBar(playerObject->getForceRegen() / 3);
+			changeForcePowerBar(playerObject->getForceRegen() / 3);
 	}
 }
 
-bool PlayerImplementation::changeForceBar(int32 fp) {
+bool PlayerImplementation::changeForcePowerBar(int32 fp) {
 	int32 newForce = playerObject->getForcePower() + fp;
 	
 	if (newForce <= 0)
 		return false; 
 	
-	setForceBar(MIN(newForce, playerObject->getForcePowerMax()));
+	setForcePowerBar(MIN(newForce, playerObject->getForcePowerMax()));
 
 	return true;
 }
@@ -1799,6 +1799,7 @@ void PlayerImplementation::addBuff(uint32 buffcrc, float time) {
 	sendMessage(bf);
 }
 
+// TODO: clearBuffs
 void PlayerImplementation::clearBuffs(bool doUpdatePlayer) {
 	// Clear buff icons
 	if (doUpdatePlayer) {
@@ -2978,8 +2979,9 @@ void PlayerImplementation::setEntertainerEvent() {
 		sendSystemMessage(msg.str());
 		return;
 	}
-	
-	server->addEvent(entertainerEvent, (uint64) performance->getLoopDuration() * 1000);
+	// I think the getLoopDuration is wrong now...thinking it should just be flat 10 seconds
+	//server->addEvent(entertainerEvent, (uint64) performance->getLoopDuration() * 1000);
+	server->addEvent(entertainerEvent, 10000);
 }
 
 void PlayerImplementation::setSurveyEvent(string& resourceName) {

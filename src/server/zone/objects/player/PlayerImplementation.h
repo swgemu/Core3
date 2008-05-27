@@ -375,21 +375,25 @@ public:
 
 	// buffing methods
 	void addBuff(uint32 buffcrc, float time);
-	
 	void clearBuffs(bool doUpdatePlayer = true);
 
 	// jedi methods
 	void calculateForceRegen();
 
-	bool changeForceBar(int32 fp);
+	bool changeForcePowerBar(int32 fp);
 
 	inline bool isJedi() {
 		return playerObject->isJedi();
 	}
 	
-	void setForceBar(uint32 fp) {
-		playerObject->setForcePower(fp, true);
+	void setForcePowerBar(uint32 fp) {
+		playerObject->setForcePowerBar(fp);
 	}
+
+	void setMaxForcePowerBar(uint32 fp, bool updateClient = true) {
+		playerObject->setMaxForcePowerBar(fp, updateClient);
+	}
+
 	
 	// faction methods
 	void setOvert();

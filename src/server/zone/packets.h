@@ -80,6 +80,7 @@ which carries forward this exception.
 #include "packets/object/StringList.h"
 #include "packets/object/Biography.h"
 #include "packets/object/Flourish.h"
+#include "packets/object/ImageDesignMessage.h"
 #include "packets/object/SitOnObject.h"
 #include "packets/object/PlayersNearYou.h"
 #include "packets/object/DataTransform.h"

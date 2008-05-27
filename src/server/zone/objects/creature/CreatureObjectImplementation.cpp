@@ -79,6 +79,7 @@ which carries forward this exception.
 #include "mount/MountCreature.h"
 
 #include "../building/BuildingObject.h"
+#include "../building/BuildingObjectImplementation.h"
 
 #include "skills/PassiveSkill.h"
 #include "skills/EntertainerSkill.h"
@@ -1436,15 +1437,23 @@ void CreatureObjectImplementation::setHealthBar(uint32 hp) {
 	broadcastMessage(dcreo6);
 }
 
-void CreatureObjectImplementation::setMaxHealthBar(uint32 hp) {
+void CreatureObjectImplementation::setMaxHealthBar(uint32 hp, bool updateClient) {
 	if (hp == healthMax) 
 		return;
 	
-	CreatureObjectDeltaMessage6* dcreo6 = new CreatureObjectDeltaMessage6(_this);
-	dcreo6->updateMaxHealthBar(hp);
-	dcreo6->close();
-
-	broadcastMessage(dcreo6);
+	if(updateClient) {
+		CreatureObjectDeltaMessage6* dcreo6 = new CreatureObjectDeltaMessage6(_this);
+		dcreo6->updateMaxHealthBar(hp);
+		dcreo6->close();
+	
+		broadcastMessage(dcreo6);
+	} else
+		setHealthMax(hp);
+	
+	if(health > healthMax && updateClient)
+		setHealthBar(healthMax);
+	else
+		setHealth(hp);
 }
 
 void CreatureObjectImplementation::setHealthWoundsBar(uint32 wounds) {
@@ -1469,15 +1478,23 @@ void CreatureObjectImplementation::setStrengthBar(uint32 st) {
 	broadcastMessage(dcreo6);
 }
 
-void CreatureObjectImplementation::setMaxStrengthBar(uint32 st) {
+void CreatureObjectImplementation::setMaxStrengthBar(uint32 st, bool updateClient) {
 	if (st == strengthMax) 
 		return;
 	
-	CreatureObjectDeltaMessage6* dcreo6 = new CreatureObjectDeltaMessage6(_this);
-	dcreo6->updateMaxStrengthBar(st);
-	dcreo6->close();
-
-	broadcastMessage(dcreo6);
+	if(updateClient) {
+		CreatureObjectDeltaMessage6* dcreo6 = new CreatureObjectDeltaMessage6(_this);
+		dcreo6->updateMaxStrengthBar(st);
+		dcreo6->close();
+	
+		broadcastMessage(dcreo6);
+	} else
+		setStrengthMax(st);
+	
+	if(strength > strengthMax && updateClient)
+		setStrengthBar(st);
+	else
+		setStrength(st);
 }
 
 void CreatureObjectImplementation::setConstitutionBar(uint32 cst) {
@@ -1491,15 +1508,23 @@ void CreatureObjectImplementation::setConstitutionBar(uint32 cst) {
 	broadcastMessage(dcreo6);
 }
 
-void CreatureObjectImplementation::setMaxConstitutionBar(uint32 cst) {
+void CreatureObjectImplementation::setMaxConstitutionBar(uint32 cst, bool updateClient) {
 	if (cst == constitutionMax) 
 		return;
 	
-	CreatureObjectDeltaMessage6* dcreo6 = new CreatureObjectDeltaMessage6(_this);
-	dcreo6->updateMaxConstitutionBar(cst);
-	dcreo6->close();
-
-	broadcastMessage(dcreo6);
+	if(updateClient) {
+		CreatureObjectDeltaMessage6* dcreo6 = new CreatureObjectDeltaMessage6(_this);
+		dcreo6->updateMaxConstitutionBar(cst);
+		dcreo6->close();
+	
+		broadcastMessage(dcreo6);
+	} else
+		setConstitutionMax(cst);
+	
+	if(constitution > constitutionMax && updateClient)
+		setConstitutionBar(cst);
+	else
+		setConstitution(cst);
 }
 
 void CreatureObjectImplementation::setActionBar(uint32 ap) {
@@ -1513,15 +1538,23 @@ void CreatureObjectImplementation::setActionBar(uint32 ap) {
 	broadcastMessage(dcreo6);
 }
 
-void CreatureObjectImplementation::setMaxActionBar(uint32 ap) {
+void CreatureObjectImplementation::setMaxActionBar(uint32 ap, bool updateClient) {
 	if (ap == actionMax) 
 		return;
 		
-	CreatureObjectDeltaMessage6* dcreo6 = new CreatureObjectDeltaMessage6(_this);
-	dcreo6->updateMaxActionBar(ap);
-	dcreo6->close();
-
-	broadcastMessage(dcreo6);
+	if(updateClient) {
+		CreatureObjectDeltaMessage6* dcreo6 = new CreatureObjectDeltaMessage6(_this);
+		dcreo6->updateMaxActionBar(ap);
+		dcreo6->close();
+	
+		broadcastMessage(dcreo6);
+	} else 
+		setActionMax(ap);
+	
+	if(action > actionMax && updateClient)
+		setActionBar(ap);
+	else
+		setAction(ap);
 }
 
 void CreatureObjectImplementation::setActionWoundsBar(uint32 wounds) {
@@ -1546,15 +1579,23 @@ void CreatureObjectImplementation::setQuicknessBar(uint32 qck) {
 	broadcastMessage(dcreo6);
 }
 
-void CreatureObjectImplementation::setMaxQuicknessBar(uint32 qck) {
+void CreatureObjectImplementation::setMaxQuicknessBar(uint32 qck, bool updateClient) {
 	if (qck == quicknessMax) 
 		return;
 	
-	CreatureObjectDeltaMessage6* dcreo6 = new CreatureObjectDeltaMessage6(_this);
-	dcreo6->updateMaxQuicknessBar(qck);
-	dcreo6->close();
-
-	broadcastMessage(dcreo6);
+	if(updateClient) {
+		CreatureObjectDeltaMessage6* dcreo6 = new CreatureObjectDeltaMessage6(_this);
+		dcreo6->updateMaxQuicknessBar(qck);
+		dcreo6->close();
+	
+		broadcastMessage(dcreo6);
+	} else 
+		setQuicknessMax(qck);
+	
+	if(quickness > quicknessMax && updateClient)
+		setQuicknessBar(qck);
+	else
+		setQuickness(qck);
 }
 
 
@@ -1569,15 +1610,23 @@ void CreatureObjectImplementation::setStaminaBar(uint32 sta) {
 	broadcastMessage(dcreo6);
 }
 
-void CreatureObjectImplementation::setMaxStaminaBar(uint32 sta) {
+void CreatureObjectImplementation::setMaxStaminaBar(uint32 sta, bool updateClient) {
 	if (sta == staminaMax) 
 		return;
 	
-	CreatureObjectDeltaMessage6* dcreo6 = new CreatureObjectDeltaMessage6(_this);
-	dcreo6->updateMaxStaminaBar(sta);
-	dcreo6->close();
-
-	broadcastMessage(dcreo6);
+	if(updateClient) {
+		CreatureObjectDeltaMessage6* dcreo6 = new CreatureObjectDeltaMessage6(_this);
+		dcreo6->updateMaxStaminaBar(sta);
+		dcreo6->close();
+	
+		broadcastMessage(dcreo6);
+	} else
+		setStaminaMax(sta);
+	
+	if(stamina > staminaMax && updateClient)
+		setStaminaBar(sta);
+	else
+		setStamina(sta);
 }
 
 void CreatureObjectImplementation::setMindBar(uint32 mp) {
@@ -1591,15 +1640,23 @@ void CreatureObjectImplementation::setMindBar(uint32 mp) {
 	broadcastMessage(dcreo6);
 }
 
-void CreatureObjectImplementation::setMaxMindBar(uint32 mp) {
+void CreatureObjectImplementation::setMaxMindBar(uint32 mp, bool updateClient) {
 	if (mp == mindMax) 
 		return;
 		
-	CreatureObjectDeltaMessage6* dcreo6 = new CreatureObjectDeltaMessage6(_this);
-	dcreo6->updateMaxMindBar(mp);
-	dcreo6->close();
-
-	broadcastMessage(dcreo6);
+	if(updateClient) {
+		CreatureObjectDeltaMessage6* dcreo6 = new CreatureObjectDeltaMessage6(_this);
+		dcreo6->updateMaxMindBar(mp);
+		dcreo6->close();
+	
+		broadcastMessage(dcreo6);
+	} else
+		setMindMax(mp);
+	
+	if(mind > mindMax && updateClient)
+		setMindBar(mp);
+	else
+		setMind(mp);
 }
 
 void CreatureObjectImplementation::setMindWoundsBar(uint32 wounds) {
@@ -1624,15 +1681,23 @@ void CreatureObjectImplementation::setFocusBar(uint32 fc) {
 	broadcastMessage(dcreo6);
 }
 
-void CreatureObjectImplementation::setMaxFocusBar(uint32 fc) {
+void CreatureObjectImplementation::setMaxFocusBar(uint32 fc, bool updateClient) {
 	if (fc == focusMax)
 		return;
 	
-	CreatureObjectDeltaMessage6* dcreo6 = new CreatureObjectDeltaMessage6(_this);
-	dcreo6->updateMaxFocusBar(fc);
-	dcreo6->close();
-
-	broadcastMessage(dcreo6);
+	if(updateClient) {
+		CreatureObjectDeltaMessage6* dcreo6 = new CreatureObjectDeltaMessage6(_this);
+		dcreo6->updateMaxFocusBar(fc);
+		dcreo6->close();
+	
+		broadcastMessage(dcreo6);
+	} else
+		setFocusMax(fc);
+	
+	if(focus > focusMax && updateClient)
+		setFocusBar(fc);
+	else
+		setFocus(fc);
 }
 
 void CreatureObjectImplementation::setWillpowerBar(uint32 will) {
@@ -1646,15 +1711,23 @@ void CreatureObjectImplementation::setWillpowerBar(uint32 will) {
 	broadcastMessage(dcreo6);
 }
 
-void CreatureObjectImplementation::setMaxWillpowerBar(uint32 will) {
+void CreatureObjectImplementation::setMaxWillpowerBar(uint32 will, bool updateClient) {
 	if (will == willpowerMax) 
 		return;
-	
-	CreatureObjectDeltaMessage6* dcreo6 = new CreatureObjectDeltaMessage6(_this);
-	dcreo6->updateMaxWillpowerBar(will);
-	dcreo6->close();
 
-	broadcastMessage(dcreo6);
+	if(updateClient) {
+		CreatureObjectDeltaMessage6* dcreo6 = new CreatureObjectDeltaMessage6(_this);
+		dcreo6->updateMaxWillpowerBar(will);
+		dcreo6->close();
+	
+		broadcastMessage(dcreo6);
+	} else
+		setWillpowerMax(will);
+	
+	if(willpower > willpowerMax && updateClient)
+		setWillpowerBar(will);
+	else
+		setWillpower(will);
 }
 
 void CreatureObjectImplementation::setMaxHAMBars(uint32 hp, uint32 ap, uint32 mp) {
@@ -2718,6 +2791,7 @@ void CreatureObjectImplementation::startWatch(uint64 entid) {
 
 		doWatching = true;
 	}
+	setEntertainerBuffDuration(PerformanceType::DANCE, 0.0f);
 
 	info("started watching [" + creature->getCharacterName().c_str() + "]");
 		
@@ -2780,6 +2854,7 @@ void CreatureObjectImplementation::startListen(uint64 entid) {
 
 		doListening = true;
 	}
+	setEntertainerBuffDuration(PerformanceType::MUSIC, 0.0f);
 
 	info("started listening [" + creature->getCharacterName().c_str() + "]");
 
@@ -2835,6 +2910,8 @@ void CreatureObjectImplementation::stopWatch(uint64 entid, bool doSendPackets, b
 		sendSystemMessage(msg.str());
 	}
 
+	activateEntertainerBuff(PerformanceType::DANCE);
+	setEntertainerBuffDuration(PerformanceType::DANCE, 0.0f); // reset
 	info("stopped watching [" + entName + "]");
 	
 	doWatching = false;
@@ -2887,12 +2964,42 @@ void CreatureObjectImplementation::stopListen(uint64 entid, bool doSendPackets, 
 
 		sendSystemMessage(msg.str());
 	}
-
+	
+	//TODO: Activate Buff
+	activateEntertainerBuff(PerformanceType::MUSIC);
+	setEntertainerBuffDuration(PerformanceType::MUSIC, 0.0f); // reset
 	info("stopped listening [" + entName + "]");
 	
 	doListening = false;
 	listenID = 0;
 }
+
+void CreatureObjectImplementation::activateEntertainerBuff(int performanceType) {
+
+	// Returns the Number of Seconds for the Buff Duration
+	float buffDuration = getEntertainerBuffDuration(performanceType);
+	// Returns a % of base stat
+	float buffStrength = getEntertainerBuffStrength(performanceType);
+	
+
+	Buff *buff = NULL;
+	switch(performanceType){
+	case PerformanceType::MUSIC:
+		buff = new Buff(BuffCRC::PERFORMANCE_ENHANCE_MUSIC_FOCUS, BuffType::PERFORMANCE, buffDuration);
+		buff->setFocusBuff((int)round(buffStrength * getBaseFocus()));
+		applyBuff(buff);
+		
+		buff = new Buff(BuffCRC::PERFORMANCE_ENHANCE_MUSIC_WILLPOWER, BuffType::PERFORMANCE, buffDuration);
+		buff->setWillpowerBuff((int)round(buffStrength * getBaseWillpower()));
+		applyBuff(buff);		
+	case PerformanceType::DANCE:
+		buff = new Buff(BuffCRC::PERFORMANCE_ENHANCE_DANCE_MIND, BuffType::PERFORMANCE, buffDuration);
+		buff->setMindBuff((int)round(buffStrength * getBaseMind()));
+		applyBuff(buff);
+	}
+	
+}
+
 
 void CreatureObjectImplementation::doFlourish(const string& modifier)
 {	
@@ -2909,19 +3016,6 @@ void CreatureObjectImplementation::doFlourish(const string& modifier)
 	}
 
 	int fid = atoi(modifier.c_str());
-
-	// Should be handled by queueFlourish()
-
-/*    if (modifier == "") {
-    	sendSystemMessage("performance", "flourish_format");
-    	return;
-    }
-    	    
-    if (fid < 1 || fid > 8) {
-    	sendSystemMessage("performance", "flourish_not_valid");
-    	sendSystemMessage("performance", "flourish_format");
-    	return;
-    } */
     
 	if (!isDancing() && !isPlayingMusic()) {
 		sendSystemMessage("performance", "flourish_not_performing");
@@ -2964,12 +3058,89 @@ void CreatureObjectImplementation::doFlourish(const string& modifier)
 			broadcastMessage(flourish);
 	    }
 		
+		// Add buff
+		if(canGiveEntertainBuff()){
+			sendSystemMessage("Flourish Buff");
+			addEntertainerFlourishBuff();
+		}
+			
+		
 		sendSystemMessage("performance", "flourish_perform");
 	} else {
 		sendSystemMessage("performance", "flourish_too_tired");
 	}	
 }
 
+void CreatureObjectImplementation::addEntertainerFlourishBuff() {
+		
+	// Watchers that are in our group for passive buff
+	ManagedSortedVector<CreatureObject>* patrons = NULL;
+
+	SkillManager* skillManager = server->getSkillManager();
+	Performance* performance = NULL;
+
+	if(getPerformanceName() == "")
+		return;
+	
+	if (isDancing()) {
+		//woundAbility = getSkillMod("healing_dance_wound");
+		patrons = &watchers;
+		performance = skillManager->getDance(getPerformanceName());
+	} else if (isPlayingMusic() && getInstrument() != NULL) {
+		//woundAbility = getSkillMod("healing_music_wound");
+		patrons = &listeners;
+		performance = skillManager->getSong(getPerformanceName(), getInstrument()->getInstrumentType());
+	} else return;
+	
+	if(performance == NULL) { // shouldn't happen
+		stringstream msg;
+		msg << "Performance was null.  Please report to McMahon! Name: " << getPerformanceName() << " and Type: " << dec << getInstrument()->getInstrumentType();
+
+		sendSystemMessage(msg.str());
+		return;
+	}
+	
+	if (patrons != NULL && patrons->size() > 0) {
+		for (int i = 0; i < patrons->size(); ++i) {
+			CreatureObject* obj = patrons->get(i);
+
+			// Passive Buff only to group members
+			if(!isInAGroup() || (isInAGroup() && getGroupID() != obj->getGroupID()))
+				continue;
+			
+			try {
+				if (obj != _this)
+					obj->wlock(_this);
+				 				
+				bool patronInRange = false;
+				
+				if(obj->getParent() != NULL && obj->getParent()->isCell() )					
+				{
+					SceneObject *pp = obj->getParent();
+					BuildingObject* pb = (BuildingObject*)pp->getParent();
+					
+					if(pb == getBuilding())
+						patronInRange = true;
+				}
+				
+				if(patronInRange)
+					obj->addEntertainerBuffDuration(performance->getType(), 1.0f);
+				
+				if (obj != _this)
+					obj->unlock();
+			} catch (...) {
+				if (obj != _this)
+					obj->unlock();
+				
+				error("Unreported exception caught in CreatureObjectImplementation::doHealMindWounds()");
+			}
+		}
+	} /*else
+		cout << "no patrons";*/
+	
+}
+
+// Handle the Entertainer 'tick's
 void CreatureObjectImplementation::doEntertainerPatronEffects(bool healShock, bool healWounds, bool addBuff) {
 		
 	ManagedSortedVector<CreatureObject>* patrons = NULL;
@@ -3030,8 +3201,12 @@ void CreatureObjectImplementation::doEntertainerPatronEffects(bool healShock, bo
 				{
 					if(healShock)
 						obj->changeMindWoundsBar(woundHeal, false);
+					
 					if(healWounds)
 						obj->changeShockWounds(shockHeal);
+					// Add 1 minute per tick
+					if(addBuff)
+						obj->addEntertainerBuffDuration(performance->getType(), 1.0f);
 				} else
 				{
 					
@@ -3163,6 +3338,21 @@ int CreatureObjectImplementation::getBuildingType() {
 	}
 
 	return 0;
+}
+
+bool CreatureObjectImplementation::canGiveEntertainBuff() {
+	if (isInBuilding()) {
+
+		int buildingType = getBuildingType();
+		if(
+			buildingType == BuildingObjectImplementation::CANTINA ||
+			buildingType == BuildingObjectImplementation::GUILD_THEATER ||
+			buildingType == BuildingObjectImplementation::TAVERN )
+		{
+			return true;
+		}
+	}
+	return false;
 }
 
 SceneObject *CreatureObjectImplementation::getBuilding() {
@@ -3484,131 +3674,71 @@ bool CreatureObjectImplementation::verifyBankCredits(uint32 creditsToRemove) {
 	 	return false;
 	}
 }
-
-void CreatureObjectImplementation::applyBuff(const string& type, int value, float duration) {	
-	int buffCrc;
-	
-	CreatureObjectDeltaMessage6* delta = new CreatureObjectDeltaMessage6(_this);
-	
-	if (type == "health" && !healthBuff) {
-		buffCrc = 0x98321369;
-		
-		healthMax += value;
-		health += value;
-		
-		delta->updateMaxHealthBar(healthMax);
-		delta->updateHealthBar(health);
-		
-		healthBuff = true;
-	} else if (type == "strength" && !strengthBuff) {
-		buffCrc = 0x815D85C5;
-		
-		strengthMax += value;
-		strength += value;
-		
-		delta->updateMaxStrengthBar(strengthMax);
-		delta->updateStrengthBar(strength);
-		
-		strengthBuff = true;
-	} else if (type == "constitution" && !constitutionBuff) {
-		buffCrc = 0x7F86D2C6;
-		
-		constitutionMax += value;
-		constitution += value;
-		
-		delta->updateMaxConstitutionBar(constitutionMax);
-		delta->updateConstitutionBar(constitution);
-		
-		constitutionBuff = true;
-	} else if (type == "action" && !actionBuff) {
-		buffCrc = 0x4BF616E2;
-		
-		actionMax += value;
-		action += value;
-		
-		delta->updateMaxActionBar(actionMax);
-		delta->updateActionBar(action);
-		
-		actionBuff = true;
-	} else if (type == "quickness" && !quicknessBuff) {
-		buffCrc = 0x71B5C842;
-		
-		quicknessMax += value;
-		quickness += value;
-		
-		delta->updateMaxQuicknessBar(quicknessMax);
-		delta->updateQuicknessBar(quickness);
-		
-		quicknessBuff = true;
-	} else if (type == "stamina" && !staminaBuff) {
-		buffCrc = 0xED0040D9;
-		
-		staminaMax += value;
-		stamina += value;
-		
-		delta->updateMaxStaminaBar(staminaMax);
-		delta->updateStaminaBar(stamina);
-		
-		staminaBuff = true;
-	} else if (type == "mind" && !mindBuff) {
-		buffCrc = 0x11C1772E;
-		
-		mindMax += value;
-		mind += value;
-		
-		delta->updateMaxMindBar(mindMax);
-		delta->updateMindBar(mind);
-		
-		mindBuff = true;
-	} else if (type == "focus" && !focusBuff) {
-		buffCrc = 0x2E77F586;
-		
-		focusMax += value;
-		focus += value;
-		
-		delta->updateMaxFocusBar(focusMax);
-		delta->updateFocusBar(focus);
-		
-		focusBuff = true;
-	} else if (type == "willpower" && !willpowerBuff) {
-		buffCrc = 0x3EC6FCB6;
-		
-		willpowerMax += value;
-		willpower += value;
-		
-		delta->updateMaxWillpowerBar(willpowerMax);
-		delta->updateWillpowerBar(willpower);
-		
-		willpowerBuff = true;
-	} else
-		return;
-	
-	delta->close();
-	
-	broadcastMessage(delta);
-	
-	((PlayerImplementation*) this)->addBuff(buffCrc, duration);
-	
-	Event* e = new CreatureBuffEvent(this, type, duration, value);
-	server->addEvent(e);
-	
-	buffEvents.add(e);
+void CreatureObjectImplementation::addBuff(int buffCRC, float duration) {
+	((PlayerImplementation*) this)->addBuff(buffCRC, duration);
 }
 
+
+void CreatureObjectImplementation::removeBuff(const uint32 buffCRC, bool remove) {
+	// TODO: call debuff?
+	if(!hasBuff(buffCRC))
+		return;
+
+	Buff *buff = creatureBuffs.get(buffCRC);
+	buff->deActivateBuff(_this);
+	
+	delete buff;
+	if(remove)
+		creatureBuffs.remove(buffCRC);
+}
+
+void CreatureObjectImplementation::applyBuff(Buff *buff) { 
+
+	if(buff == NULL || buff->getBuffCRC() <= 0 || buff->getBuffDuration() <= 0)
+		return;
+	
+	// Other code should handle returning an error message
+	// if a previous buff already exists - safety net - make sure we don't double up
+	if(hasBuff(buff->getBuffCRC()))
+		removeBuff(buff->getBuffCRC()); 
+	
+	creatureBuffs.put(buff->getBuffCRC(), buff);
+	buff->activateBuff(_this);
+	Event* e = new CreatureBuffEvent(this, buff->getBuffCRC(), buff->getBuffDuration());
+	server->addEvent(e);
+	activateRecovery();
+}
+
+// TODO: CreatureObjectImplementation::saveBuffs(bool doUpdateCreature)
+// save the current duration onto the creature object so they can be
+// loaded back when they login
+
 void CreatureObjectImplementation::removeBuffs(bool doUpdateCreature) {
-	// remove buff events from queue
+	// Remove events from server queue
 	for (int i = 0; i < buffEvents.size(); i++) {
 		Event* e = buffEvents.get(i);
 		server->removeEvent(e);
 		delete e;
 	}
-
+	// Remove from Creature
 	buffEvents.removeAll();
 
 	resetHAMBars();
 
-	if (!doUpdateCreature)
+	if (!doUpdateCreature) // used in deconstructor -- save current buff duration to the player object at some future time
+	{
+		// TODO: cleanup the creatureBuffs possibly?
 		return;
+	}
+	
+	creatureBuffs.resetIterator();
+	
+	while (creatureBuffs.hasNext()) {
+		Buff *buff = creatureBuffs.getNextValue();
+		if(buff != NULL)
+			removeBuff(buff->getBuffCRC(), false);
+	}
+	creatureBuffs.removeAll();
 	
 	CreatureObjectDeltaMessage6* delta = new CreatureObjectDeltaMessage6(_this);
 	
@@ -3644,105 +3774,8 @@ void CreatureObjectImplementation::removeBuffs(bool doUpdateCreature) {
 	broadcastMessage(delta);
 }
 
-void CreatureObjectImplementation::removeBuff(const string& type, int value, Event* event) {	
-	CreatureObjectDeltaMessage6* delta = new CreatureObjectDeltaMessage6(_this);
-	
-	buffEvents.removeElement(event);
-	
-	if (type == "health" && healthBuff) {
-		healthMax -= value;
-		
-		if(health > healthMax)
-			health = healthMax;
-		
-		delta->updateMaxHealthBar(healthMax);
-		delta->updateHealthBar(health);
-		
-		healthBuff = false;
-	} else if (type == "strength" && strengthBuff) {
-		strengthMax -= value;
-		
-		if ((int)strength > (int)strengthMax)
-			strength = strengthMax;
-		
-		delta->updateMaxStrengthBar(getStrengthMax());
-		delta->updateStrengthBar(getStrength());
-		
-		strengthBuff = false;
-	} else if (type == "constitution" && constitutionBuff) {
-		constitutionMax -= value;
-		
-		if((int)constitution > (int)constitutionMax)
-			constitution = constitutionMax;
-		
-		delta->updateMaxConstitutionBar(getConstitutionMax());
-		delta->updateConstitutionBar(getConstitution());
-		
-		constitutionBuff = false;
-	} else if (type == "action" && actionBuff) {
-		actionMax -= value;
-		
-		if(action > actionMax)
-			action = actionMax;
-		
-		delta->updateMaxActionBar(actionMax);
-		delta->updateActionBar(action);
-		
-		actionBuff = false;
-	} else if (type == "quickness" && quicknessBuff) {
-		quicknessMax -= value;
-		
-		if((int)quickness > (int)quicknessMax)
-			quickness = quicknessMax;
-		
-		delta->updateMaxQuicknessBar(getQuicknessMax());
-		delta->updateQuicknessBar(getQuickness());
-		
-		quicknessBuff = false;
-	} else if (type == "stamina" && staminaBuff) {
-		staminaMax -= value;
-		if((int)stamina > (int)staminaMax)
-			stamina = staminaMax;
-		delta->updateMaxStaminaBar(getStaminaMax());
-		delta->updateStaminaBar(getStamina());
-		staminaBuff = false;
-	} else if (type == "mind" && mindBuff) {
-		mindMax -= value;
-		
-		if(mind > mindMax)
-			mind = mindMax;
-		
-		delta->updateMaxMindBar(mindMax);
-		delta->updateMindBar(mind);
-		
-		mindBuff = false;
-	} else if (type == "focus" && focusBuff) {
-		focusMax -= value;
-		
-		if((int)focus > (int)focusMax)
-			focus = focusMax;
-		
-		delta->updateMaxFocusBar(getFocusMax());
-		delta->updateFocusBar(getFocus());
-		
-		focusBuff = false;
-	} else if (type == "willpower" && willpowerBuff) {
-		willpowerMax -= value;
-		
-		if((int)willpower > (int)willpowerMax)
-			willpower = willpowerMax;
-		
-		delta->updateMaxWillpowerBar(getWillpowerMax());
-		delta->updateWillpowerBar(getWillpower());
-		
-		willpowerBuff = false;
-	} else
-		return;
-	
-	delta->close();
-	
-	broadcastMessage(delta);
-}
+
+
 
 float CreatureObjectImplementation::getArmorResist(int resistType) {
 	switch (resistType) {

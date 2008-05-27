@@ -86,6 +86,10 @@ public:
 	void updateForcePower() {
 		addIntUpdate(0x02, play->getForcePower());
 	}
+
+	void updateForcePowerMax() {
+		addIntUpdate(0x03, play->getForcePowerMax());
+	}
 	
 	void startExperienceUpdate(int typesOfExp) {
 		startUpdate(0);

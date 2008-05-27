@@ -443,6 +443,13 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player, Message* 
 	case (0xA6F95839): //showpvprating
 	    parseShowPvpRating(player, pack);
 	    break;
+	case (0xDFC959BA): //imagedesign
+		if (player->isMounted()) {
+			player->clearQueueAction(actioncntr, 0, 1, 16);
+			return;
+		}
+		parseImageDesign(player, pack);
+		break;
 	case (0xC8998CE9): //flourish
 		if (player->isMounted()) {
 			player->clearQueueAction(actioncntr, 0, 1, 16);
@@ -1004,6 +1011,14 @@ void ObjectControllerMessage::parseStopListen(Player* player, Message* pack) {
 
 	player->stopListen(listenID);
 }
+
+void ObjectControllerMessage::parseImageDesign(Player* player, Message* pack) { 
+	uint64 target = pack->parseLong(); // skip passed target get this later?
+	
+	ImageDesignMessage* msg = new ImageDesignMessage(player);
+	player->sendMessage(msg);
+}
+
 
 void ObjectControllerMessage::parseFlourish(Player* player, Message* pack, uint32 actionCntr) { 
 	uint64 target = pack->parseLong(); // skip passed target 

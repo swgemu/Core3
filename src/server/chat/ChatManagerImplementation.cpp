@@ -783,24 +783,273 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 				else
 					broadcastMessageRange(player, message.str(), range);
 			}
+		} else if(cmd == "@setForceMax") {
+			if (userManager->isAdmin(player->getFirstName())) {
+				int fp = tokenizer.getIntToken();
+				player->setMaxForcePowerBar(fp);
+				stringstream message;
+				message << "Set Force Power Max to: " << fp << ".";
+				player->sendSystemMessage(message.str());
+			}
+		} else if(cmd == "@setForce") {
+			if (userManager->isAdmin(player->getFirstName())) {
+				int fp = tokenizer.getIntToken();
+				player->setForcePowerBar(fp);
+				stringstream message;
+				message << "Set Force Power to: " << fp << ".";
+				player->sendSystemMessage(message.str());
+			}		
 		} else if (cmd == "@buff") {
 			if (player->getHealthMax() == player->getBaseHealth()) {
 				int buffValue = 3000;
+				//float buffDuration = 10.0f; // Testing purposes
 				float buffDuration = 10800.0f;
 
-				player->applyBuff("health", buffValue, buffDuration);
-				player->applyBuff("strength", buffValue, buffDuration);
-				player->applyBuff("constitution", buffValue, buffDuration);
-				player->applyBuff("action", buffValue, buffDuration);
-				player->applyBuff("quickness", buffValue, buffDuration);
-				player->applyBuff("stamina", buffValue, buffDuration);
-				player->applyBuff("mind", buffValue, buffDuration);
-				player->applyBuff("focus", buffValue, buffDuration);
-				player->applyBuff("willpower", buffValue, buffDuration);
+				Buff *buff; //pointer for each buff
+				
+				// Health
+				buff = new Buff(BuffCRC::MEDICAL_ENHANCE_HEALTH, BuffType::MEDICAL, buffDuration);
+				buff->setHealthBuff(buffValue);
+				player->applyBuff(buff);
+
+				// Strength
+				buff = new Buff(BuffCRC::MEDICAL_ENHANCE_STRENGTH, BuffType::MEDICAL, buffDuration);
+				buff->setStrengthBuff(buffValue);
+				player->applyBuff(buff);
+
+				// Constitution
+				buff = new Buff(BuffCRC::MEDICAL_ENHANCE_CONSTITUTION, BuffType::MEDICAL, buffDuration);
+				buff->setConstitutionBuff(buffValue);
+				player->applyBuff(buff);
+
+				// Action
+				buff = new Buff(BuffCRC::MEDICAL_ENHANCE_ACTION, BuffType::MEDICAL, buffDuration);
+				buff->setActionBuff(buffValue);
+				player->applyBuff(buff);
+
+				// Quickness
+				buff = new Buff(BuffCRC::MEDICAL_ENHANCE_QUICKNESS, BuffType::MEDICAL, buffDuration);
+				buff->setQuicknessBuff(buffValue);
+				player->applyBuff(buff);
+				
+				// Stamina
+				buff = new Buff(BuffCRC::MEDICAL_ENHANCE_STAMINA, BuffType::MEDICAL, buffDuration);
+				buff->setStaminaBuff(buffValue);
+				player->applyBuff(buff);
+				
+				// Mind
+				buff = new Buff(BuffCRC::PERFORMANCE_ENHANCE_DANCE_MIND, BuffType::PERFORMANCE, buffDuration);
+				buff->setMindBuff(buffValue);
+				player->applyBuff(buff);
+				
+				buff = new Buff(BuffCRC::PERFORMANCE_ENHANCE_MUSIC_FOCUS, BuffType::PERFORMANCE, buffDuration);
+				buff->setFocusBuff(buffValue);
+				player->applyBuff(buff);
+				
+				buff = new Buff(BuffCRC::PERFORMANCE_ENHANCE_MUSIC_WILLPOWER, BuffType::PERFORMANCE, buffDuration);
+				buff->setWillpowerBuff(buffValue);
+				player->applyBuff(buff);
 
 				player->sendSystemMessage("Buffs applied");
 			} else {
 				player->sendSystemMessage("Already buffed");
+			}
+/*		} else if (cmd == "@buffcrc") {
+			
+			
+			if (tokenizer.hasMoreTokens()) {
+				string buff;
+				tokenizer.getStringToken(buff);
+				player->addBuff(String::hashCode(buff), 300);
+				
+			} else {
+				player->sendSystemMessage("Useage: buffcrc int");
+			}*/
+		} else if (cmd == "@spice") {
+			if(player->hasSpice())
+			{
+				player->sendSystemMessage("You already have spice.");
+			} else if (tokenizer.hasMoreTokens()) {
+				string name;
+				tokenizer.getStringToken(name);
+				
+				stringstream spice_up;
+				spice_up << "spice." << name << ".up";
+
+				stringstream spice_down;
+				spice_down << "spice." << name << ".down";
+				
+				Buff *buff = NULL;
+				
+				switch(String::hashCode(spice_up.str())) {
+				
+				
+				//spice.booster_blue.up	
+				case 0x18A5AEFB:
+					buff = new Buff(BuffCRC::SPICE_BOOSTER_BLUE_UP, BuffType::SPICE, 600.0f);
+					buff->setActionBuff(400);
+					buff->setQuicknessBuff(400);
+					buff->setBuffDownerCRC(BuffCRC::SPICE_BOOSTER_BLUE_DOWN);
+					player->applyBuff(buff);
+					break;
+					
+				//spice.crash_n_burn.up	
+				case 0x5E1BE4D6:
+					buff = new Buff(BuffCRC::SPICE_CRASH_N_BURN_UP, BuffType::SPICE, 600.0f);
+					buff->setActionBuff(-200);
+					buff->setQuicknessBuff(-200);
+					buff->setMindBuff(400);
+					buff->setFocusBuff(200);
+					buff->setBuffDownerCRC(BuffCRC::SPICE_CRASH_N_BURN_DOWN);
+					player->applyBuff(buff);
+					break;
+				//spice.droid_lube.up	
+				case 0x0C969AE9:
+					buff = new Buff(BuffCRC::SPICE_DROID_LUBE_UP, BuffType::SPICE, 600.0f);
+					buff->setHealthBuff(250);
+					buff->setStrengthBuff(250);
+					buff->setConstitutionBuff(250);
+					buff->setBuffDownerCRC(BuffCRC::SPICE_DROID_LUBE_DOWN);
+					player->applyBuff(buff);
+					break;
+				//spice.giggledust.up	
+				case 0x3E41BA17:
+					buff = new Buff(BuffCRC::SPICE_GIGGLEDUST_UP, BuffType::SPICE, 600.0f);
+					buff->setActionBuff(300);
+					buff->setQuicknessBuff(300);
+					buff->setFocusBuff(-100);
+					buff->setBuffDownerCRC(BuffCRC::SPICE_GIGGLEDUST_DOWN);
+					player->applyBuff(buff);
+					break;
+				//spice.grey_gabaki.up	
+				case 0xE5C9CD20:
+					buff = new Buff(BuffCRC::SPICE_GREY_GABAKI_UP, BuffType::SPICE, 500.0f);
+					buff->setFocusBuff(500);
+					buff->setBuffDownerCRC(BuffCRC::SPICE_GREY_GABAKI_DOWN);
+					player->applyBuff(buff);
+					break;
+				//spice.gunjack.up	
+				case 0x09B6F8FC:
+					buff = new Buff(BuffCRC::SPICE_GUNJACK_UP, BuffType::SPICE, 600.0f);
+					buff->setStrengthBuff(500);
+					buff->setQuicknessBuff(-200);
+					buff->setFocusBuff(-100);
+					buff->setBuffDownerCRC(BuffCRC::SPICE_GUNJACK_DOWN);
+					player->applyBuff(buff);
+					break;
+				//spice.muon_gold.up	
+				case 0xFBE87E37:
+					buff = new Buff(BuffCRC::SPICE_MUON_GOLD_UP, BuffType::SPICE, 600.0f);
+					buff->setMindBuff(500);
+					buff->setFocusBuff(500);
+					buff->setWillpowerBuff(500);
+					buff->setBuffDownerCRC(BuffCRC::SPICE_MUON_GOLD_DOWN);
+					player->applyBuff(buff);
+					break;
+				//spice.neutron_pixey.up	
+				case 0x5DC6921F:
+					buff = new Buff(BuffCRC::SPICE_NEUTRON_PIXEY_UP, BuffType::SPICE, 800.0f);
+					buff->setHealthBuff(1000);
+					buff->setStrengthBuff(200);
+					buff->setConstitutionBuff(200);
+					buff->setActionBuff(500);
+					buff->setQuicknessBuff(50);
+					buff->setStaminaBuff(50);
+					buff->setBuffDownerCRC(BuffCRC::SPICE_NEUTRON_PIXEY_DOWN);
+					player->applyBuff(buff);
+					break;
+				//spice.pyrepenol.up	
+				case 0x1EBC62E5:
+					buff = new Buff(BuffCRC::SPICE_PYREPENOL_UP, BuffType::SPICE, 600.0f);
+					buff->setStrengthBuff(300);
+					buff->setQuicknessBuff(-100);
+					buff->setFocusBuff(-50);
+					buff->setBuffDownerCRC(BuffCRC::SPICE_PYREPENOL_DOWN);
+					player->applyBuff(buff);
+					break;
+				//spice.scramjet.up	
+				case 0x2E03F676:
+					buff = new Buff(BuffCRC::SPICE_SCRAMJET_UP, BuffType::SPICE, 700.0f);
+					buff->setStrengthBuff(300);
+					buff->setBuffDownerCRC(BuffCRC::SPICE_SCRAMJET_DOWN);
+					player->applyBuff(buff);
+					break;
+				//spice.sedative_h4b.up	
+				case 0xD7A72ACF:
+					buff = new Buff(BuffCRC::SPICE_SEDATIVE_H4B_UP, BuffType::SPICE, 600.0f);
+					buff->setHealthBuff(400);
+					buff->setConstitutionBuff(300);
+					buff->setMindBuff(-100);
+					buff->setFocusBuff(-100);
+					buff->setBuffDownerCRC(BuffCRC::SPICE_SEDATIVE_H4B_DOWN);
+					player->applyBuff(buff);
+					break;
+				//spice.shadowpaw.up	
+				case 0x3AAD2B89:
+					buff = new Buff(BuffCRC::SPICE_SHADOWPAW_UP, BuffType::SPICE, 600.0f);
+					buff->setStrengthBuff(-100);
+					buff->setActionBuff(250);
+					buff->setQuicknessBuff(250);
+					buff->setBuffDownerCRC(BuffCRC::SPICE_SHADOWPAW_DOWN);
+					player->applyBuff(buff);
+					break;
+				//spice.sweetblossom.up	
+				case 0x7EC00CB8:
+					buff = new Buff(BuffCRC::SPICE_SWEETBLOSSOM_UP, BuffType::SPICE, 600.0f);
+					buff->setActionBuff(400);
+					buff->setQuicknessBuff(400);
+					buff->setBuffDownerCRC(BuffCRC::SPICE_SWEETBLOSSOM_DOWN);
+					player->applyBuff(buff);
+					break;
+				//spice.thruster_head.up	
+				case 0x530E31B7:
+					buff = new Buff(BuffCRC::SPICE_THRUSTER_HEAD_UP, BuffType::SPICE, 600.0f);
+					buff->setHealthBuff(100);
+					buff->setConstitutionBuff(600);
+					buff->setActionBuff(-100);
+					buff->setQuicknessBuff(-100);
+					buff->setFocusBuff(-200);
+					buff->setBuffDownerCRC(BuffCRC::SPICE_THRUSTER_HEAD_DOWN);
+					player->applyBuff(buff);
+					break;
+				//spice.yarrock.up	
+				case 0xE7F8C957:
+					buff = new Buff(BuffCRC::SPICE_YARROCK_UP, BuffType::SPICE, 600.0f);
+					buff->setMindBuff(200);
+					buff->setFocusBuff(100);
+					buff->setWillpowerBuff(100);
+					buff->setBuffDownerCRC(BuffCRC::SPICE_YARROCK_DOWN);
+					player->applyBuff(buff);
+					break;
+				//spice.kliknik_boost.up	
+				case 0x37173CAD:
+					buff = new Buff(BuffCRC::SPICE_KLIKNIK_BOOST_UP, BuffType::SPICE, 240.0f);
+					buff->setStrengthBuff(500);
+					buff->setActionBuff(100);
+					buff->setQuicknessBuff(700);
+					buff->setStaminaBuff(100);
+					buff->setFocusBuff(500);
+					buff->setBuffDownerCRC(BuffCRC::SPICE_KLIKNIK_BOOST_DOWN);
+					player->applyBuff(buff);
+					break;
+				//spice.kwi_boost.up	
+				case 0x629FA918:
+					buff = new Buff(BuffCRC::SPICE_KWI_BOOST_UP, BuffType::SPICE, 60.0f);
+					buff->setHealthBuff(100);
+					buff->setConstitutionBuff(900);
+					buff->setActionBuff(100);
+					buff->setStaminaBuff(900);
+					buff->setMindBuff(100);
+					buff->setFocusBuff(900);
+					buff->setBuffDownerCRC(BuffCRC::SPICE_KWO_BOOST_DOWN); // stupid typo in IIFs
+					player->applyBuff(buff);
+					break;
+				
+				default:
+					player->sendSystemMessage("Useage: @spice [spice_name] (available: booster_blue | crash_n_burn | droid_lube | giggledust | grey_gabaki | gunjack | muon_gold | neutron_pixey | pyrepenol | scramjet | sedative_h4b | shadowpaw | sweetblossom | thruster_head | yarrock | kliknik_boost | kwi_boost)");
+				}
+			} else {
+				player->sendSystemMessage("Useage: @spice [spice_name] (available: booster_blue | crash_n_burn | droid_lube | giggledust | grey_gabaki | gunjack | muon_gold | neutron_pixey | pyrepenol | scramjet | sedative_h4b | shadowpaw | sweetblossom | thruster_head | yarrock | kliknik_boost | kwi_boost)");
 			}
 		} else if (cmd == "@dbStats") {
 			if (userManager->isAdmin(player->getFirstName())) {

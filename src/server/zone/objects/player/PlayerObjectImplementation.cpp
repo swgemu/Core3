@@ -208,17 +208,40 @@ void PlayerObjectImplementation::setCurrentTitle(string& nTitle, bool updateClie
 	}
 }
 
-void PlayerObjectImplementation::setForcePower(uint32 fp, bool updateClient) {
+void PlayerObjectImplementation::setForcePowerBar(uint32 fp) {
+	if (fp == forcePower) 
+		return;
 	forcePower = fp;
 	
-	if (updateClient) {
+	
+	PlayerObjectDeltaMessage8* dplay8 = new PlayerObjectDeltaMessage8(this);
+	dplay8->updateForcePower();
+	dplay8->close();
+
+	// TODO: broadcastMessage ?
+	player->sendMessage(dplay8);
+}
+
+
+void PlayerObjectImplementation::setMaxForcePowerBar(uint32 fp, bool updateClient) {
+	if (fp == forcePowerMax) 
+		return;
+
+	if(updateClient) {
 		PlayerObjectDeltaMessage8* dplay8 = new PlayerObjectDeltaMessage8(this);
-		dplay8->updateForcePower();
+		dplay8->updateForcePowerMax();
 		dplay8->close();
 
 		player->sendMessage(dplay8);
-	}
+	} else
+		setForcePowerMax(fp);
+	
+	if(forcePower > forcePowerMax && updateClient)
+		setForcePowerBar(fp);
+	else
+		setForcePower(fp);
 }
+
 
 void PlayerObjectImplementation::addWaypoint(WaypointObject* wp, bool updateClient) {
 	wlock();

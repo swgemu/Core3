@@ -42,77 +42,81 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef CREATUREOBJECTMESSAGE4_H_
-#define CREATUREOBJECTMESSAGE4_H_
+#ifndef IMAGEDESIGNMESSAGE_H_
+#define IMAGEDESIGNMESSAGE_H_
 
-#include "../../packets/BaseLineMessage.h"
 
-#include "../../objects/creature/CreatureObjectImplementation.h"
+#include "engine/engine.h"
 
-class CreatureObjectMessage4 : public BaseLineMessage {
+class ImageDesignMessage : public ObjectControllerMessage {
 public:
-	CreatureObjectMessage4(CreatureObjectImplementation* creo)
-			: BaseLineMessage(creo->getObjectID(), 0x4352454F, 4, 0x0E) {
-		//
-		insertFloat(1);
-		insertFloat(1);
 
-		// encumberances
-		insertInt(3);
-		insertInt(3);
-		insertInt(creo->getHealthEncumbrance());
-		insertInt(creo->getActionEncumbrance());
-		insertInt(creo->getMindEncumbrance());
-
-		// skill mods
-		insertSkillMods(creo);
-
-		//
-		insertFloat(1);
-		insertFloat(1);
-
-		// listenToID
+	ImageDesignMessage(Player* player) 
+		: ObjectControllerMessage(player->getObjectID(), 0x0B, 0x023A) {
+			
+		insertLong(player->getObjectID()); // Image Designer?
+		insertLong(player->getObjectID()); // Image Design Target?
 		insertLong(0);
-
-		insertFloat(creo->speed);
-	
-		insertFloat(1.00625f);		
-	
-		insertFloat(creo->getTerrainNegotiation());  // Terrain Negotiation
-
-		// turn radius
-		insertFloat(1);		
-
-		insertFloat(creo->acceleration);
-		insertFloat(0.0125f);
-
-		//
-		insertInt(0);
-		insertInt(0);
-		
-		setSize();
-	}
-
-	// TODO: this needs to be cleaner for dealing with values
-	void insertSkillMods(CreatureObjectImplementation* creo) {
-		string skillmod;
-		int value;
-
-		creo->creatureSkillMods.resetIterator();
-
-		insertInt(creo->creatureSkillMods.size());
-		insertInt(creo->skillModsCounter);
-
-		while (creo->creatureSkillMods.hasNext()) {
-			insertByte(0);
-
-			creo->creatureSkillMods.getNextKeyAndValue(skillmod, value);
-			insertAscii(skillmod);
-			insertInt(value + creo->creatureSkillModBonus.get(skillmod));
-
-			insertInt(0);
-		}
+		insertShort(0);
 	}
 };
 
-#endif /*CREATUREOBJECTMESSAGE4_H_*/
+/*
+class ImageDesignDisplayUI : public BaseMessage {
+	
+public:
+	ImageDesignDisplayUI(Player* player) {
+		insertShort(5); // opcount from ZonePacketHandler
+		insertInt(0x80CE5E46); // opcode handleObjectControllerMessage(pack);
+		insertInt(0x0B); 
+		insertInt(0x023A); 
+		insertLong(player->getPlayerObject()->getObjectID()); 
+		insertInt(0); 
+		insertLong(player->getPlayerObject()->getObjectID());
+		insertLong(player->getPlayerObject()->getObjectID());
+
+//0000:   00 09 06 BB 00 19 34 05 00 46 5E CE 80 0B 00 00   ......4..F^.....
+//0010:   00 3A 02 00 00 14 29 A7 E5 35 00 00 00 00 00 00   .:....)..5......
+//0020:   00 14 29 A7 E5 35 00 00 00 14 29 A7 E5 35 00 00   ..)..5....)..5..
+//0030:   00 
+
+		
+		insertLong(0); // 8
+		insertShort(0); // 2
+		insertShort(0x052A);
+		insertByte(0);
+		
+		//insertLong(player->getPlayerObject()->getObjectID());
+		//insertInt(0);
+		//insertInt(0x0280);
+		//insertLong(0);
+		//insertInt(0); 
+		insertInt(0x80CE5E46); // opcode handleObjectControllerMessage(pack);
+		insertInt(0x0B); 
+		insertInt(0x0117);
+		insertLong(player->getPlayerObject()->getObjectID());
+		
+		insertInt(0);
+		insertInt(0x0280);
+		
+		insertInt(0);
+		insertInt(0);
+		insertInt(0);
+		insertInt(0);
+
+//00 00 00 00 00 00 00 00 00 00 2A 05 00 46 5E   ...........*..F^
+//0040:   CE 80 0B 00 00 00 17 01 00 00 14 29 A7 E5 35 00   ...........)..5.
+//0050:   00 00 00 00 00 00 80 02 00 00 00 00 00 00 00 00   ................
+//0060:   00 00 00 00 00 00 01 B9 B8                        ......... 
+
+
+		
+
+		
+	}
+	
+};
+
+*/
+
+#endif /*IMAGEDESIGNMESSAGE_H_*/

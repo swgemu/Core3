@@ -60,7 +60,7 @@ public:
 			return true;
 		
 		Player* player = (Player*) creature;
-		return player->changeForceBar(-forceCost);
+		return player->changeForcePowerBar(-forceCost);
 	}
 
 	void setForceCost(int cost) {

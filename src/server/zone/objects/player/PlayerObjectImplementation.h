@@ -116,23 +116,33 @@ public:
 		return forcePower;
 	}
 	
-	void setForcePower(uint32 fp, bool updateClient = false);
+	void setForcePowerBar(uint32 fp);
+	void setMaxForcePowerBar(uint32 fp, bool updateClient = true);
+
+	// TODO: forcePowerMax and forceRegen shouldn't be part of player object
+	// they should pull from skill attributes:
+	// jedi_force_power_regen 
+	// jedi_force_power_max
+	inline void setForcePower(uint32 fp) {
+		forcePower = fp;
+	}
+
+	inline void setForcePowerMax(uint32 fp) {
+		forcePowerMax = fp;
+	}
 	
 	inline uint32 getForcePowerMax() {
 		return forcePowerMax;
-	}
-	
-	inline void setForcePowerMax(int fp) {
-		forcePowerMax = fp;
 	}
 	
 	inline uint32 getForceRegen() {
 		return forceRegen;
 	}
 	
-	inline void setForceRegen(int fp) {
+	inline void setForceRegen(uint32 fp) {
 		forceRegen = fp;
 	}
+	
 	
 	inline uint32 getJediState() {
 		return jediState;

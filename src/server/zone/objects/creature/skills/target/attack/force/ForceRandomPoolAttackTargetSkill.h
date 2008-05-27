@@ -61,7 +61,7 @@ public:
 		
 		if (weapon != NULL) {
 			int32 forceCost = (int32) (weapon->getForceCost() * damageRatio);
-			if (!player->changeForceBar(-forceCost))
+			if (!player->changeForcePowerBar(-forceCost))
 				return false;
 		}
 		
