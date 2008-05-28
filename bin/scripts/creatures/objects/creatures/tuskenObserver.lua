@@ -78,7 +78,7 @@ tuskenObserver = Creature:new {
 
 	accuracy = 300,
 
-	skills = { "tuskenRangedAttack1", "tuskenRangedAttack2", "tuskenRangedAttack3"  }
+	skills = { "tuskenRangedAttack1", "tuskenRangedAttack2", "tuskenRangedAttack3", "tuskenRangedAttack4" }
 	-- respawnTimer = 180,
 }
 

@@ -458,6 +458,26 @@ void CreatureImplementation::loadItems() {
 			weapon->setArmorPiercing(WeaponImplementation::MEDIUM);
 			break;
 		}
+
+} else if (objectCRC == 0xC5A39C12 || objectCRC == 0x5CECC950) {
+		//Hutt Hideout
+			weapon = new OneHandedMeleeWeapon(_this, 
+				"object/weapon/melee/baton/shared_baton_stun.iff", unicode("a Stun Baton"), "baton_stun", true);
+			weapon->setMinDamage(175 + level);
+			weapon->setMaxDamage(250 + level);
+			weapon->setAttackSpeed(1.5);
+			weapon->setDamageType(WeaponImplementation::STUN);
+			weapon->setArmorPiercing(WeaponImplementation::NONE);
+
+	} else if (objectCRC == 0x3517D918) {
+		//Gamorrean Guard
+			weapon = new PolearmMeleeWeapon(_this, 
+					"object/weapon/melee/polearm/shared_polearm_vibro_axe.iff", unicode("a Long Vibro Axe"), "lance_vibro_axe", true);
+			weapon->setMinDamage(250 + level);
+			weapon->setMaxDamage(450 + level);
+			weapon->setAttackSpeed(1.5);
+			weapon->setDamageType(WeaponImplementation::KINETIC);
+			weapon->setArmorPiercing(WeaponImplementation::MEDIUM);
 				
 	} else if (objectCRC == 0xAA197516) { 
 		// NS Queen

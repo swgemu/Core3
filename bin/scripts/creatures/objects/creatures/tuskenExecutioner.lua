@@ -51,15 +51,15 @@ tuskenExecutioner = Creature:new {
 	
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
-	health = 29000,
+	health = 290000,
 	strength = 1000,
 	constitution = 1000,
 
-	action = 29000,
+	action = 290000,
 	quickness = 1000,
 	stamina = 1000,
 
-	mind = 29000,
+	mind = 290000,
 	focus = 1000,
 	willpower = 1000,
 
@@ -78,7 +78,7 @@ tuskenExecutioner = Creature:new {
 
 	accuracy = 300,
 
-	skills = { "tuskenAttack40", "tuskenAttack41", "tuskenAttack42", "tuskenAttack43", "tuskenAttack44", "tuskenAttack45", "tuskenAttack46", "tuskenAttack47", "tuskenAttack48", "tuskenAttack49", "tuskenAttack50", "tuskenAttack51"  }
+	skills = { "tuskenAttack40", "tuskenAttack44", "tuskenAttack45", "tuskenAttack46", "tuskenAttack47", "tuskenAttack49", "tuskenAttack52", "tuskenAttack53"  }
 	-- respawnTimer = 180,
 }
 

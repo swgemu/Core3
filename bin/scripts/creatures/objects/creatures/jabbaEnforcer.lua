@@ -39,13 +39,47 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
+jabbaEnforcer = Creature:new {
+	objectName = "jabbaEnforcer", -- name of the lua Object
+	
+	name = "Jabba's enforcer",
+	objectCRC = 3315833874,
+	socialGroup = "Hutt",
+	named = TRUE,
 
-RunCreatureFile("spawns/tatooine/staticSpawns.lua")
-RunCreatureFile("spawns/tatooine/forttusken.lua")
-RunCreatureFile("spawns/tatooine/squillcavern.lua")
-RunCreatureFile("spawns/tatooine/hutthideout.lua")
-RunCreatureFile("spawns/tatooine/tuskenBunker.lua")
+	level = 15,
+	
+	combatFlags = ATTACKABLE_FLAG,
 
+	health= 2500,
+	strength = 1000,
+	constitution = 1000,
 
---RunCreatureFile("spawns/dathomir/staticSpawns.lua")
---RunCreatureFile("spawns/corellia/staticSpawns.lua")
+	action = 2500,
+	quickness = 1000,
+	stamina = 1000,
+
+	mind = 2500,
+	focus = 1000,
+	willpower = 1000,
+
+	height = 1,
+
+	armor = 1,
+	kinetic = 5,
+	energy = 5,
+	electricity = 5,
+	stun = 5,
+	blast = 10,
+	heat = 35,
+	cold = 0,
+	acid = 5,
+	lightSaber = 0,
+
+	accuracy = 300,
+
+	skills = { "jabbaAttack40", "jabbaAttack41", "jabbaAttack42"  }
+	-- respawnTimer = 180,
+}
+
+Creatures:addCreature(jabbaEnforcer, 3315833874) --- Add to global creature table

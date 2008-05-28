@@ -39,13 +39,47 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
+tuskenWarrior = Creature:new {
+	objectName = "tuskenWarrior", -- name of the lua Object
+	
+	name = "a Tusken Warrior",
+	objectCRC = 344809642,
+	socialGroup = "tusken",
+	named = TRUE,
 
-RunCreatureFile("spawns/tatooine/staticSpawns.lua")
-RunCreatureFile("spawns/tatooine/forttusken.lua")
-RunCreatureFile("spawns/tatooine/squillcavern.lua")
-RunCreatureFile("spawns/tatooine/hutthideout.lua")
-RunCreatureFile("spawns/tatooine/tuskenBunker.lua")
+	level = 80,
+	
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
+	health= 8500,
+	strength = 1000,
+	constitution = 1000,
 
---RunCreatureFile("spawns/dathomir/staticSpawns.lua")
---RunCreatureFile("spawns/corellia/staticSpawns.lua")
+	action = 8500,
+	quickness = 1000,
+	stamina = 1000,
+
+	mind = 8500,
+	focus = 1000,
+	willpower = 1000,
+
+	height = 1,
+
+	armor = 1,
+	kinetic = 25,
+	energy = 15,
+	electricity = 15,
+	stun = 5,
+	blast = 10,
+	heat = 30,
+	cold = 0,
+	acid = 5,
+	lightSaber = 0,
+
+	accuracy = 300,
+
+	skills = { "tuskenAttack40", "tuskenAttack41", "tuskenAttack42", "tuskenAttack43", "tuskenAttack44", "tuskenAttack45", "tuskenAttack46", "tuskenAttack47", "tuskenAttack48", "tuskenAttack49", "tuskenAttack50", "tuskenAttack51"  }
+	-- respawnTimer = 180,
+}
+
+Creatures:addCreature(tuskenWarrior, 344809642) --- Add to global creature table

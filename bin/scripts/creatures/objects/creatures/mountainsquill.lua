@@ -39,13 +39,34 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
+mountainsquill = Creature:new {
+	objectName = "mountainsquill", -- name of the lua Object
+	
+	stfName = "a mountain squill",
+	objectCRC = 807169980,
 
-RunCreatureFile("spawns/tatooine/staticSpawns.lua")
-RunCreatureFile("spawns/tatooine/forttusken.lua")
-RunCreatureFile("spawns/tatooine/squillcavern.lua")
-RunCreatureFile("spawns/tatooine/hutthideout.lua")
-RunCreatureFile("spawns/tatooine/tuskenBunker.lua")
+	level = 35,
 
+	health = 7300,
+	strength = 1000,
+	constitution = 1000,
 
---RunCreatureFile("spawns/dathomir/staticSpawns.lua")
---RunCreatureFile("spawns/corellia/staticSpawns.lua")
+	action = 7300,
+	quickness = 1000,
+	stamina = 1000,
+
+	mind = 7300,
+	focus = 1000,
+	willpower = 1000,
+	
+	armor = 0, -- from allakhazam
+
+	height = 1,
+	
+	accuracy = 300,
+
+	skills = { "squillAttack1", "squillAttack2", "squillAttack3", "squillAttack4" }
+	-- respawnTimer = 60,
+}
+
+Creatures:addCreature(mountainsquill, 807169980) --- Add to global creature table

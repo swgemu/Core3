@@ -47,19 +47,19 @@ tuskenKing = Creature:new {
 	socialGroup = "tusken",
 	named = TRUE,
 
-	level = 100,
+	level = 150,
 	
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
-	health = 78000,
+	health = 120000,
 	strength = 1000,
 	constitution = 1000,
 
-	action = 78000,
+	action = 120000,
 	quickness = 1000,
 	stamina = 1000,
 
-	mind = 78000,
+	mind = 120000,
 	focus = 1000,
 	willpower = 1000,
 

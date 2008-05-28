@@ -39,13 +39,47 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
+tuskenRaider = Creature:new {
+	objectName = "tuskenRaider", -- name of the lua Object
+	
+	name = "a Tusken Raider",
+	objectCRC = 3780705985,
+	socialGroup = "tusken",
+	named = TRUE,
 
-RunCreatureFile("spawns/tatooine/staticSpawns.lua")
-RunCreatureFile("spawns/tatooine/forttusken.lua")
-RunCreatureFile("spawns/tatooine/squillcavern.lua")
-RunCreatureFile("spawns/tatooine/hutthideout.lua")
-RunCreatureFile("spawns/tatooine/tuskenBunker.lua")
+	level = 65,
+	
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
+	health = 10400,
+	strength = 1000,
+	constitution = 1000,
+	
+	action = 10400,
+	quickness = 1000,
+	stamina = 1000,
 
---RunCreatureFile("spawns/dathomir/staticSpawns.lua")
---RunCreatureFile("spawns/corellia/staticSpawns.lua")
+	mind = 10400,
+	focus = 1000,
+	willpower = 1000,
+
+	height = 1,
+
+	armor = 1,
+	kinetic = 5,
+	energy = 5,
+	electricity = 30,
+	stun = 0,
+	blast = 5,
+	heat = 30,
+	cold = 0,
+	acid = 0,
+	lightSaber = 0,
+
+	accuracy = 300,
+
+	skills = { "tuskenRangedAttack1", "tuskenRangedAttack2", "tuskenRangedAttack3" }
+	-- respawnTimer = 180,
+}
+
+Creatures:addCreature(tuskenRaider, 3780705985) --- Add to global creature table
