@@ -309,52 +309,52 @@ public:
 		{
 			// sets both maxHealthBar and setHealthmax
 			creo->setMaxHealthBar(creo->getHealthMax() + getHealthBuff());
-			creo->setHealthBar(creo->getHealth() + getHealthBuff());	 		
+			creo->setHealthBar(MIN(creo->getHealth() + getHealthBuff() - creo->getHealthWounds(), creo->getHealthMax() - creo->getHealthWounds()));
 		}
 		
 		if(getActionBuff() > 0) {
 			creo->setMaxActionBar(creo->getActionMax() + getActionBuff());
-			creo->setActionBar(creo->getAction() + getActionBuff());
+			creo->setActionBar(MIN(creo->getAction() + getActionBuff() - creo->getActionWounds(), creo->getActionMax() - creo->getActionWounds()));
 		}
 		
 		if(getMindBuff() > 0) {
 			creo->setMaxMindBar(creo->getMindMax() + getMindBuff());
-			creo->setMindBar(creo->getMind() + getMindBuff());		
+			creo->setMindBar(MIN(creo->getMind() + getMindBuff() - creo->getMindWounds(), creo->getMindMax() - creo->getMindWounds()));
 		}
 		
 		if(getStrengthBuff() > 0) {
 			creo->setMaxStrengthBar(creo->getStrengthMax() + getStrengthBuff());
-			creo->setStrengthBar(creo->getStrength() + getStrengthBuff());		
+			creo->setStrengthBar(MIN(creo->getStrength() + getStrengthBuff(), creo->getStrengthMax()));
 		}
 		
 		if(getConstitutionBuff() > 0) {
 			creo->setMaxConstitutionBar(creo->getConstitutionMax() + getConstitutionBuff());
-			creo->setConstitutionBar(creo->getConstitution() + getConstitutionBuff());
+			creo->setConstitutionBar(MIN(creo->getConstitution() + getConstitutionBuff(), creo->getConstitutionMax()));
 		}
 		
 		if(getStaminaBuff() > 0) {
 			creo->setMaxStaminaBar(creo->getStaminaMax() + getStaminaBuff());
-			creo->setStaminaBar(creo->getStamina() + getStaminaBuff());			
+			creo->setStaminaBar(MIN(creo->getStamina() + getStaminaBuff(), creo->getStaminaMax()));
 		}
 		
 		if(getQuicknessBuff() > 0) {
 			creo->setMaxQuicknessBar(creo->getQuicknessMax() + getQuicknessBuff());
-			creo->setQuicknessBar(creo->getQuickness() + getQuicknessBuff());				
+			creo->setQuicknessBar(MIN(creo->getQuickness() + getQuicknessBuff(), creo->getQuicknessMax()));
 		}
 		
 		if(getWillpowerBuff() > 0) {
 			creo->setMaxWillpowerBar(creo->getWillpowerMax() + getWillpowerBuff());
-			creo->setWillpowerBar(creo->getWillpower() + getWillpowerBuff());			
+			creo->setWillpowerBar(MIN(creo->getWillpower() + getWillpowerBuff(), creo->getWillpowerMax()));
 		}
 		
 		if(getFocusBuff() > 0) {
 			creo->setMaxFocusBar(creo->getFocusMax() + getFocusBuff());
-			creo->setFocusBar(creo->getFocus() + getFocusBuff());	
+			creo->setFocusBar(MIN(creo->getFocus() + getFocusBuff(), creo->getFocusMax()));
 		}
 		
 		if(getForcePowerBuff() > 0) {
 			((PlayerObject*)creo)->setMaxForcePowerBar(((PlayerObject*)creo)->getForcePowerMax() + getForcePowerBuff());
-			((PlayerObject*)creo)->setForcePowerBar(((PlayerObject*)creo)->getForcePower() + getForcePowerBuff());		
+			((PlayerObject*)creo)->setForcePowerBar(MIN(((PlayerObject*)creo)->getForcePower() + getForcePowerBuff(), ((PlayerObject*)creo)->getForcePowerMax()));				
 		}
 
 		//if(getForceRegenBuff() > 0) {

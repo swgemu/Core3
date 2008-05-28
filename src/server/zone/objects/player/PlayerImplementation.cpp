@@ -1630,7 +1630,7 @@ void PlayerImplementation::doClone() {
 	}
 	
 	clearStates();
-	clearBuffs();
+	clearBuffs(true);
 	
 	decayInventory();
 
@@ -1802,6 +1802,7 @@ void PlayerImplementation::addBuff(uint32 buffcrc, float time) {
 // TODO: clearBuffs
 void PlayerImplementation::clearBuffs(bool doUpdatePlayer) {
 	// Clear buff icons
+	/*
 	if (doUpdatePlayer) {
 		if (healthBuff)
 			addBuff(0x98321369, 0.0f);
@@ -1840,7 +1841,7 @@ void PlayerImplementation::clearBuffs(bool doUpdatePlayer) {
 	staminaBuff = false;
 	mindBuff = false;
 	focusBuff = false;
-	willpowerBuff = false;
+	willpowerBuff = false; */
 	
 	removeBuffs(doUpdatePlayer);
 }
