@@ -365,7 +365,7 @@ void CraftingManagerImplementation::sendSlotMessage(Player * player, int counter
 }
 
 ResourceContainer * CraftingManagerImplementation::transferResourcesToSchematic(Player * player, ResourceContainer * rcno, 
-		CraftingTool * craftingTool, int quantity, string name) {
+		CraftingTool * craftingTool, int& quantity, string name) {
 
 	if (rcno->getContents() < quantity) {
 

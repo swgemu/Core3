@@ -148,7 +148,7 @@ public:
 	bool slotIsFull(Player * player, ResourceContainer * rcno, CraftingTool * craftingTool, 
 			string& resname, int slot, int quantity, int quantityInSlot, int counter);
 	ResourceContainer * transferResourcesToSchematic(Player * player, ResourceContainer * rcno, 
-			CraftingTool * craftingTool, int quantity, string name);
+			CraftingTool * craftingTool, int& quantity, string name);
 	
 	// Methods relating to removing Items to the crafting process
 	
