@@ -501,6 +501,7 @@ interface CreatureObject implements SceneObject {
 	
 	boolean isInBuilding();
 	int getBuildingType();
+	//SceneObject* getBuilding();
 
 	string getGuildName();
 	

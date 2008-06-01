@@ -51,15 +51,16 @@ which carries forward this exception.
 class ImageDesignMessage : public ObjectControllerMessage {
 public:
 
-	ImageDesignMessage(Player* player) 
+	ImageDesignMessage(Player* player, Player* designer, Player* client, uint64 tent, int type = 0) 
 		: ObjectControllerMessage(player->getObjectID(), 0x0B, 0x023A) {
 			
-		insertLong(player->getObjectID()); // Image Designer?
-		insertLong(player->getObjectID()); // Image Design Target?
-		insertLong(0);
-		insertShort(0);
+		insertLong(designer->getObjectID()); // Image Designer?
+		insertLong(client->getObjectID()); // Image Design Target
+		insertLong(tent); // Boolish - in an ID tent? or a cell id?
+		insertShort(type); // 0 = designer, 1 = target
 	}
 };
+
 
 /*
 class ImageDesignDisplayUI : public BaseMessage {

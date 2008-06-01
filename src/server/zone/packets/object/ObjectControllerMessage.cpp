@@ -679,15 +679,22 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player, Message* 
 	    	case (0x6CB6978F): //ventriloquism
 	    	case (0x35ED32BE): //firejet
 	    	case (0xC8998CE9): // flourish
+	    	{
 	    		unicode option = unicode("");
 	    	    pack->parseUnicode(option);
 	    	    actionModifier = option.c_str();
+	    	}
 			    //if(skillOptionID <=0 ) skillOptionID = 1; // default to level 1
+	    	    break;
+	    	default:
+	    	{
+/*	    	    stringstream opc;
+	    		opc << "Opc: " << hex << actionCRC;
+	    		player->sendSystemMessage(opc.str());*/
+	    	}
 	    }
 
-	    /*stringstream opc;
-		opc << "Opc: " << hex << actionCRC << " modifier: " << dec << actionModifier;
-		player->sendSystemMessage(opc.str());*/
+
 		
 		player->queueAction(player, target, actionCRC, actioncntr, actionModifier.c_str());
 
@@ -968,6 +975,37 @@ void ObjectControllerMessage::parseRadialRequest(Player* player, Message* pack, 
 	radialManager->handleRadialRequest(player, pack);
 }
 
+void ObjectControllerMessage::parseImageDesignerUpdate(Player* player, Message* pack) {
+	/*
+	player->sendSystemMessage("Image Designer Update");
+	player->info(pack->toString());
+	
+	uint64 object = pack->parseLong();
+	pack->shiftOffset(4); // size ?
+	
+	uint64 designer = pack->parseLong();
+	uint64 target = pack->parseLong();
+	uint64 tent = pack->parseLong();
+	uint8 type = pack->parseByte();
+	string hairobject;
+	pack->parseAscii(hairobject);
+	
+	string haircust;
+	pack->parseAscii(haircust); //grab the hair cust data
+
+	stringstream msg;
+	msg << "imagedesignerupdate, object:" << hex << object << dec << " target:" << hex << target << dec << " tent: " << hex << tent;
+	player->info(msg.str());
+	 */
+}
+
+void ObjectControllerMessage::parseImageDesignerCancel(Player* player, Message* pack) {
+	/*
+	player->sendSystemMessage("Image Designer Cancel");
+	player->info(pack->toString());
+	*/
+}
+
 void ObjectControllerMessage::parseSetCurrentSkillTitle(Player* player, Message* pack) {
 	pack->shiftOffset(8); //shift past the blank id.
 	unicode title;
@@ -1015,8 +1053,52 @@ void ObjectControllerMessage::parseStopListen(Player* player, Message* pack) {
 void ObjectControllerMessage::parseImageDesign(Player* player, Message* pack) { 
 	uint64 target = pack->parseLong(); // skip passed target get this later?
 	
-	ImageDesignMessage* msg = new ImageDesignMessage(player);
-	player->sendMessage(msg);
+	SceneObject* object = player->getZone()->lookupObject(target);
+	
+	if (object == NULL)
+		return;
+
+	
+	unsigned long tent = 0; // objectid of the salon building
+
+	if (player->isInBuilding() && player->getBuildingType() == BuildingObjectImplementation::SALON)
+	{
+		CellObject* cell = (CellObject*)player->getParent();
+		BuildingObject* building = (BuildingObject*)cell->getParent();
+		tent = building->getObjectID();
+	}
+	
+	try {
+		if (object->isPlayer()) {
+			Player* target_player = (Player*) object;
+
+			// If the target player isn't yourself, then that player must be in a group
+			if (target_player->getObjectID() != player->getObjectID() &&
+					(
+							!player->isInAGroup() ||
+							(player->isInAGroup() && player->getGroupID() != target_player->getGroupID())
+					) ) 
+			{
+				player->sendSystemMessage("Target player must be in your group to Image Design.");
+				return;
+			}
+				
+			// Initiate Self
+			ImageDesignMessage* msg_player = new ImageDesignMessage(player, player, target_player, tent);
+			player->sendMessage(msg_player);
+    	
+			// Initiate Target (
+			if (target_player->getObjectID() != player->getObjectID()) {
+				ImageDesignMessage* msg_target = new ImageDesignMessage(target_player, player, target_player, tent, 1);
+				target_player->sendMessage(msg_target);
+			}
+		} else
+		{
+			player->sendSystemMessage("Invalid Image Design target.");
+		}
+	} catch (...) {
+		cout << "Unreported exception in ObjectControllerMessage::parseImageDesign(Player* player, Message *pack)";
+	}	
 }
 
 

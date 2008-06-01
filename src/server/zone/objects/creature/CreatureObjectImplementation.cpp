@@ -3699,14 +3699,27 @@ void CreatureObjectImplementation::addBuff(int buffCRC, float duration) {
 
 void CreatureObjectImplementation::removeBuff(const uint32 buffCRC, bool remove) {
 	// TODO: call debuff?
-	if(!hasBuff(buffCRC))
+	if (!hasBuff(buffCRC))
 		return;
 
 	Buff *buff = creatureBuffs.get(buffCRC);
+	
+	// Bad value return
+	if (buff == NULL) {
+		// if we should delete from the list then lets kill it
+		if(remove)
+			creatureBuffs.remove(buffCRC);
+		return;
+	}
+
 	buff->deActivateBuff(_this);
 	
-	delete buff;
-	if(remove)
+	// cleanup object
+	buff->finalize();
+	buff = NULL;
+	
+	// remove from list
+	if (remove)
 		creatureBuffs.remove(buffCRC);
 }
 
@@ -3741,8 +3754,6 @@ void CreatureObjectImplementation::removeBuffs(bool doUpdateCreature) {
 	// Remove from Creature
 	buffEvents.removeAll();
 
-	//resetHAMBars();
-
 	if (!doUpdateCreature) // used in deconstructor -- save current buff duration to the player object at some future time
 	{
 		// TODO: cleanup the creatureBuffs possibly?
@@ -3753,11 +3764,15 @@ void CreatureObjectImplementation::removeBuffs(bool doUpdateCreature) {
 	
 	while (creatureBuffs.hasNext()) {
 		Buff *buff = creatureBuffs.getNextValue();
-		if(buff != NULL)
+		if(buff != NULL) {		
 			removeBuff(buff->getBuffCRC(), false);
+			buff->finalize();
+		}
 	}
 	creatureBuffs.removeAll();
-	
+
+	resetHAMBars();
+
 	/*
 	CreatureObjectDeltaMessage6* delta = new CreatureObjectDeltaMessage6(_this);
 	

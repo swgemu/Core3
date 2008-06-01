@@ -85,6 +85,10 @@ public:
     static void parseGetAttributes(Player* player, Message* pack);
     
     static void parseRadialRequest(Player* player, Message* pack, RadialManager* radialManager);
+
+    static void parseImageDesignerUpdate(Player* player, Message* pack);
+    static void parseImageDesignerCancel(Player* player, Message* pack);
+    
     static void parseSetCurrentSkillTitle(Player* player, Message* pack);
     
     static void parseShowPvpRating(Player* player, Message* pack);
