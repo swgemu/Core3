@@ -66,7 +66,7 @@ core3_IDLS =	server/zone/Zone.cpp \
 		server/zone/objects/creature/shuttle/ShuttleCreature.cpp \
 		server/zone/objects/creature/trainer/TrainerCreature.cpp \
 		server/zone/objects/creature/bluefrog/BlueFrogCreature.cpp \
-		server/zone/objects/creature/bluefrog/BFVector.cpp \
+		server/zone/objects/creature/bluefrog/BlueFrogVector.cpp \
 		server/zone/objects/creature/recruiter/RecruiterCreature.cpp \
 		server/zone/objects/creature/mount/MountCreature.cpp \
 		server/zone/objects/player/Player.cpp \

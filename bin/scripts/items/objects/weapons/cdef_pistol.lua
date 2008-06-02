@@ -40,9 +40,22 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-RunItemLUAFile("bluefrog/composite_armor_set.lua");
-RunItemLUAFile("bluefrog/instrument_set.lua");
-RunItemLUAFile("bluefrog/surveying_kit.lua");
-RunItemLUAFile("bluefrog/weapon_set.lua");
-RunItemLUAFile("bluefrog/wookiee_armor_set.lua");
-RunItemLUAFile("bluefrog/ith_armor_set.lua");
+
+cdef_pistol = Weapon:new{
+	
+	objectName = "CDEF Pistol",
+
+	templateName = "object/weapon/ranged/pistol/shared_pistol_cdef.iff",
+
+	objectCRC = 937103853,
+
+	objectType = PISTOL,
+
+	damageType = WEAPON_ENERGY,
+	
+	attackSpeed = 0.4,
+
+	minDamage = 9,
+
+	maxDamage = 19
+}

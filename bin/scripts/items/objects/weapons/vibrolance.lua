@@ -40,9 +40,25 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-RunItemLUAFile("bluefrog/composite_armor_set.lua");
-RunItemLUAFile("bluefrog/instrument_set.lua");
-RunItemLUAFile("bluefrog/surveying_kit.lua");
-RunItemLUAFile("bluefrog/weapon_set.lua");
-RunItemLUAFile("bluefrog/wookiee_armor_set.lua");
-RunItemLUAFile("bluefrog/ith_armor_set.lua");
+vibrolance = Weapon:new{
+
+	objectName = "Vibrolance",
+
+	templateName = "object/weapon/melee/polearm/shared_lance_vibrolance.iff",
+
+	objectCRC = 22784428,
+
+	objectType = POLEARM,
+
+	damageType = WEAPON_ELECTRICAL,
+
+	armorPiercing = WEAPON_LIGHT,
+	
+	certification = "cert_lance_vibrolance",
+
+	attackSpeed = 4.5,
+
+	minDamage = 149,
+
+	maxDamage = 272
+}

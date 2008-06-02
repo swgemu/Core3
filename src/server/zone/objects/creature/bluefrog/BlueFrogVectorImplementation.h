@@ -42,11 +42,31 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
+#ifndef BLUEFROGVECTORIMPLEMENTATION_H_
+#define BLUEFROGVECTORIMPLEMENTATION_H_
 
-interface BFVector {
-	BFVector();
+#include "engine/engine.h"
+
+class BlueFrogVectorImplementation : public BlueFrogVectorServant {
+	Vector<string> * vector;
 	
-	unsigned int size();
-	void add(string item);
-	string get(unsigned int index);
-}
+public:
+	BlueFrogVectorImplementation() : BlueFrogVectorServant() {
+		vector = new Vector<string>();
+	}
+	
+	inline unsigned int size() {
+		return vector->size();
+	}
+	
+	inline void add(string item) {
+		vector->add(item);
+	}
+	
+	inline string& get(unsigned int index) {
+		return vector->get(index);
+	}
+	
+};
+
+#endif /*BLUEFROGVECTORIMPLEMENTATION_H_*/

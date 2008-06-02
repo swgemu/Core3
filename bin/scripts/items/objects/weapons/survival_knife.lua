@@ -40,9 +40,20 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-RunItemLUAFile("bluefrog/composite_armor_set.lua");
-RunItemLUAFile("bluefrog/instrument_set.lua");
-RunItemLUAFile("bluefrog/surveying_kit.lua");
-RunItemLUAFile("bluefrog/weapon_set.lua");
-RunItemLUAFile("bluefrog/wookiee_armor_set.lua");
-RunItemLUAFile("bluefrog/ith_armor_set.lua");
+
+survival_knife = Weapon:new{
+
+	objectName = "Survival Knife",
+
+	templateName = "object/weapon/melee/knife/shared_knife_survival.iff",
+
+	objectCRC = 530531036,
+
+	objectType = ONEHANDMELEEWEAPON,
+
+	attackSpeed = 1,
+
+	minDamage = 25,
+
+	maxDamage = 55
+}

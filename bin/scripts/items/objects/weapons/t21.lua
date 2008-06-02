@@ -40,9 +40,26 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-RunItemLUAFile("bluefrog/composite_armor_set.lua");
-RunItemLUAFile("bluefrog/instrument_set.lua");
-RunItemLUAFile("bluefrog/surveying_kit.lua");
-RunItemLUAFile("bluefrog/weapon_set.lua");
-RunItemLUAFile("bluefrog/wookiee_armor_set.lua");
-RunItemLUAFile("bluefrog/ith_armor_set.lua");
+t21 = Weapon:new{
+	
+
+	objectName = "T21 Rifle",
+
+	templateName = "object/weapon/ranged/rifle/shared_rifle_t21.iff",
+
+	objectCRC = 1951509016,
+
+	objectType = RIFLE,
+
+	damageType = WEAPON_ENERGY,
+
+	armorPiercing = WEAPON_HEAVY,
+	
+	certification = "cert_rifle_t21",
+
+	attackSpeed = 7.4,
+
+	minDamage = 175,
+
+	maxDamage = 408
+}

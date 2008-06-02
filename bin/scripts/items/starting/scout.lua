@@ -198,26 +198,6 @@ scout_wookie_female_items = { }
 
 -------------------Scout Items (All Species)--------------------
 
-cdef_pistol = {
-	
-
-	objectName = "CDEF Pistol",
-
-	templateName = "object/weapon/ranged/pistol/shared_pistol_cdef.iff",
-
-	objectCRC = 937103853,
-
-	objectType = PISTOL,
-
-	damageType = WEAPON_ENERGY,
-
-	armorPiercing = WEAPON_NONE,
-	
-	certification = "",
-
-	equipped = "0"
-}
-
 general_scout_items = {cdef_pistol}
 
 createItemsFromList("scout", "humanoid", "male", scout_humanoid_male_items)

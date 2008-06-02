@@ -252,26 +252,7 @@ brawler_wookie_female_items = { }
 
 -------------------Brawler Items (All Species)--------------------
 
-surv_knife = {
-	
-	objectName = "Survival Knife",
-
-	templateName = "object/weapon/melee/knife/shared_knife_survival.iff",
-
-	objectCRC = 530531036,
-
-	objectType = ONEHANDMELEEWEAPON,
-
-	damageType = WEAPON_KINETIC,
-
-	armorPiercing = WEAPON_NONE,
-	
-	certification = "",
-
-	equipped = "0"
-}
-
-general_brawler_items = {surv_knife}
+general_brawler_items = {survival_knife}
 
 createItemsFromList("brawler", "humanoid", "male", brawler_humanoid_male_items)
 createItemsFromList("brawler", "humanoid", "female", brawler_humanoid_female_items)

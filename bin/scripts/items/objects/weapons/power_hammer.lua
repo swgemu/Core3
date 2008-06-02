@@ -40,9 +40,24 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-RunItemLUAFile("bluefrog/composite_armor_set.lua");
-RunItemLUAFile("bluefrog/instrument_set.lua");
-RunItemLUAFile("bluefrog/surveying_kit.lua");
-RunItemLUAFile("bluefrog/weapon_set.lua");
-RunItemLUAFile("bluefrog/wookiee_armor_set.lua");
-RunItemLUAFile("bluefrog/ith_armor_set.lua");
+power_hammer = Weapon:new{
+	
+
+	objectName = "Power Hammer",
+
+	templateName = "object/weapon/melee/2h_sword/shared_2h_sword_maul.iff",
+
+	objectCRC = 248141391,
+
+	objectType = TWOHANDMELEEWEAPON,
+
+	armorPiercing = WEAPON_MEDIUM,
+	
+	certification = "cert_sword_2h_maul",
+
+	attackSpeed = 5.3,
+
+	minDamage = 138,
+
+	maxDamage = 470
+}

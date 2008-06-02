@@ -326,13 +326,6 @@ void ZonePacketHandler::handleClientCreateCharacter(Message* pack) {
 	
 	string& firstName = player->getFirstName();
 
-	if (DistributedObjectBroker::instance()->lookUp("Player " + firstName) != NULL || !playerManager->validateName(firstName)) {
-		player->refuseCreate(client);
-
-		//player->finalize();
-		return;
-	}
-
 	player->setZoneProcessServer(processServer);
 
 	player->deploy("Player " + firstName);

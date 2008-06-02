@@ -49,7 +49,7 @@ import "../../objects/tangible/TangibleObject";
 import "../../objects/tangible/weapons/Weapon";
 import "../../objects/tangible/wearables/Armor";
 
-import "../../objects/creature/bluefrog/BFVector";
+import "../../objects/creature/bluefrog/BlueFrogVector";
 
 import "../../objects/player/Player";
 
@@ -86,9 +86,9 @@ interface ItemManager {
 	// getters
 	unsigned long getNextStaticObjectID();
 
-	BFVector getBFItemList();
+	BlueFrogVector getBFItemList();
 	
-	BFVector getBFProfList();
+	BlueFrogVector getBFProfList();
 
 	string getBFProf(string key);
 

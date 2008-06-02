@@ -209,45 +209,7 @@ entertainer_wookie_female_items = { }
 
 -------------------Entertainer Items (All Species)--------------------
 
-cdef_pistol = {
-	
 
-	objectName = "CDEF Pistol",
-
-	templateName = "object/weapon/ranged/pistol/shared_pistol_cdef.iff",
-
-	objectCRC = 937103853,
-
-	objectType = PISTOL,
-
-	damageType = WEAPON_ENERGY,
-
-	armorPiercing = WEAPON_NONE,
-	
-	certification = "",
-
-	equipped = "0"
-}
-
-surv_knife = {
-	
-
-	objectName = "Survival Knife",
-
-	templateName = "object/weapon/melee/knife/shared_knife_survival.iff",
-
-	objectCRC = 530531036,
-
-	objectType = ONEHANDMELEEWEAPON,
-
-	damageType = WEAPON_KINETIC,
-
-	armorPiercing = WEAPON_NONE,
-	
-	certification = "",
-
-	equipped = "0"
-}
 
 shorn = {
 	
@@ -265,7 +227,7 @@ shorn = {
 	equipped = "0"
 }
 
-general_entertainer_items = {cdef_pistol, surv_knife, shorn}
+general_entertainer_items = {cdef_pistol, survival_knife, shorn}
 
 createItemsFromList("entertainer", "humanoid", "male", entertainer_humanoid_male_items)
 createItemsFromList("entertainer", "humanoid", "female", entertainer_humanoid_female_items)

@@ -49,16 +49,16 @@ which carries forward this exception.
 
 #include "../../tangible/TangibleObjectImplementation.h"
 
-#include "BFVector.h"
+#include "BlueFrogVector.h"
 
 class TangibleObjectImplementation;
 
 class BlueFrogItemSet : public HashTable<string, Vector<TangibleObject*>*> {
-	BFVector* itemList;
+	BlueFrogVector* itemList;
 	
 public:	
 	BlueFrogItemSet() {
-		itemList = new BFVector();
+		itemList = new BlueFrogVector();
 	}
 	
 	int hash(const string& str) {
@@ -83,7 +83,7 @@ public:
 		}
 	}
 	
-	inline BFVector* listContents() {
+	inline BlueFrogVector* listContents() {
 		return itemList;
 	}
 	

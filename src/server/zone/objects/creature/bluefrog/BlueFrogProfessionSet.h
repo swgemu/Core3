@@ -47,14 +47,14 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-#include "BFVector.h"
+#include "BlueFrogVector.h"
 
 class BlueFrogProfessionSet : public HashTable<string, string> {
-	BFVector * profList;
+	BlueFrogVector * profList;
 	
 public:	
 	BlueFrogProfessionSet() {
-		profList = new BFVector();
+		profList = new BlueFrogVector();
 	}
 	
 	int hash(const string& str) {
@@ -72,7 +72,7 @@ public:
 		profList->add(name);
 	}
 	
-	inline BFVector* listContents() {
+	inline BlueFrogVector* listContents() {
 		return profList;
 	}
 	

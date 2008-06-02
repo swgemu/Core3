@@ -56,7 +56,7 @@ which carries forward this exception.
 
 #include "../../../../ServerCore.h"
 
-#include "BFVector.h"
+#include "BlueFrogVector.h"
 
 #include "../../../managers/item/ItemManager.h"
 
@@ -104,10 +104,12 @@ void BlueFrogCreatureImplementation::sendMessage1(Player* player) {
 void BlueFrogCreatureImplementation::sendChoices1(Player* player) {
 	StringList* slist = new StringList(player);
 	unicode option1 = unicode("Which professions will you teach me?");
-	unicode option2 = unicode("Which items can I get?");
+	//unicode option2 = unicode("I'd like to unlearn all my skills and start over.");
+	unicode option3 = unicode("Which items can I get?");
 	
 	slist->insertOption(option1);
-	slist->insertOption(option2);
+	//slist->insertOption(option2);
+	slist->insertOption(option3);
 	
 	player->setLastNpcConvMessStr("blue_frog_m1");
 	player->sendMessage(slist);
@@ -129,7 +131,7 @@ void BlueFrogCreatureImplementation::sendProfessionChoices(Player* player) {
 	
 	StringList* slist = new StringList(player);
 	
-	BFVector * bfVector = itemManager->getBFProfList();
+	BlueFrogVector * bfVector = itemManager->getBFProfList();
 	for(int i = 0; i < bfVector->size(); i++) {
 		unicode option = unicode(bfVector->get(i));
 		slist->insertOption(option);
@@ -159,7 +161,7 @@ void BlueFrogCreatureImplementation::sendItemChoices(Player* player) {
 	
 	StringList* slist = new StringList(player);
 	
-	BFVector * bfVector = itemManager->getBFItemList();
+	BlueFrogVector * bfVector = itemManager->getBFItemList();
 	for(int i = 0; i < bfVector->size(); i++) {
 		unicode option = unicode(bfVector->get(i));
 		slist->insertOption(option);
@@ -192,12 +194,17 @@ void BlueFrogCreatureImplementation::selectConversationOption(int option, SceneO
 		case 0:
 			sendSelectProfessionMessage(player);
 			break;
+	/*	case 1:
+			dropSkills(player);
+			player->sendSystemMessage("You have unlearned all your skills...");
+			sendMessage1(player);
+			break; */
 		case 1:
 			sendSelectItemMessage(player);
 			break;
 		}
 	} else if (lastMessage == "blue_frog_prof") {
-		BFVector * bfVector = itemManager->getBFProfList();
+		BlueFrogVector * bfVector = itemManager->getBFProfList();
 		
 		if(option < bfVector->size()) {
 			string key = bfVector->get(option);
@@ -216,7 +223,7 @@ void BlueFrogCreatureImplementation::selectConversationOption(int option, SceneO
 			sendMessage1(player);
 		}
 	} else if (lastMessage == "blue_frog_item") {
-		BFVector * bfVector = itemManager->getBFItemList();
+		BlueFrogVector * bfVector = itemManager->getBFItemList();
 		
 		if(option < bfVector->size()) {
 			itemManager->giveBFItemSet(player, bfVector->get(option));
@@ -256,4 +263,8 @@ bool BlueFrogCreatureImplementation::trainSkill(Player * player, SkillBox * skil
 	
 	bool res = player->trainSkillBox(skill->getName());
 	return res;
+}
+
+void BlueFrogCreatureImplementation::dropSkills(Player * player) {
+	//TODO: Add ability to drop all skills	
 }

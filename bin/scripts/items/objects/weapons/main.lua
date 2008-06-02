@@ -40,9 +40,15 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-RunItemLUAFile("bluefrog/composite_armor_set.lua");
-RunItemLUAFile("bluefrog/instrument_set.lua");
-RunItemLUAFile("bluefrog/surveying_kit.lua");
-RunItemLUAFile("bluefrog/weapon_set.lua");
-RunItemLUAFile("bluefrog/wookiee_armor_set.lua");
-RunItemLUAFile("bluefrog/ith_armor_set.lua");
+
+RunItemLUAFile("objects/weapons/cdef_pistol.lua");
+RunItemLUAFile("objects/weapons/cdef_carbine.lua");
+RunItemLUAFile("objects/weapons/cdef_rifle.lua");
+RunItemLUAFile("objects/weapons/survival_knife.lua");
+RunItemLUAFile("objects/weapons/gaderiffi_baton.lua");
+RunItemLUAFile("objects/weapons/vibroknuckler.lua");
+RunItemLUAFile("objects/weapons/t21.lua");
+RunItemLUAFile("objects/weapons/power_hammer.lua");
+RunItemLUAFile("objects/weapons/vibrolance.lua");
+RunItemLUAFile("objects/weapons/ee3_carbine.lua");
+RunItemLUAFile("objects/weapons/fwg5_pistol.lua");

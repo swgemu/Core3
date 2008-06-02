@@ -81,8 +81,7 @@ class ItemManagerImplementation : public ItemManagerServant, public Lua {
 	static int addPlayerItem(lua_State * l);
 	static int addBFItem(lua_State * l);
 	static int addBFProf(lua_State * l);
-	static int runProfessionFile(lua_State* L);
-	static int runBlueFrogFile(lua_State* L);
+	static int runItemLUAFile(lua_State* L);
 	
 	static int enableBlueFrogs(lua_State* L) {
 		bfEnabled = true;
@@ -139,11 +138,11 @@ public:
 		return bfEnabled;
 	}
 	
-	inline BFVector * getBFItemList() {
+	inline BlueFrogVector * getBFItemList() {
 		return bfItemSet->listContents();
 	}
 	
-	inline BFVector * getBFProfList() {
+	inline BlueFrogVector * getBFProfList() {
 		return bfProfSet->listContents();
 	}
 	

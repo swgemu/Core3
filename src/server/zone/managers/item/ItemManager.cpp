@@ -14,7 +14,7 @@
 
 #include "../../objects/tangible/wearables/Armor.h"
 
-#include "../../objects/creature/bluefrog/BFVector.h"
+#include "../../objects/creature/bluefrog/BlueFrogVector.h"
 
 #include "../../objects/player/Player.h"
 
@@ -224,26 +224,26 @@ unsigned long long ItemManager::getNextStaticObjectID() {
 		return ((ItemManagerImplementation*) _impl)->getNextStaticObjectID();
 }
 
-BFVector* ItemManager::getBFItemList() {
+BlueFrogVector* ItemManager::getBFItemList() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 20);
 
-		return (BFVector*) method.executeWithObjectReturn();
+		return (BlueFrogVector*) method.executeWithObjectReturn();
 	} else
 		return ((ItemManagerImplementation*) _impl)->getBFItemList();
 }
 
-BFVector* ItemManager::getBFProfList() {
+BlueFrogVector* ItemManager::getBFProfList() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 21);
 
-		return (BFVector*) method.executeWithObjectReturn();
+		return (BlueFrogVector*) method.executeWithObjectReturn();
 	} else
 		return ((ItemManagerImplementation*) _impl)->getBFProfList();
 }
@@ -404,11 +404,11 @@ unsigned long long ItemManagerAdapter::getNextStaticObjectID() {
 	return ((ItemManagerImplementation*) impl)->getNextStaticObjectID();
 }
 
-BFVector* ItemManagerAdapter::getBFItemList() {
+BlueFrogVector* ItemManagerAdapter::getBFItemList() {
 	return ((ItemManagerImplementation*) impl)->getBFItemList();
 }
 
-BFVector* ItemManagerAdapter::getBFProfList() {
+BlueFrogVector* ItemManagerAdapter::getBFProfList() {
 	return ((ItemManagerImplementation*) impl)->getBFProfList();
 }
 

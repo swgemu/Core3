@@ -76,7 +76,7 @@ public:
 	
 	bool trainProfession(Player * player, string prof);
 	bool trainSkill(Player * player, SkillBox * skill);
-	
+	void dropSkills(Player * player);
 };
 
 

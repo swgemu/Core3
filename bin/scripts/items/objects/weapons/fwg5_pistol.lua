@@ -40,9 +40,21 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-RunItemLUAFile("bluefrog/composite_armor_set.lua");
-RunItemLUAFile("bluefrog/instrument_set.lua");
-RunItemLUAFile("bluefrog/surveying_kit.lua");
-RunItemLUAFile("bluefrog/weapon_set.lua");
-RunItemLUAFile("bluefrog/wookiee_armor_set.lua");
-RunItemLUAFile("bluefrog/ith_armor_set.lua");
+fwg5_pistol = Weapon:new{
+
+	objectName = "FWG5",
+
+	templateName = "object/weapon/ranged/pistol/shared_pistol_fwg5.iff",
+
+	objectCRC = 1508397938,
+
+	objectType = PISTOL,
+	
+	certification = "cert_pistol_fwg5",
+
+	attackSpeed = 2.0,
+
+	minDamage = 88,
+
+	maxDamage = 242
+}

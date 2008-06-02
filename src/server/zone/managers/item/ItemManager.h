@@ -15,7 +15,7 @@ class Weapon;
 
 class Armor;
 
-class BFVector;
+class BlueFrogVector;
 
 class Player;
 
@@ -51,9 +51,9 @@ public:
 
 	unsigned long long getNextStaticObjectID();
 
-	BFVector* getBFItemList();
+	BlueFrogVector* getBFItemList();
 
-	BFVector* getBFProfList();
+	BlueFrogVector* getBFProfList();
 
 	string& getBFProf(string& key);
 
@@ -105,9 +105,9 @@ public:
 
 	unsigned long long getNextStaticObjectID();
 
-	BFVector* getBFItemList();
+	BlueFrogVector* getBFItemList();
 
-	BFVector* getBFProfList();
+	BlueFrogVector* getBFProfList();
 
 	string& getBFProf(string& key);
 

@@ -40,9 +40,26 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-RunItemLUAFile("bluefrog/composite_armor_set.lua");
-RunItemLUAFile("bluefrog/instrument_set.lua");
-RunItemLUAFile("bluefrog/surveying_kit.lua");
-RunItemLUAFile("bluefrog/weapon_set.lua");
-RunItemLUAFile("bluefrog/wookiee_armor_set.lua");
-RunItemLUAFile("bluefrog/ith_armor_set.lua");
+Weapon = Object:new {
+	objectName = "Weapon",
+
+	templateName = "",
+
+	objectCRC = "",
+
+	objectType = WEAPON,
+
+	damageType = WEAPON_KINETIC,
+
+	armorPiercing = WEAPON_NONE,
+
+	attackSpeed = 1.0,
+
+	minDamage = 1,
+
+	maxDamage = 1,
+
+	certification = "",
+
+	equipped = "0"
+}

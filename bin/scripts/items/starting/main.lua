@@ -67,10 +67,12 @@ function list_iter (t)
              end
 end
 
-RunProfessionFile("marksman.lua");
-RunProfessionFile("brawler.lua");
-RunProfessionFile("medic.lua");
-RunProfessionFile("scout.lua");
-RunProfessionFile("artisan.lua");
-RunProfessionFile("entertainer.lua");
-RunProfessionFile("general.lua");
+RunItemLUAFile("objects/main.lua");
+
+RunItemLUAFile("starting/marksman.lua");
+RunItemLUAFile("starting/brawler.lua");
+RunItemLUAFile("starting/medic.lua");
+RunItemLUAFile("starting/scout.lua");
+RunItemLUAFile("starting/artisan.lua");
+RunItemLUAFile("starting/entertainer.lua");
+RunItemLUAFile("starting/general.lua");

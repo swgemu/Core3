@@ -227,44 +227,6 @@ artisan_wookie_female_items = { }
 
 -------------------Artisan Items (All Species)--------------------
 
-cdef_pistol = {
-	
-	objectName = "CDEF Pistol",
-
-	templateName = "object/weapon/ranged/pistol/shared_pistol_cdef.iff",
-
-	objectCRC = 937103853,
-
-	objectType = PISTOL,
-
-	damageType = WEAPON_ENERGY,
-
-	armorPiercing = WEAPON_NONE,
-	
-	certification = "",
-
-	equipped = "0"
-}
-
-surv_knife = {
-
-	objectName = "Survival Knife",
-
-	templateName = "object/weapon/melee/knife/shared_knife_survival.iff",
-
-	objectCRC = 530531036,
-
-	objectType = ONEHANDMELEEWEAPON,
-
-	damageType = WEAPON_KINETIC,
-
-	armorPiercing = WEAPON_NONE,
-	
-	certification = "",
-
-	equipped = "0"
-}
-
 crafting_tool = {
 	
 	objectName = "Generic Crafting Tool",
@@ -304,7 +266,7 @@ chemical_survey_tool = {
 	equipped = "0"
 }
 
-general_artisan_items = {cdef_pistol, surv_knife, crafting_tool, mineral_survey_tool, chemical_survey_tool}
+general_artisan_items = {cdef_pistol, survival_knife, crafting_tool, mineral_survey_tool, chemical_survey_tool}
 
 
 createItemsFromList("artisan", "humanoid", "male", artisan_humanoid_male_items)

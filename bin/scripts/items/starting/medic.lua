@@ -223,47 +223,7 @@ medic_wookie_female_items = { }
 
 -------------------Medic Items (All Species)--------------------
 
-cdef_pistol = {
-	
-
-	objectName = "CDEF Pistol",
-
-	templateName = "object/weapon/ranged/pistol/shared_pistol_cdef.iff",
-
-	objectCRC = 937103853,
-
-	objectType = PISTOL,
-
-	damageType = WEAPON_ENERGY,
-
-	armorPiercing = WEAPON_NONE,
-	
-	certification = "",
-
-	equipped = "0"
-}
-
-surv_knife = {
-	
-
-	objectName = "Survival Knife",
-
-	templateName = "object/weapon/melee/knife/shared_knife_survival.iff",
-
-	objectCRC = 530531036,
-
-	objectType = ONEHANDMELEEWEAPON,
-
-	damageType = WEAPON_KINETIC,
-
-	armorPiercing = WEAPON_NONE,
-	
-	certification = "",
-
-	equipped = "0"
-}
-
-general_medic_items = {cdef_pistol, surv_knife}
+general_medic_items = {cdef_pistol, survival_knife}
 
 createItemsFromList("medic", "humanoid", "male", medic_humanoid_male_items)
 createItemsFromList("medic", "humanoid", "female", medic_humanoid_female_items)

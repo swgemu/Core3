@@ -40,9 +40,21 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-RunItemLUAFile("bluefrog/composite_armor_set.lua");
-RunItemLUAFile("bluefrog/instrument_set.lua");
-RunItemLUAFile("bluefrog/surveying_kit.lua");
-RunItemLUAFile("bluefrog/weapon_set.lua");
-RunItemLUAFile("bluefrog/wookiee_armor_set.lua");
-RunItemLUAFile("bluefrog/ith_armor_set.lua");
+gaderiffi_baton = Weapon:new{
+	
+	objectName = "Gaderiffi Baton",
+
+	templateName = "object/weapon/melee/baton/shared_baton_gaderiffi.iff",
+
+	objectCRC = 1521219232,
+
+	objectType = ONEHANDMELEEWEAPON,
+	
+	certification = "cert_baton_gaderiffi",
+
+	attackSpeed = 3.1,
+	
+	minDamage = 180,
+
+	maxDamage = 320
+}

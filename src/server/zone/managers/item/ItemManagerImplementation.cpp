@@ -72,7 +72,9 @@ ItemManagerImplementation::ItemManagerImplementation(ZoneServer* serv) :
 	Lua::init();
 	registerFunctions();
 	registerGlobals();
+	info("Loading Starting Items...", true);
 	runFile("scripts/items/starting/main.lua");
+	info("Loading Blue Frog Items...", true);
 	runFile("scripts/items/bluefrog/main.lua");
 	
 	if(bfEnabled)
@@ -300,9 +302,8 @@ TangibleObject* ItemManagerImplementation::clonePlayerObjectTemplate(TangibleObj
 
 void ItemManagerImplementation::registerFunctions() {
 	lua_register(getLuaState(), "AddPlayerItem", addPlayerItem);
-	lua_register(getLuaState(), "RunProfessionFile", runProfessionFile);
+	lua_register(getLuaState(), "RunItemLUAFile", runItemLUAFile);
 	lua_register(getLuaState(), "SetBlueFrogsEnabled", enableBlueFrogs);
-	lua_register(getLuaState(), "RunBlueFrogFile", runBlueFrogFile);
 	lua_register(getLuaState(), "AddBFItem", addBFItem);
 	lua_register(getLuaState(), "AddBFProf", addBFProf);
 }
@@ -484,23 +485,16 @@ void ItemManagerImplementation::registerGlobals() {
 	setGlobalInt("INSTR_MANDOVIOL", InstrumentImplementation::MANDOVIOL);
 }
 
-int ItemManagerImplementation::runProfessionFile(lua_State* L) {
+int ItemManagerImplementation::runItemLUAFile(lua_State* L) {
 	string filename = getStringParameter(L);
 	
-	runFile("scripts/items/starting/" + filename, L);
-	
-	return 0;
-}
-
-int ItemManagerImplementation::runBlueFrogFile(lua_State* L) {
-	string filename = getStringParameter(L);
-
-	runFile("scripts/items/bluefrog/" + filename, L);
+	runFile("scripts/items/" + filename, L);
 	
 	return 0;
 }
 
 TangibleObject* ItemManagerImplementation::createTemplateFromLua(LuaObject itemconfig) {
+	
 	int crc = itemconfig.getIntField("objectCRC");
 	string name = itemconfig.getStringField("objectName");
 	string templ = itemconfig.getStringField("templateName");
@@ -523,10 +517,16 @@ TangibleObject* ItemManagerImplementation::createTemplateFromLua(LuaObject itemc
 		int damageType = itemconfig.getIntField("damageType");
 		int ap = itemconfig.getIntField("armorPiercing");
 		string cert = itemconfig.getStringField("certification");
+		float as = itemconfig.getFloatField("attackSpeed");
+		float mindmg = itemconfig.getFloatField("minDamage");
+		float maxdmg = itemconfig.getFloatField("maxDamage");
 		
 		Weapon* weapon = (Weapon*) item;
 		weapon->setDamageType(damageType);
 		weapon->setArmorPiercing(ap);
+		weapon->setAttackSpeed(as);
+		weapon->setMinDamage(mindmg);
+		weapon->setMaxDamage(maxdmg);
 		
 		if (!cert.empty())
 			weapon->setCert(cert);

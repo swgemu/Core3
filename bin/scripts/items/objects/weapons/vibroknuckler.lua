@@ -40,9 +40,24 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-RunItemLUAFile("bluefrog/composite_armor_set.lua");
-RunItemLUAFile("bluefrog/instrument_set.lua");
-RunItemLUAFile("bluefrog/surveying_kit.lua");
-RunItemLUAFile("bluefrog/weapon_set.lua");
-RunItemLUAFile("bluefrog/wookiee_armor_set.lua");
-RunItemLUAFile("bluefrog/ith_armor_set.lua");
+vibroknuckler = Weapon:new{
+	
+
+	objectName = "Vibroknuckler",
+
+	templateName = "object/weapon/melee/special/shared_vibroknuckler.iff",
+
+	objectCRC = 1697024206,
+
+	objectType = MELEEWEAPON,
+
+	armorPiercing = WEAPON_LIGHT,
+	
+	certification = "cert_vibroknuckler",
+
+	attackSpeed = 2.2,
+
+	minDamage = 51,
+
+	maxDamage = 199
+}

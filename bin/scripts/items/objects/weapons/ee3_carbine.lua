@@ -40,9 +40,23 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-RunItemLUAFile("bluefrog/composite_armor_set.lua");
-RunItemLUAFile("bluefrog/instrument_set.lua");
-RunItemLUAFile("bluefrog/surveying_kit.lua");
-RunItemLUAFile("bluefrog/weapon_set.lua");
-RunItemLUAFile("bluefrog/wookiee_armor_set.lua");
-RunItemLUAFile("bluefrog/ith_armor_set.lua");
+ee3_carbine = Weapon:new{
+
+	objectName = "EE3 Carbine",
+
+	templateName = "object/weapon/ranged/carbine/shared_carbine_ee3.iff",
+
+	objectCRC = 749154215,
+
+	objectType = CARBINE,
+
+	damageType = WEAPON_HEAT,
+	
+	certification = "cert_carbine_ee3",
+
+	attackSpeed = 3.5,
+
+	minDamage = 128,
+
+	maxDamage = 211
+}
