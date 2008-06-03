@@ -204,15 +204,15 @@ void LootManager::createLoot(Creature* creature) {
 		int creaturechancemodifier = creatureLevel / 100;
 		
 		if (lootchance < 5 + creaturechancemodifier) {
-			createArmorLoot(creature, creatureLevel);
+			createArmorLoot(creature, creatureLevel + 50);
 		} else if (lootchance < 10 + 2 * creaturechancemodifier) {
-			createClothingLoot(creature, creatureLevel);
+			createClothingLoot(creature, creatureLevel + 50);
 		} else if (lootchance < 15 + 3 * creaturechancemodifier) {
-			createWeaponLoot(creature, creatureLevel);
+			createWeaponLoot(creature, creatureLevel + 50);
 		} else if (lootchance < 20 + 4 * creaturechancemodifier) {
-			createAttachmentLoot(creature, creatureLevel);
+			createAttachmentLoot(creature, creatureLevel + 50);
 		} else if (lootchance < 25 + 5 * creaturechancemodifier) {
-			createPowerupLoot(creature, creatureLevel);
+			createPowerupLoot(creature, creatureLevel + 50);
 		} else if (lootchance < 25 + 5 * creaturechancemodifier) {
 			createJunkLoot(creature);
 		}
@@ -828,7 +828,7 @@ void LootManager::createArmorLoot(Creature* creature, int32 creatureLevel) {
 		item->setActionEncumbrance((System::random(8) + 9) * 18 / 3 + item->getType());
 		item->setMindEncumbrance((System::random(9) + 9) * 17 / 3 + item->getType());		
 
-		item->setArmorStats(creatureLevel / 2);
+		item->setArmorStats(creatureLevel);
 		item->setConditionDamage(System::random(item->getMaxCondition() * 3 / 4));
 		
 		creature->addLootItem(item);

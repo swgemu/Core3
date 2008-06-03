@@ -136,10 +136,9 @@ void TangibleObjectImplementation::initialize() {
 }
 
 void TangibleObjectImplementation::parseAttributes() { 
-		
 	maxCondition = itemAttributes->getMaxCondition();
-	conditionDamage = (maxCondition - itemAttributes->getCurrentCondition());
 	
+	conditionDamage = (maxCondition - itemAttributes->getCurrentCondition());
 }
 
 void TangibleObjectImplementation::generateSkillMods(AttributeListMessage* alm, int skillModType, int skillModValue) {

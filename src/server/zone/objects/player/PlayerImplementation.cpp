@@ -472,7 +472,7 @@ void PlayerImplementation::logout(bool doLock) {
 	
 	if (disconnectEvent == NULL) {
 		info("creating disconnect event");		
-		disconnectEvent = new PlayerDisconnectEvent(this);
+		disconnectEvent = new PlayerDisconnectEvent(_this);
 		
 		if (isLoggingOut()) {
 			server->addEvent(disconnectEvent, 10);

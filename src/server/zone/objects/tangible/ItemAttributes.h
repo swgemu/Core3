@@ -51,6 +51,7 @@ which carries forward this exception.
 
 class ItemAttributes {
 	AttributeMap* attributes;
+	
 	string attributeString;
 	string returnString;
 	

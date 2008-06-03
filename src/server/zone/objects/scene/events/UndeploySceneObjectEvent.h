@@ -58,13 +58,17 @@ public:
 	bool activate() {
 		try {
 			object->wlock();
+
+			object->info("activating undeployment");
+
 			
 			if (object->isUndeploymentScheduled()) {
 				object->info("undeploying");
 				
 				object->clearUndeploymentEvent();
 				object->finalize();
-			}
+			} else
+				object->info("undeployment not scheduled for object");
 
 			object->unlock();
 		} catch (Exception& e) {

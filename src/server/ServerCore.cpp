@@ -64,7 +64,7 @@ ServerCore::ServerCore() : Core("core3.log"), Logger("Core") {
 
 void ServerCore::init() {
 	info("starting up server..");
-
+	
 	processConfig();
 	
 	try {

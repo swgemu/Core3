@@ -48,11 +48,11 @@ which carries forward this exception.
 #include "../CreatureObjectImplementation.h"
 
 class CreatureBuffEvent : public Event {
-	CreatureObjectImplementation* creo;
+	ManagedReference<CreatureObject> creo;
 
 	uint32 buffCRC;	
 public:
-	CreatureBuffEvent(CreatureObjectImplementation* cr, uint32 crc,
+	CreatureBuffEvent(CreatureObject* cr, uint32 crc,
 			float duration) : Event((int) (duration * 1000)) {
 		creo = cr;
 		

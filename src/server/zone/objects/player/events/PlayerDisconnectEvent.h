@@ -45,13 +45,13 @@ which carries forward this exception.
 #ifndef PLAYERDISCONNECTEVENT_H_
 #define PLAYERDISCONNECTEVENT_H_
 
-#include "../PlayerImplementation.h"
+#include "../Player.h"
 
 class PlayerDisconnectEvent : public Event {
-	PlayerImplementation* player;
+	ManagedReference<Player> player;
 	
 public:
-	PlayerDisconnectEvent(PlayerImplementation* pl) : Event(2000) {
+	PlayerDisconnectEvent(Player* pl) : Event(2000) {
 		player = pl;
 
 	}
@@ -67,10 +67,13 @@ public:
 
 			player->unlock();
 		} catch (...) {
+			player->error("Unreported Exception caught in PlayerDisconnectEvent::activate");
 			player->clearDisconnectEvent();	
 
 			player->unlock();
 		}
+		
+		player = NULL;
 		
 		return true;
 	}

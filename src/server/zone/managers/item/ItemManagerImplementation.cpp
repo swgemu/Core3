@@ -707,17 +707,20 @@ void ItemManagerImplementation::unloadPlayerItems(Player* player) {
 
 void ItemManagerImplementation::createPlayerItem(Player* player, TangibleObject* item) {
 	try {
+		string itemname = item->getName().c_str();
+		MySqlDatabase::escapeString(itemname);
+		
 		string appearance;
 		string itemApp;
 		item->getCustomizationString(itemApp);
 		BinaryData cust(itemApp);
 		cust.encode(appearance);
-		
+				
 		stringstream query;
 		query << "INSERT INTO `character_items` "
 			  << "(`item_id`,`character_id`,`name`,`template_crc`,`template_type`,`template_name`,`equipped`,`attributes`,`appearance`)"
 			  << " VALUES(" << item->getObjectID() << "," << player->getCharacterID() 
-			  << ",'\\" << item->getName().c_str() << "'," 
+			  << ",'\\" << itemname << "'," 
 			  << item->getObjectCRC() << "," << item->getObjectSubType() << ",'" << item->getTemplateName() << "',"
 			  << item->isEquipped() << ",'" << item->getAttributes() 
 			  << "','" << appearance.substr(0, appearance.size() - 1) << "')";
@@ -732,7 +735,6 @@ void ItemManagerImplementation::createPlayerItem(Player* player, TangibleObject*
 }
 
 void ItemManagerImplementation::savePlayerItem(Player* player, TangibleObject* item) {
-	
 	try {
 		string apperance = "";
 		string itemApp;

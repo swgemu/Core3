@@ -3724,19 +3724,21 @@ void CreatureObjectImplementation::removeBuff(const uint32 buffCRC, bool remove)
 }
 
 void CreatureObjectImplementation::applyBuff(Buff *buff) { 
-
-	if(buff == NULL || buff->getBuffCRC() <= 0 || buff->getBuffDuration() <= 0)
+	if (buff == NULL || buff->getBuffCRC() <= 0 || buff->getBuffDuration() <= 0)
 		return;
 	
 	// Other code should handle returning an error message
 	// if a previous buff already exists - safety net - make sure we don't double up
-	if(hasBuff(buff->getBuffCRC()))
+	if (hasBuff(buff->getBuffCRC()))
 		removeBuff(buff->getBuffCRC()); 
 	
 	creatureBuffs.put(buff->getBuffCRC(), buff);
+	
 	buff->activateBuff(_this);
-	Event* e = new CreatureBuffEvent(this, buff->getBuffCRC(), buff->getBuffDuration());
+	
+	Event* e = new CreatureBuffEvent(_this, buff->getBuffCRC(), buff->getBuffDuration());
 	server->addEvent(e);
+	
 	activateRecovery();
 }
 
@@ -3749,6 +3751,7 @@ void CreatureObjectImplementation::removeBuffs(bool doUpdateCreature) {
 	for (int i = 0; i < buffEvents.size(); i++) {
 		Event* e = buffEvents.get(i);
 		server->removeEvent(e);
+		
 		delete e;
 	}
 	// Remove from Creature
@@ -3760,16 +3763,18 @@ void CreatureObjectImplementation::removeBuffs(bool doUpdateCreature) {
 		return;
 	}
 	
-	creatureBuffs.resetIterator();
+	/*creatureBuffs.resetIterator();
 	
 	while (creatureBuffs.hasNext()) {
 		Buff *buff = creatureBuffs.getNextValue();
-		if(buff != NULL) {		
+		if (buff != NULL) {		
 			removeBuff(buff->getBuffCRC(), false);
+			
 			buff->finalize();
 		}
 	}
-	creatureBuffs.removeAll();
+	
+	creatureBuffs.removeAll();*/
 
 	resetHAMBars();
 

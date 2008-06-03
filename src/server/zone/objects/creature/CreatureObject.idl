@@ -366,6 +366,9 @@ interface CreatureObject implements SceneObject {
 	// Buff method
 	void addBuff(int buffCRC, float duration);
 	void applyBuff(Buff buff);
+	
+	void removeBuff(const unsigned int buffCRC, boolean remove = true);
+	
 	boolean hasSpice();
 	
 	boolean verifyCashCredits(unsigned int creditsToRemove);

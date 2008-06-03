@@ -601,12 +601,11 @@ void CraftingManagerImplementation::nextCraftingStage(Player * player,
 		string test) {
 
 	CraftingTool * craftingTool = player->getCurrentCraftingTool();
+	if (craftingTool == NULL)
+		return;
 
 	// If the window is closed now, this sets the resources to no be recoverable
 	craftingTool->setRecoverResources(false);
-
-	if (craftingTool == NULL)
-		return;
 
 	DraftSchematic * draftSchematic = craftingTool->getWorkingDraftSchematic();
 

@@ -55,8 +55,10 @@ void ZoneMessageProcessorThread::processMessage(Message* message) {
 			phandler->handleMessage(message);
 	} catch (DatabaseException& e) {
 		error(e.getMessage());
+		e.printStackTrace();
 	} catch (ArrayIndexOutOfBoundsException& e) {
 		error(e.getMessage());
+		e.printStackTrace();
 	}
 }
 

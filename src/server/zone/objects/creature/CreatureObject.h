@@ -421,6 +421,8 @@ public:
 
 	void applyBuff(Buff* buff);
 
+	void removeBuff(const unsigned int buffCRC, bool remove = true);
+
 	bool hasSpice();
 
 	bool verifyCashCredits(unsigned int creditsToRemove);
@@ -1160,6 +1162,8 @@ public:
 	void addBuff(int buffCRC, float duration);
 
 	void applyBuff(Buff* buff);
+
+	void removeBuff(const unsigned int buffCRC, bool remove);
 
 	bool hasSpice();
 
