@@ -761,7 +761,7 @@ void ObjectControllerMessage::parseSurrenderSkillBox(Player* player, Message* pa
 
 		player->surrenderSkillBox(skillBox.c_str().c_str());
 	} catch (...) {
-		cout << "unreported parseSurrenderSkillBox(Player* player, Message* pack) exception\n";
+		cout << "unreported ObjectControllerMessage::parseSurrenderSkillBox(Player* player, Message* pack) exception\n";
 	}
 }
 
@@ -769,9 +769,22 @@ void ObjectControllerMessage::parseNpcStartConversation(Player* player, Message*
 	uint64 target = pack->parseLong();
 	
 	SceneObject* object = player->getZone()->lookupObject(target);
+	
 	if (object != NULL) {
-		player->setConversatingCreature((CreatureObject*)object);
-		object->sendConversationStartTo(player);
+		try {
+			if (object != player)
+				object->wlock(player);
+			
+			player->setConversatingCreature((CreatureObject*)object);
+			object->sendConversationStartTo(player);
+			
+			if (object != player)
+				object->unlock();
+		} catch (...) {
+			cout << "unreported ObjectControllerMessage::parseNpcStartConversation(Player* player, Message* pack) exception\n";
+			if (object != player)
+				object->unlock();
+		}
 	}
 }
 
@@ -781,10 +794,22 @@ void ObjectControllerMessage::parseNpcStopConversation(Player* player, Message* 
 	CreatureObject* npc = player->getConversatingCreature();
 	
 	if (npc != NULL) {
-		StopNpcConversation* conv = new StopNpcConversation(player, npc->getObjectID());
-		player->setConversatingCreature(NULL);
+		try {
+			if (npc != player)
+				npc->wlock(player);
+			
+			StopNpcConversation* conv = new StopNpcConversation(player, npc->getObjectID());
+			player->setConversatingCreature(NULL);
 	
-		player->sendMessage(conv);
+			player->sendMessage(conv);
+			
+			if (npc != player)
+				npc->unlock();
+		} catch (...) {
+			cout << "unreported ObjectControllerMessage::parseNpcStopConversation(Player* player, Message* pack) exception\n";
+			if (npc != player)
+				npc->unlock();
+		}
 	}
 }
 
@@ -1057,47 +1082,54 @@ void ObjectControllerMessage::parseImageDesign(Player* player, Message* pack) {
 	
 	if (object == NULL)
 		return;
-
 	
 	unsigned long tent = 0; // objectid of the salon building
 
-	if (player->isInBuilding() && player->getBuildingType() == BuildingObjectImplementation::SALON)
-	{
+	if (player->isInBuilding() && player->getBuildingType() == BuildingObjectImplementation::SALON) {
 		CellObject* cell = (CellObject*)player->getParent();
 		BuildingObject* building = (BuildingObject*)cell->getParent();
+		
 		tent = building->getObjectID();
 	}
 	
 	try {
+		if (object != player)
+			object->wlock(player);
+		
 		if (object->isPlayer()) {
-			Player* target_player = (Player*) object;
+			Player* targetPlayer = (Player*) object;
 
 			// If the target player isn't yourself, then that player must be in a group
-			if (target_player->getObjectID() != player->getObjectID() &&
-					(
-							!player->isInAGroup() ||
-							(player->isInAGroup() && player->getGroupID() != target_player->getGroupID())
-					) ) 
-			{
+			if (targetPlayer->getObjectID() != player->getObjectID() 
+				&& (!player->isInAGroup() || (player->isInAGroup() && player->getGroupID() != targetPlayer->getGroupID()))) {
+					
 				player->sendSystemMessage("Target player must be in your group to Image Design.");
+				
+				if (object != player)
+					object->unlock();
+				
 				return;
 			}
 				
 			// Initiate Self
-			ImageDesignMessage* msg_player = new ImageDesignMessage(player, player, target_player, tent);
-			player->sendMessage(msg_player);
+			ImageDesignMessage* msgPlayer = new ImageDesignMessage(player, player, targetPlayer, tent);
+			player->sendMessage(msgPlayer);
     	
 			// Initiate Target (
-			if (target_player->getObjectID() != player->getObjectID()) {
-				ImageDesignMessage* msg_target = new ImageDesignMessage(target_player, player, target_player, tent, 1);
-				target_player->sendMessage(msg_target);
+			if (targetPlayer->getObjectID() != player->getObjectID()) {
+				ImageDesignMessage* msgTarget = new ImageDesignMessage(targetPlayer, player, targetPlayer, tent, 1);
+				targetPlayer->sendMessage(msgTarget);
 			}
-		} else
-		{
+		} else {
 			player->sendSystemMessage("Invalid Image Design target.");
 		}
+		
+		if (object != player)
+			object->unlock();
 	} catch (...) {
 		cout << "Unreported exception in ObjectControllerMessage::parseImageDesign(Player* player, Message *pack)";
+		if (object != player)
+			object->unlock();
 	}	
 }
 
@@ -1898,7 +1930,7 @@ void ObjectControllerMessage::parseSelectDraftSchematic(Player* player,
 
 			try {
 
-				craftingTool->lock();
+				craftingTool->wlock();
 
 				player->prepareCraftingSession(craftingTool, draftSchematic);
 

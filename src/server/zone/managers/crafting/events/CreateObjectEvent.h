@@ -69,8 +69,8 @@ public:
 		try {
 			// If inventory is full, put item in Tools hopper
 
-			player->lock();
-			ct->lock();
+			player->wlock();
+			ct->wlock();
 			
 			ItemManager * itemManager = player->getZone()->getZoneServer()->getItemManager();
 			

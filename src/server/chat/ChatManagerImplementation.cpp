@@ -700,7 +700,7 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 		 		player->setAdminLevel(level);
 		 	}	
 		} else if (cmd =="@test") {
-			string vendorinfo = "testvendor";
+			/*string vendorinfo = "testvendor";
 			string vendorowner = "testnpc";
 			
 			BaseMessage* packet = new BaseMessage();
@@ -760,12 +760,12 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
             packet->insertByte(0);
 		
             //I HAD TO ADD THIS OR ELSE IT CRASHES.
-            /*packet->insertInt(0);
-            packet->insertShort(0);*/
+            packet->insertInt(0);
+            packet->insertShort(0);
             
             Thread::sleep(5000);
             
-            player->sendMessage(packet);
+            player->sendMessage(packet);*/
 		} else if(cmd == "@systemMessage") {
 			if (userManager->isAdmin(player->getFirstName())) {
 				float range = tokenizer.getFloatToken();

@@ -64,8 +64,6 @@
 
 #include "../../packets.h"
 
-#include "events/CreateObjectEvent.h"
-#include "events/UpdateToolCountdownEvent.h"
 
 class ZoneServer;
 
@@ -74,9 +72,6 @@ class CraftingManagerImplementation : public CraftingManagerServant,
 	
 	ZoneServer* server;
 	ZoneProcessServerImplementation * processor;
-
-	CreateObjectEvent * createObjectEvent;
-	UpdateToolCountdownEvent * updateToolCountdownEvent;
 
 	// Use a groupName to recieve a vector of draftSchematics back
 	VectorMap<string, DraftSchematicGroup*> draftSchematicsMap;
@@ -130,8 +125,12 @@ public:
 	static int runDraftSchematicFile(lua_State* L);
 
 	static int addDraftSchematicToServer(lua_State *L);
+	
+private:
 	void mapDraftSchematic(DraftSchematic* draftSchematic);
 	// End LUA Methods
+	
+public:
 	
 	CraftingManagerImplementation(ZoneServer* serv, ZoneProcessServerImplementation* proc);
 

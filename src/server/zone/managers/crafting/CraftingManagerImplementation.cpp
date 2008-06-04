@@ -1208,21 +1208,28 @@ void CraftingManagerImplementation::createObjectInInventory(Player * player,
 	int timer2 = 0;
 	CraftingTool* craftingTool = player->getCurrentCraftingTool();
 
+	CreateObjectEvent* createObjectEvent = NULL;
+	UpdateToolCountdownEvent* updateToolCountdownEvent = NULL;
+	
 	createObjectEvent = new CreateObjectEvent(player, craftingTool, create);
 	craftingTool->setStatusWorking();
 
 	if (processor != NULL) {
+		
 		while (timer > 0) {
 			updateToolCountdownEvent = new UpdateToolCountdownEvent(player, craftingTool, timer);
 			processor->addEvent(updateToolCountdownEvent, timer2);
 			timer-=5;
 			timer2+=5000;
 		}
+		
 		if (timer < 0) {
 			timer2 += timer * 1000;
 			timer = 0;
 		}
+		
 		updateToolCountdownEvent = new UpdateToolCountdownEvent(player, craftingTool, timer);
+		
 		processor->addEvent(updateToolCountdownEvent, timer2);
 		processor->addEvent(createObjectEvent, timer2);
 	} else {

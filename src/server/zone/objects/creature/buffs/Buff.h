@@ -394,8 +394,7 @@ public:
 	}
 	
 	bool deActivateBuff(CreatureObject* creo, bool updateClient = true) {
-		if(!active)
-		{
+		if (!active) {
 			creo->sendSystemMessage("buff not active - report repo steps to McMahon");
 			return false;
 		}
@@ -436,13 +435,13 @@ public:
 		// TODO: Remove Skill Mods
 		
 		// Remove from client buff list
-		if(updateClient)
+		if (updateClient)
 			creo->addBuff(getBuffCRC(), 0.0f);
 		
 		active = false;
 		
 		// Activate Downer
-		if(getBuffType() == BuffType::SPICE && updateClient && getBuffDownerCRC() > 0)
+		if (getBuffType() == BuffType::SPICE && updateClient && getBuffDownerCRC() > 0)
 			downerBuff(creo);
 		
 		return true;

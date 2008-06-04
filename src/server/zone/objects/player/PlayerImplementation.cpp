@@ -670,7 +670,6 @@ void PlayerImplementation::decayInventory() {
 }
 
 void PlayerImplementation::resetArmorEncumbrance() {
-	
 	healthEncumbrance = 0;
 	actionEncumbrance = 0;
 	mindEncumbrance = 0;
@@ -1213,16 +1212,12 @@ void PlayerImplementation::sendSystemMessage(unicode& message) {
 	sendMessage(smsg);
 }
 
-
-
-void PlayerImplementation::queueFlourish(const string& modifier, uint64 target, uint32 actionCntr)
-{	
+void PlayerImplementation::queueFlourish(const string& modifier, uint64 target, uint32 actionCntr) {	
 	//TODO: Refactor this part later somehow?
 	if (!isPlayer())
 		return;
 
 	//PlayerImplementation* player = (PlayerImplementation*) this;
-
 
 	string skillBox = "social_entertainer_novice";
 	
@@ -1249,7 +1244,6 @@ void PlayerImplementation::queueFlourish(const string& modifier, uint64 target, 
     
     PlayerObject* po = getPlayerObject();    
     queueAction(po->getPlayer(), target, actionCRC, actionCntr, modifier);
-	
 }
 
 
@@ -1262,7 +1256,9 @@ void PlayerImplementation::queueAction(Player* player, uint64 target, uint32 act
 	// Try to queue some music skills
 	Skill* skill = creatureSkills.get(actionCRC);
 	
-	if ((isDancing() || isPlayingMusic()) && (skill != NULL) && !(skill->isEntertainSkill() || skill->isDanceSkill() || skill->isMusicSkill())) {
+	if ((isDancing() || isPlayingMusic()) 
+		&& (skill != NULL) && !(skill->isEntertainSkill() || skill->isDanceSkill() || skill->isMusicSkill())) {
+		
 		player->sendSystemMessage("You cant use skills while dancing/playing music!");
 		clearQueueAction(actionCntr);
 	} else if (commandQueue.size() < 15) {
@@ -1288,6 +1284,7 @@ bool PlayerImplementation::doAction(CommandQueueAction* action) {
 		action->clearError(2);
 		return false;
 	}
+	
 	updateTarget(action->getTargetID());
 
 	action->setTarget((Player*) targetObject.get());
@@ -1429,7 +1426,7 @@ void PlayerImplementation::kill() {
 
 void PlayerImplementation::changePosture(int post) {
 	if (logoutEvent != NULL) {
-		if(post == SITTING_POSTURE) {
+		if (post == SITTING_POSTURE) {
 			clearQueueAction(actionCounter);
 			return;
 		}
@@ -1897,8 +1894,8 @@ bool PlayerImplementation::isAllowedBySpecies(TangibleObject * item) {
 	}			
 }
 void PlayerImplementation::changeCloth(uint64 itemid) {
-
 	SceneObject* obj = inventory->getObject(itemid);
+	
 	if (obj == NULL || !obj->isTangible())
 		return;
 	
@@ -1909,6 +1906,7 @@ void PlayerImplementation::changeCloth(uint64 itemid) {
 			changeWeapon(itemid);
 		return;
 	}
+	
 	if (cloth->isArmor()) {
 		if (cloth->isEquipped())
 			changeArmor(itemid, false);
@@ -1929,14 +1927,13 @@ void PlayerImplementation::changeCloth(uint64 itemid) {
 }
 
 void PlayerImplementation::changeWeapon(uint64 itemid) {
-
 	SceneObject* obj = inventory->getObject(itemid);
 	
 	if (obj == NULL || !obj->isTangible())
 		return;
 	
-	if(this->isPlayingMusic())
-		this->stopPlayingMusic();
+	if (isPlayingMusic())
+		stopPlayingMusic();
 
 	if (((TangibleObject*)obj)->isWeapon()) {
 	
@@ -2054,8 +2051,7 @@ void PlayerImplementation::changeWeapon(uint64 itemid) {
 		if (isPlayingMusic())
 			stopPlayingMusic();
 		
-		if (item->isEquipped())
-		{
+		if (item->isEquipped()) {
 			unequipItem(item);
 		}
 		else
@@ -2072,7 +2068,6 @@ void PlayerImplementation::changeWeapon(uint64 itemid) {
 }
 
 void PlayerImplementation::changeArmor(uint64 itemid, bool forced) {
-
 	SceneObject* obj = inventory->getObject(itemid);
 	
 	if (obj == NULL || !obj->isTangible())
@@ -2109,8 +2104,7 @@ void PlayerImplementation::changeArmor(uint64 itemid, bool forced) {
 			} else
 				sendSystemMessage("You don't have enough pool points to do that!");
 		}
-	} else
-	{
+	} else {
 		TangibleObject* item = (TangibleObject*) obj;
 		
 		if (item->isEquipped())
@@ -2387,7 +2381,6 @@ void PlayerImplementation::unsetArmorEncumbrance(Armor* armor) {
 }
 
 void PlayerImplementation::applyPowerup(uint64 powerupID, uint64 targetID) {
-	
 	Powerup* powerup = (Powerup*) getInventoryItem(powerupID);
 	Weapon* weapon = (Weapon*) getInventoryItem(targetID);
 	
@@ -2419,7 +2412,6 @@ void PlayerImplementation::applyPowerup(uint64 powerupID, uint64 targetID) {
 
 
 void PlayerImplementation::applyAttachment(uint64 attachmentID, uint64 targetID) {
-	
 	Attachment* attachment = (Attachment*) getInventoryItem(attachmentID);
 	Armor* armor = (Armor*) getInventoryItem(targetID);
 		
@@ -2618,9 +2610,11 @@ void PlayerImplementation::clearDuelList() {
 CraftingTool* PlayerImplementation::getCurrentCraftingTool() {
 	return currentCraftingTool;
 }
+
 void PlayerImplementation::setCurrentCraftingTool(CraftingTool* ct) {
 	currentCraftingTool = ct;
 }
+
 void PlayerImplementation::clearCurrentCraftingTool() {
 	currentCraftingTool = NULL;
 }
@@ -2679,6 +2673,7 @@ void PlayerImplementation::subtractDraftSchematicsFromGroupName(const string& sc
 void PlayerImplementation::addDraftSchematic(DraftSchematic* ds) {
 	draftSchematicList.put(ds->getSchematicID(), ds);
 }
+
 void PlayerImplementation::subtractDraftSchematic(DraftSchematic* ds) {
 	draftSchematicList.drop(ds->getSchematicID());
 }
@@ -2966,7 +2961,7 @@ void PlayerImplementation::setEntertainerEvent() {
 	SkillManager* skillManager = server->getSkillManager();
 	Performance* performance = NULL;
 	
-	if(isDancing())
+	if (isDancing())
 		performance = skillManager->getDance(getPerformanceName());
 	else if(isPlayingMusic() && getInstrument() != NULL)
 		performance = skillManager->getSong(getPerformanceName(), getInstrument()->getInstrumentType());
