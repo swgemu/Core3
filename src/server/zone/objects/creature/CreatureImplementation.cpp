@@ -375,8 +375,8 @@ void CreatureImplementation::loadItems() {
 		weapon->setMinDamage(175 + level);
 			weapon->setMaxDamage(200 + level);
 			weapon->setAttackSpeed(4);
-			weapon->setDamageType(WeaponImplementation::KINETIC);
-			weapon->setArmorPiercing(WeaponImplementation::MEDIUM);
+			weapon->setDamageType(WeaponImplementation::ENERGY);
+			weapon->setArmorPiercing(WeaponImplementation::LIGHT);
 	
 	} else if (objectCRC ==0x148D60AA) {
 		//melee tusken raider
@@ -493,13 +493,36 @@ void CreatureImplementation::loadItems() {
 			break;
 		case 1 :
 			weapon = new OneHandedMeleeWeapon(_this, 
-					"object/weapon/melee/baton/shared_baton_stun.iff", unicode("a Stun Baton"), "baton_stun", true);
+				"object/weapon/melee/baton/shared_baton_stun.iff", unicode("a Stun Baton"), "baton_stun", true);
 			weapon->setMinDamage(900 + level);
 			weapon->setMaxDamage(1700 + level);
 			weapon->setAttackSpeed(1.5);
 			weapon->setDamageType(WeaponImplementation::STUN);
 			weapon->setArmorPiercing(WeaponImplementation::NONE);
 			break;
+		}
+		} else if (objectCRC == 0x9242B53A || objectCRC == 0x49551DAD || objectCRC == 0x587A20 || 
+			     objectCRC == 0xFBBB5134 || objectCRC == 0xB2B636B9 || objectCRC == 0x69A19E2E) { 
+		// Sennex Cave 
+		switch (System::random(1)) {
+		case 0 :
+			weapon = new PolearmMeleeWeapon(_this, 
+				"object/weapon/melee/polearm/shared_polearm_vibro_axe.iff", unicode("a Long Vibro Axe"), "lance_vibro_axe", true);
+			weapon->setMinDamage(250 + level);
+			weapon->setMaxDamage(450 + level);
+			weapon->setAttackSpeed(1.5);
+			weapon->setDamageType(WeaponImplementation::KINETIC);
+			weapon->setArmorPiercing(WeaponImplementation::MEDIUM);
+			break;
+		case 1 :
+			weapon = new TwoHandedMeleeWeapon(_this, 
+				"object/weapon/melee/axe/shared_axe_vibroaxe.iff", unicode("a Vibro Axe"), "axe_vibro", true);
+			weapon->setMinDamage(200 + level);
+			weapon->setMaxDamage(400 + level);
+			weapon->setAttackSpeed(1.5);
+			weapon->setDamageType(WeaponImplementation::KINETIC);
+			weapon->setArmorPiercing(WeaponImplementation::MEDIUM);
+			break;		
 		}
 	} else if (objectCRC == 0xFB872285) { // lord nyax
 		weapon = new CarbineRangedWeapon(_this, 

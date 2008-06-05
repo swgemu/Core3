@@ -39,14 +39,47 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
+sennexlookout = Creature:new {
+	objectName = "sennexlookout", -- name of the lua Object
+	
+	name = "Sennex lookout",
+	objectCRC = 5798432,
+	socialGroup = "sennex",
+	named = TRUE,
 
-RunCreatureFile("spawns/tatooine/staticSpawns.lua")
-RunCreatureFile("spawns/tatooine/forttusken.lua")
-RunCreatureFile("spawns/tatooine/squillcavern.lua")
-RunCreatureFile("spawns/tatooine/hutthideout.lua")
-RunCreatureFile("spawns/tatooine/tuskenBunker.lua")
-RunCreatureFile("spawns/tatooine/beetlecave.lua")
+	level = 17,
+	
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
+	health= 4300,
+	strength = 1000,
+	constitution = 1000,
 
---RunCreatureFile("spawns/dathomir/staticSpawns.lua")
---RunCreatureFile("spawns/corellia/staticSpawns.lua")
+	action = 4300,
+	quickness = 1000,
+	stamina = 1000,
+
+	mind = 4300,
+	focus = 1000,
+	willpower = 1000,
+
+	height = 1,
+
+	armor = 1,
+	kinetic = 0,
+	energy = 0,
+	electricity = 30,
+	stun = 0,
+	blast = 0,
+	heat = 30,
+	cold = 0,
+	acid = 5,
+	lightSaber = 0,
+
+	accuracy = 300,
+
+	skills = { "sennexattack1", "sennexattack2", "sennexattack3", "sennexattack4", "sennexattack5",  }
+	-- respawnTimer = 180,
+}
+
+Creatures:addCreature(sennexlookout, 5798432) --- Add to global creature table

@@ -59,7 +59,7 @@ tuskenCaptain = Creature:new {
 	quickness = 1000,
 	stamina = 1000,
 
-	mind = 120000,
+	mind = 80000,
 	focus = 1000,
 	willpower = 1000,
 

@@ -39,14 +39,47 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
+cavebeetle = Creature:new {
+	objectName = "cavebeetle", -- name of the lua Object
+	
+	stfName = "Cave Beetle",
+	objectCRC = 1381990465,
+	socialGroup = "beetle",
+	
 
-RunCreatureFile("spawns/tatooine/staticSpawns.lua")
-RunCreatureFile("spawns/tatooine/forttusken.lua")
-RunCreatureFile("spawns/tatooine/squillcavern.lua")
-RunCreatureFile("spawns/tatooine/hutthideout.lua")
-RunCreatureFile("spawns/tatooine/tuskenBunker.lua")
-RunCreatureFile("spawns/tatooine/beetlecave.lua")
+	level = 20,
+	
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
+	health= 4300,
+	strength = 1000,
+	constitution = 1000,
 
---RunCreatureFile("spawns/dathomir/staticSpawns.lua")
---RunCreatureFile("spawns/corellia/staticSpawns.lua")
+	action = 4300,
+	quickness = 1000,
+	stamina = 1000,
+
+	mind = 4300,
+	focus = 1000,
+	willpower = 1000,
+
+	height = 3,
+
+	armor = 1,
+	kinetic = 30,
+	energy = 0,
+	electricity = 30,
+	stun = 0,
+	blast = 0,
+	heat = 30,
+	cold = 0,
+	acid = 5,
+	lightSaber = 0,
+
+	accuracy = 300,
+
+	skills = { "cavebeetle1", "cavebeetle2", "cavebeetle3", "cavebeetle4", }
+	-- respawnTimer = 180,
+}
+
+Creatures:addCreature(cavebeetle, 1381990465) --- Add to global creature table

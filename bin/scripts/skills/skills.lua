@@ -65,6 +65,8 @@ RunSkillsFile("playerSkills/musician.lua")
 
 
 -- CreatureSkills
+RunSkillsFile("creatureSkills/beetleAttacks.lua")
+RunSkillsFile("creatureSkills/sennexAttacks.lua")
 RunSkillsFile("creatureSkills/tuskenAttacks.lua")
 RunSkillsFile("creatureSkills/jabbaAttacks.lua")
 RunSkillsFile("creatureSkills/kraytAttacks.lua")

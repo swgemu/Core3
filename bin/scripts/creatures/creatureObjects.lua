@@ -40,9 +40,10 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
+--Tatooine
+
 RunCreatureFile("objects/creatures/kraytDragonAncient.lua")
 RunCreatureFile("objects/creatures/canyonKraytDragon.lua")
-RunCreatureFile("objects/creatures/darthVader.lua")
 RunCreatureFile("objects/creatures/wompRat.lua")
 RunCreatureFile("objects/creatures/scyk.lua")
 RunCreatureFile("objects/creatures/worrt.lua")
@@ -51,6 +52,8 @@ RunCreatureFile("objects/creatures/juviCanyonKraytDragon.lua")
 RunCreatureFile("objects/creatures/derangedSquill.lua")
 RunCreatureFile("objects/creatures/squill.lua")
 RunCreatureFile("objects/creatures/dewback.lua")
+
+--Fort Tusken / Tusken Bunker
 RunCreatureFile("objects/creatures/tuskenEliteGuard.lua")
 RunCreatureFile("objects/creatures/tuskenExecutioner.lua")
 RunCreatureFile("objects/creatures/tuskenKing.lua")
@@ -62,13 +65,32 @@ RunCreatureFile("objects/creatures/tuskenWarrior.lua")
 RunCreatureFile("objects/creatures/tuskenRaider.lua")
 RunCreatureFile("objects/creatures/tuskenCaptain.lua")
 
+--Squill Cave
 RunCreatureFile("objects/creatures/mountainsquill.lua")
 RunCreatureFile("objects/creatures/femalemountainsquill.lua")
 RunCreatureFile("objects/creatures/youngmountainsquill.lua")
 RunCreatureFile("objects/creatures/mountainsquillguardian.lua")
+
+--Hutt Hideout
 RunCreatureFile("objects/creatures/jabbaEnforcer.lua")
 RunCreatureFile("objects/creatures/jabbaAssassin.lua")
 RunCreatureFile("objects/creatures/jabbaCompoundGuard.lua")
+
+
+--Sennex Cave
+RunCreatureFile("objects/creatures/sennexhunter.lua")
+RunCreatureFile("objects/creatures/sennexslavemaster.lua")
+RunCreatureFile("objects/creatures/sennexlookout.lua")
+RunCreatureFile("objects/creatures/sennexslaver.lua")
+RunCreatureFile("objects/creatures/sennexguard.lua")
+RunCreatureFile("objects/creatures/sennexwarder.lua")
+RunCreatureFile("objects/creatures/cavebeetle.lua")
+RunCreatureFile("objects/creatures/dunebeetle.lua")
+
+--------------------------------------------------------
+
+--Dathomir
+RunCreatureFile("objects/creatures/darthVader.lua")
 
 RunCreatureFile("objects/creatures/nightsisterElder.lua")
 RunCreatureFile("objects/creatures/nightsisterProtector.lua")
@@ -104,6 +126,10 @@ RunCreatureFile("objects/creatures/rancor.lua")
 RunCreatureFile("objects/creatures/gapingSpider.lua")
 RunCreatureFile("objects/creatures/gapingSpiderRecluse.lua")
 
+-------------------------------------------------------------
+
+--Corellia
+
 RunCreatureFile("objects/creatures/bageraset.lua")
 RunCreatureFile("objects/creatures/carrionSpat.lua")
 RunCreatureFile("objects/creatures/corellianButterfly.lua")
@@ -123,10 +149,18 @@ RunCreatureFile("objects/creatures/plumedRasp.lua")
 RunCreatureFile("objects/creatures/sharnaff.lua")
 RunCreatureFile("objects/creatures/sliceHound.lua")
 
+----------------------------------------------------
+
+ --Faction Spawns
+
+ --Imperial
 RunCreatureFile("objects/creatures/stormTrooper.lua")
 RunCreatureFile("objects/creatures/atSt.lua")
 RunCreatureFile("objects/creatures/atAt.lua")
 RunCreatureFile("objects/creatures/superBattleDroid.lua")
 
+--Rebel
 RunCreatureFile("objects/creatures/rebelGeneral.lua")
 RunCreatureFile("objects/creatures/rebelSurfaceMarshal.lua")
+
+----------------------------------------------------
