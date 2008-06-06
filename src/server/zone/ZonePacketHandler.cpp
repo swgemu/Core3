@@ -321,18 +321,32 @@ void ZonePacketHandler::handleClientCreateCharacter(Message* pack) {
 	ZoneClient* client = (ZoneClient*) clientimpl->_getStub();
 	
 	Player* player = new Player();
+	player->setZoneProcessServer(processServer);
 
 	ClientCreateCharacter::parse(pack, player);
 	
+	player->create(client);
+	
 	string& firstName = player->getFirstName();
-
-	player->setZoneProcessServer(processServer);
+	string species = player->getSpeciesName();
+	
+	player->info("attempting to create Player " + firstName);
+	
+	BaseMessage* msg = playerManager->checkPlayerName(firstName, species);
+	
+	if (msg != NULL) {
+		client->sendMessage(msg);
+		
+		player->disconnect();
+				
+		player->finalize();
+		
+		return;
+	}
 
 	player->deploy("Player " + firstName);
 
-	player->create(client);
-
-	BaseMessage* msg = playerManager->attemptPlayerCreation(player, client);
+	msg = playerManager->attemptPlayerCreation(player, client);
 	client->sendMessage(msg);
 }
 

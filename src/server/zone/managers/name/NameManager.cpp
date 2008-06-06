@@ -162,7 +162,12 @@ inline bool NameManager::isReserved(string name) {
 
 int NameManager::validateName(CreatureObject* obj) {
 	string name = (obj->getCharacterName()).c_str();
+	string species = obj->getSpeciesName();
 	
+	return validateName(name, species);
+}
+
+int NameManager::validateName(const string& name, const string& species) {
 	if(name == "")
 		return NameManagerResult::DECLINED_EMPTY;
 	
@@ -180,8 +185,7 @@ int NameManager::validateName(CreatureObject* obj) {
 	
 	if(strspn(name.c_str(), "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'- ") != name.length())
 		return NameManagerResult::DECLINED_SYNTAX;
-	
-	string species = obj->getSpeciesName();
+
 	string fname, lname;
 	
 	int spc = name.find(" ");

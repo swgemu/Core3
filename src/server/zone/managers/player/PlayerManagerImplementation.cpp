@@ -188,15 +188,14 @@ bool PlayerManagerImplementation::create(Player* player, uint32 sessionkey) {
 	return true;
 }
 
-BaseMessage* PlayerManagerImplementation::attemptPlayerCreation(Player * player, ZoneClient * client) {
+BaseMessage* PlayerManagerImplementation::checkPlayerName(const string& name, const string& species) {
 	NameManager * nm = server->getNameManager();
-	BaseMessage* msg;
+	BaseMessage* msg = NULL;
 	
 	//Check to see if name is valid
-	int res = nm->validateName(player); 
+	int res = nm->validateName(name, species); 
 		
 	if (res != NameManagerResult::ACCEPTED) { 
-		 
 		switch (res) {
 		case NameManagerResult::DECLINED_EMPTY:
 			msg = new ClientCreateCharacterFailed("name_declined_empty");
@@ -228,12 +227,16 @@ BaseMessage* PlayerManagerImplementation::attemptPlayerCreation(Player * player,
 	}
 	
 	//Name passes filters, does it already exist?
-	if (!validateName(player->getFirstName())) {		
+	if (!validateName(name))
 		msg = new ClientCreateCharacterFailed("name_declined_in_use");
-		return msg; //Name already taken
-	}
 	
+	return msg;
+}
+
+BaseMessage* PlayerManagerImplementation::attemptPlayerCreation(Player * player, ZoneClient * client) {
 	//Player name is valid, attempt to create player
+	BaseMessage* msg = NULL;
+	
 	try {
 		player->wlock();
 			
@@ -280,7 +283,7 @@ BaseMessage* PlayerManagerImplementation::attemptPlayerCreation(Player * player,
 	}
 }
 
-bool PlayerManagerImplementation::validateName(string& cname) {
+bool PlayerManagerImplementation::validateName(const string& cname) {
 	if (cname.size() < 1)
 		return false;
 	

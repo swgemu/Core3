@@ -33,6 +33,8 @@ public:
 
 	bool validateName(string& name);
 
+	BaseMessage* checkPlayerName(const string& name, const string& species);
+
 	BaseMessage* attemptPlayerCreation(Player* player, ZoneClient* client);
 
 	Player* load(unsigned long long charid);
@@ -97,6 +99,8 @@ public:
 
 	bool validateName(string& name);
 
+	BaseMessage* checkPlayerName(const string& name, const string& species);
+
 	BaseMessage* attemptPlayerCreation(Player* player, ZoneClient* client);
 
 	Player* load(unsigned long long charid);
@@ -141,6 +145,8 @@ public:
 
 protected:
 	string _param0_validateName__string_;
+	string _param0_checkPlayerName__string_string_;
+	string _param1_checkPlayerName__string_string_;
 	string _param1_modifyOfflineBank__Player_string_int_;
 	string _param0_modifyRecipientOfflineBank__string_int_;
 	string _param0_getPlayer__string_;

@@ -64,6 +64,8 @@ interface PlayerManager {
 	
 	boolean create(Player player, unsigned int sessionkey);	
 	boolean validateName(string name);
+	
+	BaseMessage checkPlayerName(const string name, const string species);
 	BaseMessage attemptPlayerCreation(Player player, ZoneClient client);
 
 	Player load(unsigned long charid);
