@@ -799,58 +799,90 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 				message << "Set Force Power to: " << fp << ".";
 				player->sendSystemMessage(message.str());
 			}		
+		} else if(cmd == "@HAMStats") {
+			if (userManager->isAdmin(player->getFirstName())) {
+				stringstream message;
+				
+				message << "Health:  " << player->getHealth() << "/" << player->getHealthMax() << "/" << player->getBaseHealth() << ".";
+				message << " Action:  " << player->getAction() << "/" << player->getActionMax() << "/" << player->getBaseAction() << ".";
+				message << " Mind:  " << player->getMind() << "/" << player->getMindMax() << "/" << player->getBaseMind() << ".";
+				
+				message << " Strength:  " << player->getStrength() << "/" << player->getStrengthMax() << "/" << player->getBaseStrength() << ".";
+				message << " Constitution:  " << player->getConstitution() << "/" << player->getConstitutionMax() << "/" << player->getBaseConstitution() << ".";
+				
+				message << " Quickness:  " << player->getQuickness() << "/" << player->getQuicknessMax() << "/" << player->getBaseQuickness() << ".";
+				message << " Stamina:  " << player->getStamina() << "/" << player->getStaminaMax() << "/" << player->getBaseStamina() << ".";
+				
+				message << " Focus:  " << player->getFocus() << "/" << player->getFocusMax() << "/" << player->getBaseFocus() << ".";
+				message << " Willpower:  " << player->getWillpower() << "/" << player->getWillpowerMax() << "/" << player->getBaseWillpower() << ".";
+				
+				player->sendSystemMessage(message.str());
+			}		
 		} else if (cmd == "@buff") {
 			if (player->getHealthMax() == player->getBaseHealth()) {
+
 				int buffValue = 3000;
 				//float buffDuration = 10.0f; // Testing purposes
 				float buffDuration = 10800.0f;
 
 				Buff *buff; //pointer for each buff
+				BuffObject *bo; //distributed object that contains the payload
 				
 				// Health
 				buff = new Buff(BuffCRC::MEDICAL_ENHANCE_HEALTH, BuffType::MEDICAL, buffDuration);
 				buff->setHealthBuff(buffValue);
-				player->applyBuff(buff);
+				bo = new BuffObject(buff);
+				player->applyBuff(bo);
 
 				// Strength
 				buff = new Buff(BuffCRC::MEDICAL_ENHANCE_STRENGTH, BuffType::MEDICAL, buffDuration);
 				buff->setStrengthBuff(buffValue);
-				player->applyBuff(buff);
+				bo = new BuffObject(buff);
+				player->applyBuff(bo);
 
 				// Constitution
 				buff = new Buff(BuffCRC::MEDICAL_ENHANCE_CONSTITUTION, BuffType::MEDICAL, buffDuration);
 				buff->setConstitutionBuff(buffValue);
-				player->applyBuff(buff);
+				bo = new BuffObject(buff);
+				player->applyBuff(bo);
 
 				// Action
 				buff = new Buff(BuffCRC::MEDICAL_ENHANCE_ACTION, BuffType::MEDICAL, buffDuration);
 				buff->setActionBuff(buffValue);
-				player->applyBuff(buff);
+				bo = new BuffObject(buff);
+				player->applyBuff(bo);
 
 				// Quickness
 				buff = new Buff(BuffCRC::MEDICAL_ENHANCE_QUICKNESS, BuffType::MEDICAL, buffDuration);
 				buff->setQuicknessBuff(buffValue);
-				player->applyBuff(buff);
+				bo = new BuffObject(buff);
+				player->applyBuff(bo);
 				
 				// Stamina
 				buff = new Buff(BuffCRC::MEDICAL_ENHANCE_STAMINA, BuffType::MEDICAL, buffDuration);
 				buff->setStaminaBuff(buffValue);
-				player->applyBuff(buff);
+				bo = new BuffObject(buff);
+				player->applyBuff(bo);
 				
 				// Mind
 				buff = new Buff(BuffCRC::PERFORMANCE_ENHANCE_DANCE_MIND, BuffType::PERFORMANCE, buffDuration);
 				buff->setMindBuff(buffValue);
-				player->applyBuff(buff);
+				bo = new BuffObject(buff);
+				player->applyBuff(bo);
 				
 				buff = new Buff(BuffCRC::PERFORMANCE_ENHANCE_MUSIC_FOCUS, BuffType::PERFORMANCE, buffDuration);
 				buff->setFocusBuff(buffValue);
-				player->applyBuff(buff);
+				bo = new BuffObject(buff);
+				player->applyBuff(bo);
 				
 				buff = new Buff(BuffCRC::PERFORMANCE_ENHANCE_MUSIC_WILLPOWER, BuffType::PERFORMANCE, buffDuration);
 				buff->setWillpowerBuff(buffValue);
-				player->applyBuff(buff);
+				bo = new BuffObject(buff);
+				player->applyBuff(bo);
 
 				player->sendSystemMessage("Buffs applied");
+				
+
 			} else {
 				player->sendSystemMessage("Already buffed");
 			}
@@ -880,6 +912,7 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 				spice_down << "spice." << name << ".down";
 				
 				Buff *buff = NULL;
+				BuffObject *bo = NULL;
 				
 				switch(String::hashCode(spice_up.str())) {
 				
@@ -890,7 +923,8 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 					buff->setActionBuff(400);
 					buff->setQuicknessBuff(400);
 					buff->setBuffDownerCRC(BuffCRC::SPICE_BOOSTER_BLUE_DOWN);
-					player->applyBuff(buff);
+					bo = new BuffObject(buff);
+					player->applyBuff(bo);
 					break;
 					
 				//spice.crash_n_burn.up	
@@ -901,7 +935,8 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 					buff->setMindBuff(400);
 					buff->setFocusBuff(200);
 					buff->setBuffDownerCRC(BuffCRC::SPICE_CRASH_N_BURN_DOWN);
-					player->applyBuff(buff);
+					bo = new BuffObject(buff);
+					player->applyBuff(bo);
 					break;
 				//spice.droid_lube.up	
 				case 0x0C969AE9:
@@ -910,7 +945,8 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 					buff->setStrengthBuff(250);
 					buff->setConstitutionBuff(250);
 					buff->setBuffDownerCRC(BuffCRC::SPICE_DROID_LUBE_DOWN);
-					player->applyBuff(buff);
+					bo = new BuffObject(buff);
+					player->applyBuff(bo);
 					break;
 				//spice.giggledust.up	
 				case 0x3E41BA17:
@@ -919,14 +955,16 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 					buff->setQuicknessBuff(300);
 					buff->setFocusBuff(-100);
 					buff->setBuffDownerCRC(BuffCRC::SPICE_GIGGLEDUST_DOWN);
-					player->applyBuff(buff);
+					bo = new BuffObject(buff);
+					player->applyBuff(bo);
 					break;
 				//spice.grey_gabaki.up	
 				case 0xE5C9CD20:
 					buff = new Buff(BuffCRC::SPICE_GREY_GABAKI_UP, BuffType::SPICE, 500.0f);
 					buff->setFocusBuff(500);
 					buff->setBuffDownerCRC(BuffCRC::SPICE_GREY_GABAKI_DOWN);
-					player->applyBuff(buff);
+					bo = new BuffObject(buff);
+					player->applyBuff(bo);
 					break;
 				//spice.gunjack.up	
 				case 0x09B6F8FC:
@@ -935,7 +973,8 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 					buff->setQuicknessBuff(-200);
 					buff->setFocusBuff(-100);
 					buff->setBuffDownerCRC(BuffCRC::SPICE_GUNJACK_DOWN);
-					player->applyBuff(buff);
+					bo = new BuffObject(buff);
+					player->applyBuff(bo);
 					break;
 				//spice.muon_gold.up	
 				case 0xFBE87E37:
@@ -944,7 +983,8 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 					buff->setFocusBuff(500);
 					buff->setWillpowerBuff(500);
 					buff->setBuffDownerCRC(BuffCRC::SPICE_MUON_GOLD_DOWN);
-					player->applyBuff(buff);
+					bo = new BuffObject(buff);
+					player->applyBuff(bo);
 					break;
 				//spice.neutron_pixey.up	
 				case 0x5DC6921F:
@@ -956,7 +996,8 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 					buff->setQuicknessBuff(50);
 					buff->setStaminaBuff(50);
 					buff->setBuffDownerCRC(BuffCRC::SPICE_NEUTRON_PIXEY_DOWN);
-					player->applyBuff(buff);
+					bo = new BuffObject(buff);
+					player->applyBuff(bo);
 					break;
 				//spice.pyrepenol.up	
 				case 0x1EBC62E5:
@@ -965,14 +1006,16 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 					buff->setQuicknessBuff(-100);
 					buff->setFocusBuff(-50);
 					buff->setBuffDownerCRC(BuffCRC::SPICE_PYREPENOL_DOWN);
-					player->applyBuff(buff);
+					bo = new BuffObject(buff);
+					player->applyBuff(bo);
 					break;
 				//spice.scramjet.up	
 				case 0x2E03F676:
 					buff = new Buff(BuffCRC::SPICE_SCRAMJET_UP, BuffType::SPICE, 700.0f);
 					buff->setStrengthBuff(300);
 					buff->setBuffDownerCRC(BuffCRC::SPICE_SCRAMJET_DOWN);
-					player->applyBuff(buff);
+					bo = new BuffObject(buff);
+					player->applyBuff(bo);
 					break;
 				//spice.sedative_h4b.up	
 				case 0xD7A72ACF:
@@ -982,7 +1025,8 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 					buff->setMindBuff(-100);
 					buff->setFocusBuff(-100);
 					buff->setBuffDownerCRC(BuffCRC::SPICE_SEDATIVE_H4B_DOWN);
-					player->applyBuff(buff);
+					bo = new BuffObject(buff);
+					player->applyBuff(bo);
 					break;
 				//spice.shadowpaw.up	
 				case 0x3AAD2B89:
@@ -991,7 +1035,8 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 					buff->setActionBuff(250);
 					buff->setQuicknessBuff(250);
 					buff->setBuffDownerCRC(BuffCRC::SPICE_SHADOWPAW_DOWN);
-					player->applyBuff(buff);
+					bo = new BuffObject(buff);
+					player->applyBuff(bo);
 					break;
 				//spice.sweetblossom.up	
 				case 0x7EC00CB8:
@@ -999,7 +1044,8 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 					buff->setActionBuff(400);
 					buff->setQuicknessBuff(400);
 					buff->setBuffDownerCRC(BuffCRC::SPICE_SWEETBLOSSOM_DOWN);
-					player->applyBuff(buff);
+					bo = new BuffObject(buff);
+					player->applyBuff(bo);
 					break;
 				//spice.thruster_head.up	
 				case 0x530E31B7:
@@ -1010,7 +1056,8 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 					buff->setQuicknessBuff(-100);
 					buff->setFocusBuff(-200);
 					buff->setBuffDownerCRC(BuffCRC::SPICE_THRUSTER_HEAD_DOWN);
-					player->applyBuff(buff);
+					bo = new BuffObject(buff);
+					player->applyBuff(bo);
 					break;
 				//spice.yarrock.up	
 				case 0xE7F8C957:
@@ -1019,7 +1066,8 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 					buff->setFocusBuff(100);
 					buff->setWillpowerBuff(100);
 					buff->setBuffDownerCRC(BuffCRC::SPICE_YARROCK_DOWN);
-					player->applyBuff(buff);
+					bo = new BuffObject(buff);
+					player->applyBuff(bo);
 					break;
 				//spice.kliknik_boost.up	
 				case 0x37173CAD:
@@ -1030,7 +1078,8 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 					buff->setStaminaBuff(100);
 					buff->setFocusBuff(500);
 					buff->setBuffDownerCRC(BuffCRC::SPICE_KLIKNIK_BOOST_DOWN);
-					player->applyBuff(buff);
+					bo = new BuffObject(buff);
+					player->applyBuff(bo);
 					break;
 				//spice.kwi_boost.up	
 				case 0x629FA918:
@@ -1042,7 +1091,8 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 					buff->setMindBuff(100);
 					buff->setFocusBuff(900);
 					buff->setBuffDownerCRC(BuffCRC::SPICE_KWO_BOOST_DOWN); // stupid typo in IIFs
-					player->applyBuff(buff);
+					bo = new BuffObject(buff);
+					player->applyBuff(bo);
 					break;
 				
 				default:

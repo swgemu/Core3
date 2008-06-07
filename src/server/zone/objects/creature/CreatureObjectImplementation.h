@@ -56,7 +56,9 @@ which carries forward this exception.
 #include "skills/Skill.h"
 #include "../../managers/skills/SkillManager.h"
 #include "skillmods/SkillModList.h"
+
 #include "buffs/BuffList.h"
+#include "buffs/BuffObject.h"
 
 #include "../guild/Guild.h"
 
@@ -805,6 +807,7 @@ public:
 	void addBuff(int buffCRC, float duration); // Mostly Debugging purposes
 	//void applyBuff(const string& type, int value, float duration);
 	void applyBuff(Buff *buff);
+	void applyBuff(BuffObject *bo);
 	//void removeBuff(const string& type, int value, Event* event);
 	void removeBuff(const uint32 buffCRC, bool remove = true);
 	

@@ -30,7 +30,7 @@
 
 #include "skills/Skill.h"
 
-#include "buffs/Buff.h"
+#include "buffs/BuffObject.h"
 
 /*
  *	CreatureObjectStub
@@ -2489,7 +2489,7 @@ void CreatureObject::addBuff(int buffCRC, float duration) {
 		((CreatureObjectImplementation*) _impl)->addBuff(buffCRC, duration);
 }
 
-void CreatureObject::applyBuff(Buff* buff) {
+void CreatureObject::applyBuff(BuffObject* buff) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -5202,7 +5202,7 @@ Packet* CreatureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		addBuff(inv->getSignedIntParameter(), inv->getFloatParameter());
 		break;
 	case 193:
-		applyBuff((Buff*) inv->getObjectParameter());
+		applyBuff((BuffObject*) inv->getObjectParameter());
 		break;
 	case 194:
 		removeBuff(inv->getUnsignedIntParameter(), inv->getBooleanParameter());
@@ -6466,7 +6466,7 @@ void CreatureObjectAdapter::addBuff(int buffCRC, float duration) {
 	return ((CreatureObjectImplementation*) impl)->addBuff(buffCRC, duration);
 }
 
-void CreatureObjectAdapter::applyBuff(Buff* buff) {
+void CreatureObjectAdapter::applyBuff(BuffObject* buff) {
 	return ((CreatureObjectImplementation*) impl)->applyBuff(buff);
 }
 

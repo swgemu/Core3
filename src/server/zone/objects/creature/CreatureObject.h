@@ -35,7 +35,7 @@ class Guild;
 
 class Skill;
 
-class Buff;
+class BuffObject;
 
 #include "../scene/SceneObject.h"
 
@@ -419,7 +419,7 @@ public:
 
 	void addBuff(int buffCRC, float duration);
 
-	void applyBuff(Buff* buff);
+	void applyBuff(BuffObject* buff);
 
 	void removeBuff(const unsigned int buffCRC, bool remove = true);
 
@@ -1161,7 +1161,7 @@ public:
 
 	void addBuff(int buffCRC, float duration);
 
-	void applyBuff(Buff* buff);
+	void applyBuff(BuffObject* buff);
 
 	void removeBuff(const unsigned int buffCRC, bool remove);
 

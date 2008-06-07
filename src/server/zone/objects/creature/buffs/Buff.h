@@ -44,10 +44,14 @@ which carries forward this exception.
 #ifndef BUFF_H_
 #define BUFF_H_
 
+#include "BuffObject.h"
+
 #include "../skillmods/SkillModList.h"
 
 #include "../CreatureObject.h"
 #include "../../player/PlayerObject.h"
+
+class BuffObject;
 
 /* some pseudo random Buff Types */
 
@@ -217,7 +221,7 @@ class BuffType {
 		static const int INNATE = 8;
 };
 
-class Buff : public DistributedObject {
+class Buff {
 
 private:
 	bool active;
@@ -298,61 +302,56 @@ public:
 	}
 	
 	// TODO:  Need to do a better job with Shock Wounds
-	bool activateBuff(CreatureObject* creo) {
-		/*stringstream msg;
-		msg << "applying health buff: creo->getHealthMax(): " << creo->getHealthMax() << " getHealthBuff(): " << getHealthBuff();
-		creo->sendSystemMessage(msg.str());
-		*/
-		
+	bool activateBuff(CreatureObject* creo) {		
 		// default to update client by not specifying true attrib
-		if(getHealthBuff() > 0)
+		if(getHealthBuff() != 0)
 		{
 			// sets both maxHealthBar and setHealthmax
 			creo->setMaxHealthBar(creo->getHealthMax() + getHealthBuff());
 			creo->setHealthBar(MIN(creo->getHealth() + getHealthBuff() - creo->getHealthWounds(), creo->getHealthMax() - creo->getHealthWounds()));
 		}
 		
-		if(getActionBuff() > 0) {
+		if(getActionBuff() != 0) {
 			creo->setMaxActionBar(creo->getActionMax() + getActionBuff());
 			creo->setActionBar(MIN(creo->getAction() + getActionBuff() - creo->getActionWounds(), creo->getActionMax() - creo->getActionWounds()));
 		}
 		
-		if(getMindBuff() > 0) {
+		if(getMindBuff() != 0) {
 			creo->setMaxMindBar(creo->getMindMax() + getMindBuff());
 			creo->setMindBar(MIN(creo->getMind() + getMindBuff() - creo->getMindWounds(), creo->getMindMax() - creo->getMindWounds()));
 		}
 		
-		if(getStrengthBuff() > 0) {
+		if(getStrengthBuff() != 0) {
 			creo->setMaxStrengthBar(creo->getStrengthMax() + getStrengthBuff());
 			creo->setStrengthBar(MIN(creo->getStrength() + getStrengthBuff(), creo->getStrengthMax()));
 		}
 		
-		if(getConstitutionBuff() > 0) {
+		if(getConstitutionBuff() != 0) {
 			creo->setMaxConstitutionBar(creo->getConstitutionMax() + getConstitutionBuff());
 			creo->setConstitutionBar(MIN(creo->getConstitution() + getConstitutionBuff(), creo->getConstitutionMax()));
 		}
 		
-		if(getStaminaBuff() > 0) {
+		if(getStaminaBuff() != 0) {
 			creo->setMaxStaminaBar(creo->getStaminaMax() + getStaminaBuff());
 			creo->setStaminaBar(MIN(creo->getStamina() + getStaminaBuff(), creo->getStaminaMax()));
 		}
 		
-		if(getQuicknessBuff() > 0) {
+		if(getQuicknessBuff() != 0) {
 			creo->setMaxQuicknessBar(creo->getQuicknessMax() + getQuicknessBuff());
 			creo->setQuicknessBar(MIN(creo->getQuickness() + getQuicknessBuff(), creo->getQuicknessMax()));
 		}
 		
-		if(getWillpowerBuff() > 0) {
+		if(getWillpowerBuff() != 0) {
 			creo->setMaxWillpowerBar(creo->getWillpowerMax() + getWillpowerBuff());
 			creo->setWillpowerBar(MIN(creo->getWillpower() + getWillpowerBuff(), creo->getWillpowerMax()));
 		}
 		
-		if(getFocusBuff() > 0) {
+		if(getFocusBuff() != 0) {
 			creo->setMaxFocusBar(creo->getFocusMax() + getFocusBuff());
 			creo->setFocusBar(MIN(creo->getFocus() + getFocusBuff(), creo->getFocusMax()));
 		}
 		
-		if(getForcePowerBuff() > 0) {
+		if(getForcePowerBuff() != 0) {
 			((PlayerObject*)creo)->setMaxForcePowerBar(((PlayerObject*)creo)->getForcePowerMax() + getForcePowerBuff());
 			((PlayerObject*)creo)->setForcePowerBar(MIN(((PlayerObject*)creo)->getForcePower() + getForcePowerBuff(), ((PlayerObject*)creo)->getForcePowerMax()));				
 		}
@@ -373,24 +372,24 @@ public:
 	
 	
 	// TODO:  Need to do a better job with Shock Wounds
-	void downerBuff(CreatureObject* creo) {
-		
+	void downerBuff(CreatureObject* creo) {		
 		Buff *buff = new Buff(getBuffDownerCRC(), BuffType::SPICE, round(getBuffDuration() / 3.0));
 		
-		buff->setHealthBuff(getHealthBuff() * -1);
-		buff->setActionBuff(getActionBuff() * -1);
-		buff->setMindBuff(getMindBuff() * -1);
-		buff->setStrengthBuff(getStrengthBuff() * -1);
-		buff->setConstitutionBuff(getConstitutionBuff() * -1);
-		buff->setStaminaBuff(getStaminaBuff() * -1);
-		buff->setQuicknessBuff(getQuicknessBuff() * -1);
-		buff->setWillpowerBuff(getWillpowerBuff() * -1);
-		buff->setFocusBuff(getFocusBuff() * -1);
-		buff->setForcePowerBuff(getForcePowerBuff() * -1);
+		// The Min Value of their total bar - 1 or the downer
+		buff->setHealthBuff(-1 * MIN(creo->getHealthMax() - 1, getHealthBuff()));
+		buff->setActionBuff(-1 * MIN(creo->getActionMax() - 1, getActionBuff()));
+		buff->setMindBuff(-1 * MIN(creo->getMindMax() - 1, getMindBuff()));
+		buff->setStrengthBuff(-1 * MIN(creo->getStrengthMax() - 1, getStrengthBuff()));
+		buff->setConstitutionBuff(-1 * MIN(creo->getConstitutionMax() - 1, getConstitutionBuff()));
+		buff->setStaminaBuff(-1 * MIN(creo->getStaminaMax() - 1, getStaminaBuff()));
+		buff->setQuicknessBuff(-1 * MIN(creo->getQuicknessMax() - 1, getQuicknessBuff()));
+		buff->setWillpowerBuff(-1 * MIN(creo->getWillpowerMax() - 1, getWillpowerBuff()));
+		buff->setFocusBuff(-1 * MIN(creo->getFocusMax() - 1, getFocusBuff()));
+		buff->setForcePowerBuff(-1 * MIN(((PlayerObject*)creo)->getForcePowerMax() - 1, getForcePowerBuff()));
 		
 		// TODO: Switch Skill Mods?
-		
-		creo->applyBuff(buff);
+		BuffObject* bo = new BuffObject(buff);
+		creo->applyBuff(bo);
 	}
 	
 	bool deActivateBuff(CreatureObject* creo, bool updateClient = true) {
@@ -399,37 +398,37 @@ public:
 			return false;
 		}
 		
-		if(getHealthBuff() > 0)
+		if(getHealthBuff() != 0)
 			creo->setMaxHealthBar(creo->getHealthMax() - getHealthBuff(), updateClient);
 		
-		if(getActionBuff() > 0)
+		if(getActionBuff() != 0)
 			creo->setMaxActionBar(creo->getActionMax() - getActionBuff(), updateClient);
 		
-		if(getMindBuff() > 0)
+		if(getMindBuff() != 0)
 			creo->setMaxMindBar(creo->getMindMax() - getMindBuff(), updateClient);
 		
-		if(getStrengthBuff() > 0)
+		if(getStrengthBuff() != 0)
 			creo->setMaxStrengthBar(creo->getStrengthMax() - getStrengthBuff(), updateClient);
 		
-		if(getConstitutionBuff() > 0)
+		if(getConstitutionBuff() != 0)
 			creo->setMaxConstitutionBar(creo->getConstitutionMax() - getConstitutionBuff(), updateClient);
 		
-		if(getStaminaBuff() > 0)
+		if(getStaminaBuff() != 0)
 			creo->setMaxStaminaBar(creo->getStaminaMax() - getStaminaBuff(), updateClient);
 		
-		if(getQuicknessBuff() > 0)
+		if(getQuicknessBuff() != 0)
 			creo->setMaxQuicknessBar(creo->getQuicknessMax() - getQuicknessBuff(), updateClient);
 		
-		if(getWillpowerBuff() > 0)
+		if(getWillpowerBuff() != 0)
 			creo->setMaxWillpowerBar(creo->getWillpowerMax() - getWillpowerBuff(), updateClient);
 		
-		if(getFocusBuff() > 0)
+		if(getFocusBuff() != 0)
 			creo->setMaxFocusBar(creo->getFocusMax() - getFocusBuff(), updateClient);
 		
-		if(getForcePowerBuff() > 0)
+		if(getForcePowerBuff() != 0)
 			((PlayerObject*)creo)->setMaxForcePowerBar(((PlayerObject*)creo)->getForcePowerMax() - getForcePowerBuff(), updateClient);
 
-		//if(getForceRegenBuff() > 0)
+		//if(getForceRegenBuff() != 0)
 		//	((PlayerObject*)creo)->setForceRegen(((PlayerObject*)creo)->getForceRegen() - getForceRegenBuff());
 
 		// TODO: Remove Skill Mods

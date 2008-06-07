@@ -1032,6 +1032,8 @@ void PlayerImplementation::notifyInsert(QuadTreeEntry* obj) {
 	Creature* creature;
 	TangibleObject* tangible;
 	StaticObject* statico;
+	BuildingObject* buio;
+
 	AttackableObject* attacko;
 	
 	if (parent == scno)
@@ -1071,7 +1073,7 @@ void PlayerImplementation::notifyInsert(QuadTreeEntry* obj) {
 		break;
 		
 	case SceneObjectImplementation::BUILDING:
-		BuildingObject* buio = (BuildingObject*) scno;
+		buio = (BuildingObject*) scno;
 		buio->sendTo(_this);
 		break;
 		
