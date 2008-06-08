@@ -131,6 +131,22 @@ public:
 
 	void setMindEncumbrance(int mindEnc);
 
+	void setAcid(float resist);
+
+	void setBlast(float resist);
+
+	void setCold(float resist);
+
+	void setElectricity(float resist);
+
+	void setEnergy(float resist);
+
+	void setHeat(float resist);
+
+	void setKinetic(float resist);
+
+	void setLightSaber(float resist);
+
 	void setSocketType(int index, int type);
 
 	void setSocketValue(int index, int type);
@@ -276,6 +292,22 @@ public:
 	void setActionEncumbrance(int actionEnc);
 
 	void setMindEncumbrance(int mindEnc);
+
+	void setAcid(float resist);
+
+	void setBlast(float resist);
+
+	void setCold(float resist);
+
+	void setElectricity(float resist);
+
+	void setEnergy(float resist);
+
+	void setHeat(float resist);
+
+	void setKinetic(float resist);
+
+	void setLightSaber(float resist);
 
 	void setSocketType(int index, int type);
 

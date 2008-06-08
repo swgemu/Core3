@@ -697,12 +697,116 @@ void Armor::setMindEncumbrance(int mindEnc) {
 		((ArmorImplementation*) _impl)->setMindEncumbrance(mindEnc);
 }
 
-void Armor::setSocketType(int index, int type) {
+void Armor::setAcid(float resist) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 60);
+		method.addFloatParameter(resist);
+
+		method.executeWithVoidReturn();
+	} else
+		((ArmorImplementation*) _impl)->setAcid(resist);
+}
+
+void Armor::setBlast(float resist) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 61);
+		method.addFloatParameter(resist);
+
+		method.executeWithVoidReturn();
+	} else
+		((ArmorImplementation*) _impl)->setBlast(resist);
+}
+
+void Armor::setCold(float resist) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 62);
+		method.addFloatParameter(resist);
+
+		method.executeWithVoidReturn();
+	} else
+		((ArmorImplementation*) _impl)->setCold(resist);
+}
+
+void Armor::setElectricity(float resist) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 63);
+		method.addFloatParameter(resist);
+
+		method.executeWithVoidReturn();
+	} else
+		((ArmorImplementation*) _impl)->setElectricity(resist);
+}
+
+void Armor::setEnergy(float resist) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 64);
+		method.addFloatParameter(resist);
+
+		method.executeWithVoidReturn();
+	} else
+		((ArmorImplementation*) _impl)->setEnergy(resist);
+}
+
+void Armor::setHeat(float resist) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 65);
+		method.addFloatParameter(resist);
+
+		method.executeWithVoidReturn();
+	} else
+		((ArmorImplementation*) _impl)->setHeat(resist);
+}
+
+void Armor::setKinetic(float resist) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 66);
+		method.addFloatParameter(resist);
+
+		method.executeWithVoidReturn();
+	} else
+		((ArmorImplementation*) _impl)->setKinetic(resist);
+}
+
+void Armor::setLightSaber(float resist) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 67);
+		method.addFloatParameter(resist);
+
+		method.executeWithVoidReturn();
+	} else
+		((ArmorImplementation*) _impl)->setLightSaber(resist);
+}
+
+void Armor::setSocketType(int index, int type) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 68);
 		method.addSignedIntParameter(index);
 		method.addSignedIntParameter(type);
 
@@ -716,7 +820,7 @@ void Armor::setSocketValue(int index, int type) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 61);
+		DistributedMethod method(this, 69);
 		method.addSignedIntParameter(index);
 		method.addSignedIntParameter(type);
 
@@ -730,7 +834,7 @@ void Armor::setSockets(int socket) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 62);
+		DistributedMethod method(this, 70);
 		method.addSignedIntParameter(socket);
 
 		method.executeWithVoidReturn();
@@ -743,7 +847,7 @@ void Armor::setSocket0Type(int type) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 63);
+		DistributedMethod method(this, 71);
 		method.addSignedIntParameter(type);
 
 		method.executeWithVoidReturn();
@@ -756,7 +860,7 @@ void Armor::setSocket1Type(int type) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 64);
+		DistributedMethod method(this, 72);
 		method.addSignedIntParameter(type);
 
 		method.executeWithVoidReturn();
@@ -769,7 +873,7 @@ void Armor::setSocket2Type(int type) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 65);
+		DistributedMethod method(this, 73);
 		method.addSignedIntParameter(type);
 
 		method.executeWithVoidReturn();
@@ -782,7 +886,7 @@ void Armor::setSocket3Type(int type) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 66);
+		DistributedMethod method(this, 74);
 		method.addSignedIntParameter(type);
 
 		method.executeWithVoidReturn();
@@ -795,7 +899,7 @@ void Armor::setSocket0Value(int value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 67);
+		DistributedMethod method(this, 75);
 		method.addSignedIntParameter(value);
 
 		method.executeWithVoidReturn();
@@ -808,7 +912,7 @@ void Armor::setSocket1Value(int value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 68);
+		DistributedMethod method(this, 76);
 		method.addSignedIntParameter(value);
 
 		method.executeWithVoidReturn();
@@ -821,7 +925,7 @@ void Armor::setSocket2Value(int value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 69);
+		DistributedMethod method(this, 77);
 		method.addSignedIntParameter(value);
 
 		method.executeWithVoidReturn();
@@ -834,7 +938,7 @@ void Armor::setSocket3Value(int value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 70);
+		DistributedMethod method(this, 78);
 		method.addSignedIntParameter(value);
 
 		method.executeWithVoidReturn();
@@ -1016,36 +1120,60 @@ Packet* ArmorAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		setMindEncumbrance(inv->getSignedIntParameter());
 		break;
 	case 60:
-		setSocketType(inv->getSignedIntParameter(), inv->getSignedIntParameter());
+		setAcid(inv->getFloatParameter());
 		break;
 	case 61:
-		setSocketValue(inv->getSignedIntParameter(), inv->getSignedIntParameter());
+		setBlast(inv->getFloatParameter());
 		break;
 	case 62:
-		setSockets(inv->getSignedIntParameter());
+		setCold(inv->getFloatParameter());
 		break;
 	case 63:
-		setSocket0Type(inv->getSignedIntParameter());
+		setElectricity(inv->getFloatParameter());
 		break;
 	case 64:
-		setSocket1Type(inv->getSignedIntParameter());
+		setEnergy(inv->getFloatParameter());
 		break;
 	case 65:
-		setSocket2Type(inv->getSignedIntParameter());
+		setHeat(inv->getFloatParameter());
 		break;
 	case 66:
-		setSocket3Type(inv->getSignedIntParameter());
+		setKinetic(inv->getFloatParameter());
 		break;
 	case 67:
-		setSocket0Value(inv->getSignedIntParameter());
+		setLightSaber(inv->getFloatParameter());
 		break;
 	case 68:
-		setSocket1Value(inv->getSignedIntParameter());
+		setSocketType(inv->getSignedIntParameter(), inv->getSignedIntParameter());
 		break;
 	case 69:
-		setSocket2Value(inv->getSignedIntParameter());
+		setSocketValue(inv->getSignedIntParameter(), inv->getSignedIntParameter());
 		break;
 	case 70:
+		setSockets(inv->getSignedIntParameter());
+		break;
+	case 71:
+		setSocket0Type(inv->getSignedIntParameter());
+		break;
+	case 72:
+		setSocket1Type(inv->getSignedIntParameter());
+		break;
+	case 73:
+		setSocket2Type(inv->getSignedIntParameter());
+		break;
+	case 74:
+		setSocket3Type(inv->getSignedIntParameter());
+		break;
+	case 75:
+		setSocket0Value(inv->getSignedIntParameter());
+		break;
+	case 76:
+		setSocket1Value(inv->getSignedIntParameter());
+		break;
+	case 77:
+		setSocket2Value(inv->getSignedIntParameter());
+		break;
+	case 78:
 		setSocket3Value(inv->getSignedIntParameter());
 		break;
 	default:
@@ -1269,6 +1397,38 @@ void ArmorAdapter::setActionEncumbrance(int actionEnc) {
 
 void ArmorAdapter::setMindEncumbrance(int mindEnc) {
 	return ((ArmorImplementation*) impl)->setMindEncumbrance(mindEnc);
+}
+
+void ArmorAdapter::setAcid(float resist) {
+	return ((ArmorImplementation*) impl)->setAcid(resist);
+}
+
+void ArmorAdapter::setBlast(float resist) {
+	return ((ArmorImplementation*) impl)->setBlast(resist);
+}
+
+void ArmorAdapter::setCold(float resist) {
+	return ((ArmorImplementation*) impl)->setCold(resist);
+}
+
+void ArmorAdapter::setElectricity(float resist) {
+	return ((ArmorImplementation*) impl)->setElectricity(resist);
+}
+
+void ArmorAdapter::setEnergy(float resist) {
+	return ((ArmorImplementation*) impl)->setEnergy(resist);
+}
+
+void ArmorAdapter::setHeat(float resist) {
+	return ((ArmorImplementation*) impl)->setHeat(resist);
+}
+
+void ArmorAdapter::setKinetic(float resist) {
+	return ((ArmorImplementation*) impl)->setKinetic(resist);
+}
+
+void ArmorAdapter::setLightSaber(float resist) {
+	return ((ArmorImplementation*) impl)->setLightSaber(resist);
 }
 
 void ArmorAdapter::setSocketType(int index, int type) {

@@ -40,7 +40,25 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
+composite_chestplate = Armor:new{
+	
+	objectName = "Composite Chestplate",
 
-ith_armor_set = {sentinel_chestplate, sentinel_gloves, sentinel_leggings, sentinel_helmet, sentinel_bracer_r, sentinel_bracer_l, sentinel_bicep_l, sentinel_bicep_r}
+	templateName = "armor_composite_chestplate",
 
-addBFItemSet("Ithorian Sentinel Armor Set" , ith_armor_set);
+	objectCRC = 2068279078,
+
+	objectType = BODYARMOR,
+
+	armorType = ARMOR_CHEST,
+
+	energyResist = 35,
+
+	kineticResist = 35,
+
+	healthEncum = 250,
+
+	actionEncum = 100,
+
+	mindEncum = 70
+}

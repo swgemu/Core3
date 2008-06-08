@@ -41,6 +41,7 @@
 --which carries forward this exception.
 
 
-ith_armor_set = {sentinel_chestplate, sentinel_gloves, sentinel_leggings, sentinel_helmet, sentinel_bracer_r, sentinel_bracer_l, sentinel_bicep_l, sentinel_bicep_r}
+RunItemLUAFile("objects/armor/wookiee/main.lua");
+RunItemLUAFile("objects/armor/ithorian/main.lua");
 
-addBFItemSet("Ithorian Sentinel Armor Set" , ith_armor_set);
+RunItemLUAFile("objects/armor/composite/main.lua");

@@ -40,7 +40,25 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
+sentinel_bracer_r = Armor:new{
+	
+	objectName = "Ithorian Sentinel Armor Bracer",
 
-ith_armor_set = {sentinel_chestplate, sentinel_gloves, sentinel_leggings, sentinel_helmet, sentinel_bracer_r, sentinel_bracer_l, sentinel_bicep_l, sentinel_bicep_r}
+	templateName = "ith_armor_s03_bracer_r",
 
-addBFItemSet("Ithorian Sentinel Armor Set" , ith_armor_set);
+	objectCRC = 3502532092,
+
+	objectType = ARMARMOR,
+
+	armorType = ARMOR_BRACERR,
+
+	energyResist = 35,
+
+	kineticResist = 35,
+
+	healthEncum = 70,
+
+	actionEncum = 70,
+
+	mindEncum = 70
+}

@@ -42,5 +42,7 @@
 
 RunItemLUAFile("objects/object.lua");
 RunItemLUAFile("objects/weapon.lua");
+RunItemLUAFile("objects/armor.lua");
 
 RunItemLUAFile("objects/weapons/main.lua");
+RunItemLUAFile("objects/armor/main.lua");

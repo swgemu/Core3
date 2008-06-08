@@ -41,6 +41,7 @@
 --which carries forward this exception.
 
 
-ith_armor_set = {sentinel_chestplate, sentinel_gloves, sentinel_leggings, sentinel_helmet, sentinel_bracer_r, sentinel_bracer_l, sentinel_bicep_l, sentinel_bicep_r}
-
-addBFItemSet("Ithorian Sentinel Armor Set" , ith_armor_set);
+RunItemLUAFile("objects/armor/wookiee/kashyyykian_hunting/kashyyykian_hunting_chestplate.lua");
+RunItemLUAFile("objects/armor/wookiee/kashyyykian_hunting/kashyyykian_hunting_leggings.lua");
+RunItemLUAFile("objects/armor/wookiee/kashyyykian_hunting/kashyyykian_hunting_bracer_l.lua");
+RunItemLUAFile("objects/armor/wookiee/kashyyykian_hunting/kashyyykian_hunting_bracer_r.lua");

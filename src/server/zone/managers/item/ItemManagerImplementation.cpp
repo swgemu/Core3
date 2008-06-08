@@ -507,8 +507,31 @@ TangibleObject* ItemManagerImplementation::createTemplateFromLua(LuaObject itemc
 	//ADD ATTRIBUTES
 	if (type & TangibleObjectImplementation::ARMOR) {		
 		int armorType = itemconfig.getIntField("armorType");
-		
+		int actionEncum = itemconfig.getIntField("actionEncum");
+		int healthEncum = itemconfig.getIntField("healthEncum");
+		int mindEncum = itemconfig.getIntField("mindEncum");
+		float acidResist = itemconfig.getFloatField("acidResist");
+		float blastResist = itemconfig.getFloatField("blastResist");
+		float coldResist = itemconfig.getFloatField("coldResist");
+		float electricityResist = itemconfig.getFloatField("electricityResist");
+		float energyResist = itemconfig.getFloatField("energyResist");
+		float heatResist = itemconfig.getFloatField("heatResist");
+		float kineticResist = itemconfig.getFloatField("kineticResist");
+		float lightSaberResist = itemconfig.getFloatField("lightSaberResist");
+				
 		((Armor*) item)->setType(armorType);
+		((Armor*) item)->setActionEncumbrance(actionEncum);
+		((Armor*) item)->setMindEncumbrance(mindEncum);
+		((Armor*) item)->setHealthEncumbrance(healthEncum);
+		((Armor*) item)->setAcid(acidResist);
+		((Armor*) item)->setBlast(blastResist);
+		((Armor*) item)->setCold(coldResist);
+		((Armor*) item)->setElectricity(electricityResist);
+		((Armor*) item)->setEnergy(energyResist);
+		((Armor*) item)->setHeat(heatResist);
+		((Armor*) item)->setKinetic(kineticResist);
+		((Armor*) item)->setLightSaber(lightSaberResist);
+		
 	} else if (type == TangibleObjectImplementation::INSTRUMENT) {		
 		int instType = itemconfig.getIntField("instrumentType");
 				
