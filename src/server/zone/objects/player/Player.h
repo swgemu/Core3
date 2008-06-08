@@ -259,6 +259,20 @@ public:
 
 	void setMaxForcePowerBar(int fp, bool updateClient = true);
 
+	void setFoodFilling(int fill, bool updateClient = true);
+
+	void setDrinkFilling(int fill, bool updateClient = true);
+
+	void changeFoodFilling(int fill, bool updateClient = true);
+
+	void changeDrinkFilling(int fill, bool updateClient = true);
+
+	int getFoodFilling();
+
+	int getDrinkFilling();
+
+	void activateDigest();
+
 	void setCharacterID(unsigned long long id);
 
 	void setStartingProfession(const string& prof);
@@ -706,6 +720,20 @@ public:
 	void setForcePowerBar(int fp);
 
 	void setMaxForcePowerBar(int fp, bool updateClient);
+
+	void setFoodFilling(int fill, bool updateClient);
+
+	void setDrinkFilling(int fill, bool updateClient);
+
+	void changeFoodFilling(int fill, bool updateClient);
+
+	void changeDrinkFilling(int fill, bool updateClient);
+
+	int getFoodFilling();
+
+	int getDrinkFilling();
+
+	void activateDigest();
 
 	void setCharacterID(unsigned long long id);
 

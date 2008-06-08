@@ -76,6 +76,7 @@ class ProfessionManager;
 class CommandQueueAction;
 class CommandQueueActionEvent;
 class PlayerRecoveryEvent;
+class PlayerDigestEvent;
 class CenterOfBeingEvent;
 
 class Datapad;
@@ -116,6 +117,7 @@ class PlayerImplementation : public PlayerServant {
 	Event* logoutEvent;
 
 	PlayerRecoveryEvent* recoveryEvent;
+	PlayerDigestEvent* digestEvent;
 	Event* changeFactionEvent;
 
 	int itemShift;
@@ -360,6 +362,9 @@ public:
 	void doRecovery();
 	void doStateRecovery();
 
+	void activateDigest();
+	void doDigest();
+	
 	void doClone();	
 	
 	void doCenterOfBeing();
@@ -394,6 +399,60 @@ public:
 		playerObject->setMaxForcePowerBar(fp, updateClient);
 	}
 
+	int getFoodFilling() {
+		if(playerObject == NULL)
+			return 0;
+		
+		return playerObject->getFoodFilling();
+	}
+
+	int getDrinkFilling() {
+		if(playerObject == NULL)
+			return 0;
+		
+		return playerObject->getDrinkFilling();
+	}
+
+	
+	void setFoodFilling(uint32 fill, bool updateClient = true) {
+		if(playerObject == NULL)
+			return;
+		
+		playerObject->setFoodFilling(fill, updateClient);
+
+		if(playerObject->isDigesting())
+			activateDigest();
+	}
+	
+	void setDrinkFilling(uint32 fill, bool updateClient = true) {
+		if(playerObject == NULL)
+			return;
+		
+		playerObject->setDrinkFilling(fill, updateClient);
+		
+		if(playerObject->isDigesting())
+			activateDigest();
+	}
+	
+	void changeFoodFilling(uint32 fill, bool updateClient = true) {
+		if(playerObject == NULL)
+			return;
+		
+		playerObject->changeFoodFilling(fill, updateClient);
+
+		if(playerObject->isDigesting())
+			activateDigest();
+	}
+	
+	void changeDrinkFilling(uint32 fill, bool updateClient = true) {
+		if(playerObject == NULL)
+			return;
+		
+		playerObject->changeDrinkFilling(fill, updateClient);
+		
+		if(playerObject->isDigesting())
+			activateDigest();
+	}
 	
 	// faction methods
 	void setOvert();

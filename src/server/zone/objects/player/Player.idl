@@ -264,6 +264,14 @@ interface Player implements CreatureObject {
 	
 	void setForcePowerBar(int fp);
 	void setMaxForcePowerBar(int fp, boolean updateClient = true);
+	
+	void setFoodFilling(int fill, boolean updateClient = true);
+	void setDrinkFilling(int fill, boolean updateClient = true);
+	void changeFoodFilling(int fill, boolean updateClient = true);
+	void changeDrinkFilling(int fill, boolean updateClient = true);
+	int getFoodFilling();
+	int getDrinkFilling();
+	void activateDigest();
 
 	void setCharacterID(unsigned long id);
 	

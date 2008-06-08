@@ -72,6 +72,12 @@ PlayerObjectImplementation::PlayerObjectImplementation(Player* pl) : SceneObject
 	// PLAY9 operands
 	jediState = 0x08;
 	
+	drinkFilling = 0;
+	drinkFillingMax = 100;
+	
+	foodFilling = 0;
+	foodFillingMax = 100;
+	
 	characterBitmask = ANONYMOUS;
 }
 
@@ -227,7 +233,7 @@ void PlayerObjectImplementation::setMaxForcePowerBar(uint32 fp, bool updateClien
 	if (fp == forcePowerMax) 
 		return;
 
-	if(updateClient) {
+	if(updateClient && player != NULL) {
 		PlayerObjectDeltaMessage8* dplay8 = new PlayerObjectDeltaMessage8(this);
 		dplay8->updateForcePowerMax();
 		dplay8->close();
@@ -247,7 +253,7 @@ void PlayerObjectImplementation::addWaypoint(WaypointObject* wp, bool updateClie
 	wlock();
 	
 	if (waypointList.put(wp->getObjectID(), wp) != -1) {
-		if (updateClient) {
+		if (updateClient && player != NULL) {
 			PlayerObjectDeltaMessage8* dplay8 = new PlayerObjectDeltaMessage8(this);
 
 			dplay8->startWaypointUpdate();
@@ -265,7 +271,7 @@ bool PlayerObjectImplementation::removeWaypoint(WaypointObject* wp, bool updateC
 	
 	if (waypointList.drop(wp->getObjectID())) {
 	
-		if (updateClient) {
+		if (updateClient && player != NULL) {
 			PlayerObjectDeltaMessage8* dplay8 = new PlayerObjectDeltaMessage8(this);
 
 			dplay8->startWaypointUpdate();

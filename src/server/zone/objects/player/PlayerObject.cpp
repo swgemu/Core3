@@ -263,12 +263,154 @@ int PlayerObject::getWaypointListSize() {
 		return ((PlayerObjectImplementation*) _impl)->getWaypointListSize();
 }
 
-unsigned int PlayerObject::getJediState() {
+int PlayerObject::getDrinkFilling() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 24);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((PlayerObjectImplementation*) _impl)->getDrinkFilling();
+}
+
+int PlayerObject::getDrinkFillingMax() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 25);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((PlayerObjectImplementation*) _impl)->getDrinkFillingMax();
+}
+
+int PlayerObject::getFoodFilling() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 26);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((PlayerObjectImplementation*) _impl)->getFoodFilling();
+}
+
+int PlayerObject::getFoodFillingMax() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 27);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((PlayerObjectImplementation*) _impl)->getFoodFillingMax();
+}
+
+void PlayerObject::setDrinkFilling(int filling, bool updateClient) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 28);
+		method.addSignedIntParameter(filling);
+		method.addBooleanParameter(updateClient);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerObjectImplementation*) _impl)->setDrinkFilling(filling, updateClient);
+}
+
+void PlayerObject::setDrinkFillingMax(int filling) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 29);
+		method.addSignedIntParameter(filling);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerObjectImplementation*) _impl)->setDrinkFillingMax(filling);
+}
+
+void PlayerObject::setFoodFilling(int filling, bool updateClient) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 30);
+		method.addSignedIntParameter(filling);
+		method.addBooleanParameter(updateClient);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerObjectImplementation*) _impl)->setFoodFilling(filling, updateClient);
+}
+
+void PlayerObject::setFoodFillingMax(int filling) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 31);
+		method.addSignedIntParameter(filling);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerObjectImplementation*) _impl)->setFoodFillingMax(filling);
+}
+
+void PlayerObject::changeDrinkFilling(int filling, bool updateClient) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 32);
+		method.addSignedIntParameter(filling);
+		method.addBooleanParameter(updateClient);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerObjectImplementation*) _impl)->changeDrinkFilling(filling, updateClient);
+}
+
+void PlayerObject::changeFoodFilling(int filling, bool updateClient) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 33);
+		method.addSignedIntParameter(filling);
+		method.addBooleanParameter(updateClient);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerObjectImplementation*) _impl)->changeFoodFilling(filling, updateClient);
+}
+
+bool PlayerObject::isDigesting() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 34);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((PlayerObjectImplementation*) _impl)->isDigesting();
+}
+
+unsigned int PlayerObject::getJediState() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 35);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -280,7 +422,7 @@ WaypointObject* PlayerObject::getWaypoint(unsigned long long id) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 25);
+		DistributedMethod method(this, 36);
 		method.addUnsignedLongParameter(id);
 
 		return (WaypointObject*) method.executeWithObjectReturn();
@@ -293,7 +435,7 @@ void PlayerObject::addWaypoint(WaypointObject* wp, bool updateClient) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 26);
+		DistributedMethod method(this, 37);
 		method.addObjectParameter(wp);
 		method.addBooleanParameter(updateClient);
 
@@ -307,7 +449,7 @@ bool PlayerObject::removeWaypoint(WaypointObject* wp, bool updateClient) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 27);
+		DistributedMethod method(this, 38);
 		method.addObjectParameter(wp);
 		method.addBooleanParameter(updateClient);
 
@@ -321,7 +463,7 @@ void PlayerObject::updateWaypoint(WaypointObject* wp) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 28);
+		DistributedMethod method(this, 39);
 		method.addObjectParameter(wp);
 
 		method.executeWithVoidReturn();
@@ -334,7 +476,7 @@ Player* PlayerObject::getPlayer() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 29);
+		DistributedMethod method(this, 40);
 
 		return (Player*) method.executeWithObjectReturn();
 	} else
@@ -346,7 +488,7 @@ void PlayerObject::setCurrentTitle(string& nTitle, bool updateClient) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 30);
+		DistributedMethod method(this, 41);
 		method.addAsciiParameter(nTitle);
 		method.addBooleanParameter(updateClient);
 
@@ -360,7 +502,7 @@ void PlayerObject::setTitle(string& temptitle) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 31);
+		DistributedMethod method(this, 42);
 		method.addAsciiParameter(temptitle);
 
 		method.executeWithVoidReturn();
@@ -373,7 +515,7 @@ string& PlayerObject::getCurrentTitle() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 32);
+		DistributedMethod method(this, 43);
 
 		method.executeWithAsciiReturn(_return_getCurrentTitle);
 		return _return_getCurrentTitle;
@@ -386,7 +528,7 @@ unsigned int PlayerObject::getExperienceListCount() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 33);
+		DistributedMethod method(this, 44);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -398,7 +540,7 @@ unsigned int PlayerObject::getNewExperienceListCount(int cnt) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 34);
+		DistributedMethod method(this, 45);
 		method.addSignedIntParameter(cnt);
 
 		return method.executeWithUnsignedIntReturn();
@@ -411,7 +553,7 @@ unsigned int PlayerObject::getWaypointListCount() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 35);
+		DistributedMethod method(this, 46);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -423,7 +565,7 @@ unsigned int PlayerObject::getNewWaypointListCount(int cnt) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 36);
+		DistributedMethod method(this, 47);
 		method.addSignedIntParameter(cnt);
 
 		return method.executeWithUnsignedIntReturn();
@@ -497,42 +639,75 @@ Packet* PlayerObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		resp->insertSignedInt(getWaypointListSize());
 		break;
 	case 24:
-		resp->insertInt(getJediState());
+		resp->insertSignedInt(getDrinkFilling());
 		break;
 	case 25:
-		resp->insertLong(getWaypoint(inv->getUnsignedLongParameter())->_getObjectID());
+		resp->insertSignedInt(getDrinkFillingMax());
 		break;
 	case 26:
-		addWaypoint((WaypointObject*) inv->getObjectParameter(), inv->getBooleanParameter());
+		resp->insertSignedInt(getFoodFilling());
 		break;
 	case 27:
-		resp->insertBoolean(removeWaypoint((WaypointObject*) inv->getObjectParameter(), inv->getBooleanParameter()));
+		resp->insertSignedInt(getFoodFillingMax());
 		break;
 	case 28:
-		updateWaypoint((WaypointObject*) inv->getObjectParameter());
+		setDrinkFilling(inv->getSignedIntParameter(), inv->getBooleanParameter());
 		break;
 	case 29:
-		resp->insertLong(getPlayer()->_getObjectID());
+		setDrinkFillingMax(inv->getSignedIntParameter());
 		break;
 	case 30:
-		setCurrentTitle(inv->getAsciiParameter(_param0_setCurrentTitle__string_bool_), inv->getBooleanParameter());
+		setFoodFilling(inv->getSignedIntParameter(), inv->getBooleanParameter());
 		break;
 	case 31:
-		setTitle(inv->getAsciiParameter(_param0_setTitle__string_));
+		setFoodFillingMax(inv->getSignedIntParameter());
 		break;
 	case 32:
-		resp->insertAscii(getCurrentTitle());
+		changeDrinkFilling(inv->getSignedIntParameter(), inv->getBooleanParameter());
 		break;
 	case 33:
-		resp->insertInt(getExperienceListCount());
+		changeFoodFilling(inv->getSignedIntParameter(), inv->getBooleanParameter());
 		break;
 	case 34:
-		resp->insertInt(getNewExperienceListCount(inv->getSignedIntParameter()));
+		resp->insertBoolean(isDigesting());
 		break;
 	case 35:
-		resp->insertInt(getWaypointListCount());
+		resp->insertInt(getJediState());
 		break;
 	case 36:
+		resp->insertLong(getWaypoint(inv->getUnsignedLongParameter())->_getObjectID());
+		break;
+	case 37:
+		addWaypoint((WaypointObject*) inv->getObjectParameter(), inv->getBooleanParameter());
+		break;
+	case 38:
+		resp->insertBoolean(removeWaypoint((WaypointObject*) inv->getObjectParameter(), inv->getBooleanParameter()));
+		break;
+	case 39:
+		updateWaypoint((WaypointObject*) inv->getObjectParameter());
+		break;
+	case 40:
+		resp->insertLong(getPlayer()->_getObjectID());
+		break;
+	case 41:
+		setCurrentTitle(inv->getAsciiParameter(_param0_setCurrentTitle__string_bool_), inv->getBooleanParameter());
+		break;
+	case 42:
+		setTitle(inv->getAsciiParameter(_param0_setTitle__string_));
+		break;
+	case 43:
+		resp->insertAscii(getCurrentTitle());
+		break;
+	case 44:
+		resp->insertInt(getExperienceListCount());
+		break;
+	case 45:
+		resp->insertInt(getNewExperienceListCount(inv->getSignedIntParameter()));
+		break;
+	case 46:
+		resp->insertInt(getWaypointListCount());
+		break;
+	case 47:
 		resp->insertInt(getNewWaypointListCount(inv->getSignedIntParameter()));
 		break;
 	default:
@@ -612,6 +787,50 @@ unsigned int PlayerObjectAdapter::getCharacterBitmask() {
 
 int PlayerObjectAdapter::getWaypointListSize() {
 	return ((PlayerObjectImplementation*) impl)->getWaypointListSize();
+}
+
+int PlayerObjectAdapter::getDrinkFilling() {
+	return ((PlayerObjectImplementation*) impl)->getDrinkFilling();
+}
+
+int PlayerObjectAdapter::getDrinkFillingMax() {
+	return ((PlayerObjectImplementation*) impl)->getDrinkFillingMax();
+}
+
+int PlayerObjectAdapter::getFoodFilling() {
+	return ((PlayerObjectImplementation*) impl)->getFoodFilling();
+}
+
+int PlayerObjectAdapter::getFoodFillingMax() {
+	return ((PlayerObjectImplementation*) impl)->getFoodFillingMax();
+}
+
+void PlayerObjectAdapter::setDrinkFilling(int filling, bool updateClient) {
+	return ((PlayerObjectImplementation*) impl)->setDrinkFilling(filling, updateClient);
+}
+
+void PlayerObjectAdapter::setDrinkFillingMax(int filling) {
+	return ((PlayerObjectImplementation*) impl)->setDrinkFillingMax(filling);
+}
+
+void PlayerObjectAdapter::setFoodFilling(int filling, bool updateClient) {
+	return ((PlayerObjectImplementation*) impl)->setFoodFilling(filling, updateClient);
+}
+
+void PlayerObjectAdapter::setFoodFillingMax(int filling) {
+	return ((PlayerObjectImplementation*) impl)->setFoodFillingMax(filling);
+}
+
+void PlayerObjectAdapter::changeDrinkFilling(int filling, bool updateClient) {
+	return ((PlayerObjectImplementation*) impl)->changeDrinkFilling(filling, updateClient);
+}
+
+void PlayerObjectAdapter::changeFoodFilling(int filling, bool updateClient) {
+	return ((PlayerObjectImplementation*) impl)->changeFoodFilling(filling, updateClient);
+}
+
+bool PlayerObjectAdapter::isDigesting() {
+	return ((PlayerObjectImplementation*) impl)->isDigesting();
 }
 
 unsigned int PlayerObjectAdapter::getJediState() {

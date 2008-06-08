@@ -78,6 +78,7 @@ which carries forward this exception.
 #include "events/PlayerLogoutEvent.h"
 #include "events/PlayerDisconnectEvent.h"
 #include "events/PlayerRecoveryEvent.h"
+#include "events/PlayerDigestEvent.h"
 #include "events/CommandQueueActionEvent.h"
 #include "events/ChangeFactionEvent.h"
 #include "events/CenterOfBeingEvent.h"
@@ -166,6 +167,8 @@ void PlayerImplementation::init() {
 	logoutEvent = NULL;
 	
 	recoveryEvent = new PlayerRecoveryEvent(this);
+	digestEvent = new PlayerDigestEvent(this);
+	
 	changeFactionEvent = NULL;
 	
 	datapad = NULL;
@@ -1598,6 +1601,27 @@ void PlayerImplementation::doStateRecovery() {
 	updateStates();
 }
 
+void PlayerImplementation::activateDigest() {
+	if (!digestEvent->isQueued())
+		server->addEvent(digestEvent, 18000);
+}
+
+void PlayerImplementation::doDigest() {
+	if(playerObject == NULL) 
+		return;
+	
+	if (!playerObject->isDigesting())
+		return;
+	
+	if(playerObject->getFoodFilling() > 0)
+		playerObject->changeFoodFilling(-1, true);
+	
+	if(playerObject->getDrinkFilling() > 0)
+		playerObject->changeDrinkFilling(-1, true);	
+	
+	activateDigest();
+}
+
 void PlayerImplementation::doClone() {
 	info("cloning player");
 
@@ -1630,6 +1654,10 @@ void PlayerImplementation::doClone() {
 	
 	clearStates();
 	clearBuffs(true);
+	
+	//food persists cloning
+	//setFoodFilling(0, true);
+	//setDrinkFilling(0, true);
 	
 	decayInventory();
 

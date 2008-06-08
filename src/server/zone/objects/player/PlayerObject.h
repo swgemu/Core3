@@ -57,6 +57,28 @@ public:
 
 	int getWaypointListSize();
 
+	int getDrinkFilling();
+
+	int getDrinkFillingMax();
+
+	int getFoodFilling();
+
+	int getFoodFillingMax();
+
+	void setDrinkFilling(int filling, bool updateClient);
+
+	void setDrinkFillingMax(int filling);
+
+	void setFoodFilling(int filling, bool updateClient);
+
+	void setFoodFillingMax(int filling);
+
+	void changeDrinkFilling(int filling, bool updateClient);
+
+	void changeFoodFilling(int filling, bool updateClient);
+
+	bool isDigesting();
+
 	unsigned int getJediState();
 
 	WaypointObject* getWaypoint(unsigned long long id);
@@ -136,6 +158,28 @@ public:
 	unsigned int getCharacterBitmask();
 
 	int getWaypointListSize();
+
+	int getDrinkFilling();
+
+	int getDrinkFillingMax();
+
+	int getFoodFilling();
+
+	int getFoodFillingMax();
+
+	void setDrinkFilling(int filling, bool updateClient);
+
+	void setDrinkFillingMax(int filling);
+
+	void setFoodFilling(int filling, bool updateClient);
+
+	void setFoodFillingMax(int filling);
+
+	void changeDrinkFilling(int filling, bool updateClient);
+
+	void changeFoodFilling(int filling, bool updateClient);
+
+	bool isDigesting();
 
 	unsigned int getJediState();
 

@@ -86,10 +86,10 @@ public:
 		insertInt(0);
 
 		// stomach fillings
-		insertInt(0);
-		insertInt(200);
-		insertInt(0);
-		insertInt(200);
+		insertInt(play->getFoodFilling());
+		insertInt(play->getFoodFillingMax());
+		insertInt(play->getDrinkFilling());
+		insertInt(play->getDrinkFillingMax());
 
 		//
 		insertInt(0);

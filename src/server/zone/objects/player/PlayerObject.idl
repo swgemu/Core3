@@ -85,6 +85,21 @@ interface PlayerObject implements SceneObject {
 	
 	int getWaypointListSize();
 	
+	int getDrinkFilling();
+	int getDrinkFillingMax();
+	int getFoodFilling();
+	int getFoodFillingMax();
+	
+	void setDrinkFilling(int filling, boolean updateClient);
+	void setDrinkFillingMax(int filling);
+	void setFoodFilling(int filling, boolean updateClient);
+	void setFoodFillingMax(int filling);
+
+	void changeDrinkFilling(int filling, boolean updateClient);
+	void changeFoodFilling(int filling, boolean updateClient);
+	
+	boolean isDigesting();
+	
 	unsigned int getJediState();
 	
 	WaypointObject getWaypoint(unsigned long id);

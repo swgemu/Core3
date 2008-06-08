@@ -799,6 +799,33 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 				message << "Set Force Power to: " << fp << ".";
 				player->sendSystemMessage(message.str());
 			}		
+			
+		} else if(cmd == "@setDrinkFilling") {
+			int fill = tokenizer.getIntToken();
+			player->setDrinkFilling(fill);
+			stringstream message;
+			message << "Set drink filling: " << fill << ".";
+			player->sendSystemMessage(message.str());
+		} else if(cmd == "@setFoodFilling") {
+			int fill = tokenizer.getIntToken();
+			player->setFoodFilling(fill);
+			stringstream message;
+			message << "Set food filling: " << fill << ".";
+			player->sendSystemMessage(message.str());
+		} else if(cmd == "@getDrinkFilling") {
+			if (userManager->isAdmin(player->getFirstName())) {
+				int fill = player->getDrinkFilling();
+				stringstream message;
+				message << "Drink filling: " << fill << ".";
+				player->sendSystemMessage(message.str());
+			}
+		} else if(cmd == "@getFoodFilling") {
+			if (userManager->isAdmin(player->getFirstName())) {
+				int fill = player->getFoodFilling();
+				stringstream message;
+				message << "Food filling: " << fill << ".";
+				player->sendSystemMessage(message.str());
+			}
 		} else if(cmd == "@HAMStats") {
 			if (userManager->isAdmin(player->getFirstName())) {
 				stringstream message;

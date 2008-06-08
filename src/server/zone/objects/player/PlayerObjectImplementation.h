@@ -51,6 +51,8 @@ which carries forward this exception.
 #include "../scene/SceneObjectImplementation.h"
 #include "professions/XpMap.h"
 
+#include "../../packets/player/PlayerObjectDeltaMessage9.h"
+
 class Player;
 
 class PlayerObjectImplementation : public SceneObjectImplementation {
@@ -72,6 +74,13 @@ class PlayerObjectImplementation : public SceneObjectImplementation {
 	// PLAY3 operands
 	uint32 characterBitmask;
 	string title;
+	
+	// Play9 operands
+	uint32 drinkFilling;
+	uint32 drinkFillingMax;
+	
+	uint32 foodFilling;
+	uint32 foodFillingMax;
 	
 public:
 
@@ -147,6 +156,69 @@ public:
 	inline uint32 getJediState() {
 		return jediState;
 	}
+
+	inline uint32 getDrinkFilling() {
+		return drinkFilling;
+	}
+	
+	inline uint32 getDrinkFillingMax() {
+		return drinkFillingMax;
+	}	
+	
+	inline uint32 getFoodFilling() {
+		return foodFilling;
+	}
+	
+	inline uint32 getFoodFillingMax() {
+		return foodFillingMax;
+	}	
+	
+	inline bool isDigesting() {
+		if(getDrinkFilling() > 0 || getFoodFilling() > 0)
+			return true;
+		
+		return false;
+	}
+
+	inline void setDrinkFilling(uint32 filling, bool updateClient = true) {
+		drinkFilling = filling;
+		
+		if(updateClient) {
+			PlayerObjectDeltaMessage9* dplay9 = new PlayerObjectDeltaMessage9((PlayerObject*) _this);
+			dplay9->updateStomachFilling();
+			dplay9->close();
+			player->sendMessage(dplay9);
+		}
+	}
+	
+	inline void setDrinkFillingMax(uint32 filling) {
+		drinkFillingMax = filling;
+	}	
+	
+	inline void setFoodFilling(uint32 filling, bool updateClient = true) {
+		foodFilling = filling;
+		
+		if(updateClient) {
+			PlayerObjectDeltaMessage9* dplay9 = new PlayerObjectDeltaMessage9((PlayerObject*) _this);
+			dplay9->updateStomachFilling();
+			dplay9->close();
+			player->sendMessage(dplay9);
+		}
+	}
+	
+	inline void setFoodFillingMax(uint32 filling) {
+		foodFillingMax = filling;
+	}	
+	
+	
+	inline void changeDrinkFilling(uint32 filling, bool updateClient = true) {
+		setDrinkFilling(MAX(MIN(drinkFillingMax, filling + drinkFilling),0), updateClient);
+	}
+		
+	inline void changeFoodFilling(uint32 filling, bool updateClient = true) {
+		setFoodFilling(MAX(MIN(foodFillingMax, filling + foodFilling), 0), updateClient);
+	}
+	
 	
 	void updateWaypoint(WaypointObject* wp);
 	
