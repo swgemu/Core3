@@ -557,3 +557,8 @@ spawnCreatures(bullRancor, 2, 100, -1100, 300, 2)
 spawnCreatures(gapingSpider, 2, 100, -1100, 400, 20)
 spawnCreatures(gapingSpiderRecluse, 2, 100, -1100, 300, 8)
 
+
+
+
+
+

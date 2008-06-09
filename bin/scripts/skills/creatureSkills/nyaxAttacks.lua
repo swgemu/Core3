@@ -47,9 +47,9 @@ nyaxAttack1 = {
 
 	range = 25,
 
-	damageRatio = 15,
+	damageRatio = 236,
 
-	speedRatio = 3,
+	speedRatio = 2,
 	coneAngle = 30,
 
 	areaRange = 0,
@@ -79,9 +79,9 @@ nyaxAttack2 = {
 
 	range = 15,
 
-	damageRatio = 20,
+	damageRatio = 292,
 
-	speedRatio = 4,
+	speedRatio = 3,
 	coneAngle = 30,
 
 	areaRange = 0,
@@ -111,7 +111,7 @@ nyaxAttack10 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 65,
-	damageRatio = 1.75,
+	damageRatio = 9.2,
 	speedRatio = 1.25,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -153,7 +153,7 @@ nyaxAttack11 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 65,
-	damageRatio = 1.35,
+	damageRatio = 8.35,
 	speedRatio = 1.15,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -185,7 +185,7 @@ nyaxAttack12 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 65,
-	damageRatio = 1.20,
+	damageRatio = 4.00,
 	speedRatio = 1.15,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -227,7 +227,7 @@ nyaxAttack13 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 65,
-	damageRatio = 1.50,
+	damageRatio = 7.50,
 	speedRatio = 1.15,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -258,7 +258,7 @@ nyaxAttack14 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 65,
-	damageRatio = 1.80,
+	damageRatio = 4.80,
 	speedRatio = 1.15,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -300,7 +300,7 @@ nyaxAttack15 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 65,
-	damageRatio = 1.50,
+	damageRatio = 8.50,
 	speedRatio = 1.15,
 	coneAngle = 60,
 	accuracyBonus = 0,
@@ -331,7 +331,7 @@ nyaxAttack16 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 65,
-	damageRatio = 1.40,
+	damageRatio = 8.40,
 	speedRatio = 1.25,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -372,7 +372,7 @@ nyaxAttack17 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 65,
-	damageRatio = 1.50,
+	damageRatio = 7.50,
 	speedRatio = 1.15,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -403,7 +403,7 @@ nyaxAttack18 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 65,
-	damageRatio = 1.50,
+	damageRatio = 9.10,
 	speedRatio = 1.15,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -434,7 +434,7 @@ nyaxAttack19 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 65,
-	damageRatio = 1.50,
+	damageRatio = 9.0,
 	speedRatio = 1.15,
 	coneAngle = 60,
 	accuracyBonus = 0,
@@ -465,7 +465,7 @@ nyaxAttack20 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 65,
-	damageRatio = 1.15,
+	damageRatio = 8.15,
 	speedRatio = 1.15,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -496,7 +496,7 @@ nyaxAttack21 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 65,
-	damageRatio = 1.15,
+	damageRatio = 8.15,
 	speedRatio = 1.05,
 	coneAngle = 60,
 	accuracyBonus = 0,
@@ -527,7 +527,7 @@ nyaxAttack22 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 65,
-	damageRatio = 1.15,
+	damageRatio = 7.15,
 	speedRatio = 1.05,
 	coneAngle = 60,
 	accuracyBonus = 0,
@@ -558,7 +558,7 @@ nyaxAttack23 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 65,
-	damageRatio = 1.15,
+	damageRatio = 8.15,
 	speedRatio = 1.05,
 	coneAngle = 60,
 	accuracyBonus = 0,
@@ -589,7 +589,7 @@ nyaxAttack24 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 65,
-	damageRatio = 2.15,
+	damageRatio = 7.15,
 	speedRatio = 1.05,
 	coneAngle = 60,
 	accuracyBonus = 0,
@@ -610,5 +610,9 @@ nyaxAttack24 = {
 }
 
 AddRandomPoolAttackTargetSkill(nyaxAttack24)
+
+
+
+
 
 

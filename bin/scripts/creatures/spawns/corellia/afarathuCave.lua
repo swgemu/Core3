@@ -39,45 +39,35 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-lordNyax = Creature:new {
-	objectName = "lordNyax", -- name of the lua Object
-	
-	stfName = "Lord Nyax",
-	objectCRC = 4219937413,
-	socialGroup = "nyax",
-	
-	level = 250,
-	combatFlags = ATTACKABLE_FLAG,
 
-	health = 60000,
-	strength = 1000,
-	constitution = 1000,
+-- outside cave
+spawnCreature(afarathuRuffian, 0, -2489.6, 2920.0, 1200)
+spawnCreature(afarathuRuffian, 0, -2494.0, 2913.6, 1200)
 
-	action = 60000,
-	quickness = 1000,
-	stamina = 1000,
+-- inside cave
+spawnCreatureInCell(afarathuRuffian, 0, -0.6, -13.7, -8.3, 6035620)
+spawnCreatureInCell(afarathuRuffian, 0, 11.3, -14.2, -5.5, 6035620)
+spawnCreatureInCell(afarathuRuffian, 0, 9.7, -23.9, -28.3, 6035621)
+spawnCreatureInCell(afarathuRuffian, 0, -11.3, -30.7, -27.1, 6035621)
 
-	mind = 60000,
-	focus = 1000,
-	willpower = 1000,
+spawnCreatureInCell(afarathuAssassin, 0, -1.8, -40.7, -74.1, 6035622)
+spawnCreatureInCell(afarathuAssassin, 0, 2.6, -40.4, -62.4, 6035622)
+spawnCreatureInCell(afarathuAssassin, 0, 3.4, -41.0, -72.6, 6035622)
 
-	height = 1,
-	armor = 2,
-	
-	kinetic = 80,
-	energy = 45,
-	electricity = 100,
-	stun = 15,
-	blast = 40,
-	heat = 20,
-	cold = 50,
-	acid = 10,
-	lightSaber = 0,
-	
-	accuracy = 300,
+spawnCreatureInCell(afarathuRuffian, 0, 49.3, -46.8, -53.7, 6035623)
+spawnCreatureInCell(afarathuRuffian, 0, 43.8, -46.1, -95.1, 6035623)
+spawnCreatureInCell(afarathuRuffian, 0, 23.6, -45.7, -102.8, 6035623)
 
-	skills = { "nyaxAttack10", "nyaxAttack11", "nyaxAttack12", "nyaxAttack13", "nyaxAttack14", "nyaxAttack15", "nyaxAttack16", "nyaxAttack17", "nyaxAttack18", "nyaxAttack19", "nyaxAttack20", "nyaxAttack21", "nyaxAttack22", "nyaxAttack23", "nyaxAttack24"  },
-	respawnTimer = 1800
-}
+spawnCreatureInCell(afarathuSavage, 0, -1.7, -45.8, -147.8, 6035624)
+spawnCreatureInCell(afarathuSavage, 0, -11.0, -44.4, -136.4, 6035624)
+spawnCreatureInCell(afarathuSavage, 0, -4.2, -64.0, -234.2, 6035626)
+spawnCreatureInCell(afarathuSavage, 0, -21.7, -65.4, -244.6, 6035626)
 
-Creatures:addCreature(lordNyax, 4219937413) --- Add to global creature table
+spawnCreatureInCell(afarathuZealot, 0, -95.3, -73.7, -170.0, 6035627)
+spawnCreatureInCell(afarathuBrute, 0, -83.5, -71.6, -169.2, 6035627)
+spawnCreatureInCell(afarathuBrute, 0, -100.5, -72.9, -159.1, 6035627)
+spawnCreatureInCell(afarathuBrute, 0, -111.7, -69.4, -170.6, 6035627)
+
+spawnCreatureInCell(afarathuBodyguard, 0, -85.4, -101.5, -111.2, 6035630)
+spawnCreatureInCell(afarathuBodyguard, 0, -92.8, -101.1, -111.9, 6035630)
+spawnCreatureInCell(afarathuLeader, 0, -90.7, -101.1, -104.8, 6035630)

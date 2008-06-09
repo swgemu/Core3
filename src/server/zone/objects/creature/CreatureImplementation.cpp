@@ -328,17 +328,57 @@ void CreatureImplementation::loadItems() {
 	
 	Weapon* weapon = NULL;
 	
-	if (objectCRC == 0xBA7F23CD) { //storm trooper
-		weapon = new RifleRangedWeapon(_this, 
-				"object/weapon/ranged/rifle/shared_rifle_t21.iff", unicode("Teh Pwn"), "rifle_t21", true);
-		weapon->setAttackSpeed(1.5f);
-
+	if (objectCRC == 0x738E0B1F) { //Zealot of Lord Nyax + Diciple of Lord Nyax
+		weapon = new CarbineRangedWeapon(_this, "object/weapon/ranged/carbine/shared_carbine_laser.iff", unicode("a Laser Carbine"), "carbine_laser", true);
+		weapon->setMinDamage(350);
+		weapon->setMaxDamage(400);
+		weapon->setAttackSpeed(1.5);
+		weapon->setDamageType(WeaponImplementation::ENERGY);
+		weapon->setArmorPiercing(WeaponImplementation::MEDIUM);	
+	}		
+	else if (objectCRC == 0xE275ECBB || objectCRC == 0xE275ECBB || objectCRC == 0xA1048F8A || objectCRC == 0xD084273F || objectCRC == 0x7477AB80) { 
+		//Imperial GeneralMajor // Imperial General // Imperial High Colonel / Imperial Surface Marshall // Imperial Major
+		weapon = new PistolRangedWeapon(_this, "object/weapon/ranged/pistol/shared_pistol_dl44.iff", unicode("a DL-44 Pistol"), "pistol_dl44", true);
+		weapon->setMinDamage(350);
+		weapon->setMaxDamage(400);
+		weapon->setAttackSpeed(2.5);
+		weapon->setDamageType(WeaponImplementation::ENERGY);
+		weapon->setArmorPiercing(WeaponImplementation::LIGHT);	
 		setImperial();
-	} else if (objectCRC == 0xFECDC4DE || objectCRC == 0x7EDC1419) {
-		weapon = new RifleRangedWeapon(_this,
-				"object/weapon/ranged/vehicle/shared_vehicle_atst_ranged.iff", unicode("Imperial Cannon"), "vehicle_atst_ranged");
-		weapon->setAttackSpeed(1.5f);
-		
+	}
+	else if (objectCRC == 0xBA7F23CD) { //storm trooper
+		weapon = new RifleRangedWeapon(_this, "object/weapon/ranged/rifle/shared_rifle_t21.iff", unicode("Teh Pwn"), "rifle_t21", true);
+		weapon->setMinDamage(350);
+		weapon->setMaxDamage(400);
+		weapon->setAttackSpeed(4);
+		weapon->setDamageType(WeaponImplementation::ENERGY);
+		weapon->setArmorPiercing(WeaponImplementation::LIGHT);
+		setImperial();
+	} 	
+	else if (objectCRC == 0x4E38DA33) { //Dark trooper
+		//we assign but do not equip the weapon! We just need the line "setImperial" - but without an assigned weapon we will crash (Farmer John, 04. June 2008)
+		weapon = new RifleRangedWeapon(_this, "object/weapon/ranged/rifle/shared_rifle_t21.iff", unicode("Teh Pwn"), "rifle_t21", false);
+		weapon->setMinDamage(350);
+		weapon->setMaxDamage(400);
+		weapon->setAttackSpeed(4);
+		weapon->setDamageType(WeaponImplementation::ENERGY);
+		weapon->setArmorPiercing(WeaponImplementation::LIGHT);
+		setImperial();
+	} 
+	else if (objectCRC == 0xFCA399 || objectCRC == 0x1BCAE981 || 
+			 objectCRC == 0x75A7387A || objectCRC == 0xEF5997EB || 
+			 objectCRC == 0xFCA399 || objectCRC == 0xE0B389E5 || 
+			 objectCRC == 0xFECB7C04 || objectCRC == 0xD96A33B7) { //Corsecs (also used for Rogue Corsecs!)
+		weapon = new PistolRangedWeapon(_this, "object/weapon/ranged/pistol/shared_pistol_cdef_corsec.iff", unicode("Corsec CDEF Pistol"), "pistol_cdef_corsec", true);
+		weapon->setMinDamage(150);
+		weapon->setMaxDamage(200);
+		weapon->setAttackSpeed(3);
+		weapon->setDamageType(WeaponImplementation::ENERGY);
+		weapon->setArmorPiercing(WeaponImplementation::LIGHT);
+	} 	
+	else if (objectCRC == 0xFECDC4DE || objectCRC == 0x7EDC1419) { //  AT AT    / AT ST
+		weapon = new RifleRangedWeapon(_this,"object/weapon/ranged/vehicle/shared_vehicle_atst_ranged.iff", unicode("Imperial Cannon"), "vehicle_atst_ranged");
+		weapon->setAttackSpeed(1.5f);		
 		setImperial();
 	}
 	else if (objectCRC == 0x8C70914) {
@@ -458,27 +498,24 @@ void CreatureImplementation::loadItems() {
 			weapon->setArmorPiercing(WeaponImplementation::MEDIUM);
 			break;
 		}
-
-} else if (objectCRC == 0xC5A39C12 || objectCRC == 0x5CECC950) {
-		//Hutt Hideout
-			weapon = new OneHandedMeleeWeapon(_this, 
-				"object/weapon/melee/baton/shared_baton_stun.iff", unicode("a Stun Baton"), "baton_stun", true);
-			weapon->setMinDamage(175 + level);
-			weapon->setMaxDamage(250 + level);
-			weapon->setAttackSpeed(1.5);
-			weapon->setDamageType(WeaponImplementation::STUN);
-			weapon->setArmorPiercing(WeaponImplementation::NONE);
-
-	} else if (objectCRC == 0x3517D918) {
-		//Gamorrean Guard
-			weapon = new PolearmMeleeWeapon(_this, 
-					"object/weapon/melee/polearm/shared_polearm_vibro_axe.iff", unicode("a Long Vibro Axe"), "lance_vibro_axe", true);
-			weapon->setMinDamage(250 + level);
-			weapon->setMaxDamage(450 + level);
-			weapon->setAttackSpeed(1.5);
-			weapon->setDamageType(WeaponImplementation::KINETIC);
-			weapon->setArmorPiercing(WeaponImplementation::MEDIUM);
-				
+	} else if (objectCRC == 0xC5A39C12 || objectCRC == 0x5CECC950) { 
+		//Hutt Hideout 
+		weapon = new OneHandedMeleeWeapon(_this,  
+		"object/weapon/melee/baton/shared_baton_stun.iff", unicode("a Stun Baton"), "baton_stun", true); 
+		weapon->setMinDamage(175 + level); 
+		weapon->setMaxDamage(250 + level); 
+		weapon->setAttackSpeed(1.5); 
+		weapon->setDamageType(WeaponImplementation::STUN); 
+		weapon->setArmorPiercing(WeaponImplementation::NONE); 
+	} else if (objectCRC == 0x3517D918) { 
+			//Gamorrean Guard 
+			weapon = new PolearmMeleeWeapon(_this,  
+			"object/weapon/melee/polearm/shared_polearm_vibro_axe.iff", unicode("a Long Vibro Axe"), "lance_vibro_axe", true); 
+			weapon->setMinDamage(250 + level); 
+			weapon->setMaxDamage(450 + level); 
+			weapon->setAttackSpeed(1.5); 
+			weapon->setDamageType(WeaponImplementation::KINETIC); 
+			weapon->setArmorPiercing(WeaponImplementation::MEDIUM); 	
 	} else if (objectCRC == 0xAA197516) { 
 		// NS Queen
 		switch (System::random(1)) {
@@ -526,9 +563,9 @@ void CreatureImplementation::loadItems() {
 		}
 	} else if (objectCRC == 0xFB872285) { // lord nyax
 		weapon = new CarbineRangedWeapon(_this, 
-				"object/weapon/ranged/carbine/shared_carbine_laser.iff", unicode("a Laser Carbine"), "carbine_laser", true);
-		weapon->setMinDamage(350);
-		weapon->setMaxDamage(550);
+				"object/weapon/ranged/carbine/shared_carbine_e11.iff", unicode("a e11 Carbine"), "carbine_e11", true);
+		weapon->setMinDamage(550);
+		weapon->setMaxDamage(880);
 		weapon->setAttackSpeed(1.5);
 		weapon->setDamageType(WeaponImplementation::ENERGY);
 		weapon->setArmorPiercing(WeaponImplementation::MEDIUM);

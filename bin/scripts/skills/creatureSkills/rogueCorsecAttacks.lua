@@ -39,45 +39,99 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-lordNyax = Creature:new {
-	objectName = "lordNyax", -- name of the lua Object
+corsecAttack1 = {
+	attackname = "corsecAttack1",
+	animation = "creature_attack_ranged_light",
 	
-	stfName = "Lord Nyax",
-	objectCRC = 4219937413,
-	socialGroup = "nyax",
+	requiredWeaponType = RANGED,
+
+	range = 64,
+
+	damageRatio = 9.1,
+
+	speedRatio = 4,
+	coneAngle = 0,
+
+	areaRange = 0,
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 10,
 	
-	level = 250,
-	combatFlags = ATTACKABLE_FLAG,
-
-	health = 60000,
-	strength = 1000,
-	constitution = 1000,
-
-	action = 60000,
-	quickness = 1000,
-	stamina = 1000,
-
-	mind = 60000,
-	focus = 1000,
-	willpower = 1000,
-
-	height = 1,
-	armor = 2,
-	
-	kinetic = 80,
-	energy = 45,
-	electricity = 100,
-	stun = 15,
-	blast = 40,
-	heat = 20,
-	cold = 50,
-	acid = 10,
-	lightSaber = 0,
-	
-	accuracy = 300,
-
-	skills = { "nyaxAttack10", "nyaxAttack11", "nyaxAttack12", "nyaxAttack13", "nyaxAttack14", "nyaxAttack15", "nyaxAttack16", "nyaxAttack17", "nyaxAttack18", "nyaxAttack19", "nyaxAttack20", "nyaxAttack21", "nyaxAttack22", "nyaxAttack23", "nyaxAttack24"  },
-	respawnTimer = 1800
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
 }
 
-Creatures:addCreature(lordNyax, 4219937413) --- Add to global creature table
+AddRandomPoolAttackTargetSkill(corsecAttack1)
+corsecAttack2 = {
+	attackname = "corsecAttack2",
+	animation = "creature_attack_ranged_light",
+	
+	requiredWeaponType = RANGED,
+
+	range = 64,
+
+	damageRatio = 10.8,
+
+	speedRatio = 4,
+	coneAngle = 0,
+
+	areaRange = 0,
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 20,
+	blindChance = 30,
+	stunChance = 30,
+	intimidateChance = 10,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+}
+
+AddRandomPoolAttackTargetSkill(corsecAttack2)
+corsecAttack3 = {
+	attackname = "corsecAttack3",
+	animation = "creature_attack_ranged_light",
+	
+	requiredWeaponType = RANGED,
+
+	range = 64,
+
+	damageRatio = 12.5,
+
+	speedRatio = 4,
+	coneAngle = 60,
+
+	areaRange = 30,
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 30,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+}
+
+AddRandomPoolAttackTargetSkill(corsecAttack3)

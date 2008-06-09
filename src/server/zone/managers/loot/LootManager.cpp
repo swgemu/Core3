@@ -728,7 +728,7 @@ void LootManager::createArmorLoot(Creature* creature, int32 creatureLevel) {
 		
 		break;
 	case 3:
-		if (objectCRC == 0xBA7F23CD) { 
+		if (objectCRC == 0xBA7F23CD || 0x4E38DA33) { 
 			switch (System::random(8)) {
 			case 0 :
 				item = new Armor(creature, 0xF22790E, 

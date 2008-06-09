@@ -236,7 +236,7 @@ spawnCreatures(atSt, 0, 5000, 5000, 3000, 20)
 spawnCreatures(atSt, 0, 5000, -5000, 3000, 20)
 spawnCreatures(atSt, 0, -5000, 5000, 3000, 20)
 
--- Coronet -60 -4700
+-- Coronet
 spawnCreatures(stormTrooper, 0, -210, 4460, 800, 200)
 spawnCreatures(atSt, 0, -210, 4460, 800, 50)
 
@@ -308,15 +308,17 @@ spawnCreatures(plumedRasp, 0, 660, -4700, 300, 5)
 spawnCreatures(sharnaff, 0, 660, -4700, 300, 5)
 spawnCreatures(sliceHound, 0, 660, -4700, 300, 5)
 
--- Lord Nyax 1350 -322
-spawnCreatures(nyaxThug, 0, 1350, -322, 200, 40)
-spawnCreature(lordNyax, 0, 1352, -322, 13200)
 
 -- Rebel Hideout -6500 6000
 spawnCreatures(rebelSurfaceMarshal, 0, -6500, 6000, 300, 30)
 spawnCreatures(rebelGeneral, 0, -6500, 6000, 400, 60)
 
 -- Imperial Stronghold 4660 -5785
+spawnCreatures(imperialMajorGeneral, 0, 4660, -5785, 200, 5)
+spawnCreatures(imperialHighColonel, 0, 4660, -5785, 200, 5)
+spawnCreatures(imperialSurfaceMarshall, 0, 4660, -5785, 200, 5)
+spawnCreatures(imperialMajor, 0, 4660, -5785, 200, 5)
+spawnCreatures(imperialDarkTrooper, 0, 4660, -5785, 200, 15)
 spawnCreatures(stormTrooper, 0, 4660, -5785, 200, 50)
 spawnCreatures(atSt, 0, 4660, -5785, 50, 4)
 

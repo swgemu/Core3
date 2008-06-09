@@ -531,6 +531,10 @@ int CreatureManagerImplementation::addCreature(lua_State *L) {
 	else	
 		if (creature->getObjectCRC() == 0xBA7F23CD)
 			creature->setCharacterName(unicode(instance->makeStormTrooperName()));
+			
+		else if (creature->getObjectCRC() == 0x4E38DA33)
+			creature->setCharacterName(unicode(instance->makeDarkTrooperName()));
+			
 		else
 			creature->setCharacterName(unicode(instance->makeCreatureName(name)));
 	
@@ -697,6 +701,32 @@ string CreatureManagerImplementation::makeStormTrooperName() {
 	return characterName.str();
 }
 
+string CreatureManagerImplementation::makeDarkTrooperName() {
+	stringstream characterName;
+	
+	switch (System::random(4)) {
+	case 0:
+		characterName << "GL";
+		break;
+	case 1:
+		characterName << "KP";
+		break;
+	case 2:
+		characterName << "RV";
+		break;
+	case 3:
+		characterName << "TM";
+		break;
+	case 4:
+		characterName << "VX";
+		break;
+	}
+	
+	characterName << "N-" << System::random(490)+10;
+	
+	return characterName.str();
+}
+
 string CreatureManagerImplementation::makeCreatureName(string charname) {
 	
 	stringstream newname;
@@ -713,6 +743,10 @@ inline string CreatureManagerImplementation::stringify(const int x) {
 	else
 		return o.str();
 }
+
+
+
+
 
 
 

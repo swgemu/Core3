@@ -39,17 +39,52 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-stormTrooperAttack1 = {
-	attackname = "stormTrooperAttack1",
+drallAttack01 = {
+	attackname = "drallAttack01",
 	animation = "creature_attack_ranged_light",
 	
-	requiredWeaponType = RANGED,
+	requiredWeaponType = NONE,
 
 	range = 64,
 
-	damageRatio = 4.5,
+	damageRatio = 70,
 
-	speedRatio = 4,
+	speedRatio = 5,
+	coneAngle = 0,
+
+	areaRange = 0,
+	accuracyBonus = 0,
+		
+	knockdownChance = 1,
+	postureDownChance = 1,
+	postureUpChance = 0,
+	dizzyChance = 1,
+	blindChance = 1,
+	stunChance = 1,
+	intimidateChance = 1,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+}
+
+AddRandomPoolAttackTargetSkill(drallAttack01)
+
+-----------------------------------------------
+
+drallAttack02 = {
+	attackname = "drallAttack02",
+	animation = "creature_attack_ranged_medium",
+	
+	requiredWeaponType = NONE,
+
+	range = 64,
+
+	damageRatio = 90,
+
+	speedRatio = 5,
 	coneAngle = 0,
 
 	areaRange = 0,
@@ -61,7 +96,7 @@ stormTrooperAttack1 = {
 	dizzyChance = 0,
 	blindChance = 0,
 	stunChance = 0,
-	intimidateChance = 10,
+	intimidateChance = 0,
 	
 	CbtSpamBlock = "attack_block",
 	CbtSpamCounter = "attack_counter",
@@ -70,128 +105,33 @@ stormTrooperAttack1 = {
 	CbtSpamMiss = "attack_miss",
 }
 
-AddRandomPoolAttackTargetSkill(stormTrooperAttack1)
-stormTrooperAttack2 = {
-	attackname = "stormTrooperAttack2",
-	animation = "creature_attack_ranged_light",
+AddRandomPoolAttackTargetSkill(drallAttack02)
+
+-----------------------------------------------
+
+drallAttack03 = {
+	attackname = "drallAttack03",
+	animation = "creature_attack_ranged_medium",
 	
-	requiredWeaponType = RANGED,
+	requiredWeaponType = NONE,
 
 	range = 64,
 
-	damageRatio = 6.5,
+	damageRatio = 120,
 
-	speedRatio = 4,
+	speedRatio = 2,
 	coneAngle = 0,
 
 	areaRange = 0,
 	accuracyBonus = 0,
 		
-	knockdownChance = 0,
-	postureDownChance = 0,
-	postureUpChance = 0,
-	dizzyChance = 0,
-	blindChance = 10,
-	stunChance = 10,
-	intimidateChance = 10,
-	
-	CbtSpamBlock = "attack_block",
-	CbtSpamCounter = "attack_counter",
-	CbtSpamEvade = "attack_evade",
-	CbtSpamHit = "attack_hit",
-	CbtSpamMiss = "attack_miss",
-}
-
-AddRandomPoolAttackTargetSkill(stormTrooperAttack2)
-stormTrooperAttack3 = {
-	attackname = "stormTrooperAttack3",
-	animation = "creature_attack_ranged_light",
-	
-	requiredWeaponType = RANGED,
-
-	range = 64,
-
-	damageRatio = 9.3,
-
-	speedRatio = 4,
-	coneAngle = 60,
-
-	areaRange = 30,
-	accuracyBonus = 0,
-		
-	knockdownChance = 0,
-	postureDownChance = 0,
-	postureUpChance = 0,
-	dizzyChance = 0,
-	blindChance = 10,
-	stunChance = 10,
-	intimidateChance = 10,
-	
-	CbtSpamBlock = "attack_block",
-	CbtSpamCounter = "attack_counter",
-	CbtSpamEvade = "attack_evade",
-	CbtSpamHit = "attack_hit",
-	CbtSpamMiss = "attack_miss",
-}
-
-AddRandomPoolAttackTargetSkill(stormTrooperAttack3)
-
-imperialAttack10 = {
-	attackname = "imperialAttack10",
-	animation = "creature_attack_ranged_light",
-	
-	requiredWeaponType = RANGED,
-
-	range = 64,
-
-	damageRatio = 6.01,
-
-	speedRatio = 2,
-	coneAngle = 60,
-
-	areaRange = 30,
-	accuracyBonus = 0,
-		
-	knockdownChance = 0,
-	postureDownChance = 0,
-	postureUpChance = 0,
-	dizzyChance = 0,
-	blindChance = 10,
-	stunChance = 10,
-	intimidateChance = 10,
-	
-	CbtSpamBlock = "attack_block",
-	CbtSpamCounter = "attack_counter",
-	CbtSpamEvade = "attack_evade",
-	CbtSpamHit = "attack_hit",
-	CbtSpamMiss = "attack_miss",
-}
-
-AddRandomPoolAttackTargetSkill(imperialAttack10)
-
-imperialAttack11 = {
-	attackname = "imperialAttack11",
-	animation = "creature_attack_ranged_medium",
-	
-	requiredWeaponType = RANGED,
-
-	range = 64,
-
-	damageRatio = 8.1,
-
-	speedRatio = 2,
-	coneAngle = 60,
-
-	areaRange = 30,
-	accuracyBonus = 0,
-		
-	knockdownChance = 0,
+	knockdownChance = 1,
 	postureDownChance = 0,
 	postureUpChance = 0,
 	dizzyChance = 1,
-	blindChance = 10,
-	stunChance = 10,
-	intimidateChance = 10,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 1,
 	
 	CbtSpamBlock = "attack_block",
 	CbtSpamCounter = "attack_counter",
@@ -200,31 +140,33 @@ imperialAttack11 = {
 	CbtSpamMiss = "attack_miss",
 }
 
-AddRandomPoolAttackTargetSkill(imperialAttack11)
+AddRandomPoolAttackTargetSkill(drallAttack03)
 
-imperialAttack12 = {
-	attackname = "imperialAttack12",
-	animation = "creature_attack_ranged_medium",
+-----------------------------------------------
+
+drallAttack04 = {
+	attackname = "drallAttack04",
+	animation = "creature_attack_ranged_light",
 	
-	requiredWeaponType = RANGED,
+	requiredWeaponType = NONE,
 
 	range = 64,
 
-	damageRatio = 11.3,
+	damageRatio = 70,
 
-	speedRatio = 2,
-	coneAngle = 60,
+	speedRatio = 5,
+	coneAngle = 0,
 
-	areaRange = 30,
+	areaRange = 0,
 	accuracyBonus = 0,
 		
 	knockdownChance = 1,
 	postureDownChance = 1,
 	postureUpChance = 0,
-	dizzyChance = 0,
-	blindChance = 10,
-	stunChance = 10,
-	intimidateChance = 10,
+	dizzyChance = 1,
+	blindChance = 1,
+	stunChance = 1,
+	intimidateChance = 1,
 	
 	CbtSpamBlock = "attack_block",
 	CbtSpamCounter = "attack_counter",
@@ -232,5 +174,43 @@ imperialAttack12 = {
 	CbtSpamHit = "attack_hit",
 	CbtSpamMiss = "attack_miss",
 }
-AddRandomPoolAttackTargetSkill(imperialAttack12)
+
+AddRandomPoolAttackTargetSkill(drallAttack04)
+
+-----------------------------------------------
+
+drallAttack05 = {
+	attackname = "drallAttack05",
+	animation = "creature_attack_ranged_light",
+	
+	requiredWeaponType = NONE,
+
+	range = 64,
+
+	damageRatio = 70,
+
+	speedRatio = 5,
+	coneAngle = 0,
+
+	areaRange = 0,
+	accuracyBonus = 0,
+		
+	knockdownChance = 1,
+	postureDownChance = 1,
+	postureUpChance = 0,
+	dizzyChance = 1,
+	blindChance = 1,
+	stunChance = 1,
+	intimidateChance = 1,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+}
+
+AddRandomPoolAttackTargetSkill(drallAttack05)
+
+-----------------------------------------------
 

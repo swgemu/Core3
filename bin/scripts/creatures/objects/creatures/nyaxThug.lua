@@ -46,8 +46,8 @@ nyaxThug = Creature:new {
 	objectCRC = 2603521920,
 	socialGroup = "nyax",
 	
-	level = 70,
-	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
+	level = 200,
+	combatFlags = ATTACKABLE_FLAG,
 
 	health = 8000,
 	strength = 1000,
@@ -62,9 +62,17 @@ nyaxThug = Creature:new {
 	willpower = 1000,
 
 	height = 1,
-	armor = 1,
-	
-	
+	armor = 0,
+	kinetic = 0,
+	energy = 50,
+	electricity = 0,
+	stun = 0,
+	blast = 0,
+	heat = 40,
+	cold = 0,
+	acid = 40,
+	lightSaber = 0,	
+		
 	accuracy = 300,
 
 	skills = { "nyaxAttack1", "nyaxAttack2" }

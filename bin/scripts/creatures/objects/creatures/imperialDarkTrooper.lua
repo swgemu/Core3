@@ -39,45 +39,47 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-lordNyax = Creature:new {
-	objectName = "lordNyax", -- name of the lua Object
+imperialDarkTrooper = Creature:new {
+	objectName = "imperialDarkTrooper", -- name of the lua Object
 	
-	stfName = "Lord Nyax",
-	objectCRC = 4219937413,
-	socialGroup = "nyax",
+	Name = "an Imperial Dark Trooper",
+	objectCRC = 1312348723,
+	socialGroup = "imperial",
 	
-	level = 250,
-	combatFlags = ATTACKABLE_FLAG,
+	level = 500,
 
-	health = 60000,
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+
+	health = 8200,
 	strength = 1000,
 	constitution = 1000,
 
-	action = 60000,
+	action = 8200,
 	quickness = 1000,
 	stamina = 1000,
 
-	mind = 60000,
+	mind = 8200,
 	focus = 1000,
 	willpower = 1000,
-
-	height = 1,
-	armor = 2,
 	
-	kinetic = 80,
-	energy = 45,
-	electricity = 100,
-	stun = 15,
-	blast = 40,
-	heat = 20,
+	armor = 1,
+
+	kinetic = 40,
+	energy = 0,
+	electricity = 50,
+	stun = 0,
+	blast = 0,
+	heat = 50,
 	cold = 50,
-	acid = 10,
+	acid = 50,
 	lightSaber = 0,
+
+	height = 1.5,
 	
 	accuracy = 300,
 
-	skills = { "nyaxAttack10", "nyaxAttack11", "nyaxAttack12", "nyaxAttack13", "nyaxAttack14", "nyaxAttack15", "nyaxAttack16", "nyaxAttack17", "nyaxAttack18", "nyaxAttack19", "nyaxAttack20", "nyaxAttack21", "nyaxAttack22", "nyaxAttack23", "nyaxAttack24"  },
-	respawnTimer = 1800
+	skills = { "imperialAttack10", "imperialAttack11", "imperialAttack12" }
+	-- respawnTimer = 180,
 }
 
-Creatures:addCreature(lordNyax, 4219937413) --- Add to global creature table
+Creatures:addCreature(imperialDarkTrooper, 1312348723) --- Add to global creature table

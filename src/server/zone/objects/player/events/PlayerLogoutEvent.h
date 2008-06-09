@@ -63,9 +63,9 @@ public:
 		try {
 			player->wlock();
 			
-			/*if (!player->isOffline())
+			if (!player->isOffline())
 				player->userLogout(msgCounter);
-			else*/
+			else
 				player->clearLogoutEvent();
 			
 			player->unlock();

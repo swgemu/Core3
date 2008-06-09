@@ -33,51 +33,34 @@
 --provided that you include the source code of that other code when 
 --and as the GNU LGPL requires distribution of source code.
  
---Note that people who make modified versions of Engine3 are not obligated 
+--Note that people who make modified versions of Engine3 are not bligated 
 --to grant this special exception for their modified versions; 
 --it is their choice whether to do so. The GNU Lesser General Public License 
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-lordNyax = Creature:new {
-	objectName = "lordNyax", -- name of the lua Object
-	
-	stfName = "Lord Nyax",
-	objectCRC = 4219937413,
-	socialGroup = "nyax",
-	
-	level = 250,
-	combatFlags = ATTACKABLE_FLAG,
 
-	health = 60000,
-	strength = 1000,
-	constitution = 1000,
 
-	action = 60000,
-	quickness = 1000,
-	stamina = 1000,
+-- Lord Nyax 1350 -322
+spawnCreatures(nyaxThug, 0, 1350, -322, 50, 4)
+spawnCreatures(nyaxVisionary, 0, 1350, -322, 50,4)
+spawnCreatures(nyaxServant, 0, 1350, -322, 50, 4)
+spawnCreatures(nyaxMinion, 0, 1350, -322, 50, 4)
+spawnCreatures(nyaxFiend, 0, 1350, -322, 50, 4)
+spawnCreatures(nyaxDiciple, 0, 1350, -322, 50, 4)
+spawnCreatures(nyaxZealot, 0, 1350, -322, 50, 4)
 
-	mind = 60000,
-	focus = 1000,
-	willpower = 1000,
-
-	height = 1,
-	armor = 2,
-	
-	kinetic = 80,
-	energy = 45,
-	electricity = 100,
-	stun = 15,
-	blast = 40,
-	heat = 20,
-	cold = 50,
-	acid = 10,
-	lightSaber = 0,
-	
-	accuracy = 300,
-
-	skills = { "nyaxAttack10", "nyaxAttack11", "nyaxAttack12", "nyaxAttack13", "nyaxAttack14", "nyaxAttack15", "nyaxAttack16", "nyaxAttack17", "nyaxAttack18", "nyaxAttack19", "nyaxAttack20", "nyaxAttack21", "nyaxAttack22", "nyaxAttack23", "nyaxAttack24"  },
-	respawnTimer = 1800
-}
-
-Creatures:addCreature(lordNyax, 4219937413) --- Add to global creature table
+spawnCreatureInCell(nyaxFiend, 0, 0.200391, 0.25, 5.98459, 6035995)
+spawnCreatureInCell(nyaxFiend, 0, -0.494639, 0.25, 6.25404, 6035995)
+spawnCreatureInCell(nyaxDiciple, 0, 3.6188, 0.25, -4.09898, 6035996)
+spawnCreatureInCell(nyaxDiciple, 0, 2.61819, 0.25, -3.44736, 6035996)
+spawnCreatureInCell(nyaxZealot, 0, 4.81463, -6.75, 5.40781, 6035998)
+spawnCreatureInCell(nyaxVisionary, 0, 3.44729, -6.75, 4.34948, 6035998)
+spawnCreatureInCell(nyaxZealot, 0, 2.80898, -6.75, -7.19805, 6035999)
+spawnCreatureInCell(nyaxDiciple, 0, -5.37152, -13.7499, 0.459682, 6036001)
+spawnCreatureInCell(nyaxDiciple, 0, -3.0171, -13.7499, -0.894038, 6036001)
+spawnCreatureInCell(nyaxFiend, 0, -1.05993, -13.7499, -2.09377, 6036001)
+spawnCreatureInCell(nyaxFiend, 0, -5.53416, -13.75, -8.46985, 6036001)
+spawnCreatureInCell(nyaxFiend, 0, 16.6905, -13.7584, 4.76515, 6036003)
+spawnCreatureInCell(nyaxVisionary, 0, 14.4694, -13.7584, 2.8743, 6036003)
+spawnCreatureInCell(lordNyax, 0, 19.4, -11.4, -21.1, 6036004)

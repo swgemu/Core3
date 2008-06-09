@@ -124,6 +124,7 @@ public:
 	
 	//creature naming
 	string makeStormTrooperName();
+	string makeDarkTrooperName();
 	string makeCreatureName(string charname);
 
 	inline string stringify(const int x);

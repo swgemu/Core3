@@ -39,45 +39,32 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-lordNyax = Creature:new {
-	objectName = "lordNyax", -- name of the lua Object
-	
-	stfName = "Lord Nyax",
-	objectCRC = 4219937413,
-	socialGroup = "nyax",
-	
-	level = 250,
-	combatFlags = ATTACKABLE_FLAG,
 
-	health = 60000,
+afarathuLeader = Creature:new {
+	objectName = "afarathuLeader",
+
+	stfName = "an Afarathu Cult Leader",
+	objectCRC = 1841868410,
+
+	level = 15,
+	
+	health = 1400,
 	strength = 1000,
 	constitution = 1000,
 
-	action = 60000,
+	action = 1400,
 	quickness = 1000,
 	stamina = 1000,
 
-	mind = 60000,
+	mind = 1400,
 	focus = 1000,
 	willpower = 1000,
 
-	height = 1,
-	armor = 2,
-	
-	kinetic = 80,
-	energy = 45,
-	electricity = 100,
-	stun = 15,
-	blast = 40,
-	heat = 20,
-	cold = 50,
-	acid = 10,
-	lightSaber = 0,
-	
+	armor = 0,
+
 	accuracy = 300,
 
-	skills = { "nyaxAttack10", "nyaxAttack11", "nyaxAttack12", "nyaxAttack13", "nyaxAttack14", "nyaxAttack15", "nyaxAttack16", "nyaxAttack17", "nyaxAttack18", "nyaxAttack19", "nyaxAttack20", "nyaxAttack21", "nyaxAttack22", "nyaxAttack23", "nyaxAttack24"  },
-	respawnTimer = 1800
+	skills = { "afarathuAttack1", "afarathuAttack2", "afarathuAttack3" }
 }
 
-Creatures:addCreature(lordNyax, 4219937413) --- Add to global creature table
+Creatures:addCreature(afarathuLeader, 1841868410)
