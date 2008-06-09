@@ -126,6 +126,14 @@ void PlayerObjectImplementation::sendTo(Player* targetPlayer, bool doClose) {
 	
 	BaseMessage* play6 = new PlayerObjectMessage6((PlayerObject*) _this);
 	client->sendMessage(play6);
+	
+	if (targetPlayer == player) {
+		BaseMessage* play8 = new PlayerObjectMessage8(this);
+		client->sendMessage(play8);
+
+		BaseMessage* play9 = new PlayerObjectMessage9(this);
+		client->sendMessage(play9);
+	}
 
 	if (doClose)
 		close(client);

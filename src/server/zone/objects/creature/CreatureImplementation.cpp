@@ -153,124 +153,131 @@ void CreatureImplementation::init() {
 
 void CreatureImplementation::generateAttributes(SceneObject* obj) {
 	if (!obj->isPlayer())
-			return;
-			
-		Player* player = (Player*) obj;
+		return;
+
+	Player* player = (Player*) obj;
+
+	AttributeListMessage* alm = new AttributeListMessage(_this);
+
+	if (armor == 0)
+		alm->insertAttribute("armorrating", "None");
+	else if (armor == 1)
+		alm->insertAttribute("armorrating", "Light");
+	else if (armor == 2)
+		alm->insertAttribute("armorrating", "Medium");
+	else if (armor == 3)
+		alm->insertAttribute("armorrating", "Heavy");
+
+	if (kinetic == 100)
+		alm->insertAttribute("cat_armor_special_protection.armor_eff_kinetic", "100%");
+
+	if (energy == 100)
+		alm->insertAttribute("cat_armor_special_protection.armor_eff_energy", "100%");
+
+	if (electricity == 100)
+		alm->insertAttribute("cat_armor_special_protection.armor_eff_elemental_electrical", "100%");
+
+	if (stun == 100)
+		alm->insertAttribute("cat_armor_special_protection.armor_eff_stun", "100%");
 		
-		AttributeListMessage* alm = new AttributeListMessage(_this);
-		
-		if (armor == 0)
-			alm->insertAttribute("armorrating", "None");
-		else if (armor == 1)
-			alm->insertAttribute("armorrating", "Light");
-		else if (armor == 2)
-			alm->insertAttribute("armorrating", "Medium");
-		else if (armor == 3)
-			alm->insertAttribute("armorrating", "Heavy");
-			
-		if (kinetic == 100) {
-			alm->insertAttribute("cat_armor_special_protection.armor_eff_kinetic", "100%");
-		}
-		if (energy == 100) {
-			alm->insertAttribute("cat_armor_special_protection.armor_eff_energy", "100%");
-		}
-		if (electricity == 100) {
-			alm->insertAttribute("cat_armor_special_protection.armor_eff_elemental_electrical", "100%");
-		}
-		if (stun == 100) {
-			alm->insertAttribute("cat_armor_special_protection.armor_eff_stun", "100%");
-		}
-		if (blast == 100) {
-			alm->insertAttribute("cat_armor_special_protection.armor_eff_blast", "100%");
-		}
-		if (heat == 100) {
-			alm->insertAttribute("cat_armor_special_protection.armor_eff_elemental_heat", "100%");
-		}
-		if (cold == 100) {
-			alm->insertAttribute("cat_armor_special_protection.armor_eff_elemental_cold", "100%");
-		}
-		if (acid == 100) {
-			alm->insertAttribute("cat_armor_special_protection.armor_eff_elemental_acid", "100%");
-		}
-		if (lightSaber == 100) {
-			alm->insertAttribute("cat_armor_special_protection.armor_eff_restraint", "100%");
-		}
-		
-		if (kinetic > 0 && kinetic < 100) {
-			stringstream txt;
-			txt << round(getKinetic()) << "%";
-			alm->insertAttribute("cat_armor_effectiveness.armor_eff_kinetic", txt.str());
-		}
-		if (energy > 0 && energy < 100) {
-			stringstream txt;
-			txt << round(getEnergy()) << "%";
-			alm->insertAttribute("cat_armor_effectiveness.armor_eff_energy", txt.str());
-		}
-		if (electricity > 0 && electricity < 100) {
-			stringstream txt;
-			txt << round(getElectricity()) << "%";
-			alm->insertAttribute("cat_armor_effectiveness.armor_eff_elemental_electrical", txt.str());
-		}
-		if (stun > 0 && stun < 100) {
-			stringstream txt;
-			txt << round(getStun()) << "%";
-			alm->insertAttribute("cat_armor_effectiveness.armor_eff_stun", txt.str());
-		}
-		if (blast > 0 && blast < 100) {
-			stringstream txt;
-			txt << round(getBlast()) << "%";
-			alm->insertAttribute("cat_armor_effectiveness.armor_eff_blast", txt.str());
-		}
-		if (heat > 0 && heat < 100) {
-			stringstream txt;
-			txt << round(getHeat()) << "%";
-			alm->insertAttribute("cat_armor_effectiveness.armor_eff_elemental_heat", txt.str());
-		}
-		if (cold > 0 && cold < 100) {
-			stringstream txt;
-			txt << round(getCold()) << "%";
-			alm->insertAttribute("cat_armor_effectiveness.armor_eff_elemental_cold", txt.str());
-		}
-		if (acid > 0 && acid < 100) {
-			stringstream txt;
-			txt << round(getAcid()) << "%";
-			alm->insertAttribute("cat_armor_effectiveness.armor_eff_elemental_acid", txt.str());
-		}
-		if (lightSaber > 0 && lightSaber < 100) {
-			stringstream txt;
-			txt << round(getLightSaber()) << "%";
-			alm->insertAttribute("cat_armor_effectiveness.armor_eff_restraint", txt.str());
-		}
-		
-		if (kinetic == 0)
-			alm->insertAttribute("cat_armor_vulnerability.armor_eff_kinetic", "-");
-		
-		if (energy == 0)
-			alm->insertAttribute("cat_armor_vulnerability.armor_eff_energy", "-");
-		
-		if (electricity == 0)
-			alm->insertAttribute("cat_armor_vulnerability.armor_eff_elemental_electrical", "-");
-		
-		if (stun == 0)
-			alm->insertAttribute("cat_armor_vulnerability.armor_eff_stun", "-");
-		
-		if (blast == 0)
-			alm->insertAttribute("cat_armor_vulnerability.armor_eff_blast", "-");
-		
-		if (heat == 0)
-			alm->insertAttribute("cat_armor_vulnerability.armor_eff_elemental_heat", "-");
-		
-		if (cold == 0)
-			alm->insertAttribute("cat_armor_vulnerability.armor_eff_elemental_cold", "-");
-		
-		if (acid == 0)
-			alm->insertAttribute("cat_armor_vulnerability.armor_eff_elemental_acid", "-");
-		
-		if (lightSaber == 0)
-			alm->insertAttribute("cat_armor_vulnerability.armor_eff_restraint", "-");
-			
-		player->sendMessage(alm);
+	if (blast == 100)
+		alm->insertAttribute("cat_armor_special_protection.armor_eff_blast", "100%");
+
+	if (heat == 100)
+		alm->insertAttribute("cat_armor_special_protection.armor_eff_elemental_heat", "100%");
+
+	if (cold == 100)
+		alm->insertAttribute("cat_armor_special_protection.armor_eff_elemental_cold", "100%");
+
+	if (acid == 100)
+		alm->insertAttribute("cat_armor_special_protection.armor_eff_elemental_acid", "100%");
+
+	if (lightSaber == 100)
+		alm->insertAttribute("cat_armor_special_protection.armor_eff_restraint", "100%");
+
+
+	if (kinetic > 0 && kinetic < 100) {
+		stringstream txt;
+		txt << round(getKinetic()) << "%";
+		alm->insertAttribute("cat_armor_effectiveness.armor_eff_kinetic", txt.str());
+	}
 	
+	if (energy > 0 && energy < 100) {
+		stringstream txt;
+		txt << round(getEnergy()) << "%";
+		alm->insertAttribute("cat_armor_effectiveness.armor_eff_energy", txt.str());
+	}
+	
+	if (electricity > 0 && electricity < 100) {
+		stringstream txt;
+		txt << round(getElectricity()) << "%";
+		alm->insertAttribute("cat_armor_effectiveness.armor_eff_elemental_electrical", txt.str());
+	}
+	
+	if (stun > 0 && stun < 100) {
+		stringstream txt;
+		txt << round(getStun()) << "%";
+		alm->insertAttribute("cat_armor_effectiveness.armor_eff_stun", txt.str());
+	}
+	
+	if (blast > 0 && blast < 100) {
+		stringstream txt;
+		txt << round(getBlast()) << "%";
+		alm->insertAttribute("cat_armor_effectiveness.armor_eff_blast", txt.str());
+	}
+	
+	if (heat > 0 && heat < 100) {
+		stringstream txt;
+		txt << round(getHeat()) << "%";
+		alm->insertAttribute("cat_armor_effectiveness.armor_eff_elemental_heat", txt.str());
+	}
+	
+	if (cold > 0 && cold < 100) {
+		stringstream txt;
+		txt << round(getCold()) << "%";
+		alm->insertAttribute("cat_armor_effectiveness.armor_eff_elemental_cold", txt.str());
+	}
+	
+	if (acid > 0 && acid < 100) {
+		stringstream txt;
+		txt << round(getAcid()) << "%";
+		alm->insertAttribute("cat_armor_effectiveness.armor_eff_elemental_acid", txt.str());
+	}
+	
+	if (lightSaber > 0 && lightSaber < 100) {
+		stringstream txt;
+		txt << round(getLightSaber()) << "%";
+		alm->insertAttribute("cat_armor_effectiveness.armor_eff_restraint", txt.str());
+	}
+
+	if (kinetic == 0)
+		alm->insertAttribute("cat_armor_vulnerability.armor_eff_kinetic", "-");
+
+	if (energy == 0)
+		alm->insertAttribute("cat_armor_vulnerability.armor_eff_energy", "-");
+
+	if (electricity == 0)
+		alm->insertAttribute("cat_armor_vulnerability.armor_eff_elemental_electrical", "-");
+
+	if (stun == 0)
+		alm->insertAttribute("cat_armor_vulnerability.armor_eff_stun", "-");
+
+	if (blast == 0)
+		alm->insertAttribute("cat_armor_vulnerability.armor_eff_blast", "-");
+
+	if (heat == 0)
+		alm->insertAttribute("cat_armor_vulnerability.armor_eff_elemental_heat", "-");
+
+	if (cold == 0)
+		alm->insertAttribute("cat_armor_vulnerability.armor_eff_elemental_cold", "-");
+
+	if (acid == 0)
+		alm->insertAttribute("cat_armor_vulnerability.armor_eff_elemental_acid", "-");
+
+	if (lightSaber == 0)
+		alm->insertAttribute("cat_armor_vulnerability.armor_eff_restraint", "-");
+
+	player->sendMessage(alm);
 }
 
 void CreatureImplementation::reload() {
@@ -634,7 +641,7 @@ void CreatureImplementation::insertToBuilding(BuildingObject* building) {
 	}
 }
 
-void CreatureImplementation::updateZone(bool lightUpdate) {
+void CreatureImplementation::updateZone(bool lightUpdate, bool sendPackets) {
 	bool insert = false;
 	
 	try {
@@ -656,7 +663,8 @@ void CreatureImplementation::updateZone(bool lightUpdate) {
 		
 		zone->inRange(this, 128);
 
-		updateCreaturePosition(lightUpdate);
+		if (sendPackets)
+			updateCreaturePosition(lightUpdate);
 
 		zone->unlock();
 	} catch (...) {
@@ -666,7 +674,7 @@ void CreatureImplementation::updateZone(bool lightUpdate) {
 	}
 }
 
-void CreatureImplementation::updateZoneWithParent(uint64 par, bool lightUpdate) {
+void CreatureImplementation::updateZoneWithParent(uint64 par, bool lightUpdate, bool sendPackets) {
 	if (zone == NULL)
 		return;
 
@@ -716,12 +724,13 @@ void CreatureImplementation::updateZoneWithParent(uint64 par, bool lightUpdate) 
 			building->inRange(this, 128);
 		}
 
-		updateCreaturePosition(lightUpdate);
+		if (sendPackets)
+			updateCreaturePosition(lightUpdate);
 
 		zone->unlock();
 	} catch (...) {
 		zone->unlock();
-		error("Exception in PlayerImplementation::updateZoneWithParent");
+		error("Exception in CreatureImplementation::updateZoneWithParent");
 	}
 }
 
@@ -814,40 +823,52 @@ void CreatureImplementation::removeFromBuilding(BuildingObject* building) {
 }
 
 void CreatureImplementation::notifyPositionUpdate(QuadTreeEntry* obj) {
-	if (obj == this || !isCreature() || aggroedCreature != NULL || isInCombat())
-		return;
-	
-	SceneObject* scno = (SceneObject*) (((SceneObjectImplementation*) obj)->_getStub());
-	if (scno == targetObject)
-		return;
+	try {
+		if (obj == this)
+			return;
 		
-	Player* player;
-
-	switch (scno->getObjectType()) {
-	case SceneObjectImplementation::PLAYER:
-		player = (Player*) scno;
-
-		if (isAgressive() && !isDead() && !player->isIncapacitated() && !player->isDead() && isInRange(player, 32)) {
-			info("aggroing " + player->getFirstName());
-
-			aggroedCreature = player;
-
-			if (isQueued())
-				creatureManager->dequeueActivity(this);
-			
-			creatureManager->queueActivity(this, 10);
-		} else if ((parent == NULL) && !doRandomMovement && patrolPoints.isEmpty() && System::random(200) < 1) {
-			doRandomMovement = true;
-			
-			positionZ = obj->getPositionZ();
-
-			//cout << hex << player->getObjectID() << " initiating movement of " << objectID << "\n";
-			
-			if (!isQueued())
-				creatureManager->queueActivity(this, System::random(30000) + 1000);
+		if (!isCreature() || aggroedCreature != NULL || isInCombat()) {
+			return;
 		}
+			
+
+		SceneObject* scno = (SceneObject*) (((SceneObjectImplementation*) obj)->_getStub());
 		
-		break;
+		if (scno == targetObject) {
+			return;
+		}
+
+		Player* player;
+
+		switch (scno->getObjectType()) {
+		case SceneObjectImplementation::PLAYER:
+			player = (Player*) scno;
+
+			if (isAgressive() && !isDead() && !player->isIncapacitated() && !player->isDead() && isInRange(player, 32)) {
+				info("aggroing " + player->getFirstName());
+
+				aggroedCreature = player;
+
+				if (isQueued())
+					creatureManager->dequeueActivity(this);
+
+				creatureManager->queueActivity(this, 10);
+			} else if ((parent == NULL) && !doRandomMovement && patrolPoints.isEmpty() && System::random(200) < 1) {
+				doRandomMovement = true;
+
+				positionZ = obj->getPositionZ();
+
+				//cout << hex << player->getObjectID() << " initiating movement of " << objectID << "\n";
+
+				if (!isQueued())
+					creatureManager->queueActivity(this, System::random(30000) + 1000);
+			}
+
+			break;
+		}
+
+	} catch (...) {
+		error("Unreported exception caught in void CreatureImplementation::notifyPositionUpdate(QuadTreeEntry* obj)\n");
 	}
 }
 
@@ -1006,9 +1027,20 @@ void CreatureImplementation::setNextPosition() {
 	info("reached " + reachedPosition.str());
 
 	if (newCell != 0)
-		updateZoneWithParent(newCell);
+		updateZoneWithParent(newCell, false, false);
 	else
-		updateZone();
+		updateZone(false, false);
+}
+
+void CreatureImplementation::checkNewAngle(float directionangle) {
+	float radians =  M_PI / 2 - directionangle;
+	uint8 newDirectionAngle = (uint8)((radians / 6.283f) * 100);
+
+	if (newDirectionAngle != directionAngle) {
+		setRadialDirection(radians);
+
+		broadcastNextPositionUpdate();
+	}
 }
 
 bool CreatureImplementation::doMovement() {
@@ -1043,6 +1075,13 @@ bool CreatureImplementation::doMovement() {
 	} else
 		return false;
 	
+	if (cellID != 0) {
+		SceneObject* obj = zone->lookupObject(cellID);
+
+		if (obj == NULL || !obj->isCell())
+			cellID = 0;
+	}
+	
 	float dx = waypointX - positionX; 
 	float dy = waypointY - positionY;
 	
@@ -1062,14 +1101,7 @@ bool CreatureImplementation::doMovement() {
 		
 		actualSpeed = 0;
 		
-		float radians =  M_PI / 2 - directionangle;
-		uint8 newDirectionAngle = (uint8)((radians / 6.283f) * 100);
-		
-		if (newDirectionAngle != directionAngle) {
-			setRadialDirection(radians);
-			
-			broadcastNextPositionUpdate();
-		}
+		checkNewAngle(directionangle);
 		
 		return false;
 	}
@@ -1090,18 +1122,7 @@ bool CreatureImplementation::doMovement() {
 		newPositionX = positionX + (actualSpeed * (dx / dist));
 		newPositionY = positionY + (actualSpeed * (dy / dist));
 	}
-	
-	if (cellID != 0) {
-		SceneObject* obj = zone->lookupObject(cellID);
-		
-		if (obj == NULL || !obj->isCell()) {
-			resetPatrolPoints(false);
-			
-			actualSpeed = 0;
-			return false;
-		}
-	}
-	
+
 	nextPosition->setPosition(newPositionX, newPositionZ, newPositionY);
 	nextPosition->setCellID(cellID);
 

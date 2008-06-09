@@ -107,6 +107,7 @@ class CreatureImplementation : public CreatureServant, public Event {
 private:
 	void broadcastNextPositionUpdate(PatrolPoint* point = NULL);
 	void setNextPosition();
+	void checkNewAngle(float directionangle);
 
 public:
 
@@ -139,8 +140,8 @@ public:
 	void insertToZone(Zone* zone);
 	void insertToBuilding(BuildingObject* building);
 	
-	void updateZone(bool lightUpdate = false);
-	void updateZoneWithParent(uint64 par, bool lightUpdate = false);
+	void updateZone(bool lightUpdate = false, bool sendPackets = true);
+	void updateZoneWithParent(uint64 par, bool lightUpdate = false, bool sendPackets = true);
 	void updateCreaturePosition(bool lightUpdate);
 	
 	void removeFromZone(bool doLock = true);

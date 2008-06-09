@@ -2968,10 +2968,10 @@ void PlayerImplementation::loadProfessions() {
 	accuracy = getSkillMod("unarmed_accuracy"); 
 }
 
-bool PlayerImplementation::trainSkillBox(const string& name) {
+bool PlayerImplementation::trainSkillBox(const string& name, bool updateClient) {
 	ProfessionManager* professionManager = server->getProfessionManager();
 	
-	return professionManager->trainSkillBox(name, this);
+	return professionManager->trainSkillBox(name, this, updateClient);
 }
 
 void PlayerImplementation::surrenderSkillBox(const string& name) {

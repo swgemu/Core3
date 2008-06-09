@@ -236,16 +236,20 @@ void BlueFrogCreatureImplementation::selectConversationOption(int option, SceneO
 }
 
 bool BlueFrogCreatureImplementation::trainProfession(Player * player, string prof) {
-	if(player->hasSkillBox(prof))
+	if (player->hasSkillBox(prof))
 		return false;
 	
 	ProfessionManager * professionManager = server->getProfessionManager();
 	SkillBox * skill = professionManager->getSkillBox(prof);
 	
-	if(skill == NULL)
+	if (skill == NULL)
 		return false;
 	
-	return trainSkill(player, skill);
+	bool ret = trainSkill(player, skill);
+	
+	player->sendTo(player);
+	
+	return ret;
 }
 	
 bool BlueFrogCreatureImplementation::trainSkill(Player * player, SkillBox * skill) {
@@ -254,14 +258,14 @@ bool BlueFrogCreatureImplementation::trainSkill(Player * player, SkillBox * skil
 		SkillBox * sbox = skill->getRequiredSkill(i);
 		
 		if (!player->hasSkillBox(sbox->getName())) {
+			
 			if(!trainSkill(player, sbox))
 				return false;
-			Thread::sleep(250); //slow things down do it doesn't seg fault.. might need to be tweaked
 		}
 			
 	}
 	
-	bool res = player->trainSkillBox(skill->getName());
+	bool res = player->trainSkillBox(skill->getName(), false);
 	return res;
 }
 

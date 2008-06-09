@@ -47,11 +47,10 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-#include "MapLocation.h"
-
 class GetMapLocationsResponseMessage : public BaseMessage {
 	int listSize;
 	string planetName;
+	
 public:
 	GetMapLocationsResponseMessage(string planet) : BaseMessage() {
 		planetName = planet;

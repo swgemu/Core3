@@ -95,6 +95,8 @@ public:
 
 	void sendTo(Player* player);
 
+	void sendToOwner();
+
 	void notifySceneReady();
 
 	void addDatapadItem(SceneObject* item);
@@ -183,7 +185,7 @@ public:
 
 	void trainStartingProfession();
 
-	bool trainSkillBox(const string& name);
+	bool trainSkillBox(const string& name, bool updateClient = true);
 
 	void surrenderSkillBox(const string& name);
 
@@ -557,6 +559,8 @@ public:
 
 	void sendTo(Player* player);
 
+	void sendToOwner();
+
 	void notifySceneReady();
 
 	void addDatapadItem(SceneObject* item);
@@ -645,7 +649,7 @@ public:
 
 	void trainStartingProfession();
 
-	bool trainSkillBox(const string& name);
+	bool trainSkillBox(const string& name, bool updateClient);
 
 	void surrenderSkillBox(const string& name);
 
@@ -958,7 +962,7 @@ public:
 protected:
 	string _param0_queueFlourish__string_long_int_;
 	string _param4_queueAction__Player_long_int_int_string_;
-	string _param0_trainSkillBox__string_;
+	string _param0_trainSkillBox__string_bool_;
 	string _param0_surrenderSkillBox__string_;
 	string _param0_hasSkillBox__string_;
 	string _param0_addXp__string_int_bool_;

@@ -84,16 +84,14 @@ public:
 	
 	~TravelListResponseMessage() {
 		while (travelPoints.size() > 0) {
-			TravelPoint* point = travelPoints.get(0);
-			
-			travelPoints.remove(0);
+			TravelPoint* point = travelPoints.remove(0);
+
 			delete point;
 		}
 	}
     
     void addPoint(const string& name, float x, float z, float y) {
-    	TravelPoint* point = new TravelPoint(name, x, z, y);
-    	travelPoints.add(point);
+    	travelPoints.add(new TravelPoint(name, x, z, y));
     }
     
     void generateMessage() {

@@ -490,7 +490,7 @@ public:
 	void saveProfessions();
 	void loadProfessions();
 	void trainStartingProfession();
-	bool trainSkillBox(const string& name);
+	bool trainSkillBox(const string& name, bool updateClient = true);
 	void surrenderSkillBox(const string& name);
 	
 	void resetSkillBoxesIterator() {

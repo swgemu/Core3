@@ -145,6 +145,16 @@ bool CommandQueueAction::validate() {
 						clearError(4);		
 						return false;
 					}
+					
+					if (target->getParent() != creature->getParent()) {
+						clearError(0);
+						stringstream msg;
+						msg << "You cant see your target";
+						creature->sendSystemMessage(msg.str());
+						
+						target->unlock();
+						return false;
+					}
 
 					if (!target->isAttackableBy(creature)) {
 						clearError(3);
@@ -185,13 +195,6 @@ bool CommandQueueAction::validate() {
 			} else if (skill->isHealSkill()) {
 				return checkHealSkill();
 			}
-		}
-		
-		if (target->getParent() != creature->getParent()) {
-			clearError(0);
-			stringstream msg;
-			msg << "You cant see your target";
-			creature->sendSystemMessage(msg.str());
 		}
 	}
 

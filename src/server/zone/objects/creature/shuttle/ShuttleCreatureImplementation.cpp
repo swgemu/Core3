@@ -73,7 +73,7 @@ ShuttleCreatureImplementation::ShuttleCreatureImplementation(const string& Plane
 }
 
 ShuttleCreatureImplementation::~ShuttleCreatureImplementation() {
-	delete arrivalPoint;
+	arrivalPoint->finalize();
 }
 
 void ShuttleCreatureImplementation::doTakeOff() {

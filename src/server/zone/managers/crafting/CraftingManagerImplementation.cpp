@@ -217,8 +217,8 @@ void CraftingManagerImplementation::addResourceToCraft(Player * player,
 	try {
 
 		// Lock appropriate objects
-		craftingTool->lock();
-		draftSchematic->lock();
+		craftingTool->wlock();
+		draftSchematic->wlock();
 
 		// Get the resouce requirements for the chosen slot
 		int quantity = dsi->getResourceQuantity();
@@ -291,11 +291,11 @@ void CraftingManagerImplementation::addResourceToCraft(Player * player,
 		draftSchematic->unlock();
 		craftingTool->unlock();
 
-	}
-	catch(...) {
-
+	} catch(...) {
 		draftSchematic->unlock();
 		craftingTool->unlock();
+		
+		cout << "Unreported exception caught in CraftingManagerImplementation::addResourceToCraft\n";
 	}
 
 }
@@ -326,7 +326,7 @@ bool CraftingManagerImplementation::slotIsFull(Player * player,
 		} else {
 
 			try {
-				rcno->lock();
+				rcno->wlock();
 				// If resource is the same add resource to incoming stack
 				rcno->setContents(rcno->getContents() + quantityInSlot);
 				rcno->sendDeltas(player);
@@ -386,7 +386,7 @@ ResourceContainer * CraftingManagerImplementation::transferResourcesToSchematic(
 
 	} else {
 
-		rcno->lock();
+		rcno->wlock();
 		
 		// Remove proper amount of resource from chosen Container
 		rcno->setContents(rcno->getContents() - quantity);
@@ -453,8 +453,8 @@ void CraftingManagerImplementation::removeResourceFromCraft(Player * player,
 
 	try {
 
-		craftingTool->lock();
-		draftSchematic->lock();
+		craftingTool->wlock();
+		draftSchematic->wlock();
 
 		string name;
 
@@ -531,7 +531,7 @@ void CraftingManagerImplementation::putResourceBackInInventory(Player * player,
 					!= rco->getMaxContents()) {
 
 				try {
-					rco->lock();
+					rco->wlock();
 
 					// If there is room left in the stack, add the resource to it
 					if (rco->getContents() + quantity <= rco->getMaxContents()) {
@@ -613,8 +613,8 @@ void CraftingManagerImplementation::nextCraftingStage(Player * player,
 		return;
 
 	try {
-		craftingTool->lock();
-		draftSchematic->lock();
+		craftingTool->wlock();
+		draftSchematic->wlock();
 
 		// Clears all the crafting vectors
 		draftSchematic->getCraftingValues()->clearAll();
@@ -906,9 +906,9 @@ void CraftingManagerImplementation::handleExperimenting(Player * player,
 
 	try {
 
-		draftSchematic->lock();
-		craftingTool->lock();
-		tano->lock();
+		draftSchematic->wlock();
+		craftingTool->wlock();
+		tano->wlock();
 
 		StringTokenizer tokenizer(expstring);
 
@@ -1208,8 +1208,8 @@ void CraftingManagerImplementation::createObjectInInventory(Player * player,
 	int timer2 = 0;
 	CraftingTool* craftingTool = player->getCurrentCraftingTool();
 
-	CreateObjectEvent* createObjectEvent = NULL;
-	UpdateToolCountdownEvent* updateToolCountdownEvent = NULL;
+	CreateObjectEvent* createObjectEvent;
+	UpdateToolCountdownEvent* updateToolCountdownEvent;
 	
 	createObjectEvent = new CreateObjectEvent(player, craftingTool, create);
 	craftingTool->setStatusWorking();

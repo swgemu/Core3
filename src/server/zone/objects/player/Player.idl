@@ -121,6 +121,7 @@ interface Player implements CreatureObject {
 	void bounceBack();
 	
 	void sendTo(Player player);
+	void sendToOwner();
 	
 	void notifySceneReady();
 	
@@ -200,7 +201,7 @@ interface Player implements CreatureObject {
 	void loadProfessions();
 	void trainStartingProfession();
 	
-	boolean trainSkillBox(const string name);
+	boolean trainSkillBox(const string name, boolean updateClient = true);
 	void surrenderSkillBox(const string name);
 	
 	void resetSkillBoxesIterator();
