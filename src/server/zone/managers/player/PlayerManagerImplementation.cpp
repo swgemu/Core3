@@ -227,7 +227,7 @@ BaseMessage* PlayerManagerImplementation::checkPlayerName(const string& name, co
 	}
 	
 	//Name passes filters, does it already exist?
-	if (!validateName(name))
+	if (!validateName(name) || DistributedObjectBroker::instance()->lookUp("Player " + name) != NULL)
 		msg = new ClientCreateCharacterFailed("name_declined_in_use");
 	
 	return msg;
