@@ -48,11 +48,11 @@ import "../../Player";
 include "engine/service/proto/BaseMessage";
 
 interface SuiListBox implements SuiBox {
-	SuiListBox(Player player, unsigned int typeID, unsigned int boxtype = 0) {
-		super(player, typeID, boxtype);
+	SuiListBox(Player player, unsigned int boxType, unsigned int listBoxType = 0) {
+		super(player, boxType, unsigned int typeId);
 	}
 
-		void addMenuItem(const string item, unsigned long objectID = 0);
+	void addMenuItem(const string item, unsigned long objectID = 0);
 	
 	int getMenuSize();
 	unsigned long getMenuObjectID(int idx);

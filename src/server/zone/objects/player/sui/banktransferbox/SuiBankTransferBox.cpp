@@ -178,7 +178,7 @@ DistributedObjectAdapter* SuiBankTransferBoxHelper::createAdapter(DistributedObj
  *	SuiBankTransferBoxServant
  */
 
-SuiBankTransferBoxServant::SuiBankTransferBoxServant(Player* player, int typeID, unsigned int boxtype) : SuiBoxImplementation(player, typeID, boxtype) {
+SuiBankTransferBoxServant::SuiBankTransferBoxServant(Player* player, unsigned int typeID, unsigned int boxtype) : SuiBoxImplementation(player, typeID, boxtype) {
 	_classHelper = SuiBankTransferBoxHelper::instance();
 }
 

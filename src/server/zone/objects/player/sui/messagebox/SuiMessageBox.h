@@ -63,7 +63,7 @@ public:
 	SuiMessageBox* _this;
 
 public:
-	SuiMessageBoxServant(Player* player, unsigned int typeID, unsigned int boxtype);
+	SuiMessageBoxServant(Player* player, unsigned int boxtype, unsigned int typeID);
 	virtual ~SuiMessageBoxServant();
 
 	void _setStub(DistributedObjectStub* stub);

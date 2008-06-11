@@ -97,7 +97,7 @@ DistributedObjectAdapter* SuiMessageBoxHelper::createAdapter(DistributedObjectSt
  *	SuiMessageBoxServant
  */
 
-SuiMessageBoxServant::SuiMessageBoxServant(Player* player, unsigned int typeID, unsigned int boxtype) : SuiBoxImplementation(player, typeID, boxtype) {
+SuiMessageBoxServant::SuiMessageBoxServant(Player* player, unsigned int boxtype, unsigned int typeID) : SuiBoxImplementation(player, boxtype, typeID) {
 	_classHelper = SuiMessageBoxHelper::instance();
 }
 

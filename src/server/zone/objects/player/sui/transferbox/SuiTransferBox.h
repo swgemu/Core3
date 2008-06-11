@@ -75,7 +75,7 @@ public:
 	SuiTransferBox* _this;
 
 public:
-	SuiTransferBoxServant(Player* player, unsigned int typeID, unsigned int boxtype);
+	SuiTransferBoxServant(Player* player, unsigned int boxtype, unsigned int typeId);
 	virtual ~SuiTransferBoxServant();
 
 	void _setStub(DistributedObjectStub* stub);

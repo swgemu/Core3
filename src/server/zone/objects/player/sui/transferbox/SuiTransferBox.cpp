@@ -138,7 +138,7 @@ DistributedObjectAdapter* SuiTransferBoxHelper::createAdapter(DistributedObjectS
  *	SuiTransferBoxServant
  */
 
-SuiTransferBoxServant::SuiTransferBoxServant(Player* player, unsigned int typeID, unsigned int boxtype) : SuiBoxImplementation(player, typeID, boxtype) {
+SuiTransferBoxServant::SuiTransferBoxServant(Player* player, unsigned int boxtype, unsigned int typeId) : SuiBoxImplementation(player, boxtype, typeId) {
 	_classHelper = SuiTransferBoxHelper::instance();
 }
 

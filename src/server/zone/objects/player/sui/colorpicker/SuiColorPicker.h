@@ -17,7 +17,7 @@ class Player;
 
 class SuiColorPicker : public SuiBox {
 public:
-	SuiColorPicker(Player* player, unsigned int typeID, unsigned int boxtype);
+	SuiColorPicker(Player* player, unsigned long long objectId, unsigned int boxtype);
 
 	unsigned long long getObjectID();
 
@@ -67,7 +67,7 @@ public:
 	SuiColorPicker* _this;
 
 public:
-	SuiColorPickerServant(Player* player, unsigned int typeID, unsigned int boxtype);
+	SuiColorPickerServant(Player* player, unsigned int boxtype, unsigned int typeId);
 	virtual ~SuiColorPickerServant();
 
 	void _setStub(DistributedObjectStub* stub);

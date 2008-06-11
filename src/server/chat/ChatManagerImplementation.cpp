@@ -391,9 +391,18 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 			if (userManager->isAdmin(player->getFirstName())) {
 				float x = tokenizer.getFloatToken();
 				float y = tokenizer.getFloatToken();
+				
+				uint64 cellID = 0;
+				
+				if (tokenizer.hasMoreTokens())
+					cellID = tokenizer.getLongToken();
 			
-				if (x >= -8192 && x < 8192 && y >= -8192 && y < 8192)
-					player->doWarp(x, y);
+				if (x >= -8192 && x < 8192 && y >= -8192 && y < 8192) {
+					if (cellID == 0)
+						player->doWarp(x, y);
+					else
+						player->doWarp(x, y, -1600.f, 0, cellID);
+				}
 			}
 		} else if (cmd == "@warpTo") {
 			if (userManager->isAdmin(player->getFirstName())) {

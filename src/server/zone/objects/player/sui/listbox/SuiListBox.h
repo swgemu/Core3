@@ -17,7 +17,7 @@ class Player;
 
 class SuiListBox : public SuiBox {
 public:
-	SuiListBox(Player* player, unsigned int typeID, unsigned int boxtype = 0);
+	SuiListBox(Player* player, unsigned int boxType, unsigned int listBoxType = 0);
 
 	void addMenuItem(const string& item, unsigned long long objectID = 0);
 
@@ -77,7 +77,7 @@ public:
 	SuiListBox* _this;
 
 public:
-	SuiListBoxServant(Player* player, unsigned int typeID, unsigned int boxtype);
+	SuiListBoxServant(Player* player, unsigned int boxType, unsigned int typeId);
 	virtual ~SuiListBoxServant();
 
 	void _setStub(DistributedObjectStub* stub);

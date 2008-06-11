@@ -14,8 +14,8 @@
  *	SuiInputBoxStub
  */
 
-SuiInputBox::SuiInputBox(Player* player, unsigned int typeID, unsigned int boxttype) : SuiBox(DummyConstructorParameter::instance()) {
-	_impl = new SuiInputBoxImplementation(player, typeID, boxttype);
+SuiInputBox::SuiInputBox(Player* player, unsigned int boxType, int inputtype) : SuiBox(DummyConstructorParameter::instance()) {
+	_impl = new SuiInputBoxImplementation(player, boxType, inputtype);
 	_impl->_setStub(this);
 }
 
@@ -156,7 +156,7 @@ DistributedObjectAdapter* SuiInputBoxHelper::createAdapter(DistributedObjectStub
  *	SuiInputBoxServant
  */
 
-SuiInputBoxServant::SuiInputBoxServant(Player* player, unsigned int typeID, unsigned int boxttype) : SuiBoxImplementation(player, typeID, boxttype) {
+SuiInputBoxServant::SuiInputBoxServant(Player* player, unsigned int boxType, unsigned int typeId) : SuiBoxImplementation(player, boxType, typeId) {
 	_classHelper = SuiInputBoxHelper::instance();
 }
 

@@ -83,7 +83,7 @@ public:
 	SuiBankTransferBox* _this;
 
 public:
-	SuiBankTransferBoxServant(Player* player, int typeID, unsigned int boxtype);
+	SuiBankTransferBoxServant(Player* player, unsigned int typeID, unsigned int boxtype);
 	virtual ~SuiBankTransferBoxServant();
 
 	void _setStub(DistributedObjectStub* stub);

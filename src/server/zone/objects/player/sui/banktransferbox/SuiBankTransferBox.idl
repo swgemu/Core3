@@ -49,7 +49,7 @@ include "engine/service/proto/BaseMessage";
 
 interface SuiBankTransferBox implements SuiBox {
 	SuiBankTransferBox(Player player, unsigned int boxtype) {
-		super(player, int typeID, boxtype);
+		super(player, unsigned int typeID, boxtype);
 	}
 
 	void addCash(int cash);
