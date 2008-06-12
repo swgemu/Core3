@@ -272,5 +272,3 @@ DistributedObjectStub* UserManagerServant::_getStub() {
 	return _this;
 }
 
-
-

@@ -53,6 +53,8 @@ which carries forward this exception.
 #include "../../ZoneClient.h"
 #include "../player/PlayerManager.h"
 
+#include "../../../login/packets/ErrorMessage.h"
+
 UserManagerImplementation::UserManagerImplementation(ZoneServer* serv) : UserManagerServant(), Logger("UserManager") {
 	server = serv;
 
@@ -184,9 +186,10 @@ bool UserManagerImplementation::kickUser(string& name, string& admin) {
 		if (client == NULL)
 			return false;
 		
-		player->sendSystemMessage("You were disconnected from the server by an administrator. Don't log in before sorting out the issue with an admin on the forums or (better) IRC to avoid getting a perma-ban.\n");
-		//Give the to-kick-client time to receive this message before the disconnect takes places - since its only this player-thread which is paused....no problem at all
-		Thread::sleep(3000);
+		ErrorMessage* errMsg = new ErrorMessage(admin.c_str(), "You were disconnected from the server. "
+				"Don't log in before sorting out the issue with an admin on the forums "
+				"or (better) IRC to avoid getting a perma-ban.", 0);
+		player->sendMessage(errMsg);
 
 		server->unlock();
 
@@ -194,7 +197,7 @@ bool UserManagerImplementation::kickUser(string& name, string& admin) {
 
 		server->lock();
 
-		info("user \'" + name + "\' kicked", true);
+		info("user \'" + name + "\' kicked by \'" + admin + "\'" , true);
 		
 		return true;
 	} else {

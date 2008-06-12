@@ -786,5 +786,3 @@ DistributedObjectStub* ZoneServerServant::_getStub() {
 	return _this;
 }
 
-
-
