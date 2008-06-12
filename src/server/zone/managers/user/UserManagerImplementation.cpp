@@ -170,6 +170,40 @@ bool UserManagerImplementation::banUserByName(string& name, string& admin) {
 	}
 }
 
+bool UserManagerImplementation::kickUser(string& name, string& admin) {
+	if (!isAdmin(admin))
+		return false; 
+	
+	PlayerManager* playerManager = server->getPlayerManager();
+	
+	String::toLower(name);
+	Player* player = playerManager->getPlayer(name);
+
+	if (player != NULL) {
+		ZoneClient* client = player->getClient();
+		if (client == NULL)
+			return false;
+		
+		player->sendSystemMessage("You were disconnected from the server by an administrator. Don't log in before sorting out the issue with an admin on the forums or (better) IRC to avoid getting a perma-ban.\n");
+		//Give the to-kick-client time to receive this message before the disconnect takes places - since its only this player-thread which is paused....no problem at all
+		Thread::sleep(3000);
+
+		server->unlock();
+
+		client->disconnect();
+
+		server->lock();
+
+		info("user \'" + name + "\' kicked", true);
+		
+		return true;
+	} else {
+		info("unable to kick user \'" + name + "\'", true);
+		
+		return false;
+	}
+}
+
 void UserManagerImplementation::changeUserCap(int amount) {
 	userCap += amount;
 	

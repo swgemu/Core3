@@ -89,6 +89,8 @@ interface ZoneServer {
 
 	// administration methods
 	boolean banUser(string name, string admin);
+	
+	boolean kickUser(string name, string admin);
 
 	void changeUserCap(int amount = 50);
 

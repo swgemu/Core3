@@ -89,12 +89,26 @@ bool UserManager::banUserByName(string& name, string& admin) {
 		return ((UserManagerImplementation*) _impl)->banUserByName(name, admin);
 }
 
-void UserManager::changeUserCap(int amount) {
+bool UserManager::kickUser(string& name, string& admin) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 11);
+		method.addAsciiParameter(name);
+		method.addAsciiParameter(admin);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((UserManagerImplementation*) _impl)->kickUser(name, admin);
+}
+
+void UserManager::changeUserCap(int amount) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 12);
 		method.addSignedIntParameter(amount);
 
 		method.executeWithVoidReturn();
@@ -107,7 +121,7 @@ bool UserManager::isBannedUser(unsigned int ipid) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, 13);
 		method.addUnsignedIntParameter(ipid);
 
 		return method.executeWithBooleanReturn();
@@ -120,7 +134,7 @@ int UserManager::getUserCap() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 14);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -154,12 +168,15 @@ Packet* UserManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		resp->insertBoolean(banUserByName(inv->getAsciiParameter(_param0_banUserByName__string_string_), inv->getAsciiParameter(_param1_banUserByName__string_string_)));
 		break;
 	case 11:
-		changeUserCap(inv->getSignedIntParameter());
+		resp->insertBoolean(kickUser(inv->getAsciiParameter(_param0_kickUser__string_string_), inv->getAsciiParameter(_param1_kickUser__string_string_)));
 		break;
 	case 12:
-		resp->insertBoolean(isBannedUser(inv->getUnsignedIntParameter()));
+		changeUserCap(inv->getSignedIntParameter());
 		break;
 	case 13:
+		resp->insertBoolean(isBannedUser(inv->getUnsignedIntParameter()));
+		break;
+	case 14:
 		resp->insertSignedInt(getUserCap());
 		break;
 	default:
@@ -187,6 +204,10 @@ void UserManagerAdapter::banUser(const string& ipaddr) {
 
 bool UserManagerAdapter::banUserByName(string& name, string& admin) {
 	return ((UserManagerImplementation*) impl)->banUserByName(name, admin);
+}
+
+bool UserManagerAdapter::kickUser(string& name, string& admin) {
+	return ((UserManagerImplementation*) impl)->kickUser(name, admin);
 }
 
 void UserManagerAdapter::changeUserCap(int amount) {
@@ -250,4 +271,6 @@ void UserManagerServant::_setStub(DistributedObjectStub* stub) {
 DistributedObjectStub* UserManagerServant::_getStub() {
 	return _this;
 }
+
+
 

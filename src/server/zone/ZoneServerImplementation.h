@@ -154,6 +154,8 @@ public:
 	
 	// user control methods
 	bool banUser(string& name, string& admin);
+	
+	bool kickUser(string& name, string& admin);
 
 	void changeUserCap(int amount = 50);
 

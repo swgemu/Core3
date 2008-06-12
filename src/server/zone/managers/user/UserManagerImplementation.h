@@ -84,6 +84,7 @@ public:
 	
 	void banUser(const string& ipaddr);
 	bool banUserByName(string& name, string& admin);
+	bool kickUser(string& name, string& admin);
 
 	void changeUserCap(int amount);
 		

@@ -413,6 +413,33 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 				if (target != NULL)
 					player->doWarp(target->getPositionX(), target->getPositionY(), 0, 64);
 			}
+			
++		} else if(cmd == "@kick") {
++			if (userManager->isAdmin(player->getFirstName())) {
++				string name;
++				
++				try {
++					tokenizer.getStringToken(name);
++				} catch (...) {
++					SceneObject* target = player->getTarget();
++					
++					if (target != NULL && target->isPlayer())
++						name = ((Player*) target)->getFirstName();
++				}
++				
++				if (name != player->getFirstName()) {
++					if (server->kickUser(name, player->getFirstName())) {
++						player->sendSystemMessage("player \'" + name + "\' has been kicked.");
++					} else 
++						player->sendSystemMessage("unable to kick player \'" + name + "\'");
++				
++				} else 
++					player->sendSystemMessage("You can't kick yourself. Use /logout please. \n");
++			}
+ 		} else if (cmd == "@kill") {
+ 			if (userManager->isAdmin(player->getFirstName())) {
+ 				SceneObject* victim = (CreatureObject*) player->getTarget();
+
 		} /*else if (cmd == "@playAnim") {
 			string anim;
 			tokenizer.getStringToken(anim);

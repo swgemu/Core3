@@ -56,6 +56,7 @@ interface UserManager {
 	
 	void banUser(const string ipaddr);
 	boolean banUserByName(string name, string admin);
+	boolean kickUser(string name, string admin);
 
 	void changeUserCap(int amount);
 		

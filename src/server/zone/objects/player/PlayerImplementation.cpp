@@ -733,7 +733,7 @@ void PlayerImplementation::insertToZone(Zone* zone) {
 	
 	if (owner == NULL)
 		return;
-
+	
 	try {
 		zone->lock();
 
@@ -1152,23 +1152,60 @@ void PlayerImplementation::switchMap(int planetid) {
 void PlayerImplementation::doWarp(float x, float y, float z, float randomizeDistance, uint64 parentID) {
 	if (zone == NULL)
 		return;
-
-	removeFromZone();
 	
+	//We need to check some things here:
+	//1. Is the submitted cellID REALLY a cell ? If not, server exception
+	//2. Is the submitted cellID on the same planet ? If not, client stuck (cuz parent zone index is wrong)
+	//3. Is the submitted cellID generally a valid object-ID ? If not, server exception (lookup object has no try...catch block)
+	// To avoid dealing with many classes and exceptions handlers in many function, we go the easier way here:
+	//The DB-table "staticobjects" is holding all the infos we need: zoneID, objectID, parentID
+	//We fire up a query on the table, so we are able to validate the parameters here with much less overhead
+	
+	if (parentID != 0) {
+		stringstream qry;
+		int cellsPlanet;
+		uint64 cellsParent;
+	
+		qry << "SELECT * from staticobjects where objectid ='" << parentID << "';";	
+		ResultSet* res = ServerDatabase::instance()->executeQuery(qry);
+		
+		if (res->next()) {
+			cellsPlanet = res->getInt(0);
+			cellsParent = res->getInt(2);		
+		} else {
+			sendSystemMessage("The submitted cellID is no valid object in this game, maybe a typo? Warp cancelled - make sure you submit a valid cellID! \n"); 
+			delete res;
+			return;
+		}
+		delete res;
+		
+		if (cellsPlanet != getZoneIndex()) {
+			sendSystemMessage("You can only warp into cells on the same planet (for now).\n"); 
+			return;
+		}
+			
+		if (cellsParent == 0) {
+			sendSystemMessage("The submitted cellID is not a cell (maybe it's the parent of the cell) - Warp cancelled - make sure you submit a valid cellID! \n"); 
+			return;
+		}
+	}
+		
+	removeFromZone();
+
 	parent = NULL;
 	
 	positionX = x;
 	positionY = y;
 	positionZ = z;
-	
+		
 	if (parentID != 0)
 		parent = zone->lookupObject(parentID);
-	
+		
 	setIgnoreMovementTests(10);
 	
 	if (randomizeDistance != 0)
 		randomizePosition(randomizeDistance);
-	
+
 	insertToZone(zone);
 }	
 

@@ -23,6 +23,8 @@ public:
 
 	bool banUserByName(string& name, string& admin);
 
+	bool kickUser(string& name, string& admin);
+
 	void changeUserCap(int amount);
 
 	bool isBannedUser(unsigned int ipid);
@@ -55,6 +57,8 @@ public:
 
 	bool banUserByName(string& name, string& admin);
 
+	bool kickUser(string& name, string& admin);
+
 	void changeUserCap(int amount);
 
 	bool isBannedUser(unsigned int ipid);
@@ -66,6 +70,8 @@ protected:
 	string _param0_banUser__string_;
 	string _param0_banUserByName__string_string_;
 	string _param1_banUserByName__string_string_;
+	string _param0_kickUser__string_string_;
+	string _param1_kickUser__string_string_;
 };
 
 class UserManagerHelper : public DistributedObjectClassHelper, public Singleton<UserManagerHelper> {

@@ -59,6 +59,8 @@ public:
 
 	bool banUser(string& name, string& admin);
 
+	bool kickUser(string& name, string& admin);
+
 	void changeUserCap(int amount = 50);
 
 	void addTotalSentPacket(int count);
@@ -143,6 +145,8 @@ public:
 
 	bool banUser(string& name, string& admin);
 
+	bool kickUser(string& name, string& admin);
+
 	void changeUserCap(int amount);
 
 	void addTotalSentPacket(int count);
@@ -188,6 +192,8 @@ public:
 protected:
 	string _param0_banUser__string_string_;
 	string _param1_banUser__string_string_;
+	string _param0_kickUser__string_string_;
+	string _param1_kickUser__string_string_;
 };
 
 class ZoneServerHelper : public DistributedObjectClassHelper, public Singleton<ZoneServerHelper> {

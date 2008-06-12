@@ -474,6 +474,16 @@ bool ZoneServerImplementation::banUser(string& name, string& admin) {
 	return result;
 }
 
+bool ZoneServerImplementation::kickUser(string& name, string& admin) {
+	lock();
+
+	bool result = userManager->kickUser(name, admin);
+
+	unlock();
+	
+	return result;
+}
+
 void ZoneServerImplementation::changeUserCap(int amount) {
 	lock();
 
