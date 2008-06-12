@@ -372,7 +372,7 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 		if (cmd == "@help") {
 			if (userManager->isAdmin(player->getFirstName())) {
 				player->sendSystemMessage("Command List: map, warp, printRoomTree, banUser, kill, muteChat, "
-						"users, setWeather, ticketPurchase, awardBadge, setGuildID, createGuild"
+						"users, setWeather, ticketPurchase, awardBadge, setGuildID, createGuild, kick, killArea, kickArea"
 						"deleteGuildByID, npcc, setAdminLevel, dbStats, dbShowDeleted, dbPurge, getDirection"); 
 			}
 		} else if (cmd == "@map") {
@@ -435,7 +435,34 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 				
 				} else 
 					player->sendSystemMessage("You can't kick yourself. Use /logout please. \n");
-			}
+			}			
+		} else if (cmd == "@kickArea") {
+			if (userManager->isAdmin(player->getFirstName())) {
+				string name = player->getFirstName();
+				//Default
+				int meter = 32;
+				//..as you wish my master
+				meter = tokenizer.getIntToken();				
+				
+				for (int i = 0; i < player->inRangeObjectCount(); ++i) {
+					SceneObject* obj = (SceneObject*) (((SceneObjectImplementation*) player->getInRangeObject(i))->_getStub());
+					
+					if (obj->isPlayer()) {					
+						Player* otherPlayer = (Player*) obj;
+						string otherName = otherPlayer->getFirstName();
+						
+						if (otherName != name && !userManager->isAdmin(otherName) && player->isInRange(otherPlayer, meter)) {						
+							if (server->kickUser(otherName, name)) {
+								player->sendSystemMessage("player \'" + otherName + "\' has been kicked.");
+								i--;
+							} else 
+								player->sendSystemMessage("unable to kick player \'" + otherName + "\'");						
+						}
+					}
+				
+				}
+			
+			}			
  		} /*else if (cmd == "@playAnim") {
 			string anim;
 			tokenizer.getStringToken(anim);
@@ -497,6 +524,32 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 							victim->unlock();
 					}
 				}
+			}
+		} else if (cmd == "@killArea") {
+			if (userManager->isAdmin(player->getFirstName())) {
+				string name = player->getFirstName();
+				//Default
+				int meter = 32;
+				//..as you wish my master
+				meter = tokenizer.getIntToken();				
+				
+				for (int i = 0; i < player->inRangeObjectCount(); ++i) {
+					SceneObject* obj = (SceneObject*) (((SceneObjectImplementation*) player->getInRangeObject(i))->_getStub());
+					
+					if (obj->isPlayer()) {					
+						Player* otherPlayer = (Player*) obj;
+						string otherName = otherPlayer->getFirstName();
+						
+						if (otherName != name && !userManager->isAdmin(otherName) && player->isInRange(otherPlayer, meter)) {			
+							try {
+								((Player*) otherPlayer)->kill();
+								player->sendSystemMessage("player \'" + otherName + "\' has been killed.");
+							} catch (...) {
+								player->sendSystemMessage("unable to kill player \'" + otherName + "\'");
+							}
+						}
+					}
+				}			
 			}
 		} else if (cmd == "@muteChat") {
 			if (userManager->isAdmin(player->getFirstName())) {
@@ -914,7 +967,11 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 				player->sendSystemMessage(message.str());
 			}		
 		} else if (cmd == "@buff") {
-			if (player->getHealthMax() == player->getBaseHealth()) {
+				//Farmer_John, 12. June 2008 :
+				//i think its pretty safe to remove the first If-line here, because the applyBuff function itself is now removing buffs (based on CRC) before applying
+				//the new buff - which is very correct btw, this was called "overbuffing" in Pre-CU.
+				//By disabling the next line, the constantly forum-reported "buff bug" would be history...
+				//if (player->getHealthMax() == player->getBaseHealth()) {
 
 				int buffValue = 3000;
 				//float buffDuration = 10.0f; // Testing purposes
@@ -975,12 +1032,11 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 				bo = new BuffObject(buff);
 				player->applyBuff(bo);
 
-				player->sendSystemMessage("Buffs applied");
-				
+				player->sendSystemMessage("Buffs applied");				
 
-			} else {
-				player->sendSystemMessage("Already buffed");
-			}
+			//} else {
+			//	player->sendSystemMessage("Already buffed");
+			//}
 /*		} else if (cmd == "@buffcrc") {
 			
 			
@@ -1814,6 +1870,8 @@ void ChatManagerImplementation::destroyRoom(ChatRoom* room) {
 	
 	room->finalize();
 }
+
+
 
 
 
