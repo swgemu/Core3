@@ -48,11 +48,11 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-class ImageDesignMessage : public ObjectControllerMessage {
+class ImageDesignStartMessage : public ObjectControllerMessage {
 public:
+	ImageDesignStartMessage(Player* object, Player* designer, Player* client, uint64 tent, int type = 0) 
+		: ObjectControllerMessage(object->getObjectID(), 0x0B, 0x023A) {
 
-	ImageDesignMessage(Player* player, Player* designer, Player* client, uint64 tent, int type = 0) 
-		: ObjectControllerMessage(player->getObjectID(), 0x0B, 0x023A) {
 			
 		insertLong(designer->getObjectID()); // Image Designer?
 		insertLong(client->getObjectID()); // Image Design Target
@@ -61,6 +61,116 @@ public:
 	}
 };
 
+
+
+class ImageDesignChangeMessage : public ObjectControllerMessage {
+
+/*	string hairObj;
+	string unknown_s;
+	string emote;
+	
+	int count_float_attribs;
+	int count_int_attribs;
+	
+	int size_of_float_attribs;
+	int size_of_int_attribs;*/
+	
+public:
+	ImageDesignChangeMessage(uint64 object, uint64 designer, uint64 client, uint64 tent, int type = 0) 
+		: ObjectControllerMessage(object, 0x0B, 0x0238) {
+
+		insertLong(designer); // Image Designer? 
+		insertLong(client); // Image Design Target
+		insertLong(tent); // Boolish - in an ID tent? or a cell id?
+		insertByte(type); // 0 = designer, 1 = target
+	}
+
+/*
+		insertLong(designer->getObjectID()); // Image Designer? 
+		insertLong(client->getObjectID()); // Image Design Target
+		insertLong(tent); // Boolish - in an ID tent? or a cell id?
+		insertByte(type); // 0 = designer, 1 = target
+
+		hairObj = "";
+		insertAscii(hairObj);
+		
+		unknown_s  = "";
+		insertAscii(unknown_s);
+		
+		insertInt(0); // unknonwn int 1
+		insertInt(0); // unknonwn int 2
+		
+		insertInt(0); // required payment
+		insertInt(0); // offered payment
+		
+		insertByte(0); // designer accepted?
+		
+		insertInt(0); // unknown int 3
+		
+		insertByte(0); // stat_migration??
+		
+		insertInt(0); // unknown int 4
+		insertInt(0); // unknown int 5
+		insertInt(0); // unknown int 6
+		insertInt(0); // unknown int 7
+		
+		count_float_attribs = 0;
+		size_of_float_attribs = 4;
+		//insertInt(count_float_attribs); // # of float attribs
+		
+
+		
+		
+		count_int_attribs = 0;
+		//size_of_int_attribs = 4;
+		//insertInt(count_int_attribs); // # of int attribs
+		
+		//emote = "";
+		//insertAscii(emote);
+		 */
+
+	
+	/*
+	void insertIntAttrListCount()
+	{
+		insertInt(0);
+	}
+
+	void insertFloatAttrListCount()
+	{
+		insertInt(0);
+	}
+	
+	void insertAttribute(const string& attribute, uint32 value) {		
+		insertAscii(attribute.c_str());
+		insertInt(Value);
+		
+		
+		updateIntAttrListCount();
+	}
+
+	void insertAttribute(const string& attribute, float value) {		
+		insertAscii(attribute.c_str());
+		insertFloat(Value);
+		
+		updateFloatAttrListCount();
+	}
+
+	void updateIntAttrListCount() {
+		// 8 + 8 + 8 + 1 + 2 + hairObj.size + 2 + unknown_s.size + 
+		// 4 + 4 + 4 + 4 + 1 + 4 + 1 + 4 + 4 + 4 + 4
+		
+		insertInt(countLocation, ++listcount);
+	}
+
+	void updateFloatAttrListCount() {
+		// 8 + 8 + 8 + 1 + 2 + hairObj.size + 2 + unknown_s.size + 
+		// 4 + 4 + 4 + 4 + 1 + 4 + 1 + 4 + 4 + 4 + 4
+		
+		insertInt(countLocation, ++listcount);
+	}*/
+
+};
 
 /*
 class ImageDesignDisplayUI : public BaseMessage {

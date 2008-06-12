@@ -930,18 +930,16 @@ public:
 	}
 	
 	bool hasBuff(const uint32 buffCRC) {
-		return creatureBuffs.containsKey(buffCRC);
+		return creatureBuffs.contains(buffCRC);
 	}
 
 	bool hasSpice() {
-		creatureBuffs.resetIterator();
-		
-		while (creatureBuffs.hasNext()) {
-			Buff *buff = creatureBuffs.getNextValue();
+		for(int i = 0; i < creatureBuffs.size(); i++)
+		{
+			Buff *buff = creatureBuffs.get(i);
 			if(buff != NULL && buff->getBuffType() == BuffType::SPICE)
 				return true;
 		}
-		
 		return false;
 	}
 	

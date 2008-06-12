@@ -436,10 +436,10 @@ void ZonePacketHandler::handleObjectControllerMessage(Message* pack) {
 				ObjectControllerMessage::parseRadialRequest(player, pack, processServer->getRadialManager());
 				break;
 			case 0x238:
-				ObjectControllerMessage::parseImageDesignerUpdate(player, pack);
+				ObjectControllerMessage::parseImageDesignChange(player, pack);
 				break;
 			case 0x239:
-				ObjectControllerMessage::parseImageDesignerCancel(player, pack);
+				ObjectControllerMessage::parseImageDesignCancel(player, pack);
 				break;
 			}
 			break;

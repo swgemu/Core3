@@ -3705,7 +3705,7 @@ void CreatureObjectImplementation::removeBuff(const uint32 buffCRC, bool remove)
 	if (buff == NULL) {
 		// if we should delete from the list then lets kill it
 		if (remove)
-			creatureBuffs.remove(buffCRC);
+			creatureBuffs.drop(buffCRC);
 		return;
 	}
 
@@ -3718,7 +3718,7 @@ void CreatureObjectImplementation::removeBuff(const uint32 buffCRC, bool remove)
 	
 	// remove from list
 	if (remove)
-		creatureBuffs.remove(buffCRC);
+		creatureBuffs.drop(buffCRC);
 }
 
 
@@ -3771,14 +3771,12 @@ void CreatureObjectImplementation::removeBuffs(bool doUpdateCreature) {
 		// TODO: cleanup the creatureBuffs possibly?
 		return;
 	}
-	
-	creatureBuffs.resetIterator();
-	
-	while (creatureBuffs.hasNext()) {
-		Buff *buff = creatureBuffs.getNextValue();
+		
+	for(int i = 0; i < creatureBuffs.size(); i++)
+	{
+		Buff *buff = creatureBuffs.get(i);
 		if (buff != NULL) {		
 			removeBuff(buff->getBuffCRC(), false);
-			
 			// delete buff; // don't need this removeBuff does it
 		}
 	}

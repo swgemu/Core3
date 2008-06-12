@@ -48,7 +48,7 @@ which carries forward this exception.
 #include "engine/engine.h"
 #include "Buff.h"
 
-class BuffList : public HashTable<uint32, Buff*> , public HashTableIterator<uint32, Buff*> {
+class BuffList : public VectorMap<uint32, Buff*> {
 	
 	int hash(const uint32& key) {
         return key;
@@ -56,7 +56,7 @@ class BuffList : public HashTable<uint32, Buff*> , public HashTableIterator<uint
 
 
 public:
-	BuffList() : HashTable<uint32, Buff*>(50) , HashTableIterator<uint32, Buff*>(this) {
+	BuffList() : VectorMap<uint32, Buff*>() {
 		setNullValue(NULL);
 	}	
 }; 

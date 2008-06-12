@@ -1000,35 +1000,212 @@ void ObjectControllerMessage::parseRadialRequest(Player* player, Message* pack, 
 	radialManager->handleRadialRequest(player, pack);
 }
 
-void ObjectControllerMessage::parseImageDesignerUpdate(Player* player, Message* pack) {
-	/*
-	player->sendSystemMessage("Image Designer Update");
-	player->info(pack->toString());
-	
-	uint64 object = pack->parseLong();
-	pack->shiftOffset(4); // size ?
-	
-	uint64 designer = pack->parseLong();
-	uint64 target = pack->parseLong();
-	uint64 tent = pack->parseLong();
-	uint8 type = pack->parseByte();
-	string hairobject;
-	pack->parseAscii(hairobject);
-	
-	string haircust;
-	pack->parseAscii(haircust); //grab the hair cust data
+void ObjectControllerMessage::parseImageDesignChange(Player* player, Message* pack) {
 
-	stringstream msg;
-	msg << "imagedesignerupdate, object:" << hex << object << dec << " target:" << hex << target << dec << " tent: " << hex << tent;
-	player->info(msg.str());
-	 */
+	/* This works - but not ready to uncomment code yet
+	try {
+		player->sendSystemMessage("Image Designer Update");
+		player->info("Image Design Change - Original Packet");
+		player->info(pack->toString());
+	
+
+		//target_player->sendMessage(msg_target);
+		
+		// Read the Packet
+		uint64 object = pack->parseLong();
+		pack->shiftOffset(4); // size ?
+		
+		uint64 designer = pack->parseLong();
+		uint64 target = pack->parseLong();
+		uint64 tent = pack->parseLong();
+		
+		uint8 type = pack->parseByte();
+	
+		ImageDesignChangeMessage* msg_designer = new ImageDesignChangeMessage(designer, designer, target, tent, 0);
+		ImageDesignChangeMessage* msg_target = new ImageDesignChangeMessage(target, designer, target, tent, 0);
+		
+
+		// Parse
+		string hairObject;
+		pack->parseAscii(hairObject);
+	
+		// Pack 
+		msg_designer->insertAscii(hairObject);
+		msg_target->insertAscii(hairObject);
+	
+		// Parse
+		string unknownstring_1;
+		pack->parseAscii(unknownstring_1);
+	
+		// Pack 
+		msg_designer->insertAscii(unknownstring_1);
+		msg_target->insertAscii(unknownstring_1);
+		
+		uint32 unknown_int_1 = pack->parseInt(); //  02 00 00 00  was set in stat migration button, zero for other?
+		uint32 timestamp = pack->parseInt(); //   timestamp 1212950001 (2008-06-8 18:33:21Z)	
+	
+		// Pack 
+		msg_designer->insertInt(unknown_int_1);
+		msg_designer->insertInt(timestamp);
+		msg_target->insertInt(unknown_int_1);
+		msg_target->insertInt(timestamp);
+		
+		// Parse
+		uint32 required_payment = pack->parseInt();
+		uint32 offered_payment = pack->parseInt();
+	
+		// Pack 
+		msg_designer->insertInt(required_payment);
+		msg_designer->insertInt(offered_payment);
+		msg_target->insertInt(required_payment);
+		msg_target->insertInt(offered_payment);
+		
+		uint8 designer_accepted = pack->parseByte();
+	
+		// Pack 
+		msg_designer->insertByte(designer_accepted);
+		msg_target->insertByte(designer_accepted);
+		
+		// Parse
+		uint32 unknown_int_3 = pack->parseInt();
+	
+		//Pack
+		msg_designer->insertInt(unknown_int_3);
+		//msg_designer->insertInt(0x02);
+		msg_target->insertInt(unknown_int_3);
+		
+		// Parse
+		uint8 stat_migration = pack->parseByte(); // big ????
+		
+		// Pack (I didn't find this byte in the live server->client)
+		msg_designer->insertByte(stat_migration);
+		msg_target->insertByte(stat_migration); 
+		
+		// Parse
+		uint32 unknown_int_4 = pack->parseInt();
+		uint32 unknown_int_5 = pack->parseInt();
+		uint32 unknown_int_6 = pack->parseInt();
+		uint32 unknown_int_7 = pack->parseInt();
+	
+		// Pack
+		msg_designer->insertInt(unknown_int_4);
+		msg_designer->insertInt(unknown_int_5);
+		msg_designer->insertInt(unknown_int_6);
+		msg_designer->insertInt(unknown_int_7);
+		//msg_designer->insertInt(0x09);
+		//msg_designer->insertInt(0x0C);
+		//msg_designer->insertInt(0x09);
+		//msg_designer->insertInt(0x0C);
+		
+		msg_target->insertInt(unknown_int_4);
+		msg_target->insertInt(unknown_int_5);
+		msg_target->insertInt(unknown_int_6);
+		msg_target->insertInt(unknown_int_7);
+		
+		// Parse
+		uint32 size_float_attrs = pack->parseInt();
+		
+		// Pack
+		msg_designer->insertInt(size_float_attrs);
+		msg_target->insertInt(size_float_attrs);
+		
+		stringstream msg;
+		msg << "imagedesignerupdate, object:" << hex << object << dec << " target:" << hex << target << dec << " tent: " << hex << tent ;
+	
+		
+		// Parse
+		if(size_float_attrs > 0)
+		{
+			for(int i = 0; i < size_float_attrs; i++)
+			{
+				// do something later
+				string attr;
+				pack->parseAscii(attr);
+				float val = pack->parseFloat();
+				
+				msg << " attr: " << attr << " val: " << val;
+				// Pack
+				msg_designer->insertAscii(attr);
+				msg_designer->insertFloat(val);
+				msg_target->insertAscii(attr);
+				msg_target->insertFloat(val);
+			}
+		}
+	
+		// Parse
+		uint32 size_int_attrs = pack->parseInt();
+		
+		// Pack
+		msg_designer->insertInt(size_int_attrs);
+		msg_target->insertInt(size_int_attrs);
+		
+		
+		// Parse
+		if(size_int_attrs > 0)
+		{
+			for(int i = 0; i < size_int_attrs; i++)
+			{
+				// do something later
+				string attr;
+				pack->parseAscii(attr);
+				uint32 val = pack->parseInt();
+				
+				msg << " float attr: " << attr << " val: " << val;
+				// Pack
+				msg_designer->insertAscii(attr.c_str());
+				msg_designer->insertInt(val);
+				msg_target->insertAscii(attr.c_str());
+				msg_target->insertInt(val);
+			}
+		}
+	
+		// Parse
+		string emote;
+		pack->parseAscii(emote);
+		
+		// Pack
+		msg_designer->insertAscii(emote);
+		msg_target->insertAscii(emote);
+	
+		// If from designer send to target
+		if(designer == target)
+		{
+			// do something else?
+		} else if(player->getObjectID() == designer) {
+			SceneObject* target_object = player->getZone()->lookupObject(target);
+			if(target_object != NULL) {
+				((Player *)target_object)->sendSystemMessage("update from designer!");
+				//player->info(msg.str()); 
+				//player->info(msg_target->toString());
+				((Player *)target_object)->sendMessage(msg_target);
+					
+			}
+		// If from target send to designer
+		} else if(player->getObjectID() == target) {
+			SceneObject* designer_object = player->getZone()->lookupObject(designer);
+			if(designer_object != NULL) {
+				((Player *)designer_object)->sendSystemMessage("update from target!");
+				//player->info(msg.str()); 
+				//player->info(msg_designer->toString());
+				((Player *)designer_object)->sendMessage(msg_designer);
+			}
+		}
+	
+		// Yeah!
+	
+		//player->sendSystemMessage("Target");
+		
+		
+	} catch (...) {
+		cout << "unreported ObjectControllerMessage::parseImageDesignChange(Player* player, Message* pack) exception\n";
+	}
+	*/
+
 }
 
-void ObjectControllerMessage::parseImageDesignerCancel(Player* player, Message* pack) {
-	/*
+void ObjectControllerMessage::parseImageDesignCancel(Player* player, Message* pack) {
 	player->sendSystemMessage("Image Designer Cancel");
-	player->info(pack->toString());
-	*/
+	//player->info(pack->toString());
 }
 
 void ObjectControllerMessage::parseSetCurrentSkillTitle(Player* player, Message* pack) {
@@ -1111,13 +1288,34 @@ void ObjectControllerMessage::parseImageDesign(Player* player, Message* pack) {
 				return;
 			}
 				
+			/*
+			Designer:
+			3A 02 00 00 
+			72 B0 E9 91 22 00 00 00 // designer
+			00 00 00 00 
+			72 B0 E9 91 22 00 00 00 
+			DF D4 50 92 22 00 00 00 
+			00 00 00 00 00 00 00 00 // tent
+			00 00 
+
+
+			Designee:
+
+			3A 02 00 00 
+			72 B0 E9 91 22 00 00 00 
+			00 00 00 00 
+			DF D4 50 92 22 00 00 00 
+			72 B0 E9 91 22 00 00 00 
+			00 00 00 00 00 00 00 00 
+			00 00 */
+			
 			// Initiate Self
-			ImageDesignMessage* msgPlayer = new ImageDesignMessage(player, player, targetPlayer, tent);
+			ImageDesignStartMessage* msgPlayer = new ImageDesignStartMessage(player, player, targetPlayer, tent);
 			player->sendMessage(msgPlayer);
     	
 			// Initiate Target (
 			if (targetPlayer->getObjectID() != player->getObjectID()) {
-				ImageDesignMessage* msgTarget = new ImageDesignMessage(targetPlayer, player, targetPlayer, tent, 1);
+				ImageDesignStartMessage* msgTarget = new ImageDesignStartMessage(targetPlayer, player, targetPlayer, tent);
 				targetPlayer->sendMessage(msgTarget);
 			}
 		} else {

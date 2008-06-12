@@ -858,7 +858,43 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 				message << "Food filling: " << fill << ".";
 				player->sendSystemMessage(message.str());
 			}
-		} else if(cmd == "@HAMStats") {
+		} else if(cmd == "@logapperance") {
+			if (userManager->isAdmin(player->getFirstName())) {
+				
+				string appearance;
+				player->getCharacterApperance(appearance);
+
+				stringstream message;
+				message << "Character Apperance:  " << uppercase << hex;
+					
+				for (int i = 0; i < appearance.size(); ++i) {
+					unsigned int byte = ((unsigned int )appearance[i]) & 0xFF; 
+					
+					if ((byte & 0xF0) == 0)
+						message << "0" << byte  << " ";
+					else
+						message << byte  << " ";
+				}
+				
+				message << dec << " Hair: " << uppercase << hex;
+				 
+				string hairData;
+				hairData = player->getHairData();
+				 
+				for (int i = 0; i < hairData.size(); ++i) {
+					unsigned int byte = ((unsigned int )hairData[i]) & 0xFF; 
+						
+					if ((byte & 0xF0) == 0)
+						message << "0" << byte  << " ";
+					else
+						message << byte  << " ";
+				}
+				 
+								
+				player->info(message.str());
+			}		
+		} 
+		else if(cmd == "@HAMStats") {
 			if (userManager->isAdmin(player->getFirstName())) {
 				stringstream message;
 				
