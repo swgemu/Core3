@@ -126,6 +126,9 @@ class PlayerImplementation : public PlayerServant {
 	Time firstIncapacitationTime;
 	int pvpRating;
 	
+	//GM Flags
+	bool chatMuted;
+	
 	// Faction Stuff
 	string factionRank;
 	uint32 rebelPoints;
@@ -250,7 +253,7 @@ public:
 	void sendToOwner();
 	void sendPersonalContainers();
 	void sendTo(Player* player, bool doClose = true);
-
+	
 	// spatial methods
 	void insertToZone(Zone* zone);
 	void insertToBuilding(BuildingObject* building, bool doLock = true);
@@ -508,7 +511,7 @@ public:
 	bool hasNextSkillBox() {
 		return skillBoxes.hasNext();
 	}
-
+	
 	//PVP Rating stuff.
 	void increasePvpRating(int value);
 	void decreasePvpRating(int value);
@@ -949,6 +952,15 @@ public:
 	inline int getAdminLevel() {
 		return adminLevel;	
 	}
+	
+	//GM functions
+	inline bool isChatMuted() {
+		return chatMuted;	
+	}
+
+	void mutePlayer();	
+
+
 	
 	// Survey and Sample Functions
 	void setSurveyEvent(string& resource_name);

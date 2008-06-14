@@ -329,6 +329,8 @@ public:
 
 	bool isJedi();
 
+	void mutePlayer();
+
 	bool hasSuiBox(unsigned int boxID);
 
 	void removeSuiBox(unsigned int boxID);
@@ -394,6 +396,8 @@ public:
 	bool checkCertification(string& certification);
 
 	int getSlicingAbility();
+
+	bool isChatMuted();
 
 	CraftingTool* getCurrentCraftingTool();
 
@@ -793,6 +797,8 @@ public:
 
 	bool isJedi();
 
+	void mutePlayer();
+
 	bool hasSuiBox(unsigned int boxID);
 
 	void removeSuiBox(unsigned int boxID);
@@ -858,6 +864,8 @@ public:
 	bool checkCertification(string& certification);
 
 	int getSlicingAbility();
+
+	bool isChatMuted();
 
 	CraftingTool* getCurrentCraftingTool();
 

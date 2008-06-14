@@ -147,10 +147,7 @@ interface Player implements CreatureObject {
 	
 	void kill();
 	
-	void addBuff(unsigned int buffcrc, float time);
-	
-
-	
+	void addBuff(unsigned int buffcrc, float time);	
 	
 	void lootCorpse(boolean lootAll = false);
 	void lootObject(Creature creature, SceneObject object);
@@ -326,6 +323,8 @@ interface Player implements CreatureObject {
 
 	boolean isJedi();
 	
+	void mutePlayer();
+	
 	// SuiBoxes
 	
 	boolean hasSuiBox(unsigned int boxID);
@@ -391,6 +390,8 @@ interface Player implements CreatureObject {
 	boolean checkCertification(string& certification);
 
 	int getSlicingAbility();
+	
+	boolean isChatMuted();
 	
 	// Crafting
 	CraftingTool getCurrentCraftingTool();

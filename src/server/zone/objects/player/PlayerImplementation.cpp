@@ -199,6 +199,9 @@ void PlayerImplementation::init() {
 	//Crafting
 	currentCraftingTool = NULL;
 	
+	//GM Flags
+	chatMuted = false;
+	
 	//temp
 	factionRank = "Sexy Tester";
 	rebelPoints = 0; 
@@ -1877,6 +1880,14 @@ void PlayerImplementation::clearBuffs(bool doUpdatePlayer) {
 	removeBuffs(doUpdatePlayer);
 }
 
+/*
+*
+*		GM METHODS
+*
+*/
+void PlayerImplementation::mutePlayer() {
+	chatMuted = !chatMuted;
+}
 
 
 /*

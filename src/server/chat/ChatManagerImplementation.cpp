@@ -178,46 +178,48 @@ void ChatManagerImplementation::sendSystemMessage(Player* player, unicode& messa
 }
 
 void ChatManagerImplementation::broadcastMessage(Player* player, unicode& message,  uint64 target, uint32 moodid, uint32 mood2) {
-	Zone* zone = player->getZone();
+	if ( !player->isChatMuted() ) {	
+		Zone* zone = player->getZone();
 	
-	/*if (message.c_str() == "LAG") {
-		ZoneClient* client = player->getClient();
+		/*if (message.c_str() == "LAG") {
+			ZoneClient* client = player->getClient();
 
-		client->reportStats(true);
+			client->reportStats(true);
 
-		Logger::slog("Client (" + client->getAddress() + ") is experiencing lag", true);
-		return;
-	} else if (message.c_str() == "QUEUE") {
-		ZoneClient* client = player->getClient();
+			Logger::slog("Client (" + client->getAddress() + ") is experiencing lag", true);
+			return;
+		} else if (message.c_str() == "QUEUE") {
+			ZoneClient* client = player->getClient();
 
-		client->reportStats(true);
+			client->reportStats(true);
 
-		Logger::slog("Client (" + client->getAddress() + ") is experiencing queue lag", true);
-		return;
-	}*/
+			Logger::slog("Client (" + client->getAddress() + ") is experiencing queue lag", true);
+			return;
+		}*/
 	
-	try {
-		zone->lock();
+		try {
+			zone->lock();
 
-		for (int i = 0; i < player->inRangeObjectCount(); ++i) {
-			SceneObject* object = (SceneObject*) (((SceneObjectImplementation*) player->getInRangeObject(i))->_this);
+			for (int i = 0; i < player->inRangeObjectCount(); ++i) {
+				SceneObject* object = (SceneObject*) (((SceneObjectImplementation*) player->getInRangeObject(i))->_this);
 			
-			if (object->isPlayer()) {
-				Player* creature = (Player*) object;
+				if (object->isPlayer()) {
+					Player* creature = (Player*) object;
 				
-				if (player->isInRange(creature, 128)) {
-					SpatialChat* cmsg = new SpatialChat(player->getObjectID(), creature->getObjectID(), message, target, moodid, mood2);
-					creature->sendMessage(cmsg);
+					if (player->isInRange(creature, 128)) {
+						SpatialChat* cmsg = new SpatialChat(player->getObjectID(), creature->getObjectID(), message, target, moodid, mood2);
+						creature->sendMessage(cmsg);
+					}
 				}
 			}
+
+			zone->unlock();
+		} catch (...) {
+
+			zone->unlock();
+
+			cout << "exception ChatManagerImplementation::broadcastMessage(Player* player, unicode& message,  uint64 target, uint32 moodid, uint32 mood2)\n";
 		}
-
-		zone->unlock();
-	} catch (...) {
-
-		zone->unlock();
-
-		cout << "exception ChatManagerImplementation::broadcastMessage(Player* player, unicode& message,  uint64 target, uint32 moodid, uint32 mood2)\n";
 	}
 }
 
@@ -372,7 +374,7 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 		if (cmd == "@help") {
 			if (userManager->isAdmin(player->getFirstName())) {
 				player->sendSystemMessage("Command List: map, warp, printRoomTree, banUser, kill, muteChat, "
-						"users, setWeather, ticketPurchase, awardBadge, setGuildID, createGuild, kick, killArea, kickArea"
+						"users, setWeather, ticketPurchase, awardBadge, setGuildID, createGuild, kick, killArea, kickArea, mutePlayer, "
 						"deleteGuildByID, npcc, setAdminLevel, dbStats, dbShowDeleted, dbPurge, getDirection"); 
 			}
 		} else if (cmd == "@map") {
@@ -417,16 +419,24 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 		} else if(cmd == "@kick") {
 			if (userManager->isAdmin(player->getFirstName())) {
 				string name;
-				
-				try {
+				Player* targetPlayer;
+
+				if (tokenizer.hasMoreTokens()) {
 					tokenizer.getStringToken(name);
-				} catch (...) {
-					SceneObject* target = player->getTarget();
+					targetPlayer = playerMap->get(name);
 					
-					if (target != NULL && target->isPlayer())
-						name = ((Player*) target)->getFirstName();
+					if (targetPlayer == NULL)
+						return;						
+				} else {
+					SceneObject* obj = player->getTarget();
+					if (obj != NULL && obj->isPlayer()) {
+						targetPlayer = (Player*) obj;
+						name = targetPlayer->getFirstName();
+					} else {
+						return;
+					}
 				}
-				
+
 				if (name != player->getFirstName()) {
 					if (server->kickUser(name, player->getFirstName())) {
 						player->sendSystemMessage("player \'" + name + "\' has been kicked.");
@@ -489,40 +499,97 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 		} else if (cmd == "@banUser") {
 			if (userManager->isAdmin(player->getFirstName())) {
 				string name;
+				Player* targetPlayer;
 
-				try {
+				if (tokenizer.hasMoreTokens()) {
 					tokenizer.getStringToken(name);
-				} catch (...) {
-					SceneObject* target = player->getTarget();
+					targetPlayer = playerMap->get(name);
 					
-					if (target != NULL && target->isPlayer())
-						name = ((Player*) target)->getFirstName();
+					if (targetPlayer == NULL)
+						return;						
+				} else {
+					SceneObject* obj = player->getTarget();
+					if (obj != NULL && obj->isPlayer()) {
+						targetPlayer = (Player*) obj;
+						name = targetPlayer->getFirstName();
+					} else {
+						return;
+					}
 				}
-			
+
 				if (server->banUser(name, player->getFirstName())) {
 					player->sendSystemMessage("player \'" + name + "\' is banned");
 				} else {
 					player->sendSystemMessage("unable to ban player \'" + name + "\'");
 				}
 			}
+		} else if (cmd == "@mutePlayer") {
+			if (userManager->isAdmin(player->getFirstName())) {
+				string name;
+				Player* targetPlayer;
+
+				if (tokenizer.hasMoreTokens()) {
+					tokenizer.getStringToken(name);
+					targetPlayer = playerMap->get(name);
+					
+					if (targetPlayer == NULL)
+						return;						
+				} else {
+					SceneObject* obj = player->getTarget();
+					if (obj != NULL && obj->isPlayer())
+						targetPlayer = (Player*) obj;
+					else
+						return;
+				}
+				
+				name = targetPlayer->getFirstName();					
+				targetPlayer->mutePlayer();
+					
+				if ( targetPlayer->isChatMuted() ) {
+					player->sendSystemMessage("Spatial chat for player \'" + name + "\' set MUTED.");
+					targetPlayer->sendSystemMessage("Your (spatial) chat abilities were set to MUTED by \'" + player->getFirstName() + "\'.");
+				} else {
+					player->sendSystemMessage("Spatial chat for player \'" + name + "\' set to UNMUTED.");
+					targetPlayer->sendSystemMessage("Your (spatial) chat abilities were RESTORED by \'" + player->getFirstName() + "\'.");
+				}
+			}
 		} else if (cmd == "@kill") {
 			if (userManager->isAdmin(player->getFirstName())) {
-				SceneObject* victim = (CreatureObject*) player->getTarget();
-				
-				if (victim != NULL) {
-					try {
-						if (victim != player)
-							victim->wlock(player);
+				string name;
+				Player* targetPlayer;
 
-						if (victim->isPlayer())
-							((Player*) victim)->kill();
-
-						if (victim != player)
-							victim->unlock();
-					} catch (...) {
-						if (victim != player)
-							victim->unlock();
+				if (tokenizer.hasMoreTokens()) {
+					tokenizer.getStringToken(name);
+					targetPlayer = playerMap->get(name);
+					
+					if (targetPlayer == NULL)
+						return;						
+				} else {
+					SceneObject* obj = player->getTarget();
+					if (obj != NULL && obj->isPlayer()) {
+						targetPlayer = (Player*) obj;
+						name = targetPlayer->getFirstName();
+					} else {
+						return;
 					}
+				}
+				
+				
+				try {
+					if (targetPlayer != player)
+						targetPlayer->wlock(player);
+
+					targetPlayer->kill();
+
+					targetPlayer->sendSystemMessage("Your character has been killed by \'" + player->getFirstName() + "\'.");
+					player->sendSystemMessage("You killed the character \'" + name + "\'.");
+					
+					if (targetPlayer != player)
+						targetPlayer->unlock();
+						
+				} catch (...) {
+					if (targetPlayer != player)
+						targetPlayer->unlock();
 				}
 			}
 		} else if (cmd == "@killArea") {
@@ -1870,6 +1937,7 @@ void ChatManagerImplementation::destroyRoom(ChatRoom* room) {
 	
 	room->finalize();
 }
+
 
 
 
