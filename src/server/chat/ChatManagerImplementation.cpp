@@ -452,27 +452,42 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 				//Default
 				int meter = 32;
 				//..as you wish my master
-				meter = tokenizer.getIntToken();				
+				meter = tokenizer.getIntToken();
 				
-				for (int i = 0; i < player->inRangeObjectCount(); ++i) {
-					SceneObject* obj = (SceneObject*) (((SceneObjectImplementation*) player->getInRangeObject(i))->_getStub());
-					
-					if (obj->isPlayer()) {					
-						Player* otherPlayer = (Player*) obj;
-						string otherName = otherPlayer->getFirstName();
-						
-						if (otherName != name && !userManager->isAdmin(otherName) && player->isInRange(otherPlayer, meter)) {						
-							if (server->kickUser(otherName, name)) {
-								player->sendSystemMessage("player \'" + otherName + "\' has been kicked.");
-								i--;
-							} else 
-								player->sendSystemMessage("unable to kick player \'" + otherName + "\'");						
+				Zone* zone = player->getZone();
+
+				if (zone == NULL)
+					return;
+				
+				try {
+					zone->lock();
+
+					for (int i = 0; i < player->inRangeObjectCount(); ++i) {
+						SceneObject* obj = (SceneObject*) (((SceneObjectImplementation*) player->getInRangeObject(i))->_getStub());
+
+						if (obj->isPlayer()) {					
+							Player* otherPlayer = (Player*) obj;
+							string otherName = otherPlayer->getFirstName();
+
+							if (otherName != name && !userManager->isAdmin(otherName) && player->isInRange(otherPlayer, meter)) {
+								zone->unlock();
+								
+								if (server->kickUser(otherName, name)) {
+									player->sendSystemMessage("player \'" + otherName + "\' has been kicked.");
+									i--;
+								} else 
+									player->sendSystemMessage("unable to kick player \'" + otherName + "\'");
+								
+								zone->lock();
+							}
 						}
 					}
-				
+
+					zone->unlock();
+				} catch (...) {
+					zone->unlock();
 				}
-			
-			}			
+			}
  		} /*else if (cmd == "@playAnim") {
 			string anim;
 			tokenizer.getStringToken(anim);
@@ -542,15 +557,26 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 						return;
 				}
 				
-				name = targetPlayer->getFirstName();					
-				targetPlayer->mutePlayer();
+				try {
+					if (targetPlayer != player)
+						targetPlayer->wlock(player);
+
+					name = targetPlayer->getFirstName();
+					targetPlayer->mutePlayer();
+
+					if ( targetPlayer->isChatMuted() ) {
+						player->sendSystemMessage("Spatial chat for player \'" + name + "\' set MUTED.");
+						targetPlayer->sendSystemMessage("Your (spatial) chat abilities were set to MUTED by \'" + player->getFirstName() + "\'.");
+					} else {
+						player->sendSystemMessage("Spatial chat for player \'" + name + "\' set to UNMUTED.");
+						targetPlayer->sendSystemMessage("Your (spatial) chat abilities were RESTORED by \'" + player->getFirstName() + "\'.");
+					}
 					
-				if ( targetPlayer->isChatMuted() ) {
-					player->sendSystemMessage("Spatial chat for player \'" + name + "\' set MUTED.");
-					targetPlayer->sendSystemMessage("Your (spatial) chat abilities were set to MUTED by \'" + player->getFirstName() + "\'.");
-				} else {
-					player->sendSystemMessage("Spatial chat for player \'" + name + "\' set to UNMUTED.");
-					targetPlayer->sendSystemMessage("Your (spatial) chat abilities were RESTORED by \'" + player->getFirstName() + "\'.");
+					if (targetPlayer != player)
+						targetPlayer->unlock();
+				} catch (...) {
+					if (targetPlayer != player)
+						targetPlayer->unlock();
 				}
 			}
 		} else if (cmd == "@kill") {
@@ -598,25 +624,51 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 				//Default
 				int meter = 32;
 				//..as you wish my master
-				meter = tokenizer.getIntToken();				
+				meter = tokenizer.getIntToken();
 				
-				for (int i = 0; i < player->inRangeObjectCount(); ++i) {
-					SceneObject* obj = (SceneObject*) (((SceneObjectImplementation*) player->getInRangeObject(i))->_getStub());
-					
-					if (obj->isPlayer()) {					
-						Player* otherPlayer = (Player*) obj;
-						string otherName = otherPlayer->getFirstName();
-						
-						if (otherName != name && !userManager->isAdmin(otherName) && player->isInRange(otherPlayer, meter)) {			
-							try {
-								((Player*) otherPlayer)->kill();
-								player->sendSystemMessage("player \'" + otherName + "\' has been killed.");
-							} catch (...) {
-								player->sendSystemMessage("unable to kill player \'" + otherName + "\'");
+				Zone* zone = player->getZone();
+				
+				if (zone == NULL)
+					return;
+				
+				try {
+					zone->lock();
+
+					for (int i = 0; i < player->inRangeObjectCount(); ++i) {
+						SceneObject* obj = (SceneObject*) (((SceneObjectImplementation*) player->getInRangeObject(i))->_getStub());
+
+						if (obj->isPlayer()) {					
+							Player* otherPlayer = (Player*) obj;
+							string otherName = otherPlayer->getFirstName();
+
+							if (otherName != name && !userManager->isAdmin(otherName) && player->isInRange(otherPlayer, meter)) {
+								zone->unlock();
+								
+								try {
+									if (otherPlayer != player)
+										otherPlayer->wlock(player);
+									
+									otherPlayer->kill();
+									
+									if (otherPlayer != player)
+										otherPlayer->unlock();
+									
+									player->sendSystemMessage("player \'" + otherName + "\' has been killed.");
+								} catch (...) {
+									if (otherPlayer != player)
+										otherPlayer->unlock();
+									player->sendSystemMessage("unable to kill player \'" + otherName + "\'");
+								}
+								
+								zone->lock();
 							}
 						}
 					}
-				}			
+					
+					zone->unlock();
+				} catch (...) {
+					zone->unlock();
+				}
 			}
 		} else if (cmd == "@muteChat") {
 			if (userManager->isAdmin(player->getFirstName())) {
@@ -1034,11 +1086,7 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 				player->sendSystemMessage(message.str());
 			}		
 		} else if (cmd == "@buff") {
-				//Farmer_John, 12. June 2008 :
-				//i think its pretty safe to remove the first If-line here, because the applyBuff function itself is now removing buffs (based on CRC) before applying
-				//the new buff - which is very correct btw, this was called "overbuffing" in Pre-CU.
-				//By disabling the next line, the constantly forum-reported "buff bug" would be history...
-				//if (player->getHealthMax() == player->getBaseHealth()) {
+				if (player->getHealthMax() == player->getBaseHealth()) {
 
 				int buffValue = 3000;
 				//float buffDuration = 10.0f; // Testing purposes
@@ -1101,9 +1149,9 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 
 				player->sendSystemMessage("Buffs applied");				
 
-			//} else {
-			//	player->sendSystemMessage("Already buffed");
-			//}
+			} else {
+				player->sendSystemMessage("Already buffed");
+			}
 /*		} else if (cmd == "@buffcrc") {
 			
 			
@@ -1116,8 +1164,7 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 				player->sendSystemMessage("Useage: buffcrc int");
 			}*/
 		} else if (cmd == "@spice") {
-			if(player->hasSpice())
-			{
+			if (player->hasSpice()) {
 				player->sendSystemMessage("You already have spice.");
 			} else if (tokenizer.hasMoreTokens()) {
 				string name;
