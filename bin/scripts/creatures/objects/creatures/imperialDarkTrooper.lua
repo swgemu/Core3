@@ -48,7 +48,7 @@ imperialDarkTrooper = Creature:new {
 	
 	level = 50,
 
-	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
 	health = 9500,
 	strength = 1000,
@@ -79,7 +79,7 @@ imperialDarkTrooper = Creature:new {
 	accuracy = 300,
 
 	skills = { "imperialAttack10", "imperialAttack11", "imperialAttack12" }
-	respawnTimer = 180,
+	-- respawnTimer = 180,
 }
 
 Creatures:addCreature(imperialDarkTrooper, 1312348723) --- Add to global creature table
