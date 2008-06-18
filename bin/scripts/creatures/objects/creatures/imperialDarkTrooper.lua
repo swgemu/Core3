@@ -46,29 +46,29 @@ imperialDarkTrooper = Creature:new {
 	objectCRC = 1312348723,
 	socialGroup = "imperial",
 	
-	level = 500,
+	level = 50,
 
-	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
-	health = 8200,
+	health = 9500,
 	strength = 1000,
 	constitution = 1000,
 
-	action = 8200,
+	action = 9500,
 	quickness = 1000,
 	stamina = 1000,
 
-	mind = 8200,
+	mind = 9500,
 	focus = 1000,
 	willpower = 1000,
 	
 	armor = 1,
 
 	kinetic = 40,
-	energy = 0,
+	energy = 20,
 	electricity = 50,
 	stun = 0,
-	blast = 0,
+	blast = 20,
 	heat = 50,
 	cold = 50,
 	acid = 50,
@@ -79,7 +79,7 @@ imperialDarkTrooper = Creature:new {
 	accuracy = 300,
 
 	skills = { "imperialAttack10", "imperialAttack11", "imperialAttack12" }
-	-- respawnTimer = 180,
+	respawnTimer = 180,
 }
 
 Creatures:addCreature(imperialDarkTrooper, 1312348723) --- Add to global creature table

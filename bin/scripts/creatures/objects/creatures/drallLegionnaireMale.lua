@@ -47,7 +47,7 @@ objectCRC = 999880424,
 socialGroup = "drall", 
 named = FALSE,
 
-level = 250, 
+level = 35, 
 
 combatFlags = ATTACKABLE_FLAG,
 --combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG, 

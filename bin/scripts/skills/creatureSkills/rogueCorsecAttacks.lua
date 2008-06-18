@@ -47,7 +47,7 @@ corsecAttack1 = {
 
 	range = 64,
 
-	damageRatio = 9.1,
+	damageRatio = 5.1,
 
 	speedRatio = 4,
 	coneAngle = 0,
@@ -79,7 +79,7 @@ corsecAttack2 = {
 
 	range = 64,
 
-	damageRatio = 10.8,
+	damageRatio = 5.8,
 
 	speedRatio = 4,
 	coneAngle = 0,
@@ -111,7 +111,7 @@ corsecAttack3 = {
 
 	range = 64,
 
-	damageRatio = 12.5,
+	damageRatio = 5.5,
 
 	speedRatio = 4,
 	coneAngle = 60,

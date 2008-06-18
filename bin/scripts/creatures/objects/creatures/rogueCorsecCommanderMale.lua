@@ -46,7 +46,7 @@ name = "a rogue CorSec Commander",
 objectCRC = 1973893242, 
 socialGroup = "rogueCorsec", 
 
-level = 250, 
+level = 35, 
 
 combatFlags = ATTACKABLE_FLAG,
 --combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG, 
