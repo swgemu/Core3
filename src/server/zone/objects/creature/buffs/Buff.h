@@ -46,7 +46,7 @@ which carries forward this exception.
 
 #include "BuffObject.h"
 
-#include "../skillmods/SkillModList.h"
+//#include "../skillmods/SkillModList.h"
 
 #include "../CreatureObject.h"
 #include "../../player/PlayerObject.h"
@@ -253,7 +253,7 @@ protected:
 	int forcePowerBuff;
 	//int forceRegenBuff;
 	
-	SkillModList skillModBuffs;
+	//SkillModList skillModBuffs;
 	
 
 public:
@@ -542,6 +542,7 @@ public:
 	
 	// Skill Mods
 	
+	/*
 	SkillModList* getSkillModBuffList() {
 		return &skillModBuffs;
 	}
@@ -565,6 +566,7 @@ public:
 		
 		skillModBuffs.put(mod, val);
 	}
+	*/
 };
 
 #endif /*BUFF_H_*/

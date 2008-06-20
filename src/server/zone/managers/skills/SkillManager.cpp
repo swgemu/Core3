@@ -54,6 +54,7 @@ which carries forward this exception.
 #include "../../ZoneProcessServerImplementation.h"
 
 #include "performance/PerformanceManager.h"
+#include "imagedesign/CustomizationManager.h"
 
 SkillManager::SkillManager(ProfessionManager* profManager) {
 	professionManager = profManager;
@@ -62,11 +63,13 @@ SkillManager::SkillManager(ProfessionManager* profManager) {
 	bool load = scr->loadSkillsFile(&combatActions);
 	
 	performanceManager = new PerformanceManager();
+	customizationManager = new CustomizationManager();
 }
 
 SkillManager::~SkillManager() {
 	
 	delete performanceManager;
+	delete customizationManager;
 	
 	delete scr;
 	
@@ -218,13 +221,22 @@ Skill* SkillManager::getSkill(const string& name) {
 }
 
 Performance* SkillManager::getDance(const string& name) {
-	if(performanceManager == NULL) return NULL; 
+	if(performanceManager == NULL) 
+		return NULL; 
 	
 	return performanceManager->getDance(name);
 }
 
 Performance* SkillManager::getSong(const string& name, int instrumentType) {
-	if(performanceManager == NULL) return NULL;
+	if(performanceManager == NULL) 
+		return NULL;
 	
 	return performanceManager->getSong(name, instrumentType);
+}
+
+CustomizationData* SkillManager::getCustomizationData(const string& speciesGender, const string& customizationName) {
+	if(customizationManager == NULL)
+		return NULL;
+
+	return customizationManager->getCustomizationData(speciesGender, customizationName);
 }

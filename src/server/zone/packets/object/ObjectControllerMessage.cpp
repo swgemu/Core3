@@ -59,6 +59,8 @@ which carries forward this exception.
 #include "../../managers/resource/ResourceManager.h"
 #include "../../managers/loot/LootManager.h"
 
+#include "../../managers/skills/imagedesign/ImageDesignCustomization.h"
+
 #include "../../managers/combat/CombatManager.h"
 #include "../../../chat/ChatManager.h"
 
@@ -1000,13 +1002,13 @@ void ObjectControllerMessage::parseRadialRequest(Player* player, Message* pack, 
 	radialManager->handleRadialRequest(player, pack);
 }
 
-void ObjectControllerMessage::parseImageDesignChange(Player* player, Message* pack) {
+void ObjectControllerMessage::parseImageDesignChange(Player* player, Message* pack, ZoneProcessServerImplementation* serv) {
 
-	/* This works - but not ready to uncomment code yet
+	// This works - but not ready to uncomment code yet
 	try {
-		player->sendSystemMessage("Image Designer Update");
+		/*player->sendSystemMessage("Image Designer Update");
 		player->info("Image Design Change - Original Packet");
-		player->info(pack->toString());
+		player->info(pack->toString());*/
 	
 
 		//target_player->sendMessage(msg_target);
@@ -1067,12 +1069,12 @@ void ObjectControllerMessage::parseImageDesignChange(Player* player, Message* pa
 		msg_target->insertByte(designer_accepted);
 		
 		// Parse
-		uint32 unknown_int_3 = pack->parseInt();
+		uint32 target_accepted = pack->parseInt();
 	
 		//Pack
-		msg_designer->insertInt(unknown_int_3);
+		msg_designer->insertInt(target_accepted);
 		//msg_designer->insertInt(0x02);
-		msg_target->insertInt(unknown_int_3);
+		msg_target->insertInt(target_accepted);
 		
 		// Parse
 		uint8 stat_migration = pack->parseByte(); // big ????
@@ -1109,8 +1111,16 @@ void ObjectControllerMessage::parseImageDesignChange(Player* player, Message* pa
 		msg_designer->insertInt(size_float_attrs);
 		msg_target->insertInt(size_float_attrs);
 		
-		stringstream msg;
-		msg << "imagedesignerupdate, object:" << hex << object << dec << " target:" << hex << target << dec << " tent: " << hex << tent ;
+		SceneObject* target_object = player->getZone()->lookupObject(target);
+		SceneObject* designer_object = player->getZone()->lookupObject(designer);
+		
+		// This is a helper class for a bunch of the embedded logic
+		ImageDesignCustomization* customization = NULL;
+		if(target_accepted == 1 && designer_accepted == 1 && target_object != NULL)
+			customization = new ImageDesignCustomization(serv, ((CreatureObject *)target_object));
+		
+		//stringstream msg;
+		//msg << "imagedesignerupdate, object:" << hex << object << dec << " target:" << hex << target << dec << " tent: " << hex << tent ;
 	
 		
 		// Parse
@@ -1123,12 +1133,15 @@ void ObjectControllerMessage::parseImageDesignChange(Player* player, Message* pa
 				pack->parseAscii(attr);
 				float val = pack->parseFloat();
 				
-				msg << " attr: " << attr << " val: " << val;
+				//msg << " int attr: " << attr << " val: " << val;
 				// Pack
 				msg_designer->insertAscii(attr);
 				msg_designer->insertFloat(val);
 				msg_target->insertAscii(attr);
 				msg_target->insertFloat(val);
+				
+				if(target_accepted == 1 && designer_accepted == 1)
+					customization->updateCustomization(attr, val);
 			}
 		}
 	
@@ -1139,6 +1152,7 @@ void ObjectControllerMessage::parseImageDesignChange(Player* player, Message* pa
 		msg_designer->insertInt(size_int_attrs);
 		msg_target->insertInt(size_int_attrs);
 		
+
 		
 		// Parse
 		if(size_int_attrs > 0)
@@ -1150,12 +1164,15 @@ void ObjectControllerMessage::parseImageDesignChange(Player* player, Message* pa
 				pack->parseAscii(attr);
 				uint32 val = pack->parseInt();
 				
-				msg << " float attr: " << attr << " val: " << val;
+				//msg << " float attr: " << attr << " val: " << val;
 				// Pack
 				msg_designer->insertAscii(attr.c_str());
 				msg_designer->insertInt(val);
 				msg_target->insertAscii(attr.c_str());
 				msg_target->insertInt(val);
+				
+				if(target_accepted == 1 && designer_accepted == 1)
+					customization->updateCustomization(attr, val);
 			}
 		}
 	
@@ -1166,15 +1183,17 @@ void ObjectControllerMessage::parseImageDesignChange(Player* player, Message* pa
 		// Pack
 		msg_designer->insertAscii(emote);
 		msg_target->insertAscii(emote);
+					
 	
 		// If from designer send to target
 		if(designer == target)
 		{
+			
 			// do something else?
 		} else if(player->getObjectID() == designer) {
-			SceneObject* target_object = player->getZone()->lookupObject(target);
+			
 			if(target_object != NULL) {
-				((Player *)target_object)->sendSystemMessage("update from designer!");
+				//((Player *)target_object)->sendSystemMessage("update from designer!");
 				//player->info(msg.str()); 
 				//player->info(msg_target->toString());
 				((Player *)target_object)->sendMessage(msg_target);
@@ -1182,14 +1201,23 @@ void ObjectControllerMessage::parseImageDesignChange(Player* player, Message* pa
 			}
 		// If from target send to designer
 		} else if(player->getObjectID() == target) {
-			SceneObject* designer_object = player->getZone()->lookupObject(designer);
+			
 			if(designer_object != NULL) {
-				((Player *)designer_object)->sendSystemMessage("update from target!");
+				//((Player *)designer_object)->sendSystemMessage("update from target!");
 				//player->info(msg.str()); 
 				//player->info(msg_designer->toString());
 				((Player *)designer_object)->sendMessage(msg_designer);
 			}
 		}
+		
+		if(target_accepted == 1 && designer_accepted == 1) {
+			if(customization != NULL)
+				delete customization;
+
+			if(target_object != NULL)
+				((CreatureObject *)target_object)->updateCharacterAppearance();
+		}
+
 	
 		// Yeah!
 	
@@ -1199,13 +1227,12 @@ void ObjectControllerMessage::parseImageDesignChange(Player* player, Message* pa
 	} catch (...) {
 		cout << "unreported ObjectControllerMessage::parseImageDesignChange(Player* player, Message* pack) exception\n";
 	}
-	*/
 
 }
 
 void ObjectControllerMessage::parseImageDesignCancel(Player* player, Message* pack) {
-	player->sendSystemMessage("Image Designer Cancel");
-	//player->info(pack->toString());
+/*	player->sendSystemMessage("Image Designer Cancel");
+	player->info(pack->toString()); */
 }
 
 void ObjectControllerMessage::parseSetCurrentSkillTitle(Player* player, Message* pack) {

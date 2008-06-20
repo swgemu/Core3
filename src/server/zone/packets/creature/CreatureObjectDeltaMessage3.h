@@ -58,9 +58,9 @@ public:
 		creo = cr;
 	}
 	
-	void updateCharacterApperance() {
+	void updateCharacterAppearance() {
 		string appearance;
-		creo->getCharacterApperance(appearance);
+		creo->getCharacterAppearance(appearance);
 		addAsciiUpdate(4, appearance);
 	}
 

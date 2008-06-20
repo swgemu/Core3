@@ -47,6 +47,8 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
+//#include "../../packets.h"
+
 #include "../scene/SceneObject.h"
 #include "../scene/SceneObjectImplementation.h"
 
@@ -88,10 +90,11 @@ protected:
 	unicode characterName; //character name
 	string terrainName;
 
-	//CustomizationVariables customization;
-	string customization;
+	CustomizationVariables customization;
+	//string customization;
 	string raceName; //species
 	string speciesName; //species
+	string gender;
 
 	string hairObject; //hair object iff string
 	string hairData; //hair customization string
@@ -1031,10 +1034,25 @@ public:
 		terrainName = name;
 	}
 
-	inline void setCharacterApperance(const string& cust) {
+	inline void setCharacterAppearance(const string& cust) {
 		customization = cust;
 	}
 
+	
+	inline void setAppearanceAttribute(uint8 type, uint8 value) {
+		customization.setVariable(type, value);
+		
+		// TODO send packet update?
+	}
+	
+	inline void setAppearanceAttribute(string type, uint8 value) {
+		customization.setVariable(type, value);
+		
+		// TODO send packet update?
+	}
+	
+	void updateCharacterAppearance();
+	
 	inline void setRaceName(const string& name) {
 		raceName = name;
 	}
@@ -1042,7 +1060,11 @@ public:
 	inline void setSpeciesName(const string& name) {
 		speciesName = name;
 	}
-	
+
+	inline void setGender(const string& gend) {
+		gender = gend;
+	}
+
 	inline void setHeight(float h) {
 		height = h;
 	}
@@ -1253,9 +1275,9 @@ public:
 		return terrainName;
 	}
 
-	inline void getCharacterApperance(string& appearance) {
-		//customization.toString(appearance);
-		appearance = customization;
+	inline void getCharacterAppearance(string& appearance) {
+		customization.toString(appearance);
+		//appearance = customization;
 	}
 	
 	inline string& getRaceName() {
@@ -1264,6 +1286,10 @@ public:
 
 	inline string& getSpeciesName() {
 		return speciesName;
+	}
+
+	inline string& getGender() {
+		return gender;
 	}
 
 	inline string& getStfName() {

@@ -122,7 +122,8 @@ bool PlayerManagerImplementation::create(Player* player, uint32 sessionkey) {
 	
 	player->setObjectCRC(Races::getRaceCRC(race));
 	player->setRaceName(Races::getRace(race));		
-	player->setSpeciesName(Races::getSpecies(race));	
+	player->setSpeciesName(Races::getSpecies(race));
+	player->setGender(Races::getGender(race));
 	
 	int gender = 0;
 	int creditsCash = 100000;
@@ -134,11 +135,11 @@ bool PlayerManagerImplementation::create(Player* player, uint32 sessionkey) {
 	string bio = player->getBiography().c_str();
 	string info = "";
 	
-	string apperance;
+	string appearance;
 	string playApp;
-	player->getCharacterApperance(playApp);
+	player->getCharacterAppearance(playApp);
 	BinaryData cust(playApp);
-	cust.encode(apperance);
+	cust.encode(appearance);
 	
 	string hairdata;
 	BinaryData hair(player->getHairData());
@@ -159,7 +160,7 @@ bool PlayerManagerImplementation::create(Player* player, uint32 sessionkey) {
 	          << ") VALUES ("
     	      << accountID << "," << galaxyID << ",'" 
 	          << player->getFirstName() << "','" << player->getLastName() << "','" 
-	          << apperance.substr(0, apperance.size() - 1) << "','" 
+	          << appearance.substr(0, appearance.size() - 1) << "','" 
 	          << player->getStartingProfession() << "'," <<  race << "," << gender << ",10," 
     	      << creditsCash << "," << creditsBank << ",0," 
         	  << player->getPositionX() << "," << player->getPositionY() << "," 
@@ -356,11 +357,11 @@ void PlayerManagerImplementation::loadFromDatabase(Player* player) {
 	if (guild != NULL)
 		player->setGuild(guild);
 	
-	string apperance = character->getString(5);
-	BinaryData cust(apperance);
+	string appearance = character->getString(5);
+	BinaryData cust(appearance);
 	string custStr;
 	cust.decode(custStr);
-	player->setCharacterApperance(custStr);
+	player->setCharacterAppearance(custStr);
 	
 	string hairData = character->getString(28);
 	BinaryData hair(hairData);
@@ -371,7 +372,8 @@ void PlayerManagerImplementation::loadFromDatabase(Player* player) {
 	int raceID = character->getInt(7);
 	player->setObjectCRC(Races::getRaceCRC(raceID));
 	player->setRaceName(Races::getRace(raceID));		
-	player->setSpeciesName(Races::getSpecies(raceID));		
+	player->setSpeciesName(Races::getSpecies(raceID));
+	player->setGender(Races::getGender(raceID));
 	player->setHairObject(character->getString(27));
 	//player->hairData = character->getString(28);
 

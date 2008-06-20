@@ -455,9 +455,11 @@ public:
 
 	string& getRaceName();
 
+	string& getGender();
+
 	string& getTerrainName();
 
-	void getCharacterApperance(string& appearance);
+	void getCharacterAppearance(string& appearance);
 
 	bool isOvert();
 
@@ -741,11 +743,19 @@ public:
 
 	void setTerrainName(const string& name);
 
-	void setCharacterApperance(string& cust);
+	void setCharacterAppearance(string& cust);
+
+	void setAppearanceAttribute(unsigned char type, unsigned char value);
+
+	void setAppearanceAttribute(string& type, unsigned char value);
+
+	void updateCharacterAppearance();
 
 	void setRaceName(const string& name);
 
 	void setSpeciesName(const string& name);
+
+	void setGender(const string& name);
 
 	void setFaction(unsigned int fac);
 
@@ -764,6 +774,7 @@ protected:
 
 	virtual ~CreatureObject();
 
+	string _return_getGender;
 	string _return_getGuildName;
 	string _return_getMood;
 	string _return_getPerformanceAnimation;
@@ -1197,9 +1208,11 @@ public:
 
 	string& getRaceName();
 
+	string& getGender();
+
 	string& getTerrainName();
 
-	void getCharacterApperance(string& appearance);
+	void getCharacterAppearance(string& appearance);
 
 	bool isOvert();
 
@@ -1483,11 +1496,19 @@ public:
 
 	void setTerrainName(const string& name);
 
-	void setCharacterApperance(string& cust);
+	void setCharacterAppearance(string& cust);
+
+	void setAppearanceAttribute(unsigned char type, unsigned char value);
+
+	void setAppearanceAttribute(string& type, unsigned char value);
+
+	void updateCharacterAppearance();
 
 	void setRaceName(const string& name);
 
 	void setSpeciesName(const string& name);
+
+	void setGender(const string& name);
 
 	void setFaction(unsigned int fac);
 
@@ -1521,13 +1542,15 @@ protected:
 	string _param0_startDancing__string_bool_;
 	string _param0_startPlayingMusic__string_bool_;
 	string _param0_doFlourish__string_;
-	string _param0_getCharacterApperance__string_;
+	string _param0_getCharacterAppearance__string_;
 	string _param0_setCharacterName__string_;
 	unicode _param0_setCharacterName__unicode_;
 	string _param0_setTerrainName__string_;
-	string _param0_setCharacterApperance__string_;
+	string _param0_setCharacterAppearance__string_;
+	string _param0_setAppearanceAttribute__string_char_;
 	string _param0_setRaceName__string_;
 	string _param0_setSpeciesName__string_;
+	string _param0_setGender__string_;
 	string _param0_setMood__string_;
 };
 

@@ -181,6 +181,7 @@ am_core3_OBJECTS = $(am__objects_1) ServerCore.$(OBJEXT) \
 	PlayerManagerImplementation.$(OBJEXT) \
 	ProfessionManager.$(OBJEXT) SkillManager.$(OBJEXT) \
 	ScriptAttacksManager.$(OBJEXT) PerformanceManager.$(OBJEXT) \
+	CustomizationManager.$(OBJEXT) \
 	ItemManagerImplementation.$(OBJEXT) \
 	UserManagerImplementation.$(OBJEXT) RadialManager.$(OBJEXT) \
 	GroupManager.$(OBJEXT) CraftingManagerImplementation.$(OBJEXT) \
@@ -471,6 +472,7 @@ core3_SOURCES = $(core3_IDLS) \
 		server/zone/managers/skills/SkillManager.cpp \
 		server/zone/managers/skills/ScriptAttacksManager.cpp \
 		server/zone/managers/skills/performance/PerformanceManager.cpp \
+		server/zone/managers/skills/imagedesign/CustomizationManager.cpp \
 		server/zone/managers/item/ItemManagerImplementation.cpp \
 		server/zone/managers/user/UserManagerImplementation.cpp \
 		server/zone/managers/radial/RadialManager.cpp \
@@ -644,6 +646,7 @@ include ./$(DEPDIR)/ObjectManager.Po
 include ./$(DEPDIR)/OneHandedJediWeapon.Po
 include ./$(DEPDIR)/OneHandedMeleeWeapon.Po
 include ./$(DEPDIR)/PerformanceManager.Po
+include ./$(DEPDIR)/CustomizationManager.Po
 include ./$(DEPDIR)/PistolRangedWeapon.Po
 include ./$(DEPDIR)/PlanetManager.Po
 include ./$(DEPDIR)/PlanetManagerImplementation.Po
@@ -2857,6 +2860,20 @@ PerformanceManager.obj: server/zone/managers/skills/performance/PerformanceManag
 #	source='server/zone/managers/skills/performance/PerformanceManager.cpp' object='PerformanceManager.obj' libtool=no \
 #	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
 #	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o PerformanceManager.obj `if test -f 'server/zone/managers/skills/performance/PerformanceManager.cpp'; then $(CYGPATH_W) 'server/zone/managers/skills/performance/PerformanceManager.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/skills/performance/PerformanceManager.cpp'; fi`
+
+CustomizationManager.o: server/zone/managers/skills/imagedesign/CustomizationManager.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT CustomizationManager.o -MD -MP -MF $(DEPDIR)/CustomizationManager.Tpo -c -o CustomizationManager.o `test -f 'server/zone/managers/skills/imagedesign/CustomizationManager.cpp' || echo '$(srcdir)/'`server/zone/managers/skills/imagedesign/CustomizationManager.cpp
+	mv -f $(DEPDIR)/CustomizationManager.Tpo $(DEPDIR)/CustomizationManager.Po
+#	source='server/zone/managers/skills/imagedesign/CustomizationManager.cpp' object='CustomizationManager.o' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o CustomizationManager.o `test -f 'server/zone/managers/skills/imagedesign/CustomizationManager.cpp' || echo '$(srcdir)/'`server/zone/managers/skills/imagedesign/CustomizationManager.cpp
+
+CustomizationManager.obj: server/zone/managers/skills/imagedesign/CustomizationManager.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT CustomizationManager.obj -MD -MP -MF $(DEPDIR)/CustomizationManager.Tpo -c -o CustomizationManager.obj `if test -f 'server/zone/managers/skills/imagedesign/CustomizationManager.cpp'; then $(CYGPATH_W) 'server/zone/managers/skills/imagedesign/CustomizationManager.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/skills/imagedesign/CustomizationManager.cpp'; fi`
+	mv -f $(DEPDIR)/CustomizationManager.Tpo $(DEPDIR)/CustomizationManager.Po
+#	source='server/zone/managers/skills/imagedesign/CustomizationManager.cpp' object='CustomizationManager.obj' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o CustomizationManager.obj `if test -f 'server/zone/managers/skills/imagedesign/CustomizationManager.cpp'; then $(CYGPATH_W) 'server/zone/managers/skills/imagedesign/CustomizationManager.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/skills/imagedesign/CustomizationManager.cpp'; fi`
 
 ItemManagerImplementation.o: server/zone/managers/item/ItemManagerImplementation.cpp
 	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ItemManagerImplementation.o -MD -MP -MF $(DEPDIR)/ItemManagerImplementation.Tpo -c -o ItemManagerImplementation.o `test -f 'server/zone/managers/item/ItemManagerImplementation.cpp' || echo '$(srcdir)/'`server/zone/managers/item/ItemManagerImplementation.cpp

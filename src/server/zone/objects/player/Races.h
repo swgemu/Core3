@@ -70,6 +70,29 @@ const static char* Species[] = {
     "ithorian"  // DA E7   -   ithorian female
 };
 
+const static char* Gender[] = {
+    "male", // human male
+    "male", // trandoshan male
+    "male", // twilek male
+    "male", // bothan male
+    "male", // zabrak male
+    "male", // rodian male
+    "male", // moncal male
+    "male", // wookiee male
+    "male", // sullustan male
+    "male", // ithorian male
+    "female", // human female
+    "female", // trandoshan female
+    "female", // twilek female
+    "female", // bothan female
+    "female", // zabrak female
+    "female", // rodian female
+    "female", // moncal female
+    "female", // wookiee female
+    "female", // sullustan female
+    "female"  // DA E7   -   ithorian female
+};
+
 const static char* RaceStrs[] = {
     "object/creature/player/shared_human_male.iff", // human male
     "object/creature/player/shared_trandoshan_male.iff", // trandoshan male
@@ -343,6 +366,10 @@ public:
 
 	inline const static char* getSpecies(int raceid) {
 		return Species[raceid];
+	}
+
+	inline const static char* getGender(int raceid) {
+		return Gender[raceid];
 	}
 
 	inline const static uint32 getRaceCRC(int raceid) {

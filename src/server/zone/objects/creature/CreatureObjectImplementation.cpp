@@ -3891,3 +3891,10 @@ float CreatureObjectImplementation::calculateBFRatio() {
 	else
 		return (float)((shockWounds-250)/1000);
 }
+
+void CreatureObjectImplementation::updateCharacterAppearance() {
+	CreatureObjectDeltaMessage3* dcreo3 = new CreatureObjectDeltaMessage3(_this);
+	dcreo3->updateCharacterAppearance();
+	dcreo3->close();
+	broadcastMessage(dcreo3);
+}

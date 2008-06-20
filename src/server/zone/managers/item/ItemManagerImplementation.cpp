@@ -759,17 +759,17 @@ void ItemManagerImplementation::createPlayerItem(Player* player, TangibleObject*
 
 void ItemManagerImplementation::savePlayerItem(Player* player, TangibleObject* item) {
 	try {
-		string apperance = "";
+		string appearance = "";
 		string itemApp;
 		item->getCustomizationString(itemApp);
 		BinaryData cust(itemApp);
-		cust.encode(apperance);
+		cust.encode(appearance);
 		
 		stringstream query;
 		query << "update `character_items` set equipped = " << item->isEquipped();
 		query << ", character_id = " << player->getCharacterID() << " ";
 		query << ", attributes = '" << item->getAttributes() << "' ";
-		query << ", appearance = '" << apperance.substr(0, apperance.size() - 1) << "' ";
+		query << ", appearance = '" << appearance.substr(0, appearance.size() - 1) << "' ";
 		query << "where item_id = " << item->getObjectID();
 		
 		ServerDatabase::instance()->executeStatement(query);

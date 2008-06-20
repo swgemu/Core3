@@ -49,6 +49,7 @@ which carries forward this exception.
 
 #include "SkillList.h"
 #include "performance/PerformanceManager.h"
+#include "imagedesign/CustomizationManager.h"
 
 class SkillBox;
 class Player;
@@ -63,6 +64,7 @@ class SkillManager {
 	ScriptAttacksManager* scr;
 	ProfessionManager* professionManager; 
 	PerformanceManager* performanceManager;
+	CustomizationManager* customizationManager;
 	
 public:
 
@@ -78,6 +80,7 @@ public:
 	
 	Performance* getDance(const string& name);
 	Performance* getSong(const string& name, int instrumentType);
+	CustomizationData* getCustomizationData(const string& speciesGender, const string& customizationName);
 	
 private:
 	void loadSkillCommands(SkillBox* skillBox, PlayerImplementation* player, bool updateClient);

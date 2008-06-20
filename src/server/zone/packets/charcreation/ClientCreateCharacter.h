@@ -55,7 +55,20 @@ public:
 	static void parse(Packet* pack, Player* player) {
 		string customization;
 		pack->parseAscii(customization);
-		player->setCharacterApperance(customization);
+		
+		/*stringstream message;
+		message << "Character Appearance:  " << uppercase << hex;
+		for (int i = 0; i < customization.size(); ++i) {
+			unsigned int byte = ((unsigned int )customization[i]) & 0xFF; 
+			
+			if ((byte & 0xF0) == 0)
+				message << "0" << byte  << " ";
+			else
+				message << byte  << " ";
+		}
+		player->info(message.str()); */
+		
+		player->setCharacterAppearance(customization);
 
 		unicode characterName;
 		pack->parseUnicode(characterName); //get unicode name
@@ -79,6 +92,7 @@ public:
 		int raceid = Races::getRaceID(racefile);
 		player->setRaceName(Races::getRace(raceid));		
 		player->setSpeciesName(Races::getSpecies(raceid));
+		player->setGender(Races::getGender(raceid));
 
 		string location;		
 		pack->parseAscii(location);

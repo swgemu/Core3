@@ -1134,14 +1134,14 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 				message << "Food filling: " << fill << ".";
 				player->sendSystemMessage(message.str());
 			}
-		} else if(cmd == "@logapperance") {
-			if (userManager->isAdmin(player->getFirstName())) {
+		} else if(cmd == "@logappearance") {
+			//if (userManager->isAdmin(player->getFirstName())) {
 				
 				string appearance;
-				player->getCharacterApperance(appearance);
+				player->getCharacterAppearance(appearance);
 
 				stringstream message;
-				message << "Character Apperance:  " << uppercase << hex;
+				message << "Character Appearance:  " << uppercase << hex;
 					
 				for (int i = 0; i < appearance.size(); ++i) {
 					unsigned int byte = ((unsigned int )appearance[i]) & 0xFF; 
@@ -1168,6 +1168,38 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 				 
 								
 				player->info(message.str());
+			//}		
+		}  else if(cmd == "@updateappearance") {
+			if (userManager->isAdmin(player->getFirstName())) {
+			
+				((CreatureObject*) player)->updateCharacterAppearance();
+	
+				stringstream message;
+				message << "Character Appearance updated.";
+				player->sendSystemMessage(message.str());
+			}		
+		}  else if(cmd == "@setappearancevariable") {
+			if (userManager->isAdmin(player->getFirstName())) {
+			
+				if (!tokenizer.hasMoreTokens())
+					return;
+				
+				string variable;
+				tokenizer.getStringToken(variable);
+				
+				if (!tokenizer.hasMoreTokens())
+					return;
+				
+				int value = tokenizer.getIntToken();
+				
+				if(value < 0 || value > 255) //out of range
+					return;
+				
+				((CreatureObject*) player)->setAppearanceAttribute(variable, (uint8)value);
+	
+				stringstream message;
+				message << "Character Appearance Attribute Updated.";
+				player->sendSystemMessage(message.str());
 			}		
 		} 
 		else if(cmd == "@HAMStats") {

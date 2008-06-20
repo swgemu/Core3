@@ -86,7 +86,7 @@ public:
     
     static void parseRadialRequest(Player* player, Message* pack, RadialManager* radialManager);
 
-    static void parseImageDesignChange(Player* player, Message* pack);
+    static void parseImageDesignChange(Player* player, Message* pack, ZoneProcessServerImplementation* serv);
     static void parseImageDesignCancel(Player* player, Message* pack);
     
     static void parseSetCurrentSkillTitle(Player* player, Message* pack);

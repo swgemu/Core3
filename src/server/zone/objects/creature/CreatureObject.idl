@@ -393,10 +393,11 @@ interface CreatureObject implements SceneObject {
 	string getStfName();
 	string getSpeciesName();
 	string getRaceName();
+	string getGender();
 	
 	string getTerrainName();
 
-	void getCharacterApperance(string appearance);
+	void getCharacterAppearance(string appearance);
 	
 	boolean isOvert();
 	
@@ -591,10 +592,15 @@ interface CreatureObject implements SceneObject {
 	
 	void setTerrainName(const string name);
 
-	void setCharacterApperance(string cust);
+	void setCharacterAppearance(string cust);
+	void setAppearanceAttribute(unsigned char type, unsigned char value);
+	void setAppearanceAttribute(string type, unsigned char value);
+	void updateCharacterAppearance();
+	
 	
 	void setRaceName(const string name);
 	void setSpeciesName(const string name);
+	void setGender(const string name);
 	
 	void setFaction(unsigned int fac);
 	
