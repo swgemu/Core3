@@ -51,6 +51,8 @@ interface UserManager {
 	
 	boolean checkUser(unsigned int ipid);
 	boolean isAdmin(const string name);
+	void grantAdmin(const string name);
+	void removeAdmin(const string name);
 	
 	void parseBanList();
 	

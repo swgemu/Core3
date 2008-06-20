@@ -59,8 +59,12 @@ UserManagerImplementation::UserManagerImplementation(ZoneServer* serv) : UserMan
 	server = serv;
 
 	userCap = 200;
+	
+	adminUsers = new AdminSet();
 
 	parseBanList();
+	
+	parseAdminList();
 	
 	setLogging(false);
 }
@@ -91,6 +95,31 @@ void UserManagerImplementation::parseBanList() {
 	banFile.close();
 }
 
+void UserManagerImplementation::parseAdminList() {
+	ifstream adminFile("adminusers.lst");
+	
+	if (!adminFile)
+		return;
+	else
+		info("parsing admin list: adminusers.lst", true);
+
+ 	char line[100];
+
+	while (adminFile.getline(line, 100)) {
+		StringTokenizer tokenizer(line);
+
+		string name;
+		tokenizer.getStringToken(name);
+		
+		String::toLower(name);
+
+		if (name.size() > 0)
+			grantAdmin(name);
+	}	
+	
+	adminFile.close();
+}
+
 bool UserManagerImplementation::checkUser(uint32 ipid) {
 	/*string ip = addr->getFullIPAddress();
 	if (ip.substr(0, 12) != "80.99.84.166")
@@ -105,17 +134,32 @@ bool UserManagerImplementation::checkUser(uint32 ipid) {
 		return true;
 }
 
-//TODO: We need a less static way of doing this.
-bool UserManagerImplementation::isAdmin(const string& name) {
-	if (name == "ramsey" || name == "ultyma" || name == "seaseme" || 
-		name == "theanswer" || name == "oru" || name == "smusatto" ||
-		name == "phantm" || name == "vash" || name == "mcmahon"	|| 
-		name == "bobius" || name == "kellina" || name =="kyle" || 
-		name == "panchjr")
-			
-		return true;
+void UserManagerImplementation::grantAdmin(const string& n) {
+	string name = n;
+	String::toLower(name);
+
+	//trim whitespace
+	int swhite = name.find_first_not_of(" \t\n\r\f");
+	int ewhite = name.find_last_not_of(" \t\n\r\f");
+		
+	if (swhite == string::npos)
+		name = "";
 	else
-		return false;
+		name = name.substr(swhite, ewhite - swhite + 1);
+	
+	adminUsers->add(name);
+}
+
+void UserManagerImplementation::removeAdmin(const string& n) {
+	string name = n;
+	String::toLower(name);
+	adminUsers->remove(name);
+}
+
+bool UserManagerImplementation::isAdmin(const string& n) {
+	string name = n;
+	String::toLower(name);
+	return adminUsers->contains(name);
 }
 
 void UserManagerImplementation::banUser(const string& ipaddr) {

@@ -327,7 +327,7 @@ void ZonePacketHandler::handleClientCreateCharacter(Message* pack) {
 	
 	player->create(client);
 	
-	string& firstName = player->getFirstName();
+	string firstName = player->getFirstName();
 	string species = player->getSpeciesName();
 	
 	player->info("attempting to create Player " + firstName);
@@ -337,10 +337,10 @@ void ZonePacketHandler::handleClientCreateCharacter(Message* pack) {
 	if (msg != NULL) {
 		client->sendMessage(msg);
 		
-		player->disconnect();
+		//player->disconnect();
 				
 		player->finalize();
-		
+
 		return;
 	}
 

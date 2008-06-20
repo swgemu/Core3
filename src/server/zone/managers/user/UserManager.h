@@ -17,6 +17,10 @@ public:
 
 	bool isAdmin(const string& name);
 
+	void grantAdmin(const string& name);
+
+	void removeAdmin(const string& name);
+
 	void parseBanList();
 
 	void banUser(const string& ipaddr);
@@ -51,6 +55,10 @@ public:
 
 	bool isAdmin(const string& name);
 
+	void grantAdmin(const string& name);
+
+	void removeAdmin(const string& name);
+
 	void parseBanList();
 
 	void banUser(const string& ipaddr);
@@ -67,6 +75,8 @@ public:
 
 protected:
 	string _param0_isAdmin__string_;
+	string _param0_grantAdmin__string_;
+	string _param0_removeAdmin__string_;
 	string _param0_banUser__string_;
 	string _param0_banUserByName__string_string_;
 	string _param1_banUserByName__string_string_;

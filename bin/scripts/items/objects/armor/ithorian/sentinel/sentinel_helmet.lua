@@ -40,7 +40,7 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-composite_helmet = Armor:new{
+sentinel_helmet = Armor:new{
 	
 	objectName = "Ithorian Sentinel Armor Helmet",
 

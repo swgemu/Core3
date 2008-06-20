@@ -377,7 +377,7 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 			if (userManager->isAdmin(player->getFirstName())) {
 				player->sendSystemMessage("Command List: map, warp, printRoomTree, banUser, kill, muteChat, "
 						"users, setWeather, ticketPurchase, awardBadge, setGuildID, createGuild, kick, killArea, kickArea, mutePlayer, "
-						"deleteGuildByID, npcc, setAdminLevel, dbStats, dbShowDeleted, dbPurge, getDirection, warpPlayer, summon"); 
+						"deleteGuildByID, npcc, setAdminLevel, dbStats, dbShowDeleted, dbPurge, getDirection, warpPlayer, summon, grantAdmin, removeAdmin"); 
 			}
 		} else if (cmd == "@map") {
 			if (userManager->isAdmin(player->getFirstName())) {
@@ -549,7 +549,72 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 				
 				} else 
 					player->sendSystemMessage("You can't kick yourself. Use /logout please. \n");
-			}			
+			}
+		} else if(cmd == "@grantAdmin") {
+			if (userManager->isAdmin(player->getFirstName())) {
+				string name;
+				Player* targetPlayer;
+
+				if (tokenizer.hasMoreTokens()) {
+					tokenizer.getStringToken(name);
+					targetPlayer = playerMap->get(name);
+					
+					if (targetPlayer == NULL)
+						return;						
+				} else {
+					SceneObject* obj = player->getTarget();
+					if (obj != NULL && obj->isPlayer()) {
+						targetPlayer = (Player*) obj;
+						name = targetPlayer->getFirstName();
+					} else {
+						return;
+					}
+				}
+
+				if(userManager->isAdmin(name)) {
+					player->sendSystemMessage(name + " is already an admin.");
+					return;
+				}
+
+				if (name != player->getFirstName()) {
+					userManager->grantAdmin(name);
+					player->sendSystemMessage("Player: " + name + " has been granted temporary admin rights.");
+					targetPlayer->sendSystemMessage("You have been granted temporary admin rights by " + player->getFirstName());
+				} else 
+					player->sendSystemMessage("You are already an admin\n");
+			}
+		} else if(cmd == "@removeAdmin") {
+			if (userManager->isAdmin(player->getFirstName())) {
+				string name;
+				Player* targetPlayer;
+
+				if (tokenizer.hasMoreTokens()) {
+					tokenizer.getStringToken(name);
+					targetPlayer = playerMap->get(name);
+					
+					if (targetPlayer == NULL)
+						return;						
+				} else {
+					SceneObject* obj = player->getTarget();
+					if (obj != NULL && obj->isPlayer()) {
+						targetPlayer = (Player*) obj;
+						name = targetPlayer->getFirstName();
+					} else {
+						return;
+					}
+				}
+				if(!userManager->isAdmin(name)) {
+					player->sendSystemMessage(name + " is not an admin.");
+					return;
+				}
+
+				if (name != player->getFirstName()) {
+					userManager->removeAdmin(name);
+					player->sendSystemMessage("Player: " + name + "\'s temporary admin rights have been removed.");
+					targetPlayer->sendSystemMessage("Your temporary admin rights have been removed by " + player->getFirstName());
+				} else 
+					player->sendSystemMessage("You can't remove your own admin rights.");
+			}
 		} else if (cmd == "@kickArea") {
 			if (userManager->isAdmin(player->getFirstName())) {
 				string name = player->getFirstName();
