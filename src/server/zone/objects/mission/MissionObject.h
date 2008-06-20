@@ -9,16 +9,92 @@
 
 class SceneObject;
 
+class Player;
+
 #include "../scene/SceneObject.h"
 
 class MissionObject : public SceneObject {
 public:
 	MissionObject(unsigned long long oid);
 
+	void init();
+
+	void sendTo(Player* player, bool doClose = true);
+
+	void setTypeStr(const string& tstr);
+
+	string& getTypeStr();
+
+	void setTDKey(int tk);
+
+	unsigned int getTDKey();
+
+	void setDifficultyLevel(unsigned int tdlv);
+
+	unsigned int getDifficultyLevel();
+
+	void setDestX(float tdx);
+
+	float getDestX();
+
+	void setDestY(float tdy);
+
+	float getDestY();
+
+	void setDestPlanetCrc(unsigned int tpc);
+
+	unsigned int getDestPlanetCrc();
+
+	void setCreatorName(const unicode& tcn);
+
+	unicode& getCreatorName();
+
+	void setReward(unsigned int tr);
+
+	unsigned int getReward();
+
+	void setTargetX(float ttx);
+
+	float getTargetX();
+
+	void setTargetY(float tty);
+
+	float getTargetY();
+
+	void setTargetPlanetCrc(unsigned int tpc);
+
+	unsigned int getTargetPlanetCrc();
+
+	void setDepictedObjCrc(unsigned int tsdc);
+
+	unsigned int getDepictedObjCrc();
+
+	void setDescriptionStf(const string& tds);
+
+	string& getDescriptionStf();
+
+	void setTitleStf(const string& tts);
+
+	string& getTitleStf();
+
+	void setToggleAvailability(unsigned int tta);
+
+	unsigned int getToggleAvailability();
+
+	void setTypeCrc(unsigned int ttc);
+
+	unsigned int getTypeCrc();
+
 protected:
 	MissionObject(DummyConstructorParameter* param);
 
 	virtual ~MissionObject();
+
+	string _return_getDescriptionStf;
+	string _return_getTitleStf;
+	string _return_getTypeStr;
+
+	unicode _return_getCreatorName;
 
 	friend class MissionObjectHelper;
 };
@@ -31,6 +107,79 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
+	void init();
+
+	void sendTo(Player* player, bool doClose);
+
+	void setTypeStr(const string& tstr);
+
+	string& getTypeStr();
+
+	void setTDKey(int tk);
+
+	unsigned int getTDKey();
+
+	void setDifficultyLevel(unsigned int tdlv);
+
+	unsigned int getDifficultyLevel();
+
+	void setDestX(float tdx);
+
+	float getDestX();
+
+	void setDestY(float tdy);
+
+	float getDestY();
+
+	void setDestPlanetCrc(unsigned int tpc);
+
+	unsigned int getDestPlanetCrc();
+
+	void setCreatorName(const unicode& tcn);
+
+	unicode& getCreatorName();
+
+	void setReward(unsigned int tr);
+
+	unsigned int getReward();
+
+	void setTargetX(float ttx);
+
+	float getTargetX();
+
+	void setTargetY(float tty);
+
+	float getTargetY();
+
+	void setTargetPlanetCrc(unsigned int tpc);
+
+	unsigned int getTargetPlanetCrc();
+
+	void setDepictedObjCrc(unsigned int tsdc);
+
+	unsigned int getDepictedObjCrc();
+
+	void setDescriptionStf(const string& tds);
+
+	string& getDescriptionStf();
+
+	void setTitleStf(const string& tts);
+
+	string& getTitleStf();
+
+	void setToggleAvailability(unsigned int tta);
+
+	unsigned int getToggleAvailability();
+
+	void setTypeCrc(unsigned int ttc);
+
+	unsigned int getTypeCrc();
+
+protected:
+	string _param0_setTypeStr__string_;
+	unicode _param0_setCreatorName__unicode_;
+	string _param0_setDescriptionStf__string_;
+	string _param0_setTitleStf__string_;
 };
 
 class MissionObjectHelper : public DistributedObjectClassHelper, public Singleton<MissionObjectHelper> {

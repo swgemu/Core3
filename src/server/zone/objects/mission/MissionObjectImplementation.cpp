@@ -42,61 +42,72 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-import "../scene/SceneObject";
+#include "../../Zone.h"
+#include "../../ZoneClient.h"
 
-import "../player/Player";
+#include "../../packets.h"
+#include "../../objects.h"
 
-interface MissionObject implements SceneObject {
-	MissionObject(unsigned long oid) {
-		super(oid);
-	}
+#include "MissionObject.h"
+#include "MissionObjectImplementation.h"
+
+MissionObjectImplementation::MissionObjectImplementation(uint64 oid) : SceneObjectImplementation(oid) {
+	objectCRC = 0xDF064E7A; //0x7a,0x4e,0x06,0xdf,
+
+	objectType = SceneObjectImplementation::MISSION;
 	
-	void init();
+	stringstream name;
+	name << "MissionObject :" << oid;
+	setLoggingName(name.str());
 	
-	void sendTo(Player player, boolean doClose = true);
+	setLogging(false);
+	setGlobalLogging(true);
 	
-	void setTypeStr(const string tstr);
-	string getTypeStr();
-	
-	void setTDKey(int tk);
-	unsigned int getTDKey();
-	
-	void setDifficultyLevel(unsigned int tdlv);
-	unsigned int getDifficultyLevel();
-	
-	void setDestX(float tdx);
-	float getDestX();
-	void setDestY(float tdy);
-	float getDestY();
-	void setDestPlanetCrc(unsigned int tpc);
-	unsigned int getDestPlanetCrc();
-	
-	void setCreatorName(const unicode tcn);
-	unicode getCreatorName();
-	
-	void setReward(unsigned int tr);
-	unsigned int getReward();
-	
-	void setTargetX(float ttx);
-	float getTargetX();
-	void setTargetY(float tty);
-	float getTargetY();
-	void setTargetPlanetCrc(unsigned int tpc);
-	unsigned int getTargetPlanetCrc();
-	
-	void setDepictedObjCrc(unsigned int tsdc);
-	unsigned int getDepictedObjCrc();
-	
-	void setDescriptionStf(const string tds);
-	string getDescriptionStf();
-	
-	void setTitleStf(const string tts);
-	string getTitleStf();
-	
-	void setToggleAvailability(unsigned int tta);
-	unsigned int getToggleAvailability();
-	
-	void setTypeCrc(unsigned int ttc);
-	unsigned int getTypeCrc();
-	
+	init();
 }
+
+MissionObjectImplementation::~MissionObjectImplementation() {
+}
+
+void MissionObjectImplementation::init() {
+	//MISO3:
+	typeStr = ""; //3
+	tdKey = 0; //4
+	difficultyLevel = 0; //5
+	//6:
+		destX = 0.0f;
+		destY = 0.0f;
+		destPlanetCrc = 0;
+	//
+	//creatorName = ""; //7 UNICODE
+	rewardAmount = 0; //8
+	//9:
+		targetX = 0.0f;
+		targetY = 0.0f;
+		targetPlanetCrc = 0;
+	//
+	depictedObjCrc = 0; //10 (0A)
+	descriptionStf = ""; //11 (0B)
+	titleStf = ""; //12 (0C)
+	toggleAvailability = 0; //13 (0D)
+	typeCrc = 0; //14 (0E)
+}
+
+void MissionObjectImplementation::sendTo(Player* player, bool doClose) {
+	ZoneClient* client = player->getClient();
+	if (client == NULL)
+		return;
+
+	create(client);
+	
+	BaseMessage* miso3 = new MissionObjectMessage3((MissionObject*) _this);
+	client->sendMessage(miso3);
+
+	BaseMessage* miso6 = new MissionObjectMessage6((MissionObject*) _this);
+	client->sendMessage(miso6);
+
+	if (doClose) {
+		close(client);
+	}
+}
+

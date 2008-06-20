@@ -102,6 +102,7 @@ public:
 	static const int STATIC = 8;
 	static const int SHIP = 9;
 	static const int ATTACKABLE = 10;
+	static const int MISSION = 11;
 	
 public:
 	SceneObjectImplementation();

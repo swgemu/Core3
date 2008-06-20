@@ -42,61 +42,17 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-import "../scene/SceneObject";
+#ifndef POPULATEMISSIONBROWSERMESSAGE_H_
+#define POPULATEMISSIONBROWSERMESSAGE_H_
 
-import "../player/Player";
-
-interface MissionObject implements SceneObject {
-	MissionObject(unsigned long oid) {
-		super(oid);
+class PopulateMissionBrowserMessage : public BaseMessage {
+public:
+	PopulateMissionBrowserMessage() : BaseMessage() {
+		insertShort(3);
+		insertInt(0x88D9885C);
+		insertInt(0); // list begin?
 	}
-	
-	void init();
-	
-	void sendTo(Player player, boolean doClose = true);
-	
-	void setTypeStr(const string tstr);
-	string getTypeStr();
-	
-	void setTDKey(int tk);
-	unsigned int getTDKey();
-	
-	void setDifficultyLevel(unsigned int tdlv);
-	unsigned int getDifficultyLevel();
-	
-	void setDestX(float tdx);
-	float getDestX();
-	void setDestY(float tdy);
-	float getDestY();
-	void setDestPlanetCrc(unsigned int tpc);
-	unsigned int getDestPlanetCrc();
-	
-	void setCreatorName(const unicode tcn);
-	unicode getCreatorName();
-	
-	void setReward(unsigned int tr);
-	unsigned int getReward();
-	
-	void setTargetX(float ttx);
-	float getTargetX();
-	void setTargetY(float tty);
-	float getTargetY();
-	void setTargetPlanetCrc(unsigned int tpc);
-	unsigned int getTargetPlanetCrc();
-	
-	void setDepictedObjCrc(unsigned int tsdc);
-	unsigned int getDepictedObjCrc();
-	
-	void setDescriptionStf(const string tds);
-	string getDescriptionStf();
-	
-	void setTitleStf(const string tts);
-	string getTitleStf();
-	
-	void setToggleAvailability(unsigned int tta);
-	unsigned int getToggleAvailability();
-	
-	void setTypeCrc(unsigned int ttc);
-	unsigned int getTypeCrc();
-	
-}
+};
+
+
+#endif /*POPULATEMISSIONBROWSERMESSAGE_H_*/

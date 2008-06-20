@@ -105,12 +105,27 @@ void PlanetManager::takeOffShuttles() {
 		((PlanetManagerImplementation*) _impl)->takeOffShuttles();
 }
 
-ShuttleCreature* PlanetManager::getShuttle(const string& Shuttle) {
+BuildingObject* PlanetManager::findBuildingType(const string& word, float targetX, float targetY) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 12);
+		method.addAsciiParameter(word);
+		method.addFloatParameter(targetX);
+		method.addFloatParameter(targetY);
+
+		return (BuildingObject*) method.executeWithObjectReturn();
+	} else
+		return ((PlanetManagerImplementation*) _impl)->findBuildingType(word, targetX, targetY);
+}
+
+ShuttleCreature* PlanetManager::getShuttle(const string& Shuttle) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 13);
 		method.addAsciiParameter(Shuttle);
 
 		return (ShuttleCreature*) method.executeWithObjectReturn();
@@ -123,7 +138,7 @@ void PlanetManager::sendPlanetTravelPointListResponse(Player* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 14);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -136,7 +151,7 @@ CellObject* PlanetManager::getCell(unsigned long long id) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 15);
 		method.addUnsignedLongParameter(id);
 
 		return (CellObject*) method.executeWithObjectReturn();
@@ -149,7 +164,7 @@ BuildingObject* PlanetManager::getBuilding(unsigned long long id) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, 16);
 		method.addUnsignedLongParameter(id);
 
 		return (BuildingObject*) method.executeWithObjectReturn();
@@ -162,7 +177,7 @@ unsigned long long PlanetManager::getLandingTime() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 17);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -199,18 +214,21 @@ Packet* PlanetManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		takeOffShuttles();
 		break;
 	case 12:
-		resp->insertLong(getShuttle(inv->getAsciiParameter(_param0_getShuttle__string_))->_getObjectID());
+		resp->insertLong(findBuildingType(inv->getAsciiParameter(_param0_findBuildingType__string_float_float_), inv->getFloatParameter(), inv->getFloatParameter())->_getObjectID());
 		break;
 	case 13:
-		sendPlanetTravelPointListResponse((Player*) inv->getObjectParameter());
+		resp->insertLong(getShuttle(inv->getAsciiParameter(_param0_getShuttle__string_))->_getObjectID());
 		break;
 	case 14:
-		resp->insertLong(getCell(inv->getUnsignedLongParameter())->_getObjectID());
+		sendPlanetTravelPointListResponse((Player*) inv->getObjectParameter());
 		break;
 	case 15:
-		resp->insertLong(getBuilding(inv->getUnsignedLongParameter())->_getObjectID());
+		resp->insertLong(getCell(inv->getUnsignedLongParameter())->_getObjectID());
 		break;
 	case 16:
+		resp->insertLong(getBuilding(inv->getUnsignedLongParameter())->_getObjectID());
+		break;
+	case 17:
 		resp->insertLong(getLandingTime());
 		break;
 	default:
@@ -242,6 +260,10 @@ void PlanetManagerAdapter::landShuttles() {
 
 void PlanetManagerAdapter::takeOffShuttles() {
 	return ((PlanetManagerImplementation*) impl)->takeOffShuttles();
+}
+
+BuildingObject* PlanetManagerAdapter::findBuildingType(const string& word, float targetX, float targetY) {
+	return ((PlanetManagerImplementation*) impl)->findBuildingType(word, targetX, targetY);
 }
 
 ShuttleCreature* PlanetManagerAdapter::getShuttle(const string& Shuttle) {

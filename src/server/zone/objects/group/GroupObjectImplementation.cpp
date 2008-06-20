@@ -64,7 +64,7 @@ GroupObjectImplementation::GroupObjectImplementation(uint64 oid, Player* Leader)
 	groupMembers.add(Leader);
 	
 	stringstream name;
-	name << "Cell :" << oid;
+	name << "Group :" << oid;
 	setLoggingName(name.str());
 	
 	setLogging(false);

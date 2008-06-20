@@ -200,6 +200,11 @@ which carries forward this exception.
 #include "packets/charcreation/ClientCreateCharacterSuccess.h"
 #include "packets/charcreation/ClientCreateCharacterFailed.h"
 
+//mission:
+#include "packets/mission/MissionObjectMessage3.h"
+#include "packets/mission/MissionObjectMessage6.h"
+#include "packets/mission/PopulateMissionBrowserMessage.h"
+
 // trade
 #include "packets/trade/AbortTradeMessage.h"
 #include "packets/trade/AcceptTransactionMessage.h"

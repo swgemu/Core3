@@ -186,6 +186,9 @@ which carries forward this exception.
 #include "objects/scene/SceneObject.h"
 #include "objects/scene/SceneObjectImplementation.h"
 
+#include "objects/mission/MissionObject.h"
+#include "objects/mission/MissionObjectImplementation.h"
+
 #include "objects/ship/ShipObject.h"
 #include "objects/ship/ShipObjectImplementation.h"
 

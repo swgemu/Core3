@@ -37,6 +37,8 @@ public:
 
 	void takeOffShuttles();
 
+	BuildingObject* findBuildingType(const string& word, float targetX, float targetY);
+
 	ShuttleCreature* getShuttle(const string& Shuttle);
 
 	void sendPlanetTravelPointListResponse(Player* player);
@@ -75,6 +77,8 @@ public:
 
 	void takeOffShuttles();
 
+	BuildingObject* findBuildingType(const string& word, float targetX, float targetY);
+
 	ShuttleCreature* getShuttle(const string& Shuttle);
 
 	void sendPlanetTravelPointListResponse(Player* player);
@@ -86,6 +90,7 @@ public:
 	unsigned long long getLandingTime();
 
 protected:
+	string _param0_findBuildingType__string_float_float_;
 	string _param0_getShuttle__string_;
 };
 

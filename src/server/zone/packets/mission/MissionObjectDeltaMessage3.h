@@ -42,61 +42,97 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-import "../scene/SceneObject";
+#ifndef MISSIONOBJECTDELTAMESSAGE3_H_
+#define MISSIONOBJECTDELTAMESSAGE3_H_
 
-import "../player/Player";
+#include "../DeltaMessage.h"
 
-interface MissionObject implements SceneObject {
-	MissionObject(unsigned long oid) {
-		super(oid);
+#include "../../objects/mission/MissionObject.h"
+
+class MissionObjectDeltaMessage3 : public DeltaMessage {
+	MissionObject* miso;
+	
+public:
+	MissionObjectDeltaMessage3(MissionObject* mi)
+			: DeltaMessage(mi->getObjectID(), 0x4D49534F, 3) {
+		miso = mi;
+	}
+
+
+	//Title/Description Key
+	void updateTDKey() {
+		startUpdate(0x04);
+		
+		insertInt(miso->getTDKey()); //make sure this isnt being reversed! like m27t -> t72m
 	}
 	
-	void init();
+	void updateDifficultyLv() {
+		startUpdate(0x05);
+		
+		insertInt(miso->getDifficultyLevel());
+	}
 	
-	void sendTo(Player player, boolean doClose = true);
+	void updateDestination() {
+		startUpdate(0x06);
+		
+		insertFloat(miso->getDestX());
+		insertFloat(0.0f);
+		insertFloat(miso->getDestY());
+		insertLong(0); //?
+		insertInt(miso->getDestPlanetCrc());
+	}
 	
-	void setTypeStr(const string tstr);
-	string getTypeStr();
+	void updateCreator() {
+		startUpdate(0x07);
+		
+		insertUnicode(miso->getCreatorName());
+	}
 	
-	void setTDKey(int tk);
-	unsigned int getTDKey();
+	void updateReward() {
+		startUpdate(0x08);
+		
+		insertInt(miso->getReward());
+	}
 	
-	void setDifficultyLevel(unsigned int tdlv);
-	unsigned int getDifficultyLevel();
+	void updateTarget() {
+		startUpdate(0x09);
+		
+		insertFloat(miso->getTargetX());
+		insertFloat(0.0f);
+		insertFloat(miso->getTargetY());
+		insertLong(0); //?
+		insertInt(miso->getTargetPlanetCrc());
+	}
 	
-	void setDestX(float tdx);
-	float getDestX();
-	void setDestY(float tdy);
-	float getDestY();
-	void setDestPlanetCrc(unsigned int tpc);
-	unsigned int getDestPlanetCrc();
+	void updateDepictedObject() {
+		startUpdate(0x0A);
+		
+		insertInt(miso->getDepictedObjCrc());
+	}
 	
-	void setCreatorName(const unicode tcn);
-	unicode getCreatorName();
+	void updateDescriptionStf() {
+		startUpdate(0x0B);
+		
+		insertAscii(miso->getDescriptionStf());
+	}
 	
-	void setReward(unsigned int tr);
-	unsigned int getReward();
+	void updateTitleStf() {
+		startUpdate(0x0C);
+		
+		insertAscii(miso->getTitleStf());
+	}
 	
-	void setTargetX(float ttx);
-	float getTargetX();
-	void setTargetY(float tty);
-	float getTargetY();
-	void setTargetPlanetCrc(unsigned int tpc);
-	unsigned int getTargetPlanetCrc();
+	void updateAvailability() {
+		startUpdate(0x0D);
+		
+		insertInt(miso->getToggleAvailability());
+	}
 	
-	void setDepictedObjCrc(unsigned int tsdc);
-	unsigned int getDepictedObjCrc();
-	
-	void setDescriptionStf(const string tds);
-	string getDescriptionStf();
-	
-	void setTitleStf(const string tts);
-	string getTitleStf();
-	
-	void setToggleAvailability(unsigned int tta);
-	unsigned int getToggleAvailability();
-	
-	void setTypeCrc(unsigned int ttc);
-	unsigned int getTypeCrc();
-	
-}
+	void updateTypeCrc() {
+		startUpdate(0x0E);
+		
+		insertInt(miso->getTypeCrc());
+	}
+};
+
+#endif /*MISSIONOBJECTDELTAMESSAGE3_H_*/

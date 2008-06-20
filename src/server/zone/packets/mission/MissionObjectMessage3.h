@@ -42,61 +42,92 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-import "../scene/SceneObject";
+#ifndef MISSIONOBJECTMESSAGE3_H_
+#define MISSIONOBJECTMESSAGE3_H_
 
-import "../player/Player";
+#include "../../packets/BaseLineMessage.h"
 
-interface MissionObject implements SceneObject {
-	MissionObject(unsigned long oid) {
-		super(oid);
+#include "../../objects/mission/MissionObject.h"
+
+/*
+ * Unforunately, the way SOE designed the baseline/delta system with missions makes it 
+ * impossible to set variables in the baseline past #4.
+ * Variables past #4 must be set to 0, and filled in later with the delta.
+ * Talk to Ramsey for more details.
+ */
+
+
+class MissionObjectMessage3 : public BaseLineMessage {
+	
+public:
+	
+	MissionObjectMessage3(MissionObject* mi)
+			: BaseLineMessage(mi->getObjectID(), 0x4D49534F, 3, 0x11) {
+		
+		insertFloat(1.0f);
+
+		insertAscii("mission/mission_object");
+		insertInt(0);
+		
+		insertAscii(mi->getTypeStr());
+		
+		//4
+		insertInt(0);
+		
+		//5
+		insertInt(0);
+		
+		//6
+		insertInt(0);
+		insertInt(0);
+		insertInt(0);
+		insertLong(0);
+		insertInt(0);
+		
+		//7
+		insertInt(0);
+		
+		//8
+		insertInt(0);
+		
+		//9
+		insertInt(0);
+		insertInt(0);
+		insertInt(0);
+		insertLong(0);
+		insertInt(0);
+		
+		//10 (0A)
+		insertInt(0);
+		
+		//11 (0B)
+		insertShort(0);
+		insertInt(0);
+		
+		//12 (0C)
+		insertShort(0);
+		insertInt(0);
+		
+		//13 (0D)
+		insertInt(0);
+		
+		//14 (0E)
+		insertInt(0);
+		
+		//rest:
+		insertLong(0);
+		insertLong(0);
+		insertLong(0);
+		insertLong(0);
+		insertLong(0);
+		insertInt(0);
+		insertShort(0);
+		insertLong(0);
+		insertShort(0x0001);
+
+		setSize();
 	}
 	
-	void init();
-	
-	void sendTo(Player player, boolean doClose = true);
-	
-	void setTypeStr(const string tstr);
-	string getTypeStr();
-	
-	void setTDKey(int tk);
-	unsigned int getTDKey();
-	
-	void setDifficultyLevel(unsigned int tdlv);
-	unsigned int getDifficultyLevel();
-	
-	void setDestX(float tdx);
-	float getDestX();
-	void setDestY(float tdy);
-	float getDestY();
-	void setDestPlanetCrc(unsigned int tpc);
-	unsigned int getDestPlanetCrc();
-	
-	void setCreatorName(const unicode tcn);
-	unicode getCreatorName();
-	
-	void setReward(unsigned int tr);
-	unsigned int getReward();
-	
-	void setTargetX(float ttx);
-	float getTargetX();
-	void setTargetY(float tty);
-	float getTargetY();
-	void setTargetPlanetCrc(unsigned int tpc);
-	unsigned int getTargetPlanetCrc();
-	
-	void setDepictedObjCrc(unsigned int tsdc);
-	unsigned int getDepictedObjCrc();
-	
-	void setDescriptionStf(const string tds);
-	string getDescriptionStf();
-	
-	void setTitleStf(const string tts);
-	string getTitleStf();
-	
-	void setToggleAvailability(unsigned int tta);
-	unsigned int getToggleAvailability();
-	
-	void setTypeCrc(unsigned int ttc);
-	unsigned int getTypeCrc();
-	
-}
+};
+
+#endif /*MISSIONOBJECTMESSAGE3_H_*/

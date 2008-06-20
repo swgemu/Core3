@@ -94,7 +94,7 @@ am__objects_1 = Zone.$(OBJEXT) ZoneClient.$(OBJEXT) \
 	CreatureObject.$(OBJEXT) Creature.$(OBJEXT) \
 	CreatureGroup.$(OBJEXT) ShuttleCreature.$(OBJEXT) \
 	TrainerCreature.$(OBJEXT) BlueFrogCreature.$(OBJEXT) \
-	BFVector.$(OBJEXT) RecruiterCreature.$(OBJEXT) \
+	BlueFrogVector.$(OBJEXT) RecruiterCreature.$(OBJEXT) \
 	MountCreature.$(OBJEXT) Player.$(OBJEXT) \
 	PlayerObject.$(OBJEXT) SuiBox.$(OBJEXT) SuiListBox.$(OBJEXT) \
 	SuiMessageBox.$(OBJEXT) SuiInputBox.$(OBJEXT) \
@@ -163,6 +163,7 @@ am_core3_OBJECTS = $(am__objects_1) ServerCore.$(OBJEXT) \
 	PowerupImplementation.$(OBJEXT) TicketImplementation.$(OBJEXT) \
 	TicketCollectorImplementation.$(OBJEXT) \
 	CreatureInventoryImplementation.$(OBJEXT) \
+	MissionObjectImplementation.$(OBJEXT) \
 	StaticObjectImplementation.$(OBJEXT) \
 	PlayerImplementation.$(OBJEXT) \
 	PlayerObjectImplementation.$(OBJEXT) \
@@ -334,7 +335,7 @@ core3_IDLS = server/zone/Zone.cpp \
 		server/zone/objects/creature/shuttle/ShuttleCreature.cpp \
 		server/zone/objects/creature/trainer/TrainerCreature.cpp \
 		server/zone/objects/creature/bluefrog/BlueFrogCreature.cpp \
-		server/zone/objects/creature/bluefrog/BFVector.cpp \
+		server/zone/objects/creature/bluefrog/BlueFrogVector.cpp \
 		server/zone/objects/creature/recruiter/RecruiterCreature.cpp \
 		server/zone/objects/creature/mount/MountCreature.cpp \
 		server/zone/objects/player/Player.cpp \
@@ -457,6 +458,7 @@ core3_SOURCES = $(core3_IDLS) \
 		server/zone/objects/tangible/ticket/TicketImplementation.cpp \
 		server/zone/objects/tangible/ticketcollector/TicketCollectorImplementation.cpp \
 		server/zone/objects/tangible/inventory/CreatureInventoryImplementation.cpp \
+		server/zone/objects/mission/MissionObjectImplementation.cpp \
 		server/zone/objects/static/StaticObjectImplementation.cpp \
 		server/zone/objects/player/PlayerImplementation.cpp \
 		server/zone/objects/player/PlayerObjectImplementation.cpp \
@@ -576,7 +578,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/AttackableObject.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/AttackableObjectImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/AuctionItem.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/BFVector.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Bank.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/BankManager.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/BankManagerImplementation.Po@am__quote@
@@ -586,6 +587,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/BazaarPlanetManagerImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/BlueFrogCreature.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/BlueFrogCreatureImplementation.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/BlueFrogVector.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/BuildingObject.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/BuildingObjectImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/CarbineRangedWeapon.Po@am__quote@
@@ -654,6 +656,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/MeleeWeapon.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/MissionBag.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/MissionObject.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/MissionObjectImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/MountCreature.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/MountCreatureImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/NameManager.Po@am__quote@
@@ -930,19 +933,19 @@ BlueFrogCreature.obj: server/zone/objects/creature/bluefrog/BlueFrogCreature.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o BlueFrogCreature.obj `if test -f 'server/zone/objects/creature/bluefrog/BlueFrogCreature.cpp'; then $(CYGPATH_W) 'server/zone/objects/creature/bluefrog/BlueFrogCreature.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/creature/bluefrog/BlueFrogCreature.cpp'; fi`
 
-BFVector.o: server/zone/objects/creature/bluefrog/BFVector.cpp
-@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT BFVector.o -MD -MP -MF $(DEPDIR)/BFVector.Tpo -c -o BFVector.o `test -f 'server/zone/objects/creature/bluefrog/BFVector.cpp' || echo '$(srcdir)/'`server/zone/objects/creature/bluefrog/BFVector.cpp
-@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/BFVector.Tpo $(DEPDIR)/BFVector.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/creature/bluefrog/BFVector.cpp' object='BFVector.o' libtool=no @AMDEPBACKSLASH@
+BlueFrogVector.o: server/zone/objects/creature/bluefrog/BlueFrogVector.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT BlueFrogVector.o -MD -MP -MF $(DEPDIR)/BlueFrogVector.Tpo -c -o BlueFrogVector.o `test -f 'server/zone/objects/creature/bluefrog/BlueFrogVector.cpp' || echo '$(srcdir)/'`server/zone/objects/creature/bluefrog/BlueFrogVector.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/BlueFrogVector.Tpo $(DEPDIR)/BlueFrogVector.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/creature/bluefrog/BlueFrogVector.cpp' object='BlueFrogVector.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o BFVector.o `test -f 'server/zone/objects/creature/bluefrog/BFVector.cpp' || echo '$(srcdir)/'`server/zone/objects/creature/bluefrog/BFVector.cpp
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o BlueFrogVector.o `test -f 'server/zone/objects/creature/bluefrog/BlueFrogVector.cpp' || echo '$(srcdir)/'`server/zone/objects/creature/bluefrog/BlueFrogVector.cpp
 
-BFVector.obj: server/zone/objects/creature/bluefrog/BFVector.cpp
-@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT BFVector.obj -MD -MP -MF $(DEPDIR)/BFVector.Tpo -c -o BFVector.obj `if test -f 'server/zone/objects/creature/bluefrog/BFVector.cpp'; then $(CYGPATH_W) 'server/zone/objects/creature/bluefrog/BFVector.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/creature/bluefrog/BFVector.cpp'; fi`
-@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/BFVector.Tpo $(DEPDIR)/BFVector.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/creature/bluefrog/BFVector.cpp' object='BFVector.obj' libtool=no @AMDEPBACKSLASH@
+BlueFrogVector.obj: server/zone/objects/creature/bluefrog/BlueFrogVector.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT BlueFrogVector.obj -MD -MP -MF $(DEPDIR)/BlueFrogVector.Tpo -c -o BlueFrogVector.obj `if test -f 'server/zone/objects/creature/bluefrog/BlueFrogVector.cpp'; then $(CYGPATH_W) 'server/zone/objects/creature/bluefrog/BlueFrogVector.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/creature/bluefrog/BlueFrogVector.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/BlueFrogVector.Tpo $(DEPDIR)/BlueFrogVector.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/creature/bluefrog/BlueFrogVector.cpp' object='BlueFrogVector.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o BFVector.obj `if test -f 'server/zone/objects/creature/bluefrog/BFVector.cpp'; then $(CYGPATH_W) 'server/zone/objects/creature/bluefrog/BFVector.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/creature/bluefrog/BFVector.cpp'; fi`
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o BlueFrogVector.obj `if test -f 'server/zone/objects/creature/bluefrog/BlueFrogVector.cpp'; then $(CYGPATH_W) 'server/zone/objects/creature/bluefrog/BlueFrogVector.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/creature/bluefrog/BlueFrogVector.cpp'; fi`
 
 RecruiterCreature.o: server/zone/objects/creature/recruiter/RecruiterCreature.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT RecruiterCreature.o -MD -MP -MF $(DEPDIR)/RecruiterCreature.Tpo -c -o RecruiterCreature.o `test -f 'server/zone/objects/creature/recruiter/RecruiterCreature.cpp' || echo '$(srcdir)/'`server/zone/objects/creature/recruiter/RecruiterCreature.cpp
@@ -2623,6 +2626,20 @@ CreatureInventoryImplementation.obj: server/zone/objects/tangible/inventory/Crea
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/inventory/CreatureInventoryImplementation.cpp' object='CreatureInventoryImplementation.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o CreatureInventoryImplementation.obj `if test -f 'server/zone/objects/tangible/inventory/CreatureInventoryImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/inventory/CreatureInventoryImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/inventory/CreatureInventoryImplementation.cpp'; fi`
+
+MissionObjectImplementation.o: server/zone/objects/mission/MissionObjectImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT MissionObjectImplementation.o -MD -MP -MF $(DEPDIR)/MissionObjectImplementation.Tpo -c -o MissionObjectImplementation.o `test -f 'server/zone/objects/mission/MissionObjectImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/mission/MissionObjectImplementation.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/MissionObjectImplementation.Tpo $(DEPDIR)/MissionObjectImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/mission/MissionObjectImplementation.cpp' object='MissionObjectImplementation.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o MissionObjectImplementation.o `test -f 'server/zone/objects/mission/MissionObjectImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/mission/MissionObjectImplementation.cpp
+
+MissionObjectImplementation.obj: server/zone/objects/mission/MissionObjectImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT MissionObjectImplementation.obj -MD -MP -MF $(DEPDIR)/MissionObjectImplementation.Tpo -c -o MissionObjectImplementation.obj `if test -f 'server/zone/objects/mission/MissionObjectImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/mission/MissionObjectImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/mission/MissionObjectImplementation.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/MissionObjectImplementation.Tpo $(DEPDIR)/MissionObjectImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/mission/MissionObjectImplementation.cpp' object='MissionObjectImplementation.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o MissionObjectImplementation.obj `if test -f 'server/zone/objects/mission/MissionObjectImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/mission/MissionObjectImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/mission/MissionObjectImplementation.cpp'; fi`
 
 StaticObjectImplementation.o: server/zone/objects/static/StaticObjectImplementation.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT StaticObjectImplementation.o -MD -MP -MF $(DEPDIR)/StaticObjectImplementation.Tpo -c -o StaticObjectImplementation.o `test -f 'server/zone/objects/static/StaticObjectImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/static/StaticObjectImplementation.cpp

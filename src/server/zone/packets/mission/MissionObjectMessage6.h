@@ -42,61 +42,21 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-import "../scene/SceneObject";
+#ifndef MISSIONOBJECTMESSAGE6_H_
+#define MISSIONOBJECTMESSAGE6_H_
 
-import "../player/Player";
+#include "../BaseLineMessage.h"
 
-interface MissionObject implements SceneObject {
-	MissionObject(unsigned long oid) {
-		super(oid);
+class MissionObjectMessage6 : public BaseLineMessage {
+public:
+	MissionObjectMessage6(MissionObject* mi)
+			: BaseLineMessage(mi->getObjectID(), 0x4D49534F, 6, 0x02) {
+
+		insertInt(0x79);
+		insertLong(0);
+		
+		setSize();
 	}
-	
-	void init();
-	
-	void sendTo(Player player, boolean doClose = true);
-	
-	void setTypeStr(const string tstr);
-	string getTypeStr();
-	
-	void setTDKey(int tk);
-	unsigned int getTDKey();
-	
-	void setDifficultyLevel(unsigned int tdlv);
-	unsigned int getDifficultyLevel();
-	
-	void setDestX(float tdx);
-	float getDestX();
-	void setDestY(float tdy);
-	float getDestY();
-	void setDestPlanetCrc(unsigned int tpc);
-	unsigned int getDestPlanetCrc();
-	
-	void setCreatorName(const unicode tcn);
-	unicode getCreatorName();
-	
-	void setReward(unsigned int tr);
-	unsigned int getReward();
-	
-	void setTargetX(float ttx);
-	float getTargetX();
-	void setTargetY(float tty);
-	float getTargetY();
-	void setTargetPlanetCrc(unsigned int tpc);
-	unsigned int getTargetPlanetCrc();
-	
-	void setDepictedObjCrc(unsigned int tsdc);
-	unsigned int getDepictedObjCrc();
-	
-	void setDescriptionStf(const string tds);
-	string getDescriptionStf();
-	
-	void setTitleStf(const string tts);
-	string getTitleStf();
-	
-	void setToggleAvailability(unsigned int tta);
-	unsigned int getToggleAvailability();
-	
-	void setTypeCrc(unsigned int ttc);
-	unsigned int getTypeCrc();
-	
-}
+};
+
+#endif /*MISSIONOBJECTMESSAGE6_H_*/
