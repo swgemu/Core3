@@ -47,6 +47,8 @@ public:
 
 	Creature* spawnCreature(const string& stfname, const string& name, int objCrc, float x, float y, int bitmask = 00, bool doLock = true);
 
+	Creature* spawnCreature(unsigned int objcrc, float x, float y, int bitmask = 0, bool baby = false, bool doLock = true);
+
 	TrainerCreature* spawnTrainer(const string& profession, const string& stfname, const string& name, int objCrc, float x, float y, bool doLock = true);
 
 	ShuttleCreature* spawnShuttle(const string& Planet, const string& City, Coordinate* playerSpawnPoint, float x, float y, float z, bool doLock = true);
@@ -96,6 +98,8 @@ public:
 	void unloadCreature(Creature* creature);
 
 	Creature* spawnCreature(const string& stfname, const string& name, int objCrc, float x, float y, int bitmask, bool doLock);
+
+	Creature* spawnCreature(unsigned int objcrc, float x, float y, int bitmask, bool baby, bool doLock);
 
 	TrainerCreature* spawnTrainer(const string& profession, const string& stfname, const string& name, int objCrc, float x, float y, bool doLock);
 

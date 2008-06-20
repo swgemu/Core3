@@ -288,3 +288,12 @@ void AttackableObjectImplementation::broadcastMessage(BaseMessage* msg, int rang
 		zone->unlock(doLock);
 	}
 }
+
+void AttackableObjectImplementation::sendDestroyTo(Player* player) {
+	ZoneClient* client = player->getClient();
+	if (client == NULL)
+		return;
+	
+	destroy(client);
+}
+

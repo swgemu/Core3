@@ -949,13 +949,13 @@ bool CreatureImplementation::checkState() {
 		creatureState = RESPAWNING;
 		
 		unload();
-
-		stringstream msg;
-		msg << "respawning creature with " << respawnTimer << "s timer";
-		info(msg);
+		if(respawnTimer > 0) { // 0 is do not respawn
+			stringstream msg;
+			msg << "respawning creature with " << respawnTimer << "s timer";
+			info(msg);
 		
-		creatureManager->queueActivity(this, respawnTimer * 1000);
-		
+			creatureManager->queueActivity(this, respawnTimer * 1000);
+		}
 		return false;
 	} else if (isReSpawning()) {
 		reload();

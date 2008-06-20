@@ -104,6 +104,7 @@ public:
 	
 	// creation methods
 	Creature* spawnCreature(const string& stfname, const string& name, int objCrc, float x, float y, int bitmask = 0x00, bool doLock = true);
+	Creature* spawnCreature(uint32 objcrc, float x, float y, int bitmask = 0, bool baby = false, bool doLock = true);
 	TrainerCreature* spawnTrainer(const string& profession, const string& stfname, const string& name, int objCrc, float x, float y, bool doLock = true);
 	ShuttleCreature* spawnShuttle(const string& Planet, const string& City, Coordinate* playerSpawnPoint, float x, float y, float z, bool doLock = true);
 	RecruiterCreature* spawnRecruiter(const string& stfname, const string& name, int objCrc, float x, float y, bool doLock = true);
@@ -122,6 +123,10 @@ public:
 		runFile("scripts/creatures/main.lua");
 	}
 	
+	void loadObjectFile() {
+		runFile("scripts/sceneobjects/main.lua");
+	}
+	
 	//creature naming
 	string makeStormTrooperName();
 	string makeDarkTrooperName();
@@ -131,6 +136,7 @@ public:
 
 	//lua functions
 	static int runCreatureFile(lua_State* L);
+	static int runObjectFile(lua_State* L);
 
 	static int addCreature(lua_State *L);
 	static int addLair(lua_State * L);

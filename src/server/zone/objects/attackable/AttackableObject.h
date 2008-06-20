@@ -9,6 +9,8 @@
 
 class SceneObject;
 
+class Player;
+
 class Zone;
 
 #include "../scene/SceneObject.h"
@@ -20,6 +22,8 @@ public:
 	void insertToZone(Zone* zone);
 
 	void removeFromZone();
+
+	void sendDestroyTo(Player* player);
 
 	void setTemplateName(string& name);
 
@@ -73,6 +77,8 @@ public:
 	void insertToZone(Zone* zone);
 
 	void removeFromZone();
+
+	void sendDestroyTo(Player* player);
 
 	void setTemplateName(string& name);
 

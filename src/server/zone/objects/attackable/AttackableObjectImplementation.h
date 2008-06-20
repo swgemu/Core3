@@ -47,8 +47,9 @@ which carries forward this exception.
 
 #include "AttackableObject.h"
 
-#include "../scene/SceneObject.h"
+#include "../../packets.h"
 
+#include "../scene/SceneObject.h"
 #include "../player/Player.h"
 
 #include "../tangible/CustomizationVariables.h"
@@ -99,6 +100,7 @@ public:
 	void clearCombatState(bool removeDefenders = true);
 	
 	void sendTo(Player* player, bool doClose = true);
+	void sendDestroyTo(Player* player);
 	
 	virtual void doDamage(int damage);
 	virtual void doDestroyed();

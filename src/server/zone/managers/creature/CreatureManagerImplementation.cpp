@@ -106,6 +106,7 @@ void CreatureManagerImplementation::init() {
 
 void CreatureManagerImplementation::loadCreatures() {
 	loadCreatureFile();
+	loadObjectFile();
 
 	loadTrainers();
 	loadRecruiters();
@@ -443,6 +444,144 @@ Creature* CreatureManagerImplementation::spawnCreature(const string& stfname, co
 	}
 }
 
+Creature* CreatureManagerImplementation::spawnCreature(uint32 objcrc, float x, float y, int bitmask, bool baby, bool doLock) {
+	try {
+		instance->lock(doLock);
+		Creature* creature = new Creature(getNextCreatureID());
+
+		creature->setObjectCRC(objcrc);
+		
+		// Load creature from lua
+		LuaFunction getCreature(getLuaState(), "getCreature", 1);
+		getCreature << objcrc; // push first argument	
+		callFunction(&getCreature);
+		
+		LuaObject result(getLuaState());
+		if (!result.isValidTable()) {
+			cout << "Unknown object CRC " << objcrc << endl;
+			return NULL;
+		}
+				
+		string objectName = result.getStringField("objectName");
+		string stfname = result.getStringField("stfName");
+		if (baby)
+			stfname += " baby"; 
+		string name = result.getStringField("name");
+
+		if (!stfname.empty())
+			creature->setCharacterName(stfname);
+		else	
+			if (objcrc == 0xBA7F23CD)
+				creature->setCharacterName(unicode(instance->makeStormTrooperName()));
+			else
+				creature->setCharacterName(unicode(instance->makeCreatureName(name)));
+		
+		creature->setTerrainName(Terrain::getTerrainName(instance->getZone()->getZoneID()));
+
+		//ham stuff
+		uint32 health = result.getIntField("health");
+		uint32 strength = result.getIntField("strength");
+		uint32 constitution = result.getIntField("constitution");
+		uint32 action = result.getIntField("action");
+		uint32 quickness = result.getIntField("quickness");
+		uint32 stamina = result.getIntField("stamina");
+		uint32 mind = result.getIntField("mind");
+		uint32 focus = result.getIntField("focus");
+		uint32 willpower = result.getIntField("willpower");
+
+		health += health * (System::random(100)) / 1111;
+		action += action * (System::random(100)) / 1111;
+		mind += mind * (System::random(100)) / 1111;
+		
+		// TODO: Implement baby stats properly
+		if(baby) {
+			health /= 2;
+			action /= 2;
+			mind /= 2;
+		}
+		
+		creature->setHealth(health);
+		creature->setStrength(strength);
+		creature->setConstitution(constitution);
+		creature->setAction(action);
+		creature->setQuickness(quickness);
+		creature->setStamina(stamina);
+		creature->setMind(mind);
+		creature->setFocus(focus);
+		creature->setWillpower(willpower);
+		
+		creature->setHealthMax(health);
+		creature->setStrengthMax(strength);
+		creature->setConstitutionMax(constitution);
+		creature->setActionMax(action);
+		creature->setQuicknessMax(quickness);
+		creature->setStaminaMax(stamina);
+		creature->setMindMax(mind);
+		creature->setFocusMax(focus);
+		creature->setWillpowerMax(willpower);
+
+		creature->setBaseHealth(health);
+		creature->setBaseStrength(strength);
+		creature->setBaseConstitution(constitution);
+		creature->setBaseAction(action);
+		creature->setBaseQuickness(quickness);
+		creature->setBaseStamina(stamina);
+		creature->setBaseMind(mind);
+		creature->setBaseFocus(focus);
+		creature->setBaseWillpower(willpower);	
+		
+		creature->setArmor(result.getIntField("armor"));
+
+		creature->setKinetic(result.getFloatField("kinetic"));
+		creature->setEnergy(result.getFloatField("energy"));
+		creature->setElectricity(result.getFloatField("electricity"));
+		creature->setStun(result.getFloatField("stun"));
+		creature->setBlast(result.getFloatField("blast"));
+		creature->setHeat(result.getFloatField("heat"));
+		creature->setCold(result.getFloatField("cold"));
+		creature->setAcid(result.getFloatField("acid"));
+		creature->setLightSaber(result.getFloatField("lightSaber"));	
+
+		float height = height = result.getFloatField("height");
+		if (baby)
+			creature->setHeight(height /= 3.0f);
+		else
+			creature->setHeight(height);
+			
+		float z = 0.0f;
+		
+		creature->initializePosition(x, z, y);
+		
+		creature->setSpawnPosition(x, z, y, 0);
+		
+		creature->setAccuracy(result.getIntField("accuracy"));
+		creature->setSpeed(result.getFloatField("speed"));
+		creature->setAcceleration(result.getFloatField("acceleration"));
+		creature->setRespawnTimer(0);
+		creature->setLevel(result.getIntField("level"));
+		creature->setPvpStatusBitmask(result.getIntField("combatFlags"));
+		creature->setParent(instance->getZone()->lookupObject(0));
+
+		result.pop(); // remove table from stack
+
+		instance->load(creature);
+
+		creature->loadItems();
+		creature->insertToZone(zone);
+
+		instance->creatureMap->put(creature->getObjectID(), creature);
+
+		instance->unlock(doLock);
+
+		return creature;
+	} catch (...) {
+		error("unreported Exception caught on spawnCreature()"); 
+
+		instance->unlock(doLock);
+		return NULL;
+	}
+}
+
 void CreatureManagerImplementation::despawnCreature(Creature* creature) {
 	lock();
 	
@@ -630,22 +769,39 @@ int CreatureManagerImplementation::addLair(lua_State * L) {
 	uint32 objectCRC = object.getIntField("objectCRC");
 	
 	LairObject* lair = new LairObject(objectCRC, instance->getNextCreatureID());
+	lair->deploy();
+	
 	float x = object.getFloatField("positionX");
 	float y = object.getFloatField("positionY");
 	float z = object.getFloatField("positionZ");
+	int maxCondition = object.getIntField("maxCondition");
+	
+	lair->setMaxCondition(maxCondition);
+	
+	string stfName = object.getStringField("stfName");
+	
+	lair->setTemplateName(stfName);
+	
+	uint32 creatureCRC = object.getIntField("creatureCRC");
+	int	spawnSize = object.getIntField("spawnSize");
+	int babiesPerMillion = object.getIntField("babiesPerMillion");
+
+	object.pop();
+
+	lair->setCreatureCRC(creatureCRC);
+	lair->setSpawnSize(spawnSize);
+	lair->setBabiesPerMillion(babiesPerMillion);
 	
 	lair->initializePosition(x, z, y);
-	
-	//lairObject->loadItems();
+
 	lair->insertToZone(instance->getZone());
-	
-	cout << "Spawning Lair with objcrc (" << objectCRC << ")" << "on position [" << x << "," << y << "]\n";
-	object.pop();
+	lair->spawnCreatures();
+		
+	cout << "Spawning Lair with objcrc (" << objectCRC << ")" << "on position [" << x << "," << y << "] on " << planet << "\n";
 	
 	instance->unlock();
 	
 	return 0;
-	
 }
 
 int CreatureManagerImplementation::runCreatureFile(lua_State* L) {
@@ -656,10 +812,18 @@ int CreatureManagerImplementation::runCreatureFile(lua_State* L) {
 	return 0;
 }
 
+int CreatureManagerImplementation::runObjectFile(lua_State* L) {
+	string filename = getStringParameter(L);
+	
+	runFile("scripts/sceneobjects/" + filename, L);
+	
+	return 0;
+}
 
 void CreatureManagerImplementation::registerFunctions() {
 	//lua generic
 	lua_register(getLuaState(), "RunCreatureFile", runCreatureFile);
+	lua_register(getLuaState(), "RunObjectFile", runObjectFile);
 	
 	lua_register(getLuaState(), "AddCreatureToServer", addCreature);
 	lua_register(getLuaState(), "AddLairToServer", addLair);	

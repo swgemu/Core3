@@ -99,7 +99,7 @@ IDL_SOURCES = server/zone/Zone.idl \
 				server/zone/objects/tangible/terminal/bazaar/RegionBazaar.idl \
 				server/zone/objects/tangible/ticketcollector/TicketCollector.idl \
 				server/zone/objects/tangible/instrument/Instrument.idl \
-				server/zone/objects/tangible/lair/LairObject.idl \
+				server/zone/objects/attackable/lair/LairObject.idl \
 				server/zone/objects/tangible/surveytool/SurveyTool.idl \
 				server/zone/objects/tangible/crafting/CraftingTool.idl \
 				server/zone/objects/tangible/crafting/CraftingStation.idl \

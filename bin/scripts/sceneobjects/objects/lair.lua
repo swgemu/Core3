@@ -39,69 +39,56 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
+Lair = Object:new {
+	objectName = "Lair",
 
--- utils
--- creatures lua files
-RunCreatureFile("objects/object.lua") -- basic object
-RunCreatureFile("objects/creature.lua") -- Creature Object
+	stfName = "",
+	objectCRC = 0,
 
-local sin, cos = math.sin, math.cos
-local deg, rad = math.deg, math.rad
-math.sin = function (x) return sin(rad(x)) end
-math.cos = function (x) return cos(rad(x)) end
+	maxCondition = 0,
 
--- Global creature table
-Creatures = { }
-
-function Creatures:addCreature(obj, crc)
-	self[crc] = obj
-end
-
-function getCreature(crc)
-	return Creatures[crc]
-end
-
-function spawnCreature(creature, Planet, PositionX, PositionY)
-	newCreature = creature:new { planet = Planet, positionX = PositionX, positionY = PositionY }
-	AddCreatureToServer(newCreature)
-end
-
-function spawnCreature(creature, Planet, PositionX, PositionY, respawnTime)
-	newCreature = creature:new { planet = Planet, positionX = PositionX, positionY = PositionY, respawnTimer = respawnTime }
-	AddCreatureToServer(newCreature)
-end
-
-function spawnCreatureInCell(creature, Planet, PositionX, PositionZ, PositionY, cellid)
-	newCreature = creature:new { planet = Planet, positionX = PositionX, positionZ = PositionZ, positionY = PositionY, cellID = cellid }
-	AddCreatureToServer(newCreature)
-end
-
-function spawnCreatures(creature, Planet, PositionX, PositionY, radius, number)
-	for i=1,number do
-		angle = math.random(359)
-		dist = math.random(radius)
+	positionX = 0,
+	positionY = 0,
+	positionZ = 0,
 	
-		x = math.cos(angle) * dist + PositionX
-		y = math.sin(angle) * dist + PositionY
-		
-		spawnCreature(creature, Planet, x, y)
-	end	
+	planet = 0,
+
+	creatureCRC = 0,
+	creatureName = "",
+	creaturestfName = "",
+	spawnSize = 0,
+
+	babiesPerMillion = 0
+
+}
+
+function Lair:getNumberOfCreatures()
+	return self.spawnSize 
 end
 
-function spawnCreatures(creature, Planet, PositionX, PositionY, radius, number, respawnTime)
-	for i=1,number do
-		angle = math.random(359)
-		dist = math.random(radius)
-	
-		x = math.cos(angle) * dist + PositionX
-		y = math.sin(angle) * dist + PositionY
-		
-		spawnCreature(creature, Planet, x, y, respawnTime)
-	end	
+function Lair:getCreature(index)
+	return self.creatureName
 end
 
--- Creature objects
-RunCreatureFile("creatureObjects.lua")
+function Lair:setPlanet(x)
+	self.planet = x
+end
 
--- Spawns
-RunCreatureFile("spawns.lua")
+function Lair:setPosition(x, y, z)
+	self.x = x
+	self.y = y
+	self.z = z
+end
+
+-- getters
+function Lair:getPosition()
+	return self.x, self.y, self.z
+end
+
+function Lair:getName()
+	return self.name
+end
+
+function Lair:getPlanet()
+	return self.planet
+end

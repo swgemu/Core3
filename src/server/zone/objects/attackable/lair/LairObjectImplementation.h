@@ -42,11 +42,82 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-import "../TangibleObject";
+#ifndef LAIROBJECTIMPLEMENTATION_H_
+#define LAIROBJECTIMPLEMENTATION_H_
 
-interface LairObject implements TangibleObject {
-	LairObject(unsigned int objCRC, unsigned long oid) {
-		super(oid, int tp);
+#include "engine/engine.h"
+
+#include "LairObject.h"
+
+#include "../../../packets.h"
+
+#include "../../creature/Creature.h"
+#include "../../../managers/creature/CreatureManager.h"
+#include "../../../Zone.h"
+
+#include "../../../packets/attackable/AttackableObjectDeltaMessage3.h"
+
+class LairObjectImplementation : public LairObjectServant {
+	
+	SortedVector<Creature*> creatures;
+	
+	bool spawn1;
+	bool spawn2;
+	
+	string stfName;
+	uint32 creatureCRC;
+	string creatureName;
+	string creatureStfName;
+	int spawnSize;
+	int babiesPerMillion;
+	
+public:
+	LairObjectImplementation::LairObjectImplementation(uint32 objCRC, uint64 oid);
+
+	void addDefender(SceneObject* defender);
+	void doDamage(int damage);
+	void spawnCreatures();
+	void doDestroyed();
+	
+	void setMaxCondition(int cond) {
+		maxCondition = cond;
 	}
 	
-}
+	void setSStfName(string& stfname) {
+		stfName = stfname;
+	}
+	
+	void setCreatureCRC(uint32 crc) {
+		creatureCRC = crc;
+	}
+	
+	void setSpawnSize(int size) {
+		spawnSize = size;
+	}
+	
+	void setBabiesPerMillion(int babies) {
+		babiesPerMillion = babies;
+	}
+	
+	void addCreature(Creature* creature) {
+		creatures.add(creature);
+	}
+	
+	void removeCreature(Creature* creature) {
+		creatures.drop(creature);
+	}
+	
+	Creature* getCreature() {
+		if (creatures.size() > 0)
+			return creatures.get(0);
+		else
+			return NULL;
+	}
+	
+	int getNumberOfCreatures() {
+		return creatures.size();
+	}
+	
+};
+
+#endif /*LAIROBJECTIMPLEMENTATION_H_*/

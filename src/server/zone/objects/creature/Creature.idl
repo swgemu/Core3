@@ -50,7 +50,7 @@ import "../player/Player";
 
 import "../tangible/wearables/Armor";
 
-import "../tangible/lair/LairObject";
+import "../attackable/lair/LairObject";
 
 import "CreatureObject";
 

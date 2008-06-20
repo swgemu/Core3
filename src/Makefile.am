@@ -111,7 +111,7 @@ core3_IDLS =	server/zone/Zone.cpp \
 		server/zone/objects/tangible/terminal/bazaar/RegionBazaar.cpp \
 		server/zone/objects/tangible/ticketcollector/TicketCollector.cpp \
 		server/zone/objects/tangible/instrument/Instrument.cpp \
-		server/zone/objects/tangible/lair/LairObject.cpp \
+		server/zone/objects/attackable/lair/LairObject.cpp \
 		server/zone/objects/tangible/surveytool/SurveyTool.cpp \
 		server/zone/objects/tangible/crafting/CraftingTool.cpp \
 		server/zone/objects/tangible/crafting/CraftingStation.cpp \
@@ -179,7 +179,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/wearables/ArmorImplementation.cpp \
 		server/zone/objects/tangible/weapons/WeaponImplementation.cpp \
 		server/zone/objects/tangible/TangibleObjectImplementation.cpp \
-		server/zone/objects/tangible/lair/LairObjectImplementation.cpp \
+		server/zone/objects/attackable/lair/LairObjectImplementation.cpp \
 		server/zone/objects/tangible/surveytool/SurveyToolImplementation.cpp \
 		server/zone/objects/tangible/crafting/CraftingToolImplementation.cpp \
 		server/zone/objects/tangible/crafting/CraftingStationImplementation.cpp \

@@ -42,20 +42,16 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#include "LairObjectImplementation.h"
+import "../AttackableObject";
 
-#include "../TangibleObjectImplementation.h"
-
-LairObjectImplementation::LairObjectImplementation(uint32 objCRC, uint64 oid) 
-		: LairObjectServant(oid, LAIR) {
-	objectCRC = objCRC;
+interface LairObject implements AttackableObject {
+	LairObject(unsigned int objcrc, unsigned long oid) {
+		super(oid);
+	}
 	
-	conditionDamage = 0;
-	maxCondition = 20000;
+	void setCreatureCRC(unsigned int crc);
+	void setSpawnSize(int size);
+	void setBabiesPerMillion(int babies);
 	
-	templateTypeName = "lair_n";
-	templateName = "generic_antpile";
-	
-	pvpStatusBitmask = 1;
+	void spawnCreatures();
 }
-

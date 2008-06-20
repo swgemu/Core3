@@ -39,26 +39,46 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-Lair = Object:new {
-	positionX = 0,
-	positionY = 0,
-	positionZ = 0,
-	
-	planet = 0,
-	
-	objectCRC = 0,
-	
-	creatureTable = { }
-}
 
-function Lair:getNumberOfCreatures()
-	return table.getn(self.skills) 
+-- utils
+-- lua files
+
+RunObjectFile("objects/object.lua") -- basic object
+RunObjectFile("objects/lair.lua") -- Lair Object
+
+local sin, cos = math.sin, math.cos
+local deg, rad = math.deg, math.rad
+math.sin = function (x) return sin(rad(x)) end
+math.cos = function (x) return cos(rad(x)) end
+
+-- Global object table
+Objects = { }
+
+function Objects:addObject(obj, type)
+	self[type] = obj
 end
 
-function Lair:getCreature(index)
-	return self.creatureTable[index]
+function getObject(type)
+	return Objects[type]
 end
 
-function Lair:addCreature(creature)
-	table.insert(self.creatureTable, creature)
+function spawnObject(object, Planet, PositionX, PositionY)
+	newObject = object:new { planet = Planet, positionX = PositionX, positionY = PositionY }
+	AddObjectToServer(newObject)
 end
+
+function spawnObject(object, Planet, PositionX, PositionY, respawnTime)
+	newObject = object:new { planet = Planet, positionX = PositionX, positionY = PositionY, respawnTimer = respawnTime }
+	AddObjectToServer(newObject)
+end
+
+function spawnLair(lair, Planet, PositionX, PositionY, PositionZ)
+	newLair = lair:new { planet = Planet, positionX = PositionX, positionY = PositionY, positionZ = PositionZ }
+	AddLairToServer(newLair)
+end
+
+-- Creature objects
+RunObjectFile("populateObjects.lua")
+
+-- Spawns
+RunObjectFile("spawns.lua")

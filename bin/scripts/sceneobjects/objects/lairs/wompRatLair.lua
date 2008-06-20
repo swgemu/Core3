@@ -39,69 +39,27 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
+wompRatLair = Lair:new {
+	objectName = "wompRatLair",
 
--- utils
--- creatures lua files
-RunCreatureFile("objects/object.lua") -- basic object
-RunCreatureFile("objects/creature.lua") -- Creature Object
+	stfName = "garbage",
+	objectCRC = 2719206574,
 
-local sin, cos = math.sin, math.cos
-local deg, rad = math.deg, math.rad
-math.sin = function (x) return sin(rad(x)) end
-math.cos = function (x) return cos(rad(x)) end
+	maxCondition = 3000,
 
--- Global creature table
-Creatures = { }
-
-function Creatures:addCreature(obj, crc)
-	self[crc] = obj
-end
-
-function getCreature(crc)
-	return Creatures[crc]
-end
-
-function spawnCreature(creature, Planet, PositionX, PositionY)
-	newCreature = creature:new { planet = Planet, positionX = PositionX, positionY = PositionY }
-	AddCreatureToServer(newCreature)
-end
-
-function spawnCreature(creature, Planet, PositionX, PositionY, respawnTime)
-	newCreature = creature:new { planet = Planet, positionX = PositionX, positionY = PositionY, respawnTimer = respawnTime }
-	AddCreatureToServer(newCreature)
-end
-
-function spawnCreatureInCell(creature, Planet, PositionX, PositionZ, PositionY, cellid)
-	newCreature = creature:new { planet = Planet, positionX = PositionX, positionZ = PositionZ, positionY = PositionY, cellID = cellid }
-	AddCreatureToServer(newCreature)
-end
-
-function spawnCreatures(creature, Planet, PositionX, PositionY, radius, number)
-	for i=1,number do
-		angle = math.random(359)
-		dist = math.random(radius)
+	positionX = 0,
+	positionY = 0,
+	positionZ = 0,
 	
-		x = math.cos(angle) * dist + PositionX
-		y = math.sin(angle) * dist + PositionY
-		
-		spawnCreature(creature, Planet, x, y)
-	end	
-end
+	planet = 8,
 
-function spawnCreatures(creature, Planet, PositionX, PositionY, radius, number, respawnTime)
-	for i=1,number do
-		angle = math.random(359)
-		dist = math.random(radius)
-	
-		x = math.cos(angle) * dist + PositionX
-		y = math.sin(angle) * dist + PositionY
-		
-		spawnCreature(creature, Planet, x, y, respawnTime)
-	end	
-end
+	creatureCRC = 3337882429,
+	creatureName = "wompRat",
+	creaturestfName = "a WompRat",
+	spawnSize = 5,
 
--- Creature objects
-RunCreatureFile("creatureObjects.lua")
+	babiesPerMillion = 500000
 
--- Spawns
-RunCreatureFile("spawns.lua")
+}
+
+Objects:addObject(wompRatLair, "wompRatLair") --- Add to global object table

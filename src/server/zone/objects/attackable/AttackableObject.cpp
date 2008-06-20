@@ -8,6 +8,8 @@
 
 #include "../scene/SceneObject.h"
 
+#include "../player/Player.h"
+
 #include "../../Zone.h"
 
 /*
@@ -50,12 +52,25 @@ void AttackableObject::removeFromZone() {
 		((AttackableObjectImplementation*) _impl)->removeFromZone();
 }
 
-void AttackableObject::setTemplateName(string& name) {
+void AttackableObject::sendDestroyTo(Player* player) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 8);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		((AttackableObjectImplementation*) _impl)->sendDestroyTo(player);
+}
+
+void AttackableObject::setTemplateName(string& name) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
 		method.addAsciiParameter(name);
 
 		method.executeWithVoidReturn();
@@ -68,7 +83,7 @@ string& AttackableObject::getTemplateTypeName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, 10);
 
 		method.executeWithAsciiReturn(_return_getTemplateTypeName);
 		return _return_getTemplateTypeName;
@@ -81,7 +96,7 @@ string& AttackableObject::getTemplateName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, 11);
 
 		method.executeWithAsciiReturn(_return_getTemplateName);
 		return _return_getTemplateName;
@@ -94,7 +109,7 @@ unicode& AttackableObject::getName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 12);
 
 		method.executeWithUnicodeReturn(_return_getName);
 		return _return_getName;
@@ -107,7 +122,7 @@ string& AttackableObject::getTemplateDetailName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, 13);
 
 		method.executeWithAsciiReturn(_return_getTemplateDetailName);
 		return _return_getTemplateDetailName;
@@ -120,7 +135,7 @@ string& AttackableObject::getTemplateDetail() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 14);
 
 		method.executeWithAsciiReturn(_return_getTemplateDetail);
 		return _return_getTemplateDetail;
@@ -133,7 +148,7 @@ void AttackableObject::getCustomizationString(string& app) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 15);
 		method.addAsciiParameter(app);
 
 		method.executeWithVoidReturn();
@@ -146,7 +161,7 @@ void AttackableObject::setConditionDamage(unsigned int cond) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, 16);
 		method.addUnsignedIntParameter(cond);
 
 		method.executeWithVoidReturn();
@@ -159,7 +174,7 @@ void AttackableObject::setMaxCondition(unsigned int maxcond) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 17);
 		method.addUnsignedIntParameter(maxcond);
 
 		method.executeWithVoidReturn();
@@ -172,7 +187,7 @@ int AttackableObject::getConditionDamage() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 18);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -184,7 +199,7 @@ int AttackableObject::getMaxCondition() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 19);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -196,7 +211,7 @@ void AttackableObject::doDamage(int damage) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, 20);
 		method.addSignedIntParameter(damage);
 
 		method.executeWithVoidReturn();
@@ -209,7 +224,7 @@ bool AttackableObject::isDestroyed() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, 21);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -234,42 +249,45 @@ Packet* AttackableObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 		removeFromZone();
 		break;
 	case 8:
-		setTemplateName(inv->getAsciiParameter(_param0_setTemplateName__string_));
+		sendDestroyTo((Player*) inv->getObjectParameter());
 		break;
 	case 9:
-		resp->insertAscii(getTemplateTypeName());
+		setTemplateName(inv->getAsciiParameter(_param0_setTemplateName__string_));
 		break;
 	case 10:
-		resp->insertAscii(getTemplateName());
+		resp->insertAscii(getTemplateTypeName());
 		break;
 	case 11:
-		resp->insertUnicode(getName());
+		resp->insertAscii(getTemplateName());
 		break;
 	case 12:
-		resp->insertAscii(getTemplateDetailName());
+		resp->insertUnicode(getName());
 		break;
 	case 13:
-		resp->insertAscii(getTemplateDetail());
+		resp->insertAscii(getTemplateDetailName());
 		break;
 	case 14:
-		getCustomizationString(inv->getAsciiParameter(_param0_getCustomizationString__string_));
+		resp->insertAscii(getTemplateDetail());
 		break;
 	case 15:
-		setConditionDamage(inv->getUnsignedIntParameter());
+		getCustomizationString(inv->getAsciiParameter(_param0_getCustomizationString__string_));
 		break;
 	case 16:
-		setMaxCondition(inv->getUnsignedIntParameter());
+		setConditionDamage(inv->getUnsignedIntParameter());
 		break;
 	case 17:
-		resp->insertSignedInt(getConditionDamage());
+		setMaxCondition(inv->getUnsignedIntParameter());
 		break;
 	case 18:
-		resp->insertSignedInt(getMaxCondition());
+		resp->insertSignedInt(getConditionDamage());
 		break;
 	case 19:
-		doDamage(inv->getSignedIntParameter());
+		resp->insertSignedInt(getMaxCondition());
 		break;
 	case 20:
+		doDamage(inv->getSignedIntParameter());
+		break;
+	case 21:
 		resp->insertBoolean(isDestroyed());
 		break;
 	default:
@@ -285,6 +303,10 @@ void AttackableObjectAdapter::insertToZone(Zone* zone) {
 
 void AttackableObjectAdapter::removeFromZone() {
 	return ((AttackableObjectImplementation*) impl)->removeFromZone();
+}
+
+void AttackableObjectAdapter::sendDestroyTo(Player* player) {
+	return ((AttackableObjectImplementation*) impl)->sendDestroyTo(player);
 }
 
 void AttackableObjectAdapter::setTemplateName(string& name) {
