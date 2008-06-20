@@ -75,6 +75,8 @@ which carries forward this exception.
 
 #include "../zone/objects/tangible/CustomizationVariables.h"
 
+#include "../zone/managers/planet/PlanetManager.h"
+
 ChatManagerImplementation::ChatManagerImplementation(ZoneServer* serv, int initsize) : ChatManagerServant(), Mutex("ChatManager") {
 	server = serv;
 		
@@ -84,7 +86,6 @@ ChatManagerImplementation::ChatManagerImplementation(ZoneServer* serv, int inits
 	guildManager = playerManager->getGuildManager();
 	
 	resourceManager = server->getResourceManager();
-	//playerMap = new PlayerMap(initsize);
 	
 	playerMap = new PlayerMap(initsize);
 	playerMap->deploy("ChatPlayerMap");
@@ -96,6 +97,7 @@ ChatManagerImplementation::ChatManagerImplementation(ZoneServer* serv, int inits
 	roomID = 0;
 	
 	initiateRooms();
+	
 }
 
 ChatManagerImplementation::~ChatManagerImplementation() {
@@ -375,7 +377,7 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 			if (userManager->isAdmin(player->getFirstName())) {
 				player->sendSystemMessage("Command List: map, warp, printRoomTree, banUser, kill, muteChat, "
 						"users, setWeather, ticketPurchase, awardBadge, setGuildID, createGuild, kick, killArea, kickArea, mutePlayer, "
-						"deleteGuildByID, npcc, setAdminLevel, dbStats, dbShowDeleted, dbPurge, getDirection"); 
+						"deleteGuildByID, npcc, setAdminLevel, dbStats, dbShowDeleted, dbPurge, getDirection, warpPlayer, summon"); 
 			}
 		} else if (cmd == "@map") {
 			if (userManager->isAdmin(player->getFirstName())) {
@@ -414,8 +416,110 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 				Player* target = playerMap->get(name);
 				if (target != NULL)
 					player->doWarp(target->getPositionX(), target->getPositionY(), 0, 64);
+			}			
+		} else if (cmd == "@warpPlayer") {
+			if (userManager->isAdmin(player->getFirstName())) {					
+				string name, whereTo = "";
+				Player* targetPlayer;
+
+				if (tokenizer.hasMoreTokens()) {
+					tokenizer.getStringToken(name);
+					
+					if (tokenizer.hasMoreTokens()) {
+						tokenizer.getStringToken(whereTo);
+						targetPlayer = playerMap->get(name);
+					} else {
+						whereTo = name;
+						
+						SceneObject* obj = player->getTarget();
+						
+						if (obj != NULL && obj->isPlayer()) {
+							targetPlayer = (Player*) obj;
+						} else {
+							player->sendSystemMessage("useage: @warpPlayer <SUPPLY PLAYERNAME OR CURRENT TARGET> <starport> <hotel> <shuttle> <medical> <bank> <garage> <salon> \n");							
+							return;
+						}
+					}
+					
+					float targetX = targetPlayer->getPositionX();
+					float targetY = targetPlayer->getPositionY();
+					
+					Zone* targetZone = targetPlayer->getZone();
+					if (targetZone == NULL)
+						return;
+						
+					try {
+						targetZone->lock();
+						
+						if (whereTo != "") {
+							PlanetManager* planetManager = targetZone->getPlanetManager();
+					
+							BuildingObject* buiID = planetManager->findBuildingType(whereTo, targetX, targetY);	
+					
+							if (buiID) {
+								targetZone->unlock();
+								targetPlayer->doWarp(buiID->getPositionX(), buiID->getPositionY(), 0, 0);					
+							} else {
+								targetZone->unlock();
+								player->sendSystemMessage("@warpPlayer didn't return a valid building ?! \n");								
+								return;
+							}
+						} else {
+							targetZone->unlock();
+							player->sendSystemMessage("useage: @warpPlayer <SUPPLY PLAYERNAME OR CURRENT TARGET> <starport> <hotel> <shuttle> <medical> <bank> <garage> <salon> \n");
+						}
+					} catch (...) {
+						targetZone->unlock();
+					}
+				} else {
+					player->sendSystemMessage("useage: @warpPlayer <SUPPLY PLAYERNAME OR CURRENT TARGET> <starport> <hotel> <shuttle> <medical> <bank> <garage> <salon> \n");
+				}					
 			}
-			
+		} else if (cmd == "@summon") {
+			if (userManager->isAdmin(player->getFirstName())) {		
+				string name;
+				Player* targetPlayer;
+
+				if (tokenizer.hasMoreTokens()) {
+					tokenizer.getStringToken(name);
+					targetPlayer = playerMap->get(name);
+					
+					if (targetPlayer == NULL)
+						return;						
+				} else {
+					SceneObject* obj = player->getTarget();
+					if (obj != NULL && obj->isPlayer()) {
+						targetPlayer = (Player*) obj;
+						name = targetPlayer->getFirstName();
+					} else {
+						return;
+					}
+				}
+				
+				if (targetPlayer->getZoneIndex() != player->getZoneIndex()) {
+					player->sendSystemMessage("You cant summon a player on a different planet! This feature will be added soon(R). \n");
+					return;
+				}
+
+				Zone* targetZone = targetPlayer->getZone();
+				if (targetZone == NULL)
+					return;
+						
+				try {
+					targetZone->lock();
+					
+					if (name != player->getFirstName()) {
+						targetZone->unlock();
+						targetPlayer->doWarp(player->getPositionX(), player->getPositionY(), 0, 10);
+					} else {
+						targetZone->unlock();
+						player->sendSystemMessage("useage: @summon <SUPPLY PLAYERNAME OR CURRENT TARGET> \n");
+						return;
+					}
+				} catch (...) {
+					targetZone->unlock();
+				}
+			}
 		} else if(cmd == "@kick") {
 			if (userManager->isAdmin(player->getFirstName())) {
 				string name;
@@ -1984,6 +2088,8 @@ void ChatManagerImplementation::destroyRoom(ChatRoom* room) {
 	
 	room->finalize();
 }
+
+
 
 
 

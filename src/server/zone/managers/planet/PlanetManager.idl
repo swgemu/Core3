@@ -70,6 +70,8 @@ interface PlanetManager {
 	void landShuttles();
 	void takeOffShuttles();
 	
+	BuildingObject findBuildingType(const string word, float targetX, float targetY);
+		
 	ShuttleCreature getShuttle(const string Shuttle);
 	
 	void sendPlanetTravelPointListResponse(Player player);

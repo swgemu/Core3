@@ -339,6 +339,94 @@ void PlanetManagerImplementation::loadBuildings() {
 	unlock();
 }
 
+
+BuildingObject* PlanetManagerImplementation::findBuildingType(const string& word, float targetX, float targetY) {	
+
+	uint16 accumDistance, distance = 32768;
+	BuildingObject* buiID = 0;
+
+	buildingMap->resetIterator();
+			
+	while (buildingMap->hasNext()) {
+		BuildingObject* building = buildingMap->next();
+			
+		if (word == "starport" && building->getBuildingType() == BuildingObjectImplementation::STARPORT) {
+			accumDistance= static_cast<uint16>(fabs( (targetX - building->getPositionX() ) + (targetY - building->getPositionY()) ));
+				
+			if ( accumDistance < distance) {
+				distance = accumDistance;
+				buiID = building;
+			}				
+		}
+		
+		if (word == "cloner" && building->getBuildingType() == BuildingObjectImplementation::CLONING_FACILITY) {
+			accumDistance= static_cast<uint16>(fabs( (targetX - building->getPositionX() ) + (targetY - building->getPositionY()) ));
+				
+			if ( accumDistance < distance) {
+				distance = accumDistance;
+				buiID = building;
+			}				
+		}
+		
+		if (word == "shuttle" && building->getBuildingType() == BuildingObjectImplementation::SHUTTLEPORT) {
+			accumDistance= static_cast<uint16>(fabs( (targetX - building->getPositionX() ) + (targetY - building->getPositionY()) ));
+				
+			if ( accumDistance < distance) {
+				distance = accumDistance;
+				buiID = building;
+			}				
+		}		
+		
+		if (word == "HOTEL" && building->getBuildingType() == BuildingObjectImplementation::HOTEL) {
+			accumDistance= static_cast<uint16>(fabs( (targetX - building->getPositionX() ) + (targetY - building->getPositionY()) ));
+				
+			if ( accumDistance < distance) {
+				distance = accumDistance;
+				buiID = building;
+			}				
+		}		
+
+		if (word == "bank" && building->getBuildingType() == BuildingObjectImplementation::BANK) {
+			accumDistance= static_cast<uint16>(fabs( (targetX - building->getPositionX() ) + (targetY - building->getPositionY()) ));
+				
+			if ( accumDistance < distance) {
+				distance = accumDistance;
+				buiID = building;
+			}				
+		}
+		
+		if (word == "garage" && building->getBuildingType() == BuildingObjectImplementation::GARAGE) {
+			accumDistance= static_cast<uint16>(fabs( (targetX - building->getPositionX() ) + (targetY - building->getPositionY()) ));
+				
+			if ( accumDistance < distance) {
+				distance = accumDistance;
+				buiID = building;
+			}				
+		}
+		
+		if (word == "medical" && building->getBuildingType() == BuildingObjectImplementation::MEDICAL_CENTER) {
+			accumDistance= static_cast<uint16>(fabs( (targetX - building->getPositionX() ) + (targetY - building->getPositionY()) ));
+				
+			if ( accumDistance < distance) {
+				distance = accumDistance;
+				buiID = building;
+			}				
+		}
+		
+		if (word == "salon" && building->getBuildingType() == BuildingObjectImplementation::SALON) {
+			accumDistance= static_cast<uint16>(fabs( (targetX - building->getPositionX() ) + (targetY - building->getPositionY()) ));
+				
+			if ( accumDistance < distance) {
+				distance = accumDistance;
+				buiID = building;
+			}				
+		}
+	}
+	
+	return buiID;	
+}
+
+
 int PlanetManagerImplementation::guessBuildingType(uint64 oid, string file) {
 
 	// Special buildings

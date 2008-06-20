@@ -102,7 +102,9 @@ public:
 	void takeOffShuttles();
 	
 	void sendPlanetTravelPointListResponse(Player* player);
-
+	
+	BuildingObject* findBuildingType(const string& word, float targetX, float targetY);
+	
 private:
 	void loadStaticPlanetObjects();
 	void loadShuttles();
