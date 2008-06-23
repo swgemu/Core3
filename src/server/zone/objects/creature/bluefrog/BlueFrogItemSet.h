@@ -62,12 +62,7 @@ public:
 	}
 	
 	int hash(const string& str) {
-		int h = 0;
-		for (int i = 0; i < str.length(); i++) {
-		    h = 31*h + str.at(i);
-		}
-		
-		return h;
+		return String::hashCode(str);
 	}
 	
 	void addItem(string setName, TangibleObject* item) {

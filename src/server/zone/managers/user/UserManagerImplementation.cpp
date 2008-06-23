@@ -112,6 +112,15 @@ void UserManagerImplementation::parseAdminList() {
 		tokenizer.getStringToken(name);
 		
 		String::toLower(name);
+		
+		//trim whitespace
+			int swhite = name.find_first_not_of(" \t\n\r\f");
+			int ewhite = name.find_last_not_of(" \t\n\r\f");
+				
+			if (swhite == string::npos)
+				name = "";
+			else
+				name = name.substr(swhite, ewhite - swhite + 1);
 
 		if (name.size() > 0)
 			grantAdmin(name);
@@ -137,16 +146,6 @@ bool UserManagerImplementation::checkUser(uint32 ipid) {
 void UserManagerImplementation::grantAdmin(const string& n) {
 	string name = n;
 	String::toLower(name);
-
-	//trim whitespace
-	int swhite = name.find_first_not_of(" \t\n\r\f");
-	int ewhite = name.find_last_not_of(" \t\n\r\f");
-		
-	if (swhite == string::npos)
-		name = "";
-	else
-		name = name.substr(swhite, ewhite - swhite + 1);
-	
 	adminUsers->add(name);
 }
 

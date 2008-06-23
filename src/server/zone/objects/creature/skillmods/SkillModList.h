@@ -50,15 +50,7 @@ which carries forward this exception.
 class SkillModList : public HashTable<string, int32> , public HashTableIterator<string, int32> {
 	
 	int hash(const string& key) {
-	    const char *val = key.c_str();
-		int len = key.size();
-
-		int h = 0;
- 		for (int i = 0; i < len; i++) {
-			h = 31*h + val[i++];
-		}
-
-        return h;
+        return String::hashCode(key);
 	}
 
 public:

@@ -56,12 +56,7 @@ class ZoneProcessServerImplementation;
 
 class BannedNameSet : public HashSet<string> {
 	int hash(const string& str) {
-		int h = 0;
-		for (int i = 0; i < str.length(); i++) {
-		    h = 31*h + str.at(i);
-		}
-		
-		return h;
+		return String::hashCode(str);
 	}
    
 public:
