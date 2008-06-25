@@ -1554,7 +1554,7 @@ void ObjectControllerMessage::parseServerDestroyObject(Player* player, Message* 
 		
 		item->finalize();
 	} else if (waypoint != NULL) {
-		if (player->removeWaypoint(waypoint));
+		if (player->removeWaypoint(waypoint))
 			waypoint->finalize();
 	}
 }

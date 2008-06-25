@@ -72,7 +72,7 @@ class LairObjectImplementation : public LairObjectServant {
 	int babiesPerMillion;
 	
 public:
-	LairObjectImplementation::LairObjectImplementation(uint32 objCRC, uint64 oid);
+	LairObjectImplementation(uint32 objCRC, uint64 oid);
 
 	void addDefender(SceneObject* defender);
 	void doDamage(int damage);

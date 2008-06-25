@@ -1722,7 +1722,8 @@ public:
 	}
 	
 	inline void removeListener(CreatureObject* creature) {
-		if (!listeners.drop(creature));/* {
+		listeners.drop(creature);
+		/*if (!listeners.drop(creature)); {
 			cout << "SortedVector ERROR: object " << creature << " not found\n";
 			
 			for (int i = 0; i < listeners.size(); ++i) {
@@ -1735,7 +1736,8 @@ public:
 	}
 	
 	inline void removeWatcher(CreatureObject* creature) {
-		if (!watchers.drop(creature));/* {
+		watchers.drop(creature);
+		/*if (!watchers.drop(creature)); {
 			cout << "SortedVector ERROR: object " << creature << " not found\n";
 			
 			for (int i = 0; i < watchers.size(); ++i) {
