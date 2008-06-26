@@ -42,181 +42,28 @@
 
 
 ---------------------Male Humanoid Items------------------------------------
-mshoes = {
-	
 
-	objectName = "Casual Shoes",
-
-	templateName = "shoes_s02",
-
-	objectCRC = "143099030",
-
-	objectType = FOOTWEAR,
-
-	equipped = "1"
-}
-
-mjacket = {
-	
-
-	objectName = "Sleeveless Jacket",
-
-	templateName = "jacket_s24",
-
-	objectCRC = "3363313761",
-
-	objectType = JACKET,
-
-	equipped = "1"
-}
-
-mpants = {
-	
-
-	objectName = "Work Slacks",
-
-	templateName = "pants_s12",
-
-	objectCRC = "3946919045",
-
-	objectType = PANTS,
-
-	equipped = "1"
-}
-
-mshirt = {
-	
-
-	objectName = "Reinforced Work Shirt",
-
-	templateName = "shirt_s10",
-
-	objectCRC = "3169222941",
-
-	objectType = SHIRT,
-
-	equipped = "1"
-}
-
-medic_humanoid_male_items = {mshoes, mjacket, mpants, mshirt}
+medic_humanoid_male_items = {casual_shoes, sleeveless_jacket, work_slacks, reinforced_work_shirt}
 
 --------------------------Female Humanoid Items---------------------------
 
-fboots = {
-	
-
-	objectName = "Hide Boots",
-
-	templateName = "boots_s04",
-
-	objectCRC = "2321198008",
-
-	objectType = FOOTWEAR,
-
-	equipped = "1"
-}
-
-fbodysuit = {
-	
-
-	objectName = "Reinforced Jumpsuit",
-
-	templateName = "bodysuit_s13",
-
-	objectCRC = "1492714777",
-
-	objectType = BODYSUIT,
-
-	equipped = "1"
-}
-
-medic_humanoid_female_items = {fboots, fbodysuit}
+medic_humanoid_female_items = {hide_boots, reinforced_jumpsuit}
 
 --------------------------Male Trandoshan Items---------------------------
 
-medic_trandoshan_male_items = {mjacket, mpants, mshirt}
+medic_trandoshan_male_items = {sleeveless_jacket, work_slacks, reinforced_work_shirt}
 
 --------------------------Female Trandoshan Items------------------------
 
-medic_trandoshan_female_items = {fbodysuit}
+medic_trandoshan_female_items = {reinforced_jumpsuit}
 
 --------------------------Male Ithorian Items---------------------------
 
-mijacket = {
-	
-
-	objectName = "Ithorian Med Team Jacket",
-
-	templateName = "ith_jacket_s05",
-
-	objectCRC = "3954881783",
-
-	objectType = ITHOGARB,
-
-	equipped = "1"
-}
-
-mipants = {
-	
-
-	objectName = "Ithorian Cargo Pants",
-
-	templateName = "ith_pants_s12",
-
-	objectCRC = "2204230753",
-
-	objectType = ITHOGARB,
-
-	equipped = "1"
-}
-
-mishirt = {
-	
-
-	objectName = "Ithorian Easy Fit Shirt",
-
-	templateName = "ith_shirt_s05",
-
-	objectCRC = "1520630192",
-
-	objectType = ITHOGARB,
-
-	equipped = "1"
-}
-
-medic_ithorian_male_items = {mijacket, mipants, mishirt}
+medic_ithorian_male_items = {ith_med_team_jacket, ith_cargo_pants, ith_easy_fit_shirt}
 
 --------------------------Female Ithorian Items---------------------------
 
-fipants = {
-	
-
-	objectName = "Ithorian Striped Pants",
-
-	templateName = "ith_pants_s03",
-
-	objectCRC = "3510931092",
-
-	objectType = ITHOGARB,
-
-	equipped = "1"
-}
-
-fishirt = {
-	
-
-	objectName = "Ithorian Long Sweater",
-
-	templateName = "ith_shirt_s01",
-
-	objectCRC = "2052487731",
-
-	objectType = ITHOGARB,
-
-	equipped = "1"
-}
-
-medic_ithorian_female_items = {fipants, fishirt}
+medic_ithorian_female_items = {ith_striped_pants, ith_long_sweater}
 
 medic_wookie_male_items = { }
 medic_wookie_female_items = { }

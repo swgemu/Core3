@@ -43,6 +43,14 @@
 RunItemLUAFile("objects/object.lua");
 RunItemLUAFile("objects/weapon.lua");
 RunItemLUAFile("objects/armor.lua");
+RunItemLUAFile("objects/instrument.lua");
+RunItemLUAFile("objects/tool.lua");
+RunItemLUAFile("objects/clothing.lua");
+RunItemLUAFile("objects/food.lua");
 
 RunItemLUAFile("objects/weapons/main.lua");
 RunItemLUAFile("objects/armor/main.lua");
+RunItemLUAFile("objects/instruments/main.lua");
+RunItemLUAFile("objects/tools/main.lua");
+RunItemLUAFile("objects/clothing/main.lua");
+RunItemLUAFile("objects/food/main.lua");

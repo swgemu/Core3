@@ -41,48 +41,11 @@
 --which carries forward this exception.
 
 
----------------------Male Humanoid Items------------------------------------
-
-general_humanoid_male_items = { }
-
---------------------------Female Humanoid Items---------------------------
-
-general_humanoid_female_items = { }
-
-----------------------------Male Trandoshan Items---------------------------
-
-general_trandoshan_male_items = { }
-
---------------------------Female Trandoshan Items---------------------------
-
-general_trandoshan_female_items = { }
-
---------------------------Male Ithorian Items---------------------------
-
-general_ithorian_male_items = { }
-
---------------------------Female Ithorian Items---------------------------
-
-general_ithorian_female_items = { }
-
---------------------------Male Wookiee Items---------------------------
-
-general_wookie_male_items = { bowcaster}
-
---------------------------Female Wookie Items---------------------------
-
-general_wookie_female_items = { bowcaster}
-
---------------------------General Items (All Species)---------------------------
-
-general_general_items = {maroj_melon}
-
-createItemsFromList("general", "humanoid", "male", general_humanoid_male_items)
-createItemsFromList("general", "humanoid", "female", general_humanoid_female_items)
-createItemsFromList("general", "trandoshan", "male", general_trandoshan_male_items)
-createItemsFromList("general", "trandoshan", "female", general_trandoshan_female_items)
-createItemsFromList("general", "ithorian", "male", general_ithorian_male_items)
-createItemsFromList("general", "ithorian", "female", general_ithorian_female_items)
-createItemsFromList("general", "wookiee", "male", general_wookie_male_items)
-createItemsFromList("general", "wookiee", "female", general_wookie_female_items)
-createItemsFromList("general", "all", "both", general_general_items)
+RunItemLUAFile("objects/instruments/bandfill.lua");
+RunItemLUAFile("objects/instruments/fanfar.lua");
+RunItemLUAFile("objects/instruments/fizz.lua");
+RunItemLUAFile("objects/instruments/flute_droopy.lua");
+RunItemLUAFile("objects/instruments/kloo_horn.lua");
+RunItemLUAFile("objects/instruments/mandoviol.lua");
+RunItemLUAFile("objects/instruments/traz.lua");
+RunItemLUAFile("objects/instruments/slitherhorn.lua");

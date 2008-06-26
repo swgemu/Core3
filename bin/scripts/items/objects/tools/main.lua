@@ -41,48 +41,11 @@
 --which carries forward this exception.
 
 
----------------------Male Humanoid Items------------------------------------
-
-general_humanoid_male_items = { }
-
---------------------------Female Humanoid Items---------------------------
-
-general_humanoid_female_items = { }
-
-----------------------------Male Trandoshan Items---------------------------
-
-general_trandoshan_male_items = { }
-
---------------------------Female Trandoshan Items---------------------------
-
-general_trandoshan_female_items = { }
-
---------------------------Male Ithorian Items---------------------------
-
-general_ithorian_male_items = { }
-
---------------------------Female Ithorian Items---------------------------
-
-general_ithorian_female_items = { }
-
---------------------------Male Wookiee Items---------------------------
-
-general_wookie_male_items = { bowcaster}
-
---------------------------Female Wookie Items---------------------------
-
-general_wookie_female_items = { bowcaster}
-
---------------------------General Items (All Species)---------------------------
-
-general_general_items = {maroj_melon}
-
-createItemsFromList("general", "humanoid", "male", general_humanoid_male_items)
-createItemsFromList("general", "humanoid", "female", general_humanoid_female_items)
-createItemsFromList("general", "trandoshan", "male", general_trandoshan_male_items)
-createItemsFromList("general", "trandoshan", "female", general_trandoshan_female_items)
-createItemsFromList("general", "ithorian", "male", general_ithorian_male_items)
-createItemsFromList("general", "ithorian", "female", general_ithorian_female_items)
-createItemsFromList("general", "wookiee", "male", general_wookie_male_items)
-createItemsFromList("general", "wookiee", "female", general_wookie_female_items)
-createItemsFromList("general", "all", "both", general_general_items)
+RunItemLUAFile("objects/tools/chemical_tool.lua");
+RunItemLUAFile("objects/tools/flora_tool.lua");
+RunItemLUAFile("objects/tools/gas_tool.lua");
+RunItemLUAFile("objects/tools/generic_tool.lua");
+RunItemLUAFile("objects/tools/mineral_tool.lua");
+RunItemLUAFile("objects/tools/solar_tool.lua");
+RunItemLUAFile("objects/tools/water_tool.lua");
+RunItemLUAFile("objects/tools/wind_tool.lua");

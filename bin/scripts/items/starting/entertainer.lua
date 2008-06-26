@@ -42,167 +42,28 @@
 
 
 ---------------------Male Humanoid Items------------------------------------
-mshoes = {
-	
 
-	objectName = "Dress Shoes",
-
-	templateName = "shoes_s01",
-
-	objectCRC = "3549441025",
-
-	objectType = FOOTWEAR,
-
-	equipped = "1"
-}
-
-mpants = {
-	
-
-	objectName = "Striped Slacks",
-
-	templateName = "pants_s08",
-
-	objectCRC = "597357025",
-
-	objectType = PANTS,
-
-	equipped = "1"
-}
-
-mshirt = {
-	
-
-	objectName = "Muscle Shirt",
-
-	templateName = "shirt_s42",
-
-	objectCRC = "1500804767",
-
-	objectType = SHIRT,
-
-	equipped = "1"
-}
-
-entertainer_humanoid_male_items = {mshoes, mpants, mshirt}
+entertainer_humanoid_male_items = {dress_shoes, striped_slacks, muscle_shirt}
 
 --------------------------Female Humanoid Items---------------------------
 
-fshoes = {
-	
-
-	objectName = "Dress Slippers",
-
-	templateName = "shoes_s09",
-
-	objectCRC = "2457414407",
-
-	objectType = FOOTWEAR,
-
-	equipped = "1"
-}
-
-fshirt = {
-	
-
-	objectName = "Flex-form Shirt",
-
-	templateName = "shirt_s38",
-
-	objectCRC = "3412040939",
-
-	objectType = SHIRT,
-
-	equipped = "1"
-}
-
-fpants = {
-	
-
-	objectName = "Desert Crawlers",
-
-	templateName = "pants_s11",
-
-	objectCRC = "810982418",
-
-	objectType = PANTS,
-
-	equipped = "1"
-}
-
-entertainer_humanoid_female_items = {fshoes, fshirt, fpants}
+entertainer_humanoid_female_items = {dress_slippers, flexform_shirt, desert_crawlers}
 
 --------------------------Male Trandoshan Items---------------------------
 
-entertainer_trandoshan_male_items = {mpants, mshirt}
+entertainer_trandoshan_male_items = {striped_slacks, muscle_shirt}
 
 --------------------------Female Trandoshan Items------------------------
 
-entertainer_trandoshan_female_items = {fshirt, fpants}
+entertainer_trandoshan_female_items = {flexform_shirt, desert_crawlers}
 
 --------------------------Male Ithorian Items---------------------------
 
-mishirt = {
-	
-
-	objectName = "Ithorian Knitted Shirt",
-
-	templateName = "ith_shirt_s03",
-
-	objectCRC = "3897341225",
-
-	objectType = ITHOGARB,
-
-	equipped = "1"
-}
-
-mipants = {
-	
-
-	objectName = "Ithorian Baggies",
-
-	templateName = "ith_pants_s08",
-
-	objectCRC = "1270489349",
-
-	objectType = ITHOGARB,
-
-	equipped = "1"
-}
-
-entertainer_ithorian_male_items = {mipants, mishirt}
+entertainer_ithorian_male_items = {ith_knitted_shirt, ith_baggies}
 
 --------------------------Female Ithorian Items---------------------------
 
-fipants = {
-	
-
-	objectName = "Ithorian Buckle Pants",
-
-	templateName = "ith_pants_s10",
-
-	objectCRC = "293284731",
-
-	objectType = ITHOGARB,
-
-	equipped = "1"
-}
-
-fishirt = {
-	
-
-	objectName = "Ithorian Fade Dyed Shirt",
-
-	templateName = "ith_shirt_s09",
-
-	objectCRC = "1002405173",
-
-	objectType = ITHOGARB,
-
-	equipped = "1"
-}
-
-entertainer_ithorian_female_items = {fipants, fishirt}
+entertainer_ithorian_female_items = {ith_buckle_pants, ith_fade_dyed_shirt}
 
 entertainer_wookie_male_items = { }
 entertainer_wookie_female_items = { }
@@ -210,24 +71,7 @@ entertainer_wookie_female_items = { }
 -------------------Entertainer Items (All Species)--------------------
 
 
-
-shorn = {
-	
-
-	objectName = "a Slitherhorn",
-
-	templateName = "obj_slitherhorn",
-
-	objectCRC = "3533891079",
-
-	objectType = INSTRUMENT,
-
-	instrumentType = INSTR_SLITHERHORN,
-
-	equipped = "0"
-}
-
-general_entertainer_items = {cdef_pistol, survival_knife, shorn}
+general_entertainer_items = {cdef_pistol, survival_knife, slitherhorn}
 
 createItemsFromList("entertainer", "humanoid", "male", entertainer_humanoid_male_items)
 createItemsFromList("entertainer", "humanoid", "female", entertainer_humanoid_female_items)

@@ -42,183 +42,28 @@
 
 
 ---------------------Male Humanoid Items------------------------------------
-mshoes = {	
 
-	objectName = "Dress Shoes",
-
-	templateName = "shoes_s01",
-
-	objectCRC = "3549441025",
-
-	objectType = FOOTWEAR,
-
-	equipped = "1"
-}
-
-mpants = {
-	
-	objectName = "Crafters Pants",
-
-	templateName = "pants_s29",
-
-	objectCRC = "1556581532",
-
-	objectType = PANTS,
-
-	equipped = "1"
-}
-
-mshirt = {	
-
-	objectName = "Soft Undershirt",
-
-	templateName = "shirt_s34",
-
-	objectCRC = "2856458350",
-
-	objectType = SHIRT,
-
-	equipped = "1"
-}
-
-artisan_humanoid_male_items = {mshoes, mpants, mshirt}
+artisan_humanoid_male_items = {dress_shoes, crafters_pants, soft_undershirt}
 
 --------------------------Female Humanoid Items---------------------------
 
-fshoes = {
-	
-	objectName = "Sandals",
-
-	templateName = "shoes_s07",
-
-	objectCRC = "1635672216",
-
-	objectType = FOOTWEAR,
-
-	equipped = "1"
-}
-
-fshirt = {
-	
-	objectName = "Flared Cuff Shirt Shirt",
-
-	templateName = "shirt_s12",
-
-	objectCRC = "788286983",
-
-	objectType = SHIRT,
-
-	equipped = "1"
-}
-
-fskirt = {
-	
-	objectName = "Wrapped Skirt",
-
-	templateName = "skirt_s10",
-
-	objectCRC = "3869787263",
-
-	objectType = SKIRT,
-
-	equipped = "1"
-}
-
-artisan_humanoid_female_items = {fshoes, fshirt, fskirt}
+artisan_humanoid_female_items = {sandals, flared_cuff_shirt, wrapped_skirt}
 
 --------------------------Male Trandoshan Items---------------------------
 
-artisan_trandoshan_male_items = {mpants, mshirt}
+artisan_trandoshan_male_items = {crafters_pants, soft_undershirt}
 
 --------------------------Female Trandoshan Items------------------------
 
-artisan_trandoshan_female_items = {fshirt, fskirt}
+artisan_trandoshan_female_items = {flared_cuff_shirt, wrapped_skirt}
 
 --------------------------Male Ithorian Items---------------------------
 
-mishirt = {
-	
-	objectName = "Ithorian Mystic Shirt",
-
-	templateName = "ith_shirt_s10",
-
-	objectCRC = "678629574",
-
-	objectType = ITHOGARB,
-
-	equipped = "1"
-}
-
-mipants = {
-	
-	objectName = "Ithorian Patrol Pants",
-
-	templateName = "ith_pants_s06",
-
-	objectCRC = "3099421338",
-
-	objectType = ITHOGARB,
-
-	equipped = "1"
-}
-
-mivest = {	
-
-	objectName = "Ithorian Dress Vest",
-
-	templateName = "ith_vest_s02",
-
-	objectCRC = "3100594389",
-
-	objectType = ITHOGARB,
-
-	equipped = "1"
-}
-
-artisan_ithorian_male_items = {mipants, mishirt, mivest}
+artisan_ithorian_male_items = {ith_mystic_shirt, ith_patrol_pants, ith_dress_vest}
 
 --------------------------Female Ithorian Items---------------------------
 
-fipants = {
-	
-	objectName = "Ithorian Patrol Pants",
-
-	templateName = "ith_pants_s06",
-
-	objectCRC = "3099421338",
-
-	objectType = ITHOGARB,
-
-	equipped = "1"
-}
-
-fishirt = {
-	
-	objectName = "Ithorian Striped Shirt",
-
-	templateName = "ith_shirt_s05",
-
-	objectCRC = "1520630192",
-
-	objectType = ITHOGARB,
-
-	equipped = "1"
-}
-
-fivest = {
-	
-	objectName = "Ithorian Dress Vest",
-
-	templateName = "ith_vest_s02",
-
-	objectCRC = "3100594389",
-
-	objectType = ITHOGARB,
-
-	equipped = "1"
-}
-
-artisan_ithorian_female_items = {fipants, fishirt, fivest}
+artisan_ithorian_female_items = {ith_patrol_pants, ith_striped_shirt, ith_dress_vest}
 
 --------------------------Wookiee Items---------------------------
 
@@ -227,46 +72,7 @@ artisan_wookie_female_items = { }
 
 -------------------Artisan Items (All Species)--------------------
 
-crafting_tool = {
-	
-	objectName = "Generic Crafting Tool",
-
-	templateName = "generic_tool",
-
-	objectCRC = "1055200365",
-
-	objectType = CRAFTINGTOOL,
-
-	equipped = "0"
-}
-
-mineral_survey_tool = {
-	
-	objectName = "Mineral Survey Tool",
-
-	templateName = "survey_tool_mineral",
-
-	objectCRC = "2862265132",
-
-	objectType = SURVEYTOOL,
-
-	equipped = "0"
-}
-
-chemical_survey_tool = {
-	
-	objectName = "Chemical Survey Tool",
-
-	templateName = "survey_tool_chemical",
-
-	objectCRC = "2242363434",
-
-	objectType = SURVEYTOOL,
-
-	equipped = "0"
-}
-
-general_artisan_items = {cdef_pistol, survival_knife, crafting_tool, mineral_survey_tool, chemical_survey_tool}
+general_artisan_items = {cdef_pistol, survival_knife, generic_tool, mineral_tool, chemical_tool}
 
 
 createItemsFromList("artisan", "humanoid", "male", artisan_humanoid_male_items)

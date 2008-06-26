@@ -52,3 +52,4 @@ RunItemLUAFile("objects/weapons/power_hammer.lua");
 RunItemLUAFile("objects/weapons/vibrolance.lua");
 RunItemLUAFile("objects/weapons/ee3_carbine.lua");
 RunItemLUAFile("objects/weapons/fwg5_pistol.lua");
+RunItemLUAFile("objects/weapons/bowcaster.lua");

@@ -42,167 +42,29 @@
 
 
 -------------------Male Humanoid Items------------------------------------
-mboots = {
-	
 
-	objectName = "Paneled Boots",
-
-	templateName = "boots_s21",
-
-	objectCRC = "3589494086",
-
-	objectType = FOOTWEAR,
-
-	equipped = "1"
-}
-
-mjacket = {
-	
-
-	objectName = "Padded Jacket",
-
-	templateName = "jacket_s05",
-
-	objectCRC = "3072681244",
-
-	objectType = JACKET,
-
-	equipped = "1"
-}
-
-mpants = {
-	
-
-	objectName = "Pocketed Work Pants",
-
-	templateName = "pants_s04",
-
-	objectCRC = "1116173668",
-
-	objectType = PANTS,
-
-	equipped = "1"
-}
-
-marksman_humanoid_male_items = {mboots, mjacket, mpants}
+marksman_humanoid_male_items = {paneled_boots, padded_jacket, pocketed_work_pants}
 
 --------------------------Female Humanoid Items---------------------------
 
-fshoes = {
-	
 
-	objectName = "Casual Shoes",
-
-	templateName = "shoes_s02",
-
-	objectCRC = "143099030",
-
-	objectType = FOOTWEAR,
-
-	equipped = "1"
-}
-
-fshirt = {
-	
-
-	objectName = "Sports Wrap",
-
-	templateName = "shirt_s24",
-
-	objectCRC = "2976519446",
-
-	objectType = SHIRT,
-
-	equipped = "1"
-}
-
-fpants = {
-	
-
-	objectName = "Pantaloons",
-
-	templateName = "pants_s24",
-
-	objectCRC = "1960275860",
-
-	objectType = PANTS,
-
-	equipped = "1"
-}
-
-fvest = {
-	
-
-	objectName = "Mangy Vest",
-
-	templateName = "vest_s10",
-
-	objectCRC = "1655790437",
-
-	objectType = VEST,
-
-	equipped = "1"
-}
-
-marksman_humanoid_female_items = {fshoes, fshirt, fpants, fvest}
+marksman_humanoid_female_items = {casual_shoes, sports_wrap, pantaloons, mangy_vest}
 
 --------------------------Male Trandoshan Items---------------------------
 
-marksman_trandoshan_male_items = {mpants, mjacket}
+marksman_trandoshan_male_items = {padded_jacket, pocketed_work_pants}
 
 --------------------------Female Trandoshan Items------------------------
 
-marksman_trandoshan_female_items = {fshirt, fpants, fvest}
+marksman_trandoshan_female_items = {sports_wrap, pantaloons, mangy_vest}
 
 --------------------------Male Ithorian Items---------------------------
 
-mijacket = {
-	
-
-	objectName = "Ithorian Cargo Jacket",
-
-	templateName = "ith_jacket_s02",
-
-	objectCRC = "274309091",
-
-	objectType = ITHOGARB,
-
-	equipped = "1"
-}
-
-mipants = {
-	
-
-	objectName = "Ithorian Camos",
-
-	templateName = "ith_pants_s05",
-
-	objectCRC = "1672135181",
-
-	objectType = ITHOGARB,
-
-	equipped = "1"
-}
-
-mishirt = {
-	
-
-	objectName = "Ithorian Tight Fit Shirt",
-
-	templateName = "ith_shirt_s12",
-
-	objectCRC = "3127500764",
-
-	objectType = ITHOGARB,
-
-	equipped = "1"
-}
-
-marksman_ithorian_male_items = {mijacket, mipants, mishirt}
+marksman_ithorian_male_items = {ith_cargo_jacket, ith_camos, ith_tight_fit_shirt}
 
 --------------------------Female Ithorian Items---------------------------
 
-marksman_ithorian_female_items = {mipants, mishirt}
+marksman_ithorian_female_items = {ith_camos, ith_tight_fit_shirt}
 
 marksman_wookie_male_items = { }
 marksman_wookie_female_items = { }

@@ -42,210 +42,29 @@
 
 
 ---------------------Male Humanoid Items------------------------------------
-mboots = {
-	
-	objectName = "Sturdy Boots",
 
-	templateName = "boots_s05",
-
-	objectCRC = "3277311029",
-
-	objectType = FOOTWEAR,
-
-	equipped = "1"
-}
-
-mjacket = {
-	
-	objectName = "Cold Weather Jacket",
-
-	templateName = "jacket_s16",
-
-	objectCRC = "1998242035",
-
-	objectType = JACKET,
-
-	equipped = "1"
-}
-
-mshirt = {
-	
-	objectName = "Formfitting Undershirt",
-
-	templateName = "shirt_s14",
-
-	objectCRC = "2618426014",
-
-	objectType = SHIRT,
-
-	equipped = "1"
-}
-
-mpants = {
-	
-	objectName = "Large Pocket Pants",
-
-	templateName = "pants_s14",
-
-	objectCRC = "1504671772",
-
-	objectType = PANTS,
-
-	equipped = "1"
-}
-
-mshirt = {
-	
-	objectName = "Brawler Shirt",
-
-	templateName = "shirt_s14",
-
-	objectCRC = "2618426014",
-
-	objectType = SHIRT,
-
-	equipped = "1"
-}
-
-brawler_humanoid_male_items = {mboots, mjacket, mpants, mshirt}
+brawler_humanoid_male_items = {sturdy_boots, cold_weather_jacket, formfitting_undershirt, large_pocket_pants}
 
 --------------------------Female Humanoid Items---------------------------
 
-fboots = {
-	
-	objectName = "Sturdy Boots",
-
-	templateName = "boots_s05",
-
-	objectCRC = "3277311029",
-
-	objectType = FOOTWEAR,
-
-	equipped = "1"
-}
-
-fshirt = {
-	
-	objectName = "Shortsleeve Shirt",
-
-	templateName = "shirt_s27",
-
-	objectCRC = "1786625409",
-
-	objectType = SHIRT,
-
-	equipped = "1"
-}
-
-fpants = {
-	
-	objectName = "Basic Camos",
-
-	templateName = "pants_s07",
-
-	objectCRC = "2576408051",
-
-	objectType = PANTS,
-
-	equipped = "1"
-}
-
-fgloves = {
-	
-	objectName = "Cold Weather Gloves",
-
-	templateName = "gloves_s03",
-
-	objectCRC = "745744244",
-
-	objectType = HANDWEAR,
-
-	equipped = "1"
-}
-
-brawler_humanoid_female_items = {fshoes, fshirt, fpants, fgloves}
+brawler_humanoid_female_items = {sturdy_boots, shortsleeve_shirt, basic_camos, cold_weather_gloves}
 
 
 --------------------------Male Trandoshan Items---------------------------
 
-brawler_trandoshan_male_items = {mjacket, mpants, mshirt}
+brawler_trandoshan_male_items = {cold_weather_jacket, formfitting_undershirt, large_pocket_pants}
 
 --------------------------Female Trandoshan Items------------------------
 
-brawler_trandoshan_female_items = {fshirt, fpants, fgloves}
+brawler_trandoshan_female_items = {shortsleeve_shirt, basic_camos, cold_weather_gloves}
 
 --------------------------Male Ithorian Items---------------------------
 
-mipants = {
-	
-	objectName = "Ithorian Reinforced Trousers",
-
-	templateName = "ith_pants_s04",
-
-	objectCRC = "715629952",
-
-	objectType = ITHOGARB,
-
-	equipped = "1"
-}
-
-mishirt = {
-	
-	objectName = "Ithorian Frilly Shirt",
-
-	templateName = "ith_shirt_s02",
-
-	objectCRC = "2705445540",
-
-	objectType = ITHOGARB,
-
-	equipped = "1"
-}
-
-brawler_ithorian_male_items = {mipants, mishirt}
+brawler_ithorian_male_items = {ith_reinforced_trousers, ith_frilly_shirt}
 
 --------------------------Female Ithorian Items---------------------------
 
-fipants = {
-	
-	objectName = "Ithorian Padded Trousers",
-
-	templateName = "ith_pants_s07",
-
-	objectCRC = "4054846743",
-
-	objectType = ITHOGARB,
-
-	equipped = "1"
-}
-
-fishirt = {
-
-	objectName = "Ithorian Frilly Shirt",
-
-	templateName = "ith_shirt_s02",
-
-	objectCRC = "2705445540",
-
-	objectType = ITHOGARB,
-
-	equipped = "1"
-}
-
-figloves = {
-	
-	objectName = "Ithorian Brawling Gloves",
-
-	templateName = "ith_gloves_s01",
-
-	objectCRC = "698134614",
-
-	objectType = ITHOGARB,
-
-	equipped = "1"
-}
-
-brawler_ithorian_female_items = {fipants, fishirt, figloves}
+brawler_ithorian_female_items = {ith_padded_trousers, ith_frilly_shirt, ith_brawling_gloves}
 
 brawler_wookie_male_items = { }
 brawler_wookie_female_items = { }

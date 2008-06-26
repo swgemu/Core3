@@ -41,48 +41,39 @@
 --which carries forward this exception.
 
 
----------------------Male Humanoid Items------------------------------------
+RunItemLUAFile("objects/clothing/ithorian/main.lua");
 
-general_humanoid_male_items = { }
-
---------------------------Female Humanoid Items---------------------------
-
-general_humanoid_female_items = { }
-
-----------------------------Male Trandoshan Items---------------------------
-
-general_trandoshan_male_items = { }
-
---------------------------Female Trandoshan Items---------------------------
-
-general_trandoshan_female_items = { }
-
---------------------------Male Ithorian Items---------------------------
-
-general_ithorian_male_items = { }
-
---------------------------Female Ithorian Items---------------------------
-
-general_ithorian_female_items = { }
-
---------------------------Male Wookiee Items---------------------------
-
-general_wookie_male_items = { bowcaster}
-
---------------------------Female Wookie Items---------------------------
-
-general_wookie_female_items = { bowcaster}
-
---------------------------General Items (All Species)---------------------------
-
-general_general_items = {maroj_melon}
-
-createItemsFromList("general", "humanoid", "male", general_humanoid_male_items)
-createItemsFromList("general", "humanoid", "female", general_humanoid_female_items)
-createItemsFromList("general", "trandoshan", "male", general_trandoshan_male_items)
-createItemsFromList("general", "trandoshan", "female", general_trandoshan_female_items)
-createItemsFromList("general", "ithorian", "male", general_ithorian_male_items)
-createItemsFromList("general", "ithorian", "female", general_ithorian_female_items)
-createItemsFromList("general", "wookiee", "male", general_wookie_male_items)
-createItemsFromList("general", "wookiee", "female", general_wookie_female_items)
-createItemsFromList("general", "all", "both", general_general_items)
+RunItemLUAFile("objects/clothing/dress_shoes.lua");
+RunItemLUAFile("objects/clothing/crafters_pants.lua");
+RunItemLUAFile("objects/clothing/soft_undershirt.lua");
+RunItemLUAFile("objects/clothing/sandals.lua");
+RunItemLUAFile("objects/clothing/flared_cuff_shirt.lua");
+RunItemLUAFile("objects/clothing/wrapped_skirt.lua");
+RunItemLUAFile("objects/clothing/cold_weather_jacket.lua");
+RunItemLUAFile("objects/clothing/formfitting_undershirt.lua");
+RunItemLUAFile("objects/clothing/large_pocket_pants.lua");
+RunItemLUAFile("objects/clothing/sturdy_boots.lua");
+RunItemLUAFile("objects/clothing/shortsleeve_shirt.lua");
+RunItemLUAFile("objects/clothing/basic_camos.lua");
+RunItemLUAFile("objects/clothing/cold_weather_gloves.lua");
+RunItemLUAFile("objects/clothing/striped_slacks.lua");
+RunItemLUAFile("objects/clothing/muscle_shirt.lua");
+RunItemLUAFile("objects/clothing/dress_slippers.lua");
+RunItemLUAFile("objects/clothing/flexform_shirt.lua");
+RunItemLUAFile("objects/clothing/desert_crawlers.lua");
+RunItemLUAFile("objects/clothing/casual_shoes.lua");
+RunItemLUAFile("objects/clothing/mangy_vest.lua");
+RunItemLUAFile("objects/clothing/padded_jacket.lua");
+RunItemLUAFile("objects/clothing/paneled_boots.lua");
+RunItemLUAFile("objects/clothing/pantaloons.lua");
+RunItemLUAFile("objects/clothing/pocketed_work_pants.lua");
+RunItemLUAFile("objects/clothing/sports_wrap.lua");
+RunItemLUAFile("objects/clothing/sleeveless_jacket.lua");
+RunItemLUAFile("objects/clothing/work_slacks.lua");
+RunItemLUAFile("objects/clothing/reinforced_work_shirt.lua");
+RunItemLUAFile("objects/clothing/hide_boots.lua");
+RunItemLUAFile("objects/clothing/reinforced_jumpsuit.lua");
+RunItemLUAFile("objects/clothing/cargo_vest.lua");
+RunItemLUAFile("objects/clothing/paramilitary_camos.lua");
+RunItemLUAFile("objects/clothing/longsleeve_shirt.lua");
+RunItemLUAFile("objects/clothing/lined_workshirt.lua");

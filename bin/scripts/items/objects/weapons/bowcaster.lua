@@ -40,49 +40,22 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
+bowcaster = {
+	
 
----------------------Male Humanoid Items------------------------------------
+	objectName = "Bowcaster",
 
-general_humanoid_male_items = { }
+	templateName = "object/weapon/ranged/rifle/shared_rifle_bowcaster.iff",
 
---------------------------Female Humanoid Items---------------------------
+	objectCRC = 2976096139,
 
-general_humanoid_female_items = { }
+	objectType = RIFLE,
 
-----------------------------Male Trandoshan Items---------------------------
+	damageType = WEAPON_ENERGY,
 
-general_trandoshan_male_items = { }
+	armorPiercing = WEAPON_NONE,
+	
+	certification = "",
 
---------------------------Female Trandoshan Items---------------------------
-
-general_trandoshan_female_items = { }
-
---------------------------Male Ithorian Items---------------------------
-
-general_ithorian_male_items = { }
-
---------------------------Female Ithorian Items---------------------------
-
-general_ithorian_female_items = { }
-
---------------------------Male Wookiee Items---------------------------
-
-general_wookie_male_items = { bowcaster}
-
---------------------------Female Wookie Items---------------------------
-
-general_wookie_female_items = { bowcaster}
-
---------------------------General Items (All Species)---------------------------
-
-general_general_items = {maroj_melon}
-
-createItemsFromList("general", "humanoid", "male", general_humanoid_male_items)
-createItemsFromList("general", "humanoid", "female", general_humanoid_female_items)
-createItemsFromList("general", "trandoshan", "male", general_trandoshan_male_items)
-createItemsFromList("general", "trandoshan", "female", general_trandoshan_female_items)
-createItemsFromList("general", "ithorian", "male", general_ithorian_male_items)
-createItemsFromList("general", "ithorian", "female", general_ithorian_female_items)
-createItemsFromList("general", "wookiee", "male", general_wookie_male_items)
-createItemsFromList("general", "wookiee", "female", general_wookie_female_items)
-createItemsFromList("general", "all", "both", general_general_items)
+	equipped = "0"
+}

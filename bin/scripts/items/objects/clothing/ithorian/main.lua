@@ -41,48 +41,26 @@
 --which carries forward this exception.
 
 
----------------------Male Humanoid Items------------------------------------
+RunItemLUAFile("objects/clothing/ithorian/ith_dress_vest.lua");
+RunItemLUAFile("objects/clothing/ithorian/ith_mystic_shirt.lua");
+RunItemLUAFile("objects/clothing/ithorian/ith_patrol_pants.lua");
+RunItemLUAFile("objects/clothing/ithorian/ith_striped_shirt.lua");
+RunItemLUAFile("objects/clothing/ithorian/ith_reinforced_trousers.lua");
+RunItemLUAFile("objects/clothing/ithorian/ith_frilly_shirt.lua");
+RunItemLUAFile("objects/clothing/ithorian/ith_padded_trousers.lua");
+RunItemLUAFile("objects/clothing/ithorian/ith_brawling_gloves.lua");
+RunItemLUAFile("objects/clothing/ithorian/ith_knitted_shirt.lua");
+RunItemLUAFile("objects/clothing/ithorian/ith_baggies.lua");
+RunItemLUAFile("objects/clothing/ithorian/ith_buckle_pants.lua");
+RunItemLUAFile("objects/clothing/ithorian/ith_fade_dyed_shirt.lua");
+RunItemLUAFile("objects/clothing/ithorian/ith_cargo_jacket.lua");
+RunItemLUAFile("objects/clothing/ithorian/ith_camos.lua");
+RunItemLUAFile("objects/clothing/ithorian/ith_tight_fit_shirt.lua");
+RunItemLUAFile("objects/clothing/ithorian/ith_med_team_jacket.lua");
+RunItemLUAFile("objects/clothing/ithorian/ith_cargo_pants.lua");
+RunItemLUAFile("objects/clothing/ithorian/ith_easy_fit_shirt.lua");
+RunItemLUAFile("objects/clothing/ithorian/ith_striped_pants.lua");
+RunItemLUAFile("objects/clothing/ithorian/ith_long_sweater.lua");
+RunItemLUAFile("objects/clothing/ithorian/ith_half_sweater.lua");
+RunItemLUAFile("objects/clothing/ithorian/ith_strange_pants.lua");
 
-general_humanoid_male_items = { }
-
---------------------------Female Humanoid Items---------------------------
-
-general_humanoid_female_items = { }
-
-----------------------------Male Trandoshan Items---------------------------
-
-general_trandoshan_male_items = { }
-
---------------------------Female Trandoshan Items---------------------------
-
-general_trandoshan_female_items = { }
-
---------------------------Male Ithorian Items---------------------------
-
-general_ithorian_male_items = { }
-
---------------------------Female Ithorian Items---------------------------
-
-general_ithorian_female_items = { }
-
---------------------------Male Wookiee Items---------------------------
-
-general_wookie_male_items = { bowcaster}
-
---------------------------Female Wookie Items---------------------------
-
-general_wookie_female_items = { bowcaster}
-
---------------------------General Items (All Species)---------------------------
-
-general_general_items = {maroj_melon}
-
-createItemsFromList("general", "humanoid", "male", general_humanoid_male_items)
-createItemsFromList("general", "humanoid", "female", general_humanoid_female_items)
-createItemsFromList("general", "trandoshan", "male", general_trandoshan_male_items)
-createItemsFromList("general", "trandoshan", "female", general_trandoshan_female_items)
-createItemsFromList("general", "ithorian", "male", general_ithorian_male_items)
-createItemsFromList("general", "ithorian", "female", general_ithorian_female_items)
-createItemsFromList("general", "wookiee", "male", general_wookie_male_items)
-createItemsFromList("general", "wookiee", "female", general_wookie_female_items)
-createItemsFromList("general", "all", "both", general_general_items)
