@@ -48,7 +48,8 @@ RandPoolAtt = {
 	range = 65,
 	damageRatio = 2.0,
 	speedRatio = 2.6,
-	areaRange = 10,
+	areaRange = 0,
+	coneAngle = 45,
 	accuracyBonus = 0,
 
 	knockdownChance = 0,
@@ -59,11 +60,11 @@ RandPoolAtt = {
 	stunChance = 0,
 	intimidateChance = 0,
 	
-	CbtSpamBlock = "panicshot_block",
-	CbtSpamCounter = "panicshot_counter",
-	CbtSpamEvade = "panicshot_evade",
-	CbtSpamHit = "panicshot_hit",
-	CbtSpamMiss = "panicshot_miss",
+	CbtSpamBlock = "shockshot_block",
+	CbtSpamCounter = "shockshot_counter",
+	CbtSpamEvade = "shockshot_evade",
+	CbtSpamHit = "shockshot_hit",
+	CbtSpamMiss = "shockshot_miss",
 }
 
 AddRandomPoolAttackTargetSkill(RandPoolAtt)
@@ -80,9 +81,9 @@ RandPoolAtt = {
 	damageRatio = 2.0,
 	speedRatio = 2.4,
 	areaRange = 0,
-	accuracyBonus = 0,
+	accuracyBonus = 5,
 		
-	knockdownChance = 40,
+	knockdownChance = 30,
 	postureDownChance = 0,
 	postureUpChance = 0,
 	dizzyChance = 0,
@@ -90,11 +91,11 @@ RandPoolAtt = {
 	stunChance = 0,
 	intimidateChance = 0,
 	
-	CbtSpamBlock = "lowblow_block",
-	CbtSpamCounter = "lowblow_counter",
-	CbtSpamEvade = "lowblow_evade",
-	CbtSpamHit = "lowblow_hit",
-	CbtSpamMiss = "lowblow_miss",
+	CbtSpamBlock = "debilitatingshot_block",
+	CbtSpamCounter = "debilitatingshot_counter",
+	CbtSpamEvade = "debilitatingshot_evade",
+	CbtSpamHit = "debilitatingshot_hit",
+	CbtSpamMiss = "debilitatingshot_miss",
 }
 
 AddRandomPoolAttackTargetSkill(RandPoolAtt)
@@ -112,14 +113,14 @@ RandPoolAtt = {
 	damageRatio = 6.0,
 	speedRatio = 4.0,
 	areaRange = 0,
-	accuracyBonus = 20,
+	accuracyBonus = 10,
 
 	knockdownChance = 0,
 	postureDownChance = 0,
 	postureUpChance = 0,
 	dizzyChance = 0,
 	blindChance = 0,
-	stunChance = 0,
+	stunChance = 40,
 	intimidateChance = 0,
 	
 	CbtSpamBlock = "lastditch_block",
@@ -130,4 +131,5 @@ RandPoolAtt = {
 }
 
 AddRandomPoolAttackTargetSkill(RandPoolAtt)
+
 

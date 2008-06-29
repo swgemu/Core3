@@ -56,14 +56,14 @@ RandPoolAtt = {
 	postureUpChance = 0,
 	dizzyChance = 0,
 	blindChance = 0,
-	stunChance = 40,
+	stunChance = 20,
 	intimidateChance = 0,
 	
-	CbtSpamBlock = "melee_block",
-	CbtSpamCounter = "melee_counter",
-	CbtSpamEvade = "melee_evade",
-	CbtSpamHit = "melee_hit",
-	CbtSpamMiss = "melee_miss",
+	CbtSpamBlock = "bonebreaker_block",
+	CbtSpamCounter = "bonebreaker_counter",
+	CbtSpamEvade = "bonebreaker_evade",
+	CbtSpamHit = "bonebreaker_hit",
+	CbtSpamMiss = "bonebreaker_miss",
 }
 
 AddRandomPoolAttackTargetSkill(RandPoolAtt)
@@ -90,11 +90,11 @@ RandPoolAtt = {
 	stunChance = 40,
 	intimidateChance = 0,
 	
-	CbtSpamBlock = "melee_block",
-	CbtSpamCounter = "melee_counter",
-	CbtSpamEvade = "melee_evade",
-	CbtSpamHit = "melee_hit",
-	CbtSpamMiss = "melee_miss",
+	CbtSpamBlock = "breathtaker_block",
+	CbtSpamCounter = "breathtaker_counter",
+	CbtSpamEvade = "breathtaker_evade",
+	CbtSpamHit = "breathtaker_hit",
+	CbtSpamMiss = "breathtaker_miss",
 }
 
 AddRandomPoolAttackTargetSkill(RandPoolAtt)
@@ -116,7 +116,7 @@ RandPoolAtt = {
 	knockdownChance = 0,
 	postureDownChance = 0,
 	postureUpChance = 0,
-	dizzyChance = 40,
+	dizzyChance = 30,
 	blindChance = 0,
 	stunChance = 0,
 	intimidateChance = 0,
@@ -181,15 +181,15 @@ RandPoolAtt = {
 	requiredWeaponType = POLEARM,
 	
 	range = 11,
-	damageRatio = 1.5,
-	speedRatio = 1.5,
+	damageRatio = 2.0,
+	speedRatio = 2.2,
 	areaRange = 7,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
 	postureUpChance = 0,
-	dizzyChance = 40,
+	dizzyChance = 0,
 	blindChance = 0,
 	stunChance = 0,
 	intimidateChance = 0,
@@ -262,9 +262,9 @@ RandPoolAtt = {
 	knockdownChance = 0,
 	postureDownChance = 0,
 	postureUpChance = 0,
-	dizzyChance = 40,
+	dizzyChance = 30,
 	blindChance = 0,
-	stunChance = 40,
+	stunChance = 30,
 	intimidateChance = 0,
 	
 	CbtSpamBlock = "melee_block",
@@ -290,7 +290,7 @@ RandPoolAtt = {
 	areaRange = 0,
 	accuracyBonus = 0,
 		
-	knockdownChance = 30,
+	knockdownChance = 10,
 	postureDownChance = 0,
 	postureUpChance = 0,
 	dizzyChance = 0,
@@ -321,7 +321,7 @@ RandPoolAtt = {
 	areaRange = 7,
 	accuracyBonus = 0,
 		
-	knockdownChance = 40,
+	knockdownChance = 30,
 	postureDownChance = 0,
 	postureUpChance = 0,
 	dizzyChance = 0,
@@ -398,7 +398,7 @@ DirectPoolAtt = {
 	actionAttackChance = 100,
 	mindAttackChance = 0,
 	
-	dotChance = 50,
+	dotChance = 60,
 	tickStrengthOfHit = 1,
 
 	fireStrength = 0,
@@ -437,11 +437,11 @@ RandPoolAtt = {
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
-	postureDownChance = 30,
+	postureDownChance = 60,
 	postureUpChance = 0,
 	dizzyChance = 0,
 	blindChance = 0,
-	stunChance = 40,
+	stunChance = 30,
 	intimidateChance = 0,
 	
 	CbtSpamBlock = "melee_block",

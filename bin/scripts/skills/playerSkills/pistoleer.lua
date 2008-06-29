@@ -46,7 +46,7 @@ DotPoolAtt = {
 	requiredWeaponType = PISTOL,
 	
 	range = 65,
-	damageRatio = 3.0,
+	damageRatio = 2.7,
 	speedRatio = 1.9,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -55,7 +55,7 @@ DotPoolAtt = {
 	actionAttackChance = 0,
 	mindAttackChance = 0,
 
-	dotChance = 50,
+	dotChance = 60,
 	tickStrengthOfHit = 1,
 
 	fireStrength = 0,
@@ -70,11 +70,11 @@ DotPoolAtt = {
 	diseaseStrength = 0,
 	diseaseType = 0,
 	
-	CbtSpamBlock = "bodyshot_block",
-	CbtSpamCounter = "bodyshot_counter",
-	CbtSpamEvade = "bodyshot_evade",
-	CbtSpamHit = "bodyshot_hit",
-	CbtSpamMiss = "bodyshot_miss",
+	CbtSpamBlock = "sapblast_block",
+	CbtSpamCounter = "sapblast_counter",
+	CbtSpamEvade = "sapblast_evade",
+	CbtSpamHit = "sapblast_hit",
+	CbtSpamMiss = "sapblast_miss",
 }
 
 AddDotPoolAttackTargetSkill(DotPoolAtt)
@@ -101,11 +101,11 @@ RandPoolAtt = {
 	stunChance = 0,
 	intimidateChance = 0,
 	
-	CbtSpamBlock = "pointblankshot_block",
-	CbtSpamCounter = "pointblankshot_counter",
-	CbtSpamEvade = "pointblankshot_evade",
-	CbtSpamHit = "pointblankshot_hit",
-	CbtSpamMiss = "pointblankshot_miss",
+	CbtSpamBlock = "pointblankblast_block",
+	CbtSpamCounter = "pointblankblast_counter",
+	CbtSpamEvade = "pointblankblast_evade",
+	CbtSpamHit = "pointblankblast_hit",
+	CbtSpamMiss = "pointblankblast_miss",
 }
 
 AddRandomPoolAttackTargetSkill(RandPoolAtt)
@@ -164,7 +164,7 @@ RandPoolAtt = {
 	range = 65,
 	damageRatio = 4.3,
 	speedRatio = 3.0,
-	coneAngle = 60,
+	coneAngle = 30,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
@@ -175,11 +175,11 @@ RandPoolAtt = {
 	stunChance = 0,
 	intimidateChance = 0,
 	
-	CbtSpamBlock = "pointblankshot_block",
-	CbtSpamCounter = "pointblankshot_counter",
-	CbtSpamEvade = "pointblankshot_evade",
-	CbtSpamHit = "pointblankshot_hit",
-	CbtSpamMiss = "pointblankshot_miss",
+	CbtSpamBlock = "areashot_block",
+	CbtSpamCounter = "areashot_counter",
+	CbtSpamEvade = "areashot_evade",
+	CbtSpamHit = "areashot_hit",
+	CbtSpamMiss = "areashot_miss",
 }
 
 AddRandomPoolAttackTargetSkill(RandPoolAtt)
@@ -194,7 +194,7 @@ RandPoolAtt = {
 	
 	range = 65,
 	damageRatio = 2.0,
-	speedRatio = 2,3,
+	speedRatio = 2.3,
 	areaRange = 0,
 	accuracyBonus = 0,
 		
@@ -217,7 +217,7 @@ AddRandomPoolAttackTargetSkill(RandPoolAtt)
 
 -----------------------------------------------------------------------
 
-RandPoolAtt = { 
+DirectPoolAtt = { 
 	attackname = "doubletap",
 	animation = "fire_7_single_light_face",
 
@@ -228,7 +228,19 @@ RandPoolAtt = {
 	speedRatio = 2.1,
 	areaRange = 0,
 	accuracyBonus = 0,
-		
+	
+	healthAttackChance = 75,
+	strengthAttackChance = 0,
+	constitutionAttackChance = 0,
+	
+	actionAttackChance = 75,
+	quicknessAttackChance = 0,
+	staminaAttackChance = 0,
+
+	mindAttackChance = 10,
+	focusAttackChance = 0,
+	willpowerAttackChance = 0,	
+	
 	knockdownChance = 0,
 	postureDownChance = 0,
 	postureUpChance = 0,
@@ -244,7 +256,7 @@ RandPoolAtt = {
 	CbtSpamMiss = "doubletap_miss",
 }
 
-AddRandomPoolAttackTargetSkill(RandPoolAtt)
+AddDirectPoolAttackTargetSkill(DirectPoolAtt)
 
 -----------------------------------------------------------------------
 
@@ -255,7 +267,7 @@ RandPoolAtt = {
 	requiredWeaponType = PISTOL,
 	
 	range = 65,
-	damageRatio = 5.0,
+	damageRatio = 4.7,
 	speedRatio = 4.0,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -289,13 +301,14 @@ RandPoolAtt = {
 	damageRatio = 4.0,
 	speedRatio = 2.4,
 	areaRange = 0,
+	coneAngle = 60,	
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
 	postureUpChance = 0,
 	dizzyChance = 0,
-	blindChance = 0,
+	blindChance = 20,
 	stunChance = 0,
 	intimidateChance = 0,
 	
@@ -322,7 +335,7 @@ RandPoolAtt = {
 	areaRange = 0,
 	accuracyBonus = 0,
 		
-	knockdownChance = 0,
+	knockdownChance = 10,
 	postureDownChance = 0,
 	postureUpChance = 0,
 	dizzyChance = 0,
@@ -354,7 +367,7 @@ RandPoolAtt = {
 	areaRange = 0,
 	accuracyBonus = 0,
 		
-	knockdownChance = 0,
+	knockdownChance = 30,
 	postureDownChance = 0,
 	postureUpChance = 0,
 	dizzyChance = 0,
@@ -380,10 +393,10 @@ RandPoolAtt = {
 
 	requiredWeaponType = PISTOL,
 	
-	range = 15,
+	range = 65,
 	damageRatio = 4.2,
 	speedRatio = 3.5,
-	coneAngle = 60,
+	coneAngle = 30,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
@@ -394,11 +407,11 @@ RandPoolAtt = {
 	stunChance = 0,
 	intimidateChance = 0,
 	
-	CbtSpamBlock = "multishot_block",
-	CbtSpamCounter = "multishot_counter",
-	CbtSpamEvade = "multishot_evade",
-	CbtSpamHit = "multishot_hit",
-	CbtSpamMiss = "multishot_miss",
+	CbtSpamBlock = "pistolmultishot_block",
+	CbtSpamCounter = "pistolmultishot_counter",
+	CbtSpamEvade = "pistolmultishot_evade",
+	CbtSpamHit = "pistolmultishot_hit",
+	CbtSpamMiss = "pistolmultishot_miss",
 }
 
 AddRandomPoolAttackTargetSkill(RandPoolAtt)
@@ -416,7 +429,7 @@ RandPoolAtt = {
 	speedRatio = 2.5,
 	areaRange = 0,
 	accuracyBonus = 0,
-		
+	
 	knockdownChance = 0,
 	postureDownChance = 0,
 	postureUpChance = 0,

@@ -146,11 +146,11 @@ DirectPoolAtt = {
 	stunChance = 0,
 	intimidateChance = 0,
 	
-	CbtSpamBlock = "headshot_block",
-	CbtSpamCounter = "headshot_counter",
-	CbtSpamEvade = "headshot_evade",
-	CbtSpamHit = "headshot_hit",
-	CbtSpamMiss = "headshot_miss",
+	CbtSpamBlock = "masterheadshot_block",
+	CbtSpamCounter = "masterheadshot_counter",
+	CbtSpamEvade = "masterheadshot_evade",
+	CbtSpamHit = "masterheadshot_hit",
+	CbtSpamMiss = "masterheadshot_miss",
 }
 
 AddDirectPoolAttackTargetSkill(DirectPoolAtt)
@@ -233,7 +233,7 @@ RandPoolAtt = {
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
-	postureUpChance = 0,
+	postureUpChance = 20,
 	dizzyChance = 0,
 	blindChance = 0,
 	stunChance = 20,
@@ -264,7 +264,7 @@ RandPoolAtt = {
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
-	postureUpChance = 40,
+	postureUpChance = 0,
 	dizzyChance = 0,
 	blindChance = 0,
 	stunChance = 20,
@@ -295,17 +295,17 @@ RandPoolAtt = {
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
-	postureUpChance = 0,
+	postureUpChance = 20,
 	dizzyChance = 0,
 	blindChance = 0,
-	stunChance = 30,
+	stunChance = 40,
 	intimidateChance = 0,
 	
-	CbtSpamBlock = "flushingshot_block",
-	CbtSpamCounter = "flushingshot_counter",
-	CbtSpamEvade = "flushingshot_evade",
-	CbtSpamHit = "flushingshot_hit",
-	CbtSpamMiss = "flushingshot_miss",
+	CbtSpamBlock = "flushingvolley_block",
+	CbtSpamCounter = "flushingvolley_counter",
+	CbtSpamEvade = "flushingvolley_evade",
+	CbtSpamHit = "flushingvolley_hit",
+	CbtSpamMiss = "flushingvolley_miss",
 }
 
 AddRandomPoolAttackTargetSkill(RandPoolAtt)
@@ -329,7 +329,7 @@ RandPoolAtt = {
 	postureUpChance = 60,
 	dizzyChance = 0,
 	blindChance = 0,
-	stunChance = 20,
+	stunChance = 0,
 	intimidateChance = 0,
 	
 	CbtSpamBlock = "startleshot_block",
@@ -350,7 +350,7 @@ RandPoolAtt = {
 	requiredWeaponType = RIFLE,
 	
 	range = 65,
-	damageRatio = 2.5,
+	damageRatio = 1.5,
 	speedRatio = 2.0,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -358,7 +358,7 @@ RandPoolAtt = {
 	knockdownChance = 0,
 	postureDownChance = 0,
 	postureUpChance = 0,
-	dizzyChance = 20,
+	dizzyChance = 10,
 	blindChance = 0,
 	stunChance = 0,
 	intimidateChance = 0,
@@ -389,16 +389,16 @@ RandPoolAtt = {
 	knockdownChance = 0,
 	postureDownChance = 0,
 	postureUpChance = 0,
-	dizzyChance = 40,
+	dizzyChance = 30,
 	blindChance = 0,
 	stunChance = 0,
 	intimidateChance = 0,
 	
-	CbtSpamBlock = "flurryshot_block",
-	CbtSpamCounter = "flurryshot_counter",
-	CbtSpamEvade = "flurryshot_evade",
-	CbtSpamHit = "flurryshot_hit",
-	CbtSpamMiss = "flurryshot_miss",
+	CbtSpamBlock = "flurry_block",
+	CbtSpamCounter = "flurry_counter",
+	CbtSpamEvade = "flurry_evade",
+	CbtSpamHit = "flurry_hit",
+	CbtSpamMiss = "flurry_miss",
 }
 
 AddRandomPoolAttackTargetSkill(RandPoolAtt)
@@ -425,11 +425,11 @@ RandPoolAtt = {
 	stunChance = 0,
 	intimidateChance = 0,
 	
-	CbtSpamBlock = "strafeshot_block",
-	CbtSpamCounter = "strafeshot_counter",
-	CbtSpamEvade = "strafeshot_evade",
-	CbtSpamHit = "strafeshot_hit",
-	CbtSpamMiss = "strafeshot_miss",
+	CbtSpamBlock = "advancedstrafeshot_block",
+	CbtSpamCounter = "advancedstrafeshot_counter",
+	CbtSpamEvade = "advancedstrafeshot_evade",
+	CbtSpamHit = "advancedstrafeshot_hit",
+	CbtSpamMiss = "advancedstrafeshot_miss",
 }
 
 AddRandomPoolAttackTargetSkill(RandPoolAtt)

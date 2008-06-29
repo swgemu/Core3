@@ -39,7 +39,7 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-DirectPoolAtt = { 
+DotPoolAtt = { 
 	attackname = "flamesingle1",
 	animation = "fire_flame_thrower_single_1_light",
 
@@ -59,9 +59,9 @@ DirectPoolAtt = {
 	stunChance = 0,
 	intimidateChance = 0,
 
-	healthAttackChance = 80,
-	actionAttackChance = 60,
-	mindAttackChance = 40,
+	healthAttackChance = 100,
+	actionAttackChance = 0,
+	mindAttackChance = 0,
 
 	dotChance = 100,
 	tickStrengthOfHit = 1,
@@ -76,11 +76,11 @@ DirectPoolAtt = {
 	CbtSpamMiss = "flamesingle1_miss",
 }
 
-AddDotPoolAttackTargetSkill(DirectPoolAtt)
+AddDotPoolAttackTargetSkill(DotPoolAtt)
 
 -----------------------------------------------------------------------
 
-DirectPoolAtt = { 
+DotPoolAtt = { 
 	attackname = "flamecone1",
 	animation = "fire_flame_thrower_cone_1_light",
 
@@ -89,7 +89,7 @@ DirectPoolAtt = {
 	range = 45,
 	damageRatio = 5,
 	speedRatio = 4,
-	coneAngle = 60,
+	coneAngle = 30,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
@@ -100,9 +100,9 @@ DirectPoolAtt = {
 	stunChance = 0,
 	intimidateChance = 0,
 
-	healthAttackChance = 80,
-	actionAttackChance = 60,
-	mindAttackChance = 40,
+	healthAttackChance = 100,
+	actionAttackChance = 0,
+	mindAttackChance = 0,
 
 	dotChance = 100,
 	tickStrengthOfHit = 1,
@@ -117,11 +117,11 @@ DirectPoolAtt = {
 	CbtSpamMiss = "flamecone1_miss",
 }
 
-AddDotPoolAttackTargetSkill(DirectPoolAtt)
+AddDotPoolAttackTargetSkill(DotPoolAtt)
 
 -----------------------------------------------------------------------
 
-DirectPoolAtt = { 
+DotPoolAtt = { 
 	attackname = "flamesingle2",
 	animation = "fire_flame_thrower_single_2_medium",
 
@@ -141,9 +141,9 @@ DirectPoolAtt = {
 	stunChance = 0,
 	intimidateChance = 0,
 
-	healthAttackChance = 80,
-	actionAttackChance = 60,
-	mindAttackChance = 40,
+	healthAttackChance = 100,
+	actionAttackChance = 0,
+	mindAttackChance = 0,
 
 	dotChance = 100,
 	tickStrengthOfHit = 1,
@@ -158,7 +158,7 @@ DirectPoolAtt = {
 	CbtSpamMiss = "flamesingle2_miss",
 }
 
-AddDotPoolAttackTargetSkill(DirectPoolAtt)
+AddDotPoolAttackTargetSkill(DotPoolAtt)
 
 -----------------------------------------------------------------------
 
@@ -171,7 +171,7 @@ RandPoolAtt = {
 	range = 45,
 	damageRatio = 1.25,
 	speedRatio = 1.25,
-	coneAngle = 60,
+	coneAngle = 0,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
@@ -202,7 +202,7 @@ RandPoolAtt = {
 	range = 45,
 	damageRatio = 1.25,
 	speedRatio = 1.25,
-	coneAngle = 60,
+	coneAngle = 30,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
@@ -286,7 +286,7 @@ AddRandomPoolAttackTargetSkill(RandPoolAtt)
 
 -----------------------------------------------------------------------
 
-DirectPoolAtt = { 
+DotPoolAtt = { 
 	attackname = "flamecone2",
 	animation = "fire_flamethrower_cone_2_light",
 
@@ -306,9 +306,9 @@ DirectPoolAtt = {
 	stunChance = 0,
 	intimidateChance = 0,
 
-	healthAttackChance = 80,
-	actionAttackChance = 60,
-	mindAttackChance = 40,
+	healthAttackChance = 100,
+	actionAttackChance = 0,
+	mindAttackChance = 0,
 
 	dotChance = 100,
 	tickStrengthOfHit = 1,
@@ -323,6 +323,6 @@ DirectPoolAtt = {
 	CbtSpamMiss = "flamecone2_miss",
 }
 
-AddDotPoolAttackTargetSkill(DirectPoolAtt)
+AddDotPoolAttackTargetSkill(DotPoolAtt)
 
 -----------------------------------------------------------------------

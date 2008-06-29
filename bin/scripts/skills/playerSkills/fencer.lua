@@ -59,11 +59,11 @@ RandPoolAtt = {
 	stunChance = 0,
 	intimidateChance = 0,
 	
-	CbtSpamBlock = "melee_block",
-	CbtSpamCounter = "melee_counter",
-	CbtSpamEvade = "melee_evade",
-	CbtSpamHit = "melee_hit",
-	CbtSpamMiss = "melee_miss",
+	CbtSpamBlock = "chosun_block",
+	CbtSpamCounter = "chosun_counter",
+	CbtSpamEvade = "chosun_evade",
+	CbtSpamHit = "chosun_hit",
+	CbtSpamMiss = "chosun_miss",
 }
 
 AddRandomPoolAttackTargetSkill(RandPoolAtt)
@@ -77,23 +77,23 @@ DirectPoolAtt = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 3.0,
+	damageRatio = 2.25,
 	speedRatio = 1.25,
 	areaRange = 0,
 	accuracyBonus = 0,
-
-	healthAttackChance = 100,
+		
+	healthAttackChance = 85,
 	strengthAttackChance = 0,
 	constitutionAttackChance = 0,
 	
-	actionAttackChance = 100,
+	actionAttackChance = 90,
 	quicknessAttackChance = 0,
 	staminaAttackChance = 0,
 
-	mindAttackChance = 100,
+	mindAttackChance = 12,
 	focusAttackChance = 0,
 	willpowerAttackChance = 0,
-		
+	
 	knockdownChance = 0,
 	postureDownChance = 0,
 	postureUpChance = 0,
@@ -102,11 +102,11 @@ DirectPoolAtt = {
 	stunChance = 0,
 	intimidateChance = 0,
 	
-	CbtSpamBlock = "melee_block",
-	CbtSpamCounter = "melee_counter",
-	CbtSpamEvade = "melee_evade",
-	CbtSpamHit = "melee_hit",
-	CbtSpamMiss = "melee_miss",
+	CbtSpamBlock = "scatterstab_block",
+	CbtSpamCounter = "scatterstab_counter",
+	CbtSpamEvade = "scatterstab_evade",
+	CbtSpamHit = "scatterstab_hit",
+	CbtSpamMiss = "scatterstab_miss",
 }
 
 AddDirectPoolAttackTargetSkill(DirectPoolAtt)
@@ -120,7 +120,7 @@ RandPoolAtt = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 3.5,
+	damageRatio = 2.5,
 	speedRatio = 1.8,
 	areaRange = 7,
 	accuracyBonus = 0,
@@ -133,11 +133,11 @@ RandPoolAtt = {
 	stunChance = 0,
 	intimidateChance = 0,
 	
-	CbtSpamBlock = "melee_block",
-	CbtSpamCounter = "melee_counter",
-	CbtSpamEvade = "melee_evade",
-	CbtSpamHit = "melee_hit",
-	CbtSpamMiss = "melee_miss",
+	CbtSpamBlock = "skullslash_block",
+	CbtSpamCounter = "skullslash_counter",
+	CbtSpamEvade = "skullslash_evade",
+	CbtSpamHit = "skullslash_hit",
+	CbtSpamMiss = "skullslash_miss",
 }
 
 AddRandomPoolAttackTargetSkill(RandPoolAtt)
@@ -152,22 +152,22 @@ DirectPoolAtt = {
 	
 	range = 11,
 	damageRatio = 4.0,
-	speedRatio = 1.25,
+	speedRatio = 2.0,
 	areaRange = 0,
 	accuracyBonus = 0,
-
-	healthAttackChance = 100,
+		
+	healthAttackChance = 85,
 	strengthAttackChance = 0,
 	constitutionAttackChance = 0,
 	
-	actionAttackChance = 100,
+	actionAttackChance = 95,
 	quicknessAttackChance = 0,
 	staminaAttackChance = 0,
 
-	mindAttackChance = 100,
+	mindAttackChance = 25,
 	focusAttackChance = 0,
-	willpowerAttackChance = 0,
-		
+	willpowerAttackChance = 0,	
+
 	knockdownChance = 0,
 	postureDownChance = 0,
 	postureUpChance = 0,
@@ -176,11 +176,11 @@ DirectPoolAtt = {
 	stunChance = 0,
 	intimidateChance = 0,
 	
-	CbtSpamBlock = "melee_block",
-	CbtSpamCounter = "melee_counter",
-	CbtSpamEvade = "melee_evade",
-	CbtSpamHit = "melee_hit",
-	CbtSpamMiss = "melee_miss",
+	CbtSpamBlock = "scattershiak_block",
+	CbtSpamCounter = "scattershiak_counter",
+	CbtSpamEvade = "scattershiak_evade",
+	CbtSpamHit = "scattershiak_hit",
+	CbtSpamMiss = "scattershiak_miss",
 }
 
 AddDirectPoolAttackTargetSkill(DirectPoolAtt)
@@ -204,13 +204,13 @@ DotPoolAtt = {
 	actionAttackChance = 0,
 	mindAttackChance = 0,
 
-	dotChance = 50,
+	dotChance = 40,
 	tickStrengthOfHit = 1,
 
 	fireStrength = 0,
 	fireType = 0,
 
-	bleedingStrength = 50,
+	bleedingStrength = 0,
 	bleedingType = HEALTH,
 
 	poisonStrength = 0,
@@ -219,11 +219,11 @@ DotPoolAtt = {
 	diseaseStrength = 0,
 	diseaseType = 0,
 	
-	CbtSpamBlock = "melee_block",
-	CbtSpamCounter = "melee_counter",
-	CbtSpamEvade = "melee_evade",
-	CbtSpamHit = "melee_hit",
-	CbtSpamMiss = "melee_miss",
+	CbtSpamBlock = "shiim_block",
+	CbtSpamCounter = "shiim_counter",
+	CbtSpamEvade = "shiim_evade",
+	CbtSpamHit = "shiim_hit",
+	CbtSpamMiss = "shiim_miss",
 }
 
 AddDotPoolAttackTargetSkill(DotPoolAtt)
@@ -237,7 +237,7 @@ RandPoolAtt = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 3.0,
+	damageRatio = 4.0,
 	speedRatio = 1.45,
 	areaRange = 7,
 	accuracyBonus = 0,
@@ -246,15 +246,15 @@ RandPoolAtt = {
 	postureDownChance = 0,
 	postureUpChance = 0,
 	dizzyChance = 0,
-	blindChance = 0,
+	blindChance = 40,
 	stunChance = 0,
 	intimidateChance = 0,
 	
-	CbtSpamBlock = "melee_block",
-	CbtSpamCounter = "melee_counter",
-	CbtSpamEvade = "melee_evade",
-	CbtSpamHit = "melee_hit",
-	CbtSpamMiss = "melee_miss",
+	CbtSpamBlock = "blindspin_block",
+	CbtSpamCounter = "blindspin_counter",
+	CbtSpamEvade = "blindspin_evade",
+	CbtSpamHit = "blindspin_hit",
+	CbtSpamMiss = "blindspin_miss",
 }
 
 AddRandomPoolAttackTargetSkill(RandPoolAtt)
@@ -278,13 +278,13 @@ DotPoolAtt = {
 	actionAttackChance = 0,
 	mindAttackChance = 0,
 
-	dotChance = 50,
+	dotChance = 60,
 	tickStrengthOfHit = 1,
 
 	fireStrength = 0,
 	fireType = 0,
 
-	bleedingStrength = 100,
+	bleedingStrength = 0,
 	bleedingType = HEALTH,
 
 	poisonStrength = 0,
@@ -293,11 +293,11 @@ DotPoolAtt = {
 	diseaseStrength = 0,
 	diseaseType = 0,
 	
-	CbtSpamBlock = "melee_block",
-	CbtSpamCounter = "melee_counter",
-	CbtSpamEvade = "melee_evade",
-	CbtSpamHit = "melee_hit",
-	CbtSpamMiss = "melee_miss",
+	CbtSpamBlock = "shiimshiak_block",
+	CbtSpamCounter = "shiimshiak_counter",
+	CbtSpamEvade = "shiimshiak_evade",
+	CbtSpamHit = "shiimshiak_hit",
+	CbtSpamMiss = "shiimshiak_miss",
 }
 
 AddDotPoolAttackTargetSkill(DotPoolAtt)
@@ -335,11 +335,11 @@ DirectPoolAtt = {
 	stunChance = 0,
 	intimidateChance = 0,
 	
-	CbtSpamBlock = "melee_block",
-	CbtSpamCounter = "melee_counter",
-	CbtSpamEvade = "melee_evade",
-	CbtSpamHit = "melee_hit",
-	CbtSpamMiss = "melee_miss",
+	CbtSpamBlock = "saisun_block",
+	CbtSpamCounter = "saisun_counter",
+	CbtSpamEvade = "saisun_evade",
+	CbtSpamHit = "saisun_hit",
+	CbtSpamMiss = "saisun_miss",
 }
 
 AddDirectPoolAttackTargetSkill(DirectPoolAtt)
@@ -377,11 +377,11 @@ DirectPoolAtt = {
 	stunChance = 0,
 	intimidateChance = 0,
 	
-	CbtSpamBlock = "melee_block",
-	CbtSpamCounter = "melee_counter",
-	CbtSpamEvade = "melee_evade",
-	CbtSpamHit = "melee_hit",
-	CbtSpamMiss = "melee_miss",
+	CbtSpamBlock = "saitok_block",
+	CbtSpamCounter = "saitok_counter",
+	CbtSpamEvade = "saitok_evade",
+	CbtSpamHit = "saitok_hit",
+	CbtSpamMiss = "saitok_miss",
 }
 
 AddDirectPoolAttackTargetSkill(DirectPoolAtt)
@@ -404,15 +404,15 @@ RandPoolAtt = {
 	postureDownChance = 0,
 	postureUpChance = 0,
 	dizzyChance = 0,
-	blindChance = 30,
+	blindChance = 10,
 	stunChance = 0,
 	intimidateChance = 0,
 	
-	CbtSpamBlock = "melee_block",
-	CbtSpamCounter = "melee_counter",
-	CbtSpamEvade = "melee_evade",
-	CbtSpamHit = "melee_hit",
-	CbtSpamMiss = "melee_miss",
+	CbtSpamBlock = "blindingstab_block",
+	CbtSpamCounter = "blindingstab_counter",
+	CbtSpamEvade = "blindingstab_evade",
+	CbtSpamHit = "blindingstab_hit",
+	CbtSpamMiss = "blindingstab_miss",
 }
 
 AddRandomPoolAttackTargetSkill(RandPoolAtt)
@@ -435,15 +435,15 @@ RandPoolAtt = {
 	postureDownChance = 0,
 	postureUpChance = 0,
 	dizzyChance = 0,
-	blindChance = 35,
+	blindChance = 40,
 	stunChance = 0,
 	intimidateChance = 0,
 	
-	CbtSpamBlock = "melee_block",
-	CbtSpamCounter = "melee_counter",
-	CbtSpamEvade = "melee_evade",
-	CbtSpamHit = "melee_hit",
-	CbtSpamMiss = "melee_miss",
+	CbtSpamBlock = "blindingslash_block",
+	CbtSpamCounter = "blindingslash_counter",
+	CbtSpamEvade = "blindingslash_evade",
+	CbtSpamHit = "blindingslash_hit",
+	CbtSpamMiss = "blindingslash_miss",
 }
 
 AddRandomPoolAttackTargetSkill(RandPoolAtt)
@@ -457,8 +457,8 @@ RandPoolAtt = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 5.0,
-	speedRatio = 1.25,
+	damageRatio = 5.25,
+	speedRatio = 2.0,
 	areaRange = 0,
 	accuracyBonus = 0,
 		
@@ -470,11 +470,11 @@ RandPoolAtt = {
 	stunChance = 0,
 	intimidateChance = 0,
 	
-	CbtSpamBlock = "melee_block",
-	CbtSpamCounter = "melee_counter",
-	CbtSpamEvade = "melee_evade",
-	CbtSpamHit = "melee_hit",
-	CbtSpamMiss = "melee_miss",
+	CbtSpamBlock = "chomok_block",
+	CbtSpamCounter = "chomok_counter",
+	CbtSpamEvade = "chomok_evade",
+	CbtSpamHit = "chomok_hit",
+	CbtSpamMiss = "chomok_miss",
 }
 
 AddRandomPoolAttackTargetSkill(RandPoolAtt)

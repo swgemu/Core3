@@ -46,12 +46,12 @@ RandPoolAtt = {
 	requiredWeaponType = CARBINE,
 	
 	range = 65,
-	damageRatio = 4.5,
+	damageRatio = 3.0,
 	speedRatio = 1.5,
 	areaRange = 0,
 	accuracyBonus = 0,
 		
-	knockdownChance = 20,
+	knockdownChance = 30,
 	postureDownChance = 0,
 	postureUpChance = 0,
 	dizzyChance = 0,
@@ -77,7 +77,7 @@ RandPoolAtt = {
 	requiredWeaponType = CARBINE,
 	
 	range = 65,
-	damageRatio = 3.8,
+	damageRatio = 2.5,
 	speedRatio = 2.0,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -85,7 +85,7 @@ RandPoolAtt = {
 	knockdownChance = 30,
 	postureDownChance = 0,
 	postureUpChance = 0,
-	dizzyChance = 40,
+	dizzyChance = 30,
 	blindChance = 0,
 	stunChance = 0,
 	intimidateChance = 0,
@@ -108,7 +108,7 @@ RandPoolAtt = {
 	requiredWeaponType = CARBINE,
 	
 	range = 65,
-	damageRatio = 4.5,
+	damageRatio = 3.0,
 	speedRatio = 2.3,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -116,9 +116,9 @@ RandPoolAtt = {
 	knockdownChance = 0,
 	postureDownChance = 0,
 	postureUpChance = 0,
-	dizzyChance = 20,
+	dizzyChance = 30,
 	blindChance = 0,
-	stunChance = 20,
+	stunChance = 40,
 	intimidateChance = 0,
 	
 	CbtSpamBlock = "confusionshot_block",
@@ -144,18 +144,14 @@ DotPoolAtt = {
 	areaRange = 0,
 	accuracyBonus = 0,
 		
-	healthAttackChance = 50,
-	actionAttackChance = 35,
-	mindAttackChance = 15,
-
-	dotChance = 50,
+	dotChance = 60,
 	tickStrengthOfHit = 1,
 
 	fireStrength = 0,
 	fireType = 0,
 
 	bleedingStrength = 0,
-	bleedingType = HEALTH,
+	bleedingType = MIND,
 
 	poisonStrength = 0,
 	poisonType = 0,
@@ -201,7 +197,7 @@ DirectPoolAtt = {
 	knockdownChance = 0,
 	postureDownChance = 0,
 	dizzyChance = 0,
-	blindChance = 20,
+	blindChance = 40,
 	stunChance = 0,
 	intimidateChance = 0,
 	
@@ -229,11 +225,19 @@ DotPoolAtt = {
 	accuracyBonus = 0,
 
 	healthAttackChance = 100,
+	strengthAttackChance = 0,
+	constitutionAttackChance = 0,
+	
 	actionAttackChance = 0,
-	mindAttackChance = 0,
+	quicknessAttackChance = 0,
+	staminaAttackChance = 0,
 
-	dotChance = 50,
-	tickStrengthOfHit = 1,
+	mindAttackChance = 0,
+	focusAttackChance = 0,
+	willpowerAttackChance = 0,
+
+	dotChance = 60,
+	tickStrengthOfHit = 2,
 
 	fireStrength = 0,
 	fireType = HEALTH,
@@ -358,17 +362,17 @@ RandPoolAtt = {
 	requiredWeaponType = CARBINE,
 	
 	range = 65,
-	damageRatio = 2.25,
-	speedRatio = 1.25,
+	damageRatio = 5.5,
+	speedRatio = 3.5,
 	areaRange = 0,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
 	postureUpChance = 0,
-	dizzyChance = 20,
-	blindChance = 20,
-	stunChance = 20,
+	dizzyChance = 30,
+	blindChance = 30,
+	stunChance = 30,
 	intimidateChance = 0,
 	
 	CbtSpamBlock = "sprayshot_block",
@@ -420,7 +424,7 @@ DirectPoolAtt = {
 	requiredWeaponType = PISTOL,
 	
 	range = 65,
-	damageRatio = 3.15,
+	damageRatio = 4.15,
 	speedRatio = 3.05,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -440,7 +444,7 @@ DirectPoolAtt = {
 	knockdownChance = 0,
 	postureDownChance = 0,
 	dizzyChance = 0,
-	blindChance = 20,
+	blindChance = 0,
 	stunChance = 0,
 	intimidateChance = 0,
 	

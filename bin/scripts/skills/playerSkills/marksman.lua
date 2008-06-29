@@ -47,9 +47,9 @@ RandPoolAtt = {
 
 	requiredWeaponType = RANGED,
 	
-	range = 45,
-	damageRatio = 1.25,
-	speedRatio = 1.25,
+	range = 65,
+	damageRatio = 2.25,
+	speedRatio = 2.0,
 	areaRange = 0,
 	accuracyBonus = 0,
 		
@@ -78,8 +78,8 @@ RandPoolAtt = {
 
 	requiredWeaponType = RANGED,
 	
-	range = 45,
-	damageRatio = 1.15,
+	range = 65,
+	damageRatio = 1.5,
 	speedRatio = 1.05,
 	coneAngle = 60,
 	accuracyBonus = 0,
@@ -92,11 +92,11 @@ RandPoolAtt = {
 	stunChance = 0,
 	intimidateChance = 0,
 	
-	CbtSpamBlock = "pointblankshot_block",
-	CbtSpamCounter = "pointblankshot_counter",
-	CbtSpamEvade = "pointblankshot_evade",
-	CbtSpamHit = "pointblankshot_hit",
-	CbtSpamMiss = "pointblankshot_miss",
+	CbtSpamBlock = "coveringfire_block",
+	CbtSpamCounter = "coveringfire_counter",
+	CbtSpamEvade = "coveringfire_evade",
+	CbtSpamHit = "coveringfire_hit",
+	CbtSpamMiss = "coveringfire_miss",
 }
 
 AddRandomPoolAttackTargetSkill(RandPoolAtt)
@@ -109,8 +109,8 @@ RandPoolAtt = {
 
 	requiredWeaponType = RANGED,
 	
-	range = 45,
-	damageRatio = 1.15,
+	range = 65,
+	damageRatio = 1.75,
 	speedRatio = 1.05,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -123,11 +123,11 @@ RandPoolAtt = {
 	stunChance = 0,
 	intimidateChance = 0,
 	
-	CbtSpamBlock = "pointblankshot_block",
-	CbtSpamCounter = "pointblankshot_counter",
-	CbtSpamEvade = "pointblankshot_evade",
-	CbtSpamHit = "pointblankshot_hit",
-	CbtSpamMiss = "pointblankshot_miss",
+	CbtSpamBlock = "semiautoattack_block",
+	CbtSpamCounter = "semiautoattack_counter",
+	CbtSpamEvade = "semiautoattack_evade",
+	CbtSpamHit = "semiautoattack_hit",
+	CbtSpamMiss = "semiautoattack_miss",
 }
 
 AddRandomPoolAttackTargetSkill(RandPoolAtt)
@@ -141,7 +141,7 @@ DirectPoolAtt = {
 
 	requiredWeaponType = RIFLE,
 	
-	range = 45,
+	range = 65,
 	damageRatio = 1.15,
 	speedRatio = 1.05,
 	areaRange = 0,
@@ -183,8 +183,8 @@ DirectPoolAtt = {
 
 	requiredWeaponType = RIFLE,
 	
-	range = 45,
-	damageRatio = 1.50,
+	range = 65,
+	damageRatio = 1.70,
 	speedRatio = 1.20,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -208,24 +208,24 @@ DirectPoolAtt = {
 	stunChance = 0,
 	intimidateChance = 0,
 	
-	CbtSpamBlock = "headshot_block",
-	CbtSpamCounter = "headshot_counter",
-	CbtSpamEvade = "headshot_evade",
-	CbtSpamHit = "headshot_hit",
-	CbtSpamMiss = "headshot_miss",
+	CbtSpamBlock = "expertheadshot_block",
+	CbtSpamCounter = "expertheadshot_counter",
+	CbtSpamEvade = "expertheadshot_evade",
+	CbtSpamHit = "expertheadshot_hit",
+	CbtSpamMiss = "expertheadshot_miss",
 }
 
 AddDirectPoolAttackTargetSkill(DirectPoolAtt)
 
 -----------------------------------------------------------------------
 
-DirectPoolAtt = { 
+DotPoolAtt = { 
 	attackname = "mindshot1",
 	animation = "fire_1_special_single_medium_face",
 
 	requiredWeaponType = RIFLE,
 	
-	range = 45,
+	range = 65,
 	damageRatio = 1.50,
 	speedRatio = 1.20,
 	areaRange = 0,
@@ -243,12 +243,20 @@ DirectPoolAtt = {
 	focusAttackChance = 0,
 	willpowerAttackChance = 0,
 		
-	knockdownChance = 0,
-	postureDownChance = 0,
-	dizzyChance = 0,
-	blindChance = 0,
-	stunChance = 0,
-	intimidateChance = 0,
+	dotChance = 30,
+	tickStrengthOfHit = 1,
+
+	fireStrength = 0,
+	fireType = 0,
+
+	bleedingStrength = 0,
+	bleedingType = MIND,
+
+	poisonStrength = 0,
+	poisonType = 0,
+
+	diseaseStrength = 0,
+	diseaseType = 0,
 	
 	CbtSpamBlock = "headshot_block",
 	CbtSpamCounter = "headshot_counter",
@@ -257,7 +265,7 @@ DirectPoolAtt = {
 	CbtSpamMiss = "headshot_miss",
 }
 
-AddDirectPoolAttackTargetSkill(DirectPoolAtt)
+AddDotPoolAttackTargetSkill(DotPoolAtt)
 
 ------------------------------PISTOLS-------------------------------
 
@@ -267,7 +275,7 @@ DirectPoolAtt = {
 
 	requiredWeaponType = PISTOL,
 	
-	range = 45,
+	range = 65,
 	damageRatio = 1.15,
 	speedRatio = 1.20,
 	areaRange = 0,
@@ -309,9 +317,9 @@ DirectPoolAtt = {
 
 	requiredWeaponType = PISTOL,
 	
-	range = 45,
-	damageRatio = 1.40,
-	speedRatio = 1.25,
+	range = 65,
+	damageRatio = 2.1,
+	speedRatio = 1.8,
 	areaRange = 0,
 	accuracyBonus = 0,
 
@@ -345,13 +353,13 @@ AddDirectPoolAttackTargetSkill(DirectPoolAtt)
 
 -----------------------------------------------------------------------
 
-DirectPoolAtt = { 
+DotPoolAtt = { 
 	attackname = "healthshot1",
 	animation = "fire_1_special_single_light",
 
 	requiredWeaponType = PISTOL,
 	
-	range = 45,
+	range = 65,
 	damageRatio = 1.25,
 	speedRatio = 1.25,
 	areaRange = 0,
@@ -369,21 +377,29 @@ DirectPoolAtt = {
 	focusAttackChance = 0,
 	willpowerAttackChance = 0,
 		
-	knockdownChance = 0,
-	postureDownChance = 0,
-	dizzyChance = 0,
-	blindChance = 0,
-	stunChance = 0,
-	intimidateChance = 0,
+	dotChance = 30,
+	tickStrengthOfHit = 1,
+
+	fireStrength = 0,
+	fireType = 0,
+
+	bleedingStrength = 0,
+	bleedingType = HEALTH,
+
+	poisonStrength = 0,
+	poisonType = 0,
+
+	diseaseStrength = 0,
+	diseaseType = 0,
 	
-	CbtSpamBlock = "bodyshot_block",
-	CbtSpamCounter = "bodyshot_counter",
-	CbtSpamEvade = "bodyshot_evade",
-	CbtSpamHit = "bodyshot_hit",
-	CbtSpamMiss = "bodyshot_miss",
+	CbtSpamBlock = "sapshot_block",
+	CbtSpamCounter = "sapshot_counter",
+	CbtSpamEvade = "sapshot_evade",
+	CbtSpamHit = "sapshot_hit",
+	CbtSpamMiss = "sapshot_miss",
 }
 
-AddDirectPoolAttackTargetSkill(DirectPoolAtt)
+AddDotPoolAttackTargetSkill(DotPoolAtt)
 
 ----------------------------CARBINES--------------------------------
 
@@ -393,7 +409,7 @@ DirectPoolAtt = {
 
 	requiredWeaponType = CARBINE,
 	
-	range = 45,
+	range = 65,
 	damageRatio = 1.15,
 	speedRatio = 1.05,
 	areaRange = 0,
@@ -435,12 +451,24 @@ RandPoolAtt = {
 
 	requiredWeaponType = CARBINE,
 	
-	range = 45,
+	range = 65,
 	damageRatio = 1.35,
 	speedRatio = 1.15,
 	areaRange = 0,
 	accuracyBonus = 0,
 		
+	healthAttackChance = 30,
+	strengthAttackChance = 0,
+	constitutionAttackChance = 0,
+
+	actionAttackChance = 50,
+	quicknessAttackChance = 0,
+	staminaAttackChance = 0,
+
+	mindAttackChance = 5,
+	focusAttackChance = 0,
+	willpowerAttackChance = 0,	
+
 	knockdownChance = 0,
 	postureDownChance = 0,
 	postureUpChance = 0,
@@ -449,11 +477,11 @@ RandPoolAtt = {
 	stunChance = 0,
 	intimidateChance = 0,
 	
-	CbtSpamBlock = "fullautoattack_block",
-	CbtSpamCounter = "fullautoattack_counter",
-	CbtSpamEvade = "fullautoattack_evade",
-	CbtSpamHit = "fullautoattack_hit",
-	CbtSpamMiss = "fullautoattack_miss",
+	CbtSpamBlock = "multishot_block",
+	CbtSpamCounter = "multishot_counter",
+	CbtSpamEvade = "multishot_evade",
+	CbtSpamHit = "multishot_hit",
+	CbtSpamMiss = "multishot_miss",
 }
 
 AddRandomPoolAttackTargetSkill(RandPoolAtt)
@@ -466,8 +494,8 @@ DirectPoolAtt = {
 
 	requiredWeaponType = CARBINE,
 	
-	range = 45,
-	damageRatio = 3.0,
+	range = 65,
+	damageRatio = 2.5,
 	speedRatio = 1.5,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -508,7 +536,7 @@ DotPoolAtt = {
 
 	requiredWeaponType = CARBINE,
 	
-	range = 45,
+	range = 65,
 	damageRatio = 1.5,
 	speedRatio = 1.6,
 	areaRange = 0,
@@ -518,7 +546,7 @@ DotPoolAtt = {
 	actionAttackChance = 100,
 	mindAttackChance = 0,
 
-	dotChance = 50,
+	dotChance = 30,
 	tickStrengthOfHit = 1,
 
 	fireStrength = 0,
@@ -533,11 +561,11 @@ DotPoolAtt = {
 	diseaseStrength = 0,
 	diseaseType = 0,
 	
-	CbtSpamBlock = "legshot_block",
-	CbtSpamCounter = "legshot_counter",
-	CbtSpamEvade = "legshot_evade",
-	CbtSpamHit = "legshot_hit",
-	CbtSpamMiss = "legshot_miss",
+	CbtSpamBlock = "kneecapshot_block",
+	CbtSpamCounter = "kneecapshot_counter",
+	CbtSpamEvade = "kneecapshot_evade",
+	CbtSpamHit = "kneecapshot_hit",
+	CbtSpamMiss = "kneecapshot_miss",
 }
 
 AddDotPoolAttackTargetSkill(DotPoolAtt)
@@ -550,7 +578,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = RANGED,
 	
-	range = 45,
+	range = 65,
 	damageRatio = 1.15,
 	speedRatio = 1.05,
 	areaRange = 0,
@@ -582,6 +610,33 @@ ChangePost = {
 	posture = CROUCHED_POSTURE,
 
 	speed = 1.0,
+	damageRatio = 1.0,
+}
+
+AddChangePostureSelfSkill(ChangePost)
+
+-----------------------------------------------------------------------
+
+ChangePost = {
+	skillname = "tumbletoprone",
+	animation = "tumble_to_prone",
+
+	posture = PRONE_POSTURE,
+
+	speed = 1.0,
+}
+
+AddChangePostureSelfSkill(ChangePost)
+
+-----------------------------------------------------------------------
+
+ChangePost = {
+	skillname = "tumbletostanding",
+	animation = "tumble_to_standing",
+
+	posture = UPRIGHT_POSTURE,
+
+	speed = 1.0,
 }
 
 AddChangePostureSelfSkill(ChangePost)
@@ -594,7 +649,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = RANGED,
 	
-	range = 45,
+	range = 65,
 	damageRatio = 1.15,
 	speedRatio = 1.05,
 	areaRange = 0,
@@ -625,7 +680,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = RANGED,
 	
-	range = 45,
+	range = 65,
 	damageRatio = 2.3,
 	speedRatio = 2.0,
 	areaRange = 0,
@@ -639,11 +694,11 @@ RandPoolAtt = {
 	stunChance = 0,
 	intimidateChance = 0,
 	
-	CbtSpamBlock = "sup_fire_block",
-	CbtSpamCounter = "sup_fire_counter",
-	CbtSpamEvade = "sup_fire_evade",
-	CbtSpamHit = "sup_fire_hit",
-	CbtSpamMiss = "sup_fire_miss",
+	CbtSpamBlock = "suppressionfire_block",
+	CbtSpamCounter = "suppressionfire_counter",
+	CbtSpamEvade = "suppressionfire_evade",
+	CbtSpamHit = "suppressionfire_hit",
+	CbtSpamMiss = "suppressionfire_miss",
 }
 
 AddRandomPoolAttackTargetSkill(RandPoolAtt)
@@ -656,27 +711,28 @@ RandPoolAtt = {
 
 	requiredWeaponType = RANGED,
 	
-	range = 45,
-	damageRatio = 5.3,
+	range = 65,
+	damageRatio = 5.0,
 	speedRatio = 2.0,
 	areaRange = 0,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
-	postureDownChance = 33,
+	postureDownChance = 0,
 	postureUpChance = 0,
 	dizzyChance = 0,
 	blindChance = 0,
 	stunChance = 0,
 	intimidateChance = 0,
 	
-	CbtSpamBlock = "overchargeshot_block",
-	CbtSpamCounter = "overchargeshot_counter",
-	CbtSpamEvade = "overchargeshot_evade",
-	CbtSpamHit = "overchargeshot_hit",
-	CbtSpamMiss = "overchargeshot_miss",
+	CbtSpamBlock = "fullchargeshot_block",
+	CbtSpamCounter = "fullchargeshot_counter",
+	CbtSpamEvade = "fullchargeshot_evade",
+	CbtSpamHit = "fullchargeshot_hit",
+	CbtSpamMiss = "fullchargeshot_miss",
 }
 
 AddRandomPoolAttackTargetSkill(RandPoolAtt)
+
 
 

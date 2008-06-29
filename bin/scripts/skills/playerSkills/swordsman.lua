@@ -45,9 +45,9 @@ RandPoolAtt = {
 
 	requiredWeaponType = TWOHANDED,
 	
-	range = 11,
-	damageRatio = 1.15,
-	speedRatio = 1.45,
+	range = 8,
+	damageRatio = 3.0,
+	speedRatio = 2.25,
 	areaRange = 0,
 	accuracyBonus = 0,
 		
@@ -76,17 +76,17 @@ RandPoolAtt = {
 
 	requiredWeaponType = TWOHANDED,
 	
-	range = 11,
+	range = 8,
 	damageRatio = 2.0,
 	speedRatio = 2.3,
 	areaRange = 7,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
-	postureDownChance = 20,
+	postureDownChance = 15,
 	postureUpChance = 0,
 	dizzyChance = 0,
-	blindChance = 0,
+	blindChance = 20,
 	stunChance = 0,
 	intimidateChance = 0,
 	
@@ -107,17 +107,17 @@ RandPoolAtt = {
 
 	requiredWeaponType = TWOHANDED,
 	
-	range = 11,
+	range = 8,
 	damageRatio = 3.0,
 	speedRatio = 2.4,
 	areaRange = 7,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
-	postureDownChance = 30,
+	postureDownChance = 20,
 	postureUpChance = 0,
 	dizzyChance = 0,
-	blindChance = 0,
+	blindChance = 20,
 	stunChance = 0,
 	intimidateChance = 0,
 	
@@ -138,7 +138,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = TWOHANDED,
 	
-	range = 11,
+	range = 8,
 	damageRatio = 3.0,
 	speedRatio = 2.6,
 	areaRange = 7,
@@ -147,8 +147,8 @@ RandPoolAtt = {
 	knockdownChance = 0,
 	postureDownChance = 30,
 	postureUpChance = 0,
-	dizzyChance = 20,
-	blindChance = 1,
+	dizzyChance = 0,
+	blindChance = 30,
 	stunChance = 0,
 	intimidateChance = 0,
 	
@@ -169,7 +169,7 @@ DirectPoolAtt = {
 
 	requiredWeaponType = TWOHANDED,
 	
-	range = 11,
+	range = 8,
 	damageRatio = 2.5,
 	speedRatio = 2.3,
 	areaRange = 0,
@@ -211,7 +211,7 @@ DirectPoolAtt = {
 
 	requiredWeaponType = TWOHANDED,
 	
-	range = 11,
+	range = 8,
 	damageRatio = 3.5,
 	speedRatio = 2.5,
 	areaRange = 0,
@@ -253,7 +253,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = TWOHANDED,
 	
-	range = 11,
+	range = 8,
 	damageRatio = 3.0,
 	speedRatio = 2.3,
 	areaRange = 7,
@@ -284,14 +284,14 @@ RandPoolAtt = {
 
 	requiredWeaponType = TWOHANDED,
 	
-	range = 11,
+	range = 8,
 	damageRatio = 2.0,
 	speedRatio = 2.5,
 	areaRange = 7,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
-	postureDownChance = 20,
+	postureDownChance = 40,
 	postureUpChance = 0,
 	dizzyChance = 0,
 	blindChance = 0,
@@ -315,7 +315,7 @@ DirectPoolAtt = {
 
 	requiredWeaponType = TWOHANDED,
 	
-	range = 11,
+	range = 8,
 	damageRatio = 1.0,
 	speedRatio = 2.3,
 	areaRange = 0,
@@ -358,8 +358,8 @@ DirectPoolAtt = {
 	requiredWeaponType = TWOHANDED,
 	
 	range = 11,
-	damageRatio = 2.5,
-	speedRatio = 2.3,
+	damageRatio = 2.0,
+	speedRatio = 2.5,
 	areaRange = 0,
 	accuracyBonus = 0,
 
@@ -367,8 +367,8 @@ DirectPoolAtt = {
 	actionAttackChance = 0,
 	mindAttackChance = 100,
 		
-	dotChance = 50,
-	tickStrengthOfHit = 1,
+	dotChance = 60,
+	tickStrengthOfHit = 2,
 
 	fireStrength = 0,
 	fireType = 0,
@@ -399,7 +399,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = TWOHANDED,
 	
-	range = 11,
+	range = 8,
 	damageRatio = 4.0,
 	speedRatio = 3.25,
 	areaRange = 0,

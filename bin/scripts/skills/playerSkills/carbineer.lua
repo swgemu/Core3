@@ -46,16 +46,17 @@ DotPoolAtt = {
 	requiredWeaponType = CARBINE,
 	
 	range = 65,
-	damageRatio = 3.0,
+	damageRatio = 2.2,
 	speedRatio = 1.7,
 	areaRange = 0,
+	coneAngle = 30,
 	accuracyBonus = 0,
 
 	healthAttackChance = 0,
 	actionAttackChance = 100,
 	mindAttackChance = 0,
 
-	dotChance = 50,
+	dotChance = 60,
 	tickStrengthOfHit = 1,
 
 	fireStrength = 0,
@@ -81,14 +82,14 @@ AddDotPoolAttackTargetSkill(DotPoolAtt)
 
 -----------------------------------------------------------------------
 
-RandPoolAtt = { 
+RandPoolAtt = {
 	attackname = "fullautosingle2",
 	animation = "fire_7_single_medium_face",
 
 	requiredWeaponType = CARBINE,
 	
 	range = 65,
-	damageRatio = 5.5,
+	damageRatio = 3.0,
 	speedRatio = 1.7,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -96,16 +97,16 @@ RandPoolAtt = {
 	knockdownChance = 0,
 	postureDownChance = 0,
 	postureUpChance = 0,
-	dizzyChance = 20,
-	blindChance = 20,
-	stunChance = 20,
+	dizzyChance = 25,
+	blindChance = 25,
+	stunChance = 15,
 	intimidateChance = 0,
 	
-	CbtSpamBlock = "fullautoattack_block",
-	CbtSpamCounter = "fullautoattack_counter",
-	CbtSpamEvade = "fullautoattack_evade",
-	CbtSpamHit = "fullautoattack_hit",
-	CbtSpamMiss = "fullautoattack_miss",
+	CbtSpamBlock = "s_auto_block",
+	CbtSpamCounter = "s_auto_counter",
+	CbtSpamEvade = "s_auto_evade",
+	CbtSpamHit = "s_auto_hit",
+	CbtSpamMiss = "s_auto_miss",
 }
 
 AddRandomPoolAttackTargetSkill(RandPoolAtt)
@@ -119,20 +120,20 @@ DirectPoolAtt = {
 	requiredWeaponType = CARBINE,
 	
 	range = 65,
-	damageRatio = 1.6,
-	speedRatio = 2.0,
+	damageRatio = 3.3,
+	speedRatio = 2.2,
 	areaRange = 0,
 	accuracyBonus = 0,
 		
-	healthAttackChance = 100,
+	healthAttackChance = 80,
 	strengthAttackChance = 0,
 	constitutionAttackChance = 0,
 	
-	actionAttackChance = 100,
+	actionAttackChance = 90,
 	quicknessAttackChance = 0,
 	staminaAttackChance = 0,
 
-	mindAttackChance = 100,
+	mindAttackChance = 12,
 	focusAttackChance = 0,
 	willpowerAttackChance = 0,
 		
@@ -161,7 +162,7 @@ RandPoolAtt = {
 	requiredWeaponType = CARBINE,
 	
 	range = 65,
-	damageRatio = 3.50,
+	damageRatio = 2.3,
 	speedRatio = 2.0,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -171,7 +172,7 @@ RandPoolAtt = {
 	postureUpChance = 0,
 	dizzyChance = 0,
 	blindChance = 0,
-	stunChance = 20,
+	stunChance = 25,
 	intimidateChance = 0,
 	
 	CbtSpamBlock = "wildshot_block",
@@ -192,20 +193,20 @@ DirectPoolAtt = {
 	requiredWeaponType = CARBINE,
 	
 	range = 65,
-	damageRatio = 2.5,
+	damageRatio = 5.0,
 	speedRatio = 2.5,
 	areaRange = 0,
 	accuracyBonus = 0,
 		
-	healthAttackChance = 100,
+	healthAttackChance = 85,
 	strengthAttackChance = 0,
 	constitutionAttackChance = 0,
 	
-	actionAttackChance = 100,
+	actionAttackChance = 95,
 	quicknessAttackChance = 0,
 	staminaAttackChance = 0,
 
-	mindAttackChance = 100,
+	mindAttackChance = 20,
 	focusAttackChance = 0,
 	willpowerAttackChance = 0,
 		
@@ -216,11 +217,11 @@ DirectPoolAtt = {
 	stunChance = 0,
 	intimidateChance = 0,
 	
-	CbtSpamBlock = "scattershot_block",
-	CbtSpamCounter = "scattershot_counter",
-	CbtSpamEvade = "scattershot_evade",
-	CbtSpamHit = "scattershot_hit",
-	CbtSpamMiss = "scattershot_miss",
+	CbtSpamBlock = "scatterblast_block",
+	CbtSpamCounter = "scatterblast_counter",
+	CbtSpamEvade = "scatterblast_evade",
+	CbtSpamHit = "scatterblast_hit",
+	CbtSpamMiss = "scatterblast_miss",
 }
 
 AddDirectPoolAttackTargetSkill(DirectPoolAtt)
@@ -234,9 +235,9 @@ RandPoolAtt = {
 	requiredWeaponType = CARBINE,
 	
 	range = 65,
-	damageRatio = 4.50,
-	speedRatio = 2.50,
-	coneAngle = 60,
+	damageRatio = 3.0,
+	speedRatio = 2.5,
+	coneAngle = 30,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
@@ -244,14 +245,14 @@ RandPoolAtt = {
 	postureUpChance = 0,
 	dizzyChance = 0,
 	blindChance = 0,
-	stunChance = 20,
+	stunChance = 50,
 	intimidateChance = 0,
 	
-	CbtSpamBlock = "wildshot_block",
-	CbtSpamCounter = "wildshot_counter",
-	CbtSpamEvade = "wildshot_evade",
-	CbtSpamHit = "wildshot_hit",
-	CbtSpamMiss = "wildshot_miss",
+	CbtSpamBlock = "widewildshot_block",
+	CbtSpamCounter = "widewildshot_counter",
+	CbtSpamEvade = "widewildshot_evade",
+	CbtSpamHit = "widewildshot_hit",
+	CbtSpamMiss = "widewildshot_miss",
 }
 
 AddRandomPoolAttackTargetSkill(RandPoolAtt)
@@ -286,13 +287,13 @@ DirectPoolAtt = {
 	postureDownChance = 0,
 	dizzyChance = 0,
 	blindChance = 0,
-	stunChance = 0,
+	stunChance = 15,
 	
-	CbtSpamBlock = "legshot_block",
-	CbtSpamCounter = "legshot_counter",
-	CbtSpamEvade = "legshot_evade",
-	CbtSpamHit = "legshot_hit",
-	CbtSpamMiss = "legshot_miss",
+	CbtSpamBlock = "kneecapshot_block",
+	CbtSpamCounter = "kneecapshot_counter",
+	CbtSpamEvade = "kneecapshot_evade",
+	CbtSpamHit = "kneecapshot_hit",
+	CbtSpamMiss = "kneecapshot_miss",
 }
 
 AddDirectPoolAttackTargetSkill(DirectPoolAtt)
@@ -306,8 +307,8 @@ RandPoolAtt = {
 	requiredWeaponType = CARBINE,
 	
 	range = 65,
-	damageRatio = 7.50,
-	speedRatio = 2.50,
+	damageRatio = 5.0,
+	speedRatio = 2.5,
 	areaRange = 0,
 	accuracyBonus = 0,
 		
@@ -337,7 +338,7 @@ RandPoolAtt = {
 	requiredWeaponType = CARBINE,
 	
 	range = 65,
-	damageRatio = 6.0,
+	damageRatio = 3.0,
 	speedRatio = 2.0,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -368,9 +369,9 @@ RandPoolAtt = {
 	requiredWeaponType = CARBINE,
 	
 	range = 65,
-	damageRatio = 6.0,
+	damageRatio = 4.0,
 	speedRatio = 2.5,
-	coneAngle = 60,
+	coneAngle = 30,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
@@ -381,11 +382,11 @@ RandPoolAtt = {
 	stunChance = 0,
 	intimidateChance = 0,
 	
-	CbtSpamBlock = "burstshot_block",
-	CbtSpamCounter = "burstshot_counter",
-	CbtSpamEvade = "burstshot_evade",
-	CbtSpamHit = "burstshot_hit",
-	CbtSpamMiss = "burstshot_miss",
+	CbtSpamBlock = "burstblast_block",
+	CbtSpamCounter = "burstblast_counter",
+	CbtSpamEvade = "burstblast_evade",
+	CbtSpamHit = "burstblast_hit",
+	CbtSpamMiss = "burstblast_miss",
 }
 
 AddRandomPoolAttackTargetSkill(RandPoolAtt)
@@ -405,7 +406,7 @@ RandPoolAtt = {
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
-	postureDownChance = 40,
+	postureDownChance = 50,
 	postureUpChance = 0,
 	dizzyChance = 0,
 	blindChance = 0,
@@ -432,22 +433,22 @@ RandPoolAtt = {
 	range = 65,
 	damageRatio = 3.5,
 	speedRatio = 2.0,
-	coneAngle = 60,
+	coneAngle = 30,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
 	postureUpChance = 0,
-	dizzyChance = 10,
-	blindChance = 10,
-	stunChance = 10,
+	dizzyChance = 13,
+	blindChance = 13,
+	stunChance = 13,
 	intimidateChance = 0,
 	
-	CbtSpamBlock = "fullautoattack_block",
-	CbtSpamCounter = "fullautoattack_counter",
-	CbtSpamEvade = "fullautoattack_evade",
-	CbtSpamHit = "fullautoattack_hit",
-	CbtSpamMiss = "fullautoattack_miss",
+	CbtSpamBlock = "a_auto_block",
+	CbtSpamCounter = "a_auto_counter",
+	CbtSpamEvade = "a_auto_evade",
+	CbtSpamHit = "a_auto_hit",
+	CbtSpamMiss = "a_auto_miss",
 }
 
 AddRandomPoolAttackTargetSkill(RandPoolAtt)
@@ -466,7 +467,7 @@ RandPoolAtt = {
 	coneAngle = 0,
 	accuracyBonus = 0,
 		
-	knockdownChance = 20,
+	knockdownChance = 10,
 	postureDownChance = 0,
 	postureUpChance = 0,
 	dizzyChance = 0,
@@ -494,22 +495,22 @@ RandPoolAtt = {
 	range = 65,
 	damageRatio = 4.5,
 	speedRatio = 2.5,
-	coneAngle = 60,
+	coneAngle = 30,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
 	postureUpChance = 0,
-	dizzyChance = 10,
+	dizzyChance = 20,
 	blindChance = 20,
 	stunChance = 20,
 	intimidateChance = 0,
 	
-	CbtSpamBlock = "fullautoattack_block",
-	CbtSpamCounter = "fullautoattack_counter",
-	CbtSpamEvade = "fullautoattack_evade",
-	CbtSpamHit = "fullautoattack_hit",
-	CbtSpamMiss = "fullautoattack_miss",
+	CbtSpamBlock = "a_auto_block",
+	CbtSpamCounter = "a_auto_counter",
+	CbtSpamEvade = "a_auto_evade",
+	CbtSpamHit = "a_auto_hit",
+	CbtSpamMiss = "a_auto_miss",
 }
 
 AddRandomPoolAttackTargetSkill(RandPoolAtt)
@@ -525,7 +526,7 @@ RandPoolAtt = {
 	range = 65,
 	damageRatio = 3.7,
 	speedRatio = 3.0,
-	coneAngle = 60,
+	coneAngle = 30,
 	accuracyBonus = 0,
 		
 	knockdownChance = 40,
@@ -536,11 +537,11 @@ RandPoolAtt = {
 	stunChance = 0,
 	intimidateChance = 0,
 	
-	CbtSpamBlock = "chargeshot_block",
-	CbtSpamCounter = "chargeshot_counter",
-	CbtSpamEvade = "chargeshot_evade",
-	CbtSpamHit = "chargeshot_hit",
-	CbtSpamMiss = "chargeshot_miss",
+	CbtSpamBlock = "chargeblast_block",
+	CbtSpamCounter = "chargeblast_counter",
+	CbtSpamEvade = "chargeblast_evade",
+	CbtSpamHit = "chargeblast_hit",
+	CbtSpamMiss = "chargeblast_miss",
 }
 
 AddRandomPoolAttackTargetSkill(RandPoolAtt)
