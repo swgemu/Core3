@@ -45,7 +45,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = POLEARM,
 	
-	range = 11,
+	range = 5,
 	damageRatio = 2.5,
 	speedRatio = 2.0,
 	areaRange = 0,
@@ -76,7 +76,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = POLEARM,
 	
-	range = 11,
+	range = 5,
 	damageRatio = 2.0,
 	speedRatio = 2.0,
 	areaRange = 7,
@@ -107,7 +107,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = POLEARM,
 	
-	range = 11,
+	range = 5,
 	damageRatio = 2.5,
 	speedRatio = 3.0,
 	areaRange = 7,
@@ -138,7 +138,7 @@ DirectPoolAtt = {
 
 	requiredWeaponType = POLEARM,
 	
-	range = 11,
+	range = 5,
 	damageRatio = 2.0,
 	speedRatio = 2.0,
 	areaRange = 0,
@@ -180,7 +180,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = POLEARM,
 	
-	range = 11,
+	range = 5,
 	damageRatio = 2.0,
 	speedRatio = 2.2,
 	areaRange = 7,
@@ -211,7 +211,7 @@ DirectPoolAtt = {
 
 	requiredWeaponType = POLEARM,
 	
-	range = 11,
+	range = 5,
 	damageRatio = 2.5,
 	speedRatio = 3.0,
 	areaRange = 0,
@@ -253,7 +253,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = POLEARM,
 	
-	range = 11,
+	range = 5,
 	damageRatio = 2.75,
 	speedRatio = 3.0,
 	areaRange = 7,
@@ -284,7 +284,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = POLEARM,
 	
-	range = 11,
+	range = 5,
 	damageRatio = 2.0,
 	speedRatio = 1.5,
 	areaRange = 0,
@@ -315,7 +315,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = POLEARM,
 	
-	range = 11,
+	range = 5,
 	damageRatio = 2.5,
 	speedRatio = 3.0,
 	areaRange = 7,
@@ -346,7 +346,7 @@ DirectPoolAtt = {
 
 	requiredWeaponType = POLEARM,
 	
-	range = 11,
+	range = 5,
 	damageRatio = 1.0,
 	speedRatio = 2.0,
 	areaRange = 0,
@@ -388,7 +388,7 @@ DirectPoolAtt = {
 
 	requiredWeaponType = POLEARM,
 	
-	range = 11,
+	range = 5,
 	damageRatio = 2.0,
 	speedRatio = 3.0,
 	areaRange = 0,
@@ -430,7 +430,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = POLEARM,
 	
-	range = 11,
+	range = 5,
 	damageRatio = 4.0,
 	speedRatio = 3.0,
 	areaRange = 0,

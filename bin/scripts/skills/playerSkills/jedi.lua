@@ -97,7 +97,7 @@ ForceRandomPoolAtt = {
 
 	requiredWeaponType = JEDI,
 
-	range = 11,
+	range = 5,
 	coneAngle = 40,
 	damageRatio = 2.5,
 	speedRatio = 1.5,
@@ -157,7 +157,7 @@ DotPoolAtt = {
 
 	requiredWeaponType = JEDI,
 	
-	range = 11,
+	range = 5,
 	damageRatio = 1.0,
 	speedRatio = 2.0,
 	areaRange = 0,

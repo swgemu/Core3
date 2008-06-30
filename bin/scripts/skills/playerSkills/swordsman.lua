@@ -45,7 +45,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = TWOHANDED,
 	
-	range = 8,
+	range = 5,
 	damageRatio = 3.0,
 	speedRatio = 2.25,
 	areaRange = 0,
@@ -76,7 +76,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = TWOHANDED,
 	
-	range = 8,
+	range = 5,
 	damageRatio = 2.0,
 	speedRatio = 2.3,
 	areaRange = 7,
@@ -107,7 +107,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = TWOHANDED,
 	
-	range = 8,
+	range = 5,
 	damageRatio = 3.0,
 	speedRatio = 2.4,
 	areaRange = 7,
@@ -138,7 +138,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = TWOHANDED,
 	
-	range = 8,
+	range = 5,
 	damageRatio = 3.0,
 	speedRatio = 2.6,
 	areaRange = 7,
@@ -169,7 +169,7 @@ DirectPoolAtt = {
 
 	requiredWeaponType = TWOHANDED,
 	
-	range = 8,
+	range = 5,
 	damageRatio = 2.5,
 	speedRatio = 2.3,
 	areaRange = 0,
@@ -211,7 +211,7 @@ DirectPoolAtt = {
 
 	requiredWeaponType = TWOHANDED,
 	
-	range = 8,
+	range = 5,
 	damageRatio = 3.5,
 	speedRatio = 2.5,
 	areaRange = 0,
@@ -253,7 +253,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = TWOHANDED,
 	
-	range = 8,
+	range = 5,
 	damageRatio = 3.0,
 	speedRatio = 2.3,
 	areaRange = 7,
@@ -284,7 +284,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = TWOHANDED,
 	
-	range = 8,
+	range = 5,
 	damageRatio = 2.0,
 	speedRatio = 2.5,
 	areaRange = 7,
@@ -315,7 +315,7 @@ DirectPoolAtt = {
 
 	requiredWeaponType = TWOHANDED,
 	
-	range = 8,
+	range = 5,
 	damageRatio = 1.0,
 	speedRatio = 2.3,
 	areaRange = 0,
@@ -357,7 +357,7 @@ DirectPoolAtt = {
 
 	requiredWeaponType = TWOHANDED,
 	
-	range = 11,
+	range = 5,
 	damageRatio = 2.0,
 	speedRatio = 2.5,
 	areaRange = 0,
@@ -399,7 +399,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = TWOHANDED,
 	
-	range = 8,
+	range = 5,
 	damageRatio = 4.0,
 	speedRatio = 3.25,
 	areaRange = 0,

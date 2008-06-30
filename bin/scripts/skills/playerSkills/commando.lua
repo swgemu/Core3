@@ -45,7 +45,7 @@ DotPoolAtt = {
 
 	requiredWeaponType = RIFLEFLAMETHROWER,
 	
-	range = 45,
+	range = 64,
 	damageRatio = 5,
 	speedRatio = 4,
 	areaRange = 0,
@@ -86,7 +86,7 @@ DotPoolAtt = {
 
 	requiredWeaponType = RIFLEFLAMETHROWER,
 	
-	range = 45,
+	range = 64,
 	damageRatio = 5,
 	speedRatio = 4,
 	coneAngle = 30,
@@ -127,7 +127,7 @@ DotPoolAtt = {
 
 	requiredWeaponType = RIFLEFLAMETHROWER,
 	
-	range = 45,
+	range = 64,
 	damageRatio = 8,
 	speedRatio = 4,
 	coneAngle = 0,
@@ -168,7 +168,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = RANGED,
 	
-	range = 45,
+	range = 64,
 	damageRatio = 1.25,
 	speedRatio = 1.25,
 	coneAngle = 0,
@@ -199,7 +199,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = RANGED,
 	
-	range = 45,
+	range = 64,
 	damageRatio = 1.25,
 	speedRatio = 1.25,
 	coneAngle = 30,
@@ -230,7 +230,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = RANGED,
 	
-	range = 45,
+	range = 64,
 	damageRatio = 1.25,
 	speedRatio = 1.25,
 	areaRange = 0,
@@ -261,7 +261,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = RANGED,
 	
-	range = 45,
+	range = 64,
 	damageRatio = 1.25,
 	speedRatio = 1.25,
 	coneAngle = 60,
@@ -292,7 +292,7 @@ DotPoolAtt = {
 
 	requiredWeaponType = RIFLEFLAMETHROWER,
 	
-	range = 45,
+	range = 64,
 	damageRatio = 6,
 	speedRatio = 4,
 	coneAngle = 60,

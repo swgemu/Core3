@@ -45,7 +45,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = ONEHANDED,
 	
-	range = 11,
+	range = 5,
 	damageRatio = 3.5,
 	speedRatio = 1.25,
 	areaRange = 0,
@@ -76,7 +76,7 @@ DirectPoolAtt = {
 
 	requiredWeaponType = ONEHANDED,
 	
-	range = 11,
+	range = 5,
 	damageRatio = 2.25,
 	speedRatio = 1.25,
 	areaRange = 0,
@@ -119,7 +119,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = ONEHANDED,
 	
-	range = 11,
+	range = 5,
 	damageRatio = 2.5,
 	speedRatio = 1.8,
 	areaRange = 7,
@@ -150,7 +150,7 @@ DirectPoolAtt = {
 
 	requiredWeaponType = ONEHANDED,
 	
-	range = 11,
+	range = 5,
 	damageRatio = 4.0,
 	speedRatio = 2.0,
 	areaRange = 0,
@@ -194,7 +194,7 @@ DotPoolAtt = {
 
 	requiredWeaponType = ONEHANDED,
 	
-	range = 11,
+	range = 5,
 	damageRatio = 1.5,
 	speedRatio = 1.45,
 	areaRange = 0,
@@ -236,7 +236,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = ONEHANDED,
 	
-	range = 11,
+	range = 5,
 	damageRatio = 4.0,
 	speedRatio = 1.45,
 	areaRange = 7,
@@ -268,7 +268,7 @@ DotPoolAtt = {
 
 	requiredWeaponType = ONEHANDED,
 	
-	range = 11,
+	range = 5,
 	damageRatio = 3.0,
 	speedRatio = 1.45,
 	areaRange = 0,
@@ -310,7 +310,7 @@ DirectPoolAtt = {
 
 	requiredWeaponType = ONEHANDED,
 	
-	range = 11,
+	range = 5,
 	damageRatio = 2.5,
 	speedRatio = 1.45,
 	areaRange = 0,
@@ -352,7 +352,7 @@ DirectPoolAtt = {
 
 	requiredWeaponType = ONEHANDED,
 	
-	range = 11,
+	range = 5,
 	damageRatio = 3.5,
 	speedRatio = 1.45,
 	areaRange = 0,
@@ -394,7 +394,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = ONEHANDED,
 	
-	range = 11,
+	range = 5,
 	damageRatio = 2.0,
 	speedRatio = 1.45,
 	areaRange = 7,
@@ -425,7 +425,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = ONEHANDED,
 	
-	range = 11,
+	range = 5,
 	damageRatio = 2.5,
 	speedRatio = 1.45,
 	areaRange = 7,
@@ -456,7 +456,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = ONEHANDED,
 	
-	range = 11,
+	range = 5,
 	damageRatio = 5.25,
 	speedRatio = 2.0,
 	areaRange = 0,
@@ -480,6 +480,7 @@ RandPoolAtt = {
 AddRandomPoolAttackTargetSkill(RandPoolAtt)
 
 -----------------------------------------------------------------------
+
 
 
 

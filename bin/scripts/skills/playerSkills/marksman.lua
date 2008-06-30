@@ -275,7 +275,7 @@ DirectPoolAtt = {
 
 	requiredWeaponType = PISTOL,
 	
-	range = 65,
+	range = 32,
 	damageRatio = 1.15,
 	speedRatio = 1.20,
 	areaRange = 0,
@@ -317,7 +317,7 @@ DirectPoolAtt = {
 
 	requiredWeaponType = PISTOL,
 	
-	range = 65,
+	range = 32,
 	damageRatio = 2.1,
 	speedRatio = 1.8,
 	areaRange = 0,
@@ -359,7 +359,7 @@ DotPoolAtt = {
 
 	requiredWeaponType = PISTOL,
 	
-	range = 65,
+	range = 32,
 	damageRatio = 1.25,
 	speedRatio = 1.25,
 	areaRange = 0,
@@ -409,7 +409,7 @@ DirectPoolAtt = {
 
 	requiredWeaponType = CARBINE,
 	
-	range = 65,
+	range = 50,
 	damageRatio = 1.15,
 	speedRatio = 1.05,
 	areaRange = 0,
@@ -451,7 +451,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = CARBINE,
 	
-	range = 65,
+	range = 50,
 	damageRatio = 1.35,
 	speedRatio = 1.15,
 	areaRange = 0,
@@ -494,7 +494,7 @@ DirectPoolAtt = {
 
 	requiredWeaponType = CARBINE,
 	
-	range = 65,
+	range = 50,
 	damageRatio = 2.5,
 	speedRatio = 1.5,
 	areaRange = 0,
@@ -536,7 +536,7 @@ DotPoolAtt = {
 
 	requiredWeaponType = CARBINE,
 	
-	range = 65,
+	range = 50,
 	damageRatio = 1.5,
 	speedRatio = 1.6,
 	areaRange = 0,
@@ -733,6 +733,7 @@ RandPoolAtt = {
 }
 
 AddRandomPoolAttackTargetSkill(RandPoolAtt)
+
 
 
 
