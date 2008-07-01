@@ -662,7 +662,7 @@ public:
 		playerObject->updateWaypoint(wp);
 	}
 
-	void launchFirework();
+	void launchFirework(int animationType);
 
 	// packet methods
 	void sendMessage(BaseMessage* msg);

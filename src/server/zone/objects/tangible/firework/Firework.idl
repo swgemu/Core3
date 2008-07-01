@@ -47,10 +47,13 @@ import "../../player/Player";
 import "../TangibleObject";
 
 interface Firework implements TangibleObject {
-	Firework(Player player, unsigned int tempCRC, const unicode n, const string tempn) {
+	Firework(Player player, unsigned int tempCRC, const unicode n, const string tempn, int anim) {
 		super(unsigned long oid, int tp);
 	}
 
 	int useObject(Player player);
 }
+
+
+
 

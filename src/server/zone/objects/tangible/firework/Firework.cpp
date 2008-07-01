@@ -14,8 +14,8 @@
  *	FireworkStub
  */
 
-Firework::Firework(Player* player, unsigned int tempCRC, const unicode& n, const string& tempn) : TangibleObject(DummyConstructorParameter::instance()) {
-	_impl = new FireworkImplementation(player, tempCRC, n, tempn);
+Firework::Firework(Player* player, unsigned int tempCRC, const unicode& n, const string& tempn, int anim) : TangibleObject(DummyConstructorParameter::instance()) {
+	_impl = new FireworkImplementation(player, tempCRC, n, tempn, anim);
 	_impl->_setStub(this);
 }
 
@@ -113,4 +113,5 @@ void FireworkServant::_setStub(DistributedObjectStub* stub) {
 DistributedObjectStub* FireworkServant::_getStub() {
 	return _this;
 }
+
 

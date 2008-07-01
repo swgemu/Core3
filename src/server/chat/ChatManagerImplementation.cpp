@@ -1285,7 +1285,7 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 				message << " Willpower:  " << player->getWillpower() << "/" << player->getWillpowerMax() << "/" << player->getBaseWillpower() << ".";
 				
 				player->sendSystemMessage(message.str());
-			}		
+			}
 		} else if (cmd == "@buff") {
 				if (player->getHealthMax() == player->getBaseHealth()) {
 
@@ -1590,10 +1590,48 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 
 				item->sendTo(player);
 			} else if (userManager->isAdmin(player->getFirstName())&& itemType == "Firework") {
-				Firework* item = new Firework(player, 0x7C540DEB, unicode("a Firework"), "object/tangible/firework/shared_firework_s04.iff");
-				player->addInventoryItem(item);
+				if (tokenizer.hasMoreTokens()) {
+					int fwAniType = tokenizer.getIntToken();
+					
+					Firework* item;
+					switch(fwAniType) {				
+					//Firework diff. animation
+					case 1:
+						item = new Firework(player, 0x7C540DEB, unicode("a Firework Type-4"), "object/tangible/firework/shared_firework_s04.iff",1);
+						break;					
+					case 2:
+						item = new Firework(player, 0x15ADE9E5, unicode("a Firework Type-1"), "object/tangible/firework/shared_firework_s01.iff",2);
+						break;					
+					case 3:
+						item = new Firework(player, 0xCEBA4172, unicode("a Firework Type-2"), "object/tangible/firework/shared_firework_s02.iff",3);
+						break;					
+					case 4:
+						item = new Firework(player, 0x87B726FF, unicode("a Firework Type-3"), "object/tangible/firework/shared_firework_s03.iff",4);
+						break;					
+					case 5:
+						item = new Firework(player, 0x35596A66, unicode("a Firework Type-5"), "object/tangible/firework/shared_firework_s05.iff",5);
+						break;					
+					case 6:
+						item = new Firework(player, 0x47888310, unicode("a Firework Type-6"), "object/tangible/firework/shared_firework_s10.iff",6);
+						break;					
+					case 7:
+						item = new Firework(player, 0xE85E49D, unicode("a Firework Type-7"), "object/tangible/firework/shared_firework_s11.iff",7);
+						break;					
+					case 8:
+						item = new Firework(player, 0x6618416, unicode("a Firework Type-8"), "object/tangible/firework/shared_firework_s18.iff",8);
+						break;									
+					default:
+						player->sendSystemMessage("Useage: @giveItemTemp Firework <1-8>");
+						return;
+					}
+					
+					player->addInventoryItem(item);
+					item->sendTo(player);
+
+				} else {
+					player->sendSystemMessage("Please submit the Firework animation (1-8).");
+				}				
 				
-				item->sendTo(player);
 			} else if (userManager->isAdmin(player->getFirstName())&& itemType == "AA") {
 				Attachment* item = new Attachment(player->getNewItemID(), AttachmentImplementation::ARMOR);
 				item->setSkillMods(System::random(500));
@@ -2185,6 +2223,9 @@ void ChatManagerImplementation::destroyRoom(ChatRoom* room) {
 	
 	room->finalize();
 }
+
+
+
 
 
 

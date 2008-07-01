@@ -21,6 +21,8 @@ public:
 
 	int getFireworkType();
 
+	int setFireworkObject(int crc);
+
 protected:
 	FireworkWorld(DummyConstructorParameter* param);
 
@@ -38,6 +40,8 @@ public:
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	int getFireworkType();
+
+	int setFireworkObject(int crc);
 
 };
 

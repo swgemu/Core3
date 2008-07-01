@@ -42,6 +42,19 @@ int FireworkWorld::getFireworkType() {
 		return ((FireworkWorldImplementation*) _impl)->getFireworkType();
 }
 
+int FireworkWorld::setFireworkObject(int crc) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
+		method.addSignedIntParameter(crc);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((FireworkWorldImplementation*) _impl)->setFireworkObject(crc);
+}
+
 /*
  *	FireworkWorldAdapter
  */
@@ -56,6 +69,9 @@ Packet* FireworkWorldAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 	case 6:
 		resp->insertSignedInt(getFireworkType());
 		break;
+	case 7:
+		resp->insertSignedInt(setFireworkObject(inv->getSignedIntParameter()));
+		break;
 	default:
 		return NULL;
 	}
@@ -65,6 +81,10 @@ Packet* FireworkWorldAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 
 int FireworkWorldAdapter::getFireworkType() {
 	return ((FireworkWorldImplementation*) impl)->getFireworkType();
+}
+
+int FireworkWorldAdapter::setFireworkObject(int crc) {
+	return ((FireworkWorldImplementation*) impl)->setFireworkObject(crc);
 }
 
 /*
@@ -117,4 +137,5 @@ void FireworkWorldServant::_setStub(DistributedObjectStub* stub) {
 DistributedObjectStub* FireworkWorldServant::_getStub() {
 	return _this;
 }
+
 

@@ -316,7 +316,7 @@ interface Player implements CreatureObject {
 
 	unsigned long getTradeRequestedPlayer();
 	
-	void launchFirework();
+	void launchFirework(int anim);
 	
 	void sendMessage(BaseMessage msg);
 	void sendMessage(StandaloneBaseMessage msg);

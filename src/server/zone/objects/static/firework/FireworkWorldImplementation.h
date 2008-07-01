@@ -52,7 +52,7 @@ which carries forward this exception.
 class FireworkWorldImplementation : public FireworkWorldServant {
 protected:
 	int fireworkType;
-
+	int animationType;
 		
 public:
 	static const int TESTA = 1;
@@ -61,11 +61,12 @@ public:
 public:
 	FireworkWorldImplementation(Player* player, int type = 1) 
 			: FireworkWorldServant(player->getNewItemID(), FIREWORK) {
-			
-		objectCRC = 0xBD7F7602;
 		
 		fireworkType = type;
-
+				
+		//Default animation object, can be overridden with the setter
+		objectCRC = 0xBD7F7602;
+		
 		initializePosition(player->getPositionX(), player->getPositionZ(), player->getPositionY());
 	}
 	
@@ -73,6 +74,11 @@ public:
 		return fireworkType;
 	}
 
+	//Setter
+	inline int setFireworkObject(int crc) {
+		objectCRC = crc;
+		return 0;
+	}
 };
 
 #endif /*FIREWORKWORLDIMPLEMENTATION_H_*/

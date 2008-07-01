@@ -931,7 +931,7 @@ void LootManager::createJunkLoot(Creature* creature) {
 		break;
 	case 11 :
 		item = new Firework((Player*) creature, 0x7C540DEB, 
-				unicode("a Firework"), "object/tangible/firework/shared_firework_s04.iff");
+				unicode("a Firework"), "object/tangible/firework/shared_firework_s04.iff",1);
 		break;
 	case 12 :
 		item = new Holocron((Player*) creature, 0x9BA06548, 

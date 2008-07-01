@@ -3087,9 +3087,40 @@ void PlayerImplementation::sendSampleTimeRemaining() {
 	sendMessage(sysMessage);
 }
 
-void PlayerImplementation::launchFirework() {
+void PlayerImplementation::launchFirework(int animationType) {
 	//Create the firework in the world.
 	FireworkWorld* firework = new FireworkWorld(_this);
+	
+	switch (animationType) {
+		case 1:
+			firework->setFireworkObject(0xEF5A1CF7);
+			break;
+		case 2:
+			firework->setFireworkObject(0x344DB460);
+			break;
+		case 3:
+			firework->setFireworkObject(0x7D40D3ED);
+			break;
+		case 4:
+			firework->setFireworkObject(0x86A3F8F9);
+			break;
+		case 5:
+			firework->setFireworkObject(0xCFAE9F74);
+			break;
+		case 6:
+			firework->setFireworkObject(0xF472118F);
+			break;
+		case 7:
+			firework->setFireworkObject(0xFC967104);
+			break;
+		case 8:
+			firework->setFireworkObject(0xBD7F7602);
+			break;
+		default:  
+			firework->setFireworkObject(0xBD7F7602);
+			break;
+	}		
+		
 	firework->setZoneProcessServer(server);
 	firework->setDirection(0, 0, -0.64, 0.76);
 
@@ -3120,6 +3151,7 @@ void PlayerImplementation::launchFirework() {
 
 	firework->finalize();		
 }
+
 
 int PlayerImplementation::getSlicingAbility() {
 	string txt0 = "combat_smuggler_novice";

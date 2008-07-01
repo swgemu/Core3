@@ -56,4 +56,6 @@ interface FireworkWorld implements StaticObject {
 	}
 	
 	int getFireworkType();
+	
+	int setFireworkObject(int crc);
 }

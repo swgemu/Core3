@@ -1756,16 +1756,17 @@ unsigned long long Player::getTradeRequestedPlayer() {
 		return ((PlayerImplementation*) _impl)->getTradeRequestedPlayer();
 }
 
-void Player::launchFirework() {
+void Player::launchFirework(int anim) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 136);
+		method.addSignedIntParameter(anim);
 
 		method.executeWithVoidReturn();
 	} else
-		((PlayerImplementation*) _impl)->launchFirework();
+		((PlayerImplementation*) _impl)->launchFirework(anim);
 }
 
 void Player::sendMessage(BaseMessage* msg) {
@@ -3278,7 +3279,7 @@ Packet* PlayerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertLong(getTradeRequestedPlayer());
 		break;
 	case 136:
-		launchFirework();
+		launchFirework(inv->getSignedIntParameter());
 		break;
 	case 137:
 		sendMessage((BaseMessage*) inv->getObjectParameter());
@@ -4071,8 +4072,8 @@ unsigned long long PlayerAdapter::getTradeRequestedPlayer() {
 	return ((PlayerImplementation*) impl)->getTradeRequestedPlayer();
 }
 
-void PlayerAdapter::launchFirework() {
-	return ((PlayerImplementation*) impl)->launchFirework();
+void PlayerAdapter::launchFirework(int anim) {
+	return ((PlayerImplementation*) impl)->launchFirework(anim);
 }
 
 void PlayerAdapter::sendMessage(BaseMessage* msg) {
@@ -4477,4 +4478,5 @@ void PlayerServant::_setStub(DistributedObjectStub* stub) {
 DistributedObjectStub* PlayerServant::_getStub() {
 	return _this;
 }
+
 

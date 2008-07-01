@@ -15,7 +15,7 @@ class TangibleObject;
 
 class Firework : public TangibleObject {
 public:
-	Firework(Player* player, unsigned int tempCRC, const unicode& n, const string& tempn);
+	Firework(Player* player, unsigned int tempCRC, const unicode& n, const string& tempn, int anim);
 
 	int useObject(Player* player);
 

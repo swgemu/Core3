@@ -52,11 +52,14 @@ which carries forward this exception.
 class FireworkImplementation : public FireworkServant {
 protected:
 	Player* ply;
+	int animationType;
 	
 public:
-	FireworkImplementation(Player* player, uint32 tempCRC, const unicode& n, const string& tempn) 
+	FireworkImplementation(Player* player, uint32 tempCRC, const unicode& n, const string& tempn, int anim) 
 			: FireworkServant(player->getNewItemID(), FIREWORK) {
+		
 		objectCRC = tempCRC;
+		animationType = anim;
 		
 		name = n;
 	    
@@ -68,17 +71,19 @@ public:
 		
 	}
 	
+	int getAnimation() {
+		return animationType;
+	}
+	
 	int useObject(Player* player) {
 		player->sendSystemMessage("Launching Firework...");
 		
 		//first remove the firework from the inventory
-
 		_this->sendDestroyTo(player);
-		
 		player->removeInventoryItem(objectID);
 		
 		//now we launch it.
-		player->launchFirework();
+		player->launchFirework(animationType);
 		
 		return 0;
 	}
