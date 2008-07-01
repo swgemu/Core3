@@ -48,7 +48,7 @@ RandPoolAtt = {
 	requiredWeaponType = RANGED,
 	
 	range = 65,
-	damageRatio = 2.25,
+	damageRatio = 5.0,
 	speedRatio = 2.0,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -142,8 +142,8 @@ DirectPoolAtt = {
 	requiredWeaponType = RIFLE,
 	
 	range = 65,
-	damageRatio = 1.15,
-	speedRatio = 1.05,
+	damageRatio = 1.5,
+	speedRatio = 1.5,
 	areaRange = 0,
 	accuracyBonus = 0,
 
@@ -184,8 +184,8 @@ DirectPoolAtt = {
 	requiredWeaponType = RIFLE,
 	
 	range = 65,
-	damageRatio = 1.70,
-	speedRatio = 1.20,
+	damageRatio = 2.5,
+	speedRatio = 1.75,
 	areaRange = 0,
 	accuracyBonus = 0,
 
@@ -227,7 +227,7 @@ DotPoolAtt = {
 	
 	range = 65,
 	damageRatio = 1.50,
-	speedRatio = 1.20,
+	speedRatio = 1.80,
 	areaRange = 0,
 	accuracyBonus = 0,
 
@@ -239,9 +239,9 @@ DotPoolAtt = {
 	quicknessAttackChance = 0,
 	staminaAttackChance = 0,
 
-	mindAttackChance = 100,
-	focusAttackChance = 0,
-	willpowerAttackChance = 0,
+	mindAttackChance = 50,
+	focusAttackChance = 25,
+	willpowerAttackChance = 25,
 		
 	dotChance = 30,
 	tickStrengthOfHit = 1,
@@ -276,8 +276,8 @@ DirectPoolAtt = {
 	requiredWeaponType = PISTOL,
 	
 	range = 32,
-	damageRatio = 1.15,
-	speedRatio = 1.20,
+	damageRatio = 1.5,
+	speedRatio = 1.2,
 	areaRange = 0,
 	accuracyBonus = 0,
 
@@ -360,14 +360,14 @@ DotPoolAtt = {
 	requiredWeaponType = PISTOL,
 	
 	range = 32,
-	damageRatio = 1.25,
-	speedRatio = 1.25,
+	damageRatio = 2.0,
+	speedRatio = 1.0,
 	areaRange = 0,
 	accuracyBonus = 0,
 
-	healthAttackChance = 100,
-	strengthAttackChance = 0,
-	constitutionAttackChance = 0,
+	healthAttackChance = 50,
+	strengthAttackChance = 25,
+	constitutionAttackChance = 25,
 
 	actionAttackChance = 0,
 	quicknessAttackChance = 0,
@@ -410,8 +410,8 @@ DirectPoolAtt = {
 	requiredWeaponType = CARBINE,
 	
 	range = 50,
-	damageRatio = 1.15,
-	speedRatio = 1.05,
+	damageRatio = 1.45,
+	speedRatio = 1.5,
 	areaRange = 0,
 	accuracyBonus = 0,
 
@@ -457,11 +457,11 @@ RandPoolAtt = {
 	areaRange = 0,
 	accuracyBonus = 0,
 		
-	healthAttackChance = 30,
+	healthAttackChance = 40,
 	strengthAttackChance = 0,
 	constitutionAttackChance = 0,
 
-	actionAttackChance = 50,
+	actionAttackChance = 55,
 	quicknessAttackChance = 0,
 	staminaAttackChance = 0,
 
@@ -472,9 +472,9 @@ RandPoolAtt = {
 	knockdownChance = 0,
 	postureDownChance = 0,
 	postureUpChance = 0,
-	dizzyChance = 0,
-	blindChance = 0,
-	stunChance = 0,
+	dizzyChance = 30,
+	blindChance = 30,
+	stunChance = 30,
 	intimidateChance = 0,
 	
 	CbtSpamBlock = "multishot_block",
@@ -495,7 +495,7 @@ DirectPoolAtt = {
 	requiredWeaponType = CARBINE,
 	
 	range = 50,
-	damageRatio = 2.5,
+	damageRatio = 3.0,
 	speedRatio = 1.5,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -543,7 +543,11 @@ DotPoolAtt = {
 	accuracyBonus = 0,
 
 	healthAttackChance = 0,
-	actionAttackChance = 100,
+	
+	actionAttackChance = 50,
+	quicknessAttackChance = 25,
+	staminaAttackChance = 25,
+	
 	mindAttackChance = 0,
 
 	dotChance = 30,
@@ -687,7 +691,7 @@ RandPoolAtt = {
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
-	postureDownChance = 20,
+	postureDownChance = 33,
 	postureUpChance = 0,
 	dizzyChance = 0,
 	blindChance = 0,
@@ -712,7 +716,7 @@ RandPoolAtt = {
 	requiredWeaponType = RANGED,
 	
 	range = 65,
-	damageRatio = 5.0,
+	damageRatio = 5.3,
 	speedRatio = 2.0,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -731,7 +735,6 @@ RandPoolAtt = {
 	CbtSpamHit = "fullchargeshot_hit",
 	CbtSpamMiss = "fullchargeshot_miss",
 }
-
 AddRandomPoolAttackTargetSkill(RandPoolAtt)
 
 
