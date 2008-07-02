@@ -54,6 +54,10 @@ which carries forward this exception.
 
 #include "PlayerObjectImplementation.h"
 
+#include "FriendsList.h"
+
+#include "FriendsListImplementation.h"
+
 PlayerObjectImplementation::PlayerObjectImplementation(Player* pl) : SceneObjectImplementation(pl->getObjectID() + 0x0C) {
 	player = pl;
 	
@@ -79,6 +83,8 @@ PlayerObjectImplementation::PlayerObjectImplementation(Player* pl) : SceneObject
 	foodFillingMax = 100;
 	
 	characterBitmask = ANONYMOUS;
+
+	friendsList = new FriendsList(player);
 }
 
 PlayerObjectImplementation::~PlayerObjectImplementation() {

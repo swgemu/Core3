@@ -70,6 +70,7 @@ core3_IDLS =	server/zone/Zone.cpp \
 		server/zone/objects/creature/recruiter/RecruiterCreature.cpp \
 		server/zone/objects/creature/mount/MountCreature.cpp \
 		server/zone/objects/player/Player.cpp \
+                server/zone/objects/player/FriendsList.cpp \
 		server/zone/objects/player/PlayerObject.cpp \
 		server/zone/objects/player/sui/SuiBox.cpp \
 		server/zone/objects/player/sui/listbox/SuiListBox.cpp \

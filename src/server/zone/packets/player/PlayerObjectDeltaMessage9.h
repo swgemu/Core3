@@ -52,6 +52,8 @@ which carries forward this exception.
 
 #include "../../objects/draftschematic/DraftSchematic.h"
 
+#include "../../objects/player/FriendsList.h"
+
 class PlayerObjectDeltaMessage9 : public DeltaMessage {
 	PlayerObject* play;
 	
@@ -109,6 +111,26 @@ public:
 	void setExperimentationPoints(int points){
 		startUpdate(5);
 		insertInt(points); // Number of experimentation points
+	}
+	
+
+	void updateFriendList(){
+		
+		FriendsList* friendsList = play->getFriendsList();
+		
+		startUpdate(7);
+		insertInt(friendsList->getCount() + 1); // Size of friends list + 1
+		insertInt(100); // Dunno - Some number - always changes
+		insertByte(3); // Dunno - seems to be 3 always
+		
+		insertShort(friendsList->getCount());
+		
+		for(int i = 0; i < friendsList->getCount(); ++i){
+			
+
+			insertAscii(friendsList->getFriendsName(i));
+			
+		}
 	}
 	
 	void updateSkilsAndCertifications() {

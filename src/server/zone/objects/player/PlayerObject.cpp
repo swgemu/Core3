@@ -12,6 +12,8 @@
 
 #include "Player.h"
 
+#include "FriendsList.h"
+
 #include "../waypoint/WaypointObject.h"
 
 /*
@@ -573,6 +575,45 @@ unsigned int PlayerObject::getNewWaypointListCount(int cnt) {
 		return ((PlayerObjectImplementation*) _impl)->getNewWaypointListCount(cnt);
 }
 
+FriendsList* PlayerObject::getFriendsList() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 48);
+
+		return (FriendsList*) method.executeWithObjectReturn();
+	} else
+		return ((PlayerObjectImplementation*) _impl)->getFriendsList();
+}
+
+void PlayerObject::addFriend(string& name, string& inServer) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 49);
+		method.addAsciiParameter(name);
+		method.addAsciiParameter(inServer);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerObjectImplementation*) _impl)->addFriend(name, inServer);
+}
+
+void PlayerObject::removeFriend(string& name) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 50);
+		method.addAsciiParameter(name);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerObjectImplementation*) _impl)->removeFriend(name);
+}
+
 /*
  *	PlayerObjectAdapter
  */
@@ -709,6 +750,15 @@ Packet* PlayerObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		break;
 	case 47:
 		resp->insertInt(getNewWaypointListCount(inv->getSignedIntParameter()));
+		break;
+	case 48:
+		resp->insertLong(getFriendsList()->_getObjectID());
+		break;
+	case 49:
+		addFriend(inv->getAsciiParameter(_param0_addFriend__string_string_), inv->getAsciiParameter(_param1_addFriend__string_string_));
+		break;
+	case 50:
+		removeFriend(inv->getAsciiParameter(_param0_removeFriend__string_));
 		break;
 	default:
 		return NULL;
@@ -883,6 +933,18 @@ unsigned int PlayerObjectAdapter::getWaypointListCount() {
 
 unsigned int PlayerObjectAdapter::getNewWaypointListCount(int cnt) {
 	return ((PlayerObjectImplementation*) impl)->getNewWaypointListCount(cnt);
+}
+
+FriendsList* PlayerObjectAdapter::getFriendsList() {
+	return ((PlayerObjectImplementation*) impl)->getFriendsList();
+}
+
+void PlayerObjectAdapter::addFriend(string& name, string& inServer) {
+	return ((PlayerObjectImplementation*) impl)->addFriend(name, inServer);
+}
+
+void PlayerObjectAdapter::removeFriend(string& name) {
+	return ((PlayerObjectImplementation*) impl)->removeFriend(name);
 }
 
 /*

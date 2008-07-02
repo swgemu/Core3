@@ -95,7 +95,7 @@ am__objects_1 = Zone.$(OBJEXT) ZoneClient.$(OBJEXT) \
 	CreatureGroup.$(OBJEXT) ShuttleCreature.$(OBJEXT) \
 	TrainerCreature.$(OBJEXT) BlueFrogCreature.$(OBJEXT) \
 	BlueFrogVector.$(OBJEXT) RecruiterCreature.$(OBJEXT) \
-	MountCreature.$(OBJEXT) Player.$(OBJEXT) \
+	MountCreature.$(OBJEXT) Player.$(OBJEXT) FriendsList.$(OBJEXT) \
 	PlayerObject.$(OBJEXT) SuiBox.$(OBJEXT) SuiListBox.$(OBJEXT) \
 	SuiMessageBox.$(OBJEXT) SuiInputBox.$(OBJEXT) \
 	SuiTransferBox.$(OBJEXT) SuiBankTransferBox.$(OBJEXT) \
@@ -341,6 +341,7 @@ core3_IDLS = server/zone/Zone.cpp \
 		server/zone/objects/creature/recruiter/RecruiterCreature.cpp \
 		server/zone/objects/creature/mount/MountCreature.cpp \
 		server/zone/objects/player/Player.cpp \
+                server/zone/objects/player/FriendsList.cpp \
 		server/zone/objects/player/PlayerObject.cpp \
 		server/zone/objects/player/sui/SuiBox.cpp \
 		server/zone/objects/player/sui/listbox/SuiListBox.cpp \
@@ -631,6 +632,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/DraftSchematicValues.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Firework.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/FireworkWorld.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/FriendsList.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/GroupManager.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/GroupObject.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/GroupObjectImplementation.Po@am__quote@
@@ -994,6 +996,20 @@ Player.obj: server/zone/objects/player/Player.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/player/Player.cpp' object='Player.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o Player.obj `if test -f 'server/zone/objects/player/Player.cpp'; then $(CYGPATH_W) 'server/zone/objects/player/Player.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/player/Player.cpp'; fi`
+
+FriendsList.o: server/zone/objects/player/FriendsList.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT FriendsList.o -MD -MP -MF $(DEPDIR)/FriendsList.Tpo -c -o FriendsList.o `test -f 'server/zone/objects/player/FriendsList.cpp' || echo '$(srcdir)/'`server/zone/objects/player/FriendsList.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/FriendsList.Tpo $(DEPDIR)/FriendsList.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/player/FriendsList.cpp' object='FriendsList.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o FriendsList.o `test -f 'server/zone/objects/player/FriendsList.cpp' || echo '$(srcdir)/'`server/zone/objects/player/FriendsList.cpp
+
+FriendsList.obj: server/zone/objects/player/FriendsList.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT FriendsList.obj -MD -MP -MF $(DEPDIR)/FriendsList.Tpo -c -o FriendsList.obj `if test -f 'server/zone/objects/player/FriendsList.cpp'; then $(CYGPATH_W) 'server/zone/objects/player/FriendsList.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/player/FriendsList.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/FriendsList.Tpo $(DEPDIR)/FriendsList.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/player/FriendsList.cpp' object='FriendsList.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o FriendsList.obj `if test -f 'server/zone/objects/player/FriendsList.cpp'; then $(CYGPATH_W) 'server/zone/objects/player/FriendsList.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/player/FriendsList.cpp'; fi`
 
 PlayerObject.o: server/zone/objects/player/PlayerObject.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT PlayerObject.o -MD -MP -MF $(DEPDIR)/PlayerObject.Tpo -c -o PlayerObject.o `test -f 'server/zone/objects/player/PlayerObject.cpp' || echo '$(srcdir)/'`server/zone/objects/player/PlayerObject.cpp

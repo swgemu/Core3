@@ -49,6 +49,8 @@ which carries forward this exception.
 #include "objects/player/PlayerImplementation.h"
 #include "objects/player/PlayerObject.h"
 #include "objects/player/PlayerObjectImplementation.h"
+#include "objects/player/FriendsList.h"
+#include "objects/player/FriendsListImplementation.h"
 
 #include "objects/creature/Creature.h"
 #include "objects/creature/CreatureImplementation.h"

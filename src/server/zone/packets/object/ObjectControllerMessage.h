@@ -161,6 +161,9 @@ public:
 	static void parsePickup(Player* player, Message* pack);
 	
 	static void parseTransferItemMisc(Player* player, Message* pack);
+	
+	static void parseAddFriend(Player* player, Message* pack);
+	static void parseRemoveFriend(Player* player, Message* pack);
 };
 
 #endif /*OBJECTCONTROLLERMESSAGE_H_*/

@@ -662,6 +662,12 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player, Message* 
 	case (0x3CD5C98D): // lootall
 		player->lootCorpse();
 		break;
+	case (0x2A2357ED): // Add Friend
+		parseAddFriend(player, pack);
+		break;
+	case (0x8E9091D7): // Remove Friend
+		parseRemoveFriend(player, pack);
+		break;
 	default:
 		target = pack->parseLong();
 		
@@ -2327,5 +2333,33 @@ void ObjectControllerMessage::parseTransferItemMisc(Player* player, Message* pac
 		
 		if (object != NULL)
 			player->lootObject(creature, object);
+	}
+}
+void ObjectControllerMessage::parseAddFriend(Player* player, Message* pack) {
+	pack->shiftOffset(8);
+	
+	unicode d;
+	pack->parseUnicode(d);
+
+	string name = d.c_str();
+	
+	if(name != ""){
+	
+		player->getPlayerObject()->addFriend(name, player->getZone()->getZoneServer()->getServerName());
+		
+	}
+}
+void ObjectControllerMessage::parseRemoveFriend(Player* player, Message* pack) {
+	pack->shiftOffset(8);
+	
+	unicode d;
+	pack->parseUnicode(d);
+
+	string name = d.c_str();
+
+	if(name != ""){
+	
+		player->getPlayerObject()->removeFriend(name);
+		
 	}
 }

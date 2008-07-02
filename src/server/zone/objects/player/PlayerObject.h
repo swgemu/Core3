@@ -13,6 +13,8 @@ class SceneObject;
 
 class Player;
 
+class FriendsList;
+
 class WaypointObject;
 
 #include "../scene/SceneObject.h"
@@ -104,6 +106,12 @@ public:
 	unsigned int getWaypointListCount();
 
 	unsigned int getNewWaypointListCount(int cnt);
+
+	FriendsList* getFriendsList();
+
+	void addFriend(string& name, string& inServer);
+
+	void removeFriend(string& name);
 
 protected:
 	PlayerObject(DummyConstructorParameter* param);
@@ -207,11 +215,20 @@ public:
 
 	unsigned int getNewWaypointListCount(int cnt);
 
+	FriendsList* getFriendsList();
+
+	void addFriend(string& name, string& inServer);
+
+	void removeFriend(string& name);
+
 protected:
 	string _param0_addExperience__string_int_bool_;
 	string _param0_removeExperience__string_int_bool_;
 	string _param0_setCurrentTitle__string_bool_;
 	string _param0_setTitle__string_;
+	string _param0_addFriend__string_string_;
+	string _param1_addFriend__string_string_;
+	string _param0_removeFriend__string_;
 };
 
 class PlayerObjectHelper : public DistributedObjectClassHelper, public Singleton<PlayerObjectHelper> {

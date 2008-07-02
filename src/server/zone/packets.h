@@ -140,6 +140,10 @@ which carries forward this exception.
 #include "packets/player/PlayerObjectDeltaMessage6.h"
 #include "packets/player/PlayerObjectDeltaMessage8.h"
 #include "packets/player/PlayerObjectDeltaMessage9.h"
+#include "packets/player/AddFriendInitiateMessage.h"
+#include "packets/player/AddFriendMessage.h"
+#include "packets/player/FriendStatusChangeMessage.h"
+#include "packets/player/FriendListMessage.h"
 
 #include "packets/tangible/TangibleObjectMessage3.h"
 #include "packets/tangible/TangibleObjectMessage6.h"

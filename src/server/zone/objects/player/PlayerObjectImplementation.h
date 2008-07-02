@@ -53,7 +53,11 @@ which carries forward this exception.
 
 #include "../../packets/player/PlayerObjectDeltaMessage9.h"
 
+#include "FriendsList.h"
+#include "FriendsListImplementation.h"
+
 class Player;
+class FriendsList;
 
 class PlayerObjectImplementation : public SceneObjectImplementation {
 	Player* player;
@@ -81,6 +85,8 @@ class PlayerObjectImplementation : public SceneObjectImplementation {
 	
 	uint32 foodFilling;
 	uint32 foodFillingMax;
+	
+	FriendsList* friendsList;
 	
 public:
 
@@ -256,6 +262,22 @@ public:
 	
 	inline uint32 getNewWaypointListCount(int cnt) {
 		return waypointListCount += cnt;
+	}
+	
+	inline FriendsList* getFriendsList() {
+		return friendsList;
+	}
+	
+	inline void addFriend(string& name, string& inServer) {
+		
+		friendsList->addFriend(name, inServer);
+		
+	}
+	
+	inline void removeFriend(string& name) {
+		
+		friendsList->removeFriend(name);
+		
 	}
 	
 	friend class Player;

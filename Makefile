@@ -58,6 +58,7 @@ IDL_SOURCES = server/zone/Zone.idl \
 				server/zone/objects/creature/recruiter/RecruiterCreature.idl \
 				server/zone/objects/creature/mount/MountCreature.idl \
 				server/zone/objects/player/Player.idl \
+				server/zone/objects/player/FriendsList.idl \
 				server/zone/objects/player/PlayerObject.idl \
 				server/zone/objects/player/sui/SuiBox.idl \
 				server/zone/objects/player/sui/listbox/SuiListBox.idl \

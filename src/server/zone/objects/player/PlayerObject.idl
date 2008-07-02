@@ -48,6 +48,8 @@ import "../scene/SceneObject";
 
 import "Player";
 
+import "FriendsList";
+
 import "../waypoint/WaypointObject";
 
 interface PlayerObject implements SceneObject {
@@ -121,4 +123,8 @@ interface PlayerObject implements SceneObject {
 	
 	unsigned int getWaypointListCount();
 	unsigned int getNewWaypointListCount(int cnt);
+
+	FriendsList getFriendsList();
+	void addFriend(string name, string inServer);
+	void removeFriend(string name);
 }
