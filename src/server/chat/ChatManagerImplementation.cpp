@@ -1338,7 +1338,14 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 				message << " Willpower:  " << player->getWillpower() << "/" << player->getWillpowerMax() << "/" << player->getBaseWillpower() << ".";
 				
 				player->sendSystemMessage(message.str());
-			}
+			}		
+		//For testing purposes
+		/*
+		}else if(cmd == "@saveToon") {
+				player->saveFriendlist(player);
+				player->saveIgnorelist(player);
+				player->saveWaypoints(player);
+		*/
 		} else if (cmd == "@buff") {
 				if (player->getHealthMax() == player->getBaseHealth()) {
 
@@ -2276,6 +2283,14 @@ void ChatManagerImplementation::destroyRoom(ChatRoom* room) {
 	
 	room->finalize();
 }
+
+
+
+
+
+
+
+
 
 
 

@@ -214,6 +214,11 @@ interface Player implements CreatureObject {
 	WaypointObject getWaypoint(unsigned long id);
 	
 	void updateWaypoint(WaypointObject wp);
+
+	void saveFriendlist(Player player);
+	void saveIgnorelist(Player player);
+	void saveWaypoints(Player player);
+
 	
 	// Experience
 	void addXp(string xpType, int xp, boolean updateClient);
@@ -462,4 +467,5 @@ interface Player implements CreatureObject {
 
 	string getLastNpcConvStr();
 	string getLastNpcConvMessStr();
+	
 }

@@ -113,6 +113,12 @@ public:
 
 	void removeFriend(string& name);
 
+	void saveFriendlist(Player* player);
+
+	void saveIgnorelist(Player* player);
+
+	void saveWaypoints(Player* player);
+
 protected:
 	PlayerObject(DummyConstructorParameter* param);
 
@@ -220,6 +226,12 @@ public:
 	void addFriend(string& name, string& inServer);
 
 	void removeFriend(string& name);
+
+	void saveFriendlist(Player* player);
+
+	void saveIgnorelist(Player* player);
+
+	void saveWaypoints(Player* player);
 
 protected:
 	string _param0_addExperience__string_int_bool_;

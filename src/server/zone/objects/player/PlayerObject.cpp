@@ -614,6 +614,45 @@ void PlayerObject::removeFriend(string& name) {
 		((PlayerObjectImplementation*) _impl)->removeFriend(name);
 }
 
+void PlayerObject::saveFriendlist(Player* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 51);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerObjectImplementation*) _impl)->saveFriendlist(player);
+}
+
+void PlayerObject::saveIgnorelist(Player* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 52);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerObjectImplementation*) _impl)->saveIgnorelist(player);
+}
+
+void PlayerObject::saveWaypoints(Player* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 53);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerObjectImplementation*) _impl)->saveWaypoints(player);
+}
+
 /*
  *	PlayerObjectAdapter
  */
@@ -759,6 +798,15 @@ Packet* PlayerObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		break;
 	case 50:
 		removeFriend(inv->getAsciiParameter(_param0_removeFriend__string_));
+		break;
+	case 51:
+		saveFriendlist((Player*) inv->getObjectParameter());
+		break;
+	case 52:
+		saveIgnorelist((Player*) inv->getObjectParameter());
+		break;
+	case 53:
+		saveWaypoints((Player*) inv->getObjectParameter());
 		break;
 	default:
 		return NULL;
@@ -947,6 +995,18 @@ void PlayerObjectAdapter::removeFriend(string& name) {
 	return ((PlayerObjectImplementation*) impl)->removeFriend(name);
 }
 
+void PlayerObjectAdapter::saveFriendlist(Player* player) {
+	return ((PlayerObjectImplementation*) impl)->saveFriendlist(player);
+}
+
+void PlayerObjectAdapter::saveIgnorelist(Player* player) {
+	return ((PlayerObjectImplementation*) impl)->saveIgnorelist(player);
+}
+
+void PlayerObjectAdapter::saveWaypoints(Player* player) {
+	return ((PlayerObjectImplementation*) impl)->saveWaypoints(player);
+}
+
 /*
  *	PlayerObjectHelper
  */
@@ -997,4 +1057,6 @@ void PlayerObjectServant::_setStub(DistributedObjectStub* stub) {
 DistributedObjectStub* PlayerObjectServant::_getStub() {
 	return _this;
 }
+
+
 

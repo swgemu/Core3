@@ -207,6 +207,12 @@ public:
 
 	void updateWaypoint(WaypointObject* wp);
 
+	void saveFriendlist(Player* player);
+
+	void saveIgnorelist(Player* player);
+
+	void saveWaypoints(Player* player);
+
 	void addXp(string& xpType, int xp, bool updateClient);
 
 	void removeXp(string& xpType, int xp, bool updateClient);
@@ -674,6 +680,12 @@ public:
 	WaypointObject* getWaypoint(unsigned long long id);
 
 	void updateWaypoint(WaypointObject* wp);
+
+	void saveFriendlist(Player* player);
+
+	void saveIgnorelist(Player* player);
+
+	void saveWaypoints(Player* player);
 
 	void addXp(string& xpType, int xp, bool updateClient);
 

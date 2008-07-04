@@ -428,39 +428,30 @@ void PlayerManagerImplementation::loadFromDatabase(Player* player) {
 }
 
 void PlayerManagerImplementation::loadWaypoints(Player* player) {
-	/*PlayerObject* play = player->getPlayerObject();
+	stringstream query;
+	ResultSet* result;
+
+	query << "SELECT * FROM waypoints WHERE owner_id = '" << player->getCharacterID() <<"';";
+	result = ServerDatabase::instance()->executeQuery(query);
+			
+	while (result->next()) {
+		string wpName = result->getString(2);
+						
+		float x = result->getFloat(3);
+		float y = result->getFloat(4);
+					
+		string planetName = result->getString(5);
+		bool active = result->getInt(6);
 		
-	if (play == NULL)
-		return;
-			
-	try {
-		stringstream query;
-		query << "SELECT * FROM waypoints WHERE owner_id = '" << player->getCharacterID() <<"';";
-					   
-		ResultSet* res = ServerDatabase::instance()->executeStatement(query.str());
-
-		while (res->next()) {
-			uint64 waypointId = res->getUnsignedLong(0);
-			string wpName = res->getString(2);
-			float x = res->getFloat(3);
-			float y = res->getFloat(4);
-			string planetName = res->getString(5);
-			bool active = res->getInt(6);
-			
-			Waypoint* wp = new Waypoint(waypointId, player->getCharacterID());
-			wp->setWaypointID(waypointId);
-			wp->setWaypointName(wpName);
-			wp->setPosition(x, 0.0f, y);
-			wp->setPlanetName(planetName);
-			wp->setActiveStatus(active);
-
-			play->waypointMap.put(waypointId, wp);
-		}
-	
-		delete res;
-	} catch(DatabaseException& e) {
-		cout << e.getMessage() << "\n";
-	}*/
+		WaypointObject* wp = new WaypointObject(player, player->getNewItemID());
+		
+		wp->setName(wpName);
+		wp->setPlanetName(planetName);
+		wp->setPosition(x, 0.0f, y);
+		wp->changeStatus(active);
+		player->addWaypoint(wp);
+	}
+	delete result;
 }
 
 void PlayerManagerImplementation::unload(Player* player) {
@@ -985,6 +976,10 @@ void PlayerManagerImplementation::updatePlayerCreditsFromDatabase(Player* player
 	BaseMessage* mess = new PlayerMoneyResponseMessage(player);
 	player->sendMessage(mess);
 }
+
+
+
+
 
 
 

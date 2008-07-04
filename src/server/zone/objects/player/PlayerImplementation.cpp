@@ -104,7 +104,7 @@ PlayerImplementation::PlayerImplementation() : PlayerServant(0) {
 
 PlayerImplementation::PlayerImplementation(uint64 cid) : PlayerServant(baseID = cid << 32) {
 	init();
-
+	
 	characterID = cid;
 }
 
@@ -375,11 +375,15 @@ void PlayerImplementation::reload(ZoneClient* client) {
 void PlayerImplementation::unload() {
 	info("unloading player");
 
-	clearCombatState(); // remove the defenders
-	
 	tradeItems.removeAll();
 	
+	clearCombatState(); // remove the defenders
 	clearBuffs(false);
+	
+	saveWaypoints(_this);
+	saveFriendlist(_this);
+	saveIgnorelist(_this);
+	
 	
 	if (firstSampleEvent != NULL) {
 		if (firstSampleEvent->isQueued())

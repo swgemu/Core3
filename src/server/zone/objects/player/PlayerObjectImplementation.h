@@ -280,6 +280,10 @@ public:
 		
 	}
 	
+	void saveFriendlist(Player* player);
+	void saveIgnorelist(Player* player);
+	void saveWaypoints(Player* player);
+	
 	friend class Player;
 	
 	friend class PlayerObjectMessage3;

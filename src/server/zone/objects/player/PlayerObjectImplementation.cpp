@@ -269,14 +269,13 @@ void PlayerObjectImplementation::addWaypoint(WaypointObject* wp, bool updateClie
 	if (waypointList.put(wp->getObjectID(), wp) != -1) {
 		if (updateClient && player != NULL) {
 			PlayerObjectDeltaMessage8* dplay8 = new PlayerObjectDeltaMessage8(this);
-
+	
 			dplay8->startWaypointUpdate();
 			dplay8->addWaypoint(0, wp);
 			dplay8->close();
-			player->sendMessage(dplay8);
+			player->sendMessage(dplay8);			
 		}
-	}
-	
+	}	
 	unlock();
 }
 
@@ -291,14 +290,11 @@ bool PlayerObjectImplementation::removeWaypoint(WaypointObject* wp, bool updateC
 			dplay8->startWaypointUpdate();
 			dplay8->addWaypoint(1, wp);
 			dplay8->close();
-
 			player->sendMessage(dplay8);
-		}
-		
+		}		
 		unlock();
 		return true;
-	}
-	
+	}	
 	unlock();
 	return false;
 }
@@ -340,4 +336,46 @@ void PlayerObjectImplementation::updateWaypoint(WaypointObject* wp) {
 	}
 	
 	unlock();
+}
+
+void PlayerObjectImplementation::saveWaypoints(Player* player) {
+	wlock();
+	stringstream query;
+
+	try {
+		query.str( "" );
+		query << "DELETE FROM waypoints WHERE owner_id = '" << player->getCharacterID() <<"';";
+		ServerDatabase::instance()->executeStatement(query);	
+	
+		for (int i = 0; i < waypointList.size() ; ++i) {
+			WaypointObject* wpl = waypointList.get(i);
+
+			query.str( "" );
+			query << "INSERT DELAYED INTO waypoints (`waypoint_id`,`owner_id`,`waypoint_name`,`x`,`y`,`planet_name`,`active`)"
+			<< " VALUES ('" 
+			<< wpl->getObjectID() << "','" 
+			<< player->getCharacterID() << "','" 
+			<< wpl->getName() << "','" 
+			<< wpl->getPositionX() << "','" 
+			<< wpl->getPositionY() << "','" 
+			<< wpl->getPlanetName() << "',"
+			<< wpl->getStatus() << ");" ;
+		
+			ServerDatabase::instance()->executeStatement(query);
+		}
+
+	} catch (...) {
+		cout << "Exception in PlayerObjectImplementation::saveWaypoints" << endl;
+	}
+	
+	unlock();
+}
+
+
+void PlayerObjectImplementation::saveFriendlist(Player* player) {
+	//TODO:Iterate the friendlist and save to DB
+}
+
+void PlayerObjectImplementation::saveIgnorelist(Player* player) {
+	//TODO:Iterate the ignorelist and save to DB
 }

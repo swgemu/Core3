@@ -137,6 +137,10 @@ void LoginPacketHandler::handleDeleteCharacterMessage(Message* pack) {
 		query << "DELETE FROM character_badge WHERE character_id = '" << charId <<"';";
 		ServerDatabase::instance()->executeStatement(query);
 		
+		query.str("");
+		query << "DELETE FROM waypoints WHERE owner_id = '" << charId <<"';";
+		ServerDatabase::instance()->executeStatement(query);
+
 		dbDelete = 0;
     } catch(DatabaseException& e) {
    		dbDelete = 1;
@@ -145,5 +149,7 @@ void LoginPacketHandler::handleDeleteCharacterMessage(Message* pack) {
    	Message* msg = new DeleteCharacterReplyMessage(dbDelete);
 	client->sendMessage(msg);
 }
+
+
 
 

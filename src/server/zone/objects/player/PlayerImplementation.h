@@ -661,6 +661,18 @@ public:
 	void updateWaypoint(WaypointObject* wp) {
 		playerObject->updateWaypoint(wp);
 	}
+	
+	void saveFriendlist(Player* player) {
+		playerObject->saveFriendlist(player);
+	}
+		
+	void saveIgnorelist(Player* player){
+		playerObject->saveIgnorelist(player);
+	}
+	
+	void saveWaypoints(Player* player){
+		playerObject->saveWaypoints(player);
+	}
 
 	void launchFirework(int animationType);
 
@@ -1074,6 +1086,7 @@ public:
 	friend class PlayerObjectDeltaMessage9;
 	
 	friend class BadgesResponseMessage;
+	
 };
 
 #endif /*PLAYERIMPLEMENTATION_H_*/
