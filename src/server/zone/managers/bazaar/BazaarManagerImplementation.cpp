@@ -419,6 +419,8 @@ void BazaarManagerImplementation::checkAuctions() {
 				bazaarPlanets[item->getPlanet()]->removeBazaarItem(objectId);
 				if (removeItem(objectId, false)) {
 					//item->finalize(); FOR GODS SAKE WE CANT DELETE THIS HERE, the reference is still stored somewhere else
+				} else {
+					cout << "checkAuctions cannot remove bazaar item from items " << objectId << "\n";
 				}
 				
 				stringstream del1;
@@ -797,6 +799,7 @@ void BazaarManagerImplementation::retrieveItem(Player* player, uint64 objectid, 
 			unlock();
 			return;
 		}
+		
 		BazaarTerminalDetails* location = bazaarTerminals->getBazaarMap()->get(bazaarid);
 		string region = location->getRegion();
 	
@@ -876,6 +879,13 @@ void BazaarManagerImplementation::retrieveItem(Player* player, uint64 objectid, 
 	
 	// TODO: handle this case
 		if (tano == NULL) {
+			cout << "retrieveItem NULL pointer for bazaar_item " << objectid << "\n";
+			if (removeItem(objectid, false)) {
+				//item->finalize();  FOR GODS SAKE WE CANT DELETE THIS HERE, the reference is still stored somewhere else
+			} else {
+				cout << "retrieveItem cannot remove bazaar item from items " << objectid << "\n";
+			}
+
 			player->unlock();
 			unlock();
 			return;
@@ -887,9 +897,12 @@ void BazaarManagerImplementation::retrieveItem(Player* player, uint64 objectid, 
 		player->sendMessage(msg);
 		player->unlock();
 		 
-		if (removeItem(objectid, false));
+		if (removeItem(objectid, false)) {
 			//item->finalize();  FOR GODS SAKE WE CANT DELETE THIS HERE, the reference is still stored somewhere else
-	
+		} else {
+			cout << "retrieveItem cannot remove bazaar item from items " << objectid << "\n";
+		}
+		
 		unlock();
 	} catch (...) {
 		player->unlock();
