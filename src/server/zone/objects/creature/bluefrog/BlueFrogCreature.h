@@ -21,6 +21,8 @@ class BlueFrogCreature : public Creature {
 public:
 	BlueFrogCreature(unsigned long long oid);
 
+	void setType(int type);
+
 protected:
 	BlueFrogCreature(DummyConstructorParameter* param);
 
@@ -36,6 +38,8 @@ public:
 	BlueFrogCreatureAdapter(BlueFrogCreatureImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	void setType(int type);
 
 };
 

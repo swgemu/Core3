@@ -150,8 +150,7 @@ void CreatureManagerImplementation::loadRecruiters() {
 	if (zone->getZoneID() == 8) {
 		RecruiterCreature* recruiter1 = spawnRecruiter("", "Recruiter", 0x8C73B91, 36, -5336);
 		RecruiterCreature* recruiter2 = spawnRecruiter("", "Recruiter", 0x8C73B91, -1130, -3902);
-	}
-	if (zone->getZoneID() == 5) {
+	} else if (zone->getZoneID() == 5) {
 		RecruiterCreature* recruiter3 = spawnRecruiter("", "Recruiter", 0xAFE6BE84, -4936, 4231);
 		RecruiterCreature* recruiter4 = spawnRecruiter("", "Recruiter", 0xBCDF9016, -4928, 4231);
 	}
@@ -159,8 +158,13 @@ void CreatureManagerImplementation::loadRecruiters() {
 
 void CreatureManagerImplementation::loadBlueFrogs() {	
 	if (zone->getZoneID() == 5) {
-		spawnBlueFrog(-4834, 4148, .723221, -.690617);
-		spawnBlueFrog(-4879, 4185, 1, 0);		
+		spawnBlueFrog(-4834, 4148, .723221, -.690617, BlueFrogCreatureImplementation::GUNGAN);
+		spawnBlueFrog(-4879, 4185, 1, 0, BlueFrogCreatureImplementation::GUNGAN);		
+	} else if (zone->getZoneID() == 8) { 
+		spawnBlueFrog(45, -5352, -.11083, .993839, BlueFrogCreatureImplementation::JAWA); 
+		spawnBlueFrog(59, -5336, 1, 0, BlueFrogCreatureImplementation::JAWA); 
+		spawnBlueFrog(119, -5354, .723221, -.690617, BlueFrogCreatureImplementation::JAWA); 
+		spawnBlueFrog(-87, -5332, -.0339502, .999424, BlueFrogCreatureImplementation::JAWA);
 	}
 }
 
@@ -254,7 +258,7 @@ CreatureGroup* CreatureManagerImplementation::spawnCreatureGroup(int count, cons
 	}
 }
 
-BlueFrogCreature* CreatureManagerImplementation::spawnBlueFrog(float x, float y, float oY, float oW, bool doLock) {
+BlueFrogCreature* CreatureManagerImplementation::spawnBlueFrog(float x, float y, float oY, float oW, int type, bool doLock) {
 	try {
 		lock(doLock);
 			
@@ -266,7 +270,8 @@ BlueFrogCreature* CreatureManagerImplementation::spawnBlueFrog(float x, float y,
 		bluefrog->initializePosition(x, 0, y);
 		bluefrog->setDirection(0, 0, oY, oW);
 		bluefrog->setPvpStatusBitmask(0);//0x01 + 0x02 + 0x20;
-			
+		bluefrog->setType(type);
+		
 		load(bluefrog);
 			
 		bluefrog->insertToZone(zone);

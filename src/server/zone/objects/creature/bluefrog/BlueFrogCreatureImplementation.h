@@ -62,7 +62,8 @@ public:
 	BlueFrogCreatureImplementation(uint64 oid);
 	~BlueFrogCreatureImplementation();
 	
-		
+	static const int JAWA = 0x00;
+	static const int GUNGAN = 0x01;
 
 	void sendConversationStartTo(SceneObject* obj);
 	void sendMessage1(Player* player);
@@ -77,6 +78,8 @@ public:
 	bool trainProfession(Player * player, string prof);
 	bool trainSkill(Player * player, SkillBox * skill);
 	void dropSkills(Player * player);
+	
+	void setType(int type);
 };
 
 

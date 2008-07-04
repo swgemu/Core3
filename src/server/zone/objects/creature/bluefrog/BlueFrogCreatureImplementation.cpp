@@ -65,9 +65,9 @@ BlueFrogCreatureImplementation::BlueFrogCreatureImplementation(uint64 oid) : Blu
 
 	creatureBitmask = 0x108;
 	
-	characterName = unicode("a Gungan Trainer");
+	characterName = unicode("a Jawa Trader");
 	speciesName = "bluefrog";
-	objectCRC = 4058341940;
+	objectCRC = 1350586805;
 
 	stringstream loggingname;
 	loggingname << "BlueFrog = 0x" << oid;
@@ -78,6 +78,21 @@ BlueFrogCreatureImplementation::BlueFrogCreatureImplementation(uint64 oid) : Blu
 }
 
 BlueFrogCreatureImplementation::~BlueFrogCreatureImplementation() {
+}
+
+void BlueFrogCreatureImplementation::setType(int type) {
+	switch (type) {
+	case JAWA:
+		characterName = unicode("a Jawa Trader");
+		objectCRC = 1350586805;
+		break;
+	case GUNGAN:
+		characterName = unicode("a Gungan Trader");
+		objectCRC = 4058341940;
+		break;
+	default:
+		break;
+	}
 }
 
 void BlueFrogCreatureImplementation::sendConversationStartTo(SceneObject* obj) {

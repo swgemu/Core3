@@ -57,12 +57,15 @@ which carries forward this exception.
 #include "../../objects/creature/Creature.h"
 #include "../../objects/creature/CreatureImplementation.h"
 #include "../../objects/creature/bluefrog/BlueFrogCreature.h"
+#include "../../objects/creature/bluefrog/BlueFrogCreatureImplementation.h"
+
 
 #include "CreatureMap.h"
 
 #include "CreatureManager.h"
 
 class ZoneProcessServerImplementation;
+class BlueFrogCreatureImplementation;
 
 class CreatureManagerImplementation : public CreatureManagerServant, public Thread, public Mutex, public Lua {
 	Zone* zone;
@@ -108,7 +111,7 @@ public:
 	TrainerCreature* spawnTrainer(const string& profession, const string& stfname, const string& name, int objCrc, float x, float y, bool doLock = true);
 	ShuttleCreature* spawnShuttle(const string& Planet, const string& City, Coordinate* playerSpawnPoint, float x, float y, float z, bool doLock = true);
 	RecruiterCreature* spawnRecruiter(const string& stfname, const string& name, int objCrc, float x, float y, bool doLock = true);
-	BlueFrogCreature* spawnBlueFrog(float x, float y, float oY, float oW, bool doLock = true);
+	BlueFrogCreature* spawnBlueFrog(float x, float y, float oY, float oW, int type = 0, bool doLock = true);
 	CreatureGroup* spawnCreatureGroup(int count, const string& stfname, const string& name, int objCrc, float x, float y, int bitmask = 0x00, int layout = LINE_LAYOUT);
 
 	void despawnCreature(Creature* creature);
