@@ -65,9 +65,9 @@ BlueFrogCreatureImplementation::BlueFrogCreatureImplementation(uint64 oid) : Blu
 
 	creatureBitmask = 0x108;
 	
-	characterName = unicode("a Jawa Trader");
+	characterName = unicode("a Gungan Trainer");
 	speciesName = "bluefrog";
-	objectCRC = 1350586805;
+	objectCRC = 4058341940;
 
 	stringstream loggingname;
 	loggingname << "BlueFrog = 0x" << oid;

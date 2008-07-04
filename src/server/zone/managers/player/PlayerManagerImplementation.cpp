@@ -111,12 +111,12 @@ bool PlayerManagerImplementation::create(Player* player, uint32 sessionkey) {
 	int accountID = sessionkey;
 	int galaxyID = 2;
 	
-	player->setZoneIndex(8);
-	player->setTerrainName(Terrain::getTerrainName(8));
+	player->setZoneIndex(5);
+	player->setTerrainName(Terrain::getTerrainName(5));
 
-	player->initializePosition(96.0f, 0, -5334.0f);
+	player->initializePosition(-4863.0f, 0.0f, 4157.0f);
 		
-	player->randomizePosition(128);
+	player->randomizePosition(64);
 	
 	int race = Races::getRaceID(player->getRaceFileName());
 	
@@ -985,6 +985,7 @@ void PlayerManagerImplementation::updatePlayerCreditsFromDatabase(Player* player
 	BaseMessage* mess = new PlayerMoneyResponseMessage(player);
 	player->sendMessage(mess);
 }
+
 
 
 

@@ -41,6 +41,8 @@ gives permission to release a modified version without this exception;
 this exception also makes it possible to release a modified version 
 which carries forward this exception.
 */
+#include <iostream>
+#include <fstream>
 
 #include "../zone/Zone.h"
 #include "../zone/ZoneClient.h"
@@ -1171,8 +1173,59 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 				stringstream message;
 				message << "Set Force Power to: " << fp << ".";
 				player->sendSystemMessage(message.str());
-			}		
-			
+			}				
+		} else if (cmd == "@getNamedCords") {
+				//This command is for the cave devs, helping them building the needed LUA files.
+				//Please dont delete it from the SVN
+				/*stringstream msg;
+				string name;
+				tokenizer.getStringToken(name);
+				
+				msg << "X " << (player->getPositionX()) << " \n" << "Z " << (player->getPositionZ()) << " \n" << "Y " << (player->getPositionY()) << " \n";
+				player->sendSystemMessage(msg.str());
+				
+				msg << "Cell-ID is " << (player->getParentID()) << " \n";
+				player->sendSystemMessage(msg.str());
+				
+				msg << "Planet-ID is " << (player->getZoneIndex()) << " \n";
+				player->sendSystemMessage(msg.str());
+
+				msg << "Mobname is " << name << " \n";
+				player->sendSystemMessage(msg.str());
+				
+				ofstream cordFile;			
+				cordFile.open("cords.txt", ios::app);
+				
+				if ((player->getParentID() == 0)) 
+					cordFile << "spawnCreature(" << name << ", " << player->getZoneIndex() << ", " << player->getPositionX() << ", " << player->getPositionY() << ")\n";
+				else 
+					cordFile << "spawnCreatureInCell(" << name << ", " << player->getZoneIndex() << ", " << player->getPositionX() << ", " << player->getPositionZ() << ", " << player->getPositionY() << ", " << player->getParentID() << ")\n";
+				
+				cordFile << flush;
+				cordFile.close();*/								
+		} else if (cmd == "@getCords") {
+				//This command is for the cave devs, helping them building the needed LUA files.
+				//Please dont delete it from the SVN
+				/*stringstream msg;
+				msg << "X " << (player->getPositionX()) << " \n" << "Z " << (player->getPositionZ()) << " \n" << "Y " << (player->getPositionY()) << " \n";
+				player->sendSystemMessage(msg.str());
+				
+				msg << "Cell-ID is " << (player->getParentID()) << " \n";
+				player->sendSystemMessage(msg.str());
+				
+				msg << "Planet-ID is " << (player->getZoneIndex()) << " \n";
+				player->sendSystemMessage(msg.str());
+				
+				ofstream cordFile;			
+				cordFile.open("cords.txt", ios::app);
+				
+				if ((player->getParentID() == 0))
+					cordFile << "spawnCreature(nameOfMob, " << player->getZoneIndex() << ", " << player->getPositionX() << ", " << player->getPositionY() << ")\n";
+				else 
+					cordFile << "spawnCreatureInCell(nameOfMob, " << player->getZoneIndex() << ", " << player->getPositionX() << ", " << player->getPositionZ() << ", " << player->getPositionY() << ", " << player->getParentID() << ")\n";
+				
+				cordFile << flush;
+				cordFile.close();*/		
 		} else if(cmd == "@setDrinkFilling") {
 			int fill = tokenizer.getIntToken();
 			player->setDrinkFilling(fill);
@@ -2223,12 +2276,6 @@ void ChatManagerImplementation::destroyRoom(ChatRoom* room) {
 	
 	room->finalize();
 }
-
-
-
-
-
-
 
 
 

@@ -151,14 +151,16 @@ void CreatureManagerImplementation::loadRecruiters() {
 		RecruiterCreature* recruiter1 = spawnRecruiter("", "Recruiter", 0x8C73B91, 36, -5336);
 		RecruiterCreature* recruiter2 = spawnRecruiter("", "Recruiter", 0x8C73B91, -1130, -3902);
 	}
+	if (zone->getZoneID() == 5) {
+		RecruiterCreature* recruiter3 = spawnRecruiter("", "Recruiter", 0xAFE6BE84, -4936, 4231);
+		RecruiterCreature* recruiter4 = spawnRecruiter("", "Recruiter", 0xBCDF9016, -4928, 4231);
+	}
 }
 
-void CreatureManagerImplementation::loadBlueFrogs() {
-	if (zone->getZoneID() == 8) {
-		spawnBlueFrog(45, -5352, -.11083, .993839);
-		spawnBlueFrog(59, -5336, 1, 0);
-		spawnBlueFrog(119, -5354, .723221, -.690617);
-		spawnBlueFrog(-87, -5332, -.0339502, .999424);
+void CreatureManagerImplementation::loadBlueFrogs() {	
+	if (zone->getZoneID() == 5) {
+		spawnBlueFrog(-4834, 4148, .723221, -.690617);
+		spawnBlueFrog(-4879, 4185, 1, 0);		
 	}
 }
 
@@ -198,7 +200,7 @@ void CreatureManagerImplementation::loadTrainers() {
 		
 	delete result;
 
-	if (zone->getZoneID() == 8) {
+	/*if (zone->getZoneID() == 5) {
 		professionManager->professionMap.resetIterator();
 	
 		for (int i = 0; professionManager->professionMap.hasNext(); i++) {
@@ -207,9 +209,9 @@ void CreatureManagerImplementation::loadTrainers() {
 			if ((int)prof->getName().find("jedi") >= 0 || (int)prof->getName().find("force") >= 0)
 				continue;
 		
-			TrainerCreature* trainer = spawnTrainer(prof->getName(), "", prof->getName(), 0x8C73B91, -16 - (i*2.25), -5305 );
+			TrainerCreature* trainer = spawnTrainer(prof->getName(), "", prof->getName(), 0x8C73B91, -4967 - (i*1), 4043 );
 		}
-	}
+	}*/
 }
 
 void CreatureManagerImplementation::loadStaticCreatures() {
@@ -907,6 +909,7 @@ inline string CreatureManagerImplementation::stringify(const int x) {
 	else
 		return o.str();
 }
+
 
 
 

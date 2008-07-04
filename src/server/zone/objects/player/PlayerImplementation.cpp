@@ -1647,6 +1647,20 @@ void PlayerImplementation::doClone() {
 			doWarp(618.0f, 3054.0f);						// trade outpost
 		
 		break;
+	case 3: // endor
+		if (faction == String::hashCode("rebel"))
+			doWarp(3.9f, 0.1f, 3.7f, 0, 6705359);
+		else 
+ 			doWarp(3.9f, 0.1f, 3.6f, 0, 6705359);
+			
+ 		break;
+	case 5: // Naboo
+		if (faction == String::hashCode("rebel"))			// Theed
+			doWarp(1.7f, -4.8f, 0.1f, 0, 1697354);				
+		else 
+ 			doWarp(1.7f, -4.8f, 0.1f, 0, 1697354);
+			
+ 		break;	
 	default:
 		if (faction == String::hashCode("rebel"))
 			doWarp(-130.0f, -5300.0f, 0, true);
