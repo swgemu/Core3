@@ -50,6 +50,8 @@ fwg5_pistol = Weapon:new{
 
 	objectType = PISTOL,
 	
+	damageType = WEAPON_HEAT,
+	
 	certification = "cert_pistol_fwg5",
 
 	attackSpeed = 2.0,

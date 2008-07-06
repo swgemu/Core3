@@ -48,6 +48,8 @@ power_hammer = Weapon:new{
 	templateName = "object/weapon/melee/2h_sword/shared_2h_sword_maul.iff",
 
 	objectCRC = 248141391,
+	
+	damageType = WEAPON_BLAST,
 
 	objectType = TWOHANDMELEEWEAPON,
 

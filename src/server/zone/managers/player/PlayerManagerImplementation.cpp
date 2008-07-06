@@ -114,9 +114,9 @@ bool PlayerManagerImplementation::create(Player* player, uint32 sessionkey) {
 	player->setZoneIndex(5);
 	player->setTerrainName(Terrain::getTerrainName(5));
 
-	player->initializePosition(-4863.0f, 0.0f, 4157.0f);
+	player->initializePosition(-4908.0f, 6, 4101.0f);
 		
-	player->randomizePosition(64);
+	player->randomizePosition(45);
 	
 	int race = Races::getRaceID(player->getRaceFileName());
 	
