@@ -39,27 +39,27 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-tuskenCaptain = Creature:new {
-	objectName = "tuskenCaptain", -- name of the lua Object
+minerDWB = Creature:new {
+	objectName = "minerDWB", -- name of the lua Object
 	
-	name = "a Tusken Captain",
-	objectCRC = 344809642,
-	socialGroup = "tusken",
+	name = "a miner",
+	objectCRC = 3926753656,
+	socialGroup = "deathwatch",
 	named = TRUE,
 
-	level = 120,
+	level = 230,
 	
-	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
+	combatFlags = ATTACKABLE_FLAG,
 
-	health = 80000,
+	health = 30000,
 	strength = 1000,
 	constitution = 1000,
 
-	action = 80000,
+	action = 30000,
 	quickness = 1000,
 	stamina = 1000,
 
-	mind = 80000,
+	mind = 30000,
 	focus = 1000,
 	willpower = 1000,
 
@@ -68,18 +68,18 @@ tuskenCaptain = Creature:new {
 	armor = 2,
 	kinetic = 15,
 	energy = 15,
-	electricity = 40,
-	stun = 0,
+	electricity = 15,
+	stun = 15,
 	blast = 15,
-	heat = 40,
-	cold = 0,
-	acid = 0,
+	heat = 15,
+	cold = 15,
+	acid = 15,
 	lightSaber = 0,
 
 	accuracy = 300,
 
-	skills = { "tuskenAttack40", "tuskenAttack41", "tuskenAttack42", "tuskenAttack43", "tuskenAttack44", "tuskenAttack45", "tuskenAttack46", "tuskenAttack47", "tuskenAttack48", "tuskenAttack49", "tuskenAttack50", "tuskenAttack51"  }
-	-- respawnTimer = 180,
+	skills = { "dwbAttack40", "dwbAttack41", "dwbAttack42", "dwbAttack43", "dwbAttack44", "dwbAttack45", "dwbAttack46", "dwbAttack47", "dwbAttack48", "dwbAttack49", "dwbAttack50", "dwbAttack51"  },
+	respawnTimer = 600,
 }
 
-Creatures:addCreature(tuskenCaptain, 344809642) --- Add to global creature table
+Creatures:addCreature(minerDWB, 3926753656) --- Add to global creature table

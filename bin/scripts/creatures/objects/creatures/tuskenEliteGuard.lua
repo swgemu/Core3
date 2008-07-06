@@ -49,7 +49,7 @@ tuskenEliteGuard = Creature:new {
 
 	level = 44,
 	
-	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
 	health= 6500,
 	strength = 1000,

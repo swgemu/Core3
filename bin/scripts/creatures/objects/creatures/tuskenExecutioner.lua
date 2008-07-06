@@ -49,7 +49,7 @@ tuskenExecutioner = Creature:new {
 
 	level = 263,
 	
-	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
 	health = 290000,
 	strength = 1000,

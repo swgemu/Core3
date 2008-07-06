@@ -39,47 +39,45 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-tuskenCaptain = Creature:new {
-	objectName = "tuskenCaptain", -- name of the lua Object
+mineRatDWB = Creature:new {
+	objectName = "mineRatDWB", -- name of the lua Object
 	
-	name = "a Tusken Captain",
-	objectCRC = 344809642,
-	socialGroup = "tusken",
-	named = TRUE,
+	stfName = "a mine rat",
+	objectCRC = 3273659222,
 
-	level = 120,
+	level = 100,
 	
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
-	health = 80000,
+	health = 50000,
 	strength = 1000,
 	constitution = 1000,
 
-	action = 80000,
+	action = 50000,
 	quickness = 1000,
 	stamina = 1000,
 
-	mind = 80000,
+	mind = 50000,
 	focus = 1000,
 	willpower = 1000,
 
 	height = 1,
 
 	armor = 2,
-	kinetic = 15,
-	energy = 15,
-	electricity = 40,
-	stun = 0,
-	blast = 15,
-	heat = 40,
-	cold = 0,
-	acid = 0,
+	kinetic = 55,
+	energy = 55,
+	electricity = 15,
+	stun = 35,
+	blast = 80,
+	heat = 35,
+	cold = 35,
+	acid = 100,
 	lightSaber = 0,
 
 	accuracy = 300,
 
-	skills = { "tuskenAttack40", "tuskenAttack41", "tuskenAttack42", "tuskenAttack43", "tuskenAttack44", "tuskenAttack45", "tuskenAttack46", "tuskenAttack47", "tuskenAttack48", "tuskenAttack49", "tuskenAttack50", "tuskenAttack51"  }
-	-- respawnTimer = 180,
+	skills = { "mineRatAttack1" },
+	respawnTimer = 600,
 }
 
-Creatures:addCreature(tuskenCaptain, 344809642) --- Add to global creature table
+Creatures:addCreature(mineRatDWB, 3273659222) --- Add to global creature table

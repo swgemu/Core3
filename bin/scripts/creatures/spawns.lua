@@ -57,3 +57,6 @@ RunCreatureFile("spawns/corellia/afarathuCave.lua")
 RunCreatureFile("spawns/corellia/drallCave.lua")
 RunCreatureFile("spawns/corellia/lordNyaxCult.lua")
 RunCreatureFile("spawns/corellia/rogueCorsec.lua")
+
+-- Endor
+RunCreatureFile("spawns/endor/deathWatchBunker.lua")

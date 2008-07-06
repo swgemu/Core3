@@ -114,4 +114,3 @@ DistributedObjectStub* FireworkServant::_getStub() {
 	return _this;
 }
 
-

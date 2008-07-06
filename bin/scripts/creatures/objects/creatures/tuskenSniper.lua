@@ -49,7 +49,7 @@ tuskenSniper = Creature:new {
 
 	level = 22,
 	
-	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
 	health = 2400,
 	strength = 1000,

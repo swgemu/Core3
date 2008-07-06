@@ -205,3 +205,24 @@ RunCreatureFile("objects/creatures/rebelGeneral.lua")
 RunCreatureFile("objects/creatures/rebelSurfaceMarshal.lua")
 
 ----------------------------------------------------
+
+-- Death Watch Bunker
+
+RunCreatureFile("objects/creatures/battleDroidDWB.lua")
+RunCreatureFile("objects/creatures/blackSunThugDWB.lua")
+RunCreatureFile("objects/creatures/blackSunHenchmanDWB.lua")
+RunCreatureFile("objects/creatures/blackSunAssassinDWB.lua")
+RunCreatureFile("objects/creatures/deathWatchGhostDWB.lua")
+RunCreatureFile("objects/creatures/deathWatchBloodguardDWB.lua")
+RunCreatureFile("objects/creatures/deathWatchWraithDWB.lua")
+RunCreatureFile("objects/creatures/superBattleDroidDWB.lua")
+RunCreatureFile("objects/creatures/mineRatDWB.lua")
+RunCreatureFile("objects/creatures/technicianDWB.lua")
+RunCreatureFile("objects/creatures/minerDWB.lua")
+RunCreatureFile("objects/creatures/engineerDWB.lua")
+RunCreatureFile("objects/creatures/deathWatchOverlordDWB.lua")
+
+
+--- lulz
+
+RunCreatureFile("objects/creatures/twilekSlave.lua")

@@ -39,47 +39,36 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-tuskenCaptain = Creature:new {
-	objectName = "tuskenCaptain", -- name of the lua Object
+twilekSlave = Creature:new {
+	objectName = "twilekSlave", -- name of the lua Object
 	
-	name = "a Tusken Captain",
-	objectCRC = 344809642,
-	socialGroup = "tusken",
+	name = "a Twi'lek Slave",
+	objectCRC = 2673849471,
+	socialGroup = "slaves",
 	named = TRUE,
-
-	level = 120,
 	
-	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
+	level = 600,
 
-	health = 80000,
-	strength = 1000,
-	constitution = 1000,
+	health = 10,
+	strength = 10,
+	constitution = 10,
 
-	action = 80000,
-	quickness = 1000,
-	stamina = 1000,
+	action = 10,
+	quickness = 10,
+	stamina = 10,
 
-	mind = 80000,
-	focus = 1000,
-	willpower = 1000,
+	mind = 10,
+	focus = 10,
+	willpower = 10,
+	
+	armor = 2,
 
 	height = 1,
-
-	armor = 2,
-	kinetic = 15,
-	energy = 15,
-	electricity = 40,
-	stun = 0,
-	blast = 15,
-	heat = 40,
-	cold = 0,
-	acid = 0,
-	lightSaber = 0,
-
+	
 	accuracy = 300,
 
-	skills = { "tuskenAttack40", "tuskenAttack41", "tuskenAttack42", "tuskenAttack43", "tuskenAttack44", "tuskenAttack45", "tuskenAttack46", "tuskenAttack47", "tuskenAttack48", "tuskenAttack49", "tuskenAttack50", "tuskenAttack51"  }
+	skills = { }
 	-- respawnTimer = 180,
 }
 
-Creatures:addCreature(tuskenCaptain, 344809642) --- Add to global creature table
+Creatures:addCreature(twilekSlave, 2673849471) --- Add to global creature table

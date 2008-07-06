@@ -49,7 +49,7 @@ tuskenKing = Creature:new {
 
 	level = 150,
 	
-	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
 	health = 120000,
 	strength = 1000,

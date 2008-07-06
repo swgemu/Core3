@@ -4539,5 +4539,3 @@ DistributedObjectStub* PlayerServant::_getStub() {
 	return _this;
 }
 
-
-

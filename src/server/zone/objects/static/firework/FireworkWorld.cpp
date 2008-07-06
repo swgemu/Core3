@@ -138,4 +138,3 @@ DistributedObjectStub* FireworkWorldServant::_getStub() {
 	return _this;
 }
 
-
