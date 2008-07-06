@@ -87,7 +87,7 @@ public:
 	AttackableObjectImplementation(uint64 oid);
 	
 	void insertToZone(Zone* zone);
-	void removeFromZone();
+	void removeFromZone(bool dolock);
 	void broadcastMessage(BaseMessage* msg, int range = 128, bool doLock = true);
 	
 	void setDefender(SceneObject* defender);

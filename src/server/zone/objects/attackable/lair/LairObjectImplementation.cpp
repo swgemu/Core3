@@ -78,7 +78,10 @@ LairObjectImplementation::LairObjectImplementation(uint32 objCRC, uint64 oid)
 }
 
 void LairObjectImplementation::doDamage(int damage) {
-
+	
+	if (!attackable)
+		return;
+	
 	conditionDamage = conditionDamage + damage;
 
 	if ((conditionDamage >= maxCondition / 20) && !spawn1) {
@@ -112,7 +115,6 @@ void LairObjectImplementation::spawnCreatures() {
 		
 		bool baby = false;
 		if (System::random(1000000) < babiesPerMillion) {
-			info("Spawning baby");
 			baby = true;
 		}
 		
@@ -149,11 +151,8 @@ void LairObjectImplementation::addDefender(SceneObject* defender) {
 }
 
 void LairObjectImplementation::doDestroyed() {
-	pvpStatusBitmask = 0;
+	pvpStatusBitmask = 0x20;
 	attackable = false;
-	
-	UpdatePVPStatusMessage* msg = new UpdatePVPStatusMessage(_this, pvpStatusBitmask);
-	broadcastMessage(msg);
 	
 	AttackableObjectDeltaMessage3* dcreo3 = new AttackableObjectDeltaMessage3(_this);
 	dcreo3->update06Operand(0x80);
@@ -161,7 +160,24 @@ void LairObjectImplementation::doDestroyed() {
 
 	broadcastMessage(dcreo3);
 	
-	//TODO: This crashes the server
-	//removeFromZone();
+	string explodeStr = "clienteffect/lair_damage_heavy.cef";
+	string extraStr = "";
+	
+	PlayClientEffectObjectMessage* explode = new PlayClientEffectObjectMessage(_this, explodeStr, extraStr);
+	broadcastMessage(explode);
+	
+	PlayClientEffectLoc* explodeLoc = new PlayClientEffectLoc(explodeStr, zoneID, positionX, positionZ, positionY);
+	broadcastMessage(explodeLoc);
 
+	UpdatePVPStatusMessage* msg = new UpdatePVPStatusMessage(_this, pvpStatusBitmask);
+	broadcastMessage(msg);
+		
+	SceneObjectDestroyMessage* destroyMsg = new SceneObjectDestroyMessage(_this);
+	broadcastMessage(destroyMsg);
+	
+	for (int i = 0; i < defenderList.size(); i++) {
+			defenderList.get(i)->removeDefender(_this);
+	}
+	
+	removeFromZone(false);
 }

@@ -803,9 +803,7 @@ int CreatureManagerImplementation::addLair(lua_State * L) {
 
 	lair->insertToZone(instance->getZone());
 	lair->spawnCreatures();
-		
-	cout << "Spawning Lair with objcrc (" << objectCRC << ")" << "on position [" << x << "," << y << "] on " << planet << "\n";
-	
+
 	instance->unlock();
 	
 	return 0;

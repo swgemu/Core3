@@ -46,7 +46,9 @@ which carries forward this exception.
 
 #include "AttackableObjectImplementation.h"
 
+#include "../../objects.h"
 #include "../../packets.h"
+
 #include "../player/Player.h"
 #include "../scene/SceneObjectImplementation.h"
 
@@ -54,6 +56,7 @@ which carries forward this exception.
 #include "../../ZoneClient.h"
 
 AttackableObjectImplementation::AttackableObjectImplementation(uint64 oid) : AttackableObjectServant(oid) {
+	objectID = oid;
 	inCombat = false;
 }
 
@@ -77,32 +80,38 @@ void AttackableObjectImplementation::insertToZone(Zone* zone) {
 	}
 }
 
-void AttackableObjectImplementation::removeFromZone() {
+void AttackableObjectImplementation::removeFromZone(bool dolock) {
 	if (zone == NULL)
 		return;
-	
-	try {
-		zone->lock();
 
-    	for (int i = 0; i < inRangeObjectCount(); ++i) {
+	try {
+		zone->lock(dolock);
+
+		if (parent != NULL && parent->isCell()) {
+			CellObject* cell = (CellObject*) parent;
+			BuildingObject* building = (BuildingObject*)parent->getParent();
+
+			// removeFromBuilding(building);
+		} else
+			zone->remove(this);
+		
+		for (int i = 0; i < inRangeObjectCount(); ++i) {
 			QuadTreeEntry* obj = getInRangeObject(i);
-			
+
 			if (obj != this)
 				obj->removeInRangeObject(this);
 		}
 
 		removeInRangeObjects();
-
-		zone->remove(this);
-		zone->deleteObject(objectID);
 		
-		zone->unlock();
+		//TODO: deleteObject is crashing server
+		//zone->deleteObject(objectID);
 		
-		zone = NULL;
+		zone->unlock(dolock);
 	} catch (...) {
-		cout << "exception TangibleObject::removeFromZone(bool doLock)\n";
+		error("exception Player::removeFromZone(bool doLock)");
 
-		zone->unlock();
+		zone->unlock(dolock);
 	}
 }
 
@@ -150,8 +159,6 @@ void AttackableObjectImplementation::addDefender(SceneObject* defender) {
 			return;
 	}
 	
-	info("adding defender");
-	
 	defenderList.add(defender);	
 }
 
@@ -163,15 +170,12 @@ void AttackableObjectImplementation::removeDefenders() {
 	}
 	
 	defenderList.removeAll();
-	
-	info("removed all defenders");
 }
 
 void AttackableObjectImplementation::removeDefender(SceneObject* defender) {
 	if (zone == NULL)
 		return;
 	
-	//info("trying to remove defender");
 	for (int i = 0; i < defenderList.size(); ++i) {
 		if (defenderList.get(i) == defender) {
 			defenderList.remove(i);
@@ -261,7 +265,6 @@ void AttackableObjectImplementation::broadcastMessage(BaseMessage* msg, int rang
 		return;
 	
 	try {
-		//cout << "CreatureObject::broadcastMessage(Message* msg, int range, bool doLock)\n";
 		zone->lock(doLock);
 
 		for (int i = 0; i < inRangeObjectCount(); ++i) {

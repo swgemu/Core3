@@ -54,7 +54,7 @@ interface AttackableObject implements SceneObject {
 	}
 
 	void insertToZone(Zone zone);
-	void removeFromZone();
+	void removeFromZone(boolean dolock);
 	void sendDestroyTo(Player player);
 
 	void setTemplateName(string name);
