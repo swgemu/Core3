@@ -844,15 +844,21 @@ void CreatureImplementation::notifyPositionUpdate(QuadTreeEntry* obj) {
 		case SceneObjectImplementation::PLAYER:
 			player = (Player*) scno;
 
-			if (isAgressive() && !isDead() && !player->isIncapacitated() && !player->isDead() && isInRange(player, 32)) {
-				info("aggroing " + player->getFirstName());
+			if (isAgressive() && !isDead() && !player->isIncapacitated() && !player->isDead() ) {
+				
+				if( (parent == NULL && isInRange(player, 24)) || 
+						((parent != NULL) && (getParentID() == player->getParentID()) && isInRange(player, 10))) {
 
-				aggroedCreature = player;
+					info("aggroing " + player->getFirstName());
 
-				if (isQueued())
+					aggroedCreature = player;
+
+					if (isQueued())
 					creatureManager->dequeueActivity(this);
 
-				creatureManager->queueActivity(this, 10);
+					creatureManager->queueActivity(this, 10);
+
+				}
 			} else if ((parent == NULL) && !doRandomMovement && patrolPoints.isEmpty() && System::random(200) < 1) {
 				doRandomMovement = true;
 
