@@ -47,8 +47,8 @@ nyaxZealot = Creature:new {
 	socialGroup = "nyax",
 	
 	level = 75,
-	--Aggressive normaly but broken for now: combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
-	combatFlags = ATTACKABLE_FLAG,
+	
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
 	health = 10300,
 	strength = 1000,

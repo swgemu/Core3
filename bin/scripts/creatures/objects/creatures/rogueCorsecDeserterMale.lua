@@ -46,10 +46,9 @@ name = "a CorSec Deserter",
 objectCRC = 16556953, 
 socialGroup = "rogueCorsec", 
 
-level = 35, 
+level = 85, 
 
-combatFlags = ATTACKABLE_FLAG,
---combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG, 
+combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
 health = 8200, 
 strength = 1000, 

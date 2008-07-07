@@ -46,9 +46,9 @@ imperialDarkTrooper = Creature:new {
 	objectCRC = 1312348723,
 	socialGroup = "imperial",
 	
-	level = 50,
+	level = 80,
 
-	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
 	health = 9500,
 	strength = 1000,

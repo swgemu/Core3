@@ -46,10 +46,9 @@ rogueCorsecMtaraVinram = Creature:new {
 	objectCRC = 4015626219, 
 	socialGroup = "rogueCorsec", 
 
-	level = 35, 
+	level = 85, 
 
-	combatFlags = ATTACKABLE_FLAG,
-	--combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG, 
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
 	health = 14400, 
 	strength = 1000, 

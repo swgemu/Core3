@@ -47,8 +47,8 @@ nyaxVisionary = Creature:new {
 	socialGroup = "nyax",
 	
 	level = 200,
-	--Aggressive normaly but broken for now: combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
-	combatFlags = ATTACKABLE_FLAG,
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
+	
 
 	health = 10000,
 	strength = 1000,

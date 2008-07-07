@@ -47,7 +47,7 @@ rebelGeneral = Creature:new {
 	
 	level = 75,
 
-	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
 	health = 15000,
 	strength = 1000,

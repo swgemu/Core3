@@ -46,10 +46,9 @@ name = "a CorSec Traitor",
 objectCRC = 3769862629, 
 socialGroup = "rogueCorsec", 
 
-level = 35, 
+level = 75, 
 
-combatFlags = ATTACKABLE_FLAG,
---combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG, 
+combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
 health = 9800, 
 strength = 1000, 

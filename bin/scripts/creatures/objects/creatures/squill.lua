@@ -44,6 +44,8 @@ squill = Creature:new {
 	
 	stfName = "a Squill",
 	objectCRC = 1824637824,
+	
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
 	health = 4300,
 	strength = 1000,

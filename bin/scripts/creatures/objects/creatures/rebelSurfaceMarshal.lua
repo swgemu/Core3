@@ -48,7 +48,7 @@ rebelSurfaceMarshal = Creature:new {
 	level = 150,
 	socialGroup = "rebel",
 
-	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
 	health = 100000,
 	strength = 1000,

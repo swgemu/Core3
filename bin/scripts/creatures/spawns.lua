@@ -58,5 +58,6 @@ RunCreatureFile("spawns/corellia/drallCave.lua")
 RunCreatureFile("spawns/corellia/lordNyaxCult.lua")
 RunCreatureFile("spawns/corellia/rogueCorsec.lua")
 
--- Endor
-RunCreatureFile("spawns/endor/deathWatchBunker.lua")
+Endor
+--Disabled till other Endor Caves are done
+-- RunCreatureFile("spawns/endor/deathWatchBunker.lua")

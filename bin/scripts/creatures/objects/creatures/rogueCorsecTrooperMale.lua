@@ -46,10 +46,9 @@ name = "a rogue CorSec Trooper",
 objectCRC = 3647615927, 
 socialGroup = "rogueCorsec", 
 
-level = 35, 
+level = 80, 
 
-combatFlags = ATTACKABLE_FLAG,
---combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG, 
+combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
 health = 8900, 
 strength = 1000, 

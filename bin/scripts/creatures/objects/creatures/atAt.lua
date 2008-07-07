@@ -48,7 +48,7 @@ atAt = Creature:new {
 	
 	level = 500,
 	
-	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
 	health = 1000000,
 	strength = 50000,

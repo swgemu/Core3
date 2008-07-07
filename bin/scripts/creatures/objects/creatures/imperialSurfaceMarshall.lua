@@ -48,7 +48,7 @@ imperialSurfaceMarshall = Creature:new {
 	
 	level = 100,
 
-	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
 	health = 100000,
 	strength = 1000,

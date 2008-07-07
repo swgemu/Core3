@@ -47,7 +47,7 @@ nyaxDiciple = Creature:new {
 	socialGroup = "nyax",
 	
 	level = 75,
-	combatFlags = ATTACKABLE_FLAG,
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
 	health = 6800,
 	strength = 1000,

@@ -44,6 +44,8 @@ derangedSquill = Creature:new {
 	
 	stfName = "a Deranged Squill Ravisher",
 	objectCRC = 807169980,
+	
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
 	health = 9900,
 	strength = 1000,

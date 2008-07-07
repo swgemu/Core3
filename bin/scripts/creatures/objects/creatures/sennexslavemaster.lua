@@ -49,7 +49,7 @@ sennexslavemaster = Creature:new {
 
 	level = 37,
 	
-	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
 	health= 11200,
 	strength = 1000,

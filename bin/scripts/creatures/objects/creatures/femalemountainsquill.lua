@@ -44,6 +44,8 @@ femalemountainsquill = Creature:new {
 	
 	stfName = "a female mountain squill",
 	objectCRC = 2128205835,
+	
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
 	level = 25,
 

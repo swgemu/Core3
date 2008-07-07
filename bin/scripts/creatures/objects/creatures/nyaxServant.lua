@@ -47,7 +47,7 @@ nyaxServant = Creature:new {
 	socialGroup = "nyax",
 	
 	level = 200,
-	combatFlags = ATTACKABLE_FLAG,
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
 	health = 9000,
 	strength = 1000,
