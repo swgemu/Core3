@@ -1637,34 +1637,69 @@ void PlayerImplementation::doClone() {
 	info("cloning player");
 
 	switch (zoneID) {
-	case 0:	// corellia
+	case 0:	// Corellia
 		if (faction == String::hashCode("rebel"))
 			doWarp(-326.0f, -4640.0f, 0, true);				// shuttle 1
 		else
 			doWarp(-28.0f, -4438.0f);						// shuttle 2
 		
 		break;
-	case 2: // dathomir
+	case 1:	// Dantooine
+		if (faction == String::hashCode("rebel"))			// Mining Outpost
+			doWarp(4.3f, 0.1, 3.8f, 0, 1365997);				
+		else 
+ 			doWarp(4.3f, 0.1, 3.8f, 0, 1365997);				
+			
+ 		break;
+	case 2: // Dathomir
 		if (faction == String::hashCode("rebel"))			// science outpost
 			doWarp(-76.0f, -1627.0f, 0, true);
 		else
 			doWarp(618.0f, 3054.0f);						// trade outpost
 		
 		break;
-	case 3: // endor
+	case 3: // Endor
 		if (faction == String::hashCode("rebel"))
 			doWarp(3.9f, 0.1f, 3.7f, 0, 6705359);
 		else 
  			doWarp(3.9f, 0.1f, 3.6f, 0, 6705359);
 			
  		break;
+	case 4: // Lok
+		if (faction == String::hashCode("rebel"))			// Nyms Stronghold
+			doWarp(0.3f, 0.3f, 1.2f, 0, 2745624);				
+		else 
+ 			doWarp(0.3f, 0.3f, 1.2f, 0, 2745624);				
+			
+ 		break;	
 	case 5: // Naboo
 		if (faction == String::hashCode("rebel"))			// Theed
 			doWarp(1.7f, -4.8f, 0.1f, 0, 1697354);				
 		else 
  			doWarp(1.7f, -4.8f, 0.1f, 0, 1697354);
 			
- 		break;	
+ 		break;
+	case 6: // Rori
+		if (faction == String::hashCode("rebel"))			// Restuss
+			doWarp(1.7f, -4.8f, 0.7f, 0, 4695371);				
+		else 
+ 			doWarp(1.7f, -4.8f, 0.7f, 0, 4695371);				
+			
+ 		break;
+	case 7: // Talus
+		if (faction == String::hashCode("rebel"))			//  Daeric
+			doWarp(1.8f, -4.8f, 0.6f, 0, 3175408);				
+		else 
+ 			doWarp(1.8f, -4.8f, 0.6f, 0, 3175408);				
+			
+ 		break;
+	case 9: // Yavin4
+		if (faction == String::hashCode("rebel"))			//  Labor Camp
+			doWarp(4.3f, 0.1f, -3.7f, 0, 3035395);				
+		else 
+ 			doWarp(4.3f, 0.1f, -3.7f, 0, 3035395);				
+			
+ 		break;
 	default:
 		if (faction == String::hashCode("rebel"))
 			doWarp(-130.0f, -5300.0f, 0, true);
