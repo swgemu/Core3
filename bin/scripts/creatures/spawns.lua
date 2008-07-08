@@ -40,7 +40,10 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
+-------------------------------------------------------------------------------------------
+
 --Tatooine
+
 RunCreatureFile("spawns/tatooine/staticSpawns.lua")
 RunCreatureFile("spawns/tatooine/forttusken.lua")
 RunCreatureFile("spawns/tatooine/squillcavern.lua")
@@ -48,12 +51,38 @@ RunCreatureFile("spawns/tatooine/hutthideout.lua")
 RunCreatureFile("spawns/tatooine/tuskenBunker.lua")
 RunCreatureFile("spawns/tatooine/beetlecave.lua")
 
+------------------------------------------------------------------------------------------------------
+
 --Dathomir
+
 RunCreatureFile("spawns/dathomir/staticSpawns.lua")
 
+------------------------------------------------------------------------------------------------------
+
 --Corellia
+
 RunCreatureFile("spawns/corellia/staticSpawns.lua")
 RunCreatureFile("spawns/corellia/afarathuCave.lua")
 RunCreatureFile("spawns/corellia/drallCave.lua")
 RunCreatureFile("spawns/corellia/lordNyaxCult.lua")
 RunCreatureFile("spawns/corellia/rogueCorsec.lua")
+
+--------------------------------------------------------------------------------------------------------
+--Dantooine
+
+RunCreatureFile("spawns/dantooine/forceCrystalHuntersCave.lua")
+RunCreatureFile("spawns/dantooine/jantaCave.lua")
+RunCreatureFile("spawns/dantooine/kungaCave.lua")
+
+----------------------------------------------------------------------------------------------------------------
+
+--Endor
+
+--Disabled till other Endor Caves are done
+--RunCreatureFile("spawns/endor/deathWatchBunker.lua")
+
+-------------------------------------------------------------------------------------------------------------------
+
+--Yavin 4
+
+-------------------------------------------------------------------------------------------------------------------

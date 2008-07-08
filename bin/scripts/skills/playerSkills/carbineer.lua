@@ -49,12 +49,20 @@ DotPoolAtt = {
 	damageRatio = 2.2,
 	speedRatio = 1.7,
 	areaRange = 0,
-	coneAngle = 30,
+	coneAngle = 40,
 	accuracyBonus = 0,
 
 	healthAttackChance = 0,
 	actionAttackChance = 100,
 	mindAttackChance = 0,
+	
+	knockdownChance = 0,
+	postureDownChance = 25,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
 
 	dotChance = 60,
 	tickStrengthOfHit = 1,
@@ -287,7 +295,7 @@ DirectPoolAtt = {
 	postureDownChance = 0,
 	dizzyChance = 0,
 	blindChance = 0,
-	stunChance = 15,
+	stunChance = 25,
 	
 	CbtSpamBlock = "kneecapshot_block",
 	CbtSpamCounter = "kneecapshot_counter",
@@ -302,7 +310,7 @@ AddDirectPoolAttackTargetSkill(DirectPoolAtt)
 
 RandPoolAtt = { 
 	attackname = "cripplingshot",
-	animation = "fire_3_single_medium_face",
+	animation = "fire_5_single_light_face",
 
 	requiredWeaponType = CARBINE,
 	
@@ -410,7 +418,7 @@ RandPoolAtt = {
 	postureUpChance = 0,
 	dizzyChance = 0,
 	blindChance = 0,
-	stunChance = 20,
+	stunChance = 0,
 	intimidateChance = 0,
 	
 	CbtSpamBlock = "sup_fire_block",

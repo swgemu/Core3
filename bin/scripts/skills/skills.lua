@@ -43,7 +43,6 @@
 
 -- Player skills
 RunSkillsFile("defaultSkill.lua")
---RunSkillsFile("playerSkills/jedi.lua")
 RunSkillsFile("playerSkills/brawler.lua")
 RunSkillsFile("playerSkills/teraskasiartist.lua")
 RunSkillsFile("playerSkills/fencer.lua")
@@ -62,6 +61,7 @@ RunSkillsFile("playerSkills/passiveSkills.lua")
 RunSkillsFile("playerSkills/entertainer.lua")
 RunSkillsFile("playerSkills/dancer.lua")
 RunSkillsFile("playerSkills/musician.lua")
+--RunSkillsFile("playerSkills/jedi.lua")
 
 
 -- CreatureSkills
@@ -115,6 +115,11 @@ RunSkillsFile("creatureSkills/superBattleDroidAttacks.lua")
 RunSkillsFile("creatureSkills/rogueCorsecAttacks.lua")
 RunSkillsFile("creatureSkills/afarathuAttacks.lua")
 RunSkillsFile("creatureSkills/drallAttacks.lua")
+
+--Dantooine
+RunSkillsFile("creatureSkills/forceCrystalHunterAttacks.lua")
+RunSkillsFile("creatureSkills/untrainedWielderDarkSideAttacks.lua")
+RunSkillsFile("creatureSkills/kungaAttacks.lua")
 RunSkillsFile("creatureSkills/dwbAttacks.lua")
 RunSkillsFile("creatureSkills/mineRatAttacks.lua")
 RunSkillsFile("creatureSkills/dwbSBDAttacks.lua")

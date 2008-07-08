@@ -264,10 +264,10 @@ RandPoolAtt = {
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
-	postureUpChance = 0,
+	postureUpChance = 25,
 	dizzyChance = 0,
 	blindChance = 0,
-	stunChance = 20,
+	stunChance = 0,
 	intimidateChance = 0,
 	
 	CbtSpamBlock = "startleshot_block",

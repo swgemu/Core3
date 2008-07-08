@@ -237,7 +237,7 @@ RandPoolAtt = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 5,
-	damageRatio = 4.0,
+	damageRatio = 3.5,
 	speedRatio = 1.45,
 	areaRange = 7,
 	accuracyBonus = 0,
@@ -457,7 +457,7 @@ RandPoolAtt = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 5,
-	damageRatio = 5.25,
+	damageRatio = 5.0,
 	speedRatio = 2.0,
 	areaRange = 0,
 	accuracyBonus = 0,
