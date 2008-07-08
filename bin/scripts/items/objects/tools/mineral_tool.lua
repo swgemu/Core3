@@ -42,11 +42,11 @@
 
 mineral_tool = Tool:new {
 
-	objectName = "Solar Survey Tool",
-
-	templateName = "survey_tool_solar",
-
-	objectCRC = 2341848205,
+	objectName = "Mineral Survey Tool", 
+	 	 
+	templateName = "survey_tool_mineral", 
+	 	 
+	objectCRC = 2862265132,
 
 	objectType = SURVEYTOOL
 }
