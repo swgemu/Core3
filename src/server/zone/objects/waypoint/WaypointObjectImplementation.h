@@ -54,6 +54,7 @@ which carries forward this exception.
 
 class WaypointObjectImplementation : public WaypointObjectServant {
 	string name;
+	string internalNote;
 	string planetName;
 	
 	bool active;
@@ -62,6 +63,7 @@ class WaypointObjectImplementation : public WaypointObjectServant {
 public:
 	WaypointObjectImplementation(Player* player, uint64 oid) : WaypointObjectServant(oid) {
 		active = false;
+		internalNote = "EMPTY";
 		
 		name = "New Waypoint";
 		
@@ -96,6 +98,10 @@ public:
 		name = Name;
 	}
 	
+	inline void setInternalNote(const string& message) {
+		internalNote = message;
+	}
+	
 	inline void setPlanetName(const string& planet) {
 		planetName = planet;
 	}
@@ -108,6 +114,10 @@ public:
 		return name;
 	}
 	
+	inline string& getInternalNote() {
+		return internalNote;
+	}
+
 	inline string& getPlanetName() {
 		return planetName;
 	}

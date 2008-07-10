@@ -164,6 +164,7 @@ public:
 	
 	static void parseAddFriend(Player* player, Message* pack);
 	static void parseRemoveFriend(Player* player, Message* pack);
+	static void parseFindFriend(Player* player, Message* pack, PlayerManager* playerManager);
 };
 
 #endif /*OBJECTCONTROLLERMESSAGE_H_*/

@@ -21,6 +21,8 @@ public:
 
 	void setName(const string& Name);
 
+	void setInternalNote(const string& message);
+
 	void setPlanetName(const string& planet);
 
 	void switchStatus();
@@ -33,11 +35,14 @@ public:
 
 	string& getPlanetName();
 
+	string& getInternalNote();
+
 protected:
 	WaypointObject(DummyConstructorParameter* param);
 
 	virtual ~WaypointObject();
 
+	string _return_getInternalNote;
 	string _return_getName;
 	string _return_getPlanetName;
 
@@ -56,6 +61,8 @@ public:
 
 	void setName(const string& Name);
 
+	void setInternalNote(const string& message);
+
 	void setPlanetName(const string& planet);
 
 	void switchStatus();
@@ -68,8 +75,11 @@ public:
 
 	string& getPlanetName();
 
+	string& getInternalNote();
+
 protected:
 	string _param0_setName__string_;
+	string _param0_setInternalNote__string_;
 	string _param0_setPlanetName__string_;
 };
 

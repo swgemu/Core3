@@ -1015,25 +1015,12 @@ void Player::updateWaypoint(WaypointObject* wp) {
 		((PlayerImplementation*) _impl)->updateWaypoint(wp);
 }
 
-void Player::saveFriendlist(Player* player) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 79);
-		method.addObjectParameter(player);
-
-		method.executeWithVoidReturn();
-	} else
-		((PlayerImplementation*) _impl)->saveFriendlist(player);
-}
-
 void Player::saveIgnorelist(Player* player) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 80);
+		DistributedMethod method(this, 79);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -1046,12 +1033,26 @@ void Player::saveWaypoints(Player* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 81);
+		DistributedMethod method(this, 80);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
 	} else
 		((PlayerImplementation*) _impl)->saveWaypoints(player);
+}
+
+WaypointObject* Player::searchWaypoint(Player* play, const string& name) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 81);
+		method.addObjectParameter(play);
+		method.addAsciiParameter(name);
+
+		return (WaypointObject*) method.executeWithObjectReturn();
+	} else
+		return ((PlayerImplementation*) _impl)->searchWaypoint(play, name);
 }
 
 void Player::addXp(string& xpType, int xp, bool updateClient) {
@@ -3147,13 +3148,13 @@ Packet* PlayerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		updateWaypoint((WaypointObject*) inv->getObjectParameter());
 		break;
 	case 79:
-		saveFriendlist((Player*) inv->getObjectParameter());
-		break;
-	case 80:
 		saveIgnorelist((Player*) inv->getObjectParameter());
 		break;
-	case 81:
+	case 80:
 		saveWaypoints((Player*) inv->getObjectParameter());
+		break;
+	case 81:
+		resp->insertLong(searchWaypoint((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_searchWaypoint__Player_string_))->_getObjectID());
 		break;
 	case 82:
 		addXp(inv->getAsciiParameter(_param0_addXp__string_int_bool_), inv->getSignedIntParameter(), inv->getBooleanParameter());
@@ -3892,16 +3893,16 @@ void PlayerAdapter::updateWaypoint(WaypointObject* wp) {
 	return ((PlayerImplementation*) impl)->updateWaypoint(wp);
 }
 
-void PlayerAdapter::saveFriendlist(Player* player) {
-	return ((PlayerImplementation*) impl)->saveFriendlist(player);
-}
-
 void PlayerAdapter::saveIgnorelist(Player* player) {
 	return ((PlayerImplementation*) impl)->saveIgnorelist(player);
 }
 
 void PlayerAdapter::saveWaypoints(Player* player) {
 	return ((PlayerImplementation*) impl)->saveWaypoints(player);
+}
+
+WaypointObject* PlayerAdapter::searchWaypoint(Player* play, const string& name) {
+	return ((PlayerImplementation*) impl)->searchWaypoint(play, name);
 }
 
 void PlayerAdapter::addXp(string& xpType, int xp, bool updateClient) {
@@ -4538,4 +4539,5 @@ void PlayerServant::_setStub(DistributedObjectStub* stub) {
 DistributedObjectStub* PlayerServant::_getStub() {
 	return _this;
 }
+
 

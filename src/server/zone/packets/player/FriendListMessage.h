@@ -42,8 +42,8 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef FRIENDLISTMESSAGE_H_
-#define FRIENDLISTMESSAGE_H_
+#ifndef FRIENDSLISTMESSAGE_H_
+#define FRIENDSLISTMESSAGE_H_
 
 #include "engine/engine.h"
 
@@ -51,9 +51,9 @@ which carries forward this exception.
 #include "../../objects/player/Player.h"
 #include "../../objects/player/FriendsList.h"
 
-class FriendListMessage : public BaseMessage {
+class FriendsListMessage : public BaseMessage {
 public:
-	FriendListMessage(Player* play) : BaseMessage() {
+	FriendsListMessage(Player* play) : BaseMessage() {
 	
 		FriendsList* friendsList = play->getPlayerObject()->getFriendsList();
 
@@ -72,4 +72,4 @@ public:
 	}
 };
 
-#endif /*FRIENDLISTMESSAGE_H_*/
+#endif /*FRIENDSLISTMESSAGE_H_*/

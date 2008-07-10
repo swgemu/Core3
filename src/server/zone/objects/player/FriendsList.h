@@ -9,11 +9,17 @@
 
 class Player;
 
+class PlayerManager;
+
+class PlayerObject;
+
 class FriendsList : public DistributedObjectStub {
 public:
 	FriendsList(Player* player);
 
 	int getCount();
+
+	int getMagicNumber();
 
 	string& getFriendsName(const int i);
 
@@ -21,7 +27,17 @@ public:
 
 	void addFriend(string& name, string& inServer);
 
+	void friendsMagicNumberReset();
+
 	void removeFriend(string& name);
+
+	void findFriend(string& name, PlayerManager* playerManager);
+
+	void saveFriends();
+
+	void loadFriends();
+
+	void updateAllFriends(PlayerObject* playerObject);
 
 	void toString();
 
@@ -46,13 +62,25 @@ public:
 
 	int getCount();
 
+	int getMagicNumber();
+
 	string& getFriendsName(const int i);
 
 	string& getFriendsServer(const int i);
 
 	void addFriend(string& name, string& inServer);
 
+	void friendsMagicNumberReset();
+
 	void removeFriend(string& name);
+
+	void findFriend(string& name, PlayerManager* playerManager);
+
+	void saveFriends();
+
+	void loadFriends();
+
+	void updateAllFriends(PlayerObject* playerObject);
 
 	void toString();
 
@@ -60,6 +88,7 @@ protected:
 	string _param0_addFriend__string_string_;
 	string _param1_addFriend__string_string_;
 	string _param0_removeFriend__string_;
+	string _param0_findFriend__string_PlayerManager_;
 };
 
 class FriendsListHelper : public DistributedObjectClassHelper, public Singleton<FriendsListHelper> {

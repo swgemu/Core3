@@ -43,14 +43,22 @@ which carries forward this exception.
 */
 
 import "Player";
+import "../../managers/player/PlayerManager";
+import "PlayerObject";
 
 interface FriendsList{
 	FriendsList(Player player);
 
 	int getCount();
+	int getMagicNumber();
 	string getFriendsName(const int i);
 	string getFriendsServer(const int i);
 	void addFriend(string name, string inServer);
+	void friendsMagicNumberReset();
 	void removeFriend(string name);
+	void findFriend(string name, PlayerManager playerManager);
+	void saveFriends();
+	void loadFriends();
+	void updateAllFriends(PlayerObject playerObject);
 	void toString();
 }

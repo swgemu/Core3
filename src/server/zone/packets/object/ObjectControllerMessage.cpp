@@ -665,6 +665,9 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player, Message* 
 	case (0x2A2357ED): // Add Friend
 		parseAddFriend(player, pack);
 		break;
+	case (0x30BE6EE9 ): // Find Friend
+		parseFindFriend(player, pack, serv->getZoneServer()->getPlayerManager());
+		break;
 	case (0x8E9091D7): // Remove Friend
 		parseRemoveFriend(player, pack);
 		break;
@@ -2336,19 +2339,19 @@ void ObjectControllerMessage::parseTransferItemMisc(Player* player, Message* pac
 	}
 }
 void ObjectControllerMessage::parseAddFriend(Player* player, Message* pack) {
+	//ToDO: Split the token based on dots for game (SWG), server (eg. sunrunner) and name (SWG.sunrunner.john)
 	pack->shiftOffset(8);
 	
 	unicode d;
 	pack->parseUnicode(d);
 
 	string name = d.c_str();
-	
+
 	if(name != ""){
-	
 		player->getPlayerObject()->addFriend(name, player->getZone()->getZoneServer()->getServerName());
-		
 	}
 }
+
 void ObjectControllerMessage::parseRemoveFriend(Player* player, Message* pack) {
 	pack->shiftOffset(8);
 	
@@ -2357,9 +2360,21 @@ void ObjectControllerMessage::parseRemoveFriend(Player* player, Message* pack) {
 
 	string name = d.c_str();
 
-	if(name != ""){
-	
-		player->getPlayerObject()->removeFriend(name);
-		
+	if(name != ""){	
+		player->getPlayerObject()->removeFriend(name);		
 	}
 }
+
+void ObjectControllerMessage::parseFindFriend(Player* player, Message* pack, PlayerManager* playerManager) {
+	pack->shiftOffset(8);
+	
+	unicode d;
+	pack->parseUnicode(d);
+
+	string name = d.c_str();
+
+	if(name != ""){
+		player->getPlayerObject()->findFriend(name, playerManager);
+	}
+}
+

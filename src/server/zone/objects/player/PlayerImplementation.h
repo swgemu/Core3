@@ -662,10 +662,6 @@ public:
 		playerObject->updateWaypoint(wp);
 	}
 	
-	void saveFriendlist(Player* player) {
-		playerObject->saveFriendlist(player);
-	}
-		
 	void saveIgnorelist(Player* player){
 		playerObject->saveIgnorelist(player);
 	}
@@ -674,6 +670,10 @@ public:
 		playerObject->saveWaypoints(player);
 	}
 
+	WaypointObject* searchWaypoint(Player* play, const string& name) {
+		return playerObject->searchWaypoint(play,name);
+	}
+	
 	void launchFirework(int animationType);
 
 	// packet methods

@@ -52,6 +52,10 @@ import "FriendsList";
 
 import "../waypoint/WaypointObject";
 
+import "../../managers/player/PlayerManager";
+
+
+
 interface PlayerObject implements SceneObject {
 	PlayerObject(Player player) {
 		super();
@@ -126,9 +130,14 @@ interface PlayerObject implements SceneObject {
 
 	FriendsList getFriendsList();
 	void addFriend(string name, string inServer);
+	void friendsMagicNumberReset();
 	void removeFriend(string name);
+	void findFriend(string name, PlayerManager playerManager);
+	void saveFriends();
+	void loadFriends();
+	void updateAllFriends(PlayerObject playerObject);
 	
-	void saveFriendlist(Player player);
 	void saveIgnorelist(Player player);
 	void saveWaypoints(Player player);
+	WaypointObject searchWaypoint(Player play, const string name);
 }

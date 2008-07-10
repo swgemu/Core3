@@ -114,22 +114,20 @@ public:
 	}
 	
 
-	void updateFriendList(){
-		
+	void updateFriendsList(){
 		FriendsList* friendsList = play->getFriendsList();
-		
+				
 		startUpdate(7);
 		insertInt(friendsList->getCount() + 1); // Size of friends list + 1
-		insertInt(100); // Dunno - Some number - always changes
-		insertByte(3); // Dunno - seems to be 3 always
+		
+		
+		insertInt(friendsList->getMagicNumber());
+		insertByte(3); // Dunno - seems to be 3 always //ToDO: Figure...
 		
 		insertShort(friendsList->getCount());
 		
 		for(int i = 0; i < friendsList->getCount(); ++i){
-			
-
-			insertAscii(friendsList->getFriendsName(i));
-			
+			insertAscii(friendsList->getFriendsName(i));			
 		}
 	}
 	

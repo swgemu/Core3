@@ -88,6 +88,8 @@ interface PlayerManager {
 	void updatePlayerCreditsFromDatabase(Player player);
 	void updatePlayerCreditsToDatabase(Player player);
 	
+	void updateOtherFriendlists(Player player, boolean status);
+	
 	void setGuildManager(GuildManager gmanager);
 	
 	Player putPlayer(Player player);

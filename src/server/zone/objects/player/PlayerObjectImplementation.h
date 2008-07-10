@@ -268,21 +268,37 @@ public:
 		return friendsList;
 	}
 	
-	inline void addFriend(string& name, string& inServer) {
-		
-		friendsList->addFriend(name, inServer);
-		
+	inline void addFriend(string& name, string& inServer) {		
+		friendsList->addFriend(name, inServer);		
 	}
 	
-	inline void removeFriend(string& name) {
-		
-		friendsList->removeFriend(name);
-		
+	inline void friendsMagicNumberReset() {
+		friendsList->friendsMagicNumberReset();
 	}
 	
-	void saveFriendlist(Player* player);
+	inline void removeFriend(string& name) {		
+		friendsList->removeFriend(name);		
+	}
+	
+	inline void saveFriends() {
+		friendsList->saveFriends();
+	}
+		
+	inline void loadFriends() {
+		friendsList->loadFriends();
+	}
+	
+	inline void updateAllFriends(PlayerObject* playerObject) {
+		friendsList->updateAllFriends(playerObject);
+	}
+
+	inline void findFriend(string& name, PlayerManager* playerManager) {
+		friendsList->findFriend(name, playerManager);		
+	}
+
 	void saveIgnorelist(Player* player);
 	void saveWaypoints(Player* player);
+	WaypointObject* searchWaypoint(Player* play, const string& name);
 	
 	friend class Player;
 	

@@ -75,8 +75,7 @@ class PlayerManagerImplementation : public PlayerManagerServant {
 	GuildManager* guildManager;
 	
 private:
-	void loadFromDatabase(Player* player);
-	
+	void loadFromDatabase(Player* player);	
 	void loadWaypoints(Player* player);
 
 public:
@@ -110,6 +109,8 @@ public:
 	void handleAcceptTransactionMessage(Player* player);
 	void handleUnAcceptTransactionMessage(Player* player);
 	void handleVerifyTradeMessage(Player* player);
+	
+	void updateOtherFriendlists(Player* player,bool status);
 	
 	void moveItem(Player* sender, Player* receiver, TangibleObject* item);
 

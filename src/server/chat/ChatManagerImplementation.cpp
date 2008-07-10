@@ -1342,9 +1342,13 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 		//For testing purposes
 		/*
 		}else if(cmd == "@saveToon") {
-				player->saveFriendlist(player);
+				PlayerObject* playerObject = player->getPlayerObject();
+				playerObject->saveFriends();
 				player->saveIgnorelist(player);
 				player->saveWaypoints(player);
+		}else if(cmd == "@loadFriends") {
+				PlayerObject* playerObject = player->getPlayerObject();
+				playerObject->loadFriends();
 		*/
 		} else if (cmd == "@buff") {
 				if (player->getHealthMax() == player->getBaseHealth()) {
@@ -2283,6 +2287,8 @@ void ChatManagerImplementation::destroyRoom(ChatRoom* room) {
 	
 	room->finalize();
 }
+
+
 
 
 

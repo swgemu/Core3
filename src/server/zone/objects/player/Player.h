@@ -207,11 +207,11 @@ public:
 
 	void updateWaypoint(WaypointObject* wp);
 
-	void saveFriendlist(Player* player);
-
 	void saveIgnorelist(Player* player);
 
 	void saveWaypoints(Player* player);
+
+	WaypointObject* searchWaypoint(Player* play, const string& name);
 
 	void addXp(string& xpType, int xp, bool updateClient);
 
@@ -681,11 +681,11 @@ public:
 
 	void updateWaypoint(WaypointObject* wp);
 
-	void saveFriendlist(Player* player);
-
 	void saveIgnorelist(Player* player);
 
 	void saveWaypoints(Player* player);
+
+	WaypointObject* searchWaypoint(Player* play, const string& name);
 
 	void addXp(string& xpType, int xp, bool updateClient);
 
@@ -985,6 +985,7 @@ protected:
 	string _param0_trainSkillBox__string_bool_;
 	string _param0_surrenderSkillBox__string_;
 	string _param0_hasSkillBox__string_;
+	string _param1_searchWaypoint__Player_string_;
 	string _param0_addXp__string_int_bool_;
 	string _param0_removeXp__string_int_bool_;
 	string _param0_sendSystemMessage__string_;

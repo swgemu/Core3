@@ -51,12 +51,25 @@ void WaypointObject::setName(const string& Name) {
 		((WaypointObjectImplementation*) _impl)->setName(Name);
 }
 
-void WaypointObject::setPlanetName(const string& planet) {
+void WaypointObject::setInternalNote(const string& message) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 8);
+		method.addAsciiParameter(message);
+
+		method.executeWithVoidReturn();
+	} else
+		((WaypointObjectImplementation*) _impl)->setInternalNote(message);
+}
+
+void WaypointObject::setPlanetName(const string& planet) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
 		method.addAsciiParameter(planet);
 
 		method.executeWithVoidReturn();
@@ -69,7 +82,7 @@ void WaypointObject::switchStatus() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, 10);
 
 		method.executeWithVoidReturn();
 	} else
@@ -81,7 +94,7 @@ unsigned int WaypointObject::getPlanetCRC() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, 11);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -93,7 +106,7 @@ bool WaypointObject::getStatus() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 12);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -105,7 +118,7 @@ string& WaypointObject::getName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, 13);
 
 		method.executeWithAsciiReturn(_return_getName);
 		return _return_getName;
@@ -118,12 +131,25 @@ string& WaypointObject::getPlanetName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 14);
 
 		method.executeWithAsciiReturn(_return_getPlanetName);
 		return _return_getPlanetName;
 	} else
 		return ((WaypointObjectImplementation*) _impl)->getPlanetName();
+}
+
+string& WaypointObject::getInternalNote() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 15);
+
+		method.executeWithAsciiReturn(_return_getInternalNote);
+		return _return_getInternalNote;
+	} else
+		return ((WaypointObjectImplementation*) _impl)->getInternalNote();
 }
 
 /*
@@ -144,22 +170,28 @@ Packet* WaypointObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		setName(inv->getAsciiParameter(_param0_setName__string_));
 		break;
 	case 8:
-		setPlanetName(inv->getAsciiParameter(_param0_setPlanetName__string_));
+		setInternalNote(inv->getAsciiParameter(_param0_setInternalNote__string_));
 		break;
 	case 9:
-		switchStatus();
+		setPlanetName(inv->getAsciiParameter(_param0_setPlanetName__string_));
 		break;
 	case 10:
-		resp->insertInt(getPlanetCRC());
+		switchStatus();
 		break;
 	case 11:
-		resp->insertBoolean(getStatus());
+		resp->insertInt(getPlanetCRC());
 		break;
 	case 12:
-		resp->insertAscii(getName());
+		resp->insertBoolean(getStatus());
 		break;
 	case 13:
+		resp->insertAscii(getName());
+		break;
+	case 14:
 		resp->insertAscii(getPlanetName());
+		break;
+	case 15:
+		resp->insertAscii(getInternalNote());
 		break;
 	default:
 		return NULL;
@@ -174,6 +206,10 @@ void WaypointObjectAdapter::changeStatus(bool status) {
 
 void WaypointObjectAdapter::setName(const string& Name) {
 	return ((WaypointObjectImplementation*) impl)->setName(Name);
+}
+
+void WaypointObjectAdapter::setInternalNote(const string& message) {
+	return ((WaypointObjectImplementation*) impl)->setInternalNote(message);
 }
 
 void WaypointObjectAdapter::setPlanetName(const string& planet) {
@@ -198,6 +234,10 @@ string& WaypointObjectAdapter::getName() {
 
 string& WaypointObjectAdapter::getPlanetName() {
 	return ((WaypointObjectImplementation*) impl)->getPlanetName();
+}
+
+string& WaypointObjectAdapter::getInternalNote() {
+	return ((WaypointObjectImplementation*) impl)->getInternalNote();
 }
 
 /*
@@ -250,4 +290,5 @@ void WaypointObjectServant::_setStub(DistributedObjectStub* stub) {
 DistributedObjectStub* WaypointObjectServant::_getStub() {
 	return _this;
 }
+
 

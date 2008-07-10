@@ -4,8 +4,9 @@ Source Host: localhost
 Source Database: swgemu
 Target Host: localhost
 Target Database: swgemu
-Date: 04.07.2008 14:02:02
+Date: 10.07.2008 20:35:42
 */
+
 
 DROP TABLE IF EXISTS waypoints;
 
@@ -21,10 +22,11 @@ CREATE TABLE `waypoints` (
   `y` float(10,6) default NULL,
   `planet_name` text NOT NULL,
   `active` tinyint(1) NOT NULL default '1',
+  `internal_note` text,
   `ix` int(10) unsigned NOT NULL auto_increment,
   PRIMARY KEY  (`ix`),
   KEY `objplid` (`waypoint_id`,`owner_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=46 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=190 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records 

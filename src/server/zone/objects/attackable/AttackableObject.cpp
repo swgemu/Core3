@@ -40,16 +40,17 @@ void AttackableObject::insertToZone(Zone* zone) {
 		((AttackableObjectImplementation*) _impl)->insertToZone(zone);
 }
 
-void AttackableObject::removeFromZone() {
+void AttackableObject::removeFromZone(bool dolock) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 7);
+		method.addBooleanParameter(dolock);
 
 		method.executeWithVoidReturn();
 	} else
-		((AttackableObjectImplementation*) _impl)->removeFromZone();
+		((AttackableObjectImplementation*) _impl)->removeFromZone(dolock);
 }
 
 void AttackableObject::sendDestroyTo(Player* player) {
@@ -246,7 +247,7 @@ Packet* AttackableObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 		insertToZone((Zone*) inv->getObjectParameter());
 		break;
 	case 7:
-		removeFromZone();
+		removeFromZone(inv->getBooleanParameter());
 		break;
 	case 8:
 		sendDestroyTo((Player*) inv->getObjectParameter());
@@ -301,8 +302,8 @@ void AttackableObjectAdapter::insertToZone(Zone* zone) {
 	return ((AttackableObjectImplementation*) impl)->insertToZone(zone);
 }
 
-void AttackableObjectAdapter::removeFromZone() {
-	return ((AttackableObjectImplementation*) impl)->removeFromZone();
+void AttackableObjectAdapter::removeFromZone(bool dolock) {
+	return ((AttackableObjectImplementation*) impl)->removeFromZone(dolock);
 }
 
 void AttackableObjectAdapter::sendDestroyTo(Player* player) {
@@ -411,4 +412,6 @@ void AttackableObjectServant::_setStub(DistributedObjectStub* stub) {
 DistributedObjectStub* AttackableObjectServant::_getStub() {
 	return _this;
 }
+
+
 

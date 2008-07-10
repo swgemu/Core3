@@ -152,7 +152,7 @@ PlayerImplementation::~PlayerImplementation() {
 	info("undeploying player");
 }
 
-void PlayerImplementation::init() {
+void PlayerImplementation::init() {	
 	objectType = PLAYER;
 	
 	owner = NULL;
@@ -273,7 +273,7 @@ void PlayerImplementation::load(ZoneClient* client) {
 		wlock();
 	
 		setLoggingIn();
-	
+		
 		owner = client;
 		client->setPlayer(_this);
 
@@ -293,6 +293,10 @@ void PlayerImplementation::load(ZoneClient* client) {
 		insertToZone(zone);
 		
 		unlock();
+		
+		PlayerManager* upm = server->getZoneServer()->getPlayerManager();	
+		upm->updateOtherFriendlists(_this, true);
+		
 	} catch (Exception& e) {
 		unlock();
 
@@ -356,6 +360,11 @@ void PlayerImplementation::reload(ZoneClient* client) {
 
 		clearBuffs(true);
 		
+		PlayerManager* upm = server->getZoneServer()->getPlayerManager();
+		playerObject->updateAllFriends(playerObject);		
+		upm->updateOtherFriendlists(_this, true);
+
+		
 		resetArmorEncumbrance();
 		
 		activateRecovery();
@@ -381,8 +390,17 @@ void PlayerImplementation::unload() {
 	clearBuffs(false);
 	
 	saveWaypoints(_this);
-	saveFriendlist(_this);
+	playerObject->saveFriends();
 	saveIgnorelist(_this);
+
+	//let our friends now we are out
+	//ZoneServer* uzs = zone->getZoneServer();	
+	PlayerManager* upm = server->getZoneServer()->getPlayerManager();
+	//PlayerManager* upm = uzs->getPlayerManager();	
+	upm->updateOtherFriendlists(_this, false);
+	
+	
+	//end FriendStatusChange
 	
 	
 	if (firstSampleEvent != NULL) {
@@ -1194,23 +1212,28 @@ void PlayerImplementation::bounceBack() {
 }
 
 void PlayerImplementation::notifySceneReady() {
-	//if (isLoggingIn()) {
-		setOnline();
-		
+	PlayerObject* playerObject = getPlayerObject();
+	
+	if (onlineStatus  == LOGGINGIN) {
 		unicode msg = unicode("Welcome to the Official Core3 Test Center!");
 		sendSystemMessage(msg);
-
 		unicode msg2 = unicode("please help us sorting some problems out by being as active as you can. we need to stress the server for these bugs to arise. thank you");
 		sendSystemMessage(msg2);
 		
 		unicode msg3 = unicode("This server is owned, operated, and developed by Team SWGEmu at SWGEmu.com and is in no way affiliated with any other server communities.");
 		sendSystemMessage(msg3);
+
+		playerObject->loadFriends();	
+	} else {
+		//we need to reset the "magicnumber" for the internal friendlist due to clientbehaviour (Diff. Zoningservers SoE)
+		playerObject->friendsMagicNumberReset();
+	}
 		
-		ChatManager* chatManager = server->getChatManager();
-		chatManager->listMail(_this);
-		
-		info("scene ready");
-	//}	
+	ChatManager* chatManager = server->getChatManager();
+	chatManager->listMail(_this);
+	
+	info("scene ready");
+	setOnline();
 }
 
 void PlayerImplementation::sendSystemMessage(const string& message) {

@@ -351,14 +351,15 @@ void PlayerObjectImplementation::saveWaypoints(Player* player) {
 			WaypointObject* wpl = waypointList.get(i);
 
 			query.str( "" );
-			query << "INSERT DELAYED INTO waypoints (`waypoint_id`,`owner_id`,`waypoint_name`,`x`,`y`,`planet_name`,`active`)"
+			query << "INSERT DELAYED INTO waypoints (`waypoint_id`,`owner_id`,`waypoint_name`,`x`,`y`,`planet_name`,`internal_note`,`active`)"
 			<< " VALUES ('" 
 			<< wpl->getObjectID() << "','" 
 			<< player->getCharacterID() << "','" 
 			<< wpl->getName() << "','" 
 			<< wpl->getPositionX() << "','" 
 			<< wpl->getPositionY() << "','" 
-			<< wpl->getPlanetName() << "',"
+			<< wpl->getPlanetName() << "','"
+			<< wpl->getInternalNote() << "',"
 			<< wpl->getStatus() << ");" ;
 		
 			ServerDatabase::instance()->executeStatement(query);
@@ -371,10 +372,29 @@ void PlayerObjectImplementation::saveWaypoints(Player* player) {
 	unlock();
 }
 
-
-void PlayerObjectImplementation::saveFriendlist(Player* player) {
-	//TODO:Iterate the friendlist and save to DB
+WaypointObject* PlayerObjectImplementation::searchWaypoint(Player* player, const string& name) {
+	wlock();
+	
+	WaypointObject* waypoint = NULL;
+	WaypointObject* returnWP = NULL;
+	int i = 0;
+	string wpName;
+	
+	for (int i = 0; i < waypointList.size(); ++i) {
+		waypoint = waypointList.get(i);
+		
+		if (waypoint->getInternalNote() == name) {
+			string wpName = waypoint->getName();
+			returnWP = waypoint;
+			break;
+		}
+	} 
+	
+	unlock();
+	return returnWP;
 }
+
+
 
 void PlayerObjectImplementation::saveIgnorelist(Player* player) {
 	//TODO:Iterate the ignorelist and save to DB

@@ -17,6 +17,8 @@ class FriendsList;
 
 class WaypointObject;
 
+class PlayerManager;
+
 #include "../scene/SceneObject.h"
 
 class PlayerObject : public SceneObject {
@@ -111,13 +113,23 @@ public:
 
 	void addFriend(string& name, string& inServer);
 
+	void friendsMagicNumberReset();
+
 	void removeFriend(string& name);
 
-	void saveFriendlist(Player* player);
+	void findFriend(string& name, PlayerManager* playerManager);
+
+	void saveFriends();
+
+	void loadFriends();
+
+	void updateAllFriends(PlayerObject* playerObject);
 
 	void saveIgnorelist(Player* player);
 
 	void saveWaypoints(Player* player);
+
+	WaypointObject* searchWaypoint(Player* play, const string& name);
 
 protected:
 	PlayerObject(DummyConstructorParameter* param);
@@ -225,13 +237,23 @@ public:
 
 	void addFriend(string& name, string& inServer);
 
+	void friendsMagicNumberReset();
+
 	void removeFriend(string& name);
 
-	void saveFriendlist(Player* player);
+	void findFriend(string& name, PlayerManager* playerManager);
+
+	void saveFriends();
+
+	void loadFriends();
+
+	void updateAllFriends(PlayerObject* playerObject);
 
 	void saveIgnorelist(Player* player);
 
 	void saveWaypoints(Player* player);
+
+	WaypointObject* searchWaypoint(Player* play, const string& name);
 
 protected:
 	string _param0_addExperience__string_int_bool_;
@@ -241,6 +263,8 @@ protected:
 	string _param0_addFriend__string_string_;
 	string _param1_addFriend__string_string_;
 	string _param0_removeFriend__string_;
+	string _param0_findFriend__string_PlayerManager_;
+	string _param1_searchWaypoint__Player_string_;
 };
 
 class PlayerObjectHelper : public DistributedObjectClassHelper, public Singleton<PlayerObjectHelper> {

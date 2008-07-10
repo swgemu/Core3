@@ -215,9 +215,9 @@ interface Player implements CreatureObject {
 	
 	void updateWaypoint(WaypointObject wp);
 
-	void saveFriendlist(Player player);
 	void saveIgnorelist(Player player);
 	void saveWaypoints(Player player);
+	WaypointObject searchWaypoint(Player play, const string name);
 
 	
 	// Experience

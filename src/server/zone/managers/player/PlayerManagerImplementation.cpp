@@ -423,7 +423,7 @@ void PlayerManagerImplementation::loadFromDatabase(Player* player) {
 		player->setParent(parent, 0xFFFFFFFF);
 	
 	loadWaypoints(player);
-	
+		
 	delete character;
 }
 
@@ -441,16 +441,46 @@ void PlayerManagerImplementation::loadWaypoints(Player* player) {
 		float y = result->getFloat(4);
 					
 		string planetName = result->getString(5);
+		string internalNote = result->getString(7);
 		bool active = result->getInt(6);
 		
 		WaypointObject* wp = new WaypointObject(player, player->getNewItemID());
 		
 		wp->setName(wpName);
 		wp->setPlanetName(planetName);
+		wp->setInternalNote(internalNote);
 		wp->setPosition(x, 0.0f, y);
 		wp->changeStatus(active);
 		player->addWaypoint(wp);
 	}
+	delete result;
+}
+
+void PlayerManagerImplementation::updateOtherFriendlists(Player* player, bool status) {
+	ResultSet* result;
+	stringstream query;
+	string name;
+	
+	try {
+		query.str("");
+		query << "SELECT * FROM friendlist WHERE friend_id = '" << player->getCharacterID() <<"';";
+		result = ServerDatabase::instance()->executeQuery(query);
+			
+		while (result->next()) {
+			name = result->getString(1);
+			Player* playerToInform = playerMap->get(name);
+		
+			if(playerToInform != NULL){			
+				if(playerToInform->isOnline()){	
+					FriendStatusChangeMessage* notifyStatus = new FriendStatusChangeMessage(player->getFirstName(), "Core3", status);
+					playerToInform->sendMessage(notifyStatus);				
+				}			
+			}
+		}
+	} catch (...) {
+		cout << "Exception in PlayerManagerImplementation::updateOtherFriendlists : SELECT * FROM friendlist WHERE friend_id... " << endl;
+	}
+	
 	delete result;
 }
 
@@ -976,6 +1006,8 @@ void PlayerManagerImplementation::updatePlayerCreditsFromDatabase(Player* player
 	BaseMessage* mess = new PlayerMoneyResponseMessage(player);
 	player->sendMessage(mess);
 }
+
+
 
 
 

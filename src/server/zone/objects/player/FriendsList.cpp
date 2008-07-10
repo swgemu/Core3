@@ -8,6 +8,10 @@
 
 #include "Player.h"
 
+#include "../../managers/player/PlayerManager.h"
+
+#include "PlayerObject.h"
+
 /*
  *	FriendsListStub
  */
@@ -36,12 +40,24 @@ int FriendsList::getCount() {
 		return ((FriendsListImplementation*) _impl)->getCount();
 }
 
-string& FriendsList::getFriendsName(const int i) {
+int FriendsList::getMagicNumber() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 7);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((FriendsListImplementation*) _impl)->getMagicNumber();
+}
+
+string& FriendsList::getFriendsName(const int i) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
 		method.addSignedIntParameter(i);
 
 		method.executeWithAsciiReturn(_return_getFriendsName);
@@ -55,7 +71,7 @@ string& FriendsList::getFriendsServer(const int i) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, 9);
 		method.addSignedIntParameter(i);
 
 		method.executeWithAsciiReturn(_return_getFriendsServer);
@@ -69,7 +85,7 @@ void FriendsList::addFriend(string& name, string& inServer) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, 10);
 		method.addAsciiParameter(name);
 		method.addAsciiParameter(inServer);
 
@@ -78,12 +94,24 @@ void FriendsList::addFriend(string& name, string& inServer) {
 		((FriendsListImplementation*) _impl)->addFriend(name, inServer);
 }
 
+void FriendsList::friendsMagicNumberReset() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 11);
+
+		method.executeWithVoidReturn();
+	} else
+		((FriendsListImplementation*) _impl)->friendsMagicNumberReset();
+}
+
 void FriendsList::removeFriend(string& name) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, 12);
 		method.addAsciiParameter(name);
 
 		method.executeWithVoidReturn();
@@ -91,12 +119,63 @@ void FriendsList::removeFriend(string& name) {
 		((FriendsListImplementation*) _impl)->removeFriend(name);
 }
 
+void FriendsList::findFriend(string& name, PlayerManager* playerManager) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 13);
+		method.addAsciiParameter(name);
+		method.addObjectParameter(playerManager);
+
+		method.executeWithVoidReturn();
+	} else
+		((FriendsListImplementation*) _impl)->findFriend(name, playerManager);
+}
+
+void FriendsList::saveFriends() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 14);
+
+		method.executeWithVoidReturn();
+	} else
+		((FriendsListImplementation*) _impl)->saveFriends();
+}
+
+void FriendsList::loadFriends() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 15);
+
+		method.executeWithVoidReturn();
+	} else
+		((FriendsListImplementation*) _impl)->loadFriends();
+}
+
+void FriendsList::updateAllFriends(PlayerObject* playerObject) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 16);
+		method.addObjectParameter(playerObject);
+
+		method.executeWithVoidReturn();
+	} else
+		((FriendsListImplementation*) _impl)->updateAllFriends(playerObject);
+}
+
 void FriendsList::toString() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 17);
 
 		method.executeWithVoidReturn();
 	} else
@@ -118,18 +197,36 @@ Packet* FriendsListAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		resp->insertSignedInt(getCount());
 		break;
 	case 7:
-		resp->insertAscii(getFriendsName(inv->getSignedIntParameter()));
+		resp->insertSignedInt(getMagicNumber());
 		break;
 	case 8:
-		resp->insertAscii(getFriendsServer(inv->getSignedIntParameter()));
+		resp->insertAscii(getFriendsName(inv->getSignedIntParameter()));
 		break;
 	case 9:
-		addFriend(inv->getAsciiParameter(_param0_addFriend__string_string_), inv->getAsciiParameter(_param1_addFriend__string_string_));
+		resp->insertAscii(getFriendsServer(inv->getSignedIntParameter()));
 		break;
 	case 10:
-		removeFriend(inv->getAsciiParameter(_param0_removeFriend__string_));
+		addFriend(inv->getAsciiParameter(_param0_addFriend__string_string_), inv->getAsciiParameter(_param1_addFriend__string_string_));
 		break;
 	case 11:
+		friendsMagicNumberReset();
+		break;
+	case 12:
+		removeFriend(inv->getAsciiParameter(_param0_removeFriend__string_));
+		break;
+	case 13:
+		findFriend(inv->getAsciiParameter(_param0_findFriend__string_PlayerManager_), (PlayerManager*) inv->getObjectParameter());
+		break;
+	case 14:
+		saveFriends();
+		break;
+	case 15:
+		loadFriends();
+		break;
+	case 16:
+		updateAllFriends((PlayerObject*) inv->getObjectParameter());
+		break;
+	case 17:
 		toString();
 		break;
 	default:
@@ -141,6 +238,10 @@ Packet* FriendsListAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 
 int FriendsListAdapter::getCount() {
 	return ((FriendsListImplementation*) impl)->getCount();
+}
+
+int FriendsListAdapter::getMagicNumber() {
+	return ((FriendsListImplementation*) impl)->getMagicNumber();
 }
 
 string& FriendsListAdapter::getFriendsName(const int i) {
@@ -155,8 +256,28 @@ void FriendsListAdapter::addFriend(string& name, string& inServer) {
 	return ((FriendsListImplementation*) impl)->addFriend(name, inServer);
 }
 
+void FriendsListAdapter::friendsMagicNumberReset() {
+	return ((FriendsListImplementation*) impl)->friendsMagicNumberReset();
+}
+
 void FriendsListAdapter::removeFriend(string& name) {
 	return ((FriendsListImplementation*) impl)->removeFriend(name);
+}
+
+void FriendsListAdapter::findFriend(string& name, PlayerManager* playerManager) {
+	return ((FriendsListImplementation*) impl)->findFriend(name, playerManager);
+}
+
+void FriendsListAdapter::saveFriends() {
+	return ((FriendsListImplementation*) impl)->saveFriends();
+}
+
+void FriendsListAdapter::loadFriends() {
+	return ((FriendsListImplementation*) impl)->loadFriends();
+}
+
+void FriendsListAdapter::updateAllFriends(PlayerObject* playerObject) {
+	return ((FriendsListImplementation*) impl)->updateAllFriends(playerObject);
 }
 
 void FriendsListAdapter::toString() {
@@ -212,4 +333,5 @@ void FriendsListServant::_setStub(DistributedObjectStub* stub) {
 DistributedObjectStub* FriendsListServant::_getStub() {
 	return _this;
 }
+
 

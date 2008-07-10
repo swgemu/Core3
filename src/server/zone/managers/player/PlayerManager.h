@@ -67,6 +67,8 @@ public:
 
 	void updatePlayerCreditsToDatabase(Player* player);
 
+	void updateOtherFriendlists(Player* player, bool status);
+
 	void setGuildManager(GuildManager* gmanager);
 
 	Player* putPlayer(Player* player);
@@ -132,6 +134,8 @@ public:
 	void updatePlayerCreditsFromDatabase(Player* player);
 
 	void updatePlayerCreditsToDatabase(Player* player);
+
+	void updateOtherFriendlists(Player* player, bool status);
 
 	void setGuildManager(GuildManager* gmanager);
 
