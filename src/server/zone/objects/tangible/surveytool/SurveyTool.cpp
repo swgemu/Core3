@@ -108,28 +108,28 @@ void SurveyTool::sendSampleEffect(Player* player) {
 		((SurveyToolImplementation*) _impl)->sendSampleEffect(player);
 }
 
-void SurveyTool::surveyRequest(Player* player, unicode& resourceName) {
+void SurveyTool::surveyRequest(Player* player, string& resourceName) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 12);
 		method.addObjectParameter(player);
-		method.addUnicodeParameter(resourceName);
+		method.addAsciiParameter(resourceName);
 
 		method.executeWithVoidReturn();
 	} else
 		((SurveyToolImplementation*) _impl)->surveyRequest(player, resourceName);
 }
 
-void SurveyTool::sampleRequest(Player* player, unicode& resourceName) {
+void SurveyTool::sampleRequest(Player* player, string& resourceName) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 13);
 		method.addObjectParameter(player);
-		method.addUnicodeParameter(resourceName);
+		method.addAsciiParameter(resourceName);
 
 		method.executeWithVoidReturn();
 	} else
@@ -166,10 +166,10 @@ Packet* SurveyToolAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		sendSampleEffect((Player*) inv->getObjectParameter());
 		break;
 	case 12:
-		surveyRequest((Player*) inv->getObjectParameter(), inv->getUnicodeParameter(_param1_surveyRequest__Player_unicode_));
+		surveyRequest((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_surveyRequest__Player_string_));
 		break;
 	case 13:
-		sampleRequest((Player*) inv->getObjectParameter(), inv->getUnicodeParameter(_param1_sampleRequest__Player_unicode_));
+		sampleRequest((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_sampleRequest__Player_string_));
 		break;
 	default:
 		return NULL;
@@ -202,11 +202,11 @@ void SurveyToolAdapter::sendSampleEffect(Player* player) {
 	return ((SurveyToolImplementation*) impl)->sendSampleEffect(player);
 }
 
-void SurveyToolAdapter::surveyRequest(Player* player, unicode& resourceName) {
+void SurveyToolAdapter::surveyRequest(Player* player, string& resourceName) {
 	return ((SurveyToolImplementation*) impl)->surveyRequest(player, resourceName);
 }
 
-void SurveyToolAdapter::sampleRequest(Player* player, unicode& resourceName) {
+void SurveyToolAdapter::sampleRequest(Player* player, string& resourceName) {
 	return ((SurveyToolImplementation*) impl)->sampleRequest(player, resourceName);
 }
 

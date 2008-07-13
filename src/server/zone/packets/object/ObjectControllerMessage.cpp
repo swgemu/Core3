@@ -1950,6 +1950,7 @@ void ObjectControllerMessage::parseSurveyRequest(Player* player, Message* packet
 	
 	unicode resourceName;
 	packet->parseUnicode(resourceName);
+	string resName = resourceName.c_str().c_str();
 	
 	string skillBox = "crafting_artisan_novice";
 	
@@ -1958,7 +1959,7 @@ void ObjectControllerMessage::parseSurveyRequest(Player* player, Message* packet
 			player->sendSystemMessage("You must use a survey tool once from the Inventory before you can do this.");
 			return;
 		}
-		player->getSurveyTool()->surveyRequest(player, resourceName);
+		player->getSurveyTool()->surveyRequest(player, resName);
 	} else {
 		if (player->getSurveyErrorMessage())
 			player->sendSystemMessage("You do not have sufficient abilities to Survey Resources.");
@@ -1970,6 +1971,7 @@ void ObjectControllerMessage::parseSampleRequest(Player* player, Message* packet
 	
 	unicode resourceName;
 	packet->parseUnicode(resourceName);
+	string resName = resourceName.c_str().c_str();
 	
 	string skillBox = "crafting_artisan_novice";
 	
@@ -1978,7 +1980,7 @@ void ObjectControllerMessage::parseSampleRequest(Player* player, Message* packet
 			player->sendSystemMessage("You must use a survey tool once from the Inventory before you can do this.");
 			return;
 		}
-		player->getSurveyTool()->sampleRequest(player, resourceName);
+		player->getSurveyTool()->sampleRequest(player, resName);
 	} else {
 		if (player->getSampleErrorMessage())
 			player->sendSystemMessage("You do not have sufficient abilities to Sample Resource.");

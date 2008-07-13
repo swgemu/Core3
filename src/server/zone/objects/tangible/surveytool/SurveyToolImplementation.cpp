@@ -212,8 +212,7 @@ void SurveyToolImplementation::sendSampleEffect(Player* player) {
 	player->broadcastMessage(effect);
 }
 
-void SurveyToolImplementation::surveyRequest(Player* player, unicode& resource) {
-	string resourceName = resource.c_str().c_str();
+void SurveyToolImplementation::surveyRequest(Player* player, string resourceName) {
 	if (player->getParent() != NULL && player->getParent()->isCell()) {
 		player->sendSystemMessage("You cannot perform survey-related actions inside a structure.");
 		return;
@@ -234,8 +233,7 @@ void SurveyToolImplementation::surveyRequest(Player* player, unicode& resource) 
 	}
 }
 
-void SurveyToolImplementation::sampleRequest(Player* player, unicode& resource) {
-	string resourceName = resource.c_str().c_str();
+void SurveyToolImplementation::sampleRequest(Player* player, string resourceName) {
 	if (player->getParent() != NULL && player->getParent()->isCell()) {
 		player->sendSystemMessage("You cannot perform survey-related actions inside a structure.");
 		return;

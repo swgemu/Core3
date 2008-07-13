@@ -35,9 +35,9 @@ public:
 
 	void sendSampleEffect(Player* player);
 
-	void surveyRequest(Player* player, unicode& resourceName);
+	void surveyRequest(Player* player, string& resourceName);
 
-	void sampleRequest(Player* player, unicode& resourceName);
+	void sampleRequest(Player* player, string& resourceName);
 
 protected:
 	SurveyTool(DummyConstructorParameter* param);
@@ -67,13 +67,13 @@ public:
 
 	void sendSampleEffect(Player* player);
 
-	void surveyRequest(Player* player, unicode& resourceName);
+	void surveyRequest(Player* player, string& resourceName);
 
-	void sampleRequest(Player* player, unicode& resourceName);
+	void sampleRequest(Player* player, string& resourceName);
 
 protected:
-	unicode _param1_surveyRequest__Player_unicode_;
-	unicode _param1_sampleRequest__Player_unicode_;
+	string _param1_surveyRequest__Player_string_;
+	string _param1_sampleRequest__Player_string_;
 };
 
 class SurveyToolHelper : public DistributedObjectClassHelper, public Singleton<SurveyToolHelper> {

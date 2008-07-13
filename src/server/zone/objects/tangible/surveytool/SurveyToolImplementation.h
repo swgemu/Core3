@@ -77,8 +77,8 @@ public:
 	void sendSurveyEffect(Player* player);
 	void sendSampleEffect(Player* player);
 	
-	void surveyRequest(Player* player, unicode& resourceName);
-	void sampleRequest(Player* player, unicode& resourceName);
+	void surveyRequest(Player* player, string resourceName);
+	void sampleRequest(Player* player, string resourceName);
 	
 	inline int getSurveyToolType() {
 		return surveyToolType;	
