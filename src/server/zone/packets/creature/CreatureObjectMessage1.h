@@ -59,7 +59,7 @@ public:
 
 		// Base HAM
 		insertInt(9);
-		insertInt(9);
+		insertInt(creo->getHAMBaseUpdateCounter());
 		insertInt(creo->getBaseHealth());
 		insertInt(creo->getBaseStrength());
 		insertInt(creo->getBaseConstitution());

@@ -105,6 +105,59 @@ public:
 		addLongUpdate(0x09, creo->getTargetID());
 	}
 	
+	
+	void updateMaximumHAMBars() {
+		startUpdate(0x0E);
+				
+		uint32 updatecount = creo->getNewHAMMaxUpdateCounter(9);
+		startList(9, updatecount);
+		
+		uint32 healthCreo = creo->getHealthMax();
+		addBar(0, healthCreo);
+		uint32 strengthCreo = creo->getStrengthMax();
+		addBar(1, strengthCreo);
+		uint32 constCreo = creo->getConstitutionMax();
+		addBar(2, constCreo);
+		uint32 actionCreo = creo->getActionMax();
+		addBar(3, actionCreo);
+		uint32 quicknessCreo = creo->getQuicknessMax();
+		addBar(4, quicknessCreo);
+		uint32 staminaCreo = creo->getStaminaMax();
+		addBar(5, staminaCreo);
+		uint32 mindCreo = creo->getMindMax();
+		addBar(6, mindCreo);
+		uint32 focusCreo = creo->getFocusMax();
+		addBar(7, focusCreo);
+		uint32 willpowerCreo = creo->getWillpowerMax();
+		addBar(8, willpowerCreo);
+	}
+	
+	void updateHAMBars() {
+		startUpdate(0x0D);
+				
+		uint32 updatecount = creo->getNewHAMUpdateCounter(9);
+		startList(9, updatecount);
+		
+		uint32 healthCreo = creo->getHealth();
+		addBar(0, healthCreo);
+		uint32 strengthCreo = creo->getStrength();
+		addBar(1, strengthCreo);
+		uint32 constCreo = creo->getConstitution();
+		addBar(2, constCreo);
+		uint32 actionCreo = creo->getAction();
+		addBar(3, actionCreo);
+		uint32 quicknessCreo = creo->getQuickness();
+		addBar(4, quicknessCreo);
+		uint32 staminaCreo = creo->getStamina();
+		addBar(5, staminaCreo);
+		uint32 mindCreo = creo->getMind();
+		addBar(6, mindCreo);
+		uint32 focusCreo = creo->getFocus();
+		addBar(7, focusCreo);
+		uint32 willpowerCreo = creo->getWillpower();
+		addBar(8, willpowerCreo);
+	}
+	
 	void updateMaximumPrimaryBars(uint32 health, uint32 action, uint32 mind) {
 		startUpdate(0x0E);
 		
@@ -386,6 +439,10 @@ public:
 
 	void addBar(uint16 index, uint32& value, uint32 nvalue) {
 		removeListIntElement(index, value = nvalue);
+	}
+	
+	void addBar(uint16 index, uint32 value) {
+		removeListIntElement(index, value);
 	}
 	
 	void updateMoodID() {

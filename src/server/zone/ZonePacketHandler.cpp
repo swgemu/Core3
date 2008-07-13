@@ -374,7 +374,7 @@ void ZonePacketHandler::handleObjectControllerMessage(Message* pack) {
 	
 	/*stringstream msg;
 	msg << "ObjectControllerMessage(0x" << hex << header1 << ", 0x" << header2 << dec << ")";
-	player->info(msg.str()); */
+	player->info(msg.str()); */ 
 	
 	try {
 		player->wlock();

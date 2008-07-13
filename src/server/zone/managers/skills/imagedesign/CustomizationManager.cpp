@@ -90,6 +90,8 @@ void CustomizationManager::loadCustomizationData() {
 			customization->setSkillModValue(res->getInt(16));
 			customization->setModificationType(res->getString(17));
 			customization->setMaxChoices(res->getInt(18));
+			customization->setMinScale(res->getFloat(19));
+			customization->setMaxScale(res->getFloat(20));
 
 			stringstream speciesGenderCustomization;
 			speciesGenderCustomization << customization->getSpeciesGender() << "_" << customization->getCustomizationName();

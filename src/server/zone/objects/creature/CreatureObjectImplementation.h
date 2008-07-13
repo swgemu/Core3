@@ -97,7 +97,8 @@ protected:
 	string gender;
 
 	string hairObject; //hair object iff string
-	string hairData; //hair customization string
+	CustomizationVariables hairCustomization;
+	//string hairData; //hair customization string
 	
 	string stfName;
 
@@ -180,6 +181,8 @@ protected:
 	// HAM variables
 	uint32 hamUpdateCounter;
 	uint32 hamMaxUpdateCounter;
+	uint32 hamBaseUpdateCounter;
+	uint32 woundsUpdateCounter;
 
 	//CREO1 HAM variables
 	uint32 baseHealth;
@@ -230,12 +233,17 @@ protected:
 	float lightSaber;
 	
 	// WOUND vars
-	
-	uint32 woundsUpdateCounter;
 	uint32 healthWounds;
+	uint32 strengthWounds;
+	uint32 constitutionWounds;
 	uint32 actionWounds;
+	uint32 quicknessWounds;
+	uint32 staminaWounds;
 	uint32 mindWounds;
-	
+	uint32 focusWounds;
+	uint32 willpowerWounds;
+
+	// AKA Battle Fatigue
 	uint32 shockWounds;
 
 	// misc
@@ -437,33 +445,38 @@ public:
 	bool changeHAMWounds(int32 hpwnd, int32 apwnd, int32 mpwnd, bool forcedChange = false);
 	void changeMaxHAMBars(int32 hp, int32 ap, int32 mp);
 	
-	bool changeHealthWoundsBar(int32 wounds, bool forcedChange = false);
-	bool changeActionWoundsBar(int32 wounds, bool forcedChange = false);
-	bool changeMindWoundsBar(int32 wounds, bool forcedChange = false);
-	
+	// Change Current HAM
 	bool changeHealthBar(int32 hp, bool forcedChange = false);
 	bool changeStrengthBar(int32 st, bool forcedChange = false);
 	bool changeConstitutionBar(int32 cs, bool forcedChange = false);
-	
-	void changeMaxHealthBar(int32 hp);
-	void changeMaxStrengthBar(int32 hp);
-	void changeMaxConstitutionBar(int32 hp);
-	
+	bool changeMindBar(int32 mp, bool forcedChange = false);
+	bool changeFocusBar(int32 fc, bool forcedChange = false);
+	bool changeWillpowerBar(int32 wl, bool forcedChange = false);
 	bool changeActionBar(int32 ap, bool forcedChange = false);
 	bool changeQuicknessBar(int32 qc, bool forcedChange = false);
 	bool changeStaminaBar(int32 st, bool forcedChange = false);
 	
+	// Change Max HAM
+	void changeMaxHealthBar(int32 hp);
+	void changeMaxStrengthBar(int32 hp);
+	void changeMaxConstitutionBar(int32 hp);
 	void changeMaxActionBar(int32 hp);
 	void changeMaxQuicknessBar(int32 hp);
 	void changeMaxStaminaBar(int32 hp);
-	
-	bool changeMindBar(int32 mp, bool forcedChange = false);
-	bool changeFocusBar(int32 fc, bool forcedChange = false);
-	bool changeWillpowerBar(int32 wl, bool forcedChange = false);
-	
 	void changeMaxMindBar(int32 hp);
 	void changeMaxFocusBar(int32 hp);
 	void changeMaxWillpowerBar(int32 hp);
+	
+	// Change HAM Wounds
+	bool changeHealthWoundsBar(int32 wounds, bool forcedChange = false);
+	bool changeStrengthWoundsBar(int32 wounds, bool forcedChange = false);
+	bool changeConstitutionWoundsBar(int32 wounds, bool forcedChange = false);
+	bool changeActionWoundsBar(int32 wounds, bool forcedChange = false);
+	bool changeQuicknessWoundsBar(int32 wounds, bool forcedChange = false);
+	bool changeStaminaWoundsBar(int32 wounds, bool forcedChange = false);
+	bool changeMindWoundsBar(int32 wounds, bool forcedChange = false);
+	bool changeFocusWoundsBar(int32 wounds, bool forcedChange = false);
+	bool changeWillpowerWoundsBar(int32 wounds, bool forcedChange = false);
 	
 	void changeConditionDamage(int amount);
 	
@@ -474,34 +487,50 @@ public:
 	void setMaxHAMBars(uint32 hp, uint32 ap, uint32 mp);
 	void setHAMBars(uint32 hp, uint32 ap, uint32 mp);
 	void setHAMWoundsBars(uint32 hpwnds, uint32 acwnds, uint32 mpwnds);
-	
-	void setHealthWoundsBar(uint32 wnds);
-	void setActionWoundsBar(uint32 wnds);
-	void setMindWoundsBar(uint32 wnds);
-	
+
+	// Set Current HAM
 	void setHealthBar(uint32 hp);
 	void setStrengthBar(uint32 st);
 	void setConstitutionBar(uint32 cst);
-	
-	void setMaxHealthBar(uint32 hp, bool updateClient = true);
-	void setMaxStrengthBar(uint32 st, bool updateClient = true);
-	void setMaxConstitutionBar(uint32 cst, bool updateClient = true);
-	
 	void setActionBar(uint32 ap);
 	void setQuicknessBar(uint32 qck);
 	void setStaminaBar(uint32 sta);
-	
-	void setMaxActionBar(uint32 ap, bool updateClient = true);
-	void setMaxQuicknessBar(uint32 qck, bool updateClient = true);
-	void setMaxStaminaBar(uint32 sta, bool updateClient = true);
-	
 	void setMindBar(uint32 mp);
 	void setFocusBar(uint32 fc);
 	void setWillpowerBar(uint32 will);
 	
+	// Set Base HAM
+	void setBaseHealthBar(uint32 hp, bool updateClient = true);
+	void setBaseStrengthBar(uint32 st, bool updateClient = true);
+	void setBaseConstitutionBar(uint32 cst, bool updateClient = true);
+	void setBaseActionBar(uint32 ap, bool updateClient = true);
+	void setBaseQuicknessBar(uint32 qck, bool updateClient = true);
+	void setBaseStaminaBar(uint32 sta, bool updateClient = true);
+	void setBaseMindBar(uint32 mp, bool updateClient = true);
+	void setBaseFocusBar(uint32 fc, bool updateClient = true);
+	void setBaseWillpowerBar(uint32 will, bool updateClient = true);
+
+	// Set Max HAM
+	void setMaxHealthBar(uint32 hp, bool updateClient = true);
+	void setMaxStrengthBar(uint32 st, bool updateClient = true);
+	void setMaxConstitutionBar(uint32 cst, bool updateClient = true);
+	void setMaxActionBar(uint32 ap, bool updateClient = true);
+	void setMaxQuicknessBar(uint32 qck, bool updateClient = true);
+	void setMaxStaminaBar(uint32 sta, bool updateClient = true);
 	void setMaxMindBar(uint32 mp, bool updateClient = true);
 	void setMaxFocusBar(uint32 fc, bool updateClient = true);
 	void setMaxWillpowerBar(uint32 will, bool updateClient = true);
+
+	// Set HAM Wounds
+	void setHealthWoundsBar(uint32 wounds);
+	void setStrengthWoundsBar(uint32 wounds);
+	void setConstitutionWoundsBar(uint32 wounds);
+	void setActionWoundsBar(uint32 wounds);
+	void setQuicknessWoundsBar(uint32 wounds);
+	void setStaminaWoundsBar(uint32 wounds);
+	void setMindWoundsBar(uint32 wounds);
+	void setFocusWoundsBar(uint32 wounds);
+	void setWillpowerWoundsBar(uint32 wounds);
 	
 	void calculateHAMregen();
 	float calculateBFRatio();
@@ -1038,6 +1067,9 @@ public:
 		customization = cust;
 	}
 
+	inline void setHairAppearance(const string& cust) {
+		hairCustomization = cust;
+	}
 	
 	inline void setAppearanceAttribute(uint8 type, uint8 value) {
 		customization.setVariable(type, value);
@@ -1050,6 +1082,19 @@ public:
 		
 		// TODO send packet update?
 	}
+
+	inline void setHairAppearanceAttribute(uint8 type, uint8 value) {
+		hairCustomization.setVariable(type, value);
+		
+		// TODO send packet update?
+	}
+	
+	inline void setHairAppearanceAttribute(string type, uint8 value) {
+		hairCustomization.setVariable(type, value);
+		
+		// TODO send packet update?
+	}
+
 	
 	void updateCharacterAppearance();
 	
@@ -1085,6 +1130,10 @@ public:
 	inline void setPvpStatusBitmask(uint32 mask) {
 		pvpStatusBitmask = mask;
 	}
+	
+	void updateHAMBars();
+	
+	void updateBaseStats();
 	
 	inline void setBaseHealth(uint32 value) {
 		baseHealth = value;
@@ -1238,14 +1287,37 @@ public:
 		healthWounds = wounds;
 	}
 
+	inline void setStrengthWounds(uint32 wounds) {
+		strengthWounds = wounds;
+	}
+	
+	inline void setConstitutionWounds(uint32 wounds) {
+		constitutionWounds = wounds;
+	}
+	
 	inline void setActionWounds(uint32 wounds) {
 		actionWounds = wounds;
 	}
 
+	inline void setQuicknessWounds(uint32 wounds) {
+		quicknessWounds = wounds;
+	}
+	
+	inline void setStaminaWounds(uint32 wounds) {
+		staminaWounds = wounds;
+	}
+	
 	inline void setMindWounds(uint32 wounds) {
 		mindWounds = wounds;
 	}
 	
+	inline void setFocusWounds(uint32 wounds) {
+		focusWounds = wounds;
+	}
+	
+	inline void setWillpowerWounds(uint32 wounds) {
+		willpowerWounds = wounds;
+	}
 	inline void setShockWounds(uint32 wounds) {
 		shockWounds = wounds;
 	}
@@ -1279,6 +1351,12 @@ public:
 		customization.toString(appearance);
 		//appearance = customization;
 	}
+	
+	inline void getHairAppearance(string& appearance) {
+		hairCustomization.toString(appearance);
+		//appearance = customization;
+	}
+
 	
 	inline string& getRaceName() {
 		return raceName;
@@ -1518,15 +1596,39 @@ public:
 	inline uint32 getHealthWounds() {
 		return healthWounds;
 	}
-
+	
+	inline uint32 getStrengthWounds() {
+		return strengthWounds;
+	}
+	
+	inline uint32 getConstitutionWounds() {
+		return constitutionWounds;
+	}
+	
 	inline uint32 getActionWounds() {
 		return actionWounds;
 	}
 
+	inline uint32 getQuicknessWounds() {
+		return quicknessWounds;
+	}
+	
+	inline uint32 getStaminaWounds() {
+		return staminaWounds;
+	}
+	
 	inline uint32 getMindWounds() {
 		return mindWounds;
 	}
 
+	inline uint32 getFocusWounds() {
+		return focusWounds;
+	}
+	
+	inline uint32 getWillpowerWounds() {
+		return willpowerWounds;
+	}
+	
 	inline uint32 getShockWounds() {
 		return shockWounds;
 	}
@@ -1545,6 +1647,14 @@ public:
 	
 	inline uint32 getNewHAMMaxUpdateCounter(int cnt) {
 			return hamMaxUpdateCounter += cnt;
+	}
+
+	inline uint32 getHAMBaseUpdateCounter() {
+		return hamBaseUpdateCounter;
+	}
+	
+	inline uint32 getNewHAMBaseUpdateCounter(int cnt) {
+			return hamBaseUpdateCounter += cnt;
 	}
 
 	inline uint32 getWoundsUpdateCounter() {

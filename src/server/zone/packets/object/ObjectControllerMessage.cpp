@@ -420,6 +420,12 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player, Message* 
 	case (0xCA604B86): //requestbadges
 	   	parseBadgesRequest(player, pack);
 	   	break;
+	case (0x7AFCA539): //requeststatmigrationdata
+	   	parseStatMigrationDataRequest(player, pack);
+	   	break;
+	case (0xE7407732): //requestsetstatmigrationdata
+		parseSetStatMigrationDataRequest(player, pack);
+		break;
 	case (0x1BAD8FFC): //requestbiography
 	   	parseBiographyRequest(player, pack);
 	   	break;
@@ -824,12 +830,77 @@ void ObjectControllerMessage::parseNpcStopConversation(Player* player, Message* 
 	}
 }
 
+void ObjectControllerMessage::parseStatMigrationDataRequest(Player* player, Message* pack) {
+	uint64 objectid = pack->parseLong();
+				
+	StatMigrationTargetsMessage* smtm = new StatMigrationTargetsMessage(player);
+	player->sendMessage(smtm);
+}
+
+void ObjectControllerMessage::parseSetStatMigrationDataRequest(Player* player, Message* pack) {
+	uint64 objectid = pack->parseLong();
+				
+	unicode stats = unicode("");
+	pack->parseUnicode(stats);
+	
+	//player->info(stats.c_str());
+	
+	StringTokenizer tokenizer(stats.c_str());
+	tokenizer.setDelimeter(" ");
+
+	for(int i = 0; tokenizer.hasMoreTokens(); i++) {
+		uint32 value = tokenizer.getIntToken();
+		switch(i) {
+			case 0:
+				player->setTargetHealth(value);
+				break;
+			case 1:
+				player->setTargetStrength(value);
+				break;
+			case 2:
+				player->setTargetConstitution(value);
+				break;
+			case 3:
+				player->setTargetAction(value);
+				break;
+			case 4:
+				player->setTargetQuickness(value);
+				break;
+			case 5:
+				player->setTargetStamina(value);
+				break;
+			case 6:
+				player->setTargetMind(value);
+				break;
+			case 7:
+				player->setTargetFocus(value);
+				break;
+			case 8:
+				player->setTargetWillpower(value);
+				break;
+			default: // points available
+				break;
+		}
+	}
+	//if (tokenizer.hasMoreTokens()) {
+	//	uint64 targetID = tokenizer.getLongToken();
+	//	
+	//	player->applyAttachment(attachmentID, targetID);		
+	//}
+
+	
+	//StatMigrationTargetsMessage* smtm = new StatMigrationTargetsMessage(player);
+	//player->sendMessage(smtm);
+}
+
+
 void ObjectControllerMessage::parseCharacterSheetInfoRequest(Player* player, Message* pack) {
 	uint64 objectid = pack->parseLong();
 	
 	CharacterSheetResponseMessage* csrm = new CharacterSheetResponseMessage(objectid);
 	player->sendMessage(csrm);
 }
+
 
 void ObjectControllerMessage::parseBiographyRequest(Player* player, Message *pack) {
 	uint64 objectid = pack->parseLong();
@@ -1012,16 +1083,11 @@ void ObjectControllerMessage::parseRadialRequest(Player* player, Message* pack, 
 }
 
 void ObjectControllerMessage::parseImageDesignChange(Player* player, Message* pack, ZoneProcessServerImplementation* serv) {
-
-	// This works - but not ready to uncomment code yet
 	try {
 		/*player->sendSystemMessage("Image Designer Update");
 		player->info("Image Design Change - Original Packet");
 		player->info(pack->toString());*/
-	
 
-		//target_player->sendMessage(msg_target);
-		
 		// Read the Packet
 		uint64 object = pack->parseLong();
 		pack->shiftOffset(4); // size ?
@@ -1039,7 +1105,7 @@ void ObjectControllerMessage::parseImageDesignChange(Player* player, Message* pa
 		// Parse
 		string hairObject;
 		pack->parseAscii(hairObject);
-	
+
 		// Pack 
 		msg_designer->insertAscii(hairObject);
 		msg_target->insertAscii(hairObject);
@@ -1086,7 +1152,7 @@ void ObjectControllerMessage::parseImageDesignChange(Player* player, Message* pa
 		msg_target->insertInt(target_accepted);
 		
 		// Parse
-		uint8 stat_migration = pack->parseByte(); // big ????
+		uint8 stat_migration = pack->parseByte();
 		
 		// Pack (I didn't find this byte in the live server->client)
 		msg_designer->insertByte(stat_migration);
@@ -1103,10 +1169,6 @@ void ObjectControllerMessage::parseImageDesignChange(Player* player, Message* pa
 		msg_designer->insertInt(unknown_int_5);
 		msg_designer->insertInt(unknown_int_6);
 		msg_designer->insertInt(unknown_int_7);
-		//msg_designer->insertInt(0x09);
-		//msg_designer->insertInt(0x0C);
-		//msg_designer->insertInt(0x09);
-		//msg_designer->insertInt(0x0C);
 		
 		msg_target->insertInt(unknown_int_4);
 		msg_target->insertInt(unknown_int_5);
@@ -1123,14 +1185,22 @@ void ObjectControllerMessage::parseImageDesignChange(Player* player, Message* pa
 		SceneObject* target_object = player->getZone()->lookupObject(target);
 		SceneObject* designer_object = player->getZone()->lookupObject(designer);
 		
+		bool commitChanges = false;
+		if (designer_accepted == 1 && 
+			target_object == designer_object && 
+			target_object != NULL )
+			commitChanges = true;
+			
+		if (target_accepted == 1 && 
+			designer_accepted == 1 && 
+			target_object != designer_object && 
+			target_object != NULL )
+			commitChanges = true;
+		
 		// This is a helper class for a bunch of the embedded logic
 		ImageDesignCustomization* customization = NULL;
-		if(target_accepted == 1 && designer_accepted == 1 && target_object != NULL)
+		if(commitChanges)
 			customization = new ImageDesignCustomization(serv, ((CreatureObject *)target_object));
-		
-		//stringstream msg;
-		//msg << "imagedesignerupdate, object:" << hex << object << dec << " target:" << hex << target << dec << " tent: " << hex << tent ;
-	
 		
 		// Parse
 		if(size_float_attrs > 0)
@@ -1142,14 +1212,13 @@ void ObjectControllerMessage::parseImageDesignChange(Player* player, Message* pa
 				pack->parseAscii(attr);
 				float val = pack->parseFloat();
 				
-				//msg << " int attr: " << attr << " val: " << val;
 				// Pack
 				msg_designer->insertAscii(attr);
 				msg_designer->insertFloat(val);
 				msg_target->insertAscii(attr);
 				msg_target->insertFloat(val);
 				
-				if(target_accepted == 1 && designer_accepted == 1)
+				if(commitChanges)
 					customization->updateCustomization(attr, val);
 			}
 		}
@@ -1160,9 +1229,7 @@ void ObjectControllerMessage::parseImageDesignChange(Player* player, Message* pa
 		// Pack
 		msg_designer->insertInt(size_int_attrs);
 		msg_target->insertInt(size_int_attrs);
-		
 
-		
 		// Parse
 		if(size_int_attrs > 0)
 		{
@@ -1173,14 +1240,13 @@ void ObjectControllerMessage::parseImageDesignChange(Player* player, Message* pa
 				pack->parseAscii(attr);
 				uint32 val = pack->parseInt();
 				
-				//msg << " float attr: " << attr << " val: " << val;
 				// Pack
 				msg_designer->insertAscii(attr.c_str());
 				msg_designer->insertInt(val);
 				msg_target->insertAscii(attr.c_str());
 				msg_target->insertInt(val);
 				
-				if(target_accepted == 1 && designer_accepted == 1)
+				if(commitChanges)
 					customization->updateCustomization(attr, val);
 			}
 		}
@@ -1199,15 +1265,10 @@ void ObjectControllerMessage::parseImageDesignChange(Player* player, Message* pa
 		{
 			
 			// do something else?
-		} else if(player->getObjectID() == designer) {
-			
-			if(target_object != NULL) {
-				//((Player *)target_object)->sendSystemMessage("update from designer!");
-				//player->info(msg.str()); 
-				//player->info(msg_target->toString());
+		} else if(player->getObjectID() == designer) {			
+			if(target_object != NULL)
 				((Player *)target_object)->sendMessage(msg_target);
-					
-			}
+
 		// If from target send to designer
 		} else if(player->getObjectID() == target) {
 			
@@ -1219,19 +1280,59 @@ void ObjectControllerMessage::parseImageDesignChange(Player* player, Message* pa
 			}
 		}
 		
-		if(target_accepted == 1 && designer_accepted == 1) {
+		if(commitChanges) {
+
+			//Update Hair
+			if (!hairObject.empty()) {
+				int idx = hairObject.find("hair_", 0);
+				if (idx != -1) {
+					hairObject.replace(idx, 5, "shared_hair_");
+					player->setHairObject(hairObject);
+					player->updateHair();
+					/*stringstream msg;
+					msg << "imagedesignerupdate, hairObject:" << hex << hairObject;
+					((Player *)target_object)->sendSystemMessage(msg.str());*/
+					
+				}
+			}
+			
+			// Stat Migration
+			if(stat_migration > 0)
+			{				
+				if(player->getBaseHealth() != player->getTargetHealth())
+					player->setBaseHealthBar(player->getTargetHealth());
+				
+				if(player->getBaseStrength() != player->getTargetStrength())
+					player->setBaseStrengthBar(player->getTargetStrength());
+				
+				if(player->getBaseConstitution() != player->getTargetConstitution())
+					player->setBaseConstitutionBar(player->getTargetConstitution());
+				
+				if(player->getBaseAction() != player->getTargetAction())		
+					player->setBaseActionBar(player->getTargetAction());
+				
+				if(player->getBaseQuickness() != player->getTargetQuickness())
+					player->setBaseQuicknessBar(player->getTargetQuickness());
+				
+				if(player->getBaseStamina() != player->getTargetStamina())
+					player->setBaseStaminaBar(player->getTargetStamina());
+				
+				if(player->getBaseMind() != player->getTargetMind())
+					player->setBaseMindBar(player->getTargetMind());
+				
+				if(player->getBaseFocus() != player->getTargetFocus())
+					player->setBaseFocusBar(player->getTargetFocus());
+				
+				if(player->getBaseWillpower() != player->getTargetWillpower())
+					player->setBaseWillpowerBar(player->getTargetWillpower());
+			}
+			
 			if(customization != NULL)
 				delete customization;
 
 			if(target_object != NULL)
 				((CreatureObject *)target_object)->updateCharacterAppearance();
 		}
-
-	
-		// Yeah!
-	
-		//player->sendSystemMessage("Target");
-		
 		
 	} catch (...) {
 		cout << "unreported ObjectControllerMessage::parseImageDesignChange(Player* player, Message* pack) exception\n";
@@ -1240,8 +1341,180 @@ void ObjectControllerMessage::parseImageDesignChange(Player* player, Message* pa
 }
 
 void ObjectControllerMessage::parseImageDesignCancel(Player* player, Message* pack) {
-/*	player->sendSystemMessage("Image Designer Cancel");
-	player->info(pack->toString()); */
+	// TODO combine these functions together
+	try {
+		// Read the Packet
+		uint64 object = pack->parseLong();
+		pack->shiftOffset(4); // size ?
+		
+		uint64 designer = pack->parseLong();
+		uint64 target = pack->parseLong();
+		uint64 tent = pack->parseLong();
+		
+		uint8 type = pack->parseByte();
+	
+		ImageDesignRejectMessage* msg_designer = new ImageDesignRejectMessage(designer, designer, target, tent, 0);
+		ImageDesignRejectMessage* msg_target = new ImageDesignRejectMessage(target, designer, target, tent, 0);
+		
+
+		// Parse
+		string hairObject;
+		pack->parseAscii(hairObject);
+
+		// Pack 
+		msg_designer->insertAscii(hairObject);
+		msg_target->insertAscii(hairObject);
+	
+		// Parse
+		string unknownstring_1;
+		pack->parseAscii(unknownstring_1);
+	
+		// Pack 
+		msg_designer->insertAscii(unknownstring_1);
+		msg_target->insertAscii(unknownstring_1);
+		
+		uint32 unknown_int_1 = pack->parseInt(); //  02 00 00 00  was set in stat migration button, zero for other?
+		uint32 timestamp = pack->parseInt(); //   timestamp 1212950001 (2008-06-8 18:33:21Z)	
+	
+		// Pack 
+		msg_designer->insertInt(unknown_int_1);
+		msg_designer->insertInt(timestamp);
+		msg_target->insertInt(unknown_int_1);
+		msg_target->insertInt(timestamp);
+		
+		// Parse
+		uint32 required_payment = pack->parseInt();
+		uint32 offered_payment = pack->parseInt();
+	
+		// Pack 
+		msg_designer->insertInt(required_payment);
+		msg_designer->insertInt(offered_payment);
+		msg_target->insertInt(required_payment);
+		msg_target->insertInt(offered_payment);
+		
+		uint8 designer_accepted = pack->parseByte();
+	
+		// Pack 
+		msg_designer->insertByte(designer_accepted);
+		msg_target->insertByte(designer_accepted);
+		
+		// Parse
+		uint32 target_accepted = pack->parseInt();
+	
+		//Pack
+		msg_designer->insertInt(target_accepted);
+		//msg_designer->insertInt(0x02);
+		msg_target->insertInt(target_accepted);
+		
+		// Parse
+		uint8 stat_migration = pack->parseByte();
+		
+		// Pack (I didn't find this byte in the live server->client)
+		msg_designer->insertByte(stat_migration);
+		msg_target->insertByte(stat_migration); 
+		
+		// Parse
+		uint32 unknown_int_4 = pack->parseInt();
+		uint32 unknown_int_5 = pack->parseInt();
+		uint32 unknown_int_6 = pack->parseInt();
+		uint32 unknown_int_7 = pack->parseInt();
+	
+		// Pack
+		msg_designer->insertInt(unknown_int_4);
+		msg_designer->insertInt(unknown_int_5);
+		msg_designer->insertInt(unknown_int_6);
+		msg_designer->insertInt(unknown_int_7);
+		
+		msg_target->insertInt(unknown_int_4);
+		msg_target->insertInt(unknown_int_5);
+		msg_target->insertInt(unknown_int_6);
+		msg_target->insertInt(unknown_int_7);
+		
+		// Parse
+		uint32 size_float_attrs = pack->parseInt();
+		
+		// Pack
+		msg_designer->insertInt(size_float_attrs);
+		msg_target->insertInt(size_float_attrs);
+						
+		// Parse
+		if(size_float_attrs > 0)
+		{
+			for(int i = 0; i < size_float_attrs; i++)
+			{
+				// do something later
+				string attr;
+				pack->parseAscii(attr);
+				float val = pack->parseFloat();
+				
+				// Pack
+				msg_designer->insertAscii(attr);
+				msg_designer->insertFloat(val);
+				msg_target->insertAscii(attr);
+				msg_target->insertFloat(val);
+			}
+		}
+	
+		// Parse
+		uint32 size_int_attrs = pack->parseInt();
+		
+		// Pack
+		msg_designer->insertInt(size_int_attrs);
+		msg_target->insertInt(size_int_attrs);
+
+		// Parse
+		if(size_int_attrs > 0)
+		{
+			for(int i = 0; i < size_int_attrs; i++)
+			{
+				// do something later
+				string attr;
+				pack->parseAscii(attr);
+				uint32 val = pack->parseInt();
+				
+				// Pack
+				msg_designer->insertAscii(attr.c_str());
+				msg_designer->insertInt(val);
+				msg_target->insertAscii(attr.c_str());
+				msg_target->insertInt(val);
+			}
+		}
+	
+		// Parse
+		string emote;
+		pack->parseAscii(emote);
+		
+		// Pack
+		msg_designer->insertAscii(emote);
+		msg_target->insertAscii(emote);
+					
+		SceneObject* target_object = player->getZone()->lookupObject(target);
+		SceneObject* designer_object = player->getZone()->lookupObject(designer);
+
+		// If from designer send to target
+		if(designer == target)
+		{
+			
+			// do something else?
+		} else if(player->getObjectID() == designer) {			
+			if(target_object != NULL)
+				((Player *)target_object)->sendMessage(msg_target);
+
+		// If from target send to designer
+		} else if(player->getObjectID() == target) {
+			
+			if(designer_object != NULL) {
+				//((Player *)designer_object)->sendSystemMessage("update from target!");
+				//player->info(msg.str()); 
+				//player->info(msg_designer->toString());
+				((Player *)designer_object)->sendMessage(msg_designer);
+			}
+		}
+		
+		
+	} catch (...) {
+		cout << "unreported ObjectControllerMessage::parseImageDesignReject(Player* player, Message* pack) exception\n";
+	}
 }
 
 void ObjectControllerMessage::parseSetCurrentSkillTitle(Player* player, Message* pack) {

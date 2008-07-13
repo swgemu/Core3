@@ -142,7 +142,9 @@ bool PlayerManagerImplementation::create(Player* player, uint32 sessionkey) {
 	cust.encode(appearance);
 	
 	string hairdata;
-	BinaryData hair(player->getHairData());
+	string hairApp;
+	player->getHairAppearance(hairApp);
+	BinaryData hair(hairApp);
 	hair.encode(hairdata);
 
 	player->createBaseStats();
@@ -367,7 +369,7 @@ void PlayerManagerImplementation::loadFromDatabase(Player* player) {
 	BinaryData hair(hairData);
 	string hData;
 	hair.decode(hData);
-	player->setHairData(hData);
+	player->setHairAppearance(hData);
 
 	int raceID = character->getInt(7);
 	player->setObjectCRC(Races::getRaceCRC(raceID));

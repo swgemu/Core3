@@ -147,59 +147,84 @@ interface CreatureObject implements SceneObject {
 	boolean takeActionDamage(int damage); // we can now pass damage to a damage function 
 	boolean takeMindDamage(int damage);   // using positive values for damage
 
-	boolean changeHealthWoundsBar(int wounds, boolean forcedChange = false);
-	boolean changeActionWoundsBar(int wounds, boolean forcedChange = false);
-	boolean changeMindWoundsBar(int wounds, boolean forcedChange = false);
-	
+	// Change Current HAM
 	boolean changeHealthBar(int hp, boolean forcedChange = false);
 	boolean changeStrengthBar(int st, boolean forcedChange = false);
 	boolean changeConstitutionBar(int cs, boolean forcedChange = false);
-	
-	void changeMaxHealthBar(int hp);
-	void changeMaxStrengthBar(int hp);
-	void changeMaxConstitutionBar(int hp);
-
-	void changeShockWounds(int bf);
-	
 	boolean changeActionBar(int ap, boolean forcedChange = false);
 	boolean changeQuicknessBar(int qc, boolean forcedChange = false);
 	boolean changeStaminaBar(int st, boolean forcedChange = false);
-	
-	void changeMaxActionBar(int hp);
-	void changeMaxQuicknessBar(int hp);
-	void changeMaxStaminaBar(int hp);
-	
 	boolean changeMindBar(int mp, boolean forcedChange = false);
 	boolean changeFocusBar(int fc, boolean forcedChange = false);
 	boolean changeWillpowerBar(int wl, boolean forcedChange = false);
-	
+
+	// Change Max HAM
+	void changeMaxHealthBar(int hp);
+	void changeMaxStrengthBar(int hp);
+	void changeMaxConstitutionBar(int hp);
+	void changeMaxActionBar(int hp);
+	void changeMaxQuicknessBar(int hp);
+	void changeMaxStaminaBar(int hp);
 	void changeMaxMindBar(int hp);
 	void changeMaxFocusBar(int hp);
 	void changeMaxWillpowerBar(int hp);
 
+	// Change HAM Wounds
+	boolean changeHealthWoundsBar(int wounds, boolean forcedChange = false);
+	boolean changeStrengthWoundsBar(int wounds, boolean forcedChange = false);
+	boolean changeConstitutionWoundsBar(int wounds, boolean forcedChange = false);
+	boolean changeActionWoundsBar(int wounds, boolean forcedChange = false);
+	boolean changeQuicknessWoundsBar(int wounds, boolean forcedChange = false);
+	boolean changeStaminaWoundsBar(int wounds, boolean forcedChange = false);
+	boolean changeMindWoundsBar(int wounds, boolean forcedChange = false);
+	boolean changeFocusWoundsBar(int wounds, boolean forcedChange = false);
+	boolean changeWillpowerWoundsBar(int wounds, boolean forcedChange = false);
+
+	void changeShockWounds(int bf);
+	
+	// Set Current HAM
 	void setHealthBar(unsigned int hp);
 	void setStrengthBar(unsigned int st);
 	void setConstitutionBar(unsigned int cst);
-	
-	void setMaxHealthBar(unsigned int hp, boolean updateClient = true);
-	void setMaxStrengthBar(unsigned int st, boolean updateClient = true);
-	void setMaxConstitutionBar(unsigned int cst, boolean updateClient = true);
-	
 	void setActionBar(unsigned int ap);
 	void setQuicknessBar(unsigned int qck);
 	void setStaminaBar(unsigned int sta);
-	
-	void setMaxActionBar(unsigned int ap, boolean updateClient = true);
-	void setMaxQuicknessBar(unsigned int qck, boolean updateClient = true);
-	void setMaxStaminaBar(unsigned int sta, boolean updateClient = true);
-	
 	void setMindBar(unsigned int mp);
 	void setFocusBar(unsigned int fc);
 	void setWillpowerBar(unsigned int will);
-	
+
+	// Set Base HAM	
+	void setBaseHealthBar(unsigned int hp, boolean updateClient = true);
+	void setBaseStrengthBar(unsigned int st, boolean updateClient = true);
+	void setBaseConstitutionBar(unsigned int cst, boolean updateClient = true);	
+	void setBaseActionBar(unsigned int ap, boolean updateClient = true);
+	void setBaseQuicknessBar(unsigned int qck, boolean updateClient = true);
+	void setBaseStaminaBar(unsigned int sta, boolean updateClient = true);	
+	void setBaseMindBar(unsigned int mp, boolean updateClient = true);
+	void setBaseFocusBar(unsigned int fc, boolean updateClient = true);
+	void setBaseWillpowerBar(unsigned int will, boolean updateClient = true);
+
+	// Set Max HAM	
+	void setMaxHealthBar(unsigned int hp, boolean updateClient = true);
+	void setMaxStrengthBar(unsigned int st, boolean updateClient = true);
+	void setMaxConstitutionBar(unsigned int cst, boolean updateClient = true);	
+	void setMaxActionBar(unsigned int ap, boolean updateClient = true);
+	void setMaxQuicknessBar(unsigned int qck, boolean updateClient = true);
+	void setMaxStaminaBar(unsigned int sta, boolean updateClient = true);	
 	void setMaxMindBar(unsigned int mp, boolean updateClient = true);
 	void setMaxFocusBar(unsigned int fc, boolean updateClient = true);
 	void setMaxWillpowerBar(unsigned int will, boolean updateClient = true);
+	
+	// Set HAM Wounds
+	void setHealthWoundsBar(unsigned int  wnds);
+	void setStrengthWoundsBar(unsigned int  wnds);
+	void setConstitutionWoundsBar(unsigned int  wnds);
+	void setActionWoundsBar(unsigned int  wnds);
+	void setQuicknessWoundsBar(unsigned int  wnds);
+	void setStaminaWoundsBar(unsigned int  wnds);
+	void setMindWoundsBar(unsigned int  wnds);
+	void setFocusWoundsBar(unsigned int  wnds);
+	void setWillpowerWoundsBar(unsigned int  wnds);
 	
 	boolean hasAttackDelay();
 	void clearAttackDelay();
@@ -398,6 +423,7 @@ interface CreatureObject implements SceneObject {
 	string getTerrainName();
 
 	void getCharacterAppearance(string appearance);
+	void getHairAppearance(string appearance);
 	
 	boolean isOvert();
 	
@@ -419,6 +445,9 @@ interface CreatureObject implements SceneObject {
 	
 	unsigned int getWoundsUpdateCounter();
 	unsigned int getNewWoundsUpdateCounter(int upd);
+	
+	void updateHAMBars();
+	void updateBaseStats();
 	
 	unsigned int getBaseHealth();
 	unsigned int getBaseStrength();
@@ -454,8 +483,14 @@ interface CreatureObject implements SceneObject {
 	float getArmorResist(int resistType);
 	
 	unsigned int getHealthWounds();
+	unsigned int getStrengthWounds();
+	unsigned int getConstitutionWounds();
 	unsigned int getActionWounds();
+	unsigned int getQuicknessWounds();
+	unsigned int getStaminaWounds();
 	unsigned int getMindWounds();
+	unsigned int getFocusWounds();
+	unsigned int getWillpowerWounds();
 
 	unsigned int getShockWounds();
 	
@@ -463,6 +498,8 @@ interface CreatureObject implements SceneObject {
 	unsigned int getNewHAMUpdateCounter(int cnt);
 	unsigned int getHAMMaxUpdateCounter();
 	unsigned int getNewHAMMaxUpdateCounter(int cnt);
+	unsigned int getHAMBaseUpdateCounter();
+	unsigned int getNewHAMBaseUpdateCounter(int cnt);
 	
 	unsigned int getHealthEncumbrance();
 	unsigned int getActionEncumbrance();
@@ -549,8 +586,14 @@ interface CreatureObject implements SceneObject {
 	void setArmor(unsigned int ar);
 
 	void setHealthWounds(unsigned int wounds);
+	void setStrengthWounds(unsigned int wounds);
+	void setConstitutionWounds(unsigned int wounds);
 	void setActionWounds(unsigned int wounds);
+	void setQuicknessWounds(unsigned int wounds);
+	void setStaminaWounds(unsigned int wounds);
 	void setMindWounds(unsigned int wounds);
+	void setFocusWounds(unsigned int wounds);
+	void setWillpowerWounds(unsigned int wounds);
 
 	void setShockWounds(unsigned int wounds);
 
@@ -597,6 +640,9 @@ interface CreatureObject implements SceneObject {
 	void setAppearanceAttribute(string type, unsigned char value);
 	void updateCharacterAppearance();
 	
+	void setHairAppearance(string cust);
+	void setHairAppearanceAttribute(unsigned char type, unsigned char value);
+	void setHairAppearanceAttribute(string type, unsigned char value);
 	
 	void setRaceName(const string name);
 	void setSpeciesName(const string name);

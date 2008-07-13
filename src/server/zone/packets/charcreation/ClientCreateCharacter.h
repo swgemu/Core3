@@ -56,18 +56,6 @@ public:
 		string customization;
 		pack->parseAscii(customization);
 		
-		/*stringstream message;
-		message << "Character Appearance:  " << uppercase << hex;
-		for (int i = 0; i < customization.size(); ++i) {
-			unsigned int byte = ((unsigned int )customization[i]) & 0xFF; 
-			
-			if ((byte & 0xF0) == 0)
-				message << "0" << byte  << " ";
-			else
-				message << byte  << " ";
-		}
-		player->info(message.str()); */
-		
 		player->setCharacterAppearance(customization);
 
 		unicode characterName;
@@ -110,7 +98,7 @@ public:
 		
 		string haircust;
 		pack->parseAscii(haircust); //grab the hair cust data
-		player->setHairData(haircust);
+		player->setHairAppearance(haircust);
 
 		string profession;
 		pack->parseAscii(profession);

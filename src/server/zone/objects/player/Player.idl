@@ -132,6 +132,30 @@ interface Player implements CreatureObject {
 	
 	SceneObject getPlayerItem(unsigned long oid);
 	
+	
+	// Stat Migration Targets
+	// getters
+	unsigned int getTargetHealth();
+	unsigned int getTargetStrength();
+	unsigned int getTargetConstitution();
+	unsigned int getTargetAction();
+	unsigned int getTargetQuickness();
+	unsigned int getTargetStamina();
+	unsigned int getTargetMind();
+	unsigned int getTargetFocus();
+	unsigned int getTargetWillpower();
+
+	// setters
+	void setTargetHealth(unsigned int health);
+	void setTargetStrength(unsigned int strength);
+	void setTargetConstitution(unsigned int constituition);
+	void setTargetAction(unsigned int action);
+	void setTargetQuickness(unsigned int quickness);
+	void setTargetStamina(unsigned int stamina);
+	void setTargetMind(unsigned int mind);
+	void setTargetFocus(unsigned int focus);
+	void setTargetWillpower(unsigned int willpower);
+
 	// Combat
 	void queueFlourish(const string modifier, unsigned long target, unsigned int actionCntr);
 	void clearQueueAction(unsigned int actioncntr, float timer = 0, unsigned int tab1 = 0, unsigned int tab2 = 0);
@@ -261,7 +285,7 @@ interface Player implements CreatureObject {
 	void setBiography(const string bio);
 	void setBiography(unicode bio);
 	
-	void setHairData(string hair);
+	//void setHairData(string hair);
 	
 	boolean changeForcePowerBar(int fp);
 	
@@ -281,6 +305,7 @@ interface Player implements CreatureObject {
 	void setStartingProfession(const string prof);
 	
 	void setHairObject(const string hair);
+	void updateHair();
 		
 	void setPlayerObject(PlayerObject obj);
 	
@@ -362,7 +387,7 @@ interface Player implements CreatureObject {
 	string getRaceFileName();
 	
 	unicode getBiography();
-	string getHairData();
+	//string getHairData();
 
 	unsigned long getCharacterID();
 	

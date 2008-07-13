@@ -91,14 +91,14 @@ public:
 		insertInt(9);
 		insertInt(creo->getWoundsUpdateCounter());
 		insertInt(creo->getHealthWounds());
-		insertInt(0);
-		insertInt(0);
+		insertInt(creo->getStrengthWounds());
+		insertInt(creo->getConstitutionWounds());
 		insertInt(creo->getActionWounds());
-		insertInt(0);
-		insertInt(0);
+		insertInt(creo->getQuicknessWounds());
+		insertInt(creo->getStaminaWounds());
 		insertInt(creo->getMindWounds());
-		insertInt(0);
-		insertInt(0);
+		insertInt(creo->getFocusWounds());
+		insertInt(creo->getWillpowerWounds());
 
 		setSize();
 	}

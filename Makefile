@@ -161,4 +161,4 @@ clean: cleanidl
 	#done
 
 cleanidl:
-	cd src && idlc -rebuild $(IDL_SOURCES)
+	cd src && $(IDLC) -rebuild $(IDL_SOURCES)

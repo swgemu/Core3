@@ -84,8 +84,7 @@ class PlayerObjectImplementation : public SceneObjectImplementation {
 	uint32 drinkFillingMax;
 	
 	uint32 foodFilling;
-	uint32 foodFillingMax;
-	
+	uint32 foodFillingMax;	
 	FriendsList* friendsList;
 	
 public:
@@ -223,8 +222,7 @@ public:
 		
 	inline void changeFoodFilling(uint32 filling, bool updateClient = true) {
 		setFoodFilling(MAX(MIN(foodFillingMax, filling + foodFilling), 0), updateClient);
-	}
-	
+	}	
 	
 	void updateWaypoint(WaypointObject* wp);
 	

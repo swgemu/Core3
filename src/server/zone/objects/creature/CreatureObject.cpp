@@ -679,54 +679,12 @@ bool CreatureObject::takeMindDamage(int damage) {
 		return ((CreatureObjectImplementation*) _impl)->takeMindDamage(damage);
 }
 
-bool CreatureObject::changeHealthWoundsBar(int wounds, bool forcedChange) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 55);
-		method.addSignedIntParameter(wounds);
-		method.addBooleanParameter(forcedChange);
-
-		return method.executeWithBooleanReturn();
-	} else
-		return ((CreatureObjectImplementation*) _impl)->changeHealthWoundsBar(wounds, forcedChange);
-}
-
-bool CreatureObject::changeActionWoundsBar(int wounds, bool forcedChange) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 56);
-		method.addSignedIntParameter(wounds);
-		method.addBooleanParameter(forcedChange);
-
-		return method.executeWithBooleanReturn();
-	} else
-		return ((CreatureObjectImplementation*) _impl)->changeActionWoundsBar(wounds, forcedChange);
-}
-
-bool CreatureObject::changeMindWoundsBar(int wounds, bool forcedChange) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 57);
-		method.addSignedIntParameter(wounds);
-		method.addBooleanParameter(forcedChange);
-
-		return method.executeWithBooleanReturn();
-	} else
-		return ((CreatureObjectImplementation*) _impl)->changeMindWoundsBar(wounds, forcedChange);
-}
-
 bool CreatureObject::changeHealthBar(int hp, bool forcedChange) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 58);
+		DistributedMethod method(this, 55);
 		method.addSignedIntParameter(hp);
 		method.addBooleanParameter(forcedChange);
 
@@ -740,7 +698,7 @@ bool CreatureObject::changeStrengthBar(int st, bool forcedChange) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 59);
+		DistributedMethod method(this, 56);
 		method.addSignedIntParameter(st);
 		method.addBooleanParameter(forcedChange);
 
@@ -754,7 +712,7 @@ bool CreatureObject::changeConstitutionBar(int cs, bool forcedChange) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 60);
+		DistributedMethod method(this, 57);
 		method.addSignedIntParameter(cs);
 		method.addBooleanParameter(forcedChange);
 
@@ -763,64 +721,12 @@ bool CreatureObject::changeConstitutionBar(int cs, bool forcedChange) {
 		return ((CreatureObjectImplementation*) _impl)->changeConstitutionBar(cs, forcedChange);
 }
 
-void CreatureObject::changeMaxHealthBar(int hp) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 61);
-		method.addSignedIntParameter(hp);
-
-		method.executeWithVoidReturn();
-	} else
-		((CreatureObjectImplementation*) _impl)->changeMaxHealthBar(hp);
-}
-
-void CreatureObject::changeMaxStrengthBar(int hp) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 62);
-		method.addSignedIntParameter(hp);
-
-		method.executeWithVoidReturn();
-	} else
-		((CreatureObjectImplementation*) _impl)->changeMaxStrengthBar(hp);
-}
-
-void CreatureObject::changeMaxConstitutionBar(int hp) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 63);
-		method.addSignedIntParameter(hp);
-
-		method.executeWithVoidReturn();
-	} else
-		((CreatureObjectImplementation*) _impl)->changeMaxConstitutionBar(hp);
-}
-
-void CreatureObject::changeShockWounds(int bf) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 64);
-		method.addSignedIntParameter(bf);
-
-		method.executeWithVoidReturn();
-	} else
-		((CreatureObjectImplementation*) _impl)->changeShockWounds(bf);
-}
-
 bool CreatureObject::changeActionBar(int ap, bool forcedChange) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 65);
+		DistributedMethod method(this, 58);
 		method.addSignedIntParameter(ap);
 		method.addBooleanParameter(forcedChange);
 
@@ -834,7 +740,7 @@ bool CreatureObject::changeQuicknessBar(int qc, bool forcedChange) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 66);
+		DistributedMethod method(this, 59);
 		method.addSignedIntParameter(qc);
 		method.addBooleanParameter(forcedChange);
 
@@ -848,7 +754,7 @@ bool CreatureObject::changeStaminaBar(int st, bool forcedChange) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 67);
+		DistributedMethod method(this, 60);
 		method.addSignedIntParameter(st);
 		method.addBooleanParameter(forcedChange);
 
@@ -857,51 +763,12 @@ bool CreatureObject::changeStaminaBar(int st, bool forcedChange) {
 		return ((CreatureObjectImplementation*) _impl)->changeStaminaBar(st, forcedChange);
 }
 
-void CreatureObject::changeMaxActionBar(int hp) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 68);
-		method.addSignedIntParameter(hp);
-
-		method.executeWithVoidReturn();
-	} else
-		((CreatureObjectImplementation*) _impl)->changeMaxActionBar(hp);
-}
-
-void CreatureObject::changeMaxQuicknessBar(int hp) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 69);
-		method.addSignedIntParameter(hp);
-
-		method.executeWithVoidReturn();
-	} else
-		((CreatureObjectImplementation*) _impl)->changeMaxQuicknessBar(hp);
-}
-
-void CreatureObject::changeMaxStaminaBar(int hp) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 70);
-		method.addSignedIntParameter(hp);
-
-		method.executeWithVoidReturn();
-	} else
-		((CreatureObjectImplementation*) _impl)->changeMaxStaminaBar(hp);
-}
-
 bool CreatureObject::changeMindBar(int mp, bool forcedChange) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 71);
+		DistributedMethod method(this, 61);
 		method.addSignedIntParameter(mp);
 		method.addBooleanParameter(forcedChange);
 
@@ -915,7 +782,7 @@ bool CreatureObject::changeFocusBar(int fc, bool forcedChange) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 72);
+		DistributedMethod method(this, 62);
 		method.addSignedIntParameter(fc);
 		method.addBooleanParameter(forcedChange);
 
@@ -929,7 +796,7 @@ bool CreatureObject::changeWillpowerBar(int wl, bool forcedChange) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 73);
+		DistributedMethod method(this, 63);
 		method.addSignedIntParameter(wl);
 		method.addBooleanParameter(forcedChange);
 
@@ -938,12 +805,90 @@ bool CreatureObject::changeWillpowerBar(int wl, bool forcedChange) {
 		return ((CreatureObjectImplementation*) _impl)->changeWillpowerBar(wl, forcedChange);
 }
 
+void CreatureObject::changeMaxHealthBar(int hp) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 64);
+		method.addSignedIntParameter(hp);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->changeMaxHealthBar(hp);
+}
+
+void CreatureObject::changeMaxStrengthBar(int hp) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 65);
+		method.addSignedIntParameter(hp);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->changeMaxStrengthBar(hp);
+}
+
+void CreatureObject::changeMaxConstitutionBar(int hp) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 66);
+		method.addSignedIntParameter(hp);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->changeMaxConstitutionBar(hp);
+}
+
+void CreatureObject::changeMaxActionBar(int hp) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 67);
+		method.addSignedIntParameter(hp);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->changeMaxActionBar(hp);
+}
+
+void CreatureObject::changeMaxQuicknessBar(int hp) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 68);
+		method.addSignedIntParameter(hp);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->changeMaxQuicknessBar(hp);
+}
+
+void CreatureObject::changeMaxStaminaBar(int hp) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 69);
+		method.addSignedIntParameter(hp);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->changeMaxStaminaBar(hp);
+}
+
 void CreatureObject::changeMaxMindBar(int hp) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 74);
+		DistributedMethod method(this, 70);
 		method.addSignedIntParameter(hp);
 
 		method.executeWithVoidReturn();
@@ -956,7 +901,7 @@ void CreatureObject::changeMaxFocusBar(int hp) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 75);
+		DistributedMethod method(this, 71);
 		method.addSignedIntParameter(hp);
 
 		method.executeWithVoidReturn();
@@ -969,7 +914,7 @@ void CreatureObject::changeMaxWillpowerBar(int hp) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 76);
+		DistributedMethod method(this, 72);
 		method.addSignedIntParameter(hp);
 
 		method.executeWithVoidReturn();
@@ -977,12 +922,151 @@ void CreatureObject::changeMaxWillpowerBar(int hp) {
 		((CreatureObjectImplementation*) _impl)->changeMaxWillpowerBar(hp);
 }
 
-void CreatureObject::setHealthBar(unsigned int hp) {
+bool CreatureObject::changeHealthWoundsBar(int wounds, bool forcedChange) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 73);
+		method.addSignedIntParameter(wounds);
+		method.addBooleanParameter(forcedChange);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((CreatureObjectImplementation*) _impl)->changeHealthWoundsBar(wounds, forcedChange);
+}
+
+bool CreatureObject::changeStrengthWoundsBar(int wounds, bool forcedChange) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 74);
+		method.addSignedIntParameter(wounds);
+		method.addBooleanParameter(forcedChange);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((CreatureObjectImplementation*) _impl)->changeStrengthWoundsBar(wounds, forcedChange);
+}
+
+bool CreatureObject::changeConstitutionWoundsBar(int wounds, bool forcedChange) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 75);
+		method.addSignedIntParameter(wounds);
+		method.addBooleanParameter(forcedChange);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((CreatureObjectImplementation*) _impl)->changeConstitutionWoundsBar(wounds, forcedChange);
+}
+
+bool CreatureObject::changeActionWoundsBar(int wounds, bool forcedChange) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 76);
+		method.addSignedIntParameter(wounds);
+		method.addBooleanParameter(forcedChange);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((CreatureObjectImplementation*) _impl)->changeActionWoundsBar(wounds, forcedChange);
+}
+
+bool CreatureObject::changeQuicknessWoundsBar(int wounds, bool forcedChange) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 77);
+		method.addSignedIntParameter(wounds);
+		method.addBooleanParameter(forcedChange);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((CreatureObjectImplementation*) _impl)->changeQuicknessWoundsBar(wounds, forcedChange);
+}
+
+bool CreatureObject::changeStaminaWoundsBar(int wounds, bool forcedChange) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 78);
+		method.addSignedIntParameter(wounds);
+		method.addBooleanParameter(forcedChange);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((CreatureObjectImplementation*) _impl)->changeStaminaWoundsBar(wounds, forcedChange);
+}
+
+bool CreatureObject::changeMindWoundsBar(int wounds, bool forcedChange) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 79);
+		method.addSignedIntParameter(wounds);
+		method.addBooleanParameter(forcedChange);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((CreatureObjectImplementation*) _impl)->changeMindWoundsBar(wounds, forcedChange);
+}
+
+bool CreatureObject::changeFocusWoundsBar(int wounds, bool forcedChange) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 80);
+		method.addSignedIntParameter(wounds);
+		method.addBooleanParameter(forcedChange);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((CreatureObjectImplementation*) _impl)->changeFocusWoundsBar(wounds, forcedChange);
+}
+
+bool CreatureObject::changeWillpowerWoundsBar(int wounds, bool forcedChange) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 81);
+		method.addSignedIntParameter(wounds);
+		method.addBooleanParameter(forcedChange);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((CreatureObjectImplementation*) _impl)->changeWillpowerWoundsBar(wounds, forcedChange);
+}
+
+void CreatureObject::changeShockWounds(int bf) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 82);
+		method.addSignedIntParameter(bf);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->changeShockWounds(bf);
+}
+
+void CreatureObject::setHealthBar(unsigned int hp) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 83);
 		method.addUnsignedIntParameter(hp);
 
 		method.executeWithVoidReturn();
@@ -995,7 +1079,7 @@ void CreatureObject::setStrengthBar(unsigned int st) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 78);
+		DistributedMethod method(this, 84);
 		method.addUnsignedIntParameter(st);
 
 		method.executeWithVoidReturn();
@@ -1008,7 +1092,7 @@ void CreatureObject::setConstitutionBar(unsigned int cst) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 79);
+		DistributedMethod method(this, 85);
 		method.addUnsignedIntParameter(cst);
 
 		method.executeWithVoidReturn();
@@ -1016,54 +1100,12 @@ void CreatureObject::setConstitutionBar(unsigned int cst) {
 		((CreatureObjectImplementation*) _impl)->setConstitutionBar(cst);
 }
 
-void CreatureObject::setMaxHealthBar(unsigned int hp, bool updateClient) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 80);
-		method.addUnsignedIntParameter(hp);
-		method.addBooleanParameter(updateClient);
-
-		method.executeWithVoidReturn();
-	} else
-		((CreatureObjectImplementation*) _impl)->setMaxHealthBar(hp, updateClient);
-}
-
-void CreatureObject::setMaxStrengthBar(unsigned int st, bool updateClient) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 81);
-		method.addUnsignedIntParameter(st);
-		method.addBooleanParameter(updateClient);
-
-		method.executeWithVoidReturn();
-	} else
-		((CreatureObjectImplementation*) _impl)->setMaxStrengthBar(st, updateClient);
-}
-
-void CreatureObject::setMaxConstitutionBar(unsigned int cst, bool updateClient) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 82);
-		method.addUnsignedIntParameter(cst);
-		method.addBooleanParameter(updateClient);
-
-		method.executeWithVoidReturn();
-	} else
-		((CreatureObjectImplementation*) _impl)->setMaxConstitutionBar(cst, updateClient);
-}
-
 void CreatureObject::setActionBar(unsigned int ap) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 83);
+		DistributedMethod method(this, 86);
 		method.addUnsignedIntParameter(ap);
 
 		method.executeWithVoidReturn();
@@ -1076,7 +1118,7 @@ void CreatureObject::setQuicknessBar(unsigned int qck) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 84);
+		DistributedMethod method(this, 87);
 		method.addUnsignedIntParameter(qck);
 
 		method.executeWithVoidReturn();
@@ -1089,54 +1131,12 @@ void CreatureObject::setStaminaBar(unsigned int sta) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 85);
+		DistributedMethod method(this, 88);
 		method.addUnsignedIntParameter(sta);
 
 		method.executeWithVoidReturn();
 	} else
 		((CreatureObjectImplementation*) _impl)->setStaminaBar(sta);
-}
-
-void CreatureObject::setMaxActionBar(unsigned int ap, bool updateClient) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 86);
-		method.addUnsignedIntParameter(ap);
-		method.addBooleanParameter(updateClient);
-
-		method.executeWithVoidReturn();
-	} else
-		((CreatureObjectImplementation*) _impl)->setMaxActionBar(ap, updateClient);
-}
-
-void CreatureObject::setMaxQuicknessBar(unsigned int qck, bool updateClient) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 87);
-		method.addUnsignedIntParameter(qck);
-		method.addBooleanParameter(updateClient);
-
-		method.executeWithVoidReturn();
-	} else
-		((CreatureObjectImplementation*) _impl)->setMaxQuicknessBar(qck, updateClient);
-}
-
-void CreatureObject::setMaxStaminaBar(unsigned int sta, bool updateClient) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 88);
-		method.addUnsignedIntParameter(sta);
-		method.addBooleanParameter(updateClient);
-
-		method.executeWithVoidReturn();
-	} else
-		((CreatureObjectImplementation*) _impl)->setMaxStaminaBar(sta, updateClient);
 }
 
 void CreatureObject::setMindBar(unsigned int mp) {
@@ -1178,12 +1178,222 @@ void CreatureObject::setWillpowerBar(unsigned int will) {
 		((CreatureObjectImplementation*) _impl)->setWillpowerBar(will);
 }
 
-void CreatureObject::setMaxMindBar(unsigned int mp, bool updateClient) {
+void CreatureObject::setBaseHealthBar(unsigned int hp, bool updateClient) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 92);
+		method.addUnsignedIntParameter(hp);
+		method.addBooleanParameter(updateClient);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setBaseHealthBar(hp, updateClient);
+}
+
+void CreatureObject::setBaseStrengthBar(unsigned int st, bool updateClient) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 93);
+		method.addUnsignedIntParameter(st);
+		method.addBooleanParameter(updateClient);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setBaseStrengthBar(st, updateClient);
+}
+
+void CreatureObject::setBaseConstitutionBar(unsigned int cst, bool updateClient) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 94);
+		method.addUnsignedIntParameter(cst);
+		method.addBooleanParameter(updateClient);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setBaseConstitutionBar(cst, updateClient);
+}
+
+void CreatureObject::setBaseActionBar(unsigned int ap, bool updateClient) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 95);
+		method.addUnsignedIntParameter(ap);
+		method.addBooleanParameter(updateClient);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setBaseActionBar(ap, updateClient);
+}
+
+void CreatureObject::setBaseQuicknessBar(unsigned int qck, bool updateClient) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 96);
+		method.addUnsignedIntParameter(qck);
+		method.addBooleanParameter(updateClient);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setBaseQuicknessBar(qck, updateClient);
+}
+
+void CreatureObject::setBaseStaminaBar(unsigned int sta, bool updateClient) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 97);
+		method.addUnsignedIntParameter(sta);
+		method.addBooleanParameter(updateClient);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setBaseStaminaBar(sta, updateClient);
+}
+
+void CreatureObject::setBaseMindBar(unsigned int mp, bool updateClient) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 98);
+		method.addUnsignedIntParameter(mp);
+		method.addBooleanParameter(updateClient);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setBaseMindBar(mp, updateClient);
+}
+
+void CreatureObject::setBaseFocusBar(unsigned int fc, bool updateClient) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 99);
+		method.addUnsignedIntParameter(fc);
+		method.addBooleanParameter(updateClient);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setBaseFocusBar(fc, updateClient);
+}
+
+void CreatureObject::setBaseWillpowerBar(unsigned int will, bool updateClient) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 100);
+		method.addUnsignedIntParameter(will);
+		method.addBooleanParameter(updateClient);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setBaseWillpowerBar(will, updateClient);
+}
+
+void CreatureObject::setMaxHealthBar(unsigned int hp, bool updateClient) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 101);
+		method.addUnsignedIntParameter(hp);
+		method.addBooleanParameter(updateClient);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setMaxHealthBar(hp, updateClient);
+}
+
+void CreatureObject::setMaxStrengthBar(unsigned int st, bool updateClient) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 102);
+		method.addUnsignedIntParameter(st);
+		method.addBooleanParameter(updateClient);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setMaxStrengthBar(st, updateClient);
+}
+
+void CreatureObject::setMaxConstitutionBar(unsigned int cst, bool updateClient) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 103);
+		method.addUnsignedIntParameter(cst);
+		method.addBooleanParameter(updateClient);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setMaxConstitutionBar(cst, updateClient);
+}
+
+void CreatureObject::setMaxActionBar(unsigned int ap, bool updateClient) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 104);
+		method.addUnsignedIntParameter(ap);
+		method.addBooleanParameter(updateClient);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setMaxActionBar(ap, updateClient);
+}
+
+void CreatureObject::setMaxQuicknessBar(unsigned int qck, bool updateClient) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 105);
+		method.addUnsignedIntParameter(qck);
+		method.addBooleanParameter(updateClient);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setMaxQuicknessBar(qck, updateClient);
+}
+
+void CreatureObject::setMaxStaminaBar(unsigned int sta, bool updateClient) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 106);
+		method.addUnsignedIntParameter(sta);
+		method.addBooleanParameter(updateClient);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setMaxStaminaBar(sta, updateClient);
+}
+
+void CreatureObject::setMaxMindBar(unsigned int mp, bool updateClient) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 107);
 		method.addUnsignedIntParameter(mp);
 		method.addBooleanParameter(updateClient);
 
@@ -1197,7 +1407,7 @@ void CreatureObject::setMaxFocusBar(unsigned int fc, bool updateClient) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 93);
+		DistributedMethod method(this, 108);
 		method.addUnsignedIntParameter(fc);
 		method.addBooleanParameter(updateClient);
 
@@ -1211,7 +1421,7 @@ void CreatureObject::setMaxWillpowerBar(unsigned int will, bool updateClient) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 94);
+		DistributedMethod method(this, 109);
 		method.addUnsignedIntParameter(will);
 		method.addBooleanParameter(updateClient);
 
@@ -1220,12 +1430,129 @@ void CreatureObject::setMaxWillpowerBar(unsigned int will, bool updateClient) {
 		((CreatureObjectImplementation*) _impl)->setMaxWillpowerBar(will, updateClient);
 }
 
+void CreatureObject::setHealthWoundsBar(unsigned int wnds) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 110);
+		method.addUnsignedIntParameter(wnds);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setHealthWoundsBar(wnds);
+}
+
+void CreatureObject::setStrengthWoundsBar(unsigned int wnds) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 111);
+		method.addUnsignedIntParameter(wnds);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setStrengthWoundsBar(wnds);
+}
+
+void CreatureObject::setConstitutionWoundsBar(unsigned int wnds) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 112);
+		method.addUnsignedIntParameter(wnds);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setConstitutionWoundsBar(wnds);
+}
+
+void CreatureObject::setActionWoundsBar(unsigned int wnds) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 113);
+		method.addUnsignedIntParameter(wnds);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setActionWoundsBar(wnds);
+}
+
+void CreatureObject::setQuicknessWoundsBar(unsigned int wnds) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 114);
+		method.addUnsignedIntParameter(wnds);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setQuicknessWoundsBar(wnds);
+}
+
+void CreatureObject::setStaminaWoundsBar(unsigned int wnds) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 115);
+		method.addUnsignedIntParameter(wnds);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setStaminaWoundsBar(wnds);
+}
+
+void CreatureObject::setMindWoundsBar(unsigned int wnds) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 116);
+		method.addUnsignedIntParameter(wnds);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setMindWoundsBar(wnds);
+}
+
+void CreatureObject::setFocusWoundsBar(unsigned int wnds) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 117);
+		method.addUnsignedIntParameter(wnds);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setFocusWoundsBar(wnds);
+}
+
+void CreatureObject::setWillpowerWoundsBar(unsigned int wnds) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 118);
+		method.addUnsignedIntParameter(wnds);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setWillpowerWoundsBar(wnds);
+}
+
 bool CreatureObject::hasAttackDelay() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 95);
+		DistributedMethod method(this, 119);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -1237,7 +1564,7 @@ void CreatureObject::clearAttackDelay() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 96);
+		DistributedMethod method(this, 120);
 
 		method.executeWithVoidReturn();
 	} else
@@ -1249,7 +1576,7 @@ void CreatureObject::activateBurstRun() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 97);
+		DistributedMethod method(this, 121);
 
 		method.executeWithVoidReturn();
 	} else
@@ -1261,7 +1588,7 @@ bool CreatureObject::hasQueuedState(unsigned int skillCRC) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 98);
+		DistributedMethod method(this, 122);
 		method.addUnsignedIntParameter(skillCRC);
 
 		return method.executeWithBooleanReturn();
@@ -1274,7 +1601,7 @@ bool CreatureObject::removeQueuedState(unsigned int skillCRC) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 99);
+		DistributedMethod method(this, 123);
 		method.addUnsignedIntParameter(skillCRC);
 
 		return method.executeWithBooleanReturn();
@@ -1287,7 +1614,7 @@ bool CreatureObject::addQueuedState(unsigned int skillCRC) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 100);
+		DistributedMethod method(this, 124);
 		method.addUnsignedIntParameter(skillCRC);
 
 		return method.executeWithBooleanReturn();
@@ -1300,7 +1627,7 @@ void CreatureObject::setMeditateState() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 101);
+		DistributedMethod method(this, 125);
 
 		method.executeWithVoidReturn();
 	} else
@@ -1312,7 +1639,7 @@ bool CreatureObject::isGuilded() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 102);
+		DistributedMethod method(this, 126);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -1324,7 +1651,7 @@ void CreatureObject::removeGroup() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 103);
+		DistributedMethod method(this, 127);
 
 		method.executeWithVoidReturn();
 	} else
@@ -1336,7 +1663,7 @@ bool CreatureObject::isInAGroup() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 104);
+		DistributedMethod method(this, 128);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -1348,7 +1675,7 @@ void CreatureObject::setGroupID(unsigned long long gid) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 105);
+		DistributedMethod method(this, 129);
 		method.addUnsignedLongParameter(gid);
 
 		method.executeWithVoidReturn();
@@ -1361,7 +1688,7 @@ void CreatureObject::updateGroupId(unsigned long long id) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 106);
+		DistributedMethod method(this, 130);
 		method.addUnsignedLongParameter(id);
 
 		method.executeWithVoidReturn();
@@ -1374,7 +1701,7 @@ void CreatureObject::updateGroupInviterId(unsigned long long id) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 107);
+		DistributedMethod method(this, 131);
 		method.addUnsignedLongParameter(id);
 
 		method.executeWithVoidReturn();
@@ -1387,7 +1714,7 @@ void CreatureObject::setDefenderID(long long did) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 108);
+		DistributedMethod method(this, 132);
 		method.addSignedLongParameter(did);
 
 		method.executeWithVoidReturn();
@@ -1400,7 +1727,7 @@ void CreatureObject::updateTarget(unsigned long long targ) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 109);
+		DistributedMethod method(this, 133);
 		method.addUnsignedLongParameter(targ);
 
 		method.executeWithVoidReturn();
@@ -1413,7 +1740,7 @@ void CreatureObject::updateTarget(SceneObject* targ) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 110);
+		DistributedMethod method(this, 134);
 		method.addObjectParameter(targ);
 
 		method.executeWithVoidReturn();
@@ -1426,7 +1753,7 @@ void CreatureObject::setActionCounter(unsigned int actioncntr) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 111);
+		DistributedMethod method(this, 135);
 		method.addUnsignedIntParameter(actioncntr);
 
 		method.executeWithVoidReturn();
@@ -1439,7 +1766,7 @@ void CreatureObject::setWeapon(Weapon* wep) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 112);
+		DistributedMethod method(this, 136);
 		method.addObjectParameter(wep);
 
 		method.executeWithVoidReturn();
@@ -1452,7 +1779,7 @@ void CreatureObject::setCreatureLinkID(unsigned long long creatureID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 113);
+		DistributedMethod method(this, 137);
 		method.addUnsignedLongParameter(creatureID);
 
 		method.executeWithVoidReturn();
@@ -1465,7 +1792,7 @@ void CreatureObject::setAccuracy(int acc) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 114);
+		DistributedMethod method(this, 138);
 		method.addSignedIntParameter(acc);
 
 		method.executeWithVoidReturn();
@@ -1478,7 +1805,7 @@ void CreatureObject::setDamageBonus(int bonus) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 115);
+		DistributedMethod method(this, 139);
 		method.addSignedIntParameter(bonus);
 
 		method.executeWithVoidReturn();
@@ -1491,7 +1818,7 @@ void CreatureObject::setDefenseBonus(int bonus) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 116);
+		DistributedMethod method(this, 140);
 		method.addSignedIntParameter(bonus);
 
 		method.executeWithVoidReturn();
@@ -1504,7 +1831,7 @@ void CreatureObject::setLastMovementUpdateStamp(unsigned int tme) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 117);
+		DistributedMethod method(this, 141);
 		method.addUnsignedIntParameter(tme);
 
 		method.executeWithVoidReturn();
@@ -1517,7 +1844,7 @@ void CreatureObject::setIgnoreMovementTests(int times) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 118);
+		DistributedMethod method(this, 142);
 		method.addSignedIntParameter(times);
 
 		method.executeWithVoidReturn();
@@ -1530,7 +1857,7 @@ void CreatureObject::setLevel(unsigned int lvl) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 119);
+		DistributedMethod method(this, 143);
 		method.addUnsignedIntParameter(lvl);
 
 		method.executeWithVoidReturn();
@@ -1543,7 +1870,7 @@ void CreatureObject::updateServerMovementStamp() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 120);
+		DistributedMethod method(this, 144);
 
 		method.executeWithVoidReturn();
 	} else
@@ -1555,7 +1882,7 @@ SceneObject* CreatureObject::getInventoryItem(unsigned long long oid) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 121);
+		DistributedMethod method(this, 145);
 		method.addUnsignedLongParameter(oid);
 
 		return (SceneObject*) method.executeWithObjectReturn();
@@ -1568,7 +1895,7 @@ void CreatureObject::removeInventoryItem(unsigned long long oid) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 122);
+		DistributedMethod method(this, 146);
 		method.addUnsignedLongParameter(oid);
 
 		method.executeWithVoidReturn();
@@ -1581,7 +1908,7 @@ SceneObject* CreatureObject::getLootItem(unsigned long long oid) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 123);
+		DistributedMethod method(this, 147);
 		method.addUnsignedLongParameter(oid);
 
 		return (SceneObject*) method.executeWithObjectReturn();
@@ -1594,7 +1921,7 @@ void CreatureObject::removeLootItem(unsigned long long oid) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 124);
+		DistributedMethod method(this, 148);
 		method.addUnsignedLongParameter(oid);
 
 		method.executeWithVoidReturn();
@@ -1607,7 +1934,7 @@ void CreatureObject::broadcastMessage(BaseMessage* msg, int range, bool doLock) 
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 125);
+		DistributedMethod method(this, 149);
 		method.addObjectParameter(msg);
 		method.addSignedIntParameter(range);
 		method.addBooleanParameter(doLock);
@@ -1622,7 +1949,7 @@ void CreatureObject::broadcastMessage(StandaloneBaseMessage* msg, int range, boo
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 126);
+		DistributedMethod method(this, 150);
 		method.addObjectParameter(msg);
 		method.addSignedIntParameter(range);
 		method.addBooleanParameter(doLock);
@@ -1637,7 +1964,7 @@ Inventory* CreatureObject::getInventory() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 127);
+		DistributedMethod method(this, 151);
 
 		return (Inventory*) method.executeWithObjectReturn();
 	} else
@@ -1649,7 +1976,7 @@ Container* CreatureObject::getLootContainer() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 128);
+		DistributedMethod method(this, 152);
 
 		return (Container*) method.executeWithObjectReturn();
 	} else
@@ -1661,7 +1988,7 @@ unsigned long long CreatureObject::getNewItemID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 129);
+		DistributedMethod method(this, 153);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -1673,7 +2000,7 @@ Weapon* CreatureObject::getWeapon() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 130);
+		DistributedMethod method(this, 154);
 
 		return (Weapon*) method.executeWithObjectReturn();
 	} else
@@ -1685,7 +2012,7 @@ Armor* CreatureObject::getArmor(int type) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 131);
+		DistributedMethod method(this, 155);
 		method.addSignedIntParameter(type);
 
 		return (Armor*) method.executeWithObjectReturn();
@@ -1706,7 +2033,7 @@ int CreatureObject::getSkillMod(const string& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 132);
+		DistributedMethod method(this, 156);
 		method.addAsciiParameter(name);
 
 		return method.executeWithSignedIntReturn();
@@ -1719,7 +2046,7 @@ bool CreatureObject::hasSkillMod(const string& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 133);
+		DistributedMethod method(this, 157);
 		method.addAsciiParameter(name);
 
 		return method.executeWithBooleanReturn();
@@ -1732,7 +2059,7 @@ int CreatureObject::getSkillModBonus(const string& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 134);
+		DistributedMethod method(this, 158);
 		method.addAsciiParameter(name);
 
 		return method.executeWithSignedIntReturn();
@@ -1745,7 +2072,7 @@ bool CreatureObject::hasSkillModBonus(const string& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 135);
+		DistributedMethod method(this, 159);
 		method.addAsciiParameter(name);
 
 		return method.executeWithBooleanReturn();
@@ -1758,7 +2085,7 @@ int CreatureObject::getAccuracy() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 136);
+		DistributedMethod method(this, 160);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -1770,7 +2097,7 @@ int CreatureObject::getDefenseBonus() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 137);
+		DistributedMethod method(this, 161);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -1782,7 +2109,7 @@ int CreatureObject::getDamageBonus() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 138);
+		DistributedMethod method(this, 162);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -1794,7 +2121,7 @@ int CreatureObject::getConditionDamage() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 139);
+		DistributedMethod method(this, 163);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -1806,7 +2133,7 @@ int CreatureObject::getMaxCondition() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 140);
+		DistributedMethod method(this, 164);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -1818,7 +2145,7 @@ int CreatureObject::getCondition() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 141);
+		DistributedMethod method(this, 165);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -1830,7 +2157,7 @@ MountCreature* CreatureObject::getMount() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 142);
+		DistributedMethod method(this, 166);
 
 		return (MountCreature*) method.executeWithObjectReturn();
 	} else
@@ -1842,7 +2169,7 @@ unsigned long long CreatureObject::getLastServerMovementStamp() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 143);
+		DistributedMethod method(this, 167);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -1854,7 +2181,7 @@ unsigned long long CreatureObject::getCreatureLinkID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 144);
+		DistributedMethod method(this, 168);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -1866,7 +2193,7 @@ float CreatureObject::getDistanceTo(CreatureObject* targetCreature) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 145);
+		DistributedMethod method(this, 169);
 		method.addObjectParameter(targetCreature);
 
 		return method.executeWithFloatReturn();
@@ -1879,7 +2206,7 @@ float CreatureObject::getHeight() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 146);
+		DistributedMethod method(this, 170);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -1891,7 +2218,7 @@ unsigned int CreatureObject::getCreatureSkillsCount() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 147);
+		DistributedMethod method(this, 171);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -1903,7 +2230,7 @@ unsigned int CreatureObject::getNewCreatureSkillsCount(int cnt) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 148);
+		DistributedMethod method(this, 172);
 		method.addSignedIntParameter(cnt);
 
 		return method.executeWithUnsignedIntReturn();
@@ -1916,7 +2243,7 @@ unsigned int CreatureObject::getLastMovementUpdateStamp() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 149);
+		DistributedMethod method(this, 173);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -1928,7 +2255,7 @@ int CreatureObject::getIgnoreMovementTests() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 150);
+		DistributedMethod method(this, 174);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -1940,7 +2267,7 @@ unsigned int CreatureObject::getLevel() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 151);
+		DistributedMethod method(this, 175);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -1952,7 +2279,7 @@ int CreatureObject::getCenteredBonus() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 152);
+		DistributedMethod method(this, 176);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -1964,7 +2291,7 @@ void CreatureObject::sendSystemMessage(const string& message) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 153);
+		DistributedMethod method(this, 177);
 		method.addAsciiParameter(message);
 
 		method.executeWithVoidReturn();
@@ -1977,7 +2304,7 @@ void CreatureObject::sendSystemMessage(const string& file, const string& str, un
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 154);
+		DistributedMethod method(this, 178);
 		method.addAsciiParameter(file);
 		method.addAsciiParameter(str);
 		method.addUnsignedLongParameter(targetid);
@@ -1992,7 +2319,7 @@ void CreatureObject::addInventoryItem(TangibleObject* item) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 155);
+		DistributedMethod method(this, 179);
 		method.addObjectParameter(item);
 
 		method.executeWithVoidReturn();
@@ -2005,7 +2332,7 @@ void CreatureObject::addLootItem(TangibleObject* item) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 156);
+		DistributedMethod method(this, 180);
 		method.addObjectParameter(item);
 
 		method.executeWithVoidReturn();
@@ -2018,7 +2345,7 @@ void CreatureObject::startDancing(const string& anim, bool changeDance) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 157);
+		DistributedMethod method(this, 181);
 		method.addAsciiParameter(anim);
 		method.addBooleanParameter(changeDance);
 
@@ -2032,7 +2359,7 @@ void CreatureObject::startPlayingMusic(const string& anim, bool changeDance) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 158);
+		DistributedMethod method(this, 182);
 		method.addAsciiParameter(anim);
 		method.addBooleanParameter(changeDance);
 
@@ -2046,7 +2373,7 @@ void CreatureObject::startWatch(unsigned long long entid) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 159);
+		DistributedMethod method(this, 183);
 		method.addUnsignedLongParameter(entid);
 
 		method.executeWithVoidReturn();
@@ -2059,7 +2386,7 @@ void CreatureObject::startListen(unsigned long long entid) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 160);
+		DistributedMethod method(this, 184);
 		method.addUnsignedLongParameter(entid);
 
 		method.executeWithVoidReturn();
@@ -2072,7 +2399,7 @@ void CreatureObject::stopWatch(unsigned long long entid, bool doSendPackets, boo
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 161);
+		DistributedMethod method(this, 185);
 		method.addUnsignedLongParameter(entid);
 		method.addBooleanParameter(doSendPackets);
 		method.addBooleanParameter(forced);
@@ -2088,7 +2415,7 @@ void CreatureObject::stopListen(unsigned long long entid, bool doSendPackets, bo
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 162);
+		DistributedMethod method(this, 186);
 		method.addUnsignedLongParameter(entid);
 		method.addBooleanParameter(doSendPackets);
 		method.addBooleanParameter(forced);
@@ -2104,7 +2431,7 @@ bool CreatureObject::isPlayingMusic() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 163);
+		DistributedMethod method(this, 187);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -2116,7 +2443,7 @@ bool CreatureObject::isDancing() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 164);
+		DistributedMethod method(this, 188);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -2128,7 +2455,7 @@ void CreatureObject::stopDancing() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 165);
+		DistributedMethod method(this, 189);
 
 		method.executeWithVoidReturn();
 	} else
@@ -2140,7 +2467,7 @@ void CreatureObject::stopPlayingMusic() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 166);
+		DistributedMethod method(this, 190);
 
 		method.executeWithVoidReturn();
 	} else
@@ -2152,7 +2479,7 @@ void CreatureObject::addListener(CreatureObject* creature) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 167);
+		DistributedMethod method(this, 191);
 		method.addObjectParameter(creature);
 
 		method.executeWithVoidReturn();
@@ -2165,7 +2492,7 @@ void CreatureObject::addWatcher(CreatureObject* creature) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 168);
+		DistributedMethod method(this, 192);
 		method.addObjectParameter(creature);
 
 		method.executeWithVoidReturn();
@@ -2178,7 +2505,7 @@ void CreatureObject::removeListener(CreatureObject* creature) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 169);
+		DistributedMethod method(this, 193);
 		method.addObjectParameter(creature);
 
 		method.executeWithVoidReturn();
@@ -2191,7 +2518,7 @@ void CreatureObject::removeWatcher(CreatureObject* creature) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 170);
+		DistributedMethod method(this, 194);
 		method.addObjectParameter(creature);
 
 		method.executeWithVoidReturn();
@@ -2204,7 +2531,7 @@ void CreatureObject::doFlourish(const string& modifier) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 171);
+		DistributedMethod method(this, 195);
 		method.addAsciiParameter(modifier);
 
 		method.executeWithVoidReturn();
@@ -2217,7 +2544,7 @@ void CreatureObject::doPerformanceAction() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 172);
+		DistributedMethod method(this, 196);
 
 		method.executeWithVoidReturn();
 	} else
@@ -2229,7 +2556,7 @@ void CreatureObject::doEntertainerPatronEffects(bool healShock, bool healWounds,
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 173);
+		DistributedMethod method(this, 197);
 		method.addBooleanParameter(healShock);
 		method.addBooleanParameter(healWounds);
 		method.addBooleanParameter(addBuff);
@@ -2244,7 +2571,7 @@ void CreatureObject::addEntertainerFlourishBuff() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 174);
+		DistributedMethod method(this, 198);
 
 		method.executeWithVoidReturn();
 	} else
@@ -2256,7 +2583,7 @@ void CreatureObject::addEntertainerBuffDuration(int performanceType, float durat
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 175);
+		DistributedMethod method(this, 199);
 		method.addSignedIntParameter(performanceType);
 		method.addFloatParameter(duration);
 
@@ -2270,7 +2597,7 @@ void CreatureObject::setEntertainerBuffDuration(int performanceType, float durat
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 176);
+		DistributedMethod method(this, 200);
 		method.addSignedIntParameter(performanceType);
 		method.addFloatParameter(duration);
 
@@ -2284,7 +2611,7 @@ float CreatureObject::getEntertainerBuffDuration(int performanceType) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 177);
+		DistributedMethod method(this, 201);
 		method.addSignedIntParameter(performanceType);
 
 		return method.executeWithFloatReturn();
@@ -2297,7 +2624,7 @@ void CreatureObject::activateRecovery() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 178);
+		DistributedMethod method(this, 202);
 
 		method.executeWithVoidReturn();
 	} else
@@ -2309,7 +2636,7 @@ int CreatureObject::getCreatureSkillsSize() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 179);
+		DistributedMethod method(this, 203);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -2321,7 +2648,7 @@ string& CreatureObject::getSkill(int idx) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 180);
+		DistributedMethod method(this, 204);
 		method.addSignedIntParameter(idx);
 
 		method.executeWithAsciiReturn(_return_getSkill);
@@ -2335,7 +2662,7 @@ bool CreatureObject::hasSkill(unsigned int skillCRC) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 181);
+		DistributedMethod method(this, 205);
 		method.addUnsignedIntParameter(skillCRC);
 
 		return method.executeWithBooleanReturn();
@@ -2348,7 +2675,7 @@ void CreatureObject::mountCreature(MountCreature* mnt, bool lockMount) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 182);
+		DistributedMethod method(this, 206);
 		method.addObjectParameter(mnt);
 		method.addBooleanParameter(lockMount);
 
@@ -2362,7 +2689,7 @@ void CreatureObject::dismount(bool lockMount, bool ignoreCooldown) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 183);
+		DistributedMethod method(this, 207);
 		method.addBooleanParameter(lockMount);
 		method.addBooleanParameter(ignoreCooldown);
 
@@ -2376,7 +2703,7 @@ void CreatureObject::addCashCredits(unsigned int credits) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 184);
+		DistributedMethod method(this, 208);
 		method.addUnsignedIntParameter(credits);
 
 		method.executeWithVoidReturn();
@@ -2389,7 +2716,7 @@ void CreatureObject::addBankCredits(unsigned int credits) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 185);
+		DistributedMethod method(this, 209);
 		method.addUnsignedIntParameter(credits);
 
 		method.executeWithVoidReturn();
@@ -2402,7 +2729,7 @@ void CreatureObject::updateCashCredits(unsigned int credits) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 186);
+		DistributedMethod method(this, 210);
 		method.addUnsignedIntParameter(credits);
 
 		method.executeWithVoidReturn();
@@ -2415,7 +2742,7 @@ void CreatureObject::updateBankCredits(unsigned int credits) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 187);
+		DistributedMethod method(this, 211);
 		method.addUnsignedIntParameter(credits);
 
 		method.executeWithVoidReturn();
@@ -2428,7 +2755,7 @@ void CreatureObject::subtractCashCredits(unsigned int credits) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 188);
+		DistributedMethod method(this, 212);
 		method.addUnsignedIntParameter(credits);
 
 		method.executeWithVoidReturn();
@@ -2441,7 +2768,7 @@ void CreatureObject::subtractBankCredits(unsigned int credits) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 189);
+		DistributedMethod method(this, 213);
 		method.addUnsignedIntParameter(credits);
 
 		method.executeWithVoidReturn();
@@ -2454,7 +2781,7 @@ void CreatureObject::setCashCredits(int credits) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 190);
+		DistributedMethod method(this, 214);
 		method.addSignedIntParameter(credits);
 
 		method.executeWithVoidReturn();
@@ -2467,7 +2794,7 @@ void CreatureObject::setBankCredits(int credits) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 191);
+		DistributedMethod method(this, 215);
 		method.addSignedIntParameter(credits);
 
 		method.executeWithVoidReturn();
@@ -2480,7 +2807,7 @@ void CreatureObject::addBuff(int buffCRC, float duration) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 192);
+		DistributedMethod method(this, 216);
 		method.addSignedIntParameter(buffCRC);
 		method.addFloatParameter(duration);
 
@@ -2494,7 +2821,7 @@ void CreatureObject::applyBuff(BuffObject* buff) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 193);
+		DistributedMethod method(this, 217);
 		method.addObjectParameter(buff);
 
 		method.executeWithVoidReturn();
@@ -2507,7 +2834,7 @@ void CreatureObject::removeBuff(const unsigned int buffCRC, bool remove) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 194);
+		DistributedMethod method(this, 218);
 		method.addUnsignedIntParameter(buffCRC);
 		method.addBooleanParameter(remove);
 
@@ -2521,7 +2848,7 @@ bool CreatureObject::hasSpice() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 195);
+		DistributedMethod method(this, 219);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -2533,7 +2860,7 @@ bool CreatureObject::verifyCashCredits(unsigned int creditsToRemove) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 196);
+		DistributedMethod method(this, 220);
 		method.addUnsignedIntParameter(creditsToRemove);
 
 		return method.executeWithBooleanReturn();
@@ -2546,7 +2873,7 @@ bool CreatureObject::verifyBankCredits(unsigned int creditsToRemove) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 197);
+		DistributedMethod method(this, 221);
 		method.addUnsignedIntParameter(creditsToRemove);
 
 		return method.executeWithBooleanReturn();
@@ -2559,7 +2886,7 @@ bool CreatureObject::isOnFullHealth() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 198);
+		DistributedMethod method(this, 222);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -2571,7 +2898,7 @@ bool CreatureObject::hasStates() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 199);
+		DistributedMethod method(this, 223);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -2583,7 +2910,7 @@ bool CreatureObject::hasState(unsigned long long state) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 200);
+		DistributedMethod method(this, 224);
 		method.addUnsignedLongParameter(state);
 
 		return method.executeWithBooleanReturn();
@@ -2596,7 +2923,7 @@ bool CreatureObject::hasWounds() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 201);
+		DistributedMethod method(this, 225);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -2608,7 +2935,7 @@ bool CreatureObject::hasShockWounds() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 202);
+		DistributedMethod method(this, 226);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -2620,7 +2947,7 @@ bool CreatureObject::isAttackable() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 203);
+		DistributedMethod method(this, 227);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -2632,7 +2959,7 @@ bool CreatureObject::isAttackableBy(CreatureObject* attacker) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 204);
+		DistributedMethod method(this, 228);
 		method.addObjectParameter(attacker);
 
 		return method.executeWithBooleanReturn();
@@ -2645,7 +2972,7 @@ bool CreatureObject::isListening() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 205);
+		DistributedMethod method(this, 229);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -2657,7 +2984,7 @@ bool CreatureObject::isWatching() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 206);
+		DistributedMethod method(this, 230);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -2669,7 +2996,7 @@ unicode& CreatureObject::getCharacterName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 207);
+		DistributedMethod method(this, 231);
 
 		method.executeWithUnicodeReturn(_return_getCharacterName);
 		return _return_getCharacterName;
@@ -2682,7 +3009,7 @@ string& CreatureObject::getStfName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 208);
+		DistributedMethod method(this, 232);
 
 		method.executeWithAsciiReturn(_return_getStfName);
 		return _return_getStfName;
@@ -2695,7 +3022,7 @@ string& CreatureObject::getSpeciesName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 209);
+		DistributedMethod method(this, 233);
 
 		method.executeWithAsciiReturn(_return_getSpeciesName);
 		return _return_getSpeciesName;
@@ -2708,7 +3035,7 @@ string& CreatureObject::getRaceName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 210);
+		DistributedMethod method(this, 234);
 
 		method.executeWithAsciiReturn(_return_getRaceName);
 		return _return_getRaceName;
@@ -2721,7 +3048,7 @@ string& CreatureObject::getGender() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 211);
+		DistributedMethod method(this, 235);
 
 		method.executeWithAsciiReturn(_return_getGender);
 		return _return_getGender;
@@ -2734,7 +3061,7 @@ string& CreatureObject::getTerrainName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 212);
+		DistributedMethod method(this, 236);
 
 		method.executeWithAsciiReturn(_return_getTerrainName);
 		return _return_getTerrainName;
@@ -2747,7 +3074,7 @@ void CreatureObject::getCharacterAppearance(string& appearance) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 213);
+		DistributedMethod method(this, 237);
 		method.addAsciiParameter(appearance);
 
 		method.executeWithVoidReturn();
@@ -2755,12 +3082,25 @@ void CreatureObject::getCharacterAppearance(string& appearance) {
 		((CreatureObjectImplementation*) _impl)->getCharacterAppearance(appearance);
 }
 
+void CreatureObject::getHairAppearance(string& appearance) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 238);
+		method.addAsciiParameter(appearance);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->getHairAppearance(appearance);
+}
+
 bool CreatureObject::isOvert() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 214);
+		DistributedMethod method(this, 239);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -2772,7 +3112,7 @@ unsigned long long CreatureObject::getStateBitmask() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 215);
+		DistributedMethod method(this, 240);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -2784,7 +3124,7 @@ unsigned int CreatureObject::getCreatureBitmask() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 216);
+		DistributedMethod method(this, 241);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -2796,7 +3136,7 @@ unsigned char CreatureObject::getPosture() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 217);
+		DistributedMethod method(this, 242);
 
 		return method.executeWithUnsignedCharReturn();
 	} else
@@ -2808,7 +3148,7 @@ unsigned int CreatureObject::getFaction() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 218);
+		DistributedMethod method(this, 243);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -2820,7 +3160,7 @@ bool CreatureObject::isRebel() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 219);
+		DistributedMethod method(this, 244);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -2832,7 +3172,7 @@ bool CreatureObject::isNeutral() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 220);
+		DistributedMethod method(this, 245);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -2844,7 +3184,7 @@ bool CreatureObject::isImperial() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 221);
+		DistributedMethod method(this, 246);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -2856,7 +3196,7 @@ unsigned int CreatureObject::getPvpStatusBitmask() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 222);
+		DistributedMethod method(this, 247);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -2868,7 +3208,7 @@ unsigned int CreatureObject::getBankCredits() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 223);
+		DistributedMethod method(this, 248);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -2880,7 +3220,7 @@ unsigned int CreatureObject::getCashCredits() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 224);
+		DistributedMethod method(this, 249);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -2892,7 +3232,7 @@ unsigned int CreatureObject::getWoundsUpdateCounter() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 225);
+		DistributedMethod method(this, 250);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -2904,7 +3244,7 @@ unsigned int CreatureObject::getNewWoundsUpdateCounter(int upd) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 226);
+		DistributedMethod method(this, 251);
 		method.addSignedIntParameter(upd);
 
 		return method.executeWithUnsignedIntReturn();
@@ -2912,12 +3252,36 @@ unsigned int CreatureObject::getNewWoundsUpdateCounter(int upd) {
 		return ((CreatureObjectImplementation*) _impl)->getNewWoundsUpdateCounter(upd);
 }
 
+void CreatureObject::updateHAMBars() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 252);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->updateHAMBars();
+}
+
+void CreatureObject::updateBaseStats() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 253);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->updateBaseStats();
+}
+
 unsigned int CreatureObject::getBaseHealth() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 227);
+		DistributedMethod method(this, 254);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -2929,7 +3293,7 @@ unsigned int CreatureObject::getBaseStrength() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 228);
+		DistributedMethod method(this, 255);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -2941,7 +3305,7 @@ unsigned int CreatureObject::getBaseConstitution() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 229);
+		DistributedMethod method(this, 256);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -2953,7 +3317,7 @@ unsigned int CreatureObject::getBaseAction() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 230);
+		DistributedMethod method(this, 257);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -2965,7 +3329,7 @@ unsigned int CreatureObject::getBaseQuickness() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 231);
+		DistributedMethod method(this, 258);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -2977,7 +3341,7 @@ unsigned int CreatureObject::getBaseStamina() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 232);
+		DistributedMethod method(this, 259);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -2989,7 +3353,7 @@ unsigned int CreatureObject::getBaseMind() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 233);
+		DistributedMethod method(this, 260);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -3001,7 +3365,7 @@ unsigned int CreatureObject::getBaseFocus() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 234);
+		DistributedMethod method(this, 261);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -3013,7 +3377,7 @@ unsigned int CreatureObject::getBaseWillpower() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 235);
+		DistributedMethod method(this, 262);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -3025,7 +3389,7 @@ unsigned int CreatureObject::getHealth() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 236);
+		DistributedMethod method(this, 263);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -3037,7 +3401,7 @@ unsigned int CreatureObject::getStrength() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 237);
+		DistributedMethod method(this, 264);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -3049,7 +3413,7 @@ unsigned int CreatureObject::getConstitution() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 238);
+		DistributedMethod method(this, 265);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -3061,7 +3425,7 @@ unsigned int CreatureObject::getAction() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 239);
+		DistributedMethod method(this, 266);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -3073,7 +3437,7 @@ unsigned int CreatureObject::getQuickness() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 240);
+		DistributedMethod method(this, 267);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -3085,7 +3449,7 @@ unsigned int CreatureObject::getStamina() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 241);
+		DistributedMethod method(this, 268);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -3097,7 +3461,7 @@ unsigned int CreatureObject::getMind() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 242);
+		DistributedMethod method(this, 269);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -3109,7 +3473,7 @@ unsigned int CreatureObject::getFocus() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 243);
+		DistributedMethod method(this, 270);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -3121,7 +3485,7 @@ unsigned int CreatureObject::getWillpower() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 244);
+		DistributedMethod method(this, 271);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -3133,7 +3497,7 @@ unsigned int CreatureObject::getHealthMax() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 245);
+		DistributedMethod method(this, 272);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -3145,7 +3509,7 @@ unsigned int CreatureObject::getStrengthMax() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 246);
+		DistributedMethod method(this, 273);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -3157,7 +3521,7 @@ unsigned int CreatureObject::getConstitutionMax() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 247);
+		DistributedMethod method(this, 274);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -3169,7 +3533,7 @@ unsigned int CreatureObject::getActionMax() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 248);
+		DistributedMethod method(this, 275);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -3181,7 +3545,7 @@ unsigned int CreatureObject::getQuicknessMax() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 249);
+		DistributedMethod method(this, 276);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -3193,7 +3557,7 @@ unsigned int CreatureObject::getStaminaMax() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 250);
+		DistributedMethod method(this, 277);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -3205,7 +3569,7 @@ unsigned int CreatureObject::getMindMax() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 251);
+		DistributedMethod method(this, 278);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -3217,7 +3581,7 @@ unsigned int CreatureObject::getFocusMax() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 252);
+		DistributedMethod method(this, 279);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -3229,7 +3593,7 @@ unsigned int CreatureObject::getWillpowerMax() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 253);
+		DistributedMethod method(this, 280);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -3241,7 +3605,7 @@ unsigned int CreatureObject::getArmor() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 254);
+		DistributedMethod method(this, 281);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -3253,7 +3617,7 @@ float CreatureObject::getArmorResist(int resistType) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 255);
+		DistributedMethod method(this, 282);
 		method.addSignedIntParameter(resistType);
 
 		return method.executeWithFloatReturn();
@@ -3266,11 +3630,35 @@ unsigned int CreatureObject::getHealthWounds() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 256);
+		DistributedMethod method(this, 283);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
 		return ((CreatureObjectImplementation*) _impl)->getHealthWounds();
+}
+
+unsigned int CreatureObject::getStrengthWounds() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 284);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((CreatureObjectImplementation*) _impl)->getStrengthWounds();
+}
+
+unsigned int CreatureObject::getConstitutionWounds() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 285);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((CreatureObjectImplementation*) _impl)->getConstitutionWounds();
 }
 
 unsigned int CreatureObject::getActionWounds() {
@@ -3278,11 +3666,35 @@ unsigned int CreatureObject::getActionWounds() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 257);
+		DistributedMethod method(this, 286);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
 		return ((CreatureObjectImplementation*) _impl)->getActionWounds();
+}
+
+unsigned int CreatureObject::getQuicknessWounds() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 287);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((CreatureObjectImplementation*) _impl)->getQuicknessWounds();
+}
+
+unsigned int CreatureObject::getStaminaWounds() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 288);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((CreatureObjectImplementation*) _impl)->getStaminaWounds();
 }
 
 unsigned int CreatureObject::getMindWounds() {
@@ -3290,11 +3702,35 @@ unsigned int CreatureObject::getMindWounds() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 258);
+		DistributedMethod method(this, 289);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
 		return ((CreatureObjectImplementation*) _impl)->getMindWounds();
+}
+
+unsigned int CreatureObject::getFocusWounds() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 290);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((CreatureObjectImplementation*) _impl)->getFocusWounds();
+}
+
+unsigned int CreatureObject::getWillpowerWounds() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 291);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((CreatureObjectImplementation*) _impl)->getWillpowerWounds();
 }
 
 unsigned int CreatureObject::getShockWounds() {
@@ -3302,7 +3738,7 @@ unsigned int CreatureObject::getShockWounds() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 259);
+		DistributedMethod method(this, 292);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -3314,7 +3750,7 @@ unsigned int CreatureObject::getHAMUpdateCounter() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 260);
+		DistributedMethod method(this, 293);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -3326,7 +3762,7 @@ unsigned int CreatureObject::getNewHAMUpdateCounter(int cnt) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 261);
+		DistributedMethod method(this, 294);
 		method.addSignedIntParameter(cnt);
 
 		return method.executeWithUnsignedIntReturn();
@@ -3339,7 +3775,7 @@ unsigned int CreatureObject::getHAMMaxUpdateCounter() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 262);
+		DistributedMethod method(this, 295);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -3351,7 +3787,7 @@ unsigned int CreatureObject::getNewHAMMaxUpdateCounter(int cnt) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 263);
+		DistributedMethod method(this, 296);
 		method.addSignedIntParameter(cnt);
 
 		return method.executeWithUnsignedIntReturn();
@@ -3359,12 +3795,37 @@ unsigned int CreatureObject::getNewHAMMaxUpdateCounter(int cnt) {
 		return ((CreatureObjectImplementation*) _impl)->getNewHAMMaxUpdateCounter(cnt);
 }
 
+unsigned int CreatureObject::getHAMBaseUpdateCounter() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 297);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((CreatureObjectImplementation*) _impl)->getHAMBaseUpdateCounter();
+}
+
+unsigned int CreatureObject::getNewHAMBaseUpdateCounter(int cnt) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 298);
+		method.addSignedIntParameter(cnt);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((CreatureObjectImplementation*) _impl)->getNewHAMBaseUpdateCounter(cnt);
+}
+
 unsigned int CreatureObject::getHealthEncumbrance() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 264);
+		DistributedMethod method(this, 299);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -3376,7 +3837,7 @@ unsigned int CreatureObject::getActionEncumbrance() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 265);
+		DistributedMethod method(this, 300);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -3388,7 +3849,7 @@ unsigned int CreatureObject::getMindEncumbrance() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 266);
+		DistributedMethod method(this, 301);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -3400,7 +3861,7 @@ unsigned long long CreatureObject::getTargetID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 267);
+		DistributedMethod method(this, 302);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -3412,7 +3873,7 @@ SceneObject* CreatureObject::getTarget() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 268);
+		DistributedMethod method(this, 303);
 
 		return (SceneObject*) method.executeWithObjectReturn();
 	} else
@@ -3424,7 +3885,7 @@ unsigned long long CreatureObject::getWeaponID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 269);
+		DistributedMethod method(this, 304);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -3436,7 +3897,7 @@ unsigned long long CreatureObject::getGroupID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 270);
+		DistributedMethod method(this, 305);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -3448,7 +3909,7 @@ unsigned long long CreatureObject::getGuildID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 271);
+		DistributedMethod method(this, 306);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -3460,7 +3921,7 @@ Guild* CreatureObject::getGuild() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 272);
+		DistributedMethod method(this, 307);
 
 		return (Guild*) method.executeWithObjectReturn();
 	} else
@@ -3472,7 +3933,7 @@ float CreatureObject::getSpeed() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 273);
+		DistributedMethod method(this, 308);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -3484,7 +3945,7 @@ float CreatureObject::getAcceleration() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 274);
+		DistributedMethod method(this, 309);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -3496,7 +3957,7 @@ unsigned long long CreatureObject::getDefenderID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 275);
+		DistributedMethod method(this, 310);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -3508,7 +3969,7 @@ unsigned int CreatureObject::getDefenderUpdateCounter() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 276);
+		DistributedMethod method(this, 311);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -3520,7 +3981,7 @@ unsigned int CreatureObject::getNewDefenderUpdateCounter(int cnt) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 277);
+		DistributedMethod method(this, 312);
 		method.addSignedIntParameter(cnt);
 
 		return method.executeWithUnsignedIntReturn();
@@ -3533,7 +3994,7 @@ string& CreatureObject::getPerformanceAnimation() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 278);
+		DistributedMethod method(this, 313);
 
 		method.executeWithAsciiReturn(_return_getPerformanceAnimation);
 		return _return_getPerformanceAnimation;
@@ -3546,7 +4007,7 @@ unsigned int CreatureObject::getPerformanceCounter() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 279);
+		DistributedMethod method(this, 314);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -3558,7 +4019,7 @@ unsigned int CreatureObject::getInstrumentID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 280);
+		DistributedMethod method(this, 315);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -3570,7 +4031,7 @@ string& CreatureObject::getPerformanceName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 281);
+		DistributedMethod method(this, 316);
 
 		method.executeWithAsciiReturn(_return_getPerformanceName);
 		return _return_getPerformanceName;
@@ -3583,7 +4044,7 @@ string& CreatureObject::getMood() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 282);
+		DistributedMethod method(this, 317);
 
 		method.executeWithAsciiReturn(_return_getMood);
 		return _return_getMood;
@@ -3596,7 +4057,7 @@ unsigned char CreatureObject::getMoodID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 283);
+		DistributedMethod method(this, 318);
 
 		return method.executeWithUnsignedCharReturn();
 	} else
@@ -3608,7 +4069,7 @@ unsigned long long CreatureObject::getGroupInviterID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 284);
+		DistributedMethod method(this, 319);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -3620,7 +4081,7 @@ unsigned long long CreatureObject::getGroupInviteCounter() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 285);
+		DistributedMethod method(this, 320);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -3632,7 +4093,7 @@ unsigned long long CreatureObject::getNewGroupInviteCounter() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 286);
+		DistributedMethod method(this, 321);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -3644,7 +4105,7 @@ unsigned long long CreatureObject::getWatchID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 287);
+		DistributedMethod method(this, 322);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -3656,7 +4117,7 @@ unsigned long long CreatureObject::getListenID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 288);
+		DistributedMethod method(this, 323);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -3668,7 +4129,7 @@ bool CreatureObject::isInBuilding() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 289);
+		DistributedMethod method(this, 324);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -3680,7 +4141,7 @@ int CreatureObject::getBuildingType() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 290);
+		DistributedMethod method(this, 325);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -3692,7 +4153,7 @@ string& CreatureObject::getGuildName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 291);
+		DistributedMethod method(this, 326);
 
 		method.executeWithAsciiReturn(_return_getGuildName);
 		return _return_getGuildName;
@@ -3705,7 +4166,7 @@ int CreatureObject::getWeaponSpeedModifier() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 292);
+		DistributedMethod method(this, 327);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -3717,7 +4178,7 @@ unsigned int CreatureObject::getSkillBoxesUpdateCounter() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 293);
+		DistributedMethod method(this, 328);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -3729,7 +4190,7 @@ unsigned int CreatureObject::getSkillModsCounter() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 294);
+		DistributedMethod method(this, 329);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -3741,7 +4202,7 @@ unsigned int CreatureObject::getNewSkillModsCounter(int cnt) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 295);
+		DistributedMethod method(this, 330);
 		method.addSignedIntParameter(cnt);
 
 		return method.executeWithUnsignedIntReturn();
@@ -3754,7 +4215,7 @@ void CreatureObject::setBaseHealth(unsigned int health) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 296);
+		DistributedMethod method(this, 331);
 		method.addUnsignedIntParameter(health);
 
 		method.executeWithVoidReturn();
@@ -3767,7 +4228,7 @@ void CreatureObject::setBaseStrength(unsigned int strength) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 297);
+		DistributedMethod method(this, 332);
 		method.addUnsignedIntParameter(strength);
 
 		method.executeWithVoidReturn();
@@ -3780,7 +4241,7 @@ void CreatureObject::setBaseConstitution(unsigned int constituition) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 298);
+		DistributedMethod method(this, 333);
 		method.addUnsignedIntParameter(constituition);
 
 		method.executeWithVoidReturn();
@@ -3793,7 +4254,7 @@ void CreatureObject::setBaseAction(unsigned int action) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 299);
+		DistributedMethod method(this, 334);
 		method.addUnsignedIntParameter(action);
 
 		method.executeWithVoidReturn();
@@ -3806,7 +4267,7 @@ void CreatureObject::setBaseQuickness(unsigned int quickness) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 300);
+		DistributedMethod method(this, 335);
 		method.addUnsignedIntParameter(quickness);
 
 		method.executeWithVoidReturn();
@@ -3819,7 +4280,7 @@ void CreatureObject::setBaseStamina(unsigned int stamina) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 301);
+		DistributedMethod method(this, 336);
 		method.addUnsignedIntParameter(stamina);
 
 		method.executeWithVoidReturn();
@@ -3832,7 +4293,7 @@ void CreatureObject::setBaseMind(unsigned int mind) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 302);
+		DistributedMethod method(this, 337);
 		method.addUnsignedIntParameter(mind);
 
 		method.executeWithVoidReturn();
@@ -3845,7 +4306,7 @@ void CreatureObject::setBaseFocus(unsigned int focus) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 303);
+		DistributedMethod method(this, 338);
 		method.addUnsignedIntParameter(focus);
 
 		method.executeWithVoidReturn();
@@ -3858,7 +4319,7 @@ void CreatureObject::setBaseWillpower(unsigned int willpower) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 304);
+		DistributedMethod method(this, 339);
 		method.addUnsignedIntParameter(willpower);
 
 		method.executeWithVoidReturn();
@@ -3871,7 +4332,7 @@ void CreatureObject::setHealth(unsigned int health) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 305);
+		DistributedMethod method(this, 340);
 		method.addUnsignedIntParameter(health);
 
 		method.executeWithVoidReturn();
@@ -3884,7 +4345,7 @@ void CreatureObject::setStrength(unsigned int strength) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 306);
+		DistributedMethod method(this, 341);
 		method.addUnsignedIntParameter(strength);
 
 		method.executeWithVoidReturn();
@@ -3897,7 +4358,7 @@ void CreatureObject::setConstitution(unsigned int constituition) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 307);
+		DistributedMethod method(this, 342);
 		method.addUnsignedIntParameter(constituition);
 
 		method.executeWithVoidReturn();
@@ -3910,7 +4371,7 @@ void CreatureObject::setAction(unsigned int action) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 308);
+		DistributedMethod method(this, 343);
 		method.addUnsignedIntParameter(action);
 
 		method.executeWithVoidReturn();
@@ -3923,7 +4384,7 @@ void CreatureObject::setQuickness(unsigned int quickness) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 309);
+		DistributedMethod method(this, 344);
 		method.addUnsignedIntParameter(quickness);
 
 		method.executeWithVoidReturn();
@@ -3936,7 +4397,7 @@ void CreatureObject::setStamina(unsigned int stamina) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 310);
+		DistributedMethod method(this, 345);
 		method.addUnsignedIntParameter(stamina);
 
 		method.executeWithVoidReturn();
@@ -3949,7 +4410,7 @@ void CreatureObject::setMind(unsigned int mind) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 311);
+		DistributedMethod method(this, 346);
 		method.addUnsignedIntParameter(mind);
 
 		method.executeWithVoidReturn();
@@ -3962,7 +4423,7 @@ void CreatureObject::setFocus(unsigned int focus) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 312);
+		DistributedMethod method(this, 347);
 		method.addUnsignedIntParameter(focus);
 
 		method.executeWithVoidReturn();
@@ -3975,7 +4436,7 @@ void CreatureObject::setWillpower(unsigned int willpower) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 313);
+		DistributedMethod method(this, 348);
 		method.addUnsignedIntParameter(willpower);
 
 		method.executeWithVoidReturn();
@@ -3988,7 +4449,7 @@ void CreatureObject::setHealthMax(unsigned int health) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 314);
+		DistributedMethod method(this, 349);
 		method.addUnsignedIntParameter(health);
 
 		method.executeWithVoidReturn();
@@ -4001,7 +4462,7 @@ void CreatureObject::setStrengthMax(unsigned int strength) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 315);
+		DistributedMethod method(this, 350);
 		method.addUnsignedIntParameter(strength);
 
 		method.executeWithVoidReturn();
@@ -4014,7 +4475,7 @@ void CreatureObject::setConstitutionMax(unsigned int constituition) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 316);
+		DistributedMethod method(this, 351);
 		method.addUnsignedIntParameter(constituition);
 
 		method.executeWithVoidReturn();
@@ -4027,7 +4488,7 @@ void CreatureObject::setActionMax(unsigned int action) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 317);
+		DistributedMethod method(this, 352);
 		method.addUnsignedIntParameter(action);
 
 		method.executeWithVoidReturn();
@@ -4040,7 +4501,7 @@ void CreatureObject::setQuicknessMax(unsigned int quickness) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 318);
+		DistributedMethod method(this, 353);
 		method.addUnsignedIntParameter(quickness);
 
 		method.executeWithVoidReturn();
@@ -4053,7 +4514,7 @@ void CreatureObject::setStaminaMax(unsigned int stamina) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 319);
+		DistributedMethod method(this, 354);
 		method.addUnsignedIntParameter(stamina);
 
 		method.executeWithVoidReturn();
@@ -4066,7 +4527,7 @@ void CreatureObject::setMindMax(unsigned int mind) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 320);
+		DistributedMethod method(this, 355);
 		method.addUnsignedIntParameter(mind);
 
 		method.executeWithVoidReturn();
@@ -4079,7 +4540,7 @@ void CreatureObject::setFocusMax(unsigned int focus) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 321);
+		DistributedMethod method(this, 356);
 		method.addUnsignedIntParameter(focus);
 
 		method.executeWithVoidReturn();
@@ -4092,7 +4553,7 @@ void CreatureObject::setWillpowerMax(unsigned int willpower) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 322);
+		DistributedMethod method(this, 357);
 		method.addUnsignedIntParameter(willpower);
 
 		method.executeWithVoidReturn();
@@ -4105,7 +4566,7 @@ void CreatureObject::setArmor(unsigned int ar) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 323);
+		DistributedMethod method(this, 358);
 		method.addUnsignedIntParameter(ar);
 
 		method.executeWithVoidReturn();
@@ -4118,7 +4579,7 @@ void CreatureObject::setHealthWounds(unsigned int wounds) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 324);
+		DistributedMethod method(this, 359);
 		method.addUnsignedIntParameter(wounds);
 
 		method.executeWithVoidReturn();
@@ -4126,12 +4587,38 @@ void CreatureObject::setHealthWounds(unsigned int wounds) {
 		((CreatureObjectImplementation*) _impl)->setHealthWounds(wounds);
 }
 
+void CreatureObject::setStrengthWounds(unsigned int wounds) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 360);
+		method.addUnsignedIntParameter(wounds);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setStrengthWounds(wounds);
+}
+
+void CreatureObject::setConstitutionWounds(unsigned int wounds) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 361);
+		method.addUnsignedIntParameter(wounds);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setConstitutionWounds(wounds);
+}
+
 void CreatureObject::setActionWounds(unsigned int wounds) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 325);
+		DistributedMethod method(this, 362);
 		method.addUnsignedIntParameter(wounds);
 
 		method.executeWithVoidReturn();
@@ -4139,12 +4626,38 @@ void CreatureObject::setActionWounds(unsigned int wounds) {
 		((CreatureObjectImplementation*) _impl)->setActionWounds(wounds);
 }
 
+void CreatureObject::setQuicknessWounds(unsigned int wounds) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 363);
+		method.addUnsignedIntParameter(wounds);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setQuicknessWounds(wounds);
+}
+
+void CreatureObject::setStaminaWounds(unsigned int wounds) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 364);
+		method.addUnsignedIntParameter(wounds);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setStaminaWounds(wounds);
+}
+
 void CreatureObject::setMindWounds(unsigned int wounds) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 326);
+		DistributedMethod method(this, 365);
 		method.addUnsignedIntParameter(wounds);
 
 		method.executeWithVoidReturn();
@@ -4152,12 +4665,38 @@ void CreatureObject::setMindWounds(unsigned int wounds) {
 		((CreatureObjectImplementation*) _impl)->setMindWounds(wounds);
 }
 
+void CreatureObject::setFocusWounds(unsigned int wounds) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 366);
+		method.addUnsignedIntParameter(wounds);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setFocusWounds(wounds);
+}
+
+void CreatureObject::setWillpowerWounds(unsigned int wounds) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 367);
+		method.addUnsignedIntParameter(wounds);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setWillpowerWounds(wounds);
+}
+
 void CreatureObject::setShockWounds(unsigned int wounds) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 327);
+		DistributedMethod method(this, 368);
 		method.addUnsignedIntParameter(wounds);
 
 		method.executeWithVoidReturn();
@@ -4170,7 +4709,7 @@ void CreatureObject::setWoundsUpdateCounter(unsigned int count) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 328);
+		DistributedMethod method(this, 369);
 		method.addUnsignedIntParameter(count);
 
 		method.executeWithVoidReturn();
@@ -4183,7 +4722,7 @@ void CreatureObject::setSpeed(float spd) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 329);
+		DistributedMethod method(this, 370);
 		method.addFloatParameter(spd);
 
 		method.executeWithVoidReturn();
@@ -4196,7 +4735,7 @@ void CreatureObject::setAcceleration(float acc) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 330);
+		DistributedMethod method(this, 371);
 		method.addFloatParameter(acc);
 
 		method.executeWithVoidReturn();
@@ -4209,7 +4748,7 @@ void CreatureObject::setKinetic(float kin) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 331);
+		DistributedMethod method(this, 372);
 		method.addFloatParameter(kin);
 
 		method.executeWithVoidReturn();
@@ -4222,7 +4761,7 @@ void CreatureObject::setEnergy(float ene) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 332);
+		DistributedMethod method(this, 373);
 		method.addFloatParameter(ene);
 
 		method.executeWithVoidReturn();
@@ -4235,7 +4774,7 @@ void CreatureObject::setElectricity(float ele) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 333);
+		DistributedMethod method(this, 374);
 		method.addFloatParameter(ele);
 
 		method.executeWithVoidReturn();
@@ -4248,7 +4787,7 @@ void CreatureObject::setStun(float stu) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 334);
+		DistributedMethod method(this, 375);
 		method.addFloatParameter(stu);
 
 		method.executeWithVoidReturn();
@@ -4261,7 +4800,7 @@ void CreatureObject::setBlast(float bla) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 335);
+		DistributedMethod method(this, 376);
 		method.addFloatParameter(bla);
 
 		method.executeWithVoidReturn();
@@ -4274,7 +4813,7 @@ void CreatureObject::setHeat(float hea) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 336);
+		DistributedMethod method(this, 377);
 		method.addFloatParameter(hea);
 
 		method.executeWithVoidReturn();
@@ -4287,7 +4826,7 @@ void CreatureObject::setCold(float col) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 337);
+		DistributedMethod method(this, 378);
 		method.addFloatParameter(col);
 
 		method.executeWithVoidReturn();
@@ -4300,7 +4839,7 @@ void CreatureObject::setAcid(float aci) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 338);
+		DistributedMethod method(this, 379);
 		method.addFloatParameter(aci);
 
 		method.executeWithVoidReturn();
@@ -4313,7 +4852,7 @@ void CreatureObject::setLightSaber(float lig) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 339);
+		DistributedMethod method(this, 380);
 		method.addFloatParameter(lig);
 
 		method.executeWithVoidReturn();
@@ -4326,7 +4865,7 @@ void CreatureObject::changeConditionDamage(int amount) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 340);
+		DistributedMethod method(this, 381);
 		method.addSignedIntParameter(amount);
 
 		method.executeWithVoidReturn();
@@ -4339,7 +4878,7 @@ void CreatureObject::setPosture(unsigned char state, bool overrideDizzy, bool ob
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 341);
+		DistributedMethod method(this, 382);
 		method.addUnsignedCharParameter(state);
 		method.addBooleanParameter(overrideDizzy);
 		method.addBooleanParameter(objectInteraction);
@@ -4357,7 +4896,7 @@ void CreatureObject::setPvpStatusBitmask(unsigned int mask) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 342);
+		DistributedMethod method(this, 383);
 		method.addUnsignedIntParameter(mask);
 
 		method.executeWithVoidReturn();
@@ -4370,7 +4909,7 @@ void CreatureObject::setDizziedState() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 343);
+		DistributedMethod method(this, 384);
 
 		method.executeWithVoidReturn();
 	} else
@@ -4382,7 +4921,7 @@ void CreatureObject::setStunnedState() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 344);
+		DistributedMethod method(this, 385);
 
 		method.executeWithVoidReturn();
 	} else
@@ -4394,7 +4933,7 @@ void CreatureObject::setBlindedState() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 345);
+		DistributedMethod method(this, 386);
 
 		method.executeWithVoidReturn();
 	} else
@@ -4406,7 +4945,7 @@ void CreatureObject::setIntimidatedState() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 346);
+		DistributedMethod method(this, 387);
 
 		method.executeWithVoidReturn();
 	} else
@@ -4418,7 +4957,7 @@ void CreatureObject::setPoisonedState(int str, int type, int duration) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 347);
+		DistributedMethod method(this, 388);
 		method.addSignedIntParameter(str);
 		method.addSignedIntParameter(type);
 		method.addSignedIntParameter(duration);
@@ -4433,7 +4972,7 @@ void CreatureObject::setBleedingState(int str, int type, int duration) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 348);
+		DistributedMethod method(this, 389);
 		method.addSignedIntParameter(str);
 		method.addSignedIntParameter(type);
 		method.addSignedIntParameter(duration);
@@ -4448,7 +4987,7 @@ void CreatureObject::setDiseasedState(int str, int type, int duration) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 349);
+		DistributedMethod method(this, 390);
 		method.addSignedIntParameter(str);
 		method.addSignedIntParameter(type);
 		method.addSignedIntParameter(duration);
@@ -4463,7 +5002,7 @@ void CreatureObject::setOnFireState(int str, int type, int duration) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 350);
+		DistributedMethod method(this, 391);
 		method.addSignedIntParameter(str);
 		method.addSignedIntParameter(type);
 		method.addSignedIntParameter(duration);
@@ -4478,7 +5017,7 @@ bool CreatureObject::setNextAttackDelay(int del) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 351);
+		DistributedMethod method(this, 392);
 		method.addSignedIntParameter(del);
 
 		return method.executeWithBooleanReturn();
@@ -4491,7 +5030,7 @@ void CreatureObject::setCharacterName(const string& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 352);
+		DistributedMethod method(this, 393);
 		method.addAsciiParameter(name);
 
 		method.executeWithVoidReturn();
@@ -4504,7 +5043,7 @@ void CreatureObject::setCharacterName(const unicode& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 353);
+		DistributedMethod method(this, 394);
 		method.addUnicodeParameter(name);
 
 		method.executeWithVoidReturn();
@@ -4517,7 +5056,7 @@ void CreatureObject::setTerrainName(const string& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 354);
+		DistributedMethod method(this, 395);
 		method.addAsciiParameter(name);
 
 		method.executeWithVoidReturn();
@@ -4530,7 +5069,7 @@ void CreatureObject::setCharacterAppearance(string& cust) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 355);
+		DistributedMethod method(this, 396);
 		method.addAsciiParameter(cust);
 
 		method.executeWithVoidReturn();
@@ -4543,7 +5082,7 @@ void CreatureObject::setAppearanceAttribute(unsigned char type, unsigned char va
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 356);
+		DistributedMethod method(this, 397);
 		method.addUnsignedCharParameter(type);
 		method.addUnsignedCharParameter(value);
 
@@ -4557,7 +5096,7 @@ void CreatureObject::setAppearanceAttribute(string& type, unsigned char value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 357);
+		DistributedMethod method(this, 398);
 		method.addAsciiParameter(type);
 		method.addUnsignedCharParameter(value);
 
@@ -4571,11 +5110,52 @@ void CreatureObject::updateCharacterAppearance() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 358);
+		DistributedMethod method(this, 399);
 
 		method.executeWithVoidReturn();
 	} else
 		((CreatureObjectImplementation*) _impl)->updateCharacterAppearance();
+}
+
+void CreatureObject::setHairAppearance(string& cust) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 400);
+		method.addAsciiParameter(cust);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setHairAppearance(cust);
+}
+
+void CreatureObject::setHairAppearanceAttribute(unsigned char type, unsigned char value) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 401);
+		method.addUnsignedCharParameter(type);
+		method.addUnsignedCharParameter(value);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setHairAppearanceAttribute(type, value);
+}
+
+void CreatureObject::setHairAppearanceAttribute(string& type, unsigned char value) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 402);
+		method.addAsciiParameter(type);
+		method.addUnsignedCharParameter(value);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setHairAppearanceAttribute(type, value);
 }
 
 void CreatureObject::setRaceName(const string& name) {
@@ -4583,7 +5163,7 @@ void CreatureObject::setRaceName(const string& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 359);
+		DistributedMethod method(this, 403);
 		method.addAsciiParameter(name);
 
 		method.executeWithVoidReturn();
@@ -4596,7 +5176,7 @@ void CreatureObject::setSpeciesName(const string& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 360);
+		DistributedMethod method(this, 404);
 		method.addAsciiParameter(name);
 
 		method.executeWithVoidReturn();
@@ -4609,7 +5189,7 @@ void CreatureObject::setGender(const string& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 361);
+		DistributedMethod method(this, 405);
 		method.addAsciiParameter(name);
 
 		method.executeWithVoidReturn();
@@ -4622,7 +5202,7 @@ void CreatureObject::setFaction(unsigned int fac) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 362);
+		DistributedMethod method(this, 406);
 		method.addUnsignedIntParameter(fac);
 
 		method.executeWithVoidReturn();
@@ -4635,7 +5215,7 @@ void CreatureObject::setHeight(float h) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 363);
+		DistributedMethod method(this, 407);
 		method.addFloatParameter(h);
 
 		method.executeWithVoidReturn();
@@ -4648,7 +5228,7 @@ void CreatureObject::setMood(unsigned char mdid) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 364);
+		DistributedMethod method(this, 408);
 		method.addUnsignedCharParameter(mdid);
 
 		method.executeWithVoidReturn();
@@ -4661,7 +5241,7 @@ void CreatureObject::setMood(const string& m) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 365);
+		DistributedMethod method(this, 409);
 		method.addAsciiParameter(m);
 
 		method.executeWithVoidReturn();
@@ -4674,7 +5254,7 @@ void CreatureObject::setGroup(GroupObject* Group) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 366);
+		DistributedMethod method(this, 410);
 		method.addObjectParameter(Group);
 
 		method.executeWithVoidReturn();
@@ -4687,12 +5267,25 @@ void CreatureObject::setMount(MountCreature* mount) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 367);
+		DistributedMethod method(this, 411);
 		method.addObjectParameter(mount);
 
 		method.executeWithVoidReturn();
 	} else
 		((CreatureObjectImplementation*) _impl)->setMount(mount);
+}
+
+void CreatureObject::explode(int level) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 412);
+		method.addSignedIntParameter(level);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->explode(level);
 }
 
 /*
@@ -4854,106 +5447,106 @@ Packet* CreatureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		resp->insertBoolean(takeMindDamage(inv->getSignedIntParameter()));
 		break;
 	case 55:
-		resp->insertBoolean(changeHealthWoundsBar(inv->getSignedIntParameter(), inv->getBooleanParameter()));
-		break;
-	case 56:
-		resp->insertBoolean(changeActionWoundsBar(inv->getSignedIntParameter(), inv->getBooleanParameter()));
-		break;
-	case 57:
-		resp->insertBoolean(changeMindWoundsBar(inv->getSignedIntParameter(), inv->getBooleanParameter()));
-		break;
-	case 58:
 		resp->insertBoolean(changeHealthBar(inv->getSignedIntParameter(), inv->getBooleanParameter()));
 		break;
-	case 59:
+	case 56:
 		resp->insertBoolean(changeStrengthBar(inv->getSignedIntParameter(), inv->getBooleanParameter()));
 		break;
-	case 60:
+	case 57:
 		resp->insertBoolean(changeConstitutionBar(inv->getSignedIntParameter(), inv->getBooleanParameter()));
 		break;
-	case 61:
-		changeMaxHealthBar(inv->getSignedIntParameter());
-		break;
-	case 62:
-		changeMaxStrengthBar(inv->getSignedIntParameter());
-		break;
-	case 63:
-		changeMaxConstitutionBar(inv->getSignedIntParameter());
-		break;
-	case 64:
-		changeShockWounds(inv->getSignedIntParameter());
-		break;
-	case 65:
+	case 58:
 		resp->insertBoolean(changeActionBar(inv->getSignedIntParameter(), inv->getBooleanParameter()));
 		break;
-	case 66:
+	case 59:
 		resp->insertBoolean(changeQuicknessBar(inv->getSignedIntParameter(), inv->getBooleanParameter()));
 		break;
-	case 67:
+	case 60:
 		resp->insertBoolean(changeStaminaBar(inv->getSignedIntParameter(), inv->getBooleanParameter()));
 		break;
-	case 68:
-		changeMaxActionBar(inv->getSignedIntParameter());
-		break;
-	case 69:
-		changeMaxQuicknessBar(inv->getSignedIntParameter());
-		break;
-	case 70:
-		changeMaxStaminaBar(inv->getSignedIntParameter());
-		break;
-	case 71:
+	case 61:
 		resp->insertBoolean(changeMindBar(inv->getSignedIntParameter(), inv->getBooleanParameter()));
 		break;
-	case 72:
+	case 62:
 		resp->insertBoolean(changeFocusBar(inv->getSignedIntParameter(), inv->getBooleanParameter()));
 		break;
-	case 73:
+	case 63:
 		resp->insertBoolean(changeWillpowerBar(inv->getSignedIntParameter(), inv->getBooleanParameter()));
 		break;
-	case 74:
+	case 64:
+		changeMaxHealthBar(inv->getSignedIntParameter());
+		break;
+	case 65:
+		changeMaxStrengthBar(inv->getSignedIntParameter());
+		break;
+	case 66:
+		changeMaxConstitutionBar(inv->getSignedIntParameter());
+		break;
+	case 67:
+		changeMaxActionBar(inv->getSignedIntParameter());
+		break;
+	case 68:
+		changeMaxQuicknessBar(inv->getSignedIntParameter());
+		break;
+	case 69:
+		changeMaxStaminaBar(inv->getSignedIntParameter());
+		break;
+	case 70:
 		changeMaxMindBar(inv->getSignedIntParameter());
 		break;
-	case 75:
+	case 71:
 		changeMaxFocusBar(inv->getSignedIntParameter());
 		break;
-	case 76:
+	case 72:
 		changeMaxWillpowerBar(inv->getSignedIntParameter());
 		break;
+	case 73:
+		resp->insertBoolean(changeHealthWoundsBar(inv->getSignedIntParameter(), inv->getBooleanParameter()));
+		break;
+	case 74:
+		resp->insertBoolean(changeStrengthWoundsBar(inv->getSignedIntParameter(), inv->getBooleanParameter()));
+		break;
+	case 75:
+		resp->insertBoolean(changeConstitutionWoundsBar(inv->getSignedIntParameter(), inv->getBooleanParameter()));
+		break;
+	case 76:
+		resp->insertBoolean(changeActionWoundsBar(inv->getSignedIntParameter(), inv->getBooleanParameter()));
+		break;
 	case 77:
-		setHealthBar(inv->getUnsignedIntParameter());
+		resp->insertBoolean(changeQuicknessWoundsBar(inv->getSignedIntParameter(), inv->getBooleanParameter()));
 		break;
 	case 78:
-		setStrengthBar(inv->getUnsignedIntParameter());
+		resp->insertBoolean(changeStaminaWoundsBar(inv->getSignedIntParameter(), inv->getBooleanParameter()));
 		break;
 	case 79:
-		setConstitutionBar(inv->getUnsignedIntParameter());
+		resp->insertBoolean(changeMindWoundsBar(inv->getSignedIntParameter(), inv->getBooleanParameter()));
 		break;
 	case 80:
-		setMaxHealthBar(inv->getUnsignedIntParameter(), inv->getBooleanParameter());
+		resp->insertBoolean(changeFocusWoundsBar(inv->getSignedIntParameter(), inv->getBooleanParameter()));
 		break;
 	case 81:
-		setMaxStrengthBar(inv->getUnsignedIntParameter(), inv->getBooleanParameter());
+		resp->insertBoolean(changeWillpowerWoundsBar(inv->getSignedIntParameter(), inv->getBooleanParameter()));
 		break;
 	case 82:
-		setMaxConstitutionBar(inv->getUnsignedIntParameter(), inv->getBooleanParameter());
+		changeShockWounds(inv->getSignedIntParameter());
 		break;
 	case 83:
-		setActionBar(inv->getUnsignedIntParameter());
+		setHealthBar(inv->getUnsignedIntParameter());
 		break;
 	case 84:
-		setQuicknessBar(inv->getUnsignedIntParameter());
+		setStrengthBar(inv->getUnsignedIntParameter());
 		break;
 	case 85:
-		setStaminaBar(inv->getUnsignedIntParameter());
+		setConstitutionBar(inv->getUnsignedIntParameter());
 		break;
 	case 86:
-		setMaxActionBar(inv->getUnsignedIntParameter(), inv->getBooleanParameter());
+		setActionBar(inv->getUnsignedIntParameter());
 		break;
 	case 87:
-		setMaxQuicknessBar(inv->getUnsignedIntParameter(), inv->getBooleanParameter());
+		setQuicknessBar(inv->getUnsignedIntParameter());
 		break;
 	case 88:
-		setMaxStaminaBar(inv->getUnsignedIntParameter(), inv->getBooleanParameter());
+		setStaminaBar(inv->getUnsignedIntParameter());
 		break;
 	case 89:
 		setMindBar(inv->getUnsignedIntParameter());
@@ -4965,832 +5558,967 @@ Packet* CreatureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		setWillpowerBar(inv->getUnsignedIntParameter());
 		break;
 	case 92:
-		setMaxMindBar(inv->getUnsignedIntParameter(), inv->getBooleanParameter());
+		setBaseHealthBar(inv->getUnsignedIntParameter(), inv->getBooleanParameter());
 		break;
 	case 93:
-		setMaxFocusBar(inv->getUnsignedIntParameter(), inv->getBooleanParameter());
+		setBaseStrengthBar(inv->getUnsignedIntParameter(), inv->getBooleanParameter());
 		break;
 	case 94:
-		setMaxWillpowerBar(inv->getUnsignedIntParameter(), inv->getBooleanParameter());
+		setBaseConstitutionBar(inv->getUnsignedIntParameter(), inv->getBooleanParameter());
 		break;
 	case 95:
-		resp->insertBoolean(hasAttackDelay());
+		setBaseActionBar(inv->getUnsignedIntParameter(), inv->getBooleanParameter());
 		break;
 	case 96:
-		clearAttackDelay();
+		setBaseQuicknessBar(inv->getUnsignedIntParameter(), inv->getBooleanParameter());
 		break;
 	case 97:
-		activateBurstRun();
+		setBaseStaminaBar(inv->getUnsignedIntParameter(), inv->getBooleanParameter());
 		break;
 	case 98:
-		resp->insertBoolean(hasQueuedState(inv->getUnsignedIntParameter()));
+		setBaseMindBar(inv->getUnsignedIntParameter(), inv->getBooleanParameter());
 		break;
 	case 99:
-		resp->insertBoolean(removeQueuedState(inv->getUnsignedIntParameter()));
+		setBaseFocusBar(inv->getUnsignedIntParameter(), inv->getBooleanParameter());
 		break;
 	case 100:
-		resp->insertBoolean(addQueuedState(inv->getUnsignedIntParameter()));
+		setBaseWillpowerBar(inv->getUnsignedIntParameter(), inv->getBooleanParameter());
 		break;
 	case 101:
-		setMeditateState();
+		setMaxHealthBar(inv->getUnsignedIntParameter(), inv->getBooleanParameter());
 		break;
 	case 102:
-		resp->insertBoolean(isGuilded());
+		setMaxStrengthBar(inv->getUnsignedIntParameter(), inv->getBooleanParameter());
 		break;
 	case 103:
-		removeGroup();
+		setMaxConstitutionBar(inv->getUnsignedIntParameter(), inv->getBooleanParameter());
 		break;
 	case 104:
-		resp->insertBoolean(isInAGroup());
+		setMaxActionBar(inv->getUnsignedIntParameter(), inv->getBooleanParameter());
 		break;
 	case 105:
-		setGroupID(inv->getUnsignedLongParameter());
+		setMaxQuicknessBar(inv->getUnsignedIntParameter(), inv->getBooleanParameter());
 		break;
 	case 106:
-		updateGroupId(inv->getUnsignedLongParameter());
+		setMaxStaminaBar(inv->getUnsignedIntParameter(), inv->getBooleanParameter());
 		break;
 	case 107:
-		updateGroupInviterId(inv->getUnsignedLongParameter());
+		setMaxMindBar(inv->getUnsignedIntParameter(), inv->getBooleanParameter());
 		break;
 	case 108:
-		setDefenderID(inv->getSignedLongParameter());
+		setMaxFocusBar(inv->getUnsignedIntParameter(), inv->getBooleanParameter());
 		break;
 	case 109:
-		updateTarget(inv->getUnsignedLongParameter());
+		setMaxWillpowerBar(inv->getUnsignedIntParameter(), inv->getBooleanParameter());
 		break;
 	case 110:
-		updateTarget((SceneObject*) inv->getObjectParameter());
+		setHealthWoundsBar(inv->getUnsignedIntParameter());
 		break;
 	case 111:
-		setActionCounter(inv->getUnsignedIntParameter());
+		setStrengthWoundsBar(inv->getUnsignedIntParameter());
 		break;
 	case 112:
-		setWeapon((Weapon*) inv->getObjectParameter());
+		setConstitutionWoundsBar(inv->getUnsignedIntParameter());
 		break;
 	case 113:
-		setCreatureLinkID(inv->getUnsignedLongParameter());
+		setActionWoundsBar(inv->getUnsignedIntParameter());
 		break;
 	case 114:
-		setAccuracy(inv->getSignedIntParameter());
+		setQuicknessWoundsBar(inv->getUnsignedIntParameter());
 		break;
 	case 115:
-		setDamageBonus(inv->getSignedIntParameter());
+		setStaminaWoundsBar(inv->getUnsignedIntParameter());
 		break;
 	case 116:
-		setDefenseBonus(inv->getSignedIntParameter());
+		setMindWoundsBar(inv->getUnsignedIntParameter());
 		break;
 	case 117:
-		setLastMovementUpdateStamp(inv->getUnsignedIntParameter());
+		setFocusWoundsBar(inv->getUnsignedIntParameter());
 		break;
 	case 118:
-		setIgnoreMovementTests(inv->getSignedIntParameter());
+		setWillpowerWoundsBar(inv->getUnsignedIntParameter());
 		break;
 	case 119:
-		setLevel(inv->getUnsignedIntParameter());
+		resp->insertBoolean(hasAttackDelay());
 		break;
 	case 120:
-		updateServerMovementStamp();
+		clearAttackDelay();
 		break;
 	case 121:
-		resp->insertLong(getInventoryItem(inv->getUnsignedLongParameter())->_getObjectID());
+		activateBurstRun();
 		break;
 	case 122:
-		removeInventoryItem(inv->getUnsignedLongParameter());
+		resp->insertBoolean(hasQueuedState(inv->getUnsignedIntParameter()));
 		break;
 	case 123:
-		resp->insertLong(getLootItem(inv->getUnsignedLongParameter())->_getObjectID());
+		resp->insertBoolean(removeQueuedState(inv->getUnsignedIntParameter()));
 		break;
 	case 124:
-		removeLootItem(inv->getUnsignedLongParameter());
+		resp->insertBoolean(addQueuedState(inv->getUnsignedIntParameter()));
 		break;
 	case 125:
-		broadcastMessage((BaseMessage*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter());
+		setMeditateState();
 		break;
 	case 126:
-		broadcastMessage((StandaloneBaseMessage*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter());
+		resp->insertBoolean(isGuilded());
 		break;
 	case 127:
-		resp->insertLong(getInventory()->_getObjectID());
+		removeGroup();
 		break;
 	case 128:
-		resp->insertLong(getLootContainer()->_getObjectID());
+		resp->insertBoolean(isInAGroup());
 		break;
 	case 129:
-		resp->insertLong(getNewItemID());
+		setGroupID(inv->getUnsignedLongParameter());
 		break;
 	case 130:
-		resp->insertLong(getWeapon()->_getObjectID());
+		updateGroupId(inv->getUnsignedLongParameter());
 		break;
 	case 131:
-		resp->insertLong(getArmor(inv->getSignedIntParameter())->_getObjectID());
+		updateGroupInviterId(inv->getUnsignedLongParameter());
 		break;
 	case 132:
-		resp->insertSignedInt(getSkillMod(inv->getAsciiParameter(_param0_getSkillMod__string_)));
+		setDefenderID(inv->getSignedLongParameter());
 		break;
 	case 133:
-		resp->insertBoolean(hasSkillMod(inv->getAsciiParameter(_param0_hasSkillMod__string_)));
+		updateTarget(inv->getUnsignedLongParameter());
 		break;
 	case 134:
-		resp->insertSignedInt(getSkillModBonus(inv->getAsciiParameter(_param0_getSkillModBonus__string_)));
+		updateTarget((SceneObject*) inv->getObjectParameter());
 		break;
 	case 135:
-		resp->insertBoolean(hasSkillModBonus(inv->getAsciiParameter(_param0_hasSkillModBonus__string_)));
+		setActionCounter(inv->getUnsignedIntParameter());
 		break;
 	case 136:
-		resp->insertSignedInt(getAccuracy());
+		setWeapon((Weapon*) inv->getObjectParameter());
 		break;
 	case 137:
-		resp->insertSignedInt(getDefenseBonus());
+		setCreatureLinkID(inv->getUnsignedLongParameter());
 		break;
 	case 138:
-		resp->insertSignedInt(getDamageBonus());
+		setAccuracy(inv->getSignedIntParameter());
 		break;
 	case 139:
-		resp->insertSignedInt(getConditionDamage());
+		setDamageBonus(inv->getSignedIntParameter());
 		break;
 	case 140:
-		resp->insertSignedInt(getMaxCondition());
+		setDefenseBonus(inv->getSignedIntParameter());
 		break;
 	case 141:
-		resp->insertSignedInt(getCondition());
+		setLastMovementUpdateStamp(inv->getUnsignedIntParameter());
 		break;
 	case 142:
-		resp->insertLong(getMount()->_getObjectID());
+		setIgnoreMovementTests(inv->getSignedIntParameter());
 		break;
 	case 143:
-		resp->insertLong(getLastServerMovementStamp());
+		setLevel(inv->getUnsignedIntParameter());
 		break;
 	case 144:
-		resp->insertLong(getCreatureLinkID());
+		updateServerMovementStamp();
 		break;
 	case 145:
-		resp->insertFloat(getDistanceTo((CreatureObject*) inv->getObjectParameter()));
+		resp->insertLong(getInventoryItem(inv->getUnsignedLongParameter())->_getObjectID());
 		break;
 	case 146:
-		resp->insertFloat(getHeight());
+		removeInventoryItem(inv->getUnsignedLongParameter());
 		break;
 	case 147:
-		resp->insertInt(getCreatureSkillsCount());
+		resp->insertLong(getLootItem(inv->getUnsignedLongParameter())->_getObjectID());
 		break;
 	case 148:
-		resp->insertInt(getNewCreatureSkillsCount(inv->getSignedIntParameter()));
+		removeLootItem(inv->getUnsignedLongParameter());
 		break;
 	case 149:
-		resp->insertInt(getLastMovementUpdateStamp());
+		broadcastMessage((BaseMessage*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter());
 		break;
 	case 150:
-		resp->insertSignedInt(getIgnoreMovementTests());
+		broadcastMessage((StandaloneBaseMessage*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter());
 		break;
 	case 151:
-		resp->insertInt(getLevel());
+		resp->insertLong(getInventory()->_getObjectID());
 		break;
 	case 152:
-		resp->insertSignedInt(getCenteredBonus());
+		resp->insertLong(getLootContainer()->_getObjectID());
 		break;
 	case 153:
-		sendSystemMessage(inv->getAsciiParameter(_param0_sendSystemMessage__string_));
+		resp->insertLong(getNewItemID());
 		break;
 	case 154:
-		sendSystemMessage(inv->getAsciiParameter(_param0_sendSystemMessage__string_string_long_), inv->getAsciiParameter(_param1_sendSystemMessage__string_string_long_), inv->getUnsignedLongParameter());
+		resp->insertLong(getWeapon()->_getObjectID());
 		break;
 	case 155:
-		addInventoryItem((TangibleObject*) inv->getObjectParameter());
+		resp->insertLong(getArmor(inv->getSignedIntParameter())->_getObjectID());
 		break;
 	case 156:
-		addLootItem((TangibleObject*) inv->getObjectParameter());
+		resp->insertSignedInt(getSkillMod(inv->getAsciiParameter(_param0_getSkillMod__string_)));
 		break;
 	case 157:
-		startDancing(inv->getAsciiParameter(_param0_startDancing__string_bool_), inv->getBooleanParameter());
+		resp->insertBoolean(hasSkillMod(inv->getAsciiParameter(_param0_hasSkillMod__string_)));
 		break;
 	case 158:
-		startPlayingMusic(inv->getAsciiParameter(_param0_startPlayingMusic__string_bool_), inv->getBooleanParameter());
+		resp->insertSignedInt(getSkillModBonus(inv->getAsciiParameter(_param0_getSkillModBonus__string_)));
 		break;
 	case 159:
-		startWatch(inv->getUnsignedLongParameter());
+		resp->insertBoolean(hasSkillModBonus(inv->getAsciiParameter(_param0_hasSkillModBonus__string_)));
 		break;
 	case 160:
-		startListen(inv->getUnsignedLongParameter());
+		resp->insertSignedInt(getAccuracy());
 		break;
 	case 161:
-		stopWatch(inv->getUnsignedLongParameter(), inv->getBooleanParameter(), inv->getBooleanParameter(), inv->getBooleanParameter());
+		resp->insertSignedInt(getDefenseBonus());
 		break;
 	case 162:
-		stopListen(inv->getUnsignedLongParameter(), inv->getBooleanParameter(), inv->getBooleanParameter(), inv->getBooleanParameter());
+		resp->insertSignedInt(getDamageBonus());
 		break;
 	case 163:
-		resp->insertBoolean(isPlayingMusic());
+		resp->insertSignedInt(getConditionDamage());
 		break;
 	case 164:
-		resp->insertBoolean(isDancing());
+		resp->insertSignedInt(getMaxCondition());
 		break;
 	case 165:
-		stopDancing();
+		resp->insertSignedInt(getCondition());
 		break;
 	case 166:
-		stopPlayingMusic();
+		resp->insertLong(getMount()->_getObjectID());
 		break;
 	case 167:
-		addListener((CreatureObject*) inv->getObjectParameter());
+		resp->insertLong(getLastServerMovementStamp());
 		break;
 	case 168:
-		addWatcher((CreatureObject*) inv->getObjectParameter());
+		resp->insertLong(getCreatureLinkID());
 		break;
 	case 169:
-		removeListener((CreatureObject*) inv->getObjectParameter());
+		resp->insertFloat(getDistanceTo((CreatureObject*) inv->getObjectParameter()));
 		break;
 	case 170:
-		removeWatcher((CreatureObject*) inv->getObjectParameter());
+		resp->insertFloat(getHeight());
 		break;
 	case 171:
-		doFlourish(inv->getAsciiParameter(_param0_doFlourish__string_));
+		resp->insertInt(getCreatureSkillsCount());
 		break;
 	case 172:
-		doPerformanceAction();
+		resp->insertInt(getNewCreatureSkillsCount(inv->getSignedIntParameter()));
 		break;
 	case 173:
-		doEntertainerPatronEffects(inv->getBooleanParameter(), inv->getBooleanParameter(), inv->getBooleanParameter());
+		resp->insertInt(getLastMovementUpdateStamp());
 		break;
 	case 174:
-		addEntertainerFlourishBuff();
+		resp->insertSignedInt(getIgnoreMovementTests());
 		break;
 	case 175:
-		addEntertainerBuffDuration(inv->getSignedIntParameter(), inv->getFloatParameter());
+		resp->insertInt(getLevel());
 		break;
 	case 176:
-		setEntertainerBuffDuration(inv->getSignedIntParameter(), inv->getFloatParameter());
+		resp->insertSignedInt(getCenteredBonus());
 		break;
 	case 177:
-		resp->insertFloat(getEntertainerBuffDuration(inv->getSignedIntParameter()));
+		sendSystemMessage(inv->getAsciiParameter(_param0_sendSystemMessage__string_));
 		break;
 	case 178:
-		activateRecovery();
+		sendSystemMessage(inv->getAsciiParameter(_param0_sendSystemMessage__string_string_long_), inv->getAsciiParameter(_param1_sendSystemMessage__string_string_long_), inv->getUnsignedLongParameter());
 		break;
 	case 179:
-		resp->insertSignedInt(getCreatureSkillsSize());
+		addInventoryItem((TangibleObject*) inv->getObjectParameter());
 		break;
 	case 180:
-		resp->insertAscii(getSkill(inv->getSignedIntParameter()));
+		addLootItem((TangibleObject*) inv->getObjectParameter());
 		break;
 	case 181:
-		resp->insertBoolean(hasSkill(inv->getUnsignedIntParameter()));
+		startDancing(inv->getAsciiParameter(_param0_startDancing__string_bool_), inv->getBooleanParameter());
 		break;
 	case 182:
-		mountCreature((MountCreature*) inv->getObjectParameter(), inv->getBooleanParameter());
+		startPlayingMusic(inv->getAsciiParameter(_param0_startPlayingMusic__string_bool_), inv->getBooleanParameter());
 		break;
 	case 183:
-		dismount(inv->getBooleanParameter(), inv->getBooleanParameter());
+		startWatch(inv->getUnsignedLongParameter());
 		break;
 	case 184:
-		addCashCredits(inv->getUnsignedIntParameter());
+		startListen(inv->getUnsignedLongParameter());
 		break;
 	case 185:
-		addBankCredits(inv->getUnsignedIntParameter());
+		stopWatch(inv->getUnsignedLongParameter(), inv->getBooleanParameter(), inv->getBooleanParameter(), inv->getBooleanParameter());
 		break;
 	case 186:
-		updateCashCredits(inv->getUnsignedIntParameter());
+		stopListen(inv->getUnsignedLongParameter(), inv->getBooleanParameter(), inv->getBooleanParameter(), inv->getBooleanParameter());
 		break;
 	case 187:
-		updateBankCredits(inv->getUnsignedIntParameter());
+		resp->insertBoolean(isPlayingMusic());
 		break;
 	case 188:
-		subtractCashCredits(inv->getUnsignedIntParameter());
+		resp->insertBoolean(isDancing());
 		break;
 	case 189:
-		subtractBankCredits(inv->getUnsignedIntParameter());
+		stopDancing();
 		break;
 	case 190:
-		setCashCredits(inv->getSignedIntParameter());
+		stopPlayingMusic();
 		break;
 	case 191:
-		setBankCredits(inv->getSignedIntParameter());
+		addListener((CreatureObject*) inv->getObjectParameter());
 		break;
 	case 192:
-		addBuff(inv->getSignedIntParameter(), inv->getFloatParameter());
+		addWatcher((CreatureObject*) inv->getObjectParameter());
 		break;
 	case 193:
-		applyBuff((BuffObject*) inv->getObjectParameter());
+		removeListener((CreatureObject*) inv->getObjectParameter());
 		break;
 	case 194:
-		removeBuff(inv->getUnsignedIntParameter(), inv->getBooleanParameter());
+		removeWatcher((CreatureObject*) inv->getObjectParameter());
 		break;
 	case 195:
-		resp->insertBoolean(hasSpice());
+		doFlourish(inv->getAsciiParameter(_param0_doFlourish__string_));
 		break;
 	case 196:
-		resp->insertBoolean(verifyCashCredits(inv->getUnsignedIntParameter()));
+		doPerformanceAction();
 		break;
 	case 197:
-		resp->insertBoolean(verifyBankCredits(inv->getUnsignedIntParameter()));
+		doEntertainerPatronEffects(inv->getBooleanParameter(), inv->getBooleanParameter(), inv->getBooleanParameter());
 		break;
 	case 198:
-		resp->insertBoolean(isOnFullHealth());
+		addEntertainerFlourishBuff();
 		break;
 	case 199:
-		resp->insertBoolean(hasStates());
+		addEntertainerBuffDuration(inv->getSignedIntParameter(), inv->getFloatParameter());
 		break;
 	case 200:
-		resp->insertBoolean(hasState(inv->getUnsignedLongParameter()));
+		setEntertainerBuffDuration(inv->getSignedIntParameter(), inv->getFloatParameter());
 		break;
 	case 201:
-		resp->insertBoolean(hasWounds());
+		resp->insertFloat(getEntertainerBuffDuration(inv->getSignedIntParameter()));
 		break;
 	case 202:
-		resp->insertBoolean(hasShockWounds());
+		activateRecovery();
 		break;
 	case 203:
-		resp->insertBoolean(isAttackable());
+		resp->insertSignedInt(getCreatureSkillsSize());
 		break;
 	case 204:
-		resp->insertBoolean(isAttackableBy((CreatureObject*) inv->getObjectParameter()));
+		resp->insertAscii(getSkill(inv->getSignedIntParameter()));
 		break;
 	case 205:
-		resp->insertBoolean(isListening());
+		resp->insertBoolean(hasSkill(inv->getUnsignedIntParameter()));
 		break;
 	case 206:
-		resp->insertBoolean(isWatching());
+		mountCreature((MountCreature*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
 	case 207:
-		resp->insertUnicode(getCharacterName());
+		dismount(inv->getBooleanParameter(), inv->getBooleanParameter());
 		break;
 	case 208:
-		resp->insertAscii(getStfName());
+		addCashCredits(inv->getUnsignedIntParameter());
 		break;
 	case 209:
-		resp->insertAscii(getSpeciesName());
+		addBankCredits(inv->getUnsignedIntParameter());
 		break;
 	case 210:
-		resp->insertAscii(getRaceName());
+		updateCashCredits(inv->getUnsignedIntParameter());
 		break;
 	case 211:
-		resp->insertAscii(getGender());
+		updateBankCredits(inv->getUnsignedIntParameter());
 		break;
 	case 212:
-		resp->insertAscii(getTerrainName());
+		subtractCashCredits(inv->getUnsignedIntParameter());
 		break;
 	case 213:
-		getCharacterAppearance(inv->getAsciiParameter(_param0_getCharacterAppearance__string_));
+		subtractBankCredits(inv->getUnsignedIntParameter());
 		break;
 	case 214:
-		resp->insertBoolean(isOvert());
+		setCashCredits(inv->getSignedIntParameter());
 		break;
 	case 215:
-		resp->insertLong(getStateBitmask());
+		setBankCredits(inv->getSignedIntParameter());
 		break;
 	case 216:
-		resp->insertInt(getCreatureBitmask());
+		addBuff(inv->getSignedIntParameter(), inv->getFloatParameter());
 		break;
 	case 217:
-		resp->insertByte(getPosture());
+		applyBuff((BuffObject*) inv->getObjectParameter());
 		break;
 	case 218:
-		resp->insertInt(getFaction());
+		removeBuff(inv->getUnsignedIntParameter(), inv->getBooleanParameter());
 		break;
 	case 219:
-		resp->insertBoolean(isRebel());
+		resp->insertBoolean(hasSpice());
 		break;
 	case 220:
-		resp->insertBoolean(isNeutral());
+		resp->insertBoolean(verifyCashCredits(inv->getUnsignedIntParameter()));
 		break;
 	case 221:
-		resp->insertBoolean(isImperial());
+		resp->insertBoolean(verifyBankCredits(inv->getUnsignedIntParameter()));
 		break;
 	case 222:
-		resp->insertInt(getPvpStatusBitmask());
+		resp->insertBoolean(isOnFullHealth());
 		break;
 	case 223:
-		resp->insertInt(getBankCredits());
+		resp->insertBoolean(hasStates());
 		break;
 	case 224:
-		resp->insertInt(getCashCredits());
+		resp->insertBoolean(hasState(inv->getUnsignedLongParameter()));
 		break;
 	case 225:
-		resp->insertInt(getWoundsUpdateCounter());
+		resp->insertBoolean(hasWounds());
 		break;
 	case 226:
-		resp->insertInt(getNewWoundsUpdateCounter(inv->getSignedIntParameter()));
+		resp->insertBoolean(hasShockWounds());
 		break;
 	case 227:
-		resp->insertInt(getBaseHealth());
+		resp->insertBoolean(isAttackable());
 		break;
 	case 228:
-		resp->insertInt(getBaseStrength());
+		resp->insertBoolean(isAttackableBy((CreatureObject*) inv->getObjectParameter()));
 		break;
 	case 229:
-		resp->insertInt(getBaseConstitution());
+		resp->insertBoolean(isListening());
 		break;
 	case 230:
-		resp->insertInt(getBaseAction());
+		resp->insertBoolean(isWatching());
 		break;
 	case 231:
-		resp->insertInt(getBaseQuickness());
+		resp->insertUnicode(getCharacterName());
 		break;
 	case 232:
-		resp->insertInt(getBaseStamina());
+		resp->insertAscii(getStfName());
 		break;
 	case 233:
-		resp->insertInt(getBaseMind());
+		resp->insertAscii(getSpeciesName());
 		break;
 	case 234:
-		resp->insertInt(getBaseFocus());
+		resp->insertAscii(getRaceName());
 		break;
 	case 235:
-		resp->insertInt(getBaseWillpower());
+		resp->insertAscii(getGender());
 		break;
 	case 236:
-		resp->insertInt(getHealth());
+		resp->insertAscii(getTerrainName());
 		break;
 	case 237:
-		resp->insertInt(getStrength());
+		getCharacterAppearance(inv->getAsciiParameter(_param0_getCharacterAppearance__string_));
 		break;
 	case 238:
-		resp->insertInt(getConstitution());
+		getHairAppearance(inv->getAsciiParameter(_param0_getHairAppearance__string_));
 		break;
 	case 239:
-		resp->insertInt(getAction());
+		resp->insertBoolean(isOvert());
 		break;
 	case 240:
-		resp->insertInt(getQuickness());
+		resp->insertLong(getStateBitmask());
 		break;
 	case 241:
-		resp->insertInt(getStamina());
+		resp->insertInt(getCreatureBitmask());
 		break;
 	case 242:
-		resp->insertInt(getMind());
+		resp->insertByte(getPosture());
 		break;
 	case 243:
-		resp->insertInt(getFocus());
+		resp->insertInt(getFaction());
 		break;
 	case 244:
-		resp->insertInt(getWillpower());
+		resp->insertBoolean(isRebel());
 		break;
 	case 245:
-		resp->insertInt(getHealthMax());
+		resp->insertBoolean(isNeutral());
 		break;
 	case 246:
-		resp->insertInt(getStrengthMax());
+		resp->insertBoolean(isImperial());
 		break;
 	case 247:
-		resp->insertInt(getConstitutionMax());
+		resp->insertInt(getPvpStatusBitmask());
 		break;
 	case 248:
-		resp->insertInt(getActionMax());
+		resp->insertInt(getBankCredits());
 		break;
 	case 249:
-		resp->insertInt(getQuicknessMax());
+		resp->insertInt(getCashCredits());
 		break;
 	case 250:
-		resp->insertInt(getStaminaMax());
+		resp->insertInt(getWoundsUpdateCounter());
 		break;
 	case 251:
-		resp->insertInt(getMindMax());
+		resp->insertInt(getNewWoundsUpdateCounter(inv->getSignedIntParameter()));
 		break;
 	case 252:
-		resp->insertInt(getFocusMax());
+		updateHAMBars();
 		break;
 	case 253:
-		resp->insertInt(getWillpowerMax());
+		updateBaseStats();
 		break;
 	case 254:
-		resp->insertInt(getArmor());
+		resp->insertInt(getBaseHealth());
 		break;
 	case 255:
-		resp->insertFloat(getArmorResist(inv->getSignedIntParameter()));
+		resp->insertInt(getBaseStrength());
 		break;
 	case 256:
-		resp->insertInt(getHealthWounds());
+		resp->insertInt(getBaseConstitution());
 		break;
 	case 257:
-		resp->insertInt(getActionWounds());
+		resp->insertInt(getBaseAction());
 		break;
 	case 258:
-		resp->insertInt(getMindWounds());
+		resp->insertInt(getBaseQuickness());
 		break;
 	case 259:
-		resp->insertInt(getShockWounds());
+		resp->insertInt(getBaseStamina());
 		break;
 	case 260:
-		resp->insertInt(getHAMUpdateCounter());
+		resp->insertInt(getBaseMind());
 		break;
 	case 261:
-		resp->insertInt(getNewHAMUpdateCounter(inv->getSignedIntParameter()));
+		resp->insertInt(getBaseFocus());
 		break;
 	case 262:
-		resp->insertInt(getHAMMaxUpdateCounter());
+		resp->insertInt(getBaseWillpower());
 		break;
 	case 263:
-		resp->insertInt(getNewHAMMaxUpdateCounter(inv->getSignedIntParameter()));
+		resp->insertInt(getHealth());
 		break;
 	case 264:
-		resp->insertInt(getHealthEncumbrance());
+		resp->insertInt(getStrength());
 		break;
 	case 265:
-		resp->insertInt(getActionEncumbrance());
+		resp->insertInt(getConstitution());
 		break;
 	case 266:
-		resp->insertInt(getMindEncumbrance());
+		resp->insertInt(getAction());
 		break;
 	case 267:
-		resp->insertLong(getTargetID());
+		resp->insertInt(getQuickness());
 		break;
 	case 268:
-		resp->insertLong(getTarget()->_getObjectID());
+		resp->insertInt(getStamina());
 		break;
 	case 269:
-		resp->insertLong(getWeaponID());
+		resp->insertInt(getMind());
 		break;
 	case 270:
-		resp->insertLong(getGroupID());
+		resp->insertInt(getFocus());
 		break;
 	case 271:
-		resp->insertLong(getGuildID());
+		resp->insertInt(getWillpower());
 		break;
 	case 272:
-		resp->insertLong(getGuild()->_getObjectID());
+		resp->insertInt(getHealthMax());
 		break;
 	case 273:
-		resp->insertFloat(getSpeed());
+		resp->insertInt(getStrengthMax());
 		break;
 	case 274:
-		resp->insertFloat(getAcceleration());
+		resp->insertInt(getConstitutionMax());
 		break;
 	case 275:
-		resp->insertLong(getDefenderID());
+		resp->insertInt(getActionMax());
 		break;
 	case 276:
-		resp->insertInt(getDefenderUpdateCounter());
+		resp->insertInt(getQuicknessMax());
 		break;
 	case 277:
-		resp->insertInt(getNewDefenderUpdateCounter(inv->getSignedIntParameter()));
+		resp->insertInt(getStaminaMax());
 		break;
 	case 278:
-		resp->insertAscii(getPerformanceAnimation());
+		resp->insertInt(getMindMax());
 		break;
 	case 279:
-		resp->insertInt(getPerformanceCounter());
+		resp->insertInt(getFocusMax());
 		break;
 	case 280:
-		resp->insertInt(getInstrumentID());
+		resp->insertInt(getWillpowerMax());
 		break;
 	case 281:
-		resp->insertAscii(getPerformanceName());
+		resp->insertInt(getArmor());
 		break;
 	case 282:
-		resp->insertAscii(getMood());
+		resp->insertFloat(getArmorResist(inv->getSignedIntParameter()));
 		break;
 	case 283:
-		resp->insertByte(getMoodID());
+		resp->insertInt(getHealthWounds());
 		break;
 	case 284:
-		resp->insertLong(getGroupInviterID());
+		resp->insertInt(getStrengthWounds());
 		break;
 	case 285:
-		resp->insertLong(getGroupInviteCounter());
+		resp->insertInt(getConstitutionWounds());
 		break;
 	case 286:
-		resp->insertLong(getNewGroupInviteCounter());
+		resp->insertInt(getActionWounds());
 		break;
 	case 287:
-		resp->insertLong(getWatchID());
+		resp->insertInt(getQuicknessWounds());
 		break;
 	case 288:
-		resp->insertLong(getListenID());
+		resp->insertInt(getStaminaWounds());
 		break;
 	case 289:
-		resp->insertBoolean(isInBuilding());
+		resp->insertInt(getMindWounds());
 		break;
 	case 290:
-		resp->insertSignedInt(getBuildingType());
+		resp->insertInt(getFocusWounds());
 		break;
 	case 291:
-		resp->insertAscii(getGuildName());
+		resp->insertInt(getWillpowerWounds());
 		break;
 	case 292:
-		resp->insertSignedInt(getWeaponSpeedModifier());
+		resp->insertInt(getShockWounds());
 		break;
 	case 293:
-		resp->insertInt(getSkillBoxesUpdateCounter());
+		resp->insertInt(getHAMUpdateCounter());
 		break;
 	case 294:
-		resp->insertInt(getSkillModsCounter());
+		resp->insertInt(getNewHAMUpdateCounter(inv->getSignedIntParameter()));
 		break;
 	case 295:
-		resp->insertInt(getNewSkillModsCounter(inv->getSignedIntParameter()));
+		resp->insertInt(getHAMMaxUpdateCounter());
 		break;
 	case 296:
-		setBaseHealth(inv->getUnsignedIntParameter());
+		resp->insertInt(getNewHAMMaxUpdateCounter(inv->getSignedIntParameter()));
 		break;
 	case 297:
-		setBaseStrength(inv->getUnsignedIntParameter());
+		resp->insertInt(getHAMBaseUpdateCounter());
 		break;
 	case 298:
-		setBaseConstitution(inv->getUnsignedIntParameter());
+		resp->insertInt(getNewHAMBaseUpdateCounter(inv->getSignedIntParameter()));
 		break;
 	case 299:
-		setBaseAction(inv->getUnsignedIntParameter());
+		resp->insertInt(getHealthEncumbrance());
 		break;
 	case 300:
-		setBaseQuickness(inv->getUnsignedIntParameter());
+		resp->insertInt(getActionEncumbrance());
 		break;
 	case 301:
-		setBaseStamina(inv->getUnsignedIntParameter());
+		resp->insertInt(getMindEncumbrance());
 		break;
 	case 302:
-		setBaseMind(inv->getUnsignedIntParameter());
+		resp->insertLong(getTargetID());
 		break;
 	case 303:
-		setBaseFocus(inv->getUnsignedIntParameter());
+		resp->insertLong(getTarget()->_getObjectID());
 		break;
 	case 304:
-		setBaseWillpower(inv->getUnsignedIntParameter());
+		resp->insertLong(getWeaponID());
 		break;
 	case 305:
-		setHealth(inv->getUnsignedIntParameter());
+		resp->insertLong(getGroupID());
 		break;
 	case 306:
-		setStrength(inv->getUnsignedIntParameter());
+		resp->insertLong(getGuildID());
 		break;
 	case 307:
-		setConstitution(inv->getUnsignedIntParameter());
+		resp->insertLong(getGuild()->_getObjectID());
 		break;
 	case 308:
-		setAction(inv->getUnsignedIntParameter());
+		resp->insertFloat(getSpeed());
 		break;
 	case 309:
-		setQuickness(inv->getUnsignedIntParameter());
+		resp->insertFloat(getAcceleration());
 		break;
 	case 310:
-		setStamina(inv->getUnsignedIntParameter());
+		resp->insertLong(getDefenderID());
 		break;
 	case 311:
-		setMind(inv->getUnsignedIntParameter());
+		resp->insertInt(getDefenderUpdateCounter());
 		break;
 	case 312:
-		setFocus(inv->getUnsignedIntParameter());
+		resp->insertInt(getNewDefenderUpdateCounter(inv->getSignedIntParameter()));
 		break;
 	case 313:
-		setWillpower(inv->getUnsignedIntParameter());
+		resp->insertAscii(getPerformanceAnimation());
 		break;
 	case 314:
-		setHealthMax(inv->getUnsignedIntParameter());
+		resp->insertInt(getPerformanceCounter());
 		break;
 	case 315:
-		setStrengthMax(inv->getUnsignedIntParameter());
+		resp->insertInt(getInstrumentID());
 		break;
 	case 316:
-		setConstitutionMax(inv->getUnsignedIntParameter());
+		resp->insertAscii(getPerformanceName());
 		break;
 	case 317:
-		setActionMax(inv->getUnsignedIntParameter());
+		resp->insertAscii(getMood());
 		break;
 	case 318:
-		setQuicknessMax(inv->getUnsignedIntParameter());
+		resp->insertByte(getMoodID());
 		break;
 	case 319:
-		setStaminaMax(inv->getUnsignedIntParameter());
+		resp->insertLong(getGroupInviterID());
 		break;
 	case 320:
-		setMindMax(inv->getUnsignedIntParameter());
+		resp->insertLong(getGroupInviteCounter());
 		break;
 	case 321:
-		setFocusMax(inv->getUnsignedIntParameter());
+		resp->insertLong(getNewGroupInviteCounter());
 		break;
 	case 322:
-		setWillpowerMax(inv->getUnsignedIntParameter());
+		resp->insertLong(getWatchID());
 		break;
 	case 323:
-		setArmor(inv->getUnsignedIntParameter());
+		resp->insertLong(getListenID());
 		break;
 	case 324:
-		setHealthWounds(inv->getUnsignedIntParameter());
+		resp->insertBoolean(isInBuilding());
 		break;
 	case 325:
-		setActionWounds(inv->getUnsignedIntParameter());
+		resp->insertSignedInt(getBuildingType());
 		break;
 	case 326:
-		setMindWounds(inv->getUnsignedIntParameter());
+		resp->insertAscii(getGuildName());
 		break;
 	case 327:
-		setShockWounds(inv->getUnsignedIntParameter());
+		resp->insertSignedInt(getWeaponSpeedModifier());
 		break;
 	case 328:
-		setWoundsUpdateCounter(inv->getUnsignedIntParameter());
+		resp->insertInt(getSkillBoxesUpdateCounter());
 		break;
 	case 329:
-		setSpeed(inv->getFloatParameter());
+		resp->insertInt(getSkillModsCounter());
 		break;
 	case 330:
-		setAcceleration(inv->getFloatParameter());
+		resp->insertInt(getNewSkillModsCounter(inv->getSignedIntParameter()));
 		break;
 	case 331:
-		setKinetic(inv->getFloatParameter());
+		setBaseHealth(inv->getUnsignedIntParameter());
 		break;
 	case 332:
-		setEnergy(inv->getFloatParameter());
+		setBaseStrength(inv->getUnsignedIntParameter());
 		break;
 	case 333:
-		setElectricity(inv->getFloatParameter());
+		setBaseConstitution(inv->getUnsignedIntParameter());
 		break;
 	case 334:
-		setStun(inv->getFloatParameter());
+		setBaseAction(inv->getUnsignedIntParameter());
 		break;
 	case 335:
-		setBlast(inv->getFloatParameter());
+		setBaseQuickness(inv->getUnsignedIntParameter());
 		break;
 	case 336:
-		setHeat(inv->getFloatParameter());
+		setBaseStamina(inv->getUnsignedIntParameter());
 		break;
 	case 337:
-		setCold(inv->getFloatParameter());
+		setBaseMind(inv->getUnsignedIntParameter());
 		break;
 	case 338:
-		setAcid(inv->getFloatParameter());
+		setBaseFocus(inv->getUnsignedIntParameter());
 		break;
 	case 339:
-		setLightSaber(inv->getFloatParameter());
+		setBaseWillpower(inv->getUnsignedIntParameter());
 		break;
 	case 340:
-		changeConditionDamage(inv->getSignedIntParameter());
+		setHealth(inv->getUnsignedIntParameter());
 		break;
 	case 341:
-		setPosture(inv->getUnsignedCharParameter(), inv->getBooleanParameter(), inv->getBooleanParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter());
+		setStrength(inv->getUnsignedIntParameter());
 		break;
 	case 342:
-		setPvpStatusBitmask(inv->getUnsignedIntParameter());
+		setConstitution(inv->getUnsignedIntParameter());
 		break;
 	case 343:
-		setDizziedState();
+		setAction(inv->getUnsignedIntParameter());
 		break;
 	case 344:
-		setStunnedState();
+		setQuickness(inv->getUnsignedIntParameter());
 		break;
 	case 345:
-		setBlindedState();
+		setStamina(inv->getUnsignedIntParameter());
 		break;
 	case 346:
-		setIntimidatedState();
+		setMind(inv->getUnsignedIntParameter());
 		break;
 	case 347:
-		setPoisonedState(inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
+		setFocus(inv->getUnsignedIntParameter());
 		break;
 	case 348:
-		setBleedingState(inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
+		setWillpower(inv->getUnsignedIntParameter());
 		break;
 	case 349:
-		setDiseasedState(inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
+		setHealthMax(inv->getUnsignedIntParameter());
 		break;
 	case 350:
-		setOnFireState(inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
+		setStrengthMax(inv->getUnsignedIntParameter());
 		break;
 	case 351:
-		resp->insertBoolean(setNextAttackDelay(inv->getSignedIntParameter()));
+		setConstitutionMax(inv->getUnsignedIntParameter());
 		break;
 	case 352:
-		setCharacterName(inv->getAsciiParameter(_param0_setCharacterName__string_));
+		setActionMax(inv->getUnsignedIntParameter());
 		break;
 	case 353:
-		setCharacterName(inv->getUnicodeParameter(_param0_setCharacterName__unicode_));
+		setQuicknessMax(inv->getUnsignedIntParameter());
 		break;
 	case 354:
-		setTerrainName(inv->getAsciiParameter(_param0_setTerrainName__string_));
+		setStaminaMax(inv->getUnsignedIntParameter());
 		break;
 	case 355:
-		setCharacterAppearance(inv->getAsciiParameter(_param0_setCharacterAppearance__string_));
+		setMindMax(inv->getUnsignedIntParameter());
 		break;
 	case 356:
-		setAppearanceAttribute(inv->getUnsignedCharParameter(), inv->getUnsignedCharParameter());
+		setFocusMax(inv->getUnsignedIntParameter());
 		break;
 	case 357:
-		setAppearanceAttribute(inv->getAsciiParameter(_param0_setAppearanceAttribute__string_char_), inv->getUnsignedCharParameter());
+		setWillpowerMax(inv->getUnsignedIntParameter());
 		break;
 	case 358:
-		updateCharacterAppearance();
+		setArmor(inv->getUnsignedIntParameter());
 		break;
 	case 359:
-		setRaceName(inv->getAsciiParameter(_param0_setRaceName__string_));
+		setHealthWounds(inv->getUnsignedIntParameter());
 		break;
 	case 360:
-		setSpeciesName(inv->getAsciiParameter(_param0_setSpeciesName__string_));
+		setStrengthWounds(inv->getUnsignedIntParameter());
 		break;
 	case 361:
-		setGender(inv->getAsciiParameter(_param0_setGender__string_));
+		setConstitutionWounds(inv->getUnsignedIntParameter());
 		break;
 	case 362:
-		setFaction(inv->getUnsignedIntParameter());
+		setActionWounds(inv->getUnsignedIntParameter());
 		break;
 	case 363:
-		setHeight(inv->getFloatParameter());
+		setQuicknessWounds(inv->getUnsignedIntParameter());
 		break;
 	case 364:
-		setMood(inv->getUnsignedCharParameter());
+		setStaminaWounds(inv->getUnsignedIntParameter());
 		break;
 	case 365:
-		setMood(inv->getAsciiParameter(_param0_setMood__string_));
+		setMindWounds(inv->getUnsignedIntParameter());
 		break;
 	case 366:
-		setGroup((GroupObject*) inv->getObjectParameter());
+		setFocusWounds(inv->getUnsignedIntParameter());
 		break;
 	case 367:
+		setWillpowerWounds(inv->getUnsignedIntParameter());
+		break;
+	case 368:
+		setShockWounds(inv->getUnsignedIntParameter());
+		break;
+	case 369:
+		setWoundsUpdateCounter(inv->getUnsignedIntParameter());
+		break;
+	case 370:
+		setSpeed(inv->getFloatParameter());
+		break;
+	case 371:
+		setAcceleration(inv->getFloatParameter());
+		break;
+	case 372:
+		setKinetic(inv->getFloatParameter());
+		break;
+	case 373:
+		setEnergy(inv->getFloatParameter());
+		break;
+	case 374:
+		setElectricity(inv->getFloatParameter());
+		break;
+	case 375:
+		setStun(inv->getFloatParameter());
+		break;
+	case 376:
+		setBlast(inv->getFloatParameter());
+		break;
+	case 377:
+		setHeat(inv->getFloatParameter());
+		break;
+	case 378:
+		setCold(inv->getFloatParameter());
+		break;
+	case 379:
+		setAcid(inv->getFloatParameter());
+		break;
+	case 380:
+		setLightSaber(inv->getFloatParameter());
+		break;
+	case 381:
+		changeConditionDamage(inv->getSignedIntParameter());
+		break;
+	case 382:
+		setPosture(inv->getUnsignedCharParameter(), inv->getBooleanParameter(), inv->getBooleanParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter());
+		break;
+	case 383:
+		setPvpStatusBitmask(inv->getUnsignedIntParameter());
+		break;
+	case 384:
+		setDizziedState();
+		break;
+	case 385:
+		setStunnedState();
+		break;
+	case 386:
+		setBlindedState();
+		break;
+	case 387:
+		setIntimidatedState();
+		break;
+	case 388:
+		setPoisonedState(inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
+		break;
+	case 389:
+		setBleedingState(inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
+		break;
+	case 390:
+		setDiseasedState(inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
+		break;
+	case 391:
+		setOnFireState(inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
+		break;
+	case 392:
+		resp->insertBoolean(setNextAttackDelay(inv->getSignedIntParameter()));
+		break;
+	case 393:
+		setCharacterName(inv->getAsciiParameter(_param0_setCharacterName__string_));
+		break;
+	case 394:
+		setCharacterName(inv->getUnicodeParameter(_param0_setCharacterName__unicode_));
+		break;
+	case 395:
+		setTerrainName(inv->getAsciiParameter(_param0_setTerrainName__string_));
+		break;
+	case 396:
+		setCharacterAppearance(inv->getAsciiParameter(_param0_setCharacterAppearance__string_));
+		break;
+	case 397:
+		setAppearanceAttribute(inv->getUnsignedCharParameter(), inv->getUnsignedCharParameter());
+		break;
+	case 398:
+		setAppearanceAttribute(inv->getAsciiParameter(_param0_setAppearanceAttribute__string_char_), inv->getUnsignedCharParameter());
+		break;
+	case 399:
+		updateCharacterAppearance();
+		break;
+	case 400:
+		setHairAppearance(inv->getAsciiParameter(_param0_setHairAppearance__string_));
+		break;
+	case 401:
+		setHairAppearanceAttribute(inv->getUnsignedCharParameter(), inv->getUnsignedCharParameter());
+		break;
+	case 402:
+		setHairAppearanceAttribute(inv->getAsciiParameter(_param0_setHairAppearanceAttribute__string_char_), inv->getUnsignedCharParameter());
+		break;
+	case 403:
+		setRaceName(inv->getAsciiParameter(_param0_setRaceName__string_));
+		break;
+	case 404:
+		setSpeciesName(inv->getAsciiParameter(_param0_setSpeciesName__string_));
+		break;
+	case 405:
+		setGender(inv->getAsciiParameter(_param0_setGender__string_));
+		break;
+	case 406:
+		setFaction(inv->getUnsignedIntParameter());
+		break;
+	case 407:
+		setHeight(inv->getFloatParameter());
+		break;
+	case 408:
+		setMood(inv->getUnsignedCharParameter());
+		break;
+	case 409:
+		setMood(inv->getAsciiParameter(_param0_setMood__string_));
+		break;
+	case 410:
+		setGroup((GroupObject*) inv->getObjectParameter());
+		break;
+	case 411:
 		setMount((MountCreature*) inv->getObjectParameter());
+		break;
+	case 412:
+		explode(inv->getSignedIntParameter());
 		break;
 	default:
 		return NULL;
@@ -5995,18 +6723,6 @@ bool CreatureObjectAdapter::takeMindDamage(int damage) {
 	return ((CreatureObjectImplementation*) impl)->takeMindDamage(damage);
 }
 
-bool CreatureObjectAdapter::changeHealthWoundsBar(int wounds, bool forcedChange) {
-	return ((CreatureObjectImplementation*) impl)->changeHealthWoundsBar(wounds, forcedChange);
-}
-
-bool CreatureObjectAdapter::changeActionWoundsBar(int wounds, bool forcedChange) {
-	return ((CreatureObjectImplementation*) impl)->changeActionWoundsBar(wounds, forcedChange);
-}
-
-bool CreatureObjectAdapter::changeMindWoundsBar(int wounds, bool forcedChange) {
-	return ((CreatureObjectImplementation*) impl)->changeMindWoundsBar(wounds, forcedChange);
-}
-
 bool CreatureObjectAdapter::changeHealthBar(int hp, bool forcedChange) {
 	return ((CreatureObjectImplementation*) impl)->changeHealthBar(hp, forcedChange);
 }
@@ -6017,22 +6733,6 @@ bool CreatureObjectAdapter::changeStrengthBar(int st, bool forcedChange) {
 
 bool CreatureObjectAdapter::changeConstitutionBar(int cs, bool forcedChange) {
 	return ((CreatureObjectImplementation*) impl)->changeConstitutionBar(cs, forcedChange);
-}
-
-void CreatureObjectAdapter::changeMaxHealthBar(int hp) {
-	return ((CreatureObjectImplementation*) impl)->changeMaxHealthBar(hp);
-}
-
-void CreatureObjectAdapter::changeMaxStrengthBar(int hp) {
-	return ((CreatureObjectImplementation*) impl)->changeMaxStrengthBar(hp);
-}
-
-void CreatureObjectAdapter::changeMaxConstitutionBar(int hp) {
-	return ((CreatureObjectImplementation*) impl)->changeMaxConstitutionBar(hp);
-}
-
-void CreatureObjectAdapter::changeShockWounds(int bf) {
-	return ((CreatureObjectImplementation*) impl)->changeShockWounds(bf);
 }
 
 bool CreatureObjectAdapter::changeActionBar(int ap, bool forcedChange) {
@@ -6047,18 +6747,6 @@ bool CreatureObjectAdapter::changeStaminaBar(int st, bool forcedChange) {
 	return ((CreatureObjectImplementation*) impl)->changeStaminaBar(st, forcedChange);
 }
 
-void CreatureObjectAdapter::changeMaxActionBar(int hp) {
-	return ((CreatureObjectImplementation*) impl)->changeMaxActionBar(hp);
-}
-
-void CreatureObjectAdapter::changeMaxQuicknessBar(int hp) {
-	return ((CreatureObjectImplementation*) impl)->changeMaxQuicknessBar(hp);
-}
-
-void CreatureObjectAdapter::changeMaxStaminaBar(int hp) {
-	return ((CreatureObjectImplementation*) impl)->changeMaxStaminaBar(hp);
-}
-
 bool CreatureObjectAdapter::changeMindBar(int mp, bool forcedChange) {
 	return ((CreatureObjectImplementation*) impl)->changeMindBar(mp, forcedChange);
 }
@@ -6069,6 +6757,30 @@ bool CreatureObjectAdapter::changeFocusBar(int fc, bool forcedChange) {
 
 bool CreatureObjectAdapter::changeWillpowerBar(int wl, bool forcedChange) {
 	return ((CreatureObjectImplementation*) impl)->changeWillpowerBar(wl, forcedChange);
+}
+
+void CreatureObjectAdapter::changeMaxHealthBar(int hp) {
+	return ((CreatureObjectImplementation*) impl)->changeMaxHealthBar(hp);
+}
+
+void CreatureObjectAdapter::changeMaxStrengthBar(int hp) {
+	return ((CreatureObjectImplementation*) impl)->changeMaxStrengthBar(hp);
+}
+
+void CreatureObjectAdapter::changeMaxConstitutionBar(int hp) {
+	return ((CreatureObjectImplementation*) impl)->changeMaxConstitutionBar(hp);
+}
+
+void CreatureObjectAdapter::changeMaxActionBar(int hp) {
+	return ((CreatureObjectImplementation*) impl)->changeMaxActionBar(hp);
+}
+
+void CreatureObjectAdapter::changeMaxQuicknessBar(int hp) {
+	return ((CreatureObjectImplementation*) impl)->changeMaxQuicknessBar(hp);
+}
+
+void CreatureObjectAdapter::changeMaxStaminaBar(int hp) {
+	return ((CreatureObjectImplementation*) impl)->changeMaxStaminaBar(hp);
 }
 
 void CreatureObjectAdapter::changeMaxMindBar(int hp) {
@@ -6083,6 +6795,46 @@ void CreatureObjectAdapter::changeMaxWillpowerBar(int hp) {
 	return ((CreatureObjectImplementation*) impl)->changeMaxWillpowerBar(hp);
 }
 
+bool CreatureObjectAdapter::changeHealthWoundsBar(int wounds, bool forcedChange) {
+	return ((CreatureObjectImplementation*) impl)->changeHealthWoundsBar(wounds, forcedChange);
+}
+
+bool CreatureObjectAdapter::changeStrengthWoundsBar(int wounds, bool forcedChange) {
+	return ((CreatureObjectImplementation*) impl)->changeStrengthWoundsBar(wounds, forcedChange);
+}
+
+bool CreatureObjectAdapter::changeConstitutionWoundsBar(int wounds, bool forcedChange) {
+	return ((CreatureObjectImplementation*) impl)->changeConstitutionWoundsBar(wounds, forcedChange);
+}
+
+bool CreatureObjectAdapter::changeActionWoundsBar(int wounds, bool forcedChange) {
+	return ((CreatureObjectImplementation*) impl)->changeActionWoundsBar(wounds, forcedChange);
+}
+
+bool CreatureObjectAdapter::changeQuicknessWoundsBar(int wounds, bool forcedChange) {
+	return ((CreatureObjectImplementation*) impl)->changeQuicknessWoundsBar(wounds, forcedChange);
+}
+
+bool CreatureObjectAdapter::changeStaminaWoundsBar(int wounds, bool forcedChange) {
+	return ((CreatureObjectImplementation*) impl)->changeStaminaWoundsBar(wounds, forcedChange);
+}
+
+bool CreatureObjectAdapter::changeMindWoundsBar(int wounds, bool forcedChange) {
+	return ((CreatureObjectImplementation*) impl)->changeMindWoundsBar(wounds, forcedChange);
+}
+
+bool CreatureObjectAdapter::changeFocusWoundsBar(int wounds, bool forcedChange) {
+	return ((CreatureObjectImplementation*) impl)->changeFocusWoundsBar(wounds, forcedChange);
+}
+
+bool CreatureObjectAdapter::changeWillpowerWoundsBar(int wounds, bool forcedChange) {
+	return ((CreatureObjectImplementation*) impl)->changeWillpowerWoundsBar(wounds, forcedChange);
+}
+
+void CreatureObjectAdapter::changeShockWounds(int bf) {
+	return ((CreatureObjectImplementation*) impl)->changeShockWounds(bf);
+}
+
 void CreatureObjectAdapter::setHealthBar(unsigned int hp) {
 	return ((CreatureObjectImplementation*) impl)->setHealthBar(hp);
 }
@@ -6093,18 +6845,6 @@ void CreatureObjectAdapter::setStrengthBar(unsigned int st) {
 
 void CreatureObjectAdapter::setConstitutionBar(unsigned int cst) {
 	return ((CreatureObjectImplementation*) impl)->setConstitutionBar(cst);
-}
-
-void CreatureObjectAdapter::setMaxHealthBar(unsigned int hp, bool updateClient) {
-	return ((CreatureObjectImplementation*) impl)->setMaxHealthBar(hp, updateClient);
-}
-
-void CreatureObjectAdapter::setMaxStrengthBar(unsigned int st, bool updateClient) {
-	return ((CreatureObjectImplementation*) impl)->setMaxStrengthBar(st, updateClient);
-}
-
-void CreatureObjectAdapter::setMaxConstitutionBar(unsigned int cst, bool updateClient) {
-	return ((CreatureObjectImplementation*) impl)->setMaxConstitutionBar(cst, updateClient);
 }
 
 void CreatureObjectAdapter::setActionBar(unsigned int ap) {
@@ -6119,18 +6859,6 @@ void CreatureObjectAdapter::setStaminaBar(unsigned int sta) {
 	return ((CreatureObjectImplementation*) impl)->setStaminaBar(sta);
 }
 
-void CreatureObjectAdapter::setMaxActionBar(unsigned int ap, bool updateClient) {
-	return ((CreatureObjectImplementation*) impl)->setMaxActionBar(ap, updateClient);
-}
-
-void CreatureObjectAdapter::setMaxQuicknessBar(unsigned int qck, bool updateClient) {
-	return ((CreatureObjectImplementation*) impl)->setMaxQuicknessBar(qck, updateClient);
-}
-
-void CreatureObjectAdapter::setMaxStaminaBar(unsigned int sta, bool updateClient) {
-	return ((CreatureObjectImplementation*) impl)->setMaxStaminaBar(sta, updateClient);
-}
-
 void CreatureObjectAdapter::setMindBar(unsigned int mp) {
 	return ((CreatureObjectImplementation*) impl)->setMindBar(mp);
 }
@@ -6143,6 +6871,66 @@ void CreatureObjectAdapter::setWillpowerBar(unsigned int will) {
 	return ((CreatureObjectImplementation*) impl)->setWillpowerBar(will);
 }
 
+void CreatureObjectAdapter::setBaseHealthBar(unsigned int hp, bool updateClient) {
+	return ((CreatureObjectImplementation*) impl)->setBaseHealthBar(hp, updateClient);
+}
+
+void CreatureObjectAdapter::setBaseStrengthBar(unsigned int st, bool updateClient) {
+	return ((CreatureObjectImplementation*) impl)->setBaseStrengthBar(st, updateClient);
+}
+
+void CreatureObjectAdapter::setBaseConstitutionBar(unsigned int cst, bool updateClient) {
+	return ((CreatureObjectImplementation*) impl)->setBaseConstitutionBar(cst, updateClient);
+}
+
+void CreatureObjectAdapter::setBaseActionBar(unsigned int ap, bool updateClient) {
+	return ((CreatureObjectImplementation*) impl)->setBaseActionBar(ap, updateClient);
+}
+
+void CreatureObjectAdapter::setBaseQuicknessBar(unsigned int qck, bool updateClient) {
+	return ((CreatureObjectImplementation*) impl)->setBaseQuicknessBar(qck, updateClient);
+}
+
+void CreatureObjectAdapter::setBaseStaminaBar(unsigned int sta, bool updateClient) {
+	return ((CreatureObjectImplementation*) impl)->setBaseStaminaBar(sta, updateClient);
+}
+
+void CreatureObjectAdapter::setBaseMindBar(unsigned int mp, bool updateClient) {
+	return ((CreatureObjectImplementation*) impl)->setBaseMindBar(mp, updateClient);
+}
+
+void CreatureObjectAdapter::setBaseFocusBar(unsigned int fc, bool updateClient) {
+	return ((CreatureObjectImplementation*) impl)->setBaseFocusBar(fc, updateClient);
+}
+
+void CreatureObjectAdapter::setBaseWillpowerBar(unsigned int will, bool updateClient) {
+	return ((CreatureObjectImplementation*) impl)->setBaseWillpowerBar(will, updateClient);
+}
+
+void CreatureObjectAdapter::setMaxHealthBar(unsigned int hp, bool updateClient) {
+	return ((CreatureObjectImplementation*) impl)->setMaxHealthBar(hp, updateClient);
+}
+
+void CreatureObjectAdapter::setMaxStrengthBar(unsigned int st, bool updateClient) {
+	return ((CreatureObjectImplementation*) impl)->setMaxStrengthBar(st, updateClient);
+}
+
+void CreatureObjectAdapter::setMaxConstitutionBar(unsigned int cst, bool updateClient) {
+	return ((CreatureObjectImplementation*) impl)->setMaxConstitutionBar(cst, updateClient);
+}
+
+void CreatureObjectAdapter::setMaxActionBar(unsigned int ap, bool updateClient) {
+	return ((CreatureObjectImplementation*) impl)->setMaxActionBar(ap, updateClient);
+}
+
+void CreatureObjectAdapter::setMaxQuicknessBar(unsigned int qck, bool updateClient) {
+	return ((CreatureObjectImplementation*) impl)->setMaxQuicknessBar(qck, updateClient);
+}
+
+void CreatureObjectAdapter::setMaxStaminaBar(unsigned int sta, bool updateClient) {
+	return ((CreatureObjectImplementation*) impl)->setMaxStaminaBar(sta, updateClient);
+}
+
 void CreatureObjectAdapter::setMaxMindBar(unsigned int mp, bool updateClient) {
 	return ((CreatureObjectImplementation*) impl)->setMaxMindBar(mp, updateClient);
 }
@@ -6153,6 +6941,42 @@ void CreatureObjectAdapter::setMaxFocusBar(unsigned int fc, bool updateClient) {
 
 void CreatureObjectAdapter::setMaxWillpowerBar(unsigned int will, bool updateClient) {
 	return ((CreatureObjectImplementation*) impl)->setMaxWillpowerBar(will, updateClient);
+}
+
+void CreatureObjectAdapter::setHealthWoundsBar(unsigned int wnds) {
+	return ((CreatureObjectImplementation*) impl)->setHealthWoundsBar(wnds);
+}
+
+void CreatureObjectAdapter::setStrengthWoundsBar(unsigned int wnds) {
+	return ((CreatureObjectImplementation*) impl)->setStrengthWoundsBar(wnds);
+}
+
+void CreatureObjectAdapter::setConstitutionWoundsBar(unsigned int wnds) {
+	return ((CreatureObjectImplementation*) impl)->setConstitutionWoundsBar(wnds);
+}
+
+void CreatureObjectAdapter::setActionWoundsBar(unsigned int wnds) {
+	return ((CreatureObjectImplementation*) impl)->setActionWoundsBar(wnds);
+}
+
+void CreatureObjectAdapter::setQuicknessWoundsBar(unsigned int wnds) {
+	return ((CreatureObjectImplementation*) impl)->setQuicknessWoundsBar(wnds);
+}
+
+void CreatureObjectAdapter::setStaminaWoundsBar(unsigned int wnds) {
+	return ((CreatureObjectImplementation*) impl)->setStaminaWoundsBar(wnds);
+}
+
+void CreatureObjectAdapter::setMindWoundsBar(unsigned int wnds) {
+	return ((CreatureObjectImplementation*) impl)->setMindWoundsBar(wnds);
+}
+
+void CreatureObjectAdapter::setFocusWoundsBar(unsigned int wnds) {
+	return ((CreatureObjectImplementation*) impl)->setFocusWoundsBar(wnds);
+}
+
+void CreatureObjectAdapter::setWillpowerWoundsBar(unsigned int wnds) {
+	return ((CreatureObjectImplementation*) impl)->setWillpowerWoundsBar(wnds);
 }
 
 bool CreatureObjectAdapter::hasAttackDelay() {
@@ -6631,6 +7455,10 @@ void CreatureObjectAdapter::getCharacterAppearance(string& appearance) {
 	return ((CreatureObjectImplementation*) impl)->getCharacterAppearance(appearance);
 }
 
+void CreatureObjectAdapter::getHairAppearance(string& appearance) {
+	return ((CreatureObjectImplementation*) impl)->getHairAppearance(appearance);
+}
+
 bool CreatureObjectAdapter::isOvert() {
 	return ((CreatureObjectImplementation*) impl)->isOvert();
 }
@@ -6681,6 +7509,14 @@ unsigned int CreatureObjectAdapter::getWoundsUpdateCounter() {
 
 unsigned int CreatureObjectAdapter::getNewWoundsUpdateCounter(int upd) {
 	return ((CreatureObjectImplementation*) impl)->getNewWoundsUpdateCounter(upd);
+}
+
+void CreatureObjectAdapter::updateHAMBars() {
+	return ((CreatureObjectImplementation*) impl)->updateHAMBars();
+}
+
+void CreatureObjectAdapter::updateBaseStats() {
+	return ((CreatureObjectImplementation*) impl)->updateBaseStats();
 }
 
 unsigned int CreatureObjectAdapter::getBaseHealth() {
@@ -6803,12 +7639,36 @@ unsigned int CreatureObjectAdapter::getHealthWounds() {
 	return ((CreatureObjectImplementation*) impl)->getHealthWounds();
 }
 
+unsigned int CreatureObjectAdapter::getStrengthWounds() {
+	return ((CreatureObjectImplementation*) impl)->getStrengthWounds();
+}
+
+unsigned int CreatureObjectAdapter::getConstitutionWounds() {
+	return ((CreatureObjectImplementation*) impl)->getConstitutionWounds();
+}
+
 unsigned int CreatureObjectAdapter::getActionWounds() {
 	return ((CreatureObjectImplementation*) impl)->getActionWounds();
 }
 
+unsigned int CreatureObjectAdapter::getQuicknessWounds() {
+	return ((CreatureObjectImplementation*) impl)->getQuicknessWounds();
+}
+
+unsigned int CreatureObjectAdapter::getStaminaWounds() {
+	return ((CreatureObjectImplementation*) impl)->getStaminaWounds();
+}
+
 unsigned int CreatureObjectAdapter::getMindWounds() {
 	return ((CreatureObjectImplementation*) impl)->getMindWounds();
+}
+
+unsigned int CreatureObjectAdapter::getFocusWounds() {
+	return ((CreatureObjectImplementation*) impl)->getFocusWounds();
+}
+
+unsigned int CreatureObjectAdapter::getWillpowerWounds() {
+	return ((CreatureObjectImplementation*) impl)->getWillpowerWounds();
 }
 
 unsigned int CreatureObjectAdapter::getShockWounds() {
@@ -6829,6 +7689,14 @@ unsigned int CreatureObjectAdapter::getHAMMaxUpdateCounter() {
 
 unsigned int CreatureObjectAdapter::getNewHAMMaxUpdateCounter(int cnt) {
 	return ((CreatureObjectImplementation*) impl)->getNewHAMMaxUpdateCounter(cnt);
+}
+
+unsigned int CreatureObjectAdapter::getHAMBaseUpdateCounter() {
+	return ((CreatureObjectImplementation*) impl)->getHAMBaseUpdateCounter();
+}
+
+unsigned int CreatureObjectAdapter::getNewHAMBaseUpdateCounter(int cnt) {
+	return ((CreatureObjectImplementation*) impl)->getNewHAMBaseUpdateCounter(cnt);
 }
 
 unsigned int CreatureObjectAdapter::getHealthEncumbrance() {
@@ -7075,12 +7943,36 @@ void CreatureObjectAdapter::setHealthWounds(unsigned int wounds) {
 	return ((CreatureObjectImplementation*) impl)->setHealthWounds(wounds);
 }
 
+void CreatureObjectAdapter::setStrengthWounds(unsigned int wounds) {
+	return ((CreatureObjectImplementation*) impl)->setStrengthWounds(wounds);
+}
+
+void CreatureObjectAdapter::setConstitutionWounds(unsigned int wounds) {
+	return ((CreatureObjectImplementation*) impl)->setConstitutionWounds(wounds);
+}
+
 void CreatureObjectAdapter::setActionWounds(unsigned int wounds) {
 	return ((CreatureObjectImplementation*) impl)->setActionWounds(wounds);
 }
 
+void CreatureObjectAdapter::setQuicknessWounds(unsigned int wounds) {
+	return ((CreatureObjectImplementation*) impl)->setQuicknessWounds(wounds);
+}
+
+void CreatureObjectAdapter::setStaminaWounds(unsigned int wounds) {
+	return ((CreatureObjectImplementation*) impl)->setStaminaWounds(wounds);
+}
+
 void CreatureObjectAdapter::setMindWounds(unsigned int wounds) {
 	return ((CreatureObjectImplementation*) impl)->setMindWounds(wounds);
+}
+
+void CreatureObjectAdapter::setFocusWounds(unsigned int wounds) {
+	return ((CreatureObjectImplementation*) impl)->setFocusWounds(wounds);
+}
+
+void CreatureObjectAdapter::setWillpowerWounds(unsigned int wounds) {
+	return ((CreatureObjectImplementation*) impl)->setWillpowerWounds(wounds);
 }
 
 void CreatureObjectAdapter::setShockWounds(unsigned int wounds) {
@@ -7211,6 +8103,18 @@ void CreatureObjectAdapter::updateCharacterAppearance() {
 	return ((CreatureObjectImplementation*) impl)->updateCharacterAppearance();
 }
 
+void CreatureObjectAdapter::setHairAppearance(string& cust) {
+	return ((CreatureObjectImplementation*) impl)->setHairAppearance(cust);
+}
+
+void CreatureObjectAdapter::setHairAppearanceAttribute(unsigned char type, unsigned char value) {
+	return ((CreatureObjectImplementation*) impl)->setHairAppearanceAttribute(type, value);
+}
+
+void CreatureObjectAdapter::setHairAppearanceAttribute(string& type, unsigned char value) {
+	return ((CreatureObjectImplementation*) impl)->setHairAppearanceAttribute(type, value);
+}
+
 void CreatureObjectAdapter::setRaceName(const string& name) {
 	return ((CreatureObjectImplementation*) impl)->setRaceName(name);
 }
@@ -7245,6 +8149,10 @@ void CreatureObjectAdapter::setGroup(GroupObject* Group) {
 
 void CreatureObjectAdapter::setMount(MountCreature* mount) {
 	return ((CreatureObjectImplementation*) impl)->setMount(mount);
+}
+
+void CreatureObjectAdapter::explode(int level) {
+	return ((CreatureObjectImplementation*) impl)->explode(level);
 }
 
 /*

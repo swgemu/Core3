@@ -413,5 +413,3 @@ DistributedObjectStub* AttackableObjectServant::_getStub() {
 	return _this;
 }
 
-
-

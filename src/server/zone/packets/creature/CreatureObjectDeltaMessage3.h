@@ -91,7 +91,11 @@ public:
 	void updateMaxCondition() {
 		addIntUpdate(9, creo->getMaxCondition());
 	}
-	
+
+	void updateHeight() {
+		addFloatUpdate(14, creo->getHeight());
+	}
+
 	void updateShockWounds() {
 		addIntUpdate(15, creo->getShockWounds());
 	}
@@ -150,7 +154,31 @@ public:
 
 		creo->setHealthWounds(healthw);
 	}
-	
+
+	void updateStrengthWoundsBar(uint32 strengthWounds) {
+		startUpdate(0x11);
+
+		uint32 updatecount = creo->getNewWoundsUpdateCounter(1);
+		startList(1, updatecount);
+
+		uint32 strengthw = creo->getStrengthWounds();
+		addBar(1, strengthw, strengthWounds);
+
+		creo->setStrengthWounds(strengthw);
+	}
+
+	void updateConstitutionWoundsBar(uint32 constitutionWounds) {
+		startUpdate(0x11);
+
+		uint32 updatecount = creo->getNewWoundsUpdateCounter(1);
+		startList(1, updatecount);
+
+		uint32 constitutionw = creo->getConstitutionWounds();
+		addBar(2, constitutionw, constitutionWounds);
+
+		creo->setConstitutionWounds(constitutionw);
+	}
+
 	void updateActionWoundsBar(uint32 actionWounds) {
 		startUpdate(0x11);
 
@@ -163,6 +191,30 @@ public:
 		creo->setActionWounds(actionw);
 	}
 	
+	void updateQuicknessWoundsBar(uint32 quicknessWounds) {
+		startUpdate(0x11);
+
+		uint32 updatecount = creo->getNewWoundsUpdateCounter(1);
+		startList(1, updatecount);
+
+		uint32 quicknessw = creo->getQuicknessWounds();
+		addBar(4, quicknessw, quicknessWounds);
+
+		creo->setQuicknessWounds(quicknessw);
+	}
+	
+	void updateStaminaWoundsBar(uint32 staminaWounds) {
+		startUpdate(0x11);
+
+		uint32 updatecount = creo->getNewWoundsUpdateCounter(1);
+		startList(1, updatecount);
+
+		uint32 staminaw = creo->getStaminaWounds();
+		addBar(5, staminaw, staminaWounds);
+
+		creo->setStaminaWounds(staminaw);
+	}
+	
 	void updateMindWoundsBar(uint32 mindWounds) {
 		startUpdate(0x11);
 
@@ -173,6 +225,30 @@ public:
 		addBar(6, mindw, mindWounds);
 		
 		creo->setMindWounds(mindw);
+	}
+	
+	void updateFocusWoundsBar(uint32 focusWounds) {
+		startUpdate(0x11);
+
+		uint32 updatecount = creo->getNewWoundsUpdateCounter(1);
+		startList(1, updatecount);
+
+		uint32 focusw = creo->getFocusWounds();
+		addBar(7, focusw, focusWounds);
+
+		creo->setFocusWounds(focusw);
+	}
+
+	void updateWillpowerWoundsBar(uint32 willpowerWounds) {
+		startUpdate(0x11);
+
+		uint32 updatecount = creo->getNewWoundsUpdateCounter(1);
+		startList(1, updatecount);
+
+		uint32 willpowerw = creo->getWillpowerWounds();
+		addBar(8, willpowerw, willpowerWounds);
+
+		creo->setWillpowerWounds(willpowerw);
 	}
 	
 	void addBar(uint16 index, uint32& value, uint32 nvalue) {

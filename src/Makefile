@@ -373,7 +373,7 @@ core3_IDLS = server/zone/Zone.cpp \
 		server/zone/objects/tangible/terminal/bazaar/RegionBazaar.cpp \
 		server/zone/objects/tangible/ticketcollector/TicketCollector.cpp \
 		server/zone/objects/tangible/instrument/Instrument.cpp \
-		server/zone/objects/tangible/lair/LairObject.cpp \
+		server/zone/objects/attackable/lair/LairObject.cpp \
 		server/zone/objects/tangible/surveytool/SurveyTool.cpp \
 		server/zone/objects/tangible/crafting/CraftingTool.cpp \
 		server/zone/objects/tangible/crafting/CraftingStation.cpp \
@@ -438,7 +438,7 @@ core3_SOURCES = $(core3_IDLS) \
 		server/zone/objects/tangible/wearables/ArmorImplementation.cpp \
 		server/zone/objects/tangible/weapons/WeaponImplementation.cpp \
 		server/zone/objects/tangible/TangibleObjectImplementation.cpp \
-		server/zone/objects/tangible/lair/LairObjectImplementation.cpp \
+		server/zone/objects/attackable/lair/LairObjectImplementation.cpp \
 		server/zone/objects/tangible/surveytool/SurveyToolImplementation.cpp \
 		server/zone/objects/tangible/crafting/CraftingToolImplementation.cpp \
 		server/zone/objects/tangible/crafting/CraftingStationImplementation.cpp \
@@ -1503,19 +1503,19 @@ Instrument.obj: server/zone/objects/tangible/instrument/Instrument.cpp
 #	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
 #	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o Instrument.obj `if test -f 'server/zone/objects/tangible/instrument/Instrument.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/instrument/Instrument.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/instrument/Instrument.cpp'; fi`
 
-LairObject.o: server/zone/objects/tangible/lair/LairObject.cpp
-	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT LairObject.o -MD -MP -MF $(DEPDIR)/LairObject.Tpo -c -o LairObject.o `test -f 'server/zone/objects/tangible/lair/LairObject.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/lair/LairObject.cpp
+LairObject.o: server/zone/objects/attackable/lair/LairObject.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT LairObject.o -MD -MP -MF $(DEPDIR)/LairObject.Tpo -c -o LairObject.o `test -f 'server/zone/objects/attackable/lair/LairObject.cpp' || echo '$(srcdir)/'`server/zone/objects/attackable/lair/LairObject.cpp
 	mv -f $(DEPDIR)/LairObject.Tpo $(DEPDIR)/LairObject.Po
-#	source='server/zone/objects/tangible/lair/LairObject.cpp' object='LairObject.o' libtool=no \
+#	source='server/zone/objects/attackable/lair/LairObject.cpp' object='LairObject.o' libtool=no \
 #	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
-#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o LairObject.o `test -f 'server/zone/objects/tangible/lair/LairObject.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/lair/LairObject.cpp
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o LairObject.o `test -f 'server/zone/objects/attackable/lair/LairObject.cpp' || echo '$(srcdir)/'`server/zone/objects/attackable/lair/LairObject.cpp
 
-LairObject.obj: server/zone/objects/tangible/lair/LairObject.cpp
-	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT LairObject.obj -MD -MP -MF $(DEPDIR)/LairObject.Tpo -c -o LairObject.obj `if test -f 'server/zone/objects/tangible/lair/LairObject.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/lair/LairObject.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/lair/LairObject.cpp'; fi`
+LairObject.obj: server/zone/objects/attackable/lair/LairObject.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT LairObject.obj -MD -MP -MF $(DEPDIR)/LairObject.Tpo -c -o LairObject.obj `if test -f 'server/zone/objects/attackable/lair/LairObject.cpp'; then $(CYGPATH_W) 'server/zone/objects/attackable/lair/LairObject.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/attackable/lair/LairObject.cpp'; fi`
 	mv -f $(DEPDIR)/LairObject.Tpo $(DEPDIR)/LairObject.Po
-#	source='server/zone/objects/tangible/lair/LairObject.cpp' object='LairObject.obj' libtool=no \
+#	source='server/zone/objects/attackable/lair/LairObject.cpp' object='LairObject.obj' libtool=no \
 #	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
-#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o LairObject.obj `if test -f 'server/zone/objects/tangible/lair/LairObject.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/lair/LairObject.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/lair/LairObject.cpp'; fi`
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o LairObject.obj `if test -f 'server/zone/objects/attackable/lair/LairObject.cpp'; then $(CYGPATH_W) 'server/zone/objects/attackable/lair/LairObject.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/attackable/lair/LairObject.cpp'; fi`
 
 SurveyTool.o: server/zone/objects/tangible/surveytool/SurveyTool.cpp
 	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT SurveyTool.o -MD -MP -MF $(DEPDIR)/SurveyTool.Tpo -c -o SurveyTool.o `test -f 'server/zone/objects/tangible/surveytool/SurveyTool.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/surveytool/SurveyTool.cpp
@@ -2385,19 +2385,19 @@ TangibleObjectImplementation.obj: server/zone/objects/tangible/TangibleObjectImp
 #	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
 #	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o TangibleObjectImplementation.obj `if test -f 'server/zone/objects/tangible/TangibleObjectImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/TangibleObjectImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/TangibleObjectImplementation.cpp'; fi`
 
-LairObjectImplementation.o: server/zone/objects/tangible/lair/LairObjectImplementation.cpp
-	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT LairObjectImplementation.o -MD -MP -MF $(DEPDIR)/LairObjectImplementation.Tpo -c -o LairObjectImplementation.o `test -f 'server/zone/objects/tangible/lair/LairObjectImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/lair/LairObjectImplementation.cpp
+LairObjectImplementation.o: server/zone/objects/attackable/lair/LairObjectImplementation.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT LairObjectImplementation.o -MD -MP -MF $(DEPDIR)/LairObjectImplementation.Tpo -c -o LairObjectImplementation.o `test -f 'server/zone/objects/attackable/lair/LairObjectImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/attackable/lair/LairObjectImplementation.cpp
 	mv -f $(DEPDIR)/LairObjectImplementation.Tpo $(DEPDIR)/LairObjectImplementation.Po
 #	source='server/zone/objects/tangible/lair/LairObjectImplementation.cpp' object='LairObjectImplementation.o' libtool=no \
 #	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
-#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o LairObjectImplementation.o `test -f 'server/zone/objects/tangible/lair/LairObjectImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/lair/LairObjectImplementation.cpp
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o LairObjectImplementation.o `test -f 'server/zone/objects/attackable/lair/LairObjectImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/attackable/lair/LairObjectImplementation.cpp
 
-LairObjectImplementation.obj: server/zone/objects/tangible/lair/LairObjectImplementation.cpp
-	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT LairObjectImplementation.obj -MD -MP -MF $(DEPDIR)/LairObjectImplementation.Tpo -c -o LairObjectImplementation.obj `if test -f 'server/zone/objects/tangible/lair/LairObjectImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/lair/LairObjectImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/lair/LairObjectImplementation.cpp'; fi`
+LairObjectImplementation.obj: server/zone/objects/attackable/lair/LairObjectImplementation.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT LairObjectImplementation.obj -MD -MP -MF $(DEPDIR)/LairObjectImplementation.Tpo -c -o LairObjectImplementation.obj `if test -f 'server/zone/objects/attackable/lair/LairObjectImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/lair/LairObjectImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/attackable/lair/LairObjectImplementation.cpp'; fi`
 	mv -f $(DEPDIR)/LairObjectImplementation.Tpo $(DEPDIR)/LairObjectImplementation.Po
-#	source='server/zone/objects/tangible/lair/LairObjectImplementation.cpp' object='LairObjectImplementation.obj' libtool=no \
+#	source='server/zone/objects/attackable/lair/LairObjectImplementation.cpp' object='LairObjectImplementation.obj' libtool=no \
 #	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
-#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o LairObjectImplementation.obj `if test -f 'server/zone/objects/tangible/lair/LairObjectImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/lair/LairObjectImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/lair/LairObjectImplementation.cpp'; fi`
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o LairObjectImplementation.obj `if test -f 'server/zone/objects/attackable/lair/LairObjectImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/attackable/lair/LairObjectImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/attackable/lair/LairObjectImplementation.cpp'; fi`
 
 SurveyToolImplementation.o: server/zone/objects/tangible/surveytool/SurveyToolImplementation.cpp
 	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT SurveyToolImplementation.o -MD -MP -MF $(DEPDIR)/SurveyToolImplementation.Tpo -c -o SurveyToolImplementation.o `test -f 'server/zone/objects/tangible/surveytool/SurveyToolImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/surveytool/SurveyToolImplementation.cpp

@@ -71,6 +71,8 @@ class CustomizationData {
 	int skillModValue;
 	string modificationType;
 	int maxChoices;
+	float minScale;
+	float maxScale;
 public:
 	// setters
 	inline void setSpeciesGender(string value) {
@@ -130,7 +132,13 @@ public:
 	inline void setMaxChoices(int value) {
 		maxChoices = value;
 	}	
-	
+	inline void setMinScale(float value) {
+		minScale = value;
+	}	
+	inline void setMaxScale(float value) {
+		maxScale = value;
+	}	
+
 	// getters
 	inline string getSpeciesGender() {
 		return speciesGender;
@@ -188,6 +196,12 @@ public:
 	}
 	inline int getMaxChoices() {
 		return maxChoices;
+	}
+	inline float getMinScale() {
+		return minScale;
+	}
+	inline float getMaxScale() {
+		return maxScale;
 	}
 };
 

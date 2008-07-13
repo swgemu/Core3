@@ -125,6 +125,7 @@ which carries forward this exception.
 
 #include "packets/player/FactionResponseMessage.h"
 #include "packets/player/GetMapLocationsResponseMessage.h"
+#include "packets/player/StatMigrationTargetsMessage.h"
 #include "packets/player/BadgesResponseMessage.h"
 #include "packets/player/CharacterSheetResponseMessage.h"
 #include "packets/player/GuildResponseMessage.h"

@@ -79,6 +79,7 @@ which carries forward this exception.
 
 #include "../zone/managers/planet/PlanetManager.h"
 
+
 ChatManagerImplementation::ChatManagerImplementation(ZoneServer* serv, int initsize) : ChatManagerServant(), Mutex("ChatManager") {
 	server = serv;
 		
@@ -1252,7 +1253,7 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 				message << "Food filling: " << fill << ".";
 				player->sendSystemMessage(message.str());
 			}
-		} else if(cmd == "@logappearance") {
+/*		} else if(cmd == "@logappearance") {
 			//if (userManager->isAdmin(player->getFirstName())) {
 				
 				string appearance;
@@ -1270,10 +1271,10 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 						message << byte  << " ";
 				}
 				
-				message << dec << " Hair: " << uppercase << hex;
+				message << dec << " Hair Appearance: " << uppercase << hex;
 				 
 				string hairData;
-				hairData = player->getHairData();
+				player->getHairAppearance(hairData);
 				 
 				for (int i = 0; i < hairData.size(); ++i) {
 					unsigned int byte = ((unsigned int )hairData[i]) & 0xFF; 
@@ -1283,10 +1284,14 @@ void ChatManagerImplementation::handleGameCommand(Player* player, const string& 
 					else
 						message << byte  << " ";
 				}
+				
+				message << dec << " Height: " << std::fixed;
+				message.precision(8);
+				message << player->getHeight();
 				 
 								
 				player->info(message.str());
-			//}		
+			//}		*/
 		}  else if(cmd == "@updateappearance") {
 			if (userManager->isAdmin(player->getFirstName())) {
 			

@@ -273,6 +273,10 @@ public:
 			setVariable(CustomizationVariableTypes::SHARED_OWNER_BLEND_EYEDIRECTION_0, value);
 		else if(type == "blend_eyedirection_1")
 			setVariable(CustomizationVariableTypes::SHARED_OWNER_BLEND_EYEDIRECTION_1, value);
+		else if(type == "blend_eyeshape_0") 
+			setVariable(CustomizationVariableTypes::SHARED_OWNWER_BLEND_EYESHAPE_0, value);
+		else if(type == "blend_eyeshape_1") 
+			setVariable(CustomizationVariableTypes::SHARED_OWNWER_BLEND_EYESHAPE_1, value);
 		else if(type == "blend_eyesize_0") 
 			setVariable(CustomizationVariableTypes::SHARED_OWNER_BLEND_EYESIZE_0, value);
 		else if(type == "blend_eyesize_1") 	
@@ -454,10 +458,6 @@ public:
 			setVariable(CustomizationVariableTypes::PRIVATE_INDEX_TURN_RATE_MIN, value);
 		else if(type == "muscle_fat") 
 			setVariable(CustomizationVariableTypes::SHARED_OWNER_MUSCLE_FAT, value);
-		else if(type == "ownwer_blend_eyeshape_0") 
-			setVariable(CustomizationVariableTypes::SHARED_OWNWER_BLEND_EYESHAPE_0, value);
-		else if(type == "ownwer_blend_eyeshape_1") 
-			setVariable(CustomizationVariableTypes::SHARED_OWNWER_BLEND_EYESHAPE_1, value);
 		else {
 			
 			// dangers!
@@ -501,11 +501,11 @@ public:
 			
 			ascii.push_back(entry->getKey());
 			
-			if(entry->getValue() == 0x00)
+			if(entry->getValue() == 0x00) // 0
 			{
 				ascii.push_back(0xFF);
 				ascii.push_back(0x01);
-			} else if(entry->getValue() == 0xFF)
+			} else if(entry->getValue() == 0xFF) // 255
 			{
 				ascii.push_back(0xFF);
 				ascii.push_back(0x02);				

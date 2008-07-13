@@ -291,4 +291,3 @@ DistributedObjectStub* WaypointObjectServant::_getStub() {
 	return _this;
 }
 
-

@@ -234,6 +234,17 @@ void PlayerImplementation::init() {
 	surveyErrorMessage = false;
 	sampleErrorMessage = false;
 	
+	// Stat Migration
+	setTargetHealth(0);
+	setTargetStrength(0);
+	setTargetConstitution(0);
+	setTargetAction(0);
+	setTargetQuickness(0);
+	setTargetStamina(0);
+	setTargetMind(0);
+	setTargetFocus(0);
+	setTargetWillpower(0);
+	
 	suiBoxes.setInsertPlan(SortedVector<SuiBox*>::NO_DUPLICATE);
 	suiBoxes.setNullValue(NULL);
 	
@@ -618,7 +629,9 @@ void PlayerImplementation::createItems() {
 	
 	if (!hairObject.empty()) {
 		hairObj = new HairObject(_this, String::hashCode(hairObject), unicode("hair"), "hair");
-		hairObj->setCustomizationString(hairData);
+		string hairAppearance;
+		getHairAppearance(hairAppearance);
+		hairObj->setCustomizationString(hairAppearance);
 	}
 }
 
@@ -632,7 +645,37 @@ void PlayerImplementation::loadItems() {
 
 	if (!hairObject.empty()) {
 		hairObj = new HairObject(_this, String::hashCode(hairObject), unicode("hair"), "hair");
-		hairObj->setCustomizationString(hairData);
+		string hairAppearance;
+		getHairAppearance(hairAppearance);
+		hairObj->setCustomizationString(hairAppearance);
+	}
+}
+
+void PlayerImplementation::updateHair() {
+	if (hairObj != NULL) {
+		if (zone != NULL) {
+			//unequipItem(hairObj);
+			ZoneServer* zserver = zone->getZoneServer();
+			
+			ItemManager* itemManager = zserver->getItemManager();
+			removeInventoryItem(hairObj);
+			
+			BaseMessage* msg = new SceneObjectDestroyMessage(hairObj);
+			broadcastMessage(msg);
+			
+			hairObj->finalize();
+			hairObj = NULL;		
+		}
+	}
+	
+	if (!hairObject.empty()) {
+		hairObj = new HairObject(_this, String::hashCode(hairObject), unicode("hair"), "hair");
+		string hairAppearance;
+		getHairAppearance(hairAppearance);
+		hairObj->setCustomizationString(hairAppearance);
+		hairObj->sendTo(_this);
+		unequipItem(hairObj);
+		equipItem(hairObj);
 	}
 }
 

@@ -107,6 +107,42 @@ public:
 
 	SceneObject* getPlayerItem(unsigned long long oid);
 
+	unsigned int getTargetHealth();
+
+	unsigned int getTargetStrength();
+
+	unsigned int getTargetConstitution();
+
+	unsigned int getTargetAction();
+
+	unsigned int getTargetQuickness();
+
+	unsigned int getTargetStamina();
+
+	unsigned int getTargetMind();
+
+	unsigned int getTargetFocus();
+
+	unsigned int getTargetWillpower();
+
+	void setTargetHealth(unsigned int health);
+
+	void setTargetStrength(unsigned int strength);
+
+	void setTargetConstitution(unsigned int constituition);
+
+	void setTargetAction(unsigned int action);
+
+	void setTargetQuickness(unsigned int quickness);
+
+	void setTargetStamina(unsigned int stamina);
+
+	void setTargetMind(unsigned int mind);
+
+	void setTargetFocus(unsigned int focus);
+
+	void setTargetWillpower(unsigned int willpower);
+
 	void queueFlourish(const string& modifier, unsigned long long target, unsigned int actionCntr);
 
 	void clearQueueAction(unsigned int actioncntr, float timer = 0, unsigned int tab1 = 0, unsigned int tab2 = 0);
@@ -259,8 +295,6 @@ public:
 
 	void setBiography(unicode& bio);
 
-	void setHairData(string& hair);
-
 	bool changeForcePowerBar(int fp);
 
 	void setForcePowerBar(int fp);
@@ -286,6 +320,8 @@ public:
 	void setStartingProfession(const string& prof);
 
 	void setHairObject(const string& hair);
+
+	void updateHair();
 
 	void setPlayerObject(PlayerObject* obj);
 
@@ -368,8 +404,6 @@ public:
 	string& getRaceFileName();
 
 	unicode& getBiography();
-
-	string& getHairData();
 
 	unsigned long long getCharacterID();
 
@@ -513,7 +547,6 @@ protected:
 	string _return_getCertification;
 	string _return_getFactionRank;
 	string _return_getFirstName;
-	string _return_getHairData;
 	string _return_getHairObject;
 	string _return_getLastName;
 	string _return_getLastNpcConvMessStr;
@@ -580,6 +613,42 @@ public:
 	void removeDatapadItem(unsigned long long oid);
 
 	SceneObject* getPlayerItem(unsigned long long oid);
+
+	unsigned int getTargetHealth();
+
+	unsigned int getTargetStrength();
+
+	unsigned int getTargetConstitution();
+
+	unsigned int getTargetAction();
+
+	unsigned int getTargetQuickness();
+
+	unsigned int getTargetStamina();
+
+	unsigned int getTargetMind();
+
+	unsigned int getTargetFocus();
+
+	unsigned int getTargetWillpower();
+
+	void setTargetHealth(unsigned int health);
+
+	void setTargetStrength(unsigned int strength);
+
+	void setTargetConstitution(unsigned int constituition);
+
+	void setTargetAction(unsigned int action);
+
+	void setTargetQuickness(unsigned int quickness);
+
+	void setTargetStamina(unsigned int stamina);
+
+	void setTargetMind(unsigned int mind);
+
+	void setTargetFocus(unsigned int focus);
+
+	void setTargetWillpower(unsigned int willpower);
 
 	void queueFlourish(const string& modifier, unsigned long long target, unsigned int actionCntr);
 
@@ -733,8 +802,6 @@ public:
 
 	void setBiography(unicode& bio);
 
-	void setHairData(string& hair);
-
 	bool changeForcePowerBar(int fp);
 
 	void setForcePowerBar(int fp);
@@ -760,6 +827,8 @@ public:
 	void setStartingProfession(const string& prof);
 
 	void setHairObject(const string& hair);
+
+	void updateHair();
 
 	void setPlayerObject(PlayerObject* obj);
 
@@ -842,8 +911,6 @@ public:
 	string& getRaceFileName();
 
 	unicode& getBiography();
-
-	string& getHairData();
 
 	unsigned long long getCharacterID();
 
@@ -996,7 +1063,6 @@ protected:
 	string _param0_setLastName__string_;
 	string _param0_setBiography__string_;
 	unicode _param0_setBiography__unicode_;
-	string _param0_setHairData__string_;
 	string _param0_setStartingProfession__string_;
 	string _param0_setHairObject__string_;
 	string _param0_setRaceFileName__string_;

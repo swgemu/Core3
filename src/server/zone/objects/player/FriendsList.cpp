@@ -334,4 +334,3 @@ DistributedObjectStub* FriendsListServant::_getStub() {
 	return _this;
 }
 
-

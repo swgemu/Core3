@@ -77,114 +77,125 @@ void ImageDesignCustomization::updateCustomization(string customizationName, flo
 	int choices = customization->getMaxChoices();
 	
 	if(type == "color") {
-			
-			
+		// doh problem!	
+		creatureObject->sendSystemMessage("This isn't implemented - and frankly shouldn't have occured please report to McMahon repro steps - updateCustomization(string customizationName, uint32 value)");
 	} else if(type == "hslider") {
+		
+		if(
+			    customizationName == "brow" ||
+			    customizationName == "cheeks" ||
+			    customizationName == "chest" ||
+			    customizationName == "chin" ||
+			    customizationName == "chin_length" ||
+			    customizationName == "ear_shape" ||
+			    customizationName == "ears" ||
+			    customizationName == "eye_direction" ||
+			    customizationName == "eye_shape" ||
+			    customizationName == "eye_size" ||
+			    customizationName == "gullet" ||
+			    customizationName == "head" ||
+			    customizationName == "head_shape" ||
+			    customizationName == "head_size" ||
+			    //customizationName == "height" ||
+			    customizationName == "hump_size" ||
+			    customizationName == "jaw" ||
+			    customizationName == "jowl" ||
+			    customizationName == "lip_fullness" ||
+			    customizationName == "lip_width" ||
+			    customizationName == "muscle" ||
+			    customizationName == "nose_length" ||
+			    customizationName == "nose_protrusion" ||
+			    customizationName == "nose_width" ||
+			    customizationName == "sensors" ||
+			    customizationName == "trunk_height" ||
+			    customizationName == "trunk_length" ||
+			    customizationName == "trunk_size" ||
+			    customizationName == "trunk_slope" ||
+			    customizationName == "weight"
+		) {
+			string token_1 = "";
+			string token_2 = "";
 			
-	}  else {
+			StringTokenizer tokenizer(variables.c_str());
+			tokenizer.setDelimeter(",");
+			
+			tokenizer.getStringToken(token_1);
+			if(tokenizer.hasMoreTokens())
+				tokenizer.getStringToken(token_2);
+			
+			//stringstream msg;
+			if(token_2 == "") {
+				//msg << "one token: " << token_1 << " => " << hex << (uint8)(value * 255) << dec << " (" << value << ")";
+				if(customization->getIsVarHairColor())
+					creatureObject->setHairAppearanceAttribute(token_1, (uint8)(value * 255) );
+				else
+					creatureObject->setAppearanceAttribute(token_1, (uint8)(value * 255) );
+			} else {
+				if(value == .5f) {
+					creatureObject->setAppearanceAttribute(token_1, (uint8) 0);
+					creatureObject->setAppearanceAttribute(token_2, (uint8) 0);
+					//msg << "two tokens == .5, token 1: " << token_1 << " => " << hex << 0 << dec << " (" << value << ")";
+					//msg << " token 2: " << token_2 << " => " << hex << 0 << dec << " (" << value << ")";
+
+				} else if(value > .5) {
+					// take (.75 - .5) / .5 (50% * 255 = 128)
+					creatureObject->setAppearanceAttribute(token_1, (uint8) 0);
+					creatureObject->setAppearanceAttribute(token_2, (uint8) (((value-.5f)/.5f) * 255) );
+					//msg << "two tokens > .5, token 1: " << token_1 << " => " << hex << 0 << dec << " (" << value << ")";
+					//msg << " token 2: " << token_2 << " => " << hex << (uint8) (((value-.5f)/.5f) * 255) << dec << " (" << value << ")";
+				} else { // < .5
+					// sometimes == 0
+					// .25 / .5 => (50% * 255 = 128)
+					creatureObject->setAppearanceAttribute(token_1, (uint8) (((.5f-value)/.5f)* 255) );
+					creatureObject->setAppearanceAttribute(token_2, (uint8) 0);
+					//msg << "two tokens else, token 1: " << token_1 << " => " << hex << (uint8) ((value)/.5f) * 255 << dec << " (" << value << ")";
+					//msg << " token 2: " << token_2 << " => " << hex << 0 << dec << " (" << value << ")";
+				}
+				
+			}
+			//creatureObject->info(msg.str());
+		} else if(customizationName == "height") {
+			
+			float minScale = customization->getMinScale();
+			float maxScale = customization->getMaxScale();
+			
+			creatureObject->setHeight(minScale + ((maxScale - minScale) * value));
+			// special mojo
+		} else if(
+				
+				customizationName == "age" ||
+				customizationName == "beard" ||
+				customizationName == "center_beard" ||
+				customizationName == "eyebrows" ||
+				customizationName == "eyeshadow" ||
+				customizationName == "freckles" ||
+				customizationName == "hair_style" ||
+				customizationName == "pattern" ||
+				customizationName == "side_beard" ||
+				customizationName == "tattoo_style"
+		){
+			
+			stringstream msg;
+			
+			StringTokenizer tokenizer(variables.c_str());
+			tokenizer.setDelimeter(",");
+				
+			while (tokenizer.hasMoreTokens()) {
+				string attribute;
+				tokenizer.getStringToken(attribute);
+				msg << "customizationName: " << customizationName << "attribute: " << attribute << " => " << hex << (uint8) ((value/1.0f) * (choices-1)) << dec << " (" << value << ")" << dec << " choices (" << choices << ")";
+
+				if(customization->getIsVarHairColor())
+					creatureObject->setHairAppearanceAttribute(attribute, (uint8) ((value/1.0f) * (choices-1)) );
+				else
+					creatureObject->setAppearanceAttribute(attribute, (uint8) ((value/1.0f) * (choices-1)) );
+			}
+			creatureObject->info(msg.str());
+		}
+	} else {
 		// danger will robinson!
 		creatureObject->sendSystemMessage("This shouldn't have happend.  Please report repro steps to McMahon - updateCustomization(string customizationName, uint32 value)");
 	}
-		
-		//string variables = customization->getVariables();
-		
-		/*
-		if(customizationName == "age") {
-			switch(value / 1.0) {
-			case 0.0:
-				//creatureObject->setAppearanceAttribute(CustomizationVariableTypes::PRIVATE_INDEX_AGE, 0);
-				break;
-			case 1.0/3.0:
-				//creatureObject->setAppearanceAttribute(CustomizationVariableTypes::PRIVATE_INDEX_AGE, 1);
-				break;
-			case 2.0/3.0:
-				//creatureObject->setAppearanceAttribute(CustomizationVariableTypes::PRIVATE_INDEX_AGE, 2);
-				break;
-			case: 1.0:
-				//creatureObject->setAppearanceAttribute(CustomizationVariableTypes::PRIVATE_INDEX_AGE, 3);
-				break;
-			}
-		} else if(customizationName == "beard") {
-			
-		} else if(customizationName == "brow") {
-			
-		} else if(customizationName == "center_beard") {
-						
-		} else if(customizationName == "cheeks") {
-			
-		} else if(customizationName == "chest") {
-								
-		} else if(customizationName == "chin") {
-			
-		} else if(customizationName == "chin_length") {
-			
-		} else if(customizationName == "ear_shape") {
-			
-		} else if(customizationName == "ears") {
-			
-		} else if(customizationName == "eye_direction") {
-			
-		} else if(customizationName == "eye_shape") {
-			
-		} else if(customizationName == "eye_size") {
-			
-		} else if(customizationName == "eyebrows") {
-			
-		} else if(customizationName == "eyeshadow") {
-			
-		} else if(customizationName == "freckles") {
-			
-		} else if(customizationName == "gullet") {
-			
-		} else if(customizationName == "hair_style") {
-			
-		} else if(customizationName == "head") {
-			
-		} else if(customizationName == "head_shape") {
-			
-		} else if(customizationName == "head_size") {
-			
-		} else if(customizationName == "height") {
-			
-		} else if(customizationName == "hump_size") {
-			
-		} else if(customizationName == "jaw") {
-			
-		} else if(customizationName == "jowl") {
-			
-		} else if(customizationName == "lip_fullness") {
-			
-		} else if(customizationName == "lip_width") {
-			
-		} else if(customizationName == "muscle") {
-			
-		} else if(customizationName == "nose_length") {
-			
-		} else if(customizationName == "nose_protrusion") {
-			
-		} else if(customizationName == "nose_width") {
-			
-		} else if(customizationName == "pattern") {
-			
-		} else if(customizationName == "sensors") {
-			
-		} else if(customizationName == "side_beard") {
-			
-		} else if(customizationName == "tattoo_style") {
-			
-		} else if(customizationName == "trunk_height") {
-			
-		} else if(customizationName == "trunk_length") {
-			
-		} else if(customizationName == "trunk_size") {
-			
-		} else if(customizationName == "trunk_slope") {
-			
-		} else if(customizationName == "weight") {
-			
-		}
-		*/
-
 }
 
 void ImageDesignCustomization::updateCustomization(string customizationName, uint32 value) {
@@ -212,7 +223,10 @@ void ImageDesignCustomization::updateCustomization(string customizationName, uin
 			string attribute;
 			tokenizer.getStringToken(attribute);
 
-			creatureObject->setAppearanceAttribute(attribute, (uint8)value);
+			if(customization->getIsVarHairColor())
+				creatureObject->setHairAppearanceAttribute(attribute, (uint8)value);
+			else
+				creatureObject->setAppearanceAttribute(attribute, (uint8)value);
 		}
 	} else if(type == "hslider")
 	{

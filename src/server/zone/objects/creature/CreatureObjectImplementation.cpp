@@ -143,6 +143,8 @@ CreatureObjectImplementation::CreatureObjectImplementation(uint64 oid) : Creatur
 	
 	hamUpdateCounter = 0;
 	hamMaxUpdateCounter = 0;
+	hamBaseUpdateCounter = 0;
+	woundsUpdateCounter = 0;
 	
 	baseHealth = 1000;
 	baseStrength = 500;
@@ -207,14 +209,18 @@ CreatureObjectImplementation::CreatureObjectImplementation(uint64 oid) : Creatur
 	listeners.setInsertPlan(SortedVector<CreatureObject*>::NO_DUPLICATE);
 	watchers.setInsertPlan(SortedVector<CreatureObject*>::NO_DUPLICATE);
 	
-	// wounds
-	
-	woundsUpdateCounter = 0;
-	
+	// wounds	
 	healthWounds = 0;
+	strengthWounds = 0;
+	constitutionWounds = 0;
 	actionWounds = 0;
+	quicknessWounds = 0;
+	staminaWounds = 0;
 	mindWounds = 0;
+	focusWounds = 0;
+	willpowerWounds = 0;
 	
+	// AKA Battle Fatigue
 	shockWounds = 0;
 	
 	// misc
@@ -1088,6 +1094,162 @@ bool CreatureObjectImplementation::changeHAMWounds(int32 hpwnds, int32 apwnds, i
 
 }
 
+bool CreatureObjectImplementation::changeHealthWoundsBar(int32 wounds, bool forcedChange) {
+	if (wounds < 0 && -wounds > healthWounds)
+		wounds = -healthWounds;
+	
+	int32 newHealthWounds = healthWounds + wounds;
+	
+	if (newHealthWounds >= healthMax) {
+		if (forcedChange) {
+		}
+		return false;
+	}
+	
+	setHealthWoundsBar(MIN(newHealthWounds, baseHealth - 1));
+	
+	return true;
+}
+
+bool CreatureObjectImplementation::changeStrengthWoundsBar(int32 wounds, bool forcedChange) {
+	if (wounds < 0 && -wounds > strengthWounds)
+		wounds = -strengthWounds;
+	
+	int32 newStrengthWounds = strengthWounds + wounds;
+	
+	if (newStrengthWounds >= strengthMax) {
+		if (forcedChange) {
+		}
+		return false;
+	}
+	
+	setStrengthWoundsBar(MIN(newStrengthWounds, baseStrength - 1));
+	
+	return true;
+}
+
+bool CreatureObjectImplementation::changeConstitutionWoundsBar(int32 wounds, bool forcedChange) {
+	if (wounds < 0 && -wounds > constitutionWounds)
+		wounds = -constitutionWounds;
+	
+	int32 newConstitutionWounds = constitutionWounds + wounds;
+	
+	if (newConstitutionWounds >= constitutionMax) {
+		if (forcedChange) {
+		}
+		return false;
+	}
+	
+	setConstitutionWoundsBar(MIN(newConstitutionWounds, baseConstitution - 1));
+	
+	return true;
+}
+
+bool CreatureObjectImplementation::changeActionWoundsBar(int32 wounds, bool forcedChange) {
+
+	if (wounds < 0 && -wounds > actionWounds)
+		wounds = -actionWounds;
+	
+	int32 newActionWounds = actionWounds + wounds;
+	
+	if (newActionWounds >= actionMax) {
+		if (forcedChange) {
+		}
+		return false;
+	}
+	
+	setActionWoundsBar(MIN(newActionWounds, baseAction - 1));
+	
+	return true;
+}
+
+
+bool CreatureObjectImplementation::changeQuicknessWoundsBar(int32 wounds, bool forcedChange) {
+	if (wounds < 0 && -wounds > quicknessWounds)
+		wounds = -quicknessWounds;
+	
+	int32 newQuicknessWounds = quicknessWounds + wounds;
+	
+	if (newQuicknessWounds >= quicknessMax) {
+		if (forcedChange) {
+		}
+		return false;
+	}
+	
+	setQuicknessWoundsBar(MIN(newQuicknessWounds, baseQuickness - 1));
+	
+	return true;
+}
+
+bool CreatureObjectImplementation::changeStaminaWoundsBar(int32 wounds, bool forcedChange) {
+	if (wounds < 0 && -wounds > staminaWounds)
+		wounds = -staminaWounds;
+	
+	int32 newStaminaWounds = staminaWounds + wounds;
+	
+	if (newStaminaWounds >= staminaMax) {
+		if (forcedChange) {
+		}
+		return false;
+	}
+	
+	setStaminaWoundsBar(MIN(newStaminaWounds, baseStamina - 1));
+	
+	return true;
+}
+
+bool CreatureObjectImplementation::changeMindWoundsBar(int32 wounds, bool forcedChange) {
+	if (wounds < 0 && -wounds > mindWounds)
+		wounds = -mindWounds;
+	
+	int32 newMindWounds = mindWounds + wounds;
+	
+	if (newMindWounds >= mindMax) {
+		if (forcedChange) {
+		}
+		return false;
+	}
+	
+	setMindWoundsBar(MIN(newMindWounds, baseMind - 1));
+	
+	return true;
+}
+
+
+bool CreatureObjectImplementation::changeFocusWoundsBar(int32 wounds, bool forcedChange) {
+	if (wounds < 0 && -wounds > focusWounds)
+		wounds = -focusWounds;
+	
+	int32 newFocusWounds = focusWounds + wounds;
+	
+	if (newFocusWounds >= focusMax) {
+		if (forcedChange) {
+		}
+		return false;
+	}
+	
+	setFocusWoundsBar(MIN(newFocusWounds, baseFocus - 1));
+	
+	return true;
+}
+
+bool CreatureObjectImplementation::changeWillpowerWoundsBar(int32 wounds, bool forcedChange) {
+	if (wounds < 0 && -wounds > willpowerWounds)
+		wounds = -willpowerWounds;
+	
+	int32 newWillpowerWounds = willpowerWounds + wounds;
+	
+	if (newWillpowerWounds >= willpowerMax) {
+		if (forcedChange) {
+		}
+		return false;
+	}
+	
+	setWillpowerWoundsBar(MIN(newWillpowerWounds, baseWillpower - 1));
+	
+	return true;
+}
+
 bool CreatureObjectImplementation::changeHealthBar(int32 hp, bool forcedChange) {
 	int32 newHealth = health + hp;
 	
@@ -1109,23 +1271,6 @@ void CreatureObjectImplementation::changeMaxHealthBar(int32 hp) {
 	int32 newMaxHealth = healthMax + hp;
 
 	setMaxHealthBar(newMaxHealth);
-}
-
-bool CreatureObjectImplementation::changeHealthWoundsBar(int32 wounds, bool forcedChange) {
-	if (wounds < 0 && -wounds > healthWounds)
-		wounds = -healthWounds;
-	
-	int32 newHealthWounds = healthWounds + wounds;
-	
-	if (newHealthWounds >= healthMax) {
-		if (forcedChange) {
-		}
-		return false;
-	}
-	
-	setHealthWoundsBar(MIN(newHealthWounds, baseHealth - 1));
-	
-	return true;
 }
 
 bool CreatureObjectImplementation::changeStrengthBar(int32 st, bool forcedChange) {
@@ -1192,24 +1337,6 @@ void CreatureObjectImplementation::changeMaxActionBar(int32 hp) {
 	int32 newMaxAction = actionMax + hp;
 
 	setMaxActionBar(newMaxAction);
-}
-
-bool CreatureObjectImplementation::changeActionWoundsBar(int32 wounds, bool forcedChange) {
-
-	if (wounds < 0 && -wounds > actionWounds)
-		wounds = -actionWounds;
-	
-	int32 newActionWounds = actionWounds + wounds;
-	
-	if (newActionWounds >= actionMax) {
-		if (forcedChange) {
-		}
-		return false;
-	}
-	
-	setActionWoundsBar(MIN(newActionWounds, baseAction - 1));
-	
-	return true;
 }
 
 bool CreatureObjectImplementation::changeQuicknessBar(int32 qc, bool forcedChange) {
@@ -1279,22 +1406,6 @@ void CreatureObjectImplementation::changeMaxMindBar(int32 hp) {
 	setMaxMindBar(newMaxMind);
 }
 
-bool CreatureObjectImplementation::changeMindWoundsBar(int32 wounds, bool forcedChange) {
-	if (wounds < 0 && -wounds > mindWounds)
-		wounds = -mindWounds;
-	
-	int32 newMindWounds = mindWounds + wounds;
-	
-	if (newMindWounds >= mindMax) {
-		if (forcedChange) {
-		}
-		return false;
-	}
-	
-	setMindWoundsBar(MIN(newMindWounds, baseMind - 1));
-	
-	return true;
-}
 
 bool CreatureObjectImplementation::changeFocusBar(int32 fc, bool forcedChange) {
 	int32 newFocus = focus + fc;
@@ -1391,6 +1502,187 @@ void CreatureObjectImplementation::resetHAMBars() {
 		mindWounds = mindMax - 1;
 }
 
+
+void CreatureObjectImplementation::setBaseHealthBar(uint32 hp, bool updateClient) {
+	if (hp == baseHealth) 
+		return;
+
+	uint32 originalBaseHealth = baseHealth;
+	
+	if (updateClient) {
+		CreatureObjectDeltaMessage1* dcreo1 = new CreatureObjectDeltaMessage1(this);
+		dcreo1->updateBaseHealthBar(hp);
+		dcreo1->close();
+	
+		((PlayerImplementation*) this)->sendMessage(dcreo1);
+	} else
+		setBaseHealth(hp);
+	
+	// Change the Max Health to reflect new Base Health
+	setHealthBar(health + (hp - originalBaseHealth));
+	setMaxHealthBar(healthMax + (hp - originalBaseHealth), updateClient);
+	
+}
+
+void CreatureObjectImplementation::setBaseStrengthBar(uint32 st, bool updateClient) {
+	if (st == baseStrength) 
+		return;
+
+	uint32 originalBaseStrength = baseStrength;
+	
+	if (updateClient) {
+		CreatureObjectDeltaMessage1* dcreo1 = new CreatureObjectDeltaMessage1(this);
+		dcreo1->updateBaseStrengthBar(st);
+		dcreo1->close();
+	
+		((PlayerImplementation*) this)->sendMessage(dcreo1);
+	} else
+		setBaseStrength(st);
+	
+	// Change the Max Strength to reflect new Base Strength
+	setStrengthBar(strength + (st - originalBaseStrength));
+	setMaxStrengthBar(strengthMax + (st - originalBaseStrength), updateClient);
+}
+void CreatureObjectImplementation::setBaseConstitutionBar(uint32 cst, bool updateClient) {
+	if (cst == baseConstitution) 
+		return;
+
+	uint32 originalBaseConstitution = baseConstitution;
+	
+	if (updateClient) {
+		CreatureObjectDeltaMessage1* dcreo1 = new CreatureObjectDeltaMessage1(this);
+		dcreo1->updateBaseConstitutionBar(cst);
+		dcreo1->close();
+	
+		((PlayerImplementation*) this)->sendMessage(dcreo1);
+	} else
+		setBaseConstitution(cst);
+	
+	// Change the Max Constitution to reflect new Base Constitution
+	setConstitutionBar(constitution + (cst - originalBaseConstitution));
+	setMaxConstitutionBar(constitutionMax + (cst - originalBaseConstitution), updateClient);
+}
+
+void CreatureObjectImplementation::setBaseActionBar(uint32 ap, bool updateClient) {
+	if (ap == baseAction) 
+		return;
+
+	uint32 originalBaseAction = baseAction;
+	
+	if (updateClient) {
+		CreatureObjectDeltaMessage1* dcreo1 = new CreatureObjectDeltaMessage1(this);
+		dcreo1->updateBaseActionBar(ap);
+		dcreo1->close();
+	
+		((PlayerImplementation*) this)->sendMessage(dcreo1);
+	} else
+		setBaseAction(ap);
+	
+	// Change the Max Action to reflect new Base Action
+	setActionBar(action + (ap - originalBaseAction));
+	setMaxActionBar(actionMax + (ap - originalBaseAction), updateClient);
+}
+
+void CreatureObjectImplementation::setBaseQuicknessBar(uint32 qck, bool updateClient) {
+	if (qck == baseQuickness) 
+		return;
+
+	uint32 originalBaseQuickness = baseQuickness;
+	
+	if (updateClient) {
+		CreatureObjectDeltaMessage1* dcreo1 = new CreatureObjectDeltaMessage1(this);
+		dcreo1->updateBaseQuicknessBar(qck);
+		dcreo1->close();
+	
+		((PlayerImplementation*) this)->sendMessage(dcreo1);
+	} else
+		setBaseQuickness(qck);
+	
+	// Change the Max Quickness to reflect new Base Quickness
+	setQuicknessBar(quickness + (qck - originalBaseQuickness));
+	setMaxQuicknessBar(quicknessMax + (qck - originalBaseQuickness), updateClient);
+}
+
+void CreatureObjectImplementation::setBaseStaminaBar(uint32 sta, bool updateClient) {
+	if (sta == baseStamina) 
+		return;
+
+	uint32 originalBaseStamina = baseStamina;
+	
+	if (updateClient) {
+		CreatureObjectDeltaMessage1* dcreo1 = new CreatureObjectDeltaMessage1(this);
+		dcreo1->updateBaseStaminaBar(sta);
+		dcreo1->close();
+	
+		((PlayerImplementation*) this)->sendMessage(dcreo1);
+	} else
+		setBaseStamina(sta);
+	
+	// Change the Max Stamina to reflect new Base Stamina
+	setStaminaBar(stamina + (sta - originalBaseStamina));
+	setMaxStaminaBar(staminaMax + (sta - originalBaseStamina), updateClient);
+}
+
+void CreatureObjectImplementation::setBaseMindBar(uint32 mp, bool updateClient) {
+	if (mp == baseMind) 
+		return;
+
+	uint32 originalBaseMind = baseMind;
+	
+	if (updateClient) {
+		CreatureObjectDeltaMessage1* dcreo1 = new CreatureObjectDeltaMessage1(this);
+		dcreo1->updateBaseMindBar(mp);
+		dcreo1->close();
+	
+		((PlayerImplementation*) this)->sendMessage(dcreo1);
+	} else
+		setBaseMind(mp);
+	
+	// Change the Max Mind to reflect new Base Mind
+	setMindBar(mind + (mp - originalBaseMind));
+	setMaxMindBar(mindMax + (mp - originalBaseMind), updateClient);
+}
+
+void CreatureObjectImplementation::setBaseFocusBar(uint32 fc, bool updateClient) {
+	if (fc == baseFocus) 
+		return;
+
+	uint32 originalBaseFocus = baseFocus;
+	
+	if (updateClient) {
+		CreatureObjectDeltaMessage1* dcreo1 = new CreatureObjectDeltaMessage1(this);
+		dcreo1->updateBaseFocusBar(fc);
+		dcreo1->close();
+	
+		((PlayerImplementation*) this)->sendMessage(dcreo1);
+	} else
+		setBaseFocus(fc);
+	
+	// Change the Max Focus to reflect new Base Focus
+	setFocusBar(focus + (fc - originalBaseFocus));
+	setMaxFocusBar(focusMax + (fc - originalBaseFocus), updateClient);
+}
+
+void CreatureObjectImplementation::setBaseWillpowerBar(uint32 will, bool updateClient) {
+	if (will == baseWillpower) 
+		return;
+
+	uint32 originalBaseWillpower = baseWillpower;
+	
+	if (updateClient) {
+		CreatureObjectDeltaMessage1* dcreo1 = new CreatureObjectDeltaMessage1(this);
+		dcreo1->updateBaseWillpowerBar(will);
+		dcreo1->close();
+	
+		((PlayerImplementation*) this)->sendMessage(dcreo1);
+	} else
+		setBaseWillpower(will);
+	
+	// Change the Max Willpower to reflect new Base Willpower
+	setWillpowerBar(willpower + (will - originalBaseWillpower));
+	setMaxWillpowerBar(willpowerMax + (will - originalBaseWillpower), updateClient);
+}
+
 void CreatureObjectImplementation::setHAMBars(uint32 hp, uint32 ap, uint32 mp) {
 	CreatureObjectDeltaMessage6* dcreo6 = new CreatureObjectDeltaMessage6(_this);
 
@@ -1434,7 +1726,7 @@ void CreatureObjectImplementation::setMaxHealthBar(uint32 hp, bool updateClient)
 		setHealthMax(hp);
 	
 	// bring down current stat to match max
-	if (health > healthMax) {
+	if (health > (healthMax - healthWounds)) {
 		if (updateClient)
 			setHealthBar(healthMax - healthWounds);
 		else
@@ -1478,12 +1770,23 @@ void CreatureObjectImplementation::setMaxStrengthBar(uint32 st, bool updateClien
 		setStrengthMax(st);
 
 	// bring down current stat to match max
-	//if (strength > strengthMax) {
+	if (strength > (strengthMax - strengthWounds)) {
 		if(updateClient)
-			setStrengthBar(strengthMax);
+			setStrengthBar(strengthMax - strengthWounds);
 		else
 			setStrength(strengthMax);
-	//}
+	}
+}
+
+void CreatureObjectImplementation::setStrengthWoundsBar(uint32 wounds) {
+	if (wounds == strengthWounds)
+		return;
+		
+	CreatureObjectDeltaMessage3* dcreo3 = new CreatureObjectDeltaMessage3(_this);
+	dcreo3->updateStrengthWoundsBar(wounds);
+	dcreo3->close();
+
+	broadcastMessage(dcreo3);
 }
 
 void CreatureObjectImplementation::setConstitutionBar(uint32 cst) {
@@ -1511,12 +1814,23 @@ void CreatureObjectImplementation::setMaxConstitutionBar(uint32 cst, bool update
 		setConstitutionMax(cst);
 	
 	// bring down current stat to match max
-	//if (constitution > constitutionMax) {
+	if (constitution > (constitutionMax - constitutionWounds)) {
 		if (updateClient)
-			setConstitutionBar(constitutionMax);
+			setConstitutionBar(constitutionMax - constitutionWounds);
 		else
-			setConstitution(constitutionMax);
-	//}
+			setConstitution(constitutionMax - constitutionWounds);
+	}
+}
+
+void CreatureObjectImplementation::setConstitutionWoundsBar(uint32 wounds) {
+	if (wounds == constitutionWounds)
+		return;
+		
+	CreatureObjectDeltaMessage3* dcreo3 = new CreatureObjectDeltaMessage3(_this);
+	dcreo3->updateConstitutionWoundsBar(wounds);
+	dcreo3->close();
+
+	broadcastMessage(dcreo3);
 }
 
 void CreatureObjectImplementation::setActionBar(uint32 ap) {
@@ -1544,7 +1858,7 @@ void CreatureObjectImplementation::setMaxActionBar(uint32 ap, bool updateClient)
 		setActionMax(ap);
 	
 	// bring down current stat to match max
-	if (action > actionMax) {
+	if (action > (actionMax - actionWounds)) {
 		if (updateClient)
 			setActionBar(actionMax - actionWounds);
 		else
@@ -1588,14 +1902,24 @@ void CreatureObjectImplementation::setMaxQuicknessBar(uint32 qck, bool updateCli
 		setQuicknessMax(qck);
 	
 	// bring down current stat to match max
-	//if (quickness > quicknessMax) {
+	if (quickness > (quicknessMax - quicknessWounds)) {
 		if (updateClient)
-			setQuicknessBar(quicknessMax);
+			setQuicknessBar(quicknessMax - quicknessWounds);
 		else
-			setQuickness(quicknessMax);
-	//}
+			setQuickness(quicknessMax - quicknessWounds);
+	}
 }
 
+void CreatureObjectImplementation::setQuicknessWoundsBar(uint32 wounds) {
+	if (wounds == quicknessWounds)
+		return;
+		
+	CreatureObjectDeltaMessage3* dcreo3 = new CreatureObjectDeltaMessage3(_this);
+	dcreo3->updateQuicknessWoundsBar(wounds);
+	dcreo3->close();
+
+	broadcastMessage(dcreo3);
+}
 
 void CreatureObjectImplementation::setStaminaBar(uint32 sta) {
 	if (sta == stamina) 
@@ -1622,12 +1946,23 @@ void CreatureObjectImplementation::setMaxStaminaBar(uint32 sta, bool updateClien
 		setStaminaMax(sta);
 	
 	// bring down current stat to match max
-	//if (stamina > staminaMax) {
+	if (stamina > (staminaMax - staminaWounds)) {
 		if (updateClient)
-			setStaminaBar(staminaMax);
+			setStaminaBar(staminaMax - staminaWounds);
 		else
-			setStamina(staminaMax);
-	//}
+			setStamina(staminaMax - staminaWounds);
+	}
+}
+
+void CreatureObjectImplementation::setStaminaWoundsBar(uint32 wounds) {
+	if (wounds == staminaWounds)
+		return;
+		
+	CreatureObjectDeltaMessage3* dcreo3 = new CreatureObjectDeltaMessage3(_this);
+	dcreo3->updateStaminaWoundsBar(wounds);
+	dcreo3->close();
+
+	broadcastMessage(dcreo3);
 }
 
 void CreatureObjectImplementation::setMindBar(uint32 mp) {
@@ -1655,11 +1990,13 @@ void CreatureObjectImplementation::setMaxMindBar(uint32 mp, bool updateClient) {
 		setMindMax(mp);
 	
 	// bring down current stat to match max
-	if (mind > mindMax)
+	if (mind > (mindMax - mindWounds))
+	{
 		if (updateClient)
 			setMindBar(mindMax - mindWounds);
 		else
 			setMind(mindMax - mindWounds);
+	}
 }
 
 void CreatureObjectImplementation::setMindWoundsBar(uint32 wounds) {
@@ -1698,12 +2035,23 @@ void CreatureObjectImplementation::setMaxFocusBar(uint32 fc, bool updateClient) 
 		setFocusMax(fc);
 	
 	// bring down current stat to match max
-	//if (focus > focusMax) {
+	if (focus > (focusMax - focusWounds)) {
 		if (updateClient)
-			setFocusBar(focusMax);
+			setFocusBar(focusMax - focusWounds);
 		else
-			setFocus(focusMax);
-	//}
+			setFocus(focusMax - focusWounds);
+	}
+}
+
+void CreatureObjectImplementation::setFocusWoundsBar(uint32 wounds) {
+	if (wounds == focusWounds)
+		return;
+		
+	CreatureObjectDeltaMessage3* dcreo3 = new CreatureObjectDeltaMessage3(_this);
+	dcreo3->updateFocusWoundsBar(wounds);
+	dcreo3->close();
+
+	broadcastMessage(dcreo3);
 }
 
 void CreatureObjectImplementation::setWillpowerBar(uint32 will) {
@@ -1731,12 +2079,23 @@ void CreatureObjectImplementation::setMaxWillpowerBar(uint32 will, bool updateCl
 		setWillpowerMax(will);
 	
 	// bring down current stat to match max
-	//if (willpower > willpowerMax) {
+	if (willpower > (willpowerMax - willpowerWounds)) {
 		if (updateClient)
-			setWillpowerBar(willpowerMax);
+			setWillpowerBar(willpowerMax - willpowerWounds);
 		else
-			setWillpower(willpowerMax);
-	//}
+			setWillpower(willpowerMax - willpowerWounds);
+	}
+}
+
+void CreatureObjectImplementation::setWillpowerWoundsBar(uint32 wounds) {
+	if (wounds == willpowerWounds)
+		return;
+		
+	CreatureObjectDeltaMessage3* dcreo3 = new CreatureObjectDeltaMessage3(_this);
+	dcreo3->updateWillpowerWoundsBar(wounds);
+	dcreo3->close();
+
+	broadcastMessage(dcreo3);
 }
 
 void CreatureObjectImplementation::setMaxHAMBars(uint32 hp, uint32 ap, uint32 mp) {
@@ -3690,6 +4049,25 @@ bool CreatureObjectImplementation::verifyBankCredits(uint32 creditsToRemove) {
 	}
 }
 
+void CreatureObjectImplementation::updateHAMBars() {
+
+	CreatureObjectDeltaMessage6* delta = new CreatureObjectDeltaMessage6(_this);
+	delta->updateMaximumHAMBars();
+	delta->updateHAMBars();
+	delta->close();
+	
+	broadcastMessage(delta);
+}
+
+void CreatureObjectImplementation::updateBaseStats() {
+
+	CreatureObjectDeltaMessage1* delta = new CreatureObjectDeltaMessage1(this);
+	delta->updateBaseStats();
+	delta->close();
+	
+	((PlayerImplementation*) this)->sendMessage(delta);
+}
+
 void CreatureObjectImplementation::addBuff(int buffCRC, float duration) {
 	((PlayerImplementation*) this)->addBuff(buffCRC, duration);
 }
@@ -3895,6 +4273,7 @@ float CreatureObjectImplementation::calculateBFRatio() {
 void CreatureObjectImplementation::updateCharacterAppearance() {
 	CreatureObjectDeltaMessage3* dcreo3 = new CreatureObjectDeltaMessage3(_this);
 	dcreo3->updateCharacterAppearance();
+	dcreo3->updateHeight();
 	dcreo3->close();
 	broadcastMessage(dcreo3);
 }

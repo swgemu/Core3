@@ -73,15 +73,162 @@ public:
 		insertAscii(name.c_str());
 	}
 	
-	void updateCashCredits() {
-		startUpdate(0x01);
-		insertInt(creo->getCashCredits());	
-	}
-	
 	void updateBankCredits() {
 		startUpdate(0x00);
 		insertInt(creo->getBankCredits());
 	}
+	
+	void updateBaseStats()
+	{
+		startUpdate(0x02);
+		
+		uint32 updatecount = creo->getNewHAMBaseUpdateCounter(9);
+		startList(9, updatecount);
+						
+		uint32 healthCreo = creo->getBaseHealth();
+		addBar(0, healthCreo);
+		uint32 strengthCreo = creo->getBaseStrength();
+		addBar(1, strengthCreo);
+		uint32 constCreo = creo->getBaseConstitution();
+		addBar(2, constCreo);
+		uint32 actionCreo = creo->getBaseAction();
+		addBar(3, actionCreo);
+		uint32 quicknessCreo = creo->getBaseQuickness();
+		addBar(4, quicknessCreo);
+		uint32 staminaCreo = creo->getBaseStamina();
+		addBar(5, staminaCreo);
+		uint32 mindCreo = creo->getBaseMind();
+		addBar(6, mindCreo);
+		uint32 focusCreo = creo->getBaseFocus();
+		addBar(7, focusCreo);
+		uint32 willpowerCreo = creo->getBaseWillpower();
+		addBar(8, willpowerCreo);
+		
+	}
+	
+	void updateBaseHealthBar(uint32 health) {
+		startUpdate(0x02);
+
+		uint32 updatecount = creo->getNewHAMBaseUpdateCounter(1);
+		startList(1, updatecount);
+		
+		uint32 baseHealthCreo = creo->getBaseHealth();
+		addBar(0, baseHealthCreo, health);
+
+		creo->setBaseHealth(baseHealthCreo);
+	}
+	
+	void updateBaseStrengthBar(uint32 strength) {
+		startUpdate(0x02);
+
+		uint32 updatecount = creo->getNewHAMBaseUpdateCounter(1);
+		startList(1, updatecount);
+		
+		uint32 baseStrengthCreo = creo->getBaseStrength();
+		addBar(1, baseStrengthCreo, strength);
+
+		creo->setBaseStrength(baseStrengthCreo);
+	}
+	
+	void updateBaseConstitutionBar(uint32 constitution) {
+		startUpdate(0x02);
+
+		uint32 updatecount = creo->getNewHAMBaseUpdateCounter(1);
+		startList(1, updatecount);
+		
+		uint32 baseConstitutionCreo = creo->getBaseConstitution();
+		addBar(2, baseConstitutionCreo, constitution);
+
+		creo->setBaseConstitution(baseConstitutionCreo);
+	}
+	
+	void updateBaseActionBar(uint32 action) {
+		startUpdate(0x02);
+
+		uint32 updatecount = creo->getNewHAMBaseUpdateCounter(1);
+		startList(1, updatecount);
+		
+		uint32 baseActionCreo = creo->getBaseAction();
+		addBar(3, baseActionCreo, action);
+
+		creo->setBaseAction(baseActionCreo);
+	}
+		
+	void updateBaseQuicknessBar(uint32 quickness) {
+		startUpdate(0x02);
+
+		uint32 updatecount = creo->getNewHAMBaseUpdateCounter(1);
+		startList(1, updatecount);
+		
+		uint32 baseQuicknessCreo = creo->getBaseQuickness();
+		addBar(4, baseQuicknessCreo, quickness);
+
+		creo->setBaseQuickness(baseQuicknessCreo);
+	}
+	
+	void updateBaseStaminaBar(uint32 stamina) {
+		startUpdate(0x02);
+
+		uint32 updatecount = creo->getNewHAMBaseUpdateCounter(1);
+		startList(1, updatecount);
+		
+		uint32 baseStaminaCreo = creo->getBaseStamina();
+		addBar(5, baseStaminaCreo, stamina);
+
+		creo->setBaseStamina(baseStaminaCreo);
+	}
+	
+	void updateBaseMindBar(uint32 mind) {
+		startUpdate(0x02);
+
+		uint32 updatecount = creo->getNewHAMBaseUpdateCounter(1);
+		startList(1, updatecount);
+		
+		uint32 baseMindCreo = creo->getBaseMind();
+		addBar(6, baseMindCreo, mind);
+
+		creo->setBaseMind(baseMindCreo);
+	}
+	
+	void updateBaseFocusBar(uint32 focus) {
+		startUpdate(0x02);
+
+		uint32 updatecount = creo->getNewHAMBaseUpdateCounter(1);
+		startList(1, updatecount);
+		
+		uint32 baseFocusCreo = creo->getBaseFocus();
+		addBar(7, baseFocusCreo, focus);
+
+		creo->setBaseFocus(baseFocusCreo);
+	}
+	
+	void updateBaseWillpowerBar(uint32 willpower) {
+		startUpdate(0x02);
+
+		uint32 updatecount = creo->getNewHAMBaseUpdateCounter(1);
+		startList(1, updatecount);
+		
+		uint32 baseWillpowerCreo = creo->getBaseWillpower();
+		addBar(8, baseWillpowerCreo, willpower);
+
+		creo->setBaseWillpower(baseWillpowerCreo);
+	}
+	
+	void addBar(uint16 index, uint32& value, uint32 nvalue) {
+		removeListIntElement(index, value = nvalue);
+	}
+
+	void addBar(uint16 index, uint32 value) {
+		removeListIntElement(index, value);
+	}
+	
+	void updateCashCredits() {
+		startUpdate(0x01);
+		insertInt(creo->getCashCredits());	
+	}
+
+
+
 };
 
 #endif /*CREATUREOBJECTDELTAMESSAGE1_H_*/

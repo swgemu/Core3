@@ -76,6 +76,8 @@ public:
 	static void parseNpcStopConversation(Player* player, Message* pack);
     static void parseNpcConversationSelect(Player* player, Message* pack);
 
+    static void parseStatMigrationDataRequest(Player* player, Message* pack);
+    static void parseSetStatMigrationDataRequest(Player* player, Message* pack);
 	static void parseCharacterSheetInfoRequest(Player* player, Message* pack);
     static void parseBiographyRequest(Player* player, Message* pack);
     static void parseSetBiography(Player* player, Message* pack);

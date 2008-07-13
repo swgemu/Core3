@@ -204,6 +204,17 @@ class PlayerImplementation : public PlayerServant {
 	string lastNpcConvoMessage;
 	string lastNpcConvo;
 	
+	// Stat Migration Targets
+	uint32 targetHealth;
+	uint32 targetStrength;
+	uint32 targetConstitution;
+	uint32 targetAction;
+	uint32 targetQuickness;
+	uint32 targetStamina;
+	uint32 targetMind;
+	uint32 targetFocus;
+	uint32 targetWillpower;
+	
 public:
 	static const int ONLINE = 1;
 	static const int OFFLINE = 2;
@@ -244,6 +255,8 @@ public:
 
 	void createItems();
 	void loadItems();
+	
+	void updateHair();
 	
 	void createBaseStats();
 	
@@ -342,6 +355,101 @@ public:
 
 	bool hasVerifiedTrade() {
 		return verifiedTrade;
+	}
+
+	
+	
+	// Stat Migration Targets
+	// HAM getters
+	inline uint32 getTargetHealth() {
+		if(targetHealth == 0)
+			targetHealth = getBaseHealth();
+		return targetHealth;
+	}
+
+	inline uint32 getTargetStrength() {
+		if(targetStrength == 0)
+			targetStrength = getBaseStrength();
+		return targetStrength;
+	}
+
+	inline uint32 getTargetConstitution() {
+		if(targetConstitution == 0)
+			targetConstitution = getBaseConstitution();
+		return targetConstitution;
+	}
+
+	inline uint32 getTargetAction() {
+		if(targetAction == 0)
+			targetAction = getBaseAction();
+		return targetAction;
+	}
+
+	inline uint32 getTargetQuickness() {
+		if(targetQuickness == 0)
+			targetQuickness = getBaseQuickness();
+		return targetQuickness;
+	}
+
+	inline uint32 getTargetStamina() {
+		if(targetStamina == 0)
+			targetStamina = getBaseStamina();
+		return targetStamina;
+	}
+
+	inline uint32 getTargetMind() {
+		if(targetMind == 0)
+			targetMind = getBaseMind();
+		return targetMind;
+	}
+
+	inline uint32 getTargetFocus() {
+		if(targetFocus == 0)
+			targetFocus = getBaseFocus();
+		return targetFocus;
+	}
+
+	inline uint32 getTargetWillpower() {
+		if(targetWillpower == 0)
+			targetWillpower = getBaseWillpower();
+		return targetWillpower;
+	}
+	
+	// Stat Migration Setters
+	inline void setTargetHealth(uint32 value) {
+		targetHealth = value;
+	}
+
+	inline void setTargetStrength(uint32 value) {
+		targetStrength = value;
+	}
+
+	inline void setTargetConstitution(uint32 value) {
+		targetConstitution = value;
+	}
+
+	inline void setTargetAction(uint32 value) {
+		targetAction = value;
+	}
+
+	inline void setTargetQuickness(uint32 value) {
+		targetQuickness = value;
+	}
+
+	inline void setTargetStamina(uint32 value) {
+		targetStamina = value;
+	}
+
+	inline void setTargetMind(uint32 value) {
+		targetMind = value;
+	}
+	
+	inline void setTargetFocus(uint32 value) {
+		targetFocus = value;
+	}
+	
+	inline void setTargetWillpower(uint32 value) {
+		targetWillpower = value;
 	}
 
 	// combat methods
@@ -717,9 +825,9 @@ public:
 		hairObject = hair;
 	}
 	
-	inline void setHairData(string& hair) {
-		hairData = hair;
-	}
+	//inline void setHairData(string& hair) {
+	//	hairData = hair;
+	//}
 
 	inline void setStartingProfession(const string& prof) {
 		startingProfession = prof;
@@ -768,9 +876,9 @@ public:
 	}
 
 	// getters
-	inline string& getHairData() {
-		return hairData;
-	}
+	//inline string& getHairData() {
+	//	return hairData;
+	//}
 
 	inline GroupObject* getGroupObject() {
 		return group;
