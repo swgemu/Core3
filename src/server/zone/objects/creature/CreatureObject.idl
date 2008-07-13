@@ -613,4 +613,6 @@ interface CreatureObject implements SceneObject {
 	void setGroup(GroupObject Group);
 	
 	void setMount(MountCreature mount);
+	
+	void explode(int level = 1);
 }

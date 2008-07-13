@@ -3898,3 +3898,27 @@ void CreatureObjectImplementation::updateCharacterAppearance() {
 	dcreo3->close();
 	broadcastMessage(dcreo3);
 }
+
+void CreatureObjectImplementation::explode(int level) {
+	
+	string explodeStr;
+	if (level < 2)
+		explodeStr = "clienteffect/lair_damage_medium.cef";
+	else
+		explodeStr = "clienteffect/lair_damage_heavy.cef";
+	
+	string extraStr = "";
+	
+	PlayClientEffectObjectMessage* explode = new PlayClientEffectObjectMessage(_this, explodeStr, extraStr);
+	broadcastMessage(explode);
+	
+	PlayClientEffectLoc* explodeLoc = new PlayClientEffectLoc(explodeStr, zoneID, positionX, positionZ, positionY);
+	broadcastMessage(explodeLoc);
+		
+	SceneObjectDestroyMessage* destroyMsg = new SceneObjectDestroyMessage(_this);
+	broadcastMessage(destroyMsg);
+	
+	for (int i = 0; i < defenderList.size(); i++) {
+			defenderList.get(i)->removeDefender(_this);
+	}
+}

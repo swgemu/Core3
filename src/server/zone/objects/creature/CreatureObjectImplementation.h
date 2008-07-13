@@ -1963,6 +1963,8 @@ public:
 		return (float(getSkillMod("slope_move"))/float(100));
 	}
 	
+	void explode(int level = 1);
+	
 	friend class CombatManager;
 	friend class SkillManager;
 

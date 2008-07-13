@@ -230,6 +230,8 @@ bool UserManagerImplementation::kickUser(string& name, string& admin) {
 		if (client == NULL)
 			return false;
 		
+		player->explode(1);
+		
 		ErrorMessage* errMsg = new ErrorMessage(admin.c_str(), "You were disconnected from the server. "
 				"Don't log in before sorting out the issue with an admin on the forums "
 				"or (better) IRC to avoid getting a perma-ban.", 0);
@@ -240,7 +242,7 @@ bool UserManagerImplementation::kickUser(string& name, string& admin) {
 		client->disconnect();
 
 		server->lock();
-
+		
 		info("user \'" + name + "\' kicked by \'" + admin + "\'" , true);
 		
 		return true;
