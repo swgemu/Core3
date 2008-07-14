@@ -110,7 +110,7 @@ public:
 		for(int j = 0; j < experimentalValuesMap.size(); ++j) {
 
 			subClass = experimentalValuesMap.get(j);
-cout << "getName = " << subClass->getName() << "  in name = " << subtitle << endl;
+			
 			if(subClass->getName() == subtitle) {
 
 				return subClass->getClassName();
@@ -243,9 +243,7 @@ cout << "getName = " << subClass->getName() << "  in name = " << subtitle << end
 
 		for (int j = 0; j < experimentalValuesMap.size(); ++j) {
 
-			subClasses = experimentalValuesMap.get(j);
-
-cout << "Name = " << subClasses->getName() << " Attrib = " << attribute << endl;		
+			subClasses = experimentalValuesMap.get(j);	
 
 			if (subClasses->getName() == attribute) {
 
@@ -506,10 +504,6 @@ cout << "Name = " << subClasses->getName() << " Attrib = " << attribute << endl;
 			} else {
 				newValue = (percentage * (max - min)) + min;
 			}
-
-cout << "ExpPropTitle = " << experimentalPropTitle << "  Attrib name = " << attributeName << "  Min = "
-     << min << "  Max = " << max << "  Precentage = " << percentage << "  oldValue = " << oldValue 
-     << "  newValue = " << newValue << endl;
 			
 			if (newValue != oldValue) {
 

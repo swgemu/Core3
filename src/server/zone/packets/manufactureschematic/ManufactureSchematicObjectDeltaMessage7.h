@@ -230,7 +230,7 @@ public:
 			insertAscii("crafting");  // I think this is always "crafting"
 			insertInt(0);
 			insertAscii(title);
-cout << "DMSCO7 Title = " << title << endl;
+
 		}
 				
 		// Initialize update 9************

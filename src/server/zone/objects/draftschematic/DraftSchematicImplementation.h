@@ -209,7 +209,7 @@ public:
 			for(int j = 0; j < draftSchematic->getCraftingValues()->getExperimentalPropertySubtitleSize(title); ++j){
 			
 				subtitle = draftSchematic->getCraftingValues()->getExperimentalPropertySubtitle(title, j);
-cout << "Title = " << title << "  Subtitle = " << subtitle << endl;			
+	
 				this->craftingValues->addExperimentalPropertySubtitle(title, subtitle);
 			}
 		}

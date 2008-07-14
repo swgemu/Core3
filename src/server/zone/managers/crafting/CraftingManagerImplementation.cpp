@@ -1230,14 +1230,10 @@ void CraftingManagerImplementation::experimentRow(DraftSchematicValues* crafting
 	string title, subtitle, subtitleClass;
 
 	title = craftingValues->getExperimentalPropertyTitle(rowEffected);
-
-//cout << "Title = " << title << endl;
 	
 	for (int i = 0; i < craftingValues->getExperimentalPropertySubtitleSize(); ++i) {
 
 		subtitleClass = craftingValues->getExperimentalPropertySubtitleClass(i);
-		
-//cout << "Loop = " << i << "  subtitleClass = " << subtitleClass << endl;
 
 		if (subtitleClass == title) {
 
@@ -1248,9 +1244,8 @@ void CraftingManagerImplementation::experimentRow(DraftSchematicValues* crafting
 
 			newValue = craftingValues->getCurrentPercentage(subtitle)
 					+ modifier;
-//cout << "subtitle = " << subtitle << "  modifier = " << modifier << "  oldValue = " 
-     //<< craftingValues->getCurrentPercentage(subtitle) << "  newValue = " << newValue << endl;
-			//craftingValues->setCurrentPercentage(subtitle, newValue);
+			
+			craftingValues->setCurrentPercentage(subtitle, newValue);
 		}
 	}
 	
@@ -2128,11 +2123,11 @@ int CraftingManagerImplementation::addDraftSchematicToServer(lua_State *L) {
 	for (int i = 0; i < parsedExperimentalGroupTitles.size(); ++i) {
 		
 		title = parsedExperimentalGroupTitles.get(i);	
-cout << "Loading Title = " << title;		
+	
 		for (int j = 0; j < parsedExperimentalSubGroupCount.get(i); ++j) {
 		
 			subtitle = parsedExperimentalSubGroupTitles.get(position);
-cout << "\nSubtitle = " << subtitle << endl;	
+	
 			draftSchematic->getCraftingValues()->addExperimentalPropertySubtitle(title, subtitle);
 			
 			position++;

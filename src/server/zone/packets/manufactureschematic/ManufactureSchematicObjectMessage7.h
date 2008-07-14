@@ -116,7 +116,7 @@ public:
 			insertAscii("crafting");  // I think this is always "crafting"
 			insertInt(0);
 			insertAscii(title);
-cout << "MSCO7 Title = " << title << endl;
+
 		}
 								
 		// NO IDEA WTF THIS IS FOR (doing this cause they were in live's logs)
