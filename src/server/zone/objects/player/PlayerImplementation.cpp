@@ -2775,6 +2775,31 @@ CraftingTool* PlayerImplementation::getCurrentCraftingTool() {
 	return currentCraftingTool;
 }
 
+CraftingTool* PlayerImplementation::getCraftingTool(const int type) {
+
+	TangibleObject* item= NULL;
+
+	// The For loop is looking for something in inventory with the same name as what is passed in
+	for (int i = 0; i < inventory->objectsSize(); i++) {
+
+		item = (TangibleObject*) inventory->getObject(i);
+
+		if (item != NULL && item->isCraftingTool()) {
+
+			CraftingTool* possibleTool = (CraftingTool*) item;
+
+			if ((possibleTool->getToolType() == type)
+					&& (possibleTool->isReady())) {
+
+				return possibleTool;
+
+			}
+		}
+	}
+	return NULL;
+
+}
+
 void PlayerImplementation::setCurrentCraftingTool(CraftingTool* ct) {
 	currentCraftingTool = ct;
 }

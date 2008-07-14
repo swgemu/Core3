@@ -441,6 +441,8 @@ public:
 
 	CraftingTool* getCurrentCraftingTool();
 
+	CraftingTool* getCraftingTool(const int type);
+
 	void setCurrentCraftingTool(CraftingTool* ct);
 
 	void clearCurrentCraftingTool();
@@ -947,6 +949,8 @@ public:
 	bool isChatMuted();
 
 	CraftingTool* getCurrentCraftingTool();
+
+	CraftingTool* getCraftingTool(const int type);
 
 	void setCurrentCraftingTool(CraftingTool* ct);
 

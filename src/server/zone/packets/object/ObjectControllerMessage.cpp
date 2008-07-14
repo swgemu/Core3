@@ -2422,13 +2422,13 @@ void ObjectControllerMessage::parseRequestCraftingSession(Player* player,
 	uint64 ctSceneObjID = packet->parseLong();
 
 	//Check to see if the correct obj id is in the player's datapad
-	CraftingTool* ct = (CraftingTool*)player->getInventoryItem(ctSceneObjID);
-	if (ct != NULL) {
-		if (ct->isReady()) {
+	CraftingTool* craftingTool = (CraftingTool*)player->getInventoryItem(ctSceneObjID);
+	if (craftingTool != NULL) {
+		if (craftingTool->isReady()) {
 
-			ct->sendToolStart(player);
+			craftingTool->sendToolStart(player);
 
-		} else if (ct->isFinished()) {
+		} else if (craftingTool->isFinished()) {
 
 			player->sendSystemMessage("Cannot start crafting session with item in hopper");
 
@@ -2446,7 +2446,28 @@ void ObjectControllerMessage::parseRequestCraftingSession(Player* player,
 	} else {
 		// This case is reached if double clicking on a crafting station
 
-		player->sendSystemMessage("Crafting station clicked, feature not yet implementated");
+		CraftingStation* craftingStation = (CraftingStation*)player->getZone()->lookupObject(ctSceneObjID);
+		
+		if(craftingStation != NULL){
+		
+			craftingTool = player->getCraftingTool(craftingStation->getStationType());
+			
+			if(craftingTool != NULL){
+				
+				craftingTool->sendToolStart(player);
+				
+			} else {
+				
+				player->sendSystemMessage("No tool available to start.");
+				
+			}
+		
+		} else {
+			
+			player->sendSystemMessage("Something happened that shouldn't have.  Not a tool or a station, contact Kyle");
+			
+		}
+	
 	}
 }
 

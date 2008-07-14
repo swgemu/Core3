@@ -481,6 +481,10 @@ public:
 		return objectSubType == CRAFTINGSTATION;
 	}
 	
+	inline bool isCraftingTool() {
+		return objectSubType == CRAFTINGTOOL;
+	}
+	
 	inline bool isComponent() {
 		return objectSubType == COMPONENT;
 	}

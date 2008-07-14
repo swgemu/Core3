@@ -83,6 +83,8 @@ public:
 
 	bool isCraftingStation();
 
+	bool isCraftingTool();
+
 	bool isComponent();
 
 	void setCraftersName(string& n);
@@ -216,6 +218,8 @@ public:
 	bool isLair();
 
 	bool isCraftingStation();
+
+	bool isCraftingTool();
 
 	bool isComponent();
 

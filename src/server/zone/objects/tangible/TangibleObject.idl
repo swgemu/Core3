@@ -111,6 +111,8 @@ interface TangibleObject implements SceneObject {
 
 	boolean isCraftingStation();
 
+	boolean isCraftingTool();
+
 	boolean isComponent();
 
 	void setCraftersName(string n);

@@ -659,6 +659,7 @@ public:
 
 	// Crafting
 	CraftingTool* getCurrentCraftingTool();
+	CraftingTool* getCraftingTool(const int type);
 	void setCurrentCraftingTool(CraftingTool* ct);
 	void clearCurrentCraftingTool();
 	

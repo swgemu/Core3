@@ -223,8 +223,6 @@ void CraftingManagerImplementation::addIngredientToSlot(Player* player,
 		// Lock appropriate objects
 		craftingTool->wlock();
 		draftSchematic->wlock();
-
-info("Locking Objects");
 		
 		// Get the resouce requirements for the chosen slot
 		int quantity = dsi->getResourceQuantity();
@@ -244,13 +242,9 @@ info("Locking Objects");
 				return;
 			}
 		}
-		
-info("Checked Slot");
 
 		// Set resource values appropriately
 		newTano = transferIngredientToSlot(player, tano, craftingTool, quantity);
-		
-info("Transfered Resources");
 		
 		if(newTano == NULL){
 
@@ -270,8 +264,6 @@ info("Transfered Resources");
 
 		player->sendMessage(dMsco6);
 		// End DMSCO6 ********************************************F*******
-
-info("Sent dmcso6");
 
 		// DMSCO7 ***************************************************
 		// Updates the slot 
@@ -293,8 +285,6 @@ info("Sent dmcso6");
 
 		player->sendMessage(dMsco7);
 		// End DMSCO7 ***************************************************
-
-info("Send dmcso7");
 		
 		sendSlotMessage(player, counter, SLOTOK);
 
@@ -307,8 +297,6 @@ info("Send dmcso7");
 		draftSchematic->unlock();
 		
 		craftingTool->unlock();
-		
-info("unlocking Objects");
 
 
 	} catch(...) {
@@ -706,13 +694,14 @@ void CraftingManagerImplementation::putResourceBackInInventory(Player* player,
 						inventoryResource->sendDeltas(player);
 						inventoryResource->setUpdated(true);
 						
-						rcno->setContents(quantity);
+						ResourceContainer* newRcno = makeNewResourceStack(player, rcno->getResourceName().c_str(), quantity);
 						
-						player->addInventoryItem(rcno);
+						player->addInventoryItem(newRcno);
 
-						rcno->sendTo(player);
+						newRcno->sendTo(player);
 
-						rcno->setPersistent(false);
+						newRcno->setPersistent(true);
+						return;
 					}
 					
 					inventoryResource->unlock();
@@ -727,6 +716,15 @@ void CraftingManagerImplementation::putResourceBackInInventory(Player* player,
 			}
 		}
 	}
+	
+	// Add resource since it isn't in inventory
+	ResourceContainer* newRcno = makeNewResourceStack(player, rcno->getResourceName().c_str(), rcno->getContents());
+	
+	player->addInventoryItem(newRcno);
+
+	newRcno->sendTo(player);
+
+	newRcno->setPersistent(true);
 }
 
 ResourceContainer* CraftingManagerImplementation::makeNewResourceStack(
