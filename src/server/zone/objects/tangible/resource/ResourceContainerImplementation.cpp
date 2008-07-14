@@ -128,8 +128,10 @@ void ResourceContainerImplementation::sendTo(Player* player, bool doClose) {
 }
 
 void ResourceContainerImplementation::sendDeltas(Player* player) {
+	
 	ResourceContainerObjectDeltaMessage3* rcnod3 = new ResourceContainerObjectDeltaMessage3(_this);
-	rcnod3->setQuantity(quantity);
+
+	rcnod3->setQuantity(_this->getContents());
 	rcnod3->close();
 	
 	player->sendMessage(rcnod3);
@@ -178,12 +180,14 @@ void ResourceContainerImplementation::transferContents(Player* player, ResourceC
     if (fromContents + toContents <= getMaxContents()) {
     	setContents(fromContents + toContents);
     	sendDeltas(player);
-    
-    	player->getZone()->getZoneServer()->getItemManager()->deletePlayerItem(player, fromRCO, true);
+
+    	player->getZone()->getZoneServer()->getItemManager()->deletePlayerItem(player, fromRCO, false);
     	
     	player->removeInventoryItem(fromRCO->getObjectID());
     	
     	fromRCO->destroy(player->getClient());
+    	
+    	fromRCO->finalize();
     } else {
     	int canMove = getMaxContents() - toContents;
     	

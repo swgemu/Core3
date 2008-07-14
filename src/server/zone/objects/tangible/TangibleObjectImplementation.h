@@ -191,6 +191,8 @@ public:
 	static const int CARBINE = 0x2000B;
 	static const int RIFLE = 0x2000C;
 	
+	static const int COMPONENT = 0x40000;
+	
 	static const int RESOURCECONTAINER = 0x400000;
 	static const int ENERGYGAS = 0x400001;
 	static const int ENERGYLIQUID = 0x400002;
@@ -273,6 +275,8 @@ public:
 	void sendTo(Player* player, bool doClose = true);
 
 	void sendDestroyTo(Player* player);
+	
+	void sendDeltas(Player* player);
 
 	void close(Player* player);
 	 
@@ -334,6 +338,18 @@ public:
 		craftedSerial = s;
 		string temp = "craftedserial";
 		itemAttributes->setStringAttribute(temp, s);
+	}
+	
+	inline void setObjectCount(const int count) {
+		if (count == 1) {
+
+			objectCount = 0;
+
+		} else {
+
+			objectCount = count;
+
+		}
 	}
 
 	inline bool isPersistent() {
@@ -459,6 +475,14 @@ public:
 	
 	inline bool isLair() {
 		return objectSubType == LAIR;
+	}
+	
+	inline bool isCraftingStation() {
+		return objectSubType == CRAFTINGSTATION;
+	}
+	
+	inline bool isComponent() {
+		return objectSubType == COMPONENT;
 	}
 
 	inline int getConditionDamage() {

@@ -136,40 +136,53 @@ public:
 
 	
 	// Methods to setup the crafting sequence
-	void prepareCraftingSession(Player* player, CraftingTool * craftingTool, DraftSchematic* draftSchematic);
-	void createDraftSchematic(Player* player, CraftingTool * craftingTool, DraftSchematic* draftSchematic);
-	void createTangibleObject(Player* player, CraftingTool * craftingTool, DraftSchematic* draftSchematic);
-	void setupIngredients(Player* player, CraftingTool * craftingTool, DraftSchematic* draftSchematic);
+	void prepareCraftingSession(Player* player, CraftingTool* craftingTool, DraftSchematic* draftSchematic);
+	void createDraftSchematic(Player* player, CraftingTool* craftingTool, DraftSchematic* draftSchematic);
+	void createTangibleObject(Player* player, CraftingTool* craftingTool, DraftSchematic* draftSchematic);
+	void setupIngredients(Player* player, CraftingTool* craftingTool, DraftSchematic* draftSchematic);
 	
 	
 	// Methods relating to adding Items to the crafting process
-	void addResourceToCraft(Player * player, ResourceContainer * rcno, int slot, int counter);
-	bool slotIsFull(Player * player, ResourceContainer * rcno, CraftingTool * craftingTool, 
-			string& resname, int slot, int quantity, int quantityInSlot, int counter);
-	ResourceContainer * transferResourcesToSchematic(Player * player, ResourceContainer * rcno, 
-			CraftingTool * craftingTool, int& quantity, string name);
+	void addIngredientToSlot(Player* player, TangibleObject* tano, int slot, int counter);
+	bool slotIsFull(Player* player, CraftingTool* craftingTool, TangibleObject* tano, TangibleObject* ingredientInSlot, 
+			int slot, int quantity, int quantityInSlot, int counter);
+	
+	// Tranferring items to crafting slots
+	TangibleObject* transferIngredientToSlot(Player* player, TangibleObject* tano, 
+			CraftingTool* craftingTool, int& quantity);
+	
+	TangibleObject* transferResourceToSlot(Player* player, ResourceContainer* rcno, 
+			CraftingTool* craftingTool, int& quantity);
+	
+	TangibleObject* transferComponentToSlot(
+			Player* player, Component* component, CraftingTool* craftingTool,
+			int& quantity);
 	
 	// Methods relating to removing Items to the crafting process
+	void removeResourceFromCraft(Player* player, int slot, int counter);
+	void putResourceBackInInventory(Player* player, ResourceContainer* rcno);
 	
-	void removeResourceFromCraft(Player * player, int slot, int counter);
-	void putResourceBackInInventory(Player * player, string name, int quantity);
+	void putComponentBackInInventory(Player* player, TangibleObject* tano);
+	
+	Component* cloneComponent(Player* player, TangibleObject* tano);
+	Component* cloneComponent(Player* player, Component* component);
 	
 	//
 	
-	void nextCraftingStage(Player * player, string test);
-	void createPrototype(Player * player, string count);
-	void createSchematic(Player * player, string count);
+	void nextCraftingStage(Player* player, string test);
+	void createPrototype(Player* player, string count);
+	void createSchematic(Player* player, string count);
 	
 	// Resource Handling
 
 
 	
-	void enableExperimentation(Player * player, CraftingTool * craftingTool);
+	void enableExperimentation(Player* player, CraftingTool* craftingTool);
 	
-	void initialAssembly(Player * player, CraftingTool * craftingTool, DraftSchematic * draftSchematic, int counter, int stage);
-	void experimentRow(DraftSchematicValues * craftingValues, 
+	void initialAssembly(Player* player, CraftingTool* craftingTool, DraftSchematic* draftSchematic, int counter, int stage);
+	void experimentRow(DraftSchematicValues* craftingValues, 
 			int rowEffected, int pointsAttempted, float failure, int assemblyResult);
-	void setInitialCraftingValues(Player * player, CraftingTool * craftingTool, DraftSchematic * draftSchematic);
+	void setInitialCraftingValues(Player* player, CraftingTool* craftingTool, DraftSchematic* draftSchematic);
 	
 	void finishAssembly(Player * player, CraftingTool * craftingTool, DraftSchematic * draftSchematic, int counter);
 	void handleExperimenting(Player * player, int counter, int numRowsAttempted, string expstring);

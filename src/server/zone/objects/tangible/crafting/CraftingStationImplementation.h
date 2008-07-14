@@ -55,13 +55,16 @@ class Player;
 class CraftingStationImplementation : public CraftingStationServant {
 protected:
 	float effectiveness;
+	int stationType;
 
 public:
-	static const int CLOTHING = 1; // Clothing and Armor Crafting Station
-	static const int FOOD = 2; // Food and Chemical Crafting Station
-	static const int SPACE = 3; // Starship Crafting Station
-	static const int STRUCTURE = 4; // Structure and Furniture Crafting Station
-	static const int WEAPON = 5; // Weapon Droid and General Item Crafting Station
+	static const int CLOTHING = 1; // Clothing and Armor Crafting Tool
+	static const int FOOD = 2; // Food and Chemical Crafting Tool
+	static const int GENERIC = 3; // Generic Crafting Tool
+	static const int JEDI = 4; // Lightsaber Crafting Tool
+	static const int SPACE = 5; // Starship Crafting Tool
+	static const int STRUCTURE = 6; // Structure and Furniture Crafting Tool
+	static const int WEAPON = 7; // Weapon Droid and General Item Crafting Tool
  
 public:
 	CraftingStationImplementation(uint64 object_id, uint32 tempCRC, const unicode& n, const string& tempn);
@@ -73,16 +76,22 @@ public:
 
 	void generateAttributes(SceneObject* player);
  
+	void sendRadialResponseTo(Player* player, ObjectMenuResponse* omr);
+	
 	int useObject(Player* player);
 	
 	// Setters
-	inline void setStationEffectiveness(float eff) {
+	inline void setEffectiveness(float eff) {
 		effectiveness = eff;
 	}
 	// Getters
 	
-	float getStationEffectiveness() {
+	float getEffectiveness() {
 		return effectiveness;
+	}
+	
+	int getStationType(){
+		return stationType;
 	}
 };
  

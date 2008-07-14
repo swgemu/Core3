@@ -447,7 +447,7 @@ public:
 
 	void prepareCraftingSession(CraftingTool* ct, DraftSchematic* ds);
 
-	void addResourceToCraft(ResourceContainer* rnco, int slot, int counter);
+	void addIngredientToSlot(TangibleObject* tano, int slot, int counter);
 
 	void removeResourceFromCraft(unsigned long long resID, int slot, int counter);
 
@@ -954,7 +954,7 @@ public:
 
 	void prepareCraftingSession(CraftingTool* ct, DraftSchematic* ds);
 
-	void addResourceToCraft(ResourceContainer* rnco, int slot, int counter);
+	void addIngredientToSlot(TangibleObject* tano, int slot, int counter);
 
 	void removeResourceFromCraft(unsigned long long resID, int slot, int counter);
 

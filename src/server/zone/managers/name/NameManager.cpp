@@ -397,7 +397,7 @@ char NameManager::chooseNextLetter(const char lastLetter, const char letterBefor
 		}
 		case 'p': {
 			char exclusion[] = { 'b', 'c', 'd', 'f', 'g', 'j', 'k', 'm', 'n',
-					'p', 'q', 's', 't', 'v', 'w', 'x', 'z', '\0' };
+					'p', 'q', 's', 't', 'v', 'w', 'x', 'y', 'z', '\0' };
 			return chooseLetterExcluding(exclusion);
 		}
 		case 'q':

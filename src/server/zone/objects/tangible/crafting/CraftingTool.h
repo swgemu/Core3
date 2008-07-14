@@ -39,7 +39,7 @@ public:
 
 	void generateAttributes(SceneObject* obj);
 
-	void clearResourceSlots();
+	void resetSlots();
 
 	void retriveHopperItem(Player* player);
 
@@ -69,11 +69,13 @@ public:
 
 	void setRecoverResources(bool in);
 
+	void setToolType(int in);
+
 	void increaseInsertCount();
 
-	void addResourceToSlot(int slot, string& name, unsigned long long resID, int quantity);
+	void addIngredientToSlot(int slot, TangibleObject* tano, int quantity);
 
-	void addTempResourceID(unsigned long long resID);
+	void addTempIngredient(TangibleObject* tano);
 
 	float getToolEffectiveness();
 
@@ -85,9 +87,9 @@ public:
 
 	int getInsertCount();
 
-	int getResourceInSlot(string& resname, int slot);
+	void initializeCraftingSlots(const int size);
 
-	unsigned long long getResourceIDInSlot(int slot);
+	TangibleObject* getIngredientInSlot(int quantity, int slot);
 
 	int getSlotCount();
 
@@ -96,6 +98,10 @@ public:
 	int getAssemblyResults();
 
 	float getCraftingToolModifier();
+
+	int getToolType();
+
+	DraftSchematic* getCurrentDraftSchematic(int slot);
 
 	bool isExperimenting();
 
@@ -125,7 +131,7 @@ public:
 
 	void generateAttributes(SceneObject* obj);
 
-	void clearResourceSlots();
+	void resetSlots();
 
 	void retriveHopperItem(Player* player);
 
@@ -155,11 +161,13 @@ public:
 
 	void setRecoverResources(bool in);
 
+	void setToolType(int in);
+
 	void increaseInsertCount();
 
-	void addResourceToSlot(int slot, string& name, unsigned long long resID, int quantity);
+	void addIngredientToSlot(int slot, TangibleObject* tano, int quantity);
 
-	void addTempResourceID(unsigned long long resID);
+	void addTempIngredient(TangibleObject* tano);
 
 	float getToolEffectiveness();
 
@@ -171,9 +179,9 @@ public:
 
 	int getInsertCount();
 
-	int getResourceInSlot(string& resname, int slot);
+	void initializeCraftingSlots(const int size);
 
-	unsigned long long getResourceIDInSlot(int slot);
+	TangibleObject* getIngredientInSlot(int quantity, int slot);
 
 	int getSlotCount();
 
@@ -183,6 +191,10 @@ public:
 
 	float getCraftingToolModifier();
 
+	int getToolType();
+
+	DraftSchematic* getCurrentDraftSchematic(int slot);
+
 	bool isExperimenting();
 
 	bool isReady();
@@ -191,9 +203,6 @@ public:
 
 	bool isWorking();
 
-protected:
-	string _param1_addResourceToSlot__int_string_long_int_;
-	string _param0_getResourceInSlot__string_int_;
 };
 
 class CraftingToolHelper : public DistributedObjectClassHelper, public Singleton<CraftingToolHelper> {

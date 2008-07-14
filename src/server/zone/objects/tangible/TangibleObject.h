@@ -47,6 +47,8 @@ public:
 
 	void sendTo(Player* player, bool doClose = true);
 
+	void sendDeltas(Player* player);
+
 	void repairItem(Player* player);
 
 	void decay(int decayRate);
@@ -78,6 +80,10 @@ public:
 	bool isSurveyTool();
 
 	bool isLair();
+
+	bool isCraftingStation();
+
+	bool isComponent();
 
 	void setCraftersName(string& n);
 
@@ -132,6 +138,8 @@ public:
 	void setCustomizationString(string& cust);
 
 	void setCustomizationVariable(unsigned char type, unsigned int value);
+
+	void setObjectCount(const int count);
 
 protected:
 	TangibleObject(DummyConstructorParameter* param);
@@ -173,6 +181,8 @@ public:
 
 	void sendTo(Player* player, bool doClose);
 
+	void sendDeltas(Player* player);
+
 	void repairItem(Player* player);
 
 	void decay(int decayRate);
@@ -204,6 +214,10 @@ public:
 	bool isSurveyTool();
 
 	bool isLair();
+
+	bool isCraftingStation();
+
+	bool isComponent();
 
 	void setCraftersName(string& n);
 
@@ -258,6 +272,8 @@ public:
 	void setCustomizationString(string& cust);
 
 	void setCustomizationVariable(unsigned char type, unsigned int value);
+
+	void setObjectCount(const int count);
 
 protected:
 	string _param0_setCraftersName__string_;

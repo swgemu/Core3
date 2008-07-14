@@ -85,6 +85,14 @@ public:
 		addIntUpdate(9, tano->getMaxCondition());
 	}
 	
+	void setQuantity(int quantity) { 
+		
+		if(quantity == 1)
+			quantity = 0;
+		
+		addIntUpdate(7, quantity);
+	}
+	
 };
 
 #endif /*TANGIBLEOBJECTDELTAMESSAGE3_H_*/

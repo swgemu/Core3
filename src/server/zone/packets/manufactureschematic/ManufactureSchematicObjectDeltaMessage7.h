@@ -230,6 +230,7 @@ public:
 			insertAscii("crafting");  // I think this is always "crafting"
 			insertInt(0);
 			insertAscii(title);
+cout << "DMSCO7 Title = " << title << endl;
 		}
 				
 		// Initialize update 9************
@@ -283,7 +284,7 @@ public:
 		
 		for (int i = 0; i < titleCount; ++i) {
 
-			removeListFloatElement(i, craftingValues->getCurrentPercentage(i));
+			removeListFloatElement(i, craftingValues->getCurrentPercentageAverage(i));
 			
 		}
 	}
@@ -330,7 +331,7 @@ public:
 
 		for (int i = 0; i < titleCount; i++) {
 
-			removeListFloatElement(i, craftingValues->getMaxPercentage(i));
+			removeListFloatElement(i, craftingValues->getMaxPercentageAverage(i));
 			
 		}
 	}

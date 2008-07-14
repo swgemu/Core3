@@ -662,8 +662,8 @@ public:
 	void setCurrentCraftingTool(CraftingTool* ct);
 	void clearCurrentCraftingTool();
 	
-	void prepareCraftingSession(CraftingTool * ct, DraftSchematic* ds);
-	void addResourceToCraft(ResourceContainer * rnco, int slot, int counter);
+	void prepareCraftingSession(CraftingTool* ct, DraftSchematic* ds);
+	void addIngredientToSlot(TangibleObject* tano, int slot, int counter);
 	void removeResourceFromCraft(uint64 resID, int slot, int counter);
 	void nextCraftingStage(string test);
 	void craftingCustomization(string name, int condition);

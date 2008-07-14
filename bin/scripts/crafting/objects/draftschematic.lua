@@ -52,7 +52,6 @@ DraftSchematic = Object:new {
   craftingToolTab = 0,
   complexity = 0,
   size = 0,
-  creationTime = 0,
 
   ingredientTemplateNames = "",
   ingredientTitleNames = "",
@@ -66,6 +65,10 @@ DraftSchematic = Object:new {
 
   experimentalGroupTitles = "",
 
+  experimentalSubGroupCount = "",
+
+  experimentalSubGroupTitles = "",
+
   tanoAttributes = "",
 
   attributesToSet = "",
@@ -75,5 +78,8 @@ DraftSchematic = Object:new {
   attributesMinMax = "",
 
   xpType = "",
-  xp = 0
+  xp = 0,
+
+  assemblySkill = "",
+  experimentationSkill = ""
 }

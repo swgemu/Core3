@@ -9,13 +9,27 @@
 
 class DraftSchematic;
 
-class DraftSchematicValues : public DistributedObjectStub {
+#include "engine/core/ManagedObject.h"
+
+class DraftSchematicValues : public ManagedObject {
 public:
 	DraftSchematicValues();
 
-	void addExperimentalPropertyTitle(const string& title);
+	void addExperimentalPropertySubtitle(const string& subtitle, const string& title);
+
+	string& getExperimentalPropertySubtitle(const int i);
+
+	string& getExperimentalPropertySubtitle(const string& title, const int i);
+
+	string& getExperimentalPropertyTitle(const string& subtitle);
 
 	string& getExperimentalPropertyTitle(const int i);
+
+	string& getExperimentalPropertySubtitleClass(const int i);
+
+	int getExperimentalPropertySubtitleSize();
+
+	int getExperimentalPropertySubtitleSize(const string& title);
 
 	int getExperimentalPropertyTitleSize();
 
@@ -33,9 +47,13 @@ public:
 
 	float getCurrentPercentage(const int index);
 
+	float getCurrentPercentageAverage(const int index);
+
 	float getMaxPercentage(const string& attribute);
 
 	float getMaxPercentage(const int index);
+
+	float getMaxPercentageAverage(const int index);
 
 	int getValuesToSendSize();
 
@@ -47,11 +65,15 @@ public:
 
 	void clear();
 
+	void toString();
+
 protected:
 	DraftSchematicValues(DummyConstructorParameter* param);
 
 	virtual ~DraftSchematicValues();
 
+	string _return_getExperimentalPropertySubtitle;
+	string _return_getExperimentalPropertySubtitleClass;
 	string _return_getExperimentalPropertyTitle;
 	string _return_getValuesToSend;
 
@@ -60,15 +82,27 @@ protected:
 
 class DraftSchematicValuesImplementation;
 
-class DraftSchematicValuesAdapter : public DistributedObjectAdapter {
+class DraftSchematicValuesAdapter : public ManagedObjectAdapter {
 public:
 	DraftSchematicValuesAdapter(DraftSchematicValuesImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	void addExperimentalPropertyTitle(const string& title);
+	void addExperimentalPropertySubtitle(const string& subtitle, const string& title);
+
+	string& getExperimentalPropertySubtitle(const int i);
+
+	string& getExperimentalPropertySubtitle(const string& title, const int i);
+
+	string& getExperimentalPropertyTitle(const string& subtitle);
 
 	string& getExperimentalPropertyTitle(const int i);
+
+	string& getExperimentalPropertySubtitleClass(const int i);
+
+	int getExperimentalPropertySubtitleSize();
+
+	int getExperimentalPropertySubtitleSize(const string& title);
 
 	int getExperimentalPropertyTitleSize();
 
@@ -86,9 +120,13 @@ public:
 
 	float getCurrentPercentage(const int index);
 
+	float getCurrentPercentageAverage(const int index);
+
 	float getMaxPercentage(const string& attribute);
 
 	float getMaxPercentage(const int index);
+
+	float getMaxPercentageAverage(const int index);
 
 	int getValuesToSendSize();
 
@@ -100,8 +138,14 @@ public:
 
 	void clear();
 
+	void toString();
+
 protected:
-	string _param0_addExperimentalPropertyTitle__string_;
+	string _param0_addExperimentalPropertySubtitle__string_string_;
+	string _param1_addExperimentalPropertySubtitle__string_string_;
+	string _param0_getExperimentalPropertySubtitle__string_int_;
+	string _param0_getExperimentalPropertyTitle__string_;
+	string _param0_getExperimentalPropertySubtitleSize__string_;
 	string _param0_setCurrentValue__string_float_;
 	string _param0_setCurrentPercentage__string_float_;
 	string _param0_setMaxPercentage__string_float_;
@@ -125,7 +169,9 @@ public:
 	friend class SingletonWrapper<DraftSchematicValuesHelper>;
 };
 
-class DraftSchematicValuesServant : public DistributedObjectServant {
+#include "engine/core/ManagedObjectImplementation.h"
+
+class DraftSchematicValuesServant : public ManagedObjectImplementation {
 public:
 	DraftSchematicValues* _this;
 

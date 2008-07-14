@@ -112,7 +112,11 @@ interface DraftSchematic implements ManagedObject {
 
 	void setExpFailure(float rate);
 
-	void setCreationTime(const int i);
+	void setExperimentingSkill(const string exp);
+
+	void setAssemblySkill(const string ass);
+
+	void setFinished();
 
 	//getters
 
@@ -150,22 +154,9 @@ interface DraftSchematic implements ManagedObject {
 
 	int getXp();
 
-	//int getExpStringCount();
+	string getExperimentingSkill();
 
-	//float getExpValue(string name, int i);
-	//float getExpValue(int i);
-
-	//int getCraftingStringCount();
-
-	//float getCraftingValue(string name, int i);
-	//float getCraftingValue(int i);
-
-	//int getCompleteCraftingStringCount();
-
-	//float getCompleteCraftingValue(string name, int i);
-	//float getCompleteCraftingValue(string name);
-
-	//float getMaxCraftingPercentage(int i);
+	string getAssemblySkill();
 
 	int getExpPoints();
 
@@ -173,7 +164,10 @@ interface DraftSchematic implements ManagedObject {
 
 	float getExpFailure();
 
-	int getCreationTime();
-
 	DraftSchematicValues getCraftingValues();
+
+	boolean isFinished();
+
+
+	void toString();
 }

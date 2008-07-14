@@ -92,15 +92,11 @@ public:
 		unicode uniResourceType(resourceType);
 		msg->insertUnicode(uniResourceType); // ex: organic
 	
-		// When the ingredient is optional, a byte(5) must be sent, byte(4) for when its not optional
-		if (optional) {
-			msg->insertByte(5);
-		} else if(resourceType.compare(0,16, "object/tangible/") == 0) {
-			msg->insertByte(6);
+		if(resourceType.compare(0,16, "object/tangible/") == 0) {
+			msg->insertByte(5);  // Enables Components
 		} else {
 			msg->insertByte(4);
 		}
-	
 		msg->insertInt(resourceQuantity); // ex: 3
 	}
 	

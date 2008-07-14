@@ -49,6 +49,7 @@ which carries forward this exception.
 
 #include "../../../packets.h"
 #include "CraftingTool.h"
+#include "CraftingSlots.h"
 #include "../ContainerImplementation.h"
  
 class CreatureObject;
@@ -63,12 +64,17 @@ protected:
 	float effectiveness;
 	int tooltype;
 	int state;
-	TangibleObject * currentTano;
-	DraftSchematic * currentDraftSchematic;
-	Vector<string> resourceSlots;
-	Vector<uint64> resourceSlotsID;
-	Vector<int> resourceSlotsCount;
-	Vector<uint64> partialResources;
+	
+	Vector<uint64> tabIds;
+	Vector<DraftSchematic*> schematicsToSend;
+	
+	TangibleObject* currentTano;
+	DraftSchematic* currentDraftSchematic;
+	
+	Vector<TangibleObject*> tempIngredient;
+	
+	CraftingSlots* craftingSlots;
+	
 	Container* hopper;
 	
 	string status;
@@ -115,10 +121,14 @@ public:
 	
 	void sendToolStart(Player* player);
 	
+	bool findCraftingStation(Player* player, float& workingStationComplexity);
+	
+	void getSchematicsForTool(Player* player, float workingStationComplexity);
+	
 	void setWorkingTano(TangibleObject * tano);
 	void setWorkingDraftSchematic(DraftSchematic * draftSchematic);
 	
-	void clearResourceSlots();
+	void resetSlots();
 	
 	Container * getHopper(Player * player);
 	void retriveHopperItem(Player * player);
@@ -162,14 +172,19 @@ public:
 		recoverResources = in;
 	}
 	
-	inline void addResourceToSlot(int slot, string name, uint64 resID, int quantity){
-		resourceSlots.setElementAt(slot, name);
-		resourceSlotsCount.setElementAt(slot, quantity);
-		resourceSlotsID.setElementAt(slot, resID);
+	inline void setToolType(int in){
+		tooltype = in;
 	}
 	
-	inline void addTempResourceID(uint64 resID){
-		partialResources.add(resID);
+	inline void addIngredientToSlot(int slot, TangibleObject* tano, int quantity){
+		
+		craftingSlots->setIngredientInSlot(slot, tano, quantity);
+		
+	}
+	
+	inline void addTempIngredient(TangibleObject* tano){
+		tempIngredient.add(tano);
+		tano->setContainer(_this);
 	}
 	
 	inline void increaseInsertCount(){
@@ -196,17 +211,24 @@ public:
 		return insertCount; 
 	}
 	
-	inline int getResourceInSlot(string& resname, int slot){
-		resname =  resourceSlots.get(slot);
-		return  resourceSlotsCount.get(slot);
+	inline TangibleObject* getIngredientInSlot(int& quantity, int slot){
+		
+		return craftingSlots->getIngredientInSlot(quantity, slot);
+		
 	}
 	
-	inline uint64 getResourceIDInSlot(int slot){
-		return  resourceSlotsID.get(slot);
+	inline void initializeCraftingSlots(const int size){
+		
+		craftingSlots->init(size);
+		
+	}
+	
+	inline DraftSchematic* getCurrentDraftSchematic(int slot){
+		return  schematicsToSend.get(slot);
 	}
 	
 	inline int getSlotCount(){
-		return  resourceSlotsID.size();
+		return  craftingSlots->size();
 	}
 	
 	inline int getAssemblyResults(){
@@ -231,6 +253,10 @@ public:
 	
 	bool isExperimenting() {
 		return experimentingEnabled;
+	}
+	
+	int getToolType(){
+		return tooltype;
 	}
 };
  

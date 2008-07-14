@@ -94,7 +94,7 @@ TangibleObjectImplementation::TangibleObjectImplementation(CreatureObject* creat
 
 TangibleObjectImplementation::~TangibleObjectImplementation() {
 	if (container != NULL) {
-		error("item still in container on delete");
+		error(_this->getTemplateName() + "item still in container on delete");
 	
 		//raise(SIGSEGV);
 	}
@@ -324,6 +324,21 @@ void TangibleObjectImplementation::sendDestroyTo(Player* player) {
 		return;
 	
 	destroy(client);
+}
+
+void TangibleObjectImplementation::sendDeltas(Player* player) {
+	
+	ZoneClient* client = player->getClient();
+	if (client == NULL)
+		return;
+	
+	TangibleObjectDeltaMessage3* dtano3 = new TangibleObjectDeltaMessage3(_this);
+
+	dtano3->setQuantity(_this->getObjectCount());
+	dtano3->close();
+	
+	client->sendMessage(dtano3);
+
 }
 
 void TangibleObjectImplementation::close(Player* player) {

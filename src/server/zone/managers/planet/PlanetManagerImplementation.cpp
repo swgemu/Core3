@@ -184,6 +184,7 @@ void PlanetManagerImplementation::loadStaticPlanetObjects() {
 	loadShuttles();	
 	//loadGuildTerminals();
 	//loadVendorTerminals();
+	loadCraftingStations();
 }
 
 void PlanetManagerImplementation::loadShuttles() {
@@ -426,6 +427,85 @@ BuildingObject* PlanetManagerImplementation::findBuildingType(const string& word
 	return buiID;	
 }
 
+
+void PlanetManagerImplementation::loadCraftingStations() {
+	int planetid = zone->getZoneID();
+
+	lock();
+	
+	string name;
+	uint64 crc;
+	
+	stringstream query;
+	query << "SELECT * FROM staticobjects WHERE zoneid = " << planetid << ";";
+	
+	ResultSet* result = ServerDatabase::instance()->executeQuery(query);
+	
+	while (result->next()) {
+		uint64 oid = result->getUnsignedLong(1);
+		
+		uint64 parentId = result->getUnsignedLong(2);
+		
+		string file = result->getString(3);
+		
+		float oX = result->getFloat(4);
+		float oY = result->getFloat(5);
+		
+		float oZ = result->getFloat(6);
+		float oW = result->getFloat(7);
+		
+		float x = result->getFloat(8);
+		float z = result->getFloat(9);					
+		float y = result->getFloat(10);
+		
+		float type = result->getFloat(11);
+		
+		if ((int) file.find("object/tangible/crafting/station/") >= 0) {
+			
+			crc = String::hashCode(file);
+			
+			name = getStationName(crc);
+			
+			CraftingStation* station = new CraftingStation(oid, crc, unicode(name), "public_crafting_station");
+
+			station->setEffectiveness(22);
+			
+			station->initializePosition(x, z, y);
+			station->setDirection(oX, oZ, oY, oW);
+			station->insertToZone(zone);
+			zone->registerObject(station);
+			
+			zone->getZoneServer()->addObject(station, true);
+		}
+	}
+	
+	delete result;
+	
+	unlock();
+}
+
+string PlanetManagerImplementation::getStationName(uint64 crc){
+	
+	string name = "";
+	
+	if(crc == 0xAF09A3F0)
+		name = "Clothing and Armor Public Crafting Station";
+
+	if(crc == 0x2FF7F78B)
+		name = "Food and Chemical Public Crafting Station";
+
+	if(crc == 0x17929444)
+		name = "Starship Public Crafting Station";
+	
+	if(crc == 0x1BABCF4B)
+		name = "Structure and Furniture Public Crafting Station";
+
+	if(crc == 0x72719FEA)
+		name = "Weapon, Droid, and General Public Crafting Station";
+	
+	return name;
+	
+}
 
 int PlanetManagerImplementation::guessBuildingType(uint64 oid, string file) {
 

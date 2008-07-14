@@ -202,6 +202,10 @@ TangibleObject* ItemManagerImplementation::createPlayerObjectTemplate(int object
 		case TangibleObjectImplementation::CRAFTINGSTATION:
 			item = new CraftingStation(objectid, objectcrc, objectname, objecttemp);
 			break;
+		case TangibleObjectImplementation::FACTORYCRATE:
+			item = new FactoryCrate(objectid, objectcrc, objectname, objecttemp);
+			item->setObjectCount(5);
+			break;
 		default:
 			item = new TangibleObject(objectid, objectname, objecttemp, objectcrc, objecttype);
 			break;
@@ -223,6 +227,8 @@ TangibleObject* ItemManagerImplementation::createPlayerObjectTemplate(int object
 		}
 	} else if (objecttype & TangibleObjectImplementation::WEAPONPOWERUP) {
 		item = new Powerup(objectid, objectcrc, objectname, objecttemp);
+	} else if (objecttype & TangibleObjectImplementation::COMPONENT) {
+		item = new Component(objectid, objectcrc, objectname, objecttemp);
 	} 
 	
 	return item;
@@ -789,6 +795,8 @@ void ItemManagerImplementation::deletePlayerItem(Player* player, TangibleObject*
 	
 		ServerDatabase::instance()->executeStatement(query);
 
+		cout << query.str() << endl;
+		
 		stringstream playertxt;
 		if (notify)
 			playertxt << "You have destroyed " << item->getName().c_str() << ".";

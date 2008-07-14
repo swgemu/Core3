@@ -164,6 +164,10 @@ public:
 	
 	static void parseTransferItemMisc(Player* player, Message* pack);
 	
+	static void parseRotateItem(Player* player, Message* pack);
+
+
+	
 	static void parseAddFriend(Player* player, Message* pack);
 	static void parseRemoveFriend(Player* player, Message* pack);
 	static void parseFindFriend(Player* player, Message* pack, PlayerManager* playerManager);

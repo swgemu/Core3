@@ -10,6 +10,8 @@
 
 #include "../../objects/draftschematic/DraftSchematic.h"
 
+#include "../../objects/tangible/TangibleObject.h"
+
 #include "../../objects/tangible/resource/ResourceContainer.h"
 
 #include "../../objects/tangible/crafting/CraftingTool.h"
@@ -49,20 +51,20 @@ void CraftingManager::prepareCraftingSession(Player* player, CraftingTool* craft
 		((CraftingManagerImplementation*) _impl)->prepareCraftingSession(player, craftingTool, draftSchematic);
 }
 
-void CraftingManager::addResourceToCraft(Player* player, ResourceContainer* rcno, int slot, int counter) {
+void CraftingManager::addIngredientToSlot(Player* player, TangibleObject* tano, int slot, int counter) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 7);
 		method.addObjectParameter(player);
-		method.addObjectParameter(rcno);
+		method.addObjectParameter(tano);
 		method.addSignedIntParameter(slot);
 		method.addSignedIntParameter(counter);
 
 		method.executeWithVoidReturn();
 	} else
-		((CraftingManagerImplementation*) _impl)->addResourceToCraft(player, rcno, slot, counter);
+		((CraftingManagerImplementation*) _impl)->addIngredientToSlot(player, tano, slot, counter);
 }
 
 void CraftingManager::removeResourceFromCraft(Player* player, int slot, int counter) {
@@ -153,19 +155,32 @@ void CraftingManager::createSchematic(Player* player, string& count) {
 		((CraftingManagerImplementation*) _impl)->createSchematic(player, count);
 }
 
-void CraftingManager::putResourceBackInInventory(Player* player, string& name, int quantity) {
+void CraftingManager::putResourceBackInInventory(Player* player, ResourceContainer* rcno) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 14);
 		method.addObjectParameter(player);
-		method.addAsciiParameter(name);
-		method.addSignedIntParameter(quantity);
+		method.addObjectParameter(rcno);
 
 		method.executeWithVoidReturn();
 	} else
-		((CraftingManagerImplementation*) _impl)->putResourceBackInInventory(player, name, quantity);
+		((CraftingManagerImplementation*) _impl)->putResourceBackInInventory(player, rcno);
+}
+
+void CraftingManager::putComponentBackInInventory(Player* player, TangibleObject* tano) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 15);
+		method.addObjectParameter(player);
+		method.addObjectParameter(tano);
+
+		method.executeWithVoidReturn();
+	} else
+		((CraftingManagerImplementation*) _impl)->putComponentBackInInventory(player, tano);
 }
 
 float CraftingManager::getWeightedValue(Player* player, CraftingTool* craftingTool, DraftSchematic* draftSchematic, int type) {
@@ -173,7 +188,7 @@ float CraftingManager::getWeightedValue(Player* player, CraftingTool* craftingTo
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, 16);
 		method.addObjectParameter(player);
 		method.addObjectParameter(craftingTool);
 		method.addObjectParameter(draftSchematic);
@@ -189,7 +204,7 @@ float CraftingManager::getAssemblyPercentage(float value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 17);
 		method.addFloatParameter(value);
 
 		return method.executeWithFloatReturn();
@@ -202,7 +217,7 @@ float CraftingManager::calculateAssemblyValueModifier(CraftingTool* craftingTool
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 18);
 		method.addObjectParameter(craftingTool);
 
 		return method.executeWithFloatReturn();
@@ -215,7 +230,7 @@ void CraftingManager::addDraftSchematicsFromGroupName(Player* player, const stri
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 19);
 		method.addObjectParameter(player);
 		method.addAsciiParameter(schematicGroupName);
 
@@ -229,7 +244,7 @@ void CraftingManager::subtractDraftSchematicsFromGroupName(Player* player, const
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, 20);
 		method.addObjectParameter(player);
 		method.addAsciiParameter(schematicGroupName);
 
@@ -253,7 +268,7 @@ Packet* CraftingManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		prepareCraftingSession((Player*) inv->getObjectParameter(), (CraftingTool*) inv->getObjectParameter(), (DraftSchematic*) inv->getObjectParameter());
 		break;
 	case 7:
-		addResourceToCraft((Player*) inv->getObjectParameter(), (ResourceContainer*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
+		addIngredientToSlot((Player*) inv->getObjectParameter(), (TangibleObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
 		break;
 	case 8:
 		removeResourceFromCraft((Player*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
@@ -274,21 +289,24 @@ Packet* CraftingManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		createSchematic((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_createSchematic__Player_string_));
 		break;
 	case 14:
-		putResourceBackInInventory((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_putResourceBackInInventory__Player_string_int_), inv->getSignedIntParameter());
+		putResourceBackInInventory((Player*) inv->getObjectParameter(), (ResourceContainer*) inv->getObjectParameter());
 		break;
 	case 15:
-		resp->insertFloat(getWeightedValue((Player*) inv->getObjectParameter(), (CraftingTool*) inv->getObjectParameter(), (DraftSchematic*) inv->getObjectParameter(), inv->getSignedIntParameter()));
+		putComponentBackInInventory((Player*) inv->getObjectParameter(), (TangibleObject*) inv->getObjectParameter());
 		break;
 	case 16:
-		resp->insertFloat(getAssemblyPercentage(inv->getFloatParameter()));
+		resp->insertFloat(getWeightedValue((Player*) inv->getObjectParameter(), (CraftingTool*) inv->getObjectParameter(), (DraftSchematic*) inv->getObjectParameter(), inv->getSignedIntParameter()));
 		break;
 	case 17:
-		resp->insertFloat(calculateAssemblyValueModifier((CraftingTool*) inv->getObjectParameter()));
+		resp->insertFloat(getAssemblyPercentage(inv->getFloatParameter()));
 		break;
 	case 18:
-		addDraftSchematicsFromGroupName((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_addDraftSchematicsFromGroupName__Player_string_));
+		resp->insertFloat(calculateAssemblyValueModifier((CraftingTool*) inv->getObjectParameter()));
 		break;
 	case 19:
+		addDraftSchematicsFromGroupName((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_addDraftSchematicsFromGroupName__Player_string_));
+		break;
+	case 20:
 		subtractDraftSchematicsFromGroupName((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_subtractDraftSchematicsFromGroupName__Player_string_));
 		break;
 	default:
@@ -302,8 +320,8 @@ void CraftingManagerAdapter::prepareCraftingSession(Player* player, CraftingTool
 	return ((CraftingManagerImplementation*) impl)->prepareCraftingSession(player, craftingTool, draftSchematic);
 }
 
-void CraftingManagerAdapter::addResourceToCraft(Player* player, ResourceContainer* rcno, int slot, int counter) {
-	return ((CraftingManagerImplementation*) impl)->addResourceToCraft(player, rcno, slot, counter);
+void CraftingManagerAdapter::addIngredientToSlot(Player* player, TangibleObject* tano, int slot, int counter) {
+	return ((CraftingManagerImplementation*) impl)->addIngredientToSlot(player, tano, slot, counter);
 }
 
 void CraftingManagerAdapter::removeResourceFromCraft(Player* player, int slot, int counter) {
@@ -330,8 +348,12 @@ void CraftingManagerAdapter::createSchematic(Player* player, string& count) {
 	return ((CraftingManagerImplementation*) impl)->createSchematic(player, count);
 }
 
-void CraftingManagerAdapter::putResourceBackInInventory(Player* player, string& name, int quantity) {
-	return ((CraftingManagerImplementation*) impl)->putResourceBackInInventory(player, name, quantity);
+void CraftingManagerAdapter::putResourceBackInInventory(Player* player, ResourceContainer* rcno) {
+	return ((CraftingManagerImplementation*) impl)->putResourceBackInInventory(player, rcno);
+}
+
+void CraftingManagerAdapter::putComponentBackInInventory(Player* player, TangibleObject* tano) {
+	return ((CraftingManagerImplementation*) impl)->putComponentBackInInventory(player, tano);
 }
 
 float CraftingManagerAdapter::getWeightedValue(Player* player, CraftingTool* craftingTool, DraftSchematic* draftSchematic, int type) {

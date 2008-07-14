@@ -78,7 +78,7 @@ public:
 		// NO IDEA WTF THIS IS FOR (doing this cause they were in live's logs)
 		for(int i = 0; i < 6; i++) {
 			insertInt(ingredientListSize);
-			if(i == 5){
+			if(i == 5){	
 				insertInt(updateCount*2);
 			} else {
 				insertInt(updateCount);
@@ -101,7 +101,7 @@ public:
 				}
 			}
 		}
-		insertByte(0x0C); 	// no idea
+		insertByte(0x0E); 	// no idea
 		
 		DraftSchematicValues * craftingValues = draftSchematic->getCraftingValues();
 		
@@ -116,6 +116,7 @@ public:
 			insertAscii("crafting");  // I think this is always "crafting"
 			insertInt(0);
 			insertAscii(title);
+cout << "MSCO7 Title = " << title << endl;
 		}
 								
 		// NO IDEA WTF THIS IS FOR (doing this cause they were in live's logs)

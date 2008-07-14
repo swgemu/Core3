@@ -27,9 +27,11 @@ public:
 
 	int useObject(Player* player);
 
-	void setStationEffectiveness(float eff);
+	void setEffectiveness(float eff);
 
-	float getStationEffectiveness();
+	float getEffectiveness();
+
+	int getStationType();
 
 protected:
 	CraftingStation(DummyConstructorParameter* param);
@@ -51,9 +53,11 @@ public:
 
 	int useObject(Player* player);
 
-	void setStationEffectiveness(float eff);
+	void setEffectiveness(float eff);
 
-	float getStationEffectiveness();
+	float getEffectiveness();
+
+	int getStationType();
 
 };
 

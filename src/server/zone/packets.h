@@ -149,6 +149,8 @@ which carries forward this exception.
 #include "packets/tangible/TangibleObjectMessage3.h"
 #include "packets/tangible/TangibleObjectMessage6.h"
 #include "packets/tangible/TangibleObjectMessage7.h"
+#include "packets/tangible/TangibleObjectMessage8.h"
+#include "packets/tangible/TangibleObjectMessage9.h"
 #include "packets/tangible/TangibleObjectDeltaMessage3.h"
 
 #include "packets/tangible/WeaponObjectMessage3.h"
@@ -241,5 +243,9 @@ which carries forward this exception.
 // static objects
 #include "packets/static/StaticObjectMessage3.h"
 #include "packets/static/StaticObjectMessage6.h"
+
+// Factory Crates
+#include "packets/factory/FactoryCrateObjectMessage3.h"
+#include "packets/factory/FactoryCrateObjectMessage6.h"
 
 #endif /*PACKETS_H_*/

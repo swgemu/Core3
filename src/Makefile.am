@@ -115,6 +115,8 @@ core3_IDLS =	server/zone/Zone.cpp \
 		server/zone/objects/attackable/lair/LairObject.cpp \
 		server/zone/objects/tangible/surveytool/SurveyTool.cpp \
 		server/zone/objects/tangible/crafting/CraftingTool.cpp \
+                server/zone/objects/tangible/crafting/component/Component.cpp \
+                server/zone/objects/tangible/crafting/factorycrate/FactoryCrate.cpp \
 		server/zone/objects/tangible/crafting/CraftingStation.cpp \
 		server/zone/objects/tangible/resource/ResourceContainer.cpp \
 		server/zone/objects/tangible/attachment/Attachment.cpp \
@@ -184,6 +186,8 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/surveytool/SurveyToolImplementation.cpp \
 		server/zone/objects/tangible/crafting/CraftingToolImplementation.cpp \
 		server/zone/objects/tangible/crafting/CraftingStationImplementation.cpp \
+                server/zone/objects/tangible/crafting/component/ComponentImplementation.cpp \
+                server/zone/objects/tangible/crafting/factorycrate/FactoryCrateImplementation.cpp \
 		server/zone/objects/tangible/resource/ResourceContainerImplementation.cpp \
 		server/zone/objects/tangible/attachment/AttachmentImplementation.cpp \
 		server/zone/objects/tangible/powerup/PowerupImplementation.cpp \

@@ -53,8 +53,8 @@ class TangibleObjectMessage3 : public BaseLineMessage {
 public:
 	TangibleObjectMessage3(TangibleObject* tano) 
 			: BaseLineMessage(tano->getObjectID(), 0x54414E4F, 3, 0x0B) {
-		//insertFloat(100);
-		insertInt(0);
+		insertFloat(100);
+		//insertInt(0);
 		
 		insertAscii(tano->getTemplateTypeName());
 		insertInt(0);
@@ -73,7 +73,12 @@ public:
 
 		insertInt(0);
 
-		insertInt(tano->getObjectCount()); //item count
+		int count = tano->getObjectCount();
+		
+		if(count == 1)
+			count = 0;
+		
+		insertInt(count); //item count
 
 		insertInt(tano->getConditionDamage());
 		insertInt(tano->getMaxCondition());

@@ -71,8 +71,35 @@ CraftingStationImplementation::CraftingStationImplementation(CreatureObject* cre
 CraftingStationImplementation::~CraftingStationImplementation(){ 
  
 }
- 
+
+void CraftingStationImplementation::sendRadialResponseTo(Player* player, ObjectMenuResponse* omr) {
+
+
+	omr->addRadialItem(0, 200, 3, "Rotate 90 Degrees(Temp)");
+	
+	omr->finish();
+	
+	player->sendMessage(omr);
+}
+
 void CraftingStationImplementation::init() {
+	
+	objectSubType = TangibleObjectImplementation::CRAFTINGSTATION;
+	
+	if(objectCRC == 0xAF09A3F0 || objectCRC == 0x2BFCD5A1)
+		stationType = CLOTHING;
+	
+	if(objectCRC == 0x2FF7F78B || objectCRC == 0xBACAE4C8)
+		stationType = FOOD;
+	
+	if(objectCRC == 0x1BABCF4B || objectCRC == 0x94D50879)
+		stationType = STRUCTURE;
+	
+	if(objectCRC == 0x72719FEA || objectCRC == 0x812DD757)
+		stationType = WEAPON;
+	
+	if(objectCRC == 0x17929444 || objectCRC == 0x185987B1)
+		stationType = SPACE;
 	
 }
  
@@ -110,3 +137,5 @@ void CraftingStationImplementation::generateAttributes(SceneObject* obj) {
 	
 	player->sendMessage(alm);
 }
+
+

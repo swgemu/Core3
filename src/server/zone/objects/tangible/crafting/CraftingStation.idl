@@ -71,8 +71,10 @@ interface CraftingStation implements TangibleObject {
 	//void sendToolStart(Player player);
  
 	//setters
-	void setStationEffectiveness(float eff);
+	void setEffectiveness(float eff);
 
 	//getters
-	float getStationEffectiveness();
+	float getEffectiveness();
+
+	int getStationType();
 }

@@ -12,29 +12,72 @@
  *	DraftSchematicValuesStub
  */
 
-DraftSchematicValues::DraftSchematicValues() {
+DraftSchematicValues::DraftSchematicValues() : ManagedObject(DummyConstructorParameter::instance()) {
 	_impl = new DraftSchematicValuesImplementation();
 	_impl->_setStub(this);
 }
 
-DraftSchematicValues::DraftSchematicValues(DummyConstructorParameter* param) {
-	_impl = NULL;
+DraftSchematicValues::DraftSchematicValues(DummyConstructorParameter* param) : ManagedObject(param) {
 }
 
 DraftSchematicValues::~DraftSchematicValues() {
 }
 
-void DraftSchematicValues::addExperimentalPropertyTitle(const string& title) {
+void DraftSchematicValues::addExperimentalPropertySubtitle(const string& subtitle, const string& title) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 6);
+		method.addAsciiParameter(subtitle);
 		method.addAsciiParameter(title);
 
 		method.executeWithVoidReturn();
 	} else
-		((DraftSchematicValuesImplementation*) _impl)->addExperimentalPropertyTitle(title);
+		((DraftSchematicValuesImplementation*) _impl)->addExperimentalPropertySubtitle(subtitle, title);
+}
+
+string& DraftSchematicValues::getExperimentalPropertySubtitle(const int i) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
+		method.addSignedIntParameter(i);
+
+		method.executeWithAsciiReturn(_return_getExperimentalPropertySubtitle);
+		return _return_getExperimentalPropertySubtitle;
+	} else
+		return ((DraftSchematicValuesImplementation*) _impl)->getExperimentalPropertySubtitle(i);
+}
+
+string& DraftSchematicValues::getExperimentalPropertySubtitle(const string& title, const int i) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
+		method.addAsciiParameter(title);
+		method.addSignedIntParameter(i);
+
+		method.executeWithAsciiReturn(_return_getExperimentalPropertySubtitle);
+		return _return_getExperimentalPropertySubtitle;
+	} else
+		return ((DraftSchematicValuesImplementation*) _impl)->getExperimentalPropertySubtitle(title, i);
+}
+
+string& DraftSchematicValues::getExperimentalPropertyTitle(const string& subtitle) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
+		method.addAsciiParameter(subtitle);
+
+		method.executeWithAsciiReturn(_return_getExperimentalPropertyTitle);
+		return _return_getExperimentalPropertyTitle;
+	} else
+		return ((DraftSchematicValuesImplementation*) _impl)->getExperimentalPropertyTitle(subtitle);
 }
 
 string& DraftSchematicValues::getExperimentalPropertyTitle(const int i) {
@@ -42,7 +85,7 @@ string& DraftSchematicValues::getExperimentalPropertyTitle(const int i) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, 10);
 		method.addSignedIntParameter(i);
 
 		method.executeWithAsciiReturn(_return_getExperimentalPropertyTitle);
@@ -51,12 +94,51 @@ string& DraftSchematicValues::getExperimentalPropertyTitle(const int i) {
 		return ((DraftSchematicValuesImplementation*) _impl)->getExperimentalPropertyTitle(i);
 }
 
+string& DraftSchematicValues::getExperimentalPropertySubtitleClass(const int i) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 11);
+		method.addSignedIntParameter(i);
+
+		method.executeWithAsciiReturn(_return_getExperimentalPropertySubtitleClass);
+		return _return_getExperimentalPropertySubtitleClass;
+	} else
+		return ((DraftSchematicValuesImplementation*) _impl)->getExperimentalPropertySubtitleClass(i);
+}
+
+int DraftSchematicValues::getExperimentalPropertySubtitleSize() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 12);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((DraftSchematicValuesImplementation*) _impl)->getExperimentalPropertySubtitleSize();
+}
+
+int DraftSchematicValues::getExperimentalPropertySubtitleSize(const string& title) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 13);
+		method.addAsciiParameter(title);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((DraftSchematicValuesImplementation*) _impl)->getExperimentalPropertySubtitleSize(title);
+}
+
 int DraftSchematicValues::getExperimentalPropertyTitleSize() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, 14);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -68,7 +150,7 @@ void DraftSchematicValues::setCurrentValue(const string& attribute, float value)
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, 15);
 		method.addAsciiParameter(attribute);
 		method.addFloatParameter(value);
 
@@ -82,7 +164,7 @@ void DraftSchematicValues::setCurrentPercentage(const string& attribute, float v
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, 16);
 		method.addAsciiParameter(attribute);
 		method.addFloatParameter(value);
 
@@ -96,7 +178,7 @@ void DraftSchematicValues::setMaxPercentage(const string& attribute, float value
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 17);
 		method.addAsciiParameter(attribute);
 		method.addFloatParameter(value);
 
@@ -110,7 +192,7 @@ float DraftSchematicValues::getCurrentValue(const string& attribute) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, 18);
 		method.addAsciiParameter(attribute);
 
 		return method.executeWithFloatReturn();
@@ -123,7 +205,7 @@ float DraftSchematicValues::getCurrentValue(const int index) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 19);
 		method.addSignedIntParameter(index);
 
 		return method.executeWithFloatReturn();
@@ -136,7 +218,7 @@ float DraftSchematicValues::getCurrentPercentage(const string& attribute) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 20);
 		method.addAsciiParameter(attribute);
 
 		return method.executeWithFloatReturn();
@@ -149,7 +231,7 @@ float DraftSchematicValues::getCurrentPercentage(const int index) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, 21);
 		method.addSignedIntParameter(index);
 
 		return method.executeWithFloatReturn();
@@ -157,12 +239,25 @@ float DraftSchematicValues::getCurrentPercentage(const int index) {
 		return ((DraftSchematicValuesImplementation*) _impl)->getCurrentPercentage(index);
 }
 
+float DraftSchematicValues::getCurrentPercentageAverage(const int index) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 22);
+		method.addSignedIntParameter(index);
+
+		return method.executeWithFloatReturn();
+	} else
+		return ((DraftSchematicValuesImplementation*) _impl)->getCurrentPercentageAverage(index);
+}
+
 float DraftSchematicValues::getMaxPercentage(const string& attribute) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 23);
 		method.addAsciiParameter(attribute);
 
 		return method.executeWithFloatReturn();
@@ -175,7 +270,7 @@ float DraftSchematicValues::getMaxPercentage(const int index) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 24);
 		method.addSignedIntParameter(index);
 
 		return method.executeWithFloatReturn();
@@ -183,12 +278,25 @@ float DraftSchematicValues::getMaxPercentage(const int index) {
 		return ((DraftSchematicValuesImplementation*) _impl)->getMaxPercentage(index);
 }
 
+float DraftSchematicValues::getMaxPercentageAverage(const int index) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 25);
+		method.addSignedIntParameter(index);
+
+		return method.executeWithFloatReturn();
+	} else
+		return ((DraftSchematicValuesImplementation*) _impl)->getMaxPercentageAverage(index);
+}
+
 int DraftSchematicValues::getValuesToSendSize() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 26);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -200,7 +308,7 @@ string& DraftSchematicValues::getValuesToSend(const int i) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, 27);
 		method.addSignedIntParameter(i);
 
 		method.executeWithAsciiReturn(_return_getValuesToSend);
@@ -214,7 +322,7 @@ void DraftSchematicValues::recalculateValues(DraftSchematic* draftSchematic) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, 28);
 		method.addObjectParameter(draftSchematic);
 
 		method.executeWithVoidReturn();
@@ -227,7 +335,7 @@ void DraftSchematicValues::clearAll() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, 29);
 
 		method.executeWithVoidReturn();
 	} else
@@ -239,18 +347,30 @@ void DraftSchematicValues::clear() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 22);
+		DistributedMethod method(this, 30);
 
 		method.executeWithVoidReturn();
 	} else
 		((DraftSchematicValuesImplementation*) _impl)->clear();
 }
 
+void DraftSchematicValues::toString() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 31);
+
+		method.executeWithVoidReturn();
+	} else
+		((DraftSchematicValuesImplementation*) _impl)->toString();
+}
+
 /*
  *	DraftSchematicValuesAdapter
  */
 
-DraftSchematicValuesAdapter::DraftSchematicValuesAdapter(DraftSchematicValuesImplementation* obj) : DistributedObjectAdapter((DistributedObjectServant*) obj) {
+DraftSchematicValuesAdapter::DraftSchematicValuesAdapter(DraftSchematicValuesImplementation* obj) : ManagedObjectAdapter(obj) {
 }
 
 Packet* DraftSchematicValuesAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -258,55 +378,82 @@ Packet* DraftSchematicValuesAdapter::invokeMethod(uint32 methid, DistributedMeth
 
 	switch (methid) {
 	case 6:
-		addExperimentalPropertyTitle(inv->getAsciiParameter(_param0_addExperimentalPropertyTitle__string_));
+		addExperimentalPropertySubtitle(inv->getAsciiParameter(_param0_addExperimentalPropertySubtitle__string_string_), inv->getAsciiParameter(_param1_addExperimentalPropertySubtitle__string_string_));
 		break;
 	case 7:
-		resp->insertAscii(getExperimentalPropertyTitle(inv->getSignedIntParameter()));
+		resp->insertAscii(getExperimentalPropertySubtitle(inv->getSignedIntParameter()));
 		break;
 	case 8:
-		resp->insertSignedInt(getExperimentalPropertyTitleSize());
+		resp->insertAscii(getExperimentalPropertySubtitle(inv->getAsciiParameter(_param0_getExperimentalPropertySubtitle__string_int_), inv->getSignedIntParameter()));
 		break;
 	case 9:
-		setCurrentValue(inv->getAsciiParameter(_param0_setCurrentValue__string_float_), inv->getFloatParameter());
+		resp->insertAscii(getExperimentalPropertyTitle(inv->getAsciiParameter(_param0_getExperimentalPropertyTitle__string_)));
 		break;
 	case 10:
-		setCurrentPercentage(inv->getAsciiParameter(_param0_setCurrentPercentage__string_float_), inv->getFloatParameter());
+		resp->insertAscii(getExperimentalPropertyTitle(inv->getSignedIntParameter()));
 		break;
 	case 11:
-		setMaxPercentage(inv->getAsciiParameter(_param0_setMaxPercentage__string_float_), inv->getFloatParameter());
+		resp->insertAscii(getExperimentalPropertySubtitleClass(inv->getSignedIntParameter()));
 		break;
 	case 12:
-		resp->insertFloat(getCurrentValue(inv->getAsciiParameter(_param0_getCurrentValue__string_)));
+		resp->insertSignedInt(getExperimentalPropertySubtitleSize());
 		break;
 	case 13:
-		resp->insertFloat(getCurrentValue(inv->getSignedIntParameter()));
+		resp->insertSignedInt(getExperimentalPropertySubtitleSize(inv->getAsciiParameter(_param0_getExperimentalPropertySubtitleSize__string_)));
 		break;
 	case 14:
-		resp->insertFloat(getCurrentPercentage(inv->getAsciiParameter(_param0_getCurrentPercentage__string_)));
+		resp->insertSignedInt(getExperimentalPropertyTitleSize());
 		break;
 	case 15:
-		resp->insertFloat(getCurrentPercentage(inv->getSignedIntParameter()));
+		setCurrentValue(inv->getAsciiParameter(_param0_setCurrentValue__string_float_), inv->getFloatParameter());
 		break;
 	case 16:
-		resp->insertFloat(getMaxPercentage(inv->getAsciiParameter(_param0_getMaxPercentage__string_)));
+		setCurrentPercentage(inv->getAsciiParameter(_param0_setCurrentPercentage__string_float_), inv->getFloatParameter());
 		break;
 	case 17:
-		resp->insertFloat(getMaxPercentage(inv->getSignedIntParameter()));
+		setMaxPercentage(inv->getAsciiParameter(_param0_setMaxPercentage__string_float_), inv->getFloatParameter());
 		break;
 	case 18:
-		resp->insertSignedInt(getValuesToSendSize());
+		resp->insertFloat(getCurrentValue(inv->getAsciiParameter(_param0_getCurrentValue__string_)));
 		break;
 	case 19:
-		resp->insertAscii(getValuesToSend(inv->getSignedIntParameter()));
+		resp->insertFloat(getCurrentValue(inv->getSignedIntParameter()));
 		break;
 	case 20:
-		recalculateValues((DraftSchematic*) inv->getObjectParameter());
+		resp->insertFloat(getCurrentPercentage(inv->getAsciiParameter(_param0_getCurrentPercentage__string_)));
 		break;
 	case 21:
-		clearAll();
+		resp->insertFloat(getCurrentPercentage(inv->getSignedIntParameter()));
 		break;
 	case 22:
+		resp->insertFloat(getCurrentPercentageAverage(inv->getSignedIntParameter()));
+		break;
+	case 23:
+		resp->insertFloat(getMaxPercentage(inv->getAsciiParameter(_param0_getMaxPercentage__string_)));
+		break;
+	case 24:
+		resp->insertFloat(getMaxPercentage(inv->getSignedIntParameter()));
+		break;
+	case 25:
+		resp->insertFloat(getMaxPercentageAverage(inv->getSignedIntParameter()));
+		break;
+	case 26:
+		resp->insertSignedInt(getValuesToSendSize());
+		break;
+	case 27:
+		resp->insertAscii(getValuesToSend(inv->getSignedIntParameter()));
+		break;
+	case 28:
+		recalculateValues((DraftSchematic*) inv->getObjectParameter());
+		break;
+	case 29:
+		clearAll();
+		break;
+	case 30:
 		clear();
+		break;
+	case 31:
+		toString();
 		break;
 	default:
 		return NULL;
@@ -315,12 +462,36 @@ Packet* DraftSchematicValuesAdapter::invokeMethod(uint32 methid, DistributedMeth
 	return resp;
 }
 
-void DraftSchematicValuesAdapter::addExperimentalPropertyTitle(const string& title) {
-	return ((DraftSchematicValuesImplementation*) impl)->addExperimentalPropertyTitle(title);
+void DraftSchematicValuesAdapter::addExperimentalPropertySubtitle(const string& subtitle, const string& title) {
+	return ((DraftSchematicValuesImplementation*) impl)->addExperimentalPropertySubtitle(subtitle, title);
+}
+
+string& DraftSchematicValuesAdapter::getExperimentalPropertySubtitle(const int i) {
+	return ((DraftSchematicValuesImplementation*) impl)->getExperimentalPropertySubtitle(i);
+}
+
+string& DraftSchematicValuesAdapter::getExperimentalPropertySubtitle(const string& title, const int i) {
+	return ((DraftSchematicValuesImplementation*) impl)->getExperimentalPropertySubtitle(title, i);
+}
+
+string& DraftSchematicValuesAdapter::getExperimentalPropertyTitle(const string& subtitle) {
+	return ((DraftSchematicValuesImplementation*) impl)->getExperimentalPropertyTitle(subtitle);
 }
 
 string& DraftSchematicValuesAdapter::getExperimentalPropertyTitle(const int i) {
 	return ((DraftSchematicValuesImplementation*) impl)->getExperimentalPropertyTitle(i);
+}
+
+string& DraftSchematicValuesAdapter::getExperimentalPropertySubtitleClass(const int i) {
+	return ((DraftSchematicValuesImplementation*) impl)->getExperimentalPropertySubtitleClass(i);
+}
+
+int DraftSchematicValuesAdapter::getExperimentalPropertySubtitleSize() {
+	return ((DraftSchematicValuesImplementation*) impl)->getExperimentalPropertySubtitleSize();
+}
+
+int DraftSchematicValuesAdapter::getExperimentalPropertySubtitleSize(const string& title) {
+	return ((DraftSchematicValuesImplementation*) impl)->getExperimentalPropertySubtitleSize(title);
 }
 
 int DraftSchematicValuesAdapter::getExperimentalPropertyTitleSize() {
@@ -355,12 +526,20 @@ float DraftSchematicValuesAdapter::getCurrentPercentage(const int index) {
 	return ((DraftSchematicValuesImplementation*) impl)->getCurrentPercentage(index);
 }
 
+float DraftSchematicValuesAdapter::getCurrentPercentageAverage(const int index) {
+	return ((DraftSchematicValuesImplementation*) impl)->getCurrentPercentageAverage(index);
+}
+
 float DraftSchematicValuesAdapter::getMaxPercentage(const string& attribute) {
 	return ((DraftSchematicValuesImplementation*) impl)->getMaxPercentage(attribute);
 }
 
 float DraftSchematicValuesAdapter::getMaxPercentage(const int index) {
 	return ((DraftSchematicValuesImplementation*) impl)->getMaxPercentage(index);
+}
+
+float DraftSchematicValuesAdapter::getMaxPercentageAverage(const int index) {
+	return ((DraftSchematicValuesImplementation*) impl)->getMaxPercentageAverage(index);
 }
 
 int DraftSchematicValuesAdapter::getValuesToSendSize() {
@@ -381,6 +560,10 @@ void DraftSchematicValuesAdapter::clearAll() {
 
 void DraftSchematicValuesAdapter::clear() {
 	return ((DraftSchematicValuesImplementation*) impl)->clear();
+}
+
+void DraftSchematicValuesAdapter::toString() {
+	return ((DraftSchematicValuesImplementation*) impl)->toString();
 }
 
 /*
@@ -418,7 +601,7 @@ DistributedObjectAdapter* DraftSchematicValuesHelper::createAdapter(DistributedO
  *	DraftSchematicValuesServant
  */
 
-DraftSchematicValuesServant::DraftSchematicValuesServant() {
+DraftSchematicValuesServant::DraftSchematicValuesServant() : ManagedObjectImplementation() {
 	_classHelper = DraftSchematicValuesHelper::instance();
 }
 
@@ -427,6 +610,7 @@ DraftSchematicValuesServant::~DraftSchematicValuesServant() {
 
 void DraftSchematicValuesServant::_setStub(DistributedObjectStub* stub) {
 	_this = (DraftSchematicValues*) stub;
+	ManagedObjectServant::_setStub(stub);
 }
 
 DistributedObjectStub* DraftSchematicValuesServant::_getStub() {

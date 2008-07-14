@@ -75,7 +75,11 @@ public:
 
 	void setExpFailure(float rate);
 
-	void setCreationTime(const int i);
+	void setExperimentingSkill(const string& exp);
+
+	void setAssemblySkill(const string& ass);
+
+	void setFinished();
 
 	int getAttributesToSetListSize();
 
@@ -111,21 +115,29 @@ public:
 
 	int getXp();
 
+	string& getExperimentingSkill();
+
+	string& getAssemblySkill();
+
 	int getExpPoints();
 
 	int getExpCounter();
 
 	float getExpFailure();
 
-	int getCreationTime();
-
 	DraftSchematicValues* getCraftingValues();
+
+	bool isFinished();
+
+	void toString();
 
 protected:
 	DraftSchematic(DummyConstructorParameter* param);
 
 	virtual ~DraftSchematic();
 
+	string _return_getAssemblySkill;
+	string _return_getExperimentingSkill;
 	string _return_getGroupName;
 	string _return_getName;
 	string _return_getTanoAttributes;
@@ -186,7 +198,11 @@ public:
 
 	void setExpFailure(float rate);
 
-	void setCreationTime(const int i);
+	void setExperimentingSkill(const string& exp);
+
+	void setAssemblySkill(const string& ass);
+
+	void setFinished();
 
 	int getAttributesToSetListSize();
 
@@ -222,15 +238,21 @@ public:
 
 	int getXp();
 
+	string& getExperimentingSkill();
+
+	string& getAssemblySkill();
+
 	int getExpPoints();
 
 	int getExpCounter();
 
 	float getExpFailure();
 
-	int getCreationTime();
-
 	DraftSchematicValues* getCraftingValues();
+
+	bool isFinished();
+
+	void toString();
 
 protected:
 	string _param1_addExperimentalProperty__int_string_int_;
@@ -239,6 +261,8 @@ protected:
 	string _param3_addIngredient__string_string_bool_string_int_;
 	string _param0_setTanoAttributes__string_;
 	string _param0_setXpType__string_;
+	string _param0_setExperimentingSkill__string_;
+	string _param0_setAssemblySkill__string_;
 	string _param0_addAttributeToSet__string_float_float_string_;
 	string _param3_addAttributeToSet__string_float_float_string_;
 };

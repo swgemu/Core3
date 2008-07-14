@@ -62,3 +62,14 @@ end
 -- DraftSchematics objects
 
 RunDraftSchematicFile("objects/draftschematics/genericCraftingTool.lua")
+RunDraftSchematicFile("objects/draftschematics/waterSurveyDevice.lua")
+RunDraftSchematicFile("objects/draftschematics/windCurrentSurveyingTool.lua")
+RunDraftSchematicFile("objects/draftschematics/chemicalSurveyDevice.lua")
+RunDraftSchematicFile("objects/draftschematics/solarEnergySurveyTool.lua")
+RunDraftSchematicFile("objects/draftschematics/mineralSurveyDevice.lua")
+RunDraftSchematicFile("objects/draftschematics/gasPocketSurveyDevice.lua")
+RunDraftSchematicFile("objects/draftschematics/floraSurveyTool.lua")
+RunDraftSchematicFile("objects/draftschematics/dlt20Rifle.lua")
+RunDraftSchematicFile("objects/draftschematics/blasterPowerHandler.lua")
+RunDraftSchematicFile("objects/draftschematics/blasterRifleBarrel.lua")
+ 

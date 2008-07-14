@@ -2545,19 +2545,19 @@ void Player::prepareCraftingSession(CraftingTool* ct, DraftSchematic* ds) {
 		((PlayerImplementation*) _impl)->prepareCraftingSession(ct, ds);
 }
 
-void Player::addResourceToCraft(ResourceContainer* rnco, int slot, int counter) {
+void Player::addIngredientToSlot(TangibleObject* tano, int slot, int counter) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 199);
-		method.addObjectParameter(rnco);
+		method.addObjectParameter(tano);
 		method.addSignedIntParameter(slot);
 		method.addSignedIntParameter(counter);
 
 		method.executeWithVoidReturn();
 	} else
-		((PlayerImplementation*) _impl)->addResourceToCraft(rnco, slot, counter);
+		((PlayerImplementation*) _impl)->addIngredientToSlot(tano, slot, counter);
 }
 
 void Player::removeResourceFromCraft(unsigned long long resID, int slot, int counter) {
@@ -3719,7 +3719,7 @@ Packet* PlayerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		prepareCraftingSession((CraftingTool*) inv->getObjectParameter(), (DraftSchematic*) inv->getObjectParameter());
 		break;
 	case 199:
-		addResourceToCraft((ResourceContainer*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
+		addIngredientToSlot((TangibleObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
 		break;
 	case 200:
 		removeResourceFromCraft(inv->getUnsignedLongParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
@@ -4635,8 +4635,8 @@ void PlayerAdapter::prepareCraftingSession(CraftingTool* ct, DraftSchematic* ds)
 	return ((PlayerImplementation*) impl)->prepareCraftingSession(ct, ds);
 }
 
-void PlayerAdapter::addResourceToCraft(ResourceContainer* rnco, int slot, int counter) {
-	return ((PlayerImplementation*) impl)->addResourceToCraft(rnco, slot, counter);
+void PlayerAdapter::addIngredientToSlot(TangibleObject* tano, int slot, int counter) {
+	return ((PlayerImplementation*) impl)->addIngredientToSlot(tano, slot, counter);
 }
 
 void PlayerAdapter::removeResourceFromCraft(unsigned long long resID, int slot, int counter) {

@@ -52,7 +52,6 @@ genericCraftingTool = Object:new {
   craftingToolTab = 4096,
   complexity = 10,
   size = 2,
-  creationTime = 7, 
 
   ingredientTemplateNames = "craft_item_ingredients_n, craft_item_ingredients_n, craft_item_ingredients_n",
   ingredientTitleNames = "assembly_enclosure, thermal_shielding, electronic_control_unit",
@@ -67,16 +66,24 @@ genericCraftingTool = Object:new {
 
   experimentalGroupTitles = "exp_effectiveness",
 
+  experimentalSubGroupCount = "1",
+
+  experimentalSubGroupTitles = "quality",
+
   tanoAttributes = "objecttype=32769:objectcrc=1055200365:objecttemp=generic_tool:",
 
   attributesToSet = "hitPoints, useModifier",
 
-  attributeExperimentalProperties = "null, exp_effectiveness",
+  attributeExperimentalProperties = "null, quality",
 
   attributesMinMax = "1000, 1000, -15, 15",
 
-  xpType = "general",
-  xp = 25
+  xpType = "crafting_general",
+  xp = 25,
+
+  assemblySkill = "general_assembly",
+  experimentingSkill = "general_experimentation"
+
 }
 
 DraftSchematics:addDraftSchematic(genericCraftingTool, 2914524854) --- Add to global DraftSchematics table

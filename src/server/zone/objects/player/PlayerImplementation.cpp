@@ -2783,14 +2783,14 @@ void PlayerImplementation::clearCurrentCraftingTool() {
 	currentCraftingTool = NULL;
 }
 
-void PlayerImplementation::prepareCraftingSession(CraftingTool * ct, DraftSchematic* ds) {
+void PlayerImplementation::prepareCraftingSession(CraftingTool* ct, DraftSchematic* ds) {
 	CraftingManager* craftingManager = server->getCraftingManager();
 	craftingManager->prepareCraftingSession(_this, ct, ds);
 }
 
-void PlayerImplementation::addResourceToCraft(ResourceContainer * rnco, int slot, int counter) {
+void PlayerImplementation::addIngredientToSlot(TangibleObject* tano, int slot, int counter) {
 	CraftingManager* craftingManager = server->getCraftingManager();
-	craftingManager->addResourceToCraft(_this, rnco, slot, counter);
+	craftingManager->addIngredientToSlot(_this, tano, slot, counter);
 }
 
 void PlayerImplementation::removeResourceFromCraft(uint64 resID, int slot, int counter) {

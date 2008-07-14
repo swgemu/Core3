@@ -138,6 +138,46 @@ void SurveyToolImplementation::sendRadialResponseTo(Player* player, ObjectMenuRe
 	player->sendMessage(omr);
 }
 
+void SurveyToolImplementation::generateAttributes(SceneObject* obj) {
+
+	if (!obj->isPlayer())
+		return;
+		
+	Player* player = (Player*) obj;
+	
+	AttributeListMessage* alm = new AttributeListMessage((TangibleObject*) _this);
+	
+	addAttributes(alm);
+	
+	player->sendMessage(alm);
+	
+}
+
+void SurveyToolImplementation::addAttributes(AttributeListMessage* alm) {
+	
+	alm->insertAttribute("volume", "1");
+	
+	if(craftersName != ""){ 
+		
+		alm->insertAttribute("crafter", craftersName);
+	}
+	if(craftedSerial != ""){
+		
+		alm->insertAttribute("serial_number", craftedSerial);
+	}
+	
+}
+
+void SurveyToolImplementation::parseItemAttributes() {
+
+	string temp = "craftersname";
+	craftersName = itemAttributes->getStringAttribute(temp);
+	
+	temp = "craftedserial";
+	craftedSerial = itemAttributes->getStringAttribute(temp);
+
+}
+
 void SurveyToolImplementation::sendSurveyEffect(Player* player) {
 	PlayClientEffectLoc* effect;
 	

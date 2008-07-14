@@ -69,13 +69,11 @@ CraftingToolImplementation::CraftingToolImplementation(CreatureObject* creature,
 }
  
 CraftingToolImplementation::~CraftingToolImplementation(){ 
-	resourceSlots.removeAll();
+	tempIngredient.removeAll();
 	
-	resourceSlotsCount.removeAll();
+	tabIds.removeAll();
 	
-	partialResources.removeAll();
-	
-	resourceSlotsID.removeAll();
+	schematicsToSend.removeAll();
 }
  
 void CraftingToolImplementation::init() {
@@ -87,12 +85,85 @@ void CraftingToolImplementation::init() {
 	currentDraftSchematic = NULL;
 	currentTano = NULL;
 	
+	craftingSlots = new CraftingSlots();
+	
 	status = "@crafting:tool_status_ready";
 	hopper = NULL;
 	
 	assemblyResults = 0;
 	
 	experimentingEnabled = false;
+	
+	tabIds.removeAll();
+	
+	if(objectCRC == 0x3EE5146D){
+	
+		setToolType(GENERIC);
+		tabIds.add(1);
+		tabIds.add(2);
+		tabIds.add(4);
+		tabIds.add(8);
+		tabIds.add(1024);
+		tabIds.add(4096);
+		tabIds.add(524288);
+	}
+	
+	if(objectCRC == 0x2CED1748){
+	
+		setToolType(CLOTHING);
+		tabIds.add(2);
+		tabIds.add(8);
+		tabIds.add(16384);
+		tabIds.add(32768);
+	}
+	
+	if(objectCRC == 0xA9D9972F){
+	
+		setToolType(FOOD);
+		tabIds.add(4);
+		tabIds.add(64);
+		tabIds.add(128);
+		tabIds.add(256);
+		tabIds.add(8192);
+		
+	}
+	
+	if(objectCRC == 0x2CF24272){
+		
+		setToolType(JEDI);
+		tabIds.add(2048);
+		
+	}
+	
+	if(objectCRC == 0xAD0E3DB0){
+		
+		setToolType(SPACE);
+		tabIds.add(131072);
+		tabIds.add(262144);
+		
+	}
+	
+	if(objectCRC == 0xFEDA0435){
+	
+		setToolType(STRUCTURE);
+		tabIds.add(512);
+		tabIds.add(1024);
+
+		
+	}
+	
+	if(objectCRC == 0x64F6D031){
+	
+		setToolType(WEAPON);
+		tabIds.add(1);
+		tabIds.add(16);
+		tabIds.add(32);
+		tabIds.add(4096);
+		tabIds.add(65536);
+		tabIds.add(524288);
+		
+	}
+	
 }
  
 int CraftingToolImplementation::useObject(Player* player) {
@@ -130,8 +201,8 @@ void CraftingToolImplementation::sendRadialResponseTo(Player* player, ObjectMenu
 }
 
 void CraftingToolImplementation::parseItemAttributes() {
-	string temp = "tooltype";
-	tooltype = itemAttributes->getIntAttribute(temp);
+	
+	string temp;
 	
 	temp = "effectiveness";
 	effectiveness = itemAttributes->getFloatAttribute(temp);
@@ -141,9 +212,7 @@ void CraftingToolImplementation::parseItemAttributes() {
 	
 	temp = "craftedserial";
 	craftedSerial = itemAttributes->getStringAttribute(temp);
-	
-	temp = "craftedserial";
-	craftedSerial = itemAttributes->getStringAttribute(temp);
+
 
 }
 
@@ -181,75 +250,171 @@ void CraftingToolImplementation::addAttributes(AttributeListMessage* alm) {
 	
 }
 
-void CraftingToolImplementation::updateCraftingValues(DraftSchematicValues * craftingValues){
+void CraftingToolImplementation::updateCraftingValues(DraftSchematicValues* craftingValues){
 	
 	string name;
 	
+	craftingValues->toString();
+	
+	
+	
 	name = "effectiveness";
-	effectiveness = craftingValues->getCurrentValue("useModifier");
+	effectiveness = craftingValues->getCurrentValue("quality");
 	itemAttributes->setFloatAttribute(name, effectiveness);
+	
 }
 
 void CraftingToolImplementation::sendToolStart(Player* player) {
 	
+	
+	DraftSchematic* draftSchematic;
+	float workingStationComplexity = 15;
+	int stationType = 0;
+	bool stationFound = false;
+	
 	// Get nearby crafting stations here
 	
-	experimentingEnabled = true;
-	craftingToolModifier = effectiveness + 45;  // 45 is station effectiveness
+	stationFound = findCraftingStation(player, workingStationComplexity);
+	
+	if(stationFound)
+		
+		experimentingEnabled = true;
+	
+	else 
+		
+		experimentingEnabled = false;
 	
 	
 	// Craft Start
-	// Tano7
-	
+	// Tano7	
 	TangibleObjectMessage7* tano7 = new TangibleObjectMessage7(_this);
 	player->sendMessage(tano7); 
 	
 	// DPlay9
 	PlayerObjectDeltaMessage9* dplay9 = new PlayerObjectDeltaMessage9(player->getPlayerObject());
-    dplay9->setExperimentationPoints(0);
+	dplay9->setExperimentationPoints(0);
 	dplay9->setExperimentationEnabled(experimentingEnabled);
 	dplay9->setCraftingState(1);
 	setCraftingState(1);
 	dplay9->close();
 	player->sendMessage(dplay9);
+
+	// Get schematics based on type of tool and complexity level
+	getSchematicsForTool(player, workingStationComplexity);
 	
 	// Tool Start
 	// Obj Controller Msg
+	
 	ObjectControllerMessage* ocm = new ObjectControllerMessage(player->getObjectID(),0x0B, 0x102);
 	ocm->insertLong(getObjectID());
-	ocm->insertLong(0x00);	
-	uint32 draftSchematicListSize = player->getDraftSchematicListSize();
+	ocm->insertLong(0x00);
+	uint32 draftSchematicListSize = schematicsToSend.size();
 	ocm->insertInt(draftSchematicListSize);
-	
-	for(int i = 0; i < draftSchematicListSize; i++) {
-		DraftSchematic* draftSchematic = player->getDraftSchematic(i);
+
+	for(int i = 0; i < draftSchematicListSize; ++i){
+		
+		draftSchematic = schematicsToSend.get(i);
+		
 		ocm->insertInt(draftSchematic->getSchematicID());
 		ocm->insertInt(draftSchematic->getSchematicCRC());
-		ocm->insertInt(draftSchematic->getCraftingToolTab());		// this number decides what tab the schematic goes in (ex: 4 = food tab in crafting window)
+		ocm->insertInt(draftSchematic->getCraftingToolTab()); // this number decides what tab the schematic goes in (ex: 4 = food tab in crafting window)
+		
 	}
+
 	player->sendMessage(ocm);
 
-	// This is inefficent but for now it works fine
-	// Sends all the ingredients and experimental props to the player
-	
-	for(int i = 0; i < draftSchematicListSize; i++) {
-		DraftSchematic* draftSchematic = player->getDraftSchematic(i);
-		if(draftSchematic != NULL) {
-			draftSchematic->sendIngredientsToPlayer(player);
-		}
+	for(int i = 0; i < draftSchematicListSize; ++i){
+		
+		draftSchematic = schematicsToSend.get(i);
+		
+		draftSchematic->sendIngredientsToPlayer(player);
+
 	}
 	
-	for(int i = 0; i < draftSchematicListSize; i++) {
-		DraftSchematic* draftSchematic = player->getDraftSchematic(i);
-		if(draftSchematic != NULL) {
-			draftSchematic->sendExperimentalPropertiesToPlayer(player);
-		}
+	for(int i = 0; i < draftSchematicListSize; ++i){
+		
+		draftSchematic = schematicsToSend.get(i);
+		
+		draftSchematic->sendExperimentalPropertiesToPlayer(player);
+
 	}
-	
+
 	player->setCurrentCraftingTool(_this);
 }
 
-void CraftingToolImplementation::setWorkingTano(TangibleObject * tano){
+void CraftingToolImplementation::getSchematicsForTool(Player* player, float workingStationComplexity){
+	
+	bool toolUsesTab;
+	schematicsToSend.removeAll();
+	
+	for (int i = 0; i < player->getDraftSchematicListSize(); i++) {
+		DraftSchematic* draftSchematic = player->getDraftSchematic(i);
+		
+		if (draftSchematic != NULL) {
+
+			toolUsesTab = false;
+			
+			for (int j = 0; j < tabIds.size(); ++j) {
+
+				if (tabIds.get(j) == draftSchematic->getCraftingToolTab()) {
+
+					toolUsesTab = true;
+					break;
+				}
+
+			}
+
+			if (workingStationComplexity >= draftSchematic->getComplexity()
+					&& toolUsesTab) {
+
+				schematicsToSend.add(draftSchematic);
+				cout << "Adding schematic = " << draftSchematic->getName() << endl;
+				
+			}
+		}
+	}
+}
+
+bool CraftingToolImplementation::findCraftingStation(Player* player, float& workingStationComplexity){
+	
+	QuadTreeEntry* entry;
+	TangibleObject* inRangeObject;
+	CraftingStation* station;
+	uint64 oid;
+	ZoneServer* server = player->getZone()->getZoneServer();
+	
+	int closeObjectCount = player->inRangeObjectCount();
+
+	for(int i = 0; i < closeObjectCount; ++i){
+		
+		entry = player->getInRangeObject(i);
+		
+		oid = entry->getObjectID();
+		
+		inRangeObject = (TangibleObject*)server->getObject(oid);
+		
+		if(inRangeObject != NULL){
+			
+			if(inRangeObject->isCraftingStation() && player->isInRange(inRangeObject, 6.0f)){
+				
+				station = (CraftingStation*)inRangeObject;
+				
+				cout << "Station = " << station->getStationType() << "   Tool = " << _this->getToolType() << endl;
+				
+				if(_this->getToolType() == station->getStationType() || 
+						(_this->getToolType() == JEDI && station->getStationType() == WEAPON)){
+				
+					workingStationComplexity = ((CraftingStation*)inRangeObject)->getEffectiveness();
+					return true;
+					
+				}
+			}
+		}	
+	}
+	return false;
+}
+
+void CraftingToolImplementation::setWorkingTano(TangibleObject* tano){
 	if(currentTano != NULL) {
 
 		currentTano->setContainer(NULL);
@@ -260,7 +425,7 @@ void CraftingToolImplementation::setWorkingTano(TangibleObject * tano){
 	currentTano = tano;
 }
 
-void CraftingToolImplementation::setWorkingDraftSchematic(DraftSchematic * draftSchematic){ 
+void CraftingToolImplementation::setWorkingDraftSchematic(DraftSchematic* draftSchematic){ 
 	
 	draftSchematic->lock();
 	
@@ -273,8 +438,8 @@ void CraftingToolImplementation::setWorkingDraftSchematic(DraftSchematic * draft
 		}
 		
 		// This will be replaced but the built in cloning method when available
-		DraftSchematic* clonedDS = draftSchematic->dsClone(draftSchematic);
-		currentDraftSchematic = clonedDS;
+
+	currentDraftSchematic = draftSchematic->dsClone(draftSchematic);
 		
 		
 		draftSchematic->unlock();
@@ -286,44 +451,36 @@ void CraftingToolImplementation::setWorkingDraftSchematic(DraftSchematic * draft
 	}
 }
 
-void CraftingToolImplementation::clearResourceSlots(){
-	
-	resourceSlots.removeAll();
-	
-	for(int i = 0; i < currentDraftSchematic->getIngredientListSize(); i++){
-		resourceSlots.add("NULL");
-	}
-	
-	resourceSlotsCount.removeAll();
-	
-	for(int i = 0; i < currentDraftSchematic->getIngredientListSize(); i++){
-		resourceSlotsCount.add(0);
+void CraftingToolImplementation::resetSlots() {
+
+	if (currentDraftSchematic != NULL) {
+		
+		craftingSlots->init(currentDraftSchematic->getIngredientListSize());
+		
+	} else {
+		
+		craftingSlots->init(0);
 		
 	}
-	
-	resourceSlotsID.removeAll();
-	
-	for(int i = 0; i < currentDraftSchematic->getIngredientListSize(); i++){
-		resourceSlotsID.add(0);
-	}
+
 }
 
-Container * CraftingToolImplementation::getHopper(Player * player){
+Container* CraftingToolImplementation::getHopper(Player* player){
 	if(hopper == NULL){
-		Container * hop = new Container(player->getNewItemID());
+		Container* hop = new Container(player->getNewItemID());
 	}
 	return hopper;
 }
 
-void CraftingToolImplementation::retriveHopperItem(Player * player){
+void CraftingToolImplementation::retriveHopperItem(Player* player){
 	
-	ItemManager * itemManager = player->getZone()->getZoneServer()->getItemManager();
+	ItemManager* itemManager = player->getZone()->getZoneServer()->getItemManager();
 	Inventory* inventory = player->getInventory();
 	
 	if(hopper != NULL){
 		if(hopper->objectsSize() > 0 && inventory->getObjectCount() < 80){
 			
-			TangibleObject * tano = (TangibleObject*) hopper->getObject(0);
+			TangibleObject* tano = (TangibleObject*) hopper->getObject(0);
 			hopper->removeObject(0);
 			player->addInventoryItem(tano);
 			
@@ -339,18 +496,38 @@ void CraftingToolImplementation::retriveHopperItem(Player * player){
 		}
 	}
 }
-void CraftingToolImplementation::cleanUp(Player * player) {
+void CraftingToolImplementation::cleanUp(Player* player) {
 
-	CraftingManager * cm = player->getZone()->getZoneServer()->getCraftingManager();
-	string name;
+	CraftingManager* cm = player->getZone()->getZoneServer()->getCraftingManager();
+	TangibleObject* tano;
+
 	int quantity;
-	
-	if(recoverResources){
-		for(int i = 0; i < resourceSlots.size(); ++i){
-			name = resourceSlots.get(i);
-			quantity = resourceSlotsCount.get(i);
-			if(quantity != 0){
-				cm->putResourceBackInInventory(player, name, quantity);
+
+	if (recoverResources) {
+		for (int i = 0; i < craftingSlots->size(); ++i) {
+
+			tano = craftingSlots->getIngredientInSlot(quantity, i);
+			
+			craftingSlots->clearIngredientInSlot(i);
+
+			if (tano != NULL) {
+
+				if (tano->isResource()) {
+
+					ResourceContainer* rcno = (ResourceContainer*)tano;
+
+					if (quantity != 0) {
+
+						cm->putResourceBackInInventory(player, rcno);
+
+					}
+
+				} else {
+					
+					
+					cm->putComponentBackInInventory(player, tano);
+
+				}
 			}
 		}
 	}
@@ -379,18 +556,13 @@ void CraftingToolImplementation::cleanUp(Player * player) {
 		currentTano = NULL;
 	}
 	
-	uint64 resID;
-	TangibleObject * tano;
-	
-	for(int i = 0; i < partialResources.size(); ++i){
+	for(int i = 0; i < tempIngredient.size(); ++i){
 		
-		resID = partialResources.get(i);
-		
-		tano = (TangibleObject*)player->getZone()->lookupObject(resID);
+		tano = tempIngredient.get(i);
 		
 		if(tano != NULL){
 			
-			SceneObjectDestroyMessage* destroy = new SceneObjectDestroyMessage(resID);
+			SceneObjectDestroyMessage* destroy = new SceneObjectDestroyMessage(tano->getObjectID());
 			player->sendMessage(destroy);
 			
 			tano->setContainer(NULL);
@@ -402,9 +574,7 @@ void CraftingToolImplementation::cleanUp(Player * player) {
 		tano = NULL;
 		
 	}
-	
-	resourceSlots.removeAll();
-	resourceSlotsID.removeAll();
-	resourceSlotsCount.removeAll();
-	partialResources.removeAll();
+
+	tempIngredient.removeAll();
+	schematicsToSend.removeAll();
 }

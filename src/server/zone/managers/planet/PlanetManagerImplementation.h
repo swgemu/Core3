@@ -114,6 +114,9 @@ private:
 	void loadGuildTerminals();
 	void loadVendorTerminals();
 	
+	void loadCraftingStations();
+	string getStationName(uint64 crc);
+	
 	BuildingObject* loadBuilding(uint64 oid, int planet);
 	
 	void clearShuttles();

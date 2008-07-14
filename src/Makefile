@@ -89,21 +89,22 @@ am__installdirs = "$(DESTDIR)$(bindir)"
 binPROGRAMS_INSTALL = $(INSTALL_PROGRAM)
 PROGRAMS = $(bin_PROGRAMS)
 am__objects_1 = Zone.$(OBJEXT) ZoneClient.$(OBJEXT) \
-	ZoneServer.$(OBJEXT) AuctionItem.$(OBJEXT) \
-	SceneObject.$(OBJEXT) CreatureObject.$(OBJEXT) \
-	Creature.$(OBJEXT) CreatureGroup.$(OBJEXT) \
-	ShuttleCreature.$(OBJEXT) TrainerCreature.$(OBJEXT) \
-	RecruiterCreature.$(OBJEXT) MountCreature.$(OBJEXT) \
-	Player.$(OBJEXT) PlayerObject.$(OBJEXT) SuiBox.$(OBJEXT) \
-	SuiListBox.$(OBJEXT) SuiMessageBox.$(OBJEXT) \
-	SuiInputBox.$(OBJEXT) SuiTransferBox.$(OBJEXT) \
-	SuiBankTransferBox.$(OBJEXT) SuiColorPicker.$(OBJEXT) \
-	TangibleObject.$(OBJEXT) Container.$(OBJEXT) \
-	Inventory.$(OBJEXT) Datapad.$(OBJEXT) Bank.$(OBJEXT) \
-	MissionBag.$(OBJEXT) Weapon.$(OBJEXT) JediWeapon.$(OBJEXT) \
-	RangedWeapon.$(OBJEXT) MeleeWeapon.$(OBJEXT) \
-	CarbineRangedWeapon.$(OBJEXT) RifleRangedWeapon.$(OBJEXT) \
-	PistolRangedWeapon.$(OBJEXT) \
+	ZoneServer.$(OBJEXT) AttackableObject.$(OBJEXT) \
+	AuctionItem.$(OBJEXT) SceneObject.$(OBJEXT) \
+	CreatureObject.$(OBJEXT) Creature.$(OBJEXT) \
+	CreatureGroup.$(OBJEXT) ShuttleCreature.$(OBJEXT) \
+	TrainerCreature.$(OBJEXT) BlueFrogCreature.$(OBJEXT) \
+	BlueFrogVector.$(OBJEXT) RecruiterCreature.$(OBJEXT) \
+	MountCreature.$(OBJEXT) Player.$(OBJEXT) FriendsList.$(OBJEXT) \
+	PlayerObject.$(OBJEXT) SuiBox.$(OBJEXT) SuiListBox.$(OBJEXT) \
+	SuiMessageBox.$(OBJEXT) SuiInputBox.$(OBJEXT) \
+	SuiTransferBox.$(OBJEXT) SuiBankTransferBox.$(OBJEXT) \
+	SuiColorPicker.$(OBJEXT) TangibleObject.$(OBJEXT) \
+	Container.$(OBJEXT) Inventory.$(OBJEXT) Datapad.$(OBJEXT) \
+	Bank.$(OBJEXT) MissionBag.$(OBJEXT) Weapon.$(OBJEXT) \
+	JediWeapon.$(OBJEXT) RangedWeapon.$(OBJEXT) \
+	MeleeWeapon.$(OBJEXT) CarbineRangedWeapon.$(OBJEXT) \
+	RifleRangedWeapon.$(OBJEXT) PistolRangedWeapon.$(OBJEXT) \
 	SpecialHeavyRangedWeapon.$(OBJEXT) HeavyRangedWeapon.$(OBJEXT) \
 	OneHandedMeleeWeapon.$(OBJEXT) TwoHandedMeleeWeapon.$(OBJEXT) \
 	UnarmedMeleeWeapon.$(OBJEXT) PolearmMeleeWeapon.$(OBJEXT) \
@@ -114,7 +115,8 @@ am__objects_1 = Zone.$(OBJEXT) ZoneClient.$(OBJEXT) \
 	GuildTerminal.$(OBJEXT) VendorTerminal.$(OBJEXT) \
 	RegionBazaar.$(OBJEXT) TicketCollector.$(OBJEXT) \
 	Instrument.$(OBJEXT) LairObject.$(OBJEXT) SurveyTool.$(OBJEXT) \
-	CraftingTool.$(OBJEXT) CraftingStation.$(OBJEXT) \
+	CraftingTool.$(OBJEXT) Component.$(OBJEXT) \
+	FactoryCrate.$(OBJEXT) CraftingStation.$(OBJEXT) \
 	ResourceContainer.$(OBJEXT) Attachment.$(OBJEXT) \
 	Powerup.$(OBJEXT) Holocron.$(OBJEXT) Firework.$(OBJEXT) \
 	CreatureInventory.$(OBJEXT) IntangibleObject.$(OBJEXT) \
@@ -124,16 +126,17 @@ am__objects_1 = Zone.$(OBJEXT) ZoneClient.$(OBJEXT) \
 	DraftSchematicGroup.$(OBJEXT) \
 	DraftSchematicIngredient.$(OBJEXT) \
 	DraftSchematicExpPropGroup.$(OBJEXT) \
-	ManufactureSchematic.$(OBJEXT) MissionObject.$(OBJEXT) \
-	WaypointObject.$(OBJEXT) ShipComponent.$(OBJEXT) \
-	ShipObject.$(OBJEXT) GuildMap.$(OBJEXT) GuildManager.$(OBJEXT) \
-	PlayerMap.$(OBJEXT) PlayerManager.$(OBJEXT) \
-	CraftingManager.$(OBJEXT) CreatureManager.$(OBJEXT) \
-	ItemManager.$(OBJEXT) UserManager.$(OBJEXT) \
-	PlanetManager.$(OBJEXT) ResourceManager.$(OBJEXT) \
-	LootManager.$(OBJEXT) BazaarManager.$(OBJEXT) \
-	BazaarPlanetManager.$(OBJEXT) BankManager.$(OBJEXT) \
-	ChatRoom.$(OBJEXT) ChatManager.$(OBJEXT)
+	DraftSchematicAttribute.$(OBJEXT) \
+	DraftSchematicValues.$(OBJEXT) ManufactureSchematic.$(OBJEXT) \
+	MissionObject.$(OBJEXT) WaypointObject.$(OBJEXT) \
+	ShipComponent.$(OBJEXT) ShipObject.$(OBJEXT) \
+	GuildMap.$(OBJEXT) GuildManager.$(OBJEXT) PlayerMap.$(OBJEXT) \
+	PlayerManager.$(OBJEXT) CraftingManager.$(OBJEXT) \
+	CreatureManager.$(OBJEXT) ItemManager.$(OBJEXT) \
+	UserManager.$(OBJEXT) PlanetManager.$(OBJEXT) \
+	ResourceManager.$(OBJEXT) LootManager.$(OBJEXT) \
+	BazaarManager.$(OBJEXT) BazaarPlanetManager.$(OBJEXT) \
+	BankManager.$(OBJEXT) ChatRoom.$(OBJEXT) ChatManager.$(OBJEXT)
 am_core3_OBJECTS = $(am__objects_1) ServerCore.$(OBJEXT) \
 	ConfigManager.$(OBJEXT) ServerDatabase.$(OBJEXT) \
 	LoginServer.$(OBJEXT) LoginPacketHandler.$(OBJEXT) \
@@ -143,6 +146,7 @@ am_core3_OBJECTS = $(am__objects_1) ServerCore.$(OBJEXT) \
 	ZoneServerImplementation.$(OBJEXT) ZonePacketHandler.$(OBJEXT) \
 	ZoneProcessServerImplementation.$(OBJEXT) \
 	ZoneMessageProcessorThread.$(OBJEXT) \
+	AttackableObjectImplementation.$(OBJEXT) \
 	BuildingObjectImplementation.$(OBJEXT) \
 	CellObjectImplementation.$(OBJEXT) \
 	GuildImplementation.$(OBJEXT) \
@@ -155,11 +159,14 @@ am_core3_OBJECTS = $(am__objects_1) ServerCore.$(OBJEXT) \
 	SurveyToolImplementation.$(OBJEXT) \
 	CraftingToolImplementation.$(OBJEXT) \
 	CraftingStationImplementation.$(OBJEXT) \
+	ComponentImplementation.$(OBJEXT) \
+	FactoryCrateImplementation.$(OBJEXT) \
 	ResourceContainerImplementation.$(OBJEXT) \
 	AttachmentImplementation.$(OBJEXT) \
 	PowerupImplementation.$(OBJEXT) TicketImplementation.$(OBJEXT) \
 	TicketCollectorImplementation.$(OBJEXT) \
 	CreatureInventoryImplementation.$(OBJEXT) \
+	MissionObjectImplementation.$(OBJEXT) \
 	StaticObjectImplementation.$(OBJEXT) \
 	PlayerImplementation.$(OBJEXT) \
 	PlayerObjectImplementation.$(OBJEXT) \
@@ -174,6 +181,7 @@ am_core3_OBJECTS = $(am__objects_1) ServerCore.$(OBJEXT) \
 	CreatureObjectImplementation.$(OBJEXT) \
 	ShuttleCreatureImplementation.$(OBJEXT) \
 	TrainerCreatureImplementation.$(OBJEXT) \
+	BlueFrogCreatureImplementation.$(OBJEXT) \
 	MountCreatureImplementation.$(OBJEXT) \
 	SceneObjectImplementation.$(OBJEXT) \
 	ShipObjectImplementation.$(OBJEXT) ObjectManager.$(OBJEXT) \
@@ -182,6 +190,7 @@ am_core3_OBJECTS = $(am__objects_1) ServerCore.$(OBJEXT) \
 	ProfessionManager.$(OBJEXT) SkillManager.$(OBJEXT) \
 	ScriptAttacksManager.$(OBJEXT) PerformanceManager.$(OBJEXT) \
 	CustomizationManager.$(OBJEXT) \
+	ImageDesignCustomization.$(OBJEXT) \
 	ItemManagerImplementation.$(OBJEXT) \
 	UserManagerImplementation.$(OBJEXT) RadialManager.$(OBJEXT) \
 	GroupManager.$(OBJEXT) CraftingManagerImplementation.$(OBJEXT) \
@@ -211,11 +220,11 @@ DIST_SOURCES = $(core3_SOURCES)
 ETAGS = etags
 CTAGS = ctags
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
-ACLOCAL = ${SHELL} /cygdrive/c/workspace2/MMOCoreORB/build/unix/config/missing --run aclocal-1.10
-AMTAR = ${SHELL} /cygdrive/c/workspace2/MMOCoreORB/build/unix/config/missing --run tar
-AUTOCONF = ${SHELL} /cygdrive/c/workspace2/MMOCoreORB/build/unix/config/missing --run autoconf
-AUTOHEADER = ${SHELL} /cygdrive/c/workspace2/MMOCoreORB/build/unix/config/missing --run autoheader
-AUTOMAKE = ${SHELL} /cygdrive/c/workspace2/MMOCoreORB/build/unix/config/missing --run automake-1.10
+ACLOCAL = ${SHELL} /cygdrive/c/workspace/MMOCoreORB/build/unix/config/missing --run aclocal-1.10
+AMTAR = ${SHELL} /cygdrive/c/workspace/MMOCoreORB/build/unix/config/missing --run tar
+AUTOCONF = ${SHELL} /cygdrive/c/workspace/MMOCoreORB/build/unix/config/missing --run autoconf
+AUTOHEADER = ${SHELL} /cygdrive/c/workspace/MMOCoreORB/build/unix/config/missing --run autoheader
+AUTOMAKE = ${SHELL} /cygdrive/c/workspace/MMOCoreORB/build/unix/config/missing --run automake-1.10
 AWK = gawk
 CFLAGS = 
 CPPFLAGS = 
@@ -241,7 +250,7 @@ LIBS = $(SYSTEM_LIBS)  \
 	-lmysqlclient -lz -lengine3 -llua
 
 LTLIBOBJS = 
-MAKEINFO = ${SHELL} /cygdrive/c/workspace2/MMOCoreORB/build/unix/config/missing --run makeinfo
+MAKEINFO = ${SHELL} /cygdrive/c/workspace/MMOCoreORB/build/unix/config/missing --run makeinfo
 MKDIR_P = /usr/bin/mkdir -p
 OBJEXT = o
 PACKAGE = core3
@@ -260,10 +269,10 @@ SYSTEM_LIBS = -lpthread -lwsock32
 USER_INCLUDES_PATH = /usr/local/include
 USER_LIBS_PATH = /usr/local/lib
 VERSION = 1.0
-abs_builddir = /cygdrive/c/workspace2/MMOCoreORB/src
-abs_srcdir = /cygdrive/c/workspace2/MMOCoreORB/src
-abs_top_builddir = /cygdrive/c/workspace2/MMOCoreORB
-abs_top_srcdir = /cygdrive/c/workspace2/MMOCoreORB
+abs_builddir = /cygdrive/c/workspace/MMOCoreORB/src
+abs_srcdir = /cygdrive/c/workspace/MMOCoreORB/src
+abs_top_builddir = /cygdrive/c/workspace/MMOCoreORB
+abs_top_srcdir = /cygdrive/c/workspace/MMOCoreORB
 ac_ct_CXX = g++
 am__include = include
 am__leading_dot = .
@@ -290,7 +299,7 @@ host_vendor = pc
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
-install_sh = $(SHELL) /cygdrive/c/workspace2/MMOCoreORB/build/unix/config/install-sh
+install_sh = $(SHELL) /cygdrive/c/workspace/MMOCoreORB/build/unix/config/install-sh
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
 localedir = ${datarootdir}/locale
@@ -322,6 +331,7 @@ INCLUDES = $(SYSTEM_INCLUDES) \
 core3_IDLS = server/zone/Zone.cpp \
 		server/zone/ZoneClient.cpp \
 		server/zone/ZoneServer.cpp \
+		server/zone/objects/attackable/AttackableObject.cpp \
 		server/zone/objects/auction/AuctionItem.cpp \
 		server/zone/objects/scene/SceneObject.cpp \
 		server/zone/objects/creature/CreatureObject.cpp \
@@ -329,9 +339,12 @@ core3_IDLS = server/zone/Zone.cpp \
 		server/zone/objects/creature/CreatureGroup.cpp \
 		server/zone/objects/creature/shuttle/ShuttleCreature.cpp \
 		server/zone/objects/creature/trainer/TrainerCreature.cpp \
+		server/zone/objects/creature/bluefrog/BlueFrogCreature.cpp \
+		server/zone/objects/creature/bluefrog/BlueFrogVector.cpp \
 		server/zone/objects/creature/recruiter/RecruiterCreature.cpp \
 		server/zone/objects/creature/mount/MountCreature.cpp \
 		server/zone/objects/player/Player.cpp \
+                server/zone/objects/player/FriendsList.cpp \
 		server/zone/objects/player/PlayerObject.cpp \
 		server/zone/objects/player/sui/SuiBox.cpp \
 		server/zone/objects/player/sui/listbox/SuiListBox.cpp \
@@ -376,6 +389,8 @@ core3_IDLS = server/zone/Zone.cpp \
 		server/zone/objects/attackable/lair/LairObject.cpp \
 		server/zone/objects/tangible/surveytool/SurveyTool.cpp \
 		server/zone/objects/tangible/crafting/CraftingTool.cpp \
+                server/zone/objects/tangible/crafting/component/Component.cpp \
+                server/zone/objects/tangible/crafting/factorycrate/FactoryCrate.cpp \
 		server/zone/objects/tangible/crafting/CraftingStation.cpp \
 		server/zone/objects/tangible/resource/ResourceContainer.cpp \
 		server/zone/objects/tangible/attachment/Attachment.cpp \
@@ -394,6 +409,8 @@ core3_IDLS = server/zone/Zone.cpp \
 		server/zone/objects/draftschematic/DraftSchematicGroup.cpp \
 		server/zone/objects/draftschematic/DraftSchematicIngredient.cpp \
 		server/zone/objects/draftschematic/DraftSchematicExpPropGroup.cpp \
+		server/zone/objects/draftschematic/DraftSchematicAttribute.cpp \
+		server/zone/objects/draftschematic/DraftSchematicValues.cpp \
 		server/zone/objects/manufacture/ManufactureSchematic.cpp \
 		server/zone/objects/mission/MissionObject.cpp \
 		server/zone/objects/waypoint/WaypointObject.cpp \
@@ -429,6 +446,7 @@ core3_SOURCES = $(core3_IDLS) \
 		server/zone/ZonePacketHandler.cpp \
 		server/zone/ZoneProcessServerImplementation.cpp \
 		server/zone/ZoneMessageProcessorThread.cpp \
+		server/zone/objects/attackable/AttackableObjectImplementation.cpp \
 		server/zone/objects/building/BuildingObjectImplementation.cpp \
 		server/zone/objects/building/cell/CellObjectImplementation.cpp \
 		server/zone/objects/guild/GuildImplementation.cpp \
@@ -442,12 +460,15 @@ core3_SOURCES = $(core3_IDLS) \
 		server/zone/objects/tangible/surveytool/SurveyToolImplementation.cpp \
 		server/zone/objects/tangible/crafting/CraftingToolImplementation.cpp \
 		server/zone/objects/tangible/crafting/CraftingStationImplementation.cpp \
+                server/zone/objects/tangible/crafting/component/ComponentImplementation.cpp \
+                server/zone/objects/tangible/crafting/factorycrate/FactoryCrateImplementation.cpp \
 		server/zone/objects/tangible/resource/ResourceContainerImplementation.cpp \
 		server/zone/objects/tangible/attachment/AttachmentImplementation.cpp \
 		server/zone/objects/tangible/powerup/PowerupImplementation.cpp \
 		server/zone/objects/tangible/ticket/TicketImplementation.cpp \
 		server/zone/objects/tangible/ticketcollector/TicketCollectorImplementation.cpp \
 		server/zone/objects/tangible/inventory/CreatureInventoryImplementation.cpp \
+		server/zone/objects/mission/MissionObjectImplementation.cpp \
 		server/zone/objects/static/StaticObjectImplementation.cpp \
 		server/zone/objects/player/PlayerImplementation.cpp \
 		server/zone/objects/player/PlayerObjectImplementation.cpp \
@@ -462,6 +483,7 @@ core3_SOURCES = $(core3_IDLS) \
 		server/zone/objects/creature/CreatureObjectImplementation.cpp \
 		server/zone/objects/creature/shuttle/ShuttleCreatureImplementation.cpp \
 		server/zone/objects/creature/trainer/TrainerCreatureImplementation.cpp \
+		server/zone/objects/creature/bluefrog/BlueFrogCreatureImplementation.cpp \
 		server/zone/objects/creature/mount/MountCreatureImplementation.cpp \
 		server/zone/objects/scene/SceneObjectImplementation.cpp \
 		server/zone/objects/ship/ShipObjectImplementation.cpp \
@@ -473,6 +495,7 @@ core3_SOURCES = $(core3_IDLS) \
 		server/zone/managers/skills/ScriptAttacksManager.cpp \
 		server/zone/managers/skills/performance/PerformanceManager.cpp \
 		server/zone/managers/skills/imagedesign/CustomizationManager.cpp \
+		server/zone/managers/skills/imagedesign/ImageDesignCustomization.cpp \
 		server/zone/managers/item/ItemManagerImplementation.cpp \
 		server/zone/managers/user/UserManagerImplementation.cpp \
 		server/zone/managers/radial/RadialManager.cpp \
@@ -564,6 +587,8 @@ include ./$(DEPDIR)/Armor.Po
 include ./$(DEPDIR)/ArmorImplementation.Po
 include ./$(DEPDIR)/Attachment.Po
 include ./$(DEPDIR)/AttachmentImplementation.Po
+include ./$(DEPDIR)/AttackableObject.Po
+include ./$(DEPDIR)/AttackableObjectImplementation.Po
 include ./$(DEPDIR)/AuctionItem.Po
 include ./$(DEPDIR)/Bank.Po
 include ./$(DEPDIR)/BankManager.Po
@@ -572,6 +597,9 @@ include ./$(DEPDIR)/BazaarManager.Po
 include ./$(DEPDIR)/BazaarManagerImplementation.Po
 include ./$(DEPDIR)/BazaarPlanetManager.Po
 include ./$(DEPDIR)/BazaarPlanetManagerImplementation.Po
+include ./$(DEPDIR)/BlueFrogCreature.Po
+include ./$(DEPDIR)/BlueFrogCreatureImplementation.Po
+include ./$(DEPDIR)/BlueFrogVector.Po
 include ./$(DEPDIR)/BuildingObject.Po
 include ./$(DEPDIR)/BuildingObjectImplementation.Po
 include ./$(DEPDIR)/CarbineRangedWeapon.Po
@@ -583,6 +611,8 @@ include ./$(DEPDIR)/ChatRoom.Po
 include ./$(DEPDIR)/ChatRoomImplementation.Po
 include ./$(DEPDIR)/CombatManager.Po
 include ./$(DEPDIR)/CommandQueueAction.Po
+include ./$(DEPDIR)/Component.Po
+include ./$(DEPDIR)/ComponentImplementation.Po
 include ./$(DEPDIR)/ConfigManager.Po
 include ./$(DEPDIR)/Container.Po
 include ./$(DEPDIR)/ContainerImplementation.Po
@@ -601,13 +631,19 @@ include ./$(DEPDIR)/CreatureManager.Po
 include ./$(DEPDIR)/CreatureManagerImplementation.Po
 include ./$(DEPDIR)/CreatureObject.Po
 include ./$(DEPDIR)/CreatureObjectImplementation.Po
+include ./$(DEPDIR)/CustomizationManager.Po
 include ./$(DEPDIR)/Datapad.Po
 include ./$(DEPDIR)/DraftSchematic.Po
+include ./$(DEPDIR)/DraftSchematicAttribute.Po
 include ./$(DEPDIR)/DraftSchematicExpPropGroup.Po
 include ./$(DEPDIR)/DraftSchematicGroup.Po
 include ./$(DEPDIR)/DraftSchematicIngredient.Po
+include ./$(DEPDIR)/DraftSchematicValues.Po
+include ./$(DEPDIR)/FactoryCrate.Po
+include ./$(DEPDIR)/FactoryCrateImplementation.Po
 include ./$(DEPDIR)/Firework.Po
 include ./$(DEPDIR)/FireworkWorld.Po
+include ./$(DEPDIR)/FriendsList.Po
 include ./$(DEPDIR)/GroupManager.Po
 include ./$(DEPDIR)/GroupObject.Po
 include ./$(DEPDIR)/GroupObjectImplementation.Po
@@ -620,6 +656,7 @@ include ./$(DEPDIR)/GuildTerminal.Po
 include ./$(DEPDIR)/HairObject.Po
 include ./$(DEPDIR)/HeavyRangedWeapon.Po
 include ./$(DEPDIR)/Holocron.Po
+include ./$(DEPDIR)/ImageDesignCustomization.Po
 include ./$(DEPDIR)/Instrument.Po
 include ./$(DEPDIR)/IntangibleObject.Po
 include ./$(DEPDIR)/IntangibleObjectImplementation.Po
@@ -638,6 +675,7 @@ include ./$(DEPDIR)/ManufactureSchematic.Po
 include ./$(DEPDIR)/MeleeWeapon.Po
 include ./$(DEPDIR)/MissionBag.Po
 include ./$(DEPDIR)/MissionObject.Po
+include ./$(DEPDIR)/MissionObjectImplementation.Po
 include ./$(DEPDIR)/MountCreature.Po
 include ./$(DEPDIR)/MountCreatureImplementation.Po
 include ./$(DEPDIR)/NameManager.Po
@@ -646,7 +684,6 @@ include ./$(DEPDIR)/ObjectManager.Po
 include ./$(DEPDIR)/OneHandedJediWeapon.Po
 include ./$(DEPDIR)/OneHandedMeleeWeapon.Po
 include ./$(DEPDIR)/PerformanceManager.Po
-include ./$(DEPDIR)/CustomizationManager.Po
 include ./$(DEPDIR)/PistolRangedWeapon.Po
 include ./$(DEPDIR)/PlanetManager.Po
 include ./$(DEPDIR)/PlanetManagerImplementation.Po
@@ -789,6 +826,20 @@ ZoneServer.obj: server/zone/ZoneServer.cpp
 #	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
 #	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ZoneServer.obj `if test -f 'server/zone/ZoneServer.cpp'; then $(CYGPATH_W) 'server/zone/ZoneServer.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/ZoneServer.cpp'; fi`
 
+AttackableObject.o: server/zone/objects/attackable/AttackableObject.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT AttackableObject.o -MD -MP -MF $(DEPDIR)/AttackableObject.Tpo -c -o AttackableObject.o `test -f 'server/zone/objects/attackable/AttackableObject.cpp' || echo '$(srcdir)/'`server/zone/objects/attackable/AttackableObject.cpp
+	mv -f $(DEPDIR)/AttackableObject.Tpo $(DEPDIR)/AttackableObject.Po
+#	source='server/zone/objects/attackable/AttackableObject.cpp' object='AttackableObject.o' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o AttackableObject.o `test -f 'server/zone/objects/attackable/AttackableObject.cpp' || echo '$(srcdir)/'`server/zone/objects/attackable/AttackableObject.cpp
+
+AttackableObject.obj: server/zone/objects/attackable/AttackableObject.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT AttackableObject.obj -MD -MP -MF $(DEPDIR)/AttackableObject.Tpo -c -o AttackableObject.obj `if test -f 'server/zone/objects/attackable/AttackableObject.cpp'; then $(CYGPATH_W) 'server/zone/objects/attackable/AttackableObject.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/attackable/AttackableObject.cpp'; fi`
+	mv -f $(DEPDIR)/AttackableObject.Tpo $(DEPDIR)/AttackableObject.Po
+#	source='server/zone/objects/attackable/AttackableObject.cpp' object='AttackableObject.obj' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o AttackableObject.obj `if test -f 'server/zone/objects/attackable/AttackableObject.cpp'; then $(CYGPATH_W) 'server/zone/objects/attackable/AttackableObject.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/attackable/AttackableObject.cpp'; fi`
+
 AuctionItem.o: server/zone/objects/auction/AuctionItem.cpp
 	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT AuctionItem.o -MD -MP -MF $(DEPDIR)/AuctionItem.Tpo -c -o AuctionItem.o `test -f 'server/zone/objects/auction/AuctionItem.cpp' || echo '$(srcdir)/'`server/zone/objects/auction/AuctionItem.cpp
 	mv -f $(DEPDIR)/AuctionItem.Tpo $(DEPDIR)/AuctionItem.Po
@@ -887,6 +938,34 @@ TrainerCreature.obj: server/zone/objects/creature/trainer/TrainerCreature.cpp
 #	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
 #	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o TrainerCreature.obj `if test -f 'server/zone/objects/creature/trainer/TrainerCreature.cpp'; then $(CYGPATH_W) 'server/zone/objects/creature/trainer/TrainerCreature.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/creature/trainer/TrainerCreature.cpp'; fi`
 
+BlueFrogCreature.o: server/zone/objects/creature/bluefrog/BlueFrogCreature.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT BlueFrogCreature.o -MD -MP -MF $(DEPDIR)/BlueFrogCreature.Tpo -c -o BlueFrogCreature.o `test -f 'server/zone/objects/creature/bluefrog/BlueFrogCreature.cpp' || echo '$(srcdir)/'`server/zone/objects/creature/bluefrog/BlueFrogCreature.cpp
+	mv -f $(DEPDIR)/BlueFrogCreature.Tpo $(DEPDIR)/BlueFrogCreature.Po
+#	source='server/zone/objects/creature/bluefrog/BlueFrogCreature.cpp' object='BlueFrogCreature.o' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o BlueFrogCreature.o `test -f 'server/zone/objects/creature/bluefrog/BlueFrogCreature.cpp' || echo '$(srcdir)/'`server/zone/objects/creature/bluefrog/BlueFrogCreature.cpp
+
+BlueFrogCreature.obj: server/zone/objects/creature/bluefrog/BlueFrogCreature.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT BlueFrogCreature.obj -MD -MP -MF $(DEPDIR)/BlueFrogCreature.Tpo -c -o BlueFrogCreature.obj `if test -f 'server/zone/objects/creature/bluefrog/BlueFrogCreature.cpp'; then $(CYGPATH_W) 'server/zone/objects/creature/bluefrog/BlueFrogCreature.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/creature/bluefrog/BlueFrogCreature.cpp'; fi`
+	mv -f $(DEPDIR)/BlueFrogCreature.Tpo $(DEPDIR)/BlueFrogCreature.Po
+#	source='server/zone/objects/creature/bluefrog/BlueFrogCreature.cpp' object='BlueFrogCreature.obj' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o BlueFrogCreature.obj `if test -f 'server/zone/objects/creature/bluefrog/BlueFrogCreature.cpp'; then $(CYGPATH_W) 'server/zone/objects/creature/bluefrog/BlueFrogCreature.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/creature/bluefrog/BlueFrogCreature.cpp'; fi`
+
+BlueFrogVector.o: server/zone/objects/creature/bluefrog/BlueFrogVector.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT BlueFrogVector.o -MD -MP -MF $(DEPDIR)/BlueFrogVector.Tpo -c -o BlueFrogVector.o `test -f 'server/zone/objects/creature/bluefrog/BlueFrogVector.cpp' || echo '$(srcdir)/'`server/zone/objects/creature/bluefrog/BlueFrogVector.cpp
+	mv -f $(DEPDIR)/BlueFrogVector.Tpo $(DEPDIR)/BlueFrogVector.Po
+#	source='server/zone/objects/creature/bluefrog/BlueFrogVector.cpp' object='BlueFrogVector.o' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o BlueFrogVector.o `test -f 'server/zone/objects/creature/bluefrog/BlueFrogVector.cpp' || echo '$(srcdir)/'`server/zone/objects/creature/bluefrog/BlueFrogVector.cpp
+
+BlueFrogVector.obj: server/zone/objects/creature/bluefrog/BlueFrogVector.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT BlueFrogVector.obj -MD -MP -MF $(DEPDIR)/BlueFrogVector.Tpo -c -o BlueFrogVector.obj `if test -f 'server/zone/objects/creature/bluefrog/BlueFrogVector.cpp'; then $(CYGPATH_W) 'server/zone/objects/creature/bluefrog/BlueFrogVector.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/creature/bluefrog/BlueFrogVector.cpp'; fi`
+	mv -f $(DEPDIR)/BlueFrogVector.Tpo $(DEPDIR)/BlueFrogVector.Po
+#	source='server/zone/objects/creature/bluefrog/BlueFrogVector.cpp' object='BlueFrogVector.obj' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o BlueFrogVector.obj `if test -f 'server/zone/objects/creature/bluefrog/BlueFrogVector.cpp'; then $(CYGPATH_W) 'server/zone/objects/creature/bluefrog/BlueFrogVector.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/creature/bluefrog/BlueFrogVector.cpp'; fi`
+
 RecruiterCreature.o: server/zone/objects/creature/recruiter/RecruiterCreature.cpp
 	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT RecruiterCreature.o -MD -MP -MF $(DEPDIR)/RecruiterCreature.Tpo -c -o RecruiterCreature.o `test -f 'server/zone/objects/creature/recruiter/RecruiterCreature.cpp' || echo '$(srcdir)/'`server/zone/objects/creature/recruiter/RecruiterCreature.cpp
 	mv -f $(DEPDIR)/RecruiterCreature.Tpo $(DEPDIR)/RecruiterCreature.Po
@@ -928,6 +1007,20 @@ Player.obj: server/zone/objects/player/Player.cpp
 #	source='server/zone/objects/player/Player.cpp' object='Player.obj' libtool=no \
 #	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
 #	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o Player.obj `if test -f 'server/zone/objects/player/Player.cpp'; then $(CYGPATH_W) 'server/zone/objects/player/Player.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/player/Player.cpp'; fi`
+
+FriendsList.o: server/zone/objects/player/FriendsList.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT FriendsList.o -MD -MP -MF $(DEPDIR)/FriendsList.Tpo -c -o FriendsList.o `test -f 'server/zone/objects/player/FriendsList.cpp' || echo '$(srcdir)/'`server/zone/objects/player/FriendsList.cpp
+	mv -f $(DEPDIR)/FriendsList.Tpo $(DEPDIR)/FriendsList.Po
+#	source='server/zone/objects/player/FriendsList.cpp' object='FriendsList.o' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o FriendsList.o `test -f 'server/zone/objects/player/FriendsList.cpp' || echo '$(srcdir)/'`server/zone/objects/player/FriendsList.cpp
+
+FriendsList.obj: server/zone/objects/player/FriendsList.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT FriendsList.obj -MD -MP -MF $(DEPDIR)/FriendsList.Tpo -c -o FriendsList.obj `if test -f 'server/zone/objects/player/FriendsList.cpp'; then $(CYGPATH_W) 'server/zone/objects/player/FriendsList.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/player/FriendsList.cpp'; fi`
+	mv -f $(DEPDIR)/FriendsList.Tpo $(DEPDIR)/FriendsList.Po
+#	source='server/zone/objects/player/FriendsList.cpp' object='FriendsList.obj' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o FriendsList.obj `if test -f 'server/zone/objects/player/FriendsList.cpp'; then $(CYGPATH_W) 'server/zone/objects/player/FriendsList.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/player/FriendsList.cpp'; fi`
 
 PlayerObject.o: server/zone/objects/player/PlayerObject.cpp
 	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT PlayerObject.o -MD -MP -MF $(DEPDIR)/PlayerObject.Tpo -c -o PlayerObject.o `test -f 'server/zone/objects/player/PlayerObject.cpp' || echo '$(srcdir)/'`server/zone/objects/player/PlayerObject.cpp
@@ -1545,6 +1638,34 @@ CraftingTool.obj: server/zone/objects/tangible/crafting/CraftingTool.cpp
 #	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
 #	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o CraftingTool.obj `if test -f 'server/zone/objects/tangible/crafting/CraftingTool.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/crafting/CraftingTool.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/crafting/CraftingTool.cpp'; fi`
 
+Component.o: server/zone/objects/tangible/crafting/component/Component.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT Component.o -MD -MP -MF $(DEPDIR)/Component.Tpo -c -o Component.o `test -f 'server/zone/objects/tangible/crafting/component/Component.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/crafting/component/Component.cpp
+	mv -f $(DEPDIR)/Component.Tpo $(DEPDIR)/Component.Po
+#	source='server/zone/objects/tangible/crafting/component/Component.cpp' object='Component.o' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o Component.o `test -f 'server/zone/objects/tangible/crafting/component/Component.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/crafting/component/Component.cpp
+
+Component.obj: server/zone/objects/tangible/crafting/component/Component.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT Component.obj -MD -MP -MF $(DEPDIR)/Component.Tpo -c -o Component.obj `if test -f 'server/zone/objects/tangible/crafting/component/Component.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/crafting/component/Component.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/crafting/component/Component.cpp'; fi`
+	mv -f $(DEPDIR)/Component.Tpo $(DEPDIR)/Component.Po
+#	source='server/zone/objects/tangible/crafting/component/Component.cpp' object='Component.obj' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o Component.obj `if test -f 'server/zone/objects/tangible/crafting/component/Component.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/crafting/component/Component.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/crafting/component/Component.cpp'; fi`
+
+FactoryCrate.o: server/zone/objects/tangible/crafting/factorycrate/FactoryCrate.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT FactoryCrate.o -MD -MP -MF $(DEPDIR)/FactoryCrate.Tpo -c -o FactoryCrate.o `test -f 'server/zone/objects/tangible/crafting/factorycrate/FactoryCrate.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/crafting/factorycrate/FactoryCrate.cpp
+	mv -f $(DEPDIR)/FactoryCrate.Tpo $(DEPDIR)/FactoryCrate.Po
+#	source='server/zone/objects/tangible/crafting/factorycrate/FactoryCrate.cpp' object='FactoryCrate.o' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o FactoryCrate.o `test -f 'server/zone/objects/tangible/crafting/factorycrate/FactoryCrate.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/crafting/factorycrate/FactoryCrate.cpp
+
+FactoryCrate.obj: server/zone/objects/tangible/crafting/factorycrate/FactoryCrate.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT FactoryCrate.obj -MD -MP -MF $(DEPDIR)/FactoryCrate.Tpo -c -o FactoryCrate.obj `if test -f 'server/zone/objects/tangible/crafting/factorycrate/FactoryCrate.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/crafting/factorycrate/FactoryCrate.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/crafting/factorycrate/FactoryCrate.cpp'; fi`
+	mv -f $(DEPDIR)/FactoryCrate.Tpo $(DEPDIR)/FactoryCrate.Po
+#	source='server/zone/objects/tangible/crafting/factorycrate/FactoryCrate.cpp' object='FactoryCrate.obj' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o FactoryCrate.obj `if test -f 'server/zone/objects/tangible/crafting/factorycrate/FactoryCrate.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/crafting/factorycrate/FactoryCrate.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/crafting/factorycrate/FactoryCrate.cpp'; fi`
+
 CraftingStation.o: server/zone/objects/tangible/crafting/CraftingStation.cpp
 	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT CraftingStation.o -MD -MP -MF $(DEPDIR)/CraftingStation.Tpo -c -o CraftingStation.o `test -f 'server/zone/objects/tangible/crafting/CraftingStation.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/crafting/CraftingStation.cpp
 	mv -f $(DEPDIR)/CraftingStation.Tpo $(DEPDIR)/CraftingStation.Po
@@ -1796,6 +1917,34 @@ DraftSchematicExpPropGroup.obj: server/zone/objects/draftschematic/DraftSchemati
 #	source='server/zone/objects/draftschematic/DraftSchematicExpPropGroup.cpp' object='DraftSchematicExpPropGroup.obj' libtool=no \
 #	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
 #	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o DraftSchematicExpPropGroup.obj `if test -f 'server/zone/objects/draftschematic/DraftSchematicExpPropGroup.cpp'; then $(CYGPATH_W) 'server/zone/objects/draftschematic/DraftSchematicExpPropGroup.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/draftschematic/DraftSchematicExpPropGroup.cpp'; fi`
+
+DraftSchematicAttribute.o: server/zone/objects/draftschematic/DraftSchematicAttribute.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT DraftSchematicAttribute.o -MD -MP -MF $(DEPDIR)/DraftSchematicAttribute.Tpo -c -o DraftSchematicAttribute.o `test -f 'server/zone/objects/draftschematic/DraftSchematicAttribute.cpp' || echo '$(srcdir)/'`server/zone/objects/draftschematic/DraftSchematicAttribute.cpp
+	mv -f $(DEPDIR)/DraftSchematicAttribute.Tpo $(DEPDIR)/DraftSchematicAttribute.Po
+#	source='server/zone/objects/draftschematic/DraftSchematicAttribute.cpp' object='DraftSchematicAttribute.o' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o DraftSchematicAttribute.o `test -f 'server/zone/objects/draftschematic/DraftSchematicAttribute.cpp' || echo '$(srcdir)/'`server/zone/objects/draftschematic/DraftSchematicAttribute.cpp
+
+DraftSchematicAttribute.obj: server/zone/objects/draftschematic/DraftSchematicAttribute.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT DraftSchematicAttribute.obj -MD -MP -MF $(DEPDIR)/DraftSchematicAttribute.Tpo -c -o DraftSchematicAttribute.obj `if test -f 'server/zone/objects/draftschematic/DraftSchematicAttribute.cpp'; then $(CYGPATH_W) 'server/zone/objects/draftschematic/DraftSchematicAttribute.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/draftschematic/DraftSchematicAttribute.cpp'; fi`
+	mv -f $(DEPDIR)/DraftSchematicAttribute.Tpo $(DEPDIR)/DraftSchematicAttribute.Po
+#	source='server/zone/objects/draftschematic/DraftSchematicAttribute.cpp' object='DraftSchematicAttribute.obj' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o DraftSchematicAttribute.obj `if test -f 'server/zone/objects/draftschematic/DraftSchematicAttribute.cpp'; then $(CYGPATH_W) 'server/zone/objects/draftschematic/DraftSchematicAttribute.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/draftschematic/DraftSchematicAttribute.cpp'; fi`
+
+DraftSchematicValues.o: server/zone/objects/draftschematic/DraftSchematicValues.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT DraftSchematicValues.o -MD -MP -MF $(DEPDIR)/DraftSchematicValues.Tpo -c -o DraftSchematicValues.o `test -f 'server/zone/objects/draftschematic/DraftSchematicValues.cpp' || echo '$(srcdir)/'`server/zone/objects/draftschematic/DraftSchematicValues.cpp
+	mv -f $(DEPDIR)/DraftSchematicValues.Tpo $(DEPDIR)/DraftSchematicValues.Po
+#	source='server/zone/objects/draftschematic/DraftSchematicValues.cpp' object='DraftSchematicValues.o' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o DraftSchematicValues.o `test -f 'server/zone/objects/draftschematic/DraftSchematicValues.cpp' || echo '$(srcdir)/'`server/zone/objects/draftschematic/DraftSchematicValues.cpp
+
+DraftSchematicValues.obj: server/zone/objects/draftschematic/DraftSchematicValues.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT DraftSchematicValues.obj -MD -MP -MF $(DEPDIR)/DraftSchematicValues.Tpo -c -o DraftSchematicValues.obj `if test -f 'server/zone/objects/draftschematic/DraftSchematicValues.cpp'; then $(CYGPATH_W) 'server/zone/objects/draftschematic/DraftSchematicValues.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/draftschematic/DraftSchematicValues.cpp'; fi`
+	mv -f $(DEPDIR)/DraftSchematicValues.Tpo $(DEPDIR)/DraftSchematicValues.Po
+#	source='server/zone/objects/draftschematic/DraftSchematicValues.cpp' object='DraftSchematicValues.obj' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o DraftSchematicValues.obj `if test -f 'server/zone/objects/draftschematic/DraftSchematicValues.cpp'; then $(CYGPATH_W) 'server/zone/objects/draftschematic/DraftSchematicValues.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/draftschematic/DraftSchematicValues.cpp'; fi`
 
 ManufactureSchematic.o: server/zone/objects/manufacture/ManufactureSchematic.cpp
 	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ManufactureSchematic.o -MD -MP -MF $(DEPDIR)/ManufactureSchematic.Tpo -c -o ManufactureSchematic.o `test -f 'server/zone/objects/manufacture/ManufactureSchematic.cpp' || echo '$(srcdir)/'`server/zone/objects/manufacture/ManufactureSchematic.cpp
@@ -2259,6 +2408,20 @@ ZoneMessageProcessorThread.obj: server/zone/ZoneMessageProcessorThread.cpp
 #	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
 #	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ZoneMessageProcessorThread.obj `if test -f 'server/zone/ZoneMessageProcessorThread.cpp'; then $(CYGPATH_W) 'server/zone/ZoneMessageProcessorThread.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/ZoneMessageProcessorThread.cpp'; fi`
 
+AttackableObjectImplementation.o: server/zone/objects/attackable/AttackableObjectImplementation.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT AttackableObjectImplementation.o -MD -MP -MF $(DEPDIR)/AttackableObjectImplementation.Tpo -c -o AttackableObjectImplementation.o `test -f 'server/zone/objects/attackable/AttackableObjectImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/attackable/AttackableObjectImplementation.cpp
+	mv -f $(DEPDIR)/AttackableObjectImplementation.Tpo $(DEPDIR)/AttackableObjectImplementation.Po
+#	source='server/zone/objects/attackable/AttackableObjectImplementation.cpp' object='AttackableObjectImplementation.o' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o AttackableObjectImplementation.o `test -f 'server/zone/objects/attackable/AttackableObjectImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/attackable/AttackableObjectImplementation.cpp
+
+AttackableObjectImplementation.obj: server/zone/objects/attackable/AttackableObjectImplementation.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT AttackableObjectImplementation.obj -MD -MP -MF $(DEPDIR)/AttackableObjectImplementation.Tpo -c -o AttackableObjectImplementation.obj `if test -f 'server/zone/objects/attackable/AttackableObjectImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/attackable/AttackableObjectImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/attackable/AttackableObjectImplementation.cpp'; fi`
+	mv -f $(DEPDIR)/AttackableObjectImplementation.Tpo $(DEPDIR)/AttackableObjectImplementation.Po
+#	source='server/zone/objects/attackable/AttackableObjectImplementation.cpp' object='AttackableObjectImplementation.obj' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o AttackableObjectImplementation.obj `if test -f 'server/zone/objects/attackable/AttackableObjectImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/attackable/AttackableObjectImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/attackable/AttackableObjectImplementation.cpp'; fi`
+
 BuildingObjectImplementation.o: server/zone/objects/building/BuildingObjectImplementation.cpp
 	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT BuildingObjectImplementation.o -MD -MP -MF $(DEPDIR)/BuildingObjectImplementation.Tpo -c -o BuildingObjectImplementation.o `test -f 'server/zone/objects/building/BuildingObjectImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/building/BuildingObjectImplementation.cpp
 	mv -f $(DEPDIR)/BuildingObjectImplementation.Tpo $(DEPDIR)/BuildingObjectImplementation.Po
@@ -2388,12 +2551,12 @@ TangibleObjectImplementation.obj: server/zone/objects/tangible/TangibleObjectImp
 LairObjectImplementation.o: server/zone/objects/attackable/lair/LairObjectImplementation.cpp
 	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT LairObjectImplementation.o -MD -MP -MF $(DEPDIR)/LairObjectImplementation.Tpo -c -o LairObjectImplementation.o `test -f 'server/zone/objects/attackable/lair/LairObjectImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/attackable/lair/LairObjectImplementation.cpp
 	mv -f $(DEPDIR)/LairObjectImplementation.Tpo $(DEPDIR)/LairObjectImplementation.Po
-#	source='server/zone/objects/tangible/lair/LairObjectImplementation.cpp' object='LairObjectImplementation.o' libtool=no \
+#	source='server/zone/objects/attackable/lair/LairObjectImplementation.cpp' object='LairObjectImplementation.o' libtool=no \
 #	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
 #	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o LairObjectImplementation.o `test -f 'server/zone/objects/attackable/lair/LairObjectImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/attackable/lair/LairObjectImplementation.cpp
 
 LairObjectImplementation.obj: server/zone/objects/attackable/lair/LairObjectImplementation.cpp
-	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT LairObjectImplementation.obj -MD -MP -MF $(DEPDIR)/LairObjectImplementation.Tpo -c -o LairObjectImplementation.obj `if test -f 'server/zone/objects/attackable/lair/LairObjectImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/lair/LairObjectImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/attackable/lair/LairObjectImplementation.cpp'; fi`
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT LairObjectImplementation.obj -MD -MP -MF $(DEPDIR)/LairObjectImplementation.Tpo -c -o LairObjectImplementation.obj `if test -f 'server/zone/objects/attackable/lair/LairObjectImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/attackable/lair/LairObjectImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/attackable/lair/LairObjectImplementation.cpp'; fi`
 	mv -f $(DEPDIR)/LairObjectImplementation.Tpo $(DEPDIR)/LairObjectImplementation.Po
 #	source='server/zone/objects/attackable/lair/LairObjectImplementation.cpp' object='LairObjectImplementation.obj' libtool=no \
 #	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
@@ -2440,6 +2603,34 @@ CraftingStationImplementation.obj: server/zone/objects/tangible/crafting/Craftin
 #	source='server/zone/objects/tangible/crafting/CraftingStationImplementation.cpp' object='CraftingStationImplementation.obj' libtool=no \
 #	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
 #	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o CraftingStationImplementation.obj `if test -f 'server/zone/objects/tangible/crafting/CraftingStationImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/crafting/CraftingStationImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/crafting/CraftingStationImplementation.cpp'; fi`
+
+ComponentImplementation.o: server/zone/objects/tangible/crafting/component/ComponentImplementation.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ComponentImplementation.o -MD -MP -MF $(DEPDIR)/ComponentImplementation.Tpo -c -o ComponentImplementation.o `test -f 'server/zone/objects/tangible/crafting/component/ComponentImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/crafting/component/ComponentImplementation.cpp
+	mv -f $(DEPDIR)/ComponentImplementation.Tpo $(DEPDIR)/ComponentImplementation.Po
+#	source='server/zone/objects/tangible/crafting/component/ComponentImplementation.cpp' object='ComponentImplementation.o' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ComponentImplementation.o `test -f 'server/zone/objects/tangible/crafting/component/ComponentImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/crafting/component/ComponentImplementation.cpp
+
+ComponentImplementation.obj: server/zone/objects/tangible/crafting/component/ComponentImplementation.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ComponentImplementation.obj -MD -MP -MF $(DEPDIR)/ComponentImplementation.Tpo -c -o ComponentImplementation.obj `if test -f 'server/zone/objects/tangible/crafting/component/ComponentImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/crafting/component/ComponentImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/crafting/component/ComponentImplementation.cpp'; fi`
+	mv -f $(DEPDIR)/ComponentImplementation.Tpo $(DEPDIR)/ComponentImplementation.Po
+#	source='server/zone/objects/tangible/crafting/component/ComponentImplementation.cpp' object='ComponentImplementation.obj' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ComponentImplementation.obj `if test -f 'server/zone/objects/tangible/crafting/component/ComponentImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/crafting/component/ComponentImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/crafting/component/ComponentImplementation.cpp'; fi`
+
+FactoryCrateImplementation.o: server/zone/objects/tangible/crafting/factorycrate/FactoryCrateImplementation.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT FactoryCrateImplementation.o -MD -MP -MF $(DEPDIR)/FactoryCrateImplementation.Tpo -c -o FactoryCrateImplementation.o `test -f 'server/zone/objects/tangible/crafting/factorycrate/FactoryCrateImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/crafting/factorycrate/FactoryCrateImplementation.cpp
+	mv -f $(DEPDIR)/FactoryCrateImplementation.Tpo $(DEPDIR)/FactoryCrateImplementation.Po
+#	source='server/zone/objects/tangible/crafting/factorycrate/FactoryCrateImplementation.cpp' object='FactoryCrateImplementation.o' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o FactoryCrateImplementation.o `test -f 'server/zone/objects/tangible/crafting/factorycrate/FactoryCrateImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/crafting/factorycrate/FactoryCrateImplementation.cpp
+
+FactoryCrateImplementation.obj: server/zone/objects/tangible/crafting/factorycrate/FactoryCrateImplementation.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT FactoryCrateImplementation.obj -MD -MP -MF $(DEPDIR)/FactoryCrateImplementation.Tpo -c -o FactoryCrateImplementation.obj `if test -f 'server/zone/objects/tangible/crafting/factorycrate/FactoryCrateImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/crafting/factorycrate/FactoryCrateImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/crafting/factorycrate/FactoryCrateImplementation.cpp'; fi`
+	mv -f $(DEPDIR)/FactoryCrateImplementation.Tpo $(DEPDIR)/FactoryCrateImplementation.Po
+#	source='server/zone/objects/tangible/crafting/factorycrate/FactoryCrateImplementation.cpp' object='FactoryCrateImplementation.obj' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o FactoryCrateImplementation.obj `if test -f 'server/zone/objects/tangible/crafting/factorycrate/FactoryCrateImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/crafting/factorycrate/FactoryCrateImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/crafting/factorycrate/FactoryCrateImplementation.cpp'; fi`
 
 ResourceContainerImplementation.o: server/zone/objects/tangible/resource/ResourceContainerImplementation.cpp
 	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ResourceContainerImplementation.o -MD -MP -MF $(DEPDIR)/ResourceContainerImplementation.Tpo -c -o ResourceContainerImplementation.o `test -f 'server/zone/objects/tangible/resource/ResourceContainerImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/resource/ResourceContainerImplementation.cpp
@@ -2524,6 +2715,20 @@ CreatureInventoryImplementation.obj: server/zone/objects/tangible/inventory/Crea
 #	source='server/zone/objects/tangible/inventory/CreatureInventoryImplementation.cpp' object='CreatureInventoryImplementation.obj' libtool=no \
 #	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
 #	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o CreatureInventoryImplementation.obj `if test -f 'server/zone/objects/tangible/inventory/CreatureInventoryImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/inventory/CreatureInventoryImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/inventory/CreatureInventoryImplementation.cpp'; fi`
+
+MissionObjectImplementation.o: server/zone/objects/mission/MissionObjectImplementation.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT MissionObjectImplementation.o -MD -MP -MF $(DEPDIR)/MissionObjectImplementation.Tpo -c -o MissionObjectImplementation.o `test -f 'server/zone/objects/mission/MissionObjectImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/mission/MissionObjectImplementation.cpp
+	mv -f $(DEPDIR)/MissionObjectImplementation.Tpo $(DEPDIR)/MissionObjectImplementation.Po
+#	source='server/zone/objects/mission/MissionObjectImplementation.cpp' object='MissionObjectImplementation.o' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o MissionObjectImplementation.o `test -f 'server/zone/objects/mission/MissionObjectImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/mission/MissionObjectImplementation.cpp
+
+MissionObjectImplementation.obj: server/zone/objects/mission/MissionObjectImplementation.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT MissionObjectImplementation.obj -MD -MP -MF $(DEPDIR)/MissionObjectImplementation.Tpo -c -o MissionObjectImplementation.obj `if test -f 'server/zone/objects/mission/MissionObjectImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/mission/MissionObjectImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/mission/MissionObjectImplementation.cpp'; fi`
+	mv -f $(DEPDIR)/MissionObjectImplementation.Tpo $(DEPDIR)/MissionObjectImplementation.Po
+#	source='server/zone/objects/mission/MissionObjectImplementation.cpp' object='MissionObjectImplementation.obj' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o MissionObjectImplementation.obj `if test -f 'server/zone/objects/mission/MissionObjectImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/mission/MissionObjectImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/mission/MissionObjectImplementation.cpp'; fi`
 
 StaticObjectImplementation.o: server/zone/objects/static/StaticObjectImplementation.cpp
 	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT StaticObjectImplementation.o -MD -MP -MF $(DEPDIR)/StaticObjectImplementation.Tpo -c -o StaticObjectImplementation.o `test -f 'server/zone/objects/static/StaticObjectImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/static/StaticObjectImplementation.cpp
@@ -2721,6 +2926,20 @@ TrainerCreatureImplementation.obj: server/zone/objects/creature/trainer/TrainerC
 #	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
 #	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o TrainerCreatureImplementation.obj `if test -f 'server/zone/objects/creature/trainer/TrainerCreatureImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/creature/trainer/TrainerCreatureImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/creature/trainer/TrainerCreatureImplementation.cpp'; fi`
 
+BlueFrogCreatureImplementation.o: server/zone/objects/creature/bluefrog/BlueFrogCreatureImplementation.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT BlueFrogCreatureImplementation.o -MD -MP -MF $(DEPDIR)/BlueFrogCreatureImplementation.Tpo -c -o BlueFrogCreatureImplementation.o `test -f 'server/zone/objects/creature/bluefrog/BlueFrogCreatureImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/creature/bluefrog/BlueFrogCreatureImplementation.cpp
+	mv -f $(DEPDIR)/BlueFrogCreatureImplementation.Tpo $(DEPDIR)/BlueFrogCreatureImplementation.Po
+#	source='server/zone/objects/creature/bluefrog/BlueFrogCreatureImplementation.cpp' object='BlueFrogCreatureImplementation.o' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o BlueFrogCreatureImplementation.o `test -f 'server/zone/objects/creature/bluefrog/BlueFrogCreatureImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/creature/bluefrog/BlueFrogCreatureImplementation.cpp
+
+BlueFrogCreatureImplementation.obj: server/zone/objects/creature/bluefrog/BlueFrogCreatureImplementation.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT BlueFrogCreatureImplementation.obj -MD -MP -MF $(DEPDIR)/BlueFrogCreatureImplementation.Tpo -c -o BlueFrogCreatureImplementation.obj `if test -f 'server/zone/objects/creature/bluefrog/BlueFrogCreatureImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/creature/bluefrog/BlueFrogCreatureImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/creature/bluefrog/BlueFrogCreatureImplementation.cpp'; fi`
+	mv -f $(DEPDIR)/BlueFrogCreatureImplementation.Tpo $(DEPDIR)/BlueFrogCreatureImplementation.Po
+#	source='server/zone/objects/creature/bluefrog/BlueFrogCreatureImplementation.cpp' object='BlueFrogCreatureImplementation.obj' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o BlueFrogCreatureImplementation.obj `if test -f 'server/zone/objects/creature/bluefrog/BlueFrogCreatureImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/creature/bluefrog/BlueFrogCreatureImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/creature/bluefrog/BlueFrogCreatureImplementation.cpp'; fi`
+
 MountCreatureImplementation.o: server/zone/objects/creature/mount/MountCreatureImplementation.cpp
 	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT MountCreatureImplementation.o -MD -MP -MF $(DEPDIR)/MountCreatureImplementation.Tpo -c -o MountCreatureImplementation.o `test -f 'server/zone/objects/creature/mount/MountCreatureImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/creature/mount/MountCreatureImplementation.cpp
 	mv -f $(DEPDIR)/MountCreatureImplementation.Tpo $(DEPDIR)/MountCreatureImplementation.Po
@@ -2874,6 +3093,20 @@ CustomizationManager.obj: server/zone/managers/skills/imagedesign/CustomizationM
 #	source='server/zone/managers/skills/imagedesign/CustomizationManager.cpp' object='CustomizationManager.obj' libtool=no \
 #	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
 #	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o CustomizationManager.obj `if test -f 'server/zone/managers/skills/imagedesign/CustomizationManager.cpp'; then $(CYGPATH_W) 'server/zone/managers/skills/imagedesign/CustomizationManager.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/skills/imagedesign/CustomizationManager.cpp'; fi`
+
+ImageDesignCustomization.o: server/zone/managers/skills/imagedesign/ImageDesignCustomization.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ImageDesignCustomization.o -MD -MP -MF $(DEPDIR)/ImageDesignCustomization.Tpo -c -o ImageDesignCustomization.o `test -f 'server/zone/managers/skills/imagedesign/ImageDesignCustomization.cpp' || echo '$(srcdir)/'`server/zone/managers/skills/imagedesign/ImageDesignCustomization.cpp
+	mv -f $(DEPDIR)/ImageDesignCustomization.Tpo $(DEPDIR)/ImageDesignCustomization.Po
+#	source='server/zone/managers/skills/imagedesign/ImageDesignCustomization.cpp' object='ImageDesignCustomization.o' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ImageDesignCustomization.o `test -f 'server/zone/managers/skills/imagedesign/ImageDesignCustomization.cpp' || echo '$(srcdir)/'`server/zone/managers/skills/imagedesign/ImageDesignCustomization.cpp
+
+ImageDesignCustomization.obj: server/zone/managers/skills/imagedesign/ImageDesignCustomization.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ImageDesignCustomization.obj -MD -MP -MF $(DEPDIR)/ImageDesignCustomization.Tpo -c -o ImageDesignCustomization.obj `if test -f 'server/zone/managers/skills/imagedesign/ImageDesignCustomization.cpp'; then $(CYGPATH_W) 'server/zone/managers/skills/imagedesign/ImageDesignCustomization.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/skills/imagedesign/ImageDesignCustomization.cpp'; fi`
+	mv -f $(DEPDIR)/ImageDesignCustomization.Tpo $(DEPDIR)/ImageDesignCustomization.Po
+#	source='server/zone/managers/skills/imagedesign/ImageDesignCustomization.cpp' object='ImageDesignCustomization.obj' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ImageDesignCustomization.obj `if test -f 'server/zone/managers/skills/imagedesign/ImageDesignCustomization.cpp'; then $(CYGPATH_W) 'server/zone/managers/skills/imagedesign/ImageDesignCustomization.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/skills/imagedesign/ImageDesignCustomization.cpp'; fi`
 
 ItemManagerImplementation.o: server/zone/managers/item/ItemManagerImplementation.cpp
 	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ItemManagerImplementation.o -MD -MP -MF $(DEPDIR)/ItemManagerImplementation.Tpo -c -o ItemManagerImplementation.o `test -f 'server/zone/managers/item/ItemManagerImplementation.cpp' || echo '$(srcdir)/'`server/zone/managers/item/ItemManagerImplementation.cpp

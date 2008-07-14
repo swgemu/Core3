@@ -74,6 +74,10 @@ public:
 	
 	void sendRadialResponseTo(Player* player, ObjectMenuResponse* omr);
 	
+	void generateAttributes(SceneObject* obj);
+	void addAttributes(AttributeListMessage* alm);
+	void parseItemAttributes();
+	
 	void sendSurveyEffect(Player* player);
 	void sendSampleEffect(Player* player);
 	

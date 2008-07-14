@@ -11,6 +11,8 @@ class Player;
 
 class DraftSchematic;
 
+class TangibleObject;
+
 class ResourceContainer;
 
 class CraftingTool;
@@ -27,7 +29,7 @@ public:
 
 	void prepareCraftingSession(Player* player, CraftingTool* craftingTool, DraftSchematic* draftSchematic);
 
-	void addResourceToCraft(Player* player, ResourceContainer* rcno, int slot, int counter);
+	void addIngredientToSlot(Player* player, TangibleObject* tano, int slot, int counter);
 
 	void removeResourceFromCraft(Player* player, int slot, int counter);
 
@@ -41,7 +43,9 @@ public:
 
 	void createSchematic(Player* player, string& count);
 
-	void putResourceBackInInventory(Player* player, string& name, int quantity);
+	void putResourceBackInInventory(Player* player, ResourceContainer* rcno);
+
+	void putComponentBackInInventory(Player* player, TangibleObject* tano);
 
 	float getWeightedValue(Player* player, CraftingTool* craftingTool, DraftSchematic* draftSchematic, int type);
 
@@ -71,7 +75,7 @@ public:
 
 	void prepareCraftingSession(Player* player, CraftingTool* craftingTool, DraftSchematic* draftSchematic);
 
-	void addResourceToCraft(Player* player, ResourceContainer* rcno, int slot, int counter);
+	void addIngredientToSlot(Player* player, TangibleObject* tano, int slot, int counter);
 
 	void removeResourceFromCraft(Player* player, int slot, int counter);
 
@@ -85,7 +89,9 @@ public:
 
 	void createSchematic(Player* player, string& count);
 
-	void putResourceBackInInventory(Player* player, string& name, int quantity);
+	void putResourceBackInInventory(Player* player, ResourceContainer* rcno);
+
+	void putComponentBackInInventory(Player* player, TangibleObject* tano);
 
 	float getWeightedValue(Player* player, CraftingTool* craftingTool, DraftSchematic* draftSchematic, int type);
 
@@ -103,7 +109,6 @@ protected:
 	string _param3_handleExperimenting__Player_int_int_string_;
 	string _param1_createPrototype__Player_string_;
 	string _param1_createSchematic__Player_string_;
-	string _param1_putResourceBackInInventory__Player_string_int_;
 	string _param1_addDraftSchematicsFromGroupName__Player_string_;
 	string _param1_subtractDraftSchematicsFromGroupName__Player_string_;
 };

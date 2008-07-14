@@ -58,7 +58,7 @@ int CraftingStation::useObject(Player* player) {
 		return ((CraftingStationImplementation*) _impl)->useObject(player);
 }
 
-void CraftingStation::setStationEffectiveness(float eff) {
+void CraftingStation::setEffectiveness(float eff) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -68,10 +68,10 @@ void CraftingStation::setStationEffectiveness(float eff) {
 
 		method.executeWithVoidReturn();
 	} else
-		((CraftingStationImplementation*) _impl)->setStationEffectiveness(eff);
+		((CraftingStationImplementation*) _impl)->setEffectiveness(eff);
 }
 
-float CraftingStation::getStationEffectiveness() {
+float CraftingStation::getEffectiveness() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -80,7 +80,19 @@ float CraftingStation::getStationEffectiveness() {
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((CraftingStationImplementation*) _impl)->getStationEffectiveness();
+		return ((CraftingStationImplementation*) _impl)->getEffectiveness();
+}
+
+int CraftingStation::getStationType() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 10);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((CraftingStationImplementation*) _impl)->getStationType();
 }
 
 /*
@@ -101,10 +113,13 @@ Packet* CraftingStationAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		resp->insertSignedInt(useObject((Player*) inv->getObjectParameter()));
 		break;
 	case 8:
-		setStationEffectiveness(inv->getFloatParameter());
+		setEffectiveness(inv->getFloatParameter());
 		break;
 	case 9:
-		resp->insertFloat(getStationEffectiveness());
+		resp->insertFloat(getEffectiveness());
+		break;
+	case 10:
+		resp->insertSignedInt(getStationType());
 		break;
 	default:
 		return NULL;
@@ -121,12 +136,16 @@ int CraftingStationAdapter::useObject(Player* player) {
 	return ((CraftingStationImplementation*) impl)->useObject(player);
 }
 
-void CraftingStationAdapter::setStationEffectiveness(float eff) {
-	return ((CraftingStationImplementation*) impl)->setStationEffectiveness(eff);
+void CraftingStationAdapter::setEffectiveness(float eff) {
+	return ((CraftingStationImplementation*) impl)->setEffectiveness(eff);
 }
 
-float CraftingStationAdapter::getStationEffectiveness() {
-	return ((CraftingStationImplementation*) impl)->getStationEffectiveness();
+float CraftingStationAdapter::getEffectiveness() {
+	return ((CraftingStationImplementation*) impl)->getEffectiveness();
+}
+
+int CraftingStationAdapter::getStationType() {
+	return ((CraftingStationImplementation*) impl)->getStationType();
 }
 
 /*
