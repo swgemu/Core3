@@ -66,6 +66,10 @@ public:
 		addFloatUpdate(0x0B, creo->acceleration);
 	}
 	
+	void updateTerrainNegotiation() {
+		addFloatUpdate(0x09, creo->getTerrainNegotiation());
+	}
+	
 	void startSkillModsUpdate(int skillModsToUpdate) {
 		startUpdate(0x03);
 		startList(skillModsToUpdate, creo->skillModsCounter += skillModsToUpdate);

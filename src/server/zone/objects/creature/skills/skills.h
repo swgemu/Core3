@@ -57,6 +57,7 @@ which carries forward this exception.
 
 #include "self/HealSelfSkill.h"
 #include "self/force/ForceHealSelfSkill.h"
+#include "self/force/ForceRunSelfSkill.h"
 #include "self/EnhanceSelfSkill.h"
 #include "self/ChangePostureSelfSkill.h"
 #include "self/MeditateSelfSkill.h"

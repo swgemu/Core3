@@ -61,8 +61,8 @@ public:
 		insertWaypoints(play);
 
 		// force bar stats
-		insertInt(play->forcePower);
-		insertInt(play->forcePowerMax);
+		insertInt(play->getForcePower());
+		insertInt(play->getForcePowerMax());
 
 		// padawan quests
 		insertInt(0);

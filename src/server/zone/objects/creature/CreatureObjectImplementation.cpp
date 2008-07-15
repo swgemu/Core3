@@ -71,7 +71,6 @@ which carries forward this exception.
 #include "../group/GroupObject.h"
 
 #include "events/CreatureBurstRunOverEvent.h"
-#include "events/CreatureForceRunOverEvent.h"
 #include "events/DizzyFallDownEvent.h"
 #include "events/CreatureBuffEvent.h"
 
@@ -125,8 +124,8 @@ CreatureObjectImplementation::CreatureObjectImplementation(uint64 oid) : Creatur
 	height = 1.0f;
 	
 	// CREO4 operands
-	speed = 5.376f;
-	acceleration = 1.549f;
+	speed = DEFAULT_SPEED;
+	acceleration = DEFAULT_ACCELERATION;
 	skillModsCounter = 0;
 	skillModBonusCounter = 0;
 	
@@ -2245,41 +2244,13 @@ void CreatureObjectImplementation::updateSpeed(float speed, float acceleration) 
 	
 		dcreo4->updateSpeed();
 		dcreo4->updateAcceleration();
+		dcreo4->updateTerrainNegotiation();
 		dcreo4->close();
 
 		((PlayerImplementation*) this)->sendMessage(dcreo4);
 	}
 }
 
-void CreatureObjectImplementation::activateForceRun1(float sp, float acc) {
-	if (speed > 5.376f) {
-		unicode msg = unicode("You are already running.");
-		((PlayerImplementation*) this)->sendSystemMessage(msg);
-
-		return;
-	}
-	
-	if (isDizzied()) {
-		return;
-	}
-	
-	speed = sp;//8.0f; 
-	acceleration = acc;
-
-	CreatureObjectDeltaMessage4* dcreo4 = new CreatureObjectDeltaMessage4(this);
-	
-	dcreo4->updateSpeed();
-	dcreo4->updateAcceleration();
-	dcreo4->close();
-
-	((PlayerImplementation*) this)->sendMessage(dcreo4);
-	
-	playEffect("clienteffect/pl_force_run_self.cef");
-	((PlayerImplementation*) this)->addBuff(0x9A04E4F8, 120.0f);
-	
-	Event* e = new CreatureForceRunOverEvent(this);
-	server->addEvent(e);
-}
 
 void CreatureObjectImplementation::updateTarget(uint64 targ) {
 	SceneObject* target = zone->lookupObject(targ); 

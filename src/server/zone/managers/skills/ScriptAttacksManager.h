@@ -89,6 +89,7 @@ public:
 	static int AddEntertainEffectSkill(lua_State* L);
 	static int AddDanceEffectSkill(lua_State* L);
 	static int AddMusicEffectSkill(lua_State* L);
+	static int AddForceRunSelfSkill(lua_State *L);
 	
 };
 

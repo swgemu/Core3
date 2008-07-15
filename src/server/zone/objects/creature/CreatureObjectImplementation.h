@@ -347,6 +347,9 @@ protected:
 	int level;
 	
 public:
+	static const float DEFAULT_SPEED = 5.376f;
+	static const float DEFAULT_ACCELERATION = 1.549f;
+	
 	static const uint8 INVALID_POSTURE = 0xFF;
 	static const uint8 UPRIGHT_POSTURE = 0;
 	static const uint8 CROUCHED_POSTURE = 1;
@@ -537,8 +540,6 @@ public:
 
 	void activateBurstRun();
 	void deactivateBurstRun();
-	
-	void activateForceRun1(float sp, float acc);
 
 	void updateTarget(uint64 targ);
 	void updateTarget(SceneObject* targ);

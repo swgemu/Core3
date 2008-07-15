@@ -64,14 +64,14 @@ PlayerObjectImplementation::PlayerObjectImplementation(Player* pl) : SceneObject
 	objectCRC = 0x619BAE21;
 	
 	// PLAY8 operands
-	forcePower = 0;
-	forcePowerMax = 0;
+	forcePower = player->getSkillMod("jedi_force_power_max");;
+	forcePowerMax = player->getSkillMod("jedi_force_power_max");;
 	experienceListCount = 0;
 	waypointListCount = 0;
 	waypointList.setNullValue(NULL);
 	waypointList.setInsertPlan(SortedVector<WaypointObject*>::NO_DUPLICATE);
 
-	forceRegen = 0;
+	forceRegen = player->getSkillMod("jedi_force_power_regen");;
 
 	// PLAY9 operands
 	jediState = 0x08;

@@ -62,6 +62,7 @@ RunSkillsFile("playerSkills/entertainer.lua")
 RunSkillsFile("playerSkills/dancer.lua")
 RunSkillsFile("playerSkills/musician.lua")
 --RunSkillsFile("playerSkills/jedi.lua")
+--RunSkillsFile("playerSkills/jedi/enhancer.lua")
 
 
 -- CreatureSkills

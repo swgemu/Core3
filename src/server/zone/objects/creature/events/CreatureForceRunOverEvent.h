@@ -46,13 +46,26 @@ which carries forward this exception.
 #define CREATUREFORCERUNOVEREVENT_H_
 
 #include "../CreatureObjectImplementation.h"
+#include "../CreatureObject.h"
+#include "../../../packets.h"
+//#include "engine.h"
 
 class CreatureForceRunOverEvent : public Event {
-	CreatureObjectImplementation* creo;
+	CreatureObject* creo;
+	float speed;
+	float acceleration;
+	int slope;
+	int duration;
+	uint32 state;
 	
 public:
-	CreatureForceRunOverEvent(CreatureObjectImplementation* cr) : Event(120000) {
+	CreatureForceRunOverEvent(CreatureObject* cr, float sp, float acc, int sl, uint64 du, uint32 st) : Event(du*1000) {
 		creo = cr;
+		speed = sp;
+		acceleration = acc;
+		slope = sl;
+		duration = du;
+		state = st; 
 	}
 
 	bool activate() {
@@ -60,8 +73,16 @@ public:
 			creo->wlock();
 
 			if (!creo->isMounted())
-				creo->deactivateBurstRun();
-
+			{
+				float new_speed = MAX(creo->getSpeed() - speed, CreatureObjectImplementation::DEFAULT_SPEED);
+				float new_acceleration = MAX(creo->getAcceleration() - acceleration, CreatureObjectImplementation::DEFAULT_ACCELERATION);
+				creo->addSkillMod("slope_move", -slope, true);
+				creo->updateSpeed(new_speed, new_acceleration); // also updates terrain nav
+				
+				creo->sendSystemMessage("cbt_spam", "forcerun_stop_single");
+				
+				creo->removeQueuedState(state);
+			}
 			creo->unlock();
 		} catch (...) {
 			creo->unlock();

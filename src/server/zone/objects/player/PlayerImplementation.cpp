@@ -1616,8 +1616,8 @@ void PlayerImplementation::doRecovery() {
 		
 		return;
 	}
-	
-	if (!isInCombat() && isOnFullHealth() && !hasStates() && !hasWounds() && !hasShockWounds()) {
+
+	if (!isInCombat() && isOnFullHealth() && ((isJedi() && playerObject->isOnFullForce()) || !isJedi()) && !hasStates() && !hasWounds() && !hasShockWounds()) {
 		return;
 	} else if (lastCombatAction.miliDifference() > 15000) {
 		clearCombatState();
@@ -1930,9 +1930,9 @@ void PlayerImplementation::lootObject(Creature* creature, SceneObject* object) {
 void PlayerImplementation::calculateForceRegen() {
 	if (isJedi() && !playerObject->isOnFullForce()) {
 		if (getPosture() == SITTING_POSTURE)
-			changeForcePowerBar(playerObject->getForceRegen());
-		else
-			changeForcePowerBar(playerObject->getForceRegen() / 3);
+			changeForcePowerBar(playerObject->getForceRegen()); // probably shouldn't be here *shrug*
+		else // 3 second tick do a full regen every 10 secs ish
+			changeForcePowerBar( (int)((playerObject->getForceRegen() / 3.0) + .5)); 
 	}
 }
 
@@ -1943,6 +1943,9 @@ bool PlayerImplementation::changeForcePowerBar(int32 fp) {
 		return false; 
 	
 	setForcePowerBar(MIN(newForce, playerObject->getForcePowerMax()));
+	
+	if(fp < 0)
+		activateRecovery();
 
 	return true;
 }

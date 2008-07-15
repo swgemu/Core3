@@ -88,6 +88,7 @@ void ScriptAttacksManager::registerFunctions() {
 	lua_register(getLuaState(), "AddEntertainEffectSkill", AddEntertainEffectSkill);
 	lua_register(getLuaState(), "AddDanceEffectSkill", AddDanceEffectSkill);
 	lua_register(getLuaState(), "AddMusicEffectSkill", AddMusicEffectSkill);
+	lua_register(getLuaState(), "AddForceRunSelfSkill", AddForceRunSelfSkill);
 	
 	
 }
@@ -1063,5 +1064,28 @@ int ScriptAttacksManager::AddMusicEffectSkill(lua_State* L) {
 	music = new MusicEffectSelfSkill(skillname, effect_prefix, server);
 	CombatActions->put(music);
 	
+	return 0;
+}
+
+int ScriptAttacksManager::AddForceRunSelfSkill(lua_State *L) {
+	LuaObject skill(L);
+	if (!skill.isValidTable())
+		return 0;
+
+	string skillname = skill.getStringField("skillname");
+	string effect = skill.getStringField("effect");
+
+	int forceCost = skill.getIntField("forceCost");
+	float speed = skill.getFloatField("speed");
+	float acceleration = skill.getFloatField("acceleration");
+	int slope = skill.getIntField("slope");
+	int duration = skill.getIntField("duration");
+	
+
+	ForceRunSelfSkill* frun = new ForceRunSelfSkill(skillname, effect, speed, acceleration, slope, duration, server);
+	
+	frun->setForceCost(forceCost);
+
+	CombatActions->put(frun);
 	return 0;
 }

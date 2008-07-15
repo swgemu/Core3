@@ -291,6 +291,8 @@ interface CreatureObject implements SceneObject {
 	
 	local void addSkill(Skill skill);
 	
+	void addSkillMod(const string name, int mod, boolean updateClient = false);
+	
 	int getSkillMod(const string name);
 	
 	boolean hasSkillMod(const string name);
@@ -327,6 +329,7 @@ interface CreatureObject implements SceneObject {
 	
 	void sendSystemMessage(const string message);
 	void sendSystemMessage(const string file, const string str, unsigned long targetid = 0);
+	void updateSpeed(float speed, float acceleration);
 	
 	void addInventoryItem(TangibleObject item);
 	

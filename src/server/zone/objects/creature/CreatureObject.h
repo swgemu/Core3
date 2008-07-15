@@ -345,6 +345,8 @@ public:
 
 	void addSkill(Skill* skill);
 
+	void addSkillMod(const string& name, int mod, bool updateClient = false);
+
 	int getSkillMod(const string& name);
 
 	bool hasSkillMod(const string& name);
@@ -390,6 +392,8 @@ public:
 	void sendSystemMessage(const string& message);
 
 	void sendSystemMessage(const string& file, const string& str, unsigned long long targetid = 0);
+
+	void updateSpeed(float speed, float acceleration);
 
 	void addInventoryItem(TangibleObject* item);
 
@@ -1188,6 +1192,8 @@ public:
 
 	Armor* getArmor(int type);
 
+	void addSkillMod(const string& name, int mod, bool updateClient);
+
 	int getSkillMod(const string& name);
 
 	bool hasSkillMod(const string& name);
@@ -1233,6 +1239,8 @@ public:
 	void sendSystemMessage(const string& message);
 
 	void sendSystemMessage(const string& file, const string& str, unsigned long long targetid);
+
+	void updateSpeed(float speed, float acceleration);
 
 	void addInventoryItem(TangibleObject* item);
 
@@ -1712,6 +1720,7 @@ protected:
 	string _param3_sendCombatSpam__CreatureObject_TangibleObject_int_string_bool_;
 	string _param0_getMitigation__string_;
 	string _param0_updateMood__string_;
+	string _param0_addSkillMod__string_int_bool_;
 	string _param0_getSkillMod__string_;
 	string _param0_hasSkillMod__string_;
 	string _param0_getSkillModBonus__string_;

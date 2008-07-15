@@ -111,7 +111,7 @@ public:
 	}
 	
 	bool isOnFullForce() {
-		return forcePower == forcePowerMax;
+		return forcePower == getForcePowerMax();
 	}
 	
 	inline uint32 getCharacterBitmask() {
@@ -133,10 +133,6 @@ public:
 	void setForcePowerBar(uint32 fp);
 	void setMaxForcePowerBar(uint32 fp, bool updateClient = true);
 
-	// TODO: forcePowerMax and forceRegen shouldn't be part of player object
-	// they should pull from skill attributes:
-	// jedi_force_power_regen 
-	// jedi_force_power_max
 	inline void setForcePower(uint32 fp) {
 		forcePower = fp;
 	}
@@ -146,10 +142,12 @@ public:
 	}
 	
 	inline uint32 getForcePowerMax() {
+		forcePowerMax = player->getSkillMod("jedi_force_power_max");
 		return forcePowerMax;
 	}
 	
 	inline uint32 getForceRegen() {
+		forceRegen = player->getSkillMod("jedi_force_power_regen");
 		return forceRegen;
 	}
 	
