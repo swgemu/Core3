@@ -1588,6 +1588,16 @@ void ObjectControllerMessage::parseStopListen(Player* player, Message* pack) {
 }
 
 void ObjectControllerMessage::parseImageDesign(Player* player, Message* pack) {
+
+	
+	string skillBox = "social_entertainer_novice";
+	
+	if (!player->getSkillBoxesSize() || !player->hasSkillBox(skillBox)) {
+		// TODO: sendSystemMessage("cmd_err", "ability_prose", creature);
+		player->sendSystemMessage("You do not have sufficient abilities to image design.");
+		return;
+	}		
+	
 	uint64 target = pack->parseLong(); // skip passed target get this later?
 
 	SceneObject* object = player->getZone()->lookupObject(target);
