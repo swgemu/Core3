@@ -74,9 +74,6 @@ CraftingStationImplementation::~CraftingStationImplementation(){
 
 void CraftingStationImplementation::sendRadialResponseTo(Player* player, ObjectMenuResponse* omr) {
 
-
-	omr->addRadialItem(0, 200, 3, "Rotate 90 Degrees(Temp)");
-	
 	omr->finish();
 	
 	player->sendMessage(omr);

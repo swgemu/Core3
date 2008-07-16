@@ -681,15 +681,6 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 	case (0x3CD5C98D): // lootall
 		player->lootCorpse();
 		break;
-	case (0xD6A8B702): // Rotate Item +90
-		parseRotateItem(player, pack);
-		break;
-
-
-
-
-
-
 	case (0x2A2357ED): // Add Friend
 		parseAddFriend(player, pack);
 		break;
@@ -2753,15 +2744,3 @@ void ObjectControllerMessage::parseFindFriend(Player* player, Message* pack, Pla
 		player->getPlayerObject()->findFriend(name, playerManager);
 	}
 }
-
-void ObjectControllerMessage::parseRotateItem(Player* player, Message* pack) {
-	uint64 target = pack->parseLong();
-
-	SceneObject* object = player->getZone()->getZoneServer()->getObject(target, true);
-
-	object->setDirection(object->getDirectionX(), (object->getDirectionZ()
-			+ sqrt(.5)), object->getDirectionY(), (object->getDirectionW()
-			+ sqrt(.5)));
-
-}
-

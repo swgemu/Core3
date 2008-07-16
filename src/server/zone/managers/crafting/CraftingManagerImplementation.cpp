@@ -400,7 +400,7 @@ TangibleObject* CraftingManagerImplementation::transferIngredientToSlot(Player* 
 		
 	} else {
 		
-		cout << "I'm not a resource or a component, WTF\n";
+		cout << "I'm not a resource or a component, WTF am I = " << tano->getObjectSubType() << "\n";
 		return NULL;
 	}
 }
@@ -890,7 +890,7 @@ void CraftingManagerImplementation::initialAssembly(Player* player,
 	setInitialCraftingValues(player, craftingTool, draftSchematic);
 	
 	// Update the Tano with new values
-	tano->updateCraftingValues(draftSchematic->getCraftingValues());
+	tano->updateCraftingValues(draftSchematic);
 
 	// Set Crafter name and generate serial number
 	tano->setCraftersName(player->getFirstName());
@@ -1145,7 +1145,7 @@ void CraftingManagerImplementation::handleExperimenting(Player* player,
 		craftingValues->recalculateValues(draftSchematic);
 
 		// Update the Tano with new values
-		tano->updateCraftingValues(draftSchematic->getCraftingValues());
+		tano->updateCraftingValues(draftSchematic);
 
 		// Sets the result for display
 		craftingTool->setAssemblyResults(lowestExpSuccess);
@@ -2166,7 +2166,7 @@ int CraftingManagerImplementation::addDraftSchematicToServer(lua_State *L) {
 	
 	string xptype = schematic.getStringField("xpType");
 	draftSchematic->setXpType(xptype);
-
+ 
 	int xp = schematic.getIntField("xp");
 	draftSchematic->setXp(xp);
 	
@@ -2176,9 +2176,11 @@ int CraftingManagerImplementation::addDraftSchematicToServer(lua_State *L) {
 	string experimentingSkill = schematic.getStringField("experimentingSkill");
 	draftSchematic->setExperimentingSkill(experimentingSkill);
 
-
+	int componentMath = schematic.getIntField("componentMath");
+	draftSchematic->setComponentMathType(componentMath);
+	
 	instance->mapDraftSchematic(draftSchematic);
-	instance->unlock();
+	instance->unlock(); 
 	
 	return 0;
 }
