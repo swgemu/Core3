@@ -4267,8 +4267,4 @@ void CreatureObjectImplementation::explode(int level) {
 		
 	SceneObjectDestroyMessage* destroyMsg = new SceneObjectDestroyMessage(_this);
 	broadcastMessage(destroyMsg);
-	
-	for (int i = 0; i < defenderList.size(); i++) {
-			defenderList.get(i)->removeDefender(_this);
-	}
 }
