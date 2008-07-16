@@ -890,7 +890,7 @@ void CraftingManagerImplementation::initialAssembly(Player* player,
 	setInitialCraftingValues(player, craftingTool, draftSchematic);
 	
 	// Update the Tano with new values
-	tano->updateCraftingValues(draftSchematic);
+	tano->updateCraftingValues(draftSchematic->getCraftingValues());
 
 	// Set Crafter name and generate serial number
 	tano->setCraftersName(player->getFirstName());
@@ -1145,7 +1145,7 @@ void CraftingManagerImplementation::handleExperimenting(Player* player,
 		craftingValues->recalculateValues(draftSchematic);
 
 		// Update the Tano with new values
-		tano->updateCraftingValues(draftSchematic);
+		tano->updateCraftingValues(draftSchematic->getCraftingValues());
 
 		// Sets the result for display
 		craftingTool->setAssemblyResults(lowestExpSuccess);
@@ -2177,7 +2177,7 @@ int CraftingManagerImplementation::addDraftSchematicToServer(lua_State *L) {
 	draftSchematic->setExperimentingSkill(experimentingSkill);
 
 	int componentMath = schematic.getIntField("componentMath");
-	draftSchematic->setComponentMathType(componentMath);
+	//draftSchematic->setComponentMathType(componentMath);
 	
 	instance->mapDraftSchematic(draftSchematic);
 	instance->unlock(); 
