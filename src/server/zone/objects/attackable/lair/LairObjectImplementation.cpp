@@ -176,7 +176,9 @@ void LairObjectImplementation::doDestroyed() {
 	broadcastMessage(destroyMsg);
 	
 	for (int i = 0; i < defenderList.size(); i++) {
-			defenderList.get(i)->removeDefender(_this);
+		defenderList.get(i)->lock();
+		defenderList.get(i)->removeDefender(_this);
+		defenderList.get(i)->unlock();
 	}
 	
 	removeFromZone(false);
