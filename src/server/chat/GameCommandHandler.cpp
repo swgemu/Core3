@@ -57,8 +57,9 @@ void GameCommandHandler::init() {
 	const int DEVELOPER = PlayerImplementation::DEVELOPER;
 	const int CSR = PlayerImplementation::CSR;
 	const int NORMAL = PlayerImplementation::NORMAL;
+	const int QA = PlayerImplementation::QA;
 	const int PRIVLIDGED = DEVELOPER | CSR;
-	const int ALL = DEVELOPER | NORMAL | CSR;
+	const int ALL = DEVELOPER | NORMAL | CSR | QA;
 	
 	gmCommands = new GMCommandMap();
 	
@@ -66,15 +67,15 @@ void GameCommandHandler::init() {
 			"Prints a list of commands.",
 			"Usage: @help [command]",
 			&gm_help);
-	gmCommands->addCommand("map", PRIVLIDGED, 
+	gmCommands->addCommand("map", PRIVLIDGED | QA, 
 			"Warps you to a different map.", 
 			"Usage: @map <planetid> \n PlanetId List: 0=Corellia, 1=Dantooine, 2=Dathomir, 3=Endor, 4=Lok, 5=Naboo, 6=Rori, 7=Talus, 8=Tatooine, 9=Yavin ",
 			&gm_map);
-	gmCommands->addCommand("warp", PRIVLIDGED, 
+	gmCommands->addCommand("warp", PRIVLIDGED | QA, 
 			"Warps you to a given set of coordinates.",
 			"Usage: @warp <x> <y>",
 			&gm_warp);
-	gmCommands->addCommand("warpTo", PRIVLIDGED,
+	gmCommands->addCommand("warpTo", PRIVLIDGED | QA,
 			"Warps you to a player\'s location ",
 			"Usage @warpTo <player>",
 			&gm_warpTo);
@@ -136,7 +137,7 @@ void GameCommandHandler::init() {
 			&gm_awardBadge);
 	gmCommands->addCommand("systemMessage", PRIVLIDGED, 
 			"Sends a message to all players on the server.",
-			"Usage: @systemMessage <message>",
+			"Usage: @systemMessage <range> <message>",
 			&gm_systemMessage);
 	gmCommands->addCommand("setForceMax", DEVELOPER, 
 			"Sets your force bar to the max level.", 
@@ -204,7 +205,7 @@ void GameCommandHandler::init() {
 			&gm_getDirection);
 	gmCommands->addCommand("setAdminLevel", DEVELOPER, 
 			"Sets your admin level.",
-			"Usage: @setAdminLevel <player> <level> \n Levels: 1-CSR 2-DEVELOPER 4-PLAYER",
+			"Usage: @setAdminLevel <player> <level> \n Levels: 1-CSR 2-DEVELOPER 4-PLAYER 8-QA",
 			&gm_setAdminLevel);
 
 }
