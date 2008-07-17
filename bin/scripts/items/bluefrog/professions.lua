@@ -49,4 +49,5 @@ addBFProfession("Master Pistoleer", "combat_pistol_master");
 addBFProfession("Master Carbineer", "combat_carbine_master");
 addBFProfession("Master Brawler", "combat_brawler_master");
 addBFProfession("TKM", "combat_unarmed_master");
+addBFProfession("Master Image Designer", "social_imagedesigner_master");
 
