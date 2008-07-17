@@ -15,6 +15,8 @@ public:
 
 	bool checkUser(unsigned int ipid);
 
+	bool isAdmin(const string& name);
+
 	void parseBanList();
 
 	void banUser(const string& ipaddr);
@@ -47,6 +49,8 @@ public:
 
 	bool checkUser(unsigned int ipid);
 
+	bool isAdmin(const string& name);
+
 	void parseBanList();
 
 	void banUser(const string& ipaddr);
@@ -62,6 +66,7 @@ public:
 	int getUserCap();
 
 protected:
+	string _param0_isAdmin__string_;
 	string _param0_banUser__string_;
 	string _param0_banUserByName__string_string_;
 	string _param1_banUserByName__string_string_;

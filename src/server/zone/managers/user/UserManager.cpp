@@ -37,12 +37,25 @@ bool UserManager::checkUser(unsigned int ipid) {
 		return ((UserManagerImplementation*) _impl)->checkUser(ipid);
 }
 
-void UserManager::parseBanList() {
+bool UserManager::isAdmin(const string& name) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 7);
+		method.addAsciiParameter(name);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((UserManagerImplementation*) _impl)->isAdmin(name);
+}
+
+void UserManager::parseBanList() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
 
 		method.executeWithVoidReturn();
 	} else
@@ -54,7 +67,7 @@ void UserManager::banUser(const string& ipaddr) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, 9);
 		method.addAsciiParameter(ipaddr);
 
 		method.executeWithVoidReturn();
@@ -67,7 +80,7 @@ bool UserManager::banUserByName(string& name, string& admin) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, 10);
 		method.addAsciiParameter(name);
 		method.addAsciiParameter(admin);
 
@@ -81,7 +94,7 @@ bool UserManager::kickUser(string& name, string& admin) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, 11);
 		method.addAsciiParameter(name);
 		method.addAsciiParameter(admin);
 
@@ -95,7 +108,7 @@ void UserManager::changeUserCap(int amount) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 12);
 		method.addSignedIntParameter(amount);
 
 		method.executeWithVoidReturn();
@@ -108,7 +121,7 @@ bool UserManager::isBannedUser(unsigned int ipid) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, 13);
 		method.addUnsignedIntParameter(ipid);
 
 		return method.executeWithBooleanReturn();
@@ -121,7 +134,7 @@ int UserManager::getUserCap() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 14);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -143,24 +156,27 @@ Packet* UserManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		resp->insertBoolean(checkUser(inv->getUnsignedIntParameter()));
 		break;
 	case 7:
-		parseBanList();
+		resp->insertBoolean(isAdmin(inv->getAsciiParameter(_param0_isAdmin__string_)));
 		break;
 	case 8:
-		banUser(inv->getAsciiParameter(_param0_banUser__string_));
+		parseBanList();
 		break;
 	case 9:
-		resp->insertBoolean(banUserByName(inv->getAsciiParameter(_param0_banUserByName__string_string_), inv->getAsciiParameter(_param1_banUserByName__string_string_)));
+		banUser(inv->getAsciiParameter(_param0_banUser__string_));
 		break;
 	case 10:
-		resp->insertBoolean(kickUser(inv->getAsciiParameter(_param0_kickUser__string_string_), inv->getAsciiParameter(_param1_kickUser__string_string_)));
+		resp->insertBoolean(banUserByName(inv->getAsciiParameter(_param0_banUserByName__string_string_), inv->getAsciiParameter(_param1_banUserByName__string_string_)));
 		break;
 	case 11:
-		changeUserCap(inv->getSignedIntParameter());
+		resp->insertBoolean(kickUser(inv->getAsciiParameter(_param0_kickUser__string_string_), inv->getAsciiParameter(_param1_kickUser__string_string_)));
 		break;
 	case 12:
-		resp->insertBoolean(isBannedUser(inv->getUnsignedIntParameter()));
+		changeUserCap(inv->getSignedIntParameter());
 		break;
 	case 13:
+		resp->insertBoolean(isBannedUser(inv->getUnsignedIntParameter()));
+		break;
+	case 14:
 		resp->insertSignedInt(getUserCap());
 		break;
 	default:
@@ -172,6 +188,10 @@ Packet* UserManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 
 bool UserManagerAdapter::checkUser(unsigned int ipid) {
 	return ((UserManagerImplementation*) impl)->checkUser(ipid);
+}
+
+bool UserManagerAdapter::isAdmin(const string& name) {
+	return ((UserManagerImplementation*) impl)->isAdmin(name);
 }
 
 void UserManagerAdapter::parseBanList() {

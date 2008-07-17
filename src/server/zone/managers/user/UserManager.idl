@@ -50,6 +50,7 @@ interface UserManager {
 	}
 	
 	boolean checkUser(unsigned int ipid);
+	boolean isAdmin(const string name);
 	
 	void parseBanList();
 	

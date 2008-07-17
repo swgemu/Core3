@@ -71,6 +71,7 @@ which carries forward this exception.
 #include "../planet/PlanetManager.h"
 #include "../item/ItemManager.h"
 #include "../name/NameManager.h"
+#include "../user/UserManager.h"
 #include "../../../chat/ChatManager.h"
 
 PlayerManagerImplementation::PlayerManagerImplementation(ItemManager* mgr, ZoneProcessServerImplementation* srv) : PlayerManagerServant() {
@@ -129,7 +130,10 @@ bool PlayerManagerImplementation::create(Player* player, uint32 sessionkey) {
 	int creditsCash = 100000;
 	int creditsBank = 100000;
 	
-	player->setAdminLevel(PlayerImplementation::NORMAL);
+	if (server->getUserManager()->isAdmin(player->getFirstName()))
+		player->setAdminLevel(PlayerImplementation::DEVELOPER);
+	else
+		player->setAdminLevel(PlayerImplementation::NORMAL);
 	
 	player->setCashCredits(creditsCash);
 	player->setBankCredits(creditsBank);
