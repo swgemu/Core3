@@ -529,6 +529,19 @@ bool ChatManager::isMute() {
 		return ((ChatManagerImplementation*) _impl)->isMute();
 }
 
+void ChatManager::setMute(bool isMuted) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 43);
+		method.addBooleanParameter(isMuted);
+
+		method.executeWithVoidReturn();
+	} else
+		((ChatManagerImplementation*) _impl)->setMute(isMuted);
+}
+
 /*
  *	ChatManagerAdapter
  */
@@ -650,6 +663,9 @@ Packet* ChatManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		break;
 	case 42:
 		resp->insertBoolean(isMute());
+		break;
+	case 43:
+		setMute(inv->getBooleanParameter());
 		break;
 	default:
 		return NULL;
@@ -804,6 +820,10 @@ int ChatManagerAdapter::getPlayerCount() {
 
 bool ChatManagerAdapter::isMute() {
 	return ((ChatManagerImplementation*) impl)->isMute();
+}
+
+void ChatManagerAdapter::setMute(bool isMuted) {
+	return ((ChatManagerImplementation*) impl)->setMute(isMuted);
 }
 
 /*

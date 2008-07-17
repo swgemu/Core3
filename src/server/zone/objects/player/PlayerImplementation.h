@@ -225,6 +225,7 @@ public:
 	static const int CSR = 1;
 	static const int DEVELOPER = 2;
 	static const int ADMIN = 3;
+	static const int NORMAL = 4;
 	
 	
 public:

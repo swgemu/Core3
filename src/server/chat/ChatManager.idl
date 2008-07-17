@@ -87,7 +87,7 @@ interface ChatManager {
 	void handleChatEnterRoomById(Player player, Message pack);
 	void handleChatDestroyRoom(Player player, Message pack);
 	void handleChatRemoveAvatarFromRoom(Player player, Message pack);
-	
+
 	ChatRoom getChatRoom(unsigned int id);
 	
 	void addRoom(ChatRoom channel);
@@ -112,4 +112,6 @@ interface ChatManager {
 	int getPlayerCount();
 	
 	boolean isMute();
+
+	void setMute(boolean isMuted);
 }

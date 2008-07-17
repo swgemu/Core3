@@ -93,6 +93,8 @@ public:
 
 	bool isMute();
 
+	void setMute(bool isMuted);
+
 protected:
 	ChatManager(DummyConstructorParameter* param);
 
@@ -182,6 +184,8 @@ public:
 	int getPlayerCount();
 
 	bool isMute();
+
+	void setMute(bool isMuted);
 
 protected:
 	string _param0_getPlayer__string_;

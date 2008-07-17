@@ -88,7 +88,7 @@ void BlueFrogCreatureImplementation::setType(int type) {
 		break;
 	case GUNGAN:
 		characterName = unicode("a Gungan Trader");
-		objectCRC = 4058341940;
+		objectCRC = 3438350132;
 		break;
 	default:
 		break;

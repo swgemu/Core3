@@ -60,6 +60,7 @@ class ChatRoomMap;
 #include "../zone/packets.h"
 
 #include "ChatManager.h"
+#include "GameCommandHandler.h"
 
 class ZoneServer;
 
@@ -70,6 +71,8 @@ class ChatManagerImplementation : public ChatManagerServant, public Mutex {
 	
 	PlayerManager* playerManager;
 	GuildManager* guildManager;
+	
+	GameCommandHandler * gameCommandHandler;
 	
 	ResourceManager* resourceManager;
 
@@ -163,6 +166,10 @@ public:
 	
 	inline bool isMute() {
 		return mute;
+	}
+	
+	inline void setMute(bool isMuted) {
+		mute = isMuted;
 	}
 	
 };

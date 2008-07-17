@@ -136,7 +136,8 @@ am__objects_1 = Zone.$(OBJEXT) ZoneClient.$(OBJEXT) \
 	UserManager.$(OBJEXT) PlanetManager.$(OBJEXT) \
 	ResourceManager.$(OBJEXT) LootManager.$(OBJEXT) \
 	BazaarManager.$(OBJEXT) BazaarPlanetManager.$(OBJEXT) \
-	BankManager.$(OBJEXT) ChatRoom.$(OBJEXT) ChatManager.$(OBJEXT)
+	BankManager.$(OBJEXT) ChatRoom.$(OBJEXT) ChatManager.$(OBJEXT) \
+	GameCommandHandler.$(OBJEXT)
 am_core3_OBJECTS = $(am__objects_1) ServerCore.$(OBJEXT) \
 	ConfigManager.$(OBJEXT) ServerDatabase.$(OBJEXT) \
 	LoginServer.$(OBJEXT) LoginPacketHandler.$(OBJEXT) \
@@ -431,7 +432,8 @@ core3_IDLS = server/zone/Zone.cpp \
 		server/zone/managers/bazaar/BazaarPlanetManager.cpp \
 		server/zone/managers/bank/BankManager.cpp \
 		server/chat/room/ChatRoom.cpp \
-		server/chat/ChatManager.cpp
+		server/chat/ChatManager.cpp \
+		server/chat/GameCommandHandler.cpp
 
 core3_SOURCES = $(core3_IDLS) \
 		server/ServerCore.cpp \
@@ -644,6 +646,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Firework.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/FireworkWorld.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/FriendsList.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/GameCommandHandler.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/GroupManager.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/GroupObject.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/GroupObjectImplementation.Po@am__quote@
@@ -2239,6 +2242,20 @@ ChatManager.obj: server/chat/ChatManager.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/chat/ChatManager.cpp' object='ChatManager.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ChatManager.obj `if test -f 'server/chat/ChatManager.cpp'; then $(CYGPATH_W) 'server/chat/ChatManager.cpp'; else $(CYGPATH_W) '$(srcdir)/server/chat/ChatManager.cpp'; fi`
+
+GameCommandHandler.o: server/chat/GameCommandHandler.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT GameCommandHandler.o -MD -MP -MF $(DEPDIR)/GameCommandHandler.Tpo -c -o GameCommandHandler.o `test -f 'server/chat/GameCommandHandler.cpp' || echo '$(srcdir)/'`server/chat/GameCommandHandler.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/GameCommandHandler.Tpo $(DEPDIR)/GameCommandHandler.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/chat/GameCommandHandler.cpp' object='GameCommandHandler.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o GameCommandHandler.o `test -f 'server/chat/GameCommandHandler.cpp' || echo '$(srcdir)/'`server/chat/GameCommandHandler.cpp
+
+GameCommandHandler.obj: server/chat/GameCommandHandler.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT GameCommandHandler.obj -MD -MP -MF $(DEPDIR)/GameCommandHandler.Tpo -c -o GameCommandHandler.obj `if test -f 'server/chat/GameCommandHandler.cpp'; then $(CYGPATH_W) 'server/chat/GameCommandHandler.cpp'; else $(CYGPATH_W) '$(srcdir)/server/chat/GameCommandHandler.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/GameCommandHandler.Tpo $(DEPDIR)/GameCommandHandler.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/chat/GameCommandHandler.cpp' object='GameCommandHandler.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o GameCommandHandler.obj `if test -f 'server/chat/GameCommandHandler.cpp'; then $(CYGPATH_W) 'server/chat/GameCommandHandler.cpp'; else $(CYGPATH_W) '$(srcdir)/server/chat/GameCommandHandler.cpp'; fi`
 
 ServerCore.o: server/ServerCore.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ServerCore.o -MD -MP -MF $(DEPDIR)/ServerCore.Tpo -c -o ServerCore.o `test -f 'server/ServerCore.cpp' || echo '$(srcdir)/'`server/ServerCore.cpp

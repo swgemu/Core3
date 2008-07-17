@@ -129,6 +129,8 @@ bool PlayerManagerImplementation::create(Player* player, uint32 sessionkey) {
 	int creditsCash = 100000;
 	int creditsBank = 100000;
 	
+	player->setAdminLevel(PlayerImplementation::NORMAL);
+	
 	player->setCashCredits(creditsCash);
 	player->setBankCredits(creditsBank);
 	
@@ -158,7 +160,7 @@ bool PlayerManagerImplementation::create(Player* player, uint32 sessionkey) {
 	          << "`lfg`,`helper`,`roleplayer`,`faction_id`,`archived`,`scale`,`biography`,"
 	          << "`infofield`,`hair`,`hairData`,`playermodel`,`CRC`,`Title`,"
 	          << "`health`,`strength`,`constitution`,`action`,`quickness`,"
-	          << "`stamina`,`mind`,`focus`,`willpower`"
+	          << "`stamina`,`mind`,`focus`,`willpower`, adminLevel"
 	          << ") VALUES ("
     	      << accountID << "," << galaxyID << ",'" 
 	          << player->getFirstName() << "','" << player->getLastName() << "','" 
@@ -172,7 +174,7 @@ bool PlayerManagerImplementation::create(Player* player, uint32 sessionkey) {
     	      << player->getHairObject() << "','" << hairdata.substr(0, hairdata.size() - 1) << "','', '0','',"
     	      << player->getBaseHealth() << "," << player->getBaseStrength() << "," << player->getBaseConstitution() << "," 
     	      << player->getBaseAction() << "," << player->getBaseQuickness() << "," << player->getBaseStamina() << "," 
-    	      << player->getBaseMind() << "," << player->getBaseFocus() << "," << player->getBaseWillpower() << ")";
+    	      << player->getBaseMind() << "," << player->getBaseFocus() << "," << player->getBaseWillpower() << "," << player->getAdminLevel() << ")";
 	
 		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
 	
@@ -425,6 +427,8 @@ void PlayerManagerImplementation::loadFromDatabase(Player* player) {
 		player->setParent(parent, 0xFFFFFFFF);
 	
 	loadWaypoints(player);
+	
+	player->setAdminLevel(character->getInt(48));
 		
 	delete character;
 }
@@ -498,6 +502,7 @@ void PlayerManagerImplementation::unload(Player* player) {
           << ",biography=\'" << biography << "\'" 
           << ",Title=" << "'" << player->getPlayerObject()->getCurrentTitle() << "'"
           << ",Guild=" << "'" << player->getGuildID() << "'"
+          << ",AdminLevel=" << "'" << player->getAdminLevel() << "'"
            << ",credits_inv=" << "'" << player->getCashCredits() << "'"
           << ",credits_bank=" << "'" << player->getBankCredits() << "'"
           << ",parentid=" << "'" << player->getParentID() << "'"

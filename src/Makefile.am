@@ -157,7 +157,8 @@ core3_IDLS =	server/zone/Zone.cpp \
 		server/zone/managers/bazaar/BazaarPlanetManager.cpp \
 		server/zone/managers/bank/BankManager.cpp \
 		server/chat/room/ChatRoom.cpp \
-		server/chat/ChatManager.cpp
+		server/chat/ChatManager.cpp \
+		server/chat/GameCommandHandler.cpp
 
 core3_SOURCES =	$(core3_IDLS) \
 		server/ServerCore.cpp \

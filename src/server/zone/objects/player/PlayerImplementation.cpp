@@ -1275,6 +1275,8 @@ void PlayerImplementation::notifySceneReady() {
 	ChatManager* chatManager = server->getChatManager();
 	chatManager->listMail(_this);
 	
+	setAdminLevel(adminLevel);
+	
 	info("scene ready");
 	setOnline();
 }

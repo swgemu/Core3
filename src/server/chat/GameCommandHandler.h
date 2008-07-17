@@ -45,9 +45,136 @@ which carries forward this exception.
 #ifndef GAMECOMMANDHANDLER_H_
 #define GAMECOMMANDHANDLER_H_
 
-class GameCommandHandler {
+#include "engine/engine.h"
+#include "../zone/objects/player/Player.h"
+
+class GMCommand;
+class GMCommandMap;
+class GameCommandHandler;
+
+
+class GMCommand {
+	string command;
+	string description;
+	string usage;
+	int requiredAdminLevel;
+    void (*gmCommandFunc)(StringTokenizer tokenizer, Player * player);
+	
 public:
-	void handleCommand();
+	GMCommand(string cmd, int reqAdminLevel, string desc, string use, void (*func)(StringTokenizer tokenizer, Player * player)) {
+		command = cmd;
+		description = desc;
+		gmCommandFunc = func;
+		usage = use;
+		requiredAdminLevel = reqAdminLevel;
+	}
+	
+	inline string& getDesc() {
+		return description;
+	}
+	
+	inline string& getName() {
+		return command;
+	}
+	
+	inline string& getUsage() {
+		return usage;
+	}
+	
+	inline int getRequiredAdminLevel() {
+		return requiredAdminLevel;
+	}
+	
+	inline void exec(StringTokenizer tokenizer, Player * player) {
+		gmCommandFunc(tokenizer, player);
+	}
+	
+};
+
+class GMCommandMap : public HashTable<string, GMCommand *> {
+private:
+	LinkedList<string> commandList;
+	
+public:
+	GMCommandMap() : HashTable<string, GMCommand *> () {
+		
+	}
+	
+	int hash(const string& str) {
+			return String::hashCode(str);
+	}
+	
+	void addCommand(string command, int reqAdminLevel, string disc, string usage, void (*gmCommandFunc)(StringTokenizer tokenizer, Player * player)) {
+		put(command, new GMCommand(command, reqAdminLevel, disc, usage, gmCommandFunc));
+		commandList.add(command);
+	}
+	
+	LinkedList<string> getCommandList() {
+		return commandList;
+	}
+};
+
+class GameCommandHandler {
+private:
+	static GMCommandMap * gmCommands;
+	static void gm_help(StringTokenizer tokenizer, Player * player);
+	static void gm_map(StringTokenizer tokenizer, Player * player);
+	static void gm_warp(StringTokenizer tokenizer, Player * player);
+	static void gm_warpTo(StringTokenizer tokenizer, Player * player);
+	static void gm_warpPlayer(StringTokenizer tokenizer, Player * player);
+	static void gm_summon(StringTokenizer tokenizer, Player * player);
+	static void gm_kick(StringTokenizer tokenizer, Player * player);
+	static void gm_kickArea(StringTokenizer tokenizer, Player * player);
+	static void gm_printRoomTree(StringTokenizer tokenizer, Player * player);
+	static void gm_banUser(StringTokenizer tokenizer, Player * player);
+	static void gm_mutePlayer(StringTokenizer tokenizer, Player * player);
+	static void gm_kill(StringTokenizer tokenizer, Player * player);
+	static void gm_killArea(StringTokenizer tokenizer, Player * player);
+	static void gm_muteChat(StringTokenizer tokenizer, Player * player);
+	static void gm_users(StringTokenizer tokenizer, Player * player);
+	static void gm_setWeather(StringTokenizer tokenizer, Player * player);
+	static void gm_ticketPurchase(StringTokenizer tokenizer, Player * player);
+	static void gm_awardBadge(StringTokenizer tokenizer, Player * player);
+	static void gm_systemMessage(StringTokenizer tokenizer, Player * player);
+	static void gm_setForceMax(StringTokenizer tokenizer, Player * player);
+	static void gm_setForce(StringTokenizer tokenizer, Player * player);
+	static void gm_setDrinkFilling(StringTokenizer tokenizer, Player * player);
+	static void gm_setFoodFilling(StringTokenizer tokenizer, Player * player);
+	static void gm_getDrinkFilling(StringTokenizer tokenizer, Player * player);
+	static void gm_getFoodFilling(StringTokenizer tokenizer, Player * player);
+	static void gm_logAppearance(StringTokenizer tokenizer, Player * player);
+	static void gm_updateAppearance(StringTokenizer tokenizer, Player * player);
+	static void gm_setAppearanceVariable(StringTokenizer tokenizer, Player * player);
+	static void gm_HAMStats(StringTokenizer tokenizer, Player * player);
+	static void gm_buff(StringTokenizer tokenizer, Player * player);
+	static void gm_spice(StringTokenizer tokenizer, Player * player);
+	static void gm_dbStats(StringTokenizer tokenizer, Player * player);
+	static void gm_dbShowDeleted(StringTokenizer tokenizer, Player * player);
+	static void gm_dbPurge(StringTokenizer tokenizer, Player * player);
+	static void gm_getDirection(StringTokenizer tokenizer, Player * player);
+	static void gm_setAdminLevel(StringTokenizer tokenizer, Player * player);
+	
+	void init();
+	
+public:
+	GameCommandHandler() {
+		init();
+	}
+	
+	
+	
+	void handleCommand(string cmd, StringTokenizer tokenizer, Player * player) {
+		if (!gmCommands->containsKey(cmd)) {
+			player->sendSystemMessage("Command not found.");
+			return;
+		}
+		
+		GMCommand * command = gmCommands->get(cmd);
+		if (command->getRequiredAdminLevel() & player->getAdminLevel())
+			command->exec(tokenizer, player);
+		else
+			player->sendSystemMessage("You do not have permission to use this command.");
+	}
 };
 
 #endif /*GAMECOMMANDHANDLER_H_*/

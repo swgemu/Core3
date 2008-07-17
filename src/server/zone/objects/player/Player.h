@@ -355,6 +355,8 @@ public:
 
 	void setAdminLevel(int level);
 
+	int getAdminLevel();
+
 	void setLastTestPositionX(float pos);
 
 	void setLastTestPositionY(float pos);
@@ -863,6 +865,8 @@ public:
 	void setLoggingIn();
 
 	void setAdminLevel(int level);
+
+	int getAdminLevel();
 
 	void setLastTestPositionX(float pos);
 
