@@ -1314,6 +1314,7 @@ void ObjectControllerMessage::parseImageDesignChange(Player* player, Message* pa
 				}
 			}
 			
+			PlayerManager* playerManager = serv->getZoneServer()->getPlayerManager();
 			// Stat Migration
 			if(stat_migration > 0)
 			{				
@@ -1343,6 +1344,9 @@ void ObjectControllerMessage::parseImageDesignChange(Player* player, Message* pa
 				
 				if(player->getBaseWillpower() != player->getTargetWillpower())
 					player->setBaseWillpowerBar(player->getTargetWillpower());
+				
+				if(playerManager != NULL)
+					playerManager->updatePlayerBaseHAMToDatabase(player);
 			}
 			
 			if(customization != NULL)
@@ -1350,6 +1354,10 @@ void ObjectControllerMessage::parseImageDesignChange(Player* player, Message* pa
 
 			if(target_object != NULL)
 				((CreatureObject *)target_object)->updateCharacterAppearance();
+			
+			
+			if(playerManager != NULL)
+				playerManager->updatePlayerAppearanceToDatabase(player);
 		}
 		
 	} catch (...) {

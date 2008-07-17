@@ -204,7 +204,7 @@ void CreatureManagerImplementation::loadTrainers() {
 		
 	delete result;
 
-	/*if (zone->getZoneID() == 5) {
+	if (zone->getZoneID() == 5) {
 		professionManager->professionMap.resetIterator();
 	
 		for (int i = 0; professionManager->professionMap.hasNext(); i++) {
@@ -215,7 +215,7 @@ void CreatureManagerImplementation::loadTrainers() {
 		
 			TrainerCreature* trainer = spawnTrainer(prof->getName(), "", prof->getName(), 0x8C73B91, -4967 - (i*1), 4043 );
 		}
-	}*/
+	}
 }
 
 void CreatureManagerImplementation::loadStaticCreatures() {

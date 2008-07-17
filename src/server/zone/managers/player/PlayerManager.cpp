@@ -309,12 +309,38 @@ void PlayerManager::updatePlayerCreditsToDatabase(Player* player) {
 		((PlayerManagerImplementation*) _impl)->updatePlayerCreditsToDatabase(player);
 }
 
-void PlayerManager::updateOtherFriendlists(Player* player, bool status) {
+void PlayerManager::updatePlayerAppearanceToDatabase(Player* player) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 26);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerManagerImplementation*) _impl)->updatePlayerAppearanceToDatabase(player);
+}
+
+void PlayerManager::updatePlayerBaseHAMToDatabase(Player* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 27);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerManagerImplementation*) _impl)->updatePlayerBaseHAMToDatabase(player);
+}
+
+void PlayerManager::updateOtherFriendlists(Player* player, bool status) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 28);
 		method.addObjectParameter(player);
 		method.addBooleanParameter(status);
 
@@ -328,7 +354,7 @@ void PlayerManager::setGuildManager(GuildManager* gmanager) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 27);
+		DistributedMethod method(this, 29);
 		method.addObjectParameter(gmanager);
 
 		method.executeWithVoidReturn();
@@ -341,7 +367,7 @@ Player* PlayerManager::putPlayer(Player* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 28);
+		DistributedMethod method(this, 30);
 		method.addObjectParameter(player);
 
 		return (Player*) method.executeWithObjectReturn();
@@ -354,7 +380,7 @@ Player* PlayerManager::getPlayer(string& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 29);
+		DistributedMethod method(this, 31);
 		method.addAsciiParameter(name);
 
 		return (Player*) method.executeWithObjectReturn();
@@ -367,7 +393,7 @@ GuildManager* PlayerManager::getGuildManager() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 30);
+		DistributedMethod method(this, 32);
 
 		return (GuildManager*) method.executeWithObjectReturn();
 	} else
@@ -379,7 +405,7 @@ PlayerMap* PlayerManager::getPlayerMap() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 31);
+		DistributedMethod method(this, 33);
 
 		return (PlayerMap*) method.executeWithObjectReturn();
 	} else
@@ -458,21 +484,27 @@ Packet* PlayerManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		updatePlayerCreditsToDatabase((Player*) inv->getObjectParameter());
 		break;
 	case 26:
-		updateOtherFriendlists((Player*) inv->getObjectParameter(), inv->getBooleanParameter());
+		updatePlayerAppearanceToDatabase((Player*) inv->getObjectParameter());
 		break;
 	case 27:
-		setGuildManager((GuildManager*) inv->getObjectParameter());
+		updatePlayerBaseHAMToDatabase((Player*) inv->getObjectParameter());
 		break;
 	case 28:
-		resp->insertLong(putPlayer((Player*) inv->getObjectParameter())->_getObjectID());
+		updateOtherFriendlists((Player*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
 	case 29:
-		resp->insertLong(getPlayer(inv->getAsciiParameter(_param0_getPlayer__string_))->_getObjectID());
+		setGuildManager((GuildManager*) inv->getObjectParameter());
 		break;
 	case 30:
-		resp->insertLong(getGuildManager()->_getObjectID());
+		resp->insertLong(putPlayer((Player*) inv->getObjectParameter())->_getObjectID());
 		break;
 	case 31:
+		resp->insertLong(getPlayer(inv->getAsciiParameter(_param0_getPlayer__string_))->_getObjectID());
+		break;
+	case 32:
+		resp->insertLong(getGuildManager()->_getObjectID());
+		break;
+	case 33:
 		resp->insertLong(getPlayerMap()->_getObjectID());
 		break;
 	default:
@@ -560,6 +592,14 @@ void PlayerManagerAdapter::updatePlayerCreditsFromDatabase(Player* player) {
 
 void PlayerManagerAdapter::updatePlayerCreditsToDatabase(Player* player) {
 	return ((PlayerManagerImplementation*) impl)->updatePlayerCreditsToDatabase(player);
+}
+
+void PlayerManagerAdapter::updatePlayerAppearanceToDatabase(Player* player) {
+	return ((PlayerManagerImplementation*) impl)->updatePlayerAppearanceToDatabase(player);
+}
+
+void PlayerManagerAdapter::updatePlayerBaseHAMToDatabase(Player* player) {
+	return ((PlayerManagerImplementation*) impl)->updatePlayerBaseHAMToDatabase(player);
 }
 
 void PlayerManagerAdapter::updateOtherFriendlists(Player* player, bool status) {

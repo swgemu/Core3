@@ -103,6 +103,9 @@ public:
 	void updatePlayerCreditsFromDatabase(Player* player);
 	void updatePlayerCreditsToDatabase(Player* player);
 	
+	void updatePlayerAppearanceToDatabase(Player* player);
+	void updatePlayerBaseHAMToDatabase(Player* player);
+	
 	void handleAbortTradeMessage(Player* player, bool doLock = true);
 	void handleAddItemMessage(Player* player, uint64 itemID);
 	void handleGiveMoneyMessage(Player* player, uint32 value);

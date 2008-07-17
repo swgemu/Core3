@@ -497,6 +497,7 @@ void PlayerManagerImplementation::updateOtherFriendlists(Player* player, bool st
 void PlayerManagerImplementation::unload(Player* player) {
 	string biography = player->getBiography().c_str();
 	MySqlDatabase::escapeString(biography);
+
 	
 	stringstream query;
 	query << "UPDATE characters SET x=" << player->getPositionX() << ",y=" << player->getPositionY() 
@@ -1016,6 +1017,62 @@ void PlayerManagerImplementation::updatePlayerCreditsFromDatabase(Player* player
 	
 	BaseMessage* mess = new PlayerMoneyResponseMessage(player);
 	player->sendMessage(mess);
+}
+
+void PlayerManagerImplementation::updatePlayerAppearanceToDatabase(Player* player) {
+
+	if (player == NULL)
+		return;
+	
+	string appearance;
+	string playApp;
+	player->getCharacterAppearance(playApp);
+	BinaryData cust(playApp);
+	cust.encode(appearance);
+
+	string hairdata;
+	string hairApp;
+	player->getHairAppearance(hairApp);
+	BinaryData hair(hairApp);
+	hair.encode(hairdata);
+	
+	stringstream query;
+	
+	query	<< "UPDATE characters set appearance='" << appearance.substr(0, appearance.size() - 1) 
+			<< "', hair='" << player->getHairObject()
+			<< "', hairData='" << hairdata.substr(0, hairdata.size() - 1) << "' "
+			<< " WHERE character_id = " << player->getCharacterID();
+	
+	try {
+		ServerDatabase::instance()->executeStatement(query);
+	} catch (DatabaseException e) {
+		cout << "PlayerManagerImplementation::updatePlayerAppearanceToDatabase: failed SQL update: " << query.str() << "\n";
+	}
+}
+
+void PlayerManagerImplementation::updatePlayerBaseHAMToDatabase(Player* player) {
+
+	if (player == NULL)
+		return;
+
+	stringstream query;
+	
+	query	<< "UPDATE characters set "
+		<< "`health` = " << player->getBaseHealth() 
+		<< ",`strength` = " << player->getBaseStrength()
+		<< ",`constitution` = " << player->getBaseConstitution()
+		<< ",`action` = " << player->getBaseAction()
+		<< ",`quickness` = " << player->getBaseQuickness()
+		<< ",`stamina` = " << player->getBaseStamina()
+		<< ",`mind` = " << player->getBaseMind()
+		<< ",`focus` = " << player->getBaseFocus()
+		<< ",`willpower` = " << player->getBaseWillpower() 
+		<< " WHERE character_id = " << player->getCharacterID();
+	try {
+		ServerDatabase::instance()->executeStatement(query);
+	} catch (DatabaseException e) {
+		cout << "PlayerManagerImplementation::updatePlayerBaseHAMToDatabase: failed SQL update: " << query.str() << "\n";
+	}
 }
 
 
