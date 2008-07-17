@@ -167,8 +167,6 @@ void UserManagerImplementation::banUser(const string& ipaddr) {
 }
 
 bool UserManagerImplementation::banUserByName(string& name, string& admin) {
-	if (!isAdmin(admin))
-		return false; 
 	
 	PlayerManager* playerManager = server->getPlayerManager();
 	
@@ -211,8 +209,6 @@ bool UserManagerImplementation::banUserByName(string& name, string& admin) {
 }
 
 bool UserManagerImplementation::kickUser(string& name, string& admin) {
-	if (!isAdmin(admin))
-		return false; 
 	
 	PlayerManager* playerManager = server->getPlayerManager();
 	
