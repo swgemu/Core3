@@ -53,6 +53,6 @@ interface BlueFrogCreature implements Creature {
 		super(oid);
 	}
 
-	void setType(int type);
+	void setBFType(int type);
 
 }

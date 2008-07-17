@@ -80,7 +80,7 @@ BlueFrogCreatureImplementation::BlueFrogCreatureImplementation(uint64 oid) : Blu
 BlueFrogCreatureImplementation::~BlueFrogCreatureImplementation() {
 }
 
-void BlueFrogCreatureImplementation::setType(int type) {
+void BlueFrogCreatureImplementation::setBFType(int type) {
 	switch (type) {
 	case JAWA:
 		characterName = unicode("a Jawa Trader");

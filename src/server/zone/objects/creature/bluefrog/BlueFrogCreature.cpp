@@ -27,7 +27,7 @@ BlueFrogCreature::BlueFrogCreature(DummyConstructorParameter* param) : Creature(
 BlueFrogCreature::~BlueFrogCreature() {
 }
 
-void BlueFrogCreature::setType(int type) {
+void BlueFrogCreature::setBFType(int type) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -37,7 +37,7 @@ void BlueFrogCreature::setType(int type) {
 
 		method.executeWithVoidReturn();
 	} else
-		((BlueFrogCreatureImplementation*) _impl)->setType(type);
+		((BlueFrogCreatureImplementation*) _impl)->setBFType(type);
 }
 
 /*
@@ -52,7 +52,7 @@ Packet* BlueFrogCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 
 	switch (methid) {
 	case 6:
-		setType(inv->getSignedIntParameter());
+		setBFType(inv->getSignedIntParameter());
 		break;
 	default:
 		return NULL;
@@ -61,8 +61,8 @@ Packet* BlueFrogCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 	return resp;
 }
 
-void BlueFrogCreatureAdapter::setType(int type) {
-	return ((BlueFrogCreatureImplementation*) impl)->setType(type);
+void BlueFrogCreatureAdapter::setBFType(int type) {
+	return ((BlueFrogCreatureImplementation*) impl)->setBFType(type);
 }
 
 /*

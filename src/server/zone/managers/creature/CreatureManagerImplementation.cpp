@@ -270,7 +270,7 @@ BlueFrogCreature* CreatureManagerImplementation::spawnBlueFrog(float x, float y,
 		bluefrog->initializePosition(x, 0, y);
 		bluefrog->setDirection(0, 0, oY, oW);
 		bluefrog->setPvpStatusBitmask(0);//0x01 + 0x02 + 0x20;
-		bluefrog->setType(type);
+		bluefrog->setBFType(type);
 		
 		load(bluefrog);
 			

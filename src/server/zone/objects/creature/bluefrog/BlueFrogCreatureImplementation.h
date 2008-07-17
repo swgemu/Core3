@@ -79,7 +79,7 @@ public:
 	bool trainSkill(Player * player, SkillBox * skill);
 	void dropSkills(Player * player);
 	
-	void setType(int type);
+	void setBFType(int type);
 };
 
 
