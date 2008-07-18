@@ -528,21 +528,18 @@ public:
 	
 	void toString(){
 		Subclasses* tempSubclasses;
-		for(int i = 0;i < experimentalValuesMap.size(); ++i){
-			
+		
+		for (int i = 0;i < experimentalValuesMap.size(); ++i) {
 			tempSubclasses = experimentalValuesMap.get(i);
 			
-			cout << "\n*************************" << endl;
+			/*cout << "\n*************************" << endl;
 			cout << "Subclass " << i << endl;
 			cout << "Class: " << tempSubclasses->getClassName() << endl;
 			cout << "Name: " << tempSubclasses->getName() << endl;
 			tempSubclasses->toString();
-			cout << "**************************" << endl;
-	
+			cout << "**************************" << endl;*/
 		}
-		
 	}
-	
 	
 };
 

@@ -77,7 +77,7 @@ LairObjectImplementation::LairObjectImplementation(uint32 objCRC, uint64 oid)
 	spawn2 = false;
 }
 
-void LairObjectImplementation::doDamage(int damage) {
+void LairObjectImplementation::doDamage(int damage, SceneObject* attacker) {
 	
 	if (!attackable)
 		return;
@@ -98,7 +98,7 @@ void LairObjectImplementation::doDamage(int damage) {
 	broadcastMessage(upd);
 
 	if (conditionDamage >= maxCondition) {
-		doDestroyed();
+		doDestroyed(attacker);
 	}
 }
 
@@ -150,7 +150,7 @@ void LairObjectImplementation::addDefender(SceneObject* defender) {
 	}
 }
 
-void LairObjectImplementation::doDestroyed() {
+void LairObjectImplementation::doDestroyed(SceneObject* attacker) {
 	pvpStatusBitmask = 0x20;
 	attackable = false;
 	
@@ -176,9 +176,20 @@ void LairObjectImplementation::doDestroyed() {
 	broadcastMessage(destroyMsg);
 	
 	for (int i = 0; i < defenderList.size(); i++) {
-		defenderList.get(i)->lock();
-		defenderList.get(i)->removeDefender(_this);
-		defenderList.get(i)->unlock();
+		SceneObject* obj = defenderList.get(i);
+		
+		try {
+			if (obj != attacker)
+				obj->wlock(_this);
+				
+			obj->removeDefender(_this);
+				
+			if (obj != attacker)
+				obj->unlock();
+		} catch (...) {
+			if (obj != attacker)
+				obj->unlock();
+		}
 	}
 	
 	removeFromZone(false);

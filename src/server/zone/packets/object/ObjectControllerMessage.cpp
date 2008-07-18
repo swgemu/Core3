@@ -130,7 +130,7 @@ bool ObjectControllerMessage::parseDataTransform(Player* player, Message* pack) 
 
 		player->updateServerMovementStamp();
 
-		if (serverStamp + 250 < (uint64)deltaStamp) {
+		if ((serverStamp > 50) && ((serverStamp + 250) < (uint64)deltaStamp)) {
 			stringstream deltas;
 			deltas << "speed hack detected " << "deltaStamp:[" << deltaStamp
 					<< "] serversStamp:[" << serverStamp << "]";
@@ -239,7 +239,7 @@ uint64 ObjectControllerMessage::parseDataTransformWithParent(Player* player,
 
 		player->updateServerMovementStamp();
 
-		if (serverStamp + 250 < (uint64)deltaStamp) {
+		if ((serverStamp > 50) && ((serverStamp + 250) < (uint64)deltaStamp)) {
 			stringstream deltas;
 			deltas << "speed hack detected " << "deltaStamp:[" << deltaStamp
 					<< "] serversStamp:[" << serverStamp << "]";
@@ -1858,8 +1858,18 @@ void ObjectControllerMessage::parseServerDestroyObject(Player* player,
 			return;
 		}
 
-		cout << "Server destroy happening\n";
+		//cout << "Server destroy happening\n";
 
+		if (player->getCurrentCraftingTool() == item) {
+			CraftingTool* tool = (CraftingTool*) item;
+			
+			if (!tool->isReady()) {
+				player->sendSystemMessage("You cant delete a working crafting tool!");
+				return;
+			} else
+				player->clearCurrentCraftingTool();
+		}
+		
 		itemManager->deletePlayerItem(player, item, true);
 
 		player->removeInventoryItem(objid);

@@ -368,7 +368,7 @@ void CraftingToolImplementation::getSchematicsForTool(Player* player, float work
 					&& toolUsesTab) {
 
 				schematicsToSend.add(draftSchematic);
-				cout << "Adding schematic = " << draftSchematic->getName() << endl;
+				//cout << "Adding schematic = " << draftSchematic->getName() << endl;
 				
 			}
 		}
@@ -393,15 +393,13 @@ bool CraftingToolImplementation::findCraftingStation(Player* player, float& work
 		
 		inRangeObject = (TangibleObject*)server->getObject(oid);
 		
-		if(inRangeObject != NULL){
-			
+		if (inRangeObject != NULL){
 			if(inRangeObject->isCraftingStation() && player->isInRange(inRangeObject, 6.0f)){
-				
 				station = (CraftingStation*)inRangeObject;
 				
-				cout << "Station = " << station->getStationType() << "   Tool = " << _this->getToolType() << endl;
+				//cout << "Station = " << station->getStationType() << "   Tool = " << _this->getToolType() << endl;
 				
-				if(_this->getToolType() == station->getStationType() || 
+				if (_this->getToolType() == station->getStationType() || 
 						(_this->getToolType() == JEDI && station->getStationType() == WEAPON)){
 				
 					workingStationComplexity = ((CraftingStation*)inRangeObject)->getEffectiveness();

@@ -49,6 +49,7 @@ which carries forward this exception.
 int main(int argc, char* argv[]) {
 	try {
 		ServerCore core;
+		
 		core.init();
 		
 		core.run();

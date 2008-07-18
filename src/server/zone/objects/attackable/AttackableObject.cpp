@@ -207,17 +207,18 @@ int AttackableObject::getMaxCondition() {
 		return ((AttackableObjectImplementation*) _impl)->getMaxCondition();
 }
 
-void AttackableObject::doDamage(int damage) {
+void AttackableObject::doDamage(int damage, SceneObject* attacker) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 20);
 		method.addSignedIntParameter(damage);
+		method.addObjectParameter(attacker);
 
 		method.executeWithVoidReturn();
 	} else
-		((AttackableObjectImplementation*) _impl)->doDamage(damage);
+		((AttackableObjectImplementation*) _impl)->doDamage(damage, attacker);
 }
 
 bool AttackableObject::isDestroyed() {
@@ -286,7 +287,7 @@ Packet* AttackableObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 		resp->insertSignedInt(getMaxCondition());
 		break;
 	case 20:
-		doDamage(inv->getSignedIntParameter());
+		doDamage(inv->getSignedIntParameter(), (SceneObject*) inv->getObjectParameter());
 		break;
 	case 21:
 		resp->insertBoolean(isDestroyed());
@@ -354,8 +355,8 @@ int AttackableObjectAdapter::getMaxCondition() {
 	return ((AttackableObjectImplementation*) impl)->getMaxCondition();
 }
 
-void AttackableObjectAdapter::doDamage(int damage) {
-	return ((AttackableObjectImplementation*) impl)->doDamage(damage);
+void AttackableObjectAdapter::doDamage(int damage, SceneObject* attacker) {
+	return ((AttackableObjectImplementation*) impl)->doDamage(damage, attacker);
 }
 
 bool AttackableObjectAdapter::isDestroyed() {

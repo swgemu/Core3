@@ -612,7 +612,7 @@ void BazaarManagerImplementation::buyItem(Player* player, uint64 objectid, int p
 			// send the seller a message
 				stringstream body2;
 			
-				body2 << "Your auction of  " << item->getItemName() << " has been sold to " << item->getBidderName()
+				body2 << "Your auction of " << item->getItemName() << " has been sold to " << item->getBidderName()
 					<< " for " << price1 << " credits.";
 				unicode subject2("Instant Sale Complete");
 				unicode ubody2(body2.str());

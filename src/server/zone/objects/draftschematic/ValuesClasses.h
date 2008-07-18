@@ -143,25 +143,19 @@ public:
 		subClasses.put(subtitle, values);
 		
 	}
-	~Subclasses(){
 	
+	~Subclasses(){
 		subClasses.removeAll();
-		
 	}
 	
-	void addSubtitle(const string& s){
-		
-		if(!subClasses.contains(s)){
-			
+	void addSubtitle(const string& s) {
+		if(!subClasses.contains(s)) {
 			Values* values = new Values(s);
 			
 			subClasses.put(s, values);
-			
 		} else {
-				
 			cout << "Error Adding subclass - already exists\n";
 		}
-		
 	}
 
 	
@@ -205,8 +199,7 @@ public:
 		
 	}
 	
-	inline string& getClassName(){
-		
+	inline string& getClassName() {		
 		return className;
 		
 	}
@@ -217,30 +210,27 @@ public:
 		values->setMaxPercentage(value);
 	}
 	
-	inline void setValue(const string& subtitle, const float value){
-		
+	inline void setValue(const string& subtitle, const float value) {
 		Values* values = subClasses.get(subtitle);
 		values->setValue(value);	
 	}
 	
-	inline void setPercentage(const string& subtitle, const float value){
-		
+	inline void setPercentage(const string& subtitle, const float value) {
 		Values* values = subClasses.get(subtitle);
 		values->setPercentage(value);	
 	}
 	
 	void toString(){
-
 		Values* tempValues;
-		for(int i = 0;i < subClasses.size(); ++i){
+
+		for (int i = 0;i < subClasses.size(); ++i) {
 			
 			tempValues = subClasses.get(i);
 			
-			cout << "Property Name: " << tempValues->getName() << endl;
+			/*cout << "Property Name: " << tempValues->getName() << endl;
 			cout << "Max % " << tempValues->getMaxPercentage() << endl;
 			cout << "Current % " << tempValues->getPercentage() << endl;
-			cout << "Current Value " << tempValues->getValue() << endl;
-	
+			cout << "Current Value " << tempValues->getValue() << endl;*/	
 		}	
 	}
 };

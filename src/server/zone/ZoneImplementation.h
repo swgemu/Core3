@@ -47,6 +47,8 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
+#include "managers/planet/HeightMap.h"
+
 class ZoneProcessServerImplementation;
 
 class ZoneServer;
@@ -76,6 +78,8 @@ class ZoneImplementation : public ZoneServant, public QuadTree {
 	
 	PlanetManager* planetManager;
 	
+	HeightMap heightMap;
+	
 	Time galacticTime;
 	
 	uint32 weatherId;
@@ -99,6 +103,9 @@ public:
 	SceneObject* deleteObject(SceneObject* obj);
 
 	SceneObject* deleteCachedObject(SceneObject* obj);
+	
+	// zone cell methods
+	float getHeight(float x, float y);
 	
 	// setters and getters
 	inline int getZoneID() {

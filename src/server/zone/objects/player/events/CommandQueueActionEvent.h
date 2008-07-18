@@ -48,10 +48,10 @@ which carries forward this exception.
 #include "../PlayerImplementation.h"
 
 class CommandQueueActionEvent : public Event {
-	PlayerImplementation* player;
+	ManagedReference<Player> player;
 	
 public:
-	CommandQueueActionEvent(PlayerImplementation* pl) : Event() {
+	CommandQueueActionEvent(Player* pl) : Event() {
 		player = pl;
 	}
 
@@ -72,6 +72,8 @@ public:
 			
 			player->unlock();
 		}
+		
+		player = NULL;
 		
 		return true;
 	}

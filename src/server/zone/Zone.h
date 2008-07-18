@@ -43,6 +43,8 @@ public:
 
 	SceneObject* deleteCachedObject(SceneObject* obj);
 
+	float getHeight(float x, float y);
+
 	void setSize(float minx, float miny, float maxx, float maxy);
 
 	void insert(QuadTreeEntry* obj);
@@ -106,6 +108,8 @@ public:
 	SceneObject* deleteObject(SceneObject* obj);
 
 	SceneObject* deleteCachedObject(SceneObject* obj);
+
+	float getHeight(float x, float y);
 
 	void setSize(float minx, float miny, float maxx, float maxy);
 

@@ -49,15 +49,14 @@ which carries forward this exception.
 #include "Buff.h"
 
 class BuffList : public VectorMap<uint32, Buff*> {
-	
 	int hash(const uint32& key) {
         return key;
 	}
 
-
 public:
 	BuffList() : VectorMap<uint32, Buff*>() {
 		setNullValue(NULL);
+		setInsertPlan(NO_DUPLICATE);
 	}	
 }; 
 

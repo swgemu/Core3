@@ -47,7 +47,7 @@ public:
 
 	int getMaxCondition();
 
-	void doDamage(int damage);
+	void doDamage(int damage, SceneObject* attacker);
 
 	bool isDestroyed();
 
@@ -102,7 +102,7 @@ public:
 
 	int getMaxCondition();
 
-	void doDamage(int damage);
+	void doDamage(int damage, SceneObject* attacker);
 
 	bool isDestroyed();
 

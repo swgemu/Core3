@@ -75,9 +75,9 @@ public:
 	LairObjectImplementation(uint32 objCRC, uint64 oid);
 
 	void addDefender(SceneObject* defender);
-	void doDamage(int damage);
+	void doDamage(int damage, SceneObject* attacker);
 	void spawnCreatures();
-	void doDestroyed();
+	void doDestroyed(SceneObject* attacker);
 	
 	void setMaxCondition(int cond) {
 		maxCondition = cond;

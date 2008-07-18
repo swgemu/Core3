@@ -247,14 +247,11 @@ void PlanetManagerImplementation::loadShuttles() {
 	unlock();
 }
 
-	
-
-
 void PlanetManagerImplementation::loadTrainers() {
 }
 
 void PlanetManagerImplementation::loadGuildTerminals() {
-	if(zone->getZoneID() != 8)
+	if (zone->getZoneID() != 8)
 		return;
 	
 	lock();
@@ -267,7 +264,7 @@ void PlanetManagerImplementation::loadGuildTerminals() {
 }
 
 void PlanetManagerImplementation::loadVendorTerminals() {
-	if(zone->getZoneID() != 8)
+	if (zone->getZoneID() != 8)
 		return;
 	
 	lock();
@@ -508,7 +505,6 @@ string PlanetManagerImplementation::getStationName(uint64 crc){
 }
 
 int PlanetManagerImplementation::guessBuildingType(uint64 oid, string file) {
-
 	// Special buildings
 	switch (oid)
 	{
@@ -561,7 +557,6 @@ int PlanetManagerImplementation::guessBuildingType(uint64 oid, string file) {
 		// Junk Shop
 		case 1255995: // Tatooine	Mos Espa	Wattoís Junk Shop
 			return BuildingObjectImplementation::JUNKSHOP;
-
 	}
 	
 	if ((int) file.find("_cantina_") >= 0) 

@@ -102,8 +102,8 @@ public:
 	void sendTo(Player* player, bool doClose = true);
 	void sendDestroyTo(Player* player);
 	
-	virtual void doDamage(int damage);
-	virtual void doDestroyed();
+	virtual void doDamage(int damage, SceneObject* attacker);
+	virtual void doDestroyed(SceneObject* attacker);
 
 	void setTemplateName(string& stfname) {
 		templateName = stfname;

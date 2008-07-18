@@ -73,7 +73,7 @@ interface AttackableObject implements SceneObject {
 	int getConditionDamage();
 	int getMaxCondition();
 
-	void doDamage(int damage);
+	void doDamage(int damage, SceneObject attacker);
 	
 	boolean isDestroyed();
 }

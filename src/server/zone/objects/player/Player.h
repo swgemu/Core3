@@ -315,6 +315,8 @@ public:
 
 	void activateDigest();
 
+	void activateQueueAction();
+
 	void setCharacterID(unsigned long long id);
 
 	void setStartingProfession(const string& prof);
@@ -825,6 +827,8 @@ public:
 	int getDrinkFilling();
 
 	void activateDigest();
+
+	void activateQueueAction();
 
 	void setCharacterID(unsigned long long id);
 

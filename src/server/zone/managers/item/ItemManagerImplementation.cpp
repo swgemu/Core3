@@ -288,12 +288,11 @@ TangibleObject* ItemManagerImplementation::initializeTangibleForCrafting(
 	item = createPlayerObjectTemplate(objecttype, objectid, objectcrc,
 			objectname.c_str(), objecttemp, equipped);
 	
-	if (item == NULL) {
-		
+	/*if (item == NULL) {
 		cout << "NULL ITEM" << endl;
 		return NULL;
 		
-	}
+	}*/
 	
 	return item;
 }
@@ -795,7 +794,7 @@ void ItemManagerImplementation::deletePlayerItem(Player* player, TangibleObject*
 	
 		ServerDatabase::instance()->executeStatement(query);
 
-		cout << query.str() << endl;
+		//cout << query.str() << endl;
 		
 		stringstream playertxt;
 		if (notify)

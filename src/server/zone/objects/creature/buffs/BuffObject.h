@@ -56,7 +56,7 @@ private:
 	
 public:
 	BuffObject() : DistributedObject() {
-
+		buff = NULL;
 	}
 	
 	BuffObject(Buff* bp) : DistributedObject() {

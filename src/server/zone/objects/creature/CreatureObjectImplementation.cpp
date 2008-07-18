@@ -4062,7 +4062,7 @@ void CreatureObjectImplementation::removeBuff(const uint32 buffCRC, bool remove)
 	
 	// cleanup object
 	//buff->finalize();
-	delete buff;
+	//delete buff;
 	buff = NULL;
 	
 	// remove from list

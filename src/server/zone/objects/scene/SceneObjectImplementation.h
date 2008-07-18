@@ -155,6 +155,8 @@ public:
 
 	virtual void generateAttributes(SceneObject* obj);
 
+	void randomizePosition(float radius);
+
 	//TODO: figure out why gcc don't fookin see these shit from ManagedObjectImplementation directly
 	void lock(bool doLock = true);
 	void lock(ManagedObject* obj);

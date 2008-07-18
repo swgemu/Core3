@@ -317,7 +317,7 @@ bool CombatManager::doAction(CreatureObject* attacker, SceneObject* target, Targ
 		}
 		else {
 			AttackableObject* targetObject = (AttackableObject*) target;
-			targetObject->doDamage(damage);
+			targetObject->doDamage(damage, attacker);
 		}
 		
 		target->unlock();

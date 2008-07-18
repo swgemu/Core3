@@ -299,6 +299,8 @@ interface Player implements CreatureObject {
 	int getFoodFilling();
 	int getDrinkFilling();
 	void activateDigest();
+	
+	void activateQueueAction();
 
 	void setCharacterID(unsigned long id);
 	

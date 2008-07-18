@@ -230,7 +230,7 @@ void AttackableObjectImplementation::sendTo(Player* player, bool doClose) {
 	
 }
 
-void AttackableObjectImplementation::doDamage(int damage) {
+void AttackableObjectImplementation::doDamage(int damage, SceneObject* attacker) {
 
 	conditionDamage = conditionDamage + damage;
 
@@ -240,12 +240,12 @@ void AttackableObjectImplementation::doDamage(int damage) {
 	broadcastMessage(upd);
 
 	if (conditionDamage >= maxCondition) {
-		doDestroyed();
+		doDestroyed(attacker);
 	}
 
 }
 
-void AttackableObjectImplementation::doDestroyed() {
+void AttackableObjectImplementation::doDestroyed(SceneObject* attacker) {
 	pvpStatusBitmask = 0;
 	attackable = false;
 	

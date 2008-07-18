@@ -226,6 +226,8 @@ bool UserManagerImplementation::kickUser(string& name, string& admin) {
 				"Don't log in before sorting out the issue with an admin on the forums "
 				"or (better) IRC to avoid getting a perma-ban.", 0);
 		player->sendMessage(errMsg);
+		
+		Thread::sleep(250);
 
 		server->unlock();
 

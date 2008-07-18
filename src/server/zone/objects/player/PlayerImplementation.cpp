@@ -147,6 +147,22 @@ PlayerImplementation::~PlayerImplementation() {
 		centerOfBeingEvent = NULL;
 	}
 	
+	if (recoveryEvent != NULL) {
+		if (recoveryEvent->isQueued())
+			server->removeEvent(recoveryEvent);
+			
+		delete recoveryEvent;
+		recoveryEvent = NULL;
+	}
+	
+	if (digestEvent != NULL) {
+		if (digestEvent->isQueued())
+			server->removeEvent(digestEvent);
+			
+		delete digestEvent;
+		digestEvent = NULL;
+	}
+	
 	server->getZoneServer()->increaseTotalDeletedPlayers();
 	
 	info("undeploying player");
@@ -397,10 +413,19 @@ void PlayerImplementation::unload() {
 
 	tradeItems.removeAll();
 	
+	for (int i = 0; i < commandQueue.size(); ++i) {
+		CommandQueueAction* action = commandQueue.get(i);
+
+		delete action;
+	}
+	
+	commandQueue.removeAll();
+	
 	clearCombatState(); // remove the defenders
 	clearBuffs(false);
 	
 	saveWaypoints(_this);
+	
 	playerObject->saveFriends();
 	saveIgnorelist(_this);
 
@@ -409,11 +434,9 @@ void PlayerImplementation::unload() {
 	PlayerManager* upm = server->getZoneServer()->getPlayerManager();
 	//PlayerManager* upm = uzs->getPlayerManager();	
 	upm->updateOtherFriendlists(_this, false);
-	
-	
+		
 	//end FriendStatusChange
-	
-	
+		
 	if (firstSampleEvent != NULL) {
 		if (firstSampleEvent->isQueued())
 			server->removeEvent(firstSampleEvent);
@@ -1227,12 +1250,12 @@ void PlayerImplementation::doWarp(float x, float y, float z, float randomizeDist
 	
 	positionX = x;
 	positionY = y;
-	positionZ = z;
+	positionZ = zone->getHeight(x, y);
 		
 	if (parentID != 0) {
 		SceneObject* newParent = zone->lookupObject(parentID);
 		
-		if (newParent->isCell())
+		if (newParent != NULL && newParent->isCell())
 			parent = newParent;
 	}
 		
@@ -1379,7 +1402,7 @@ bool PlayerImplementation::doAction(CommandQueueAction* action) {
 
 	if (commandQueue.size() != 0 || !nextAction.isPast()) {
 		if (commandQueue.size() == 0) {
-			CommandQueueActionEvent* e = new CommandQueueActionEvent(this);
+			CommandQueueActionEvent* e = new CommandQueueActionEvent(_this);
 			server->addEvent(e, nextAction);
 		}
 
@@ -1400,7 +1423,7 @@ void PlayerImplementation::activateQueueAction(CommandQueueAction* action) {
 	}
 
 	if (nextAction.isFuture()) {
-		Event* e = new CommandQueueActionEvent(this);
+		Event* e = new CommandQueueActionEvent(_this);
 		server->addEvent(e, nextAction);
 		
 		return;
@@ -1413,10 +1436,12 @@ void PlayerImplementation::activateQueueAction(CommandQueueAction* action) {
 		action = commandQueue.remove(0);
 	}
 	
-	/*stringstream msg;
+	stringstream msg;
 	msg << "activating action " << action->getSkill()->getSkillName() << " " << hex << "0x" << action->getActionCRC() << " (" 
 		<< action->getActionCounter() << ")";
-	sendSystemMessage(msg.str());*/
+	info(msg);
+		
+	//sendSystemMessage(msg.str());
 	
 	CombatManager* combatManager = server->getCombatManager();
 
@@ -1440,7 +1465,7 @@ void PlayerImplementation::activateQueueAction(CommandQueueAction* action) {
 	activateRecovery();
 	
 	if (commandQueue.size() != 0) {
-		Event* e = new CommandQueueActionEvent(this);
+		Event* e = new CommandQueueActionEvent(_this);
 
 		if (!nextAction.isFuture()) {
 			nextAction.update();

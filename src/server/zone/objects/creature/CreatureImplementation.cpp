@@ -1137,7 +1137,7 @@ bool CreatureImplementation::doMovement() {
 		PatrolPoint* waypoint = patrolPoints.get(0);
 
 		waypointX = waypoint->getPositionX();
-		waypointZ = positionZ;
+		waypointZ = waypoint->getPositionZ();
 		waypointY = waypoint->getPositionY();
 
 		cellID = waypoint->getCellID();
@@ -1191,6 +1191,8 @@ bool CreatureImplementation::doMovement() {
 		newPositionX = positionX + (actualSpeed * (dx / dist));
 		newPositionY = positionY + (actualSpeed * (dy / dist));
 	}
+
+	newPositionZ = zone->getHeight(newPositionX, newPositionY);
 
 	nextPosition->setPosition(newPositionX, newPositionZ, newPositionY);
 	nextPosition->setCellID(cellID);
@@ -1493,7 +1495,9 @@ void CreatureImplementation::resetPatrolPoints(bool doLock) {
 }
 
 void CreatureImplementation::addPatrolPoint(float x, float y, bool doLock) {
-	addPatrolPoint(new PatrolPoint(x , positionZ, y, getParentID()), doLock);
+	float z = zone->getHeight(x, y);
+	
+	addPatrolPoint(new PatrolPoint(x , z, y, getParentID()), doLock);
 }
 
 void CreatureImplementation::addPatrolPoint(SceneObject* obj, bool doLock) {
@@ -1519,11 +1523,13 @@ void CreatureImplementation::addPatrolPoint(PatrolPoint* cord, bool doLock) {
 void CreatureImplementation::addRandomPatrolPoint(float radius, bool doLock) {
 	float angle = (45 + System::random(200)) / 3.14;
 	float distance = radius + System::random((int) radius);
+				
+	float newPositionX = positionX + cos(angle) * distance; 
+	float newPositionY = positionY + sin(angle) * distance; 
 
-	float newPositionX = positionX + cos(angle) * distance;
-	float newPositionY = positionY + sin(angle) * distance;
-
-	PatrolPoint* cord = new PatrolPoint(newPositionX, positionZ, newPositionY, getParentID());
+	float newPositionZ = zone->getHeight(newPositionX, newPositionY); 
+	
+	PatrolPoint* cord = new PatrolPoint(newPositionX, newPositionZ, newPositionY, getParentID());
 
 	addPatrolPoint(cord, doLock);
 }

@@ -75,6 +75,9 @@ interface Zone {
 
 	SceneObject deleteCachedObject(SceneObject obj);
 
+	// zone cell methods
+	float getHeight(float x, float y);
+
 	//QT methods
 	void setSize(float minx, float miny, float maxx, float maxy);
 

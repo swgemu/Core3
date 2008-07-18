@@ -208,6 +208,18 @@ void SceneObjectImplementation::generateAttributes(SceneObject* obj) {
 	player->sendMessage(alm);
 }
 
+void SceneObjectImplementation::randomizePosition(float radius) {
+	Coordinate::randomizePosition(radius);
+	
+	previousPositionZ = positionZ;
+	
+	if (zone != NULL)
+		positionZ = zone->getHeight(positionX, positionY);
+	else
+		positionZ = 0;
+		
+}
+
 void SceneObjectImplementation::sendRadialResponseTo(Player* player, ObjectMenuResponse* omr) {
 	omr->finish();
 	
