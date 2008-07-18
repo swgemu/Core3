@@ -207,7 +207,10 @@ void GameCommandHandler::init() {
 			"Sets your admin level.",
 			"Usage: @setAdminLevel <player> <level> \n Levels: 1-CSR 2-DEVELOPER 4-PLAYER 8-QA",
 			&gm_setAdminLevel);
-
+	gmCommands->addCommand("getLocation", ALL,
+			"Gives full detailsofyour location.",
+			"Usage: @getLocation",
+			&gm_getLocation);
 }
 
 void GameCommandHandler::gm_help(StringTokenizer tokenizer, Player * player) {
@@ -1196,6 +1199,17 @@ void GameCommandHandler::gm_setAdminLevel(StringTokenizer tokenizer, Player * pl
 	ServerDatabase::instance()->executeStatement(query.str());
 	
 	player->sendSystemMessage("Admin level set.");
+}
+
+void GameCommandHandler::gm_getLocation(StringTokenizer tokenizer, Player * player) {
+
+	stringstream ss;
+	ss << "planet: " << player->getZoneID() << " cell: " << player->getParentID() << endl;
+	ss << " X: " << player->getPositionX() << " Y: " << player->getPositionY();
+	ss << " Z: " << player->getPositionZ() << endl;
+	ss << "oX: " << player->getDirectionX() << " oZ: " << player->getDirectionZ();
+	ss << "oY: " << player->getDirectionY() << " oW: " << player->getDirectionW();
+	player->sendSystemMessage(ss.str());
 }
 
 

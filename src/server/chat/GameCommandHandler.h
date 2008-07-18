@@ -153,6 +153,7 @@ private:
 	static void gm_dbPurge(StringTokenizer tokenizer, Player * player);
 	static void gm_getDirection(StringTokenizer tokenizer, Player * player);
 	static void gm_setAdminLevel(StringTokenizer tokenizer, Player * player);
+	static void gm_getLocation(StringTokenizer tokenizer, Player * player);
 	
 	void init();
 	
