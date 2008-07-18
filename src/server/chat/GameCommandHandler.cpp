@@ -99,7 +99,7 @@ void GameCommandHandler::init() {
 			"Prints the room tree.",
 			"Usage: @printRoomTree",
 			&gm_printRoomTree);
-	gmCommands->addCommand("banUser", PRIVLIDGED, 
+	gmCommands->addCommand("banUser", DEVELOPER, 
 			"Bans a user from logging in to the server.",
 			"Usage: @banUser <player>",
 			&gm_banUser);
