@@ -47,7 +47,7 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-#include "managers/planet/HeightMap.h"
+//#include "managers/planet/HeightMap.h"
 
 class ZoneProcessServerImplementation;
 
@@ -78,7 +78,7 @@ class ZoneImplementation : public ZoneServant, public QuadTree {
 	
 	PlanetManager* planetManager;
 	
-	HeightMap heightMap;
+	//HeightMap heightMap;
 	
 	Time galacticTime;
 	
