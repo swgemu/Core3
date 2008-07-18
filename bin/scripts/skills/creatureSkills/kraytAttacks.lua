@@ -47,7 +47,7 @@ kraytAttack1 = {
 
 	range = 15,
 
-	damageRatio = 180,
+	damageRatio = 380,
 
 	speedRatio = 2,
 
@@ -60,7 +60,7 @@ kraytAttack1 = {
 	dizzyChance = 0,
 	blindChance = 0,
 	stunChance = 0,
-	intimidateChance = 0,
+	intimidateChance = 40,
 	
 	CbtSpamBlock = "attack_block",
 	CbtSpamCounter = "attack_counter",
@@ -81,7 +81,7 @@ kraytAttack2 = {
 
 	range = 15,
 
-	damageRatio = 220,
+	damageRatio = 420,
 
 	speedRatio = 2,
 
@@ -115,7 +115,7 @@ kraytAttack3 = {
 
 	range = 15,
 
-	damageRatio = 260,
+	damageRatio = 460,
 
 	speedRatio = 2,
 
@@ -149,7 +149,7 @@ kraytAttack4 = {
 
 	range = 15,
 
-	damageRatio = 300,
+	damageRatio = 500,
 
 	speedRatio = 2,
 
@@ -183,7 +183,7 @@ kraytAttack5 = {
 
 	range = 15,
 
-	damageRatio = 340,
+	damageRatio = 540,
 
 	speedRatio = 2,
 
@@ -208,3 +208,69 @@ kraytAttack5 = {
 AddRandomPoolAttackTargetSkill(kraytAttack5)
 
 -----------------------------------------------
+
+kraytAttack6 = {
+	attackname = "kraytAttack6",
+	animation = "creature_attack_light",
+	
+	requiredWeaponType = NONE,
+
+	range = 30,
+
+	damageRatio = 540,
+
+	speedRatio = 2,
+
+	areaRange = 30,
+	accuracyBonus = 0,
+		
+	knockdownChance = 40,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+}
+
+AddRandomPoolAttackTargetSkill(kraytAttack6)
+
+-------------------------------------------------------------------------------
+
+kraytAttack7 = {
+	attackname = "kraytAttack7",
+	animation = "creature_attack_light",
+	
+	requiredWeaponType = NONE,
+
+	range = 30,
+
+	damageRatio = 540,
+
+	speedRatio = 2,
+
+	areaRange = 30,
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 40,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+}
+
+AddRandomPoolAttackTargetSkill(kraytAttack7)

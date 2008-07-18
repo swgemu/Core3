@@ -45,21 +45,21 @@ juviCanyonKraytDragon = Creature:new {
 	stfName = "a Juvenile Canyon Krayt Dragon",
 	objectCRC = 899113216,
 	
-	level = 200,
+	level = 350,
 	
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
 	health = 48000,
-	strength = 5000,
-	constitution = 5000,
+	strength = 30000,
+	constitution = 30000,
 
 	action = 48000,
-	quickness = 5000,
-	stamina = 5000,
+	quickness = 30000,
+	stamina = 30000,
 
 	mind = 48000,
-	focus = 5000,
-	willpower = 5000,
+	focus = 30000,
+	willpower = 30000,
 	
     armor = 2, -- from http://web.archive.org/web/20050505183605/http://swg.allakhazam.com/db/bestiary.html?swgbeast=2520
     kinetic = 60, 

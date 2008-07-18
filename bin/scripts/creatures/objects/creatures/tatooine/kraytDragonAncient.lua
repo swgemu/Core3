@@ -45,21 +45,21 @@ kraytDragonAncient = Creature:new {
 	stfName = "a Krayt Dragon Ancient", 
         objectCRC = 1238991743, 
           
-        level = 450, 
+        level = 800, 
           
         combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG, 
   
-        health = 450000, 
-        strength = 5000, 
-        constitution = 5000, 
+        health = 480000, 
+        strength = 50000, 
+        constitution = 50000, 
   
-        action = 450000, 
-        quickness = 5000, 
-        stamina = 5000, 
+        action = 480000, 
+        quickness = 50000, 
+        stamina = 50000, 
   
-        mind = 450000, 
-        focus = 5000, 
-        willpower = 5000, 
+        mind = 480000, 
+        focus = 50000, 
+        willpower = 50000, 
           
         armor = 3, -- from allakhazam 
         kinetic = 95, 
@@ -76,7 +76,7 @@ kraytDragonAncient = Creature:new {
           
 	accuracy = 300, 
   
-	skills = { "kraytAttack1", "kraytAttack2", "kraytAttack3", "kraytAttack4", "kraytAttack5" } 
+	skills = { "kraytAttack1", "kraytAttack2", "kraytAttack3", "kraytAttack4", "kraytAttack5", "kraytAttack6", "kraytAttack7" } 
 	-- respawnTimer = 60, 
 } 
   
