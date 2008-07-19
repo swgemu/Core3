@@ -1,44 +1,44 @@
 /*
  Copyright (C) 2007 <SWGEmu>
- 
+
  This File is part of Core3.
- 
- This program is free software; you can redistribute 
- it and/or modify it under the terms of the GNU Lesser 
+
+ This program is free software; you can redistribute
+ it and/or modify it under the terms of the GNU Lesser
  General Public License as published by the Free Software
- Foundation; either version 2 of the License, 
+ Foundation; either version 2 of the License,
  or (at your option) any later version.
- 
- This program is distributed in the hope that it will be useful, 
- but WITHOUT ANY WARRANTY; without even the implied warranty of 
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  See the GNU Lesser General Public License for
  more details.
- 
- You should have received a copy of the GNU Lesser General 
+
+ You should have received a copy of the GNU Lesser General
  Public License along with this program; if not, write to
  the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
- 
- Linking Engine3 statically or dynamically with other modules 
- is making a combined work based on Engine3. 
- Thus, the terms and conditions of the GNU Lesser General Public License 
+
+ Linking Engine3 statically or dynamically with other modules
+ is making a combined work based on Engine3.
+ Thus, the terms and conditions of the GNU Lesser General Public License
  cover the whole combination.
- 
- In addition, as a special exception, the copyright holders of Engine3 
- give you permission to combine Engine3 program with free software 
- programs or libraries that are released under the GNU LGPL and with 
- code included in the standard release of Core3 under the GNU LGPL 
- license (or modified versions of such code, with unchanged license). 
- You may copy and distribute such a system following the terms of the 
- GNU LGPL for Engine3 and the licenses of the other code concerned, 
- provided that you include the source code of that other code when 
+
+ In addition, as a special exception, the copyright holders of Engine3
+ give you permission to combine Engine3 program with free software
+ programs or libraries that are released under the GNU LGPL and with
+ code included in the standard release of Core3 under the GNU LGPL
+ license (or modified versions of such code, with unchanged license).
+ You may copy and distribute such a system following the terms of the
+ GNU LGPL for Engine3 and the licenses of the other code concerned,
+ provided that you include the source code of that other code when
  and as the GNU LGPL requires distribution of source code.
- 
- Note that people who make modified versions of Engine3 are not obligated 
- to grant this special exception for their modified versions; 
- it is their choice whether to do so. The GNU Lesser General Public License 
- gives permission to release a modified version without this exception; 
- this exception also makes it possible to release a modified version 
+
+ Note that people who make modified versions of Engine3 are not obligated
+ to grant this special exception for their modified versions;
+ it is their choice whether to do so. The GNU Lesser General Public License
+ gives permission to release a modified version without this exception;
+ this exception also makes it possible to release a modified version
  which carries forward this exception.
  */
 
@@ -181,7 +181,7 @@ bool ObjectControllerMessage::parseDataTransform(Player* player, Message* pack) 
 	player->setDirection(dx, dz, dy, dw);
 	player->setPosition(x, z, y);
 
-	/*cout << "Player [" << player->getObjectID() << "] - Counter [" << player->getMovementCounter() << "]" 
+	/*cout << "Player [" << player->getObjectID() << "] - Counter [" << player->getMovementCounter() << "]"
 	 << " - Position (" << (int) x << "," << (int) z << "," << (int) y << ")\n";*/
 
 	return true;
@@ -288,7 +288,7 @@ uint64 ObjectControllerMessage::parseDataTransformWithParent(Player* player,
 
 	return parent;
 
-	/*cout << "Player [" << player->getObjectID() << "] with Parent [" << parent << "] - Counter [" << player->getMovementCounter() << "]" 
+	/*cout << "Player [" << player->getObjectID() << "] with Parent [" << parent << "] - Counter [" << player->getMovementCounter() << "]"
 	 << " - Position (" << (int) x << "," << (int) z << "," << (int) y << ")\n";*/
 }
 
@@ -442,7 +442,7 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 	case (0x1BAD8FFC): //requestbiography
 		parseBiographyRequest(player, pack);
 		break;
-	case (0xFBE911E4): //setbiography 
+	case (0xFBE911E4): //setbiography
 		parseSetBiography(player, pack);
 		break;
 	case (0xBFF5BE51): //purchaseticket
@@ -848,19 +848,19 @@ void ObjectControllerMessage::parseNpcStopConversation(Player* player,
 
 void ObjectControllerMessage::parseStatMigrationDataRequest(Player* player, Message* pack) {
 	uint64 objectid = pack->parseLong();
-				
+
 	StatMigrationTargetsMessage* smtm = new StatMigrationTargetsMessage(player);
 	player->sendMessage(smtm);
 }
 
 void ObjectControllerMessage::parseSetStatMigrationDataRequest(Player* player, Message* pack) {
 	uint64 objectid = pack->parseLong();
-				
+
 	unicode stats = unicode("");
 	pack->parseUnicode(stats);
-	
+
 	//player->info(stats.c_str());
-	
+
 	StringTokenizer tokenizer(stats.c_str());
 	tokenizer.setDelimeter(" ");
 
@@ -900,11 +900,11 @@ void ObjectControllerMessage::parseSetStatMigrationDataRequest(Player* player, M
 	}
 	//if (tokenizer.hasMoreTokens()) {
 	//	uint64 targetID = tokenizer.getLongToken();
-	//	
-	//	player->applyAttachment(attachmentID, targetID);		
+	//
+	//	player->applyAttachment(attachmentID, targetID);
 	//}
 
-	
+
 	//StatMigrationTargetsMessage* smtm = new StatMigrationTargetsMessage(player);
 	//player->sendMessage(smtm);
 }
@@ -991,7 +991,7 @@ void ObjectControllerMessage::parsePurchaseTicket(Player* player, Message *pack)
 	else
 		return;
 
-	// create ticket item 
+	// create ticket item
 	Ticket* ticket = new Ticket(player, 0xDAA0DE83, unicode("Travel Ticket"), "travel_ticket",
 			departurePlanet, departurePoint, arrivalPlanet, arrivalPoint);
 
@@ -1109,117 +1109,117 @@ void ObjectControllerMessage::parseImageDesignChange(Player* player, Message* pa
 		// Read the Packet
 		uint64 object = pack->parseLong();
 		pack->shiftOffset(4); // size ?
-		
+
 		uint64 designer = pack->parseLong();
 		uint64 target = pack->parseLong();
 		uint64 tent = pack->parseLong();
-		
+
 		uint8 type = pack->parseByte();
-	
+
 		ImageDesignChangeMessage* msg_designer = new ImageDesignChangeMessage(designer, designer, target, tent, 0);
 		ImageDesignChangeMessage* msg_target = new ImageDesignChangeMessage(target, designer, target, tent, 0);
-		
+
 
 		// Parse
 		string hairObject;
 		pack->parseAscii(hairObject);
 
-		// Pack 
+		// Pack
 		msg_designer->insertAscii(hairObject);
 		msg_target->insertAscii(hairObject);
-	
+
 		// Parse
 		string unknownstring_1;
 		pack->parseAscii(unknownstring_1);
-	
-		// Pack 
+
+		// Pack
 		msg_designer->insertAscii(unknownstring_1);
 		msg_target->insertAscii(unknownstring_1);
-		
+
 		uint32 unknown_int_1 = pack->parseInt(); //  02 00 00 00  was set in stat migration button, zero for other?
-		uint32 timestamp = pack->parseInt(); //   timestamp 1212950001 (2008-06-8 18:33:21Z)	
-	
-		// Pack 
+		uint32 timestamp = pack->parseInt(); //   timestamp 1212950001 (2008-06-8 18:33:21Z)
+
+		// Pack
 		msg_designer->insertInt(unknown_int_1);
 		msg_designer->insertInt(timestamp);
 		msg_target->insertInt(unknown_int_1);
 		msg_target->insertInt(timestamp);
-		
+
 		// Parse
 		uint32 required_payment = pack->parseInt();
 		uint32 offered_payment = pack->parseInt();
-	
-		// Pack 
+
+		// Pack
 		msg_designer->insertInt(required_payment);
 		msg_designer->insertInt(offered_payment);
 		msg_target->insertInt(required_payment);
 		msg_target->insertInt(offered_payment);
-		
+
 		uint8 designer_accepted = pack->parseByte();
-	
-		// Pack 
+
+		// Pack
 		msg_designer->insertByte(designer_accepted);
 		msg_target->insertByte(designer_accepted);
-		
+
 		// Parse
 		uint32 target_accepted = pack->parseInt();
-	
+
 		//Pack
 		msg_designer->insertInt(target_accepted);
 		//msg_designer->insertInt(0x02);
 		msg_target->insertInt(target_accepted);
-		
+
 		// Parse
 		uint8 stat_migration = pack->parseByte();
-		
+
 		// Pack (I didn't find this byte in the live server->client)
 		msg_designer->insertByte(stat_migration);
-		msg_target->insertByte(stat_migration); 
-		
+		msg_target->insertByte(stat_migration);
+
 		// Parse
 		uint32 unknown_int_4 = pack->parseInt();
 		uint32 unknown_int_5 = pack->parseInt();
 		uint32 unknown_int_6 = pack->parseInt();
 		uint32 unknown_int_7 = pack->parseInt();
-	
+
 		// Pack
 		msg_designer->insertInt(unknown_int_4);
 		msg_designer->insertInt(unknown_int_5);
 		msg_designer->insertInt(unknown_int_6);
 		msg_designer->insertInt(unknown_int_7);
-		
+
 		msg_target->insertInt(unknown_int_4);
 		msg_target->insertInt(unknown_int_5);
 		msg_target->insertInt(unknown_int_6);
 		msg_target->insertInt(unknown_int_7);
-		
+
 		// Parse
 		uint32 size_float_attrs = pack->parseInt();
-		
+
 		// Pack
 		msg_designer->insertInt(size_float_attrs);
 		msg_target->insertInt(size_float_attrs);
-		
+
 		SceneObject* target_object = player->getZone()->lookupObject(target);
 		SceneObject* designer_object = player->getZone()->lookupObject(designer);
-		
+
 		bool commitChanges = false;
-		if (designer_accepted == 1 && 
-			target_object == designer_object && 
+		if (designer_accepted == 1 &&
+			target_object == designer_object &&
 			target_object != NULL )
 			commitChanges = true;
-			
-		if (target_accepted == 1 && 
-			designer_accepted == 1 && 
-			target_object != designer_object && 
+
+		if (target_accepted == 1 &&
+			designer_accepted == 1 &&
+			target_object != designer_object &&
 			target_object != NULL )
 			commitChanges = true;
-		
+
 		// This is a helper class for a bunch of the embedded logic
 		ImageDesignCustomization* customization = NULL;
 		if(commitChanges)
 			customization = new ImageDesignCustomization(serv, ((CreatureObject *)target_object));
-		
+
 		// Parse
 		if(size_float_attrs > 0)
 		{
@@ -1229,21 +1229,21 @@ void ObjectControllerMessage::parseImageDesignChange(Player* player, Message* pa
 				string attr;
 				pack->parseAscii(attr);
 				float val = pack->parseFloat();
-				
+
 				// Pack
 				msg_designer->insertAscii(attr);
 				msg_designer->insertFloat(val);
 				msg_target->insertAscii(attr);
 				msg_target->insertFloat(val);
-				
+
 				if(commitChanges)
 					customization->updateCustomization(attr, val);
 			}
 		}
-	
+
 		// Parse
 		uint32 size_int_attrs = pack->parseInt();
-		
+
 		// Pack
 		msg_designer->insertInt(size_int_attrs);
 		msg_target->insertInt(size_int_attrs);
@@ -1257,47 +1257,47 @@ void ObjectControllerMessage::parseImageDesignChange(Player* player, Message* pa
 				string attr;
 				pack->parseAscii(attr);
 				uint32 val = pack->parseInt();
-				
+
 				// Pack
 				msg_designer->insertAscii(attr.c_str());
 				msg_designer->insertInt(val);
 				msg_target->insertAscii(attr.c_str());
 				msg_target->insertInt(val);
-				
+
 				if(commitChanges)
 					customization->updateCustomization(attr, val);
 			}
 		}
-	
+
 		// Parse
 		string emote;
 		pack->parseAscii(emote);
-		
+
 		// Pack
 		msg_designer->insertAscii(emote);
 		msg_target->insertAscii(emote);
-					
-	
+
+
 		// If from designer send to target
 		if(designer == target)
 		{
-			
+
 			// do something else?
-		} else if(player->getObjectID() == designer) {			
+		} else if(player->getObjectID() == designer) {
 			if(target_object != NULL)
 				((Player *)target_object)->sendMessage(msg_target);
 
 		// If from target send to designer
 		} else if(player->getObjectID() == target) {
-			
+
 			if(designer_object != NULL) {
 				//((Player *)designer_object)->sendSystemMessage("update from target!");
-				//player->info(msg.str()); 
+				//player->info(msg.str());
 				//player->info(msg_designer->toString());
 				((Player *)designer_object)->sendMessage(msg_designer);
 			}
 		}
-		
+
 		if(commitChanges) {
 
 			//Update Hair
@@ -1310,56 +1310,56 @@ void ObjectControllerMessage::parseImageDesignChange(Player* player, Message* pa
 					/*stringstream msg;
 					msg << "imagedesignerupdate, hairObject:" << hex << hairObject;
 					((Player *)target_object)->sendSystemMessage(msg.str());*/
-					
+
 				}
 			}
-			
+
 			PlayerManager* playerManager = serv->getZoneServer()->getPlayerManager();
 			// Stat Migration
 			if(stat_migration > 0)
-			{				
+			{
 				if(player->getBaseHealth() != player->getTargetHealth())
 					player->setBaseHealthBar(player->getTargetHealth());
-				
+
 				if(player->getBaseStrength() != player->getTargetStrength())
 					player->setBaseStrengthBar(player->getTargetStrength());
-				
+
 				if(player->getBaseConstitution() != player->getTargetConstitution())
 					player->setBaseConstitutionBar(player->getTargetConstitution());
-				
-				if(player->getBaseAction() != player->getTargetAction())		
+
+				if(player->getBaseAction() != player->getTargetAction())
 					player->setBaseActionBar(player->getTargetAction());
-				
+
 				if(player->getBaseQuickness() != player->getTargetQuickness())
 					player->setBaseQuicknessBar(player->getTargetQuickness());
-				
+
 				if(player->getBaseStamina() != player->getTargetStamina())
 					player->setBaseStaminaBar(player->getTargetStamina());
-				
+
 				if(player->getBaseMind() != player->getTargetMind())
 					player->setBaseMindBar(player->getTargetMind());
-				
+
 				if(player->getBaseFocus() != player->getTargetFocus())
 					player->setBaseFocusBar(player->getTargetFocus());
-				
+
 				if(player->getBaseWillpower() != player->getTargetWillpower())
 					player->setBaseWillpowerBar(player->getTargetWillpower());
-				
+
 				if(playerManager != NULL)
 					playerManager->updatePlayerBaseHAMToDatabase(player);
 			}
-			
+
 			if(customization != NULL)
 				delete customization;
 
 			if(target_object != NULL)
 				((CreatureObject *)target_object)->updateCharacterAppearance();
-			
-			
+
+
 			if(playerManager != NULL)
 				playerManager->updatePlayerAppearanceToDatabase(player);
 		}
-		
+
 	} catch (...) {
 		cout << "unreported ObjectControllerMessage::parseImageDesignChange(Player* player, Message* pack) exception\n";
 	}
@@ -1372,97 +1372,97 @@ void ObjectControllerMessage::parseImageDesignCancel(Player* player, Message* pa
 		// Read the Packet
 		uint64 object = pack->parseLong();
 		pack->shiftOffset(4); // size ?
-		
+
 		uint64 designer = pack->parseLong();
 		uint64 target = pack->parseLong();
 		uint64 tent = pack->parseLong();
-		
+
 		uint8 type = pack->parseByte();
-	
+
 		ImageDesignRejectMessage* msg_designer = new ImageDesignRejectMessage(designer, designer, target, tent, 0);
 		ImageDesignRejectMessage* msg_target = new ImageDesignRejectMessage(target, designer, target, tent, 0);
-		
+
 
 		// Parse
 		string hairObject;
 		pack->parseAscii(hairObject);
 
-		// Pack 
+		// Pack
 		msg_designer->insertAscii(hairObject);
 		msg_target->insertAscii(hairObject);
-	
+
 		// Parse
 		string unknownstring_1;
 		pack->parseAscii(unknownstring_1);
-	
-		// Pack 
+
+		// Pack
 		msg_designer->insertAscii(unknownstring_1);
 		msg_target->insertAscii(unknownstring_1);
-		
+
 		uint32 unknown_int_1 = pack->parseInt(); //  02 00 00 00  was set in stat migration button, zero for other?
-		uint32 timestamp = pack->parseInt(); //   timestamp 1212950001 (2008-06-8 18:33:21Z)	
-	
-		// Pack 
+		uint32 timestamp = pack->parseInt(); //   timestamp 1212950001 (2008-06-8 18:33:21Z)
+
+		// Pack
 		msg_designer->insertInt(unknown_int_1);
 		msg_designer->insertInt(timestamp);
 		msg_target->insertInt(unknown_int_1);
 		msg_target->insertInt(timestamp);
-		
+
 		// Parse
 		uint32 required_payment = pack->parseInt();
 		uint32 offered_payment = pack->parseInt();
-	
-		// Pack 
+
+		// Pack
 		msg_designer->insertInt(required_payment);
 		msg_designer->insertInt(offered_payment);
 		msg_target->insertInt(required_payment);
 		msg_target->insertInt(offered_payment);
-		
+
 		uint8 designer_accepted = pack->parseByte();
-	
-		// Pack 
+
+		// Pack
 		msg_designer->insertByte(designer_accepted);
 		msg_target->insertByte(designer_accepted);
-		
+
 		// Parse
 		uint32 target_accepted = pack->parseInt();
-	
+
 		//Pack
 		msg_designer->insertInt(target_accepted);
 		//msg_designer->insertInt(0x02);
 		msg_target->insertInt(target_accepted);
-		
+
 		// Parse
 		uint8 stat_migration = pack->parseByte();
-		
+
 		// Pack (I didn't find this byte in the live server->client)
 		msg_designer->insertByte(stat_migration);
-		msg_target->insertByte(stat_migration); 
-		
+		msg_target->insertByte(stat_migration);
+
 		// Parse
 		uint32 unknown_int_4 = pack->parseInt();
 		uint32 unknown_int_5 = pack->parseInt();
 		uint32 unknown_int_6 = pack->parseInt();
 		uint32 unknown_int_7 = pack->parseInt();
-	
+
 		// Pack
 		msg_designer->insertInt(unknown_int_4);
 		msg_designer->insertInt(unknown_int_5);
 		msg_designer->insertInt(unknown_int_6);
 		msg_designer->insertInt(unknown_int_7);
-		
+
 		msg_target->insertInt(unknown_int_4);
 		msg_target->insertInt(unknown_int_5);
 		msg_target->insertInt(unknown_int_6);
 		msg_target->insertInt(unknown_int_7);
-		
+
 		// Parse
 		uint32 size_float_attrs = pack->parseInt();
-		
+
 		// Pack
 		msg_designer->insertInt(size_float_attrs);
 		msg_target->insertInt(size_float_attrs);
-						
+
 		// Parse
 		if(size_float_attrs > 0)
 		{
@@ -1472,7 +1472,7 @@ void ObjectControllerMessage::parseImageDesignCancel(Player* player, Message* pa
 				string attr;
 				pack->parseAscii(attr);
 				float val = pack->parseFloat();
-				
+
 				// Pack
 				msg_designer->insertAscii(attr);
 				msg_designer->insertFloat(val);
@@ -1480,10 +1480,10 @@ void ObjectControllerMessage::parseImageDesignCancel(Player* player, Message* pa
 				msg_target->insertFloat(val);
 			}
 		}
-	
+
 		// Parse
 		uint32 size_int_attrs = pack->parseInt();
-		
+
 		// Pack
 		msg_designer->insertInt(size_int_attrs);
 		msg_target->insertInt(size_int_attrs);
@@ -1497,7 +1497,7 @@ void ObjectControllerMessage::parseImageDesignCancel(Player* player, Message* pa
 				string attr;
 				pack->parseAscii(attr);
 				uint32 val = pack->parseInt();
-				
+
 				// Pack
 				msg_designer->insertAscii(attr.c_str());
 				msg_designer->insertInt(val);
@@ -1505,39 +1505,39 @@ void ObjectControllerMessage::parseImageDesignCancel(Player* player, Message* pa
 				msg_target->insertInt(val);
 			}
 		}
-	
+
 		// Parse
 		string emote;
 		pack->parseAscii(emote);
-		
+
 		// Pack
 		msg_designer->insertAscii(emote);
 		msg_target->insertAscii(emote);
-					
+
 		SceneObject* target_object = player->getZone()->lookupObject(target);
 		SceneObject* designer_object = player->getZone()->lookupObject(designer);
 
 		// If from designer send to target
 		if(designer == target)
 		{
-			
+
 			// do something else?
-		} else if(player->getObjectID() == designer) {			
+		} else if(player->getObjectID() == designer) {
 			if(target_object != NULL)
 				((Player *)target_object)->sendMessage(msg_target);
 
 		// If from target send to designer
 		} else if(player->getObjectID() == target) {
-			
+
 			if(designer_object != NULL) {
 				//((Player *)designer_object)->sendSystemMessage("update from target!");
-				//player->info(msg.str()); 
+				//player->info(msg.str());
 				//player->info(msg_designer->toString());
 				((Player *)designer_object)->sendMessage(msg_designer);
 			}
 		}
-		
-		
+
+
 	} catch (...) {
 		cout << "unreported ObjectControllerMessage::parseImageDesignReject(Player* player, Message* pack) exception\n";
 	}
@@ -1588,15 +1588,15 @@ void ObjectControllerMessage::parseStopListen(Player* player, Message* pack) {
 
 void ObjectControllerMessage::parseImageDesign(Player* player, Message* pack) {
 
-	
+
 	string skillBox = "social_entertainer_novice";
-	
+
 	if (!player->getSkillBoxesSize() || !player->hasSkillBox(skillBox)) {
 		// TODO: sendSystemMessage("cmd_err", "ability_prose", creature);
 		player->sendSystemMessage("You do not have sufficient abilities to image design.");
 		return;
-	}		
-	
+	}
+
 	uint64 target = pack->parseLong(); // skip passed target get this later?
 
 	SceneObject* object = player->getZone()->lookupObject(target);
@@ -1635,25 +1635,25 @@ void ObjectControllerMessage::parseImageDesign(Player* player, Message* pack) {
 
 			/*
 			Designer:
-			3A 02 00 00 
+			3A 02 00 00
 			72 B0 E9 91 22 00 00 00 // designer
-			00 00 00 00 
-			72 B0 E9 91 22 00 00 00 
-			DF D4 50 92 22 00 00 00 
+			00 00 00 00
+			72 B0 E9 91 22 00 00 00
+			DF D4 50 92 22 00 00 00
 			00 00 00 00 00 00 00 00 // tent
-			00 00 
+			00 00
 
 
 			Designee:
 
-			3A 02 00 00 
-			72 B0 E9 91 22 00 00 00 
-			00 00 00 00 
-			DF D4 50 92 22 00 00 00 
-			72 B0 E9 91 22 00 00 00 
-			00 00 00 00 00 00 00 00 
+			3A 02 00 00
+			72 B0 E9 91 22 00 00 00
+			00 00 00 00
+			DF D4 50 92 22 00 00 00
+			72 B0 E9 91 22 00 00 00
+			00 00 00 00 00 00 00 00
 			00 00 */
-			
+
 			// Initiate Self
 			ImageDesignStartMessage* msgPlayer = new ImageDesignStartMessage(player, player, targetPlayer, tent);
 			player->sendMessage(msgPlayer);
@@ -1678,7 +1678,7 @@ void ObjectControllerMessage::parseImageDesign(Player* player, Message* pack) {
 
 void ObjectControllerMessage::parseFlourish(Player* player, Message* pack,
 		uint32 actionCntr) {
-	uint64 target = pack->parseLong(); // skip passed target 
+	uint64 target = pack->parseLong(); // skip passed target
 
 	unicode option = unicode("");
 	pack->parseUnicode(option);
@@ -1690,7 +1690,7 @@ void ObjectControllerMessage::parseFlourish(Player* player, Message* pack,
 }
 
 void ObjectControllerMessage::parseChangeMusic(Player* player, Message* pack) {
-	pack->parseLong(); // skip passed target 
+	pack->parseLong(); // skip passed target
 
 	unicode option = unicode("");
 	pack->parseUnicode(option);
@@ -1700,7 +1700,7 @@ void ObjectControllerMessage::parseChangeMusic(Player* player, Message* pack) {
 }
 
 void ObjectControllerMessage::parseChangeDance(Player* player, Message* pack) {
-	pack->parseLong(); // skip passed target 
+	pack->parseLong(); // skip passed target
 
 	unicode option = unicode("");
 	pack->parseUnicode(option);
@@ -1862,14 +1862,14 @@ void ObjectControllerMessage::parseServerDestroyObject(Player* player,
 
 		if (player->getCurrentCraftingTool() == item) {
 			CraftingTool* tool = (CraftingTool*) item;
-			
+
 			if (!tool->isReady()) {
 				player->sendSystemMessage("You cant delete a working crafting tool!");
 				return;
 			} else
 				player->clearCurrentCraftingTool();
 		}
-		
+
 		itemManager->deletePlayerItem(player, item, true);
 
 		player->removeInventoryItem(objid);
@@ -2100,7 +2100,7 @@ void ObjectControllerMessage::parseTip(Player* player, Message* pack,
 			Player* tiptoPlayer = playerManager->getPlayer(tipToName);
 			if (tiptoPlayer == NULL) {
 				//The player exists but they are offline. So Still do the tip.
-				//Do stuff like altering the db here since they arent online.	
+				//Do stuff like altering the db here since they arent online.
 				if (playerManager->modifyOfflineBank(player, tipToName,
 						tipAmount))
 					player->sendSystemMessage("Player not online. Credits should be transferred.");
@@ -2217,7 +2217,7 @@ void ObjectControllerMessage::parseTip(Player* player, Message* pack,
 								playerManager->getPlayer(tipToName);
 						if (tiptoPlayer == NULL) {
 							//The player exists but they are offline. So Still do the tip.
-							//Do stuff like altering the db here since they arent online.	
+							//Do stuff like altering the db here since they arent online.
 							playerManager->modifyOfflineBank(player, tipToName,
 									tipAmount);
 							player->sendSystemMessage("Player not online. Add Altering the DB in later.");
@@ -2288,7 +2288,7 @@ void ObjectControllerMessage::parseSurveyRequest(Player* player, Message* packet
 	unicode resourceName;
 	packet->parseUnicode(resourceName);
 	string resName = resourceName.c_str().c_str();
-	
+
 	string skillBox = "crafting_artisan_novice";
 
 	if (player->getSkillBoxesSize() && player->hasSkillBox(skillBox)) {
@@ -2309,7 +2309,7 @@ void ObjectControllerMessage::parseSampleRequest(Player* player, Message* packet
 	unicode resourceName;
 	packet->parseUnicode(resourceName);
 	string resName = resourceName.c_str().c_str();
-	
+
 	string skillBox = "crafting_artisan_novice";
 
 	if (player->getSkillBoxesSize() && player->hasSkillBox(skillBox)) {
@@ -2453,7 +2453,7 @@ void ObjectControllerMessage::parseRequestCraftingSession(Player* player,
 
 		} else {
 
-			// Start Object Controller **************************************  
+			// Start Object Controller **************************************
 			ObjectControllerMessage* objMsg = new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x010C);
 			objMsg->insertInt(0x10F);
 			objMsg->insertInt(0);
@@ -2466,27 +2466,27 @@ void ObjectControllerMessage::parseRequestCraftingSession(Player* player,
 		// This case is reached if double clicking on a crafting station
 
 		CraftingStation* craftingStation = (CraftingStation*)player->getZone()->lookupObject(ctSceneObjID);
-		
+
 		if(craftingStation != NULL){
-		
+
 			craftingTool = player->getCraftingTool(craftingStation->getStationType());
-			
+
 			if(craftingTool != NULL){
-				
+
 				craftingTool->sendToolStart(player);
-				
+
 			} else {
-				
+
 				player->sendSystemMessage("No tool available to start.");
-				
+
 			}
-		
+
 		} else {
-			
+
 			player->sendSystemMessage("Something happened that shouldn't have.  Not a tool or a station, contact Kyle");
-			
+
 		}
-	
+
 	}
 }
 
@@ -2578,7 +2578,6 @@ void ObjectControllerMessage::parseAddCraftingResource(Player* player,
 			(TangibleObject*)player->getInventoryItem(resourceObjectID);
 
 	if (tano != NULL) {
-		cout << "is tano\n";
 		player->addIngredientToSlot(tano, slot, counter);
 
 	} else {
@@ -2726,7 +2725,7 @@ void ObjectControllerMessage::parseTransferItemMisc(Player* player,
 void ObjectControllerMessage::parseAddFriend(Player* player, Message* pack) {
 	//ToDO: Split the token based on dots for game (SWG), server (eg. sunrunner) and name (SWG.sunrunner.john)
 	pack->shiftOffset(8);
-	
+
 	unicode d;
 	pack->parseUnicode(d);
 
@@ -2739,20 +2738,20 @@ void ObjectControllerMessage::parseAddFriend(Player* player, Message* pack) {
 
 void ObjectControllerMessage::parseRemoveFriend(Player* player, Message* pack) {
 	pack->shiftOffset(8);
-	
+
 	unicode d;
 	pack->parseUnicode(d);
 
 	string name = d.c_str();
 
-	if(name != ""){	
-		player->getPlayerObject()->removeFriend(name);		
+	if(name != ""){
+		player->getPlayerObject()->removeFriend(name);
 	}
 }
 
 void ObjectControllerMessage::parseFindFriend(Player* player, Message* pack, PlayerManager* playerManager) {
 	pack->shiftOffset(8);
-	
+
 	unicode d;
 	pack->parseUnicode(d);
 

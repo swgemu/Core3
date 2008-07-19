@@ -39,41 +39,50 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
--- utils
--- draftschematic lua files
 
---RunDraftSchematicFile("config.lua") -- crafting configuration
+dlt20Rifle = Object:new {
+  objectName = "DLT20 Rifle", -- name of the lua Object
 
-RunDraftSchematicFile("objects/object.lua") -- basic object
-RunDraftSchematicFile("objects/draftschematic.lua") -- DraftSchematic Object
+  stfName = "",
 
--- Global creature table
-DraftSchematics = { }
+  name = "DLT20 Rifle",
+  objectCRC = 1869102319,
+  groupName = "craftArtisanNewbieGroupA",
 
-function DraftSchematics:addDraftSchematic(obj, crc)
-	self[crc] = obj
-  AddDraftSchematicToServer(obj);
-end
+  craftingToolTab = 1,
+  complexity = 21,
+  size = 3, 
 
-function getDraftSchematic(crc)
-	return DraftSchematics[crc]
-end
+  ingredientTemplateNames = "craft_weapon_ingredients_n, craft_weapon_ingredients_n, craft_weapon_ingredients_n, craft_weapon_ingredients_n, craft_weapon_ingredients_n",
+  ingredientTitleNames = "frame_assembly, receiver_assembly, grip_assembly, powerhandler, barrel",
+  ingredientOptionals = "0, 0, 0, 0, 0",
+  resourceTypes = "metal, metal_ferrous, metal, object/tangible/component/weapon/shared_blaster_power_handler.iff, object/tangible/component/weapon/shared_blaster_rifle_barrel.iff",
+  resourceQuantities = "35, 17, 9, 1, 1",
 
--- DraftSchematics objects
+  numberExperimentalProperties = "1, 1, 2, 2, 2, 2, 1, 2, 1, 1, 1, 2, 2, 2, 2",
 
-RunDraftSchematicFile("objects/draftschematics/artisan/genericCraftingTool.lua")
-RunDraftSchematicFile("objects/draftschematics/artisan/clothingCraftingTool.lua")
-RunDraftSchematicFile("objects/draftschematics/artisan/foodCraftingTool.lua")
-RunDraftSchematicFile("objects/draftschematics/artisan/structureCraftingTool.lua")
-RunDraftSchematicFile("objects/draftschematics/artisan/weaponCraftingTool.lua")
-RunDraftSchematicFile("objects/draftschematics/artisan/waterSurveyDevice.lua")
-RunDraftSchematicFile("objects/draftschematics/artisan/windCurrentSurveyingTool.lua")
-RunDraftSchematicFile("objects/draftschematics/artisan/chemicalSurveyDevice.lua")
-RunDraftSchematicFile("objects/draftschematics/artisan/solarEnergySurveyTool.lua")
-RunDraftSchematicFile("objects/draftschematics/artisan/mineralSurveyDevice.lua")
-RunDraftSchematicFile("objects/draftschematics/artisan/gasPocketSurveyDevice.lua")
-RunDraftSchematicFile("objects/draftschematics/artisan/floraSurveyTool.lua")
-RunDraftSchematicFile("objects/draftschematics/weaponsmith/dlt20Rifle.lua")
-RunDraftSchematicFile("objects/draftschematics/weaponsmith/blasterPowerHandler.lua")
-RunDraftSchematicFile("objects/draftschematics/weaponsmith/blasterRifleBarrel.lua")
- 
+  experimentalProperties = "XX, XX, OQ, CD, OQ, CD, OQ, CD, OQ, CD, XX, OQ, CD, XX, XX, XX, OQ, CD, OQ, CD, OQ, CD, OQ, CD",
+  experimentalWeights = "1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1",
+
+  experimentalGroupTitles = "expdamage, expdurability, expeffeciency, exprange",
+
+  experimentalSubGroupCount = "4, 1, 3, 1",
+
+  experimentalSubGroupTitles = "speed, maxDamage, minDamage, wound, decay, actionCost, healthCost, mindCost, range",
+
+  tanoAttributes = "objecttype=131084:objectcrc=2200111432:objecttemp=rifle_blaster_dlt20a:",
+
+  attributesToSet = "speed, maxDamage, minDamage, wound, hitPoints, useModifier",
+
+  attributeExperimentalProperties = "expdamage, expdamage, expdamage, expdamage, expdurability, expeffeciency, expeffeciency, expeffeciency, exprange",
+
+  attributesMinMax = "4.5, 7.5, 150, 230, 55, 130, 5, 20, 0, 1000, 10, 40, 15, 45, 15, 43, 50, 65",
+
+  xpType = "crafting_weapons_general",
+  xp = 42,
+
+  assemblySkill = "weapon_assembly",
+  experimentingSkill = "weapon_experimentation"
+}
+
+DraftSchematics:addDraftSchematic(dlt20Rifle, 1869102319)--- Add to global DraftSchematics table

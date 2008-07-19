@@ -40,49 +40,52 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-dlt20Rifle = Object:new {
-  objectName = "DLT20 Rifle", -- name of the lua Object
+--1505349903 & 753735496
+
+structureCraftingTool = Object:new {
+  objectName = "Structure and Furniture Crafting Tool", -- name of the lua Object
 
   stfName = "",
 
-  name = "DLT20 Rifle",
-  objectCRC = 1869102319,
+  name = "Structure and Furniture Crafting Tool",
+  objectCRC = 1567438265,
   groupName = "craftArtisanNewbieGroupA",
 
-  craftingToolTab = 1,
-  complexity = 21,
-  size = 3, 
+  craftingToolTab = 4096,
+  complexity = 11,
+  size = 2,
 
-  ingredientTemplateNames = "craft_weapon_ingredients_n, craft_weapon_ingredients_n, craft_weapon_ingredients_n, craft_weapon_ingredients_n, craft_weapon_ingredients_n",
-  ingredientTitleNames = "frame_assembly, receiver_assembly, grip_assembly, powerhandler, barrel",
-  ingredientOptionals = "0, 0, 0, 0, 0",
-  resourceTypes = "metal, metal_ferrous, metal, object/tangible/component/weapon/shared_blaster_power_handler.iff, object/tangible/component/weapon/shared_blaster_rifle_barrel.iff",
-  resourceQuantities = "35, 17, 9, 1, 1",
+  ingredientTemplateNames = "craft_item_ingredients_n, craft_item_ingredients_n, craft_item_ingredients_n",
+  ingredientTitleNames = "assembly_enclosure, thermal_shielding, electronic_control_unit",
+  ingredientOptionals = "0, 0, 0",
+  resourceTypes = "metal, mineral, chemical",
+  resourceQuantities = "16, 8, 10",
 
-  numberExperimentalProperties = "1, 1, 2, 2, 2, 2, 1, 2, 1, 1, 1, 2, 2, 2, 2",
+  numberExperimentalProperties = "1, 1, 1, 1",
 
-  experimentalProperties = "XX, XX, OQ, CD, OQ, CD, OQ, CD, OQ, CD, XX, OQ, CD, XX, XX, XX, OQ, CD, OQ, CD, OQ, CD, OQ, CD",
-  experimentalWeights = "1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1",
+  experimentalProperties = "XX, XX, XX, CD",
+  experimentalWeights = "0, 0, 0, 1",
 
-  experimentalGroupTitles = "expdamage, expdurability, expeffeciency, exprange",
+  experimentalGroupTitles = "exp_effectiveness",
 
-  experimentalSubGroupCount = "4, 1, 3, 1",
+  experimentalSubGroupCount = "1",
 
-  experimentalSubGroupTitles = "speed, maxDamage, minDamage, wound, decay, actionCost, healthCost, mindCost, range",
+  experimentalSubGroupTitles = "quality",
 
-  tanoAttributes = "objecttype=131084:objectcrc=2200111432:objecttemp=rifle_blaster_dlt20a:",
+  tanoAttributes = "objecttype=32769:objectcrc=4275700789:objecttemp=structure_tool:",
 
-  attributesToSet = "speed, maxDamage, minDamage, wound, hitPoints, useModifier",
+  attributesToSet = "hitPoints, useModifier",
 
-  attributeExperimentalProperties = "expdamage, expdamage, expdamage, expdamage, expdurability, expeffeciency, expeffeciency, expeffeciency, exprange",
+  attributeExperimentalProperties = "null, quality",
 
-  attributesMinMax = "4.5, 7.5, 150, 230, 55, 130, 5, 20, 0, 1000, 10, 40, 15, 45, 15, 43, 50, 65",
+  attributesMinMax = "1000, 1000, -15, 15",
 
   xpType = "crafting_general",
-  xp = 42,
+  xp = 25,
 
   assemblySkill = "general_assembly",
   experimentingSkill = "general_experimentation"
+
 }
 
-DraftSchematics:addDraftSchematic(dlt20Rifle, 1869102319)--- Add to global DraftSchematics table
+DraftSchematics:addDraftSchematic(structureCraftingTool, 1567438265) --- Add to global DraftSchematics table

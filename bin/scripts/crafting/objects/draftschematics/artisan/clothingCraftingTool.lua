@@ -39,41 +39,53 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
--- utils
--- draftschematic lua files
 
---RunDraftSchematicFile("config.lua") -- crafting configuration
+--1505349903 & 753735496
 
-RunDraftSchematicFile("objects/object.lua") -- basic object
-RunDraftSchematicFile("objects/draftschematic.lua") -- DraftSchematic Object
+clothingCraftingTool = Object:new {
+  objectName = "Clothing and Armor Crafting Tool", -- name of the lua Object
 
--- Global creature table
-DraftSchematics = { }
+  stfName = "",
 
-function DraftSchematics:addDraftSchematic(obj, crc)
-	self[crc] = obj
-  AddDraftSchematicToServer(obj);
-end
+  name = "Clothing and Armor Crafting Tool",
+  objectCRC = 1505349903,
+  groupName = "craftArtisanNewbieGroupA",
 
-function getDraftSchematic(crc)
-	return DraftSchematics[crc]
-end
+  craftingToolTab = 4096,
+  complexity = 11,
+  size = 2,
 
--- DraftSchematics objects
+  ingredientTemplateNames = "craft_item_ingredients_n, craft_item_ingredients_n, craft_item_ingredients_n",
+  ingredientTitleNames = "assembly_enclosure, thermal_shielding, electronic_control_unit",
+  ingredientOptionals = "0, 0, 0",
+  resourceTypes = "metal, mineral, chemical",
+  resourceQuantities = "16, 8, 10",
 
-RunDraftSchematicFile("objects/draftschematics/artisan/genericCraftingTool.lua")
-RunDraftSchematicFile("objects/draftschematics/artisan/clothingCraftingTool.lua")
-RunDraftSchematicFile("objects/draftschematics/artisan/foodCraftingTool.lua")
-RunDraftSchematicFile("objects/draftschematics/artisan/structureCraftingTool.lua")
-RunDraftSchematicFile("objects/draftschematics/artisan/weaponCraftingTool.lua")
-RunDraftSchematicFile("objects/draftschematics/artisan/waterSurveyDevice.lua")
-RunDraftSchematicFile("objects/draftschematics/artisan/windCurrentSurveyingTool.lua")
-RunDraftSchematicFile("objects/draftschematics/artisan/chemicalSurveyDevice.lua")
-RunDraftSchematicFile("objects/draftschematics/artisan/solarEnergySurveyTool.lua")
-RunDraftSchematicFile("objects/draftschematics/artisan/mineralSurveyDevice.lua")
-RunDraftSchematicFile("objects/draftschematics/artisan/gasPocketSurveyDevice.lua")
-RunDraftSchematicFile("objects/draftschematics/artisan/floraSurveyTool.lua")
-RunDraftSchematicFile("objects/draftschematics/weaponsmith/dlt20Rifle.lua")
-RunDraftSchematicFile("objects/draftschematics/weaponsmith/blasterPowerHandler.lua")
-RunDraftSchematicFile("objects/draftschematics/weaponsmith/blasterRifleBarrel.lua")
- 
+  numberExperimentalProperties = "1, 1, 1, 1",
+
+  experimentalProperties = "XX, XX, XX, CD",
+  experimentalWeights = "0, 0, 0, 1",
+
+  experimentalGroupTitles = "exp_effectiveness",
+
+  experimentalSubGroupCount = "1",
+
+  experimentalSubGroupTitles = "quality",
+
+  tanoAttributes = "objecttype=32769:objectcrc=753735496:objecttemp=clothing_tool:",
+
+  attributesToSet = "hitPoints, useModifier",
+
+  attributeExperimentalProperties = "null, quality",
+
+  attributesMinMax = "1000, 1000, -15, 15",
+
+  xpType = "crafting_general",
+  xp = 25,
+
+  assemblySkill = "general_assembly",
+  experimentingSkill = "general_experimentation"
+
+}
+
+DraftSchematics:addDraftSchematic(clothingCraftingTool, 1505349903) --- Add to global DraftSchematics table

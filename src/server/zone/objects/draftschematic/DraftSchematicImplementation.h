@@ -1,44 +1,44 @@
 /*
  Copyright (C) 2007 <SWGEmu>
- 
+
  This File is part of Core3.
- 
- This program is free software; you can redistribute 
- it and/or modify it under the terms of the GNU Lesser 
+
+ This program is free software; you can redistribute
+ it and/or modify it under the terms of the GNU Lesser
  General Public License as published by the Free Software
- Foundation; either version 2 of the License, 
+ Foundation; either version 2 of the License,
  or (at your option) any later version.
- 
- This program is distributed in the hope that it will be useful, 
- but WITHOUT ANY WARRANTY; without even the implied warranty of 
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  See the GNU Lesser General Public License for
  more details.
- 
- You should have received a copy of the GNU Lesser General 
+
+ You should have received a copy of the GNU Lesser General
  Public License along with this program; if not, write to
  the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
- 
- Linking Engine3 statically or dynamically with other modules 
- is making a combined work based on Engine3. 
- Thus, the terms and conditions of the GNU Lesser General Public License 
+
+ Linking Engine3 statically or dynamically with other modules
+ is making a combined work based on Engine3.
+ Thus, the terms and conditions of the GNU Lesser General Public License
  cover the whole combination.
- 
- In addition, as a special exception, the copyright holders of Engine3 
- give you permission to combine Engine3 program with free software 
- programs or libraries that are released under the GNU LGPL and with 
- code included in the standard release of Core3 under the GNU LGPL 
- license (or modified versions of such code, with unchanged license). 
- You may copy and distribute such a system following the terms of the 
- GNU LGPL for Engine3 and the licenses of the other code concerned, 
- provided that you include the source code of that other code when 
+
+ In addition, as a special exception, the copyright holders of Engine3
+ give you permission to combine Engine3 program with free software
+ programs or libraries that are released under the GNU LGPL and with
+ code included in the standard release of Core3 under the GNU LGPL
+ license (or modified versions of such code, with unchanged license).
+ You may copy and distribute such a system following the terms of the
+ GNU LGPL for Engine3 and the licenses of the other code concerned,
+ provided that you include the source code of that other code when
  and as the GNU LGPL requires distribution of source code.
- 
- Note that people who make modified versions of Engine3 are not obligated 
- to grant this special exception for their modified versions; 
- it is their choice whether to do so. The GNU Lesser General Public License 
- gives permission to release a modified version without this exception; 
- this exception also makes it possible to release a modified version 
+
+ Note that people who make modified versions of Engine3 are not obligated
+ to grant this special exception for their modified versions;
+ it is their choice whether to do so. The GNU Lesser General Public License
+ gives permission to release a modified version without this exception;
+ this exception also makes it possible to release a modified version
  which carries forward this exception.
  */
 
@@ -49,7 +49,7 @@
 
 #include "../../packets.h"
 
-#include "DraftSchematic.h" 
+#include "DraftSchematic.h"
 #include "DraftSchematicImplementation.h"
 
 #include "DraftSchematicIngredient.h"
@@ -106,7 +106,7 @@ class DraftSchematicImplementation : public DraftSchematicServant {
 	 * 65536 = Droid Engineer, Mandalorian		0001 0000 0000 0000 0000
 	 * 131072 = Starship Components				0010 0000 0000 0000 0000
 	 * 262144 = Ship Tools						0100 0000 0000 0000 0000
-	 * 524288 = Misc							1000 0000 0000 0000 0000				
+	 * 524288 = Misc							1000 0000 0000 0000 0000
 	 * * */
 	int craftingToolTab;
 
@@ -118,12 +118,12 @@ class DraftSchematicImplementation : public DraftSchematicServant {
 
 	// Experimental Property List With Padding
 	Vector<DraftSchematicExpPropGroup*> dsExpPropGroups;
-	
+
 	// Attributes that are sent in the packets
 	Vector<DraftSchematicAttribute*> attributesToSet;
-	
+
 	VectorMap<string, float> experimentalProperties;
-	
+
 	DraftSchematicValues* craftingValues;
 
 	// Tano Attributes
@@ -132,19 +132,19 @@ class DraftSchematicImplementation : public DraftSchematicServant {
 	bool persistent;
 
 	SceneObject* parent;
-	
+
 	string xpType;
 	int xp;
-	
+
 	int expPointsUsed;
-	
+
 	int expCounter;
-	
+
 	float experimentalFailureRate;
-	
+
 	string experimentingSkill;
 	string assemblySkill;
-	
+
 	bool finished;
 
 public:
@@ -159,18 +159,18 @@ public:
 		this->complexity = complexity;
 		this->schematicSize = schematicSize;
 		this->craftingToolTab = craftingToolTab;
-		
+
 		this->craftingValues = new DraftSchematicValues();
 
 		this->persistent = false;
 		this->expPointsUsed = 0;
-		
+
 		this->finished = false;
 	}
 
 	DraftSchematicImplementation(DraftSchematic* draftSchematic) :
 		DraftSchematicServant() {
-		
+
 		//draftSchematic->toString();
 
 		this->schematicID = draftSchematic->getSchematicID();
@@ -180,11 +180,11 @@ public:
 		this->complexity = draftSchematic->getComplexity();
 		this->schematicSize = draftSchematic->getSchematicSize();
 		this->craftingToolTab = draftSchematic->getCraftingToolTab();
-		
+
 		this->craftingValues = new DraftSchematicValues();
 
 		this->persistent = false;
-		
+
 		this->finished = false;
 
 		for(int i = 0; i < draftSchematic->getIngredientListSize(); ++i){
@@ -192,66 +192,66 @@ public:
 			this->dsIngredients.add(draftSchematic->getIngredient(i));
 
 		}
-		
+
 		for(int i = 0; i < draftSchematic->getExpPropGroupListSize(); ++i){
-			
+
 			this->dsExpPropGroups.add(draftSchematic->getExpPropGroup(i));
 
 		}
-		
+
 		string title;
 		string subtitle;
-		
+
 		for(int i = 0; i < draftSchematic->getCraftingValues()->getExperimentalPropertyTitleSize(); ++i){
-					
+
 			title = draftSchematic->getCraftingValues()->getExperimentalPropertyTitle(i);
-			
+
 			for(int j = 0; j < draftSchematic->getCraftingValues()->getExperimentalPropertySubtitleSize(title); ++j){
-			
+
 				subtitle = draftSchematic->getCraftingValues()->getExperimentalPropertySubtitle(title, j);
-	
+
 				this->craftingValues->addExperimentalPropertySubtitle(title, subtitle);
 			}
 		}
-		
+
 		for(int i = 0; i < draftSchematic->getAttributesToSetListSize(); ++i){
-			
-			this->attributesToSet.add(draftSchematic->getAttributeToSet(i)); 
+
+			this->attributesToSet.add(draftSchematic->getAttributeToSet(i));
 
 		}
-		
+
 		this->tanoAttributes = draftSchematic->getTanoAttributes();
 		this->xpType = draftSchematic->getXpType();
 		this->xp = draftSchematic->getXp();
-		
+
 		this->experimentingSkill = draftSchematic->getExperimentingSkill();
 		this->assemblySkill = draftSchematic->getAssemblySkill();
-		
-		toString();
+
+		//toString();
 	}
-	
+
 	~DraftSchematicImplementation(){
-		
+
 		dsIngredients.removeAll();
 
 		attributesToSet.removeAll();
 
 		experimentalProperties.removeAll();
-		
+
 		craftingValues->finalize();
 		craftingValues = NULL;
-		
+
 	}
- 
-	DraftSchematic* dsClone(DraftSchematic* draftSchematic) { 
+
+	DraftSchematic* dsClone(DraftSchematic* draftSchematic) {
 		if (draftSchematic != NULL) {
 			return new DraftSchematic(draftSchematic);
 		} else {
 			return NULL;
 		}
 	}
-	
-	
+
+
 
 	void close(Player* player) {
 		if (player == NULL)
@@ -270,7 +270,7 @@ public:
 	}
 
 	void sendTo(Player* player) {
-		// This sends the initial DraftSchematic data to begin the crafting Session	
+		// This sends the initial DraftSchematic data to begin the crafting Session
 
 		if (player == NULL)
 			return;
@@ -304,7 +304,7 @@ public:
 		ManufactureSchematicObjectMessage9* msco9 =
 				new ManufactureSchematicObjectMessage9(_this->getObjectID());
 		player->sendMessage(msco9);
-		
+
 		// Scene Close
 		BaseMessage* close = new SceneObjectCloseMessage(_this->getObjectID());
 		player->sendMessage(close);
@@ -330,9 +330,9 @@ public:
 	// Ingredient Methods
 	void addIngredient(const string& ingredientTemplateName, const string& ingredientTitleName,
 			bool optional, const string& resourceType, uint32 resourceQuantity) {
-		DraftSchematicIngredient* ingreedient = new DraftSchematicIngredient(ingredientTemplateName, 
+		DraftSchematicIngredient* ingreedient = new DraftSchematicIngredient(ingredientTemplateName,
 				ingredientTitleName, optional, resourceType, resourceQuantity);
-	
+
 		dsIngredients.add(ingreedient);
 	}
 
@@ -398,10 +398,10 @@ public:
 		/*uint32 padding = 0;
 		 if (draftSchematicIngredients.size() > 0) {
 		 string templateName = draftSchematicIngredients.get(0)->getTemplateName();
-		 
-		 if( templateName == "craft_chemical_ingredients_n" || templateName == "craft_droid_ingredients_n" 
+
+		 if( templateName == "craft_chemical_ingredients_n" || templateName == "craft_droid_ingredients_n"
 		 || templateName == "craft_munition_ingredients_n" || templateName == "craft_structure_ingredients_n"
-		 || templateName == "craft_tissue_ingredients_n" || templateName == "craft_vehicle_ingredients_n" 
+		 || templateName == "craft_tissue_ingredients_n" || templateName == "craft_vehicle_ingredients_n"
 		 || templateName == "craft_weapon_ingredients_n") {
 		 padding = 2;
 		 } else {
@@ -410,11 +410,11 @@ public:
 		 }*/
 
 		// Have to run the loop twice.  Ask soe why :/
-		
+
 		for (int soeFtl = 0; soeFtl < 2; soeFtl++) {
 			// The +3 is for the padding
 			//msg->insertByte(listSize + padding);
-			
+
 			msg->insertByte(listSize);
 
 			/* This loop adds the padding required for this packet to work
@@ -424,7 +424,7 @@ public:
 			 }*/
 
 			int count = getRequiredIngredientCount();
-			
+
 			// Send all the experimental property data
 			for (int i = 0; i < listSize; i++) {
 				DraftSchematicExpPropGroup* dsEpg = dsExpPropGroups.get(i);
@@ -439,7 +439,7 @@ public:
 
 	// setters
 	inline void setPersistent(bool status) {
-		persistent = status; 
+		persistent = status;
 	}
 	inline void setObjectID(uint64 objID) {
 		objectID = objID;
@@ -452,19 +452,19 @@ public:
 	inline void setContainer(SceneObject* obj) {
 		parent = obj;
 	}
-	
+
 	inline void setXpType(string type){
 		xpType = type;
 	}
-	
+
 	inline void setXp(int x){
 		xp = x;
 	}
-	
+
 	inline void setExpCounter() {
 		expCounter = craftingValues->getExperimentalPropertyTitleSize() + 1;
 	}
-	
+
 	inline void increaseExpCounter(){
 		expCounter++;
 	}
@@ -472,27 +472,27 @@ public:
 	inline void setExpPoints(int points){
 		expPointsUsed = points;
 	}
-	
+
 	inline void setExpFailure(float rate){
 		experimentalFailureRate = rate;
 	}
-	
+
 	inline void setExperimentingSkill(const string& exp){
 		experimentingSkill = exp;
 	}
-	
+
 	inline void setAssemblySkill(const string& ass){
 		assemblySkill = ass;
 	}
-	
+
 	inline void increaseComplexity(){
 		complexity++;
 	}
-	
+
 	inline void setFinished(){
 		finished = true;
 	}
-	
+
 	//getters
 	inline uint32 getSchematicID() {
 		return schematicID;
@@ -533,97 +533,97 @@ public:
 	inline SceneObject* getContainer() {
 		return parent;
 	}
-	
+
 	inline string& getXpType(){
 		return xpType;
 	}
-	
+
 	inline int getXp(){
 		return xp;
 	}
-	
+
 	inline string& getExperimentingSkill(){
 		return experimentingSkill;
 	}
-	
+
 	inline string& getAssemblySkill(){
 		return assemblySkill;
 	}
-	
+
 	inline void addAttributeToSet(const string& attribute, const float minVal, const float maxVal, const string& attributeExpProp) {
 		DraftSchematicAttribute* attrib = new DraftSchematicAttribute(attribute, minVal, maxVal, attributeExpProp);
 		attributesToSet.add(attrib);
 	}
-	
+
 	inline DraftSchematicAttribute* getAttributeToSet(const int i) {
-		return attributesToSet.get(i); 
+		return attributesToSet.get(i);
 	}
-	
-	inline int getAttributesToSetListSize(){ 
+
+	inline int getAttributesToSetListSize(){
 		return attributesToSet.size();
 	}
-	
+
 	inline DraftSchematicAttribute* getAttributesToSet(const int i){
 		return attributesToSet.get(i);
 	}
-	
+
 	inline int getExpPoints(){
 		return expPointsUsed;
 	}
-	
+
 	inline int getExpCounter(){
 		return expCounter;
 	}
-	
+
 	inline float getExpFailure(){
 		return experimentalFailureRate;
 	}
-	  
+
 	inline int getRequiredIngredientCount(){
-	
+
 		DraftSchematicIngredient* dsi;
 		int count = 0;
-		 
+
 		for(int i = 0; i < dsIngredients.size(); i++){
 			dsi = dsIngredients.get(i);
-			
+
 			if(!dsi->getOptional())
 				count++;
 		}
 		return count;
 	}
-	
+
 	inline DraftSchematicValues* getCraftingValues(){
 		return craftingValues;
 	}
-	
+
 	inline bool isFinished(){
 		return finished;
 	}
-	
+
 	void toString(){
-		
+
 		cout << "Name: " << objName;
 		cout << "\nSchematicID: " << schematicID;
 		cout << "\nobjectID: " << objectID;
 		cout << "\nschematicCRC: " << schematicCRC;
 		cout << "\ngroupName: " << groupName;
 		cout << "\ncomplexity: " << complexity;
-		cout << "\nschematicSize: " << schematicSize;		
+		cout << "\nschematicSize: " << schematicSize;
 		cout << "\ncraftingToolTab: " << craftingToolTab;
-		
+
 		cout << "\nxpType: " << xpType;
 		cout << "\nxp: " << xp;
 		cout << "\ntanoAttributes: " << tanoAttributes;
-		
+
 		cout << "\nAssembly Skill: " << assemblySkill;
 		cout << "\nExperimenting Skill: " << experimentingSkill;
 
 		DraftSchematicIngredient* ingredient;
 		for(int i = 0;i < dsIngredients.size(); ++i){
-			
+
 			ingredient = dsIngredients.get(i);
-			
+
 			cout << "\n*************************" << endl;
 			cout << "Ingredient " << i << endl;
 			cout << "Title: " << ingredient->getTitleName() << endl;
@@ -632,27 +632,27 @@ public:
 			cout << "Quantity: " << ingredient->getResourceQuantity() << endl;
 			cout << "Optional: " << ingredient->getOptional() << endl;
 			cout << "**************************" << endl;
-	
+
 		}
 
 		DraftSchematicExpPropGroup* tempGroup;
 		for(int i = 0;i < dsExpPropGroups.size(); ++i){
-			
+
 			tempGroup = dsExpPropGroups.get(i);
-			
+
 			cout << "\n*************************" << endl;
 			cout << "Exp Property " << i << endl;
 			cout << "Type and Weight: " << tempGroup->getTypeAndWeight(i) << endl;
 			cout << "Percentage: " << tempGroup->getExpPropPercentage(i) << endl;
 			cout << "**************************" << endl;
-	
+
 		}
-		
+
 		DraftSchematicAttribute* tempAttribute;
 		for(int i = 0;i < attributesToSet.size(); ++i){
-			
+
 			tempAttribute = attributesToSet.get(i);
-			
+
 			cout << "\n*************************" << endl;
 			cout << "Attribute " << i << endl;
 			cout << "Name: " << tempAttribute->getAttributeName() << endl;
@@ -661,23 +661,23 @@ public:
 			cout << "Max: " << tempAttribute->getMaxValue() << endl;
 			cout << "Range: " << tempAttribute->getRange() << endl;
 			cout << "**************************" << endl;
-	
+
 		}
-		
+
 		float tempProperty;
 		for(int i = 0;i < experimentalProperties.size(); ++i){
-			
+
 			tempProperty = experimentalProperties.get(i);
-			
+
 			cout << "*************************" << endl;
 			cout << "Prop " << i << endl;
 			cout << "Prop: " << tempProperty << endl;
 			cout << "**************************" << endl;
-	
+
 		}
 
 		craftingValues->toString();
-		
+
 	}
 
 };
