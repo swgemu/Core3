@@ -45,14 +45,14 @@ kraytAttack1 = {
 	
 	requiredWeaponType = NONE,
 
-	range = 15,
+	range = 30,
 
-	damageRatio = 380,
+	damageRatio = 500,
 
 	speedRatio = 2,
 
-	areaRange = 15,
-	accuracyBonus = 0,
+	areaRange = 30,
+	accuracyBonus = 300,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -79,13 +79,13 @@ kraytAttack2 = {
 	
 	requiredWeaponType = NONE,
 
-	range = 15,
+	range = 30,
 
-	damageRatio = 420,
+	damageRatio = 520,
 
 	speedRatio = 2,
 
-	areaRange = 15,
+	areaRange = 30,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
@@ -113,14 +113,14 @@ kraytAttack3 = {
 	
 	requiredWeaponType = NONE,
 
-	range = 15,
+	range = 30,
 
-	damageRatio = 460,
+	damageRatio = 560,
 
 	speedRatio = 2,
 
-	areaRange = 15,
-	accuracyBonus = 0,
+	areaRange = 30,
+	accuracyBonus = 300,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -147,14 +147,14 @@ kraytAttack4 = {
 	
 	requiredWeaponType = NONE,
 
-	range = 15,
+	range = 30,
 
-	damageRatio = 500,
+	damageRatio = 600,
 
 	speedRatio = 2,
 
-	areaRange = 15,
-	accuracyBonus = 0,
+	areaRange = 30,
+	accuracyBonus = 300,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -181,14 +181,14 @@ kraytAttack5 = {
 	
 	requiredWeaponType = NONE,
 
-	range = 15,
+	range = 30,
 
-	damageRatio = 540,
+	damageRatio = 640,
 
 	speedRatio = 2,
 
-	areaRange = 15,
-	accuracyBonus = 0,
+	areaRange = 30,
+	accuracyBonus = 300,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -217,15 +217,15 @@ kraytAttack6 = {
 
 	range = 30,
 
-	damageRatio = 540,
+	damageRatio = 640,
 
 	speedRatio = 2,
 
 	areaRange = 30,
-	accuracyBonus = 0,
+	accuracyBonus = 300,
 		
 	knockdownChance = 40,
-	postureDownChance = 0,
+	postureDownChance = 40,
 	postureUpChance = 0,
 	dizzyChance = 0,
 	blindChance = 0,
@@ -251,12 +251,12 @@ kraytAttack7 = {
 
 	range = 30,
 
-	damageRatio = 540,
+	damageRatio = 640,
 
 	speedRatio = 2,
 
 	areaRange = 30,
-	accuracyBonus = 0,
+	accuracyBonus = 300,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,

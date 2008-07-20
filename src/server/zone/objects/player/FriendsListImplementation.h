@@ -232,12 +232,22 @@ public:
 	
 	void findFriend(string& name, PlayerManager* playerManager) {
 		String::toLower(name);
-		Player* targetPlayer = playerManager->getPlayer(name);
-		PlayerObject* targetObject = targetPlayer->getPlayerObject();
-
-		if (targetPlayer == NULL)
-			return;		
+		
+		Player* targetPlayer;
+		PlayerObject* targetObject;
+		
+		try {
+			targetPlayer = playerManager->getPlayer(name);
 			
+			if (targetPlayer == NULL)				
+				return;
+			
+			targetObject = targetPlayer->getPlayerObject();
+		} catch (...) {
+			player->sendSystemMessage("Usage: /findfriend <name>\n");
+			return;
+		}
+		
 		string myName = player->getFirstName();
 		int i =0;
 

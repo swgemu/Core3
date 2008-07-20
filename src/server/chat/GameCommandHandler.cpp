@@ -91,7 +91,7 @@ void GameCommandHandler::init() {
 			"Disconnects a player from the game.",
 			"Usage: @kick <player>",
 			&gm_kick);
-	gmCommands->addCommand("kickArea", PRIVLIDGED, 
+	gmCommands->addCommand("kickArea", DEVELOPER, 
 			"Disconnects all players in a certain range.",
 			"Usage: @kickArea [distance]",
 			&gm_kickArea);
@@ -111,7 +111,7 @@ void GameCommandHandler::init() {
 			"Kills a player.", 
 			"Usage: @kill <player>",
 			&gm_kill);
-	gmCommands->addCommand("killArea", PRIVLIDGED, 
+	gmCommands->addCommand("killArea", DEVELOPER, 
 			"Kills all players within a certain range.", 
 			"Usage: @killArea [distance]",
 			&gm_killArea);
