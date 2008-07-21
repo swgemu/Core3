@@ -47,7 +47,7 @@ objectCRC = 2005105485,
 socialGroup = "crystalhunter", 
 named = FALSE,
 
-level = 300, 
+level = 80, 
 
 combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG, 
 

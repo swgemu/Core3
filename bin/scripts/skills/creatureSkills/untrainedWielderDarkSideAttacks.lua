@@ -47,10 +47,10 @@ untrainedWielderDarkSideAttack20 = {
 	requiredWeaponType = UNARMED,
 	
 	range = 11,
-	damageRatio = 25.50,
+	damageRatio = 250.50,
 	speedRatio = 1.45,
 	areaRange = 0,
-	accuracyBonus = 0,
+	accuracyBonus = 300,
 
 	healthAttackChance = 0,
 	actionAttackChance = 50,
@@ -89,17 +89,17 @@ untrainedWielderDarkSideAttack21 = {
 	requiredWeaponType = UNARMED,
 	
 	range = 11,
-	damageRatio = 25.0,
+	damageRatio = 250.0,
 	speedRatio = 1.45,
 	areaRange = 0,
-	accuracyBonus = 0,
+	accuracyBonus = 300,
 		
 	knockdownChance = 1,
-	postureDownChance = 1,
+	postureDownChance = 0,
 	postureUpChance = 0,
 	dizzyChance = 0,
 	blindChance = 0,
-	stunChance = 1,
+	stunChance = 0,
 	intimidateChance = 0,
 	
 	CbtSpamBlock = "melee_block",
@@ -120,15 +120,15 @@ untrainedWielderDarkSideAttack22 = {
 	requiredWeaponType = UNARMED,
 	
 	range = 11,
-	damageRatio = 25.0,
+	damageRatio = 250.0,
 	speedRatio = 1.45,
 	areaRange = 0,
-	accuracyBonus = 0,
+	accuracyBonus = 300,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
 	postureUpChance = 0,
-	dizzyChance = 1,
+	dizzyChance = 0,
 	blindChance = 0,
 	stunChance = 1,
 	intimidateChance = 0,
@@ -151,17 +151,17 @@ untrainedWielderDarkSideAttack23 = {
 	requiredWeaponType = UNARMED,
 	
 	range = 11,
-	damageRatio = 25.5,
+	damageRatio = 250.5,
 	speedRatio = 23.45,
 	areaRange = 7,
-	accuracyBonus = 100,
+	accuracyBonus = 300,
 		
 	knockdownChance = 0,
-	postureDownChance = 1,
+	postureDownChance = 0,
 	postureUpChance = 0,
 	dizzyChance = 0,
-	blindChance = 1,
-	stunChance = 1,
+	blindChance = 0,
+	stunChance = 0,
 	intimidateChance = 1,
 	
 	CbtSpamBlock = "melee_block",
@@ -182,10 +182,10 @@ untrainedWielderDarkSideAttack24 = {
 	requiredWeaponType = UNARMED,
 	
 	range = 11,
-	damageRatio = 25.5,
+	damageRatio = 250.5,
 	speedRatio = 23.45,
 	areaRange = 0,
-	accuracyBonus = 0,
+	accuracyBonus = 300,
 
 	healthAttackChance = 50,
 	strengthAttackChance = 0,
@@ -224,10 +224,10 @@ untrainedWielderDarkSideAttack25 = {
 	requiredWeaponType = UNARMED,
 	
 	range = 11,
-	damageRatio = 25.75,
+	damageRatio = 250.75,
 	speedRatio = 1.45,
 	areaRange = 7,
-	accuracyBonus = 0,
+	accuracyBonus = 300,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -255,17 +255,17 @@ untrainedWielderDarkSideAttack26 = {
 	requiredWeaponType = UNARMED,
 	
 	range = 11,
-	damageRatio = 25.0,
+	damageRatio = 250.0,
 	speedRatio = 25.45,
 	areaRange = 7,
-	accuracyBonus = 0,
+	accuracyBonus = 300,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
 	postureUpChance = 0,
 	dizzyChance = 1,
 	blindChance = 0,
-	stunChance = 1,
+	stunChance = 0,
 	intimidateChance = 0,
 	
 	CbtSpamBlock = "melee_block",
@@ -285,10 +285,10 @@ untrainedWielderDarkSideAttack27 = {
 	requiredWeaponType = UNARMED,
 	
 	range = 11,
-	damageRatio = 25.5,
+	damageRatio = 250.5,
 	speedRatio = 1.25,
 	areaRange = 0,
-	accuracyBonus = 0,
+	accuracyBonus = 300,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,

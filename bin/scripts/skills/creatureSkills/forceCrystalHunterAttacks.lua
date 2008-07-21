@@ -48,10 +48,10 @@ forceCrystalHunterAttack20 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 20.50,
+	damageRatio = 200.50,
 	speedRatio = 1.45,
 	areaRange = 0,
-	accuracyBonus = 0,
+	accuracyBonus = 300,
 
 	healthAttackChance = 0,
 	actionAttackChance = 50,
@@ -90,17 +90,17 @@ forceCrystalHunterAttack21 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 25.25,
+	damageRatio = 250.25,
 	speedRatio = 1.45,
 	areaRange = 0,
-	accuracyBonus = 0,
+	accuracyBonus = 300,
 		
 	knockdownChance = 1,
-	postureDownChance = 1,
+	postureDownChance = 0,
 	postureUpChance = 0,
 	dizzyChance = 0,
 	blindChance = 0,
-	stunChance = 1,
+	stunChance = 0,
 	intimidateChance = 0,
 	
 	CbtSpamBlock = "melee_block",
@@ -121,17 +121,17 @@ forceCrystalHunterAttack22 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 25.0,
+	damageRatio = 250.0,
 	speedRatio = 1.45,
 	areaRange = 0,
-	accuracyBonus = 100,
+	accuracyBonus = 300,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
 	postureUpChance = 0,
-	dizzyChance = 1,
+	dizzyChance = 0,
 	blindChance = 1,
-	stunChance = 1,
+	stunChance = 0,
 	intimidateChance = 1,
 	
 	CbtSpamBlock = "melee_block",
@@ -152,17 +152,17 @@ forceCrystalHunterAttack23 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 28.0,
+	damageRatio = 280.0,
 	speedRatio = 1.45,
 	areaRange = 7,
-	accuracyBonus = 0,
+	accuracyBonus = 300
 		
 	knockdownChance = 0,
 	postureDownChance = 1,
 	postureUpChance = 0,
 	dizzyChance = 0,
-	blindChance = 1,
-	stunChance = 1,
+	blindChance = 0,
+	stunChance = 0,
 	intimidateChance = 0,
 	
 	CbtSpamBlock = "melee_block",
@@ -183,10 +183,10 @@ forceCrystalHunterAttack24 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 15.75,
+	damageRatio = 150.75,
 	speedRatio = 1.45,
 	areaRange = 0,
-	accuracyBonus = 0,
+	accuracyBonus = 300,
 
 	healthAttackChance = 50,
 	strengthAttackChance = 0,
@@ -225,15 +225,15 @@ forceCrystalHunterAttack25 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 20.50,
+	damageRatio = 200.50,
 	speedRatio = 1.45,
 	areaRange = 7,
-	accuracyBonus = 0,
+	accuracyBonus = 300,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
 	postureUpChance = 0,
-	dizzyChance = 1,
+	dizzyChance = 0,
 	blindChance = 0,
 	stunChance = 0,
 	intimidateChance = 0,
@@ -256,10 +256,10 @@ forceCrystalHunterAttack26 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 15.5,
+	damageRatio = 150.5,
 	speedRatio = 2.45,
 	areaRange = 7,
-	accuracyBonus = 0,
+	accuracyBonus = 300,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -286,10 +286,10 @@ forceCrystalHunterAttack27 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 15.5,
+	damageRatio = 150.5,
 	speedRatio = 1.25,
 	areaRange = 0,
-	accuracyBonus = 0,
+	accuracyBonus = 300,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
