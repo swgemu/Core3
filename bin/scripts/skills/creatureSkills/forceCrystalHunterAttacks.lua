@@ -155,7 +155,7 @@ forceCrystalHunterAttack23 = {
 	damageRatio = 280.0,
 	speedRatio = 1.45,
 	areaRange = 7,
-	accuracyBonus = 300
+	accuracyBonus = 300,
 		
 	knockdownChance = 0,
 	postureDownChance = 1,
