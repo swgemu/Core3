@@ -18,10 +18,10 @@
 
 #include "../../packets.h"
 
-ResourceManagerImplementation::ResourceManagerImplementation(ZoneServer* inserver, 
+ResourceManagerImplementation::ResourceManagerImplementation(ZoneServer* inserver,
 		ZoneProcessServerImplementation* inserv) : ResourceManagerServant(), Logger("ResourceManager"), Mutex("ResourceManager") {
 	init();
-	
+
 	serv = inserv;
 
 	spawnResourcesEvent = new SpawnResourcesEvent(this);
@@ -29,10 +29,10 @@ ResourceManagerImplementation::ResourceManagerImplementation(ZoneServer* inserve
 	//  This dictates the first time the spawner will run
 	//  Spawner does take a good bit of time to populate an
 	//  Empty database.
-	
-	setLogging(true);
+
+	setLogging(false);
 	setGlobalLogging(true);
-	
+
 }
 
 ResourceManagerImplementation::~ResourceManagerImplementation() {
@@ -40,22 +40,22 @@ ResourceManagerImplementation::~ResourceManagerImplementation() {
 		delete spawnResourcesEvent;
 		spawnResourcesEvent = NULL;
 	}
-	
+
 	if (minimumpool != NULL) {
 		delete minimumpool;
 		minimumpool = NULL;
 	}
-	
+
 	if (fixedpool != NULL) {
 		delete fixedpool;
 		fixedpool = NULL;
 	}
-	
+
 	if (nativepool != NULL) {
 		delete nativepool;
 		nativepool = NULL;
 	}
-	
+
 	if (resourceMap != NULL) {
 		delete resourceMap;
 		resourceMap = NULL;
@@ -66,32 +66,32 @@ ResourceManagerImplementation::~ResourceManagerImplementation() {
 void ResourceManagerImplementation::init() {
 	resourceMap = new VectorMap<string, ResourceTemplate*>();
 	resourceMap->setNullValue(NULL);
-	
+
 	info("Initializing Resource Manager");
-	
+
 	buildResourceMap();
-	
+
 	info("Resources built from database.");
-	
-	averageShiftTime = 3 * 150000;//3600000; // In milliseconds
+
+	averageShiftTime = 3 * 3600000; // In milliseconds
 	//  This is the time between each time the Resource Manager schedules
-	//  itself to run again.  
+	//  itself to run again.
 	//  *** Default is 1 hour (3600000) ***
 	//  *** Good testing time is (15000) ***
-	
-	aveduration = 45;//86400;  // In seconds
+
+	aveduration = 86400;  // In seconds
 	// This is the modifier for how long spawns are in shift
 	// Organics are in shift between (6 * aveduration) and  (22 * aveduration)
 	// Inorganics are in shift between (6 * aveduration) and (11 * aveduration)
 	// JTL resources are in shift between (13 * aveduration) and (22 * aveduration)
 	//  *** Default is 1 day (86400) ***
 	//  *** Good testing period is (40) ***
-	
+
 	maxspawns = 40;  //  Mmaximum number of spawns per planet
 	minspawns = 25;  //  Minimum number of spawns per planet
 	maxradius = 2000;   //  Maximum Spawn radius of resource on map
 	minradius = 600;    //  Minimum Spawn radius of resource on map
-	
+
 	makeMinimumPoolVector();
 	makeFixedPoolVector();
 	makeNativePoolVector();
@@ -99,15 +99,15 @@ void ResourceManagerImplementation::init() {
 
 void ResourceManagerImplementation::stop() {
 	lock();
-	
+
 	if (spawnResourcesEvent->isQueued())
 		serv->removeEvent(spawnResourcesEvent);
-	
+
 	for (int i = 0; i < resourceMap->size(); ++i)
 		delete resourceMap->get(i);
-	
+
 	resourceMap->removeAll();
-	
+
 	unlock();
 }
 
@@ -134,35 +134,35 @@ void ResourceManagerImplementation::theShift() {
 	info("Insert Queries run = " + stringify(numInsert));
 	info("Functions run = " + stringify(numFunctions));
 	info("Name functions run = " + stringify(numNameFunctions));
-	
+
 	countResources();
-	
-	verifyResourceMap();
-	
+
+	//verifyResourceMap();
+
 	info("resource Spawner Finished");
-	
+
 	serv->addEvent(spawnResourcesEvent, averageShiftTime);
 	unlock();
 }
 
-void ResourceManagerImplementation::countResources() {  
+void ResourceManagerImplementation::countResources() {
 	// This method pure supports out for the above method, is purely cosmetic
 	try {
 		stringstream query, query2, query3, query4;
-		
+
 		query << "SELECT DISTINCT resource_name FROM resource_spawns"
 			  << " WHERE pool = 'minimum'";
 
 		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
-		
+
 		info("Minimum Pool has " + stringify(res->size()) + "/15 resources");
 		delete res;
-		
+
 		query2 << "SELECT DISTINCT resource_name FROM resource_spawns"
 			   << " WHERE pool = 'random'";
 
 		res = ServerDatabase::instance()->executeQuery(query2);
-		
+
 		info("Random Pool has " + stringify(res->size()) + "/24 resources");
 		delete res;
 
@@ -170,7 +170,7 @@ void ResourceManagerImplementation::countResources() {
 			   << " WHERE pool = 'fixed'";
 
 		res = ServerDatabase::instance()->executeQuery(query3);
-		
+
 		info("Fixed Pool has " + stringify(res->size()) + "/22 resources");
 		delete res;
 
@@ -178,10 +178,10 @@ void ResourceManagerImplementation::countResources() {
 			   << " WHERE pool = 'native'";
 
 		res = ServerDatabase::instance()->executeQuery(query4);
-		
+
 		info("Native Pool has " + stringify(res->size()) + "/420 resources");
 		delete res;
-		
+
 		info("*** Extra resources expected ***");
 	} catch(...) {
 		cout << "Error in ResourceManagerImplementation::countResources()\n";
@@ -192,13 +192,13 @@ void ResourceManagerImplementation::clearResources() {
 	lock();
 	try {
 		numFunctions++;
-		
+
 		stringstream query;
 		query << "TRUNCATE TABLE `resource_spawns`;";
 		query << "TRUNCATE TABLE `resource_data`;";
-		
+
 		ServerDatabase::instance()->executeStatement(query);
-		
+
 		numQueries++;
 	} catch (...) {
 		cout << "Error in clearResources\n";
@@ -208,58 +208,50 @@ void ResourceManagerImplementation::clearResources() {
 
 float ResourceManagerImplementation::getDensity(int planet, string& resname, float inx, float iny) {
 	float density = 0.0f, max_density = 0.0f;
-	
+
 	try {
 		float x, y, radius, source, distance = 0.0f;
-		
+
 		SpawnLocation* sl;
-		
+
 		ResourceTemplate* resource = resourceMap->get(resname);
-		
+
 		if (resource == NULL)
 			return max_density;
-		
+
 		for (int i = resource->getSpawnSize() - 1; i >= 0; i--) {
 			sl = resource->getSpawn(i);
-			
+
 			if (sl->getPlanet() == planet) {
 				x = sl->getX();
 				y = sl->getY();
-				
+
 				radius = sl->getRadius();
-				
-cout << "Spawn on planet is " << getDistanceFrom(inx, iny, x, y) << " and radius is " << radius;
-				
+
 				source = sl->getMax();
-				
+
 				if (inx > (x - radius) && inx < (x + radius) && iny > (y - radius) && iny < (y + radius)) {
-					distance = sqrt(((inx - x) * (inx - x)) 
+					distance = sqrt(((inx - x) * (inx - x))
 							+ ((iny - y) * (iny - y)));
 
 					density = ((((radius - distance) / radius) * source) / 100.0f);
-cout << " in in range ******* density = " << density << " **********" << endl;
-					
+
 					if (density > max_density)
 						max_density = density;
-				} else {
-					
-cout << " NOT in range" << endl;
-					
-				}
 			}
 		}
 	} catch (...) {
 		cout << "Database error in getDensity\n";
 	}
-	
+
 	return max_density;
 }
 
 float ResourceManagerImplementation::getDistanceFrom(float inx, float iny, float x, float y){
-	
+
 	float theX = x - inx;
 	float theY = y - iny;
-	
+
 	return sqrt((theX * theX)+ (theY * theY));
 }
 
@@ -267,18 +259,18 @@ void ResourceManagerImplementation::sendSurveyMessage(Player* player, string& re
 	// Added by Ritter
 	if (player->getSurveyTool() == NULL)
 		return;
-		
+
 	lock(doLock);
 	Survey* surveyMessage = new Survey();
-	
+
 	float player_x = player->getPositionX();
 	float player_y = player->getPositionY();
-	
+
 	float spacer, x, y, res_percent = 0.0f;
 	float wp_x, wp_y, max_res_percent = 0.0f;
-	
+
 	int points;
-	
+
 	switch (player->getSurveyTool()->getSurveyToolRange()) {
 	case 128:
 		spacer = 42.6f;
@@ -311,49 +303,49 @@ void ResourceManagerImplementation::sendSurveyMessage(Player* player, string& re
 		y = player_y - spacer;
 		break;
 	}
-	
+
 	for (int i = 0; i < points; i++) {
 		for (int j = 0; j < points; j++) {
 			res_percent = getDensity(player->getZoneIndex(), resourceName, x, y);
-			
+
 			if (res_percent > max_res_percent) {
 				max_res_percent = res_percent;
 				wp_x = x;
 				wp_y = y;
 			}
-			
+
 			surveyMessage->add(x, y, res_percent);
-			
+
 			x += spacer;
 		}
-		
+
 		y += spacer;
 		x -= (points * spacer);
 	}
-	
+
 	// Send Survey Results
 	player->sendMessage(surveyMessage);
-	
+
 	if (max_res_percent >= 0.1f) {
 		// Create Waypoint
 		if (player->getSurveyWaypoint() != NULL) {
 			player->removeWaypoint(player->getSurveyWaypoint());
 			player->setSurveyWaypoint(NULL);
 		}
-		
+
 		WaypointObject* waypoint = new WaypointObject(player, player->getNewItemID());
 		waypoint->setName("Resource Survey");
 		waypoint->setPosition(wp_x, 0.0f, wp_y);
 
 		waypoint->changeStatus(true);
-		
+
 		player->setSurveyWaypoint(waypoint);
 		player->addWaypoint(waypoint);
-		
+
 		// Send Waypoint System Message
 		unicode ustr = "";
 		ChatSystemMessage* endMessage = new ChatSystemMessage("survey", "survey_waypoint", ustr, 0, true);
-		
+
 		player->sendMessage(endMessage);
 	}
 	unlock(doLock);
@@ -362,47 +354,47 @@ void ResourceManagerImplementation::sendSurveyMessage(Player* player, string& re
 void ResourceManagerImplementation::sendSampleMessage(Player* player, string& resourceName, bool doLock) {
 	// Added by Ritter
 	lock(doLock);
-	
+
 	float density = getDensity(player->getZoneIndex(), resourceName, player->getPositionX(), player->getPositionY());
-	
+
 	if (density < 0.1f) {
 		ChatSystemMessage* sysMessage = new ChatSystemMessage("survey", "density_below_threshold", resourceName, 0, false);
-		
+
 		player->sendMessage(sysMessage);
-		
+
 		player->changePosture(CreatureObjectImplementation::UPRIGHT_POSTURE);
 	} else {
 		if (player->getSurveyTool() == NULL) {
 			unlock(doLock);
 			return;
 		}
-			
+
 		int sampleRate = System::random(1000) + (5 * player->getSkillMod("surveying"));
-		
+
 		if (sampleRate >= 650) {
 			int resQuantity = (sampleRate / 100) * 2 - System::random(13);
-			
+
 			if (!(resQuantity > 0))
 				resQuantity = 1;
-			
+
 			player->getSurveyTool()->sendSampleEffect(player);
-			
+
 			ChatSystemMessage* sysMessage = new ChatSystemMessage("survey", "sample_located", resourceName, resQuantity, false);
 			player->sendMessage(sysMessage);
-			
+
 			bool makeNewResource = true;
 
 			Inventory* inventory = player->getInventory();
-			
+
 			ResourceContainer* rco;
-			
+
 			for (int i = 0; i < inventory->objectsSize(); i++) {
 				TangibleObject* item = (TangibleObject*) inventory->getObject(i);
 				if (item != NULL && item->isResource()) {
 					rco = (ResourceContainer*) item;
 
 					try {
-						
+
 						rco->wlock();
 
 						if (rco->getResourceName().c_str() == resourceName.c_str()) {
@@ -441,11 +433,11 @@ void ResourceManagerImplementation::sendSampleMessage(Player* player, string& re
 					catch(...) {
 
 						rco->unlock();
-						
+
 					}
 				}
 			}
-			
+
 			if (makeNewResource) {
 				// NOTE: Figure out how to get max inventory size...
 				if (inventory->getObjectCount() >= 80) {
@@ -454,7 +446,7 @@ void ResourceManagerImplementation::sendSampleMessage(Player* player, string& re
 					unlock(doLock);
 					return;
 				}
-				
+
 				/*rco = new ResourceContainer(player->getNewItemID());
 
 				string contName;
@@ -472,24 +464,24 @@ void ResourceManagerImplementation::sendSampleMessage(Player* player, string& re
 				rco->sendTo(player);
 
 				rco->setPersistent(false);*/
-				
+
 				ResourceContainer* newRcno = new ResourceContainer(player->getNewItemID());
 
 				newRcno->setResourceName(resourceName);
-				
+
 				newRcno->setContents(resQuantity);
-				
+
 				setResourceData(newRcno, false);
-				
+
 				player->addInventoryItem(newRcno);
-				
+
 				newRcno->sendTo(player);
-				
+
 				newRcno->setPersistent(false);
-				
+
 				rco = newRcno;
 			}
-			
+
 			if (rco->getObjectSubType() == TangibleObjectImplementation::ENERGYRADIOACTIVE) {
 				int wound = (sampleRate / 70) - System::random(9);
 				if (wound > 0) {
@@ -498,16 +490,16 @@ void ResourceManagerImplementation::sendSampleMessage(Player* player, string& re
 					player->changeMindWoundsBar(wound, false);
 				}
 			}
-			
+
 		} else {
 			ChatSystemMessage* sysMessage = new ChatSystemMessage("survey", "sample_failed", resourceName, 0, false);
-			
+
 			player->getSurveyTool()->sendSampleEffect(player);
-			
+
 			player->sendMessage(sysMessage);
 		}
 	}
-	
+
 	unlock(doLock);
 }
 
@@ -565,11 +557,11 @@ void ResourceManagerImplementation::setResourceData(
 
 bool ResourceManagerImplementation::checkResource(Player* player, string& resourceName, int SurveyToolType, bool doLock) {
 	// Added by Ritter
-	
+
 	lock(doLock);
-	
+
 	ResourceTemplate* resource = resourceMap->get(resourceName);
-	
+
 	string surveyType, class2, class2re = "";
 	switch(SurveyToolType) {
 	case SurveyToolImplementation::SOLAR:
@@ -602,9 +594,9 @@ bool ResourceManagerImplementation::checkResource(Player* player, string& resour
 		unlock(doLock);
 		return false;
 	}
-	
+
 	if (resource != NULL) {
-		if (strcmp(resource->getClass2().c_str(), class2.c_str()) == 0 || strcmp(resource->getClass2().c_str(), class2re.c_str()) == 0) {		
+		if (strcmp(resource->getClass2().c_str(), class2.c_str()) == 0 || strcmp(resource->getClass2().c_str(), class2re.c_str()) == 0) {
 			for(int i = resource->getSpawnSize() - 1; i >= 0; i--) {
 				SpawnLocation* sl = resource->getSpawn(i);
 				if (sl->getPlanet() == player->getZoneID()) {
@@ -617,9 +609,9 @@ bool ResourceManagerImplementation::checkResource(Player* player, string& resour
 			player->sendMessage(msg);
 		}
 	}
-	
+
 	unlock(doLock);
-	
+
 	return false;
 }
 
@@ -627,7 +619,7 @@ bool ResourceManagerImplementation::sendSurveyResources(Player* player, int Surv
 	// Added by Ritter
 	lock(doLock);
 	Vector<string>* resourceList = new Vector<string>();
-	
+
 	string surveyType, class2, class2re = "";
 	switch(SurveyToolType) {
 	case SurveyToolImplementation::SOLAR:
@@ -669,9 +661,9 @@ bool ResourceManagerImplementation::sendSurveyResources(Player* player, int Surv
 		unlock(doLock);
 		return false;
 	}
-	
+
 	ResourceListForSurvey* packet = new ResourceListForSurvey();
-	
+
 	ResourceTemplate* resource;
 
 	for(int i = resourceMap->size() - 1; i > 0; i--) {
@@ -687,13 +679,13 @@ bool ResourceManagerImplementation::sendSurveyResources(Player* player, int Surv
 			}
 		}
 	}
-	
+
 	packet->finish(surveyType, player->getObjectID());
-	
+
 	player->sendMessage(packet);
-	
+
 	sendSurveyResourceStats(player, resourceList);
-	
+
 	delete resourceList;
 	unlock(doLock);
 	return true;
@@ -702,77 +694,77 @@ bool ResourceManagerImplementation::sendSurveyResources(Player* player, int Surv
 void ResourceManagerImplementation::sendSurveyResourceStats(Player* player, Vector<string>* rList) {
 	// Added by Ritter
 	ResourceTemplate* resource;
-	
+
 	for (int i = rList->size() - 1; i >= 0; i--) {
-		
+
 		resource = resourceMap->get(rList->get(i));
-		
+
 		AttributeListMessage* packet = new AttributeListMessage(resource->getResourceID());
-		
+
 		if (resource->getAtt1Stat() != 0) {
 			packet->insertAttribute(resource->getAtt1(),resource->getAtt1Stat());
 		}
-		
+
 		if (resource->getAtt2Stat() != 0) {
 			packet->insertAttribute(resource->getAtt2(),resource->getAtt2Stat());
 		}
-		
+
 		if (resource->getAtt3Stat() != 0) {
 			packet->insertAttribute(resource->getAtt3(),resource->getAtt3Stat());
 		}
-		
+
 		if (resource->getAtt4Stat() != 0) {
 			packet->insertAttribute(resource->getAtt4(),resource->getAtt4Stat());
 		}
-		
+
 		if (resource->getAtt5Stat() != 0) {
 			packet->insertAttribute(resource->getAtt5(),resource->getAtt5Stat());
 		}
-		
+
 		if (resource->getAtt6Stat() != 0) {
 			packet->insertAttribute(resource->getAtt6(),resource->getAtt6Stat());
 		}
-		
+
 		if (resource->getAtt7Stat() != 0) {
 			packet->insertAttribute(resource->getAtt7(),resource->getAtt7Stat());
 		}
-		
+
 		if (resource->getAtt8Stat() != 0) {
 			packet->insertAttribute(resource->getAtt8(),resource->getAtt8Stat());
 		}
-		
+
 		if (resource->getAtt9Stat() != 0) {
 			packet->insertAttribute(resource->getAtt9(),resource->getAtt9Stat());
 		}
-		
+
 		if (resource->getAtt10Stat() != 0) {
 			packet->insertAttribute(resource->getAtt10(),resource->getAtt10Stat());
 		}
-		
+
 		if (resource->getAtt11Stat() != 0) {
 			packet->insertAttribute(resource->getAtt11(),resource->getAtt11Stat());
 		}
-		
+
 		player->sendMessage(packet);
 	}
 }
 
 void ResourceManagerImplementation::getClassSeven(const string& resource, string& clas, bool doLock) {
 	lock(doLock);
-	
+
 	ResourceTemplate* resTemp = resourceMap->get(resource);
-	
+
 	if (resTemp != NULL)
 		clas = resTemp->getClass7();
-		
+
 	unlock(doLock);
 }
 
 void ResourceManagerImplementation::getResourceContainerName(const string& resource, string& name, bool doLock) {
 	lock(doLock);
-	
+
 	ResourceTemplate* resTemp = resourceMap->get(resource);
-	
+
 	if (resTemp != NULL)
 		if ( resTemp->getClass6() != "" && resTemp->getClass6() != "JTL")
 			name = resTemp->getClass6();
@@ -786,7 +778,7 @@ void ResourceManagerImplementation::getResourceContainerName(const string& resou
 			name = resTemp->getClass2();
 		else if ( resTemp->getClass1() != "" && resTemp->getClass1() != "JTL")
 			name = resTemp->getClass1();
-			
+
 	unlock(doLock);
 }
 
@@ -796,15 +788,15 @@ bool ResourceManagerImplementation::isDuplicate(Vector<string>* rList, string& r
 		rList->add(resource);
 		return false;
 	}
-	
+
 	for (int i = rList->size() - 1; i >= 0; i--) {
 		if (rList->get(i) == resource) {
 			return true;
 		}
 	}
-	
+
 	rList->add(resource);
-	
+
 	return false;
 }
 
@@ -828,9 +820,9 @@ void ResourceManagerImplementation::buildResourceMap() {
 		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
 		if (res->size() != 0) {
 			while (res->next()) {
-				
+
 				resname = res->getString(1);
-				
+
 				if(!resourceMap->contains(resname)) {
 
 					resTemp = new ResourceTemplate(res->getString(2));
@@ -878,7 +870,7 @@ void ResourceManagerImplementation::buildResourceMap() {
 					resTemp->setContainerCRC(res->getUnsignedInt(24));
 
 					setObjectSubType(resTemp);
-					
+
 					resourceMap->put(resname, resTemp);
 
 				} else {
@@ -886,16 +878,16 @@ void ResourceManagerImplementation::buildResourceMap() {
 					resTemp = resourceMap->get(resname);
 
 				}
-				
+
 
 				string pool = res->getString(33);
 				sl = new SpawnLocation(res->getUnsignedLong(25), res->getInt(27), res->getFloat(28), res->getFloat(28), res->getFloat(30), res->getFloat(31), pool);
-				
+
 				resTemp->addSpawn(sl);
 			}
 		}
 		delete res;
-		
+
 	} catch (DatabaseException& e) {
 		cout << "Database error in buildMap\n";
 	}
@@ -903,13 +895,13 @@ void ResourceManagerImplementation::buildResourceMap() {
 
 void ResourceManagerImplementation::verifyResourceMap() {
 	ResourceTemplate* resTemp;
-	
+
 	for(int i = 0; i < resourceMap->size(); ++i){
-		
+
 		resTemp = resourceMap->get(i);
-		
+
 		verifyResourceData(i, resTemp);
-		
+
 	}
 }
 
@@ -944,7 +936,7 @@ void ResourceManagerImplementation::verifyResourceData(int i, ResourceTemplate* 
 				resNew->setMinType(0);
 				resNew->setMinPool(0);
 				resNew->setMaxPool(0);
-				
+
 				resNew->setAtt1("res_decay_resist");
 				resNew->setAtt2("res_quality");
 				resNew->setAtt3("res_flavor");
@@ -973,18 +965,18 @@ void ResourceManagerImplementation::verifyResourceData(int i, ResourceTemplate* 
 				resNew->setContainerCRC(res->getUnsignedInt(24));
 
 				setObjectSubType(resNew);
-				
+
 				if(!resNew->compare(resTemp)){
-					
+
 					info("******* Resource: " + resname + " is inconsistant ********");
-					
+
 					//resTemp->toString();
 					//resNew->toString();
-					
+
 				} else {
-					
+
 					//cout << i << ". " << resname << " is good!\n";
-					
+
 				}
 
 			}
@@ -1005,11 +997,11 @@ void ResourceManagerImplementation::removeExpiredResources() {
 
 		stringstream query, query2, query3;
 		uint64 now = time(0);
-		
+
 		query << "SELECT `INDEX`, `resource_name` FROM resource_spawns WHERE despawn < " << now;
-		
+
 		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
-		
+
 		if (res->size() != 0) {
 			while (res->next()) {
 				uint64 sid = res->getUnsignedLong(0);
@@ -1021,29 +1013,29 @@ void ResourceManagerImplementation::removeExpiredResources() {
 					info("Error removing spawn location.");
 				}
 			}
-		
+
 			stringstream ss;
 			ss << "Resources to be despawned: " << res->size();
 			info(ss.str());
-			
+
 			delete res;
-			
+
 			query2 << "UPDATE resource_data rd  "
 				<< "INNER JOIN resource_spawns rs "
 				<< " ON rd.resource_name = rs.resource_name "
 				   << " SET rd.shiftedOut = " << now + (System::random(aveduration) + (averageShiftTime * 2))
 				<< " WHERE rs.despawn <  " << now << " and rd.shiftedOut = 0";
-	
+
 			ServerDatabase::instance()->executeStatement(query2);
-			
+
 			info("Updated expiring resources with spawnout time");
-			
+
 			query3 << "DELETE FROM resource_spawns WHERE despawn < " << now;
-			
+
 			ServerDatabase::instance()->executeStatement(query3);
-			
+
 			info("Deleted despawned resources");
-			
+
 			numQueries++;
 			numQueries++;
 		} else {
@@ -1057,10 +1049,10 @@ void ResourceManagerImplementation::removeExpiredResources() {
 
 void ResourceManagerImplementation::checkMinimumPool() {
 	numFunctions++;
-	
+
 	string restype;
 	string exclusion = "";
-	
+
 	Vector<string> spawnMe;
 
 	poolNeeds(minimumpool, "minimum", &spawnMe);
@@ -1077,7 +1069,7 @@ void ResourceManagerImplementation::checkMinimumPool() {
 
 void ResourceManagerImplementation::checkRandomPool() {
 	numFunctions++;
-	
+
 	string restype;
 	string exclusion = " AND (class_1 != 'Organic' and class_5 != 'Iron' and class_3 != 'Fiberplast')";
 	string type = "Inorganic";
@@ -1100,22 +1092,22 @@ int ResourceManagerImplementation::randomPoolNeeds() {
 		  << "WHERE rs.pool = 'random'";
 
 	ResultSet* res = ServerDatabase::instance()->executeQuery(query);
-	
+
 	int size = res->size();
 
 	numQueries++;
 
 	delete res;
-	
+
 	return 24 - size;
 }
 
 void ResourceManagerImplementation::checkFixedPool() {
 	numFunctions++;
-	
+
 	string restype;
 	int ironCount = fixedPoolIron();
-	
+
 	info("Fixed pool iron spawns = " + stringify(ironCount));
 
 	for (int x = 0; x < ironCount; x++) {
@@ -1126,7 +1118,7 @@ void ResourceManagerImplementation::checkFixedPool() {
 	Vector<string> spawnMe;
 
 	poolNeeds(fixedpool, "fixed", &spawnMe);
-	
+
 	info("Fixed pool JTL spawns = " + stringify(spawnMe.size()));
 
 	for (int x = 0; x < spawnMe.size(); x++) {
@@ -1136,7 +1128,7 @@ void ResourceManagerImplementation::checkFixedPool() {
 
 int ResourceManagerImplementation::fixedPoolIron() {
 	numFunctions++;
-	
+
 	stringstream query;
 	query << "SELECT DISTINCT rd.resource_name, rd.resource_type, rd.class_1,rd.class_2,rd.class_3,"
 		  << "rd.class_4, rd.class_5, rd.class_6, rd.class_7 FROM `resource_data` rd "
@@ -1144,23 +1136,23 @@ int ResourceManagerImplementation::fixedPoolIron() {
 		  << "WHERE rs.pool = 'fixed'  AND rd.class_5 = 'Iron'";
 
 	ResultSet* res = ServerDatabase::instance()->executeQuery(query);
-	
+
 	int size = res->size();
-	
+
 	delete res;
-	
+
 	numQueries++;
-	
+
 	return 14 - size;
 }
 
 void ResourceManagerImplementation::checkNativePool() {
 	numFunctions++;
-	
+
 	string restype;
 	string exclusion = " AND (class_1 = 'Organic')";
 	string type = "Organic";
-	
+
 	Vector<string> spawnMe;
 
 	poolNeeds(nativepool, "native", &spawnMe);
@@ -1168,7 +1160,7 @@ void ResourceManagerImplementation::checkNativePool() {
 	info("Native pool spawns = " + stringify(spawnMe.size()));
 
 	getFromRandomPool(&spawnMe, "native");
-	
+
 	for (int x = 0; x < spawnMe.size(); x++) {
 		//cout << spawnMe[x] << endl;
 		createResource(spawnMe.get(x), "native", false);
@@ -1178,13 +1170,13 @@ void ResourceManagerImplementation::checkNativePool() {
 void ResourceManagerImplementation::poolNeeds(Vector<string>* invector, string pool, Vector<string>* needs) {
 	try {
 		numFunctions++;
-		
+
 		stringstream query;
 
 		Vector<string> has;
-		
+
 		bool hasItem;
-		
+
 		if (pool == "minimum") {
 			query << "SELECT DISTINCT rd.resource_name, rd.resource_type, rd.class_1,rd.class_2,rd.class_3,"
 				  << "rd.class_4, rd.class_5, rd.class_6, rd.class_7 FROM `resource_data` rd "
@@ -1197,9 +1189,9 @@ void ResourceManagerImplementation::poolNeeds(Vector<string>* invector, string p
 		}
 
 		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
-		
+
 		numQueries++;
-		
+
 		while (res->next()) {
 			for (int x = 0; x < invector->size(); x++) {
 				if (pool == "minimum") {
@@ -1218,7 +1210,7 @@ void ResourceManagerImplementation::poolNeeds(Vector<string>* invector, string p
 				}
 			}
 		}
-		
+
 		for (int x = 0; x < invector->size(); x++) {
 			hasItem = false;
 			for(int y = 0; y < has.size(); y++) {
@@ -1230,7 +1222,7 @@ void ResourceManagerImplementation::poolNeeds(Vector<string>* invector, string p
 
 				}
 			}
-			
+
 			if(!hasItem) {
 				needs->add(invector->get(x));
 			}
@@ -1243,7 +1235,7 @@ void ResourceManagerImplementation::poolNeeds(Vector<string>* invector, string p
 
 void ResourceManagerImplementation::getFromRandomPool(Vector<string> * spawnMe,	string pool) {
 	numFunctions++;
-	
+
 	for (int x = 0; x < spawnMe->size(); x++) {
 		if (pool != "native" || (spawnMe->get(x).find("water") != string::npos)) {
 			try {
@@ -1281,7 +1273,7 @@ void ResourceManagerImplementation::getFromRandomPool(Vector<string> * spawnMe,	
 					spawnMe->remove(x);
 					x--;
 				}
-				
+
 				delete res;
 			} catch (...) {
 				cout << "Database error in getFromRandomPool\n";
@@ -1293,10 +1285,10 @@ void ResourceManagerImplementation::getFromRandomPool(Vector<string> * spawnMe,	
 
 string ResourceManagerImplementation::getRandomResourceFromType(string restype, string exclusion) {
 	numFunctions++;
-	
+
 	try {
 		string outtype = "";
-		
+
 		stringstream query;
 		query << "SELECT `resource_type`,`class_1`,`class_2`,"
 			  << "`class_3`,`class_4`,`class_5`,`class_6`,`class_7`,`weight` "
@@ -1311,7 +1303,7 @@ string ResourceManagerImplementation::getRandomResourceFromType(string restype, 
 			  << "class_6 != 'JTL')" << exclusion;
 
 		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
-		
+
 		numQueries++;
 
 		// This is where the weighted code goes to spawn resource on
@@ -1321,33 +1313,33 @@ string ResourceManagerImplementation::getRandomResourceFromType(string restype, 
 
 		for (int x = 0; x < res->size(); x++) {
 			res->next();
-			
+
 			if (x == y)
 				return res->getString(0);
 		}
-		
+
 		delete res;
-		
+
 	} catch (...) {
 		cout << "Database error in getRandomResourceFromType\n";
 	}
-	
+
 	return "";
 }
 
 void ResourceManagerImplementation::createResource(string restype, string pool, bool jtl) {
 	numFunctions++;
-	
+
 	string resname;
-	
+
 	int planets[10] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-	
+
 	int planet, therand, thex, they, numplanets, numspawns;
 
 	ResourceTemplate* resource = new ResourceTemplate(restype);
 
 	generateResourceStats(resource);
-	
+
 	if(resourceMap->get(resource->getName()) != NULL){
 		resourceMap->drop(resource->getName());
 		info("Resource " + resource->getName() + " already exists in map, removing");
@@ -1383,9 +1375,9 @@ void ResourceManagerImplementation::createResource(string restype, string pool, 
 					break;
 				}
 			}
-	
+
 			numspawns = System::random(maxspawns - minspawns) + minspawns;
-				
+
 			for (int y = 0; y < numspawns; y++) {
 				thex = System::random(8192 * 2) - 8192;
 				they = System::random(8192 * 2) - 8192;
@@ -1436,7 +1428,7 @@ void ResourceManagerImplementation::generateResourceStats(ResourceTemplate* reso
 				resource->setAtt9("res_heat_resist");
 				resource->setAtt10("res_conductivity");
 				resource->setAtt11("entangle_resistance");
-				
+
 				resource->setAtt1Stat(0);
 				resource->setAtt2Stat(0);
 				resource->setAtt3Stat(0);
@@ -1448,7 +1440,7 @@ void ResourceManagerImplementation::generateResourceStats(ResourceTemplate* reso
 				resource->setAtt9Stat(0);
 				resource->setAtt10Stat(0);
 				resource->setAtt11Stat(0);
-				
+
 				setAttStat(resource, res->getString(13), (System::random(res->getInt(25) - res->getInt(24)) + res->getInt(24)));
 				setAttStat(resource, res->getString(14), (System::random(res->getInt(27) - res->getInt(26)) + res->getInt(26)));
 				setAttStat(resource, res->getString(15), (System::random(res->getInt(29) - res->getInt(28)) + res->getInt(28)));
@@ -1487,27 +1479,27 @@ void ResourceManagerImplementation::generateResourceStats(ResourceTemplate* reso
 
 				resource->setContainer(res->getString(46));
 				resource->setContainerCRC(res->getUnsignedInt(47));
-				
+
 				setObjectSubType(resource);
 			} else {
 				cout << "Resource Database error generateResourceStats" << endl;
 			}
 		}
-		
+
 		makeResourceName(resname, resource->getClass1() == "Organic");
-		
+
 		resource->setName(resname);
 
 		delete res;
 	} catch (DatabaseException& e) {
-		
+
 		cout << "Resource Database error 2 generateResourceStats" << endl;
-		
+
 	}
 }
 
 void ResourceManagerImplementation::setAttStat(ResourceTemplate* resource, string statTitle, int stat){
-	
+
 	if (statTitle == "res_decay_resist") {
 		resource->setAtt1Stat(stat);
 		return;
@@ -1562,7 +1554,7 @@ void ResourceManagerImplementation::setAttStat(ResourceTemplate* resource, strin
 		resource->setAtt11Stat(stat);
 		return;
 	}
-	
+
 	if(statTitle != "")
 		info("Something screwed up in finding stats to set in setAttStat: |" + statTitle + "| doesn't match");
 
@@ -1570,7 +1562,7 @@ void ResourceManagerImplementation::setAttStat(ResourceTemplate* resource, strin
 
 void ResourceManagerImplementation::makeMinimumPoolVector() {
 	numFunctions++;
-	
+
 	try {
 		minimumpool = new Vector<string>;
 		minimumpool->add("Steel");
@@ -1595,7 +1587,7 @@ void ResourceManagerImplementation::makeMinimumPoolVector() {
 
 void ResourceManagerImplementation::makeFixedPoolVector() {
 	numFunctions++;
-	
+
 	fixedpool = new Vector<string>;
 	fixedpool->add("steel_arveshian");
 	fixedpool->add("steel_bicorbantium");
@@ -1623,15 +1615,15 @@ void ResourceManagerImplementation::makeNativePoolVector() {
 			  << "class_2 = 'Wind Energy' OR "
 			  << "class_2 = 'Solar Energy' OR "
 			  << "class_2 = 'Water') AND class_6 != 'JTL'";
-		
+
 		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
-		
+
 		string temp;
-		
+
 		while (res->next()) {
 			nativepool->add(res->getString(0));
 		}
-		
+
 		delete res;
 	} catch (...) {
 		cout << "Database error in makeNativePoolVector\n";
@@ -1639,10 +1631,10 @@ void ResourceManagerImplementation::makeNativePoolVector() {
 }
 bool ResourceManagerImplementation::isPlanetSpecific(const string type) {
 	numFunctions++;
-	
-	if ((type.find("corellia", 0) == string::npos) && (type.find("dantooine", 0) == string::npos) 
-			&& (type.find("yavin4", 0) == string::npos) && (type.find("dathomir", 0) == string::npos) 
-			&& (type.find("endor", 0) == string::npos) && (type.find("lok", 0) == string::npos) 
+
+	if ((type.find("corellia", 0) == string::npos) && (type.find("dantooine", 0) == string::npos)
+			&& (type.find("yavin4", 0) == string::npos) && (type.find("dathomir", 0) == string::npos)
+			&& (type.find("endor", 0) == string::npos) && (type.find("lok", 0) == string::npos)
 			&& (type.find("naboo", 0) == string::npos) && (type.find("rori", 0) == string::npos)
 			&& (type.find("talus", 0) == string::npos) && (type.find("tatooine", 0) == string::npos))
 		return false;
@@ -1651,42 +1643,42 @@ bool ResourceManagerImplementation::isPlanetSpecific(const string type) {
 }
 int ResourceManagerImplementation::getPlanet(const string type) {
 	numFunctions++;
-	
+
 	if (type.find("corellia", 0) != string::npos)
 		return 0;
-	
+
 	if (type.find("dantooine", 0) != string::npos)
 		return 1;
-	
+
 	if (type.find("dathomir", 0) != string::npos)
 		return 2;
-	
+
 	if (type.find("endor", 0) != string::npos)
 		return 3;
-	
+
 	if (type.find("lok", 0) != string::npos)
 		return 4;
-	
+
 	if (type.find("naboo", 0) != string::npos)
 		return 5;
-	
+
 	if (type.find("rori", 0) != string::npos)
 		return 6;
-	
+
 	if (type.find("talus", 0) != string::npos)
 		return 7;
-	
+
 	if (type.find("tatooine", 0) != string::npos)
 		return 8;
-	
+
 	if (type.find("yavin4", 0) != string::npos)
 		return 9;
-	
+
 	return 99;
 }
 bool ResourceManagerImplementation::isType(ResourceTemplate* resource, string type) {
 	numFunctions++;
-	
+
 	if (resource->getClass1() == type || resource->getClass2() == type
 			|| resource->getClass3() == type || resource->getClass4() == type
 			|| resource->getClass5() == type || resource->getClass6() == type
@@ -1698,7 +1690,7 @@ bool ResourceManagerImplementation::isType(ResourceTemplate* resource, string ty
 
 void ResourceManagerImplementation::insertResource(ResourceTemplate* resource) {
 	numFunctions++;
-	
+
 	try {
 		stringstream query;
 		query << "INSERT INTO `resource_data` "
@@ -1738,20 +1730,20 @@ void ResourceManagerImplementation::insertResource(ResourceTemplate* resource) {
 			<< "'," << resource->getContainerCRC() << ")";
 
 		ServerDatabase::instance()->executeStatement(query.str());
-		
+
 		numInsert++;
 	} catch (...) {
 		cout << "Insert Resource Failed " << endl;
 	}
 }
-void ResourceManagerImplementation::insertSpawn(ResourceTemplate* resource, int planet_id, 
+void ResourceManagerImplementation::insertSpawn(ResourceTemplate* resource, int planet_id,
 		float x, float y, float radius, float max, string pool, bool& jtl) {
 	numFunctions++;
-	
-	
+
+
 	try {
 		int upper, lower;
-		
+
 		if (resource->getClass1() == "Organic") {
 			upper = 22;
 			lower = 6;
@@ -1764,10 +1756,10 @@ void ResourceManagerImplementation::insertSpawn(ResourceTemplate* resource, int 
 				lower = 6;
 			}
 		}
-		
+
 		long despawn = (long)time(0) + (System::random((aveduration * upper)-(aveduration * lower)))
 			+ (aveduration* lower);
-		
+
 		stringstream query;
 		query << "INSERT INTO `resource_spawns` "
 			  << "(`resource_name`, `planet_id`,"
@@ -1779,13 +1771,13 @@ void ResourceManagerImplementation::insertSpawn(ResourceTemplate* resource, int 
 			  << "," << max << "," << despawn << ",'" << pool << "')";
 
 		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
-		
+
 		uint64 id = res->getLastAffectedRow();
-		
+
 		SpawnLocation* sl = new SpawnLocation(id, planet_id, x, y, radius, max, pool);
-		
+
 		resource->addSpawn(sl);
-		
+
 		numInsert++;
 	} catch (...) {
 		cout << "Insert Spawn Failed " << endl;
@@ -1804,7 +1796,7 @@ inline string ResourceManagerImplementation::checkInsertCategory(string instring
 
 inline string ResourceManagerImplementation::checkInsertValue(int inval) {
 	numFunctions++;
-	
+
 	if (inval == 0) {
 		return ", 0";
 	} else {
@@ -1815,7 +1807,7 @@ inline string ResourceManagerImplementation::checkInsertValue(int inval) {
 void ResourceManagerImplementation::makeResourceName(string& resname, bool isOrganic) {
 	numNameFunctions++;
 	string randname;
-		
+
 	while(true) {
 		randname = serv->getNameManager()->makeResourceName(isOrganic);
 		if(checkResourceName(randname))
@@ -1827,18 +1819,18 @@ void ResourceManagerImplementation::makeResourceName(string& resname, bool isOrg
 bool ResourceManagerImplementation::checkResourceName(const string instring) {
 	try {
 		numFunctions++;
-		
+
 		stringstream query;
 		query << "SELECT * from `resource_data` WHERE resource_name = \'" + instring + "\'";
 
 		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
-		
+
 		numQueries++;
-		
+
 		int size = res->size();
-		
+
 		delete res;
-		
+
 		if (size == 0) {
 			return true;
 		} else {
@@ -1852,17 +1844,17 @@ bool ResourceManagerImplementation::checkResourceName(const string instring) {
 
 
 bool ResourceManagerImplementation::isDumbPhrase(const string inname) {
-	/*if ((inname.find("riy") == string::npos) && 
-			(inname.find("riy") == string::npos) && 
-			(inname.find("riy") == string::npos) && 
-			(inname.find("riy") == string::npos) && 
-			(inname.find("riy") == string::npos) && 
-			(inname.find("riy") == string::npos) && 
-			(inname.find("riy") == string::npos) && 
-			(inname.find("riy") == string::npos) && 
-			(inname.find("riy") == string::npos) && 
-			(inname.find("riy") == string::npos) && 
-			(inname.find("riy") == string::npos) && 
+	/*if ((inname.find("riy") == string::npos) &&
+			(inname.find("riy") == string::npos) &&
+			(inname.find("riy") == string::npos) &&
+			(inname.find("riy") == string::npos) &&
+			(inname.find("riy") == string::npos) &&
+			(inname.find("riy") == string::npos) &&
+			(inname.find("riy") == string::npos) &&
+			(inname.find("riy") == string::npos) &&
+			(inname.find("riy") == string::npos) &&
+			(inname.find("riy") == string::npos) &&
+			(inname.find("riy") == string::npos) &&
 			(inname.find("anal") == string::npos))
 		return true;
 	else*/
@@ -1880,8 +1872,8 @@ inline string ResourceManagerImplementation::stringify(const int x) {
 }
 
 void ResourceManagerImplementation::setObjectSubType(ResourceTemplate* resImpl) {
-	
-	
+
+
 	if (resImpl->getClass1() == "Inorganic") {
 		if (resImpl->getClass2() == "Mineral") {
 			resImpl->setObjectSubType(TangibleObjectImplementation::INORGANICMINERAL);
@@ -1936,9 +1928,9 @@ void ResourceManagerImplementation::setObjectSubType(ResourceTemplate* resImpl) 
 }
 
 void ResourceManagerImplementation::printResource(string name){
-	
+
 	string resname;
-		string query = "SELECT * FROM resource_data WHERE `resource_name` = '" + 
+		string query = "SELECT * FROM resource_data WHERE `resource_name` = '" +
 		                name + "'";
 		try {
 			ResultSet* res = ServerDatabase::instance()->executeQuery(query);
@@ -1971,13 +1963,13 @@ void ResourceManagerImplementation::printResource(string name){
 
 				}
 			} else {
-				
+
 				cout << "Multiple Resource with name: Size = " << res->size() << "\n";
-				
+
 			}
 			delete res;
 		} catch (DatabaseException& e) {
 			cout << "Database error in verifyMap\n";
 		}
-	
+
 }
