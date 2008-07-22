@@ -76,6 +76,8 @@ public:
 	void handleColorPicker(uint32 boxID, Player* player, uint32 cancel, const string& value);
 	
 	void handleBankTransfer(uint32 boxID, Player* player, int cash, int bank);
+	
+	void handleBlueFrogItemRequest(uint32 boxID, Player* player, uint32 cancel, int itemIndex);
 };
 
 #endif /*SUIMANAGER_H_*/

@@ -178,14 +178,23 @@ void BlueFrogCreatureImplementation::sendItemChoices(Player* player) {
 	
 	StringList* slist = new StringList(player);
 	
+	SuiListBox* sui = new SuiListBox(player, 0xBF06);
+	sui->setPromptTitle("Blue Frog Items");
+	sui->setPromptText("You can have any of the following item sets.");
+	sui->setCancelButton(true);
+	
 	BlueFrogVector * bfVector = itemManager->getBFItemList();
 	for(int i = 0; i < bfVector->size(); i++) {
-		unicode option = unicode(bfVector->get(i));
-		slist->insertOption(option);
+		sui->addMenuItem(bfVector->get(i));
 	}
 	
+	player->addSuiBox(sui);
+	player->sendMessage(sui->generateMessage());
+	
+	unicode again = unicode("Can I see those items again?");
 	unicode restart = unicode("Can we start over?");
 	
+	slist->insertOption(again);
 	slist->insertOption(restart);
 	
 	player->setLastNpcConvMessStr("blue_frog_item");
@@ -251,15 +260,10 @@ void BlueFrogCreatureImplementation::selectConversationOption(int option, SceneO
 			sendMessage1(player);
 		}
 	} else if (lastMessage == "blue_frog_item") {
-		BlueFrogVector * bfVector = itemManager->getBFItemList();
-		
-		if(option < bfVector->size()) {
-			itemManager->giveBFItemSet(player, bfVector->get(option));
-			player->sendSystemMessage("You recieved a " + bfVector->get(option));
-			sendSelectItemMessage(player);
-		} else {
+		if (option == 0)
+			sendItemChoices(player);
+		else
 			sendMessage1(player);
-		}
 	}
 }
 

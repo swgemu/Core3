@@ -47,6 +47,9 @@ which carries forward this exception.
 #include "../../objects.h"
 #include "../../objects/player/sui/colorpicker/SuiColorPicker.h"
 
+#include "../item/ItemManager.h"
+#include "../../objects/creature/bluefrog/BlueFrogVector.h"
+
 #include "../../ZoneProcessServerImplementation.h"
 
 SuiManager::SuiManager(ZoneProcessServerImplementation* serv) : Logger("SuiManager") {
@@ -102,6 +105,8 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, Player* player, uint32
 	case 0xD65E:
 		handleBankTransfer(boxID, player, atoi(value.c_str()), atoi(value2.c_str()));
 		break;
+	case 0xBF06:
+		handleBlueFrogItemRequest(boxID, player, cancel, atoi(value.c_str()));
 	default:
 		//error("Unknown SuiBoxNotification opcode");
 		break;
@@ -427,6 +432,45 @@ void SuiManager::handleTicketPurchaseMessageBox(uint32 boxID, Player* player) {
 	}
 }
 
+void SuiManager::handleBlueFrogItemRequest(uint32 boxID, Player* player, uint32 cancel, int itemIndex) {
+	try {
+		player->wlock();
+
+		if (!player->hasSuiBox(boxID)) {
+			player->unlock();
+			return;
+		}
+
+		SuiBox* sui = player->getSuiBox(boxID);
+		
+		ItemManager * itemManager = player->getZone()->getZoneServer()->getItemManager();
+
+		if (sui->isListBox() && cancel != 1) {
+			SuiListBox* listBox = (SuiListBox*)sui;
+			BlueFrogVector * bfVector = itemManager->getBFItemList();
+			
+			if(itemIndex >= 0 && itemIndex < bfVector->size()) {
+				itemManager->giveBFItemSet(player, bfVector->get(itemIndex));
+				player->sendSystemMessage("You recieved a " + bfVector->get(itemIndex));
+			}
+		}
+
+		player->removeSuiBox(boxID);
+
+		sui->finalize();
+
+		player->unlock();
+	} catch (Exception& e) {
+		error("Exception in SuiManager::handleBlueFrogItemRequest ");
+		e.printStackTrace();
+
+		player->unlock();
+	} catch (...) {
+		error("Unreported exception caught in SuiManager::handleBlueFrogItemRequest");
+		player->unlock();
+	}
+	
+}
 void SuiManager::handleTicketCollectorRespones(uint32 boxID, Player* player, uint32 cancel, int ticketIndex) {
 	try {
 		player->wlock();
