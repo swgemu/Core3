@@ -47,7 +47,7 @@ canyonKraytDragon = Creature:new {
 	
 	level = 275,
 	
-	combatFlags = ATTACKABLE_FLAG,
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
 	health = 370000,
 	strength = 50000,

@@ -1226,8 +1226,8 @@ void GameCommandHandler::gm_getLocation(StringTokenizer tokenizer, Player * play
 
 void GameCommandHandler::gm_getCords(StringTokenizer tokenizer, Player * player) {
 	//This command is for the cave devs, helping them building the needed LUA files. 
-	//Please dont delete it from the SVN 
-	stringstream msg;
+	//Please dont delete it from the SVN , Uncomment for use on dev Servers.
+	/* stringstream msg;
 	string name;
 
 	if (tokenizer.hasMoreTokens())
@@ -1264,7 +1264,7 @@ void GameCommandHandler::gm_getCords(StringTokenizer tokenizer, Player * player)
 				<< ")\n";
 
 	cordFile << flush;
-	cordFile.close();
+	cordFile.close(); */
 } 
 
 void GameCommandHandler::gm_giveItemTemp(StringTokenizer tokenizer, Player * player) {

@@ -47,7 +47,7 @@ kraytDragonAncient = Creature:new {
           
         level = 336, 
           
-        combatFlags = ATTACKABLE_FLAG,
+        combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
   
         health = 480000, 
         strength = 50000, 

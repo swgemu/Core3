@@ -47,7 +47,7 @@ juviCanyonKraytDragon = Creature:new {
 	
 	level = 122,
 	
-	combatFlags = ATTACKABLE_FLAG,
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
 	health = 48000,
 	strength = 30000,
