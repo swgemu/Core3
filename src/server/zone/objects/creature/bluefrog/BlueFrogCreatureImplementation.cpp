@@ -88,7 +88,7 @@ void BlueFrogCreatureImplementation::setBFType(int type) {
 		break;
 	case GUNGAN:
 		characterName = unicode("a Gungan Trader");
-		objectCRC = 3438350132;
+		objectCRC = 4058341940;
 		break;
 	default:
 		break;
@@ -146,7 +146,10 @@ void BlueFrogCreatureImplementation::sendProfessionChoices(Player* player) {
 	
 	StringList* slist = new StringList(player);
 	
-	BlueFrogVector * bfVector = itemManager->getBFProfList();
+	string messStr = player->getLastNpcConvMessStr();
+	string group = messStr.substr(15, messStr.length() - 15);
+	
+	BlueFrogVector * bfVector = itemManager->getBFProfList(group);
 	for(int i = 0; i < bfVector->size(); i++) {
 		unicode option = unicode(bfVector->get(i));
 		slist->insertOption(option);
@@ -156,7 +159,6 @@ void BlueFrogCreatureImplementation::sendProfessionChoices(Player* player) {
 	
 	slist->insertOption(restart);
 	
-	player->setLastNpcConvMessStr("blue_frog_prof");
 	player->sendMessage(slist);
 }
 
@@ -207,6 +209,7 @@ void BlueFrogCreatureImplementation::selectConversationOption(int option, SceneO
 	if(lastMessage == "blue_frog_m1") {
 		switch(option) {
 		case 0:
+			player->setLastNpcConvMessStr("blue_frog_prof_root");
 			sendSelectProfessionMessage(player);
 			break;
 	/*	case 1:
@@ -218,12 +221,21 @@ void BlueFrogCreatureImplementation::selectConversationOption(int option, SceneO
 			sendSelectItemMessage(player);
 			break;
 		}
-	} else if (lastMessage == "blue_frog_prof") {
-		BlueFrogVector * bfVector = itemManager->getBFProfList();
+	} else if (lastMessage.find("blue_frog_prof") != string::npos) {
+		string group = lastMessage.substr(15, lastMessage.length() - 15);
+		BlueFrogVector * bfVector = itemManager->getBFProfList(group);
 		
 		if(option < bfVector->size()) {
 			string key = bfVector->get(option);
 			string prof = itemManager->getBFProf(key);
+			
+			if (prof.empty()) {
+				stringstream ss;
+				ss << "blue_frog_prof_" << key;
+				player->setLastNpcConvMessStr(ss.str());
+				sendSelectProfessionMessage(player);
+				return;
+			}
 			
 			player->sendSystemMessage("Attempting to train you as a " + key + "...");
 			
@@ -233,6 +245,7 @@ void BlueFrogCreatureImplementation::selectConversationOption(int option, SceneO
 				player->sendSystemMessage("You could not be trained as a " + key);
 			}
 			
+			player->setLastNpcConvMessStr("blue_frog_prof_root");
 			sendSelectProfessionMessage(player);
 		} else {
 			sendMessage1(player);

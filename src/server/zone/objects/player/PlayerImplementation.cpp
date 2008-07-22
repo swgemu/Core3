@@ -830,6 +830,10 @@ void PlayerImplementation::insertToZone(Zone* zone) {
 
 		info("inserting to zone");
 		
+		//spawning in air fix
+		if (parent == NULL)
+			 setPosition(positionX, zone->getHeight(positionX, positionY), positionY);
+		
 		zone->registerObject(_this);
 
 		owner->balancePacketCheckupTime();

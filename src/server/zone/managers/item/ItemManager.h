@@ -53,7 +53,7 @@ public:
 
 	BlueFrogVector* getBFItemList();
 
-	BlueFrogVector* getBFProfList();
+	BlueFrogVector* getBFProfList(string& group);
 
 	string& getBFProf(string& key);
 
@@ -107,7 +107,7 @@ public:
 
 	BlueFrogVector* getBFItemList();
 
-	BlueFrogVector* getBFProfList();
+	BlueFrogVector* getBFProfList(string& group);
 
 	string& getBFProf(string& key);
 
@@ -116,6 +116,7 @@ public:
 protected:
 	string _param3_initializeTangibleForCrafting__int_long_long_string_string_bool_;
 	string _param4_initializeTangibleForCrafting__int_long_long_string_string_bool_;
+	string _param0_getBFProfList__string_;
 	string _param0_getBFProf__string_;
 	string _param1_giveBFItemSet__Player_string_;
 };

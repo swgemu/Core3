@@ -40,14 +40,28 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-addBFProfession("Master Entertainer", "social_entertainer_master");
-addBFProfession("Master Musician", "social_musician_master");
-addBFProfession("Master Dancer", "social_dancer_master");
-addBFProfession("Master Marksman", "combat_marksman_master");
-addBFProfession("Master Rifleman", "combat_rifleman_master");
-addBFProfession("Master Pistoleer", "combat_pistol_master");
-addBFProfession("Master Carbineer", "combat_carbine_master");
-addBFProfession("Master Brawler", "combat_brawler_master");
-addBFProfession("TKM", "combat_unarmed_master");
-addBFProfession("Master Image Designer", "social_imagedesigner_master");
+addBFGroup("Combat Professions", "root");
+  addBFGroup("Melee Professions", "Combat Professions");
+    addBFProfession("Master Brawler", "Melee Professions", "combat_brawler_master");
+    addBFProfession("Master Teras Kasi Artist", "Melee Professions", "combat_unarmed_master");
+    addBFProfession("Master Fencer", "Melee Professions", "combat_1hsword_master");
+    addBFProfession("Master Pikeman", "Melee Professions", "combat_polearm_master");
+    addBFProfession("Master Swordsman", "Melee Professions", "combat_2hsword_master");
+  addBFGroup("Ranged Professions", "Combat Professions");
+    addBFProfession("Master Marksman", "Ranged Professions", "combat_marksman_master");
+    addBFProfession("Master Rifleman", "Ranged Professions", "combat_rifleman_master");
+    addBFProfession("Master Pistoleer", "Ranged Professions", "combat_pistol_master");
+    addBFProfession("Master Carbineer", "Ranged Professions", "combat_carbine_master");
+    addBFProfession("Master Bounty Hunter", "Ranged Professions", "combat_bountyhunter_master");
+    addBFProfession("Master Commando", "Ranged Professions", "combat_commando_master");
+    addBFProfession("Master Smuggler", "Ranged Professions", "combat_smuggler_master");
+
+addBFGroup("Non-Combatant Professions", "root");
+  addBFGroup("Crafting Professions", "Non-Combatant Professions");
+    addBFProfession("Master Artisan", "Crafting Professions", "crafting_artisan_master");
+  addBFGroup("Social Professions", "Non-Combatant Professions"); 
+    addBFProfession("Master Entertainer", "Social Professions", "social_entertainer_master");
+    addBFProfession("Master Musician", "Social Professions", "social_musician_master");
+    addBFProfession("Master Dancer", "Social Professions", "social_dancer_master");
+    addBFProfession("Master Image Designer", "Social Professions", "social_imagedesigner_master");
 

@@ -58,14 +58,28 @@ end
 
 object2 = {
 	name = "",
-	prof = ""
+	prof = "",
+	group = ""
 }
 
-function addBFProfession(Name, Prof)
+function addBFProfession(Name, Group, Prof)
 	local ob = object2
 	ob.name = Name
 	ob.prof = Prof
+	ob.group = Group
 	AddBFProf(ob)
+end
+
+object3 = {
+	name = "",
+	group = ""
+}
+
+function addBFGroup(Name, Parent)
+	local ob = object3
+	ob.name = Name
+	ob.parent = Parent
+	AddBFGroup(ob)
 end
 
 function list_iter (t)

@@ -41,56 +41,82 @@ gives permission to release a modified version without this exception;
 this exception also makes it possible to release a modified version 
 which carries forward this exception.
 */
+#ifndef BLUEFROGTREE_H_
+#define BLUEFROGTREE_H_
 
-import "server/zone/ZoneServer";
+#include "engine/engine.h"
 
-import "../../objects/tangible/TangibleObject";
-
-import "../../objects/tangible/weapons/Weapon";
-import "../../objects/tangible/wearables/Armor";
-
-import "../../objects/creature/bluefrog/BlueFrogVector";
-
-import "../../objects/player/Player";
-
-interface ItemManager {
-	ItemManager(ZoneServer server) {
-		super(server);
+class BlueFrogTree {
+	
+private:
+	BlueFrogTree * parent;
+	string element;
+	LinkedList<BlueFrogTree *> children;
+	
+public:
+	
+	BlueFrogTree(string item, BlueFrogTree * par = NULL) {
+		element = item;
+		parent = par;
 	}
 	
-	void loadStaticWorldObjects();
-
-	TangibleObject getPlayerItem(Player player, long objectid);
-	void loadPlayerItems(Player player);
-	void loadDefaultPlayerItems(Player player);
-	void loadDefaultPlayerDatapadItems(Player player);
+	void add(string item) {
+		if (element.empty())
+			element = item;
+		else {
+			BlueFrogTree * child = new BlueFrogTree(item, this);
+			children.add(child);	
+		}	
+	}
 	
-	void unloadPlayerItems(Player player);
+	void set(string item) {
+		element = item;
+	}
 	
-	void createPlayerItem(Player player, TangibleObject item);
-
-	TangibleObject initializeTangibleForCrafting(int objecttype,
-			unsigned long objectid, unsigned long objectcrc, string objectn,
-			string objecttemp, boolean equipped);
-
-	void savePlayerItem(Player player, TangibleObject item); 
-
-	void deletePlayerItem(Player player, TangibleObject item, boolean notify);
+	string getElement() {
+		return element;
+	}
 	
-	// stat methods
-	void showDbStats(Player player);
-	void showDbDeleted(Player player);
+	LinkedList<BlueFrogTree *> getChildren() {
+		return children;
+	}
 	
-	void purgeDbDeleted(Player player);
+	int size() {
+		if (element.empty() && children.isEmpty())
+			return 0;
+		else if (!this->isGroup())
+			return 1;
+		else {
+			int count = 0;
+			
+			for (int i = 0; i < children.size(); i++)
+				count += children.get(i)->size();
+			
+			return 1 + count;
+		}
+	}
 	
-	// getters
-	unsigned long getNextStaticObjectID();
-
-	BlueFrogVector getBFItemList();
+	bool isEmpty() {
+		return this->size() == 0;
+	}
 	
-	BlueFrogVector getBFProfList(string group);
+	bool isGroup() {
+		return !children.isEmpty();
+	}
+	
+	BlueFrogTree * find(string obj) {
+		if (element.compare(obj) == 0)
+			return this;
+		
+		for (int i = 0; i < children.size(); i++) {
+			BlueFrogTree * t = children.get(i)->find(obj);
+			if (t != NULL)
+				return t;
+		}
+		
+		return NULL;
+	}
+	
+};
 
-	string getBFProf(string key);
-
-	void giveBFItemSet(Player player, string set);
-}
+#endif /*BLUEFROGTREE_H_*/

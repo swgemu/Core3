@@ -47,31 +47,55 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-#include "BlueFrogVector.h"
+#include "BlueFrogTree.h"
 
 class BlueFrogProfessionSet : public HashTable<string, string> {
-	BlueFrogVector * profList;
+	BlueFrogTree * profTree;
 	
 public:	
 	BlueFrogProfessionSet() {
-		profList = new BlueFrogVector();
+		profTree = new BlueFrogTree("root");
 	}
 	
 	int hash(const string& str) {
 		return String::hashCode(str);
 	}
 	
-	void addProfession(string name, string prof) {
+	void addProfession(string name, string group, string prof) {
 		put(name, prof);
-		profList->add(name);
+		
+		BlueFrogTree * t = profTree->find(group);
+		if (t != NULL)
+			t->add(name);
 	}
 	
-	inline BlueFrogVector* listContents() {
-		return profList;
+	void addGroup(string name, string parent = "root") {
+		BlueFrogTree * t = profTree->find(parent);
+			if (t != NULL)
+				t->add(name);
+	}
+	
+	inline BlueFrogVector* listContents(string group) {
+		BlueFrogVector * v = new BlueFrogVector();
+		BlueFrogTree * t = profTree->find(group);
+		if (t != NULL) {
+			LinkedList<BlueFrogTree *> l = t->getChildren();
+			string element;
+			for (int i = 0; i < l.size(); i++) {
+				element = l.get(i)->getElement();
+				v->add(element);
+			}
+		}
+			
+		return v;
 	}
 	
 	inline string getProfession(string key) {
-		return get(key);
+			return get(key);
+	}
+	
+	inline int size() {
+		return profTree->size();
 	}
 };
 

@@ -314,6 +314,7 @@ void ItemManagerImplementation::registerFunctions() {
 	lua_register(getLuaState(), "SetBlueFrogsEnabled", enableBlueFrogs);
 	lua_register(getLuaState(), "AddBFItem", addBFItem);
 	lua_register(getLuaState(), "AddBFProf", addBFProf);
+	lua_register(getLuaState(), "AddBFGroup", addBFGroup);
 }
 
 void ItemManagerImplementation::registerGlobals() {
@@ -601,9 +602,23 @@ int ItemManagerImplementation::addBFProf(lua_State * l) {
 	
 	string name = itemwrapper.getStringField("name");
 	
-	string prof = itemwrapper.getStringField("prof");	
+	string prof = itemwrapper.getStringField("prof");
 	
-	bfProfSet->addProfession(name, prof);
+	string group = itemwrapper.getStringField("group");
+
+	bfProfSet->addProfession(name, group, prof);
+	
+	return 0;
+}
+
+int ItemManagerImplementation::addBFGroup(lua_State * l) {
+	LuaObject itemwrapper(l);
+
+	string name = itemwrapper.getStringField("name");
+
+	string parent = itemwrapper.getStringField("parent");
+
+	bfProfSet->addGroup(name, parent);
 	
 	return 0;
 }

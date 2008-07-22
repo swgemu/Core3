@@ -1499,6 +1499,8 @@ void CreatureObjectImplementation::resetHAMBars() {
 		
 	if (mindWounds > mindMax)
 		mindWounds = mindMax - 1;
+	
+	updateHAMBars();
 }
 
 

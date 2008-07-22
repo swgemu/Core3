@@ -236,16 +236,17 @@ BlueFrogVector* ItemManager::getBFItemList() {
 		return ((ItemManagerImplementation*) _impl)->getBFItemList();
 }
 
-BlueFrogVector* ItemManager::getBFProfList() {
+BlueFrogVector* ItemManager::getBFProfList(string& group) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 21);
+		method.addAsciiParameter(group);
 
 		return (BlueFrogVector*) method.executeWithObjectReturn();
 	} else
-		return ((ItemManagerImplementation*) _impl)->getBFProfList();
+		return ((ItemManagerImplementation*) _impl)->getBFProfList(group);
 }
 
 string& ItemManager::getBFProf(string& key) {
@@ -333,7 +334,7 @@ Packet* ItemManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		resp->insertLong(getBFItemList()->_getObjectID());
 		break;
 	case 21:
-		resp->insertLong(getBFProfList()->_getObjectID());
+		resp->insertLong(getBFProfList(inv->getAsciiParameter(_param0_getBFProfList__string_))->_getObjectID());
 		break;
 	case 22:
 		resp->insertAscii(getBFProf(inv->getAsciiParameter(_param0_getBFProf__string_)));
@@ -408,8 +409,8 @@ BlueFrogVector* ItemManagerAdapter::getBFItemList() {
 	return ((ItemManagerImplementation*) impl)->getBFItemList();
 }
 
-BlueFrogVector* ItemManagerAdapter::getBFProfList() {
-	return ((ItemManagerImplementation*) impl)->getBFProfList();
+BlueFrogVector* ItemManagerAdapter::getBFProfList(string& group) {
+	return ((ItemManagerImplementation*) impl)->getBFProfList(group);
 }
 
 string& ItemManagerAdapter::getBFProf(string& key) {

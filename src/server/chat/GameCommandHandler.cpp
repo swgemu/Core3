@@ -215,10 +215,11 @@ void GameCommandHandler::init() {
 			"Gives full detailsofyour location.", 
 			"Usage: @getLocation",
 			&gm_getLocation);
+	/* Uncomment for use on DEV servers
 	gmCommands->addCommand("getCords", DEVELOPER,
 			"Command to aid the cave devs placing of creatures, SpawnCreature command is written pre-formatted to a file.",
 			"Usage: @getCords <nameOfCreatureFile>", 
-			&gm_getCords);
+			&gm_getCords); */
 	gmCommands->addCommand("giveItemTemp", DEVELOPER,
 			"Adds a requested item to your inventory.",
 			"Usage: @giveItemTemp <Item Type> [item sub-type]", 
@@ -1227,7 +1228,7 @@ void GameCommandHandler::gm_getLocation(StringTokenizer tokenizer, Player * play
 void GameCommandHandler::gm_getCords(StringTokenizer tokenizer, Player * player) {
 	//This command is for the cave devs, helping them building the needed LUA files. 
 	//Please dont delete it from the SVN , Uncomment for use on dev Servers.
-	/* stringstream msg;
+	stringstream msg;
 	string name;
 
 	if (tokenizer.hasMoreTokens())
@@ -1264,7 +1265,7 @@ void GameCommandHandler::gm_getCords(StringTokenizer tokenizer, Player * player)
 				<< ")\n";
 
 	cordFile << flush;
-	cordFile.close(); */
+	cordFile.close();
 } 
 
 void GameCommandHandler::gm_giveItemTemp(StringTokenizer tokenizer, Player * player) {
