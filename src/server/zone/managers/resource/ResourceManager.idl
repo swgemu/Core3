@@ -70,4 +70,6 @@ interface ResourceManager {
 	
 	void getClassSeven(const string str, string clas);
 	void getResourceContainerName(const string str, string name);
+
+	void printResource(string resname);
 }

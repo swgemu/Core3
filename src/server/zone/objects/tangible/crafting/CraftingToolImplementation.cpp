@@ -250,10 +250,11 @@ void CraftingToolImplementation::addAttributes(AttributeListMessage* alm) {
 
 }
 
-void CraftingToolImplementation::updateCraftingValues(DraftSchematicValues* craftingValues){
+void CraftingToolImplementation::updateCraftingValues(DraftSchematic* draftSchematic){
 
 	string name;
 
+	DraftSchematicValues* craftingValues = draftSchematic->getCraftingValues();
 	//craftingValues->toString();
 
 	name = "effectiveness";

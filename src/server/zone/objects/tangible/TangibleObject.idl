@@ -54,7 +54,7 @@ import "../creature/CreatureObject";
 
 import "../player/Player";
 
-import "../draftschematic/DraftSchematicValues";
+import "../draftschematic/DraftSchematic";
 
 interface TangibleObject implements SceneObject {
 	TangibleObject(unsigned long oid, int tp = 0);
@@ -67,7 +67,7 @@ interface TangibleObject implements SceneObject {
 
 	void generateAttributes(Player player);
 
-	void updateCraftingValues(DraftSchematicValues craftingValues);
+	void updateCraftingValues(DraftSchematic draftSchematic);
 
 	void insertToZone(Zone zone);
 	void removeFromZone();

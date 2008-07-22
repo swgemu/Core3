@@ -83,6 +83,28 @@ ResourceContainerImplementation::ResourceContainerImplementation(CreatureObject*
 ResourceContainerImplementation::~ResourceContainerImplementation() {
 }
 
+bool ResourceContainerImplementation::compare(ResourceContainer* inResource){
+	
+	if(_this->getResourceName() == inResource->getResourceName() && 
+			_this->getTemplateName() == inResource->getTemplateName() && 
+			_this->getObjectSubType() == inResource->getObjectSubType() && 
+			_this->getDecayResistance() == inResource->getDecayResistance() && 
+			_this->getQuality() == inResource->getQuality() && 
+			_this->getFlavor() == inResource->getFlavor() && 
+			_this->getPotentialEnergy() == inResource->getPotentialEnergy() && 
+			_this->getMalleability() == inResource->getMalleability() && 
+			_this->getToughness() == inResource->getToughness() && 
+			_this->getShockResistance() == inResource->getShockResistance() && 
+			_this->getColdResistance() == inResource->getColdResistance() && 
+			_this->getHeatResistance() == inResource->getHeatResistance() && 
+			_this->getConductivity() == inResource->getConductivity() && 
+			_this->getEntangleResistance() == inResource->getEntangleResistance())
+		return true;
+	else
+		return false;
+	
+}
+
 void ResourceContainerImplementation::init() {
 	setObjectSubType(TangibleObjectImplementation::RESOURCECONTAINER);
 	setResourceID(0);
@@ -296,3 +318,4 @@ void ResourceContainerImplementation::addAttributes(AttributeListMessage* alm) {
 	if (res_er > 0)
 		alm->insertAttribute("entangle_resistance", res_er);	
 }
+

@@ -113,7 +113,7 @@ public:
 	
 	void sendRadialResponseTo(Player* player, ObjectMenuResponse* omr);
 	
-	void updateCraftingValues(DraftSchematicValues * craftingValues);
+	void updateCraftingValues(DraftSchematic* draftSchematic);
 	
 	void parseItemAttributes();
 	void generateAttributes(SceneObject* obj);

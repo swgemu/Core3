@@ -19,7 +19,7 @@ class CreatureObject;
 
 class Player;
 
-class DraftSchematicValues;
+class DraftSchematic;
 
 #include "../scene/SceneObject.h"
 
@@ -33,7 +33,7 @@ public:
 
 	void generateAttributes(Player* player);
 
-	void updateCraftingValues(DraftSchematicValues* craftingValues);
+	void updateCraftingValues(DraftSchematic* draftSchematic);
 
 	void insertToZone(Zone* zone);
 
@@ -169,7 +169,7 @@ public:
 
 	void generateAttributes(Player* player);
 
-	void updateCraftingValues(DraftSchematicValues* craftingValues);
+	void updateCraftingValues(DraftSchematic* draftSchematic);
 
 	void insertToZone(Zone* zone);
 

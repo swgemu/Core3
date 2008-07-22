@@ -71,10 +71,15 @@ public:
 	void getClassSeven(const string& resource, string& clas, bool doLock = true);
 	void getResourceContainerName(const string& resource, string& name, bool doLock = true);
 	
+	void printResource(string resname);
+	
 private:
 	void init();
 	
 	float getDensity(int planet, string& resname, float inx, float iny);
+	
+	float getDistanceFrom(float inx, float iny, float x, float y);
+	
 	void sendSurveyResourceStats(Player* player, Vector<string>* rList);
 	bool isDuplicate(Vector<string>* rList, string& resource);
 	
@@ -111,6 +116,8 @@ private:
 	void createResource(string restype, string pool, bool jtl);
 	
 	void generateResourceStats(ResourceTemplate * resource);
+	
+	void setAttStat(ResourceTemplate* resource, string statTitle, int stat);
 
 	bool isType(ResourceTemplate* resource, string type);
 
@@ -126,6 +133,10 @@ private:
 	string stringify(const int x);
 	
 	void setObjectSubType(ResourceTemplate* resImpl);
+	
+	void verifyResourceMap();
+	void verifyResourceData(int i, ResourceTemplate* resTemp);
+	
 };
 
 #endif /*ResourceManagerImplementation_*/

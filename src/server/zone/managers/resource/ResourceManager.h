@@ -39,6 +39,8 @@ public:
 
 	void getResourceContainerName(const string& str, string& name);
 
+	void printResource(string& resname);
+
 protected:
 	ResourceManager(DummyConstructorParameter* param);
 
@@ -75,6 +77,8 @@ public:
 
 	void getResourceContainerName(const string& str, string& name);
 
+	void printResource(string& resname);
+
 protected:
 	string _param1_checkResource__Player_string_int_;
 	string _param1_sendSurveyMessage__Player_string_;
@@ -83,6 +87,7 @@ protected:
 	string _param1_getClassSeven__string_string_;
 	string _param0_getResourceContainerName__string_string_;
 	string _param1_getResourceContainerName__string_string_;
+	string _param0_printResource__string_;
 };
 
 class ResourceManagerHelper : public DistributedObjectClassHelper, public Singleton<ResourceManagerHelper> {

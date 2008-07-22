@@ -30,7 +30,7 @@ ResourceManagerImplementation::ResourceManagerImplementation(ZoneServer* inserve
 	//  Spawner does take a good bit of time to populate an
 	//  Empty database.
 	
-	setLogging(false);
+	setLogging(true);
 	setGlobalLogging(true);
 	
 }
@@ -67,17 +67,19 @@ void ResourceManagerImplementation::init() {
 	resourceMap = new VectorMap<string, ResourceTemplate*>();
 	resourceMap->setNullValue(NULL);
 	
+	info("Initializing Resource Manager");
+	
 	buildResourceMap();
 	
-	info("resources built from database.");
+	info("Resources built from database.");
 	
-	averageShiftTime = 3 * 3600000; // In milliseconds
+	averageShiftTime = 3 * 150000;//3600000; // In milliseconds
 	//  This is the time between each time the Resource Manager schedules
 	//  itself to run again.  
 	//  *** Default is 1 hour (3600000) ***
 	//  *** Good testing time is (15000) ***
 	
-	aveduration = 86400;  // In seconds
+	aveduration = 45;//86400;  // In seconds
 	// This is the modifier for how long spawns are in shift
 	// Organics are in shift between (6 * aveduration) and  (22 * aveduration)
 	// Inorganics are in shift between (6 * aveduration) and (11 * aveduration)
@@ -88,7 +90,7 @@ void ResourceManagerImplementation::init() {
 	maxspawns = 40;  //  Mmaximum number of spawns per planet
 	minspawns = 25;  //  Minimum number of spawns per planet
 	maxradius = 2000;   //  Maximum Spawn radius of resource on map
-	minradius = 400;    //  Minimum Spawn radius of resource on map
+	minradius = 600;    //  Minimum Spawn radius of resource on map
 	
 	makeMinimumPoolVector();
 	makeFixedPoolVector();
@@ -134,6 +136,8 @@ void ResourceManagerImplementation::theShift() {
 	info("Name functions run = " + stringify(numNameFunctions));
 	
 	countResources();
+	
+	verifyResourceMap();
 	
 	info("resource Spawner Finished");
 	
@@ -224,6 +228,8 @@ float ResourceManagerImplementation::getDensity(int planet, string& resname, flo
 				
 				radius = sl->getRadius();
 				
+cout << "Spawn on planet is " << getDistanceFrom(inx, iny, x, y) << " and radius is " << radius;
+				
 				source = sl->getMax();
 				
 				if (inx > (x - radius) && inx < (x + radius) && iny > (y - radius) && iny < (y + radius)) {
@@ -231,9 +237,14 @@ float ResourceManagerImplementation::getDensity(int planet, string& resname, flo
 							+ ((iny - y) * (iny - y)));
 
 					density = ((((radius - distance) / radius) * source) / 100.0f);
+cout << " in in range ******* density = " << density << " **********" << endl;
 					
 					if (density > max_density)
 						max_density = density;
+				} else {
+					
+cout << " NOT in range" << endl;
+					
 				}
 			}
 		}
@@ -242,6 +253,14 @@ float ResourceManagerImplementation::getDensity(int planet, string& resname, flo
 	}
 	
 	return max_density;
+}
+
+float ResourceManagerImplementation::getDistanceFrom(float inx, float iny, float x, float y){
+	
+	float theX = x - inx;
+	float theY = y - iny;
+	
+	return sqrt((theX * theX)+ (theY * theY));
 }
 
 void ResourceManagerImplementation::sendSurveyMessage(Player* player, string& resourceName, bool doLock) {
@@ -379,32 +398,50 @@ void ResourceManagerImplementation::sendSampleMessage(Player* player, string& re
 			
 			for (int i = 0; i < inventory->objectsSize(); i++) {
 				TangibleObject* item = (TangibleObject*) inventory->getObject(i);
-				if (item != NULL && item->isResource() && strcmp(((ResourceContainer*)item)->getResourceName().c_str(), resourceName.c_str()) == 0) {
+				if (item != NULL && item->isResource()) {
 					rco = (ResourceContainer*) item;
-					
-					if (rco->getContents() + resQuantity <= rco->getMaxContents()) {
-						rco->setContents(rco->getContents() + resQuantity);
-						rco->sendDeltas(player);
+
+					try {
 						
-						rco->setUpdated(true);
-						
-						resQuantity = 0;
-						
-						makeNewResource = false;
-						break;
-					} else if (rco->getContents() < rco->getMaxContents()) {
-						int diff = (rco->getMaxContents() - rco->getContents());
-						
-						if (resQuantity <= diff) {
-							rco->setContents(rco->getContents() + resQuantity);
-						} else {
-							rco->setContents(rco->getContents() + diff);
-							resQuantity = resQuantity - diff;
+						rco->wlock();
+
+						if (rco->getResourceName().c_str() == resourceName.c_str()) {
+
+							if (rco->getContents() + resQuantity
+									<= rco->getMaxContents()) {
+
+								rco->setContents(rco->getContents() + resQuantity);
+								rco->sendDeltas(player);
+
+								rco->setUpdated(true);
+
+								resQuantity = 0;
+
+								makeNewResource = false;
+								break;
+							} else if (rco->getContents() < rco->getMaxContents()) {
+								int diff = (rco->getMaxContents()
+										- rco->getContents());
+
+								if (resQuantity <= diff) {
+									rco->setContents(rco->getContents()
+											+ resQuantity);
+								} else {
+									rco->setContents(rco->getContents() + diff);
+									resQuantity = resQuantity - diff;
+								}
+
+								rco->sendDeltas(player);
+
+								rco->setUpdated(true);
+							}
 						}
+						rco->unlock();
+					}
+					catch(...) {
+
+						rco->unlock();
 						
-						rco->sendDeltas(player);
-						
-						rco->setUpdated(true);
 					}
 				}
 			}
@@ -418,23 +455,39 @@ void ResourceManagerImplementation::sendSampleMessage(Player* player, string& re
 					return;
 				}
 				
-				rco = new ResourceContainer(player->getNewItemID());
+				/*rco = new ResourceContainer(player->getNewItemID());
 
 				string contName;
 				getResourceContainerName(resourceName, contName, false);
-				
+
 				unicode cName = unicode(contName.c_str());
 				rco->setName(cName);
 				rco->setResourceName(resourceName);
 				rco->setContents(resQuantity);
-				
+
 				setResourceData(rco, false);
-				
+
 				player->addInventoryItem(rco);
-				
+
 				rco->sendTo(player);
+
+				rco->setPersistent(false);*/
 				
-				rco->setPersistent(false);
+				ResourceContainer* newRcno = new ResourceContainer(player->getNewItemID());
+
+				newRcno->setResourceName(resourceName);
+				
+				newRcno->setContents(resQuantity);
+				
+				setResourceData(newRcno, false);
+				
+				player->addInventoryItem(newRcno);
+				
+				newRcno->sendTo(player);
+				
+				newRcno->setPersistent(false);
+				
+				rco = newRcno;
 			}
 			
 			if (rco->getObjectSubType() == TangibleObjectImplementation::ENERGYRADIOACTIVE) {
@@ -458,42 +511,55 @@ void ResourceManagerImplementation::sendSampleMessage(Player* player, string& re
 	unlock(doLock);
 }
 
-void ResourceManagerImplementation::setResourceData(ResourceContainer* resContainer, bool doLock) {
+void ResourceManagerImplementation::setResourceData(
+		ResourceContainer* resContainer, bool doLock) {
 	// Added by Ritter
 	lock(doLock);
-	
+
 	string resourceName = resContainer->getResourceName().c_str();
 	ResourceTemplate* resource = resourceMap->get(resourceName);
-	
+
 	if (resource == NULL) {
 		unlock(doLock);
 		return;
 	}
 
-	string contName;
-	getResourceContainerName(resourceName, contName, false);
-	unicode cName = unicode(contName.c_str());
-	resContainer->setName(cName);
-	
-	resContainer->setResourceID(resource->getResourceID());
-	
-	resContainer->setDecayResistance(resource->getAtt1Stat());
-	resContainer->setQuality(resource->getAtt2Stat());
-	resContainer->setFlavor(resource->getAtt3Stat());
-	resContainer->setPotentialEnergy(resource->getAtt4Stat());
-	resContainer->setMalleability(resource->getAtt5Stat());
-	resContainer->setToughness(resource->getAtt6Stat());
-	resContainer->setShockResistance(resource->getAtt7Stat());
-	resContainer->setColdResistance(resource->getAtt8Stat());
-	resContainer->setHeatResistance(resource->getAtt9Stat());
-	resContainer->setConductivity(resource->getAtt10Stat());
-	resContainer->setEntangleResistance(resource->getAtt11Stat());
-	resContainer->setClassSeven(resource->getClass7());
-	
-	resContainer->setContainerFile(resource->getType());
-	resContainer->setObjectCRC(resource->getContainerCRC());
-	resContainer->setObjectSubType(resource->getObjectSubType());
-	
+	try {
+
+		resContainer->wlock();
+
+		string contName;
+		getResourceContainerName(resourceName, contName, false);
+		unicode cName = unicode(contName.c_str());
+		resContainer->setName(cName);
+
+		resContainer->setResourceID(resource->getResourceID());
+
+		resContainer->setDecayResistance(resource->getAtt1Stat());
+		resContainer->setQuality(resource->getAtt2Stat());
+		resContainer->setFlavor(resource->getAtt3Stat());
+		resContainer->setPotentialEnergy(resource->getAtt4Stat());
+		resContainer->setMalleability(resource->getAtt5Stat());
+		resContainer->setToughness(resource->getAtt6Stat());
+		resContainer->setShockResistance(resource->getAtt7Stat());
+		resContainer->setColdResistance(resource->getAtt8Stat());
+		resContainer->setHeatResistance(resource->getAtt9Stat());
+		resContainer->setConductivity(resource->getAtt10Stat());
+		resContainer->setEntangleResistance(resource->getAtt11Stat());
+		resContainer->setClassSeven(resource->getClass7());
+
+		resContainer->setContainerFile(resource->getType());
+		resContainer->setObjectCRC(resource->getContainerCRC());
+		resContainer->setObjectSubType(resource->getObjectSubType());
+
+		resContainer->unlock();
+	}
+	catch(...) {
+
+		resContainer->unlock();
+
+	}
+
 	unlock(doLock);
 }
 
@@ -744,77 +810,192 @@ bool ResourceManagerImplementation::isDuplicate(Vector<string>* rList, string& r
 
 void ResourceManagerImplementation::buildResourceMap() {
 	ResourceTemplate* resTemp;
+	SpawnLocation* sl;
 	string resname;
-	string query = "SELECT * FROM resource_data";
-	
+	string query = "SELECT resource_data.`INDEX`, resource_data.resource_name, resource_data.resource_type, "
+			"resource_data.class_1, resource_data.class_2, resource_data.class_3, resource_data.class_4, "
+			"resource_data.class_5, resource_data.class_6, resource_data.class_7, resource_data.res_decay_resist, "
+			"resource_data.res_quality, resource_data.res_flavor, resource_data.res_potential_energy, "
+			"resource_data.res_malleability, resource_data.res_toughness, resource_data.res_shock_resistance, "
+			"resource_data.res_cold_resist, resource_data.res_heat_resist, resource_data.res_conductivity, "
+			"resource_data.entangle_resistance, resource_data.shiftedIn, resource_data.shiftedOut, resource_data.container, "
+			"resource_data.containerCRC, resource_spawns.`INDEX`, resource_spawns.resource_name, resource_spawns.planet_id, "
+		    "resource_spawns.x, resource_spawns.y, resource_spawns.radius, resource_spawns.`max`, resource_spawns.despawn, "
+		    "resource_spawns.pool FROM resource_data Inner Join resource_spawns ON resource_data.resource_name = "
+		    "resource_spawns.resource_name ORDER BY resource_data.resource_name ASC";
+
 	try {
 		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
 		if (res->size() != 0) {
 			while (res->next()) {
+				
 				resname = res->getString(1);
-				resTemp = new ResourceTemplate(res->getString(2));
-				resTemp->setName(resname);
-				resTemp->setResourceID(res->getUnsignedLong(0));
 				
-				resTemp->setClass1(res->getString(3));
-				resTemp->setClass2(res->getString(4));
-				resTemp->setClass3(res->getString(5));
-				resTemp->setClass4(res->getString(6));
-				resTemp->setClass5(res->getString(7));
-				resTemp->setClass6(res->getString(8));
-				resTemp->setClass7(res->getString(9));
-		
-				resTemp->setMaxType(0);
-				resTemp->setMinType(0);
-				resTemp->setMinPool(0);
-				resTemp->setMaxPool(0);
-		
-				resTemp->setAtt1("res_decay_resist");
-				resTemp->setAtt2("res_quality");
-				resTemp->setAtt3("res_flavor");
-				resTemp->setAtt4("res_potential_energy");
-				resTemp->setAtt5("res_malleability");
-				resTemp->setAtt6("res_toughness");
-				resTemp->setAtt7("res_shockresistance");
-				resTemp->setAtt8("res_cold_resist");
-				resTemp->setAtt9("res_heat_resist");
-				resTemp->setAtt10("res_conductivity");
-				resTemp->setAtt11("entangle_resistance");
-		
-				resTemp->setAtt1Stat(res->getInt(10));
-				resTemp->setAtt2Stat(res->getInt(11));
-				resTemp->setAtt3Stat(res->getInt(12));
-				resTemp->setAtt4Stat(res->getInt(13));
-				resTemp->setAtt5Stat(res->getInt(14));
-				resTemp->setAtt6Stat(res->getInt(15));
-				resTemp->setAtt7Stat(res->getInt(16));
-				resTemp->setAtt8Stat(res->getInt(17));
-				resTemp->setAtt9Stat(res->getInt(18));
-				resTemp->setAtt10Stat(res->getInt(19));
-				resTemp->setAtt11Stat(res->getInt(20));
-		
-				resTemp->setContainer(res->getString(23));
-				resTemp->setContainerCRC(res->getUnsignedInt(24));
-				
-				setObjectSubType(resTemp);
-				
-				stringstream query2;
-				query2 << "SELECT * FROM resource_spawns WHERE `resource_name` = '" << resname << "'";
-				ResultSet* res2 = ServerDatabase::instance()->executeQuery(query2);
-				if (res2->size() != 0) {
-					while (res2->next()) {
-						string pool = res2->getString(8);
-						SpawnLocation* sl = new SpawnLocation(res2->getUnsignedLong(0), res2->getInt(2), res2->getFloat(3), res2->getFloat(4), res2->getFloat(5), res2->getFloat(6), pool);
-						resTemp->addSpawn(sl);
-					}
+				if(!resourceMap->contains(resname)) {
+
+					resTemp = new ResourceTemplate(res->getString(2));
+					resTemp->setName(resname);
+					resTemp->setResourceID(res->getUnsignedLong(0));
+
+					resTemp->setClass1(res->getString(3));
+					resTemp->setClass2(res->getString(4));
+					resTemp->setClass3(res->getString(5));
+					resTemp->setClass4(res->getString(6));
+					resTemp->setClass5(res->getString(7));
+					resTemp->setClass6(res->getString(8));
+					resTemp->setClass7(res->getString(9));
+
+					resTemp->setMaxType(0);
+					resTemp->setMinType(0);
+					resTemp->setMinPool(0);
+					resTemp->setMaxPool(0);
+
+					resTemp->setAtt1("res_decay_resist");
+					resTemp->setAtt2("res_quality");
+					resTemp->setAtt3("res_flavor");
+					resTemp->setAtt4("res_potential_energy");
+					resTemp->setAtt5("res_malleability");
+					resTemp->setAtt6("res_toughness");
+					resTemp->setAtt7("res_shock_resistance");
+					resTemp->setAtt8("res_cold_resist");
+					resTemp->setAtt9("res_heat_resist");
+					resTemp->setAtt10("res_conductivity");
+					resTemp->setAtt11("entangle_resistance");
+
+					resTemp->setAtt1Stat(res->getInt(10));
+					resTemp->setAtt2Stat(res->getInt(11));
+					resTemp->setAtt3Stat(res->getInt(12));
+					resTemp->setAtt4Stat(res->getInt(13));
+					resTemp->setAtt5Stat(res->getInt(14));
+					resTemp->setAtt6Stat(res->getInt(15));
+					resTemp->setAtt7Stat(res->getInt(16));
+					resTemp->setAtt8Stat(res->getInt(17));
+					resTemp->setAtt9Stat(res->getInt(18));
+					resTemp->setAtt10Stat(res->getInt(19));
+					resTemp->setAtt11Stat(res->getInt(20));
+
+					resTemp->setContainer(res->getString(23));
+					resTemp->setContainerCRC(res->getUnsignedInt(24));
+
+					setObjectSubType(resTemp);
+					
+					resourceMap->put(resname, resTemp);
+
+				} else {
+
+					resTemp = resourceMap->get(resname);
+
 				}
-				delete res2;
-				resourceMap->put(resname, resTemp);
+				
+
+				string pool = res->getString(33);
+				sl = new SpawnLocation(res->getUnsignedLong(25), res->getInt(27), res->getFloat(28), res->getFloat(28), res->getFloat(30), res->getFloat(31), pool);
+				
+				resTemp->addSpawn(sl);
 			}
 		}
 		delete res;
+		
 	} catch (DatabaseException& e) {
 		cout << "Database error in buildMap\n";
+	}
+}
+
+void ResourceManagerImplementation::verifyResourceMap() {
+	ResourceTemplate* resTemp;
+	
+	for(int i = 0; i < resourceMap->size(); ++i){
+		
+		resTemp = resourceMap->get(i);
+		
+		verifyResourceData(i, resTemp);
+		
+	}
+}
+
+void ResourceManagerImplementation::verifyResourceData(int i, ResourceTemplate* resTemp) {
+
+	ResourceTemplate* resNew;
+	string resname;
+	string query = "SELECT `INDEX`, `resource_name`, `resource_type`, `class_1`, `class_2`, `class_3`, `class_4`,"
+			" `class_5`, `class_6`, `class_7`, `res_decay_resist`, `res_quality`, `res_flavor`, `res_potential_energy`,"
+			" `res_malleability`, `res_toughness`, `res_shock_resistance`, `res_cold_resist`, `res_heat_resist`,"
+			" `res_conductivity`, `entangle_resistance`, `shiftedIn`, `shiftedOut`, `container`, `containerCRC`"
+			"  FROM resource_data WHERE `resource_name` = '" + resTemp->getName() + "'";
+	try {
+		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
+		if (res->size() == 1) {
+			while (res->next()) {
+
+				resname = res->getString(1);
+				resNew = new ResourceTemplate(res->getString(2));
+				resNew->setName(resname);
+				resNew->setResourceID(res->getUnsignedLong(0));
+
+				resNew->setClass1(res->getString(3));
+				resNew->setClass2(res->getString(4));
+				resNew->setClass3(res->getString(5));
+				resNew->setClass4(res->getString(6));
+				resNew->setClass5(res->getString(7));
+				resNew->setClass6(res->getString(8));
+				resNew->setClass7(res->getString(9));
+
+				resNew->setMaxType(0);
+				resNew->setMinType(0);
+				resNew->setMinPool(0);
+				resNew->setMaxPool(0);
+				
+				resNew->setAtt1("res_decay_resist");
+				resNew->setAtt2("res_quality");
+				resNew->setAtt3("res_flavor");
+				resNew->setAtt4("res_potential_energy");
+				resNew->setAtt5("res_malleability");
+				resNew->setAtt6("res_toughness");
+				resNew->setAtt7("res_shock_resistance");
+				resNew->setAtt8("res_cold_resist");
+				resNew->setAtt9("res_heat_resist");
+				resNew->setAtt10("res_conductivity");
+				resNew->setAtt11("entangle_resistance");
+
+				resNew->setAtt1Stat(res->getInt(10));
+				resNew->setAtt2Stat(res->getInt(11));
+				resNew->setAtt3Stat(res->getInt(12));
+				resNew->setAtt4Stat(res->getInt(13));
+				resNew->setAtt5Stat(res->getInt(14));
+				resNew->setAtt6Stat(res->getInt(15));
+				resNew->setAtt7Stat(res->getInt(16));
+				resNew->setAtt8Stat(res->getInt(17));
+				resNew->setAtt9Stat(res->getInt(18));
+				resNew->setAtt10Stat(res->getInt(19));
+				resNew->setAtt11Stat(res->getInt(20));
+
+				resNew->setContainer(res->getString(23));
+				resNew->setContainerCRC(res->getUnsignedInt(24));
+
+				setObjectSubType(resNew);
+				
+				if(!resNew->compare(resTemp)){
+					
+					info("******* Resource: " + resname + " is inconsistant ********");
+					
+					//resTemp->toString();
+					//resNew->toString();
+					
+				} else {
+					
+					//cout << i << ". " << resname << " is good!\n";
+					
+				}
+
+			}
+		} else {
+
+			info("Multiple Resource with name: " + resTemp->getName());
+
+		}
+		delete res;
+	} catch (DatabaseException& e) {
+		cout << "Database error in verifyMap\n";
 	}
 }
 
@@ -1166,13 +1347,18 @@ void ResourceManagerImplementation::createResource(string restype, string pool, 
 	ResourceTemplate* resource = new ResourceTemplate(restype);
 
 	generateResourceStats(resource);
+	
+	if(resourceMap->get(resource->getName()) != NULL){
+		resourceMap->drop(resource->getName());
+		info("Resource " + resource->getName() + " already exists in map, removing");
+	}
 
 	insertResource(resource);
 
 	if (isPlanetSpecific(resource->getType())) {
 		planet = getPlanet(resource->getType());
 
-		if (resource->getClass2()== "Creature Resources") {
+		if (resource->getClass2() == "Creature Resources") {
 			insertSpawn(resource, planet, 0, 0, 0, 0, pool, jtl);
 		} else {
 			for (int y = 0; y < (System::random(maxspawns - minspawns) + minspawns); y++) {
@@ -1210,7 +1396,9 @@ void ResourceManagerImplementation::createResource(string restype, string pool, 
 			}
 		}
 	}
+
 	resourceMap->put(resource->getName(), resource);
+
 }
 
 void ResourceManagerImplementation::generateResourceStats(ResourceTemplate* resource) {
@@ -1237,7 +1425,43 @@ void ResourceManagerImplementation::generateResourceStats(ResourceTemplate* reso
 				resource->setMinPool(res->getInt(11));
 				resource->setMaxPool(res->getInt(12));
 
-				resource->setAtt1(res->getString(13));
+				resource->setAtt1("res_decay_resist");
+				resource->setAtt2("res_quality");
+				resource->setAtt3("res_flavor");
+				resource->setAtt4("res_potential_energy");
+				resource->setAtt5("res_malleability");
+				resource->setAtt6("res_toughness");
+				resource->setAtt7("res_shock_resistance");
+				resource->setAtt8("res_cold_resist");
+				resource->setAtt9("res_heat_resist");
+				resource->setAtt10("res_conductivity");
+				resource->setAtt11("entangle_resistance");
+				
+				resource->setAtt1Stat(0);
+				resource->setAtt2Stat(0);
+				resource->setAtt3Stat(0);
+				resource->setAtt4Stat(0);
+				resource->setAtt5Stat(0);
+				resource->setAtt6Stat(0);
+				resource->setAtt7Stat(0);
+				resource->setAtt8Stat(0);
+				resource->setAtt9Stat(0);
+				resource->setAtt10Stat(0);
+				resource->setAtt11Stat(0);
+				
+				setAttStat(resource, res->getString(13), (System::random(res->getInt(25) - res->getInt(24)) + res->getInt(24)));
+				setAttStat(resource, res->getString(14), (System::random(res->getInt(27) - res->getInt(26)) + res->getInt(26)));
+				setAttStat(resource, res->getString(15), (System::random(res->getInt(29) - res->getInt(28)) + res->getInt(28)));
+				setAttStat(resource, res->getString(16), (System::random(res->getInt(31) - res->getInt(30)) + res->getInt(30)));
+				setAttStat(resource, res->getString(17), (System::random(res->getInt(33) - res->getInt(32)) + res->getInt(32)));
+				setAttStat(resource, res->getString(18), (System::random(res->getInt(35) - res->getInt(34)) + res->getInt(34)));
+				setAttStat(resource, res->getString(19), (System::random(res->getInt(37) - res->getInt(36)) + res->getInt(36)));
+				setAttStat(resource, res->getString(20), (System::random(res->getInt(39) - res->getInt(38)) + res->getInt(38)));
+				setAttStat(resource, res->getString(21), (System::random(res->getInt(41) - res->getInt(40)) + res->getInt(40)));
+				setAttStat(resource, res->getString(22), (System::random(res->getInt(43) - res->getInt(42)) + res->getInt(42)));
+				setAttStat(resource, res->getString(23), (System::random(res->getInt(45) - res->getInt(44)) + res->getInt(44)));
+
+				/*resource->setAtt1(res->getString(13));
 				resource->setAtt2(res->getString(14));
 				resource->setAtt3(res->getString(15));
 				resource->setAtt4(res->getString(16));
@@ -1259,12 +1483,14 @@ void ResourceManagerImplementation::generateResourceStats(ResourceTemplate* reso
 				resource->setAtt8Stat((System::random(res->getInt(39) - res->getInt(38)) + res->getInt(38)));
 				resource->setAtt9Stat((System::random(res->getInt(41) - res->getInt(40)) + res->getInt(40)));
 				resource->setAtt10Stat((System::random(res->getInt(43) - res->getInt(42)) + res->getInt(42)));
-				resource->setAtt11Stat((System::random(res->getInt(45) - res->getInt(44)) + res->getInt(44)));
+				resource->setAtt11Stat((System::random(res->getInt(45) - res->getInt(44)) + res->getInt(44)));*/
 
 				resource->setContainer(res->getString(46));
 				resource->setContainerCRC(res->getUnsignedInt(47));
+				
+				setObjectSubType(resource);
 			} else {
-				cout << "Resouce Database error" << endl;
+				cout << "Resource Database error generateResourceStats" << endl;
 			}
 		}
 		
@@ -1274,7 +1500,72 @@ void ResourceManagerImplementation::generateResourceStats(ResourceTemplate* reso
 
 		delete res;
 	} catch (DatabaseException& e) {
+		
+		cout << "Resource Database error 2 generateResourceStats" << endl;
+		
 	}
+}
+
+void ResourceManagerImplementation::setAttStat(ResourceTemplate* resource, string statTitle, int stat){
+	
+	if (statTitle == "res_decay_resist") {
+		resource->setAtt1Stat(stat);
+		return;
+	}
+
+	if (statTitle == "res_quality") {
+		resource->setAtt2Stat(stat);
+		return;
+	}
+
+	if (statTitle == "res_flavor") {
+		resource->setAtt3Stat(stat);
+		return;
+	}
+
+	if (statTitle == "res_potential_energy") {
+		resource->setAtt4Stat(stat);
+		return;
+	}
+
+	if (statTitle == "res_malleability") {
+		resource->setAtt5Stat(stat);
+		return;
+	}
+
+	if (statTitle == "res_toughness") {
+		resource->setAtt6Stat(stat);
+		return;
+	}
+
+	if (statTitle == "res_shock_resistance") {
+		resource->setAtt7Stat(stat);
+		return;
+	}
+
+	if (statTitle == "res_cold_resist") {
+		resource->setAtt8Stat(stat);
+		return;
+	}
+
+	if (statTitle == "res_heat_resist") {
+		resource->setAtt9Stat(stat);
+		return;
+	}
+
+	if (statTitle == "res_conductivity") {
+		resource->setAtt10Stat(stat);
+		return;
+	}
+
+	if (statTitle == "entangle_resistance") {
+		resource->setAtt11Stat(stat);
+		return;
+	}
+	
+	if(statTitle != "")
+		info("Something screwed up in finding stats to set in setAttStat: |" + statTitle + "| doesn't match");
+
 }
 
 void ResourceManagerImplementation::makeMinimumPoolVector() {
@@ -1411,42 +1702,42 @@ void ResourceManagerImplementation::insertResource(ResourceTemplate* resource) {
 	try {
 		stringstream query;
 		query << "INSERT INTO `resource_data` "
-			  << "(`resource_name`,`resource_type`,`class_1`,"
-			  << "`class_2`,`class_3`,`class_4`,"
-			  << "`class_5`,`class_6`,`class_7`"
-			  << checkInsertCategory(resource->getAtt1())
-			  << checkInsertCategory(resource->getAtt2())
-			  << checkInsertCategory(resource->getAtt3())
-			  << checkInsertCategory(resource->getAtt4())
-			  << checkInsertCategory(resource->getAtt5())
-			  << checkInsertCategory(resource->getAtt6())
-			  << checkInsertCategory(resource->getAtt7())
-			  << checkInsertCategory(resource->getAtt8())
-			  << checkInsertCategory(resource->getAtt9())
-			  << checkInsertCategory(resource->getAtt10())
-			  << checkInsertCategory(resource->getAtt11())
-			  << ",`shiftedIn`,`container`, `containerCRC`)"
-			  << " VALUES ('"
-			  << resource->getName() << "','" << resource->getType() << "','"
-			  << resource->getClass1() << "','" << resource->getClass2() << "','"
-			  << resource->getClass3() << "','" << resource->getClass4() << "','"
-			  << resource->getClass5() << "','" << resource->getClass6() << "','"
-			  << resource->getClass7() << "'"
-			  << checkInsertValue(resource->getAtt1Stat())
-			  << checkInsertValue(resource->getAtt2Stat())
-			  << checkInsertValue(resource->getAtt3Stat())
-			  << checkInsertValue(resource->getAtt4Stat())
-			  << checkInsertValue(resource->getAtt5Stat())
-			  << checkInsertValue(resource->getAtt6Stat())
-			  << checkInsertValue(resource->getAtt7Stat())
-			  << checkInsertValue(resource->getAtt8Stat())
-			  << checkInsertValue(resource->getAtt9Stat())
-			  << checkInsertValue(resource->getAtt10Stat())
-			  << checkInsertValue(resource->getAtt11Stat())
-			  << ", " << (long)time(0) << ",'" << resource->getContainer()
-			  << "'," << resource->getContainerCRC()<< ")";
+			<< "(`resource_name`,`resource_type`,`class_1`,"
+			<< "`class_2`,`class_3`,`class_4`,"
+			<< "`class_5`,`class_6`,`class_7`"
+			<< checkInsertCategory(resource->getAtt1())
+			<< checkInsertCategory(resource->getAtt2())
+			<< checkInsertCategory(resource->getAtt3())
+			<< checkInsertCategory(resource->getAtt4())
+			<< checkInsertCategory(resource->getAtt5())
+			<< checkInsertCategory(resource->getAtt6())
+			<< checkInsertCategory(resource->getAtt7())
+			<< checkInsertCategory(resource->getAtt8())
+			<< checkInsertCategory(resource->getAtt9())
+			<< checkInsertCategory(resource->getAtt10())
+			<< checkInsertCategory(resource->getAtt11())
+			<< ",`shiftedIn`,`container`, `containerCRC`)"
+			<< " VALUES ('"
+			<< resource->getName() << "','" << resource->getType() << "','"
+			<< resource->getClass1() << "','" << resource->getClass2() << "','"
+			<< resource->getClass3() << "','" << resource->getClass4() << "','"
+			<< resource->getClass5() << "','" << resource->getClass6() << "','"
+			<< resource->getClass7() << "'"
+			<< checkInsertValue(resource->getAtt1Stat())
+			<< checkInsertValue(resource->getAtt2Stat())
+			<< checkInsertValue(resource->getAtt3Stat())
+			<< checkInsertValue(resource->getAtt4Stat())
+			<< checkInsertValue(resource->getAtt5Stat())
+			<< checkInsertValue(resource->getAtt6Stat())
+			<< checkInsertValue(resource->getAtt7Stat())
+			<< checkInsertValue(resource->getAtt8Stat())
+			<< checkInsertValue(resource->getAtt9Stat())
+			<< checkInsertValue(resource->getAtt10Stat())
+			<< checkInsertValue(resource->getAtt11Stat())
+			<< ", " << (long)time(0) << ",'" << resource->getContainer()
+			<< "'," << resource->getContainerCRC() << ")";
 
-		ServerDatabase::instance()->executeStatement(query);
+		ServerDatabase::instance()->executeStatement(query.str());
 		
 		numInsert++;
 	} catch (...) {
@@ -1456,6 +1747,7 @@ void ResourceManagerImplementation::insertResource(ResourceTemplate* resource) {
 void ResourceManagerImplementation::insertSpawn(ResourceTemplate* resource, int planet_id, 
 		float x, float y, float radius, float max, string pool, bool& jtl) {
 	numFunctions++;
+	
 	
 	try {
 		int upper, lower;
@@ -1490,7 +1782,9 @@ void ResourceManagerImplementation::insertSpawn(ResourceTemplate* resource, int 
 		
 		uint64 id = res->getLastAffectedRow();
 		
-		resource->addSpawn(new SpawnLocation(id, planet_id, x, y, radius, max, pool));
+		SpawnLocation* sl = new SpawnLocation(id, planet_id, x, y, radius, max, pool);
+		
+		resource->addSpawn(sl);
 		
 		numInsert++;
 	} catch (...) {
@@ -1512,7 +1806,7 @@ inline string ResourceManagerImplementation::checkInsertValue(int inval) {
 	numFunctions++;
 	
 	if (inval == 0) {
-		return "";
+		return ", 0";
 	} else {
 		return ", " + stringify(inval);// + "`";
 	}
@@ -1586,37 +1880,104 @@ inline string ResourceManagerImplementation::stringify(const int x) {
 }
 
 void ResourceManagerImplementation::setObjectSubType(ResourceTemplate* resImpl) {
+	
+	
 	if (resImpl->getClass1() == "Inorganic") {
 		if (resImpl->getClass2() == "Mineral") {
 			resImpl->setObjectSubType(TangibleObjectImplementation::INORGANICMINERAL);
+			return;
 		} else if (resImpl->getClass2() == "Chemical") {
 			resImpl->setObjectSubType(TangibleObjectImplementation::INORGANICCHEMICAL);
+			return;
 		} else if (resImpl->getClass2() == "Gas") {
 			resImpl->setObjectSubType(TangibleObjectImplementation::INORGANICGAS);
+			return;
 		} else if (resImpl->getClass2() == "Water") {
 			resImpl->setObjectSubType(TangibleObjectImplementation::WATER);
+			return;
 		}
 	} else if (resImpl->getClass1() == "Organic") {
 		if (resImpl->getClass3() == "Flora Food") {
 			resImpl->setObjectSubType(TangibleObjectImplementation::ORGANICFOOD);
+			return;
 		} else if (resImpl->getClass3() == "Flora Structural") {
 			resImpl->setObjectSubType(TangibleObjectImplementation::ORGANICSTRUCTURAL);
+			return;
 		} else if (resImpl->getClass3() == "Creature Food") {
 			resImpl->setObjectSubType(TangibleObjectImplementation::ORGANICFOOD);
+			return;
 		} else if (resImpl->getClass3() == "Creature Structural") {
 			if (resImpl->getClass4() == "Bone") {
 				resImpl->setObjectSubType(TangibleObjectImplementation::ORGANICSTRUCTURAL);
+				return;
 			} else if (resImpl->getClass4() == "Hide") {
 				resImpl->setObjectSubType(TangibleObjectImplementation::ORGANICHIDE);
+				return;
+			} else if (resImpl->getClass4() == "Horn") {
+				resImpl->setObjectSubType(TangibleObjectImplementation::ORGANICSTRUCTURAL);
+				return;
 			}
 		}
 	} else if (resImpl->getClass1() == "Energy") {
 		if (resImpl->getClass2() == "Wind Energy") {
 			resImpl->setObjectSubType(TangibleObjectImplementation::ENERGYLIQUID);
+			return;
 		} else if (resImpl->getClass2() == "Solar Energy") {
 			resImpl->setObjectSubType(TangibleObjectImplementation::ENERGYLIQUID);
+			return;
 		} else if (resImpl->getClass2() == "Radioactive Energy") {
 			resImpl->setObjectSubType(TangibleObjectImplementation::ENERGYRADIOACTIVE);
+			return;
 		}
 	}
+	info("Couldn't pick class for " + resImpl->getName());
+	//resImpl->toString();
+
+}
+
+void ResourceManagerImplementation::printResource(string name){
+	
+	string resname;
+		string query = "SELECT * FROM resource_data WHERE `resource_name` = '" + 
+		                name + "'";
+		try {
+			ResultSet* res = ServerDatabase::instance()->executeQuery(query);
+			if (res->size() == 1) {
+				while (res->next()) {
+
+					cout << "Name = " << res->getString(1)<< "\n";
+					cout << "Type = " << res->getString(2) << "\n";
+					cout << "ID = " << res->getUnsignedLong(0) << "\n";
+					cout << "Class1 = " << res->getString(3) << "\n";
+					cout << "Class2 = " << res->getString(4) << "\n";
+					cout << "Class3 = " << res->getString(5) << "\n";
+					cout << "Class4 = " << res->getString(6) << "\n";
+					cout << "Class5 = " << res->getString(7) << "\n";
+					cout << "Class6 = " << res->getString(8) << "\n";
+					cout << "Class7 = " << res->getString(9) << "\n";
+					cout << "Decay Stat = " << res->getInt(10) << "\n";
+					cout << "Quality Stat = " << res->getInt(11) << "\n";
+					cout << "Flavor Stat = " << res->getInt(12) << "\n";
+					cout << "PE Stat = " << res->getInt(13) << "\n";
+					cout << "ME Stat = " << res->getInt(14) << "\n";
+					cout << "Toughness Stat = " << res->getInt(15) << "\n";
+					cout << "SR Stat = " << res->getInt(16) << "\n";
+					cout << "CR Stat = " << res->getInt(17) << "\n";
+					cout << "HR Stat = " << res->getInt(18) << "\n";
+					cout << "CD Stat = " << res->getInt(19) << "\n";
+					cout << "ER Stat = " << res->getInt(20) << "\n";
+					cout << "Container = " << res->getString(23) << "\n";
+					cout << "Bad CRC = " << res->getUnsignedInt(24) << "\n";
+
+				}
+			} else {
+				
+				cout << "Multiple Resource with name: Size = " << res->size() << "\n";
+				
+			}
+			delete res;
+		} catch (DatabaseException& e) {
+			cout << "Database error in verifyMap\n";
+		}
+	
 }

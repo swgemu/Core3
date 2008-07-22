@@ -63,6 +63,8 @@ interface ResourceContainer implements TangibleObject {
 		super(creature, n, tempn, tempCRC, int tp);
 	}
 
+	boolean compare(ResourceContainer inResource);
+
 	void init();
 	
 	void sendTo(Player player, boolean doClose = true);

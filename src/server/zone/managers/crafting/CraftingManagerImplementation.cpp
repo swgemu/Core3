@@ -890,7 +890,7 @@ void CraftingManagerImplementation::initialAssembly(Player* player,
 	setInitialCraftingValues(player, craftingTool, draftSchematic);
 	
 	// Update the Tano with new values
-	tano->updateCraftingValues(draftSchematic->getCraftingValues());
+	tano->updateCraftingValues(draftSchematic);
 
 	// Set Crafter name and generate serial number
 	tano->setCraftersName(player->getFirstName());
@@ -904,7 +904,7 @@ void CraftingManagerImplementation::initialAssembly(Player* player,
 	ManufactureSchematicObjectDeltaMessage3* dMsco3 =
 			new ManufactureSchematicObjectDeltaMessage3(draftSchematic->getObjectID());
 	dMsco3->updateCraftedValues(draftSchematic);
-	dMsco3->close();
+	dMsco3->close(); 
 
 	player->sendMessage(dMsco3);
 	// End DMSCO3 *************************************************************
@@ -1145,7 +1145,7 @@ void CraftingManagerImplementation::handleExperimenting(Player* player,
 		craftingValues->recalculateValues(draftSchematic);
 
 		// Update the Tano with new values
-		tano->updateCraftingValues(draftSchematic->getCraftingValues());
+		tano->updateCraftingValues(draftSchematic);
 
 		// Sets the result for display
 		craftingTool->setAssemblyResults(lowestExpSuccess);

@@ -271,7 +271,7 @@ const string NameManager::makeCreatureName(bool surname) {
 
 const string NameManager::makeResourceName(bool isOrganic) {
 
-	int nameLength = 4 + System::random(10);
+	int nameLength = 4 + System::random(6);
 	char name[nameLength];
 
 	while (true) {
@@ -419,7 +419,7 @@ char NameManager::chooseNextLetter(const char lastLetter, const char letterBefor
 			return chooseLetterExcluding(exclusion);
 		}
 		case 'u': {
-			char exclusion[] = { 'a', 'b', 'd', 'e', 'h', 'i', 'm', 'o', 'r',
+			char exclusion[] = { 'a', 'b', 'd', 'e', 'h', 'j', 'i', 'm', 'o', 'r',
 					'u', 'v', 'x', 'y', 'z', '\0' };
 			return chooseLetterExcluding(exclusion);
 		}

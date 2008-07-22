@@ -14,7 +14,7 @@
 
 #include "../player/Player.h"
 
-#include "../draftschematic/DraftSchematicValues.h"
+#include "../draftschematic/DraftSchematic.h"
 
 /*
  *	TangibleObjectStub
@@ -54,17 +54,17 @@ void TangibleObject::generateAttributes(Player* player) {
 		((TangibleObjectImplementation*) _impl)->generateAttributes(player);
 }
 
-void TangibleObject::updateCraftingValues(DraftSchematicValues* craftingValues) {
+void TangibleObject::updateCraftingValues(DraftSchematic* draftSchematic) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 7);
-		method.addObjectParameter(craftingValues);
+		method.addObjectParameter(draftSchematic);
 
 		method.executeWithVoidReturn();
 	} else
-		((TangibleObjectImplementation*) _impl)->updateCraftingValues(craftingValues);
+		((TangibleObjectImplementation*) _impl)->updateCraftingValues(draftSchematic);
 }
 
 void TangibleObject::insertToZone(Zone* zone) {
@@ -762,7 +762,7 @@ Packet* TangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		generateAttributes((Player*) inv->getObjectParameter());
 		break;
 	case 7:
-		updateCraftingValues((DraftSchematicValues*) inv->getObjectParameter());
+		updateCraftingValues((DraftSchematic*) inv->getObjectParameter());
 		break;
 	case 8:
 		insertToZone((Zone*) inv->getObjectParameter());
@@ -937,8 +937,8 @@ void TangibleObjectAdapter::generateAttributes(Player* player) {
 	return ((TangibleObjectImplementation*) impl)->generateAttributes(player);
 }
 
-void TangibleObjectAdapter::updateCraftingValues(DraftSchematicValues* craftingValues) {
-	return ((TangibleObjectImplementation*) impl)->updateCraftingValues(craftingValues);
+void TangibleObjectAdapter::updateCraftingValues(DraftSchematic* draftSchematic) {
+	return ((TangibleObjectImplementation*) impl)->updateCraftingValues(draftSchematic);
 }
 
 void TangibleObjectAdapter::insertToZone(Zone* zone) {

@@ -83,6 +83,8 @@ public:
 	
 	~ResourceContainerImplementation();
 	
+	bool compare(ResourceContainer* inResource);
+	
 	void init();
 	
 	void sendTo(Player* player, bool doClose = true);

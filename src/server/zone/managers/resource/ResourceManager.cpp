@@ -164,6 +164,19 @@ void ResourceManager::getResourceContainerName(const string& str, string& name) 
 		((ResourceManagerImplementation*) _impl)->getResourceContainerName(str, name);
 }
 
+void ResourceManager::printResource(string& resname) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 16);
+		method.addAsciiParameter(resname);
+
+		method.executeWithVoidReturn();
+	} else
+		((ResourceManagerImplementation*) _impl)->printResource(resname);
+}
+
 /*
  *	ResourceManagerAdapter
  */
@@ -204,6 +217,9 @@ Packet* ResourceManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		break;
 	case 15:
 		getResourceContainerName(inv->getAsciiParameter(_param0_getResourceContainerName__string_string_), inv->getAsciiParameter(_param1_getResourceContainerName__string_string_));
+		break;
+	case 16:
+		printResource(inv->getAsciiParameter(_param0_printResource__string_));
 		break;
 	default:
 		return NULL;
@@ -250,6 +266,10 @@ void ResourceManagerAdapter::getClassSeven(const string& str, string& clas) {
 
 void ResourceManagerAdapter::getResourceContainerName(const string& str, string& name) {
 	return ((ResourceManagerImplementation*) impl)->getResourceContainerName(str, name);
+}
+
+void ResourceManagerAdapter::printResource(string& resname) {
+	return ((ResourceManagerImplementation*) impl)->printResource(resname);
 }
 
 /*

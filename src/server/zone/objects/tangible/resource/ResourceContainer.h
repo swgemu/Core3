@@ -25,6 +25,8 @@ public:
 
 	ResourceContainer(CreatureObject* creature, unsigned int tempCRC, const unicode& n, const string& tempn);
 
+	bool compare(ResourceContainer* inResource);
+
 	void init();
 
 	void sendTo(Player* player, bool doClose = true);
@@ -125,6 +127,8 @@ public:
 	ResourceContainerAdapter(ResourceContainerImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	bool compare(ResourceContainer* inResource);
 
 	void init();
 

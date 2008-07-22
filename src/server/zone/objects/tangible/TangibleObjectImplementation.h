@@ -262,7 +262,7 @@ public:
 	virtual void parseItemAttributes() {
 	}
 	
-	virtual void updateCraftingValues(DraftSchematicValues * craftingValues) {
+	virtual void updateCraftingValues(DraftSchematic* draftSchematic) {
 		
 	}
 
