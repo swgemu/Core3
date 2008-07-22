@@ -92,7 +92,7 @@ interface CraftingTool implements TangibleObject {
 	void setToolType(int in);
 
 	void increaseInsertCount();
-	void addIngredientToSlot(int slot, TangibleObject tano, int quantity);
+	void addIngredientToSlot(int slot, TangibleObject tano);
 	void addTempIngredient(TangibleObject tano);
 
 	//getters
@@ -102,7 +102,7 @@ interface CraftingTool implements TangibleObject {
 	DraftSchematic getWorkingDraftSchematic();
 	int getInsertCount();
 	void initializeCraftingSlots(const int size);
-	TangibleObject getIngredientInSlot(int quantity, int slot);
+	TangibleObject getIngredientInSlot(int slot);
 	int getSlotCount();
 	Container getHopper(Player player);
 	int getAssemblyResults();

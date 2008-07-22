@@ -145,7 +145,7 @@ public:
 	// Methods relating to adding Items to the crafting process
 	void addIngredientToSlot(Player* player, TangibleObject* tano, int slot, int counter);
 	bool slotIsFull(Player* player, CraftingTool* craftingTool, TangibleObject* tano, TangibleObject* ingredientInSlot, 
-			int slot, int quantity, int quantityInSlot, int counter);
+			int slot, int quantity, int counter);
 	
 	// Tranferring items to crafting slots
 	TangibleObject* transferIngredientToSlot(Player* player, TangibleObject* tano, 

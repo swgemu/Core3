@@ -49,7 +49,6 @@ which carries forward this exception.
 class CraftingSlots {
 
 	Vector<TangibleObject*> objects;
-	Vector<int> quantities;
 	
 public:
 	CraftingSlots(){
@@ -70,7 +69,6 @@ public:
 		for(int i = 0; i < size; ++i){
 			
 			objects.add(tano);
-			quantities.add(0);
 			
 		}
 	}
@@ -95,7 +93,6 @@ public:
 		}
 		
 		objects.removeAll();
-		quantities.removeAll();
 		
 	}
 	
@@ -105,23 +102,20 @@ public:
 		
 	}
 	
-	inline void setIngredientInSlot(int slot, TangibleObject* tano, int quantity){
+	inline void setIngredientInSlot(int slot, TangibleObject* tano){
 		
 		objects.set(slot, tano);
-		quantities.set(slot, quantity);
 		
 	}
 	
 	inline void clearIngredientInSlot(int slot){
 		
 		objects.set(slot, NULL);
-		quantities.set(slot, 0);
 		
 	}
 	
-	inline TangibleObject* getIngredientInSlot(int& quantity, int slot){
+	inline TangibleObject* getIngredientInSlot(int slot){
 		
-		quantity = quantities.get(slot);
 		return objects.get(slot);
 		
 	}

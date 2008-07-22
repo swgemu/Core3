@@ -27,6 +27,8 @@ public:
 
 	int getSurveyToolType();
 
+	int getSamplingToolType();
+
 	int getSurveyToolRange();
 
 	void setSurveyToolRange(int range);
@@ -58,6 +60,8 @@ public:
 	int useObject(Player* player);
 
 	int getSurveyToolType();
+
+	int getSamplingToolType();
 
 	int getSurveyToolRange();
 

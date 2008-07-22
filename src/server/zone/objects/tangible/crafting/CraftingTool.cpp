@@ -287,7 +287,7 @@ void CraftingTool::increaseInsertCount() {
 		((CraftingToolImplementation*) _impl)->increaseInsertCount();
 }
 
-void CraftingTool::addIngredientToSlot(int slot, TangibleObject* tano, int quantity) {
+void CraftingTool::addIngredientToSlot(int slot, TangibleObject* tano) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -295,11 +295,10 @@ void CraftingTool::addIngredientToSlot(int slot, TangibleObject* tano, int quant
 		DistributedMethod method(this, 25);
 		method.addSignedIntParameter(slot);
 		method.addObjectParameter(tano);
-		method.addSignedIntParameter(quantity);
 
 		method.executeWithVoidReturn();
 	} else
-		((CraftingToolImplementation*) _impl)->addIngredientToSlot(slot, tano, quantity);
+		((CraftingToolImplementation*) _impl)->addIngredientToSlot(slot, tano);
 }
 
 void CraftingTool::addTempIngredient(TangibleObject* tano) {
@@ -388,18 +387,17 @@ void CraftingTool::initializeCraftingSlots(const int size) {
 		((CraftingToolImplementation*) _impl)->initializeCraftingSlots(size);
 }
 
-TangibleObject* CraftingTool::getIngredientInSlot(int quantity, int slot) {
+TangibleObject* CraftingTool::getIngredientInSlot(int slot) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 33);
-		method.addSignedIntParameter(quantity);
 		method.addSignedIntParameter(slot);
 
 		return (TangibleObject*) method.executeWithObjectReturn();
 	} else
-		return ((CraftingToolImplementation*) _impl)->getIngredientInSlot(quantity, slot);
+		return ((CraftingToolImplementation*) _impl)->getIngredientInSlot(slot);
 }
 
 int CraftingTool::getSlotCount() {
@@ -593,7 +591,7 @@ Packet* CraftingToolAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		increaseInsertCount();
 		break;
 	case 25:
-		addIngredientToSlot(inv->getSignedIntParameter(), (TangibleObject*) inv->getObjectParameter(), inv->getSignedIntParameter());
+		addIngredientToSlot(inv->getSignedIntParameter(), (TangibleObject*) inv->getObjectParameter());
 		break;
 	case 26:
 		addTempIngredient((TangibleObject*) inv->getObjectParameter());
@@ -617,7 +615,7 @@ Packet* CraftingToolAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		initializeCraftingSlots(inv->getSignedIntParameter());
 		break;
 	case 33:
-		resp->insertLong(getIngredientInSlot(inv->getSignedIntParameter(), inv->getSignedIntParameter())->_getObjectID());
+		resp->insertLong(getIngredientInSlot(inv->getSignedIntParameter())->_getObjectID());
 		break;
 	case 34:
 		resp->insertSignedInt(getSlotCount());
@@ -732,8 +730,8 @@ void CraftingToolAdapter::increaseInsertCount() {
 	return ((CraftingToolImplementation*) impl)->increaseInsertCount();
 }
 
-void CraftingToolAdapter::addIngredientToSlot(int slot, TangibleObject* tano, int quantity) {
-	return ((CraftingToolImplementation*) impl)->addIngredientToSlot(slot, tano, quantity);
+void CraftingToolAdapter::addIngredientToSlot(int slot, TangibleObject* tano) {
+	return ((CraftingToolImplementation*) impl)->addIngredientToSlot(slot, tano);
 }
 
 void CraftingToolAdapter::addTempIngredient(TangibleObject* tano) {
@@ -764,8 +762,8 @@ void CraftingToolAdapter::initializeCraftingSlots(const int size) {
 	return ((CraftingToolImplementation*) impl)->initializeCraftingSlots(size);
 }
 
-TangibleObject* CraftingToolAdapter::getIngredientInSlot(int quantity, int slot) {
-	return ((CraftingToolImplementation*) impl)->getIngredientInSlot(quantity, slot);
+TangibleObject* CraftingToolAdapter::getIngredientInSlot(int slot) {
+	return ((CraftingToolImplementation*) impl)->getIngredientInSlot(slot);
 }
 
 int CraftingToolAdapter::getSlotCount() {

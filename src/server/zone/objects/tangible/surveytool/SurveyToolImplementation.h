@@ -52,6 +52,7 @@ which carries forward this exception.
 class SurveyToolImplementation : public SurveyToolServant {
 protected:
 	int surveyToolType;
+	int samplingToolType;
 	int surveyToolRange;
 	
 public:
@@ -86,6 +87,10 @@ public:
 	
 	inline int getSurveyToolType() {
 		return surveyToolType;	
+	}
+	
+	inline int getSamplingToolType() {
+		return samplingToolType;	
 	}
 	
 	inline int getSurveyToolRange() {

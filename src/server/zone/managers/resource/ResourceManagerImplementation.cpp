@@ -259,215 +259,148 @@ float ResourceManagerImplementation::getDistanceFrom(float inx, float iny, float
 	return sqrt((theX * theX)+ (theY * theY));
 }
 
-void ResourceManagerImplementation::sendSurveyMessage(Player* player, string& resourceName, bool doLock) {
+void ResourceManagerImplementation::sendSurveyMessage(Player* player,
+		string& resourceName, bool doLock) {
 	// Added by Ritter
 	if (player->getSurveyTool() == NULL)
 		return;
 
-	lock(doLock);
-	Survey* surveyMessage = new Survey();
+	try {
 
-	float player_x = player->getPositionX();
-	float player_y = player->getPositionY();
+		lock(doLock);
 
-	float spacer, x, y, res_percent = 0.0f;
-	float wp_x, wp_y, max_res_percent = 0.0f;
+		Survey* surveyMessage = new Survey();
 
-	int points;
+		float player_x = player->getPositionX();
+		float player_y = player->getPositionY();
 
-	switch (player->getSurveyTool()->getSurveyToolRange()) {
-	case 128:
-		spacer = 42.6f;
-		points = 4;
-		x = player_x - (1.5 * spacer);
-		y = player_y - (1.5 * spacer);
-		break;
-	case 192:
-		spacer = 64.0f;
-		points = 4;
-		x = player_x - (1.5 * spacer);
-		y = player_y - (1.5 * spacer);
-		break;
-	case 256:
-		spacer = 64.0f;
-		points = 5;
-		x = player_x - (2 * spacer);
-		y = player_y - (2 * spacer);
-		break;
-	case 320:
-		spacer = 80.0f;
-		points = 5;
-		x = player_x - (2 * spacer);
-		y = player_y - (2 * spacer);
-		break;
-	default:
-		spacer = 32.0f;
-		points = 3;
-		x = player_x - spacer;
-		y = player_y - spacer;
-		break;
-	}
+		float spacer, x, y, res_percent = 0.0f;
+		float wp_x, wp_y, max_res_percent = 0.0f;
 
-	for (int i = 0; i < points; i++) {
-		for (int j = 0; j < points; j++) {
-			res_percent = getDensity(player->getZoneIndex(), resourceName, x, y);
+		int points;
 
-			if (res_percent > max_res_percent) {
-				max_res_percent = res_percent;
-				wp_x = x;
-				wp_y = y;
+		switch (player->getSurveyTool()->getSurveyToolRange()) {
+			case 128:
+				spacer = 42.6f;
+				points = 4;
+				x = player_x - (1.5 * spacer);
+				y = player_y - (1.5 * spacer);
+				break;
+			case 192:
+				spacer = 64.0f;
+				points = 4;
+				x = player_x - (1.5 * spacer);
+				y = player_y - (1.5 * spacer);
+				break;
+			case 256:
+				spacer = 64.0f;
+				points = 5;
+				x = player_x - (2 * spacer);
+				y = player_y - (2 * spacer);
+				break;
+			case 320:
+				spacer = 80.0f;
+				points = 5;
+				x = player_x - (2 * spacer);
+				y = player_y - (2 * spacer);
+				break;
+			default:
+				spacer = 32.0f;
+				points = 3;
+				x = player_x - spacer;
+				y = player_y - spacer;
+				break;
+		}
+
+		for (int i = 0; i < points; i++) {
+			for (int j = 0; j < points; j++) {
+				res_percent = getDensity(player->getZoneIndex(), resourceName, x, y);
+
+				if (res_percent> max_res_percent) {
+					max_res_percent = res_percent;
+					wp_x = x;
+					wp_y = y;
+				}
+
+				surveyMessage->add(x, y, res_percent);
+
+				x += spacer;
 			}
 
-			surveyMessage->add(x, y, res_percent);
-
-			x += spacer;
+			y += spacer;
+			x -= (points * spacer);
 		}
 
-		y += spacer;
-		x -= (points * spacer);
-	}
+		// Send Survey Results
+		player->sendMessage(surveyMessage);
 
-	// Send Survey Results
-	player->sendMessage(surveyMessage);
+		if (max_res_percent >= 0.1f) {
+			// Create Waypoint
+			if (player->getSurveyWaypoint() != NULL) {
+				player->removeWaypoint(player->getSurveyWaypoint());
+				player->setSurveyWaypoint(NULL);
+			}
 
-	if (max_res_percent >= 0.1f) {
-		// Create Waypoint
-		if (player->getSurveyWaypoint() != NULL) {
-			player->removeWaypoint(player->getSurveyWaypoint());
-			player->setSurveyWaypoint(NULL);
+			WaypointObject* waypoint = new WaypointObject(player, player->getNewItemID());
+			waypoint->setName("Resource Survey");
+			waypoint->setPosition(wp_x, 0.0f, wp_y);
+
+			waypoint->changeStatus(true);
+
+			player->setSurveyWaypoint(waypoint);
+			player->addWaypoint(waypoint);
+
+			// Send Waypoint System Message
+			unicode ustr = "";
+			ChatSystemMessage* endMessage = new ChatSystemMessage("survey", "survey_waypoint", ustr, 0, true);
+
+			player->sendMessage(endMessage);
 		}
-
-		WaypointObject* waypoint = new WaypointObject(player, player->getNewItemID());
-		waypoint->setName("Resource Survey");
-		waypoint->setPosition(wp_x, 0.0f, wp_y);
-
-		waypoint->changeStatus(true);
-
-		player->setSurveyWaypoint(waypoint);
-		player->addWaypoint(waypoint);
-
-		// Send Waypoint System Message
-		unicode ustr = "";
-		ChatSystemMessage* endMessage = new ChatSystemMessage("survey", "survey_waypoint", ustr, 0, true);
-
-		player->sendMessage(endMessage);
+		unlock(doLock);
 	}
-	unlock(doLock);
+	catch(...) {
+
+		info("ResourceManagerImplementation::sendSurveyMessage threw an exception");
+		player->sendSystemMessage("Error in sendSurveyMessage, please report this");
+		unlock(doLock);
+
+	}
 }
 
-void ResourceManagerImplementation::sendSampleMessage(Player* player, string& resourceName, bool doLock) {
+void ResourceManagerImplementation::sendSampleMessage(Player* player,
+		string& resourceName, bool doLock) {
 	// Added by Ritter
-	lock(doLock);
+	try {
+		lock(doLock);
 
-	float density = getDensity(player->getZoneIndex(), resourceName, player->getPositionX(), player->getPositionY());
+		float density = getDensity(player->getZoneIndex(), resourceName, player->getPositionX(), player->getPositionY());
 
-	if (density < 0.1f) {
-		ChatSystemMessage* sysMessage = new ChatSystemMessage("survey", "density_below_threshold", resourceName, 0, false);
+		if (density < 0.1f) {
+			ChatSystemMessage* sysMessage = new ChatSystemMessage("survey", "density_below_threshold", resourceName, 0, false);
 
-		player->sendMessage(sysMessage);
-
-		player->changePosture(CreatureObjectImplementation::UPRIGHT_POSTURE);
-	} else {
-		if (player->getSurveyTool() == NULL) {
-			unlock(doLock);
-			return;
-		}
-
-		int sampleRate = System::random(1000) + (5 * player->getSkillMod("surveying"));
-
-		if (sampleRate >= 650) {
-			int resQuantity = (sampleRate / 100) * 2 - System::random(13);
-
-			if (!(resQuantity > 0))
-				resQuantity = 1;
-
-			player->getSurveyTool()->sendSampleEffect(player);
-
-			ChatSystemMessage* sysMessage = new ChatSystemMessage("survey", "sample_located", resourceName, resQuantity, false);
 			player->sendMessage(sysMessage);
 
-			bool makeNewResource = true;
-
-			Inventory* inventory = player->getInventory();
-
-			ResourceContainer* rco;
-
-			for (int i = 0; i < inventory->objectsSize(); i++) {
-				TangibleObject* item = (TangibleObject*) inventory->getObject(i);
-				if (item != NULL && item->isResource()) {
-					rco = (ResourceContainer*) item;
-
-					try {
-
-						rco->wlock();
-
-						if (rco->getResourceName().c_str() == resourceName.c_str()) {
-
-							if (rco->getContents() + resQuantity
-									<= rco->getMaxContents()) {
-
-								rco->setContents(rco->getContents() + resQuantity);
-								rco->sendDeltas(player);
-
-								rco->setUpdated(true);
-
-								resQuantity = 0;
-
-								makeNewResource = false;
-								break;
-							} else if (rco->getContents() < rco->getMaxContents()) {
-								int diff = (rco->getMaxContents()
-										- rco->getContents());
-
-								if (resQuantity <= diff) {
-									rco->setContents(rco->getContents()
-											+ resQuantity);
-								} else {
-									rco->setContents(rco->getContents() + diff);
-									resQuantity = resQuantity - diff;
-								}
-
-								rco->sendDeltas(player);
-
-								rco->setUpdated(true);
-							}
-						}
-						rco->unlock();
-					}
-					catch(...) {
-
-						rco->unlock();
-
-					}
-				}
+			player->changePosture(CreatureObjectImplementation::UPRIGHT_POSTURE);
+		} else {
+			if (player->getSurveyTool() == NULL) {
+				unlock(doLock);
+				return;
 			}
 
-			if (makeNewResource) {
-				// NOTE: Figure out how to get max inventory size...
-				if (inventory->getObjectCount() >= 80) {
-					ChatSystemMessage* sysMessage = new ChatSystemMessage("survey", "no_inv_spc");
-					player->sendMessage(sysMessage);
-					unlock(doLock);
-					return;
-				}
+			int sampleRate = System::random(1000) + (5 * player->getSkillMod("surveying"));
 
-				/*rco = new ResourceContainer(player->getNewItemID());
+			if (sampleRate >= 650) {
+				int resQuantity = (sampleRate / 100) * 2 - System::random(13);
 
-				string contName;
-				getResourceContainerName(resourceName, contName, false);
+				if (!(resQuantity> 0))
+				resQuantity = 1;
 
-				unicode cName = unicode(contName.c_str());
-				rco->setName(cName);
-				rco->setResourceName(resourceName);
-				rco->setContents(resQuantity);
+				player->getSurveyTool()->sendSampleEffect(player);
 
-				setResourceData(rco, false);
+				ChatSystemMessage* sysMessage = new ChatSystemMessage("survey", "sample_located", resourceName, resQuantity, false);
+				player->sendMessage(sysMessage);
 
-				player->addInventoryItem(rco);
-
-				rco->sendTo(player);
-
-				rco->setPersistent(false);*/
+				bool makeNewResource = true;
 
 				ResourceContainer* newRcno = new ResourceContainer(player->getNewItemID());
 
@@ -477,34 +410,103 @@ void ResourceManagerImplementation::sendSampleMessage(Player* player, string& re
 
 				setResourceData(newRcno, false);
 
-				player->addInventoryItem(newRcno);
+				Inventory* inventory = player->getInventory();
 
-				newRcno->sendTo(player);
+				ResourceContainer* rco;
 
-				newRcno->setPersistent(false);
+				for (int i = 0; i < inventory->objectsSize(); i++) {
+					TangibleObject* item = (TangibleObject*) inventory->getObject(i);
+					if (item != NULL && item->isResource()) {
+						rco = (ResourceContainer*)item;
 
-				rco = newRcno;
-			}
+						try {
 
-			if (rco->getObjectSubType() == TangibleObjectImplementation::ENERGYRADIOACTIVE) {
-				int wound = (sampleRate / 70) - System::random(9);
-				if (wound > 0) {
-					player->changeHealthWoundsBar(wound, false);
-					player->changeActionWoundsBar(wound, false);
-					player->changeMindWoundsBar(wound, false);
+							rco->wlock();
+
+							if (rco->compare(newRcno) && rco->getContents() != rco->getMaxContents()) {
+
+								if (rco->getContents() + newRcno->getContents()
+										<= rco->getMaxContents()) {
+
+									rco->transferContents(player, newRcno);
+
+									makeNewResource = false;
+
+									rco->unlock();
+
+									break;
+								} else {
+
+									int diff = (rco->getContents() + newRcno->getContents()) - rco->getMaxContents();
+
+									rco->setContents(rco->getMaxContents());
+
+									newRcno->setContents(newRcno->getContents() - diff);
+
+									rco->sendDeltas(player);
+
+									rco->setUpdated(true);
+								}
+							}
+							rco->unlock();
+						}
+						catch(...) {
+
+							rco->unlock();
+
+						}
+					}
 				}
+
+				if (makeNewResource) {
+					// NOTE: Figure out how to get max inventory size...
+					if (inventory->getObjectCount() >= 80) {
+						ChatSystemMessage* sysMessage = new ChatSystemMessage("survey", "no_inv_spc");
+						player->sendMessage(sysMessage);
+						unlock(doLock);
+						return;
+					}
+
+					player->addInventoryItem(newRcno);
+
+					newRcno->sendTo(player);
+
+					newRcno->setPersistent(false);
+
+					rco = newRcno;
+				} else {
+
+					newRcno = NULL;
+
+				}
+
+				if (rco->getObjectSubType() == TangibleObjectImplementation::ENERGYRADIOACTIVE) {
+					int wound = (sampleRate / 70) - System::random(9);
+					if (wound> 0) {
+						player->changeHealthWoundsBar(wound, false);
+						player->changeActionWoundsBar(wound, false);
+						player->changeMindWoundsBar(wound, false);
+					}
+				}
+
+			} else {
+				ChatSystemMessage* sysMessage = new ChatSystemMessage("survey", "sample_failed", resourceName, 0, false);
+
+				player->getSurveyTool()->sendSampleEffect(player);
+
+				player->sendMessage(sysMessage);
 			}
-
-		} else {
-			ChatSystemMessage* sysMessage = new ChatSystemMessage("survey", "sample_failed", resourceName, 0, false);
-
-			player->getSurveyTool()->sendSampleEffect(player);
-
-			player->sendMessage(sysMessage);
 		}
-	}
 
-	unlock(doLock);
+		unlock(doLock);
+	}
+	catch(...) {
+
+		info("ResourceManagerImplementation::sendSampleMessage threw an exception");
+		player->sendSystemMessage("Error in sendSampleMessage, please report this");
+		unlock(doLock);
+
+	}
 }
 
 void ResourceManagerImplementation::setResourceData(
@@ -885,7 +887,7 @@ void ResourceManagerImplementation::buildResourceMap() {
 
 
 				string pool = res->getString(33);
-				sl = new SpawnLocation(res->getUnsignedLong(25), res->getInt(27), res->getFloat(28), res->getFloat(28), res->getFloat(30), res->getFloat(31), pool);
+				sl = new SpawnLocation(res->getUnsignedLong(25), res->getInt(27), res->getFloat(28), res->getFloat(29), res->getFloat(30), res->getFloat(31), pool);
 
 				resTemp->addSpawn(sl);
 			}

@@ -503,7 +503,7 @@ void CraftingToolImplementation::cleanUp(Player* player) {
 	if (recoverResources) {
 		for (int i = 0; i < craftingSlots->size(); ++i) {
 
-			tano = craftingSlots->getIngredientInSlot(quantity, i);
+			tano = craftingSlots->getIngredientInSlot(i);
 
 			craftingSlots->clearIngredientInSlot(i);
 

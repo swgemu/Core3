@@ -228,19 +228,19 @@ void CraftingManagerImplementation::addIngredientToSlot(Player* player,
 		int quantity = dsi->getResourceQuantity();
 
 		// Get what, if anything, is in the affected slot
-		int quantityInSlot;
-		TangibleObject* ingredientInSlot = craftingTool->getIngredientInSlot(quantityInSlot, slot);
+
+		TangibleObject* ingredientInSlot = craftingTool->getIngredientInSlot(slot);
 
 		// Send slot messages base on contenst if needed
 		if(ingredientInSlot != NULL) {
 
-			if(slotIsFull(player, craftingTool, tano, ingredientInSlot, slot, quantity, quantityInSlot, counter)) {
+			if(slotIsFull(player, craftingTool, tano, ingredientInSlot, slot, quantity, counter)) {
 
 				craftingTool->unlock();
 				draftSchematic->unlock();
 
 				return;
-			}
+			} 
 		}
 
 		// Set resource values appropriately
@@ -292,10 +292,9 @@ void CraftingManagerImplementation::addIngredientToSlot(Player* player,
 		craftingTool->increaseInsertCount();
 
 		// Add the resource to the "slots" in the crafting tool for tracking
-		craftingTool->addIngredientToSlot(slot, newTano, quantity);
+		craftingTool->addIngredientToSlot(slot, newTano);
 
 		draftSchematic->unlock();
-		
 		craftingTool->unlock();
 
 
@@ -309,65 +308,72 @@ void CraftingManagerImplementation::addIngredientToSlot(Player* player,
 }
 bool CraftingManagerImplementation::slotIsFull(Player* player,
 		CraftingTool* craftingTool, TangibleObject* tano,
-		TangibleObject* ingredientInSlot, int slot, int quantity,
-		int quantityInSlot, int counter) {
+		TangibleObject* ingredientInSlot, int slot, int quantity, int counter) {
 
-	if (quantityInSlot != 0) {
+	if (tano->isResource()) {
 
-		if (quantity == quantityInSlot) {
-
-			// If slot is full send slot is full message
-			sendSlotMessage(player, counter, SLOTFULL);
-
+		ResourceContainer* rcno = (ResourceContainer*)tano;
+		ResourceContainer* rcnoinSlot = (ResourceContainer*)ingredientInSlot;
+		
+		if(rcnoinSlot == NULL)
 			return true;
 
-		}
+		try {
 
-		if (tano->isResource()) {
-			
-			ResourceContainer* rcno = (ResourceContainer*)tano;
-			ResourceContainer* rcnoinSlot = (ResourceContainer*)ingredientInSlot;
-			
-			// If the is a partial resource in the slot, add it back to inventory
-			// So that resource amounts are correct
-			if (rcnoinSlot->getResourceName().c_str() != rcno->getResourceName().c_str()) {
+			rcno->wlock();
+			rcnoinSlot->wlock();
 
-				// If Resource isn't the same, throw slot error
-				sendSlotMessage(player, counter, SLOTINVALIDINGREDIENT);
+			if (rcnoinSlot->getContents() != 0) {
 
-				return true;
+				if (quantity == rcnoinSlot->getContents()) {
 
-			} else {
-
-				try {
-					rcno->wlock();
-					// If resource is the same add resource to incoming stack
-					rcno->setContents(rcno->getContents() + quantityInSlot);
-					rcno->sendDeltas(player);
-					rcno->setUpdated(true);
-
-					string name = "NULL";
-					quantity = 0;
-
-					// Updates CraftingTool's resource slot with "empty" status
-					craftingTool->addIngredientToSlot(slot, tano, quantity);
+					// If slot is full send slot is full message
+					sendSlotMessage(player, counter, SLOTFULL);
 
 					rcno->unlock();
+					rcnoinSlot->unlock();
+					
+					return true;
+
 				}
-				catch(...) {
+
+				// If the is a partial resource in the slot, add it back to inventory
+				// So that resource amounts are correct
+				if (!rcnoinSlot->compare(rcno)) {
+
+					// If Resource isn't the same, throw slot error
+					sendSlotMessage(player, counter, SLOTINVALIDINGREDIENT);
 
 					rcno->unlock();
+					rcnoinSlot->unlock();
+					
+					return true;
+
+				} else {
+
+					// If resource is the same add resource to incoming stack
+					rcno->setContents(rcno->getContents() + rcnoinSlot->getContents());
 
 				}
 			}
-		} else {
 			
-			// deal with partial tano's in slot
-			
-			
+			rcno->unlock();
+			rcnoinSlot->unlock();
 		}
-	}
+		catch(...) {
 
+			rcno->unlock();
+			rcnoinSlot->unlock();
+
+		}
+
+	} else {
+
+		// deal with partial components in slot
+
+
+	}
+	
 	return false;
 }
 
@@ -405,81 +411,82 @@ TangibleObject* CraftingManagerImplementation::transferIngredientToSlot(Player* 
 	}
 }
 
-TangibleObject* CraftingManagerImplementation::transferResourceToSlot(Player* player, ResourceContainer* rcno, 
-		CraftingTool* craftingTool, int& quantity) {	
-	
+TangibleObject* CraftingManagerImplementation::transferResourceToSlot(
+		Player* player, ResourceContainer* rcno, CraftingTool* craftingTool,
+		int& quantity) {
+
 	string name = rcno->getResourceName();
-	
+
 	if (rcno->getContents() < quantity) {
 
-			// If there are less resources in the stack
-			// then required, only use what is left
-			quantity = rcno->getContents();
+		// If there are less resources in the stack
+		// then required, only use what is left
+		quantity = rcno->getContents();
 
+	}
+
+	if (rcno->getContents() - quantity < 1) {
+
+		// If Stack is empty, remove it from inventory
+		player->removeInventoryItem(rcno->getObjectID());
+
+		// Destroy Container
+		rcno->sendDestroyTo(player);
+		rcno->finalize();
+
+	} else {
+
+		try {
+			rcno->wlock();
+
+			// Remove proper amount of resource from chosen Container
+			int newContents = rcno->getContents() - quantity;
+			rcno->setContents(newContents);
+
+			// Update the ResourceContainer
+			rcno->sendDeltas(player);
+
+			// Flag ResourceContainer for saving changes
+			rcno->setUpdated(true);
+
+			rcno->unlock();
 		}
-
-		if (rcno->getContents() - quantity < 1) {
-
-			// If Stack is empty, remove it from inventory
-			player->removeInventoryItem(rcno->getObjectID());
-
-			// Destroy Container
-			rcno->sendDestroyTo(player);
-			rcno->finalize();
-
-		} else {
-
-			try {
-				rcno->wlock();
-
-				// Remove proper amount of resource from chosen Container
-				int newContents = rcno->getContents() - quantity;
-				rcno->setContents(newContents);
-
-				// Update the ResourceContainer
-				rcno->sendDeltas(player);
-
-				// Flag ResourceContainer for saving changes
-				rcno->setUpdated(true);
-
-				rcno->unlock();
-			}
-			catch(...)
-			{
-				cout << "Error changing contents\n";
-				rcno->unlock();
-			}
+		catch(...)
+		{
+			cout << "Error changing contents\n";
+			rcno->unlock();
 		}
+	}
 
-		// Here we are cloning the resource stack to prevent any operations 
-		// From scene destroying the stack in the slot, as it would render the
-		// slot useless
+	// Here we are cloning the resource stack to prevent any operations 
+	// From scene destroying the stack in the slot, as it would render the
+	// slot useless
 
-		// Make a new resource stack of "name" with "quantity" units
+	// Make a new resource stack of "name" with "quantity" units
 
-		ResourceContainer* newRcno = makeNewResourceStack(player, name, quantity);
+	ResourceContainer* newRcno = makeNewResourceStack(player, name, quantity);
 
-		if (newRcno == NULL)
-			return NULL;
+	if (newRcno == NULL)
+		return NULL;
 
-		// Add resource to object map
-		player->getZone()->getZoneServer()->addObject(newRcno, true);
+	// Add resource to object map
+	player->getZone()->getZoneServer()->addObject(newRcno, true);
 
-		// Sending resource to the player, but NOT to inventory
-		newRcno->sendTo(player);
+	// Sending resource to the player, but NOT to inventory
+	newRcno->sendTo(player);
 
-		newRcno->setPersistent(false);
-		
-		//Send attributes to update crafting window (Or quality bars don't show up
-		newRcno->generateAttributes(player);
+	newRcno->setPersistent(false);
 
-		// Adding the ObjectID to a vector for proper clean up when the tool is closed
-		// Because otherwise the resource stack is lost in memory
-		TangibleObject* tano = (TangibleObject*)newRcno;
-		
-		craftingTool->addTempIngredient(tano);
+	//Send attributes to update crafting window (Or quality bars don't show up
+	newRcno->generateAttributes(player);
 
-		return tano;
+	// Adding the ObjectID to a vector for proper clean up when the tool is closed
+	// Because otherwise the resource stack is lost in memory
+	TangibleObject* tano = (TangibleObject*)newRcno;
+
+	craftingTool->addTempIngredient(tano);
+
+	return tano;
 }
 
 TangibleObject* CraftingManagerImplementation::transferComponentToSlot(
@@ -587,8 +594,7 @@ void CraftingManagerImplementation::removeResourceFromCraft(Player* player,
 		string name;
 
 		// Use the crafting tool to amount of resources in the slot
-		int quantity; 
-		TangibleObject* tano = craftingTool->getIngredientInSlot(quantity, slot);
+		TangibleObject* tano = craftingTool->getIngredientInSlot(slot);
 
 		// Pretty easy to understand this
 		if(tano->isResource()){
@@ -613,7 +619,7 @@ void CraftingManagerImplementation::removeResourceFromCraft(Player* player,
 				+ craftingTool->getInsertCount());
 
 		dMsco7->close();
-
+ 
 		player->sendMessage(dMsco7);
 		// End DMCSO7 ***************************************************
 
@@ -629,10 +635,9 @@ void CraftingManagerImplementation::removeResourceFromCraft(Player* player,
 		// End Object Controller *****************************************
 
 		tano = NULL;
-		quantity = 0;
 
 		// Updates CraftingTool's resource slot
-		craftingTool->addIngredientToSlot(slot, tano, quantity);
+		craftingTool->addIngredientToSlot(slot, tano);
 
 		// Increases Insert Counter
 		craftingTool->increaseInsertCount();
@@ -686,11 +691,12 @@ void CraftingManagerImplementation::putResourceBackInInventory(Player* player,
 
 						// If not enough room in stack, bup not full, fill it, 
 						// and calculate leftover amount
-						inventoryResource->setContents(inventoryResource->getMaxContents());
 
 						int quantity = ((inventoryResource->getContents() + quantity)
 								- inventoryResource->getMaxContents());
 
+						inventoryResource->setContents(inventoryResource->getMaxContents());
+						
 						inventoryResource->sendDeltas(player);
 						inventoryResource->setUpdated(true);
 						
@@ -1249,60 +1255,58 @@ void CraftingManagerImplementation::experimentRow(DraftSchematicValues* crafting
 	
 }
 
-void CraftingManagerImplementation::createPrototype(Player* player,
-		string count) {
-	
+void CraftingManagerImplementation::createPrototype(Player* player, string count) {
+
+	CraftingTool* craftingTool;
+	DraftSchematic* draftSchematic;
 	
 	StringTokenizer tokenizer(count);
-
 	int counter = tokenizer.getIntToken();
 	int practice = tokenizer.getIntToken();
+	
+	try {
 
-	CraftingTool* craftingTool = player->getCurrentCraftingTool();
+		craftingTool = player->getCurrentCraftingTool();
 
-	if (craftingTool == NULL) {
+		if (craftingTool == NULL) {
 
-		sendSlotMessage(player, counter, SLOTNOTOOL);
-		return;
+			sendSlotMessage(player, counter, SLOTNOTOOL);
+			return;
 
-	}
+		}
 
-	DraftSchematic* draftSchematic = craftingTool->getWorkingDraftSchematic();
+		draftSchematic = craftingTool->getWorkingDraftSchematic();
 
-	if (draftSchematic == NULL) {
+		if (draftSchematic == NULL) {
 
-		sendSlotMessage(player, counter, SLOTNOSCHEMATIC);
-		return;
+			sendSlotMessage(player, counter, SLOTNOSCHEMATIC);
+			return;
 
-	}
+		}
 
-	if (!draftSchematic->isFinished()) {
+		if (!draftSchematic->isFinished()) {
 
-		//Object Controller - Closes Window
-		ObjectControllerMessage* objMsg = new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x010C);
-		objMsg->insertInt(0x10A);
-		objMsg->insertInt(1);
-		objMsg->insertByte(counter);
+			//Object Controller - Closes Window
+			ObjectControllerMessage* objMsg = new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x010C);
+			objMsg->insertInt(0x10A);
+			objMsg->insertInt(1);
+			objMsg->insertByte(counter);
 
-		player->sendMessage(objMsg);
+			player->sendMessage(objMsg);
 
-		objMsg = new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x010C);
-		objMsg->insertInt(0x10A);
-		objMsg->insertInt(0);
-		objMsg->insertByte(counter);
+			objMsg = new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x010C);
+			objMsg->insertInt(0x10A);
+			objMsg->insertInt(0);
+			objMsg->insertByte(counter);
 
-		player->sendMessage(objMsg);
+			player->sendMessage(objMsg);
 
-		objMsg = new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x01C2);
-		objMsg->insertByte(counter);
-		player->sendMessage(objMsg);
+			objMsg = new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x01C2);
+			objMsg->insertByte(counter);
+			player->sendMessage(objMsg);
 
-		string xpType = draftSchematic->getXpType();
-		int xp = draftSchematic->getXp();
-
-		try {
-
-			craftingTool->wlock();
+			string xpType = draftSchematic->getXpType();
+			int xp = draftSchematic->getXp();
 
 			if (practice != 0) {
 
@@ -1316,16 +1320,14 @@ void CraftingManagerImplementation::createPrototype(Player* player,
 
 			}
 
-			craftingTool->unlock();
-
-		} catch(...) {
-
-			craftingTool->unlock();
-
+			player->addXp(xpType, xp, true);
+			draftSchematic->setFinished();
 		}
+		
+		
+	} catch(...) {
 
-		player->addXp(xpType, xp, true);
-		draftSchematic->setFinished();
+
 	}
 }
 
@@ -1436,13 +1438,6 @@ void CraftingManagerImplementation::finishStage2(Player* player, int counter) {
 	objMsg->insertByte(counter); //?!?! 		
 	player->sendMessage(objMsg);
 	
-	//if(craftingTool->isPracticing()){ 
-		
-		//Object Controller 
-
-		
-	//}
-
 }
 
 void CraftingManagerImplementation::createObjectInInventory(Player* player,
@@ -1840,8 +1835,7 @@ float CraftingManagerImplementation::getAssemblyPercentage(float value) {
 int CraftingManagerImplementation::lookUpResourceAttribute(Player* player,
 		CraftingTool* craftingTool, int type, int slot) {
 
-	int quantity;
-	TangibleObject* tano = craftingTool->getIngredientInSlot(quantity, slot);
+	TangibleObject* tano = craftingTool->getIngredientInSlot(slot);
 	
 	if(!tano->isResource())
 		return 0;

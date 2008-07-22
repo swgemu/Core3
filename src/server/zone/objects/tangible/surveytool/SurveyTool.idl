@@ -62,6 +62,7 @@ interface SurveyTool implements TangibleObject {
 	int useObject(Player player);
 	
 	int getSurveyToolType();
+	int getSamplingToolType();
 	
 	int getSurveyToolRange();
 	

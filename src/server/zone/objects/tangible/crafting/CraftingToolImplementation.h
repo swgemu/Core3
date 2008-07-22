@@ -176,9 +176,9 @@ public:
 		tooltype = in;
 	}
 	
-	inline void addIngredientToSlot(int slot, TangibleObject* tano, int quantity){
+	inline void addIngredientToSlot(int slot, TangibleObject* tano){
 		
-		craftingSlots->setIngredientInSlot(slot, tano, quantity);
+		craftingSlots->setIngredientInSlot(slot, tano);
 		
 	}
 	
@@ -211,9 +211,9 @@ public:
 		return insertCount; 
 	}
 	
-	inline TangibleObject* getIngredientInSlot(int& quantity, int slot){
+	inline TangibleObject* getIngredientInSlot(int slot){
 		
-		return craftingSlots->getIngredientInSlot(quantity, slot);
+		return craftingSlots->getIngredientInSlot(slot);
 		
 	}
 	
