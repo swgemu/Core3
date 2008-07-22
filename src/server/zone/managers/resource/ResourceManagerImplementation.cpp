@@ -206,7 +206,8 @@ void ResourceManagerImplementation::clearResources() {
 	unlock();
 }
 
-float ResourceManagerImplementation::getDensity(int planet, string& resname, float inx, float iny) {
+float ResourceManagerImplementation::getDensity(int planet, string& resname,
+		float inx, float iny) {
 	float density = 0.0f, max_density = 0.0f;
 
 	try {
@@ -230,14 +231,17 @@ float ResourceManagerImplementation::getDensity(int planet, string& resname, flo
 
 				source = sl->getMax();
 
-				if (inx > (x - radius) && inx < (x + radius) && iny > (y - radius) && iny < (y + radius)) {
-					distance = sqrt(((inx - x) * (inx - x))
-							+ ((iny - y) * (iny - y)));
+				if (inx > (x - radius) && inx < (x + radius) && iny > (y
+						- radius) && iny < (y + radius)) {
+					distance = sqrt(((inx - x) * (inx - x)) + ((iny - y) * (iny
+							- y)));
 
-					density = ((((radius - distance) / radius) * source) / 100.0f);
+					density = ((((radius - distance) / radius) * source)
+							/ 100.0f);
 
 					if (density > max_density)
 						max_density = density;
+				}
 			}
 		}
 	} catch (...) {
