@@ -41,13 +41,17 @@ gives permission to release a modified version without this exception;
 this exception also makes it possible to release a modified version 
 which carries forward this exception.
 */
+#include <iostream>
+#include <fstream>
 
 #include "GameCommandHandler.h"
-#include "../zone/objects/building/BuildingObject.h"
+
 #include "../zone/managers/planet/PlanetManager.h"
 #include "../zone/managers/item/ItemManager.h"
+
 #include "../zone/Zone.h"
 #include "../zone/packets.h"
+#include "../zone/objects.h"
 
 #include "ChatManager.h"
 
@@ -208,9 +212,17 @@ void GameCommandHandler::init() {
 			"Usage: @setAdminLevel <player> <level> \n Levels: 1-CSR 2-DEVELOPER 4-PLAYER 8-QA",
 			&gm_setAdminLevel);
 	gmCommands->addCommand("getLocation", ALL,
-			"Gives full detailsofyour location.",
+			"Gives full detailsofyour location.", 
 			"Usage: @getLocation",
 			&gm_getLocation);
+	gmCommands->addCommand("getCords", DEVELOPER,
+			"Command to aid the cave devs placing of creatures, SpawnCreature command is written pre-formatted to a file.",
+			"Usage: @getCords <nameOfCreatureFile>", 
+			&gm_getCords);
+	gmCommands->addCommand("giveItemTemp", DEVELOPER,
+			"Adds a requested item to your inventory.",
+			"Usage: @giveItemTemp <Item Type> [item sub-type]", 
+			&gm_giveItemTemp);
 }
 
 void GameCommandHandler::gm_help(StringTokenizer tokenizer, Player * player) {
@@ -300,7 +312,7 @@ void GameCommandHandler::gm_warpPlayer(StringTokenizer tokenizer, Player * playe
 			if (obj != NULL && obj->isPlayer()) {
 				targetPlayer = (Player*) obj;
 			} else {
-				player->sendSystemMessage("useage: @warpPlayer <SUPPLY PLAYERNAME OR CURRENT TARGET> <starport> <hotel> <shuttle> <medical> <bank> <garage> <salon> \n");
+				player->sendSystemMessage("Usage: @warpPlayer <SUPPLY PLAYERNAME OR CURRENT TARGET> <starport> <hotel> <shuttle> <medical> <bank> <garage> <salon> \n");
 				return;
 			}
 		}
@@ -330,13 +342,13 @@ void GameCommandHandler::gm_warpPlayer(StringTokenizer tokenizer, Player * playe
 				}
 			} else {
 				targetZone->unlock();
-				player->sendSystemMessage("useage: @warpPlayer <SUPPLY PLAYERNAME OR CURRENT TARGET> <starport> <hotel> <shuttle> <medical> <bank> <garage> <salon> \n");
+				player->sendSystemMessage("Usage: @warpPlayer <SUPPLY PLAYERNAME OR CURRENT TARGET> <starport> <hotel> <shuttle> <medical> <bank> <garage> <salon> \n");
 			}
 		} catch (...) {
 			targetZone->unlock();
 		}
 	} else {
-		player->sendSystemMessage("useage: @warpPlayer <SUPPLY PLAYERNAME OR CURRENT TARGET> <starport> <hotel> <shuttle> <medical> <bank> <garage> <salon> \n");
+		player->sendSystemMessage("Usage: @warpPlayer <SUPPLY PLAYERNAME OR CURRENT TARGET> <starport> <hotel> <shuttle> <medical> <bank> <garage> <salon> \n");
 	}					
 }
 
@@ -379,7 +391,7 @@ void GameCommandHandler::gm_summon(StringTokenizer tokenizer, Player * player) {
 			targetPlayer->doWarp(player->getPositionX(), player->getPositionY(), 0, 10);
 		} else {
 			targetZone->unlock();
-			player->sendSystemMessage("useage: @summon <SUPPLY PLAYERNAME OR CURRENT TARGET> \n");
+			player->sendSystemMessage("Usage: @summon <SUPPLY PLAYERNAME OR CURRENT TARGET> \n");
 			return;
 		}
 	} catch (...) {
@@ -446,7 +458,7 @@ void GameCommandHandler::gm_kickArea(StringTokenizer tokenizer, Player * player)
 				Player* otherPlayer = (Player*) obj;
 				string otherName = otherPlayer->getFirstName();
 
-				if (otherName != name && player->isInRange(otherPlayer, meter)) {
+				if (otherName != name && player->isInRange(otherPlayer, meter) && !(otherPlayer->getAdminLevel() & PlayerImplementation::ADMIN)) {
 					zone->unlock();
 
 					if (server->kickUser(otherName, name)) {
@@ -611,7 +623,7 @@ void GameCommandHandler::gm_killArea(StringTokenizer tokenizer, Player * player)
 				Player* otherPlayer = (Player*) obj;
 				string otherName = otherPlayer->getFirstName();
 
-				if (otherName != name && player->isInRange(otherPlayer, meter)) {
+				if (otherName != name && player->isInRange(otherPlayer, meter) && !(otherPlayer->getAdminLevel() & PlayerImplementation::ADMIN)) {
 					zone->unlock();
 
 					try {
@@ -1133,10 +1145,10 @@ void GameCommandHandler::gm_spice(StringTokenizer tokenizer, Player * player) {
 			break;
 
 		default:
-			player->sendSystemMessage("Useage: @spice [spice_name] (available: booster_blue | crash_n_burn | droid_lube | giggledust | grey_gabaki | gunjack | muon_gold | neutron_pixey | pyrepenol | scramjet | sedative_h4b | shadowpaw | sweetblossom | thruster_head | yarrock | kliknik_boost | kwi_boost)");
+			player->sendSystemMessage("Usage: @spice [spice_name] (available: booster_blue | crash_n_burn | droid_lube | giggledust | grey_gabaki | gunjack | muon_gold | neutron_pixey | pyrepenol | scramjet | sedative_h4b | shadowpaw | sweetblossom | thruster_head | yarrock | kliknik_boost | kwi_boost)");
 		}
 	} else {
-		player->sendSystemMessage("Useage: @spice [spice_name] (available: booster_blue | crash_n_burn | droid_lube | giggledust | grey_gabaki | gunjack | muon_gold | neutron_pixey | pyrepenol | scramjet | sedative_h4b | shadowpaw | sweetblossom | thruster_head | yarrock | kliknik_boost | kwi_boost)");
+		player->sendSystemMessage("Usage: @spice [spice_name] (available: booster_blue | crash_n_burn | droid_lube | giggledust | grey_gabaki | gunjack | muon_gold | neutron_pixey | pyrepenol | scramjet | sedative_h4b | shadowpaw | sweetblossom | thruster_head | yarrock | kliknik_boost | kwi_boost)");
 	}
 }
 
@@ -1210,6 +1222,121 @@ void GameCommandHandler::gm_getLocation(StringTokenizer tokenizer, Player * play
 	ss << "oX: " << player->getDirectionX() << " oZ: " << player->getDirectionZ();
 	ss << "oY: " << player->getDirectionY() << " oW: " << player->getDirectionW();
 	player->sendSystemMessage(ss.str());
+}
+
+void GameCommandHandler::gm_getCords(StringTokenizer tokenizer, Player * player) {
+	//This command is for the cave devs, helping them building the needed LUA files. 
+	//Please dont delete it from the SVN 
+	stringstream msg;
+	string name;
+
+	if (tokenizer.hasMoreTokens())
+		tokenizer.getStringToken(name);
+	else
+		name = "nameOfMob";
+
+	msg << "X " << (player->getPositionX()) << " \n" << "Z "
+			<< (player->getPositionZ()) << " \n" << "Y "
+			<< (player->getPositionY()) << " \n";
+	player->sendSystemMessage(msg.str());
+
+	msg << "Cell-ID is " << (player->getParentID()) << " \n";
+	player->sendSystemMessage(msg.str());
+
+	msg << "Planet-ID is " << (player->getZoneIndex()) << " \n";
+	player->sendSystemMessage(msg.str());
+
+	msg << "Mobname is " << name << " \n";
+	player->sendSystemMessage(msg.str());
+
+	ofstream cordFile;
+	cordFile.open("cords.txt", ios::app);
+
+	if ((player->getParentID() == 0))
+		cordFile << "spawnCreature(" << name << ", " << player->getZoneIndex()
+				<< ", " << player->getPositionX() << ", "
+				<< player->getPositionY() << ")\n";
+	else
+		cordFile << "spawnCreatureInCell(" << name << ", "
+				<< player->getZoneIndex() << ", " << player->getPositionX()
+				<< ", " << player->getPositionZ() << ", "
+				<< player->getPositionY() << ", " << player->getParentID()
+				<< ")\n";
+
+	cordFile << flush;
+	cordFile.close();
+} 
+
+void GameCommandHandler::gm_giveItemTemp(StringTokenizer tokenizer, Player * player) {
+	//Give TANO
+	string itemType;
+	tokenizer.getStringToken(itemType);
+
+	if (itemType == "Holocron") {
+		Holocron * item = new Holocron(player, 0x9BA06548, unicode("Holocron"), "object/tangible/jedi/shared_jedi_holocron_light.iff");
+		player->addInventoryItem(item);
+
+		item->sendTo(player);
+	} else if (itemType == "Firework") {
+		if (tokenizer.hasMoreTokens()) {
+			int fwAniType = tokenizer.getIntToken();
+
+			Firework* item;
+			switch (fwAniType) {
+			//Firework diff. animation
+			case 1:
+				item = new Firework(player, 0x7C540DEB, unicode("a Firework Type-4"), "object/tangible/firework/shared_firework_s04.iff",1);
+				break;
+			case 2:
+				item = new Firework(player, 0x15ADE9E5, unicode("a Firework Type-1"), "object/tangible/firework/shared_firework_s01.iff",2);
+				break;
+			case 3:
+				item = new Firework(player, 0xCEBA4172, unicode("a Firework Type-2"), "object/tangible/firework/shared_firework_s02.iff",3);
+				break;
+			case 4:
+				item = new Firework(player, 0x87B726FF, unicode("a Firework Type-3"), "object/tangible/firework/shared_firework_s03.iff",4);
+				break;
+			case 5:
+				item = new Firework(player, 0x35596A66, unicode("a Firework Type-5"), "object/tangible/firework/shared_firework_s05.iff",5);
+				break;
+			case 6:
+				item = new Firework(player, 0x47888310, unicode("a Firework Type-6"), "object/tangible/firework/shared_firework_s10.iff",6);
+				break;
+			case 7:
+				item = new Firework(player, 0xE85E49D, unicode("a Firework Type-7"), "object/tangible/firework/shared_firework_s11.iff",7);
+				break;
+			case 8:
+				item = new Firework(player, 0x6618416, unicode("a Firework Type-8"), "object/tangible/firework/shared_firework_s18.iff",8);
+				break;
+			default:
+				player->sendSystemMessage("Useage: @giveItemTemp Firework <1-8>");
+				return;
+			}
+
+			player->addInventoryItem(item);
+			item->sendTo(player);
+
+		} else {
+			player->sendSystemMessage("Please submit the Firework animation (1-8).");
+		}
+
+	} else if (itemType == "AA") {
+		Attachment* item = new Attachment(player->getNewItemID(), AttachmentImplementation::ARMOR);
+		item->setSkillMods(System::random(500));
+
+		player->addInventoryItem(item);
+
+		item->sendTo(player);
+	} else if (itemType == "Powerup") {
+		Powerup* item = new Powerup(player->getNewItemID());
+		item->setPowerupStats(System::random(500));
+
+		player->addInventoryItem(item);
+
+		item->sendTo(player);
+	} else {
+		player->sendSystemMessage("Unknown Item Type.");
+	}
 }
 
 

@@ -154,7 +154,9 @@ private:
 	static void gm_getDirection(StringTokenizer tokenizer, Player * player);
 	static void gm_setAdminLevel(StringTokenizer tokenizer, Player * player);
 	static void gm_getLocation(StringTokenizer tokenizer, Player * player);
-	
+	static void gm_getCords(StringTokenizer tokenizer, Player * player);
+	static void gm_giveItemTemp(StringTokenizer tokenizer, Player * player);
+		
 	void init();
 	
 public:
