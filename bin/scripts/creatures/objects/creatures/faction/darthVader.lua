@@ -75,8 +75,8 @@ darthVader = Creature:new {
 	
 	accuracy = 300,
 
-	skills = { "darthAttack1", "darthAttack2", "darthAttack3", "darthAttack4" }
-	-- respawnTimer = 180,
+	skills = { "darthAttack1", "darthAttack2", "darthAttack3", "darthAttack4" },
+	respawnTimer = 1800, 
 }
 
 Creatures:addCreature(darthVader, 147261716) --- Add to global creature table

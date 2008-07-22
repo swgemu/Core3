@@ -77,8 +77,8 @@ lightSaber = 0,
 
 accuracy = 300, 
 
-skills = { "corsecAttack1", "corsecAttack2", "corsecAttack3" } 
--- respawnTimer = 180, 
+skills = { "corsecAttack1", "corsecAttack2", "corsecAttack3" }, 
+respawnTimer = 300, 
 } 
 
 Creatures:addCreature(rogueCorsecCommanderFemale, 4015626219) --- Add to global creature table 

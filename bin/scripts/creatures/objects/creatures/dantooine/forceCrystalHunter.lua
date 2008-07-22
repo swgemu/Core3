@@ -47,7 +47,7 @@ objectCRC = 2005105485,
 socialGroup = "crystalhunter", 
 named = FALSE,
 
-level = 80, 
+level = 115, 
 
 combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG, 
 
@@ -78,8 +78,8 @@ lightSaber = 0,
 
 accuracy = 300, 
 
-skills = { "forceCrystalHunterAttack20", "forceCrystalHunterAttack21", "forceCrystalHunterAttack22", "forceCrystalHunterAttack23", "forceCrystalHunterAttack24", "forceCrystalHunterAttack25", "forceCrystalHunterAttack26", "forceCrystalHunterAttack27" } 
---respawnTimer = 180, 
+skills = { "forceCrystalHunterAttack20", "forceCrystalHunterAttack21", "forceCrystalHunterAttack22", "forceCrystalHunterAttack23", "forceCrystalHunterAttack24", "forceCrystalHunterAttack25", "forceCrystalHunterAttack26", "forceCrystalHunterAttack27" }, 
+respawnTimer = 300,
 } 
 
 Creatures:addCreature(forceCrystalHunter, 2005105485) --- Add to global creature table 

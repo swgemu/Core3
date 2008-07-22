@@ -75,8 +75,8 @@ nyaxThug = Creature:new {
 		
 	accuracy = 300,
 
-	skills = { "nyaxAttack1", "nyaxAttack2" }
-	-- respawnTimer = 180,
+	skills = { "nyaxAttack1", "nyaxAttack2" },
+	respawnTimer = 300, 
 }
 
 Creatures:addCreature(nyaxThug, 2603521920) --- Add to global creature table

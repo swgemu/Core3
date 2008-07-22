@@ -67,8 +67,8 @@ rebelGeneral = Creature:new {
 	
 	accuracy = 300,
 
-	skills = { "rebelAttack40", "rebelAttack41", "rebelAttack42", "rebelAttack43", "rebelAttack44", "rebelAttack45", "rebelAttack46", "rebelAttack47", "rebelAttack48", "rebelAttack49", "rebelAttack50", "rebelAttack51" }
-	-- respawnTimer = 180,
+	skills = { "rebelAttack40", "rebelAttack41", "rebelAttack42", "rebelAttack43", "rebelAttack44", "rebelAttack45", "rebelAttack46", "rebelAttack47", "rebelAttack48", "rebelAttack49", "rebelAttack50", "rebelAttack51" },
+	respawnTimer = 300, 
 }
 
 Creatures:addCreature(rebelGeneral, 354934529) --- Add to global creature table

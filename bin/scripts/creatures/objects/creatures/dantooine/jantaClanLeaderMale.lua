@@ -43,11 +43,11 @@ jantaClanLeaderMale = Creature:new {
 objectName = "jantaClanLeaderMale", -- name of the lua Object 
 
 name = "a janta Clan Leader", 
-objectCRC = 4083847450, 
+objectCRC = 39965146, 
 socialGroup = "janta", 
 named = FALSE,
 
-level = 80, 
+level = 75, 
 
 combatFlags = ATTACKABLE_FLAG,
 --combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG, 
@@ -79,8 +79,8 @@ lightSaber = 0,
 
 accuracy = 300, 
 
-skills = { "kungaAttack01", "kungaAttack02", "kungaAttack03", "kungaAttack04", "kungaAttack05", "kungaAttack06", "kungaAttack07", "kungaAttack08", "kungaAttack09" } 
--- respawnTimer = 180, 
+skills = { "kungaAttack01", "kungaAttack02", "kungaAttack03", "kungaAttack04", "kungaAttack05", "kungaAttack06", "kungaAttack07", "kungaAttack08", "kungaAttack09" }, 
+respawnTimer = 300, 
 } 
 
-Creatures:addCreature(jantaClanLeaderMale, 4083847450) --- Add to global creature table 
+Creatures:addCreature(jantaClanLeaderMale, 39965146) --- Add to global creature table 

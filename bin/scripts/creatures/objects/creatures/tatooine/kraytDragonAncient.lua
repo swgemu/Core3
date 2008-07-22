@@ -45,9 +45,9 @@ kraytDragonAncient = Creature:new {
 	stfName = "a Krayt Dragon Ancient", 
         objectCRC = 1238991743, 
           
-        level = 800, 
+        level = 336, 
           
-        combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG, 
+        combatFlags = ATTACKABLE_FLAG,
   
         health = 480000, 
         strength = 50000, 
@@ -68,7 +68,7 @@ kraytDragonAncient = Creature:new {
         stun = 95, 
         blast = 95, 
         heat = 95, 
-        cold = 95, 
+        cold = 65, 
         acid = 95, 
         lightSaber = 0, 
 
@@ -76,8 +76,8 @@ kraytDragonAncient = Creature:new {
           
 	accuracy = 300, 
   
-	skills = { "kraytAttack1", "kraytAttack2", "kraytAttack3", "kraytAttack4", "kraytAttack5", "kraytAttack6", "kraytAttack7" } 
-	-- respawnTimer = 60, 
+	skills = { "kraytAttack1", "kraytAttack2", "kraytAttack3", "kraytAttack4", "kraytAttack5", "kraytAttack6", "kraytAttack7" },
+	respawnTimer = 3600, 
 } 
   
 Creatures:addCreature(kraytDragonAncient, 1238991743) --- Add to global creature table 

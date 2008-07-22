@@ -64,7 +64,8 @@ afarathuAssassin = Creature:new {
 
 	accuracy = 300,
 
-	skills = { "afarathuAttack1" }
+	skills = { "afarathuAttack1" },
+	respawnTimer = 300, 
 }
 
 Creatures:addCreature(afarathuAssassin, 1841868410)

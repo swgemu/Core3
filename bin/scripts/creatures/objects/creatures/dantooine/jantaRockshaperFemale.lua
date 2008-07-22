@@ -79,8 +79,8 @@ lightSaber = 0,
 
 accuracy = 300, 
 
-skills = { "kungaAttack01", "kungaAttack02", "kungaAttack03", "kungaAttack04", "kungaAttack05", "kungaAttack06", "kungaAttack07", "kungaAttack08" } 
--- respawnTimer = 180, 
+skills = { "kungaAttack01", "kungaAttack02", "kungaAttack03", "kungaAttack04", "kungaAttack05", "kungaAttack06", "kungaAttack07", "kungaAttack08" }, 
+respawnTimer = 300, 
 } 
 
 Creatures:addCreature(jantaRockshaperFemale, 3486278575) --- Add to global creature table 

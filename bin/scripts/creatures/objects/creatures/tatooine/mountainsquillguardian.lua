@@ -67,8 +67,8 @@ mountainsquillguardian = Creature:new {
 	
 	accuracy = 300,
 
-	skills = { "squillAttack1", "squillAttack2", "squillAttack3", "squillAttack4" }
-	-- respawnTimer = 60,
+	skills = { "squillAttack1", "squillAttack2", "squillAttack3", "squillAttack4" },
+	respawnTimer = 300, 
 }
 
 Creatures:addCreature(mountainsquillguardian, 807169980) --- Add to global creature table

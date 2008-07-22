@@ -78,8 +78,8 @@ imperialHighColonel = Creature:new {
 	
 	accuracy = 300,
 
-	skills = { "imperialAttack10", "imperialAttack11", "imperialAttack12" }
-	-- respawnTimer = 180,
+	skills = { "imperialAttack10", "imperialAttack11", "imperialAttack12" },
+	respawnTimer = 300, 
 }
 
 Creatures:addCreature(imperialHighColonel, 2701430666) --- Add to global creature table

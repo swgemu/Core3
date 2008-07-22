@@ -77,8 +77,8 @@ nyaxDiciple = Creature:new {
 	
 	accuracy = 300,
 
-	skills = { "nyaxAttack10", "nyaxAttack12", "nyaxAttack13" }
-	-- respawnTimer = 180,
+	skills = { "nyaxAttack10", "nyaxAttack12", "nyaxAttack13" },
+	respawnTimer = 300, 
 }
 
 Creatures:addCreature(nyaxDiciple, 1938688799) --- Add to global creature table

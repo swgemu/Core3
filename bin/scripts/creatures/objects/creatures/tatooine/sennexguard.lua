@@ -78,8 +78,8 @@ sennexguard = Creature:new {
 
 	accuracy = 300,
 
-	skills = { "sennexattack1", "sennexattack2", "sennexattack3", "sennexattack4", "sennexattack5",  }
-	-- respawnTimer = 180,
+	skills = { "sennexattack1", "sennexattack2", "sennexattack3", "sennexattack4", "sennexattack5" },
+	respawnTimer = 300, 
 }
 
 Creatures:addCreature(sennexguard, 2453845306) --- Add to global creature table

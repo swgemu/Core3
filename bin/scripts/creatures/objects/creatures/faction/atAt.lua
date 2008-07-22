@@ -77,8 +77,8 @@ atAt = Creature:new {
 	
 	accuracy = 300,
 
-	skills = { "stormTrooperAttack3" }
-	-- respawnTimer = 180,
+	skills = { "stormTrooperAttack3" },
+	respawnTimer = 1800, 
 }
 
 Creatures:addCreature(atAt, 4274898142) --- Add to global creature table

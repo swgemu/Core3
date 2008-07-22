@@ -78,8 +78,8 @@ tuskenRaider = Creature:new {
 
 	accuracy = 300,
 
-	skills = { "tuskenRangedAttack1", "tuskenRangedAttack2", "tuskenRangedAttack3" }
-	-- respawnTimer = 180,
+	skills = { "tuskenRangedAttack1", "tuskenRangedAttack2", "tuskenRangedAttack3" },
+	respawnTimer = 300, 
 }
 
 Creatures:addCreature(tuskenRaider, 3780705985) --- Add to global creature table

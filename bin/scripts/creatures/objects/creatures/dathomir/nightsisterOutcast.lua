@@ -77,8 +77,8 @@ nightsisterOutcast = Creature:new {
 
 	accuracy = 300,
 
-	skills = { "nightsisterAttack40", "nightsisterAttack41", "nightsisterAttack42", "nightsisterAttack43", "nightsisterAttack44", "nightsisterAttack45", "nightsisterAttack46", "nightsisterAttack47", "nightsisterAttack48", "nightsisterAttack49", "nightsisterAttack50", "nightsisterAttack51"  }
-	-- respawnTimer = 180,
+	skills = { "nightsisterAttack40", "nightsisterAttack41", "nightsisterAttack42", "nightsisterAttack43", "nightsisterAttack44", "nightsisterAttack45", "nightsisterAttack46", "nightsisterAttack47", "nightsisterAttack48", "nightsisterAttack49", "nightsisterAttack50", "nightsisterAttack51" },
+	respawnTimer = 300, 
 }
 
 Creatures:addCreature(nightsisterOutcast, 2430135288) --- Add to global creature table

@@ -47,7 +47,7 @@ objectCRC = 2507849557,
 socialGroup = "crystalhunter", 
 named = FALSE,
 
-level = 85, 
+level = 65, 
 
 combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -78,8 +78,8 @@ lightSaber = 0,
 
 accuracy = 300, 
 
-skills = { "untrainedWielderDarkSideAttack20", "untrainedWielderDarkSideAttack21", "untrainedWielderDarkSideAttack22", "untrainedWielderDarkSideAttack23", "untrainedWielderDarkSideAttack24", "untrainedWielderDarkSideAttack25", "untrainedWielderDarkSideAttack26", "untrainedWielderDarkSideAttack27" } 
--- respawnTimer = 180, 
+skills = { "untrainedWielderDarkSideAttack20", "untrainedWielderDarkSideAttack21", "untrainedWielderDarkSideAttack22", "untrainedWielderDarkSideAttack23", "untrainedWielderDarkSideAttack24", "untrainedWielderDarkSideAttack25", "untrainedWielderDarkSideAttack26", "untrainedWielderDarkSideAttack27" }, 
+respawnTimer = 300, 
 } 
 
 Creatures:addCreature(untrainedWielderOfTheDarkSide, 2507849557) --- Add to global creature table 

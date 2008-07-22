@@ -45,9 +45,9 @@ juviCanyonKraytDragon = Creature:new {
 	stfName = "a Juvenile Canyon Krayt Dragon",
 	objectCRC = 899113216,
 	
-	level = 350,
+	level = 122,
 	
-	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
+	combatFlags = ATTACKABLE_FLAG,
 
 	health = 48000,
 	strength = 30000,
@@ -61,23 +61,23 @@ juviCanyonKraytDragon = Creature:new {
 	focus = 30000,
 	willpower = 30000,
 	
-    armor = 2, -- from http://web.archive.org/web/20050505183605/http://swg.allakhazam.com/db/bestiary.html?swgbeast=2520
-    kinetic = 60, 
-    energy = 60, 
-    electricity = 15, 
-    stun = 15, 
-    blast = 15, 
-    heat = 15, 
+    armor = 3, -- from http://web.archive.org/web/20050505183605/http://swg.allakhazam.com/db/bestiary.html?swgbeast=2520
+    kinetic = 70, 
+    energy = 70, 
+    electricity = 0, 
+    stun = 0, 
+    blast = 0, 
+    heat = 0, 
     cold = 10, 
-    acid = 15, 
+    acid = 0, 
     lightSaber = 0, 
 
 	height = .5,
 	
 	accuracy = 300,
 
-	skills = { "kraytAttack1", "kraytAttack2", "kraytAttack3" }
-	-- respawnTimer = 60,
+	skills = { "kraytAttack1", "kraytAttack2", "kraytAttack3" },
+	respawnTimer = 600,
 }
 
 Creatures:addCreature(juviCanyonKraytDragon, 899113216) --- Add to global creature table

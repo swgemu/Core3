@@ -47,7 +47,7 @@ untrainedWielderDarkSideAttack20 = {
 	requiredWeaponType = UNARMED,
 	
 	range = 11,
-	damageRatio = 250.50,
+	damageRatio = 520,
 	speedRatio = 1.45,
 	areaRange = 0,
 	accuracyBonus = 300,
@@ -62,7 +62,7 @@ untrainedWielderDarkSideAttack20 = {
 	fireStrength = 0,
 	fireType = 0,
 
-	bleedingStrength = 0,
+	bleedingStrength = 100,
 	bleedingType = ACTION,
 
 	poisonStrength = 0,
@@ -89,18 +89,18 @@ untrainedWielderDarkSideAttack21 = {
 	requiredWeaponType = UNARMED,
 	
 	range = 11,
-	damageRatio = 250.0,
+	damageRatio = 520,
 	speedRatio = 1.45,
 	areaRange = 0,
 	accuracyBonus = 300,
 		
-	knockdownChance = 1,
+	knockdownChance = 0,
 	postureDownChance = 0,
 	postureUpChance = 0,
 	dizzyChance = 0,
 	blindChance = 0,
 	stunChance = 0,
-	intimidateChance = 0,
+	intimidateChance = 1,
 	
 	CbtSpamBlock = "melee_block",
 	CbtSpamCounter = "melee_counter",
@@ -120,7 +120,7 @@ untrainedWielderDarkSideAttack22 = {
 	requiredWeaponType = UNARMED,
 	
 	range = 11,
-	damageRatio = 250.0,
+	damageRatio = 520,
 	speedRatio = 1.45,
 	areaRange = 0,
 	accuracyBonus = 300,
@@ -151,7 +151,7 @@ untrainedWielderDarkSideAttack23 = {
 	requiredWeaponType = UNARMED,
 	
 	range = 11,
-	damageRatio = 250.5,
+	damageRatio = 520,
 	speedRatio = 23.45,
 	areaRange = 7,
 	accuracyBonus = 300,
@@ -160,9 +160,9 @@ untrainedWielderDarkSideAttack23 = {
 	postureDownChance = 0,
 	postureUpChance = 0,
 	dizzyChance = 0,
-	blindChance = 0,
+	blindChance = 1,
 	stunChance = 0,
-	intimidateChance = 1,
+	intimidateChance = 0,
 	
 	CbtSpamBlock = "melee_block",
 	CbtSpamCounter = "melee_counter",
@@ -182,7 +182,7 @@ untrainedWielderDarkSideAttack24 = {
 	requiredWeaponType = UNARMED,
 	
 	range = 11,
-	damageRatio = 250.5,
+	damageRatio = 520,
 	speedRatio = 23.45,
 	areaRange = 0,
 	accuracyBonus = 300,
@@ -201,7 +201,7 @@ untrainedWielderDarkSideAttack24 = {
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
-	dizzyChance = 0,
+	dizzyChance = 1,
 	blindChance = 0,
 	stunChance = 0,
 	intimidateChance = 0,
@@ -224,15 +224,15 @@ untrainedWielderDarkSideAttack25 = {
 	requiredWeaponType = UNARMED,
 	
 	range = 11,
-	damageRatio = 250.75,
+	damageRatio = 520,
 	speedRatio = 1.45,
 	areaRange = 7,
 	accuracyBonus = 300,
 		
 	knockdownChance = 0,
-	postureDownChance = 0,
+	postureDownChance = 1,
 	postureUpChance = 0,
-	dizzyChance = 1,
+	dizzyChance = 0,
 	blindChance = 0,
 	stunChance = 0,
 	intimidateChance = 0,
@@ -255,7 +255,7 @@ untrainedWielderDarkSideAttack26 = {
 	requiredWeaponType = UNARMED,
 	
 	range = 11,
-	damageRatio = 250.0,
+	damageRatio = 520,
 	speedRatio = 25.45,
 	areaRange = 7,
 	accuracyBonus = 300,
@@ -263,7 +263,7 @@ untrainedWielderDarkSideAttack26 = {
 	knockdownChance = 0,
 	postureDownChance = 0,
 	postureUpChance = 0,
-	dizzyChance = 1,
+	dizzyChance = 0,
 	blindChance = 0,
 	stunChance = 0,
 	intimidateChance = 0,
@@ -285,12 +285,12 @@ untrainedWielderDarkSideAttack27 = {
 	requiredWeaponType = UNARMED,
 	
 	range = 11,
-	damageRatio = 250.5,
+	damageRatio = 520,
 	speedRatio = 1.25,
 	areaRange = 0,
 	accuracyBonus = 300,
 		
-	knockdownChance = 0,
+	knockdownChance = 1,
 	postureDownChance = 0,
 	postureUpChance = 0,
 	dizzyChance = 0,

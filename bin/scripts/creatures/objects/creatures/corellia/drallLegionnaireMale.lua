@@ -79,8 +79,8 @@ lightSaber = 0,
 
 accuracy = 300, 
 
-skills = { "drallAttack01", "drallAttack02", "drallAttack03", "drallAttack04", "drallAttack05" } 
--- respawnTimer = 180, 
+skills = { "drallAttack01", "drallAttack02", "drallAttack03", "drallAttack04", "drallAttack05" }, 
+respawnTimer = 300, 
 } 
 
 Creatures:addCreature(drallLegionnaireMale, 999880424) --- Add to global creature table 

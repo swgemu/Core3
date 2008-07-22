@@ -78,8 +78,8 @@ jabbaCompoundGuard = Creature:new {
 
 	accuracy = 300,
 
-	skills = { "jabbaAttack25", "jabbaAttack26", "jabbaAttack27", "jabbaAttack28" }
-	-- respawnTimer = 180,
+	skills = { "jabbaAttack25", "jabbaAttack26", "jabbaAttack27", "jabbaAttack28" },
+	respawnTimer = 300, 
 }
 
 Creatures:addCreature(jabbaCompoundGuard, 890755352) --- Add to global creature table

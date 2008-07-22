@@ -78,8 +78,8 @@ tuskenObserver = Creature:new {
 
 	accuracy = 300,
 
-	skills = { "tuskenRangedAttack1", "tuskenRangedAttack2", "tuskenRangedAttack3", "tuskenRangedAttack4" }
-	-- respawnTimer = 180,
+	skills = { "tuskenRangedAttack1", "tuskenRangedAttack2", "tuskenRangedAttack3", "tuskenRangedAttack4" },
+	respawnTimer = 300, 
 }
 
 Creatures:addCreature(tuskenObserver, 3780705985) --- Add to global creature table

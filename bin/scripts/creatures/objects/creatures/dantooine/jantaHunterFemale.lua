@@ -43,11 +43,11 @@ jantaHunterFemale = Creature:new {
 objectName = "jantaHunterFemale", -- name of the lua Object 
 
 name = "a janta Hunter", 
-objectCRC = 3486278575, 
+objectCRC = 4186110670, 
 socialGroup = "janta", 
 named = FALSE,
 
-level = 80, 
+level = 50, 
 
 combatFlags = ATTACKABLE_FLAG,
 --combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG, 
@@ -79,8 +79,8 @@ lightSaber = 0,
 
 accuracy = 300, 
 
-skills = { "kungaAttack01", "kungaAttack02", "kungaAttack03", "kungaAttack04", "kungaAttack05", "kungaAttack06", "kungaAttack07", "kungaAttack08" } 
--- respawnTimer = 180, 
+skills = { "kungaAttack01", "kungaAttack02", "kungaAttack03", "kungaAttack04", "kungaAttack05", "kungaAttack06", "kungaAttack07", "kungaAttack08" }, 
+respawnTimer = 300, 
 } 
 
-Creatures:addCreature(jantaHunterFemale, 3486278575) --- Add to global creature table 
+Creatures:addCreature(jantaHunterFemale, 4186110670) --- Add to global creature table 

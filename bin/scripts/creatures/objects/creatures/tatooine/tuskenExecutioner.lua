@@ -78,8 +78,8 @@ tuskenExecutioner = Creature:new {
 
 	accuracy = 300,
 
-	skills = { "tuskenAttack40", "tuskenAttack44", "tuskenAttack45", "tuskenAttack46", "tuskenAttack47", "tuskenAttack49", "tuskenAttack52", "tuskenAttack53"  }
-	-- respawnTimer = 180,
+	skills = { "tuskenAttack40", "tuskenAttack44", "tuskenAttack45", "tuskenAttack46", "tuskenAttack47", "tuskenAttack49", "tuskenAttack52", "tuskenAttack53" },
+	respawnTimer = 300, 
 }
 
 Creatures:addCreature(tuskenExecutioner, 344809642) --- Add to global creature table

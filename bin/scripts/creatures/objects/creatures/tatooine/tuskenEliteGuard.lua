@@ -78,8 +78,8 @@ tuskenEliteGuard = Creature:new {
 
 	accuracy = 300,
 
-	skills = { "tuskenAttack40", "tuskenAttack41", "tuskenAttack42", "tuskenAttack43", "tuskenAttack44", "tuskenAttack45", "tuskenAttack46", "tuskenAttack47", "tuskenAttack48", "tuskenAttack49", "tuskenAttack50", "tuskenAttack51"  }
-	-- respawnTimer = 180,
+	skills = { "tuskenAttack40", "tuskenAttack41", "tuskenAttack42", "tuskenAttack43", "tuskenAttack44", "tuskenAttack45", "tuskenAttack46", "tuskenAttack47", "tuskenAttack48", "tuskenAttack49", "tuskenAttack50", "tuskenAttack51" },
+	respawnTimer = 300, 
 }
 
 Creatures:addCreature(tuskenEliteGuard, 344809642) --- Add to global creature table

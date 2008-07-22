@@ -78,8 +78,8 @@ dunebeetle = Creature:new {
 
 	accuracy = 300,
 
-	skills = { "cavebeetle1", "cavebeetle2", "cavebeetle3", "cavebeetle4", }
-	-- respawnTimer = 180,
+	skills = { "cavebeetle1", "cavebeetle2", "cavebeetle3", "cavebeetle4" },
+	respawnTimer = 300, 
 }
 
 Creatures:addCreature(dunebeetle, 1381990465) --- Add to global creature table

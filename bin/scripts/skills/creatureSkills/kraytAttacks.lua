@@ -47,15 +47,15 @@ kraytAttack1 = {
 
 	range = 30,
 
-	damageRatio = 700,
+	damageRatio = 720,
 
 	speedRatio = 2,
 
 	areaRange = 30,
 	accuracyBonus = 300,
 		
-	knockdownChance = 0,
-	postureDownChance = 0,
+	knockdownChance = 50,
+	postureDownChance = 10,
 	postureUpChance = 0,
 	dizzyChance = 0,
 	blindChance = 0,
@@ -91,7 +91,7 @@ kraytAttack2 = {
 	knockdownChance = 0,
 	postureDownChance = 0,
 	postureUpChance = 0,
-	dizzyChance = 0,
+	dizzyChance = 50,
 	blindChance = 0,
 	stunChance = 0,
 	intimidateChance = 0,
@@ -128,7 +128,7 @@ kraytAttack3 = {
 	dizzyChance = 0,
 	blindChance = 0,
 	stunChance = 0,
-	intimidateChance = 0,
+	intimidateChance = 50,
 	
 	CbtSpamBlock = "attack_block",
 	CbtSpamCounter = "attack_counter",

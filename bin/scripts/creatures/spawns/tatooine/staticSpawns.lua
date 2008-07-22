@@ -39,19 +39,6 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
---spawnCreatures(kraytDragonAncient, 8, 9, -5446, 1000, 4, 400)
-spawnCreatures(kraytDragonAncient, 8, 6805, 4363, 1000, 4, 400)
---spawnCreatures(canyonKraytDragon, 8, 9, -5446, 1400, 6, 400)
-spawnCreatures(canyonKraytDragon, 8, 6805, 4363, 1000, 12, 400)
-spawnCreatures(juviCanyonKraytDragon, 8, 6805, 4363, 1000, 8, 400)
-spawnCreatures(canyonKraytDragon, 8, -4703, -4275, 1000, 12, 400) -- dune sea
-spawnCreatures(juviCanyonKraytDragon, 8, -4703, -4275, 1000, 8, 400) -- dune sea
---spawnCreature(canyonKraytDragon, 8, -187, -5474)
---spawnCreature(canyonKraytDragon, 8, -301, -5297)
---spawnCreature(canyonKraytDragon, 8, -140, -5157)
---spawnCreature(canyonKraytDragon, 8, 19, -5086)
---spawnCreature(canyonKraytDragon, 8, 193, -5241)
---spawnCreature(darthVader, 8, -81, -5338, 250)
 
 --global clusters
 
@@ -174,6 +161,55 @@ spawnCreatures(worrt, 8, 287, -5062, 30, 1)
 spawnCreatures(wompRat, 8, 227, -5349, 30, 2)
 spawnCreatures(rill, 8, 227, -5349, 30, 2)
 spawnCreatures(worrt, 8, 227, -5349, 30, 1)
+
+--------------------------------------------------------------------------------------------
+
+-- Ancient Krayt Dragon Skeleton (POI)
+
+spawnCreature(kraytDragonAncient, 8, -4643, -4359)
+
+spawnCreature(canyonKraytDragon, 8, -4627, -4369)
+spawnCreature(canyonKraytDragon, 8, -4666, -4347)
+
+spawnCreature(juviCanyonKraytDragon, 8, -4633, -4329)
+spawnCreature(juviCanyonKraytDragon, 8, -4618, -4335)
+spawnCreature(juviCanyonKraytDragon, 8, -4585, -4374)
+spawnCreature(juviCanyonKraytDragon, 8, -4585, -4416)
+spawnCreature(juviCanyonKraytDragon, 8, -4669, -4432)
+spawnCreature(juviCanyonKraytDragon, 8, -4752, -4401)
+spawnCreature(juviCanyonKraytDragon, 8, -4740, -4303)
+spawnCreature(juviCanyonKraytDragon, 8, -4673, -4290)
+----------------------------------------------------------------------------------------------------------
+
+--Krayt Graveyard
+
+spawnCreature(kraytDragonAncient, 8, 6739, 4288)
+
+spawnCreature(canyonKraytDragon, 8, 7456, 4449)
+spawnCreature(canyonKraytDragon, 8, 7561, 4562)
+spawnCreature(canyonKraytDragon, 8, 7461, 4659)
+spawnCreature(canyonKraytDragon, 8, 6998, 4362)
+spawnCreature(canyonKraytDragon, 8, 7528, 4822)
+spawnCreature(canyonKraytDragon, 8, 6814, 4339)
+spawnCreature(canyonKraytDragon, 8, 6738, 4481)
+spawnCreature(kraytDragonAncient, 8, 6828, 4066)
+spawnCreature(kraytDragonAncient, 8, 7054, 4194)
+
+spawnCreature(juviCanyonKraytDragon, 8, 7426, 4621)
+spawnCreature(juviCanyonKraytDragon, 8, 7413, 4515)
+spawnCreature(juviCanyonKraytDragon, 8, 7475, 4446)
+spawnCreature(juviCanyonKraytDragon, 8, 7266, 4597)
+spawnCreature(juviCanyonKraytDragon, 8, 7128, 4554)
+spawnCreature(juviCanyonKraytDragon, 8, 6875, 4499)
+spawnCreature(juviCanyonKraytDragon, 8, 6707, 4461)
+spawnCreature(juviCanyonKraytDragon, 8, 6515, 4445)
+spawnCreature(juviCanyonKraytDragon, 8, 6543, 4283)
+spawnCreature(juviCanyonKraytDragon, 8, 6865, 4093)
+spawnCreature(juviCanyonKraytDragon, 8, 7044, 4203)
+spawnCreature(juviCanyonKraytDragon, 8, 7273, 4317)
+
+
+
 
 
 -------

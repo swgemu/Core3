@@ -68,8 +68,8 @@ rebelSurfaceMarshal = Creature:new {
 	
 	accuracy = 300,
 
-	skills = { "rebelAttack20", "rebelAttack21", "rebelAttack22", "rebelAttack23", "rebelAttack24",  "rebelAttack25", "rebelAttack26", "rebelAttack27", "rebelAttack28", "rebelAttack29", "rebelAttack30", "rebelAttack31" }
-	-- respawnTimer = 180,
+	skills = { "rebelAttack20", "rebelAttack21", "rebelAttack22", "rebelAttack23", "rebelAttack24",  "rebelAttack25", "rebelAttack26", "rebelAttack27", "rebelAttack28", "rebelAttack29", "rebelAttack30", "rebelAttack31" },
+	respawnTimer = 300, 
 }
 
 Creatures:addCreature(rebelSurfaceMarshal, 7469172) --- Add to global creature table
