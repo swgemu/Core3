@@ -1217,56 +1217,69 @@ void ObjectControllerMessage::parseImageDesignChange(Player* player, Message* pa
 
 		// This is a helper class for a bunch of the embedded logic
 		ImageDesignCustomization* customization = NULL;
-		if(commitChanges)
-			customization = new ImageDesignCustomization(serv, ((CreatureObject *)target_object));
+		
+		try {
+			
+			if (target_object != NULL && player != target_object)
+				target_object->wlock(player);
+		
+			if (commitChanges)
+				customization = new ImageDesignCustomization(serv, ((CreatureObject *)target_object));
 
-		// Parse
-		if(size_float_attrs > 0)
-		{
-			for(int i = 0; i < size_float_attrs; i++)
+			// Parse
+			if(size_float_attrs > 0)
 			{
-				// do something later
-				string attr;
-				pack->parseAscii(attr);
-				float val = pack->parseFloat();
-
-				// Pack
-				msg_designer->insertAscii(attr);
-				msg_designer->insertFloat(val);
-				msg_target->insertAscii(attr);
-				msg_target->insertFloat(val);
-
-				if(commitChanges)
-					customization->updateCustomization(attr, val);
+				for(int i = 0; i < size_float_attrs; i++)
+				{
+					// do something later
+					string attr;
+					pack->parseAscii(attr);
+					float val = pack->parseFloat();
+	
+					// Pack
+					msg_designer->insertAscii(attr);
+					msg_designer->insertFloat(val);
+					msg_target->insertAscii(attr);
+					msg_target->insertFloat(val);
+	
+					if(commitChanges)
+						customization->updateCustomization(attr, val);
+				}
 			}
-		}
-
-		// Parse
-		uint32 size_int_attrs = pack->parseInt();
-
-		// Pack
-		msg_designer->insertInt(size_int_attrs);
-		msg_target->insertInt(size_int_attrs);
-
-		// Parse
-		if(size_int_attrs > 0)
-		{
-			for(int i = 0; i < size_int_attrs; i++)
+	
+			// Parse
+			uint32 size_int_attrs = pack->parseInt();
+	
+			// Pack
+			msg_designer->insertInt(size_int_attrs);
+			msg_target->insertInt(size_int_attrs);
+	
+			// Parse
+			if(size_int_attrs > 0)
 			{
-				// do something later
-				string attr;
-				pack->parseAscii(attr);
-				uint32 val = pack->parseInt();
-
-				// Pack
-				msg_designer->insertAscii(attr.c_str());
-				msg_designer->insertInt(val);
-				msg_target->insertAscii(attr.c_str());
-				msg_target->insertInt(val);
-
-				if(commitChanges)
-					customization->updateCustomization(attr, val);
+				for(int i = 0; i < size_int_attrs; i++)
+				{
+					// do something later
+					string attr;
+					pack->parseAscii(attr);
+					uint32 val = pack->parseInt();
+	
+					// Pack
+					msg_designer->insertAscii(attr.c_str());
+					msg_designer->insertInt(val);
+					msg_target->insertAscii(attr.c_str());
+					msg_target->insertInt(val);
+	
+					if(commitChanges)
+						customization->updateCustomization(attr, val);
+				}
 			}
+			
+			if (target_object != NULL && player != target_object)
+				target_object->unlock();
+		} catch (...) {
+			if (target_object != NULL && player != target_object)
+				target_object->unlock();
 		}
 
 		// Parse

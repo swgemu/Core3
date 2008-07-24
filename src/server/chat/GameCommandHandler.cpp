@@ -293,7 +293,7 @@ void GameCommandHandler::gm_warpTo(StringTokenizer tokenizer, Player * player) {
 }
 
 void GameCommandHandler::gm_warpPlayer(StringTokenizer tokenizer, Player * player) {
-	string name, whereTo = "";
+	/*string name, whereTo = "";
 	Player* targetPlayer;
 	
 	ChatManager * chatManager = player->getZone()->getChatManager();
@@ -350,11 +350,11 @@ void GameCommandHandler::gm_warpPlayer(StringTokenizer tokenizer, Player * playe
 		}
 	} else {
 		player->sendSystemMessage("Usage: @warpPlayer <SUPPLY PLAYERNAME OR CURRENT TARGET> <starport> <hotel> <shuttle> <medical> <bank> <garage> <salon> \n");
-	}					
+	}*/
 }
 
 void GameCommandHandler::gm_summon(StringTokenizer tokenizer, Player * player) {
-	string name;
+	/*string name;
 	Player* targetPlayer;
 
 	ChatManager * chatManager = player->getZone()->getChatManager();
@@ -397,7 +397,7 @@ void GameCommandHandler::gm_summon(StringTokenizer tokenizer, Player * player) {
 		}
 	} catch (...) {
 		targetZone->unlock();
-	}
+	}*/
 }
 
 void GameCommandHandler::gm_kick(StringTokenizer tokenizer, Player * player) {
@@ -541,7 +541,7 @@ void GameCommandHandler::gm_mutePlayer(StringTokenizer tokenizer, Player * playe
 
 	try {
 		if (targetPlayer != player)
-		targetPlayer->wlock(player);
+			targetPlayer->wlock(player);
 
 		name = targetPlayer->getFirstName();
 		targetPlayer->mutePlayer();
@@ -555,10 +555,10 @@ void GameCommandHandler::gm_mutePlayer(StringTokenizer tokenizer, Player * playe
 		}
 
 		if (targetPlayer != player)
-		targetPlayer->unlock();
+			targetPlayer->unlock();
 	} catch (...) {
 		if (targetPlayer != player)
-		targetPlayer->unlock();
+			targetPlayer->unlock();
 	}
 }
 
@@ -586,7 +586,7 @@ void GameCommandHandler::gm_kill(StringTokenizer tokenizer, Player * player) {
 
 	try {
 		if (targetPlayer != player)
-		targetPlayer->wlock(player);
+			targetPlayer->wlock(player);
 
 		targetPlayer->kill();
 
@@ -594,11 +594,11 @@ void GameCommandHandler::gm_kill(StringTokenizer tokenizer, Player * player) {
 		player->sendSystemMessage("You killed the character \'" + name + "\'.");
 
 		if (targetPlayer != player)
-		targetPlayer->unlock();
+			targetPlayer->unlock();
 
 	} catch (...) {
 		if (targetPlayer != player)
-		targetPlayer->unlock();
+			targetPlayer->unlock();
 	}
 }
 
@@ -629,17 +629,17 @@ void GameCommandHandler::gm_killArea(StringTokenizer tokenizer, Player * player)
 
 					try {
 						if (otherPlayer != player)
-						otherPlayer->wlock(player);
+							otherPlayer->wlock(player);
 
 						otherPlayer->kill();
 
 						if (otherPlayer != player)
-						otherPlayer->unlock();
+							otherPlayer->unlock();
 
 						player->sendSystemMessage("player \'" + otherName + "\' has been killed.");
 					} catch (...) {
 						if (otherPlayer != player)
-						otherPlayer->unlock();
+							otherPlayer->unlock();
 						player->sendSystemMessage("unable to kill player \'" + otherName + "\'");
 					}
 
@@ -695,14 +695,21 @@ void GameCommandHandler::gm_ticketPurchase(StringTokenizer tokenizer, Player * p
 void GameCommandHandler::gm_awardBadge(StringTokenizer tokenizer, Player * player) {
 	int badgeid = tokenizer.getIntToken();
 	CreatureObject* target = (CreatureObject*) player->getTarget();
+	
 	if (target != NULL && target->isPlayer()) {
 		Player* targetPlayer = (Player*) target;
+		
+		if (targetPlayer != player)
+			targetPlayer->wlock(player);
 
 		if (targetPlayer->awardBadge(badgeid)) {
 			player->sendSystemMessage("You have awarded a badge.");
 			targetPlayer->sendSystemMessage("You have been awarded a badge.");
 		} else
 			player->sendSystemMessage("Invalid Badge ID");
+			
+		if (targetPlayer != player)
+			targetPlayer->unlock();
 	} else
 		player->sendSystemMessage("Invalid target.");
 }
@@ -1198,7 +1205,15 @@ void GameCommandHandler::gm_setAdminLevel(StringTokenizer tokenizer, Player * pl
 	Player * target = chatManager->getPlayer(name);
 	
 	if (target != NULL) {
+		
+		if (target != player)
+			target->wlock(player);
+			
 		target->setAdminLevel(level);
+		
+		if (target != player)
+			target->unlock();
+			
 		stringstream ss;
 		ss << player->getFirstName() << " has changed your admin level.";
 		target->sendSystemMessage(ss.str());

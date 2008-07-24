@@ -142,7 +142,7 @@ public:
 			}
 		
 		} catch (DatabaseException& e) {
-			cout << "FriendlistImplementation void addFriend -> Select DB Query exception! \n";
+			cout << "exception at Friendlist::addFriend()\n" << e.getMessage();
 			return;
 		}
 

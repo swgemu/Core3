@@ -364,9 +364,10 @@ void PlayerObjectImplementation::saveWaypoints(Player* player) {
 		
 			ServerDatabase::instance()->executeStatement(query);
 		}
-
+	} catch (DatabaseException& e) {
+		cout << "exception in PlayerObject::saveWaypoints()\n" << e.getMessage();
 	} catch (...) {
-		cout << "Exception in PlayerObjectImplementation::saveWaypoints" << endl;
+		cout << "exception in PlayerObject::saveWaypoints\n";
 	}
 	
 	unlock();

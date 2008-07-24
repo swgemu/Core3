@@ -595,6 +595,13 @@ void CraftingManagerImplementation::removeResourceFromCraft(Player* player,
 
 		// Use the crafting tool to amount of resources in the slot
 		TangibleObject* tano = craftingTool->getIngredientInSlot(slot);
+		
+		if (tano == NULL) {
+			draftSchematic->unlock();
+			craftingTool->unlock();
+			
+			return; // TODO: send some error message
+		}
 
 		// Pretty easy to understand this
 		if(tano->isResource()){
@@ -1837,13 +1844,13 @@ int CraftingManagerImplementation::lookUpResourceAttribute(Player* player,
 
 	TangibleObject* tano = craftingTool->getIngredientInSlot(slot);
 	
+	if (tano == NULL)
+		return 0;
+	
 	if(!tano->isResource())
 		return 0;
 	
 	ResourceContainer* rcno = (ResourceContainer*)tano;
-
-	if (rcno == NULL)
-		return 0;
 
 	int tempValue = 0;
 
