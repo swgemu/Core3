@@ -784,18 +784,18 @@ void PlayerManagerImplementation::moveItem(Player* sender, Player* receiver, Tan
 
 void PlayerManagerImplementation::doBankTip(Player* sender, Player* receiver, uint32 tipAmount, bool updateTipTo) {
 	//Pre: sender wlocked
-	if (!sender->verifyBankCredits(tipAmount)) {
+	if (!sender->verifyBankCredits(tipAmount + (tipAmount * .05))) {
 		sender->sendSystemMessage("You lack the required funds to do that. (Bank Tip.)");
 		return;
 	}
 	
 	try {
 		receiver->wlock(sender);
-		
+		float tax = tipAmount * 0.05;
 		receiver->addBankCredits(tipAmount);
-		sender->subtractBankCredits(tipAmount);
+		sender->subtractBankCredits(tipAmount + tax);
 
-		sender->sendSystemMessage("Your bank tip will be transferred soon.");
+		sender->sendSystemMessage("The Galactic Empire has collected a 5%  tax from your bank tip. This does not effect the amount recived by the other party. Thank you for your cooperation.");
 
 		//Now we send the tipper an email.
 
@@ -805,8 +805,14 @@ void PlayerManagerImplementation::doBankTip(Player* sender, Player* receiver, ui
 
 		string charNameSender = sender->getFirstName();
 
-		unicode subjectSender("SENT BANK TIP");
-		unicode bodySender("SENT BANK TIP");
+		unicode subjectSender("RECIEPT FOR BANK TIP");
+		stringstream ss;
+		ss << "You have sent a bank tip of " << tipAmount << " credits to " << receiver->getFirstName() << "." << endl;
+		ss << "The Following is a summary of your charges:" << endl << endl ;
+		ss << "Tip Amount: " << tipAmount << " credits" << endl;
+		ss << "Imperial Tax: " << tax << " credits" << endl;
+		ss << endl << "Total Charges: " << tipAmount + tax << " credits";
+		unicode bodySender(ss.str());
 
 		ChatManager* chatManager = server->getChatManager();
 		chatManager->sendMail(mailSender, subjectSender, bodySender, charNameSender);
@@ -816,8 +822,10 @@ void PlayerManagerImplementation::doBankTip(Player* sender, Player* receiver, ui
 			//But we have to make sure they are online first. Passed in the method.
 			string charNameReceiver = receiver->getFirstName();
 
-			unicode subjectReceiver("RECEIVED BANK TIP");
-			unicode bodyReceiver("RECEIVED BANK TIP");
+			unicode subjectReceiver("BANK TIP RECEIVED");
+			stringstream ss2;
+			ss2 << "You have recieved a bank tip of " << tipAmount << " credits from " << sender->getFirstName() << ".";
+			unicode bodyReceiver(ss2.str());
 
 			//Email the player you bank tipped.
 			chatManager->sendMail(mailSender, subjectReceiver, bodyReceiver, charNameReceiver);
@@ -848,7 +856,9 @@ void PlayerManagerImplementation::doCashTip(Player* sender, Player* receiver, ui
 		if (updateTipTo == true) {
 			//This is where we notify the other player with mail + sys message.
 			//But we have to make sure they are online first. Passed in the method.
-			receiver->sendSystemMessage("You have been tipped.");
+			stringstream ss;
+			ss << "You have been tipped " << tipAmount << " credits by " << sender->getFirstName() << "."; 
+			receiver->sendSystemMessage(ss.str());
 		}
 		
 		receiver->unlock();
