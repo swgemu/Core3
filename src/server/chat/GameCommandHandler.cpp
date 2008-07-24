@@ -62,7 +62,7 @@ void GameCommandHandler::init() {
 	const int CSR = PlayerImplementation::CSR;
 	const int NORMAL = PlayerImplementation::NORMAL;
 	const int QA = PlayerImplementation::QA;
-	const int PRIVLIDGED = DEVELOPER | CSR;
+	const int PRIVILEGED = DEVELOPER | CSR;
 	const int ALL = DEVELOPER | NORMAL | CSR | QA;
 	
 	gmCommands = new GMCommandMap();
@@ -71,27 +71,27 @@ void GameCommandHandler::init() {
 			"Prints a list of commands.",
 			"Usage: @help [command]",
 			&gm_help);
-	gmCommands->addCommand("map", PRIVLIDGED | QA, 
+	gmCommands->addCommand("map", PRIVILEGED | QA, 
 			"Warps you to a different map.", 
 			"Usage: @map <planetid> \n PlanetId List: 0=Corellia, 1=Dantooine, 2=Dathomir, 3=Endor, 4=Lok, 5=Naboo, 6=Rori, 7=Talus, 8=Tatooine, 9=Yavin ",
 			&gm_map);
-	gmCommands->addCommand("warp", PRIVLIDGED | QA, 
+	gmCommands->addCommand("warp", PRIVILEGED | QA, 
 			"Warps you to a given set of coordinates.",
 			"Usage: @warp <x> <y>",
 			&gm_warp);
-	gmCommands->addCommand("warpTo", PRIVLIDGED | QA,
+	gmCommands->addCommand("warpTo", PRIVILEGED | QA,
 			"Warps you to a player\'s location ",
 			"Usage @warpTo <player>",
 			&gm_warpTo);
-	gmCommands->addCommand("warpPlayer", PRIVLIDGED,
+	/*gmCommands->addCommand("warpPlayer", PRIVILEGED,
 			"Warps a player to a given set of coordinates.",
 			"Usage: @warpPlayer <player> <starport |hotel | shuttle | medical | bank | garage | salon>",
-			&gm_warpPlayer);
-	gmCommands->addCommand("summon", PRIVLIDGED, 
+			&gm_warpPlayer);*/
+	/*gmCommands->addCommand("summon", PRIVILEGED, 
 			"Warps a player to your location.",
 			"Usage: @summon <player>",
-			&gm_summon);
-	gmCommands->addCommand("kick", PRIVLIDGED, 
+			&gm_summon);*/
+	gmCommands->addCommand("kick", PRIVILEGED, 
 			"Disconnects a player from the game.",
 			"Usage: @kick <player>",
 			&gm_kick);
@@ -107,11 +107,11 @@ void GameCommandHandler::init() {
 			"Bans a user from logging in to the server.",
 			"Usage: @banUser <player>",
 			&gm_banUser);
-	gmCommands->addCommand("mutePlayer", PRIVLIDGED, 
+	gmCommands->addCommand("mutePlayer", PRIVILEGED, 
 			"Prevents a player from speaking in spacial chat.",
 			"Usage: @mutePlayer <player>",
 			&gm_mutePlayer);
-	gmCommands->addCommand("kill", PRIVLIDGED, 
+	gmCommands->addCommand("kill", PRIVILEGED, 
 			"Kills a player.", 
 			"Usage: @kill <player>",
 			&gm_kill);
@@ -119,11 +119,11 @@ void GameCommandHandler::init() {
 			"Kills all players within a certain range.", 
 			"Usage: @killArea [distance]",
 			&gm_killArea);
-	gmCommands->addCommand("muteChat", PRIVLIDGED, 
+	gmCommands->addCommand("muteChat", PRIVILEGED, 
 			"Prevents players from speaking in chat.", 
 			"Usage: @muteChat",
 			&gm_muteChat);
-	gmCommands->addCommand("users", PRIVLIDGED, 
+	gmCommands->addCommand("users", PRIVILEGED, 
 			"Prints the amount of users on the server.",
 			"Usage: @users",
 			&gm_users);
@@ -131,7 +131,7 @@ void GameCommandHandler::init() {
 			"Changes the weather conditions on the planet.", 
 			"Usage: @setWeather <1-5>",
 			&gm_setWeather);
-	gmCommands->addCommand("ticketPurchase", PRIVLIDGED, 
+	gmCommands->addCommand("ticketPurchase", PRIVILEGED, 
 			"Gives you a travel ticket.", 
 			"Usage: @ticketPurchase <planet> <city>",
 			&gm_ticketPurchase);
@@ -139,7 +139,7 @@ void GameCommandHandler::init() {
 			"Awards a badge to targeted player.", 
 			"Usage: @awardBadge <badgeid>",
 			&gm_awardBadge);
-	gmCommands->addCommand("systemMessage", PRIVLIDGED, 
+	gmCommands->addCommand("systemMessage", PRIVILEGED, 
 			"Sends a message to all players on the server.",
 			"Usage: @systemMessage <range> <message>",
 			&gm_systemMessage);
@@ -293,7 +293,7 @@ void GameCommandHandler::gm_warpTo(StringTokenizer tokenizer, Player * player) {
 }
 
 void GameCommandHandler::gm_warpPlayer(StringTokenizer tokenizer, Player * player) {
-	/*string name, whereTo = "";
+	string name, whereTo = "";
 	Player* targetPlayer;
 	
 	ChatManager * chatManager = player->getZone()->getChatManager();
@@ -350,11 +350,11 @@ void GameCommandHandler::gm_warpPlayer(StringTokenizer tokenizer, Player * playe
 		}
 	} else {
 		player->sendSystemMessage("Usage: @warpPlayer <SUPPLY PLAYERNAME OR CURRENT TARGET> <starport> <hotel> <shuttle> <medical> <bank> <garage> <salon> \n");
-	}*/
+	}
 }
 
 void GameCommandHandler::gm_summon(StringTokenizer tokenizer, Player * player) {
-	/*string name;
+	string name;
 	Player* targetPlayer;
 
 	ChatManager * chatManager = player->getZone()->getChatManager();
@@ -397,7 +397,7 @@ void GameCommandHandler::gm_summon(StringTokenizer tokenizer, Player * player) {
 		}
 	} catch (...) {
 		targetZone->unlock();
-	}*/
+	}
 }
 
 void GameCommandHandler::gm_kick(StringTokenizer tokenizer, Player * player) {
