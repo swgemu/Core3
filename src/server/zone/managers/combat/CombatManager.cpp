@@ -86,6 +86,7 @@ float CombatManager::doTargetSkill(CommandQueueAction* action) {
 		creature->stopListen(creature->getListenID());
 
 	TargetSkill* tskill = (TargetSkill*)action->getSkill();
+	string actionModifier = action->getActionModifier();
 	
 	if (tskill->isHealSkill()) {
 		if (!tskill->calculateCost(creature))
@@ -95,7 +96,7 @@ float CombatManager::doTargetSkill(CommandQueueAction* action) {
 			if (creature != target)
 				target->wlock(creature);
 			
-				tskill->doSkill(creature, target);
+				tskill->doSkill(creature, target, actionModifier);
 			
 			if (creature != target)
 				target->unlock();
@@ -117,7 +118,7 @@ float CombatManager::doTargetSkill(CommandQueueAction* action) {
 	
 	CombatAction* actionMessage = new CombatAction(creature, animCRC);
 	
-	if (!doAction(creature, target, tskill, actionMessage)) {
+	if (!doAction(creature, target, tskill, actionModifier, actionMessage)) {
 		delete actionMessage;
 		return 0.0f;
 	}
@@ -165,6 +166,8 @@ void CombatManager::handleAreaAction(CreatureObject* creature, SceneObject* targ
 	
 	float DirectionVectorX = target->getPositionX() - CreatureVectorX;
 	float DirectionVectorY = target->getPositionY() - CreatureVectorY;
+	
+	string actionModifier = action->getActionModifier();
 
 	Zone* zone = creature->getZone();
 	try {
@@ -205,7 +208,7 @@ void CombatManager::handleAreaAction(CreatureObject* creature, SceneObject* targ
 			
 			zone->unlock();
 
-			doAction(creature, targetObject, skill, NULL);
+			doAction(creature, targetObject, skill, actionModifier, NULL);
 
 			zone->lock();
 		}
@@ -218,7 +221,7 @@ void CombatManager::handleAreaAction(CreatureObject* creature, SceneObject* targ
 	}
 }
 
-bool CombatManager::doAction(CreatureObject* attacker, SceneObject* target, TargetSkill* skill, CombatAction* actionMessage) {
+bool CombatManager::doAction(CreatureObject* attacker, SceneObject* target, TargetSkill* skill,  string& modifier, CombatAction* actionMessage) {
 	try {
 		target->wlock(attacker);
 		
@@ -284,7 +287,7 @@ bool CombatManager::doAction(CreatureObject* attacker, SceneObject* target, Targ
 			attacker->clearState(CreatureObjectImplementation::PEACE_STATE);
 		}
 		
-		int damage = skill->doSkill(attacker, target, false);
+		int damage = skill->doSkill(attacker, target, modifier, false);
 		
 		if (actionMessage != NULL && targetCreature != NULL) //disabled untill we figure out how to make it work for more defenders
 			actionMessage->addDefender(targetCreature, damage > 0); 

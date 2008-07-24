@@ -100,7 +100,7 @@ public:
 			creature->doAnimation("heal_other");
 	}
 	
-	int doSkill(CreatureObject* creature, SceneObject* target, bool doAnimation = true) {
+	int doSkill(CreatureObject* creature, SceneObject* target, const string& modifier, bool doAnimation = true) {
 		if(target->isNonPlayerCreature() || target->isPlayer()) {
 			CreatureObject* targetCreature = (CreatureObject*)target;
 			calculateHeal(creature, targetCreature);

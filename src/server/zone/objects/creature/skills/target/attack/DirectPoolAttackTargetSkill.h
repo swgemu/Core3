@@ -63,7 +63,7 @@ public:
 		willpowerPoolAttackChance = 0;
 	}
 	
-	int doSkill(CreatureObject* creature, SceneObject* target, bool doAnimation = true) {
+	int doSkill(CreatureObject* creature, SceneObject* target, const string& modifier, bool doAnimation = true) {
 		int damage = calculateDamage(creature, target);
 		
 		/*if (doAnimation) {

@@ -112,7 +112,7 @@ public:
 		
 		if (player->hasQueuedState(BuffCRC::JEDI_FORCE_RUN_1) || 
 			player->hasQueuedState(BuffCRC::JEDI_FORCE_RUN_2) || 
-			player->hasQueuedState(BuffCRC::JEDI_FORCE_RUN_2)) {
+			player->hasQueuedState(BuffCRC::JEDI_FORCE_RUN_3)) {
 			player->sendSystemMessage("You are already force running.");
 
 			return false;

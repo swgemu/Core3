@@ -74,7 +74,7 @@ public:
 		coneAngle = 0;		
 	}
 	
-	virtual int doSkill(CreatureObject* creature, SceneObject* target, bool doAnimation = true) = 0;
+	virtual int doSkill(CreatureObject* creature, SceneObject* target, const string& modifier, bool doAnimation = true) = 0;
 	
 	virtual void doAnimations(CreatureObject* creature, SceneObject* target) {
 	}

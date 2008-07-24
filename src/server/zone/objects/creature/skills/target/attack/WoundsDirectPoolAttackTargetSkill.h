@@ -52,7 +52,7 @@ public:
 	WoundsDirectPoolAttackTargetSkill(const string& name, const string& anim, ZoneProcessServerImplementation* serv) : DirectPoolAttackTargetSkill(name, anim, serv) {
 	}
 	
-	int doSkill(CreatureObject* creature, SceneObject* target, bool doAnimation = true) {
+	int doSkill(CreatureObject* creature, SceneObject* target, const string& modifier, bool doAnimation = true) {
 		
 		int damage = calculateDamage(creature, target);
 		
