@@ -339,7 +339,8 @@ void PlanetManagerImplementation::loadBuildings() {
 
 
 BuildingObject* PlanetManagerImplementation::findBuildingType(const string& word, float targetX, float targetY) {	
-
+	lock();
+	
 	uint16 accumDistance, distance = 32768;
 	BuildingObject* buiID = 0;
 
@@ -420,6 +421,8 @@ BuildingObject* PlanetManagerImplementation::findBuildingType(const string& word
 			}				
 		}
 	}
+	
+	unlock();
 	
 	return buiID;	
 }

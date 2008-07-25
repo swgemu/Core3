@@ -19,6 +19,10 @@ class ChatManager : public DistributedObjectStub {
 public:
 	ChatManager(ZoneServer* server, int initPlayers);
 
+	void lock(bool doLock = true);
+
+	void unlock(bool doLock = true);
+
 	void addPlayer(Player* player);
 
 	Player* getPlayer(string& name);
@@ -110,6 +114,10 @@ public:
 	ChatManagerAdapter(ChatManagerImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	void lock(bool doLock);
+
+	void unlock(bool doLock);
 
 	void addPlayer(Player* player);
 

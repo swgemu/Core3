@@ -78,7 +78,6 @@ LairObjectImplementation::LairObjectImplementation(uint32 objCRC, uint64 oid)
 }
 
 void LairObjectImplementation::doDamage(int damage, SceneObject* attacker) {
-	
 	if (!attackable)
 		return;
 	
@@ -125,8 +124,17 @@ void LairObjectImplementation::spawnCreatures() {
 		Creature* creature = creatureManager->spawnCreature(creatureCRC, x, y, bitmask, baby, false);
 		creatures.add(creature);
 		
-		for (int i = 0; i < defenderList.size(); i++) {
-			creature->addDefender(defenderList.get(i));
+		try {
+			creature->wlock(_this);
+
+			for (int i = 0; i < defenderList.size(); i++) {
+				creature->addDefender(defenderList.get(i));
+			}
+
+			creature->unlock();
+
+		} catch (...) {
+			creature->unlock();
 		}
 	}
 }
@@ -146,7 +154,16 @@ void LairObjectImplementation::addDefender(SceneObject* defender) {
 	
 	for (int i = 0; i < creatures.size(); i++) {
 		Creature* creature = creatures.get(i);
-		creature->addDefender(defender);
+		
+		try {
+			creature->wlock(_this);
+			
+			creature->addDefender(defender);
+			
+			creature->unlock();
+		} catch (...) {
+			creature->unlock();
+		}
 	}
 }
 

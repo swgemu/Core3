@@ -1,44 +1,44 @@
 /*
 Copyright (C) 2007 <SWGEmu>
- 
+
 This File is part of Core3.
- 
-This program is free software; you can redistribute 
-it and/or modify it under the terms of the GNU Lesser 
+
+This program is free software; you can redistribute
+it and/or modify it under the terms of the GNU Lesser
 General Public License as published by the Free Software
-Foundation; either version 2 of the License, 
+Foundation; either version 2 of the License,
 or (at your option) any later version.
- 
-This program is distributed in the hope that it will be useful, 
-but WITHOUT ANY WARRANTY; without even the implied warranty of 
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 See the GNU Lesser General Public License for
 more details.
- 
-You should have received a copy of the GNU Lesser General 
+
+You should have received a copy of the GNU Lesser General
 Public License along with this program; if not, write to
 the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
- 
-Linking Engine3 statically or dynamically with other modules 
-is making a combined work based on Engine3. 
-Thus, the terms and conditions of the GNU Lesser General Public License 
+
+Linking Engine3 statically or dynamically with other modules
+is making a combined work based on Engine3.
+Thus, the terms and conditions of the GNU Lesser General Public License
 cover the whole combination.
- 
-In addition, as a special exception, the copyright holders of Engine3 
-give you permission to combine Engine3 program with free software 
-programs or libraries that are released under the GNU LGPL and with 
-code included in the standard release of Core3 under the GNU LGPL 
-license (or modified versions of such code, with unchanged license). 
-You may copy and distribute such a system following the terms of the 
-GNU LGPL for Engine3 and the licenses of the other code concerned, 
-provided that you include the source code of that other code when 
+
+In addition, as a special exception, the copyright holders of Engine3
+give you permission to combine Engine3 program with free software
+programs or libraries that are released under the GNU LGPL and with
+code included in the standard release of Core3 under the GNU LGPL
+license (or modified versions of such code, with unchanged license).
+You may copy and distribute such a system following the terms of the
+GNU LGPL for Engine3 and the licenses of the other code concerned,
+provided that you include the source code of that other code when
 and as the GNU LGPL requires distribution of source code.
- 
-Note that people who make modified versions of Engine3 are not obligated 
-to grant this special exception for their modified versions; 
-it is their choice whether to do so. The GNU Lesser General Public License 
-gives permission to release a modified version without this exception; 
-this exception also makes it possible to release a modified version 
+
+Note that people who make modified versions of Engine3 are not obligated
+to grant this special exception for their modified versions;
+it is their choice whether to do so. The GNU Lesser General Public License
+gives permission to release a modified version without this exception;
+this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 #include <iostream>
@@ -64,18 +64,18 @@ void GameCommandHandler::init() {
 	const int QA = PlayerImplementation::QA;
 	const int PRIVILEGED = DEVELOPER | CSR;
 	const int ALL = DEVELOPER | NORMAL | CSR | QA;
-	
+
 	gmCommands = new GMCommandMap();
-	
-	gmCommands->addCommand("help", ALL, 
+
+	gmCommands->addCommand("help", ALL,
 			"Prints a list of commands.",
 			"Usage: @help [command]",
 			&gm_help);
-	gmCommands->addCommand("map", PRIVILEGED | QA, 
-			"Warps you to a different map.", 
+	gmCommands->addCommand("map", PRIVILEGED | QA,
+			"Warps you to a different map.",
 			"Usage: @map <planetid> \n PlanetId List: 0=Corellia, 1=Dantooine, 2=Dathomir, 3=Endor, 4=Lok, 5=Naboo, 6=Rori, 7=Talus, 8=Tatooine, 9=Yavin ",
 			&gm_map);
-	gmCommands->addCommand("warp", PRIVILEGED | QA, 
+	gmCommands->addCommand("warp", PRIVILEGED | QA,
 			"Warps you to a given set of coordinates.",
 			"Usage: @warp <x> <y>",
 			&gm_warp);
@@ -83,146 +83,146 @@ void GameCommandHandler::init() {
 			"Warps you to a player\'s location ",
 			"Usage @warpTo <player>",
 			&gm_warpTo);
-	/*gmCommands->addCommand("warpPlayer", PRIVILEGED,
+	gmCommands->addCommand("warpPlayer", PRIVILEGED,
 			"Warps a player to a given set of coordinates.",
 			"Usage: @warpPlayer <player> <starport |hotel | shuttle | medical | bank | garage | salon>",
-			&gm_warpPlayer);*/
-	/*gmCommands->addCommand("summon", PRIVILEGED, 
+			&gm_warpPlayer);
+	gmCommands->addCommand("summon", PRIVILEGED,
 			"Warps a player to your location.",
 			"Usage: @summon <player>",
-			&gm_summon);*/
-	gmCommands->addCommand("kick", PRIVILEGED, 
+			&gm_summon);
+	gmCommands->addCommand("kick", PRIVILEGED,
 			"Disconnects a player from the game.",
 			"Usage: @kick <player>",
 			&gm_kick);
-	gmCommands->addCommand("kickArea", DEVELOPER, 
+	gmCommands->addCommand("kickArea", DEVELOPER,
 			"Disconnects all players in a certain range.",
 			"Usage: @kickArea [distance]",
 			&gm_kickArea);
-	gmCommands->addCommand("printRoomTree", DEVELOPER, 
+	gmCommands->addCommand("printRoomTree", DEVELOPER,
 			"Prints the room tree.",
 			"Usage: @printRoomTree",
 			&gm_printRoomTree);
-	gmCommands->addCommand("banUser", DEVELOPER, 
+	gmCommands->addCommand("banUser", DEVELOPER,
 			"Bans a user from logging in to the server.",
 			"Usage: @banUser <player>",
 			&gm_banUser);
-	gmCommands->addCommand("mutePlayer", PRIVILEGED, 
+	gmCommands->addCommand("mutePlayer", PRIVILEGED,
 			"Prevents a player from speaking in spacial chat.",
 			"Usage: @mutePlayer <player>",
 			&gm_mutePlayer);
-	gmCommands->addCommand("kill", PRIVILEGED, 
-			"Kills a player.", 
+	gmCommands->addCommand("kill", PRIVILEGED,
+			"Kills a player.",
 			"Usage: @kill <player>",
 			&gm_kill);
-	gmCommands->addCommand("killArea", DEVELOPER, 
-			"Kills all players within a certain range.", 
+	gmCommands->addCommand("killArea", DEVELOPER,
+			"Kills all players within a certain range.",
 			"Usage: @killArea [distance]",
 			&gm_killArea);
-	gmCommands->addCommand("muteChat", PRIVILEGED, 
-			"Prevents players from speaking in chat.", 
+	gmCommands->addCommand("muteChat", PRIVILEGED,
+			"Prevents players from speaking in chat.",
 			"Usage: @muteChat",
 			&gm_muteChat);
-	gmCommands->addCommand("users", PRIVILEGED, 
+	gmCommands->addCommand("users", PRIVILEGED,
 			"Prints the amount of users on the server.",
 			"Usage: @users",
 			&gm_users);
-	gmCommands->addCommand("setWeather", DEVELOPER, 
-			"Changes the weather conditions on the planet.", 
+	gmCommands->addCommand("setWeather", DEVELOPER,
+			"Changes the weather conditions on the planet.",
 			"Usage: @setWeather <1-5>",
 			&gm_setWeather);
-	gmCommands->addCommand("ticketPurchase", PRIVILEGED, 
-			"Gives you a travel ticket.", 
+	gmCommands->addCommand("ticketPurchase", PRIVILEGED,
+			"Gives you a travel ticket.",
 			"Usage: @ticketPurchase <planet> <city>",
 			&gm_ticketPurchase);
-	gmCommands->addCommand("awardBadge", DEVELOPER, 
-			"Awards a badge to targeted player.", 
+	gmCommands->addCommand("awardBadge", DEVELOPER,
+			"Awards a badge to targeted player.",
 			"Usage: @awardBadge <badgeid>",
 			&gm_awardBadge);
-	gmCommands->addCommand("systemMessage", PRIVILEGED, 
+	gmCommands->addCommand("systemMessage", PRIVILEGED,
 			"Sends a message to all players on the server.",
 			"Usage: @systemMessage <range> <message>",
 			&gm_systemMessage);
-	gmCommands->addCommand("setForceMax", DEVELOPER, 
-			"Sets your force bar to the max level.", 
+	gmCommands->addCommand("setForceMax", DEVELOPER,
+			"Sets your force bar to the max level.",
 			"Usage: @setForceMax",
 			&gm_setForceMax);
-	gmCommands->addCommand("setForce", DEVELOPER, 
+	gmCommands->addCommand("setForce", DEVELOPER,
 			"Sets your force bar to a given level.",
 			"Usage: @setForce <value>",
 			&gm_setForce);
-	gmCommands->addCommand("setDrinkFilling", DEVELOPER, 
-			"Sets your player's drink filling.", 
+	gmCommands->addCommand("setDrinkFilling", DEVELOPER,
+			"Sets your player's drink filling.",
 			"Usage: @setDrinkFilling <value>",
 			&gm_setDrinkFilling);
-	gmCommands->addCommand("setFoodFilling", DEVELOPER, 
+	gmCommands->addCommand("setFoodFilling", DEVELOPER,
 			"Sets your player's food filling.",
 			"Usage: @setFoodFilling <value>",
 			&gm_setFoodFilling);
-	gmCommands->addCommand("getDrinkFilling", DEVELOPER, 
-			"Prints your current drink fill level.", 
+	gmCommands->addCommand("getDrinkFilling", DEVELOPER,
+			"Prints your current drink fill level.",
 			"Usage: @getDrinkFilling",
 			&gm_getDrinkFilling);
-	gmCommands->addCommand("getFoodFilling", DEVELOPER, 
-			"Prints your current food fill level.", 
+	gmCommands->addCommand("getFoodFilling", DEVELOPER,
+			"Prints your current food fill level.",
 			"Usage: @getFoodFilling",
 			&gm_getFoodFilling);
-	gmCommands->addCommand("logAppearance", DEVELOPER, 
-			"Prints your appearance stats.", 
+	gmCommands->addCommand("logAppearance", DEVELOPER,
+			"Prints your appearance stats.",
 			"Usage: @logApperarance",
 			&gm_logAppearance);
-	gmCommands->addCommand("updateAppearance", DEVELOPER, 
-			"Reloads your character\'s appearance.", 
+	gmCommands->addCommand("updateAppearance", DEVELOPER,
+			"Reloads your character\'s appearance.",
 			"Usage: @updateAppearance",
 			&gm_updateAppearance);
-	gmCommands->addCommand("setAppearanceVariable", DEVELOPER, 
+	gmCommands->addCommand("setAppearanceVariable", DEVELOPER,
 			"Sets an apperance variable for your character.",
 			"Usage: @setAppearanceVariable <variable> <value>",
 			&gm_setAppearanceVariable);
-	gmCommands->addCommand("HAMStats", DEVELOPER, 
-			"Prints your current HAM stats.", 
+	gmCommands->addCommand("HAMStats", DEVELOPER,
+			"Prints your current HAM stats.",
 			"Usage: @HAMStats",
 			&gm_HAMStats);
-	gmCommands->addCommand("buff", ALL, 
+	gmCommands->addCommand("buff", ALL,
 			"Buffs your player.",
 			"Usage: @buff",
 			&gm_buff);
-	gmCommands->addCommand("spice", ALL, 
+	gmCommands->addCommand("spice", ALL,
 			"Gives your player a certain spice.",
 			"Usage: @spice <spice>",
 			&gm_spice);
-	gmCommands->addCommand("dbStats", DEVELOPER, 
-			"Prints various database stats.", 
+	/*gmCommands->addCommand("dbStats", DEVELOPER,
+			"Prints various database stats.",
 			"Usage: @dbStats",
 			&gm_dbStats);
-	gmCommands->addCommand("dbShowDeleted", DEVELOPER, 
-			"Prints deleted items from the database.", 
+	gmCommands->addCommand("dbShowDeleted", DEVELOPER,
+			"Prints deleted items from the database.",
 			"Usage: @dbShowDeleted",
 			&gm_dbShowDeleted);
-	gmCommands->addCommand("dbPurge", DEVELOPER, 
-			"Purges deleted items from the database.", 
+	gmCommands->addCommand("dbPurge", DEVELOPER,
+			"Purges deleted items from the database.",
 			"Usage: @dbPurge",
-			&gm_dbPurge);
-	gmCommands->addCommand("getDirection", DEVELOPER, 
+			&gm_dbPurge);*/
+	gmCommands->addCommand("getDirection", DEVELOPER,
 			"Prints out your direction or the direction of a targeted object.",
 			"Usage: @getDirection",
 			&gm_getDirection);
-	gmCommands->addCommand("setAdminLevel", DEVELOPER, 
+	gmCommands->addCommand("setAdminLevel", DEVELOPER,
 			"Sets your admin level.",
 			"Usage: @setAdminLevel <player> <level> \n Levels: 1-CSR 2-DEVELOPER 4-PLAYER 8-QA",
 			&gm_setAdminLevel);
 	gmCommands->addCommand("getLocation", ALL,
-			"Gives full detailsofyour location.", 
+			"Gives full detailsofyour location.",
 			"Usage: @getLocation",
 			&gm_getLocation);
 	/* Uncomment for use on DEV servers
 	gmCommands->addCommand("getCords", DEVELOPER,
 			"Command to aid the cave devs placing of creatures, SpawnCreature command is written pre-formatted to a file.",
-			"Usage: @getCords <nameOfCreatureFile>", 
+			"Usage: @getCords <nameOfCreatureFile>",
 			&gm_getCords); */
 	gmCommands->addCommand("giveItemTemp", DEVELOPER,
 			"Adds a requested item to your inventory.",
-			"Usage: @giveItemTemp <Item Type> [item sub-type]", 
+			"Usage: @giveItemTemp <Item Type> [item sub-type]",
 			&gm_giveItemTemp);
 }
 
@@ -230,24 +230,24 @@ void GameCommandHandler::gm_help(StringTokenizer tokenizer, Player * player) {
 	if (tokenizer.hasMoreTokens()) {
 		string token;
 		tokenizer.getStringToken(token);
-		
+
 		if(gmCommands->containsKey(token)) {
 			player->sendSystemMessage(gmCommands->get(token)->getDesc());
-			player->sendSystemMessage(gmCommands->get(token)->getUsage());		
+			player->sendSystemMessage(gmCommands->get(token)->getUsage());
 			return;
 		}
 	}
-	
+
 	LinkedList<string> list = gmCommands->getCommandList();
 	stringstream ss;
 	ss << "Command List: ";
-	
+
 	for(int i = 0; i < list.size(); i++) {
 		string cmd = list.get(i);
 		if(gmCommands->get(cmd)->getRequiredAdminLevel() & player->getAdminLevel())
 			ss << list.get(i) << ", ";
 	}
-		
+
 	player->sendSystemMessage(ss.str().substr(0, ss.str().length() - 2));
 }
 
@@ -277,31 +277,31 @@ void GameCommandHandler::gm_warp(StringTokenizer tokenizer, Player * player) {
 			player->doWarp(x, y);
 		else
 			player->doWarp(x, y, -1600.f, 0, cellID);
-	} 
+	}
 }
 
 void GameCommandHandler::gm_warpTo(StringTokenizer tokenizer, Player * player) {
 	ChatManager * chatManager = player->getZone()->getChatManager();
-	
+
 	string name;
 	tokenizer.getStringToken(name);
-	
+
 	Player* target = chatManager->getPlayer(name);
-	
+
 	if (target != NULL)
 		player->doWarp(target->getPositionX(), target->getPositionY(), 0, 64);
 }
 
 void GameCommandHandler::gm_warpPlayer(StringTokenizer tokenizer, Player * player) {
 	string name, whereTo = "";
-	Player* targetPlayer;
-	
+	Player* targetPlayer = NULL;
+
 	ChatManager * chatManager = player->getZone()->getChatManager();
-	
-	
+
+
 	if (tokenizer.hasMoreTokens()) {
 		tokenizer.getStringToken(name);
-		
+
 		if (tokenizer.hasMoreTokens()) {
 			tokenizer.getStringToken(whereTo);
 			targetPlayer = chatManager->getPlayer(name);
@@ -318,15 +318,21 @@ void GameCommandHandler::gm_warpPlayer(StringTokenizer tokenizer, Player * playe
 			}
 		}
 
-		float targetX = targetPlayer->getPositionX();
-		float targetY = targetPlayer->getPositionY();
-
-		Zone* targetZone = targetPlayer->getZone();
-		if (targetZone == NULL)
+		if (targetPlayer == player)
 			return;
 
 		try {
-			targetZone->lock();
+			targetPlayer->wlock(player);
+
+			float targetX = targetPlayer->getPositionX();
+			float targetY = targetPlayer->getPositionY();
+
+			Zone* targetZone = targetPlayer->getZone();
+
+			if (targetZone == NULL) {
+				targetPlayer->unlock();
+				return;
+			}
 
 			if (whereTo != "") {
 				PlanetManager* planetManager = targetZone->getPlanetManager();
@@ -334,19 +340,19 @@ void GameCommandHandler::gm_warpPlayer(StringTokenizer tokenizer, Player * playe
 				BuildingObject* buiID = planetManager->findBuildingType(whereTo, targetX, targetY);
 
 				if (buiID) {
-					targetZone->unlock();
 					targetPlayer->doWarp(buiID->getPositionX(), buiID->getPositionY(), 0, 0);
+					targetPlayer->unlock();
 				} else {
-					targetZone->unlock();
+					targetPlayer->unlock();
 					player->sendSystemMessage("@warpPlayer didn't return a valid building ?! \n");
 					return;
 				}
 			} else {
-				targetZone->unlock();
+				targetPlayer->unlock();
 				player->sendSystemMessage("Usage: @warpPlayer <SUPPLY PLAYERNAME OR CURRENT TARGET> <starport> <hotel> <shuttle> <medical> <bank> <garage> <salon> \n");
 			}
 		} catch (...) {
-			targetZone->unlock();
+			targetPlayer->unlock();
 		}
 	} else {
 		player->sendSystemMessage("Usage: @warpPlayer <SUPPLY PLAYERNAME OR CURRENT TARGET> <starport> <hotel> <shuttle> <medical> <bank> <garage> <salon> \n");
@@ -355,10 +361,10 @@ void GameCommandHandler::gm_warpPlayer(StringTokenizer tokenizer, Player * playe
 
 void GameCommandHandler::gm_summon(StringTokenizer tokenizer, Player * player) {
 	string name;
-	Player* targetPlayer;
+	Player* targetPlayer = NULL;
 
 	ChatManager * chatManager = player->getZone()->getChatManager();
-	
+
 	if (tokenizer.hasMoreTokens()) {
 		tokenizer.getStringToken(name);
 		targetPlayer = chatManager->getPlayer(name);
@@ -375,28 +381,35 @@ void GameCommandHandler::gm_summon(StringTokenizer tokenizer, Player * player) {
 		}
 	}
 
-	if (targetPlayer->getZoneIndex() != player->getZoneIndex()) {
-		player->sendSystemMessage("You cant summon a player on a different planet! This feature will be added soon(R). \n");
-		return;
-	}
-
-	Zone* targetZone = targetPlayer->getZone();
-	if (targetZone == NULL)
+	if (targetPlayer == NULL || targetPlayer == player)
 		return;
 
 	try {
-		targetZone->lock();
+		targetPlayer->wlock(player);
+
+		if (targetPlayer->getZoneIndex() != player->getZoneIndex()) {
+			player->sendSystemMessage("You cant summon a player on a different planet! This feature will be added soon(R). \n");
+			targetPlayer->unlock();
+			return;
+		}
+
+		Zone* targetZone = targetPlayer->getZone();
+
+		if (targetZone == NULL) {
+			targetPlayer->unlock();
+			return;
+		}
 
 		if (name != player->getFirstName()) {
-			targetZone->unlock();
 			targetPlayer->doWarp(player->getPositionX(), player->getPositionY(), 0, 10);
+			targetPlayer->unlock();
 		} else {
-			targetZone->unlock();
+			targetPlayer->unlock();
 			player->sendSystemMessage("Usage: @summon <SUPPLY PLAYERNAME OR CURRENT TARGET> \n");
 			return;
 		}
 	} catch (...) {
-		targetZone->unlock();
+		targetPlayer->unlock();
 	}
 }
 
@@ -404,12 +417,12 @@ void GameCommandHandler::gm_kick(StringTokenizer tokenizer, Player * player) {
 	string name;
 	Player* targetPlayer;
 	ZoneServer * server = player->getZone()->getZoneServer();
-	
+
 	ChatManager * chatManager = player->getZone()->getChatManager();
-		
+
 	if (tokenizer.hasMoreTokens()) {
 		tokenizer.getStringToken(name);
-		
+
 		targetPlayer = chatManager->getPlayer(name);
 
 		if (targetPlayer == NULL)
@@ -437,7 +450,7 @@ void GameCommandHandler::gm_kick(StringTokenizer tokenizer, Player * player) {
 
 void GameCommandHandler::gm_kickArea(StringTokenizer tokenizer, Player * player) {
 	ZoneServer * server = player->getZone()->getZoneServer();
-	
+
 	string name = player->getFirstName();
 	//Default
 	int meter = 32;
@@ -491,13 +504,13 @@ void GameCommandHandler::gm_printRoomTree(StringTokenizer tokenizer, Player * pl
 void GameCommandHandler::gm_banUser(StringTokenizer tokenizer, Player * player) {
 	ZoneServer * server = player->getZone()->getZoneServer();
 	ChatManager * chatManager = player->getZone()->getChatManager();
-	
+
 	string name;
 	Player* targetPlayer;
 
 	if (tokenizer.hasMoreTokens()) {
 		tokenizer.getStringToken(name);
-		
+
 		targetPlayer = chatManager->getPlayer(name);
 
 		if (targetPlayer == NULL)
@@ -522,9 +535,9 @@ void GameCommandHandler::gm_banUser(StringTokenizer tokenizer, Player * player) 
 void GameCommandHandler::gm_mutePlayer(StringTokenizer tokenizer, Player * player) {
 	string name;
 	Player* targetPlayer;
-	
+
 	ChatManager * chatManager = player->getZone()->getChatManager();
-	
+
 	if (tokenizer.hasMoreTokens()) {
 		tokenizer.getStringToken(name);
 		targetPlayer = chatManager->getPlayer(name);
@@ -567,7 +580,7 @@ void GameCommandHandler::gm_kill(StringTokenizer tokenizer, Player * player) {
 	Player* targetPlayer;
 
 	ChatManager * chatManager = player->getZone()->getChatManager();
-	
+
 	if (tokenizer.hasMoreTokens()) {
 		tokenizer.getStringToken(name);
 		targetPlayer = chatManager->getPlayer(name);
@@ -656,19 +669,28 @@ void GameCommandHandler::gm_killArea(StringTokenizer tokenizer, Player * player)
 
 void GameCommandHandler::gm_muteChat(StringTokenizer tokenizer, Player * player) {
 	ChatManager * chatManager = player->getZone()->getChatManager();
-	
-	if (chatManager->isMute()) {
-		chatManager->setMute(false);
-		player->sendSystemMessage("Chat has been unmuted.");
-	} else {
-		chatManager->setMute(true);
-		player->sendSystemMessage("Chat has been muted.");
+
+	try {
+		chatManager->lock();
+
+		if (chatManager->isMute()) {
+			chatManager->setMute(false);
+			player->sendSystemMessage("Chat has been unmuted.");
+		} else {
+			chatManager->setMute(true);
+			player->sendSystemMessage("Chat has been muted.");
+		}
+
+		chatManager->unlock();
+	} catch (...) {
+		chatManager->unlock();
+		cout << "unreported exception caught in GameCommandHandler::gm_muteChat()\n";
 	}
 }
 
 void GameCommandHandler::gm_users(StringTokenizer tokenizer, Player * player) {
 	ZoneServer * server = player->getZone()->getZoneServer();
-	
+
 	stringstream msg;
 	msg << server->getConnectionCount() << " users connected";
 
@@ -689,16 +711,16 @@ void GameCommandHandler::gm_ticketPurchase(StringTokenizer tokenizer, Player * p
 	tokenizer.getStringToken(city);
 
 	EnterTicketPurchaseModeMessage* etpm = new EnterTicketPurchaseModeMessage(planet,city);
-	player->sendMessage(etpm);			
+	player->sendMessage(etpm);
 }
 
 void GameCommandHandler::gm_awardBadge(StringTokenizer tokenizer, Player * player) {
 	int badgeid = tokenizer.getIntToken();
 	CreatureObject* target = (CreatureObject*) player->getTarget();
-	
+
 	if (target != NULL && target->isPlayer()) {
 		Player* targetPlayer = (Player*) target;
-		
+
 		if (targetPlayer != player)
 			targetPlayer->wlock(player);
 
@@ -707,7 +729,7 @@ void GameCommandHandler::gm_awardBadge(StringTokenizer tokenizer, Player * playe
 			targetPlayer->sendSystemMessage("You have been awarded a badge.");
 		} else
 			player->sendSystemMessage("Invalid Badge ID");
-			
+
 		if (targetPlayer != player)
 			targetPlayer->unlock();
 	} else
@@ -974,7 +996,7 @@ void GameCommandHandler::gm_spice(StringTokenizer tokenizer, Player * player) {
 
 		switch (String::hashCode(spice_up.str())) {
 
-		//spice.booster_blue.up	
+		//spice.booster_blue.up
 		case 0x18A5AEFB:
 			buff = new Buff(BuffCRC::SPICE_BOOSTER_BLUE_UP, BuffType::SPICE, 600.0f);
 			buff->setActionBuff(400);
@@ -984,7 +1006,7 @@ void GameCommandHandler::gm_spice(StringTokenizer tokenizer, Player * player) {
 			player->applyBuff(bo);
 			break;
 
-			//spice.crash_n_burn.up	
+			//spice.crash_n_burn.up
 		case 0x5E1BE4D6:
 			buff = new Buff(BuffCRC::SPICE_CRASH_N_BURN_UP, BuffType::SPICE, 600.0f);
 			buff->setActionBuff(-200);
@@ -995,7 +1017,7 @@ void GameCommandHandler::gm_spice(StringTokenizer tokenizer, Player * player) {
 			bo = new BuffObject(buff);
 			player->applyBuff(bo);
 			break;
-			//spice.droid_lube.up	
+			//spice.droid_lube.up
 		case 0x0C969AE9:
 			buff = new Buff(BuffCRC::SPICE_DROID_LUBE_UP, BuffType::SPICE, 600.0f);
 			buff->setHealthBuff(250);
@@ -1005,7 +1027,7 @@ void GameCommandHandler::gm_spice(StringTokenizer tokenizer, Player * player) {
 			bo = new BuffObject(buff);
 			player->applyBuff(bo);
 			break;
-			//spice.giggledust.up	
+			//spice.giggledust.up
 		case 0x3E41BA17:
 			buff = new Buff(BuffCRC::SPICE_GIGGLEDUST_UP, BuffType::SPICE, 600.0f);
 			buff->setActionBuff(300);
@@ -1015,7 +1037,7 @@ void GameCommandHandler::gm_spice(StringTokenizer tokenizer, Player * player) {
 			bo = new BuffObject(buff);
 			player->applyBuff(bo);
 			break;
-			//spice.grey_gabaki.up	
+			//spice.grey_gabaki.up
 		case 0xE5C9CD20:
 			buff = new Buff(BuffCRC::SPICE_GREY_GABAKI_UP, BuffType::SPICE, 500.0f);
 			buff->setFocusBuff(500);
@@ -1023,7 +1045,7 @@ void GameCommandHandler::gm_spice(StringTokenizer tokenizer, Player * player) {
 			bo = new BuffObject(buff);
 			player->applyBuff(bo);
 			break;
-			//spice.gunjack.up	
+			//spice.gunjack.up
 		case 0x09B6F8FC:
 			buff = new Buff(BuffCRC::SPICE_GUNJACK_UP, BuffType::SPICE, 600.0f);
 			buff->setStrengthBuff(500);
@@ -1033,7 +1055,7 @@ void GameCommandHandler::gm_spice(StringTokenizer tokenizer, Player * player) {
 			bo = new BuffObject(buff);
 			player->applyBuff(bo);
 			break;
-			//spice.muon_gold.up	
+			//spice.muon_gold.up
 		case 0xFBE87E37:
 			buff = new Buff(BuffCRC::SPICE_MUON_GOLD_UP, BuffType::SPICE, 600.0f);
 			buff->setMindBuff(500);
@@ -1043,7 +1065,7 @@ void GameCommandHandler::gm_spice(StringTokenizer tokenizer, Player * player) {
 			bo = new BuffObject(buff);
 			player->applyBuff(bo);
 			break;
-			//spice.neutron_pixey.up	
+			//spice.neutron_pixey.up
 		case 0x5DC6921F:
 			buff = new Buff(BuffCRC::SPICE_NEUTRON_PIXEY_UP, BuffType::SPICE, 800.0f);
 			buff->setHealthBuff(1000);
@@ -1056,7 +1078,7 @@ void GameCommandHandler::gm_spice(StringTokenizer tokenizer, Player * player) {
 			bo = new BuffObject(buff);
 			player->applyBuff(bo);
 			break;
-			//spice.pyrepenol.up	
+			//spice.pyrepenol.up
 		case 0x1EBC62E5:
 			buff = new Buff(BuffCRC::SPICE_PYREPENOL_UP, BuffType::SPICE, 600.0f);
 			buff->setStrengthBuff(300);
@@ -1066,7 +1088,7 @@ void GameCommandHandler::gm_spice(StringTokenizer tokenizer, Player * player) {
 			bo = new BuffObject(buff);
 			player->applyBuff(bo);
 			break;
-			//spice.scramjet.up	
+			//spice.scramjet.up
 		case 0x2E03F676:
 			buff = new Buff(BuffCRC::SPICE_SCRAMJET_UP, BuffType::SPICE, 700.0f);
 			buff->setStrengthBuff(300);
@@ -1074,7 +1096,7 @@ void GameCommandHandler::gm_spice(StringTokenizer tokenizer, Player * player) {
 			bo = new BuffObject(buff);
 			player->applyBuff(bo);
 			break;
-			//spice.sedative_h4b.up	
+			//spice.sedative_h4b.up
 		case 0xD7A72ACF:
 			buff = new Buff(BuffCRC::SPICE_SEDATIVE_H4B_UP, BuffType::SPICE, 600.0f);
 			buff->setHealthBuff(400);
@@ -1085,7 +1107,7 @@ void GameCommandHandler::gm_spice(StringTokenizer tokenizer, Player * player) {
 			bo = new BuffObject(buff);
 			player->applyBuff(bo);
 			break;
-			//spice.shadowpaw.up	
+			//spice.shadowpaw.up
 		case 0x3AAD2B89:
 			buff = new Buff(BuffCRC::SPICE_SHADOWPAW_UP, BuffType::SPICE, 600.0f);
 			buff->setStrengthBuff(-100);
@@ -1095,7 +1117,7 @@ void GameCommandHandler::gm_spice(StringTokenizer tokenizer, Player * player) {
 			bo = new BuffObject(buff);
 			player->applyBuff(bo);
 			break;
-			//spice.sweetblossom.up	
+			//spice.sweetblossom.up
 		case 0x7EC00CB8:
 			buff = new Buff(BuffCRC::SPICE_SWEETBLOSSOM_UP, BuffType::SPICE, 600.0f);
 			buff->setActionBuff(400);
@@ -1104,7 +1126,7 @@ void GameCommandHandler::gm_spice(StringTokenizer tokenizer, Player * player) {
 			bo = new BuffObject(buff);
 			player->applyBuff(bo);
 			break;
-			//spice.thruster_head.up	
+			//spice.thruster_head.up
 		case 0x530E31B7:
 			buff = new Buff(BuffCRC::SPICE_THRUSTER_HEAD_UP, BuffType::SPICE, 600.0f);
 			buff->setHealthBuff(100);
@@ -1116,7 +1138,7 @@ void GameCommandHandler::gm_spice(StringTokenizer tokenizer, Player * player) {
 			bo = new BuffObject(buff);
 			player->applyBuff(bo);
 			break;
-			//spice.yarrock.up	
+			//spice.yarrock.up
 		case 0xE7F8C957:
 			buff = new Buff(BuffCRC::SPICE_YARROCK_UP, BuffType::SPICE, 600.0f);
 			buff->setMindBuff(200);
@@ -1126,7 +1148,7 @@ void GameCommandHandler::gm_spice(StringTokenizer tokenizer, Player * player) {
 			bo = new BuffObject(buff);
 			player->applyBuff(bo);
 			break;
-			//spice.kliknik_boost.up	
+			//spice.kliknik_boost.up
 		case 0x37173CAD:
 			buff = new Buff(BuffCRC::SPICE_KLIKNIK_BOOST_UP, BuffType::SPICE, 240.0f);
 			buff->setStrengthBuff(500);
@@ -1138,7 +1160,7 @@ void GameCommandHandler::gm_spice(StringTokenizer tokenizer, Player * player) {
 			bo = new BuffObject(buff);
 			player->applyBuff(bo);
 			break;
-			//spice.kwi_boost.up	
+			//spice.kwi_boost.up
 		case 0x629FA918:
 			buff = new Buff(BuffCRC::SPICE_KWI_BOOST_UP, BuffType::SPICE, 60.0f);
 			buff->setHealthBuff(100);
@@ -1190,42 +1212,42 @@ void GameCommandHandler::gm_getDirection(StringTokenizer tokenizer, Player * pla
 }
 
 void GameCommandHandler::gm_setAdminLevel(StringTokenizer tokenizer, Player * player) {
-	
+
 	ChatManager * chatManager = player->getZone()->getChatManager();
 
 
 	string name;
 	tokenizer.getStringToken(name);
-	
+
 	if (!tokenizer.hasMoreTokens())
 			return;
-	
+
 	int level = tokenizer.getIntToken();
-	
+
 	Player * target = chatManager->getPlayer(name);
-	
+
 	if (target != NULL) {
-		
+
 		if (target != player)
 			target->wlock(player);
-			
+
 		target->setAdminLevel(level);
-		
+
 		if (target != player)
 			target->unlock();
-			
+
 		stringstream ss;
 		ss << player->getFirstName() << " has changed your admin level.";
 		target->sendSystemMessage(ss.str());
 	}
-	
+
 	ostringstream query;
 	query << "UPDATE characters SET " << "adminLevel ='"
 		  << level
 		  << "' WHERE firstname=\'" << name << "\';";
 
 	ServerDatabase::instance()->executeStatement(query.str());
-	
+
 	player->sendSystemMessage("Admin level set.");
 }
 
@@ -1241,7 +1263,7 @@ void GameCommandHandler::gm_getLocation(StringTokenizer tokenizer, Player * play
 }
 
 void GameCommandHandler::gm_getCords(StringTokenizer tokenizer, Player * player) {
-	//This command is for the cave devs, helping them building the needed LUA files. 
+	//This command is for the cave devs, helping them building the needed LUA files.
 	//Please dont delete it from the SVN , Uncomment for use on dev Servers.
 	stringstream msg;
 	string name;
@@ -1281,7 +1303,7 @@ void GameCommandHandler::gm_getCords(StringTokenizer tokenizer, Player * player)
 
 	cordFile << flush;
 	cordFile.close();
-} 
+}
 
 void GameCommandHandler::gm_giveItemTemp(StringTokenizer tokenizer, Player * player) {
 	//Give TANO

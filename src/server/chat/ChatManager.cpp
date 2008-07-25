@@ -28,12 +28,38 @@ ChatManager::ChatManager(DummyConstructorParameter* param) {
 ChatManager::~ChatManager() {
 }
 
-void ChatManager::addPlayer(Player* player) {
+void ChatManager::lock(bool doLock) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 6);
+		method.addBooleanParameter(doLock);
+
+		method.executeWithVoidReturn();
+	} else
+		((ChatManagerImplementation*) _impl)->lock(doLock);
+}
+
+void ChatManager::unlock(bool doLock) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
+		method.addBooleanParameter(doLock);
+
+		method.executeWithVoidReturn();
+	} else
+		((ChatManagerImplementation*) _impl)->unlock(doLock);
+}
+
+void ChatManager::addPlayer(Player* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -46,7 +72,7 @@ Player* ChatManager::getPlayer(string& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, 9);
 		method.addAsciiParameter(name);
 
 		return (Player*) method.executeWithObjectReturn();
@@ -59,7 +85,7 @@ Player* ChatManager::removePlayer(string& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, 10);
 		method.addAsciiParameter(name);
 
 		return (Player*) method.executeWithObjectReturn();
@@ -72,7 +98,7 @@ void ChatManager::sendMail(const string& sendername, unicode& header, unicode& b
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, 11);
 		method.addAsciiParameter(sendername);
 		method.addUnicodeParameter(header);
 		method.addUnicodeParameter(body);
@@ -88,7 +114,7 @@ void ChatManager::sendMailBody(Player* receiver, unsigned int mailid) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, 12);
 		method.addObjectParameter(receiver);
 		method.addUnsignedIntParameter(mailid);
 
@@ -102,7 +128,7 @@ void ChatManager::listMail(Player* ply) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 13);
 		method.addObjectParameter(ply);
 
 		method.executeWithVoidReturn();
@@ -115,7 +141,7 @@ void ChatManager::deleteMail(unsigned int mailid) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, 14);
 		method.addUnsignedIntParameter(mailid);
 
 		method.executeWithVoidReturn();
@@ -128,7 +154,7 @@ void ChatManager::handleTellMessage(Player* player, Message* pack) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 15);
 		method.addObjectParameter(player);
 		method.addObjectParameter(pack);
 
@@ -142,7 +168,7 @@ void ChatManager::handleMessage(Player* player, Message* pack) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 16);
 		method.addObjectParameter(player);
 		method.addObjectParameter(pack);
 
@@ -156,7 +182,7 @@ void ChatManager::handleEmote(Player* player, Message* pack) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, 17);
 		method.addObjectParameter(player);
 		method.addObjectParameter(pack);
 
@@ -170,7 +196,7 @@ void ChatManager::handleMood(Player* player, Message* pack) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 18);
 		method.addObjectParameter(player);
 		method.addObjectParameter(pack);
 
@@ -184,7 +210,7 @@ void ChatManager::sendSystemMessage(Player* player, unicode& message) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 19);
 		method.addObjectParameter(player);
 		method.addUnicodeParameter(message);
 
@@ -198,7 +224,7 @@ void ChatManager::broadcastMessage(Player* player, unicode& message, unsigned lo
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 20);
 		method.addObjectParameter(player);
 		method.addUnicodeParameter(message);
 		method.addUnsignedLongParameter(target);
@@ -215,7 +241,7 @@ void ChatManager::broadcastMessage(const string& message) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, 21);
 		method.addAsciiParameter(message);
 
 		method.executeWithVoidReturn();
@@ -228,7 +254,7 @@ void ChatManager::broadcastMessageRange(Player* player, const string& message, f
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, 22);
 		method.addObjectParameter(player);
 		method.addAsciiParameter(message);
 		method.addFloatParameter(range);
@@ -243,7 +269,7 @@ void ChatManager::handleGameCommand(Player* player, const string& command) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, 23);
 		method.addObjectParameter(player);
 		method.addAsciiParameter(command);
 
@@ -257,7 +283,7 @@ void ChatManager::initiateRooms() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 22);
+		DistributedMethod method(this, 24);
 
 		method.executeWithVoidReturn();
 	} else
@@ -269,7 +295,7 @@ void ChatManager::handleChatRoomMessage(Player* player, Message* pack) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 23);
+		DistributedMethod method(this, 25);
 		method.addObjectParameter(player);
 		method.addObjectParameter(pack);
 
@@ -283,7 +309,7 @@ void ChatManager::handleGroupChat(Player* player, Message* pack) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 24);
+		DistributedMethod method(this, 26);
 		method.addObjectParameter(player);
 		method.addObjectParameter(pack);
 
@@ -297,7 +323,7 @@ void ChatManager::handleCreateRoom(Player* player, Message* pack) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 25);
+		DistributedMethod method(this, 27);
 		method.addObjectParameter(player);
 		method.addObjectParameter(pack);
 
@@ -311,7 +337,7 @@ void ChatManager::handleChatEnterRoomById(Player* player, Message* pack) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 26);
+		DistributedMethod method(this, 28);
 		method.addObjectParameter(player);
 		method.addObjectParameter(pack);
 
@@ -325,7 +351,7 @@ void ChatManager::handleChatDestroyRoom(Player* player, Message* pack) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 27);
+		DistributedMethod method(this, 29);
 		method.addObjectParameter(player);
 		method.addObjectParameter(pack);
 
@@ -339,7 +365,7 @@ void ChatManager::handleChatRemoveAvatarFromRoom(Player* player, Message* pack) 
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 28);
+		DistributedMethod method(this, 30);
 		method.addObjectParameter(player);
 		method.addObjectParameter(pack);
 
@@ -353,7 +379,7 @@ ChatRoom* ChatManager::getChatRoom(unsigned int id) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 29);
+		DistributedMethod method(this, 31);
 		method.addUnsignedIntParameter(id);
 
 		return (ChatRoom*) method.executeWithObjectReturn();
@@ -366,7 +392,7 @@ void ChatManager::addRoom(ChatRoom* channel) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 30);
+		DistributedMethod method(this, 32);
 		method.addObjectParameter(channel);
 
 		method.executeWithVoidReturn();
@@ -379,7 +405,7 @@ void ChatManager::removeRoom(ChatRoom* channel) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 31);
+		DistributedMethod method(this, 33);
 		method.addObjectParameter(channel);
 
 		method.executeWithVoidReturn();
@@ -392,7 +418,7 @@ void ChatManager::sendRoomList(Player* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 32);
+		DistributedMethod method(this, 34);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -405,7 +431,7 @@ ChatRoom* ChatManager::createGroupRoom(unsigned int groupID, Player* creator) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 33);
+		DistributedMethod method(this, 35);
 		method.addUnsignedIntParameter(groupID);
 		method.addObjectParameter(creator);
 
@@ -419,7 +445,7 @@ ChatRoom* ChatManager::createRoomByFullPath(const string& path) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 34);
+		DistributedMethod method(this, 36);
 		method.addAsciiParameter(path);
 
 		return (ChatRoom*) method.executeWithObjectReturn();
@@ -432,7 +458,7 @@ void ChatManager::destroyRoom(ChatRoom* room) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 35);
+		DistributedMethod method(this, 37);
 		method.addObjectParameter(room);
 
 		method.executeWithVoidReturn();
@@ -445,7 +471,7 @@ void ChatManager::printRoomTree(ChatRoom* channel) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 36);
+		DistributedMethod method(this, 38);
 		method.addObjectParameter(channel);
 
 		method.executeWithVoidReturn();
@@ -458,7 +484,7 @@ ChatRoom* ChatManager::getChatRoomByFullPath(const string& path) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 37);
+		DistributedMethod method(this, 39);
 		method.addAsciiParameter(path);
 
 		return (ChatRoom*) method.executeWithObjectReturn();
@@ -471,7 +497,7 @@ ChatRoom* ChatManager::getGameRoom(const string& game) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 38);
+		DistributedMethod method(this, 40);
 		method.addAsciiParameter(game);
 
 		return (ChatRoom*) method.executeWithObjectReturn();
@@ -484,7 +510,7 @@ ChatRoom* ChatManager::getChatRoomByGamePath(ChatRoom* game, const string& path)
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 39);
+		DistributedMethod method(this, 41);
 		method.addObjectParameter(game);
 		method.addAsciiParameter(path);
 
@@ -498,7 +524,7 @@ unsigned int ChatManager::getNextRoomID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 40);
+		DistributedMethod method(this, 42);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -510,7 +536,7 @@ int ChatManager::getPlayerCount() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 41);
+		DistributedMethod method(this, 43);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -522,7 +548,7 @@ bool ChatManager::isMute() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 42);
+		DistributedMethod method(this, 44);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -534,7 +560,7 @@ void ChatManager::setMute(bool isMuted) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 43);
+		DistributedMethod method(this, 45);
 		method.addBooleanParameter(isMuted);
 
 		method.executeWithVoidReturn();
@@ -554,117 +580,123 @@ Packet* ChatManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 
 	switch (methid) {
 	case 6:
-		addPlayer((Player*) inv->getObjectParameter());
+		lock(inv->getBooleanParameter());
 		break;
 	case 7:
-		resp->insertLong(getPlayer(inv->getAsciiParameter(_param0_getPlayer__string_))->_getObjectID());
+		unlock(inv->getBooleanParameter());
 		break;
 	case 8:
-		resp->insertLong(removePlayer(inv->getAsciiParameter(_param0_removePlayer__string_))->_getObjectID());
+		addPlayer((Player*) inv->getObjectParameter());
 		break;
 	case 9:
-		sendMail(inv->getAsciiParameter(_param0_sendMail__string_unicode_unicode_string_), inv->getUnicodeParameter(_param1_sendMail__string_unicode_unicode_string_), inv->getUnicodeParameter(_param2_sendMail__string_unicode_unicode_string_), inv->getAsciiParameter(_param3_sendMail__string_unicode_unicode_string_));
+		resp->insertLong(getPlayer(inv->getAsciiParameter(_param0_getPlayer__string_))->_getObjectID());
 		break;
 	case 10:
-		sendMailBody((Player*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
+		resp->insertLong(removePlayer(inv->getAsciiParameter(_param0_removePlayer__string_))->_getObjectID());
 		break;
 	case 11:
-		listMail((Player*) inv->getObjectParameter());
+		sendMail(inv->getAsciiParameter(_param0_sendMail__string_unicode_unicode_string_), inv->getUnicodeParameter(_param1_sendMail__string_unicode_unicode_string_), inv->getUnicodeParameter(_param2_sendMail__string_unicode_unicode_string_), inv->getAsciiParameter(_param3_sendMail__string_unicode_unicode_string_));
 		break;
 	case 12:
-		deleteMail(inv->getUnsignedIntParameter());
+		sendMailBody((Player*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
 		break;
 	case 13:
-		handleTellMessage((Player*) inv->getObjectParameter(), (Message*) inv->getObjectParameter());
+		listMail((Player*) inv->getObjectParameter());
 		break;
 	case 14:
-		handleMessage((Player*) inv->getObjectParameter(), (Message*) inv->getObjectParameter());
+		deleteMail(inv->getUnsignedIntParameter());
 		break;
 	case 15:
-		handleEmote((Player*) inv->getObjectParameter(), (Message*) inv->getObjectParameter());
+		handleTellMessage((Player*) inv->getObjectParameter(), (Message*) inv->getObjectParameter());
 		break;
 	case 16:
-		handleMood((Player*) inv->getObjectParameter(), (Message*) inv->getObjectParameter());
+		handleMessage((Player*) inv->getObjectParameter(), (Message*) inv->getObjectParameter());
 		break;
 	case 17:
-		sendSystemMessage((Player*) inv->getObjectParameter(), inv->getUnicodeParameter(_param1_sendSystemMessage__Player_unicode_));
+		handleEmote((Player*) inv->getObjectParameter(), (Message*) inv->getObjectParameter());
 		break;
 	case 18:
-		broadcastMessage((Player*) inv->getObjectParameter(), inv->getUnicodeParameter(_param1_broadcastMessage__Player_unicode_long_int_int_), inv->getUnsignedLongParameter(), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter());
+		handleMood((Player*) inv->getObjectParameter(), (Message*) inv->getObjectParameter());
 		break;
 	case 19:
-		broadcastMessage(inv->getAsciiParameter(_param0_broadcastMessage__string_));
+		sendSystemMessage((Player*) inv->getObjectParameter(), inv->getUnicodeParameter(_param1_sendSystemMessage__Player_unicode_));
 		break;
 	case 20:
-		broadcastMessageRange((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_broadcastMessageRange__Player_string_float_), inv->getFloatParameter());
+		broadcastMessage((Player*) inv->getObjectParameter(), inv->getUnicodeParameter(_param1_broadcastMessage__Player_unicode_long_int_int_), inv->getUnsignedLongParameter(), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter());
 		break;
 	case 21:
-		handleGameCommand((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_handleGameCommand__Player_string_));
+		broadcastMessage(inv->getAsciiParameter(_param0_broadcastMessage__string_));
 		break;
 	case 22:
-		initiateRooms();
+		broadcastMessageRange((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_broadcastMessageRange__Player_string_float_), inv->getFloatParameter());
 		break;
 	case 23:
-		handleChatRoomMessage((Player*) inv->getObjectParameter(), (Message*) inv->getObjectParameter());
+		handleGameCommand((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_handleGameCommand__Player_string_));
 		break;
 	case 24:
-		handleGroupChat((Player*) inv->getObjectParameter(), (Message*) inv->getObjectParameter());
+		initiateRooms();
 		break;
 	case 25:
-		handleCreateRoom((Player*) inv->getObjectParameter(), (Message*) inv->getObjectParameter());
+		handleChatRoomMessage((Player*) inv->getObjectParameter(), (Message*) inv->getObjectParameter());
 		break;
 	case 26:
-		handleChatEnterRoomById((Player*) inv->getObjectParameter(), (Message*) inv->getObjectParameter());
+		handleGroupChat((Player*) inv->getObjectParameter(), (Message*) inv->getObjectParameter());
 		break;
 	case 27:
-		handleChatDestroyRoom((Player*) inv->getObjectParameter(), (Message*) inv->getObjectParameter());
+		handleCreateRoom((Player*) inv->getObjectParameter(), (Message*) inv->getObjectParameter());
 		break;
 	case 28:
-		handleChatRemoveAvatarFromRoom((Player*) inv->getObjectParameter(), (Message*) inv->getObjectParameter());
+		handleChatEnterRoomById((Player*) inv->getObjectParameter(), (Message*) inv->getObjectParameter());
 		break;
 	case 29:
-		resp->insertLong(getChatRoom(inv->getUnsignedIntParameter())->_getObjectID());
+		handleChatDestroyRoom((Player*) inv->getObjectParameter(), (Message*) inv->getObjectParameter());
 		break;
 	case 30:
-		addRoom((ChatRoom*) inv->getObjectParameter());
+		handleChatRemoveAvatarFromRoom((Player*) inv->getObjectParameter(), (Message*) inv->getObjectParameter());
 		break;
 	case 31:
-		removeRoom((ChatRoom*) inv->getObjectParameter());
+		resp->insertLong(getChatRoom(inv->getUnsignedIntParameter())->_getObjectID());
 		break;
 	case 32:
-		sendRoomList((Player*) inv->getObjectParameter());
+		addRoom((ChatRoom*) inv->getObjectParameter());
 		break;
 	case 33:
-		resp->insertLong(createGroupRoom(inv->getUnsignedIntParameter(), (Player*) inv->getObjectParameter())->_getObjectID());
+		removeRoom((ChatRoom*) inv->getObjectParameter());
 		break;
 	case 34:
-		resp->insertLong(createRoomByFullPath(inv->getAsciiParameter(_param0_createRoomByFullPath__string_))->_getObjectID());
+		sendRoomList((Player*) inv->getObjectParameter());
 		break;
 	case 35:
-		destroyRoom((ChatRoom*) inv->getObjectParameter());
+		resp->insertLong(createGroupRoom(inv->getUnsignedIntParameter(), (Player*) inv->getObjectParameter())->_getObjectID());
 		break;
 	case 36:
-		printRoomTree((ChatRoom*) inv->getObjectParameter());
+		resp->insertLong(createRoomByFullPath(inv->getAsciiParameter(_param0_createRoomByFullPath__string_))->_getObjectID());
 		break;
 	case 37:
-		resp->insertLong(getChatRoomByFullPath(inv->getAsciiParameter(_param0_getChatRoomByFullPath__string_))->_getObjectID());
+		destroyRoom((ChatRoom*) inv->getObjectParameter());
 		break;
 	case 38:
-		resp->insertLong(getGameRoom(inv->getAsciiParameter(_param0_getGameRoom__string_))->_getObjectID());
+		printRoomTree((ChatRoom*) inv->getObjectParameter());
 		break;
 	case 39:
-		resp->insertLong(getChatRoomByGamePath((ChatRoom*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_getChatRoomByGamePath__ChatRoom_string_))->_getObjectID());
+		resp->insertLong(getChatRoomByFullPath(inv->getAsciiParameter(_param0_getChatRoomByFullPath__string_))->_getObjectID());
 		break;
 	case 40:
-		resp->insertInt(getNextRoomID());
+		resp->insertLong(getGameRoom(inv->getAsciiParameter(_param0_getGameRoom__string_))->_getObjectID());
 		break;
 	case 41:
-		resp->insertSignedInt(getPlayerCount());
+		resp->insertLong(getChatRoomByGamePath((ChatRoom*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_getChatRoomByGamePath__ChatRoom_string_))->_getObjectID());
 		break;
 	case 42:
-		resp->insertBoolean(isMute());
+		resp->insertInt(getNextRoomID());
 		break;
 	case 43:
+		resp->insertSignedInt(getPlayerCount());
+		break;
+	case 44:
+		resp->insertBoolean(isMute());
+		break;
+	case 45:
 		setMute(inv->getBooleanParameter());
 		break;
 	default:
@@ -672,6 +704,14 @@ Packet* ChatManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 	}
 
 	return resp;
+}
+
+void ChatManagerAdapter::lock(bool doLock) {
+	return ((ChatManagerImplementation*) impl)->lock(doLock);
+}
+
+void ChatManagerAdapter::unlock(bool doLock) {
+	return ((ChatManagerImplementation*) impl)->unlock(doLock);
 }
 
 void ChatManagerAdapter::addPlayer(Player* player) {
