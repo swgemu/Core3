@@ -784,14 +784,15 @@ void PlayerManagerImplementation::moveItem(Player* sender, Player* receiver, Tan
 
 void PlayerManagerImplementation::doBankTip(Player* sender, Player* receiver, uint32 tipAmount, bool updateTipTo) {
 	//Pre: sender wlocked
-	if (!sender->verifyBankCredits(tipAmount + (tipAmount * .05))) {
+	float tax = tipAmount * .05;
+	if (!sender->verifyBankCredits(tipAmount + tax)) {
 		sender->sendSystemMessage("You lack the required funds to do that. (Bank Tip.)");
 		return;
 	}
 	
 	try {
 		receiver->wlock(sender);
-		float tax = tipAmount * 0.05;
+		
 		receiver->addBankCredits(tipAmount);
 		sender->subtractBankCredits(tipAmount + tax);
 
@@ -810,8 +811,8 @@ void PlayerManagerImplementation::doBankTip(Player* sender, Player* receiver, ui
 		ss << "You have sent a bank tip of " << tipAmount << " credits to " << receiver->getFirstName() << "." << endl;
 		ss << "The Following is a summary of your charges:" << endl << endl ;
 		ss << "Tip Amount: " << tipAmount << " credits" << endl;
-		ss << "Imperial Tax: " << tax << " credits" << endl;
-		ss << endl << "Total Charges: " << tipAmount + tax << " credits";
+		ss << "Imperial Tax: " << (int) tax << " credits" << endl;
+		ss << endl << "Total Charges: " << (int) (tipAmount + tax) << " credits";
 		unicode bodySender(ss.str());
 
 		ChatManager* chatManager = server->getChatManager();
