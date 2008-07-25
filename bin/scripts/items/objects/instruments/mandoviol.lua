@@ -40,7 +40,7 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-mandviol = Instrument:new{
+mandoviol = Instrument:new{
 
 	objectName = "a Mandoviol",
 
