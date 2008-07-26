@@ -1,44 +1,44 @@
 /*
 Copyright (C) 2007 <SWGEmu>
- 
+
 This File is part of Core3.
- 
-This program is free software; you can redistribute 
-it and/or modify it under the terms of the GNU Lesser 
+
+This program is free software; you can redistribute
+it and/or modify it under the terms of the GNU Lesser
 General Public License as published by the Free Software
-Foundation; either version 2 of the License, 
+Foundation; either version 2 of the License,
 or (at your option) any later version.
- 
-This program is distributed in the hope that it will be useful, 
-but WITHOUT ANY WARRANTY; without even the implied warranty of 
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 See the GNU Lesser General Public License for
 more details.
- 
-You should have received a copy of the GNU Lesser General 
+
+You should have received a copy of the GNU Lesser General
 Public License along with this program; if not, write to
 the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
- 
-Linking Engine3 statically or dynamically with other modules 
-is making a combined work based on Engine3. 
-Thus, the terms and conditions of the GNU Lesser General Public License 
+
+Linking Engine3 statically or dynamically with other modules
+is making a combined work based on Engine3.
+Thus, the terms and conditions of the GNU Lesser General Public License
 cover the whole combination.
- 
-In addition, as a special exception, the copyright holders of Engine3 
-give you permission to combine Engine3 program with free software 
-programs or libraries that are released under the GNU LGPL and with 
-code included in the standard release of Core3 under the GNU LGPL 
-license (or modified versions of such code, with unchanged license). 
-You may copy and distribute such a system following the terms of the 
-GNU LGPL for Engine3 and the licenses of the other code concerned, 
-provided that you include the source code of that other code when 
+
+In addition, as a special exception, the copyright holders of Engine3
+give you permission to combine Engine3 program with free software
+programs or libraries that are released under the GNU LGPL and with
+code included in the standard release of Core3 under the GNU LGPL
+license (or modified versions of such code, with unchanged license).
+You may copy and distribute such a system following the terms of the
+GNU LGPL for Engine3 and the licenses of the other code concerned,
+provided that you include the source code of that other code when
 and as the GNU LGPL requires distribution of source code.
- 
-Note that people who make modified versions of Engine3 are not obligated 
-to grant this special exception for their modified versions; 
-it is their choice whether to do so. The GNU Lesser General Public License 
-gives permission to release a modified version without this exception; 
-this exception also makes it possible to release a modified version 
+
+Note that people who make modified versions of Engine3 are not obligated
+to grant this special exception for their modified versions;
+it is their choice whether to do so. The GNU Lesser General Public License
+gives permission to release a modified version without this exception;
+this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
@@ -64,11 +64,11 @@ ItemManagerImplementation::ItemManagerImplementation(ZoneServer* serv) :
 	server = serv;
 
 	nextStaticItemID = 0x90000000;
-	
+
 	startingItems = new StartingItemList();
 	bfItemSet = new BlueFrogItemSet();
 	bfProfSet = new BlueFrogProfessionSet();
-	
+
 	Lua::init();
 	registerFunctions();
 	registerGlobals();
@@ -76,12 +76,12 @@ ItemManagerImplementation::ItemManagerImplementation(ZoneServer* serv) :
 	runFile("scripts/items/starting/main.lua");
 	info("Loading Blue Frog Items...", true);
 	runFile("scripts/items/bluefrog/main.lua");
-	
+
 	if(bfEnabled) {
 		server->getZone(5)->getCreatureManager()->loadBlueFrogs();
 		server->getZone(8)->getCreatureManager()->loadBlueFrogs();
 	}
-		
+
 }
 
 void ItemManagerImplementation::loadStaticWorldObjects() {
@@ -92,15 +92,15 @@ void ItemManagerImplementation::loadPlayerItems(Player* player) {
 	try {
 		stringstream query;
 		query << "select * from `character_items` where `character_id` = " << player->getCharacterID();
-	
+
 		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
-				
+
 		while (res->next())	{
 			createPlayerObject(player, res);
 		}
-		
+
 		loadDefaultPlayerDatapadItems(player);
-		
+
 		delete res;
 	} catch (DatabaseException& e) {
 		cout << e.getMessage() << "\n";
@@ -110,37 +110,37 @@ void ItemManagerImplementation::loadPlayerItems(Player* player) {
 TangibleObject* ItemManagerImplementation::getPlayerItem(Player* player, uint64 objectid) {
 	TangibleObject* tano = NULL;
 	SceneObject* item = NULL;
-	
+
 	if (player != NULL)
 		SceneObject* item = player->getPlayerItem(objectid);
-	
+
 	if (item != NULL && item->isTangible())
 		return (TangibleObject*) item;
 
 	try {
 		stringstream query;
 		query << "select * from `character_items` where `item_id` = " << objectid;
-	
+
 		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
-				
+
 		while (res->next())	{
 			tano = createPlayerObject(player, res);
 		}
-		
+
 		delete res;
 
 	} catch (DatabaseException& e) {
 		cout << e.getMessage() << "\n";
 	}
-	
+
 	return tano;
 }
 
-TangibleObject* ItemManagerImplementation::createPlayerObjectTemplate(int objecttype, uint64 objectid, 
-		uint32 objectcrc, unicode objectname, const string& objecttemp, bool equipped) {
+TangibleObject* ItemManagerImplementation::createPlayerObjectTemplate(int objecttype, uint64 objectid,
+		uint32 objectcrc, const unicode& objectname, const string& objecttemp, bool equipped) {
 	TangibleObject* item = NULL;
-	
-	if (objecttype & TangibleObjectImplementation::WEAPON || objecttype & TangibleObjectImplementation::LIGHTSABER) {	
+
+	if (objecttype & TangibleObjectImplementation::WEAPON || objecttype & TangibleObjectImplementation::LIGHTSABER) {
 		switch (objecttype) {
 		case TangibleObjectImplementation::MELEEWEAPON:
 			item = new UnarmedMeleeWeapon(objectid, objectcrc, objectname, objecttemp, equipped);
@@ -179,7 +179,7 @@ TangibleObject* ItemManagerImplementation::createPlayerObjectTemplate(int object
 			item = new HeavyRangedWeapon(objectid, objectcrc, objectname, objecttemp, equipped);
 			break;
 		}
-		
+
 	} else if (objecttype & TangibleObjectImplementation::CLOTHING) {
 		item = new Wearable(objectid, objectcrc, objectname, objecttemp, equipped);
 		item->setObjectSubType(objecttype);
@@ -206,6 +206,9 @@ TangibleObject* ItemManagerImplementation::createPlayerObjectTemplate(int object
 			item = new FactoryCrate(objectid, objectcrc, objectname, objecttemp);
 			item->setObjectCount(5);
 			break;
+		case TangibleObjectImplementation::PHARMACEUTICAL:
+			item = createSubObject(objectid, objectcrc, objectname, objecttemp, equipped);
+			break;
 		default:
 			item = new TangibleObject(objectid, objectname, objecttemp, objectcrc, objecttype);
 			break;
@@ -229,8 +232,66 @@ TangibleObject* ItemManagerImplementation::createPlayerObjectTemplate(int object
 		item = new Powerup(objectid, objectcrc, objectname, objecttemp);
 	} else if (objecttype & TangibleObjectImplementation::COMPONENT) {
 		item = new Component(objectid, objectcrc, objectname, objecttemp);
-	} 
-	
+	}
+
+	return item;
+}
+
+TangibleObject* ItemManagerImplementation::createSubObject(uint64 objectid, uint32 objectcrc, const unicode& objectname, const string& objecttemp, bool equipped) {
+	TangibleObject* item = NULL;
+
+	switch (objectcrc) {
+	//Pharmaceutical EnhancePacks
+	case 0xF0D47A7E:
+	case 0x2BC3D2E9:
+	case 0x62CEB564:
+	case 0x992D9E70:
+	case 0x67D14C62:
+	case 0xBCC6E4F5:
+	case 0xF5CB8378:
+	case 0x0E28A86C:
+	case 0xD3231B08:
+	case 0x0834B39F:
+	case 0x4139D412:
+	case 0x756B0C42:
+	case 0xAE7CA4D5:
+	case 0xE771C358:
+	case 0x1C92E84C:
+	case 0x758A2A26:
+	case 0xAE9D82B1:
+	case 0xE790E53C:
+	case 0xB735A208:
+	case 0x6C220A9F:
+	case 0x252F6D12:
+	case 0xDECC4606:
+	case 0x1210D7DD:
+	case 0xC9077F4A:
+	case 0x800A18C7:
+	case 0x7BE933D3:
+	case 0x7914128C:
+	case 0xA203BA1B:
+	case 0xEB0EDD96:
+	case 0x10EDF682:
+		item = new EnhancePack(objectid, objectcrc, objectname, objecttemp);
+		break;
+	//Pharmaceutical StimPacks
+	case 0x904FA809:
+	case 0x4B58009E:
+	case 0x02556713:
+	case 0xF9B64C07:
+	case 0xB0BB2B8A:
+	case 0x7751C746:
+	case 0xAC466FD1:
+	case 0xE54B085C:
+	case 0x1EA82348:
+	case 0x57A544C5:
+		item = new StimPack(objectid, objectcrc, objectname, objecttemp);
+		break;
+	default:
+		item = NULL;
+		break;
+	}
+
 	return item;
 }
 
@@ -238,11 +299,11 @@ TangibleObject* ItemManagerImplementation::createPlayerObject(Player* player, Re
 	uint64 objectid = result->getUnsignedLong(0);
 
 	int objecttype = result->getInt(4);
-	uint32 objectcrc = result->getUnsignedInt(3);  
-	
+	uint32 objectcrc = result->getUnsignedInt(3);
+
 	string objectname = result->getString(2);
 	char* objecttemp = result->getString(5); // template_name
-	
+
 	string appearance = result->getString(10);
 
 	BinaryData cust(appearance);
@@ -251,60 +312,65 @@ TangibleObject* ItemManagerImplementation::createPlayerObject(Player* player, Re
 	cust.decode(custStr);
 
 	bool equipped = result->getBoolean(7);
-	
+
 	if (result->getBoolean(8) != 0) // deleted
 		return NULL;
-	
+
 	string attributes = result->getString(9);
-	
+
 	TangibleObject* item = createPlayerObjectTemplate(objecttype, objectid, objectcrc, unicode(objectname), objecttemp, equipped);
 
 	if (item == NULL) {
 		//cout << "NULL ITEM objectType:[" << objecttype << "] objectname[" << objectname << "]" << endl;
 		return NULL;
 	}
-	
+
 	item->setAttributes(attributes);
 	item->parseItemAttributes();
-	
+
 	item->setCustomizationString(custStr);
-	
+
 	item->setPersistent(true);
-	
-	if (player != NULL) 
+
+	if (player != NULL)
 		player->addInventoryItem(item);
-	
+
 	return item;
 }
 
 TangibleObject* ItemManagerImplementation::initializeTangibleForCrafting(
 		int objecttype, uint64 objectid, uint32 objectcrc, string objectn,
 		string objecttemp, bool equipped){
- 
+
 	unicode objectname(objectn);
 
 	TangibleObject * item = NULL;
-	
+
 	item = createPlayerObjectTemplate(objecttype, objectid, objectcrc,
 			objectname.c_str(), objecttemp, equipped);
-	
+
 	/*if (item == NULL) {
 		cout << "NULL ITEM" << endl;
 		return NULL;
-		
+
 	}*/
-	
+
 	return item;
 }
 
 //Temporary Fix until we get a global clone() method implemented
 //TODO: remove this function when a global clone() method is implemented for all objects
-TangibleObject* ItemManagerImplementation::clonePlayerObjectTemplate(TangibleObject* templ) {	
+TangibleObject* ItemManagerImplementation::clonePlayerObjectTemplate(uint64 objectid, TangibleObject* templ) {
+
+	if(templ == NULL)
+	{
+		return NULL;
+	}
 	//the name is passed in a hackish way to stop buffer overflows.. anyone know why it was doing that?
-	TangibleObject* newTempl = createPlayerObjectTemplate(templ->getObjectSubType(), templ->getObjectID(), templ->getObjectCRC(), unicode(templ->getName().c_str()), (char *) templ->getTemplateName().c_str(), templ->isEquipped());
+	TangibleObject* newTempl = createPlayerObjectTemplate(templ->getObjectSubType(), objectid, templ->getObjectCRC(), unicode(templ->getName().c_str()), (char *) templ->getTemplateName().c_str(), templ->isEquipped());
 	newTempl->setAttributes(templ->getAttributes());
 	newTempl->parseItemAttributes();
-	
+
 	return newTempl;
 }
 
@@ -451,13 +517,13 @@ void ItemManagerImplementation::registerGlobals() {
 	setGlobalInt("MISCCLOTHING", TangibleObjectImplementation::MISCCLOTHING);
 	setGlobalInt("SKIRT", TangibleObjectImplementation::SKIRT);
 	setGlobalInt("ITHOGARB", TangibleObjectImplementation::ITHOGARB);
-	
+
 	//Armor Piercing
 	setGlobalInt("WEAPON_NONE", WeaponImplementation::NONE);
 	setGlobalInt("WEAPON_LIGHT", WeaponImplementation::LIGHT);
 	setGlobalInt("WEAPON_MEDIUM", WeaponImplementation::MEDIUM);
 	setGlobalInt("WEAPON_HEAVY", WeaponImplementation::HEAVY);
-	
+
 	//Damage Type
 	setGlobalInt("WEAPON_KINETIC", WeaponImplementation::KINETIC);
 	setGlobalInt("WEAPON_ENERGY", WeaponImplementation::ENERGY);
@@ -468,7 +534,7 @@ void ItemManagerImplementation::registerGlobals() {
 	setGlobalInt("WEAPON_COLD", WeaponImplementation::COLD);
 	setGlobalInt("WEAPON_ACID", WeaponImplementation::ACID);
 	setGlobalInt("WEAPON_LIGHTSABER", WeaponImplementation::LIGHTSABER);
-	
+
 	//Armor Type
 	setGlobalInt("ARMOR_CHEST", ArmorImplementation::CHEST);
 	setGlobalInt("ARMOR_HAND", ArmorImplementation::HAND);
@@ -480,7 +546,7 @@ void ItemManagerImplementation::registerGlobals() {
 	setGlobalInt("ARMOR_FOOT", ArmorImplementation::FOOT);
 	setGlobalInt("ARMOR_HEAD", ArmorImplementation::HEAD);
 	setGlobalInt("ARMOR_BELT", ArmorImplementation::BELT);
-	
+
 	//Instrument Type
 	setGlobalInt("INSTR_TRAZ", InstrumentImplementation::TRAZ);
 	setGlobalInt("INSTR_SLITHERHORN", InstrumentImplementation::SLITHERHORN);
@@ -492,29 +558,46 @@ void ItemManagerImplementation::registerGlobals() {
 	setGlobalInt("INSTR_OMNIBOX", InstrumentImplementation::OMNIBOX);
 	setGlobalInt("INSTR_NALARGON", InstrumentImplementation::NALARGON);
 	setGlobalInt("INSTR_MANDOVIOL", InstrumentImplementation::MANDOVIOL);
+
+	//Pharmaceutical Medical Pack Type
+	setGlobalInt("ENHANCEPACK", PharmaceuticalImplementation::ENHANCEPACK);
+	setGlobalInt("WOUNDPACK", PharmaceuticalImplementation::WOUNDPACK);
+	setGlobalInt("CUREPACK", PharmaceuticalImplementation::CUREPACK);
+	setGlobalInt("STATEPACK", PharmaceuticalImplementation::STATEPACK);
+	setGlobalInt("STIMPACK", PharmaceuticalImplementation::STIMPACK);
+
+	setGlobalInt("HEALTH", PharmaceuticalImplementation::HEALTH);
+	setGlobalInt("ACTION", PharmaceuticalImplementation::ACTION);
+	setGlobalInt("MIND", PharmaceuticalImplementation::MIND);
+	setGlobalInt("CONSTITUTION", PharmaceuticalImplementation::CONSTITUTION);
+	setGlobalInt("STRENGTH", PharmaceuticalImplementation::STRENGTH);
+	setGlobalInt("QUICKNESS", PharmaceuticalImplementation::QUICKNESS);
+	setGlobalInt("STAMINA", PharmaceuticalImplementation::STAMINA);
+	setGlobalInt("FOCUS", PharmaceuticalImplementation::FOCUS);
+	setGlobalInt("WILLPOWER", PharmaceuticalImplementation::WILLPOWER);
 }
 
 int ItemManagerImplementation::runItemLUAFile(lua_State* L) {
 	string filename = getStringParameter(L);
-	
+
 	runFile("scripts/items/" + filename, L);
-	
+
 	return 0;
 }
 
 TangibleObject* ItemManagerImplementation::createTemplateFromLua(LuaObject itemconfig) {
-	
+
 	int crc = itemconfig.getIntField("objectCRC");
 	string name = itemconfig.getStringField("objectName");
 	string templ = itemconfig.getStringField("templateName");
 	bool equipped = bool(itemconfig.getByteField("equipped"));
 	int type = itemconfig.getIntField("objectType");
-	
+
 	TangibleObject* item = createPlayerObjectTemplate(type, 1, crc, unicode(name), templ, equipped);
 	item->setObjectSubType(type);
-	
+
 	//ADD ATTRIBUTES
-	if (type & TangibleObjectImplementation::ARMOR) {		
+	if (type & TangibleObjectImplementation::ARMOR) {
 		int armorType = itemconfig.getIntField("armorType");
 		int actionEncum = itemconfig.getIntField("actionEncum");
 		int healthEncum = itemconfig.getIntField("healthEncum");
@@ -527,7 +610,7 @@ TangibleObject* ItemManagerImplementation::createTemplateFromLua(LuaObject itemc
 		float heatResist = itemconfig.getFloatField("heatResist");
 		float kineticResist = itemconfig.getFloatField("kineticResist");
 		float lightSaberResist = itemconfig.getFloatField("lightSaberResist");
-				
+
 		((Armor*) item)->setType(armorType);
 		((Armor*) item)->setActionEncumbrance(actionEncum);
 		((Armor*) item)->setMindEncumbrance(mindEncum);
@@ -540,10 +623,10 @@ TangibleObject* ItemManagerImplementation::createTemplateFromLua(LuaObject itemc
 		((Armor*) item)->setHeat(heatResist);
 		((Armor*) item)->setKinetic(kineticResist);
 		((Armor*) item)->setLightSaber(lightSaberResist);
-		
-	} else if (type == TangibleObjectImplementation::INSTRUMENT) {		
+
+	} else if (type == TangibleObjectImplementation::INSTRUMENT) {
 		int instType = itemconfig.getIntField("instrumentType");
-				
+
 		((Instrument*) item)->setInstrumentType(instType);
 	} else if (type & TangibleObjectImplementation::WEAPON) {
 		int damageType = itemconfig.getIntField("damageType");
@@ -552,62 +635,100 @@ TangibleObject* ItemManagerImplementation::createTemplateFromLua(LuaObject itemc
 		float as = itemconfig.getFloatField("attackSpeed");
 		float mindmg = itemconfig.getFloatField("minDamage");
 		float maxdmg = itemconfig.getFloatField("maxDamage");
-		
+
 		Weapon* weapon = (Weapon*) item;
 		weapon->setDamageType(damageType);
 		weapon->setArmorPiercing(ap);
 		weapon->setAttackSpeed(as);
 		weapon->setMinDamage(mindmg);
 		weapon->setMaxDamage(maxdmg);
-		
+
 		if (!cert.empty())
 			weapon->setCert(cert);
+	} else if (type == TangibleObjectImplementation::PHARMACEUTICAL) {
+		int medpackType = itemconfig.getIntField("medpackType");
+		int usesRemaining = itemconfig.getIntField("usesRemaining");
+		int medicineUse = itemconfig.getIntField("medicineUse");
+
+		Pharmaceutical* pharma = (Pharmaceutical*) item;
+		pharma->setMedpackType(medpackType);
+		pharma->setUsesRemaining(usesRemaining);
+		pharma->setMedicineUseRequired(medicineUse);
+
+		switch (medpackType) {
+			case PharmaceuticalImplementation::ENHANCEPACK:
+			{
+				float eff = itemconfig.getFloatField("effectiveness");
+				float dur = itemconfig.getFloatField("duration");
+				int pool = itemconfig.getIntField("poolAffected");
+				EnhancePack* enhance = (EnhancePack*) item;
+				enhance->setEffectiveness(eff);
+				enhance->setDuration(dur);
+				enhance->setPoolAffected(pool);
+				break;
+			}
+			case PharmaceuticalImplementation::WOUNDPACK:
+				break;
+			case PharmaceuticalImplementation::CUREPACK:
+				break;
+			case PharmaceuticalImplementation::STATEPACK:
+				break;
+			case PharmaceuticalImplementation::STIMPACK:
+			{
+				float eff = itemconfig.getFloatField("effectiveness");
+				StimPack* stim = (StimPack*) item;
+				stim->setEffectiveness(eff);
+				break;
+			}
+			default:
+				break;
+		}
 	}
-	
+
 	return item;
 }
 int ItemManagerImplementation::addPlayerItem(lua_State * l) {
 	LuaObject itemwrapper(l);
-	
+
 	string species = itemwrapper.getStringField("species");
 	string sex = itemwrapper.getStringField("sex");
 	string profession = itemwrapper.getStringField("profession");
-	
+
 	LuaObject itemconfig(itemwrapper.getObjectField("item"));
-	
+
 	TangibleObject* item = createTemplateFromLua(itemconfig);
-	
+
 	startingItems->addItemToProfession(profession, species, sex, item);
-	
+
 	return 0;
 }
 
 int ItemManagerImplementation::addBFItem(lua_State * l) {
 	LuaObject itemwrapper(l);
-	
+
 	string name = itemwrapper.getStringField("name");
-	
+
 	LuaObject itemconfig(itemwrapper.getObjectField("item"));
-	
+
 	TangibleObject* item = createTemplateFromLua(itemconfig);
-	
+
 	bfItemSet->addItem(name, item);
-	
+
 	return 0;
 }
 
 int ItemManagerImplementation::addBFProf(lua_State * l) {
-	
+
 	LuaObject itemwrapper(l);
-	
+
 	string name = itemwrapper.getStringField("name");
-	
+
 	string prof = itemwrapper.getStringField("prof");
-	
+
 	string group = itemwrapper.getStringField("group");
 
 	bfProfSet->addProfession(name, group, prof);
-	
+
 	return 0;
 }
 
@@ -619,20 +740,25 @@ int ItemManagerImplementation::addBFGroup(lua_State * l) {
 	string parent = itemwrapper.getStringField("parent");
 
 	bfProfSet->addGroup(name, parent);
-	
+
 	return 0;
 }
 
 void ItemManagerImplementation::giveBFItemSet(Player * player, string& set) {
 	Vector<TangibleObject*>* itemSet = bfItemSet->get(set);
-	
+
 	for (int i = 0; i < itemSet->size(); i++) {
-		TangibleObject* item = clonePlayerObjectTemplate(itemSet->get(i));
-		item->setObjectID(player->getNewItemID());
-		
-		player->addInventoryItem(item);
-		
-		item->sendTo(player);
+		TangibleObject* item = clonePlayerObjectTemplate(player->getNewItemID(), itemSet->get(i));
+		//item->setObjectID(player->getNewItemID());
+		if(item == NULL)
+		{
+			cout << "ItemManagerImplementation::giveBFItemSet(...), item == NULL!, set = " << set << endl;
+		} else
+		{
+			player->addInventoryItem(item);
+
+			item->sendTo(player);
+		}
 	}
 }
 
@@ -640,52 +766,52 @@ void ItemManagerImplementation::giveBFItemSet(Player * player, string& set) {
 void ItemManagerImplementation::loadDefaultPlayerItems(Player* player) {
 	string prof = player->getStartingProfession();
 	prof = prof.substr(prof.find_first_of("_") + 1);
-	
+
 	string race = player->getRaceFileName();
 	int ls = race.find_last_of("/");
 	int fu = race.find_first_of("_");
 	int dot = race.find_last_of(".");
-	
+
 	string species = race.substr(ls + 1, fu - ls - 1);
 	string sex = race.substr(fu + 1, dot - fu -1);
-	
+
 	string gen = "general";
 	string all = "all";
-	
+
 	Vector<TangibleObject*>* items;
-	
+
 	//Make profession items for species
 	items = startingItems->getProfessionItems(prof, species, sex);
 	for (int j = 0; j < items->size(); ++j) {
-		TangibleObject* obj = clonePlayerObjectTemplate(items->get(j));
-		obj->setObjectID(player->getNewItemID());
+		TangibleObject* obj = clonePlayerObjectTemplate(player->getNewItemID(), items->get(j));
+		//obj->setObjectID(player->getNewItemID());
 		player->addInventoryItem(obj);
 	}
-	
+
 	//Make profession items for that apply to all species
 	items = startingItems->getProfessionItems(prof, all, sex);
 	for (int j = 0; j < items->size(); ++j) {
-		TangibleObject* obj = clonePlayerObjectTemplate(items->get(j));
-		obj->setObjectID(player->getNewItemID());
+		TangibleObject* obj = clonePlayerObjectTemplate(player->getNewItemID(), items->get(j));
+		//obj->setObjectID(player->getNewItemID());
 		player->addInventoryItem(obj);
 	}
-	
+
 	//Make general items for species
 	items = startingItems->getProfessionItems(gen, species, sex);
 	for (int j = 0; j < items->size(); ++j) {
-		TangibleObject* obj = clonePlayerObjectTemplate(items->get(j));
-		obj->setObjectID(player->getNewItemID());
+		TangibleObject* obj = clonePlayerObjectTemplate(player->getNewItemID(), items->get(j));
+		//obj->setObjectID(player->getNewItemID());
 		player->addInventoryItem(obj);
 	}
-	
+
 	//Make general items that apple to all species
 	items = startingItems->getProfessionItems(gen, all, sex);
 	for (int j = 0; j < items->size(); ++j) {
-		TangibleObject* obj = clonePlayerObjectTemplate(items->get(j));
-		obj->setObjectID(player->getNewItemID());
+		TangibleObject* obj = clonePlayerObjectTemplate(player->getNewItemID(), items->get(j));
+		//obj->setObjectID(player->getNewItemID());
 		player->addInventoryItem(obj);
 	}
-	
+
 }
 
 void ItemManagerImplementation::loadDefaultPlayerDatapadItems(Player* player) {
@@ -694,8 +820,8 @@ void ItemManagerImplementation::loadDefaultPlayerDatapadItems(Player* player) {
 			String::hashCode("object/intangible/vehicle/shared_speederbike_swoop_pcd.iff"), 0xAF6D9F4F, player->getNewItemID());
 	swoop->addToDatapad();
 
-	// flash speeder	
-	MountCreature* flash = new MountCreature(player, "speederbike_flash", "monster_name", String::hashCode("object/intangible/vehicle/shared_speederbike_flash_pcd.iff"), 
+	// flash speeder
+	MountCreature* flash = new MountCreature(player, "speederbike_flash", "monster_name", String::hashCode("object/intangible/vehicle/shared_speederbike_flash_pcd.iff"),
 			0x4E3534, player->getNewItemID());
 	flash->addToDatapad();
 
@@ -705,7 +831,7 @@ void ItemManagerImplementation::loadDefaultPlayerDatapadItems(Player* player) {
 	land->addToDatapad();
 
 	// xp 38 doesnt work
-	/*MountCreatureImplementation* land2Impl = new MountCreatureImplementation(player, "landspeeder_xp38", "monster_name", 
+	/*MountCreatureImplementation* land2Impl = new MountCreatureImplementation(player, "landspeeder_xp38", "monster_name",
 	 String::hashCode("object/intangible/vehicle/shared_vehicle_pcd_base.iff"), 0x3F6E7BA7, player->getNewItemID());
 	 stringstream Land2;
 	 Land2 << "Mount" << land2Impl->getObjectID();
@@ -728,13 +854,13 @@ void ItemManagerImplementation::loadDefaultPlayerDatapadItems(Player* player) {
 	speed->addToDatapad();
 
 	// jetpack
-	/*MountCreatureImplementation* jetImpl = new MountCreatureImplementation(player, "jetpack", "monster_name", 
+	/*MountCreatureImplementation* jetImpl = new MountCreatureImplementation(player, "jetpack", "monster_name",
 	 String::hashCode("object/intangible/vehicle/shared_jetpack_pcd.iff"), 0x60250B32, player->getNewItemID());
 	 jetImpl->setInstantMount(true);
 	 stringstream Jet;
 	 Jet << "Mount" << jetImpl->getObjectID();
 	 MountCreature* jet = (MountCreature*) DistributedObjectBroker::instance()->deploy(Jet.str(), jetImpl);
-	 jet->addToDatapad();*/	
+	 jet->addToDatapad();*/
 }
 
 void ItemManagerImplementation::unloadPlayerItems(Player* player) {
@@ -742,7 +868,7 @@ void ItemManagerImplementation::unloadPlayerItems(Player* player) {
 
 	for (int i = 0; i < inventory->objectsSize(); ++i) {
 		TangibleObject* item = (TangibleObject*) inventory->getObject(i);
-		
+
 		if (!item->isPersistent()) {
 			createPlayerItem(player, item);
 		} else if (item->isUpdated()) {
@@ -755,26 +881,27 @@ void ItemManagerImplementation::createPlayerItem(Player* player, TangibleObject*
 	try {
 		string itemname = item->getName().c_str();
 		MySqlDatabase::escapeString(itemname);
-		
+
 		string appearance;
 		string itemApp;
 		item->getCustomizationString(itemApp);
 		BinaryData cust(itemApp);
 		cust.encode(appearance);
-				
+
 		stringstream query;
 		query << "INSERT INTO `character_items` "
 			  << "(`item_id`,`character_id`,`name`,`template_crc`,`template_type`,`template_name`,`equipped`,`attributes`,`appearance`)"
-			  << " VALUES(" << item->getObjectID() << "," << player->getCharacterID() 
-			  << ",'\\" << itemname << "'," 
+			  << " VALUES(" << item->getObjectID() << "," << player->getCharacterID()
+			  << ",'\\" << itemname << "',"
 			  << item->getObjectCRC() << "," << item->getObjectSubType() << ",'" << item->getTemplateName() << "',"
-			  << item->isEquipped() << ",'" << item->getAttributes() 
+			  << item->isEquipped() << ",'" << item->getAttributes()
 			  << "','" << appearance.substr(0, appearance.size() - 1) << "')";
 
 		ServerDatabase::instance()->executeStatement(query);
-		
+
+
 		item->setPersistent(true);
-		
+
 	} catch (DatabaseException& e) {
 		cout << e.getMessage() << "\n";
 	}
@@ -787,30 +914,30 @@ void ItemManagerImplementation::savePlayerItem(Player* player, TangibleObject* i
 		item->getCustomizationString(itemApp);
 		BinaryData cust(itemApp);
 		cust.encode(appearance);
-		
+
 		stringstream query;
 		query << "update `character_items` set equipped = " << item->isEquipped();
 		query << ", character_id = " << player->getCharacterID() << " ";
 		query << ", attributes = '" << item->getAttributes() << "' ";
 		query << ", appearance = '" << appearance.substr(0, appearance.size() - 1) << "' ";
 		query << "where item_id = " << item->getObjectID();
-		
+
 		ServerDatabase::instance()->executeStatement(query);
-		
+
 	} catch (DatabaseException& e) {
 		cout << e.getMessage() << "\n";
 	}
 }
 
 void ItemManagerImplementation::deletePlayerItem(Player* player, TangibleObject* item, bool notify) {
-	try {	
+	try {
 		stringstream query;
 		query << "update `character_items` set deleted = " << 1 << " where item_id = " << item->getObjectID();
-	
+
 		ServerDatabase::instance()->executeStatement(query);
 
 		//cout << query.str() << endl;
-		
+
 		stringstream playertxt;
 		if (notify)
 			playertxt << "You have destroyed " << item->getName().c_str() << ".";
@@ -824,119 +951,119 @@ void ItemManagerImplementation::deletePlayerItem(Player* player, TangibleObject*
 void ItemManagerImplementation::showDbStats(Player* player) {
 	stringstream txt;
 	txt << "Database Statistics\n";
-	
+
 	try {
 		stringstream query;
 		query << "select * from `character_items`";
-		
+
 		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
-		
+
 		txt << res->size() << " total items in the database\n";
-		
+
 		delete res;
 	} catch (DatabaseException& e) {
 		cout << e.getMessage() << "\n";
 	}
-	
+
 	try {
 		stringstream query;
 		query << "select * from `character_items` where `character_id` = " << player->getCharacterID() << " and `deleted` = 1";
-		
+
 		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
-		
+
 		txt << res->size() << " deleted items in the database.\n";
-		
+
 		delete res;
 	} catch (DatabaseException& e) {
 		cout << e.getMessage() << "\n";
 	}
-	
+
 	try {
 		stringstream query;
 		query << "select * from `character_items` where `character_id` = " << player->getCharacterID() << " and `template_type` = 2";
-		
+
 		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
-		
+
 		txt << res->size() << " Weapon Items, ";
-		
+
 		delete res;
 	} catch (DatabaseException& e) {
 		cout << e.getMessage() << "\n";
 	}
-	
+
 	try {
 		stringstream query;
 		query << "select * from `character_items` where `character_id` = " << player->getCharacterID() << " and `template_type` = 3";
-		
+
 		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
-		
+
 		txt << res->size() << " Clothing Items, ";
-		
+
 		delete res;
 	} catch (DatabaseException& e) {
 		cout << e.getMessage() << "\n";
 	}
-	
+
 	try {
 		stringstream query;
 		query << "select * from `character_items` where `character_id` = " << player->getCharacterID() << " and `template_type` = 4";
-		
+
 		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
-		
+
 		txt << res->size() << " Armor Items.\n";
-		
+
 		delete res;
 	} catch (DatabaseException& e) {
 		cout << e.getMessage() << "\n";
 	}
-	
+
 	try {
 		stringstream query;
 		query << "SELECT * FROM `character_items` WHERE `deleted` = 0 ORDER BY `max_damage` DESC LIMIT 10";
-		
+
 		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
-		
+
 		txt << "Top 10 Weapons by Max Damage\n";
-		
+
 		while (res->next()) {
 			if (res->getInt(4) == WeaponImplementation::WEAPON) {
-				txt << "ObjID: " << res->getUnsignedLong(0) << " Name: " << res->getString(2) 
-					<< "\\#ffffff MinDmg: " << res->getFloat(11) << " MaxDmg: " << res->getFloat(12) 
+				txt << "ObjID: " << res->getUnsignedLong(0) << " Name: " << res->getString(2)
+					<< "\\#ffffff MinDmg: " << res->getFloat(11) << " MaxDmg: " << res->getFloat(12)
 					<< " Spd: " << res->getFloat(13) << "\n";
 			}
 		}
-		
+
 		delete res;
-		
+
 		player->sendSystemMessage(txt.str());
 	} catch (DatabaseException& e) {
 		cout << e.getMessage() << "\n";
 	}
-	
+
 	try {
 		stringstream query;
 		query << "SELECT * FROM `character_items` WHERE `deleted` = 0 ORDER BY `dot1_strength` DESC LIMIT 10";
-		
+
 		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
-		
+
 		txt << "Top 10 Weapons by DOT Strength\n";
-		
+
 		while (res->next()) {
 			if (res->getInt(4) == WeaponImplementation::WEAPON) {
-				txt << "ObjID: " << res->getUnsignedLong(0) << " Name: " << res->getString(2) 
-					<< "\\#ffffff MinDmg: " << res->getFloat(11) << " MaxDmg: " << res->getFloat(12) 
-					<< " Spd: " << res->getFloat(13) << " Strength: " << res->getInt(58) 
+				txt << "ObjID: " << res->getUnsignedLong(0) << " Name: " << res->getString(2)
+					<< "\\#ffffff MinDmg: " << res->getFloat(11) << " MaxDmg: " << res->getFloat(12)
+					<< " Spd: " << res->getFloat(13) << " Strength: " << res->getInt(58)
 					<< " Potency: " << res->getInt(60) << "\n";
 			}
 		}
-		
+
 		delete res;
-		
+
 		player->sendSystemMessage(txt.str());
 	} catch (DatabaseException& e) {
 		cout << e.getMessage() << "\n";
 	}
-	
+
 	player->sendSystemMessage(txt.str());
 }
 
@@ -944,38 +1071,38 @@ void ItemManagerImplementation::showDbDeleted(Player* player) {
 	try {
 		stringstream query;
 		query << "select * from `character_items` where `character_id` = " << player->getCharacterID() << " and `deleted` = 1";
-		
+
 		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
-		
+
 		stringstream txt;
-		
+
 		while (res->next()) {
 			if (res->getInt(4) == WeaponImplementation::WEAPON) {
-				txt << "ObjID: " << res->getUnsignedLong(0) << " Name: " << res->getString(2) 
-					<< "\\#ffffff MinDmg: " << res->getFloat(11) << " MaxDmg: " << res->getFloat(12) 
+				txt << "ObjID: " << res->getUnsignedLong(0) << " Name: " << res->getString(2)
+					<< "\\#ffffff MinDmg: " << res->getFloat(11) << " MaxDmg: " << res->getFloat(12)
 					<< " Spd: " << res->getFloat(13) << "\n";
 			} else if (res->getInt(4) == ArmorImplementation::ARMOR) {
-				txt << "ObjID: " << res->getUnsignedLong(0) << " Name: " << res->getString(2) 
-				<< "\\#ffffff Resists: " << res->getFloat(31) << " " << res->getFloat(33) << " " 
-				<< res->getFloat(35) << " " << res->getFloat(36) << " " << res->getFloat(39) << " " 
-				<< res->getFloat(41) << " " << res->getFloat(43) << " " << res->getFloat(45) << " " 
+				txt << "ObjID: " << res->getUnsignedLong(0) << " Name: " << res->getString(2)
+				<< "\\#ffffff Resists: " << res->getFloat(31) << " " << res->getFloat(33) << " "
+				<< res->getFloat(35) << " " << res->getFloat(36) << " " << res->getFloat(39) << " "
+				<< res->getFloat(41) << " " << res->getFloat(43) << " " << res->getFloat(45) << " "
 				<< res->getFloat(47) << "\n";
 			} else {
 				txt << "ObjID: " << res->getUnsignedLong(0) << " Name: " << res->getString(2) << "\\#ffffff \n";
 			}
 		}
-		
+
 		player->sendSystemMessage(txt.str());
 	} catch (DatabaseException& e) {
 		cout << e.getMessage() << "\n";
-	}						
+	}
 }
 
 void ItemManagerImplementation::purgeDbDeleted(Player* player) {
 	try {
 		stringstream query;
 		query << "DELETE FROM `character_items` WHERE `deleted` = 1";
-		
+
 		ServerDatabase::instance()->executeStatement(query);
 
 		player->sendSystemMessage("Deleted items purged.");

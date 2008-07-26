@@ -79,6 +79,8 @@ public:
 
 	bool isSurveyTool();
 
+	bool isPharmaceutical();
+
 	bool isLair();
 
 	bool isCraftingStation();
@@ -214,6 +216,8 @@ public:
 	bool isTicketCollector();
 
 	bool isSurveyTool();
+
+	bool isPharmaceutical();
 
 	bool isLair();
 

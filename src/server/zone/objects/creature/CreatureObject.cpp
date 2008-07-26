@@ -5317,6 +5317,128 @@ void CreatureObject::explode(int level) {
 		((CreatureObjectImplementation*) _impl)->explode(level);
 }
 
+BuffObject* CreatureObject::getBuffObject(const unsigned int buffCRC) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 415);
+		method.addUnsignedIntParameter(buffCRC);
+
+		return (BuffObject*) method.executeWithObjectReturn();
+	} else
+		return ((CreatureObjectImplementation*) _impl)->getBuffObject(buffCRC);
+}
+
+bool CreatureObject::hasBuff(const unsigned int buffCRC) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 416);
+		method.addUnsignedIntParameter(buffCRC);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((CreatureObjectImplementation*) _impl)->hasBuff(buffCRC);
+}
+
+void CreatureObject::deactivateWoundTreatment() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 417);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->deactivateWoundTreatment();
+}
+
+void CreatureObject::activateWoundTreatment() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 418);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->activateWoundTreatment();
+}
+
+void CreatureObject::deactivateInjuryTreatment() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 419);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->deactivateInjuryTreatment();
+}
+
+void CreatureObject::activateInjuryTreatment() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 420);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->activateInjuryTreatment();
+}
+
+bool CreatureObject::canTreatWounds() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 421);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((CreatureObjectImplementation*) _impl)->canTreatWounds();
+}
+
+bool CreatureObject::canTreatInjuries() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 422);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((CreatureObjectImplementation*) _impl)->canTreatInjuries();
+}
+
+bool CreatureObject::canTreatStates() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 423);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((CreatureObjectImplementation*) _impl)->canTreatStates();
+}
+
+int CreatureObject::getMedicalFacilityRating() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 424);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((CreatureObjectImplementation*) _impl)->getMedicalFacilityRating();
+}
+
 /*
  *	CreatureObjectAdapter
  */
@@ -6554,6 +6676,36 @@ Packet* CreatureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		break;
 	case 414:
 		explode(inv->getSignedIntParameter());
+		break;
+	case 415:
+		resp->insertLong(getBuffObject(inv->getUnsignedIntParameter())->_getObjectID());
+		break;
+	case 416:
+		resp->insertBoolean(hasBuff(inv->getUnsignedIntParameter()));
+		break;
+	case 417:
+		deactivateWoundTreatment();
+		break;
+	case 418:
+		activateWoundTreatment();
+		break;
+	case 419:
+		deactivateInjuryTreatment();
+		break;
+	case 420:
+		activateInjuryTreatment();
+		break;
+	case 421:
+		resp->insertBoolean(canTreatWounds());
+		break;
+	case 422:
+		resp->insertBoolean(canTreatInjuries());
+		break;
+	case 423:
+		resp->insertBoolean(canTreatStates());
+		break;
+	case 424:
+		resp->insertSignedInt(getMedicalFacilityRating());
 		break;
 	default:
 		return NULL;
@@ -8196,6 +8348,46 @@ void CreatureObjectAdapter::setMount(MountCreature* mount) {
 
 void CreatureObjectAdapter::explode(int level) {
 	return ((CreatureObjectImplementation*) impl)->explode(level);
+}
+
+BuffObject* CreatureObjectAdapter::getBuffObject(const unsigned int buffCRC) {
+	return ((CreatureObjectImplementation*) impl)->getBuffObject(buffCRC);
+}
+
+bool CreatureObjectAdapter::hasBuff(const unsigned int buffCRC) {
+	return ((CreatureObjectImplementation*) impl)->hasBuff(buffCRC);
+}
+
+void CreatureObjectAdapter::deactivateWoundTreatment() {
+	return ((CreatureObjectImplementation*) impl)->deactivateWoundTreatment();
+}
+
+void CreatureObjectAdapter::activateWoundTreatment() {
+	return ((CreatureObjectImplementation*) impl)->activateWoundTreatment();
+}
+
+void CreatureObjectAdapter::deactivateInjuryTreatment() {
+	return ((CreatureObjectImplementation*) impl)->deactivateInjuryTreatment();
+}
+
+void CreatureObjectAdapter::activateInjuryTreatment() {
+	return ((CreatureObjectImplementation*) impl)->activateInjuryTreatment();
+}
+
+bool CreatureObjectAdapter::canTreatWounds() {
+	return ((CreatureObjectImplementation*) impl)->canTreatWounds();
+}
+
+bool CreatureObjectAdapter::canTreatInjuries() {
+	return ((CreatureObjectImplementation*) impl)->canTreatInjuries();
+}
+
+bool CreatureObjectAdapter::canTreatStates() {
+	return ((CreatureObjectImplementation*) impl)->canTreatStates();
+}
+
+int CreatureObjectAdapter::getMedicalFacilityRating() {
+	return ((CreatureObjectImplementation*) impl)->getMedicalFacilityRating();
 }
 
 /*

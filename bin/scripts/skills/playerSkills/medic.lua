@@ -43,17 +43,12 @@ HealSelfSkill = {
 	skillname = "healdamage",
 	effect = "clienteffect/healing_healdamage.cef",
 	animation = "heal_self",
-
-	healHealth = 3000,
-	healAction = 3000,
-	healMind = 0,
-
-	speed = 3.0,
 	
-	range = 5
+	mindCost = -50,
+	range = 6.0
 }
 
-AddHealTargetSkill(HealSelfSkill);
+AddHealDamageTargetSkill(HealSelfSkill);
 
 
 HealSelfSkill = {

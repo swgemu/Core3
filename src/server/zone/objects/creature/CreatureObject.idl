@@ -664,4 +664,23 @@ interface CreatureObject implements SceneObject {
 	void setMount(MountCreature mount);
 	
 	void explode(int level = 1);
+	
+	BuffObject getBuffObject(const unsigned int buffCRC);
+	
+	boolean hasBuff(const unsigned int buffCRC);
+	
+	/*
+	 Clean up later
+	*/
+	void deactivateWoundTreatment();
+	void activateWoundTreatment();
+	
+	void deactivateInjuryTreatment();
+	void activateInjuryTreatment();
+	
+	boolean canTreatWounds();
+	boolean canTreatInjuries();
+	boolean canTreatStates();
+	
+	int getMedicalFacilityRating();
 }

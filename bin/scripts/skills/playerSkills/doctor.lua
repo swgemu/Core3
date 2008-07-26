@@ -106,3 +106,14 @@ HealSelfSkill = {
 }
 
 AddHealSelfSkill(HealSelfSkill);
+
+HealEnhanceTargetSkill = {
+	skillname = "healenhance",
+	effect = "clienteffect/healing_healenhance.cef",
+	animation = "heal_self",
+	
+	mindCost = -200,
+	range = 6.0
+}
+
+AddHealEnhanceTargetSkill(HealEnhanceTargetSkill);

@@ -107,6 +107,9 @@ IDL_SOURCES = server/zone/Zone.idl \
 				server/zone/objects/tangible/crafting/component/Component.idl \
 				server/zone/objects/tangible/crafting/factorycrate/FactoryCrate.idl \
 				server/zone/objects/tangible/resource/ResourceContainer.idl \
+				server/zone/objects/tangible/pharmaceutical/Pharmaceutical.idl \
+				server/zone/objects/tangible/pharmaceutical/EnhancePack.idl \
+				server/zone/objects/tangible/pharmaceutical/StimPack.idl \
 				server/zone/objects/tangible/attachment/Attachment.idl \
 				server/zone/objects/tangible/powerup/Powerup.idl \
 				server/zone/objects/tangible/holocron/Holocron.idl \

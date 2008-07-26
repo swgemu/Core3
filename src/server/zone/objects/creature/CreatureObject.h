@@ -863,6 +863,26 @@ public:
 
 	void explode(int level = 1);
 
+	BuffObject* getBuffObject(const unsigned int buffCRC);
+
+	bool hasBuff(const unsigned int buffCRC);
+
+	void deactivateWoundTreatment();
+
+	void activateWoundTreatment();
+
+	void deactivateInjuryTreatment();
+
+	void activateInjuryTreatment();
+
+	bool canTreatWounds();
+
+	bool canTreatInjuries();
+
+	bool canTreatStates();
+
+	int getMedicalFacilityRating();
+
 protected:
 	CreatureObject(DummyConstructorParameter* param);
 
@@ -1709,6 +1729,26 @@ public:
 	void setMount(MountCreature* mount);
 
 	void explode(int level);
+
+	BuffObject* getBuffObject(const unsigned int buffCRC);
+
+	bool hasBuff(const unsigned int buffCRC);
+
+	void deactivateWoundTreatment();
+
+	void activateWoundTreatment();
+
+	void deactivateInjuryTreatment();
+
+	void activateInjuryTreatment();
+
+	bool canTreatWounds();
+
+	bool canTreatInjuries();
+
+	bool canTreatStates();
+
+	int getMedicalFacilityRating();
 
 protected:
 	string _param0_info__string_bool_;

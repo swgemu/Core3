@@ -46,3 +46,5 @@ RunItemLUAFile("bluefrog/surveying_kit.lua");
 RunItemLUAFile("bluefrog/weapon_set.lua");
 RunItemLUAFile("bluefrog/wookiee_armor_set.lua");
 RunItemLUAFile("bluefrog/ith_armor_set.lua");
+RunItemLUAFile("bluefrog/enhancepack_set.lua");
+RunItemLUAFile("bluefrog/stimpack_set.lua");

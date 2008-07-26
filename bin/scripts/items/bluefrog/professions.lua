@@ -57,6 +57,9 @@ addBFGroup("Combat Professions", "root");
     addBFProfession("Master Smuggler", "Ranged Professions", "combat_smuggler_master");
 
 addBFGroup("Non-Combatant Professions", "root");
+  addBFGroup("Healing Professions", "Non-Combatant Professions");
+    addBFProfession("Master Doctor", "Healing Professions", "science_doctor_master");
+    addBFProfession("Master Medic", "Healing Professions", "science_medic_master");
   addBFGroup("Crafting Professions", "Non-Combatant Professions");
     addBFProfession("Master Artisan", "Crafting Professions", "crafting_artisan_master");
   addBFGroup("Social Professions", "Non-Combatant Professions"); 

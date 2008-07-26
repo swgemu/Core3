@@ -112,6 +112,9 @@ core3_IDLS =	server/zone/Zone.cpp \
 		server/zone/objects/tangible/terminal/bazaar/RegionBazaar.cpp \
 		server/zone/objects/tangible/ticketcollector/TicketCollector.cpp \
 		server/zone/objects/tangible/instrument/Instrument.cpp \
+		server/zone/objects/tangible/pharmaceutical/Pharmaceutical.cpp \
+		server/zone/objects/tangible/pharmaceutical/EnhancePack.cpp \
+		server/zone/objects/tangible/pharmaceutical/StimPack.cpp \
 		server/zone/objects/attackable/lair/LairObject.cpp \
 		server/zone/objects/tangible/surveytool/SurveyTool.cpp \
 		server/zone/objects/tangible/crafting/CraftingTool.cpp \
@@ -190,6 +193,9 @@ core3_SOURCES =	$(core3_IDLS) \
                 server/zone/objects/tangible/crafting/component/ComponentImplementation.cpp \
                 server/zone/objects/tangible/crafting/factorycrate/FactoryCrateImplementation.cpp \
 		server/zone/objects/tangible/resource/ResourceContainerImplementation.cpp \
+		server/zone/objects/tangible/pharmaceutical/PharmaceuticalImplementation.cpp \
+		server/zone/objects/tangible/pharmaceutical/EnhancePackImplementation.cpp \
+		server/zone/objects/tangible/pharmaceutical/StimPackImplementation.cpp \
 		server/zone/objects/tangible/attachment/AttachmentImplementation.cpp \
 		server/zone/objects/tangible/powerup/PowerupImplementation.cpp \
 		server/zone/objects/tangible/ticket/TicketImplementation.cpp \

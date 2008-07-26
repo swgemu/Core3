@@ -1,44 +1,44 @@
 /*
 Copyright (C) 2007 <SWGEmu>
- 
+
 This File is part of Core3.
- 
-This program is free software; you can redistribute 
-it and/or modify it under the terms of the GNU Lesser 
+
+This program is free software; you can redistribute
+it and/or modify it under the terms of the GNU Lesser
 General Public License as published by the Free Software
-Foundation; either version 2 of the License, 
+Foundation; either version 2 of the License,
 or (at your option) any later version.
- 
-This program is distributed in the hope that it will be useful, 
-but WITHOUT ANY WARRANTY; without even the implied warranty of 
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 See the GNU Lesser General Public License for
 more details.
- 
-You should have received a copy of the GNU Lesser General 
+
+You should have received a copy of the GNU Lesser General
 Public License along with this program; if not, write to
 the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
- 
-Linking Engine3 statically or dynamically with other modules 
-is making a combined work based on Engine3. 
-Thus, the terms and conditions of the GNU Lesser General Public License 
+
+Linking Engine3 statically or dynamically with other modules
+is making a combined work based on Engine3.
+Thus, the terms and conditions of the GNU Lesser General Public License
 cover the whole combination.
- 
-In addition, as a special exception, the copyright holders of Engine3 
-give you permission to combine Engine3 program with free software 
-programs or libraries that are released under the GNU LGPL and with 
-code included in the standard release of Core3 under the GNU LGPL 
-license (or modified versions of such code, with unchanged license). 
-You may copy and distribute such a system following the terms of the 
-GNU LGPL for Engine3 and the licenses of the other code concerned, 
-provided that you include the source code of that other code when 
+
+In addition, as a special exception, the copyright holders of Engine3
+give you permission to combine Engine3 program with free software
+programs or libraries that are released under the GNU LGPL and with
+code included in the standard release of Core3 under the GNU LGPL
+license (or modified versions of such code, with unchanged license).
+You may copy and distribute such a system following the terms of the
+GNU LGPL for Engine3 and the licenses of the other code concerned,
+provided that you include the source code of that other code when
 and as the GNU LGPL requires distribution of source code.
- 
-Note that people who make modified versions of Engine3 are not obligated 
-to grant this special exception for their modified versions; 
-it is their choice whether to do so. The GNU Lesser General Public License 
-gives permission to release a modified version without this exception; 
-this exception also makes it possible to release a modified version 
+
+Note that people who make modified versions of Engine3 are not obligated
+to grant this special exception for their modified versions;
+it is their choice whether to do so. The GNU Lesser General Public License
+gives permission to release a modified version without this exception;
+this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
@@ -63,13 +63,13 @@ which carries forward this exception.
 class Zone;
 class CreatureObject;
 class Player;
-class BuildingObject; 
+class BuildingObject;
 
 class TangibleObjectImplementation : public TangibleObjectServant {
 protected:
 	Zone* zone;
-	
-	int conditionDamage; 
+
+	int conditionDamage;
 	int maxCondition;
 
 	bool persistent, updated;
@@ -78,7 +78,7 @@ protected:
 	int objectSubType;
 
 	SceneObject* container;
-	
+
 	BuildingObject* building;
 
 	unicode name;
@@ -86,17 +86,17 @@ protected:
 	string templateName;
 
 	string attributeString;
-	
+
 	CustomizationVariables customizationVars;
 
 	int objectCount;
 
 	bool equipped;
-	
+
 	uint32 pvpStatusBitmask;
-	
+
 	ItemAttributes* itemAttributes;
-	
+
 	string craftersName;
 	string craftedSerial;
 
@@ -107,7 +107,7 @@ public:
 	static const int LAIR = 0x30000004;
 	static const int HOLOCRON = 0x30000005;
 	static const int SHIPCOMPONENT = 0x30000006;
-	
+
 	static const int ARMOR = 0x100;
 	static const int BODYARMOR = 0x101;
 	static const int HEADARMOR = 0x102;
@@ -117,7 +117,7 @@ public:
 	static const int HANDARMOR = 0x106;
 	static const int FOOTARMOR = 0x107;
 	static const int SHIELDGENERATOR = 0x108;
-	
+
 	static const int DATA = 0x800;
 	static const int DRAFTSCHEMATIC = 0x801;
 	static const int MANUFACTURINGSCHEMATIC = 0x802;
@@ -129,7 +129,7 @@ public:
 	static const int VEHICLECONTROLDEVICE = 0x808;
 	static const int SHIPCONTROLDEVICE = 0x80A;
 	static const int DROIDCONTROLDEVICE = 0x80B;
-	
+
 	static const int MISC = 0x2000;
 	static const int AMMUNITION = 0x2001;
 	static const int CHEMICAL = 0x2002;
@@ -166,17 +166,17 @@ public:
 	static const int OPERATIONSCHAIR = 0x2025;
 	static const int TURRETACCESSLADDER = 0x2026;
 	static const int CONTAINER2 = 0x2027;
-	
+
 	static const int TOOL = 0x8000;
 	static const int CRAFTINGTOOL = 0x8001;
 	static const int SURVEYTOOL = 0x8002;
 	static const int REPAIRTOOL = 0x8003;
 	static const int CAMPKIT = 0x8004;
 	static const int SHIPCOMPONENTREPAIRITEM = 0x8005;
-	
+
 	static const int VEHICLE = 0x10000;
 	static const int HOVERVEHICLE = 0x10001;
-	
+
 	static const int WEAPON = 0x20000;
 	static const int MELEEWEAPON = 0x20001;
 	static const int RANGEDWEAPON = 0x20002;
@@ -190,9 +190,9 @@ public:
 	static const int PISTOL = 0x2000A;
 	static const int CARBINE = 0x2000B;
 	static const int RIFLE = 0x2000C;
-	
+
 	static const int COMPONENT = 0x40000;
-	
+
 	static const int RESOURCECONTAINER = 0x400000;
 	static const int ENERGYGAS = 0x400001;
 	static const int ENERGYLIQUID = 0x400002;
@@ -205,7 +205,7 @@ public:
 	static const int ORGANICFOOD = 0x400009;
 	static const int ORGANICHIDE = 0x40000A;
 	static const int ORGANICSTRUCTURAL = 0x40000B;
-	
+
 	static const int WEAPONPOWERUP = 0x80000;
 	static const int MELEEWEAPONPOWERUP = 0x80001;
 	static const int RANGEDWEAPONPOWERUP = 0x80002;
@@ -213,12 +213,12 @@ public:
 	static const int HEAVYWEAPONPOWERUP = 0x80004;
 	static const int MINEPOWERUP = 0x80005;
 	static const int SPECIALHEAVYWEAPONPOWERUP = 0x80006;
-	
+
 	static const int LIGHTSABER = 0x2000000;
 	static const int ONEHANDSABER = 0x2000001;
 	static const int TWOHANDSABER = 0x2000002;
 	static const int POLEARMSABER = 0x2000003;
-	
+
 	static const int DEED = 0x800000;
 	static const int BUILDINGDEED = 0x800001;
 	static const int INSTALLATIONDEED = 0x800002;
@@ -251,22 +251,22 @@ public:
 	TangibleObjectImplementation(uint64 oid, int tp = 0);
 	TangibleObjectImplementation(uint64 oid, const unicode& name, const string& tempname, uint32 tempCRC, int tp = 0);
 	TangibleObjectImplementation(CreatureObject* creature, const unicode& name, const string& tempname, uint32 tempCRC, int tp = 0);
-	
+
 	~TangibleObjectImplementation();
-	
+
 	void initialize();
 
 	// This function should be called for all character items
 	void parseAttributes();
-	
+
 	virtual void parseItemAttributes() {
 	}
-	
+
 	virtual void updateCraftingValues(DraftSchematic* draftSchematic) {
-		
+
 	}
 
-	
+
 	void generateSkillMods(class AttributeListMessage* alm, int skillModType, int skillModValue);
 
 	void insertToZone(Zone* zone);
@@ -275,17 +275,17 @@ public:
 	void sendTo(Player* player, bool doClose = true);
 
 	void sendDestroyTo(Player* player);
-	
+
 	void sendDeltas(Player* player);
 
 	void close(Player* player);
-	 
+
 	void repairItem(Player* player);
-	
+
 	virtual void decay(int decayRate);
-	
+
 	virtual void addAttributes(AttributeListMessage* alm);
-	
+
 	// setters and getters
 	inline void setContainer(SceneObject* cont, uint32 type = 0x04) {
 		container = cont;
@@ -307,13 +307,13 @@ public:
 	inline void setCustomizationString(string& cust) {
 		customizationVars = cust;
 	}
-	
+
 	inline void setCondition(int current, int max){
 		itemAttributes->setCondition(current, max);
 		maxCondition = max;
 		conditionDamage = max - current;
 	}
-	
+
 	inline void setMaxCondition(int maxCond) {
 		maxCondition = maxCond;
 		itemAttributes->setCondition((maxCond - conditionDamage), maxCond);
@@ -323,23 +323,23 @@ public:
 		conditionDamage = damage;
 		itemAttributes->setCondition((maxCondition - damage), maxCondition);
 	}
-	
+
 	inline void setCustomizationVariable(uint8 type, uint16 value) {
 		customizationVars.setVariable(type, value);
 	}
-	
+
 	inline void setCraftersName(string& n){
 		craftersName = n;
 		string temp = "craftersname";
 		itemAttributes->setStringAttribute(temp, n);
 	}
-	
+
 	inline void setCraftedSerial(string& s){
 		craftedSerial = s;
 		string temp = "craftedserial";
 		itemAttributes->setStringAttribute(temp, s);
 	}
-	
+
 	inline void setObjectCount(const int count) {
 		if (count == 1) {
 
@@ -355,19 +355,19 @@ public:
 	inline bool isPersistent() {
 		return persistent;
 	}
-	
+
 	inline bool isUpdated() {
 		return updated;
 	}
-	
+
 	inline SceneObject* getContainer() {
 		return container;
 	}
-	
+
 	inline void setName(const string& n) {
 		name = n;
 	}
-	
+
 	inline unicode& getName() {
 		return name;
 	}
@@ -379,7 +379,7 @@ public:
 	inline void setTemplateName(const string& tempName) {
 		templateName = tempName;
 	}
-	
+
 	inline string& getTemplateName() {
 		return templateName;
 	}
@@ -391,117 +391,121 @@ public:
 	inline void setTemplateTypeName(const string& tempTypeName) {
 		templateTypeName = tempTypeName;
 	}
-	
+
 	inline string& getTemplateTypeName() {
 		return templateTypeName;
 	}
-	
+
 	inline int getObjectCount() {
 		return objectCount;
 	}
-	
+
 	inline bool isEquipped() {
 		return equipped;
 	}
-	
+
 	inline void setAttributes(string& attributestring) {
 		itemAttributes->setAttributes(attributestring);
 	}
-	
+
 	inline string& getAttributes() {
 		itemAttributes->getAttributeString(attributeString);
 		return attributeString;
 	}
-	
+
 	inline void setObjectSubType(const int type) {
 		objectSubType = type;
 	}
-	
+
 	inline string& getCraftersName(){
 		return craftersName;
 	}
-	
+
 	inline string& getCraftedSerial(){
 		return craftedSerial;
 	}
-	
-	inline int getObjectSubType() { 
+
+	inline int getObjectSubType() {
 		return objectSubType;
 	}
-	
+
 	inline bool isWeapon() {
 		return (objectSubType & WEAPON || objectSubType & LIGHTSABER);
 	}
-	
+
 	inline bool isArmor() {
 		return (objectSubType & ARMOR);
 	}
-	
+
 	inline bool isClothing() {
 		return (objectSubType & CLOTHING);
 	}
-	
+
 	inline bool isAttachment() {
 		return (objectSubType == ARMORATTACHMENT || objectSubType == CLOTHINGATTACHMENT);
 	}
-	
+
 	inline bool isResource() {
 		return (objectSubType & RESOURCECONTAINER);
 	}
-	
+
 	inline bool isSurveyTool() {
 		return objectSubType == SURVEYTOOL;
 	}
-	
+
 	inline bool isTicket() {
 		return objectSubType == TRAVELTICKET;
 	}
-	
+
 	inline bool isInstrument() {
 		return objectSubType == INSTRUMENT;
 	}
-	
+
 	inline bool isTicketCollector() {
 		return objectSubType == TICKETCOLLECTOR;
 	}
-	
+
 	inline bool isHolocron() {
 		return objectSubType == HOLOCRON;
 	}
-	
+
 	inline bool isFirework() {
 		return objectSubType == FIREWORK;
 	}
-	
+
 	inline bool isLair() {
 		return objectSubType == LAIR;
 	}
-	
+
 	inline bool isCraftingStation() {
 		return objectSubType == CRAFTINGSTATION;
 	}
-	
+
 	inline bool isCraftingTool() {
 		return objectSubType == CRAFTINGTOOL;
 	}
-	
+
 	inline bool isComponent() {
 		return objectSubType == COMPONENT;
+	}
+
+	inline bool isPharmaceutical() {
+		return objectSubType == PHARMACEUTICAL;
 	}
 
 	inline int getConditionDamage() {
 		return conditionDamage;
 	}
-	
+
 	inline int getMaxCondition() {
 		return maxCondition;
 	}
-	
+
 	inline int getCondition() {
 		return maxCondition - conditionDamage;
 	}
-	
-	
+
+
 };
 
 #endif /*TANGIBLEOBJECTIMPLEMENTATION_H_*/

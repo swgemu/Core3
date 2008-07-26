@@ -104,13 +104,15 @@ public:
 
 	TangibleObject* createPlayerObject(Player* player, ResultSet* result);
 
+	static TangibleObject* createSubObject(uint64 objectid, uint32 objectcrc, const unicode& objectname, const string& objecttemp, bool equipped);
+	
 	static TangibleObject* createPlayerObjectTemplate(int objecttype, uint64 objectid, uint32 objectcrc, 
-			unicode objectname, const string& objecttemp, bool equipped);
+			const unicode& objectname, const string& objecttemp, bool equipped);
 
 	static TangibleObject* createTemplateFromLua(LuaObject item);
 	
 	//TODO: remove this function when a global clone() function is available for all objects
-	TangibleObject* clonePlayerObjectTemplate(TangibleObject* templ);
+	TangibleObject* clonePlayerObjectTemplate(uint64 objectid, TangibleObject* templ);
 	TangibleObject* initializeTangibleForCrafting(int objecttype,
 			uint64 objectid, uint32 objectcrc, string objectn,
 			string objecttemp, bool equipped);
@@ -154,5 +156,6 @@ public:
 };
 
 #endif /*ITEMMANAGERIMPLEMENTATION_H_*/
+
 
 

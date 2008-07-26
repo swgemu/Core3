@@ -708,7 +708,9 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 		case (0x2434AC3A): //distract
 		case (0x6CB6978F): //ventriloquism
 		case (0x35ED32BE): //firejet
-		case (0xC8998CE9): // flourish
+		case (0xC8998CE9): //flourish
+		case (0xEEE029CF): //healenhance <poolaffected>
+		case (0x0A9F00A0): //healdamage <targetname>
 		{
 			unicode option = unicode("");
 			pack->parseUnicode(option);

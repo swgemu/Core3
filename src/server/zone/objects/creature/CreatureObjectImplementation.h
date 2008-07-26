@@ -1,44 +1,44 @@
 /*
 Copyright (C) 2007 <SWGEmu>
- 
+
 This File is part of Core3.
- 
-This program is free software; you can redistribute 
-it and/or modify it under the terms of the GNU Lesser 
+
+This program is free software; you can redistribute
+it and/or modify it under the terms of the GNU Lesser
 General Public License as published by the Free Software
-Foundation; either version 2 of the License, 
+Foundation; either version 2 of the License,
 or (at your option) any later version.
- 
-This program is distributed in the hope that it will be useful, 
-but WITHOUT ANY WARRANTY; without even the implied warranty of 
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 See the GNU Lesser General Public License for
 more details.
- 
-You should have received a copy of the GNU Lesser General 
+
+You should have received a copy of the GNU Lesser General
 Public License along with this program; if not, write to
 the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
- 
-Linking Engine3 statically or dynamically with other modules 
-is making a combined work based on Engine3. 
-Thus, the terms and conditions of the GNU Lesser General Public License 
+
+Linking Engine3 statically or dynamically with other modules
+is making a combined work based on Engine3.
+Thus, the terms and conditions of the GNU Lesser General Public License
 cover the whole combination.
- 
-In addition, as a special exception, the copyright holders of Engine3 
-give you permission to combine Engine3 program with free software 
-programs or libraries that are released under the GNU LGPL and with 
-code included in the standard release of Core3 under the GNU LGPL 
-license (or modified versions of such code, with unchanged license). 
-You may copy and distribute such a system following the terms of the 
-GNU LGPL for Engine3 and the licenses of the other code concerned, 
-provided that you include the source code of that other code when 
+
+In addition, as a special exception, the copyright holders of Engine3
+give you permission to combine Engine3 program with free software
+programs or libraries that are released under the GNU LGPL and with
+code included in the standard release of Core3 under the GNU LGPL
+license (or modified versions of such code, with unchanged license).
+You may copy and distribute such a system following the terms of the
+GNU LGPL for Engine3 and the licenses of the other code concerned,
+provided that you include the source code of that other code when
 and as the GNU LGPL requires distribution of source code.
- 
-Note that people who make modified versions of Engine3 are not obligated 
-to grant this special exception for their modified versions; 
-it is their choice whether to do so. The GNU Lesser General Public License 
-gives permission to release a modified version without this exception; 
-this exception also makes it possible to release a modified version 
+
+Note that people who make modified versions of Engine3 are not obligated
+to grant this special exception for their modified versions;
+it is their choice whether to do so. The GNU Lesser General Public License
+gives permission to release a modified version without this exception;
+this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
@@ -79,6 +79,8 @@ class Instrument;
 class GroupObject;
 class MountCreature;
 class DizzyFallDownEvent;
+class WoundTreatmentOverEvent;
+class InjuryTreatmentOverEvent;
 
 class MountCreature;
 class BuildingObject;
@@ -99,12 +101,12 @@ protected:
 	string hairObject; //hair object iff string
 	CustomizationVariables hairCustomization;
 	//string hairData; //hair customization string
-	
+
 	string stfName;
 
 	uint32 positionCounter;
 	uint32 actionCounter;
-	
+
 	VectorMap<uint32, Skill*> creatureSkills;
 	uint32 creatureSkillsCount;
 
@@ -112,14 +114,14 @@ protected:
 	Inventory* inventory;
 	CreatureInventory* lootContainer;
 	HairObject* hairObj;
-	
+
 	Time lastCombatAction;
 
 	Vector<BaseMessage*> broadcastBuffer;
 
 	// modifiers
 	int weaponSpeedModifier;
-	
+
 	int centeredBonus;
 
 	//CREO1 operands
@@ -133,14 +135,14 @@ protected:
 
 	uint64 stateBitmask;
 	uint64 oldStateBitmask;
-	
+
 	uint32 creatureBitmask;
-	
+
 	MountCreature* mount;
 	int conditionDamage;
 	int maxCondition;
 	Time mountCooldown;
-	
+
 	uint64 creatureLinkID;
 
 	Time knockdownRecoveryTime;
@@ -149,7 +151,7 @@ protected:
 	Time stunRecoveryTime;
 	Time blindRecoveryTime;
 	Time intimidateRecoveryTime;
-	
+
 	Time fireRecoveryTime;
 	Time poisonRecoveryTime;
 	Time bleedingRecoveryTime;
@@ -165,16 +167,16 @@ protected:
 
 	uint32 skillModsCounter;
 	string skillMod;
-	
+
 	uint32 skillModBonusCounter;
 
 	//CREO6 operands
 	uint32 defenderUpdateCounter;
 	uint64 defenderID;
-	
+
 	string mood;
 	uint8 moodid;
-	
+
 	Weapon* weaponObject;
 	ManagedReference<SceneObject> targetObject;
 
@@ -194,7 +196,7 @@ protected:
 	uint32 baseMind;
 	uint32 baseFocus;
 	uint32 baseWillpower;
-	
+
 	uint32 health;
 	uint32 strength;
 	uint32 constitution;
@@ -214,14 +216,14 @@ protected:
 	uint32 mindMax;
 	uint32 focusMax;
 	uint32 willpowerMax;
-	
+
 	uint32 healthEncumbrance;
 	uint32 actionEncumbrance;
 	uint32 mindEncumbrance;
-	
+
 	// Inherent Armor,Resists
 	uint32 armor;
-	
+
 	float kinetic;
 	float energy;
 	float electricity;
@@ -231,7 +233,7 @@ protected:
 	float cold;
 	float acid;
 	float lightSaber;
-	
+
 	// WOUND vars
 	uint32 healthWounds;
 	uint32 strengthWounds;
@@ -249,70 +251,70 @@ protected:
 	// misc
 	uint32 pvpStatusBitmask;
 	uint32 faction;
-	
+
 	// combat
 	int fireDotType;
 	int fireDotStrength;
-	
+
 	int poisonDotType;
 	int poisonDotStrength;
-	
+
 	int diseaseDotType;
 	int diseaseDotStrength;
-	
+
 	int bleedingDotType;
 	int bleedingDotStrength;
-	
+
 	Time nextBleedingTick;
 	Time nextFireTick;
 	Time nextPoisonTick;
 	Time nextDiseaseTick;
-	
+
 	Time knockdownRecovery;
 	Time postureDownRecovery;
 	Time postureUpRecovery;
-	
+
 	Time nextAttackDelay;
 	Time nextAttackDelayRecovery;
-	
+
 	bool meditating;
-	
+
 	int accuracy;
-	
+
 	Time burstRunCooldown;
 	int damageBonus;
 	int defenseBonus;
-	
+
 	VectorMap<uint32, uint32> queuedStates; // TODO: make SortedVector for basic types
-	
+
 	DizzyFallDownEvent* dizzyFallDownEvent;
-	
+
 	Vector<ManagedReference<SceneObject> > defenderList;
-	
+
 	VectorMap<CreatureObject*, uint32> damageMap;
-	
+
 	// Store buff events so they can be removed on death.
 	Vector<Event*> buffEvents;
-	
+
 	//group stuff
 	uint64 groupId;
 	uint64 groupInviteCount;
 	uint64 groupInviterID;
-	
+
 	GroupObject* group;
-	
+
 	// Entertainer stuff
 	string performanceAnimation;
 	uint32 performanceCounter;
 	string performanceName;
-	
+
 	int instrumentID; // instrument + song
-	
+
 	bool doDancing;
 	bool doPlayingMusic;
 	bool doListening;
 	bool doWatching;
-	
+
 	// TODO: Deprecate
 	bool healthBuff;
 	bool strengthBuff;
@@ -323,33 +325,41 @@ protected:
 	bool mindBuff;
 	bool focusBuff;
 	bool willpowerBuff;
-	
+
 	uint64 watchID;
 	uint64 listenID;
-	
+
 	ManagedSortedVector<CreatureObject> listeners;
 	ManagedSortedVector<CreatureObject> watchers;
-	
+
 	float danceBuffDuration; // track the duration
 	float musicBuffDuration;
 
 	float danceBuffStrength; // track the duration
 	float musicBuffStrength;
-	
+
 	bool sittingOnObject;
 
 	Guild* guild;
-	
+
 	uint32 lastMovementUpdateStamp;
 	int ignoreMovementTests;
 	Time lastServerMovementStamp;
-	
+
 	int level;
-	
+
+	//Medical Timers
+	bool doWoundTreatment;
+	bool doInjuryTreatment;
+	bool doStateTreatment;
+
+	WoundTreatmentOverEvent* woundTreatmentEvent;
+	InjuryTreatmentOverEvent* injuryTreatmentEvent;
+
 public:
 	static const float DEFAULT_SPEED = 5.376f;
 	static const float DEFAULT_ACCELERATION = 1.549f;
-	
+
 	static const uint8 INVALID_POSTURE = 0xFF;
 	static const uint8 UPRIGHT_POSTURE = 0;
 	static const uint8 CROUCHED_POSTURE = 1;
@@ -402,7 +412,7 @@ public:
 	static const uint64 SHIPGUNNER_STATE = 0x80000000;
 	//static const uint64 SHIPINTERIOR_STATE = 0x100000000;
 	//static const uint64 PILOTINGPOBSHIP_STATE = 0x200000000;
-	
+
 	static const uint32 NULL_FLAG = 0x00;
 	static const uint32 ATTACKABLE_FLAG = 0x01;
 	static const uint32 AGGRESSIVE_FLAG = 0x02;
@@ -411,10 +421,10 @@ public:
 	static const uint32 PLAYER_FLAG = 0x10;
 	static const uint32 ENEMY_FLAG = 0x20;
 	static const uint32 DUEL_FLAG = 0x40;
-	
+
 public:
 	CreatureObjectImplementation(uint64 oid);
-	
+
 	virtual ~CreatureObjectImplementation();
 
 	// opdarand Update methods
@@ -425,13 +435,13 @@ public:
 	void sendCombatSpam(CreatureObject* defender, TangibleObject* item, uint32 damage, const string& skill, bool areaSpam = true);
 
 	void setPosture(uint8 state, bool overrideDizzy = false, bool objectInteraction = false, float objX = 0, float objY = 0, float objZ = 0);
-	
+
 	void setDefender(SceneObject* defender);
 	void addDefender(SceneObject* defender);
 	void removeDefender(SceneObject* defender);
 	void removeDefenders();
 	bool hasDefender(SceneObject* defender);
-	
+
 	void setCombatState();
 	void clearCombatState(bool removeDefenders = true);
 
@@ -439,15 +449,15 @@ public:
 	bool clearState(uint64 state);
 	void updateStates();
 	void clearStates();
-	
+
 	bool takeHealthDamage(int32 damage); // Instead of having to pass negative damage values
-	bool takeActionDamage(int32 damage); // we can now pass damage to a damage function 
+	bool takeActionDamage(int32 damage); // we can now pass damage to a damage function
 	bool takeMindDamage(int32 damage);   // using positive values for damage
 
 	bool changeHAMBars(int32 hp, int32 ap, int32 mp, bool forcedChange = false);
 	bool changeHAMWounds(int32 hpwnd, int32 apwnd, int32 mpwnd, bool forcedChange = false);
 	void changeMaxHAMBars(int32 hp, int32 ap, int32 mp);
-	
+
 	// Change Current HAM
 	bool changeHealthBar(int32 hp, bool forcedChange = false);
 	bool changeStrengthBar(int32 st, bool forcedChange = false);
@@ -458,7 +468,7 @@ public:
 	bool changeActionBar(int32 ap, bool forcedChange = false);
 	bool changeQuicknessBar(int32 qc, bool forcedChange = false);
 	bool changeStaminaBar(int32 st, bool forcedChange = false);
-	
+
 	// Change Max HAM
 	void changeMaxHealthBar(int32 hp);
 	void changeMaxStrengthBar(int32 hp);
@@ -469,7 +479,7 @@ public:
 	void changeMaxMindBar(int32 hp);
 	void changeMaxFocusBar(int32 hp);
 	void changeMaxWillpowerBar(int32 hp);
-	
+
 	// Change HAM Wounds
 	bool changeHealthWoundsBar(int32 wounds, bool forcedChange = false);
 	bool changeStrengthWoundsBar(int32 wounds, bool forcedChange = false);
@@ -480,13 +490,13 @@ public:
 	bool changeMindWoundsBar(int32 wounds, bool forcedChange = false);
 	bool changeFocusWoundsBar(int32 wounds, bool forcedChange = false);
 	bool changeWillpowerWoundsBar(int32 wounds, bool forcedChange = false);
-	
+
 	void changeConditionDamage(int amount);
-	
+
 	void changeShockWounds(int bf);
-	
+
 	void resetHAMBars();
-	
+
 	void setMaxHAMBars(uint32 hp, uint32 ap, uint32 mp);
 	void setHAMBars(uint32 hp, uint32 ap, uint32 mp);
 	void setHAMWoundsBars(uint32 hpwnds, uint32 acwnds, uint32 mpwnds);
@@ -501,7 +511,7 @@ public:
 	void setMindBar(uint32 mp);
 	void setFocusBar(uint32 fc);
 	void setWillpowerBar(uint32 will);
-	
+
 	// Set Base HAM
 	void setBaseHealthBar(uint32 hp, bool updateClient = true);
 	void setBaseStrengthBar(uint32 st, bool updateClient = true);
@@ -534,7 +544,7 @@ public:
 	void setMindWoundsBar(uint32 wounds);
 	void setFocusWoundsBar(uint32 wounds);
 	void setWillpowerWoundsBar(uint32 wounds);
-	
+
 	void calculateHAMregen();
 	float calculateBFRatio();
 
@@ -543,18 +553,18 @@ public:
 
 	void updateTarget(uint64 targ);
 	void updateTarget(SceneObject* targ);
-	
+
 	void clearTarget();
-	
+
 	void setDizziedState();
 	void setStunnedState();
 	void setBlindedState();
 	void setIntimidatedState();
-	
+
 	bool setNextAttackDelay(int del);
-	
+
 	void setMeditateState();
-	
+
 	void addDamage(CreatureObject* creature, uint32 damage);
 
 	bool isLootOwner(CreatureObject* creature);
@@ -566,11 +576,11 @@ public:
 	inline bool isAttackableBy(CreatureObject* attacker) {
 		return !(creatureBitmask & 0x100);
 	}
-	
+
 	bool hasAttackDelay() {
 		return !nextAttackDelay.isPast();
 	}
-	
+
 	void clearAttackDelay() {
 		nextAttackDelay.update();
 	}
@@ -578,79 +588,79 @@ public:
 	void setRebel() {
 		faction = String::hashCode("rebel");
 	}
-	
+
 	void setImperial() {
 		faction = String::hashCode("imperial");
 	}
-	
+
 	void setNeutral() {
 		faction = 0;
 	}
-	
+
 	void setFaction(uint32 fac) {
 		faction = fac;
 	}
-	
+
 	void setLastMovementUpdateStamp(uint32 tme) {
 		lastMovementUpdateStamp = tme;
 	}
-	
+
 	void setIgnoreMovementTests(int times) {
 		ignoreMovementTests = times;
 	}
 
 	void sendFactionStatusTo(Player* player, bool doTwoWay = false);
-	
+
 	int getCreatureSkillsSize() {
 		return creatureSkills.size();
 	}
-	
+
 	void addSkill(Skill* skill) {
 		creatureSkills.put(skill->getNameCRC(), skill);
 	}
-	
+
 	Skill* getSkill(const string& name) {
 		return creatureSkills.get(String::hashCode(name));
 	}
-	
+
 	inline string& getSkill(int idx) {
 		return creatureSkills.get(idx)->getSkillName();
 	}
-	
+
 	void removeSkill(Skill* skill) {
 		creatureSkills.drop(skill->getNameCRC());
 	}
-	
+
 	bool hasSkill(uint32 skillCRC) {
 		return creatureSkills.contains(skillCRC);
 	}
-	
+
 	void addSkills(Vector<Skill*>& skills, bool updateClient);
 	void removeSkills(Vector<Skill*>& skills, bool updateClient);
-	
+
 	inline uint32 getCreatureSkillsCount() {
 		return creatureSkillsCount;
 	}
-	
+
 	inline uint32 getNewCreatureSkillsCount(int cnt) {
 		return creatureSkillsCount += cnt;
 	}
-	
+
 	inline uint32 getDamage(CreatureObject* creature) {
 		return damageMap.get(creature);
 	}
-	
+
 	uint32 getMitigation(const string& mit);
-	
+
 	virtual void activateRecovery() {
 	}
-		
+
 	// dots
 	void setPoisonedState(int str, int type, int duration);
 	void setBleedingState(int str, int type, int duration);
 	void setDiseasedState(int str, int type, int duration);
 	void setOnFireState(int str, int type, int duration);
-	
+
 	void doPoisonTick();
 	void doBleedingTick();
 	void doDiseaseTick();
@@ -662,23 +672,23 @@ public:
 	bool isOnFullHealth() {
 		return (health == healthMax - healthWounds) && (action == actionMax - actionWounds) && (mind == mindMax - mindWounds);
 	}
-	
+
 	void setGroup(GroupObject* Group) {
 		group = Group;
 	}
-	
+
 	void removeGroup() {
 		group = NULL;
 	}
-	
+
 	bool isInAGroup() {
 		return group != NULL;
 	}
-	
+
 	inline uint64 getGroupID() {
 		return groupId;
 	}
-	
+
 	inline void setGroupID(uint64 gid) {
 		groupId = gid;
 	}
@@ -694,11 +704,11 @@ public:
 	inline bool isKnockedDown() {
 		return postureState == KNOCKEDDOWN_POSTURE;
 	}
-	
+
 	inline bool isKneeled() {
 		return postureState == CROUCHED_POSTURE;
 	}
-	
+
 	inline bool isProne() {
 		return postureState == PRONE_POSTURE;
 	}
@@ -722,67 +732,67 @@ public:
 	inline bool isBlinded() {
 		return stateBitmask & BLINDED_STATE;
 	}
-	
+
 	inline bool isIntimidated() {
 		return stateBitmask & INTIMIDATED_STATE;
 	}
-	
+
 	inline bool isDiseased() {
 		return stateBitmask & DISEASED_STATE;
 	}
-	
+
 	inline bool isPoisoned() {
 		return stateBitmask & POISONED_STATE;
 	}
-	
+
 	inline bool isBleeding() {
 		return stateBitmask & BLEEDING_STATE;
 	}
-	
+
 	inline bool isOnFire() {
 		return stateBitmask & ONFIRE_STATE;
 	}
-	
+
 	inline bool isMounted() {
 		return stateBitmask & RIDINGMOUNT_STATE;
 	}
-	
+
 	inline bool isRidingCreature() {
 		return stateBitmask & MOUNTEDCREATURE_STATE;
 	}
-	
+
 	inline bool isPeaced() {
 		return stateBitmask & PEACE_STATE;
 	}
-	
+
 	inline bool isMeditating() {
 		return meditating;
 	}
-	
+
 	// misc methods
 	void updateKnockdownRecovery() {
 		knockdownRecovery.update();
 		knockdownRecovery.addMiliTime(30000);
 	}
-	
+
 	bool checkKnockdownRecovery() {
 		return knockdownRecovery.isPast();
 	}
-	
+
 	void updatePostureDownRecovery() {
 		postureDownRecovery.update();
 		postureDownRecovery.addMiliTime(30000);
 	}
-	
+
 	void updatePostureUpRecovery() {
 		postureUpRecovery.update();
 		postureUpRecovery.addMiliTime(30000);
 	}
-	
+
 	bool checkPostureDownRecovery() {
 		return postureDownRecovery.isPast();
 	}
-	
+
 	bool checkPostureUpRecovery() {
 		return postureUpRecovery.isPast();
 	}
@@ -790,48 +800,48 @@ public:
 	// item methods
 	void equipItem(TangibleObject* item);
 	void unequipItem(TangibleObject* item);
-	
+
 	void addInventoryItem(TangibleObject* item);
 
 	TangibleObject* getInventoryItem(uint64 oid);
-	
+
 	void removeInventoryItem(SceneObject* item);
 	void removeInventoryItem(uint64 oid);
 
 	void addLootItem(TangibleObject* item);
 
 	TangibleObject* getLootItem(uint64 oid);
-	
+
 	void removeLootItem(SceneObject* item);
 	void removeLootItem(uint64 oid);
-	
+
 	// Entertainer methods
 	void startDancing(const string& anim, bool changeDance = false);
 	void startPlayingMusic(const string& anim, bool changeMusic = false);
 
 	void stopDancing();
 	void stopPlayingMusic();
-		
+
 	void startWatch(uint64 entid);
 	void startListen(uint64 entid);
 	void stopWatch(uint64 entid, bool doSendPackets = true, bool forced = false, bool doLock = true);
 	void stopListen(uint64 entid, bool doSendPackets = true, bool forced = false, bool doLock = true);
 	void activateEntertainerBuff(int performanceType);
-	
+
 	void doFlourish(const string& modifier = "");
 	void addEntertainerFlourishBuff();
 	// Rename to Tick Patron?
 	void doEntertainerPatronEffects(bool healShock = false, bool healWounds = false, bool addBuff = false);
 	void doPerformanceAction();
-	
+
 	bool isInBuilding();
 	SceneObject* getBuilding();
 	int getBuildingType();
 	bool canGiveEntertainBuff();
-		
+
 	// guild methods
 	void sendGuildTo();
-	
+
 	// mount methods
 	void mountCreature(MountCreature* mnt, bool lockMount = true);
 	void dismount(bool lockMount = true, bool ignoreCooldown = false);
@@ -843,8 +853,8 @@ public:
 	void applyBuff(BuffObject *bo);
 	//void removeBuff(const string& type, int value, Event* event);
 	void removeBuff(const uint32 buffCRC, bool remove = true);
-	
-	
+
+
 	void removeBuffs(bool doUpdateCreature = true);
 
 	// cash transaction methods
@@ -858,7 +868,7 @@ public:
 	bool verifyCashCredits(uint32 creditsToRemove);
 	bool verifyBankCredits(uint32 creditsToRemove);
 
-	// misc		
+	// misc
 	virtual uint64 getNewItemID() {
 		return 0;
 	}
@@ -867,7 +877,7 @@ public:
 	void sendToOwner(Player* player, bool doClose = true);
 
 	void sendTo(Player* player, bool doClose = true);
-	
+
 	void sendItemsTo(Player* player);
 
 	void sendDestroyTo(Player* player);
@@ -875,17 +885,17 @@ public:
 	void broadcastMessage(BaseMessage* msg, int range = 128, bool doLock = true);
 	void broadcastMessage(StandaloneBaseMessage* msg, int range = 128, bool doLock = true);
 	void broadcastMessages(Vector<BaseMessage*>& msgs, int range = 128, bool doLock = true);
-	
+
 	void sendSystemMessage(const string& message);
 	void sendSystemMessage(const string& file, const string& str, uint64 targetid = 0);
-	
+
 	void updateSpeed(float speed, float acceleration);
-	
+
 	void updateGroupId(uint64 id);
 	void updateGroupInviterId(uint64 id);
-	
+
 	float getDistanceTo(CreatureObject* targetCreature);
-	
+
 	void updateMood(const string& md);
 
 	inline void updateServerMovementStamp() {
@@ -895,7 +905,7 @@ public:
 	inline uint64 getLastServerMovementStamp() {
 		return lastServerMovementStamp.miliDifference();
 	}
-	
+
 protected:
 	void sendEntertainingUpdate(uint32 entval, const string& performance, uint32 perfcntr, int instrid);
 	void sendEntertainmentUpdate(uint64 entid, const string& mood, bool updateEntVal = false);
@@ -907,23 +917,23 @@ public:
 
 	void addSkillModBonus(const string& name, int mod, bool updateClient = false);
 	void removeSkillModBonus(const string& name, bool updateClient = false);
-	
+
 	bool hasQueuedState(uint32 skillCRC) {
 		return queuedStates.contains(skillCRC);
 	}
-	
+
 	bool removeQueuedState(uint32 skillCRC) {
 		return queuedStates.drop(skillCRC);
 	}
-	
+
 	bool addQueuedState(uint32 skillCRC) {
 		return queuedStates.put(skillCRC, skillCRC);
 	}
-	
+
 	SkillModList* getSkillModList() {
 		return &creatureSkillMods;
 	}
-	
+
 	SkillModList* getSkillModBonusList() {
 		return &creatureSkillModBonus;
 	}
@@ -931,11 +941,11 @@ public:
 	BuffList* getBuffsList() {
 		return &creatureBuffs;
 	}
-	
+
 	void setGroupInviterID(uint64 oid) {
 		groupInviterID = oid;
 	}
-	
+
 	int getSkillMod(const string& name) {
 		// TODO: Add Buffs
 		int bonus = creatureSkillModBonus.get(name);
@@ -943,11 +953,11 @@ public:
 			bonus = 25;
 		return creatureSkillMods.get(name) + bonus;
 	}
-	
+
 	bool hasSkillMod(const string& name) {
 		return creatureSkillMods.containsKey(name);
 	}
-	
+
 	void removeSkillMod(string& name) {
 		creatureSkillMods.remove(name);
 	}
@@ -956,12 +966,17 @@ public:
 		Buff *b = creatureBuffs.get(buffCRC);
 		return b;
 	}
-	
+
+	BuffObject* getBuffObject(const uint32& buffCRC) {
+		BuffObject *bo = new BuffObject(creatureBuffs.get(buffCRC));
+		return bo;
+	}
+
 	int getSkillModBonus(const string& name) {
 		int bonus = creatureSkillModBonus.get(name);
 		return bonus;
 	}
-	
+
 	bool hasBuff(const uint32 buffCRC) {
 		return creatureBuffs.contains(buffCRC);
 	}
@@ -975,7 +990,7 @@ public:
 		}
 		return false;
 	}
-	
+
 	bool hasSkillModBonus(const string& name) {
 		return creatureSkillModBonus.containsKey(name);
 	}
@@ -983,19 +998,19 @@ public:
 	void removeSkillModBonus(string& name) {
 		creatureSkillModBonus.remove(name);
 	}
-		
+
 	inline int getDamageBonus() {
 		return damageBonus;
 	}
-	
+
 	inline int getDefenseBonus() {
 		return defenseBonus;
 	}
-	
+
 	inline uint64 getGroupInviterID() {
 		return groupInviterID;
 	}
-	
+
 	inline uint64 getNewGroupInviteCounter() {
 		return ++groupInviteCount;
 	}
@@ -1003,35 +1018,35 @@ public:
 	inline uint64 getGroupInviteCounter() {
 		return groupInviteCount;
 	}
-	
+
 	inline int getConditionDamage() {
 		return conditionDamage;
 	}
-	
+
 	inline int getMaxCondition() {
 		return maxCondition;
 	}
-	
+
 	inline int getCondition() {
 		return maxCondition - conditionDamage;
 	}
-	
+
 	inline int getCenteredBonus() {
 		return centeredBonus;
 	}
-	
+
 	inline uint64 getCreatureLinkID() {
 		return creatureLinkID;
 	}
-	
+
 	inline uint32 getLastMovementUpdateStamp() {
 		return lastMovementUpdateStamp;
 	}
-	
+
 	inline int getIgnoreMovementTests() {
 		return ignoreMovementTests;
 	}
-	
+
 	inline void setMount(MountCreature* mnt) {
 		mount = mnt;
 	}
@@ -1039,19 +1054,19 @@ public:
 	inline MountCreature* getMount() {
 		return mount;
 	}
-	
+
 	inline void setDamageBonus(int bonus) {
 		damageBonus = bonus;
 	}
-	
+
 	inline void setDefenseBonus(int bonus) {
 		defenseBonus = bonus;
 	}
-	
+
 	inline void setCreatureLinkID(uint64 creatureID) {
 		creatureLinkID = creatureID;
 	}
-	
+
 	inline void setCharacterName(const string& name) {
 		characterName = name;
 	}
@@ -1071,34 +1086,34 @@ public:
 	inline void setHairAppearance(const string& cust) {
 		hairCustomization = cust;
 	}
-	
+
 	inline void setAppearanceAttribute(uint8 type, uint8 value) {
 		customization.setVariable(type, value);
-		
+
 		// TODO send packet update?
 	}
-	
+
 	inline void setAppearanceAttribute(string type, uint8 value) {
 		customization.setVariable(type, value);
-		
+
 		// TODO send packet update?
 	}
 
 	inline void setHairAppearanceAttribute(uint8 type, uint8 value) {
 		hairCustomization.setVariable(type, value);
-		
-		// TODO send packet update?
-	}
-	
-	inline void setHairAppearanceAttribute(string type, uint8 value) {
-		hairCustomization.setVariable(type, value);
-		
+
 		// TODO send packet update?
 	}
 
-	
+	inline void setHairAppearanceAttribute(string type, uint8 value) {
+		hairCustomization.setVariable(type, value);
+
+		// TODO send packet update?
+	}
+
+
 	void updateCharacterAppearance();
-	
+
 	inline void setRaceName(const string& name) {
 		raceName = name;
 	}
@@ -1118,24 +1133,24 @@ public:
 	inline void setWeapon(Weapon* wep) {
 		weaponObject = wep;
 	}
-	
+
 	inline void setMood(uint8 mdid) {
 		moodid = mdid;
 		mood = Races::getMood(moodid);
 	}
-	
+
 	inline void setMood(const string& m) {
 		mood = m;
 	}
-	
+
 	inline void setPvpStatusBitmask(uint32 mask) {
 		pvpStatusBitmask = mask;
 	}
-	
+
 	void updateHAMBars();
-	
+
 	void updateBaseStats();
-	
+
 	inline void setBaseHealth(uint32 value) {
 		baseHealth = value;
 	}
@@ -1163,11 +1178,11 @@ public:
 	inline void setBaseMind(uint32 value) {
 		baseMind = value;
 	}
-	
+
 	inline void setBaseFocus(uint32 value) {
 		baseFocus = value;
 	}
-	
+
 	inline void setBaseWillpower(uint32 value) {
 		baseWillpower = value;
 	}
@@ -1199,11 +1214,11 @@ public:
 	inline void setMind(uint32 value) {
 		mind = value;
 	}
-	
+
 	inline void setFocus(uint32 value) {
 		focus = value;
 	}
-	
+
 	inline void setWillpower(uint32 value) {
 		willpower = value;
 	}
@@ -1235,11 +1250,11 @@ public:
 	inline void setMindMax(uint32 value) {
 		mindMax = value;
 	}
-	
+
 	inline void setFocusMax(uint32 value) {
 		focusMax = value;
 	}
-	
+
 	inline void setWillpowerMax(uint32 value) {
 		willpowerMax = value;
 	}
@@ -1263,7 +1278,7 @@ public:
 	inline void setStun(float stu) {
 		stun = stu;
 	}
-	
+
 	inline void setBlast(float bla) {
 		blast = bla;
 	}
@@ -1275,15 +1290,15 @@ public:
 	inline void setCold(float col) {
 		cold = col;
 	}
-	
+
 	inline void setAcid(float aci) {
 		acid = aci;
 	}
-	
+
 	inline void setLightSaber(float lig) {
 		lightSaber = lig;
 	}
-	
+
 	inline void setHealthWounds(uint32 wounds) {
 		healthWounds = wounds;
 	}
@@ -1291,11 +1306,11 @@ public:
 	inline void setStrengthWounds(uint32 wounds) {
 		strengthWounds = wounds;
 	}
-	
+
 	inline void setConstitutionWounds(uint32 wounds) {
 		constitutionWounds = wounds;
 	}
-	
+
 	inline void setActionWounds(uint32 wounds) {
 		actionWounds = wounds;
 	}
@@ -1303,30 +1318,30 @@ public:
 	inline void setQuicknessWounds(uint32 wounds) {
 		quicknessWounds = wounds;
 	}
-	
+
 	inline void setStaminaWounds(uint32 wounds) {
 		staminaWounds = wounds;
 	}
-	
+
 	inline void setMindWounds(uint32 wounds) {
 		mindWounds = wounds;
 	}
-	
+
 	inline void setFocusWounds(uint32 wounds) {
 		focusWounds = wounds;
 	}
-	
+
 	inline void setWillpowerWounds(uint32 wounds) {
 		willpowerWounds = wounds;
 	}
 	inline void setShockWounds(uint32 wounds) {
 		shockWounds = wounds;
 	}
-	
+
 	inline void setWoundsUpdateCounter(uint32 count) {
 		woundsUpdateCounter = count;
 	}
-	
+
 	inline void setDefenderID(uint64 did) {
 		defenderID = did;
 	}
@@ -1343,7 +1358,7 @@ public:
 	inline unicode& getCharacterName() {
 		return characterName;
 	}
-	
+
 	inline string& getTerrainName() {
 		return terrainName;
 	}
@@ -1352,13 +1367,13 @@ public:
 		customization.toString(appearance);
 		//appearance = customization;
 	}
-	
+
 	inline void getHairAppearance(string& appearance) {
 		hairCustomization.toString(appearance);
 		//appearance = customization;
 	}
 
-	
+
 	inline string& getRaceName() {
 		return raceName;
 	}
@@ -1374,15 +1389,15 @@ public:
 	inline string& getStfName() {
 		return stfName;
 	}
-	
+
 	inline uint32 getPositionCounter() {
 		return positionCounter++;
 	}
-	
+
 	inline uint32 getDefenderListSize() {
 		return defenderList.size();
 	}
-	
+
 	inline SceneObject* getDefender(int idx) {
 		return defenderList.get(idx);
 	}
@@ -1402,9 +1417,9 @@ public:
 	inline Weapon* getWeapon() {
 		return weaponObject;
 	}
-	
+
 	Instrument* getInstrument();
-	
+
 	Armor* getArmor(int type);
 
 	// HAM getters
@@ -1451,14 +1466,14 @@ public:
 	inline uint32 getStrength() {
 		if ((int) strength < 1)
 			return 1;
-		else 
+		else
 			return strength;
 	}
 
 	inline uint32 getConstitution() {
 		if ((int) constitution < 1)
 			return 1;
-		else 
+		else
 			return constitution;
 	}
 
@@ -1469,14 +1484,14 @@ public:
 	inline uint32 getQuickness() {
 		if ((int) quickness < 1)
 			return 1;
-		else 
+		else
 			return quickness;
 	}
 
 	inline uint32 getStamina() {
 		if ((int) stamina < 1)
 			return 1;
-		else 
+		else
 			return stamina;
 	}
 
@@ -1487,14 +1502,14 @@ public:
 	inline uint32 getFocus() {
 		if ((int) focus < 1)
 			return 1;
-		else 
+		else
 			return focus;
 	}
 
 	inline uint32 getWillpower() {
 		if ((int) willpower < 1)
 			return 1;
-		else 
+		else
 			return willpower;
 	}
 
@@ -1505,14 +1520,14 @@ public:
 	inline uint32 getStrengthMax() {
 		if ((int) strengthMax < 1)
 			return 1;
-		else 
+		else
 			return strengthMax;
 	}
 
 	inline uint32 getConstitutionMax() {
 		if ((int) constitutionMax < 1)
 			return 1;
-		else 
+		else
 			return constitutionMax;
 	}
 
@@ -1523,14 +1538,14 @@ public:
 	inline uint32 getQuicknessMax() {
 		if ((int) quicknessMax < 1)
 			return 1;
-		else 
+		else
 			return quicknessMax;
 	}
 
 	inline uint32 getStaminaMax() {
 		if ((int) staminaMax < 1)
 			return 1;
-		else 
+		else
 			return staminaMax;
 	}
 
@@ -1541,21 +1556,21 @@ public:
 	inline uint32 getFocusMax() {
 		if ((int) focusMax < 1)
 			return 1;
-		else 
+		else
 			return focusMax;
 	}
 
 	inline uint32 getWillpowerMax() {
 		if ((int) willpowerMax < 1)
 			return 1;
-		else 
+		else
 			return willpowerMax;
 	}
-	
+
 	inline uint32 getArmor() {
 		return armor;
 	}
-	
+
 	inline float getKinetic() {
 		return kinetic - (kinetic * calculateBFRatio());
 	}
@@ -1571,7 +1586,7 @@ public:
 	inline float getStun() {
 		return stun - (stun * calculateBFRatio());
 	}
-	
+
 	inline float getBlast() {
 		return blast - (blast * calculateBFRatio());
 	}
@@ -1583,29 +1598,29 @@ public:
 	inline float getCold() {
 		return cold - (cold * calculateBFRatio());
 	}
-	
+
 	inline float getAcid() {
 		return acid - (acid * calculateBFRatio());
 	}
-	
+
 	inline float getLightSaber() {
 		return lightSaber - (lightSaber * calculateBFRatio());
 	}
-	
+
 	float getArmorResist(int resistType);
 
 	inline uint32 getHealthWounds() {
 		return healthWounds;
 	}
-	
+
 	inline uint32 getStrengthWounds() {
 		return strengthWounds;
 	}
-	
+
 	inline uint32 getConstitutionWounds() {
 		return constitutionWounds;
 	}
-	
+
 	inline uint32 getActionWounds() {
 		return actionWounds;
 	}
@@ -1613,11 +1628,11 @@ public:
 	inline uint32 getQuicknessWounds() {
 		return quicknessWounds;
 	}
-	
+
 	inline uint32 getStaminaWounds() {
 		return staminaWounds;
 	}
-	
+
 	inline uint32 getMindWounds() {
 		return mindWounds;
 	}
@@ -1625,19 +1640,19 @@ public:
 	inline uint32 getFocusWounds() {
 		return focusWounds;
 	}
-	
+
 	inline uint32 getWillpowerWounds() {
 		return willpowerWounds;
 	}
-	
+
 	inline uint32 getShockWounds() {
 		return shockWounds;
 	}
-	
+
 	inline uint32 getHAMUpdateCounter() {
 		return hamUpdateCounter;
 	}
-	
+
 	inline uint32 getNewHAMUpdateCounter(int cnt) {
 			return hamUpdateCounter += cnt;
 	}
@@ -1645,7 +1660,7 @@ public:
 	inline uint32 getHAMMaxUpdateCounter() {
 		return hamMaxUpdateCounter;
 	}
-	
+
 	inline uint32 getNewHAMMaxUpdateCounter(int cnt) {
 			return hamMaxUpdateCounter += cnt;
 	}
@@ -1653,7 +1668,7 @@ public:
 	inline uint32 getHAMBaseUpdateCounter() {
 		return hamBaseUpdateCounter;
 	}
-	
+
 	inline uint32 getNewHAMBaseUpdateCounter(int cnt) {
 			return hamBaseUpdateCounter += cnt;
 	}
@@ -1661,7 +1676,7 @@ public:
 	inline uint32 getWoundsUpdateCounter() {
 		return woundsUpdateCounter;
 	}
-	
+
 	inline uint32 getNewWoundsUpdateCounter(int upd) {
 		return woundsUpdateCounter += upd;
 	}
@@ -1669,39 +1684,39 @@ public:
 	inline uint8 getPosture() {
 		return postureState;
 	}
-	
+
 	inline string& getMood() {
 		return mood;
 	}
-	
+
 	inline uint8 getMoodID() {
 		return moodid;
 	}
-	
+
 	inline uint64 getStateBitmask() {
 		return stateBitmask;
 	}
-	
+
 	inline float getHeight() {
 		return height;
 	}
-	
+
 	inline bool hasStates() {
 		return stateBitmask != 0;
 	}
-	
+
 	inline bool hasWounds() {
 		return (healthWounds > 0 || actionWounds > 0 || mindWounds > 0);
 	}
-	
+
 	inline bool hasShockWounds() {
 		return (shockWounds > 0);
 	}
-	
+
 	inline bool hasState(uint64 state) {
 		return stateBitmask & state;
 	}
-	
+
 	inline int getAccuracy() {
 		return accuracy;
 	}
@@ -1713,55 +1728,55 @@ public:
 	inline float getAcceleration() {
 		return acceleration;
 	}
-	
+
 	inline bool isOvert() {
 		return pvpStatusBitmask & OVERT_FLAG;
 	}
-	
+
 	inline bool isAgressive() {
 		return pvpStatusBitmask & AGGRESSIVE_FLAG;
 	}
-	
+
 	inline bool isTEF() {
 		return pvpStatusBitmask & TEF_FLAG;
 	}
-	
+
 	inline bool isPlayerFlag() {
 		return pvpStatusBitmask & PLAYER_FLAG;
 	}
-	
+
 	inline bool isEnemy() {
 		return pvpStatusBitmask & ENEMY_FLAG;
 	}
-	
+
 	inline uint32 getFaction() {
 		return faction;
 	}
-	
+
 	inline bool isRebel() {
 		return faction == String::hashCode("rebel");
 	}
-	
+
 	inline bool isNeutral() {
 		return faction == 0;
 	}
-	
+
 	inline bool isImperial() {
 		return faction == String::hashCode("imperial");
 	}
-	
+
 	inline uint32 getPvpStatusBitmask() {
 		return pvpStatusBitmask;
 	}
-	
+
 	inline void setCreatureBitmask(uint32 bit) {
 		creatureBitmask = bit;
 	}
-	
+
 	inline uint32 getCreatureBitmask() {
 		return creatureBitmask;
 	}
-	
+
 	uint64 getTargetID();
 
 	uint64 getWeaponID();
@@ -1769,11 +1784,11 @@ public:
 	inline uint64 getDefenderID() {
 		return defenderID;
 	}
-	
+
 	inline uint32 getDefenderUpdateCounter() {
 		return defenderUpdateCounter;
 	}
-	
+
 	inline uint32 getNewDefenderUpdateCounter(int cnt) {
 		return defenderUpdateCounter += cnt;
 	}
@@ -1781,31 +1796,31 @@ public:
 	inline uint32 getNewSkillModsCounter(int cnt) {
 		return skillModsCounter += cnt;
 	}
-	
+
 	inline uint32 getSkillModsCounter() {
 		return skillModsCounter;
 	}
-	
+
 	inline uint32 getNewSkillModBonusCounter(int cnt) {
 		return skillModBonusCounter += cnt;
 	}
-	
+
 	inline uint32 getSkillModBonusCounter() {
 		return skillModBonusCounter;
 	}
-	
+
 	inline uint32 getLevel() {
 		return level;
 	}
-	
+
 	inline uint32 getHealthEncumbrance() {
 		return healthEncumbrance;
 	}
-	
+
 	inline uint32 getActionEncumbrance() {
 		return actionEncumbrance;
 	}
-	
+
 	inline uint32 getMindEncumbrance() {
 		return mindEncumbrance;
 	}
@@ -1818,7 +1833,7 @@ public:
 	inline Inventory* getInventory() {
 		return inventory;
 	}
-	
+
 	inline Container* getLootContainer() {
 		return (Container*)lootContainer;
 	}
@@ -1827,63 +1842,63 @@ public:
 	inline void addListener(CreatureObject* creature) {
 		listeners.put(creature);
 	}
-	
+
 	inline void addWatcher(CreatureObject* creature) {
 		watchers.put(creature);
 	}
-	
+
 	inline void removeListener(CreatureObject* creature) {
 		listeners.drop(creature);
 		/*if (!listeners.drop(creature)); {
 			cout << "SortedVector ERROR: object " << creature << " not found\n";
-			
+
 			for (int i = 0; i < listeners.size(); ++i) {
 				CreatureObject* obj = listeners.get(i);
 				cout << obj << "(0x" << obj->getObjectID() << ") ";
 			}
-			
+
 			cout << "\n";
 		}*/
 	}
-	
+
 	inline void removeWatcher(CreatureObject* creature) {
 		watchers.drop(creature);
 		/*if (!watchers.drop(creature)); {
 			cout << "SortedVector ERROR: object " << creature << " not found\n";
-			
+
 			for (int i = 0; i < watchers.size(); ++i) {
 				CreatureObject* obj = watchers.get(i);
 				cout << obj << "(0x" << obj->getObjectID() << ") ";
 			}
-			
+
 			cout << "\n";
 		}*/
 	}
-	
+
 	inline string& getPerformanceAnimation() {
-		return performanceAnimation;	
+		return performanceAnimation;
 	}
 
 	inline uint32 getPerformanceCounter() {
 		return performanceCounter;
 	}
-	
+
 	inline int getInstrumentID() {
 		return instrumentID;
 	}
 
 	inline string& getPerformanceName() {
-		return performanceName;	
+		return performanceName;
 	}
-	
+
 	inline uint32 getSkillBoxesUpdateCounter() {
 		return skillBoxesUpdateCounter++;
 	}
-	
+
 	inline void setAccuracy(int acc) {
 		accuracy = acc;
 	}
-	
+
 	inline void addEntertainerBuffDuration(int performanceType, float duration) {
 		switch(performanceType) {
 		case PerformanceType::DANCE:
@@ -1897,8 +1912,8 @@ public:
 				musicBuffDuration = (120.0f + (10.0f/60.0f)); // 2hrs 10 seconds
 			break;
 		}
-	}	
-	
+	}
+
 	inline void addEntertainerBuffStrength(int performanceType, float strength) {
 		switch(performanceType) {
 		case PerformanceType::DANCE:
@@ -1912,7 +1927,7 @@ public:
 				musicBuffStrength = 125.0f; // 125% cap
 			break;
 		}
-	}	
+	}
 	inline void setEntertainerBuffDuration(int performanceType, float duration) {
 		switch(performanceType) {
 		case PerformanceType::DANCE:
@@ -1922,8 +1937,8 @@ public:
 			musicBuffDuration = duration;
 			break;
 		}
-	}	
-	
+	}
+
 	inline void setEntertainerBuffStrength(int performanceType, float strength) {
 		switch(performanceType) {
 		case PerformanceType::DANCE:
@@ -1933,8 +1948,8 @@ public:
 			musicBuffStrength = strength;
 			break;
 		}
-	}	
-	
+	}
+
 	inline float getEntertainerBuffDuration(int performanceType) {
 		switch(performanceType) {
 		case PerformanceType::DANCE:
@@ -1958,114 +1973,114 @@ public:
 		}
 		return 0.0f;
 	}
-	
+
 	inline void setPerformanceAnimation(const string& performanceanimation) {
 		performanceAnimation = performanceanimation;
 	}
-	
+
 	inline void setPerformanceCounter(uint32 performancecounter) {
-		performanceCounter = performancecounter;	
+		performanceCounter = performancecounter;
 	}
-	
+
 	inline void setInstrumentID(int value) {
-		instrumentID = value;	
+		instrumentID = value;
 	}
 
 	inline void setPerformanceName(const string& performancename) {
 		performanceName = performancename;
 	}
-	
+
 	inline void setDancing(bool value) {
-		doDancing = value;	
+		doDancing = value;
 	}
-	
+
 	inline void setPlayingMusic(bool value) {
-		doPlayingMusic = value;	
+		doPlayingMusic = value;
 	}
-	
+
 	inline bool isDancing() {
 		return doDancing;
 	}
-	
+
 	inline bool isPlayingMusic() {
-		return doPlayingMusic;	
+		return doPlayingMusic;
 	}
 
 	inline void setWatchID(uint64 oid) {
 		watchID = oid;
 	}
-	
+
 	inline void setListenID(uint64 oid) {
-		listenID = oid;	
+		listenID = oid;
 	}
-	
+
 	inline void setWatching(bool value) {
 		doWatching = value;
 	}
-	
+
 	inline void setListening(bool value) {
 		doListening = value;
 	}
-	
+
 	inline bool isWatching() {
 		return doWatching;
 	}
-	
+
 	inline bool isListening() {
 		return doListening;
 	}
-	
+
 	inline uint64 getWatchID() {
-		return watchID;	
+		return watchID;
 	}
-	
+
 	inline uint64 getListenID() {
 		return listenID;
 	}
-	
+
 	inline bool isSittingOnObject() {
-		return sittingOnObject;	
+		return sittingOnObject;
 	}
-	
+
 	inline void setSittingOnObject(bool value) {
 		sittingOnObject = value;
 	}
-	
+
 	inline void setGuild(Guild* gld) {
 		guild = gld;
 	}
-	
+
 	inline void setActionCounter(uint32 actioncntr) {
 		actionCounter = actioncntr;
 	}
-	
+
 	inline void setLevel(uint32 lvl) {
 		level = lvl;
 	}
-	
+
 	inline Guild* getGuild() {
-		return guild;	
+		return guild;
 	}
-	
+
 	inline uint32 getGuildID() {
 		if (guild != NULL)
 			return guild->getGuildID();
-		else 
+		else
 			return 0;
 	}
 
 	inline string& getGuildName() {
 		return guild->getGuildName();
 	}
-		
+
 	inline bool isGuilded() {
 		return guild != NULL;
 	}
-		
+
 	inline void setCashCredits(int credits) {
 		cashCredits = credits;
 	}
-	
+
 	inline void setBankCredits(int credits) {
 		bankCredits = credits;
 	}
@@ -2073,9 +2088,24 @@ public:
 	inline float getTerrainNegotiation() {
 		return (float(getSkillMod("slope_move"))/float(100));
 	}
-	
+
 	void explode(int level = 1);
-	
+
+	/*
+	 Clean up later
+	*/
+	void deactivateWoundTreatment();
+	void activateWoundTreatment();
+
+	void deactivateInjuryTreatment();
+	void activateInjuryTreatment();
+
+	bool canTreatWounds();
+	bool canTreatInjuries();
+	bool canTreatStates();
+
+	int getMedicalFacilityRating();
+
 	friend class CombatManager;
 	friend class SkillManager;
 
