@@ -59,6 +59,7 @@ public:
 		try {
 			player->wlock();
 			
+			//cout << "Entertain Event!" << endl;
 			if (!player->isDancing() && !player->isPlayingMusic()) {
 				player->clearEntertainerEvent();
 			
@@ -76,9 +77,10 @@ public:
 					buildingType == BuildingObjectImplementation::GUILD_THEATER ||
 					buildingType == BuildingObjectImplementation::TAVERN )
 				{
-					
+					//cout << "calling: player->doEntertainerPatronEffects()" << endl;
 					// healShock, healWounds, addBuff
 					player->doEntertainerPatronEffects(true, true, true);
+					
 				
 				}
 			}

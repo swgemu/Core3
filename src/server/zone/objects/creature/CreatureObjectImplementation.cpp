@@ -209,6 +209,12 @@ CreatureObjectImplementation::CreatureObjectImplementation(uint64 oid) : Creatur
 
 	watchID = 0;
 	listenID = 0;
+	
+	danceBuffDuration = 0.0f;
+	musicBuffDuration = 0.0f;
+
+	danceBuffStrength = 0.0f;
+	musicBuffStrength = 0.0f;
 
 	listeners.setInsertPlan(SortedVector<CreatureObject*>::NO_DUPLICATE);
 	watchers.setInsertPlan(SortedVector<CreatureObject*>::NO_DUPLICATE);
@@ -2811,8 +2817,6 @@ void CreatureObjectImplementation::startDancing(const string& modifier, bool cha
 
 	if (!changeDance)
 		sendSystemMessage("performance", "dance_start_self");
-	else
-
 
 	// Tick every 10 seconds HAM costs
 	if (isPlayer()) {
@@ -3029,7 +3033,6 @@ void CreatureObjectImplementation::startPlayingMusic(const string& modifier, boo
 	// instrid instrument->getInstrumentType()
 	sendEntertainingUpdate(0x3C4CCCCD, instrumentAnimation, 0x07352BAC, instrid);
 
-
 	// Tick every 10 seconds HAM costs
 	if (isPlayer()) {
 		PlayerImplementation* player = (PlayerImplementation*) this;
@@ -3163,6 +3166,7 @@ void CreatureObjectImplementation::startWatch(uint64 entid) {
 		doWatching = true;
 	}
 	setEntertainerBuffDuration(PerformanceType::DANCE, 0.0f);
+	setEntertainerBuffStrength(PerformanceType::DANCE, 0.0f); 
 
 	info("started watching [" + creature->getCharacterName().c_str() + "]");
 
@@ -3226,6 +3230,7 @@ void CreatureObjectImplementation::startListen(uint64 entid) {
 		doListening = true;
 	}
 	setEntertainerBuffDuration(PerformanceType::MUSIC, 0.0f);
+	setEntertainerBuffStrength(PerformanceType::MUSIC, 0.0f);
 
 	info("started listening [" + creature->getCharacterName().c_str() + "]");
 
@@ -3286,6 +3291,7 @@ void CreatureObjectImplementation::stopWatch(uint64 entid, bool doSendPackets, b
 
 	activateEntertainerBuff(PerformanceType::DANCE);
 	setEntertainerBuffDuration(PerformanceType::DANCE, 0.0f); // reset
+	setEntertainerBuffStrength(PerformanceType::DANCE, 0.0f);
 	info("stopped watching [" + entName + "]");
 
 	doWatching = false;
@@ -3345,6 +3351,7 @@ void CreatureObjectImplementation::stopListen(uint64 entid, bool doSendPackets, 
 	//TODO: Activate Buff
 	activateEntertainerBuff(PerformanceType::MUSIC);
 	setEntertainerBuffDuration(PerformanceType::MUSIC, 0.0f); // reset
+	setEntertainerBuffStrength(PerformanceType::MUSIC, 0.0f);
 	info("stopped listening [" + entName + "]");
 
 	doListening = false;
@@ -3359,20 +3366,25 @@ void CreatureObjectImplementation::activateEntertainerBuff(int performanceType) 
 	float buffStrength = getEntertainerBuffStrength(performanceType);
 
 
+	//cout << "activateEntertainerBuff(" << performanceType << ") called for " << getCharacterName().c_str() << " with duration: " << buffDuration << " strength: ";
+	//cout.precision(4);
+	//cout << buffStrength << endl;
+	
 	Buff *buff = NULL;
 	switch(performanceType){
-	case PerformanceType::MUSIC:
-		buff = new Buff(BuffCRC::PERFORMANCE_ENHANCE_MUSIC_FOCUS, BuffType::PERFORMANCE, buffDuration);
-		buff->setFocusBuff((int)round(buffStrength * getBaseFocus()));
-		applyBuff(buff);
-
-		buff = new Buff(BuffCRC::PERFORMANCE_ENHANCE_MUSIC_WILLPOWER, BuffType::PERFORMANCE, buffDuration);
-		buff->setWillpowerBuff((int)round(buffStrength * getBaseWillpower()));
-		applyBuff(buff);
-	case PerformanceType::DANCE:
-		buff = new Buff(BuffCRC::PERFORMANCE_ENHANCE_DANCE_MIND, BuffType::PERFORMANCE, buffDuration);
-		buff->setMindBuff((int)round(buffStrength * getBaseMind()));
-		applyBuff(buff);
+		case PerformanceType::MUSIC:
+			buff = new Buff(BuffCRC::PERFORMANCE_ENHANCE_MUSIC_FOCUS, BuffType::PERFORMANCE, buffDuration);
+			buff->setFocusBuff((int)round(buffStrength * getBaseFocus()));
+			applyBuff(buff);
+	
+			buff = new Buff(BuffCRC::PERFORMANCE_ENHANCE_MUSIC_WILLPOWER, BuffType::PERFORMANCE, buffDuration);
+			buff->setWillpowerBuff((int)round(buffStrength * getBaseWillpower()));
+			applyBuff(buff);
+			break;
+		case PerformanceType::DANCE:
+			buff = new Buff(BuffCRC::PERFORMANCE_ENHANCE_DANCE_MIND, BuffType::PERFORMANCE, buffDuration);
+			buff->setMindBuff((int)round(buffStrength * getBaseMind()));
+			applyBuff(buff);
 	}
 
 }
@@ -3521,8 +3533,10 @@ void CreatureObjectImplementation::addEntertainerFlourishBuff() {
 void CreatureObjectImplementation::doEntertainerPatronEffects(bool healShock, bool healWounds, bool addBuff) {
 	ManagedSortedVector<CreatureObject>* patrons = NULL;
 
+	//cout << "CreatureObjectImplementation::doEntertainerPatronEffects()" << endl;
 	SkillManager* skillManager = server->getSkillManager();
 	Performance* performance = NULL;
+	float enhancementSkill = 0.0f;
 
 	if (getPerformanceName() == "")
 		return;
@@ -3531,10 +3545,12 @@ void CreatureObjectImplementation::doEntertainerPatronEffects(bool healShock, bo
 		//woundAbility = getSkillMod("healing_dance_wound");
 		patrons = &watchers;
 		performance = skillManager->getDance(getPerformanceName());
+		enhancementSkill = (float)getSkillMod("healing_dance_mind");
 	} else if (isPlayingMusic() && getInstrument() != NULL) {
 		//woundAbility = getSkillMod("healing_music_wound");
 		patrons = &listeners;
 		performance = skillManager->getSong(getPerformanceName(), getInstrument()->getInstrumentType());
+		enhancementSkill = (float)getSkillMod("healing_music_mind");
 	} else
 		return;
 
@@ -3551,6 +3567,7 @@ void CreatureObjectImplementation::doEntertainerPatronEffects(bool healShock, bo
 
 	if (patrons != NULL && patrons->size() > 0) {
 		for (int i = 0; i < patrons->size(); ++i) {
+			//cout << "looping patron: " << i << endl;
 			CreatureObject* obj = patrons->get(i);
 
 			try {
@@ -3579,9 +3596,14 @@ void CreatureObjectImplementation::doEntertainerPatronEffects(bool healShock, bo
 
 					if (healWounds)
 						obj->changeShockWounds(shockHeal);
+
 					// Add 1 minute per tick
-					if (addBuff)
+					if (addBuff) {
 						obj->addEntertainerBuffDuration(performance->getType(), 1.0f);
+						// TODO: In theory the buff isn't always the max, in practice after enough flourishes it maxes out way before duration
+						obj->setEntertainerBuffStrength(performance->getType(), enhancementSkill / 100.0f);
+						//cout << "going to set strength: " << enhancementSkill << endl;
+					}
 				} else {
 					if (isDancing()) {
 						obj->stopWatch(objectID, true, true, false);
@@ -4118,8 +4140,12 @@ void CreatureObjectImplementation::applyBuff(BuffObject *bo) {
 
 void CreatureObjectImplementation::applyBuff(Buff *buff) {
 	if (buff == NULL || buff->getBuffCRC() <= 0 || buff->getBuffDuration() <= 0)
+	{
+		//cout << "returning null for applyBuff" << endl;
 		return;
+	}
 
+	//cout << "applyBuff()" << endl;
 	// Other code should handle returning an error message
 	// if a previous buff already exists - safety net - make sure we don't double up
 	if (hasBuff(buff->getBuffCRC()))

@@ -441,6 +441,10 @@ public:
 
 	float getEntertainerBuffDuration(int performanceType);
 
+	void setEntertainerBuffStrength(int performanceType, float strength);
+
+	float getEntertainerBuffStrength(int performanceType);
+
 	void activateRecovery();
 
 	int getCreatureSkillsSize();
@@ -1307,6 +1311,10 @@ public:
 	void setEntertainerBuffDuration(int performanceType, float duration);
 
 	float getEntertainerBuffDuration(int performanceType);
+
+	void setEntertainerBuffStrength(int performanceType, float strength);
+
+	float getEntertainerBuffStrength(int performanceType);
 
 	void activateRecovery();
 
