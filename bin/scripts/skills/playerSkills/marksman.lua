@@ -141,7 +141,7 @@ DirectPoolAtt = {
 
 	requiredWeaponType = RIFLE,
 	
-	range = 65,
+	range = 75,
 	damageRatio = 1.5,
 	speedRatio = 1.5,
 	areaRange = 0,
@@ -183,7 +183,7 @@ DirectPoolAtt = {
 
 	requiredWeaponType = RIFLE,
 	
-	range = 65,
+	range = 75,
 	damageRatio = 2.5,
 	speedRatio = 1.75,
 	areaRange = 0,
@@ -225,7 +225,7 @@ DotPoolAtt = {
 
 	requiredWeaponType = RIFLE,
 	
-	range = 65,
+	range = 75,
 	damageRatio = 1.50,
 	speedRatio = 1.80,
 	areaRange = 0,
@@ -275,7 +275,7 @@ DirectPoolAtt = {
 
 	requiredWeaponType = PISTOL,
 	
-	range = 32,
+	range = 65,
 	damageRatio = 1.5,
 	speedRatio = 1.2,
 	areaRange = 0,
@@ -317,7 +317,7 @@ DirectPoolAtt = {
 
 	requiredWeaponType = PISTOL,
 	
-	range = 32,
+	range = 65,
 	damageRatio = 2.1,
 	speedRatio = 1.8,
 	areaRange = 0,
@@ -359,7 +359,7 @@ DotPoolAtt = {
 
 	requiredWeaponType = PISTOL,
 	
-	range = 32,
+	range = 65,
 	damageRatio = 2.0,
 	speedRatio = 1.0,
 	areaRange = 0,
@@ -409,7 +409,7 @@ DirectPoolAtt = {
 
 	requiredWeaponType = CARBINE,
 	
-	range = 50,
+	range = 64,
 	damageRatio = 1.45,
 	speedRatio = 1.5,
 	areaRange = 0,
@@ -451,7 +451,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = CARBINE,
 	
-	range = 50,
+	range = 64,
 	damageRatio = 1.35,
 	speedRatio = 1.15,
 	areaRange = 0,
@@ -494,7 +494,7 @@ DirectPoolAtt = {
 
 	requiredWeaponType = CARBINE,
 	
-	range = 50,
+	range = 64,
 	damageRatio = 3.0,
 	speedRatio = 1.5,
 	areaRange = 0,
@@ -536,7 +536,7 @@ DotPoolAtt = {
 
 	requiredWeaponType = CARBINE,
 	
-	range = 50,
+	range = 64,
 	damageRatio = 1.5,
 	speedRatio = 1.6,
 	areaRange = 0,

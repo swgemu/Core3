@@ -45,7 +45,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = CARBINE,
 	
-	range = 50,
+	range = 64,
 	damageRatio = 3.0,
 	speedRatio = 1.5,
 	areaRange = 0,
@@ -76,7 +76,7 @@ RandPoolAtt = {
 		
 	requiredWeaponType = CARBINE,
 	
-	range = 50,
+	range = 64,
 	damageRatio = 2.5,
 	speedRatio = 2.0,
 	areaRange = 0,
@@ -107,7 +107,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = CARBINE,
 	
-	range = 50,
+	range = 64,
 	damageRatio = 3.0,
 	speedRatio = 2.3,
 	areaRange = 0,
@@ -138,7 +138,7 @@ DotPoolAtt = {
 
 	requiredWeaponType = PISTOL,
 	
-	range = 32,
+	range = 65,
 	damageRatio = 2.0,
 	speedRatio = 1.5,
 	areaRange = 0,
@@ -176,7 +176,7 @@ DirectPoolAtt = {
 
 	requiredWeaponType = PISTOL,
 	
-	range = 32,
+	range = 65,
 	damageRatio = 3.0,
 	speedRatio = 2.0,
 	areaRange = 0,
@@ -218,7 +218,7 @@ DotPoolAtt = {
 
 	requiredWeaponType = PISTOL,
 	
-	range = 32,
+	range = 65,
 	damageRatio = 3.0,
 	speedRatio = 2.3,
 	areaRange = 0,
@@ -361,7 +361,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = CARBINE,
 	
-	range = 50,
+	range = 64,
 	damageRatio = 5.5,
 	speedRatio = 3.5,
 	areaRange = 0,
@@ -423,7 +423,7 @@ DirectPoolAtt = {
 
 	requiredWeaponType = PISTOL,
 	
-	range = 32,
+	range = 65,
 	damageRatio = 4.15,
 	speedRatio = 3.05,
 	areaRange = 0,

@@ -279,7 +279,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = UNARMED,
 	
-	range = 5,
+	range = 6,
 	damageRatio = 2.0,
 	speedRatio = 1.5,
 	areaRange = 0,
@@ -310,7 +310,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = UNARMED,
 	
-	range = 5,
+	range = 6,
 	damageRatio = 1.25,
 	speedRatio = 2.0,
 	areaRange = 0,
@@ -341,7 +341,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = UNARMED,
 	
-	range = 5,
+	range = 6,
 	damageRatio = 1.5,
 	speedRatio = 2.0,
 	areaRange = 0,
@@ -372,7 +372,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = UNARMED,
 	
-	range = 5,
+	range = 6,
 	damageRatio = 2.0,
 	speedRatio = 2.0,
 	areaRange = 7,

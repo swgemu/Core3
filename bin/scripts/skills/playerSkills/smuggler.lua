@@ -45,7 +45,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = PISTOL,
 	
-	range = 32,
+	range = 65,
 	damageRatio = 2.0,
 	speedRatio = 2.6,
 	areaRange = 0,
@@ -77,7 +77,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = PISTOL,
 	
-	range = 32,
+	range = 65,
 	damageRatio = 2.0,
 	speedRatio = 2.4,
 	areaRange = 0,
@@ -109,7 +109,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = PISTOL,
 	
-	range = 32,
+	range = 65,
 	damageRatio = 6.0,
 	speedRatio = 4.0,
 	areaRange = 0,

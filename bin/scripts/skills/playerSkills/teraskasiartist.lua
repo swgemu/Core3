@@ -45,7 +45,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = UNARMED,
 	
-	range = 5,
+	range = 6,
 	damageRatio = 3.0,
 	speedRatio = 2.5,
 	areaRange = 0,
@@ -105,7 +105,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = UNARMED,
 	
-	range = 5,
+	range = 6,
 	damageRatio = 1.0,
 	speedRatio = 1.5,
 	areaRange = 0,
@@ -136,7 +136,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = UNARMED,
 	
-	range = 5,
+	range = 6,
 	damageRatio = 1.5,
 	speedRatio = 2.0,
 	areaRange = 0,
@@ -167,7 +167,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = UNARMED,
 	
-	range = 5,
+	range = 6,
 	damageRatio = 1.5,
 	speedRatio = 2.0,
 	areaRange = 0,
@@ -198,7 +198,7 @@ DirectPoolAtt = {
 
 	requiredWeaponType = UNARMED,
 	
-	range = 5,
+	range = 6,
 	damageRatio = 2.0,
 	speedRatio = 2.0,
 	areaRange = 0,
@@ -241,7 +241,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = UNARMED,
 	
-	range = 5,
+	range = 6,
 	damageRatio = 3.0,
 	speedRatio = 3.0,
 	areaRange = 7,
@@ -272,7 +272,7 @@ DirectPoolAtt = {
 
 	requiredWeaponType = UNARMED,
 	
-	range = 5,
+	range = 6,
 	damageRatio = 3.0,
 	speedRatio = 4.0,
 	areaRange = 0,
@@ -315,7 +315,7 @@ DirectPoolAtt = {
 
 	requiredWeaponType = UNARMED,
 	
-	range = 5,
+	range = 6,
 	damageRatio = 2.5,
 	speedRatio = 2.0,
 	areaRange = 0,
@@ -357,7 +357,7 @@ DirectPoolAtt = {
 
 	requiredWeaponType = UNARMED,
 	
-	range = 5,
+	range = 6,
 	damageRatio = 2.5,
 	speedRatio = 2.0,
 	areaRange = 0,
@@ -399,7 +399,7 @@ DirectPoolAtt = {
 
 	requiredWeaponType = UNARMED,
 	
-	range = 5,
+	range = 6,
 	damageRatio = 2.5,
 	speedRatio = 2.0,
 	areaRange = 0,
@@ -441,7 +441,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = UNARMED,
 	
-	range = 5,
+	range = 6,
 	damageRatio = 4.5,
 	speedRatio = 3.0,
 	areaRange = 0,

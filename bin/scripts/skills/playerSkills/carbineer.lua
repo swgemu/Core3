@@ -45,7 +45,7 @@ DotPoolAtt = {
 
 	requiredWeaponType = CARBINE,
 	
-	range = 50,
+	range = 64,
 	damageRatio = 2.2,
 	speedRatio = 1.7,
 	areaRange = 0,
@@ -96,7 +96,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = CARBINE,
 	
-	range = 50,
+	range = 64,
 	damageRatio = 3.0,
 	speedRatio = 1.7,
 	areaRange = 0,
@@ -127,7 +127,7 @@ DirectPoolAtt = {
 
 	requiredWeaponType = CARBINE,
 	
-	range = 50,
+	range = 64,
 	damageRatio = 3.3,
 	speedRatio = 2.2,
 	areaRange = 0,
@@ -169,7 +169,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = CARBINE,
 	
-	range = 50,
+	range = 64,
 	damageRatio = 2.3,
 	speedRatio = 2.0,
 	areaRange = 0,
@@ -200,7 +200,7 @@ DirectPoolAtt = {
 
 	requiredWeaponType = CARBINE,
 	
-	range = 50,
+	range = 64,
 	damageRatio = 5.0,
 	speedRatio = 2.5,
 	areaRange = 0,
@@ -242,7 +242,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = CARBINE,
 	
-	range = 50,
+	range = 64,
 	damageRatio = 3.0,
 	speedRatio = 2.5,
 	coneAngle = 30,
@@ -273,7 +273,7 @@ DirectPoolAtt = {
 
 	requiredWeaponType = CARBINE,
 	
-	range = 50,
+	range = 64,
 	damageRatio = 3.0,
 	speedRatio = 1.5,
 	areaRange = 0,
@@ -314,7 +314,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = CARBINE,
 	
-	range = 50,
+	range = 64,
 	damageRatio = 5.0,
 	speedRatio = 2.5,
 	areaRange = 0,
@@ -345,7 +345,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = CARBINE,
 	
-	range = 50,
+	range = 64,
 	damageRatio = 3.0,
 	speedRatio = 2.0,
 	areaRange = 0,
@@ -376,7 +376,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = CARBINE,
 	
-	range = 50,
+	range = 64,
 	damageRatio = 4.0,
 	speedRatio = 2.5,
 	coneAngle = 30,
@@ -407,7 +407,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = CARBINE,
 	
-	range = 50,
+	range = 64,
 	damageRatio = 3.7,
 	speedRatio = 2.8,
 	areaRange = 0,
@@ -438,7 +438,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = CARBINE,
 	
-	range = 50,
+	range = 64,
 	damageRatio = 3.5,
 	speedRatio = 2.0,
 	coneAngle = 30,
@@ -469,7 +469,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = CARBINE,
 	
-	range = 50,
+	range = 64,
 	damageRatio = 3.0,
 	speedRatio = 2.3,
 	coneAngle = 0,
@@ -500,7 +500,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = CARBINE,
 	
-	range = 50,
+	range = 64,
 	damageRatio = 4.5,
 	speedRatio = 2.5,
 	coneAngle = 30,
@@ -531,7 +531,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = CARBINE,
 	
-	range = 50,
+	range = 64,
 	damageRatio = 3.7,
 	speedRatio = 3.0,
 	coneAngle = 30,
