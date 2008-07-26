@@ -62,8 +62,9 @@ void GameCommandHandler::init() {
 	const int CSR = PlayerImplementation::CSR;
 	const int NORMAL = PlayerImplementation::NORMAL;
 	const int QA = PlayerImplementation::QA;
+	const int EC = PlayerImplementation::EC;
 	const int PRIVILEGED = DEVELOPER | CSR;
-	const int ALL = DEVELOPER | NORMAL | CSR | QA;
+	const int ALL = DEVELOPER | NORMAL | CSR | QA | EC;
 
 	gmCommands = new GMCommandMap();
 
@@ -71,15 +72,15 @@ void GameCommandHandler::init() {
 			"Prints a list of commands.",
 			"Usage: @help [command]",
 			&help);
-	gmCommands->addCommand("map", PRIVILEGED | QA,
+	gmCommands->addCommand("map", PRIVILEGED | QA | EC,
 			"Warps you to a different map.",
 			"Usage: @map <planetid> \n PlanetId List: 0=Corellia, 1=Dantooine, 2=Dathomir, 3=Endor, 4=Lok, 5=Naboo, 6=Rori, 7=Talus, 8=Tatooine, 9=Yavin ",
 			&map);
-	gmCommands->addCommand("warp", PRIVILEGED | QA,
+	gmCommands->addCommand("warp", PRIVILEGED | QA | EC,
 			"Warps you to a given set of coordinates.",
 			"Usage: @warp <x> <y>",
 			&warp);
-	gmCommands->addCommand("warpTo", PRIVILEGED | QA,
+	gmCommands->addCommand("warpTo", PRIVILEGED | QA | EC,
 			"Warps you to a player\'s location ",
 			"Usage @warpTo <player>",
 			&warpTo);
@@ -103,7 +104,7 @@ void GameCommandHandler::init() {
 			"Prints the room tree.",
 			"Usage: @printRoomTree",
 			&printRoomTree);
-	gmCommands->addCommand("banUser", DEVELOPER,
+	gmCommands->addCommand("banUser", PRIVILEGED,
 			"Bans a user from logging in to the server.",
 			"Usage: @banUser <player>",
 			&banUser);
@@ -127,7 +128,7 @@ void GameCommandHandler::init() {
 			"Prints the amount of users on the server.",
 			"Usage: @users",
 			&users);
-	gmCommands->addCommand("setWeather", DEVELOPER,
+	gmCommands->addCommand("setWeather", PRIVILEGED,
 			"Changes the weather conditions on the planet.",
 			"Usage: @setWeather <1-5>",
 			&setWeather);
@@ -139,7 +140,7 @@ void GameCommandHandler::init() {
 			"Awards a badge to targeted player.",
 			"Usage: @awardBadge <badgeid>",
 			&awardBadge);
-	gmCommands->addCommand("systemMessage", PRIVILEGED,
+	gmCommands->addCommand("systemMessage", PRIVILEGED | EC,
 			"Sends a message to all players on the server.",
 			"Usage: @systemMessage <range> <message>",
 			&systemMessage);
@@ -1376,5 +1377,4 @@ void GameCommandHandler::giveItemTemp(StringTokenizer tokenizer, Player * player
 		player->sendSystemMessage("Unknown Item Type.");
 	}
 }
-
 

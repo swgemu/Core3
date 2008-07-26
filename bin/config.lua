@@ -53,7 +53,7 @@ DBHost = "127.0.0.1"
 DBPort = 3306
 DBName = "swgemu"
 DBUser = "swgemu"
-DBPass = "swgemu"
+DBPass = "123456"
 
 LoginPort = 44453
 LoginAllowedConnections = 3000

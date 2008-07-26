@@ -227,6 +227,7 @@ public:
 	static const int ADMIN = CSR | DEVELOPER;
 	static const int NORMAL = 4;
 	static const int QA = 8;
+	static const int EC = 16;
 	
 	
 public:

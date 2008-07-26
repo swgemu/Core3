@@ -45,7 +45,7 @@ DotPoolAtt = {
 
 	requiredWeaponType = RIFLEFLAMETHROWER,
 	
-	range = 64,
+	range = 16,
 	damageRatio = 5,
 	speedRatio = 4,
 	areaRange = 0,
@@ -86,10 +86,10 @@ DotPoolAtt = {
 
 	requiredWeaponType = RIFLEFLAMETHROWER,
 	
-	range = 64,
+	range = 16,
 	damageRatio = 5,
 	speedRatio = 4,
-	coneAngle = 30,
+	coneAngle = 60,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
@@ -127,7 +127,7 @@ DotPoolAtt = {
 
 	requiredWeaponType = RIFLEFLAMETHROWER,
 	
-	range = 64,
+	range = 16,
 	damageRatio = 8,
 	speedRatio = 4,
 	coneAngle = 0,
@@ -162,137 +162,13 @@ AddDotPoolAttackTargetSkill(DotPoolAtt)
 
 -----------------------------------------------------------------------
 
-RandPoolAtt = { 
-	attackname = "fireacidsingle1",
-	animation = "fire_acid_rifle_single_1_medium",
-
-	requiredWeaponType = RANGED,
-	
-	range = 64,
-	damageRatio = 1.25,
-	speedRatio = 1.25,
-	coneAngle = 0,
-	accuracyBonus = 0,
-		
-	knockdownChance = 0,
-	postureDownChance = 0,
-	postureUpChance = 0,
-	dizzyChance = 0,
-	blindChance = 0,
-	stunChance = 0,
-	intimidateChance = 0,
-	
-	CbtSpamBlock = "fireacidsingle1_block",
-	CbtSpamCounter = "fireacidsingle1_counter",
-	CbtSpamEvade = "fireacidsingle1_evade",
-	CbtSpamHit = "fireacidsingle1_hit",
-	CbtSpamMiss = "fireacidsingle1_miss",
-}
-
-AddRandomPoolAttackTargetSkill(RandPoolAtt)
-
------------------------------------------------------------------------
-
-RandPoolAtt = { 
-	attackname = "fireacidcone1",
-	animation = "",
-
-	requiredWeaponType = RANGED,
-	
-	range = 64,
-	damageRatio = 1.25,
-	speedRatio = 1.25,
-	coneAngle = 30,
-	accuracyBonus = 0,
-		
-	knockdownChance = 0,
-	postureDownChance = 0,
-	postureUpChance = 0,
-	dizzyChance = 0,
-	blindChance = 0,
-	stunChance = 0,
-	intimidateChance = 0,
-	
-	CbtSpamBlock = "fireacidcone1_block",
-	CbtSpamCounter = "fireacidcone1_counter",
-	CbtSpamEvade = "fireacidcone1_evade",
-	CbtSpamHit = "fireacidcone1_hit",
-	CbtSpamMiss = "fireacidcone1_miss",
-}
-
-AddRandomPoolAttackTargetSkill(RandPoolAtt)
-
------------------------------------------------------------------------
-
-RandPoolAtt = { 
-	attackname = "fireacidsingle2",
-	animation = "",
-
-	requiredWeaponType = RANGED,
-	
-	range = 64,
-	damageRatio = 1.25,
-	speedRatio = 1.25,
-	areaRange = 0,
-	accuracyBonus = 0,
-		
-	knockdownChance = 0,
-	postureDownChance = 0,
-	postureUpChance = 0,
-	dizzyChance = 0,
-	blindChance = 0,
-	stunChance = 0,
-	intimidateChance = 0,
-	
-	CbtSpamBlock = "fireacidsingle2_block",
-	CbtSpamCounter = "fireacidsingle2_counter",
-	CbtSpamEvade = "fireacidsingle2_evade",
-	CbtSpamHit = "fireacidsingle2_hit",
-	CbtSpamMiss = "fireacidsingle2_miss",
-}
-
-AddRandomPoolAttackTargetSkill(RandPoolAtt)
-
------------------------------------------------------------------------
-
-RandPoolAtt = { 
-	attackname = "fireacidcone2",
-	animation = "",
-
-	requiredWeaponType = RANGED,
-	
-	range = 64,
-	damageRatio = 1.25,
-	speedRatio = 1.25,
-	coneAngle = 60,
-	accuracyBonus = 0,
-		
-	knockdownChance = 0,
-	postureDownChance = 0,
-	postureUpChance = 0,
-	dizzyChance = 0,
-	blindChance = 0,
-	stunChance = 0,
-	intimidateChance = 0,
-	
-	CbtSpamBlock = "fireacidcone2_block",
-	CbtSpamCounter = "fireacidcone2_counter",
-	CbtSpamEvade = "fireacidcone2_evade",
-	CbtSpamHit = "fireacidcone2_hit",
-	CbtSpamMiss = "fireacidcone2_miss",
-}
-
-AddRandomPoolAttackTargetSkill(RandPoolAtt)
-
------------------------------------------------------------------------
-
 DotPoolAtt = { 
 	attackname = "flamecone2",
-	animation = "fire_flamethrower_cone_2_light",
+	animation = "fire_flame_thrower_cone_2_light",
 
 	requiredWeaponType = RIFLEFLAMETHROWER,
 	
-	range = 64,
+	range = 16,
 	damageRatio = 6,
 	speedRatio = 4,
 	coneAngle = 60,
@@ -326,3 +202,128 @@ DotPoolAtt = {
 AddDotPoolAttackTargetSkill(DotPoolAtt)
 
 -----------------------------------------------------------------------
+
+RandPoolAtt = { 
+	attackname = "fireacidsingle1",
+	animation = "fire_acid_rifle_single_1_medium",
+
+	requiredWeaponType = RANGED,
+	
+	range = 16,
+	damageRatio = 5,
+	speedRatio = 4,
+	coneAngle = 0,
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "fireacidsingle1_block",
+	CbtSpamCounter = "fireacidsingle1_counter",
+	CbtSpamEvade = "fireacidsingle1_evade",
+	CbtSpamHit = "fireacidsingle1_hit",
+	CbtSpamMiss = "fireacidsingle1_miss",
+}
+
+AddRandomPoolAttackTargetSkill(RandPoolAtt)
+
+-----------------------------------------------------------------------
+
+RandPoolAtt = { 
+	attackname = "fireacidcone1",
+	animation = "fire_acid_rifle_cone_1_light",
+
+	requiredWeaponType = RANGED,
+	
+	range = 16,
+	damageRatio = 5,
+	speedRatio = 4,
+	coneAngle = 60,
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "fireacidcone1_block",
+	CbtSpamCounter = "fireacidcone1_counter",
+	CbtSpamEvade = "fireacidcone1_evade",
+	CbtSpamHit = "fireacidcone1_hit",
+	CbtSpamMiss = "fireacidcone1_miss",
+}
+
+AddRandomPoolAttackTargetSkill(RandPoolAtt)
+
+-----------------------------------------------------------------------
+
+RandPoolAtt = { 
+	attackname = "fireacidsingle2",
+	animation = "fire_acid_rifle_single_2_medium",
+
+	requiredWeaponType = RANGED,
+	
+	range = 16,
+	damageRatio = 8,
+	speedRatio = 4,
+	areaRange = 0,
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "fireacidsingle2_block",
+	CbtSpamCounter = "fireacidsingle2_counter",
+	CbtSpamEvade = "fireacidsingle2_evade",
+	CbtSpamHit = "fireacidsingle2_hit",
+	CbtSpamMiss = "fireacidsingle2_miss",
+}
+
+AddRandomPoolAttackTargetSkill(RandPoolAtt)
+
+-----------------------------------------------------------------------
+
+RandPoolAtt = { 
+	attackname = "fireacidcone2",
+	animation = "fire_acid_rifle_cone_2_light",
+
+	requiredWeaponType = RANGED,
+	
+	range = 16,
+	damageRatio = 6,
+	speedRatio = 4,
+	coneAngle = 60,
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "fireacidcone2_block",
+	CbtSpamCounter = "fireacidcone2_counter",
+	CbtSpamEvade = "fireacidcone2_evade",
+	CbtSpamHit = "fireacidcone2_hit",
+	CbtSpamMiss = "fireacidcone2_miss",
+}
+
+AddRandomPoolAttackTargetSkill(RandPoolAtt)
+
+-----------------------------------------------------------------------
+

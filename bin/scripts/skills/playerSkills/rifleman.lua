@@ -425,11 +425,11 @@ RandPoolAtt = {
 	stunChance = 0,
 	intimidateChance = 0,
 	
-	CbtSpamBlock = "advancedstrafeshot_block",
-	CbtSpamCounter = "advancedstrafeshot_counter",
-	CbtSpamEvade = "advancedstrafeshot_evade",
-	CbtSpamHit = "advancedstrafeshot_hit",
-	CbtSpamMiss = "advancedstrafeshot_miss",
+	CbtSpamBlock = "advancedstrafe_block",
+	CbtSpamCounter = "advancedstrafe_counter",
+	CbtSpamEvade = "advancedstrafe_evade",
+	CbtSpamHit = "advancedstrafe_hit",
+	CbtSpamMiss = "advancedstrafe_miss",
 }
 
 AddRandomPoolAttackTargetSkill(RandPoolAtt)
