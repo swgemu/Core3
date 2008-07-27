@@ -184,6 +184,9 @@ class PlayerImplementation : public PlayerServant {
 	Event* sampleEvent;
 	Event* firstSampleEvent;
 	
+	// mission vars
+	uint32 misoRFC;
+	
 	// Entertainer - Dance + Music
 	Event* entertainerEvent;
 	
@@ -491,6 +494,10 @@ public:
 	
 	void kill();
 
+	//mission methods
+	uint32 nextMisoRFC() {
+		return misoRFC++;
+	}
 
 	// buffing methods
 	void addBuff(uint32 buffcrc, float time);

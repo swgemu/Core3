@@ -70,9 +70,14 @@ MissionObjectImplementation::~MissionObjectImplementation() {
 }
 
 void MissionObjectImplementation::init() {
+	dbKey = "";
+	
+	terminalMask = 0;
+	
 	//MISO3:
 	typeStr = ""; //3
-	tdKey = 0; //4
+	descKey = 0; //4
+	titleKey = 0; //4
 	difficultyLevel = 0; //5
 	//6:
 		destX = 0.0f;
@@ -89,7 +94,7 @@ void MissionObjectImplementation::init() {
 	depictedObjCrc = 0; //10 (0A)
 	descriptionStf = ""; //11 (0B)
 	titleStf = ""; //12 (0C)
-	toggleAvailability = 0; //13 (0D)
+	refreshCount = 0x01; //13 (0D)
 	typeCrc = 0; //14 (0E)
 }
 
@@ -109,5 +114,44 @@ void MissionObjectImplementation::sendTo(Player* player, bool doClose) {
 	if (doClose) {
 		close(client);
 	}
+}
+
+void MissionObjectImplementation::sendDeltaTo(Player* player) {
+	ZoneClient* client = player->getClient();
+	if (client == NULL)
+		return;
+
+	MissionObjectDeltaMessage3* dmiso3 = new MissionObjectDeltaMessage3((MissionObject*) _this);
+	
+	dmiso3->updateDescriptionStf(); //11 (0B)
+	dmiso3->updateDescKey(); //4
+	dmiso3->updateDifficultyLv(); //5
+	dmiso3->updateDestination(); //6
+	dmiso3->updateCreator(); //7
+	dmiso3->updateTypeCrc(); //14 (0E)
+	dmiso3->updateReward(); //8
+	dmiso3->updateTarget(); //9
+	dmiso3->updateDepictedObject(); //10 (0A)
+	dmiso3->updateTitleStf(); //12 (0C)
+	dmiso3->updateTitleKey(); //4
+	dmiso3->updateRefreshCount(player->nextMisoRFC()); //13 (0D)
+	
+	dmiso3->close();
+	
+	client->sendMessage(dmiso3);
+}
+
+void MissionObjectImplementation::doLinkToPlayer(Player* player) {
+	//new place for mission bag/datapad linkage here
+}
+
+//Use this function to remove the mission from the player.
+//This does NOT remove the actual mission Object from the pool
+void MissionObjectImplementation::sendDestroyTo(Player* player) {
+	ZoneClient* client = player->getClient();
+	if (client == NULL)
+		return;
+
+	destroy(client);
 }
 

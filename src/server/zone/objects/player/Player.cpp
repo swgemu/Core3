@@ -2518,12 +2518,24 @@ bool Player::isChatMuted() {
 		return ((PlayerImplementation*) _impl)->isChatMuted();
 }
 
-CraftingTool* Player::getCurrentCraftingTool() {
+unsigned int Player::nextMisoRFC() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 197);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((PlayerImplementation*) _impl)->nextMisoRFC();
+}
+
+CraftingTool* Player::getCurrentCraftingTool() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 198);
 
 		return (CraftingTool*) method.executeWithObjectReturn();
 	} else
@@ -2535,7 +2547,7 @@ CraftingTool* Player::getCraftingTool(const int type) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 198);
+		DistributedMethod method(this, 199);
 		method.addSignedIntParameter(type);
 
 		return (CraftingTool*) method.executeWithObjectReturn();
@@ -2548,7 +2560,7 @@ void Player::setCurrentCraftingTool(CraftingTool* ct) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 199);
+		DistributedMethod method(this, 200);
 		method.addObjectParameter(ct);
 
 		method.executeWithVoidReturn();
@@ -2561,7 +2573,7 @@ void Player::clearCurrentCraftingTool() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 200);
+		DistributedMethod method(this, 201);
 
 		method.executeWithVoidReturn();
 	} else
@@ -2573,7 +2585,7 @@ void Player::prepareCraftingSession(CraftingTool* ct, DraftSchematic* ds) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 201);
+		DistributedMethod method(this, 202);
 		method.addObjectParameter(ct);
 		method.addObjectParameter(ds);
 
@@ -2587,7 +2599,7 @@ void Player::addIngredientToSlot(TangibleObject* tano, int slot, int counter) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 202);
+		DistributedMethod method(this, 203);
 		method.addObjectParameter(tano);
 		method.addSignedIntParameter(slot);
 		method.addSignedIntParameter(counter);
@@ -2602,7 +2614,7 @@ void Player::removeResourceFromCraft(unsigned long long resID, int slot, int cou
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 203);
+		DistributedMethod method(this, 204);
 		method.addUnsignedLongParameter(resID);
 		method.addSignedIntParameter(slot);
 		method.addSignedIntParameter(counter);
@@ -2617,7 +2629,7 @@ void Player::nextCraftingStage(string& test) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 204);
+		DistributedMethod method(this, 205);
 		method.addAsciiParameter(test);
 
 		method.executeWithVoidReturn();
@@ -2630,7 +2642,7 @@ void Player::craftingCustomization(string& name, int condition) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 205);
+		DistributedMethod method(this, 206);
 		method.addAsciiParameter(name);
 		method.addSignedIntParameter(condition);
 
@@ -2644,7 +2656,7 @@ void Player::createPrototype(string& count) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 206);
+		DistributedMethod method(this, 207);
 		method.addAsciiParameter(count);
 
 		method.executeWithVoidReturn();
@@ -2657,7 +2669,7 @@ void Player::createSchematic(string& count) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 207);
+		DistributedMethod method(this, 208);
 		method.addAsciiParameter(count);
 
 		method.executeWithVoidReturn();
@@ -2670,7 +2682,7 @@ void Player::handleExperimenting(int count, int numRowsAttempted, string& expstr
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 208);
+		DistributedMethod method(this, 209);
 		method.addSignedIntParameter(count);
 		method.addSignedIntParameter(numRowsAttempted);
 		method.addAsciiParameter(expstring);
@@ -2685,7 +2697,7 @@ void Player::sendDraftSchematics() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 209);
+		DistributedMethod method(this, 210);
 
 		method.executeWithVoidReturn();
 	} else
@@ -2697,7 +2709,7 @@ void Player::addDraftSchematicsFromGroupName(const string& schematicGroupName) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 210);
+		DistributedMethod method(this, 211);
 		method.addAsciiParameter(schematicGroupName);
 
 		method.executeWithVoidReturn();
@@ -2710,7 +2722,7 @@ void Player::subtractDraftSchematicsFromGroupName(const string& schematicGroupNa
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 211);
+		DistributedMethod method(this, 212);
 		method.addAsciiParameter(schematicGroupName);
 
 		method.executeWithVoidReturn();
@@ -2723,7 +2735,7 @@ void Player::addDraftSchematic(DraftSchematic* ds) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 212);
+		DistributedMethod method(this, 213);
 		method.addObjectParameter(ds);
 
 		method.executeWithVoidReturn();
@@ -2736,7 +2748,7 @@ void Player::subtractDraftSchematic(DraftSchematic* ds) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 213);
+		DistributedMethod method(this, 214);
 		method.addObjectParameter(ds);
 
 		method.executeWithVoidReturn();
@@ -2749,7 +2761,7 @@ unsigned int Player::getDraftSchematicListSize() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 214);
+		DistributedMethod method(this, 215);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -2761,7 +2773,7 @@ unsigned int Player::getDraftSchematicUpdateCount(unsigned int count) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 215);
+		DistributedMethod method(this, 216);
 		method.addUnsignedIntParameter(count);
 
 		return method.executeWithUnsignedIntReturn();
@@ -2774,7 +2786,7 @@ DraftSchematic* Player::getDraftSchematic(unsigned int schematicID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 216);
+		DistributedMethod method(this, 217);
 		method.addUnsignedIntParameter(schematicID);
 
 		return (DraftSchematic*) method.executeWithObjectReturn();
@@ -2787,7 +2799,7 @@ DraftSchematic* Player::getDraftSchematic(int index) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 217);
+		DistributedMethod method(this, 218);
 		method.addSignedIntParameter(index);
 
 		return (DraftSchematic*) method.executeWithObjectReturn();
@@ -2800,7 +2812,7 @@ bool Player::isChangingFaction() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 218);
+		DistributedMethod method(this, 219);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -2812,7 +2824,7 @@ Datapad* Player::getDatapad() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 219);
+		DistributedMethod method(this, 220);
 
 		return (Datapad*) method.executeWithObjectReturn();
 	} else
@@ -2824,7 +2836,7 @@ unsigned long long Player::getNewItemID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 220);
+		DistributedMethod method(this, 221);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -2836,7 +2848,7 @@ unsigned int Player::getItemShift() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 221);
+		DistributedMethod method(this, 222);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -2848,7 +2860,7 @@ float Player::getLastTestPositionX() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 222);
+		DistributedMethod method(this, 223);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -2860,7 +2872,7 @@ float Player::getLastTestPositionY() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 223);
+		DistributedMethod method(this, 224);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -2872,7 +2884,7 @@ unsigned int Player::getForcePower() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 224);
+		DistributedMethod method(this, 225);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -2884,7 +2896,7 @@ SurveyTool* Player::getSurveyTool() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 225);
+		DistributedMethod method(this, 226);
 
 		return (SurveyTool*) method.executeWithObjectReturn();
 	} else
@@ -2896,7 +2908,7 @@ void Player::setSurveyTool(SurveyTool* sTool) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 226);
+		DistributedMethod method(this, 227);
 		method.addObjectParameter(sTool);
 
 		method.executeWithVoidReturn();
@@ -2909,7 +2921,7 @@ void Player::setSurveyWaypoint(WaypointObject* id) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 227);
+		DistributedMethod method(this, 228);
 		method.addObjectParameter(id);
 
 		method.executeWithVoidReturn();
@@ -2922,7 +2934,7 @@ WaypointObject* Player::getSurveyWaypoint() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 228);
+		DistributedMethod method(this, 229);
 
 		return (WaypointObject*) method.executeWithObjectReturn();
 	} else
@@ -2934,7 +2946,7 @@ bool Player::getCanSurvey() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 229);
+		DistributedMethod method(this, 230);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -2946,7 +2958,7 @@ bool Player::getCanSample() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 230);
+		DistributedMethod method(this, 231);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -2958,7 +2970,7 @@ void Player::setCanSurvey() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 231);
+		DistributedMethod method(this, 232);
 
 		method.executeWithVoidReturn();
 	} else
@@ -2970,7 +2982,7 @@ void Player::setCanSample() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 232);
+		DistributedMethod method(this, 233);
 
 		method.executeWithVoidReturn();
 	} else
@@ -2982,7 +2994,7 @@ void Player::setSurveyEvent(string& resourcename) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 233);
+		DistributedMethod method(this, 234);
 		method.addAsciiParameter(resourcename);
 
 		method.executeWithVoidReturn();
@@ -2995,7 +3007,7 @@ void Player::setSampleEvent(string& resourcename, bool firstTime) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 234);
+		DistributedMethod method(this, 235);
 		method.addAsciiParameter(resourcename);
 		method.addBooleanParameter(firstTime);
 
@@ -3009,7 +3021,7 @@ void Player::setCancelSample(bool val) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 235);
+		DistributedMethod method(this, 236);
 		method.addBooleanParameter(val);
 
 		method.executeWithVoidReturn();
@@ -3022,7 +3034,7 @@ bool Player::getCancelSample() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 236);
+		DistributedMethod method(this, 237);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -3034,7 +3046,7 @@ void Player::sendSampleTimeRemaining() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 237);
+		DistributedMethod method(this, 238);
 
 		method.executeWithVoidReturn();
 	} else
@@ -3046,7 +3058,7 @@ void Player::setSurveyErrorMessage() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 238);
+		DistributedMethod method(this, 239);
 
 		method.executeWithVoidReturn();
 	} else
@@ -3058,7 +3070,7 @@ void Player::setSampleErrorMessage() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 239);
+		DistributedMethod method(this, 240);
 
 		method.executeWithVoidReturn();
 	} else
@@ -3070,7 +3082,7 @@ bool Player::getSurveyErrorMessage() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 240);
+		DistributedMethod method(this, 241);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -3082,7 +3094,7 @@ bool Player::getSampleErrorMessage() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 241);
+		DistributedMethod method(this, 242);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -3094,7 +3106,7 @@ void Player::setEntertainerEvent() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 242);
+		DistributedMethod method(this, 243);
 
 		method.executeWithVoidReturn();
 	} else
@@ -3106,7 +3118,7 @@ void Player::clearEntertainerEvent() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 243);
+		DistributedMethod method(this, 244);
 
 		method.executeWithVoidReturn();
 	} else
@@ -3118,7 +3130,7 @@ void Player::setLastNpcConvStr(const string& conv) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 244);
+		DistributedMethod method(this, 245);
 		method.addAsciiParameter(conv);
 
 		method.executeWithVoidReturn();
@@ -3131,7 +3143,7 @@ void Player::setLastNpcConvMessStr(const string& mess) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 245);
+		DistributedMethod method(this, 246);
 		method.addAsciiParameter(mess);
 
 		method.executeWithVoidReturn();
@@ -3144,7 +3156,7 @@ string& Player::getLastNpcConvStr() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 246);
+		DistributedMethod method(this, 247);
 
 		method.executeWithAsciiReturn(_return_getLastNpcConvStr);
 		return _return_getLastNpcConvStr;
@@ -3157,7 +3169,7 @@ string& Player::getLastNpcConvMessStr() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 247);
+		DistributedMethod method(this, 248);
 
 		method.executeWithAsciiReturn(_return_getLastNpcConvMessStr);
 		return _return_getLastNpcConvMessStr;
@@ -3750,156 +3762,159 @@ Packet* PlayerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertBoolean(isChatMuted());
 		break;
 	case 197:
-		resp->insertLong(getCurrentCraftingTool()->_getObjectID());
+		resp->insertInt(nextMisoRFC());
 		break;
 	case 198:
-		resp->insertLong(getCraftingTool(inv->getSignedIntParameter())->_getObjectID());
+		resp->insertLong(getCurrentCraftingTool()->_getObjectID());
 		break;
 	case 199:
-		setCurrentCraftingTool((CraftingTool*) inv->getObjectParameter());
+		resp->insertLong(getCraftingTool(inv->getSignedIntParameter())->_getObjectID());
 		break;
 	case 200:
-		clearCurrentCraftingTool();
+		setCurrentCraftingTool((CraftingTool*) inv->getObjectParameter());
 		break;
 	case 201:
-		prepareCraftingSession((CraftingTool*) inv->getObjectParameter(), (DraftSchematic*) inv->getObjectParameter());
+		clearCurrentCraftingTool();
 		break;
 	case 202:
-		addIngredientToSlot((TangibleObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
+		prepareCraftingSession((CraftingTool*) inv->getObjectParameter(), (DraftSchematic*) inv->getObjectParameter());
 		break;
 	case 203:
-		removeResourceFromCraft(inv->getUnsignedLongParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
+		addIngredientToSlot((TangibleObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
 		break;
 	case 204:
-		nextCraftingStage(inv->getAsciiParameter(_param0_nextCraftingStage__string_));
+		removeResourceFromCraft(inv->getUnsignedLongParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
 		break;
 	case 205:
-		craftingCustomization(inv->getAsciiParameter(_param0_craftingCustomization__string_int_), inv->getSignedIntParameter());
+		nextCraftingStage(inv->getAsciiParameter(_param0_nextCraftingStage__string_));
 		break;
 	case 206:
-		createPrototype(inv->getAsciiParameter(_param0_createPrototype__string_));
+		craftingCustomization(inv->getAsciiParameter(_param0_craftingCustomization__string_int_), inv->getSignedIntParameter());
 		break;
 	case 207:
-		createSchematic(inv->getAsciiParameter(_param0_createSchematic__string_));
+		createPrototype(inv->getAsciiParameter(_param0_createPrototype__string_));
 		break;
 	case 208:
-		handleExperimenting(inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getAsciiParameter(_param2_handleExperimenting__int_int_string_));
+		createSchematic(inv->getAsciiParameter(_param0_createSchematic__string_));
 		break;
 	case 209:
-		sendDraftSchematics();
+		handleExperimenting(inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getAsciiParameter(_param2_handleExperimenting__int_int_string_));
 		break;
 	case 210:
-		addDraftSchematicsFromGroupName(inv->getAsciiParameter(_param0_addDraftSchematicsFromGroupName__string_));
+		sendDraftSchematics();
 		break;
 	case 211:
-		subtractDraftSchematicsFromGroupName(inv->getAsciiParameter(_param0_subtractDraftSchematicsFromGroupName__string_));
+		addDraftSchematicsFromGroupName(inv->getAsciiParameter(_param0_addDraftSchematicsFromGroupName__string_));
 		break;
 	case 212:
-		addDraftSchematic((DraftSchematic*) inv->getObjectParameter());
+		subtractDraftSchematicsFromGroupName(inv->getAsciiParameter(_param0_subtractDraftSchematicsFromGroupName__string_));
 		break;
 	case 213:
-		subtractDraftSchematic((DraftSchematic*) inv->getObjectParameter());
+		addDraftSchematic((DraftSchematic*) inv->getObjectParameter());
 		break;
 	case 214:
-		resp->insertInt(getDraftSchematicListSize());
+		subtractDraftSchematic((DraftSchematic*) inv->getObjectParameter());
 		break;
 	case 215:
-		resp->insertInt(getDraftSchematicUpdateCount(inv->getUnsignedIntParameter()));
+		resp->insertInt(getDraftSchematicListSize());
 		break;
 	case 216:
-		resp->insertLong(getDraftSchematic(inv->getUnsignedIntParameter())->_getObjectID());
+		resp->insertInt(getDraftSchematicUpdateCount(inv->getUnsignedIntParameter()));
 		break;
 	case 217:
-		resp->insertLong(getDraftSchematic(inv->getSignedIntParameter())->_getObjectID());
+		resp->insertLong(getDraftSchematic(inv->getUnsignedIntParameter())->_getObjectID());
 		break;
 	case 218:
-		resp->insertBoolean(isChangingFaction());
+		resp->insertLong(getDraftSchematic(inv->getSignedIntParameter())->_getObjectID());
 		break;
 	case 219:
-		resp->insertLong(getDatapad()->_getObjectID());
+		resp->insertBoolean(isChangingFaction());
 		break;
 	case 220:
-		resp->insertLong(getNewItemID());
+		resp->insertLong(getDatapad()->_getObjectID());
 		break;
 	case 221:
-		resp->insertInt(getItemShift());
+		resp->insertLong(getNewItemID());
 		break;
 	case 222:
-		resp->insertFloat(getLastTestPositionX());
+		resp->insertInt(getItemShift());
 		break;
 	case 223:
-		resp->insertFloat(getLastTestPositionY());
+		resp->insertFloat(getLastTestPositionX());
 		break;
 	case 224:
-		resp->insertInt(getForcePower());
+		resp->insertFloat(getLastTestPositionY());
 		break;
 	case 225:
-		resp->insertLong(getSurveyTool()->_getObjectID());
+		resp->insertInt(getForcePower());
 		break;
 	case 226:
-		setSurveyTool((SurveyTool*) inv->getObjectParameter());
+		resp->insertLong(getSurveyTool()->_getObjectID());
 		break;
 	case 227:
-		setSurveyWaypoint((WaypointObject*) inv->getObjectParameter());
+		setSurveyTool((SurveyTool*) inv->getObjectParameter());
 		break;
 	case 228:
-		resp->insertLong(getSurveyWaypoint()->_getObjectID());
+		setSurveyWaypoint((WaypointObject*) inv->getObjectParameter());
 		break;
 	case 229:
-		resp->insertBoolean(getCanSurvey());
+		resp->insertLong(getSurveyWaypoint()->_getObjectID());
 		break;
 	case 230:
-		resp->insertBoolean(getCanSample());
+		resp->insertBoolean(getCanSurvey());
 		break;
 	case 231:
-		setCanSurvey();
+		resp->insertBoolean(getCanSample());
 		break;
 	case 232:
-		setCanSample();
+		setCanSurvey();
 		break;
 	case 233:
-		setSurveyEvent(inv->getAsciiParameter(_param0_setSurveyEvent__string_));
+		setCanSample();
 		break;
 	case 234:
-		setSampleEvent(inv->getAsciiParameter(_param0_setSampleEvent__string_bool_), inv->getBooleanParameter());
+		setSurveyEvent(inv->getAsciiParameter(_param0_setSurveyEvent__string_));
 		break;
 	case 235:
-		setCancelSample(inv->getBooleanParameter());
+		setSampleEvent(inv->getAsciiParameter(_param0_setSampleEvent__string_bool_), inv->getBooleanParameter());
 		break;
 	case 236:
-		resp->insertBoolean(getCancelSample());
+		setCancelSample(inv->getBooleanParameter());
 		break;
 	case 237:
-		sendSampleTimeRemaining();
+		resp->insertBoolean(getCancelSample());
 		break;
 	case 238:
-		setSurveyErrorMessage();
+		sendSampleTimeRemaining();
 		break;
 	case 239:
-		setSampleErrorMessage();
+		setSurveyErrorMessage();
 		break;
 	case 240:
-		resp->insertBoolean(getSurveyErrorMessage());
+		setSampleErrorMessage();
 		break;
 	case 241:
-		resp->insertBoolean(getSampleErrorMessage());
+		resp->insertBoolean(getSurveyErrorMessage());
 		break;
 	case 242:
-		setEntertainerEvent();
+		resp->insertBoolean(getSampleErrorMessage());
 		break;
 	case 243:
-		clearEntertainerEvent();
+		setEntertainerEvent();
 		break;
 	case 244:
-		setLastNpcConvStr(inv->getAsciiParameter(_param0_setLastNpcConvStr__string_));
+		clearEntertainerEvent();
 		break;
 	case 245:
-		setLastNpcConvMessStr(inv->getAsciiParameter(_param0_setLastNpcConvMessStr__string_));
+		setLastNpcConvStr(inv->getAsciiParameter(_param0_setLastNpcConvStr__string_));
 		break;
 	case 246:
-		resp->insertAscii(getLastNpcConvStr());
+		setLastNpcConvMessStr(inv->getAsciiParameter(_param0_setLastNpcConvMessStr__string_));
 		break;
 	case 247:
+		resp->insertAscii(getLastNpcConvStr());
+		break;
+	case 248:
 		resp->insertAscii(getLastNpcConvMessStr());
 		break;
 	default:
@@ -4671,6 +4686,10 @@ int PlayerAdapter::getSlicingAbility() {
 
 bool PlayerAdapter::isChatMuted() {
 	return ((PlayerImplementation*) impl)->isChatMuted();
+}
+
+unsigned int PlayerAdapter::nextMisoRFC() {
+	return ((PlayerImplementation*) impl)->nextMisoRFC();
 }
 
 CraftingTool* PlayerAdapter::getCurrentCraftingTool() {

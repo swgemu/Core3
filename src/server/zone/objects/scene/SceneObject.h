@@ -151,6 +151,8 @@ public:
 
 	bool isAttackableObject();
 
+	bool isMission();
+
 	Zone* getZone();
 
 	int getZoneID();
@@ -328,6 +330,8 @@ public:
 	bool isShip();
 
 	bool isAttackableObject();
+
+	bool isMission();
 
 	Zone* getZone();
 

@@ -59,11 +59,18 @@ public:
 	}
 
 
-	//Title/Description Key
-	void updateTDKey() {
+	//Description Key
+	void updateDescKey() {
 		startUpdate(0x04);
 		
-		insertInt(miso->getTDKey()); //make sure this isnt being reversed! like m27t -> t72m
+		insertInt(miso->getDescKey()); //make sure this isnt being reversed! like m27t -> t72m
+	}
+	
+	//Title Key
+	void updateTitleKey() {
+		startUpdate(0x04);
+		
+		insertInt(miso->getTitleKey()); //make sure this isnt being reversed! like m27t -> t72m
 	}
 	
 	void updateDifficultyLv() {
@@ -122,10 +129,11 @@ public:
 		insertAscii(miso->getTitleStf());
 	}
 	
-	void updateAvailability() {
+	void updateRefreshCount(uint32 trc) {
 		startUpdate(0x0D);
 		
-		insertInt(miso->getToggleAvailability());
+		//insertInt(miso->getRefreshCount());
+		insertInt(trc);
 	}
 	
 	void updateTypeCrc() {

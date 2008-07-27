@@ -54,9 +54,15 @@ which carries forward this exception.
 #include "../player/PlayerImplementation.h"
 
 class MissionObjectImplementation : public SceneObjectImplementation {
+	
+	string dbKey;
+	
+	int terminalMask;
+	
 	//MISO3:
-	string typeStr; //3
-	uint32 tdKey; //4
+	string typeStr; //3 BASELINE ONLY
+	uint32 descKey; //4 - connected to 0B
+	uint32 titleKey; //4 - connected to 0C
 	uint32 difficultyLevel; //5
 	//6:
 		float destX;
@@ -73,7 +79,7 @@ class MissionObjectImplementation : public SceneObjectImplementation {
 	uint32 depictedObjCrc; //10 (0A)
 	string descriptionStf; //11 (0B)
 	string titleStf; //12 (0C)
-	uint32 toggleAvailability; //13 (0D)
+	uint32 refreshCount; //13 (0D)
 	uint32 typeCrc; //14 (0E)
 
 public:
@@ -84,6 +90,25 @@ public:
 	
 	void init();
 	void sendTo(Player* player, bool doClose = true);
+	void sendDeltaTo(Player* player);
+	void doLinkToPlayer(Player* player);
+	void sendDestroyTo(Player* player);
+	
+	inline void setDBKey(string& tdbk) {
+		dbKey = tdbk;
+	}
+	
+	inline string& getDBKey() {
+		return dbKey;
+	}
+	
+	inline void applyTerminalMask(int tam) {
+		terminalMask |= tam;
+	}
+	
+	inline int getTerminalMask() {
+		return terminalMask;
+	}
 	
 	inline void setTypeStr(const string& tstr) {
 		typeStr = tstr;
@@ -93,12 +118,20 @@ public:
 		return typeStr;
 	}
 	
-	inline void setTDKey(int tk) {
-		tdKey = tk;
+	inline void setDescKey(int tdk) {
+		descKey = tdk;
 	}
 	
-	inline uint32 getTDKey() {
-		return tdKey;
+	inline uint32 getDescKey() {
+		return descKey;
+	}
+	
+	inline void setTitleKey(int ttk) {
+		titleKey = ttk;
+	}
+	
+	inline uint32 getTitleKey() {
+		return titleKey;
 	}
 	
 	inline void setDifficultyLevel(uint32 tdlv) {
@@ -197,12 +230,12 @@ public:
 		return titleStf;
 	}
 	
-	inline void setToggleAvailability(uint32 tta) {
-		toggleAvailability = tta;
+	inline void setRefreshCount(uint32 trc) {
+		refreshCount = trc;
 	}
 	
-	inline uint32 getToggleAvailability() {
-		return toggleAvailability;
+	inline uint32 getRefreshCount() {
+		return refreshCount;
 	}
 	
 	inline void setTypeCrc(uint32 ttc) {

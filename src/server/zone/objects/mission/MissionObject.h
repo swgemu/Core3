@@ -21,13 +21,31 @@ public:
 
 	void sendTo(Player* player, bool doClose = true);
 
+	void sendDeltaTo(Player* player);
+
+	void doLinkToPlayer(Player* player);
+
+	void sendDestroyTo(Player* player);
+
+	void setDBKey(string& tdbk);
+
+	string& getDBKey();
+
+	void applyTerminalMask(int tam);
+
+	int getTerminalMask();
+
 	void setTypeStr(const string& tstr);
 
 	string& getTypeStr();
 
-	void setTDKey(int tk);
+	void setDescKey(int tdk);
 
-	unsigned int getTDKey();
+	unsigned int getDescKey();
+
+	void setTitleKey(int ttk);
+
+	unsigned int getTitleKey();
 
 	void setDifficultyLevel(unsigned int tdlv);
 
@@ -77,9 +95,9 @@ public:
 
 	string& getTitleStf();
 
-	void setToggleAvailability(unsigned int tta);
+	void setRefreshCount(unsigned int trc);
 
-	unsigned int getToggleAvailability();
+	unsigned int getRefreshCount();
 
 	void setTypeCrc(unsigned int ttc);
 
@@ -90,6 +108,7 @@ protected:
 
 	virtual ~MissionObject();
 
+	string _return_getDBKey;
 	string _return_getDescriptionStf;
 	string _return_getTitleStf;
 	string _return_getTypeStr;
@@ -111,13 +130,31 @@ public:
 
 	void sendTo(Player* player, bool doClose);
 
+	void sendDeltaTo(Player* player);
+
+	void doLinkToPlayer(Player* player);
+
+	void sendDestroyTo(Player* player);
+
+	void setDBKey(string& tdbk);
+
+	string& getDBKey();
+
+	void applyTerminalMask(int tam);
+
+	int getTerminalMask();
+
 	void setTypeStr(const string& tstr);
 
 	string& getTypeStr();
 
-	void setTDKey(int tk);
+	void setDescKey(int tdk);
 
-	unsigned int getTDKey();
+	unsigned int getDescKey();
+
+	void setTitleKey(int ttk);
+
+	unsigned int getTitleKey();
 
 	void setDifficultyLevel(unsigned int tdlv);
 
@@ -167,15 +204,16 @@ public:
 
 	string& getTitleStf();
 
-	void setToggleAvailability(unsigned int tta);
+	void setRefreshCount(unsigned int trc);
 
-	unsigned int getToggleAvailability();
+	unsigned int getRefreshCount();
 
 	void setTypeCrc(unsigned int ttc);
 
 	unsigned int getTypeCrc();
 
 protected:
+	string _param0_setDBKey__string_;
 	string _param0_setTypeStr__string_;
 	unicode _param0_setCreatorName__unicode_;
 	string _param0_setDescriptionStf__string_;

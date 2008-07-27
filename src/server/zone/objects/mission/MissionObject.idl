@@ -54,12 +54,24 @@ interface MissionObject implements SceneObject {
 	void init();
 	
 	void sendTo(Player player, boolean doClose = true);
+	void sendDeltaTo(Player player);
+	void doLinkToPlayer(Player player);
+	void sendDestroyTo(Player player);
+	
+	void setDBKey(string tdbk);
+	string getDBKey();
+	
+	void applyTerminalMask(int tam);
+	int getTerminalMask();
 	
 	void setTypeStr(const string tstr);
 	string getTypeStr();
 	
-	void setTDKey(int tk);
-	unsigned int getTDKey();
+	void setDescKey(int tdk);
+	unsigned int getDescKey();
+	
+	void setTitleKey(int ttk);
+	unsigned int getTitleKey();
 	
 	void setDifficultyLevel(unsigned int tdlv);
 	unsigned int getDifficultyLevel();
@@ -93,8 +105,8 @@ interface MissionObject implements SceneObject {
 	void setTitleStf(const string tts);
 	string getTitleStf();
 	
-	void setToggleAvailability(unsigned int tta);
-	unsigned int getToggleAvailability();
+	void setRefreshCount(unsigned int trc);
+	unsigned int getRefreshCount();
 	
 	void setTypeCrc(unsigned int ttc);
 	unsigned int getTypeCrc();

@@ -426,6 +426,9 @@ interface Player implements CreatureObject {
 	
 	boolean isChatMuted();
 	
+	// mission stuff
+	unsigned int nextMisoRFC();
+	
 	// Crafting
 	CraftingTool getCurrentCraftingTool();
 	CraftingTool getCraftingTool(const int type);

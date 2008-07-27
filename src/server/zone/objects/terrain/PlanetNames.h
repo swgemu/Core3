@@ -95,6 +95,56 @@ const static char* planetNames[] = {
 		"watertabletest"
 };
 
+const static int planetCrcs[] = {
+		0x63556843, //corellia
+		0x2748F9D7, //dantooine
+		0x63E75AED, //dathomir
+		0xA94ECA19, //endor
+		0x578E8F4F, //lok
+		0xAFD7B558, //naboo
+		0x51D50A39, //rori
+		0xB616FA38, //talus
+		0x57279121, //tatooine
+		0xC2A64B83, //yavin4
+		0x574A0227, //space_corellia
+		0xB19B288F, //space_corellia_2
+		0xFF14869B, //space_dantooine
+		0x57F83089, //space_dathomir
+		0xFF172887, //space_endor
+		0xF4CBEBED, //space_env
+		0x386BD461, //space_halos
+		0xB941C1ED, //space_heavy1
+		0x7EFAF029, //space_light1
+		0x5413BF2D, //space_lok
+		0xF98E57C6, //space_naboo
+		0x6745DC80, //space_naboo_2
+		0x6338FB45, //space_tatooine
+		0xD419829A, //space_tatooine_2
+		0xF9553336, //space_yavin4
+		
+		// Test/Unused
+		0x3941AB28, //09
+		0xC9919AFB, //10
+		0xCD50874C, //11
+		0xE065F039, //character_farm
+		0xB0E66F33, //cinco_city_test_m5
+		0x2C6A8285, //creature_test
+		0x171946CE, //dungeon1
+		0x859E7A53, //endor_asommers
+		0xE699FC49, //floratest
+		0x26358B6C, //godclient_test
+		0xD09ED2D6, //otoh_gunga
+		0x7F3A707F, //rivertest
+		0x5BF2EFDC, //runtimerules
+		0xCCE51202, //simple
+		0xCCDC4B8E, //space_09
+		0x5D65571B, //taanab
+		0x59E1A56, //test_wearables - WRONG
+		0xB9E17522, //tutorial
+		0x24E58F4, //umbra - WRONG
+		0x8337AF3D, //watertabletest
+};
+
 class Planet {
 public:
 	inline const static char* getPlanetName(int id) {
@@ -105,6 +155,16 @@ public:
 		for (int i = 0; i < 10; ++i) {
 			if (name == planetNames[i])
 				return i;
+		}
+		
+		return -1;
+	}
+	
+	const static int getPlanetCRC(const string& name) {
+		for (int i = 0; i < 10; ++i) {
+			if (name == planetNames[i]) {
+				return planetCrcs[i];
+			}
 		}
 		
 		return -1;

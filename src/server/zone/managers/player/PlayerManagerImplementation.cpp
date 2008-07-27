@@ -784,7 +784,7 @@ void PlayerManagerImplementation::moveItem(Player* sender, Player* receiver, Tan
 
 void PlayerManagerImplementation::doBankTip(Player* sender, Player* receiver, uint32 tipAmount, bool updateTipTo) {
 	//Pre: sender wlocked
-	uint32 tax = tipAmount * .05;
+	float tax = tipAmount * .05;
 	if (!sender->verifyBankCredits(tipAmount + tax)) {
 		sender->sendSystemMessage("You lack the required funds to do that. (Bank Tip.)");
 		return;

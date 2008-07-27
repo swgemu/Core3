@@ -210,6 +210,7 @@ which carries forward this exception.
 //mission:
 #include "packets/mission/MissionObjectMessage3.h"
 #include "packets/mission/MissionObjectMessage6.h"
+#include "packets/mission/MissionObjectDeltaMessage3.h"
 #include "packets/mission/PopulateMissionBrowserMessage.h"
 
 // trade

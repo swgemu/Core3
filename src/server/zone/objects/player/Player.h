@@ -443,6 +443,8 @@ public:
 
 	bool isChatMuted();
 
+	unsigned int nextMisoRFC();
+
 	CraftingTool* getCurrentCraftingTool();
 
 	CraftingTool* getCraftingTool(const int type);
@@ -955,6 +957,8 @@ public:
 	int getSlicingAbility();
 
 	bool isChatMuted();
+
+	unsigned int nextMisoRFC();
 
 	CraftingTool* getCurrentCraftingTool();
 

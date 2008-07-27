@@ -57,7 +57,7 @@ public:
         
         //?
         insertLong(0);
-        insertInt(0);
+        insertInt(0x01);
         insertByte(0);
         
 	}

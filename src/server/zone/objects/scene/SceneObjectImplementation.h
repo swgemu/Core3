@@ -295,6 +295,10 @@ public:
 		return objectType == ATTACKABLE;
 	}
 	
+	inline bool isMission() {
+		return objectType == MISSION;
+	}
+	
 	int compareTo(SceneObject* obj) {
 		uint64 id = obj->getObjectID();
 		

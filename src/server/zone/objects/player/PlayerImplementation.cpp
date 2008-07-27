@@ -218,6 +218,9 @@ void PlayerImplementation::init() {
 	//GM Flags
 	chatMuted = false;
 	
+	//Mission Vars
+	misoRFC = 0x01;
+	
 	//temp
 	factionRank = "Sexy Tester";
 	rebelPoints = 0; 

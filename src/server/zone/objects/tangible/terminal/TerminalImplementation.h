@@ -62,6 +62,7 @@ public:
 	static const int TRAVEL = 1;
 	static const int GUILD = 2;
 	static const int VENDOR = 3;
+	static const int MISSION = 4;
 	static const int BAZAAR = 50;
 	
 public:
@@ -94,6 +95,10 @@ public:
 	
 	inline bool isGuildTerminal() {
 		return terminalType == GUILD;
+	}
+	
+	inline bool isMissionTerminal() {
+		return terminalType == MISSION;
 	}
 	
 };
