@@ -345,17 +345,22 @@ void PlayerObjectImplementation::saveWaypoints(Player* player) {
 	try {
 		query.str( "" );
 		query << "DELETE FROM waypoints WHERE owner_id = '" << player->getCharacterID() <<"';";
-		ServerDatabase::instance()->executeStatement(query);	
+		ServerDatabase::instance()->executeStatement(query);
+		
+		string name;	
 	
 		for (int i = 0; i < waypointList.size() ; ++i) {
 			WaypointObject* wpl = waypointList.get(i);
+			
+			name = wpl->getName();
+			MySqlDatabase::escapeString(name);
 
 			query.str( "" );
 			query << "INSERT DELAYED INTO waypoints (`waypoint_id`,`owner_id`,`waypoint_name`,`x`,`y`,`planet_name`,`internal_note`,`active`)"
 			<< " VALUES ('" 
 			<< wpl->getObjectID() << "','" 
 			<< player->getCharacterID() << "','" 
-			<< wpl->getName() << "','" 
+			<< name << "','" 
 			<< wpl->getPositionX() << "','" 
 			<< wpl->getPositionY() << "','" 
 			<< wpl->getPlanetName() << "','"

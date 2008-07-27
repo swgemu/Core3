@@ -56,22 +56,11 @@ protected:
 	string effectName;
 	int mindCost;
 
-	int healthDamage;
-	int actionDamage;
-	int stimPower;
-
-	StimPack* stimPack;
-
 public:
 	HealDamageTargetSkill(const string& name, const char* aname, ZoneProcessServerImplementation* serv) : TargetSkill(name, aname, HEAL, serv) {
 		effectName = aname;
 		mindCost = 0;
 
-		healthDamage = 0;
-		actionDamage = 0;
-		stimPower = 0;
-
-		stimPack = NULL;
 	}
 
 	void doAnimations(CreatureObject* creature, CreatureObject* creatureTarget) {
@@ -86,6 +75,13 @@ public:
 
 	int doSkill(CreatureObject* creature, SceneObject* target, const string& modifier, bool doAnimation = true) {
 		CreatureObject* creatureTarget;
+		
+		int healthDamage = 0;
+		int actionDamage = 0;
+		int stimPower = 0;
+
+		StimPack* stimPack = NULL;
+	
 		if (target == creature) {
 			creatureTarget = creature;
 		} else {
@@ -102,21 +98,21 @@ public:
 			return 0;
 		}
 
-		findStimPack(creature, modifier);
+		stimPack = findStimPack(creature, modifier);
 
 		if (stimPack == NULL) {
 			creature->sendSystemMessage("healing_response", "healing_response_60"); //No valid medicine found.
 			return 0;
 		}
 
-		setStimPower(creature, creatureTarget);
+		stimPower = getStimPower(creature, creatureTarget, stimPack);
 
 		if (creature->getMind() < abs(mindCost)) {
 			creature->sendSystemMessage("healing_response", "not_enough_mind"); //You do not have enough mind to do that.
 			return false;
 		}
 
-		if (!calculateHeal(creature, creatureTarget)) {
+		if (!calculateHeal(creature, creatureTarget, healthDamage, actionDamage, stimPower)) {
 			if (creatureTarget == creature) {
 				creature->sendSystemMessage("healing_response", "healing_response_61"); //You have no damage to heal.
 			} else {
@@ -132,14 +128,14 @@ public:
 
 		creature->deactivateInjuryTreatment();
 
-		awardXp(creature);
+		awardXp(creature, stimPower);
 
 		doAnimations(creature, creatureTarget);
 
 		return 0;
 	}
 
-	bool calculateHeal(CreatureObject* creature, CreatureObject* creatureTarget) {
+	bool calculateHeal(CreatureObject* creature, CreatureObject* creatureTarget, int& healthDamage, int& actionDamage, int& stimPower) {
 		Player* player = (Player*) creature;
 		Player* playerTarget = (Player*) creatureTarget;
 
@@ -181,7 +177,9 @@ public:
 		return true;
 	}
 
-	void findStimPack(CreatureObject* creature, const string& modifier) {
+	StimPack* findStimPack(CreatureObject* creature, const string& modifier) {
+		StimPack* stimPack = NULL;
+		
 		if (!modifier.empty()) {
 
 			uint64 objectid = 0;
@@ -192,34 +190,34 @@ public:
 			if (objectid > 0) {
 				stimPack = (StimPack*) creature->getInventoryItem(objectid);
 				if (stimPack != NULL && stimPack->isStimPack())
-					return;
+					return stimPack;
 			}
 		}
 
-		setStimPack(NULL);
+		stimPack = NULL;
 		int playerMedUse = creature->getSkillMod("healing_ability");
 
 		Inventory* inventory = creature->getInventory();
-		StimPack* pack;
+
 
 		for (int i=0; i<inventory->objectsSize(); i++) {
 
 			TangibleObject* item = (TangibleObject*) inventory->getObject(i);
 
 			if (item != NULL && item->isPharmaceutical()) {
-				pack = (StimPack*) item;
+				stimPack = (StimPack*) item;
 
-				if (pack->isStimPack() && pack->getMedicineUseRequired() <= playerMedUse)
+				if (stimPack->isStimPack() && stimPack->getMedicineUseRequired() <= playerMedUse)
 					break;
 			}
 		}
 
-		setStimPack(pack);
+		return stimPack;
 	}
 
-	void setStimPower(CreatureObject* creature, CreatureObject* creatureTarget) {
+	int getStimPower(CreatureObject* creature, CreatureObject* creatureTarget, StimPack* stimPack) {
 		float modSkill = (float)creature->getSkillMod("healing_injury_treatment");
-		stimPower = (int)round((100.0f + modSkill) / 100.0f * stimPack->getEffectiveness());
+		int stimPower = (int)round((100.0f + modSkill) / 100.0f * stimPack->getEffectiveness());
 
 		//TODO: Add in BattleFatigue.
 		//Calculate Battle Fatigue
@@ -245,9 +243,11 @@ public:
 			if (creature != creatureTarget)
 				creatureTarget->sendSystemMessage(file, ((battleFatigue >= 1000) ? msg : msg + "_target"));
 		}
+		
+		return stimPower;
 	}
 
-	void awardXp(CreatureObject* creature) {
+	void awardXp(CreatureObject* creature, int stimPower) {
 		Player* player = (Player*) creature;
 
 		string type = "medical";
@@ -268,18 +268,6 @@ public:
 		return true;
 	}
 
-	void setHealthDamage(int i) {
-		healthDamage = 0;
-	}
-
-	void setActionDamage(int i) {
-		actionDamage = 0;
-	}
-
-	void setStimPower(int power) {
-		stimPower = power;
-	}
-
 	void setEffectName(const string& name) {
 		effectName = name;
 	}
@@ -288,9 +276,6 @@ public:
 		mindCost = cost;
 	}
 
-	void setStimPack(StimPack* pack) {
-		stimPack = pack;
-	}
 };
 
 #endif /*HEALDAMAGETARGETSKILL_H_*/

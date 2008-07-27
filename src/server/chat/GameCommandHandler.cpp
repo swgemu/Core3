@@ -319,7 +319,7 @@ void GameCommandHandler::warpPlayer(StringTokenizer tokenizer, Player * player) 
 			}
 		}
 
-		if (targetPlayer == player)
+		if (targetPlayer == player || targetPlayer == NULL)
 			return;
 
 		try {

@@ -128,7 +128,10 @@ public:
 		
 		try {
 			stringstream query;
-			query << "SELECT * from `characters` where lower(`firstname`) = '" << name << "';";
+			string mysqlName = name;
+			MySqlDatabase::escapeString(mysqlName);
+			
+			query << "SELECT * from `characters` where lower(`firstname`) = '" << mysqlName << "';";
 			ResultSet* friends = ServerDatabase::instance()->executeQuery(query);
 		
 			if (!friends->next()) {

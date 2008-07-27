@@ -52,24 +52,14 @@ which carries forward this exception.
 class HealEnhanceTargetSkill : public TargetSkill {
 protected:
 	string effectName;
-	int poolAffected;
-
-	int buffPower;
 
 	int mindCost;
-
-	EnhancePack* enhancePack;
 
 public:
 	HealEnhanceTargetSkill(const string& name, const char* aname, ZoneProcessServerImplementation* serv) : TargetSkill(name, aname, HEAL, serv) {
 		effectName = aname;
-		poolAffected = 0;
-
-		buffPower = 0;
 
 		mindCost = 0;
-
-		enhancePack = NULL;
 	}
 
 	void doAnimations(CreatureObject* creature, CreatureObject* creatureTarget) {
@@ -84,6 +74,9 @@ public:
 
 	int doSkill(CreatureObject* creature, SceneObject* target, const string& modifier, bool doAnimation = true) {
 		CreatureObject* creatureTarget;
+		EnhancePack* enhancePack = NULL;
+		int poolAffected = 0;
+		int buffPower = 0;
 
 		if (target == creature) {
 			creatureTarget = creature;
@@ -91,7 +84,7 @@ public:
 			creatureTarget = (CreatureObject*) target;
 		}
 
-		findEnhancePack(creature, modifier);
+		enhancePack = findEnhancePack(creature, modifier, poolAffected);
 
 		if (poolAffected == PharmaceuticalImplementation::UNKNOWN) {
 			creature->sendSystemMessage("healing_response", "healing_response_75"); //You must specify a valid attribute.
@@ -108,7 +101,7 @@ public:
 			return 0;
 		}
 
-		if (!calculateEnhance(creature, creatureTarget))
+		if (!calculateEnhance(creature, creatureTarget, enhancePack, poolAffected, buffPower))
 			return 0;
 
 		if (enhancePack != NULL)
@@ -116,14 +109,14 @@ public:
 
 		creature->deactivateWoundTreatment();
 
-		awardXp(creature);
+		awardXp(creature, buffPower);
 
 		doAnimations(creature, creatureTarget);
 
 		return 0;
 	}
 
-	bool calculateEnhance(CreatureObject* creature, CreatureObject* creatureTarget) {
+	bool calculateEnhance(CreatureObject* creature, CreatureObject* creatureTarget, EnhancePack* enhancePack, int poolAffected, int& buffPower) {
 		if (creature->getMedicalFacilityRating() <= 0) {
 			creature->sendSystemMessage("healing_response", "must_be_near_droid"); //You must be in a hospital, at a campsite, or near a surgical droid to do that.
 			return false;
@@ -134,7 +127,7 @@ public:
 			return false;
 		}
 
-		calculateBuffPower(creature, creatureTarget);
+		calculateBuffPower(creature, creatureTarget, enhancePack, buffPower);
 
 		if (buffPower <= 0)
 			return false;
@@ -161,7 +154,7 @@ public:
 			}
 		}
 
-		Buff* buff = getBuff(buffPower, enhancePack->getDuration());
+		Buff* buff = getBuff(buffPower, enhancePack->getDuration(), poolAffected);
 		BuffObject* bo = new BuffObject(buff);
 		creatureTarget->applyBuff(bo);
 
@@ -207,7 +200,7 @@ public:
 		return true;
 	}
 
-	bool calculateBuffPower(CreatureObject* creature, CreatureObject* creatureTarget) {
+	bool calculateBuffPower(CreatureObject* creature, CreatureObject* creatureTarget, EnhancePack* enhancePack, int& buffPower) {
 		float modEnvironment = creature->getMedicalFacilityRating();
 		float modSkill = creature->getSkillMod("healing_wound_treatment");
 		float modCityBonus = 1.0f; //TODO: If in Medical City, then 1.1f bonus
@@ -244,7 +237,7 @@ public:
 		return true;
 	}
 
-	void awardXp(CreatureObject* creature) {
+	void awardXp(CreatureObject* creature, int buffPower) {
 		Player* player = (Player*) creature;
 
 		string type = "medical";
@@ -281,9 +274,9 @@ public:
 		}
 	}
 
-	Buff* getBuff(int buffPower, float duration) {
+	Buff* getBuff(int buffPower, float duration, int poolAffected) {
 		Buff* buff;
-		switch (getPoolAffected()) {
+		switch (poolAffected) {
 		case PharmaceuticalImplementation::ACTION:
 			buff = new Buff(BuffCRC::MEDICAL_ENHANCE_ACTION, BuffType::MEDICAL, duration);
 			buff->setActionBuff(buffPower);
@@ -321,7 +314,9 @@ public:
 		return true;
 	}
 
-	void findEnhancePack(CreatureObject* creature, const string& modifier) {
+	EnhancePack* findEnhancePack(CreatureObject* creature, const string& modifier, int& poolAffected) {
+		EnhancePack* enhancePack = NULL;
+		
 		if (!modifier.empty()) {
 
 			uint64 objectid = 0;
@@ -334,38 +329,37 @@ public:
 				objectid = tokenizer.getLongToken();
 
 			if (!validatePool(pool))
-				return;
+				return enhancePack;
 			else
-				setPoolAffected(pool);
+				poolAffected = PharmaceuticalImplementation::getPoolFromName(pool);
 
 			if (objectid > 0) {
 				enhancePack = (EnhancePack*) creature->getInventoryItem(objectid);
 				if (enhancePack != NULL && enhancePack->isEnhancePack())
-					return;
+					return enhancePack;
 			}
 		}
 
-		setEnhancePack(NULL);
+		enhancePack = NULL;
 		int playerMedUse = creature->getSkillMod("healing_ability");
 
 		Inventory* inventory = creature->getInventory();
-		EnhancePack* pack;
 
 		for (int i=0; i<inventory->objectsSize(); i++) {
 
 			TangibleObject* item = (TangibleObject*) inventory->getObject(i);
 
 			if (item != NULL && item->isPharmaceutical()) {
-				pack = (EnhancePack*) item;
+				enhancePack = (EnhancePack*) item;
 
-				if (pack->isEnhancePack()
-						&& pack->getMedicineUseRequired() <= playerMedUse
-						&& pack->getPoolAffected() == poolAffected)
+				if (enhancePack->isEnhancePack()
+						&& enhancePack->getMedicineUseRequired() <= playerMedUse
+						&& enhancePack->getPoolAffected() == poolAffected)
 					break;
 			}
 		}
 
-		setEnhancePack(pack);
+		return enhancePack;
 	}
 
 	bool validatePool(const string& pool) {
@@ -376,18 +370,6 @@ public:
 		return true;
 	}
 
-	void setEnhancePack(EnhancePack* pack) {
-		enhancePack = pack;
-	}
-
-	EnhancePack* getEnhancePack() {
-		return enhancePack;
-	}
-
-	inline int getPoolAffected() {
-		return poolAffected;
-	}
-
 	inline void setMindCost(int value) {
 		mindCost = value;
 	}
@@ -396,13 +378,6 @@ public:
 		return mindCost;
 	}
 
-	void setPoolAffected(int pool) {
-		poolAffected = pool;
-	}
-
-	void setPoolAffected(const string& pool) {
-		poolAffected = PharmaceuticalImplementation::getPoolFromName(pool);
-	}
 };
 
 #endif /*HEALENHANCETARGETSKILL_H_*/
