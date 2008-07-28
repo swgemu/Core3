@@ -242,7 +242,7 @@ public:
 	MissionObject* _this;
 
 public:
-	MissionObjectServant(unsigned long long oid);
+	MissionObjectServant(unsigned long long oid, int type);
 	virtual ~MissionObjectServant();
 
 	void _setStub(DistributedObjectStub* stub);

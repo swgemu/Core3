@@ -1215,7 +1215,7 @@ TangibleObjectServant::TangibleObjectServant() : SceneObjectImplementation() {
 	_classHelper = TangibleObjectHelper::instance();
 }
 
-TangibleObjectServant::TangibleObjectServant(unsigned long long oid) : SceneObjectImplementation(oid) {
+TangibleObjectServant::TangibleObjectServant(unsigned long long oid, int type) : SceneObjectImplementation(oid, type) {
 	_classHelper = TangibleObjectHelper::instance();
 }
 

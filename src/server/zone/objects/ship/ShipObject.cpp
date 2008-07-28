@@ -836,7 +836,7 @@ DistributedObjectAdapter* ShipObjectHelper::createAdapter(DistributedObjectStub*
  *	ShipObjectServant
  */
 
-ShipObjectServant::ShipObjectServant(unsigned long long oid) : SceneObjectImplementation(oid) {
+ShipObjectServant::ShipObjectServant(unsigned long long oid, int type) : SceneObjectImplementation(oid, type) {
 	_classHelper = ShipObjectHelper::instance();
 }
 

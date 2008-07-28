@@ -398,7 +398,7 @@ DistributedObjectAdapter* AttackableObjectHelper::createAdapter(DistributedObjec
  *	AttackableObjectServant
  */
 
-AttackableObjectServant::AttackableObjectServant(unsigned long long oid) : SceneObjectImplementation(oid) {
+AttackableObjectServant::AttackableObjectServant(unsigned long long oid, int type) : SceneObjectImplementation(oid, type) {
 	_classHelper = AttackableObjectHelper::instance();
 }
 

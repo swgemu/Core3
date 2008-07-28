@@ -183,7 +183,7 @@ DistributedObjectAdapter* CellObjectHelper::createAdapter(DistributedObjectStub*
  *	CellObjectServant
  */
 
-CellObjectServant::CellObjectServant(unsigned long long oid) : SceneObjectImplementation(oid) {
+CellObjectServant::CellObjectServant(unsigned long long oid, int type) : SceneObjectImplementation(oid, type) {
 	_classHelper = CellObjectHelper::instance();
 }
 

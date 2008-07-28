@@ -50,7 +50,7 @@ import "../../Zone";
 
 interface AttackableObject implements SceneObject {
 	AttackableObject(unsigned long oid) {
-		super(oid);
+		super(oid, int type);
 	}
 
 	void insertToZone(Zone zone);

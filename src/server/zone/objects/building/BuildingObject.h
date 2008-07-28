@@ -127,7 +127,7 @@ public:
 	BuildingObject* _this;
 
 public:
-	BuildingObjectServant(unsigned long long oid);
+	BuildingObjectServant(unsigned long long oid, int type);
 	virtual ~BuildingObjectServant();
 
 	void _setStub(DistributedObjectStub* stub);

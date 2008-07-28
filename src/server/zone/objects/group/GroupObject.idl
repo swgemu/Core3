@@ -52,7 +52,7 @@ import "../../../chat/room/ChatRoom";
 
 interface GroupObject implements SceneObject {
 	GroupObject(unsigned long oid, Player leader) {
-		super(oid);
+		super(oid, int type);
 	}
 	
 	void sendTo(Player player);

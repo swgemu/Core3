@@ -51,7 +51,7 @@ include "engine/service/Message";
 
 interface StaticObject implements SceneObject {
 	StaticObject(unsigned long oid, int type) {
-		super(oid);
+		super(oid, int type);
 	}
 
 	void insertToZone(Zone zone);

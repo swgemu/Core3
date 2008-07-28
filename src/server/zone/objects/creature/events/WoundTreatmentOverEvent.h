@@ -59,6 +59,8 @@ public:
 		try {
 			creo->wlock();
 
+			creo->info("WoundTreatmentOverEvent called");
+
 			if (!creo->canTreatWounds())
 				creo->activateWoundTreatment();
 

@@ -105,7 +105,7 @@ public:
 	IntangibleObject* _this;
 
 public:
-	IntangibleObjectServant(unsigned long long oid);
+	IntangibleObjectServant(unsigned long long oid, int type);
 	virtual ~IntangibleObjectServant();
 
 	void _setStub(DistributedObjectStub* stub);

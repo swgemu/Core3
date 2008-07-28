@@ -160,7 +160,7 @@ DistributedObjectAdapter* StaticObjectHelper::createAdapter(DistributedObjectStu
  *	StaticObjectServant
  */
 
-StaticObjectServant::StaticObjectServant(unsigned long long oid) : SceneObjectImplementation(oid) {
+StaticObjectServant::StaticObjectServant(unsigned long long oid, int type) : SceneObjectImplementation(oid, type) {
 	_classHelper = StaticObjectHelper::instance();
 }
 

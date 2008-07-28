@@ -1,44 +1,44 @@
 /*
 Copyright (C) 2007 <SWGEmu>
- 
+
 This File is part of Core3.
- 
-This program is free software; you can redistribute 
-it and/or modify it under the terms of the GNU Lesser 
+
+This program is free software; you can redistribute
+it and/or modify it under the terms of the GNU Lesser
 General Public License as published by the Free Software
-Foundation; either version 2 of the License, 
+Foundation; either version 2 of the License,
 or (at your option) any later version.
- 
+
 This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of 
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 See the GNU Lesser General Public License for
 more details.
- 
-You should have received a copy of the GNU Lesser General 
+
+You should have received a copy of the GNU Lesser General
 Public License along with this program; if not, write to
 the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
- 
-Linking Engine3 statically or dynamically with other modules 
-is making a combined work based on Engine3. 
-Thus, the terms and conditions of the GNU Lesser General Public License 
+
+Linking Engine3 statically or dynamically with other modules
+is making a combined work based on Engine3.
+Thus, the terms and conditions of the GNU Lesser General Public License
 cover the whole combination.
- 
-In addition, as a special exception, the copyright holders of Engine3 
-give you permission to combine Engine3 program with free software 
-programs or libraries that are released under the GNU LGPL and with 
-code included in the standard release of Core3 under the GNU LGPL 
-license (or modified versions of such code, with unchanged license). 
-You may copy and distribute such a system following the terms of the 
-GNU LGPL for Engine3 and the licenses of the other code concerned, 
-provided that you include the source code of that other code when 
+
+In addition, as a special exception, the copyright holders of Engine3
+give you permission to combine Engine3 program with free software
+programs or libraries that are released under the GNU LGPL and with
+code included in the standard release of Core3 under the GNU LGPL
+license (or modified versions of such code, with unchanged license).
+You may copy and distribute such a system following the terms of the
+GNU LGPL for Engine3 and the licenses of the other code concerned,
+provided that you include the source code of that other code when
 and as the GNU LGPL requires distribution of source code.
- 
-Note that people who make modified versions of Engine3 are not obligated 
-to grant this special exception for their modified versions; 
-it is their choice whether to do so. The GNU Lesser General Public License 
-gives permission to release a modified version without this exception; 
-this exception also makes it possible to release a modified version 
+
+Note that people who make modified versions of Engine3 are not obligated
+to grant this special exception for their modified versions;
+it is their choice whether to do so. The GNU Lesser General Public License
+gives permission to release a modified version without this exception;
+this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
@@ -98,19 +98,19 @@ PlayerImplementation::PlayerImplementation() : PlayerServant(0) {
 
 	zoneID = 1;
 	//zoneID = 8;
-		
+
 	setHeight(1.0f);
 }
 
 PlayerImplementation::PlayerImplementation(uint64 cid) : PlayerServant(baseID = cid << 32) {
 	init();
-	
+
 	characterID = cid;
 }
 
 PlayerImplementation::~PlayerImplementation() {
 	clearBuffs(false);
-	
+
 	for (int i = 0; i < suiBoxes.size(); ++i) {
 		SuiBox* box =  suiBoxes.get(i);
 		box->finalize();
@@ -120,21 +120,21 @@ PlayerImplementation::~PlayerImplementation() {
 		playerObject->finalize();
 		playerObject = NULL;
 	}
-	
+
 	if (inventory != NULL) {
 		info("undeploying player inventory");
 
 		inventory->finalize();
 		inventory = NULL;
 	}
-	
+
 	if (datapad != NULL) {
 		info("undeploying player datapad");
 
 		datapad->finalize();
 		datapad = NULL;
 	}
-	
+
 	if (hairObj != NULL) {
 		hairObj->finalize();
 		hairObj = NULL;
@@ -142,102 +142,102 @@ PlayerImplementation::~PlayerImplementation() {
 
 	if (centerOfBeingEvent != NULL) {
 		server->removeEvent(centerOfBeingEvent);
-		
+
 		delete centerOfBeingEvent;
 		centerOfBeingEvent = NULL;
 	}
-	
+
 	if (recoveryEvent != NULL) {
 		if (recoveryEvent->isQueued())
 			server->removeEvent(recoveryEvent);
-			
+
 		delete recoveryEvent;
 		recoveryEvent = NULL;
 	}
-	
+
 	if (digestEvent != NULL) {
 		if (digestEvent->isQueued())
 			server->removeEvent(digestEvent);
-			
+
 		delete digestEvent;
 		digestEvent = NULL;
 	}
-	
+
 	server->getZoneServer()->increaseTotalDeletedPlayers();
-	
+
 	info("undeploying player");
 }
 
-void PlayerImplementation::init() {	
+void PlayerImplementation::init() {
 	objectType = PLAYER;
-	
+
 	owner = NULL;
 	zone = NULL;
-	
+
 	onlineStatus  = LOGGINGIN;
 
 	// objects
 	playerObject = NULL;
-	
+
 	disconnectEvent = NULL;
 	logoutEvent = NULL;
-	
+
 	recoveryEvent = new PlayerRecoveryEvent(this);
 	digestEvent = new PlayerDigestEvent(this);
-	
+
 	changeFactionEvent = NULL;
-	
+
 	datapad = NULL;
 
 	stfName = "species";
-	
+
 	// modifiers
 	weaponSpeedModifier = 1;
 
 	// constants
 	itemShift = 100;
-	
+
 	// pvp stuff
 	deathCount = 0;
 	pvpRating = 0;
 	duelList.setInsertPlan(SortedVector<Player*>::NO_DUPLICATE);
-	
+
 	// profession
 	skillPoints = 0;
 	skillBoxesToSave.setInsertPlan(SortedVector<SkillBox*>::NO_DUPLICATE);
 	certificationList.setInsertPlan(SortedVector<Certification*>::NO_DUPLICATE);
-	
+
 	// Draft Schematics
 	draftSchematicList.setInsertPlan(SortedVector<DraftSchematic*>::NO_DUPLICATE);
 	draftSchematicList.setNullValue(NULL);
 	draftSchematicUpdateCount = 0;
-	
+
 	//Crafting
 	currentCraftingTool = NULL;
-	
+
 	//GM Flags
 	chatMuted = false;
-	
+
 	//Mission Vars
 	misoRFC = 0x01;
-	
+
 	//temp
 	factionRank = "Sexy Tester";
-	rebelPoints = 0; 
+	rebelPoints = 0;
  	imperialPoints = 0;
- 	
+
  	regionId = 31; //Ancorhead I think lols.
 
  	conversatingCreature = NULL;
- 	
+
  	chatRooms.setInsertPlan(SortedVector<ChatRoom*>::NO_DUPLICATE);
- 	
+
  	centered = false;
  	centerOfBeingEvent = new CenterOfBeingEvent(this);
- 	
+
 	lastTestPositionX = 0.f;
 	lastTestPositionY = 0.f;
-	
+
 	tradeRequestedPlayer = 0;
 	moneyToTrade = 0;
 	acceptedTrade = false;
@@ -252,7 +252,7 @@ void PlayerImplementation::init() {
 	cancelSample = false;
 	surveyErrorMessage = false;
 	sampleErrorMessage = false;
-	
+
 	// Stat Migration
 	setTargetHealth(0);
 	setTargetStrength(0);
@@ -263,12 +263,12 @@ void PlayerImplementation::init() {
 	setTargetMind(0);
 	setTargetFocus(0);
 	setTargetWillpower(0);
-	
+
 	suiBoxes.setInsertPlan(SortedVector<SuiBox*>::NO_DUPLICATE);
 	suiBoxes.setNullValue(NULL);
-	
+
 	suiBoxNextID = 0;
-	
+
 	setLogging(false);
 	setGlobalLogging(true);
 }
@@ -294,22 +294,22 @@ void PlayerImplementation::refuseCreate(ZoneClient* client) {
 
 	BaseMessage* msg = new ClientCreateCharacterFailed("name_declined_in_use");
 	client->sendMessage(msg);
-		
+
 	client->disconnect();
 }
 
 void PlayerImplementation::load(ZoneClient* client) {
 	try {
 		wlock();
-	
+
 		setLoggingIn();
-		
+
 		owner = client;
 		client->setPlayer(_this);
 
 		stringstream logName;
 		logName << "Player = " << firstName << " (0x" << hex << objectID << dec << ")";
-	
+
 		setLockName(logName.str());
 		setLoggingName(logName.str());
 
@@ -318,15 +318,15 @@ void PlayerImplementation::load(ZoneClient* client) {
 		loadItems();
 
 		setLoggingIn();
-		
+
 		Zone* zone = server->getZoneServer()->getZone(zoneID);
 		insertToZone(zone);
-		
+
 		unlock();
-		
-		PlayerManager* upm = server->getZoneServer()->getPlayerManager();	
+
+		PlayerManager* upm = server->getZoneServer()->getPlayerManager();
 		upm->updateOtherFriendlists(_this, true);
-		
+
 	} catch (Exception& e) {
 		unlock();
 
@@ -344,30 +344,30 @@ void PlayerImplementation::reload(ZoneClient* client) {
 		if (isLoggingOut()) {
 			if (disconnectEvent != NULL) {
 				server->removeEvent(disconnectEvent);
-				
+
 				delete disconnectEvent;
 				disconnectEvent = NULL;
 			}
-			
+
 			info("reloading player");
 		} else if (logoutEvent != NULL) {
 			server->removeEvent(logoutEvent);
-				
+
 			delete logoutEvent;
 			logoutEvent = NULL;
 		} else if (isLoggingIn()) {
 			info("kicking player over network failure");
-			
+
 			unlock();
-			
+
 			owner->disconnect();
-			
+
 			wlock();
-			
+
 			info("loading player");
 		} else if (isOnline()) {
 			info("already loaded");
-			
+
 			unlock();
 
 			client->disconnect();
@@ -375,32 +375,32 @@ void PlayerImplementation::reload(ZoneClient* client) {
 		} else if (isOffline()) {
 			info("reloading player from Cache");
 		}
-	
+
 		owner = client;
 		client->setPlayer(_this);
 
 		setLoggingIn();
-	
+
 		Zone* zone = server->getZoneServer()->getZone(zoneID);
-		
+
 		if (isInQuadTree())
 			reinsertToZone(zone);
 		else
 			insertToZone(zone);
 
 		clearBuffs(true);
-		
+
 		PlayerManager* upm = server->getZoneServer()->getPlayerManager();
-		playerObject->updateAllFriends(playerObject);		
+		playerObject->updateAllFriends(playerObject);
 		upm->updateOtherFriendlists(_this, true);
 
-		
+
 		resetArmorEncumbrance();
-		
+
 		activateRecovery();
-		
+
 		unlock();
-		
+
 	} catch (Exception& e) {
 		error("reconnecting in character");
 		error(e.getMessage());
@@ -415,61 +415,61 @@ void PlayerImplementation::unload() {
 	info("unloading player");
 
 	tradeItems.removeAll();
-	
+
 	for (int i = 0; i < commandQueue.size(); ++i) {
 		CommandQueueAction* action = commandQueue.get(i);
 
 		delete action;
 	}
-	
+
 	commandQueue.removeAll();
-	
+
 	clearCombatState(); // remove the defenders
 	clearBuffs(false);
-	
+
 	saveWaypoints(_this);
-	
+
 	playerObject->saveFriends();
 	saveIgnorelist(_this);
 
 	//let our friends now we are out
-	//ZoneServer* uzs = zone->getZoneServer();	
+	//ZoneServer* uzs = zone->getZoneServer();
 	PlayerManager* upm = server->getZoneServer()->getPlayerManager();
-	//PlayerManager* upm = uzs->getPlayerManager();	
+	//PlayerManager* upm = uzs->getPlayerManager();
 	upm->updateOtherFriendlists(_this, false);
-		
+
 	//end FriendStatusChange
-		
+
 	if (firstSampleEvent != NULL) {
 		if (firstSampleEvent->isQueued())
 			server->removeEvent(firstSampleEvent);
-			
+
 		delete firstSampleEvent;
 		firstSampleEvent = NULL;
 	}
-	
+
 	if (sampleEvent != NULL) {
 		if (sampleEvent->isQueued())
 			server->removeEvent(sampleEvent);
-			
+
 		delete sampleEvent;
 		sampleEvent = NULL;
 	}
-	
+
 	if (entertainerEvent != NULL) {
 		if (entertainerEvent->isQueued())
 			server->removeEvent(entertainerEvent);
-			
+
 		delete entertainerEvent;
 		entertainerEvent = NULL;
 	}
-	
+
 	// remove from group
 	if (group != NULL && zone != NULL) {
 		GroupManager* groupManager = server->getGroupManager();
 		groupManager->leaveGroup(group, _this);
 	}
-	
+
 	// remove from chat rooms
 	while (!chatRooms.isEmpty()) {
 		ChatRoom* room = chatRooms.get(0);
@@ -480,52 +480,52 @@ void PlayerImplementation::unload() {
 	if (mount != NULL) {
 		MountCreature* mnt = mount;
 		mnt->wlock();
-		
+
 		mnt->store(false);
-		
+
 		mnt->unlock();
 	}
 
 	if (zone != NULL) {
 		ZoneServer* zserver = zone->getZoneServer();
-		
+
 		ItemManager* itemManager = zserver->getItemManager();
-		itemManager->unloadPlayerItems(_this);	
+		itemManager->unloadPlayerItems(_this);
 
 		PlayerManager* playerManager = zserver->getPlayerManager();
 		playerManager->unload(_this);
-		
+
 		if(isInQuadTree()) {
-	
+
 			clearDuelList();
-	
+
 			if (isDancing())
 				stopDancing();
 			else if (isPlayingMusic())
 				stopPlayingMusic();
-				
+
 			if (isWatching())
 				stopWatch(watchID);
-				
+
 			if (isListening())
 				stopListen(listenID);
-	
+
 			if (dizzyFallDownEvent != NULL && dizzyFallDownEvent->isQueued()) {
 				server->removeEvent(dizzyFallDownEvent);
-				
+
 				delete dizzyFallDownEvent;
 				dizzyFallDownEvent = NULL;
 			}
-		
+
 			if (changeFactionEvent != NULL) {
 				server->removeEvent(changeFactionEvent);
 				delete changeFactionEvent;
-				
+
 				changeFactionEvent = NULL;
 			}
-			
+
 			clearTarget();
-			
+
 			removeFromZone(true);
 			//zone = NULL;
 		}
@@ -534,11 +534,11 @@ void PlayerImplementation::unload() {
 
 void PlayerImplementation::logout(bool doLock) {
 	wlock(doLock);
-	
+
 	if (disconnectEvent == NULL) {
-		info("creating disconnect event");		
+		info("creating disconnect event");
 		disconnectEvent = new PlayerDisconnectEvent(_this);
-		
+
 		if (isLoggingOut()) {
 			server->addEvent(disconnectEvent, 10);
 		} else {
@@ -546,21 +546,21 @@ void PlayerImplementation::logout(bool doLock) {
 			setLoggingOut();
 		}
 	}
-	
+
 	unlock(doLock);
 }
 
 void PlayerImplementation::userLogout(int msgCounter) {
 	if (msgCounter < 0 || msgCounter > 3)
 		msgCounter = 3;
-		
+
 	if (!isSitting()) {
 		changePosture(CreatureObjectImplementation::SITTING_POSTURE);
 	}
-	
+
 	if (!isInCombat() && isSitting()) {
 		logoutEvent = new PlayerLogoutEvent(_this, msgCounter);
-		
+
 		switch (msgCounter) {
 		case 3:
 			sendSystemMessage("You can safely log out in 30 seconds...");
@@ -576,7 +576,7 @@ void PlayerImplementation::userLogout(int msgCounter) {
 			break;
 		case 0:  // Disconnect!!!
 			info("Safe Logout");
-			
+
 			ClientLogout* packet = new ClientLogout();
 			sendMessage(packet);
 			break;
@@ -585,10 +585,10 @@ void PlayerImplementation::userLogout(int msgCounter) {
 		if (logoutEvent != NULL){
 			server->removeEvent(logoutEvent);
 			delete logoutEvent;
-			
+
 			logoutEvent = NULL;
 		}
-		
+
 		if (isInCombat())
 			sendSystemMessage("Can not log out while in combat.");
 		else if (!isSitting())
@@ -599,36 +599,36 @@ void PlayerImplementation::userLogout(int msgCounter) {
 void PlayerImplementation::disconnect(bool closeClient, bool doLock) {
 	try {
 		wlock(doLock);
-		
+
 		// User is disconnecting in combat.  Will remain LD.
 		if (isInCombat() && !isLinkDead()) {
 			info("link dead");
-			
+
 			setLinkDead();
 		} else {
 			info("disconnecting player");
-			
+
 			unload();
-			
+
 			setOffline();
 		}
-		
+
 		if (disconnectEvent != NULL)
 			disconnectEvent = NULL;
-			
+
 		if (logoutEvent != NULL) {
 			server->removeEvent(logoutEvent);
 			delete logoutEvent;
-			
+
 			logoutEvent = NULL;
 		}
-	
+
 		if (closeClient && owner != NULL) {
 			owner->closeConnection();
 		}
-		
+
 		owner = NULL;
-			
+
 		unlock(doLock);
 	} catch (Exception& e) {
 		error("Exception on Player::disconnect()");
@@ -638,7 +638,7 @@ void PlayerImplementation::disconnect(bool closeClient, bool doLock) {
 		unlock(doLock);
 	} catch (...) {
 		error("unreported exception on Player::disconnect()");
-		
+
 		clearDisconnectEvent();
 		unlock(doLock);
 	}
@@ -646,13 +646,13 @@ void PlayerImplementation::disconnect(bool closeClient, bool doLock) {
 
 void PlayerImplementation::createItems() {
 	inventory = new Inventory(_this);
-		
+
 	datapad = new Datapad(_this);
 
 	ItemManager* itemManager = zone->getZoneServer()->getItemManager();
 	itemManager->loadDefaultPlayerItems(_this);
 	itemManager->loadDefaultPlayerDatapadItems(_this);
-	
+
 	if (!hairObject.empty()) {
 		hairObj = new HairObject(_this, String::hashCode(hairObject), unicode("hair"), "hair");
 		string hairAppearance;
@@ -663,7 +663,7 @@ void PlayerImplementation::createItems() {
 
 void PlayerImplementation::loadItems() {
 	inventory = new Inventory(_this);
-		
+
 	datapad = new Datapad(_this);
 
 	ItemManager* itemManager = zone->getZoneServer()->getItemManager();
@@ -682,18 +682,18 @@ void PlayerImplementation::updateHair() {
 		if (zone != NULL) {
 			//unequipItem(hairObj);
 			ZoneServer* zserver = zone->getZoneServer();
-			
+
 			ItemManager* itemManager = zserver->getItemManager();
 			removeInventoryItem(hairObj);
-			
+
 			BaseMessage* msg = new SceneObjectDestroyMessage(hairObj);
 			broadcastMessage(msg);
-			
+
 			hairObj->finalize();
-			hairObj = NULL;		
+			hairObj = NULL;
 		}
 	}
-	
+
 	if (!hairObject.empty()) {
 		hairObj = new HairObject(_this, String::hashCode(hairObject), unicode("hair"), "hair");
 		string hairAppearance;
@@ -707,9 +707,9 @@ void PlayerImplementation::updateHair() {
 
 void PlayerImplementation::createBaseStats() {
 	//TODO: bit hackish, find more clean solution
-	
+
 	int hamValues[9];
-	
+
 	if (startingProfession == "crafting_artisan")
 		memcpy(hamValues, professionHams[0], sizeof(hamValues));
 	else if (startingProfession == "combat_brawler")
@@ -730,10 +730,10 @@ void PlayerImplementation::createBaseStats() {
 	// Add the race mods
 	int hamMods[9];
 	memcpy(hamMods, raceHamMods[race % 10], sizeof(hamMods));
-		
+
 	for (int i = 0; i < 9; i++)
 		hamValues[i] += hamMods[i];
-	
+
 	baseHealth = hamValues[0];
 	baseStrength = hamValues[1];
 	baseConstitution = hamValues[2];
@@ -747,7 +747,7 @@ void PlayerImplementation::createBaseStats() {
 
 void PlayerImplementation::trainStartingProfession() {
 	trainSkillBox(startingProfession + "_novice");
-	
+
 	ProfessionManager* professionManager = server->getProfessionManager();
 	professionManager->loadDefaultSkills(this);
 }
@@ -756,12 +756,12 @@ void PlayerImplementation::decayInventory() {
 	if (inventory != NULL)
 		for (int i = 0; i < inventory->objectsSize(); i++) {
 			TangibleObject* item = ((TangibleObject*) inventory->getObject(i));
-			
+
 			if (item->isWeapon() && item->isEquipped())
 				((Weapon*)item)->decayWeapon(5);
 			else if (item->isArmor() && item->isEquipped())
 				((Armor*)item)->decayArmor(5);
-			
+
 			item->sendTo(_this);
 		}
 }
@@ -770,15 +770,15 @@ void PlayerImplementation::resetArmorEncumbrance() {
 	healthEncumbrance = 0;
 	actionEncumbrance = 0;
 	mindEncumbrance = 0;
-	
+
 	for (int i=0; i < inventory->objectsSize(); i++) {
 		TangibleObject* item = ((TangibleObject*) inventory->getObject(i));
-		
+
 		if (item->isEquipped() && item->isArmor()) {
 			item->setEquipped(false);
 			unsetArmorSkillMods((Armor*)item);
 			changeArmor(item->getObjectID(), true);
-		
+
 		}
 	}
 }
@@ -794,9 +794,9 @@ void PlayerImplementation::sendToOwner() {
 	sendItemsTo(_this);
 	sendPersonalContainers();
 	sendGuildList();
-	
+
 	CreatureObjectImplementation::close(owner);
-	
+
 	if (parent != NULL)
 		parent->sendTo(_this);
 }
@@ -813,34 +813,34 @@ void PlayerImplementation::sendTo(Player* player, bool doClose) {
 void PlayerImplementation::sendPersonalContainers() {
 	//datapad
 	datapad->sendTo(_this, false);
-		
+
 	for (int i = 0; i < datapad->objectsSize(); ++i) {
 		SceneObject* item = datapad->getObject(i);
 		item->sendTo(_this);
 	}
-	
+
 	datapad->close(_this);
 }
 
 void PlayerImplementation::insertToZone(Zone* zone) {
 	PlayerImplementation::zone = zone;
-	
+
 	if (owner == NULL)
 		return;
-	
+
 	try {
 		zone->lock();
 
 		info("inserting to zone");
-		
+
 		//spawning in air fix
 		if (parent == NULL)
 			 setPosition(positionX, zone->getHeight(positionX, positionY), positionY);
-		
+
 		zone->registerObject(_this);
 
 		owner->balancePacketCheckupTime();
-		
+
 		sendToOwner();
 
 		if (parent != NULL) {
@@ -851,7 +851,7 @@ void PlayerImplementation::insertToZone(Zone* zone) {
 			zone->insert(this);
 			zone->inRange(this, 128);
 		}
-		
+
 		owner->resetPacketCheckupTime();
 
 		zone->unlock();
@@ -865,22 +865,22 @@ void PlayerImplementation::insertToZone(Zone* zone) {
 void PlayerImplementation::insertToBuilding(BuildingObject* building, bool doLock) {
 	if (owner == NULL || isInQuadTree() || !parent->isCell())
 		return;
-	
+
 	try {
 		//building->lock(doLock);
 
 		info("inserting to building");
-		
+
 		((CellObject*)parent)->addChild(_this);
-		
+
 		building->insert(this);
 		building->inRange(this, 128);
-		
+
 		//building->unlock(doLock);
-		
+
 		linkType = 0xFFFFFFFF;
 		broadcastMessage(link(parent), 128, false);
-	
+
 	} catch (...) {
 		error("exception PlayerImplementation::insertToBuilding(BuildingObject* building)");
 
@@ -901,7 +901,7 @@ void PlayerImplementation::reinsertToZone(Zone* zone) {
     	for (int i = 0; i < inRangeObjectCount(); ++i) {
 			QuadTreeEntry* obj = getInRangeObject(i);
 
-			notifyInsert(obj);			
+			notifyInsert(obj);
 		}
 
 		owner->resetPacketCheckupTime();
@@ -912,23 +912,23 @@ void PlayerImplementation::reinsertToZone(Zone* zone) {
 
 		zone->unlock();
 	}
-	
+
 }
 
 void PlayerImplementation::updateZone(bool lightUpdate) {
 	if (zone == NULL || isIncapacitated() || isDead())
 		return;
-	
+
 	bool insert = false;
-	
+
 	if (isMounted())
 		updateMountPosition();
-	
+
 	try {
 		//info("updating player in Zone");
-		
+
 		zone->lock();
-		
+
 		if (parent != NULL && parent->isCell()) {
 			CellObject* cell = (CellObject*)parent;
 
@@ -942,14 +942,14 @@ void PlayerImplementation::updateZone(bool lightUpdate) {
 			zone->insert(this);
 		else
 			zone->update(this);
-		
+
 		zone->inRange(this, 128);
-		
+
 		if (!isMounted())
 			updatePlayerPosition(lightUpdate);
 
 		zone->unlock();
-		
+
 		//info("finished player update in Zone");
 	} catch (...) {
 		error("exception Player::updateZone()");
@@ -964,9 +964,9 @@ void PlayerImplementation::updateZoneWithParent(uint64 Parent, bool lightUpdate)
 
 	if (zone == NULL)
 		return;
-	
+
 	SceneObject* newParent = parent;
-	
+
 	if (parent == NULL || (parent != NULL && parent->getObjectID() != Parent))
 		newParent = zone->lookupObject(Parent);
 
@@ -995,7 +995,7 @@ void PlayerImplementation::updateZoneWithParent(uint64 Parent, bool lightUpdate)
 						insert = true;
 					}
 				}
-	
+
 				((CellObject*) parent)->removeChild(_this);
 			}
 			parent = newParent;
@@ -1012,7 +1012,7 @@ void PlayerImplementation::updateZoneWithParent(uint64 Parent, bool lightUpdate)
 		}
 
 		updatePlayerPosition(lightUpdate);
-		
+
 		zone->unlock();
 	} catch (...) {
 		zone->unlock();
@@ -1023,10 +1023,10 @@ void PlayerImplementation::updateZoneWithParent(uint64 Parent, bool lightUpdate)
 void PlayerImplementation::updatePlayerPosition(bool doLightUpdate) {
 	for (int i = 0; i < inRangeObjectCount(); ++i) {
 		SceneObject* obj = (SceneObject*) (((SceneObjectImplementation*) getInRangeObject(i))->_getStub());
-		
+
 		if (obj != _this && obj->isPlayer()) {
 			Player* player = (Player*) obj;
-			
+
 			if (doLightUpdate) {
 				if (parent != NULL && parent->isCell()) {
 					LightUpdateTransformWithParentMessage* umsg = new LightUpdateTransformWithParentMessage(_this);
@@ -1051,15 +1051,15 @@ void PlayerImplementation::updatePlayerPosition(bool doLightUpdate) {
 void PlayerImplementation::updateMountPosition() {
 	if (parent == NULL || parent != mount)
 		return;
-	
+
 	try {
 		mount->wlock();
-		
+
 		mount->setDirection(directionX, directionZ, directionY, directionW);
 		mount->setPosition(positionX, positionZ, positionY);
-		
+
 		mount->updateZone();
-		
+
 		mount->unlock();
 	} catch (...) {
 		cout << "Unreported exception in PlayerImplementation::updateMount()\n";
@@ -1075,7 +1075,7 @@ void PlayerImplementation::removeFromZone(bool doLock) {
 		zone->lock(doLock);
 
 		info("removing from zone");
-		
+
 		if (parent != NULL && parent->isCell()) {
 			CellObject* cell = (CellObject*) parent;
 			BuildingObject* building = (BuildingObject*)parent->getParent();
@@ -1083,7 +1083,7 @@ void PlayerImplementation::removeFromZone(bool doLock) {
 			removeFromBuilding(building);
 		} else
 			zone->remove(this);
-		
+
 		for (int i = 0; i < inRangeObjectCount(); ++i) {
 			QuadTreeEntry* obj = getInRangeObject(i);
 
@@ -1092,9 +1092,9 @@ void PlayerImplementation::removeFromZone(bool doLock) {
 		}
 
 		removeInRangeObjects();
-		
+
 		zone->deleteObject(objectID);
-		
+
 		zone->unlock(doLock);
 	} catch (...) {
 		error("exception Player::removeFromZone(bool doLock)");
@@ -1111,13 +1111,13 @@ void PlayerImplementation::removeFromBuilding(BuildingObject* building, bool doL
 		//building->lock(doLock);
 
 		info("removing from building");
-		
+
 		broadcastMessage(link(0, 0xFFFFFFFF), 128, false);
-		
+
 		((CellObject*)parent)->removeChild(_this);
 
 		building->remove(this);
-		
+
 		//building->unlock(doLock);
 	} catch (...) {
 		error("exception PlayerImplementation::removeFromBuilding(BuildingObject* building, bool doLock)");
@@ -1128,7 +1128,7 @@ void PlayerImplementation::removeFromBuilding(BuildingObject* building, bool doL
 
 void PlayerImplementation::notifyInsert(QuadTreeEntry* obj) {
 	SceneObject* scno = (SceneObject*) (((SceneObjectImplementation*) obj)->_getStub());
-	
+
 	Player* player;
 	Creature* creature;
 	TangibleObject* tangible;
@@ -1136,29 +1136,29 @@ void PlayerImplementation::notifyInsert(QuadTreeEntry* obj) {
 	BuildingObject* buio;
 
 	AttackableObject* attacko;
-	
+
 	if (parent == scno)
 		return;
-	
+
 	SceneObject* scnoParent = scno->getParent();
-	
+
 	if (scnoParent != NULL && scnoParent->isNonPlayerCreature())
 		return;
-	
+
 	switch (scno->getObjectType()) {
 	case SceneObjectImplementation::PLAYER:
 		if (objectID == obj->getObjectID())
 			break;
-		
+
 		player = (Player*) scno;
-				
+
 		player->sendTo(_this);
 		player->sendItemsTo(_this);
 
 		break;
 	case SceneObjectImplementation::NONPLAYERCREATURE:
 		creature = (Creature*) scno;
-		
+
 		creature->sendTo(_this);
 		creature->sendItemsTo(_this);
 
@@ -1167,17 +1167,17 @@ void PlayerImplementation::notifyInsert(QuadTreeEntry* obj) {
 		tangible = (TangibleObject*) scno;
 		tangible->sendTo(_this);
 		break;
-	
+
 	case SceneObjectImplementation::STATIC:
 		statico = (StaticObject*) scno;
 		statico->sendTo(_this);
 		break;
-		
+
 	case SceneObjectImplementation::BUILDING:
 		buio = (BuildingObject*) scno;
 		buio->sendTo(_this);
 		break;
-		
+
 	case SceneObjectImplementation::ATTACKABLE:
 		attacko = (AttackableObject*) scno;
 		attacko->sendTo(_this);
@@ -1187,13 +1187,13 @@ void PlayerImplementation::notifyInsert(QuadTreeEntry* obj) {
 
 void PlayerImplementation::notifyDissapear(QuadTreeEntry* obj) {
 	SceneObject* scno = (SceneObject*) (((SceneObjectImplementation*) obj)->_getStub());
-	
+
 	Player* player;
 	Creature* creature;
-	
+
 	TangibleObject* tano;
 	BuildingObject* buio;
-	
+
 	switch (scno->getObjectType()) {
 	case SceneObjectImplementation::PLAYER:
 		player = (Player*) scno;
@@ -1203,18 +1203,18 @@ void PlayerImplementation::notifyDissapear(QuadTreeEntry* obj) {
 	case SceneObjectImplementation::NONPLAYERCREATURE:
 		creature = (Creature*) scno;
 		creature->sendDestroyTo(_this);
-		
+
 		break;
-		
+
 	case SceneObjectImplementation::BUILDING:
 		buio = (BuildingObject*) scno;
 		buio->sendDestroyTo(_this);
 		break;
-		
+
 	case SceneObjectImplementation::TANGIBLE:
 		tano = (TangibleObject*) scno;
 		tano->sendDestroyTo(_this);
-		
+
 		break;
 	}
 }
@@ -1222,7 +1222,7 @@ void PlayerImplementation::notifyDissapear(QuadTreeEntry* obj) {
 void PlayerImplementation::switchMap(int planetid) {
 	if (zone == NULL)
 		return;
-	
+
 	if (mount != NULL) {
 		MountCreature* mnt = mount;
 		mnt->wlock();
@@ -1231,48 +1231,48 @@ void PlayerImplementation::switchMap(int planetid) {
 
 		mnt->unlock();
 	}
-	
+
 	removeFromZone();
-	
+
 	parent = NULL;
-	
+
 	setIgnoreMovementTests(5);
-	
+
 	zoneID = planetid;
 	ZoneServer* server = zone->getZoneServer();
 	Zone* zone = server->getZone(zoneID);
 
 	terrainName = Terrain::getTerrainName(zoneID);
-	
+
 	insertToZone(zone);
-}	
+}
 
 void PlayerImplementation::doWarp(float x, float y, float z, float randomizeDistance, uint64 parentID) {
 	if (zone == NULL)
 		return;
-		
+
 	removeFromZone();
 
 	parent = NULL;
-	
+
 	positionX = x;
 	positionY = y;
 	positionZ = zone->getHeight(x, y);
-		
+
 	if (parentID != 0) {
 		SceneObject* newParent = zone->lookupObject(parentID);
-		
+
 		if (newParent != NULL && newParent->isCell())
 			parent = newParent;
 	}
-		
+
 	setIgnoreMovementTests(10);
-	
+
 	if (randomizeDistance != 0)
 		randomizePosition(randomizeDistance);
 
 	insertToZone(zone);
-}	
+}
 
 void PlayerImplementation::bounceBack() {
 	if (parent != NULL && parent->isCell()) {
@@ -1286,27 +1286,27 @@ void PlayerImplementation::bounceBack() {
 
 void PlayerImplementation::notifySceneReady() {
 	PlayerObject* playerObject = getPlayerObject();
-	
+
 	if (onlineStatus  == LOGGINGIN) {
 		unicode msg = unicode("Welcome to the Official Core3 Test Center!");
 		sendSystemMessage(msg);
 		unicode msg2 = unicode("please help us sorting some problems out by being as active as you can. we need to stress the server for these bugs to arise. thank you");
 		sendSystemMessage(msg2);
-		
+
 		unicode msg3 = unicode("This server is owned, operated, and developed by Team SWGEmu at SWGEmu.com and is in no way affiliated with any other server communities.");
 		sendSystemMessage(msg3);
 
-		playerObject->loadFriends();	
+		playerObject->loadFriends();
 	} else {
 		//we need to reset the "magicnumber" for the internal friendlist due to clientbehaviour (Diff. Zoningservers SoE)
 		playerObject->friendsMagicNumberReset();
 	}
-		
+
 	ChatManager* chatManager = server->getChatManager();
 	chatManager->listMail(_this);
-	
+
 	setAdminLevel(adminLevel);
-	
+
 	info("scene ready");
 	setOnline();
 }
@@ -1326,7 +1326,7 @@ void PlayerImplementation::sendSystemMessage(unicode& message) {
 	sendMessage(smsg);
 }
 
-void PlayerImplementation::queueFlourish(const string& modifier, uint64 target, uint32 actionCntr) {	
+void PlayerImplementation::queueFlourish(const string& modifier, uint64 target, uint32 actionCntr) {
 	//TODO: Refactor this part later somehow?
 	if (!isPlayer())
 		return;
@@ -1334,12 +1334,12 @@ void PlayerImplementation::queueFlourish(const string& modifier, uint64 target, 
 	//PlayerImplementation* player = (PlayerImplementation*) this;
 
 	string skillBox = "social_entertainer_novice";
-	
+
 	if (!getSkillBoxesSize() || !hasSkillBox(skillBox)) {
 		// TODO: sendSystemMessage("cmd_err", "ability_prose", creature);
 		sendSystemMessage("You do not have sufficient abilities to Flourish");
 		return;
-	}		
+	}
 
 	int fid = atoi(modifier.c_str());
 
@@ -1347,32 +1347,32 @@ void PlayerImplementation::queueFlourish(const string& modifier, uint64 target, 
     	sendSystemMessage("performance", "flourish_format");
     	return;
     }
-    	    
+
     if (fid < 1 || fid > 8) {
     	sendSystemMessage("performance", "flourish_not_valid");
     	sendSystemMessage("performance", "flourish_format");
     	return;
     }
-    
+
     uint32 actionCRC = String::hashCode("flourish+" + modifier); // get the CRC for flourish+1, etc
-    
-    PlayerObject* po = getPlayerObject();    
+
+    PlayerObject* po = getPlayerObject();
     queueAction(po->getPlayer(), target, actionCRC, actionCntr, modifier);
 }
 
 
 void PlayerImplementation::queueAction(Player* player, uint64 target, uint32 actionCRC, uint32 actionCntr, const string& amod) {
 	/*stringstream ident;
-	ident << "0x" << hex << actionCRC << " (" << actionCntr << ")"; 
-	
+	ident << "0x" << hex << actionCRC << " (" << actionCntr << ")";
+
 	sendSystemMessage("queing action " + ident.str());*/
-	
+
 	// Try to queue some music skills
 	Skill* skill = creatureSkills.get(actionCRC);
-	
-	if ((isDancing() || isPlayingMusic()) 
+
+	if ((isDancing() || isPlayingMusic())
 		&& (skill != NULL) && !(skill->isEntertainSkill() || skill->isDanceSkill() || skill->isMusicSkill())) {
-		
+
 		player->sendSystemMessage("You cant use skills while dancing/playing music!");
 		clearQueueAction(actionCntr);
 	} else if (commandQueue.size() < 15) {
@@ -1398,12 +1398,12 @@ bool PlayerImplementation::doAction(CommandQueueAction* action) {
 		action->clearError(2);
 		return false;
 	}
-	
+
 	updateTarget(action->getTargetID());
 
 	action->setTarget((Player*) targetObject.get());
 	action->setSkill(skill);
-	
+
 	if (!action->check())
 		return false;
 
@@ -1418,7 +1418,7 @@ bool PlayerImplementation::doAction(CommandQueueAction* action) {
 		nextAction.update();
 
 		activateQueueAction(action);
-		
+
 	}
 
 	return true;
@@ -1432,24 +1432,24 @@ void PlayerImplementation::activateQueueAction(CommandQueueAction* action) {
 	if (nextAction.isFuture()) {
 		Event* e = new CommandQueueActionEvent(_this);
 		server->addEvent(e, nextAction);
-		
+
 		return;
 	}
 
 	if (action == NULL) {
 		if (commandQueue.size() == 0)
 			return;
-			
+
 		action = commandQueue.remove(0);
 	}
-	
+
 	stringstream msg;
-	msg << "activating action " << action->getSkill()->getSkillName() << " " << hex << "0x" << action->getActionCRC() << " (" 
+	msg << "activating action " << action->getSkill()->getSkillName() << " " << hex << "0x" << action->getActionCRC() << " ("
 		<< action->getActionCounter() << ")";
 	info(msg);
-		
+
 	//sendSystemMessage(msg.str());
-	
+
 	CombatManager* combatManager = server->getCombatManager();
 
 	if (!isIncapacitated() && !isDead()) {
@@ -1457,7 +1457,7 @@ void PlayerImplementation::activateQueueAction(CommandQueueAction* action) {
 			float time = combatManager->handleAction(action);
 			action->clear(time);
 			uint64 ctime = nextAction.getMiliTime();
-			
+
 			nextAction.update();
 			nextAction.addMiliTime((uint32) (time * 1000));
 		} else {
@@ -1470,7 +1470,7 @@ void PlayerImplementation::activateQueueAction(CommandQueueAction* action) {
 	delete action;
 
 	activateRecovery();
-	
+
 	if (commandQueue.size() != 0) {
 		Event* e = new CommandQueueActionEvent(_this);
 
@@ -1478,7 +1478,7 @@ void PlayerImplementation::activateQueueAction(CommandQueueAction* action) {
 			nextAction.update();
 			nextAction.addMiliTime(100);
 		}
-		
+
 		server->addEvent(e, nextAction);
 	}
 }
@@ -1502,7 +1502,7 @@ void PlayerImplementation::deleteQueueAction(uint32 actioncntr) {
 
 void PlayerImplementation::doIncapacitate() {
 	clearCombatState();
-	
+
 	if (isMounted())
 		dismount(true, true);
 
@@ -1514,13 +1514,13 @@ void PlayerImplementation::doIncapacitate() {
 		firstIncapacitationTime.update();
 		firstIncapacitationTime.addMiliTime(900000);
 	}
-	
+
 	if (++deathCount < 3) {
 		// send incapacitation timer
 		CreatureObjectDeltaMessage3* incap = new CreatureObjectDeltaMessage3(_this);
 		incap->updateIncapacitationRecoveryTime(8);
 		incap->close();
-	
+
 		sendMessage(incap);
 
 		clearStates();
@@ -1546,39 +1546,39 @@ void PlayerImplementation::changePosture(int post) {
 			clearQueueAction(actionCounter);
 			return;
 		}
-		
+
 		sendSystemMessage("Logout canceled.");
 		server->removeEvent(logoutEvent);
 		delete logoutEvent;
-		
+
 		logoutEvent = NULL;
 	}
 
 	if (!getCanSample() && !getCancelSample()) {
 		sendSystemMessage("You stop taking resource samples.");
-		
+
 		if (firstSampleEvent != NULL && firstSampleEvent->isQueued()) {
 			server->removeEvent(firstSampleEvent);
-			
+
 			delete firstSampleEvent;
 			firstSampleEvent = NULL;
 		}
-		
+
 		if (sampleEvent != NULL) {
 			uint64 time = -(sampleEvent->getTimeStamp().miliDifference());
 			if (sampleEvent->isQueued())
 				server->removeEvent(sampleEvent);
-				
-			delete sampleEvent;			
+
+			delete sampleEvent;
 			sampleEvent = NULL;
-		
+
 			string str = "";
 			sampleEvent = new SampleEvent(_this, str, true);
 			server->addEvent(sampleEvent, time);
 			setCancelSample(true);
 		}
 	}
-	
+
 	if (isMounted())
 		return;
 
@@ -1591,12 +1591,12 @@ void PlayerImplementation::changePosture(int post) {
 		updateMood(Races::getMood(moodid));
 		meditating = false;
 	}
-	
+
 	if (isInCombat() && post == SITTING_POSTURE) {
 		clearQueueAction(actionCounter);
 		return;
 	}
-	
+
 	if (isDizzied() && post == CreatureObjectImplementation::UPRIGHT_POSTURE) {
 		if ((getSkillMod("combat_equillibrium") >> 1) > System::random(100)) {
 			if (!dizzyFallDownEvent->isQueued())
@@ -1608,7 +1608,7 @@ void PlayerImplementation::changePosture(int post) {
 		}
 	} else
 		setPosture(post);
-	
+
 	clearQueueAction(actionCounter);
 }
 
@@ -1620,7 +1620,7 @@ void PlayerImplementation::activateRecovery() {
 void PlayerImplementation::rescheduleRecovery(int time) {
 	if (recoveryEvent->isQueued())
 		server->removeEvent(recoveryEvent);
-	
+
 	server->addEvent(recoveryEvent, time);
 }
 
@@ -1628,30 +1628,30 @@ void PlayerImplementation::doRecovery() {
 	if (isLinkDead()) {
 		if (logoutTimeStamp.isPast()) {
 			info("unloading dead linked player");
-			
+
 			unload();
-		
+
 			setOffline();
-			
+
 			return;
 		} else {
 			info("keeping dead linked player in game");
-			
+
 			activateRecovery();
 		}
 	}
-	
+
 	if (isIncapacitated()) {
 		speed = 5.376;
-		
+
 		setPosture(UPRIGHT_POSTURE);
-	} else if (isDead()) { 		
+	} else if (isDead()) {
 		doClone();
-		
+
 		return;
 	}
 
-	if (!isInCombat() && isOnFullHealth() && ((isJedi() && playerObject->isOnFullForce()) || !isJedi()) && !hasStates() && !hasWounds() && !hasShockWounds()) {
+	if (!isInCombat() && isOnFullHealth() && ((playerObject != NULL && isJedi() && playerObject->isOnFullForce()) || !isJedi()) && !hasStates() && !hasWounds() && !hasShockWounds()) {
 		return;
 	} else if (lastCombatAction.miliDifference() > 15000) {
 		clearCombatState();
@@ -1668,7 +1668,7 @@ void PlayerImplementation::doRecovery() {
 
 	if (isJedi())
 		calculateForceRegen();
-	
+
 	activateRecovery();
 }
 
@@ -1681,28 +1681,28 @@ void PlayerImplementation::doStateRecovery() {
 
 	if (isStunned() && stunRecoveryTime.isPast())
 		clearState(STUNNED_STATE);
-			
+
 	if (isIntimidated() && intimidateRecoveryTime.isPast())
 		clearState(INTIMIDATED_STATE);
-			
+
 	if (isPoisoned()) {
 		if (poisonRecoveryTime.isPast())
 			clearState(POISONED_STATE);
 		else doPoisonTick();
 	}
-	
+
 	if (isDiseased()) {
 		if (diseasedRecoveryTime.isPast())
-			clearState(DISEASED_STATE);			
+			clearState(DISEASED_STATE);
 		else doDiseaseTick();
 	}
-	
+
 	if (isOnFire()) {
 		if (fireRecoveryTime.isPast())
-			clearState(ONFIRE_STATE);			
+			clearState(ONFIRE_STATE);
 		else doFireTick();
 	}
-	
+
 	if (isBleeding()) {
 		if (bleedingRecoveryTime.isPast())
 			clearState(BLEEDING_STATE);
@@ -1718,18 +1718,18 @@ void PlayerImplementation::activateDigest() {
 }
 
 void PlayerImplementation::doDigest() {
-	if(playerObject == NULL) 
+	if(playerObject == NULL)
 		return;
-	
+
 	if (!playerObject->isDigesting())
 		return;
-	
+
 	if(playerObject->getFoodFilling() > 0)
 		playerObject->changeFoodFilling(-1, true);
-	
+
 	if(playerObject->getDrinkFilling() > 0)
-		playerObject->changeDrinkFilling(-1, true);	
-	
+		playerObject->changeDrinkFilling(-1, true);
+
 	activateDigest();
 }
 
@@ -1742,63 +1742,63 @@ void PlayerImplementation::doClone() {
 			doWarp(-326.0f, -4640.0f, 0, true);				// shuttle 1
 		else
 			doWarp(-28.0f, -4438.0f);						// shuttle 2
-		
+
 		break;
 	case 1:	// Dantooine
 		if (faction == String::hashCode("rebel"))			// Mining Outpost
-			doWarp(4.3f, 0.1, 3.8f, 0, 1365997);				
-		else 
- 			doWarp(4.3f, 0.1, 3.8f, 0, 1365997);				
-			
+			doWarp(4.3f, 0.1, 3.8f, 0, 1365997);
+		else
+ 			doWarp(4.3f, 0.1, 3.8f, 0, 1365997);
+
  		break;
 	case 2: // Dathomir
 		if (faction == String::hashCode("rebel"))			// science outpost
 			doWarp(-76.0f, -1627.0f, 0, true);
 		else
 			doWarp(618.0f, 3054.0f);						// trade outpost
-		
+
 		break;
 	case 3: // Endor
 		if (faction == String::hashCode("rebel"))
 			doWarp(3.9f, 0.1f, 3.7f, 0, 6705359);
-		else 
+		else
  			doWarp(3.9f, 0.1f, 3.6f, 0, 6705359);
-			
+
  		break;
 	case 4: // Lok
 		if (faction == String::hashCode("rebel"))			// Nyms Stronghold
-			doWarp(0.3f, 0.3f, 1.2f, 0, 2745624);				
-		else 
- 			doWarp(0.3f, 0.3f, 1.2f, 0, 2745624);				
-			
- 		break;	
+			doWarp(0.3f, 0.3f, 1.2f, 0, 2745624);
+		else
+ 			doWarp(0.3f, 0.3f, 1.2f, 0, 2745624);
+
+ 		break;
 	case 5: // Naboo
 		if (faction == String::hashCode("rebel"))			// Theed
-			doWarp(1.7f, -4.8f, 0.1f, 0, 1697354);				
-		else 
+			doWarp(1.7f, -4.8f, 0.1f, 0, 1697354);
+		else
  			doWarp(1.7f, -4.8f, 0.1f, 0, 1697354);
-			
+
  		break;
 	case 6: // Rori
 		if (faction == String::hashCode("rebel"))			// Restuss
-			doWarp(1.7f, -4.8f, 0.7f, 0, 4695371);				
-		else 
- 			doWarp(1.7f, -4.8f, 0.7f, 0, 4695371);				
-			
+			doWarp(1.7f, -4.8f, 0.7f, 0, 4695371);
+		else
+ 			doWarp(1.7f, -4.8f, 0.7f, 0, 4695371);
+
  		break;
 	case 7: // Talus
 		if (faction == String::hashCode("rebel"))			//  Daeric
-			doWarp(1.8f, -4.8f, 0.6f, 0, 3175408);				
-		else 
- 			doWarp(1.8f, -4.8f, 0.6f, 0, 3175408);				
-			
+			doWarp(1.8f, -4.8f, 0.6f, 0, 3175408);
+		else
+ 			doWarp(1.8f, -4.8f, 0.6f, 0, 3175408);
+
  		break;
 	case 9: // Yavin4
 		if (faction == String::hashCode("rebel"))			//  Labor Camp
-			doWarp(4.3f, 0.1f, -3.7f, 0, 3035395);				
-		else 
- 			doWarp(4.3f, 0.1f, -3.7f, 0, 3035395);				
-			
+			doWarp(4.3f, 0.1f, -3.7f, 0, 3035395);
+		else
+ 			doWarp(4.3f, 0.1f, -3.7f, 0, 3035395);
+
  		break;
 	default:
 		if (faction == String::hashCode("rebel"))
@@ -1808,28 +1808,28 @@ void PlayerImplementation::doClone() {
 			doWarp(-2.8f, 0.1f, -4.8f, 0, 3565798);
 		else
 			doWarp(0.5f, 1.5f, 0.3f, 0, 1590892); // ah cloning facility
-		
+
 		break;
 	}
-	
+
 	clearStates();
 	clearBuffs(true);
-	
+
 	//food persists cloning
 	//setFoodFilling(0, true);
 	//setDrinkFilling(0, true);
-	
+
 	decayInventory();
 
 	changeForcePowerBar(0);
-	
+
 	resetArmorEncumbrance();
-	
+
 	setNeutral();
 	setCovert();
 
-	clearDuelList();		
-	
+	clearDuelList();
+
 	setPosture(UPRIGHT_POSTURE);
 
 	rescheduleRecovery();
@@ -1840,10 +1840,10 @@ void PlayerImplementation::doCenterOfBeing() {
 		sendSystemMessage("combat_effects", "already_centered");
 		return;
 	}
-	
+
 	int duration = 0;
 	int efficacy = 0;
-	
+
 	if (weaponObject == NULL) {
 		duration = getSkillMod("center_of_being_duration_unarmed");
 		efficacy = getSkillMod("unarmed_center_of_being_efficacy");
@@ -1872,47 +1872,47 @@ void PlayerImplementation::doCenterOfBeing() {
 			break;
 		}
 	}
-	
+
 	if (duration == 0 || efficacy == 0)
 		return;
-	
+
 	//defenseBonus += efficacy;
 	centeredBonus = efficacy;
-	
+
 	showFlyText("combat_effects", "center_start_fly", 0, 255, 0);
-	
+
 	server->addEvent(centerOfBeingEvent, duration * 1000);
-	
+
 	centered = true;
 }
 
 void PlayerImplementation::removeCenterOfBeing() {
 	if (!centered)
 		return;
-	
+
 	server->removeEvent(centerOfBeingEvent);
-	
+
 	//defenseBonus -= centeredBonus;
 	centeredBonus = 0;
-	
+
 	showFlyText("combat_effects", "center_stop_fly", 255, 0, 0);
 	centered = false;
 }
 
 void PlayerImplementation::doPeace() {
 	//info("trying Peace action");
-	
+
 	for (int i = 0; i < defenderList.size(); ++i) {
 		ManagedReference<SceneObject> defender = defenderList.get(i);
-				
+
 		try {
 			defender->wlock(_this);
-			
+
 			if (defender->hasDefender(_this)) {
 				if (defender->isPeaced()) {
 					removeDefender(defender);
 					defender->removeDefender(_this);
-					
+
 					i--;
 				}
 			} else {
@@ -1921,33 +1921,33 @@ void PlayerImplementation::doPeace() {
 			}
 
 			defender->unlock();
-			
+
 		} catch (...) {
 			error("unknown exception in PlayerImplementation::doPeace()\n");
 			defender->unlock();
 		}
-		
+
 	}
-	
+
 	if (defenderList.size() != 0) {
 		//info("defenderList not empty, trying to set Peace State");
-		
+
 		if (setState(PEACE_STATE))
 			updateStates();
 	}
-	
+
 	//info("finished doPeace");
 }
 
 void PlayerImplementation::lootCorpse(bool lootAll) {
 	if (targetObject == NULL || !targetObject->isNonPlayerCreature())
 		return;
-	
+
 	Creature* target = (Creature*) targetObject.get();
-	
+
 	if (!isIncapacitated() && !isDead() && isInRange(target, 20)) {
 		LootManager* lootManager = server->getLootManager();
-		
+
 		if (lootAll)
 			lootManager->lootCorpse(_this, target);
 		else
@@ -1957,7 +1957,7 @@ void PlayerImplementation::lootCorpse(bool lootAll) {
 
 void PlayerImplementation::lootObject(Creature* creature, SceneObject* object) {
 	LootManager* lootManager = server->getLootManager();
-	
+
 	lootManager->lootObject(_this, creature, object->getObjectID());
 }
 
@@ -1966,18 +1966,18 @@ void PlayerImplementation::calculateForceRegen() {
 		if (getPosture() == SITTING_POSTURE)
 			changeForcePowerBar(playerObject->getForceRegen()); // probably shouldn't be here *shrug*
 		else // 3 second tick do a full regen every 10 secs ish
-			changeForcePowerBar( (int)((playerObject->getForceRegen() / 3.0) + .5)); 
+			changeForcePowerBar( (int)((playerObject->getForceRegen() / 3.0) + .5));
 	}
 }
 
 bool PlayerImplementation::changeForcePowerBar(int32 fp) {
 	int32 newForce = playerObject->getForcePower() + fp;
-	
+
 	if (newForce <= 0)
-		return false; 
-	
+		return false;
+
 	setForcePowerBar(MIN(newForce, playerObject->getForcePowerMax()));
-	
+
 	if(fp < 0)
 		activateRecovery();
 
@@ -1996,31 +1996,31 @@ void PlayerImplementation::clearBuffs(bool doUpdatePlayer) {
 	if (doUpdatePlayer) {
 		if (healthBuff)
 			addBuff(0x98321369, 0.0f);
-	
+
 		if (strengthBuff)
 			addBuff(0x815D85C5, 0.0f);
-	
+
 		if (constitutionBuff)
 			addBuff(0x7F86D2C6, 0.0f);
-	
+
 		if (actionBuff)
 			addBuff(0x4BF616E2, 0.0f);
-	
+
 		if (quicknessBuff)
 			addBuff(0x71B5C842, 0.0f);
-	
+
 		if (staminaBuff)
 			addBuff(0xED0040D9, 0.0f);
-	
+
 		if (mindBuff)
 			addBuff(0x11C1772E, 0.0f);
-	
+
 		if (focusBuff)
 			addBuff(0x2E77F586, 0.0f);
-	
+
 		if (willpowerBuff)
 			addBuff(0x3EC6FCB6, 0.0f);
-		
+
 	}
 
 	healthBuff = false;
@@ -2032,7 +2032,7 @@ void PlayerImplementation::clearBuffs(bool doUpdatePlayer) {
 	mindBuff = false;
 	focusBuff = false;
 	willpowerBuff = false; */
-	
+
 	removeBuffs(doUpdatePlayer);
 }
 
@@ -2047,12 +2047,12 @@ void PlayerImplementation::mutePlayer() {
 
 
 /*
- *	Item manipulation methods 
+ *	Item manipulation methods
  */
 
 void PlayerImplementation::addInventoryItem(TangibleObject* item) {
 	CreatureObjectImplementation::addInventoryItem(item);
-	
+
 	if(item->isEquipped())
 		equipPlayerItem(item);
 
@@ -2061,7 +2061,7 @@ void PlayerImplementation::addInventoryItem(TangibleObject* item) {
 void PlayerImplementation::equipPlayerItem(TangibleObject* item) {
 	if (item->isEquipped())
 		item->setEquipped(false);
-	
+
 	if (item->isWeapon()) {
 		changeWeapon(item->getObjectID());
 	} else if (item->isArmor()) {
@@ -2072,7 +2072,7 @@ void PlayerImplementation::equipPlayerItem(TangibleObject* item) {
 		changeWeapon(item->getObjectID());
 	}
 }
- 
+
 bool PlayerImplementation::isAllowedBySpecies(TangibleObject * item) {
 	int type = item->getObjectSubType();
 	bool ithoonly = ((type == TangibleObjectImplementation::ITHOGARB) ||
@@ -2081,9 +2081,9 @@ bool PlayerImplementation::isAllowedBySpecies(TangibleObject * item) {
 			(item->getTemplateName().find("armor_kashyyykian") != string::npos));
 	bool footwear = ((type == TangibleObjectImplementation::FOOTWEAR) ||
 			(type == TangibleObjectImplementation::FOOTARMOR));
-	
+
 	string species = this->getSpeciesName();
-	
+
 	if (species.compare("ithorian") == 0) {
 		return ithoonly;
 	} else if (species.compare("wookiee") == 0) {
@@ -2092,34 +2092,34 @@ bool PlayerImplementation::isAllowedBySpecies(TangibleObject * item) {
 		return !ithoonly && !wookonly && !footwear;
 	} else {
 		return !ithoonly && !wookonly;
-	}			
+	}
 }
 void PlayerImplementation::changeCloth(uint64 itemid) {
 	SceneObject* obj = inventory->getObject(itemid);
-	
+
 	if (obj == NULL || !obj->isTangible())
 		return;
-	
-	TangibleObject* cloth = (TangibleObject*) obj;	
-	
+
+	TangibleObject* cloth = (TangibleObject*) obj;
+
 	if (cloth->isWeapon()) {
 		if (cloth->isEquipped())
 			changeWeapon(itemid);
 		return;
 	}
-	
+
 	if (cloth->isArmor()) {
 		if (cloth->isEquipped())
 			changeArmor(itemid, false);
 		return;
 	}
-	
+
 	if(!isAllowedBySpecies(cloth)) {
 		cloth->setEquipped(false);
 		sendSystemMessage("Your species can not wear this item.");
 		return;
 	}
-	
+
 	if (cloth->isEquipped()) {
 		unequipItem(cloth);
 	} else {
@@ -2129,45 +2129,45 @@ void PlayerImplementation::changeCloth(uint64 itemid) {
 
 void PlayerImplementation::changeWeapon(uint64 itemid) {
 	SceneObject* obj = inventory->getObject(itemid);
-	
+
 	if (obj == NULL || !obj->isTangible())
 		return;
-	
+
 	if (isPlayingMusic())
 		stopPlayingMusic();
 
 	if (((TangibleObject*)obj)->isWeapon()) {
-	
+
 		Weapon* weapon = (Weapon*) obj;
-		
-		if (weapon == NULL) 
+
+		if (weapon == NULL)
 			return;
-		
+
 		if (centered)
 			removeCenterOfBeing();
-		
+
 		if (weapon->isEquipped()) {
 			unequipItem(weapon);
 			unsetWeaponSkillMods(weapon);
 			setWeapon(NULL);
-			
+
 			accuracy = getSkillMod("unarmed_accuracy");
 		} else {
 			if (weaponObject != NULL) {
 				unequipItem(weaponObject);
 				unsetWeaponSkillMods(weaponObject);
 			}
-			
+
 			setWeapon(weapon);
 			equipItem(weapon);
-			
-			setWeaponSkillMods(weapon);		
-		}	
+
+			setWeaponSkillMods(weapon);
+		}
 	} else if (((TangibleObject*)obj)->isInstrument()){
-		
+
 		Instrument* device = (Instrument*) obj;
 		int instrument = device->getInstrumentType();
-		
+
 		string skillBox;
 		// Needs to be refactored
 		switch(instrument)
@@ -2246,12 +2246,12 @@ void PlayerImplementation::changeWeapon(uint64 itemid) {
 			sendSystemMessage("You do not have sufficient abilities to equip " + device->getName().c_str() + ".");
 			return;
 		}
-		
+
 		TangibleObject* item = (TangibleObject*) obj;
-		
+
 		if (isPlayingMusic())
 			stopPlayingMusic();
-		
+
 		if (item->isEquipped()) {
 			unequipItem(item);
 		}
@@ -2259,7 +2259,7 @@ void PlayerImplementation::changeWeapon(uint64 itemid) {
 			equipItem(item);
 	} else {
 		TangibleObject* item = (TangibleObject*) obj;
-		
+
 		sendSystemMessage("triggered here.");
 		if (item->isEquipped())
 			unequipItem(item);
@@ -2270,35 +2270,35 @@ void PlayerImplementation::changeWeapon(uint64 itemid) {
 
 void PlayerImplementation::changeArmor(uint64 itemid, bool forced) {
 	SceneObject* obj = inventory->getObject(itemid);
-	
+
 	if (obj == NULL || !obj->isTangible())
 		return;
-	
+
 	if (((TangibleObject*)obj)->isArmor()) {
 		Armor* armoritem = (Armor*) obj;
-		
-		if (armoritem == NULL) 
+
+		if (armoritem == NULL)
 			return;
-		
+
 		if(!isAllowedBySpecies(armoritem)) {
 			armoritem->setEquipped(false);
 			sendSystemMessage("Your species can not wear this item.");
 			return;
 		}
-		
+
 		if (armoritem->isEquipped()) {
 			unequipItem((TangibleObject*) obj);
 			unsetArmorSkillMods(armoritem);
 			unsetArmorEncumbrance(armoritem);
 		} else {
 			Armor* olditem = getArmor(armoritem->getType());
-			
+
 			if (olditem != NULL) {
 				unsetArmorSkillMods(olditem);
 				unsetArmorEncumbrance(olditem);
 				unequipItem((TangibleObject*) olditem);
 			}
-			
+
 			if (setArmorEncumbrance(armoritem, forced)) {
 				equipItem((TangibleObject*) obj);
 				setArmorSkillMods(armoritem);
@@ -2307,16 +2307,16 @@ void PlayerImplementation::changeArmor(uint64 itemid, bool forced) {
 		}
 	} else {
 		TangibleObject* item = (TangibleObject*) obj;
-		
+
 		if (item->isEquipped())
 			unequipItem(item);
 		else
 			equipItem(item);
 	}
-	
+
 	BaseMessage* creo6 = new CreatureObjectMessage6(_this);
 	BaseMessage* creo4 = new CreatureObjectMessage4(this);
-	
+
 	sendMessage(creo6);
 	sendMessage(creo4);
 }
@@ -2415,7 +2415,7 @@ void PlayerImplementation::setItemSkillMod(int type, int value) {
 		break;
 	case 31:
 		addSkillModBonus("heavyweapon_accuracy", value, true);
-		break;	
+		break;
 	}
 }
 
@@ -2424,31 +2424,31 @@ void PlayerImplementation::setWeaponSkillMods(Weapon* weapon) {
 		case WeaponImplementation::UNARMED:
 			accuracy = getSkillMod("unarmed_accuracy");
 			break;
-				
+
 		case WeaponImplementation::ONEHANDED:
 			accuracy = getSkillMod("onehandmelee_accuracy");
 			break;
-					
+
 		case WeaponImplementation::TWOHANDED:
 			accuracy = getSkillMod("twohandmelee_accuracy");
 			break;
-					
+
 		case WeaponImplementation::POLEARM:
 			accuracy = getSkillMod("polearm_accuracy");
 			break;
-				
+
 		case WeaponImplementation::PISTOL:
 			accuracy = getSkillMod("pistol_accuracy");
 			break;
-					
+
 		case WeaponImplementation::CARBINE:
 			accuracy = getSkillMod("carbine_accuracy");
 			break;
-					
+
 		case WeaponImplementation::RIFLE:
 			accuracy = getSkillMod("rifle_accuracy");
 			break;
-			
+
 		case WeaponImplementation::HEAVYWEAPON:
 			accuracy = getSkillMod("heavyweapon_accuracy");
 			break;
@@ -2456,21 +2456,21 @@ void PlayerImplementation::setWeaponSkillMods(Weapon* weapon) {
 		case WeaponImplementation::SPECIALHEAVYWEAPON:
 			if (weapon->getType() == WeaponImplementation::RIFLEFLAMETHROWER)
 				accuracy = getSkillMod("heavy_flame_thrower_accuracy");
-			
+
 			else if (weapon->getType() == WeaponImplementation::RIFLELIGHTNING)
 				accuracy = getSkillMod("heavy_rifle_lightning_accuracy");
-			
+
 			accuracy += getSkillMod("heavyweapon_accuracy");
 			break;
-			
+
 		/*case Weapon::ONEHANDSABER:
 			accuracy = SkillMods.get("");
 			break;
-			
+
 		case Weapon::TWOHANDSABER:
 			accuracy = SkillMods.get("");
 			break;
-			
+
 		case Weapon::POLEARMSABER:
 			accuracy = SkillMods.get("");
 			break;*/
@@ -2495,8 +2495,8 @@ void PlayerImplementation::setArmorSkillMods(Armor* armoritem) {
 	setItemSkillMod(armoritem->getSocket0Type(), armoritem->getSocket0Value());
 	setItemSkillMod(armoritem->getSocket1Type(), armoritem->getSocket1Value());
 	setItemSkillMod(armoritem->getSocket2Type(), armoritem->getSocket2Value());
-	setItemSkillMod(armoritem->getSocket3Type(), armoritem->getSocket3Value());	
-	
+	setItemSkillMod(armoritem->getSocket3Type(), armoritem->getSocket3Value());
+
 }
 
 void PlayerImplementation::unsetArmorSkillMods(Armor* armoritem) {
@@ -2508,70 +2508,70 @@ void PlayerImplementation::unsetArmorSkillMods(Armor* armoritem) {
 	setItemSkillMod(armoritem->getSocket1Type(), -armoritem->getSocket1Value());
 	setItemSkillMod(armoritem->getSocket2Type(), -armoritem->getSocket2Value());
 	setItemSkillMod(armoritem->getSocket3Type(), -armoritem->getSocket3Value());
-	
+
 }
 
 void PlayerImplementation::unsetWeaponSkillMods(Weapon* weapon) {
 	setItemSkillMod(weapon->getSkillMod0Type(), -weapon->getSkillMod0Value());
 	setItemSkillMod(weapon->getSkillMod1Type(), -weapon->getSkillMod1Value());
 	setItemSkillMod(weapon->getSkillMod2Type(), -weapon->getSkillMod2Value());
-	
-	accuracy = getSkillMod("unarmed_accuracy"); 
+
+	accuracy = getSkillMod("unarmed_accuracy");
 }
 
 bool PlayerImplementation::setArmorEncumbrance(Armor* armor, bool forced) {
 	int healthEncumb = armor->getHealthEncumbrance();
 	int actionEncumb = armor->getActionEncumbrance();
 	int mindEncumb = armor->getMindEncumbrance();
-	
+
 	if ((healthEncumb >= strength || healthEncumb >= constitution ||
 		actionEncumb >= quickness || actionEncumb >= stamina ||
 		mindEncumb >= focus || mindEncumb >= willpower) && !forced)
 		return false;
-	
+
 	if ((strength > 100000 || constitution > 100000 ||
 		quickness > 100000 || stamina > 100000 ||
 		focus > 100000 || willpower > 100000) && !forced)
-		return false;	
-	
+		return false;
+
 	healthEncumbrance += healthEncumb;
 	actionEncumbrance += actionEncumb;
 	mindEncumbrance += mindEncumb;
-	
+
 	strengthMax -= healthEncumb;
 	constitutionMax -= healthEncumb;
 	quicknessMax -= actionEncumb;
 	staminaMax -= actionEncumb;
 	focusMax -= mindEncumb;
 	willpowerMax -= mindEncumb;
-	
+
 	strength -= healthEncumb;
 	constitution -= healthEncumb;
 	quickness -= actionEncumb;
 	stamina -= actionEncumb;
 	focus -= mindEncumb;
 	willpower -= mindEncumb;
-	
+
 	return true;
-	
+
 }
 
-void PlayerImplementation::unsetArmorEncumbrance(Armor* armor) {	
+void PlayerImplementation::unsetArmorEncumbrance(Armor* armor) {
 	int healthEncumb = armor->getHealthEncumbrance();
 	int actionEncumb = armor->getActionEncumbrance();
 	int mindEncumb = armor->getMindEncumbrance();
-	
+
 	healthEncumbrance -= healthEncumb;
 	actionEncumbrance -= actionEncumb;
 	mindEncumbrance -= mindEncumb;
-	
+
 	strengthMax += healthEncumb;
 	constitutionMax += healthEncumb;
 	quicknessMax += actionEncumb;
 	staminaMax += actionEncumb;
 	focusMax += mindEncumb;
 	willpowerMax += mindEncumb;
-	
+
 	strength += healthEncumb;
 	constitution += healthEncumb;
 	quickness += actionEncumb;
@@ -2584,29 +2584,29 @@ void PlayerImplementation::unsetArmorEncumbrance(Armor* armor) {
 void PlayerImplementation::applyPowerup(uint64 powerupID, uint64 targetID) {
 	Powerup* powerup = (Powerup*) getInventoryItem(powerupID);
 	Weapon* weapon = (Weapon*) getInventoryItem(targetID);
-	
+
 	if (weapon == NULL || powerup == NULL)
 		return;
-	
+
 	weapon->wlock();
 	powerup->wlock();
-	
+
 	if (weapon->getPowerupUses() == 0) {
 		stringstream msg;
 		msg << "You powerup your " << weapon->getName().c_str() << " with " << powerup->getName().c_str();
 		sendSystemMessage(msg.str());
 		powerup->apply(weapon);
 		powerup->remove(_this);
-		
+
 		weapon->unlock();
 		powerup->unlock();
 		powerup->finalize();
-		
+
 		return;
 	}
 	else
 		sendSystemMessage("This weapon is already powered up!");
-	
+
 	weapon->unlock();
 	powerup->unlock();
 }
@@ -2615,19 +2615,19 @@ void PlayerImplementation::applyPowerup(uint64 powerupID, uint64 targetID) {
 void PlayerImplementation::applyAttachment(uint64 attachmentID, uint64 targetID) {
 	Attachment* attachment = (Attachment*) getInventoryItem(attachmentID);
 	Armor* armor = (Armor*) getInventoryItem(targetID);
-		
+
 	if (armor == NULL || attachment == NULL)
 		return;
-	
+
 	armor->wlock();
 	attachment->wlock();
-	
+
 	int skillModType;
 	int skillModValue;
-	
+
 	int armorIndex;
 	int attachmentIndex;
-	
+
 	bool done = false;
 	bool setMods = false;
 
@@ -2636,19 +2636,19 @@ void PlayerImplementation::applyAttachment(uint64 attachmentID, uint64 targetID)
 		attachmentIndex = attachment->getBestSkillMod();
 		skillModType = attachment->getSkillModType(attachmentIndex);
 		skillModValue = attachment->getSkillModValue(attachmentIndex);
-		
+
 		if (armor->isEquipped()) {
 			unsetArmorSkillMods(armor);
 			setMods = true;
 		}
-		
+
 		int armorIndex = armor->addSkillMod(skillModType, skillModValue);
-		
+
 		if (setMods) {
 			setArmorSkillMods(armor);
 			setMods = false;
 		}
-		
+
 		switch (armorIndex) {
 		case (-1): // add failed
 			break;
@@ -2661,14 +2661,14 @@ void PlayerImplementation::applyAttachment(uint64 attachmentID, uint64 targetID)
 			armor->unlock();
 			attachment->unlock();
 			attachment->remove(_this);
-			
+
 			attachment->finalize();
 			return;
 		default: // skill mod was added successfully
 			armor->unlock();
 			attachment->unlock();
 			attachment->remove(_this);
-			
+
 			attachment->finalize();
 			return;
 		}
@@ -2677,14 +2677,14 @@ void PlayerImplementation::applyAttachment(uint64 attachmentID, uint64 targetID)
 	if (attachment->isUpdated()) {
 		attachment->remove(_this);
 		attachment->setUpdated(false);
-		
+
 		armor->unlock();
 		attachment->unlock();
-		
+
 		attachment->finalize();
-		return; 
+		return;
 	}
-	
+
 	armor->unlock();
 	attachment->unlock();
 }
@@ -2692,21 +2692,21 @@ void PlayerImplementation::applyAttachment(uint64 attachmentID, uint64 targetID)
 void PlayerImplementation::setOvert() {
 	if (!(pvpStatusBitmask & OVERT_FLAG))
 		pvpStatusBitmask |= OVERT_FLAG;
-	
+
 	uint32 pvpBitmask = pvpStatusBitmask;
-		
+
 	try {
 		zone->lock();
-	
+
 		for (int i = 0; i < inRangeObjectCount(); ++i) {
 			SceneObject* object = (SceneObject*) (((SceneObjectImplementation*) getInRangeObject(i))->_getStub());
-			
+
 			if (object->isPlayer()) {
 				Player* player = (Player*) object;
 				sendFactionStatusTo(player, true);
 			}
 		}
-		
+
 		zone->unlock();
 	} catch (...) {
 		error("exception Player::setOvert()");
@@ -2717,19 +2717,19 @@ void PlayerImplementation::setOvert() {
 void PlayerImplementation::setCovert() {
 	if (pvpStatusBitmask & OVERT_FLAG)
 		pvpStatusBitmask -= OVERT_FLAG;
-	
+
 	try {
 		zone->lock();
-	
+
 		for (int i = 0; i < inRangeObjectCount(); ++i) {
 			SceneObject* object = (SceneObject*) (((SceneObjectImplementation*) getInRangeObject(i))->_getStub());
-			
+
 			if (object->isPlayer()) {
 				Player* player = (Player*) object;
 				sendFactionStatusTo(player, true);
 			}
 		}
-			
+
 		zone->unlock();
 	} catch (...) {
 		error("exception PlayerImplementation::setOvert()");
@@ -2739,14 +2739,14 @@ void PlayerImplementation::setCovert() {
 
 void PlayerImplementation::setLinkDead() {
 	onlineStatus = LINKDEAD;
-	
+
 	if (playerObject != NULL)
 		playerObject->setCharacterBit(PlayerObjectImplementation::LD, true);
-	
+
 	logoutTimeStamp.update();
 	logoutTimeStamp.addMiliTime(30000);
 
-	activateRecovery();	
+	activateRecovery();
 }
 
 void PlayerImplementation::setOnline() {
@@ -2754,7 +2754,7 @@ void PlayerImplementation::setOnline() {
 		if (playerObject != NULL)
 			playerObject->clearCharacterBit(PlayerObjectImplementation::LD, true);
 	}
-	
+
 	onlineStatus = ONLINE;
 }
 
@@ -2766,7 +2766,7 @@ bool PlayerImplementation::isInDuelWith(Player* targetPlayer, bool doLock) {
 		if (doLock)
 			targetPlayer->wlock(_this);
 
-		bool res; 
+		bool res;
 		if (requestedDuelTo(targetPlayer) && targetPlayer->requestedDuelTo(_this))
 			res = true;
 		else
@@ -2774,12 +2774,12 @@ bool PlayerImplementation::isInDuelWith(Player* targetPlayer, bool doLock) {
 
 		if (doLock)
 			targetPlayer->unlock();
-			
+
 		return res;
 	} catch (...) {
 		if (doLock)
 			targetPlayer->unlock();
-		
+
 		return false;
 	}
 }
@@ -2789,7 +2789,7 @@ void PlayerImplementation::addToDuelList(Player* targetPlayer) {
 		info("player [" + targetPlayer->getLoggingName() + "] added to duel list");
 	else
 		error("player [" + targetPlayer->getLoggingName() + "] was already in duel list");
-		
+
 }
 
 void PlayerImplementation::removeFromDuelList(Player* targetPlayer) {
@@ -2802,7 +2802,7 @@ void PlayerImplementation::removeFromDuelList(Player* targetPlayer) {
 void PlayerImplementation::clearDuelList() {
 	if (zone != NULL) {
 		CombatManager* combatManager = server->getCombatManager();
-		
+
 		combatManager->freeDuelList(_this);
 	}
 }
@@ -2913,7 +2913,7 @@ void PlayerImplementation::sendDraftSchematics() {
 
 	dplay9->close();
 	sendMessage(dplay9);
-	
+
 	// Sending all the ingredients and experimental properties when draft schematics are sent
 	// is the only way I can think of at the moment to prevent the bug if the client
 	// leaves their datapad open and they surrender a skill that has draft schematics.
@@ -2922,7 +2922,7 @@ void PlayerImplementation::sendDraftSchematics() {
 	// clicks on a draft schematic he doesn't have, it screws up their retreiveing the information
 	// of the draft schematic because they don't really have that schematic
 	for (int i = 0; i < draftSchematicList.size(); i++) {
-		DraftSchematic* schematic = draftSchematicList.get(i); 
+		DraftSchematic* schematic = draftSchematicList.get(i);
 		schematic->sendIngredientsToPlayer(_this);
 		schematic->sendExperimentalPropertiesToPlayer(_this);
 	}
@@ -2962,14 +2962,14 @@ void PlayerImplementation::sendMessage(StandaloneBaseMessage* msg) {
 
 void PlayerImplementation::addSkillBox(SkillBox* skillBox, bool updateClient) {
 	skillBoxes.put(skillBox->getName(), skillBox);
-	
+
 	if (updateClient) {
 		CreatureObjectDeltaMessage1* dcreo1;
-	
+
 		dcreo1 = new CreatureObjectDeltaMessage1(this);
 		dcreo1->startSkillBoxListUpdate(1);
 		dcreo1->addSkillBox(skillBox->getName());
-	
+
 		dcreo1->close();
 		sendMessage(dcreo1);
 	}
@@ -2977,35 +2977,35 @@ void PlayerImplementation::addSkillBox(SkillBox* skillBox, bool updateClient) {
 
 void PlayerImplementation::removeSkillBox(SkillBox* skillBox, bool updateClient) {
 	skillBoxes.remove(skillBox->getName());
-	
+
 	if (updateClient) {
 		CreatureObjectDeltaMessage1* dcreo1;
-	
+
 		dcreo1 = new CreatureObjectDeltaMessage1(this);
 		dcreo1->startSkillBoxListUpdate(1);
 		dcreo1->removeSkillBox(skillBox->getName());
-	
+
 		dcreo1->close();
 		sendMessage(dcreo1);
 	}
 }
 
-void PlayerImplementation::addCertifications(Vector<Certification*>& certs, bool updateClient) {		
+void PlayerImplementation::addCertifications(Vector<Certification*>& certs, bool updateClient) {
 	PlayerObjectDeltaMessage9* dplay9;
-	
+
 	if (updateClient) {
 		dplay9 = new PlayerObjectDeltaMessage9(playerObject);
 		dplay9->startSkillListUpdate(certs.size());
 	}
-	
+
 	for (int i = 0; i < certs.size(); i++) {
 		Certification* cert = certs.get(i);
 		certificationList.put(cert->getName(), cert);
-		
+
 		if (updateClient)
 			dplay9->addSkill(cert->getName());
 	}
-	
+
 	if (updateClient) {
 		dplay9->close();
 		sendMessage(dplay9);
@@ -3017,7 +3017,7 @@ void PlayerImplementation::removeCertifications(Vector<Certification*>& certs, b
 		Certification* cert = certs.get(i);
 		certificationList.drop(cert->getName());
 	}
-	
+
 	if (updateClient) {
 		PlayerObjectDeltaMessage9* dplay9 = new PlayerObjectDeltaMessage9(playerObject);
 		dplay9->updateSkilsAndCertifications();
@@ -3027,11 +3027,11 @@ void PlayerImplementation::removeCertifications(Vector<Certification*>& certs, b
 }
 
 void PlayerImplementation::increasePvpRating(int value) {
-	pvpRating = pvpRating + value;	
+	pvpRating = pvpRating + value;
 }
 
 void PlayerImplementation::decreasePvpRating(int value) {
-	pvpRating = pvpRating - value;	
+	pvpRating = pvpRating - value;
 }
 
 void PlayerImplementation::toggleCharacterBit(uint32 bit) {
@@ -3043,10 +3043,10 @@ void PlayerImplementation::toggleCharacterBit(uint32 bit) {
 
 bool PlayerImplementation::awardBadge(uint32 badgeindex) {
   	if (badgeindex > 139)
-  		return false; 
+  		return false;
 
 	badges.setBadge(badgeindex);
-	
+
 	return true;
 }
 
@@ -3058,22 +3058,22 @@ void PlayerImplementation::getPlayersNearYou() {
 		zone->lock();
 
 		PlayersNearYouMessage* pny = new PlayersNearYouMessage(_this);
-	
+
 		uint32 counter = 0;
-		
+
 		for (int i = 0; i < inRangeObjectCount(); ++i) {
 			SceneObject* obj = (SceneObject*) (((SceneObjectImplementation*) getInRangeObject(i))->_getStub());
-			
+
 			if (obj->isPlayer()) {
 				++counter;
 				Player* player = (Player*) obj;
 				pny->addFoundPlayer(player);
 			}
 		}
-		
+
 		pny->insertPlayerCounter(counter);
 		sendMessage(pny);
-	
+
 		zone->unlock();
 	} catch (...) {
 		error("exception PlayerImplementation::getPlayersNearYou()");
@@ -3095,7 +3095,7 @@ void PlayerImplementation::removeDatapadItem(uint64 oid) {
 
 SceneObject* PlayerImplementation::getPlayerItem(uint64 oid) {
 	SceneObject* object = NULL;
-	
+
 	object = getInventoryItem(oid);
 
 	if (object == NULL) {
@@ -3111,30 +3111,30 @@ SceneObject* PlayerImplementation::getPlayerItem(uint64 oid) {
 bool PlayerImplementation::setGuild(uint32 gid) {
 	PlayerManager* playerManager = zone->getZoneServer()->getPlayerManager();
 	GuildManager* guildManager = playerManager->getGuildManager();
-	
+
 	guild = guildManager->getGuild(gid);
-	
+
 	return guild != NULL;
 }
 
 bool PlayerImplementation::updateGuild(uint32 gid) {
 	PlayerManager* playerManager = zone->getZoneServer()->getPlayerManager();
 	GuildManager* guildManager = playerManager->getGuildManager();
-	
+
 	Guild* gld = guildManager->getGuild(gid);
 	if (gld == NULL)
 		return false;
-	
+
 	guild = gld;
-	
+
 	sendGuildTo();
-	
+
 	return true;
 }
 
 void PlayerImplementation::updateGuild(Guild* gld) {
 	guild = gld;
-	
+
 	sendGuildTo();
 }
 
@@ -3145,7 +3145,7 @@ void PlayerImplementation::sendGuildList() {
 
 void PlayerImplementation::setAdminLevel(int level) {
 	adminLevel = level;
-	
+
 	PlayerObjectDeltaMessage6* dplay6 = new PlayerObjectDeltaMessage6(playerObject);
 	dplay6->setAdminLevel(level);
 	dplay6->close();
@@ -3160,19 +3160,19 @@ void PlayerImplementation::saveProfessions() {
 void PlayerImplementation::loadProfessions() {
 	ProfessionManager* professionManager = server->getProfessionManager();
 	professionManager->loadProfessions(this);
-	
-	accuracy = getSkillMod("unarmed_accuracy"); 
+
+	accuracy = getSkillMod("unarmed_accuracy");
 }
 
 bool PlayerImplementation::trainSkillBox(const string& name, bool updateClient) {
 	ProfessionManager* professionManager = server->getProfessionManager();
-	
+
 	return professionManager->trainSkillBox(name, this, updateClient);
 }
 
 void PlayerImplementation::surrenderSkillBox(const string& name) {
 	ProfessionManager* professionManager = server->getProfessionManager();
-	
+
 	return professionManager->surrenderSkillBox(name, this);
 }
 
@@ -3183,17 +3183,17 @@ void PlayerImplementation::newChangeFactionEvent(uint32 faction) {
 
 void PlayerImplementation::setEntertainerEvent() {
 	entertainerEvent = new EntertainerEvent(_this);
-	
+
 	SkillManager* skillManager = server->getSkillManager();
 	Performance* performance = NULL;
-	
+
 	if (isDancing())
 		performance = skillManager->getDance(getPerformanceName());
 	else if(isPlayingMusic() && getInstrument() != NULL)
 		performance = skillManager->getSong(getPerformanceName(), getInstrument()->getInstrumentType());
 	else
 		return;
-	
+
 	if(!performance) { // shouldn't happen
 		stringstream msg;
 		msg << "Performance was null in setEntertainerEvent.  Please report to McMahon! Name: " << getPerformanceName() << " and Type: " << dec << getInstrument()->getInstrumentType();
@@ -3216,7 +3216,7 @@ void PlayerImplementation::setSampleEvent(string& resourceName, bool firstTime) 
 		sendSystemMessage("Please contact Ritter ASAP and log the exact actions you just took for a bug report. Thank you.");
 		return;
 	}
-	
+
 	if (getParent() != NULL && getParent()->isCell()) {
 		sendSystemMessage("You cannot perform survey-related actions inside a structure.");
 		return;
@@ -3234,23 +3234,23 @@ void PlayerImplementation::setSampleEvent(string& resourceName, bool firstTime) 
 	} else if (getPosture() != CreatureObjectImplementation::CROUCHED_POSTURE) {
 		return;
 	}
-		
+
 	if (firstTime) {
 		firstSampleEvent = new SampleEvent(_this, resourceName);
 		server->addEvent(firstSampleEvent, 2000);
-		
+
 		sampleEvent = new SampleEvent(_this, resourceName, false, true);
 		server->addEvent(sampleEvent, 14000);
 	} else {
 		firstSampleEvent = NULL;
-		
+
 		if (changeActionBar(-200, false) ) {
 			activateRecovery();
-			
+
 			sampleEvent = new SampleEvent(_this, resourceName);
 
 			getZone()->getZoneServer()->getResourceManager()->sendSampleMessage(_this, resourceName);
-			
+
 			server->addEvent(sampleEvent, 12000);
 		} else {
 			sendSystemMessage("You do not have enough action to do that.");
@@ -3262,7 +3262,7 @@ void PlayerImplementation::setSampleEvent(string& resourceName, bool firstTime) 
 void PlayerImplementation::sendSampleTimeRemaining() {
 	// Precondition: sampleEvent != NULL
 	int time = -(sampleEvent->getTimeStamp().miliDifference()) / 1000;
-	
+
 	unicode ustr = "";
 	ChatSystemMessage* sysMessage = new ChatSystemMessage("survey","tool_recharge_time",ustr,time,false);
 	sendMessage(sysMessage);
@@ -3271,7 +3271,7 @@ void PlayerImplementation::sendSampleTimeRemaining() {
 void PlayerImplementation::launchFirework(int animationType) {
 	//Create the firework in the world.
 	FireworkWorld* firework = new FireworkWorld(_this);
-	
+
 	switch (animationType) {
 		case 1:
 			firework->setFireworkObject(0xEF5A1CF7);
@@ -3297,11 +3297,11 @@ void PlayerImplementation::launchFirework(int animationType) {
 		case 8:
 			firework->setFireworkObject(0xBD7F7602);
 			break;
-		default:  
+		default:
 			firework->setFireworkObject(0xBD7F7602);
 			break;
-	}		
-		
+	}
+
 	firework->setZoneProcessServer(server);
 	firework->setDirection(0, 0, -0.64, 0.76);
 
@@ -3312,12 +3312,12 @@ void PlayerImplementation::launchFirework(int animationType) {
 
 		for (int i = 0; i < inRangeObjectCount(); ++i) {
 			SceneObject* obj = (SceneObject*) (((SceneObjectImplementation*) getInRangeObject(i))->_getStub());
-		
+
 			if (obj->isPlayer()) {
 				Player* player = (Player*) obj;
 
 				firework->sendTo(player);
-			
+
 				Animation* anim = new Animation(_this, "manipulate_low");
 				player->sendMessage(anim);
 			}
@@ -3330,7 +3330,7 @@ void PlayerImplementation::launchFirework(int animationType) {
 		cout << "unreported Exception on Player::launchFirework()\n";
 	}
 
-	firework->finalize();		
+	firework->finalize();
 }
 
 
@@ -3354,6 +3354,6 @@ int PlayerImplementation::getSlicingAbility() {
 		return 1;
 	else if (hasSkillBox(txt0))
 		return 0;
-	
+
 	return -1;
 }

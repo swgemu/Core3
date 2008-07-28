@@ -50,9 +50,10 @@ import "../intangible/IntangibleObject";
 
 import "../tangible/component/ShipComponent";
 
+	
 interface ShipObject implements SceneObject {
 	ShipObject(unsigned long oid, Player owner) {
-		super(oid);
+		super(oid, int type);
 	}
 	
 	// ShipObjectImplementation(unsigned long oid, Player SOwner);

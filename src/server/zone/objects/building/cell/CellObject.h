@@ -83,7 +83,7 @@ public:
 	CellObject* _this;
 
 public:
-	CellObjectServant(unsigned long long oid);
+	CellObjectServant(unsigned long long oid, int type);
 	virtual ~CellObjectServant();
 
 	void _setStub(DistributedObjectStub* stub);

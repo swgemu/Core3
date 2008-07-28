@@ -59,6 +59,8 @@ public:
 		try {
 			creo->wlock();
 
+			creo->info("InjuryTreatmentOverEvent called");
+
 			if (!creo->canTreatInjuries())
 				creo->activateInjuryTreatment();
 

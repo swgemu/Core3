@@ -105,7 +105,7 @@ public:
 	WaypointObject* _this;
 
 public:
-	WaypointObjectServant(unsigned long long oid);
+	WaypointObjectServant(unsigned long long oid, int type);
 	virtual ~WaypointObjectServant();
 
 	void _setStub(DistributedObjectStub* stub);

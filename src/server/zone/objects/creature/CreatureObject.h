@@ -693,6 +693,8 @@ public:
 
 	int getBuildingType();
 
+	SceneObject* getBuilding();
+
 	string& getGuildName();
 
 	int getWeaponSpeedModifier();
@@ -1564,6 +1566,8 @@ public:
 
 	int getBuildingType();
 
+	SceneObject* getBuilding();
+
 	string& getGuildName();
 
 	int getWeaponSpeedModifier();
@@ -1816,7 +1820,7 @@ public:
 	CreatureObject* _this;
 
 public:
-	CreatureObjectServant(unsigned long long oid);
+	CreatureObjectServant(unsigned long long oid, int type);
 	virtual ~CreatureObjectServant();
 
 	void _setStub(DistributedObjectStub* stub);

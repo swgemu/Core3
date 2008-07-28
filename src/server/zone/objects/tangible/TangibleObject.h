@@ -317,7 +317,7 @@ public:
 
 public:
 	TangibleObjectServant();
-	TangibleObjectServant(unsigned long long oid);
+	TangibleObjectServant(unsigned long long oid, int type);
 	virtual ~TangibleObjectServant();
 
 	void _setStub(DistributedObjectStub* stub);

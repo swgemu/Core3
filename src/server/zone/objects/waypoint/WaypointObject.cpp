@@ -275,7 +275,7 @@ DistributedObjectAdapter* WaypointObjectHelper::createAdapter(DistributedObjectS
  *	WaypointObjectServant
  */
 
-WaypointObjectServant::WaypointObjectServant(unsigned long long oid) : SceneObjectImplementation(oid) {
+WaypointObjectServant::WaypointObjectServant(unsigned long long oid, int type) : SceneObjectImplementation(oid, type) {
 	_classHelper = WaypointObjectHelper::instance();
 }
 

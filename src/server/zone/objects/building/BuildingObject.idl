@@ -56,7 +56,7 @@ import "../../Zone";
 
 interface BuildingObject implements SceneObject {
 	BuildingObject(unsigned long oid, boolean staticBuilding) {
-		super(oid);
+		super(oid, int type);
 	}
 	
 	//void sendTo(Player* player);

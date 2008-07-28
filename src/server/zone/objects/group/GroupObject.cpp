@@ -393,7 +393,7 @@ DistributedObjectAdapter* GroupObjectHelper::createAdapter(DistributedObjectStub
  *	GroupObjectServant
  */
 
-GroupObjectServant::GroupObjectServant(unsigned long long oid) : SceneObjectImplementation(oid) {
+GroupObjectServant::GroupObjectServant(unsigned long long oid, int type) : SceneObjectImplementation(oid, type) {
 	_classHelper = GroupObjectHelper::instance();
 }
 

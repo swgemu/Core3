@@ -48,7 +48,7 @@ import "../player/Player";
 
 interface MissionObject implements SceneObject {
 	MissionObject(unsigned long oid) {
-		super(oid);
+		super(oid, int type);
 	}
 	
 	void init();

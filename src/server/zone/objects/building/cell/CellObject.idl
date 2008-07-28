@@ -54,7 +54,7 @@ import "../BuildingObject";
 
 interface CellObject implements SceneObject {
 	CellObject(unsigned long oid, BuildingObject buio) {
-		super(oid);
+		super(oid, int type);
 	}
 	
 	void insertToZone(Zone zone);

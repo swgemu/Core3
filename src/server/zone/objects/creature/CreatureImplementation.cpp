@@ -315,6 +315,13 @@ void CreatureImplementation::unload() {
 }
 
 void CreatureImplementation::clearLootItems() {
+	setCashCredits(0);
+
+	lootCreated = false;
+
+	if(lootContainer == NULL)
+		return;
+
 	while (!lootContainer->isEmpty()) {
 		SceneObject* object = lootContainer->getObject((int)0);
 
@@ -322,10 +329,6 @@ void CreatureImplementation::clearLootItems() {
 
 		object->finalize();
 	}
-
-	setCashCredits(0);
-
-	lootCreated = false;
 }
 
 void CreatureImplementation::loadItems() {
@@ -908,8 +911,8 @@ void CreatureImplementation::notifyPositionUpdate(QuadTreeEntry* obj) {
 			player = (Player*) scno;
 
 			if (isAgressive() && !isDead() && !player->isIncapacitated() && !player->isDead() ) {
-				
-				if( (parent == NULL && isInRange(player, 24)) || 
+
+				if( (parent == NULL && isInRange(player, 24)) ||
 						((parent != NULL) && (getParentID() == player->getParentID()) && isInRange(player, 10))) {
 
 					info("aggroing " + player->getFirstName());
@@ -1056,8 +1059,6 @@ void CreatureImplementation::resetState() {
 	clearStates();
 
 	aggroedCreature = NULL;
-
-	clearLootItems();
 
 	resetPatrolPoints(false);
 
@@ -1496,7 +1497,7 @@ void CreatureImplementation::resetPatrolPoints(bool doLock) {
 
 void CreatureImplementation::addPatrolPoint(float x, float y, bool doLock) {
 	float z = zone->getHeight(x, y);
-	
+
 	addPatrolPoint(new PatrolPoint(x , z, y, getParentID()), doLock);
 }
 
@@ -1523,12 +1524,12 @@ void CreatureImplementation::addPatrolPoint(PatrolPoint* cord, bool doLock) {
 void CreatureImplementation::addRandomPatrolPoint(float radius, bool doLock) {
 	float angle = (45 + System::random(200)) / 3.14;
 	float distance = radius + System::random((int) radius);
-				
-	float newPositionX = positionX + cos(angle) * distance; 
-	float newPositionY = positionY + sin(angle) * distance; 
 
-	float newPositionZ = zone->getHeight(newPositionX, newPositionY); 
-	
+	float newPositionX = positionX + cos(angle) * distance;
+	float newPositionY = positionY + sin(angle) * distance;
+
+	float newPositionZ = zone->getHeight(newPositionX, newPositionY);
+
 	PatrolPoint* cord = new PatrolPoint(newPositionX, newPositionZ, newPositionY, getParentID());
 
 	addPatrolPoint(cord, doLock);

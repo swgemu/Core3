@@ -55,7 +55,7 @@ public:
 	ManufactureSchematic* _this;
 
 public:
-	ManufactureSchematicServant(unsigned long long oid);
+	ManufactureSchematicServant(unsigned long long oid, int type);
 	virtual ~ManufactureSchematicServant();
 
 	void _setStub(DistributedObjectStub* stub);

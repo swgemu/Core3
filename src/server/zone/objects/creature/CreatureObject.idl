@@ -73,7 +73,7 @@ import "buffs/BuffObject";
 
 interface CreatureObject implements SceneObject {
 	CreatureObject(unsigned long oid) {
-		super(oid);
+		super(oid, int type);
 	}
 	
 	void info(const string message, boolean forcedLog = false);
@@ -548,7 +548,7 @@ interface CreatureObject implements SceneObject {
 	
 	boolean isInBuilding();
 	int getBuildingType();
-	//SceneObject* getBuilding();
+	SceneObject getBuilding();
 
 	string getGuildName();
 	

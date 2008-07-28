@@ -50,7 +50,7 @@ import "../player/Player";
 
 interface IntangibleObject implements SceneObject {
 	IntangibleObject(SceneObject container, unsigned int objCRC, unsigned long oid) {
-		super(oid);
+		super(oid, int type);
 	}
 	
 	void sendTo(Player player, boolean doClose = true);

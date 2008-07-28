@@ -76,7 +76,7 @@ DistributedObjectAdapter* ManufactureSchematicHelper::createAdapter(DistributedO
  *	ManufactureSchematicServant
  */
 
-ManufactureSchematicServant::ManufactureSchematicServant(unsigned long long oid) : SceneObjectImplementation(oid) {
+ManufactureSchematicServant::ManufactureSchematicServant(unsigned long long oid, int type) : SceneObjectImplementation(oid, type) {
 	_classHelper = ManufactureSchematicHelper::instance();
 }
 

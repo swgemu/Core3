@@ -384,7 +384,7 @@ DistributedObjectAdapter* BuildingObjectHelper::createAdapter(DistributedObjectS
  *	BuildingObjectServant
  */
 
-BuildingObjectServant::BuildingObjectServant(unsigned long long oid) : SceneObjectImplementation(oid) {
+BuildingObjectServant::BuildingObjectServant(unsigned long long oid, int type) : SceneObjectImplementation(oid, type) {
 	_classHelper = BuildingObjectHelper::instance();
 }
 

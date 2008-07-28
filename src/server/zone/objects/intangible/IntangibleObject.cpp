@@ -277,7 +277,7 @@ DistributedObjectAdapter* IntangibleObjectHelper::createAdapter(DistributedObjec
  *	IntangibleObjectServant
  */
 
-IntangibleObjectServant::IntangibleObjectServant(unsigned long long oid) : SceneObjectImplementation(oid) {
+IntangibleObjectServant::IntangibleObjectServant(unsigned long long oid, int type) : SceneObjectImplementation(oid, type) {
 	_classHelper = IntangibleObjectHelper::instance();
 }
 

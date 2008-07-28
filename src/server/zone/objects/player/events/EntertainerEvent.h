@@ -59,7 +59,7 @@ public:
 		try {
 			player->wlock();
 			
-			//cout << "Entertain Event!" << endl;
+			player->info("EntertainerEvent tick started.");
 			if (!player->isDancing() && !player->isPlayingMusic()) {
 				player->clearEntertainerEvent();
 			
@@ -89,6 +89,8 @@ public:
 			player->doPerformanceAction();
 			
 			player->setEntertainerEvent(); // Renew tick
+			
+			player->info("EntertainerEvent completed.");
 			
 			player->unlock();
 		} catch (...) {

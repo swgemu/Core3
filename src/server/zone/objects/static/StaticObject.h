@@ -77,7 +77,7 @@ public:
 	StaticObject* _this;
 
 public:
-	StaticObjectServant(unsigned long long oid);
+	StaticObjectServant(unsigned long long oid, int type);
 	virtual ~StaticObjectServant();
 
 	void _setStub(DistributedObjectStub* stub);

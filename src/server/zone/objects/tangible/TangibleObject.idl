@@ -60,7 +60,7 @@ interface TangibleObject implements SceneObject {
 	TangibleObject(unsigned long oid, int tp = 0);
 	
 	TangibleObject(unsigned long oid, const unicode n, const string tempname, unsigned int tempCRC, int tp = 0) {
-		super(oid);
+		super(oid, int type);
 	}
 
 	TangibleObject(CreatureObject creature, const unicode n, const string tempname, unsigned int tempCRC, int tp = 0);

@@ -133,7 +133,7 @@ public:
 	AttackableObject* _this;
 
 public:
-	AttackableObjectServant(unsigned long long oid);
+	AttackableObjectServant(unsigned long long oid, int type);
 	virtual ~AttackableObjectServant();
 
 	void _setStub(DistributedObjectStub* stub);

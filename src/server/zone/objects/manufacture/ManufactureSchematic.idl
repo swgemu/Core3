@@ -46,6 +46,6 @@ import "../scene/SceneObject";
 
 interface ManufactureSchematic implements SceneObject {
 	ManufactureSchematic(unsigned long oid) {
-		super(oid);
+		super(oid, int type);
 	}
 }

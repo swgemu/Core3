@@ -48,7 +48,7 @@ import "../player/Player";
 
 interface WaypointObject implements SceneObject {
 	WaypointObject(Player player, unsigned long oid) {
-		super(oid);
+		super(oid, int type);
 	}
 	
 	void changeStatus(boolean status);

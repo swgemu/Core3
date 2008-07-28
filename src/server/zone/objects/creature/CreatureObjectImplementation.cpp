@@ -90,7 +90,7 @@ which carries forward this exception.
 
 #include "../../managers/skills/SkillManager.h"
 
-CreatureObjectImplementation::CreatureObjectImplementation(uint64 oid) : CreatureObjectServant(oid + 0x15) {
+CreatureObjectImplementation::CreatureObjectImplementation(uint64 oid) : CreatureObjectServant(oid + 0x15, NONPLAYERCREATURE) {
 	objectType = NONPLAYERCREATURE;
 
 	positionCounter = 0;
@@ -209,7 +209,7 @@ CreatureObjectImplementation::CreatureObjectImplementation(uint64 oid) : Creatur
 
 	watchID = 0;
 	listenID = 0;
-	
+
 	danceBuffDuration = 0.0f;
 	musicBuffDuration = 0.0f;
 
@@ -2475,6 +2475,7 @@ void CreatureObjectImplementation::removeLootItem(uint64 oid) {
 	lootContainer->removeObject(oid);
 }
 
+
 void CreatureObjectImplementation::addSkills(Vector<Skill*>& skills, bool updateClient) {
 	if (!isPlayer())
 		return;
@@ -3166,7 +3167,7 @@ void CreatureObjectImplementation::startWatch(uint64 entid) {
 		doWatching = true;
 	}
 	setEntertainerBuffDuration(PerformanceType::DANCE, 0.0f);
-	setEntertainerBuffStrength(PerformanceType::DANCE, 0.0f); 
+	setEntertainerBuffStrength(PerformanceType::DANCE, 0.0f);
 
 	info("started watching [" + creature->getCharacterName().c_str() + "]");
 
@@ -3369,14 +3370,14 @@ void CreatureObjectImplementation::activateEntertainerBuff(int performanceType) 
 	//cout << "activateEntertainerBuff(" << performanceType << ") called for " << getCharacterName().c_str() << " with duration: " << buffDuration << " strength: ";
 	//cout.precision(4);
 	//cout << buffStrength << endl;
-	
+
 	Buff *buff = NULL;
 	switch(performanceType){
 		case PerformanceType::MUSIC:
 			buff = new Buff(BuffCRC::PERFORMANCE_ENHANCE_MUSIC_FOCUS, BuffType::PERFORMANCE, buffDuration);
 			buff->setFocusBuff((int)round(buffStrength * getBaseFocus()));
 			applyBuff(buff);
-	
+
 			buff = new Buff(BuffCRC::PERFORMANCE_ENHANCE_MUSIC_WILLPOWER, BuffType::PERFORMANCE, buffDuration);
 			buff->setWillpowerBuff((int)round(buffStrength * getBaseWillpower()));
 			applyBuff(buff);
@@ -3449,7 +3450,7 @@ void CreatureObjectImplementation::doFlourish(const string& modifier) {
 
 		// Add buff
 		if (canGiveEntertainBuff()){
-			sendSystemMessage("Flourish Buff");
+			//sendSystemMessage("Flourish Buff");
 			addEntertainerFlourishBuff();
 		}
 
@@ -3459,6 +3460,7 @@ void CreatureObjectImplementation::doFlourish(const string& modifier) {
 	}
 }
 
+// TODO: can this be simplified by doing the building check in the ticker?
 void CreatureObjectImplementation::addEntertainerFlourishBuff() {
 	// Watchers that are in our group for passive buff
 	ManagedSortedVector<CreatureObject>* patrons = NULL;
@@ -3504,13 +3506,8 @@ void CreatureObjectImplementation::addEntertainerFlourishBuff() {
 
 				bool patronInRange = false;
 
-				if (obj->getParent() != NULL && obj->getParent()->isCell()) {
-					SceneObject* pp = obj->getParent();
-					BuildingObject* pb = (BuildingObject*)pp->getParent();
-
-					if (pb == getBuilding())
-						patronInRange = true;
-				}
+				if (obj->getBuilding() == getBuilding())
+					patronInRange = true;
 
 				if (patronInRange)
 					obj->addEntertainerBuffDuration(performance->getType(), 1.0f);
@@ -3531,6 +3528,7 @@ void CreatureObjectImplementation::addEntertainerFlourishBuff() {
 
 // Handle the Entertainer 'tick's
 void CreatureObjectImplementation::doEntertainerPatronEffects(bool healShock, bool healWounds, bool addBuff) {
+	info("CreatureObjectImplementation::doEntertainerPatronEffects() begin");
 	ManagedSortedVector<CreatureObject>* patrons = NULL;
 
 	//cout << "CreatureObjectImplementation::doEntertainerPatronEffects()" << endl;
@@ -3582,13 +3580,8 @@ void CreatureObjectImplementation::doEntertainerPatronEffects(bool healShock, bo
 
 				bool patronInRange = false;
 
-				if (obj->getParent() != NULL && obj->getParent()->isCell()) {
-					SceneObject *pp = obj->getParent();
-					BuildingObject* pb = (BuildingObject*)pp->getParent();
-
-					if (pb == getBuilding())
-						patronInRange = true;
-				}
+				if (obj->getBuilding() == getBuilding())
+					patronInRange = true;
 
 				if (patronInRange) {
 					if (healShock)
@@ -3631,6 +3624,7 @@ void CreatureObjectImplementation::doEntertainerPatronEffects(bool healShock, bo
 	} /*else
 		cout << "no patrons";*/
 
+	info("CreatureObjectImplementation::doEntertainerPatronEffects() end");
 }
 
 
@@ -4100,7 +4094,10 @@ void CreatureObjectImplementation::addBuff(int buffCRC, float duration) {
 	((PlayerImplementation*) this)->addBuff(buffCRC, duration);
 }
 
-void CreatureObjectImplementation::removeBuff(const uint32 buffCRC, bool remove) {
+// removeFromList - if iterating through all of the buffs, it could mess up
+// the iteration if the .get(i) is off...
+void CreatureObjectImplementation::removeBuff(const uint32 buffCRC, bool removeFromList) {
+	info("CreatureObjectImplementation::removeBuff started");
 	// TODO: call debuff?
 	if (!hasBuff(buffCRC))
 		return;
@@ -4110,21 +4107,28 @@ void CreatureObjectImplementation::removeBuff(const uint32 buffCRC, bool remove)
 	// Bad value return
 	if (buff == NULL) {
 		// if we should delete from the list then lets kill it
-		if (remove)
+		if (removeFromList)
 			creatureBuffs.drop(buffCRC);
 		return;
 	}
 
 	buff->deActivateBuff(_this);
 
-	// cleanup object
-	//buff->finalize();
-	//delete buff;
-	buff = NULL;
+	// cleanup buff
+	try {
+		delete buff;
+		buff = NULL;
+	} catch (...)
+	{
+		stringstream msg;
+		msg << "CreatureObjectImplementation::removeBuff exception around deleting buff (" << hex << buffCRC << dec << ")";
+		info(msg.str());
+	}
 
 	// remove from list
-	if (remove)
+	if (removeFromList)
 		creatureBuffs.drop(buffCRC);
+	info("CreatureObjectImplementation::removeBuff completed");
 }
 
 
@@ -4186,8 +4190,7 @@ void CreatureObjectImplementation::removeBuffs(bool doUpdateCreature) {
 	{
 		Buff *buff = creatureBuffs.get(i);
 		if (buff != NULL) {
-			removeBuff(buff->getBuffCRC(), false);
-			// delete buff; // don't need this removeBuff does it
+			removeBuff(buff->getBuffCRC(), false); // dont't remove from the list yet
 		}
 	}
 	creatureBuffs.removeAll();

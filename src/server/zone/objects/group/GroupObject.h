@@ -125,7 +125,7 @@ public:
 	GroupObject* _this;
 
 public:
-	GroupObjectServant(unsigned long long oid);
+	GroupObjectServant(unsigned long long oid, int type);
 	virtual ~GroupObjectServant();
 
 	void _setStub(DistributedObjectStub* stub);

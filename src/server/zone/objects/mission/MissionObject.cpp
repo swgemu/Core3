@@ -924,7 +924,7 @@ DistributedObjectAdapter* MissionObjectHelper::createAdapter(DistributedObjectSt
  *	MissionObjectServant
  */
 
-MissionObjectServant::MissionObjectServant(unsigned long long oid) : SceneObjectImplementation(oid) {
+MissionObjectServant::MissionObjectServant(unsigned long long oid, int type) : SceneObjectImplementation(oid, type) {
 	_classHelper = MissionObjectHelper::instance();
 }
 

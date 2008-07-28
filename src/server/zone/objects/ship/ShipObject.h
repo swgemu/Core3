@@ -223,7 +223,7 @@ public:
 	ShipObject* _this;
 
 public:
-	ShipObjectServant(unsigned long long oid);
+	ShipObjectServant(unsigned long long oid, int type);
 	virtual ~ShipObjectServant();
 
 	void _setStub(DistributedObjectStub* stub);
