@@ -79,6 +79,7 @@ void ScriptAttacksManager::registerFunctions() {
 	lua_register(getLuaState(), "AddHealTargetSkill", AddHealTargetSkill);
 	lua_register(getLuaState(), "AddHealEnhanceTargetSkill", AddHealEnhanceTargetSkill);
 	lua_register(getLuaState(), "AddHealDamageTargetSkill", AddHealDamageTargetSkill);
+	lua_register(getLuaState(), "AddHealWoundTargetSkill", AddHealWoundTargetSkill);
 	lua_register(getLuaState(), "AddDeBuffAttackTargetSkill", AddDeBuffAttackTargetSkill);
 	lua_register(getLuaState(), "AddEnhanceSelfSkill", AddEnhanceSelfSkill);
 	lua_register(getLuaState(), "AddDotPoolAttackTargetSkill", AddDotPoolAttackTargetSkill);
@@ -91,8 +92,7 @@ void ScriptAttacksManager::registerFunctions() {
 	lua_register(getLuaState(), "AddDanceEffectSkill", AddDanceEffectSkill);
 	lua_register(getLuaState(), "AddMusicEffectSkill", AddMusicEffectSkill);
 	lua_register(getLuaState(), "AddForceRunSelfSkill", AddForceRunSelfSkill);
-
-
+	lua_register(getLuaState(), "AddDiagnoseTargetSkill", AddDiagnoseTargetSkill);
 }
 
 void ScriptAttacksManager::registerGlobals() {
@@ -766,6 +766,29 @@ int ScriptAttacksManager::AddHealEnhanceTargetSkill(lua_State* L) {
 	return 0;
 }
 
+int ScriptAttacksManager::AddHealWoundTargetSkill(lua_State* L) {
+	LuaObject skill(L);
+
+	if (!skill.isValidTable())
+		return 0;
+
+	HealWoundTargetSkill* heal;
+
+	string skillname = skill.getStringField("skillname");
+	string animation = skill.getStringField("animation");
+	string effect = skill.getStringField("effect");
+
+	int mindCost = skill.getIntField("mindCost");
+	float range = skill.getFloatField("range");
+
+	heal = new HealWoundTargetSkill(skillname, effect.c_str(), server);
+	heal->setSecondaryAnim(animation);
+	heal->setMindCost(mindCost);
+	heal->setRange(range);
+
+	CombatActions->put(heal);
+	return 0;
+}
 
 int ScriptAttacksManager::AddHealDamageTargetSkill(lua_State* L) {
 	LuaObject skill(L);
@@ -1142,5 +1165,30 @@ int ScriptAttacksManager::AddForceRunSelfSkill(lua_State *L) {
 	frun->setForceCost(forceCost);
 
 	CombatActions->put(frun);
+	return 0;
+}
+
+int ScriptAttacksManager::AddDiagnoseTargetSkill(lua_State* L) {
+	LuaObject skill(L);
+
+	if (!skill.isValidTable())
+		return 0;
+
+	DiagnoseTargetSkill* diagnose;
+
+	string skillname = skill.getStringField("skillname");
+	string animation = skill.getStringField("animation");
+	string effect = skill.getStringField("effect");
+
+	int mindCost = skill.getIntField("mindCost");
+	float range = skill.getFloatField("range");
+
+	diagnose = new DiagnoseTargetSkill(skillname, effect.c_str(), server);
+	diagnose->setSecondaryAnim(animation);
+	diagnose->setMindCost(mindCost);
+	diagnose->setRange(range);
+
+
+	CombatActions->put(diagnose);
 	return 0;
 }

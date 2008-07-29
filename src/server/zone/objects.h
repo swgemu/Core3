@@ -162,6 +162,8 @@ which carries forward this exception.
 #include "objects/tangible/pharmaceutical/PharmaceuticalImplementation.h"
 #include "objects/tangible/pharmaceutical/EnhancePack.h"
 #include "objects/tangible/pharmaceutical/EnhancePackImplementation.h"
+#include "objects/tangible/pharmaceutical/WoundPack.h"
+#include "objects/tangible/pharmaceutical/WoundPackImplementation.h"
 #include "objects/tangible/pharmaceutical/StimPack.h"
 #include "objects/tangible/pharmaceutical/StimPackImplementation.h"
 

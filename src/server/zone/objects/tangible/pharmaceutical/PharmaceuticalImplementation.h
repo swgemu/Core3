@@ -116,7 +116,7 @@ public:
 		setUsesRemaining(getUsesRemaining() - 1);
 
 		if (getUsesRemaining() <= 0) {
-			_this->sendDestroyTo(player);
+			//_this->sendDestroyTo(player);
 
 			Zone* zone = player->getZone();
 

@@ -14,7 +14,7 @@ enhancepack_quickness_d = Object:new {
 	
 	medicineUse = 93,
 	
-	effectiveness = 800,
+	effectiveness = 880,
 	
 	duration = 9900,
 	

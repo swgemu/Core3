@@ -289,7 +289,7 @@ public:
 	PlayerObject* _this;
 
 public:
-	PlayerObjectServant();
+	PlayerObjectServant(unsigned long long oid, int type);
 	virtual ~PlayerObjectServant();
 
 	void _setStub(DistributedObjectStub* stub);

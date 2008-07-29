@@ -711,6 +711,8 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 		case (0xC8998CE9): //flourish
 		case (0xEEE029CF): //healenhance <poolaffected>
 		case (0x0A9F00A0): //healdamage <targetname>
+		case (0x2087CE04): //healwound <poolaffected>
+		case (0xDC7CF134): //diagnose
 		{
 			unicode option = unicode("");
 			pack->parseUnicode(option);
@@ -918,7 +920,6 @@ void ObjectControllerMessage::parseCharacterSheetInfoRequest(Player* player, Mes
 	CharacterSheetResponseMessage* csrm = new CharacterSheetResponseMessage(objectid);
 	player->sendMessage(csrm);
 }
-
 
 void ObjectControllerMessage::parseBiographyRequest(Player* player, Message *pack) {
 	uint64 objectid = pack->parseLong();
@@ -1219,12 +1220,12 @@ void ObjectControllerMessage::parseImageDesignChange(Player* player, Message* pa
 
 		// This is a helper class for a bunch of the embedded logic
 		ImageDesignCustomization* customization = NULL;
-		
+
 		try {
-			
+
 			if (target_object != NULL && player != target_object)
 				target_object->wlock(player);
-		
+
 			if (commitChanges)
 				customization = new ImageDesignCustomization(serv, ((CreatureObject *)target_object));
 
@@ -1237,25 +1238,25 @@ void ObjectControllerMessage::parseImageDesignChange(Player* player, Message* pa
 					string attr;
 					pack->parseAscii(attr);
 					float val = pack->parseFloat();
-	
+
 					// Pack
 					msg_designer->insertAscii(attr);
 					msg_designer->insertFloat(val);
 					msg_target->insertAscii(attr);
 					msg_target->insertFloat(val);
-	
+
 					if(commitChanges)
 						customization->updateCustomization(attr, val);
 				}
 			}
-	
+
 			// Parse
 			uint32 size_int_attrs = pack->parseInt();
-	
+
 			// Pack
 			msg_designer->insertInt(size_int_attrs);
 			msg_target->insertInt(size_int_attrs);
-	
+
 			// Parse
 			if(size_int_attrs > 0)
 			{
@@ -1265,18 +1266,18 @@ void ObjectControllerMessage::parseImageDesignChange(Player* player, Message* pa
 					string attr;
 					pack->parseAscii(attr);
 					uint32 val = pack->parseInt();
-	
+
 					// Pack
 					msg_designer->insertAscii(attr.c_str());
 					msg_designer->insertInt(val);
 					msg_target->insertAscii(attr.c_str());
 					msg_target->insertInt(val);
-	
+
 					if(commitChanges)
 						customization->updateCustomization(attr, val);
 				}
 			}
-			
+
 			if (target_object != NULL && player != target_object)
 				target_object->unlock();
 		} catch (...) {

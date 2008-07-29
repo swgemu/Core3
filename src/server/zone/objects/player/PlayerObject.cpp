@@ -1143,7 +1143,7 @@ DistributedObjectAdapter* PlayerObjectHelper::createAdapter(DistributedObjectStu
  *	PlayerObjectServant
  */
 
-PlayerObjectServant::PlayerObjectServant() : SceneObjectImplementation() {
+PlayerObjectServant::PlayerObjectServant(unsigned long long oid, int type) : SceneObjectImplementation(oid, type) {
 	_classHelper = PlayerObjectHelper::instance();
 }
 

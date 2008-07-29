@@ -42,60 +42,69 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef SCRIPTATTACKSMANAGER_H_
-#define SCRIPTATTACKSMANAGER_H_
+#include "WoundPack.h"
+#include "WoundPackImplementation.h"
 
-#include "engine/engine.h"
+#include "../../../objects.h"
 
-class ZoneProcessServerImplementation;
-class SkillList;
+WoundPackImplementation::WoundPackImplementation(uint64 oid, uint32 tempCRC, const unicode& n, const string& tempn)
+		: WoundPackServant(oid, tempCRC, n, tempn, WOUNDPACK) {
+	initialize();
+}
+WoundPackImplementation::WoundPackImplementation(CreatureObject* creature, uint32 tempCRC, const unicode& n, const string& tempn)
+		: WoundPackServant(creature, tempCRC, n, tempn, WOUNDPACK) {
 
-class ScriptAttacksManager : public Lua {
-	static ZoneProcessServerImplementation* server;
-	static SkillList* CombatActions;
+	name = n;
+	templateName = tempn;
 
-public:
-	ScriptAttacksManager(ZoneProcessServerImplementation* serv);
+	initialize();
+}
 
-	void registerFunctions();
-	void registerGlobals();
+int WoundPackImplementation::useObject(Player* player) {
+	uint64 targetID = player->getTargetID();
+	uint32 actionCRC = 0x2087CE04;
+	uint32 actionCntr = 0;
 
-	bool loadSkillsFile(SkillList* cmbtActions) {
-		CombatActions = cmbtActions;
-		info("Loading skills...");
-		return runFile("scripts/skills/skills.lua");
-	}
+	stringstream actionModifier;
+	actionModifier << getPoolName(getPoolAffected()) << "|" << objectID;
 
-	//lua functions
-	static int RunSkillsFile(lua_State* L);
+	player->queueAction(player, targetID, actionCRC, actionCntr, actionModifier.str());
 
-	// AddSkills functions
-	static int AddRandomPoolAttackTargetSkill(lua_State* L);
-	static int AddForceRandomPoolAttackTargetSkill(lua_State* L);
-	static int AddForceDotPoolAttackTargetSkill(lua_State *L);
-	static int AddDirectPoolAttackTargetSkill(lua_State* L);
-	static int AddForceHealSelfSkill(lua_State* L);
-	static int AddHealSelfSkill(lua_State* L);
-	static int AddDeBuffAttackTargetSkill(lua_State* L);
-	static int AddEnhanceSelfSkill(lua_State* L);
-	static int AddDotPoolAttackTargetSkill(lua_State *L);
-	static int AddChangePostureSelfSkill(lua_State* L);
-	static int AddWoundsDirectPoolAttackTargetSkill(lua_State* L);
-	static int AddPassiveSkill(lua_State* L);
-	static int AddMeditateSkill(lua_State* L);
-	static int AddHealTargetSkill(lua_State* L);
-	static int AddHealEnhanceTargetSkill(lua_State* L);
-	static int AddHealDamageTargetSkill(lua_State* L);
-	static int AddHealWoundTargetSkill(lua_State* L);
-	static int AddDiagnoseTargetSkill(lua_State* L);
+	return 0;
+}
 
-	static int AddEntertainSkill(lua_State* L);
-	static int AddEntertainEffectSkill(lua_State* L);
-	static int AddDanceEffectSkill(lua_State* L);
-	static int AddMusicEffectSkill(lua_State* L);
-	static int AddForceRunSelfSkill(lua_State *L);
+void WoundPackImplementation::initialize() {
+	setEffectiveness(0.0f);
+	setPoolAffected(UNKNOWN);
+}
 
-};
+void WoundPackImplementation::parseItemAttributes() {
+	PharmaceuticalImplementation::parseItemAttributes();
 
+	string attr = "effectiveness";
+	setEffectiveness(itemAttributes->getFloatAttribute(attr));
+	attr = "poolAffected";
+	setPoolAffected(itemAttributes->getIntAttribute(attr));
+}
 
-#endif /*SCRIPTATTACKSMANAGER_H_*/
+void WoundPackImplementation::addAttributes(AttributeListMessage* alm) {
+	PharmaceuticalImplementation::addHeaderAttributes(alm);
+
+	stringstream eff;
+	eff << "examine_heal_wound_" << getPoolName(getPoolAffected());
+	alm->insertAttribute(string(eff.str()), getEffectiveness());
+
+	PharmaceuticalImplementation::addFooterAttributes(alm);
+}
+
+void WoundPackImplementation::generateAttributes(SceneObject* obj) {
+	if (!obj->isPlayer())
+		return;
+
+	Player* player = (Player*) obj;
+	AttributeListMessage* alm = new AttributeListMessage((TangibleObject*) _this);
+
+	addAttributes(alm);
+
+	player->sendMessage(alm);
+}

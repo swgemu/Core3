@@ -192,6 +192,12 @@ void CombatManager::handleAreaAction(CreatureObject* creature, SceneObject* targ
 			if (!creature->isPlayer() && !targetObject->isPlayer())
 				continue;
 
+			Player* playerTarget = (Player*) targetObject;
+
+			if (targetObject->isPlayer() && (playerTarget->isIncapacitated() || playerTarget->isDead()))
+				continue;
+
+
 			if (creature->getParent() != targetObject->getParent())
 				continue;
 

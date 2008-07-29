@@ -65,6 +65,11 @@ int StimPackImplementation::useObject(Player* player) {
 	if (targetPlayer == NULL || !targetPlayer->isPlayer())
 		targetPlayer = player;
 
+	if (player->getSkillMod("healing_ability") < getMedicineUseRequired()) {
+		player->sendSystemMessage("error_message", "insufficient_skill"); //You lack the skill to use this item.
+		return 0;
+	}
+
 	uint64 targetID = player->getTargetID();
 	uint32 actionCRC = 0x0A9F00A0;
 	uint32 actionCntr = 0;

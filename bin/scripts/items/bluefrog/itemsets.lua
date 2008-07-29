@@ -48,3 +48,4 @@ RunItemLUAFile("bluefrog/wookiee_armor_set.lua");
 RunItemLUAFile("bluefrog/ith_armor_set.lua");
 RunItemLUAFile("bluefrog/enhancepack_set.lua");
 RunItemLUAFile("bluefrog/stimpack_set.lua");
+RunItemLUAFile("bluefrog/woundpack_set.lua");

@@ -115,16 +115,17 @@ am__objects_1 = Zone.$(OBJEXT) ZoneClient.$(OBJEXT) \
 	GuildTerminal.$(OBJEXT) VendorTerminal.$(OBJEXT) \
 	RegionBazaar.$(OBJEXT) TicketCollector.$(OBJEXT) \
 	Instrument.$(OBJEXT) Pharmaceutical.$(OBJEXT) \
-	EnhancePack.$(OBJEXT) StimPack.$(OBJEXT) LairObject.$(OBJEXT) \
-	SurveyTool.$(OBJEXT) CraftingTool.$(OBJEXT) \
-	Component.$(OBJEXT) FactoryCrate.$(OBJEXT) \
-	CraftingStation.$(OBJEXT) ResourceContainer.$(OBJEXT) \
-	Attachment.$(OBJEXT) Powerup.$(OBJEXT) Holocron.$(OBJEXT) \
-	Firework.$(OBJEXT) CreatureInventory.$(OBJEXT) \
-	IntangibleObject.$(OBJEXT) StaticObject.$(OBJEXT) \
-	FireworkWorld.$(OBJEXT) GroupObject.$(OBJEXT) Guild.$(OBJEXT) \
-	CellObject.$(OBJEXT) BuildingObject.$(OBJEXT) \
-	DraftSchematic.$(OBJEXT) DraftSchematicGroup.$(OBJEXT) \
+	EnhancePack.$(OBJEXT) WoundPack.$(OBJEXT) StimPack.$(OBJEXT) \
+	LairObject.$(OBJEXT) SurveyTool.$(OBJEXT) \
+	CraftingTool.$(OBJEXT) Component.$(OBJEXT) \
+	FactoryCrate.$(OBJEXT) CraftingStation.$(OBJEXT) \
+	ResourceContainer.$(OBJEXT) Attachment.$(OBJEXT) \
+	Powerup.$(OBJEXT) Holocron.$(OBJEXT) Firework.$(OBJEXT) \
+	CreatureInventory.$(OBJEXT) IntangibleObject.$(OBJEXT) \
+	StaticObject.$(OBJEXT) FireworkWorld.$(OBJEXT) \
+	GroupObject.$(OBJEXT) Guild.$(OBJEXT) CellObject.$(OBJEXT) \
+	BuildingObject.$(OBJEXT) DraftSchematic.$(OBJEXT) \
+	DraftSchematicGroup.$(OBJEXT) \
 	DraftSchematicIngredient.$(OBJEXT) \
 	DraftSchematicExpPropGroup.$(OBJEXT) \
 	DraftSchematicAttribute.$(OBJEXT) \
@@ -166,6 +167,7 @@ am_core3_OBJECTS = $(am__objects_1) ServerCore.$(OBJEXT) \
 	ResourceContainerImplementation.$(OBJEXT) \
 	PharmaceuticalImplementation.$(OBJEXT) \
 	EnhancePackImplementation.$(OBJEXT) \
+	WoundPackImplementation.$(OBJEXT) \
 	StimPackImplementation.$(OBJEXT) \
 	AttachmentImplementation.$(OBJEXT) \
 	PowerupImplementation.$(OBJEXT) TicketImplementation.$(OBJEXT) \
@@ -393,6 +395,7 @@ core3_IDLS = server/zone/Zone.cpp \
 		server/zone/objects/tangible/instrument/Instrument.cpp \
 		server/zone/objects/tangible/pharmaceutical/Pharmaceutical.cpp \
 		server/zone/objects/tangible/pharmaceutical/EnhancePack.cpp \
+		server/zone/objects/tangible/pharmaceutical/WoundPack.cpp \
 		server/zone/objects/tangible/pharmaceutical/StimPack.cpp \
 		server/zone/objects/attackable/lair/LairObject.cpp \
 		server/zone/objects/tangible/surveytool/SurveyTool.cpp \
@@ -474,6 +477,7 @@ core3_SOURCES = $(core3_IDLS) \
 		server/zone/objects/tangible/resource/ResourceContainerImplementation.cpp \
 		server/zone/objects/tangible/pharmaceutical/PharmaceuticalImplementation.cpp \
 		server/zone/objects/tangible/pharmaceutical/EnhancePackImplementation.cpp \
+		server/zone/objects/tangible/pharmaceutical/WoundPackImplementation.cpp \
 		server/zone/objects/tangible/pharmaceutical/StimPackImplementation.cpp \
 		server/zone/objects/tangible/attachment/AttachmentImplementation.cpp \
 		server/zone/objects/tangible/powerup/PowerupImplementation.cpp \
@@ -778,6 +782,8 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Weapon.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/WeaponImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Wearable.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/WoundPack.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/WoundPackImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Zone.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ZoneClient.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ZoneClientImplementation.Po@am__quote@
@@ -1642,6 +1648,20 @@ EnhancePack.obj: server/zone/objects/tangible/pharmaceutical/EnhancePack.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/pharmaceutical/EnhancePack.cpp' object='EnhancePack.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o EnhancePack.obj `if test -f 'server/zone/objects/tangible/pharmaceutical/EnhancePack.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/pharmaceutical/EnhancePack.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/pharmaceutical/EnhancePack.cpp'; fi`
+
+WoundPack.o: server/zone/objects/tangible/pharmaceutical/WoundPack.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT WoundPack.o -MD -MP -MF $(DEPDIR)/WoundPack.Tpo -c -o WoundPack.o `test -f 'server/zone/objects/tangible/pharmaceutical/WoundPack.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/pharmaceutical/WoundPack.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/WoundPack.Tpo $(DEPDIR)/WoundPack.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/pharmaceutical/WoundPack.cpp' object='WoundPack.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o WoundPack.o `test -f 'server/zone/objects/tangible/pharmaceutical/WoundPack.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/pharmaceutical/WoundPack.cpp
+
+WoundPack.obj: server/zone/objects/tangible/pharmaceutical/WoundPack.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT WoundPack.obj -MD -MP -MF $(DEPDIR)/WoundPack.Tpo -c -o WoundPack.obj `if test -f 'server/zone/objects/tangible/pharmaceutical/WoundPack.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/pharmaceutical/WoundPack.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/pharmaceutical/WoundPack.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/WoundPack.Tpo $(DEPDIR)/WoundPack.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/pharmaceutical/WoundPack.cpp' object='WoundPack.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o WoundPack.obj `if test -f 'server/zone/objects/tangible/pharmaceutical/WoundPack.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/pharmaceutical/WoundPack.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/pharmaceutical/WoundPack.cpp'; fi`
 
 StimPack.o: server/zone/objects/tangible/pharmaceutical/StimPack.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT StimPack.o -MD -MP -MF $(DEPDIR)/StimPack.Tpo -c -o StimPack.o `test -f 'server/zone/objects/tangible/pharmaceutical/StimPack.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/pharmaceutical/StimPack.cpp
@@ -2748,6 +2768,20 @@ EnhancePackImplementation.obj: server/zone/objects/tangible/pharmaceutical/Enhan
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/pharmaceutical/EnhancePackImplementation.cpp' object='EnhancePackImplementation.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o EnhancePackImplementation.obj `if test -f 'server/zone/objects/tangible/pharmaceutical/EnhancePackImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/pharmaceutical/EnhancePackImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/pharmaceutical/EnhancePackImplementation.cpp'; fi`
+
+WoundPackImplementation.o: server/zone/objects/tangible/pharmaceutical/WoundPackImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT WoundPackImplementation.o -MD -MP -MF $(DEPDIR)/WoundPackImplementation.Tpo -c -o WoundPackImplementation.o `test -f 'server/zone/objects/tangible/pharmaceutical/WoundPackImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/pharmaceutical/WoundPackImplementation.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/WoundPackImplementation.Tpo $(DEPDIR)/WoundPackImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/pharmaceutical/WoundPackImplementation.cpp' object='WoundPackImplementation.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o WoundPackImplementation.o `test -f 'server/zone/objects/tangible/pharmaceutical/WoundPackImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/pharmaceutical/WoundPackImplementation.cpp
+
+WoundPackImplementation.obj: server/zone/objects/tangible/pharmaceutical/WoundPackImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT WoundPackImplementation.obj -MD -MP -MF $(DEPDIR)/WoundPackImplementation.Tpo -c -o WoundPackImplementation.obj `if test -f 'server/zone/objects/tangible/pharmaceutical/WoundPackImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/pharmaceutical/WoundPackImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/pharmaceutical/WoundPackImplementation.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/WoundPackImplementation.Tpo $(DEPDIR)/WoundPackImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/pharmaceutical/WoundPackImplementation.cpp' object='WoundPackImplementation.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o WoundPackImplementation.obj `if test -f 'server/zone/objects/tangible/pharmaceutical/WoundPackImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/pharmaceutical/WoundPackImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/pharmaceutical/WoundPackImplementation.cpp'; fi`
 
 StimPackImplementation.o: server/zone/objects/tangible/pharmaceutical/StimPackImplementation.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT StimPackImplementation.o -MD -MP -MF $(DEPDIR)/StimPackImplementation.Tpo -c -o StimPackImplementation.o `test -f 'server/zone/objects/tangible/pharmaceutical/StimPackImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/pharmaceutical/StimPackImplementation.cpp

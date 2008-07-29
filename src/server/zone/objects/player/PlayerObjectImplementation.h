@@ -59,7 +59,7 @@ which carries forward this exception.
 class Player;
 class FriendsList;
 
-class PlayerObjectImplementation : public SceneObjectImplementation {
+class PlayerObjectImplementation : public PlayerObjectServant {
 	Player* player;
 
 	// PLAY8 operands

@@ -42,60 +42,51 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef SCRIPTATTACKSMANAGER_H_
-#define SCRIPTATTACKSMANAGER_H_
+#ifndef WOUNDPACKIMPLEMENTATION_H_
+#define WOUNDPACKIMPLEMENTATION_H_
 
-#include "engine/engine.h"
+#include "../../creature/CreatureObject.h"
 
-class ZoneProcessServerImplementation;
-class SkillList;
+#include "WoundPack.h"
 
-class ScriptAttacksManager : public Lua {
-	static ZoneProcessServerImplementation* server;
-	static SkillList* CombatActions;
+class WoundPackImplementation : public WoundPackServant {
+protected:
+	float effectiveness;
+	int poolAffected;
 
 public:
-	ScriptAttacksManager(ZoneProcessServerImplementation* serv);
+	WoundPackImplementation(uint64 oid, uint32 tempCRC, const unicode& n, const string& tempn);
+	WoundPackImplementation(CreatureObject* creature, uint32 tempCRC, const unicode& n, const string& tempn);
 
-	void registerFunctions();
-	void registerGlobals();
+	void initialize();
 
-	bool loadSkillsFile(SkillList* cmbtActions) {
-		CombatActions = cmbtActions;
-		info("Loading skills...");
-		return runFile("scripts/skills/skills.lua");
+	int useObject(Player* player);
+
+	void generateAttributes(SceneObject* obj);
+
+	void parseItemAttributes();
+
+	void addAttributes(AttributeListMessage* alm);
+
+	inline void setEffectiveness(float eff) {
+		effectiveness = eff;
+		string attr = "effectiveness";
+		itemAttributes->setFloatAttribute(attr, effectiveness);
 	}
 
-	//lua functions
-	static int RunSkillsFile(lua_State* L);
+	inline void setPoolAffected(int pool) {
+		poolAffected = pool;
+		string attr = "poolAffected";
+		itemAttributes->setIntAttribute(attr, poolAffected);
+	}
 
-	// AddSkills functions
-	static int AddRandomPoolAttackTargetSkill(lua_State* L);
-	static int AddForceRandomPoolAttackTargetSkill(lua_State* L);
-	static int AddForceDotPoolAttackTargetSkill(lua_State *L);
-	static int AddDirectPoolAttackTargetSkill(lua_State* L);
-	static int AddForceHealSelfSkill(lua_State* L);
-	static int AddHealSelfSkill(lua_State* L);
-	static int AddDeBuffAttackTargetSkill(lua_State* L);
-	static int AddEnhanceSelfSkill(lua_State* L);
-	static int AddDotPoolAttackTargetSkill(lua_State *L);
-	static int AddChangePostureSelfSkill(lua_State* L);
-	static int AddWoundsDirectPoolAttackTargetSkill(lua_State* L);
-	static int AddPassiveSkill(lua_State* L);
-	static int AddMeditateSkill(lua_State* L);
-	static int AddHealTargetSkill(lua_State* L);
-	static int AddHealEnhanceTargetSkill(lua_State* L);
-	static int AddHealDamageTargetSkill(lua_State* L);
-	static int AddHealWoundTargetSkill(lua_State* L);
-	static int AddDiagnoseTargetSkill(lua_State* L);
+	inline float getEffectiveness() {
+		return effectiveness;
+	}
 
-	static int AddEntertainSkill(lua_State* L);
-	static int AddEntertainEffectSkill(lua_State* L);
-	static int AddDanceEffectSkill(lua_State* L);
-	static int AddMusicEffectSkill(lua_State* L);
-	static int AddForceRunSelfSkill(lua_State *L);
-
+	inline int getPoolAffected() {
+		return poolAffected;
+	}
 };
 
-
-#endif /*SCRIPTATTACKSMANAGER_H_*/
+#endif /* WOUNDPACKIMPLEMENTATION_H_ */

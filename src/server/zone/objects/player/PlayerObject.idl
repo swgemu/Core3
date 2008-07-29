@@ -58,7 +58,7 @@ import "../../managers/player/PlayerManager";
 
 interface PlayerObject implements SceneObject {
 	PlayerObject(Player player) {
-		super();
+		super(unsigned long oid, int type);
 	}
 
 	void sendToOwner();

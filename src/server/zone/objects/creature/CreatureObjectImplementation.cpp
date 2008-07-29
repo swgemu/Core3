@@ -3374,16 +3374,16 @@ void CreatureObjectImplementation::activateEntertainerBuff(int performanceType) 
 	Buff *buff = NULL;
 	switch(performanceType){
 		case PerformanceType::MUSIC:
-			buff = new Buff(BuffCRC::PERFORMANCE_ENHANCE_MUSIC_FOCUS, BuffType::PERFORMANCE, buffDuration);
+			buff = new Buff(BuffCRC::PERFORMANCE_ENHANCE_MUSIC_FOCUS, BuffType::PERFORMANCE, buffDuration * 60);
 			buff->setFocusBuff((int)round(buffStrength * getBaseFocus()));
 			applyBuff(buff);
 
-			buff = new Buff(BuffCRC::PERFORMANCE_ENHANCE_MUSIC_WILLPOWER, BuffType::PERFORMANCE, buffDuration);
+			buff = new Buff(BuffCRC::PERFORMANCE_ENHANCE_MUSIC_WILLPOWER, BuffType::PERFORMANCE, buffDuration * 60);
 			buff->setWillpowerBuff((int)round(buffStrength * getBaseWillpower()));
 			applyBuff(buff);
 			break;
 		case PerformanceType::DANCE:
-			buff = new Buff(BuffCRC::PERFORMANCE_ENHANCE_DANCE_MIND, BuffType::PERFORMANCE, buffDuration);
+			buff = new Buff(BuffCRC::PERFORMANCE_ENHANCE_DANCE_MIND, BuffType::PERFORMANCE, buffDuration * 60);
 			buff->setMindBuff((int)round(buffStrength * getBaseMind()));
 			applyBuff(buff);
 	}
@@ -4387,7 +4387,9 @@ int CreatureObjectImplementation::getMedicalFacilityRating() {
 	if (!isInBuilding()) //TODO: Add in search for nearby surgical droid
 		return 0;
 
-	if (getBuildingType() == BuildingObjectImplementation::MEDICAL_CENTER)
+	int buildingType = getBuildingType();
+
+	if (buildingType == BuildingObjectImplementation::MEDICAL_CENTER || buildingType == BuildingObjectImplementation::CLONING_FACILITY)
 		return 100;
 
 	return 65;

@@ -49,17 +49,18 @@ which carries forward this exception.
 #include "../../../tangible/pharmaceutical/PharmaceuticalImplementation.h"
 #include "../../../tangible/pharmaceutical/EnhancePackImplementation.h"
 
+#include "../../../../managers/player/PlayerManager.h"
+
 class HealEnhanceTargetSkill : public TargetSkill {
 protected:
 	string effectName;
-
 	int mindCost;
 
 public:
 	HealEnhanceTargetSkill(const string& name, const char* aname, ZoneProcessServerImplementation* serv) : TargetSkill(name, aname, HEAL, serv) {
 		effectName = aname;
-
 		mindCost = 0;
+
 	}
 
 	void doAnimations(CreatureObject* creature, CreatureObject* creatureTarget) {
@@ -72,19 +73,95 @@ public:
 			creature->doAnimation("heal_other");
 	}
 
+	EnhancePack* findMedpack(CreatureObject* creature, const string& modifier, int& poolAffected) {
+		EnhancePack* enhancePack = NULL;
+		int medicineUse = creature->getSkillMod("healing_ability");
+
+		if (!modifier.empty()) {
+			StringTokenizer tokenizer(modifier);
+			string poolName;
+			uint64 objectid = 0;
+
+			tokenizer.setDelimeter("|");
+
+			tokenizer.getStringToken(poolName);
+
+			cout << "Pool name is " << poolName << endl;
+
+			poolAffected = PharmaceuticalImplementation::getPoolFromName(poolName);
+
+			cout << "Pool affected is " << poolAffected << endl;
+
+			if (tokenizer.hasMoreTokens())
+				objectid = tokenizer.getLongToken();
+
+			if (objectid > 0) {
+				enhancePack = (EnhancePack*) creature->getInventoryItem(objectid);
+
+				if (enhancePack != NULL && enhancePack->isEnhancePack() && enhancePack->getMedicineUseRequired() <= medicineUse)
+					return enhancePack;
+			}
+
+			if (objectid > 0) {
+				cout << "the specified pack didnt exist" << endl;
+			} else {
+				cout << "thir was no specified pack" << endl;
+			}
+		} else {
+			poolAffected = PharmaceuticalImplementation::UNKNOWN;
+			return NULL;
+		}
+
+		Inventory* inventory = creature->getInventory();
+
+		for (int i=0; i<inventory->objectsSize(); i++) {
+			TangibleObject* item = (TangibleObject*) inventory->getObject(i);
+
+			if (item != NULL && item->isPharmaceutical()) {
+				enhancePack = (EnhancePack*) item;
+
+				if (enhancePack->isEnhancePack()
+						&& enhancePack->getMedicineUseRequired() <= medicineUse
+						&& enhancePack->getPoolAffected() == poolAffected)
+					return enhancePack;
+			}
+		}
+
+		return NULL; //Never found a stimpack
+	}
+
 	int doSkill(CreatureObject* creature, SceneObject* target, const string& modifier, bool doAnimation = true) {
 		CreatureObject* creatureTarget;
 		EnhancePack* enhancePack = NULL;
+
 		int poolAffected = 0;
 		int buffPower = 0;
+		int currentPower = 0;
+		int amountBuffed = 0;
+		int battleFatigue = 0;
+		int modEnvironment = creature->getMedicalFacilityRating();
 
-		if (target == creature) {
-			creatureTarget = creature;
-		} else {
+		enhancePack = findMedpack(creature, modifier, poolAffected);
+
+		if (target->isPlayer() || target->isNonPlayerCreature()) {
 			creatureTarget = (CreatureObject*) target;
+		} else {
+			creature->sendSystemMessage("healing_response", "healing_response_77"); //Target must be a player or a creature pet in order to apply enhancements.
+			return 0;
 		}
 
-		enhancePack = findEnhancePack(creature, modifier, poolAffected);
+		if (creatureTarget != creature
+				&& (creatureTarget->isDead()
+						|| creatureTarget->isRidingCreature()
+						|| creatureTarget->isMounted())) {
+			//If the target is dead or mounted, then make self the target.
+			creatureTarget = creature;
+		}
+
+		if (!creature->canTreatWounds()) {
+			creature->sendSystemMessage("healing_response", "enhancement_must_wait"); //You must wait before you can heal wounds or apply enhancements again.
+			return 0;
+		}
 
 		if (poolAffected == PharmaceuticalImplementation::UNKNOWN) {
 			creature->sendSystemMessage("healing_response", "healing_response_75"); //You must specify a valid attribute.
@@ -96,82 +173,178 @@ public:
 			return 0;
 		}
 
-		if (!creature->canTreatWounds()) {
-			creature->sendSystemMessage("healing_response", "enhancement_must_wait"); //You must wait before you can heal wounds or apply enhancements again.
+		if (modEnvironment <= 0) {
+			creature->sendSystemMessage("healing_response", "must_be_near_droid"); //You must be in a hospital, at a campsite, or near a surgical droid to do that.
 			return 0;
 		}
 
-		if (!calculateEnhance(creature, creatureTarget, enhancePack, poolAffected, buffPower))
+		if (creature->isRidingCreature()) {
+			creature->sendSystemMessage("You cannot do that while Riding a Creature.");
 			return 0;
+		}
+
+		if (creature->isMounted()) {
+			creature->sendSystemMessage("You cannot do that while Driving a Vehicle.");
+			return 0;
+		}
+
+		if (creature->isInCombat()) {
+			creature->sendSystemMessage("You cannot do that while in Combat.");
+			return 0;
+		}
+
+		if (creatureTarget->isInCombat()) {
+			creature->sendSystemMessage("You cannot do that while your target is in Combat.");
+			return 0;
+		}
+
+		if (creatureTarget->isOvert() && creatureTarget != creature) {
+			creature->sendSystemMessage("healing_response", "unwise_to_help"); //It would be unwise to help such a patient.
+			return 0;
+		}
+
+		if (creature->getMind() < abs(mindCost)) {
+			creature->sendSystemMessage("healing_response", "not_enough_mind"); //You do not have enough mind to do that.
+			return 0;
+		}
+
+		currentPower = calculateCurrentPower(creatureTarget, enhancePack);
+
+		battleFatigue = creatureTarget->getShockWounds();
+
+		buffPower = calculatePower(creature, creatureTarget, enhancePack, modEnvironment, battleFatigue);
+
+		if (buffPower <= 0) {
+			if (battleFatigue >= 1000) {
+				sendBFMessage(creature, creatureTarget, battleFatigue);
+			}
+			//The pack's effectiveness is 0 or has been nullified by battleFatigue.
+			return 0;
+		}
+
+		if (currentPower > buffPower) {
+			if (creatureTarget == creature) {
+				creature->sendSystemMessage("Your current enhancements are of greater power and cannot be replaced.");
+			} else {
+				creature->sendSystemMessage("Your target's current enhancements are of greater power and cannot be replaced.");
+			}
+			return 0;
+		}
+
+		amountBuffed = calculateHeal(currentPower, buffPower);
+
+		Buff* buff = getBuff(buffPower, enhancePack->getDuration(), poolAffected);
+		BuffObject* bo = new BuffObject(buff);
+
+		creatureTarget->applyBuff(bo);
+
+		sendBFMessage(creature, creatureTarget, battleFatigue);
+		sendEnhanceMessage(creature, creatureTarget, poolAffected, amountBuffed);
+
+		creature->changeMindBar(mindCost);
+
+		creature->deactivateWoundTreatment();
 
 		if (enhancePack != NULL)
 			enhancePack->useCharge((Player*) creature);
 
-		creature->deactivateWoundTreatment();
-
-		awardXp(creature, buffPower);
+		if (creatureTarget != creature)
+			awardXp(creature, "medical", amountBuffed); //No experience for healing yourself.
 
 		doAnimations(creature, creatureTarget);
 
 		return 0;
 	}
 
-	bool calculateEnhance(CreatureObject* creature, CreatureObject* creatureTarget, EnhancePack* enhancePack, int poolAffected, int& buffPower) {
-		if (creature->getMedicalFacilityRating() <= 0) {
-			creature->sendSystemMessage("healing_response", "must_be_near_droid"); //You must be in a hospital, at a campsite, or near a surgical droid to do that.
-			return false;
-		}
-
-		if (creature->getMind() < abs(mindCost)) {
-			creature->sendSystemMessage("healing_response", "not_enough_mind"); //You do not have enough mind to do that.
-			return false;
-		}
-
-		calculateBuffPower(creature, creatureTarget, enhancePack, buffPower);
-
-		if (buffPower <= 0)
-			return false;
-
-		int existingBuffPower = 0;
-
+	int calculateCurrentPower(CreatureObject* creature, EnhancePack* enhancePack) {
 		uint32 buffCRC = enhancePack->getBuffCRC();
 
-		if (creatureTarget->hasBuff(buffCRC)) {
-			BuffObject* bo = creatureTarget->getBuffObject(buffCRC);
+		if (creature->hasBuff(buffCRC)) {
+			BuffObject* bo = creature->getBuffObject(buffCRC);
 			Buff* b = bo->getBuff();
 
 			bo->finalize();
-			existingBuffPower = getBuffPower(b, buffCRC);
 
-			if (existingBuffPower > buffPower) {
-				if (creatureTarget == creature) {
-					creature->sendSystemMessage("Your current enhancements are of greater power.");
-				} else {
-					creature->sendSystemMessage("The patient's current enhancements are of greater power.");
-					creatureTarget->sendSystemMessage("Your current enhancements are of greater power.");
-				}
-				return false;
-			}
+			return getBuffPower(b, buffCRC);
 		}
 
-		Buff* buff = getBuff(buffPower, enhancePack->getDuration(), poolAffected);
-		BuffObject* bo = new BuffObject(buff);
-		creatureTarget->applyBuff(bo);
+		return 0;
+	}
 
-		int buffDifference = buffPower - existingBuffPower;
+	int calculateHeal(int currentPower, int buffPower) {
+		int amountBuffed = buffPower - currentPower;
 
-		string creatureName = ((Player*)creature)->getFirstName();
-		string creatureTargetName = ((Player*)creatureTarget)->getFirstName();
+		return amountBuffed;
+	}
+
+	int calculatePower(CreatureObject* creature, CreatureObject* creatureTarget, EnhancePack* enhancePack, int modEnvironment, int battleFatigue) {
+		float modSkill = (float)creature->getSkillMod("healing_wound_treatment");
+		float modCityBonus = 1.0f; //TODO: If in Medical City, then 1.1f bonus
+
+		int power = (int)round(enhancePack->getEffectiveness() * modCityBonus * modEnvironment * (100.0f + modSkill) / 10000.0f); //TODO: Add in medical city bonus
+
+		if (battleFatigue >= 1000) {
+			power = 0; //Will cancel the action.
+		} else if (battleFatigue >= 250) {
+			power -= power * ((battleFatigue - 250) / 1000);
+		}
+
+		return power;
+	}
+
+	void awardXp(CreatureObject* creature, string type, int power) {
+		Player* player = (Player*) creature;
+
+		int amount = (int)round((float)power * 0.5f);
+
+		if (amount <= 0)
+			return;
+
+		player->addXp(type, amount, true);
+
+		String::toLower(type);
+		type[0] = toupper(type[0]); //Capitalize first letter.
+
+		stringstream msgExperience;
+		msgExperience << "You receive " << amount << " points of " << type << " experience.";
+		player->sendSystemMessage(msgExperience.str());
+	}
+
+	void sendBFMessage(CreatureObject* creature, CreatureObject* creatureTarget, int battleFatigue) {
+		string targetName = ((Player*)creatureTarget)->getFirstNameProper();
+		stringstream msgPlayer, msgTarget;
+
+		if (battleFatigue >= 1000) {
+			msgPlayer << targetName << "'s battle fatigue is too high for the medicine to do any good.";
+			msgTarget << "Your battle fatigue is too high for the medicine to do any good. You should seek an entertainer.";
+		} else if (battleFatigue >= 750) {
+			msgPlayer << targetName << "'s battle fatgiue is greatly reducing the effectiveness of the medicine.";
+			msgTarget << "Your battle fatigue is greatly reducing the effectiveness of the medicine. You should seek an entertainer.";
+		} else if (battleFatigue >= 500) {
+			msgPlayer << targetName << "'s battle fatigue is significantly reducing the effectiveness of the medicine.";
+			msgTarget << "Your battle fatigue is significantly reducing the effectiveness of the medicine.";
+		} else if (battleFatigue >= 250) {
+			msgPlayer << targetName << "'s battle fatigue is reducing the effectiveness of the medicine.";
+			msgTarget << "Your battle fatigue is greatly reducing the effectiveness of the medicine.";
+		}
+
+		creatureTarget->sendSystemMessage(msgTarget.str());
+		if (creatureTarget != creature) {
+			creature->sendSystemMessage(msgPlayer.str());
+		}
+	}
+
+	void sendEnhanceMessage(CreatureObject* creature, CreatureObject* creatureTarget, int poolAffected, int amountBuffed) {
+		string creatureName = ((Player*)creature)->getFirstNameProper();
+		string creatureTargetName = ((Player*)creatureTarget)->getFirstNameProper();
 		string poolName = PharmaceuticalImplementation::getPoolName(poolAffected);
 
 		//Initial Capitalize the Proper names.
-		creatureName[0] = toupper(creatureName[0]);
-		creatureTargetName[0] = toupper(creatureTargetName[0]);
 		poolName[0] = toupper(poolName[0]);
 
 		stringstream msgPlayer, msgTarget, msgBuff;
 
-		if (existingBuffPower == buffPower) {
+		if (amountBuffed == 0) {
 			if (creature == creatureTarget) {
 				msgPlayer << "You re-apply your ";
 			} else {
@@ -186,7 +359,7 @@ public:
 				msgPlayer << "You enhance " << creatureTargetName << "'s ";
 				msgTarget << creatureName << " enhances your ";
 			}
-			msgBuff << poolName << " by " << buffDifference << ".";
+			msgBuff << poolName << " by " << amountBuffed << ".";
 		}
 
 		msgPlayer << msgBuff.str();
@@ -196,58 +369,6 @@ public:
 			msgTarget << msgBuff.str();
 			creatureTarget->sendSystemMessage(msgTarget.str());
 		}
-
-		return true;
-	}
-
-	bool calculateBuffPower(CreatureObject* creature, CreatureObject* creatureTarget, EnhancePack* enhancePack, int& buffPower) {
-		float modEnvironment = creature->getMedicalFacilityRating();
-		float modSkill = creature->getSkillMod("healing_wound_treatment");
-		float modCityBonus = 1.0f; //TODO: If in Medical City, then 1.1f bonus
-
-		buffPower = (int)round(enhancePack->getEffectiveness() * modCityBonus * modEnvironment * (100.0f + modSkill) / 10000.0f); //TODO: Add in medical city bonus
-
-		int battleFatigue = creatureTarget->getShockWounds();
-		string file = "healing";
-		string msg = "shock_effect_low";
-
-		if (battleFatigue >= 1000) {
-			buffPower = 0;
-			file = "error_message";
-			msg = "too_much_shock";
-		} else if (battleFatigue >= 750) {
-			msg = "shock_effect_hight";
-		} else if (battleFatigue >= 500) {
-			msg = "shock_effect_medium";
-		} else if (battleFatigue >= 250) {
-			msg = "shock_effect_low";
-		}
-
-		if (battleFatigue >= 250) {
-			creature->sendSystemMessage(file, msg);
-			if (creature != creatureTarget) {
-				if (battleFatigue < 1000)
-					msg += "_target";
-				creatureTarget->sendSystemMessage(file, msg);
-			}
-
-			buffPower -= buffPower * ((battleFatigue - 250) / 1000);
-		}
-
-		return true;
-	}
-
-	void awardXp(CreatureObject* creature, int buffPower) {
-		Player* player = (Player*) creature;
-
-		string type = "medical";
-		int amount = (int)round((float)buffPower * 0.5f);
-
-		player->addXp(type, amount, true);
-
-		stringstream msgExperience;
-		msgExperience << "You receive " << amount << " points of Medical experience.";
-		player->sendSystemMessage(msgExperience.str());
 	}
 
 	int getBuffPower(Buff* buff, uint32 buffCRC) {
@@ -307,75 +428,19 @@ public:
 	}
 
 	float calculateSpeed(CreatureObject* creature) {
-		return 0.0f;
+		return 0.0f; //Handled by event
 	}
 
 	virtual bool calculateCost(CreatureObject* creature) {
 		return true;
 	}
 
-	EnhancePack* findEnhancePack(CreatureObject* creature, const string& modifier, int& poolAffected) {
-		EnhancePack* enhancePack = NULL;
-		
-		if (!modifier.empty()) {
-
-			uint64 objectid = 0;
-			string pool;
-			StringTokenizer tokenizer(modifier);
-			tokenizer.setDelimeter("|");
-
-			tokenizer.getStringToken(pool);
-			if (tokenizer.hasMoreTokens())
-				objectid = tokenizer.getLongToken();
-
-			if (!validatePool(pool))
-				return enhancePack;
-			else
-				poolAffected = PharmaceuticalImplementation::getPoolFromName(pool);
-
-			if (objectid > 0) {
-				enhancePack = (EnhancePack*) creature->getInventoryItem(objectid);
-				if (enhancePack != NULL && enhancePack->isEnhancePack())
-					return enhancePack;
-			}
-		}
-
-		enhancePack = NULL;
-		int playerMedUse = creature->getSkillMod("healing_ability");
-
-		Inventory* inventory = creature->getInventory();
-
-		for (int i=0; i<inventory->objectsSize(); i++) {
-
-			TangibleObject* item = (TangibleObject*) inventory->getObject(i);
-
-			if (item != NULL && item->isPharmaceutical()) {
-				enhancePack = (EnhancePack*) item;
-
-				if (enhancePack->isEnhancePack()
-						&& enhancePack->getMedicineUseRequired() <= playerMedUse
-						&& enhancePack->getPoolAffected() == poolAffected)
-					break;
-			}
-		}
-
-		return enhancePack;
+	void setEffectName(const string& name) {
+		effectName = name;
 	}
 
-	bool validatePool(const string& pool) {
-		int p = PharmaceuticalImplementation::getPoolFromName(pool);
-		if (p == PharmaceuticalImplementation::UNKNOWN)
-			return false;
-
-		return true;
-	}
-
-	inline void setMindCost(int value) {
-		mindCost = value;
-	}
-
-	inline int getMindCost() {
-		return mindCost;
+	void setMindCost(int cost) {
+		mindCost = cost;
 	}
 
 };

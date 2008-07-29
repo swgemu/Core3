@@ -58,7 +58,7 @@ which carries forward this exception.
 
 #include "FriendsListImplementation.h"
 
-PlayerObjectImplementation::PlayerObjectImplementation(Player* pl) : SceneObjectImplementation(pl->getObjectID() + 0x0C, PLAYER) {
+PlayerObjectImplementation::PlayerObjectImplementation(Player* pl) : PlayerObjectServant(pl->getObjectID() + 0x0C, PLAYER) {
 	player = pl;
 
 	objectCRC = 0x619BAE21;

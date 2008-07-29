@@ -50,6 +50,17 @@ HealSelfSkill = {
 
 AddHealDamageTargetSkill(HealSelfSkill);
 
+HealSelfSkill = {
+	skillname = "healwound",
+	effect = "clienteffect/healing_healwound.cef",
+	animation = "heal_self",
+	
+	mindCost = -50,
+	range = 6.0
+}
+
+AddHealWoundTargetSkill(HealSelfSkill);
+
 
 HealSelfSkill = {
 	skillname = "firstaid",
@@ -62,3 +73,15 @@ HealSelfSkill = {
 }
 
 AddHealSelfSkill(HealSelfSkill);
+
+DiagnoseTargetSkill = {
+	skillname = "diagnose",
+	effect = "clienteffect/healing_healenhance.cef",
+	animation = "heal_self",
+	
+	mindCost = -10,
+	range = 6.0,
+	speed = 5.0
+}
+
+AddDiagnoseTargetSkill(DiagnoseTargetSkill);

@@ -1,44 +1,44 @@
 /*
 Copyright (C) 2007 <SWGEmu>
- 
+
 This File is part of Core3.
- 
-This program is free software; you can redistribute 
-it and/or modify it under the terms of the GNU Lesser 
+
+This program is free software; you can redistribute
+it and/or modify it under the terms of the GNU Lesser
 General Public License as published by the Free Software
-Foundation; either version 2 of the License, 
+Foundation; either version 2 of the License,
 or (at your option) any later version.
- 
-This program is distributed in the hope that it will be useful, 
-but WITHOUT ANY WARRANTY; without even the implied warranty of 
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 See the GNU Lesser General Public License for
 more details.
- 
-You should have received a copy of the GNU Lesser General 
+
+You should have received a copy of the GNU Lesser General
 Public License along with this program; if not, write to
 the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
- 
-Linking Engine3 statically or dynamically with other modules 
-is making a combined work based on Engine3. 
-Thus, the terms and conditions of the GNU Lesser General Public License 
+
+Linking Engine3 statically or dynamically with other modules
+is making a combined work based on Engine3.
+Thus, the terms and conditions of the GNU Lesser General Public License
 cover the whole combination.
- 
-In addition, as a special exception, the copyright holders of Engine3 
-give you permission to combine Engine3 program with free software 
-programs or libraries that are released under the GNU LGPL and with 
-code included in the standard release of Core3 under the GNU LGPL 
-license (or modified versions of such code, with unchanged license). 
-You may copy and distribute such a system following the terms of the 
-GNU LGPL for Engine3 and the licenses of the other code concerned, 
-provided that you include the source code of that other code when 
+
+In addition, as a special exception, the copyright holders of Engine3
+give you permission to combine Engine3 program with free software
+programs or libraries that are released under the GNU LGPL and with
+code included in the standard release of Core3 under the GNU LGPL
+license (or modified versions of such code, with unchanged license).
+You may copy and distribute such a system following the terms of the
+GNU LGPL for Engine3 and the licenses of the other code concerned,
+provided that you include the source code of that other code when
 and as the GNU LGPL requires distribution of source code.
- 
-Note that people who make modified versions of Engine3 are not obligated 
-to grant this special exception for their modified versions; 
-it is their choice whether to do so. The GNU Lesser General Public License 
-gives permission to release a modified version without this exception; 
-this exception also makes it possible to release a modified version 
+
+Note that people who make modified versions of Engine3 are not obligated
+to grant this special exception for their modified versions;
+it is their choice whether to do so. The GNU Lesser General Public License
+gives permission to release a modified version without this exception;
+this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
@@ -77,9 +77,9 @@ which carries forward this exception.
 PlayerManagerImplementation::PlayerManagerImplementation(ItemManager* mgr, ZoneProcessServerImplementation* srv) : PlayerManagerServant() {
 	playerMap = new PlayerMap(3000);
 	playerMap->deploy("PlayerMap");
-	
+
 	itemManager = mgr;
-	
+
 	server = srv;
 }
 
@@ -90,63 +90,63 @@ PlayerManagerImplementation::~PlayerManagerImplementation() {
 
 void PlayerManagerImplementation::stop() {
 	playerMap->resetIterator();
-	
+
 	while (playerMap->hasNext()) {
 		Player* player = playerMap->next();
-		
+
 		player->wlock();
-		
+
 		ZoneClient* client = player->getClient();
-		
+
 		if (client != NULL)
 			client->disconnect();
-		
+
 		player->removeUndeploymentEvent();
 		player->finalize();
-		
+
 		player->unlock();
 	}
 }
 
-bool PlayerManagerImplementation::create(Player* player, uint32 sessionkey) {	
+bool PlayerManagerImplementation::create(Player* player, uint32 sessionkey) {
 	int accountID = sessionkey;
 	int galaxyID = 2;
-	
+
 	player->setZoneIndex(5);
 	player->setTerrainName(Terrain::getTerrainName(5));
 
 	player->initializePosition(-4908.0f, 6, 4101.0f);
-		
+
 	player->randomizePosition(45);
-	
+
 	int race = Races::getRaceID(player->getRaceFileName());
-	
+
 	player->setObjectCRC(Races::getRaceCRC(race));
-	player->setRaceName(Races::getRace(race));		
+	player->setRaceName(Races::getRace(race));
 	player->setSpeciesName(Races::getSpecies(race));
 	player->setGender(Races::getGender(race));
-	
+
 	int gender = 0;
 	int creditsCash = 100000;
 	int creditsBank = 100000;
-	
+
 	if (server->getUserManager()->isAdmin(player->getFirstName()))
 		player->setAdminLevel(PlayerImplementation::DEVELOPER);
 	else
 		player->setAdminLevel(PlayerImplementation::NORMAL);
-	
+
 	player->setCashCredits(creditsCash);
 	player->setBankCredits(creditsBank);
-	
+
 	string bio = player->getBiography().c_str();
 	string info = "";
-	
+
 	string appearance;
 	string playApp;
 	player->getCharacterAppearance(playApp);
 	BinaryData cust(playApp);
 	cust.encode(appearance);
-	
+
 	string hairdata;
 	string hairApp;
 	player->getHairAppearance(hairApp);
@@ -154,7 +154,7 @@ bool PlayerManagerImplementation::create(Player* player, uint32 sessionkey) {
 	hair.encode(hairdata);
 
 	player->createBaseStats();
-	
+
 	try {
 		stringstream query;
     	query << "INSERT INTO `characters` "
@@ -166,29 +166,29 @@ bool PlayerManagerImplementation::create(Player* player, uint32 sessionkey) {
 	          << "`health`,`strength`,`constitution`,`action`,`quickness`,"
 	          << "`stamina`,`mind`,`focus`,`willpower`, adminLevel"
 	          << ") VALUES ("
-    	      << accountID << "," << galaxyID << ",'" 
-	          << player->getFirstName() << "','" << player->getLastName() << "','" 
-	          << appearance.substr(0, appearance.size() - 1) << "','" 
-	          << player->getStartingProfession() << "'," <<  race << "," << gender << ",10," 
-    	      << creditsCash << "," << creditsBank << ",0," 
-        	  << player->getPositionX() << "," << player->getPositionY() << "," 
-	          << player->getPositionZ() << "," << player->getZoneIndex() << "," << 0//planetID 
+    	      << accountID << "," << galaxyID << ",'"
+	          << player->getFirstName() << "','" << player->getLastName() << "','"
+	          << appearance.substr(0, appearance.size() - 1) << "','"
+	          << player->getStartingProfession() << "'," <<  race << "," << gender << ",10,"
+    	      << creditsCash << "," << creditsBank << ",0,"
+        	  << player->getPositionX() << "," << player->getPositionY() << ","
+	          << player->getPositionZ() << "," << player->getZoneIndex() << "," << 0//planetID
     	      << ",0,0,0,0,0," << player->getHeight() << ","
-    	      << "'" << bio << "','" << info << "','" 
+    	      << "'" << bio << "','" << info << "','"
     	      << player->getHairObject() << "','" << hairdata.substr(0, hairdata.size() - 1) << "','', '0','',"
-    	      << player->getBaseHealth() << "," << player->getBaseStrength() << "," << player->getBaseConstitution() << "," 
-    	      << player->getBaseAction() << "," << player->getBaseQuickness() << "," << player->getBaseStamina() << "," 
+    	      << player->getBaseHealth() << "," << player->getBaseStrength() << "," << player->getBaseConstitution() << ","
+    	      << player->getBaseAction() << "," << player->getBaseQuickness() << "," << player->getBaseStamina() << ","
     	      << player->getBaseMind() << "," << player->getBaseFocus() << "," << player->getBaseWillpower() << "," << player->getAdminLevel() << ")";
-	
+
 		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
-	
+
 		player->setCharacterID(res->getLastAffectedRow());
-		
+
 		PlayerObject* playerObject = player->getPlayerObject();
-		playerObject->setObjectID(player->getObjectID() + 0x0C);		
-		
+		playerObject->setObjectID(player->getObjectID() + 0x0C);
+
 		playerMap->put(player->getFirstName(), player);
-		
+
 		delete res;
 	} catch (DatabaseException& e) {
 		return false;
@@ -200,11 +200,11 @@ bool PlayerManagerImplementation::create(Player* player, uint32 sessionkey) {
 BaseMessage* PlayerManagerImplementation::checkPlayerName(const string& name, const string& species) {
 	NameManager * nm = server->getNameManager();
 	BaseMessage* msg = NULL;
-	
+
 	//Check to see if name is valid
-	int res = nm->validateName(name, species); 
-		
-	if (res != NameManagerResult::ACCEPTED) { 
+	int res = nm->validateName(name, species);
+
+	if (res != NameManagerResult::ACCEPTED) {
 		switch (res) {
 		case NameManagerResult::DECLINED_EMPTY:
 			msg = new ClientCreateCharacterFailed("name_declined_empty");
@@ -234,52 +234,52 @@ BaseMessage* PlayerManagerImplementation::checkPlayerName(const string& name, co
 
 		return msg; //Name failed filters
 	}
-	
+
 	//Name passes filters, does it already exist?
 	if (!validateName(name) || DistributedObjectBroker::instance()->lookUp("Player " + name) != NULL)
 		msg = new ClientCreateCharacterFailed("name_declined_in_use");
-	
+
 	return msg;
 }
 
 BaseMessage* PlayerManagerImplementation::attemptPlayerCreation(Player * player, ZoneClient * client) {
 	//Player name is valid, attempt to create player
 	BaseMessage* msg = NULL;
-	
+
 	try {
 		player->wlock();
-			
+
 		if (create(player, client->getSessionKey())) {
 			BaseMessage* hb = new HeartBeat();
 			client->sendMessage(hb);
-				
+
 			msg = new ClientCreateCharacterSuccess(player->getCharacterID());
-				
+
 			Zone* zone = server->getZoneServer()->getZone(player->getZoneIndex());
 			player->setZone(zone);
-		
+
 			zone->registerObject(player);
-		
+
 			player->createItems();
 			player->trainStartingProfession();
-			
+
 			player->unload(); // force a save of items, client will relogin
-				
+
 			zone->deleteObject(player->getObjectID());
-							
+
 			player->unlock();
 		} else {
 			client->info("name refused for character creation");
 
 			msg = new ClientCreateCharacterFailed("name_declined_retry");
-				
+
 			player->unlock();
-			
+
 			player->disconnect();
-				
+
 			player->finalize();
 		}
-		
+
 		return msg; //return success or fail packet
 	} catch (Exception& e) {
 		player->unlock();
@@ -295,15 +295,15 @@ BaseMessage* PlayerManagerImplementation::attemptPlayerCreation(Player * player,
 bool PlayerManagerImplementation::validateName(const string& cname) {
 	if (cname.size() < 1)
 		return false;
-	
+
 	string name = cname;
 	String::toLower(name);
 	try {
 		string query = "SELECT * FROM characters WHERE lower(firstname) = \"" + name + "\"";
 
 		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
-		bool nameExists = res->next();		
-		
+		bool nameExists = res->next();
+
 		delete res;
 
 		return !nameExists;
@@ -315,11 +315,11 @@ bool PlayerManagerImplementation::validateName(const string& cname) {
 Player* PlayerManagerImplementation::load(uint64 charid) {
 	Player* player = new Player(charid);
 	player->setZoneProcessServer(server);
-	
+
 	loadFromDatabase(player);
-	
+
 	playerMap->put(player->getFirstName(), player);
-	
+
 	return player;
 }
 
@@ -330,47 +330,48 @@ void PlayerManagerImplementation::loadFromDatabase(Player* player) {
 	query << "SELECT * FROM characters WHERE character_id = " << player->getCharacterID();
 
 	character = ServerDatabase::instance()->executeQuery(query);
-		
+
 	if (!character->next()) {
 		stringstream msg;
 		msg << "unknown character ID" << player->getCharacterID();
-			
+
 		throw Exception(msg.str());
 	}
 
 	player->setFirstName(character->getString(3));
 	player->setLastName(character->getString(4));
-	
+
 	string orbname = "Player " + player->getFirstName();
 	player->deploy(orbname);
 
 	PlayerObject* playerObject = new PlayerObject(player);
-	
+
 	player->setPlayerObject(playerObject);
 
 	if (player->getLastName() != "")
 		player->setCharacterName(player->getFirstName() + " " + player->getLastName());
 	else
 		player->setCharacterName(player->getFirstName());
-		
+
+	player->setFirstNameProper(player->getFirstName());
 	String::toLower(player->getFirstName());
-	
+
 	Zone* zne = server->getZoneServer()->getZone(character->getInt(16));
-	
+
 	player->setZoneIndex(character->getInt(16));
 	player->setTerrainName(Terrain::getTerrainName(player->getZoneIndex()));
 	player->initializePosition(character->getFloat(13), character->getFloat(15), character->getFloat(14));
-	
+
 	Guild* guild = guildManager->getGuild(character->getUnsignedInt(12));
 	if (guild != NULL)
 		player->setGuild(guild);
-	
+
 	string appearance = character->getString(5);
 	BinaryData cust(appearance);
 	string custStr;
 	cust.decode(custStr);
 	player->setCharacterAppearance(custStr);
-	
+
 	string hairData = character->getString(28);
 	BinaryData hair(hairData);
 	string hData;
@@ -379,7 +380,7 @@ void PlayerManagerImplementation::loadFromDatabase(Player* player) {
 
 	int raceID = character->getInt(7);
 	player->setObjectCRC(Races::getRaceCRC(raceID));
-	player->setRaceName(Races::getRace(raceID));		
+	player->setRaceName(Races::getRace(raceID));
 	player->setSpeciesName(Races::getSpecies(raceID));
 	player->setGender(Races::getGender(raceID));
 	player->setHairObject(character->getString(27));
@@ -388,23 +389,23 @@ void PlayerManagerImplementation::loadFromDatabase(Player* player) {
 	player->setFaction(character->getUnsignedInt(21));
 
 	player->setHeight(character->getFloat(23));
-	
+
 	player->setCashCredits(character->getInt(10));
 	player->setBankCredits(character->getInt(11));
-	
-	//location = character->getString(5);		
+
+	//location = character->getString(5);
 	player->setStartingProfession(character->getString(6));
 
 	player->setItemShift(character->getUnsignedInt(34));
-	
+
 	player->setHeight(character->getFloat(23));
-	
-	string bio = character->getString(24); 
+
+	string bio = character->getString(24);
 	player->setBiography(bio);
-	
+
 	string title = character->getString(32);
 	player->getPlayerObject()->setTitle(title);
-	
+
 	player->setBaseHealth(character->getInt(35));
 	player->setBaseStrength(character->getInt(36));
 	player->setBaseConstitution(character->getInt(37));
@@ -414,26 +415,26 @@ void PlayerManagerImplementation::loadFromDatabase(Player* player) {
 	player->setBaseMind(character->getInt(41));
 	player->setBaseFocus(character->getInt(42));
 	player->setBaseWillpower(character->getInt(43));
-	
+
 	//player->setHealthWounds(character->getInt(44)); // HealthWounds
 	//player->setActionWounds(character->getInt(45)); //ActionWounds
 	player->setMindWounds(character->getInt(46));
 	player->setShockWounds(character->getInt(47));
-	
+
 	player->resetHAMBars();
-	
+
 	player->loadProfessions();
-	
+
 	PlanetManager* planetManager = zne->getPlanetManager();
 	SceneObject* parent = planetManager->getCell(character->getUnsignedLong(33));
-	
+
 	if (parent != NULL)
 		player->setParent(parent, 0xFFFFFFFF);
-	
+
 	loadWaypoints(player);
-	
+
 	player->setAdminLevel(character->getInt(48));
-		
+
 	delete character;
 }
 
@@ -443,19 +444,19 @@ void PlayerManagerImplementation::loadWaypoints(Player* player) {
 
 	query << "SELECT * FROM waypoints WHERE owner_id = '" << player->getCharacterID() <<"';";
 	result = ServerDatabase::instance()->executeQuery(query);
-			
+
 	while (result->next()) {
 		string wpName = result->getString(2);
-						
+
 		float x = result->getFloat(3);
 		float y = result->getFloat(4);
-					
+
 		string planetName = result->getString(5);
 		string internalNote = result->getString(7);
 		bool active = result->getInt(6);
-		
+
 		WaypointObject* wp = new WaypointObject(player, player->getNewItemID());
-		
+
 		wp->setName(wpName);
 		wp->setPlanetName(planetName);
 		wp->setInternalNote(internalNote);
@@ -470,27 +471,27 @@ void PlayerManagerImplementation::updateOtherFriendlists(Player* player, bool st
 	ResultSet* result;
 	stringstream query;
 	string name;
-	
+
 	try {
 		query.str("");
 		query << "SELECT * FROM friendlist WHERE friend_id = '" << player->getCharacterID() <<"';";
 		result = ServerDatabase::instance()->executeQuery(query);
-			
+
 		while (result->next()) {
 			name = result->getString(1);
 			Player* playerToInform = playerMap->get(name);
-		
-			if(playerToInform != NULL){			
-				if(playerToInform->isOnline()){	
+
+			if(playerToInform != NULL){
+				if(playerToInform->isOnline()){
 					FriendStatusChangeMessage* notifyStatus = new FriendStatusChangeMessage(player->getFirstName(), "Core3", status);
-					playerToInform->sendMessage(notifyStatus);				
-				}			
+					playerToInform->sendMessage(notifyStatus);
+				}
 			}
 		}
 	} catch (...) {
 		cout << "Exception in PlayerManagerImplementation::updateOtherFriendlists : SELECT * FROM friendlist WHERE friend_id... " << endl;
 	}
-	
+
 	delete result;
 }
 
@@ -498,13 +499,13 @@ void PlayerManagerImplementation::unload(Player* player) {
 	string biography = player->getBiography().c_str();
 	MySqlDatabase::escapeString(biography);
 
-	
+
 	stringstream query;
-	query << "UPDATE characters SET x=" << player->getPositionX() << ",y=" << player->getPositionY() 
-		  << ",z=" << player->getPositionZ() 
+	query << "UPDATE characters SET x=" << player->getPositionX() << ",y=" << player->getPositionY()
+		  << ",z=" << player->getPositionZ()
           << ",zoneid=" << player->getZoneIndex()
-          << ",faction_id=" << player->getFaction() 
-          << ",biography=\'" << biography << "\'" 
+          << ",faction_id=" << player->getFaction()
+          << ",biography=\'" << biography << "\'"
           << ",Title=" << "'" << player->getPlayerObject()->getCurrentTitle() << "'"
           << ",Guild=" << "'" << player->getGuildID() << "'"
           << ",AdminLevel=" << "'" << player->getAdminLevel() << "'"
@@ -512,16 +513,16 @@ void PlayerManagerImplementation::unload(Player* player) {
           << ",credits_bank=" << "'" << player->getBankCredits() << "'"
           << ",parentid=" << "'" << player->getParentID() << "'"
           << ",itemShift=" << player->getItemShift()
-          << " WHERE character_id=" << player->getCharacterID() << ";";   
-       
+          << " WHERE character_id=" << player->getCharacterID() << ";";
+
     try {
     	ServerDatabase::instance()->executeStatement(query);
     } catch(DatabaseException e) {
     	cerr << "Failed to unload character: " << player->getFirstName() << "\n";
     }
-    
-	player->saveProfessions();	
-	
+
+	player->saveProfessions();
+
 	playerMap->remove(player->getFirstName());
 }
 
@@ -531,7 +532,7 @@ void PlayerManagerImplementation::handleAbortTradeMessage(Player* player, bool d
 
 		uint64 targID = player->getTradeRequestedPlayer();
 		SceneObject* obj = server->getZoneServer()->getObject(targID);
-		
+
 		AbortTradeMessage* msg = new AbortTradeMessage();
 
 		if (obj != NULL && obj->isPlayer()) {
@@ -549,7 +550,7 @@ void PlayerManagerImplementation::handleAbortTradeMessage(Player* player, bool d
 
 			receiver->unlock();
 		}
-		
+
 		player->sendMessage(msg->clone());
 
 		delete msg;
@@ -576,11 +577,11 @@ void PlayerManagerImplementation::handleAddItemMessage(Player* player, uint64 it
 		if (object != NULL) {
 			if (object->isTangible()) {
 				TangibleObject* item = (TangibleObject*)object;
-				
+
 				if (item->isEquipped()) {;
 					handleAbortTradeMessage(player, false);
 					player->sendSystemMessage("You can't trade equipped items!");
-					
+
 					player->unlock();
 					return;
 				}
@@ -613,18 +614,18 @@ void PlayerManagerImplementation::handleGiveMoneyMessage(Player* player, uint32 
 		player->wlock();
 
 		uint32 currentMoney = player->getCashCredits();
-		
+
 		if (value > currentMoney)
 			value = currentMoney;
-		
+
 		player->setMoneyToTrade(value);
-		
+
 		uint64 targID = player->getTradeRequestedPlayer();
 		SceneObject* obj = server->getZoneServer()->getObject(targID);
 
 		if (obj != NULL && obj->isPlayer()) {
 			Player* receiver = (Player*)obj;
-		
+
 			GiveMoneyMessage* msg = new GiveMoneyMessage(value);
 			receiver->sendMessage(msg);
 		}
@@ -639,9 +640,9 @@ void PlayerManagerImplementation::handleGiveMoneyMessage(Player* player, uint32 
 void PlayerManagerImplementation::handleAcceptTransactionMessage(Player* player) {
 	try {
 		player->wlock();
-		
+
 		player->setAcceptedTrade(true);
-		
+
 		uint64 targID = player->getTradeRequestedPlayer();
 		SceneObject* obj = server->getZoneServer()->getObject(targID);
 
@@ -651,7 +652,7 @@ void PlayerManagerImplementation::handleAcceptTransactionMessage(Player* player)
 			AcceptTransactionMessage* msg = new AcceptTransactionMessage();
 			receiver->sendMessage(msg);
 		}
-		
+
 		player->unlock();
 	} catch (...) {
 		player->unlock();
@@ -662,9 +663,9 @@ void PlayerManagerImplementation::handleAcceptTransactionMessage(Player* player)
 void PlayerManagerImplementation::handleUnAcceptTransactionMessage(Player* player) {
 	try {
 		player->wlock();
-		
+
 		player->setAcceptedTrade(false);
-		
+
 		uint64 targID = player->getTradeRequestedPlayer();
 		SceneObject* obj = server->getZoneServer()->getObject(targID);
 
@@ -674,7 +675,7 @@ void PlayerManagerImplementation::handleUnAcceptTransactionMessage(Player* playe
 			UnAcceptTransactionMessage* msg = new UnAcceptTransactionMessage();
 			receiver->sendMessage(msg);
 		}
-		
+
 		player->unlock();
 	} catch (...) {
 		player->unlock();
@@ -693,7 +694,7 @@ void PlayerManagerImplementation::handleVerifyTradeMessage(Player* player) {
 
 		if (obj != NULL && obj->isPlayer()) {
 			Player* receiver = (Player*)obj;
-			
+
 			try {
 				receiver->wlock(player);
 
@@ -702,38 +703,38 @@ void PlayerManagerImplementation::handleVerifyTradeMessage(Player* player) {
 						TangibleObject* item = player->getTradeItem(i);
 						moveItem(player, receiver, item);
 					}
-					
+
 					for (int i = 0; i < receiver->getTradeSize(); ++i) {
 						TangibleObject* item = receiver->getTradeItem(i);
 						moveItem(receiver, player, item);
 					}
-					
+
 					uint32 giveMoney = player->getMoneyToTrade();
-					
+
 					if (giveMoney > 0) {
 						player->subtractCashCredits(giveMoney);
 						receiver->addCashCredits(giveMoney);
 					}
 
 					giveMoney = receiver->getMoneyToTrade();
-					
+
 					if (giveMoney > 0) {
 						receiver->subtractCashCredits(giveMoney);
 						player->addCashCredits(giveMoney);
 					}
-					
+
 					receiver->clearTradeItems();
 					receiver->setTradeRequestedPlayer(0);
 					receiver->setAcceptedTrade(false);
 					receiver->setVerifiedTrade(false);
 					receiver->setMoneyToTrade(0);
-					
+
 					player->clearTradeItems();
 					player->setTradeRequestedPlayer(0);
 					player->setAcceptedTrade(false);
 					player->setVerifiedTrade(false);
 					player->setMoneyToTrade(0);
-					
+
 					TradeCompleteMessage* msg = new TradeCompleteMessage();
 					receiver->sendMessage(msg->clone());
 					player->sendMessage(msg->clone());
@@ -758,7 +759,7 @@ void PlayerManagerImplementation::handleVerifyTradeMessage(Player* player) {
 void PlayerManagerImplementation::moveItem(Player* sender, Player* receiver, TangibleObject* item) {
 	// Pre: both players locked
 	ItemManager* itemManager = server->getItemManager();
-	
+
 	item->setEquipped(false);
 	sender->removeInventoryItem(item->getObjectID());
 
@@ -766,7 +767,7 @@ void PlayerManagerImplementation::moveItem(Player* sender, Player* receiver, Tan
 
 	receiver->addInventoryItem(item);
 	item->sendTo(receiver);
-	
+
 	if (item->isPersistent()) {
 		item->setUpdated(true);
 		itemManager->savePlayerItem(receiver, item);
@@ -774,10 +775,10 @@ void PlayerManagerImplementation::moveItem(Player* sender, Player* receiver, Tan
 	/*
 	stringstream playertxt;
 	stringstream targettxt;
-	
+
 	playertxt << "You gave a " << item->getName().c_str() << " to " << target->getFirstName() << ".";
 	targettxt << getFirstName() << " gave you a " << item->getName().c_str() << ".";
-	
+
 	sendSystemMessage(playertxt.str());
 	target->sendSystemMessage(targettxt.str());*/
 }
@@ -789,10 +790,10 @@ void PlayerManagerImplementation::doBankTip(Player* sender, Player* receiver, ui
 		sender->sendSystemMessage("You lack the required funds to do that. (Bank Tip.)");
 		return;
 	}
-	
+
 	try {
 		receiver->wlock(sender);
-		
+
 		receiver->addBankCredits(tipAmount);
 		sender->subtractBankCredits(tipAmount + tax);
 
@@ -831,7 +832,7 @@ void PlayerManagerImplementation::doBankTip(Player* sender, Player* receiver, ui
 			//Email the player you bank tipped.
 			chatManager->sendMail(mailSender, subjectReceiver, bodyReceiver, charNameReceiver);
 		}
-		
+
 		receiver->unlock();
 	} catch (...) {
 		cout << "Unreported exception caught in PlayerManagerImplementation::doBankTip\n";
@@ -845,12 +846,12 @@ void PlayerManagerImplementation::doCashTip(Player* sender, Player* receiver, ui
 		sender->sendSystemMessage("You lack the required funds to do that. (Cash Tip.)");
 		return;
 	}
-	
+
 	try {
 		receiver->wlock(sender);
-		
+
 		receiver->addCashCredits(tipAmount);
-		
+
 		sender->subtractCashCredits(tipAmount);
 		sender->sendSystemMessage("You have successfully cash tipped.");
 
@@ -858,10 +859,10 @@ void PlayerManagerImplementation::doCashTip(Player* sender, Player* receiver, ui
 			//This is where we notify the other player with mail + sys message.
 			//But we have to make sure they are online first. Passed in the method.
 			stringstream ss;
-			ss << "You have been tipped " << tipAmount << " credits by " << sender->getFirstName() << "."; 
+			ss << "You have been tipped " << tipAmount << " credits by " << sender->getFirstName() << ".";
 			receiver->sendSystemMessage(ss.str());
 		}
-		
+
 		receiver->unlock();
 	} catch (...) {
 		cout << "Unreported exception caught in PlayerManagerImplementation::doCashTip\n";
@@ -871,26 +872,26 @@ void PlayerManagerImplementation::doCashTip(Player* sender, Player* receiver, ui
 
 bool PlayerManagerImplementation::modifyOfflineBank(Player* sender, string receiverName, uint32 creditAmount) {
 	//First we need to get the current bank credits.
-	
+
 	if (!sender->verifyBankCredits(creditAmount)) {
 		sender->sendSystemMessage("You lack the required funds to do that. (Bank Tip.)");
 		return false;
 	}
-	
+
 	String::toLower(receiverName);
 	MySqlDatabase::escapeString(receiverName);
-	
+
 	stringstream query;
 	query << "SELECT * FROM characters WHERE lower(firstname) = '" << receiverName << "'";
 	ResultSet* character;
-	
+
 	try {
 		character = ServerDatabase::instance()->executeQuery(query);
 	} catch (DatabaseException& e) {
 		cout << "PlayerManagerImplementation::modifyOfflineBank: failed SQL query: " << query << "\n";
 		return false;
 	}
-	
+
 	if (!character->next()) {
 		delete character;
 		/*stringstream msg;
@@ -910,8 +911,8 @@ bool PlayerManagerImplementation::modifyOfflineBank(Player* sender, string recei
 
 	//Now we need to update the db.
 	stringstream query2;
-	query2 << "UPDATE characters SET credits_bank=" << newBankCredits 
-		   << " WHERE lower(firstname)='" << receiverName << "';";   
+	query2 << "UPDATE characters SET credits_bank=" << newBankCredits
+		   << " WHERE lower(firstname)='" << receiverName << "';";
 
 	try {
 		ServerDatabase::instance()->executeStatement(query2);
@@ -919,10 +920,10 @@ bool PlayerManagerImplementation::modifyOfflineBank(Player* sender, string recei
 		cout << "PlayerManagerImplementation::modifyOfflineBank: failed SQL UPDATE: " << query2 << "\n";
 		return false;
 	}
-	
+
 	//now we need to modify the online tippers credits.
 	sender->subtractBankCredits(creditAmount);
-	
+
 	return true;
 }
 
@@ -930,26 +931,26 @@ bool PlayerManagerImplementation::modifyRecipientOfflineBank(string recipient, u
 	//First we need to get the current bank credits.
 	String::toLower(recipient);
 	MySqlDatabase::escapeString(recipient);
-	
+
 	Player* play = getPlayer(recipient);
-	
-	if (play != NULL) { 
+
+	if (play != NULL) {
 		// player online. handle directly
 		play->addBankCredits(creditAmount);
 		return true;
 	}
-	
+
 	stringstream query;
 	query << "SELECT * FROM characters WHERE lower(firstname) = '" << recipient << "'";
 	ResultSet* character;
-	
+
 	try {
 		character = ServerDatabase::instance()->executeQuery(query);
 	} catch(DatabaseException& e) {
 	 	cout << "PlayerManagerImplementation::modifyRecipientOfflineBank. Failed SQL query: " << query << "\n";
 	 	return false;
 	}
-	
+
 	if (!character->next()) {
 		delete character;
 		/*stringstream msg;
@@ -966,11 +967,11 @@ bool PlayerManagerImplementation::modifyRecipientOfflineBank(string recipient, u
 
 	//Our new credits amount.
 	uint32 newBankCredits = currentBankCredits + creditAmount;
-	
+
 	//Now we need to update the db.
 	stringstream query2;
-	query2 << "UPDATE characters SET credits_bank='" << newBankCredits 
-		   << "' WHERE lower(firstname)='" << recipient << "'";   
+	query2 << "UPDATE characters SET credits_bank='" << newBankCredits
+		   << "' WHERE lower(firstname)='" << recipient << "'";
 
 	try {
 		ServerDatabase::instance()->executeStatement(query2);
@@ -978,20 +979,20 @@ bool PlayerManagerImplementation::modifyRecipientOfflineBank(string recipient, u
 		cout << "PlayerManagerImplementation::modifyRecipientOfflineBank: failed SQL UPDATE: " << query2.str() << "\n";
 		return false;
 	}
-	
+
 	return true;
 }
 
 void PlayerManagerImplementation::updatePlayerCreditsToDatabase(Player* player) {
 	if (player == NULL)
 		return;
-	
+
 	stringstream query;
-	
+
 	query << "UPDATE characters set credits_inv='" << player->getCashCredits() <<
 		"', credits_bank='" << player->getBankCredits() << "' WHERE character_id='" <<
 		player->getCharacterID() << "'";
-	
+
 	try {
 		ServerDatabase::instance()->executeStatement(query);
 	} catch (DatabaseException e) {
@@ -1002,19 +1003,19 @@ void PlayerManagerImplementation::updatePlayerCreditsToDatabase(Player* player) 
 void PlayerManagerImplementation::updatePlayerCreditsFromDatabase(Player* player) {
 	if (player == NULL)
 		return;
-	
+
 	stringstream query;
-	
+
 	query << "SELECT credits_inv,credits_bank FROM characters WHERE character_id = '" << player->getCharacterID() << "'";
 	ResultSet* rs = NULL;
-	
+
 	try {
 		rs = ServerDatabase::instance()->executeQuery(query);
 	} catch(DatabaseException& e) {
 		cout << "PlayerManagerImplmentation::updatePlayerCredits: failed SQL query: " << query.str() << "\n";
 		return;
 	}
-	
+
 	if (!rs->next()) {
 		delete rs;
 		return;
@@ -1022,10 +1023,10 @@ void PlayerManagerImplementation::updatePlayerCreditsFromDatabase(Player* player
 
 	int creditsinv=rs->getInt(0);
 	int creditsbank=rs->getInt(1);
-	
+
 	player->setCashCredits(creditsinv);
 	player->setBankCredits(creditsbank);
-	
+
 	BaseMessage* mess = new PlayerMoneyResponseMessage(player);
 	player->sendMessage(mess);
 }
@@ -1034,7 +1035,7 @@ void PlayerManagerImplementation::updatePlayerAppearanceToDatabase(Player* playe
 
 	if (player == NULL)
 		return;
-	
+
 	string appearance;
 	string playApp;
 	player->getCharacterAppearance(playApp);
@@ -1046,14 +1047,14 @@ void PlayerManagerImplementation::updatePlayerAppearanceToDatabase(Player* playe
 	player->getHairAppearance(hairApp);
 	BinaryData hair(hairApp);
 	hair.encode(hairdata);
-	
+
 	stringstream query;
-	
-	query	<< "UPDATE characters set appearance='" << appearance.substr(0, appearance.size() - 1) 
+
+	query	<< "UPDATE characters set appearance='" << appearance.substr(0, appearance.size() - 1)
 			<< "', hair='" << player->getHairObject()
 			<< "', hairData='" << hairdata.substr(0, hairdata.size() - 1) << "' "
 			<< " WHERE character_id = " << player->getCharacterID();
-	
+
 	try {
 		ServerDatabase::instance()->executeStatement(query);
 	} catch (DatabaseException e) {
@@ -1067,9 +1068,9 @@ void PlayerManagerImplementation::updatePlayerBaseHAMToDatabase(Player* player) 
 		return;
 
 	stringstream query;
-	
+
 	query	<< "UPDATE characters set "
-		<< "`health` = " << player->getBaseHealth() 
+		<< "`health` = " << player->getBaseHealth()
 		<< ",`strength` = " << player->getBaseStrength()
 		<< ",`constitution` = " << player->getBaseConstitution()
 		<< ",`action` = " << player->getBaseAction()
@@ -1077,7 +1078,7 @@ void PlayerManagerImplementation::updatePlayerBaseHAMToDatabase(Player* player) 
 		<< ",`stamina` = " << player->getBaseStamina()
 		<< ",`mind` = " << player->getBaseMind()
 		<< ",`focus` = " << player->getBaseFocus()
-		<< ",`willpower` = " << player->getBaseWillpower() 
+		<< ",`willpower` = " << player->getBaseWillpower()
 		<< " WHERE character_id = " << player->getCharacterID();
 	try {
 		ServerDatabase::instance()->executeStatement(query);
@@ -1085,6 +1086,7 @@ void PlayerManagerImplementation::updatePlayerBaseHAMToDatabase(Player* player) 
 		cout << "PlayerManagerImplementation::updatePlayerBaseHAMToDatabase: failed SQL update: " << query.str() << "\n";
 	}
 }
+
 
 
 

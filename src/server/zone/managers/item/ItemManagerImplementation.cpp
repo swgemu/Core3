@@ -287,6 +287,38 @@ TangibleObject* ItemManagerImplementation::createSubObject(uint64 objectid, uint
 	case 0x57A544C5:
 		item = new StimPack(objectid, objectcrc, objectname, objecttemp);
 		break;
+	case 0xE960F4C8:
+	case 0x32775C5F:
+	case 0x7B7A3BD2:
+	case 0x809910C6:
+	case 0xC994774B:
+	case 0xEFD65BB8:
+	case 0x34C1F32F:
+	case 0x7DCC94A2:
+	case 0x862FBFB6:
+	case 0xCF22D83B:
+	case 0x6CDF82F4:
+	case 0xB7C82A63:
+	case 0xFEC54DEE:
+	case 0x052666FA:
+	case 0x4C2B0177:
+	case 0xB17AB627:
+	case 0x6A6D1EB0:
+	case 0x2360793D:
+	case 0xD8835229:
+	case 0x918E35A4:
+	case 0xC8464AA2:
+	case 0x1351E235:
+	case 0x5A5C85B8:
+	case 0xA1BFAEAC:
+	case 0xE8B2C921:
+	case 0x1198F0B3:
+	case 0xCA8F5824:
+	case 0x83823FA9:
+	case 0x786114BD:
+	case 0x316C7330:
+		item = new WoundPack(objectid, objectcrc, objectname, objecttemp);
+		break;
 	default:
 		item = NULL;
 		break;
@@ -668,7 +700,14 @@ TangibleObject* ItemManagerImplementation::createTemplateFromLua(LuaObject itemc
 				break;
 			}
 			case PharmaceuticalImplementation::WOUNDPACK:
+			{
+				float eff = itemconfig.getFloatField("effectiveness");
+				int pool = itemconfig.getIntField("poolAffected");
+				WoundPack* wound = (WoundPack*) item;
+				wound->setEffectiveness(eff);
+				wound->setPoolAffected(pool);
 				break;
+			}
 			case PharmaceuticalImplementation::CUREPACK:
 				break;
 			case PharmaceuticalImplementation::STATEPACK:
