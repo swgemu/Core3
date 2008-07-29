@@ -46,7 +46,7 @@ plumedRasp = Creature:new {
       faction = "Rasp",
       gender = "",
 
-      name = "a Plumed Rasp",
+      stfName = "a Plumed Rasp",
       objectCRC = 144116282, 
       socialGroup = "Rasp",
       named = FALSE, 
@@ -54,7 +54,7 @@ plumedRasp = Creature:new {
       level = 7,
       xp = 147,
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+      combatFlags = ATTACKABLE_FLAG,
 
       healthMax = 165,
       healthMin = 135,

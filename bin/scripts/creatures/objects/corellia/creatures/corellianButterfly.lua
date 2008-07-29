@@ -46,7 +46,7 @@ corellianButterfly = Creature:new {
       faction = "Cor. Butterfly",
       gender = "",
 
-      name = "a Corellian Butterfly",
+      stfName = "a Corellian Butterfly",
       objectCRC = 3636427705, 
       socialGroup = "Cor. Butterfly",
       named = FALSE, 
@@ -54,7 +54,7 @@ corellianButterfly = Creature:new {
       level = 7,
       xp = 147,
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+      combatFlags = ATTACKABLE_FLAG,
 
       healthMax = 330,
       healthMin = 270,

@@ -46,7 +46,7 @@ wompRat = Creature:new {
       faction = "WompRat",
       gender = "",
 
-      name = "a Womprat",
+      stfName = "a Womprat",
       objectCRC = 995330799, 
       socialGroup = "WompRat",
       named = FALSE, 
@@ -54,7 +54,7 @@ wompRat = Creature:new {
       level = 10,
       xp = 356,
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+      combatFlags = ATTACKABLE_FLAG,
 
       healthMax = 990,
       healthMin = 810,

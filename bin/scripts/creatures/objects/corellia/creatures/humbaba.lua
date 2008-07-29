@@ -46,7 +46,7 @@ humbaba = Creature:new {
       faction = "self",
       gender = "",
 
-      name = "a Humbaba",
+      stfName = "a Humbaba",
       objectCRC = 1217993661, 
       socialGroup = "self",
       named = FALSE, 
@@ -54,7 +54,7 @@ humbaba = Creature:new {
       level = 17,
       xp = 1102,
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+      combatFlags = ATTACKABLE_FLAG,
 
       healthMax = 4300,
       healthMin = 3500,

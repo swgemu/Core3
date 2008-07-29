@@ -46,7 +46,7 @@ youngMountainSquill = Creature:new {
       faction = "Squill",
       gender = "",
 
-      name = "a Young Mountain Squill",
+      stfName = "a Young Mountain Squill",
       objectCRC = 1824637824, 
       socialGroup = "Squill",
       named = FALSE, 
@@ -54,7 +54,7 @@ youngMountainSquill = Creature:new {
       level = 10,
       xp = 356,
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
+      combatFlags = ATTACKABLE_FLAG,
 
       healthMax = 990,
       healthMin = 810,

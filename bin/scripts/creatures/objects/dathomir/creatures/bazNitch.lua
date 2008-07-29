@@ -46,7 +46,7 @@ bazNitch = Creature:new {
       faction = "Baz Nitch",
       gender = "",
 
-      name = "a Baz Nitch",
+      stfName = "a Baz Nitch",
       objectCRC = 2941248391, 
       socialGroup = "Baz Nitch",
       named = FALSE, 

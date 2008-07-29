@@ -46,7 +46,7 @@ scyk = Creature:new {
       faction = "Scyk",
       gender = "",
 
-      name = "a Scyk",
+      stfName = "a Scyk",
       objectCRC = 3164121956, 
       socialGroup = "Scyk",
       named = FALSE, 
@@ -54,7 +54,7 @@ scyk = Creature:new {
       level = 12,
       xp = 514,
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
+      combatFlags = ATTACKABLE_FLAG,
 
       healthMax = 1400,
       healthMin = 1200,

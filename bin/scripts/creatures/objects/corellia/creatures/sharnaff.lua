@@ -46,7 +46,7 @@ sharnaff = Creature:new {
       faction = "Sharnaff",
       gender = "",
 
-      name = "a Sharnaff",
+      stfName = "a Sharnaff",
       objectCRC = 4083067359, 
       socialGroup = "Sharnaff",
       named = FALSE, 
@@ -54,7 +54,7 @@ sharnaff = Creature:new {
       level = 31,
       xp = 3005,
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+      combatFlags = ATTACKABLE_FLAG,
 
       healthMax = 10600,
       healthMin = 8600,

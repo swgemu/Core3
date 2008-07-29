@@ -46,7 +46,7 @@ rill = Creature:new {
       faction = "Rill",
       gender = "",
 
-      name = "a Rill",
+      stfName = "a Rill",
       objectCRC = 813958609, 
       socialGroup = "Rill",
       named = FALSE, 
@@ -54,7 +54,7 @@ rill = Creature:new {
       level = 6,
       xp = 113,
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+      combatFlags = ATTACKABLE_FLAG,
 
       healthMax = 220,
       healthMin = 180,

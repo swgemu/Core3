@@ -46,7 +46,7 @@ canyonKraytDragon = Creature:new {
       faction = "Krayt Dragon",
       gender = "",
 
-      name = "a Canyon Krayt Dragon",
+      stfName = "a Canyon Krayt Dragon",
       objectCRC = 1238991743, 
       socialGroup = "Krayt Dragon",
       named = FALSE, 

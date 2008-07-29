@@ -46,7 +46,7 @@ carrionSpat = Creature:new {
       faction = "Carrion Spat",
       gender = "",
 
-      name = "a Carrion Spat",
+      stfName = "a Carrion Spat",
       objectCRC = 3186677588, 
       socialGroup = "Carrion Spat",
       named = FALSE, 
@@ -54,7 +54,7 @@ carrionSpat = Creature:new {
       level = 10,
       xp = 292,
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+      combatFlags = ATTACKABLE_FLAG,
 
       healthMax = 1200,
       healthMin = 1000,

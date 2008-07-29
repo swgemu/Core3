@@ -46,7 +46,7 @@ malignantSquill = Creature:new {
       faction = "Squill",
       gender = "",
 
-      name = "a Malignant Squill",
+      stfName = "a Malignant Squill",
       objectCRC = 1824637824, 
       socialGroup = "Squill",
       named = FALSE, 

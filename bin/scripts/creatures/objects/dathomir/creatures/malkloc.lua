@@ -46,7 +46,7 @@ malkloc = Creature:new {
       faction = "Malkloc",
       gender = "",
 
-      name = "a Malkloc",
+      stfName = "a Malkloc",
       objectCRC = 197708576, 
       socialGroup = "Malkloc",
       named = FALSE, 

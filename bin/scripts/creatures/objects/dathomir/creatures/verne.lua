@@ -46,7 +46,7 @@ verne = Creature:new {
       faction = "Verne",
       gender = "",
 
-      name = "a Verne",
+      stfName = "a Verne",
       objectCRC = 1915375945, 
       socialGroup = "Verne",
       named = FALSE, 
@@ -54,7 +54,7 @@ verne = Creature:new {
       level = 17,
       xp = 1102,
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+      ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
       healthMax = 4300,
       healthMin = 3500,

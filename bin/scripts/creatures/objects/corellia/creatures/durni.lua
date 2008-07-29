@@ -46,7 +46,7 @@ durni = Creature:new {
       faction = "Durni",
       gender = "",
 
-      name = "a Durni",
+      stfName = "a Durni",
       objectCRC = 1181360289, 
       socialGroup = "Durni",
       named = FALSE, 
@@ -54,7 +54,7 @@ durni = Creature:new {
       level = 7,
       xp = 147,
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+      combatFlags = ATTACKABLE_FLAG,
 
       healthMax = 330,
       healthMin = 270,

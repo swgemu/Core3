@@ -46,7 +46,7 @@ gapingSpiderRecluse = Creature:new {
       faction = "Gaping",
       gender = "",
 
-      name = "a Gaping Spider Recluse",
+      stfName = "a Gaping Spider Recluse",
       objectCRC = 2216583678, 
       socialGroup = "Gaping",
       named = FALSE, 

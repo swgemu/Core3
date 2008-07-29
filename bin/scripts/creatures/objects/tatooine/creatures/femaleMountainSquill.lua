@@ -46,7 +46,7 @@ femaleMountainSquill = Creature:new {
       faction = "Squill",
       gender = "",
 
-      name = "a Female Mountain Squill",
+      stfName = "a Female Mountain Squill",
       objectCRC = 807169980, 
       socialGroup = "Squill",
       named = FALSE, 

@@ -53,11 +53,7 @@ which carries forward this exception.
 #include "../zone/packets.h"
 #include "../zone/objects.h"
 
-#include "ChatManager.h"
-
-#include <iostream>
-#include <fstream>
- 
+#include "ChatManager.h" 
 
 GMCommandMap * GameCommandHandler::gmCommands = NULL;
 

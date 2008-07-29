@@ -136,7 +136,7 @@ tuskenObserver = Creature:new {
       meatMax = 0,
 
       skills = { "tuskenRangedAttack1", "tuskenRangedAttack2", "tuskenRangedAttack3", "tuskenRangedAttack4" },
-      -- respawnTimer = 180,
+      respawnTimer = 120 ,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }

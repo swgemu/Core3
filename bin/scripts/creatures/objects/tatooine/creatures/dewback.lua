@@ -46,7 +46,7 @@ dewback = Creature:new {
       faction = "Dewback",
       gender = "",
 
-      name = "a Dewback",
+      stfName = "a Dewback",
       objectCRC = 3499529322, 
       socialGroup = "Dewback",
       named = FALSE, 
@@ -54,7 +54,7 @@ dewback = Creature:new {
       level = 19,
       xp = 1426,
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+      combatFlags = ATTACKABLE_FLAG,
 
       healthMax = 5000,
       healthMin = 4100,

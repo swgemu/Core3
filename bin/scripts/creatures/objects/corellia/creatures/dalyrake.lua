@@ -46,7 +46,7 @@ dalyrake = Creature:new {
       faction = "Dalyrake",
       gender = "",
 
-      name = "a Dalyrake",
+      stfName = "a Dalyrake",
       objectCRC = 3621894346, 
       socialGroup = "Dalyrake",
       named = FALSE, 
@@ -54,7 +54,7 @@ dalyrake = Creature:new {
       level = 9,
       xp = 292,
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+      combatFlags = ATTACKABLE_FLAG,
 
       healthMax = 825,
       healthMin = 675,

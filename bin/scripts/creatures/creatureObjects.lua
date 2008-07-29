@@ -80,12 +80,12 @@ RunCreatureFile("objects/tatooine/npcs/jabbaCompoundGuard.lua")
 
 
 --Sennex Cave
-RunCreatureFile("objects/tatooine/npcs/sennexhunter.lua")
-RunCreatureFile("objects/tatooine/npcs/sennexslavemaster.lua")
-RunCreatureFile("objects/tatooine/npcs/sennexlookout.lua")
-RunCreatureFile("objects/tatooine/npcs/sennexslaver.lua")
-RunCreatureFile("objects/tatooine/npcs/sennexguard.lua")
-RunCreatureFile("objects/tatooine/npcs/sennexwarder.lua")
+RunCreatureFile("objects/tatooine/npcs/sennexHunter.lua")
+RunCreatureFile("objects/tatooine/npcs/sennexSlavemaster.lua")
+RunCreatureFile("objects/tatooine/npcs/sennexLookout.lua")
+RunCreatureFile("objects/tatooine/npcs/sennexSlaver.lua")
+RunCreatureFile("objects/tatooine/npcs/sennexGuard.lua")
+RunCreatureFile("objects/tatooine/npcs/sennexWarder.lua")
 RunCreatureFile("objects/tatooine/creatures/caveBeetle.lua")
 RunCreatureFile("objects/tatooine/creatures/duneBeetle.lua")
 

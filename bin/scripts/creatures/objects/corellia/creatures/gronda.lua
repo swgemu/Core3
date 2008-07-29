@@ -46,7 +46,7 @@ gronda = Creature:new {
       faction = "Gronda",
       gender = "",
 
-      name = "a Gronda",
+      stfName = "a Gronda",
       objectCRC = 2380349390, 
       socialGroup = "Gronda",
       named = FALSE, 
@@ -54,7 +54,7 @@ gronda = Creature:new {
       level = 19,
       xp = 1426,
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+      combatFlags = ATTACKABLE_FLAG,
 
       healthMax = 6100,
       healthMin = 5000,

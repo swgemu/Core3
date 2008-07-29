@@ -54,7 +54,7 @@ imperialSurfaceMarshal = Creature:new {
       level = 30,
       xp = 3097,
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
       healthMax = 10200,
       healthMin = 8400,

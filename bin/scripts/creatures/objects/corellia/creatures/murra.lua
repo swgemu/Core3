@@ -46,7 +46,7 @@ murra = Creature:new {
       faction = "Murra",
       gender = "",
 
-      name = "a Murra",
+      stfName = "a Murra",
       objectCRC = 1555554447, 
       socialGroup = "Murra",
       named = FALSE, 
@@ -54,7 +54,7 @@ murra = Creature:new {
       level = 10,
       xp = 292,
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+      combatFlags = ATTACKABLE_FLAG,
 
       healthMax = 990,
       healthMin = 810,

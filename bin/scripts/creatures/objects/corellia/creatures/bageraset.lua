@@ -46,7 +46,7 @@ bageraset = Creature:new {
       faction = "Bageraset",
       gender = "",
 
-      name = "a Bageraset",
+      stfName = "a Bageraset",
       objectCRC = 2017464107, 
       socialGroup = "Bageraset",
       named = FALSE, 
@@ -54,7 +54,7 @@ bageraset = Creature:new {
       level = 10,
       xp = 292,
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+      combatFlags = ATTACKABLE_FLAG,
 
       healthMax = 990,
       healthMin = 810,

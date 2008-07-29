@@ -46,7 +46,7 @@ kwi = Creature:new {
       faction = "Kwi",
       gender = "",
 
-      name = "a Kwi",
+      stfName = "a Kwi",
       objectCRC = 2111021739, 
       socialGroup = "Kwi",
       named = FALSE, 

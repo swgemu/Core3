@@ -46,7 +46,7 @@ reptilianFlier = Creature:new {
       faction = "Reptilian Flier",
       gender = "",
 
-      name = "a Reptilian Flier",
+      stfName = "a Reptilian Flier",
       objectCRC = 2270001055, 
       socialGroup = "Reptilian Flier",
       named = FALSE, 

@@ -46,7 +46,7 @@ rancor = Creature:new {
       faction = "Rancor",
       gender = "",
 
-      name = "a Rancor",
+      stfName = "a Rancor",
       objectCRC = 3516440142, 
       socialGroup = "Rancor",
       named = FALSE, 

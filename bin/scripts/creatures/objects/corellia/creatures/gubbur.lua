@@ -46,7 +46,7 @@ gubbur = Creature:new {
       faction = "Gubbur",
       gender = "",
 
-      name = "a Gubbur",
+      stfName = "a Gubbur",
       objectCRC = 170808, 
       socialGroup = "Gubbur",
       named = FALSE, 
@@ -54,7 +54,7 @@ gubbur = Creature:new {
       level = 6,
       xp = 113,
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+      combatFlags = ATTACKABLE_FLAG,
 
       healthMax = 220,
       healthMin = 180,

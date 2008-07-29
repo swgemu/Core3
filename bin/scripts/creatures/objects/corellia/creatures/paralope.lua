@@ -46,7 +46,7 @@ paralope = Creature:new {
       faction = "Paratope",
       gender = "",
 
-      name = "a Paralope",
+      stfName = "a Paralope",
       objectCRC = 634611787, 
       socialGroup = "Paratope",
       named = FALSE, 
@@ -54,7 +54,7 @@ paralope = Creature:new {
       level = 6,
       xp = 113,
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+      combatFlags = ATTACKABLE_FLAG,
 
       healthMax = 220,
       healthMin = 180,

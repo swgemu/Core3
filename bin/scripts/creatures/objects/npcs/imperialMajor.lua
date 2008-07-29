@@ -54,7 +54,7 @@ imperialMajor = Creature:new {
       level = 21,
       xp = 2006,
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
       healthMax = 6600,
       healthMin = 5400,

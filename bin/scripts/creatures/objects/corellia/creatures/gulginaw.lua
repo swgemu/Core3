@@ -46,7 +46,7 @@ gulginaw = Creature:new {
       faction = "Gulginaw",
       gender = "",
 
-      name = "a Gulginaw",
+      stfName = "a Gulginaw",
       objectCRC = 1164163092, 
       socialGroup = "Gulginaw",
       named = FALSE, 
@@ -54,7 +54,7 @@ gulginaw = Creature:new {
       level = 13,
       xp = 609,
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+      combatFlags = ATTACKABLE_FLAG,
 
       healthMax = 1900,
       healthMin = 1500,

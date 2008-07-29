@@ -46,7 +46,7 @@ squill = Creature:new {
       faction = "Squill",
       gender = "",
 
-      name = "a Squill",
+      stfName = "a Squill",
       objectCRC = 1824637824, 
       socialGroup = "Squill",
       named = FALSE, 
@@ -54,7 +54,7 @@ squill = Creature:new {
       level = 18,
       xp = 1257,
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+      combatFlags = ATTACKABLE_FLAG,
 
       healthMax = 4300,
       healthMin = 3500,

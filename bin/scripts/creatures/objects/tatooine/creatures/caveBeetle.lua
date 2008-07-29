@@ -46,7 +46,7 @@ caveBeetle = Creature:new {
       faction = "Rock Beetle",
       gender = "",
 
-      name = "a Cave Beetle",
+      stfName = "a Cave Beetle",
       objectCRC = 1381990465, 
       socialGroup = "Rock Beetle",
       named = FALSE, 

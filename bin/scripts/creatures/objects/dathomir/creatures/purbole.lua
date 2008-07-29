@@ -46,7 +46,7 @@ purbole = Creature:new {
       faction = "Purbole",
       gender = "",
 
-      name = "a Purbole",
+      stfName = "a Purbole",
       objectCRC = 1043838137, 
       socialGroup = "Purbole",
       named = FALSE, 

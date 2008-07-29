@@ -46,7 +46,7 @@ direCat = Creature:new {
       faction = "Dire Cat",
       gender = "",
 
-      name = "a Dire Cat",
+      stfName = "a Dire Cat",
       objectCRC = 1616759912, 
       socialGroup = "Dire Cat",
       named = FALSE, 

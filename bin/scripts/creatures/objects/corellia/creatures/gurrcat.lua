@@ -46,7 +46,7 @@ gurrcat = Creature:new {
       faction = "self",
       gender = "",
 
-      name = "a Gurrcat",
+      stfName = "a Gurrcat",
       objectCRC = 4196368391, 
       socialGroup = "self",
       named = FALSE, 
@@ -54,7 +54,7 @@ gurrcat = Creature:new {
       level = 10,
       xp = 356,
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+      combatFlags = ATTACKABLE_FLAG,
 
       healthMax = 990,
       healthMin = 810,

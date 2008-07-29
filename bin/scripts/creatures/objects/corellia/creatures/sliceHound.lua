@@ -46,7 +46,7 @@ sliceHound = Creature:new {
       faction = "Slice Hound",
       gender = "",
 
-      name = "a Slice Hound",
+      stfName = "a Slice Hound",
       objectCRC = 3500363411, 
       socialGroup = "Slice Hound",
       named = FALSE, 
@@ -54,7 +54,7 @@ sliceHound = Creature:new {
       level = 9,
       xp = 292,
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+      combatFlags = ATTACKABLE_FLAG,
 
       healthMax = 495,
       healthMin = 405,
