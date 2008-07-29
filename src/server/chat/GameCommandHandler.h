@@ -121,6 +121,7 @@ private:
 	static void map(StringTokenizer tokenizer, Player * player);
 	static void warp(StringTokenizer tokenizer, Player * player);
 	static void warpTo(StringTokenizer tokenizer, Player * player);
+	static void warpToWP(StringTokenizer tokenizer, Player * player);
 	static void warpPlayer(StringTokenizer tokenizer, Player * player);
 	static void summon(StringTokenizer tokenizer, Player * player);
 	static void kick(StringTokenizer tokenizer, Player * player);
@@ -156,6 +157,8 @@ private:
 	static void getLocation(StringTokenizer tokenizer, Player * player);
 	static void getCords(StringTokenizer tokenizer, Player * player);
 	static void giveItemTemp(StringTokenizer tokenizer, Player * player);
+		
+		
 		
 	void init();
 	

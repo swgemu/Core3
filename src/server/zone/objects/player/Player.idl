@@ -238,10 +238,8 @@ interface Player implements CreatureObject {
 	WaypointObject getWaypoint(unsigned long id);
 	
 	void updateWaypoint(WaypointObject wp);
-
-	void saveIgnorelist(Player player);
 	void saveWaypoints(Player player);
-	WaypointObject searchWaypoint(Player play, const string name);
+	WaypointObject searchWaypoint(Player play, const string name, int mode);
 
 	
 	// Experience
@@ -426,7 +424,7 @@ interface Player implements CreatureObject {
 
 	int getSlicingAbility();
 	
-	boolean isChatMuted();
+	boolean isChatMuted();	
 	
 	// mission stuff
 	unsigned int nextMisoRFC();

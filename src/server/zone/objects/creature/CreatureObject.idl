@@ -557,6 +557,45 @@ interface CreatureObject implements SceneObject {
 	unsigned int getSkillBoxesUpdateCounter();
 	unsigned int getSkillModsCounter();
 	unsigned int getNewSkillModsCounter(int cnt);
+	
+	string getHideType();
+	string getBoneType();
+	string getMeatType();
+
+	int getBoneMax();
+	int getHideMax();
+	int getMeatMax();
+	int getMilk();
+	
+	int getXP();
+	
+	int isHealer();	
+	int isPack();	
+	int isHerd();	
+	int isStalker();	
+	int isKiller();	
+	int isAggressive();	
+	
+	string getBehaviorScript();	
+		
+	string getCreatureFaction();
+	
+	string getCreatureWeapon();
+	string getCreatureWeaponName();
+	string getCreatureWeaponTemp();
+	string getCreatureWeaponClass();
+	int getCreatureWeaponEquipped();
+	int getCreatureWeaponMinDamage();
+	int getCreatureWeaponMaxDamage();
+	float getCreatureWeaponAttackSpeed();
+	string getCreatureWeaponDamageType();
+	string getCreatureWeaponArmorPiercing();	
+	
+	float getInternalNPCDamageModifier();
+	
+	float getTame();
+	
+	int getLootGroup();
 
 	// setters
 	void setBaseHealth(unsigned int health);
@@ -686,4 +725,52 @@ interface CreatureObject implements SceneObject {
 	boolean canTreatStates();
 	
 	int getMedicalFacilityRating();
+	
+	void setBoneType(const string bone);
+	
+	void setBoneMax(int bonemax);
+	
+	void setHideType(const string hide);
+	void setHideMax(int hidemax);
+	
+	void setMeatType(const string meat);
+	void setMeatMax(int meatmax);
+	
+	void setMilk(int milkamt);
+	
+	void setXP(int xp);
+	
+	void setHealer(int heale);
+	
+	void setPack(int pack);
+	
+	void setHerd(int herd);
+	
+	void setStalker(int stalker);
+	
+	void setKiller(int killer);
+	
+	void setAggressive(int aggressive);
+	
+	void setBehaviorScript(const string behaviorScript);
+	
+	void setLootGroup(int lootgroup);
+	
+	void setTame(float tme);
+	
+	void setCreatureFaction(const string cfac);
+	
+	void setInternalNPCDamageModifier(float indm);
+	
+	// NPC weapons
+	void setCreatureWeapon(const string wpon);
+	void setCreatureWeaponName(const string weaponname);
+	void setCreatureWeaponTemp(const string weapontemp);
+	void setCreatureWeaponClass(const string weaponclass);
+	void setCreatureWeaponEquipped(int weaponequ);
+	void setCreatureWeaponMinDamage(int weaponmindam);
+	void setCreatureWeaponMaxDamage(int weaponmaxdam);
+	void setCreatureWeaponAttackSpeed(float weaponattackspeed);
+	void setCreatureWeaponDamageType(const string weapondamtype);
+	void setCreatureWeaponArmorPiercing(const string weaponarmorpiercing);		
 }

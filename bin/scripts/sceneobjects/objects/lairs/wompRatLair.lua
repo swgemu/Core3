@@ -53,7 +53,7 @@ wompRatLair = Lair:new {
 	
 	planet = 8,
 
-	creatureCRC = 3337882429,
+	creatureCRC = 995330799,
 	creatureName = "wompRat",
 	creaturestfName = "a WompRat",
 	spawnSize = 5,

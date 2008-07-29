@@ -782,16 +782,12 @@ public:
 		playerObject->updateWaypoint(wp);
 	}
 
-	void saveIgnorelist(Player* player){
-		playerObject->saveIgnorelist(player);
-	}
-
 	void saveWaypoints(Player* player){
 		playerObject->saveWaypoints(player);
 	}
 
-	WaypointObject* searchWaypoint(Player* play, const string& name) {
-		return playerObject->searchWaypoint(play,name);
+	WaypointObject* searchWaypoint(Player* play, const string& name, int mode) {
+		return playerObject->searchWaypoint(play,name,mode);
 	}
 
 	void launchFirework(int animationType);

@@ -51,6 +51,8 @@ which carries forward this exception.
 #include "objects/player/PlayerObjectImplementation.h"
 #include "objects/player/FriendsList.h"
 #include "objects/player/FriendsListImplementation.h"
+#include "objects/player/IgnoreList.h"
+#include "objects/player/IgnoreListImplementation.h"
 
 #include "objects/creature/Creature.h"
 #include "objects/creature/CreatureImplementation.h"

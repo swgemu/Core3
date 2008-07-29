@@ -68,7 +68,7 @@ public:
 		insertByte(subtype);
 		
 		insertLong(wp->getObjectID());
-		insertInt(0); //?
+		insertInt(0); // cellID !! (20. July 2008 Farmer John)
 		insertFloat(wp->getPositionX());
 		insertFloat(0.0f); //Z
 		insertFloat(wp->getPositionY());
@@ -79,7 +79,7 @@ public:
 		insertUnicode(name);
 		
 		insertLong(wp->getObjectID());
-		insertByte(0x01);
+		insertByte(0x01); //Flag  1=Normal WP (light blue)  / 0 = White WP text  / 2 = green WP text (20. July 2008 Farmer John)
 		insertByte(0x01);
 	}
 

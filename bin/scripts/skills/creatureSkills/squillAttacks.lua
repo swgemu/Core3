@@ -59,7 +59,7 @@ squillAttack1 = {
 	postureUpChance = 0,
 	dizzyChance = 0,
 	blindChance = 0,
-	stunChance = 0,
+	stunChance = 20,
 	intimidateChance = 0,
 	
 	CbtSpamBlock = "attack_block",
@@ -86,12 +86,12 @@ squillAttack2 = {
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
-	postureDownChance = 1,
+	postureDownChance = 0,
 	postureUpChance = 0,
 	dizzyChance = 0,
 	blindChance = 0,
 	stunChance = 0,
-	intimidateChance = 0,
+	intimidateChance = 20,
 	
 	CbtSpamBlock = "attack_block",
 	CbtSpamCounter = "attack_counter",
@@ -116,10 +116,10 @@ squillAttack3 = {
 	areaRange = 0,
 	accuracyBonus = 0,
 		
-	knockdownChance = 0,
+	knockdownChance = 20,
 	postureDownChance = 0,
 	postureUpChance = 0,
-	dizzyChance = 1,
+	dizzyChance = 0,
 	blindChance = 0,
 	stunChance = 0,
 	intimidateChance = 0,
@@ -163,5 +163,39 @@ squillAttack4 = {
 }
 
 AddRandomPoolAttackTargetSkill(squillAttack4)
+
+-----------------------------------------------
+
+squillAttack5 = {
+	attackname = "squillAttack5",
+	animation = "creature_attack_light",
+	
+	requiredWeaponType = NONE,
+
+	range = 10,
+
+	damageRatio = 15,
+
+	speedRatio = 4,
+
+	areaRange = 0,
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 20,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+}
+
+AddRandomPoolAttackTargetSkill(squillAttack5)
 
 -----------------------------------------------

@@ -60,7 +60,7 @@ wompAttack1 = {
 	dizzyChance = 0,
 	blindChance = 0,
 	stunChance = 0,
-	intimidateChance = 0,
+	intimidateChance = 20,
 	
 	CbtSpamBlock = "attack_block",
 	CbtSpamCounter = "attack_counter",

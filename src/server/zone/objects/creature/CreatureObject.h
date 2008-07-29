@@ -705,6 +705,64 @@ public:
 
 	unsigned int getNewSkillModsCounter(int cnt);
 
+	string& getHideType();
+
+	string& getBoneType();
+
+	string& getMeatType();
+
+	int getBoneMax();
+
+	int getHideMax();
+
+	int getMeatMax();
+
+	int getMilk();
+
+	int getXP();
+
+	int isHealer();
+
+	int isPack();
+
+	int isHerd();
+
+	int isStalker();
+
+	int isKiller();
+
+	int isAggressive();
+
+	string& getBehaviorScript();
+
+	string& getCreatureFaction();
+
+	string& getCreatureWeapon();
+
+	string& getCreatureWeaponName();
+
+	string& getCreatureWeaponTemp();
+
+	string& getCreatureWeaponClass();
+
+	int getCreatureWeaponEquipped();
+
+	int getCreatureWeaponMinDamage();
+
+	int getCreatureWeaponMaxDamage();
+
+	float getCreatureWeaponAttackSpeed();
+
+	string& getCreatureWeaponDamageType();
+
+	string& getCreatureWeaponArmorPiercing();
+
+	float getInternalNPCDamageModifier();
+
+	float getTame();
+
+	int getLootGroup();
+
 	void setBaseHealth(unsigned int health);
 
 	void setBaseStrength(unsigned int strength);
@@ -889,13 +947,82 @@ public:
 
 	int getMedicalFacilityRating();
 
+	void setBoneType(const string& bone);
+
+	void setBoneMax(int bonemax);
+
+	void setHideType(const string& hide);
+
+	void setHideMax(int hidemax);
+
+	void setMeatType(const string& meat);
+
+	void setMeatMax(int meatmax);
+
+	void setMilk(int milkamt);
+
+	void setXP(int xp);
+
+	void setHealer(int heale);
+
+	void setPack(int pack);
+
+	void setHerd(int herd);
+
+	void setStalker(int stalker);
+
+	void setKiller(int killer);
+
+	void setAggressive(int aggressive);
+
+	void setBehaviorScript(const string& behaviorScript);
+
+	void setLootGroup(int lootgroup);
+
+	void setTame(float tme);
+
+	void setCreatureFaction(const string& cfac);
+
+	void setInternalNPCDamageModifier(float indm);
+
+	void setCreatureWeapon(const string& wpon);
+
+	void setCreatureWeaponName(const string& weaponname);
+
+	void setCreatureWeaponTemp(const string& weapontemp);
+
+	void setCreatureWeaponClass(const string& weaponclass);
+
+	void setCreatureWeaponEquipped(int weaponequ);
+
+	void setCreatureWeaponMinDamage(int weaponmindam);
+
+	void setCreatureWeaponMaxDamage(int weaponmaxdam);
+
+	void setCreatureWeaponAttackSpeed(float weaponattackspeed);
+
+	void setCreatureWeaponDamageType(const string& weapondamtype);
+
+	void setCreatureWeaponArmorPiercing(const string& weaponarmorpiercing);
+
 protected:
 	CreatureObject(DummyConstructorParameter* param);
 
 	virtual ~CreatureObject();
 
+	string _return_getBehaviorScript;
+	string _return_getBoneType;
+	string _return_getCreatureFaction;
+	string _return_getCreatureWeapon;
+	string _return_getCreatureWeaponArmorPiercing;
+	string _return_getCreatureWeaponClass;
+	string _return_getCreatureWeaponDamageType;
+	string _return_getCreatureWeaponName;
+	string _return_getCreatureWeaponTemp;
 	string _return_getGender;
 	string _return_getGuildName;
+	string _return_getHideType;
+	string _return_getMeatType;
 	string _return_getMood;
 	string _return_getPerformanceAnimation;
 	string _return_getPerformanceName;
@@ -1578,6 +1705,64 @@ public:
 
 	unsigned int getNewSkillModsCounter(int cnt);
 
+	string& getHideType();
+
+	string& getBoneType();
+
+	string& getMeatType();
+
+	int getBoneMax();
+
+	int getHideMax();
+
+	int getMeatMax();
+
+	int getMilk();
+
+	int getXP();
+
+	int isHealer();
+
+	int isPack();
+
+	int isHerd();
+
+	int isStalker();
+
+	int isKiller();
+
+	int isAggressive();
+
+	string& getBehaviorScript();
+
+	string& getCreatureFaction();
+
+	string& getCreatureWeapon();
+
+	string& getCreatureWeaponName();
+
+	string& getCreatureWeaponTemp();
+
+	string& getCreatureWeaponClass();
+
+	int getCreatureWeaponEquipped();
+
+	int getCreatureWeaponMinDamage();
+
+	int getCreatureWeaponMaxDamage();
+
+	float getCreatureWeaponAttackSpeed();
+
+	string& getCreatureWeaponDamageType();
+
+	string& getCreatureWeaponArmorPiercing();
+
+	float getInternalNPCDamageModifier();
+
+	float getTame();
+
+	int getLootGroup();
+
 	void setBaseHealth(unsigned int health);
 
 	void setBaseStrength(unsigned int strength);
@@ -1762,6 +1947,64 @@ public:
 
 	int getMedicalFacilityRating();
 
+	void setBoneType(const string& bone);
+
+	void setBoneMax(int bonemax);
+
+	void setHideType(const string& hide);
+
+	void setHideMax(int hidemax);
+
+	void setMeatType(const string& meat);
+
+	void setMeatMax(int meatmax);
+
+	void setMilk(int milkamt);
+
+	void setXP(int xp);
+
+	void setHealer(int heale);
+
+	void setPack(int pack);
+
+	void setHerd(int herd);
+
+	void setStalker(int stalker);
+
+	void setKiller(int killer);
+
+	void setAggressive(int aggressive);
+
+	void setBehaviorScript(const string& behaviorScript);
+
+	void setLootGroup(int lootgroup);
+
+	void setTame(float tme);
+
+	void setCreatureFaction(const string& cfac);
+
+	void setInternalNPCDamageModifier(float indm);
+
+	void setCreatureWeapon(const string& wpon);
+
+	void setCreatureWeaponName(const string& weaponname);
+
+	void setCreatureWeaponTemp(const string& weapontemp);
+
+	void setCreatureWeaponClass(const string& weaponclass);
+
+	void setCreatureWeaponEquipped(int weaponequ);
+
+	void setCreatureWeaponMinDamage(int weaponmindam);
+
+	void setCreatureWeaponMaxDamage(int weaponmaxdam);
+
+	void setCreatureWeaponAttackSpeed(float weaponattackspeed);
+
+	void setCreatureWeaponDamageType(const string& weapondamtype);
+
+	void setCreatureWeaponArmorPiercing(const string& weaponarmorpiercing);
+
 protected:
 	string _param0_info__string_bool_;
 	string _param0_doAnimation__string_;
@@ -1796,6 +2039,17 @@ protected:
 	string _param0_setSpeciesName__string_;
 	string _param0_setGender__string_;
 	string _param0_setMood__string_;
+	string _param0_setBoneType__string_;
+	string _param0_setHideType__string_;
+	string _param0_setMeatType__string_;
+	string _param0_setBehaviorScript__string_;
+	string _param0_setCreatureFaction__string_;
+	string _param0_setCreatureWeapon__string_;
+	string _param0_setCreatureWeaponName__string_;
+	string _param0_setCreatureWeaponTemp__string_;
+	string _param0_setCreatureWeaponClass__string_;
+	string _param0_setCreatureWeaponDamageType__string_;
+	string _param0_setCreatureWeaponArmorPiercing__string_;
 };
 
 class CreatureObjectHelper : public DistributedObjectClassHelper, public Singleton<CreatureObjectHelper> {

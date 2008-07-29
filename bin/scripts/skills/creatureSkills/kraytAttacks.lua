@@ -191,7 +191,7 @@ kraytAttack5 = {
 	accuracyBonus = 300,
 		
 	knockdownChance = 0,
-	postureDownChance = 0,
+	postureDownChance = 20,
 	postureUpChance = 0,
 	dizzyChance = 0,
 	blindChance = 0,

@@ -56,8 +56,12 @@ which carries forward this exception.
 #include "FriendsList.h"
 #include "FriendsListImplementation.h"
 
+#include "IgnoreList.h"
+#include "IgnoreListImplementation.h"
+
 class Player;
 class FriendsList;
+class IgnoreList;
 
 class PlayerObjectImplementation : public PlayerObjectServant {
 	Player* player;
@@ -86,6 +90,7 @@ class PlayerObjectImplementation : public PlayerObjectServant {
 	uint32 foodFilling;
 	uint32 foodFillingMax;	
 	FriendsList* friendsList;
+	IgnoreList* ignoreList;
 	
 public:
 
@@ -260,6 +265,9 @@ public:
 		return waypointListCount += cnt;
 	}
 	
+	
+	
+	//Friendlist	
 	inline FriendsList* getFriendsList() {
 		return friendsList;
 	}
@@ -292,9 +300,33 @@ public:
 		friendsList->findFriend(name, playerManager);		
 	}
 
-	void saveIgnorelist(Player* player);
+	//Ignorelist
+	inline IgnoreList* getIgnoreList() {
+		return ignoreList;
+	}
+	
+	inline void addIgnore(string& name, string& inServer) {		
+		ignoreList->addIgnore(name, inServer);		
+	}
+	
+	inline void ignoreMagicNumberReset() {
+		ignoreList->ignoreMagicNumberReset();
+	}
+	
+	inline void removeIgnore(string& name) {		
+		ignoreList->removeIgnore(name);		
+	}
+	
+	inline void saveIgnore() {
+		ignoreList->saveIgnore();
+	}
+		
+	inline void loadIgnore() {
+		ignoreList->loadIgnore();
+	}
+	
 	void saveWaypoints(Player* player);
-	WaypointObject* searchWaypoint(Player* play, const string& name);
+	WaypointObject* searchWaypoint(Player* play, const string& name, int mode);
 	
 	friend class Player;
 	

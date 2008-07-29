@@ -384,7 +384,6 @@ void PlayerManagerImplementation::loadFromDatabase(Player* player) {
 	player->setSpeciesName(Races::getSpecies(raceID));
 	player->setGender(Races::getGender(raceID));
 	player->setHairObject(character->getString(27));
-	//player->hairData = character->getString(28);
 
 	player->setFaction(character->getUnsignedInt(21));
 
@@ -468,31 +467,41 @@ void PlayerManagerImplementation::loadWaypoints(Player* player) {
 }
 
 void PlayerManagerImplementation::updateOtherFriendlists(Player* player, bool status) {
-	ResultSet* result;
-	stringstream query;
-	string name;
+	string loggingInName = player->getFirstName();
+	String::toLower(loggingInName);
 
-	try {
-		query.str("");
-		query << "SELECT * FROM friendlist WHERE friend_id = '" << player->getCharacterID() <<"';";
-		result = ServerDatabase::instance()->executeQuery(query);
+	try {		
+		//This COULD be a huge task if many players are online...so we need to keep an eye of this!
+		//The critical subject is the needed time for a toon logging in if many players are online. Unfort. we must iterate the 
+		//friendlists of the online players tho, DB is not reflecting it correctly before a toon logs out and writes his friendlist to the DB (bugfix)
+		
+		playerMap->resetIterator(false);
 
-		while (result->next()) {
-			name = result->getString(1);
-			Player* playerToInform = playerMap->get(name);
+		while (playerMap->hasNext()) {
+			Player* playerToInform = playerMap->next();
+			PlayerObject* toInformObject = playerToInform->getPlayerObject();
 
-			if(playerToInform != NULL){
-				if(playerToInform->isOnline()){
-					FriendStatusChangeMessage* notifyStatus = new FriendStatusChangeMessage(player->getFirstName(), "Core3", status);
-					playerToInform->sendMessage(notifyStatus);
+			for(int i = 0; i < toInformObject->getFriendsList()->getCount(); ++i){
+				if(toInformObject->getFriendsList()->getFriendsName(i) == loggingInName) {
+					
+					if(playerToInform != NULL){
+						if(playerToInform->isOnline()){	
+							
+							FriendStatusChangeMessage* notifyStatus = 
+								new FriendStatusChangeMessage(player->getFirstName(), "Core3", status);
+								
+							playerToInform->sendMessage(notifyStatus);
+							
+						}
+					}
+
 				}
 			}
 		}
+		
 	} catch (...) {
-		cout << "Exception in PlayerManagerImplementation::updateOtherFriendlists : SELECT * FROM friendlist WHERE friend_id... " << endl;
+		cout << "Exception in PlayerManagerImplementation::updateOtherFriendlists iterating foreign frindlists " << endl;
 	}
-
-	delete result;
 }
 
 void PlayerManagerImplementation::unload(Player* player) {

@@ -53,6 +53,25 @@ scykAttack1 = {
 
 	areaRange = 0,
 	accuracyBonus = 0,
+	
+	healthAttackChance = 50,
+	actionAttackChance = 0,
+	mindAttackChance = 0,
+
+	dotChance = 50,
+	tickStrengthOfHit = 1,
+
+	fireStrength = 0,
+	fireType = 0,
+
+	bleedingStrength = 0,
+	bleedingType = 0,
+
+	poisonStrength = 50,
+	poisonType = HEALTH,
+
+	diseaseStrength = 1,
+	diseaseType = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,

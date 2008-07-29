@@ -15,6 +15,8 @@ class Player;
 
 class FriendsList;
 
+class IgnoreList;
+
 class WaypointObject;
 
 class PlayerManager;
@@ -125,11 +127,21 @@ public:
 
 	void updateAllFriends(PlayerObject* playerObject);
 
-	void saveIgnorelist(Player* player);
+	IgnoreList* getIgnoreList();
+
+	void addIgnore(string& name, string& inServer);
+
+	void ignoreMagicNumberReset();
+
+	void removeIgnore(string& name);
+
+	void saveIgnore();
+
+	void loadIgnore();
 
 	void saveWaypoints(Player* player);
 
-	WaypointObject* searchWaypoint(Player* play, const string& name);
+	WaypointObject* searchWaypoint(Player* play, const string& name, int mode);
 
 protected:
 	PlayerObject(DummyConstructorParameter* param);
@@ -249,11 +261,21 @@ public:
 
 	void updateAllFriends(PlayerObject* playerObject);
 
-	void saveIgnorelist(Player* player);
+	IgnoreList* getIgnoreList();
+
+	void addIgnore(string& name, string& inServer);
+
+	void ignoreMagicNumberReset();
+
+	void removeIgnore(string& name);
+
+	void saveIgnore();
+
+	void loadIgnore();
 
 	void saveWaypoints(Player* player);
 
-	WaypointObject* searchWaypoint(Player* play, const string& name);
+	WaypointObject* searchWaypoint(Player* play, const string& name, int mode);
 
 protected:
 	string _param0_addExperience__string_int_bool_;
@@ -264,7 +286,10 @@ protected:
 	string _param1_addFriend__string_string_;
 	string _param0_removeFriend__string_;
 	string _param0_findFriend__string_PlayerManager_;
-	string _param1_searchWaypoint__Player_string_;
+	string _param0_addIgnore__string_string_;
+	string _param1_addIgnore__string_string_;
+	string _param0_removeIgnore__string_;
+	string _param1_searchWaypoint__Player_string_int_;
 };
 
 class PlayerObjectHelper : public DistributedObjectClassHelper, public Singleton<PlayerObjectHelper> {

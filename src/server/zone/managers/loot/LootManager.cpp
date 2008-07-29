@@ -29,6 +29,48 @@ void LootManager::lootCorpse(Player* player, Creature* creature) {
 			return;
 		}
 		
+		/*
+		// DEBUG COUTS 
+		cout << "Hide type is " << ((CreatureObject*)creature)->getHideType() << "\n";
+		cout << "Hide max is " << ((CreatureObject*)creature)->getHideMax() << "\n";
+		
+		cout << "Bone type is " << ((CreatureObject*)creature)->getBoneType() << "\n";
+		cout << "Bone max is " << ((CreatureObject*)creature)->getBoneMax() << "\n";
+		
+		cout << "Meat type is " << ((CreatureObject*)creature)->getMeatType() << "\n";
+		cout << "Meat max is " << ((CreatureObject*)creature)->getMeatMax() << "\n";
+		
+		cout << "Milk is " << ((CreatureObject*)creature)->getMilk() << "\n";
+		
+		cout << "faction is " << ((CreatureObject*)creature)->getCreatureFaction() << "\n";
+		cout << "XP is " << ((CreatureObject*)creature)->getXP() << "\n";
+		cout << "healer " << ((CreatureObject*)creature)->isHealer() << "\n";
+		cout << "pack is " << ((CreatureObject*)creature)->isPack() << "\n";
+		cout << "herd is " << ((CreatureObject*)creature)->isHerd() << "\n";
+		cout << "Stalker is " << ((CreatureObject*)creature)->isStalker() << "\n";
+		cout << "Killer is " << ((CreatureObject*)creature)->isKiller() << "\n";
+		cout << "Aggressive is " << ((CreatureObject*)creature)->isAggressive() << "\n";
+		
+		cout << "BehaviorScript is " << ((CreatureObject*)creature)->getBehaviorScript() << "\n";
+		
+		cout << "Weapon is " << ((CreatureObject*)creature)->getCreatureWeapon() << "\n";
+		cout << "WeaponName is " << ((CreatureObject*)creature)->getCreatureWeaponName() << "\n";
+		cout << "WeaponTemp is " << ((CreatureObject*)creature)->getCreatureWeaponTemp() << "\n";
+		cout << "WeaponClass is " << ((CreatureObject*)creature)->getCreatureWeaponClass() << "\n";
+		cout << "WeaponEquipped is " << ((CreatureObject*)creature)->getCreatureWeaponEquipped() << "\n";
+		cout << "WeaponMinDamage is " << ((CreatureObject*)creature)->getCreatureWeaponMinDamage() << "\n";
+		cout << "WeaponMaxDamage is " << ((CreatureObject*)creature)->getCreatureWeaponMaxDamage() << "\n";
+		cout << "WeaponAttackSpeed is " << ((CreatureObject*)creature)->getCreatureWeaponAttackSpeed() << "\n";
+		cout << "WeaponDamageType is " << ((CreatureObject*)creature)->getCreatureWeaponDamageType() << "\n";
+		cout << "WeaponArmorPiercing is " << ((CreatureObject*)creature)->getCreatureWeaponArmorPiercing() << "\n";
+		
+		cout << "Internal damage modifier " << ((CreatureObject*)creature)->getInternalNPCDamageModifier() << "\n";
+		
+		cout << "loot group is " << ((CreatureObject*)creature)->getLootGroup() << "\n";
+		cout << "Tame is " << ((CreatureObject*)creature)->getTame() << "\n";
+		//end debug COUTS
+		*/
+		
 		createLoot(creature);
 		
 		lootCredits(player, creature);
@@ -230,6 +272,9 @@ void LootManager::createWeaponLoot(Creature* creature, int creatureLevel) {
 	string certification = "";
 	
 	uint32 objectCRC = creature->getObjectCRC();
+	
+	//ankerpunkt
+	//uint32 lootGroup = creature->getLootGroup();
 	
 	switch (System::random(23)) {
 	case 0 :	// UNARMED

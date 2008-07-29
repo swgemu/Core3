@@ -404,6 +404,9 @@ Creature* CreatureManagerImplementation::spawnCreature(const string& stfname, co
 		else
 			creature->setCharacterName(unicode(name));
 
+		
+		
+		//***********************************
 		creature->setObjectFileName("");
 		creature->setObjectCRC(objCrc);
 
@@ -433,6 +436,35 @@ Creature* CreatureManagerImplementation::spawnCreature(const string& stfname, co
 		creature->setHeight(1.0f);
 		creature->initializePosition(x, 0, y);
 		creature->setPvpStatusBitmask(bitmask);
+		
+		creature->setCreatureFaction("");
+		creature->setXP(100);
+		
+		creature->setHealer(0);
+		creature->setPack(0);
+		creature->setHerd(0);
+		creature->setStalker(0);
+		creature->setKiller(0);
+		creature->setAggressive(0);
+		
+		creature->setBehaviorScript("");
+		
+		creature->setBoneType("");
+		creature->setBoneMax(0);
+		
+		creature->setHideType("");
+		creature->setHideMax(0);
+	
+		creature->setMeatType("");
+		creature->setMeatMax(0);
+
+		creature->setMilk(0);
+	
+		creature->setLootGroup(0);
+	
+		creature->setTame(0.0);
+		
+		//***********************************		
 
 		load(creature);
 
@@ -484,6 +516,7 @@ Creature* CreatureManagerImplementation::spawnCreature(uint32 objcrc, float x, f
 				creature->setCharacterName(unicode(instance->makeCreatureName(name)));
 
 		creature->setTerrainName(Terrain::getTerrainName(instance->getZone()->getZoneID()));
+		
 
 		//ham stuff
 		uint32 health = result.getIntField("health");
@@ -496,9 +529,10 @@ Creature* CreatureManagerImplementation::spawnCreature(uint32 objcrc, float x, f
 		uint32 focus = result.getIntField("focus");
 		uint32 willpower = result.getIntField("willpower");
 
-		health += health * (System::random(100)) / 1111;
-		action += action * (System::random(100)) / 1111;
-		mind += mind * (System::random(100)) / 1111;
+		//old before new LUA 22. July 2008
+		//health += health * (System::random(100)) / 1111;
+		//action += action * (System::random(100)) / 1111;
+		//mind += mind * (System::random(100)) / 1111;
 
 		// TODO: Implement baby stats properly
 		if(baby) {
@@ -616,10 +650,12 @@ void CreatureManagerImplementation::load(Creature* creature) {
 	getCreature << creature->getObjectCRC(); // push first argument
 	callFunction(&getCreature);
 
+	
 	LuaObject result(getLuaState());
 	if (!result.isValidTable())
 		return;
 
+	
 	string objectName = result.getStringField("objectName");
 	result.pop(); // remove table from stack
 
@@ -644,6 +680,7 @@ void CreatureManagerImplementation::load(Creature* creature) {
 
 		creature->addSkill(s);
 	}
+		
 }
 
 void CreatureManagerImplementation::unloadCreature(Creature* creature) {
@@ -655,7 +692,7 @@ int CreatureManagerImplementation::addCreature(lua_State *L) {
 
 	if (!creatureConfig.isValidTable())
 		return 1;
-
+		
 	int planet = creatureConfig.getIntField("planet");
 
 	if (planet != instance->getZone()->getZoneID())
@@ -665,13 +702,14 @@ int CreatureManagerImplementation::addCreature(lua_State *L) {
 
 	Creature* creature = new Creature(instance->getNextCreatureID());
 	creature->deploy();
-
+		
 	string objectName = creatureConfig.getStringField("objectName");
 	string stfname = creatureConfig.getStringField("stfName");
 	string name = creatureConfig.getStringField("name");
 
 	creature->setObjectCRC(creatureConfig.getIntField("objectCRC"));
-
+			
+	
 	if (!stfname.empty())
 		creature->setCharacterName(stfname);
 	else
@@ -685,17 +723,122 @@ int CreatureManagerImplementation::addCreature(lua_State *L) {
 			creature->setCharacterName(unicode(instance->makeCreatureName(name)));
 
 	creature->setTerrainName(Terrain::getTerrainName(planet));
+	
 
-	//ham stuff
-	creature->setHealth(creatureConfig.getIntField("health"));
-	creature->setStrength(creatureConfig.getIntField("strength"));
-	creature->setConstitution(creatureConfig.getIntField("constitution"));
-	creature->setAction(creatureConfig.getIntField("action"));
-	creature->setQuickness(creatureConfig.getIntField("quickness"));
-	creature->setStamina(creatureConfig.getIntField("stamina"));
-	creature->setMind(creatureConfig.getIntField("mind"));
-	creature->setFocus(creatureConfig.getIntField("focus"));
-	creature->setWillpower(creatureConfig.getIntField("willpower"));
+	try {
+		string dummy = creatureConfig.getStringField("faction");
+		dummy = creatureConfig.getStringField("gender");
+		dummy = creatureConfig.getStringField("boneType");
+		dummy = creatureConfig.getStringField("hideType");
+		dummy = creatureConfig.getStringField("meatType");
+	} catch (...) {
+		cout << "The LUA script for \'" << objectName << "\' is at least missing one of these fields:\n";
+		cout << "faction, gender, boneType,hideType,meatType.\nMake sure they do exist in the lua script!\n\n";
+		instance->unlock();
+		return 1;
+	}
+	
+	creature->setCreatureFaction(creatureConfig.getStringField("faction"));
+	creature->setGender(creatureConfig.getStringField("gender"));
+	
+	creature->setXP(creatureConfig.getIntField("xp"));
+	
+	creature->setHealer(creatureConfig.getIntField("healer"));
+	creature->setPack(creatureConfig.getIntField("pack"));
+	creature->setHerd(creatureConfig.getIntField("herd"));
+	creature->setStalker(creatureConfig.getIntField("stalker"));
+	creature->setKiller(creatureConfig.getIntField("killer"));
+	creature->setAggressive(creatureConfig.getIntField("aggressive"));
+		
+	//creature->setBehaviorScript(creatureConfig.getStringField("behaviorScript"));
+	
+	
+	//Harvesting stuff
+	creature->setBoneType(creatureConfig.getStringField("boneType"));
+	creature->setBoneMax(creatureConfig.getIntField("boneMax"));
+	
+	creature->setHideType(creatureConfig.getStringField("hideType"));
+	creature->setHideMax(creatureConfig.getIntField("hideMax"));
+	
+	creature->setMeatType(creatureConfig.getStringField("meatType"));
+	creature->setMeatMax(creatureConfig.getIntField("meatMax"));
+	
+	creature->setMilk(creatureConfig.getIntField("milk"));
+	
+	
+	//Loot
+	creature->setLootGroup(creatureConfig.getIntField("lootGroup"));
+	
+	//CH stuff
+	creature->setTame(creatureConfig.getFloatField("tame"));
+	
+	string preLead;
+	try {
+		//Testing, if this creature has the alternate weapon field set
+		(creature->setCreatureWeapon(creatureConfig.getStringField("alternateWeapon")));		
+		if (creatureConfig.getStringField("alternateWeapon") !="" ) {
+			// No exception: Creature got two weapons			
+			switch (System::random(1)) {
+			case 0:
+				preLead = "w";
+				break;
+			case 1:
+				preLead = "alternateW";
+				break;
+			}
+		} else
+			preLead = "w";
+			
+	} catch (...) {
+		//Exception - So likely the creature has only one weapon (if any...)
+		preLead = "w";
+	}
+	
+	try {
+		creature->setCreatureWeapon(creatureConfig.getStringField(preLead + "eapon"));
+		creature->setCreatureWeaponName(creatureConfig.getStringField(preLead + "eaponName"));
+		creature->setCreatureWeaponTemp(creatureConfig.getStringField(preLead + "eaponTemp"));
+		creature->setCreatureWeaponClass(creatureConfig.getStringField(preLead + "eaponClass"));
+		creature->setCreatureWeaponEquipped(creatureConfig.getIntField(preLead + "eaponEquipped"));
+		creature->setCreatureWeaponMinDamage(creatureConfig.getIntField(preLead + "eaponMinDamage"));
+		creature->setCreatureWeaponMaxDamage(creatureConfig.getIntField(preLead + "eaponMaxDamage"));
+		creature->setCreatureWeaponAttackSpeed(creatureConfig.getFloatField(preLead + "eaponAttackSpeed"));
+		creature->setCreatureWeaponDamageType(creatureConfig.getStringField(preLead + "eaponDamageType"));
+		creature->setCreatureWeaponArmorPiercing(creatureConfig.getStringField(preLead + "eaponArmorPiercing"));
+	} catch (...) {
+			// ...the creature has no weapon at all
+	}		
+
+	creature->setInternalNPCDamageModifier(creatureConfig.getFloatField("internalNPCDamageModifier"));
+	
+	//ham stuff - Please remove these IF lines till ELSE after all creature lua's have been changed, its just a safety-net !
+	//Test for LUA-line healthMax. Very likely, if this one is missing the others are too..
+	if (!creatureConfig.getIntField("healthMax")) {
+		creature->setHealth(creatureConfig.getIntField("health"));
+		creature->setHealth(creature->getHealth() + (creature->getHealth() * (System::random(100)) / 1111));
+		
+		creature->setAction(creatureConfig.getIntField("action"));
+		creature->setAction(creature->getAction() + (creature->getAction() * (System::random(100)) / 1111));
+		
+		creature->setMind(creatureConfig.getIntField("mind"));
+		creature->setMind(creature->getMind() + (creature->getMind() * (System::random(100)) / 1111));
+		cout << "ATTENTION: The LUA creature script for " << objectName  << " is obv. still in the old format ! \n";
+	} else {
+		//red
+		creature->setHealth(creatureConfig.getIntField("healthMin") + System::random(creatureConfig.getIntField("healthMax")-creatureConfig.getIntField("healthMin")));
+		creature->setStrength(creatureConfig.getIntField("strength"));
+		creature->setConstitution(creatureConfig.getIntField("constitution"));
+	
+		//green
+		creature->setAction(creatureConfig.getIntField("actionMin") + System::random(creatureConfig.getIntField("actionMax")-creatureConfig.getIntField("actionMin")));
+		creature->setQuickness(creatureConfig.getIntField("quickness"));
+		creature->setStamina(creatureConfig.getIntField("stamina"));
+	
+		//blue
+		creature->setMind(creatureConfig.getIntField("mindMin") + System::random(creatureConfig.getIntField("mindMax")-creatureConfig.getIntField("mindMin")));
+		creature->setFocus(creatureConfig.getIntField("focus"));
+		creature->setWillpower(creatureConfig.getIntField("willpower"));
+	}
 
 	creature->setHealth(creature->getHealth() + (creature->getHealth() * (System::random(100)) / 1111));
 	creature->setAction(creature->getAction() + (creature->getAction() * (System::random(100)) / 1111));
@@ -912,11 +1055,5 @@ inline string CreatureManagerImplementation::stringify(const int x) {
 	else
 		return o.str();
 }
-
-
-
-
-
-
 
 

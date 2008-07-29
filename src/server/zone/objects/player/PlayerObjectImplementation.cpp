@@ -55,8 +55,10 @@ which carries forward this exception.
 #include "PlayerObjectImplementation.h"
 
 #include "FriendsList.h"
-
 #include "FriendsListImplementation.h"
+
+#include "IgnoreList.h"
+#include "IgnoreListImplementation.h"
 
 PlayerObjectImplementation::PlayerObjectImplementation(Player* pl) : PlayerObjectServant(pl->getObjectID() + 0x0C, PLAYER) {
 	player = pl;
@@ -85,6 +87,7 @@ PlayerObjectImplementation::PlayerObjectImplementation(Player* pl) : PlayerObjec
 	characterBitmask = ANONYMOUS;
 
 	friendsList = new FriendsList(player);
+	ignoreList = new IgnoreList(player);
 }
 
 PlayerObjectImplementation::~PlayerObjectImplementation() {
@@ -381,30 +384,43 @@ void PlayerObjectImplementation::saveWaypoints(Player* player) {
 	unlock();
 }
 
-WaypointObject* PlayerObjectImplementation::searchWaypoint(Player* player, const string& name) {
+WaypointObject* PlayerObjectImplementation::searchWaypoint(Player* player, const string& name, int mode) {
 	wlock();
 
 	WaypointObject* waypoint = NULL;
 	WaypointObject* returnWP = NULL;
 	int i = 0;
-	string wpName;
+	string sName;
 
-	for (int i = 0; i < waypointList.size(); ++i) {
-		waypoint = waypointList.get(i);
+	if (mode == 1 ) {
+		//Lookup InternalNote field
+		for (int i = 0; i < waypointList.size(); ++i) {
+			waypoint = waypointList.get(i);
 
-		if (waypoint->getInternalNote() == name) {
-			string wpName = waypoint->getName();
-			returnWP = waypoint;
-			break;
+			if (waypoint->getInternalNote() == name) {
+				//string wpName = waypoint->getName();
+				returnWP = waypoint;
+				break;
+			}
+		} 
+	} else if (mode == 2 ) {
+		//Lookup WaypointName field
+		sName = name.c_str();
+		String::toLower(sName);
+
+		for (int i = 0; i < waypointList.size(); ++i) {
+			waypoint = waypointList.get(i);
+			string wpName = waypoint->getName(); 
+			String::toLower(wpName);
+		
+			if (wpName == sName) {
+				//string wpName = waypoint->getName();
+				returnWP = waypoint;
+				break;
+			}
 		}
 	}
 
 	unlock();
 	return returnWP;
-}
-
-
-
-void PlayerObjectImplementation::saveIgnorelist(Player* player) {
-	//TODO:Iterate the ignorelist and save to DB
 }

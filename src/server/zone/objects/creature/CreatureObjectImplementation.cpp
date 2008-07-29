@@ -110,6 +110,10 @@ CreatureObjectImplementation::CreatureObjectImplementation(uint64 oid) : Creatur
 
 	stfName = "species";
 
+	boneType = "";
+	hideType = "";
+	meatType = "";
+	
 	actionCounter = 0;
 
 	// CREO1 operands
@@ -1523,15 +1527,17 @@ void CreatureObjectImplementation::resetHAMBars() {
 	health = healthMax = baseHealth;
 	strength = strengthMax = baseStrength;
 	constitution = constitutionMax = baseConstitution;
+
 	action = actionMax = baseAction;
 	quickness = quicknessMax = baseQuickness;
 	stamina = staminaMax = baseStamina;
+
 	mind = mindMax = baseMind;
 	focus = focusMax = baseFocus;
 	willpower = willpowerMax = baseWillpower;
 
 	if (healthWounds > healthMax)
-		healthWounds = healthMax - 1;
+		healthWounds = healthMax - 1;	
 
 	if (actionWounds > actionMax)
 		actionWounds = actionMax - 1;
@@ -4193,10 +4199,11 @@ void CreatureObjectImplementation::removeBuffs(bool doUpdateCreature) {
 			removeBuff(buff->getBuffCRC(), false); // dont't remove from the list yet
 		}
 	}
+	
 	creatureBuffs.removeAll();
-
 	resetHAMBars();
-
+	
+	
 	/*
 	CreatureObjectDeltaMessage6* delta = new CreatureObjectDeltaMessage6(_this);
 
@@ -4228,8 +4235,9 @@ void CreatureObjectImplementation::removeBuffs(bool doUpdateCreature) {
 	delta->updateMaxWillpowerBar(getWillpowerMax());
 
 	delta->close();
-
-	broadcastMessage(delta); */
+		
+	broadcastMessage(delta); 
+	*/
 }
 
 float CreatureObjectImplementation::getArmorResist(int resistType) {

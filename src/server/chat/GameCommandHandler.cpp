@@ -55,6 +55,10 @@ which carries forward this exception.
 
 #include "ChatManager.h"
 
+#include <iostream>
+#include <fstream>
+ 
+
 GMCommandMap * GameCommandHandler::gmCommands = NULL;
 
 void GameCommandHandler::init() {
@@ -80,7 +84,11 @@ void GameCommandHandler::init() {
 			"Warps you to a given set of coordinates.",
 			"Usage: @warp <x> <y>",
 			&warp);
-	gmCommands->addCommand("warpTo", PRIVILEGED | QA | EC,
+	gmCommands->addCommand("warpToWP", PRIVILEGED | QA, 
+			"Warps you to the waypoint of the given name (casesensitive).",
+			"Usage: @warpToWP <waypointName>",
+			&warpToWP);			
+	gmCommands->addCommand("warpTo", PRIVILEGED | QA,
 			"Warps you to a player\'s location ",
 			"Usage @warpTo <player>",
 			&warpTo);
@@ -358,6 +366,33 @@ void GameCommandHandler::warpPlayer(StringTokenizer tokenizer, Player * player) 
 	} else {
 		player->sendSystemMessage("Usage: @warpPlayer <SUPPLY PLAYERNAME OR CURRENT TARGET> <starport> <hotel> <shuttle> <medical> <bank> <garage> <salon> \n");
 	}
+}
+
+void GameCommandHandler::warpToWP(StringTokenizer tokenizer, Player * player) {
+	int i = 0;
+	float x,y;
+	string wpName;
+	
+	//PlayerObjectImplementation* playOI = (PlayerObjectImplementation*)player->getPlayerObject();
+
+	if (tokenizer.hasMoreTokens()) {
+		tokenizer.getStringToken(wpName);
+	} else {
+		player->sendSystemMessage("Usage: @warpToWP <NameOfWaypoint>\n");
+		return;
+	}
+	
+	WaypointObject* waypoint = player->searchWaypoint(player, wpName,2);
+
+	if (waypoint != NULL) {
+		x = waypoint->getPositionX();
+		y = waypoint->getPositionY();
+	} else {
+		player->sendSystemMessage("Waypoint not found ?! Make sure the spelling is correct.\n");
+		return;
+	}
+	
+	player->doWarp(x, y);
 }
 
 void GameCommandHandler::summon(StringTokenizer tokenizer, Player * player) {
@@ -1216,7 +1251,6 @@ void GameCommandHandler::setAdminLevel(StringTokenizer tokenizer, Player * playe
 
 	ChatManager * chatManager = player->getZone()->getChatManager();
 
-
 	string name;
 	tokenizer.getStringToken(name);
 
@@ -1377,4 +1411,5 @@ void GameCommandHandler::giveItemTemp(StringTokenizer tokenizer, Player * player
 		player->sendSystemMessage("Unknown Item Type.");
 	}
 }
+
 

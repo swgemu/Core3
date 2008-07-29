@@ -14,6 +14,8 @@
 
 #include "FriendsList.h"
 
+#include "IgnoreList.h"
+
 #include "../waypoint/WaypointObject.h"
 
 #include "../../managers/player/PlayerManager.h"
@@ -679,17 +681,79 @@ void PlayerObject::updateAllFriends(PlayerObject* playerObject) {
 		((PlayerObjectImplementation*) _impl)->updateAllFriends(playerObject);
 }
 
-void PlayerObject::saveIgnorelist(Player* player) {
+IgnoreList* PlayerObject::getIgnoreList() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 56);
-		method.addObjectParameter(player);
+
+		return (IgnoreList*) method.executeWithObjectReturn();
+	} else
+		return ((PlayerObjectImplementation*) _impl)->getIgnoreList();
+}
+
+void PlayerObject::addIgnore(string& name, string& inServer) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 57);
+		method.addAsciiParameter(name);
+		method.addAsciiParameter(inServer);
 
 		method.executeWithVoidReturn();
 	} else
-		((PlayerObjectImplementation*) _impl)->saveIgnorelist(player);
+		((PlayerObjectImplementation*) _impl)->addIgnore(name, inServer);
+}
+
+void PlayerObject::ignoreMagicNumberReset() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 58);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerObjectImplementation*) _impl)->ignoreMagicNumberReset();
+}
+
+void PlayerObject::removeIgnore(string& name) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 59);
+		method.addAsciiParameter(name);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerObjectImplementation*) _impl)->removeIgnore(name);
+}
+
+void PlayerObject::saveIgnore() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 60);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerObjectImplementation*) _impl)->saveIgnore();
+}
+
+void PlayerObject::loadIgnore() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 61);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerObjectImplementation*) _impl)->loadIgnore();
 }
 
 void PlayerObject::saveWaypoints(Player* player) {
@@ -697,7 +761,7 @@ void PlayerObject::saveWaypoints(Player* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 57);
+		DistributedMethod method(this, 62);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -705,18 +769,19 @@ void PlayerObject::saveWaypoints(Player* player) {
 		((PlayerObjectImplementation*) _impl)->saveWaypoints(player);
 }
 
-WaypointObject* PlayerObject::searchWaypoint(Player* play, const string& name) {
+WaypointObject* PlayerObject::searchWaypoint(Player* play, const string& name, int mode) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 58);
+		DistributedMethod method(this, 63);
 		method.addObjectParameter(play);
 		method.addAsciiParameter(name);
+		method.addSignedIntParameter(mode);
 
 		return (WaypointObject*) method.executeWithObjectReturn();
 	} else
-		return ((PlayerObjectImplementation*) _impl)->searchWaypoint(play, name);
+		return ((PlayerObjectImplementation*) _impl)->searchWaypoint(play, name, mode);
 }
 
 /*
@@ -881,13 +946,28 @@ Packet* PlayerObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		updateAllFriends((PlayerObject*) inv->getObjectParameter());
 		break;
 	case 56:
-		saveIgnorelist((Player*) inv->getObjectParameter());
+		resp->insertLong(getIgnoreList()->_getObjectID());
 		break;
 	case 57:
-		saveWaypoints((Player*) inv->getObjectParameter());
+		addIgnore(inv->getAsciiParameter(_param0_addIgnore__string_string_), inv->getAsciiParameter(_param1_addIgnore__string_string_));
 		break;
 	case 58:
-		resp->insertLong(searchWaypoint((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_searchWaypoint__Player_string_))->_getObjectID());
+		ignoreMagicNumberReset();
+		break;
+	case 59:
+		removeIgnore(inv->getAsciiParameter(_param0_removeIgnore__string_));
+		break;
+	case 60:
+		saveIgnore();
+		break;
+	case 61:
+		loadIgnore();
+		break;
+	case 62:
+		saveWaypoints((Player*) inv->getObjectParameter());
+		break;
+	case 63:
+		resp->insertLong(searchWaypoint((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_searchWaypoint__Player_string_int_), inv->getSignedIntParameter())->_getObjectID());
 		break;
 	default:
 		return NULL;
@@ -1096,16 +1176,36 @@ void PlayerObjectAdapter::updateAllFriends(PlayerObject* playerObject) {
 	return ((PlayerObjectImplementation*) impl)->updateAllFriends(playerObject);
 }
 
-void PlayerObjectAdapter::saveIgnorelist(Player* player) {
-	return ((PlayerObjectImplementation*) impl)->saveIgnorelist(player);
+IgnoreList* PlayerObjectAdapter::getIgnoreList() {
+	return ((PlayerObjectImplementation*) impl)->getIgnoreList();
+}
+
+void PlayerObjectAdapter::addIgnore(string& name, string& inServer) {
+	return ((PlayerObjectImplementation*) impl)->addIgnore(name, inServer);
+}
+
+void PlayerObjectAdapter::ignoreMagicNumberReset() {
+	return ((PlayerObjectImplementation*) impl)->ignoreMagicNumberReset();
+}
+
+void PlayerObjectAdapter::removeIgnore(string& name) {
+	return ((PlayerObjectImplementation*) impl)->removeIgnore(name);
+}
+
+void PlayerObjectAdapter::saveIgnore() {
+	return ((PlayerObjectImplementation*) impl)->saveIgnore();
+}
+
+void PlayerObjectAdapter::loadIgnore() {
+	return ((PlayerObjectImplementation*) impl)->loadIgnore();
 }
 
 void PlayerObjectAdapter::saveWaypoints(Player* player) {
 	return ((PlayerObjectImplementation*) impl)->saveWaypoints(player);
 }
 
-WaypointObject* PlayerObjectAdapter::searchWaypoint(Player* play, const string& name) {
-	return ((PlayerObjectImplementation*) impl)->searchWaypoint(play, name);
+WaypointObject* PlayerObjectAdapter::searchWaypoint(Player* play, const string& name, int mode) {
+	return ((PlayerObjectImplementation*) impl)->searchWaypoint(play, name, mode);
 }
 
 /*

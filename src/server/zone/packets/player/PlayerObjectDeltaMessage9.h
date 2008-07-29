@@ -53,6 +53,7 @@ which carries forward this exception.
 #include "../../objects/draftschematic/DraftSchematic.h"
 
 #include "../../objects/player/FriendsList.h"
+#include "../../objects/player/IgnoreList.h"
 
 class PlayerObjectDeltaMessage9 : public DeltaMessage {
 	PlayerObject* play;
@@ -131,6 +132,23 @@ public:
 		}
 	}
 	
+	void updateIgnoreList(){
+		IgnoreList* ignoreList = play->getIgnoreList();
+				
+		startUpdate(8);
+		insertInt(ignoreList->getCount() + 1); // Size of ignore list + 1
+		
+		
+		insertInt(ignoreList->getMagicNumber());
+		insertByte(3); // Dunno - seems to be 3 always //ToDO: Figure...
+		
+		insertShort(ignoreList->getCount());
+		
+		for(int i = 0; i < ignoreList->getCount(); ++i){
+			insertAscii(ignoreList->getIgnoreName(i));			
+		}
+	}
+
 	void updateSkilsAndCertifications() {
 		Player* player = play->getPlayer();
 		

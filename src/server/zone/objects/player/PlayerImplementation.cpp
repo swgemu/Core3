@@ -430,12 +430,10 @@ void PlayerImplementation::unload() {
 	saveWaypoints(_this);
 
 	playerObject->saveFriends();
-	saveIgnorelist(_this);
+	playerObject->saveIgnore();
 
 	//let our friends now we are out
-	//ZoneServer* uzs = zone->getZoneServer();
 	PlayerManager* upm = server->getZoneServer()->getPlayerManager();
-	//PlayerManager* upm = uzs->getPlayerManager();
 	upm->updateOtherFriendlists(_this, false);
 
 	//end FriendStatusChange
@@ -830,13 +828,17 @@ void PlayerImplementation::insertToZone(Zone* zone) {
 
 	try {
 		zone->lock();
-
+		
 		info("inserting to zone");
 
 		//spawning in air fix
 		if (parent == NULL)
 			 setPosition(positionX, zone->getHeight(positionX, positionY), positionY);
 
+		//Spawning-in-the-air-fix: If player is not in a ship or building, we override Z-Axis with Zero. Client is always overrding Z-Axis with TerrainMinHeight
+		if (parent == NULL)
+			setPosition(positionX, 0, positionY);
+		
 		zone->registerObject(_this);
 
 		owner->balancePacketCheckupTime();
@@ -1255,9 +1257,13 @@ void PlayerImplementation::doWarp(float x, float y, float z, float randomizeDist
 
 	parent = NULL;
 
-	positionX = x;
-	positionY = y;
-	positionZ = zone->getHeight(x, y);
+	//positionX = x;
+	//positionY = y;
+	//positionZ = z;
+	//Spawning-in-the-air-fix: If player is not in a ship or building, we override Z-Axis with Zero. Client is always overrding Z-Axis with TerrainMinHeight
+		if (parent == NULL)
+			setPosition(x, 0, y);
+
 
 	if (parentID != 0) {
 		SceneObject* newParent = zone->lookupObject(parentID);
@@ -1297,6 +1303,7 @@ void PlayerImplementation::notifySceneReady() {
 		sendSystemMessage(msg3);
 
 		playerObject->loadFriends();
+		playerObject->loadIgnore();
 	} else {
 		//we need to reset the "magicnumber" for the internal friendlist due to clientbehaviour (Diff. Zoningservers SoE)
 		playerObject->friendsMagicNumberReset();
@@ -1650,7 +1657,8 @@ void PlayerImplementation::doRecovery() {
 
 		return;
 	}
-
+	
+	
 	if (!isInCombat() && isOnFullHealth() && ((playerObject != NULL && isJedi() && playerObject->isOnFullForce()) || !isJedi()) && !hasStates() && !hasWounds() && !hasShockWounds()) {
 		return;
 	} else if (lastCombatAction.miliDifference() > 15000) {

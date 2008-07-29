@@ -61,10 +61,10 @@ which carries forward this exception.
 #include "../../objects/terrain/PlanetNames.h"
 
 #include "../../managers/player/PlayerManager.h"
-#include "../../managers/player/PlayerMapImplementation.h"
 
 #include "../waypoint/WaypointObject.h"
 #include "../../managers/object/ObjectManager.h"
+
 
 class Player;
 class PlayerObject;
@@ -75,7 +75,6 @@ class FriendsListImplementation : public FriendsListServant {
 	
 	int friendsMagicNumber;
 	Player* player;
-	PlayerMap* playerMap;
 	
 public:
 	FriendsListImplementation(Player* pl): FriendsListServant(){		
@@ -247,7 +246,7 @@ public:
 			
 			targetObject = targetPlayer->getPlayerObject();
 		} catch (...) {
-			player->sendSystemMessage("Usage: /findfriend <name>\n");
+			player->sendSystemMessage("Usage: /findFriend <friend name>\n");
 			return;
 		}
 		
@@ -257,28 +256,44 @@ public:
 		//Set wp->internalNote and check if we have a FindFriend-Wapoint for this buddy already
 		stringstream friendString;
 		friendString.str("");
-		friendString << "FINDFRIEND:" << name;
-		WaypointObject* returnWP = player->searchWaypoint(player,friendString.str());
-
 		
+		friendString << "FINDFRIEND:" << name;
+		
+		WaypointObject* returnWP = player->searchWaypoint(player,friendString.str(),1);
+			
 		for(int i = 0; i < targetObject->getFriendsList()->getCount(); ++i){
-	
-			if(targetObject->getFriendsList()->getFriendsName(i) == myName){
-				stringstream friendString;
 
-				friendString << "A waypoint for " << name << " has been added.";
-				unicode message = unicode(friendString.str());
-				player->sendSystemMessage(message);
-				
-				float x = targetPlayer->getPositionX();
-				float y  = targetPlayer->getPositionY();
+			if(targetObject->getFriendsList()->getFriendsName(i) == myName){
+				float x;
+				float y;
+				x = targetPlayer->getPositionX();
+				y = targetPlayer->getPositionY();
 				string targetPlanet = Planet::getPlanetName(targetPlayer->getZoneID());
+				
+				//If the friend is in a cell, we need world cords from the parent or even parent-parent object
+				SceneObject* plPar = targetPlayer->getParent();
+				
+				if (plPar != NULL) {
+					if (plPar->isCell()) {
+						SceneObject* parpar = plPar->getParent();
+						
+						if (parpar != NULL) {
+							x = parpar->getPositionX();
+							y = parpar->getPositionY();
+						}
+					}
+				}
 				
 				if (returnWP != NULL) {
 					returnWP->setPlanetName(targetPlanet);
 					returnWP->setPosition(x, 0.0f, y);
 					returnWP->changeStatus(true);
 					player->updateWaypoint(returnWP);
+
+					stringstream friendString;
+					friendString << "The friend waypoint has been updated to the location of " << name << ".";
+					unicode message = unicode(friendString.str());
+					player->sendSystemMessage(message);
 					break;
 				} else {
 					WaypointObject* wp = new WaypointObject(player, player->getNewItemID());
@@ -291,6 +306,11 @@ public:
 					wp->setPosition(x, 0.0f, y);
 					wp->changeStatus(true);
 					player->addWaypoint(wp);
+
+					stringstream friendString;
+					friendString << "A friend waypoint has been created for the location of " << name << ".";
+					unicode message = unicode(friendString.str());
+					player->sendSystemMessage(message);
 					break;
 				}
 			}
@@ -428,11 +448,7 @@ public:
 					<< lcaseFriend << "','" << friends->getString(4) << "','" 
 					<< friends->getUnsignedInt(2) << "');";
 
-					ServerDatabase::instance()->executeStatement(saveQuery);	
-
-					FriendStatusChangeMessage* notifyStatus = new FriendStatusChangeMessage(lcaseFriend, "Core3", false);
-					player->sendMessage(notifyStatus);
-						
+					ServerDatabase::instance()->executeStatement(saveQuery);						
 				}			
 			} catch (...) {
 					cout << "FriendlistImplementation void saveFriends -> Insert DB Query exception! \n";

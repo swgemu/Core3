@@ -120,6 +120,7 @@ rancorAttack2 = {
 }
 
 AddDotPoolAttackTargetSkill(rancorAttack2)
+
 rancorAttack3 = {
 	attackname = "rancorAttack3",
 	animation = "creature_attack_light",

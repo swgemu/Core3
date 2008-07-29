@@ -49,6 +49,7 @@ import "../scene/SceneObject";
 import "Player";
 
 import "FriendsList";
+import "IgnoreList";
 
 import "../waypoint/WaypointObject";
 
@@ -137,7 +138,13 @@ interface PlayerObject implements SceneObject {
 	void loadFriends();
 	void updateAllFriends(PlayerObject playerObject);
 	
-	void saveIgnorelist(Player player);
+	IgnoreList getIgnoreList();
+	void addIgnore(string name, string inServer);
+	void ignoreMagicNumberReset();
+	void removeIgnore(string name);
+	void saveIgnore();
+	void loadIgnore();
+	
 	void saveWaypoints(Player player);
-	WaypointObject searchWaypoint(Player play, const string name);
+	WaypointObject searchWaypoint(Player play, const string name, int mode);
 }

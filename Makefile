@@ -59,6 +59,7 @@ IDL_SOURCES = server/zone/Zone.idl \
 				server/zone/objects/creature/mount/MountCreature.idl \
 				server/zone/objects/player/Player.idl \
 				server/zone/objects/player/FriendsList.idl \
+				server/zone/objects/player/IgnoreList.idl \
 				server/zone/objects/player/PlayerObject.idl \
 				server/zone/objects/player/sui/SuiBox.idl \
 				server/zone/objects/player/sui/listbox/SuiListBox.idl \
@@ -167,4 +168,4 @@ clean: cleanidl
 	#done
 
 cleanidl:
-	cd src && $(IDLC) -rebuild $(IDL_SOURCES)
+	cd src && idlc -rebuild $(IDL_SOURCES)

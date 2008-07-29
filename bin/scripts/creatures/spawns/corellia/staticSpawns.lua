@@ -194,52 +194,6 @@ spawnCreatures(plumedRasp, 0, -5000, 5000, 3000, 50)
 spawnCreatures(sharnaff, 0, -5000, 5000, 3000, 50)
 spawnCreatures(sliceHound, 0, -5000, 5000, 3000, 50)
 
--- Rebels
-spawnCreatures(rebelSurfaceMarshal, 0, 0, 0, 3000, 20)
-spawnCreatures(rebelSurfaceMarshal, 0, -5000, 0, 3000, 20)
-spawnCreatures(rebelSurfaceMarshal, 0, 5000, 0, 3000, 20)
-spawnCreatures(rebelSurfaceMarshal, 0, 0, 5000, 3000, 20)
-spawnCreatures(rebelSurfaceMarshal, 0, 0, -5000, 3000, 20)
-spawnCreatures(rebelSurfaceMarshal, 0, -5000, -5000, 3000, 20)
-spawnCreatures(rebelSurfaceMarshal, 0, 5000, 5000, 3000, 50)
-spawnCreatures(rebelSurfaceMarshal, 0, 5000, -5000, 3000, 20)
-spawnCreatures(rebelSurfaceMarshal, 0, -5000, 5000, 3000, 20)
-
-spawnCreatures(rebelGeneral, 0, 0, 0, 3000, 100)
-spawnCreatures(rebelGeneral, 0, -5000, 0, 3000, 100)
-spawnCreatures(rebelGeneral, 0, 5000, 0, 3000, 100)
-spawnCreatures(rebelGeneral, 0, 0, 5000, 3000, 100)
-spawnCreatures(rebelGeneral, 0, 0, -5000, 3000, 100)
-spawnCreatures(rebelGeneral, 0, -5000, -5000, 3000, 100)
-spawnCreatures(rebelGeneral, 0, 5000, 5000, 3000, 100)
-spawnCreatures(rebelGeneral, 0, 5000, -5000, 3000, 100)
-spawnCreatures(rebelGeneral, 0, -5000, 5000, 3000, 100)
-
--- Imperials
-spawnCreatures(stormTrooper, 0, 0, 0, 3000, 100)
-spawnCreatures(stormTrooper, 0, -5000, 0, 3000, 100)
-spawnCreatures(stormTrooper, 0, 5000, 0, 3000, 100)
-spawnCreatures(stormTrooper, 0, 0, 5000, 3000, 100)
-spawnCreatures(stormTrooper, 0, 0, -5000, 3000, 100)
-spawnCreatures(stormTrooper, 0, -5000, -5000, 3000, 100)
-spawnCreatures(stormTrooper, 0, 5000, 5000, 3000, 100)
-spawnCreatures(stormTrooper, 0, 5000, -5000, 3000, 100)
-spawnCreatures(stormTrooper, 0, -5000, 5000, 3000, 100)
-
-spawnCreatures(atSt, 0, 0, 0, 3000, 20)
-spawnCreatures(atSt, 0, -5000, 0, 3000, 20)
-spawnCreatures(atSt, 0, 5000, 0, 3000, 20)
-spawnCreatures(atSt, 0, 0, 5000, 3000, 20)
-spawnCreatures(atSt, 0, 0, -5000, 3000, 20)
-spawnCreatures(atSt, 0, -5000, -5000, 3000, 20)
-spawnCreatures(atSt, 0, 5000, 5000, 3000, 20)
-spawnCreatures(atSt, 0, 5000, -5000, 3000, 20)
-spawnCreatures(atSt, 0, -5000, 5000, 3000, 20)
-
--- Coronet
-spawnCreatures(stormTrooper, 0, -210, 4460, 800, 200)
-spawnCreatures(atSt, 0, -210, 4460, 800, 50)
-
 spawnCreatures(bageraset, 0, -60, -5400, 300, 5)
 spawnCreatures(carrionSpat, 0, -60, -5400, 300, 5)
 spawnCreatures(corellianButterfly, 0, -60, -5400, 300, 5)
@@ -305,8 +259,57 @@ spawnCreatures(humbaba, 0, 660, -4700, 300, 5)
 spawnCreatures(murra, 0, 660, -4700, 300, 5)
 spawnCreatures(paralope, 0, 660, -4700, 300, 5)
 spawnCreatures(plumedRasp, 0, 660, -4700, 300, 5)
+spawnCreatures(plumedRasp, 0, 660, -4700, 300, 5)
 spawnCreatures(sharnaff, 0, 660, -4700, 300, 5)
 spawnCreatures(sliceHound, 0, 660, -4700, 300, 5)
+
+-- Rebels
+spawnCreatures(rebelSurfaceMarshal, 0, 0, 0, 3000, 20)
+spawnCreatures(rebelSurfaceMarshal, 0, -5000, 0, 3000, 20)
+spawnCreatures(rebelSurfaceMarshal, 0, 5000, 0, 3000, 20)
+spawnCreatures(rebelSurfaceMarshal, 0, 0, 5000, 3000, 20)
+spawnCreatures(rebelSurfaceMarshal, 0, 0, -5000, 3000, 20)
+spawnCreatures(rebelSurfaceMarshal, 0, -5000, -5000, 3000, 20)
+spawnCreatures(rebelSurfaceMarshal, 0, 5000, 5000, 3000, 50)
+spawnCreatures(rebelSurfaceMarshal, 0, 5000, -5000, 3000, 20)
+spawnCreatures(rebelSurfaceMarshal, 0, -5000, 5000, 3000, 20)
+
+spawnCreatures(rebelGeneral, 0, 0, 0, 3000, 100)
+spawnCreatures(rebelGeneral, 0, -5000, 0, 3000, 100)
+spawnCreatures(rebelGeneral, 0, 5000, 0, 3000, 100)
+spawnCreatures(rebelGeneral, 0, 0, 5000, 3000, 100)
+spawnCreatures(rebelGeneral, 0, 0, -5000, 3000, 100)
+spawnCreatures(rebelGeneral, 0, -5000, -5000, 3000, 100)
+spawnCreatures(rebelGeneral, 0, 5000, 5000, 3000, 100)
+spawnCreatures(rebelGeneral, 0, 5000, -5000, 3000, 100)
+spawnCreatures(rebelGeneral, 0, -5000, 5000, 3000, 100)
+
+-- Imperials
+spawnCreatures(stormtrooper, 0, 0, 0, 3000, 100)
+spawnCreatures(stormtrooper, 0, -5000, 0, 3000, 100)
+spawnCreatures(stormtrooper, 0, 5000, 0, 3000, 100)
+spawnCreatures(stormtrooper, 0, 0, 5000, 3000, 100)
+spawnCreatures(stormtrooper, 0, 0, -5000, 3000, 100)
+spawnCreatures(stormtrooper, 0, -5000, -5000, 3000, 100)
+spawnCreatures(stormtrooper, 0, 5000, 5000, 3000, 100)
+spawnCreatures(stormtrooper, 0, 5000, -5000, 3000, 100)
+spawnCreatures(stormtrooper, 0, -5000, 5000, 3000, 100)
+
+-- spawnCreatures(atSt, 0, 0, 0, 3000, 20)
+-- spawnCreatures(atSt, 0, -5000, 0, 3000, 20)
+-- spawnCreatures(atSt, 0, 5000, 0, 3000, 20)
+-- spawnCreatures(atSt, 0, 0, 5000, 3000, 20)
+-- spawnCreatures(atSt, 0, 0, -5000, 3000, 20)
+-- spawnCreatures(atSt, 0, -5000, -5000, 3000, 20)
+-- spawnCreatures(atSt, 0, 5000, 5000, 3000, 20)
+-- spawnCreatures(atSt, 0, 5000, -5000, 3000, 20)
+-- spawnCreatures(atSt, 0, -5000, 5000, 3000, 20)
+
+-- Coronet
+spawnCreatures(stormtrooper, 0, -210, 4460, 800, 200)
+-- spawnCreatures(atSt, 0, -210, 4460, 800, 50)
+
+
 
 
 -- Rebel Hideout -6500 6000
@@ -315,10 +318,10 @@ spawnCreatures(rebelGeneral, 0, -6500, 6000, 400, 60)
 
 -- Imperial Stronghold 4660 -5785
 spawnCreatures(imperialMajorGeneral, 0, 4660, -5785, 200, 5)
-spawnCreatures(imperialHighColonel, 0, 4660, -5785, 200, 5)
-spawnCreatures(imperialSurfaceMarshall, 0, 4660, -5785, 200, 5)
+spawnCreatures(imperialColonel, 0, 4660, -5785, 200, 5)
+spawnCreatures(imperialSurfaceMarshal, 0, 4660, -5785, 200, 5)
 spawnCreatures(imperialMajor, 0, 4660, -5785, 200, 5)
-spawnCreatures(imperialDarkTrooper, 0, 4660, -5785, 200, 15)
-spawnCreatures(stormTrooper, 0, 4660, -5785, 200, 50)
-spawnCreatures(atSt, 0, 4660, -5785, 50, 4)
+spawnCreatures(darkTrooper, 0, 4660, -5785, 200, 15)
+spawnCreatures(stormtrooper, 0, 4660, -5785, 200, 50)
+-- spawnCreatures(atSt, 0, 4660, -5785, 50, 4)
 

@@ -338,6 +338,93 @@ void CreatureImplementation::loadItems() {
 
 	Weapon* weapon = NULL;
 
+	string wpName = getCreatureWeaponName();
+	if (wpName != ""){
+		try {
+			string wpObject = getCreatureWeapon();
+			string wpName = getCreatureWeaponName();
+			string wpTemp = getCreatureWeaponTemp();
+			bool wpEq = (bool)getCreatureWeaponEquipped();	
+			int wpMinDamage = getCreatureWeaponMinDamage();
+			int wpMaxDamage = getCreatureWeaponMaxDamage();
+			float wpAttackSpeed = getCreatureWeaponAttackSpeed();
+			string wpDamType = getCreatureWeaponDamageType();
+			string wpArmorPiercing = getCreatureWeaponArmorPiercing();
+			string wpClass = getCreatureWeaponClass();
+			
+			if (wpClass == "CarbineRangedWeapon") 
+				weapon = new CarbineRangedWeapon(_this, wpObject, unicode(wpName), wpTemp, wpEq);
+			else if (wpClass == "RifleRangedWeapon")
+				weapon = new RifleRangedWeapon(_this, wpObject, unicode(wpName), wpTemp, wpEq);	
+			else if (wpClass == "PistolRangedWeapon") 
+				weapon = new PistolRangedWeapon(_this, wpObject, unicode(wpName), wpTemp, wpEq);			
+			else if (wpClass == "UnarmedMeleeWeapon") 
+				weapon = new UnarmedMeleeWeapon(_this, wpObject, unicode(wpName), wpTemp, wpEq);			
+			else if (wpClass == "OneHandedMeleeWeapon")
+				weapon = new OneHandedMeleeWeapon(_this, wpObject, unicode(wpName), wpTemp, wpEq);		
+			else if (wpClass == "TwoHandedMeleeWeapon") 
+				weapon = new TwoHandedMeleeWeapon(_this, wpObject, unicode(wpName), wpTemp, wpEq);			
+			else if (wpClass == "PolearmMeleeWeapon") 
+				weapon = new PolearmMeleeWeapon(_this, wpObject, unicode(wpName), wpTemp, wpEq);			
+			else if (wpClass == "OneHandedJediWeapon") 
+				weapon = new OneHandedJediWeapon(_this, wpObject, unicode(wpName), wpTemp, wpEq);	
+			else if (wpClass == "TwoHandedJediWeapon") 
+				weapon = new TwoHandedJediWeapon(_this, wpObject, unicode(wpName), wpTemp, wpEq);	
+			else if (wpClass == "PolearmJediWeapon") 
+				weapon = new PolearmJediWeapon(_this, wpObject, unicode(wpName), wpTemp, wpEq);	
+			else if (wpClass == "SpecialHeavyRangedWeapon") 
+				weapon = new SpecialHeavyRangedWeapon(_this, wpObject, unicode(wpName), wpTemp, wpEq);	
+			else if (wpClass == "HeavyRangedWeapon") 
+				weapon = new HeavyRangedWeapon(_this, wpObject, unicode(wpName), wpTemp, wpEq);
+
+			//DAMAGE TYPE		
+			if (wpDamType == "ENERGY") 
+				weapon->setDamageType(WeaponImplementation::ENERGY);
+			else if (wpDamType == "KINECTIC") 
+				weapon->setDamageType(WeaponImplementation::KINETIC);
+			else if (wpDamType == "ELECTRICITY") 
+				weapon->setDamageType(WeaponImplementation::ELECTRICITY);
+			else if (wpDamType == "STUN") 
+				weapon->setDamageType(WeaponImplementation::STUN);
+			else if (wpDamType == "BLAST") 
+				weapon->setDamageType(WeaponImplementation::BLAST);
+			else if (wpDamType == "HEAT") 
+				weapon->setDamageType(WeaponImplementation::HEAT);
+			else if (wpDamType == "COLD") 
+				weapon->setDamageType(WeaponImplementation::COLD);
+			else if (wpDamType == "ACID") 
+				weapon->setDamageType(WeaponImplementation::ACID);	
+			else if (wpDamType == "LIGHTSABER") 
+				weapon->setDamageType(WeaponImplementation::LIGHTSABER);
+				
+			
+			//ARMOR PIERCING
+			if (wpArmorPiercing == "NONE") 
+				weapon->setArmorPiercing(WeaponImplementation::NONE);
+			else if (wpArmorPiercing == "LIGHT") 
+				weapon->setArmorPiercing(WeaponImplementation::LIGHT);	
+			else if (wpArmorPiercing == "MEDIUM") 
+				weapon->setArmorPiercing(WeaponImplementation::MEDIUM);	
+			else if (wpArmorPiercing == "HEAVY") 
+				weapon->setArmorPiercing(WeaponImplementation::HEAVY);	
+				
+		
+			//MODFIERS
+			weapon->setMinDamage(wpMinDamage);
+			weapon->setMaxDamage(wpMaxDamage);
+			weapon->setAttackSpeed(wpAttackSpeed);
+
+			addInventoryItem(weapon);
+			setWeapon(weapon);		
+		} catch (...) {
+			//ouch..something in the lua isnt right
+			cout << "exception CreatureImplementation::loadItems()  -  Weaponloading for creature " << objectID << "\n";		
+			return;
+		} 
+	} else
+		return;
+	/*	
+	//old before new LUAs june 2008 
 	if (objectCRC == 0x738E0B1F) { //Zealot of Lord Nyax + Diciple of Lord Nyax
 		weapon = new CarbineRangedWeapon(_this, "object/weapon/ranged/carbine/shared_carbine_laser.iff", unicode("a Laser Carbine"), "carbine_laser", true);
 		weapon->setMinDamage(350);
@@ -644,9 +731,10 @@ void CreatureImplementation::loadItems() {
 		weapon->setArmorPiercing(WeaponImplementation::MEDIUM);
 	} else
 		return;
-
+	
 	addInventoryItem(weapon);
 	setWeapon(weapon);
+	*/
 }
 
 void CreatureImplementation::insertToZone(Zone* zone) {

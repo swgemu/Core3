@@ -93,8 +93,11 @@ bool ObjectControllerMessage::parseDataTransform(Player* player, Message* pack) 
 	pack->shiftOffset(8); // skip ObjectID and size
 
 	uint32 movementStamp = pack->parseInt();
-
 	uint32 movementCounter = pack->parseInt();
+	
+	float x;
+	float z;
+	float y;
 
 	float dx = pack->parseFloat();
 	float dy = pack->parseFloat();
@@ -103,10 +106,10 @@ bool ObjectControllerMessage::parseDataTransform(Player* player, Message* pack) 
 
 	//cout << "dir vector x:" << dx << " dz:" << dz << " dy:" << dy << " dw:" << dw << "\n";
 
-	float x = pack->parseFloat();
-	float z = pack->parseFloat();
-	float y = pack->parseFloat();
-
+	x = pack->parseFloat();
+	z = pack->parseFloat();
+	y = pack->parseFloat();
+	
 	if (x > 8192.0f || x < -8192.0f || y > 8192.0f || y < -8192.0f) {
 		player->error("position out of bounds...");
 		return false;
@@ -555,7 +558,8 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 		player->toggleCharacterBit(PlayerObjectImplementation::ANONYMOUS);
 		break;
 	case (0x4982E17B): //requestwaypointatposition
-		parseWaypointCreate(player, pack);
+		//parseWaypointCreate(player, pack);
+		parseWaypointCommand(player, pack);
 		break;
 	case (0x8A19D7E1): //requestcharactermatch
 		parseRequestCharacterMatch(player, pack);
@@ -683,6 +687,13 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 		break;
 	case (0x2A2357ED): // Add Friend
 		parseAddFriend(player, pack);
+		break;
+		
+	case (0x929AD345): // Add Ignore
+		parseAddIgnore(player, pack);
+		break;		
+	case (0x3629157F): // Remove Ignore
+		parseRemoveIgnore(player, pack);
 		break;
 	case (0x30BE6EE9 ): // Find Friend
 		parseFindFriend(player, pack, serv->getZoneServer()->getPlayerManager());
@@ -1763,6 +1774,9 @@ void ObjectControllerMessage::parseServerSit(Player* player, Message* pack) {
 }
 
 void ObjectControllerMessage::parseWaypointCreate(Player* player, Message* pack) {
+	//outdated and throwing exceptions. We use now "parseWaypointCommand 	
+
+	/*
 	pack->shiftOffset(8); //Shift past the blank long.
 
 	unicode waypoint;
@@ -1793,42 +1807,114 @@ void ObjectControllerMessage::parseWaypointCreate(Player* player, Message* pack)
 	} catch (...) {
 		cout << "Unreported exception in ObjectControllerMessage::parseWaypointCreate\n";
 	}
+	*/
 }
 
 void ObjectControllerMessage::parseWaypointCommand(Player* player, Message* pack) {
+	int counter = 0;
+	string dummy;
+		
 	pack->shiftOffset(8);
-
+	
 	unicode waypoint;
-	pack->parseUnicode(waypoint);
-
-	try {
-		float x = 0, y = 0;
-
-		if (waypoint.size()> 1) {
-			StringTokenizer tokenizer(waypoint.c_str());
-			if (tokenizer.hasMoreTokens())
-			x = tokenizer.getFloatToken();
-
-			if (tokenizer.hasMoreTokens())
-			y = tokenizer.getFloatToken();
-		} else {
-			x = player->getPositionX();
-			y = player->getPositionY();
+	pack->parseUnicode(waypoint);	
+	
+	string wpName = "New Waypoint";
+	
+	float x;
+	float y;
+	x = player->getPositionX();	
+	y = player->getPositionY();
+	
+	//If the WP is in a cell, we need world cords from the parent or even parent-parent object
+	SceneObject* plPar = player->getParent();
+	
+	if (plPar != NULL) {
+		if (plPar->isCell()) {
+			
+			SceneObject* parpar = plPar->getParent();
+			
+			if (parpar != NULL) {
+				x = parpar->getPositionX();
+				y = parpar->getPositionY();
+			}
+			
 		}
+	}
+			
+	try {
+		if (waypoint.size()> 1) {
+			StringTokenizer bTokenizer(waypoint.c_str());
+			
+			// test  how many tokens
+			while (bTokenizer.hasMoreTokens()) {
+				bTokenizer.getStringToken(dummy);
+				counter++;
+			}
+			
+			StringTokenizer tokenizer(waypoint.c_str());
+	
+			if (counter	== 1 ) {
+				tokenizer.getStringToken(wpName);
 
-		if (x < -8192 || x> 8192)
-		x = 0;
-		if (y < -8192 || y> 8192)
-		y = 0;
-
-		WaypointObject* waypoint = new WaypointObject(player, player->getNewItemID());
-		waypoint->setPosition(x, 0, y);
-
-		player->addWaypoint(waypoint);
-
+				SceneObject* plPar = player->getParent();
+				
+				if (plPar != NULL) {
+					if (plPar->isCell()) {
+						SceneObject* parpar = plPar->getParent();
+						
+						if (parpar != NULL) {
+							x = parpar->getPositionX();
+							y = parpar->getPositionY();
+						}
+					}
+				} else {
+					x = player->getPositionX();
+					y = player->getPositionY();
+				}			
+			} else if (counter == 2) {			
+				x = tokenizer.getFloatToken();
+				y = tokenizer.getFloatToken();
+			
+			} else if (counter > 2) {
+				x = tokenizer.getFloatToken();
+				y = tokenizer.getFloatToken();
+				tokenizer.getStringToken(wpName);
+				
+				if (isdigit(wpName[0]) !=0) {
+					//User used    /waypoint name X Y    instead of     /waypoint X Y name
+					player->sendSystemMessage("Useage: /waypoint X Y <name>   or /waypoint <name>");
+					player->sendSystemMessage("and a waypoint's name may not begin with a digit.\n");
+					return;
+				}
+			}
+		}
 	} catch (...) {
 		cout << "Unreported exception in ObjectControllerMessage::parseWaypointCommand\n";
+		return;
 	}
+	
+	if ( (x == 0 && y == 0) ){
+		player->sendSystemMessage("Useage: /waypoint X Y <name>   or /waypoint <name>\n");
+		return;
+	}
+	
+	if (x < -8192 || x> 8192) {
+		player->sendSystemMessage("X coordinates are in the range from -8192 to 8192\n");
+		return;
+	}
+
+	if (y < -8192 || y> 8192) {
+		player->sendSystemMessage("Y coordinates are in the range from -8192 to 8192\n");
+		return;
+	}
+
+	WaypointObject* wp = new WaypointObject(player, player->getNewItemID());
+	wp->setPosition(x, 0, y);
+	wp->setName(wpName);
+	
+	player->addWaypoint(wp);
+
 }
 
 void ObjectControllerMessage::parseSetWaypointName(Player* player, Message* pack) {
@@ -2777,3 +2863,43 @@ void ObjectControllerMessage::parseFindFriend(Player* player, Message* pack, Pla
 		player->getPlayerObject()->findFriend(name, playerManager);
 	}
 }
+
+void ObjectControllerMessage::parseRotateItem(Player* player, Message* pack) {
+	uint64 target = pack->parseLong();
+
+	SceneObject* object = player->getZone()->getZoneServer()->getObject(target, true);
+
+	object->setDirection(object->getDirectionX(), (object->getDirectionZ()
+			+ sqrt(.5)), object->getDirectionY(), (object->getDirectionW()
+			+ sqrt(.5)));
+
+}
+	
+void ObjectControllerMessage::parseAddIgnore(Player* player, Message* pack) {
+	//ToDO: Split the token based on dots for game (SWG), server (eg. sunrunner) and name (SWG.sunrunner.john)
+	pack->shiftOffset(8);
+	
+	unicode d;
+	pack->parseUnicode(d);
+
+	string name = d.c_str();
+
+	if(name != ""){
+		player->getPlayerObject()->addIgnore(name, player->getZone()->getZoneServer()->getServerName());
+	}
+}
+
+void ObjectControllerMessage::parseRemoveIgnore(Player* player, Message* pack) {
+	pack->shiftOffset(8);
+	
+	unicode d;
+	pack->parseUnicode(d);
+
+	string name = d.c_str();
+
+	if(name != ""){	
+		player->getPlayerObject()->removeIgnore(name);		
+	}
+}
+
+

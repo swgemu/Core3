@@ -96,15 +96,16 @@ am__objects_1 = Zone.$(OBJEXT) ZoneClient.$(OBJEXT) \
 	TrainerCreature.$(OBJEXT) BlueFrogCreature.$(OBJEXT) \
 	BlueFrogVector.$(OBJEXT) RecruiterCreature.$(OBJEXT) \
 	MountCreature.$(OBJEXT) Player.$(OBJEXT) FriendsList.$(OBJEXT) \
-	PlayerObject.$(OBJEXT) SuiBox.$(OBJEXT) SuiListBox.$(OBJEXT) \
-	SuiMessageBox.$(OBJEXT) SuiInputBox.$(OBJEXT) \
-	SuiTransferBox.$(OBJEXT) SuiBankTransferBox.$(OBJEXT) \
-	SuiColorPicker.$(OBJEXT) TangibleObject.$(OBJEXT) \
-	Container.$(OBJEXT) Inventory.$(OBJEXT) Datapad.$(OBJEXT) \
-	Bank.$(OBJEXT) MissionBag.$(OBJEXT) Weapon.$(OBJEXT) \
-	JediWeapon.$(OBJEXT) RangedWeapon.$(OBJEXT) \
-	MeleeWeapon.$(OBJEXT) CarbineRangedWeapon.$(OBJEXT) \
-	RifleRangedWeapon.$(OBJEXT) PistolRangedWeapon.$(OBJEXT) \
+	IgnoreList.$(OBJEXT) PlayerObject.$(OBJEXT) SuiBox.$(OBJEXT) \
+	SuiListBox.$(OBJEXT) SuiMessageBox.$(OBJEXT) \
+	SuiInputBox.$(OBJEXT) SuiTransferBox.$(OBJEXT) \
+	SuiBankTransferBox.$(OBJEXT) SuiColorPicker.$(OBJEXT) \
+	TangibleObject.$(OBJEXT) Container.$(OBJEXT) \
+	Inventory.$(OBJEXT) Datapad.$(OBJEXT) Bank.$(OBJEXT) \
+	MissionBag.$(OBJEXT) Weapon.$(OBJEXT) JediWeapon.$(OBJEXT) \
+	RangedWeapon.$(OBJEXT) MeleeWeapon.$(OBJEXT) \
+	CarbineRangedWeapon.$(OBJEXT) RifleRangedWeapon.$(OBJEXT) \
+	PistolRangedWeapon.$(OBJEXT) \
 	SpecialHeavyRangedWeapon.$(OBJEXT) HeavyRangedWeapon.$(OBJEXT) \
 	OneHandedMeleeWeapon.$(OBJEXT) TwoHandedMeleeWeapon.$(OBJEXT) \
 	UnarmedMeleeWeapon.$(OBJEXT) PolearmMeleeWeapon.$(OBJEXT) \
@@ -351,7 +352,8 @@ core3_IDLS = server/zone/Zone.cpp \
 		server/zone/objects/creature/recruiter/RecruiterCreature.cpp \
 		server/zone/objects/creature/mount/MountCreature.cpp \
 		server/zone/objects/player/Player.cpp \
-                server/zone/objects/player/FriendsList.cpp \
+		server/zone/objects/player/FriendsList.cpp \
+		server/zone/objects/player/IgnoreList.cpp \
 		server/zone/objects/player/PlayerObject.cpp \
 		server/zone/objects/player/sui/SuiBox.cpp \
 		server/zone/objects/player/sui/listbox/SuiListBox.cpp \
@@ -675,6 +677,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/HairObject.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/HeavyRangedWeapon.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Holocron.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/IgnoreList.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ImageDesignCustomization.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Instrument.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/IntangibleObject.Po@am__quote@
@@ -1046,6 +1049,20 @@ FriendsList.obj: server/zone/objects/player/FriendsList.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/player/FriendsList.cpp' object='FriendsList.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o FriendsList.obj `if test -f 'server/zone/objects/player/FriendsList.cpp'; then $(CYGPATH_W) 'server/zone/objects/player/FriendsList.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/player/FriendsList.cpp'; fi`
+
+IgnoreList.o: server/zone/objects/player/IgnoreList.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT IgnoreList.o -MD -MP -MF $(DEPDIR)/IgnoreList.Tpo -c -o IgnoreList.o `test -f 'server/zone/objects/player/IgnoreList.cpp' || echo '$(srcdir)/'`server/zone/objects/player/IgnoreList.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/IgnoreList.Tpo $(DEPDIR)/IgnoreList.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/player/IgnoreList.cpp' object='IgnoreList.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o IgnoreList.o `test -f 'server/zone/objects/player/IgnoreList.cpp' || echo '$(srcdir)/'`server/zone/objects/player/IgnoreList.cpp
+
+IgnoreList.obj: server/zone/objects/player/IgnoreList.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT IgnoreList.obj -MD -MP -MF $(DEPDIR)/IgnoreList.Tpo -c -o IgnoreList.obj `if test -f 'server/zone/objects/player/IgnoreList.cpp'; then $(CYGPATH_W) 'server/zone/objects/player/IgnoreList.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/player/IgnoreList.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/IgnoreList.Tpo $(DEPDIR)/IgnoreList.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/player/IgnoreList.cpp' object='IgnoreList.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o IgnoreList.obj `if test -f 'server/zone/objects/player/IgnoreList.cpp'; then $(CYGPATH_W) 'server/zone/objects/player/IgnoreList.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/player/IgnoreList.cpp'; fi`
 
 PlayerObject.o: server/zone/objects/player/PlayerObject.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT PlayerObject.o -MD -MP -MF $(DEPDIR)/PlayerObject.Tpo -c -o PlayerObject.o `test -f 'server/zone/objects/player/PlayerObject.cpp' || echo '$(srcdir)/'`server/zone/objects/player/PlayerObject.cpp
