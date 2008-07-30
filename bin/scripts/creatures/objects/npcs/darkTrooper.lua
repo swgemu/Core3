@@ -96,16 +96,16 @@ darkTrooper = Creature:new {
 
       attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      weaponName = "", -- Name ex. 'a Vibrolance'
-      weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      weaponEquipped = 0,
-      weaponMinDamage = 0,
-      weaponMaxDamage = 0,
-      weaponAttackSpeed = 0,
-      weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+      weapon = "object/weapon/ranged/rifle/shared_rifle_t21.iff", -- File path to weapon -> object\xxx\xxx\xx
+      weaponName = "Teh Pwn", -- Name ex. 'a Vibrolance'
+      weaponTemp = "rifle_t21", -- Weapon Template ex. 'lance_vibrolance'
+      weaponClass = "RifleRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+      weaponEquipped = 1,
+      weaponMinDamage = 350,
+      weaponMaxDamage = 400,
+      weaponAttackSpeed = 4,
+      weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
+      weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
       alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
       alternateWeaponName = "", -- Name ex. 'a Vibrolance'

@@ -96,16 +96,16 @@ corsecComissioner = Creature:new {
 
       attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      weaponName = "", -- Name ex. 'a Vibrolance'
-      weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      weaponEquipped = 0,
-      weaponMinDamage = 0,
-      weaponMaxDamage = 0,
-      weaponAttackSpeed = 0,
-      weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+      weapon = "object/weapon/ranged/pistol/shared_pistol_cdef_corsec.iff", -- File path to weapon -> object\xxx\xxx\xx
+      weaponName = "Corsec CDEF Pistol", -- Name ex. 'a Vibrolance'
+      weaponTemp = "pistol_cdef_corsec", -- Weapon Template ex. 'lance_vibrolance'
+      weaponClass = "PistolRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+      weaponEquipped = 1,
+      weaponMinDamage = 150,
+      weaponMaxDamage = 200,
+      weaponAttackSpeed = 3,
+      weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
+      weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
       alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
       alternateWeaponName = "", -- Name ex. 'a Vibrolance'

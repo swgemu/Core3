@@ -65,16 +65,16 @@ RunCreatureFile("spawns/dathomir/singingmtnclan.lua")
 
 RunCreatureFile("spawns/corellia/staticSpawns.lua")
 RunCreatureFile("spawns/corellia/afarathuCave.lua")
--- RunCreatureFile("spawns/corellia/drallCave.lua")
--- RunCreatureFile("spawns/corellia/lordNyaxCult.lua")
--- RunCreatureFile("spawns/corellia/rogueCorsec.lua")
+RunCreatureFile("spawns/corellia/drallCave.lua")
+RunCreatureFile("spawns/corellia/lordNyaxCult.lua")
+RunCreatureFile("spawns/corellia/rogueCorsec.lua")
 
 --------------------------------------------------------------------------------------------------------
 --Dantooine
 
 RunCreatureFile("spawns/dantooine/forceCrystalHuntersCave.lua")
--- RunCreatureFile("spawns/dantooine/jantaCave.lua")
--- RunCreatureFile("spawns/dantooine/kungaCave.lua")
+RunCreatureFile("spawns/dantooine/jantaCave.lua")
+RunCreatureFile("spawns/dantooine/kungaCave.lua")
 
 ----------------------------------------------------------------------------------------------------------------
 

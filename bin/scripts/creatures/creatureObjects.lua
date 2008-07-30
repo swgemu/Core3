@@ -156,13 +156,9 @@ RunCreatureFile("objects/corellia/npcs/afarathuCultSavage.lua")
 
 RunCreatureFile("objects/corellia/npcs/drallAbbot.lua")
 RunCreatureFile("objects/corellia/npcs/drallChieftain.lua")
-RunCreatureFile("objects/corellia/npcs/drallGuard.lua")
-RunCreatureFile("objects/corellia/npcs/drallMaster.lua")
-RunCreatureFile("objects/corellia/npcs/drallPatriot.lua")
 RunCreatureFile("objects/corellia/npcs/drallPatriotConqueror.lua")
 RunCreatureFile("objects/corellia/npcs/drallPatriotFootsoldier.lua")
 RunCreatureFile("objects/corellia/npcs/drallPatriotLegionnare.lua")
-RunCreatureFile("objects/corellia/npcs/drallSentry.lua")
 
 RunCreatureFile("objects/corellia/npcs/lordNyax.lua")
 RunCreatureFile("objects/corellia/npcs/lordNyaxDisciple.lua")

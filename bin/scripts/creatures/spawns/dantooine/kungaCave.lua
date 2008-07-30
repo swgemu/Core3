@@ -40,7 +40,7 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-spawnCreatureInCell(kungaPrimalist, 1, -14.2143, -27.6887, -26.258, 529375)
+spawnCreatureInCell(kungaHerbalist, 1, -14.2143, -27.6887, -26.258, 529375)
 spawnCreatureInCell(kungaWarrior, 1, -14.5814, -27.7164, -25.6945, 529375)
 spawnCreatureInCell(kungaHunter, 1, -16.2474, -28.1649, -25.9607, 529375)
 spawnCreatureInCell(kungaHunter, 1, -16.5589, -28.2995, -26.4224, 529375)
@@ -103,7 +103,7 @@ spawnCreatureInCell(kungaWarrior, 1, -78.8969, -66.1306, -175.841, 529401)
 spawnCreatureInCell(kungaTribesman, 1, -78.0238, -66.0206, -175.845, 529401)
 spawnCreatureInCell(kungaSoothsayer, 1, -76.9653, -65.9005, -176.457, 529401)
 spawnCreatureInCell(kungaSoothsayer, 1, -50.0529, -66.1259, -173.314, 529401)
-spawnCreatureInCell(kungaSoothsayerFe, 1, -51.9287, -65.9816, -174.748, 529401)
+spawnCreatureInCell(kungaSoothsayer, 1, -51.9287, -65.9816, -174.748, 529401)
 spawnCreatureInCell(kungaTribesman, 1, -52.9378, -65.8469, -174.051, 529401)
 spawnCreatureInCell(kungaWarrior, 1, -60.1431, -66.3943, -236.407, 529402)
 spawnCreatureInCell(kungaWarrior, 1, -60.1431, -66.3943, -236.407, 529402)

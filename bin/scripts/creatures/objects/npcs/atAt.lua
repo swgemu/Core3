@@ -41,12 +41,16 @@
 --which carries forward this exception.
 atAt = Creature:new {
 	objectName = "atAt", -- name of the lua Object
+	creatureType = "NPC",
+    faction = "Imperial",
+    gender = "",
 	
 	stfName = "an AT-AT",
 	objectCRC = 4274898142,
 	socialGroup = "imperial",
 	
 	level = 500,
+	xp = 10000,
 	
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -77,8 +81,59 @@ atAt = Creature:new {
 	
 	accuracy = 300,
 
-	skills = { "stormTrooperAttack3" },
-	respawnTimer = 1800, 
+      healer = 0,
+
+      pack = 1,
+      herd = 0,
+      stalker = 0,
+      killer = 1,
+      aggressive = 0,
+      invincible = 0,
+
+      attackCreatureOnSight = "", -- Enter socialGroups 
+
+      weapon = "object/weapon/ranged/vehicle/shared_vehicle_atst_ranged.iff", -- File path to weapon -> object\xxx\xxx\xx
+      weaponName = "Imperial Cannon", -- Name ex. 'a Vibrolance'
+      weaponTemp = "vehicle_atst_ranged", -- Weapon Template ex. 'lance_vibrolance'
+      weaponClass = "RifleRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+      weaponEquipped = 1,
+      weaponMinDamage = 350,
+      weaponMaxDamage = 400,
+      weaponAttackSpeed = 1.5f,
+      weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
+      weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
+
+      alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
+      alternateWeaponName = "", -- Name ex. 'a Vibrolance'
+      alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
+      alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+      alternateWeaponEquipped = 0,
+      alternateWeaponMinDamage = 0,
+      alternateWeaponMaxDamage = 0,
+      alternateWeaponAttackSpeed = 0,
+      alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
+      alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+
+      internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
+
+      lootGroup = 0, -- Group it belongs to for loot
+
+      tame = 0,  -- Likely hood to be tamed
+
+      milk = 0,
+
+      boneType = "",
+      boneMax = 0,
+
+      hideType = "",
+      hideMax = 0,
+
+      meatType = "",
+      meatMax = 0,
+
+	skills = { "stormTrooperAttack2" },
+	respawnTimer = 1200, 
+	behaviorScript = "", -- Link to the behavior script for this object
 }
 
 Creatures:addCreature(atAt, 4274898142) --- Add to global creature table

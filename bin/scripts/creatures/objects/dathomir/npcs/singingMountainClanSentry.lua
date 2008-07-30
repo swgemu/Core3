@@ -96,27 +96,27 @@ singingMountainClanSentry = Creature:new {
 
       attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      weaponName = "", -- Name ex. 'a Vibrolance'
-      weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      weaponEquipped = 0,
-      weaponMinDamage = 0,
-      weaponMaxDamage = 0,
-      weaponAttackSpeed = 0,
-      weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+      weapon = "object/weapon/melee/baton/shared_baton_gaderiffi.iff", -- File path to weapon -> object\xxx\xxx\xx
+      weaponName = "a Gaderiffi", -- Name ex. 'a Vibrolance'
+      weaponTemp = "baton_gaderiffi", -- Weapon Template ex. 'lance_vibrolance'
+      weaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+      weaponEquipped = 1,
+      weaponMinDamage = 175,
+      weaponMaxDamage = 200,
+      weaponAttackSpeed = 1.5,
+      weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
+      weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      alternateWeaponName = "", -- Name ex. 'a Vibrolance'
-      alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      alternateWeaponEquipped = 0,
-      alternateWeaponMinDamage = 0,
-      alternateWeaponMaxDamage = 0,
-      alternateWeaponAttackSpeed = 0,
-      alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+      alternateWeapon = "object/weapon/melee/baton/shared_baton_stun.iff", -- File path to weapon -> object\xxx\xxx\xx
+      alternateWeaponName = "a Stun Baton", -- Name ex. 'a Vibrolance'
+      alternateWeaponTemp = "baton_stun", -- Weapon Template ex. 'lance_vibrolance'
+      alternateWeaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+      alternateWeaponEquipped = 1,
+      alternateWeaponMinDamage = 175,
+      alternateWeaponMaxDamage = 250,
+      alternateWeaponAttackSpeed = 1.5,
+      alternateWeaponDamageType = "STUN", -- ELECTRICITY, KINETIC, etc
+      alternateWeaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
