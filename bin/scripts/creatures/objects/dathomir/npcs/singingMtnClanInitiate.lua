@@ -83,7 +83,7 @@ singingMtnClanInitiate = Creature:new {
       acid = -1,
       lightsaber = 0,
 
-      accuracy = 0,
+      accuracy = 300,
 
       healer = 0,
 

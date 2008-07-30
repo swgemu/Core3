@@ -83,7 +83,7 @@ nightsisterSentry = Creature:new {
       acid = 60,
       lightsaber = 0,
 
-      accuracy = 0,
+      accuracy = 300,
 
       healer = 0,
 

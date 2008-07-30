@@ -83,7 +83,7 @@ youngMountainSquill = Creature:new {
       acid = 0,
       lightsaber = 0,
 
-      accuracy = 0,
+      accuracy = 100,
 
       healer = 0,
 

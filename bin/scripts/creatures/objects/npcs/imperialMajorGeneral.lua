@@ -83,7 +83,7 @@ imperialMajorGeneral = Creature:new {
       acid = 30,
       lightsaber = 0,
 
-      accuracy = 0,
+      accuracy = 300,
 
       healer = 0,
 

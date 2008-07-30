@@ -71,7 +71,8 @@ kraytDragonAncient = Creature:new {
       focus = 0,
       willpower = 0,
 
-      height = 1, -- Size of creature
+      height = 3, -- Size of creature
+	  
       armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
       kinetic = 95,
       energy = 95,
@@ -83,7 +84,7 @@ kraytDragonAncient = Creature:new {
       acid = 95,
       lightsaber = 0,
 
-      accuracy = 0,
+      accuracy = 300,
 
       healer = 0,
 

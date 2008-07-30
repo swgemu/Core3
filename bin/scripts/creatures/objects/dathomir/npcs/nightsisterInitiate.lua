@@ -83,7 +83,7 @@ nightsisterInitiate = Creature:new {
       acid = 100,
       lightsaber = 0,
 
-      accuracy = 0,
+      accuracy = 300,
 
       healer = 0,
 

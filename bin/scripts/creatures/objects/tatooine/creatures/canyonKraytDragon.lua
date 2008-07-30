@@ -71,7 +71,8 @@ canyonKraytDragon = Creature:new {
       focus = 0,
       willpower = 0,
 
-      height = 1, -- Size of creature
+      height = 2, -- Size of creature
+	  
       armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
       kinetic = 60,
       energy = 60,
@@ -83,7 +84,7 @@ canyonKraytDragon = Creature:new {
       acid = 60,
       lightsaber = 0,
 
-      accuracy = 0,
+      accuracy = 300,
 
       healer = 0,
 

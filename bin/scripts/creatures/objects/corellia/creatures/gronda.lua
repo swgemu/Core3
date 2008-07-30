@@ -83,7 +83,7 @@ gronda = Creature:new {
       acid = -1,
       lightsaber = 0,
 
-      accuracy = 0,
+      accuracy = 100,
 
       healer = 0,
 

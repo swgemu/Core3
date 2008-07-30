@@ -72,6 +72,7 @@ juvenileCanyonKrayt = Creature:new {
       willpower = 0,
 
       height = 1, -- Size of creature
+	  
       armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
       kinetic = 70,
       energy = 70,
@@ -83,7 +84,7 @@ juvenileCanyonKrayt = Creature:new {
       acid = 0,
       lightsaber = 0,
 
-      accuracy = 0,
+      accuracy = 300,
 
       healer = 0,
 

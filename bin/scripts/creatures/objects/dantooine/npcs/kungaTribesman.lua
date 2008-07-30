@@ -83,7 +83,7 @@ kungaTribesman = Creature:new {
       acid = 20,
       lightsaber = 0,
 
-      accuracy = 0,
+      accuracy = 300,
 
       healer = 0,
 

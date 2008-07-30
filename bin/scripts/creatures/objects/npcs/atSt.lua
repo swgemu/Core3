@@ -86,7 +86,7 @@ atSt = Creature:new {
 	acid = 90,
 	lightSaber = 0,
 
-      accuracy = 0,
+      accuracy = 300,
 
       healer = 0,
 
