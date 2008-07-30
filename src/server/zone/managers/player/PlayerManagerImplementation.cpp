@@ -467,7 +467,7 @@ void PlayerManagerImplementation::loadWaypoints(Player* player) {
 }
 
 void PlayerManagerImplementation::updateOtherFriendlists(Player* player, bool status) {
-	string loggingInName = player->getFirstName();
+	/*string loggingInName = player->getFirstName();
 	String::toLower(loggingInName);
 
 	try {		
@@ -475,33 +475,46 @@ void PlayerManagerImplementation::updateOtherFriendlists(Player* player, bool st
 		//The critical subject is the needed time for a toon logging in if many players are online. Unfort. we must iterate the 
 		//friendlists of the online players tho, DB is not reflecting it correctly before a toon logs out and writes his friendlist to the DB (bugfix)
 		
+		playerMap->lock();
+		
 		playerMap->resetIterator(false);
 
-		while (playerMap->hasNext()) {
+		while (playerMap->hasNext(false)) {
 			Player* playerToInform = playerMap->next();
-			PlayerObject* toInformObject = playerToInform->getPlayerObject();
+			
+			try {
+				if (playerToInform != player)
+					playerToInform->wlock(player);
+				
+				PlayerObject* toInformObject = playerToInform->getPlayerObject();
 
-			for(int i = 0; i < toInformObject->getFriendsList()->getCount(); ++i){
-				if(toInformObject->getFriendsList()->getFriendsName(i) == loggingInName) {
+				for (int i = 0; i < toInformObject->getFriendsList()->getCount(); ++i){
+					if(toInformObject->getFriendsList()->getFriendsName(i) == loggingInName) {
 					
-					if(playerToInform != NULL){
-						if(playerToInform->isOnline()){	
+						if (playerToInform->isOnline()){	
 							
 							FriendStatusChangeMessage* notifyStatus = 
 								new FriendStatusChangeMessage(player->getFirstName(), "Core3", status);
 								
 							playerToInform->sendMessage(notifyStatus);
-							
 						}
-					}
 
+					}
 				}
+				if (playerToInform != player)
+					playerToInform->unlock();
+			} catch (...) {
+				if (playerToInform != player);
+					playerToInform->unlock();
 			}
 		}
 		
+		playerMap->unlock();
+		
 	} catch (...) {
+		playerMap->unlock();
 		cout << "Exception in PlayerManagerImplementation::updateOtherFriendlists iterating foreign frindlists " << endl;
-	}
+	}*/
 }
 
 void PlayerManagerImplementation::unload(Player* player) {

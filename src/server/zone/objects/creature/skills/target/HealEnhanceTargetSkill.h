@@ -86,11 +86,11 @@ public:
 
 			tokenizer.getStringToken(poolName);
 
-			cout << "Pool name is " << poolName << endl;
+			//cout << "Pool name is " << poolName << endl;
 
 			poolAffected = PharmaceuticalImplementation::getPoolFromName(poolName);
 
-			cout << "Pool affected is " << poolAffected << endl;
+			//cout << "Pool affected is " << poolAffected << endl;
 
 			if (tokenizer.hasMoreTokens())
 				objectid = tokenizer.getLongToken();
@@ -102,11 +102,11 @@ public:
 					return enhancePack;
 			}
 
-			if (objectid > 0) {
+			/*if (objectid > 0) {
 				cout << "the specified pack didnt exist" << endl;
 			} else {
 				cout << "thir was no specified pack" << endl;
-			}
+			}*/
 		} else {
 			poolAffected = PharmaceuticalImplementation::UNKNOWN;
 			return NULL;

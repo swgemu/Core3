@@ -423,24 +423,17 @@ void RadialManager::handleSlicing(Player* player, SceneObject* obj) {
 
 	TangibleObject* tano = (TangibleObject*) obj;
 
-	try {
-		tano->wlock();
-
-		if (tano->isArmor()) {
-			Armor* armor = (Armor*) tano;
-			if (!armor->isSliced())
-				armor->sliceArmor(player);
-		} else if (tano->isWeapon()) {
-			Weapon* weapon = (Weapon*) tano;
-			if (!weapon->isSliced())
-				weapon->sliceWeapon(player);
-		}
-
-		tano->unlock();
-	} catch (...) {
-		cout << "unreported exception caught in RadialManageR::handleSlicing\n";
-		tano->unlock();
+	
+	if (tano->isArmor()) {
+		Armor* armor = (Armor*) tano;
+		if (!armor->isSliced())
+			armor->sliceArmor(player);
+	} else if (tano->isWeapon()) {
+		Weapon* weapon = (Weapon*) tano;
+		if (!weapon->isSliced())
+			weapon->sliceWeapon(player);
 	}
+
 }
 
 void RadialManager::handleRepair(Player* player, SceneObject* obj) {

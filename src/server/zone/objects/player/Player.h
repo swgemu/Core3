@@ -451,7 +451,7 @@ public:
 
 	CraftingTool* getCurrentCraftingTool();
 
-	CraftingTool* getCraftingTool(const int type);
+	CraftingTool* getCraftingTool(const int type, bool doLock = true);
 
 	void setCurrentCraftingTool(CraftingTool* ct);
 
@@ -504,6 +504,8 @@ public:
 	float getLastTestPositionY();
 
 	unsigned int getForcePower();
+
+	unsigned int getForcePowerMax();
 
 	SurveyTool* getSurveyTool();
 
@@ -975,7 +977,7 @@ public:
 
 	CraftingTool* getCurrentCraftingTool();
 
-	CraftingTool* getCraftingTool(const int type);
+	CraftingTool* getCraftingTool(const int type, bool doLock);
 
 	void setCurrentCraftingTool(CraftingTool* ct);
 
@@ -1028,6 +1030,8 @@ public:
 	float getLastTestPositionY();
 
 	unsigned int getForcePower();
+
+	unsigned int getForcePowerMax();
 
 	SurveyTool* getSurveyTool();
 

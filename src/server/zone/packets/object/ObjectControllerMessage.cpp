@@ -2571,7 +2571,7 @@ void ObjectControllerMessage::parseRequestCraftingSession(Player* player,
 
 		if(craftingStation != NULL){
 
-			craftingTool = player->getCraftingTool(craftingStation->getStationType());
+			craftingTool = player->getCraftingTool(craftingStation->getStationType(), false);
 
 			if(craftingTool != NULL){
 

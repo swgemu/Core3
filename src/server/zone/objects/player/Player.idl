@@ -433,7 +433,7 @@ interface Player implements CreatureObject {
 	
 	// Crafting
 	CraftingTool getCurrentCraftingTool();
-	CraftingTool getCraftingTool(const int type);
+	CraftingTool getCraftingTool(const int type, boolean doLock = true);
 	void setCurrentCraftingTool(CraftingTool ct);
 	void clearCurrentCraftingTool();
 	
@@ -473,6 +473,7 @@ interface Player implements CreatureObject {
 	float getLastTestPositionY();
 
 	unsigned int getForcePower();
+	unsigned int getForcePowerMax();
 
 	
 	SurveyTool getSurveyTool();

@@ -221,6 +221,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/creature/trainer/TrainerCreatureImplementation.cpp \
 		server/zone/objects/creature/bluefrog/BlueFrogCreatureImplementation.cpp \
 		server/zone/objects/creature/mount/MountCreatureImplementation.cpp \
+		server/zone/objects/creature/buffs/Buff.cpp \
 		server/zone/objects/scene/SceneObjectImplementation.cpp \
 		server/zone/objects/ship/ShipObjectImplementation.cpp \
 		server/zone/managers/object/ObjectManager.cpp \

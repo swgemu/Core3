@@ -333,7 +333,11 @@ void PlayerImplementation::load(ZoneClient* client) {
 		Zone* zone = server->getZoneServer()->getZone(zoneID);
 		insertToZone(zone);
 
-		playerSaveStateEvent = new PlayerSaveStateEvent(_this);
+		if (playerSaveStateEvent == NULL)
+			playerSaveStateEvent = new PlayerSaveStateEvent(_this);
+		else
+			playerSaveStateEvent->setPlayer(_this);
+			
 		server->addEvent(playerSaveStateEvent, 300000);
 
 		PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
@@ -396,6 +400,8 @@ void PlayerImplementation::reload(ZoneClient* client) {
 		
 		if (playerSaveStateEvent == NULL)
 			playerSaveStateEvent = new PlayerSaveStateEvent(_this);
+		else
+			playerSaveStateEvent->setPlayer(_this);
 
 		server->addEvent(playerSaveStateEvent, 300000);
 
@@ -493,10 +499,13 @@ void PlayerImplementation::unload() {
 		mnt->unlock();
 	}
 
-	savePlayerState();
+	savePlayerState();	
 
 	if (zone != NULL) {
 		ZoneServer* zserver = zone->getZoneServer();
+		
+		PlayerManager* playerManager = zserver->getPlayerManager();
+		playerManager->unload(_this);
 
 		if (isInQuadTree()) {
 			clearDuelList();
@@ -552,10 +561,14 @@ void PlayerImplementation::savePlayerState(bool doSchedule) {
 	if (playerSaveStateEvent == NULL)
 		return;
 
-	if (doSchedule)
+	if (doSchedule) {
+		playerSaveStateEvent->setPlayer(_this);
 		server->addEvent(playerSaveStateEvent, 300000);
-	else
-		server->removeEvent(playerSaveStateEvent);
+	} else {
+		if (playerSaveStateEvent->isQueued())
+			server->removeEvent(playerSaveStateEvent);
+		playerSaveStateEvent->setPlayer(NULL);
+	}
 }
 
 void PlayerImplementation::logout(bool doLock) {
@@ -2849,9 +2862,9 @@ CraftingTool* PlayerImplementation::getCurrentCraftingTool() {
 	return currentCraftingTool;
 }
 
-CraftingTool* PlayerImplementation::getCraftingTool(const int type) {
+CraftingTool* PlayerImplementation::getCraftingTool(const int type, bool doLock) {
 
-	wlock();
+	wlock(doLock);
 
 	TangibleObject* item= NULL;
 
@@ -2867,13 +2880,13 @@ CraftingTool* PlayerImplementation::getCraftingTool(const int type) {
 			if ((possibleTool->getToolType() == type)
 					&& (possibleTool->isReady())) {
 
-				unlock();
+				unlock(doLock);
 				return possibleTool;
 
 			}
 		}
 	}
-	unlock();
+	unlock(doLock);
 	return NULL;
 
 }

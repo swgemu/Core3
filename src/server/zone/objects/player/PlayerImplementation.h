@@ -676,7 +676,7 @@ public:
 
 	// Crafting
 	CraftingTool* getCurrentCraftingTool();
-	CraftingTool* getCraftingTool(const int type);
+	CraftingTool* getCraftingTool(const int type, bool doLock);
 	void setCurrentCraftingTool(CraftingTool* ct);
 	void clearCurrentCraftingTool();
 
@@ -996,6 +996,10 @@ public:
 
 	inline uint32 getForcePower() {
 		return playerObject->getForcePower();
+	}
+	
+	inline uint32 getForcePowerMax() {
+		return getSkillMod("jedi_force_power_max");
 	}
 
 	inline string& getFactionRank() {

@@ -53,6 +53,9 @@ class PlayerSaveStateEvent : public Event {
 public:
 	PlayerSaveStateEvent(Player* pl) : Event(300000) {
 		player = pl;
+		
+		if (pl == NULL)
+			pl->setOnline(); // lets see where it creates it :)
 
 		setKeeping(true);
 	}
@@ -65,23 +68,31 @@ public:
 	}
 
 	bool activate() {
+		ManagedReference<Player> temp = player;
+		
+		player = NULL;
+		
 		try {
-			player->wlock();
+			temp->wlock();
 
-			if (!player->isOffline())
-				player->savePlayerState(true);
+			if (!temp->isOffline())
+				temp->savePlayerState(true);
 
-			player->unlock();
+			temp->unlock();
 		} catch (...) {
 			player->error("Unreported Exception caught in PlayerSaveStateEvent::activate");
 			player->clearDisconnectEvent();
 
-			player->unlock();
+			temp->unlock();
 		}
-
-		player = NULL;
+		
+		temp = NULL;
 
 		return true;
+	}
+	
+	void setPlayer(Player* pl) {
+		player = pl;
 	}
 
 };

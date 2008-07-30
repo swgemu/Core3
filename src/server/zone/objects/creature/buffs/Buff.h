@@ -41,6 +41,7 @@ gives permission to release a modified version without this exception;
 this exception also makes it possible to release a modified version 
 which carries forward this exception.
 */
+
 #ifndef BUFF_H_
 #define BUFF_H_
 
@@ -48,8 +49,9 @@ which carries forward this exception.
 
 //#include "../skillmods/SkillModList.h"
 
-#include "../CreatureObject.h"
-#include "../../player/PlayerObject.h"
+class CreatureObject;
+class Player;
+class PlayerObject;
 
 class BuffObject;
 
@@ -257,235 +259,72 @@ protected:
 	
 
 public:
-	Buff(uint32 crc) {
-		setBuffCRC(crc);
-		setBuffDuration(0.0f);
-		setBuffDownerCRC(0);
-		
-		// Defaults
-		setBuffType(BuffType::OTHER);
-		setHealthBuff(0);
-		setActionBuff(0);
-		setMindBuff(0);
-		setStrengthBuff(0);
-		setConstitutionBuff(0);
-		setStaminaBuff(0);
-		setQuicknessBuff(0);
-		setWillpowerBuff(0);
-		setFocusBuff(0);
-		setForcePowerBuff(0);
-		//setForceRegenBuff(0);
-		
-		active = false;
-	}
+	Buff(uint32 crc);
 	
-	Buff(uint32 crc, int type, float duration) {
-		setBuffCRC(crc);
-		setBuffType(type);
-		setBuffDuration(duration); // set in seconds?
-		setBuffDownerCRC(0);
-
-		// Defaults
-		setHealthBuff(0);
-		setActionBuff(0);
-		setMindBuff(0);
-		setStrengthBuff(0);
-		setConstitutionBuff(0);
-		setStaminaBuff(0);
-		setQuicknessBuff(0);
-		setWillpowerBuff(0);
-		setFocusBuff(0);
-		setForcePowerBuff(0);
-		//setForceRegenBuff(0);
-		
-		active = false;
-	}
+	Buff(uint32 crc, int type, float duration);
 	
 	// TODO:  Need to do a better job with Shock Wounds
-	bool activateBuff(CreatureObject* creo) {		
-		// default to update client by not specifying true attrib
-		if (getHealthBuff() != 0)
-		{
-			// sets both maxHealthBar and setHealthmax
-			creo->setMaxHealthBar(creo->getHealthMax() + getHealthBuff());
-			creo->setHealthBar(MIN(creo->getHealth() + getHealthBuff() - creo->getHealthWounds(), creo->getHealthMax() - creo->getHealthWounds()));
-		}
-		
-		if (getActionBuff() != 0) {
-			creo->setMaxActionBar(creo->getActionMax() + getActionBuff());
-			creo->setActionBar(MIN(creo->getAction() + getActionBuff() - creo->getActionWounds(), creo->getActionMax() - creo->getActionWounds()));
-		}
-		
-		if (getMindBuff() != 0) {
-			creo->setMaxMindBar(creo->getMindMax() + getMindBuff());
-			creo->setMindBar(MIN(creo->getMind() + getMindBuff() - creo->getMindWounds(), creo->getMindMax() - creo->getMindWounds()));
-		}
-		
-		if (getStrengthBuff() != 0) {
-			creo->setMaxStrengthBar(creo->getStrengthMax() + getStrengthBuff());
-			creo->setStrengthBar(MIN(creo->getStrength() + getStrengthBuff(), creo->getStrengthMax()));
-		}
-		
-		if (getConstitutionBuff() != 0) {
-			creo->setMaxConstitutionBar(creo->getConstitutionMax() + getConstitutionBuff());
-			creo->setConstitutionBar(MIN(creo->getConstitution() + getConstitutionBuff(), creo->getConstitutionMax()));
-		}
-		
-		if (getStaminaBuff() != 0) {
-			creo->setMaxStaminaBar(creo->getStaminaMax() + getStaminaBuff());
-			creo->setStaminaBar(MIN(creo->getStamina() + getStaminaBuff(), creo->getStaminaMax()));
-		}
-		
-		if (getQuicknessBuff() != 0) {
-			creo->setMaxQuicknessBar(creo->getQuicknessMax() + getQuicknessBuff());
-			creo->setQuicknessBar(MIN(creo->getQuickness() + getQuicknessBuff(), creo->getQuicknessMax()));
-		}
-		
-		if (getWillpowerBuff() != 0) {
-			creo->setMaxWillpowerBar(creo->getWillpowerMax() + getWillpowerBuff());
-			creo->setWillpowerBar(MIN(creo->getWillpower() + getWillpowerBuff(), creo->getWillpowerMax()));
-		}
-		
-		if (getFocusBuff() != 0) {
-			creo->setMaxFocusBar(creo->getFocusMax() + getFocusBuff());
-			creo->setFocusBar(MIN(creo->getFocus() + getFocusBuff(), creo->getFocusMax()));
-		}
-		
-		if (getForcePowerBuff() != 0) {
-			((PlayerObject*)creo)->setMaxForcePowerBar(((PlayerObject*)creo)->getForcePowerMax() + getForcePowerBuff());
-			((PlayerObject*)creo)->setForcePowerBar(MIN(((PlayerObject*)creo)->getForcePower() + getForcePowerBuff(), ((PlayerObject*)creo)->getForcePowerMax()));				
-		}
-
-		//if(getForceRegenBuff() > 0) {
-		//	((PlayerObject*)creo)->setForceRegen(((PlayerObject*)creo)->getForceRegen() + getForceRegenBuff());		
-		//}
-		
-		// TODO: Add Skill Mods
-
-//		((PlayerObject*) creo)->addBuff(getCRC(), duration);
-		creo->addBuff(getBuffCRC(), getBuffDuration());
-
-		active = true;
-		return true;
-		
-	}
+	bool activateBuff(CreatureObject* creo);
 	
 	
 	// TODO:  Need to do a better job with Shock Wounds
-	void downerBuff(CreatureObject* creo) {		
-		Buff *buff = new Buff(getBuffDownerCRC(), BuffType::SPICE, round(getBuffDuration() / 3.0));
-		
-		// The Min Value of their total bar - 1 or the downer
-		buff->setHealthBuff(-1 * MIN(creo->getHealthMax() - 1, getHealthBuff()));
-		buff->setActionBuff(-1 * MIN(creo->getActionMax() - 1, getActionBuff()));
-		buff->setMindBuff(-1 * MIN(creo->getMindMax() - 1, getMindBuff()));
-		buff->setStrengthBuff(-1 * MIN(creo->getStrengthMax() - 1, getStrengthBuff()));
-		buff->setConstitutionBuff(-1 * MIN(creo->getConstitutionMax() - 1, getConstitutionBuff()));
-		buff->setStaminaBuff(-1 * MIN(creo->getStaminaMax() - 1, getStaminaBuff()));
-		buff->setQuicknessBuff(-1 * MIN(creo->getQuicknessMax() - 1, getQuicknessBuff()));
-		buff->setWillpowerBuff(-1 * MIN(creo->getWillpowerMax() - 1, getWillpowerBuff()));
-		buff->setFocusBuff(-1 * MIN(creo->getFocusMax() - 1, getFocusBuff()));
-		buff->setForcePowerBuff(-1 * MIN(((PlayerObject*)creo)->getForcePowerMax() - 1, getForcePowerBuff()));
-		
-		// TODO: Switch Skill Mods?
-		BuffObject* bo = new BuffObject(buff);
-		creo->applyBuff(bo);
-	}
+	void downerBuff(CreatureObject* creo);
 	
-	bool deActivateBuff(CreatureObject* creo, bool updateClient = true) {
-		if (!active) {
-			creo->sendSystemMessage("buff not active - report repo steps to McMahon");
-			return false;
-		}
-		
-		if (getHealthBuff() != 0)
-			creo->setMaxHealthBar(creo->getHealthMax() - getHealthBuff(), updateClient);
-		
-		if (getActionBuff() != 0)
-			creo->setMaxActionBar(creo->getActionMax() - getActionBuff(), updateClient);
-		
-		if (getMindBuff() != 0)
-			creo->setMaxMindBar(creo->getMindMax() - getMindBuff(), updateClient);
-		
-		if (getStrengthBuff() != 0)
-			creo->setMaxStrengthBar(creo->getStrengthMax() - getStrengthBuff(), updateClient);
-		
-		if (getConstitutionBuff() != 0)
-			creo->setMaxConstitutionBar(creo->getConstitutionMax() - getConstitutionBuff(), updateClient);
-		
-		if (getStaminaBuff() != 0)
-			creo->setMaxStaminaBar(creo->getStaminaMax() - getStaminaBuff(), updateClient);
-		
-		if (getQuicknessBuff() != 0)
-			creo->setMaxQuicknessBar(creo->getQuicknessMax() - getQuicknessBuff(), updateClient);
-		
-		if(getWillpowerBuff() != 0)
-			creo->setMaxWillpowerBar(creo->getWillpowerMax() - getWillpowerBuff(), updateClient);
-		
-		if (getFocusBuff() != 0)
-			creo->setMaxFocusBar(creo->getFocusMax() - getFocusBuff(), updateClient);
-		
-		if (getForcePowerBuff() != 0)
-			((PlayerObject*)creo)->setMaxForcePowerBar(((PlayerObject*)creo)->getForcePowerMax() - getForcePowerBuff(), updateClient);
-
-		//if (getForceRegenBuff() != 0)
-		//	((PlayerObject*)creo)->setForceRegen(((PlayerObject*)creo)->getForceRegen() - getForceRegenBuff());
-
-		// TODO: Remove Skill Mods
-		
-		// Remove from client buff list
-		if (updateClient)
-			creo->addBuff(getBuffCRC(), 0.0f);
-		
-		active = false;
-		
-		// Activate Downer
-		if (getBuffType() == BuffType::SPICE && updateClient && getBuffDownerCRC() > 0)
-			downerBuff(creo);
-		
-		return true;
-	}
+	bool deActivateBuff(CreatureObject* creo, bool updateClient = true);
 	
 	// Getters
 	inline uint32 getBuffCRC() {
 		return buffCRC;
 	}
+	
 	inline uint32 getBuffDownerCRC() {
 		return buffDownerCRC;
 	}
+	
 	inline int getBuffType() {
 		return buffType;
 	}
+	
 	inline float getBuffDuration() {
 		return buffDuration;
 	}
+	
 	inline int getHealthBuff() {
 		return healthBuff;
 	}
+	
 	inline int getActionBuff() {
 		return actionBuff;
 	}
+	
 	inline int getMindBuff() {
 		return mindBuff;
 	}
+	
 	inline int getStrengthBuff() {
 		return strengthBuff;
 	}
+	
 	inline int getConstitutionBuff() {
 		return constitutionBuff;
 	}
+	
 	inline int getStaminaBuff() {
 		return staminaBuff;
 	}
+	
 	inline int getQuicknessBuff() {
 		return quicknessBuff;
 	}
+	
 	inline int getWillpowerBuff() {
 		return willpowerBuff;
 	}
+	
 	inline int getFocusBuff() {
 		return focusBuff;
 	}
+	
 	inline int getForcePowerBuff() {
 		return forcePowerBuff;
 	}
@@ -497,42 +336,55 @@ public:
 	inline void setBuffCRC(uint32 crc) {
 		buffCRC = crc;
 	}
+	
 	inline void setBuffDownerCRC(uint32 crc) {
 		buffDownerCRC = crc;
 	}
+	
 	inline void setBuffType(int type) {
 		buffType = type;
 	}
+	
 	inline void setBuffDuration(float duration) {
 		buffDuration = duration;
 	}
+	
 	inline void setHealthBuff(int health) {
 		healthBuff = health;
 	}
+	
 	inline void setActionBuff(int action) {
 		actionBuff = action;
 	}
+	
 	inline void setMindBuff(int mind) {
 		mindBuff = mind;
 	}
+	
 	inline void setStrengthBuff(int strength) {
 		strengthBuff = strength;
 	}
+	
 	inline void setConstitutionBuff(int constitution) {
 		constitutionBuff = constitution;
 	}
+	
 	inline void setStaminaBuff(int stamina) {
 		staminaBuff = stamina;
 	}
+	
 	inline void setQuicknessBuff(int quickness) {
 		quicknessBuff = quickness;
 	}
+	
 	inline void setWillpowerBuff(int willpower) {
 		willpowerBuff = willpower;
 	}
+	
 	inline void setFocusBuff(int focus) {
 		focusBuff = focus;
 	}
+	
 	inline void setForcePowerBuff(int force) {
 		forcePowerBuff = force;
 	}
