@@ -139,6 +139,10 @@ interface Creature implements CreatureObject {
 	void setType(int tp);
 	
 	void setRespawnTimer(unsigned int seconds);
+
+	boolean hasOrganicResources();
+	void addPlayerToHarvestList(string firstName);
+	boolean canHarvest(string firstName);
 	
 	void setLootCreated(boolean value);
 }

@@ -631,6 +631,19 @@ void CreatureManagerImplementation::despawnCreature(Creature* creature) {
 	unlock();
 }
 
+void CreatureManagerImplementation::scheduleDespawnCreature(Creature* creature){
+
+	lock();
+
+	CreatureRemoveEvent* creatureRemoveEvent;
+
+	creatureRemoveEvent = new CreatureRemoveEvent(creature);
+
+	server->addEvent(creatureRemoveEvent, 240000);
+
+	unlock();
+}
+
 void CreatureManagerImplementation::respawnCreature(Creature* creature) {
 	lock();
 

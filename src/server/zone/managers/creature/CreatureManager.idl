@@ -77,6 +77,8 @@ interface CreatureManager {
 
 	//void load(Creature creature);
 	void unloadCreature(Creature creature);
+
+	void scheduleDespawnCreature(Creature creature);
 	
 	// creation methods
 	Creature spawnCreature(const string stfname, const string name, int objCrc, float x, float y, int bitmask = 0x00, boolean doLock = true);

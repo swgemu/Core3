@@ -474,7 +474,9 @@ interface Player implements CreatureObject {
 
 	
 	SurveyTool getSurveyTool();
+	SurveyTool getSampleTool();
 	void setSurveyTool(SurveyTool sTool);
+	void setSampleTool(SurveyTool sTool);
 	void setSurveyWaypoint(WaypointObject id); 
 	WaypointObject getSurveyWaypoint();
 	boolean getCanSurvey();

@@ -2822,6 +2822,8 @@ CraftingTool* PlayerImplementation::getCurrentCraftingTool() {
 
 CraftingTool* PlayerImplementation::getCraftingTool(const int type) {
 
+	wlock();
+
 	TangibleObject* item= NULL;
 
 	// The For loop is looking for something in inventory with the same name as what is passed in
@@ -2831,16 +2833,18 @@ CraftingTool* PlayerImplementation::getCraftingTool(const int type) {
 
 		if (item != NULL && item->isCraftingTool()) {
 
-			CraftingTool* possibleTool = (CraftingTool*) item;
+			CraftingTool* possibleTool = (CraftingTool*)item;
 
 			if ((possibleTool->getToolType() == type)
 					&& (possibleTool->isReady())) {
 
+				unlock();
 				return possibleTool;
 
 			}
 		}
 	}
+	unlock();
 	return NULL;
 
 }
@@ -3244,11 +3248,14 @@ void PlayerImplementation::setSampleEvent(string& resourceName, bool firstTime) 
 	}
 
 	if (firstTime) {
+
+		sampleTool = surveyTool;
+
 		firstSampleEvent = new SampleEvent(_this, resourceName);
 		server->addEvent(firstSampleEvent, 2000);
 
 		sampleEvent = new SampleEvent(_this, resourceName, false, true);
-		server->addEvent(sampleEvent, 14000);
+		server->addEvent(sampleEvent, 22000);
 	} else {
 		firstSampleEvent = NULL;
 
@@ -3259,7 +3266,7 @@ void PlayerImplementation::setSampleEvent(string& resourceName, bool firstTime) 
 
 			getZone()->getZoneServer()->getResourceManager()->sendSampleMessage(_this, resourceName);
 
-			server->addEvent(sampleEvent, 12000);
+			server->addEvent(sampleEvent, 20000);
 		} else {
 			sendSystemMessage("You do not have enough action to do that.");
 			changePosture(CreatureObjectImplementation::UPRIGHT_POSTURE);

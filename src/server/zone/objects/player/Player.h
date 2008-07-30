@@ -505,7 +505,11 @@ public:
 
 	SurveyTool* getSurveyTool();
 
+	SurveyTool* getSampleTool();
+
 	void setSurveyTool(SurveyTool* sTool);
+
+	void setSampleTool(SurveyTool* sTool);
 
 	void setSurveyWaypoint(WaypointObject* id);
 
@@ -1023,7 +1027,11 @@ public:
 
 	SurveyTool* getSurveyTool();
 
+	SurveyTool* getSampleTool();
+
 	void setSurveyTool(SurveyTool* sTool);
+
+	void setSampleTool(SurveyTool* sTool);
 
 	void setSurveyWaypoint(WaypointObject* id);
 

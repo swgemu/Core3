@@ -57,6 +57,7 @@ which carries forward this exception.
 
 #include "PatrolPoint.h"
 
+
 class CreatureManagerImplementation;
 class CreatureGroup;
 class LairObject;
@@ -104,6 +105,8 @@ class CreatureImplementation : public CreatureServant, public Event {
 	bool randomizeRespawn;
 	uint32 respawnTimer;
 
+	Vector<string> hasHarvested;
+
 private:
 	void broadcastNextPositionUpdate(PatrolPoint* point = NULL);
 	void setNextPosition();
@@ -132,6 +135,10 @@ public:
 	void reload();
 	void unload();
 
+	void clearLootItems();
+
+	void sendRadialResponseTo(Player* player, ObjectMenuResponse* omr);
+
 	void generateAttributes(SceneObject* obj);
 
 	// spatial methods
@@ -146,8 +153,6 @@ public:
 	void removeFromBuilding(BuildingObject* building);
 
 	void loadItems();
-
-	void clearLootItems();
 
 	// combat methods
 	bool activate();
@@ -303,6 +308,30 @@ public:
 	inline bool hasLootCreated() {
 		return lootCreated == true;
 	}
+
+	inline bool hasOrganicResources() {
+		return true;
+	}
+
+	inline bool canHarvest(string firstName) {
+
+		if(getBoneMax() == 0 && getHideMax() == 0 && getMeatMax() == 0)
+			return false;
+
+		for(int i = 0; i < hasHarvested.size(); ++i){
+
+			if(hasHarvested.get(i) == firstName)
+				return false;
+		}
+
+
+		return true;
+	}
+
+	inline void addPlayerToHarvestList(string firstName){
+		hasHarvested.add(firstName);
+	}
+
 
 	inline bool isMoving() {
 		return actualSpeed != 0;

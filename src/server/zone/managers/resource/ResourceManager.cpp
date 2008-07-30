@@ -177,6 +177,21 @@ void ResourceManager::printResource(string& resname) {
 		((ResourceManagerImplementation*) _impl)->printResource(resname);
 }
 
+ResourceContainer* ResourceManager::getOrganicResource(Player* player, string& type, int amount) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 17);
+		method.addObjectParameter(player);
+		method.addAsciiParameter(type);
+		method.addSignedIntParameter(amount);
+
+		return (ResourceContainer*) method.executeWithObjectReturn();
+	} else
+		return ((ResourceManagerImplementation*) _impl)->getOrganicResource(player, type, amount);
+}
+
 /*
  *	ResourceManagerAdapter
  */
@@ -220,6 +235,9 @@ Packet* ResourceManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		break;
 	case 16:
 		printResource(inv->getAsciiParameter(_param0_printResource__string_));
+		break;
+	case 17:
+		resp->insertLong(getOrganicResource((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_getOrganicResource__Player_string_int_), inv->getSignedIntParameter())->_getObjectID());
 		break;
 	default:
 		return NULL;
@@ -270,6 +288,10 @@ void ResourceManagerAdapter::getResourceContainerName(const string& str, string&
 
 void ResourceManagerAdapter::printResource(string& resname) {
 	return ((ResourceManagerImplementation*) impl)->printResource(resname);
+}
+
+ResourceContainer* ResourceManagerAdapter::getOrganicResource(Player* player, string& type, int amount) {
+	return ((ResourceManagerImplementation*) impl)->getOrganicResource(player, type, amount);
 }
 
 /*

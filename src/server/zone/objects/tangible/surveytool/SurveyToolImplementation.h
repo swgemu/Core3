@@ -94,10 +94,13 @@ public:
 	}
 	
 	inline int getSurveyToolRange() {
+		
 		return surveyToolRange;
 	}
 	
 	inline void setSurveyToolRange(int range) {
+		string temp = "range";
+		itemAttributes->setIntAttribute(temp, range);
 		surveyToolRange = range;	
 	}
 	

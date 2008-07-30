@@ -166,6 +166,8 @@ void SurveyToolImplementation::addAttributes(AttributeListMessage* alm) {
 		alm->insertAttribute("serial_number", craftedSerial);
 	}
 	
+	alm->insertAttribute("range", surveyToolRange);
+	
 }
 
 void SurveyToolImplementation::parseItemAttributes() {
@@ -175,6 +177,9 @@ void SurveyToolImplementation::parseItemAttributes() {
 	
 	temp = "craftedserial";
 	craftedSerial = itemAttributes->getStringAttribute(temp);
+	
+	temp = "range";
+	surveyToolRange = itemAttributes->getIntAttribute(temp);
 
 }
 

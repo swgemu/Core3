@@ -75,7 +75,7 @@ private:
 	uint64 resourceID;
 	
 public:
-	static const int MAXQUANTITY = 100000;
+	static const int MAXQUANTITY = 1000000;
 	
 	ResourceContainerImplementation(uint64 oid);
 	ResourceContainerImplementation(uint64 objectid, uint32 tempCRC, const unicode& n, const string& tempn);
@@ -201,6 +201,8 @@ public:
 	}
 	
 	inline void setObjectSubType(int subType) {
+		string temp = "subtype";
+		itemAttributes->setUnsignedLongAttribute(temp, subType);
 		objectSubType = subType;
 	}
 	

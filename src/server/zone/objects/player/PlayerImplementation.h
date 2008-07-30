@@ -194,7 +194,8 @@ class PlayerImplementation : public PlayerServant {
 	WaypointObject* surveyWaypoint;
 
 	ManagedReference<SurveyTool> surveyTool;
-
+	ManagedReference<SurveyTool> sampleTool;
+	
 	bool cancelSample;
 
 	bool surveyErrorMessage;
@@ -1108,6 +1109,10 @@ public:
 		surveyTool = sTool;
 	}
 
+	inline void setSampleTool(SurveyTool* sTool) {
+		sampleTool = sTool;
+	}
+	
 	inline void setSurveyWaypoint(WaypointObject* wpo) {
 		surveyWaypoint = wpo;
 	}
@@ -1136,6 +1141,10 @@ public:
 		return surveyTool;
 	}
 
+	inline SurveyTool* getSampleTool() {
+		return sampleTool;
+	}
+	
 	inline WaypointObject* getSurveyWaypoint() {
 		return surveyWaypoint;
 	}

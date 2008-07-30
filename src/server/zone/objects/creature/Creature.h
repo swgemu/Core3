@@ -105,6 +105,12 @@ public:
 
 	void setRespawnTimer(unsigned int seconds);
 
+	bool hasOrganicResources();
+
+	void addPlayerToHarvestList(string& firstName);
+
+	bool canHarvest(string& firstName);
+
 	void setLootCreated(bool value);
 
 protected:
@@ -201,10 +207,18 @@ public:
 
 	void setRespawnTimer(unsigned int seconds);
 
+	bool hasOrganicResources();
+
+	void addPlayerToHarvestList(string& firstName);
+
+	bool canHarvest(string& firstName);
+
 	void setLootCreated(bool value);
 
 protected:
 	string _param0_setObjectFileName__string_;
+	string _param0_addPlayerToHarvestList__string_;
+	string _param0_canHarvest__string_;
 };
 
 class CreatureHelper : public DistributedObjectClassHelper, public Singleton<CreatureHelper> {

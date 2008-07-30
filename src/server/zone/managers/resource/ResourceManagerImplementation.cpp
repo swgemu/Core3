@@ -19,7 +19,10 @@
 #include "../../packets.h"
 
 ResourceManagerImplementation::ResourceManagerImplementation(ZoneServer* inserver,
-		ZoneProcessServerImplementation* inserv) : ResourceManagerServant(), Logger("ResourceManager"), Mutex("ResourceManager") {
+		ZoneProcessServerImplementation* inserv) : ResourceManagerServant(), Mutex("ResourceManager"), Lua() {
+
+	setLoggingName("ResourceManager");
+
 	init();
 
 	serv = inserv;
@@ -62,8 +65,10 @@ ResourceManagerImplementation::~ResourceManagerImplementation() {
 	}
 }
 
-
 void ResourceManagerImplementation::init() {
+
+	Lua::init();
+
 	resourceMap = new VectorMap<string, ResourceTemplate*>();
 	resourceMap->setNullValue(NULL);
 
@@ -73,28 +78,53 @@ void ResourceManagerImplementation::init() {
 
 	info("Resources built from database.");
 
-	averageShiftTime = 3 * 3600000; // In milliseconds
-	//  This is the time between each time the Resource Manager schedules
-	//  itself to run again.
-	//  *** Default is 1 hour (3600000) ***
-	//  *** Good testing time is (15000) ***
+	if (!loadConfigData()) {
 
-	aveduration = 86400;  // In seconds
-	// This is the modifier for how long spawns are in shift
-	// Organics are in shift between (6 * aveduration) and  (22 * aveduration)
-	// Inorganics are in shift between (6 * aveduration) and (11 * aveduration)
-	// JTL resources are in shift between (13 * aveduration) and (22 * aveduration)
-	//  *** Default is 1 day (86400) ***
-	//  *** Good testing period is (40) ***
+		averageShiftTime = 3 * 3600000;
 
-	maxspawns = 40;  //  Mmaximum number of spawns per planet
-	minspawns = 25;  //  Minimum number of spawns per planet
-	maxradius = 2000;   //  Maximum Spawn radius of resource on map
-	minradius = 600;    //  Minimum Spawn radius of resource on map
+		aveduration = 86400;
+
+		spawnThrottling = .9f;
+
+		maxspawns = 40;
+		minspawns = 25;
+		maxradius = 2000;
+		minradius = 600;
+
+		info("Error in resource config file");
+
+	}
+
 
 	makeMinimumPoolVector();
 	makeFixedPoolVector();
 	makeNativePoolVector();
+
+}
+
+
+bool ResourceManagerImplementation::loadConfigFile() {
+	return runFile("scripts/resources/config.lua");
+}
+
+bool ResourceManagerImplementation::loadConfigData() {
+	if(!loadConfigFile())
+		return false;
+
+	averageShiftTime = getGlobalInt("averageShiftTime");
+	aveduration = getGlobalInt("aveduration");
+	spawnThrottling = getGlobalFloat("spawnThrottling");
+
+	maxspawns = getGlobalInt("maxspawns");
+	minspawns = getGlobalInt("minspawns");
+	maxradius = getGlobalInt("maxradius");
+	minradius = getGlobalInt("minradius");
+
+	//dBUser = getGlobalString("DBUser");
+	//dBPass = getGlobalString("DBPass");
+
+
+	return true;
 }
 
 void ResourceManagerImplementation::stop() {
@@ -121,6 +151,9 @@ void ResourceManagerImplementation::theShift() {
 	numInsert = 0;
 	numNameFunctions = 0;
 
+	/*tempOver = 0;
+	tempUnder = 0;*/
+
 	info("starting resource spawner");
 
 	removeExpiredResources();
@@ -143,6 +176,8 @@ void ResourceManagerImplementation::theShift() {
 
 	serv->addEvent(spawnResourcesEvent, averageShiftTime);
 	unlock();
+
+	//cout << "Throttled at " << spawnThrottling << "   Over = " << tempOver << "   under = " << tempUnder << endl;
 }
 
 void ResourceManagerImplementation::countResources() {
@@ -305,11 +340,11 @@ void ResourceManagerImplementation::sendSurveyMessage(Player* player,
 				y = player_y - (2 * spacer);
 				break;
 			default:
-				spacer = 32.0f;
-				points = 3;
-				x = player_x - spacer;
-				y = player_y - spacer;
-				break;
+			spacer = 32.0f;
+			points = 3;
+			x = player_x - spacer;
+			y = player_y - spacer;
+			break;
 		}
 
 		for (int i = 0; i < points; i++) {
@@ -387,15 +422,20 @@ void ResourceManagerImplementation::sendSampleMessage(Player* player,
 				return;
 			}
 
-			int sampleRate = System::random(1000) + (5 * player->getSkillMod("surveying"));
+			float sampleRate = (player->getSkillMod("surveying") * density) + System::random(150);
 
-			if (sampleRate >= 650) {
-				int resQuantity = (sampleRate / 100) * 2 - System::random(13);
+			if (sampleRate > 100) {
+				int resQuantity = int(density * 25 + System::random(3));
 
-				if (!(resQuantity> 0))
+				if (!(resQuantity > 0))
 				resQuantity = 1;
 
-				player->getSurveyTool()->sendSampleEffect(player);
+				player->getSampleTool()->sendSampleEffect(player);
+
+				string xpType = "resource_harvesting_inorganic";
+				int xp = 15;
+
+				player->addXp(xpType, xp, true);
 
 				ChatSystemMessage* sysMessage = new ChatSystemMessage("survey", "sample_located", resourceName, resQuantity, false);
 				player->sendMessage(sysMessage);
@@ -481,7 +521,7 @@ void ResourceManagerImplementation::sendSampleMessage(Player* player,
 				}
 
 				if (rco->getObjectSubType() == TangibleObjectImplementation::ENERGYRADIOACTIVE) {
-					int wound = (sampleRate / 70) - System::random(9);
+					int wound = int((sampleRate / 70) - System::random(9));
 					if (wound> 0) {
 						player->changeHealthWoundsBar(wound, false);
 						player->changeActionWoundsBar(wound, false);
@@ -507,6 +547,122 @@ void ResourceManagerImplementation::sendSampleMessage(Player* player,
 		unlock(doLock);
 
 	}
+}
+
+ResourceContainer* ResourceManagerImplementation::getOrganicResource(
+		Player* player, string type, int amount) {
+
+	lock();
+
+	ResourceContainer* newRcno = new ResourceContainer(player->getNewItemID());
+
+	string resname = getCurrentNameFromType(type);
+
+	if (resname == ""){
+		unlock();
+		return NULL;
+}
+
+	newRcno->setResourceName(resname);
+
+	newRcno->setContents(amount);
+
+	setResourceData(newRcno, false);
+
+	Inventory* inventory = player->getInventory();
+
+	ResourceContainer* rco;
+
+	bool makeNewResource = true;
+
+	for (int i = 0; i < inventory->objectsSize(); i++) {
+		TangibleObject* item = (TangibleObject*)inventory->getObject(i);
+		if (item != NULL && item->isResource()) {
+			rco = (ResourceContainer*) item;
+
+			try {
+
+				rco->wlock();
+
+				if (rco->compare(newRcno) && rco->getContents()
+						!= rco->getMaxContents()) {
+
+					if (rco->getContents() + newRcno->getContents()
+							<= rco->getMaxContents()) {
+
+						rco->transferContents(player, newRcno);
+
+						makeNewResource = false;
+
+						rco->unlock();
+
+						unlock();
+
+						return rco;
+					} else {
+
+						int diff =
+								(rco->getContents() + newRcno->getContents())
+										- rco->getMaxContents();
+
+						rco->setContents(rco->getMaxContents());
+
+						newRcno->setContents(newRcno->getContents() - diff);
+
+						rco->sendDeltas(player);
+
+						rco->setUpdated(true);
+					}
+				}
+				rco->unlock();
+			} catch (...) {
+
+				rco->unlock();
+
+			}
+		}
+	}
+
+	if (makeNewResource) {
+		// NOTE: Figure out how to get max inventory size...
+		if (inventory->getObjectCount() >= 80) {
+			ChatSystemMessage* sysMessage = new ChatSystemMessage("survey", "no_inv_spc");
+			player->sendMessage(sysMessage);
+
+			unlock();
+			return rco;
+
+		} else {
+
+			player->addInventoryItem(newRcno);
+
+			newRcno->sendTo(player);
+
+			newRcno->setPersistent(false);
+		}
+
+	}
+	unlock();
+	return newRcno;
+}
+
+string ResourceManagerImplementation::getCurrentNameFromType(string type){
+
+	ResourceTemplate* resTemp;
+
+	for(int i = 0; i < resourceMap->size(); ++i){
+
+		resTemp = resourceMap->get(i);
+
+		if(resTemp->getType() == type){
+
+			if(resTemp->getSpawnSize() == 1)
+				return resTemp->getName();
+
+		}
+
+	}
+	return "";
 }
 
 void ResourceManagerImplementation::setResourceData(
@@ -1402,6 +1558,8 @@ void ResourceManagerImplementation::createResource(string restype, string pool, 
 void ResourceManagerImplementation::generateResourceStats(ResourceTemplate* resource) {
 	string resname;
 
+	int stat1, stat2, stat3, stat4, stat5, stat6, stat7, stat8, stat9, stat10, stat11;
+
 	try {
 		string query = "SELECT * FROM resource_tree WHERE resource_type = \'" +
 		resource->getType() + "\'";
@@ -1447,41 +1605,38 @@ void ResourceManagerImplementation::generateResourceStats(ResourceTemplate* reso
 				resource->setAtt10Stat(0);
 				resource->setAtt11Stat(0);
 
-				setAttStat(resource, res->getString(13), (System::random(res->getInt(25) - res->getInt(24)) + res->getInt(24)));
-				setAttStat(resource, res->getString(14), (System::random(res->getInt(27) - res->getInt(26)) + res->getInt(26)));
-				setAttStat(resource, res->getString(15), (System::random(res->getInt(29) - res->getInt(28)) + res->getInt(28)));
-				setAttStat(resource, res->getString(16), (System::random(res->getInt(31) - res->getInt(30)) + res->getInt(30)));
-				setAttStat(resource, res->getString(17), (System::random(res->getInt(33) - res->getInt(32)) + res->getInt(32)));
-				setAttStat(resource, res->getString(18), (System::random(res->getInt(35) - res->getInt(34)) + res->getInt(34)));
-				setAttStat(resource, res->getString(19), (System::random(res->getInt(37) - res->getInt(36)) + res->getInt(36)));
-				setAttStat(resource, res->getString(20), (System::random(res->getInt(39) - res->getInt(38)) + res->getInt(38)));
-				setAttStat(resource, res->getString(21), (System::random(res->getInt(41) - res->getInt(40)) + res->getInt(40)));
-				setAttStat(resource, res->getString(22), (System::random(res->getInt(43) - res->getInt(42)) + res->getInt(42)));
-				setAttStat(resource, res->getString(23), (System::random(res->getInt(45) - res->getInt(44)) + res->getInt(44)));
+				stat1 =  randomize(res->getInt(24), res->getInt(25));
+				setAttStat(resource, res->getString(13), stat1);
 
-				/*resource->setAtt1(res->getString(13));
-				resource->setAtt2(res->getString(14));
-				resource->setAtt3(res->getString(15));
-				resource->setAtt4(res->getString(16));
-				resource->setAtt5(res->getString(17));
-				resource->setAtt6(res->getString(18));
-				resource->setAtt7(res->getString(19));
-				resource->setAtt8(res->getString(20));
-				resource->setAtt9(res->getString(21));
-				resource->setAtt10(res->getString(22));
-				resource->setAtt11(res->getString(23));
+				stat2 =  randomize(res->getInt(26), res->getInt(27));
+				setAttStat(resource, res->getString(14), stat2);
 
-				resource->setAtt1Stat((System::random(res->getInt(25) - res->getInt(24)) + res->getInt(24)));
-				resource->setAtt2Stat((System::random(res->getInt(27) - res->getInt(26)) + res->getInt(26)));
-				resource->setAtt3Stat((System::random(res->getInt(29) - res->getInt(28)) + res->getInt(28)));
-				resource->setAtt4Stat((System::random(res->getInt(31) - res->getInt(30)) + res->getInt(30)));
-				resource->setAtt5Stat((System::random(res->getInt(33) - res->getInt(32)) + res->getInt(32)));
-				resource->setAtt6Stat((System::random(res->getInt(35) - res->getInt(34)) + res->getInt(34)));
-				resource->setAtt7Stat((System::random(res->getInt(37) - res->getInt(36)) + res->getInt(36)));
-				resource->setAtt8Stat((System::random(res->getInt(39) - res->getInt(38)) + res->getInt(38)));
-				resource->setAtt9Stat((System::random(res->getInt(41) - res->getInt(40)) + res->getInt(40)));
-				resource->setAtt10Stat((System::random(res->getInt(43) - res->getInt(42)) + res->getInt(42)));
-				resource->setAtt11Stat((System::random(res->getInt(45) - res->getInt(44)) + res->getInt(44)));*/
+				stat3 =  randomize(res->getInt(28), res->getInt(29));
+				setAttStat(resource, res->getString(15), stat3);
+
+				stat4 =  randomize(res->getInt(30), res->getInt(31));
+				setAttStat(resource, res->getString(16), stat4);
+
+				stat5 =  randomize(res->getInt(32), res->getInt(33));
+				setAttStat(resource, res->getString(17), stat5);
+
+				stat6 =  randomize(res->getInt(34), res->getInt(35));
+				setAttStat(resource, res->getString(18), stat6);
+
+				stat7 =  randomize(res->getInt(36), res->getInt(37));
+				setAttStat(resource, res->getString(19), stat7);
+
+				stat8 =  randomize(res->getInt(38), res->getInt(39));
+				setAttStat(resource, res->getString(20), stat8);
+
+				stat9 =  randomize(res->getInt(40), res->getInt(41));
+				setAttStat(resource, res->getString(21), stat9);
+
+				stat10 =  randomize(res->getInt(42), res->getInt(43));
+				setAttStat(resource, res->getString(22), stat10);
+
+				stat11 =  randomize(res->getInt(44), res->getInt(45));
+				setAttStat(resource, res->getString(23), stat11);
 
 				resource->setContainer(res->getString(46));
 				resource->setContainerCRC(res->getUnsignedInt(47));
@@ -1502,6 +1657,27 @@ void ResourceManagerImplementation::generateResourceStats(ResourceTemplate* reso
 		cout << "Resource Database error 2 generateResourceStats" << endl;
 
 	}
+}
+
+int ResourceManagerImplementation::randomize(int min, int max) {
+
+	if(min == 0 && max == 0)
+		return 0;
+
+	float num = System::random(int(spawnThrottling + (.1f * spawnThrottling)));
+	float realPercentage = num / float(spawnThrottling + (.1f * spawnThrottling));
+
+	int value = int(float((max - min) * realPercentage) + min);
+
+	/*if(realPercentage > 0)
+		cout << "Value = " << value << "  Min = " << min << "  Max = " << max << "  realPercentage = " << realPercentage << "  Percentage = " << num << endl;
+
+	if(num > spawnThrottling)
+		tempOver++;
+	else
+		tempUnder++;*/
+
+	return value;
 }
 
 void ResourceManagerImplementation::setAttStat(ResourceTemplate* resource, string statTitle, int stat){

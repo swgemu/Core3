@@ -42,51 +42,39 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef RADIALMANAGER_H_
-#define RADIALMANAGER_H_
+#ifndef CREATUREREMOVEEVENT_H_
+#define CREATUREREMOVEEVENT_H_
 
-#include "engine/engine.h"
+#include "../../../objects/creature/CreatureImplementation.h"
 
-class RadialItem;
-class MountCreature;
-class ObjectMenuResponse;
-class Player;
-class SceneObject;
-class GuildTerminal;
-class SurveyTool;
-class CraftingTool;
-class Weapon;
-class Armor;
+class CreatureRemoveEvent : public Event {
 
-class RadialManager {
-
-private:
-	ObjectMenuResponse* parseDefaults(Player* player, uint64 objectid, Packet* pack);
+	Creature* creo;
 
 public:
-	RadialManager();
+	CreatureRemoveEvent(Creature* cr) : Event() {
+		creo = cr;
 
-	void handleRadialRequest(Player* player, Packet* pack);
-	void handleRadialSelect(Player* player, Packet* pack);
+	}
 
-	void sendDefaultRadialResponse(Player* player, ObjectMenuResponse* omr);
-	void sendRadialResponseForBazaar(uint64 objectId, Player* player);
-	void sendRadialResponseForBank(uint64 objectId, Player* player);
+	bool activate() {
+		try {
 
-	void handleSelection(int radialID, Player* player, SceneObject* obj);
-	void handleVehicleStore(SceneObject* obj);
-	void handleVehicleGenerate(SceneObject* obj);
-	void handleTrade(Player* player, SceneObject* obj);
-	void handleWearableColorChange(Player* player, SceneObject* obj);
-	void handleSlicing(Player* player, SceneObject* obj);
-	void handleRepair(Player* player, SceneObject* obj);
-	void handleRemovePowerup(Player* player, SceneObject* obj);
-	void handleOpenCraftingToolHopper(Player* player, SceneObject* obj);
-	void handleHarvest(Player* player, SceneObject* obj, int type);
+			creo->wlock();
 
-	void sendRadialResponseForSurveyTools(Player* player, SurveyTool* surveyTool, ObjectMenuResponse* omr);
-	void sendRadialResponseForSurveyToolRange(Player* player, SceneObject* obj);
+			creo->unload();
+
+			creo->queueRespawn();
+
+			creo->unlock();
+
+		} catch (...) {
+
+			creo->unlock();
+		}
+
+		return true;
+	}
 
 };
-
-#endif /*RADIALMANAGER_H_*/
+#endif /*CREATUREREMOVEEVENT_H_*/

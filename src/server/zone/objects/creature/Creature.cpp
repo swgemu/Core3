@@ -519,12 +519,50 @@ void Creature::setRespawnTimer(unsigned int seconds) {
 		((CreatureImplementation*) _impl)->setRespawnTimer(seconds);
 }
 
-void Creature::setLootCreated(bool value) {
+bool Creature::hasOrganicResources() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 44);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((CreatureImplementation*) _impl)->hasOrganicResources();
+}
+
+void Creature::addPlayerToHarvestList(string& firstName) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 45);
+		method.addAsciiParameter(firstName);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureImplementation*) _impl)->addPlayerToHarvestList(firstName);
+}
+
+bool Creature::canHarvest(string& firstName) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 46);
+		method.addAsciiParameter(firstName);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((CreatureImplementation*) _impl)->canHarvest(firstName);
+}
+
+void Creature::setLootCreated(bool value) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 47);
 		method.addBooleanParameter(value);
 
 		method.executeWithVoidReturn();
@@ -658,6 +696,15 @@ Packet* CreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		setRespawnTimer(inv->getUnsignedIntParameter());
 		break;
 	case 44:
+		resp->insertBoolean(hasOrganicResources());
+		break;
+	case 45:
+		addPlayerToHarvestList(inv->getAsciiParameter(_param0_addPlayerToHarvestList__string_));
+		break;
+	case 46:
+		resp->insertBoolean(canHarvest(inv->getAsciiParameter(_param0_canHarvest__string_)));
+		break;
+	case 47:
 		setLootCreated(inv->getBooleanParameter());
 		break;
 	default:
@@ -817,6 +864,18 @@ void CreatureAdapter::setType(int tp) {
 
 void CreatureAdapter::setRespawnTimer(unsigned int seconds) {
 	return ((CreatureImplementation*) impl)->setRespawnTimer(seconds);
+}
+
+bool CreatureAdapter::hasOrganicResources() {
+	return ((CreatureImplementation*) impl)->hasOrganicResources();
+}
+
+void CreatureAdapter::addPlayerToHarvestList(string& firstName) {
+	return ((CreatureImplementation*) impl)->addPlayerToHarvestList(firstName);
+}
+
+bool CreatureAdapter::canHarvest(string& firstName) {
+	return ((CreatureImplementation*) impl)->canHarvest(firstName);
 }
 
 void CreatureAdapter::setLootCreated(bool value) {

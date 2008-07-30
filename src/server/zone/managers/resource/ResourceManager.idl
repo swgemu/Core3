@@ -72,4 +72,6 @@ interface ResourceManager {
 	void getResourceContainerName(const string str, string name);
 
 	void printResource(string resname);
+
+	ResourceContainer getOrganicResource(Player player, string type, int amount);
 }

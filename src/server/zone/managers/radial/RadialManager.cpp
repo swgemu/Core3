@@ -1,44 +1,44 @@
 /*
 Copyright (C) 2007 <SWGEmu>
- 
+
 This File is part of Core3.
- 
-This program is free software; you can redistribute 
-it and/or modify it under the terms of the GNU Lesser 
+
+This program is free software; you can redistribute
+it and/or modify it under the terms of the GNU Lesser
 General Public License as published by the Free Software
-Foundation; either version 2 of the License, 
+Foundation; either version 2 of the License,
 or (at your option) any later version.
- 
-This program is distributed in the hope that it will be useful, 
-but WITHOUT ANY WARRANTY; without even the implied warranty of 
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 See the GNU Lesser General Public License for
 more details.
- 
-You should have received a copy of the GNU Lesser General 
+
+You should have received a copy of the GNU Lesser General
 Public License along with this program; if not, write to
 the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
- 
-Linking Engine3 statically or dynamically with other modules 
-is making a combined work based on Engine3. 
-Thus, the terms and conditions of the GNU Lesser General Public License 
+
+Linking Engine3 statically or dynamically with other modules
+is making a combined work based on Engine3.
+Thus, the terms and conditions of the GNU Lesser General Public License
 cover the whole combination.
- 
-In addition, as a special exception, the copyright holders of Engine3 
-give you permission to combine Engine3 program with free software 
-programs or libraries that are released under the GNU LGPL and with 
-code included in the standard release of Core3 under the GNU LGPL 
-license (or modified versions of such code, with unchanged license). 
-You may copy and distribute such a system following the terms of the 
-GNU LGPL for Engine3 and the licenses of the other code concerned, 
-provided that you include the source code of that other code when 
+
+In addition, as a special exception, the copyright holders of Engine3
+give you permission to combine Engine3 program with free software
+programs or libraries that are released under the GNU LGPL and with
+code included in the standard release of Core3 under the GNU LGPL
+license (or modified versions of such code, with unchanged license).
+You may copy and distribute such a system following the terms of the
+GNU LGPL for Engine3 and the licenses of the other code concerned,
+provided that you include the source code of that other code when
 and as the GNU LGPL requires distribution of source code.
- 
-Note that people who make modified versions of Engine3 are not obligated 
-to grant this special exception for their modified versions; 
-it is their choice whether to do so. The GNU Lesser General Public License 
-gives permission to release a modified version without this exception; 
-this exception also makes it possible to release a modified version 
+
+Note that people who make modified versions of Engine3 are not obligated
+to grant this special exception for their modified versions;
+it is their choice whether to do so. The GNU Lesser General Public License
+gives permission to release a modified version without this exception;
+this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
@@ -67,65 +67,65 @@ void RadialManager::handleRadialRequest(Player* player, Packet* pack) {
 
 	uint64 objectid = pack->parseLong();
 	uint64 playerid = pack->parseLong();
-		
+
 	ObjectMenuResponse* omr;
 	omr = parseDefaults(player, objectid, pack);
-	
+
 	Zone* zone = player->getZone();
-	
+
 	if (zone == NULL) {
 		delete omr;
 		return;
 	}
-	
-	SceneObject* object = zone->lookupObject(objectid); 
-	
+
+	SceneObject* object = zone->lookupObject(objectid);
+
 	if (object == NULL)
 		object = player->getPlayerItem(objectid);
-	
+
 	if (object == NULL) {
 		sendDefaultRadialResponse(player, omr);
-	} else	
+	} else
 		object->sendRadialResponseTo(player, omr);
 }
 
 void RadialManager::handleRadialSelect(Player* player, Packet* pack) {
     SceneObject* obj = NULL;
-        
+
 	try {
 		player->wlock();
 
 		uint64 objectID = pack->parseLong();
 		uint8 radialID = pack->parseByte();
-		
+
 		Zone* zone = player->getZone();
-		
+
 		if (zone == NULL) {
 			player->unlock();
 			return;
 		}
 
 		obj = zone->lookupObject(objectID);
-		
+
 		//TODO: Get a bazaar object to pass to the next functions
 		BazaarManager* bazaarManager = zone->getZoneServer()->getBazaarManager();
-		
+
 		if (bazaarManager->isBazaarTerminal(objectID)) {
 			sendRadialResponseForBazaar(objectID, player);
-			
+
 			player->unlock();
 			return;
 		}
 
 		BankManager* bankManager = zone->getZoneServer()->getBankManager();
-		
+
 		if (bankManager->isBankTerminal(objectID)) {
 			sendRadialResponseForBank(objectID, player);
-			
+
 			player->unlock();
 			return;
 		}
-		
+
 		if (obj == NULL) {
 			obj = player->getInventoryItem(objectID);
 
@@ -135,11 +135,11 @@ void RadialManager::handleRadialSelect(Player* player, Packet* pack) {
 			if (obj == NULL) {
 				player->unlock();
 				return;
-			}    			
+			}
 		}
 
 		handleSelection(radialID, player, obj);
-		
+
 	} catch (...) {
 		cout << "unreported exception on ZonePacketHandler:::handleUseItem(Message* pack)\n";
 		player->unlock();
@@ -149,7 +149,7 @@ void RadialManager::handleRadialSelect(Player* player, Packet* pack) {
 void RadialManager::handleSelection(int radialID, Player* player, SceneObject* obj) {
 	// Pre: player is wlocked, obj is unlocked
 	// Post: player and obj unlocked
-	
+
 	switch (radialID) {
 	case 7: // EXAMINE
 		break;
@@ -161,23 +161,23 @@ void RadialManager::handleSelection(int radialID, Player* player, SceneObject* o
 	case 20: // ITEM_USE
 		obj->useObject(player);
 		break;
-	case 35:  // LOOT 
-		player->lootCorpse(); 
-		break; 
-	case 36:  // LOOT_ALL 
-		player->lootCorpse(true); 
-		break; 
+	case 35:  // LOOT
+		player->lootCorpse();
+		break;
+	case 36:  // LOOT_ALL
+		player->lootCorpse(true);
+		break;
 	case 45: // Open vendor
 		sendRadialResponseForBazaar(obj->getObjectID(), player);
 		break;
 	case 60: // VEHICLE_GENERATE
 		player->unlock();
-		
+
 		handleVehicleGenerate(obj);
 		return;
 	case 61: // VEHICLE_STORE
 		player->unlock();
-		
+
 		handleVehicleStore(obj);
 		return;
 	case 68: // SERVER_MENU1 using to change color on wearables (temporary)
@@ -192,6 +192,15 @@ void RadialManager::handleSelection(int radialID, Player* player, SceneObject* o
 	case 71: // REMOVE POWERUP
 		handleRemovePowerup(player, obj);
 		break;
+	case 108: // Harvest Meat
+		handleHarvest(player, obj, 1);
+		break;
+	case 109: // Harvest Hide
+		handleHarvest(player, obj, 2);
+		break;
+	case 110: // Harvest Bone
+		handleHarvest(player, obj, 3);
+		break;
 	case 130: // Crafting tool hopper item retrieval
 		handleOpenCraftingToolHopper(player, obj);
 		break;
@@ -199,6 +208,9 @@ void RadialManager::handleSelection(int radialID, Player* player, SceneObject* o
 		break;
 	case 137: // SURVEY_TOOL_SET_RANGE
 		sendRadialResponseForSurveyToolRange(player, obj);
+		break;
+	case 148: // Harvest
+		handleHarvest(player, obj, 0);
 		break;
 	case 187: // SERVER_GUILD_INFO
 		break;
@@ -214,7 +226,7 @@ void RadialManager::handleSelection(int radialID, Player* player, SceneObject* o
 		//cout << "Unkown radial selection recieved:" << radialID << "\n";
 		break;
 	}
-	
+
 	player->unlock();
 }
 
@@ -228,18 +240,18 @@ ObjectMenuResponse* RadialManager::parseDefaults(Player* player, uint64 objectid
 		uint8 parentid = pack->parseByte();
 		uint8 radialid = pack->parseByte();
 		uint8 callback = pack->parseByte();
-		
+
 		//if (radialid == 20)
 			callback = 3;
-		
+
 		pack->shiftOffset(4); // shift unicode command
 
-		omr->addRadialItem(parentid, radialid, callback);	
+		omr->addRadialItem(parentid, radialid, callback);
 	}
 
 	uint8 counter = pack->parseByte();
 	omr->setCounter(counter);
-	
+
 	return omr;
 }
 
@@ -251,24 +263,24 @@ void RadialManager::sendDefaultRadialResponse(Player* player, ObjectMenuResponse
 
 void RadialManager::sendRadialResponseForBazaar(uint64 objectId, Player* player) {
 	Zone* zone = player->getZone();
-	
+
 	BazaarManager* bazaarManager = zone->getZoneServer()->getBazaarManager();
-	
+
 	RegionBazaar* bazaar = bazaarManager->getBazaar(objectId);
-	
+
 	if (bazaar != NULL)
 		bazaar->newBazaarRequest(objectId, player, player->getZoneID());
-	
+
 }
 
 void RadialManager::sendRadialResponseForBank(uint64 objectId, Player* player) {
 	Zone* zone = player->getZone();
-	
+
 	SuiBankTransferBox* sui = new SuiBankTransferBox(player, 0xD65E);
-	
+
 	sui->addCash(player->getCashCredits());
 	sui->addBank(player->getBankCredits());
-	
+
 	player->addSuiBox(sui);
 	player->sendMessage(sui->generateMessage());
 }
@@ -278,31 +290,31 @@ void RadialManager::handleVehicleStore(SceneObject* obj) {
 		SceneObject* mount = ((IntangibleObject*)obj)->getWorldObject();
 		if (mount == NULL)
 			return;
-		
+
 		if (!mount->isNonPlayerCreature())
 			return;
-		
+
 		if (!((Creature*)mount)->isMount())
 			return;
-		
+
 		try {
 			mount->wlock();
-		
+
 			((MountCreature*)mount)->store();
-		
+
 			mount->unlock();
 		} catch (...) {
 			mount->unlock();
 		}
 		return;
 	}
-	
+
 	if (!obj->isNonPlayerCreature())
 		return;
-	
+
 	if (!((Creature*)obj)->isMount())
 		return;
-	
+
 	try {
 		obj->wlock();
 
@@ -326,15 +338,15 @@ void RadialManager::handleVehicleGenerate(SceneObject* obj) {
 
 	if (!mount->isNonPlayerCreature())
 		return;
-	
+
 	if (!((Creature*)mount)->isMount())
 		return;
 
 	try {
 		mount->wlock();
-		
+
 		((MountCreature*)mount)->call();
-		
+
 		mount->unlock();
 	} catch (...) {
 		cout << "Unreported exception caught in RadialManager::handleVehicleGenerate\n";
@@ -345,22 +357,22 @@ void RadialManager::handleVehicleGenerate(SceneObject* obj) {
 void RadialManager::handleTrade(Player* player, SceneObject* obj) {
 	if (!obj->isPlayer())
 		return;
-	
+
 	Player* target = (Player*)obj;
 
 	try {
 		target->wlock(player);
-			
+
 		uint64 requestedID = target->getTradeRequestedPlayer();
 		player->setTradeRequestedPlayer(obj->getObjectID());
-		
+
 		if (requestedID == player->getObjectID()) {
 			BeginTradeMessage* msg = new BeginTradeMessage(target->getObjectID());
 			player->sendMessage(msg);
-			
+
 			BeginTradeMessage* msg2 = new BeginTradeMessage(player->getObjectID());
 			target->sendMessage(msg2);
-			
+
 		} else {
 			Player* target = (Player*)obj;
 
@@ -368,7 +380,7 @@ void RadialManager::handleTrade(Player* player, SceneObject* obj) {
 			msg << player->getCharacterName().c_str() << " requested a trade.";
 			target->sendSystemMessage(msg.str());
 		}
-		
+
 		target->unlock();
 	} catch (Exception& e) {
 		target->unlock();
@@ -382,37 +394,37 @@ void RadialManager::handleTrade(Player* player, SceneObject* obj) {
 void RadialManager::handleWearableColorChange(Player* player, SceneObject* obj) {
 	if (!obj->isTangible())
 		return;
-		
+
 	if (player->getTradeSize() != 0)
 		return;
-	
+
 	TangibleObject* tano = (TangibleObject*) obj;
-	
+
 	if (!tano->isArmor())
 		return;
-	
+
 	Armor* wearable = (Armor*) tano;
-	
+
 	if (player->getInventoryItem(wearable->getObjectID()) == NULL)
 		return;
-	
+
 	SuiColorPicker* sui = new SuiColorPicker(player, wearable->getObjectID(), 0xBABE);
 
 	player->addSuiBox(sui);
 	player->sendMessage(sui->generateMessage());
-	
+
 	return;
 }
 
 void RadialManager::handleSlicing(Player* player, SceneObject* obj) {
 	if (!obj->isTangible())
 		return;
-		
+
 	if (player->getTradeSize() != 0)
 		return;
-	
+
 	TangibleObject* tano = (TangibleObject*) obj;
-	
+
 	if (tano->isArmor()) {
 		Armor* armor = (Armor*) tano;
 		if (!armor->isSliced())
@@ -427,12 +439,12 @@ void RadialManager::handleSlicing(Player* player, SceneObject* obj) {
 void RadialManager::handleRepair(Player* player, SceneObject* obj) {
 	if (!obj->isTangible())
 		return;
-		
+
 	if (player->getTradeSize() != 0)
 		return;
-	
+
 	TangibleObject* tano = (TangibleObject*) obj;
-	
+
 	if (tano->isArmor()) {
 		Armor* armor = (Armor*) tano;
 		armor->repairArmor(player);
@@ -445,12 +457,12 @@ void RadialManager::handleRepair(Player* player, SceneObject* obj) {
 void RadialManager::handleRemovePowerup(Player* player, SceneObject* obj) {
 	if (!obj->isTangible())
 		return;
-		
+
 	if (player->getTradeSize() != 0)
 		return;
-	
+
 	TangibleObject* tano = (TangibleObject*) obj;
-	
+
 	Weapon* weapon = (Weapon*) tano;
 	if (weapon->hasPowerup())
 		weapon->removePowerup(player, false);
@@ -461,56 +473,158 @@ void RadialManager::sendRadialResponseForSurveyTools(Player* player, SurveyTool*
 	omr->addRadialItem(0, 136, 3, "@sui:tool_options");
 	omr->addRadialItem(4, 137, 3, "@sui:survey_range");
 	omr->finish();
-	
+
 	player->sendMessage(omr);
 }
 
 void RadialManager::sendRadialResponseForSurveyToolRange(Player* player, SceneObject* obj) {
 	string skillBox = "crafting_artisan_novice";
-	
+
 	if (!player->hasSkillBox(skillBox)) {
 		player->sendSystemMessage("You are confused by this device.");
 		return;
 	}
-	
+
 	string surveying = "surveying";
-	
+
 	int surveyMod = player->getSkillMod(surveying);
-	
+
 	SuiListBox* suiToolRangeBox = new SuiListBox(player, 0x7259);
 	suiToolRangeBox->setPromptTitle("@base_player:swg");
 	suiToolRangeBox->setPromptText("@survey:select_range");
-	
+
 	if (surveyMod >= 0)
 		suiToolRangeBox->addMenuItem("64m x 3pts");
-	
+
 	if (surveyMod > 20)
 		suiToolRangeBox->addMenuItem("128m x 4pts");
-	
+
 	if (surveyMod > 40)
 		suiToolRangeBox->addMenuItem("192m x 4pts");
-	
+
 	if (surveyMod > 60)
 		suiToolRangeBox->addMenuItem("256m x 5pts");
 
 	if (surveyMod > 80)
 		suiToolRangeBox->addMenuItem("320m x 5pts");
-	
+
 	player->addSuiBox(suiToolRangeBox);
 	player->sendMessage(suiToolRangeBox->generateMessage());
-	
+
 	player->setSurveyTool((SurveyTool*) obj);
 }
 void RadialManager::handleOpenCraftingToolHopper(Player* player, SceneObject* obj) {
 	if (!obj->isTangible())
 		return;
-	
+
 	CraftingTool* ct = (CraftingTool*) obj;
 
 	if(ct != NULL){
-	
-		ct->retriveHopperItem(player);	
-		
+
+		ct->retriveHopperItem(player);
+
+	}
+}
+
+void RadialManager::handleHarvest(Player* player, SceneObject* obj, int type) {
+
+	Creature* creature = (Creature*)obj;
+
+	ResourceManager* resourceManager =
+			player->getZone()->getZoneServer()->getResourceManager();
+	bool proceed = false;
+	int loop = 0;
+	string harvestType = "";
+	int harvestAmount = 0;
+
+	if (creature == NULL)
+		return;
+
+	CreatureObject* creatureObj = (CreatureObject*)creature;
+
+	if(creatureObj == NULL)
+		return;
+
+	try {
+		creature->lock();
+		if (creature->isDead() && creature->isLootOwner(player)
+				&& creature->canHarvest(player->getFirstName())) {
+
+			if (type == 0)
+				type = System::random(2) + 1;
+
+			while (!proceed) {
+
+				if (loop > 4) {
+					creature->unlock();
+					return;
+				}
+
+				switch (type) {
+				case 1:
+					if (creatureObj->getMeatMax() != 0) {
+						harvestType = creatureObj->getMeatType();
+						harvestAmount = creatureObj->getMeatMax();
+						proceed = true;
+					}
+					break;
+				case 2:
+					if (creatureObj->getHideMax() != 0)
+						harvestType = creatureObj->getHideType();
+					harvestAmount = creatureObj->getHideMax();
+					proceed = true;
+					break;
+				case 3:
+					if (creatureObj->getBoneMax() != 0)
+						harvestType = creatureObj->getBoneType();
+					harvestAmount = creatureObj->getBoneMax();
+					proceed = true;
+					break;
+				}
+
+				if (!proceed) {
+
+					type++;
+
+					if (type > 3)
+						type = 1;
+				}
+
+				loop++;
+			}
+
+			harvestAmount = int(harvestAmount * float(player->getSkillMod(
+					"creature_harvesting") / 100.0f));
+
+			ResourceContainer* newResource =
+					resourceManager->getOrganicResource(player, harvestType,
+							harvestAmount);
+
+			if (newResource == NULL) {
+				creature->unlock();
+				return;
+			}
+
+			stringstream ss;
+
+			ss << "You have harvested " << harvestAmount << " unit(s) of "
+					<< newResource->getClassSeven() << ".";
+
+			player->sendSystemMessage(ss.str());
+
+			creature->addPlayerToHarvestList(player->getFirstName());
+
+			string xpType = "scout";
+			int xp = int(creatureObj->getXP() * .1f);
+
+			player->addXp(xpType, xp, true);
+
+		}
+		creature->unlock();
+	} catch (...) {
+
+		creature->unlock();
+
 	}
 }
 
