@@ -71,6 +71,8 @@ public:
 
 	void unload();
 
+	void savePlayerState(bool doSchedule = false);
+
 	void disconnect(bool closeClient = true, bool doLock = true);
 
 	void logout(bool doLock = true);
@@ -592,6 +594,8 @@ public:
 	void reload(ZoneClient* client);
 
 	void unload();
+
+	void savePlayerState(bool doSchedule);
 
 	void disconnect(bool closeClient, bool doLock);
 

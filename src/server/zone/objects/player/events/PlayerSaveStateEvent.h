@@ -42,106 +42,39 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef ZONEIMPLEMENTATION_H_
-#define ZONEIMPLEMENTATION_H_
+#ifndef PLAYERSAVESTATEEVENT_H_
+#define PLAYERSAVESTATEEVENT_H_
 
-#include "engine/engine.h"
+#include "../Player.h"
 
-#include "managers/planet/HeightMap.h"
-
-class ZoneProcessServerImplementation;
-
-class ZoneServer;
-
-class CreatureManager;
-
-class CombatManager;
-class ChatManager;
-
-class RadialManager;
-
-class PlanetManager;
-
-class SceneObject;
-
-class ZoneImplementation : public ZoneServant, public QuadTree {
-	int zoneID;
-
-	ZoneProcessServerImplementation* processor;
-
-	ZoneServer* server;
-	ScheduleManager* scheduler;
-
-	CreatureManager* creatureManager;
-
-	RadialManager* radialManager;
-
-	PlanetManager* planetManager;
-
-	HeightMap heightMap;
-
-	Time galacticTime;
-
-	uint32 weatherId;
-	float weatherCloudX, weatherCloudY;
+class PlayerSaveStateEvent : public Event {
+	ManagedReference<Player> player;
 
 public:
-	ZoneImplementation(ZoneServer* serv, ZoneProcessServerImplementation* srv, int id);
-
-	~ZoneImplementation() {
+	PlayerSaveStateEvent(Player* pl) : Event(300000) {
+		player = pl;
 	}
 
-	void startManagers();
+	bool activate() {
+		try {
+			player->wlock();
 
-	void stopManagers();
+			if (!player->isOffline())
+				player->savePlayerState(true);
 
-	void registerObject(SceneObject* obj);
+			player->unlock();
+		} catch (...) {
+			player->error("Unreported Exception caught in PlayerSaveStateEvent::activate");
+			player->clearDisconnectEvent();
 
-	SceneObject* lookupObject(uint64 oid);
+			player->unlock();
+		}
 
-	SceneObject* deleteObject(uint64 oid);
-	SceneObject* deleteObject(SceneObject* obj);
+		player = NULL;
 
-	SceneObject* deleteCachedObject(SceneObject* obj);
-
-	// zone cell methods
-	float getHeight(float x, float y);
-
-	// setters and getters
-	inline int getZoneID() {
-		return zoneID;
-	}
-
-	inline ZoneServer* getZoneServer() {
-		return server;
-	}
-
-	inline CreatureManager* getCreatureManager() {
-		return creatureManager;
-	}
-
-	inline PlanetManager* getPlanetManager() {
-		return planetManager;
-	}
-
-	ChatManager* getChatManager();
-
-	inline uint64 getGalacticTime() {
-		return (uint64) galacticTime.miliDifference() / 1000;
-	}
-
-	inline uint32 getWeatherId() {
-		return weatherId;
-	}
-
-	inline float getWeatherCloudX() {
-		return weatherCloudX;
-	}
-
-	inline float getWeatherCloudY() {
-		return weatherCloudY;
+		return true;
 	}
 
 };
 
-#endif /*ZONEIMPLEMENTATION_H_*/
+#endif /* PLAYERSAVESTATEEVENT_H_ */

@@ -77,6 +77,7 @@ which carries forward this exception.
 
 #include "events/PlayerLogoutEvent.h"
 #include "events/PlayerDisconnectEvent.h"
+#include "events/PlayerSaveStateEvent.h"
 #include "events/PlayerRecoveryEvent.h"
 #include "events/PlayerDigestEvent.h"
 #include "events/CommandQueueActionEvent.h"
@@ -140,6 +141,11 @@ PlayerImplementation::~PlayerImplementation() {
 		hairObj = NULL;
 	}
 
+	if (playerSaveStateEvent != NULL) {
+		delete playerSaveStateEvent;
+		playerSaveStateEvent = NULL;
+	}
+
 	if (centerOfBeingEvent != NULL) {
 		server->removeEvent(centerOfBeingEvent);
 
@@ -181,6 +187,8 @@ void PlayerImplementation::init() {
 
 	disconnectEvent = NULL;
 	logoutEvent = NULL;
+
+	playerSaveStateEvent = NULL;
 
 	recoveryEvent = new PlayerRecoveryEvent(this);
 	digestEvent = new PlayerDigestEvent(this);
@@ -322,11 +330,13 @@ void PlayerImplementation::load(ZoneClient* client) {
 		Zone* zone = server->getZoneServer()->getZone(zoneID);
 		insertToZone(zone);
 
+		playerSaveStateEvent = new PlayerSaveStateEvent(_this);
+		server->addEvent(playerSaveStateEvent, 300000);
+
+		PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
+		playerManager->updateOtherFriendlists(_this, true);
+
 		unlock();
-
-		PlayerManager* upm = server->getZoneServer()->getPlayerManager();
-		upm->updateOtherFriendlists(_this, true);
-
 	} catch (Exception& e) {
 		unlock();
 
@@ -381,6 +391,8 @@ void PlayerImplementation::reload(ZoneClient* client) {
 
 		setLoggingIn();
 
+		server->addEvent(playerSaveStateEvent, 300000);
+
 		Zone* zone = server->getZoneServer()->getZone(zoneID);
 
 		if (isInQuadTree())
@@ -390,17 +402,15 @@ void PlayerImplementation::reload(ZoneClient* client) {
 
 		clearBuffs(true);
 
-		PlayerManager* upm = server->getZoneServer()->getPlayerManager();
+		PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
 		playerObject->updateAllFriends(playerObject);
-		upm->updateOtherFriendlists(_this, true);
-
+		playerManager->updateOtherFriendlists(_this, true);
 
 		resetArmorEncumbrance();
 
 		activateRecovery();
 
 		unlock();
-
 	} catch (Exception& e) {
 		error("reconnecting in character");
 		error(e.getMessage());
@@ -427,16 +437,9 @@ void PlayerImplementation::unload() {
 	clearCombatState(); // remove the defenders
 	clearBuffs(false);
 
-	saveWaypoints(_this);
 
-	playerObject->saveFriends();
-	playerObject->saveIgnore();
-
-	//let our friends now we are out
-	PlayerManager* upm = server->getZoneServer()->getPlayerManager();
-	upm->updateOtherFriendlists(_this, false);
-
-	//end FriendStatusChange
+	PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
+	playerManager->updateOtherFriendlists(_this, false);
 
 	if (firstSampleEvent != NULL) {
 		if (firstSampleEvent->isQueued())
@@ -484,17 +487,12 @@ void PlayerImplementation::unload() {
 		mnt->unlock();
 	}
 
+	savePlayerState();
+
 	if (zone != NULL) {
 		ZoneServer* zserver = zone->getZoneServer();
 
-		ItemManager* itemManager = zserver->getItemManager();
-		itemManager->unloadPlayerItems(_this);
-
-		PlayerManager* playerManager = zserver->getPlayerManager();
-		playerManager->unload(_this);
-
-		if(isInQuadTree()) {
-
+		if (isInQuadTree()) {
 			clearDuelList();
 
 			if (isDancing())
@@ -528,6 +526,27 @@ void PlayerImplementation::unload() {
 			//zone = NULL;
 		}
 	}
+}
+
+void PlayerImplementation::savePlayerState(bool doSchedule) {
+	info("saving player state");
+
+	saveWaypoints(_this);
+
+	playerObject->saveFriends();
+	playerObject->saveIgnore();
+
+	if (zone != NULL) {
+		ZoneServer* zserver = zone->getZoneServer();
+
+		ItemManager* itemManager = zserver->getItemManager();
+		itemManager->unloadPlayerItems(_this);
+	}
+
+	if (doSchedule)
+		server->addEvent(playerSaveStateEvent, 300000);
+	else
+		server->removeEvent(playerSaveStateEvent);
 }
 
 void PlayerImplementation::logout(bool doLock) {
@@ -828,17 +847,13 @@ void PlayerImplementation::insertToZone(Zone* zone) {
 
 	try {
 		zone->lock();
-		
+
 		info("inserting to zone");
 
 		//spawning in air fix
 		if (parent == NULL)
 			 setPosition(positionX, zone->getHeight(positionX, positionY), positionY);
 
-		//Spawning-in-the-air-fix: If player is not in a ship or building, we override Z-Axis with Zero. Client is always overrding Z-Axis with TerrainMinHeight
-		if (parent == NULL)
-			setPosition(positionX, 0, positionY);
-		
 		zone->registerObject(_this);
 
 		owner->balancePacketCheckupTime();
@@ -922,6 +937,11 @@ void PlayerImplementation::updateZone(bool lightUpdate) {
 		return;
 
 	bool insert = false;
+
+	/*if (zone->getZoneID() == 8) {
+		float height = zone->getHeight(positionX, positionY);
+		cout << "(" << positionX << "," << height << "," << positionY << "\n";
+	}*/
 
 	if (isMounted())
 		updateMountPosition();
@@ -1259,10 +1279,10 @@ void PlayerImplementation::doWarp(float x, float y, float z, float randomizeDist
 
 	//positionX = x;
 	//positionY = y;
-	//positionZ = z;
+	//positionZ = zone->getHeight(x, y);;
 	//Spawning-in-the-air-fix: If player is not in a ship or building, we override Z-Axis with Zero. Client is always overrding Z-Axis with TerrainMinHeight
-		if (parent == NULL)
-			setPosition(x, 0, y);
+	if (parent == NULL)
+		setPosition(x, 0, y);
 
 
 	if (parentID != 0) {
@@ -1657,8 +1677,8 @@ void PlayerImplementation::doRecovery() {
 
 		return;
 	}
-	
-	
+
+
 	if (!isInCombat() && isOnFullHealth() && ((playerObject != NULL && isJedi() && playerObject->isOnFullForce()) || !isJedi()) && !hasStates() && !hasWounds() && !hasShockWounds()) {
 		return;
 	} else if (lastCombatAction.miliDifference() > 15000) {

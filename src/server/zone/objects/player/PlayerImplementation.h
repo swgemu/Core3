@@ -73,6 +73,7 @@ class PlayerManager;
 class ItemManager;
 class ProfessionManager;
 
+class PlayerSaveStateEvent;
 class CommandQueueAction;
 class CommandQueueActionEvent;
 class PlayerRecoveryEvent;
@@ -98,6 +99,7 @@ class PlayerImplementation : public PlayerServant {
 
 	string firstName;
 	string lastName;
+
 	string firstNameProper;
 
 	string raceFile; //race iff, defines the race file of the character being created.
@@ -116,6 +118,8 @@ class PlayerImplementation : public PlayerServant {
 
 	Event* disconnectEvent;
 	Event* logoutEvent;
+
+	PlayerSaveStateEvent* playerSaveStateEvent;
 
 	PlayerRecoveryEvent* recoveryEvent;
 	PlayerDigestEvent* digestEvent;
@@ -195,7 +199,7 @@ class PlayerImplementation : public PlayerServant {
 
 	ManagedReference<SurveyTool> surveyTool;
 	ManagedReference<SurveyTool> sampleTool;
-	
+
 	bool cancelSample;
 
 	bool surveyErrorMessage;
@@ -251,6 +255,7 @@ public:
 	void reload(ZoneClient* client);
 
 	void unload();
+	void savePlayerState(bool doSchedule = false);
 
 	void logout(bool doLock = true);
 	void userLogout(int msgCounter = 3);
@@ -1112,7 +1117,7 @@ public:
 	inline void setSampleTool(SurveyTool* sTool) {
 		sampleTool = sTool;
 	}
-	
+
 	inline void setSurveyWaypoint(WaypointObject* wpo) {
 		surveyWaypoint = wpo;
 	}
@@ -1144,7 +1149,7 @@ public:
 	inline SurveyTool* getSampleTool() {
 		return sampleTool;
 	}
-	
+
 	inline WaypointObject* getSurveyWaypoint() {
 		return surveyWaypoint;
 	}

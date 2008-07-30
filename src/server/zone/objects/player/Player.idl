@@ -96,7 +96,9 @@ interface Player implements CreatureObject {
 	
 	void load(ZoneClient client);
 	void reload(ZoneClient client);
+	
 	void unload();
+	void savePlayerState(boolean doSchedule = false);
 	
 	void disconnect(boolean closeClient = true, boolean doLock = true);
 
