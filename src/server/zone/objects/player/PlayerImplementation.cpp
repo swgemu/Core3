@@ -393,6 +393,9 @@ void PlayerImplementation::reload(ZoneClient* client) {
 		client->setPlayer(_this);
 
 		setLoggingIn();
+		
+		if (playerSaveStateEvent == NULL)
+			playerSaveStateEvent = new PlayerSaveStateEvent(_this);
 
 		server->addEvent(playerSaveStateEvent, 300000);
 
@@ -545,6 +548,9 @@ void PlayerImplementation::savePlayerState(bool doSchedule) {
 		ItemManager* itemManager = zserver->getItemManager();
 		itemManager->unloadPlayerItems(_this);
 	}
+
+	if (playerSaveStateEvent == NULL)
+		return;
 
 	if (doSchedule)
 		server->addEvent(playerSaveStateEvent, 300000);

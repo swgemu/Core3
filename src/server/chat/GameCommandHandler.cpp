@@ -468,6 +468,8 @@ void GameCommandHandler::kick(StringTokenizer tokenizer, Player * player) {
 			return;
 		}
 	}
+	
+	player->unlock();
 
 	if (name != player->getFirstName()) {
 		if (server->kickUser(name, player->getFirstName())) {
@@ -478,6 +480,8 @@ void GameCommandHandler::kick(StringTokenizer tokenizer, Player * player) {
 
 	} else
 		player->sendSystemMessage("You can't kick yourself. Use /logout please. \n");
+		
+	player->wlock();
 }
 
 void GameCommandHandler::kickArea(StringTokenizer tokenizer, Player * player) {
@@ -493,6 +497,8 @@ void GameCommandHandler::kickArea(StringTokenizer tokenizer, Player * player) {
 
 	if (zone == NULL)
 		return;
+		
+	player->unlock();
 
 	try {
 		zone->lock();
@@ -522,6 +528,8 @@ void GameCommandHandler::kickArea(StringTokenizer tokenizer, Player * player) {
 	} catch (...) {
 		zone->unlock();
 	}
+	
+	player->wlock();
 }
 
 void GameCommandHandler::printRoomTree(StringTokenizer tokenizer, Player * player) {
@@ -556,12 +564,16 @@ void GameCommandHandler::banUser(StringTokenizer tokenizer, Player * player) {
 			return;
 		}
 	}
+	
+	player->unlock();
 
 	if (server->banUser(name, player->getFirstName())) {
 		player->sendSystemMessage("player \'" + name + "\' is banned");
 	} else {
 		player->sendSystemMessage("unable to ban player \'" + name + "\'");
 	}
+	
+	player->wlock();
 }
 
 void GameCommandHandler::mutePlayer(StringTokenizer tokenizer, Player * player) {
