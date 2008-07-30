@@ -53,6 +53,15 @@ class PlayerSaveStateEvent : public Event {
 public:
 	PlayerSaveStateEvent(Player* pl) : Event(300000) {
 		player = pl;
+
+		setKeeping(true);
+	}
+
+	~PlayerSaveStateEvent() {
+		if (enQueued) {
+			cout << "ERROR: PlayerSaveStateEvent scheduled event deleted\n";
+			raise(SIGSEGV);
+		}
 	}
 
 	bool activate() {

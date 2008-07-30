@@ -142,6 +142,9 @@ PlayerImplementation::~PlayerImplementation() {
 	}
 
 	if (playerSaveStateEvent != NULL) {
+		if (playerSaveStateEvent->isQueued())
+			server->removeEvent(playerSaveStateEvent);
+
 		delete playerSaveStateEvent;
 		playerSaveStateEvent = NULL;
 	}
@@ -1428,7 +1431,7 @@ bool PlayerImplementation::doAction(CommandQueueAction* action) {
 
 	updateTarget(action->getTargetID());
 
-	action->setTarget((Player*) targetObject.get());
+	action->setTarget(targetObject.get());
 	action->setSkill(skill);
 
 	if (!action->check())

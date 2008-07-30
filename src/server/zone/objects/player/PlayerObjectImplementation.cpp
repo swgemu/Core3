@@ -66,14 +66,14 @@ PlayerObjectImplementation::PlayerObjectImplementation(Player* pl) : PlayerObjec
 	objectCRC = 0x619BAE21;
 
 	// PLAY8 operands
-	forcePower = player->getSkillMod("jedi_force_power_max");;
-	forcePowerMax = player->getSkillMod("jedi_force_power_max");;
+	forcePower = player->getSkillMod("jedi_force_power_max");
+	forcePowerMax = player->getSkillMod("jedi_force_power_max");
 	experienceListCount = 0;
 	waypointListCount = 0;
 	waypointList.setNullValue(NULL);
 	waypointList.setInsertPlan(SortedVector<WaypointObject*>::NO_DUPLICATE);
 
-	forceRegen = player->getSkillMod("jedi_force_power_regen");;
+	forceRegen = player->getSkillMod("jedi_force_power_regen");
 
 	// PLAY9 operands
 	jediState = 0x08;
@@ -96,8 +96,15 @@ PlayerObjectImplementation::~PlayerObjectImplementation() {
 		waypoint->finalize();
 	}
 
-	if(friendsList != NULL)
+	if (friendsList != NULL) {
 		friendsList->finalize();
+		friendsList = NULL;
+	}
+
+	if (ignoreList != NULL) {
+		ignoreList->finalize();
+		ignoreList = NULL;
+	}
 }
 
 void PlayerObjectImplementation::sendToOwner() {
@@ -402,7 +409,7 @@ WaypointObject* PlayerObjectImplementation::searchWaypoint(Player* player, const
 				returnWP = waypoint;
 				break;
 			}
-		} 
+		}
 	} else if (mode == 2 ) {
 		//Lookup WaypointName field
 		sName = name.c_str();
@@ -410,9 +417,9 @@ WaypointObject* PlayerObjectImplementation::searchWaypoint(Player* player, const
 
 		for (int i = 0; i < waypointList.size(); ++i) {
 			waypoint = waypointList.get(i);
-			string wpName = waypoint->getName(); 
+			string wpName = waypoint->getName();
 			String::toLower(wpName);
-		
+
 			if (wpName == sName) {
 				//string wpName = waypoint->getName();
 				returnWP = waypoint;

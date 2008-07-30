@@ -412,8 +412,6 @@ void RadialManager::handleWearableColorChange(Player* player, SceneObject* obj) 
 
 	player->addSuiBox(sui);
 	player->sendMessage(sui->generateMessage());
-
-	return;
 }
 
 void RadialManager::handleSlicing(Player* player, SceneObject* obj) {
@@ -425,14 +423,23 @@ void RadialManager::handleSlicing(Player* player, SceneObject* obj) {
 
 	TangibleObject* tano = (TangibleObject*) obj;
 
-	if (tano->isArmor()) {
-		Armor* armor = (Armor*) tano;
-		if (!armor->isSliced())
-			armor->sliceArmor(player);
-	} else if (tano->isWeapon()) {
-		Weapon* weapon = (Weapon*) tano;
-		if (!weapon->isSliced())
-			weapon->sliceWeapon(player);
+	try {
+		tano->wlock();
+
+		if (tano->isArmor()) {
+			Armor* armor = (Armor*) tano;
+			if (!armor->isSliced())
+				armor->sliceArmor(player);
+		} else if (tano->isWeapon()) {
+			Weapon* weapon = (Weapon*) tano;
+			if (!weapon->isSliced())
+				weapon->sliceWeapon(player);
+		}
+
+		tano->unlock();
+	} catch (...) {
+		cout << "unreported exception caught in RadialManageR::handleSlicing\n";
+		tano->unlock();
 	}
 }
 
@@ -445,17 +452,26 @@ void RadialManager::handleRepair(Player* player, SceneObject* obj) {
 
 	TangibleObject* tano = (TangibleObject*) obj;
 
-	if (tano->isArmor()) {
-		Armor* armor = (Armor*) tano;
-		armor->repairArmor(player);
-	} else if (tano->isWeapon()) {
-		Weapon* weapon = (Weapon*) tano;
-		weapon->repairWeapon(player);
+	try {
+		tano->wlock();
+
+		if (tano->isArmor()) {
+			Armor* armor = (Armor*) tano;
+			armor->repairArmor(player);
+		} else if (tano->isWeapon()) {
+			Weapon* weapon = (Weapon*) tano;
+			weapon->repairWeapon(player);
+		}
+
+		tano->unlock();
+	} catch (...) {
+		cout << "unreported exception caught in RadialManager::handleRepair\n";
+		tano->unlock();
 	}
 }
 
 void RadialManager::handleRemovePowerup(Player* player, SceneObject* obj) {
-	if (!obj->isTangible())
+	if (obj == NULL || !obj->isTangible())
 		return;
 
 	if (player->getTradeSize() != 0)
@@ -463,9 +479,22 @@ void RadialManager::handleRemovePowerup(Player* player, SceneObject* obj) {
 
 	TangibleObject* tano = (TangibleObject*) obj;
 
+	if (!tano->isWeapon())
+		return;
+
 	Weapon* weapon = (Weapon*) tano;
-	if (weapon->hasPowerup())
-		weapon->removePowerup(player, false);
+
+	try {
+		weapon->wlock();
+
+		if (weapon->hasPowerup())
+			weapon->removePowerup(player, false);
+
+		weapon->unlock();
+	} catch (...) {
+		cout << "unreported exception caught in RadialManager::handleRemovePowerup\n";
+		weapon->unlock();
+	}
 }
 
 
@@ -513,40 +542,49 @@ void RadialManager::sendRadialResponseForSurveyToolRange(Player* player, SceneOb
 
 	player->setSurveyTool((SurveyTool*) obj);
 }
+
 void RadialManager::handleOpenCraftingToolHopper(Player* player, SceneObject* obj) {
-	if (!obj->isTangible())
+	if (obj == NULL || !obj->isTangible())
 		return;
 
-	CraftingTool* ct = (CraftingTool*) obj;
+	TangibleObject* tano = (TangibleObject*)obj;
 
-	if(ct != NULL){
+	if (!tano->isCraftingTool())
+		return;
 
-		ct->retriveHopperItem(player);
+	CraftingTool* craftingTool = (CraftingTool*) tano;
 
+	try {
+		craftingTool->wlock();
+
+		craftingTool->retriveHopperItem(player);
+
+		craftingTool->unlock();
+	} catch (...) {
+		cout << "unreported exception caught in RadialManager::handleOpenCraftingToolHopper\n";
+		craftingTool->unlock();
 	}
 }
 
 void RadialManager::handleHarvest(Player* player, SceneObject* obj, int type) {
+	if (obj == NULL || !obj->isNonPlayerCreature() || obj == player)
+		return;
 
 	Creature* creature = (Creature*)obj;
 
 	ResourceManager* resourceManager =
 			player->getZone()->getZoneServer()->getResourceManager();
+
 	bool proceed = false;
 	int loop = 0;
 	string harvestType = "";
 	int harvestAmount = 0;
 
-	if (creature == NULL)
-		return;
-
 	CreatureObject* creatureObj = (CreatureObject*)creature;
 
-	if(creatureObj == NULL)
-		return;
-
 	try {
-		creature->lock();
+		creature->wlock(player);
+
 		if (creature->isDead() && creature->isLootOwner(player)
 				&& creature->canHarvest(player->getFirstName())) {
 
@@ -622,9 +660,8 @@ void RadialManager::handleHarvest(Player* player, SceneObject* obj, int type) {
 		}
 		creature->unlock();
 	} catch (...) {
-
+		cout << "unreported exception caught in RadialManager::handleHarvest\n";
 		creature->unlock();
-
 	}
 }
 
