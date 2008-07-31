@@ -19,19 +19,19 @@ public:
 
 	Player* remove(string& name, bool doLock = true);
 
-	int size();
+	int size(bool doLock = true);
 
 	Player* getNextValue(bool doLock = true);
 
-	Player* next();
+	Player* next(bool doLock = true);
 
 	bool hasNext(bool doLock = true);
 
 	void resetIterator(bool doLock = true);
 
-	void lock();
+	void lock(bool doLock = true);
 
-	void unlock();
+	void unlock(bool doLock = true);
 
 protected:
 	PlayerMap(DummyConstructorParameter* param);
@@ -55,19 +55,19 @@ public:
 
 	Player* remove(string& name, bool doLock);
 
-	int size();
+	int size(bool doLock);
 
 	Player* getNextValue(bool doLock);
 
-	Player* next();
+	Player* next(bool doLock);
 
 	bool hasNext(bool doLock);
 
 	void resetIterator(bool doLock);
 
-	void lock();
+	void lock(bool doLock);
 
-	void unlock();
+	void unlock(bool doLock);
 
 protected:
 	string _param0_put__string_Player_bool_;
