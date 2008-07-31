@@ -60,7 +60,7 @@ which carries forward this exception.
 #include "IgnoreList.h"
 #include "IgnoreListImplementation.h"
 
-PlayerObjectImplementation::PlayerObjectImplementation(Player* pl) : PlayerObjectServant(pl->getObjectID() + 0x0C, PLAYER) {
+PlayerObjectImplementation::PlayerObjectImplementation(Player* pl) : PlayerObjectServant(pl->getObjectID() + 0x0C, PLAYEROBJECT) {
 	player = pl;
 
 	objectCRC = 0x619BAE21;

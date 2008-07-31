@@ -88,6 +88,8 @@ TangibleObjectImplementation::TangibleObjectImplementation(CreatureObject* creat
 
 	objectCRC = tempCRC;
 	objectID = creature->getNewItemID();
+	
+	objectType = TANGIBLE;
 
 	objectSubType = tp;
 }
@@ -100,6 +102,7 @@ TangibleObjectImplementation::~TangibleObjectImplementation() {
 	}
 
 	delete itemAttributes;
+	itemAttributes = NULL;
 
 }
 

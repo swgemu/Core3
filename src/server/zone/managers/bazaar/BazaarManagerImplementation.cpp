@@ -265,16 +265,19 @@ void BazaarManagerImplementation::addSaleItem(Player* player, uint64 objectid, u
 	BazaarMap* bazaarLocations = bazaarTerminals->getBazaarMap();
 	BazaarTerminalDetails* bazaar = bazaarLocations->get(bazaarid);
 	
-	TangibleObject* obj = (TangibleObject*)player->getInventoryItem(objectid);
+	SceneObject* invObj = player->getInventoryItem(objectid);
 	
-	if (obj == NULL) {
+	if (invObj == NULL || !invObj->isTangible()) {
 		BaseMessage* msg = new ItemSoldMessage(objectid, 2);
 		player->sendMessage(msg);
 		
 		player->unlock();
 		unlock();
-		return;			
+		return;		
 	}
+	
+	TangibleObject* obj = (TangibleObject*)invObj;
+
 	
 	if (obj->isEquipped()) {
 		BaseMessage* msg = new ItemSoldMessage(objectid, 2);

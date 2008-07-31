@@ -504,12 +504,16 @@ void SuiManager::handleTicketCollectorRespones(uint32 boxID, Player* player, uin
 			uint64 ticketObjectID = listBox->getMenuObjectID(ticketIndex);
 
 			if (ticketObjectID != 0) {
-				TangibleObject* object = (TangibleObject*) player->getInventoryItem(ticketObjectID);
-
-				if (object != NULL && object->isTicket()) {
-					Ticket* ticket = (Ticket*) object;
-
-					ticket->useObject(player);
+				SceneObject* invObj = player->getInventoryItem(ticketObjectID);
+				
+				if (invObj != NULL && invObj->isTangible()) {
+					TangibleObject* object = (TangibleObject*) invObj;
+	
+					if (object->isTicket()) {
+						Ticket* ticket = (Ticket*) object;
+	
+						ticket->useObject(player);
+					}
 				}
 			}
 		}

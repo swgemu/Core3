@@ -103,6 +103,9 @@ public:
 	static const int SHIP = 9;
 	static const int ATTACKABLE = 10;
 	static const int MISSION = 11;
+	static const int PLAYEROBJECT = 12;
+	static const int WAYPOINT = 13;
+	static const int MANUFACTURESCHEMATIC = 14;
 
 public:
 	SceneObjectImplementation();
@@ -297,6 +300,18 @@ public:
 
 	inline bool isMission() {
 		return objectType == MISSION;
+	}
+	
+	inline bool isPlayerObject() {
+		return objectType == PLAYEROBJECT;
+	}
+	
+	inline bool isWaypoint() {
+		return objectType == WAYPOINT;
+	}
+	
+	inline bool isManufactureSchematic() {
+		return objectType = MANUFACTURESCHEMATIC;
 	}
 
 	int compareTo(SceneObject* obj) {

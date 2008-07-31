@@ -153,6 +153,12 @@ public:
 
 	bool isMission();
 
+	bool isPlayerObject();
+
+	bool isWaypoint();
+
+	bool isManufactureSchematic();
+
 	Zone* getZone();
 
 	int getZoneID();
@@ -332,6 +338,12 @@ public:
 	bool isAttackableObject();
 
 	bool isMission();
+
+	bool isPlayerObject();
+
+	bool isWaypoint();
+
+	bool isManufactureSchematic();
 
 	Zone* getZone();
 

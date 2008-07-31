@@ -52,7 +52,7 @@ class ManufactureSchematicImplementation : public ManufactureSchematicServant {
 
 public:
 
-	ManufactureSchematicImplementation(uint64 oid) : ManufactureSchematicServant(oid, TANGIBLE) {
+	ManufactureSchematicImplementation(uint64 oid) : ManufactureSchematicServant(oid, MANUFACTURESCHEMATIC) {
 	}
 
 };

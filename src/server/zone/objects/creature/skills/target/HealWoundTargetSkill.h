@@ -92,10 +92,22 @@ public:
 				objectid = tokenizer.getLongToken();
 
 			if (objectid > 0) {
-				woundPack = (WoundPack*) creature->getInventoryItem(objectid);
-
-				if (woundPack != NULL && woundPack->isWoundPack() && woundPack->getMedicineUseRequired() <= medicineUse)
-					return woundPack;
+				SceneObject* invObj = creature->getInventoryItem(objectid);
+				
+				if (invObj != NULL && invObj->isTangible()) {
+					TangibleObject* tano = (TangibleObject*) invObj;
+					
+					if (tano->isPharmaceutical()) {
+						Pharmaceutical* pharm = (Pharmaceutical*) tano;
+						
+						if (pharm->isWoundPack()) {
+							woundPack = (WoundPack*) pharm;
+			
+							if (woundPack->getMedicineUseRequired() <= medicineUse)
+								return woundPack;
+						}
+					}
+				}
 			}
 		} else {
 			poolAffected = PharmaceuticalImplementation::UNKNOWN;

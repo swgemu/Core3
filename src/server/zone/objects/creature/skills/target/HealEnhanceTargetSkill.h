@@ -96,10 +96,22 @@ public:
 				objectid = tokenizer.getLongToken();
 
 			if (objectid > 0) {
-				enhancePack = (EnhancePack*) creature->getInventoryItem(objectid);
-
-				if (enhancePack != NULL && enhancePack->isEnhancePack() && enhancePack->getMedicineUseRequired() <= medicineUse)
-					return enhancePack;
+				SceneObject* invObj = creature->getInventoryItem(objectid);
+				
+				if (invObj != NULL && invObj->isTangible()) {
+					TangibleObject* tano = (TangibleObject*) invObj;
+					
+					if (tano->isPharmaceutical()) {
+						Pharmaceutical* pharm = (Pharmaceutical*) tano;
+						
+						if (pharm->isEnhancePack()) {
+							enhancePack = (EnhancePack*) pharm;
+			
+							if (enhancePack->getMedicineUseRequired() <= medicineUse)
+								return enhancePack;
+						}
+					}
+				}
 			}
 
 			/*if (objectid > 0) {

@@ -85,10 +85,22 @@ public:
 				objectid = tokenizer.getLongToken();
 
 			if (objectid > 0) {
-				stimPack = (StimPack*) creature->getInventoryItem(objectid);
-
-				if (stimPack != NULL && stimPack->isStimPack() && stimPack->getMedicineUseRequired() <= medicineUse)
-					return stimPack;
+				SceneObject* invObj = creature->getInventoryItem(objectid);
+				
+				if (invObj != NULL && invObj->isTangible()) {
+					TangibleObject* tano = (TangibleObject*) invObj;
+					
+					if (tano->isPharmaceutical()) {
+						Pharmaceutical* pharm = (Pharmaceutical*) tano;
+						
+						if (pharm->isStimPack()) {
+							stimPack = (StimPack*) pharm;
+			
+							if (stimPack->getMedicineUseRequired() <= medicineUse)
+								return stimPack;
+						}
+					}
+				}
 			}
 		}
 

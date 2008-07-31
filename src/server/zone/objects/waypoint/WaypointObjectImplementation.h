@@ -61,7 +61,7 @@ class WaypointObjectImplementation : public WaypointObjectServant {
 	Player* owner;
 
 public:
-	WaypointObjectImplementation(Player* player, uint64 oid) : WaypointObjectServant(oid, INTANGIBLE) {
+	WaypointObjectImplementation(Player* player, uint64 oid) : WaypointObjectServant(oid, WAYPOINT) {
 		active = false;
 		internalNote = "EMPTY";
 

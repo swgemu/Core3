@@ -1951,9 +1951,12 @@ void ObjectControllerMessage::parseServerDestroyObject(Player* player,
 	pack->parseUnicode(unkPramString); //?
 
 	WaypointObject* waypoint = player->getWaypoint(objid);
+	
+	SceneObject* invObj = player->getInventoryItem(objid);
 
-	TangibleObject* item = (TangibleObject*) player->getInventoryItem(objid);
-	if (item != NULL) {
+	if (invObj != NULL && invObj->isTangible()) {
+		TangibleObject* item = (TangibleObject*) invObj;
+		
 		if (item->isEquipped()) {
 			//player->changeCloth(objid);
 			player->sendSystemMessage("You must unequip the item before destroying it.");
@@ -2448,11 +2451,18 @@ void ObjectControllerMessage::parseResourceContainerSplit(Player* player,
 		return;
 
 	int newQuantity = atoi(quantityString.c_str());
+	
+	SceneObject* invObj = player->getInventoryItem(objectID);
+	
+	if (invObj != NULL && invObj->isTangible()) {
+		TangibleObject* tano = (TangibleObject*) invObj;
+		
+		if (tano->isResource()) {
+			ResourceContainer* rco = (ResourceContainer*) tano;
 
-	ResourceContainer* rco =
-			(ResourceContainer*)player->getInventoryItem(objectID);
-	if (rco != NULL)
-		rco->splitContainer(player, newQuantity);
+			rco->splitContainer(player, newQuantity);
+		}
+	}
 }
 
 void ObjectControllerMessage::parseResourceContainerTransfer(Player* player,
@@ -2543,8 +2553,13 @@ void ObjectControllerMessage::parseRequestCraftingSession(Player* player,
 	uint64 ctSceneObjID = packet->parseLong();
 
 	//Check to see if the correct obj id is in the player's datapad
-	CraftingTool* craftingTool = (CraftingTool*)player->getInventoryItem(ctSceneObjID);
-	if (craftingTool != NULL) {
+	SceneObject* invObj = player->getInventoryItem(ctSceneObjID);
+	
+	CraftingTool* craftingTool = NULL;
+	
+	if (invObj != NULL && invObj->isTangible() && ((TangibleObject*)invObj)->isCraftingTool()) {
+		craftingTool = (CraftingTool*) invObj;
+		
 		if (craftingTool->isReady()) {
 
 			craftingTool->sendToolStart(player);
@@ -2675,12 +2690,11 @@ void ObjectControllerMessage::parseAddCraftingResource(Player* player,
 	packet->shiftOffset(4);
 
 	int counter = packet->parseByte();
+	
+	SceneObject* invObj = player->getInventoryItem(resourceObjectID);
 
-	TangibleObject * tano =
-			(TangibleObject*)player->getInventoryItem(resourceObjectID);
-
-	if (tano != NULL) {
-		player->addIngredientToSlot(tano, slot, counter);
+	if (invObj != NULL && invObj->isTangible()) {
+		player->addIngredientToSlot((TangibleObject*)invObj, slot, counter);
 
 	} else {
 		// This eles should never execute

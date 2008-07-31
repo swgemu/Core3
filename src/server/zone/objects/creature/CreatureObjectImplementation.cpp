@@ -2447,8 +2447,8 @@ void CreatureObjectImplementation::addInventoryItem(TangibleObject* item) {
 		inventory->addObject(item);
 }
 
-TangibleObject* CreatureObjectImplementation::getInventoryItem(uint64 oid) {
-	return (TangibleObject*) inventory->getObject(oid);
+SceneObject* CreatureObjectImplementation::getInventoryItem(uint64 oid) {
+	return inventory->getObject(oid);
 }
 
 void CreatureObjectImplementation::removeInventoryItem(SceneObject* item) {
@@ -4003,6 +4003,9 @@ void CreatureObjectImplementation::dismount(bool lockMount, bool ignoreCooldown)
 
 void CreatureObjectImplementation::addCashCredits(uint32 credits) {
 	cashCredits = cashCredits + credits;
+	
+	if (!isPlayer())
+		return;
 
 	CreatureObjectDeltaMessage1* delta = new CreatureObjectDeltaMessage1(this);
 	delta->updateCashCredits();
@@ -4013,6 +4016,9 @@ void CreatureObjectImplementation::addCashCredits(uint32 credits) {
 
 void CreatureObjectImplementation::addBankCredits(uint32 credits) {
 	bankCredits = bankCredits + credits;
+	
+	if (!isPlayer())
+		return;
 
 	CreatureObjectDeltaMessage1* delta = new CreatureObjectDeltaMessage1(this);
 	delta->updateBankCredits();
@@ -4023,6 +4029,9 @@ void CreatureObjectImplementation::addBankCredits(uint32 credits) {
 
 void CreatureObjectImplementation::updateCashCredits(uint32 credits) {
 	cashCredits = credits;
+	
+	if (!isPlayer())
+		return;
 
 	CreatureObjectDeltaMessage1* delta = new CreatureObjectDeltaMessage1(this);
 	delta->updateCashCredits();
@@ -4033,6 +4042,9 @@ void CreatureObjectImplementation::updateCashCredits(uint32 credits) {
 
 void CreatureObjectImplementation::updateBankCredits(uint32 credits) {
 	bankCredits = credits;
+	
+	if (!isPlayer())
+		return;
 
 	CreatureObjectDeltaMessage1* delta = new CreatureObjectDeltaMessage1(this);
 	delta->updateBankCredits();
@@ -4043,6 +4055,9 @@ void CreatureObjectImplementation::updateBankCredits(uint32 credits) {
 
 void CreatureObjectImplementation::subtractCashCredits(uint32 credits) {
 	cashCredits = cashCredits - credits;
+	
+	if (!isPlayer())
+		return;
 
 	CreatureObjectDeltaMessage1* delta = new CreatureObjectDeltaMessage1(this);
 	delta->updateCashCredits();
@@ -4053,6 +4068,9 @@ void CreatureObjectImplementation::subtractCashCredits(uint32 credits) {
 
 void CreatureObjectImplementation::subtractBankCredits(uint32 credits) {
 	bankCredits = bankCredits - credits;
+	
+	if (!isPlayer())
+		return;
 
 	CreatureObjectDeltaMessage1* delta = new CreatureObjectDeltaMessage1(this);
 	delta->updateBankCredits();
@@ -4078,7 +4096,6 @@ bool CreatureObjectImplementation::verifyBankCredits(uint32 creditsToRemove) {
 }
 
 void CreatureObjectImplementation::updateHAMBars() {
-
 	CreatureObjectDeltaMessage6* delta = new CreatureObjectDeltaMessage6(_this);
 	delta->updateMaximumHAMBars();
 	delta->updateHAMBars();
@@ -4088,7 +4105,9 @@ void CreatureObjectImplementation::updateHAMBars() {
 }
 
 void CreatureObjectImplementation::updateBaseStats() {
-
+	if (!isPlayer())
+		return;
+		
 	CreatureObjectDeltaMessage1* delta = new CreatureObjectDeltaMessage1(this);
 	delta->updateBaseStats();
 	delta->close();
@@ -4097,7 +4116,8 @@ void CreatureObjectImplementation::updateBaseStats() {
 }
 
 void CreatureObjectImplementation::addBuff(int buffCRC, float duration) {
-	((PlayerImplementation*) this)->addBuff(buffCRC, duration);
+	if (isPlayer())
+		((PlayerImplementation*) this)->addBuff(buffCRC, duration);
 }
 
 // removeFromList - if iterating through all of the buffs, it could mess up
@@ -4122,7 +4142,7 @@ void CreatureObjectImplementation::removeBuff(const uint32 buffCRC, bool removeF
 
 	// cleanup buff
 	try {
-		delete buff;
+		//delete buff; TODO:Figure out whats wrong with this
 		buff = NULL;
 	} catch (...)
 	{

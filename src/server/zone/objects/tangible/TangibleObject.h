@@ -89,6 +89,8 @@ public:
 
 	bool isComponent();
 
+	bool isWeaponPowerup();
+
 	void setCraftersName(string& n);
 
 	void setCraftedSerial(string& s);
@@ -226,6 +228,8 @@ public:
 	bool isCraftingTool();
 
 	bool isComponent();
+
+	bool isWeaponPowerup();
 
 	void setCraftersName(string& n);
 

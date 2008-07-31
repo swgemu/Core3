@@ -492,6 +492,10 @@ public:
 	inline bool isPharmaceutical() {
 		return objectSubType == PHARMACEUTICAL;
 	}
+	
+	inline bool isWeaponPowerup() {
+		return objectSubType == WEAPONPOWERUP;
+	}
 
 	inline int getConditionDamage() {
 		return conditionDamage;

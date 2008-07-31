@@ -187,6 +187,12 @@ interface SceneObject implements ManagedObject {
 	
 	boolean isMission();
 	
+	boolean isPlayerObject();
+	
+	boolean isWaypoint();
+	
+	boolean isManufactureSchematic();
+	
 	Zone getZone();
 	
 	int getZoneID();

@@ -843,7 +843,7 @@ public:
 
 	void addInventoryItem(TangibleObject* item);
 
-	TangibleObject* getInventoryItem(uint64 oid);
+	SceneObject* getInventoryItem(uint64 oid);
 
 	void removeInventoryItem(SceneObject* item);
 	void removeInventoryItem(uint64 oid);

@@ -2632,11 +2632,29 @@ void PlayerImplementation::unsetArmorEncumbrance(Armor* armor) {
 }
 
 void PlayerImplementation::applyPowerup(uint64 powerupID, uint64 targetID) {
-	Powerup* powerup = (Powerup*) getInventoryItem(powerupID);
-	Weapon* weapon = (Weapon*) getInventoryItem(targetID);
-
-	if (weapon == NULL || powerup == NULL)
+	SceneObject* invObj = getInventoryItem(powerupID);
+	
+	if (invObj == NULL || !invObj->isTangible())
 		return;
+		
+	TangibleObject* tano = (TangibleObject*) invObj;
+	
+	if (!tano->isWeaponPowerup())
+		return;
+		
+	Powerup* powerup = (Powerup*) tano;
+	
+	invObj = getInventoryItem(targetID);
+	
+	if (invObj == NULL || !invObj->isTangible())
+		return;
+		
+	tano = (TangibleObject*) invObj;
+	
+	if (!tano->isWeapon())
+		return;
+	
+	Weapon* weapon = (Weapon*) tano;
 
 	weapon->wlock();
 	powerup->wlock();
@@ -2663,11 +2681,29 @@ void PlayerImplementation::applyPowerup(uint64 powerupID, uint64 targetID) {
 
 
 void PlayerImplementation::applyAttachment(uint64 attachmentID, uint64 targetID) {
-	Attachment* attachment = (Attachment*) getInventoryItem(attachmentID);
-	Armor* armor = (Armor*) getInventoryItem(targetID);
-
-	if (armor == NULL || attachment == NULL)
+	SceneObject* invObj = getInventoryItem(attachmentID);
+	
+	if (invObj == NULL || !invObj->isTangible())
 		return;
+		
+	TangibleObject* tano = (TangibleObject*) invObj;
+	
+	if (!tano->isAttachment())
+		return;
+		
+	Attachment* attachment = (Attachment*) tano;
+	
+	invObj = getInventoryItem(targetID);
+	
+	if (invObj == NULL || !invObj->isTangible())
+		return;
+		
+	tano = (TangibleObject*) invObj;
+	
+	if (!tano->isArmor())
+		return;
+		
+	Armor* armor = (Armor*) tano;
 
 	armor->wlock();
 	attachment->wlock();
