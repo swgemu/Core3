@@ -39,55 +39,36 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
+nightspiderAttack1 = {
+	attackname = "nightspiderAttack1",
+	animation = "creature_attack_light",
+	
+	requiredWeaponType = NONE,
 
--------------------------------------------------------------------------------------------
+	range = 10,
 
---Tatooine
+	damageRatio = 9,
 
-RunCreatureFile("spawns/tatooine/staticSpawns.lua")
-RunCreatureFile("spawns/tatooine/forttusken.lua")
-RunCreatureFile("spawns/tatooine/squillcavern.lua")
-RunCreatureFile("spawns/tatooine/hutthideout.lua")
-RunCreatureFile("spawns/tatooine/tuskenBunker.lua")
-RunCreatureFile("spawns/tatooine/beetlecave.lua")
+	speedRatio = 2,
 
-------------------------------------------------------------------------------------------------------
+	areaRange = 0,
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+}
 
---Dathomir
+AddRandomPoolAttackTargetSkill(nightspiderAttack1)
 
-RunCreatureFile("spawns/dathomir/staticSpawns.lua")
-RunCreatureFile("spawns/dathomir/nightsisters.lua")
-RunCreatureFile("spawns/dathomir/singingmtnclan.lua")
-
-------------------------------------------------------------------------------------------------------
-
---Corellia
-
-RunCreatureFile("spawns/corellia/staticSpawns.lua")
-RunCreatureFile("spawns/corellia/afarathuCave.lua")
-RunCreatureFile("spawns/corellia/drallCave.lua")
-RunCreatureFile("spawns/corellia/lordNyaxCult.lua")
-RunCreatureFile("spawns/corellia/rogueCorsec.lua")
-
---------------------------------------------------------------------------------------------------------
---Dantooine
-
-RunCreatureFile("spawns/dantooine/forceCrystalHuntersCave.lua")
-RunCreatureFile("spawns/dantooine/jantaCave.lua")
-RunCreatureFile("spawns/dantooine/kungaCave.lua")
-
-----------------------------------------------------------------------------------------------------------------
-
---Endor
-
---Disabled till other Endor Caves are done
---RunCreatureFile("spawns/endor/deathWatchBunker.lua")
-
--------------------------------------------------------------------------------------------------------------------
-
---Yavin 4
-
--------------------------------------------------------------------------------------------------------------------
-
---Naboo
-RunCreatureFile("spawns/naboo/staticSpawns.lua")
+-----------------------------------------------

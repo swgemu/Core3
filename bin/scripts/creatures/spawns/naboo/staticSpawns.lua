@@ -40,54 +40,19 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
--------------------------------------------------------------------------------------------
+--global clusters
 
---Tatooine
+-- Starport Guards
+spawnCreature(naboostormtrooper, 5, -4852, 4175)
+spawnCreature(naboostormtrooper, 5, -4848, 4171)
 
-RunCreatureFile("spawns/tatooine/staticSpawns.lua")
-RunCreatureFile("spawns/tatooine/forttusken.lua")
-RunCreatureFile("spawns/tatooine/squillcavern.lua")
-RunCreatureFile("spawns/tatooine/hutthideout.lua")
-RunCreatureFile("spawns/tatooine/tuskenBunker.lua")
-RunCreatureFile("spawns/tatooine/beetlecave.lua")
+-- Forest Creatures
+spawnCreatures(nightspider, 5, -5037, 3899, 70, 20)
+spawnCreatures(fleshEatingChuba, 5, -4984, 3858, 70, 20)
+spawnCreatures(diseasedNuna, 5, -5070, 3861, 70, 20)
+spawnCreatures(capperSpineflap, 5, -5113, 3894, 70, 20)
+spawnCreatures(shaupaut, 5, -5138, 3918, 70, 20)
+spawnCreatures(capperSpineflap, 5, -5106, 4012, 70, 20)
 
-------------------------------------------------------------------------------------------------------
-
---Dathomir
-
-RunCreatureFile("spawns/dathomir/staticSpawns.lua")
-RunCreatureFile("spawns/dathomir/nightsisters.lua")
-RunCreatureFile("spawns/dathomir/singingmtnclan.lua")
-
-------------------------------------------------------------------------------------------------------
-
---Corellia
-
-RunCreatureFile("spawns/corellia/staticSpawns.lua")
-RunCreatureFile("spawns/corellia/afarathuCave.lua")
-RunCreatureFile("spawns/corellia/drallCave.lua")
-RunCreatureFile("spawns/corellia/lordNyaxCult.lua")
-RunCreatureFile("spawns/corellia/rogueCorsec.lua")
-
---------------------------------------------------------------------------------------------------------
---Dantooine
-
-RunCreatureFile("spawns/dantooine/forceCrystalHuntersCave.lua")
-RunCreatureFile("spawns/dantooine/jantaCave.lua")
-RunCreatureFile("spawns/dantooine/kungaCave.lua")
-
-----------------------------------------------------------------------------------------------------------------
-
---Endor
-
---Disabled till other Endor Caves are done
---RunCreatureFile("spawns/endor/deathWatchBunker.lua")
-
--------------------------------------------------------------------------------------------------------------------
-
---Yavin 4
-
--------------------------------------------------------------------------------------------------------------------
-
---Naboo
-RunCreatureFile("spawns/naboo/staticSpawns.lua")
+-- Epic Starport Dude
+spawnCreatureInCell(gorax, 5, 0.187348, 7.9418, 2.45055, 1692104)

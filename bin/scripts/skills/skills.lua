@@ -125,3 +125,11 @@ RunSkillsFile("creatureSkills/dwbAttacks.lua")
 RunSkillsFile("creatureSkills/mineRatAttacks.lua")
 RunSkillsFile("creatureSkills/dwbSBDAttacks.lua")
 RunSkillsFile("creatureSkills/dwbMeleeAttacks.lua")
+
+-- Naboo
+RunSkillsFile("creatureSkills/goraxAttacks.lua")
+RunSkillsFile("creatureSkills/chubaAttacks.lua")
+RunSkillsFile("creatureSkills/nightspiderAttacks.lua")
+RunSkillsFile("creatureSkills/nunaAttacks.lua")
+RunSkillsFile("creatureSkills/spineflaprAttacks.lua")
+RunSkillsFile("creatureSkills/shaupautAttacks.lua")

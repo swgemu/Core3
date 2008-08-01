@@ -250,3 +250,16 @@ RunCreatureFile("objects/dantooine/npcs/kungaWarrior.lua")
 -- RunCreatureFile("objects/endor/npcs/engineerDWB.lua")
 -- RunCreatureFile("objects/endor/npcs/deathWatchOverlordDWB.lua")
 -- RunCreatureFile("objects/endor/npcs/twilekSlave.lua")
+
+------------------------------------------------------------------------------------------------------------------------------
+
+-- Naboo
+
+RunCreatureFile("objects/npcs/nstormTrooper.lua")
+RunCreatureFile("objects/endor/creatures/gorax.lua")
+RunCreatureFile("objects/naboo/creatures/capperSpineflap.lua")
+RunCreatureFile("objects/naboo/creatures/diseasedNuna.lua")
+RunCreatureFile("objects/naboo/creatures/fleshEatingChuba.lua")
+RunCreatureFile("objects/naboo/creatures/nightspider.lua")
+RunCreatureFile("objects/naboo/creatures/shaupaut.lua")
+
