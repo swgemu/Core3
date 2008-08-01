@@ -445,6 +445,13 @@ interface Player implements CreatureObject {
 	
 	// mission stuff
 	unsigned int nextMisoRFC();
+	int checkMisoBSB(int tcb);
+	void setMisoBSB(int tms);
+	void addToCurMisoKeys(string& tck);
+	boolean isOnCurMisoKey(string tmk);
+	void removeFromCurMisoKeys(string tck);
+	void addToFinMisoKeys(string tmp);
+	boolean hasCompletedMisoKey(string tmk);
 	
 	// Crafting
 	CraftingTool getCurrentCraftingTool();

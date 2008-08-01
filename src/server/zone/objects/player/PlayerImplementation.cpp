@@ -232,6 +232,9 @@ void PlayerImplementation::init() {
 
 	//Mission Vars
 	misoRFC = 0x01;
+	misoBSB = 0;
+	curMisoKeys = "";
+	finMisoKeys = "";
 
 	//temp
 	factionRank = "Sexy Tester";
@@ -425,6 +428,10 @@ void PlayerImplementation::reload(ZoneClient* client) {
 		resetArmorEncumbrance();
 
 		activateRecovery();
+		
+		//reset mission vars:
+		misoRFC = 0x01;
+		misoBSB = 0;
 
 		unlock();
 	} catch (Exception& e) {
@@ -1307,6 +1314,10 @@ void PlayerImplementation::switchMap(int planetid) {
 	Zone* zone = server->getZone(zoneID);
 
 	terrainName = Terrain::getTerrainName(zoneID);
+	
+	//reset mission vars:
+	misoRFC = 0x01;
+	misoBSB = 0;
 
 	insertToZone(zone);
 }
@@ -3078,6 +3089,79 @@ void PlayerImplementation::clearDuelList() {
 		CombatManager* combatManager = server->getCombatManager();
 		combatManager->freeDuelList(_this);
 	}
+}
+
+// Mission Functions
+/*
+bool PlayerImplementation::isOnCurMisoKey(string& tmk) {
+	StringTokenizer ut(curMisoKeys.c_str());
+	string temp;
+	
+	ut.setDelimeter(",");
+	
+	while(ut.hasMoreTokens()) {
+		ut.getStringToken(temp); //Get the next key+state pair
+		
+		//If we have found the key we are looking get the state of, return true
+		if(temp == tmk) {
+			printf("isOnCurMisoKey(): returning true\n");
+			return true;
+		}
+	}
+	
+	printf("isOnCurMisoKey(): returning false\n");
+	return false;
+}
+*/
+
+bool PlayerImplementation::isOnCurMisoKey(string& tmk) {
+	tmk += ",";
+	
+	size_t pos;
+	pos = curMisoKeys.find(tmk);
+	
+	if (pos == string::npos) {
+		//printf("PlayerImplementation::isOnCurMisoKey() : player does not have mission.");
+		return false;
+	} else {
+		//printf("PlayerImplementation::isOnCurMisoKey() : player has mission.");
+		return true;
+	}
+}
+
+void PlayerImplementation::removeFromCurMisoKeys(string tck) {
+	tck += ",";
+	
+	size_t pos;
+	pos = curMisoKeys.find(tck);
+	
+	if (pos == string::npos) {
+		printf("PlayerImplementation::removeFromCurMisoKeys() : player does not have mission.");
+		return;
+	}
+	
+	//printf("Debug: erasing tck = %s. curMisoKeys = %s\n", tck.c_str(), curMisoKeys.c_str());
+	curMisoKeys.erase(pos, tck.size());
+	//printf("Debug: Tck erased = %s. curMisoKeys = %s\n", tck.c_str(), curMisoKeys.c_str());
+}
+
+bool PlayerImplementation::hasCompletedMisoKey(string& tmk) {
+	tmk += ",";
+	
+	size_t pos;
+	pos = finMisoKeys.find(tmk);
+	
+	if (pos == string::npos) {
+		//printf("PlayerImplementation::hasCompletedMisoKey() : player hasnt completed the mission.");
+		return false;
+	} else {
+		//printf("PlayerImplementation::hasCompletedMisoKey() : player has completed mission.");
+		return true;
+	}
+}
+
+void PlayerImplementation::debugPrintMisoVars() {
+	printf("misoBSB = %i, misoRFC = %i \n curMisoKeys = %s \n finMisoKeys = %s \n", misoBSB, misoRFC, curMisoKeys.c_str(), finMisoKeys.c_str());
 }
 
 // Crafting

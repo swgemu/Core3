@@ -471,6 +471,20 @@ public:
 
 	unsigned int nextMisoRFC();
 
+	int checkMisoBSB(int tcb);
+
+	void setMisoBSB(int tms);
+
+	void addToCurMisoKeys(string& tck);
+
+	bool isOnCurMisoKey(string& tmk);
+
+	void removeFromCurMisoKeys(string& tck);
+
+	void addToFinMisoKeys(string& tmp);
+
+	bool hasCompletedMisoKey(string& tmk);
+
 	CraftingTool* getCurrentCraftingTool();
 
 	CraftingTool* getCraftingTool(const int type, bool doLock = true);
@@ -1019,6 +1033,20 @@ public:
 
 	unsigned int nextMisoRFC();
 
+	int checkMisoBSB(int tcb);
+
+	void setMisoBSB(int tms);
+
+	void addToCurMisoKeys(string& tck);
+
+	bool isOnCurMisoKey(string& tmk);
+
+	void removeFromCurMisoKeys(string& tck);
+
+	void addToFinMisoKeys(string& tmp);
+
+	bool hasCompletedMisoKey(string& tmk);
+
 	CraftingTool* getCurrentCraftingTool();
 
 	CraftingTool* getCraftingTool(const int type, bool doLock);
@@ -1151,6 +1179,11 @@ protected:
 	string _param0_setStartingLocation__string_;
 	string _param0_setFactionRank__string_;
 	string _param0_checkCertification__string_;
+	string _param0_addToCurMisoKeys__string_;
+	string _param0_isOnCurMisoKey__string_;
+	string _param0_removeFromCurMisoKeys__string_;
+	string _param0_addToFinMisoKeys__string_;
+	string _param0_hasCompletedMisoKey__string_;
 	string _param0_nextCraftingStage__string_;
 	string _param0_craftingCustomization__string_int_;
 	string _param0_createPrototype__string_;

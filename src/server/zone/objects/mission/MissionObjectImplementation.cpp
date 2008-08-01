@@ -142,7 +142,7 @@ void MissionObjectImplementation::sendDeltaTo(Player* player) {
 }
 
 void MissionObjectImplementation::doLinkToPlayer(Player* player) {
-	//new place for mission bag/datapad linkage here
+	player->sendMessage(link(player->getDatapad()->getObjectID(), 0xFFFFFFFF));
 }
 
 //Use this function to remove the mission from the player.

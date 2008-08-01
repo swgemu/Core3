@@ -192,6 +192,9 @@ class PlayerImplementation : public PlayerServant {
 
 	// mission vars
 	uint32 misoRFC;
+	int misoBSB; //mission baseline send bitmask
+	string curMisoKeys; //mission keys the player is currently on
+	string finMisoKeys; //mission keys the player has completed.
 
 	// Entertainer - Dance + Music
 	Event* entertainerEvent;
@@ -520,6 +523,25 @@ public:
 	uint32 nextMisoRFC() {
 		return misoRFC++;
 	}
+	
+	int checkMisoBSB(int tcb) { //mission baseline send bitmask - check for existance of a set bit.
+		return (misoBSB & tcb);
+	}
+	
+	void setMisoBSB(int tms) { //mission baseline send bitmask
+		misoBSB |= tms;
+	}
+	
+	void addToCurMisoKeys(string& tck) {
+		curMisoKeys += (tck + ",");
+	}
+	bool isOnCurMisoKey(string& tmk); //player is currently on the mission key
+	void removeFromCurMisoKeys(string tck);
+	
+	void addToFinMisoKeys(string& tmp) {
+		finMisoKeys += (tmp + ",");
+	}
+	bool hasCompletedMisoKey(string& tmk);
 
 	// buffing methods
 	void addBuff(uint32 buffcrc, float time);

@@ -224,7 +224,9 @@ TangibleObject* ItemManagerImplementation::createPlayerObjectTemplate(int object
 			item = new SurveyTool(objectid, objectcrc, objectname, objecttemp);
 			break;
 		case TangibleObjectImplementation::REPAIRTOOL:
+			break;
 		case TangibleObjectImplementation::CAMPKIT:
+			break;
 		case TangibleObjectImplementation::SHIPCOMPONENTREPAIRITEM:
 			break;
 		}
