@@ -175,6 +175,8 @@ public:
 
 	void countdownRevive(int counter);
 
+	void revive();
+
 	bool isRevivable();
 
 	void addBuff(unsigned int buffcrc, float time);
@@ -736,6 +738,8 @@ public:
 	void clearReviveCountdown();
 
 	void countdownRevive(int counter);
+
+	void revive();
 
 	bool isRevivable();
 

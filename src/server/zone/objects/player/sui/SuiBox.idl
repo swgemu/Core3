@@ -44,6 +44,8 @@ which carries forward this exception.
 
 import "../Player";
 
+include "engine/service/proto/BaseMessage";
+
 interface SuiBox {
 
 	BaseMessage generateCloseMessage();

@@ -338,8 +338,13 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 
 	switch (actionCRC) {
 	case (0xEA69C1BD): //activateClone
-		cout << "/activateClone called";
-		player->activateClone();
+	{
+		if (!player->isDead()) {
+			player->sendSystemMessage("You must be dead to activate your clone.");
+		} else {
+			player->activateClone();
+		}
+	}
 		break;
 	case (0x03B65950): // Logout
 		player->userLogout();
@@ -732,9 +737,6 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 		case (0xC9759876): //reviveplayer <targetname>
 		case (0xDC7CF134): //diagnose
 		{
-			if (actionCRC == 0xC9759876)
-				cout << "objectcontroller targetid is " << target << endl;
-
 			unicode option = unicode("");
 			pack->parseUnicode(option);
 			actionModifier = option.c_str();

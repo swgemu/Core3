@@ -86,16 +86,16 @@ public:
 
 			if (objectid > 0) {
 				SceneObject* invObj = creature->getInventoryItem(objectid);
-				
+
 				if (invObj != NULL && invObj->isTangible()) {
 					TangibleObject* tano = (TangibleObject*) invObj;
-					
+
 					if (tano->isPharmaceutical()) {
 						Pharmaceutical* pharm = (Pharmaceutical*) tano;
-						
+
 						if (pharm->isStimPack()) {
 							stimPack = (StimPack*) pharm;
-			
+
 							if (stimPack->getMedicineUseRequired() <= medicineUse)
 								return stimPack;
 						}
@@ -243,7 +243,7 @@ public:
 		if (battleFatigue >= 1000) {
 			power = 0; //Will cancel the action.
 		} else if (battleFatigue >= 250) {
-			power -= power * ((battleFatigue - 250) / 1000);
+			power -= (int)round((float)power * (((float)battleFatigue - 250.0f) / 1000.0f));
 		}
 
 		return power;

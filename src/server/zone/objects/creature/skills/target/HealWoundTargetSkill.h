@@ -93,16 +93,16 @@ public:
 
 			if (objectid > 0) {
 				SceneObject* invObj = creature->getInventoryItem(objectid);
-				
+
 				if (invObj != NULL && invObj->isTangible()) {
 					TangibleObject* tano = (TangibleObject*) invObj;
-					
+
 					if (tano->isPharmaceutical()) {
 						Pharmaceutical* pharm = (Pharmaceutical*) tano;
-						
+
 						if (pharm->isWoundPack()) {
 							woundPack = (WoundPack*) pharm;
-			
+
 							if (woundPack->getMedicineUseRequired() <= medicineUse)
 								return woundPack;
 						}
@@ -235,7 +235,7 @@ public:
 		applyWoundHeal(creatureTarget, woundsHealed, poolAffected);
 
 		sendBFMessage(creature, creatureTarget, battleFatigue);
-		sendEnhanceMessage(creature, creatureTarget, poolAffected, woundsHealed);
+		sendWoundMessage(creature, creatureTarget, poolAffected, woundsHealed);
 
 		creature->changeMindBar(mindCost);
 
@@ -312,7 +312,7 @@ public:
 		if (battleFatigue >= 1000) {
 			power = 0; //Will cancel the action.
 		} else if (battleFatigue >= 250) {
-			power -= power * ((battleFatigue - 250) / 1000);
+			power -= (int)round((float)power * (((float)battleFatigue - 250.0f) / 1000.0f));
 		}
 
 		return power;
@@ -360,7 +360,7 @@ public:
 		}
 	}
 
-	void sendEnhanceMessage(CreatureObject* creature, CreatureObject* creatureTarget, int poolAffected, int woundsHealed) {
+	void sendWoundMessage(CreatureObject* creature, CreatureObject* creatureTarget, int poolAffected, int woundsHealed) {
 		string creatureName = ((Player*)creature)->getFirstNameProper();
 		string creatureTargetName = ((Player*)creatureTarget)->getFirstNameProper();
 		string poolName = PharmaceuticalImplementation::getPoolName(poolAffected);
@@ -376,12 +376,12 @@ public:
 
 		msgTail << woundsHealed << " " << poolName << " wound damage.";
 
-		msgPlayer << msgTail.str();
-		creature->sendSystemMessage(msgPlayer.str());
+		msgTarget << msgTail.str();
+		creatureTarget->sendSystemMessage(msgTarget.str());
 
 		if (creature != creatureTarget) {
-			msgTarget << msgTail.str();
-			creatureTarget->sendSystemMessage(msgTarget.str());
+			msgPlayer << msgTail.str();
+			creatureTarget->sendSystemMessage(msgPlayer.str());
 		}
 	}
 

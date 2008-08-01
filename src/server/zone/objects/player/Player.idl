@@ -181,6 +181,8 @@ interface Player implements CreatureObject {
 	void clearReviveCountdown();
 	void countdownRevive(int counter);
 	
+	void revive();
+	
 	boolean isRevivable();
 	
 	void addBuff(unsigned int buffcrc, float time);	

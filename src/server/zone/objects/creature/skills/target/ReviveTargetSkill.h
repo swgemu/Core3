@@ -215,7 +215,13 @@ public:
 		sendHealMessage((Player*)creature, playerTarget, healthHealed, actionHealed, mindHealed);
 		sendWoundMessage((Player*)creature, playerTarget, healthWoundHealed, actionWoundHealed, mindWoundHealed);
 
-		playerTarget->changePosture(CreatureObjectImplementation::UPRIGHT_POSTURE);
+		try {
+			playerTarget->wlock();
+			playerTarget->revive();
+			playerTarget->unlock();
+		} catch (...) {
+			playerTarget->unlock();
+		}
 
 		creature->changeMindBar(-mindCost);
 
@@ -237,7 +243,7 @@ public:
 		if (battleFatigue >= 1000) {
 			power = 1; //Needs to at least be 1 so they are alive!
 		} else if (battleFatigue >= 250) {
-			power -= power * ((battleFatigue - 250) / 1000);
+			power -= (int)round((float)power * (((float)battleFatigue - 250.0f) / 1000.0f));
 		}
 
 		damageHealed = power;

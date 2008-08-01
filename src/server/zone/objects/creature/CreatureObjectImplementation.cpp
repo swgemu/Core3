@@ -113,7 +113,7 @@ CreatureObjectImplementation::CreatureObjectImplementation(uint64 oid) : Creatur
 	boneType = "";
 	hideType = "";
 	meatType = "";
-	
+
 	actionCounter = 0;
 
 	// CREO1 operands
@@ -1537,7 +1537,7 @@ void CreatureObjectImplementation::resetHAMBars() {
 	willpower = willpowerMax = baseWillpower;
 
 	if (healthWounds > healthMax)
-		healthWounds = healthMax - 1;	
+		healthWounds = healthMax - 1;
 
 	if (actionWounds > actionMax)
 		actionWounds = actionMax - 1;
@@ -4003,7 +4003,7 @@ void CreatureObjectImplementation::dismount(bool lockMount, bool ignoreCooldown)
 
 void CreatureObjectImplementation::addCashCredits(uint32 credits) {
 	cashCredits = cashCredits + credits;
-	
+
 	if (!isPlayer())
 		return;
 
@@ -4016,7 +4016,7 @@ void CreatureObjectImplementation::addCashCredits(uint32 credits) {
 
 void CreatureObjectImplementation::addBankCredits(uint32 credits) {
 	bankCredits = bankCredits + credits;
-	
+
 	if (!isPlayer())
 		return;
 
@@ -4029,7 +4029,7 @@ void CreatureObjectImplementation::addBankCredits(uint32 credits) {
 
 void CreatureObjectImplementation::updateCashCredits(uint32 credits) {
 	cashCredits = credits;
-	
+
 	if (!isPlayer())
 		return;
 
@@ -4042,7 +4042,7 @@ void CreatureObjectImplementation::updateCashCredits(uint32 credits) {
 
 void CreatureObjectImplementation::updateBankCredits(uint32 credits) {
 	bankCredits = credits;
-	
+
 	if (!isPlayer())
 		return;
 
@@ -4055,7 +4055,7 @@ void CreatureObjectImplementation::updateBankCredits(uint32 credits) {
 
 void CreatureObjectImplementation::subtractCashCredits(uint32 credits) {
 	cashCredits = cashCredits - credits;
-	
+
 	if (!isPlayer())
 		return;
 
@@ -4068,7 +4068,7 @@ void CreatureObjectImplementation::subtractCashCredits(uint32 credits) {
 
 void CreatureObjectImplementation::subtractBankCredits(uint32 credits) {
 	bankCredits = bankCredits - credits;
-	
+
 	if (!isPlayer())
 		return;
 
@@ -4107,7 +4107,7 @@ void CreatureObjectImplementation::updateHAMBars() {
 void CreatureObjectImplementation::updateBaseStats() {
 	if (!isPlayer())
 		return;
-		
+
 	CreatureObjectDeltaMessage1* delta = new CreatureObjectDeltaMessage1(this);
 	delta->updateBaseStats();
 	delta->close();
@@ -4219,11 +4219,11 @@ void CreatureObjectImplementation::removeBuffs(bool doUpdateCreature) {
 			removeBuff(buff->getBuffCRC(), false); // dont't remove from the list yet
 		}
 	}
-	
+
 	creatureBuffs.removeAll();
 	resetHAMBars();
-	
-	
+
+
 	/*
 	CreatureObjectDeltaMessage6* delta = new CreatureObjectDeltaMessage6(_this);
 
@@ -4255,8 +4255,8 @@ void CreatureObjectImplementation::removeBuffs(bool doUpdateCreature) {
 	delta->updateMaxWillpowerBar(getWillpowerMax());
 
 	delta->close();
-		
-	broadcastMessage(delta); 
+
+	broadcastMessage(delta);
 	*/
 }
 

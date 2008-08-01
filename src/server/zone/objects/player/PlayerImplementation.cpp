@@ -428,7 +428,7 @@ void PlayerImplementation::reload(ZoneClient* client) {
 		resetArmorEncumbrance();
 
 		activateRecovery();
-		
+
 		//reset mission vars:
 		misoRFC = 0x01;
 		misoBSB = 0;
@@ -1314,7 +1314,7 @@ void PlayerImplementation::switchMap(int planetid) {
 	Zone* zone = server->getZone(zoneID);
 
 	terrainName = Terrain::getTerrainName(zoneID);
-	
+
 	//reset mission vars:
 	misoRFC = 0x01;
 	misoBSB = 0;
@@ -1810,9 +1810,18 @@ void PlayerImplementation::doRecovery() {
 	activateRecovery();
 }
 
-/*
+
 void PlayerImplementation::revive() {
-}*/
+	uint32 boxID = getSuiBoxFromType(0xC103); //Activate Clone SuiBox
+
+	if (hasSuiBox(boxID)) {
+		SuiBox* sui = getSuiBox(boxID);
+		sendMessage(sui->generateCloseMessage());
+		removeSuiBox(boxID);
+		sui->finalize();
+	}
+	changePosture(UPRIGHT_POSTURE);
+}
 
 void PlayerImplementation::clearReviveCountdown() {
 	reviveTimeout.update();
@@ -1839,7 +1848,6 @@ void PlayerImplementation::countdownRevive(int counter) {
 	int seconds = 60; //How long in between message delays.
 
 	if (!isRevivable() && counter >= 0) {
-		cout << "not revivable anymore" << endl;
 		counter = 0;
 	}
 
@@ -1941,8 +1949,6 @@ void PlayerImplementation::doDigest() {
 }
 
 void PlayerImplementation::activateClone() {
-	cout << "activate clone called" << endl;
-
 	if (hasSuiBoxType(0xC103)) //Does player already have an Activate Clone Box up? If so, we don't want to send another until it is closed.
 		return;
 
@@ -1971,8 +1977,6 @@ void PlayerImplementation::activateClone() {
 
 void PlayerImplementation::doClone() {
 	info("cloning player");
-
-	cout << "In doClone" << endl;
 
 	//clearReviveCountdown();
 
@@ -2080,8 +2084,6 @@ void PlayerImplementation::doClone() {
 	setPosture(UPRIGHT_POSTURE);
 
 	rescheduleRecovery();
-
-	cout << "finished doclone" << endl;
 }
 
 void PlayerImplementation::doCenterOfBeing() {
@@ -3095,10 +3097,10 @@ void PlayerImplementation::clearDuelList() {
 
 bool PlayerImplementation::isOnCurMisoKey(string& tmk) {
 	tmk += ",";
-	
+
 	size_t pos;
 	pos = curMisoKeys.find(tmk);
-	
+
 	if (pos == string::npos) {
 		//printf("PlayerImplementation::isOnCurMisoKey() : player does not have mission.");
 		return false;
@@ -3110,15 +3112,15 @@ bool PlayerImplementation::isOnCurMisoKey(string& tmk) {
 
 void PlayerImplementation::removeFromCurMisoKeys(string tck) {
 	tck += ",";
-	
+
 	size_t pos;
 	pos = curMisoKeys.find(tck);
-	
+
 	if (pos == string::npos) {
 		printf("PlayerImplementation::removeFromCurMisoKeys() : player does not have mission.");
 		return;
 	}
-	
+
 	//printf("Debug: erasing tck = %s. curMisoKeys = %s\n", tck.c_str(), curMisoKeys.c_str());
 	curMisoKeys.erase(pos, tck.size());
 	//printf("Debug: Tck erased = %s. curMisoKeys = %s\n", tck.c_str(), curMisoKeys.c_str());
@@ -3126,10 +3128,10 @@ void PlayerImplementation::removeFromCurMisoKeys(string tck) {
 
 bool PlayerImplementation::hasCompletedMisoKey(string& tmk) {
 	tmk += ",";
-	
+
 	size_t pos;
 	pos = finMisoKeys.find(tmk);
-	
+
 	if (pos == string::npos) {
 		//printf("PlayerImplementation::hasCompletedMisoKey() : player hasnt completed the mission.");
 		return false;

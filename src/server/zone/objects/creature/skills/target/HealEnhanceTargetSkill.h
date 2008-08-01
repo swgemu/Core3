@@ -299,7 +299,7 @@ public:
 		if (battleFatigue >= 1000) {
 			power = 0; //Will cancel the action.
 		} else if (battleFatigue >= 250) {
-			power -= power * ((battleFatigue - 250) / 1000);
+			power -= (int)round((float)power * (((float)battleFatigue - 250.0f) / 1000.0f));
 		}
 
 		return power;

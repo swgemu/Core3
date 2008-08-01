@@ -519,25 +519,27 @@ public:
 	void countdownRevive(int counter);
 	void handleDeath();
 
+	void revive();
+
 	//mission methods
 	uint32 nextMisoRFC() {
 		return misoRFC++;
 	}
-	
+
 	int checkMisoBSB(int tcb) { //mission baseline send bitmask - check for existance of a set bit.
 		return (misoBSB & tcb);
 	}
-	
+
 	void setMisoBSB(int tms) { //mission baseline send bitmask
 		misoBSB |= tms;
 	}
-	
+
 	void addToCurMisoKeys(string& tck) {
 		curMisoKeys += (tck + ",");
 	}
 	bool isOnCurMisoKey(string& tmk); //player is currently on the mission key
 	void removeFromCurMisoKeys(string tck);
-	
+
 	void addToFinMisoKeys(string& tmp) {
 		finMisoKeys += (tmp + ",");
 	}
@@ -1125,6 +1127,16 @@ public:
 		}
 
 		return false;
+	}
+
+	inline uint32 getSuiBoxFromType(uint32 boxTypeID) {
+		uint32 type = 0;
+		for (int i=0; i<suiBoxes.size(); i++) {
+			SuiBox* sui = suiBoxes.get(i);
+			if (boxTypeID == sui->getBoxTypeID())
+				return sui->getBoxID();
+		}
+		return 0;
 	}
 
 	void removeSuiBox(uint32 boxID) {

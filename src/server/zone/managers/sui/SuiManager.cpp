@@ -633,8 +633,6 @@ void SuiManager::handleCloneRequest(uint32 boxID, Player* player, uint32 cancel,
 	try {
 		player->wlock();
 
-		cout << "boxID is: " << boxID << endl;
-
 		if (!player->hasSuiBox(boxID)) {
 			player->unlock();
 			return;
@@ -646,10 +644,15 @@ void SuiManager::handleCloneRequest(uint32 boxID, Player* player, uint32 cancel,
 
 		sui->finalize();
 
-		if (index >= 0)
-			player->doClone();
-		else
+		if (index >= 0) {
+			if (!player->isDead()) {
+				player->sendSystemMessage("You must be dead to activate your clone.");
+			} else {
+				player->doClone();
+			}
+		} else {
 			player->sendSystemMessage("You will remain dead until you choose a location to clone or you are revived. Type /activateClone to restore the clone window.");
+		}
 
 		player->unlock();
 	} catch (...) {

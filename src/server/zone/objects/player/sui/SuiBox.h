@@ -9,6 +9,8 @@
 
 class Player;
 
+#include "engine/service/proto/BaseMessage.h"
+
 class SuiBox : public DistributedObjectStub {
 public:
 	BaseMessage* generateCloseMessage();
