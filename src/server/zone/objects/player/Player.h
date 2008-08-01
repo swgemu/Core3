@@ -161,7 +161,21 @@ public:
 
 	void doPeace();
 
+	void doClone();
+
 	void kill();
+
+	void deathblow(Player* player);
+
+	void activateClone();
+
+	void activateReviveCountdown();
+
+	void clearReviveCountdown();
+
+	void countdownRevive(int counter);
+
+	bool isRevivable();
 
 	void addBuff(unsigned int buffcrc, float time);
 
@@ -381,6 +395,8 @@ public:
 
 	bool hasSuiBox(unsigned int boxID);
 
+	bool hasSuiBoxType(unsigned int boxTypeID);
+
 	void removeSuiBox(unsigned int boxID);
 
 	SuiBox* getSuiBox(unsigned int boxID);
@@ -432,6 +448,12 @@ public:
 	unsigned int getImperialPoints();
 
 	int getPvpRating();
+
+	void setPvpRating(int value);
+
+	void increasePvpRating(int value);
+
+	void decreasePvpRating(int value);
 
 	void getPlayersNearYou();
 
@@ -687,7 +709,21 @@ public:
 
 	void doPeace();
 
+	void doClone();
+
 	void kill();
+
+	void deathblow(Player* player);
+
+	void activateClone();
+
+	void activateReviveCountdown();
+
+	void clearReviveCountdown();
+
+	void countdownRevive(int counter);
+
+	bool isRevivable();
 
 	void addBuff(unsigned int buffcrc, float time);
 
@@ -907,6 +943,8 @@ public:
 
 	bool hasSuiBox(unsigned int boxID);
 
+	bool hasSuiBoxType(unsigned int boxTypeID);
+
 	void removeSuiBox(unsigned int boxID);
 
 	SuiBox* getSuiBox(unsigned int boxID);
@@ -958,6 +996,12 @@ public:
 	unsigned int getImperialPoints();
 
 	int getPvpRating();
+
+	void setPvpRating(int value);
+
+	void increasePvpRating(int value);
+
+	void decreasePvpRating(int value);
 
 	void getPlayersNearYou();
 

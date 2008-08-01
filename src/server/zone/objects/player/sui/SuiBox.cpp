@@ -155,12 +155,24 @@ unsigned long long SuiBox::getBoxID() {
 		return ((SuiBoxImplementation*) _impl)->getBoxID();
 }
 
-unsigned long long SuiBox::getUsingObjectID() {
+int SuiBox::getBoxTypeID() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 17);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((SuiBoxImplementation*) _impl)->getBoxTypeID();
+}
+
+unsigned long long SuiBox::getUsingObjectID() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 18);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -172,7 +184,7 @@ Player* SuiBox::getPlayer() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 19);
 
 		return (Player*) method.executeWithObjectReturn();
 	} else
@@ -224,9 +236,12 @@ Packet* SuiBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertLong(getBoxID());
 		break;
 	case 17:
-		resp->insertLong(getUsingObjectID());
+		resp->insertSignedInt(getBoxTypeID());
 		break;
 	case 18:
+		resp->insertLong(getUsingObjectID());
+		break;
+	case 19:
 		resp->insertLong(getPlayer()->_getObjectID());
 		break;
 	default:
@@ -278,6 +293,10 @@ bool SuiBoxAdapter::isBankTransferBox() {
 
 unsigned long long SuiBoxAdapter::getBoxID() {
 	return ((SuiBoxImplementation*) impl)->getBoxID();
+}
+
+int SuiBoxAdapter::getBoxTypeID() {
+	return ((SuiBoxImplementation*) impl)->getBoxTypeID();
 }
 
 unsigned long long SuiBoxAdapter::getUsingObjectID() {

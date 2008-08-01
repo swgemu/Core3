@@ -39,4 +39,5 @@ interface Pharmaceutical implements TangibleObject {
 	boolean isStimPack();
 	boolean isStatePack();
 	boolean isCurePack();
+	boolean isRevivePack();
 }

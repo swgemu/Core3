@@ -77,6 +77,7 @@ public:
 	static const int DANCE = 7;
 	static const int MUSIC = 8;
 	static const int DIAGNOSE = 9;
+	static const int REVIVE = 10;
 	static const int OTHER = 0;
 
 	static const int TARGET = 1;
@@ -137,7 +138,7 @@ public:
 	}
 
 	inline bool isHealSkill() {
-		return type == HEAL || type == DIAGNOSE;
+		return type == HEAL || type == DIAGNOSE || type == REVIVE;
 	}
 
 	inline bool isEnhanceSkill() {
@@ -166,6 +167,10 @@ public:
 
 	inline bool isDiagnoseSkill() {
 		return type == DIAGNOSE;
+	}
+
+	inline bool isReviveSkill() {
+		return type == REVIVE;
 	}
 
 	inline uint32 getNameCRC() {

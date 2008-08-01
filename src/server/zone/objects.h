@@ -168,6 +168,8 @@ which carries forward this exception.
 #include "objects/tangible/pharmaceutical/WoundPackImplementation.h"
 #include "objects/tangible/pharmaceutical/StimPack.h"
 #include "objects/tangible/pharmaceutical/StimPackImplementation.h"
+#include "objects/tangible/pharmaceutical/RevivePack.h"
+#include "objects/tangible/pharmaceutical/RevivePackImplementation.h"
 
 #include "objects/intangible/IntangibleObject.h"
 #include "objects/intangible/IntangibleObjectImplementation.h"

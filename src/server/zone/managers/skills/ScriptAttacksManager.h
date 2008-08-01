@@ -88,6 +88,7 @@ public:
 	static int AddHealDamageTargetSkill(lua_State* L);
 	static int AddHealWoundTargetSkill(lua_State* L);
 	static int AddDiagnoseTargetSkill(lua_State* L);
+	static int AddReviveTargetSkill(lua_State* L);
 
 	static int AddEntertainSkill(lua_State* L);
 	static int AddEntertainEffectSkill(lua_State* L);

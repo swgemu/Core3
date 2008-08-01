@@ -73,7 +73,7 @@ public:
 			creature->doAnimation("heal_other");
 	}
 
-	EnhancePack* findMedpack(CreatureObject* creature, const string& modifier, int& poolAffected) {
+	EnhancePack* findMedpack(CreatureObject* creature, const string& modifier, int& poolAffected, bool& canUse) {
 		EnhancePack* enhancePack = NULL;
 		int medicineUse = creature->getSkillMod("healing_ability");
 
@@ -86,39 +86,32 @@ public:
 
 			tokenizer.getStringToken(poolName);
 
-			//cout << "Pool name is " << poolName << endl;
-
 			poolAffected = PharmaceuticalImplementation::getPoolFromName(poolName);
-
-			//cout << "Pool affected is " << poolAffected << endl;
 
 			if (tokenizer.hasMoreTokens())
 				objectid = tokenizer.getLongToken();
 
 			if (objectid > 0) {
 				SceneObject* invObj = creature->getInventoryItem(objectid);
-				
+
 				if (invObj != NULL && invObj->isTangible()) {
 					TangibleObject* tano = (TangibleObject*) invObj;
-					
+
 					if (tano->isPharmaceutical()) {
 						Pharmaceutical* pharm = (Pharmaceutical*) tano;
-						
+
 						if (pharm->isEnhancePack()) {
 							enhancePack = (EnhancePack*) pharm;
-			
-							if (enhancePack->getMedicineUseRequired() <= medicineUse)
+
+							if (enhancePack->getMedicineUseRequired() <= medicineUse) {
+								canUse = true;
 								return enhancePack;
+							}
 						}
 					}
 				}
 			}
 
-			/*if (objectid > 0) {
-				cout << "the specified pack didnt exist" << endl;
-			} else {
-				cout << "thir was no specified pack" << endl;
-			}*/
 		} else {
 			poolAffected = PharmaceuticalImplementation::UNKNOWN;
 			return NULL;
@@ -134,8 +127,10 @@ public:
 
 				if (enhancePack->isEnhancePack()
 						&& enhancePack->getMedicineUseRequired() <= medicineUse
-						&& enhancePack->getPoolAffected() == poolAffected)
+						&& enhancePack->getPoolAffected() == poolAffected) {
+					canUse = true;
 					return enhancePack;
+				}
 			}
 		}
 
@@ -152,8 +147,9 @@ public:
 		int amountBuffed = 0;
 		int battleFatigue = 0;
 		int modEnvironment = creature->getMedicalFacilityRating();
+		bool canUse = false;
 
-		enhancePack = findMedpack(creature, modifier, poolAffected);
+		enhancePack = findMedpack(creature, modifier, poolAffected, canUse);
 
 		if (target->isPlayer() || target->isNonPlayerCreature()) {
 			creatureTarget = (CreatureObject*) target;
@@ -177,6 +173,11 @@ public:
 
 		if (poolAffected == PharmaceuticalImplementation::UNKNOWN) {
 			creature->sendSystemMessage("healing_response", "healing_response_75"); //You must specify a valid attribute.
+			return 0;
+		}
+
+		if (!canUse) {
+			creature->sendSystemMessage("You do not have the skill to use this item.");
 			return 0;
 		}
 

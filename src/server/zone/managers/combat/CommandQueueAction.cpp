@@ -242,7 +242,7 @@ bool CommandQueueAction::checkHealSkill() {
 				return false;
 			}
 
-			if (targetObject->isDead()) {
+			if (targetObject->isDead() && !skill->isReviveSkill()) {
 				clearError(3);
 				targetObject->unlock();
 				return false;

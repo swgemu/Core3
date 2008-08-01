@@ -79,6 +79,7 @@ class CommandQueueActionEvent;
 class PlayerRecoveryEvent;
 class PlayerDigestEvent;
 class CenterOfBeingEvent;
+class ReviveCountdownEvent;
 
 class Datapad;
 
@@ -224,6 +225,11 @@ class PlayerImplementation : public PlayerServant {
 	uint32 targetFocus;
 	uint32 targetWillpower;
 
+	Time reviveTimeout;
+	ReviveCountdownEvent* reviveCountdownEvent;
+
+	//Vector<uint64> consentList;
+
 public:
 	static const int ONLINE = 1;
 	static const int OFFLINE = 2;
@@ -237,6 +243,9 @@ public:
 	static const int NORMAL = 4;
 	static const int QA = 8;
 	static const int EC = 16;
+
+	static const int PVPRATING_MIN = 800;
+	static const int PVPRATING_DEFAULT = 1200;
 
 
 public:
@@ -500,6 +509,12 @@ public:
 	void lootObject(Creature* creature, SceneObject* object);
 
 	void kill();
+	void deathblow(Player* player);
+	void activateClone();
+	void activateReviveCountdown();
+	void clearReviveCountdown();
+	void countdownRevive(int counter);
+	void handleDeath();
 
 	//mission methods
 	uint32 nextMisoRFC() {
@@ -902,6 +917,10 @@ public:
 		return group;
 	}
 
+	inline bool isRevivable() {
+		return !reviveTimeout.isPast();
+	}
+
 	inline bool isOnline() {
 		return onlineStatus != OFFLINE && onlineStatus != LINKDEAD;
 	}
@@ -997,7 +1016,7 @@ public:
 	inline uint32 getForcePower() {
 		return playerObject->getForcePower();
 	}
-	
+
 	inline uint32 getForcePowerMax() {
 		return getSkillMod("jedi_force_power_max");
 	}
@@ -1034,6 +1053,10 @@ public:
 		return pvpRating;
 	}
 
+	inline void setPvpRating(int value) {
+		pvpRating = value;
+	}
+
 	inline Badges* getBadges() {
 		return &badges;
 	}
@@ -1068,6 +1091,18 @@ public:
 
 	inline bool hasSuiBox(uint32 boxID) {
 		return suiBoxes.contains(boxID);
+	}
+
+	inline bool hasSuiBoxType(uint32 boxTypeID) {
+		uint32 type = 0;
+		for (int i=0; i<suiBoxes.size(); i++) {
+			SuiBox* sui = suiBoxes.get(i);
+			type = sui->getBoxTypeID();
+			if (boxTypeID == type)
+				return true;
+		}
+
+		return false;
 	}
 
 	void removeSuiBox(uint32 boxID) {

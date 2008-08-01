@@ -33,6 +33,8 @@ public:
 
 	unsigned long long getBoxID();
 
+	int getBoxTypeID();
+
 	unsigned long long getUsingObjectID();
 
 	Player* getPlayer();
@@ -74,6 +76,8 @@ public:
 	bool isBankTransferBox();
 
 	unsigned long long getBoxID();
+
+	int getBoxTypeID();
 
 	unsigned long long getUsingObjectID();
 

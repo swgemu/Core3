@@ -319,6 +319,10 @@ TangibleObject* ItemManagerImplementation::createSubObject(uint64 objectid, uint
 	case 0x316C7330:
 		item = new WoundPack(objectid, objectcrc, objectname, objecttemp);
 		break;
+	//Pharmaceutical RevivePack
+	case 0x35431212:
+		item = new RevivePack(objectid, objectcrc, objectname, objecttemp);
+		break;
 	default:
 		item = NULL;
 		break;
@@ -597,6 +601,7 @@ void ItemManagerImplementation::registerGlobals() {
 	setGlobalInt("CUREPACK", PharmaceuticalImplementation::CUREPACK);
 	setGlobalInt("STATEPACK", PharmaceuticalImplementation::STATEPACK);
 	setGlobalInt("STIMPACK", PharmaceuticalImplementation::STIMPACK);
+	setGlobalInt("REVIVEPACK", PharmaceuticalImplementation::REVIVEPACK);
 
 	setGlobalInt("HEALTH", PharmaceuticalImplementation::HEALTH);
 	setGlobalInt("ACTION", PharmaceuticalImplementation::ACTION);
@@ -693,6 +698,7 @@ TangibleObject* ItemManagerImplementation::createTemplateFromLua(LuaObject itemc
 				float eff = itemconfig.getFloatField("effectiveness");
 				float dur = itemconfig.getFloatField("duration");
 				int pool = itemconfig.getIntField("poolAffected");
+
 				EnhancePack* enhance = (EnhancePack*) item;
 				enhance->setEffectiveness(eff);
 				enhance->setDuration(dur);
@@ -703,6 +709,7 @@ TangibleObject* ItemManagerImplementation::createTemplateFromLua(LuaObject itemc
 			{
 				float eff = itemconfig.getFloatField("effectiveness");
 				int pool = itemconfig.getIntField("poolAffected");
+
 				WoundPack* wound = (WoundPack*) item;
 				wound->setEffectiveness(eff);
 				wound->setPoolAffected(pool);
@@ -712,9 +719,28 @@ TangibleObject* ItemManagerImplementation::createTemplateFromLua(LuaObject itemc
 				break;
 			case PharmaceuticalImplementation::STATEPACK:
 				break;
+			case PharmaceuticalImplementation::REVIVEPACK:
+			{
+				float hw = itemconfig.getFloatField("healthWoundHealed");
+				float hh = itemconfig.getFloatField("healthHealed");
+				float aw = itemconfig.getFloatField("actionWoundHealed");
+				float ah = itemconfig.getFloatField("actionHealed");
+				float mw = itemconfig.getFloatField("mindWoundHealed");
+				float mh = itemconfig.getFloatField("mindHealed");
+
+				RevivePack* revive = (RevivePack*) item;
+				revive->setHealthWoundHealed(hw);
+				revive->setHealthHealed(hh);
+				revive->setActionWoundHealed(aw);
+				revive->setActionHealed(ah);
+				revive->setMindWoundHealed(mw);
+				revive->setMindHealed(mh);
+				break;
+			}
 			case PharmaceuticalImplementation::STIMPACK:
 			{
 				float eff = itemconfig.getFloatField("effectiveness");
+
 				StimPack* stim = (StimPack*) item;
 				stim->setEffectiveness(eff);
 				break;

@@ -65,6 +65,9 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, Player* player, uint32
 	int range;
 
 	switch (type) {
+	case 0xC103:
+		handleCloneRequest(boxID, player, cancel, atoi(value.c_str()));
+		break;
 	case 0x5553:
 		handleStartMusic(boxID, player, cancel, value.c_str(), false);
 		break;
@@ -505,13 +508,13 @@ void SuiManager::handleTicketCollectorRespones(uint32 boxID, Player* player, uin
 
 			if (ticketObjectID != 0) {
 				SceneObject* invObj = player->getInventoryItem(ticketObjectID);
-				
+
 				if (invObj != NULL && invObj->isTangible()) {
 					TangibleObject* object = (TangibleObject*) invObj;
-	
+
 					if (object->isTicket()) {
 						Ticket* ticket = (Ticket*) object;
-	
+
 						ticket->useObject(player);
 					}
 				}
@@ -623,6 +626,34 @@ void SuiManager::handleBankTransfer(uint32 boxID, Player* player, int cash, int 
 		player->unlock();
 	} catch (...) {
 		error("Unreported exception caught in SuiManager::handleBankTransfer");
+		player->unlock();
+	}
+}
+void SuiManager::handleCloneRequest(uint32 boxID, Player* player, uint32 cancel, int index) {
+	try {
+		player->wlock();
+
+		cout << "boxID is: " << boxID << endl;
+
+		if (!player->hasSuiBox(boxID)) {
+			player->unlock();
+			return;
+		}
+
+		SuiBox* sui = player->getSuiBox(boxID);
+
+		player->removeSuiBox(boxID);
+
+		sui->finalize();
+
+		if (index >= 0)
+			player->doClone();
+		else
+			player->sendSystemMessage("You will remain dead until you choose a location to clone or you are revived. Type /activateClone to restore the clone window.");
+
+		player->unlock();
+	} catch (...) {
+		error("Unreported exception caught in SuiManager::handleCloneRequest");
 		player->unlock();
 	}
 }

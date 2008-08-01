@@ -79,9 +79,9 @@ DiagnoseTargetSkill = {
 	effect = "clienteffect/healing_healenhance.cef",
 	animation = "heal_self",
 	
-	mindCost = -10,
+	mindCost = 0,
 	range = 6.0,
-	speed = 5.0
+	speed = 0
 }
 
 AddDiagnoseTargetSkill(DiagnoseTargetSkill);

@@ -213,6 +213,18 @@ bool Pharmaceutical::isCurePack() {
 		return ((PharmaceuticalImplementation*) _impl)->isCurePack();
 }
 
+bool Pharmaceutical::isRevivePack() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 20);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((PharmaceuticalImplementation*) _impl)->isRevivePack();
+}
+
 /*
  *	PharmaceuticalAdapter
  */
@@ -265,6 +277,9 @@ Packet* PharmaceuticalAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		break;
 	case 19:
 		resp->insertBoolean(isCurePack());
+		break;
+	case 20:
+		resp->insertBoolean(isRevivePack());
 		break;
 	default:
 		return NULL;
@@ -327,6 +342,10 @@ bool PharmaceuticalAdapter::isStatePack() {
 
 bool PharmaceuticalAdapter::isCurePack() {
 	return ((PharmaceuticalImplementation*) impl)->isCurePack();
+}
+
+bool PharmaceuticalAdapter::isRevivePack() {
+	return ((PharmaceuticalImplementation*) impl)->isRevivePack();
 }
 
 /*

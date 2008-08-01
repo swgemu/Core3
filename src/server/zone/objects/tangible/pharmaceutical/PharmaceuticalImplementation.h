@@ -66,6 +66,7 @@ public:
 	static const int CUREPACK = 3;
 	static const int STIMPACK = 4;
 	static const int STATEPACK = 5;
+	static const int REVIVEPACK = 6;
 
 	//Affected Stat Pools
 	static const int HEALTH = 1;
@@ -186,6 +187,10 @@ public:
 
 	inline bool isCurePack() {
 		return medpackType == CUREPACK;
+	}
+
+	inline bool isRevivePack() {
+		return medpackType == REVIVEPACK;
 	}
 
 	static const int getPoolFromName(const string& pool) {

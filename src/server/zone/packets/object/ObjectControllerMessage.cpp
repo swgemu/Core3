@@ -94,7 +94,7 @@ bool ObjectControllerMessage::parseDataTransform(Player* player, Message* pack) 
 
 	uint32 movementStamp = pack->parseInt();
 	uint32 movementCounter = pack->parseInt();
-	
+
 	float x;
 	float z;
 	float y;
@@ -109,7 +109,7 @@ bool ObjectControllerMessage::parseDataTransform(Player* player, Message* pack) 
 	x = pack->parseFloat();
 	z = pack->parseFloat();
 	y = pack->parseFloat();
-	
+
 	if (x > 8192.0f || x < -8192.0f || y > 8192.0f || y < -8192.0f) {
 		player->error("position out of bounds...");
 		return false;
@@ -312,7 +312,9 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 	uint64 target;
 	unicode name;
 
-	if (player->isIncapacitated() || player->isDead()) {
+	//TODO: This needs to be revisted, certain skills can be done while dead or incapacitated:
+	// Like /activateClone = 0xEA69C1BD
+	if ((player->isIncapacitated() || player->isDead()) && actionCRC != 0xEA69C1BD) {
 		player->clearQueueAction(actioncntr, 0.0f, 1, 19);
 		return;
 	}
@@ -335,6 +337,10 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 	// CommandQueueAction* action; - not used anymore?
 
 	switch (actionCRC) {
+	case (0xEA69C1BD): //activateClone
+		cout << "/activateClone called";
+		player->activateClone();
+		break;
 	case (0x03B65950): // Logout
 		player->userLogout();
 		break;
@@ -688,10 +694,10 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 	case (0x2A2357ED): // Add Friend
 		parseAddFriend(player, pack);
 		break;
-		
+
 	case (0x929AD345): // Add Ignore
 		parseAddIgnore(player, pack);
-		break;		
+		break;
 	case (0x3629157F): // Remove Ignore
 		parseRemoveIgnore(player, pack);
 		break;
@@ -723,8 +729,12 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 		case (0xEEE029CF): //healenhance <poolaffected>
 		case (0x0A9F00A0): //healdamage <targetname>
 		case (0x2087CE04): //healwound <poolaffected>
+		case (0xC9759876): //reviveplayer <targetname>
 		case (0xDC7CF134): //diagnose
 		{
+			if (actionCRC == 0xC9759876)
+				cout << "objectcontroller targetid is " << target << endl;
+
 			unicode option = unicode("");
 			pack->parseUnicode(option);
 			actionModifier = option.c_str();
@@ -1774,7 +1784,7 @@ void ObjectControllerMessage::parseServerSit(Player* player, Message* pack) {
 }
 
 void ObjectControllerMessage::parseWaypointCreate(Player* player, Message* pack) {
-	//outdated and throwing exceptions. We use now "parseWaypointCommand 	
+	//outdated and throwing exceptions. We use now "parseWaypointCommand
 
 	/*
 	pack->shiftOffset(8); //Shift past the blank long.
@@ -1813,56 +1823,56 @@ void ObjectControllerMessage::parseWaypointCreate(Player* player, Message* pack)
 void ObjectControllerMessage::parseWaypointCommand(Player* player, Message* pack) {
 	int counter = 0;
 	string dummy;
-		
+
 	pack->shiftOffset(8);
-	
+
 	unicode waypoint;
-	pack->parseUnicode(waypoint);	
-	
+	pack->parseUnicode(waypoint);
+
 	string wpName = "New Waypoint";
-	
+
 	float x;
 	float y;
-	x = player->getPositionX();	
+	x = player->getPositionX();
 	y = player->getPositionY();
-	
+
 	//If the WP is in a cell, we need world cords from the parent or even parent-parent object
 	SceneObject* plPar = player->getParent();
-	
+
 	if (plPar != NULL) {
 		if (plPar->isCell()) {
-			
+
 			SceneObject* parpar = plPar->getParent();
-			
+
 			if (parpar != NULL) {
 				x = parpar->getPositionX();
 				y = parpar->getPositionY();
 			}
-			
+
 		}
 	}
-			
+
 	try {
 		if (waypoint.size()> 1) {
 			StringTokenizer bTokenizer(waypoint.c_str());
-			
+
 			// test  how many tokens
 			while (bTokenizer.hasMoreTokens()) {
 				bTokenizer.getStringToken(dummy);
 				counter++;
 			}
-			
+
 			StringTokenizer tokenizer(waypoint.c_str());
-	
+
 			if (counter	== 1 ) {
 				tokenizer.getStringToken(wpName);
 
 				SceneObject* plPar = player->getParent();
-				
+
 				if (plPar != NULL) {
 					if (plPar->isCell()) {
 						SceneObject* parpar = plPar->getParent();
-						
+
 						if (parpar != NULL) {
 							x = parpar->getPositionX();
 							y = parpar->getPositionY();
@@ -1871,16 +1881,16 @@ void ObjectControllerMessage::parseWaypointCommand(Player* player, Message* pack
 				} else {
 					x = player->getPositionX();
 					y = player->getPositionY();
-				}			
-			} else if (counter == 2) {			
+				}
+			} else if (counter == 2) {
 				x = tokenizer.getFloatToken();
 				y = tokenizer.getFloatToken();
-			
+
 			} else if (counter > 2) {
 				x = tokenizer.getFloatToken();
 				y = tokenizer.getFloatToken();
 				tokenizer.getStringToken(wpName);
-				
+
 				if (isdigit(wpName[0]) !=0) {
 					//User used    /waypoint name X Y    instead of     /waypoint X Y name
 					player->sendSystemMessage("Useage: /waypoint X Y <name>   or /waypoint <name>");
@@ -1893,12 +1903,12 @@ void ObjectControllerMessage::parseWaypointCommand(Player* player, Message* pack
 		cout << "Unreported exception in ObjectControllerMessage::parseWaypointCommand\n";
 		return;
 	}
-	
+
 	if ( (x == 0 && y == 0) ){
 		player->sendSystemMessage("Useage: /waypoint X Y <name>   or /waypoint <name>\n");
 		return;
 	}
-	
+
 	if (x < -8192 || x> 8192) {
 		player->sendSystemMessage("X coordinates are in the range from -8192 to 8192\n");
 		return;
@@ -1912,7 +1922,7 @@ void ObjectControllerMessage::parseWaypointCommand(Player* player, Message* pack
 	WaypointObject* wp = new WaypointObject(player, player->getNewItemID());
 	wp->setPosition(x, 0, y);
 	wp->setName(wpName);
-	
+
 	player->addWaypoint(wp);
 
 }
@@ -1951,12 +1961,12 @@ void ObjectControllerMessage::parseServerDestroyObject(Player* player,
 	pack->parseUnicode(unkPramString); //?
 
 	WaypointObject* waypoint = player->getWaypoint(objid);
-	
+
 	SceneObject* invObj = player->getInventoryItem(objid);
 
 	if (invObj != NULL && invObj->isTangible()) {
 		TangibleObject* item = (TangibleObject*) invObj;
-		
+
 		if (item->isEquipped()) {
 			//player->changeCloth(objid);
 			player->sendSystemMessage("You must unequip the item before destroying it.");
@@ -2360,14 +2370,56 @@ void ObjectControllerMessage::handleDeathblow(Player* player, Message* packet,
 
 	Player* target = (Player*) object;
 
+	player->unlock();
+
 	try {
-		target->wlock(player);
+		target->wlock();
 
 		if (combatManager->canAttack(player, target) && target->isIncapacitated()
 				&& target->isInRange(player, 5)) {
-			target->kill();
+
+
+			target->deathblow(player);
+
+			float currentRating = (float)player->getPvpRating();
+			float opponentRating = (float)target->getPvpRating();
+
+			//Using the formula: N = P1 + ( (1/9) * (P2 - P1 + 100) ), where P2 - P1 - 100 >= 0
+			int pointsGained = (int)round((1.0f/9.0f) * (opponentRating - currentRating + 100.0f));
+
+			pointsGained = (pointsGained >= 0) ? pointsGained : 0;
+			//TODO: Is there a max pvp rating?
+
+			player->increasePvpRating(pointsGained);
+
+			int newRating = player->getPvpRating();
+
+			stringstream victoryMsg;
+
+			string victimName = "";
+			unicode uniName = unicode("");
+			uniName = target->getCharacterName();
+			victimName = uniName.c_str();
+
+			if (pointsGained > 0) {
+				switch (System::random(2)) {
+				case 0:
+					victoryMsg << "You have fought valiantly against " << victimName.c_str() << ".  For your part in their death your player combat rating has been adjusted to " << newRating << ".";
+					break;
+				case 1:
+					victoryMsg << "You have killed " << victimName.c_str() << ". For your part in their death your player combat rating has been adjusted to " << newRating << ".";
+					break;
+				case 2:
+				default:
+					victoryMsg << "You have fearlessly slain your foe " << victimName.c_str() << ".  For your part in their death your player combat rating has been adjusted to " << newRating << ".";
+					break;
+				}
+			} else {
+				victoryMsg << "Although you have valiantly defeated " << victimName.c_str() << " in combat, you can reap no more combat rating points from %PT death at this time.  Your player combat rating remains at " << newRating << ".";
+			}
 
 			player->sendSystemMessage("base_player", "prose_target_dead", target->getObjectID());
+			player->sendSystemMessage(victoryMsg.str());
 		}
 
 		target->unlock();
@@ -2375,6 +2427,8 @@ void ObjectControllerMessage::handleDeathblow(Player* player, Message* packet,
 		cout << "Unreported exception caught in ObjectControllerMessage::handleDeathblow(Player* player, Message* packet)\n";
 		target->unlock();
 	}
+
+	player->wlock();
 }
 
 void ObjectControllerMessage::parseSurveySlashRequest(Player* player,
@@ -2451,12 +2505,12 @@ void ObjectControllerMessage::parseResourceContainerSplit(Player* player,
 		return;
 
 	int newQuantity = atoi(quantityString.c_str());
-	
+
 	SceneObject* invObj = player->getInventoryItem(objectID);
-	
+
 	if (invObj != NULL && invObj->isTangible()) {
 		TangibleObject* tano = (TangibleObject*) invObj;
-		
+
 		if (tano->isResource()) {
 			ResourceContainer* rco = (ResourceContainer*) tano;
 
@@ -2554,12 +2608,12 @@ void ObjectControllerMessage::parseRequestCraftingSession(Player* player,
 
 	//Check to see if the correct obj id is in the player's datapad
 	SceneObject* invObj = player->getInventoryItem(ctSceneObjID);
-	
+
 	CraftingTool* craftingTool = NULL;
-	
+
 	if (invObj != NULL && invObj->isTangible() && ((TangibleObject*)invObj)->isCraftingTool()) {
 		craftingTool = (CraftingTool*) invObj;
-		
+
 		if (craftingTool->isReady()) {
 
 			craftingTool->sendToolStart(player);
@@ -2690,7 +2744,7 @@ void ObjectControllerMessage::parseAddCraftingResource(Player* player,
 	packet->shiftOffset(4);
 
 	int counter = packet->parseByte();
-	
+
 	SceneObject* invObj = player->getInventoryItem(resourceObjectID);
 
 	if (invObj != NULL && invObj->isTangible()) {
@@ -2888,11 +2942,11 @@ void ObjectControllerMessage::parseRotateItem(Player* player, Message* pack) {
 			+ sqrt(.5)));
 
 }
-	
+
 void ObjectControllerMessage::parseAddIgnore(Player* player, Message* pack) {
 	//ToDO: Split the token based on dots for game (SWG), server (eg. sunrunner) and name (SWG.sunrunner.john)
 	pack->shiftOffset(8);
-	
+
 	unicode d;
 	pack->parseUnicode(d);
 
@@ -2905,14 +2959,14 @@ void ObjectControllerMessage::parseAddIgnore(Player* player, Message* pack) {
 
 void ObjectControllerMessage::parseRemoveIgnore(Player* player, Message* pack) {
 	pack->shiftOffset(8);
-	
+
 	unicode d;
 	pack->parseUnicode(d);
 
 	string name = d.c_str();
 
-	if(name != ""){	
-		player->getPlayerObject()->removeIgnore(name);		
+	if(name != ""){
+		player->getPlayerObject()->removeIgnore(name);
 	}
 }
 

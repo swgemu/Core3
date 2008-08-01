@@ -86,6 +86,7 @@ which carries forward this exception.
 #include "events/SurveyEvent.h"
 #include "events/EntertainerEvent.h"
 #include "events/SampleEvent.h"
+#include "events/ReviveCountdownEvent.h"
 
 #include "../creature/events/DizzyFallDownEvent.h"
 
@@ -210,7 +211,7 @@ void PlayerImplementation::init() {
 
 	// pvp stuff
 	deathCount = 0;
-	pvpRating = 0;
+	pvpRating = PVPRATING_DEFAULT; //New players start with pvpRating of 1200
 	duelList.setInsertPlan(SortedVector<Player*>::NO_DUPLICATE);
 
 	// profession
@@ -275,6 +276,9 @@ void PlayerImplementation::init() {
 	setTargetFocus(0);
 	setTargetWillpower(0);
 
+	reviveTimeout;
+ 	reviveCountdownEvent = NULL;
+
 	suiBoxes.setInsertPlan(SortedVector<SuiBox*>::NO_DUPLICATE);
 	suiBoxes.setNullValue(NULL);
 
@@ -328,7 +332,7 @@ void PlayerImplementation::load(ZoneClient* client) {
 
 		loadItems();
 
-		setLoggingIn();
+		setLoggingIn(); //Anyone notice this is in here twice?
 
 		Zone* zone = server->getZoneServer()->getZone(zoneID);
 		insertToZone(zone);
@@ -337,7 +341,7 @@ void PlayerImplementation::load(ZoneClient* client) {
 			playerSaveStateEvent = new PlayerSaveStateEvent(_this);
 		else
 			playerSaveStateEvent->setPlayer(_this);
-			
+
 		server->addEvent(playerSaveStateEvent, 300000);
 
 		PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
@@ -397,7 +401,7 @@ void PlayerImplementation::reload(ZoneClient* client) {
 		client->setPlayer(_this);
 
 		setLoggingIn();
-		
+
 		if (playerSaveStateEvent == NULL)
 			playerSaveStateEvent = new PlayerSaveStateEvent(_this);
 		else
@@ -453,6 +457,15 @@ void PlayerImplementation::unload() {
 	PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
 	playerManager->updateOtherFriendlists(_this, false);
 
+	/*
+	if (reviveCountdownEvent != NULL) {
+		if (reviveCountdownEvent->isQueued())
+			server->removeEvent(reviveCountdownEvent);
+
+		delete reviveCountdownEvent;
+		reviveCountdownEvent = NULL;
+	}*/
+
 	if (firstSampleEvent != NULL) {
 		if (firstSampleEvent->isQueued())
 			server->removeEvent(firstSampleEvent);
@@ -499,11 +512,11 @@ void PlayerImplementation::unload() {
 		mnt->unlock();
 	}
 
-	savePlayerState();	
+	savePlayerState();
 
 	if (zone != NULL) {
 		ZoneServer* zserver = zone->getZoneServer();
-		
+
 		PlayerManager* playerManager = zserver->getPlayerManager();
 		playerManager->unload(_this);
 
@@ -527,6 +540,13 @@ void PlayerImplementation::unload() {
 				delete dizzyFallDownEvent;
 				dizzyFallDownEvent = NULL;
 			}
+
+			/*if (reviveCountdownEvent != NULL && reviveCountdownEvent->isQueued()) {
+				server->removeEvent(reviveCountdownEvent);
+
+				delete reviveCountdownEvent;
+				reviveCountdownEvent = NULL;
+			}*/
 
 			if (changeFactionEvent != NULL) {
 				server->removeEvent(changeFactionEvent);
@@ -1581,12 +1601,69 @@ void PlayerImplementation::doIncapacitate() {
 }
 
 void PlayerImplementation::kill() {
-	clearStates();
+	sendSystemMessage("base_player", "victim_dead"); //You have died. Requesting clone activation...
+	handleDeath();
+}
+
+void PlayerImplementation::deathblow(Player* killer) {
+	float currentRating = (float)getPvpRating();
+	float opponentRating = (float)killer->getPvpRating();
+
+	//Using the formula: N = P1 - ( (1/5) * (P1 - P2 + 100) ), where P1 - P2 + 100 >= 0
+	int pointsLost = (int)round((1.0f/5.0f) * (currentRating - opponentRating + 100.0f));
+
+	pointsLost = (pointsLost >= 0) ? pointsLost : 0;
+	pointsLost = ((currentRating - pointsLost) >= PVPRATING_MIN) ? pointsLost : 0; //Check to be sure that they don't go below the minimum points allowed.
+
+	decreasePvpRating(pointsLost);
+
+	int newRating = getPvpRating();
+
+	stringstream defeatedMsg;
+
+	string killerName = "";
+	unicode uniName = unicode("");
+	uniName = killer->getCharacterName();
+	killerName = uniName.c_str();
+
+	if (pointsLost > 0) {
+		switch (System::random(2)) {
+		case 0:
+			defeatedMsg << "You have been killed by " << killerName.c_str() << ". Your new player combat rating is " << newRating << ".";
+			break;
+		case 1:
+			defeatedMsg << "You have fallen prey to " << killerName.c_str() << ". Your new player combat rating is " << newRating << ".";
+			break;
+		case 2:
+		default:
+			defeatedMsg << "You have perished at the hand of " << killerName.c_str() << ". Your new player combat rating is " << newRating << ".";
+			break;
+		}
+	} else {
+		defeatedMsg << "Although you have fallen at the hands of " << killerName.c_str() << ",  your cannot lose any more rating points at this time.  Your player combat rating remains at " << newRating << ".";
+	}
+
+	//TODO: awardFactionPoints(); Only if both players are overt.
+
+	sendSystemMessage("base_player", "prose_victim_dead", killer->getObjectID()); //You were slain by %TT. Requesting clone activation...
+
+	sendSystemMessage(defeatedMsg.str());
+
+	clearDuelList();
+	handleDeath();
+}
+
+/*
+void PlayerImplementation::throttlePvpRating(Player* player) {
+	 *
+	 * TODO: When a player is killed, they should be added to that players recently killed list so that no points are awarded.
+	 *
+}*/
+
+void PlayerImplementation::handleDeath() {
 	setPosture(DEAD_POSTURE);
-
 	deathCount = 0;
-
-	rescheduleRecovery(5000);
+	rescheduleRecovery(3000);
 }
 
 void PlayerImplementation::changePosture(int post) {
@@ -1695,8 +1772,8 @@ void PlayerImplementation::doRecovery() {
 
 		setPosture(UPRIGHT_POSTURE);
 	} else if (isDead()) {
-		doClone();
-
+		activateClone();
+		//activateReviveCountdown(); TODO: Fix the revive countdown timer issue.
 		return;
 	}
 
@@ -1720,6 +1797,75 @@ void PlayerImplementation::doRecovery() {
 		calculateForceRegen();
 
 	activateRecovery();
+}
+
+/*
+void PlayerImplementation::revive() {
+}*/
+
+void PlayerImplementation::clearReviveCountdown() {
+	reviveTimeout.update();
+
+	if (reviveCountdownEvent != NULL && reviveCountdownEvent->isQueued()) {
+		server->removeEvent(reviveCountdownEvent);
+
+		delete reviveCountdownEvent;
+		reviveCountdownEvent = NULL;
+	}
+}
+
+void PlayerImplementation::activateReviveCountdown() {
+	int minutes = 5;
+
+	reviveTimeout.update();
+	reviveTimeout.addMiliTime(minutes * 60 * 1000);
+
+	countdownRevive(minutes);
+}
+
+void PlayerImplementation::countdownRevive(int counter) {
+	stringstream message;
+	int seconds = 60; //How long in between message delays.
+
+	if (!isRevivable() && counter >= 0) {
+		cout << "not revivable anymore" << endl;
+		counter = 0;
+	}
+
+	switch (counter) {
+	case 5:
+	case 4:
+	case 3:
+	case 2:
+	case 1:
+		message << "You have " << counter << " minutes remaining to be revived.";
+		break;
+	case 0:
+		message << "Your chance for resuscitation has expired. You have one minute to select a cloning facility, or one will be automatically chosen.";
+		break;
+	default:
+		break;
+	}
+
+	sendSystemMessage(message.str());
+
+	if (counter >= 0) {
+
+		--counter;
+
+		if (reviveCountdownEvent != NULL && reviveCountdownEvent->isQueued()) {
+			server->removeEvent(reviveCountdownEvent);
+
+			delete reviveCountdownEvent;
+			reviveCountdownEvent = NULL;
+		}
+
+		reviveCountdownEvent = new ReviveCountdownEvent(this, counter, seconds);
+		server->addEvent(reviveCountdownEvent);
+	} else {
+		if (!hasSuiBox(0xC103))
+			doClone();
+	}
 }
 
 void PlayerImplementation::doStateRecovery() {
@@ -1783,8 +1929,49 @@ void PlayerImplementation::doDigest() {
 	activateDigest();
 }
 
+void PlayerImplementation::activateClone() {
+	cout << "activate clone called" << endl;
+
+	if (hasSuiBoxType(0xC103)) //Does player already have an Activate Clone Box up? If so, we don't want to send another until it is closed.
+		return;
+
+	SuiListBox* cloneMenu = new SuiListBox(_this, 0xC103);
+
+	cloneMenu->setPromptTitle("@base_player:revive_title");
+
+	string clonerName = "Mos Eisley";
+
+	//TODO: Integrate this menu with cloning system.
+
+	stringstream promptText;
+	promptText << "Closest:\t\t\t" << clonerName << "\n"
+			   << "Pre-Designated: \t" << clonerName << "\n" //Space before tab character is needed for proper formatting in this case.
+			   << "Cash Balance:\t\t" << getCashCredits() << "\n\n"
+			   << "Select the desired option and click OK.";
+
+	cloneMenu->setPromptText(promptText.str());
+
+	cloneMenu->addMenuItem("@base_player:revive_closest");
+	cloneMenu->addMenuItem("@base_player:revive_bind");
+
+	addSuiBox(cloneMenu);
+	sendMessage(cloneMenu->generateMessage());
+}
+
 void PlayerImplementation::doClone() {
 	info("cloning player");
+
+	cout << "In doClone" << endl;
+
+	//clearReviveCountdown();
+
+	//TODO: This should check to see if the data is stored at the cloning facility or not, these numbers are much less if so.
+
+	changeHealthWoundsBar(100);
+	changeActionWoundsBar(100);
+	changeMindWoundsBar(100);
+	//TODO: Add in secondary wounds?
+	changeShockWounds(100);
 
 	switch (zoneID) {
 	case 0:	// Corellia
@@ -1863,6 +2050,7 @@ void PlayerImplementation::doClone() {
 	}
 
 	clearStates();
+
 	clearBuffs(true);
 
 	//food persists cloning
@@ -1878,11 +2066,11 @@ void PlayerImplementation::doClone() {
 	setNeutral();
 	setCovert();
 
-	clearDuelList();
-
 	setPosture(UPRIGHT_POSTURE);
 
 	rescheduleRecovery();
+
+	cout << "finished doclone" << endl;
 }
 
 void PlayerImplementation::doCenterOfBeing() {
@@ -2633,27 +2821,27 @@ void PlayerImplementation::unsetArmorEncumbrance(Armor* armor) {
 
 void PlayerImplementation::applyPowerup(uint64 powerupID, uint64 targetID) {
 	SceneObject* invObj = getInventoryItem(powerupID);
-	
+
 	if (invObj == NULL || !invObj->isTangible())
 		return;
-		
+
 	TangibleObject* tano = (TangibleObject*) invObj;
-	
+
 	if (!tano->isWeaponPowerup())
 		return;
-		
+
 	Powerup* powerup = (Powerup*) tano;
-	
+
 	invObj = getInventoryItem(targetID);
-	
+
 	if (invObj == NULL || !invObj->isTangible())
 		return;
-		
+
 	tano = (TangibleObject*) invObj;
-	
+
 	if (!tano->isWeapon())
 		return;
-	
+
 	Weapon* weapon = (Weapon*) tano;
 
 	weapon->wlock();
@@ -2682,27 +2870,27 @@ void PlayerImplementation::applyPowerup(uint64 powerupID, uint64 targetID) {
 
 void PlayerImplementation::applyAttachment(uint64 attachmentID, uint64 targetID) {
 	SceneObject* invObj = getInventoryItem(attachmentID);
-	
+
 	if (invObj == NULL || !invObj->isTangible())
 		return;
-		
+
 	TangibleObject* tano = (TangibleObject*) invObj;
-	
+
 	if (!tano->isAttachment())
 		return;
-		
+
 	Attachment* attachment = (Attachment*) tano;
-	
+
 	invObj = getInventoryItem(targetID);
-	
+
 	if (invObj == NULL || !invObj->isTangible())
 		return;
-		
+
 	tano = (TangibleObject*) invObj;
-	
+
 	if (!tano->isArmor())
 		return;
-		
+
 	Armor* armor = (Armor*) tano;
 
 	armor->wlock();
@@ -2888,7 +3076,6 @@ void PlayerImplementation::removeFromDuelList(Player* targetPlayer) {
 void PlayerImplementation::clearDuelList() {
 	if (zone != NULL) {
 		CombatManager* combatManager = server->getCombatManager();
-
 		combatManager->freeDuelList(_this);
 	}
 }

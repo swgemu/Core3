@@ -164,7 +164,7 @@ bool PlayerManagerImplementation::create(Player* player, uint32 sessionkey) {
 	          << "`lfg`,`helper`,`roleplayer`,`faction_id`,`archived`,`scale`,`biography`,"
 	          << "`infofield`,`hair`,`hairData`,`playermodel`,`CRC`,`Title`,"
 	          << "`health`,`strength`,`constitution`,`action`,`quickness`,"
-	          << "`stamina`,`mind`,`focus`,`willpower`, adminLevel"
+	          << "`stamina`,`mind`,`focus`,`willpower`,`PvpRating`, adminLevel"
 	          << ") VALUES ("
     	      << accountID << "," << galaxyID << ",'"
 	          << player->getFirstName() << "','" << player->getLastName() << "','"
@@ -178,7 +178,8 @@ bool PlayerManagerImplementation::create(Player* player, uint32 sessionkey) {
     	      << player->getHairObject() << "','" << hairdata.substr(0, hairdata.size() - 1) << "','', '0','',"
     	      << player->getBaseHealth() << "," << player->getBaseStrength() << "," << player->getBaseConstitution() << ","
     	      << player->getBaseAction() << "," << player->getBaseQuickness() << "," << player->getBaseStamina() << ","
-    	      << player->getBaseMind() << "," << player->getBaseFocus() << "," << player->getBaseWillpower() << "," << player->getAdminLevel() << ")";
+    	      << player->getBaseMind() << "," << player->getBaseFocus() << "," << player->getBaseWillpower() << ","
+    	      << player->getPvpRating() << "," << player->getAdminLevel() << ")";
 
 		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
 
@@ -432,7 +433,8 @@ void PlayerManagerImplementation::loadFromDatabase(Player* player) {
 
 	loadWaypoints(player);
 
-	player->setAdminLevel(character->getInt(48));
+	player->setPvpRating(character->getInt(48));
+	player->setAdminLevel(character->getInt(49));
 
 	delete character;
 }
@@ -535,6 +537,7 @@ void PlayerManagerImplementation::unload(Player* player) {
           << ",Title=" << "'" << player->getPlayerObject()->getCurrentTitle() << "'"
           << ",Guild=" << "'" << player->getGuildID() << "'"
           << ",AdminLevel=" << "'" << player->getAdminLevel() << "'"
+          << ",PvpRating=" << "'" << player->getPvpRating() << "'"
            << ",credits_inv=" << "'" << player->getCashCredits() << "'"
           << ",credits_bank=" << "'" << player->getBankCredits() << "'"
           << ",parentid=" << "'" << player->getParentID() << "'"

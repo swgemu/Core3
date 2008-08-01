@@ -117,3 +117,14 @@ HealEnhanceTargetSkill = {
 }
 
 AddHealEnhanceTargetSkill(HealEnhanceTargetSkill);
+
+ReviveTargetSkill = {
+	skillname = "reviveplayer",
+	effect = "clienteffect/healing_healwound.cef",
+	animation = "heal_self",
+	
+	mindCost = -200,
+	range = 6.0
+}
+
+AddReviveTargetSkill(ReviveTargetSkill);

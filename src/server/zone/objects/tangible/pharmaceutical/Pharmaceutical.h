@@ -53,6 +53,8 @@ public:
 
 	bool isCurePack();
 
+	bool isRevivePack();
+
 protected:
 	Pharmaceutical(DummyConstructorParameter* param);
 
@@ -96,6 +98,8 @@ public:
 	bool isStatePack();
 
 	bool isCurePack();
+
+	bool isRevivePack();
 
 };
 

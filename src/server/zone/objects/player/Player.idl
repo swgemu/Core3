@@ -171,7 +171,17 @@ interface Player implements CreatureObject {
 	
 	void doPeace();
 	
+	void doClone();
+	
 	void kill();
+	void deathblow(Player player);
+	
+	void activateClone();
+	void activateReviveCountdown();
+	void clearReviveCountdown();
+	void countdownRevive(int counter);
+	
+	boolean isRevivable();
 	
 	void addBuff(unsigned int buffcrc, float time);	
 	
@@ -362,6 +372,7 @@ interface Player implements CreatureObject {
 	// SuiBoxes
 	
 	boolean hasSuiBox(unsigned int boxID);
+	boolean hasSuiBoxType(unsigned int boxTypeID);
 
 	void removeSuiBox(unsigned int boxID);
 
@@ -413,6 +424,10 @@ interface Player implements CreatureObject {
 	unsigned int getImperialPoints();
 	
 	int getPvpRating();
+	void setPvpRating(int value);
+	
+	void increasePvpRating(int value);
+	void decreasePvpRating(int value);
 	
 	void getPlayersNearYou();
 	
