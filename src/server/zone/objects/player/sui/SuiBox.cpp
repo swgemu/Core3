@@ -19,12 +19,24 @@ SuiBox::SuiBox(DummyConstructorParameter* param) {
 SuiBox::~SuiBox() {
 }
 
-void SuiBox::setPromptTitle(const string& name) {
+BaseMessage* SuiBox::generateCloseMessage() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 6);
+
+		return (BaseMessage*) method.executeWithObjectReturn();
+	} else
+		return ((SuiBoxImplementation*) _impl)->generateCloseMessage();
+}
+
+void SuiBox::setPromptTitle(const string& name) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
 		method.addAsciiParameter(name);
 
 		method.executeWithVoidReturn();
@@ -37,7 +49,7 @@ void SuiBox::setPromptText(const string& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, 8);
 		method.addAsciiParameter(name);
 
 		method.executeWithVoidReturn();
@@ -50,7 +62,7 @@ void SuiBox::setCancelButton(bool value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, 9);
 		method.addBooleanParameter(value);
 
 		method.executeWithVoidReturn();
@@ -63,7 +75,7 @@ void SuiBox::setUsingObjectID(unsigned long long oid) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, 10);
 		method.addUnsignedLongParameter(oid);
 
 		method.executeWithVoidReturn();
@@ -76,7 +88,7 @@ bool SuiBox::isInputBox() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, 11);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -88,7 +100,7 @@ bool SuiBox::isListBox() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 12);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -100,7 +112,7 @@ bool SuiBox::isMessageBox() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, 13);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -112,7 +124,7 @@ bool SuiBox::isTransferBox() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 14);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -124,7 +136,7 @@ bool SuiBox::isColorPicker() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 15);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -136,7 +148,7 @@ bool SuiBox::isBankTransferBox() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, 16);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -148,7 +160,7 @@ unsigned long long SuiBox::getBoxID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 17);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -160,7 +172,7 @@ int SuiBox::getBoxTypeID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 18);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -172,7 +184,7 @@ unsigned long long SuiBox::getUsingObjectID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 19);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -184,7 +196,7 @@ Player* SuiBox::getPlayer() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, 20);
 
 		return (Player*) method.executeWithObjectReturn();
 	} else
@@ -203,45 +215,48 @@ Packet* SuiBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case 6:
-		setPromptTitle(inv->getAsciiParameter(_param0_setPromptTitle__string_));
+		resp->insertLong(generateCloseMessage()->_getObjectID());
 		break;
 	case 7:
-		setPromptText(inv->getAsciiParameter(_param0_setPromptText__string_));
+		setPromptTitle(inv->getAsciiParameter(_param0_setPromptTitle__string_));
 		break;
 	case 8:
-		setCancelButton(inv->getBooleanParameter());
+		setPromptText(inv->getAsciiParameter(_param0_setPromptText__string_));
 		break;
 	case 9:
-		setUsingObjectID(inv->getUnsignedLongParameter());
+		setCancelButton(inv->getBooleanParameter());
 		break;
 	case 10:
-		resp->insertBoolean(isInputBox());
+		setUsingObjectID(inv->getUnsignedLongParameter());
 		break;
 	case 11:
-		resp->insertBoolean(isListBox());
+		resp->insertBoolean(isInputBox());
 		break;
 	case 12:
-		resp->insertBoolean(isMessageBox());
+		resp->insertBoolean(isListBox());
 		break;
 	case 13:
-		resp->insertBoolean(isTransferBox());
+		resp->insertBoolean(isMessageBox());
 		break;
 	case 14:
-		resp->insertBoolean(isColorPicker());
+		resp->insertBoolean(isTransferBox());
 		break;
 	case 15:
-		resp->insertBoolean(isBankTransferBox());
+		resp->insertBoolean(isColorPicker());
 		break;
 	case 16:
-		resp->insertLong(getBoxID());
+		resp->insertBoolean(isBankTransferBox());
 		break;
 	case 17:
-		resp->insertSignedInt(getBoxTypeID());
+		resp->insertLong(getBoxID());
 		break;
 	case 18:
-		resp->insertLong(getUsingObjectID());
+		resp->insertSignedInt(getBoxTypeID());
 		break;
 	case 19:
+		resp->insertLong(getUsingObjectID());
+		break;
+	case 20:
 		resp->insertLong(getPlayer()->_getObjectID());
 		break;
 	default:
@@ -249,6 +264,10 @@ Packet* SuiBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	}
 
 	return resp;
+}
+
+BaseMessage* SuiBoxAdapter::generateCloseMessage() {
+	return ((SuiBoxImplementation*) impl)->generateCloseMessage();
 }
 
 void SuiBoxAdapter::setPromptTitle(const string& name) {

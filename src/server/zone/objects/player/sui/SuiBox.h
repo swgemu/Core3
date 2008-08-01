@@ -11,6 +11,8 @@ class Player;
 
 class SuiBox : public DistributedObjectStub {
 public:
+	BaseMessage* generateCloseMessage();
+
 	void setPromptTitle(const string& name);
 
 	void setPromptText(const string& name);
@@ -54,6 +56,8 @@ public:
 	SuiBoxAdapter(SuiBoxImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	BaseMessage* generateCloseMessage();
 
 	void setPromptTitle(const string& name);
 

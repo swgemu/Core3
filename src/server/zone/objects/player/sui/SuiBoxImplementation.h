@@ -83,6 +83,8 @@ public:
 	~SuiBoxImplementation();
 
 	virtual BaseMessage* generateMessage() = 0;
+	
+	BaseMessage* generateCloseMessage();
 
 	int compareTo(SuiBox* obj) {
 		uint32 id = obj->getBoxID();

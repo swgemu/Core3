@@ -42,26 +42,18 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-import "../Player";
+#ifndef SUIFORCECLOSEPAGE_H_
+#define SUIFORCECLOSEPAGE_H_
 
-interface SuiBox {
+class SuiForceClosePage : public BaseMessage {
+public:
+   SuiForceClosePage(uint32 pageID) : BaseMessage() {
+		insertShort(0x02);
+		insertInt(0x990B5DE0);  // CRC
+		
+		insertInt(pageID);
+   }
 
-	BaseMessage generateCloseMessage();
-	
-	void setPromptTitle(const string name);
-	void setPromptText(const string name);
-	void setCancelButton(boolean value);
-	void setUsingObjectID(unsigned long oid);
+};
 
-	boolean isInputBox();
-	boolean isListBox();
-	boolean isMessageBox();
-	boolean isTransferBox();
-	boolean isColorPicker();
-	boolean isBankTransferBox();
-
-	unsigned long getBoxID();
-	int getBoxTypeID();
-	unsigned long getUsingObjectID();
-	Player getPlayer();
-}
+#endif /*SUIFORCECLOSEPAGE_H_*/

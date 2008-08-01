@@ -60,5 +60,12 @@ SuiBoxImplementation::SuiBoxImplementation(Player* play, uint32 typeID, uint32 b
 	cancelButton = false;
 }
 
+//This will return the packet to close the UI page on the client. 
+//Make sure to remove the suibox from the suiBoxes map
+BaseMessage* SuiBoxImplementation::generateCloseMessage() {
+	SuiForceClosePage* msg = new SuiForceClosePage(boxID);
+	return msg;
+}
+
 SuiBoxImplementation::~SuiBoxImplementation() {
 }
