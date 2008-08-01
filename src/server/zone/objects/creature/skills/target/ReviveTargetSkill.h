@@ -215,13 +215,7 @@ public:
 		sendHealMessage((Player*)creature, playerTarget, healthHealed, actionHealed, mindHealed);
 		sendWoundMessage((Player*)creature, playerTarget, healthWoundHealed, actionWoundHealed, mindWoundHealed);
 
-		try {
-			playerTarget->wlock();
-			playerTarget->revive();
-			playerTarget->unlock();
-		} catch (...) {
-			playerTarget->unlock();
-		}
+		playerTarget->revive();
 
 		creature->changeMindBar(-mindCost);
 
