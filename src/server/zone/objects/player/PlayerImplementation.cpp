@@ -3092,27 +3092,6 @@ void PlayerImplementation::clearDuelList() {
 }
 
 // Mission Functions
-/*
-bool PlayerImplementation::isOnCurMisoKey(string& tmk) {
-	StringTokenizer ut(curMisoKeys.c_str());
-	string temp;
-	
-	ut.setDelimeter(",");
-	
-	while(ut.hasMoreTokens()) {
-		ut.getStringToken(temp); //Get the next key+state pair
-		
-		//If we have found the key we are looking get the state of, return true
-		if(temp == tmk) {
-			printf("isOnCurMisoKey(): returning true\n");
-			return true;
-		}
-	}
-	
-	printf("isOnCurMisoKey(): returning false\n");
-	return false;
-}
-*/
 
 bool PlayerImplementation::isOnCurMisoKey(string& tmk) {
 	tmk += ",";
@@ -3158,10 +3137,6 @@ bool PlayerImplementation::hasCompletedMisoKey(string& tmk) {
 		//printf("PlayerImplementation::hasCompletedMisoKey() : player has completed mission.");
 		return true;
 	}
-}
-
-void PlayerImplementation::debugPrintMisoVars() {
-	printf("misoBSB = %i, misoRFC = %i \n curMisoKeys = %s \n finMisoKeys = %s \n", misoBSB, misoRFC, curMisoKeys.c_str(), finMisoKeys.c_str());
 }
 
 // Crafting
