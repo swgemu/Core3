@@ -136,7 +136,7 @@ gorax = Creature:new {
       meatMax = 0,
 
       skills = { "goraxAttack1", "goraxAttack2" },
-      -- respawnTimer = 180,
+      respawnTimer = 18000,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }

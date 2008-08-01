@@ -73,11 +73,11 @@ nightsisterRancorTamer = Creature:new {
 
       height = 1, -- Size of creature
       armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-      kinetic = 0,
-      energy = 0,
+      kinetic = 30,
+      energy = 30,
       electricity = 50,
       stun = 100,
-      blast = 0,
+      blast = 30,
       heat = 50,
       cold = 50,
       acid = 50,
@@ -136,7 +136,7 @@ nightsisterRancorTamer = Creature:new {
       meatMax = 0,
 
       skills = { "nightsisterAttack40", "nightsisterAttack41", "nightsisterAttack42", "nightsisterAttack43", "nightsisterAttack44", "nightsisterAttack45", "nightsisterAttack46", "nightsisterAttack47", "nightsisterAttack48", "nightsisterAttack49", "nightsisterAttack50", "nightsisterAttack51" },
-      -- respawnTimer = 180,
+       respawnTimer = 300,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }

@@ -72,15 +72,15 @@ singingMountainClanSentry = Creature:new {
       willpower = 0,
 
       height = 1, -- Size of creature
-      armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-      kinetic = 15,
-      energy = 15,
-      electricity = -1,
-      stun = -1,
-      blast = 40,
-      heat = -1,
-      cold = 40,
-      acid = 1,
+      armor = 2, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+      kinetic = 100,
+      energy = 5,
+      electricity = 100,
+      stun = 100,
+      blast = 5,
+      heat = 100,
+      cold = 100,
+      acid = 100,
       lightsaber = 0,
 
       accuracy = 300,
@@ -136,7 +136,7 @@ singingMountainClanSentry = Creature:new {
       meatMax = 0,
 
       skills = { "singingMountainClanAttack40", "singingMountainClanAttack41", "singingMountainClanAttack42", "singingMountainClanAttack43", "singingMountainClanAttack44", "singingMountainClanAttack45", "singingMountainClanAttack46", "singingMountainClanAttack47", "singingMountainClanAttack48", "singingMountainClanAttack49", "singingMountainClanAttack50", "singingMountainClanAttack51" },
-      -- respawnTimer = 180,
+       respawnTimer = 300,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }

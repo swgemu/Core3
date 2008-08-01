@@ -72,12 +72,12 @@ nightsisterProtector = Creature:new {
       willpower = 0,
 
       height = 1, -- Size of creature
-      armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-      kinetic = 0,
+      armor = 2, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+      kinetic = 15,
       energy = 100,
       electricity = 100,
       stun = 100,
-      blast = 0,
+      blast = 15,
       heat = 100,
       cold = 100,
       acid = 100,
@@ -136,7 +136,7 @@ nightsisterProtector = Creature:new {
       meatMax = 0,
 
       skills = { "nightsisterAttack20", "nightsisterAttack21", "nightsisterAttack22", "nightsisterAttack23", "nightsisterAttack24",  "nightsisterAttack25", "nightsisterAttack26", "nightsisterAttack27", "nightsisterAttack28", "nightsisterAttack29", "nightsisterAttack30", "nightsisterAttack31" },
-      -- respawnTimer = 180,
+        respawnTimer = 400,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }

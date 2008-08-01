@@ -73,11 +73,11 @@ nightsisterSentinal = Creature:new {
 
       height = 1, -- Size of creature
       armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-      kinetic = 0,
-      energy = 0,
+      kinetic = 30,
+      energy = 30,
       electricity = 100,
       stun = 100,
-      blast = 0,
+      blast = 30,
       heat = 100,
       cold = 100,
       acid = 100,
@@ -136,7 +136,7 @@ nightsisterSentinal = Creature:new {
       meatMax = 0,
 
       skills = { "nightsisterAttack20", "nightsisterAttack21", "nightsisterAttack22", "nightsisterAttack23", "nightsisterAttack24",  "nightsisterAttack25", "nightsisterAttack26", "nightsisterAttack27", "nightsisterAttack28", "nightsisterAttack29", "nightsisterAttack30", "nightsisterAttack31" },
-      -- respawnTimer = 180,
+       respawnTimer = 300,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }

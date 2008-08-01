@@ -73,14 +73,14 @@ singingMtnClanInitiate = Creature:new {
 
       height = 1, -- Size of creature
       armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-      kinetic = 30,
-      energy = 30,
-      electricity = -1,
-      stun = 35,
-      blast = 75,
-      heat = -1,
-      cold = 75,
-      acid = -1,
+      kinetic = 100,
+      energy = 5,
+      electricity = 100,
+      stun = 100,
+      blast = 5,
+      heat = 100,
+      cold = 100,
+      acid = 100,
       lightsaber = 0,
 
       accuracy = 300,
@@ -136,7 +136,7 @@ singingMtnClanInitiate = Creature:new {
       meatMax = 0,
 
       skills = { "singingMountainClanAttack40", "singingMountainClanAttack41", "singingMountainClanAttack42", "singingMountainClanAttack43", "singingMountainClanAttack44", "singingMountainClanAttack45", "singingMountainClanAttack46", "singingMountainClanAttack47", "singingMountainClanAttack48", "singingMountainClanAttack49", "singingMountainClanAttack50", "singingMountainClanAttack51" },
-      -- respawnTimer = 180,
+       respawnTimer = 300,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }

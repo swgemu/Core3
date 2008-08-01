@@ -73,11 +73,11 @@ nightsisterSentry = Creature:new {
 
       height = 1, -- Size of creature
       armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-      kinetic = 0,
-      energy = 0,
+      kinetic = 15,
+      energy = 15,
       electricity = 60,
-      stun = -1,
-      blast = 0,
+      stun = 0,
+      blast = 15,
       heat = 60,
       cold = 60,
       acid = 60,
@@ -136,7 +136,7 @@ nightsisterSentry = Creature:new {
       meatMax = 0,
 
       skills = { "nightsisterAttack40", "nightsisterAttack41", "nightsisterAttack42", "nightsisterAttack43", "nightsisterAttack44", "nightsisterAttack45", "nightsisterAttack46", "nightsisterAttack47", "nightsisterAttack48", "nightsisterAttack49", "nightsisterAttack50", "nightsisterAttack51" },
-      -- respawnTimer = 180,
+       respawnTimer = 300,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }
