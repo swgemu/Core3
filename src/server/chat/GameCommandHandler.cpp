@@ -74,7 +74,7 @@ void GameCommandHandler::init() {
 			&help);
 	gmCommands->addCommand("map", PRIVILEGED | QA | EC,
 			"Warps you to a different map.",
-			"Usage: @map <planetid> \n PlanetId List: 0=Corellia, 1=Dantooine, 2=Dathomir, 3=Endor, 4=Lok, 5=Naboo, 6=Rori, 7=Talus, 8=Tatooine, 9=Yavin ",
+			"Usage: @map <planetid> \n PlanetId List: 0=Corellia, 1=Dantooine, 2=Dathomir, 3=Endor, 4=Lok, 5=Naboo, 6=Rori, 7=Talus, 8=Tatooine, 9=Yavin 4",
 			&map);
 	gmCommands->addCommand("warp", PRIVILEGED | QA | EC,
 			"Warps you to a given set of coordinates.",
@@ -112,7 +112,7 @@ void GameCommandHandler::init() {
 			"Bans a user from logging in to the server.",
 			"Usage: @banUser <player>",
 			&banUser);
-	gmCommands->addCommand("mutePlayer", PRIVILEGED,
+	gmCommands->addCommand("mutePlayer", PRIVILEGED | EC,
 			"Prevents a player from speaking in spacial chat.",
 			"Usage: @mutePlayer <player>",
 			&mutePlayer);
@@ -124,15 +124,15 @@ void GameCommandHandler::init() {
 			"Kills all players within a certain range.",
 			"Usage: @killArea [distance]",
 			&killArea);
-	gmCommands->addCommand("muteChat", PRIVILEGED,
+	gmCommands->addCommand("muteChat", PRIVILEGED | EC,
 			"Prevents players from speaking in chat.",
 			"Usage: @muteChat",
 			&muteChat);
-	gmCommands->addCommand("users", PRIVILEGED,
+	gmCommands->addCommand("users", PRIVILEGED | EC,
 			"Prints the amount of users on the server.",
 			"Usage: @users",
 			&users);
-	gmCommands->addCommand("setWeather", PRIVILEGED,
+	gmCommands->addCommand("setWeather", PRIVILEGED | EC,
 			"Changes the weather conditions on the planet.",
 			"Usage: @setWeather <1-5>",
 			&setWeather);
@@ -216,7 +216,7 @@ void GameCommandHandler::init() {
 			"Sets your admin level.",
 			"Usage: @setAdminLevel <player> <level> \n Levels: 1-CSR 2-DEVELOPER 4-PLAYER 8-QA 16-EC",
 			&setAdminLevel);
-	gmCommands->addCommand("getLocation", ALL,
+	gmCommands->addCommand("getLocation", PRIVILEGED,
 			"Gives full detailsofyour location.",
 			"Usage: @getLocation",
 			&getLocation);	
