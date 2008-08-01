@@ -220,10 +220,11 @@ void GameCommandHandler::init() {
 			"Gives full detailsofyour location.",
 			"Usage: @getLocation",
 			&getLocation);	
+	/* Uncomment for use on DEV servers 
 	gmCommands->addCommand("getCords", DEVELOPER,
 			"Command to aid the cave devs placing of creatures, SpawnCreature command is written pre-formatted to a file.",
 			"Usage: @getCords <nameOfCreatureFile>",
-			&getCords);
+			&getCords); */ 
 	gmCommands->addCommand("giveItemTemp", DEVELOPER,
 			"Adds a requested item to your inventory.",
 			"Usage: @giveItemTemp <Item Type> [item sub-type]",
