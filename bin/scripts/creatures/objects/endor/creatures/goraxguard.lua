@@ -40,72 +40,72 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-naboostormtrooper = Creature:new {
-      objectName = "naboostormtrooper",  -- Lua Object Name
-      creatureType = "NPC",
-      faction = "Imperial",
-      gender = "",
+goraxguard = Creature:new {
+      objectName = "goraxguard",  -- Lua Object Name
+      creatureType = "ANIMAL",
+      faction = "Gorax",
+      gender = "male",
 
-      name = "Stormtrooper",
-      objectCRC = 628727249, 
-      socialGroup = "Imperial",
+      stfName = "Gorax Guard",
+      objectCRC = 3371835636, 
+      socialGroup = "Gorax",
       named = FALSE, 
 
-      level = 1,
-      xp = 45,
+      level = 500,
+      xp = 28549,
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
-      healthMax = 8800,
-      healthMin = 7200,
-      strength = 0,
-      constitution = 0,
+      healthMax = 500000,
+      healthMin = 450000,
+      strength = 50000,
+      constitution = 50000,
 
-      actionMax = 8800,
-      actionMin = 7200,
-      quickness = 0,
-      stamina = 0,
+      actionMax = 500000,
+      actionMin = 450000,
+      quickness = 50000,
+      stamina = 50000,
 
-      mindMax = 8800,
-      mindMin = 7200,
-      focus = 0,
-      willpower = 0,
+      mindMax = 500000,
+      mindMin = 450000,
+      focus = 50000,
+      willpower = 50000,
 
-      height = 1, -- Size of creature
-      armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-      kinetic = 0,
-      energy = 0,
-      electricity = 0,
-      stun = -1,
-      blast = 40,
-      heat = 0,
-      cold = 0,
-      acid = 0,
+      height = .8, -- Size of creature
+      armor = 2, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+      kinetic = 65,
+      energy = 65,
+      electricity = 65,
+      stun = 65,
+      blast = 65,
+      heat = 65,
+      cold = 65,
+      acid = 65,
       lightsaber = 0,
 
-      accuracy = 300,
+      accuracy = 500,
 
       healer = 0,
 
-      pack = 1,
+      pack = 0,
       herd = 0,
       stalker = 0,
       killer = 1,
-      aggressive = 0,
+      aggressive = 1,
       invincible = 0,
 
       attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "object/weapon/ranged/rifle/shared_rifle_t21.iff", -- File path to weapon -> object\xxx\xxx\xx
-      weaponName = "Teh Pwn", -- Name ex. 'a Vibrolance'
-      weaponTemp = "rifle_t21", -- Weapon Template ex. 'lance_vibrolance'
-      weaponClass = "RifleRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      weaponEquipped = 1,
-      weaponMinDamage = 350,
-      weaponMaxDamage = 400,
-      weaponAttackSpeed = 4,
-      weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
-      weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
+      weapon = "", -- File path to weapon -> object\xxx\xxx\xx
+      weaponName = "", -- Name ex. 'a Vibrolance'
+      weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
+      weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+      weaponEquipped = 0,
+      weaponMinDamage = 0,
+      weaponMaxDamage = 0,
+      weaponAttackSpeed = 0,
+      weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
+      weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
       alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
       alternateWeaponName = "", -- Name ex. 'a Vibrolance'
@@ -135,10 +135,10 @@ naboostormtrooper = Creature:new {
       meatType = "",
       meatMax = 0,
 
-      skills = { "stormTrooperAttack1" },
-      -- respawnTimer = 180,
+      skills = { "goraxAttack3", "goraxAttack4" },
+      respawnTimer = 17000,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(naboostormtrooper, 628727249) --  Add to Global Table
+Creatures:addCreature(goraxguard, 3371835636) --  Add to Global Table

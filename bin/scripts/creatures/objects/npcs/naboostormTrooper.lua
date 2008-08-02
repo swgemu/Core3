@@ -40,34 +40,34 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-diseasedNuna = Creature:new {
-      objectName = "diseasedNuna",  -- Lua Object Name
-      creatureType = "ANIMAL",
-      faction = "self",
+naboostormtrooper = Creature:new {
+      objectName = "naboostormtrooper",  -- Lua Object Name
+      creatureType = "NPC",
+      faction = "Imperial",
       gender = "",
 
-      stfName = "a Diseased Nuna",
-      objectCRC = 2432817562, 
-      socialGroup = "self",
+      name = "Stormtrooper",
+      objectCRC = 628727249, 
+      socialGroup = "Imperial",
       named = FALSE, 
 
-      level = 6,
-      xp = 113,
+      level = 1,
+      xp = 45,
 
-      combatFlags = ATTACKABLE_FLAG,
+      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
-      healthMax = 220,
-      healthMin = 180,
+      healthMax = 8800,
+      healthMin = 7200,
       strength = 0,
       constitution = 0,
 
-      actionMax = 220,
-      actionMin = 180,
+      actionMax = 8800,
+      actionMin = 7200,
       quickness = 0,
       stamina = 0,
 
-      mindMax = 220,
-      mindMin = 180,
+      mindMax = 8800,
+      mindMin = 7200,
       focus = 0,
       willpower = 0,
 
@@ -77,35 +77,35 @@ diseasedNuna = Creature:new {
       energy = 0,
       electricity = 0,
       stun = -1,
-      blast = 0,
+      blast = 40,
       heat = 0,
       cold = 0,
       acid = 0,
       lightsaber = 0,
 
-      accuracy = 50,
+      accuracy = 300,
 
       healer = 0,
 
-      pack = 0,
+      pack = 1,
       herd = 0,
       stalker = 0,
-      killer = 0,
+      killer = 1,
       aggressive = 0,
       invincible = 0,
 
       attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      weaponName = "", -- Name ex. 'a Vibrolance'
-      weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      weaponEquipped = 0,
-      weaponMinDamage = 0,
-      weaponMaxDamage = 0,
-      weaponAttackSpeed = 0,
-      weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+      weapon = "object/weapon/ranged/carbine/shared_carbine_e11.iff", -- File path to weapon -> object\xxx\xxx\xx
+      weaponName = "a e11 Carbine", -- Name ex. 'a Vibrolance'
+      weaponTemp = "carbine_e11", -- Weapon Template ex. 'lance_vibrolance'
+      weaponClass = "CarbineRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+      weaponEquipped = 1,
+      weaponMinDamage = 350,
+      weaponMaxDamage = 400,
+      weaponAttackSpeed = 2,
+      weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
+      weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
       alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
       alternateWeaponName = "", -- Name ex. 'a Vibrolance'
@@ -126,19 +126,19 @@ diseasedNuna = Creature:new {
 
       milk = 0,
 
-      boneType = "bone_avian_naboo",
-      boneMax = 2,
+      boneType = "",
+      boneMax = 0,
 
-      hideType = "hide_leathery_naboo",
-      hideMax = 4,
+      hideType = "",
+      hideMax = 0,
 
-      meatType = "meat_avian_naboo",
-      meatMax = 3,
+      meatType = "",
+      meatMax = 0,
 
-      skills = { "nunaAttack1", "nunaAttack2" },
+      skills = { "stormTrooperAttack1" },
       -- respawnTimer = 180,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(diseasedNuna, 2432817562) --  Add to Global Table
+Creatures:addCreature(naboostormtrooper, 628727249) --  Add to Global Table

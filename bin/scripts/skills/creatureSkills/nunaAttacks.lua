@@ -45,7 +45,7 @@ nunaAttack1 = {
 	
 	requiredWeaponType = NONE,
 
-	range = 10,
+	range = 5,
 
 	damageRatio = 9,
 
@@ -72,3 +72,42 @@ nunaAttack1 = {
 AddRandomPoolAttackTargetSkill(nunaAttack1)
 
 -----------------------------------------------
+
+nunaAttack2 = {
+	attackname = "nunaAttack2",
+	animation = "creature_attack_light",
+	
+	requiredWeaponType = NONE,
+
+	range = 5,
+
+	damageRatio = 9,
+
+	speedRatio = 2,
+
+	areaRange = 0,
+	accuracyBonus = 0,
+	
+	dotChance = 80,
+	tickStrengthOfHit = 10,
+
+	fireStrength = 0,
+	fireType = 0,
+
+	bleedingStrength = 0,
+	bleedingType = 0,
+
+	poisonStrength = 0,
+	poisonType = 0,
+
+	diseaseStrength = 10,
+	diseaseType = HEALTH,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+}
+
+AddRandomPoolAttackTargetSkill(nunaAttack2)
