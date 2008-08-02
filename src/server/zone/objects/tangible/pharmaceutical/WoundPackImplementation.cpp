@@ -67,7 +67,7 @@ int WoundPackImplementation::useObject(Player* player) {
 
 	SceneObject* objectTarget = (SceneObject*) player->getZone()->lookupObject(targetID);
 
-	if (!objectTarget->isPlayer() || !objectTarget->isNonPlayerCreature()) {
+	if (!objectTarget->isPlayer()) {
 		player->sendSystemMessage("Your target for Heal Wound was invalid.");
 		return 0;
 	}

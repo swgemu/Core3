@@ -70,7 +70,7 @@ int RevivePackImplementation::useObject(Player* player) {
 		return 0;
 	}
 
-	if (!targetPlayer->isPlayer() || !targetPlayer->isNonPlayerCreature()) {
+	if (!targetPlayer->isPlayer()) {
 		player->sendSystemMessage("Your target for Revive Player was invalid.");
 		return 0;
 	}
