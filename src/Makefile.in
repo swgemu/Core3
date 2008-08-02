@@ -117,7 +117,7 @@ am__objects_1 = Zone.$(OBJEXT) ZoneClient.$(OBJEXT) \
 	RegionBazaar.$(OBJEXT) TicketCollector.$(OBJEXT) \
 	Instrument.$(OBJEXT) Pharmaceutical.$(OBJEXT) \
 	EnhancePack.$(OBJEXT) WoundPack.$(OBJEXT) StimPack.$(OBJEXT) \
-	LairObject.$(OBJEXT) SurveyTool.$(OBJEXT) \
+	RevivePack.$(OBJEXT) LairObject.$(OBJEXT) SurveyTool.$(OBJEXT) \
 	CraftingTool.$(OBJEXT) Component.$(OBJEXT) \
 	FactoryCrate.$(OBJEXT) CraftingStation.$(OBJEXT) \
 	ResourceContainer.$(OBJEXT) Attachment.$(OBJEXT) \
@@ -170,6 +170,7 @@ am_core3_OBJECTS = $(am__objects_1) ServerCore.$(OBJEXT) \
 	EnhancePackImplementation.$(OBJEXT) \
 	WoundPackImplementation.$(OBJEXT) \
 	StimPackImplementation.$(OBJEXT) \
+	RevivePackImplementation.$(OBJEXT) \
 	AttachmentImplementation.$(OBJEXT) \
 	PowerupImplementation.$(OBJEXT) TicketImplementation.$(OBJEXT) \
 	TicketCollectorImplementation.$(OBJEXT) \
@@ -190,7 +191,7 @@ am_core3_OBJECTS = $(am__objects_1) ServerCore.$(OBJEXT) \
 	ShuttleCreatureImplementation.$(OBJEXT) \
 	TrainerCreatureImplementation.$(OBJEXT) \
 	BlueFrogCreatureImplementation.$(OBJEXT) \
-	MountCreatureImplementation.$(OBJEXT) \
+	MountCreatureImplementation.$(OBJEXT) Buff.$(OBJEXT) \
 	SceneObjectImplementation.$(OBJEXT) \
 	ShipObjectImplementation.$(OBJEXT) ObjectManager.$(OBJEXT) \
 	GuildManagerImplementation.$(OBJEXT) \
@@ -399,6 +400,7 @@ core3_IDLS = server/zone/Zone.cpp \
 		server/zone/objects/tangible/pharmaceutical/EnhancePack.cpp \
 		server/zone/objects/tangible/pharmaceutical/WoundPack.cpp \
 		server/zone/objects/tangible/pharmaceutical/StimPack.cpp \
+		server/zone/objects/tangible/pharmaceutical/RevivePack.cpp \
 		server/zone/objects/attackable/lair/LairObject.cpp \
 		server/zone/objects/tangible/surveytool/SurveyTool.cpp \
 		server/zone/objects/tangible/crafting/CraftingTool.cpp \
@@ -481,6 +483,7 @@ core3_SOURCES = $(core3_IDLS) \
 		server/zone/objects/tangible/pharmaceutical/EnhancePackImplementation.cpp \
 		server/zone/objects/tangible/pharmaceutical/WoundPackImplementation.cpp \
 		server/zone/objects/tangible/pharmaceutical/StimPackImplementation.cpp \
+		server/zone/objects/tangible/pharmaceutical/RevivePackImplementation.cpp \
 		server/zone/objects/tangible/attachment/AttachmentImplementation.cpp \
 		server/zone/objects/tangible/powerup/PowerupImplementation.cpp \
 		server/zone/objects/tangible/ticket/TicketImplementation.cpp \
@@ -503,6 +506,7 @@ core3_SOURCES = $(core3_IDLS) \
 		server/zone/objects/creature/trainer/TrainerCreatureImplementation.cpp \
 		server/zone/objects/creature/bluefrog/BlueFrogCreatureImplementation.cpp \
 		server/zone/objects/creature/mount/MountCreatureImplementation.cpp \
+		server/zone/objects/creature/buffs/Buff.cpp \
 		server/zone/objects/scene/SceneObjectImplementation.cpp \
 		server/zone/objects/ship/ShipObjectImplementation.cpp \
 		server/zone/managers/object/ObjectManager.cpp \
@@ -619,6 +623,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/BlueFrogCreature.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/BlueFrogCreatureImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/BlueFrogVector.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Buff.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/BuildingObject.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/BuildingObjectImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/CarbineRangedWeapon.Po@am__quote@
@@ -733,6 +738,8 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ResourceContainerImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ResourceManager.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ResourceManagerImplementation.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/RevivePack.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/RevivePackImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/RifleRangedWeapon.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SceneObject.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SceneObjectImplementation.Po@am__quote@
@@ -1695,6 +1702,20 @@ StimPack.obj: server/zone/objects/tangible/pharmaceutical/StimPack.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/pharmaceutical/StimPack.cpp' object='StimPack.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o StimPack.obj `if test -f 'server/zone/objects/tangible/pharmaceutical/StimPack.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/pharmaceutical/StimPack.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/pharmaceutical/StimPack.cpp'; fi`
+
+RevivePack.o: server/zone/objects/tangible/pharmaceutical/RevivePack.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT RevivePack.o -MD -MP -MF $(DEPDIR)/RevivePack.Tpo -c -o RevivePack.o `test -f 'server/zone/objects/tangible/pharmaceutical/RevivePack.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/pharmaceutical/RevivePack.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/RevivePack.Tpo $(DEPDIR)/RevivePack.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/pharmaceutical/RevivePack.cpp' object='RevivePack.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o RevivePack.o `test -f 'server/zone/objects/tangible/pharmaceutical/RevivePack.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/pharmaceutical/RevivePack.cpp
+
+RevivePack.obj: server/zone/objects/tangible/pharmaceutical/RevivePack.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT RevivePack.obj -MD -MP -MF $(DEPDIR)/RevivePack.Tpo -c -o RevivePack.obj `if test -f 'server/zone/objects/tangible/pharmaceutical/RevivePack.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/pharmaceutical/RevivePack.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/pharmaceutical/RevivePack.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/RevivePack.Tpo $(DEPDIR)/RevivePack.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/pharmaceutical/RevivePack.cpp' object='RevivePack.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o RevivePack.obj `if test -f 'server/zone/objects/tangible/pharmaceutical/RevivePack.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/pharmaceutical/RevivePack.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/pharmaceutical/RevivePack.cpp'; fi`
 
 LairObject.o: server/zone/objects/attackable/lair/LairObject.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT LairObject.o -MD -MP -MF $(DEPDIR)/LairObject.Tpo -c -o LairObject.o `test -f 'server/zone/objects/attackable/lair/LairObject.cpp' || echo '$(srcdir)/'`server/zone/objects/attackable/lair/LairObject.cpp
@@ -2816,6 +2837,20 @@ StimPackImplementation.obj: server/zone/objects/tangible/pharmaceutical/StimPack
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o StimPackImplementation.obj `if test -f 'server/zone/objects/tangible/pharmaceutical/StimPackImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/pharmaceutical/StimPackImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/pharmaceutical/StimPackImplementation.cpp'; fi`
 
+RevivePackImplementation.o: server/zone/objects/tangible/pharmaceutical/RevivePackImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT RevivePackImplementation.o -MD -MP -MF $(DEPDIR)/RevivePackImplementation.Tpo -c -o RevivePackImplementation.o `test -f 'server/zone/objects/tangible/pharmaceutical/RevivePackImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/pharmaceutical/RevivePackImplementation.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/RevivePackImplementation.Tpo $(DEPDIR)/RevivePackImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/pharmaceutical/RevivePackImplementation.cpp' object='RevivePackImplementation.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o RevivePackImplementation.o `test -f 'server/zone/objects/tangible/pharmaceutical/RevivePackImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/pharmaceutical/RevivePackImplementation.cpp
+
+RevivePackImplementation.obj: server/zone/objects/tangible/pharmaceutical/RevivePackImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT RevivePackImplementation.obj -MD -MP -MF $(DEPDIR)/RevivePackImplementation.Tpo -c -o RevivePackImplementation.obj `if test -f 'server/zone/objects/tangible/pharmaceutical/RevivePackImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/pharmaceutical/RevivePackImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/pharmaceutical/RevivePackImplementation.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/RevivePackImplementation.Tpo $(DEPDIR)/RevivePackImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/pharmaceutical/RevivePackImplementation.cpp' object='RevivePackImplementation.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o RevivePackImplementation.obj `if test -f 'server/zone/objects/tangible/pharmaceutical/RevivePackImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/pharmaceutical/RevivePackImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/pharmaceutical/RevivePackImplementation.cpp'; fi`
+
 AttachmentImplementation.o: server/zone/objects/tangible/attachment/AttachmentImplementation.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT AttachmentImplementation.o -MD -MP -MF $(DEPDIR)/AttachmentImplementation.Tpo -c -o AttachmentImplementation.o `test -f 'server/zone/objects/tangible/attachment/AttachmentImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/attachment/AttachmentImplementation.cpp
 @am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/AttachmentImplementation.Tpo $(DEPDIR)/AttachmentImplementation.Po
@@ -3123,6 +3158,20 @@ MountCreatureImplementation.obj: server/zone/objects/creature/mount/MountCreatur
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/creature/mount/MountCreatureImplementation.cpp' object='MountCreatureImplementation.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o MountCreatureImplementation.obj `if test -f 'server/zone/objects/creature/mount/MountCreatureImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/creature/mount/MountCreatureImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/creature/mount/MountCreatureImplementation.cpp'; fi`
+
+Buff.o: server/zone/objects/creature/buffs/Buff.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT Buff.o -MD -MP -MF $(DEPDIR)/Buff.Tpo -c -o Buff.o `test -f 'server/zone/objects/creature/buffs/Buff.cpp' || echo '$(srcdir)/'`server/zone/objects/creature/buffs/Buff.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/Buff.Tpo $(DEPDIR)/Buff.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/creature/buffs/Buff.cpp' object='Buff.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o Buff.o `test -f 'server/zone/objects/creature/buffs/Buff.cpp' || echo '$(srcdir)/'`server/zone/objects/creature/buffs/Buff.cpp
+
+Buff.obj: server/zone/objects/creature/buffs/Buff.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT Buff.obj -MD -MP -MF $(DEPDIR)/Buff.Tpo -c -o Buff.obj `if test -f 'server/zone/objects/creature/buffs/Buff.cpp'; then $(CYGPATH_W) 'server/zone/objects/creature/buffs/Buff.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/creature/buffs/Buff.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/Buff.Tpo $(DEPDIR)/Buff.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/creature/buffs/Buff.cpp' object='Buff.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o Buff.obj `if test -f 'server/zone/objects/creature/buffs/Buff.cpp'; then $(CYGPATH_W) 'server/zone/objects/creature/buffs/Buff.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/creature/buffs/Buff.cpp'; fi`
 
 SceneObjectImplementation.o: server/zone/objects/scene/SceneObjectImplementation.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT SceneObjectImplementation.o -MD -MP -MF $(DEPDIR)/SceneObjectImplementation.Tpo -c -o SceneObjectImplementation.o `test -f 'server/zone/objects/scene/SceneObjectImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/scene/SceneObjectImplementation.cpp

@@ -229,6 +229,10 @@ void GameCommandHandler::init() {
 			"Adds a requested item to your inventory.",
 			"Usage: @giveItemTemp <Item Type> [item sub-type]",
 			&giveItemTemp);
+	gmCommands->addCommand("clientEffect", DEVELOPER,
+				"Plays a client effect animation around your character.",
+				"Usage: @clientEffect <effect>",
+				&clientEffect);
 }
 
 void GameCommandHandler::help(StringTokenizer tokenizer, Player * player) {
@@ -644,7 +648,8 @@ void GameCommandHandler::kill(StringTokenizer tokenizer, Player * player) {
 	try {
 		if (targetPlayer != player)
 			targetPlayer->wlock(player);
-
+		
+		targetPlayer->explode(2);
 		targetPlayer->kill();
 
 		targetPlayer->sendSystemMessage("Your character has been killed by \'" + player->getFirstName() + "\'.");
@@ -687,7 +692,8 @@ void GameCommandHandler::killArea(StringTokenizer tokenizer, Player * player) {
 					try {
 						if (otherPlayer != player)
 							otherPlayer->wlock(player);
-
+						
+						otherPlayer->explode(2);
 						otherPlayer->kill();
 
 						if (otherPlayer != player)
@@ -1420,4 +1426,19 @@ void GameCommandHandler::giveItemTemp(StringTokenizer tokenizer, Player * player
 	}
 }
 
+void GameCommandHandler::clientEffect(StringTokenizer tokenizer, Player * player) {
+	if(!tokenizer.hasMoreTokens())
+		return;
+	
+	string effect;
+	tokenizer.getStringToken(effect);
 
+	stringstream ss;
+	ss << "clienteffect/" << effect << ".cef";
+
+	PlayClientEffectObjectMessage* explode = new PlayClientEffectObjectMessage(player, ss.str(), "");
+	player->broadcastMessage(explode);
+
+	PlayClientEffectLoc* explodeLoc = new PlayClientEffectLoc(ss.str(), player->getZoneID(), player->getPositionX(), player->getPositionZ(), player->getPositionY());
+	player->broadcastMessage(explodeLoc);
+}

@@ -54,7 +54,7 @@ const static char* Species[] = {
     "bothan", // bothan male
     "zabrak", // zabrak male
     "rodian", // rodian male
-    "moncal", // moncal male
+    "moncalamari", // moncal male
     "wookiee", // wookiee male
     "sullustan", // sullustan male
     "ithorian", // ithorian male
@@ -64,7 +64,7 @@ const static char* Species[] = {
     "bothan", // bothan female
     "zabrak", // zabrak female
     "rodian", // rodian female
-    "moncal", // moncal female
+    "moncalamari", // moncal female
     "wookiee", // wookiee female
     "sullustan", // sullustan female
     "ithorian"  // DA E7   -   ithorian female

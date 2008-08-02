@@ -4347,7 +4347,7 @@ void CreatureObjectImplementation::explode(int level) {
 	if (level < 2)
 		explodeStr = "clienteffect/lair_damage_medium.cef";
 	else
-		explodeStr = "clienteffect/lair_damage_heavy.cef";
+		explodeStr = "clienteffect/combat_explosion_lair_large.cef";
 
 	string extraStr = "";
 
