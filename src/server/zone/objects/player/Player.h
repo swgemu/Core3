@@ -161,11 +161,13 @@ public:
 
 	void doPeace();
 
-	void doClone();
-
 	void kill();
 
 	void deathblow(Player* player);
+
+	void revive();
+
+	void doClone();
 
 	void activateClone();
 
@@ -175,7 +177,15 @@ public:
 
 	void countdownRevive(int counter);
 
-	void revive();
+	bool hasConsent(unsigned long long charID);
+
+	bool giveConsent(unsigned long long charID);
+
+	bool revokeConsent(unsigned long long charID);
+
+	int getConsentSize();
+
+	void sendConsentBox();
 
 	bool isRevivable();
 
@@ -725,11 +735,13 @@ public:
 
 	void doPeace();
 
-	void doClone();
-
 	void kill();
 
 	void deathblow(Player* player);
+
+	void revive();
+
+	void doClone();
 
 	void activateClone();
 
@@ -739,7 +751,15 @@ public:
 
 	void countdownRevive(int counter);
 
-	void revive();
+	bool hasConsent(unsigned long long charID);
+
+	bool giveConsent(unsigned long long charID);
+
+	bool revokeConsent(unsigned long long charID);
+
+	int getConsentSize();
+
+	void sendConsentBox();
 
 	bool isRevivable();
 

@@ -40,13 +40,21 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-RunItemLUAFile("bluefrog/composite_armor_set.lua");
-RunItemLUAFile("bluefrog/instrument_set.lua");
-RunItemLUAFile("bluefrog/surveying_kit.lua");
-RunItemLUAFile("bluefrog/weapon_set.lua");
-RunItemLUAFile("bluefrog/wookiee_armor_set.lua");
-RunItemLUAFile("bluefrog/ith_armor_set.lua");
-RunItemLUAFile("bluefrog/enhancePackSet.lua");
-RunItemLUAFile("bluefrog/stimPackSet.lua");
-RunItemLUAFile("bluefrog/woundPackSet.lua");
-RunItemLUAFile("bluefrog/statePackSet.lua");
+stimPackSmallE = Object:new {
+
+	objectName = "Small Stimpack - E",
+
+	templateName = "object/tangible/medicine/crafted/shared_medpack_damage_e.iff",
+
+	objectCRC = "1470448837",
+
+	objectType = PHARMACEUTICAL,
+	
+	medpackType = STIMPACK,
+	
+	usesRemaining = 48,
+	
+	medicineUse = 45,
+	
+	effectiveness = 1118
+}

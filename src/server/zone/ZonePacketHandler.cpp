@@ -1,44 +1,44 @@
 /*
 Copyright (C) 2007 <SWGEmu>
- 
+
 This File is part of Core3.
- 
-This program is free software; you can redistribute 
-it and/or modify it under the terms of the GNU Lesser 
+
+This program is free software; you can redistribute
+it and/or modify it under the terms of the GNU Lesser
 General Public License as published by the Free Software
-Foundation; either version 2 of the License, 
+Foundation; either version 2 of the License,
 or (at your option) any later version.
- 
-This program is distributed in the hope that it will be useful, 
-but WITHOUT ANY WARRANTY; without even the implied warranty of 
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 See the GNU Lesser General Public License for
 more details.
- 
-You should have received a copy of the GNU Lesser General 
+
+You should have received a copy of the GNU Lesser General
 Public License along with this program; if not, write to
 the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
- 
-Linking Engine3 statically or dynamically with other modules 
-is making a combined work based on Engine3. 
-Thus, the terms and conditions of the GNU Lesser General Public License 
+
+Linking Engine3 statically or dynamically with other modules
+is making a combined work based on Engine3.
+Thus, the terms and conditions of the GNU Lesser General Public License
 cover the whole combination.
- 
-In addition, as a special exception, the copyright holders of Engine3 
-give you permission to combine Engine3 program with free software 
-programs or libraries that are released under the GNU LGPL and with 
-code included in the standard release of Core3 under the GNU LGPL 
-license (or modified versions of such code, with unchanged license). 
-You may copy and distribute such a system following the terms of the 
-GNU LGPL for Engine3 and the licenses of the other code concerned, 
-provided that you include the source code of that other code when 
+
+In addition, as a special exception, the copyright holders of Engine3
+give you permission to combine Engine3 program with free software
+programs or libraries that are released under the GNU LGPL and with
+code included in the standard release of Core3 under the GNU LGPL
+license (or modified versions of such code, with unchanged license).
+You may copy and distribute such a system following the terms of the
+GNU LGPL for Engine3 and the licenses of the other code concerned,
+provided that you include the source code of that other code when
 and as the GNU LGPL requires distribution of source code.
- 
-Note that people who make modified versions of Engine3 are not obligated 
-to grant this special exception for their modified versions; 
-it is their choice whether to do so. The GNU Lesser General Public License 
-gives permission to release a modified version without this exception; 
-this exception also makes it possible to release a modified version 
+
+Note that people who make modified versions of Engine3 are not obligated
+to grant this special exception for their modified versions;
+it is their choice whether to do so. The GNU Lesser General Public License
+gives permission to release a modified version without this exception;
+this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
@@ -70,16 +70,16 @@ which carries forward this exception.
 
 ZonePacketHandler::ZonePacketHandler(const string& s, ZoneProcessServerImplementation* serv) : Logger(s) {
 		processServer = serv;
-		
+
 		server = processServer->getZoneServer();
-} 
+}
 
 void ZonePacketHandler::handleMessage(Message* pack) {
 	/*info("parsing " + pack->toString());*/
 
 	uint16 opcount = pack->parseShort();
 	uint32 opcode = pack->parseInt();
-	
+
 	switch (opcount) {
 	case 1:
 		switch (opcode) {
@@ -109,9 +109,9 @@ void ZonePacketHandler::handleMessage(Message* pack) {
 			break;
 		case 0x9AE247EE: // VerifyTradeMessage
 			handleVerifyTradeMessage(pack);
-			break;			
+			break;
 		}
-		
+
 		break;
 	case 2:
 		switch (opcode) {
@@ -137,7 +137,7 @@ void ZonePacketHandler::handleMessage(Message* pack) {
 			handleClientRandomNameRequest(pack);
 			break;
 		}
-		
+
 		break;
 	case 3:
 		switch (opcode) {
@@ -166,7 +166,7 @@ void ZonePacketHandler::handleMessage(Message* pack) {
 			handleRetrieveAuctionItem(pack);
 			break;
 		}
-		
+
 		break;
 	case 04:
 		switch (opcode) {
@@ -199,7 +199,7 @@ void ZonePacketHandler::handleMessage(Message* pack) {
 			handleChatRoomMessage(pack);
 			break;
 		}
-		
+
 		break;
 	case 6:
 		switch(opcode) {
@@ -213,11 +213,11 @@ void ZonePacketHandler::handleMessage(Message* pack) {
 		case 0x35366BED:
 			handleChatCreateRoom(pack);
 			break;
-		case 0xAD47021D: 
+		case 0xAD47021D:
 			handleBazaarAddItem(pack, true);
 			break;
 		}
-		
+
 		break;
 	case 8:
 		switch (opcode) {
@@ -248,10 +248,10 @@ void ZonePacketHandler::handleMessage(Message* pack) {
 
 void ZonePacketHandler::handleClientPermissionsMessage(Message* pack) {
 	ZoneClientImplementation* client = (ZoneClientImplementation*) pack->getClient();
-	
+
 	uint32 accountID = ClientIDMessage::parse(pack);
 	client->setSessionKey(accountID);
-	
+
 	BaseMessage* cpm = new ClientPermissionsMessage();
 	client->sendMessage(cpm);
 
@@ -260,44 +260,44 @@ void ZonePacketHandler::handleClientPermissionsMessage(Message* pack) {
 
 void ZonePacketHandler::handleSelectCharacter(Message* pack) {
 	PlayerManager* playerManager = server->getPlayerManager();
-	
+
 	ZoneClientImplementation* clientimpl = (ZoneClientImplementation*) pack->getClient();
 	ZoneClient* client = (ZoneClient*) clientimpl->_getStub();
-	
+
 	uint64 characterID = SelectCharacter::parse(pack);
 	uint64 playerID = (characterID << 32) + 0x15;
-	
+
 	Player* player = NULL;
 
 	SceneObject* obj = server->getObject(playerID);
-	
+
 	if (obj == NULL)
 		obj = server->getCachedObject(playerID);
-	
+
 	if (obj != NULL) {
 		player = (Player*) obj;
 		player->reload(client);
-		
+
 		playerManager->updatePlayerCreditsFromDatabase(player);
 		playerManager->putPlayer(player);
 	} else {
 		player = playerManager->load(characterID);
 		player->setZone(server->getZone(player->getZoneIndex()));
-		
+
 		player->load(client);
 	}
-		
+
 	clientimpl->setLockName("ZoneClient = " + player->getFirstName());
 }
 
 void ZonePacketHandler::handleCmdSceneReady(Message* pack) {
 	ZoneClientImplementation* client = (ZoneClientImplementation*) pack->getClient();
-	
+
 	BaseMessage* csr = new CmdSceneReady();
 	client->sendMessage(csr);
-	
+
 	client->resetPacketCheckupTime();
-	
+
 	Player* player = client->getPlayer();
 	if (player == NULL)
 		return;
@@ -316,29 +316,29 @@ void ZonePacketHandler::handleCmdSceneReady(Message* pack) {
 
 void ZonePacketHandler::handleClientCreateCharacter(Message* pack) {
 	PlayerManager* playerManager = server->getPlayerManager();
-	
+
 	ZoneClientImplementation* clientimpl = (ZoneClientImplementation*) pack->getClient();
 	ZoneClient* client = (ZoneClient*) clientimpl->_getStub();
-	
+
 	Player* player = new Player();
 	player->setZoneProcessServer(processServer);
 
 	ClientCreateCharacter::parse(pack, player);
-	
+
 	player->create(client);
-	
+
 	string firstName = player->getFirstName();
 	string species = player->getSpeciesName();
-	
+
 	player->info("attempting to create Player " + firstName);
-	
+
 	BaseMessage* msg = playerManager->checkPlayerName(firstName, species);
-	
+
 	if (msg != NULL) {
 		client->sendMessage(msg);
-		
+
 		//player->disconnect();
-				
+
 		player->finalize();
 
 		return;
@@ -353,29 +353,29 @@ void ZonePacketHandler::handleClientCreateCharacter(Message* pack) {
 void ZonePacketHandler::handleClientRandomNameRequest(Message* pack) {
 	ZoneClientImplementation* client = (ZoneClientImplementation*) pack->getClient();
 
-	NameManager* nameManager = processServer->getNameManager(); 
-	
-	string racefile;		
+	NameManager* nameManager = processServer->getNameManager();
+
+	string racefile;
 	pack->parseAscii(racefile);
 	bool notwook = (racefile.find("wookie") == string::npos);
-	
+
 	BaseMessage* msg = new ClientRandomNameReponse(racefile, nameManager->makeCreatureName(notwook));
 	client->sendMessage(msg);
 }
 
 void ZonePacketHandler::handleObjectControllerMessage(Message* pack) {
 	ZoneClientImplementation* client = (ZoneClientImplementation*) pack->getClient();
-	Player* player = client->getPlayer();	
+	Player* player = client->getPlayer();
 	if (player == NULL)
 		return;
 
 	uint32 header1 = pack->parseInt();
 	uint32 header2 = pack->parseInt();
-	
+
 	/*stringstream msg;
 	msg << "ObjectControllerMessage(0x" << hex << header1 << ", 0x" << header2 << dec << ")";
-	player->info(msg.str()); */ 
-	
+	player->info(msg.str()); */
+
 	try {
 		player->wlock();
 		if (!player->isOnline()) {
@@ -390,20 +390,20 @@ void ZonePacketHandler::handleObjectControllerMessage(Message* pack) {
 			switch (header2) {
 			case 0x71:
 				//msg << "light chaging position (" << player->getPositionX() << ", " << player->getPositionY() << ") ->";
-			
+
 				if (ObjectControllerMessage::parseDataTransform(player, pack)) {
 					player->updateZone(true);
 
 					//player->info(msg);
 				}
-				
+
 				break;
 			case 0xF1:
 				uint64 parent = ObjectControllerMessage::parseDataTransformWithParent(player, pack);
-				
+
 				if (parent != 0)
 					player->updateZoneWithParent(parent, true);
-					
+
 				break;
 			}
 			break;
@@ -417,14 +417,14 @@ void ZonePacketHandler::handleObjectControllerMessage(Message* pack) {
 
 					//player->info(msg);
 				}
-					
+
 				break;
 			case 0xF1:
 				parent = ObjectControllerMessage::parseDataTransformWithParent(player, pack);
-				
+
 				if (parent != 0)
 					player->updateZoneWithParent(parent);
-					
+
 				break;
 			case 0x116:
 				ObjectControllerMessage::parseCommandQueueEnqueue(player, pack, processServer);
@@ -463,7 +463,7 @@ void ZonePacketHandler::handleObjectControllerMessage(Message* pack) {
 			}
 			break;
 		default:
-			//msg << "unhandled ObjectControllerMessageHeader [" << header2 << "] " << pack->toString();	
+			//msg << "unhandled ObjectControllerMessageHeader [" << header2 << "] " << pack->toString();
 			//error(msg);
 			break;
 		}
@@ -471,19 +471,19 @@ void ZonePacketHandler::handleObjectControllerMessage(Message* pack) {
 		player->unlock();
 	} catch (Exception& e) {
 		player->unlock();
-		
+
 		cout << "exception on ZonePacketHandler:::handleObjectControllerMessage(Message* pack)\n";
 		e.printStackTrace();
 	} catch (...) {
 		player->unlock();
-		
+
 		cout << "unreported exception on ZonePacketHandler:::handleObjectControllerMessage(Message* pack)\n";
 	}
 }
 
 void ZonePacketHandler::handleTellMessage(Message* pack) {
 	ZoneClientImplementation* client = (ZoneClientImplementation*) pack->getClient();
-	
+
 	Player* player = client->getPlayer();
 	if (player == NULL)
 		return;
@@ -505,16 +505,16 @@ void ZonePacketHandler::handleTellMessage(Message* pack) {
 
 void ZonePacketHandler::handleSendMail(Message* pack) {
 	ZoneClientImplementation* client = (ZoneClientImplementation*) pack->getClient();
-	
+
 	Player* player = client->getPlayer();
 	if (player == NULL)
 		return;
-	
+
 	//cout << pack->toString() << "\n";
-		
+
 	unicode header, body;
 	string name;
-	
+
 	pack->parseUnicode(body);
 	pack->shiftOffset(8);
 
@@ -522,30 +522,30 @@ void ZonePacketHandler::handleSendMail(Message* pack) {
 	pack->shiftOffset(4);
 
 	pack->parseAscii(name);
-	
+
 	ChatManager* chatManager = server->getChatManager();
 	chatManager->sendMail(player->getFirstName(), header, body, name);
 }
 
 void ZonePacketHandler::handleRequestPersistentMsg(Message* pack) {
 	ZoneClientImplementation* client = (ZoneClientImplementation*) pack->getClient();
-	
+
 	Player* player = client->getPlayer();
 	if (player == NULL)
 		return;
-	
+
 	pack->shiftOffset(4); //skip spacer/unk
 	uint32 mailid = pack->parseInt();
-	
+
 	ChatManager* chatManager = server->getChatManager();
 	chatManager->sendMailBody(player, mailid);
 }
 
 void ZonePacketHandler::handleDeletePersistentMsg(Message* pack) {
 	ZoneClientImplementation* client = (ZoneClientImplementation*) pack->getClient();
-	
+
 	uint32 mailid = pack->parseInt();
-	
+
 	ChatManager* chatManager = server->getChatManager();
 	chatManager->deleteMail(mailid);
 }
@@ -558,16 +558,16 @@ void ZonePacketHandler::handleFactionRequestMessage(Message* pack) {
 
 	try {
 		player->wlock();
-		
+
 		FactionResponseMessage* frm = new FactionResponseMessage(player->getFactionRank(), player->getRebelPoints(), player->getImperialPoints());
-		
+
 		//on live we would want to retrive factions for each player
-		
+
 		frm->addFactionCount(0x01);
 		frm->addFactionName("SWGEmu");
 		frm->addFactionCount(0x01);
 		frm->addFactionPoint(2007.0f);
-		
+
 		player->sendMessage(frm);
 
 		player->unlock();
@@ -582,9 +582,9 @@ void ZonePacketHandler::handleGetMapLocationsRequestMessage(Message* pack) {
 
 	string planet;
     pack->parseAscii(planet);
-    
+
 	GetMapLocationsResponseMessage* gmlr = new GetMapLocationsResponseMessage(planet);
-	
+
 	try {
 		ResultSet* result;
 		stringstream query;
@@ -592,27 +592,27 @@ void ZonePacketHandler::handleGetMapLocationsRequestMessage(Message* pack) {
 		result = ServerDatabase::instance()->executeQuery(query);
 
 		while (result->next()) {
-			gmlr->addMapLocation(result->getInt(1),result->getString(2), result->getFloat(3), result->getFloat(4), 
+			gmlr->addMapLocation(result->getInt(1),result->getString(2), result->getFloat(3), result->getFloat(4),
 			(uint8)result->getInt(5), (uint8)result->getInt(6), (uint8)result->getInt(7));
 		}
-		
+
 		delete result;
-		
+
 	} catch (DatabaseException& e) {
 		cout << e.getMessage() << "\n";
 
 		return;
 	}
-	
+
 	//gmlr->dumpLocationList();
-	
+
 	//these will be used for other locations on the planet map
 	gmlr->addBlankList();
 	gmlr->addBlankList();
-	
+
 	//unknown
 	gmlr->addFooter();
-	
+
 	client->sendMessage(gmlr);
 }
 
@@ -623,36 +623,36 @@ void ZonePacketHandler::handleStomachRequestMessage(Message* pack) {
 void ZonePacketHandler::handleGuildRequestMessage(Message* pack) {
     ZoneClientImplementation* client = (ZoneClientImplementation*) pack->getClient();
     Player* player = client->getPlayer();
-    
+
 	if (player == NULL)
 		return;
-	
+
 	try {
 		player->wlock();
 
    		uint64 objectid = pack->parseLong();
-    	
+
     	SceneObject* obj = player->getZone()->lookupObject(objectid);
-    	
+
     	if (obj == NULL) {
     		player->unlock();
     		return;
     	}
-    	
+
     	if (obj->isNonPlayerCreature() || obj->isPlayer()) {
-    		
+
     		CreatureObject* creo = (CreatureObject*) obj;
-    		
+
     		if (creo != player)
     			creo->wlock(player);
-		
+
 			GuildResponseMessage* grm = new GuildResponseMessage(creo, objectid);
 			client->sendMessage(grm);
-			
+
 			if (creo != player)
 				creo->unlock();
     	}
-    			
+
 		player->unlock();
 	} catch (...) {
 		player->unlock();
@@ -663,16 +663,16 @@ void ZonePacketHandler::handleGuildRequestMessage(Message* pack) {
 void ZonePacketHandler::handlePlayerMoneyRequest(Message* pack) {
     ZoneClientImplementation* client = (ZoneClientImplementation*) pack->getClient();
 	Player* player = client->getPlayer();
-	
+
 	if (player == NULL)
 		return;
-	
+
 	try {
 		player->wlock();
-		
+
 		PlayerMoneyResponseMessage* pmrm = new PlayerMoneyResponseMessage(player);
 		client->sendMessage(pmrm);
-		
+
 		player->unlock();
 	} catch (...) {
 		player->unlock();
@@ -683,23 +683,23 @@ void ZonePacketHandler::handlePlayerMoneyRequest(Message* pack) {
 void ZonePacketHandler::handleTravelListRequest(Message* pack) {
     ZoneClientImplementation* client = (ZoneClientImplementation*) pack->getClient();
     Player* player = client->getPlayer();
-    
+
     if (player == NULL)
     	return;
-    
-	
+
+
 	uint64 objectid;
 	objectid = pack->parseLong();
 	string planet;
 	pack->parseAscii(planet);
-	
+
 	int id = Planet::getPlanetID(planet);
-	
+
 	Zone* zone = server->getZone(id);
-	
+
 	if (zone != NULL) {
 		PlanetManager* planetManager = zone->getPlanetManager();
-	
+
 		planetManager->sendPlanetTravelPointListResponse(player);
 	}
 }
@@ -707,98 +707,98 @@ void ZonePacketHandler::handleTravelListRequest(Message* pack) {
 void ZonePacketHandler::handleRadialSelect(Message* pack) {
 	ZoneClientImplementation* client = (ZoneClientImplementation*) pack->getClient();
     Player* player = client->getPlayer();
-    
+
     if (player == NULL)
 		return;
-    
+
     processServer->getRadialManager()->handleRadialSelect(player, pack);
 }
 
 void ZonePacketHandler::handleChatRoomMessage(Message* pack) {
 	ZoneClientImplementation* client = (ZoneClientImplementation*) pack->getClient();
-	
+
 	Player* player = client->getPlayer();
 	if (player == NULL)
 		return;
-	
+
 	ChatManager* chatManager = server->getChatManager();
 	chatManager->handleChatRoomMessage(player, pack);
 }
 
 void ZonePacketHandler::handleChatRequestRoomList(Message* pack) {
 	ZoneClientImplementation* client = (ZoneClientImplementation*) pack->getClient();
-	
+
 	Player* player = client->getPlayer();
 	if (player == NULL)
 		return;
-	
+
 	ChatManager* chatManager = server->getChatManager();
 	chatManager->sendRoomList(player);
 }
 
 void ZonePacketHandler::handleChatCreateRoom(Message* pack) {
 	ZoneClientImplementation* client = (ZoneClientImplementation*) pack->getClient();
-	
+
 	Player* player = client->getPlayer();
 	if (player == NULL)
 		return;
-		
+
 	ChatManager* chatManager = server->getChatManager();
 	chatManager->handleCreateRoom(player, pack);
 }
 
 void ZonePacketHandler::handleChatEnterRoomById(Message* pack) {
 	ZoneClientImplementation* client = (ZoneClientImplementation*) pack->getClient();
-	
+
 	Player* player = client->getPlayer();
 	if (player == NULL)
 		return;
-		
+
 	ChatManager* chatManager = server->getChatManager();
 	chatManager->handleChatEnterRoomById(player, pack);
 }
 
 void ZonePacketHandler::handleChatDestroyRoom(Message* pack) {
 	ZoneClientImplementation* client = (ZoneClientImplementation*) pack->getClient();
-	
+
 	Player* player = client->getPlayer();
 	if (player == NULL)
 		return;
-		
+
 	ChatManager* chatManager = server->getChatManager();
 	chatManager->handleChatDestroyRoom(player, pack);
 }
 
 void ZonePacketHandler::handleChatRemoveAvatarFromRoom(Message* pack) {
 	ZoneClientImplementation* client = (ZoneClientImplementation*) pack->getClient();
-	
+
 	Player* player = client->getPlayer();
 	if (player == NULL)
 		return;
-		
+
 	ChatManager* chatManager = server->getChatManager();
 	chatManager->handleChatRemoveAvatarFromRoom(player, pack);
 }
 
 void ZonePacketHandler::handleSuiEventNotification(Message* pack) {
 	ZoneClientImplementation* client = (ZoneClientImplementation*) pack->getClient();
-	Player* player = client->getPlayer();	
+	Player* player = client->getPlayer();
 	if (player == NULL)
 		return;
-	
+
 	uint32 opcode = pack->parseInt();
-	
+
 	uint32 cancel = pack->parseInt();
 	uint32 unk1 = pack->parseInt();
 	uint32 unk2 = pack->parseInt();
 	unicode value;
 	unicode value2;
-	
+
 	if (unk2 != 0)
 		pack->parseUnicode(value);
 	if (unk2 > 1)
 		pack->parseUnicode(value2);
-	
+
 	processServer->getSuiManager()->handleSuiEventNotification(opcode, player, cancel, value.c_str(), value2.c_str());
 }
 
@@ -808,19 +808,19 @@ void ZonePacketHandler::handleAbortTradeMessage(Message* pack) {
 
 	if (player == NULL)
 		return;
-	
+
 	server->getPlayerManager()->handleAbortTradeMessage(player);
 }
 
 void ZonePacketHandler::handleAddItemMessage(Message* pack) {
 	ZoneClientImplementation* client = (ZoneClientImplementation*) pack->getClient();
 	Player* player = client->getPlayer();
-	
+
 	if (player == NULL)
 		return;
-	
+
 	uint64 id = pack->parseLong();
-	
+
 	server->getPlayerManager()->handleAddItemMessage(player, id);
 }
 
@@ -830,9 +830,9 @@ void ZonePacketHandler::handleGiveMoneyMessage(Message* pack) {
 
 	if (player == NULL)
 		return;
-	
+
 	uint32 value = pack->parseInt();
-	
+
 	server->getPlayerManager()->handleGiveMoneyMessage(player, value);
 }
 
@@ -842,7 +842,7 @@ void ZonePacketHandler::handleAcceptTransactionMessage(Message* pack) {
 
 	if (player == NULL)
 		return;
-	
+
 	server->getPlayerManager()->handleAcceptTransactionMessage(player);
 }
 
@@ -868,43 +868,43 @@ void ZonePacketHandler::handleVerifyTradeMessage(Message* pack) {
 
 void ZonePacketHandler::handleBazaarAddItem(Message* pack, bool auction) {
 	ZoneClientImplementation* client = (ZoneClientImplementation*) pack->getClient();
-	
+
 	Player* player = client->getPlayer();
 	if (player == NULL)
 		return;
-	
+
    	 uint64 objectid = pack->parseLong(); // object for sale
    	 uint64 bazaarid = pack->parseLong(); // bazaar
-   	
+
    	uint32 price = pack->parseInt(); // Sale price
    	uint32 duration = pack->parseInt(); // How long to sell for in minutes
-   	
+
    	unicode description;
    	pack->parseUnicode(description);
-   	
+
    	BazaarManager* bazaarManager = server->getBazaarManager();
    	bazaarManager->addSaleItem(player, objectid, bazaarid, description, price, duration, auction);
 }
 
 void ZonePacketHandler::handleBazaarScreens(Message* pack) {
 	ZoneClientImplementation* client = (ZoneClientImplementation*) pack->getClient();
-	
+
 	Player* player = client->getPlayer();
 	if (player == NULL)
 		return;
 	//Bazaar screen requests
-	int extent = pack->parseInt(); 
+	int extent = pack->parseInt();
 	// 0 - galaxy, 1 - planet, 2 - region, 3 - vendor
 	int counter = pack->parseInt();
-	int screen = pack->parseInt(); 
-	// 2 - all items, 3 - my sales, 4 - my bids, 5 - available items, 
+	int screen = pack->parseInt();
+	// 2 - all items, 3 - my sales, 4 - my bids, 5 - available items,
 	// 7 - for sale, 9 - offers to vendor
 	uint32 category = pack->parseInt();  // Bitmask
 	pack->shiftOffset(21);
 	uint64 bazaarId = pack->parseLong();
 	char unk1 = pack->parseByte();
 	int offset = pack->parseShort();
-	
+
    	BazaarManager* bazaarManager = server->getBazaarManager();
    	if (extent == 0)
    		bazaarManager->getBazaarData(player, bazaarId, screen, extent, category, counter, offset);
@@ -929,10 +929,10 @@ void ZonePacketHandler::handleBazaarBuy(Message* pack) {
 	uint64 objectId = pack->parseLong();
 	uint32 price1 = pack->parseInt();
 	uint32 price2 = pack->parseInt();
-	
+
    	BazaarManager* bazaarManager = server->getBazaarManager();
    	bazaarManager->buyItem(player, objectId, price1, price2);
-   	
+
 }
 
 void ZonePacketHandler::handleRetrieveAuctionItem(Message* pack) {
@@ -944,7 +944,7 @@ void ZonePacketHandler::handleRetrieveAuctionItem(Message* pack) {
 
 	uint64 objectId = pack->parseLong();
 	uint64 bazaarId = pack->parseLong();
-	
+
    	BazaarManager* bazaarManager = server->getBazaarManager();
    	bazaarManager->retrieveItem(player, objectId, bazaarId);
 
@@ -958,8 +958,8 @@ void ZonePacketHandler::handleGetAuctionItemAttributes(Message* pack) {
 		return;
 
 	uint64 objectId = pack->parseLong();
-	
+
    	BazaarManager* bazaarManager = server->getBazaarManager();
    	bazaarManager->getItemAttributes(player, objectId);
-   	
+
 }

@@ -70,6 +70,11 @@ int RevivePackImplementation::useObject(Player* player) {
 		return 0;
 	}
 
+	if (!targetPlayer->isPlayer() || !targetPlayer->isNonPlayerCreature()) {
+		player->sendSystemMessage("Your target for Revive Player was invalid.");
+		return 0;
+	}
+
 	uint64 targetID = targetPlayer->getObjectID();
 	uint32 actionCRC = 0xC9759876; //reviveplayer <target>
 	uint32 actionCntr = 0;

@@ -162,18 +162,15 @@ public:
 			return 0;
 		}
 
-		if (playerTarget->isOvert()) {
+		if (playerTarget->isOvert() && playerTarget->getFaction() != creature->getFaction()) {
 			creature->sendSystemMessage("healing_response", "unwise_to_help"); //It would be unwise to help such a patient.
 			return 0;
 		}
 
-		/*
-		 * TODO: Add in consent
-		if (creature->getGroupID() == playerTarget->getGroupID() || !creature->hasConsentOf(playerTarget)) {
+		if (creature->getGroupID() != playerTarget->getGroupID() || !playerTarget->hasConsent(creature->getObjectID())) {
 			creature->sendSystemMessage("healing_response", "must_be_grouped"); //You must be grouped with or have consent from your resuscitation target!
+			return 0;
 		}
-
-		*/
 
 		if (creature->getMind() < abs(mindCost)) {
 			creature->sendSystemMessage("healing_response", "not_enough_mind"); //You do not have enough mind to do that.

@@ -166,7 +166,7 @@ public:
 			return 0;
 		}
 
-		if (creatureTarget->isOvert() && creatureTarget != creature) {
+		if (creatureTarget->isOvert() && creatureTarget->getFaction() != creature->getFaction()) {
 			creature->sendSystemMessage("healing_response", "unwise_to_help"); //It would be unwise to help such a patient.
 			return 0;
 		}

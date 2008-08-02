@@ -40,13 +40,31 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-RunItemLUAFile("bluefrog/composite_armor_set.lua");
-RunItemLUAFile("bluefrog/instrument_set.lua");
-RunItemLUAFile("bluefrog/surveying_kit.lua");
-RunItemLUAFile("bluefrog/weapon_set.lua");
-RunItemLUAFile("bluefrog/wookiee_armor_set.lua");
-RunItemLUAFile("bluefrog/ith_armor_set.lua");
-RunItemLUAFile("bluefrog/enhancePackSet.lua");
-RunItemLUAFile("bluefrog/stimPackSet.lua");
-RunItemLUAFile("bluefrog/woundPackSet.lua");
-RunItemLUAFile("bluefrog/statePackSet.lua");
+revivePack = Object:new {
+
+	objectName = "Resuscitation Kit",
+
+	templateName = "object/tangible/medicine/crafted/shared_medpack_revive.iff",
+
+	objectCRC = "893587986",
+
+	objectType = PHARMACEUTICAL,
+	
+	medpackType = REVIVEPACK,
+	
+	usesRemaining = 23,
+	
+	medicineUse = 51,
+	
+	healthWoundHealed = 28,
+	
+	healthHealed = 67,
+	
+	actionWoundHealed = 32,
+	
+	actionHealed = 83,
+	
+	mindWoundHealed = 44,
+	
+	mindHealed = 56
+}

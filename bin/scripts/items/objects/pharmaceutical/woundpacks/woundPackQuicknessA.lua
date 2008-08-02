@@ -40,13 +40,23 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-RunItemLUAFile("bluefrog/composite_armor_set.lua");
-RunItemLUAFile("bluefrog/instrument_set.lua");
-RunItemLUAFile("bluefrog/surveying_kit.lua");
-RunItemLUAFile("bluefrog/weapon_set.lua");
-RunItemLUAFile("bluefrog/wookiee_armor_set.lua");
-RunItemLUAFile("bluefrog/ith_armor_set.lua");
-RunItemLUAFile("bluefrog/enhancePackSet.lua");
-RunItemLUAFile("bluefrog/stimPackSet.lua");
-RunItemLUAFile("bluefrog/woundPackSet.lua");
-RunItemLUAFile("bluefrog/statePackSet.lua");
+woundPackQuicknessA = Object:new {
+
+	objectName = "Quickness Wound Medpack - A",
+
+	templateName = "object/tangible/medicine/crafted/shared_medpack_wound_quickness_a.iff",
+
+	objectCRC = "2977609255",
+
+	objectType = PHARMACEUTICAL,
+	
+	medpackType = WOUNDPACK,
+	
+	usesRemaining = 18,
+	
+	medicineUse = 5,
+	
+	effectiveness = 40,
+	
+	poolAffected = QUICKNESS
+}

@@ -337,14 +337,21 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 	// CommandQueueAction* action; - not used anymore?
 
 	switch (actionCRC) {
+	case (0xB93A3853): //haveconsent
+		parseHaveConsentRequest(player, pack);
+		break;
+	case (0xA2DF082A): //unconsent
+		parseRevokeConsentRequest(player, pack);
+		break;
+	case (0x3F8F3496): //consent
+		parseGiveConsentRequest(player, pack);
+		break;
 	case (0xEA69C1BD): //activateClone
-	{
 		if (!player->isDead()) {
 			player->sendSystemMessage("You must be dead to activate your clone.");
 		} else {
 			player->activateClone();
 		}
-	}
 		break;
 	case (0x03B65950): // Logout
 		player->userLogout();
@@ -1822,110 +1829,133 @@ void ObjectControllerMessage::parseWaypointCreate(Player* player, Message* pack)
 	*/
 }
 
-void ObjectControllerMessage::parseWaypointCommand(Player* player, Message* pack) {
-	int counter = 0;
-	string dummy;
 
+void ObjectControllerMessage::parseWaypointCommand(Player* player, Message* pack) {
 	pack->shiftOffset(8);
 
-	unicode waypoint;
-	pack->parseUnicode(waypoint);
+	string usageError = "Usage: /waypoint X Y <name> or /waypoint <name>";
 
-	string wpName = "New Waypoint";
+	unicode rawWaypoint;
+	pack->parseUnicode(rawWaypoint);
+	string waypointData = rawWaypoint.c_str();
 
-	float x;
-	float y;
-	x = player->getPositionX();
-	y = player->getPositionY();
+	string waypointName = "New Waypoint";
+	string planet = Planet::getPlanetName(player->getZoneID());
+	float x = player->getPositionX();
+	float y = player->getPositionY();
+	float z = 0.0f;
 
-	//If the WP is in a cell, we need world cords from the parent or even parent-parent object
-	SceneObject* plPar = player->getParent();
+	SceneObject* parentObject = player->getParent();
 
-	if (plPar != NULL) {
-		if (plPar->isCell()) {
+	if (parentObject != NULL) {
+		if (parentObject->isCell()) {
+			SceneObject* grandParentObject = parentObject->getParent();
 
-			SceneObject* parpar = plPar->getParent();
-
-			if (parpar != NULL) {
-				x = parpar->getPositionX();
-				y = parpar->getPositionY();
+			if (grandParentObject != NULL) {
+				x = grandParentObject->getPositionX();
+				y = grandParentObject->getPositionY();
 			}
-
 		}
 	}
 
-	try {
-		if (waypoint.size()> 1) {
-			StringTokenizer bTokenizer(waypoint.c_str());
+	StringTokenizer tokenizer(waypointData);
+	tokenizer.setDelimeter(" ");
 
-			// test  how many tokens
-			while (bTokenizer.hasMoreTokens()) {
-				bTokenizer.getStringToken(dummy);
-				counter++;
+	string arg1;
+	tokenizer.getStringToken(arg1);
+
+	if (tokenizer.hasMoreTokens()) {
+		if (isalpha(arg1[0]) == 0) {
+			//A waypoint in the form of /waypoint X Y <name>
+			x = atof(arg1.c_str());
+
+			if (tokenizer.hasMoreTokens()) {
+				string temp;
+				tokenizer.getStringToken(temp);
+				if (isalpha(temp[0]) == 0) {
+					y = atof(temp.c_str());
+				} else {
+					player->sendSystemMessage(usageError);
+					return;
+				}
 			}
 
-			StringTokenizer tokenizer(waypoint.c_str());
+			stringstream newWaypointName;
 
-			if (counter	== 1 ) {
-				tokenizer.getStringToken(wpName);
+			while (tokenizer.hasMoreTokens()) {
+				newWaypointName << " ";
+				tokenizer.getStringToken(newWaypointName);
+			}
 
-				SceneObject* plPar = player->getParent();
+			string tempName = newWaypointName.str();
 
-				if (plPar != NULL) {
-					if (plPar->isCell()) {
-						SceneObject* parpar = plPar->getParent();
+			if (!tempName.empty()) {
+				tempName.erase(0,1);
+				waypointName = tempName;
+			}
 
-						if (parpar != NULL) {
-							x = parpar->getPositionX();
-							y = parpar->getPositionY();
-						}
-					}
+		} else {
+			//A waypoint in the form of /waypoint planet X Z Y - Planetary Map
+			planet = arg1;
+
+			if (Planet::getPlanetID(planet) < 0) { //Not a valid planet name - malformed command
+				player->sendSystemMessage(usageError);
+				return;
+			}
+
+			if (tokenizer.hasMoreTokens()) {
+				string temp;
+				tokenizer.getStringToken(temp);
+				if (isalpha(temp[0]) == 0) {
+					x = atof(temp.c_str());
 				} else {
-					x = player->getPositionX();
-					y = player->getPositionY();
+					player->sendSystemMessage(usageError);
+					return;
 				}
-			} else if (counter == 2) {
-				x = tokenizer.getFloatToken();
-				y = tokenizer.getFloatToken();
+			}
 
-			} else if (counter > 2) {
-				x = tokenizer.getFloatToken();
-				y = tokenizer.getFloatToken();
-				tokenizer.getStringToken(wpName);
+			if (tokenizer.hasMoreTokens()) {
+				string temp;
+				tokenizer.getStringToken(temp);
+				if (isalpha(temp[0]) == 0) {
+					z = atof(temp.c_str());
+				} else {
+					player->sendSystemMessage(usageError);
+					return;
+				}
+			}
 
-				if (isdigit(wpName[0]) !=0) {
-					//User used    /waypoint name X Y    instead of     /waypoint X Y name
-					player->sendSystemMessage("Useage: /waypoint X Y <name>   or /waypoint <name>");
-					player->sendSystemMessage("and a waypoint's name may not begin with a digit.\n");
+			if (tokenizer.hasMoreTokens()) {
+				string temp;
+				tokenizer.getStringToken(temp);
+				if (isalpha(temp[0]) == 0) {
+					y = atof(temp.c_str());
+				} else {
+					player->sendSystemMessage(usageError);
 					return;
 				}
 			}
 		}
-	} catch (...) {
-		cout << "Unreported exception in ObjectControllerMessage::parseWaypointCommand\n";
-		return;
+	} else {
+		//A waypoint in the form of /waypoint <name>
+		waypointName = arg1;
 	}
 
-	if ( (x == 0 && y == 0) ){
-		player->sendSystemMessage("Useage: /waypoint X Y <name>   or /waypoint <name>\n");
-		return;
-	}
+	x = (x < -8192) ? -8192 : x;
+	x = (x > 8192) ? 8192 : x;
 
-	if (x < -8192 || x> 8192) {
-		player->sendSystemMessage("X coordinates are in the range from -8192 to 8192\n");
-		return;
-	}
+	y = (y < -8192) ? -8192 : y;
+	y = (y > 8192) ? 8192 : y;
 
-	if (y < -8192 || y> 8192) {
-		player->sendSystemMessage("Y coordinates are in the range from -8192 to 8192\n");
-		return;
-	}
 
-	WaypointObject* wp = new WaypointObject(player, player->getNewItemID());
-	wp->setPosition(x, 0, y);
-	wp->setName(wpName);
+	//Create our waypoint
+	WaypointObject* waypoint = new WaypointObject(player, player->getNewItemID());
+	waypoint->setPlanetName(planet);
+	waypoint->setPosition(x, z, y);
+	waypoint->setName(waypointName);
 
-	player->addWaypoint(wp);
+	player->addWaypoint(waypoint);
+
 
 }
 
@@ -2972,4 +3002,125 @@ void ObjectControllerMessage::parseRemoveIgnore(Player* player, Message* pack) {
 	}
 }
 
+void ObjectControllerMessage::parseGiveConsentRequest(Player* player, Message* pack) {
+	if (player->getConsentSize() >= 15) { //Max consent list size = 15
+		player->sendSystemMessage("Your consent list is full. You must /unconsent someone before consenting another player.");
+		return;
+	}
+
+	pack->shiftOffset(8);
+	unicode unicodeName;
+	pack->parseUnicode(unicodeName);
+	string name = unicodeName.c_str();
+	string consentName = "";
+
+	if (name.empty()) {
+		player->sendSystemMessage("Usage: /consent <name>");
+		return;
+	}
+
+	StringTokenizer tokenizer(name);
+	tokenizer.setDelimeter(" ");
+	tokenizer.getStringToken(consentName);
+
+	PlayerManager* playerManager = player->getZone()->getZoneServer()->getPlayerManager();
+	Player* playerTarget = playerManager->getPlayer(consentName);
+
+	if (playerTarget != NULL) {
+		if (playerTarget == player) {
+			player->sendSystemMessage("You ask yourself for consent, but you get no reply.");
+			return;
+		}
+
+		if (player->giveConsent(playerTarget->getObjectID())) {
+			player->sendSystemMessage("base_player", "prose_consent", playerTarget->getObjectID()); //You give your consent to %TO.
+			playerTarget->sendSystemMessage("base_player", "prose_got_consent", player->getObjectID()); //%TO consents you.
+		} else {
+			player->sendSystemMessage("You have already given them your consent.");
+		}
+
+		return;
+	} else {
+		player->sendSystemMessage("Your target for consent was not found.");
+	}
+}
+
+void ObjectControllerMessage::parseRevokeConsentRequest(Player* player, Message* pack) {
+	if (player->getConsentSize() <= 0) {
+		player->sendSystemMessage("You have no one on your consent list to remove.");
+		return;
+	}
+
+	pack->shiftOffset(8);
+	unicode unicodeName;
+	pack->parseUnicode(unicodeName);
+	string name = unicodeName.c_str();
+	string consentName = "";
+
+	if (name.empty()) {
+		player->sendSystemMessage("Usage: /unconsent <name>");
+		return;
+	}
+
+	StringTokenizer tokenizer(name);
+	tokenizer.setDelimeter(" ");
+	tokenizer.getStringToken(consentName);
+
+	PlayerManager* playerManager = player->getZone()->getZoneServer()->getPlayerManager();
+	Player* playerTarget = playerManager->getPlayer(consentName);
+
+	if (playerTarget != NULL) {
+		if (playerTarget == player) {
+			player->sendSystemMessage("You tell yourself no, but you don't listen.");
+			return;
+		}
+
+		if (player->revokeConsent(playerTarget->getObjectID())) {
+			player->sendSystemMessage("base_player", "prose_unconsent", playerTarget->getObjectID()); //You revoke your consent from %TO.
+			playerTarget->sendSystemMessage("base_player", "prose_lost_consent", player->getObjectID()); //%TO revokes your consent.
+		} else {
+			player->sendSystemMessage("This person already does not have your consent.");
+		}
+
+		return;
+	} else {
+		player->sendSystemMessage("Your target for unconsent was not found.");
+	}
+}
+
+void ObjectControllerMessage::parseHaveConsentRequest(Player* player, Message* pack) {
+	pack->shiftOffset(8);
+	unicode unicodeName;
+	pack->parseUnicode(unicodeName);
+	string name = unicodeName.c_str();
+	string consentName = "";
+
+	if (name.empty()) {
+		player->sendConsentBox();
+		return;
+	}
+
+	StringTokenizer tokenizer(name);
+	tokenizer.setDelimeter(" ");
+	tokenizer.getStringToken(consentName);
+
+	PlayerManager* playerManager = player->getZone()->getZoneServer()->getPlayerManager();
+	Player* playerTarget = playerManager->getPlayer(consentName);
+
+	if (playerTarget != NULL) {
+		if (playerTarget == player) {
+			player->sendSystemMessage("You ask yourself for consent to do whatever you want.");
+			return;
+		}
+
+		if (playerTarget->hasConsent(player->getObjectID())) {
+			player->sendSystemMessage("base_player", "haveconsent_true"); //You have their consent.
+			return;
+		}
+	} else {
+		player->sendSystemMessage("Your target for /haveconsent was not found.");
+	}
+
+	player->sendSystemMessage("base_player", "haveconsent_false"); //You do not have their consent.
+}
 

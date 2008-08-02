@@ -2086,6 +2086,43 @@ void PlayerImplementation::doClone() {
 	rescheduleRecovery();
 }
 
+
+void PlayerImplementation::sendConsentBox() {
+	if (consentList.size() <= 0) {
+		sendSystemMessage("You have yet to give anyone your consent.");
+		return;
+	}
+
+	if (hasSuiBoxType(0xC057)) {
+		int boxID = getSuiBoxFromType(0xC057);
+		SuiListBox* sui = (SuiListBox*) getSuiBox(boxID);
+		sendMessage(sui->generateCloseMessage());
+		removeSuiBox(boxID);
+		sui->finalize();
+	}
+
+	SuiListBox* consentBox = new SuiListBox(_this, 0xC057);
+
+	consentBox->setPromptTitle("Consent List");
+	consentBox->setPromptText("Below is listed all players whom you have given consent.");
+
+	for (int i=0; i<consentList.size(); i++) {
+		SceneObject* object = getZone()->lookupObject(consentList.get(i));
+
+		if (object->isPlayer()) {
+			Player* player = (Player*) object;
+			unicode unicodeName = unicode("");
+			unicodeName = player->getCharacterName();
+			string name = unicodeName.c_str();
+
+			consentBox->addMenuItem(name, player->getObjectID());
+		}
+	}
+
+	addSuiBox(consentBox);
+	sendMessage(consentBox->generateMessage());
+}
+
 void PlayerImplementation::doCenterOfBeing() {
 	if (centered) {
 		sendSystemMessage("combat_effects", "already_centered");

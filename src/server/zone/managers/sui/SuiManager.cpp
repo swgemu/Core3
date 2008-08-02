@@ -65,6 +65,9 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, Player* player, uint32
 	int range;
 
 	switch (type) {
+	case 0xC057:
+		handleConsentBox(boxID, player, cancel, atoi(value.c_str()));
+		break;
 	case 0xC103:
 		handleCloneRequest(boxID, player, cancel, atoi(value.c_str()));
 		break;
@@ -671,6 +674,36 @@ void SuiManager::handleDiagnose(uint32 boxID, Player* player) {
 		}
 
 		SuiBox* sui = player->getSuiBox(boxID);
+
+		player->removeSuiBox(boxID);
+
+		sui->finalize();
+
+		player->unlock();
+	} catch (Exception& e) {
+		error("Exception in SuiManager::handleDiagnose ");
+		e.printStackTrace();
+
+		player->unlock();
+	} catch (...) {
+		error("Unreported exception caught in SuiManager::handleDiagnose");
+		player->unlock();
+	}
+}
+
+
+void SuiManager::handleConsentBox(uint32 boxID, Player* player, uint32 cancel, int index) {
+	try {
+		player->wlock();
+
+		if (!player->hasSuiBox(boxID)) {
+			player->unlock();
+			return;
+		}
+
+		SuiBox* sui = player->getSuiBox(boxID);
+
+		//TODO: Remove from consent list?
 
 		player->removeSuiBox(boxID);
 

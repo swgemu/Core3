@@ -231,7 +231,7 @@ class PlayerImplementation : public PlayerServant {
 	Time reviveTimeout;
 	ReviveCountdownEvent* reviveCountdownEvent;
 
-	//Vector<uint64> consentList;
+	Vector<uint64> consentList;
 
 public:
 	static const int ONLINE = 1;
@@ -501,8 +501,6 @@ public:
 	void activateDigest();
 	void doDigest();
 
-	void doClone();
-
 	void doCenterOfBeing();
 	void removeCenterOfBeing();
 
@@ -513,13 +511,55 @@ public:
 
 	void kill();
 	void deathblow(Player* player);
+	void revive();
+
 	void activateClone();
+	void doClone();
+
 	void activateReviveCountdown();
 	void clearReviveCountdown();
 	void countdownRevive(int counter);
+
 	void handleDeath();
 
-	void revive();
+	void sendConsentBox();
+
+	inline bool hasConsent(uint64 playerID) {
+		for (int i=0; i<consentList.size(); i++) {
+			if (consentList.get(i) == playerID)
+				return true;
+		}
+		return false;
+	}
+
+	inline int getConsentIndex(uint64 playerID) {
+		for (int i=0; i<consentList.size(); i++) {
+			if (consentList.get(i) == playerID)
+				return i;
+		}
+		return -1;
+	}
+
+	inline bool giveConsent(uint64 playerID) {
+		if (!hasConsent(playerID)) {
+			consentList.add(playerID);
+			return true;
+		}
+		return false;
+	}
+
+	inline bool revokeConsent(uint64 playerID) {
+		int index = getConsentIndex(playerID);
+		if (index >= 0) {
+			consentList.remove(index);
+			return true;
+		}
+		return false;
+	}
+
+	inline int getConsentSize() {
+		return consentList.size();
+	}
 
 	//mission methods
 	uint32 nextMisoRFC() {

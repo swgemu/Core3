@@ -82,6 +82,7 @@ public:
 	void handleDiagnose(uint32 boxID, Player* player);
 
 	void handleCloneRequest(uint32 boxID, Player* player, uint32 cancel, int value);
+	void handleConsentBox(uint32 boxID, Player* player, uint32 cancel, int value);
 };
 
 #endif /*SUIMANAGER_H_*/

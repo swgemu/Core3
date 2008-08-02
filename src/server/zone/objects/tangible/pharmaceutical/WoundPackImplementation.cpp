@@ -65,6 +65,13 @@ int WoundPackImplementation::useObject(Player* player) {
 	uint32 actionCRC = 0x2087CE04;
 	uint32 actionCntr = 0;
 
+	SceneObject* objectTarget = (SceneObject*) player->getZone()->lookupObject(targetID);
+
+	if (!objectTarget->isPlayer() || !objectTarget->isNonPlayerCreature()) {
+		player->sendSystemMessage("Your target for Heal Wound was invalid.");
+		return 0;
+	}
+
 	stringstream actionModifier;
 	actionModifier << getPoolName(getPoolAffected()) << "|" << objectID;
 

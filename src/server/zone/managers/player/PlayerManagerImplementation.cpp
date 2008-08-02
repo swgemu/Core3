@@ -416,8 +416,8 @@ void PlayerManagerImplementation::loadFromDatabase(Player* player) {
 	player->setBaseFocus(character->getInt(42));
 	player->setBaseWillpower(character->getInt(43));
 
-	//player->setHealthWounds(character->getInt(44)); // HealthWounds
-	//player->setActionWounds(character->getInt(45)); //ActionWounds
+	player->setHealthWounds(character->getInt(44));
+	player->setActionWounds(character->getInt(45));
 	player->setMindWounds(character->getInt(46));
 	player->setShockWounds(character->getInt(47));
 
@@ -467,6 +467,7 @@ void PlayerManagerImplementation::loadWaypoints(Player* player) {
 	}
 	delete result;
 }
+
 
 void PlayerManagerImplementation::updateOtherFriendlists(Player* player, bool status) {
 	string loggingInName = player->getFirstName();

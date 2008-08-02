@@ -171,17 +171,23 @@ interface Player implements CreatureObject {
 	
 	void doPeace();
 	
-	void doClone();
-	
 	void kill();
 	void deathblow(Player player);
+		void revive();
 	
+	void doClone();
 	void activateClone();
+	
 	void activateReviveCountdown();
 	void clearReviveCountdown();
 	void countdownRevive(int counter);
 	
-	void revive();
+	boolean hasConsent(unsigned long charID);
+	boolean giveConsent(unsigned long charID);
+	boolean revokeConsent(unsigned long charID);
+	int getConsentSize();
+	
+	void sendConsentBox();
 	
 	boolean isRevivable();
 	

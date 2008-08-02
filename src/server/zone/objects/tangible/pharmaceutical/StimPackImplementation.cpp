@@ -70,6 +70,11 @@ int StimPackImplementation::useObject(Player* player) {
 		return 0;
 	}
 
+	if (!targetPlayer->isPlayer() || !targetPlayer->isNonPlayerCreature()) {
+		player->sendSystemMessage("Your target for Heal Damage was invalid.");
+		return 0;
+	}
+
 	uint64 targetID = player->getTargetID();
 	uint32 actionCRC = 0x0A9F00A0;
 	uint32 actionCntr = 0;
