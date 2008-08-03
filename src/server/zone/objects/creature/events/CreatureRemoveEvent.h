@@ -55,12 +55,15 @@ public:
 	CreatureRemoveEvent(Creature* cr) : Event() {
 		creo = cr;
 
+		setKeeping(true);
 	}
 
 	bool activate() {
 		try {
 
 			creo->wlock();
+
+			creo->removeFromQueue();
 
 			creo->unload();
 

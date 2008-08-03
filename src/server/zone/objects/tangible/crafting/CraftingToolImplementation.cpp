@@ -515,7 +515,7 @@ void CraftingToolImplementation::cleanUp(Player* player) {
 
 					if (quantity != 0) {
 
-						cm->putResourceBackInInventory(player, rcno);
+						player->addInventoryItem(rcno);
 
 					}
 

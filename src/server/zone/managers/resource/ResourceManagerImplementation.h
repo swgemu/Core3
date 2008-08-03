@@ -18,6 +18,9 @@
 
 #include "../../objects/tangible/resource/ResourceContainer.h"
 
+#include "../../objects/creature/Creature.h"
+#include "../../objects/creature/CreatureObject.h"
+
 #include "ResourceManager.h"
 
 #include "ResourceTemplate.h"
@@ -83,7 +86,7 @@ public:
 
 	void printResource(string resname);
 
-	ResourceContainer* getOrganicResource(Player* player, string type, int amount);
+	void harvestOrganics(Player* player, Creature* creature, int type);
 
 private:
 	void init();
@@ -152,6 +155,8 @@ private:
 	void verifyResourceData(int i, ResourceTemplate* resTemp);
 
 	string getCurrentNameFromType(string type);
+
+	void getHarvestingType(CreatureObject* creatureObj, string& harvestType, int& harvestAmount, int type);
 
 };
 

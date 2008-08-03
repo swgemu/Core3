@@ -105,11 +105,13 @@ public:
 
 	void setRespawnTimer(unsigned int seconds);
 
-	bool hasOrganicResources();
-
-	void addPlayerToHarvestList(string& firstName);
+	void removePlayerFromHarvestList(string& firstName);
 
 	bool canHarvest(string& firstName);
+
+	bool beenLooted();
+
+	void wasLooted();
 
 	void setLootCreated(bool value);
 
@@ -207,17 +209,19 @@ public:
 
 	void setRespawnTimer(unsigned int seconds);
 
-	bool hasOrganicResources();
-
-	void addPlayerToHarvestList(string& firstName);
+	void removePlayerFromHarvestList(string& firstName);
 
 	bool canHarvest(string& firstName);
+
+	bool beenLooted();
+
+	void wasLooted();
 
 	void setLootCreated(bool value);
 
 protected:
 	string _param0_setObjectFileName__string_;
-	string _param0_addPlayerToHarvestList__string_;
+	string _param0_removePlayerFromHarvestList__string_;
 	string _param0_canHarvest__string_;
 };
 

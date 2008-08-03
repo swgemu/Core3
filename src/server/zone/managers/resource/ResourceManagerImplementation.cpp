@@ -450,77 +450,7 @@ void ResourceManagerImplementation::sendSampleMessage(Player* player,
 
 				setResourceData(newRcno, false);
 
-				Inventory* inventory = player->getInventory();
-
-				ResourceContainer* rco;
-
-				for (int i = 0; i < inventory->objectsSize(); i++) {
-					TangibleObject* item = (TangibleObject*) inventory->getObject(i);
-					if (item != NULL && item->isResource()) {
-						rco = (ResourceContainer*)item;
-
-						try {
-
-							rco->wlock();
-
-							if (rco->compare(newRcno) && rco->getContents() != rco->getMaxContents()) {
-
-								if (rco->getContents() + newRcno->getContents()
-										<= rco->getMaxContents()) {
-
-									rco->transferContents(player, newRcno);
-
-									makeNewResource = false;
-
-									rco->unlock();
-
-									break;
-								} else {
-
-									int diff = (rco->getContents() + newRcno->getContents()) - rco->getMaxContents();
-
-									rco->setContents(rco->getMaxContents());
-
-									newRcno->setContents(newRcno->getContents() - diff);
-
-									rco->sendDeltas(player);
-
-									rco->setUpdated(true);
-								}
-							}
-							rco->unlock();
-						}
-						catch(...) {
-
-							rco->unlock();
-
-						}
-					}
-				}
-
-				if (makeNewResource) {
-					// NOTE: Figure out how to get max inventory size...
-					if (inventory->getObjectCount() >= 80) {
-						ChatSystemMessage* sysMessage = new ChatSystemMessage("survey", "no_inv_spc");
-						player->sendMessage(sysMessage);
-						unlock(doLock);
-						return;
-					}
-
-					player->addInventoryItem(newRcno);
-
-					newRcno->sendTo(player);
-
-					newRcno->setPersistent(false);
-
-					rco = newRcno;
-				} else {
-
-					newRcno = NULL;
-
-				}
-
-				if (rco->getObjectSubType() == TangibleObjectImplementation::ENERGYRADIOACTIVE) {
+				if (newRcno->getObjectSubType() == TangibleObjectImplementation::ENERGYRADIOACTIVE) {
 					int wound = int((sampleRate / 70) - System::random(9));
 					if (wound> 0) {
 						player->changeHealthWoundsBar(wound, false);
@@ -528,6 +458,9 @@ void ResourceManagerImplementation::sendSampleMessage(Player* player,
 						player->changeMindWoundsBar(wound, false);
 					}
 				}
+
+				player->addInventoryItem(newRcno);
+
 
 			} else {
 				ChatSystemMessage* sysMessage = new ChatSystemMessage("survey", "sample_failed", resourceName, 0, false);
@@ -549,101 +482,174 @@ void ResourceManagerImplementation::sendSampleMessage(Player* player,
 	}
 }
 
-ResourceContainer* ResourceManagerImplementation::getOrganicResource(
-		Player* player, string type, int amount) {
+void ResourceManagerImplementation::harvestOrganics(Player* player,
+		Creature* creature, int type) {
 
-	lock();
+	if (!creature->isDead())
+		return;
 
-	ResourceContainer* newRcno = new ResourceContainer(player->getNewItemID());
+	bool proceed = false;
+	int loop = 0;
+	string harvestType = "";
+	int baseAmount = 0;
+	int bonusAmount = 0;
+	float bonusPercentage = 0;
+	int variance;
 
-	string resname = getCurrentNameFromType(type);
+	CreatureObject* creatureObj = (CreatureObject*) creature;
 
-	if (resname == ""){
-		unlock();
-		return NULL;
-}
+	if (creatureObj == NULL)
+		return;
 
-	newRcno->setResourceName(resname);
+	string skillBox = "outdoors_scout_novice";
 
-	newRcno->setContents(amount);
+	if (player->isInRange(creature->getPositionX(), creature->getPositionY(), 10.0f) &&
+			!player->isInCombat() && player->hasSkillBox(skillBox) && creature->isDead() &&
+			creature->canHarvest(player->getFirstName())) {
 
-	setResourceData(newRcno, false);
+		try {
+			creature->lock(player);
 
-	Inventory* inventory = player->getInventory();
+			getHarvestingType(creatureObj, harvestType, baseAmount, type);
 
-	ResourceContainer* rco;
+			if (baseAmount == 0 || harvestType == "") {
+				creature->unlock();
+				return;
+			}
 
-	bool makeNewResource = true;
+			baseAmount = int(baseAmount * float(player->getSkillMod(
+					"creature_harvesting") / 100.0f));
 
-	for (int i = 0; i < inventory->objectsSize(); i++) {
-		TangibleObject* item = (TangibleObject*)inventory->getObject(i);
-		if (item != NULL && item->isResource()) {
-			rco = (ResourceContainer*) item;
+			float temp2 = float(baseAmount) * .1f;
+			if(temp2 < 3)
+				temp2 = 3;
 
-			try {
+			variance = System::random(int(temp2) * 2);
+			variance -= System::random(int(temp2 / 2.0f) * 2);
 
-				rco->wlock();
+			baseAmount += variance;
 
-				if (rco->compare(newRcno) && rco->getContents()
-						!= rco->getMaxContents()) {
+			if (player->isInAGroup()) {
 
-					if (rco->getContents() + newRcno->getContents()
-							<= rco->getMaxContents()) {
-
-						rco->transferContents(player, newRcno);
-
-						makeNewResource = false;
-
-						rco->unlock();
-
-						unlock();
-
-						return rco;
-					} else {
-
-						int diff =
-								(rco->getContents() + newRcno->getContents())
-										- rco->getMaxContents();
-
-						rco->setContents(rco->getMaxContents());
-
-						newRcno->setContents(newRcno->getContents() - diff);
-
-						rco->sendDeltas(player);
-
-						rco->setUpdated(true);
-					}
-				}
-				rco->unlock();
-			} catch (...) {
-
-				rco->unlock();
+				bonusPercentage
+						= player->getGroupObject()->getRangerBonusForHarvesting(
+								player);
+				bonusAmount = int(bonusPercentage * baseAmount);
 
 			}
-		}
-	}
 
-	if (makeNewResource) {
-		// NOTE: Figure out how to get max inventory size...
-		if (inventory->getObjectCount() >= 80) {
-			ChatSystemMessage* sysMessage = new ChatSystemMessage("survey", "no_inv_spc");
-			player->sendMessage(sysMessage);
+			if (baseAmount < 3)
+				baseAmount = 3;
 
-			unlock();
-			return rco;
+			ResourceContainer* newRcno =
+					new ResourceContainer(player->getNewItemID());
 
-		} else {
+			string resname = getCurrentNameFromType(harvestType);
+
+			if (resname == "") {
+				creature->unlock();
+				return;
+			}
+
+			newRcno->setResourceName(resname);
+
+			newRcno->setContents(baseAmount + bonusAmount);
+
+			setResourceData(newRcno, false);
+
+			stringstream ss;
+
+			ss << "You have harvested " << baseAmount << " unit(s) of "
+					<< newRcno->getClassSeven();
+
+
+			if (bonusAmount > 0) {
+
+				ss << "  and got a ";
+
+				if (bonusPercentage > .35f)
+					ss << " Master Ranger ";
+				else if (bonusPercentage > .25f)
+					ss << " Ranger ";
+
+				ss << "group bonus of " << bonusAmount << " unit(s).";
+
+			} else {
+
+				ss << ".";
+
+			}
+
+			player->sendSystemMessage(ss.str());
 
 			player->addInventoryItem(newRcno);
 
-			newRcno->sendTo(player);
+			creature->removePlayerFromHarvestList(player->getFirstName());
 
-			newRcno->setPersistent(false);
+			string xpType = "scout";
+			int xp = int(creatureObj->getXP() * .1f);
+
+			player->addXp(xpType, xp, true);
+
+			creature->unlock();
+
+		} catch (...) {
+
+			creature->unlock();
+
+		}
+	}
+}
+
+void ResourceManagerImplementation::getHarvestingType(CreatureObject* creatureObj,
+		string& harvestType, int& harvestAmount, int type) {
+
+	bool proceed = false;
+	int loop = 0;
+
+	if (type == 0)
+		type = System::random(2) + 1;
+
+	while (!proceed) {
+
+		if (loop > 4) {
+			return;
 		}
 
+		switch (type) {
+		case 1:
+			if (creatureObj->getMeatMax() != 0) {
+				harvestType = creatureObj->getMeatType();
+				harvestAmount = creatureObj->getMeatMax();
+				proceed = true;
+			}
+			break;
+		case 2:
+			if (creatureObj->getHideMax() != 0) {
+				harvestType = creatureObj->getHideType();
+				harvestAmount = creatureObj->getHideMax();
+				proceed = true;
+			}
+			break;
+		case 3:
+			if (creatureObj->getBoneMax() != 0) {
+				harvestType = creatureObj->getBoneType();
+				harvestAmount = creatureObj->getBoneMax();
+				proceed = true;
+			}
+			break;
+		}
+
+		if (!proceed) {
+
+			type++;
+
+			if (type > 3)
+				type = 1;
+		}
+
+		loop++;
 	}
-	unlock();
-	return newRcno;
 }
 
 string ResourceManagerImplementation::getCurrentNameFromType(string type){

@@ -11,6 +11,8 @@ class Player;
 
 class ResourceContainer;
 
+class Creature;
+
 class ZoneServer;
 
 class ZoneProcessServerImplementation;
@@ -41,7 +43,7 @@ public:
 
 	void printResource(string& resname);
 
-	ResourceContainer* getOrganicResource(Player* player, string& type, int amount);
+	void harvestOrganics(Player* player, Creature* creature, int type);
 
 protected:
 	ResourceManager(DummyConstructorParameter* param);
@@ -81,7 +83,7 @@ public:
 
 	void printResource(string& resname);
 
-	ResourceContainer* getOrganicResource(Player* player, string& type, int amount);
+	void harvestOrganics(Player* player, Creature* creature, int type);
 
 protected:
 	string _param1_checkResource__Player_string_int_;
@@ -92,7 +94,6 @@ protected:
 	string _param0_getResourceContainerName__string_string_;
 	string _param1_getResourceContainerName__string_string_;
 	string _param0_printResource__string_;
-	string _param1_getOrganicResource__Player_string_int_;
 };
 
 class ResourceManagerHelper : public DistributedObjectClassHelper, public Singleton<ResourceManagerHelper> {

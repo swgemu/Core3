@@ -720,6 +720,9 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 	case (0x8E9091D7): // Remove Friend
 		parseRemoveFriend(player, pack);
 		break;
+	case (0x029D0CC5): // Harvest
+		parseHarvestOrganics(player, pack);
+		break;
 	default:
 		target = pack->parseLong();
 
@@ -1024,31 +1027,31 @@ void ObjectControllerMessage::parsePurchaseTicket(Player* player, Message *pack)
 		tokenizer.getStringToken(arrivalPoint);
 	else
 		return;
-	
+
 	bool roundTrip;
 	if (tokenizer.hasMoreTokens())
 		roundTrip = tokenizer.getIntToken();
 	else
 		return;
-	
+
 	PlanetManager * planetManager = player->getZone()->getPlanetManager();
-	
+
 	uint32 fare = planetManager->getTravelFare(departurePlanet, arrivalPlanet);
 
 	if (fare == 0) {
 		//Travel not allowed between these planets
 		return;
 	}
-	
+
 	//Replace Underscores with spaces
 	int pos = 0;
 	while ((pos = departurePoint.find("_", pos)) != string::npos) {
 		departurePoint.replace(pos, 1, " ");
 		pos++;
 	}
-	
+
 	ShuttleCreature * shuttle = planetManager->getShuttle(departurePoint);
-	
+
 	if (shuttle == NULL) {
 		SuiMessageBox* sui = new SuiMessageBox(player, 0xDAAD);
 		sui->setPromptTitle("@base_player:swg");
@@ -1057,34 +1060,34 @@ void ObjectControllerMessage::parsePurchaseTicket(Player* player, Message *pack)
 		player->sendMessage(sui->generateMessage());
 		return;
 	}
-	
+
 	uint32 tax = shuttle->getTax();
-	
+
 	uint32 totalFee = fare + tax;
-	
+
 	if(roundTrip)
 		totalFee *= 2;
-	
+
 	if (!player->verifyCashCredits(totalFee)) {
-		
+
 		SuiMessageBox* sui = new SuiMessageBox(player, 0xDAAD);
 		sui->setPromptTitle("@base_player:swg");
 		sui->setPromptText("@travel:short_funds");
 		player->addSuiBox(sui);
 		player->sendMessage(sui->generateMessage());
 		return;
-		
+
 	} else {
 		player->subtractCashCredits(totalFee);
 	}
-	
+
 	// create ticket item
 	Ticket* ticket = new Ticket(player, 0xDAA0DE83, unicode("Travel Ticket"), "travel_ticket",
 			departurePlanet, departurePoint, arrivalPlanet, arrivalPoint);
 
 	player->addInventoryItem(ticket);
 	ticket->sendTo(player, true);
-	
+
 	if (roundTrip) {
 		Ticket* returnTicket = new Ticket(player, 0xDAA0DE83, unicode("Travel Ticket"), "travel_ticket",
 				arrivalPlanet, arrivalPoint, departurePlanet, departurePoint);
@@ -1893,6 +1896,9 @@ void ObjectControllerMessage::parseWaypointCreate(Player* player, Message* pack)
 
 
 void ObjectControllerMessage::parseWaypointCommand(Player* player, Message* pack) {
+	int counter = 0;
+	string dummy;
+
 	pack->shiftOffset(8);
 
 	string usageError = "Usage: /waypoint X Y <name> or /waypoint <name>";
@@ -3052,6 +3058,7 @@ void ObjectControllerMessage::parseAddIgnore(Player* player, Message* pack) {
 }
 
 void ObjectControllerMessage::parseRemoveIgnore(Player* player, Message* pack) {
+
 	pack->shiftOffset(8);
 
 	unicode d;
@@ -3184,5 +3191,44 @@ void ObjectControllerMessage::parseHaveConsentRequest(Player* player, Message* p
 	}
 
 	player->sendSystemMessage("base_player", "haveconsent_false"); //You do not have their consent.
+}
+
+void ObjectControllerMessage::parseHarvestOrganics(Player* player, Message* pack){
+
+	Zone* zone = player->getZone();
+	if(zone == NULL)
+		return;
+
+	ResourceManager* resourceManager = zone->getZoneServer()->getResourceManager();
+	if(resourceManager == NULL)
+		return;
+
+	CreatureManager* creatureManager = zone->getCreatureManager();
+	if(creatureManager == NULL)
+		return;
+
+	uint64 creatureID = pack->parseLong();
+	Creature* creature = creatureManager->getCreature(creatureID);
+	if(creature == NULL)
+		return;
+
+	int type = 0;
+
+	unicode restype;
+	pack->parseUnicode(restype);
+
+	string resourceType = restype.c_str().c_str();
+
+	if(resourceType == "meat")
+		type = 1;
+
+	if(resourceType == "hide")
+		type = 2;
+
+	if(resourceType == "bone")
+		type = 3;
+
+	resourceManager->harvestOrganics(player, creature, type);
+
 }
 

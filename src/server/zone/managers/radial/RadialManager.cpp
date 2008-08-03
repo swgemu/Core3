@@ -423,7 +423,7 @@ void RadialManager::handleSlicing(Player* player, SceneObject* obj) {
 
 	TangibleObject* tano = (TangibleObject*) obj;
 
-	
+
 	if (tano->isArmor()) {
 		Armor* armor = (Armor*) tano;
 		if (!armor->isSliced())
@@ -560,101 +560,18 @@ void RadialManager::handleOpenCraftingToolHopper(Player* player, SceneObject* ob
 }
 
 void RadialManager::handleHarvest(Player* player, SceneObject* obj, int type) {
-	if (obj == NULL || !obj->isNonPlayerCreature() || obj == player)
-		return;
 
 	Creature* creature = (Creature*)obj;
 
-	ResourceManager* resourceManager =
-			player->getZone()->getZoneServer()->getResourceManager();
+	if(creature == NULL)
+		return;
 
-	bool proceed = false;
-	int loop = 0;
-	string harvestType = "";
-	int harvestAmount = 0;
+	ResourceManager* resourceManager = player->getZone()->getZoneServer()->getResourceManager();
 
-	CreatureObject* creatureObj = (CreatureObject*)creature;
+	if(resourceManager == NULL)
+		return;
 
-	try {
-		creature->wlock(player);
+	resourceManager->harvestOrganics(player, creature, type);
 
-		if (creature->isDead() && creature->isLootOwner(player)
-				&& creature->canHarvest(player->getFirstName())) {
-
-			if (type == 0)
-				type = System::random(2) + 1;
-
-			while (!proceed) {
-
-				if (loop > 4) {
-					creature->unlock();
-					return;
-				}
-
-				switch (type) {
-				case 1:
-					if (creatureObj->getMeatMax() != 0) {
-						harvestType = creatureObj->getMeatType();
-						harvestAmount = creatureObj->getMeatMax();
-						proceed = true;
-					}
-					break;
-				case 2:
-					if (creatureObj->getHideMax() != 0)
-						harvestType = creatureObj->getHideType();
-					harvestAmount = creatureObj->getHideMax();
-					proceed = true;
-					break;
-				case 3:
-					if (creatureObj->getBoneMax() != 0)
-						harvestType = creatureObj->getBoneType();
-					harvestAmount = creatureObj->getBoneMax();
-					proceed = true;
-					break;
-				}
-
-				if (!proceed) {
-
-					type++;
-
-					if (type > 3)
-						type = 1;
-				}
-
-				loop++;
-			}
-
-			harvestAmount = int(harvestAmount * float(player->getSkillMod(
-					"creature_harvesting") / 100.0f));
-
-			ResourceContainer* newResource =
-					resourceManager->getOrganicResource(player, harvestType,
-							harvestAmount);
-
-			if (newResource == NULL) {
-				creature->unlock();
-				return;
-			}
-
-			stringstream ss;
-
-			ss << "You have harvested " << harvestAmount << " unit(s) of "
-					<< newResource->getClassSeven() << ".";
-
-			player->sendSystemMessage(ss.str());
-
-			creature->addPlayerToHarvestList(player->getFirstName());
-
-			string xpType = "scout";
-			int xp = int(creatureObj->getXP() * .1f);
-
-			player->addXp(xpType, xp, true);
-
-		}
-		creature->unlock();
-	} catch (...) {
-		cout << "unreported exception caught in RadialManager::handleHarvest\n";
-		creature->unlock();
-	}
 }
 

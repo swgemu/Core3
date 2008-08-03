@@ -127,7 +127,7 @@ malkloc = Creature:new {
       milk = 0,
 
       boneType = "bone_mammal_dathomir",
-      boneMax = 0,
+      boneMax = 1000,
 
       hideType = "hide_leathery_dathomir",
       hideMax = 1200,

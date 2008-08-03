@@ -64,12 +64,15 @@ import "../player/Player";
 import "../building/BuildingObject";
 
 import "../creature/mount/MountCreature";
+import "../creature/Creature";
 
 import "../guild/Guild";
 
 import "skills/Skill";
 
 import "buffs/BuffObject";
+
+import "../tangible/resource/ResourceContainer";
 
 interface CreatureObject implements SceneObject {
 	CreatureObject(unsigned long oid) {
@@ -95,6 +98,7 @@ interface CreatureObject implements SceneObject {
 	unsigned int getDamage(CreatureObject creature);
 	
 	boolean isLootOwner(CreatureObject creature);
+	CreatureObject getLootOwner();
 	
 	unsigned int getMitigation(const string mit);
 	
@@ -332,6 +336,7 @@ interface CreatureObject implements SceneObject {
 	void updateSpeed(float speed, float acceleration);
 	
 	void addInventoryItem(TangibleObject item);
+	void addInventoryResource(Player player, ResourceContainer rcno);
 	
 	void addLootItem(TangibleObject item);
 	

@@ -519,29 +519,17 @@ void Creature::setRespawnTimer(unsigned int seconds) {
 		((CreatureImplementation*) _impl)->setRespawnTimer(seconds);
 }
 
-bool Creature::hasOrganicResources() {
+void Creature::removePlayerFromHarvestList(string& firstName) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 44);
-
-		return method.executeWithBooleanReturn();
-	} else
-		return ((CreatureImplementation*) _impl)->hasOrganicResources();
-}
-
-void Creature::addPlayerToHarvestList(string& firstName) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 45);
 		method.addAsciiParameter(firstName);
 
 		method.executeWithVoidReturn();
 	} else
-		((CreatureImplementation*) _impl)->addPlayerToHarvestList(firstName);
+		((CreatureImplementation*) _impl)->removePlayerFromHarvestList(firstName);
 }
 
 bool Creature::canHarvest(string& firstName) {
@@ -549,7 +537,7 @@ bool Creature::canHarvest(string& firstName) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 46);
+		DistributedMethod method(this, 45);
 		method.addAsciiParameter(firstName);
 
 		return method.executeWithBooleanReturn();
@@ -557,12 +545,36 @@ bool Creature::canHarvest(string& firstName) {
 		return ((CreatureImplementation*) _impl)->canHarvest(firstName);
 }
 
-void Creature::setLootCreated(bool value) {
+bool Creature::beenLooted() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 46);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((CreatureImplementation*) _impl)->beenLooted();
+}
+
+void Creature::wasLooted() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 47);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureImplementation*) _impl)->wasLooted();
+}
+
+void Creature::setLootCreated(bool value) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 48);
 		method.addBooleanParameter(value);
 
 		method.executeWithVoidReturn();
@@ -696,15 +708,18 @@ Packet* CreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		setRespawnTimer(inv->getUnsignedIntParameter());
 		break;
 	case 44:
-		resp->insertBoolean(hasOrganicResources());
+		removePlayerFromHarvestList(inv->getAsciiParameter(_param0_removePlayerFromHarvestList__string_));
 		break;
 	case 45:
-		addPlayerToHarvestList(inv->getAsciiParameter(_param0_addPlayerToHarvestList__string_));
-		break;
-	case 46:
 		resp->insertBoolean(canHarvest(inv->getAsciiParameter(_param0_canHarvest__string_)));
 		break;
+	case 46:
+		resp->insertBoolean(beenLooted());
+		break;
 	case 47:
+		wasLooted();
+		break;
+	case 48:
 		setLootCreated(inv->getBooleanParameter());
 		break;
 	default:
@@ -866,16 +881,20 @@ void CreatureAdapter::setRespawnTimer(unsigned int seconds) {
 	return ((CreatureImplementation*) impl)->setRespawnTimer(seconds);
 }
 
-bool CreatureAdapter::hasOrganicResources() {
-	return ((CreatureImplementation*) impl)->hasOrganicResources();
-}
-
-void CreatureAdapter::addPlayerToHarvestList(string& firstName) {
-	return ((CreatureImplementation*) impl)->addPlayerToHarvestList(firstName);
+void CreatureAdapter::removePlayerFromHarvestList(string& firstName) {
+	return ((CreatureImplementation*) impl)->removePlayerFromHarvestList(firstName);
 }
 
 bool CreatureAdapter::canHarvest(string& firstName) {
 	return ((CreatureImplementation*) impl)->canHarvest(firstName);
+}
+
+bool CreatureAdapter::beenLooted() {
+	return ((CreatureImplementation*) impl)->beenLooted();
+}
+
+void CreatureAdapter::wasLooted() {
+	return ((CreatureImplementation*) impl)->wasLooted();
 }
 
 void CreatureAdapter::setLootCreated(bool value) {

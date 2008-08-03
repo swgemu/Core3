@@ -57,6 +57,8 @@ which carries forward this exception.
 
 #include "PatrolPoint.h"
 
+#include "events/CreatureRemoveEvent.h"
+
 
 class CreatureManagerImplementation;
 class CreatureGroup;
@@ -105,7 +107,10 @@ class CreatureImplementation : public CreatureServant, public Event {
 	bool randomizeRespawn;
 	uint32 respawnTimer;
 
-	Vector<string> hasHarvested;
+	Vector<string> playerCanHarvest;
+	CreatureRemoveEvent* creatureRemoveEvent;
+
+	bool looted;
 
 private:
 	void broadcastNextPositionUpdate(PatrolPoint* point = NULL);
@@ -134,6 +139,8 @@ public:
 
 	void reload();
 	void unload();
+
+	void scheduleDespawnCreature(int time);
 
 	void clearLootItems();
 
@@ -168,6 +175,7 @@ public:
 	bool doMovement();
 
 	void doIncapacitate();
+	void createHarvestList();
 	void doStandUp();
 
 	void notifyPositionUpdate(QuadTreeEntry* obj);
@@ -309,27 +317,63 @@ public:
 		return lootCreated == true;
 	}
 
-	inline bool hasOrganicResources() {
-		return true;
-	}
-
 	inline bool canHarvest(string firstName) {
 
-		if(getBoneMax() == 0 && getHideMax() == 0 && getMeatMax() == 0)
+		lock();
+
+		if(getBoneMax() == 0 && getHideMax() == 0 && getMeatMax() == 0){
+			unlock();
 			return false;
-
-		for(int i = 0; i < hasHarvested.size(); ++i){
-
-			if(hasHarvested.get(i) == firstName)
-				return false;
 		}
 
+		for(int i = 0; i < playerCanHarvest.size(); ++i){
 
-		return true;
+			if(playerCanHarvest.get(i) == firstName){
+				unlock();
+				return true;
+			}
+		}
+		unlock();
+		return false;
 	}
 
-	inline void addPlayerToHarvestList(string firstName){
-		hasHarvested.add(firstName);
+	inline bool beenLooted(){
+		return looted == true;
+	}
+
+	inline void wasLooted(){
+		looted = true;
+		if(playerCanHarvest.size() == 0){
+
+			server->removeEvent(creatureRemoveEvent);
+
+			scheduleDespawnCreature(500);
+
+		}
+	}
+
+	inline void removePlayerFromHarvestList(string firstName){
+
+
+		for(int i = 0; i < playerCanHarvest.size(); ++i){
+
+			if(firstName == playerCanHarvest.get(i)){
+
+				playerCanHarvest.remove(i);
+				break;
+
+			}
+
+		}
+
+		if(playerCanHarvest.size() == 0 && beenLooted()){
+
+			server->removeEvent(creatureRemoveEvent);
+
+			scheduleDespawnCreature(500);
+
+		}
+
 	}
 
 

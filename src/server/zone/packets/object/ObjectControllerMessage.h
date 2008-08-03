@@ -176,6 +176,8 @@ public:
 	static void parseRevokeConsentRequest(Player* player, Message* pack);
 	static void parseHaveConsentRequest(Player* player, Message* pack);
 
+	static void parseHarvestOrganics(Player* packet, Message* pack);
 };
 
 #endif /*OBJECTCONTROLLERMESSAGE_H_*/
+

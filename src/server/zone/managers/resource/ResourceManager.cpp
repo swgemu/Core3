@@ -10,6 +10,8 @@
 
 #include "../../objects/tangible/resource/ResourceContainer.h"
 
+#include "../../objects/creature/Creature.h"
+
 #include "server/zone/ZoneServer.h"
 
 #include "server/zone/ZoneProcessServerImplementation.h"
@@ -177,19 +179,19 @@ void ResourceManager::printResource(string& resname) {
 		((ResourceManagerImplementation*) _impl)->printResource(resname);
 }
 
-ResourceContainer* ResourceManager::getOrganicResource(Player* player, string& type, int amount) {
+void ResourceManager::harvestOrganics(Player* player, Creature* creature, int type) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 17);
 		method.addObjectParameter(player);
-		method.addAsciiParameter(type);
-		method.addSignedIntParameter(amount);
+		method.addObjectParameter(creature);
+		method.addSignedIntParameter(type);
 
-		return (ResourceContainer*) method.executeWithObjectReturn();
+		method.executeWithVoidReturn();
 	} else
-		return ((ResourceManagerImplementation*) _impl)->getOrganicResource(player, type, amount);
+		((ResourceManagerImplementation*) _impl)->harvestOrganics(player, creature, type);
 }
 
 /*
@@ -237,7 +239,7 @@ Packet* ResourceManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		printResource(inv->getAsciiParameter(_param0_printResource__string_));
 		break;
 	case 17:
-		resp->insertLong(getOrganicResource((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_getOrganicResource__Player_string_int_), inv->getSignedIntParameter())->_getObjectID());
+		harvestOrganics((Player*) inv->getObjectParameter(), (Creature*) inv->getObjectParameter(), inv->getSignedIntParameter());
 		break;
 	default:
 		return NULL;
@@ -290,8 +292,8 @@ void ResourceManagerAdapter::printResource(string& resname) {
 	return ((ResourceManagerImplementation*) impl)->printResource(resname);
 }
 
-ResourceContainer* ResourceManagerAdapter::getOrganicResource(Player* player, string& type, int amount) {
-	return ((ResourceManagerImplementation*) impl)->getOrganicResource(player, type, amount);
+void ResourceManagerAdapter::harvestOrganics(Player* player, Creature* creature, int type) {
+	return ((ResourceManagerImplementation*) impl)->harvestOrganics(player, creature, type);
 }
 
 /*

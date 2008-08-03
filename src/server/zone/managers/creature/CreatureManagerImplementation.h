@@ -59,10 +59,6 @@ which carries forward this exception.
 #include "../../objects/creature/bluefrog/BlueFrogCreature.h"
 #include "../../objects/creature/bluefrog/BlueFrogCreatureImplementation.h"
 
-
-#include "events/CreatureRemoveEvent.h"
-
-
 #include "CreatureMap.h"
 
 #include "CreatureManager.h"
@@ -118,7 +114,6 @@ public:
 	CreatureGroup* spawnCreatureGroup(int count, const string& stfname, const string& name, int objCrc, float x, float y, int bitmask = 0x00, int layout = LINE_LAYOUT);
 
 	void despawnCreature(Creature* creature);
-	void scheduleDespawnCreature(Creature* creature);
 	void respawnCreature(Creature* creature);
 
 	void unloadManager();

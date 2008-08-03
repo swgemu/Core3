@@ -53,6 +53,8 @@ public:
 
 	unsigned int getNewListCount(int cnt);
 
+	float getRangerBonusForHarvesting(Player* player);
+
 protected:
 	GroupObject(DummyConstructorParameter* param);
 
@@ -100,6 +102,8 @@ public:
 	unsigned int getListCount();
 
 	unsigned int getNewListCount(int cnt);
+
+	float getRangerBonusForHarvesting(Player* player);
 
 };
 

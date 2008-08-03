@@ -2474,8 +2474,84 @@ void CreatureObjectImplementation::addInventoryItem(TangibleObject* item) {
 		inventory->addObject(item);
 }
 
+void CreatureObjectImplementation::addInventoryResource(Player* player,
+		ResourceContainer* rcno) {
+
+	bool makeNewResource = true;
+
+	ResourceContainer* inventoryResource;
+
+	for (int i = 0; i < inventory->objectsSize(); i++) {
+		TangibleObject* item = (TangibleObject*) inventory->getObject(i);
+		if (item != NULL && item->isResource()) {
+			inventoryResource = (ResourceContainer*) item;
+
+			try {
+
+				inventoryResource->wlock();
+
+				if (inventoryResource->compare(rcno)
+						&& inventoryResource->getContents()
+								!= inventoryResource->getMaxContents()) {
+
+					if (inventoryResource->getContents()
+							+ inventoryResource->getContents()
+							<= inventoryResource->getMaxContents()) {
+
+						inventoryResource->transferContents(player, rcno);
+
+						makeNewResource = false;
+
+						inventoryResource->unlock();
+
+						break;
+					} else {
+
+						int diff = (inventoryResource->getContents()
+								+ rcno->getContents())
+								- inventoryResource->getMaxContents();
+
+						inventoryResource->setContents(
+								inventoryResource->getMaxContents());
+
+						rcno->setContents(rcno->getContents() - diff);
+
+						inventoryResource->sendDeltas(player);
+
+						inventoryResource->setUpdated(true);
+					}
+				}
+				inventoryResource->unlock();
+			} catch (...) {
+
+				inventoryResource->unlock();
+
+			}
+		}
+	}
+
+	if (makeNewResource) {
+		// NOTE: Figure out how to get max inventory size...
+		if (inventory->getObjectCount() >= 80) {
+			ChatSystemMessage* sysMessage =
+					new ChatSystemMessage("survey", "no_inv_spc");
+			player->sendMessage(sysMessage);
+			return;
+		}
+
+		rcno->setContainer(inventory, 0xFFFFFFFF);
+
+		inventory->addObject(rcno);
+
+		rcno->sendTo(player);
+
+		rcno->setPersistent(true);
+
+	}
+}
+
 SceneObject* CreatureObjectImplementation::getInventoryItem(uint64 oid) {
-	return inventory->getObject(oid);
+	return (TangibleObject*) inventory->getObject(oid);
 }
 
 void CreatureObjectImplementation::removeInventoryItem(SceneObject* item) {
@@ -4343,6 +4419,28 @@ bool CreatureObjectImplementation::isLootOwner(CreatureObject* creature) {
 				return true;
 
 	return false;
+}
+
+CreatureObject* CreatureObjectImplementation::getLootOwner() {
+	int maxDmg = 0;
+	int i = 0;
+	int index = -1;
+
+	for (; i < damageMap.size(); i++) {
+		int damage = damageMap.get(i);
+
+		if (damage > maxDmg) {
+
+			maxDmg = damage;
+			index = i;
+
+		}
+	}
+
+	if(index == -1)
+		return NULL;
+	else
+		return damageMap.elementAt(index)->getKey();
 }
 
 void CreatureObjectImplementation::addDamage(CreatureObject* creature, uint32 damage) {

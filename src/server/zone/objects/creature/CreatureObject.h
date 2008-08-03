@@ -31,11 +31,15 @@ class BuildingObject;
 
 class MountCreature;
 
+class Creature;
+
 class Guild;
 
 class Skill;
 
 class BuffObject;
+
+class ResourceContainer;
 
 #include "../scene/SceneObject.h"
 
@@ -66,6 +70,8 @@ public:
 	unsigned int getDamage(CreatureObject* creature);
 
 	bool isLootOwner(CreatureObject* creature);
+
+	CreatureObject* getLootOwner();
 
 	unsigned int getMitigation(const string& mit);
 
@@ -396,6 +402,8 @@ public:
 	void updateSpeed(float speed, float acceleration);
 
 	void addInventoryItem(TangibleObject* item);
+
+	void addInventoryResource(Player* player, ResourceContainer* rcno);
 
 	void addLootItem(TangibleObject* item);
 
@@ -1069,6 +1077,8 @@ public:
 
 	bool isLootOwner(CreatureObject* creature);
 
+	CreatureObject* getLootOwner();
+
 	unsigned int getMitigation(const string& mit);
 
 	bool isIncapacitated();
@@ -1396,6 +1406,8 @@ public:
 	void updateSpeed(float speed, float acceleration);
 
 	void addInventoryItem(TangibleObject* item);
+
+	void addInventoryResource(Player* player, ResourceContainer* rcno);
 
 	void addLootItem(TangibleObject* item);
 

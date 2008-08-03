@@ -228,6 +228,19 @@ unsigned int GroupObject::getNewListCount(int cnt) {
 		return ((GroupObjectImplementation*) _impl)->getNewListCount(cnt);
 }
 
+float GroupObject::getRangerBonusForHarvesting(Player* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 22);
+		method.addObjectParameter(player);
+
+		return method.executeWithFloatReturn();
+	} else
+		return ((GroupObjectImplementation*) _impl)->getRangerBonusForHarvesting(player);
+}
+
 /*
  *	GroupObjectAdapter
  */
@@ -286,6 +299,9 @@ Packet* GroupObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		break;
 	case 21:
 		resp->insertInt(getNewListCount(inv->getSignedIntParameter()));
+		break;
+	case 22:
+		resp->insertFloat(getRangerBonusForHarvesting((Player*) inv->getObjectParameter()));
 		break;
 	default:
 		return NULL;
@@ -356,6 +372,10 @@ unsigned int GroupObjectAdapter::getListCount() {
 
 unsigned int GroupObjectAdapter::getNewListCount(int cnt) {
 	return ((GroupObjectImplementation*) impl)->getNewListCount(cnt);
+}
+
+float GroupObjectAdapter::getRangerBonusForHarvesting(Player* player) {
+	return ((GroupObjectImplementation*) impl)->getRangerBonusForHarvesting(player);
 }
 
 /*

@@ -45,8 +45,6 @@ public:
 
 	void unloadCreature(Creature* creature);
 
-	void scheduleDespawnCreature(Creature* creature);
-
 	Creature* spawnCreature(const string& stfname, const string& name, int objCrc, float x, float y, int bitmask = 00, bool doLock = true);
 
 	Creature* spawnCreature(unsigned int objcrc, float x, float y, int bitmask = 0, bool baby = false, bool doLock = true);
@@ -98,8 +96,6 @@ public:
 	void loadBlueFrogs();
 
 	void unloadCreature(Creature* creature);
-
-	void scheduleDespawnCreature(Creature* creature);
 
 	Creature* spawnCreature(const string& stfname, const string& name, int objCrc, float x, float y, int bitmask, bool doLock);
 

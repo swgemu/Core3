@@ -155,26 +155,12 @@ void CraftingManager::createSchematic(Player* player, string& count) {
 		((CraftingManagerImplementation*) _impl)->createSchematic(player, count);
 }
 
-void CraftingManager::putResourceBackInInventory(Player* player, ResourceContainer* rcno) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 14);
-		method.addObjectParameter(player);
-		method.addObjectParameter(rcno);
-
-		method.executeWithVoidReturn();
-	} else
-		((CraftingManagerImplementation*) _impl)->putResourceBackInInventory(player, rcno);
-}
-
 void CraftingManager::putComponentBackInInventory(Player* player, TangibleObject* tano) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, 14);
 		method.addObjectParameter(player);
 		method.addObjectParameter(tano);
 
@@ -188,7 +174,7 @@ float CraftingManager::getWeightedValue(Player* player, CraftingTool* craftingTo
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 15);
 		method.addObjectParameter(player);
 		method.addObjectParameter(craftingTool);
 		method.addObjectParameter(draftSchematic);
@@ -204,7 +190,7 @@ float CraftingManager::getAssemblyPercentage(float value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 16);
 		method.addFloatParameter(value);
 
 		return method.executeWithFloatReturn();
@@ -217,7 +203,7 @@ float CraftingManager::calculateAssemblyValueModifier(CraftingTool* craftingTool
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 17);
 		method.addObjectParameter(craftingTool);
 
 		return method.executeWithFloatReturn();
@@ -230,7 +216,7 @@ void CraftingManager::addDraftSchematicsFromGroupName(Player* player, const stri
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, 18);
 		method.addObjectParameter(player);
 		method.addAsciiParameter(schematicGroupName);
 
@@ -244,7 +230,7 @@ void CraftingManager::subtractDraftSchematicsFromGroupName(Player* player, const
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, 19);
 		method.addObjectParameter(player);
 		method.addAsciiParameter(schematicGroupName);
 
@@ -289,24 +275,21 @@ Packet* CraftingManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		createSchematic((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_createSchematic__Player_string_));
 		break;
 	case 14:
-		putResourceBackInInventory((Player*) inv->getObjectParameter(), (ResourceContainer*) inv->getObjectParameter());
-		break;
-	case 15:
 		putComponentBackInInventory((Player*) inv->getObjectParameter(), (TangibleObject*) inv->getObjectParameter());
 		break;
-	case 16:
+	case 15:
 		resp->insertFloat(getWeightedValue((Player*) inv->getObjectParameter(), (CraftingTool*) inv->getObjectParameter(), (DraftSchematic*) inv->getObjectParameter(), inv->getSignedIntParameter()));
 		break;
-	case 17:
+	case 16:
 		resp->insertFloat(getAssemblyPercentage(inv->getFloatParameter()));
 		break;
-	case 18:
+	case 17:
 		resp->insertFloat(calculateAssemblyValueModifier((CraftingTool*) inv->getObjectParameter()));
 		break;
-	case 19:
+	case 18:
 		addDraftSchematicsFromGroupName((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_addDraftSchematicsFromGroupName__Player_string_));
 		break;
-	case 20:
+	case 19:
 		subtractDraftSchematicsFromGroupName((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_subtractDraftSchematicsFromGroupName__Player_string_));
 		break;
 	default:
@@ -346,10 +329,6 @@ void CraftingManagerAdapter::createPrototype(Player* player, string& count) {
 
 void CraftingManagerAdapter::createSchematic(Player* player, string& count) {
 	return ((CraftingManagerImplementation*) impl)->createSchematic(player, count);
-}
-
-void CraftingManagerAdapter::putResourceBackInInventory(Player* player, ResourceContainer* rcno) {
-	return ((CraftingManagerImplementation*) impl)->putResourceBackInInventory(player, rcno);
 }
 
 void CraftingManagerAdapter::putComponentBackInInventory(Player* player, TangibleObject* tano) {

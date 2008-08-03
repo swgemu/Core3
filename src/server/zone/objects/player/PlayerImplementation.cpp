@@ -2339,12 +2339,22 @@ void PlayerImplementation::mutePlayer() {
  */
 
 void PlayerImplementation::addInventoryItem(TangibleObject* item) {
-	CreatureObjectImplementation::addInventoryItem(item);
 
-	if(item->isEquipped())
-		equipPlayerItem(item);
+	if(item->isResource()){
+
+		ResourceContainer* rcno = (ResourceContainer*)item;
+		CreatureObjectImplementation::addInventoryResource(_this, rcno);
+
+	} else {
+
+		CreatureObjectImplementation::addInventoryItem(item);
+
+		if(item->isEquipped())
+			equipPlayerItem(item);
+	}
 
 }
+
 
 void PlayerImplementation::equipPlayerItem(TangibleObject* item) {
 	if (item->isEquipped())

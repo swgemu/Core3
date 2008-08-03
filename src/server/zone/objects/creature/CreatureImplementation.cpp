@@ -98,7 +98,7 @@ CreatureImplementation::~CreatureImplementation() {
 		spawnPosition = NULL;
 	}
 
-	hasHarvested.removeAll();
+	playerCanHarvest.removeAll();
 }
 
 void CreatureImplementation::init() {
@@ -140,6 +140,8 @@ void CreatureImplementation::init() {
 
 	lootCreated = false;
 
+	looted = false;
+
 	setObjectKeeping(true);
 
 	stringstream logname;
@@ -157,7 +159,9 @@ void CreatureImplementation::sendRadialResponseTo(Player* player, ObjectMenuResp
 
 	string skillBox = "outdoors_scout_novice";
 
-	if (isLootOwner(player) && player->hasSkillBox(skillBox) && isDead() && canHarvest(player->getFirstName())) {
+	if (player->isInRange(getPositionX(), getPositionY(), 10.0f) && !player->isInCombat() &&
+			player->hasSkillBox(skillBox) && isDead() &&
+			canHarvest(player->getFirstName())) {
 
 		omr->addRadialItem(0, 148, 3, "@sui:harvest_corpse");
 
@@ -171,6 +175,7 @@ void CreatureImplementation::sendRadialResponseTo(Player* player, ObjectMenuResp
 			omr->addRadialItem(4, 110, 3, "@sui:harvest_bone");
 
 	}
+
 	omr->finish();
 
 	player->sendMessage(omr);
@@ -306,7 +311,6 @@ void CreatureImplementation::generateAttributes(SceneObject* obj) {
 }
 
 void CreatureImplementation::reload() {
-	hasHarvested.removeAll();
 
 	creatureManager->respawnCreature(_this);
 
@@ -326,7 +330,7 @@ void CreatureImplementation::unload() {
 
 	resetPatrolPoints(false);
 
-	hasHarvested.removeAll();
+	playerCanHarvest.removeAll();
 
 	if (zone != NULL && isInQuadTree())
 		removeFromZone(true);
@@ -341,6 +345,14 @@ void CreatureImplementation::unload() {
 		parent = zone->lookupObject(respawnCellID);
 
 	info("creature despawned");
+}
+
+void CreatureImplementation::scheduleDespawnCreature(int time){
+
+	creatureRemoveEvent = new CreatureRemoveEvent(_this);
+
+	server->addEvent(creatureRemoveEvent, time);
+
 }
 
 void CreatureImplementation::clearLootItems() {
@@ -1179,6 +1191,8 @@ void CreatureImplementation::resetState() {
 
 	resetPatrolPoints(false);
 
+	looted = false;
+
 	if (randomizeRespawn) {
 		float distance = System::random(64) + 16;
 		randomizePosition(distance);
@@ -1333,6 +1347,39 @@ bool CreatureImplementation::doMovement() {
 void CreatureImplementation::doIncapacitate() {
 	deagro();
 	setPosture(DEAD_POSTURE);
+
+	createHarvestList();
+
+	scheduleDespawnCreature(180000);
+}
+
+void CreatureImplementation::createHarvestList() {
+
+	Player* tempPlayer;
+	GroupObject* group;
+	Player* owner = (Player*)getLootOwner();
+
+	if(owner == NULL)
+		return;
+
+	if (owner->isInAGroup()) {
+
+		group = owner->getGroupObject();
+
+		for (int i = 0; i < group->getGroupSize(); ++i) {
+
+			tempPlayer = group->getGroupMember(i);
+
+			if(tempPlayer != NULL)
+				playerCanHarvest.add(tempPlayer->getFirstName());
+
+		}
+
+	} else {
+
+		playerCanHarvest.add(owner->getFirstName());
+
+	}
 }
 
 void CreatureImplementation::doStandUp() {

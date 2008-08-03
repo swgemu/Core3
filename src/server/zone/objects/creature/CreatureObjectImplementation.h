@@ -103,7 +103,7 @@ protected:
 	//string hairData; //hair customization string
 
 	string stfName;
-	
+
 	string meatType;
 	string hideType;
 	string boneType;
@@ -111,21 +111,21 @@ protected:
 	int hideMax;
 	int boneMax;
 	int meatMax;
-	
-	string creatureFaction;	
-	
+
+	string creatureFaction;
+
 	int xp;
-	
+
 	int healer;
-	
+
 	int pack;
 	int herd;
 	int stalker;
 	int killer;
 	int aggressive;
-	
+
 	string behaviorScript;
-	
+
 	string creatureWeapon;
 	string creatureWeaponName;
 	string creatureWeaponTemp;
@@ -136,13 +136,13 @@ protected:
 	float creatureWeaponAttackSpeed;
 	string creatureWeaponDamageType;
 	string creatureWeaponArmorPiercing;
-	
+
 	float internalNPCDamageModifier;
-	
+
 	int lootGroup;
-	
+
 	float tame;
-	
+
 
 	uint32 positionCounter;
 	uint32 actionCounter;
@@ -608,6 +608,7 @@ public:
 	void addDamage(CreatureObject* creature, uint32 damage);
 
 	bool isLootOwner(CreatureObject* creature);
+	CreatureObject* getLootOwner();
 
 	virtual bool isAttackable() {
 		return !isIncapacitated() && !isDead();
@@ -842,6 +843,7 @@ public:
 	void unequipItem(TangibleObject* item);
 
 	void addInventoryItem(TangibleObject* item);
+	void addInventoryResource(Player* player, ResourceContainer* rcno);
 
 	SceneObject* getInventoryItem(uint64 oid);
 
@@ -1872,11 +1874,11 @@ public:
 	inline int getXP() {
 		return xp;
 	}
-	
+
 	inline int isHealer() {
 		return healer;
 	}
-	
+
 	inline int isPack() {
 		return pack;
 	}
@@ -1892,7 +1894,7 @@ public:
 	inline int isStalker() {
 		return stalker;
 	}
-	
+
 	inline int isAggressive() {
 		return aggressive;
 	}
@@ -1900,8 +1902,8 @@ public:
 	inline string& getBehaviorScript() {
 		return behaviorScript;
 	}
-	
-	
+
+
 	//Harvesting stuff
 	inline string& getMeatType() {
 		return meatType;
@@ -1918,7 +1920,7 @@ public:
 	inline int getMilk() {
 		return milk;
 	}
-	
+
 	inline int getHideMax() {
 		return hideMax;
 	}
@@ -1930,57 +1932,57 @@ public:
 	inline int getMeatMax() {
 		return meatMax;
 	}
-	
+
 	inline int getLootGroup() {
 		return lootGroup;
 	}
-	
+
 	inline float getTame() {
 		return tame;
 	}
-	
+
 	//combat related
 
 	inline float getInternalNPCDamageModifier() {
 		return internalNPCDamageModifier;
 	}
-		
+
 	inline string& getCreatureWeapon() {
 		return creatureWeapon;
-	}	
+	}
 	inline string& getCreatureWeaponName() {
 		return creatureWeaponName;
-	}	
+	}
 	inline string& getCreatureWeaponClass() {
 		return creatureWeaponClass;
-	}	
+	}
 	inline string& getCreatureWeaponTemp() {
 		return creatureWeaponTemp;
-	}	
+	}
 	inline int getCreatureWeaponEquipped() {
 		return creatureWeaponEquipped;
 	}
 	inline int getCreatureWeaponMinDamage() {
 		return creatureWeaponMinDamage;
-	}	
+	}
 	inline int getCreatureWeaponMaxDamage() {
 		return creatureWeaponMaxDamage;
-	}	
+	}
 	inline float getCreatureWeaponAttackSpeed() {
 		return creatureWeaponAttackSpeed;
-	}	
+	}
 	inline string& getCreatureWeaponDamageType() {
 		return creatureWeaponDamageType;
-	}	
+	}
 	inline string& getCreatureWeaponArmorPiercing() {
 		return creatureWeaponArmorPiercing;
-	}	
-	
+	}
+
 	//behavior
 	inline string& getCreatureBehaviorScript() {
 		return behaviorScript;
-	}	
-	
+	}
+
 	// modifiers
 	inline int getWeaponSpeedModifier() {
 		return weaponSpeedModifier;
@@ -2055,7 +2057,7 @@ public:
 		accuracy = acc;
 	}
 
-	
+
 	//Harvesting stuff
 	inline void setMeatType(const string& meat) {
 		meatType = meat;
@@ -2067,12 +2069,12 @@ public:
 
 	inline void setHideType(const string& hide) {
 		hideType = hide;
-	}	
+	}
 
 	inline void setMilk(int milkamt) {
 		milk = milkamt;
 	}
-	
+
 	inline void setHideMax(int hidemax) {
 		hideMax = hidemax;
 	}
@@ -2084,11 +2086,11 @@ public:
 	inline void setMeatMax(int meatmax) {
 		meatMax = meatmax;
 	}
-	
+
 	inline void setLootGroup(int lootgroup) {
 		lootGroup = lootgroup;
 	}
-	
+
 	inline void setTame(float tme) {
 		tame = tme;
 	}
@@ -2125,11 +2127,11 @@ public:
 	inline void setCreatureWeaponMaxDamage(int weaponmaxdam) {
 		creatureWeaponMaxDamage = weaponmaxdam;
 	}
-	
+
 	inline void setCreatureWeaponAttackSpeed(float weaponattackspeed) {
 		creatureWeaponAttackSpeed = weaponattackspeed;
 	}
-	
+
 	inline void setCreatureWeaponDamageType(const string& weapondamtype) {
 		creatureWeaponDamageType = weapondamtype;
 	}
@@ -2137,31 +2139,31 @@ public:
 	inline void setCreatureWeaponArmorPiercing(const string& weaponarmorpiercing) {
 		creatureWeaponArmorPiercing = weaponarmorpiercing;
 	}
-	
+
 	inline void setBehaviorScript(const string& behaviorscript) {
 		behaviorScript = behaviorscript;
 	}
-	
+
 	inline void setCreatureFaction(const string& cfac) {
 		creatureFaction = cfac;
 	}
-	
+
 	inline void setXP(int xxp) {
 		xp = xxp;
 	}
-	
+
 	inline void setHealer(int heale) {
 		healer = heale;
 	}
-	
+
 	inline void setPack(int pck) {
 		pack = pck;
 	}
-	
+
 	inline void setHerd(int hrd) {
 		herd = hrd;
 	}
-	
+
 	inline void setStalker(int stlker) {
 		stalker = stlker;
 	}
@@ -2173,7 +2175,7 @@ public:
 	inline void setAggressive(int agg) {
 		aggressive = agg;
 	}
-	
+
 	//Entertainer
 	inline void addEntertainerBuffDuration(int performanceType, float duration) {
 		switch(performanceType) {

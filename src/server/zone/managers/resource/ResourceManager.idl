@@ -46,6 +46,8 @@ import "../../objects/player/Player";
 
 import "../../objects/tangible/resource/ResourceContainer";
 
+import "../../objects/creature/Creature";
+
 import "server/zone/ZoneServer";
 
 import "server/zone/ZoneProcessServerImplementation";
@@ -73,5 +75,5 @@ interface ResourceManager {
 
 	void printResource(string resname);
 
-	ResourceContainer getOrganicResource(Player player, string type, int amount);
+	void harvestOrganics(Player player, Creature creature, int type);
 }
