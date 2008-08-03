@@ -1144,8 +1144,9 @@ bool CreatureObjectImplementation::changeHealthWoundsBar(int32 wounds, bool forc
 
 	if (newHealthWounds >= healthMax) {
 		if (forcedChange) {
+		} else {
+			return false;
 		}
-		return false;
 	}
 
 	setHealthWoundsBar(MIN(newHealthWounds, baseHealth - 1));
@@ -1161,8 +1162,9 @@ bool CreatureObjectImplementation::changeStrengthWoundsBar(int32 wounds, bool fo
 
 	if (newStrengthWounds >= strengthMax) {
 		if (forcedChange) {
+		} else {
+			return false;
 		}
-		return false;
 	}
 
 	setStrengthWoundsBar(MIN(newStrengthWounds, baseStrength - 1));
@@ -1178,8 +1180,10 @@ bool CreatureObjectImplementation::changeConstitutionWoundsBar(int32 wounds, boo
 
 	if (newConstitutionWounds >= constitutionMax) {
 		if (forcedChange) {
+
+		} else {
+			return false;
 		}
-		return false;
 	}
 
 	setConstitutionWoundsBar(MIN(newConstitutionWounds, baseConstitution - 1));
@@ -1196,8 +1200,9 @@ bool CreatureObjectImplementation::changeActionWoundsBar(int32 wounds, bool forc
 
 	if (newActionWounds >= actionMax) {
 		if (forcedChange) {
+		} else {
+			return false;
 		}
-		return false;
 	}
 
 	setActionWoundsBar(MIN(newActionWounds, baseAction - 1));
@@ -1214,8 +1219,9 @@ bool CreatureObjectImplementation::changeQuicknessWoundsBar(int32 wounds, bool f
 
 	if (newQuicknessWounds >= quicknessMax) {
 		if (forcedChange) {
+		} else {
+			return false;
 		}
-		return false;
 	}
 
 	setQuicknessWoundsBar(MIN(newQuicknessWounds, baseQuickness - 1));
@@ -1231,8 +1237,9 @@ bool CreatureObjectImplementation::changeStaminaWoundsBar(int32 wounds, bool for
 
 	if (newStaminaWounds >= staminaMax) {
 		if (forcedChange) {
+		} else {
+			return false;
 		}
-		return false;
 	}
 
 	setStaminaWoundsBar(MIN(newStaminaWounds, baseStamina - 1));
@@ -1248,8 +1255,9 @@ bool CreatureObjectImplementation::changeMindWoundsBar(int32 wounds, bool forced
 
 	if (newMindWounds >= mindMax) {
 		if (forcedChange) {
+		} else {
+			return false;
 		}
-		return false;
 	}
 
 	setMindWoundsBar(MIN(newMindWounds, baseMind - 1));
@@ -1266,8 +1274,9 @@ bool CreatureObjectImplementation::changeFocusWoundsBar(int32 wounds, bool force
 
 	if (newFocusWounds >= focusMax) {
 		if (forcedChange) {
+		} else {
+			return false;
 		}
-		return false;
 	}
 
 	setFocusWoundsBar(MIN(newFocusWounds, baseFocus - 1));
@@ -1283,8 +1292,9 @@ bool CreatureObjectImplementation::changeWillpowerWoundsBar(int32 wounds, bool f
 
 	if (newWillpowerWounds >= willpowerMax) {
 		if (forcedChange) {
+		} else {
+			return false;
 		}
-		return false;
 	}
 
 	setWillpowerWoundsBar(MIN(newWillpowerWounds, baseWillpower - 1));
@@ -1524,26 +1534,41 @@ void CreatureObjectImplementation::changeConditionDamage(int amount) {
 }
 
 void CreatureObjectImplementation::resetHAMBars() {
-	health = healthMax = baseHealth;
-	strength = strengthMax = baseStrength;
-	constitution = constitutionMax = baseConstitution;
 
-	action = actionMax = baseAction;
-	quickness = quicknessMax = baseQuickness;
-	stamina = staminaMax = baseStamina;
+	healthMax = baseHealth;
+	strengthMax = baseStrength;
+	constitutionMax = baseConstitution;
 
-	mind = mindMax = baseMind;
-	focus = focusMax = baseFocus;
-	willpower = willpowerMax = baseWillpower;
+	actionMax = baseAction;
+	quicknessMax = baseQuickness;
+	staminaMax = baseStamina;
 
-	if (healthWounds > healthMax)
+	mindMax = baseMind;
+	focusMax = baseFocus;
+	willpowerMax = baseWillpower;
+
+	if (healthWounds > healthMax) {
+		sendSystemMessage("hi");
 		healthWounds = healthMax - 1;
+	}
 
 	if (actionWounds > actionMax)
 		actionWounds = actionMax - 1;
 
 	if (mindWounds > mindMax)
 		mindWounds = mindMax - 1;
+
+	health = healthMax - healthWounds;
+	strength = strengthMax - strengthWounds;
+	constitution = constitutionMax - constitutionWounds;
+
+	action = actionMax - actionWounds;
+	quickness = quicknessMax - quicknessWounds;
+	stamina = staminaMax - staminaWounds;
+
+	mind = mindMax - mindWounds;
+	focus = focusMax - focusWounds;
+	willpower = willpowerMax - willpowerWounds;
 
 	updateHAMBars();
 }
@@ -1915,6 +1940,8 @@ void CreatureObjectImplementation::setMaxActionBar(uint32 ap, bool updateClient)
 void CreatureObjectImplementation::setActionWoundsBar(uint32 wounds) {
 	if (wounds == actionWounds)
 		return;
+
+
 
 	CreatureObjectDeltaMessage3* dcreo3 = new CreatureObjectDeltaMessage3(_this);
 	dcreo3->updateActionWoundsBar(wounds);

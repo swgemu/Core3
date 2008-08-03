@@ -163,8 +163,10 @@ bool PlayerManagerImplementation::create(Player* player, uint32 sessionkey) {
     	      << "`credits_inv`,`credits_bank`,`guild`,`x`,`y`,`z`,`zoneid`,`planet_id`,"
 	          << "`lfg`,`helper`,`roleplayer`,`faction_id`,`archived`,`scale`,`biography`,"
 	          << "`infofield`,`hair`,`hairData`,`playermodel`,`CRC`,`Title`,"
-	          << "`health`,`strength`,`constitution`,`action`,`quickness`,"
-	          << "`stamina`,`mind`,`focus`,`willpower`,`PvpRating`, adminLevel"
+	          << "`health`,`strength`,`constitution`,"
+	          << "`action`,`quickness`,`stamina`,"
+	          << "`mind`,`focus`,`willpower`,"
+	          << "`PvpRating`, adminLevel"
 	          << ") VALUES ("
     	      << accountID << "," << galaxyID << ",'"
 	          << player->getFirstName() << "','" << player->getLastName() << "','"
@@ -416,10 +418,17 @@ void PlayerManagerImplementation::loadFromDatabase(Player* player) {
 	player->setBaseFocus(character->getInt(42));
 	player->setBaseWillpower(character->getInt(43));
 
+	//Set wounds and shock levels from the database
 	player->setHealthWounds(character->getInt(44));
-	player->setActionWounds(character->getInt(45));
-	player->setMindWounds(character->getInt(46));
-	player->setShockWounds(character->getInt(47));
+	player->setStrengthWounds(character->getInt(45));
+	player->setConstitutionWounds(character->getInt(46));
+	player->setActionWounds(character->getInt(47));
+	player->setQuicknessWounds(character->getInt(48));
+	player->setStaminaWounds(character->getInt(49));
+	player->setMindWounds(character->getInt(50));
+	player->setFocusWounds(character->getInt(51));
+	player->setWillpowerWounds(character->getInt(52));
+	player->setShockWounds(character->getInt(53));
 
 	player->resetHAMBars();
 
@@ -433,8 +442,8 @@ void PlayerManagerImplementation::loadFromDatabase(Player* player) {
 
 	loadWaypoints(player);
 
-	player->setPvpRating(character->getInt(48));
-	player->setAdminLevel(character->getInt(49));
+	player->setPvpRating(character->getInt(54));
+	player->setAdminLevel(character->getInt(55));
 
 	delete character;
 }
@@ -537,14 +546,22 @@ void PlayerManagerImplementation::unload(Player* player) {
           << ",biography=\'" << biography << "\'"
           << ",Title=" << "'" << player->getPlayerObject()->getCurrentTitle() << "'"
           << ",Guild=" << "'" << player->getGuildID() << "'"
-          << ",AdminLevel=" << "'" << player->getAdminLevel() << "'"
-          << ",PvpRating=" << "'" << player->getPvpRating() << "'"
-           << ",credits_inv=" << "'" << player->getCashCredits() << "'"
+          << ",credits_inv=" << "'" << player->getCashCredits() << "'"
           << ",credits_bank=" << "'" << player->getBankCredits() << "'"
           << ",parentid=" << "'" << player->getParentID() << "'"
           << ",itemShift=" << player->getItemShift()
+          << ",HealthWounds=" << player->getHealthWounds()
+          << ",StrengthWounds=" << player->getStrengthWounds()
+          << ",ConstitutionWounds=" << player->getConstitutionWounds()
+          << ",ActionWounds=" << player->getActionWounds()
+          << ",QuicknessWounds=" << player->getQuicknessWounds()
+          << ",MindWounds=" << player->getMindWounds()
+          << ",FocusWounds=" << player->getFocusWounds()
+          << ",WillpowerWounds=" << player->getWillpowerWounds()
+          << ",BattleFatigue=" << player->getShockWounds()
+		  << ",AdminLevel=" << player->getAdminLevel()
+		  << ",PvpRating=" << player->getPvpRating()
           << " WHERE character_id=" << player->getCharacterID() << ";";
-
     try {
     	ServerDatabase::instance()->executeStatement(query);
     } catch(DatabaseException e) {
