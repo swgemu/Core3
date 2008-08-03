@@ -24,7 +24,7 @@ void LootManager::lootCorpse(Player* player, Creature* creature) {
 		}
 
 		if (!((CreatureObject*)creature)->isLootOwner(player)) {
-			player->sendSystemMessage("You do not have permission to access this corpse.");
+			player->sendSystemMessage("error_message", "no_corpse_permission"); //You do not have permission to access this corpse
 			creature->unlock();
 			return;
 		}
@@ -84,9 +84,9 @@ void LootManager::lootCorpse(Player* player, Creature* creature) {
 				moveObject(lootItem, player, creature);
 			}
 
-			player->sendSystemMessage("You have completely looted the corpse of all items.");
+			player->sendSystemMessage("base_player", "corpse_looted");
 		} else
-			player->sendSystemMessage("You find nothing else of value on the selected corpse.");
+			player->sendSystemMessage("error_message", "corpse_empty");
 
 
 		creature->removeFromQueue();
@@ -160,7 +160,7 @@ void LootManager::showLoot(Player* player, Creature* creature) {
 		}
 
 		if (!creature->isLootOwner(player)) {
-			player->sendSystemMessage("You do not have permission to access this corpse.");
+			player->sendSystemMessage("error_message", "no_corpse_permission");
 			creature->unlock();
 			return;
 		}
@@ -188,7 +188,7 @@ void LootManager::lootObject(Player* player, Creature* creature, uint64 objectID
 		creature->wlock(player);
 
 		if (!creature->isLootOwner(player)) {
-			player->sendSystemMessage("You do not have permission to access this corpse.");
+			player->sendSystemMessage("error_message", "no_corpse_permission");
 			creature->unlock();
 			return;
 		}

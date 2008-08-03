@@ -54,11 +54,13 @@ class Ticket;
 class ShuttleCreatureImplementation : public ShuttleCreatureServant {
 	string planet;
 	string city;
+	uint32 tax;
+	bool starport;
 	
 	Coordinate* arrivalPoint; 
 	
 public:
-	ShuttleCreatureImplementation(const string& Planet, const string& City, Coordinate* playerSpawnPoint, uint64 oid);
+	ShuttleCreatureImplementation(const string& Planet, const string& City, Coordinate* playerSpawnPoint, uint64 oid, uint32 tax, bool starport);
 	
 	~ShuttleCreatureImplementation();
 	
@@ -77,6 +79,14 @@ public:
 	
 	inline Coordinate* getArrivalPoint() {
 		return arrivalPoint;
+	}
+	
+	inline uint32 getTax() {
+		return tax;
+	}
+	
+	inline bool isStarport() {
+		return starport;
 	}
 	
 	int getArrivalTime();

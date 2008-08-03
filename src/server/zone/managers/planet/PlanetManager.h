@@ -49,6 +49,8 @@ public:
 
 	unsigned long long getLandingTime();
 
+	unsigned int getTravelFare(string& departurePlanet, string& arrivalPlanet);
+
 protected:
 	PlanetManager(DummyConstructorParameter* param);
 
@@ -89,9 +91,13 @@ public:
 
 	unsigned long long getLandingTime();
 
+	unsigned int getTravelFare(string& departurePlanet, string& arrivalPlanet);
+
 protected:
 	string _param0_findBuildingType__string_float_float_;
 	string _param0_getShuttle__string_;
+	string _param0_getTravelFare__string_string_;
+	string _param1_getTravelFare__string_string_;
 };
 
 class PlanetManagerHelper : public DistributedObjectClassHelper, public Singleton<PlanetManagerHelper> {

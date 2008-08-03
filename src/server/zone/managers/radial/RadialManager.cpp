@@ -503,7 +503,7 @@ void RadialManager::sendRadialResponseForSurveyToolRange(Player* player, SceneOb
 	string skillBox = "crafting_artisan_novice";
 
 	if (!player->hasSkillBox(skillBox)) {
-		player->sendSystemMessage("You are confused by this device.");
+		player->sendSystemMessage("error_message", "insufficient_skill");
 		return;
 	}
 

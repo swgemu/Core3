@@ -54,19 +54,19 @@ class TravelPoint {
 	float positionY;
 	float positionZ;
 	
-	uint32 unknown1;
-	uint8 unknown2;
+	uint32 tax;
+	uint8 starport;
 	
 public:
-	TravelPoint(const string& Name, float x, float z, float y) {
+	TravelPoint(const string& Name, float x, float z, float y, uint32 tax, uint8 starport) {
 		name = Name;
 		
 		positionX = x;
 		positionY = y;
 		positionZ = z;
 		
-		unknown1 = 0xC8;
-		unknown2 = 1;
+		this->tax = tax;
+		this->starport = starport;
 	}
 	
 	friend class TravelListResponseMessage;
@@ -90,15 +90,15 @@ public:
 		}
 	}
     
-    void addPoint(const string& name, float x, float z, float y) {
-    	travelPoints.add(new TravelPoint(name, x, z, y));
+    void addPoint(const string& name, float x, float z, float y, uint32 tax, uint8 starport) {
+    	travelPoints.add(new TravelPoint(name, x, z, y, tax, starport));
     }
     
     void generateMessage() {
     	insertNames();
     	insertCoords();
-    	insertUnknown1();
-    	insertUnknown2();
+    	insertTax();
+    	insertStarport();
     }
     
     void insertNames() {
@@ -123,23 +123,23 @@ public:
     	}
     }
     
-    void insertUnknown1() {
+    void insertTax() {
     	insertInt(travelPoints.size());
 
     	for (int i = 0; i < travelPoints.size(); ++i) {
     		TravelPoint* point = travelPoints.get(i);
 
-    		insertInt(point->unknown1);
+    		insertInt(point->tax);
     	}
     }
     
-    void insertUnknown2() {
+    void insertStarport() {
     	insertInt(travelPoints.size());
 
     	for (int i = 0; i < travelPoints.size(); ++i) {
     		TravelPoint* point = travelPoints.get(i);
 
-    		insertByte(point->unknown2);
+    		insertByte(point->starport);
     	}
     }
 	

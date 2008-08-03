@@ -52,7 +52,8 @@ import "../../tangible/ticket/Ticket";
 
 interface ShuttleCreature implements Creature {
 	ShuttleCreature(const string planet, const string city, 
-			Coordinate playerSpawnPoint, unsigned long oid) {
+			Coordinate playerSpawnPoint, unsigned long oid,
+			unsigned int tax, boolean starport) {
 		super(oid);
 	}
 
@@ -68,4 +69,8 @@ interface ShuttleCreature implements Creature {
 	Coordinate getArrivalPoint();
 	
 	int getArrivalTime();
+
+	unsigned int getTax();
+
+	boolean isStarport();
 }

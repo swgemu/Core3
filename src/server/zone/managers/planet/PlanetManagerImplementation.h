@@ -88,6 +88,8 @@ class PlanetManagerImplementation : public PlanetManagerServant, public Mutex, p
 	ShuttleTakeOffEvent* shuttleTakeOffEvent;
 	
 	CreatureManager* creatureManager;
+	
+	static const uint32 travelFare[9][9];
 		
 public:
 	PlanetManagerImplementation(Zone* zone, ZoneProcessServerImplementation* serv);
@@ -140,6 +142,9 @@ public:
 	
 	uint64 getNextStaticObjectID(bool doLock = true);
 	
+	inline uint32 getTravelFare(string departurePlanet, string arrivalPlanet) {
+		return travelFare[Planet::getPlanetID(departurePlanet) - 1][Planet::getPlanetID(arrivalPlanet) - 1];
+	}
 };
 
 #endif

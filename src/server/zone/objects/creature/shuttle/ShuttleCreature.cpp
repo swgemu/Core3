@@ -16,8 +16,8 @@
  *	ShuttleCreatureStub
  */
 
-ShuttleCreature::ShuttleCreature(const string& planet, const string& city, Coordinate* playerSpawnPoint, unsigned long long oid) : Creature(DummyConstructorParameter::instance()) {
-	_impl = new ShuttleCreatureImplementation(planet, city, playerSpawnPoint, oid);
+ShuttleCreature::ShuttleCreature(const string& planet, const string& city, Coordinate* playerSpawnPoint, unsigned long long oid, unsigned int tax, bool starport) : Creature(DummyConstructorParameter::instance()) {
+	_impl = new ShuttleCreatureImplementation(planet, city, playerSpawnPoint, oid, tax, starport);
 	_impl->_setStub(this);
 }
 
@@ -115,6 +115,30 @@ int ShuttleCreature::getArrivalTime() {
 		return ((ShuttleCreatureImplementation*) _impl)->getArrivalTime();
 }
 
+unsigned int ShuttleCreature::getTax() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 13);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((ShuttleCreatureImplementation*) _impl)->getTax();
+}
+
+bool ShuttleCreature::isStarport() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 14);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((ShuttleCreatureImplementation*) _impl)->isStarport();
+}
+
 /*
  *	ShuttleCreatureAdapter
  */
@@ -146,6 +170,12 @@ Packet* ShuttleCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		break;
 	case 12:
 		resp->insertSignedInt(getArrivalTime());
+		break;
+	case 13:
+		resp->insertInt(getTax());
+		break;
+	case 14:
+		resp->insertBoolean(isStarport());
 		break;
 	default:
 		return NULL;
@@ -180,6 +210,14 @@ Coordinate* ShuttleCreatureAdapter::getArrivalPoint() {
 
 int ShuttleCreatureAdapter::getArrivalTime() {
 	return ((ShuttleCreatureImplementation*) impl)->getArrivalTime();
+}
+
+unsigned int ShuttleCreatureAdapter::getTax() {
+	return ((ShuttleCreatureImplementation*) impl)->getTax();
+}
+
+bool ShuttleCreatureAdapter::isStarport() {
+	return ((ShuttleCreatureImplementation*) impl)->isStarport();
 }
 
 /*

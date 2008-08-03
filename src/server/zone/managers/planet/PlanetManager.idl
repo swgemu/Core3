@@ -80,4 +80,6 @@ interface PlanetManager {
 	BuildingObject getBuilding(unsigned long id);
 	
 	unsigned long getLandingTime();
+
+	unsigned int getTravelFare(string departurePlanet, string arrivalPlanet);
 }

@@ -53,6 +53,18 @@ which carries forward this exception.
 
 #include "../../objects/terrain/PlanetNames.h"
 
+const uint32 PlanetManagerImplementation::travelFare[9][9] = {
+	{ 100,    0,    0,    0,    0,    0,    0,    0, 1000},
+	{   0,  100,    0,    0,    0,    0,    0,    0, 2000},
+	{   0,    0,  100,    0, 1750,    0,    0,    0, 4000},
+	{   0,    0,    0,  100, 1250,    0,    0, 1250,    0},
+	{   0,    0, 1750, 1250,  100,  300,    0,  500,  500},
+	{   0,    0,    0,    0,  300,  100,    0,    0,    0},
+	{   0,    0,    0,    0,  300,    0,  100,    0,    0},
+	{   0,    0,    0, 1250,  500,    0,    0,  100,  600},
+	{1000, 2000, 4000,    0,  500,    0,    0,  600,  100}
+};
+
 PlanetManagerImplementation::PlanetManagerImplementation(Zone* planet, ZoneProcessServerImplementation* serv) : 
 	PlanetManagerServant(), Mutex("PlanetManager"), Logger() {
 	zone = planet;
@@ -213,18 +225,20 @@ void PlanetManagerImplementation::loadShuttles() {
 		float shutz = shut->getFloat(8);
 		float shutdiry = shut->getFloat(9);
 		float shutdirw = shut->getFloat(10);
-		float colx = shut->getFloat(11);
-		float coly = shut->getFloat(12);
-		float tickdiry = shut->getFloat(13);
-		float tickdirw = shut->getFloat(14);
-		float termx = shut->getFloat(15);
-		float termy = shut->getFloat(16);
+		uint32	tax = shut->getInt(11);
+		bool starport = shut->getInt(12);
+		float colx = shut->getFloat(13);
+		float coly = shut->getFloat(14);
+		float tickdiry = shut->getFloat(15);
+		float tickdirw = shut->getFloat(16);
+		float termx = shut->getFloat(17);
+		float termy = shut->getFloat(18);
 		
 		coordinates = new Coordinate(playerSpawnX, playerSpawnZ, playerSpawnY);
-		shuttle = creatureManager->spawnShuttle(planetName, shuttleName, coordinates, shutx, shuty, shutz);
+		shuttle = creatureManager->spawnShuttle(planetName, shuttleName, coordinates, shutx, shuty, shutz, tax, starport);
 		shuttle->setDirection(0, 0, shutdiry, shutdirw);
 		shuttleMap->put(shuttleName, shuttle);
-
+		
 		colector = new TicketCollector(shuttle, getNextStaticObjectID(false), 
 				unicode("Ticket Collector"), "ticket_travel", colx, playerSpawnZ, coly);
 		colector->setZoneProcessServer(server);
@@ -721,7 +735,7 @@ void PlanetManagerImplementation::sendPlanetTravelPointListResponse(Player* play
 	while (shuttleMap->hasNext()) {
 		ShuttleCreature* shuttle = shuttleMap->getNextValue();
 		
-		msg->addPoint(shuttle->getCity(), shuttle->getPositionX(), shuttle->getPositionZ(), shuttle->getPositionY());
+		msg->addPoint(shuttle->getCity(), shuttle->getPositionX(), shuttle->getPositionZ(), shuttle->getPositionY(), shuttle->getTax(), shuttle->isStarport());
 	}
 	
 	unlock();

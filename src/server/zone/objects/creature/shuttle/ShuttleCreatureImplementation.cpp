@@ -53,10 +53,13 @@ which carries forward this exception.
 #include "../../tangible/ticket/Ticket.h"
 #include "../../terrain/PlanetNames.h"
 
-ShuttleCreatureImplementation::ShuttleCreatureImplementation(const string& Planet, const string& City, Coordinate* playerSpawnPoint, uint64 oid) 
+ShuttleCreatureImplementation::ShuttleCreatureImplementation(const string& Planet, const string& City, Coordinate* playerSpawnPoint, uint64 oid, uint32 tax, bool starport) 
 		: ShuttleCreatureServant(oid) {
 	planet = Planet;
 	city = City;
+	
+	this->tax = tax;
+	this->starport = starport;
 	
 	speciesName = "shuttle";
 	

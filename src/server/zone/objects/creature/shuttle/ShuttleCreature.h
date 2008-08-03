@@ -19,7 +19,7 @@ class Ticket;
 
 class ShuttleCreature : public Creature {
 public:
-	ShuttleCreature(const string& planet, const string& city, Coordinate* playerSpawnPoint, unsigned long long oid);
+	ShuttleCreature(const string& planet, const string& city, Coordinate* playerSpawnPoint, unsigned long long oid, unsigned int tax, bool starport);
 
 	void doTakeOff();
 
@@ -34,6 +34,10 @@ public:
 	Coordinate* getArrivalPoint();
 
 	int getArrivalTime();
+
+	unsigned int getTax();
+
+	bool isStarport();
 
 protected:
 	ShuttleCreature(DummyConstructorParameter* param);
@@ -67,6 +71,10 @@ public:
 	Coordinate* getArrivalPoint();
 
 	int getArrivalTime();
+
+	unsigned int getTax();
+
+	bool isStarport();
 
 };
 

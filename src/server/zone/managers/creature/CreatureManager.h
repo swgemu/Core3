@@ -53,7 +53,7 @@ public:
 
 	TrainerCreature* spawnTrainer(const string& profession, const string& stfname, const string& name, int objCrc, float x, float y, bool doLock = true);
 
-	ShuttleCreature* spawnShuttle(const string& Planet, const string& City, Coordinate* playerSpawnPoint, float x, float y, float z, bool doLock = true);
+	ShuttleCreature* spawnShuttle(const string& Planet, const string& City, Coordinate* playerSpawnPoint, float x, float y, float z, int tax = 0, bool starport = false, bool doLock = true);
 
 	RecruiterCreature* spawnRecruiter(const string& stfname, const string& name, int objCrc, float x, float y, bool doLock = true);
 
@@ -107,7 +107,7 @@ public:
 
 	TrainerCreature* spawnTrainer(const string& profession, const string& stfname, const string& name, int objCrc, float x, float y, bool doLock);
 
-	ShuttleCreature* spawnShuttle(const string& Planet, const string& City, Coordinate* playerSpawnPoint, float x, float y, float z, bool doLock);
+	ShuttleCreature* spawnShuttle(const string& Planet, const string& City, Coordinate* playerSpawnPoint, float x, float y, float z, int tax, bool starport, bool doLock);
 
 	RecruiterCreature* spawnRecruiter(const string& stfname, const string& name, int objCrc, float x, float y, bool doLock);
 
@@ -127,8 +127,8 @@ protected:
 	string _param0_spawnTrainer__string_string_string_int_float_float_bool_;
 	string _param1_spawnTrainer__string_string_string_int_float_float_bool_;
 	string _param2_spawnTrainer__string_string_string_int_float_float_bool_;
-	string _param0_spawnShuttle__string_string_Coordinate_float_float_float_bool_;
-	string _param1_spawnShuttle__string_string_Coordinate_float_float_float_bool_;
+	string _param0_spawnShuttle__string_string_Coordinate_float_float_float_int_bool_bool_;
+	string _param1_spawnShuttle__string_string_Coordinate_float_float_float_int_bool_bool_;
 	string _param0_spawnRecruiter__string_string_int_float_float_bool_;
 	string _param1_spawnRecruiter__string_string_int_float_float_bool_;
 	string _param1_spawnCreatureGroup__int_string_string_int_float_float_int_int_;

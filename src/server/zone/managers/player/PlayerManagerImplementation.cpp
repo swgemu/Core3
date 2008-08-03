@@ -627,7 +627,7 @@ void PlayerManagerImplementation::handleAddItemMessage(Player* player, uint64 it
 
 				if (item->isEquipped()) {;
 					handleAbortTradeMessage(player, false);
-					player->sendSystemMessage("You can't trade equipped items!");
+					player->sendSystemMessage("container_error_message", "container20"); //You can't trade equipped items!
 
 					player->unlock();
 					return;
@@ -833,7 +833,7 @@ void PlayerManagerImplementation::moveItem(Player* sender, Player* receiver, Tan
 void PlayerManagerImplementation::doBankTip(Player* sender, Player* receiver, uint32 tipAmount, bool updateTipTo) {
 	//Pre: sender wlocked
 	float tax = tipAmount * .05;
-	if (!sender->verifyBankCredits(tipAmount + tax)) {
+	if (!sender->verifyBankCredits(tipAmount + (int) tax)) {
 		sender->sendSystemMessage("You lack the required funds to do that. (Bank Tip.)");
 		return;
 	}
@@ -842,7 +842,7 @@ void PlayerManagerImplementation::doBankTip(Player* sender, Player* receiver, ui
 		receiver->wlock(sender);
 
 		receiver->addBankCredits(tipAmount);
-		sender->subtractBankCredits(tipAmount + tax);
+		sender->subtractBankCredits(tipAmount + (int) tax);
 
 		sender->sendSystemMessage("The Galactic Empire has collected a 5%  tax from your bank tip. This does not effect the amount recived by the other party. Thank you for your cooperation.");
 

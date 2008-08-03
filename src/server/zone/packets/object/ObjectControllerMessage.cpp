@@ -58,6 +58,7 @@
 #include "../../managers/group/GroupManager.h"
 #include "../../managers/resource/ResourceManager.h"
 #include "../../managers/loot/LootManager.h"
+#include "../../managers/planet/PlanetManager.h"
 
 #include "../../managers/skills/imagedesign/ImageDesignCustomization.h"
 
@@ -1023,13 +1024,74 @@ void ObjectControllerMessage::parsePurchaseTicket(Player* player, Message *pack)
 		tokenizer.getStringToken(arrivalPoint);
 	else
 		return;
+	
+	bool roundTrip;
+	if (tokenizer.hasMoreTokens())
+		roundTrip = tokenizer.getIntToken();
+	else
+		return;
+	
+	PlanetManager * planetManager = player->getZone()->getPlanetManager();
+	
+	uint32 fare = planetManager->getTravelFare(departurePlanet, arrivalPlanet);
 
+	if (fare == 0) {
+		//Travel not allowed between these planets
+		return;
+	}
+	
+	//Replace Underscores with spaces
+	int pos = 0;
+	while ((pos = departurePoint.find("_", pos)) != string::npos) {
+		departurePoint.replace(pos, 1, " ");
+		pos++;
+	}
+	
+	ShuttleCreature * shuttle = planetManager->getShuttle(departurePoint);
+	
+	if (shuttle == NULL) {
+		SuiMessageBox* sui = new SuiMessageBox(player, 0xDAAD);
+		sui->setPromptTitle("@base_player:swg");
+		sui->setPromptText("@travel:no_location_found");
+		player->addSuiBox(sui);
+		player->sendMessage(sui->generateMessage());
+		return;
+	}
+	
+	uint32 tax = shuttle->getTax();
+	
+	uint32 totalFee = fare + tax;
+	
+	if(roundTrip)
+		totalFee *= 2;
+	
+	if (!player->verifyCashCredits(totalFee)) {
+		
+		SuiMessageBox* sui = new SuiMessageBox(player, 0xDAAD);
+		sui->setPromptTitle("@base_player:swg");
+		sui->setPromptText("@travel:short_funds");
+		player->addSuiBox(sui);
+		player->sendMessage(sui->generateMessage());
+		return;
+		
+	} else {
+		player->subtractCashCredits(totalFee);
+	}
+	
 	// create ticket item
 	Ticket* ticket = new Ticket(player, 0xDAA0DE83, unicode("Travel Ticket"), "travel_ticket",
 			departurePlanet, departurePoint, arrivalPlanet, arrivalPoint);
 
 	player->addInventoryItem(ticket);
 	ticket->sendTo(player, true);
+	
+	if (roundTrip) {
+		Ticket* returnTicket = new Ticket(player, 0xDAA0DE83, unicode("Travel Ticket"), "travel_ticket",
+				arrivalPlanet, arrivalPoint, departurePlanet, departurePoint);
+
+		player->addInventoryItem(returnTicket);
+		returnTicket->sendTo(player, true);
+	}
 
 	SuiMessageBox* sui = new SuiMessageBox(player, 0xDAAD);
 	sui->setPromptTitle("@base_player:swg");

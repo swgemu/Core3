@@ -148,9 +148,8 @@ bool CommandQueueAction::validate() {
 
 					if (target->getParent() != creature->getParent()) {
 						clearError(0);
-						stringstream msg;
-						msg << "You cant see your target";
-						creature->sendSystemMessage(msg.str());
+						
+						creature->sendSystemMessage("cbt_spam", "los_recycle"); // You cannot see your target
 
 						target->unlock();
 						return false;
@@ -268,19 +267,19 @@ bool CommandQueueAction::checkWeapon() {
 				if (weapon->getCategory() != requiredWeapon) {
 					clearError(0);
 					if (player != NULL)
-						player->sendSystemMessage("This attack cannot be done with this weapon!");
+						player->sendSystemMessage("cbt_spam", "no_attack_wrong_weapon"); // Can't be done with this weapon
 					return false;
 				}
 			} else if (weapon->getType() != requiredWeapon) {
 				clearError(0);
 				if (player != NULL)
-					player->sendSystemMessage("This attack cannot be done with this weapon!");
+					player->sendSystemMessage("cbt_spam", "no_attack_wrong_weapon"); // Can't be done with this weapon
 				return false;
 			}
 		} else if (requiredWeapon != 0) {
 			clearError(0);
 			if (player != NULL)
-				player->sendSystemMessage("This attack cannot be done with this weapon!");
+				player->sendSystemMessage("cbt_spam", "no_attack_wrong_weapon"); // Can't be done with this weapon
 			return false;
 		}
 	}
