@@ -1126,8 +1126,12 @@ bool CreatureObjectImplementation::changeHAMWounds(int32 hpwnds, int32 apwnds, i
 		if (forcedChange) {
 			setHAMWoundsBars(MIN(newHealthWounds, baseHealth), MIN(newActionWounds, baseAction), MIN(newMindWounds, baseMind));
 			//doIncapacitate();
+		} else {
+			newHealthWounds = healthMax - 1;
+			newActionWounds = actionMax - 1;
+			newMindWounds = mindMax - 1;
 		}
-		return false;
+		
 	}
 
 	setHAMWoundsBars(MIN(newHealthWounds, baseHealth), MIN(newActionWounds, baseAction), MIN(newMindWounds, baseMind));
@@ -1145,7 +1149,7 @@ bool CreatureObjectImplementation::changeHealthWoundsBar(int32 wounds, bool forc
 	if (newHealthWounds >= healthMax) {
 		if (forcedChange) {
 		} else {
-			return false;
+			newHealthWounds = healthMax - 1;
 		}
 	}
 
@@ -1163,7 +1167,7 @@ bool CreatureObjectImplementation::changeStrengthWoundsBar(int32 wounds, bool fo
 	if (newStrengthWounds >= strengthMax) {
 		if (forcedChange) {
 		} else {
-			return false;
+			newStrengthWounds = strengthMax - 1;
 		}
 	}
 
@@ -1182,7 +1186,7 @@ bool CreatureObjectImplementation::changeConstitutionWoundsBar(int32 wounds, boo
 		if (forcedChange) {
 
 		} else {
-			return false;
+			newConstitutionWounds = constitutionMax - 1;
 		}
 	}
 
@@ -1201,7 +1205,7 @@ bool CreatureObjectImplementation::changeActionWoundsBar(int32 wounds, bool forc
 	if (newActionWounds >= actionMax) {
 		if (forcedChange) {
 		} else {
-			return false;
+			newActionWounds = actionMax - 1;
 		}
 	}
 
@@ -1220,7 +1224,7 @@ bool CreatureObjectImplementation::changeQuicknessWoundsBar(int32 wounds, bool f
 	if (newQuicknessWounds >= quicknessMax) {
 		if (forcedChange) {
 		} else {
-			return false;
+			newQuicknessWounds = quicknessMax - 1;
 		}
 	}
 
@@ -1238,7 +1242,7 @@ bool CreatureObjectImplementation::changeStaminaWoundsBar(int32 wounds, bool for
 	if (newStaminaWounds >= staminaMax) {
 		if (forcedChange) {
 		} else {
-			return false;
+			newStaminaWounds = staminaMax - 1;
 		}
 	}
 
@@ -1256,7 +1260,7 @@ bool CreatureObjectImplementation::changeMindWoundsBar(int32 wounds, bool forced
 	if (newMindWounds >= mindMax) {
 		if (forcedChange) {
 		} else {
-			return false;
+			newMindWounds = mindMax - 1;
 		}
 	}
 
@@ -1275,7 +1279,7 @@ bool CreatureObjectImplementation::changeFocusWoundsBar(int32 wounds, bool force
 	if (newFocusWounds >= focusMax) {
 		if (forcedChange) {
 		} else {
-			return false;
+			newFocusWounds = focusMax - 1;
 		}
 	}
 
@@ -1293,7 +1297,7 @@ bool CreatureObjectImplementation::changeWillpowerWoundsBar(int32 wounds, bool f
 	if (newWillpowerWounds >= willpowerMax) {
 		if (forcedChange) {
 		} else {
-			return false;
+			newWillpowerWounds = willpowerMax - 1;
 		}
 	}
 

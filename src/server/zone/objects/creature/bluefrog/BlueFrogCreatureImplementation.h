@@ -71,7 +71,7 @@ public:
 	void sendSelectProfessionMessage(Player* player);
 	void sendProfessionChoices(Player* player);
 	void sendSelectItemMessage(Player* player);
-	void sendItemChoices(Player* player);
+	void sendWoundTerminalMessage(Player* player);
 
 	void selectConversationOption(int option, SceneObject* obj);
 	

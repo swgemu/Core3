@@ -114,6 +114,9 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, Player* player, uint32
 	case 0xBF06:
 		handleBlueFrogItemRequest(boxID, player, cancel, atoi(value.c_str()));
 		break;
+	case 0xBFDA:
+		handleWoundTerminalRequest(boxID, player, cancel, atoi(value.c_str()));
+		break;
 	case 0xD1A6:
 		handleDiagnose(boxID, player);
 		break;
@@ -489,6 +492,62 @@ void SuiManager::handleBlueFrogItemRequest(uint32 boxID, Player* player, uint32 
 		player->unlock();
 	} catch (...) {
 		error("Unreported exception caught in SuiManager::handleBlueFrogItemRequest");
+		player->unlock();
+	}
+
+}
+
+void SuiManager::handleWoundTerminalRequest(uint32 boxID, Player* player, uint32 cancel, int itemIndex) {
+	try {
+		player->wlock();
+
+		if (!player->hasSuiBox(boxID)) {
+			player->unlock();
+			return;
+		}
+
+		SuiBox* sui = player->getSuiBox(boxID);
+
+		if (sui->isListBox() && cancel != 1) {
+			switch (itemIndex) {
+			case 0:
+				player->changeHealthWoundsBar(500);
+				break;
+			case 1:
+				player->changeStrengthWoundsBar(500);
+				break;
+			case 2:
+				player->changeConstitutionWoundsBar(500);
+				break;
+			case 3:
+				player->changeActionWoundsBar(500);
+				break;
+			case 4:
+				player->changeQuicknessWoundsBar(500);
+				break;
+			case 5:
+				player->changeStaminaWoundsBar(500);
+				break;
+			case 6:
+				player->changeMindWoundsBar(500);
+				break;
+			case 7:
+				player->changeWillpowerWoundsBar(500);
+				break;
+			}
+		}
+
+		player->removeSuiBox(boxID);
+		sui->finalize();	
+		
+		player->unlock();
+	} catch (Exception& e) {
+		error("Exception in SuiManager::handleWoundTerminalRequest ");
+		e.printStackTrace();
+
+		player->unlock();
+	} catch (...) {
+		error("Unreported exception caught in SuiManager::handleWoundTerminalRequest");
 		player->unlock();
 	}
 

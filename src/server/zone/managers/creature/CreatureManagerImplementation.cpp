@@ -160,6 +160,7 @@ void CreatureManagerImplementation::loadBlueFrogs() {
 	if (zone->getZoneID() == 5) {
 		spawnBlueFrog(-4834, 4148, .723221, -.690617, BlueFrogCreatureImplementation::GUNGAN);
 		spawnBlueFrog(-4879, 4185, 1, 0, BlueFrogCreatureImplementation::GUNGAN);
+		spawnBlueFrog(17.6233, 11.2728, 1, 0, BlueFrogCreatureImplementation::GUNGAN, 1697360);
 	} else if (zone->getZoneID() == 8) {
 		spawnBlueFrog(45, -5352, -.11083, .993839, BlueFrogCreatureImplementation::JAWA);
 		spawnBlueFrog(59, -5336, 1, 0, BlueFrogCreatureImplementation::JAWA);
@@ -258,7 +259,7 @@ CreatureGroup* CreatureManagerImplementation::spawnCreatureGroup(int count, cons
 	}
 }
 
-BlueFrogCreature* CreatureManagerImplementation::spawnBlueFrog(float x, float y, float oY, float oW, int type, bool doLock) {
+BlueFrogCreature* CreatureManagerImplementation::spawnBlueFrog(float x, float y, float oY, float oW, int type, uint64 cellid, bool doLock) {
 	try {
 		lock(doLock);
 
@@ -268,6 +269,7 @@ BlueFrogCreature* CreatureManagerImplementation::spawnBlueFrog(float x, float y,
 
 		bluefrog->setHeight(1.0f);
 		bluefrog->initializePosition(x, 0, y);
+		bluefrog->setParent(instance->getZone()->lookupObject(cellid));
 		bluefrog->setDirection(0, 0, oY, oW);
 		bluefrog->setPvpStatusBitmask(0);//0x01 + 0x02 + 0x20;
 		bluefrog->setBFType(type);

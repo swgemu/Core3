@@ -108,7 +108,7 @@ void BlueFrogCreatureImplementation::sendConversationStartTo(SceneObject* obj) {
 void BlueFrogCreatureImplementation::sendMessage1(Player* player) {
 	stringstream mes1;
 	mes1 << "I have been sanctioned by the developers to give you certain goods and to train";
-	mes1 << " you in certain skills that will help you test specific areas of development.";
+	mes1 << " you in certain skills and provide you with certain services that will help you test specific areas of development.";
 	mes1 << endl << endl << "What do you need?";
 	unicode message = unicode(mes1.str());
 	
@@ -121,10 +121,12 @@ void BlueFrogCreatureImplementation::sendChoices1(Player* player) {
 	unicode option1 = unicode("Which professions will you teach me?");
 	//unicode option2 = unicode("I'd like to unlearn all my skills and start over.");
 	unicode option3 = unicode("Which items can I get?");
+	unicode option4 = unicode("I want to test wounds.");
 	
 	slist->insertOption(option1);
 	//slist->insertOption(option2);
 	slist->insertOption(option3);
+	slist->insertOption(option4);
 	
 	player->setLastNpcConvMessStr("blue_frog_m1");
 	player->sendMessage(slist);
@@ -163,43 +165,42 @@ void BlueFrogCreatureImplementation::sendProfessionChoices(Player* player) {
 }
 
 void BlueFrogCreatureImplementation::sendSelectItemMessage(Player * player) {
-	stringstream mes1;
-	mes1 << "I can give you the folowing items...";
-	unicode message = unicode(mes1.str());
-		
-	NpcConversationMessage* m1 = new NpcConversationMessage(player, message);
-	player->sendMessage(m1);
-		
-	sendItemChoices(player);
-}
-
-void BlueFrogCreatureImplementation::sendItemChoices(Player* player) {
 	ItemManager* itemManager = player->getZone()->getZoneServer()->getItemManager();
-	
-	StringList* slist = new StringList(player);
 	
 	SuiListBox* sui = new SuiListBox(player, 0xBF06);
 	sui->setPromptTitle("Blue Frog Items");
 	sui->setPromptText("You can have any of the following item sets.");
 	sui->setCancelButton(true);
-	
+
 	BlueFrogVector * bfVector = itemManager->getBFItemList();
-	for(int i = 0; i < bfVector->size(); i++) {
+	for (int i = 0; i < bfVector->size(); i++) {
 		sui->addMenuItem(bfVector->get(i));
 	}
-	
+
 	player->addSuiBox(sui);
 	player->sendMessage(sui->generateMessage());
-	
-	unicode again = unicode("Can I see those items again?");
-	unicode restart = unicode("Can we start over?");
-	
-	slist->insertOption(again);
-	slist->insertOption(restart);
-	
-	player->setLastNpcConvMessStr("blue_frog_item");
-	player->sendMessage(slist);
 }
+
+void BlueFrogCreatureImplementation::sendWoundTerminalMessage(Player * player) {
+	SuiListBox* sui = new SuiListBox(player, 0xBFDA);
+	sui->setPromptTitle("@wound_terminal:beta_terminal_wound");
+	sui->setPromptText("Each selection will cause 500 wound damage.");
+	sui->setCancelButton(true);
+
+	sui->addMenuItem("@wound_terminal:inflict_wound_health");
+	sui->addMenuItem("@wound_terminal:inflict_wound_strength");
+	sui->addMenuItem("@wound_terminal:inflict_wound_constitution");
+	sui->addMenuItem("@wound_terminal:inflict_wound_action");
+	sui->addMenuItem("@wound_terminal:inflict_wound_quickness");
+	sui->addMenuItem("@wound_terminal:inflict_wound_stamina");
+	sui->addMenuItem("@wound_terminal:inflict_wound_mind");
+	sui->addMenuItem("@wound_terminal:inflict_wound_focus");
+	sui->addMenuItem("@wound_terminal:inflict_wound_willpower");
+
+	player->addSuiBox(sui);
+	player->sendMessage(sui->generateMessage());
+}
+
 
 void BlueFrogCreatureImplementation::selectConversationOption(int option, SceneObject* obj) {
 	if (!obj->isPlayer())
@@ -228,6 +229,11 @@ void BlueFrogCreatureImplementation::selectConversationOption(int option, SceneO
 			break; */
 		case 1:
 			sendSelectItemMessage(player);
+			sendMessage1(player);
+			break;
+		case 2:
+			sendWoundTerminalMessage(player);
+			sendMessage1(player);
 			break;
 		}
 	} else if (lastMessage.find("blue_frog_prof") != string::npos) {
@@ -259,12 +265,7 @@ void BlueFrogCreatureImplementation::selectConversationOption(int option, SceneO
 		} else {
 			sendMessage1(player);
 		}
-	} else if (lastMessage == "blue_frog_item") {
-		if (option == 0)
-			sendItemChoices(player);
-		else
-			sendMessage1(player);
-	}
+	} 
 }
 
 bool BlueFrogCreatureImplementation::trainProfession(Player * player, string prof) {
