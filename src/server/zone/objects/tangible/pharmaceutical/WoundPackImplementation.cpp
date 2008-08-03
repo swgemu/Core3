@@ -61,16 +61,22 @@ WoundPackImplementation::WoundPackImplementation(CreatureObject* creature, uint3
 }
 
 int WoundPackImplementation::useObject(Player* player) {
-	uint64 targetID = player->getTargetID();
-	uint32 actionCRC = 0x2087CE04;
-	uint32 actionCntr = 0;
-
-	SceneObject* objectTarget = (SceneObject*) player->getZone()->lookupObject(targetID);
-
-	if (!objectTarget->isPlayer()) {
-		player->sendSystemMessage("Your target for Heal Wound was invalid.");
+	if (player->getSkillMod("healing_ability") < getMedicineUseRequired()) {
+		player->sendSystemMessage("error_message", "insufficient_skill"); //You lack the skill to use this item.
 		return 0;
 	}
+
+	SceneObject* objectTarget = player->getTarget();
+	Player* playerTarget;
+
+	if (objectTarget == NULL || !objectTarget->isPlayer())
+		playerTarget = player;
+	else
+		playerTarget = (Player*) objectTarget;
+
+	uint64 targetID = playerTarget->getObjectID();
+	uint32 actionCRC = 0x2087CE04; //healwound <pool>
+	uint32 actionCntr = 0;
 
 	stringstream actionModifier;
 	actionModifier << getPoolName(getPoolAffected()) << "|" << objectID;

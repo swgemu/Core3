@@ -61,22 +61,21 @@ StimPackImplementation::StimPackImplementation(CreatureObject* creature, uint32 
 }
 
 int StimPackImplementation::useObject(Player* player) {
-	Player* targetPlayer = (Player*) player->getTarget();
-	if (targetPlayer == NULL || !targetPlayer->isPlayer())
-		targetPlayer = player;
-
 	if (player->getSkillMod("healing_ability") < getMedicineUseRequired()) {
 		player->sendSystemMessage("error_message", "insufficient_skill"); //You lack the skill to use this item.
 		return 0;
 	}
 
-	if (!targetPlayer->isPlayer()) {
-		player->sendSystemMessage("Your target for Heal Damage was invalid.");
-		return 0;
-	}
+	SceneObject* objectTarget = player->getTarget();
+	Player* playerTarget;
 
-	uint64 targetID = targetPlayer->getObjectID();
-	uint32 actionCRC = 0x0A9F00A0;
+	if (objectTarget == NULL || !objectTarget->isPlayer())
+		playerTarget = player;
+	else
+		playerTarget = (Player*) objectTarget;
+
+	uint64 targetID = playerTarget->getObjectID();
+	uint32 actionCRC = 0x0A9F00A0; //healdamage <target>
 	uint32 actionCntr = 0;
 
 	stringstream actionModifier;

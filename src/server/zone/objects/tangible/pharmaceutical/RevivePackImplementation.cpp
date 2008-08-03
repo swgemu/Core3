@@ -61,21 +61,20 @@ RevivePackImplementation::RevivePackImplementation(CreatureObject* creature, uin
 }
 
 int RevivePackImplementation::useObject(Player* player) {
-	Player* targetPlayer = (Player*) player->getTarget();
-	if (targetPlayer == NULL || !targetPlayer->isPlayer())
-		targetPlayer = player;
-
 	if (player->getSkillMod("healing_ability") < getMedicineUseRequired()) {
 		player->sendSystemMessage("error_message", "insufficient_skill"); //You lack the skill to use this item.
 		return 0;
 	}
 
-	if (!targetPlayer->isPlayer()) {
-		player->sendSystemMessage("Your target for Revive Player was invalid.");
-		return 0;
-	}
+	SceneObject* objectTarget = player->getTarget();
+	Player* playerTarget;
 
-	uint64 targetID = targetPlayer->getObjectID();
+	if (objectTarget == NULL || !objectTarget->isPlayer())
+		playerTarget = player;
+	else
+		playerTarget = (Player*) objectTarget;
+
+	uint64 targetID = playerTarget->getObjectID();
 	uint32 actionCRC = 0xC9759876; //reviveplayer <target>
 	uint32 actionCntr = 0;
 
