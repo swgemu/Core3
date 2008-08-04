@@ -56,34 +56,34 @@ goraxguard = Creature:new {
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
-      healthMax = 500000,
-      healthMin = 450000,
-      strength = 50000,
-      constitution = 50000,
+      healthMax = 650000,
+      healthMin = 540000,
+      strength = 85000,
+      constitution = 85000,
 
-      actionMax = 500000,
-      actionMin = 450000,
-      quickness = 50000,
-      stamina = 50000,
+      actionMax = 650000,
+      actionMin = 540000,
+      quickness = 85000,
+      stamina = 85000,
 
-      mindMax = 500000,
-      mindMin = 450000,
-      focus = 50000,
-      willpower = 50000,
+      mindMax = 650000,
+      mindMin = 540000,
+      focus = 85000,
+      willpower = 85000,
 
       height = .8, -- Size of creature
-      armor = 2, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-      kinetic = 65,
-      energy = 65,
-      electricity = 65,
-      stun = 65,
-      blast = 65,
-      heat = 65,
-      cold = 65,
-      acid = 65,
+      armor = 3, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+      kinetic = 75,
+      energy = 75,
+      electricity = 75,
+      stun = 75,
+      blast = 75,
+      heat = 75,
+      cold = 75,
+      acid = 75,
       lightsaber = 0,
 
-      accuracy = 500,
+      accuracy = 520,
 
       healer = 0,
 

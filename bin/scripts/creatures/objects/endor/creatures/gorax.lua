@@ -56,20 +56,20 @@ gorax = Creature:new {
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
-      healthMax = 1200000,
-      healthMin = 900000,
-      strength = 85000,
-      constitution = 85000,
+      healthMax = 2000000,
+      healthMin = 1500000,
+      strength = 200000,
+      constitution = 200000,
 
-      actionMax = 1200000,
-      actionMin = 900000,
-      quickness = 85000,
-      stamina = 85000,
+      actionMax = 2000000,
+      actionMin = 1500000,
+      quickness = 200000,
+      stamina = 200000,
 
-      mindMax = 1200000,
-      mindMin = 900000,
-      focus = 85000,
-      willpower = 85000,
+      mindMax = 2000000,
+      mindMin = 1500000,
+      focus = 200000,
+      willpower = 200000,
 
       height = 1.5, -- Size of creature
       armor = 3, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
@@ -83,7 +83,7 @@ gorax = Creature:new {
       acid = 95,
       lightsaber = 0,
 
-      accuracy = 500,
+      accuracy = 580,
 
       healer = 0,
 
@@ -135,7 +135,7 @@ gorax = Creature:new {
       meatType = "",
       meatMax = 0,
 
-      skills = { "goraxAttack1", "goraxAttack2" },
+      skills = { "goraxAttack1", "goraxAttack2", "goraxAttack3", "goraxAttack4" },
       respawnTimer = 18000,
 
       behaviorScript = "", -- Link to the behavior script for this object

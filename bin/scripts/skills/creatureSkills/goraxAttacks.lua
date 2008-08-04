@@ -47,11 +47,11 @@ goraxAttack1 = {
 
 	range = 25,
 
-	damageRatio = 980,
+	damageRatio = 1024,
 
-	speedRatio = 2,
+	speedRatio = 1,
 
-	areaRange = 25,
+	areaRange = 35,
 	accuracyBonus = 500,
 		
 	knockdownChance = 0,
@@ -60,7 +60,7 @@ goraxAttack1 = {
 	dizzyChance = 0,
 	blindChance = 0,
 	stunChance = 0,
-	intimidateChance = 50,
+	intimidateChance = 100,
 	
 	CbtSpamBlock = "attack_block",
 	CbtSpamCounter = "attack_counter",
@@ -81,17 +81,17 @@ goraxAttack2 = {
 
 	range = 25,
 
-	damageRatio = 1000,
+	damageRatio = 1024,
 
-	speedRatio = 2,
+	speedRatio = 1,
 
-	areaRange = 25,
+	areaRange = 35,
 	accuracyBonus = 500,
 		
 	knockdownChance = 90,
-	postureDownChance = 50,
+	postureDownChance = 65,
 	postureUpChance = 0,
-	dizzyChance = 10,
+	dizzyChance = 50,
 	blindChance = 0,
 	stunChance = 0,
 	intimidateChance = 0,
@@ -115,16 +115,16 @@ goraxAttack3 = {
 
 	range = 10,
 
-	damageRatio = 980,
+	damageRatio = 1024,
 
-	speedRatio = 2,
+	speedRatio = 1.5,
 
-	areaRange = 10,
+	areaRange = 25,
 	accuracyBonus = 500,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
-	postureUpChance = 0,
+	postureUpChance = 20,
 	dizzyChance = 0,
 	blindChance = 0,
 	stunChance = 0,
@@ -149,17 +149,17 @@ goraxAttack4 = {
 
 	range = 10,
 
-	damageRatio = 1000,
+	damageRatio = 1024,
 
-	speedRatio = 2,
+	speedRatio = 1.5,
 
-	areaRange = 10,
+	areaRange = 25,
 	accuracyBonus = 500,
 		
 	knockdownChance = 90,
 	postureDownChance = 50,
 	postureUpChance = 0,
-	dizzyChance = 0,
+	dizzyChance = 10,
 	blindChance = 0,
 	stunChance = 0,
 	intimidateChance = 0,

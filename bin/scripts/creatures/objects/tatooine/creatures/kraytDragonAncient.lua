@@ -58,22 +58,22 @@ kraytDragonAncient = Creature:new {
 
       healthMax = 501000,
       healthMin = 410000,
-      strength = 0,
-      constitution = 0,
+      strength = 100000,
+      constitution = 100000,
 
       actionMax = 501000,
       actionMin = 410000,
-      quickness = 0,
-      stamina = 0,
+      quickness = 100000,
+      stamina = 100000,
 
       mindMax = 501000,
       mindMin = 410000,
-      focus = 0,
-      willpower = 0,
+      focus = 100000,
+      willpower = 100000,
 
       height = 3, -- Size of creature
 	  
-      armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+      armor = 3, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
       kinetic = 95,
       energy = 95,
       electricity = 95,

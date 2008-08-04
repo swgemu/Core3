@@ -58,22 +58,22 @@ canyonKraytDragon = Creature:new {
 
       healthMax = 392000,
       healthMin = 321000,
-      strength = 0,
-      constitution = 0,
+      strength = 50000,
+      constitution =50000,
 
       actionMax = 392000,
       actionMin = 321000,
-      quickness = 0,
-      stamina = 0,
+      quickness = 50000,
+      stamina = 50000,
 
       mindMax = 392000,
       mindMin = 321000,
-      focus = 0,
-      willpower = 0,
+      focus = 50000,
+      willpower = 50000,
 
       height = 2, -- Size of creature
 	  
-      armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+      armor = 2, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
       kinetic = 60,
       energy = 60,
       electricity = 60,

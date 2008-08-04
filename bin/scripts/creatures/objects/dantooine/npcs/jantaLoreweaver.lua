@@ -47,7 +47,7 @@ jantaLoreweaver = Creature:new {
       gender = "",
 
       name = "Janta loreweaver",
-      objectCRC = 2423987904, 
+      objectCRC = 4083847450, 
       socialGroup = "Janta Tribe",
       named = FALSE, 
 
@@ -141,4 +141,4 @@ jantaLoreweaver = Creature:new {
       behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(jantaLoreweaver, 2423987904) --  Add to Global Table
+Creatures:addCreature(jantaLoreweaver, 4083847450) --  Add to Global Table
