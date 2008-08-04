@@ -2096,9 +2096,12 @@ void PlayerImplementation::sendConsentBox() {
 	if (hasSuiBoxType(0xC057)) {
 		int boxID = getSuiBoxFromType(0xC057);
 		SuiListBox* sui = (SuiListBox*) getSuiBox(boxID);
-		sendMessage(sui->generateCloseMessage());
-		removeSuiBox(boxID);
-		sui->finalize();
+
+		if (sui != NULL) {
+			sendMessage(sui->generateCloseMessage());
+			removeSuiBox(boxID);
+			sui->finalize();
+		}
 	}
 
 	SuiListBox* consentBox = new SuiListBox(_this, 0xC057);
@@ -2106,7 +2109,7 @@ void PlayerImplementation::sendConsentBox() {
 	consentBox->setPromptTitle("Consent List");
 	consentBox->setPromptText("Below is listed all players whom you have given consent.");
 
-	for (int i=0; i<consentList.size(); i++) {
+	for (int i=0; i < consentList.size(); i++) {
 		SceneObject* object = getZone()->lookupObject(consentList.get(i));
 
 		if (object->isPlayer()) {

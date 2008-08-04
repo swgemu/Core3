@@ -215,9 +215,6 @@ void GroupObjectImplementation::makeLeader(Player* player) {
 }
 
 float GroupObjectImplementation::getRangerBonusForHarvesting(Player* player) {
-
-	lock();
-
 	Player* temp;
 	string skillBox = "outdoors_ranger_novice";
 	string skillBox2 = "outdoors_ranger_master";
@@ -230,25 +227,34 @@ float GroupObjectImplementation::getRangerBonusForHarvesting(Player* player) {
 
 		temp = groupMembers.get(i);
 
-		if(temp->getFirstName() != player->getFirstName() && temp->isInRange(player, 64.0f) &&
-				player->getZoneID() == temp->getZoneID())
-			closeEnough = true;
+		try {
+			if (temp != player)
+				temp->wlock(player);
 
-		if(temp->hasSkillBox(skillBox)){
+			if(temp->getFirstName() != player->getFirstName() && temp->isInRange(player, 64.0f) &&
+					player->getZoneID() == temp->getZoneID())
+				closeEnough = true;
 
-			bonus = .3f;
+			if(temp->hasSkillBox(skillBox)){
 
-		}
+				bonus = .3f;
 
-		if(temp->hasSkillBox(skillBox2)){
+			}
 
-			bonus = .4f;
+			if(temp->hasSkillBox(skillBox2)){
 
+				bonus = .4f;
+
+			}
+
+			if (temp != player)
+				temp->unlock();
+		} catch (...) {
+			if (temp != player)
+				temp->unlock();
 		}
 
 	}
-
-	unlock();
 
 	if(closeEnough)
 		return bonus;

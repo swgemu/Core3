@@ -85,8 +85,21 @@ void RadialManager::handleRadialRequest(Player* player, Packet* pack) {
 
 	if (object == NULL) {
 		sendDefaultRadialResponse(player, omr);
-	} else
-		object->sendRadialResponseTo(player, omr);
+	} else {
+		try {
+			if (object != player)
+				object->wlock(player);
+
+			object->sendRadialResponseTo(player, omr);
+
+			if (object != player)
+				object->unlock();
+		} catch (...) {
+			if (object != player)
+				object->unlock();
+			cout << "unreported exception caught in RadialManager::handleRadialRequest\n";
+		}
+	}
 }
 
 void RadialManager::handleRadialSelect(Player* player, Packet* pack) {
@@ -560,18 +573,19 @@ void RadialManager::handleOpenCraftingToolHopper(Player* player, SceneObject* ob
 }
 
 void RadialManager::handleHarvest(Player* player, SceneObject* obj, int type) {
+	if (obj == NULL)
+		return;
+
+	if (!obj->isNonPlayerCreature())
+		return;
 
 	Creature* creature = (Creature*)obj;
 
-	if(creature == NULL)
-		return;
-
 	ResourceManager* resourceManager = player->getZone()->getZoneServer()->getResourceManager();
 
-	if(resourceManager == NULL)
+	if (resourceManager == NULL)
 		return;
 
 	resourceManager->harvestOrganics(player, creature, type);
-
 }
 

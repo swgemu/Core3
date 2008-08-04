@@ -318,22 +318,17 @@ public:
 	}
 
 	inline bool canHarvest(string firstName) {
-
-		lock();
-
 		if(getBoneMax() == 0 && getHideMax() == 0 && getMeatMax() == 0){
-			unlock();
 			return false;
 		}
 
 		for(int i = 0; i < playerCanHarvest.size(); ++i){
 
 			if(playerCanHarvest.get(i) == firstName){
-				unlock();
 				return true;
 			}
 		}
-		unlock();
+
 		return false;
 	}
 

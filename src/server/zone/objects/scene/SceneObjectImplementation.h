@@ -301,17 +301,17 @@ public:
 	inline bool isMission() {
 		return objectType == MISSION;
 	}
-	
+
 	inline bool isPlayerObject() {
 		return objectType == PLAYEROBJECT;
 	}
-	
+
 	inline bool isWaypoint() {
 		return objectType == WAYPOINT;
 	}
-	
+
 	inline bool isManufactureSchematic() {
-		return objectType = MANUFACTURESCHEMATIC;
+		return objectType == MANUFACTURESCHEMATIC;
 	}
 
 	int compareTo(SceneObject* obj) {

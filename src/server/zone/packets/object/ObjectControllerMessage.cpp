@@ -2470,16 +2470,17 @@ void ObjectControllerMessage::handleDeathblow(Player* player, Message* packet,
 
 	Player* target = (Player*) object;
 
-	player->unlock();
-
 	try {
-		target->wlock();
+		target->wlock(player);
 
 		if (combatManager->canAttack(player, target) && target->isIncapacitated()
 				&& target->isInRange(player, 5)) {
 
+			player->unlock();
 
 			target->deathblow(player);
+
+			player->wlock(target);
 
 			float currentRating = (float)player->getPvpRating();
 			float opponentRating = (float)target->getPvpRating();
@@ -2527,8 +2528,6 @@ void ObjectControllerMessage::handleDeathblow(Player* player, Message* packet,
 		cout << "Unreported exception caught in ObjectControllerMessage::handleDeathblow(Player* player, Message* packet)\n";
 		target->unlock();
 	}
-
-	player->wlock();
 }
 
 void ObjectControllerMessage::parseSurveySlashRequest(Player* player,
@@ -3037,10 +3036,18 @@ void ObjectControllerMessage::parseRotateItem(Player* player, Message* pack) {
 
 	SceneObject* object = player->getZone()->getZoneServer()->getObject(target, true);
 
-	object->setDirection(object->getDirectionX(), (object->getDirectionZ()
-			+ sqrt(.5)), object->getDirectionY(), (object->getDirectionW()
-			+ sqrt(.5)));
+	try {
+		object->wlock(player);
 
+		object->setDirection(object->getDirectionX(), (object->getDirectionZ()
+				+ sqrt(.5)), object->getDirectionY(), (object->getDirectionW()
+						+ sqrt(.5)));
+
+		object->unlock();
+	} catch (...) {
+		object->unlock();
+		cout << "unreported exception caught in ObjectControllerMessage::parseRotateItem\n";
+	}
 }
 
 void ObjectControllerMessage::parseAddIgnore(Player* player, Message* pack) {
@@ -3182,9 +3189,19 @@ void ObjectControllerMessage::parseHaveConsentRequest(Player* player, Message* p
 			return;
 		}
 
-		if (playerTarget->hasConsent(player->getObjectID())) {
-			player->sendSystemMessage("base_player", "haveconsent_true"); //You have their consent.
-			return;
+		try {
+			playerTarget->wlock(player);
+
+			if (playerTarget->hasConsent(player->getObjectID())) {
+				player->sendSystemMessage("base_player", "haveconsent_true"); //You have their consent.
+				playerTarget->unlock();
+				return;
+			}
+
+			playerTarget->unlock();
+		} catch (...) {
+			cout << "unreported exception caught in ObjectControllerMessage::parseHaveConsentRequest\n";
+			playerTarget->unlock();
 		}
 	} else {
 		player->sendSystemMessage("Your target for /haveconsent was not found.");

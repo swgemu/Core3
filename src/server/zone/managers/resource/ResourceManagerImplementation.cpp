@@ -485,7 +485,7 @@ void ResourceManagerImplementation::sendSampleMessage(Player* player,
 void ResourceManagerImplementation::harvestOrganics(Player* player,
 		Creature* creature, int type) {
 
-	if (!creature->isDead())
+	if (creature == NULL)
 		return;
 
 	bool proceed = false;
@@ -498,17 +498,15 @@ void ResourceManagerImplementation::harvestOrganics(Player* player,
 
 	CreatureObject* creatureObj = (CreatureObject*) creature;
 
-	if (creatureObj == NULL)
-		return;
-
 	string skillBox = "outdoors_scout_novice";
 
-	if (player->isInRange(creature->getPositionX(), creature->getPositionY(), 10.0f) &&
-			!player->isInCombat() && player->hasSkillBox(skillBox) && creature->isDead() &&
-			creature->canHarvest(player->getFirstName())) {
+	try {
+		creature->wlock(player);
 
-		try {
-			creature->lock(player);
+		if (player->isInRange(creature->getPositionX(),
+				creature->getPositionY(), 10.0f) && !player->isInCombat()
+				&& player->hasSkillBox(skillBox) && creature->isDead()
+				&& creature->canHarvest(player->getFirstName())) {
 
 			getHarvestingType(creatureObj, harvestType, baseAmount, type);
 
@@ -521,7 +519,7 @@ void ResourceManagerImplementation::harvestOrganics(Player* player,
 					"creature_harvesting") / 100.0f));
 
 			float temp2 = float(baseAmount) * .1f;
-			if(temp2 < 3)
+			if (temp2 < 3)
 				temp2 = 3;
 
 			variance = System::random(int(temp2) * 2);
@@ -531,9 +529,18 @@ void ResourceManagerImplementation::harvestOrganics(Player* player,
 
 			if (player->isInAGroup()) {
 
-				bonusPercentage
-						= player->getGroupObject()->getRangerBonusForHarvesting(
-								player);
+				GroupObject* group = player->getGroupObject();
+
+				try {
+					group->wlock(player);
+
+					bonusPercentage = group->getRangerBonusForHarvesting(player);
+
+					group->unlock();
+				} catch (...) {
+					group->unlock();
+				}
+
 				bonusAmount = int(bonusPercentage * baseAmount);
 
 			}
@@ -562,7 +569,6 @@ void ResourceManagerImplementation::harvestOrganics(Player* player,
 			ss << "You have harvested " << baseAmount << " unit(s) of "
 					<< newRcno->getClassSeven();
 
-
 			if (bonusAmount > 0) {
 
 				ss << "  and got a ";
@@ -590,14 +596,12 @@ void ResourceManagerImplementation::harvestOrganics(Player* player,
 			int xp = int(creatureObj->getXP() * .1f);
 
 			player->addXp(xpType, xp, true);
-
-			creature->unlock();
-
-		} catch (...) {
-
-			creature->unlock();
-
 		}
+
+		creature->unlock();
+	} catch (...) {
+		cout << "unreported exception caught in Resourcemanager::harvestOrganics()\n";
+		creature->unlock();
 	}
 }
 
