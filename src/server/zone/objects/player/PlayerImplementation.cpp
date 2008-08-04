@@ -1982,9 +1982,9 @@ void PlayerImplementation::doClone() {
 
 	//TODO: This should check to see if the data is stored at the cloning facility or not, these numbers are much less if so.
 
-	changeHealthWoundsBar(100, true);
-	changeActionWoundsBar(100, true);
-	changeMindWoundsBar(100, true);
+	changeHealthWoundsBar(100);
+	changeActionWoundsBar(100);
+	changeMindWoundsBar(100);
 	//TODO: Add in secondary wounds?
 	changeShockWounds(100);
 
