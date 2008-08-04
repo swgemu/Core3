@@ -46,7 +46,7 @@ jantaClanLeader = Creature:new {
       faction = "Janta Tnbe",
       gender = "",
 
-      name = "Janta dan leader",
+      name = "Janta Clan Leader",
       objectCRC = 4083847450, 
       socialGroup = "Janta Tnbe",
       named = FALSE, 

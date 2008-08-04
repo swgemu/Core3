@@ -124,7 +124,7 @@ goraxAttack3 = {
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
-	postureUpChance = 20,
+	postureUpChance = 0,
 	dizzyChance = 0,
 	blindChance = 0,
 	stunChance = 0,
