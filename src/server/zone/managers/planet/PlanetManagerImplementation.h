@@ -143,7 +143,7 @@ public:
 	uint64 getNextStaticObjectID(bool doLock = true);
 	
 	inline uint32 getTravelFare(string departurePlanet, string arrivalPlanet) {
-		return travelFare[Planet::getPlanetID(departurePlanet) - 1][Planet::getPlanetID(arrivalPlanet) - 1];
+		return travelFare[Planet::getPlanetID(departurePlanet)][Planet::getPlanetID(arrivalPlanet)];
 	}
 };
 
