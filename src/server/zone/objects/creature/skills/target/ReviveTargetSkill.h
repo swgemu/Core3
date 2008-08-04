@@ -167,7 +167,7 @@ public:
 			return 0;
 		}
 
-		if (creature->getGroupID() != playerTarget->getGroupID() || !playerTarget->hasConsent(creature->getObjectID())) {
+		if (creature->getGroupID() != playerTarget->getGroupID() || !playerTarget->hasConsent(((Player*)creature)->getFirstName())) {
 			creature->sendSystemMessage("healing_response", "must_be_grouped"); //You must be grouped with or have consent from your resuscitation target!
 			return 0;
 		}

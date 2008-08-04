@@ -192,6 +192,11 @@ bool PlayerManagerImplementation::create(Player* player, uint32 sessionkey) {
 
 		playerMap->put(player->getFirstName(), player);
 
+		//Create a consentlist entry for this new player
+		stringstream consentquery;
+		consentquery << "INSERT INTO consentlist (character_id) VALUES (" << player->getCharacterID() << ");";
+		ServerDatabase::instance()->executeStatement(consentquery);
+
 		delete res;
 	} catch (DatabaseException& e) {
 		return false;
@@ -445,6 +450,9 @@ void PlayerManagerImplementation::loadFromDatabase(Player* player) {
 	player->setPvpRating(character->getInt(54));
 	player->setAdminLevel(character->getInt(55));
 
+	//Load consent list from database
+	loadConsentList(player);
+
 	delete character;
 }
 
@@ -569,6 +577,9 @@ void PlayerManagerImplementation::unload(Player* player) {
     }
 
 	player->saveProfessions();
+
+	//Update the database with the consentlist info
+	updateConsentList(player);
 
 	playerMap->remove(player->getFirstName());
 }
@@ -1028,6 +1039,69 @@ bool PlayerManagerImplementation::modifyRecipientOfflineBank(string recipient, u
 	}
 
 	return true;
+}
+
+void PlayerManagerImplementation::loadConsentList(Player* player) {
+	if (player == NULL)
+		return;
+
+	stringstream query;
+
+	query << "SELECT targets FROM consentlist WHERE character_id = " << player->getCharacterID() << ";";
+
+	ResultSet* targetlist;
+	try {
+		targetlist = ServerDatabase::instance()->executeQuery(query);
+
+		if (targetlist->next()) {
+
+			string targets = targetlist->getString(0);
+
+			StringTokenizer tokenizer(targets);
+			tokenizer.setDelimeter(";");
+
+			while (tokenizer.hasMoreTokens()) {
+				string playerName;
+				tokenizer.getStringToken(playerName);
+				player->giveConsent(playerName);
+			}
+		} else {
+			stringstream insert;
+			insert << "INSERT INTO consentlist (character_id, targets) VALUES (" << player->getCharacterID() << ", '');";
+			try {
+				ServerDatabase::instance()->executeStatement(insert);
+			} catch (...) {
+				cout << "Player consent list was not generated for character " << player->getFirstName() << endl;
+			}
+		}
+	} catch (...) {
+		//No consent list available for this character so create one.
+	}
+	delete targetlist;
+}
+
+void PlayerManagerImplementation::updateConsentList(Player* player) {
+	if (player == NULL)
+		return;
+
+
+
+	stringstream targets;
+
+	for (int i=0; i<player->getConsentSize(); i++)
+		targets << player->getConsentEntry(i) << ";";
+
+	stringstream query;
+
+	query << "UPDATE consentlist SET "
+		  << "targets = '" << targets.str() << "' "
+		  << "WHERE character_id = " << player->getCharacterID() << ";";
+
+	try {
+		ServerDatabase::instance()->executeStatement(query);
+	} catch (...) {
+		cout << "PlayerManagerImplementation::updateConsentList: failed SQL update " << query.str() << endl;
+	}
 }
 
 void PlayerManagerImplementation::updatePlayerCreditsToDatabase(Player* player) {

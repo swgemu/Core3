@@ -113,6 +113,9 @@ public:
 	void handleUnAcceptTransactionMessage(Player* player);
 	void handleVerifyTradeMessage(Player* player);
 
+	void loadConsentList(Player* player);
+	void updateConsentList(Player* player);
+
 	void updateOtherFriendlists(Player* player,bool status);
 
 	void moveItem(Player* sender, Player* receiver, TangibleObject* item);

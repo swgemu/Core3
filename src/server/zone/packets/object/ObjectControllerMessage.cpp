@@ -314,8 +314,9 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 	unicode name;
 
 	//TODO: This needs to be revisted, certain skills can be done while dead or incapacitated:
-	// Like /activateClone = 0xEA69C1BD
-	if ((player->isIncapacitated() || player->isDead()) && actionCRC != 0xEA69C1BD) {
+	// Like /activateClone, /consent, /unconsent, /haveconsent
+	if ((player->isIncapacitated() || player->isDead())
+			&& (actionCRC != 0xEA69C1BD && actionCRC != 0x3F8F3496 && actionCRC != 0xA2DF082A && actionCRC != 0xB93A3853)) {
 		player->clearQueueAction(actioncntr, 0.0f, 1, 19);
 		return;
 	}
@@ -3108,7 +3109,7 @@ void ObjectControllerMessage::parseGiveConsentRequest(Player* player, Message* p
 			return;
 		}
 
-		if (player->giveConsent(playerTarget->getObjectID())) {
+		if (player->giveConsent(playerTarget->getFirstName())) {
 			player->sendSystemMessage("base_player", "prose_consent", playerTarget->getObjectID()); //You give your consent to %TO.
 			playerTarget->sendSystemMessage("base_player", "prose_got_consent", player->getObjectID()); //%TO consents you.
 		} else {
@@ -3117,7 +3118,7 @@ void ObjectControllerMessage::parseGiveConsentRequest(Player* player, Message* p
 
 		return;
 	} else {
-		player->sendSystemMessage("Your target for consent was not found.");
+		player->sendSystemMessage("Your target for consent is either offline or does not exist.");
 	}
 }
 
@@ -3145,22 +3146,14 @@ void ObjectControllerMessage::parseRevokeConsentRequest(Player* player, Message*
 	PlayerManager* playerManager = player->getZone()->getZoneServer()->getPlayerManager();
 	Player* playerTarget = playerManager->getPlayer(consentName);
 
-	if (playerTarget != NULL) {
-		if (playerTarget == player) {
-			player->sendSystemMessage("You tell yourself no, but you don't listen.");
-			return;
-		}
+	if (player->revokeConsent(consentName)) {
+		player->sendSystemMessage("You revoke your consent from " + playerTarget->getFirstNameProper() + ".");
 
-		if (player->revokeConsent(playerTarget->getObjectID())) {
-			player->sendSystemMessage("base_player", "prose_unconsent", playerTarget->getObjectID()); //You revoke your consent from %TO.
-			playerTarget->sendSystemMessage("base_player", "prose_lost_consent", player->getObjectID()); //%TO revokes your consent.
-		} else {
-			player->sendSystemMessage("This person already does not have your consent.");
+		if (playerTarget != NULL) {
+			playerTarget->sendSystemMessage(player->getFirstNameProper() + " revokes your consent.");
 		}
-
-		return;
 	} else {
-		player->sendSystemMessage("Your target for unconsent was not found.");
+		player->sendSystemMessage("Your target for unconsent is offline or does note exist.");
 	}
 }
 
@@ -3176,38 +3169,11 @@ void ObjectControllerMessage::parseHaveConsentRequest(Player* player, Message* p
 		return;
 	}
 
+	/*
 	StringTokenizer tokenizer(name);
 	tokenizer.setDelimeter(" ");
 	tokenizer.getStringToken(consentName);
-
-	PlayerManager* playerManager = player->getZone()->getZoneServer()->getPlayerManager();
-	Player* playerTarget = playerManager->getPlayer(consentName);
-
-	if (playerTarget != NULL) {
-		if (playerTarget == player) {
-			player->sendSystemMessage("You ask yourself for consent to do whatever you want.");
-			return;
-		}
-
-		try {
-			playerTarget->wlock(player);
-
-			if (playerTarget->hasConsent(player->getObjectID())) {
-				player->sendSystemMessage("base_player", "haveconsent_true"); //You have their consent.
-				playerTarget->unlock();
-				return;
-			}
-
-			playerTarget->unlock();
-		} catch (...) {
-			cout << "unreported exception caught in ObjectControllerMessage::parseHaveConsentRequest\n";
-			playerTarget->unlock();
-		}
-	} else {
-		player->sendSystemMessage("Your target for /haveconsent was not found.");
-	}
-
-	player->sendSystemMessage("base_player", "haveconsent_false"); //You do not have their consent.
+	*/
 }
 
 void ObjectControllerMessage::parseHarvestOrganics(Player* player, Message* pack){

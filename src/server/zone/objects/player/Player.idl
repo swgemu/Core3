@@ -182,10 +182,11 @@ interface Player implements CreatureObject {
 	void clearReviveCountdown();
 	void countdownRevive(int counter);
 	
-	boolean hasConsent(unsigned long charID);
-	boolean giveConsent(unsigned long charID);
-	boolean revokeConsent(unsigned long charID);
+	boolean hasConsent(string charID);
+	boolean giveConsent(string name);
+	boolean revokeConsent(string name);
 	int getConsentSize();
+	string getConsentEntry(int index);
 	
 	void sendConsentBox();
 	

@@ -177,13 +177,15 @@ public:
 
 	void countdownRevive(int counter);
 
-	bool hasConsent(unsigned long long charID);
+	bool hasConsent(string& charID);
 
-	bool giveConsent(unsigned long long charID);
+	bool giveConsent(string& name);
 
-	bool revokeConsent(unsigned long long charID);
+	bool revokeConsent(string& name);
 
 	int getConsentSize();
+
+	string& getConsentEntry(int index);
 
 	void sendConsentBox();
 
@@ -611,6 +613,7 @@ protected:
 	virtual ~Player();
 
 	string _return_getCertification;
+	string _return_getConsentEntry;
 	string _return_getFactionRank;
 	string _return_getFirstName;
 	string _return_getFirstNameProper;
@@ -751,13 +754,15 @@ public:
 
 	void countdownRevive(int counter);
 
-	bool hasConsent(unsigned long long charID);
+	bool hasConsent(string& charID);
 
-	bool giveConsent(unsigned long long charID);
+	bool giveConsent(string& name);
 
-	bool revokeConsent(unsigned long long charID);
+	bool revokeConsent(string& name);
 
 	int getConsentSize();
+
+	string& getConsentEntry(int index);
 
 	void sendConsentBox();
 
@@ -1182,6 +1187,9 @@ public:
 protected:
 	string _param0_queueFlourish__string_long_int_;
 	string _param4_queueAction__Player_long_int_int_string_;
+	string _param0_hasConsent__string_;
+	string _param0_giveConsent__string_;
+	string _param0_revokeConsent__string_;
 	string _param0_trainSkillBox__string_bool_;
 	string _param0_surrenderSkillBox__string_;
 	string _param0_hasSkillBox__string_;

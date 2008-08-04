@@ -1949,8 +1949,16 @@ void PlayerImplementation::doDigest() {
 }
 
 void PlayerImplementation::activateClone() {
-	if (hasSuiBoxType(0xC103)) //Does player already have an Activate Clone Box up? If so, we don't want to send another until it is closed.
-		return;
+	if (hasSuiBoxType(0xC103)) {
+		int boxID = getSuiBoxFromType(0xC103);
+		SuiListBox* sui = (SuiListBox*) getSuiBox(boxID);
+
+		if (sui != NULL) {
+			sendMessage(sui->generateCloseMessage());
+			removeSuiBox(boxID);
+			sui->finalize();
+		}
+	}
 
 	SuiListBox* cloneMenu = new SuiListBox(_this, 0xC103);
 
@@ -2110,16 +2118,9 @@ void PlayerImplementation::sendConsentBox() {
 	consentBox->setPromptText("Below is listed all players whom you have given consent.");
 
 	for (int i=0; i < consentList.size(); i++) {
-		SceneObject* object = getZone()->lookupObject(consentList.get(i));
-
-		if (object->isPlayer()) {
-			Player* player = (Player*) object;
-			unicode unicodeName = unicode("");
-			unicodeName = player->getCharacterName();
-			string name = unicodeName.c_str();
-
-			consentBox->addMenuItem(name, player->getObjectID());
-		}
+		string entryName = consentList.get(i);
+		if (!entryName.empty())
+			consentBox->addMenuItem(entryName);
 	}
 
 	addSuiBox(consentBox);

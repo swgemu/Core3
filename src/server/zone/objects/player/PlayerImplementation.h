@@ -231,7 +231,7 @@ class PlayerImplementation : public PlayerServant {
 	Time reviveTimeout;
 	ReviveCountdownEvent* reviveCountdownEvent;
 
-	Vector<uint64> consentList;
+	Vector<string> consentList;
 
 public:
 	static const int ONLINE = 1;
@@ -524,32 +524,41 @@ public:
 
 	void sendConsentBox();
 
-	inline bool hasConsent(uint64 playerID) {
+	inline bool hasConsent(string name) {
+		String::toLower(name);
+
 		for (int i=0; i<consentList.size(); i++) {
-			if (consentList.get(i) == playerID)
+			if (consentList.get(i) == name)
 				return true;
 		}
+
 		return false;
 	}
 
-	inline int getConsentIndex(uint64 playerID) {
+	inline int getConsentIndex(string name) {
+		String::toLower(name);
+
 		for (int i=0; i<consentList.size(); i++) {
-			if (consentList.get(i) == playerID)
+			if (consentList.get(i) == name)
 				return i;
 		}
 		return -1;
 	}
 
-	inline bool giveConsent(uint64 playerID) {
-		if (!hasConsent(playerID)) {
-			consentList.add(playerID);
+	inline bool giveConsent(string name) {
+		String::toLower(name);
+
+		if (!hasConsent(name)) {
+			consentList.add(name);
 			return true;
 		}
 		return false;
 	}
 
-	inline bool revokeConsent(uint64 playerID) {
-		int index = getConsentIndex(playerID);
+	inline bool revokeConsent(string name) {
+		String::toLower(name);
+		int index = getConsentIndex(name);
+
 		if (index >= 0) {
 			consentList.remove(index);
 			return true;
@@ -559,6 +568,10 @@ public:
 
 	inline int getConsentSize() {
 		return consentList.size();
+	}
+
+	inline string& getConsentEntry(int index) {
+		return consentList.get(index);
 	}
 
 	//mission methods
