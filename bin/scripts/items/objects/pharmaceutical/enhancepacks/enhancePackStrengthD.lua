@@ -56,7 +56,7 @@ enhancePackStrengthD = Object:new {
 	
 	medicineUse = 93,
 	
-	effectiveness = 880,
+	effectiveness = 940,
 	
 	duration = 9900,
 	
