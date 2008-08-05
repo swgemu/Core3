@@ -1661,6 +1661,9 @@ void ObjectControllerMessage::parseSetCurrentSkillTitle(Player* player,
 	unicode title;
 	pack->parseUnicode(title);
 	string newTitle = title.c_str();
+	
+	if (!player->hasSkillBox(newTitle))
+		return;
 
 	PlayerObject* object = player->getPlayerObject();
 	object->setCurrentTitle(newTitle, true);

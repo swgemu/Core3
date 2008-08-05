@@ -941,6 +941,17 @@ void ItemManagerImplementation::unloadPlayerItems(Player* player) {
 		} else if (item->isUpdated()) {
 			savePlayerItem(player, item);
 		}
+		
+		try {
+			stringstream query;
+			query << "UPDATE `characters` set itemShift = " << player->getItemShift() << " ";
+			query << "WHERE character_id = " << player->getCharacterID() << ";";
+
+			ServerDatabase::instance()->executeStatement(query);
+		} catch (DatabaseException& e) {
+			cout << e.getMessage() << "\n";
+		}
+		
 	}
 }
 
