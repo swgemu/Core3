@@ -562,7 +562,7 @@ void GameCommandHandler::banUser(StringTokenizer tokenizer, Player* player) {
 
 		player->sendSystemMessage("Standard IP ban Usage: @banUser <name>");
 		player->sendSystemMessage("Forum Integration Usage: @banUser <name> <ban time in minutes> <reason>");
-		player->sendSystemMessage("Bantime:  0 = Permanent; 1440 = 1 Day;  10080 = 1 Week");
+		player->sendSystemMessage("Bantime:  Permanent = 0; 1 Day = 24;  1 Week = 168");
 		return;
 	}
 
