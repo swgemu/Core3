@@ -4450,8 +4450,10 @@ CreatureObject* CreatureObjectImplementation::getLootOwner() {
 void CreatureObjectImplementation::addDamage(CreatureObject* creature, uint32 damage) {
 	if (damageMap.contains(creature))
 		damageMap.get(creature) += damage;
-	else
+	else {
+		creature->acquire();
 		damageMap.put(creature, damage);
+	}
 
 }
 

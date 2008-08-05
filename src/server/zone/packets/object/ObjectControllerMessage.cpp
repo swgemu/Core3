@@ -1929,6 +1929,9 @@ void ObjectControllerMessage::parseWaypointCommand(Player* player, Message* pack
 
 	StringTokenizer tokenizer(waypointData);
 	tokenizer.setDelimeter(" ");
+	
+	if (!tokenizer.hasMoreTokens())
+		return;
 
 	string arg1;
 	tokenizer.getStringToken(arg1);

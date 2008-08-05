@@ -487,7 +487,7 @@ void PlayerManagerImplementation::loadWaypoints(Player* player) {
 
 
 void PlayerManagerImplementation::updateOtherFriendlists(Player* player, bool status) {
-	string loggingInName = player->getFirstName();
+	/*string loggingInName = player->getFirstName();
 	String::toLower(loggingInName);
 
 	try {
@@ -538,7 +538,7 @@ void PlayerManagerImplementation::updateOtherFriendlists(Player* player, bool st
 	} catch (...) {
 		playerMap->unlock();
 		cout << "Exception in PlayerManagerImplementation::updateOtherFriendlists iterating foreign frindlists " << endl;
-	}
+	}*/
 }
 
 void PlayerManagerImplementation::unload(Player* player) {

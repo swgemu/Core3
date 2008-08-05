@@ -302,8 +302,12 @@ void ChatManagerImplementation::handleMessage(Player* player, Message* pack) {
 		}
 	} catch (PacketIndexOutOfBoundsException& e) {
 		cout << e.getMessage() << "\n" << pack->toString() << "\n";
+	} catch (Exception& e) {
+		stringstream msg;
+		msg << "Exception in ChatManagerImplementation::handleMessage " << e.getMessage() << "\n";
+		cout << msg.str();
 	} catch (...) {
-		cout << "exception while parsing chat\n";
+		cout << "unreported exception caught in ChatManagerImplementation::handleMessage\n";
 	}
 
 }

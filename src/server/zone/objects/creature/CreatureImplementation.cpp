@@ -1182,7 +1182,14 @@ void CreatureImplementation::resetState() {
 	actionWounds = 0;
 	mindWounds = 0;
 
-	damageMap.removeAll();
+	//damageMap.removeAll(); // TODO:uncomment and remove below code when VectorMap can use ManagedReference
+	while (damageMap.size() > 0) {
+		CreatureObject* object = damageMap.elementAt(0)->getKey();		
+		damageMap.drop(object);
+		
+		object->release();
+	}
+	
 	defenderList.removeAll();
 
 	clearStates();
