@@ -170,6 +170,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/ServerCore.cpp \
 		server/conf/ConfigManager.cpp \
 		server/db/ServerDatabase.cpp \
+                server/db/ForumsDatabase.cpp \
 		server/login/LoginServer.cpp \
 		server/login/LoginPacketHandler.cpp \
 		server/login/LoginMessageProcessorThread.cpp \

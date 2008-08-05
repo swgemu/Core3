@@ -42,53 +42,48 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef LOGINPACKETHANDLER_H_
-#define LOGINPACKETHANDLER_H_
+#ifndef FORUMSDATABASE_H_
+#define FORUMSDATABASE_H_
 
 #include "engine/engine.h"
 
-#include "LoginClient.h"
-
 #include "../conf/ConfigManager.h"
 
-class LoginServer;
-
-class LoginPacketHandler : public Logger {
-	LoginServer* server;
-	ConfigManager* configManager;
-
+class ForumsDatabase {
+	static Database* impl;
+	static string forumbannedGroup;
+	static string forumStandardGroup;
 
 public:
+	ForumsDatabase(ConfigManager* configManager) {
+		string& forumdbHost = configManager->getForumsDBHost();
+        string& forumdbUser = configManager->getForumsDBUser();
+        string& forumdbPass = configManager->getForumsDBPass();
+        string& forumdbName = configManager->getForumsDBName();
+        uint16& forumdbPort = configManager->getForumsDBPort();
+        forumbannedGroup = configManager->getBannedGroup();
+        forumStandardGroup = configManager->getStandardGroup();
 
-	static const int ACCOUNTOK = 0;
-	static const int ACCOUNTINUSE = 1;
-	static const int ACCOUNTBADPW = 2;
-	static const int ACCOUNTBANNED = 3;
-	static const int ACCOUNTAUTOREGDISABLED = 4;
-	static const int ACCOUNTDOESNTEXIST = 5;
-
-public:
-
-	LoginPacketHandler() : Logger() {
-		server = NULL;
+        impl = new MySqlDatabase(string("ForumsDatabase"), forumdbHost);
+        impl->connect(forumdbName, forumdbUser, forumdbPass, forumdbPort);
 	}
 
-	~LoginPacketHandler() {
+	~ForumsDatabase() {
+		delete impl;
 	}
 
-	LoginPacketHandler(string s, LoginServer* server, ConfigManager* configMan) : Logger(s) {
-		LoginPacketHandler::server = server;
-		LoginPacketHandler::configManager = configMan;
+	inline static Database* instance() {
+		return impl;
 	}
 
-	void handleMessage(Message* pack);
+	inline static string bannedGroup() {
+		return forumbannedGroup;
+	}
 
-	void handleClientPermissionsMessage(Message* pack);
-	void handleSelectCharacter(Message* pack);
-	void handleCmdSceneReady(Message* packet);
-	void handleLoginClientID(Message* packet);
-	void handleDeleteCharacterMessage(Message* pack);
+	inline static string standardGroup() {
+		return forumStandardGroup;
+	}
 
 };
 
-#endif /*LOGINPACKETHANDLER_H_*/
+#endif /*FORUMSDATABASE_H_*/

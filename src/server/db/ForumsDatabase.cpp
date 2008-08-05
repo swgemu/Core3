@@ -42,53 +42,8 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef LOGINPACKETHANDLER_H_
-#define LOGINPACKETHANDLER_H_
+#include "ForumsDatabase.h"
 
-#include "engine/engine.h"
-
-#include "LoginClient.h"
-
-#include "../conf/ConfigManager.h"
-
-class LoginServer;
-
-class LoginPacketHandler : public Logger {
-	LoginServer* server;
-	ConfigManager* configManager;
-
-
-public:
-
-	static const int ACCOUNTOK = 0;
-	static const int ACCOUNTINUSE = 1;
-	static const int ACCOUNTBADPW = 2;
-	static const int ACCOUNTBANNED = 3;
-	static const int ACCOUNTAUTOREGDISABLED = 4;
-	static const int ACCOUNTDOESNTEXIST = 5;
-
-public:
-
-	LoginPacketHandler() : Logger() {
-		server = NULL;
-	}
-
-	~LoginPacketHandler() {
-	}
-
-	LoginPacketHandler(string s, LoginServer* server, ConfigManager* configMan) : Logger(s) {
-		LoginPacketHandler::server = server;
-		LoginPacketHandler::configManager = configMan;
-	}
-
-	void handleMessage(Message* pack);
-
-	void handleClientPermissionsMessage(Message* pack);
-	void handleSelectCharacter(Message* pack);
-	void handleCmdSceneReady(Message* packet);
-	void handleLoginClientID(Message* packet);
-	void handleDeleteCharacterMessage(Message* pack);
-
-};
-
-#endif /*LOGINPACKETHANDLER_H_*/
+Database* ForumsDatabase::impl = NULL;
+string ForumsDatabase::forumbannedGroup = "0";
+string ForumsDatabase::forumStandardGroup = "0";

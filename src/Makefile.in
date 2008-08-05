@@ -143,7 +143,8 @@ am__objects_1 = Zone.$(OBJEXT) ZoneClient.$(OBJEXT) \
 	GameCommandHandler.$(OBJEXT)
 am_core3_OBJECTS = $(am__objects_1) ServerCore.$(OBJEXT) \
 	ConfigManager.$(OBJEXT) ServerDatabase.$(OBJEXT) \
-	LoginServer.$(OBJEXT) LoginPacketHandler.$(OBJEXT) \
+	ForumsDatabase.$(OBJEXT) LoginServer.$(OBJEXT) \
+	LoginPacketHandler.$(OBJEXT) \
 	LoginMessageProcessorThread.$(OBJEXT) \
 	ZoneImplementation.$(OBJEXT) \
 	ZoneClientImplementation.$(OBJEXT) \
@@ -453,6 +454,7 @@ core3_SOURCES = $(core3_IDLS) \
 		server/ServerCore.cpp \
 		server/conf/ConfigManager.cpp \
 		server/db/ServerDatabase.cpp \
+                server/db/ForumsDatabase.cpp \
 		server/login/LoginServer.cpp \
 		server/login/LoginPacketHandler.cpp \
 		server/login/LoginMessageProcessorThread.cpp \
@@ -669,6 +671,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/FactoryCrateImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Firework.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/FireworkWorld.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ForumsDatabase.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/FriendsList.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/GameCommandHandler.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/GroupManager.Po@am__quote@
@@ -2416,6 +2419,20 @@ ServerDatabase.obj: server/db/ServerDatabase.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/db/ServerDatabase.cpp' object='ServerDatabase.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ServerDatabase.obj `if test -f 'server/db/ServerDatabase.cpp'; then $(CYGPATH_W) 'server/db/ServerDatabase.cpp'; else $(CYGPATH_W) '$(srcdir)/server/db/ServerDatabase.cpp'; fi`
+
+ForumsDatabase.o: server/db/ForumsDatabase.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ForumsDatabase.o -MD -MP -MF $(DEPDIR)/ForumsDatabase.Tpo -c -o ForumsDatabase.o `test -f 'server/db/ForumsDatabase.cpp' || echo '$(srcdir)/'`server/db/ForumsDatabase.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/ForumsDatabase.Tpo $(DEPDIR)/ForumsDatabase.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/db/ForumsDatabase.cpp' object='ForumsDatabase.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ForumsDatabase.o `test -f 'server/db/ForumsDatabase.cpp' || echo '$(srcdir)/'`server/db/ForumsDatabase.cpp
+
+ForumsDatabase.obj: server/db/ForumsDatabase.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ForumsDatabase.obj -MD -MP -MF $(DEPDIR)/ForumsDatabase.Tpo -c -o ForumsDatabase.obj `if test -f 'server/db/ForumsDatabase.cpp'; then $(CYGPATH_W) 'server/db/ForumsDatabase.cpp'; else $(CYGPATH_W) '$(srcdir)/server/db/ForumsDatabase.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/ForumsDatabase.Tpo $(DEPDIR)/ForumsDatabase.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/db/ForumsDatabase.cpp' object='ForumsDatabase.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ForumsDatabase.obj `if test -f 'server/db/ForumsDatabase.cpp'; then $(CYGPATH_W) 'server/db/ForumsDatabase.cpp'; else $(CYGPATH_W) '$(srcdir)/server/db/ForumsDatabase.cpp'; fi`
 
 LoginServer.o: server/login/LoginServer.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT LoginServer.o -MD -MP -MF $(DEPDIR)/LoginServer.Tpo -c -o LoginServer.o `test -f 'server/login/LoginServer.cpp' || echo '$(srcdir)/'`server/login/LoginServer.cpp

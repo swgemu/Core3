@@ -53,7 +53,7 @@ which carries forward this exception.
 #include "../zone/packets.h"
 #include "../zone/objects.h"
 
-#include "ChatManager.h" 
+#include "ChatManager.h"
 
 GMCommandMap * GameCommandHandler::gmCommands = NULL;
 
@@ -80,10 +80,10 @@ void GameCommandHandler::init() {
 			"Warps you to a given set of coordinates.",
 			"Usage: @warp <x> <y>",
 			&warp);
-	gmCommands->addCommand("warpToWP", PRIVILEGED | QA, 
+	gmCommands->addCommand("warpToWP", PRIVILEGED | QA,
 			"Warps you to the waypoint of the given name (casesensitive).",
 			"Usage: @warpToWP <waypointName>",
-			&warpToWP);			
+			&warpToWP);
 	gmCommands->addCommand("warpTo", PRIVILEGED | QA,
 			"Warps you to a player\'s location ",
 			"Usage @warpTo <player>",
@@ -219,12 +219,12 @@ void GameCommandHandler::init() {
 	gmCommands->addCommand("getLocation", PRIVILEGED,
 			"Gives full detailsofyour location.",
 			"Usage: @getLocation",
-			&getLocation);	
-	/* Uncomment for use on DEV servers 
+			&getLocation);
+	/* Uncomment for use on DEV servers
 	gmCommands->addCommand("getCords", DEVELOPER,
 			"Command to aid the cave devs placing of creatures, SpawnCreature command is written pre-formatted to a file.",
 			"Usage: @getCords <nameOfCreatureFile>",
-			&getCords); */ 
+			&getCords); */
 	gmCommands->addCommand("giveItemTemp", DEVELOPER,
 			"Adds a requested item to your inventory.",
 			"Usage: @giveItemTemp <Item Type> [item sub-type]",
@@ -372,7 +372,7 @@ void GameCommandHandler::warpToWP(StringTokenizer tokenizer, Player * player) {
 	int i = 0;
 	float x,y;
 	string wpName;
-	
+
 	//PlayerObjectImplementation* playOI = (PlayerObjectImplementation*)player->getPlayerObject();
 
 	if (tokenizer.hasMoreTokens()) {
@@ -381,7 +381,7 @@ void GameCommandHandler::warpToWP(StringTokenizer tokenizer, Player * player) {
 		player->sendSystemMessage("Usage: @warpToWP <NameOfWaypoint>\n");
 		return;
 	}
-	
+
 	WaypointObject* waypoint = player->searchWaypoint(player, wpName,2);
 
 	if (waypoint != NULL) {
@@ -391,7 +391,7 @@ void GameCommandHandler::warpToWP(StringTokenizer tokenizer, Player * player) {
 		player->sendSystemMessage("Waypoint not found ?! Make sure the spelling is correct.\n");
 		return;
 	}
-	
+
 	player->doWarp(x, y);
 }
 
@@ -472,7 +472,7 @@ void GameCommandHandler::kick(StringTokenizer tokenizer, Player * player) {
 			return;
 		}
 	}
-	
+
 	player->unlock();
 
 	if (name != player->getFirstName()) {
@@ -484,7 +484,7 @@ void GameCommandHandler::kick(StringTokenizer tokenizer, Player * player) {
 
 	} else
 		player->sendSystemMessage("You can't kick yourself. Use /logout please. \n");
-		
+
 	player->wlock();
 }
 
@@ -501,7 +501,7 @@ void GameCommandHandler::kickArea(StringTokenizer tokenizer, Player * player) {
 
 	if (zone == NULL)
 		return;
-		
+
 	player->unlock();
 
 	try {
@@ -532,7 +532,7 @@ void GameCommandHandler::kickArea(StringTokenizer tokenizer, Player * player) {
 	} catch (...) {
 		zone->unlock();
 	}
-	
+
 	player->wlock();
 }
 
@@ -545,38 +545,185 @@ void GameCommandHandler::printRoomTree(StringTokenizer tokenizer, Player * playe
 	}
 }
 
-void GameCommandHandler::banUser(StringTokenizer tokenizer, Player * player) {
+void GameCommandHandler::banUser(StringTokenizer tokenizer, Player* player) {
 	ZoneServer * server = player->getZone()->getZoneServer();
 	ChatManager * chatManager = player->getZone()->getChatManager();
 
 	string name;
+	stringstream banMessage;
+	int banTime;
 	Player* targetPlayer;
 
 	if (tokenizer.hasMoreTokens()) {
+
 		tokenizer.getStringToken(name);
 
-		targetPlayer = chatManager->getPlayer(name);
-
-		if (targetPlayer == NULL)
-			return;
 	} else {
-		SceneObject* obj = player->getTarget();
-		if (obj != NULL && obj->isPlayer()) {
-			targetPlayer = (Player*) obj;
-			name = targetPlayer->getFirstName();
-		} else {
+
+		player->sendSystemMessage("Standard IP ban Usage: @banUser <name>");
+		player->sendSystemMessage("Forum Integration Usage: @banUser <name> <ban time in minutes> <reason>");
+		player->sendSystemMessage("Bantime:  0 = Permanent; 1440 = 1 Day;  10080 = 1 Week");
+		return;
+	}
+
+	if (tokenizer.hasMoreTokens()) {
+		banTime = tokenizer.getIntToken();
+
+		banTime *= 60;
+
+		if(banTime != 0)
+			banTime += time(0);
+
+		string tempString;
+
+		while (tokenizer.hasMoreTokens()) {
+			tokenizer.getStringToken(tempString);
+
+			banMessage << tempString << " ";
+
+		}
+
+		if (banMessage.str() == "") {
+			player->sendSystemMessage("Invalid ban format, please specify reason");
+			return;
+		}
+
+	} else {
+
+		if(ForumsDatabase::instance() != NULL){
+			player->sendSystemMessage("Invalid ban format, please specify duration and reason");
 			return;
 		}
 	}
-	
+
 	player->unlock();
 
-	if (server->banUser(name, player->getFirstName())) {
-		player->sendSystemMessage("player \'" + name + "\' is banned");
+	if (ForumsDatabase::instance() != NULL) {
+
+		try {
+			stringstream query, query2, query3, query4, query5;
+
+			query   << "SELECT account.account_id, account.username FROM account "
+					<< "INNER JOIN characters ON "
+					<< "characters.account_id = account.account_id WHERE characters.firstname = '"
+					<< name << "'";
+
+			query2  << "SELECT account.account_id, account.username FROM account "
+					<< "INNER JOIN characters ON "
+					<< "characters.account_id = account.account_id WHERE characters.firstname = '"
+					<< player->getFirstName() << "'";
+
+			ResultSet* res = ServerDatabase::instance()->executeQuery(query);
+
+			int offendersAccountId = -1, adminsAccountId = -1;
+			string offendersAccountName = "", adminsAccountName = "";
+
+			if (res->next()) {
+				offendersAccountId = res->getInt(0);
+				offendersAccountName = res->getString(1);
+			}
+
+			res = ServerDatabase::instance()->executeQuery(query2);
+
+			if (res->next()) {
+				adminsAccountId = res->getInt(0);
+				adminsAccountName = res->getString(1);
+			}
+
+			if (offendersAccountId == -1 || adminsAccountId == -1
+					|| offendersAccountName == "" || adminsAccountName == "") {
+				player->sendSystemMessage("Error getting account info");
+				player->wlock();
+				return;
+			}
+
+			if (offendersAccountName == adminsAccountName) {
+				player->sendSystemMessage("You can't ban yourself.  Idiot");
+				player->wlock();
+				return;
+			}
+
+			stringstream getAdminID;
+			getAdminID  << "SELECT `userid` FROM vb3_user WHERE username = '" << adminsAccountName << "'";
+
+			res = ForumsDatabase::instance()->executeQuery(getAdminID);
+
+			if (res->next()) {
+
+				adminsAccountId = res->getInt(0);
+
+			}
+
+			query3  << "SELECT `userid`, `usergroupid`, `displaygroupid`, `usertitle`,`customtitle` "
+					<< " FROM vb3_user WHERE username = '"
+					<< offendersAccountName << "'";
+
+
+
+			res = ForumsDatabase::instance()->executeQuery(query3);
+
+			if (res->next()) {
+
+				string userid = res->getString(0);
+				string usergroupid = res->getString(1);
+
+				if(usergroupid != ForumsDatabase::standardGroup()){
+					player->sendSystemMessage("You can only ban standard users with this command");
+					player->wlock();
+					return;
+				}
+
+				string displaygroupid = res->getString(2);
+				string usertitle = res->getString(3);
+				string customtitle = res->getString(4);
+
+				MySqlDatabase::escapeString(usertitle);
+				MySqlDatabase::escapeString(customtitle);
+
+
+				// Update Ban on USer
+				query4 << "UPDATE vb3_user SET `usergroupid` = '"
+						<< ForumsDatabase::bannedGroup()
+						<< "' WHERE username = '" << offendersAccountName
+						<< "'";
+
+				ForumsDatabase::instance()->executeStatement(query4);
+
+				// Update Banned user table
+				query5 << "INSERT INTO `vb3_userban` VALUES ('" << userid
+						<< "', '" << usergroupid << "', '" << displaygroupid
+						<< "', '" << usertitle << "', '" << customtitle
+						<< "', '" << adminsAccountId << "', '" << time(0) << "', '"
+						<< banTime << "', '" << banMessage.str() << "')";
+
+				ForumsDatabase::instance()->executeStatement(query5);
+
+
+			} else {
+
+				player->sendSystemMessage("Failed to retrieve forum info");
+
+			}
+
+			player->sendSystemMessage("player \'" + name
+					+ "\' is banned (Forum Account)");
+
+			server->kickUser(name, player->getFirstNameProper());
+
+		} catch (...) {
+
+			player->sendSystemMessage("unable to ban player \'" + name
+					+ "\'  (Forum Account)");
+
+		}
+	} else if (server->banUser(name, player->getFirstName())) {
+
+		player->sendSystemMessage("player \'" + name + "\' is banned (IP)");
+
 	} else {
-		player->sendSystemMessage("unable to ban player \'" + name + "\'");
+		player->sendSystemMessage("unable to ban player \'" + name + "\' (IP)");
 	}
-	
+
 	player->wlock();
 }
 
@@ -648,7 +795,7 @@ void GameCommandHandler::kill(StringTokenizer tokenizer, Player * player) {
 	try {
 		if (targetPlayer != player)
 			targetPlayer->wlock(player);
-		
+
 		targetPlayer->explode(2);
 		targetPlayer->kill();
 
@@ -692,7 +839,7 @@ void GameCommandHandler::killArea(StringTokenizer tokenizer, Player * player) {
 					try {
 						if (otherPlayer != player)
 							otherPlayer->wlock(player);
-						
+
 						otherPlayer->explode(2);
 						otherPlayer->kill();
 
@@ -1429,7 +1576,7 @@ void GameCommandHandler::giveItemTemp(StringTokenizer tokenizer, Player * player
 void GameCommandHandler::clientEffect(StringTokenizer tokenizer, Player * player) {
 	if(!tokenizer.hasMoreTokens())
 		return;
-	
+
 	string effect;
 	tokenizer.getStringToken(effect);
 
