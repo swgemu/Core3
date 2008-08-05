@@ -256,7 +256,6 @@ RunCreatureFile("objects/dantooine/npcs/kungaWarrior.lua")
 -- Naboo
 
 RunCreatureFile("objects/npcs/naboostormTrooper.lua")
-RunCreatureFile("objects/endor/creatures/goraxguard.lua")
 RunCreatureFile("objects/endor/creatures/gorax.lua")
 RunCreatureFile("objects/naboo/creatures/capperSpineflap.lua")
 RunCreatureFile("objects/naboo/creatures/diseasedNuna.lua")

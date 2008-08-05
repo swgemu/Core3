@@ -151,6 +151,3 @@ spawnCreatures(shaupaut, 5, -5060.8, 3806.97, 40, 5)
 
 -- Epic Starport Dude
 spawnCreatureInCell(gorax, 5, -0.012525, 7.9418, 54.5436, 1692104)
-spawnCreatureInCell(goraxguard, 5, 15.9138, 7.9418, 28.0741, 1692104)
-spawnCreatureInCell(goraxguard, 5, -16.0266, 7.9418, 27.4413, 1692104)
-

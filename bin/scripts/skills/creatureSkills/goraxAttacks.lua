@@ -51,7 +51,7 @@ goraxAttack1 = {
 
 	speedRatio = 1,
 
-	areaRange = 35,
+	areaRange = 0,
 	accuracyBonus = 500,
 		
 	knockdownChance = 0,
@@ -85,7 +85,7 @@ goraxAttack2 = {
 
 	speedRatio = 1,
 
-	areaRange = 35,
+	areaRange = 0,
 	accuracyBonus = 500,
 		
 	knockdownChance = 90,
@@ -119,7 +119,7 @@ goraxAttack3 = {
 
 	speedRatio = 1.5,
 
-	areaRange = 25,
+	areaRange = 0,
 	accuracyBonus = 500,
 		
 	knockdownChance = 0,
@@ -153,7 +153,7 @@ goraxAttack4 = {
 
 	speedRatio = 1.5,
 
-	areaRange = 25,
+	areaRange = 0,
 	accuracyBonus = 500,
 		
 	knockdownChance = 90,
