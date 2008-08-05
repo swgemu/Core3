@@ -47,7 +47,7 @@ naboostormtrooper = Creature:new {
       gender = "",
 
       name = "Stormtrooper",
-      objectCRC = 628727249, 
+      objectCRC = 3128894413, 
       socialGroup = "Imperial",
       named = FALSE, 
 
