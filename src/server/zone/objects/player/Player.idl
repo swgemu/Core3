@@ -236,6 +236,7 @@ interface Player implements CreatureObject {
 	void decayInventory();
 	
 	void addInventoryItem(TangibleObject item);
+	void addInventoryResource(ResourceContainer item);
 	void equipPlayerItem(TangibleObject item);
 	
 	// Profession

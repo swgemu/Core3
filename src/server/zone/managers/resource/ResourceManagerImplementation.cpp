@@ -459,7 +459,7 @@ void ResourceManagerImplementation::sendSampleMessage(Player* player,
 					}
 				}
 
-				player->addInventoryItem(newRcno);
+				player->addInventoryResource(newRcno);
 
 
 			} else {
@@ -588,7 +588,7 @@ void ResourceManagerImplementation::harvestOrganics(Player* player,
 
 			player->sendSystemMessage(ss.str());
 
-			player->addInventoryItem(newRcno);
+			player->addInventoryResource(newRcno);
 
 			creature->removePlayerFromHarvestList(player->getFirstName());
 

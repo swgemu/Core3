@@ -403,7 +403,7 @@ public:
 
 	void addInventoryItem(TangibleObject* item);
 
-	void addInventoryResource(Player* player, ResourceContainer* rcno);
+	void addInventoryResource(ResourceContainer* rcno);
 
 	void addLootItem(TangibleObject* item);
 
@@ -1407,7 +1407,7 @@ public:
 
 	void addInventoryItem(TangibleObject* item);
 
-	void addInventoryResource(Player* player, ResourceContainer* rcno);
+	void addInventoryResource(ResourceContainer* rcno);
 
 	void addLootItem(TangibleObject* item);
 

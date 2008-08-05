@@ -2372,18 +2372,17 @@ void CreatureObject::addInventoryItem(TangibleObject* item) {
 		((CreatureObjectImplementation*) _impl)->addInventoryItem(item);
 }
 
-void CreatureObject::addInventoryResource(Player* player, ResourceContainer* rcno) {
+void CreatureObject::addInventoryResource(ResourceContainer* rcno) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 183);
-		method.addObjectParameter(player);
 		method.addObjectParameter(rcno);
 
 		method.executeWithVoidReturn();
 	} else
-		((CreatureObjectImplementation*) _impl)->addInventoryResource(player, rcno);
+		((CreatureObjectImplementation*) _impl)->addInventoryResource(rcno);
 }
 
 void CreatureObject::addLootItem(TangibleObject* item) {
@@ -6787,7 +6786,7 @@ Packet* CreatureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		addInventoryItem((TangibleObject*) inv->getObjectParameter());
 		break;
 	case 183:
-		addInventoryResource((Player*) inv->getObjectParameter(), (ResourceContainer*) inv->getObjectParameter());
+		addInventoryResource((ResourceContainer*) inv->getObjectParameter());
 		break;
 	case 184:
 		addLootItem((TangibleObject*) inv->getObjectParameter());
@@ -8416,8 +8415,8 @@ void CreatureObjectAdapter::addInventoryItem(TangibleObject* item) {
 	return ((CreatureObjectImplementation*) impl)->addInventoryItem(item);
 }
 
-void CreatureObjectAdapter::addInventoryResource(Player* player, ResourceContainer* rcno) {
-	return ((CreatureObjectImplementation*) impl)->addInventoryResource(player, rcno);
+void CreatureObjectAdapter::addInventoryResource(ResourceContainer* rcno) {
+	return ((CreatureObjectImplementation*) impl)->addInventoryResource(rcno);
 }
 
 void CreatureObjectAdapter::addLootItem(TangibleObject* item) {

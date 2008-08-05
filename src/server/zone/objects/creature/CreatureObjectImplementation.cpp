@@ -1131,7 +1131,7 @@ bool CreatureObjectImplementation::changeHAMWounds(int32 hpwnds, int32 apwnds, i
 			newActionWounds = actionMax - 1;
 			newMindWounds = mindMax - 1;
 		}
-		
+
 	}
 
 	setHAMWoundsBars(MIN(newHealthWounds, baseHealth), MIN(newActionWounds, baseAction), MIN(newMindWounds, baseMind));
@@ -2478,12 +2478,15 @@ void CreatureObjectImplementation::addInventoryItem(TangibleObject* item) {
 		inventory->addObject(item);
 }
 
-void CreatureObjectImplementation::addInventoryResource(Player* player,
-		ResourceContainer* rcno) {
+void CreatureObjectImplementation::addInventoryResource(ResourceContainer* rcno) {
 
 	bool makeNewResource = true;
 
 	ResourceContainer* inventoryResource;
+
+	Player* player = (Player*)_this;
+	if(player == NULL)
+		return;
 
 	for (int i = 0; i < inventory->objectsSize(); i++) {
 		TangibleObject* item = (TangibleObject*) inventory->getObject(i);
@@ -2549,7 +2552,7 @@ void CreatureObjectImplementation::addInventoryResource(Player* player,
 
 		rcno->sendTo(player);
 
-		rcno->setPersistent(true);
+		rcno->setPersistent(false);
 
 	}
 }

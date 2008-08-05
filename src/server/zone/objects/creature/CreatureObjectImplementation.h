@@ -843,7 +843,7 @@ public:
 	void unequipItem(TangibleObject* item);
 
 	void addInventoryItem(TangibleObject* item);
-	void addInventoryResource(Player* player, ResourceContainer* rcno);
+	void addInventoryResource(ResourceContainer* rcno);
 
 	SceneObject* getInventoryItem(uint64 oid);
 

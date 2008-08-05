@@ -243,6 +243,8 @@ public:
 
 	void addInventoryItem(TangibleObject* item);
 
+	void addInventoryResource(ResourceContainer* item);
+
 	void equipPlayerItem(TangibleObject* item);
 
 	void saveProfessions();
@@ -819,6 +821,8 @@ public:
 	void decayInventory();
 
 	void addInventoryItem(TangibleObject* item);
+
+	void addInventoryResource(ResourceContainer* item);
 
 	void equipPlayerItem(TangibleObject* item);
 
