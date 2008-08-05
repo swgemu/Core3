@@ -41,6 +41,8 @@ public:
 
 	void unload(Player* player);
 
+	void save(Player* player);
+
 	void handleAbortTradeMessage(Player* player);
 
 	void handleAddItemMessage(Player* player, unsigned long long itemID);
@@ -112,6 +114,8 @@ public:
 	Player* load(unsigned long long charid);
 
 	void unload(Player* player);
+
+	void save(Player* player);
 
 	void handleAbortTradeMessage(Player* player);
 

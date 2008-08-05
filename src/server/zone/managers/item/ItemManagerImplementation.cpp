@@ -371,7 +371,7 @@ TangibleObject* ItemManagerImplementation::createPlayerObject(Player* player, Re
 	item->setPersistent(true);
 
 	if (player != NULL)
-		player->addInventoryItem(item);
+		((CreatureObject*)player)->addInventoryItem(item);
 
 	return item;
 }

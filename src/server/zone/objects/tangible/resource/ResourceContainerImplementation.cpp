@@ -187,7 +187,7 @@ void ResourceContainerImplementation::splitContainer(Player* player, int newQuan
 		ResourceManager* resourceManager = player->getZone()->getZoneServer()->getResourceManager();
 		resourceManager->setResourceData(container);
 
-		player->addInventoryItem(container);
+		((CreatureObject*)player)->addInventoryItem(container);
 
 		container->sendTo(player);
 		container->setPersistent(false);

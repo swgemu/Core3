@@ -581,6 +581,9 @@ void PlayerImplementation::savePlayerState(bool doSchedule) {
 	if (zone != NULL) {
 		ZoneServer* zserver = zone->getZoneServer();
 
+		PlayerManager* playerManager = zserver->getPlayerManager();
+		playerManager->save(_this);
+
 		ItemManager* itemManager = zserver->getItemManager();
 		itemManager->unloadPlayerItems(_this);
 	}

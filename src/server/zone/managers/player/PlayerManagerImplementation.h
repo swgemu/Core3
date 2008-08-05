@@ -91,6 +91,8 @@ public:
 
 	void unload(Player* player);
 
+	void save(Player* player);
+
 	bool validateName(const string& cname);
 
 	BaseMessage* checkPlayerName(const string& name, const string& species);

@@ -542,46 +542,49 @@ void PlayerManagerImplementation::updateOtherFriendlists(Player* player, bool st
 }
 
 void PlayerManagerImplementation::unload(Player* player) {
+	save(player);
+
+	playerMap->remove(player->getFirstName());
+}
+
+void PlayerManagerImplementation::save(Player* player) {
 	string biography = player->getBiography().c_str();
 	MySqlDatabase::escapeString(biography);
 
-
 	stringstream query;
 	query << "UPDATE characters SET x=" << player->getPositionX() << ",y=" << player->getPositionY()
-		  << ",z=" << player->getPositionZ()
-          << ",zoneid=" << player->getZoneIndex()
-          << ",faction_id=" << player->getFaction()
-          << ",biography=\'" << biography << "\'"
-          << ",Title=" << "'" << player->getPlayerObject()->getCurrentTitle() << "'"
-          << ",Guild=" << "'" << player->getGuildID() << "'"
-          << ",credits_inv=" << "'" << player->getCashCredits() << "'"
-          << ",credits_bank=" << "'" << player->getBankCredits() << "'"
-          << ",parentid=" << "'" << player->getParentID() << "'"
-          << ",itemShift=" << player->getItemShift()
-          << ",HealthWounds=" << player->getHealthWounds()
-          << ",StrengthWounds=" << player->getStrengthWounds()
-          << ",ConstitutionWounds=" << player->getConstitutionWounds()
-          << ",ActionWounds=" << player->getActionWounds()
-          << ",QuicknessWounds=" << player->getQuicknessWounds()
-          << ",MindWounds=" << player->getMindWounds()
-          << ",FocusWounds=" << player->getFocusWounds()
-          << ",WillpowerWounds=" << player->getWillpowerWounds()
-          << ",BattleFatigue=" << player->getShockWounds()
-		  << ",AdminLevel=" << player->getAdminLevel()
-		  << ",PvpRating=" << player->getPvpRating()
-          << " WHERE character_id=" << player->getCharacterID() << ";";
-    try {
-    	ServerDatabase::instance()->executeStatement(query);
-    } catch(DatabaseException e) {
-    	cerr << "Failed to unload character: " << player->getFirstName() << "\n";
-    }
+	<< ",z=" << player->getPositionZ()
+	<< ",zoneid=" << player->getZoneIndex()
+	<< ",faction_id=" << player->getFaction()
+	<< ",biography=\'" << biography << "\'"
+	<< ",Title=" << "'" << player->getPlayerObject()->getCurrentTitle() << "'"
+	<< ",Guild=" << "'" << player->getGuildID() << "'"
+	<< ",credits_inv=" << "'" << player->getCashCredits() << "'"
+	<< ",credits_bank=" << "'" << player->getBankCredits() << "'"
+	<< ",parentid=" << "'" << player->getParentID() << "'"
+	<< ",itemShift=" << player->getItemShift()
+	<< ",HealthWounds=" << player->getHealthWounds()
+	<< ",StrengthWounds=" << player->getStrengthWounds()
+	<< ",ConstitutionWounds=" << player->getConstitutionWounds()
+	<< ",ActionWounds=" << player->getActionWounds()
+	<< ",QuicknessWounds=" << player->getQuicknessWounds()
+	<< ",MindWounds=" << player->getMindWounds()
+	<< ",FocusWounds=" << player->getFocusWounds()
+	<< ",WillpowerWounds=" << player->getWillpowerWounds()
+	<< ",BattleFatigue=" << player->getShockWounds()
+	<< ",AdminLevel=" << player->getAdminLevel()
+	<< ",PvpRating=" << player->getPvpRating()
+	<< " WHERE character_id=" << player->getCharacterID() << ";";
+	try {
+		ServerDatabase::instance()->executeStatement(query);
+	} catch(DatabaseException e) {
+		cerr << "Failed to unload character: " << player->getFirstName() << "\n";
+	}
 
 	player->saveProfessions();
 
 	//Update the database with the consentlist info
 	updateConsentList(player);
-
-	playerMap->remove(player->getFirstName());
 }
 
 void PlayerManagerImplementation::handleAbortTradeMessage(Player* player, bool doLock) {
@@ -1084,11 +1087,9 @@ void PlayerManagerImplementation::updateConsentList(Player* player) {
 	if (player == NULL)
 		return;
 
-
-
 	stringstream targets;
 
-	for (int i=0; i<player->getConsentSize(); i++)
+	for (int i = 0; i < player->getConsentSize(); i++)
 		targets << player->getConsentEntry(i) << ";";
 
 	stringstream query;

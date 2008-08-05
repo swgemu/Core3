@@ -71,6 +71,7 @@ interface PlayerManager {
 	Player load(unsigned long charid);
 
 	void unload(Player player);
+	void save(Player player);
 
 	void handleAbortTradeMessage(Player player);
 	void handleAddItemMessage(Player player, unsigned long itemID);
