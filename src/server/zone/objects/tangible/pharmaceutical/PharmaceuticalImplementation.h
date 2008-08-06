@@ -117,7 +117,7 @@ public:
 		setUsesRemaining(getUsesRemaining() - 1);
 
 		if (getUsesRemaining() <= 0) {
-			//_this->sendDestroyTo(player);
+			_this->sendDestroyTo(player);
 
 			Zone* zone = player->getZone();
 
@@ -128,7 +128,7 @@ public:
 				if (zoneServer != NULL && ((itemManager = zoneServer->getItemManager()) != NULL)) {
 					player->removeInventoryItem(objectID);
 
-					itemManager->deletePlayerItem(player, _this, true);
+					itemManager->deletePlayerItem(player, _this, false);
 
 					finalize();
 				}

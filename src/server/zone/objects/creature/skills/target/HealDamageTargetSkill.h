@@ -209,7 +209,7 @@ public:
 		if (creatureTarget->isIncapacitated()) {
 			//Bring incapped players back from incap.
 			if (creatureTarget->getHealth() > 0 && creatureTarget->getAction() > 0 && creatureTarget->getMind() > 0)
-			((Player*)creatureTarget)->changePosture(CreatureObjectImplementation::UPRIGHT_POSTURE);
+				((Player*)creatureTarget)->changePosture(CreatureObjectImplementation::UPRIGHT_POSTURE);
 		}
 
 		creature->changeMindBar(mindCost);
@@ -228,8 +228,8 @@ public:
 	}
 
 	void calculateHeal(CreatureObject* creatureTarget, int& healthDamage, int& actionDamage, int stimPower) {
-		healthDamage = creatureTarget->getHealthMax() - creatureTarget->getHealth();
-		actionDamage = creatureTarget->getActionMax() - creatureTarget->getAction();
+		healthDamage = creatureTarget->getHealthMax() - creatureTarget->getHealth() - creatureTarget->getHealthWounds();
+		actionDamage = creatureTarget->getActionMax() - creatureTarget->getAction() - creatureTarget->getActionWounds();
 
 		healthDamage = (healthDamage > stimPower) ? stimPower : healthDamage;
 		actionDamage = (actionDamage > stimPower) ? stimPower : actionDamage;
