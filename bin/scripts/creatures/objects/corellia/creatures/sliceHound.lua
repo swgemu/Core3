@@ -47,7 +47,7 @@ sliceHound = Creature:new {
       gender = "",
 
       stfName = "a Slice Hound",
-      objectCRC = 3500363411, 
+      objectCRC = 2638763255, 
       socialGroup = "Slice Hound",
       named = FALSE, 
 
@@ -141,4 +141,4 @@ sliceHound = Creature:new {
       behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(sliceHound, 3500363411) --  Add to Global Table
+Creatures:addCreature(sliceHound, 2638763255) --  Add to Global Table

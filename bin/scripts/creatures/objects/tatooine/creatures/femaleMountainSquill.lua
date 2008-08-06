@@ -47,7 +47,7 @@ femaleMountainSquill = Creature:new {
       gender = "",
 
       stfName = "a Female Mountain Squill",
-      objectCRC = 807169980, 
+      objectCRC = 2128205835, 
       socialGroup = "Squill",
       named = FALSE, 
 
@@ -141,4 +141,4 @@ femaleMountainSquill = Creature:new {
       behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(femaleMountainSquill, 807169980) --  Add to Global Table
+Creatures:addCreature(femaleMountainSquill, 2128205835) --  Add to Global Table

@@ -47,7 +47,7 @@ rebelGeneral = Creature:new {
       gender = "",
 
       name = "Rebel General",
-      objectCRC = 3539948146, 
+      objectCRC = 354934529, 
       socialGroup = "Rebel",
       named = FALSE, 
 
@@ -141,4 +141,4 @@ rebelGeneral = Creature:new {
       behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(rebelGeneral, 3539948146) --  Add to Global Table
+Creatures:addCreature(rebelGeneral, 354934529) --  Add to Global Table

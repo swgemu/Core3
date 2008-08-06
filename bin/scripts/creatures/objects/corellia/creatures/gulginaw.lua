@@ -47,7 +47,7 @@ gulginaw = Creature:new {
       gender = "",
 
       stfName = "a Gulginaw",
-      objectCRC = 1164163092, 
+      objectCRC = 3577243781, 
       socialGroup = "Gulginaw",
       named = FALSE, 
 
@@ -141,4 +141,4 @@ gulginaw = Creature:new {
       behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(gulginaw, 1164163092) --  Add to Global Table
+Creatures:addCreature(gulginaw, 3577243781) --  Add to Global Table

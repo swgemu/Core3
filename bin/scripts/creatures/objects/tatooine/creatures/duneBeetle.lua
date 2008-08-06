@@ -47,7 +47,7 @@ duneBeetle = Creature:new {
       gender = "",
 
       stfName = "a Dune Beetle",
-      objectCRC = 607873114, 
+      objectCRC = 1381990465, 
       socialGroup = "Sand Beetle",
       named = FALSE, 
 
@@ -141,4 +141,4 @@ duneBeetle = Creature:new {
       behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(duneBeetle, 607873114) --  Add to Global Table
+Creatures:addCreature(duneBeetle, 1381990465) --  Add to Global Table

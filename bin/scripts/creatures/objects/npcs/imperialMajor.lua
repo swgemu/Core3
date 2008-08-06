@@ -47,7 +47,7 @@ imperialMajor = Creature:new {
       gender = "",
 
       name = "Imperial Major",
-      objectCRC = 1867395579, 
+      objectCRC = 1953999744, 
       socialGroup = "Imperial",
       named = FALSE, 
 
@@ -141,4 +141,4 @@ imperialMajor = Creature:new {
       behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(imperialMajor, 1867395579) --  Add to Global Table
+Creatures:addCreature(imperialMajor, 1953999744) --  Add to Global Table

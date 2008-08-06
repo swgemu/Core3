@@ -47,7 +47,7 @@ worrt = Creature:new {
       gender = "",
 
       stfName = "a Worrt",
-      objectCRC = 714826259, 
+      objectCRC = 1368967713, 
       socialGroup = "Worrt",
       named = FALSE, 
 
@@ -141,4 +141,4 @@ worrt = Creature:new {
       behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(worrt, 714826259) --  Add to Global Table
+Creatures:addCreature(worrt, 1368967713) --  Add to Global Table
