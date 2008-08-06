@@ -153,6 +153,16 @@ void MountCreatureImplementation::generateAttributes(SceneObject* obj) {
 	Player* player = (Player*) obj;
 
 	AttributeListMessage* alm = new AttributeListMessage(_this);
+
+	CreatureObject* owner = getLinkedCreature();
+	if (owner != NULL) {
+		unicode name = unicode("");
+		name = owner->getCharacterName();
+		string strname = name.c_str();
+
+		alm->insertAttribute("@obj_attr_n:crystal_owner", strname); //Owner: Name
+	}
+
 	player->sendMessage(alm);
 }
 
