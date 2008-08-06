@@ -47,7 +47,7 @@ squillAttack1 = {
 
 	range = 10,
 
-	damageRatio = 15,
+	damageRatio = 35,
 
 	speedRatio = 4,
 
@@ -78,7 +78,7 @@ squillAttack2 = {
 
 	range = 10,
 
-	damageRatio = 15,
+	damageRatio = 35,
 
 	speedRatio = 4,
 
@@ -109,7 +109,7 @@ squillAttack3 = {
 
 	range = 10,
 
-	damageRatio = 15,
+	damageRatio = 35,
 
 	speedRatio = 4,
 
@@ -140,7 +140,7 @@ squillAttack4 = {
 
 	range = 10,
 
-	damageRatio = 15,
+	damageRatio = 35,
 
 	speedRatio = 4,
 
@@ -174,7 +174,7 @@ squillAttack5 = {
 
 	range = 10,
 
-	damageRatio = 15,
+	damageRatio = 35,
 
 	speedRatio = 4,
 

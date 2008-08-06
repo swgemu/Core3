@@ -46,42 +46,42 @@ lordNyax = Creature:new {
       faction = "Lord Nyax",
       gender = "",
 
-      name = "Lord Nyax",
+      stfName = "Lord Nyax",
       objectCRC = 4219937413, 
       socialGroup = "Lord Nyax",
-      named = FALSE, 
+      named = TRUE, 
 
-      level = 129,
+      level = 250,
       xp = 12235,
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
       healthMax = 62000,
       healthMin = 51000,
-      strength = 0,
-      constitution = 0,
+      strength = 5000,
+      constitution = 5000,
 
       actionMax = 62000,
       actionMin = 51000,
-      quickness = 0,
-      stamina = 0,
+      quickness = 5000,
+      stamina = 5000,
 
       mindMax = 62000,
       mindMin = 51000,
-      focus = 0,
-      willpower = 0,
+      focus = 5000,
+      willpower = 5000,
 
       height = 1, -- Size of creature
-      armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-      kinetic = 80,
-      energy = 45,
-      electricity = 100,
-      stun = 15,
-      blast = 40,
-      heat = 20,
-      cold = 50,
-      acid = 10,
-      lightsaber = 0,
+      armor = 2,	
+	  kinetic = 80,
+	  energy = 45,
+	  electricity = 100,
+	  stun = 15,
+	  blast = 40,
+	  heat = 20,
+	  cold = 50,
+	  acid = 10,
+	  lightSaber = 0,
 
       accuracy = 300,
 

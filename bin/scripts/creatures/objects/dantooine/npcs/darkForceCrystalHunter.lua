@@ -47,7 +47,7 @@ darkForceCrystalHunter = Creature:new {
       gender = "",
 
       name = "Force crystal hunter",
-      objectCRC = 2171393597, 
+      objectCRC = 2005105485, 
       socialGroup = "Remn. Of Kun",
       named = FALSE, 
 
@@ -141,4 +141,4 @@ darkForceCrystalHunter = Creature:new {
       behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(darkForceCrystalHunter, 2171393597) --  Add to Global Table
+Creatures:addCreature(darkForceCrystalHunter, 2005105485) --  Add to Global Table

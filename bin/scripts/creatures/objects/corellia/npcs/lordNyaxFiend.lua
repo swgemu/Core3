@@ -47,7 +47,7 @@ lordNyaxFiend = Creature:new {
       gender = "",
 
       name = "Fiend of Lord Nyax",
-      objectCRC = 3607910047, 
+      objectCRC = 1931190505, 
       socialGroup = "Lord Nyax",
       named = FALSE, 
 
@@ -141,4 +141,4 @@ lordNyaxFiend = Creature:new {
       behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(lordNyaxFiend, 3607910047) --  Add to Global Table
+Creatures:addCreature(lordNyaxFiend, 1931190505) --  Add to Global Table

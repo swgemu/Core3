@@ -46,10 +46,10 @@ darthVader = Creature:new {
       faction = "Imperial",
       gender = "",
 
-      name = "Darth Vader",
+      stfName = "Darth Vader",
       objectCRC = 147261716, 
       socialGroup = "Imperial",
-      named = FALSE, 
+      named = TRUE, 
 
       level = 300,
       xp = 28549,

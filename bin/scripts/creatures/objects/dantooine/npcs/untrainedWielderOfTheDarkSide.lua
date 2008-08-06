@@ -47,7 +47,7 @@ untrainedWielderOfTheDarkSide = Creature:new {
       gender = "",
 
       name = "untrained wielder of the Dark Side",
-      objectCRC = 2931904990, 
+      objectCRC = 2507849557, 
       socialGroup = "Remn. Of Kun",
       named = FALSE, 
 
@@ -141,4 +141,4 @@ untrainedWielderOfTheDarkSide = Creature:new {
       behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(untrainedWielderOfTheDarkSide, 2931904990) --  Add to Global Table
+Creatures:addCreature(untrainedWielderOfTheDarkSide, 2507849557) --  Add to Global Table
