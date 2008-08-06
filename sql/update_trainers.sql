@@ -13,21 +13,26 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 DROP TABLE IF EXISTS `trainers`;
 CREATE TABLE `trainers` (
-  `Location` varchar(255) default NULL,
-  `Trainer Type` varchar(255) default NULL,
-  `Profession` text NOT NULL,
-  `CRC1` varchar(255) default NULL,
-  `CRC2` varchar(255) default NULL,
-  `CRC3` varchar(255) default NULL,
-  `Planet` double default NULL,
-  `X Coordinate` double default NULL,
-  `Y coordinate` double default NULL
+  `Location` varchar(64) default NULL,
+  `Trainer Type` varchar(64) default NULL,
+  `Profession` varchar(64) NOT NULL,
+  `CRC1` varchar(16) default NULL,
+  `CRC2` varchar(16) default NULL,
+  `CRC3` varchar(16) default NULL,
+  `Planet` smallint default NULL,
+  `Cell` bigint default 0,
+  `X` double default NULL,
+  `Y` double default NULL,
+  `Z` double default 0,
+  `oY` double default 0,
+  `oW` double default 0
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records 
 -- ----------------------------
-INSERT INTO `trainers` (`Location`,`Trainer Type`,`Profession`,`CRC1`,`CRC2`,`CRC3`,`Planet`,`X Coordinate`,`Y coordinate`) VALUES 
+
+INSERT INTO `trainers` (`Location`,`Trainer Type`,`Profession`,`CRC1`,`CRC2`,`CRC3`,`Planet`,`X`,`Y`) VALUES 
  ('mob/creature_names','trainer_unarmed','combat_unarmed','9ADDF48B','8C73B91','08C73B91',8,-5054,-6632),
  ('mob/creature_names','trainer_unarmed','combat_unarmed','9ADDF48B','8C73B91','08C73B91',8,-2812,1973),
  ('mob/creature_names','trainer_unarmed','combat_unarmed','9ADDF48B','8C73B91','08C73B91',5,-5649,4206),

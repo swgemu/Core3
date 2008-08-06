@@ -61,6 +61,7 @@ which carries forward this exception.
 
 #include "../skills/SkillManager.h"
 #include "../name/NameManager.h"
+#include "../planet/PlanetManager.h"
 
 #include "CreatureManager.h"
 #include "CreatureManagerImplementation.h"
@@ -190,17 +191,21 @@ void CreatureManagerImplementation::loadTrainers() {
 		uint64 crc2 = strtoul(result->getString(4),NULL,16);
 		uint64 crc3 = strtoul(result->getString(5),NULL,16);
 
-		float x = result->getFloat(7);
-		float y = result->getFloat(8);
+		uint64 cell = result->getUnsignedLong(7);
+		float x = result->getFloat(8);
+		float y = result->getFloat(9);
+		float z = result->getFloat(10);
+		float oY = result->getFloat(11);
+		float oW = result->getFloat(12);
 
 		int rand = System::random(2);
 
 		if (rand == 0 && crc1 != 0)
-			TrainerCreature* trainer = spawnTrainer(profession, name, "", crc1, x, y);
+			TrainerCreature* trainer = spawnTrainer(profession, name, "", crc1, cell, x, y, z, oY, oW);
 		else if (rand == 1 && crc2 != 0)
-			TrainerCreature* trainer = spawnTrainer(profession, name, "", crc2, x, y);
+			TrainerCreature* trainer = spawnTrainer(profession, name, "", crc2, cell, x, y, z, oY, oW);
 		else
-			TrainerCreature* trainer = spawnTrainer(profession, name, "", crc3, x, y);
+			TrainerCreature* trainer = spawnTrainer(profession, name, "", crc3, cell, x, y, z, oY, oW);
 	}
 
 	delete result;
@@ -214,7 +219,7 @@ void CreatureManagerImplementation::loadTrainers() {
 			if ((int)prof->getName().find("jedi") >= 0 || (int)prof->getName().find("force") >= 0)
 				continue;
 
-			TrainerCreature* trainer = spawnTrainer(prof->getName(), "", prof->getName(), 0x8C73B91, -4967 - (i*1), 4043 );
+			TrainerCreature* trainer = spawnTrainer(prof->getName(), "", prof->getName(), 0x8C73B91, 0, -4967 - (i*1), 4043, 0, 0, 0);
 		}
 	}
 }
@@ -290,7 +295,7 @@ BlueFrogCreature* CreatureManagerImplementation::spawnBlueFrog(float x, float y,
 	}
 }
 
-TrainerCreature* CreatureManagerImplementation::spawnTrainer(const string& profession, const string& stfname, const string& name, int objCrc, float x, float y, bool doLock) {
+TrainerCreature* CreatureManagerImplementation::spawnTrainer(const string& profession, const string& stfname, const string& name, int objCrc, uint64 cell, float x, float y, float z, float oy, float ow, bool doLock) {
 	try {
 		lock(doLock);
 
@@ -311,6 +316,9 @@ TrainerCreature* CreatureManagerImplementation::spawnTrainer(const string& profe
 
 		trainer->setHeight(1.0f);
 		trainer->initializePosition(x, 0, y);
+		trainer->setParent(instance->getZone()->lookupObject(cell));
+		trainer->setDirection(0, 0, oy, ow);
+		trainer->setPvpStatusBitmask(0);
 
 		load(trainer);
 
