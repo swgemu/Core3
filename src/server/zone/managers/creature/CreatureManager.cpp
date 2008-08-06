@@ -170,7 +170,7 @@ Creature* CreatureManager::spawnCreature(unsigned int objcrc, float x, float y, 
 		return ((CreatureManagerImplementation*) _impl)->spawnCreature(objcrc, x, y, bitmask, baby, doLock);
 }
 
-TrainerCreature* CreatureManager::spawnTrainer(const string& profession, const string& stfname, const string& name, int objCrc, float x, float y, bool doLock) {
+TrainerCreature* CreatureManager::spawnTrainer(const string& profession, const string& stfname, const string& name, int objCrc, unsigned long long cell, float x, float y, float z, float oy, float ow, bool doLock) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -180,13 +180,17 @@ TrainerCreature* CreatureManager::spawnTrainer(const string& profession, const s
 		method.addAsciiParameter(stfname);
 		method.addAsciiParameter(name);
 		method.addSignedIntParameter(objCrc);
+		method.addUnsignedLongParameter(cell);
 		method.addFloatParameter(x);
 		method.addFloatParameter(y);
+		method.addFloatParameter(z);
+		method.addFloatParameter(oy);
+		method.addFloatParameter(ow);
 		method.addBooleanParameter(doLock);
 
 		return (TrainerCreature*) method.executeWithObjectReturn();
 	} else
-		return ((CreatureManagerImplementation*) _impl)->spawnTrainer(profession, stfname, name, objCrc, x, y, doLock);
+		return ((CreatureManagerImplementation*) _impl)->spawnTrainer(profession, stfname, name, objCrc, cell, x, y, z, oy, ow, doLock);
 }
 
 ShuttleCreature* CreatureManager::spawnShuttle(const string& Planet, const string& City, Coordinate* playerSpawnPoint, float x, float y, float z, int tax, bool starport, bool doLock) {
@@ -339,7 +343,7 @@ Packet* CreatureManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		resp->insertLong(spawnCreature(inv->getUnsignedIntParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter(), inv->getBooleanParameter())->_getObjectID());
 		break;
 	case 16:
-		resp->insertLong(spawnTrainer(inv->getAsciiParameter(_param0_spawnTrainer__string_string_string_int_float_float_bool_), inv->getAsciiParameter(_param1_spawnTrainer__string_string_string_int_float_float_bool_), inv->getAsciiParameter(_param2_spawnTrainer__string_string_string_int_float_float_bool_), inv->getSignedIntParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getBooleanParameter())->_getObjectID());
+		resp->insertLong(spawnTrainer(inv->getAsciiParameter(_param0_spawnTrainer__string_string_string_int_long_float_float_float_float_float_bool_), inv->getAsciiParameter(_param1_spawnTrainer__string_string_string_int_long_float_float_float_float_float_bool_), inv->getAsciiParameter(_param2_spawnTrainer__string_string_string_int_long_float_float_float_float_float_bool_), inv->getSignedIntParameter(), inv->getUnsignedLongParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getBooleanParameter())->_getObjectID());
 		break;
 	case 17:
 		resp->insertLong(spawnShuttle(inv->getAsciiParameter(_param0_spawnShuttle__string_string_Coordinate_float_float_float_int_bool_bool_), inv->getAsciiParameter(_param1_spawnShuttle__string_string_Coordinate_float_float_float_int_bool_bool_), (Coordinate*) inv->getObjectParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter(), inv->getBooleanParameter())->_getObjectID());
@@ -409,8 +413,8 @@ Creature* CreatureManagerAdapter::spawnCreature(unsigned int objcrc, float x, fl
 	return ((CreatureManagerImplementation*) impl)->spawnCreature(objcrc, x, y, bitmask, baby, doLock);
 }
 
-TrainerCreature* CreatureManagerAdapter::spawnTrainer(const string& profession, const string& stfname, const string& name, int objCrc, float x, float y, bool doLock) {
-	return ((CreatureManagerImplementation*) impl)->spawnTrainer(profession, stfname, name, objCrc, x, y, doLock);
+TrainerCreature* CreatureManagerAdapter::spawnTrainer(const string& profession, const string& stfname, const string& name, int objCrc, unsigned long long cell, float x, float y, float z, float oy, float ow, bool doLock) {
+	return ((CreatureManagerImplementation*) impl)->spawnTrainer(profession, stfname, name, objCrc, cell, x, y, z, oy, ow, doLock);
 }
 
 ShuttleCreature* CreatureManagerAdapter::spawnShuttle(const string& Planet, const string& City, Coordinate* playerSpawnPoint, float x, float y, float z, int tax, bool starport, bool doLock) {
