@@ -46,7 +46,7 @@ drallChieftain = Creature:new {
       faction = "Drall",
       gender = "",
 
-      name = "Droll chieftain",
+      name = "Drall chieftain",
       objectCRC = 3116494340, 
       socialGroup = "Drall",
       named = FALSE, 

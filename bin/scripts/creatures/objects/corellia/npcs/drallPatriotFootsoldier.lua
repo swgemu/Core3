@@ -46,7 +46,7 @@ drallPatriotFootsoldier = Creature:new {
       faction = "Drall",
       gender = "",
 
-      name = "Droll patriot foot soldier",
+      name = "Drall patriot foot soldier",
       objectCRC = 3116494340, 
       socialGroup = "Drall",
       named = FALSE, 
