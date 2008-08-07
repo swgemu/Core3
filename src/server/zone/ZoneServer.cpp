@@ -20,6 +20,8 @@
 
 #include "managers/resource/ResourceManager.h"
 
+#include "managers/loot/LootTableManager.h"
+
 #include "managers/bazaar/BazaarManager.h"
 
 #include "managers/bank/BankManager.h"
@@ -405,12 +407,24 @@ ResourceManager* ZoneServer::getResourceManager() {
 		return ((ZoneServerImplementation*) _impl)->getResourceManager();
 }
 
-BazaarManager* ZoneServer::getBazaarManager() {
+LootTableManager* ZoneServer::getLootTableManager() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 34);
+
+		return (LootTableManager*) method.executeWithObjectReturn();
+	} else
+		return ((ZoneServerImplementation*) _impl)->getLootTableManager();
+}
+
+BazaarManager* ZoneServer::getBazaarManager() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 35);
 
 		return (BazaarManager*) method.executeWithObjectReturn();
 	} else
@@ -422,7 +436,7 @@ BankManager* ZoneServer::getBankManager() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 35);
+		DistributedMethod method(this, 36);
 
 		return (BankManager*) method.executeWithObjectReturn();
 	} else
@@ -434,7 +448,7 @@ Zone* ZoneServer::getZone(int index) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 36);
+		DistributedMethod method(this, 37);
 		method.addSignedIntParameter(index);
 
 		return (Zone*) method.executeWithObjectReturn();
@@ -447,7 +461,7 @@ string& ZoneServer::getServerName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 37);
+		DistributedMethod method(this, 38);
 
 		method.executeWithAsciiReturn(_return_getServerName);
 		return _return_getServerName;
@@ -460,7 +474,7 @@ int ZoneServer::getConnectionCount() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 38);
+		DistributedMethod method(this, 39);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -472,7 +486,7 @@ unsigned long long ZoneServer::getNextCreatureID(bool doLock) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 39);
+		DistributedMethod method(this, 40);
 		method.addBooleanParameter(doLock);
 
 		return method.executeWithUnsignedLongReturn();
@@ -576,21 +590,24 @@ Packet* ZoneServerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertLong(getResourceManager()->_getObjectID());
 		break;
 	case 34:
-		resp->insertLong(getBazaarManager()->_getObjectID());
+		resp->insertLong(getLootTableManager()->_getObjectID());
 		break;
 	case 35:
-		resp->insertLong(getBankManager()->_getObjectID());
+		resp->insertLong(getBazaarManager()->_getObjectID());
 		break;
 	case 36:
-		resp->insertLong(getZone(inv->getSignedIntParameter())->_getObjectID());
+		resp->insertLong(getBankManager()->_getObjectID());
 		break;
 	case 37:
-		resp->insertAscii(getServerName());
+		resp->insertLong(getZone(inv->getSignedIntParameter())->_getObjectID());
 		break;
 	case 38:
-		resp->insertSignedInt(getConnectionCount());
+		resp->insertAscii(getServerName());
 		break;
 	case 39:
+		resp->insertSignedInt(getConnectionCount());
+		break;
+	case 40:
 		resp->insertLong(getNextCreatureID(inv->getBooleanParameter()));
 		break;
 	default:
@@ -710,6 +727,10 @@ ItemManager* ZoneServerAdapter::getItemManager() {
 
 ResourceManager* ZoneServerAdapter::getResourceManager() {
 	return ((ZoneServerImplementation*) impl)->getResourceManager();
+}
+
+LootTableManager* ZoneServerAdapter::getLootTableManager() {
+	return ((ZoneServerImplementation*) impl)->getLootTableManager();
 }
 
 BazaarManager* ZoneServerAdapter::getBazaarManager() {

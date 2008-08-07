@@ -134,7 +134,7 @@ am__objects_1 = Zone.$(OBJEXT) ZoneClient.$(OBJEXT) \
 	PlayerManager.$(OBJEXT) CraftingManager.$(OBJEXT) \
 	CreatureManager.$(OBJEXT) ItemManager.$(OBJEXT) \
 	UserManager.$(OBJEXT) PlanetManager.$(OBJEXT) \
-	ResourceManager.$(OBJEXT) LootManager.$(OBJEXT) \
+	LootTableManager.$(OBJEXT) ResourceManager.$(OBJEXT) LootManager.$(OBJEXT) \
 	BazaarManager.$(OBJEXT) BazaarPlanetManager.$(OBJEXT) \
 	BankManager.$(OBJEXT) ChatRoom.$(OBJEXT) ChatManager.$(OBJEXT)
 am_core3_OBJECTS = $(am__objects_1) ServerCore.$(OBJEXT) \
@@ -198,6 +198,7 @@ am_core3_OBJECTS = $(am__objects_1) ServerCore.$(OBJEXT) \
 	CreatureManagerImplementation.$(OBJEXT) \
 	PlanetManagerImplementation.$(OBJEXT) \
 	ResourceManagerImplementation.$(OBJEXT) \
+	LootTableManagerImplementation.$(OBJEXT) \
 	BazaarManagerImplementation.$(OBJEXT) \
 	BazaarPlanetManagerImplementation.$(OBJEXT) \
 	BankManagerImplementation.$(OBJEXT) SuiManager.$(OBJEXT) \
@@ -426,6 +427,7 @@ core3_IDLS = server/zone/Zone.cpp \
 		server/zone/managers/user/UserManager.cpp \
 		server/zone/managers/planet/PlanetManager.cpp \
 		server/zone/managers/resource/ResourceManager.cpp \
+		server/zone/managers/loot/LootTableManager.cpp \
 		server/zone/managers/loot/LootManager.cpp \
 		server/zone/managers/bazaar/BazaarManager.cpp \
 		server/zone/managers/bazaar/BazaarPlanetManager.cpp \
@@ -506,6 +508,7 @@ core3_SOURCES = $(core3_IDLS) \
 		server/zone/managers/creature/CreatureManagerImplementation.cpp \
 		server/zone/managers/planet/PlanetManagerImplementation.cpp \
 		server/zone/managers/resource/ResourceManagerImplementation.cpp \
+		server/zone/managers/loot/LootTableManagerImplementation.cpp \
 		server/zone/managers/bazaar/BazaarManagerImplementation.cpp \
 		server/zone/managers/bazaar/BazaarPlanetManagerImplementation.cpp \
 		server/zone/managers/bank/BankManagerImplementation.cpp \
@@ -707,6 +710,8 @@ include ./$(DEPDIR)/ResourceContainer.Po
 include ./$(DEPDIR)/ResourceContainerImplementation.Po
 include ./$(DEPDIR)/ResourceManager.Po
 include ./$(DEPDIR)/ResourceManagerImplementation.Po
+include ./$(DEPDIR)/LootTableManager.Po
+include ./$(DEPDIR)/LootTableManagerImplementation.Po
 include ./$(DEPDIR)/RifleRangedWeapon.Po
 include ./$(DEPDIR)/SceneObject.Po
 include ./$(DEPDIR)/SceneObjectImplementation.Po
@@ -2156,6 +2161,20 @@ ResourceManager.obj: server/zone/managers/resource/ResourceManager.cpp
 #	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
 #	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ResourceManager.obj `if test -f 'server/zone/managers/resource/ResourceManager.cpp'; then $(CYGPATH_W) 'server/zone/managers/resource/ResourceManager.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/resource/ResourceManager.cpp'; fi`
 
+LootTableManager.o: server/zone/managers/loot/LootTableManager.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT LootTableManager.o -MD -MP -MF $(DEPDIR)/LootTableManager.Tpo -c -o LootTableManager.o `test -f 'server/zone/managers/loot/LootTableManager.cpp' || echo '$(srcdir)/'`server/zone/managers/loot/LootTableManager.cpp
+	mv -f $(DEPDIR)/LootTableManager.Tpo $(DEPDIR)/LootTableManager.Po
+#	source='server/zone/managers/loot/LootTableManager.cpp' object='LootTableManager.o' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o LootTableManager.o `test -f 'server/zone/managers/loot/LootTableManager.cpp' || echo '$(srcdir)/'`server/zone/managers/loot/LootTableManager.cpp
+
+LootTableManager.obj: server/zone/managers/loot/LootTableManager.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT LootTableManager.obj -MD -MP -MF $(DEPDIR)/LootTableManager.Tpo -c -o LootTableManager.obj `if test -f 'server/zone/managers/loot/LootTableManager.cpp'; then $(CYGPATH_W) 'server/zone/managers/loot/LootTableManager.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/loot/LootTableManager.cpp'; fi`
+	mv -f $(DEPDIR)/LootTableManager.Tpo $(DEPDIR)/LootTableManager.Po
+#	source='server/zone/managers/loot/LootTableManager.cpp' object='LootTableManager.obj' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o LootTableManager.obj `if test -f 'server/zone/managers/loot/LootTableManager.cpp'; then $(CYGPATH_W) 'server/zone/managers/loot/LootTableManager.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/loot/LootTableManager.cpp'; fi`
+
 LootManager.o: server/zone/managers/loot/LootManager.cpp
 	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT LootManager.o -MD -MP -MF $(DEPDIR)/LootManager.Tpo -c -o LootManager.o `test -f 'server/zone/managers/loot/LootManager.cpp' || echo '$(srcdir)/'`server/zone/managers/loot/LootManager.cpp
 	mv -f $(DEPDIR)/LootManager.Tpo $(DEPDIR)/LootManager.Po
@@ -3247,6 +3266,27 @@ ResourceManagerImplementation.obj: server/zone/managers/resource/ResourceManager
 #	source='server/zone/managers/resource/ResourceManagerImplementation.cpp' object='ResourceManagerImplementation.obj' libtool=no \
 #	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
 #	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ResourceManagerImplementation.obj `if test -f 'server/zone/managers/resource/ResourceManagerImplementation.cpp'; then $(CYGPATH_W) 'server/zone/managers/resource/ResourceManagerImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/resource/ResourceManagerImplementation.cpp'; fi`
+
+
+
+LootTableManagerImplementation.o: server/zone/managers/loot/LootTableManagerImplementation.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT LootTableManagerImplementation.o -MD -MP -MF $(DEPDIR)/LootTableManagerImplementation.Tpo -c -o LootTableManagerImplementation.o `test -f 'server/zone/managers/loot/LootTableManagerImplementation.cpp' || echo '$(srcdir)/'`server/zone/managers/loot/LootTableManagerImplementation.cpp
+	mv -f $(DEPDIR)/LootTableManagerImplementation.Tpo $(DEPDIR)/LootTableManagerImplementation.Po
+#	source='server/zone/managers/loot/LootTableManagerImplementation.cpp' object='LootTableManagerImplementation.o' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o LootTableManagerImplementation.o `test -f 'server/zone/managers/loot/LootTableManagerImplementation.cpp' || echo '$(srcdir)/'`server/zone/managers/loot/LootTableManagerImplementation.cpp
+
+LootTableManagerImplementation.obj: server/zone/managers/loot/LootTableManagerImplementation.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT LootTableManagerImplementation.obj -MD -MP -MF $(DEPDIR)/LootTableManagerImplementation.Tpo -c -o LootTableManagerImplementation.obj `if test -f 'server/zone/managers/loot/LootTableManagerImplementation.cpp'; then $(CYGPATH_W) 'server/zone/managers/loot/LootTableManagerImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/loot/LootTableManagerImplementation.cpp'; fi`
+	mv -f $(DEPDIR)/LootTableManagerImplementation.Tpo $(DEPDIR)/LootTableManagerImplementation.Po
+#	source='server/zone/managers/loot/LootTableManagerImplementation.cpp' object='LootTableManagerImplementation.obj' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o LootTableManagerImplementation.obj `if test -f 'server/zone/managers/loot/LootTableManagerImplementation.cpp'; then $(CYGPATH_W) 'server/zone/managers/loot/LootTableManagerImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/loot/LootTableManagerImplementation.cpp'; fi`
+
+
+
+
+
 
 BazaarManagerImplementation.o: server/zone/managers/bazaar/BazaarManagerImplementation.cpp
 	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT BazaarManagerImplementation.o -MD -MP -MF $(DEPDIR)/BazaarManagerImplementation.Tpo -c -o BazaarManagerImplementation.o `test -f 'server/zone/managers/bazaar/BazaarManagerImplementation.cpp' || echo '$(srcdir)/'`server/zone/managers/bazaar/BazaarManagerImplementation.cpp

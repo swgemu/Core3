@@ -49,11 +49,11 @@ MakePing = 1
 ORB = ""
 
 
-DBHost = "127.0.0.1"
+DBHost = "192.168.0.180"
 DBPort = 3306
 DBName = "swgemu"
 DBUser = "swgemu"
-DBPass = "123456"
+DBPass = "d4711"
 
 -- vBulletin 3 integration
 ForumsDBHost = ""

@@ -90,7 +90,7 @@ void GameCommandHandler::init() {
 			&warpTo);
 	gmCommands->addCommand("warpPlayer", PRIVILEGED,
 			"Warps a player to a given set of coordinates.",
-			"Usage: @warpPlayer <player> <starport |hotel | shuttle | medical | bank | garage | salon>",
+			"Usage: @warpPlayer <player> <starport |hotel | shuttle | medical | bank | garage | salon | punish>",
 			&warpPlayer);
 	gmCommands->addCommand("summon", PRIVILEGED,
 			"Warps a player to your location.",
@@ -263,12 +263,12 @@ void GameCommandHandler::help(StringTokenizer tokenizer, Player * player) {
 void GameCommandHandler::map(StringTokenizer tokenizer, Player * player) {
 	if (tokenizer.hasMoreTokens()) {
 		int planetid = tokenizer.getIntToken();
-		if (planetid >= 0 && planetid < 50)
+		if (planetid >= 0 && planetid <= 10) //Servercrash risk!!  Do not change this back to 50, there are no managers initialized ( i changed the managers up to 10 tho)  - Farmer John 07. Aug 2008
 			player->switchMap(planetid);
 	} else {
 		player->sendSystemMessage("Usage: map <planetid>\n"
 		"0=Corellia, 1=Dantooine, 2=Dathomir, 3=Endor,\n"
-		"5=Naboo, 6=Rori, 7=Talus, 8=Tatooine, 9=Yavin 4");
+		"5=Naboo, 6=Rori, 7=Talus, 8=Tatooine, 9=Yavin 4, 10=Bad player prison (Space)");
 	}
 }
 
@@ -322,7 +322,7 @@ void GameCommandHandler::warpPlayer(StringTokenizer tokenizer, Player * player) 
 			if (obj != NULL && obj->isPlayer()) {
 				targetPlayer = (Player*) obj;
 			} else {
-				player->sendSystemMessage("Usage: @warpPlayer <SUPPLY PLAYERNAME OR CURRENT TARGET> <starport> <hotel> <shuttle> <medical> <bank> <garage> <salon> \n");
+				player->sendSystemMessage("Usage: @warpPlayer <SUPPLY PLAYERNAME OR CURRENT TARGET> <starport> <hotel> <shuttle> <medical> <bank> <garage> <salon> <punish>\n");
 				return;
 			}
 		}
@@ -346,6 +346,12 @@ void GameCommandHandler::warpPlayer(StringTokenizer tokenizer, Player * player) 
 			if (whereTo != "") {
 				PlanetManager* planetManager = targetZone->getPlanetManager();
 
+				if (whereTo == "punish") {
+					targetPlayer->switchMap(10); // Corellia Space as a punish room - no way back from there till CSR summons back
+					targetPlayer->unlock();
+					return;
+				}
+				
 				BuildingObject* buiID = planetManager->findBuildingType(whereTo, targetX, targetY);
 
 				if (buiID) {
@@ -422,12 +428,11 @@ void GameCommandHandler::summon(StringTokenizer tokenizer, Player * player) {
 
 	try {
 		targetPlayer->wlock(player);
+		
+		if (targetPlayer->isMounted()) {
+			targetPlayer->dismount(true, true);
+			}
 
-		if (targetPlayer->getZoneIndex() != player->getZoneIndex()) {
-			player->sendSystemMessage("You cant summon a player on a different planet! This feature will be added soon(R). \n");
-			targetPlayer->unlock();
-			return;
-		}
 
 		Zone* targetZone = targetPlayer->getZone();
 
@@ -437,6 +442,9 @@ void GameCommandHandler::summon(StringTokenizer tokenizer, Player * player) {
 		}
 
 		if (name != player->getFirstName()) {
+			if (targetPlayer->getZoneIndex() != player->getZoneIndex()) 
+				targetPlayer->switchMap(player->getZoneIndex());
+			
 			targetPlayer->doWarp(player->getPositionX(), player->getPositionY(), 0, 10);
 			targetPlayer->unlock();
 		} else {

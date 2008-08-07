@@ -158,6 +158,7 @@ core3_IDLS =	server/zone/Zone.cpp \
 		server/zone/managers/user/UserManager.cpp \
 		server/zone/managers/planet/PlanetManager.cpp \
 		server/zone/managers/resource/ResourceManager.cpp \
+		server/zone/managers/loot/LootTableManager.cpp \
 		server/zone/managers/loot/LootManager.cpp \
 		server/zone/managers/bazaar/BazaarManager.cpp \
 		server/zone/managers/bazaar/BazaarPlanetManager.cpp \
@@ -247,6 +248,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/planet/PlanetManagerImplementation.cpp \
 		server/zone/managers/planet/HeightMap.cpp \
 		server/zone/managers/resource/ResourceManagerImplementation.cpp \
+		server/zone/managers/loot/LootTableManagerImplementation.cpp \
 		server/zone/managers/bazaar/BazaarManagerImplementation.cpp \
 		server/zone/managers/bazaar/BazaarPlanetManagerImplementation.cpp \
 		server/zone/managers/bank/BankManagerImplementation.cpp \

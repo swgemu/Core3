@@ -21,6 +21,8 @@ class ItemManager;
 
 class ResourceManager;
 
+class LootTableManager;
+
 class BazaarManager;
 
 class BankManager;
@@ -90,6 +92,8 @@ public:
 	ItemManager* getItemManager();
 
 	ResourceManager* getResourceManager();
+
+	LootTableManager* getLootTableManager();
 
 	BazaarManager* getBazaarManager();
 
@@ -176,6 +180,8 @@ public:
 	ItemManager* getItemManager();
 
 	ResourceManager* getResourceManager();
+
+	LootTableManager* getLootTableManager();
 
 	BazaarManager* getBazaarManager();
 

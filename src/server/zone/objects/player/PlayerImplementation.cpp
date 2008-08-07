@@ -903,8 +903,9 @@ void PlayerImplementation::insertToZone(Zone* zone) {
 		info("inserting to zone");
 
 		//spawning in air fix
+		//TODO: Oru, change the the Z-Axis back to     zone->getHeight(positionX, positionY)     when its actually working, till then lets not spawn players in the air
 		if (parent == NULL)
-			 setPosition(positionX, zone->getHeight(positionX, positionY), positionY);
+			 setPosition(positionX, 0, positionY);
 
 		zone->registerObject(_this);
 

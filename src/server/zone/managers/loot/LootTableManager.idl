@@ -42,44 +42,22 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef LOOTMANAGER_H_
-#define LOOTMANAGER_H_
+import "../../objects/player/Player";
 
-#include "engine/engine.h"
+import "server/zone/ZoneServer";
 
-class Player;
-class Creature;
-class Container;
-class ZoneProcessServerImplementation;
-class TangibleObject;
+import "server/zone/ZoneProcessServerImplementation";
 
-class ChatSystemMessage;
+import "../../objects/creature/Creature";
 
-class LootManager {
-	ZoneProcessServerImplementation* processServer;
-	
-private:
-	void moveObject(TangibleObject* object, Player* player, Creature* creature);
-	void lootCredits(Player* player, Creature* creature);
-	
-public:
-	LootManager(ZoneProcessServerImplementation* procServer);
-	
-	void lootCorpse(Player* player, Creature* creature);
-	
-	void showLoot(Player* player, Creature* creature);
-	
-	void lootObject(Player* player, Creature* creature, uint64 objectID);
-	
-	void createLoot(Creature* creature, Player* player);
-	
-	void createWeaponLoot(Creature* creature, int creatureLevel);
-	void createArmorLoot(Creature* creature, int creatureLevel);
-	void createClothingLoot(Creature* creature, int creatureLevel);
-	void createJunkLoot(Creature* creature);
-	void createAttachmentLoot(Creature* creature, int creatureLevel);
-	void createPowerupLoot(Creature* creature, int creatureLevel);
-	
-};
+//import "LootTableTemplate";
 
-#endif /*LOOTMANAGER_H_*/
+interface LootTableManager {
+	LootTableManager(ZoneServer server, ZoneProcessServerImplementation processor) {
+		super(server, processor);
+	}
+	
+	void createLootItem(Creature creature, int level,Player player);
+	
+	void stop();
+}
