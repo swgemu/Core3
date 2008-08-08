@@ -157,8 +157,12 @@ void ChatManagerImplementation::destroyRooms() {
 }
 
 void ChatManagerImplementation::handleTellMessage(Player* sender, Message* pack) {
+	if (sender->isChatMuted())
+		return;	
+	
 	string game, galaxy, name;
 	unicode message;
+	
 	
 	uint32 seq = ChatInstantMessageToCharacter::parse(pack, game, galaxy, name, message);
 

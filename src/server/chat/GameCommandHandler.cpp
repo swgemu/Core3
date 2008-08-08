@@ -230,9 +230,9 @@ void GameCommandHandler::init() {
 			"Usage: @giveItemTemp <Item Type> [item sub-type]",
 			&giveItemTemp);
 	gmCommands->addCommand("clientEffect", DEVELOPER,
-				"Plays a client effect animation around your character.",
-				"Usage: @clientEffect <effect>",
-				&clientEffect);
+			"Plays a client effect animation around your character.",
+			"Usage: @clientEffect <effect>",
+			&clientEffect);
 }
 
 void GameCommandHandler::help(StringTokenizer tokenizer, Player * player) {
@@ -522,7 +522,7 @@ void GameCommandHandler::kickArea(StringTokenizer tokenizer, Player * player) {
 				Player* otherPlayer = (Player*) obj;
 				string otherName = otherPlayer->getFirstName();
 
-				if (otherName != name && player->isInRange(otherPlayer, meter) && !(otherPlayer->getAdminLevel() & PlayerImplementation::ADMIN)) {
+				if (otherName != name && player->isInRange(otherPlayer, meter) && (otherPlayer->getAdminLevel() == PlayerImplementation::NORMAL)) {
 					zone->unlock();
 
 					if (server->kickUser(otherName, name)) {
@@ -763,11 +763,11 @@ void GameCommandHandler::mutePlayer(StringTokenizer tokenizer, Player * player) 
 		targetPlayer->mutePlayer();
 
 		if ( targetPlayer->isChatMuted() ) {
-			player->sendSystemMessage("Spatial chat for player \'" + name + "\' set MUTED.");
-			targetPlayer->sendSystemMessage("Your (spatial) chat abilities were set to MUTED by \'" + player->getFirstName() + "\'.");
+			player->sendSystemMessage("Chat for player \'" + name + "\' set MUTED.");
+			targetPlayer->sendSystemMessage("Your chat abilities were set to MUTED by \'" + player->getFirstName() + "\'.");
 		} else {
-			player->sendSystemMessage("Spatial chat for player \'" + name + "\' set to UNMUTED.");
-			targetPlayer->sendSystemMessage("Your (spatial) chat abilities were RESTORED by \'" + player->getFirstName() + "\'.");
+			player->sendSystemMessage("Chat for player \'" + name + "\' set to UNMUTED.");
+			targetPlayer->sendSystemMessage("Your chat abilities were RESTORED by \'" + player->getFirstName() + "\'.");
 		}
 
 		if (targetPlayer != player)
@@ -841,7 +841,7 @@ void GameCommandHandler::killArea(StringTokenizer tokenizer, Player * player) {
 				Player* otherPlayer = (Player*) obj;
 				string otherName = otherPlayer->getFirstName();
 
-				if (otherName != name && player->isInRange(otherPlayer, meter) && !(otherPlayer->getAdminLevel() & PlayerImplementation::ADMIN)) {
+				if (otherName != name && player->isInRange(otherPlayer, meter) && (otherPlayer->getAdminLevel() == PlayerImplementation::NORMAL)) {
 					zone->unlock();
 
 					try {
@@ -1106,9 +1106,26 @@ void GameCommandHandler::HAMStats(StringTokenizer tokenizer, Player * player) {
 }
 
 void GameCommandHandler::buff(StringTokenizer tokenizer, Player * player) {
-	if (player->getHealthMax() == player->getBaseHealth()) {
-
-		int buffValue = 3000;
+	int devBuff;
+	devBuff = 0;
+	
+	try {
+		if (tokenizer.hasMoreTokens())
+			devBuff = tokenizer.getIntToken();
+			
+	} catch (...) {
+		player->sendSystemMessage("Format for DEV/CSR buffs is @buff <value of buffstrenght, eg. 12000.\'.");
+		devBuff = 0;
+	}
+	
+	
+	int buffValue = 3000;
+		
+	if (devBuff > 0 )
+		buffValue = devBuff; 
+		
+	
+	if ( (player->getHealthMax() == player->getBaseHealth()) || (devBuff > 0)  ) {	
 		//float buffDuration = 10.0f; // Testing purposes
 		float buffDuration = 10800.0f;
 
@@ -1454,7 +1471,8 @@ void GameCommandHandler::setAdminLevel(StringTokenizer tokenizer, Player * playe
 
 	player->sendSystemMessage("Admin level set.");
 }
-
+	
+	
 void GameCommandHandler::getLocation(StringTokenizer tokenizer, Player * player) {
 
 	stringstream ss;
