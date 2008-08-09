@@ -94,6 +94,10 @@ void BlueFrogCreatureImplementation::setBFType(int type) {
 		characterName = unicode("Medical Droid");
 		objectCRC = 634197524;
 		break;
+	case BARTENDER:
+		characterName = unicode("Bartender");
+		objectCRC = 1261483492;
+		break;
 	default:
 		break;
 	}
