@@ -19,6 +19,8 @@ class CreatureObject;
 
 class CreatureGroup;
 
+class LairObject;
+
 class TrainerCreature;
 
 class RecruiterCreature;
@@ -45,9 +47,7 @@ public:
 
 	void unloadCreature(Creature* creature);
 
-	Creature* spawnCreature(const string& stfname, const string& name, int objCrc, float x, float y, int bitmask = 00, bool doLock = true);
-
-	Creature* spawnCreature(unsigned int objcrc, float x, float y, int bitmask = 0, bool baby = false, bool doLock = true);
+	Creature* spawnCreature(unsigned int objcrc, unsigned long long cellid, float x, float y, int bitmask = 0, bool baby = false, bool doLock = true);
 
 	TrainerCreature* spawnTrainer(const string& profession, const string& stfname, const string& name, int objCrc, unsigned long long cell, float x, float y, float z, float oy, float ow, bool doLock = true);
 
@@ -55,7 +55,7 @@ public:
 
 	RecruiterCreature* spawnRecruiter(const string& stfname, const string& name, int objCrc, float x, float y, bool doLock = true);
 
-	CreatureGroup* spawnCreatureGroup(int count, const string& stfname, const string& name, int objCrc, float x, float y, int bitmask = 00, int layout = 1);
+	LairObject* spawnLair(const string& type, float x, float y, float z, bool doLock = true);
 
 	void registerFunctions();
 
@@ -97,9 +97,7 @@ public:
 
 	void unloadCreature(Creature* creature);
 
-	Creature* spawnCreature(const string& stfname, const string& name, int objCrc, float x, float y, int bitmask, bool doLock);
-
-	Creature* spawnCreature(unsigned int objcrc, float x, float y, int bitmask, bool baby, bool doLock);
+	Creature* spawnCreature(unsigned int objcrc, unsigned long long cellid, float x, float y, int bitmask, bool baby, bool doLock);
 
 	TrainerCreature* spawnTrainer(const string& profession, const string& stfname, const string& name, int objCrc, unsigned long long cell, float x, float y, float z, float oy, float ow, bool doLock);
 
@@ -107,7 +105,7 @@ public:
 
 	RecruiterCreature* spawnRecruiter(const string& stfname, const string& name, int objCrc, float x, float y, bool doLock);
 
-	CreatureGroup* spawnCreatureGroup(int count, const string& stfname, const string& name, int objCrc, float x, float y, int bitmask, int layout);
+	LairObject* spawnLair(const string& type, float x, float y, float z, bool doLock);
 
 	void registerFunctions();
 
@@ -118,8 +116,6 @@ public:
 	Creature* getCreature(unsigned long long oid);
 
 protected:
-	string _param0_spawnCreature__string_string_int_float_float_int_bool_;
-	string _param1_spawnCreature__string_string_int_float_float_int_bool_;
 	string _param0_spawnTrainer__string_string_string_int_long_float_float_float_float_float_bool_;
 	string _param1_spawnTrainer__string_string_string_int_long_float_float_float_float_float_bool_;
 	string _param2_spawnTrainer__string_string_string_int_long_float_float_float_float_float_bool_;
@@ -127,8 +123,7 @@ protected:
 	string _param1_spawnShuttle__string_string_Coordinate_float_float_float_int_bool_bool_;
 	string _param0_spawnRecruiter__string_string_int_float_float_bool_;
 	string _param1_spawnRecruiter__string_string_int_float_float_bool_;
-	string _param1_spawnCreatureGroup__int_string_string_int_float_float_int_int_;
-	string _param2_spawnCreatureGroup__int_string_string_int_float_float_int_int_;
+	string _param0_spawnLair__string_float_float_float_bool_;
 };
 
 class CreatureManagerHelper : public DistributedObjectClassHelper, public Singleton<CreatureManagerHelper> {

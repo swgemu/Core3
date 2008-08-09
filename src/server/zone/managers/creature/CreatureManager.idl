@@ -50,6 +50,7 @@ include "server/zone/ZoneProcessServerImplementation";
 import "../../objects/creature/Creature";
 import "../../objects/creature/CreatureObject";
 import "../../objects/creature/CreatureGroup";
+import "../../objects/attackable/lair/LairObject";
 
 import "../../objects/creature/trainer/TrainerCreature";
 
@@ -79,13 +80,14 @@ interface CreatureManager {
 	void unloadCreature(Creature creature);
 	
 	// creation methods
-	Creature spawnCreature(const string stfname, const string name, int objCrc, float x, float y, int bitmask = 0x00, boolean doLock = true);
-	Creature spawnCreature(unsigned int objcrc, float x, float y, int bitmask = 0, boolean baby = false, boolean doLock = true);
+	//Creature spawnCreature(const string stfname, const string name, int objCrc, float x, float y, int bitmask = 0x00, boolean doLock = true);
+	Creature spawnCreature(unsigned int objcrc, unsigned long cellid, float x, float y, int bitmask = 0, boolean baby = false, boolean doLock = true);
 	TrainerCreature spawnTrainer(const string profession, const string stfname, const string name, int objCrc, unsigned long cell, float x, float y, float z, float oy, float ow, boolean doLock = true);
 	ShuttleCreature spawnShuttle(const string Planet, const string City, Coordinate playerSpawnPoint, float x, float y, float z, int tax = 0, boolean starport = false, boolean doLock = true);
 	RecruiterCreature spawnRecruiter(const string stfname, const string name, int objCrc, float x, float y, boolean doLock = true);
-
-	CreatureGroup spawnCreatureGroup(int count, const string stfname, const string name, int objCrc, float x, float y, int bitmask = 0x00, int layout = 1);
+	LairObject spawnLair(const string type, float x, float y, float z, boolean doLock = true);
+		
+	//CreatureGroup spawnCreatureGroup(int count, const string stfname, const string name, int objCrc, float x, float y, int bitmask = 0x00, int layout = 1);
 		
 	void registerFunctions();
 	void registerGlobals();
