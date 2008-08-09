@@ -609,6 +609,10 @@ public:
 
 	string& getLastNpcConvMessStr();
 
+	void loadBuffs();
+
+	void saveBuffs();
+
 protected:
 	Player(DummyConstructorParameter* param);
 
@@ -1187,6 +1191,10 @@ public:
 	string& getLastNpcConvStr();
 
 	string& getLastNpcConvMessStr();
+
+	void loadBuffs();
+
+	void saveBuffs();
 
 protected:
 	string _param0_queueFlourish__string_long_int_;

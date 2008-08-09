@@ -1,44 +1,44 @@
 /*
 Copyright (C) 2007 <SWGEmu>
- 
+
 This File is part of Core3.
- 
-This program is free software; you can redistribute 
-it and/or modify it under the terms of the GNU Lesser 
+
+This program is free software; you can redistribute
+it and/or modify it under the terms of the GNU Lesser
 General Public License as published by the Free Software
-Foundation; either version 2 of the License, 
+Foundation; either version 2 of the License,
 or (at your option) any later version.
- 
-This program is distributed in the hope that it will be useful, 
-but WITHOUT ANY WARRANTY; without even the implied warranty of 
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 See the GNU Lesser General Public License for
 more details.
- 
-You should have received a copy of the GNU Lesser General 
+
+You should have received a copy of the GNU Lesser General
 Public License along with this program; if not, write to
 the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
- 
-Linking Engine3 statically or dynamically with other modules 
-is making a combined work based on Engine3. 
-Thus, the terms and conditions of the GNU Lesser General Public License 
+
+Linking Engine3 statically or dynamically with other modules
+is making a combined work based on Engine3.
+Thus, the terms and conditions of the GNU Lesser General Public License
 cover the whole combination.
- 
-In addition, as a special exception, the copyright holders of Engine3 
-give you permission to combine Engine3 program with free software 
-programs or libraries that are released under the GNU LGPL and with 
-code included in the standard release of Core3 under the GNU LGPL 
-license (or modified versions of such code, with unchanged license). 
-You may copy and distribute such a system following the terms of the 
-GNU LGPL for Engine3 and the licenses of the other code concerned, 
-provided that you include the source code of that other code when 
+
+In addition, as a special exception, the copyright holders of Engine3
+give you permission to combine Engine3 program with free software
+programs or libraries that are released under the GNU LGPL and with
+code included in the standard release of Core3 under the GNU LGPL
+license (or modified versions of such code, with unchanged license).
+You may copy and distribute such a system following the terms of the
+GNU LGPL for Engine3 and the licenses of the other code concerned,
+provided that you include the source code of that other code when
 and as the GNU LGPL requires distribution of source code.
- 
-Note that people who make modified versions of Engine3 are not obligated 
-to grant this special exception for their modified versions; 
-it is their choice whether to do so. The GNU Lesser General Public License 
-gives permission to release a modified version without this exception; 
-this exception also makes it possible to release a modified version 
+
+Note that people who make modified versions of Engine3 are not obligated
+to grant this special exception for their modified versions;
+it is their choice whether to do so. The GNU Lesser General Public License
+gives permission to release a modified version without this exception;
+this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
@@ -46,6 +46,10 @@ which carries forward this exception.
 #define BUFF_H_
 
 #include "BuffObject.h"
+
+#include "../../../ZoneProcessServerImplementation.h"
+
+#include "../../tangible/ItemAttributes.h"
 
 //#include "../skillmods/SkillModList.h"
 
@@ -208,7 +212,7 @@ public:
 	static const uint32 FORCE_RANK_SUFFERING = 0xF531B147;
 	static const uint32 FORCE_RANK_SERENITY = 0xA09E5934;
 	static const uint32 SKILL_BUFF_POLEARM_ACCURACY = 0xF0C5EEED;
-	static const uint32 SKILL_BUFF_POLEARM_SPEED = 0x6F675FB6;	
+	static const uint32 SKILL_BUFF_POLEARM_SPEED = 0x6F675FB6;
 };
 
 class BuffType {
@@ -235,190 +239,303 @@ protected:
 	float buffDuration;
 	uint32 buffCRC;
 	uint32 buffDownerCRC;
-	
 
-	
+	Event* buffEvent;
+	ZoneProcessServerImplementation* server;
+	uint32 expires;
+
+
 	// HAM Values - can be negative
 	int healthBuff;
 	int actionBuff;
 	int mindBuff;
-	
+
 	int strengthBuff;
 	int constitutionBuff;
-	
+
 	int staminaBuff;
 	int quicknessBuff;
-	
+
 	int willpowerBuff;
 	int focusBuff;
-	
+
 	int forcePowerBuff;
 	//int forceRegenBuff;
-	
+
 	//SkillModList skillModBuffs;
-	
+
 
 public:
 	Buff(uint32 crc);
-	
+
 	Buff(uint32 crc, int type, float duration);
-	
+
 	// TODO:  Need to do a better job with Shock Wounds
-	bool activateBuff(CreatureObject* creo);
-	
-	
+	bool activateBuff(CreatureObject* creo, ZoneProcessServerImplementation* serv);
+
+
 	// TODO:  Need to do a better job with Shock Wounds
 	void downerBuff(CreatureObject* creo);
-	
+
 	bool deActivateBuff(CreatureObject* creo, bool updateClient = true);
-	
+
+	inline void removeBuffEvent() {
+		if (buffEvent != NULL) {
+			if (buffEvent->isQueued()) {
+				if (server != NULL)
+					server->removeEvent(buffEvent);
+
+				delete buffEvent;
+				buffEvent = NULL;
+			}
+		}
+		setExpires(0);
+	}
+
 	// Getters
 	inline uint32 getBuffCRC() {
 		return buffCRC;
 	}
-	
+
 	inline uint32 getBuffDownerCRC() {
 		return buffDownerCRC;
 	}
-	
+
 	inline int getBuffType() {
 		return buffType;
 	}
-	
+
 	inline float getBuffDuration() {
 		return buffDuration;
 	}
-	
+
 	inline int getHealthBuff() {
 		return healthBuff;
 	}
-	
+
 	inline int getActionBuff() {
 		return actionBuff;
 	}
-	
+
 	inline int getMindBuff() {
 		return mindBuff;
 	}
-	
+
 	inline int getStrengthBuff() {
 		return strengthBuff;
 	}
-	
+
 	inline int getConstitutionBuff() {
 		return constitutionBuff;
 	}
-	
+
 	inline int getStaminaBuff() {
 		return staminaBuff;
 	}
-	
+
 	inline int getQuicknessBuff() {
 		return quicknessBuff;
 	}
-	
+
 	inline int getWillpowerBuff() {
 		return willpowerBuff;
 	}
-	
+
 	inline int getFocusBuff() {
 		return focusBuff;
 	}
-	
+
 	inline int getForcePowerBuff() {
 		return forcePowerBuff;
+	}
+
+	inline uint32 getExpires() {
+		return expires;
 	}
 	//inline int getForceRegenBuff() {
 	//	return forceRegenBuff;
 	//}
-	
+
 	// Setters
 	inline void setBuffCRC(uint32 crc) {
 		buffCRC = crc;
 	}
-	
+
 	inline void setBuffDownerCRC(uint32 crc) {
 		buffDownerCRC = crc;
 	}
-	
+
 	inline void setBuffType(int type) {
 		buffType = type;
 	}
-	
+
 	inline void setBuffDuration(float duration) {
 		buffDuration = duration;
 	}
-	
+
 	inline void setHealthBuff(int health) {
 		healthBuff = health;
 	}
-	
+
 	inline void setActionBuff(int action) {
 		actionBuff = action;
 	}
-	
+
 	inline void setMindBuff(int mind) {
 		mindBuff = mind;
 	}
-	
+
 	inline void setStrengthBuff(int strength) {
 		strengthBuff = strength;
 	}
-	
+
 	inline void setConstitutionBuff(int constitution) {
 		constitutionBuff = constitution;
 	}
-	
+
 	inline void setStaminaBuff(int stamina) {
 		staminaBuff = stamina;
 	}
-	
+
 	inline void setQuicknessBuff(int quickness) {
 		quicknessBuff = quickness;
 	}
-	
+
 	inline void setWillpowerBuff(int willpower) {
 		willpowerBuff = willpower;
 	}
-	
+
 	inline void setFocusBuff(int focus) {
 		focusBuff = focus;
 	}
-	
+
 	inline void setForcePowerBuff(int force) {
 		forcePowerBuff = force;
+	}
+
+	inline void setBuffEvent(Event* e) {
+		buffEvent = e;
+	}
+
+	inline void setZoneProcessServer(ZoneProcessServerImplementation* serv) {
+		server = serv;
+	}
+
+	inline void setExpires(uint32 exp) {
+		expires = exp;
 	}
 	//inline void setForceRegenBuff(int regen) {
 	//	forceRegenBuff = regen;
 	//}
-	
+
 	// Skill Mods
-	
+
 	/*
 	SkillModList* getSkillModBuffList() {
 		return &skillModBuffs;
 	}
-	
+
 	int getSkillModBuff(const string& name) {
 		int bonus = skillModBuffs.get(name);
 		return bonus;
 	}
-	
+
 	bool hasSkillModBuff(const string& name) {
 		return skillModBuffs.containsKey(name);
 	}
-	
+
 	void removeSkillModBuff(string& name) {
 		skillModBuffs.remove(name);
 	}
-	
+
 	void addSkillModBuff(string mod, int val) {
 		if(hasSkillModBuff(mod))
 			removeSkillModBuff(mod);
-		
+
 		skillModBuffs.put(mod, val);
 	}
 	*/
+
+	bool isActive() {
+		return buffEvent->isQueued();
+	}
+
+	int getTimeRemaining() {
+		uint32 t = (uint32) time(0);
+		uint32 diff = expires - t;
+
+		return (diff > 0) ? diff : 0;
+	}
+
+	inline string toString() {
+		stringstream result;
+		result << "buffType=" << buffType << ":"
+		<< "expires=" << expires << ":"
+		<< "buffCRC=" << buffCRC << ":"
+		<< "buffDownerCRC=" << buffDownerCRC << ":"
+		<< "healthBuff=" << healthBuff << ":"
+		<< "actionBuff=" << actionBuff << ":"
+		<< "mindBuff=" << mindBuff << ":"
+		<< "strengthBuff=" << strengthBuff << ":"
+		<< "constitutionBuff=" << constitutionBuff << ":"
+		<< "staminaBuff=" << staminaBuff << ":"
+		<< "quicknessBuff=" << quicknessBuff << ":"
+		<< "willpowerBuff=" << willpowerBuff << ":"
+		<< "focusBuff=" << focusBuff << ":"
+		<< "forcePowerBuff=" << forcePowerBuff << ":";
+
+		return result.str();
+	}
+
+	inline void createBuffFromString(string& buffstring) {
+		ItemAttributes* buffAttributes = new ItemAttributes();
+		buffAttributes->setAttributes(buffstring);
+
+		string attr = "buffType";
+		buffType = buffAttributes->getIntAttribute(attr);
+
+		attr = "expires";
+		expires = (uint32)buffAttributes->getUnsignedLongAttribute(attr);
+		setExpires(expires);
+
+		setBuffDuration(expires - (uint32)time(0));
+
+		attr = "buffCRC";
+		buffCRC = (uint32)buffAttributes->getUnsignedLongAttribute(attr);
+
+		attr = "buffDownerCRC";
+		buffDownerCRC = (uint32)buffAttributes->getUnsignedLongAttribute(attr);
+
+		attr = "healthBuff";
+		healthBuff = buffAttributes->getIntAttribute(attr);
+
+		attr = "actionBuff";
+		actionBuff = buffAttributes->getIntAttribute(attr);
+
+		attr = "mindBuff";
+		mindBuff = buffAttributes->getIntAttribute(attr);
+
+		attr = "constitutionBuff";
+		constitutionBuff = buffAttributes->getIntAttribute(attr);
+
+		attr = "staminaBuff";
+		staminaBuff = buffAttributes->getIntAttribute(attr);
+
+		attr = "willpowerBuff";
+		willpowerBuff = buffAttributes->getIntAttribute(attr);
+
+		attr = "strengthBuff";
+		strengthBuff = buffAttributes->getIntAttribute(attr);
+
+		attr = "quicknessBuff";
+		quicknessBuff = buffAttributes->getIntAttribute(attr);
+
+		attr = "focusBuff";
+		focusBuff = buffAttributes->getIntAttribute(attr);
+
+		attr = "forcePowerBuff";
+		forcePowerBuff = buffAttributes->getIntAttribute(attr);
+	}
 };
 
 #endif /*BUFF_H_*/

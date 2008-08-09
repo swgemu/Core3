@@ -1208,18 +1208,3 @@ void PlayerManagerImplementation::updatePlayerBaseHAMToDatabase(Player* player) 
 		cout << "PlayerManagerImplementation::updatePlayerBaseHAMToDatabase: failed SQL update: " << query.str() << "\n";
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

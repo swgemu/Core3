@@ -3573,6 +3573,30 @@ string& Player::getLastNpcConvMessStr() {
 		return ((PlayerImplementation*) _impl)->getLastNpcConvMessStr();
 }
 
+void Player::loadBuffs() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 280);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerImplementation*) _impl)->loadBuffs();
+}
+
+void Player::saveBuffs() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 281);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerImplementation*) _impl)->saveBuffs();
+}
+
 /*
  *	PlayerAdapter
  */
@@ -4405,6 +4429,12 @@ Packet* PlayerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case 279:
 		resp->insertAscii(getLastNpcConvMessStr());
+		break;
+	case 280:
+		loadBuffs();
+		break;
+	case 281:
+		saveBuffs();
 		break;
 	default:
 		return NULL;
@@ -5507,6 +5537,14 @@ string& PlayerAdapter::getLastNpcConvStr() {
 
 string& PlayerAdapter::getLastNpcConvMessStr() {
 	return ((PlayerImplementation*) impl)->getLastNpcConvMessStr();
+}
+
+void PlayerAdapter::loadBuffs() {
+	return ((PlayerImplementation*) impl)->loadBuffs();
+}
+
+void PlayerAdapter::saveBuffs() {
+	return ((PlayerImplementation*) impl)->saveBuffs();
 }
 
 /*

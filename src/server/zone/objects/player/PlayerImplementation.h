@@ -320,6 +320,9 @@ public:
 
 	void notifySceneReady();
 
+	void loadBuffs();
+	void saveBuffs();
+
 	void sendSystemMessage(const string& message);
 	void sendSystemMessage(const string& file, const string& str, uint64 targetid = 0);
 	void sendSystemMessage(unicode& message);
@@ -602,6 +605,8 @@ public:
 	// buffing methods
 	void addBuff(uint32 buffcrc, float time);
 	void clearBuffs(bool doUpdatePlayer = true);
+
+	void updateBuffWindow();
 
 	// jedi methods
 	void calculateForceRegen();

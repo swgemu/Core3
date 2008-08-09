@@ -4293,10 +4293,7 @@ void CreatureObjectImplementation::applyBuff(Buff *buff) {
 
 	creatureBuffs.put(buff->getBuffCRC(), buff);
 
-	buff->activateBuff(_this);
-
-	Event* e = new CreatureBuffEvent(_this, buff->getBuffCRC(), buff->getBuffDuration());
-	server->addEvent(e);
+	buff->activateBuff(_this, server);
 
 	activateRecovery();
 }
@@ -4306,19 +4303,9 @@ void CreatureObjectImplementation::applyBuff(Buff *buff) {
 // loaded back when they login
 
 void CreatureObjectImplementation::removeBuffs(bool doUpdateCreature) {
-	// Remove events from server queue
-	for (int i = 0; i < buffEvents.size(); i++) {
-		Event* e = buffEvents.get(i);
-		server->removeEvent(e);
-
-		delete e;
-	}
-	// Remove from Creature
-	buffEvents.removeAll();
-
-	// used in deconstructor -- save current buff duration to the player object at some future time
 	if (!doUpdateCreature) {
-		// TODO: cleanup the creatureBuffs possibly?
+		// TODO: This is needed for unload()
+		resetHAMBars();
 		return;
 	}
 
