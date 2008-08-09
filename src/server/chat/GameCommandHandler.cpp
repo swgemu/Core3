@@ -188,7 +188,7 @@ void GameCommandHandler::init() {
 			"Prints your current HAM stats.",
 			"Usage: @HAMStats",
 			&HAMStats);
-	gmCommands->addCommand("buff", DEVELOPER,
+	gmCommands->addCommand("buff", PRIVILEGED,
 			"Buffs your player.",
 			"Usage: @buff",
 			&buff);
@@ -208,7 +208,7 @@ void GameCommandHandler::init() {
 			"Purges deleted items from the database.",
 			"Usage: @dbPurge",
 			&dbPurge);*/
-	gmCommands->addCommand("getDirection", DEVELOPER,
+	gmCommands->addCommand("getDirection", PRIVILEGED,
 			"Prints out your direction or the direction of a targeted object.",
 			"Usage: @getDirection",
 			&getDirection);
