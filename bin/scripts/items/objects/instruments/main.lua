@@ -44,7 +44,7 @@
 RunItemLUAFile("objects/instruments/bandfill.lua");
 RunItemLUAFile("objects/instruments/fanfar.lua");
 RunItemLUAFile("objects/instruments/fizz.lua");
-RunItemLUAFile("objects/instruments/flute_droopy.lua");
+RunItemLUAFile("objects/instruments/flutedroopy.lua");
 RunItemLUAFile("objects/instruments/kloo_horn.lua");
 RunItemLUAFile("objects/instruments/mandoviol.lua");
 RunItemLUAFile("objects/instruments/traz.lua");

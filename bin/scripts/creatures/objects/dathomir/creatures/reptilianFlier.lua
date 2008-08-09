@@ -58,18 +58,18 @@ reptilianFlier = Creature:new {
 
       healthMax = 4300,
       healthMin = 3500,
-      strength = 0,
-      constitution = 0,
+      strength = 500,
+      constitution = 500,
 
       actionMax = 4300,
       actionMin = 3500,
-      quickness = 0,
-      stamina = 0,
+      quickness = 500,
+      stamina = 500,
 
       mindMax = 4300,
       mindMin = 3500,
-      focus = 0,
-      willpower = 0,
+      focus = 500,
+      willpower = 500,
 
       height = 1, -- Size of creature
       armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
@@ -120,7 +120,7 @@ reptilianFlier = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0.25,  -- Likely hood to be tamed
 

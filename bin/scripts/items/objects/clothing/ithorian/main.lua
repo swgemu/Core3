@@ -41,26 +41,26 @@
 --which carries forward this exception.
 
 
-RunItemLUAFile("objects/clothing/ithorian/ith_dress_vest.lua");
-RunItemLUAFile("objects/clothing/ithorian/ith_mystic_shirt.lua");
-RunItemLUAFile("objects/clothing/ithorian/ith_patrol_pants.lua");
-RunItemLUAFile("objects/clothing/ithorian/ith_striped_shirt.lua");
-RunItemLUAFile("objects/clothing/ithorian/ith_reinforced_trousers.lua");
-RunItemLUAFile("objects/clothing/ithorian/ith_frilly_shirt.lua");
-RunItemLUAFile("objects/clothing/ithorian/ith_padded_trousers.lua");
-RunItemLUAFile("objects/clothing/ithorian/ith_brawling_gloves.lua");
-RunItemLUAFile("objects/clothing/ithorian/ith_knitted_shirt.lua");
-RunItemLUAFile("objects/clothing/ithorian/ith_baggies.lua");
-RunItemLUAFile("objects/clothing/ithorian/ith_buckle_pants.lua");
-RunItemLUAFile("objects/clothing/ithorian/ith_fade_dyed_shirt.lua");
-RunItemLUAFile("objects/clothing/ithorian/ith_cargo_jacket.lua");
-RunItemLUAFile("objects/clothing/ithorian/ith_camos.lua");
-RunItemLUAFile("objects/clothing/ithorian/ith_tight_fit_shirt.lua");
-RunItemLUAFile("objects/clothing/ithorian/ith_med_team_jacket.lua");
-RunItemLUAFile("objects/clothing/ithorian/ith_cargo_pants.lua");
-RunItemLUAFile("objects/clothing/ithorian/ith_easy_fit_shirt.lua");
-RunItemLUAFile("objects/clothing/ithorian/ith_striped_pants.lua");
-RunItemLUAFile("objects/clothing/ithorian/ith_long_sweater.lua");
-RunItemLUAFile("objects/clothing/ithorian/ith_half_sweater.lua");
-RunItemLUAFile("objects/clothing/ithorian/ith_strange_pants.lua");
+RunItemLUAFile("objects/clothing/ithorian/ithDressVest.lua");
+RunItemLUAFile("objects/clothing/ithorian/ithMysticShirt.lua");
+RunItemLUAFile("objects/clothing/ithorian/ithPatrolPants.lua");
+RunItemLUAFile("objects/clothing/ithorian/ithStripedShirt.lua");
+RunItemLUAFile("objects/clothing/ithorian/ithReinforcedTrousers.lua");
+RunItemLUAFile("objects/clothing/ithorian/ithFrillyShirt.lua");
+RunItemLUAFile("objects/clothing/ithorian/ithPaddedTrousers.lua");
+RunItemLUAFile("objects/clothing/ithorian/ithBrawlingGloves.lua");
+RunItemLUAFile("objects/clothing/ithorian/ithKnittedShirt.lua");
+RunItemLUAFile("objects/clothing/ithorian/ithBaggies.lua");
+RunItemLUAFile("objects/clothing/ithorian/ithBucklePants.lua");
+RunItemLUAFile("objects/clothing/ithorian/ithFadeDyedShirt.lua");
+RunItemLUAFile("objects/clothing/ithorian/ithCargoJacket.lua");
+RunItemLUAFile("objects/clothing/ithorian/ithCamos.lua");
+RunItemLUAFile("objects/clothing/ithorian/ithTightFitShirt.lua");
+RunItemLUAFile("objects/clothing/ithorian/ithMedTeamJacket.lua");
+RunItemLUAFile("objects/clothing/ithorian/ithCargoPants.lua");
+RunItemLUAFile("objects/clothing/ithorian/ithEasyFitShirt.lua");
+RunItemLUAFile("objects/clothing/ithorian/ithStripedPants.lua");
+RunItemLUAFile("objects/clothing/ithorian/ithLongSweater.lua");
+RunItemLUAFile("objects/clothing/ithorian/ithHalfSweater.lua");
+RunItemLUAFile("objects/clothing/ithorian/ithStrangePants.lua");
 

@@ -64,6 +64,7 @@ public:
 	
 	static const int JAWA = 0x00;
 	static const int GUNGAN = 0x01;
+	static const int MEDDROID	= 0x02;
 
 	void sendConversationStartTo(SceneObject* obj);
 	void sendMessage1(Player* player);

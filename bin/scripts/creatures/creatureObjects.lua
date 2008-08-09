@@ -263,3 +263,7 @@ RunCreatureFile("objects/naboo/creatures/fleshEatingChuba.lua")
 RunCreatureFile("objects/naboo/creatures/nightspider.lua")
 RunCreatureFile("objects/naboo/creatures/shaupaut.lua")
 
+-- Event
+RunCreatureFile("objects/events/npcs/eventbobafett.lua")
+RunCreatureFile("objects/events/npcs/eventpalpatine.lua")
+RunCreatureFile("objects/events/npcs/eventroyalguard.lua")

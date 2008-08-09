@@ -51,25 +51,25 @@ tuskenSniper = Creature:new {
       socialGroup = "Tusken Raider",
       named = FALSE, 
 
-      level = 22,
+      level = 75,
       xp = 2219,
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
       healthMax = 7200,
       healthMin = 5900,
-      strength = 0,
-      constitution = 0,
+      strength = 500,
+      constitution = 500,
 
       actionMax = 7200,
       actionMin = 5900,
-      quickness = 0,
-      stamina = 0,
+      quickness = 500,
+      stamina = 500,
 
       mindMax = 7200,
       mindMin = 5900,
-      focus = 0,
-      willpower = 0,
+      focus = 500,
+      willpower = 500,
 
       height = 1, -- Size of creature
       armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
@@ -96,31 +96,31 @@ tuskenSniper = Creature:new {
 
       attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "object/weapon/melee/baton/shared_baton_gaderiffi.iff", -- File path to weapon -> object\xxx\xxx\xx
-      weaponName = "a Gaderiffi", -- Name ex. 'a Vibrolance'
-      weaponTemp = "baton_gaderiffi", -- Weapon Template ex. 'lance_vibrolance'
-      weaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+      weapon = "object/weapon/ranged/rifle/shared_rifle_tusken.iff", -- File path to weapon -> object\xxx\xxx\xx
+      weaponName = "a Tusken Rifle", -- Name ex. 'a Vibrolance'
+      weaponTemp = "rifle_tusken", -- Weapon Template ex. 'lance_vibrolance'
+      weaponClass = "RifleRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
       weaponEquipped = 1,
       weaponMinDamage = 175,
       weaponMaxDamage = 200,
-      weaponAttackSpeed = 1.5,
-      weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
-      weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
+      weaponAttackSpeed = 2.5,
+      weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
+      weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      alternateWeapon = "object/weapon/ranged/rifle/shared_rifle_tusken.iff", -- File path to weapon -> object\xxx\xxx\xx
-      alternateWeaponName = "a Tusken Rifle", -- Name ex. 'a Vibrolance'
-      alternateWeaponTemp = "rifle_tusken", -- Weapon Template ex. 'lance_vibrolance'
-      alternateWeaponClass = "RifleRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      alternateWeaponEquipped = 1,
-      alternateWeaponMinDamage = 175,
-      alternateWeaponMaxDamage = 200,
-      alternateWeaponAttackSpeed = 4,
-      alternateWeaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
-      alternateWeaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
+      alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
+      alternateWeaponName = "", -- Name ex. 'a Vibrolance'
+      alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
+      alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+      alternateWeaponEquipped = 0,
+      alternateWeaponMinDamage = 0,
+      alternateWeaponMaxDamage = 0,
+      alternateWeaponAttackSpeed = 0,
+      alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
+      alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 

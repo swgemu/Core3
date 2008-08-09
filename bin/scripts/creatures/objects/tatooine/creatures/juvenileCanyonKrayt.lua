@@ -58,18 +58,18 @@ juvenileCanyonKrayt = Creature:new {
 
       healthMax = 54000,
       healthMin = 44000,
-      strength = 0,
-      constitution = 0,
+      strength = 500,
+      constitution = 500,
 
       actionMax = 54000,
       actionMin = 44000,
-      quickness = 0,
-      stamina = 0,
+      quickness = 500,
+      stamina = 500,
 
       mindMax = 54000,
       mindMin = 44000,
-      focus = 0,
-      willpower = 0,
+      focus = 500,
+      willpower = 500,
 
       height = 1, -- Size of creature
 	  
@@ -121,7 +121,7 @@ juvenileCanyonKrayt = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 

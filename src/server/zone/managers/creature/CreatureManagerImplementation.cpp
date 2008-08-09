@@ -165,6 +165,7 @@ void CreatureManagerImplementation::loadBlueFrogs() {
 		spawnBlueFrog(-4834, 4148, .723221, -.690617, BlueFrogCreatureImplementation::GUNGAN);
 		spawnBlueFrog(-4879, 4185, 1, 0, BlueFrogCreatureImplementation::GUNGAN);
 		spawnBlueFrog(17.6233, 11.2728, 1, 0, BlueFrogCreatureImplementation::GUNGAN, 1697360);
+		spawnBlueFrog(2.2, -2.5, 1, 0, BlueFrogCreatureImplementation::GUNGAN, 91);
 	} else if (zone->getZoneID() == 8) {
 		spawnBlueFrog(45, -5352, -.11083, .993839, BlueFrogCreatureImplementation::JAWA);
 		spawnBlueFrog(59, -5336, 1, 0, BlueFrogCreatureImplementation::JAWA);

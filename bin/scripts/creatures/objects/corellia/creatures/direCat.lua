@@ -58,18 +58,18 @@ direCat = Creature:new {
 
       healthMax = 1200,
       healthMin = 1000,
-      strength = 0,
-      constitution = 0,
+      strength = 500,
+      constitution = 500,
 
       actionMax = 1200,
       actionMin = 1000,
-      quickness = 0,
-      stamina = 0,
+      quickness = 500,
+      stamina = 500,
 
       mindMax = 1200,
       mindMin = 1000,
-      focus = 0,
-      willpower = 0,
+      focus = 500,
+      willpower = 500,
 
       height = 1, -- Size of creature
       armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
@@ -120,7 +120,7 @@ direCat = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0.25,  -- Likely hood to be tamed
 

@@ -58,30 +58,30 @@ darthVader = Creature:new {
 
       healthMax = 471000,
       healthMin = 385000,
-      strength = 0,
-      constitution = 0,
+      strength = 50000,
+      constitution = 50000,
 
       actionMax = 471000,
       actionMin = 385000,
-      quickness = 0,
-      stamina = 0,
+      quickness = 50000,
+      stamina = 50000,
 
       mindMax = 471000,
       mindMin = 385000,
-      focus = 0,
-      willpower = 0,
+      focus = 50000,
+      willpower = 50000,
 
       height = 1, -- Size of creature
-      armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-      kinetic = 0,
-      energy = 0,
-      electricity = 0,
-      stun = 0,
-      blast = 0,
-      heat = 0,
-      cold = 0,
-      acid = 0,
-      lightsaber = 0,
+      armor = 2, -- Just a guess
+      kinetic = 60,
+      energy = 50,
+	  electricity = 60,
+      stun = 60,
+ 	  blast = 60,
+ 	  heat = 60,
+ 	  cold = 60,
+ 	  acid = 60,
+ 	  lightSaber = 0, 
 
       accuracy = 300,
 
@@ -120,7 +120,7 @@ darthVader = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 

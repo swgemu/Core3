@@ -51,35 +51,35 @@ stormtrooper = Creature:new {
       socialGroup = "Imperial",
       named = FALSE, 
 
-      level = 1,
-      xp = 45,
+      level = 80,
+      xp = 10000,
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
       healthMax = 8800,
       healthMin = 7200,
-      strength = 0,
-      constitution = 0,
+      strength = 500,
+      constitution = 500,
 
       actionMax = 8800,
       actionMin = 7200,
-      quickness = 0,
-      stamina = 0,
+      quickness = 500,
+      stamina = 500,
 
       mindMax = 8800,
       mindMin = 7200,
-      focus = 0,
-      willpower = 0,
+      focus = 500,
+      willpower = 500,
 
       height = 1, -- Size of creature
-      armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-      kinetic = 0,
-      energy = 0,
-      electricity = 0,
-      stun = -1,
-      blast = 40,
+      armor = 2, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+      kinetic = 30,
+      energy = 30,
+      electricity = 30,
+      stun = 0,
+      blast = 30,
       heat = 0,
-      cold = 0,
+      cold = 30,
       acid = 0,
       lightsaber = 0,
 
@@ -120,7 +120,7 @@ stormtrooper = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 

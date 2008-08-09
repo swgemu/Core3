@@ -50,3 +50,4 @@ RunItemLUAFile("bluefrog/enhancePackSet.lua");
 RunItemLUAFile("bluefrog/stimPackSet.lua");
 RunItemLUAFile("bluefrog/woundPackSet.lua");
 RunItemLUAFile("bluefrog/statePackSet.lua");
+RunItemLUAFile("bluefrog/clothingSets.lua");
