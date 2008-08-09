@@ -887,7 +887,7 @@ void PlayerManagerImplementation::doBankTip(Player* sender, Player* receiver, ui
 
 			unicode subjectReceiver("BANK TIP RECEIVED");
 			stringstream ss2;
-			ss2 << "You have recieved a bank tip of " << tipAmount << " credits from " << sender->getFirstName() << ".";
+			ss2 << "You have received a bank tip of " << tipAmount << " credits from " << sender->getFirstName() << ".";
 			unicode bodyReceiver(ss2.str());
 
 			//Email the player you bank tipped.

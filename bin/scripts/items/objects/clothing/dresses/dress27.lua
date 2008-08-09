@@ -40,7 +40,7 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-dress28 = Clothing:new {
+dress27 = Clothing:new {
 
 	objectName = "Dress 27",
 

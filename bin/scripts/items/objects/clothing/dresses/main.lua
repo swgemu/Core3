@@ -43,8 +43,9 @@
 
 RunItemLUAFile("objects/clothing/dresses/dress5.lua");
 RunItemLUAFile("objects/clothing/dresses/dress6.lua");
+RunItemLUAFile("objects/clothing/dresses/dress7.lua");
 RunItemLUAFile("objects/clothing/dresses/dress8.lua");
-RunItemLUAFile("objects/clothing/dresses/dress8quest.lua");
+RunItemLUAFile("objects/clothing/dresses/dress8Quest.lua");
 RunItemLUAFile("objects/clothing/dresses/dress9.lua");
 RunItemLUAFile("objects/clothing/dresses/dress10.lua");
 RunItemLUAFile("objects/clothing/dresses/dress11.lua");

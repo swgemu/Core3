@@ -42,7 +42,7 @@
 
 -- Naboo Events
 
-spawnCreatureInCell(eventbobafett, 5, 47.3, 0.1, 2.7, 89)
-spawnCreatureInCell(eventpalpatine, 5, 24.9, -0.9, 9.8, 91)
-spawnCreatureInCell(eventroyalguard, 5, 26.2, -0.9, 7.4, 91)
-spawnCreatureInCell(eventroyalguard, 5, 22.1, -0.9, 11.5, 91)
+-- spawnCreatureInCell(eventbobafett, 5, 47.3, 0.1, 2.7, 89)
+-- spawnCreatureInCell(eventpalpatine, 5, 24.9, -0.9, 9.8, 91)
+-- spawnCreatureInCell(eventroyalguard, 5, 26.2, -0.9, 7.4, 91)
+-- spawnCreatureInCell(eventroyalguard, 5, 22.1, -0.9, 11.5, 91)

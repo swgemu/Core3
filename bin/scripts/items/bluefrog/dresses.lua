@@ -40,6 +40,6 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-dresses = {dress5, dress6, dress7, dress8, dress8quest, dress9, dress10, dress11,dress12, dress13, dress14, dress15, dress16, dress18, dress19, dress23,dress26, dress27, dress29, dress30, dress31, dress32, dress33, dress34,dress35}
+dresses = {dress5, dress6, dress7, dress8, dress8Quest, dress9, dress10, dress11, dress12, dress13, dress14, dress15, dress16, dress18, dress19, dress23, dress26, dress27, dress29, dress30, dress31, dress32, dress33, dress34, dress35}
 
 addBFItemSet("Dresses" , dresses);

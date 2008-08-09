@@ -236,7 +236,7 @@ void RadialManager::handleSelection(int radialID, Player* player, SceneObject* o
 	case 195: // SERVER_GUILD_MEMBER_MANAGEMENT
 		break;
 	default:
-		//cout << "Unkown radial selection recieved:" << radialID << "\n";
+		//cout << "Unkown radial selection received:" << radialID << "\n";
 		break;
 	}
 

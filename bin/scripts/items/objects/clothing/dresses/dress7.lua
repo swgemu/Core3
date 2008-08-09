@@ -44,7 +44,7 @@ dress7 = Clothing:new {
 
 	objectName = "Dress 7",
 
-	templateName = "dress_s073",
+	templateName = "dress_s07",
 
 	objectCRC = "4287916301",
 

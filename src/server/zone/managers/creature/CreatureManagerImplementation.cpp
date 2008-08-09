@@ -915,7 +915,7 @@ void CreatureManagerImplementation::registerGlobals() {
 	setGlobalInt("ATTACKABLE_FLAG", 1);
 	setGlobalInt("AGGRESSIVE_FLAG", 2);
 	setGlobalInt("ENEMY_FLAG", 0x20);
-	setGlobalInt("NPC_FLAG", 0x00);
+	setGlobalInt("NPC_FLAG", 0x15);
 }
 
 uint64 CreatureManagerImplementation::getNextCreatureID() {

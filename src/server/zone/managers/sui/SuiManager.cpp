@@ -476,7 +476,7 @@ void SuiManager::handleBlueFrogItemRequest(uint32 boxID, Player* player, uint32 
 
 			if(itemIndex >= 0 && itemIndex < bfVector->size()) {
 				itemManager->giveBFItemSet(player, bfVector->get(itemIndex));
-				player->sendSystemMessage("You recieved a " + bfVector->get(itemIndex));
+				player->sendSystemMessage("You received a " + bfVector->get(itemIndex));
 			}
 		}
 
