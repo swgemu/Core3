@@ -43,27 +43,27 @@
 
 ---------------------Male Humanoid Items------------------------------------
 
-artisan_humanoid_male_items = {dress_shoes, crafters_pants, soft_undershirt}
+artisan_humanoid_male_items = {dressShoes, craftersPants, softUndershirt}
 
 --------------------------Female Humanoid Items---------------------------
 
-artisan_humanoid_female_items = {sandals, flared_cuff_shirt, wrapped_skirt}
+artisan_humanoid_female_items = {sandals, flaredCuff_Shirt, wrappedSkirt}
 
 --------------------------Male Trandoshan Items---------------------------
 
-artisan_trandoshan_male_items = {crafters_pants, soft_undershirt}
+artisan_trandoshan_male_items = {craftersPants, softUndershirt}
 
 --------------------------Female Trandoshan Items------------------------
 
-artisan_trandoshan_female_items = {flared_cuff_shirt, wrapped_skirt}
+artisan_trandoshan_female_items = {flaredCuffShirt, wrappedSkirt}
 
 --------------------------Male Ithorian Items---------------------------
 
-artisan_ithorian_male_items = {ith_mystic_shirt, ith_patrol_pants, ith_dress_vest}
+artisan_ithorian_male_items = {ithMysticShirt, ithPatrolPants, ithDressVest}
 
 --------------------------Female Ithorian Items---------------------------
 
-artisan_ithorian_female_items = {ith_patrol_pants, ith_striped_shirt, ith_dress_vest}
+artisan_ithorian_female_items = {ithPatrolPants, ithStripedShirt, ithDressVest}
 
 --------------------------Wookiee Items---------------------------
 

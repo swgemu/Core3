@@ -43,27 +43,27 @@
 
 ---------------------Male Humanoid Items------------------------------------
 
-medic_humanoid_male_items = {casual_shoes, sleeveless_jacket, work_slacks, reinforced_work_shirt}
+medic_humanoid_male_items = {casualShoes, sleevelessJacket, workSlacks, reinforcedWorkShirt}
 
 --------------------------Female Humanoid Items---------------------------
 
-medic_humanoid_female_items = {hide_boots, reinforced_jumpsuit}
+medic_humanoid_female_items = {hideBoots, reinforcedJumpsuit}
 
 --------------------------Male Trandoshan Items---------------------------
 
-medic_trandoshan_male_items = {sleeveless_jacket, work_slacks, reinforced_work_shirt}
+medic_trandoshan_male_items = {sleevelessJacket, workSlacks, reinforcedWorkShirt}
 
 --------------------------Female Trandoshan Items------------------------
 
-medic_trandoshan_female_items = {reinforced_jumpsuit}
+medic_trandoshan_female_items = {reinforcedJumpSuit}
 
 --------------------------Male Ithorian Items---------------------------
 
-medic_ithorian_male_items = {ith_med_team_jacket, ith_cargo_pants, ith_easy_fit_shirt}
+medic_ithorian_male_items = {ithMedTeamJacket, ithCargoPants, ithEasyFitShirt}
 
 --------------------------Female Ithorian Items---------------------------
 
-medic_ithorian_female_items = {ith_striped_pants, ith_long_sweater}
+medic_ithorian_female_items = {ithStripedPants, ithLongSweater}
 
 medic_wookie_male_items = { }
 medic_wookie_female_items = { }

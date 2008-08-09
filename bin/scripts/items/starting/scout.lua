@@ -43,28 +43,28 @@
 
 ---------------------Male Humanoid Items------------------------------------
 
-scout_humanoid_male_items = {casual_shoes, cargo_vest, paramilitary_camos, longsleeve_shirt}
+scout_humanoid_male_items = {casualShoes, cargoVest, paramilitaryCamos, longSleeveShirt}
 
 --------------------------Female Humanoid Items---------------------------
 
 
-scout_humanoid_female_items = {casual_shoes, lined_workshirt, paramilitary_camos}
+scout_humanoid_female_items = {casualShoes, linedWorkShirt, paramilitaryCamos}
 
 --------------------------Male Trandoshan Items---------------------------
 
-scout_trandoshan_male_items = {cargo_vest, paramilitary_camos, longsleeve_shirt}
+scout_trandoshan_male_items = {cargoVest, paramilitaryCamos, longSleeveShirt}
 
 --------------------------Female Trandoshan Items------------------------
 
-scout_trandoshan_female_items = {lined_workshirt, paramilitary_camos}
+scout_trandoshan_female_items = {linedWorkShirt, paramilitaryCamos}
 
 --------------------------Male Ithorian Items---------------------------
 
-scout_ithorian_male_items = {ith_half_sweater, ith_strange_pants}
+scout_ithorian_male_items = {ithHalfSweater, ithStrangePants}
 
 --------------------------Female Ithorian Items---------------------------
 
-scout_ithorian_female_items = {ith_half_sweater, ith_strange_pants}
+scout_ithorian_female_items = {ithHalfSweater, ithStrangePants}
 
 scout_wookie_male_items = { }
 scout_wookie_female_items = { }

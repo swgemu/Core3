@@ -43,27 +43,27 @@
 
 ---------------------Male Humanoid Items------------------------------------
 
-entertainer_humanoid_male_items = {dress_shoes, striped_slacks, muscle_shirt}
+entertainer_humanoid_male_items = {dressShoes, stripedSlacks, muscleShirt}
 
 --------------------------Female Humanoid Items---------------------------
 
-entertainer_humanoid_female_items = {dress_slippers, flexform_shirt, desert_crawlers}
+entertainer_humanoid_female_items = {dressSlippers, flexFormShirt, desertCrawlers}
 
 --------------------------Male Trandoshan Items---------------------------
 
-entertainer_trandoshan_male_items = {striped_slacks, muscle_shirt}
+entertainer_trandoshan_male_items = {stripedSlacks, muscleShirt}
 
 --------------------------Female Trandoshan Items------------------------
 
-entertainer_trandoshan_female_items = {flexform_shirt, desert_crawlers}
+entertainer_trandoshan_female_items = {flexFormShirt, desertCrawlers}
 
 --------------------------Male Ithorian Items---------------------------
 
-entertainer_ithorian_male_items = {ith_knitted_shirt, ith_baggies}
+entertainer_ithorian_male_items = {ithKnittedShirt, ithBaggies}
 
 --------------------------Female Ithorian Items---------------------------
 
-entertainer_ithorian_female_items = {ith_buckle_pants, ith_fade_dyed_shirt}
+entertainer_ithorian_female_items = {ithBucklePants, ithFadeDyedShirt}
 
 entertainer_wookie_male_items = { }
 entertainer_wookie_female_items = { }

@@ -43,28 +43,28 @@
 
 -------------------Male Humanoid Items------------------------------------
 
-marksman_humanoid_male_items = {paneled_boots, padded_jacket, pocketed_work_pants}
+marksman_humanoid_male_items = {paneledBoots, paddedJacket, pocketedWorkPants}
 
 --------------------------Female Humanoid Items---------------------------
 
 
-marksman_humanoid_female_items = {casual_shoes, sports_wrap, pantaloons, mangy_vest}
+marksman_humanoid_female_items = {casualShoes, sportsWrap, pantaloons, mangyVest}
 
 --------------------------Male Trandoshan Items---------------------------
 
-marksman_trandoshan_male_items = {padded_jacket, pocketed_work_pants}
+marksman_trandoshan_male_items = {paddedJacket, pocketedWorkPants}
 
 --------------------------Female Trandoshan Items------------------------
 
-marksman_trandoshan_female_items = {sports_wrap, pantaloons, mangy_vest}
+marksman_trandoshan_female_items = {sportsWrap, pantaloons, mangyVest}
 
 --------------------------Male Ithorian Items---------------------------
 
-marksman_ithorian_male_items = {ith_cargo_jacket, ith_camos, ith_tight_fit_shirt}
+marksman_ithorian_male_items = {ithCargoJacket, ithCamos, ithTightFitShirt}
 
 --------------------------Female Ithorian Items---------------------------
 
-marksman_ithorian_female_items = {ith_camos, ith_tight_fit_shirt}
+marksman_ithorian_female_items = {ithCamos, ithTightFitShirt}
 
 marksman_wookie_male_items = { }
 marksman_wookie_female_items = { }

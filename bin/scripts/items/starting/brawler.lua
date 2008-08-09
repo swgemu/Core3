@@ -43,28 +43,28 @@
 
 ---------------------Male Humanoid Items------------------------------------
 
-brawler_humanoid_male_items = {sturdy_boots, cold_weather_jacket, formfitting_undershirt, large_pocket_pants}
+brawler_humanoid_male_items = {sturdyBoots, coldWeatherJacket, formFittingUndershirt, largePocketPants}
 
 --------------------------Female Humanoid Items---------------------------
 
-brawler_humanoid_female_items = {sturdy_boots, shortsleeve_shirt, basic_camos, cold_weather_gloves}
+brawler_humanoid_female_items = {sturdyBoots, shortSleeveShirt, basicCamos, coldWeatherGloves}
 
 
 --------------------------Male Trandoshan Items---------------------------
 
-brawler_trandoshan_male_items = {cold_weather_jacket, formfitting_undershirt, large_pocket_pants}
+brawler_trandoshan_male_items = {coldWeatherJacket, formFittingUndershirt, largePocketPants}
 
 --------------------------Female Trandoshan Items------------------------
 
-brawler_trandoshan_female_items = {shortsleeve_shirt, basic_camos, cold_weather_gloves}
+brawler_trandoshan_female_items = {shortsSleeveShirt, basicCamos, coldWeatherGloves}
 
 --------------------------Male Ithorian Items---------------------------
 
-brawler_ithorian_male_items = {ith_reinforced_trousers, ith_frilly_shirt}
+brawler_ithorian_male_items = {ithReinforcedTrousers, ithFrillyShirt}
 
 --------------------------Female Ithorian Items---------------------------
 
-brawler_ithorian_female_items = {ith_padded_trousers, ith_frilly_shirt, ith_brawling_gloves}
+brawler_ithorian_female_items = {ithPaddedTrousers, ithFrillyShirt, ithBrawlingGloves}
 
 brawler_wookie_male_items = { }
 brawler_wookie_female_items = { }
