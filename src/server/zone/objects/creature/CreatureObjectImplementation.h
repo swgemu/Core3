@@ -139,7 +139,7 @@ protected:
 
 	float internalNPCDamageModifier;
 
-	int lootGroup;
+	string lootGroup;
 
 	float tame;
 
@@ -1933,7 +1933,7 @@ public:
 		return meatMax;
 	}
 
-	inline int getLootGroup() {
+	inline string& getLootGroup() {
 		return lootGroup;
 	}
 
@@ -2087,7 +2087,7 @@ public:
 		meatMax = meatmax;
 	}
 
-	inline void setLootGroup(int lootgroup) {
+	inline void setLootGroup(const string& lootgroup) {
 		lootGroup = lootgroup;
 	}
 

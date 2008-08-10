@@ -769,7 +769,7 @@ public:
 
 	float getTame();
 
-	int getLootGroup();
+	string& getLootGroup();
 
 	void setBaseHealth(unsigned int health);
 
@@ -985,7 +985,7 @@ public:
 
 	void setBehaviorScript(const string& behaviorScript);
 
-	void setLootGroup(int lootgroup);
+	void setLootGroup(const string& lootgroup);
 
 	void setTame(float tme);
 
@@ -1030,6 +1030,7 @@ protected:
 	string _return_getGender;
 	string _return_getGuildName;
 	string _return_getHideType;
+	string _return_getLootGroup;
 	string _return_getMeatType;
 	string _return_getMood;
 	string _return_getPerformanceAnimation;
@@ -1773,7 +1774,7 @@ public:
 
 	float getTame();
 
-	int getLootGroup();
+	string& getLootGroup();
 
 	void setBaseHealth(unsigned int health);
 
@@ -1989,7 +1990,7 @@ public:
 
 	void setBehaviorScript(const string& behaviorScript);
 
-	void setLootGroup(int lootgroup);
+	void setLootGroup(const string& lootgroup);
 
 	void setTame(float tme);
 
@@ -2055,6 +2056,7 @@ protected:
 	string _param0_setHideType__string_;
 	string _param0_setMeatType__string_;
 	string _param0_setBehaviorScript__string_;
+	string _param0_setLootGroup__string_;
 	string _param0_setCreatureFaction__string_;
 	string _param0_setCreatureWeapon__string_;
 	string _param0_setCreatureWeaponName__string_;

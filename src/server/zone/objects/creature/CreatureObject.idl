@@ -600,7 +600,7 @@ interface CreatureObject implements SceneObject {
 	
 	float getTame();
 	
-	int getLootGroup();
+	string getLootGroup();
 
 	// setters
 	void setBaseHealth(unsigned int health);
@@ -759,7 +759,7 @@ interface CreatureObject implements SceneObject {
 	
 	void setBehaviorScript(const string behaviorScript);
 	
-	void setLootGroup(int lootgroup);
+	void setLootGroup(const string lootgroup);
 	
 	void setTame(float tme);
 	

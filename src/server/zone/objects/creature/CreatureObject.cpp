@@ -4654,14 +4654,15 @@ float CreatureObject::getTame() {
 		return ((CreatureObjectImplementation*) _impl)->getTame();
 }
 
-int CreatureObject::getLootGroup() {
+string& CreatureObject::getLootGroup() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 366);
 
-		return method.executeWithSignedIntReturn();
+		method.executeWithAsciiReturn(_return_getLootGroup);
+		return _return_getLootGroup;
 	} else
 		return ((CreatureObjectImplementation*) _impl)->getLootGroup();
 }
@@ -6061,13 +6062,13 @@ void CreatureObject::setBehaviorScript(const string& behaviorScript) {
 		((CreatureObjectImplementation*) _impl)->setBehaviorScript(behaviorScript);
 }
 
-void CreatureObject::setLootGroup(int lootgroup) {
+void CreatureObject::setLootGroup(const string& lootgroup) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 474);
-		method.addSignedIntParameter(lootgroup);
+		method.addAsciiParameter(lootgroup);
 
 		method.executeWithVoidReturn();
 	} else
@@ -7335,7 +7336,7 @@ Packet* CreatureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		resp->insertFloat(getTame());
 		break;
 	case 366:
-		resp->insertSignedInt(getLootGroup());
+		resp->insertAscii(getLootGroup());
 		break;
 	case 367:
 		setBaseHealth(inv->getUnsignedIntParameter());
@@ -7659,7 +7660,7 @@ Packet* CreatureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		setBehaviorScript(inv->getAsciiParameter(_param0_setBehaviorScript__string_));
 		break;
 	case 474:
-		setLootGroup(inv->getSignedIntParameter());
+		setLootGroup(inv->getAsciiParameter(_param0_setLootGroup__string_));
 		break;
 	case 475:
 		setTame(inv->getFloatParameter());
@@ -9147,7 +9148,7 @@ float CreatureObjectAdapter::getTame() {
 	return ((CreatureObjectImplementation*) impl)->getTame();
 }
 
-int CreatureObjectAdapter::getLootGroup() {
+string& CreatureObjectAdapter::getLootGroup() {
 	return ((CreatureObjectImplementation*) impl)->getLootGroup();
 }
 
@@ -9579,7 +9580,7 @@ void CreatureObjectAdapter::setBehaviorScript(const string& behaviorScript) {
 	return ((CreatureObjectImplementation*) impl)->setBehaviorScript(behaviorScript);
 }
 
-void CreatureObjectAdapter::setLootGroup(int lootgroup) {
+void CreatureObjectAdapter::setLootGroup(const string& lootgroup) {
 	return ((CreatureObjectImplementation*) impl)->setLootGroup(lootgroup);
 }
 
@@ -9685,4 +9686,5 @@ void CreatureObjectServant::_setStub(DistributedObjectStub* stub) {
 DistributedObjectStub* CreatureObjectServant::_getStub() {
 	return _this;
 }
+
 
