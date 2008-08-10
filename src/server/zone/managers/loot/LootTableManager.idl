@@ -50,7 +50,6 @@ import "server/zone/ZoneProcessServerImplementation";
 
 import "../../objects/creature/Creature";
 
-//import "LootTableTemplate";
 
 interface LootTableManager {
 	LootTableManager(ZoneServer server, ZoneProcessServerImplementation processor) {
@@ -58,6 +57,7 @@ interface LootTableManager {
 	}
 	
 	void createLootItem(Creature creature, int level,Player player);
+	int makeLootGroup(Creature creature);
 	
 	void stop();
 }

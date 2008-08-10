@@ -1,22 +1,56 @@
 /*
- *	LootTableManagerImplementationStub
- */
+Copyright (C) 2007 <SWGEmu>
+
+This File is part of Core3.
+
+This program is free software; you can redistribute
+it and/or modify it under the terms of the GNU Lesser
+General Public License as published by the Free Software
+Foundation; either version 2 of the License,
+or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+See the GNU Lesser General Public License for
+more details.
+
+You should have received a copy of the GNU Lesser General
+Public License along with this program; if not, write to
+the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+
+Linking Engine3 statically or dynamically with other modules
+is making a combined work based on Engine3.
+Thus, the terms and conditions of the GNU Lesser General Public License
+cover the whole combination.
+
+In addition, as a special exception, the copyright holders of Engine3
+give you permission to combine Engine3 program with free software
+programs or libraries that are released under the GNU LGPL and with
+code included in the standard release of Core3 under the GNU LGPL
+license (or modified versions of such code, with unchanged license).
+You may copy and distribute such a system following the terms of the
+GNU LGPL for Engine3 and the licenses of the other code concerned,
+provided that you include the source code of that other code when
+and as the GNU LGPL requires distribution of source code.
+
+Note that people who make modified versions of Engine3 are not obligated
+to grant this special exception for their modified versions;
+it is their choice whether to do so. The GNU Lesser General Public License
+gives permission to release a modified version without this exception;
+this exception also makes it possible to release a modified version
+which carries forward this exception.
+*/
+
 #include "engine/engine.h"
 
 #include "../../ZoneServer.h"
 #include "../../ZoneProcessServerImplementation.h"
 
-//#include "events/SpawnResourcesEvent.h"
-
 #include "LootTableManager.h"
 #include "LootTableManagerImplementation.h"
 
 #include "../../objects/creature/Creature.h"
-//#include "../../objects/tangible/ItemAttributes.h"
-//#include "../name/NameManager.h"
-
-//#include "../../objects/tangible/resource/ResourceContainerImplementation.h"
-//#include "../../objects/tangible/surveytool/SurveyToolImplementation.h"
 
 #include "../../packets.h"
 #include "../../objects.h"
@@ -38,9 +72,11 @@ LootTableManagerImplementation::LootTableManagerImplementation(ZoneServer* inser
 
 LootTableManagerImplementation::~LootTableManagerImplementation() {
 
-	if (lootTableMap != NULL) {
-		delete lootTableMap;
-		lootTableMap = NULL;
+	for (int i = 0; i < 100; ++i) {
+		lootTableMap[i]->removeAll();
+
+		delete lootTableMap[i];
+		lootTableMap[i] = NULL;
 	}
 	
 	if (selectedLootTableMap != NULL) {
@@ -52,8 +88,12 @@ LootTableManagerImplementation::~LootTableManagerImplementation() {
 
 
 void LootTableManagerImplementation::init() {
-	lootTableMap = new Vector<LootTableTemplate*>();
+
+	for (int i = 0; i < 100; ++i) 
+		lootTableMap[i] = new Vector<LootTableTemplate*>();
+	
 	selectedLootTableMap = new Vector<LootTableTemplate*>();
+	lootWeightMap = new VectorMap<uint,uint>();
 
 	info("Initializing Loot Table Manager");
 	buildLootMap();
@@ -61,13 +101,13 @@ void LootTableManagerImplementation::init() {
 }
 
 void LootTableManagerImplementation::buildLootMap() {
-	LootTableTemplate* lootTableTemp;	
-	
-	int i = 0;
+	int i = 0, rememberLootGroup = 0;
 	ResultSet* lootRes;
-		
-	try {
-		stringstream query;
+	ResultSet* weightRes;
+	LootTableTemplate* lootTableTemp;
+
+	stringstream query;
+	try {		
 		query << "SELECT "
 				<< "loottable.lootgroup,loottable.name,loottable.template_crc,loottable.template_type,"
 				<< "loottable.template_name,loottable.container,loottable.attributes,loottable.appearance,loottable.level,"
@@ -75,14 +115,33 @@ void LootTableManagerImplementation::buildLootMap() {
 				<< "loottable.race,loottable.developernote,object_crc_string_table.`hex`,object_crc_string_table.path, "
 				<< "loottable.item_string, HEX(loottable.`template_type`) "
 				<< "FROM loottable "
-				<< "Inner Join object_crc_string_table ON loottable.template_crc = object_crc_string_table.`decimal` ;";
+				<< "Inner Join object_crc_string_table ON loottable.template_crc = object_crc_string_table.`decimal` order by lootgroup asc;";
 
 		lootRes = ServerDatabase::instance()->executeQuery(query);
 	
 	} catch (...) {
 		cout << "Exception in DB query LootTableManagerImplementation::loadLootItems \n";
 	}
+	query.str("");
 	
+	
+	
+	stringstream query2;
+	try {		
+	
+		query2 << "SELECT lootgroup,weight from lootgroup_weight order by lootgroup asc;";
+		weightRes = ServerDatabase::instance()->executeQuery(query2);
+	
+	} catch (...) {
+		cout << "Exception in DB query LootTableManagerImplementation::loadLootWeight_Table \n";
+	}
+	query2.str("");
+	
+	while (weightRes->next()) {
+		lootWeightMap->put(weightRes->getInt(0), weightRes->getInt(1));		
+	}
+	
+
 	while (lootRes->next()) {
 		i++;
 		lootTableTemp = new LootTableTemplate;
@@ -106,15 +165,21 @@ void LootTableManagerImplementation::buildLootMap() {
 		lootTableTemp->setLootItemTypeHex(lootRes->getString(19));
 		lootTableTemp->setLootItemDeveloperNote("");
 		
-		lootTableMap->add(lootTableTemp);
+		lootTableMap[lootRes->getInt(0)]->add(lootTableTemp);
+		//for testing: cout << "Adding item " << lootRes->getString(1) << "to lootMap No." << lootRes->getInt(0) << endl;
 	}
-	delete lootRes;
 	
+
 	stringstream msg;
 	msg << "Loot table built from database with <" << i << "> loot items.";
-	
 	info(msg.str());
 	
+	//Garbage collection
+	delete lootRes;	
+	delete weightRes;
+	delete lootTableTemp;
+	query.clear();
+	msg.clear();	
 }
 
 
@@ -130,21 +195,21 @@ void LootTableManagerImplementation::createLootItem(Creature* creature, int leve
 	i = 0;
 
 	uint32 objectCRC = creature->getObjectCRC();
-	
-	LootTableTemplate* lootTableTemp;
-	
+	LootTableTemplate* lootTableTemp;	
 	selectedLootTableMap->removeAll();
+	
+	
+	int lootGroup = makeLootGroup(creature);
+	
 
-	for (int i = 0; i < lootTableMap->size(); ++i) {
-		lootTableTemp = lootTableMap->get(i);
+	for (int i = 0; i < lootTableMap[lootGroup]->size(); ++i) {
+		lootTableTemp = lootTableMap[lootGroup]->get(i);
 			
 		if (lootTableTemp->getLootItemLevel() <= level) {
-			if ( (lootTableTemp->getLootItemGroup() == creature->getLootGroup()) || lootTableTemp->getLootItemGroup() == 0) {
-				int compare = lootTableTemp->getLootItemRace().find (player->getSpeciesName());
-				
-				if (compare >= 0 || lootTableTemp->getLootItemRace() == "all" )
-					selectedLootTableMap->add(lootTableTemp);			
-			}
+			int compare = lootTableTemp->getLootItemRace().find (player->getSpeciesName());
+	
+			if (compare >= 0 || lootTableTemp->getLootItemRace() == "all" )
+				selectedLootTableMap->add(lootTableTemp);			
 		}
 	}
 	
@@ -360,7 +425,63 @@ void LootTableManagerImplementation::createLootItem(Creature* creature, int leve
 void LootTableManagerImplementation::stop() {
 	lock();
 
-	lootTableMap->removeAll();
+	for (int i = 0; i < 100; ++i)
+		lootTableMap[i]->removeAll();
 
 	unlock();
+}
+
+
+int LootTableManagerImplementation::makeLootGroup(Creature* creature) {
+	Vector<int> weightHelper;	
+	Vector<string> parsedStrings;
+	
+	string parseHelper;
+	int retLG = 0;	
+	
+	string line = creature->getLootGroup();
+	
+	for (int i = 0; i < line.size(); i++) {
+		char currentChar = line.at(i);
+	
+		if (currentChar != ' ') {
+			if (currentChar == ',') {
+				parsedStrings.add(parseHelper);
+				parseHelper.clear();
+			} else {
+				parseHelper += currentChar;
+			}
+		}
+		
+	}	
+	// The last template name has to be added because it was not added during the loop
+	parsedStrings.add(parseHelper);
+	
+
+	if (parsedStrings.size() > 0) {
+		
+		for (int i = 0; i < parsedStrings.size(); i++) {
+		
+			//lootgroup the creature belongs to
+			int lootGroup = atoi(parsedStrings.get(i).c_str());
+		
+			//determining the weight of this lootgroup
+			int weight = lootWeightMap->get(lootGroup);
+				
+			//The chance of the weight-value is best reflected by adding the lootgroup multiple times, based on its weight 
+			for (int j = 0; j < weight ; j++)
+				weightHelper.add(lootGroup);
+		}
+
+		int rand = System::random(weightHelper.size()-1);
+		retLG = weightHelper.get(rand);
+	}
+	
+	//Garbage collection
+	parsedStrings.removeAll();
+	weightHelper.removeAll();
+	parseHelper.clear();
+	line.clear();
+	
+	return retLG;
 }

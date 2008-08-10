@@ -21,6 +21,8 @@ public:
 
 	void createLootItem(Creature* creature, int level, Player* player);
 
+	int makeLootGroup(Creature* creature);
+
 	void stop();
 
 protected:
@@ -40,6 +42,8 @@ public:
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	void createLootItem(Creature* creature, int level, Player* player);
+
+	int makeLootGroup(Creature* creature);
 
 	void stop();
 

@@ -507,7 +507,7 @@ void CreatureManagerImplementation::setCreatureAttributes(Creature* creature, Lu
 
 
 	//Loot
-	creature->setLootGroup(creatureConfig->getIntField("lootGroup"));
+	creature->setLootGroup(creatureConfig->getStringField("lootGroup"));
 
 	//CH stuff
 	creature->setTame(creatureConfig->getFloatField("tame"));
@@ -990,5 +990,6 @@ inline string CreatureManagerImplementation::stringify(const int x) {
 	else
 		return o.str();
 }
+
 
 
