@@ -177,7 +177,6 @@ void LootTableManagerImplementation::buildLootMap() {
 	//Garbage collection
 	delete lootRes;	
 	delete weightRes;
-	delete lootTableTemp;
 	query.clear();
 	msg.clear();	
 }
