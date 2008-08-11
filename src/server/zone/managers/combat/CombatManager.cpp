@@ -81,13 +81,14 @@ float CombatManager::doTargetSkill(CommandQueueAction* action) {
 
 	string actionModifier = action->getActionModifier();
 
-	if (creature->isWatching())
+	TargetSkill* tskill = (TargetSkill*)action->getSkill();
+
+	if (creature->isWatching() && !tskill->isHealSkill())
 		creature->stopWatch(creature->getWatchID());
 
-	if (creature->isListening())
+	if (creature->isListening() && !tskill->isHealSkill())
 		creature->stopListen(creature->getListenID());
 
-	TargetSkill* tskill = (TargetSkill*)action->getSkill();
 
 	if (tskill->isHealSkill()) {
 		if (!tskill->calculateCost(creature))
