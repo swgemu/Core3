@@ -334,7 +334,6 @@ void PlayerImplementation::load(ZoneClient* client) {
 		info("loading player");
 
 		loadItems();
-		loadBuffs();
 
 		setLoggingIn(); //Anyone notice this is in here twice?
 
@@ -517,7 +516,7 @@ void PlayerImplementation::unload() {
 	}
 
 	savePlayerState();
-	clearBuffs(false);
+	//clearBuffs(false);
 
 	if (zone != NULL) {
 		ZoneServer* zserver = zone->getZoneServer();
@@ -572,7 +571,6 @@ void PlayerImplementation::savePlayerState(bool doSchedule) {
 	info("saving player state");
 
 	saveWaypoints(_this);
-	saveBuffs();
 
 	playerObject->saveFriends();
 	playerObject->saveIgnore();
@@ -1380,11 +1378,12 @@ void PlayerImplementation::notifySceneReady() {
 
 		playerObject->loadFriends();
 		playerObject->loadIgnore();
-		updateBuffWindow();
 	} else {
 		//we need to reset the "magicnumber" for the internal friendlist due to clientbehaviour (Diff. Zoningservers SoE)
 		playerObject->friendsMagicNumberReset();
 	}
+
+	updateBuffWindow();
 
 	ChatManager* chatManager = server->getChatManager();
 	chatManager->listMail(_this);
@@ -3749,55 +3748,6 @@ int PlayerImplementation::getSlicingAbility() {
 		return 0;
 
 	return -1;
-}
-
-void PlayerImplementation::saveBuffs() {
-	stringstream deleteq;
-	deleteq << "DELETE FROM buffs WHERE character_id = " << getCharacterID() << ";";
-
-	try {
-		ServerDatabase::instance()->executeStatement(deleteq);
-	} catch (...) {
-		cout << "Unhandled exception deleting loaded buffs from database in PlayerManagerImplementation.cpp" << endl;
-	}
-
-	for (int i=0; i < creatureBuffs.size(); i++) {
-		Buff* buff = creatureBuffs.get(i);
-		string buffString = buff->toString();
-		stringstream query;
-		query << "INSERT INTO buffs (character_id, buff) VALUES (" << getCharacterID() << ", '" << buffString << "');";
-
-		try {
-			ServerDatabase::instance()->executeStatement(query);
-		} catch (...) {
-			cout << "Error inserting buff to database" << endl;
-		}
-	}
-}
-
-void PlayerImplementation::loadBuffs() {
-	stringstream selectq;
-	selectq << "SELECT buff FROM buffs WHERE character_id = " << getCharacterID() << ";";
-	ResultSet* buffs = NULL;
-
-	try {
-		buffs = ServerDatabase::instance()->executeQuery(selectq);
-	} catch (...) {
-		cout << "Unhandled exception loading buffs from database in PlayerManagerImplementation.cpp" << endl;
-	}
-
-	while (buffs->next()) {
-		Buff* buff = new Buff(0);
-		string buffString = buffs->getString(0);
-		buff->createBuffFromString(buffString);
-
-		if (buff->getBuffDuration() > 0.0f) {
-			BuffObject* bo = new BuffObject(buff);
-			applyBuff(bo);
-		}
-	}
-
-	delete buffs;
 }
 
 void PlayerImplementation::updateBuffWindow() {

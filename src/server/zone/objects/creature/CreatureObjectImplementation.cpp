@@ -77,7 +77,6 @@ which carries forward this exception.
 #include "events/DizzyFallDownEvent.h"
 #include "events/WoundTreatmentOverEvent.h"
 #include "events/InjuryTreatmentOverEvent.h"
-#include "events/CreatureBuffEvent.h"
 
 #include "../../objects/player/Races.h"
 #include "mount/MountCreature.h"

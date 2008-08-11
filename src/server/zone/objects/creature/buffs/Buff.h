@@ -51,6 +51,8 @@ which carries forward this exception.
 
 #include "../../tangible/ItemAttributes.h"
 
+#include "engine/sched/Event.h"
+
 //#include "../skillmods/SkillModList.h"
 
 class CreatureObject;
@@ -235,15 +237,14 @@ private:
 	//bool deactivate;
 
 protected:
+	ZoneProcessServerImplementation* server;
+
 	int buffType;
 	float buffDuration;
 	uint32 buffCRC;
 	uint32 buffDownerCRC;
 
 	Event* buffEvent;
-	ZoneProcessServerImplementation* server;
-	uint32 expires;
-
 
 	// HAM Values - can be negative
 	int healthBuff;
@@ -270,11 +271,8 @@ public:
 
 	Buff(uint32 crc, int type, float duration);
 
-	// TODO:  Need to do a better job with Shock Wounds
 	bool activateBuff(CreatureObject* creo, ZoneProcessServerImplementation* serv);
 
-
-	// TODO:  Need to do a better job with Shock Wounds
 	void downerBuff(CreatureObject* creo);
 
 	bool deActivateBuff(CreatureObject* creo, bool updateClient = true);
@@ -289,7 +287,6 @@ public:
 				buffEvent = NULL;
 			}
 		}
-		setExpires(0);
 	}
 
 	// Getters
@@ -349,9 +346,6 @@ public:
 		return forcePowerBuff;
 	}
 
-	inline uint32 getExpires() {
-		return expires;
-	}
 	//inline int getForceRegenBuff() {
 	//	return forceRegenBuff;
 	//}
@@ -421,9 +415,6 @@ public:
 		server = serv;
 	}
 
-	inline void setExpires(uint32 exp) {
-		expires = exp;
-	}
 	//inline void setForceRegenBuff(int regen) {
 	//	forceRegenBuff = regen;
 	//}
@@ -460,81 +451,15 @@ public:
 		return buffEvent->isQueued();
 	}
 
-	int getTimeRemaining() {
-		uint32 t = (uint32) time(0);
-		uint32 diff = expires - t;
+	uint32 getTimeRemaining() {
+		Time timeEnd = buffEvent->getTimeStamp();
+		Time currentTime;
+		currentTime.update();
 
-		return (diff > 0) ? diff : 0;
-	}
+		uint32 secondsTime = (uint32) (currentTime.getMiliTime() / 1000);
+		uint32 secondsEnd = (uint32) (timeEnd.getMiliTime() / 1000);
 
-	inline string toString() {
-		stringstream result;
-		result << "buffType=" << buffType << ":"
-		<< "expires=" << expires << ":"
-		<< "buffCRC=" << buffCRC << ":"
-		<< "buffDownerCRC=" << buffDownerCRC << ":"
-		<< "healthBuff=" << healthBuff << ":"
-		<< "actionBuff=" << actionBuff << ":"
-		<< "mindBuff=" << mindBuff << ":"
-		<< "strengthBuff=" << strengthBuff << ":"
-		<< "constitutionBuff=" << constitutionBuff << ":"
-		<< "staminaBuff=" << staminaBuff << ":"
-		<< "quicknessBuff=" << quicknessBuff << ":"
-		<< "willpowerBuff=" << willpowerBuff << ":"
-		<< "focusBuff=" << focusBuff << ":"
-		<< "forcePowerBuff=" << forcePowerBuff << ":";
-
-		return result.str();
-	}
-
-	inline void createBuffFromString(string& buffstring) {
-		ItemAttributes* buffAttributes = new ItemAttributes();
-		buffAttributes->setAttributes(buffstring);
-
-		string attr = "buffType";
-		buffType = buffAttributes->getIntAttribute(attr);
-
-		attr = "expires";
-		expires = (uint32)buffAttributes->getUnsignedLongAttribute(attr);
-		setExpires(expires);
-
-		setBuffDuration(expires - (uint32)time(0));
-
-		attr = "buffCRC";
-		buffCRC = (uint32)buffAttributes->getUnsignedLongAttribute(attr);
-
-		attr = "buffDownerCRC";
-		buffDownerCRC = (uint32)buffAttributes->getUnsignedLongAttribute(attr);
-
-		attr = "healthBuff";
-		healthBuff = buffAttributes->getIntAttribute(attr);
-
-		attr = "actionBuff";
-		actionBuff = buffAttributes->getIntAttribute(attr);
-
-		attr = "mindBuff";
-		mindBuff = buffAttributes->getIntAttribute(attr);
-
-		attr = "constitutionBuff";
-		constitutionBuff = buffAttributes->getIntAttribute(attr);
-
-		attr = "staminaBuff";
-		staminaBuff = buffAttributes->getIntAttribute(attr);
-
-		attr = "willpowerBuff";
-		willpowerBuff = buffAttributes->getIntAttribute(attr);
-
-		attr = "strengthBuff";
-		strengthBuff = buffAttributes->getIntAttribute(attr);
-
-		attr = "quicknessBuff";
-		quicknessBuff = buffAttributes->getIntAttribute(attr);
-
-		attr = "focusBuff";
-		focusBuff = buffAttributes->getIntAttribute(attr);
-
-		attr = "forcePowerBuff";
-		forcePowerBuff = buffAttributes->getIntAttribute(attr);
+		return secondsEnd - secondsTime;
 	}
 };
 

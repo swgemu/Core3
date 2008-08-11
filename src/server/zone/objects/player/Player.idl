@@ -536,8 +536,4 @@ interface Player implements CreatureObject {
 
 	string getLastNpcConvStr();
 	string getLastNpcConvMessStr();
-	
-	void loadBuffs();
-	void saveBuffs();
-	
 }

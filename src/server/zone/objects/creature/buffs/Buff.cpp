@@ -59,7 +59,6 @@ Buff::Buff(uint32 crc) {
 
 	setBuffEvent(NULL);
 	setZoneProcessServer(NULL);
-	setExpires(0); //This gets set in activate
 
 		// Defaults
 	setBuffType(BuffType::OTHER);
@@ -86,7 +85,6 @@ Buff::Buff(uint32 crc, int type, float duration) {
 
 	setBuffEvent(NULL);
 	setZoneProcessServer(NULL);
-	setExpires(0);
 
 	// Defaults
 	setHealthBuff(0);
@@ -172,7 +170,6 @@ bool Buff::activateBuff(CreatureObject* creo, ZoneProcessServerImplementation* s
 	if (server != NULL)
 		server->addEvent(buffEvent);
 
-	setExpires((uint32)time(0) + (uint32)getBuffDuration());
 	creo->addBuff(getBuffCRC(), getBuffDuration());
 
 	active = true;

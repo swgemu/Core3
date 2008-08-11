@@ -320,9 +320,6 @@ public:
 
 	void notifySceneReady();
 
-	void loadBuffs();
-	void saveBuffs();
-
 	void sendSystemMessage(const string& message);
 	void sendSystemMessage(const string& file, const string& str, uint64 targetid = 0);
 	void sendSystemMessage(unicode& message);

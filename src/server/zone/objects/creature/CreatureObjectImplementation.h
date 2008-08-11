@@ -333,9 +333,6 @@ protected:
 
 	VectorMap<CreatureObject*, uint32> damageMap;
 
-	// Store buff events so they can be removed on death.
-	Vector<Event*> buffEvents;
-
 	//group stuff
 	uint64 groupId;
 	uint64 groupInviteCount;

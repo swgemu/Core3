@@ -9687,4 +9687,3 @@ DistributedObjectStub* CreatureObjectServant::_getStub() {
 	return _this;
 }
 
-
