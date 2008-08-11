@@ -76,6 +76,8 @@
 
 #include "../../packets.h"
 
+#include "../../objects/player/events/PowerboostEvent.h"
+
 ObjectControllerMessage::ObjectControllerMessage(uint64 objid, uint32 header1,
 		uint32 header2, bool comp) :
 	BaseMessage() {
@@ -339,6 +341,9 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 	// CommandQueueAction* action; - not used anymore?
 
 	switch (actionCRC) {
+	case (0x8C2221CB): // Powerboost
+		parsePowerboost(player, pack, serv);
+		break;
 	case (0xB93A3853): //haveconsent
 		parseHaveConsentRequest(player, pack);
 		break;
@@ -3218,6 +3223,41 @@ void ObjectControllerMessage::parseHarvestOrganics(Player* player, Message* pack
 		type = 3;
 
 	resourceManager->harvestOrganics(player, creature, type);
+
+}
+
+void ObjectControllerMessage::parsePowerboost(Player* player, Message* pack, ZoneProcessServerImplementation* serv){
+	if (player == NULL)
+		return;
+		
+	int duration = 0;
+		
+	if (!player->isMeditating()) {
+		//Mode 5 = Powerboost failed, not meditating
+		PowerboostEvent* event5 = new PowerboostEvent(player, 5, 0);
+		serv->addEvent(event5);
+		return;
+	}
+	
+	string txt0 = "combat_unarmed_accuracy_02";
+	string txt1 = "combat_unarmed_master";
+
+	if (player->hasSkillBox(txt1))
+		duration = 600;
+	else if (player->hasSkillBox(txt0))
+		duration = 300;	
+	
+	//Fire the "begin"-event
+	PowerboostEvent* event4 = new PowerboostEvent(player, 4, 1);
+	serv->addEvent(event4);
+
+	//Queue the "wane"-event
+	PowerboostEvent* event1 = new PowerboostEvent(player,1,duration-60);
+	serv->addEvent(event1);
+		
+	//Queue the "...come to an end"-event
+	PowerboostEvent* event2 = new PowerboostEvent(player,2,duration);
+	serv->addEvent(event2);
 
 }
 

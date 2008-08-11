@@ -177,7 +177,11 @@ public:
 	static void parseHaveConsentRequest(Player* player, Message* pack);
 
 	static void parseHarvestOrganics(Player* packet, Message* pack);
+	
+	//Teraskasi
+	static void parsePowerboost(Player* packet, Message* pack, ZoneProcessServerImplementation* serv);
 };
 
 #endif /*OBJECTCONTROLLERMESSAGE_H_*/
+
 
