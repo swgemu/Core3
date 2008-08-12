@@ -51,8 +51,10 @@ which carries forward this exception.
 
 class ForumsDatabase {
 	static Database* impl;
-	static string forumbannedGroup;
-	static string forumStandardGroup;
+	static string forumsbannedGroup;
+	static string forumsStandardGroup;
+	static string forumsUserTable;
+	static string forumsBannedTable;
 
 public:
 	ForumsDatabase(ConfigManager* configManager) {
@@ -61,8 +63,10 @@ public:
         string& forumdbPass = configManager->getForumsDBPass();
         string& forumdbName = configManager->getForumsDBName();
         uint16& forumdbPort = configManager->getForumsDBPort();
-        forumbannedGroup = configManager->getBannedGroup();
-        forumStandardGroup = configManager->getStandardGroup();
+        forumsbannedGroup = configManager->getForumsBannedGroup();
+        forumsStandardGroup = configManager->getForumsStandardGroup();
+        forumsUserTable = configManager->getForumsUserTable();
+        forumsBannedTable = configManager->getForumsBannedTable();
 
         impl = new MySqlDatabase(string("ForumsDatabase"), forumdbHost);
         impl->connect(forumdbName, forumdbUser, forumdbPass, forumdbPort);
@@ -77,11 +81,20 @@ public:
 	}
 
 	inline static string bannedGroup() {
-		return forumbannedGroup;
+		return forumsbannedGroup;
 	}
 
 	inline static string standardGroup() {
-		return forumStandardGroup;
+		return forumsStandardGroup;
+	}
+
+
+	inline static string userTable() {
+		return forumsUserTable;
+	}
+
+	inline static string bannedTable() {
+		return forumsBannedTable;
 	}
 
 };

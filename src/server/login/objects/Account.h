@@ -64,9 +64,11 @@ class Account {
 	string version;
 
 	string forumUserID;
+	string forumUserGroupID;
 	string forumUser;
 	string forumPass;
 	string forumSalt;
+	bool isBanned;
 
 public:
 
@@ -111,7 +113,13 @@ public:
 		}
 
 		string query = "SELECT * FROM account WHERE username = \'" + username +
-					   "\' and password = sha1(\'" + password + "\')";
+					   "\'";
+
+		if(configManager->getUseVBIngeration() == 0){
+
+			query += " and password = sha1(\'" + password + "\')";
+
+		}
 
 		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
 
@@ -130,6 +138,7 @@ public:
 	}
 
 	int create(ConfigManager* configManager) {
+
 		try {
 
 			if(configManager->getUseVBIngeration() == 1){
@@ -138,6 +147,7 @@ public:
 
 				if(validateResult != 0)
 					return validateResult;
+
 
 			} else if(configManager->getAutoReg() == 0 && configManager->getUseVBIngeration() == 0) {
 				return ACCOUNTAUTOREGDISABLED; // Auto Reg Disabled
@@ -163,31 +173,49 @@ public:
 			return 0;
 
 		try {
-			stringstream query, query2, bannedQuery;
+			stringstream query, query2;
 
-			query << "SELECT vb3_user.userid, vb3_user.username, vb3_user.password, vb3_user.salt FROM vb3_user WHERE username = \'" + username +
-			   "\'";
+			query << "SELECT "
+				  << ForumsDatabase::userTable() << ".userid, "
+				  << ForumsDatabase::userTable() << ".usergroupid, "
+				  << ForumsDatabase::userTable() << ".username, "
+				  << ForumsDatabase::userTable() << ".password, "
+				  << ForumsDatabase::userTable() << ".salt, "
+				  << "(SELECT userid FROM "
+				  << ForumsDatabase::bannedTable()
+			      << " WHERE userid = (SELECT "
+			      << ForumsDatabase::userTable() << ".userid "
+			      << "FROM " << ForumsDatabase::userTable()
+			      << " WHERE username = \'" << username << "\') ) as banned"
+				  << " FROM " << ForumsDatabase::userTable()
+			      << " WHERE "
+			      << ForumsDatabase::userTable() << ".username = \'" << username << "\'";
 
 			ResultSet* res = ForumsDatabase::instance()->executeQuery(query);
 
 			if (res->next()){
 
 				forumUserID = res->getString(0);
-				forumUser = res->getString(1);
-				forumPass = res->getString(2);
-				forumSalt = res->getString(3);
+				forumUserGroupID = res->getString(1);
+				forumUser = res->getString(2);
+				forumPass = res->getString(3);
+				forumSalt = res->getString(4);
 
-				bannedQuery << "SELECT userid FROM vb3_userban WHERE userid = '" << forumUserID << "'";
-				ResultSet* res3 = ForumsDatabase::instance()->executeQuery(bannedQuery);
+				try {
+					string test = res->getString(5);
+					isBanned = true;
+				} catch (...) {
 
-				if(res3->size() > 0){
+					isBanned = false;
+
+				}
+
+				if(isBanned){
 					delete res;
-					delete res3;
 					return ACCOUNTBANNED;
 				}
 
 				query2 << "SELECT MD5(CONCAT(MD5(\'" + password + "\'), \'" + forumSalt + "\'))";
-
 				ResultSet* res2 = ForumsDatabase::instance()->executeQuery(query2);
 
 				if(res2->next()){

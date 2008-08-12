@@ -67,6 +67,8 @@ bool ConfigManager::loadConfigData() {
 	forumsdBPass = getGlobalString("ForumsDBPass");
 	forumsBannedGroupID = getGlobalString("ForumsBannedGroupID");
 	forumsStandardGroupID = getGlobalString("ForumsStandardGroupID");
+	forumsUserTable = getGlobalString("ForumsUserTable");
+	forumsBannedTable = getGlobalString("ForumsBannedTable");
 
 	loginPort = getGlobalShort("LoginPort");
 	loginAllowedConnections =  getGlobalInt("LoginAllowedConnections");

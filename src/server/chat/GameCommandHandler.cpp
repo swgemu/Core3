@@ -574,7 +574,7 @@ void GameCommandHandler::banUser(StringTokenizer tokenizer, Player* player) {
 
 		player->sendSystemMessage("Standard IP ban Usage: @banUser <name>");
 		player->sendSystemMessage("Forum Integration Usage: @banUser <name> <ban time in minutes> <reason>");
-		player->sendSystemMessage("Bantime:  Permanent = 0; 1 Day = 24;  1 Week = 168");
+		player->sendSystemMessage("Bantime:  Permanent = 0; 1 Hour = 60; 1 Day = 3600;  1 Week = 25200");
 		return;
 	}
 
@@ -656,7 +656,9 @@ void GameCommandHandler::banUser(StringTokenizer tokenizer, Player* player) {
 			}
 
 			stringstream getAdminID;
-			getAdminID  << "SELECT `userid` FROM vb3_user WHERE username = '" << adminsAccountName << "'";
+			getAdminID  << "SELECT " << ForumsDatabase::userTable() << ".userid FROM "
+					    << ForumsDatabase::userTable() << " WHERE "
+					    << ForumsDatabase::userTable() << ".username = '" << adminsAccountName << "'";
 
 			res = ForumsDatabase::instance()->executeQuery(getAdminID);
 
@@ -666,11 +668,17 @@ void GameCommandHandler::banUser(StringTokenizer tokenizer, Player* player) {
 
 			}
 
-			query3  << "SELECT `userid`, `usergroupid`, `displaygroupid`, `usertitle`,`customtitle` "
-					<< " FROM vb3_user WHERE username = '"
+			query3  << "SELECT "
+				    << ForumsDatabase::userTable() << ".userid, "
+				    << ForumsDatabase::userTable() << ".usergroupid, "
+				    << ForumsDatabase::userTable() << ".displaygroupid, "
+				    << ForumsDatabase::userTable() << ".usertitle,"
+				    << ForumsDatabase::userTable() << ".customtitle "
+					<< " FROM "
+					<< ForumsDatabase::userTable()
+			        << " WHERE "
+			        << ForumsDatabase::userTable() << ".username = '"
 					<< offendersAccountName << "'";
-
-
 
 			res = ForumsDatabase::instance()->executeQuery(query3);
 
@@ -694,19 +702,25 @@ void GameCommandHandler::banUser(StringTokenizer tokenizer, Player* player) {
 
 
 				// Update Ban on USer
-				query4 << "UPDATE vb3_user SET `usergroupid` = '"
+				query4 << "UPDATE "
+				        << ForumsDatabase::userTable()
+				        << " SET "
+				        << ForumsDatabase::userTable() << ".usergroupid = '"
 						<< ForumsDatabase::bannedGroup()
-						<< "' WHERE username = '" << offendersAccountName
+						<< "' WHERE "
+						<< ForumsDatabase::userTable() << ".username = '" << offendersAccountName
 						<< "'";
 
 				ForumsDatabase::instance()->executeStatement(query4);
 
 				// Update Banned user table
-				query5 << "INSERT INTO `vb3_userban` VALUES ('" << userid
-						<< "', '" << usergroupid << "', '" << displaygroupid
-						<< "', '" << usertitle << "', '" << customtitle
-						<< "', '" << adminsAccountId << "', '" << time(0) << "', '"
-						<< banTime << "', '" << banMessage.str() << "')";
+				query5 << "INSERT INTO "
+					   << ForumsDatabase::bannedTable()
+					   << " VALUES ('" << userid
+					   << "', '" << usergroupid << "', '" << displaygroupid
+					   << "', '" << usertitle << "', '" << customtitle
+					   << "', '" << adminsAccountId << "', '" << time(0) << "', '"
+					   << banTime << "', '" << banMessage.str() << "')";
 
 				ForumsDatabase::instance()->executeStatement(query5);
 

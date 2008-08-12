@@ -62,6 +62,8 @@ class ConfigManager : public Lua {
 	string forumsdBPass;
 	string forumsBannedGroupID;
 	string forumsStandardGroupID;
+	string forumsUserTable;
+	string forumsBannedTable;
 
 	string dBHost;
 	uint16 dBPort;
@@ -99,6 +101,8 @@ public:
 		forumsdBPass = "Gemeni1";
 		forumsBannedGroupID = "8";
 		forumsStandardGroupID = "2";
+		forumsUserTable = "vb3_users";
+		forumsBannedTable = "vb3_bannedusers";
 		useVBIngeration = 0;
 
 		loginPort = 44453;
@@ -176,12 +180,20 @@ public:
 		return forumsdBPass;
 	}
 
-	inline string& getBannedGroup() {
+	inline string& getForumsBannedGroup() {
 		return forumsBannedGroupID;
 	}
 
-	inline string& getStandardGroup() {
+	inline string& getForumsStandardGroup() {
 		return forumsStandardGroupID;
+	}
+
+	inline string& getForumsUserTable() {
+		return forumsUserTable;
+	}
+
+	inline string& getForumsBannedTable() {
+		return forumsBannedTable;
 	}
 
 	inline uint16 getLoginPort() {

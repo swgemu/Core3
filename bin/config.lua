@@ -53,7 +53,7 @@ DBHost = "127.0.0.1"
 DBPort = 3306
 DBName = "swgemu"
 DBUser = "swgemu"
-DBPass = "123456"
+DBPass = "swgemu"
 
 -- vBulletin 3 integration
 ForumsDBHost = ""
@@ -63,6 +63,8 @@ ForumsDBUser = ""
 ForumsDBPass = ""
 ForumsBannedGroupID = "" -- ID String of "banned" group
 ForumsStandardGroupID = "" -- ID String of standard user group
+ForumsUserTable = "" -- user table ex. vb3_users
+ForumsBannedTable = "" -- banned table ex. vb3_userban
 
 LoginPort = 44453
 LoginAllowedConnections = 3000
