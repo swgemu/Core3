@@ -233,6 +233,10 @@ void GameCommandHandler::init() {
 			"Plays a client effect animation around your character.",
 			"Usage: @clientEffect <effect>",
 			&clientEffect);
+	gmCommands->addCommand("revive", PRIVILEGED,
+			"Revives a player.",
+			"Usage: @revive <player>",
+			&revive);
 }
 
 void GameCommandHandler::help(StringTokenizer tokenizer, Player * player) {
@@ -351,7 +355,7 @@ void GameCommandHandler::warpPlayer(StringTokenizer tokenizer, Player * player) 
 					targetPlayer->unlock();
 					return;
 				}
-				
+
 				BuildingObject* buiID = planetManager->findBuildingType(whereTo, targetX, targetY);
 
 				if (buiID) {
@@ -428,7 +432,7 @@ void GameCommandHandler::summon(StringTokenizer tokenizer, Player * player) {
 
 	try {
 		targetPlayer->wlock(player);
-		
+
 		if (targetPlayer->isMounted()) {
 			targetPlayer->dismount(true, true);
 			}
@@ -442,9 +446,9 @@ void GameCommandHandler::summon(StringTokenizer tokenizer, Player * player) {
 		}
 
 		if (name != player->getFirstName()) {
-			if (targetPlayer->getZoneIndex() != player->getZoneIndex()) 
+			if (targetPlayer->getZoneIndex() != player->getZoneIndex())
 				targetPlayer->switchMap(player->getZoneIndex());
-			
+
 			targetPlayer->doWarp(player->getPositionX(), player->getPositionY(), 0, 10);
 			targetPlayer->unlock();
 		} else {
@@ -1108,24 +1112,24 @@ void GameCommandHandler::HAMStats(StringTokenizer tokenizer, Player * player) {
 void GameCommandHandler::buff(StringTokenizer tokenizer, Player * player) {
 	int devBuff;
 	devBuff = 0;
-	
+
 	try {
 		if (tokenizer.hasMoreTokens())
 			devBuff = tokenizer.getIntToken();
-			
+
 	} catch (...) {
 		player->sendSystemMessage("Format for DEV/CSR buffs is @buff <value of buffstrenght, eg. 12000.\'.");
 		devBuff = 0;
 	}
-	
-	
+
+
 	int buffValue = 3000;
-		
+
 	if (devBuff > 0 )
-		buffValue = devBuff; 
-		
-	
-	if ( (player->getHealthMax() == player->getBaseHealth()) || (devBuff > 0)  ) {	
+		buffValue = devBuff;
+
+
+	if ( (player->getHealthMax() == player->getBaseHealth()) || (devBuff > 0)  ) {
 		//float buffDuration = 10.0f; // Testing purposes
 		float buffDuration = 10800.0f;
 
@@ -1471,8 +1475,8 @@ void GameCommandHandler::setAdminLevel(StringTokenizer tokenizer, Player * playe
 
 	player->sendSystemMessage("Admin level set.");
 }
-	
-	
+
+
 void GameCommandHandler::getLocation(StringTokenizer tokenizer, Player * player) {
 
 	stringstream ss;
@@ -1614,4 +1618,49 @@ void GameCommandHandler::clientEffect(StringTokenizer tokenizer, Player * player
 
 	PlayClientEffectLoc* explodeLoc = new PlayClientEffectLoc(ss.str(), player->getZoneID(), player->getPositionX(), player->getPositionZ(), player->getPositionY());
 	player->broadcastMessage(explodeLoc);
+}
+
+
+void GameCommandHandler::revive(StringTokenizer tokenizer, Player * player) {
+	string name;
+	Player* targetPlayer;
+
+	ChatManager * chatManager = player->getZone()->getChatManager();
+
+	if (tokenizer.hasMoreTokens()) {
+		tokenizer.getStringToken(name);
+		targetPlayer = chatManager->getPlayer(name);
+
+		if (targetPlayer == NULL)
+			return;
+	} else {
+		SceneObject* obj = player->getTarget();
+		if (obj != NULL && obj->isPlayer()) {
+			targetPlayer = (Player*) obj;
+			name = targetPlayer->getFirstName();
+		} else {
+			return;
+		}
+	}
+
+	try {
+		if (!targetPlayer->isDead()) {
+			player->sendSystemMessage("healing_response", "healing_response_a4"); //Your target does not require resuscitation!
+			return;
+		}
+		if (targetPlayer != player)
+			targetPlayer->wlock(player);
+
+		targetPlayer->revive();
+
+		targetPlayer->sendSystemMessage("Your character has been revived by \'" + player->getFirstName() + "\'.");
+		player->sendSystemMessage("You revived the character \'" + name + "\'.");
+
+		if (targetPlayer != player)
+			targetPlayer->unlock();
+
+	} catch (...) {
+		if (targetPlayer != player)
+			targetPlayer->unlock();
+	}
 }
