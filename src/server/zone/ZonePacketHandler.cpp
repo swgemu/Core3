@@ -334,7 +334,9 @@ void ZonePacketHandler::handleClientCreateCharacter(Message* pack) {
 	player->info("attempting to create Player " + firstName);
 
 	BaseMessage* msg = playerManager->checkPlayerName(firstName, species);
-	msg = playerManager->checkPlayerName(lastName, species);
+	//This would cause the server to only check the last name, ignoring anything wrong
+	//with the first name, and not allowing characters to have the same last names.
+	//msg = playerManager->checkPlayerName(lastName, species);
 
 	if (msg != NULL) {
 		client->sendMessage(msg);
