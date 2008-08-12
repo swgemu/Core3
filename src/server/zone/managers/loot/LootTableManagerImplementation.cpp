@@ -89,7 +89,7 @@ LootTableManagerImplementation::~LootTableManagerImplementation() {
 
 void LootTableManagerImplementation::init() {
 
-	for (int i = 0; i < 100; ++i) 
+	for (int i = 0; i < 500; ++i) 
 		lootTableMap[i] = new Vector<LootTableTemplate*>();
 	
 	selectedLootTableMap = new Vector<LootTableTemplate*>();
