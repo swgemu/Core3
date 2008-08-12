@@ -328,11 +328,13 @@ void ZonePacketHandler::handleClientCreateCharacter(Message* pack) {
 	player->create(client);
 
 	string firstName = player->getFirstName();
+	string lastName = player->getLastName();
 	string species = player->getSpeciesName();
 
 	player->info("attempting to create Player " + firstName);
 
 	BaseMessage* msg = playerManager->checkPlayerName(firstName, species);
+	msg = playerManager->checkPlayerName(lastName, species);
 
 	if (msg != NULL) {
 		client->sendMessage(msg);
