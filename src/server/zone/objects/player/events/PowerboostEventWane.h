@@ -42,63 +42,32 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef POWERBOOSTEVENT_H_
-#define POWERBOOSTEVENT_H_
+#ifndef POWERBOOSTEVENTWANE_H_
+#define POWERBOOSTEVENTWANE_H_
 
-#include "../../../../chat/ChatManager.h"
+#include "../PlayerImplementation.h"
 
-class PowerboostEvent : public Event {
-	Player* blayer;
-	int modus;
+class PowerboostEventWane : public Event {
+	PlayerImplementation* player;
 
 public:
-	PowerboostEvent(Player* pl,int mode, int seconds) : Event(seconds * 1000) {
-		blayer = pl;
-		modus = mode;
+	PowerboostEventWane(PlayerImplementation* pl) : Event() {
+		player = pl;
+		
+		setKeeping(true);
 	}
 
+	
 	bool activate() {
 
-		if (modus == 1 ) {
-			if (blayer != NULL && blayer->isOnline() && !blayer->isLoggingOut()) {
-				ChatSystemMessage* sysMessage = new ChatSystemMessage("teraskasi", "powerboost_wane");
-				blayer->sendMessage(sysMessage);
-			}
+		if (player != NULL && player->isOnline() && !player->isLoggingOut()) {
+			ChatSystemMessage* sysMessage = new ChatSystemMessage("teraskasi", "powerboost_wane");
+			player->sendMessage(sysMessage);
 		}
-		
-
-		if (modus == 2 ) {
-			if (blayer != NULL && blayer->isOnline() && !blayer->isLoggingOut()) {
-				ChatSystemMessage* sysMessage = new ChatSystemMessage("teraskasi", "powerboost_end");
-				blayer->sendMessage(sysMessage);	
-			}
-		}
-		
-		if (modus == 3 ) {
-			if (blayer != NULL && blayer->isOnline() && !blayer->isLoggingOut()) {
-				ChatSystemMessage* sysMessage = new ChatSystemMessage("teraskasi", "powerboost_active");
-				blayer->sendMessage(sysMessage);	
-			}
-		}
-			
-		if (modus == 4 ) {
-			if (blayer != NULL && blayer->isOnline() && !blayer->isLoggingOut()) {
-				ChatSystemMessage* sysMessage = new ChatSystemMessage("teraskasi", "powerboost_begin");
-				blayer->sendMessage(sysMessage);	
-			}
-		}
-		
-		if (modus == 5 ) {
-			if (blayer != NULL && blayer->isOnline() && !blayer->isLoggingOut()) {
-				ChatSystemMessage* sysMessage = new ChatSystemMessage("teraskasi", "powerboost_fail");
-				blayer->sendMessage(sysMessage);	
-			}
-		}
-		
-		
+				
 		return true;
 	}
 
 };
 
-#endif /*POWERBOOSTEVENT_H_*/
+#endif /*POWERBOOSTEVENTWANE_H_*/

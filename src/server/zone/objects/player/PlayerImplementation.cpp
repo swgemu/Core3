@@ -83,6 +83,8 @@ which carries forward this exception.
 #include "events/CommandQueueActionEvent.h"
 #include "events/ChangeFactionEvent.h"
 #include "events/CenterOfBeingEvent.h"
+#include "events/PowerboostEventWane.h"
+#include "events/PowerboostEventEnd.h"
 #include "events/SurveyEvent.h"
 #include "events/EntertainerEvent.h"
 #include "events/SampleEvent.h"
@@ -155,6 +157,20 @@ PlayerImplementation::~PlayerImplementation() {
 
 		delete centerOfBeingEvent;
 		centerOfBeingEvent = NULL;
+	}
+
+	if (powerboostEventEnd != NULL) {
+		server->removeEvent(powerboostEventEnd);
+
+		delete powerboostEventEnd;
+		powerboostEventEnd = NULL;
+	}
+
+	if (powerboostEventWane != NULL) {
+		server->removeEvent(powerboostEventWane);
+
+		delete powerboostEventWane;
+		powerboostEventWane = NULL;
 	}
 
 	if (recoveryEvent != NULL) {
@@ -248,7 +264,12 @@ void PlayerImplementation::init() {
  	chatRooms.setInsertPlan(SortedVector<ChatRoom*>::NO_DUPLICATE);
 
  	centered = false;
- 	centerOfBeingEvent = new CenterOfBeingEvent(this);
+	powerboosted = false;
+ 	
+	centerOfBeingEvent = new CenterOfBeingEvent(this);
+	powerboostEventEnd = new PowerboostEventEnd(this);
+	powerboostEventWane = new PowerboostEventWane(this);
+	
 
 	lastTestPositionX = 0.f;
 	lastTestPositionY = 0.f;
@@ -2129,6 +2150,41 @@ void PlayerImplementation::sendConsentBox() {
 	addSuiBox(consentBox);
 	sendMessage(consentBox->generateMessage());
 }
+
+void PlayerImplementation::doPowerboost() {
+	if (powerboosted) {
+		sendSystemMessage("teraskasi", "powerboost_active");
+		return;
+	}
+	
+	int duration = 0;
+		
+	if (!isMeditating()) {
+		sendSystemMessage("teraskasi", "powerboost_fail");
+		return;
+	}
+	
+	string txt0 = "combat_unarmed_accuracy_02";
+	string txt1 = "combat_unarmed_master";
+
+	if (hasSkillBox(txt1))
+		duration = 600000;
+	else if (hasSkillBox(txt0))
+		duration = 300000;	
+	
+	//Fire the "begin"-event
+	sendSystemMessage("teraskasi", "powerboost_begin");
+	
+	//Queue the "wane"-event
+	server->addEvent(powerboostEventWane, duration-60000);
+
+	//Queue the "...come to an end"-event
+	server->addEvent(powerboostEventEnd, duration);
+	
+	powerboosted = true;
+}
+
+
 
 void PlayerImplementation::doCenterOfBeing() {
 	if (centered) {

@@ -79,6 +79,8 @@ class CommandQueueActionEvent;
 class PlayerRecoveryEvent;
 class PlayerDigestEvent;
 class CenterOfBeingEvent;
+class PowerboostEventWane;
+class PowerboostEventEnd;
 class ReviveCountdownEvent;
 
 class Datapad;
@@ -173,6 +175,11 @@ class PlayerImplementation : public PlayerServant {
 
 	bool centered;
 	CenterOfBeingEvent* centerOfBeingEvent;
+	
+	bool powerboosted;
+	PowerboostEventWane* powerboostEventWane;
+	PowerboostEventEnd* powerboostEventEnd;
+	
 
 	float lastTestPositionX;
 	float lastTestPositionY;
@@ -505,6 +512,8 @@ public:
 	void doCenterOfBeing();
 	void removeCenterOfBeing();
 
+	void doPowerboost();
+	
 	void doPeace();
 
 	void lootCorpse(bool lootAll = false);

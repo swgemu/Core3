@@ -169,6 +169,8 @@ interface Player implements CreatureObject {
 	void doCenterOfBeing();
 	void removeCenterOfBeing();
 	
+	void doPowerboost();
+	
 	void doPeace();
 	
 	void kill();
