@@ -177,6 +177,7 @@ class PlayerImplementation : public PlayerServant {
 	CenterOfBeingEvent* centerOfBeingEvent;
 	
 	bool powerboosted;
+
 	PowerboostEventWane* powerboostEventWane;
 	PowerboostEventEnd* powerboostEventEnd;
 	
@@ -1174,10 +1175,14 @@ public:
 		changeFactionEvent = eve;
 	}
 
+	inline bool getMeditate() {
+		return meditating;
+	}
+
 	inline bool isChangingFaction() {
 		return changeFactionEvent != NULL;
 	}
-
+	
 	inline bool hasSuiBox(uint32 boxID) {
 		return suiBoxes.contains(boxID);
 	}

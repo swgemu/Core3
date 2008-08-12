@@ -327,27 +327,35 @@ void ZonePacketHandler::handleClientCreateCharacter(Message* pack) {
 
 	player->create(client);
 
+	string species = player->getSpeciesName();
 	string firstName = player->getFirstName();
 	string lastName = player->getLastName();
-	string species = player->getSpeciesName();
-
+	
 	player->info("attempting to create Player " + firstName);
 
+	
+	//Check first name for invalid characters and profanity
 	BaseMessage* msg = playerManager->checkPlayerName(firstName, species);
-	//This would cause the server to only check the last name, ignoring anything wrong
-	//with the first name, and not allowing characters to have the same last names.
-	//msg = playerManager->checkPlayerName(lastName, species);
 
 	if (msg != NULL) {
 		client->sendMessage(msg);
-
 		//player->disconnect();
-
 		player->finalize();
-
+		return;
+	}
+	
+	//Check last name for invalid characters and profanity
+	
+	BaseMessage* msg2 = playerManager->checkPlayerName(lastName, species);
+	
+	if (msg2 != NULL) {
+		client->sendMessage(msg2);
+		//player->disconnect();
+		player->finalize();
 		return;
 	}
 
+	
 	player->deploy("Player " + firstName);
 
 	msg = playerManager->attemptPlayerCreation(player, client);

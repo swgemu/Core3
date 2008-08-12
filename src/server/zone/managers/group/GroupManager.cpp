@@ -154,6 +154,8 @@ void GroupManager::joinGroup(Player* player) {
 		group->addPlayer(player);
 		player->setGroup(group);
 		player->updateGroupId(group->getObjectID());
+		player->sendSystemMessage("group", "joined_self");
+		
 		
 		ChatRoom* groupChannel = group->getGroupChannel();
 		
@@ -183,6 +185,7 @@ GroupObject* GroupManager::createGroup(Player* leader) {
 
 	leader->setGroup(group);
 	leader->updateGroupId(group->getObjectID());
+	leader->sendSystemMessage("group", "formed_self");
 	
 	if (leader->getGroupInviterID() != 0)
 		leader->updateGroupInviterId(0);
@@ -207,6 +210,9 @@ void GroupManager::leaveGroup(GroupObject* group, Player* player) {
 		
 	player->setGroup(NULL);
 	player->updateGroupId(0);
+	
+	if (player != NULL && player->isOnline() && !player->isLoggingOut())
+		player->sendSystemMessage("group", "removed");
 	
 	player->unlock();	
 
@@ -252,6 +258,14 @@ void GroupManager::disbandGroup(GroupObject* group, Player* player) {
 			return;
 		}
 		
+		
+		for (int i = 0; i < group->getGroupSize(); i++) {
+			Player* play = group->getGroupMember(i);
+			
+			if (play != NULL && play->isOnline() && !play->isLoggingOut())
+				play->sendSystemMessage("group", "disbanded");
+		}
+
 		group->disband();
 		
 		group->unlock();
@@ -294,12 +308,20 @@ void GroupManager::kickFromGroup(GroupObject* group, Player* player, Player* pla
 		}
 		
 		if (group->getGroupSize() - 1 < 2) {
+			for (int i = 0; i < group->getGroupSize(); i++) {
+				Player* play = group->getGroupMember(i);
+			
+				if (play != NULL && play->isOnline() && !play->isLoggingOut())
+					play->sendSystemMessage("group", "disbanded");
+			}
 			group->disband();	
 			disbanded = true;
 		} else {		
 			group->removePlayer(playerToKick);
+			if (playerToKick != NULL && playerToKick->isOnline() && !playerToKick->isLoggingOut())
+				playerToKick->sendSystemMessage("group", "removed");
 
-			playerToKick->info("kikcing from group");
+			playerToKick->info("kicking from group");
 		}
 	
 		group->unlock();
@@ -361,6 +383,22 @@ void GroupManager::makeLeader(GroupObject* group, Player* player, Player* newLea
 		}
 		
 		group->makeLeader(newLeader);
+		
+		string firstNameLeader;
+		firstNameLeader = "[Offline player]";
+		
+		if (newLeader != NULL && newLeader->isOnline() && !newLeader->isLoggingOut())
+			firstNameLeader= newLeader->getFirstName();
+			
+		stringstream message;
+		message << firstNameLeader << " is now the group leader.\n";
+				
+		for (int i = 0; i < group->getGroupSize(); i++) {
+			Player* play = group->getGroupMember(i);
+						
+			if (play != NULL && play->isOnline() && !play->isLoggingOut())
+				play->sendSystemMessage(message.str());
+		}
 		
 		group->unlock();
 	} catch (...) {

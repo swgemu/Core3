@@ -1751,6 +1751,7 @@ void PlayerImplementation::changePosture(int post) {
 	if (meditating) {
 		updateMood(Races::getMood(moodid));
 		meditating = false;
+		sendSystemMessage("teraskasi", "med_end");
 	}
 
 	if (isInCombat() && post == SITTING_POSTURE) {
@@ -2159,7 +2160,7 @@ void PlayerImplementation::doPowerboost() {
 	
 	int duration = 0;
 		
-	if (!isMeditating()) {
+	if (!meditating) {
 		sendSystemMessage("teraskasi", "powerboost_fail");
 		return;
 	}
@@ -2168,7 +2169,9 @@ void PlayerImplementation::doPowerboost() {
 	string txt1 = "combat_unarmed_master";
 
 	if (hasSkillBox(txt1))
-		duration = 600000;
+		//ToDo: Hmm...Master duration modifier is missing in the packet? TKM should have 10 Minutes powerboost but the !client! fires only 5 minute powerboost at master as well
+		//duration = 600000;
+		duration = 300000;
 	else if (hasSkillBox(txt0))
 		duration = 300000;	
 	

@@ -340,13 +340,29 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 	// CommandQueueAction* action; - not used anymore?
 
 	switch (actionCRC) {
+	case (0x124629F2): // Meditating
+		if (player->getMeditate()) {
+			player->sendSystemMessage("jedi_spam", "already_in_meditative_state");
+		} else {
+			player->sendSystemMessage("teraskasi", "med_begin");
+			player->queueAction(player, target, actionCRC, actioncntr, "");
+		}
+		break;	
 	case (0x8C2221CB): // Powerboost		
 		if (!player->hasSkill(actionCRC)) {
 			player->clearQueueAction(actioncntr, 0, 2, 0);
 			return;
 		} else {
 			player->doPowerboost();
-			player->queueAction(player, target, actionCRC, actioncntr, "");
+			
+			unicode option = unicode("");
+			string actionModifier = "";
+			
+			//ToDo: Duration modifier for Master TK is not in this pack...hmmm
+			pack->parseUnicode(option);
+			actionModifier = option.c_str();
+			
+			player->queueAction(player, target, actionCRC, actioncntr, actionModifier.c_str());
 		}
 		break;
 	case (0xB93A3853): //haveconsent
@@ -3217,4 +3233,7 @@ void ObjectControllerMessage::parseHarvestOrganics(Player* player, Message* pack
 	resourceManager->harvestOrganics(player, creature, type);
 
 }
+
+
+
 
