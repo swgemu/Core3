@@ -315,8 +315,9 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 
 	//TODO: This needs to be revisted, certain skills can be done while dead or incapacitated:
 	// Like /activateClone, /consent, /unconsent, /haveconsent
-	if ((player->isIncapacitated() || player->isDead())
-			&& (actionCRC != 0xEA69C1BD && actionCRC != 0x3F8F3496 && actionCRC != 0xA2DF082A && actionCRC != 0xB93A3853)) {
+	if ((player->isIncapacitated() || player->isDead()) && (actionCRC
+			!= 0xEA69C1BD && actionCRC != 0x3F8F3496 && actionCRC != 0xA2DF082A
+			&& actionCRC != 0xB93A3853)) {
 		player->clearQueueAction(actioncntr, 0.0f, 1, 19);
 		return;
 	}
@@ -466,8 +467,8 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 		parseBadgesRequest(player, pack);
 		break;
 	case (0x7AFCA539): //requeststatmigrationdata
-	   	parseStatMigrationDataRequest(player, pack);
-	   	break;
+		parseStatMigrationDataRequest(player, pack);
+		break;
 	case (0xE7407732): //requestsetstatmigrationdata
 		parseSetStatMigrationDataRequest(player, pack);
 		break;
@@ -733,48 +734,35 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 	case (0x029D0CC5): // Harvest
 		parseHarvestOrganics(player, pack);
 		break;
-	default:
+	case (0x7B1DCBE0): //startdance
+	case (0xDDD1E8F1): //startmusic
+	case (0xB008CBFA): //colorlights
+	case (0x9C7713A5): //dazzle
+	case (0xED4AA746): //spotlight
+	case (0xD536B419): //smokebomb
+	case (0x2434AC3A): //distract
+	case (0x6CB6978F): //ventriloquism
+	case (0x35ED32BE): //firejet
+	case (0xEEE029CF): //healenhance <poolaffected>
+	case (0x0A9F00A0): //healdamage <targetname>
+	case (0x2087CE04): //healwound <poolaffected>
+	case (0xC9759876): //reviveplayer <targetname>
+	case (0xDC7CF134): //diagnose
+	{
+		// modifier for entertainer-type commands /dazzle 2 vs /dazzle 1
+		// they're dumb and all have the same action crc
 		target = pack->parseLong();
-
 		string actionModifier = "";
-
-		// fancy if statement
-		switch (actionCRC) // modifier for entertainer-type commands /dazzle 2 vs /dazzle 1
-		{ // they're dumb and all have the same action crc
-		case (0x7B1DCBE0): //startdance
-		case (0xDDD1E8F1): //startmusic
-			//	target = player->getObjectID(); // Fake Queue Action on this - the parseLong is blank
-		case (0xB008CBFA): //colorlights
-		case (0x9C7713A5): //dazzle
-		case (0xED4AA746): //spotlight
-		case (0xD536B419): //smokebomb
-		case (0x2434AC3A): //distract
-		case (0x6CB6978F): //ventriloquism
-		case (0x35ED32BE): //firejet
-		case (0xC8998CE9): //flourish
-		case (0xEEE029CF): //healenhance <poolaffected>
-		case (0x0A9F00A0): //healdamage <targetname>
-		case (0x2087CE04): //healwound <poolaffected>
-		case (0xC9759876): //reviveplayer <targetname>
-		case (0xDC7CF134): //diagnose
-		{
-			unicode option = unicode("");
-			pack->parseUnicode(option);
-			actionModifier = option.c_str();
-		}
-			//if(skillOptionID <=0 ) skillOptionID = 1; // default to level 1
-			break;
-		default: {
-			/*	    	    stringstream opc;
-			 opc << "Opc: " << hex << actionCRC;
-			 player->sendSystemMessage(opc.str());*/
-		}
-		}
-
+		unicode option = unicode("");
+		pack->parseUnicode(option);
+		actionModifier = option.c_str();
 		player->queueAction(player, target, actionCRC, actioncntr,
 				actionModifier.c_str());
-
 		return;
+	}
+		
+	default:
+		break;
 	}
 
 	player->clearQueueAction(actioncntr);
