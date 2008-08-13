@@ -91,4 +91,3 @@ RunCreatureFile("spawns/dantooine/kungaCave.lua")
 
 --Naboo
 RunCreatureFile("spawns/naboo/staticSpawns.lua")
-RunCreatureFile("spawns/naboo/events.lua")
