@@ -914,7 +914,7 @@ void PlayerImplementation::insertToZone(Zone* zone) {
 		info("inserting to zone");
 
 		if (parent == NULL) {
-			//cout << "Farmer John's Debug Position Cout: Player inserted with cords: " <<  positionX << " " << zone->getHeight(positionX, positionY) << " " << positionY << endl;
+			//cout << "Debug Position Cout: Player inserted with cords: " <<  positionX << " " << zone->getHeight(positionX, positionY) << " " << positionY << endl;
 			setPosition(positionX, zone->getHeight(positionX, positionY), positionY);
 		}
 

@@ -287,7 +287,7 @@ void GameCommandHandler::help(StringTokenizer tokenizer, Player * player) {
 void GameCommandHandler::map(StringTokenizer tokenizer, Player * player) {
 	if (tokenizer.hasMoreTokens()) {
 		int planetid = tokenizer.getIntToken();
-		if (planetid >= 0 && planetid <= 10) //Servercrash risk!!  Do not change this back to 50, there are no managers initialized ( i changed the managers up to 10 tho)  - Farmer John 07. Aug 2008
+		if (planetid >= 0 && planetid <= 10) //Servercrash risk! Do not change this back to 50 since there are no managers initialized
 			player->switchMap(planetid);
 	} else {
 		player->sendSystemMessage("Usage: map <planetid>\n"

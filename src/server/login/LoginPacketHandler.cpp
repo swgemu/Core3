@@ -155,12 +155,17 @@ void LoginPacketHandler::handleDeleteCharacterMessage(Message* pack) {
 	uint32 ServerId = pack->parseInt();
     uint64 charId = pack->parseLong();
     int dbDelete;
+    string firstName;
 
     try {
 		stringstream query;
 
-		query << "DELETE FROM characters WHERE character_id = '" << charId <<"' and galaxy_id = '" << ServerId << "';";
-		ServerDatabase::instance()->executeStatement(query);
+		query << "SELECT lower(firstname) FROM characters WHERE character_id = " << charId <<" and galaxy_id = " << ServerId << ";";
+		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
+
+		if (res->next())
+			firstName = res->getString(0);
+
 
 		query.str(""); // clear stream
 		query << "DELETE FROM character_items WHERE character_id = '" << charId <<"';";
@@ -182,15 +187,47 @@ void LoginPacketHandler::handleDeleteCharacterMessage(Message* pack) {
 		query << "DELETE FROM waypoints WHERE owner_id = '" << charId <<"';";
 		ServerDatabase::instance()->executeStatement(query);
 
-		dbDelete = 0;
+		query.str("");
+		query << "DELETE FROM friendlist WHERE character_id = '" << charId <<"';";
+		ServerDatabase::instance()->executeStatement(query);
+
+		query.str("");
+		query << "DELETE FROM friendlist WHERE friend_id = '" << charId <<"';";
+		ServerDatabase::instance()->executeStatement(query);
+
+		query.str("");
+		query << "DELETE FROM ignorelist WHERE character_id = '" << charId <<"';";
+		ServerDatabase::instance()->executeStatement(query);
+
+		query.str("");
+		query << "DELETE FROM ignorelist WHERE ignore_id = '" << charId <<"';";
+		ServerDatabase::instance()->executeStatement(query);
+
+		query.str("");
+		query << "DELETE FROM mail WHERE lower(recv_name) = '" << firstName <<"';";
+		ServerDatabase::instance()->executeStatement(query);
+
+
+		/* ToDO: Revisit this, when mail attachments are functionally
+		query.str("");
+		query << "DELETE FROM mail_attachment WHERE lower(name) = '" << firstName <<"';";
+		ServerDatabase::instance()->executeStatement(query);
+		*/
+
+		query.str(""); // clear stream
+		query << "DELETE FROM characters WHERE character_id = '" << charId <<"' and galaxy_id = '" << ServerId << "';";
+		ServerDatabase::instance()->executeStatement(query);
+
+
+	    delete res;
+	    dbDelete = 0;
     } catch(DatabaseException& e) {
+
    		dbDelete = 1;
    	}
 
    	Message* msg = new DeleteCharacterReplyMessage(dbDelete);
 	client->sendMessage(msg);
 }
-
-
 
 

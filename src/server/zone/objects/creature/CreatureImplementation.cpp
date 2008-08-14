@@ -494,7 +494,7 @@ void CreatureImplementation::loadItems() {
 		setImperial();
 	}
 	else if (objectCRC == 0x4E38DA33) { //Dark trooper
-		//we assign but do not equip the weapon! We just need the line "setImperial" - but without an assigned weapon we will crash (Farmer John, 04. June 2008)
+		//we assign but do not equip the weapon! We just need the line "setImperial" - but without an assigned weapon we will crash
 		weapon = new RifleRangedWeapon(_this, "object/weapon/ranged/rifle/shared_rifle_t21.iff", unicode("Teh Pwn"), "rifle_t21", false);
 		weapon->setMinDamage(350);
 		weapon->setMaxDamage(400);
@@ -1184,12 +1184,12 @@ void CreatureImplementation::resetState() {
 
 	//damageMap.removeAll(); // TODO:uncomment and remove below code when VectorMap can use ManagedReference
 	while (damageMap.size() > 0) {
-		CreatureObject* object = damageMap.elementAt(0)->getKey();		
+		CreatureObject* object = damageMap.elementAt(0)->getKey();
 		damageMap.drop(object);
-		
+
 		object->release();
 	}
-	
+
 	defenderList.removeAll();
 
 	clearStates();
