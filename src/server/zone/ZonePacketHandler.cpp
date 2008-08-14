@@ -329,13 +329,13 @@ void ZonePacketHandler::handleClientCreateCharacter(Message* pack) {
 
 	string species = player->getSpeciesName();
 	string firstName = player->getFirstName();
-	string lastName = player->getLastName();
+	string name = player->getCharacterName().c_str();
 
 	player->info("attempting to create Player " + firstName);
 
 
-	//Check first name for invalid characters and profanity
-	BaseMessage* msg = playerManager->checkPlayerName(firstName, species);
+	//Check name for invalid characters and profanity
+	BaseMessage* msg = playerManager->checkPlayerName(name, species);
 
 	if (msg != NULL) {
 		client->sendMessage(msg);
@@ -343,19 +343,6 @@ void ZonePacketHandler::handleClientCreateCharacter(Message* pack) {
 		player->finalize();
 		return;
 	}
-
-	//Check last name for invalid characters and profanity
-	if (lastName !="") {
-		BaseMessage* msg2 = playerManager->checkPlayerName(lastName, species);
-
-		if (msg2 != NULL) {
-			client->sendMessage(msg2);
-			//player->disconnect();
-			player->finalize();
-			return;
-		}
-	}
-
 
 	player->deploy("Player " + firstName);
 

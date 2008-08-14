@@ -1,44 +1,44 @@
 /*
 Copyright (C) 2007 <SWGEmu>
- 
+
 This File is part of Core3.
- 
-This program is free software; you can redistribute 
-it and/or modify it under the terms of the GNU Lesser 
+
+This program is free software; you can redistribute
+it and/or modify it under the terms of the GNU Lesser
 General Public License as published by the Free Software
-Foundation; either version 2 of the License, 
+Foundation; either version 2 of the License,
 or (at your option) any later version.
- 
-This program is distributed in the hope that it will be useful, 
-but WITHOUT ANY WARRANTY; without even the implied warranty of 
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 See the GNU Lesser General Public License for
 more details.
- 
-You should have received a copy of the GNU Lesser General 
+
+You should have received a copy of the GNU Lesser General
 Public License along with this program; if not, write to
 the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
- 
-Linking Engine3 statically or dynamically with other modules 
-is making a combined work based on Engine3. 
-Thus, the terms and conditions of the GNU Lesser General Public License 
+
+Linking Engine3 statically or dynamically with other modules
+is making a combined work based on Engine3.
+Thus, the terms and conditions of the GNU Lesser General Public License
 cover the whole combination.
- 
-In addition, as a special exception, the copyright holders of Engine3 
-give you permission to combine Engine3 program with free software 
-programs or libraries that are released under the GNU LGPL and with 
-code included in the standard release of Core3 under the GNU LGPL 
-license (or modified versions of such code, with unchanged license). 
-You may copy and distribute such a system following the terms of the 
-GNU LGPL for Engine3 and the licenses of the other code concerned, 
-provided that you include the source code of that other code when 
+
+In addition, as a special exception, the copyright holders of Engine3
+give you permission to combine Engine3 program with free software
+programs or libraries that are released under the GNU LGPL and with
+code included in the standard release of Core3 under the GNU LGPL
+license (or modified versions of such code, with unchanged license).
+You may copy and distribute such a system following the terms of the
+GNU LGPL for Engine3 and the licenses of the other code concerned,
+provided that you include the source code of that other code when
 and as the GNU LGPL requires distribution of source code.
- 
-Note that people who make modified versions of Engine3 are not obligated 
-to grant this special exception for their modified versions; 
-it is their choice whether to do so. The GNU Lesser General Public License 
-gives permission to release a modified version without this exception; 
-this exception also makes it possible to release a modified version 
+
+Note that people who make modified versions of Engine3 are not obligated
+to grant this special exception for their modified versions;
+it is their choice whether to do so. The GNU Lesser General Public License
+gives permission to release a modified version without this exception;
+this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
@@ -53,14 +53,14 @@ which carries forward this exception.
 
 NameManager::NameManager(ZoneProcessServerImplementation* serv) : Logger("NameManager") {
 	server = serv;
-	
+
 	profaneNames = new Vector<string>(55, 5); //based on the original number of banned words
 	developerNames = new BannedNameSet();
 	reservedNames = new BannedNameSet();
 	fictionNames = new BannedNameSet();
-	
+
 	fillNames();
-	
+
 	setLogging(false);
 }
 
@@ -73,32 +73,32 @@ NameManager::~NameManager() {
 
 void NameManager::fillNames() {
 	ifstream restrictedFile("restrictednames.lst");
-	
+
 	if(!restrictedFile)
 		return;
 	else
 		info("parsing restricted names list: restrictednames.lst", true);
-	
+
 	char line[256];
-	
+
 	BannedNameSet * setp;
 	bool isset = false;
-	
-	
+
+
 	while(restrictedFile.getline(line, 256)) {
-		
+
 		string name = string(line);
 		String::toLower(name);
-		
+
 		//trim whitespace
 		int swhite = name.find_first_not_of(" \t\n\r\f");
 		int ewhite = name.find_last_not_of(" \t\n\r\f");
-		
+
 		if (swhite == string::npos)
 			name = "";
 		else
 			name = name.substr(swhite, ewhite - swhite + 1);
-		
+
 		if (name.substr(0,2).compare("--") == 0 || name == "") {
 			continue; //skip it
 		}
@@ -136,12 +136,12 @@ void NameManager::fillNames() {
 inline bool NameManager::isProfane(string name) {
 	uint16 i;
 	String::toLower(name);
-	
+
 	for(i = 0; i < profaneNames->size(); i++) {
 		if(name.find(profaneNames->get(i)) != string::npos)
 			return true;
 	}
-	
+
 	return false;
 }
 
@@ -163,31 +163,31 @@ inline bool NameManager::isReserved(string name) {
 int NameManager::validateName(CreatureObject* obj) {
 	string name = (obj->getCharacterName()).c_str();
 	string species = obj->getSpeciesName();
-	
+
 	return validateName(name, species);
 }
 
 int NameManager::validateName(const string& name, const string& species) {
 	if(name == "")
 		return NameManagerResult::DECLINED_EMPTY;
-	
+
 	if(isProfane(name))
 		return NameManagerResult::DECLINED_PROFANE;
-	
+
 	if(isDeveloper(name))
 		return NameManagerResult::DECLINED_DEVELOPER;
-	
+
 	if(isFiction(name))
 		return NameManagerResult::DECLINED_FICT_RESERVED;
-	
+
 	if(isReserved(name))
 		return NameManagerResult::DECLINED_RESERVED;
-	
+
 	if(strspn(name.c_str(), "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'- ") != name.length())
 		return NameManagerResult::DECLINED_SYNTAX;
 
 	string fname, lname;
-	
+
 	int spc = name.find(" ");
 	if(spc != string::npos) {
 		fname = name.substr(0,spc);
@@ -197,49 +197,49 @@ int NameManager::validateName(const string& name, const string& species) {
 		fname = name;
 		lname = "";
 	}
-	
+
 	if(fname.length() < 3 || fname.length() > 15 || lname.length() > 20)
 		return NameManagerResult::DECLINED_RACE_INAPP;
-	
-	if(lname != "" && species == "wookie")
+
+	if(lname != "" && species == "wookiee")
 		return NameManagerResult::DECLINED_RACE_INAPP;
-	
+
 	if(name.find("'") != string::npos || name.find("-") != string::npos) {
 		if(species != "human" && species != "twilek" && species != "moncalamari")
 			return NameManagerResult::DECLINED_RACE_INAPP;
 		if(species == "moncalamari" && name.find("-") != string::npos)
 			return NameManagerResult::DECLINED_RACE_INAPP;
-		
-		if(fname.find("'") != fname.rfind("'") || fname.find("-") != fname.rfind("-") || 
+
+		if(fname.find("'") != fname.rfind("'") || fname.find("-") != fname.rfind("-") ||
 		   lname.find("'") != lname.rfind("'") || lname.find("-") != lname.rfind("-")) {
 			return NameManagerResult::DECLINED_RACE_INAPP;
-		}	
+		}
 	}
-	
+
 	//I am disabling ' in names.  It's allowed by the rules, but it messes with most of the sql queries
 	if(name.find("'") != string::npos)
 		return NameManagerResult::DECLINED_RACE_INAPP;
 	//THE ABOVE SHOULD BE REMOVED AFTER ALL THE QUERIES ARE UPDATED
-	
-	
+
+
 	return NameManagerResult::ACCEPTED;
 }
 
 const string NameManager::makeCreatureName(bool surname) {
-	
+
 	bool lastName = surname;
 	bool inLastName = false;
 	int nameLength = 3 + System::random(3);
 	char name[nameLength];
-	
+
 	while (true) {
 		int x = 0;
-		
+
 		name[0] = chooseNextLetter(' ', ' ');
 		name[1] = chooseNextLetter(name[0], ' ');
-		
+
 		x = 2;
-		
+
 		for (; x < nameLength + 1; x++) {
 			if (x < nameLength) {
 				if (inLastName) {
@@ -264,8 +264,8 @@ const string NameManager::makeCreatureName(bool surname) {
 		if (!isProfane(name))
 			break;
 	}
-	
-	
+
+
 	return string(name);
 }
 
@@ -303,7 +303,7 @@ const string NameManager::makeResourceName(bool isOrganic) {
 		if (!isProfane(name))
 			break;
 	}
-	
+
 	return string(name);
 }
 
@@ -312,7 +312,7 @@ char NameManager::chooseNextLetter(const char lastLetter, const char letterBefor
 	if (letterBeforeLast == ' ' && lastLetter == ' ')
 		return 97 + System::random(25);
 
-	if ((!isVowel(lastLetter) && !isVowel(letterBeforeLast) && letterBeforeLast	!= ' ') 
+	if ((!isVowel(lastLetter) && !isVowel(letterBeforeLast) && letterBeforeLast	!= ' ')
 			|| (lastLetter == 'u' && letterBeforeLast == 'q')) {
 		char exclusion[] = { 'b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm',
 				'n', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
@@ -459,7 +459,7 @@ char NameManager::chooseNextLetter(const char lastLetter, const char letterBefor
 }
 
 inline bool NameManager::isVowel(const char inChar) {
-	
+
 	if (inChar == 'a' || inChar == 'e' || inChar == 'i' || inChar == 'o'
 			|| inChar == 'u' || inChar == 'y')
 		return true;
@@ -468,7 +468,7 @@ inline bool NameManager::isVowel(const char inChar) {
 }
 
 char NameManager::chooseLetterExcluding(const char exclude[]) {
-	
+
 	char x = 97 + System::random(25);
 
 	for (int i = 0; i < 25 && exclude[i] != '\0'; i++) {
@@ -478,12 +478,12 @@ char NameManager::chooseLetterExcluding(const char exclude[]) {
 			i = -1;
 		}
 	}
-	
+
 	return x;
 }
 
 inline int NameManager::addPrefix(char* name) {
-	
+
 	int x = 1 + System::random(4);
 
 	switch (x) {
@@ -521,7 +521,7 @@ inline int NameManager::addPrefix(char* name) {
 }
 
 inline void NameManager::addSuffix(char* name, int location) {
-	
+
 	int x = 1 + System::random(7);
 
 	switch (x) {
