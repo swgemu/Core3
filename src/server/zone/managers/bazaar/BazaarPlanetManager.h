@@ -13,6 +13,8 @@ class Player;
 
 class RegionBazaar;
 
+#include "../../ZoneProcessServerImplementation.h"
+
 #include "BazaarTerminalDetails.h"
 
 class BazaarPlanetManager : public DistributedObjectStub {

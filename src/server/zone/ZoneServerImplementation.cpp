@@ -1,44 +1,44 @@
 /*
 Copyright (C) 2007 <SWGEmu>
- 
+
 This File is part of Core3.
- 
-This program is free software; you can redistribute 
-it and/or modify it under the terms of the GNU Lesser 
+
+This program is free software; you can redistribute
+it and/or modify it under the terms of the GNU Lesser
 General Public License as published by the Free Software
-Foundation; either version 2 of the License, 
+Foundation; either version 2 of the License,
 or (at your option) any later version.
- 
-This program is distributed in the hope that it will be useful, 
-but WITHOUT ANY WARRANTY; without even the implied warranty of 
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 See the GNU Lesser General Public License for
 more details.
- 
-You should have received a copy of the GNU Lesser General 
+
+You should have received a copy of the GNU Lesser General
 Public License along with this program; if not, write to
 the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
- 
-Linking Engine3 statically or dynamically with other modules 
-is making a combined work based on Engine3. 
-Thus, the terms and conditions of the GNU Lesser General Public License 
+
+Linking Engine3 statically or dynamically with other modules
+is making a combined work based on Engine3.
+Thus, the terms and conditions of the GNU Lesser General Public License
 cover the whole combination.
- 
-In addition, as a special exception, the copyright holders of Engine3 
-give you permission to combine Engine3 program with free software 
-programs or libraries that are released under the GNU LGPL and with 
-code included in the standard release of Core3 under the GNU LGPL 
-license (or modified versions of such code, with unchanged license). 
-You may copy and distribute such a system following the terms of the 
-GNU LGPL for Engine3 and the licenses of the other code concerned, 
-provided that you include the source code of that other code when 
+
+In addition, as a special exception, the copyright holders of Engine3
+give you permission to combine Engine3 program with free software
+programs or libraries that are released under the GNU LGPL and with
+code included in the standard release of Core3 under the GNU LGPL
+license (or modified versions of such code, with unchanged license).
+You may copy and distribute such a system following the terms of the
+GNU LGPL for Engine3 and the licenses of the other code concerned,
+provided that you include the source code of that other code when
 and as the GNU LGPL requires distribution of source code.
- 
-Note that people who make modified versions of Engine3 are not obligated 
-to grant this special exception for their modified versions; 
-it is their choice whether to do so. The GNU Lesser General Public License 
-gives permission to release a modified version without this exception; 
-this exception also makes it possible to release a modified version 
+
+Note that people who make modified versions of Engine3 are not obligated
+to grant this special exception for their modified versions;
+it is their choice whether to do so. The GNU Lesser General Public License
+gives permission to release a modified version without this exception;
+this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
@@ -85,30 +85,30 @@ which carries forward this exception.
 
 #include "../ServerCore.h"
 
-ZoneServerImplementation::ZoneServerImplementation(int processingThreads) : 
+ZoneServerImplementation::ZoneServerImplementation(int processingThreads) :
 		DatagramServiceThread("ZoneServer"), ZoneServerServant() {
 	name = "Core3";
-		
+
 	phandler = NULL;
-		
+
 	processor = NULL;
 	procThreadCount = processingThreads;
-	
+
 	objectManager = new ObjectManager(this);
-	
+
 	totalSentPackets = 0;
 	totalResentPackets = 0;
-	
+
 	currentPlayers = 0;
 	maximumPlayers = 0;
 	totalPlayers = 0;
 	totalDeletedPlayers = 0;
-	
+
 	nextCreatureID = 0x10000000;
 
 	setLogging(false);
 	setLockName("ZoneServerLock");
-	
+
 	scheduler->setLogging(false);
 }
 
@@ -122,7 +122,17 @@ ZoneServerImplementation::~ZoneServerImplementation() {
 		delete processor;
 		processor = NULL;
 	}
-	
+
+	if (itemManager != NULL) {
+		itemManager->finalize();
+		itemManager = NULL;
+	}
+
+	if (bazaarManager != NULL) {
+		bazaarManager->finalize();
+		bazaarManager = NULL;
+	}
+
 	if (objectManager != NULL) {
 		delete objectManager;
 		objectManager = NULL;
@@ -131,11 +141,6 @@ ZoneServerImplementation::~ZoneServerImplementation() {
 	if (userManager != NULL) {
 		userManager->finalize();
 		userManager = NULL;
-	}
-	
-	if (itemManager != NULL) {
-		itemManager->finalize();
-		itemManager = NULL;
 	}
 
 	if (playerManager != NULL) {
@@ -147,7 +152,7 @@ ZoneServerImplementation::~ZoneServerImplementation() {
 		guildManager->finalize();
 		guildManager = NULL;
 	}
-	
+
 	if (resourceManager != NULL) {
 		resourceManager->finalize();
 		resourceManager = NULL;
@@ -162,22 +167,17 @@ ZoneServerImplementation::~ZoneServerImplementation() {
 		craftingManager->finalize();
 		craftingManager = NULL;
 	}
-	
-	if (bazaarManager != NULL) {
-		bazaarManager->finalize();
-		bazaarManager = NULL;
-	}
 
 	if (bankManager != NULL) {
 		bankManager->finalize();
 		bankManager = NULL;
 	}
-	
+
 	if (chatManager != NULL) {
 		chatManager->finalize();
 		chatManager = NULL;
 	}
-	
+
 	for (int i = 0; i < 50; ++i) {
 		Zone* zone = zones.get(i);
 		zone->finalize();
@@ -189,18 +189,18 @@ ZoneServerImplementation::~ZoneServerImplementation() {
 void ZoneServerImplementation::init() {
 	processor = new ZoneProcessServerImplementation(_this, procThreadCount);
 	processor->init();
-	
+
 	phandler = new BasePacketHandler("ZoneServer", processor->getMessageQueue());
 	phandler->setLogging(false);
-	
+
 	info("initializing zones", true);
-	
+
 	for (int i = 0; i < 50; ++i) {
 		Zone* zone = new Zone(_this, processor, i);
 		zone->deploy("Zone", i);
-		
+
 		zone->startManagers();
-		
+
 		zones.add(zone);
 	}
 
@@ -213,7 +213,7 @@ void ZoneServerImplementation::init() {
 	bazaarManager = NULL;
 	bankManager = NULL;
 	chatManager = NULL;
-	
+
 	startManagers();
 
 	return;
@@ -221,19 +221,19 @@ void ZoneServerImplementation::init() {
 
 void ZoneServerImplementation::startManagers() {
 	info("loading managers..");
-	
+
 	userManager = new UserManager(_this);
 	userManager->deploy("UserManager");
-	
+
 	itemManager = new ItemManager(_this);
 	itemManager->deploy("ItemManager");
 
 	playerManager = new PlayerManager(itemManager, processor);
 	playerManager->deploy("PlayerManager");
-	
+
 	guildManager = new GuildManager(_this);
 	guildManager->deploy("GuildManager");
-	
+
 	guildManager->load();
 	playerManager->setGuildManager(guildManager);
 
@@ -258,11 +258,11 @@ void ZoneServerImplementation::startManagers() {
 
 void ZoneServerImplementation::run() {
 	scheduler->start();
-	
+
 	processor->start();
-	
+
 	receiveMessages();
-	
+
 	shutdown();
 }
 
@@ -278,20 +278,20 @@ void ZoneServerImplementation::shutdown() {
 
 	chatManager->broadcastMessage("Server is shutting down in 5 seconds..");
 	Thread::sleep(5000);
-	
+
 	processor->stop();
 
 	stopManagers();
 
 	info("shutting down zones", true);
-	
+
 	for (int i = 0; i < 50; ++i) {
 		Zone* zone = zones.get(i);
 		zone->stopManagers();
 	}
 
 	scheduler->stop();
-	
+
 	printInfo(true);
 }
 
@@ -300,10 +300,10 @@ void ZoneServerImplementation::stopManagers() {
 
 	/*if (playerManager != NULL)
 		playerManager->stop();*/
-	
+
 	if (resourceManager != NULL)
 		resourceManager->stop();
-	
+
 	if (lootTableManager != NULL)
 		lootTableManager->stop();
 
@@ -313,29 +313,29 @@ void ZoneServerImplementation::stopManagers() {
 ServiceClient* ZoneServerImplementation::createConnection(Socket* sock, SocketAddress& addr) {
 	if (!userManager->checkUser(addr.getIPID()))
 		return NULL;
-			
+
 	ZoneClient* client = new ZoneClient(this, sock, &addr);
 	client->deploy("ZoneClient " + addr.getFullIPAddress());
-						
+
 	info("client connected from \'" + client->getAddress() + "\'");
-	
+
 	ZoneClientImplementation* clientImpl = (ZoneClientImplementation*) client->_getImplementation();
 	return clientImpl;
 }
 
 void ZoneServerImplementation::handleMessage(ServiceClient* client, Packet* message) {
 	ZoneClientImplementation* zclient = (ZoneClientImplementation*) client;
-	
+
 	try {
 		/*if (zclient->simulatePacketLoss())
 			return;*/
-		
+
 		if (zclient->isAvailable())
 			phandler->handlePacket(zclient, message);
-		
+
 	} catch (PacketIndexOutOfBoundsException& e) {
 		error(e.getMessage());
-			
+
 		error("incorrect packet - " + message->toString());
 	} catch (DatabaseException& e) {
 		error(e.getMessage());
@@ -358,20 +358,20 @@ bool ZoneServerImplementation::handleError(ServiceClient* client, Exception& e) 
 void ZoneServerImplementation::addObject(SceneObject* obj, bool doLock) {
 	try {
 		lock(doLock);
-		
+
 		objectManager->add(obj);
-		
+
 		if (obj->isPlayer()) {
 			Player* player = (Player*) obj;
 
 			chatManager->addPlayer(player);
-			
+
 			if (++currentPlayers > maximumPlayers)
 				maximumPlayers = currentPlayers;
-				
+
 			++totalPlayers;
 		}
-		
+
 		unlock(doLock);
 	} catch (...) {
 		unlock(doLock);
@@ -380,7 +380,7 @@ void ZoneServerImplementation::addObject(SceneObject* obj, bool doLock) {
 
 SceneObject* ZoneServerImplementation::getObject(uint64 oid, bool doLock) {
 	SceneObject* obj = NULL;
-	
+
 	try {
 		lock(doLock);
 
@@ -396,7 +396,7 @@ SceneObject* ZoneServerImplementation::getObject(uint64 oid, bool doLock) {
 
 SceneObject* ZoneServerImplementation::removeObject(uint64 oid, bool doLock) {
 	SceneObject* obj = NULL;
-	
+
 	try {
 		lock(doLock);
 
@@ -411,7 +411,7 @@ SceneObject* ZoneServerImplementation::removeObject(uint64 oid, bool doLock) {
 			string& name = player->getFirstName();
 
 			chatManager->removePlayer(name);
-			
+
 			--currentPlayers;
 		}
 
@@ -429,7 +429,7 @@ SceneObject* ZoneServerImplementation::removeObject(SceneObject* obj, bool doLoc
 
 bool ZoneServerImplementation::destroyObject(SceneObject* obj, bool doLock) {
 	bool res = false;
-	
+
 	try {
 		lock(doLock);
 
@@ -439,13 +439,13 @@ bool ZoneServerImplementation::destroyObject(SceneObject* obj, bool doLock) {
 	} catch (...) {
 		unlock(doLock);
 	}
-	
+
 	return res;
 }
 
 SceneObject* ZoneServerImplementation::getCachedObject(uint64 oid, bool doLock) {
 	SceneObject* obj = NULL;
-	
+
 	try {
 		lock(doLock);
 
@@ -461,7 +461,7 @@ SceneObject* ZoneServerImplementation::getCachedObject(uint64 oid, bool doLock) 
 
 SceneObject* ZoneServerImplementation::removeCachedObject(uint64 oid, bool doLock) {
 	SceneObject* obj = NULL;
-	
+
 	try {
 		lock(doLock);
 
@@ -485,7 +485,7 @@ bool ZoneServerImplementation::banUser(string& name, string& admin) {
 	bool result = userManager->banUserByName(name, admin);
 
 	unlock();
-	
+
 	return result;
 }
 
@@ -495,23 +495,23 @@ bool ZoneServerImplementation::kickUser(string& name, string& admin) {
 	bool result = userManager->kickUser(name, admin);
 
 	unlock();
-	
+
 	return result;
 }
 
 void ZoneServerImplementation::changeUserCap(int amount) {
 	lock();
 
-	userManager->changeUserCap(amount);	
+	userManager->changeUserCap(amount);
 
 	unlock();
 }
 
 void ZoneServerImplementation::addTotalSentPacket(int count) {
 	lock();
-		
+
 	totalSentPackets += count;
-		
+
 	unlock();
 }
 
@@ -529,11 +529,11 @@ int ZoneServerImplementation::getConnectionCount() {
 
 void ZoneServerImplementation::printInfo(bool forcedLog) {
 	lock();
-		
+
 	stringstream msg;
 	msg << "MessageQueue - size = " << messageQueue.size();
 	info(msg, forcedLog);
-		
+
 	stringstream msg2;
 	msg2 << "Scheduler - size = " << scheduler->getQueueSize();
 	info(msg2, forcedLog);
@@ -543,17 +543,17 @@ void ZoneServerImplementation::printInfo(bool forcedLog) {
 		packetloss = 0.0f;
 	else
 		packetloss = (100 * totalResentPackets) / (totalResentPackets + totalSentPackets);
-		
+
 	stringstream msg3;
-	msg3 << "sent packets = " << totalSentPackets << ", resent packets = " 
+	msg3 << "sent packets = " << totalSentPackets << ", resent packets = "
 		<< totalResentPackets << " [" << packetloss << "%]";
 	info(msg3, forcedLog);
 
 	stringstream msg4;
-	msg4 << dec << currentPlayers << " users connected (" << maximumPlayers << " max, " << totalPlayers << " total, " 
+	msg4 << dec << currentPlayers << " users connected (" << maximumPlayers << " max, " << totalPlayers << " total, "
 		 << totalDeletedPlayers << " deleted)";
 	info(msg4, forcedLog);
-		
+
 	unlock();
 }
 
@@ -561,16 +561,16 @@ void ZoneServerImplementation::printEvents() {
 	lock();
 
 	scheduler->printEvents();
-		
+
 	unlock();
 }
 
 uint64 ZoneServerImplementation::getNextCreatureID(bool doLock) {
 	lock(doLock);
-	
+
 	uint64 nextID = (nextCreatureID += 0x10000);
-	
+
 	unlock(doLock);
-	
+
 	return nextID;
 }

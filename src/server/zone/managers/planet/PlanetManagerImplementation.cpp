@@ -83,6 +83,9 @@ PlanetManagerImplementation::PlanetManagerImplementation(Zone* planet, ZoneProce
 	ticketCollectorMap = new TicketCollectorMap(2000);
 	travelTerminalMap = new TravelTerminalMap(2000);
 
+	craftingStationMap.setNullValue(NULL);
+	craftingStationMap.setInsertPlan(SortedVector<VectorMapEntry<uint64, CraftingStation*>*>::NO_DUPLICATE);
+
 	creatureManager = planet->getCreatureManager();
 
 	stringstream logName;
@@ -134,6 +137,7 @@ void PlanetManagerImplementation::stop() {
 	clearShuttles();
 	clearTicketCollectors();
 	clearTravelTerminals();
+	clearCraftingStations();
 
 	unlock();
 }
@@ -155,6 +159,8 @@ void PlanetManagerImplementation::clearBuildings() {
 		BuildingObject* building = buildingMap->next();
 		building->removeFromZone();
 
+		building->removeUndeploymentEvent();
+
 		building->finalize();
 	}
 
@@ -169,6 +175,8 @@ void PlanetManagerImplementation::clearTicketCollectors() {
 	while (ticketCollectorMap->hasNext()) {
 		TicketCollector* ticketCollector = ticketCollectorMap->getNextValue();
 		ticketCollector->removeFromZone();
+
+		ticketCollector->removeUndeploymentEvent();
 
 		ticketCollector->finalize();
 	}
@@ -185,12 +193,30 @@ void PlanetManagerImplementation::clearTravelTerminals() {
 		TravelTerminal* travelTerminal = travelTerminalMap->getNextValue();
 		travelTerminal->removeFromZone();
 
+		travelTerminal->removeUndeploymentEvent();
+
 		travelTerminal->finalize();
 	}
 
 	travelTerminalMap->removeAll();
 
 	info("cleared travelTerminals");
+}
+
+void PlanetManagerImplementation::clearCraftingStations() {
+	for (int i = 0; i < craftingStationMap.size(); ++i) {
+		CraftingStation* station = craftingStationMap.get(i);
+
+		station->removeFromZone();
+
+		station->removeUndeploymentEvent();
+
+		station->finalize();
+	}
+
+	craftingStationMap.removeAll();
+
+	info("cleared craftingStations");
 }
 
 void PlanetManagerImplementation::loadStaticPlanetObjects() {
@@ -336,6 +362,8 @@ void PlanetManagerImplementation::loadBuildings() {
 			cell->setObjectCRC(String::hashCode(file));
 			cell->initializePosition(x, z, y);
 			cell->setDirection(oX, oZ, oY, oW);
+
+			cell->setZoneProcessServer(server);
 			zone->registerObject(cell);
 
 			buio->addCell(cell);
@@ -491,6 +519,8 @@ void PlanetManagerImplementation::loadCraftingStations() {
 			zone->registerObject(station);
 
 			zone->getZoneServer()->addObject(station, true);
+
+			craftingStationMap.put(oid, station);
 		}
 	}
 
@@ -573,7 +603,7 @@ int PlanetManagerImplementation::guessBuildingType(uint64 oid, string file) {
 			return BuildingObjectImplementation::MUSEUM;
 
 		// Junk Shop
-		case 1255995: // Tatooine	Mos Espa	Wattoís Junk Shop
+		case 1255995: // Tatooine	Mos Espa	Wattoï¿½s Junk Shop
 			return BuildingObjectImplementation::JUNKSHOP;
 	}
 

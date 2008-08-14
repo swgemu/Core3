@@ -63,6 +63,13 @@ CraftingManagerImplementation::CraftingManagerImplementation(ZoneServer* serv,
 	init();
 }
 
+CraftingManagerImplementation::~CraftingManagerImplementation() {
+	for (int i = 0; i < draftSchematicsMap.size(); ++i)
+		draftSchematicsMap.get(i)->finalize();
+
+	draftSchematicsMap.removeAll();
+}
+
 void CraftingManagerImplementation::init() {
 	// Scripting
 	Lua::init();

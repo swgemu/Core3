@@ -78,6 +78,8 @@ CreatureManagerImplementation::CreatureManagerImplementation(Zone* zone, ZonePro
 
 	server = serv;
 
+	scheduler = NULL;
+
 	creatureMap = new CreatureMap(20000);
 	lairMap = new LairMap(1000);
 
@@ -88,10 +90,20 @@ CreatureManagerImplementation::CreatureManagerImplementation(Zone* zone, ZonePro
 }
 
 CreatureManagerImplementation::~CreatureManagerImplementation() {
-	if (creatureMap != NULL)
+	if (creatureMap != NULL) {
 		delete creatureMap;
-	if (lairMap != NULL)
+		creatureMap = NULL;
+	}
+
+	if (lairMap != NULL) {
 		delete lairMap;
+		lairMap = NULL;
+	}
+
+	if (scheduler != NULL) {
+		delete scheduler;
+		scheduler = NULL;
+	}
 }
 
 void CreatureManagerImplementation::init() {
@@ -145,6 +157,18 @@ void CreatureManagerImplementation::stop() {
 
 		creature->removeUndeploymentEvent();
 		creature->finalize();
+	}
+
+	lairMap->resetIterator();
+
+	while (lairMap->hasNext()) {
+		LairObject* lair = lairMap->next();
+
+		lair->removeFromZone(true);
+		zone->deleteObject(lair);
+
+		lair->removeUndeploymentEvent();
+		lair->finalize();
 	}
 
 	info("stopped");

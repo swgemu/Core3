@@ -145,6 +145,9 @@ public:
 	}
 
 	~Subclasses(){
+		for (int i = 0; i < subClasses.size(); ++i)
+			delete subClasses.get(i);
+
 		subClasses.removeAll();
 	}
 

@@ -330,6 +330,18 @@ CreatureObjectImplementation::~CreatureObjectImplementation() {
 		delete injuryTreatmentEvent;
 		injuryTreatmentEvent = NULL;
 	}
+
+	if (lootContainer != NULL) {
+		lootContainer->finalize();
+		lootContainer = NULL;
+	}
+
+	if (inventory != NULL) {
+		info("undeploying creature object inventory");
+
+		inventory->finalize();
+		inventory = NULL;
+	}
 }
 
 void CreatureObjectImplementation::sendToOwner(Player* player, bool doClose) {

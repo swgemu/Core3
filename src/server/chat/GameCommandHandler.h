@@ -102,8 +102,22 @@ public:
 
 	}
 
+	~GMCommandMap() {
+		HashTableIterator<string, GMCommand*> iterator(this);
+
+		iterator.resetIterator();
+
+		while (iterator.hasNext()) {
+			GMCommand* command = iterator.next();
+
+			delete command;
+		}
+
+		removeAll();
+	}
+
 	int hash(const string& str) {
-			return String::hashCode(str);
+		return String::hashCode(str);
 	}
 
 	void addCommand(string command, int reqAdminLevel, string disc, string usage, void (*gmCommandFunc)(StringTokenizer tokenizer, Player * player)) {
@@ -169,20 +183,9 @@ public:
 		init();
 	}
 
+	~GameCommandHandler();
 
-
-	void handleCommand(string cmd, StringTokenizer tokenizer, Player * player) {
-		if (!gmCommands->containsKey(cmd)) {
-			player->sendSystemMessage("Command not found.");
-			return;
-		}
-
-		GMCommand * command = gmCommands->get(cmd);
-		if (command->getRequiredAdminLevel() & player->getAdminLevel())
-			command->exec(tokenizer, player);
-		else
-			player->sendSystemMessage("You do not have permission to use this command.");
-	}
+	void handleCommand(string cmd, StringTokenizer tokenizer, Player * player);
 };
 
 #endif /*GAMECOMMANDHANDLER_H_*/

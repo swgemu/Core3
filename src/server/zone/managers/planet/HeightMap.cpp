@@ -6,10 +6,15 @@ HeightMap::HeightMap() {
 	for (int i = 0; i < PLANESSIZE * PLANESSIZE; ++i) {
 		planes[i] = NULL;
 	}
+
+	reader = NULL;
 }
 
 HeightMap::~HeightMap() {
-	delete reader;
+	if (reader != NULL) {
+		delete reader;
+		reader = NULL;
+	}
 
 	for (int i = 0; i < PLANESSIZE * PLANESSIZE; ++i) {
 		HeightMapPlane* plane = planes[i];

@@ -73,7 +73,7 @@ public:
 
 		for(int i = 0; i < experimentalValuesMap.size(); ++i){
 
-			experimentalValuesMap.get(i);
+			delete experimentalValuesMap.get(i);
 
 		}
 

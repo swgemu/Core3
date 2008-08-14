@@ -239,6 +239,26 @@ void GameCommandHandler::init() {
 			&revive);
 }
 
+GameCommandHandler::~GameCommandHandler() {
+	if (gmCommands != NULL) {
+		delete gmCommands;
+		gmCommands = NULL;
+	}
+}
+
+void GameCommandHandler::handleCommand(string cmd, StringTokenizer tokenizer, Player * player) {
+	if (!gmCommands->containsKey(cmd)) {
+		player->sendSystemMessage("Command not found.");
+		return;
+	}
+
+	GMCommand * command = gmCommands->get(cmd);
+	if (command->getRequiredAdminLevel() & player->getAdminLevel())
+		command->exec(tokenizer, player);
+	else
+		player->sendSystemMessage("You do not have permission to use this command.");
+}
+
 void GameCommandHandler::help(StringTokenizer tokenizer, Player * player) {
 	if (tokenizer.hasMoreTokens()) {
 		string token;

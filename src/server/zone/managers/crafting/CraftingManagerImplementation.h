@@ -133,6 +133,7 @@ private:
 public:
 
 	CraftingManagerImplementation(ZoneServer* serv, ZoneProcessServerImplementation* proc);
+	~CraftingManagerImplementation();
 
 
 	// Methods to setup the crafting sequence

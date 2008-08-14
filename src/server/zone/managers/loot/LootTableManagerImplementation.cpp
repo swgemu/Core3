@@ -71,27 +71,32 @@ LootTableManagerImplementation::LootTableManagerImplementation(ZoneServer* inser
 }
 
 LootTableManagerImplementation::~LootTableManagerImplementation() {
+	for (int i = 0; i < 500; ++i) {
+		for (int j = 0; j < lootTableMap[i]->size(); ++j)
+			delete lootTableMap[i]->get(j);
 
-	for (int i = 0; i < 100; ++i) {
 		lootTableMap[i]->removeAll();
 
 		delete lootTableMap[i];
 		lootTableMap[i] = NULL;
 	}
-	
+
 	if (selectedLootTableMap != NULL) {
 		delete selectedLootTableMap;
 		selectedLootTableMap = NULL;
 	}
 
+	if (lootWeightMap != NULL) {
+		delete lootWeightMap;
+		lootWeightMap = NULL;
+	}
 }
 
 
 void LootTableManagerImplementation::init() {
-
-	for (int i = 0; i < 500; ++i) 
+	for (int i = 0; i < 500; ++i)
 		lootTableMap[i] = new Vector<LootTableTemplate*>();
-	
+
 	selectedLootTableMap = new Vector<LootTableTemplate*>();
 	lootWeightMap = new VectorMap<uint,uint>();
 
@@ -107,7 +112,7 @@ void LootTableManagerImplementation::buildLootMap() {
 	LootTableTemplate* lootTableTemp;
 
 	stringstream query;
-	try {		
+	try {
 		query << "SELECT "
 				<< "loottable.lootgroup,loottable.name,loottable.template_crc,loottable.template_type,"
 				<< "loottable.template_name,loottable.container,loottable.attributes,loottable.appearance,loottable.level,"
@@ -118,34 +123,34 @@ void LootTableManagerImplementation::buildLootMap() {
 				<< "Inner Join object_crc_string_table ON loottable.template_crc = object_crc_string_table.`decimal` order by lootgroup asc;";
 
 		lootRes = ServerDatabase::instance()->executeQuery(query);
-	
+
 	} catch (...) {
 		cout << "Exception in DB query LootTableManagerImplementation::loadLootItems \n";
 	}
 	query.str("");
-	
-	
-	
+
+
+
 	stringstream query2;
-	try {		
-	
+	try {
+
 		query2 << "SELECT lootgroup,weight from lootgroup_weight order by lootgroup asc;";
 		weightRes = ServerDatabase::instance()->executeQuery(query2);
-	
+
 	} catch (...) {
 		cout << "Exception in DB query LootTableManagerImplementation::loadLootWeight_Table \n";
 	}
 	query2.str("");
-	
+
 	while (weightRes->next()) {
-		lootWeightMap->put(weightRes->getInt(0), weightRes->getInt(1));		
+		lootWeightMap->put(weightRes->getInt(0), weightRes->getInt(1));
 	}
-	
+
 
 	while (lootRes->next()) {
 		i++;
 		lootTableTemp = new LootTableTemplate;
-		
+
 		lootTableTemp->setLootItemGroup(lootRes->getInt(0));
 		lootTableTemp->setLootItemName(lootRes->getString(1));
 		lootTableTemp->setLootItemTemplateCRC(lootRes->getUnsignedLong(2));
@@ -164,78 +169,78 @@ void LootTableManagerImplementation::buildLootMap() {
 		lootTableTemp->setLootItemString(lootRes->getString(18));
 		lootTableTemp->setLootItemTypeHex(lootRes->getString(19));
 		lootTableTemp->setLootItemDeveloperNote("");
-		
+
 		lootTableMap[lootRes->getInt(0)]->add(lootTableTemp);
 		//for testing: cout << "Adding item " << lootRes->getString(1) << "to lootMap No." << lootRes->getInt(0) << endl;
 	}
-	
+
 
 	stringstream msg;
 	msg << "Loot table built from database with <" << i << "> loot items.";
 	info(msg.str());
-	
+
 	//Garbage collection
-	delete lootRes;	
+	delete lootRes;
 	delete weightRes;
 	query.clear();
-	msg.clear();	
+	msg.clear();
 }
 
 
 void LootTableManagerImplementation::createLootItem(Creature* creature, int level, Player* player) {
 	lock();
-	
+
 	if (creature == NULL || selectedLootTableMap == NULL) {
 		unlock();
 		return;
 	}
-	
+
 	int i, itemcount;
 	i = 0;
 
 	uint32 objectCRC = creature->getObjectCRC();
-	LootTableTemplate* lootTableTemp;	
+	LootTableTemplate* lootTableTemp;
 	selectedLootTableMap->removeAll();
-	
-	
+
+
 	int lootGroup = makeLootGroup(creature);
-	
+
 
 	for (int i = 0; i < lootTableMap[lootGroup]->size(); ++i) {
 		lootTableTemp = lootTableMap[lootGroup]->get(i);
-			
+
 		if (lootTableTemp->getLootItemLevel() <= level) {
 			int compare = lootTableTemp->getLootItemRace().find (player->getSpeciesName());
-	
+
 			if (compare >= 0 || lootTableTemp->getLootItemRace() == "all" )
-				selectedLootTableMap->add(lootTableTemp);			
+				selectedLootTableMap->add(lootTableTemp);
 		}
 	}
-	
-	
+
+
 	//How many loot items will spawn
 	itemcount = System::random(level / 20) + 1;
-	
+
 	if (itemcount > 5 )
 		itemcount = 5;
-		
+
 	//For testing: itemcount = 100;
-	
+
 	//make sure our map is  at least = itemcount
 	if (itemcount > selectedLootTableMap->size())
 		itemcount = selectedLootTableMap->size();
-		
+
 	//Randomized offset for the loot item map to avoid looting the same items all time
 	int offset = System::random(selectedLootTableMap->size() - itemcount);
-	
+
 	//Make sure we are not pointing behind the last item
 	if (offset + itemcount > selectedLootTableMap->size())
 		offset = selectedLootTableMap->size() - itemcount;
 
-		
-	for (int i = 0; i < itemcount; ++i) {	
+
+	for (int i = 0; i < itemcount; ++i) {
 		lootTableTemp = selectedLootTableMap->get(i+offset);
-		
+
 		TangibleObject* titem = NULL;
 		Armor* aitem = NULL;
 		Instrument* iitem = NULL;
@@ -243,11 +248,11 @@ void LootTableManagerImplementation::createLootItem(Creature* creature, int leve
 		EnhancePack* eitem = NULL;
 		Ticket* ttitem = NULL;
 		Attachment* attachmentItem = NULL;
-		Wearable* clothingItem = NULL;		
+		Wearable* clothingItem = NULL;
 		Powerup* puItem = NULL;
 		Holocron* holoItem = NULL;
-		
-				
+
+
 		int itemType = lootTableTemp->getLootItemTemplateType();
 		unicode clearName = (unicode)lootTableTemp->getLootItemName();
 		uint64 itemCRC = lootTableTemp->getLootItemTemplateCRC();
@@ -256,51 +261,51 @@ void LootTableManagerImplementation::createLootItem(Creature* creature, int leve
 		string lootTypeHex = lootTableTemp->getLootItemTypeHex();
 		string itemPath = lootTableTemp->getLootItemPath();
 		string itemString = lootTableTemp->getLootItemString();
-		
+
 		//for testing: cout << "Selected lootitem is " << lootTableTemp->getLootItemName() << endl;
-		
+
 		switch (itemType) {
 			case 805306373 : //Holocron
 				holoItem = new Holocron((Player*)creature, itemCRC, clearName, itemName);
-				creature->addLootItem(holoItem);			
+				creature->addLootItem(holoItem);
 				break;
-			
+
 			case 524288 : //Weapon Powerup
 				puItem = new Powerup(creature->getNewItemID());
 				puItem->setPowerupStats(level);
 
-				creature->addLootItem(puItem);			
-				break;		
-		
+				creature->addLootItem(puItem);
+				break;
+
 			case 8201 : //Flora Loot (was on eg. Dantaris, Mooks, Jantas)
 				//ToDO: Not in yet
 				break;
-				
+
 			case 8202 : //Food Loot (was on eg. Dantaris, Mooks, Jantas)
 				//ToDO: Not in yet
 				break;
-				
+
 			case 8203 : //Furniture
 				//ToDO: Not in yet
 				break;
-				
+
 			case 8205 : //Pharmaceutical
 				//Pharmaceutical StimPack A
 				if ( itemCRC == 0x7751C746) {
 					sitem = new StimPack(creature, itemCRC, clearName, itemName);
-					sitem->setEffectiveness(System::random(70));	
+					sitem->setEffectiveness(System::random(70));
 
 					sitem->setAttributes(lootAttributes );
 					sitem->parseItemAttributes();
-				
+
 					creature->addLootItem(sitem);
 				}
 				break;
-			
+
 			case 8210 : //TravelTicket
 				//ToDO: Create faked junk loot travel ticket
 				break;
-			
+
 			case 8211 : //generic item
 				titem = new TangibleObject(creature, clearName, itemName, itemCRC, itemType);
 
@@ -309,27 +314,27 @@ void LootTableManagerImplementation::createLootItem(Creature* creature, int leve
 
 				creature->addLootItem(titem);
 				break;
-				
+
 			case 8213 : //Wearable Container (Backpacks etc)
 				//not in yet
 				break;
-			
+
 			case 8216 : //Drinks
 				//not in yet
-				break;				
-			
+				break;
+
 			case 8221 : //Clothing Attachment
 				attachmentItem = new Attachment(creature->getNewItemID(), AttachmentImplementation::CLOTHING);
-				attachmentItem->setSkillMods(level / 2);	
+				attachmentItem->setSkillMods(level / 2);
 				creature->addLootItem(attachmentItem);
-				break;				
-			
+				break;
+
 			case 8223 : //Armor Attachment
 				attachmentItem = new Attachment(creature->getNewItemID(), AttachmentImplementation::ARMOR);
 				attachmentItem->setSkillMods((level+20) / 2);
 				creature->addLootItem(attachmentItem);
 				break;
-				
+
 			//******************************* WEAPONS *****************************
 			case 131072 :
 			case 131073 :
@@ -345,19 +350,19 @@ void LootTableManagerImplementation::createLootItem(Creature* creature, int leve
 			case 131083 :
 			case 131084 :
 				Weapon* witem;
-				
+
 				if (itemString == "UnarmedMeleeWeapon")
 					witem = new UnarmedMeleeWeapon(creature, itemPath, clearName, itemName, false);
-					
+
 				if (itemString == "TwoHandedMeleeWeapon")
 					witem = new TwoHandedMeleeWeapon(creature, itemPath, clearName, itemName, false);
-					
+
 				if (itemString == "RifleRangedWeapon")
 					witem = new RifleRangedWeapon(creature, itemPath, clearName, itemName, false);
 
 				if (itemString == "PistolRangedWeapon")
 					witem = new PistolRangedWeapon(creature, itemPath, clearName, itemName, false);
-					
+
 				if (itemString == "OneHandedMeleeWeapon")
 					witem = new OneHandedMeleeWeapon(creature, itemPath, clearName, itemName, false);
 
@@ -366,13 +371,13 @@ void LootTableManagerImplementation::createLootItem(Creature* creature, int leve
 
 				if (itemString == "CarbineRangedWeapon")
 					witem = new CarbineRangedWeapon(creature, itemPath, clearName, itemName, false);
-			
+
 
 				if (witem != NULL) {
 					witem->setAttributes(lootAttributes );
 					witem->parseItemAttributes();
 					witem->setWeaponStats(level);
-					
+
 					creature->addLootItem(witem);
 				}
 				break;
@@ -389,14 +394,14 @@ void LootTableManagerImplementation::createLootItem(Creature* creature, int leve
 			case 264 :
 				aitem = new Armor(creature, itemCRC, clearName, itemName, false);
 				aitem->setType(itemCRC);
-				
+
 				aitem->setAttributes(lootAttributes);
 				aitem->parseItemAttributes();
-				aitem->setArmorStats(level);		
-				
+				aitem->setArmorStats(level);
+
 				creature->addLootItem(aitem);
-				break;	
-				
+				break;
+
 			default:
 				//Clothing
 				if (itemString == "Clothing") {
@@ -405,18 +410,18 @@ void LootTableManagerImplementation::createLootItem(Creature* creature, int leve
 					//Conversion stunt from uint64 to hex int
 					stringstream ssHex;
 					ssHex << hex << lootTypeHex;
-					
+
 					int hexValue;
 					ssHex >> hexValue;
-					
-					clothingItem->setObjectSubType(hexValue);					
+
+					clothingItem->setObjectSubType(hexValue);
 					clothingItem->setConditionDamage(System::random(clothingItem->getMaxCondition() * 3 / 4));
-					
+
 					creature->addLootItem(clothingItem);
 				}
 		}
 	}
-		
+
 	unlock();
 }
 
@@ -432,17 +437,17 @@ void LootTableManagerImplementation::stop() {
 
 
 int LootTableManagerImplementation::makeLootGroup(Creature* creature) {
-	Vector<int> weightHelper;	
+	Vector<int> weightHelper;
 	Vector<string> parsedStrings;
-	
+
 	string parseHelper;
-	int retLG = 0;	
-	
+	int retLG = 0;
+
 	string line = creature->getLootGroup();
-	
+
 	for (int i = 0; i < line.size(); i++) {
 		char currentChar = line.at(i);
-	
+
 		if (currentChar != ' ') {
 			if (currentChar == ',') {
 				parsedStrings.add(parseHelper);
@@ -451,23 +456,23 @@ int LootTableManagerImplementation::makeLootGroup(Creature* creature) {
 				parseHelper += currentChar;
 			}
 		}
-		
-	}	
+
+	}
 	// The last template name has to be added because it was not added during the loop
 	parsedStrings.add(parseHelper);
-	
+
 
 	if (parsedStrings.size() > 0) {
-		
+
 		for (int i = 0; i < parsedStrings.size(); i++) {
-		
+
 			//lootgroup the creature belongs to
 			int lootGroup = atoi(parsedStrings.get(i).c_str());
-		
+
 			//determining the weight of this lootgroup
 			int weight = lootWeightMap->get(lootGroup);
-				
-			//The chance of the weight-value is best reflected by adding the lootgroup multiple times, based on its weight 
+
+			//The chance of the weight-value is best reflected by adding the lootgroup multiple times, based on its weight
 			for (int j = 0; j < weight ; j++)
 				weightHelper.add(lootGroup);
 		}
@@ -475,12 +480,12 @@ int LootTableManagerImplementation::makeLootGroup(Creature* creature) {
 		int rand = System::random(weightHelper.size()-1);
 		retLG = weightHelper.get(rand);
 	}
-	
+
 	//Garbage collection
 	parsedStrings.removeAll();
 	weightHelper.removeAll();
 	parseHelper.clear();
 	line.clear();
-	
+
 	return retLG;
 }

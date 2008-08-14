@@ -159,6 +159,8 @@ public:
 
 	void removeCenterOfBeing();
 
+	void doPowerboost();
+
 	void doPeace();
 
 	void kill();
@@ -216,6 +218,8 @@ public:
 	void setMoneyToTrade(unsigned int value);
 
 	unsigned int getMoneyToTrade();
+
+	bool getMeditate();
 
 	void changeCloth(unsigned long long itemid);
 
@@ -738,6 +742,8 @@ public:
 
 	void removeCenterOfBeing();
 
+	void doPowerboost();
+
 	void doPeace();
 
 	void kill();
@@ -795,6 +801,8 @@ public:
 	void setMoneyToTrade(unsigned int value);
 
 	unsigned int getMoneyToTrade();
+
+	bool getMeditate();
 
 	void changeCloth(unsigned long long itemid);
 

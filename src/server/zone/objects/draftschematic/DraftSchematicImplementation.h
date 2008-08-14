@@ -231,10 +231,13 @@ public:
 	}
 
 	~DraftSchematicImplementation(){
+		while (dsExpPropGroups.size() > 0)
+			dsExpPropGroups.remove(0)->finalize();
+
+		while (attributesToSet.size() > 0)
+			attributesToSet.remove(0)->finalize();
 
 		dsIngredients.removeAll();
-
-		attributesToSet.removeAll();
 
 		experimentalProperties.removeAll();
 

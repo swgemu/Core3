@@ -159,4 +159,3 @@ DistributedObjectStub* LootTableManagerServant::_getStub() {
 	return _this;
 }
 
-

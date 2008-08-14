@@ -77,10 +77,22 @@ ItemManagerImplementation::ItemManagerImplementation(ZoneServer* serv) :
 	info("Loading Blue Frog Items...", true);
 	runFile("scripts/items/bluefrog/main.lua");
 
-	if(bfEnabled) {
+	if (bfEnabled) {
 		server->getZone(5)->getCreatureManager()->loadBlueFrogs();
 		server->getZone(8)->getCreatureManager()->loadBlueFrogs();
 	}
+
+}
+
+ItemManagerImplementation::~ItemManagerImplementation() {
+	delete startingItems;
+	startingItems = NULL;
+
+	delete bfItemSet;
+	bfItemSet = NULL;
+
+	delete bfProfSet;
+	bfProfSet = NULL;
 
 }
 
@@ -941,7 +953,7 @@ void ItemManagerImplementation::unloadPlayerItems(Player* player) {
 		} else if (item->isUpdated()) {
 			savePlayerItem(player, item);
 		}
-		
+
 		try {
 			stringstream query;
 			query << "UPDATE `characters` set itemShift = " << player->getItemShift() << " ";
@@ -951,7 +963,7 @@ void ItemManagerImplementation::unloadPlayerItems(Player* player) {
 		} catch (DatabaseException& e) {
 			cout << e.getMessage() << "\n";
 		}
-		
+
 	}
 }
 

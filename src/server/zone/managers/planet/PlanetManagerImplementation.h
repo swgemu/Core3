@@ -83,6 +83,7 @@ class PlanetManagerImplementation : public PlanetManagerServant, public Mutex, p
 	CellMap* cellMap;
 	TicketCollectorMap* ticketCollectorMap;
 	TravelTerminalMap* travelTerminalMap;
+	VectorMap<uint64, CraftingStation*> craftingStationMap;
 
 	ShuttleLandingEvent* shuttleLandingEvent;
 	ShuttleTakeOffEvent* shuttleTakeOffEvent;
@@ -125,6 +126,7 @@ private:
 	void clearBuildings();
 	void clearTicketCollectors();
 	void clearTravelTerminals();
+	void clearCraftingStations();
 
 public:
 	// getters

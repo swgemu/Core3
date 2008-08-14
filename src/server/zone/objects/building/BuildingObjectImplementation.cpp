@@ -57,7 +57,6 @@ BuildingObjectImplementation::BuildingObjectImplementation(uint64 oid, bool stat
 
 	buildingType = UNKNOWN; // default building Type
 
-
 	objectType = SceneObjectImplementation::BUILDING;
 
 	cells.setInsertPlan(SortedVector<SceneObject*>::NO_DUPLICATE);
@@ -73,6 +72,11 @@ BuildingObjectImplementation::BuildingObjectImplementation(uint64 oid, bool stat
 BuildingObjectImplementation::~BuildingObjectImplementation() {
 	for (int i = 0; i < cells.size(); ++i) {
 		CellObject* cell = cells.get(i);
+
+		server->getZoneServer()->removeObject(cell);
+
+		cell->removeUndeploymentEvent();
+
 		cell->finalize();
 	}
 }

@@ -55,7 +55,7 @@ class BazaarTerminals {
 public:
 	BazaarTerminals() {
 		bazaarLocations = new BazaarMap(200);
-		
+
 		// Tatooine Anchorhead
 		string location = "anchorhead";
 		bazaarLocations->put(3945353, new BazaarTerminalDetails(8, location, 60, -5350));
@@ -100,11 +100,24 @@ public:
 		bazaarLocations->put(1392905, new BazaarTerminalDetails(2, location, 573, 3092));
 
 	}
-	
+
+	~BazaarTerminals() {
+		bazaarLocations->resetIterator();
+
+		while (bazaarLocations->hasNext()) {
+			BazaarTerminalDetails* btd = bazaarLocations->next();
+
+			delete btd;
+		}
+
+		delete bazaarLocations;
+		bazaarLocations = NULL;
+	}
+
 	BazaarTerminalDetails* isBazaarTerminal(uint64 objectid) {
 		return bazaarLocations->get(objectid);
 	}
-	
+
 	BazaarMap* getBazaarMap() {
 		return bazaarLocations;
 	}

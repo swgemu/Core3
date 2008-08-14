@@ -130,7 +130,7 @@ void SceneObjectImplementation::redeploy() {
 }
 
 void SceneObjectImplementation::scheduleUndeploy() {
-	if (undeployEvent == NULL && !keepObject) {
+	if (undeployEvent == NULL && !keepObject && server != NULL) {
 		info("scheduling uneploy");
 
 		undeployEvent = new UndeploySceneObjectEvent(_this);

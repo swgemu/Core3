@@ -49,24 +49,34 @@ which carries forward this exception.
 
 class DraftSchematicGroupImplementation : public DraftSchematicGroupServant {
 	Vector<DraftSchematic*> draftSchematics;
-	
+
 public:
 	DraftSchematicGroupImplementation() : DraftSchematicGroupServant() {
 	}
-	
+
+	~DraftSchematicGroupImplementation() {
+		while (draftSchematics.size() > 0) {
+			DraftSchematic* ds = draftSchematics.get(0);
+
+			draftSchematics.remove(0);
+
+			ds->finalize();
+		}
+	}
+
 	void addDraftSchematic(DraftSchematic* schematic) {
 		draftSchematics.add(schematic);
 	}
-	
+
 	// getters
 	inline int getSizeOfDraftSchematicList() {
 		return draftSchematics.size();
 	}
-	
+
 	inline DraftSchematic* getDraftSchematic(int index) {
 		return draftSchematics.get(index);
 	}
-	
+
 };
 
 #endif /*DRAFTSCHEMATICGROUPIMPLEMENTATION_H_*/

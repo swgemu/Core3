@@ -125,13 +125,6 @@ PlayerImplementation::~PlayerImplementation() {
 		playerObject = NULL;
 	}
 
-	if (inventory != NULL) {
-		info("undeploying player inventory");
-
-		inventory->finalize();
-		inventory = NULL;
-	}
-
 	if (datapad != NULL) {
 		info("undeploying player datapad");
 
@@ -265,11 +258,11 @@ void PlayerImplementation::init() {
 
  	centered = false;
 	powerboosted = false;
- 	
+
 	centerOfBeingEvent = new CenterOfBeingEvent(this);
 	powerboostEventEnd = new PowerboostEventEnd(this);
 	powerboostEventWane = new PowerboostEventWane(this);
-	
+
 
 	lastTestPositionX = 0.f;
 	lastTestPositionY = 0.f;
@@ -2157,14 +2150,14 @@ void PlayerImplementation::doPowerboost() {
 		sendSystemMessage("teraskasi", "powerboost_active");
 		return;
 	}
-	
+
 	int duration = 0;
-		
+
 	if (!meditating) {
 		sendSystemMessage("teraskasi", "powerboost_fail");
 		return;
 	}
-	
+
 	string txt0 = "combat_unarmed_accuracy_02";
 	string txt1 = "combat_unarmed_master";
 
@@ -2173,17 +2166,17 @@ void PlayerImplementation::doPowerboost() {
 		//duration = 600000;
 		duration = 300000;
 	else if (hasSkillBox(txt0))
-		duration = 300000;	
-	
+		duration = 300000;
+
 	//Fire the "begin"-event
 	sendSystemMessage("teraskasi", "powerboost_begin");
-	
+
 	//Queue the "wane"-event
 	server->addEvent(powerboostEventWane, duration-60000);
 
 	//Queue the "...come to an end"-event
 	server->addEvent(powerboostEventEnd, duration);
-	
+
 	powerboosted = true;
 }
 

@@ -74,6 +74,9 @@ CraftingToolImplementation::~CraftingToolImplementation(){
 	tabIds.removeAll();
 
 	schematicsToSend.removeAll();
+
+	delete craftingSlots;
+	craftingSlots = NULL;
 }
 
 void CraftingToolImplementation::init() {

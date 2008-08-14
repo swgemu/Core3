@@ -69,7 +69,7 @@ class LootTableTemplate {
 	string lootItemTypeHex;
 	string lootItemPath;
 	string lootItemString;
-	
+
 	Vector<LootTableFields*> * lootTableFields;
 
 public:
@@ -89,76 +89,83 @@ public:
 		lootItemNoTrade = 0;
 		lootItemRace = "";
 		lootItemDeveloperNote = "";
-		lootItemString = "";		
+		lootItemString = "";
 		lootItemTypeHex = "0x0";
 		lootItemPath = "";
 		lootItemString = "";
 
-		
+
 		lootTableFields = new Vector<LootTableFields*>();
 	}
 
 	~LootTableTemplate() {
-	
-	}	
-	
-	//setters	
+		while (lootTableFields->size() > 0) {
+			LootTableFields* ltf = lootTableFields->remove(0);
+
+			delete ltf;
+		}
+
+		delete lootTableFields;
+		lootTableFields = NULL;
+	}
+
+	//setters
 	void setLootItemGroup(int lootitemgroup) {
 		lootItemGroup = lootitemgroup;
 	}
-	
+
 	void setLootItemName(string lootitemname) {
 		lootItemName = lootitemname;
-	}	
-	
+	}
+
 	void setLootItemTemplateCRC(uint64 lootitemtemplatecrc) {
 		lootItemTemplateCRC = lootitemtemplatecrc;
-	}	
-	
+	}
+
 	void setLootItemTemplateType(uint64 lootitemtemplatetype) {
 		lootItemTemplateType = lootitemtemplatetype;
-	}	
-	
+	}
+
 	void setLootItemTemplateName(string lootitemtemplatename) {
 		lootItemTemplateName = lootitemtemplatename;
 	}
-	
+
 	void setLootItemAttributes(string lootitemattributes) {
 		lootItemAttributes = lootitemattributes;
 	}
-	
+
 	void setLootItemAppearance(string lootitemappearance) {
 		lootItemAppearance = lootitemappearance;
-	}	
-	
+	}
+
 	void setLootItemLevel(int lootitemlevel) {
 		lootItemLevel = lootitemlevel;
 	}
-	
+
 	void setLootItemChance(int lootitemchance) {
 		lootItemChance = lootitemchance;
 	}
-	
+
 	void setLootItemLastDropStamp(string lootitemlastdropstamp) {
 		lootItemLastDropStamp = lootitemlastdropstamp;
-	}	
-	
+	}
+
 	void setLootItemDontDropBefore(string lootitemdontdropbefore) {
 		lootItemDontDropBefore = lootitemdontdropbefore;
-	}	
-	
+	}
+
 	void setLootItemUnique(int lootitemunique) {
 		lootItemUnique = lootitemunique;
-	}		
-	
+	}
+
 	void setLootItemNoTrade(int lootitemnotrade) {
 		lootItemNoTrade = lootitemnotrade;
-	}	
-	
+	}
+
 	void setLootItemRace(string lootitemrace) {
 		lootItemRace = lootitemrace;
 	}
-	
+
 	void setLootItemDeveloperNote(string lootitemdevelopernote) {
 		lootItemDeveloperNote = lootitemdevelopernote;
 	}
@@ -180,15 +187,15 @@ public:
 	int getLootItemGroup() {
 		return lootItemGroup;
 	}
-	
+
 	string getLootItemName() {
 		return lootItemName;
-	}	
-	
+	}
+
 	uint64 getLootItemTemplateCRC() {
 		return lootItemTemplateCRC;
-	}	
-	
+	}
+
 	uint64 getLootItemTemplateType() {
 		return lootItemTemplateType;
 	}
@@ -196,43 +203,43 @@ public:
 	string getLootItemTemplateName() {
 		return lootItemTemplateName;
 	}
-	
+
 	string getLootItemAttributes() {
 		return lootItemAttributes;
 	}
-	
+
 	string getLootItemAppearance() {
 		return lootItemAppearance;
-	}	
-	
+	}
+
 	int getLootItemLevel() {
 		return lootItemLevel;
 	}
-	
+
 	int getLootItemChance() {
 		return lootItemChance;
 	}
-	
+
 	string getLootItemLastDropStamp() {
 		return lootItemLastDropStamp;
-	}	
-	
+	}
+
 	string getLootItemDontDropBefore() {
 		return lootItemDontDropBefore;
-	}	
-	
+	}
+
 	int getLootItemUnique() {
 		return lootItemUnique;
-	}		
-	
+	}
+
 	int getLootItemNoTrade() {
 		return lootItemNoTrade;
-	}	
-	
+	}
+
 	string getLootItemRace() {
 		return lootItemRace;
 	}
-	
+
 	string getLootItemDeveloperNote() {
 		return lootItemDeveloperNote;
 	}
@@ -249,7 +256,7 @@ public:
 		return lootItemString;
 	}
 
-	
+
 };
 
 #endif /*LOOTTABLETEMPLATE_H_*/
