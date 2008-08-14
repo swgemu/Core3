@@ -39,36 +39,33 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-bagerasetAttack1 = {
-	attackname = "bagerasetAttack1",
-	animation = "creature_attack_light",
-	
-	requiredWeaponType = NONE,
+-- Load files
 
-	range = 10,
+-- Player skills
+RunSkillsFile("playerSkills/passiveSkills.lua")
+RunSkillsFile("playerSkills/defaultSkill.lua")
 
-	damageRatio = 9,
+--Combat
+RunSkillsFile("playerSkills/combat/brawler.lua")
+RunSkillsFile("playerSkills/combat/teraskasiartist.lua")
+RunSkillsFile("playerSkills/combat/fencer.lua")
+RunSkillsFile("playerSkills/combat/marksman.lua")
+RunSkillsFile("playerSkills/combat/rifleman.lua")
+RunSkillsFile("playerSkills/combat/bountyhunter.lua")
+RunSkillsFile("playerSkills/combat/carbineer.lua")
+RunSkillsFile("playerSkills/combat/commando.lua")
+RunSkillsFile("playerSkills/combat/pikeman.lua")
+RunSkillsFile("playerSkills/combat/pistoleer.lua")
+RunSkillsFile("playerSkills/combat/swordsman.lua")
 
-	speedRatio = 2,
+RunSkillsFile("playerSkills/combat/smuggler.lua")
+--RunSkillsFile("playerSkills/combat/jedi.lua")
+--RunSkillsFile("playerSkills/combat/jedi/enhancer.lua")
 
-	areaRange = 0,
-	accuracyBonus = 0,
-		
-	knockdownChance = 0,
-	postureDownChance = 0,
-	postureUpChance = 0,
-	dizzyChance = 0,
-	blindChance = 0,
-	stunChance = 0,
-	intimidateChance = 0,
-	
-	CbtSpamBlock = "attack_block",
-	CbtSpamCounter = "attack_counter",
-	CbtSpamEvade = "attack_evade",
-	CbtSpamHit = "attack_hit",
-	CbtSpamMiss = "attack_miss",
-}
+--Non Combat
+RunSkillsFile("playerSkills/nonCombat/entertainer.lua")
+RunSkillsFile("playerSkills/nonCombat/dancer.lua")
+RunSkillsFile("playerSkills/nonCombat/musician.lua")
+RunSkillsFile("playerSkills/nonCombat/medic.lua")
+RunSkillsFile("playerSkills/nonCombat/doctor.lua")
 
-AddRandomPoolAttackTargetSkill(bagerasetAttack1)
-
------------------------------------------------

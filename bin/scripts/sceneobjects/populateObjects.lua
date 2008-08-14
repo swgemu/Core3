@@ -42,7 +42,7 @@
 
 --Tatooine
 
-RunObjectFile("objects/lairs/dewbackLair.lua")
-RunObjectFile("objects/lairs/wompRatLair.lua")
+RunObjectFile("objects/lairs/tatooine/dewbackLair.lua")
+RunObjectFile("objects/lairs/tatooine/wompRatLair.lua")
 
 
