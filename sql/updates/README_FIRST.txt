@@ -1,6 +1,6 @@
 ALL NEW SQL UPDATE FILES MUST BE IN THIS FORMAT!
 
-update_name_startRev#.sql
+r#_desc.sql
 
 Ex:
-update_consentlist_startRev535.sql
+r535_consentList.sql

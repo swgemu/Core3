@@ -1,1 +1,0 @@
-UPDATE loottable SET item_string='Armor' WHERE (template_CRC='377642897') ;
