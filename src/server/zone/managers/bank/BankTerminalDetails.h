@@ -51,31 +51,31 @@ class BankTerminalDetails : public DistributedObject {
 	int bankPlanet;
 	int bankX;
 	int bankZ;
-	
+
 public:
 	BankTerminalDetails(int planet, int x, int z) {
 		bankPlanet=planet;
 		bankX=x;
 		bankZ=z;
 	}
-	
+
 	inline int getPlanet() {
 		return bankPlanet;
 	}
-	
+
 	inline int getX() {
 		return bankX;
 	}
-	
+
 	inline int getZ() {
 		return bankZ;
 	}
 };
 
 class BankMap : public HashTable<uint64, BankTerminalDetails*>, public HashTableIterator<uint64, BankTerminalDetails*> {
-	
+
 	int hash(const uint64& key) {
-        return key;
+        return Long::hashCode(key);
 	}
 
 public:

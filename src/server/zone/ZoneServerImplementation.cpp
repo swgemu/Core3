@@ -304,9 +304,6 @@ void ZoneServerImplementation::stopManagers() {
 	if (resourceManager != NULL)
 		resourceManager->stop();
 
-	if (lootTableManager != NULL)
-		lootTableManager->stop();
-
 	info("managers stopped", true);
 }
 

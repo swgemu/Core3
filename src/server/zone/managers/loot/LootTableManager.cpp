@@ -58,18 +58,6 @@ int LootTableManager::makeLootGroup(Creature* creature) {
 		return ((LootTableManagerImplementation*) _impl)->makeLootGroup(creature);
 }
 
-void LootTableManager::stop() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 8);
-
-		method.executeWithVoidReturn();
-	} else
-		((LootTableManagerImplementation*) _impl)->stop();
-}
-
 /*
  *	LootTableManagerAdapter
  */
@@ -87,9 +75,6 @@ Packet* LootTableManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 	case 7:
 		resp->insertSignedInt(makeLootGroup((Creature*) inv->getObjectParameter()));
 		break;
-	case 8:
-		stop();
-		break;
 	default:
 		return NULL;
 	}
@@ -103,10 +88,6 @@ void LootTableManagerAdapter::createLootItem(Creature* creature, int level, Play
 
 int LootTableManagerAdapter::makeLootGroup(Creature* creature) {
 	return ((LootTableManagerImplementation*) impl)->makeLootGroup(creature);
-}
-
-void LootTableManagerAdapter::stop() {
-	return ((LootTableManagerImplementation*) impl)->stop();
 }
 
 /*

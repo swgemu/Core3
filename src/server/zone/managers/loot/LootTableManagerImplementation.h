@@ -69,10 +69,9 @@ public:
 	LootTableManagerImplementation(ZoneServer* inserver, ZoneProcessServerImplementation* inserv);
 	~LootTableManagerImplementation();
 
-	void stop();
 	void createLootItem(Creature* creature, int level, Player* player);
 	int makeLootGroup(Creature* creature);
-	
+
 
 private:
 	void init();

@@ -235,6 +235,8 @@ void CreatureManagerImplementation::loadTrainers() {
 		else
 			TrainerCreature* trainer = spawnTrainer(profession, name, "", crc3, cell, x, y, z, oY, oW);
 	}
+
+	delete result;
 }
 
 void CreatureManagerImplementation::loadStaticCreatures() {
@@ -334,6 +336,7 @@ TrainerCreature* CreatureManagerImplementation::spawnTrainer(const string& profe
 		trainer->setParent(instance->getZone()->lookupObject(cell));
 		trainer->setDirection(0, 0, oy, ow);
 		trainer->setPvpStatusBitmask(0);
+		trainer->setZoneProcessServer(server);
 
 		load(trainer);
 

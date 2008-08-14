@@ -23,8 +23,6 @@ public:
 
 	int makeLootGroup(Creature* creature);
 
-	void stop();
-
 protected:
 	LootTableManager(DummyConstructorParameter* param);
 
@@ -44,8 +42,6 @@ public:
 	void createLootItem(Creature* creature, int level, Player* player);
 
 	int makeLootGroup(Creature* creature);
-
-	void stop();
 
 };
 

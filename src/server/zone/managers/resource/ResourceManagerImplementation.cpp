@@ -1190,8 +1190,6 @@ void ResourceManagerImplementation::removeExpiredResources() {
 			ss << "Resources to be despawned: " << res->size();
 			info(ss.str());
 
-			delete res;
-
 			query2 << "UPDATE resource_data rd  "
 				<< "INNER JOIN resource_spawns rs "
 				<< " ON rd.resource_name = rs.resource_name "
@@ -1213,6 +1211,9 @@ void ResourceManagerImplementation::removeExpiredResources() {
 		} else {
 			info("No resources to be despawned");
 		}
+
+		delete res;
+
 		numQueries++;
 	} catch (...) {
 		cout << "Database error in removeExpiredResources\n";

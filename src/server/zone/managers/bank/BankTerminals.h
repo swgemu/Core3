@@ -55,9 +55,20 @@ class BankTerminals {
 public:
 	BankTerminals() {
 		bankLocations = new BankMap(200);
-		
 	}
-	
+
+	~BankTerminals() {
+		bankLocations->resetIterator();
+
+		while (bankLocations->hasNext())
+			delete bankLocations->next();
+
+		bankLocations->removeAll();
+
+		delete bankLocations;
+		bankLocations = NULL;
+	}
+
 	BankTerminalDetails* isBankTerminal(long objectid) {
 		if( bankLocations->containsKey(objectid) ) {
 			return bankLocations->get(objectid);
@@ -65,11 +76,11 @@ public:
 			return NULL;
 		}
 	}
-	
+
 	BankMap* getBankMap() {
 		return bankLocations;
 	}
-	
+
 	void addTerminal(uint64 objectid, int planet, int x, int z) {
 		bankLocations->put(objectid, new BankTerminalDetails(planet, x, z));
 	}

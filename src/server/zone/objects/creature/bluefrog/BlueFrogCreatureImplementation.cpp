@@ -1,44 +1,44 @@
 /*
 Copyright (C) 2007 <SWGEmu>
- 
+
 This File is part of Core3.
- 
-This program is free software; you can redistribute 
-it and/or modify it under the terms of the GNU Lesser 
+
+This program is free software; you can redistribute
+it and/or modify it under the terms of the GNU Lesser
 General Public License as published by the Free Software
-Foundation; either version 2 of the License, 
+Foundation; either version 2 of the License,
 or (at your option) any later version.
- 
-This program is distributed in the hope that it will be useful, 
-but WITHOUT ANY WARRANTY; without even the implied warranty of 
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 See the GNU Lesser General Public License for
 more details.
- 
-You should have received a copy of the GNU Lesser General 
+
+You should have received a copy of the GNU Lesser General
 Public License along with this program; if not, write to
 the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
- 
-Linking Engine3 statically or dynamically with other modules 
-is making a combined work based on Engine3. 
-Thus, the terms and conditions of the GNU Lesser General Public License 
+
+Linking Engine3 statically or dynamically with other modules
+is making a combined work based on Engine3.
+Thus, the terms and conditions of the GNU Lesser General Public License
 cover the whole combination.
- 
-In addition, as a special exception, the copyright holders of Engine3 
-give you permission to combine Engine3 program with free software 
-programs or libraries that are released under the GNU LGPL and with 
-code included in the standard release of Core3 under the GNU LGPL 
-license (or modified versions of such code, with unchanged license). 
-You may copy and distribute such a system following the terms of the 
-GNU LGPL for Engine3 and the licenses of the other code concerned, 
-provided that you include the source code of that other code when 
+
+In addition, as a special exception, the copyright holders of Engine3
+give you permission to combine Engine3 program with free software
+programs or libraries that are released under the GNU LGPL and with
+code included in the standard release of Core3 under the GNU LGPL
+license (or modified versions of such code, with unchanged license).
+You may copy and distribute such a system following the terms of the
+GNU LGPL for Engine3 and the licenses of the other code concerned,
+provided that you include the source code of that other code when
 and as the GNU LGPL requires distribution of source code.
- 
-Note that people who make modified versions of Engine3 are not obligated 
-to grant this special exception for their modified versions; 
-it is their choice whether to do so. The GNU Lesser General Public License 
-gives permission to release a modified version without this exception; 
-this exception also makes it possible to release a modified version 
+
+Note that people who make modified versions of Engine3 are not obligated
+to grant this special exception for their modified versions;
+it is their choice whether to do so. The GNU Lesser General Public License
+gives permission to release a modified version without this exception;
+this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
@@ -64,7 +64,7 @@ BlueFrogCreatureImplementation::BlueFrogCreatureImplementation(uint64 oid) : Blu
 	setType(CreatureImplementation::TRAINER);
 
 	creatureBitmask = 0x108;
-	
+
 	characterName = unicode("a Jawa Trader");
 	speciesName = "bluefrog";
 	objectCRC = 1350586805;
@@ -105,11 +105,11 @@ void BlueFrogCreatureImplementation::setBFType(int type) {
 
 void BlueFrogCreatureImplementation::sendConversationStartTo(SceneObject* obj) {
 	Player* player = (Player*)obj;
-	
+
 	StartNpcConversation* conv = new StartNpcConversation(player, objectID, "");
 	player->sendMessage(conv);
 	player->setLastNpcConvStr("blue_frog");
-	
+
 	sendMessage1(player);
 }
 
@@ -119,7 +119,7 @@ void BlueFrogCreatureImplementation::sendMessage1(Player* player) {
 	mes1 << " you in certain skills and provide you with certain services that will help you test specific areas of development.";
 	mes1 << endl << endl << "What do you need?";
 	unicode message = unicode(mes1.str());
-	
+
 	NpcConversationMessage* m1 = new NpcConversationMessage(player, message);
 	player->sendMessage(m1);
 	sendChoices1(player);
@@ -130,12 +130,12 @@ void BlueFrogCreatureImplementation::sendChoices1(Player* player) {
 	//unicode option2 = unicode("I'd like to unlearn all my skills and start over.");
 	unicode option3 = unicode("Which items can I get?");
 	unicode option4 = unicode("I want to test wounds.");
-	
+
 	slist->insertOption(option1);
 	//slist->insertOption(option2);
 	slist->insertOption(option3);
 	slist->insertOption(option4);
-	
+
 	player->setLastNpcConvMessStr("blue_frog_m1");
 	player->sendMessage(slist);
 }
@@ -144,37 +144,39 @@ void BlueFrogCreatureImplementation::sendSelectProfessionMessage(Player * player
 	stringstream mes1;
 	mes1 << "I can train you in the following professions...";
 	unicode message = unicode(mes1.str());
-		
+
 	NpcConversationMessage* m1 = new NpcConversationMessage(player, message);
 	player->sendMessage(m1);
-		
+
 	sendProfessionChoices(player);
 }
 
 void BlueFrogCreatureImplementation::sendProfessionChoices(Player* player) {
 	ItemManager* itemManager = player->getZone()->getZoneServer()->getItemManager();
-	
+
 	StringList* slist = new StringList(player);
-	
+
 	string messStr = player->getLastNpcConvMessStr();
 	string group = messStr.substr(15, messStr.length() - 15);
-	
+
 	BlueFrogVector * bfVector = itemManager->getBFProfList(group);
 	for(int i = 0; i < bfVector->size(); i++) {
 		unicode option = unicode(bfVector->get(i));
 		slist->insertOption(option);
 	}
-	
+
 	unicode restart = unicode("Can we start over?");
-	
+
 	slist->insertOption(restart);
-	
+
 	player->sendMessage(slist);
+
+	bfVector->finalize();
 }
 
 void BlueFrogCreatureImplementation::sendSelectItemMessage(Player * player) {
 	ItemManager* itemManager = player->getZone()->getZoneServer()->getItemManager();
-	
+
 	SuiListBox* sui = new SuiListBox(player, 0xBF06);
 	sui->setPromptTitle("Blue Frog Items");
 	sui->setPromptText("You can have any of the following item sets.");
@@ -213,17 +215,17 @@ void BlueFrogCreatureImplementation::sendWoundTerminalMessage(Player * player) {
 void BlueFrogCreatureImplementation::selectConversationOption(int option, SceneObject* obj) {
 	if (!obj->isPlayer())
 		return;
-		
+
 	Player* player = (Player*)obj;
-	
+
 	if(player->getLastNpcConvStr() != "blue_frog")
 		return;
-	
+
 	ItemManager* itemManager = player->getZone()->getZoneServer()->getItemManager();
-	
+
 	string lastMessage = player->getLastNpcConvMessStr();
-	
-	
+
+
 	if(lastMessage == "blue_frog_m1") {
 		switch(option) {
 		case 0:
@@ -247,11 +249,11 @@ void BlueFrogCreatureImplementation::selectConversationOption(int option, SceneO
 	} else if (lastMessage.find("blue_frog_prof") != string::npos) {
 		string group = lastMessage.substr(15, lastMessage.length() - 15);
 		BlueFrogVector * bfVector = itemManager->getBFProfList(group);
-		
+
 		if(option < bfVector->size()) {
 			string key = bfVector->get(option);
 			string prof = itemManager->getBFProf(key);
-			
+
 			if (prof.empty()) {
 				stringstream ss;
 				ss << "blue_frog_prof_" << key;
@@ -259,57 +261,59 @@ void BlueFrogCreatureImplementation::selectConversationOption(int option, SceneO
 				sendSelectProfessionMessage(player);
 				return;
 			}
-			
+
 			player->sendSystemMessage("Attempting to train you as a " + key + "...");
-			
+
 			if (trainProfession(player, prof)) {
 				player->sendSystemMessage("You now are a " + key);
 			} else {
 				player->sendSystemMessage("You could not be trained as a " + key);
 			}
-			
+
 			player->setLastNpcConvMessStr("blue_frog_prof_root");
 			sendSelectProfessionMessage(player);
 		} else {
 			sendMessage1(player);
 		}
-	} 
+
+		bfVector->finalize();
+	}
 }
 
 bool BlueFrogCreatureImplementation::trainProfession(Player * player, string prof) {
 	if (player->hasSkillBox(prof))
 		return false;
-	
+
 	ProfessionManager * professionManager = server->getProfessionManager();
 	SkillBox * skill = professionManager->getSkillBox(prof);
-	
+
 	if (skill == NULL)
 		return false;
-	
+
 	bool ret = trainSkill(player, skill);
-	
+
 	player->sendTo(player);
-	
+
 	return ret;
 }
-	
+
 bool BlueFrogCreatureImplementation::trainSkill(Player * player, SkillBox * skill) {
-	
+
 	for (int i = 0; i < skill->getRequiredSkillsSize(); i++) {
 		SkillBox * sbox = skill->getRequiredSkill(i);
-		
+
 		if (!player->hasSkillBox(sbox->getName())) {
-			
+
 			if(!trainSkill(player, sbox))
 				return false;
 		}
-			
+
 	}
-	
+
 	bool res = player->trainSkillBox(skill->getName(), false);
 	return res;
 }
 
 void BlueFrogCreatureImplementation::dropSkills(Player * player) {
-	//TODO: Add ability to drop all skills	
+	//TODO: Add ability to drop all skills
 }

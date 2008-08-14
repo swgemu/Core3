@@ -47,8 +47,10 @@ which carries forward this exception.
 
 #include "DraftSchematic.h"
 
+#include "engine/engine.h"
+
 class DraftSchematicGroupImplementation : public DraftSchematicGroupServant {
-	Vector<DraftSchematic*> draftSchematics;
+	Vector<ManagedReference<DraftSchematic> > draftSchematics;
 
 public:
 	DraftSchematicGroupImplementation() : DraftSchematicGroupServant() {

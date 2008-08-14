@@ -237,7 +237,8 @@ public:
 		while (attributesToSet.size() > 0)
 			attributesToSet.remove(0)->finalize();
 
-		dsIngredients.removeAll();
+		while (dsIngredients.size() > 0)
+			dsIngredients.remove(0)->finalize();
 
 		experimentalProperties.removeAll();
 
