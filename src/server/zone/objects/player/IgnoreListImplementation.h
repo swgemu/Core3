@@ -236,14 +236,18 @@ public:
 			stringstream loadQuery;
 
 			loadQuery.str("");
-			loadQuery << "SELECT * from `ignorelist` where `character_id` = '" << player->getCharacterID() << "';";
+			loadQuery << "SELECT ignorelist.character_id, ignorelist.ignore_id, ignorelist.ignore_galaxy, characters.firstname "
+					<< "FROM ignorelist "
+					<< "Inner Join characters ON ignorelist.ignore_id = characters.character_id "
+					<< "WHERE ignorelist.character_id = " << player->getCharacterID() << ";";
+
 			ResultSet* ignore = ServerDatabase::instance()->executeQuery(loadQuery);
 
 			while (ignore->next()) {
 				magicnumber = ignoreMagicNumber;
 
-				string server = ignore->getString(6);
-				string name = ignore->getString(4);
+				string server = ignore->getString(2);
+				string name = ignore->getString(3);
 				String::toLower(name);
 
 				ignoreName.add(name);
@@ -302,26 +306,12 @@ public:
 				ResultSet* ignore = ServerDatabase::instance()->executeQuery(query);
 
 				if (ignore->next()) {
-					string lcaseIgnore = ignore->getString(3);
-					String::toLower(lcaseIgnore);
-
-					// escape string for firstname lastname lcaseIgnore to avoid sql injection or exceptions
-					string firstName = player->getFirstName();
-					string lastName = player->getLastName();
-					string lcaseIgnoreMysql = lcaseIgnore;
-
-					MySqlDatabase::escapeString(firstName);
-					MySqlDatabase::escapeString(lastName);
-					MySqlDatabase::escapeString(lcaseIgnoreMysql);
-
 					stringstream saveQuery;
 					saveQuery.str("");
 					saveQuery << "INSERT INTO `ignorelist` "
-					<< "(`character_id`,`firstname`,`surname`,`ignore_id`,`ignore_firstname`,`ignore_surname`,`ignore_galaxy`)"
+					<< "(`character_id`,`ignore_id`,`ignore_galaxy`)"
 					<< " VALUES ('"
-					<< player->getCharacterID() << "','" << firstName << "','"
-					<< lastName << "','" <<  ignore->getUnsignedInt(0) << "','"
-					<< lcaseIgnoreMysql << "','" << ignore->getString(4) << "','"
+					<< player->getCharacterID() << "','" << ignore->getUnsignedInt(0) << "','"
 					<< ignore->getUnsignedInt(2) << "');";
 
 					ServerDatabase::instance()->executeStatement(saveQuery);

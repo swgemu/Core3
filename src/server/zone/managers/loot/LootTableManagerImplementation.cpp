@@ -429,7 +429,7 @@ void LootTableManagerImplementation::createLootItem(Creature* creature, int leve
 void LootTableManagerImplementation::stop() {
 	lock();
 
-	for (int i = 0; i < 100; ++i)
+	for (int i = 0; i < 500; ++i)
 		lootTableMap[i]->removeAll();
 
 	unlock();

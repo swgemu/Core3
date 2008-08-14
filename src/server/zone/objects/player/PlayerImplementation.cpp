@@ -913,10 +913,10 @@ void PlayerImplementation::insertToZone(Zone* zone) {
 
 		info("inserting to zone");
 
-		//spawning in air fix
-		//TODO: Oru, change the the Z-Axis back to     zone->getHeight(positionX, positionY)     when its actually working, till then lets not spawn players in the air
-		if (parent == NULL)
-			 setPosition(positionX, 0, positionY);
+		if (parent == NULL) {
+			//cout << "Farmer John's Debug Position Cout: Player inserted with cords: " <<  positionX << " " << zone->getHeight(positionX, positionY) << " " << positionY << endl;
+			setPosition(positionX, zone->getHeight(positionX, positionY), positionY);
+		}
 
 		zone->registerObject(_this);
 
