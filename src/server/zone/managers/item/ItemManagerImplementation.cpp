@@ -149,7 +149,7 @@ TangibleObject* ItemManagerImplementation::getPlayerItem(Player* player, uint64 
 }
 
 TangibleObject* ItemManagerImplementation::createPlayerObjectTemplate(int objecttype, uint64 objectid,
-		uint32 objectcrc, const unicode& objectname, const string& objecttemp, bool equipped) {
+		uint32 objectcrc, const unicode& objectname, const string& objecttemp, bool equipped, bool makeStats, string lootAttributes, int level) {
 	TangibleObject* item = NULL;
 
 	if (objecttype & TangibleObjectImplementation::WEAPON || objecttype & TangibleObjectImplementation::LIGHTSABER) {
@@ -192,49 +192,114 @@ TangibleObject* ItemManagerImplementation::createPlayerObjectTemplate(int object
 			break;
 		}
 
+		if (item != NULL && makeStats) {
+			item->setAttributes(lootAttributes );
+			item->parseItemAttributes();
+			Weapon* dummy = (Weapon*)item;
+			dummy->setWeaponStats(level);
+		}
+
 	} else if (objecttype & TangibleObjectImplementation::CLOTHING) {
 		item = new Wearable(objectid, objectcrc, objectname, objecttemp, equipped);
 		item->setObjectSubType(objecttype);
+		if (makeStats)
+			item->setConditionDamage(System::random(item->getMaxCondition() * 3 / 4));
+
 	} else if (objecttype & TangibleObjectImplementation::ARMOR) {
 		item = new Armor(objectid, objectcrc, objectname, objecttemp, equipped);
+		if (makeStats) {
+			item->setAttributes(lootAttributes);
+			item->parseItemAttributes();
+			Armor* dummy = (Armor*)item;
+			dummy->setArmorStats(level);
+		}
+
 	} else if (objecttype & TangibleObjectImplementation::MISC) {
 		switch (objecttype) {
 		case TangibleObjectImplementation::TRAVELTICKET:
 			item = new Ticket(objectid, objectcrc, objectname, objecttemp);
+			if (makeStats) {
+				item->setAttributes(lootAttributes );
+				item->parseItemAttributes();
+			}
 			break;
+
 		case TangibleObjectImplementation::INSTRUMENT:
 			item = new Instrument(objectid, objectcrc, objectname, objecttemp, equipped);
+			if (makeStats) {
+				item->setAttributes(lootAttributes );
+				item->parseItemAttributes();
+			}
 			break;
+
 		case TangibleObjectImplementation::CLOTHINGATTACHMENT:
 			item = new Attachment(objectid, AttachmentImplementation::CLOTHING);
+			if (makeStats) {
+				Attachment* dummy = (Attachment*)item;
+				dummy->setSkillMods(level / 2);
+			}
 			break;
+
 		case TangibleObjectImplementation::ARMORATTACHMENT:
 			item = new Attachment(objectid, AttachmentImplementation::ARMOR);
+			if (makeStats) {
+				Attachment* dummy = (Attachment*)item;
+				dummy->setSkillMods((level+20) / 2);
+			}
 			break;
+
 		case TangibleObjectImplementation::CRAFTINGSTATION:
 			item = new CraftingStation(objectid, objectcrc, objectname, objecttemp);
+			if (makeStats) {
+				item->setAttributes(lootAttributes );
+				item->parseItemAttributes();
+			}
 			break;
+
 		case TangibleObjectImplementation::FACTORYCRATE:
 			item = new FactoryCrate(objectid, objectcrc, objectname, objecttemp);
 			item->setObjectCount(5);
 			break;
+
 		case TangibleObjectImplementation::PHARMACEUTICAL:
 			item = createSubObject(objectid, objectcrc, objectname, objecttemp, equipped);
+			if (makeStats) {
+				item->setAttributes(lootAttributes );
+				item->parseItemAttributes();
+			}
 			break;
+
 		default:
 			item = new TangibleObject(objectid, objectname, objecttemp, objectcrc, objecttype);
+			if (makeStats) {
+				item->setAttributes(lootAttributes );
+				item->parseItemAttributes();
+			}
 			break;
 		}
+
 	} else if ( objecttype & TangibleObjectImplementation::RESOURCECONTAINER ) {
 		item = new ResourceContainer(objectid, objectcrc, objectname, objecttemp);
+
 	} else if (objecttype & TangibleObjectImplementation::TOOL) {
+
 		switch (objecttype) {
 		case TangibleObjectImplementation::CRAFTINGTOOL:
 			item = new CraftingTool(objectid, objectcrc, objectname, objecttemp);
+			if (makeStats) {
+				item->setAttributes(lootAttributes );
+				item->parseItemAttributes();
+			}
 			break;
+
 		case TangibleObjectImplementation::SURVEYTOOL:
 			item = new SurveyTool(objectid, objectcrc, objectname, objecttemp);
+			if (makeStats) {
+				item->setAttributes(lootAttributes );
+				item->parseItemAttributes();
+			}
 			break;
+
 		case TangibleObjectImplementation::REPAIRTOOL:
 			break;
 		case TangibleObjectImplementation::CAMPKIT:
@@ -242,10 +307,20 @@ TangibleObject* ItemManagerImplementation::createPlayerObjectTemplate(int object
 		case TangibleObjectImplementation::SHIPCOMPONENTREPAIRITEM:
 			break;
 		}
+
 	} else if (objecttype & TangibleObjectImplementation::WEAPONPOWERUP) {
 		item = new Powerup(objectid, objectcrc, objectname, objecttemp);
+		if (makeStats) {
+			Powerup* dummy = (Powerup*)item;
+			dummy->setPowerupStats(level);
+		}
+
 	} else if (objecttype & TangibleObjectImplementation::COMPONENT) {
 		item = new Component(objectid, objectcrc, objectname, objecttemp);
+		if (makeStats) {
+			item->setAttributes(lootAttributes );
+			item->parseItemAttributes();
+		}
 	}
 
 	return item;
@@ -368,7 +443,8 @@ TangibleObject* ItemManagerImplementation::createPlayerObject(Player* player, Re
 
 	string attributes = result->getString(9);
 
-	TangibleObject* item = createPlayerObjectTemplate(objecttype, objectid, objectcrc, unicode(objectname), objecttemp, equipped);
+	TangibleObject* item = createPlayerObjectTemplate(objecttype, objectid, objectcrc,
+							unicode(objectname), objecttemp, equipped, false, "", 0);
 
 	if (item == NULL) {
 		//cout << "NULL ITEM objectType:[" << objecttype << "] objectname[" << objectname << "]" << endl;
@@ -397,7 +473,7 @@ TangibleObject* ItemManagerImplementation::initializeTangibleForCrafting(
 	TangibleObject * item = NULL;
 
 	item = createPlayerObjectTemplate(objecttype, objectid, objectcrc,
-			objectname.c_str(), objecttemp, equipped);
+			objectname.c_str(), objecttemp, equipped, false, "", 0);
 
 	/*if (item == NULL) {
 		cout << "NULL ITEM" << endl;
@@ -417,7 +493,10 @@ TangibleObject* ItemManagerImplementation::clonePlayerObjectTemplate(uint64 obje
 		return NULL;
 	}
 	//the name is passed in a hackish way to stop buffer overflows.. anyone know why it was doing that?
-	TangibleObject* newTempl = createPlayerObjectTemplate(templ->getObjectSubType(), objectid, templ->getObjectCRC(), unicode(templ->getName().c_str()), (char *) templ->getTemplateName().c_str(), templ->isEquipped());
+	TangibleObject* newTempl = createPlayerObjectTemplate(templ->getObjectSubType(),
+						objectid, templ->getObjectCRC(), unicode(templ->getName().c_str()),
+						(char *) templ->getTemplateName().c_str(), templ->isEquipped(), false, "", 0);
+
 	newTempl->setAttributes(templ->getAttributes());
 	newTempl->parseItemAttributes();
 
@@ -644,7 +723,8 @@ TangibleObject* ItemManagerImplementation::createTemplateFromLua(LuaObject itemc
 	bool equipped = bool(itemconfig.getByteField("equipped"));
 	int type = itemconfig.getIntField("objectType");
 
-	TangibleObject* item = createPlayerObjectTemplate(type, 1, crc, unicode(name), templ, equipped);
+	TangibleObject* item = createPlayerObjectTemplate(type, 1, crc, unicode(name), templ, equipped, false, "", 0);
+
 	item->setObjectSubType(type);
 
 	//ADD ATTRIBUTES

@@ -108,7 +108,8 @@ public:
 	static TangibleObject* createSubObject(uint64 objectid, uint32 objectcrc, const unicode& objectname, const string& objecttemp, bool equipped);
 
 	static TangibleObject* createPlayerObjectTemplate(int objecttype, uint64 objectid, uint32 objectcrc,
-			const unicode& objectname, const string& objecttemp, bool equipped);
+			const unicode& objectname, const string& objecttemp, bool equipped,
+			bool makeStats, string lootAttributes, int level);
 
 	static TangibleObject* createTemplateFromLua(LuaObject item);
 
@@ -157,6 +158,7 @@ public:
 };
 
 #endif /*ITEMMANAGERIMPLEMENTATION_H_*/
+
 
 
 

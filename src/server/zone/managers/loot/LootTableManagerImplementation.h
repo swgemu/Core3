@@ -64,6 +64,7 @@ class LootTableManagerImplementation : public LootTableManagerServant, public Mu
 	Vector<LootTableTemplate*>* lootTableMap[500];
 	Vector<LootTableTemplate*>* selectedLootTableMap;
 	VectorMap<uint,uint>* lootWeightMap;
+	Vector<int>* lootMaxDrop;
 
 public:
 	LootTableManagerImplementation(ZoneServer* inserver, ZoneProcessServerImplementation* inserv);
