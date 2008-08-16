@@ -81,6 +81,7 @@ class MountCreature;
 class DizzyFallDownEvent;
 class WoundTreatmentOverEvent;
 class InjuryTreatmentOverEvent;
+class StateTreatmentOverEvent;
 
 class MountCreature;
 class BuildingObject;
@@ -224,6 +225,7 @@ protected:
 	uint32 hamUpdateCounter;
 	uint32 hamMaxUpdateCounter;
 	uint32 hamBaseUpdateCounter;
+	uint32 hamEncumbUpdateCounter;
 	uint32 woundsUpdateCounter;
 
 	//CREO1 HAM variables
@@ -392,6 +394,7 @@ protected:
 
 	WoundTreatmentOverEvent* woundTreatmentEvent;
 	InjuryTreatmentOverEvent* injuryTreatmentEvent;
+	StateTreatmentOverEvent* stateTreatmentEvent;
 
 public:
 	static const float DEFAULT_SPEED = 5.376f;
@@ -532,7 +535,7 @@ public:
 
 	void changeShockWounds(int bf);
 
-	void resetHAMBars();
+	void resetHAMBars(bool doUpdateClient);
 
 	void setMaxHAMBars(uint32 hp, uint32 ap, uint32 mp);
 	void setHAMBars(uint32 hp, uint32 ap, uint32 mp);
@@ -1712,6 +1715,14 @@ public:
 			return hamBaseUpdateCounter += cnt;
 	}
 
+	inline uint32 getHAMEncumbUpdateCounter() {
+		return hamEncumbUpdateCounter;
+	}
+
+	inline uint32 getNewHAMEncumbUpdateCounter(int cnt) {
+			return hamEncumbUpdateCounter += cnt;
+	}
+
 	inline uint32 getWoundsUpdateCounter() {
 		return woundsUpdateCounter;
 	}
@@ -2374,6 +2385,9 @@ public:
 
 	void deactivateInjuryTreatment();
 	void activateInjuryTreatment();
+
+	void deactivateStateTreatment();
+	void activateStateTreatment();
 
 	bool canTreatWounds();
 	bool canTreatInjuries();

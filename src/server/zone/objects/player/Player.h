@@ -283,6 +283,8 @@ public:
 
 	WaypointObject* searchWaypoint(Player* play, const string& name, int mode);
 
+	void queueHeal(TangibleObject* medpack, unsigned int actionCRC, const string& attribute);
+
 	void addXp(string& xpType, int xp, bool updateClient);
 
 	void removeXp(string& xpType, int xp, bool updateClient);
@@ -413,6 +415,8 @@ public:
 
 	void mutePlayer();
 
+	void toggleImmune();
+
 	bool hasSuiBox(unsigned int boxID);
 
 	bool hasSuiBoxType(unsigned int boxTypeID);
@@ -488,6 +492,8 @@ public:
 	int getSlicingAbility();
 
 	bool isChatMuted();
+
+	bool isImmune();
 
 	unsigned int nextMisoRFC();
 
@@ -866,6 +872,8 @@ public:
 
 	WaypointObject* searchWaypoint(Player* play, const string& name, int mode);
 
+	void queueHeal(TangibleObject* medpack, unsigned int actionCRC, const string& attribute);
+
 	void addXp(string& xpType, int xp, bool updateClient);
 
 	void removeXp(string& xpType, int xp, bool updateClient);
@@ -996,6 +1004,8 @@ public:
 
 	void mutePlayer();
 
+	void toggleImmune();
+
 	bool hasSuiBox(unsigned int boxID);
 
 	bool hasSuiBoxType(unsigned int boxTypeID);
@@ -1071,6 +1081,8 @@ public:
 	int getSlicingAbility();
 
 	bool isChatMuted();
+
+	bool isImmune();
 
 	unsigned int nextMisoRFC();
 
@@ -1206,6 +1218,7 @@ protected:
 	string _param0_surrenderSkillBox__string_;
 	string _param0_hasSkillBox__string_;
 	string _param1_searchWaypoint__Player_string_int_;
+	string _param2_queueHeal__TangibleObject_int_string_;
 	string _param0_addXp__string_int_bool_;
 	string _param0_removeXp__string_int_bool_;
 	string _param0_sendSystemMessage__string_;

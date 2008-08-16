@@ -9,6 +9,8 @@
 
 class CreatureObject;
 
+class Player;
+
 class TangibleObject;
 
 #include "../TangibleObject.h"

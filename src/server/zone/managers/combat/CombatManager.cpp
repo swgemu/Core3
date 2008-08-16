@@ -65,6 +65,13 @@ CombatManager::CombatManager(ZoneProcessServerImplementation* srv) {
 }
 
 float CombatManager::handleAction(CommandQueueAction* action) {
+	CreatureObject* creature = action->getCreature();
+
+	if (creature != NULL && creature->isPlayer() && ((Player*)creature)->isImmune()) {
+		((Player*)creature)->sendSystemMessage("You cannot attack while Immune.");
+		return 0.0f;
+	}
+
 	Skill* skill = action->getSkill();
 
 	if (skill->isTargetSkill())
@@ -78,6 +85,12 @@ float CombatManager::handleAction(CommandQueueAction* action) {
 float CombatManager::doTargetSkill(CommandQueueAction* action) {
 	CreatureObject* creature = action->getCreature();
 	SceneObject* target = action->getTarget();
+
+	if (target != NULL && target->isPlayer() && ((Player*)target)->isImmune()) {
+		if (creature->isPlayer())
+			((Player*)creature)->sendSystemMessage("You cannot attack an immune player.");
+		return 0.0f;
+	}
 
 	string actionModifier = action->getActionModifier();
 

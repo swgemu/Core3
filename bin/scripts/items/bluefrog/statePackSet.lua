@@ -40,5 +40,5 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-statePackSet = {revivePack}
-addBFItemSet("Resuscitation Kit", statePackSet);
+statePackSet = {revivePack, dizzyPack, intimidatedPack, blindedPack, stunnedPack, fireBlanket}
+addBFItemSet("StatePack - RezKit", statePackSet);

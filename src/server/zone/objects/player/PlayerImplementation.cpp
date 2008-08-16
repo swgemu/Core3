@@ -238,6 +238,7 @@ void PlayerImplementation::init() {
 
 	//GM Flags
 	chatMuted = false;
+	immune = false;
 
 	//Mission Vars
 	misoRFC = 0x01;
@@ -348,6 +349,7 @@ void PlayerImplementation::load(ZoneClient* client) {
 		info("loading player");
 
 		loadItems();
+		//resetArmorEncumbrance();
 
 		setLoggingIn(); //Anyone notice this is in here twice?
 
@@ -360,6 +362,8 @@ void PlayerImplementation::load(ZoneClient* client) {
 			playerSaveStateEvent->setPlayer(_this);
 
 		server->addEvent(playerSaveStateEvent, 300000);
+
+		resetArmorEncumbrance();
 
 		PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
 		playerManager->updateOtherFriendlists(_this, true);
@@ -437,7 +441,7 @@ void PlayerImplementation::reload(ZoneClient* client) {
 		playerObject->updateAllFriends(playerObject);
 		playerManager->updateOtherFriendlists(_this, true);
 
-		resetArmorEncumbrance();
+		//resetArmorEncumbrance();
 
 		activateRecovery();
 
@@ -530,7 +534,6 @@ void PlayerImplementation::unload() {
 	}
 
 	savePlayerState();
-	//clearBuffs(false);
 
 	if (zone != NULL) {
 		ZoneServer* zserver = zone->getZoneServer();
@@ -1384,7 +1387,7 @@ void PlayerImplementation::notifySceneReady() {
 	if (onlineStatus  == LOGGINGIN) {
 		unicode msg = unicode("Welcome to the Official Core3 Test Center!");
 		sendSystemMessage(msg);
-		unicode msg2 = unicode("please help us sorting some problems out by being as active as you can. we need to stress the server for these bugs to arise. thank you");
+		unicode msg2 = unicode("Please help us sorting some problems out by being as active as you can. we need to stress the server for these bugs to arise. thank you");
 		sendSystemMessage(msg2);
 
 		unicode msg3 = unicode("This server is owned, operated, and developed by Team SWGEmu at SWGEmu.com and is in no way affiliated with any other server communities.");
@@ -1398,6 +1401,7 @@ void PlayerImplementation::notifySceneReady() {
 	}
 
 	updateBuffWindow();
+	//updateHAMBars();
 
 	ChatManager* chatManager = server->getChatManager();
 	chatManager->listMail(_this);
@@ -2006,6 +2010,10 @@ void PlayerImplementation::doClone() {
 
 	//clearReviveCountdown();
 
+	clearStates();
+	clearBuffs(true);
+	resetArmorEncumbrance();
+
 	//TODO: This should check to see if the data is stored at the cloning facility or not, these numbers are much less if so.
 
 	changeHealthWoundsBar(100);
@@ -2090,10 +2098,6 @@ void PlayerImplementation::doClone() {
 		break;
 	}
 
-	clearStates();
-
-	clearBuffs(true);
-
 	//food persists cloning
 	//setFoodFilling(0, true);
 	//setDrinkFilling(0, true);
@@ -2101,8 +2105,6 @@ void PlayerImplementation::doClone() {
 	decayInventory();
 
 	changeForcePowerBar(0);
-
-	resetArmorEncumbrance();
 
 	setNeutral();
 	setCovert();
@@ -2390,6 +2392,20 @@ void PlayerImplementation::clearBuffs(bool doUpdatePlayer) {
 */
 void PlayerImplementation::mutePlayer() {
 	chatMuted = !chatMuted;
+}
+
+void PlayerImplementation::toggleImmune() {
+	if (!immune) {
+		clearDuelList();
+		clearCombatState();
+		setPvpStatusBitmask(0);
+		sendSystemMessage("You are now immune to attacks.");
+	} else {
+		setPvpStatusBitmask(ATTACKABLE_FLAG & PLAYER_FLAG);
+		sendSystemMessage("You are no longer immune to attacks.");
+	}
+
+	immune = !immune;
 }
 
 
@@ -3809,4 +3825,21 @@ void PlayerImplementation::updateBuffWindow() {
 		if (buff->isActive())
 			addBuff(buff->getBuffCRC(), buff->getTimeRemaining());
 	}
+}
+
+void PlayerImplementation::queueHeal(TangibleObject* medPack, uint32 actionCRC, const string& attribute) {
+	if (medPack == NULL || !medPack->isPharmaceutical()) {
+		sendSystemMessage("healing_response", "healing_resonse_60"); //No valid medicine found.
+		return;
+	}
+
+	uint64 objectID = medPack->getObjectID();
+
+	stringstream actionModifier;
+	if (!attribute.empty())
+		actionModifier << attribute << "|";
+
+	actionModifier << objectID;
+
+	queueAction(_this, getTargetID(), actionCRC, ++actionCounter, actionModifier.str());
 }

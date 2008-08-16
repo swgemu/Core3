@@ -175,6 +175,7 @@ private:
 	static void giveItemTemp(StringTokenizer tokenizer, Player * player);
 	static void clientEffect(StringTokenizer tokenizer, Player * player);
 	static void revive(StringTokenizer tokenizer, Player * player);
+	static void immune(StringTokenizer tokenizer, Player * player);
 
 	void init();
 

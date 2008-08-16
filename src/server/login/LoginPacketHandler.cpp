@@ -218,9 +218,12 @@ void LoginPacketHandler::handleDeleteCharacterMessage(Message* pack) {
 		query << "DELETE FROM characters WHERE character_id = '" << charId <<"' and galaxy_id = '" << ServerId << "';";
 		ServerDatabase::instance()->executeStatement(query);
 
-
-	    delete res;
-	    dbDelete = 0;
+		query.str("");
+		query << "DELETE FROM consentlist WHERE character_id = '" << charId << "';";
+		ServerDatabase::instance()->executeStatement(query);
+		
+		delete res;
+		dbDelete = 0;
     } catch(DatabaseException& e) {
 
    		dbDelete = 1;

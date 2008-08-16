@@ -8,6 +8,8 @@
 
 #include "../../creature/CreatureObject.h"
 
+#include "../../player/Player.h"
+
 #include "../TangibleObject.h"
 
 /*

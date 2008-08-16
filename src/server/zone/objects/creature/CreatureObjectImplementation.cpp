@@ -77,6 +77,7 @@ which carries forward this exception.
 #include "events/DizzyFallDownEvent.h"
 #include "events/WoundTreatmentOverEvent.h"
 #include "events/InjuryTreatmentOverEvent.h"
+#include "events/StateTreatmentOverEvent.h"
 
 #include "../../objects/player/Races.h"
 #include "mount/MountCreature.h"
@@ -151,6 +152,7 @@ CreatureObjectImplementation::CreatureObjectImplementation(uint64 oid) : Creatur
 	hamUpdateCounter = 0;
 	hamMaxUpdateCounter = 0;
 	hamBaseUpdateCounter = 0;
+	hamEncumbUpdateCounter = 0;
 	woundsUpdateCounter = 0;
 
 	baseHealth = 1000;
@@ -300,6 +302,7 @@ CreatureObjectImplementation::CreatureObjectImplementation(uint64 oid) : Creatur
 
 	woundTreatmentEvent = NULL;
 	injuryTreatmentEvent = NULL;
+	stateTreatmentEvent = NULL;
 }
 
 CreatureObjectImplementation::~CreatureObjectImplementation() {
@@ -329,6 +332,16 @@ CreatureObjectImplementation::~CreatureObjectImplementation() {
 
 		delete injuryTreatmentEvent;
 		injuryTreatmentEvent = NULL;
+	}
+
+	if (stateTreatmentEvent != NULL) {
+		if (stateTreatmentEvent->isQueued()) {
+			doStateTreatment = true;
+			server->removeEvent(stateTreatmentEvent);
+		}
+
+		delete stateTreatmentEvent;
+		stateTreatmentEvent = NULL;
 	}
 
 	if (lootContainer != NULL) {
@@ -946,6 +959,11 @@ void CreatureObjectImplementation::doDiseaseTick() {
 }
 
 void CreatureObjectImplementation::doFireTick() {
+	if (isOnFire() && hasState(SWIMMING_STATE)) {
+		clearState(ONFIRE_STATE);
+		return;
+	}
+
 	if (nextFireTick.isPast()) {
 		if (fireDotType == 1){
 			changeHealthWoundsBar((fireDotStrength / 5) + (shockWounds * fireDotStrength / 500));
@@ -1548,22 +1566,20 @@ void CreatureObjectImplementation::changeConditionDamage(int amount) {
 	broadcastMessage(dcreo3);
 }
 
-void CreatureObjectImplementation::resetHAMBars() {
+void CreatureObjectImplementation::resetHAMBars(bool doUpdateClient) {
+	setHealthMax(baseHealth);
+	setStrengthMax(baseStrength);
+	setConstitutionMax(baseConstitution);
 
-	healthMax = baseHealth;
-	strengthMax = baseStrength;
-	constitutionMax = baseConstitution;
+	setActionMax(baseAction);
+	setQuicknessMax(baseQuickness);
+	setStaminaMax(baseStamina);
 
-	actionMax = baseAction;
-	quicknessMax = baseQuickness;
-	staminaMax = baseStamina;
-
-	mindMax = baseMind;
-	focusMax = baseFocus;
-	willpowerMax = baseWillpower;
+	setMindMax(baseMind);
+	setFocusMax(baseFocus);
+	setWillpowerMax(baseWillpower);
 
 	if (healthWounds > healthMax) {
-		sendSystemMessage("hi");
 		healthWounds = healthMax - 1;
 	}
 
@@ -1585,7 +1601,8 @@ void CreatureObjectImplementation::resetHAMBars() {
 	focus = focusMax - focusWounds;
 	willpower = willpowerMax - willpowerWounds;
 
-	updateHAMBars();
+	if (doUpdateClient)
+		updateHAMBars();
 }
 
 
@@ -4313,24 +4330,20 @@ void CreatureObjectImplementation::applyBuff(Buff *buff) {
 // save the current duration onto the creature object so they can be
 // loaded back when they login
 
-void CreatureObjectImplementation::removeBuffs(bool doUpdateCreature) {
-	if (!doUpdateCreature) {
-		// TODO: This is needed for unload()
-		resetHAMBars();
-		return;
-	}
+void CreatureObjectImplementation::removeBuffs(bool doUpdateClient) {
 
-	for(int i = 0; i < creatureBuffs.size(); i++)
-	{
-		Buff *buff = creatureBuffs.get(i);
+	for (int i=0; i < creatureBuffs.size(); i++) {
+		Buff* buff = creatureBuffs.get(i);
 		if (buff != NULL) {
-			removeBuff(buff->getBuffCRC(), false); // dont't remove from the list yet
+			removeBuff(buff->getBuffCRC(), false);
 		}
 	}
 
 	creatureBuffs.removeAll();
-	resetHAMBars();
 
+	if (doUpdateClient) {
+		resetHAMBars(true);
+	}
 
 	/*
 	CreatureObjectDeltaMessage6* delta = new CreatureObjectDeltaMessage6(_this);
@@ -4531,6 +4544,23 @@ void CreatureObjectImplementation::activateInjuryTreatment() {
 	doInjuryTreatment = true;
 	injuryTreatmentEvent = NULL;
 	sendSystemMessage("healing_response", "healing_response_58"); //You are now ready to heal more damage.
+}
+
+void CreatureObjectImplementation::deactivateStateTreatment() {
+	float modSkill = (float)getSkillMod("healing_injury_speed");
+	int delay = (int)round((-2.0f/19.0f) * modSkill + (390.0f/19.0f));
+
+	doStateTreatment = false;
+	if (stateTreatmentEvent == NULL) {
+		stateTreatmentEvent = new StateTreatmentOverEvent(this, delay);
+		server->addEvent(stateTreatmentEvent);
+	}
+}
+
+void CreatureObjectImplementation::activateStateTreatment() {
+	doStateTreatment = true;
+	stateTreatmentEvent = NULL;
+	sendSystemMessage("You are now ready to heal more states.");
 }
 
 bool CreatureObjectImplementation::canTreatWounds() {

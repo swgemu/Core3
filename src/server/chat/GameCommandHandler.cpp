@@ -237,6 +237,10 @@ void GameCommandHandler::init() {
 			"Revives a player.",
 			"Usage: @revive <player>",
 			&revive);
+	gmCommands->addCommand("immune", PRIVILEGED,
+			"Toggles immunity.",
+			"Usage: @immune",
+			&immune);
 }
 
 GameCommandHandler::~GameCommandHandler() {
@@ -322,7 +326,7 @@ void GameCommandHandler::warpTo(StringTokenizer tokenizer, Player * player) {
 	Player* target = chatManager->getPlayer(name);
 
 	if (target != NULL)
-		player->doWarp(target->getPositionX(), target->getPositionY(), 0, 64);
+		player->doWarp(target->getPositionX(), target->getPositionY(), 0, 5);
 }
 
 void GameCommandHandler::warpPlayer(StringTokenizer tokenizer, Player * player) {
@@ -1697,4 +1701,8 @@ void GameCommandHandler::revive(StringTokenizer tokenizer, Player * player) {
 		if (targetPlayer != player)
 			targetPlayer->unlock();
 	}
+}
+
+void GameCommandHandler::immune(StringTokenizer tokenizer, Player * player) {
+	player->toggleImmune();
 }

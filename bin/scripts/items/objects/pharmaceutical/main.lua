@@ -19,8 +19,9 @@ RunItemLUAFile("objects/pharmaceutical/woundpacks/woundPackQuicknessA.lua");
 RunItemLUAFile("objects/pharmaceutical/woundpacks/woundPackStaminaA.lua");
 
 RunItemLUAFile("objects/pharmaceutical/statepacks/revivePack.lua");
---RunItemLUAFile("objects/pharmaceutical/woundpacks/woundpackActiona.lua");
---RunItemLUAFile("objects/pharmaceutical/woundpacks/woundpackConstitutiona.lua");
---RunItemLUAFile("objects/pharmaceutical/woundpacks/woundpackStrengtha.lua");
---RunItemLUAFile("objects/pharmaceutical/woundpacks/woundpackQuicknessa.lua");
---RunItemLUAFile("objects/pharmaceutical/woundpacks/woundpackStaminaa.lua");
+RunItemLUAFile("objects/pharmaceutical/statepacks/dizzyPack.lua");
+RunItemLUAFile("objects/pharmaceutical/statepacks/blindedPack.lua");
+RunItemLUAFile("objects/pharmaceutical/statepacks/intimidatedPack.lua");
+RunItemLUAFile("objects/pharmaceutical/statepacks/stunnedPack.lua");
+
+--RunItemLUAFile("objects/pharmaceutical/curepacks/fireBlanket.lua");

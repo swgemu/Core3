@@ -133,7 +133,7 @@ public:
 
 	float calculateBFRatio();
 
-	void resetHAMBars();
+	void resetHAMBars(bool doUpdateClient);
 
 	bool changeHAMBars(int hp, int ap, int mp, bool forcedChange = false);
 
@@ -647,6 +647,10 @@ public:
 
 	unsigned int getNewHAMBaseUpdateCounter(int cnt);
 
+	unsigned int getHAMEncumbUpdateCounter();
+
+	unsigned int getNewHAMEncumbUpdateCounter(int cnt);
+
 	unsigned int getHealthEncumbrance();
 
 	unsigned int getActionEncumbrance();
@@ -947,6 +951,10 @@ public:
 
 	void activateInjuryTreatment();
 
+	void deactivateStateTreatment();
+
+	void activateStateTreatment();
+
 	bool canTreatWounds();
 
 	bool canTreatInjuries();
@@ -1140,7 +1148,7 @@ public:
 
 	float calculateBFRatio();
 
-	void resetHAMBars();
+	void resetHAMBars(bool doUpdateClient);
 
 	bool changeHAMBars(int hp, int ap, int mp, bool forcedChange);
 
@@ -1652,6 +1660,10 @@ public:
 
 	unsigned int getNewHAMBaseUpdateCounter(int cnt);
 
+	unsigned int getHAMEncumbUpdateCounter();
+
+	unsigned int getNewHAMEncumbUpdateCounter(int cnt);
+
 	unsigned int getHealthEncumbrance();
 
 	unsigned int getActionEncumbrance();
@@ -1951,6 +1963,10 @@ public:
 	void deactivateInjuryTreatment();
 
 	void activateInjuryTreatment();
+
+	void deactivateStateTreatment();
+
+	void activateStateTreatment();
 
 	bool canTreatWounds();
 

@@ -322,6 +322,11 @@ void ChatManagerImplementation::handleMessage(Player* player, Message* pack) {
 }
 
 void ChatManagerImplementation::handleEmote(Player* player, Message* pack) {
+	if (player->isChatMuted()) {
+		player->sendSystemMessage("Chat has been muted by the admins");
+		return;
+	}
+
 	unicode emote;
 	Zone* zone = player->getZone();
 
@@ -591,6 +596,11 @@ void ChatManagerImplementation::deleteMail(uint32 mailid) {
 }
 
 void ChatManagerImplementation::handleChatRoomMessage(Player* sender, Message* pack) {
+	if (sender->isChatMuted()) {
+		sender->sendSystemMessage("Chat has been muted by the admins");
+		return;
+	}
+
 	string name = sender->getFirstName();
 
 	unicode message;
@@ -623,6 +633,11 @@ void ChatManagerImplementation::handleChatRoomMessage(Player* sender, Message* p
 }
 
 void ChatManagerImplementation::handleGroupChat(Player* sender, Message* pack) {
+	if (sender->isChatMuted()) {
+		sender->sendSystemMessage("Chat has been muted by the admins");
+		return;
+	}
+
 	string name = sender->getFirstName();
 	pack->shiftOffset(8);
 

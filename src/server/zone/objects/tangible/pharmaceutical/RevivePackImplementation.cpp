@@ -66,22 +66,8 @@ int RevivePackImplementation::useObject(Player* player) {
 		return 0;
 	}
 
-	SceneObject* objectTarget = player->getTarget();
-	Player* playerTarget;
-
-	if (objectTarget == NULL || !objectTarget->isPlayer())
-		playerTarget = player;
-	else
-		playerTarget = (Player*) objectTarget;
-
-	uint64 targetID = playerTarget->getObjectID();
-	uint32 actionCRC = 0xC9759876; //reviveplayer <target>
-	uint32 actionCntr = 0;
-
-	stringstream actionModifier;
-	actionModifier << objectID;
-
-	player->queueAction(player, targetID, actionCRC, actionCntr, actionModifier.str());
+	uint32 actionCRC = 0xC9759876; //reviveplayer
+	player->queueHeal((TangibleObject*)_this, actionCRC, string(""));
 
 	return 0;
 }

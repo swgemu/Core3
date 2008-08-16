@@ -66,22 +66,8 @@ int WoundPackImplementation::useObject(Player* player) {
 		return 0;
 	}
 
-	SceneObject* objectTarget = player->getTarget();
-	Player* playerTarget;
-
-	if (objectTarget == NULL || !objectTarget->isPlayer())
-		playerTarget = player;
-	else
-		playerTarget = (Player*) objectTarget;
-
-	uint64 targetID = playerTarget->getObjectID();
-	uint32 actionCRC = 0x2087CE04; //healwound <pool>
-	uint32 actionCntr = 0;
-
-	stringstream actionModifier;
-	actionModifier << getPoolName(getPoolAffected()) << "|" << objectID;
-
-	player->queueAction(player, targetID, actionCRC, actionCntr, actionModifier.str());
+	uint32 actionCRC = 0x2087CE04; //healwound
+	player->queueHeal((TangibleObject*)_this, actionCRC, getPoolName(poolAffected));
 
 	return 0;
 }

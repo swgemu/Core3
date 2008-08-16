@@ -155,6 +155,9 @@ bool PlayerManagerImplementation::create(Player* player, uint32 sessionkey) {
 
 	player->createBaseStats();
 
+	//Set players HAM stats so they are not default(3k).
+	player->resetHAMBars(false);
+
 	try {
 		stringstream query;
     	query << "INSERT INTO `characters` "
@@ -191,11 +194,6 @@ bool PlayerManagerImplementation::create(Player* player, uint32 sessionkey) {
 		playerObject->setObjectID(player->getObjectID() + 0x0C);
 
 		playerMap->put(player->getFirstName(), player);
-
-		//Create a consentlist entry for this new player
-		stringstream consentquery;
-		consentquery << "INSERT INTO consentlist (character_id) VALUES (" << player->getCharacterID() << ");";
-		ServerDatabase::instance()->executeStatement(consentquery);
 
 		delete res;
 	} catch (DatabaseException& e) {
@@ -435,7 +433,7 @@ void PlayerManagerImplementation::loadFromDatabase(Player* player) {
 	player->setWillpowerWounds(character->getInt(52));
 	player->setShockWounds(character->getInt(53));
 
-	player->resetHAMBars();
+	player->resetHAMBars(false);
 
 	player->loadProfessions();
 
@@ -1050,35 +1048,19 @@ void PlayerManagerImplementation::loadConsentList(Player* player) {
 
 	stringstream query;
 
-	query << "SELECT targets FROM consentlist WHERE character_id = " << player->getCharacterID() << ";";
-
+	query << "SELECT LOWER(B.firstname) AS targetName FROM consentlist A, characters B WHERE A.character_id = " << player->getCharacterID() << " AND B.character_id = A.target_id;";
 	ResultSet* targetlist;
+
 	try {
 		targetlist = ServerDatabase::instance()->executeQuery(query);
 
-		if (targetlist->next()) {
-
-			string targets = targetlist->getString(0);
-
-			StringTokenizer tokenizer(targets);
-			tokenizer.setDelimeter(";");
-
-			while (tokenizer.hasMoreTokens()) {
-				string playerName;
-				tokenizer.getStringToken(playerName);
-				player->giveConsent(playerName);
-			}
-		} else {
-			stringstream insert;
-			insert << "INSERT INTO consentlist (character_id, targets) VALUES (" << player->getCharacterID() << ", '');";
-			try {
-				ServerDatabase::instance()->executeStatement(insert);
-			} catch (...) {
-				cout << "Player consent list was not generated for character " << player->getFirstName() << endl;
-			}
+		while (targetlist->next()) {
+			string targetName = targetlist->getString(0);
+			player->giveConsent(targetName);
 		}
+
 	} catch (...) {
-		//No consent list available for this character so create one.
+		cout << "ServerDatabase error retrieving consentlist for character_id: " << player->getCharacterID() << endl;
 	}
 	delete targetlist;
 }
@@ -1087,21 +1069,24 @@ void PlayerManagerImplementation::updateConsentList(Player* player) {
 	if (player == NULL)
 		return;
 
-	stringstream targets;
+	stringstream deleteq;
+	deleteq << "DELETE FROM consentlist WHERE character_id = " << player->getCharacterID() << ";";
+	ServerDatabase::instance()->executeStatement(deleteq);
 
-	for (int i = 0; i < player->getConsentSize(); i++)
-		targets << player->getConsentEntry(i) << ";";
+	if (player->getConsentSize() > 0) {
+		stringstream insertq;
 
-	stringstream query;
+		for (int i = 0; i < player->getConsentSize(); i++) {
+			insertq << "INSERT DELAYED INTO consentlist (character_id, target_id)"
+					<< "SELECT " << player->getCharacterID() << ", character_id as target_id FROM characters "
+					<< "WHERE LOWER(firstname) = '" << player->getConsentEntry(i) << "';";
+		}
 
-	query << "UPDATE consentlist SET "
-		  << "targets = '" << targets.str() << "' "
-		  << "WHERE character_id = " << player->getCharacterID() << ";";
-
-	try {
-		ServerDatabase::instance()->executeStatement(query);
-	} catch (...) {
-		cout << "PlayerManagerImplementation::updateConsentList: failed SQL update " << query.str() << endl;
+		try {
+			ServerDatabase::instance()->executeStatement(insertq);
+		} catch (...) {
+			cout << "PlayerManagerImplementation::updateConsentList: failed SQL update " << insertq.str() << endl;
+		}
 	}
 }
 

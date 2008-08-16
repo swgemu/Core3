@@ -1039,7 +1039,7 @@ void CreatureImplementation::notifyPositionUpdate(QuadTreeEntry* obj) {
 		case SceneObjectImplementation::PLAYER:
 			player = (Player*) scno;
 
-			if (isAgressive() && !isDead() && !player->isIncapacitated() && !player->isDead() ) {
+			if (isAgressive() && !isDead() && !player->isIncapacitated() && !player->isDead() && !player->isImmune() ) {
 
 				if( (parent == NULL && isInRange(player, 24)) ||
 						((parent != NULL) && (getParentID() == player->getParentID()) && isInRange(player, 10))) {
@@ -1412,6 +1412,7 @@ void CreatureImplementation::doAttack(CreatureObject* target, int damage) {
 
 bool CreatureImplementation::attack(CreatureObject* target) {
 	info("attacking target");
+
 
 	if (target == NULL || target == _this || !target->isPlayer())
 		return false;

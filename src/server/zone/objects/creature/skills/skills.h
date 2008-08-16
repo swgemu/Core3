@@ -57,6 +57,7 @@ which carries forward this exception.
 
 #include "target/HealEnhanceTargetSkill.h"
 #include "target/HealDamageTargetSkill.h"
+#include "target/HealStateTargetSkill.h"
 #include "target/HealWoundTargetSkill.h"
 #include "target/DiagnoseTargetSkill.h"
 #include "target/ReviveTargetSkill.h"

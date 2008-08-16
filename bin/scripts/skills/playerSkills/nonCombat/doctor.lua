@@ -39,22 +39,16 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-HealSelfSkill = {
+HealStateSkill = {
 	skillname = "healstate",
 	effect = "clienteffect/healing_healdamage.cef",
 	animation = "heal_self",
-
-	healHealth = 0,
-	healAction = 0,
-	healMind = 0,
-
-	healDizzy = 1,
-
-	speed = 3.0,
-
+	
+	mindCost = -20,
+	range = 6.0
 }
 
-AddHealSelfSkill(HealSelfSkill);
+AddHealStateTargetSkill(HealStateSkill);
 
 HealSelfSkill = {
 	skillname = "curepoison",
@@ -95,14 +89,9 @@ HealSelfSkill = {
 	effect = "clienteffect/healing_healdamage.cef",
 	animation = "heal_self",
 
-	healHealth = 0,
-	healAction = 0,
-	healMind = -300,
-
-	healFire = 1,
-
-	speed = 5.0,
-
+	mindCost = -250,
+	
+	range = 6.0
 }
 
 AddHealSelfSkill(HealSelfSkill);
@@ -112,7 +101,7 @@ HealEnhanceTargetSkill = {
 	effect = "clienteffect/healing_healenhance.cef",
 	animation = "heal_self",
 	
-	mindCost = -200,
+	mindCost = -150,
 	range = 6.0
 }
 

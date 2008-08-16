@@ -760,27 +760,29 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 		// fancy if statement
 		switch (actionCRC) // modifier for entertainer-type commands /dazzle 2 vs /dazzle 1
 		{ // they're dumb and all have the same action crc
-			case (0x7B1DCBE0): //startdance
-			case (0xDDD1E8F1): //startmusic
-			//      target = player->getObjectID(); // Fake Queue Action on this - the parseLong is blank
-			case (0xB008CBFA): //colorlights
-			case (0x9C7713A5): //dazzle
-			case (0xED4AA746): //spotlight
-			case (0xD536B419): //smokebomb
-			case (0x2434AC3A): //distract
-			case (0x6CB6978F): //ventriloquism
-			case (0x35ED32BE): //firejet
-			case (0xC8998CE9): //flourish
-			case (0xEEE029CF): //healenhance <poolaffected>
-			case (0x0A9F00A0): //healdamage <targetname>
-			case (0x2087CE04): //healwound <poolaffected>
-			case (0xC9759876): //reviveplayer <targetname>
-			case (0xDC7CF134): //diagnose
-			{
-				unicode option = unicode("");
-				pack->parseUnicode(option);
-				actionModifier = option.c_str();
-			}
+		case (0x7B1DCBE0): //startdance
+		case (0xDDD1E8F1): //startmusic
+			//	target = player->getObjectID(); // Fake Queue Action on this - the parseLong is blank
+		case (0xB008CBFA): //colorlights
+		case (0x9C7713A5): //dazzle
+		case (0xED4AA746): //spotlight
+		case (0xD536B419): //smokebomb
+		case (0x2434AC3A): //distract
+		case (0x6CB6978F): //ventriloquism
+		case (0x35ED32BE): //firejet
+		case (0xC8998CE9): //flourish
+		case (0xEEE029CF): //healenhance <poolaffected>
+		case (0x0A9F00A0): //healdamage <targetname>
+		case (0x2087CE04): //healwound <poolaffected>
+		case (0x4A386BD5): //healstate <stateaffected>
+		case (0xDF49EA58): //extinguishfire
+		case (0xC9759876): //reviveplayer <targetname>
+		case (0xDC7CF134): //diagnose
+		{
+			unicode option = unicode("");
+			pack->parseUnicode(option);
+			actionModifier = option.c_str();
+		}
 			//if(skillOptionID <=0 ) skillOptionID = 1; // default to level 1
 			break;
 
@@ -1690,7 +1692,7 @@ void ObjectControllerMessage::parseSetCurrentSkillTitle(Player* player,
 	unicode title;
 	pack->parseUnicode(title);
 	string newTitle = title.c_str();
-	
+
 	if (!player->hasSkillBox(newTitle))
 		return;
 
@@ -1961,7 +1963,7 @@ void ObjectControllerMessage::parseWaypointCommand(Player* player, Message* pack
 
 	StringTokenizer tokenizer(waypointData);
 	tokenizer.setDelimeter(" ");
-	
+
 	if (!tokenizer.hasMoreTokens())
 		return;
 

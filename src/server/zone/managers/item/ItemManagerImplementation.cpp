@@ -412,8 +412,19 @@ TangibleObject* ItemManagerImplementation::createSubObject(uint64 objectid, uint
 	case 0x35431212:
 		item = new RevivePack(objectid, objectcrc, objectname, objecttemp);
 		break;
+	case 0xE907B936:
+	case 0x321011A1:
+	case 0xFF779812:
+	case 0x24603085:
+	case 0xD4FA5279:
+	case 0x0FEDFAEE:
+	case 0x3E9B3371:
+	case 0xE58C9BE6:
+	case 0xC6F551AE:
+		item = new StatePack(objectid, objectcrc, objectname, objecttemp);
+		break;
 	default:
-		item = NULL;
+		item = new TangibleObject(objectid, objectname, objecttemp, objectcrc, TangibleObjectImplementation::MISC);
 		break;
 	}
 
@@ -705,6 +716,12 @@ void ItemManagerImplementation::registerGlobals() {
 	setGlobalInt("STAMINA", PharmaceuticalImplementation::STAMINA);
 	setGlobalInt("FOCUS", PharmaceuticalImplementation::FOCUS);
 	setGlobalInt("WILLPOWER", PharmaceuticalImplementation::WILLPOWER);
+
+	setGlobalInt("INTIMIDATED", PharmaceuticalImplementation::INTIMIDATED);
+	setGlobalInt("STUNNED", PharmaceuticalImplementation::STUNNED);
+	setGlobalInt("DIZZY", PharmaceuticalImplementation::DIZZY);
+	setGlobalInt("BLINDED", PharmaceuticalImplementation::BLINDED);
+	setGlobalInt("ONFIRE", PharmaceuticalImplementation::ONFIRE);
 }
 
 int ItemManagerImplementation::runItemLUAFile(lua_State* L) {
@@ -812,7 +829,13 @@ TangibleObject* ItemManagerImplementation::createTemplateFromLua(LuaObject itemc
 			case PharmaceuticalImplementation::CUREPACK:
 				break;
 			case PharmaceuticalImplementation::STATEPACK:
+			{
+				int state = itemconfig.getIntField("stateAffected");
+
+				StatePack* statepack = (StatePack*) item;
+				statepack->setStateAffected(state);
 				break;
+			}
 			case PharmaceuticalImplementation::REVIVEPACK:
 			{
 				float hw = itemconfig.getFloatField("healthWoundHealed");

@@ -266,6 +266,8 @@ interface Player implements CreatureObject {
 	void updateWaypoint(WaypointObject wp);
 	void saveWaypoints(Player player);
 	WaypointObject searchWaypoint(Player play, const string name, int mode);
+	
+	void queueHeal(TangibleObject medpack, unsigned int actionCRC, const string attribute);
 
 	
 	// Experience
@@ -382,6 +384,7 @@ interface Player implements CreatureObject {
 	boolean isJedi();
 	
 	void mutePlayer();
+	void toggleImmune();
 	
 	// SuiBoxes
 	
@@ -455,7 +458,8 @@ interface Player implements CreatureObject {
 
 	int getSlicingAbility();
 	
-	boolean isChatMuted();	
+	boolean isChatMuted();
+	boolean isImmune();
 	
 	// mission stuff
 	unsigned int nextMisoRFC();

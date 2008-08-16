@@ -130,11 +130,13 @@ void BlueFrogCreatureImplementation::sendChoices1(Player* player) {
 	//unicode option2 = unicode("I'd like to unlearn all my skills and start over.");
 	unicode option3 = unicode("Which items can I get?");
 	unicode option4 = unicode("I want to test wounds.");
+	unicode option5 = unicode("Set me on fire.");
 
 	slist->insertOption(option1);
 	//slist->insertOption(option2);
 	slist->insertOption(option3);
 	slist->insertOption(option4);
+	slist->insertOption(option5);
 
 	player->setLastNpcConvMessStr("blue_frog_m1");
 	player->sendMessage(slist);
@@ -243,6 +245,10 @@ void BlueFrogCreatureImplementation::selectConversationOption(int option, SceneO
 			break;
 		case 2:
 			sendWoundTerminalMessage(player);
+			sendMessage1(player);
+			break;
+		case 3:
+			player->setOnFireState(150,1,180);
 			sendMessage1(player);
 			break;
 		}

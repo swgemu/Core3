@@ -79,6 +79,7 @@ void ScriptAttacksManager::registerFunctions() {
 	lua_register(getLuaState(), "AddHealTargetSkill", AddHealTargetSkill);
 	lua_register(getLuaState(), "AddHealEnhanceTargetSkill", AddHealEnhanceTargetSkill);
 	lua_register(getLuaState(), "AddHealDamageTargetSkill", AddHealDamageTargetSkill);
+	lua_register(getLuaState(), "AddHealStateTargetSkill", AddHealStateTargetSkill);
 	lua_register(getLuaState(), "AddHealWoundTargetSkill", AddHealWoundTargetSkill);
 	lua_register(getLuaState(), "AddReviveTargetSkill", AddReviveTargetSkill);
 	lua_register(getLuaState(), "AddDeBuffAttackTargetSkill", AddDeBuffAttackTargetSkill);
@@ -783,6 +784,30 @@ int ScriptAttacksManager::AddHealWoundTargetSkill(lua_State* L) {
 	float range = skill.getFloatField("range");
 
 	heal = new HealWoundTargetSkill(skillname, effect.c_str(), server);
+	heal->setSecondaryAnim(animation);
+	heal->setMindCost(mindCost);
+	heal->setRange(range);
+
+	CombatActions->put(heal);
+	return 0;
+}
+
+int ScriptAttacksManager::AddHealStateTargetSkill(lua_State* L) {
+	LuaObject skill(L);
+
+	if (!skill.isValidTable())
+		return 0;
+
+	HealStateTargetSkill* heal;
+
+	string skillname = skill.getStringField("skillname");
+	string animation = skill.getStringField("animation");
+	string effect = skill.getStringField("effect");
+
+	int mindCost = skill.getIntField("mindCost");
+	float range = skill.getFloatField("range");
+
+	heal = new HealStateTargetSkill(skillname, effect.c_str(), server);
 	heal->setSecondaryAnim(animation);
 	heal->setMindCost(mindCost);
 	heal->setRange(range);

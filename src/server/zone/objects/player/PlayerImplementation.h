@@ -136,6 +136,7 @@ class PlayerImplementation : public PlayerServant {
 
 	//GM Flags
 	bool chatMuted;
+	bool immune;
 
 	// Faction Stuff
 	string factionRank;
@@ -175,12 +176,12 @@ class PlayerImplementation : public PlayerServant {
 
 	bool centered;
 	CenterOfBeingEvent* centerOfBeingEvent;
-	
+
 	bool powerboosted;
 
 	PowerboostEventWane* powerboostEventWane;
 	PowerboostEventEnd* powerboostEventEnd;
-	
+
 
 	float lastTestPositionX;
 	float lastTestPositionY;
@@ -514,7 +515,7 @@ public:
 	void removeCenterOfBeing();
 
 	void doPowerboost();
-	
+
 	void doPeace();
 
 	void lootCorpse(bool lootAll = false);
@@ -873,6 +874,9 @@ public:
 	void addCertifications(Vector<Certification*>& certs, bool updateClient = false);
 	void removeCertifications(Vector<Certification*>& certs, bool updateClient = false);
 
+
+	void queueHeal(TangibleObject* medpack, uint32 actionCRC, const string& attribute);
+
 	// waypoint methods
 	void addWaypoint(WaypointObject* wp) {
 		playerObject->addWaypoint(wp, true);
@@ -1182,7 +1186,7 @@ public:
 	inline bool isChangingFaction() {
 		return changeFactionEvent != NULL;
 	}
-	
+
 	inline bool hasSuiBox(uint32 boxID) {
 		return suiBoxes.contains(boxID);
 	}
@@ -1243,7 +1247,12 @@ public:
 		return chatMuted;
 	}
 
+	inline bool isImmune() {
+		return immune;
+	}
+
 	void mutePlayer();
+	void toggleImmune();
 
 
 

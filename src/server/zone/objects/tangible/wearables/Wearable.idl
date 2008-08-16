@@ -43,6 +43,7 @@ which carries forward this exception.
 */
 
 import "../../creature/CreatureObject";
+import "../../player/Player";
 
 import "../TangibleObject";
 

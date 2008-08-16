@@ -87,7 +87,6 @@ public:
 	static const int POISONED = 5;
 	static const int DISEASED = 6;
 	static const int ONFIRE = 7;
-	static const int DEAD = 8;
 
 public:
 
@@ -248,6 +247,43 @@ public:
 		case HEALTH:
 		default:
 			return "health";
+			break;
+		}
+	}
+
+	static const int getStateFromName(const string& state) {
+		if (state == "intimidated") {
+			return INTIMIDATED;
+		} else if (state == "dizzy") {
+			return DIZZY;
+		} else if (state == "blinded") {
+			return BLINDED;
+		} else if (state == "stunned") {
+			return STUNNED;
+		} else if (state == "onfire") {
+			return ONFIRE;
+		} else {
+			return UNKNOWN;
+		}
+	}
+
+	static string getStateName(int state) {
+		switch (state) {
+		case BLINDED:
+			return "blinded";
+			break;
+		case STUNNED:
+			return "stunned";
+			break;
+		case DIZZY:
+			return "dizzy";
+			break;
+		case ONFIRE:
+			return "onfire";
+			break;
+		case INTIMIDATED:
+		default:
+			return "intimidated";
 			break;
 		}
 	}

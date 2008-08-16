@@ -141,7 +141,7 @@ interface CreatureObject implements SceneObject {
 	float calculateBFRatio();
 
 	// HAM methods
-	void resetHAMBars();
+	void resetHAMBars(boolean doUpdateClient);
 	
 	boolean changeHAMBars(int hp, int ap, int mp, boolean forcedChange = false);
 	boolean changeHAMWounds(int hpwnd, int apwnd, int mpwnd, boolean forcedChange = false);
@@ -511,6 +511,8 @@ interface CreatureObject implements SceneObject {
 	unsigned int getNewHAMMaxUpdateCounter(int cnt);
 	unsigned int getHAMBaseUpdateCounter();
 	unsigned int getNewHAMBaseUpdateCounter(int cnt);
+	unsigned int getHAMEncumbUpdateCounter();
+	unsigned int getNewHAMEncumbUpdateCounter(int cnt);
 	
 	unsigned int getHealthEncumbrance();
 	unsigned int getActionEncumbrance();
@@ -724,6 +726,9 @@ interface CreatureObject implements SceneObject {
 	
 	void deactivateInjuryTreatment();
 	void activateInjuryTreatment();
+	
+	void deactivateStateTreatment();
+	void activateStateTreatment();
 	
 	boolean canTreatWounds();
 	boolean canTreatInjuries();
