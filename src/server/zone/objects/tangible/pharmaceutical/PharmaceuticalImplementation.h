@@ -80,13 +80,15 @@ public:
 	static const int WILLPOWER = 9;
 
 	//Affected States
-	static const int DIZZY = 1;
-	static const int STUNNED = 2;
-	static const int INTIMIDATED = 3;
-	static const int BLINDED = 4;
-	static const int POISONED = 5;
-	static const int DISEASED = 6;
-	static const int ONFIRE = 7;
+	static const int DIZZY = 10;
+	static const int STUNNED = 11;
+	static const int INTIMIDATED = 12;
+	static const int BLINDED = 13;
+
+	//Affected Conditions
+	static const int POISONED = 14;
+	static const int DISEASED = 15;
+	static const int ONFIRE = 16;
 
 public:
 
@@ -260,8 +262,6 @@ public:
 			return BLINDED;
 		} else if (state == "stunned") {
 			return STUNNED;
-		} else if (state == "onfire") {
-			return ONFIRE;
 		} else {
 			return UNKNOWN;
 		}
@@ -278,12 +278,36 @@ public:
 		case DIZZY:
 			return "dizzy";
 			break;
-		case ONFIRE:
-			return "onfire";
-			break;
 		case INTIMIDATED:
 		default:
 			return "intimidated";
+			break;
+		}
+	}
+
+	static const int getConditionFromName(const string& condition) {
+		if (condition == "poisoned") {
+			return POISONED;
+		} else if (condition == "diseased") {
+			return DISEASED;
+		} else if (condition == "onfire") {
+			return ONFIRE;
+		} else {
+			return UNKNOWN;
+		}
+	}
+
+	static string getConditionName(int condition) {
+		switch (condition) {
+		case POISONED:
+			return "poison";
+			break;
+		case DISEASED:
+			return "disease";
+			break;
+		case ONFIRE:
+		default:
+			return "fire";
 			break;
 		}
 	}

@@ -170,6 +170,8 @@ which carries forward this exception.
 #include "objects/tangible/pharmaceutical/StimPackImplementation.h"
 #include "objects/tangible/pharmaceutical/StatePack.h"
 #include "objects/tangible/pharmaceutical/StatePackImplementation.h"
+#include "objects/tangible/pharmaceutical/CurePack.h"
+#include "objects/tangible/pharmaceutical/CurePackImplementation.h"
 #include "objects/tangible/pharmaceutical/RevivePack.h"
 #include "objects/tangible/pharmaceutical/RevivePackImplementation.h"
 

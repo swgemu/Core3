@@ -118,6 +118,7 @@ core3_IDLS =	server/zone/Zone.cpp \
 		server/zone/objects/tangible/pharmaceutical/WoundPack.cpp \
 		server/zone/objects/tangible/pharmaceutical/StimPack.cpp \
 		server/zone/objects/tangible/pharmaceutical/StatePack.cpp \
+		server/zone/objects/tangible/pharmaceutical/CurePack.cpp \
 		server/zone/objects/tangible/pharmaceutical/RevivePack.cpp \
 		server/zone/objects/attackable/lair/LairObject.cpp \
 		server/zone/objects/tangible/surveytool/SurveyTool.cpp \
@@ -204,6 +205,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/pharmaceutical/WoundPackImplementation.cpp \
 		server/zone/objects/tangible/pharmaceutical/StimPackImplementation.cpp \
 		server/zone/objects/tangible/pharmaceutical/StatePackImplementation.cpp \
+		server/zone/objects/tangible/pharmaceutical/CurePackImplementation.cpp \
 		server/zone/objects/tangible/pharmaceutical/RevivePackImplementation.cpp \
 		server/zone/objects/tangible/attachment/AttachmentImplementation.cpp \
 		server/zone/objects/tangible/powerup/PowerupImplementation.cpp \

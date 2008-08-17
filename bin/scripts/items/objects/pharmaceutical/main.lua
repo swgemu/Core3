@@ -24,4 +24,6 @@ RunItemLUAFile("objects/pharmaceutical/statepacks/blindedPack.lua");
 RunItemLUAFile("objects/pharmaceutical/statepacks/intimidatedPack.lua");
 RunItemLUAFile("objects/pharmaceutical/statepacks/stunnedPack.lua");
 
---RunItemLUAFile("objects/pharmaceutical/curepacks/fireBlanket.lua");
+RunItemLUAFile("objects/pharmaceutical/curepacks/fireBlanket.lua");
+RunItemLUAFile("objects/pharmaceutical/curepacks/poisonCureC.lua");
+RunItemLUAFile("objects/pharmaceutical/curepacks/diseaseCureC.lua");

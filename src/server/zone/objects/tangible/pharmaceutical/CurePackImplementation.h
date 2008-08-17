@@ -42,41 +42,50 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef SKILLS_H_
-#define SKILLS_H_
+#ifndef CUREPACKIMPLEMENTATION_H_
+#define CUREPACKIMPLEMENTATION_H_
 
-#include "target/attack/RandomPoolAttackTargetSkill.h"
-#include "target/attack/DirectPoolAttackTargetSkill.h"
-#include "target/attack/DotPoolAttackTargetSkill.h"
-#include "target/attack/DeBuffAttackTargetSkill.h"
-#include "target/attack/WoundsDirectPoolAttackTargetSkill.h"
-#include "target/attack/force/ForceRandomPoolAttackTargetSkill.h"
-#include "target/attack/force/ForceDotPoolAttackTargetSkill.h"
-#include "target/HealTargetSkill.h"
-#include "target/heal/ForceHealTargetSkill.h"
+#include "../../creature/CreatureObject.h"
 
-#include "target/HealEnhanceTargetSkill.h"
-#include "target/HealDamageTargetSkill.h"
-#include "target/HealStateTargetSkill.h"
-#include "target/HealWoundTargetSkill.h"
-#include "target/CureTargetSkill.h"
-#include "target/DiagnoseTargetSkill.h"
-#include "target/ReviveTargetSkill.h"
+#include "CurePack.h"
 
-#include "self/HealSelfSkill.h"
-#include "self/force/ForceHealSelfSkill.h"
-#include "self/force/ForceRunSelfSkill.h"
-#include "self/EnhanceSelfSkill.h"
-#include "self/ChangePostureSelfSkill.h"
-#include "self/MeditateSelfSkill.h"
+class CurePackImplementation : public CurePackServant {
+protected:
+	float effectiveness;
+	int conditionCured;
 
-#include "self/EntertainSelfSkill.h"
-#include "self/EntertainEffectSelfSkill.h"
-#include "self/DanceEffectSelfSkill.h"
-#include "self/MusicEffectSelfSkill.h"
+public:
+	CurePackImplementation(uint64 oid, uint32 tempCRC, const unicode& n, const string& tempn);
+	CurePackImplementation(CreatureObject* creature, uint32 tempCRC, const unicode& n, const string& tempn);
 
+	void initialize();
 
-#include "PassiveSkill.h"
+	int useObject(Player* player);
 
+	void generateAttributes(SceneObject* obj);
 
-#endif /*SKILLS_H_*/
+	void parseItemAttributes();
+
+	void addAttributes(AttributeListMessage* alm);
+
+	inline void setEffectiveness(float eff) {
+		effectiveness = eff;
+		string attr = "effectiveness";
+		itemAttributes->setFloatAttribute(attr, effectiveness);
+	}
+	inline void setConditionCured(int condition) {
+		conditionCured = condition;
+		string attr = "conditionCured";
+		itemAttributes->setIntAttribute(attr, conditionCured);
+	}
+
+	inline float getEffectiveness() {
+		return effectiveness;
+	}
+
+	inline int getConditionCured() {
+		return conditionCured;
+	}
+};
+
+#endif /* CUREPACKIMPLEMENTATION_H_ */

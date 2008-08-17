@@ -42,41 +42,34 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef SKILLS_H_
-#define SKILLS_H_
+#ifndef CONDITIONTREATMENTOVEREVENT_H_
+#define CONDITIONTREATMENTOVEREVENT_H_
 
-#include "target/attack/RandomPoolAttackTargetSkill.h"
-#include "target/attack/DirectPoolAttackTargetSkill.h"
-#include "target/attack/DotPoolAttackTargetSkill.h"
-#include "target/attack/DeBuffAttackTargetSkill.h"
-#include "target/attack/WoundsDirectPoolAttackTargetSkill.h"
-#include "target/attack/force/ForceRandomPoolAttackTargetSkill.h"
-#include "target/attack/force/ForceDotPoolAttackTargetSkill.h"
-#include "target/HealTargetSkill.h"
-#include "target/heal/ForceHealTargetSkill.h"
+#include "../CreatureObjectImplementation.h"
 
-#include "target/HealEnhanceTargetSkill.h"
-#include "target/HealDamageTargetSkill.h"
-#include "target/HealStateTargetSkill.h"
-#include "target/HealWoundTargetSkill.h"
-#include "target/CureTargetSkill.h"
-#include "target/DiagnoseTargetSkill.h"
-#include "target/ReviveTargetSkill.h"
+class ConditionTreatmentOverEvent : public Event {
+	CreatureObjectImplementation* creo;
 
-#include "self/HealSelfSkill.h"
-#include "self/force/ForceHealSelfSkill.h"
-#include "self/force/ForceRunSelfSkill.h"
-#include "self/EnhanceSelfSkill.h"
-#include "self/ChangePostureSelfSkill.h"
-#include "self/MeditateSelfSkill.h"
+public:
+	ConditionTreatmentOverEvent(CreatureObjectImplementation* cr, int delay) : Event(delay * 1000) {
+		creo = cr;
+	}
 
-#include "self/EntertainSelfSkill.h"
-#include "self/EntertainEffectSelfSkill.h"
-#include "self/DanceEffectSelfSkill.h"
-#include "self/MusicEffectSelfSkill.h"
+	bool activate() {
+		try {
+			creo->wlock();
 
+			if (!creo->canTreatConditions())
+				creo->activateConditionTreatment();
 
-#include "PassiveSkill.h"
+			creo->unlock();
+		} catch (...) {
+			creo->unlock();
+		}
 
+		return true;
+	}
 
-#endif /*SKILLS_H_*/
+};
+
+#endif /*CONDITIONTREATMENTOVEREVENT_H_*/

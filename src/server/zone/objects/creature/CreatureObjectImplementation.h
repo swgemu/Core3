@@ -82,6 +82,7 @@ class DizzyFallDownEvent;
 class WoundTreatmentOverEvent;
 class InjuryTreatmentOverEvent;
 class StateTreatmentOverEvent;
+class ConditionTreatmentOverEvent;
 
 class MountCreature;
 class BuildingObject;
@@ -391,10 +392,12 @@ protected:
 	bool doWoundTreatment;
 	bool doInjuryTreatment;
 	bool doStateTreatment;
+	bool doConditionTreatment;
 
 	WoundTreatmentOverEvent* woundTreatmentEvent;
 	InjuryTreatmentOverEvent* injuryTreatmentEvent;
 	StateTreatmentOverEvent* stateTreatmentEvent;
+	ConditionTreatmentOverEvent* conditionTreatmentEvent;
 
 public:
 	static const float DEFAULT_SPEED = 5.376f;
@@ -2471,9 +2474,24 @@ public:
 	void deactivateStateTreatment();
 	void activateStateTreatment();
 
-	bool canTreatWounds();
-	bool canTreatInjuries();
-	bool canTreatStates();
+	void deactivateConditionTreatment();
+	void activateConditionTreatment();
+
+	bool canTreatWounds() {
+		return doWoundTreatment;
+	}
+
+	bool canTreatInjuries() {
+		return doInjuryTreatment;
+	}
+
+	bool canTreatStates() {
+		return doStateTreatment;
+	}
+
+	bool canTreatConditions() {
+		return doConditionTreatment;
+	}
 
 	int getMedicalFacilityRating();
 

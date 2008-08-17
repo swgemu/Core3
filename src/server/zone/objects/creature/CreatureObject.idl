@@ -750,9 +750,13 @@ interface CreatureObject implements SceneObject {
 	void deactivateStateTreatment();
 	void activateStateTreatment();
 	
+	void deactivateConditionTreatment();
+	void activateConditionTreatment();
+	
 	boolean canTreatWounds();
 	boolean canTreatInjuries();
 	boolean canTreatStates();
+	boolean canTreatConditions();
 	
 	int getMedicalFacilityRating();
 	

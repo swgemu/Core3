@@ -249,6 +249,8 @@ void BlueFrogCreatureImplementation::selectConversationOption(int option, SceneO
 			break;
 		case 3:
 			player->setOnFireState(150,1,180);
+			player->updateStates();
+			player->activateRecovery();
 			sendMessage1(player);
 			break;
 		}

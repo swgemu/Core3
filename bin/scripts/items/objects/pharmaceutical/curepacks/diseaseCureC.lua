@@ -39,71 +39,24 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-HealStateSkill = {
-	skillname = "healstate",
-	effect = "clienteffect/healing_healdamage.cef",
-	animation = "heal_self",
+
+diseaseCureC = Object:new {
+
+	objectName = "Cure Disease Medpack - C",
+
+	templateName = "object/tangible/medicine/crafted/shared_medpack_cure_disease_c.iff",
+
+	objectCRC = "247192037",
+
+	objectType = PHARMACEUTICAL,
 	
-	mindCost = -20,
-	range = 6.0
-}
-
-AddHealStateTargetSkill(HealStateSkill);
-
-CurePoisonSkill = {
-	skillname = "curepoison",
-	effect = "clienteffect/healing_healdamage.cef",
-	animation = "heal_self",
+	medpackType = CUREPACK,
 	
-	mindCost = -100,
-	conditionCured = POISONED,
-	range = 6.0
-}
-
-AddCureTargetSkill(CurePoisonSkill);
-
-CureDiseaseSkill = {
-	skillname = "curedisease",
-	effect = "clienteffect/healing_healdamage.cef",
-	animation = "heal_self",
-
-	mindCost = -100,
-	conditionCured = DISEASED,
-	range = 6.0
-}
-
-AddCureTargetSkill(CureDiseaseSkill);
-
-ExtinguishFireSkill = {
-	skillname = "extinguishfire",
-	effect = "clienteffect/healing_healdamage.cef",
-	animation = "heal_self",
-
-	mindCost = -100,
-	conditionCured = ONFIRE,
-	range = 6.0
-}
-
-AddCureTargetSkill(ExtinguishFireSkill);
-
-HealEnhanceTargetSkill = {
-	skillname = "healenhance",
-	effect = "clienteffect/healing_healenhance.cef",
-	animation = "heal_self",
+	usesRemaining = 37,
 	
-	mindCost = -150,
-	range = 6.0
-}
-
-AddHealEnhanceTargetSkill(HealEnhanceTargetSkill);
-
-ReviveTargetSkill = {
-	skillname = "reviveplayer",
-	effect = "clienteffect/healing_healwound.cef",
-	animation = "heal_self",
+	medicineUse = 62,
 	
-	mindCost = -200,
-	range = 6.0
+	effectiveness = 413,
+	
+	conditionCured = DISEASED
 }
-
-AddReviveTargetSkill(ReviveTargetSkill);

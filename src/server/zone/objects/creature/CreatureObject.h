@@ -991,11 +991,17 @@ public:
 
 	void activateStateTreatment();
 
+	void deactivateConditionTreatment();
+
+	void activateConditionTreatment();
+
 	bool canTreatWounds();
 
 	bool canTreatInjuries();
 
 	bool canTreatStates();
+
+	bool canTreatConditions();
 
 	int getMedicalFacilityRating();
 
@@ -2040,11 +2046,17 @@ public:
 
 	void activateStateTreatment();
 
+	void deactivateConditionTreatment();
+
+	void activateConditionTreatment();
+
 	bool canTreatWounds();
 
 	bool canTreatInjuries();
 
 	bool canTreatStates();
+
+	bool canTreatConditions();
 
 	int getMedicalFacilityRating();
 

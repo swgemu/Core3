@@ -420,8 +420,16 @@ TangibleObject* ItemManagerImplementation::createSubObject(uint64 objectid, uint
 	case 0x0FEDFAEE:
 	case 0x3E9B3371:
 	case 0xE58C9BE6:
-	case 0xC6F551AE:
 		item = new StatePack(objectid, objectcrc, objectname, objecttemp);
+		break;
+	case 0x9CA116FF:
+	case 0x47B6BE68:
+	case 0x0EBBD9E5:
+	case 0xB791A080:
+	case 0x6C860817:
+	case 0x258B6F9A:
+	case 0xC6F551AE: //fireblanket
+		item = new CurePack(objectid, objectcrc, objectname, objecttemp);
 		break;
 	default:
 		item = new TangibleObject(objectid, objectname, objecttemp, objectcrc, TangibleObjectImplementation::MISC);
@@ -725,7 +733,10 @@ void ItemManagerImplementation::registerGlobals() {
 	setGlobalInt("STUNNED", PharmaceuticalImplementation::STUNNED);
 	setGlobalInt("DIZZY", PharmaceuticalImplementation::DIZZY);
 	setGlobalInt("BLINDED", PharmaceuticalImplementation::BLINDED);
+
 	setGlobalInt("ONFIRE", PharmaceuticalImplementation::ONFIRE);
+	setGlobalInt("DISEASED", PharmaceuticalImplementation::DISEASED);
+	setGlobalInt("POISONED", PharmaceuticalImplementation::POISONED);
 }
 
 int ItemManagerImplementation::runItemLUAFile(lua_State* L) {
@@ -831,7 +842,15 @@ TangibleObject* ItemManagerImplementation::createTemplateFromLua(LuaObject itemc
 				break;
 			}
 			case PharmaceuticalImplementation::CUREPACK:
+			{
+				float eff = itemconfig.getFloatField("effectiveness");
+				int condition = itemconfig.getIntField("conditionCured");
+
+				CurePack* curepack = (CurePack*) item;
+				curepack->setEffectiveness(eff);
+				curepack->setConditionCured(condition);
 				break;
+			}
 			case PharmaceuticalImplementation::STATEPACK:
 			{
 				int state = itemconfig.getIntField("stateAffected");

@@ -78,6 +78,7 @@ which carries forward this exception.
 #include "events/WoundTreatmentOverEvent.h"
 #include "events/InjuryTreatmentOverEvent.h"
 #include "events/StateTreatmentOverEvent.h"
+#include "events/ConditionTreatmentOverEvent.h"
 
 #include "../../objects/player/Races.h"
 #include "mount/MountCreature.h"
@@ -299,10 +300,12 @@ CreatureObjectImplementation::CreatureObjectImplementation(uint64 oid) : Creatur
 	doWoundTreatment = true;
 	doInjuryTreatment = true;
 	doStateTreatment = true;
+	doConditionTreatment = true;
 
 	woundTreatmentEvent = NULL;
 	injuryTreatmentEvent = NULL;
 	stateTreatmentEvent = NULL;
+	conditionTreatmentEvent = NULL;
 }
 
 CreatureObjectImplementation::~CreatureObjectImplementation() {
@@ -342,6 +345,16 @@ CreatureObjectImplementation::~CreatureObjectImplementation() {
 
 		delete stateTreatmentEvent;
 		stateTreatmentEvent = NULL;
+	}
+
+	if (conditionTreatmentEvent != NULL) {
+		if (conditionTreatmentEvent->isQueued()) {
+			doConditionTreatment = true;
+			server->removeEvent(conditionTreatmentEvent);
+		}
+
+		delete conditionTreatmentEvent;
+		conditionTreatmentEvent = NULL;
 	}
 
 	if (lootContainer != NULL) {
@@ -4694,14 +4707,21 @@ void CreatureObjectImplementation::activateStateTreatment() {
 	sendSystemMessage("You are now ready to heal more states.");
 }
 
-bool CreatureObjectImplementation::canTreatWounds() {
-	return doWoundTreatment;
+void CreatureObjectImplementation::deactivateConditionTreatment() {
+	float modSkill = (float)getSkillMod("healing_wound_speed");
+	int delay = (int)round((-1.0f/15.0f) * modSkill + (61.0f/3.0f));
+
+	doConditionTreatment = false;
+	if (conditionTreatmentEvent == NULL) {
+		conditionTreatmentEvent = new ConditionTreatmentOverEvent(this, delay);
+		server->addEvent(conditionTreatmentEvent);
+	}
 }
-bool CreatureObjectImplementation::canTreatInjuries() {
-	return doInjuryTreatment;
-}
-bool CreatureObjectImplementation::canTreatStates() {
-	return doStateTreatment;
+
+void CreatureObjectImplementation::activateConditionTreatment() {
+	doConditionTreatment = true;
+	conditionTreatmentEvent = NULL;
+	sendSystemMessage("You are now ready to cure more conditions.");
 }
 
 int CreatureObjectImplementation::getMedicalFacilityRating() {
