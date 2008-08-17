@@ -1111,31 +1111,44 @@ void PlayerManagerImplementation::updatePlayerCreditsFromDatabase(Player* player
 	if (player == NULL)
 		return;
 
-	stringstream query;
-
-	query << "SELECT credits_inv,credits_bank FROM characters WHERE character_id = '" << player->getCharacterID() << "'";
-	ResultSet* rs = NULL;
-
 	try {
-		rs = ServerDatabase::instance()->executeQuery(query);
-	} catch(DatabaseException& e) {
-		cout << "PlayerManagerImplmentation::updatePlayerCredits: failed SQL query: " << query.str() << "\n";
-		return;
-	}
+		player->wlock();
 
-	if (!rs->next()) {
+		stringstream query;
+
+		query << "SELECT credits_inv,credits_bank FROM characters WHERE character_id = '" << player->getCharacterID() << "'";
+		ResultSet* rs = NULL;
+
+		try {
+			rs = ServerDatabase::instance()->executeQuery(query);
+		} catch(DatabaseException& e) {
+			cout << "PlayerManagerImplmentation::updatePlayerCredits: failed SQL query: " << query.str() << "\n";
+			player->unlock();
+			return;
+		}
+
+		if (!rs->next()) {
+			player->unlock();
+			delete rs;
+			return;
+		}
+
+		int creditsinv = rs->getInt(0);
+		int creditsbank = rs->getInt(1);
+
+		player->setCashCredits(creditsinv);
+		player->setBankCredits(creditsbank);
+
+		BaseMessage* mess = new PlayerMoneyResponseMessage(player);
+		player->sendMessage(mess);
+
+		player->unlock();
+
 		delete rs;
-		return;
+	} catch (...) {
+		player->unlock();
+		cout << "unreported exception caught in PlayerManager::updatePlayerCreditsFromDatabase\n";
 	}
-
-	int creditsinv=rs->getInt(0);
-	int creditsbank=rs->getInt(1);
-
-	player->setCashCredits(creditsinv);
-	player->setBankCredits(creditsbank);
-
-	BaseMessage* mess = new PlayerMoneyResponseMessage(player);
-	player->sendMessage(mess);
 }
 
 void PlayerManagerImplementation::updatePlayerAppearanceToDatabase(Player* player) {

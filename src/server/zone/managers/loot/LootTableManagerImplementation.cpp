@@ -83,11 +83,6 @@ LootTableManagerImplementation::~LootTableManagerImplementation() {
 		lootTableMap[i] = NULL;
 	}
 
-	if (selectedLootTableMap != NULL) {
-		delete selectedLootTableMap;
-		selectedLootTableMap = NULL;
-	}
-
 	if (lootWeightMap != NULL) {
 		delete lootWeightMap;
 		lootWeightMap = NULL;
@@ -105,7 +100,6 @@ void LootTableManagerImplementation::init() {
 	for (int i = 0; i < 500; ++i)
 		lootTableMap[i] = new Vector<LootTableTemplate*>();
 
-	selectedLootTableMap = new Vector<LootTableTemplate*>();
 	lootWeightMap = new VectorMap<uint,uint>();
 	lootMaxDrop = new Vector<int>();
 
@@ -190,10 +184,11 @@ void LootTableManagerImplementation::buildLootMap() {
 
 
 void LootTableManagerImplementation::createLootItem(Creature* creature, int level, Player* player) {
-	lock();
+	//lock(); TA: moved selectedLootTableMap into the function
+	//to avoid locking the whole manager so the server can create the loot items for more then one creature at once
 
-	if (creature == NULL || selectedLootTableMap == NULL) {
-		unlock();
+	if (creature == NULL) {
+		//unlock();
 		return;
 	}
 
@@ -204,7 +199,7 @@ void LootTableManagerImplementation::createLootItem(Creature* creature, int leve
 	LootTableTemplate* lootTableTemp;
 	ItemManagerImplementation* im;
 
-	selectedLootTableMap->removeAll();
+	Vector<LootTableTemplate*> selectedLootTableMap;
 
 	int lootGroup = makeLootGroup(creature);
 	int maxDrop = lootMaxDrop->get(lootGroup);
@@ -216,7 +211,7 @@ void LootTableManagerImplementation::createLootItem(Creature* creature, int leve
 			int compare = lootTableTemp->getLootItemRace().find (player->getSpeciesName());
 
 			if (compare >= 0 || lootTableTemp->getLootItemRace() == "all" )
-				selectedLootTableMap->add(lootTableTemp);
+				selectedLootTableMap.add(lootTableTemp);
 
 		}
 	}
@@ -229,8 +224,8 @@ void LootTableManagerImplementation::createLootItem(Creature* creature, int leve
 		itemcount = 5;
 
 	//make sure itemcount is not > lootMap entrys
-	if (itemcount > selectedLootTableMap->size())
-		itemcount = selectedLootTableMap->size();
+	if (itemcount > selectedLootTableMap.size())
+		itemcount = selectedLootTableMap.size();
 
 	//Finally, consider the maxDrop value for this lootgroup
 	if (itemcount > maxDrop)
@@ -239,18 +234,18 @@ void LootTableManagerImplementation::createLootItem(Creature* creature, int leve
 	//For testing: itemcount = 100;
 
 	//Randomized offset for the loot item map to avoid looting the same items all time
-	int offset = System::random(selectedLootTableMap->size() - itemcount);
+	int offset = System::random(selectedLootTableMap.size() - itemcount);
 
 
 	//Make sure we are not pointing behind the last item
-	if (offset + itemcount > selectedLootTableMap->size())
-		offset = selectedLootTableMap->size() - itemcount;
+	if (offset + itemcount > selectedLootTableMap.size())
+		offset = selectedLootTableMap.size() - itemcount;
 
 
 	TangibleObject* item[itemcount];
 
 	for (int i = 0; i < itemcount; ++i) {
-		lootTableTemp = selectedLootTableMap->get(i+offset);
+		lootTableTemp = selectedLootTableMap.get(i+offset);
 
 		int itemType = lootTableTemp->getLootItemTemplateType();
 		unicode clearName = (unicode)lootTableTemp->getLootItemName();
@@ -267,7 +262,7 @@ void LootTableManagerImplementation::createLootItem(Creature* creature, int leve
 
 	}
 
-	unlock();
+	//unlock();
 
 }
 
