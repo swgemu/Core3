@@ -249,15 +249,15 @@ protected:
 	uint32 focus;
 	uint32 willpower;
 
-	uint32 healthMax;
-	uint32 strengthMax;
-	uint32 constitutionMax;
-	uint32 actionMax;
-	uint32 quicknessMax;
-	uint32 staminaMax;
-	uint32 mindMax;
-	uint32 focusMax;
-	uint32 willpowerMax;
+	int healthMax;
+	int strengthMax;
+	int constitutionMax;
+	int actionMax;
+	int quicknessMax;
+	int staminaMax;
+	int mindMax;
+	int focusMax;
+	int willpowerMax;
 
 	uint32 healthEncumbrance;
 	uint32 actionEncumbrance;
@@ -510,15 +510,15 @@ public:
 	bool changeStaminaBar(int32 st, bool forcedChange = false);
 
 	// Change Max HAM
-	void changeMaxHealthBar(int32 hp);
-	void changeMaxStrengthBar(int32 hp);
-	void changeMaxConstitutionBar(int32 hp);
-	void changeMaxActionBar(int32 hp);
-	void changeMaxQuicknessBar(int32 hp);
-	void changeMaxStaminaBar(int32 hp);
-	void changeMaxMindBar(int32 hp);
-	void changeMaxFocusBar(int32 hp);
-	void changeMaxWillpowerBar(int32 hp);
+	void changeMaxHealthBar(int32 hp, bool updateClient = true);
+	void changeMaxStrengthBar(int32 st, bool updateClient = true);
+	void changeMaxConstitutionBar(int32 cs, bool updateClient = true);
+	void changeMaxActionBar(int32 ap, bool updateClient = true);
+	void changeMaxQuicknessBar(int32 qc, bool updateClient = true);
+	void changeMaxStaminaBar(int32 st, bool updateClient = true);
+	void changeMaxMindBar(int32 mp, bool updateClient = true);
+	void changeMaxFocusBar(int32 fc, bool updateClient = true);
+	void changeMaxWillpowerBar(int32 wl, bool updateClient = true);
 
 	// Change HAM Wounds
 	bool changeHealthWoundsBar(int32 wounds, bool forcedChange = false);
@@ -711,7 +711,7 @@ public:
 	}
 
 	bool isOnFullHealth() {
-		return (health == healthMax - healthWounds) && (action == actionMax - actionWounds) && (mind == mindMax - mindWounds);
+		return (getHealth() == getHealthMax() - getHealthWounds()) && (getAction() == getActionMax() - getActionWounds()) && (getMind() == getMindMax() - getMindWounds());
 	}
 
 	void setGroup(GroupObject* Group) {
@@ -1233,72 +1233,145 @@ public:
 		health = value;
 	}
 
+	inline void changeHealth(int32 value) {
+		health += value;
+	}
+
 	inline void setStrength(uint32 value) {
 		strength = value;
+	}
+
+	inline void changeStrength(int32 value) {
+		strength += value;
 	}
 
 	inline void setConstitution(uint32 value) {
 		constitution = value;
 	}
 
+	inline void changeConstitution(int32 value) {
+		constitution += value;
+	}
+
 	inline void setAction(uint32 value) {
 		action = value;
+	}
+
+	inline void changeAction(int32 value) {
+		action += value;
 	}
 
 	inline void setQuickness(uint32 value) {
 		quickness = value;
 	}
 
+	inline void changeQuickness(int32 value) {
+		quickness += value;
+	}
+
 	inline void setStamina(uint32 value) {
 		stamina = value;
+	}
+
+	inline void changeStamina(int32 value) {
+		stamina += value;
 	}
 
 	inline void setMind(uint32 value) {
 		mind = value;
 	}
 
+	inline void changeMind(int32 value) {
+		mind += value;
+	}
+
 	inline void setFocus(uint32 value) {
 		focus = value;
+	}
+
+	inline void changeFocus(int32 value) {
+		focus += value;
 	}
 
 	inline void setWillpower(uint32 value) {
 		willpower = value;
 	}
 
+	inline void changeWillpower(int32 value) {
+		willpower += value;
+	}
+
+
 	inline void setHealthMax(uint32 value) {
 		healthMax = value;
+	}
+
+	inline void changeHealthMax(int32 value) {
+		healthMax += value;
 	}
 
 	inline void setStrengthMax(uint32 value) {
 		strengthMax = value;
 	}
 
+	inline void changeStrengthMax(int32 value) {
+		strengthMax += value;
+	}
+
 	inline void setConstitutionMax(uint32 value) {
 		constitutionMax = value;
+	}
+
+	inline void changeConstitutionMax(int32 value) {
+		constitutionMax += value;
 	}
 
 	inline void setActionMax(uint32 value) {
 		actionMax = value;
 	}
 
+	inline void changeActionMax(int32 value) {
+		actionMax += value;
+	}
+
 	inline void setQuicknessMax(uint32 value) {
 		quicknessMax = value;
+	}
+
+	inline void changeQuicknessMax(int32 value) {
+		quicknessMax += value;
 	}
 
 	inline void setStaminaMax(uint32 value) {
 		staminaMax = value;
 	}
 
+	inline void changeStaminaMax(int32 value) {
+		staminaMax += value;
+	}
+
 	inline void setMindMax(uint32 value) {
 		mindMax = value;
+	}
+
+	inline void changeMindMax(int32 value) {
+		mindMax += value;
 	}
 
 	inline void setFocusMax(uint32 value) {
 		focusMax = value;
 	}
 
+	inline void changeFocusMax(int32 value) {
+		focusMax += value;
+	}
+
 	inline void setWillpowerMax(uint32 value) {
 		willpowerMax = value;
+	}
+
+	inline void changeWillpowerMax(int32 value) {
+		willpowerMax += value;
 	}
 
 	inline void setArmor(uint32 ar) {
@@ -1556,54 +1629,63 @@ public:
 	}
 
 	inline uint32 getHealthMax() {
-		return healthMax;
+		if(healthMax < 1)
+			return 1;
+		else
+			return healthMax;
 	}
 
 	inline uint32 getStrengthMax() {
-		if ((int) strengthMax < 1)
+		if (strengthMax < 1)
 			return 1;
 		else
 			return strengthMax;
 	}
 
 	inline uint32 getConstitutionMax() {
-		if ((int) constitutionMax < 1)
+		if (constitutionMax < 1)
 			return 1;
 		else
 			return constitutionMax;
 	}
 
 	inline uint32 getActionMax() {
-		return actionMax;
+		if(actionMax < 1)
+			return 1;
+		else
+			return actionMax;
 	}
 
 	inline uint32 getQuicknessMax() {
-		if ((int) quicknessMax < 1)
+		if (quicknessMax < 1)
 			return 1;
 		else
 			return quicknessMax;
 	}
 
 	inline uint32 getStaminaMax() {
-		if ((int) staminaMax < 1)
+		if (staminaMax < 1)
 			return 1;
 		else
 			return staminaMax;
 	}
 
 	inline uint32 getMindMax() {
-		return mindMax;
+		if(mindMax < 1)
+			return 1;
+		else
+			return mindMax;
 	}
 
 	inline uint32 getFocusMax() {
-		if ((int) focusMax < 1)
+		if (focusMax < 1)
 			return 1;
 		else
 			return focusMax;
 	}
 
 	inline uint32 getWillpowerMax() {
-		if ((int) willpowerMax < 1)
+		if (willpowerMax < 1)
 			return 1;
 		else
 			return willpowerMax;

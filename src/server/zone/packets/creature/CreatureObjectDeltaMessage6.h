@@ -437,6 +437,204 @@ public:
 		creo->setWillpowerMax(willpowerCreoMax);
 	}
 
+	void changeHealthBar(int32 health) {
+		startUpdate(0x0D);
+
+		uint32 updatecount = creo->getNewHAMUpdateCounter(1);
+		startList(1, updatecount);
+
+		creo->changeHealth(health);
+		uint32 healthCreo = creo->getHealth();
+		addBar(0, healthCreo);
+	}
+
+	void changeMaxHealthBar(int32 health) {
+		startUpdate(0x0E);
+
+		uint32 updatecount = creo->getNewHAMMaxUpdateCounter(1);
+		startList(1, updatecount);
+
+		creo->changeHealthMax(health);
+		uint32 healthCreoMax = creo->getHealthMax();
+		addBar(0, healthCreoMax);
+	}
+
+	void changeStrengthBar(int32 strength) {
+		startUpdate(0x0D);
+
+		uint32 updatecount = creo->getNewHAMUpdateCounter(1);
+		startList(1, updatecount);
+
+		creo->changeStrength(strength);
+		uint32 strengthCreo = creo->getStrength();
+		addBar(1, strengthCreo);
+	}
+
+	void changeMaxStrengthBar(int32 strength) {
+		startUpdate(0x0E);
+
+		uint32 updatecount = creo->getNewHAMMaxUpdateCounter(1);
+		startList(1, updatecount);
+
+		creo->changeStrengthMax(strength);
+		uint32 strengthCreoMax = creo->getStrengthMax();
+		addBar(1, strengthCreoMax);
+	}
+
+	void changeConstitutionBar(int32 constitution) {
+		startUpdate(0x0D);
+
+		uint32 updatecount = creo->getNewHAMUpdateCounter(1);
+		startList(1, updatecount);
+
+		creo->changeConstitution(constitution);
+		uint32 constitutionCreo = creo->getConstitution();
+		addBar(2, constitutionCreo);
+	}
+
+	void changeMaxConstitutionBar(int32 constitution) {
+		startUpdate(0x0E);
+
+		uint32 updatecount = creo->getNewHAMMaxUpdateCounter(1);
+		startList(1, updatecount);
+
+		creo->changeConstitutionMax(constitution);
+		uint32 constitutionCreoMax = creo->getConstitutionMax();
+		addBar(2, constitutionCreoMax);
+	}
+
+	void changeActionBar(int32 action) {
+		startUpdate(0x0D);
+
+		uint32 updatecount = creo->getNewHAMUpdateCounter(1);
+		startList(1, updatecount);
+
+		creo->changeAction(action);
+		uint32 actionCreo = creo->getAction();
+		addBar(3, actionCreo);
+	}
+
+	void changeMaxActionBar(int32 action) {
+		startUpdate(0x0E);
+
+		uint32 updatecount = creo->getNewHAMMaxUpdateCounter(1);
+		startList(1, updatecount);
+
+		creo->changeActionMax(action);
+		uint32 actionCreoMax = creo->getActionMax();
+		addBar(3, actionCreoMax);
+	}
+
+	void changeQuicknessBar(int32 quickness) {
+		startUpdate(0x0D);
+
+		uint32 updatecount = creo->getNewHAMUpdateCounter(1);
+		startList(1, updatecount);
+
+		creo->changeQuickness(quickness);
+		uint32 quicknessCreo = creo->getQuickness();
+		addBar(4, quicknessCreo);
+	}
+
+	void changeMaxQuicknessBar(int32 quickness) {
+		startUpdate(0x0E);
+
+		uint32 updatecount = creo->getNewHAMMaxUpdateCounter(1);
+		startList(1, updatecount);
+
+		creo->changeQuicknessMax(quickness);
+		uint32 quicknessCreoMax = creo->getQuicknessMax();
+		addBar(4, quicknessCreoMax);
+	}
+
+	void changeStaminaBar(int32 stamina) {
+		startUpdate(0x0D);
+
+		uint32 updatecount = creo->getNewHAMUpdateCounter(1);
+		startList(1, updatecount);
+
+		creo->changeStamina(stamina);
+		uint32 staminaCreo = creo->getStamina();
+		addBar(5, staminaCreo);
+	}
+
+	void changeMaxStaminaBar(int32 stamina) {
+		startUpdate(0x0E);
+
+		uint32 updatecount = creo->getNewHAMMaxUpdateCounter(1);
+		startList(1, updatecount);
+
+		creo->changeStaminaMax(stamina);
+		uint32 staminaCreoMax = creo->getStaminaMax();
+		addBar(5, staminaCreoMax);
+	}
+
+	void changeMindBar(int32 mind) {
+		startUpdate(0x0D);
+
+		uint32 updatecount = creo->getNewHAMUpdateCounter(1);
+		startList(1, updatecount);
+
+		creo->changeMind(mind);
+		uint32 mindCreo = creo->getMind();
+		addBar(6, mindCreo);
+	}
+
+	void changeMaxMindBar(int32 mind) {
+		startUpdate(0x0E);
+
+		uint32 updatecount = creo->getNewHAMMaxUpdateCounter(1);
+		startList(1, updatecount);
+
+		creo->changeMindMax(mind);
+		uint32 mindCreoMax = creo->getMindMax();
+		addBar(6, mindCreoMax);
+	}
+
+	void changeFocusBar(int32 focus) {
+		startUpdate(0x0D);
+
+		uint32 updatecount = creo->getNewHAMUpdateCounter(1);
+		startList(1, updatecount);
+
+		creo->changeFocus(focus);
+		uint32 focusCreo = creo->getFocus();
+		addBar(7, focusCreo);
+	}
+
+	void changeMaxFocusBar(int32 focus) {
+		startUpdate(0x0E);
+
+		uint32 updatecount = creo->getNewHAMMaxUpdateCounter(1);
+		startList(1, updatecount);
+
+		creo->changeFocusMax(focus);
+		uint32 focusCreoMax = creo->getFocusMax();
+		addBar(7, focusCreoMax);
+	}
+
+	void changeWillpowerBar(int32 willpower) {
+		startUpdate(0x0D);
+
+		uint32 updatecount = creo->getNewHAMUpdateCounter(1);
+		startList(1, updatecount);
+
+		creo->changeWillpower(willpower);
+		uint32 willpowerCreo = creo->getWillpower();
+		addBar(8, willpowerCreo);
+	}
+
+	void changeMaxWillpowerBar(int32 willpower) {
+		startUpdate(0x0E);
+
+		uint32 updatecount = creo->getNewHAMMaxUpdateCounter(1);
+		startList(1, updatecount);
+
+		creo->changeWillpowerMax(willpower);
+		uint32 willpowerCreoMax = creo->getWillpowerMax();
+		addBar(8, willpowerCreoMax);
+	}
+
 	void addBar(uint16 index, uint32& value, uint32 nvalue) {
 		removeListIntElement(index, value = nvalue);
 	}

@@ -626,11 +626,13 @@ public:
 	}
 
 	void setForcePowerBar(uint32 fp) {
-		playerObject->setForcePowerBar(fp);
+		if(playerObject != NULL)
+			playerObject->setForcePowerBar(fp);
 	}
 
-	void setMaxForcePowerBar(uint32 fp, bool updateClient = true) {
-		playerObject->setMaxForcePowerBar(fp, updateClient);
+	void updateMaxForcePowerBar(bool updateClient = true) {
+		if(playerObject != NULL)
+			playerObject->updateMaxForcePowerBar(updateClient);
 	}
 
 	int getFoodFilling() {

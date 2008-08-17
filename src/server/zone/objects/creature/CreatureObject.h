@@ -165,23 +165,23 @@ public:
 
 	bool changeWillpowerBar(int wl, bool forcedChange = false);
 
-	void changeMaxHealthBar(int hp);
+	void changeMaxHealthBar(int hp, bool updateClient = true);
 
-	void changeMaxStrengthBar(int hp);
+	void changeMaxStrengthBar(int st, bool updateClient = true);
 
-	void changeMaxConstitutionBar(int hp);
+	void changeMaxConstitutionBar(int cs, bool updateClient = true);
 
-	void changeMaxActionBar(int hp);
+	void changeMaxActionBar(int ap, bool updateClient = true);
 
-	void changeMaxQuicknessBar(int hp);
+	void changeMaxQuicknessBar(int qc, bool updateClient = true);
 
-	void changeMaxStaminaBar(int hp);
+	void changeMaxStaminaBar(int st, bool updateClient = true);
 
-	void changeMaxMindBar(int hp);
+	void changeMaxMindBar(int mp, bool updateClient = true);
 
-	void changeMaxFocusBar(int hp);
+	void changeMaxFocusBar(int fc, bool updateClient = true);
 
-	void changeMaxWillpowerBar(int hp);
+	void changeMaxWillpowerBar(int wl, bool updateClient = true);
 
 	bool changeHealthWoundsBar(int wounds, bool forcedChange = false);
 
@@ -853,6 +853,42 @@ public:
 
 	void setWoundsUpdateCounter(unsigned int count);
 
+	void changeHealthMax(int health);
+
+	void changeStrengthMax(int strength);
+
+	void changeConstitutionMax(int constituition);
+
+	void changeActionMax(int action);
+
+	void changeQuicknessMax(int quickness);
+
+	void changeStaminaMax(int stamina);
+
+	void changeMindMax(int mind);
+
+	void changeFocusMax(int focus);
+
+	void changeWillpowerMax(int willpower);
+
+	void changeHealth(int health);
+
+	void changeStrength(int strength);
+
+	void changeConstitution(int constituition);
+
+	void changeAction(int action);
+
+	void changeQuickness(int quickness);
+
+	void changeStamina(int stamina);
+
+	void changeMind(int mind);
+
+	void changeFocus(int focus);
+
+	void changeWillpower(int willpower);
+
 	void setSpeed(float spd);
 
 	void setAcceleration(float acc);
@@ -1180,23 +1216,23 @@ public:
 
 	bool changeWillpowerBar(int wl, bool forcedChange);
 
-	void changeMaxHealthBar(int hp);
+	void changeMaxHealthBar(int hp, bool updateClient);
 
-	void changeMaxStrengthBar(int hp);
+	void changeMaxStrengthBar(int st, bool updateClient);
 
-	void changeMaxConstitutionBar(int hp);
+	void changeMaxConstitutionBar(int cs, bool updateClient);
 
-	void changeMaxActionBar(int hp);
+	void changeMaxActionBar(int ap, bool updateClient);
 
-	void changeMaxQuicknessBar(int hp);
+	void changeMaxQuicknessBar(int qc, bool updateClient);
 
-	void changeMaxStaminaBar(int hp);
+	void changeMaxStaminaBar(int st, bool updateClient);
 
-	void changeMaxMindBar(int hp);
+	void changeMaxMindBar(int mp, bool updateClient);
 
-	void changeMaxFocusBar(int hp);
+	void changeMaxFocusBar(int fc, bool updateClient);
 
-	void changeMaxWillpowerBar(int hp);
+	void changeMaxWillpowerBar(int wl, bool updateClient);
 
 	bool changeHealthWoundsBar(int wounds, bool forcedChange);
 
@@ -1865,6 +1901,42 @@ public:
 	void setShockWounds(unsigned int wounds);
 
 	void setWoundsUpdateCounter(unsigned int count);
+
+	void changeHealthMax(int health);
+
+	void changeStrengthMax(int strength);
+
+	void changeConstitutionMax(int constituition);
+
+	void changeActionMax(int action);
+
+	void changeQuicknessMax(int quickness);
+
+	void changeStaminaMax(int stamina);
+
+	void changeMindMax(int mind);
+
+	void changeFocusMax(int focus);
+
+	void changeWillpowerMax(int willpower);
+
+	void changeHealth(int health);
+
+	void changeStrength(int strength);
+
+	void changeConstitution(int constituition);
+
+	void changeAction(int action);
+
+	void changeQuickness(int quickness);
+
+	void changeStamina(int stamina);
+
+	void changeMind(int mind);
+
+	void changeFocus(int focus);
+
+	void changeWillpower(int willpower);
 
 	void setSpeed(float spd);
 

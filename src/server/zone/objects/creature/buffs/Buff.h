@@ -243,6 +243,7 @@ protected:
 	float buffDuration;
 	uint32 buffCRC;
 	uint32 buffDownerCRC;
+	bool buffDowner;
 
 	Event* buffEvent;
 
@@ -296,6 +297,10 @@ public:
 
 	inline uint32 getBuffDownerCRC() {
 		return buffDownerCRC;
+	}
+
+	inline bool isBuffDowner() {
+		return buffDowner;
 	}
 
 	inline int getBuffType() {
@@ -357,6 +362,10 @@ public:
 
 	inline void setBuffDownerCRC(uint32 crc) {
 		buffDownerCRC = crc;
+	}
+
+	inline void setBuffDowner(bool downer) {
+		buffDowner = downer;
 	}
 
 	inline void setBuffType(int type) {

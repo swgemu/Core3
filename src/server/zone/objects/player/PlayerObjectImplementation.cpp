@@ -256,23 +256,22 @@ void PlayerObjectImplementation::setForcePowerBar(uint32 fp) {
 }
 
 
-void PlayerObjectImplementation::setMaxForcePowerBar(uint32 fp, bool updateClient) {
-	if (fp == forcePowerMax)
-		return;
-
+void PlayerObjectImplementation::updateMaxForcePowerBar(bool updateClient) {
 	if(updateClient && player != NULL) {
 		PlayerObjectDeltaMessage8* dplay8 = new PlayerObjectDeltaMessage8(this);
 		dplay8->updateForcePowerMax();
 		dplay8->close();
 
 		player->sendMessage(dplay8);
-	} else
-		setForcePowerMax(fp);
+	}
 
-	if(forcePower > forcePowerMax && updateClient)
-		setForcePowerBar(fp);
-	else
-		setForcePower(fp);
+	if(getForcePower() > getForcePowerMax())
+	{
+		if(updateClient)
+			setForcePowerBar(getForcePowerMax());
+		else
+			setForcePower(getForcePowerMax());
+	}
 }
 
 

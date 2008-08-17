@@ -73,12 +73,10 @@ interface PlayerObject implements SceneObject {
 	
 	// client actions
 	void setForcePowerBar(unsigned int fp);
-	void setMaxForcePowerBar(unsigned int fp, boolean updateClient = true);
+	void updateMaxForcePowerBar(boolean updateClient = true);
 	
 	// force setters
 	void setForcePower(unsigned int fp);
-	void setForcePowerMax(unsigned int fp);
-	void setForceRegen(unsigned int fp);
 
 	// force getters
 	unsigned int getForcePower();

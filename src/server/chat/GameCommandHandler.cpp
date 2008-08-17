@@ -148,10 +148,6 @@ void GameCommandHandler::init() {
 			"Sends a message to all players on the server.",
 			"Usage: @systemMessage <range> <message>",
 			&systemMessage);
-	gmCommands->addCommand("setForceMax", DEVELOPER,
-			"Sets your force bar to the max level.",
-			"Usage: @setForceMax",
-			&setForceMax);
 	gmCommands->addCommand("setForce", DEVELOPER,
 			"Sets your force bar to a given level.",
 			"Usage: @setForce <value>",
@@ -999,14 +995,6 @@ void GameCommandHandler::systemMessage(StringTokenizer tokenizer, Player * playe
 		chatManager->broadcastMessage(message.str());
 	else
 		chatManager->broadcastMessageRange(player, message.str(), range);
-}
-
-void GameCommandHandler::setForceMax(StringTokenizer tokenizer, Player * player) {
-	int fp = tokenizer.getIntToken();
-	player->setMaxForcePowerBar(fp);
-	stringstream message;
-	message << "Set Force Power Max to: " << fp << ".";
-	player->sendSystemMessage(message.str());
 }
 
 void GameCommandHandler::setForce(StringTokenizer tokenizer, Player * player) {

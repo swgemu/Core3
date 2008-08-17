@@ -163,15 +163,15 @@ interface CreatureObject implements SceneObject {
 	boolean changeWillpowerBar(int wl, boolean forcedChange = false);
 
 	// Change Max HAM
-	void changeMaxHealthBar(int hp);
-	void changeMaxStrengthBar(int hp);
-	void changeMaxConstitutionBar(int hp);
-	void changeMaxActionBar(int hp);
-	void changeMaxQuicknessBar(int hp);
-	void changeMaxStaminaBar(int hp);
-	void changeMaxMindBar(int hp);
-	void changeMaxFocusBar(int hp);
-	void changeMaxWillpowerBar(int hp);
+	void changeMaxHealthBar(int hp, boolean updateClient = true);
+	void changeMaxStrengthBar(int st, boolean updateClient = true);
+	void changeMaxConstitutionBar(int cs, boolean updateClient = true);
+	void changeMaxActionBar(int ap, boolean updateClient = true);
+	void changeMaxQuicknessBar(int qc, boolean updateClient = true);
+	void changeMaxStaminaBar(int st, boolean updateClient = true);
+	void changeMaxMindBar(int mp, boolean updateClient = true);
+	void changeMaxFocusBar(int fc, boolean updateClient = true);
+	void changeMaxWillpowerBar(int wl, boolean updateClient = true);
 
 	// Change HAM Wounds
 	boolean changeHealthWoundsBar(int wounds, boolean forcedChange = false);
@@ -197,7 +197,7 @@ interface CreatureObject implements SceneObject {
 	void setFocusBar(unsigned int fc);
 	void setWillpowerBar(unsigned int will);
 
-	// Set Base HAM	
+	// Set Base HAM
 	void setBaseHealthBar(unsigned int hp, boolean updateClient = true);
 	void setBaseStrengthBar(unsigned int st, boolean updateClient = true);
 	void setBaseConstitutionBar(unsigned int cst, boolean updateClient = true);	
@@ -208,7 +208,7 @@ interface CreatureObject implements SceneObject {
 	void setBaseFocusBar(unsigned int fc, boolean updateClient = true);
 	void setBaseWillpowerBar(unsigned int will, boolean updateClient = true);
 
-	// Set Max HAM	
+	// Set Max HAM
 	void setMaxHealthBar(unsigned int hp, boolean updateClient = true);
 	void setMaxStrengthBar(unsigned int st, boolean updateClient = true);
 	void setMaxConstitutionBar(unsigned int cst, boolean updateClient = true);	
@@ -650,6 +650,26 @@ interface CreatureObject implements SceneObject {
 	void setShockWounds(unsigned int wounds);
 
 	void setWoundsUpdateCounter(unsigned int count);
+	
+	void changeHealthMax(int health);
+	void changeStrengthMax(int strength);
+	void changeConstitutionMax(int constituition);
+	void changeActionMax(int action);
+	void changeQuicknessMax(int quickness);
+	void changeStaminaMax(int stamina);
+	void changeMindMax(int mind);
+	void changeFocusMax(int focus);
+	void changeWillpowerMax(int willpower);
+	
+	void changeHealth(int health);
+	void changeStrength(int strength);
+	void changeConstitution(int constituition);
+	void changeAction(int action);
+	void changeQuickness(int quickness);
+	void changeStamina(int stamina);
+	void changeMind(int mind);
+	void changeFocus(int focus);
+	void changeWillpower(int willpower);
 
 	void setSpeed(float spd);
 	void setAcceleration(float acc);

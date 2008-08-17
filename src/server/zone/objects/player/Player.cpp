@@ -1851,18 +1851,17 @@ void Player::setForcePowerBar(int fp) {
 		((PlayerImplementation*) _impl)->setForcePowerBar(fp);
 }
 
-void Player::setMaxForcePowerBar(int fp, bool updateClient) {
+void Player::updateMaxForcePowerBar(bool updateClient) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 144);
-		method.addSignedIntParameter(fp);
 		method.addBooleanParameter(updateClient);
 
 		method.executeWithVoidReturn();
 	} else
-		((PlayerImplementation*) _impl)->setMaxForcePowerBar(fp, updateClient);
+		((PlayerImplementation*) _impl)->updateMaxForcePowerBar(updateClient);
 }
 
 void Player::setFoodFilling(int fill, bool updateClient) {
@@ -4062,7 +4061,7 @@ Packet* PlayerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		setForcePowerBar(inv->getSignedIntParameter());
 		break;
 	case 144:
-		setMaxForcePowerBar(inv->getSignedIntParameter(), inv->getBooleanParameter());
+		updateMaxForcePowerBar(inv->getBooleanParameter());
 		break;
 	case 145:
 		setFoodFilling(inv->getSignedIntParameter(), inv->getBooleanParameter());
@@ -5043,8 +5042,8 @@ void PlayerAdapter::setForcePowerBar(int fp) {
 	return ((PlayerImplementation*) impl)->setForcePowerBar(fp);
 }
 
-void PlayerAdapter::setMaxForcePowerBar(int fp, bool updateClient) {
-	return ((PlayerImplementation*) impl)->setMaxForcePowerBar(fp, updateClient);
+void PlayerAdapter::updateMaxForcePowerBar(bool updateClient) {
+	return ((PlayerImplementation*) impl)->updateMaxForcePowerBar(updateClient);
 }
 
 void PlayerAdapter::setFoodFilling(int fill, bool updateClient) {

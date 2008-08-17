@@ -337,7 +337,7 @@ public:
 
 	void setForcePowerBar(int fp);
 
-	void setMaxForcePowerBar(int fp, bool updateClient = true);
+	void updateMaxForcePowerBar(bool updateClient = true);
 
 	void setFoodFilling(int fill, bool updateClient = true);
 
@@ -926,7 +926,7 @@ public:
 
 	void setForcePowerBar(int fp);
 
-	void setMaxForcePowerBar(int fp, bool updateClient);
+	void updateMaxForcePowerBar(bool updateClient);
 
 	void setFoodFilling(int fill, bool updateClient);
 

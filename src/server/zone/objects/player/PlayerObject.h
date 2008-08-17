@@ -41,13 +41,9 @@ public:
 
 	void setForcePowerBar(unsigned int fp);
 
-	void setMaxForcePowerBar(unsigned int fp, bool updateClient = true);
+	void updateMaxForcePowerBar(bool updateClient = true);
 
 	void setForcePower(unsigned int fp);
-
-	void setForcePowerMax(unsigned int fp);
-
-	void setForceRegen(unsigned int fp);
 
 	unsigned int getForcePower();
 
@@ -175,13 +171,9 @@ public:
 
 	void setForcePowerBar(unsigned int fp);
 
-	void setMaxForcePowerBar(unsigned int fp, bool updateClient);
+	void updateMaxForcePowerBar(bool updateClient);
 
 	void setForcePower(unsigned int fp);
-
-	void setForcePowerMax(unsigned int fp);
-
-	void setForceRegen(unsigned int fp);
 
 	unsigned int getForcePower();
 
