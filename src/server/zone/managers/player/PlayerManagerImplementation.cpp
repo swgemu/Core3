@@ -824,7 +824,7 @@ void PlayerManagerImplementation::moveItem(Player* sender, Player* receiver, Tan
 
 	item->sendDestroyTo(sender);
 
-	receiver->addInventoryItem(item);
+	((CreatureObject*)receiver)->addInventoryItem(item);
 	item->sendTo(receiver);
 
 	if (item->isPersistent()) {

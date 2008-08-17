@@ -114,13 +114,13 @@ class DraftSchematicImplementation : public DraftSchematicServant {
 	uint64 objectID;
 
 	// Ingredient List
-	Vector<DraftSchematicIngredient*> dsIngredients;
+	Vector<ManagedReference<DraftSchematicIngredient> > dsIngredients;
 
 	// Experimental Property List With Padding
-	Vector<DraftSchematicExpPropGroup*> dsExpPropGroups;
+	Vector<ManagedReference<DraftSchematicExpPropGroup> > dsExpPropGroups;
 
 	// Attributes that are sent in the packets
-	Vector<DraftSchematicAttribute*> attributesToSet;
+	Vector<ManagedReference<DraftSchematicAttribute> > attributesToSet;
 
 	VectorMap<string, float> experimentalProperties;
 

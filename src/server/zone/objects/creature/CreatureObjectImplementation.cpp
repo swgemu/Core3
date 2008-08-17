@@ -4279,19 +4279,22 @@ void CreatureObjectImplementation::removeBuff(const uint32 buffCRC, bool removeF
 	buff->deActivateBuff(_this);
 
 	// cleanup buff
-	try {
-		//delete buff; TODO:Figure out whats wrong with this
-		buff = NULL;
-	} catch (...)
-	{
-		stringstream msg;
-		msg << "CreatureObjectImplementation::removeBuff exception around deleting buff (" << hex << buffCRC << dec << ")";
-		info(msg.str());
-	}
 
 	// remove from list
-	if (removeFromList)
-		creatureBuffs.drop(buffCRC);
+	if (removeFromList) {
+		if (!creatureBuffs.drop(buffCRC))
+			return;
+		
+		try {
+			//delete buff;
+			//buff = NULL;
+		} catch (...) {
+			stringstream msg;
+			msg << "CreatureObjectImplementation::removeBuff exception around deleting buff (" << hex << buffCRC << dec << ")";
+			info(msg.str());
+		}
+	}
+	
 	info("CreatureObjectImplementation::removeBuff completed");
 }
 

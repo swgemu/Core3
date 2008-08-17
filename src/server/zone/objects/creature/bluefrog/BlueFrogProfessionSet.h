@@ -82,8 +82,11 @@ public:
 			LinkedList<BlueFrogTree *> l = t->getChildren();
 			string element;
 			for (int i = 0; i < l.size(); i++) {
-				element = l.get(i)->getElement();
-				v->add(element);
+				BlueFrogTree* tree = l.get(i);
+				if (tree != NULL) {
+					element = l.get(i)->getElement();
+					v->add(element);
+				}
 			}
 		}
 			

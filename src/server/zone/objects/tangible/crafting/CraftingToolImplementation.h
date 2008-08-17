@@ -51,6 +51,8 @@ which carries forward this exception.
 #include "CraftingTool.h"
 #include "CraftingSlots.h"
 #include "../ContainerImplementation.h"
+
+#include "engine/engine.h"
  
 class CreatureObject;
 class SceneObject;
@@ -66,7 +68,7 @@ protected:
 	int state;
 	
 	Vector<uint64> tabIds;
-	Vector<DraftSchematic*> schematicsToSend;
+	Vector<ManagedReference<DraftSchematic> > schematicsToSend;
 	
 	TangibleObject* currentTano;
 	DraftSchematic* currentDraftSchematic;
