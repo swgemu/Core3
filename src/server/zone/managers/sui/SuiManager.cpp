@@ -508,6 +508,15 @@ void SuiManager::handleWoundTerminalRequest(uint32 boxID, Player* player, uint32
 
 		SuiBox* sui = player->getSuiBox(boxID);
 
+		/*sui->addMenuItem("@wound_terminal:inflict_wound_health");
+		sui->addMenuItem("@wound_terminal:inflict_wound_strength");
+		sui->addMenuItem("@wound_terminal:inflict_wound_constitution");
+		sui->addMenuItem("@wound_terminal:inflict_wound_action");
+		sui->addMenuItem("@wound_terminal:inflict_wound_quickness");
+		sui->addMenuItem("@wound_terminal:inflict_wound_stamina");
+		sui->addMenuItem("@wound_terminal:inflict_wound_mind");
+		sui->addMenuItem("@wound_terminal:inflict_wound_focus");
+		sui->addMenuItem("@wound_terminal:inflict_wound_willpower");*/
 		if (sui->isListBox() && cancel != 1) {
 			switch (itemIndex) {
 			case 0:
@@ -532,14 +541,17 @@ void SuiManager::handleWoundTerminalRequest(uint32 boxID, Player* player, uint32
 				player->changeMindWoundsBar(500);
 				break;
 			case 7:
+				player->changeFocusWoundsBar(500);
+				break;
+			case 8:
 				player->changeWillpowerWoundsBar(500);
 				break;
 			}
 		}
 
 		player->removeSuiBox(boxID);
-		sui->finalize();	
-		
+		sui->finalize();
+
 		player->unlock();
 	} catch (Exception& e) {
 		error("Exception in SuiManager::handleWoundTerminalRequest ");

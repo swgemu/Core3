@@ -153,7 +153,6 @@ private:
 	static void ticketPurchase(StringTokenizer tokenizer, Player * player);
 	static void awardBadge(StringTokenizer tokenizer, Player * player);
 	static void systemMessage(StringTokenizer tokenizer, Player * player);
-	static void setForceMax(StringTokenizer tokenizer, Player * player);
 	static void setForce(StringTokenizer tokenizer, Player * player);
 	static void setDrinkFilling(StringTokenizer tokenizer, Player * player);
 	static void setFoodFilling(StringTokenizer tokenizer, Player * player);
