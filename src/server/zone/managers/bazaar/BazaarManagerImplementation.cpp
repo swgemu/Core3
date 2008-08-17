@@ -142,7 +142,6 @@ BazaarManagerImplementation::BazaarManagerImplementation(ZoneServer* zoneserver,
 
 	checkEvent = new CheckBazaarStatus(this);
 	checkAuctions();
-
 }
 
 BazaarManagerImplementation::~BazaarManagerImplementation() {
@@ -419,8 +418,6 @@ RegionBazaar* BazaarManagerImplementation::getBazaar(uint64 bazaarid) {
 }
 
 void BazaarManagerImplementation::checkAuctions() {
-	lock();
-
 	info("Checking auctions");
 
 	Time expireTime;
@@ -538,8 +535,6 @@ void BazaarManagerImplementation::checkAuctions() {
 	}
 
 	processServer->addEvent(checkEvent, CHECKEVERY * 60000);
-
-	unlock();
 }
 
 void BazaarManagerImplementation::buyItem(Player* player, uint64 objectid, int price1, int price2) {
