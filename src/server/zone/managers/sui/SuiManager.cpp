@@ -117,6 +117,9 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, Player* player, uint32
 	case 0xBFDA:
 		handleWoundTerminalRequest(boxID, player, cancel, atoi(value.c_str()));
 		break;
+	case 0xBFD0:
+		handleStateTerminalRequest(boxID, player, cancel, atoi(value.c_str()));
+		break;
 	case 0xD1A6:
 		handleDiagnose(boxID, player);
 		break;
@@ -560,6 +563,70 @@ void SuiManager::handleWoundTerminalRequest(uint32 boxID, Player* player, uint32
 		player->unlock();
 	} catch (...) {
 		error("Unreported exception caught in SuiManager::handleWoundTerminalRequest");
+		player->unlock();
+	}
+
+}
+
+void SuiManager::handleStateTerminalRequest(uint32 boxID, Player* player, uint32 cancel, int itemIndex) {
+	try {
+		player->wlock();
+
+		if (!player->hasSuiBox(boxID)) {
+			player->unlock();
+			return;
+		}
+
+		SuiBox* sui = player->getSuiBox(boxID);
+
+		/*	sui->addMenuItem("Test Fire State.");
+			sui->addMenuItem("Test Disease State");
+			sui->addMenuItem("Test Poison State");
+			sui->addMenuItem("Test Dizzied State.");
+			sui->addMenuItem("Test Blinded State");
+			sui->addMenuItem("Test Intimidated State");
+			sui->addMenuItem("Test Stunned State");  */
+
+		if (sui->isListBox() && cancel != 1) {
+			switch (itemIndex) {
+			case 0:
+				player->setOnFireState(150,1,180);
+				break;
+			case 1:
+				player->setDiseasedState(150, 1, 180);
+				break;
+			case 2:
+				player->setPoisonedState(150, 1, 180);
+				break;
+			case 3:
+				player->setDizziedState();
+				break;
+			case 4:
+				player->setBlindedState();
+				break;
+			case 5:
+				player->setIntimidatedState();
+				break;
+			case 6:
+				player->setStunnedState();
+				break;
+			}
+
+			player->updateStates();
+			player->activateRecovery();
+		}
+
+		player->removeSuiBox(boxID);
+		sui->finalize();
+
+		player->unlock();
+	} catch (Exception& e) {
+		error("Exception in SuiManager::handleDOTTerminalRequest ");
+		e.printStackTrace();
+
+		player->unlock();
+	} catch (...) {
+		error("Unreported exception caught in SuiManager::handleDOTTerminalRequest");
 		player->unlock();
 	}
 

@@ -6001,17 +6001,18 @@ void CreatureObject::setMount(MountCreature* mount) {
 		((CreatureObjectImplementation*) _impl)->setMount(mount);
 }
 
-void CreatureObject::explode(int level) {
+void CreatureObject::explode(int level, bool destroy) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 468);
 		method.addSignedIntParameter(level);
+		method.addBooleanParameter(destroy);
 
 		method.executeWithVoidReturn();
 	} else
-		((CreatureObjectImplementation*) _impl)->explode(level);
+		((CreatureObjectImplementation*) _impl)->explode(level, destroy);
 }
 
 BuffObject* CreatureObject::getBuffObject(const unsigned int buffCRC) {
@@ -7971,7 +7972,7 @@ Packet* CreatureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		setMount((MountCreature*) inv->getObjectParameter());
 		break;
 	case 468:
-		explode(inv->getSignedIntParameter());
+		explode(inv->getSignedIntParameter(), inv->getBooleanParameter());
 		break;
 	case 469:
 		resp->insertLong(getBuffObject(inv->getUnsignedIntParameter())->_getObjectID());
@@ -9960,8 +9961,8 @@ void CreatureObjectAdapter::setMount(MountCreature* mount) {
 	return ((CreatureObjectImplementation*) impl)->setMount(mount);
 }
 
-void CreatureObjectAdapter::explode(int level) {
-	return ((CreatureObjectImplementation*) impl)->explode(level);
+void CreatureObjectAdapter::explode(int level, bool destroy) {
+	return ((CreatureObjectImplementation*) impl)->explode(level, destroy);
 }
 
 BuffObject* CreatureObjectAdapter::getBuffObject(const unsigned int buffCRC) {

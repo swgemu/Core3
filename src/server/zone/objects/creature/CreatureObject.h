@@ -973,7 +973,7 @@ public:
 
 	void setMount(MountCreature* mount);
 
-	void explode(int level = 1);
+	void explode(int level = 1, bool destroy = true);
 
 	BuffObject* getBuffObject(const unsigned int buffCRC);
 
@@ -2028,7 +2028,7 @@ public:
 
 	void setMount(MountCreature* mount);
 
-	void explode(int level);
+	void explode(int level, bool destroy);
 
 	BuffObject* getBuffObject(const unsigned int buffCRC);
 

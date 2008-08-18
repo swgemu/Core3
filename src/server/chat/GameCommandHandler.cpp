@@ -842,7 +842,7 @@ void GameCommandHandler::kill(StringTokenizer tokenizer, Player * player) {
 		if (targetPlayer != player)
 			targetPlayer->wlock(player);
 
-		targetPlayer->explode(2);
+		targetPlayer->explode(2, false);
 		targetPlayer->kill();
 
 		targetPlayer->sendSystemMessage("Your character has been killed by \'" + player->getFirstName() + "\'.");
@@ -886,7 +886,7 @@ void GameCommandHandler::killArea(StringTokenizer tokenizer, Player * player) {
 						if (otherPlayer != player)
 							otherPlayer->wlock(player);
 
-						otherPlayer->explode(2);
+						otherPlayer->explode(2, false);
 						otherPlayer->kill();
 
 						if (otherPlayer != player)

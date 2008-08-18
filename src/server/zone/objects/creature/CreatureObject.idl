@@ -732,7 +732,7 @@ interface CreatureObject implements SceneObject {
 	
 	void setMount(MountCreature mount);
 	
-	void explode(int level = 1);
+	void explode(int level = 1, boolean destroy = true);
 	
 	BuffObject getBuffObject(const unsigned int buffCRC);
 	

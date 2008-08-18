@@ -79,6 +79,7 @@ public:
 
 	void handleBlueFrogItemRequest(uint32 boxID, Player* player, uint32 cancel, int itemIndex);
 	void handleWoundTerminalRequest(uint32 boxID, Player* player, uint32 cancel, int itemIndex);
+	void handleStateTerminalRequest(uint32 boxID, Player* player, uint32 cancel, int itemIndex);
 
 	void handleDiagnose(uint32 boxID, Player* player);
 

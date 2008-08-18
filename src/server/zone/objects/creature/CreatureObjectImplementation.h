@@ -2460,7 +2460,7 @@ public:
 		return (float(getSkillMod("slope_move"))/float(100));
 	}
 
-	void explode(int level = 1);
+	void explode(int level = 1, bool destroy = true);
 
 	/*
 	 Clean up later

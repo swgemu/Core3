@@ -4630,7 +4630,7 @@ void CreatureObjectImplementation::updateCharacterAppearance() {
 	broadcastMessage(dcreo3);
 }
 
-void CreatureObjectImplementation::explode(int level) {
+void CreatureObjectImplementation::explode(int level, bool destroy) {
 
 	string explodeStr;
 	if (level < 2)
@@ -4646,8 +4646,11 @@ void CreatureObjectImplementation::explode(int level) {
 	PlayClientEffectLoc* explodeLoc = new PlayClientEffectLoc(explodeStr, zoneID, positionX, positionZ, positionY);
 	broadcastMessage(explodeLoc);
 
-	SceneObjectDestroyMessage* destroyMsg = new SceneObjectDestroyMessage(_this);
-	broadcastMessage(destroyMsg);
+	if (destroy) {
+		SceneObjectDestroyMessage* destroyMsg = new SceneObjectDestroyMessage(_this);
+		broadcastMessage(destroyMsg);
+	}
+
 }
 
 
