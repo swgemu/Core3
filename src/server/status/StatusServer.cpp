@@ -82,8 +82,9 @@ Packet * StatusServer::getStatusXMLPacket() {
 		ss << "</users>" << endl;
 	} else
 		ss << "<status>down</status>";
-	ss << "</zoneServer>" << endl;
 	ss << "<timestamp>" << timestamp << "</timestamp>" << endl;
+	ss << "</zoneServer>" << endl;
+
 
 	string xml = ss.str();
 
@@ -124,6 +125,7 @@ void StatusServer::run() {
 		s->send(getStatusXMLPacket());
 		s->close();
 
+		delete(s);
 		sleep(1);
 	}
 }
