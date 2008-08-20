@@ -60,6 +60,7 @@ ServerCore::ServerCore() : Core("core3.log"), Logger("Core") {
 
 	loginServer = NULL;
 	zoneServer = NULL;
+	statusServer = NULL;
 }
 
 void ServerCore::init() {
@@ -87,6 +88,11 @@ void ServerCore::init() {
 			zoneServer = new ZoneServer(configManager.getZoneProcessingThreads());
 			zoneServer->deploy("ZoneServer");
 		}
+
+		if (configManager.getMakeStatus()) {
+			statusServer = new StatusServer(&configManager, zoneServer);
+		}
+
 	} catch (ServiceException& e) {
 		shutdown();
 	} catch (DatabaseException& e) {
@@ -108,6 +114,13 @@ void ServerCore::run() {
 		int zoneAllowedConnections = configManager.getZoneAllowedConnections();
 
 		zoneServer->start(44463, zoneAllowedConnections);
+	}
+
+	if (statusServer != NULL) {
+		int statusPort = configManager.getStatusPort();
+		int statusAllowedConnections = configManager.getStatusAllowedConnections();
+
+		statusServer->start();
 	}
 
 	info("initialized", true);
@@ -132,6 +145,13 @@ void ServerCore::shutdown() {
 
 		delete loginServer;
 		loginServer = NULL;
+	}
+
+	if(statusServer != NULL) {
+		statusServer->kill();
+
+		delete statusServer;
+		statusServer = NULL;
 	}
 
 	DistributedObjectBroker::finalize();

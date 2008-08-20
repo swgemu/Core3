@@ -105,6 +105,12 @@ public:
 
 	int getConnectionCount();
 
+	int getTotalPlayers();
+
+	int getMaxPlayers();
+
+	int getDeletedPlayers();
+
 	unsigned long long getNextCreatureID(bool doLock = true);
 
 protected:
@@ -192,6 +198,12 @@ public:
 	string& getServerName();
 
 	int getConnectionCount();
+
+	int getTotalPlayers();
+
+	int getMaxPlayers();
+
+	int getDeletedPlayers();
 
 	unsigned long long getNextCreatureID(bool doLock);
 

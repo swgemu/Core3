@@ -124,6 +124,9 @@ interface ZoneServer {
 	string getServerName();
 	
 	int getConnectionCount();
+	int getTotalPlayers();
+	int getMaxPlayers();
+	int getDeletedPlayers();
 	
 	unsigned long getNextCreatureID(boolean doLock = true);
 }

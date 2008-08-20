@@ -481,12 +481,48 @@ int ZoneServer::getConnectionCount() {
 		return ((ZoneServerImplementation*) _impl)->getConnectionCount();
 }
 
-unsigned long long ZoneServer::getNextCreatureID(bool doLock) {
+int ZoneServer::getTotalPlayers() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 40);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((ZoneServerImplementation*) _impl)->getTotalPlayers();
+}
+
+int ZoneServer::getMaxPlayers() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 41);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((ZoneServerImplementation*) _impl)->getMaxPlayers();
+}
+
+int ZoneServer::getDeletedPlayers() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 42);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((ZoneServerImplementation*) _impl)->getDeletedPlayers();
+}
+
+unsigned long long ZoneServer::getNextCreatureID(bool doLock) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 43);
 		method.addBooleanParameter(doLock);
 
 		return method.executeWithUnsignedLongReturn();
@@ -608,6 +644,15 @@ Packet* ZoneServerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertSignedInt(getConnectionCount());
 		break;
 	case 40:
+		resp->insertSignedInt(getTotalPlayers());
+		break;
+	case 41:
+		resp->insertSignedInt(getMaxPlayers());
+		break;
+	case 42:
+		resp->insertSignedInt(getDeletedPlayers());
+		break;
+	case 43:
 		resp->insertLong(getNextCreatureID(inv->getBooleanParameter()));
 		break;
 	default:
@@ -751,6 +796,18 @@ string& ZoneServerAdapter::getServerName() {
 
 int ZoneServerAdapter::getConnectionCount() {
 	return ((ZoneServerImplementation*) impl)->getConnectionCount();
+}
+
+int ZoneServerAdapter::getTotalPlayers() {
+	return ((ZoneServerImplementation*) impl)->getTotalPlayers();
+}
+
+int ZoneServerAdapter::getMaxPlayers() {
+	return ((ZoneServerImplementation*) impl)->getMaxPlayers();
+}
+
+int ZoneServerAdapter::getDeletedPlayers() {
+	return ((ZoneServerImplementation*) impl)->getDeletedPlayers();
 }
 
 unsigned long long ZoneServerAdapter::getNextCreatureID(bool doLock) {

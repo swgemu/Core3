@@ -45,6 +45,7 @@
 MakeLogin = 1
 MakeZone = 1
 MakePing = 1
+MakeStatus = 1
 
 ORB = ""
 
@@ -73,3 +74,8 @@ UseVBIngeration = 0
 
 ZoneProcessingThreads = 10
 ZoneAllowedConnections = 30000
+
+--Status Server Config
+StatusPort = 44455
+StatusAllowedConnections = 500
+StatusInterval = 30 -- interval to check if zone is locked up (in seconds)

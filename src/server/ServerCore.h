@@ -55,6 +55,8 @@ which carries forward this exception.
 
 #include "login/LoginServer.h"
 
+#include "status/StatusServer.h"
+
 #include "zone/ZoneServer.h"
 #include "zone/ZoneServerImplementation.h"
 
@@ -68,6 +70,8 @@ class ServerCore : public Core, public Logger {
 	DistributedObjectBroker* orb;
 
 	LoginServer* loginServer;
+
+	StatusServer * statusServer;
 
 	static ZoneServer* zoneServer;
 

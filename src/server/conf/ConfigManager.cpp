@@ -51,6 +51,7 @@ bool ConfigManager::loadConfigData() {
 	makeLogin = getGlobalByte("MakeLogin");
 	makeZone = getGlobalByte("MakeZone");
 	makePing = getGlobalByte("MakePing");
+	makeStatus = getGlobalByte("MakeStatus");
 
 	orbNamingDirectoryAddress = getGlobalString("ORB");
 
@@ -70,6 +71,8 @@ bool ConfigManager::loadConfigData() {
 	forumsUserTable = getGlobalString("ForumsUserTable");
 	forumsBannedTable = getGlobalString("ForumsBannedTable");
 
+	statusPort = getGlobalShort("StatusPort");
+
 	loginPort = getGlobalShort("LoginPort");
 	loginAllowedConnections =  getGlobalInt("LoginAllowedConnections");
 	autoReg = getGlobalByte("AutoReg");
@@ -77,6 +80,9 @@ bool ConfigManager::loadConfigData() {
 
 	zoneProcessingThreads = getGlobalInt("ZoneProcessingThreads");
 	zoneAllowedConnections = getGlobalInt("ZoneAllowedConnections");
+
+	statusAllowedConnections = getGlobalInt("StatusAllowedConnections");
+	statusInterval = getGlobalInt("StatusInterval");
 
 	return true;
 }

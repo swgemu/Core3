@@ -177,6 +177,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/login/LoginServer.cpp \
 		server/login/LoginPacketHandler.cpp \
 		server/login/LoginMessageProcessorThread.cpp \
+		server/status/StatusServer.cpp \
 		server/zone/ZoneImplementation.cpp \
 		server/zone/ZoneClientImplementation.cpp \
 		server/zone/ZoneServerImplementation.cpp \

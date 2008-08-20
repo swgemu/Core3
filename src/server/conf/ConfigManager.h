@@ -52,6 +52,7 @@ class ConfigManager : public Lua {
 	bool makeLogin;
 	bool makeZone;
 	bool makePing;
+	bool makeStatus;
 
 	string orbNamingDirectoryAddress;
 
@@ -71,6 +72,8 @@ class ConfigManager : public Lua {
 	string dBUser;
 	string dBPass;
 
+	uint16 statusPort;
+
 	uint16 loginPort;
 	int loginAllowedConnections;
 	bool autoReg;
@@ -79,12 +82,16 @@ class ConfigManager : public Lua {
 	int zoneProcessingThreads;
 	int zoneAllowedConnections;
 
+	int statusAllowedConnections;
+	unsigned int statusInterval;
+
 public:
 
 	ConfigManager() {
 		makeLogin = true;
 		makeZone = true;
 		makePing = true;
+		makeStatus = true;
 
 		orbNamingDirectoryAddress = "";
 
@@ -105,12 +112,17 @@ public:
 		forumsBannedTable = "vb3_bannedusers";
 		useVBIngeration = 0;
 
+		statusPort = 44455;
+
 		loginPort = 44453;
 		loginAllowedConnections = 30;
 		autoReg = true;
 
 		zoneProcessingThreads = 10;
 		zoneAllowedConnections = 300;
+
+		statusAllowedConnections = 100;
+		statusInterval = 60;
 	}
 
 	~ConfigManager() {
@@ -134,6 +146,10 @@ public:
 
 	inline bool getMakePing() {
 		return makePing;
+	}
+
+	inline bool getMakeStatus() {
+		return makeStatus;
 	}
 
 	inline string& getORBNamingDirectoryAddress() {
@@ -200,8 +216,20 @@ public:
 		return loginPort;
 	}
 
+	inline uint16 getStatusPort() {
+		return statusPort;
+	}
+
 	inline int getLoginAllowedConnections() {
 		return loginAllowedConnections;
+	}
+
+	inline int getStatusAllowedConnections() {
+		return statusAllowedConnections;
+	}
+
+	inline int getStatusInterval() {
+		return statusInterval;
 	}
 
 	inline int getAutoReg() {
