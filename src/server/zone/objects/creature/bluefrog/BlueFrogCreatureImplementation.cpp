@@ -274,7 +274,7 @@ void BlueFrogCreatureImplementation::selectConversationOption(int option, SceneO
 		string group = lastMessage.substr(15, lastMessage.length() - 15);
 		BlueFrogVector * bfVector = itemManager->getBFProfList(group);
 
-		if(option < bfVector->size()) {
+		if (option < bfVector->size()) {
 			string key = bfVector->get(option);
 			string prof = itemManager->getBFProf(key);
 
@@ -283,6 +283,8 @@ void BlueFrogCreatureImplementation::selectConversationOption(int option, SceneO
 				ss << "blue_frog_prof_" << key;
 				player->setLastNpcConvMessStr(ss.str());
 				sendSelectProfessionMessage(player);
+
+				bfVector->finalize();
 				return;
 			}
 

@@ -231,32 +231,28 @@ float GroupObjectImplementation::getRangerBonusForHarvesting(Player* player) {
 			if (temp != player)
 				temp->wlock(player);
 
-			if(temp->getFirstName() != player->getFirstName() && temp->isInRange(player, 64.0f) &&
+			if (temp->getFirstName() != player->getFirstName() && temp->isInRange(player, 64.0f) &&
 					player->getZoneID() == temp->getZoneID())
 				closeEnough = true;
 
-			if(temp->hasSkillBox(skillBox)){
-
+			if (temp->hasSkillBox(skillBox))
 				bonus = .3f;
 
-			}
-
-			if(temp->hasSkillBox(skillBox2)){
-
+			if (temp->hasSkillBox(skillBox2))
 				bonus = .4f;
-
-			}
 
 			if (temp != player)
 				temp->unlock();
 		} catch (...) {
+			temp->error("unreported exception caught in GroupObjectImplementation::getRangerBonusForHarvesting");
+
 			if (temp != player)
 				temp->unlock();
 		}
 
 	}
 
-	if(closeEnough)
+	if (closeEnough)
 		return bonus;
 	else
 		return 0.0f;

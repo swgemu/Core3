@@ -68,6 +68,7 @@ public:
 
 			player->unlock();
 		} catch (...) {
+			player->error("unreported exception caught in ReviveCountdownEvent::activate");
 			player->unlock();
 		}
 

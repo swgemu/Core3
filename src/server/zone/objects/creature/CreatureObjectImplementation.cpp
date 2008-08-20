@@ -4078,8 +4078,10 @@ uint32 CreatureObjectImplementation::getMitigation(const string& mit) {
 }
 
 void CreatureObjectImplementation::broadcastMessage(BaseMessage* msg, int range, bool doLock) {
-	if (zone == NULL)
+	if (zone == NULL) {
+		delete msg;
 		return;
+	}
 
 	try {
 		//cout << "CreatureObject::broadcastMessage(Message* msg, int range, bool doLock)\n";
@@ -4113,8 +4115,10 @@ void CreatureObjectImplementation::broadcastMessage(BaseMessage* msg, int range,
 }
 
 void CreatureObjectImplementation::broadcastMessage(StandaloneBaseMessage* msg, int range, bool doLock) {
-	if (zone == NULL)
+	if (zone == NULL) {
+		delete msg;
 		return;
+	}
 
 	try {
 		//cout << "CreatureObject::broadcastMessage(Message* msg, int range, bool doLock)\n";
@@ -4148,8 +4152,16 @@ void CreatureObjectImplementation::broadcastMessage(StandaloneBaseMessage* msg, 
 }
 
 void CreatureObjectImplementation::broadcastMessages(Vector<BaseMessage*>& msgs, int range, bool doLock) {
-	if (zone == NULL)
+	if (zone == NULL) {
+		for (int j = 0; j < msgs.size(); ++j) {
+			Message* msg = msgs.get(j);
+			delete msg;
+		}
+
+		msgs.removeAll();
+
 		return;
+	}
 
 	try {
 		//cout << "CreatureObject::broadcastMessages(Vector<Message*>& msgs, int range, bool doLock)\n";
@@ -4175,6 +4187,8 @@ void CreatureObjectImplementation::broadcastMessages(Vector<BaseMessage*>& msgs,
 			Message* msg = msgs.get(j);
 			delete msg;
 		}
+
+		msgs.removeAll();
 
 		zone->unlock(doLock);
 

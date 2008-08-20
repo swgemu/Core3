@@ -72,7 +72,7 @@ public:
 			creo->unlock();
 
 		} catch (...) {
-
+			creo->error("unreported exception caught in CreatureRemoveEvent::activate");
 			creo->unlock();
 		}
 

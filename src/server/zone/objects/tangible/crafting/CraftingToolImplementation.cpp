@@ -80,7 +80,6 @@ CraftingToolImplementation::~CraftingToolImplementation(){
 }
 
 void CraftingToolImplementation::init() {
-
 	objectSubType = TangibleObjectImplementation::CRAFTINGTOOL;
 
 	setToolEffectiveness(-15.0f);
@@ -98,6 +97,8 @@ void CraftingToolImplementation::init() {
 	experimentingEnabled = false;
 
 	tabIds.removeAll();
+
+	recoverResources = true;
 
 	if(objectCRC == 0x3EE5146D){
 

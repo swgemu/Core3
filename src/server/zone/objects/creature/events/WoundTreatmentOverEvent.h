@@ -64,6 +64,7 @@ public:
 
 			creo->unlock();
 		} catch (...) {
+			creo->error("unreported exception caught in WoundTreatmentOverEvent::activate");
 			creo->unlock();
 		}
 

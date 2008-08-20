@@ -272,6 +272,8 @@ public:
 				dplay9->close();
 				player->sendMessage(dplay9);
 			}
+
+			delete ignore;
 		} catch (DatabaseException& e) {
 			cout << "IgnorelistImplementation void loadIgnore -> Select DB Query exception! \n";
 		}
@@ -316,6 +318,8 @@ public:
 
 					ServerDatabase::instance()->executeStatement(saveQuery);
 				}
+
+				delete ignore;
 			} catch (...) {
 					cout << "IgnorelistImplementation void saveIgnores -> Insert DB Query exception! \n";
 			}

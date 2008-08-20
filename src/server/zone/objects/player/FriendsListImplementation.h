@@ -143,6 +143,8 @@ public:
 				return;
 			}
 
+			delete friends;
+
 		} catch (DatabaseException& e) {
 			cout << "exception at Friendlist::addFriend()\n" << e.getMessage();
 			return;
@@ -384,6 +386,8 @@ public:
 				dplay9->close();
 				player->sendMessage(dplay9);
 			}
+
+			delete friends;
 		} catch (DatabaseException& e) {
 			cout << "FriendlistImplementation void loadFriends -> Select DB Query exception! \n";
 		}
@@ -447,6 +451,8 @@ public:
 
 					ServerDatabase::instance()->executeStatement(saveQuery);
 				}
+
+				delete friends;
 			} catch (...) {
 					cout << "FriendlistImplementation void saveFriends -> Insert DB Query exception! \n";
 			}
