@@ -84,19 +84,19 @@ void BlueFrogCreatureImplementation::setBFType(int type) {
 	switch (type) {
 	case JAWA:
 		characterName = unicode("Jawa Trader");
-		objectCRC = 1350586805;
+		objectCRC = 0x508051B5;
 		break;
 	case GUNGAN:
 		characterName = unicode("Gungan Trader");
-		objectCRC = 4058341940;
+		objectCRC = 0xF1E56234;
 		break;
 	case MEDDROID:
 		characterName = unicode("Medical Droid");
-		objectCRC = 634197524;
+		objectCRC = 0x25CD1614;
 		break;
 	case BARTENDER:
 		characterName = unicode("Bartender");
-		objectCRC = 1261483492;
+		objectCRC = 0x4B30B5E4;
 		break;
 	default:
 		break;

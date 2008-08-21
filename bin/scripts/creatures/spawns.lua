@@ -43,39 +43,40 @@
 -------------------------------------------------------------------------------------------
 
 --Tatooine
-
-RunCreatureFile("spawns/tatooine/staticSpawns.lua")
-RunCreatureFile("spawns/tatooine/forttusken.lua")
-RunCreatureFile("spawns/tatooine/squillcavern.lua")
-RunCreatureFile("spawns/tatooine/hutthideout.lua")
-RunCreatureFile("spawns/tatooine/tuskenBunker.lua")
-RunCreatureFile("spawns/tatooine/beetlecave.lua")
+if (PLANET_ID == 8) then
+ RunCreatureFile("spawns/tatooine/staticSpawns.lua")
+ RunCreatureFile("spawns/tatooine/forttusken.lua")
+ RunCreatureFile("spawns/tatooine/squillcavern.lua")
+ RunCreatureFile("spawns/tatooine/hutthideout.lua")
+ RunCreatureFile("spawns/tatooine/tuskenBunker.lua")
+ RunCreatureFile("spawns/tatooine/beetlecave.lua")
+end
 
 ------------------------------------------------------------------------------------------------------
 
 --Dathomir
-
-RunCreatureFile("spawns/dathomir/staticSpawns.lua")
-RunCreatureFile("spawns/dathomir/nightsisters.lua")
-RunCreatureFile("spawns/dathomir/singingmtnclan.lua")
-
+if (PLANET_ID == 2) then
+ RunCreatureFile("spawns/dathomir/staticSpawns.lua")
+ RunCreatureFile("spawns/dathomir/nightsisters.lua")
+ RunCreatureFile("spawns/dathomir/singingmtnclan.lua")
+end
 ------------------------------------------------------------------------------------------------------
 
 --Corellia
-
-RunCreatureFile("spawns/corellia/staticSpawns.lua")
-RunCreatureFile("spawns/corellia/afarathuCave.lua")
-RunCreatureFile("spawns/corellia/drallCave.lua")
-RunCreatureFile("spawns/corellia/lordNyaxCult.lua")
-RunCreatureFile("spawns/corellia/rogueCorsec.lua")
-
+if (PLANET_ID == 0) then
+ RunCreatureFile("spawns/corellia/staticSpawns.lua")
+ RunCreatureFile("spawns/corellia/afarathuCave.lua")
+ RunCreatureFile("spawns/corellia/drallCave.lua")
+ RunCreatureFile("spawns/corellia/lordNyaxCult.lua")
+ RunCreatureFile("spawns/corellia/rogueCorsec.lua")
+end
 --------------------------------------------------------------------------------------------------------
 --Dantooine
-
-RunCreatureFile("spawns/dantooine/forceCrystalHuntersCave.lua")
-RunCreatureFile("spawns/dantooine/jantaCave.lua")
-RunCreatureFile("spawns/dantooine/kungaCave.lua")
-
+if (PLANET_ID == 1) then
+ RunCreatureFile("spawns/dantooine/forceCrystalHuntersCave.lua")
+ RunCreatureFile("spawns/dantooine/jantaCave.lua")
+ RunCreatureFile("spawns/dantooine/kungaCave.lua")
+end
 ----------------------------------------------------------------------------------------------------------------
 
 --Endor
@@ -90,4 +91,6 @@ RunCreatureFile("spawns/dantooine/kungaCave.lua")
 -------------------------------------------------------------------------------------------------------------------
 
 --Naboo
-RunCreatureFile("spawns/naboo/staticSpawns.lua")
+if (PLANET_ID == 5) then
+ RunCreatureFile("spawns/naboo/staticSpawns.lua")
+end

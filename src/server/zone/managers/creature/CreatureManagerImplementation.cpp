@@ -112,12 +112,12 @@ void CreatureManagerImplementation::init() {
 
 	scheduler = new ScheduleManager("CreatureScheduler");
 
+	instance = this;
+
 	// Scripting
 	Lua::init();
 	registerFunctions();
 	registerGlobals();
-
-	instance = this;
 }
 
 void CreatureManagerImplementation::loadCreatures() {
@@ -956,6 +956,7 @@ void CreatureManagerImplementation::registerGlobals() {
 	setGlobalInt("AGGRESSIVE_FLAG", 2);
 	setGlobalInt("ENEMY_FLAG", 0x20);
 	setGlobalInt("NPC_FLAG", 0x15);
+	setGlobalInt("PLANET_ID", instance->zone->getZoneID());
 }
 
 uint64 CreatureManagerImplementation::getNextCreatureID() {
