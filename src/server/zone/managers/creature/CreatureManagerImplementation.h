@@ -146,6 +146,8 @@ public:
 	static int addLair(lua_State * L);
 	static int testServer(lua_State * L);
 
+	static int addBlueFrog(lua_State *L);
+
 	void queueActivity(CreatureImplementation* creature, uint32 time = 1000) {
 		creature->update(time);
 		creatureActivityQueue.add(creature);

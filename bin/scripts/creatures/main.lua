@@ -76,6 +76,11 @@ function spawnCreatureInCell(creature, Planet, PositionX, PositionZ, PositionY, 
 	AddCreatureToServer(newCreature)
 end
 
+function spawnBlueFrog(x, y, oy, ow, bftype, cellid)
+	bluefrog = { X = x, Y = y, oY = oy, oW = ow, bfType = bftype, cellId = cellid }
+	AddBlueFrogToServer(bluefrog)
+end
+
 function spawnCreatures(creature, Planet, PositionX, PositionY, radius, number)
 	for i=1,number do
 		angle = math.random(359)

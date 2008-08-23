@@ -185,17 +185,7 @@ void CreatureManagerImplementation::loadRecruiters() {
 }
 
 void CreatureManagerImplementation::loadBlueFrogs() {
-	if (zone->getZoneID() == 5) {
-		spawnBlueFrog(-4834, 4148, .723221, -.690617, BlueFrogCreatureImplementation::GUNGAN);
-		spawnBlueFrog(-4879, 4185, 1, 0, BlueFrogCreatureImplementation::GUNGAN);
-		spawnBlueFrog(17.6233, 11.2728, 1, 0, BlueFrogCreatureImplementation::GUNGAN, 1697360);
-		spawnBlueFrog(2.2, -2.5, 1, 0, BlueFrogCreatureImplementation::BARTENDER, 91);
-	} else if (zone->getZoneID() == 8) {
-		spawnBlueFrog(45, -5352, -.11083, .993839, BlueFrogCreatureImplementation::JAWA);
-		spawnBlueFrog(59, -5336, 1, 0, BlueFrogCreatureImplementation::JAWA);
-		spawnBlueFrog(119, -5354, .723221, -.690617, BlueFrogCreatureImplementation::JAWA);
-		spawnBlueFrog(-87, -5332, -.0339502, .999424, BlueFrogCreatureImplementation::JAWA);
-	}
+	runFile("scripts/creatures/blueFrogSpawns.lua");
 }
 
 void CreatureManagerImplementation::loadTrainers() {
@@ -803,6 +793,24 @@ void CreatureManagerImplementation::unloadCreature(Creature* creature) {
 	creatureMap->remove(creature->getObjectID());
 }
 
+int CreatureManagerImplementation::addBlueFrog(lua_State *L) {
+	LuaObject creatureConfig(L);
+
+	if (!creatureConfig.isValidTable())
+		return 1;
+
+	float x = creatureConfig.getFloatField("X");
+	float y = creatureConfig.getFloatField("Y");
+	float oY = creatureConfig.getFloatField("oY");
+	float oW = creatureConfig.getFloatField("oW");
+	int type = creatureConfig.getIntField("bfType");
+	uint64 cellid = creatureConfig.getLongField("cellId");
+
+	instance->spawnBlueFrog(x,y,oY,oW,type,cellid);
+
+	return 0;
+}
+
 int CreatureManagerImplementation::addCreature(lua_State *L) {
 	LuaObject creatureConfig(L);
 
@@ -949,6 +957,8 @@ void CreatureManagerImplementation::registerFunctions() {
 
 	lua_register(getLuaState(), "AddCreatureToServer", addCreature);
 	lua_register(getLuaState(), "AddLairToServer", addLair);
+
+	lua_register(getLuaState(), "AddBlueFrogToServer", addBlueFrog);
 }
 
 void CreatureManagerImplementation::registerGlobals() {
@@ -957,6 +967,10 @@ void CreatureManagerImplementation::registerGlobals() {
 	setGlobalInt("ENEMY_FLAG", 0x20);
 	setGlobalInt("NPC_FLAG", 0x15);
 	setGlobalInt("PLANET_ID", instance->zone->getZoneID());
+	setGlobalInt("JAWA", BlueFrogCreatureImplementation::JAWA);
+	setGlobalInt("GUNGAN", BlueFrogCreatureImplementation::GUNGAN);
+	setGlobalInt("BARTENDER", BlueFrogCreatureImplementation::BARTENDER);
+	setGlobalInt("MEDDROID", BlueFrogCreatureImplementation::MEDDROID);
 }
 
 uint64 CreatureManagerImplementation::getNextCreatureID() {

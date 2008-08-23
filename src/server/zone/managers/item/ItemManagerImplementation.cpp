@@ -77,11 +77,9 @@ ItemManagerImplementation::ItemManagerImplementation(ZoneServer* serv) :
 	info("Loading Blue Frog Items...", true);
 	runFile("scripts/items/bluefrog/main.lua");
 
-	if (bfEnabled) {
-		server->getZone(5)->getCreatureManager()->loadBlueFrogs();
-		server->getZone(8)->getCreatureManager()->loadBlueFrogs();
-	}
-
+	if (bfEnabled)
+		for (int i = 0; i < 10; i++)
+			server->getZone(i)->getCreatureManager()->loadBlueFrogs();
 }
 
 ItemManagerImplementation::~ItemManagerImplementation() {
@@ -479,7 +477,7 @@ TangibleObject* ItemManagerImplementation::createPlayerObject(Player* player, Re
 
 	if (player != NULL) {
 		((CreatureObject*)player)->addInventoryItem(item);
-		
+
 		if(item->isEquipped())
 			player->equipPlayerItem(item);
 	}
