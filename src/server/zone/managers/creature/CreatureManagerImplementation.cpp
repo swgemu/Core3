@@ -127,6 +127,7 @@ void CreatureManagerImplementation::loadCreatures() {
 	loadTrainers();
 	loadRecruiters();
 	loadStaticCreatures();
+	loadBlueFrogs();
 }
 
 void CreatureManagerImplementation::run() {

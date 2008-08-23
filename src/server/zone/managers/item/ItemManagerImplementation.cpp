@@ -76,10 +76,6 @@ ItemManagerImplementation::ItemManagerImplementation(ZoneServer* serv) :
 	runFile("scripts/items/starting/main.lua");
 	info("Loading Blue Frog Items...", true);
 	runFile("scripts/items/bluefrog/main.lua");
-
-	if (bfEnabled)
-		for (int i = 0; i < 10; i++)
-			server->getZone(i)->getCreatureManager()->loadBlueFrogs();
 }
 
 ItemManagerImplementation::~ItemManagerImplementation() {
