@@ -1406,8 +1406,6 @@ void PlayerImplementation::notifySceneReady() {
 	ChatManager* chatManager = server->getChatManager();
 	chatManager->listMail(_this);
 
-	setAdminLevel(adminLevel);
-
 	info("scene ready");
 	setOnline();
 }
@@ -3598,15 +3596,6 @@ void PlayerImplementation::updateGuild(Guild* gld) {
 void PlayerImplementation::sendGuildList() {
 	if (guild != NULL)
 		guild->sendGuildListTo(_this);
-}
-
-void PlayerImplementation::setAdminLevel(int level) {
-	adminLevel = level;
-
-	PlayerObjectDeltaMessage6* dplay6 = new PlayerObjectDeltaMessage6(playerObject);
-	dplay6->setAdminLevel(level);
-	dplay6->close();
-	broadcastMessage(dplay6);
 }
 
 void PlayerImplementation::saveProfessions() {

@@ -105,6 +105,9 @@ interface PlayerObject implements SceneObject {
 
 	boolean isDigesting();
 
+	void setAdminLevel(unsigned int level, boolean updateClient = true);
+	unsigned int getAdminLevel();	
+
 	unsigned int getJediState();
 
 	WaypointObject getWaypoint(unsigned long id);

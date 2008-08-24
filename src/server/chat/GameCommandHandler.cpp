@@ -322,7 +322,7 @@ void GameCommandHandler::warpTo(StringTokenizer tokenizer, Player * player) {
 	Player* target = chatManager->getPlayer(name);
 
 	if (target != NULL)
-		player->doWarp(target->getPositionX(), target->getPositionY(), 0, 5);
+		player->doWarp(target->getPositionX(), target->getPositionY(), 0, 5, target->getParentID());
 }
 
 void GameCommandHandler::warpPlayer(StringTokenizer tokenizer, Player * player) {

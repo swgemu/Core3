@@ -384,12 +384,38 @@ bool PlayerObject::isDigesting() {
 		return ((PlayerObjectImplementation*) _impl)->isDigesting();
 }
 
-unsigned int PlayerObject::getJediState() {
+void PlayerObject::setAdminLevel(unsigned int level, bool updateClient) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 33);
+		method.addUnsignedIntParameter(level);
+		method.addBooleanParameter(updateClient);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerObjectImplementation*) _impl)->setAdminLevel(level, updateClient);
+}
+
+unsigned int PlayerObject::getAdminLevel() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 34);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((PlayerObjectImplementation*) _impl)->getAdminLevel();
+}
+
+unsigned int PlayerObject::getJediState() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 35);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -401,7 +427,7 @@ WaypointObject* PlayerObject::getWaypoint(unsigned long long id) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 34);
+		DistributedMethod method(this, 36);
 		method.addUnsignedLongParameter(id);
 
 		return (WaypointObject*) method.executeWithObjectReturn();
@@ -414,7 +440,7 @@ void PlayerObject::addWaypoint(WaypointObject* wp, bool updateClient) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 35);
+		DistributedMethod method(this, 37);
 		method.addObjectParameter(wp);
 		method.addBooleanParameter(updateClient);
 
@@ -428,7 +454,7 @@ bool PlayerObject::removeWaypoint(WaypointObject* wp, bool updateClient) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 36);
+		DistributedMethod method(this, 38);
 		method.addObjectParameter(wp);
 		method.addBooleanParameter(updateClient);
 
@@ -442,7 +468,7 @@ void PlayerObject::updateWaypoint(WaypointObject* wp) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 37);
+		DistributedMethod method(this, 39);
 		method.addObjectParameter(wp);
 
 		method.executeWithVoidReturn();
@@ -455,7 +481,7 @@ Player* PlayerObject::getPlayer() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 38);
+		DistributedMethod method(this, 40);
 
 		return (Player*) method.executeWithObjectReturn();
 	} else
@@ -467,7 +493,7 @@ void PlayerObject::setCurrentTitle(string& nTitle, bool updateClient) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 39);
+		DistributedMethod method(this, 41);
 		method.addAsciiParameter(nTitle);
 		method.addBooleanParameter(updateClient);
 
@@ -481,7 +507,7 @@ void PlayerObject::setTitle(string& temptitle) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 40);
+		DistributedMethod method(this, 42);
 		method.addAsciiParameter(temptitle);
 
 		method.executeWithVoidReturn();
@@ -494,7 +520,7 @@ string& PlayerObject::getCurrentTitle() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 41);
+		DistributedMethod method(this, 43);
 
 		method.executeWithAsciiReturn(_return_getCurrentTitle);
 		return _return_getCurrentTitle;
@@ -507,7 +533,7 @@ unsigned int PlayerObject::getExperienceListCount() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 42);
+		DistributedMethod method(this, 44);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -519,7 +545,7 @@ unsigned int PlayerObject::getNewExperienceListCount(int cnt) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 43);
+		DistributedMethod method(this, 45);
 		method.addSignedIntParameter(cnt);
 
 		return method.executeWithUnsignedIntReturn();
@@ -532,7 +558,7 @@ unsigned int PlayerObject::getWaypointListCount() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 44);
+		DistributedMethod method(this, 46);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -544,7 +570,7 @@ unsigned int PlayerObject::getNewWaypointListCount(int cnt) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 45);
+		DistributedMethod method(this, 47);
 		method.addSignedIntParameter(cnt);
 
 		return method.executeWithUnsignedIntReturn();
@@ -557,7 +583,7 @@ FriendsList* PlayerObject::getFriendsList() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 46);
+		DistributedMethod method(this, 48);
 
 		return (FriendsList*) method.executeWithObjectReturn();
 	} else
@@ -569,7 +595,7 @@ void PlayerObject::addFriend(string& name, string& inServer) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 47);
+		DistributedMethod method(this, 49);
 		method.addAsciiParameter(name);
 		method.addAsciiParameter(inServer);
 
@@ -583,7 +609,7 @@ void PlayerObject::friendsMagicNumberReset() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 48);
+		DistributedMethod method(this, 50);
 
 		method.executeWithVoidReturn();
 	} else
@@ -595,7 +621,7 @@ void PlayerObject::removeFriend(string& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 49);
+		DistributedMethod method(this, 51);
 		method.addAsciiParameter(name);
 
 		method.executeWithVoidReturn();
@@ -608,7 +634,7 @@ void PlayerObject::findFriend(string& name, PlayerManager* playerManager) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 50);
+		DistributedMethod method(this, 52);
 		method.addAsciiParameter(name);
 		method.addObjectParameter(playerManager);
 
@@ -622,7 +648,7 @@ void PlayerObject::saveFriends() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 51);
+		DistributedMethod method(this, 53);
 
 		method.executeWithVoidReturn();
 	} else
@@ -634,7 +660,7 @@ void PlayerObject::loadFriends() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 52);
+		DistributedMethod method(this, 54);
 
 		method.executeWithVoidReturn();
 	} else
@@ -646,7 +672,7 @@ void PlayerObject::updateAllFriends(PlayerObject* playerObject) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 53);
+		DistributedMethod method(this, 55);
 		method.addObjectParameter(playerObject);
 
 		method.executeWithVoidReturn();
@@ -659,7 +685,7 @@ IgnoreList* PlayerObject::getIgnoreList() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 54);
+		DistributedMethod method(this, 56);
 
 		return (IgnoreList*) method.executeWithObjectReturn();
 	} else
@@ -671,7 +697,7 @@ void PlayerObject::addIgnore(string& name, string& inServer) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 55);
+		DistributedMethod method(this, 57);
 		method.addAsciiParameter(name);
 		method.addAsciiParameter(inServer);
 
@@ -685,7 +711,7 @@ void PlayerObject::ignoreMagicNumberReset() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 56);
+		DistributedMethod method(this, 58);
 
 		method.executeWithVoidReturn();
 	} else
@@ -697,7 +723,7 @@ void PlayerObject::removeIgnore(string& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 57);
+		DistributedMethod method(this, 59);
 		method.addAsciiParameter(name);
 
 		method.executeWithVoidReturn();
@@ -710,7 +736,7 @@ void PlayerObject::saveIgnore() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 58);
+		DistributedMethod method(this, 60);
 
 		method.executeWithVoidReturn();
 	} else
@@ -722,7 +748,7 @@ void PlayerObject::loadIgnore() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 59);
+		DistributedMethod method(this, 61);
 
 		method.executeWithVoidReturn();
 	} else
@@ -734,7 +760,7 @@ void PlayerObject::saveWaypoints(Player* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 60);
+		DistributedMethod method(this, 62);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -747,7 +773,7 @@ WaypointObject* PlayerObject::searchWaypoint(Player* play, const string& name, i
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 61);
+		DistributedMethod method(this, 63);
 		method.addObjectParameter(play);
 		method.addAsciiParameter(name);
 		method.addSignedIntParameter(mode);
@@ -850,90 +876,96 @@ Packet* PlayerObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		resp->insertBoolean(isDigesting());
 		break;
 	case 33:
-		resp->insertInt(getJediState());
+		setAdminLevel(inv->getUnsignedIntParameter(), inv->getBooleanParameter());
 		break;
 	case 34:
-		resp->insertLong(getWaypoint(inv->getUnsignedLongParameter())->_getObjectID());
+		resp->insertInt(getAdminLevel());
 		break;
 	case 35:
-		addWaypoint((WaypointObject*) inv->getObjectParameter(), inv->getBooleanParameter());
+		resp->insertInt(getJediState());
 		break;
 	case 36:
-		resp->insertBoolean(removeWaypoint((WaypointObject*) inv->getObjectParameter(), inv->getBooleanParameter()));
+		resp->insertLong(getWaypoint(inv->getUnsignedLongParameter())->_getObjectID());
 		break;
 	case 37:
-		updateWaypoint((WaypointObject*) inv->getObjectParameter());
+		addWaypoint((WaypointObject*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
 	case 38:
-		resp->insertLong(getPlayer()->_getObjectID());
+		resp->insertBoolean(removeWaypoint((WaypointObject*) inv->getObjectParameter(), inv->getBooleanParameter()));
 		break;
 	case 39:
-		setCurrentTitle(inv->getAsciiParameter(_param0_setCurrentTitle__string_bool_), inv->getBooleanParameter());
+		updateWaypoint((WaypointObject*) inv->getObjectParameter());
 		break;
 	case 40:
-		setTitle(inv->getAsciiParameter(_param0_setTitle__string_));
+		resp->insertLong(getPlayer()->_getObjectID());
 		break;
 	case 41:
-		resp->insertAscii(getCurrentTitle());
+		setCurrentTitle(inv->getAsciiParameter(_param0_setCurrentTitle__string_bool_), inv->getBooleanParameter());
 		break;
 	case 42:
-		resp->insertInt(getExperienceListCount());
+		setTitle(inv->getAsciiParameter(_param0_setTitle__string_));
 		break;
 	case 43:
-		resp->insertInt(getNewExperienceListCount(inv->getSignedIntParameter()));
+		resp->insertAscii(getCurrentTitle());
 		break;
 	case 44:
-		resp->insertInt(getWaypointListCount());
+		resp->insertInt(getExperienceListCount());
 		break;
 	case 45:
-		resp->insertInt(getNewWaypointListCount(inv->getSignedIntParameter()));
+		resp->insertInt(getNewExperienceListCount(inv->getSignedIntParameter()));
 		break;
 	case 46:
-		resp->insertLong(getFriendsList()->_getObjectID());
+		resp->insertInt(getWaypointListCount());
 		break;
 	case 47:
-		addFriend(inv->getAsciiParameter(_param0_addFriend__string_string_), inv->getAsciiParameter(_param1_addFriend__string_string_));
+		resp->insertInt(getNewWaypointListCount(inv->getSignedIntParameter()));
 		break;
 	case 48:
-		friendsMagicNumberReset();
+		resp->insertLong(getFriendsList()->_getObjectID());
 		break;
 	case 49:
-		removeFriend(inv->getAsciiParameter(_param0_removeFriend__string_));
+		addFriend(inv->getAsciiParameter(_param0_addFriend__string_string_), inv->getAsciiParameter(_param1_addFriend__string_string_));
 		break;
 	case 50:
-		findFriend(inv->getAsciiParameter(_param0_findFriend__string_PlayerManager_), (PlayerManager*) inv->getObjectParameter());
+		friendsMagicNumberReset();
 		break;
 	case 51:
-		saveFriends();
+		removeFriend(inv->getAsciiParameter(_param0_removeFriend__string_));
 		break;
 	case 52:
-		loadFriends();
+		findFriend(inv->getAsciiParameter(_param0_findFriend__string_PlayerManager_), (PlayerManager*) inv->getObjectParameter());
 		break;
 	case 53:
-		updateAllFriends((PlayerObject*) inv->getObjectParameter());
+		saveFriends();
 		break;
 	case 54:
-		resp->insertLong(getIgnoreList()->_getObjectID());
+		loadFriends();
 		break;
 	case 55:
-		addIgnore(inv->getAsciiParameter(_param0_addIgnore__string_string_), inv->getAsciiParameter(_param1_addIgnore__string_string_));
+		updateAllFriends((PlayerObject*) inv->getObjectParameter());
 		break;
 	case 56:
-		ignoreMagicNumberReset();
+		resp->insertLong(getIgnoreList()->_getObjectID());
 		break;
 	case 57:
-		removeIgnore(inv->getAsciiParameter(_param0_removeIgnore__string_));
+		addIgnore(inv->getAsciiParameter(_param0_addIgnore__string_string_), inv->getAsciiParameter(_param1_addIgnore__string_string_));
 		break;
 	case 58:
-		saveIgnore();
+		ignoreMagicNumberReset();
 		break;
 	case 59:
-		loadIgnore();
+		removeIgnore(inv->getAsciiParameter(_param0_removeIgnore__string_));
 		break;
 	case 60:
-		saveWaypoints((Player*) inv->getObjectParameter());
+		saveIgnore();
 		break;
 	case 61:
+		loadIgnore();
+		break;
+	case 62:
+		saveWaypoints((Player*) inv->getObjectParameter());
+		break;
+	case 63:
 		resp->insertLong(searchWaypoint((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_searchWaypoint__Player_string_int_), inv->getSignedIntParameter())->_getObjectID());
 		break;
 	default:
@@ -1049,6 +1081,14 @@ void PlayerObjectAdapter::changeFoodFilling(int filling, bool updateClient) {
 
 bool PlayerObjectAdapter::isDigesting() {
 	return ((PlayerObjectImplementation*) impl)->isDigesting();
+}
+
+void PlayerObjectAdapter::setAdminLevel(unsigned int level, bool updateClient) {
+	return ((PlayerObjectImplementation*) impl)->setAdminLevel(level, updateClient);
+}
+
+unsigned int PlayerObjectAdapter::getAdminLevel() {
+	return ((PlayerObjectImplementation*) impl)->getAdminLevel();
 }
 
 unsigned int PlayerObjectAdapter::getJediState() {

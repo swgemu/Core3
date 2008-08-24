@@ -92,6 +92,8 @@ class PlayerObjectImplementation : public PlayerObjectServant {
 	FriendsList* friendsList;
 	IgnoreList* ignoreList;
 
+	uint32 adminLevel;
+
 public:
 
 	const static int LFG = 1;
@@ -314,6 +316,12 @@ public:
 
 	inline void loadIgnore() {
 		ignoreList->loadIgnore();
+	}
+
+	void setAdminLevel(uint32 level, bool updateClient = true);
+
+	inline uint32 getAdminLevel() {
+		return adminLevel;
 	}
 
 	void saveWaypoints(Player* player);

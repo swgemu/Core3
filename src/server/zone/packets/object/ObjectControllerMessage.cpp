@@ -347,21 +347,21 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 			player->sendSystemMessage("teraskasi", "med_begin");
 			player->queueAction(player, target, actionCRC, actioncntr, "");
 		}
-		break;	
-	case (0x8C2221CB): // Powerboost		
+		break;
+	case (0x8C2221CB): // Powerboost
 		if (!player->hasSkill(actionCRC)) {
 			player->clearQueueAction(actioncntr, 0, 2, 0);
 			return;
 		} else {
 			player->doPowerboost();
-			
+
 			unicode option = unicode("");
 			string actionModifier = "";
-			
+
 			//ToDo: Duration modifier for Master TK is not in this pack...hmmm
 			pack->parseUnicode(option);
 			actionModifier = option.c_str();
-			
+
 			player->queueAction(player, target, actionCRC, actioncntr, actionModifier.c_str());
 		}
 		break;
@@ -751,9 +751,9 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 		parseHarvestOrganics(player, pack);
 		break;
 	default:
-				
+
 		//Bobius, the changes you made in  584 were breaking the CommandQueue's default player->queueAction !
-	
+
 		target = pack->parseLong();
 		string actionModifier = "";
 
@@ -794,7 +794,7 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 			}
 		}
 
-		
+
 		player->queueAction(player, target, actionCRC, actioncntr, actionModifier.c_str());
 		return;
 	}
@@ -934,40 +934,67 @@ void ObjectControllerMessage::parseSetStatMigrationDataRequest(Player* player, M
 	StringTokenizer tokenizer(stats.c_str());
 	tokenizer.setDelimeter(" ");
 
+	uint32 targetHealth, targetStrength, targetConstitution;
+	uint32 targetAction, targetQuickness, targetStamina;
+	uint32 targetMind, targetFocus, targetWillpower;
+
 	for(int i = 0; tokenizer.hasMoreTokens(); i++) {
 		uint32 value = tokenizer.getIntToken();
 		switch(i) {
 			case 0:
-				player->setTargetHealth(value);
+				targetHealth = value;
 				break;
 			case 1:
-				player->setTargetStrength(value);
+				targetStrength = value;
 				break;
 			case 2:
-				player->setTargetConstitution(value);
+				targetConstitution = value;
 				break;
 			case 3:
-				player->setTargetAction(value);
+				targetAction = value;
 				break;
 			case 4:
-				player->setTargetQuickness(value);
+				targetQuickness = value;
 				break;
 			case 5:
-				player->setTargetStamina(value);
+				targetStamina = value;
 				break;
 			case 6:
-				player->setTargetMind(value);
+				targetMind = value;
 				break;
 			case 7:
-				player->setTargetFocus(value);
+				targetFocus = value;
 				break;
 			case 8:
-				player->setTargetWillpower(value);
+				targetWillpower = value;
 				break;
 			default: // points available
 				break;
 		}
 	}
+
+	int currentPoints = player->getHealth() + player->getStrength()
+			+ player->getConstitution() + player->getAction()
+			+ player->getQuickness() + player->getStamina() + player->getMind()
+			+ player->getFocus() + player->getWillpower();
+
+	int targetPoints = targetHealth + targetStrength + targetConstitution
+			+ targetAction + targetQuickness + targetStamina + targetMind
+			+ targetFocus + targetWillpower;
+
+	if (currentPoints - targetPoints >= 0) {
+		player->setTargetHealth(targetHealth);
+		player->setTargetStrength(targetStrength);
+		player->setTargetConstitution(targetConstitution);
+		player->setTargetAction(targetAction);
+		player->setTargetQuickness(targetQuickness);
+		player->setTargetStamina(targetStamina);
+		player->setTargetMind(targetMind);
+		player->setTargetFocus(targetFocus);
+		player->setTargetWillpower(targetWillpower);
+	}
+
+
 	//if (tokenizer.hasMoreTokens()) {
 	//	uint64 targetID = tokenizer.getLongToken();
 	//

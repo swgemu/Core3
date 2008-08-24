@@ -230,6 +230,17 @@ bool PlayerObjectImplementation::clearCharacterBit(uint32 bit, bool updateClient
 		return false;
 }
 
+void PlayerObjectImplementation::setAdminLevel(uint32 level, bool updateClient) {
+	adminLevel = level;
+
+	if (updateClient) {
+		PlayerObjectDeltaMessage6* dplay6 = new PlayerObjectDeltaMessage6((PlayerObject*) _this);
+		dplay6->setAdminLevel(level);
+		dplay6->close();
+		player->broadcastMessage(dplay6);
+	}
+}
+
 void PlayerObjectImplementation::setCurrentTitle(string& nTitle, bool updateClient) {
   	title = nTitle;
 

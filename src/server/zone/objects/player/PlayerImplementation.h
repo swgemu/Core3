@@ -172,8 +172,6 @@ class PlayerImplementation : public PlayerServant {
 
 	bool guildLeader;
 
-	int adminLevel;
-
 	bool centered;
 	CenterOfBeingEvent* centerOfBeingEvent;
 
@@ -1238,10 +1236,12 @@ public:
 
 	void sendGuildList();
 
-	void setAdminLevel(int level);
+	void setAdminLevel(int level) {
+		playerObject->setAdminLevel(level);
+	}
 
 	inline int getAdminLevel() {
-		return adminLevel;
+		return playerObject->getAdminLevel();
 	}
 
 	//GM functions

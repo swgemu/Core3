@@ -81,6 +81,10 @@ public:
 
 	bool isDigesting();
 
+	void setAdminLevel(unsigned int level, bool updateClient = true);
+
+	unsigned int getAdminLevel();
+
 	unsigned int getJediState();
 
 	WaypointObject* getWaypoint(unsigned long long id);
@@ -210,6 +214,10 @@ public:
 	void changeFoodFilling(int filling, bool updateClient);
 
 	bool isDigesting();
+
+	void setAdminLevel(unsigned int level, bool updateClient);
+
+	unsigned int getAdminLevel();
 
 	unsigned int getJediState();
 
