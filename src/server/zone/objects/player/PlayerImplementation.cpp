@@ -2402,11 +2402,14 @@ void PlayerImplementation::toggleImmune() {
 		setPvpStatusBitmask(0);
 		sendSystemMessage("You are now immune to attacks.");
 	} else {
-		setPvpStatusBitmask(ATTACKABLE_FLAG & PLAYER_FLAG);
+		setPvpStatusBitmask(PLAYER_FLAG);
 		sendSystemMessage("You are no longer immune to attacks.");
 	}
 
 	immune = !immune;
+
+	UpdatePVPStatusMessage * mess = new UpdatePVPStatusMessage(this, pvpStatusBitmask);
+	broadcastMessage(mess);
 }
 
 
