@@ -1392,6 +1392,9 @@ void PlayerImplementation::notifySceneReady() {
 
 		unicode msg3 = unicode("This server is owned, operated, and developed by Team SWGEmu at SWGEmu.com and is in no way affiliated with any other server communities.");
 		sendSystemMessage(msg3);
+		
+		unicode msg4 = unicode("Please Report All Spammer, Harassment, Exploits Or Bugs To HTTP://WWW.SWGEMU.COM/SUPPORT.");
+		sendSystemMessage(msg4);
 
 		playerObject->loadFriends();
 		playerObject->loadIgnore();
