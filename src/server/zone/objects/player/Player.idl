@@ -175,10 +175,12 @@ interface Player implements CreatureObject {
 
 	void kill();
 	void deathblow(Player player);
-		void revive();
+	void revive();
 
 	void doClone();
 	void activateClone();
+	
+	void doRecovery();
 
 	void activateReviveCountdown();
 	void clearReviveCountdown();

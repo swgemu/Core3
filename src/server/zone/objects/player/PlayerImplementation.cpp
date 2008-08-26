@@ -620,6 +620,7 @@ void PlayerImplementation::logout(bool doLock) {
 
 	if (disconnectEvent == NULL) {
 		info("creating disconnect event");
+		
 		disconnectEvent = new PlayerDisconnectEvent(_this);
 
 		if (isLoggingOut()) {
@@ -682,6 +683,11 @@ void PlayerImplementation::userLogout(int msgCounter) {
 void PlayerImplementation::disconnect(bool closeClient, bool doLock) {
 	try {
 		wlock(doLock);
+
+		if (!isOnline()) {
+			unlock(doLock);
+			return;
+		}
 
 		// User is disconnecting in combat.  Will remain LD.
 		if (isInCombat() && !isLinkDead()) {

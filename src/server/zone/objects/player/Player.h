@@ -173,6 +173,8 @@ public:
 
 	void activateClone();
 
+	void doRecovery();
+
 	void activateReviveCountdown();
 
 	void clearReviveCountdown();
@@ -761,6 +763,8 @@ public:
 	void doClone();
 
 	void activateClone();
+
+	void doRecovery();
 
 	void activateReviveCountdown();
 

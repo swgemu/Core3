@@ -206,6 +206,18 @@ bool PlayerManagerImplementation::create(Player* player, uint32 sessionkey) {
 BaseMessage* PlayerManagerImplementation::checkPlayerName(const string& name, const string& species) {
 	NameManager * nm = server->getNameManager();
 	BaseMessage* msg = NULL;
+	
+	string firstName;
+	int idx = name.find(" ");
+	
+	if (idx != string::npos)
+		firstName = name.substr(0, idx);
+	else
+		firstName = name.c_str();	
+
+	//Name passes filters, does it already exist?
+	if (!validateName(firstName))
+		return msg = new ClientCreateCharacterFailed("name_declined_in_use");
 
 	//Check to see if name is valid
 	int res = nm->validateName(name, species);
@@ -240,10 +252,6 @@ BaseMessage* PlayerManagerImplementation::checkPlayerName(const string& name, co
 
 		return msg; //Name failed filters
 	}
-
-	//Name passes filters, does it already exist?
-	if (!validateName(name) || DistributedObjectBroker::instance()->lookUp("Player " + name) != NULL)
-		msg = new ClientCreateCharacterFailed("name_declined_in_use");
 
 	return msg;
 }
@@ -1084,8 +1092,8 @@ void PlayerManagerImplementation::updateConsentList(Player* player) {
 
 		try {
 			ServerDatabase::instance()->executeStatement(insertq);
-		} catch (...) {
-			cout << "PlayerManagerImplementation::updateConsentList: failed SQL update " << insertq.str() << endl;
+		} catch (DatabaseException& e) {
+			cout << e.getMessage() << endl;
 		}
 	}
 }

@@ -133,7 +133,7 @@ public:
 	}
 
 	int doSkill(CreatureObject* creature, SceneObject* target, const string& modifier, bool doAnimation = true) {
-		CreatureObject* creatureTarget;
+		CreatureObject* creatureTarget = NULL;
 		StatePack* statePack = NULL;
 
 		int stateAffected = 0;
@@ -197,7 +197,8 @@ public:
 				creature->sendSystemMessage("healing_response", "healing_response_74", creatureTarget->getObjectID()); //%NT has no state of that type to heal.")
 			}
 			return 0;
-		}
+		} else
+			creatureTarget->updateStates();
 
 		sendStateMessage(creature, creatureTarget, stateAffected);
 
@@ -285,25 +286,21 @@ public:
 	}
 
 	void sendStateMessage(CreatureObject* creature, CreatureObject* creatureTarget, int stateAffected) {
-		string creatureName = "";
-		unicode uname = creature->getCharacterName();
-		creatureName = uname.c_str();
-
-		string creatureTargetName = "";
-		uname = creatureTarget->getCharacterName();
-		creatureTargetName = uname.c_str();
-
+		stringstream msgPlayer, msgTarget;
+		
 		string stateName = PharmaceuticalImplementation::getStateName(stateAffected);
 		stateName[0] = toupper(stateName[0]); //initial cap statename
-
-		stringstream msgPlayer, msgTarget;
-
+		
 		if (creature == creatureTarget) {
 			msgTarget << "You remove the " << stateName << " state from yourself.";
 		} else {
+			string creatureName = creature->getCharacterName().c_str().c_str();
+			string creatureTargetName = creatureTarget->getCharacterName().c_str().c_str();
+			
 			msgPlayer << "You remove the " << stateName << " state from " << creatureTargetName << ".";
 			msgTarget << creatureName << " removes the " << stateName << " from you.";
 		}
+		
 
 		creatureTarget->sendSystemMessage(msgTarget.str());
 

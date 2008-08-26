@@ -162,7 +162,7 @@ bool CommandQueueAction::validate() {
 					}
 
 					if (!target->isAttackableObject()) {
-						CreatureObject* targetCreature = (CreatureObject*) target;
+						CreatureObject* targetCreature = (CreatureObject*) target.get();
 
 						if (targetCreature->isIncapacitated() || targetCreature->isDead()) {
 							clearError(3);
@@ -172,7 +172,7 @@ bool CommandQueueAction::validate() {
 					}
 
 					if (target->isPlayer()) {
-						Player* targetPlayer = (Player*) target;
+						Player* targetPlayer = (Player*) target.get();
 
 						if (!player->isInDuelWith(targetPlayer, false)) {
 							if (!player->isOvert() || !targetPlayer->isOvert()) {
@@ -217,13 +217,13 @@ bool CommandQueueAction::checkHealSkill() {
 		return false;
 	}
 
-	CreatureObject* targetObject = (CreatureObject*) target;
+	CreatureObject* targetObject = (CreatureObject*) target.get();
 	if (targetObject != creature) {
 		try {
 			targetObject->wlock(creature);
 
 			if (target->isPlayer()) {
-				Player* targetPlayer = (Player*) target;
+				Player* targetPlayer = (Player*) target.get();
 
 				if (player->isInDuelWith(targetPlayer, false))
 					target = creature;

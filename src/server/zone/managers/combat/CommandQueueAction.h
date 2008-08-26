@@ -54,9 +54,9 @@ class Player;
 class Skill;
 
 class CommandQueueAction {
-	CreatureObject* creature;
-	Player* player;
-	SceneObject* target;
+	ManagedReference<CreatureObject> creature;
+	ManagedReference<Player> player;
+	ManagedReference<SceneObject> target;
 	Skill* skill;
 	Weapon* weapon;
 

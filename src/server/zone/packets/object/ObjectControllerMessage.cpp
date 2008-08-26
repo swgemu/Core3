@@ -2984,7 +2984,7 @@ void ObjectControllerMessage::parseCreateSchematic(Player* player,
 	unicode d;
 	packet->parseUnicode(d);
 
-	string count = d.c_str();
+	string count = d.c_str().c_str();
 
 	player->createSchematic(count);
 }

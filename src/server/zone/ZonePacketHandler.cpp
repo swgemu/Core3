@@ -337,7 +337,12 @@ void ZonePacketHandler::handleClientCreateCharacter(Message* pack) {
 	//Check name for invalid characters and profanity
 	BaseMessage* msg = playerManager->checkPlayerName(name, species);
 
-	if (msg != NULL) {
+	// Oru we need a complete DistributedObjectBroker lock while checking if the player is deployed and deploying the player ?
+
+	if (msg != NULL || (DistributedObjectBroker::instance()->lookUp("Player " + firstName) != NULL)) {
+		if (msg == NULL)
+			msg = new ClientCreateCharacterFailed("name_declined_in_use");
+
 		client->sendMessage(msg);
 		//player->disconnect();
 		player->finalize();

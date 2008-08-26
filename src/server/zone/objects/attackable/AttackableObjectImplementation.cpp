@@ -180,7 +180,7 @@ void AttackableObjectImplementation::removeDefender(SceneObject* defender) {
 		if (defenderList.get(i) == defender) {
 			defenderList.remove(i);
 
-			info("removing defender");
+			//info("removing defender");
 			break;
 		}
 	}
