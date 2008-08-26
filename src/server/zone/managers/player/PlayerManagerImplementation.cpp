@@ -1069,6 +1069,7 @@ void PlayerManagerImplementation::loadConsentList(Player* player) {
 
 	} catch (...) {
 		cout << "ServerDatabase error retrieving consentlist for character_id: " << player->getCharacterID() << endl;
+		return;
 	}
 	delete targetlist;
 }

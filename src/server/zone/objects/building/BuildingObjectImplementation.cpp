@@ -202,8 +202,10 @@ void BuildingObjectImplementation::notifyInsertToZone(CreatureObject* creature) 
 }
 
 void BuildingObjectImplementation::broadcastMessage(BaseMessage* msg, int range, bool doLock) {
-	if (zone == NULL)
+	if (zone == NULL) {
+		delete msg;
 		return;
+	}
 
 	try {
 		//cout << "CreatureObject::broadcastMessage(Message* msg, int range, bool doLock)\n";

@@ -261,8 +261,10 @@ void AttackableObjectImplementation::doDestroyed(SceneObject* attacker) {
 }
 
 void AttackableObjectImplementation::broadcastMessage(BaseMessage* msg, int range, bool doLock) {
-	if (zone == NULL)
+	if (zone == NULL) {
+		delete msg;
 		return;
+	}
 
 	try {
 		zone->lock(doLock);
