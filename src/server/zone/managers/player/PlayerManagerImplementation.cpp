@@ -206,14 +206,14 @@ bool PlayerManagerImplementation::create(Player* player, uint32 sessionkey) {
 BaseMessage* PlayerManagerImplementation::checkPlayerName(const string& name, const string& species) {
 	NameManager * nm = server->getNameManager();
 	BaseMessage* msg = NULL;
-	
+
 	string firstName;
 	int idx = name.find(" ");
-	
+
 	if (idx != string::npos)
 		firstName = name.substr(0, idx);
 	else
-		firstName = name.c_str();	
+		firstName = name.c_str();
 
 	//Name passes filters, does it already exist?
 	if (!validateName(firstName))
@@ -645,7 +645,7 @@ void PlayerManagerImplementation::handleAddItemMessage(Player* player, uint64 it
 			if (object->isTangible()) {
 				TangibleObject* item = (TangibleObject*)object;
 
-				if (item->isEquipped()) {;
+				if (item->isEquipped()) {
 					handleAbortTradeMessage(player, false);
 					player->sendSystemMessage("container_error_message", "container20"); //You can't trade equipped items!
 
@@ -657,14 +657,37 @@ void PlayerManagerImplementation::handleAddItemMessage(Player* player, uint64 it
 				SceneObject* obj = server->getZoneServer()->getObject(targID);
 
 				if (obj != NULL && obj->isPlayer()) {
-					player->addTradeItem(item);
-
 					Player* receiver = (Player*)obj;
 
-					item->sendTo(receiver);
+					try {
+						receiver->wlock(player);
 
-					AddItemMessage* msg = new AddItemMessage(itemID);
-					receiver->sendMessage(msg);
+						Inventory* recvInventory = receiver->getInventory();
+
+						if (recvInventory->isFull()) {
+							receiver->unlock();
+
+							handleAbortTradeMessage(player, false);
+
+							player->sendSystemMessage("Your targets inventory is full");
+							receiver->sendSystemMessage("You dont have enough space in your inventory");
+
+							player->unlock();
+							return;
+						}
+
+						receiver->unlock();
+
+						player->addTradeItem(item);
+
+						item->sendTo(receiver);
+
+						AddItemMessage* msg = new AddItemMessage(itemID);
+						receiver->sendMessage(msg);
+					} catch (...) {
+						receiver->error("unreported exception caught in PlayerManagerImplementation::handleAddItemMessage");
+						receiver->unlock();
+					}
 				}
 			}
 		}
@@ -672,7 +695,7 @@ void PlayerManagerImplementation::handleAddItemMessage(Player* player, uint64 it
 		player->unlock();
 	} catch (...) {
 		player->unlock();
-		cout << "Unreported exception caught in PlayerManagerImplementation::handleAddItemMessage(Player* player, uint64 itemID)\n";
+		player->error("Unreported exception caught in PlayerManagerImplementation::handleAddItemMessage(Player* player, uint64 itemID)");
 	}
 }
 
@@ -700,7 +723,7 @@ void PlayerManagerImplementation::handleGiveMoneyMessage(Player* player, uint32 
 		player->unlock();
 	} catch (...) {
 		player->unlock();
-		cout << "Unreported exception in PlayerManagerImplementation::hanleGiveMoneyMessage(Player* player, uint32 value)\n";
+		player->error("Unreported exception in PlayerManagerImplementation::hanleGiveMoneyMessage(Player* player, uint32 value)");
 	}
 }
 
@@ -825,6 +848,15 @@ void PlayerManagerImplementation::handleVerifyTradeMessage(Player* player) {
 
 void PlayerManagerImplementation::moveItem(Player* sender, Player* receiver, TangibleObject* item) {
 	// Pre: both players locked
+	Inventory* recvInventory = receiver->getInventory();
+
+	if (recvInventory->isFull()) {
+		sender->sendSystemMessage("Your targets inventory is full");
+		receiver->sendSystemMessage("You dont have enough space in your inventory");
+
+		return;
+	}
+
 	ItemManager* itemManager = server->getItemManager();
 
 	item->setEquipped(false);

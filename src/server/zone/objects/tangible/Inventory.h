@@ -17,6 +17,10 @@ class Inventory : public Container {
 public:
 	Inventory(CreatureObject* creature);
 
+	int getUnequippedItemCount();
+
+	bool isFull();
+
 protected:
 	Inventory(DummyConstructorParameter* param);
 
@@ -32,6 +36,10 @@ public:
 	InventoryAdapter(InventoryImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	int getUnequippedItemCount();
+
+	bool isFull();
 
 };
 

@@ -179,7 +179,7 @@ interface Player implements CreatureObject {
 
 	void doClone();
 	void activateClone();
-	
+
 	void doRecovery();
 
 	void activateReviveCountdown();
@@ -240,6 +240,8 @@ interface Player implements CreatureObject {
 	void createBaseStats();
 
 	void decayInventory();
+
+	boolean hasFullInventory();
 
 	void addInventoryItem(TangibleObject item);
 	void addInventoryResource(ResourceContainer item);

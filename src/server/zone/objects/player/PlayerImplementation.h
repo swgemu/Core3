@@ -69,6 +69,8 @@ which carries forward this exception.
 
 #include "engine/service/Message.h"
 
+#include "../tangible/Inventory.h"
+
 class PlayerManager;
 class ItemManager;
 class ProfessionManager;
@@ -906,6 +908,10 @@ public:
 	}
 
 	void launchFirework(int animationType);
+
+	inline bool hasFullInventory() {
+		return inventory->isFull();
+	}
 
 	// packet methods
 	void sendMessage(BaseMessage* msg);

@@ -875,17 +875,19 @@ void ObjectControllerMessage::parseNpcStartConversation(Player* player,
 	if (object != NULL) {
 		try {
 			if (object != player)
-			object->wlock(player);
+				object->wlock(player);
 
-			player->setConversatingCreature((CreatureObject*)object);
-			object->sendConversationStartTo(player);
+			if (player->isInRange(object, 5)) {
+				player->setConversatingCreature((CreatureObject*)object);
+				object->sendConversationStartTo(player);
+			}
 
 			if (object != player)
-			object->unlock();
+				object->unlock();
 		} catch (...) {
-			cout << "unreported ObjectControllerMessage::parseNpcStartConversation(Player* player, Message* pack) exception\n";
+			player->error("unreported ObjectControllerMessage::parseNpcStartConversation(Player* player, Message* pack) exception");
 			if (object != player)
-			object->unlock();
+				object->unlock();
 		}
 	}
 }
@@ -1170,6 +1172,9 @@ void ObjectControllerMessage::parseNpcConversationSelect(Player* player,
 	SceneObject* object = player->getConversatingCreature();
 
 	if (object != NULL) {
+		if (!player->isInRange(object, 5))
+			return;
+
 		unicode opt;
 		pack->parseUnicode(opt);
 
@@ -2651,6 +2656,11 @@ void ObjectControllerMessage::parseResourceContainerSplit(Player* player,
 		Message* packet) {
 	if (player->getTradeSize() != 0) {
 		player->sendSystemMessage("You cant move objects while trading..");
+		return;
+	}
+
+	if (player->hasFullInventory()) {
+		player->sendSystemMessage("Youd dont have enough space in your inventory");
 		return;
 	}
 

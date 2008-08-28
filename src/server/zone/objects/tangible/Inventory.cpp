@@ -25,6 +25,30 @@ Inventory::Inventory(DummyConstructorParameter* param) : Container(param) {
 Inventory::~Inventory() {
 }
 
+int Inventory::getUnequippedItemCount() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 6);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((InventoryImplementation*) _impl)->getUnequippedItemCount();
+}
+
+bool Inventory::isFull() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((InventoryImplementation*) _impl)->isFull();
+}
+
 /*
  *	InventoryAdapter
  */
@@ -36,11 +60,25 @@ Packet* InventoryAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
+	case 6:
+		resp->insertSignedInt(getUnequippedItemCount());
+		break;
+	case 7:
+		resp->insertBoolean(isFull());
+		break;
 	default:
 		return NULL;
 	}
 
 	return resp;
+}
+
+int InventoryAdapter::getUnequippedItemCount() {
+	return ((InventoryImplementation*) impl)->getUnequippedItemCount();
+}
+
+bool InventoryAdapter::isFull() {
+	return ((InventoryImplementation*) impl)->isFull();
 }
 
 /*

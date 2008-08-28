@@ -101,7 +101,21 @@ void ItemManagerImplementation::loadPlayerItems(Player* player) {
 
 		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
 
+		int i = 0;
+
 		while (res->next())	{
+			bool equipped = res->getBoolean(7);
+
+			if (!equipped && ++i > InventoryImplementation::MAXUNEQUIPPEDCOUNT) {
+				uint64 objectID = res->getUnsignedLong(0);
+
+				stringstream query;
+				query << "DELETE FROM character_items WHERE item_id = '" << objectID <<"';";
+
+				ServerDatabase::instance()->executeStatement(query);
+				continue;
+			}
+
 			createPlayerObject(player, res);
 		}
 
@@ -944,16 +958,22 @@ int ItemManagerImplementation::addBFGroup(lua_State * l) {
 }
 
 void ItemManagerImplementation::giveBFItemSet(Player * player, string& set) {
+	Inventory* inventory = player->getInventory();
 	Vector<TangibleObject*>* itemSet = bfItemSet->get(set);
+
+	if (inventory->getUnequippedItemCount() + itemSet->size()
+			>= InventoryImplementation::MAXUNEQUIPPEDCOUNT) {
+
+		player->sendSystemMessage("You don't have enough space in your inventory");
+		return;
+	}
 
 	for (int i = 0; i < itemSet->size(); i++) {
 		TangibleObject* item = clonePlayerObjectTemplate(player->getNewItemID(), itemSet->get(i));
 		//item->setObjectID(player->getNewItemID());
-		if(item == NULL)
-		{
+		if(item == NULL) {
 			cout << "ItemManagerImplementation::giveBFItemSet(...), item == NULL!, set = " << set << endl;
-		} else
-		{
+		} else {
 			player->addInventoryItem(item);
 
 			item->sendTo(player);

@@ -247,6 +247,8 @@ public:
 
 	void decayInventory();
 
+	bool hasFullInventory();
+
 	void addInventoryItem(TangibleObject* item);
 
 	void addInventoryResource(ResourceContainer* item);
@@ -837,6 +839,8 @@ public:
 	void createBaseStats();
 
 	void decayInventory();
+
+	bool hasFullInventory();
 
 	void addInventoryItem(TangibleObject* item);
 
