@@ -97,7 +97,7 @@ void ItemManagerImplementation::loadStaticWorldObjects() {
 void ItemManagerImplementation::loadPlayerItems(Player* player) {
 	try {
 		stringstream query;
-		query << "select * from `character_items` where `character_id` = " << player->getCharacterID();
+		query << "select * from `character_items` where `character_id` = " << player->getCharacterID() << " and `deleted` = 0";
 
 		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
 
@@ -106,7 +106,7 @@ void ItemManagerImplementation::loadPlayerItems(Player* player) {
 		while (res->next())	{
 			bool equipped = res->getBoolean(7);
 
-			if (!equipped && ++i > InventoryImplementation::MAXUNEQUIPPEDCOUNT) {
+			if (!equipped && (++i > InventoryImplementation::MAXUNEQUIPPEDCOUNT)) {
 				uint64 objectID = res->getUnsignedLong(0);
 
 				stringstream query;
