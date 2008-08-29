@@ -268,26 +268,44 @@ void ZonePacketHandler::handleSelectCharacter(Message* pack) {
 	uint64 playerID = (characterID << 32) + 0x15;
 
 	Player* player = NULL;
+	
+	try {
+		
+		server->lock();
 
-	SceneObject* obj = server->getObject(playerID);
-
-	if (obj == NULL)
-		obj = server->getCachedObject(playerID);
-
-	if (obj != NULL) {
-		player = (Player*) obj;
-		player->reload(client);
-
-		playerManager->updatePlayerCreditsFromDatabase(player);
-		playerManager->putPlayer(player);
-	} else {
-		player = playerManager->load(characterID);
-		player->setZone(server->getZone(player->getZoneIndex()));
-
-		player->load(client);
+		SceneObject* obj = server->getObject(playerID, false);
+	
+		if (obj == NULL)
+			obj = server->getCachedObject(playerID, false);
+	
+		if (obj != NULL) {
+			player = (Player*) obj;
+			
+			server->addObject(player, false);
+			
+			server->unlock();
+			
+			player->reload(client);
+	
+			playerManager->updatePlayerCreditsFromDatabase(player);
+			playerManager->putPlayer(player);
+		} else {
+			player = playerManager->load(characterID);
+			player->setZone(server->getZone(player->getZoneIndex()));
+			
+			server->addObject(player, false);
+			
+			server->unlock();
+	
+			player->load(client);
+		}
+	
+		clientimpl->setLockName("ZoneClient = " + player->getFirstName());
+	} catch (Exception& e) {
+		cout << "unreported exception caught in ZonePacketHandler::handleSelectCharacter(Message* pack)\n";
+		e.printStackTrace();
+		server->unlock(); 
 	}
-
-	clientimpl->setLockName("ZoneClient = " + player->getFirstName());
 }
 
 void ZonePacketHandler::handleCmdSceneReady(Message* pack) {

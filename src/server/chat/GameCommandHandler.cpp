@@ -104,10 +104,10 @@ void GameCommandHandler::init() {
 			"Disconnects all players in a certain range.",
 			"Usage: @kickArea [distance]",
 			&kickArea);
-	gmCommands->addCommand("printRoomTree", DEVELOPER,
+	/*gmCommands->addCommand("printRoomTree", DEVELOPER,
 			"Prints the room tree.",
 			"Usage: @printRoomTree",
-			&printRoomTree);
+			&printRoomTree);*/
 	gmCommands->addCommand("banUser", PRIVILEGED,
 			"Bans a user from logging in to the server.",
 			"Usage: @banUser <player>",

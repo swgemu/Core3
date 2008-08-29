@@ -663,13 +663,18 @@ void PlayerImplementation::userLogout(int msgCounter) {
 
 			ClientLogout* packet = new ClientLogout();
 			sendMessage(packet);
+			
+			delete logoutEvent;
+			logoutEvent = NULL;
 			break;
 		}
 	} else {
-		if (logoutEvent != NULL){
-			server->removeEvent(logoutEvent);
+		if (logoutEvent != NULL) { // we better dont delete the event from where 
+									//we are running this so we make sure we make it null in event::activate() before calling this
+			if (logoutEvent->isQueued())
+				server->removeEvent(logoutEvent);
+			
 			delete logoutEvent;
-
 			logoutEvent = NULL;
 		}
 

@@ -163,6 +163,7 @@ public:
 
 			return ACCOUNTOK;
 		} catch(DatabaseException& e) {
+			cout << e.getMessage() << endl;
 			return ACCOUNTINUSE;
 		}
 	}
@@ -214,8 +215,11 @@ public:
 					delete res;
 					return ACCOUNTBANNED;
 				}
+				
+				string forSalt = forumSalt;
+				MySqlDatabase::escapeString(forSalt);
 
-				query2 << "SELECT MD5(CONCAT(MD5(\'" + password + "\'), \'" + forumSalt + "\'))";
+				query2 << "SELECT MD5(CONCAT(MD5(\'" + password + "\'), \'" + forSalt + "\'))";
 				ResultSet* res2 = ForumsDatabase::instance()->executeQuery(query2);
 
 				if(res2->next()){
@@ -237,6 +241,7 @@ public:
 
 			return ACCOUNTDOESNTEXIST;
 		} catch(DatabaseException& e) {
+			cout << e.getMessage() << endl;
 			return ACCOUNTINUSE;
 		}
 

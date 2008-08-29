@@ -356,9 +356,7 @@ void ZoneServerImplementation::addObject(SceneObject* obj, bool doLock) {
 	try {
 		lock(doLock);
 
-		objectManager->add(obj);
-
-		if (obj->isPlayer()) {
+		if (objectManager->add(obj) == NULL && obj->isPlayer()) {
 			Player* player = (Player*) obj;
 
 			chatManager->addPlayer(player);

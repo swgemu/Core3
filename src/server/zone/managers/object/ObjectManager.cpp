@@ -73,15 +73,15 @@ ObjectManager::~ObjectManager() {
 	delete objectCacheMap;
 }
 
-void ObjectManager::add(SceneObject* obj) {
+SceneObject* ObjectManager::add(SceneObject* obj) {
 	uint64 oid = obj->getObjectID();
 	
 	if (objectCacheMap->remove(oid) != NULL) {
 		obj->redeploy();
 		
-		objectMap->put(oid, obj);
+		return objectMap->put(oid, obj);
 	} else {
-		objectMap->put(oid, obj);
+		return objectMap->put(oid, obj);
 	}
 }
 

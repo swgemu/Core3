@@ -61,7 +61,7 @@ public:
 	~ObjectManager();
 	
 	// object methods
-	void add(SceneObject* obj);
+	SceneObject* add(SceneObject* obj);
 
 	SceneObject* get(uint64 oid);
 

@@ -315,6 +315,7 @@ void ChatManagerImplementation::handleMessage(Player* player, Message* pack) {
 		stringstream msg;
 		msg << "Exception in ChatManagerImplementation::handleMessage " << e.getMessage() << "\n";
 		cout << msg.str();
+		e.printStackTrace();
 	} catch (...) {
 		cout << "unreported exception caught in ChatManagerImplementation::handleMessage\n";
 	}

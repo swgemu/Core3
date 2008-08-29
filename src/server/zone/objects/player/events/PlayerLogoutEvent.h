@@ -62,11 +62,11 @@ public:
 	bool activate() {
 		try {
 			player->wlock();
+			
+			player->clearLogoutEvent();
 
 			if (player->isOnline())
-				player->userLogout(msgCounter);
-			else
-				player->clearLogoutEvent();
+				player->userLogout(msgCounter);				
 
 			player->unlock();
 		} catch (...) {
