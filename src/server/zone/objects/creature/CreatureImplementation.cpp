@@ -142,6 +142,8 @@ void CreatureImplementation::init() {
 
 	looted = false;
 
+	creatureRemoveEvent = NULL;
+
 	setObjectKeeping(true);
 
 	stringstream logname;
@@ -348,11 +350,13 @@ void CreatureImplementation::unload() {
 }
 
 void CreatureImplementation::scheduleDespawnCreature(int time){
+	if (creatureRemoveEvent == NULL)
+		creatureRemoveEvent = new CreatureRemoveEvent(_this);
 
-	creatureRemoveEvent = new CreatureRemoveEvent(_this);
+	if (creatureRemoveEvent->isQueued())
+		server->removeEvent(creatureRemoveEvent);
 
 	server->addEvent(creatureRemoveEvent, time);
-
 }
 
 void CreatureImplementation::clearLootItems() {
