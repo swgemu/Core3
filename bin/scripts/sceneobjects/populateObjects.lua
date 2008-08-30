@@ -42,7 +42,9 @@
 
 --Tatooine
 
-RunObjectFile("objects/lairs/tatooine/dewbackLair.lua")
-RunObjectFile("objects/lairs/tatooine/wompRatLair.lua")
+if PLANET_ID == 8 then
+ RunObjectFile("objects/lairs/tatooine/dewbackLair.lua")
+ RunObjectFile("objects/lairs/tatooine/wompRatLair.lua")
+end
 
 

@@ -944,47 +944,69 @@ void ObjectControllerMessage::parseSetStatMigrationDataRequest(Player* player, M
 		uint32 value = tokenizer.getIntToken();
 		switch(i) {
 			case 0:
-				targetHealth = value;
+				if (value < player->getMinHealth() || value > player->getMaxHealth())
+					return;
+				else
+					targetHealth = value;
 				break;
 			case 1:
-				targetStrength = value;
+				if (value < player->getMinStrength() || value > player->getMaxStrength())
+					return;
+				else
+					targetStrength = value;
 				break;
 			case 2:
-				targetConstitution = value;
+				if (value < player->getMinConstitution() || value > player->getMaxConstitution())
+					return;
+				else
+					targetConstitution = value;
 				break;
 			case 3:
-				targetAction = value;
+				if (value < player->getMinAction() || value > player->getMaxAction())
+					return;
+				else
+					targetAction = value;
 				break;
 			case 4:
-				targetQuickness = value;
+				if (value < player->getMinQuickness() || value > player->getMaxQuickness())
+					return;
+				else
+					targetQuickness = value;
 				break;
 			case 5:
-				targetStamina = value;
+				if (value < player->getMinStamina() || value > player->getMaxStamina())
+					return;
+				else
+					targetStamina = value;
 				break;
 			case 6:
-				targetMind = value;
+				if (value < player->getMinMind() || value > player->getMaxMind())
+					return;
+				else
+					targetMind = value;
 				break;
 			case 7:
-				targetFocus = value;
+				if (value < player->getMinFocus() || value > player->getMaxFocus())
+					return;
+				else
+					targetFocus = value;
 				break;
 			case 8:
-				targetWillpower = value;
+				if (value < player->getMinWillpower() || value > player->getMaxWillpower())
+					return;
+				else
+					targetWillpower = value;
 				break;
 			default: // points available
 				break;
 		}
 	}
 
-	int currentPoints = player->getHealth() + player->getStrength()
-			+ player->getConstitution() + player->getAction()
-			+ player->getQuickness() + player->getStamina() + player->getMind()
-			+ player->getFocus() + player->getWillpower();
-
 	int targetPoints = targetHealth + targetStrength + targetConstitution
 			+ targetAction + targetQuickness + targetStamina + targetMind
 			+ targetFocus + targetWillpower;
 
-	if (currentPoints - targetPoints >= 0) {
+	if (targetPoints == player->getTotalAttribPoints()) {
 		player->setTargetHealth(targetHealth);
 		player->setTargetStrength(targetStrength);
 		player->setTargetConstitution(targetConstitution);

@@ -65,6 +65,8 @@ TangibleObjectImplementation::TangibleObjectImplementation(uint64 oid, int tp)
 	objectSubType = tp;
 
 	pvpStatusBitmask = 0;
+
+	playerUseMask = ALL;
 }
 
 TangibleObjectImplementation::TangibleObjectImplementation(uint64 oid, const unicode& n, const string& tempname, uint32 tempCRC, int tp)
@@ -78,6 +80,8 @@ TangibleObjectImplementation::TangibleObjectImplementation(uint64 oid, const uni
 	objectSubType = tp;
 
 	pvpStatusBitmask = 0;
+
+	playerUseMask = ALL;
 }
 
 TangibleObjectImplementation::TangibleObjectImplementation(CreatureObject* creature, const unicode& n, const string& tempname, uint32 tempCRC, int tp)
@@ -88,10 +92,12 @@ TangibleObjectImplementation::TangibleObjectImplementation(CreatureObject* creat
 
 	objectCRC = tempCRC;
 	objectID = creature->getNewItemID();
-	
+
 	objectType = TANGIBLE;
 
 	objectSubType = tp;
+
+	playerUseMask = ALL;
 }
 
 TangibleObjectImplementation::~TangibleObjectImplementation() {

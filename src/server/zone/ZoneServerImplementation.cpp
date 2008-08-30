@@ -216,6 +216,8 @@ void ZoneServerImplementation::init() {
 
 	startManagers();
 
+	startTimestamp = time(NULL);
+
 	return;
 }
 

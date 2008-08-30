@@ -111,6 +111,8 @@ public:
 
 	int getDeletedPlayers();
 
+	unsigned long long getStartTimestamp();
+
 	unsigned long long getNextCreatureID(bool doLock = true);
 
 protected:
@@ -204,6 +206,8 @@ public:
 	int getMaxPlayers();
 
 	int getDeletedPlayers();
+
+	unsigned long long getStartTimestamp();
 
 	unsigned long long getNextCreatureID(bool doLock);
 

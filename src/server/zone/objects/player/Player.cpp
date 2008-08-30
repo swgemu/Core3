@@ -197,12 +197,36 @@ void Player::clearLogoutEvent() {
 		((PlayerImplementation*) _impl)->clearLogoutEvent();
 }
 
-void Player::insertToZone(Zone* zone) {
+void Player::makeCharacterMask() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 16);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerImplementation*) _impl)->makeCharacterMask();
+}
+
+unsigned int Player::getCharacterMask() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 17);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((PlayerImplementation*) _impl)->getCharacterMask();
+}
+
+void Player::insertToZone(Zone* zone) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 18);
 		method.addObjectParameter(zone);
 
 		method.executeWithVoidReturn();
@@ -215,7 +239,7 @@ void Player::reinsertToZone(Zone* zone) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 19);
 		method.addObjectParameter(zone);
 
 		method.executeWithVoidReturn();
@@ -228,7 +252,7 @@ void Player::updateZone(bool lightUpdate) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 20);
 		method.addBooleanParameter(lightUpdate);
 
 		method.executeWithVoidReturn();
@@ -241,7 +265,7 @@ void Player::updateZoneWithParent(unsigned long long cell, bool lightUpdate) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, 21);
 		method.addUnsignedLongParameter(cell);
 		method.addBooleanParameter(lightUpdate);
 
@@ -255,7 +279,7 @@ void Player::switchMap(int planetid) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, 22);
 		method.addSignedIntParameter(planetid);
 
 		method.executeWithVoidReturn();
@@ -268,7 +292,7 @@ void Player::doWarp(float x, float y, float z, float randomizeDistance, unsigned
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, 23);
 		method.addFloatParameter(x);
 		method.addFloatParameter(y);
 		method.addFloatParameter(z);
@@ -285,7 +309,7 @@ void Player::bounceBack() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 22);
+		DistributedMethod method(this, 24);
 
 		method.executeWithVoidReturn();
 	} else
@@ -297,7 +321,7 @@ void Player::sendTo(Player* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 23);
+		DistributedMethod method(this, 25);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -310,7 +334,7 @@ void Player::sendToOwner() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 24);
+		DistributedMethod method(this, 26);
 
 		method.executeWithVoidReturn();
 	} else
@@ -322,7 +346,7 @@ void Player::notifySceneReady() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 25);
+		DistributedMethod method(this, 27);
 
 		method.executeWithVoidReturn();
 	} else
@@ -334,7 +358,7 @@ void Player::addDatapadItem(SceneObject* item) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 26);
+		DistributedMethod method(this, 28);
 		method.addObjectParameter(item);
 
 		method.executeWithVoidReturn();
@@ -347,7 +371,7 @@ SceneObject* Player::getDatapadItem(unsigned long long oid) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 27);
+		DistributedMethod method(this, 29);
 		method.addUnsignedLongParameter(oid);
 
 		return (SceneObject*) method.executeWithObjectReturn();
@@ -360,7 +384,7 @@ void Player::removeDatapadItem(unsigned long long oid) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 28);
+		DistributedMethod method(this, 30);
 		method.addUnsignedLongParameter(oid);
 
 		method.executeWithVoidReturn();
@@ -373,7 +397,7 @@ SceneObject* Player::getPlayerItem(unsigned long long oid) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 29);
+		DistributedMethod method(this, 31);
 		method.addUnsignedLongParameter(oid);
 
 		return (SceneObject*) method.executeWithObjectReturn();
@@ -386,7 +410,7 @@ unsigned int Player::getTargetHealth() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 30);
+		DistributedMethod method(this, 32);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -398,7 +422,7 @@ unsigned int Player::getTargetStrength() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 31);
+		DistributedMethod method(this, 33);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -410,7 +434,7 @@ unsigned int Player::getTargetConstitution() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 32);
+		DistributedMethod method(this, 34);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -422,7 +446,7 @@ unsigned int Player::getTargetAction() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 33);
+		DistributedMethod method(this, 35);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -434,7 +458,7 @@ unsigned int Player::getTargetQuickness() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 34);
+		DistributedMethod method(this, 36);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -446,7 +470,7 @@ unsigned int Player::getTargetStamina() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 35);
+		DistributedMethod method(this, 37);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -458,7 +482,7 @@ unsigned int Player::getTargetMind() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 36);
+		DistributedMethod method(this, 38);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -470,7 +494,7 @@ unsigned int Player::getTargetFocus() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 37);
+		DistributedMethod method(this, 39);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -482,7 +506,7 @@ unsigned int Player::getTargetWillpower() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 38);
+		DistributedMethod method(this, 40);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -494,7 +518,7 @@ void Player::setTargetHealth(unsigned int health) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 39);
+		DistributedMethod method(this, 41);
 		method.addUnsignedIntParameter(health);
 
 		method.executeWithVoidReturn();
@@ -507,7 +531,7 @@ void Player::setTargetStrength(unsigned int strength) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 40);
+		DistributedMethod method(this, 42);
 		method.addUnsignedIntParameter(strength);
 
 		method.executeWithVoidReturn();
@@ -520,7 +544,7 @@ void Player::setTargetConstitution(unsigned int constituition) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 41);
+		DistributedMethod method(this, 43);
 		method.addUnsignedIntParameter(constituition);
 
 		method.executeWithVoidReturn();
@@ -533,7 +557,7 @@ void Player::setTargetAction(unsigned int action) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 42);
+		DistributedMethod method(this, 44);
 		method.addUnsignedIntParameter(action);
 
 		method.executeWithVoidReturn();
@@ -546,7 +570,7 @@ void Player::setTargetQuickness(unsigned int quickness) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 43);
+		DistributedMethod method(this, 45);
 		method.addUnsignedIntParameter(quickness);
 
 		method.executeWithVoidReturn();
@@ -559,7 +583,7 @@ void Player::setTargetStamina(unsigned int stamina) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 44);
+		DistributedMethod method(this, 46);
 		method.addUnsignedIntParameter(stamina);
 
 		method.executeWithVoidReturn();
@@ -572,7 +596,7 @@ void Player::setTargetMind(unsigned int mind) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 45);
+		DistributedMethod method(this, 47);
 		method.addUnsignedIntParameter(mind);
 
 		method.executeWithVoidReturn();
@@ -585,7 +609,7 @@ void Player::setTargetFocus(unsigned int focus) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 46);
+		DistributedMethod method(this, 48);
 		method.addUnsignedIntParameter(focus);
 
 		method.executeWithVoidReturn();
@@ -598,7 +622,7 @@ void Player::setTargetWillpower(unsigned int willpower) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 47);
+		DistributedMethod method(this, 49);
 		method.addUnsignedIntParameter(willpower);
 
 		method.executeWithVoidReturn();
@@ -606,12 +630,240 @@ void Player::setTargetWillpower(unsigned int willpower) {
 		((PlayerImplementation*) _impl)->setTargetWillpower(willpower);
 }
 
+unsigned int Player::getMinHealth() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 50);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((PlayerImplementation*) _impl)->getMinHealth();
+}
+
+unsigned int Player::getMaxHealth() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 51);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((PlayerImplementation*) _impl)->getMaxHealth();
+}
+
+unsigned int Player::getMinStrength() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 52);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((PlayerImplementation*) _impl)->getMinStrength();
+}
+
+unsigned int Player::getMaxStrength() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 53);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((PlayerImplementation*) _impl)->getMaxStrength();
+}
+
+unsigned int Player::getMinConstitution() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 54);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((PlayerImplementation*) _impl)->getMinConstitution();
+}
+
+unsigned int Player::getMaxConstitution() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 55);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((PlayerImplementation*) _impl)->getMaxConstitution();
+}
+
+unsigned int Player::getMinAction() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 56);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((PlayerImplementation*) _impl)->getMinAction();
+}
+
+unsigned int Player::getMaxAction() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 57);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((PlayerImplementation*) _impl)->getMaxAction();
+}
+
+unsigned int Player::getMinQuickness() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 58);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((PlayerImplementation*) _impl)->getMinQuickness();
+}
+
+unsigned int Player::getMaxQuickness() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 59);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((PlayerImplementation*) _impl)->getMaxQuickness();
+}
+
+unsigned int Player::getMinStamina() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 60);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((PlayerImplementation*) _impl)->getMinStamina();
+}
+
+unsigned int Player::getMaxStamina() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 61);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((PlayerImplementation*) _impl)->getMaxStamina();
+}
+
+unsigned int Player::getMinMind() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 62);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((PlayerImplementation*) _impl)->getMinMind();
+}
+
+unsigned int Player::getMaxMind() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 63);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((PlayerImplementation*) _impl)->getMaxMind();
+}
+
+unsigned int Player::getMinFocus() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 64);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((PlayerImplementation*) _impl)->getMinFocus();
+}
+
+unsigned int Player::getMaxFocus() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 65);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((PlayerImplementation*) _impl)->getMaxFocus();
+}
+
+unsigned int Player::getMinWillpower() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 66);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((PlayerImplementation*) _impl)->getMinWillpower();
+}
+
+unsigned int Player::getMaxWillpower() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 67);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((PlayerImplementation*) _impl)->getMaxWillpower();
+}
+
+unsigned int Player::getTotalAttribPoints() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 68);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((PlayerImplementation*) _impl)->getTotalAttribPoints();
+}
+
 void Player::queueFlourish(const string& modifier, unsigned long long target, unsigned int actionCntr) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 48);
+		DistributedMethod method(this, 69);
 		method.addAsciiParameter(modifier);
 		method.addUnsignedLongParameter(target);
 		method.addUnsignedIntParameter(actionCntr);
@@ -626,7 +878,7 @@ void Player::clearQueueAction(unsigned int actioncntr, float timer, unsigned int
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 49);
+		DistributedMethod method(this, 70);
 		method.addUnsignedIntParameter(actioncntr);
 		method.addFloatParameter(timer);
 		method.addUnsignedIntParameter(tab1);
@@ -642,7 +894,7 @@ void Player::queueAction(Player* player, unsigned long long target, unsigned int
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 50);
+		DistributedMethod method(this, 71);
 		method.addObjectParameter(player);
 		method.addUnsignedLongParameter(target);
 		method.addUnsignedIntParameter(actionCRC);
@@ -659,7 +911,7 @@ void Player::deleteQueueAction(unsigned int actioncntr) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 51);
+		DistributedMethod method(this, 72);
 		method.addUnsignedIntParameter(actioncntr);
 
 		method.executeWithVoidReturn();
@@ -672,7 +924,7 @@ void Player::changePosture(int post) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 52);
+		DistributedMethod method(this, 73);
 		method.addSignedIntParameter(post);
 
 		method.executeWithVoidReturn();
@@ -685,7 +937,7 @@ void Player::doCenterOfBeing() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 53);
+		DistributedMethod method(this, 74);
 
 		method.executeWithVoidReturn();
 	} else
@@ -697,7 +949,7 @@ void Player::removeCenterOfBeing() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 54);
+		DistributedMethod method(this, 75);
 
 		method.executeWithVoidReturn();
 	} else
@@ -709,7 +961,7 @@ void Player::doPowerboost() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 55);
+		DistributedMethod method(this, 76);
 
 		method.executeWithVoidReturn();
 	} else
@@ -721,7 +973,7 @@ void Player::doPeace() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 56);
+		DistributedMethod method(this, 77);
 
 		method.executeWithVoidReturn();
 	} else
@@ -733,7 +985,7 @@ void Player::kill() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 57);
+		DistributedMethod method(this, 78);
 
 		method.executeWithVoidReturn();
 	} else
@@ -745,7 +997,7 @@ void Player::deathblow(Player* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 58);
+		DistributedMethod method(this, 79);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -758,7 +1010,7 @@ void Player::revive() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 59);
+		DistributedMethod method(this, 80);
 
 		method.executeWithVoidReturn();
 	} else
@@ -770,7 +1022,7 @@ void Player::doClone() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 60);
+		DistributedMethod method(this, 81);
 
 		method.executeWithVoidReturn();
 	} else
@@ -782,7 +1034,7 @@ void Player::activateClone() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 61);
+		DistributedMethod method(this, 82);
 
 		method.executeWithVoidReturn();
 	} else
@@ -794,7 +1046,7 @@ void Player::doRecovery() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 62);
+		DistributedMethod method(this, 83);
 
 		method.executeWithVoidReturn();
 	} else
@@ -806,7 +1058,7 @@ void Player::activateReviveCountdown() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 63);
+		DistributedMethod method(this, 84);
 
 		method.executeWithVoidReturn();
 	} else
@@ -818,7 +1070,7 @@ void Player::clearReviveCountdown() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 64);
+		DistributedMethod method(this, 85);
 
 		method.executeWithVoidReturn();
 	} else
@@ -830,7 +1082,7 @@ void Player::countdownRevive(int counter) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 65);
+		DistributedMethod method(this, 86);
 		method.addSignedIntParameter(counter);
 
 		method.executeWithVoidReturn();
@@ -843,7 +1095,7 @@ bool Player::hasConsent(string& charID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 66);
+		DistributedMethod method(this, 87);
 		method.addAsciiParameter(charID);
 
 		return method.executeWithBooleanReturn();
@@ -856,7 +1108,7 @@ bool Player::giveConsent(string& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 67);
+		DistributedMethod method(this, 88);
 		method.addAsciiParameter(name);
 
 		return method.executeWithBooleanReturn();
@@ -869,7 +1121,7 @@ bool Player::revokeConsent(string& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 68);
+		DistributedMethod method(this, 89);
 		method.addAsciiParameter(name);
 
 		return method.executeWithBooleanReturn();
@@ -882,7 +1134,7 @@ int Player::getConsentSize() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 69);
+		DistributedMethod method(this, 90);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -894,7 +1146,7 @@ string& Player::getConsentEntry(int index) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 70);
+		DistributedMethod method(this, 91);
 		method.addSignedIntParameter(index);
 
 		method.executeWithAsciiReturn(_return_getConsentEntry);
@@ -908,7 +1160,7 @@ void Player::sendConsentBox() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 71);
+		DistributedMethod method(this, 92);
 
 		method.executeWithVoidReturn();
 	} else
@@ -920,7 +1172,7 @@ bool Player::isRevivable() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 72);
+		DistributedMethod method(this, 93);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -932,7 +1184,7 @@ void Player::addBuff(unsigned int buffcrc, float time) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 73);
+		DistributedMethod method(this, 94);
 		method.addUnsignedIntParameter(buffcrc);
 		method.addFloatParameter(time);
 
@@ -946,7 +1198,7 @@ void Player::lootCorpse(bool lootAll) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 74);
+		DistributedMethod method(this, 95);
 		method.addBooleanParameter(lootAll);
 
 		method.executeWithVoidReturn();
@@ -959,7 +1211,7 @@ void Player::lootObject(Creature* creature, SceneObject* object) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 75);
+		DistributedMethod method(this, 96);
 		method.addObjectParameter(creature);
 		method.addObjectParameter(object);
 
@@ -973,7 +1225,7 @@ void Player::addTradeItem(TangibleObject* item) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 76);
+		DistributedMethod method(this, 97);
 		method.addObjectParameter(item);
 
 		method.executeWithVoidReturn();
@@ -986,7 +1238,7 @@ void Player::clearTradeItems() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 77);
+		DistributedMethod method(this, 98);
 
 		method.executeWithVoidReturn();
 	} else
@@ -998,7 +1250,7 @@ int Player::getTradeSize() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 78);
+		DistributedMethod method(this, 99);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -1010,7 +1262,7 @@ TangibleObject* Player::getTradeItem(int idx) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 79);
+		DistributedMethod method(this, 100);
 		method.addSignedIntParameter(idx);
 
 		return (TangibleObject*) method.executeWithObjectReturn();
@@ -1023,7 +1275,7 @@ void Player::setAcceptedTrade(bool val) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 80);
+		DistributedMethod method(this, 101);
 		method.addBooleanParameter(val);
 
 		method.executeWithVoidReturn();
@@ -1036,7 +1288,7 @@ bool Player::hasAcceptedTrade() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 81);
+		DistributedMethod method(this, 102);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -1048,7 +1300,7 @@ void Player::setVerifiedTrade(bool val) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 82);
+		DistributedMethod method(this, 103);
 		method.addBooleanParameter(val);
 
 		method.executeWithVoidReturn();
@@ -1061,7 +1313,7 @@ bool Player::hasVerifiedTrade() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 83);
+		DistributedMethod method(this, 104);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -1073,7 +1325,7 @@ void Player::setMoneyToTrade(unsigned int value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 84);
+		DistributedMethod method(this, 105);
 		method.addUnsignedIntParameter(value);
 
 		method.executeWithVoidReturn();
@@ -1086,7 +1338,7 @@ unsigned int Player::getMoneyToTrade() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 85);
+		DistributedMethod method(this, 106);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -1098,7 +1350,7 @@ bool Player::getMeditate() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 86);
+		DistributedMethod method(this, 107);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -1110,7 +1362,7 @@ void Player::changeCloth(unsigned long long itemid) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 87);
+		DistributedMethod method(this, 108);
 		method.addUnsignedLongParameter(itemid);
 
 		method.executeWithVoidReturn();
@@ -1123,7 +1375,7 @@ void Player::changeWeapon(unsigned long long itemid) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 88);
+		DistributedMethod method(this, 109);
 		method.addUnsignedLongParameter(itemid);
 
 		method.executeWithVoidReturn();
@@ -1136,7 +1388,7 @@ void Player::changeArmor(unsigned long long itemid, bool forced) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 89);
+		DistributedMethod method(this, 110);
 		method.addUnsignedLongParameter(itemid);
 		method.addBooleanParameter(forced);
 
@@ -1150,7 +1402,7 @@ void Player::setWeaponSkillMods(Weapon* weapon) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 90);
+		DistributedMethod method(this, 111);
 		method.addObjectParameter(weapon);
 
 		method.executeWithVoidReturn();
@@ -1163,7 +1415,7 @@ void Player::setArmorSkillMods(Armor* armor) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 91);
+		DistributedMethod method(this, 112);
 		method.addObjectParameter(armor);
 
 		method.executeWithVoidReturn();
@@ -1176,7 +1428,7 @@ bool Player::setArmorEncumbrance(Armor* armor, bool forced) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 92);
+		DistributedMethod method(this, 113);
 		method.addObjectParameter(armor);
 		method.addBooleanParameter(forced);
 
@@ -1190,7 +1442,7 @@ void Player::applyAttachment(unsigned long long attachmentID, unsigned long long
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 93);
+		DistributedMethod method(this, 114);
 		method.addUnsignedLongParameter(attachmentID);
 		method.addUnsignedLongParameter(targetID);
 
@@ -1204,7 +1456,7 @@ void Player::applyPowerup(unsigned long long powerupID, unsigned long long targe
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 94);
+		DistributedMethod method(this, 115);
 		method.addUnsignedLongParameter(powerupID);
 		method.addUnsignedLongParameter(targetID);
 
@@ -1218,7 +1470,7 @@ void Player::createItems() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 95);
+		DistributedMethod method(this, 116);
 
 		method.executeWithVoidReturn();
 	} else
@@ -1230,7 +1482,7 @@ void Player::loadItems() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 96);
+		DistributedMethod method(this, 117);
 
 		method.executeWithVoidReturn();
 	} else
@@ -1242,7 +1494,7 @@ void Player::createBaseStats() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 97);
+		DistributedMethod method(this, 118);
 
 		method.executeWithVoidReturn();
 	} else
@@ -1254,7 +1506,7 @@ void Player::decayInventory() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 98);
+		DistributedMethod method(this, 119);
 
 		method.executeWithVoidReturn();
 	} else
@@ -1266,7 +1518,7 @@ bool Player::hasFullInventory() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 99);
+		DistributedMethod method(this, 120);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -1278,7 +1530,7 @@ void Player::addInventoryItem(TangibleObject* item) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 100);
+		DistributedMethod method(this, 121);
 		method.addObjectParameter(item);
 
 		method.executeWithVoidReturn();
@@ -1291,7 +1543,7 @@ void Player::addInventoryResource(ResourceContainer* item) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 101);
+		DistributedMethod method(this, 122);
 		method.addObjectParameter(item);
 
 		method.executeWithVoidReturn();
@@ -1304,7 +1556,7 @@ void Player::equipPlayerItem(TangibleObject* item) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 102);
+		DistributedMethod method(this, 123);
 		method.addObjectParameter(item);
 
 		method.executeWithVoidReturn();
@@ -1317,7 +1569,7 @@ void Player::saveProfessions() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 103);
+		DistributedMethod method(this, 124);
 
 		method.executeWithVoidReturn();
 	} else
@@ -1329,7 +1581,7 @@ void Player::loadProfessions() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 104);
+		DistributedMethod method(this, 125);
 
 		method.executeWithVoidReturn();
 	} else
@@ -1341,7 +1593,7 @@ void Player::trainStartingProfession() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 105);
+		DistributedMethod method(this, 126);
 
 		method.executeWithVoidReturn();
 	} else
@@ -1353,7 +1605,7 @@ bool Player::trainSkillBox(const string& name, bool updateClient) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 106);
+		DistributedMethod method(this, 127);
 		method.addAsciiParameter(name);
 		method.addBooleanParameter(updateClient);
 
@@ -1367,7 +1619,7 @@ void Player::surrenderSkillBox(const string& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 107);
+		DistributedMethod method(this, 128);
 		method.addAsciiParameter(name);
 
 		method.executeWithVoidReturn();
@@ -1380,7 +1632,7 @@ void Player::resetSkillBoxesIterator() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 108);
+		DistributedMethod method(this, 129);
 
 		method.executeWithVoidReturn();
 	} else
@@ -1392,7 +1644,7 @@ int Player::getSkillBoxesSize() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 109);
+		DistributedMethod method(this, 130);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -1404,7 +1656,7 @@ string& Player::getNextSkillBox() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 110);
+		DistributedMethod method(this, 131);
 
 		method.executeWithAsciiReturn(_return_getNextSkillBox);
 		return _return_getNextSkillBox;
@@ -1417,7 +1669,7 @@ bool Player::hasNextSkillBox() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 111);
+		DistributedMethod method(this, 132);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -1429,7 +1681,7 @@ bool Player::hasSkillBox(string& skillBox) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 112);
+		DistributedMethod method(this, 133);
 		method.addAsciiParameter(skillBox);
 
 		return method.executeWithBooleanReturn();
@@ -1442,7 +1694,7 @@ void Player::addWaypoint(WaypointObject* wp) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 113);
+		DistributedMethod method(this, 134);
 		method.addObjectParameter(wp);
 
 		method.executeWithVoidReturn();
@@ -1455,7 +1707,7 @@ bool Player::removeWaypoint(WaypointObject* wp) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 114);
+		DistributedMethod method(this, 135);
 		method.addObjectParameter(wp);
 
 		return method.executeWithBooleanReturn();
@@ -1468,7 +1720,7 @@ WaypointObject* Player::getWaypoint(unsigned long long id) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 115);
+		DistributedMethod method(this, 136);
 		method.addUnsignedLongParameter(id);
 
 		return (WaypointObject*) method.executeWithObjectReturn();
@@ -1481,7 +1733,7 @@ void Player::updateWaypoint(WaypointObject* wp) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 116);
+		DistributedMethod method(this, 137);
 		method.addObjectParameter(wp);
 
 		method.executeWithVoidReturn();
@@ -1494,7 +1746,7 @@ void Player::saveWaypoints(Player* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 117);
+		DistributedMethod method(this, 138);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -1507,7 +1759,7 @@ WaypointObject* Player::searchWaypoint(Player* play, const string& name, int mod
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 118);
+		DistributedMethod method(this, 139);
 		method.addObjectParameter(play);
 		method.addAsciiParameter(name);
 		method.addSignedIntParameter(mode);
@@ -1522,7 +1774,7 @@ void Player::queueHeal(TangibleObject* medpack, unsigned int actionCRC, const st
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 119);
+		DistributedMethod method(this, 140);
 		method.addObjectParameter(medpack);
 		method.addUnsignedIntParameter(actionCRC);
 		method.addAsciiParameter(attribute);
@@ -1537,7 +1789,7 @@ void Player::addXp(string& xpType, int xp, bool updateClient) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 120);
+		DistributedMethod method(this, 141);
 		method.addAsciiParameter(xpType);
 		method.addSignedIntParameter(xp);
 		method.addBooleanParameter(updateClient);
@@ -1552,7 +1804,7 @@ void Player::removeXp(string& xpType, int xp, bool updateClient) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 121);
+		DistributedMethod method(this, 142);
 		method.addAsciiParameter(xpType);
 		method.addSignedIntParameter(xp);
 		method.addBooleanParameter(updateClient);
@@ -1567,7 +1819,7 @@ void Player::removeFromDuelList(Player* targetPlayer) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 122);
+		DistributedMethod method(this, 143);
 		method.addObjectParameter(targetPlayer);
 
 		method.executeWithVoidReturn();
@@ -1580,7 +1832,7 @@ void Player::addToDuelList(Player* targetPlayer) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 123);
+		DistributedMethod method(this, 144);
 		method.addObjectParameter(targetPlayer);
 
 		method.executeWithVoidReturn();
@@ -1593,7 +1845,7 @@ bool Player::isInDuelWith(Player* targetPlayer, bool doLock) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 124);
+		DistributedMethod method(this, 145);
 		method.addObjectParameter(targetPlayer);
 		method.addBooleanParameter(doLock);
 
@@ -1607,7 +1859,7 @@ Player* Player::getDuelListObject(int index) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 125);
+		DistributedMethod method(this, 146);
 		method.addSignedIntParameter(index);
 
 		return (Player*) method.executeWithObjectReturn();
@@ -1620,7 +1872,7 @@ bool Player::requestedDuelTo(Player* targetPlayer) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 126);
+		DistributedMethod method(this, 147);
 		method.addObjectParameter(targetPlayer);
 
 		return method.executeWithBooleanReturn();
@@ -1633,7 +1885,7 @@ bool Player::isDuelListEmpty() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 127);
+		DistributedMethod method(this, 148);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -1645,7 +1897,7 @@ int Player::getDuelListSize() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 128);
+		DistributedMethod method(this, 149);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -1657,7 +1909,7 @@ bool Player::setGuild(unsigned int gid) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 129);
+		DistributedMethod method(this, 150);
 		method.addUnsignedIntParameter(gid);
 
 		return method.executeWithBooleanReturn();
@@ -1670,7 +1922,7 @@ void Player::setGuild(Guild* gild) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 130);
+		DistributedMethod method(this, 151);
 		method.addObjectParameter(gild);
 
 		method.executeWithVoidReturn();
@@ -1683,7 +1935,7 @@ bool Player::updateGuild(unsigned int gid) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 131);
+		DistributedMethod method(this, 152);
 		method.addUnsignedIntParameter(gid);
 
 		return method.executeWithBooleanReturn();
@@ -1696,7 +1948,7 @@ void Player::updateGuild(Guild* guild) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 132);
+		DistributedMethod method(this, 153);
 		method.addObjectParameter(guild);
 
 		method.executeWithVoidReturn();
@@ -1709,7 +1961,7 @@ void Player::addChatRoom(ChatRoom* room) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 133);
+		DistributedMethod method(this, 154);
 		method.addObjectParameter(room);
 
 		method.executeWithVoidReturn();
@@ -1722,7 +1974,7 @@ void Player::removeChatRoom(ChatRoom* room) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 134);
+		DistributedMethod method(this, 155);
 		method.addObjectParameter(room);
 
 		method.executeWithVoidReturn();
@@ -1735,7 +1987,7 @@ void Player::sendSystemMessage(const string& msg) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 135);
+		DistributedMethod method(this, 156);
 		method.addAsciiParameter(msg);
 
 		method.executeWithVoidReturn();
@@ -1748,7 +2000,7 @@ void Player::sendSystemMessage(unicode& msg) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 136);
+		DistributedMethod method(this, 157);
 		method.addUnicodeParameter(msg);
 
 		method.executeWithVoidReturn();
@@ -1761,7 +2013,7 @@ void Player::sendSystemMessage(const string& file, const string& str, unsigned l
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 137);
+		DistributedMethod method(this, 158);
 		method.addAsciiParameter(file);
 		method.addAsciiParameter(str);
 		method.addUnsignedLongParameter(targetid);
@@ -1776,7 +2028,7 @@ void Player::setConversatingCreature(CreatureObject* conversator) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 138);
+		DistributedMethod method(this, 159);
 		method.addObjectParameter(conversator);
 
 		method.executeWithVoidReturn();
@@ -1789,7 +2041,7 @@ void Player::setFirstName(const string& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 139);
+		DistributedMethod method(this, 160);
 		method.addAsciiParameter(name);
 
 		method.executeWithVoidReturn();
@@ -1802,7 +2054,7 @@ void Player::setLastName(const string& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 140);
+		DistributedMethod method(this, 161);
 		method.addAsciiParameter(name);
 
 		method.executeWithVoidReturn();
@@ -1815,7 +2067,7 @@ void Player::setFirstNameProper(const string& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 141);
+		DistributedMethod method(this, 162);
 		method.addAsciiParameter(name);
 
 		method.executeWithVoidReturn();
@@ -1828,7 +2080,7 @@ void Player::setBiography(const string& bio) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 142);
+		DistributedMethod method(this, 163);
 		method.addAsciiParameter(bio);
 
 		method.executeWithVoidReturn();
@@ -1841,7 +2093,7 @@ void Player::setBiography(unicode& bio) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 143);
+		DistributedMethod method(this, 164);
 		method.addUnicodeParameter(bio);
 
 		method.executeWithVoidReturn();
@@ -1854,7 +2106,7 @@ bool Player::changeForcePowerBar(int fp) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 144);
+		DistributedMethod method(this, 165);
 		method.addSignedIntParameter(fp);
 
 		return method.executeWithBooleanReturn();
@@ -1867,7 +2119,7 @@ void Player::setForcePowerBar(int fp) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 145);
+		DistributedMethod method(this, 166);
 		method.addSignedIntParameter(fp);
 
 		method.executeWithVoidReturn();
@@ -1880,7 +2132,7 @@ void Player::updateMaxForcePowerBar(bool updateClient) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 146);
+		DistributedMethod method(this, 167);
 		method.addBooleanParameter(updateClient);
 
 		method.executeWithVoidReturn();
@@ -1893,7 +2145,7 @@ void Player::setFoodFilling(int fill, bool updateClient) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 147);
+		DistributedMethod method(this, 168);
 		method.addSignedIntParameter(fill);
 		method.addBooleanParameter(updateClient);
 
@@ -1907,7 +2159,7 @@ void Player::setDrinkFilling(int fill, bool updateClient) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 148);
+		DistributedMethod method(this, 169);
 		method.addSignedIntParameter(fill);
 		method.addBooleanParameter(updateClient);
 
@@ -1921,7 +2173,7 @@ void Player::changeFoodFilling(int fill, bool updateClient) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 149);
+		DistributedMethod method(this, 170);
 		method.addSignedIntParameter(fill);
 		method.addBooleanParameter(updateClient);
 
@@ -1935,7 +2187,7 @@ void Player::changeDrinkFilling(int fill, bool updateClient) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 150);
+		DistributedMethod method(this, 171);
 		method.addSignedIntParameter(fill);
 		method.addBooleanParameter(updateClient);
 
@@ -1949,7 +2201,7 @@ int Player::getFoodFilling() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 151);
+		DistributedMethod method(this, 172);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -1961,7 +2213,7 @@ int Player::getDrinkFilling() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 152);
+		DistributedMethod method(this, 173);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -1973,7 +2225,7 @@ void Player::activateDigest() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 153);
+		DistributedMethod method(this, 174);
 
 		method.executeWithVoidReturn();
 	} else
@@ -1985,7 +2237,7 @@ void Player::activateQueueAction() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 154);
+		DistributedMethod method(this, 175);
 
 		method.executeWithVoidReturn();
 	} else
@@ -1997,7 +2249,7 @@ void Player::setCharacterID(unsigned long long id) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 155);
+		DistributedMethod method(this, 176);
 		method.addUnsignedLongParameter(id);
 
 		method.executeWithVoidReturn();
@@ -2010,7 +2262,7 @@ void Player::setStartingProfession(const string& prof) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 156);
+		DistributedMethod method(this, 177);
 		method.addAsciiParameter(prof);
 
 		method.executeWithVoidReturn();
@@ -2023,7 +2275,7 @@ void Player::setHairObject(const string& hair) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 157);
+		DistributedMethod method(this, 178);
 		method.addAsciiParameter(hair);
 
 		method.executeWithVoidReturn();
@@ -2036,7 +2288,7 @@ void Player::updateHair() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 158);
+		DistributedMethod method(this, 179);
 
 		method.executeWithVoidReturn();
 	} else
@@ -2048,7 +2300,7 @@ void Player::setPlayerObject(PlayerObject* obj) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 159);
+		DistributedMethod method(this, 180);
 		method.addObjectParameter(obj);
 
 		method.executeWithVoidReturn();
@@ -2061,7 +2313,7 @@ void Player::setOnline() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 160);
+		DistributedMethod method(this, 181);
 
 		method.executeWithVoidReturn();
 	} else
@@ -2073,7 +2325,7 @@ void Player::clearDisconnectEvent() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 161);
+		DistributedMethod method(this, 182);
 
 		method.executeWithVoidReturn();
 	} else
@@ -2085,7 +2337,7 @@ void Player::setClient(ZoneClient* client) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 162);
+		DistributedMethod method(this, 183);
 		method.addObjectParameter(client);
 
 		method.executeWithVoidReturn();
@@ -2098,7 +2350,7 @@ void Player::setOvert() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 163);
+		DistributedMethod method(this, 184);
 
 		method.executeWithVoidReturn();
 	} else
@@ -2110,7 +2362,7 @@ void Player::setCovert() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 164);
+		DistributedMethod method(this, 185);
 
 		method.executeWithVoidReturn();
 	} else
@@ -2122,7 +2374,7 @@ void Player::newChangeFactionEvent(unsigned int faction) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 165);
+		DistributedMethod method(this, 186);
 		method.addUnsignedIntParameter(faction);
 
 		method.executeWithVoidReturn();
@@ -2135,7 +2387,7 @@ void Player::setRaceFileName(string& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 166);
+		DistributedMethod method(this, 187);
 		method.addAsciiParameter(name);
 
 		method.executeWithVoidReturn();
@@ -2148,7 +2400,7 @@ void Player::setStartingLocation(string& loc) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 167);
+		DistributedMethod method(this, 188);
 		method.addAsciiParameter(loc);
 
 		method.executeWithVoidReturn();
@@ -2161,7 +2413,7 @@ void Player::setFactionRank(string& fac) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 168);
+		DistributedMethod method(this, 189);
 		method.addAsciiParameter(fac);
 
 		method.executeWithVoidReturn();
@@ -2174,7 +2426,7 @@ void Player::setItemShift(unsigned int shift) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 169);
+		DistributedMethod method(this, 190);
 		method.addUnsignedIntParameter(shift);
 
 		method.executeWithVoidReturn();
@@ -2187,7 +2439,7 @@ void Player::toggleCharacterBit(unsigned int bit) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 170);
+		DistributedMethod method(this, 191);
 		method.addUnsignedIntParameter(bit);
 
 		method.executeWithVoidReturn();
@@ -2200,7 +2452,7 @@ bool Player::awardBadge(unsigned int badgeindex) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 171);
+		DistributedMethod method(this, 192);
 		method.addUnsignedIntParameter(badgeindex);
 
 		return method.executeWithBooleanReturn();
@@ -2213,7 +2465,7 @@ void Player::setLinkDead() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 172);
+		DistributedMethod method(this, 193);
 
 		method.executeWithVoidReturn();
 	} else
@@ -2225,7 +2477,7 @@ void Player::setLoggingIn() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 173);
+		DistributedMethod method(this, 194);
 
 		method.executeWithVoidReturn();
 	} else
@@ -2237,7 +2489,7 @@ void Player::setAdminLevel(int level) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 174);
+		DistributedMethod method(this, 195);
 		method.addSignedIntParameter(level);
 
 		method.executeWithVoidReturn();
@@ -2250,7 +2502,7 @@ int Player::getAdminLevel() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 175);
+		DistributedMethod method(this, 196);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -2262,7 +2514,7 @@ void Player::setLastTestPositionX(float pos) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 176);
+		DistributedMethod method(this, 197);
 		method.addFloatParameter(pos);
 
 		method.executeWithVoidReturn();
@@ -2275,7 +2527,7 @@ void Player::setLastTestPositionY(float pos) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 177);
+		DistributedMethod method(this, 198);
 		method.addFloatParameter(pos);
 
 		method.executeWithVoidReturn();
@@ -2288,7 +2540,7 @@ void Player::setTradeRequestedPlayer(unsigned long long ID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 178);
+		DistributedMethod method(this, 199);
 		method.addUnsignedLongParameter(ID);
 
 		method.executeWithVoidReturn();
@@ -2301,7 +2553,7 @@ unsigned long long Player::getTradeRequestedPlayer() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 179);
+		DistributedMethod method(this, 200);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -2313,7 +2565,7 @@ void Player::launchFirework(int anim) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 180);
+		DistributedMethod method(this, 201);
 		method.addSignedIntParameter(anim);
 
 		method.executeWithVoidReturn();
@@ -2326,7 +2578,7 @@ void Player::sendMessage(BaseMessage* msg) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 181);
+		DistributedMethod method(this, 202);
 		method.addObjectParameter(msg);
 
 		method.executeWithVoidReturn();
@@ -2339,7 +2591,7 @@ void Player::sendMessage(StandaloneBaseMessage* msg) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 182);
+		DistributedMethod method(this, 203);
 		method.addObjectParameter(msg);
 
 		method.executeWithVoidReturn();
@@ -2352,7 +2604,7 @@ bool Player::isJedi() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 183);
+		DistributedMethod method(this, 204);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -2364,7 +2616,7 @@ void Player::mutePlayer() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 184);
+		DistributedMethod method(this, 205);
 
 		method.executeWithVoidReturn();
 	} else
@@ -2376,7 +2628,7 @@ void Player::toggleImmune() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 185);
+		DistributedMethod method(this, 206);
 
 		method.executeWithVoidReturn();
 	} else
@@ -2388,7 +2640,7 @@ bool Player::hasSuiBox(unsigned int boxID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 186);
+		DistributedMethod method(this, 207);
 		method.addUnsignedIntParameter(boxID);
 
 		return method.executeWithBooleanReturn();
@@ -2401,7 +2653,7 @@ bool Player::hasSuiBoxType(unsigned int boxTypeID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 187);
+		DistributedMethod method(this, 208);
 		method.addUnsignedIntParameter(boxTypeID);
 
 		return method.executeWithBooleanReturn();
@@ -2414,7 +2666,7 @@ void Player::removeSuiBox(unsigned int boxID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 188);
+		DistributedMethod method(this, 209);
 		method.addUnsignedIntParameter(boxID);
 
 		method.executeWithVoidReturn();
@@ -2427,7 +2679,7 @@ SuiBox* Player::getSuiBox(unsigned int boxID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 189);
+		DistributedMethod method(this, 210);
 		method.addUnsignedIntParameter(boxID);
 
 		return (SuiBox*) method.executeWithObjectReturn();
@@ -2440,7 +2692,7 @@ void Player::addSuiBox(SuiBox* sui) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 190);
+		DistributedMethod method(this, 211);
 		method.addObjectParameter(sui);
 
 		method.executeWithVoidReturn();
@@ -2453,7 +2705,7 @@ unsigned int Player::getNewSuiBoxID(unsigned int type) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 191);
+		DistributedMethod method(this, 212);
 		method.addUnsignedIntParameter(type);
 
 		return method.executeWithUnsignedIntReturn();
@@ -2466,7 +2718,7 @@ bool Player::isOnline() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 192);
+		DistributedMethod method(this, 213);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -2478,7 +2730,7 @@ bool Player::isOffline() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 193);
+		DistributedMethod method(this, 214);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -2490,7 +2742,7 @@ bool Player::isLinkDead() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 194);
+		DistributedMethod method(this, 215);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -2502,7 +2754,7 @@ bool Player::isLoggingIn() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 195);
+		DistributedMethod method(this, 216);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -2514,7 +2766,7 @@ bool Player::isLoggingOut() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 196);
+		DistributedMethod method(this, 217);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -2526,7 +2778,7 @@ PlayerObject* Player::getPlayerObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 197);
+		DistributedMethod method(this, 218);
 
 		return (PlayerObject*) method.executeWithObjectReturn();
 	} else
@@ -2538,7 +2790,7 @@ CreatureObject* Player::getConversatingCreature() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 198);
+		DistributedMethod method(this, 219);
 
 		return (CreatureObject*) method.executeWithObjectReturn();
 	} else
@@ -2550,7 +2802,7 @@ string& Player::getFirstName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 199);
+		DistributedMethod method(this, 220);
 
 		method.executeWithAsciiReturn(_return_getFirstName);
 		return _return_getFirstName;
@@ -2563,7 +2815,7 @@ string& Player::getLastName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 200);
+		DistributedMethod method(this, 221);
 
 		method.executeWithAsciiReturn(_return_getLastName);
 		return _return_getLastName;
@@ -2576,7 +2828,7 @@ string& Player::getFirstNameProper() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 201);
+		DistributedMethod method(this, 222);
 
 		method.executeWithAsciiReturn(_return_getFirstNameProper);
 		return _return_getFirstNameProper;
@@ -2589,7 +2841,7 @@ string& Player::getRaceFileName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 202);
+		DistributedMethod method(this, 223);
 
 		method.executeWithAsciiReturn(_return_getRaceFileName);
 		return _return_getRaceFileName;
@@ -2602,7 +2854,7 @@ unicode& Player::getBiography() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 203);
+		DistributedMethod method(this, 224);
 
 		method.executeWithUnicodeReturn(_return_getBiography);
 		return _return_getBiography;
@@ -2615,7 +2867,7 @@ unsigned long long Player::getCharacterID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 204);
+		DistributedMethod method(this, 225);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -2627,7 +2879,7 @@ string& Player::getStartingProfession() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 205);
+		DistributedMethod method(this, 226);
 
 		method.executeWithAsciiReturn(_return_getStartingProfession);
 		return _return_getStartingProfession;
@@ -2640,7 +2892,7 @@ int Player::getZoneIndex() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 206);
+		DistributedMethod method(this, 227);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -2652,7 +2904,7 @@ string& Player::getHairObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 207);
+		DistributedMethod method(this, 228);
 
 		method.executeWithAsciiReturn(_return_getHairObject);
 		return _return_getHairObject;
@@ -2665,7 +2917,7 @@ ZoneClient* Player::getClient() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 208);
+		DistributedMethod method(this, 229);
 
 		return (ZoneClient*) method.executeWithObjectReturn();
 	} else
@@ -2677,7 +2929,7 @@ GroupObject* Player::getGroupObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 209);
+		DistributedMethod method(this, 230);
 
 		return (GroupObject*) method.executeWithObjectReturn();
 	} else
@@ -2689,7 +2941,7 @@ string& Player::getFactionRank() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 210);
+		DistributedMethod method(this, 231);
 
 		method.executeWithAsciiReturn(_return_getFactionRank);
 		return _return_getFactionRank;
@@ -2702,7 +2954,7 @@ unsigned int Player::getRebelPoints() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 211);
+		DistributedMethod method(this, 232);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -2714,7 +2966,7 @@ unsigned int Player::getImperialPoints() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 212);
+		DistributedMethod method(this, 233);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -2726,7 +2978,7 @@ int Player::getPvpRating() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 213);
+		DistributedMethod method(this, 234);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -2738,7 +2990,7 @@ void Player::setPvpRating(int value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 214);
+		DistributedMethod method(this, 235);
 		method.addSignedIntParameter(value);
 
 		method.executeWithVoidReturn();
@@ -2751,7 +3003,7 @@ void Player::increasePvpRating(int value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 215);
+		DistributedMethod method(this, 236);
 		method.addSignedIntParameter(value);
 
 		method.executeWithVoidReturn();
@@ -2764,7 +3016,7 @@ void Player::decreasePvpRating(int value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 216);
+		DistributedMethod method(this, 237);
 		method.addSignedIntParameter(value);
 
 		method.executeWithVoidReturn();
@@ -2777,7 +3029,7 @@ void Player::getPlayersNearYou() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 217);
+		DistributedMethod method(this, 238);
 
 		method.executeWithVoidReturn();
 	} else
@@ -2789,7 +3041,7 @@ int Player::getRegionID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 218);
+		DistributedMethod method(this, 239);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -2801,7 +3053,7 @@ int Player::getCertificationListSize() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 219);
+		DistributedMethod method(this, 240);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -2813,7 +3065,7 @@ string& Player::getCertification(int idx) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 220);
+		DistributedMethod method(this, 241);
 		method.addSignedIntParameter(idx);
 
 		method.executeWithAsciiReturn(_return_getCertification);
@@ -2827,7 +3079,7 @@ bool Player::checkCertification(string& certification) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 221);
+		DistributedMethod method(this, 242);
 		method.addAsciiParameter(certification);
 
 		return method.executeWithBooleanReturn();
@@ -2840,7 +3092,7 @@ int Player::getSlicingAbility() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 222);
+		DistributedMethod method(this, 243);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -2852,7 +3104,7 @@ bool Player::isChatMuted() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 223);
+		DistributedMethod method(this, 244);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -2864,7 +3116,7 @@ bool Player::isImmune() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 224);
+		DistributedMethod method(this, 245);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -2876,7 +3128,7 @@ unsigned int Player::nextMisoRFC() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 225);
+		DistributedMethod method(this, 246);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -2888,7 +3140,7 @@ int Player::checkMisoBSB(int tcb) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 226);
+		DistributedMethod method(this, 247);
 		method.addSignedIntParameter(tcb);
 
 		return method.executeWithSignedIntReturn();
@@ -2901,7 +3153,7 @@ void Player::setMisoBSB(int tms) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 227);
+		DistributedMethod method(this, 248);
 		method.addSignedIntParameter(tms);
 
 		method.executeWithVoidReturn();
@@ -2914,7 +3166,7 @@ void Player::addToCurMisoKeys(string& tck) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 228);
+		DistributedMethod method(this, 249);
 		method.addAsciiParameter(tck);
 
 		method.executeWithVoidReturn();
@@ -2927,7 +3179,7 @@ bool Player::isOnCurMisoKey(string& tmk) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 229);
+		DistributedMethod method(this, 250);
 		method.addAsciiParameter(tmk);
 
 		return method.executeWithBooleanReturn();
@@ -2940,7 +3192,7 @@ void Player::removeFromCurMisoKeys(string& tck) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 230);
+		DistributedMethod method(this, 251);
 		method.addAsciiParameter(tck);
 
 		method.executeWithVoidReturn();
@@ -2953,7 +3205,7 @@ void Player::addToFinMisoKeys(string& tmp) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 231);
+		DistributedMethod method(this, 252);
 		method.addAsciiParameter(tmp);
 
 		method.executeWithVoidReturn();
@@ -2966,7 +3218,7 @@ bool Player::hasCompletedMisoKey(string& tmk) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 232);
+		DistributedMethod method(this, 253);
 		method.addAsciiParameter(tmk);
 
 		return method.executeWithBooleanReturn();
@@ -2979,7 +3231,7 @@ CraftingTool* Player::getCurrentCraftingTool() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 233);
+		DistributedMethod method(this, 254);
 
 		return (CraftingTool*) method.executeWithObjectReturn();
 	} else
@@ -2991,7 +3243,7 @@ CraftingTool* Player::getCraftingTool(const int type, bool doLock) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 234);
+		DistributedMethod method(this, 255);
 		method.addSignedIntParameter(type);
 		method.addBooleanParameter(doLock);
 
@@ -3005,7 +3257,7 @@ void Player::setCurrentCraftingTool(CraftingTool* ct) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 235);
+		DistributedMethod method(this, 256);
 		method.addObjectParameter(ct);
 
 		method.executeWithVoidReturn();
@@ -3018,7 +3270,7 @@ void Player::clearCurrentCraftingTool() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 236);
+		DistributedMethod method(this, 257);
 
 		method.executeWithVoidReturn();
 	} else
@@ -3030,7 +3282,7 @@ void Player::prepareCraftingSession(CraftingTool* ct, DraftSchematic* ds) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 237);
+		DistributedMethod method(this, 258);
 		method.addObjectParameter(ct);
 		method.addObjectParameter(ds);
 
@@ -3044,7 +3296,7 @@ void Player::addIngredientToSlot(TangibleObject* tano, int slot, int counter) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 238);
+		DistributedMethod method(this, 259);
 		method.addObjectParameter(tano);
 		method.addSignedIntParameter(slot);
 		method.addSignedIntParameter(counter);
@@ -3059,7 +3311,7 @@ void Player::removeResourceFromCraft(unsigned long long resID, int slot, int cou
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 239);
+		DistributedMethod method(this, 260);
 		method.addUnsignedLongParameter(resID);
 		method.addSignedIntParameter(slot);
 		method.addSignedIntParameter(counter);
@@ -3074,7 +3326,7 @@ void Player::nextCraftingStage(string& test) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 240);
+		DistributedMethod method(this, 261);
 		method.addAsciiParameter(test);
 
 		method.executeWithVoidReturn();
@@ -3087,7 +3339,7 @@ void Player::craftingCustomization(string& name, int condition) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 241);
+		DistributedMethod method(this, 262);
 		method.addAsciiParameter(name);
 		method.addSignedIntParameter(condition);
 
@@ -3101,7 +3353,7 @@ void Player::createPrototype(string& count) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 242);
+		DistributedMethod method(this, 263);
 		method.addAsciiParameter(count);
 
 		method.executeWithVoidReturn();
@@ -3114,7 +3366,7 @@ void Player::createSchematic(string& count) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 243);
+		DistributedMethod method(this, 264);
 		method.addAsciiParameter(count);
 
 		method.executeWithVoidReturn();
@@ -3127,7 +3379,7 @@ void Player::handleExperimenting(int count, int numRowsAttempted, string& expstr
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 244);
+		DistributedMethod method(this, 265);
 		method.addSignedIntParameter(count);
 		method.addSignedIntParameter(numRowsAttempted);
 		method.addAsciiParameter(expstring);
@@ -3142,7 +3394,7 @@ void Player::sendDraftSchematics() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 245);
+		DistributedMethod method(this, 266);
 
 		method.executeWithVoidReturn();
 	} else
@@ -3154,7 +3406,7 @@ void Player::addDraftSchematicsFromGroupName(const string& schematicGroupName) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 246);
+		DistributedMethod method(this, 267);
 		method.addAsciiParameter(schematicGroupName);
 
 		method.executeWithVoidReturn();
@@ -3167,7 +3419,7 @@ void Player::subtractDraftSchematicsFromGroupName(const string& schematicGroupNa
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 247);
+		DistributedMethod method(this, 268);
 		method.addAsciiParameter(schematicGroupName);
 
 		method.executeWithVoidReturn();
@@ -3180,7 +3432,7 @@ void Player::addDraftSchematic(DraftSchematic* ds) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 248);
+		DistributedMethod method(this, 269);
 		method.addObjectParameter(ds);
 
 		method.executeWithVoidReturn();
@@ -3193,7 +3445,7 @@ void Player::subtractDraftSchematic(DraftSchematic* ds) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 249);
+		DistributedMethod method(this, 270);
 		method.addObjectParameter(ds);
 
 		method.executeWithVoidReturn();
@@ -3206,7 +3458,7 @@ unsigned int Player::getDraftSchematicListSize() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 250);
+		DistributedMethod method(this, 271);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -3218,7 +3470,7 @@ unsigned int Player::getDraftSchematicUpdateCount(unsigned int count) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 251);
+		DistributedMethod method(this, 272);
 		method.addUnsignedIntParameter(count);
 
 		return method.executeWithUnsignedIntReturn();
@@ -3231,7 +3483,7 @@ DraftSchematic* Player::getDraftSchematic(unsigned int schematicID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 252);
+		DistributedMethod method(this, 273);
 		method.addUnsignedIntParameter(schematicID);
 
 		return (DraftSchematic*) method.executeWithObjectReturn();
@@ -3244,7 +3496,7 @@ DraftSchematic* Player::getDraftSchematic(int index) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 253);
+		DistributedMethod method(this, 274);
 		method.addSignedIntParameter(index);
 
 		return (DraftSchematic*) method.executeWithObjectReturn();
@@ -3257,7 +3509,7 @@ bool Player::isChangingFaction() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 254);
+		DistributedMethod method(this, 275);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -3269,7 +3521,7 @@ Datapad* Player::getDatapad() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 255);
+		DistributedMethod method(this, 276);
 
 		return (Datapad*) method.executeWithObjectReturn();
 	} else
@@ -3281,7 +3533,7 @@ unsigned long long Player::getNewItemID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 256);
+		DistributedMethod method(this, 277);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -3293,7 +3545,7 @@ unsigned int Player::getItemShift() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 257);
+		DistributedMethod method(this, 278);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -3305,7 +3557,7 @@ float Player::getLastTestPositionX() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 258);
+		DistributedMethod method(this, 279);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -3317,7 +3569,7 @@ float Player::getLastTestPositionY() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 259);
+		DistributedMethod method(this, 280);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -3329,7 +3581,7 @@ unsigned int Player::getForcePower() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 260);
+		DistributedMethod method(this, 281);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -3341,7 +3593,7 @@ unsigned int Player::getForcePowerMax() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 261);
+		DistributedMethod method(this, 282);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -3353,7 +3605,7 @@ SurveyTool* Player::getSurveyTool() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 262);
+		DistributedMethod method(this, 283);
 
 		return (SurveyTool*) method.executeWithObjectReturn();
 	} else
@@ -3365,7 +3617,7 @@ SurveyTool* Player::getSampleTool() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 263);
+		DistributedMethod method(this, 284);
 
 		return (SurveyTool*) method.executeWithObjectReturn();
 	} else
@@ -3377,7 +3629,7 @@ void Player::setSurveyTool(SurveyTool* sTool) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 264);
+		DistributedMethod method(this, 285);
 		method.addObjectParameter(sTool);
 
 		method.executeWithVoidReturn();
@@ -3390,7 +3642,7 @@ void Player::setSampleTool(SurveyTool* sTool) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 265);
+		DistributedMethod method(this, 286);
 		method.addObjectParameter(sTool);
 
 		method.executeWithVoidReturn();
@@ -3403,7 +3655,7 @@ void Player::setSurveyWaypoint(WaypointObject* id) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 266);
+		DistributedMethod method(this, 287);
 		method.addObjectParameter(id);
 
 		method.executeWithVoidReturn();
@@ -3416,7 +3668,7 @@ WaypointObject* Player::getSurveyWaypoint() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 267);
+		DistributedMethod method(this, 288);
 
 		return (WaypointObject*) method.executeWithObjectReturn();
 	} else
@@ -3428,7 +3680,7 @@ bool Player::getCanSurvey() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 268);
+		DistributedMethod method(this, 289);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -3440,7 +3692,7 @@ bool Player::getCanSample() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 269);
+		DistributedMethod method(this, 290);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -3452,7 +3704,7 @@ void Player::setCanSurvey() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 270);
+		DistributedMethod method(this, 291);
 
 		method.executeWithVoidReturn();
 	} else
@@ -3464,7 +3716,7 @@ void Player::setCanSample() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 271);
+		DistributedMethod method(this, 292);
 
 		method.executeWithVoidReturn();
 	} else
@@ -3476,7 +3728,7 @@ void Player::setSurveyEvent(string& resourcename) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 272);
+		DistributedMethod method(this, 293);
 		method.addAsciiParameter(resourcename);
 
 		method.executeWithVoidReturn();
@@ -3489,7 +3741,7 @@ void Player::setSampleEvent(string& resourcename, bool firstTime) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 273);
+		DistributedMethod method(this, 294);
 		method.addAsciiParameter(resourcename);
 		method.addBooleanParameter(firstTime);
 
@@ -3503,7 +3755,7 @@ void Player::setCancelSample(bool val) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 274);
+		DistributedMethod method(this, 295);
 		method.addBooleanParameter(val);
 
 		method.executeWithVoidReturn();
@@ -3516,7 +3768,7 @@ bool Player::getCancelSample() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 275);
+		DistributedMethod method(this, 296);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -3528,7 +3780,7 @@ void Player::sendSampleTimeRemaining() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 276);
+		DistributedMethod method(this, 297);
 
 		method.executeWithVoidReturn();
 	} else
@@ -3540,7 +3792,7 @@ void Player::setSurveyErrorMessage() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 277);
+		DistributedMethod method(this, 298);
 
 		method.executeWithVoidReturn();
 	} else
@@ -3552,7 +3804,7 @@ void Player::setSampleErrorMessage() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 278);
+		DistributedMethod method(this, 299);
 
 		method.executeWithVoidReturn();
 	} else
@@ -3564,7 +3816,7 @@ bool Player::getSurveyErrorMessage() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 279);
+		DistributedMethod method(this, 300);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -3576,7 +3828,7 @@ bool Player::getSampleErrorMessage() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 280);
+		DistributedMethod method(this, 301);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -3588,7 +3840,7 @@ void Player::setEntertainerEvent() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 281);
+		DistributedMethod method(this, 302);
 
 		method.executeWithVoidReturn();
 	} else
@@ -3600,7 +3852,7 @@ void Player::clearEntertainerEvent() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 282);
+		DistributedMethod method(this, 303);
 
 		method.executeWithVoidReturn();
 	} else
@@ -3612,7 +3864,7 @@ void Player::setLastNpcConvStr(const string& conv) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 283);
+		DistributedMethod method(this, 304);
 		method.addAsciiParameter(conv);
 
 		method.executeWithVoidReturn();
@@ -3625,7 +3877,7 @@ void Player::setLastNpcConvMessStr(const string& mess) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 284);
+		DistributedMethod method(this, 305);
 		method.addAsciiParameter(mess);
 
 		method.executeWithVoidReturn();
@@ -3638,7 +3890,7 @@ string& Player::getLastNpcConvStr() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 285);
+		DistributedMethod method(this, 306);
 
 		method.executeWithAsciiReturn(_return_getLastNpcConvStr);
 		return _return_getLastNpcConvStr;
@@ -3651,7 +3903,7 @@ string& Player::getLastNpcConvMessStr() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 286);
+		DistributedMethod method(this, 307);
 
 		method.executeWithAsciiReturn(_return_getLastNpcConvMessStr);
 		return _return_getLastNpcConvMessStr;
@@ -3701,816 +3953,879 @@ Packet* PlayerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		clearLogoutEvent();
 		break;
 	case 16:
-		insertToZone((Zone*) inv->getObjectParameter());
+		makeCharacterMask();
 		break;
 	case 17:
-		reinsertToZone((Zone*) inv->getObjectParameter());
+		resp->insertInt(getCharacterMask());
 		break;
 	case 18:
-		updateZone(inv->getBooleanParameter());
+		insertToZone((Zone*) inv->getObjectParameter());
 		break;
 	case 19:
-		updateZoneWithParent(inv->getUnsignedLongParameter(), inv->getBooleanParameter());
+		reinsertToZone((Zone*) inv->getObjectParameter());
 		break;
 	case 20:
-		switchMap(inv->getSignedIntParameter());
+		updateZone(inv->getBooleanParameter());
 		break;
 	case 21:
-		doWarp(inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getUnsignedLongParameter());
+		updateZoneWithParent(inv->getUnsignedLongParameter(), inv->getBooleanParameter());
 		break;
 	case 22:
-		bounceBack();
+		switchMap(inv->getSignedIntParameter());
 		break;
 	case 23:
-		sendTo((Player*) inv->getObjectParameter());
+		doWarp(inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getUnsignedLongParameter());
 		break;
 	case 24:
-		sendToOwner();
+		bounceBack();
 		break;
 	case 25:
-		notifySceneReady();
+		sendTo((Player*) inv->getObjectParameter());
 		break;
 	case 26:
-		addDatapadItem((SceneObject*) inv->getObjectParameter());
+		sendToOwner();
 		break;
 	case 27:
-		resp->insertLong(getDatapadItem(inv->getUnsignedLongParameter())->_getObjectID());
+		notifySceneReady();
 		break;
 	case 28:
-		removeDatapadItem(inv->getUnsignedLongParameter());
+		addDatapadItem((SceneObject*) inv->getObjectParameter());
 		break;
 	case 29:
-		resp->insertLong(getPlayerItem(inv->getUnsignedLongParameter())->_getObjectID());
+		resp->insertLong(getDatapadItem(inv->getUnsignedLongParameter())->_getObjectID());
 		break;
 	case 30:
-		resp->insertInt(getTargetHealth());
+		removeDatapadItem(inv->getUnsignedLongParameter());
 		break;
 	case 31:
-		resp->insertInt(getTargetStrength());
+		resp->insertLong(getPlayerItem(inv->getUnsignedLongParameter())->_getObjectID());
 		break;
 	case 32:
-		resp->insertInt(getTargetConstitution());
+		resp->insertInt(getTargetHealth());
 		break;
 	case 33:
-		resp->insertInt(getTargetAction());
+		resp->insertInt(getTargetStrength());
 		break;
 	case 34:
-		resp->insertInt(getTargetQuickness());
+		resp->insertInt(getTargetConstitution());
 		break;
 	case 35:
-		resp->insertInt(getTargetStamina());
+		resp->insertInt(getTargetAction());
 		break;
 	case 36:
-		resp->insertInt(getTargetMind());
+		resp->insertInt(getTargetQuickness());
 		break;
 	case 37:
-		resp->insertInt(getTargetFocus());
+		resp->insertInt(getTargetStamina());
 		break;
 	case 38:
-		resp->insertInt(getTargetWillpower());
+		resp->insertInt(getTargetMind());
 		break;
 	case 39:
-		setTargetHealth(inv->getUnsignedIntParameter());
+		resp->insertInt(getTargetFocus());
 		break;
 	case 40:
-		setTargetStrength(inv->getUnsignedIntParameter());
+		resp->insertInt(getTargetWillpower());
 		break;
 	case 41:
-		setTargetConstitution(inv->getUnsignedIntParameter());
+		setTargetHealth(inv->getUnsignedIntParameter());
 		break;
 	case 42:
-		setTargetAction(inv->getUnsignedIntParameter());
+		setTargetStrength(inv->getUnsignedIntParameter());
 		break;
 	case 43:
-		setTargetQuickness(inv->getUnsignedIntParameter());
+		setTargetConstitution(inv->getUnsignedIntParameter());
 		break;
 	case 44:
-		setTargetStamina(inv->getUnsignedIntParameter());
+		setTargetAction(inv->getUnsignedIntParameter());
 		break;
 	case 45:
-		setTargetMind(inv->getUnsignedIntParameter());
+		setTargetQuickness(inv->getUnsignedIntParameter());
 		break;
 	case 46:
-		setTargetFocus(inv->getUnsignedIntParameter());
+		setTargetStamina(inv->getUnsignedIntParameter());
 		break;
 	case 47:
-		setTargetWillpower(inv->getUnsignedIntParameter());
+		setTargetMind(inv->getUnsignedIntParameter());
 		break;
 	case 48:
-		queueFlourish(inv->getAsciiParameter(_param0_queueFlourish__string_long_int_), inv->getUnsignedLongParameter(), inv->getUnsignedIntParameter());
+		setTargetFocus(inv->getUnsignedIntParameter());
 		break;
 	case 49:
-		clearQueueAction(inv->getUnsignedIntParameter(), inv->getFloatParameter(), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter());
+		setTargetWillpower(inv->getUnsignedIntParameter());
 		break;
 	case 50:
-		queueAction((Player*) inv->getObjectParameter(), inv->getUnsignedLongParameter(), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter(), inv->getAsciiParameter(_param4_queueAction__Player_long_int_int_string_));
+		resp->insertInt(getMinHealth());
 		break;
 	case 51:
-		deleteQueueAction(inv->getUnsignedIntParameter());
+		resp->insertInt(getMaxHealth());
 		break;
 	case 52:
-		changePosture(inv->getSignedIntParameter());
+		resp->insertInt(getMinStrength());
 		break;
 	case 53:
-		doCenterOfBeing();
+		resp->insertInt(getMaxStrength());
 		break;
 	case 54:
-		removeCenterOfBeing();
+		resp->insertInt(getMinConstitution());
 		break;
 	case 55:
-		doPowerboost();
+		resp->insertInt(getMaxConstitution());
 		break;
 	case 56:
-		doPeace();
+		resp->insertInt(getMinAction());
 		break;
 	case 57:
-		kill();
+		resp->insertInt(getMaxAction());
 		break;
 	case 58:
-		deathblow((Player*) inv->getObjectParameter());
+		resp->insertInt(getMinQuickness());
 		break;
 	case 59:
-		revive();
+		resp->insertInt(getMaxQuickness());
 		break;
 	case 60:
-		doClone();
+		resp->insertInt(getMinStamina());
 		break;
 	case 61:
-		activateClone();
+		resp->insertInt(getMaxStamina());
 		break;
 	case 62:
-		doRecovery();
+		resp->insertInt(getMinMind());
 		break;
 	case 63:
-		activateReviveCountdown();
+		resp->insertInt(getMaxMind());
 		break;
 	case 64:
-		clearReviveCountdown();
+		resp->insertInt(getMinFocus());
 		break;
 	case 65:
-		countdownRevive(inv->getSignedIntParameter());
+		resp->insertInt(getMaxFocus());
 		break;
 	case 66:
-		resp->insertBoolean(hasConsent(inv->getAsciiParameter(_param0_hasConsent__string_)));
+		resp->insertInt(getMinWillpower());
 		break;
 	case 67:
-		resp->insertBoolean(giveConsent(inv->getAsciiParameter(_param0_giveConsent__string_)));
+		resp->insertInt(getMaxWillpower());
 		break;
 	case 68:
-		resp->insertBoolean(revokeConsent(inv->getAsciiParameter(_param0_revokeConsent__string_)));
+		resp->insertInt(getTotalAttribPoints());
 		break;
 	case 69:
-		resp->insertSignedInt(getConsentSize());
+		queueFlourish(inv->getAsciiParameter(_param0_queueFlourish__string_long_int_), inv->getUnsignedLongParameter(), inv->getUnsignedIntParameter());
 		break;
 	case 70:
-		resp->insertAscii(getConsentEntry(inv->getSignedIntParameter()));
+		clearQueueAction(inv->getUnsignedIntParameter(), inv->getFloatParameter(), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter());
 		break;
 	case 71:
-		sendConsentBox();
+		queueAction((Player*) inv->getObjectParameter(), inv->getUnsignedLongParameter(), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter(), inv->getAsciiParameter(_param4_queueAction__Player_long_int_int_string_));
 		break;
 	case 72:
-		resp->insertBoolean(isRevivable());
+		deleteQueueAction(inv->getUnsignedIntParameter());
 		break;
 	case 73:
-		addBuff(inv->getUnsignedIntParameter(), inv->getFloatParameter());
+		changePosture(inv->getSignedIntParameter());
 		break;
 	case 74:
-		lootCorpse(inv->getBooleanParameter());
+		doCenterOfBeing();
 		break;
 	case 75:
-		lootObject((Creature*) inv->getObjectParameter(), (SceneObject*) inv->getObjectParameter());
+		removeCenterOfBeing();
 		break;
 	case 76:
-		addTradeItem((TangibleObject*) inv->getObjectParameter());
+		doPowerboost();
 		break;
 	case 77:
-		clearTradeItems();
+		doPeace();
 		break;
 	case 78:
-		resp->insertSignedInt(getTradeSize());
+		kill();
 		break;
 	case 79:
-		resp->insertLong(getTradeItem(inv->getSignedIntParameter())->_getObjectID());
+		deathblow((Player*) inv->getObjectParameter());
 		break;
 	case 80:
-		setAcceptedTrade(inv->getBooleanParameter());
+		revive();
 		break;
 	case 81:
-		resp->insertBoolean(hasAcceptedTrade());
+		doClone();
 		break;
 	case 82:
-		setVerifiedTrade(inv->getBooleanParameter());
+		activateClone();
 		break;
 	case 83:
-		resp->insertBoolean(hasVerifiedTrade());
+		doRecovery();
 		break;
 	case 84:
-		setMoneyToTrade(inv->getUnsignedIntParameter());
+		activateReviveCountdown();
 		break;
 	case 85:
-		resp->insertInt(getMoneyToTrade());
+		clearReviveCountdown();
 		break;
 	case 86:
-		resp->insertBoolean(getMeditate());
+		countdownRevive(inv->getSignedIntParameter());
 		break;
 	case 87:
-		changeCloth(inv->getUnsignedLongParameter());
+		resp->insertBoolean(hasConsent(inv->getAsciiParameter(_param0_hasConsent__string_)));
 		break;
 	case 88:
-		changeWeapon(inv->getUnsignedLongParameter());
+		resp->insertBoolean(giveConsent(inv->getAsciiParameter(_param0_giveConsent__string_)));
 		break;
 	case 89:
-		changeArmor(inv->getUnsignedLongParameter(), inv->getBooleanParameter());
+		resp->insertBoolean(revokeConsent(inv->getAsciiParameter(_param0_revokeConsent__string_)));
 		break;
 	case 90:
-		setWeaponSkillMods((Weapon*) inv->getObjectParameter());
+		resp->insertSignedInt(getConsentSize());
 		break;
 	case 91:
-		setArmorSkillMods((Armor*) inv->getObjectParameter());
+		resp->insertAscii(getConsentEntry(inv->getSignedIntParameter()));
 		break;
 	case 92:
-		resp->insertBoolean(setArmorEncumbrance((Armor*) inv->getObjectParameter(), inv->getBooleanParameter()));
+		sendConsentBox();
 		break;
 	case 93:
-		applyAttachment(inv->getUnsignedLongParameter(), inv->getUnsignedLongParameter());
+		resp->insertBoolean(isRevivable());
 		break;
 	case 94:
-		applyPowerup(inv->getUnsignedLongParameter(), inv->getUnsignedLongParameter());
+		addBuff(inv->getUnsignedIntParameter(), inv->getFloatParameter());
 		break;
 	case 95:
-		createItems();
+		lootCorpse(inv->getBooleanParameter());
 		break;
 	case 96:
-		loadItems();
+		lootObject((Creature*) inv->getObjectParameter(), (SceneObject*) inv->getObjectParameter());
 		break;
 	case 97:
-		createBaseStats();
+		addTradeItem((TangibleObject*) inv->getObjectParameter());
 		break;
 	case 98:
-		decayInventory();
+		clearTradeItems();
 		break;
 	case 99:
-		resp->insertBoolean(hasFullInventory());
+		resp->insertSignedInt(getTradeSize());
 		break;
 	case 100:
-		addInventoryItem((TangibleObject*) inv->getObjectParameter());
+		resp->insertLong(getTradeItem(inv->getSignedIntParameter())->_getObjectID());
 		break;
 	case 101:
-		addInventoryResource((ResourceContainer*) inv->getObjectParameter());
+		setAcceptedTrade(inv->getBooleanParameter());
 		break;
 	case 102:
-		equipPlayerItem((TangibleObject*) inv->getObjectParameter());
+		resp->insertBoolean(hasAcceptedTrade());
 		break;
 	case 103:
-		saveProfessions();
+		setVerifiedTrade(inv->getBooleanParameter());
 		break;
 	case 104:
-		loadProfessions();
+		resp->insertBoolean(hasVerifiedTrade());
 		break;
 	case 105:
-		trainStartingProfession();
+		setMoneyToTrade(inv->getUnsignedIntParameter());
 		break;
 	case 106:
-		resp->insertBoolean(trainSkillBox(inv->getAsciiParameter(_param0_trainSkillBox__string_bool_), inv->getBooleanParameter()));
+		resp->insertInt(getMoneyToTrade());
 		break;
 	case 107:
-		surrenderSkillBox(inv->getAsciiParameter(_param0_surrenderSkillBox__string_));
+		resp->insertBoolean(getMeditate());
 		break;
 	case 108:
-		resetSkillBoxesIterator();
+		changeCloth(inv->getUnsignedLongParameter());
 		break;
 	case 109:
-		resp->insertSignedInt(getSkillBoxesSize());
+		changeWeapon(inv->getUnsignedLongParameter());
 		break;
 	case 110:
-		resp->insertAscii(getNextSkillBox());
+		changeArmor(inv->getUnsignedLongParameter(), inv->getBooleanParameter());
 		break;
 	case 111:
-		resp->insertBoolean(hasNextSkillBox());
+		setWeaponSkillMods((Weapon*) inv->getObjectParameter());
 		break;
 	case 112:
-		resp->insertBoolean(hasSkillBox(inv->getAsciiParameter(_param0_hasSkillBox__string_)));
+		setArmorSkillMods((Armor*) inv->getObjectParameter());
 		break;
 	case 113:
-		addWaypoint((WaypointObject*) inv->getObjectParameter());
+		resp->insertBoolean(setArmorEncumbrance((Armor*) inv->getObjectParameter(), inv->getBooleanParameter()));
 		break;
 	case 114:
-		resp->insertBoolean(removeWaypoint((WaypointObject*) inv->getObjectParameter()));
+		applyAttachment(inv->getUnsignedLongParameter(), inv->getUnsignedLongParameter());
 		break;
 	case 115:
-		resp->insertLong(getWaypoint(inv->getUnsignedLongParameter())->_getObjectID());
+		applyPowerup(inv->getUnsignedLongParameter(), inv->getUnsignedLongParameter());
 		break;
 	case 116:
-		updateWaypoint((WaypointObject*) inv->getObjectParameter());
+		createItems();
 		break;
 	case 117:
-		saveWaypoints((Player*) inv->getObjectParameter());
+		loadItems();
 		break;
 	case 118:
-		resp->insertLong(searchWaypoint((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_searchWaypoint__Player_string_int_), inv->getSignedIntParameter())->_getObjectID());
+		createBaseStats();
 		break;
 	case 119:
-		queueHeal((TangibleObject*) inv->getObjectParameter(), inv->getUnsignedIntParameter(), inv->getAsciiParameter(_param2_queueHeal__TangibleObject_int_string_));
+		decayInventory();
 		break;
 	case 120:
-		addXp(inv->getAsciiParameter(_param0_addXp__string_int_bool_), inv->getSignedIntParameter(), inv->getBooleanParameter());
+		resp->insertBoolean(hasFullInventory());
 		break;
 	case 121:
-		removeXp(inv->getAsciiParameter(_param0_removeXp__string_int_bool_), inv->getSignedIntParameter(), inv->getBooleanParameter());
+		addInventoryItem((TangibleObject*) inv->getObjectParameter());
 		break;
 	case 122:
-		removeFromDuelList((Player*) inv->getObjectParameter());
+		addInventoryResource((ResourceContainer*) inv->getObjectParameter());
 		break;
 	case 123:
-		addToDuelList((Player*) inv->getObjectParameter());
+		equipPlayerItem((TangibleObject*) inv->getObjectParameter());
 		break;
 	case 124:
-		resp->insertBoolean(isInDuelWith((Player*) inv->getObjectParameter(), inv->getBooleanParameter()));
+		saveProfessions();
 		break;
 	case 125:
-		resp->insertLong(getDuelListObject(inv->getSignedIntParameter())->_getObjectID());
+		loadProfessions();
 		break;
 	case 126:
-		resp->insertBoolean(requestedDuelTo((Player*) inv->getObjectParameter()));
+		trainStartingProfession();
 		break;
 	case 127:
-		resp->insertBoolean(isDuelListEmpty());
+		resp->insertBoolean(trainSkillBox(inv->getAsciiParameter(_param0_trainSkillBox__string_bool_), inv->getBooleanParameter()));
 		break;
 	case 128:
-		resp->insertSignedInt(getDuelListSize());
+		surrenderSkillBox(inv->getAsciiParameter(_param0_surrenderSkillBox__string_));
 		break;
 	case 129:
-		resp->insertBoolean(setGuild(inv->getUnsignedIntParameter()));
+		resetSkillBoxesIterator();
 		break;
 	case 130:
-		setGuild((Guild*) inv->getObjectParameter());
+		resp->insertSignedInt(getSkillBoxesSize());
 		break;
 	case 131:
-		resp->insertBoolean(updateGuild(inv->getUnsignedIntParameter()));
+		resp->insertAscii(getNextSkillBox());
 		break;
 	case 132:
-		updateGuild((Guild*) inv->getObjectParameter());
+		resp->insertBoolean(hasNextSkillBox());
 		break;
 	case 133:
-		addChatRoom((ChatRoom*) inv->getObjectParameter());
+		resp->insertBoolean(hasSkillBox(inv->getAsciiParameter(_param0_hasSkillBox__string_)));
 		break;
 	case 134:
-		removeChatRoom((ChatRoom*) inv->getObjectParameter());
+		addWaypoint((WaypointObject*) inv->getObjectParameter());
 		break;
 	case 135:
-		sendSystemMessage(inv->getAsciiParameter(_param0_sendSystemMessage__string_));
+		resp->insertBoolean(removeWaypoint((WaypointObject*) inv->getObjectParameter()));
 		break;
 	case 136:
-		sendSystemMessage(inv->getUnicodeParameter(_param0_sendSystemMessage__unicode_));
+		resp->insertLong(getWaypoint(inv->getUnsignedLongParameter())->_getObjectID());
 		break;
 	case 137:
-		sendSystemMessage(inv->getAsciiParameter(_param0_sendSystemMessage__string_string_long_), inv->getAsciiParameter(_param1_sendSystemMessage__string_string_long_), inv->getUnsignedLongParameter());
+		updateWaypoint((WaypointObject*) inv->getObjectParameter());
 		break;
 	case 138:
-		setConversatingCreature((CreatureObject*) inv->getObjectParameter());
+		saveWaypoints((Player*) inv->getObjectParameter());
 		break;
 	case 139:
-		setFirstName(inv->getAsciiParameter(_param0_setFirstName__string_));
+		resp->insertLong(searchWaypoint((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_searchWaypoint__Player_string_int_), inv->getSignedIntParameter())->_getObjectID());
 		break;
 	case 140:
-		setLastName(inv->getAsciiParameter(_param0_setLastName__string_));
+		queueHeal((TangibleObject*) inv->getObjectParameter(), inv->getUnsignedIntParameter(), inv->getAsciiParameter(_param2_queueHeal__TangibleObject_int_string_));
 		break;
 	case 141:
-		setFirstNameProper(inv->getAsciiParameter(_param0_setFirstNameProper__string_));
+		addXp(inv->getAsciiParameter(_param0_addXp__string_int_bool_), inv->getSignedIntParameter(), inv->getBooleanParameter());
 		break;
 	case 142:
-		setBiography(inv->getAsciiParameter(_param0_setBiography__string_));
+		removeXp(inv->getAsciiParameter(_param0_removeXp__string_int_bool_), inv->getSignedIntParameter(), inv->getBooleanParameter());
 		break;
 	case 143:
-		setBiography(inv->getUnicodeParameter(_param0_setBiography__unicode_));
+		removeFromDuelList((Player*) inv->getObjectParameter());
 		break;
 	case 144:
-		resp->insertBoolean(changeForcePowerBar(inv->getSignedIntParameter()));
+		addToDuelList((Player*) inv->getObjectParameter());
 		break;
 	case 145:
-		setForcePowerBar(inv->getSignedIntParameter());
+		resp->insertBoolean(isInDuelWith((Player*) inv->getObjectParameter(), inv->getBooleanParameter()));
 		break;
 	case 146:
-		updateMaxForcePowerBar(inv->getBooleanParameter());
+		resp->insertLong(getDuelListObject(inv->getSignedIntParameter())->_getObjectID());
 		break;
 	case 147:
-		setFoodFilling(inv->getSignedIntParameter(), inv->getBooleanParameter());
+		resp->insertBoolean(requestedDuelTo((Player*) inv->getObjectParameter()));
 		break;
 	case 148:
-		setDrinkFilling(inv->getSignedIntParameter(), inv->getBooleanParameter());
+		resp->insertBoolean(isDuelListEmpty());
 		break;
 	case 149:
-		changeFoodFilling(inv->getSignedIntParameter(), inv->getBooleanParameter());
+		resp->insertSignedInt(getDuelListSize());
 		break;
 	case 150:
-		changeDrinkFilling(inv->getSignedIntParameter(), inv->getBooleanParameter());
+		resp->insertBoolean(setGuild(inv->getUnsignedIntParameter()));
 		break;
 	case 151:
-		resp->insertSignedInt(getFoodFilling());
+		setGuild((Guild*) inv->getObjectParameter());
 		break;
 	case 152:
-		resp->insertSignedInt(getDrinkFilling());
+		resp->insertBoolean(updateGuild(inv->getUnsignedIntParameter()));
 		break;
 	case 153:
-		activateDigest();
+		updateGuild((Guild*) inv->getObjectParameter());
 		break;
 	case 154:
-		activateQueueAction();
+		addChatRoom((ChatRoom*) inv->getObjectParameter());
 		break;
 	case 155:
-		setCharacterID(inv->getUnsignedLongParameter());
+		removeChatRoom((ChatRoom*) inv->getObjectParameter());
 		break;
 	case 156:
-		setStartingProfession(inv->getAsciiParameter(_param0_setStartingProfession__string_));
+		sendSystemMessage(inv->getAsciiParameter(_param0_sendSystemMessage__string_));
 		break;
 	case 157:
-		setHairObject(inv->getAsciiParameter(_param0_setHairObject__string_));
+		sendSystemMessage(inv->getUnicodeParameter(_param0_sendSystemMessage__unicode_));
 		break;
 	case 158:
-		updateHair();
+		sendSystemMessage(inv->getAsciiParameter(_param0_sendSystemMessage__string_string_long_), inv->getAsciiParameter(_param1_sendSystemMessage__string_string_long_), inv->getUnsignedLongParameter());
 		break;
 	case 159:
-		setPlayerObject((PlayerObject*) inv->getObjectParameter());
+		setConversatingCreature((CreatureObject*) inv->getObjectParameter());
 		break;
 	case 160:
-		setOnline();
+		setFirstName(inv->getAsciiParameter(_param0_setFirstName__string_));
 		break;
 	case 161:
-		clearDisconnectEvent();
+		setLastName(inv->getAsciiParameter(_param0_setLastName__string_));
 		break;
 	case 162:
-		setClient((ZoneClient*) inv->getObjectParameter());
+		setFirstNameProper(inv->getAsciiParameter(_param0_setFirstNameProper__string_));
 		break;
 	case 163:
-		setOvert();
+		setBiography(inv->getAsciiParameter(_param0_setBiography__string_));
 		break;
 	case 164:
-		setCovert();
+		setBiography(inv->getUnicodeParameter(_param0_setBiography__unicode_));
 		break;
 	case 165:
-		newChangeFactionEvent(inv->getUnsignedIntParameter());
+		resp->insertBoolean(changeForcePowerBar(inv->getSignedIntParameter()));
 		break;
 	case 166:
-		setRaceFileName(inv->getAsciiParameter(_param0_setRaceFileName__string_));
+		setForcePowerBar(inv->getSignedIntParameter());
 		break;
 	case 167:
-		setStartingLocation(inv->getAsciiParameter(_param0_setStartingLocation__string_));
+		updateMaxForcePowerBar(inv->getBooleanParameter());
 		break;
 	case 168:
-		setFactionRank(inv->getAsciiParameter(_param0_setFactionRank__string_));
+		setFoodFilling(inv->getSignedIntParameter(), inv->getBooleanParameter());
 		break;
 	case 169:
-		setItemShift(inv->getUnsignedIntParameter());
+		setDrinkFilling(inv->getSignedIntParameter(), inv->getBooleanParameter());
 		break;
 	case 170:
-		toggleCharacterBit(inv->getUnsignedIntParameter());
+		changeFoodFilling(inv->getSignedIntParameter(), inv->getBooleanParameter());
 		break;
 	case 171:
-		resp->insertBoolean(awardBadge(inv->getUnsignedIntParameter()));
+		changeDrinkFilling(inv->getSignedIntParameter(), inv->getBooleanParameter());
 		break;
 	case 172:
-		setLinkDead();
+		resp->insertSignedInt(getFoodFilling());
 		break;
 	case 173:
-		setLoggingIn();
+		resp->insertSignedInt(getDrinkFilling());
 		break;
 	case 174:
-		setAdminLevel(inv->getSignedIntParameter());
+		activateDigest();
 		break;
 	case 175:
-		resp->insertSignedInt(getAdminLevel());
+		activateQueueAction();
 		break;
 	case 176:
-		setLastTestPositionX(inv->getFloatParameter());
+		setCharacterID(inv->getUnsignedLongParameter());
 		break;
 	case 177:
-		setLastTestPositionY(inv->getFloatParameter());
+		setStartingProfession(inv->getAsciiParameter(_param0_setStartingProfession__string_));
 		break;
 	case 178:
-		setTradeRequestedPlayer(inv->getUnsignedLongParameter());
+		setHairObject(inv->getAsciiParameter(_param0_setHairObject__string_));
 		break;
 	case 179:
-		resp->insertLong(getTradeRequestedPlayer());
+		updateHair();
 		break;
 	case 180:
-		launchFirework(inv->getSignedIntParameter());
+		setPlayerObject((PlayerObject*) inv->getObjectParameter());
 		break;
 	case 181:
-		sendMessage((BaseMessage*) inv->getObjectParameter());
+		setOnline();
 		break;
 	case 182:
-		sendMessage((StandaloneBaseMessage*) inv->getObjectParameter());
+		clearDisconnectEvent();
 		break;
 	case 183:
-		resp->insertBoolean(isJedi());
+		setClient((ZoneClient*) inv->getObjectParameter());
 		break;
 	case 184:
-		mutePlayer();
+		setOvert();
 		break;
 	case 185:
-		toggleImmune();
+		setCovert();
 		break;
 	case 186:
-		resp->insertBoolean(hasSuiBox(inv->getUnsignedIntParameter()));
+		newChangeFactionEvent(inv->getUnsignedIntParameter());
 		break;
 	case 187:
-		resp->insertBoolean(hasSuiBoxType(inv->getUnsignedIntParameter()));
+		setRaceFileName(inv->getAsciiParameter(_param0_setRaceFileName__string_));
 		break;
 	case 188:
-		removeSuiBox(inv->getUnsignedIntParameter());
+		setStartingLocation(inv->getAsciiParameter(_param0_setStartingLocation__string_));
 		break;
 	case 189:
-		resp->insertLong(getSuiBox(inv->getUnsignedIntParameter())->_getObjectID());
+		setFactionRank(inv->getAsciiParameter(_param0_setFactionRank__string_));
 		break;
 	case 190:
-		addSuiBox((SuiBox*) inv->getObjectParameter());
+		setItemShift(inv->getUnsignedIntParameter());
 		break;
 	case 191:
-		resp->insertInt(getNewSuiBoxID(inv->getUnsignedIntParameter()));
+		toggleCharacterBit(inv->getUnsignedIntParameter());
 		break;
 	case 192:
-		resp->insertBoolean(isOnline());
+		resp->insertBoolean(awardBadge(inv->getUnsignedIntParameter()));
 		break;
 	case 193:
-		resp->insertBoolean(isOffline());
+		setLinkDead();
 		break;
 	case 194:
-		resp->insertBoolean(isLinkDead());
+		setLoggingIn();
 		break;
 	case 195:
-		resp->insertBoolean(isLoggingIn());
+		setAdminLevel(inv->getSignedIntParameter());
 		break;
 	case 196:
-		resp->insertBoolean(isLoggingOut());
+		resp->insertSignedInt(getAdminLevel());
 		break;
 	case 197:
-		resp->insertLong(getPlayerObject()->_getObjectID());
+		setLastTestPositionX(inv->getFloatParameter());
 		break;
 	case 198:
-		resp->insertLong(getConversatingCreature()->_getObjectID());
+		setLastTestPositionY(inv->getFloatParameter());
 		break;
 	case 199:
-		resp->insertAscii(getFirstName());
+		setTradeRequestedPlayer(inv->getUnsignedLongParameter());
 		break;
 	case 200:
-		resp->insertAscii(getLastName());
+		resp->insertLong(getTradeRequestedPlayer());
 		break;
 	case 201:
-		resp->insertAscii(getFirstNameProper());
+		launchFirework(inv->getSignedIntParameter());
 		break;
 	case 202:
-		resp->insertAscii(getRaceFileName());
+		sendMessage((BaseMessage*) inv->getObjectParameter());
 		break;
 	case 203:
-		resp->insertUnicode(getBiography());
+		sendMessage((StandaloneBaseMessage*) inv->getObjectParameter());
 		break;
 	case 204:
-		resp->insertLong(getCharacterID());
+		resp->insertBoolean(isJedi());
 		break;
 	case 205:
-		resp->insertAscii(getStartingProfession());
+		mutePlayer();
 		break;
 	case 206:
-		resp->insertSignedInt(getZoneIndex());
+		toggleImmune();
 		break;
 	case 207:
-		resp->insertAscii(getHairObject());
+		resp->insertBoolean(hasSuiBox(inv->getUnsignedIntParameter()));
 		break;
 	case 208:
-		resp->insertLong(getClient()->_getObjectID());
+		resp->insertBoolean(hasSuiBoxType(inv->getUnsignedIntParameter()));
 		break;
 	case 209:
-		resp->insertLong(getGroupObject()->_getObjectID());
+		removeSuiBox(inv->getUnsignedIntParameter());
 		break;
 	case 210:
-		resp->insertAscii(getFactionRank());
+		resp->insertLong(getSuiBox(inv->getUnsignedIntParameter())->_getObjectID());
 		break;
 	case 211:
-		resp->insertInt(getRebelPoints());
+		addSuiBox((SuiBox*) inv->getObjectParameter());
 		break;
 	case 212:
-		resp->insertInt(getImperialPoints());
+		resp->insertInt(getNewSuiBoxID(inv->getUnsignedIntParameter()));
 		break;
 	case 213:
-		resp->insertSignedInt(getPvpRating());
+		resp->insertBoolean(isOnline());
 		break;
 	case 214:
-		setPvpRating(inv->getSignedIntParameter());
+		resp->insertBoolean(isOffline());
 		break;
 	case 215:
-		increasePvpRating(inv->getSignedIntParameter());
+		resp->insertBoolean(isLinkDead());
 		break;
 	case 216:
-		decreasePvpRating(inv->getSignedIntParameter());
+		resp->insertBoolean(isLoggingIn());
 		break;
 	case 217:
-		getPlayersNearYou();
+		resp->insertBoolean(isLoggingOut());
 		break;
 	case 218:
-		resp->insertSignedInt(getRegionID());
+		resp->insertLong(getPlayerObject()->_getObjectID());
 		break;
 	case 219:
-		resp->insertSignedInt(getCertificationListSize());
+		resp->insertLong(getConversatingCreature()->_getObjectID());
 		break;
 	case 220:
-		resp->insertAscii(getCertification(inv->getSignedIntParameter()));
+		resp->insertAscii(getFirstName());
 		break;
 	case 221:
-		resp->insertBoolean(checkCertification(inv->getAsciiParameter(_param0_checkCertification__string_)));
+		resp->insertAscii(getLastName());
 		break;
 	case 222:
-		resp->insertSignedInt(getSlicingAbility());
+		resp->insertAscii(getFirstNameProper());
 		break;
 	case 223:
-		resp->insertBoolean(isChatMuted());
+		resp->insertAscii(getRaceFileName());
 		break;
 	case 224:
-		resp->insertBoolean(isImmune());
+		resp->insertUnicode(getBiography());
 		break;
 	case 225:
-		resp->insertInt(nextMisoRFC());
+		resp->insertLong(getCharacterID());
 		break;
 	case 226:
-		resp->insertSignedInt(checkMisoBSB(inv->getSignedIntParameter()));
+		resp->insertAscii(getStartingProfession());
 		break;
 	case 227:
-		setMisoBSB(inv->getSignedIntParameter());
+		resp->insertSignedInt(getZoneIndex());
 		break;
 	case 228:
-		addToCurMisoKeys(inv->getAsciiParameter(_param0_addToCurMisoKeys__string_));
+		resp->insertAscii(getHairObject());
 		break;
 	case 229:
-		resp->insertBoolean(isOnCurMisoKey(inv->getAsciiParameter(_param0_isOnCurMisoKey__string_)));
+		resp->insertLong(getClient()->_getObjectID());
 		break;
 	case 230:
-		removeFromCurMisoKeys(inv->getAsciiParameter(_param0_removeFromCurMisoKeys__string_));
+		resp->insertLong(getGroupObject()->_getObjectID());
 		break;
 	case 231:
-		addToFinMisoKeys(inv->getAsciiParameter(_param0_addToFinMisoKeys__string_));
+		resp->insertAscii(getFactionRank());
 		break;
 	case 232:
-		resp->insertBoolean(hasCompletedMisoKey(inv->getAsciiParameter(_param0_hasCompletedMisoKey__string_)));
+		resp->insertInt(getRebelPoints());
 		break;
 	case 233:
-		resp->insertLong(getCurrentCraftingTool()->_getObjectID());
+		resp->insertInt(getImperialPoints());
 		break;
 	case 234:
-		resp->insertLong(getCraftingTool(inv->getSignedIntParameter(), inv->getBooleanParameter())->_getObjectID());
+		resp->insertSignedInt(getPvpRating());
 		break;
 	case 235:
-		setCurrentCraftingTool((CraftingTool*) inv->getObjectParameter());
+		setPvpRating(inv->getSignedIntParameter());
 		break;
 	case 236:
-		clearCurrentCraftingTool();
+		increasePvpRating(inv->getSignedIntParameter());
 		break;
 	case 237:
-		prepareCraftingSession((CraftingTool*) inv->getObjectParameter(), (DraftSchematic*) inv->getObjectParameter());
+		decreasePvpRating(inv->getSignedIntParameter());
 		break;
 	case 238:
-		addIngredientToSlot((TangibleObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
+		getPlayersNearYou();
 		break;
 	case 239:
-		removeResourceFromCraft(inv->getUnsignedLongParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
+		resp->insertSignedInt(getRegionID());
 		break;
 	case 240:
-		nextCraftingStage(inv->getAsciiParameter(_param0_nextCraftingStage__string_));
+		resp->insertSignedInt(getCertificationListSize());
 		break;
 	case 241:
-		craftingCustomization(inv->getAsciiParameter(_param0_craftingCustomization__string_int_), inv->getSignedIntParameter());
+		resp->insertAscii(getCertification(inv->getSignedIntParameter()));
 		break;
 	case 242:
-		createPrototype(inv->getAsciiParameter(_param0_createPrototype__string_));
+		resp->insertBoolean(checkCertification(inv->getAsciiParameter(_param0_checkCertification__string_)));
 		break;
 	case 243:
-		createSchematic(inv->getAsciiParameter(_param0_createSchematic__string_));
+		resp->insertSignedInt(getSlicingAbility());
 		break;
 	case 244:
-		handleExperimenting(inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getAsciiParameter(_param2_handleExperimenting__int_int_string_));
+		resp->insertBoolean(isChatMuted());
 		break;
 	case 245:
-		sendDraftSchematics();
+		resp->insertBoolean(isImmune());
 		break;
 	case 246:
-		addDraftSchematicsFromGroupName(inv->getAsciiParameter(_param0_addDraftSchematicsFromGroupName__string_));
+		resp->insertInt(nextMisoRFC());
 		break;
 	case 247:
-		subtractDraftSchematicsFromGroupName(inv->getAsciiParameter(_param0_subtractDraftSchematicsFromGroupName__string_));
+		resp->insertSignedInt(checkMisoBSB(inv->getSignedIntParameter()));
 		break;
 	case 248:
-		addDraftSchematic((DraftSchematic*) inv->getObjectParameter());
+		setMisoBSB(inv->getSignedIntParameter());
 		break;
 	case 249:
-		subtractDraftSchematic((DraftSchematic*) inv->getObjectParameter());
+		addToCurMisoKeys(inv->getAsciiParameter(_param0_addToCurMisoKeys__string_));
 		break;
 	case 250:
-		resp->insertInt(getDraftSchematicListSize());
+		resp->insertBoolean(isOnCurMisoKey(inv->getAsciiParameter(_param0_isOnCurMisoKey__string_)));
 		break;
 	case 251:
-		resp->insertInt(getDraftSchematicUpdateCount(inv->getUnsignedIntParameter()));
+		removeFromCurMisoKeys(inv->getAsciiParameter(_param0_removeFromCurMisoKeys__string_));
 		break;
 	case 252:
-		resp->insertLong(getDraftSchematic(inv->getUnsignedIntParameter())->_getObjectID());
+		addToFinMisoKeys(inv->getAsciiParameter(_param0_addToFinMisoKeys__string_));
 		break;
 	case 253:
-		resp->insertLong(getDraftSchematic(inv->getSignedIntParameter())->_getObjectID());
+		resp->insertBoolean(hasCompletedMisoKey(inv->getAsciiParameter(_param0_hasCompletedMisoKey__string_)));
 		break;
 	case 254:
-		resp->insertBoolean(isChangingFaction());
+		resp->insertLong(getCurrentCraftingTool()->_getObjectID());
 		break;
 	case 255:
-		resp->insertLong(getDatapad()->_getObjectID());
+		resp->insertLong(getCraftingTool(inv->getSignedIntParameter(), inv->getBooleanParameter())->_getObjectID());
 		break;
 	case 256:
-		resp->insertLong(getNewItemID());
+		setCurrentCraftingTool((CraftingTool*) inv->getObjectParameter());
 		break;
 	case 257:
-		resp->insertInt(getItemShift());
+		clearCurrentCraftingTool();
 		break;
 	case 258:
-		resp->insertFloat(getLastTestPositionX());
+		prepareCraftingSession((CraftingTool*) inv->getObjectParameter(), (DraftSchematic*) inv->getObjectParameter());
 		break;
 	case 259:
-		resp->insertFloat(getLastTestPositionY());
+		addIngredientToSlot((TangibleObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
 		break;
 	case 260:
-		resp->insertInt(getForcePower());
+		removeResourceFromCraft(inv->getUnsignedLongParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
 		break;
 	case 261:
-		resp->insertInt(getForcePowerMax());
+		nextCraftingStage(inv->getAsciiParameter(_param0_nextCraftingStage__string_));
 		break;
 	case 262:
-		resp->insertLong(getSurveyTool()->_getObjectID());
+		craftingCustomization(inv->getAsciiParameter(_param0_craftingCustomization__string_int_), inv->getSignedIntParameter());
 		break;
 	case 263:
-		resp->insertLong(getSampleTool()->_getObjectID());
+		createPrototype(inv->getAsciiParameter(_param0_createPrototype__string_));
 		break;
 	case 264:
-		setSurveyTool((SurveyTool*) inv->getObjectParameter());
+		createSchematic(inv->getAsciiParameter(_param0_createSchematic__string_));
 		break;
 	case 265:
-		setSampleTool((SurveyTool*) inv->getObjectParameter());
+		handleExperimenting(inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getAsciiParameter(_param2_handleExperimenting__int_int_string_));
 		break;
 	case 266:
-		setSurveyWaypoint((WaypointObject*) inv->getObjectParameter());
+		sendDraftSchematics();
 		break;
 	case 267:
-		resp->insertLong(getSurveyWaypoint()->_getObjectID());
+		addDraftSchematicsFromGroupName(inv->getAsciiParameter(_param0_addDraftSchematicsFromGroupName__string_));
 		break;
 	case 268:
-		resp->insertBoolean(getCanSurvey());
+		subtractDraftSchematicsFromGroupName(inv->getAsciiParameter(_param0_subtractDraftSchematicsFromGroupName__string_));
 		break;
 	case 269:
-		resp->insertBoolean(getCanSample());
+		addDraftSchematic((DraftSchematic*) inv->getObjectParameter());
 		break;
 	case 270:
-		setCanSurvey();
+		subtractDraftSchematic((DraftSchematic*) inv->getObjectParameter());
 		break;
 	case 271:
-		setCanSample();
+		resp->insertInt(getDraftSchematicListSize());
 		break;
 	case 272:
-		setSurveyEvent(inv->getAsciiParameter(_param0_setSurveyEvent__string_));
+		resp->insertInt(getDraftSchematicUpdateCount(inv->getUnsignedIntParameter()));
 		break;
 	case 273:
-		setSampleEvent(inv->getAsciiParameter(_param0_setSampleEvent__string_bool_), inv->getBooleanParameter());
+		resp->insertLong(getDraftSchematic(inv->getUnsignedIntParameter())->_getObjectID());
 		break;
 	case 274:
-		setCancelSample(inv->getBooleanParameter());
+		resp->insertLong(getDraftSchematic(inv->getSignedIntParameter())->_getObjectID());
 		break;
 	case 275:
-		resp->insertBoolean(getCancelSample());
+		resp->insertBoolean(isChangingFaction());
 		break;
 	case 276:
-		sendSampleTimeRemaining();
+		resp->insertLong(getDatapad()->_getObjectID());
 		break;
 	case 277:
-		setSurveyErrorMessage();
+		resp->insertLong(getNewItemID());
 		break;
 	case 278:
-		setSampleErrorMessage();
+		resp->insertInt(getItemShift());
 		break;
 	case 279:
-		resp->insertBoolean(getSurveyErrorMessage());
+		resp->insertFloat(getLastTestPositionX());
 		break;
 	case 280:
-		resp->insertBoolean(getSampleErrorMessage());
+		resp->insertFloat(getLastTestPositionY());
 		break;
 	case 281:
-		setEntertainerEvent();
+		resp->insertInt(getForcePower());
 		break;
 	case 282:
-		clearEntertainerEvent();
+		resp->insertInt(getForcePowerMax());
 		break;
 	case 283:
-		setLastNpcConvStr(inv->getAsciiParameter(_param0_setLastNpcConvStr__string_));
+		resp->insertLong(getSurveyTool()->_getObjectID());
 		break;
 	case 284:
-		setLastNpcConvMessStr(inv->getAsciiParameter(_param0_setLastNpcConvMessStr__string_));
+		resp->insertLong(getSampleTool()->_getObjectID());
 		break;
 	case 285:
-		resp->insertAscii(getLastNpcConvStr());
+		setSurveyTool((SurveyTool*) inv->getObjectParameter());
 		break;
 	case 286:
+		setSampleTool((SurveyTool*) inv->getObjectParameter());
+		break;
+	case 287:
+		setSurveyWaypoint((WaypointObject*) inv->getObjectParameter());
+		break;
+	case 288:
+		resp->insertLong(getSurveyWaypoint()->_getObjectID());
+		break;
+	case 289:
+		resp->insertBoolean(getCanSurvey());
+		break;
+	case 290:
+		resp->insertBoolean(getCanSample());
+		break;
+	case 291:
+		setCanSurvey();
+		break;
+	case 292:
+		setCanSample();
+		break;
+	case 293:
+		setSurveyEvent(inv->getAsciiParameter(_param0_setSurveyEvent__string_));
+		break;
+	case 294:
+		setSampleEvent(inv->getAsciiParameter(_param0_setSampleEvent__string_bool_), inv->getBooleanParameter());
+		break;
+	case 295:
+		setCancelSample(inv->getBooleanParameter());
+		break;
+	case 296:
+		resp->insertBoolean(getCancelSample());
+		break;
+	case 297:
+		sendSampleTimeRemaining();
+		break;
+	case 298:
+		setSurveyErrorMessage();
+		break;
+	case 299:
+		setSampleErrorMessage();
+		break;
+	case 300:
+		resp->insertBoolean(getSurveyErrorMessage());
+		break;
+	case 301:
+		resp->insertBoolean(getSampleErrorMessage());
+		break;
+	case 302:
+		setEntertainerEvent();
+		break;
+	case 303:
+		clearEntertainerEvent();
+		break;
+	case 304:
+		setLastNpcConvStr(inv->getAsciiParameter(_param0_setLastNpcConvStr__string_));
+		break;
+	case 305:
+		setLastNpcConvMessStr(inv->getAsciiParameter(_param0_setLastNpcConvMessStr__string_));
+		break;
+	case 306:
+		resp->insertAscii(getLastNpcConvStr());
+		break;
+	case 307:
 		resp->insertAscii(getLastNpcConvMessStr());
 		break;
 	default:
@@ -4558,6 +4873,14 @@ void PlayerAdapter::userLogout(int msgCounter) {
 
 void PlayerAdapter::clearLogoutEvent() {
 	return ((PlayerImplementation*) impl)->clearLogoutEvent();
+}
+
+void PlayerAdapter::makeCharacterMask() {
+	return ((PlayerImplementation*) impl)->makeCharacterMask();
+}
+
+unsigned int PlayerAdapter::getCharacterMask() {
+	return ((PlayerImplementation*) impl)->getCharacterMask();
 }
 
 void PlayerAdapter::insertToZone(Zone* zone) {
@@ -4686,6 +5009,82 @@ void PlayerAdapter::setTargetFocus(unsigned int focus) {
 
 void PlayerAdapter::setTargetWillpower(unsigned int willpower) {
 	return ((PlayerImplementation*) impl)->setTargetWillpower(willpower);
+}
+
+unsigned int PlayerAdapter::getMinHealth() {
+	return ((PlayerImplementation*) impl)->getMinHealth();
+}
+
+unsigned int PlayerAdapter::getMaxHealth() {
+	return ((PlayerImplementation*) impl)->getMaxHealth();
+}
+
+unsigned int PlayerAdapter::getMinStrength() {
+	return ((PlayerImplementation*) impl)->getMinStrength();
+}
+
+unsigned int PlayerAdapter::getMaxStrength() {
+	return ((PlayerImplementation*) impl)->getMaxStrength();
+}
+
+unsigned int PlayerAdapter::getMinConstitution() {
+	return ((PlayerImplementation*) impl)->getMinConstitution();
+}
+
+unsigned int PlayerAdapter::getMaxConstitution() {
+	return ((PlayerImplementation*) impl)->getMaxConstitution();
+}
+
+unsigned int PlayerAdapter::getMinAction() {
+	return ((PlayerImplementation*) impl)->getMinAction();
+}
+
+unsigned int PlayerAdapter::getMaxAction() {
+	return ((PlayerImplementation*) impl)->getMaxAction();
+}
+
+unsigned int PlayerAdapter::getMinQuickness() {
+	return ((PlayerImplementation*) impl)->getMinQuickness();
+}
+
+unsigned int PlayerAdapter::getMaxQuickness() {
+	return ((PlayerImplementation*) impl)->getMaxQuickness();
+}
+
+unsigned int PlayerAdapter::getMinStamina() {
+	return ((PlayerImplementation*) impl)->getMinStamina();
+}
+
+unsigned int PlayerAdapter::getMaxStamina() {
+	return ((PlayerImplementation*) impl)->getMaxStamina();
+}
+
+unsigned int PlayerAdapter::getMinMind() {
+	return ((PlayerImplementation*) impl)->getMinMind();
+}
+
+unsigned int PlayerAdapter::getMaxMind() {
+	return ((PlayerImplementation*) impl)->getMaxMind();
+}
+
+unsigned int PlayerAdapter::getMinFocus() {
+	return ((PlayerImplementation*) impl)->getMinFocus();
+}
+
+unsigned int PlayerAdapter::getMaxFocus() {
+	return ((PlayerImplementation*) impl)->getMaxFocus();
+}
+
+unsigned int PlayerAdapter::getMinWillpower() {
+	return ((PlayerImplementation*) impl)->getMinWillpower();
+}
+
+unsigned int PlayerAdapter::getMaxWillpower() {
+	return ((PlayerImplementation*) impl)->getMaxWillpower();
+}
+
+unsigned int PlayerAdapter::getTotalAttribPoints() {
+	return ((PlayerImplementation*) impl)->getTotalAttribPoints();
 }
 
 void PlayerAdapter::queueFlourish(const string& modifier, unsigned long long target, unsigned int actionCntr) {

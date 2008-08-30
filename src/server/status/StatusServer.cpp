@@ -80,6 +80,7 @@ Packet * StatusServer::getStatusXMLPacket() {
 		ss << "<total>" << zoneServer->getTotalPlayers() << "</total>" << endl;
 		ss << "<deleted>" << zoneServer->getDeletedPlayers() << "</deleted>" << endl;
 		ss << "</users>" << endl;
+		ss << "<uptime>" << time(NULL) - zoneServer->getStartTimestamp() << "</uptime>" << endl;
 	} else
 		ss << "<status>down</status>";
 	ss << "<timestamp>" << timestamp << "</timestamp>" << endl;

@@ -105,6 +105,10 @@ public:
 
 	void getCustomizationString(string& appearance);
 
+	void setPlayerUseMask(unsigned int mask);
+
+	unsigned int getPlayerUseMask();
+
 	int getObjectSubType();
 
 	unsigned int getTemplateID();
@@ -244,6 +248,10 @@ public:
 	string& getTemplateTypeName();
 
 	void getCustomizationString(string& appearance);
+
+	void setPlayerUseMask(unsigned int mask);
+
+	unsigned int getPlayerUseMask();
 
 	int getObjectSubType();
 

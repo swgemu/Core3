@@ -81,6 +81,10 @@ public:
 
 	void clearLogoutEvent();
 
+	void makeCharacterMask();
+
+	unsigned int getCharacterMask();
+
 	void insertToZone(Zone* zone);
 
 	void reinsertToZone(Zone* zone);
@@ -144,6 +148,44 @@ public:
 	void setTargetFocus(unsigned int focus);
 
 	void setTargetWillpower(unsigned int willpower);
+
+	unsigned int getMinHealth();
+
+	unsigned int getMaxHealth();
+
+	unsigned int getMinStrength();
+
+	unsigned int getMaxStrength();
+
+	unsigned int getMinConstitution();
+
+	unsigned int getMaxConstitution();
+
+	unsigned int getMinAction();
+
+	unsigned int getMaxAction();
+
+	unsigned int getMinQuickness();
+
+	unsigned int getMaxQuickness();
+
+	unsigned int getMinStamina();
+
+	unsigned int getMaxStamina();
+
+	unsigned int getMinMind();
+
+	unsigned int getMaxMind();
+
+	unsigned int getMinFocus();
+
+	unsigned int getMaxFocus();
+
+	unsigned int getMinWillpower();
+
+	unsigned int getMaxWillpower();
+
+	unsigned int getTotalAttribPoints();
 
 	void queueFlourish(const string& modifier, unsigned long long target, unsigned int actionCntr);
 
@@ -674,6 +716,10 @@ public:
 
 	void clearLogoutEvent();
 
+	void makeCharacterMask();
+
+	unsigned int getCharacterMask();
+
 	void insertToZone(Zone* zone);
 
 	void reinsertToZone(Zone* zone);
@@ -737,6 +783,44 @@ public:
 	void setTargetFocus(unsigned int focus);
 
 	void setTargetWillpower(unsigned int willpower);
+
+	unsigned int getMinHealth();
+
+	unsigned int getMaxHealth();
+
+	unsigned int getMinStrength();
+
+	unsigned int getMaxStrength();
+
+	unsigned int getMinConstitution();
+
+	unsigned int getMaxConstitution();
+
+	unsigned int getMinAction();
+
+	unsigned int getMaxAction();
+
+	unsigned int getMinQuickness();
+
+	unsigned int getMaxQuickness();
+
+	unsigned int getMinStamina();
+
+	unsigned int getMaxStamina();
+
+	unsigned int getMinMind();
+
+	unsigned int getMaxMind();
+
+	unsigned int getMinFocus();
+
+	unsigned int getMaxFocus();
+
+	unsigned int getMinWillpower();
+
+	unsigned int getMaxWillpower();
+
+	unsigned int getTotalAttribPoints();
 
 	void queueFlourish(const string& modifier, unsigned long long target, unsigned int actionCntr);
 

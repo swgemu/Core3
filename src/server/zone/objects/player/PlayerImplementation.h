@@ -242,6 +242,8 @@ class PlayerImplementation : public PlayerServant {
 
 	Vector<string> consentList;
 
+	uint16 characterMask;
+
 public:
 	static const int ONLINE = 1;
 	static const int OFFLINE = 2;
@@ -258,6 +260,25 @@ public:
 
 	static const int PVPRATING_MIN = 800;
 	static const int PVPRATING_DEFAULT = 1200;
+
+	static const int MALE = 0x01;
+	static const int FEMALE = 0x02;
+
+	static const int HUMAN = 0x004;
+	static const int TRANDOSHAN = 0x008;
+	static const int TWILEK = 0x010;
+	static const int BOTHAN = 0x020;
+	static const int ZABRAK = 0x040;
+	static const int RODIAN = 0x080;
+	static const int MONCALAMARI = 0x100;
+	static const int WOOKIEE = 0x200;
+	static const int SULLUSTAN = 0x400;
+	static const int ITHORIAN = 0x800;
+
+	static const int NEUTRAL = 0x1000;
+	static const int IMPERIAL = 0x2000;
+	static const int REBEL = 0x4000;
+	static const int COVERT = 0x8000;
 
 
 public:
@@ -297,6 +318,108 @@ public:
 	void decayInventory();
 	void resetArmorEncumbrance();
 
+	void makeCharacterMask();
+
+	inline uint16 getCharacterMask() {
+		return characterMask;
+	}
+
+	//Attribute Limits
+
+	inline const uint32 getMinHealth() {
+		const uint32 * table =  Races::getAttribLimits(Races::getRaceID(raceFile));
+		return table[0];
+	}
+
+	inline const uint32 getMaxHealth() {
+		const uint32 * table =  Races::getAttribLimits(Races::getRaceID(raceFile));
+		return table[1];
+	}
+
+	inline const uint32 getMinStrength() {
+		const uint32 * table =  Races::getAttribLimits(Races::getRaceID(raceFile));
+		return table[2];
+	}
+
+	inline const uint32 getMaxStrength() {
+		const uint32 * table =  Races::getAttribLimits(Races::getRaceID(raceFile));
+		return table[3];
+	}
+
+	inline const uint32 getMinConstitution() {
+		const uint32 * table =  Races::getAttribLimits(Races::getRaceID(raceFile));
+		return table[4];
+	}
+
+	inline const uint32 getMaxConstitution() {
+		const uint32 * table =  Races::getAttribLimits(Races::getRaceID(raceFile));
+		return table[5];
+	}
+
+	inline const uint32 getMinAction() {
+		const uint32 * table =  Races::getAttribLimits(Races::getRaceID(raceFile));
+		return table[6];
+	}
+
+	inline const uint32 getMaxAction() {
+		const uint32 * table =  Races::getAttribLimits(Races::getRaceID(raceFile));
+		return table[7];
+	}
+
+	inline const uint32 getMinQuickness() {
+		const uint32 * table =  Races::getAttribLimits(Races::getRaceID(raceFile));
+		return table[8];
+	}
+
+	inline const uint32 getMaxQuickness() {
+		const uint32 * table =  Races::getAttribLimits(Races::getRaceID(raceFile));
+		return table[9];
+	}
+
+	inline const uint32 getMinStamina() {
+		const uint32 * table =  Races::getAttribLimits(Races::getRaceID(raceFile));
+		return table[10];
+	}
+
+	inline const uint32 getMaxStamina() {
+		const uint32 * table =  Races::getAttribLimits(Races::getRaceID(raceFile));
+		return table[11];
+	}
+
+	inline const uint32 getMinMind() {
+		const uint32 * table =  Races::getAttribLimits(Races::getRaceID(raceFile));
+		return table[12];
+	}
+
+	inline const uint32 getMaxMind() {
+		const uint32 * table =  Races::getAttribLimits(Races::getRaceID(raceFile));
+		return table[13];
+	}
+
+	inline const uint32 getMinFocus() {
+		const uint32 * table =  Races::getAttribLimits(Races::getRaceID(raceFile));
+		return table[14];
+	}
+
+	inline const uint32 getMaxFocus() {
+		const uint32 * table =  Races::getAttribLimits(Races::getRaceID(raceFile));
+		return table[15];
+	}
+
+	inline const uint32 getMinWillpower() {
+		const uint32 * table =  Races::getAttribLimits(Races::getRaceID(raceFile));
+		return table[16];
+	}
+
+	inline uint32 getMaxWillpower() {
+		const uint32 * table =  Races::getAttribLimits(Races::getRaceID(raceFile));
+		return table[17];
+	}
+
+	inline uint32 getTotalAttribPoints() {
+		const uint32 * table =  Races::getAttribLimits(Races::getRaceID(raceFile));
+		return table[18];
+	}
 	void sendToOwner();
 	void sendPersonalContainers();
 	void sendTo(Player* player, bool doClose = true);

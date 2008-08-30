@@ -105,6 +105,8 @@ class ZoneServerImplementation : public DatagramServiceThread, public ZoneServer
 	int currentPlayers, maximumPlayers;
 	int totalPlayers, totalDeletedPlayers;
 
+	time_t startTimestamp;
+
 	uint64 nextCreatureID;
 
 	string name;
@@ -233,6 +235,10 @@ public:
 
 	inline int getDeletedPlayers() {
 		return totalDeletedPlayers;
+	}
+
+	inline time_t getStartTimestamp() {
+		return startTimestamp;
 	}
 
 	uint64 getNextCreatureID(bool doLock = true);

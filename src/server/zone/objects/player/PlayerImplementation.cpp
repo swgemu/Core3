@@ -322,6 +322,85 @@ void PlayerImplementation::create(ZoneClient* client) {
 	info("created player");
 }
 
+void PlayerImplementation::makeCharacterMask() {
+	characterMask = 0;
+
+	if (this->isRebel())
+		characterMask |= REBEL;
+	else if (this->isImperial())
+		characterMask |= IMPERIAL;
+	else
+		characterMask |= NEUTRAL;
+
+	if(!this->isOvert())
+		characterMask |= COVERT;
+
+	int raceid = Races::getRaceID(raceFile);
+
+	switch (raceid) {
+	case 0:
+		characterMask |= MALE | HUMAN;
+		break;
+	case 1:
+		characterMask |= MALE | TRANDOSHAN;
+		break;
+	case 2:
+		characterMask |= MALE | TWILEK;
+		break;
+	case 3:
+		characterMask |= MALE | BOTHAN;
+		break;
+	case 4:
+		characterMask |= MALE | ZABRAK;
+		break;
+	case 5:
+		characterMask |= MALE | RODIAN;
+		break;
+	case 6:
+		characterMask |= MALE | MONCALAMARI;
+		break;
+	case 7:
+		characterMask |= MALE | WOOKIEE;
+		break;
+	case 8:
+		characterMask |= MALE | SULLUSTAN;
+		break;
+	case 9:
+		characterMask |= MALE | ITHORIAN;
+		break;
+	case 10:
+		characterMask |= FEMALE | HUMAN;
+		break;
+	case 11:
+		characterMask |= FEMALE | TRANDOSHAN;
+		break;
+	case 12:
+		characterMask |= FEMALE | TWILEK;
+		break;
+	case 13:
+		characterMask |= FEMALE | BOTHAN;
+		break;
+	case 14:
+		characterMask |= FEMALE | ZABRAK;
+		break;
+	case 15:
+		characterMask |= FEMALE | RODIAN;
+		break;
+	case 16:
+		characterMask |= FEMALE | MONCALAMARI;
+		break;
+	case 17:
+		characterMask |= FEMALE | WOOKIEE;
+		break;
+	case 18:
+		characterMask |= FEMALE | SULLUSTAN;
+		break;
+	case 19:
+		characterMask |= FEMALE | ITHORIAN;
+		break;
+	}
+}
+
 void PlayerImplementation::refuseCreate(ZoneClient* client) {
 	info("name refused for character creation");
 
@@ -367,6 +446,8 @@ void PlayerImplementation::load(ZoneClient* client) {
 
 		PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
 		playerManager->updateOtherFriendlists(_this, true);
+
+		makeCharacterMask();
 
 		unlock();
 	} catch (Exception& e) {
@@ -1403,7 +1484,7 @@ void PlayerImplementation::notifySceneReady() {
 
 		unicode msg3 = unicode("This server is owned, operated, and developed by Team SWGEmu at SWGEmu.com and is in no way affiliated with any other server communities.");
 		sendSystemMessage(msg3);
-		
+
 		unicode msg4 = unicode("Please Report All Spammer, Harassment, Exploits Or Bugs To HTTP://WWW.SWGEMU.COM/SUPPORT.");
 		sendSystemMessage(msg4);
 
@@ -3114,6 +3195,8 @@ void PlayerImplementation::setOvert() {
 	if (!(pvpStatusBitmask & OVERT_FLAG))
 		pvpStatusBitmask |= OVERT_FLAG;
 
+	characterMask &= !COVERT;
+
 	uint32 pvpBitmask = pvpStatusBitmask;
 
 	try {
@@ -3138,6 +3221,8 @@ void PlayerImplementation::setOvert() {
 void PlayerImplementation::setCovert() {
 	if (pvpStatusBitmask & OVERT_FLAG)
 		pvpStatusBitmask -= OVERT_FLAG;
+
+	characterMask |= COVERT;
 
 	try {
 		zone->lock();

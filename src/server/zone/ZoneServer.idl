@@ -127,6 +127,8 @@ interface ZoneServer {
 	int getTotalPlayers();
 	int getMaxPlayers();
 	int getDeletedPlayers();
+
+	unsigned long getStartTimestamp();
 	
 	unsigned long getNextCreatureID(boolean doLock = true);
 }

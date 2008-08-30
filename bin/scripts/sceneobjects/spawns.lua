@@ -41,4 +41,7 @@
 --which carries forward this exception.
 
 --Tatooine
-RunObjectFile("spawns/tatooine/staticSpawns.lua")
+
+if PLANET_ID == 8 then
+ RunObjectFile("spawns/tatooine/staticSpawns.lua")
+end

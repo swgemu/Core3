@@ -517,12 +517,24 @@ int ZoneServer::getDeletedPlayers() {
 		return ((ZoneServerImplementation*) _impl)->getDeletedPlayers();
 }
 
-unsigned long long ZoneServer::getNextCreatureID(bool doLock) {
+unsigned long long ZoneServer::getStartTimestamp() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 43);
+
+		return method.executeWithUnsignedLongReturn();
+	} else
+		return ((ZoneServerImplementation*) _impl)->getStartTimestamp();
+}
+
+unsigned long long ZoneServer::getNextCreatureID(bool doLock) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 44);
 		method.addBooleanParameter(doLock);
 
 		return method.executeWithUnsignedLongReturn();
@@ -653,6 +665,9 @@ Packet* ZoneServerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertSignedInt(getDeletedPlayers());
 		break;
 	case 43:
+		resp->insertLong(getStartTimestamp());
+		break;
+	case 44:
 		resp->insertLong(getNextCreatureID(inv->getBooleanParameter()));
 		break;
 	default:
@@ -808,6 +823,10 @@ int ZoneServerAdapter::getMaxPlayers() {
 
 int ZoneServerAdapter::getDeletedPlayers() {
 	return ((ZoneServerImplementation*) impl)->getDeletedPlayers();
+}
+
+unsigned long long ZoneServerAdapter::getStartTimestamp() {
+	return ((ZoneServerImplementation*) impl)->getStartTimestamp();
 }
 
 unsigned long long ZoneServerAdapter::getNextCreatureID(bool doLock) {

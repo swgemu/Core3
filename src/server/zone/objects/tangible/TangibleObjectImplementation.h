@@ -95,6 +95,8 @@ protected:
 
 	uint32 pvpStatusBitmask;
 
+	uint16 playerUseMask;
+
 	ItemAttributes* itemAttributes;
 
 	string craftersName;
@@ -247,6 +249,36 @@ public:
 	static const int SKIRT = 0x1000012;
 	static const int ITHOGARB = 0x1000013;
 
+	static const uint16 MALE = 0x01;
+	static const uint16 FEMALE = 0x02;
+
+	static const uint16 HUMAN = 0x004;
+	static const uint16 TRANDOSHAN = 0x008;
+	static const uint16 TWILEK = 0x010;
+	static const uint16 BOTHAN = 0x020;
+	static const uint16 ZABRAK = 0x040;
+	static const uint16 RODIAN = 0x080;
+	static const uint16 MONCALAMARI = 0x100;
+	static const uint16 WOOKIEE = 0x200;
+	static const uint16 SULLUSTAN = 0x400;
+	static const uint16 ITHORIAN = 0x800;
+
+	static const uint16 NEUTRAL = 0x1000;
+	static const uint16 IMPERIAL = 0x2000;
+	static const uint16 REBEL = 0x4000;
+	static const uint16 COVERT = 0x8000;
+
+	static const uint16 ALL = 0xFFFF;
+	static const uint16 ALLSEXES = MALE | FEMALE;
+	static const uint16 ALLFACTIONS = NEUTRAL | IMPERIAL | REBEL | COVERT;
+	static const uint16 MEN = ALL & !FEMALE;
+	static const uint16 WOMEN = ALL & !MALE;
+	static const uint16 HUMANOIDS = ALL & !(WOOKIEE | ITHORIAN);
+	static const uint16 REBELS = ALL & !(IMPERIAL | NEUTRAL | COVERT);
+	static const uint16 IMPERIALS = ALL & !(REBEL | NEUTRAL | COVERT);
+	static const uint16 WOOKIEES = WOOKIEE | ALLSEXES | ALLFACTIONS;
+	static const uint16 ITHORIANS = ITHORIAN | ALLSEXES | ALLFACTIONS;
+
 public:
 	TangibleObjectImplementation(uint64 oid, int tp = 0);
 	TangibleObjectImplementation(uint64 oid, const unicode& name, const string& tempname, uint32 tempCRC, int tp = 0);
@@ -266,6 +298,13 @@ public:
 
 	}
 
+	inline void setPlayerUseMask(uint16 mask) {
+		playerUseMask = mask;
+	}
+
+	inline uint16 getPlayerUseMask() {
+		return playerUseMask;
+	}
 
 	void generateSkillMods(class AttributeListMessage* alm, int skillModType, int skillModValue);
 
@@ -492,7 +531,7 @@ public:
 	inline bool isPharmaceutical() {
 		return objectSubType == PHARMACEUTICAL;
 	}
-	
+
 	inline bool isWeaponPowerup() {
 		return objectSubType == WEAPONPOWERUP;
 	}
