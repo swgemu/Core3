@@ -1,0 +1,28 @@
+import "../../scene/SceneObject";
+
+import "../../creature/CreatureObject";
+
+import "../../player/Player";
+
+import "../TangibleObject";
+
+import "Pharmaceutical";
+
+interface CurePack implements Pharmaceutical {
+
+	CurePack(unsigned long oid, unsigned int tempCRC, const unicode n, const string tempn) {
+		super(oid, tempCRC, n, tempn, int mptype);
+	}
+
+	CurePack(CreatureObject creature, unsigned int tempCRC, const unicode n, const string tempn) {
+		super(creature, tempCRC, n, tempn, int mptype);
+	}
+
+	void generateAttributes(SceneObject obj);
+
+	void setEffectiveness(float eff);
+	void setConditionCured(int condition);
+
+	float getEffectiveness();
+	int getConditionCured();
+}

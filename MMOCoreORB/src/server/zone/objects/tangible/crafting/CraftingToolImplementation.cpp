@@ -1,0 +1,581 @@
+/*
+Copyright (C) 2007 <SWGEmu>
+
+This File is part of Core3.
+
+This program is free software; you can redistribute
+it and/or modify it under the terms of the GNU Lesser
+General Public License as published by the Free Software
+Foundation; either version 2 of the License,
+or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+See the GNU Lesser General Public License for
+more details.
+
+You should have received a copy of the GNU Lesser General
+Public License along with this program; if not, write to
+the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+
+Linking Engine3 statically or dynamically with other modules
+is making a combined work based on Engine3.
+Thus, the terms and conditions of the GNU Lesser General Public License
+cover the whole combination.
+
+In addition, as a special exception, the copyright holders of Engine3
+give you permission to combine Engine3 program with free software
+programs or libraries that are released under the GNU LGPL and with
+code included in the standard release of Core3 under the GNU LGPL
+license (or modified versions of such code, with unchanged license).
+You may copy and distribute such a system following the terms of the
+GNU LGPL for Engine3 and the licenses of the other code concerned,
+provided that you include the source code of that other code when
+and as the GNU LGPL requires distribution of source code.
+
+Note that people who make modified versions of Engine3 are not obligated
+to grant this special exception for their modified versions;
+it is their choice whether to do so. The GNU Lesser General Public License
+gives permission to release a modified version without this exception;
+this exception also makes it possible to release a modified version
+which carries forward this exception.
+*/
+
+#include "../../../packets.h"
+#include "../../../objects.h"
+#include "CraftingTool.h"
+#include "CraftingToolImplementation.h"
+#include "../../../ZoneClient.h"
+
+CraftingToolImplementation::CraftingToolImplementation(uint64 object_id, uint32 tempCRC,
+		const unicode& n, const string& tempn) : CraftingToolServant(object_id, n, tempn, tempCRC,
+				CRAFTINGTOOL) {
+	objectCRC = tempCRC;
+	templateTypeName = "obj_n";
+	templateName = tempn;
+	name = n;
+	init();
+}
+
+CraftingToolImplementation::CraftingToolImplementation(CreatureObject* creature, uint32 tempCRC,
+		const unicode& n, const string& tempn) : CraftingToolServant(creature, n, tempn, tempCRC,
+				CRAFTINGTOOL) {
+	objectCRC = tempCRC;
+	templateTypeName = "obj_n";
+	templateName = tempn;
+	name = n;
+	init();
+}
+
+CraftingToolImplementation::~CraftingToolImplementation(){
+	tempIngredient.removeAll();
+
+	tabIds.removeAll();
+
+	schematicsToSend.removeAll();
+
+	delete craftingSlots;
+	craftingSlots = NULL;
+}
+
+void CraftingToolImplementation::init() {
+	objectSubType = TangibleObjectImplementation::CRAFTINGTOOL;
+
+	setToolEffectiveness(-15.0f);
+	setCraftingState(0);
+	currentDraftSchematic = NULL;
+	currentTano = NULL;
+
+	craftingSlots = new CraftingSlots();
+
+	status = "@crafting:tool_status_ready";
+	hopper = NULL;
+
+	assemblyResults = 0;
+
+	experimentingEnabled = false;
+
+	tabIds.removeAll();
+
+	recoverResources = true;
+
+	if(objectCRC == 0x3EE5146D){
+
+		setToolType(GENERIC);
+		tabIds.add(1);
+		tabIds.add(2);
+		tabIds.add(4);
+		tabIds.add(8);
+		tabIds.add(1024);
+		tabIds.add(4096);
+		tabIds.add(524288);
+	}
+
+	if(objectCRC == 0x2CED1748){
+
+		setToolType(CLOTHING);
+		tabIds.add(2);
+		tabIds.add(8);
+		tabIds.add(16384);
+		tabIds.add(32768);
+	}
+
+	if(objectCRC == 0xA9D9972F){
+
+		setToolType(FOOD);
+		tabIds.add(4);
+		tabIds.add(64);
+		tabIds.add(128);
+		tabIds.add(256);
+		tabIds.add(8192);
+
+	}
+
+	if(objectCRC == 0x2CF24272){
+
+		setToolType(JEDI);
+		tabIds.add(2048);
+
+	}
+
+	if(objectCRC == 0xAD0E3DB0){
+
+		setToolType(SPACE);
+		tabIds.add(131072);
+		tabIds.add(262144);
+
+	}
+
+	if(objectCRC == 0xFEDA0435){
+
+		setToolType(STRUCTURE);
+		tabIds.add(512);
+		tabIds.add(1024);
+
+
+	}
+
+	if(objectCRC == 0x64F6D031){
+
+		setToolType(WEAPON);
+		tabIds.add(1);
+		tabIds.add(16);
+		tabIds.add(32);
+		tabIds.add(4096);
+		tabIds.add(65536);
+		tabIds.add(524288);
+
+	}
+
+}
+
+int CraftingToolImplementation::useObject(Player* player) {
+	return 0;
+}
+
+void CraftingToolImplementation::sendTo(Player* player, bool doClose) {
+	ZoneClient* client = player->getClient();
+	if (client == NULL)
+		return;
+	SceneObjectImplementation::create(client);
+	if (container != NULL)
+		link(client, container);
+	TangibleObjectMessage3* tano3 = new TangibleObjectMessage3((TangibleObject*) _this);
+	client->sendMessage(tano3);
+	TangibleObjectMessage6* tano6 = new TangibleObjectMessage6((TangibleObject*) _this);
+	client->sendMessage(tano6);
+	if (doClose)
+		SceneObjectImplementation::close(client);
+	generateAttributes(player);
+}
+
+void CraftingToolImplementation::sendRadialResponseTo(Player* player, ObjectMenuResponse* omr) {
+
+	if(hopper != NULL){
+
+		if(hopper->objectsSize() > 0){
+			omr->addRadialItem(0, 130, 3, "Retrieve Prototype");
+		}
+	}
+
+	omr->finish();
+
+	player->sendMessage(omr);
+}
+
+void CraftingToolImplementation::parseItemAttributes() {
+
+	string temp;
+
+	temp = "effectiveness";
+	effectiveness = itemAttributes->getFloatAttribute(temp);
+
+	temp = "craftersname";
+	craftersName = itemAttributes->getStringAttribute(temp);
+
+	temp = "craftedserial";
+	craftedSerial = itemAttributes->getStringAttribute(temp);
+
+
+}
+
+void CraftingToolImplementation::generateAttributes(SceneObject* obj) {
+
+	if (!obj->isPlayer())
+		return;
+
+	Player* player = (Player*) obj;
+
+	AttributeListMessage* alm = new AttributeListMessage((TangibleObject*) _this);
+
+	addAttributes(alm);
+
+	player->sendMessage(alm);
+
+}
+
+void CraftingToolImplementation::addAttributes(AttributeListMessage* alm) {
+
+	alm->insertAttribute("volume", "1");
+
+	alm->insertAttribute("craft_tool_effectiveness", effectiveness);
+
+	alm->insertAttribute("craft_tool_status", status);
+
+	if(craftersName != ""){
+
+		alm->insertAttribute("crafter", craftersName);
+	}
+	if(craftedSerial != ""){
+
+		alm->insertAttribute("serial_number", craftedSerial);
+	}
+
+}
+
+void CraftingToolImplementation::updateCraftingValues(DraftSchematic* draftSchematic){
+
+	string name;
+
+	DraftSchematicValues* craftingValues = draftSchematic->getCraftingValues();
+	//craftingValues->toString();
+
+	name = "effectiveness";
+	effectiveness = craftingValues->getCurrentValue("quality");
+	itemAttributes->setFloatAttribute(name, effectiveness);
+
+}
+
+void CraftingToolImplementation::sendToolStart(Player* player) {
+
+
+	DraftSchematic* draftSchematic;
+	float workingStationComplexity = 15;
+	int stationType = 0;
+	bool stationFound = false;
+
+	// Get nearby crafting stations here
+
+	stationFound = findCraftingStation(player, workingStationComplexity);
+
+	if(stationFound)
+
+		experimentingEnabled = true;
+
+	else
+
+		experimentingEnabled = false;
+
+
+	// Craft Start
+	// Tano7
+	TangibleObjectMessage7* tano7 = new TangibleObjectMessage7(_this);
+	player->sendMessage(tano7);
+
+	// DPlay9
+	PlayerObjectDeltaMessage9* dplay9 = new PlayerObjectDeltaMessage9(player->getPlayerObject());
+	dplay9->setExperimentationPoints(0);
+	dplay9->setExperimentationEnabled(experimentingEnabled);
+	dplay9->setCraftingState(1);
+	setCraftingState(1);
+	dplay9->close();
+	player->sendMessage(dplay9);
+
+	// Get schematics based on type of tool and complexity level
+	getSchematicsForTool(player, workingStationComplexity);
+
+	// Tool Start
+	// Obj Controller Msg
+
+	ObjectControllerMessage* ocm = new ObjectControllerMessage(player->getObjectID(),0x0B, 0x102);
+	ocm->insertLong(getObjectID());
+	ocm->insertLong(0x00);
+	uint32 draftSchematicListSize = schematicsToSend.size();
+	ocm->insertInt(draftSchematicListSize);
+
+	for(int i = 0; i < draftSchematicListSize; ++i){
+
+		draftSchematic = schematicsToSend.get(i);
+
+		ocm->insertInt(draftSchematic->getSchematicID());
+		ocm->insertInt(draftSchematic->getSchematicCRC());
+		ocm->insertInt(draftSchematic->getCraftingToolTab()); // this number decides what tab the schematic goes in (ex: 4 = food tab in crafting window)
+
+	}
+
+	player->sendMessage(ocm);
+
+	for(int i = 0; i < draftSchematicListSize; ++i){
+
+		draftSchematic = schematicsToSend.get(i);
+
+		draftSchematic->sendIngredientsToPlayer(player);
+
+	}
+
+	for(int i = 0; i < draftSchematicListSize; ++i){
+
+		draftSchematic = schematicsToSend.get(i);
+
+		draftSchematic->sendExperimentalPropertiesToPlayer(player);
+
+	}
+
+	player->setCurrentCraftingTool(_this);
+}
+
+void CraftingToolImplementation::getSchematicsForTool(Player* player, float workingStationComplexity){
+
+	bool toolUsesTab;
+	schematicsToSend.removeAll();
+
+	for (int i = 0; i < player->getDraftSchematicListSize(); i++) {
+		DraftSchematic* draftSchematic = player->getDraftSchematic(i);
+
+		if (draftSchematic != NULL) {
+
+			toolUsesTab = false;
+
+			for (int j = 0; j < tabIds.size(); ++j) {
+
+				if (tabIds.get(j) == draftSchematic->getCraftingToolTab()) {
+
+					toolUsesTab = true;
+					break;
+				}
+
+			}
+
+			if (workingStationComplexity >= draftSchematic->getComplexity()
+					&& toolUsesTab) {
+
+				schematicsToSend.add(draftSchematic);
+				//cout << "Adding schematic = " << draftSchematic->getName() << endl;
+
+			}
+		}
+	}
+}
+
+bool CraftingToolImplementation::findCraftingStation(Player* player, float& workingStationComplexity){
+
+	QuadTreeEntry* entry;
+	TangibleObject* inRangeObject;
+	CraftingStation* station;
+	uint64 oid;
+	ZoneServer* server = player->getZone()->getZoneServer();
+
+	int closeObjectCount = player->inRangeObjectCount();
+
+	for(int i = 0; i < closeObjectCount; ++i){
+
+		entry = player->getInRangeObject(i);
+
+		oid = entry->getObjectID();
+
+		inRangeObject = (TangibleObject*)server->getObject(oid);
+
+		if (inRangeObject != NULL){
+			if(inRangeObject->isCraftingStation() && player->isInRange(inRangeObject, 6.0f)){
+				station = (CraftingStation*)inRangeObject;
+
+				//cout << "Station = " << station->getStationType() << "   Tool = " << _this->getToolType() << endl;
+
+				if (_this->getToolType() == station->getStationType() ||
+						(_this->getToolType() == JEDI && station->getStationType() == WEAPON)){
+
+					workingStationComplexity = ((CraftingStation*)inRangeObject)->getEffectiveness();
+					return true;
+
+				}
+			}
+		}
+	}
+	return false;
+}
+
+void CraftingToolImplementation::setWorkingTano(TangibleObject* tano){
+	if(currentTano != NULL) {
+
+		currentTano->setContainer(NULL);
+		currentTano->finalize();
+		currentTano = NULL;
+	}
+
+	currentTano = tano;
+}
+
+void CraftingToolImplementation::setWorkingDraftSchematic(DraftSchematic* draftSchematic){
+
+	draftSchematic->lock();
+
+	try{
+
+		if(currentDraftSchematic != NULL) {
+			currentDraftSchematic->setContainer(NULL);
+			currentDraftSchematic->finalize();
+			currentDraftSchematic = NULL;
+		}
+
+		// This will be replaced but the built in cloning method when available
+
+	currentDraftSchematic = draftSchematic->dsClone(draftSchematic);
+
+
+		draftSchematic->unlock();
+	}
+	catch(...){
+
+		draftSchematic->unlock();
+
+	}
+}
+
+void CraftingToolImplementation::resetSlots() {
+
+	if (currentDraftSchematic != NULL) {
+
+		craftingSlots->init(currentDraftSchematic->getIngredientListSize());
+
+	} else {
+
+		craftingSlots->init(0);
+
+	}
+
+}
+
+Container* CraftingToolImplementation::getHopper(Player* player){
+	if(hopper == NULL){
+		Container* hop = new Container(player->getNewItemID());
+	}
+	return hopper;
+}
+
+void CraftingToolImplementation::retriveHopperItem(Player* player){
+
+	ItemManager* itemManager = player->getZone()->getZoneServer()->getItemManager();
+	Inventory* inventory = player->getInventory();
+
+	if(hopper != NULL){
+		if(hopper->objectsSize() > 0 && inventory->getObjectCount() < 80){
+
+			TangibleObject* tano = (TangibleObject*) hopper->getObject(0);
+			hopper->removeObject(0);
+			player->addInventoryItem(tano);
+
+			itemManager->savePlayerItem(player, tano);
+
+			unicode mess = unicode("Hopper item Retrieved");
+			ChatSystemMessage* sysMessage = new ChatSystemMessage(mess);
+			player->sendMessage(sysMessage);
+
+			tano->sendTo(player);
+
+			_this->setStatusReady();
+		}
+	}
+}
+void CraftingToolImplementation::cleanUp(Player* player) {
+
+	CraftingManager* cm = player->getZone()->getZoneServer()->getCraftingManager();
+	TangibleObject* tano;
+
+	int quantity;
+
+	if (recoverResources) {
+		for (int i = 0; i < craftingSlots->size(); ++i) {
+
+			tano = craftingSlots->getIngredientInSlot(i);
+
+			craftingSlots->clearIngredientInSlot(i);
+
+			if (tano != NULL) {
+
+				if (tano->isResource()) {
+
+					ResourceContainer* rcno = (ResourceContainer*)tano;
+
+					if (quantity != 0) {
+
+						player->addInventoryItem(rcno);
+
+					}
+
+				} else {
+
+
+					cm->putComponentBackInInventory(player, tano);
+
+				}
+			}
+		}
+	}
+
+	if(currentDraftSchematic != NULL) {
+
+		//Scene Object Destroy
+		SceneObjectDestroyMessage* destroy = new SceneObjectDestroyMessage(currentDraftSchematic->getObjectID());
+		player->sendMessage(destroy);
+
+		currentDraftSchematic->setContainer(NULL);
+		currentDraftSchematic->finalize();
+		currentDraftSchematic = NULL;
+	}
+
+	if(currentTano != NULL) {
+		if(status == "@crafting:tool_status_ready"){
+
+			SceneObjectDestroyMessage* destroy = new SceneObjectDestroyMessage(currentTano->getObjectID());
+			player->sendMessage(destroy);
+
+			currentTano->setContainer(NULL);
+			currentTano->finalize();
+
+		}
+		currentTano = NULL;
+	}
+
+	for(int i = 0; i < tempIngredient.size(); ++i){
+
+		tano = tempIngredient.get(i);
+
+		if(tano != NULL){
+
+			SceneObjectDestroyMessage* destroy = new SceneObjectDestroyMessage(tano->getObjectID());
+			player->sendMessage(destroy);
+
+			tano->setContainer(NULL);
+			tano->finalize();
+
+
+		}
+
+		tano = NULL;
+
+	}
+
+	tempIngredient.removeAll();
+	schematicsToSend.removeAll();
+}

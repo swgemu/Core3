@@ -1,0 +1,226 @@
+/*
+Copyright (C) 2007 <SWGEmu>
+ 
+This File is part of Core3.
+ 
+This program is free software; you can redistribute 
+it and/or modify it under the terms of the GNU Lesser 
+General Public License as published by the Free Software
+Foundation; either version 2 of the License, 
+or (at your option) any later version.
+ 
+This program is distributed in the hope that it will be useful, 
+but WITHOUT ANY WARRANTY; without even the implied warranty of 
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+See the GNU Lesser General Public License for
+more details.
+ 
+You should have received a copy of the GNU Lesser General 
+Public License along with this program; if not, write to
+the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+ 
+Linking Engine3 statically or dynamically with other modules 
+is making a combined work based on Engine3. 
+Thus, the terms and conditions of the GNU Lesser General Public License 
+cover the whole combination.
+ 
+In addition, as a special exception, the copyright holders of Engine3 
+give you permission to combine Engine3 program with free software 
+programs or libraries that are released under the GNU LGPL and with 
+code included in the standard release of Core3 under the GNU LGPL 
+license (or modified versions of such code, with unchanged license). 
+You may copy and distribute such a system following the terms of the 
+GNU LGPL for Engine3 and the licenses of the other code concerned, 
+provided that you include the source code of that other code when 
+and as the GNU LGPL requires distribution of source code.
+ 
+Note that people who make modified versions of Engine3 are not obligated 
+to grant this special exception for their modified versions; 
+it is their choice whether to do so. The GNU Lesser General Public License 
+gives permission to release a modified version without this exception; 
+this exception also makes it possible to release a modified version 
+which carries forward this exception.
+*/
+
+include "engine/service/proto/BaseMessage";
+
+include "engine/util/QuadTreeEntry";
+
+include "../../ZoneProcessServerImplementation";
+
+import "../../packets/object/ObjectMenuResponse";
+
+import "../../Zone";
+
+import "../../ZoneClient";
+
+import "../player/Player";
+
+import "../creature/CreatureObject";
+
+interface SceneObject implements ManagedObject {
+	native boolean destroy();
+
+	void redeploy();
+	
+	void scheduleUndeploy();
+	
+	void removeUndeploymentEvent();
+
+	// client methods
+	void sendTo(Player player, boolean doClose = true);
+	void sendDestroyTo(Player player);
+	
+	void sendRadialResponseTo(Player player, ObjectMenuResponse omr);
+	
+	void create(ZoneClient client);
+	void destroy(ZoneClient client);
+	
+	void sendConversationStartTo(SceneObject obj);
+	void selectConversationOption(int option, SceneObject obj);
+	
+	void close(ZoneClient client);
+	
+	// QT methods
+	boolean isInRange(SceneObject obj, float range);
+
+	boolean isInRange(float x, float y, float range);
+	
+	int inRangeObjectCount();
+	
+	QuadTreeEntry getInRangeObject(int idx);
+	void addInRangeObject(QuadTreeEntry obj);
+	void removeInRangeObject(QuadTreeEntry obj);
+	
+	boolean isInQuadTree();
+	
+	QuadTreeEntry getQuadTreeEntry();
+
+	int compareTo(SceneObject obj);
+	
+	BaseMessage link(SceneObject obj);
+	void link(ZoneClient client, SceneObject obj);
+	
+	void randomizePosition(float radius);
+
+	int useObject(Player player);
+
+	// positioning methods
+	void initializePosition(float x, float z, float y);
+
+	void setPosition(float x, float z, float y);
+
+	void setDirection(float x, float z, float y, float w);
+
+	// attribute methods
+	void generateAttributes(Player player);
+
+	// logger methods
+	void info(const string message, boolean forcedLog = false);
+	void error(const string message);
+
+	// setters
+	local void setZoneProcessServer(ZoneProcessServerImplementation processor);
+	
+	void setObjectID(unsigned long oid);
+
+	void setObjectCRC(unsigned int crc);
+
+	void setMovementCounter(unsigned int cntr);
+	
+	void setZoneIndex(int id);
+	
+	//void setLockName(const string name);
+	
+	void setParent(SceneObject par, unsigned int linktype = 0x04);
+	
+	void setZone(Zone zne);
+	
+	void clearUndeploymentEvent();
+	
+	boolean isUndeploymentScheduled();
+
+	// getters
+	int getObjectType();
+
+	unsigned long getObjectID();
+
+	unsigned int getObjectCRC();
+	
+	unsigned int getMovementCounter();
+	
+	float getPositionX();
+
+	float getPositionZ();
+
+	float getPositionY();
+	
+	int getDirectionAngle();
+
+	float getDirectionX();
+
+	float getDirectionZ();
+
+	float getDirectionY();
+
+	float getDirectionW();
+	
+	string getLoggingName();
+	
+	boolean isPlayer();
+	
+	boolean isNonPlayerCreature();
+	
+	boolean isBuilding();
+
+	boolean isCell();
+
+	boolean isTangible();
+	
+	boolean isIntangible();
+	
+	boolean isStatic();
+	
+	boolean isShip();
+	
+	boolean isAttackableObject();
+	
+	boolean isMission();
+	
+	boolean isPlayerObject();
+	
+	boolean isWaypoint();
+	
+	boolean isManufactureSchematic();
+	
+	Zone getZone();
+	
+	int getZoneID();
+		
+	SceneObject getParent();
+	
+	unsigned long getParentID();
+	
+	boolean isMoving();
+	
+	void switchMovingState();
+	
+	boolean doKeepObject();
+	
+	// Virtual functions for combat
+	void setCombatState();
+	void clearCombatState(boolean removedefenders = true);
+	
+	void setDefender(SceneObject defender);
+	void addDefender(SceneObject defender);
+
+	void removeDefenders();
+	void removeDefender(SceneObject defender);
+
+	boolean hasDefender(SceneObject defender);
+	SceneObject getDefender(int idx);
+	unsigned int getDefenderListSize();
+	
+	boolean isPeaced();
+	boolean isAttackableBy(CreatureObject creature);
+}

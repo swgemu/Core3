@@ -1,0 +1,25 @@
+import "../../scene/SceneObject";
+
+import "../../creature/CreatureObject";
+
+import "../../player/Player";
+
+import "../TangibleObject";
+
+import "Pharmaceutical";
+
+interface StimPack implements Pharmaceutical {
+	
+	StimPack(unsigned long oid, unsigned int tempCRC, const unicode n, const string tempn) {
+		super(oid, tempCRC, n, tempn, int mptype);
+	}
+	
+	StimPack(CreatureObject creature, unsigned int tempCRC, const unicode n, const string tempn) {
+		super(creature, tempCRC, n, tempn, int mptype);
+	}
+	
+	void generateAttributes(SceneObject obj);
+	
+	void setEffectiveness(float eff);
+	float getEffectiveness();
+}

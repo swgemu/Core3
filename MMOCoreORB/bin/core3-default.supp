@@ -1,0 +1,21 @@
+{
+    uninit
+    Memcheck:Cond
+    fun:fill_window
+    fun:deflate_fast
+    fun:deflate
+    fun:luaM_realloc_
+    fun:malloc
+}
+ 
+{
+    uninit4
+    Memcheck:Value4
+    fun:deflate
+}
+ 
+{ 
+    overlap
+    Memcheck:Overlap
+    fun:*
+}

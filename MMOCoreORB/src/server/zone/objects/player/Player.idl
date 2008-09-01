@@ -1,0 +1,575 @@
+/*
+Copyright (C) 2007 <SWGEmu>
+
+This File is part of Core3.
+
+This program is free software; you can redistribute
+it and/or modify it under the terms of the GNU Lesser
+General Public License as published by the Free Software
+Foundation; either version 2 of the License,
+or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+See the GNU Lesser General Public License for
+more details.
+
+You should have received a copy of the GNU Lesser General
+Public License along with this program; if not, write to
+the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+
+Linking Engine3 statically or dynamically with other modules
+is making a combined work based on Engine3.
+Thus, the terms and conditions of the GNU Lesser General Public License
+cover the whole combination.
+
+In addition, as a special exception, the copyright holders of Engine3
+give you permission to combine Engine3 program with free software
+programs or libraries that are released under the GNU LGPL and with
+code included in the standard release of Core3 under the GNU LGPL
+license (or modified versions of such code, with unchanged license).
+You may copy and distribute such a system following the terms of the
+GNU LGPL for Engine3 and the licenses of the other code concerned,
+provided that you include the source code of that other code when
+and as the GNU LGPL requires distribution of source code.
+
+Note that people who make modified versions of Engine3 are not obligated
+to grant this special exception for their modified versions;
+it is their choice whether to do so. The GNU Lesser General Public License
+gives permission to release a modified version without this exception;
+this exception also makes it possible to release a modified version
+which carries forward this exception.
+*/
+
+include "engine/service/proto/BaseMessage";
+include "engine/service/proto/StandaloneBaseMessage";
+
+import "../../ZoneClient";
+import "../../Zone";
+
+import "../scene/SceneObject";
+
+import "../creature/CreatureObject";
+import "../creature/Creature";
+
+import "../tangible/TangibleObject";
+
+import "PlayerObject";
+
+import "../tangible/weapons/Weapon";
+import "../tangible/wearables/Armor";
+
+import "../tangible/attachment/Attachment";
+
+import "../tangible/powerup/Powerup";
+
+import "../tangible/Datapad";
+import "../tangible/surveytool/SurveyTool";
+
+import "../group/GroupObject";
+
+import "../guild/Guild";
+
+import "../waypoint/WaypointObject";
+
+import "../../../chat/room/ChatRoom";
+
+import "sui/SuiBox";
+
+import "../draftschematic/DraftSchematic";
+import "../tangible/crafting/CraftingTool";
+import "../tangible/resource/ResourceContainer";
+
+interface Player implements CreatureObject {
+	Player() {
+		super(unsigned long oid);
+	}
+
+	Player(unsigned long oid) {
+		super(oid);
+	}
+
+	void create(ZoneClient client);
+
+	void refuseCreate(ZoneClient client);
+
+	void load(ZoneClient client);
+	void reload(ZoneClient client);
+
+	void unload();
+	void savePlayerState(boolean doSchedule = false);
+
+	void disconnect(boolean closeClient = true, boolean doLock = true);
+
+	void logout(boolean doLock = true);
+	void userLogout(int msgCounter = 3);
+
+	void clearLogoutEvent();
+
+	void makeCharacterMask();
+	unsigned int getCharacterMask();
+
+	// Spatial indexing
+	void insertToZone(Zone zone);
+	void reinsertToZone(Zone zone);
+
+	//void lightUpdateZone();
+	void updateZone(boolean lightUpdate = false);
+
+	void updateZoneWithParent(unsigned long cell, boolean lightUpdate = false);
+	//void lightUpdateZoneWithParent(unsigned long cell);
+
+	void switchMap(int planetid);
+	void doWarp(float x, float y, float z = 0, float randomizeDistance = 0, unsigned long parentID = 0);
+
+	void bounceBack();
+
+	void sendTo(Player player);
+	void sendToOwner();
+
+	void notifySceneReady();
+
+	// Datapad
+	void addDatapadItem(SceneObject item);
+	SceneObject getDatapadItem(unsigned long oid);
+	void removeDatapadItem(unsigned long oid);
+
+	SceneObject getPlayerItem(unsigned long oid);
+
+
+	// Stat Migration Targets
+	// getters
+	unsigned int getTargetHealth();
+	unsigned int getTargetStrength();
+	unsigned int getTargetConstitution();
+	unsigned int getTargetAction();
+	unsigned int getTargetQuickness();
+	unsigned int getTargetStamina();
+	unsigned int getTargetMind();
+	unsigned int getTargetFocus();
+	unsigned int getTargetWillpower();
+
+	// setters
+	void setTargetHealth(unsigned int health);
+	void setTargetStrength(unsigned int strength);
+	void setTargetConstitution(unsigned int constituition);
+	void setTargetAction(unsigned int action);
+	void setTargetQuickness(unsigned int quickness);
+	void setTargetStamina(unsigned int stamina);
+	void setTargetMind(unsigned int mind);
+	void setTargetFocus(unsigned int focus);
+	void setTargetWillpower(unsigned int willpower);
+
+	//Attribute Limits
+	unsigned int getMinHealth();
+	unsigned int getMaxHealth();
+	unsigned int getMinStrength();
+	unsigned int getMaxStrength();
+	unsigned int getMinConstitution();
+	unsigned int getMaxConstitution();
+	unsigned int getMinAction();
+	unsigned int getMaxAction();
+	unsigned int getMinQuickness();
+	unsigned int getMaxQuickness();
+	unsigned int getMinStamina();
+	unsigned int getMaxStamina();
+	unsigned int getMinMind();
+	unsigned int getMaxMind();
+	unsigned int getMinFocus();
+	unsigned int getMaxFocus();
+	unsigned int getMinWillpower();
+	unsigned int getMaxWillpower();
+	unsigned int getTotalAttribPoints();
+
+	// Combat
+	void queueFlourish(const string modifier, unsigned long target, unsigned int actionCntr);
+	void clearQueueAction(unsigned int actioncntr, float timer = 0, unsigned int tab1 = 0, unsigned int tab2 = 0);
+	void queueAction(Player player, unsigned long target, unsigned int actionCRC, unsigned int actionCntr, const string actionModifier);
+	void deleteQueueAction(unsigned int actioncntr);
+
+	void changePosture(int post);
+
+	void doCenterOfBeing();
+	void removeCenterOfBeing();
+
+	void doPowerboost();
+
+	void doPeace();
+
+	void kill();
+	void deathblow(Player player);
+	void revive();
+
+	void doClone();
+	void activateClone();
+
+	void doRecovery();
+
+	void activateReviveCountdown();
+	void clearReviveCountdown();
+	void countdownRevive(int counter);
+
+	boolean hasConsent(string charID);
+	boolean giveConsent(string name);
+	boolean revokeConsent(string name);
+	int getConsentSize();
+	string getConsentEntry(int index);
+
+	void sendConsentBox();
+
+	boolean isRevivable();
+
+	void addBuff(unsigned int buffcrc, float time);
+
+	void lootCorpse(boolean lootAll = false);
+	void lootObject(Creature creature, SceneObject object);
+
+	// trade
+	void addTradeItem(TangibleObject item);
+	void clearTradeItems();
+	int getTradeSize();
+	TangibleObject getTradeItem(int idx);
+
+	void setAcceptedTrade(boolean val);
+	boolean hasAcceptedTrade();
+
+	void setVerifiedTrade(boolean val);
+	boolean hasVerifiedTrade();
+
+	void setMoneyToTrade(unsigned int value);
+
+	unsigned int getMoneyToTrade();
+
+	//boolean isChangingFaction();
+
+	boolean getMeditate();
+
+	// Item manipulation methods
+	void changeCloth(unsigned long itemid);
+	void changeWeapon(unsigned long itemid);
+	void changeArmor(unsigned long itemid, boolean forced);
+
+	void setWeaponSkillMods(Weapon weapon);
+	void setArmorSkillMods(Armor armor);
+	boolean setArmorEncumbrance(Armor armor, boolean forced);
+
+	void applyAttachment(unsigned long attachmentID, unsigned long targetID);
+
+	void applyPowerup(unsigned long powerupID, unsigned long targetID);
+
+	void createItems();
+	void loadItems();
+
+	void createBaseStats();
+
+	void decayInventory();
+
+	boolean hasFullInventory();
+
+	void addInventoryItem(TangibleObject item);
+	void addInventoryResource(ResourceContainer item);
+	void equipPlayerItem(TangibleObject item);
+
+	// Profession
+	void saveProfessions();
+	void loadProfessions();
+	void trainStartingProfession();
+
+	boolean trainSkillBox(const string name, boolean updateClient = true);
+	void surrenderSkillBox(const string name);
+
+	void resetSkillBoxesIterator();
+	int getSkillBoxesSize();
+	string getNextSkillBox();
+	boolean hasNextSkillBox();
+	boolean hasSkillBox(string skillBox);
+
+	// Waypoint
+	void addWaypoint(WaypointObject wp);
+
+	boolean removeWaypoint(WaypointObject wp);
+	WaypointObject getWaypoint(unsigned long id);
+
+	void updateWaypoint(WaypointObject wp);
+	void saveWaypoints(Player player);
+	WaypointObject searchWaypoint(Player play, const string name, int mode);
+
+	void queueHeal(TangibleObject medpack, unsigned int actionCRC, const string attribute);
+
+
+	// Experience
+	void addXp(string xpType, int xp, boolean updateClient);
+	void removeXp(string xpType, int xp, boolean updateClient);
+
+	//DuelList manipulation methods
+	void removeFromDuelList(Player targetPlayer);
+	void addToDuelList(Player targetPlayer);
+
+	boolean isInDuelWith(Player targetPlayer, boolean doLock = true);
+
+	Player getDuelListObject(int index);
+	boolean requestedDuelTo(Player targetPlayer);
+	boolean isDuelListEmpty();
+
+	int getDuelListSize();
+
+	// Guilds
+	boolean setGuild(unsigned int gid);
+	void setGuild(Guild gild);
+
+	boolean updateGuild(unsigned int gid);
+	void updateGuild(Guild guild);
+
+	// Chat
+	void addChatRoom(ChatRoom room);
+	void removeChatRoom(ChatRoom room);
+
+	// Client Methods
+	void sendSystemMessage(const string msg);
+	void sendSystemMessage(unicode msg);
+
+	void sendSystemMessage(const string file, const string str, unsigned long targetid = 0);
+
+	// setters
+	void setConversatingCreature(CreatureObject conversator);
+	void setFirstName(const string name);
+	void setLastName(const string name);
+	void setFirstNameProper(const string name);
+
+	void setBiography(const string bio);
+	void setBiography(unicode bio);
+
+	//void setHairData(string hair);
+
+	boolean changeForcePowerBar(int fp);
+
+	void setForcePowerBar(int fp);
+	void updateMaxForcePowerBar(boolean updateClient = true);
+
+	void setFoodFilling(int fill, boolean updateClient = true);
+	void setDrinkFilling(int fill, boolean updateClient = true);
+	void changeFoodFilling(int fill, boolean updateClient = true);
+	void changeDrinkFilling(int fill, boolean updateClient = true);
+	int getFoodFilling();
+	int getDrinkFilling();
+	void activateDigest();
+
+	void activateQueueAction();
+
+	void setCharacterID(unsigned long id);
+
+	void setStartingProfession(const string prof);
+
+	void setHairObject(const string hair);
+	void updateHair();
+
+	void setPlayerObject(PlayerObject obj);
+
+	void setOnline();
+
+	void clearDisconnectEvent();
+
+	void setClient(ZoneClient client);
+
+	void setOvert();
+	void setCovert();
+
+	void newChangeFactionEvent(unsigned int faction);
+
+	void setRaceFileName(string name);
+	void setStartingLocation(string loc);
+
+	void setFactionRank(string fac);
+
+	void setItemShift(unsigned int shift);
+
+	void toggleCharacterBit(unsigned int bit);
+
+	boolean awardBadge(unsigned int badgeindex);
+
+	//void addBadgeBitmask(unsigned int bitmask);
+
+	void setLinkDead();
+
+	void setLoggingIn();
+
+	void setAdminLevel(int level);
+	int getAdminLevel();
+
+	void setLastTestPositionX(float pos);
+	void setLastTestPositionY(float pos);
+
+	void setTradeRequestedPlayer(unsigned long ID);
+
+	unsigned long getTradeRequestedPlayer();
+
+	void launchFirework(int anim);
+
+	void sendMessage(BaseMessage msg);
+	void sendMessage(StandaloneBaseMessage msg);
+
+	boolean isJedi();
+
+	void mutePlayer();
+	void toggleImmune();
+
+	// SuiBoxes
+
+	boolean hasSuiBox(unsigned int boxID);
+	boolean hasSuiBoxType(unsigned int boxTypeID);
+
+	void removeSuiBox(unsigned int boxID);
+
+	SuiBox getSuiBox(unsigned int boxID);
+
+	void addSuiBox(SuiBox sui);
+
+	unsigned int getNewSuiBoxID(unsigned int type);
+
+	boolean isOnline();
+
+	boolean isOffline();
+
+	boolean isLinkDead();
+
+	boolean isLoggingIn();
+
+	boolean isLoggingOut();
+
+	// getters
+	PlayerObject getPlayerObject();
+
+	CreatureObject getConversatingCreature();
+
+	string getFirstName();
+	string getLastName();
+	string getFirstNameProper();
+	string getRaceFileName();
+
+	unicode getBiography();
+	//string getHairData();
+
+	unsigned long getCharacterID();
+
+	string getStartingProfession();
+
+	int getZoneIndex();
+
+	string getHairObject();
+
+	ZoneClient getClient();
+
+	GroupObject getGroupObject();
+
+	string getFactionRank();
+
+	unsigned int getRebelPoints();
+
+	unsigned int getImperialPoints();
+
+	int getPvpRating();
+	void setPvpRating(int value);
+
+	void increasePvpRating(int value);
+	void decreasePvpRating(int value);
+
+	void getPlayersNearYou();
+
+	int getRegionID();
+
+	int getCertificationListSize();
+
+	string getCertification(int idx);
+
+	boolean checkCertification(string& certification);
+
+	int getSlicingAbility();
+
+	boolean isChatMuted();
+	boolean isImmune();
+
+	// mission stuff
+	unsigned int nextMisoRFC();
+	int checkMisoBSB(int tcb);
+	void setMisoBSB(int tms);
+	void addToCurMisoKeys(string& tck);
+	boolean isOnCurMisoKey(string tmk);
+	void removeFromCurMisoKeys(string tck);
+	void addToFinMisoKeys(string tmp);
+	boolean hasCompletedMisoKey(string tmk);
+
+	// Crafting
+	CraftingTool getCurrentCraftingTool();
+	CraftingTool getCraftingTool(const int type, boolean doLock = true);
+	void setCurrentCraftingTool(CraftingTool ct);
+	void clearCurrentCraftingTool();
+
+	void prepareCraftingSession(CraftingTool ct, DraftSchematic ds);
+	void addIngredientToSlot(TangibleObject tano, int slot, int counter);
+	void removeResourceFromCraft(unsigned long resID, int slot, int counter);
+	void nextCraftingStage(string test);
+	void craftingCustomization(string name, int condition);
+	void createPrototype(string count);
+	void createSchematic(string count);
+	void handleExperimenting(int count, int numRowsAttempted, string expstring);
+
+	// Draft Schematic stuff
+	void sendDraftSchematics();
+
+	void addDraftSchematicsFromGroupName(const string schematicGroupName);
+	void subtractDraftSchematicsFromGroupName(const string schematicGroupName);
+	void addDraftSchematic(DraftSchematic ds);
+	void subtractDraftSchematic(DraftSchematic ds);
+
+	unsigned int getDraftSchematicListSize();
+	unsigned int getDraftSchematicUpdateCount(unsigned int count);
+	// Get by key
+	DraftSchematic getDraftSchematic(unsigned int schematicID);
+	// Get by index
+	DraftSchematic getDraftSchematic(int index);
+
+	boolean isChangingFaction();
+
+	Datapad getDatapad();
+
+	unsigned long getNewItemID();
+
+	unsigned int getItemShift();
+
+	float getLastTestPositionX();
+	float getLastTestPositionY();
+
+	unsigned int getForcePower();
+	unsigned int getForcePowerMax();
+
+
+	SurveyTool getSurveyTool();
+	SurveyTool getSampleTool();
+	void setSurveyTool(SurveyTool sTool);
+	void setSampleTool(SurveyTool sTool);
+	void setSurveyWaypoint(WaypointObject id);
+	WaypointObject getSurveyWaypoint();
+	boolean getCanSurvey();
+	boolean getCanSample();
+	void setCanSurvey();
+	void setCanSample();
+	void setSurveyEvent(string resource_name);
+	void setSampleEvent(string resource_name, boolean firstTime = false);
+	void setCancelSample(boolean val);
+	boolean getCancelSample();
+	void sendSampleTimeRemaining();
+	void setSurveyErrorMessage();
+	void setSampleErrorMessage();
+	boolean getSurveyErrorMessage();
+	boolean getSampleErrorMessage();
+
+	void setEntertainerEvent();
+	void clearEntertainerEvent();
+
+	void setLastNpcConvStr(const string conv);
+	void setLastNpcConvMessStr(const string mess);
+
+	string getLastNpcConvStr();
+	string getLastNpcConvMessStr();
+}

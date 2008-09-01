@@ -1,0 +1,169 @@
+/*
+Copyright (C) 2007 <SWGEmu>
+ 
+This File is part of Core3.
+ 
+This program is free software; you can redistribute 
+it and/or modify it under the terms of the GNU Lesser 
+General Public License as published by the Free Software
+Foundation; either version 2 of the License, 
+or (at your option) any later version.
+ 
+This program is distributed in the hope that it will be useful, 
+but WITHOUT ANY WARRANTY; without even the implied warranty of 
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+See the GNU Lesser General Public License for
+more details.
+ 
+You should have received a copy of the GNU Lesser General 
+Public License along with this program; if not, write to
+the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+ 
+Linking Engine3 statically or dynamically with other modules 
+is making a combined work based on Engine3. 
+Thus, the terms and conditions of the GNU Lesser General Public License 
+cover the whole combination.
+ 
+In addition, as a special exception, the copyright holders of Engine3 
+give you permission to combine Engine3 program with free software 
+programs or libraries that are released under the GNU LGPL and with 
+code included in the standard release of Core3 under the GNU LGPL 
+license (or modified versions of such code, with unchanged license). 
+You may copy and distribute such a system following the terms of the 
+GNU LGPL for Engine3 and the licenses of the other code concerned, 
+provided that you include the source code of that other code when 
+and as the GNU LGPL requires distribution of source code.
+ 
+Note that people who make modified versions of Engine3 are not obligated 
+to grant this special exception for their modified versions; 
+it is their choice whether to do so. The GNU Lesser General Public License 
+gives permission to release a modified version without this exception; 
+this exception also makes it possible to release a modified version 
+which carries forward this exception.
+*/
+
+include "engine/service/Message";
+
+include "../../packets/scene/AttributeListMessage";
+
+import "../../Zone";
+
+import "../scene/SceneObject";
+
+import "../creature/CreatureObject";
+
+import "../player/Player";
+
+import "../draftschematic/DraftSchematic";
+
+interface TangibleObject implements SceneObject {
+	TangibleObject(unsigned long oid, int tp = 0);
+	
+	TangibleObject(unsigned long oid, const unicode n, const string tempname, unsigned int tempCRC, int tp = 0) {
+		super(oid, int type);
+	}
+
+	TangibleObject(CreatureObject creature, const unicode n, const string tempname, unsigned int tempCRC, int tp = 0);
+
+	void generateAttributes(Player player);
+
+	void updateCraftingValues(DraftSchematic draftSchematic);
+
+	void insertToZone(Zone zone);
+	void removeFromZone();
+
+	void close(Player player);
+	
+	void setEquipped(boolean eqp);
+	
+	void setContainer(SceneObject cont, unsigned int type = 0x04);
+	
+	void sendTo(Player player, boolean doClose = true);
+	
+	void sendDeltas(Player player);
+	
+	void repairItem(Player player);
+	
+	void decay(int decayRate);
+
+	void parseItemAttributes();
+	
+	// getters
+	boolean isPersistent();
+	boolean isUpdated();
+	
+	boolean isEquipped();
+	
+	boolean isWeapon();
+	boolean isArmor();
+	boolean isClothing();
+
+	boolean isInstrument();
+	
+	boolean isAttachment();
+
+	boolean isResource();
+	boolean isTicket();
+	boolean isTicketCollector();
+	boolean isSurveyTool();
+	boolean isPharmaceutical();
+
+	boolean isLair();
+
+	boolean isCraftingStation();
+
+	boolean isCraftingTool();
+
+	boolean isComponent();
+	
+	boolean isWeaponPowerup();
+
+	void setCraftersName(string n);
+	void setCraftedSerial(string s);
+	SceneObject getContainer();
+
+	unicode getName();
+	string getTemplateName();
+	string getTemplateTypeName();
+	void getCustomizationString(string appearance);
+
+	void setPlayerUseMask(unsigned int mask);
+	unsigned int getPlayerUseMask();
+
+	int getObjectSubType();
+
+	unsigned int getTemplateID();
+	
+	int getObjectCount();
+	
+	int getConditionDamage();
+	int getMaxCondition();
+	int getCondition();
+
+	string getCraftersName();
+	string getCraftedSerial();
+	
+	void setAttributes(string attributestring);
+	string getAttributes();
+	
+	void addAttributes(AttributeListMessage alm);
+
+	// setters
+	void setName(const string n);
+	void setTemplateName(const string tempName);
+	void setTemplateTypeName(const string tempTypeName);	
+
+	void setObjectSubType(const int type);
+	
+	void setPersistent(boolean pers);
+
+	void setUpdated(boolean upd);
+
+	void setConditionDamage(int damage);
+	
+	void setCustomizationString(string cust);
+	
+	void setCustomizationVariable(unsigned char type, unsigned int value);
+
+	void setObjectCount(const int count);
+}

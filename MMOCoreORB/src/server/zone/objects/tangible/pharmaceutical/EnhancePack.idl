@@ -1,0 +1,32 @@
+import "../../scene/SceneObject";
+
+import "../../creature/CreatureObject";
+
+import "../../player/Player";
+
+import "../TangibleObject";
+
+import "Pharmaceutical";
+
+interface EnhancePack implements Pharmaceutical {
+	
+	EnhancePack(unsigned long oid, unsigned int tempCRC, const unicode n, const string tempn) {
+		super(oid, tempCRC, n, tempn, int mptype);
+	}
+	
+	EnhancePack(CreatureObject creature, unsigned int tempCRC, const unicode n, const string tempn) {
+		super(creature, tempCRC, n, tempn, int mptype);
+	}
+	
+	void generateAttributes(SceneObject obj);
+	
+	unsigned int getBuffCRC();
+	
+	void setEffectiveness(float eff);
+	void setDuration(float dur);
+	void setPoolAffected(int pool);
+	
+	float getEffectiveness();
+	float getDuration();
+	int getPoolAffected();
+}

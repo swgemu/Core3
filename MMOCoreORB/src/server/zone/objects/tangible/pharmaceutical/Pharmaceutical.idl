@@ -1,0 +1,43 @@
+import "../../scene/SceneObject";
+
+import "../../creature/CreatureObject";
+
+import "../../player/Player";
+
+import "../TangibleObject";
+
+interface Pharmaceutical implements TangibleObject {
+	
+
+	Pharmaceutical(unsigned long oid, unsigned int tempCRC, const unicode n, const string tempn, int mptype) {
+		super(oid, int tp);
+	}
+
+	Pharmaceutical(CreatureObject creature, unsigned long oid, unsigned int tempCRC, const unicode n, const string tempn, int mptype) {
+		super(oid, int tp);
+	}	
+
+	Pharmaceutical(CreatureObject creature, unsigned int tempCRC, const unicode n, const string tempn, int mptype) {
+		super(unsigned long oid, int tp);
+	}
+	
+	void sendDeltas(Player player);
+	void generateAttributes(SceneObject obj);
+	
+	void useCharge(Player player);
+	
+	void setUsesRemaining(int uses);
+	void setMedicineUseRequired(int meduse);
+	void setMedpackType(int mptype);
+	
+	int getUsesRemaining();
+	int getMedicineUseRequired();
+	int getMedpackType();
+	
+	boolean isEnhancePack();
+	boolean isWoundPack();
+	boolean isStimPack();
+	boolean isStatePack();
+	boolean isCurePack();
+	boolean isRevivePack();
+}
