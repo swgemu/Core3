@@ -498,7 +498,7 @@ void ChatManagerImplementation::sendMail(const string& sendername, unicode& head
 
 			stringstream update;
 			update << "UPDATE `mail` SET `read` = 1 WHERE mail_id = " << mailid << ";";
-			ServerDatabase::instance()->executeQuery(update);
+			ServerDatabase::instance()->executeStatement(update);
 
 		}
 
@@ -534,7 +534,7 @@ void ChatManagerImplementation::sendMailBody(Player* receiver, uint32 mailid) {
 
 			stringstream update;
 			update << "UPDATE `mail` SET `read` = 2 WHERE mail_id = " << mailid << ";";
-			ServerDatabase::instance()->executeQuery(update);
+			ServerDatabase::instance()->executeStatement(update);
 		}
 
 
@@ -576,7 +576,7 @@ void ChatManagerImplementation::listMail(Player* ply) {
 
 			stringstream update;
 			update << "UPDATE `mail` SET `read` = " << read << " WHERE mail_id = " << mailid << ";";
-			ServerDatabase::instance()->executeQuery(update);
+			ServerDatabase::instance()->executeStatement(update);
 		}
 
 		delete res;
