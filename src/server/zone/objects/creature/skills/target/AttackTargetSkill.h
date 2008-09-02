@@ -129,255 +129,11 @@ public:
 	virtual int calculateDamage(CreatureObject* creature, SceneObject* target) = 0;
 
 	virtual bool calculateCost(CreatureObject* creature) {
-		return creature->changeMindBar(-50);
+		float specialMultiplier = 1.0;
+		return server->getCombatManager()->calculateCost(creature, specialMultiplier);
 	}
 
 	void doAnimations(CreatureObject* creature, SceneObject* target, bool doAnimations = true) {
-		/*
-		if (secondaryAnim.size() != 0)
-			player->playSecondaryAnim(secondaryAnim);
-
-		if (selfMessage.size() != 0)
-			player->showMessage;
-
-		if (targetMessage.size() != 0)
-			targetPlayer->showMessage;
-		*/
-	}
-
-	int applyHealthPoolDamage(CreatureObject* attacker, CreatureObject* target, int32 damage, int part = 1) {
-
-		Weapon* weapon = attacker->getWeapon();
-		Armor* armor = target->getArmor(part);
-
-		int reduction = 0;
-		int APARreduction = 0;
-
-		if (target->isPlayer())
-			reduction = doArmorResists(armor, weapon, damage);
-		else if (weapon != NULL)
-			reduction = int(target->getArmorResist(weapon->getDamageType()) * damage / 100);
-		else
-			reduction = int(target->getArmorResist(WeaponImplementation::KINETIC) * damage / 100);
-
-
-		if (reduction > 0)
-				APARreduction = doArmorAPARReductions(target->getArmor(part),attacker->getWeapon(),damage,true);
-		else
-				APARreduction = doArmorAPARReductions(target->getArmor(part),attacker->getWeapon(),damage,false);
-
-		damage = damage - reduction - APARreduction;
-
-		target->addDamage(attacker, damage);
-
-		target->takeHealthDamage(damage);
-
-		if (part < 3) {
-			if (attacker->isPlayer()) {
-				ShowFlyText* fly = new ShowFlyText(target, "combat_effects", "hit_body", 0xFF, 0, 0);
-				((Player*)attacker)->sendMessage(fly);
-			}
-		} else if (part < 5) {
-			if (attacker->isPlayer()) {
-				ShowFlyText* fly = new ShowFlyText(target, "combat_effects", "hit_larm", 0xFF, 0, 0);
-				((Player*)attacker)->sendMessage(fly);
-			}
-		} else {
-			if (attacker->isPlayer()) {
-				ShowFlyText* fly = new ShowFlyText(target, "combat_effects", "hit_rarm", 0xFF, 0, 0);
-				((Player*)attacker)->sendMessage(fly);
-			}
-		}
-
-		if (target->isPlayer() && ((reduction+APARreduction) > 0))  // if total damage reduction is positive, tell the player what their expensive armor did for them
-			target->sendCombatSpam(target,(TangibleObject*) armor, (reduction + APARreduction), "armor_damaged", false);
-		else if (target->isPlayer() && APARreduction <0 && reduction != 0)  // In this case the APAR calulation increased the damage (Ie. T21 (Heavy piercing) against Composite (light rating) adds 50% damage, giving APARreduction a negative value, so only show the % reduction the armor normally gives
-			target->sendCombatSpam(target,(TangibleObject*) armor, (reduction), "armor_damaged", false);
-
-		float woundsRatio = 5;
-
-		if (weapon != NULL)
-			woundsRatio = weapon->getWoundsRatio();
-
-		if (woundsRatio + (woundsRatio * target->calculateBFRatio()) > System::random(100)) {
-			target->changeHealthWoundsBar(1, true);
-			target->changeShockWounds(1);
-
-			if (target->isPlayer()) {
-				target->sendCombatSpam(attacker, NULL, 1, "wounded", false);
-				target->sendCombatSpam(attacker, NULL, 1, "shock_wound", false);
-			}
-			if (armor != NULL) {
-				armor->setConditionDamage(armor->getConditionDamage() + 1);
-				armor->setUpdated(true);
-			}
-
-			if (weapon != NULL && System::random(10) == 1) {
-				weapon->setConditionDamage(weapon->getConditionDamage() + 1);
-				weapon->setUpdated(true);
-			}
-		}
-
-		return reduction;
-	}
-
-	void applyStrengthPoolDamage(CreatureObject* target, int32 damage) {
-		target->changeStrengthBar(-(int32) damage, true);
-	}
-
-	void applyConstitutionPoolDamage(CreatureObject* target, int32 damage) {
-		target->changeConstitutionBar(-(int32) damage, true);
-	}
-
-	int applyActionPoolDamage(CreatureObject* attacker, CreatureObject* target, int32 damage, int part = 7) {
-
-		Weapon* weapon = attacker->getWeapon();
-		Armor* armor = target->getArmor(part);
-
-		int reduction = 0;
-		int APARreduction = 0;
-
-		if (target->isPlayer())
-			reduction = doArmorResists(armor, weapon, damage);
-		else if (weapon != NULL)
-			reduction = int(target->getArmorResist(weapon->getDamageType()) * damage / 100);
-		else
-			reduction = int(target->getArmorResist(WeaponImplementation::KINETIC) * damage / 100);
-
-		if (reduction > 0)
-			APARreduction = doArmorAPARReductions(target->getArmor(part),attacker->getWeapon(),damage,true);
-		else
-			APARreduction = doArmorAPARReductions(target->getArmor(part),attacker->getWeapon(),damage,false);
-
-		damage = damage - reduction - APARreduction;
-
-		target->addDamage(attacker, damage);
-
-		target->takeActionDamage(damage);
-
-
-		if (part == 7) {  // below is sending flytext for the wrong parts...
-			if (attacker->isPlayer()) {
-				ShowFlyText* fly = new ShowFlyText(target, "combat_effects", "hit_lleg", 0, 0xFF, 0);
-				((Player*)attacker)->sendMessage(fly);
-			}
-		} else {
-			if (attacker->isPlayer()) {
-				ShowFlyText* fly = new ShowFlyText(target, "combat_effects", "hit_rleg", 0, 0xFF, 0);
-				((Player*)attacker)->sendMessage(fly);
-			}
-		}
-
-		if (target->isPlayer() && ((reduction+APARreduction) > 0))  // if total damage reduction is positive, tell the player what their expensive armor did for them
-			target->sendCombatSpam(target,(TangibleObject*) armor, (reduction + APARreduction), "armor_damaged", false);
-		else if (target->isPlayer() && APARreduction <0 && reduction != 0)  // In this case the APAR calulation increased the damage (Ie. T21 (Heavy piercing) against Composite (light rating) adds 50% damage, giving APARreduction a negative value, so only show the % reduction the armor normally gives
-			target->sendCombatSpam(target,(TangibleObject*) armor, (reduction), "armor_damaged", false);
-
-		float woundsRatio = 5;
-
-		if (weapon != NULL)
-			woundsRatio = weapon->getWoundsRatio();
-
-		if (woundsRatio + (woundsRatio * target->calculateBFRatio()) > System::random(100)) {
-			target->changeActionWoundsBar(1, true);
-			target->changeShockWounds(1);
-
-			if (target->isPlayer()) {
-				target->sendCombatSpam(attacker, NULL, 1, "wounded", false);
-				target->sendCombatSpam(attacker, NULL, 1, "shock_wound", false);
-			}
-			if (armor != NULL) {
-				armor->setConditionDamage(armor->getConditionDamage() + 1);
-				armor->setUpdated(true);
-			}
-
-			if (weapon != NULL && System::random(10) == 1) {
-				weapon->setConditionDamage(weapon->getConditionDamage() + 1);
-				weapon->setUpdated(true);
-			}
-		}
-
-		return reduction;
-	}
-
-	void applyQuicknessPoolDamage(CreatureObject* target, int32 damage) {
-		target->changeQuicknessBar(-(int32) damage, true);
-	}
-
-	void applyStaminaPoolDamage(CreatureObject* target, int32 damage) {
-		target->changeStaminaBar(-(int32) damage, true);
-	}
-
-	int applyMindPoolDamage(CreatureObject* attacker, CreatureObject* target, int32 damage) {
-
-		Weapon* weapon = attacker->getWeapon();
-		Armor* armor = target->getArmor(9);
-
-		int reduction = 0;
-		int APARreduction= 0;
-
-		if (target->isPlayer())
-			reduction = doArmorResists(armor, weapon, damage);
-		else if (weapon != NULL)
-			reduction = int(target->getArmorResist(weapon->getDamageType()) * damage / 100);
-		else
-			reduction = int(target->getArmorResist(WeaponImplementation::KINETIC) * damage / 100);
-
-
-		if (reduction > 0)
-			APARreduction = doArmorAPARReductions(target->getArmor(9),attacker->getWeapon(),damage,true);
-		else
-			APARreduction = doArmorAPARReductions(target->getArmor(9),attacker->getWeapon(),damage,false);
-
-		damage = damage - reduction - APARreduction;
-
-		target->addDamage(attacker, damage);
-
-		target->takeMindDamage(damage);
-
-		if (attacker->isPlayer()) {
-			ShowFlyText* fly = new ShowFlyText(target, "combat_effects", "hit_head", 0, 0, 0xFF);
-			((Player*)attacker)->sendMessage(fly);
-		}
-
-		if (target->isPlayer() && ((reduction+APARreduction) > 0))  // if total damage reduction is positive, tell the player what their expensive armor did for them
-			target->sendCombatSpam(target,(TangibleObject*) armor, (reduction + APARreduction), "armor_damaged", false);
-		else if (target->isPlayer() && APARreduction <0 && reduction != 0)  // In this case the APAR calulation increased the damage (Ie. T21 (Heavy piercing) against Composite (light rating) adds 50% damage, giving APARreduction a negative value, so only show the % reduction the armor normally gives
-			target->sendCombatSpam(target,(TangibleObject*) armor, (reduction), "armor_damaged", false);
-
-		float woundsRatio = 5;
-
-		if (weapon != NULL)
-			woundsRatio = weapon->getWoundsRatio();
-
-		if (woundsRatio + (woundsRatio * target->calculateBFRatio()) > System::random(100)) {
-			target->changeMindWoundsBar(1, true);
-			target->changeShockWounds(1);
-
-			if (target->isPlayer()) {
-				target->sendCombatSpam(attacker, NULL, 1, "wounded", false);
-				target->sendCombatSpam(attacker, NULL, 1, "shock_wound", false);
-			}
-			if (armor != NULL) {
-				armor->setConditionDamage(armor->getConditionDamage() + 1);
-				armor->setUpdated(true);
-			}
-
-			if (weapon != NULL && System::random(10) == 1) {
-				weapon->setConditionDamage(weapon->getConditionDamage() + 1);
-				weapon->setUpdated(true);
-			}
-		}
-
-		return reduction;
-	}
-
-	void applyFocusPoolDamage(CreatureObject* target, int32 damage) {
-		target->changeFocusBar(-(int32) damage, true);
-	}
-
-	void applyWillpowerPoolDamage(CreatureObject* target, int32 damage) {
-		target->changeWillpowerBar(-(int32) damage, true);
 	}
 
 	void doMiss(CreatureObject* creature, CreatureObject* target, int32 damage) {
@@ -588,11 +344,13 @@ public:
 	}
 
 	void calculateDamageReduction(CreatureObject* creature, CreatureObject* targetCreature, float& damage) {
-		server->getCombatManager()->calculateDamageReduction(creature, targetCreature, damage);
+		// TODO: reintroduce for later testing
+		//server->getCombatManager()->calculateDamageReduction(creature, targetCreature, damage);
 	}
 
 	void checkMitigation(CreatureObject* creature, CreatureObject* targetCreature, float& minDamage, float& maxDamage) {
-		server->getCombatManager()->checkMitigation(creature, targetCreature, minDamage, maxDamage);
+		// TODO: reintroduce for later testing
+		//server->getCombatManager()->checkMitigation(creature, targetCreature, minDamage, maxDamage);
 	}
 
 	void doDodge(CreatureObject* creature, CreatureObject* defender) {
@@ -608,11 +366,16 @@ public:
 	}
 
 	int checkSecondaryDefenses(CreatureObject* creature, CreatureObject* targetCreature) {
-		return server->getCombatManager()->checkSecondaryDefenses(creature, targetCreature);
+		// TODO: reintroduce for later testing
+		//return server->getCombatManager()->checkSecondaryDefenses(creature, targetCreature);
+		return 0;
 	}
 
 	int getHitChance(CreatureObject* creature, CreatureObject* targetCreature) {
-		return server->getCombatManager()->getHitChance(creature, targetCreature, accuracyBonus);
+		// TODO: reintroduce for later testing
+		//return server->getCombatManager()->getHitChance(creature, targetCreature, accuracyBonus);
+		// Always hit
+		return 100;
 	}
 
 	float getWeaponAccuracy(float currentRange, Weapon* weapon) {
@@ -621,6 +384,10 @@ public:
 
 	float getTargetDefense(CreatureObject* creature, CreatureObject* targetCreature, Weapon* weapon) {
 		return server->getCombatManager()->getTargetDefense(creature, targetCreature, weapon);
+	}
+
+	int applyDamage(CreatureObject* attacker, CreatureObject* target, int32 damage, int part) {
+		return server->getCombatManager()->applyDamage(attacker, target, damage, part);
 	}
 
 	void doDotWeaponAttack(CreatureObject* creature, CreatureObject* targetCreature, bool areaHit) {

@@ -747,9 +747,6 @@ void CombatManager::calculateDamageReduction(CreatureObject* creature, CreatureO
 
 
 	//Other factors
-	if (targetCreature->isPlayer())
-		damage = damage / 4;
-
 	if (targetCreature->isKnockedDown())
 		damage *= 1.33f;
 
@@ -1032,4 +1029,150 @@ uint32 CombatManager::getTargetDefense(CreatureObject* creature, CreatureObject*
 		defense = 125;
 
 	return defense - (uint32)(defense * targetCreature->calculateBFRatio());
+}
+
+/*  applyDamage -
+ * 		This routine applies damage to the target
+ * 		Inputs are the attacker, defender, the amount of damage
+ * 		and an integer specifying where the target has been hit
+ * 		The values are:
+ * 			1,2 - Right arm
+ * 			3,4 - Left arm
+ * 			5,6 - Body
+ * 			7 -	Left leg
+ * 			8 - Right leg
+ * 			9 - Head
+ * 		Returns the amount of damage absorbed by armour.
+ */
+int CombatManager::applyDamage(CreatureObject* attacker, CreatureObject* target, int32 damage, int part) {
+
+	Weapon* weapon = attacker->getWeapon();
+	Armor* armor = target->getArmor(part);
+
+
+	int reduction = 0;
+	/* TODO: reintroduce later in testing
+	int APARreduction = 0;
+
+	if (target->isPlayer())
+		reduction = doArmorResists(armor, weapon, damage);
+	else if (weapon != NULL)
+		reduction = int(target->getArmorResist(weapon->getDamageType()) * damage / 100);
+	else
+		reduction = int(target->getArmorResist(WeaponImplementation::KINETIC) * damage / 100);
+
+
+	if (reduction > 0)
+			APARreduction = doArmorAPARReductions(target->getArmor(part),attacker->getWeapon(),damage,true);
+	else
+			APARreduction = doArmorAPARReductions(target->getArmor(part),attacker->getWeapon(),damage,false);
+
+	damage = damage - reduction - APARreduction;
+	 */
+
+	target->addDamage(attacker, damage);
+
+	if (part < 7)
+		target->takeHealthDamage(damage);
+	else if (part < 9)
+		target->takeActionDamage(damage);
+	else
+		target->takeMindDamage(damage);
+
+	if (attacker->isPlayer()) {
+		ShowFlyText* fly;
+		switch(part) {
+		case 9:
+			fly = new ShowFlyText(target, "combat_effects", "hit_head", 0, 0, 0xFF);
+			((Player*)attacker)->sendMessage(fly);
+			break;
+		case 1:
+		case 2:
+			fly = new ShowFlyText(target, "combat_effects", "hit_rarm", 0xFF, 0, 0);
+			((Player*)attacker)->sendMessage(fly);
+			break;
+		case 3:
+		case 4:
+			fly = new ShowFlyText(target, "combat_effects", "hit_larm", 0xFF, 0, 0);
+			((Player*)attacker)->sendMessage(fly);
+			break;
+		case 5:
+		case 6:
+			fly = new ShowFlyText(target, "combat_effects", "hit_body", 0xFF, 0, 0);
+			((Player*)attacker)->sendMessage(fly);
+			break;
+		case 7:
+			fly = new ShowFlyText(target, "combat_effects", "hit_lleg", 0, 0xFF, 0);
+			((Player*)attacker)->sendMessage(fly);
+			break;
+		case 8:
+			fly = new ShowFlyText(target, "combat_effects", "hit_rleg", 0, 0xFF, 0);
+			((Player*)attacker)->sendMessage(fly);
+			break;
+		}
+	}
+
+	float woundsRatio = 5;
+
+	if (weapon != NULL)
+		woundsRatio = weapon->getWoundsRatio();
+
+	if (woundsRatio + (woundsRatio * target->calculateBFRatio()) > System::random(100)) {
+		if (part == 9)
+			target->changeMindWoundsBar(1, true);
+		else if (part < 7)
+			target->changeHealthWoundsBar(1, true);
+		else if (part < 9)
+			target->changeActionWoundsBar(1, true);
+
+		target->changeShockWounds(1);
+
+		if (target->isPlayer()) {
+			target->sendCombatSpam(attacker, NULL, 1, "wounded", false);
+			target->sendCombatSpam(attacker, NULL, 1, "shock_wound", false);
+		}
+		if (armor != NULL) {
+			armor->setConditionDamage(armor->getConditionDamage() + 1);
+			armor->setUpdated(true);
+		}
+
+		if (weapon != NULL && System::random(10) == 1) {
+			weapon->setConditionDamage(weapon->getConditionDamage() + 1);
+			weapon->setUpdated(true);
+		}
+	}
+	return reduction;
+}
+
+bool CombatManager::calculateCost(CreatureObject* creature, float specialMultiplier) {
+	if (!creature->isPlayer())
+		return true;
+
+	Player* player = (Player*)creature;
+	Weapon* weapon = creature->getWeapon();
+
+	if (weapon != NULL) {
+
+		int wpnHealth = (int)(weapon->getHealthAttackCost() * specialMultiplier);
+		int wpnAction = (int)(weapon->getActionAttackCost() * specialMultiplier);
+		int wpnMind = (int)(weapon->getMindAttackCost() * specialMultiplier);
+
+		int healthAttackCost = wpnHealth - (wpnHealth * creature->getStrength() / 1500);
+		int actionAttackCost = wpnAction - (wpnAction * creature->getQuickness() / 1500);
+		int mindAttackCost = wpnMind - (wpnMind * creature->getFocus() / 1500);
+
+		if (healthAttackCost < 0)
+			healthAttackCost = 0;
+
+		if (actionAttackCost < 0)
+			actionAttackCost = 0;
+
+		if (mindAttackCost < 0)
+			mindAttackCost = 0;
+
+		if (!player->changeHAMBars(-healthAttackCost, -actionAttackCost, -mindAttackCost))
+			return false;
+	}
+
+	return true;
 }

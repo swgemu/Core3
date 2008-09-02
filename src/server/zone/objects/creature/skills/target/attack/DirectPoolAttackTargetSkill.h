@@ -51,31 +51,12 @@ class DirectPoolAttackTargetSkill : public AttackTargetSkill {
 public:
 	DirectPoolAttackTargetSkill(const string& name, const string& anim, ZoneProcessServerImplementation* serv) : AttackTargetSkill(name, anim, serv) {
 		healthPoolAttackChance = 0;
-		strengthPoolAttackChance = 0;
-		constitutionPoolAttackChance = 0;
-
 		actionPoolAttackChance = 0;
-		quicknessPoolAttackChance = 0;
-		staminaPoolAttackChance = 0;
-
 		mindPoolAttackChance = 0;
-		focusPoolAttackChance = 0;
-		willpowerPoolAttackChance = 0;
 	}
 
 	int doSkill(CreatureObject* creature, SceneObject* target, const string& modifier, bool doAnimation = true) {
 		int damage = calculateDamage(creature, target);
-
-		/*if (doAnimation) {
-			if (animCRC == 0 && creature->isPlayer()) {
-				Player* player = (Player*) creature;
-				string anim = Animations::getRandomAnimation();
-				uint32 animationCRC = String::hashCode(anim);
-				player->doCombatAnimation(targetCreature, animationCRC, 1);
-				creature->sendSystemMessage(anim);
-			} else
-				creature->doCombatAnimation(targetCreature, animCRC, (damage > 0));
-		}*/
 
 		if (target->isPlayer() || target->isNonPlayerCreature()) {
 			CreatureObject* targetCreature = (CreatureObject*) target;
@@ -128,116 +109,71 @@ public:
 		if (diff >= 0)
 			average = System::random(diff) + (int)minDamage;
 
+		float globalMultiplier = 1.0;
+		if (creature->isPlayer() && !target->isPlayer())
+			globalMultiplier = CombatManager::PVE_MULTIPLIER;
+		else if (creature->isPlayer() && target->isPlayer())
+			globalMultiplier = CombatManager::PVP_MULTIPLIER;
+
 		if (targetCreature != NULL) {
 
 			int rand = System::random(100);
 
 			if (getHitChance(creature, targetCreature) > rand) {
-
 				int secondaryDefense = checkSecondaryDefenses(creature, targetCreature);
 
 				if (secondaryDefense < 2) {
 					if (secondaryDefense == 1)
 						damage = damage / 2;
 
-					if (healthPoolAttackChance != 0 && rand < healthPoolAttackChance) {
-						healthDamage = damageRatio * average;
-						calculateDamageReduction(creature, targetCreature, healthDamage);
+					//Work out the number of pools that may be affected
+					int poolsAffected = 0;
+					int totalPercentage = 0;  // Temporary fix until percentages in lua are corrected
 
-						damage += healthDamage;
+					if (healthPoolAttackChance > 0) {
+						poolsAffected++;
+						totalPercentage += healthPoolAttackChance;
+					}
+					if (actionPoolAttackChance > 0) {
+						poolsAffected++;
+						totalPercentage += actionPoolAttackChance;
+					}
+					if (mindPoolAttackChance > 0) {
+						poolsAffected++;
+						totalPercentage += mindPoolAttackChance;
 					}
 
-					if (strengthPoolAttackChance != 0 && rand < strengthPoolAttackChance) {
+					float damage = damageRatio * average * globalMultiplier;
+					float individualDamage = damage / poolsAffected;
 
-						float strengthDamage = damageRatio * average;
-						calculateDamageReduction(creature, targetCreature, strengthDamage);
+					for (int i = 0; i < poolsAffected; i++) {
+						int pool = System::random(totalPercentage);
 
-						applyStrengthPoolDamage(targetCreature, (int32) strengthDamage);
+						int bodyPart = 0;
+						if (pool < healthPoolAttackChance) {
+							healthDamage = individualDamage;
+							bodyPart = System::random(5)+1;
+							calculateDamageReduction(creature, targetCreature, healthDamage);
+						}
+						else if (pool < healthPoolAttackChance + actionPoolAttackChance) {
+							actionDamage = individualDamage;
+							bodyPart = System::random(1)+7;
+							calculateDamageReduction(creature, targetCreature, actionDamage);
+						}
+						else {
+							mindDamage = individualDamage;
+							bodyPart = 9;
+							calculateDamageReduction(creature, targetCreature, mindDamage);
+						}
 
-						damage += strengthDamage;
+						reduction += applyDamage(creature, targetCreature, (int32) individualDamage, bodyPart);
+
+						if (hasCbtSpamHit())
+							creature->sendCombatSpam(targetCreature, NULL, (int32)individualDamage, getCbtSpamHit());
+
 					}
-
-					if (constitutionPoolAttackChance != 0 && rand < constitutionPoolAttackChance) {
-
-						float constitutionDamage = damageRatio * average;
-						calculateDamageReduction(creature, targetCreature, constitutionDamage);
-
-						applyConstitutionPoolDamage(targetCreature, (int32) constitutionDamage);
-
-						damage += constitutionDamage;
-					}
-
-
-					if (actionPoolAttackChance != 0 && rand < actionPoolAttackChance) {
-						actionDamage = damageRatio * average;
-						calculateDamageReduction(creature, targetCreature, actionDamage);
-
-						damage += actionDamage;
-					}
-
-					if (quicknessPoolAttackChance != 0 && rand < quicknessPoolAttackChance) {
-
-						float quicknessDamage = damageRatio * average;
-						calculateDamageReduction(creature, targetCreature, quicknessDamage);
-
-						applyQuicknessPoolDamage(targetCreature, (int32) quicknessDamage);
-
-						damage += quicknessDamage;
-					}
-
-					if (staminaPoolAttackChance != 0 && rand < staminaPoolAttackChance) {
-
-						float staminaDamage = damageRatio * average;
-						calculateDamageReduction(creature, targetCreature, staminaDamage);
-
-						applyStaminaPoolDamage(targetCreature, (int32)staminaDamage);
-
-						damage += staminaDamage;
-					}
-
-					if (mindPoolAttackChance != 0 && rand < mindPoolAttackChance) {
-						mindDamage = damageRatio * average;
-						calculateDamageReduction(creature, targetCreature, mindDamage);
-
-						damage += mindDamage;
-					}
-
-					if (focusPoolAttackChance != 0 && rand < focusPoolAttackChance) {
-
-						float focusDamage = damageRatio * average;
-						calculateDamageReduction(creature, targetCreature, focusDamage);
-
-						applyFocusPoolDamage(targetCreature, (int32) focusDamage);
-
-						damage += focusDamage;
-					}
-
-					if (willpowerPoolAttackChance != 0 && rand < willpowerPoolAttackChance) {
-
-						float willpowerDamage = damageRatio * average;
-						calculateDamageReduction(creature, targetCreature, willpowerDamage);
-
-						applyWillpowerPoolDamage(targetCreature, (int32) willpowerDamage);
-
-						damage += willpowerDamage;
-					}
-				} else
-					return 0;
-
-				if (damage == 0) {
-					doMiss(creature, targetCreature, (int32) damage);
-					return 0;
 				}
 
-				if (hasCbtSpamHit())
-					creature->sendCombatSpam(targetCreature, NULL, (int32)damage, getCbtSpamHit());
-
-				if (healthDamage > 0)
-					reduction = applyHealthPoolDamage(creature, targetCreature, (int32) healthDamage, System::random(5) + 1);
-				if (actionDamage > 0)
-					reduction = applyActionPoolDamage(creature, targetCreature, (int32) actionDamage, System::random(1) + 7);
-				if (mindDamage > 0)
-					reduction = applyMindPoolDamage(creature, targetCreature, (int32) mindDamage);
 
 				if (weapon != NULL) {
 					doDotWeaponAttack(creature, targetCreature, 0);
@@ -258,40 +194,6 @@ public:
 
 		return (int32)damage - reduction;
 	}
-
-	virtual bool calculateCost(CreatureObject* creature) {
-		if (!creature->isPlayer())
-			return true;
-
-		Player* player = (Player*)creature;
-		Weapon* weapon = creature->getWeapon();
-
-		if (weapon != NULL) {
-
-			int wpnHealth = weapon->getHealthAttackCost();
-			int wpnAction = weapon->getActionAttackCost();
-			int wpnMind = weapon->getMindAttackCost();
-
-			int healthAttackCost = wpnHealth - (wpnHealth * creature->getStrength() / 1500);
-			int actionAttackCost = wpnAction - (wpnAction * creature->getQuickness() / 1500);
-			int mindAttackCost = wpnMind - (wpnMind * creature->getFocus() / 1500);
-
-			if (healthAttackCost < 0)
-				healthAttackCost = 0;
-
-			if (actionAttackCost < 0)
-				actionAttackCost = 0;
-
-			if (mindAttackCost < 0)
-				mindAttackCost = 0;
-
-			if (!player->changeHAMBars(-healthAttackCost, -actionAttackCost, -mindAttackCost))
-				return false;
-		}
-
-		return true;
-	}
-
 };
 
 #endif /*DIRECTPOOLATTACKSKILL_H_*/

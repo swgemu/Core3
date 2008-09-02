@@ -66,16 +66,6 @@ public:
 	int doSkill(CreatureObject* creature, SceneObject* target, const string& modifier, bool doAnimation = true) {
 		int damage = calculateDamage(creature, target);
 
-		/*if (doAnimation) {
-			if (animCRC == 0 && creature->isPlayer()) {
-				Player* player = (Player*) creature;
-				string anim = Animations::getRandomAnimation();
-				uint32 animationCRC = String::hashCode(anim);
-				player->doCombatAnimation(targetCreature, animationCRC, 1);
-				creature->sendSystemMessage(anim);
-			} else
-				creature->doCombatAnimation(targetCreature, animCRC, (damage > 0));
-		}*/
 		if (target->isPlayer() || target->isNonPlayerCreature()) {
 			CreatureObject* targetCreature = (CreatureObject*) target;
 			if (damage && targetCreature->hasAttackDelay())
@@ -125,9 +115,16 @@ public:
 		if (diff >= 0)
 			average = System::random(diff) + (int)minDamage;
 
+		float globalMultiplier = 1.0;
+		if (creature->isPlayer() && !target->isPlayer())
+			globalMultiplier = CombatManager::PVE_MULTIPLIER;
+		else if (creature->isPlayer() && target->isPlayer())
+			globalMultiplier = CombatManager::PVP_MULTIPLIER;
+
+
 		if (targetCreature != NULL) {
 
-			damage = damageRatio * average;
+			damage = damageRatio * average * globalMultiplier;
 
 			calculateDamageReduction(creature, targetCreature, damage);
 
@@ -157,12 +154,7 @@ public:
 			if (hasCbtSpamHit())
 				creature->sendCombatSpam(targetCreature, NULL, (int32) damage, getCbtSpamHit());
 
-			if (bodyPart < 7)
-				reduction = applyHealthPoolDamage(creature, targetCreature, (int32) damage, bodyPart);
-			else if (bodyPart < 9)
-				reduction = applyActionPoolDamage(creature, targetCreature, (int32) damage, bodyPart);
-			else if (bodyPart < 10)
-				reduction = applyMindPoolDamage(creature, targetCreature, (int32) damage);
+			reduction = applyDamage(creature, targetCreature, (int32) damage, bodyPart);
 
 			if (weapon != NULL) {
 				doDotWeaponAttack(creature, targetCreature, 0);
@@ -177,39 +169,6 @@ public:
 		}
 
 		return (int32)(damage - reduction);
-	}
-
-	virtual bool calculateCost(CreatureObject* creature) {
-		if (!creature->isPlayer())
-			return true;
-
-		Player* player = (Player*)creature;
-		Weapon* weapon = creature->getWeapon();
-
-		if (weapon != NULL) {
-
-			int wpnHealth = weapon->getHealthAttackCost();
-			int wpnAction = weapon->getActionAttackCost();
-			int wpnMind = weapon->getMindAttackCost();
-
-			int healthAttackCost = wpnHealth - (wpnHealth * creature->getStrength() / 1500);
-			int actionAttackCost = wpnAction - (wpnAction * creature->getQuickness() / 1500);
-			int mindAttackCost = wpnMind - (wpnMind * creature->getFocus() / 1500);
-
-			if (healthAttackCost < 0)
-				healthAttackCost = 0;
-
-			if (actionAttackCost < 0)
-				actionAttackCost = 0;
-
-			if (mindAttackCost < 0)
-				mindAttackCost = 0;
-
-			if (!player->changeHAMBars(-healthAttackCost, -actionAttackCost, -mindAttackCost))
-				return false;
-		}
-
-		return true;
 	}
 
 };
