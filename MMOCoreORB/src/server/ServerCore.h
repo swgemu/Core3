@@ -65,7 +65,7 @@ class ServerCore : public Core, public Logger {
 
 	ServerDatabase* database;
 
-	ForumsDatabase* forumdatabase;
+	ForumsDatabase* forumDatabase;
 
 	DistributedObjectBroker* orb;
 

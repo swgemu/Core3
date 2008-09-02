@@ -1971,6 +1971,8 @@ void ResourceManagerImplementation::insertSpawn(ResourceTemplate* resource, int 
 
 		resource->addSpawn(sl);
 
+		delete res;
+
 		numInsert++;
 	} catch (...) {
 		cout << "Insert Spawn Failed " << endl;
