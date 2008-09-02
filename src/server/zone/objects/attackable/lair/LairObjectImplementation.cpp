@@ -209,5 +209,5 @@ void LairObjectImplementation::doDestroyed(SceneObject* attacker) {
 		}
 	}
 
-	removeFromZone(false);
+	removeFromZone(true);
 }

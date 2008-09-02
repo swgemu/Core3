@@ -14,9 +14,16 @@ public:
 	}
 
 	bool activate() {
-		bazaarManager->lock();
-		bazaarManager->checkAuctions();
-		bazaarManager->unlock();
+		try {
+			bazaarManager->lock();
+
+			bazaarManager->checkAuctions();
+
+			bazaarManager->unlock();
+		} catch (...) {
+			bazaarManager->unlock();
+		}
+
 		return true;
 	}
 };
