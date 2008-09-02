@@ -61,6 +61,7 @@ ServerCore::ServerCore() : Core("core3.log"), Logger("Core") {
 	loginServer = NULL;
 	zoneServer = NULL;
 	statusServer = NULL;
+	forumDatabase = NULL;
 }
 
 void ServerCore::init() {
@@ -73,7 +74,7 @@ void ServerCore::init() {
 		database = new ServerDatabase(&configManager);
 
 		if(configManager.getUseVBIngeration() == 1)
-			forumdatabase = new ForumsDatabase(&configManager);
+			forumDatabase = new ForumsDatabase(&configManager);
 
 		if (configManager.getMakeZone()) {
 			string& orbaddr = configManager.getORBNamingDirectoryAddress();
@@ -133,6 +134,11 @@ void ServerCore::run() {
 void ServerCore::shutdown() {
 	info("shutting down server..");
 
+	if (statusServer != NULL) {
+		delete statusServer;
+		statusServer = NULL;
+	}
+
 	if (zoneServer != NULL) {
 		zoneServer->stop();
 		zoneServer->finalize();
@@ -147,17 +153,14 @@ void ServerCore::shutdown() {
 		loginServer = NULL;
 	}
 
-	if(statusServer != NULL) {
-		statusServer->kill();
-
-		delete statusServer;
-		statusServer = NULL;
-	}
-
 	DistributedObjectBroker::finalize();
 
 	delete database;
-	delete forumdatabase;
+
+	if (forumDatabase != NULL) {
+		delete forumDatabase;
+		forumDatabase = NULL;
+	}
 
 	info("server closed");
 }
