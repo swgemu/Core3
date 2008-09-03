@@ -53,44 +53,44 @@ class BazaarTerminalDetails : public DistributedObject {
 	int bazaarX;
 	int bazaarZ;
 	RegionBazaar* terminal;
-	
+
 public:
 	BazaarTerminalDetails(int planet, string region, int x, int z) {
-		bazaarPlanet=planet;
-		bazaarRegion=region;
-		bazaarX=x;
-		bazaarZ=z;
-		
+		bazaarPlanet = planet;
+		bazaarRegion = region;
+		bazaarX = x;
+		bazaarZ = z;
+
 		terminal = NULL;
 	}
-	
+
 	inline int getPlanet() {
 		return bazaarPlanet;
 	}
-	
+
 	inline string getRegion() {
 		return bazaarRegion;
 	}
-	
+
 	inline int getX() {
 		return bazaarX;
 	}
-	
+
 	inline int getZ() {
 		return bazaarZ;
 	}
-	
+
 	inline RegionBazaar* getTerminal() {
 		return terminal;
 	}
-	
+
 	inline void setTerminal(RegionBazaar* term) {
 		terminal = term;
 	}
 };
 
 class BazaarMap : public HashTable<uint64, BazaarTerminalDetails*>, public HashTableIterator<uint64, BazaarTerminalDetails*> {
-	
+
 	int hash(const uint64& key) {
         return Long::hashCode(key);
 	}

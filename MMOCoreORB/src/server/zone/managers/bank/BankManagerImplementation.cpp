@@ -77,6 +77,9 @@ BankManagerImplementation::BankManagerImplementation(ZoneServer* zoneserver, Zon
 		delete terminals;
 	} catch (DatabaseException& e) {
 		cout << "Can't get details of bank terminals\n";
+		cout << e.getMessage() << endl;
+	} catch (...) {
+		cout << "unreported exception caught in BankManagerImplementation::BankManagerImplementation\n";
 	}
 
 	info("Terminals populated");
@@ -88,9 +91,6 @@ BankManagerImplementation::~BankManagerImplementation() {
 }
 
 bool BankManagerImplementation::isBankTerminal(uint64 objectid) {
-	if (bankTerminals->isBankTerminal(objectid) != NULL)
-		return true;
-	else
-		return false;
+	return (bankTerminals->isBankTerminal(objectid) != NULL);
 }
 

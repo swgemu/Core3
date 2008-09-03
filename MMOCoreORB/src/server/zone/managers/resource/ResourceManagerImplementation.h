@@ -40,7 +40,7 @@ it is their choice whether to do so. The GNU Lesser General Public License
 gives permission to release a modified version without this exception;
 this exception also makes it possible to release a modified version
 which carries forward this exception.
-*/
+ */
 
 #ifndef RESOURCEMANAGERIMPLEMENTATION_
 #define RESOURCEMANAGERIMPLEMENTATION_

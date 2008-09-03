@@ -40,7 +40,7 @@ it is their choice whether to do so. The GNU Lesser General Public License
 gives permission to release a modified version without this exception;
 this exception also makes it possible to release a modified version
 which carries forward this exception.
-*/
+ */
 
 #include "../../objects/player/Races.h"
 #include "../../objects/terrain/Terrain.h"
@@ -160,31 +160,31 @@ bool PlayerManagerImplementation::create(Player* player, uint32 sessionkey) {
 
 	try {
 		stringstream query;
-    	query << "INSERT INTO `characters` "
-        	  << "(`account_id`,`galaxy_id`,`firstname`,`surname`,"
-	          << "`appearance`,`professions`,`race`,`gender`,`lots`,"
-    	      << "`credits_inv`,`credits_bank`,`guild`,`x`,`y`,`z`,`zoneid`,`planet_id`,"
-	          << "`lfg`,`helper`,`roleplayer`,`faction_id`,`archived`,`scale`,`biography`,"
-	          << "`infofield`,`hair`,`hairData`,`playermodel`,`CRC`,`Title`,"
-	          << "`health`,`strength`,`constitution`,"
-	          << "`action`,`quickness`,`stamina`,"
-	          << "`mind`,`focus`,`willpower`,"
-	          << "`PvpRating`, adminLevel"
-	          << ") VALUES ("
-    	      << accountID << "," << galaxyID << ",'"
-	          << player->getFirstName() << "','" << player->getLastName() << "','"
-	          << appearance.substr(0, appearance.size() - 1) << "','"
-	          << player->getStartingProfession() << "'," <<  race << "," << gender << ",10,"
-    	      << creditsCash << "," << creditsBank << ",0,"
-        	  << player->getPositionX() << "," << player->getPositionY() << ","
-	          << player->getPositionZ() << "," << player->getZoneIndex() << "," << 0//planetID
-    	      << ",0,0,0,0,0," << player->getHeight() << ","
-    	      << "'" << bio << "','" << info << "','"
-    	      << player->getHairObject() << "','" << hairdata.substr(0, hairdata.size() - 1) << "','', '0','',"
-    	      << player->getBaseHealth() << "," << player->getBaseStrength() << "," << player->getBaseConstitution() << ","
-    	      << player->getBaseAction() << "," << player->getBaseQuickness() << "," << player->getBaseStamina() << ","
-    	      << player->getBaseMind() << "," << player->getBaseFocus() << "," << player->getBaseWillpower() << ","
-    	      << player->getPvpRating() << "," << player->getAdminLevel() << ")";
+		query << "INSERT INTO `characters` "
+		<< "(`account_id`,`galaxy_id`,`firstname`,`surname`,"
+		<< "`appearance`,`professions`,`race`,`gender`,`lots`,"
+		<< "`credits_inv`,`credits_bank`,`guild`,`x`,`y`,`z`,`zoneid`,`planet_id`,"
+		<< "`lfg`,`helper`,`roleplayer`,`faction_id`,`archived`,`scale`,`biography`,"
+		<< "`infofield`,`hair`,`hairData`,`playermodel`,`CRC`,`Title`,"
+		<< "`health`,`strength`,`constitution`,"
+		<< "`action`,`quickness`,`stamina`,"
+		<< "`mind`,`focus`,`willpower`,"
+		<< "`PvpRating`, adminLevel"
+		<< ") VALUES ("
+		<< accountID << "," << galaxyID << ",'"
+		<< player->getFirstName() << "','" << player->getLastName() << "','"
+		<< appearance.substr(0, appearance.size() - 1) << "','"
+		<< player->getStartingProfession() << "'," <<  race << "," << gender << ",10,"
+		<< creditsCash << "," << creditsBank << ",0,"
+		<< player->getPositionX() << "," << player->getPositionY() << ","
+		<< player->getPositionZ() << "," << player->getZoneIndex() << "," << 0//planetID
+		<< ",0,0,0,0,0," << player->getHeight() << ","
+		<< "'" << bio << "','" << info << "','"
+		<< player->getHairObject() << "','" << hairdata.substr(0, hairdata.size() - 1) << "','', '0','',"
+		<< player->getBaseHealth() << "," << player->getBaseStrength() << "," << player->getBaseConstitution() << ","
+		<< player->getBaseAction() << "," << player->getBaseQuickness() << "," << player->getBaseStamina() << ","
+		<< player->getBaseMind() << "," << player->getBaseFocus() << "," << player->getBaseWillpower() << ","
+		<< player->getPvpRating() << "," << player->getAdminLevel() << ")";
 
 		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
 
@@ -464,30 +464,38 @@ void PlayerManagerImplementation::loadFromDatabase(Player* player) {
 
 void PlayerManagerImplementation::loadWaypoints(Player* player) {
 	stringstream query;
-	ResultSet* result;
+	ResultSet* result = NULL;
 
 	query << "SELECT * FROM waypoints WHERE owner_id = '" << player->getCharacterID() <<"';";
-	result = ServerDatabase::instance()->executeQuery(query);
 
-	while (result->next()) {
-		string wpName = result->getString(2);
+	try {
+		result = ServerDatabase::instance()->executeQuery(query);
 
-		float x = result->getFloat(3);
-		float y = result->getFloat(4);
+		while (result->next()) {
+			string wpName = result->getString(2);
 
-		string planetName = result->getString(5);
-		string internalNote = result->getString(7);
-		bool active = result->getInt(6);
+			float x = result->getFloat(3);
+			float y = result->getFloat(4);
 
-		WaypointObject* wp = new WaypointObject(player, player->getNewItemID());
+			string planetName = result->getString(5);
+			string internalNote = result->getString(7);
+			bool active = result->getInt(6);
 
-		wp->setName(wpName);
-		wp->setPlanetName(planetName);
-		wp->setInternalNote(internalNote);
-		wp->setPosition(x, 0.0f, y);
-		wp->changeStatus(active);
-		player->addWaypoint(wp);
+			WaypointObject* wp = new WaypointObject(player, player->getNewItemID());
+
+			wp->setName(wpName);
+			wp->setPlanetName(planetName);
+			wp->setInternalNote(internalNote);
+			wp->setPosition(x, 0.0f, y);
+			wp->changeStatus(active);
+			player->addWaypoint(wp);
+		}
+	} catch (DatabaseException& e) {
+		cout << e.getMessage() << endl;
+	} catch (...) {
+		cout << "unreported exception caught in PlayerManagerImplementation::loadWaypoints\n";
 	}
+
 	delete result;
 }
 
@@ -583,8 +591,9 @@ void PlayerManagerImplementation::save(Player* player) {
 	<< " WHERE character_id=" << player->getCharacterID() << ";";
 	try {
 		ServerDatabase::instance()->executeStatement(query);
-	} catch(DatabaseException e) {
+	} catch(DatabaseException& e) {
 		cerr << "Failed to unload character: " << player->getFirstName() << "\n";
+		cout << e.getMessage() << endl;
 	}
 
 	player->saveProfessions();
@@ -885,6 +894,7 @@ void PlayerManagerImplementation::moveItem(Player* sender, Player* receiver, Tan
 void PlayerManagerImplementation::doBankTip(Player* sender, Player* receiver, uint32 tipAmount, bool updateTipTo) {
 	//Pre: sender wlocked
 	float tax = tipAmount * .05;
+
 	if (!sender->verifyBankCredits(tipAmount + (int) tax)) {
 		sender->sendSystemMessage("You lack the required funds to do that. (Bank Tip.)");
 		return;
@@ -971,7 +981,6 @@ void PlayerManagerImplementation::doCashTip(Player* sender, Player* receiver, ui
 
 bool PlayerManagerImplementation::modifyOfflineBank(Player* sender, string receiverName, uint32 creditAmount) {
 	//First we need to get the current bank credits.
-
 	if (!sender->verifyBankCredits(creditAmount)) {
 		sender->sendSystemMessage("You lack the required funds to do that. (Bank Tip.)");
 		return false;
@@ -1011,7 +1020,7 @@ bool PlayerManagerImplementation::modifyOfflineBank(Player* sender, string recei
 	//Now we need to update the db.
 	stringstream query2;
 	query2 << "UPDATE characters SET credits_bank=" << newBankCredits
-		   << " WHERE lower(firstname)='" << receiverName << "';";
+	<< " WHERE lower(firstname)='" << receiverName << "';";
 
 	try {
 		ServerDatabase::instance()->executeStatement(query2);
@@ -1046,8 +1055,8 @@ bool PlayerManagerImplementation::modifyRecipientOfflineBank(string recipient, u
 	try {
 		character = ServerDatabase::instance()->executeQuery(query);
 	} catch(DatabaseException& e) {
-	 	cout << "PlayerManagerImplementation::modifyRecipientOfflineBank. Failed SQL query: " << query << "\n";
-	 	return false;
+		cout << "PlayerManagerImplementation::modifyRecipientOfflineBank. Failed SQL query: " << query << "\n";
+		return false;
 	}
 
 	if (!character->next()) {
@@ -1070,12 +1079,13 @@ bool PlayerManagerImplementation::modifyRecipientOfflineBank(string recipient, u
 	//Now we need to update the db.
 	stringstream query2;
 	query2 << "UPDATE characters SET credits_bank='" << newBankCredits
-		   << "' WHERE lower(firstname)='" << recipient << "'";
+	<< "' WHERE lower(firstname)='" << recipient << "'";
 
 	try {
 		ServerDatabase::instance()->executeStatement(query2);
-	} catch(DatabaseException& e) {
+	} catch (DatabaseException& e) {
 		cout << "PlayerManagerImplementation::modifyRecipientOfflineBank: failed SQL UPDATE: " << query2.str() << "\n";
+		cout << e.getMessage() << endl;
 		return false;
 	}
 
@@ -1123,8 +1133,8 @@ void PlayerManagerImplementation::updateConsentList(Player* player) {
 
 		for (int i = 0; i < player->getConsentSize(); i++) {
 			insertq << "INSERT DELAYED INTO consentlist (character_id, target_id)"
-					<< "SELECT " << player->getCharacterID() << ", character_id as target_id FROM characters "
-					<< "WHERE LOWER(firstname) = '" << player->getConsentEntry(i) << "';";
+			<< "SELECT " << player->getCharacterID() << ", character_id as target_id FROM characters "
+			<< "WHERE LOWER(firstname) = '" << player->getConsentEntry(i) << "';";
 		}
 
 		try {
@@ -1142,8 +1152,8 @@ void PlayerManagerImplementation::updatePlayerCreditsToDatabase(Player* player) 
 	stringstream query;
 
 	query << "UPDATE characters set credits_inv='" << player->getCashCredits() <<
-		"', credits_bank='" << player->getBankCredits() << "' WHERE character_id='" <<
-		player->getCharacterID() << "'";
+	"', credits_bank='" << player->getBankCredits() << "' WHERE character_id='" <<
+	player->getCharacterID() << "'";
 
 	try {
 		ServerDatabase::instance()->executeStatement(query);
@@ -1168,6 +1178,7 @@ void PlayerManagerImplementation::updatePlayerCreditsFromDatabase(Player* player
 			rs = ServerDatabase::instance()->executeQuery(query);
 		} catch(DatabaseException& e) {
 			cout << "PlayerManagerImplmentation::updatePlayerCredits: failed SQL query: " << query.str() << "\n";
+			cout << e.getMessage();
 			player->unlock();
 			return;
 		}
@@ -1197,7 +1208,6 @@ void PlayerManagerImplementation::updatePlayerCreditsFromDatabase(Player* player
 }
 
 void PlayerManagerImplementation::updatePlayerAppearanceToDatabase(Player* player) {
-
 	if (player == NULL)
 		return;
 
@@ -1216,38 +1226,39 @@ void PlayerManagerImplementation::updatePlayerAppearanceToDatabase(Player* playe
 	stringstream query;
 
 	query	<< "UPDATE characters set appearance='" << appearance.substr(0, appearance.size() - 1)
-			<< "', hair='" << player->getHairObject()
-			<< "', hairData='" << hairdata.substr(0, hairdata.size() - 1) << "' "
-			<< " WHERE character_id = " << player->getCharacterID();
+	<< "', hair='" << player->getHairObject()
+	<< "', hairData='" << hairdata.substr(0, hairdata.size() - 1) << "' "
+	<< " WHERE character_id = " << player->getCharacterID();
 
 	try {
 		ServerDatabase::instance()->executeStatement(query);
-	} catch (DatabaseException e) {
+	} catch (DatabaseException& e) {
 		cout << "PlayerManagerImplementation::updatePlayerAppearanceToDatabase: failed SQL update: " << query.str() << "\n";
+		cout << e.getMessage();
 	}
 }
 
 void PlayerManagerImplementation::updatePlayerBaseHAMToDatabase(Player* player) {
-
 	if (player == NULL)
 		return;
 
 	stringstream query;
 
 	query	<< "UPDATE characters set "
-		<< "`health` = " << player->getBaseHealth()
-		<< ",`strength` = " << player->getBaseStrength()
-		<< ",`constitution` = " << player->getBaseConstitution()
-		<< ",`action` = " << player->getBaseAction()
-		<< ",`quickness` = " << player->getBaseQuickness()
-		<< ",`stamina` = " << player->getBaseStamina()
-		<< ",`mind` = " << player->getBaseMind()
-		<< ",`focus` = " << player->getBaseFocus()
-		<< ",`willpower` = " << player->getBaseWillpower()
-		<< " WHERE character_id = " << player->getCharacterID();
+	<< "`health` = " << player->getBaseHealth()
+	<< ",`strength` = " << player->getBaseStrength()
+	<< ",`constitution` = " << player->getBaseConstitution()
+	<< ",`action` = " << player->getBaseAction()
+	<< ",`quickness` = " << player->getBaseQuickness()
+	<< ",`stamina` = " << player->getBaseStamina()
+	<< ",`mind` = " << player->getBaseMind()
+	<< ",`focus` = " << player->getBaseFocus()
+	<< ",`willpower` = " << player->getBaseWillpower()
+	<< " WHERE character_id = " << player->getCharacterID();
 	try {
 		ServerDatabase::instance()->executeStatement(query);
-	} catch (DatabaseException e) {
+	} catch (DatabaseException& e) {
 		cout << "PlayerManagerImplementation::updatePlayerBaseHAMToDatabase: failed SQL update: " << query.str() << "\n";
+		cout << e.getMessage();
 	}
 }

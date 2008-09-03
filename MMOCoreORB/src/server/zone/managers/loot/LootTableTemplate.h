@@ -110,149 +110,149 @@ public:
 	}
 
 	//setters
-	void setLootItemGroup(int lootitemgroup) {
+	inline void setLootItemGroup(int lootitemgroup) {
 		lootItemGroup = lootitemgroup;
 	}
 
-	void setLootItemName(string lootitemname) {
+	inline void setLootItemName(string lootitemname) {
 		lootItemName = lootitemname;
 	}
 
-	void setLootItemTemplateCRC(uint64 lootitemtemplatecrc) {
+	inline void setLootItemTemplateCRC(uint64 lootitemtemplatecrc) {
 		lootItemTemplateCRC = lootitemtemplatecrc;
 	}
 
-	void setLootItemTemplateType(uint64 lootitemtemplatetype) {
+	inline void setLootItemTemplateType(uint64 lootitemtemplatetype) {
 		lootItemTemplateType = lootitemtemplatetype;
 	}
 
-	void setLootItemTemplateName(string lootitemtemplatename) {
+	inline void setLootItemTemplateName(string lootitemtemplatename) {
 		lootItemTemplateName = lootitemtemplatename;
 	}
 
-	void setLootItemAttributes(string lootitemattributes) {
+	inline void setLootItemAttributes(string lootitemattributes) {
 		lootItemAttributes = lootitemattributes;
 	}
 
-	void setLootItemAppearance(string lootitemappearance) {
+	inline void setLootItemAppearance(string lootitemappearance) {
 		lootItemAppearance = lootitemappearance;
 	}
 
-	void setLootItemLevel(int lootitemlevel) {
+	inline void setLootItemLevel(int lootitemlevel) {
 		lootItemLevel = lootitemlevel;
 	}
 
-	void setLootItemChance(int lootitemchance) {
+	inline void setLootItemChance(int lootitemchance) {
 		lootItemChance = lootitemchance;
 	}
 
-	void setLootItemLastDropStamp(string lootitemlastdropstamp) {
+	inline void setLootItemLastDropStamp(string lootitemlastdropstamp) {
 		lootItemLastDropStamp = lootitemlastdropstamp;
 	}
 
-	void setLootItemDontDropBefore(string lootitemdontdropbefore) {
+	inline void setLootItemDontDropBefore(string lootitemdontdropbefore) {
 		lootItemDontDropBefore = lootitemdontdropbefore;
 	}
 
-	void setLootItemUnique(int lootitemunique) {
+	inline void setLootItemUnique(int lootitemunique) {
 		lootItemUnique = lootitemunique;
 	}
 
-	void setLootItemNoTrade(int lootitemnotrade) {
+	inline void setLootItemNoTrade(int lootitemnotrade) {
 		lootItemNoTrade = lootitemnotrade;
 	}
 
-	void setLootItemRace(string lootitemrace) {
+	inline void setLootItemRace(string lootitemrace) {
 		lootItemRace = lootitemrace;
 	}
 
-	void setLootItemDeveloperNote(string lootitemdevelopernote) {
+	inline void setLootItemDeveloperNote(string lootitemdevelopernote) {
 		lootItemDeveloperNote = lootitemdevelopernote;
 	}
 
-	void setLootItemTypeHex(string lootitemtypehex) {
+	inline void setLootItemTypeHex(string lootitemtypehex) {
 		lootItemTypeHex = lootitemtypehex;
 	}
 
-	void setLootItemPath(string lootitempath) {
+	inline void setLootItemPath(string lootitempath) {
 		lootItemPath = lootitempath;
 	}
 
-	void setLootItemString(string lootitemstring) {
+	inline void setLootItemString(string lootitemstring) {
 		lootItemString = lootitemstring;
 	}
 
 	//getters
 
-	int getLootItemGroup() {
+	inline int getLootItemGroup() {
 		return lootItemGroup;
 	}
 
-	string getLootItemName() {
+	inline string getLootItemName() {
 		return lootItemName;
 	}
 
-	uint64 getLootItemTemplateCRC() {
+	inline uint64 getLootItemTemplateCRC() {
 		return lootItemTemplateCRC;
 	}
 
-	uint64 getLootItemTemplateType() {
+	inline uint64 getLootItemTemplateType() {
 		return lootItemTemplateType;
 	}
 
-	string getLootItemTemplateName() {
+	inline string getLootItemTemplateName() {
 		return lootItemTemplateName;
 	}
 
-	string getLootItemAttributes() {
+	inline string getLootItemAttributes() {
 		return lootItemAttributes;
 	}
 
-	string getLootItemAppearance() {
+	inline string getLootItemAppearance() {
 		return lootItemAppearance;
 	}
 
-	int getLootItemLevel() {
+	inline int getLootItemLevel() {
 		return lootItemLevel;
 	}
 
-	int getLootItemChance() {
+	inline int getLootItemChance() {
 		return lootItemChance;
 	}
 
-	string getLootItemLastDropStamp() {
+	inline string getLootItemLastDropStamp() {
 		return lootItemLastDropStamp;
 	}
 
-	string getLootItemDontDropBefore() {
+	inline string getLootItemDontDropBefore() {
 		return lootItemDontDropBefore;
 	}
 
-	int getLootItemUnique() {
+	inline int getLootItemUnique() {
 		return lootItemUnique;
 	}
 
-	int getLootItemNoTrade() {
+	inline int getLootItemNoTrade() {
 		return lootItemNoTrade;
 	}
 
-	string getLootItemRace() {
+	inline string getLootItemRace() {
 		return lootItemRace;
 	}
 
-	string getLootItemDeveloperNote() {
+	inline string getLootItemDeveloperNote() {
 		return lootItemDeveloperNote;
 	}
 
-	string getLootItemTypeHex() {
+	inline string getLootItemTypeHex() {
 		return lootItemTypeHex;
 	}
 
-	string getLootItemPath() {
+	inline string getLootItemPath() {
 		return lootItemPath;
 	}
 
-	string getLootItemString() {
+	inline string getLootItemString() {
 		return lootItemString;
 	}
 

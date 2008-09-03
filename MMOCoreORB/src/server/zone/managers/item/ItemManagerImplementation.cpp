@@ -40,7 +40,7 @@ it is their choice whether to do so. The GNU Lesser General Public License
 gives permission to release a modified version without this exception;
 this exception also makes it possible to release a modified version
 which carries forward this exception.
-*/
+ */
 
 #include "system/lang.h"
 
@@ -124,6 +124,8 @@ void ItemManagerImplementation::loadPlayerItems(Player* player) {
 		delete res;
 	} catch (DatabaseException& e) {
 		cout << e.getMessage() << "\n";
+	} catch (...) {
+		cout << "unreported exception caught in ItemManagerImplementation::loadPlayerItems(Player* player)\n";
 	}
 }
 
@@ -151,6 +153,8 @@ TangibleObject* ItemManagerImplementation::getPlayerItem(Player* player, uint64 
 
 	} catch (DatabaseException& e) {
 		cout << e.getMessage() << "\n";
+	} catch (...) {
+		cout << "unreported exception caught in TangibleObject* ItemManagerImplementation::getPlayerItem(Player* player, uint64 objectid)\n";
 	}
 
 	return tano;
@@ -371,7 +375,7 @@ TangibleObject* ItemManagerImplementation::createSubObject(uint64 objectid, uint
 	case 0x10EDF682:
 		item = new EnhancePack(objectid, objectcrc, objectname, objecttemp);
 		break;
-	//Pharmaceutical StimPacks
+		//Pharmaceutical StimPacks
 	case 0x904FA809:
 	case 0x4B58009E:
 	case 0x02556713:
@@ -416,7 +420,7 @@ TangibleObject* ItemManagerImplementation::createSubObject(uint64 objectid, uint
 	case 0x316C7330:
 		item = new WoundPack(objectid, objectcrc, objectname, objecttemp);
 		break;
-	//Pharmaceutical RevivePack
+		//Pharmaceutical RevivePack
 	case 0x35431212:
 		item = new RevivePack(objectid, objectcrc, objectname, objecttemp);
 		break;
@@ -471,7 +475,7 @@ TangibleObject* ItemManagerImplementation::createPlayerObject(Player* player, Re
 	string attributes = result->getString(9);
 
 	TangibleObject* item = createPlayerObjectTemplate(objecttype, objectid, objectcrc,
-							unicode(objectname), objecttemp, equipped, false, "", 0);
+			unicode(objectname), objecttemp, equipped, false, "", 0);
 
 	if (item == NULL) {
 		//cout << "NULL ITEM objectType:[" << objecttype << "] objectname[" << objectname << "]" << endl;
@@ -525,8 +529,8 @@ TangibleObject* ItemManagerImplementation::clonePlayerObjectTemplate(uint64 obje
 	}
 	//the name is passed in a hackish way to stop buffer overflows.. anyone know why it was doing that?
 	TangibleObject* newTempl = createPlayerObjectTemplate(templ->getObjectSubType(),
-						objectid, templ->getObjectCRC(), unicode(templ->getName().c_str()),
-						(char *) templ->getTemplateName().c_str(), templ->isEquipped(), false, "", 0);
+			objectid, templ->getObjectCRC(), unicode(templ->getName().c_str()),
+			(char *) templ->getTemplateName().c_str(), templ->isEquipped(), false, "", 0);
 
 	newTempl->setAttributes(templ->getAttributes());
 	newTempl->parseItemAttributes();
@@ -827,74 +831,74 @@ TangibleObject* ItemManagerImplementation::createTemplateFromLua(LuaObject itemc
 		pharma->setMedicineUseRequired(medicineUse);
 
 		switch (medpackType) {
-			case PharmaceuticalImplementation::ENHANCEPACK:
-			{
-				float eff = itemconfig.getFloatField("effectiveness");
-				float dur = itemconfig.getFloatField("duration");
-				int pool = itemconfig.getIntField("poolAffected");
+		case PharmaceuticalImplementation::ENHANCEPACK:
+		{
+			float eff = itemconfig.getFloatField("effectiveness");
+			float dur = itemconfig.getFloatField("duration");
+			int pool = itemconfig.getIntField("poolAffected");
 
-				EnhancePack* enhance = (EnhancePack*) item;
-				enhance->setEffectiveness(eff);
-				enhance->setDuration(dur);
-				enhance->setPoolAffected(pool);
-				break;
-			}
-			case PharmaceuticalImplementation::WOUNDPACK:
-			{
-				float eff = itemconfig.getFloatField("effectiveness");
-				int pool = itemconfig.getIntField("poolAffected");
+			EnhancePack* enhance = (EnhancePack*) item;
+			enhance->setEffectiveness(eff);
+			enhance->setDuration(dur);
+			enhance->setPoolAffected(pool);
+			break;
+		}
+		case PharmaceuticalImplementation::WOUNDPACK:
+		{
+			float eff = itemconfig.getFloatField("effectiveness");
+			int pool = itemconfig.getIntField("poolAffected");
 
-				WoundPack* wound = (WoundPack*) item;
-				wound->setEffectiveness(eff);
-				wound->setPoolAffected(pool);
-				break;
-			}
-			case PharmaceuticalImplementation::CUREPACK:
-			{
-				float eff = itemconfig.getFloatField("effectiveness");
-				int condition = itemconfig.getIntField("conditionCured");
+			WoundPack* wound = (WoundPack*) item;
+			wound->setEffectiveness(eff);
+			wound->setPoolAffected(pool);
+			break;
+		}
+		case PharmaceuticalImplementation::CUREPACK:
+		{
+			float eff = itemconfig.getFloatField("effectiveness");
+			int condition = itemconfig.getIntField("conditionCured");
 
-				CurePack* curepack = (CurePack*) item;
-				curepack->setEffectiveness(eff);
-				curepack->setConditionCured(condition);
-				break;
-			}
-			case PharmaceuticalImplementation::STATEPACK:
-			{
-				int state = itemconfig.getIntField("stateAffected");
+			CurePack* curepack = (CurePack*) item;
+			curepack->setEffectiveness(eff);
+			curepack->setConditionCured(condition);
+			break;
+		}
+		case PharmaceuticalImplementation::STATEPACK:
+		{
+			int state = itemconfig.getIntField("stateAffected");
 
-				StatePack* statepack = (StatePack*) item;
-				statepack->setStateAffected(state);
-				break;
-			}
-			case PharmaceuticalImplementation::REVIVEPACK:
-			{
-				float hw = itemconfig.getFloatField("healthWoundHealed");
-				float hh = itemconfig.getFloatField("healthHealed");
-				float aw = itemconfig.getFloatField("actionWoundHealed");
-				float ah = itemconfig.getFloatField("actionHealed");
-				float mw = itemconfig.getFloatField("mindWoundHealed");
-				float mh = itemconfig.getFloatField("mindHealed");
+			StatePack* statepack = (StatePack*) item;
+			statepack->setStateAffected(state);
+			break;
+		}
+		case PharmaceuticalImplementation::REVIVEPACK:
+		{
+			float hw = itemconfig.getFloatField("healthWoundHealed");
+			float hh = itemconfig.getFloatField("healthHealed");
+			float aw = itemconfig.getFloatField("actionWoundHealed");
+			float ah = itemconfig.getFloatField("actionHealed");
+			float mw = itemconfig.getFloatField("mindWoundHealed");
+			float mh = itemconfig.getFloatField("mindHealed");
 
-				RevivePack* revive = (RevivePack*) item;
-				revive->setHealthWoundHealed(hw);
-				revive->setHealthHealed(hh);
-				revive->setActionWoundHealed(aw);
-				revive->setActionHealed(ah);
-				revive->setMindWoundHealed(mw);
-				revive->setMindHealed(mh);
-				break;
-			}
-			case PharmaceuticalImplementation::STIMPACK:
-			{
-				float eff = itemconfig.getFloatField("effectiveness");
+			RevivePack* revive = (RevivePack*) item;
+			revive->setHealthWoundHealed(hw);
+			revive->setHealthHealed(hh);
+			revive->setActionWoundHealed(aw);
+			revive->setActionHealed(ah);
+			revive->setMindWoundHealed(mw);
+			revive->setMindHealed(mh);
+			break;
+		}
+		case PharmaceuticalImplementation::STIMPACK:
+		{
+			float eff = itemconfig.getFloatField("effectiveness");
 
-				StimPack* stim = (StimPack*) item;
-				stim->setEffectiveness(eff);
-				break;
-			}
-			default:
-				break;
+			StimPack* stim = (StimPack*) item;
+			stim->setEffectiveness(eff);
+			break;
+		}
+		default:
+			break;
 		}
 	}
 
@@ -1046,7 +1050,7 @@ void ItemManagerImplementation::loadDefaultPlayerDatapadItems(Player* player) {
 
 	// landspeeder
 	MountCreature* land = new MountCreature(player, "landspeeder_x31", "monster_name",
-		String::hashCode("object/intangible/vehicle/shared_landspeeder_x31_pcd.iff"), 0x273A9C02, player->getNewItemID());
+			String::hashCode("object/intangible/vehicle/shared_landspeeder_x31_pcd.iff"), 0x273A9C02, player->getNewItemID());
 	land->addToDatapad();
 
 	// xp 38 doesnt work
@@ -1059,17 +1063,17 @@ void ItemManagerImplementation::loadDefaultPlayerDatapadItems(Player* player) {
 
 	// x34
 	MountCreature* land3 = new MountCreature(player, "landspeeder_x34", "monster_name",
-		String::hashCode("object/intangible/vehicle/shared_landspeeder_x34_pcd.iff"), 0x4EC3780C, player->getNewItemID());
+			String::hashCode("object/intangible/vehicle/shared_landspeeder_x34_pcd.iff"), 0x4EC3780C, player->getNewItemID());
 	land3->addToDatapad();
 
 	// av21
 	MountCreature* land4 = new MountCreature(player, "landspeeder_av21", "monster_name",
-		String::hashCode("object/intangible/vehicle/shared_landspeeder_av21_pcd.iff"), 0xA965DDBA, player->getNewItemID());
+			String::hashCode("object/intangible/vehicle/shared_landspeeder_av21_pcd.iff"), 0xA965DDBA, player->getNewItemID());
 	land4->addToDatapad();
 
 	// speederbike
 	MountCreature* speed = new MountCreature(player, "speederbike", "monster_name",
-		String::hashCode("object/intangible/vehicle/shared_speederbike_pcd.iff"), 0x729517EF, player->getNewItemID());
+			String::hashCode("object/intangible/vehicle/shared_speederbike_pcd.iff"), 0x729517EF, player->getNewItemID());
 	speed->addToDatapad();
 
 	// jetpack
@@ -1120,12 +1124,12 @@ void ItemManagerImplementation::createPlayerItem(Player* player, TangibleObject*
 
 		stringstream query;
 		query << "INSERT INTO `character_items` "
-			  << "(`item_id`,`character_id`,`name`,`template_crc`,`template_type`,`template_name`,`equipped`,`attributes`,`appearance`)"
-			  << " VALUES(" << item->getObjectID() << "," << player->getCharacterID()
-			  << ",'\\" << itemname << "',"
-			  << item->getObjectCRC() << "," << item->getObjectSubType() << ",'" << item->getTemplateName() << "',"
-			  << item->isEquipped() << ",'" << item->getAttributes()
-			  << "','" << appearance.substr(0, appearance.size() - 1) << "')";
+		<< "(`item_id`,`character_id`,`name`,`template_crc`,`template_type`,`template_name`,`equipped`,`attributes`,`appearance`)"
+		<< " VALUES(" << item->getObjectID() << "," << player->getCharacterID()
+		<< ",'\\" << itemname << "',"
+		<< item->getObjectCRC() << "," << item->getObjectSubType() << ",'" << item->getTemplateName() << "',"
+		<< item->isEquipped() << ",'" << item->getAttributes()
+		<< "','" << appearance.substr(0, appearance.size() - 1) << "')";
 
 		ServerDatabase::instance()->executeStatement(query);
 
@@ -1134,6 +1138,8 @@ void ItemManagerImplementation::createPlayerItem(Player* player, TangibleObject*
 
 	} catch (DatabaseException& e) {
 		cout << e.getMessage() << "\n";
+	} catch (...) {
+		cout << "unreported exception caught in ItemManagerImplementation::createPlayerItem(Player* player, TangibleObject* item)\n";
 	}
 }
 
@@ -1156,6 +1162,8 @@ void ItemManagerImplementation::savePlayerItem(Player* player, TangibleObject* i
 
 	} catch (DatabaseException& e) {
 		cout << e.getMessage() << "\n";
+	} catch (...) {
+		cout << "unreported exception caught in ItemManagerImplementation::savePlayerItem(Player* player, TangibleObject* item)\n";
 	}
 }
 
@@ -1258,8 +1266,8 @@ void ItemManagerImplementation::showDbStats(Player* player) {
 		while (res->next()) {
 			if (res->getInt(4) == WeaponImplementation::WEAPON) {
 				txt << "ObjID: " << res->getUnsignedLong(0) << " Name: " << res->getString(2)
-					<< "\\#ffffff MinDmg: " << res->getFloat(11) << " MaxDmg: " << res->getFloat(12)
-					<< " Spd: " << res->getFloat(13) << "\n";
+				<< "\\#ffffff MinDmg: " << res->getFloat(11) << " MaxDmg: " << res->getFloat(12)
+				<< " Spd: " << res->getFloat(13) << "\n";
 			}
 		}
 
@@ -1281,9 +1289,9 @@ void ItemManagerImplementation::showDbStats(Player* player) {
 		while (res->next()) {
 			if (res->getInt(4) == WeaponImplementation::WEAPON) {
 				txt << "ObjID: " << res->getUnsignedLong(0) << " Name: " << res->getString(2)
-					<< "\\#ffffff MinDmg: " << res->getFloat(11) << " MaxDmg: " << res->getFloat(12)
-					<< " Spd: " << res->getFloat(13) << " Strength: " << res->getInt(58)
-					<< " Potency: " << res->getInt(60) << "\n";
+				<< "\\#ffffff MinDmg: " << res->getFloat(11) << " MaxDmg: " << res->getFloat(12)
+				<< " Spd: " << res->getFloat(13) << " Strength: " << res->getInt(58)
+				<< " Potency: " << res->getInt(60) << "\n";
 			}
 		}
 
@@ -1309,8 +1317,8 @@ void ItemManagerImplementation::showDbDeleted(Player* player) {
 		while (res->next()) {
 			if (res->getInt(4) == WeaponImplementation::WEAPON) {
 				txt << "ObjID: " << res->getUnsignedLong(0) << " Name: " << res->getString(2)
-					<< "\\#ffffff MinDmg: " << res->getFloat(11) << " MaxDmg: " << res->getFloat(12)
-					<< " Spd: " << res->getFloat(13) << "\n";
+				<< "\\#ffffff MinDmg: " << res->getFloat(11) << " MaxDmg: " << res->getFloat(12)
+				<< " Spd: " << res->getFloat(13) << "\n";
 			} else if (res->getInt(4) == ArmorImplementation::ARMOR) {
 				txt << "ObjID: " << res->getUnsignedLong(0) << " Name: " << res->getString(2)
 				<< "\\#ffffff Resists: " << res->getFloat(31) << " " << res->getFloat(33) << " "
