@@ -40,7 +40,7 @@ it is their choice whether to do so. The GNU Lesser General Public License
 gives permission to release a modified version without this exception;
 this exception also makes it possible to release a modified version
 which carries forward this exception.
-*/
+ */
 
 #include <iostream>
 #include <fstream>
@@ -74,7 +74,7 @@ NameManager::~NameManager() {
 void NameManager::fillNames() {
 	ifstream restrictedFile("restrictednames.lst");
 
-	if(!restrictedFile)
+	if (!restrictedFile)
 		return;
 	else
 		info("parsing restricted names list: restrictednames.lst", true);
@@ -84,9 +84,7 @@ void NameManager::fillNames() {
 	BannedNameSet * setp;
 	bool isset = false;
 
-
-	while(restrictedFile.getline(line, 256)) {
-
+	while (restrictedFile.getline(line, 256)) {
 		string name = string(line);
 		String::toLower(name);
 
@@ -101,31 +99,25 @@ void NameManager::fillNames() {
 
 		if (name.substr(0,2).compare("--") == 0 || name == "") {
 			continue; //skip it
-		}
-		else if (name.find("[profane]") != string::npos) {
+		} else if (name.find("[profane]") != string::npos) {
 			isset = false;
 			continue;
-		}
-		else if (name.find("[developer]") != string::npos) {
+		} else if (name.find("[developer]") != string::npos) {
 			isset = true;
 			setp = developerNames;
 			continue;
-		}
-		else if (name.find("[fiction]") != string::npos) {
+		} else if (name.find("[fiction]") != string::npos) {
 			isset = true;
 			setp = fictionNames;
 			continue;
-		}
-		else if (name.find("[reserved]") != string::npos) {
+		} else if (name.find("[reserved]") != string::npos) {
 			isset = true;
 			setp = reservedNames;
 			continue;
-		}
-		else if (isset) {
+		} else if (isset) {
 			setp->add(name);
 			continue;
-		}
-		else {
+		} else {
 			profaneNames->add(name);
 			continue;
 		}
@@ -137,8 +129,8 @@ inline bool NameManager::isProfane(string name) {
 	uint16 i;
 	String::toLower(name);
 
-	for(i = 0; i < profaneNames->size(); i++) {
-		if(name.find(profaneNames->get(i)) != string::npos)
+	for (i = 0; i < profaneNames->size(); i++) {
+		if (name.find(profaneNames->get(i)) != string::npos)
 			return true;
 	}
 
@@ -168,56 +160,55 @@ int NameManager::validateName(CreatureObject* obj) {
 }
 
 int NameManager::validateName(const string& name, const string& species) {
-	if(name == "")
+	if (name == "")
 		return NameManagerResult::DECLINED_EMPTY;
 
-	if(isProfane(name))
+	if (isProfane(name))
 		return NameManagerResult::DECLINED_PROFANE;
 
-	if(isDeveloper(name))
+	if (isDeveloper(name))
 		return NameManagerResult::DECLINED_DEVELOPER;
 
-	if(isFiction(name))
+	if (isFiction(name))
 		return NameManagerResult::DECLINED_FICT_RESERVED;
 
-	if(isReserved(name))
+	if (isReserved(name))
 		return NameManagerResult::DECLINED_RESERVED;
 
-	if(strspn(name.c_str(), "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'- ") != name.length())
+	if (strspn(name.c_str(), "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'- ") != name.length())
 		return NameManagerResult::DECLINED_SYNTAX;
 
 	string fname, lname;
 
 	int spc = name.find(" ");
-	if(spc != string::npos) {
+	if (spc != string::npos) {
 		fname = name.substr(0,spc);
 		lname = name.substr(spc + 1, name.length() - spc + 1);
-	}
-	else {
+	} else {
 		fname = name;
 		lname = "";
 	}
 
-	if(fname.length() < 3 || fname.length() > 15 || lname.length() > 20)
+	if (fname.length() < 3 || fname.length() > 15 || lname.length() > 20)
 		return NameManagerResult::DECLINED_RACE_INAPP;
 
-	if(lname != "" && species == "wookiee")
+	if (lname != "" && species == "wookiee")
 		return NameManagerResult::DECLINED_RACE_INAPP;
 
-	if(name.find("'") != string::npos || name.find("-") != string::npos) {
+	if (name.find("'") != string::npos || name.find("-") != string::npos) {
 		if(species != "human" && species != "twilek" && species != "moncalamari")
 			return NameManagerResult::DECLINED_RACE_INAPP;
 		if(species == "moncalamari" && name.find("-") != string::npos)
 			return NameManagerResult::DECLINED_RACE_INAPP;
 
 		if(fname.find("'") != fname.rfind("'") || fname.find("-") != fname.rfind("-") ||
-		   lname.find("'") != lname.rfind("'") || lname.find("-") != lname.rfind("-")) {
+				lname.find("'") != lname.rfind("'") || lname.find("-") != lname.rfind("-")) {
 			return NameManagerResult::DECLINED_RACE_INAPP;
 		}
 	}
 
 	//I am disabling ' in names.  It's allowed by the rules, but it messes with most of the sql queries
-	if(name.find("'") != string::npos)
+	if (name.find("'") != string::npos)
 		return NameManagerResult::DECLINED_RACE_INAPP;
 	//THE ABOVE SHOULD BE REMOVED AFTER ALL THE QUERIES ARE UPDATED
 
@@ -226,7 +217,6 @@ int NameManager::validateName(const string& name, const string& species) {
 }
 
 const string NameManager::makeCreatureName(bool surname) {
-
 	bool lastName = surname;
 	bool inLastName = false;
 	int nameLength = 3 + System::random(3);
@@ -261,16 +251,15 @@ const string NameManager::makeCreatureName(bool surname) {
 		}
 
 		name[0] = toupper(name[0]);
+
 		if (!isProfane(name))
 			break;
 	}
-
 
 	return string(name);
 }
 
 const string NameManager::makeResourceName(bool isOrganic) {
-
 	int nameLength = 4 + System::random(6);
 	char name[nameLength];
 
@@ -300,6 +289,7 @@ const string NameManager::makeResourceName(bool isOrganic) {
 		}
 
 		name[0] = toupper(name[0]);
+
 		if (!isProfane(name))
 			break;
 	}
@@ -308,7 +298,6 @@ const string NameManager::makeResourceName(bool isOrganic) {
 }
 
 char NameManager::chooseNextLetter(const char lastLetter, const char letterBeforeLast) {
-
 	if (letterBeforeLast == ' ' && lastLetter == ' ')
 		return 97 + System::random(25);
 
@@ -358,8 +347,8 @@ char NameManager::chooseNextLetter(const char lastLetter, const char letterBefor
 		}
 		case 'h': {
 			char exclusion[] = { 'b', 'c', 'd', 'f', 'g', 'h', 'j', 'k',
-							'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w',
-									'x', 'z', '\0' };
+					'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w',
+					'x', 'z', '\0' };
 			return chooseLetterExcluding(exclusion);
 		}
 		case 'i': {
@@ -379,8 +368,8 @@ char NameManager::chooseNextLetter(const char lastLetter, const char letterBefor
 		}
 		case 'l': {
 			char exclusion[] = { 'b', 'c', 'd', 'f', 'g', 'h', 'j', 'k',
-							'l', 'm', 'n', 'p', 'q', 'r', 's', 'v', 'w',
-									'x', 'z', '\0' };
+					'l', 'm', 'n', 'p', 'q', 'r', 's', 'v', 'w',
+					'x', 'z', '\0' };
 			return chooseLetterExcluding(exclusion);
 		}
 		case 'm': {
@@ -404,8 +393,8 @@ char NameManager::chooseNextLetter(const char lastLetter, const char letterBefor
 			return 'u';
 		case 'r': {
 			char exclusion[] = { 'b', 'c', 'd', 'f', 'g', 'h', 'j', 'k',
-							'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w',
-									'x', 'z', '\0' };
+					'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w',
+					'x', 'z', '\0' };
 			return chooseLetterExcluding(exclusion);
 		}
 		case 's': {
@@ -425,8 +414,8 @@ char NameManager::chooseNextLetter(const char lastLetter, const char letterBefor
 		}
 		case 'v': {
 			char exclusion[] = { 'b', 'c', 'd', 'f', 'g', 'h', 'j', 'k',
-							'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w',
-									'x', 'z', '\0' };
+					'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w',
+					'x', 'z', '\0' };
 			return chooseLetterExcluding(exclusion);
 		}
 		case 'w': {
@@ -436,8 +425,8 @@ char NameManager::chooseNextLetter(const char lastLetter, const char letterBefor
 		}
 		case 'x': {
 			char exclusion[] = { 'b', 'c', 'd', 'f', 'g', 'h', 'j', 'k',
-							'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w',
-									'x', 'y', 'z', '\0' };
+					'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w',
+					'x', 'y', 'z', '\0' };
 			return chooseLetterExcluding(exclusion);
 		}
 		case 'y': {
@@ -459,16 +448,14 @@ char NameManager::chooseNextLetter(const char lastLetter, const char letterBefor
 }
 
 inline bool NameManager::isVowel(const char inChar) {
-
 	if (inChar == 'a' || inChar == 'e' || inChar == 'i' || inChar == 'o'
-			|| inChar == 'u' || inChar == 'y')
+		|| inChar == 'u' || inChar == 'y')
 		return true;
 	else
 		return false;
 }
 
 char NameManager::chooseLetterExcluding(const char exclude[]) {
-
 	char x = 97 + System::random(25);
 
 	for (int i = 0; i < 25 && exclude[i] != '\0'; i++) {
@@ -483,7 +470,6 @@ char NameManager::chooseLetterExcluding(const char exclude[]) {
 }
 
 inline int NameManager::addPrefix(char* name) {
-
 	int x = 1 + System::random(4);
 
 	switch (x) {
@@ -521,7 +507,6 @@ inline int NameManager::addPrefix(char* name) {
 }
 
 inline void NameManager::addSuffix(char* name, int location) {
-
 	int x = 1 + System::random(7);
 
 	switch (x) {

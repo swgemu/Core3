@@ -40,7 +40,7 @@ it is their choice whether to do so. The GNU Lesser General Public License
 gives permission to release a modified version without this exception;
 this exception also makes it possible to release a modified version
 which carries forward this exception.
-*/
+ */
 
 #include "events/ShuttleLandingEvent.h"
 #include "events/ShuttleTakeOffEvent.h"
@@ -54,16 +54,16 @@ which carries forward this exception.
 #include "../../objects/terrain/PlanetNames.h"
 
 const uint32 PlanetManagerImplementation::travelFare[10][10] = {
-	{ 100, 1000, 2000, 4000,    0,  500,    0,    0,  600, 3000},
-	{1000,  100,    0,    0,    0,    0,    0,    0,    0,    0},
-	{2000,    0,  100,    0,    0,    0,    0,    0,    0,    0},
-	{4000,    0,    0,  100,    0, 1750,    0,    0,    0,    0},
-	{   0,    0,    0,    0,  100, 1250,    0,    0, 1250,    0},
-	{ 500,    0,    0, 1750, 1250,  100,  300,    0,  500,    0},
-	{   0,    0,    0,    0,    0,  300,  100,    0,    0,    0},
-	{   0,    0,    0,    0,    0,  300,    0,  100,    0,    0},
-	{ 600,    0,    0,    0, 1250,  500,    0,    0,  100,    0},
-	{3000,    0,    0,    0,    0,    0,    0,    0,    0,  100}
+		{ 100, 1000, 2000, 4000,    0,  500,    0,    0,  600, 3000},
+		{1000,  100,    0,    0,    0,    0,    0,    0,    0,    0},
+		{2000,    0,  100,    0,    0,    0,    0,    0,    0,    0},
+		{4000,    0,    0,  100,    0, 1750,    0,    0,    0,    0},
+		{   0,    0,    0,    0,  100, 1250,    0,    0, 1250,    0},
+		{ 500,    0,    0, 1750, 1250,  100,  300,    0,  500,    0},
+		{   0,    0,    0,    0,    0,  300,  100,    0,    0,    0},
+		{   0,    0,    0,    0,    0,  300,    0,  100,    0,    0},
+		{ 600,    0,    0,    0, 1250,  500,    0,    0,  100,    0},
+		{3000,    0,    0,    0,    0,    0,    0,    0,    0,  100}
 };
 
 PlanetManagerImplementation::PlanetManagerImplementation(Zone* planet, ZoneProcessServerImplementation* serv) :
@@ -240,50 +240,56 @@ void PlanetManagerImplementation::loadShuttles() {
 	stringstream query;
 	query << "SELECT * FROM shuttles WHERE planet_id = " << planetid << ";";
 
-	ResultSet* shut = ServerDatabase::instance()->executeQuery(query);
+	try {
+		ResultSet* shut = ServerDatabase::instance()->executeQuery(query);
 
-	while (shut->next()) {
-		string shuttleName = shut->getString(2);
-		float playerSpawnX = shut->getFloat(3);
-		float playerSpawnY = shut->getFloat(4);
-		float playerSpawnZ = shut->getFloat(5);
-		float shutx = shut->getFloat(6);
-		float shuty = shut->getFloat(7);
-		float shutz = shut->getFloat(8);
-		float shutdiry = shut->getFloat(9);
-		float shutdirw = shut->getFloat(10);
-		uint32	tax = shut->getInt(11);
-		bool starport = shut->getInt(12);
-		float colx = shut->getFloat(13);
-		float coly = shut->getFloat(14);
-		float tickdiry = shut->getFloat(15);
-		float tickdirw = shut->getFloat(16);
-		float termx = shut->getFloat(17);
-		float termy = shut->getFloat(18);
+		while (shut->next()) {
+			string shuttleName = shut->getString(2);
+			float playerSpawnX = shut->getFloat(3);
+			float playerSpawnY = shut->getFloat(4);
+			float playerSpawnZ = shut->getFloat(5);
+			float shutx = shut->getFloat(6);
+			float shuty = shut->getFloat(7);
+			float shutz = shut->getFloat(8);
+			float shutdiry = shut->getFloat(9);
+			float shutdirw = shut->getFloat(10);
+			uint32	tax = shut->getInt(11);
+			bool starport = shut->getInt(12);
+			float colx = shut->getFloat(13);
+			float coly = shut->getFloat(14);
+			float tickdiry = shut->getFloat(15);
+			float tickdirw = shut->getFloat(16);
+			float termx = shut->getFloat(17);
+			float termy = shut->getFloat(18);
 
-		coordinates = new Coordinate(playerSpawnX, playerSpawnZ, playerSpawnY);
-		shuttle = creatureManager->spawnShuttle(planetName, shuttleName, coordinates, shutx, shuty, shutz, tax, starport);
-		shuttle->setDirection(0, 0, shutdiry, shutdirw);
-		shuttleMap->put(shuttleName, shuttle);
+			coordinates = new Coordinate(playerSpawnX, playerSpawnZ, playerSpawnY);
+			shuttle = creatureManager->spawnShuttle(planetName, shuttleName, coordinates, shutx, shuty, shutz, tax, starport);
+			shuttle->setDirection(0, 0, shutdiry, shutdirw);
+			shuttleMap->put(shuttleName, shuttle);
 
-		colector = new TicketCollector(shuttle, getNextStaticObjectID(false),
-				unicode("Ticket Collector"), "ticket_travel", colx, playerSpawnZ, coly);
-		colector->setZoneProcessServer(server);
-		colector->setDirection(0, 0, tickdiry, tickdirw);
+			colector = new TicketCollector(shuttle, getNextStaticObjectID(false),
+					unicode("Ticket Collector"), "ticket_travel", colx, playerSpawnZ, coly);
+			colector->setZoneProcessServer(server);
+			colector->setDirection(0, 0, tickdiry, tickdirw);
 
-		colector->insertToZone(zone);
-		ticketCollectorMap->put(colector->getObjectID(), colector);
+			colector->insertToZone(zone);
+			ticketCollectorMap->put(colector->getObjectID(), colector);
 
-		terminal = new TravelTerminal(shuttle, getNextStaticObjectID(false),
-				termx, playerSpawnZ, termy);
-		terminal->setZoneProcessServer(server);
-		terminal->setDirection(0, 0, tickdiry, tickdirw);
+			terminal = new TravelTerminal(shuttle, getNextStaticObjectID(false),
+					termx, playerSpawnZ, termy);
+			terminal->setZoneProcessServer(server);
+			terminal->setDirection(0, 0, tickdiry, tickdirw);
 
-		terminal->insertToZone(zone);
-		travelTerminalMap->put(terminal->getObjectID(), terminal);
+			terminal->insertToZone(zone);
+			travelTerminalMap->put(terminal->getObjectID(), terminal);
+		}
+
+		delete shut;
+	} catch (DatabaseException& e) {
+		error(e.getMessage());
+	} catch (...) {
+		error("unreported exception caught in PlanetManagerImplementation::loadShuttles()");
 	}
-
-	delete shut;
 
 	unlock();
 }
@@ -323,59 +329,62 @@ void PlanetManagerImplementation::loadVendorTerminals() {
 void PlanetManagerImplementation::loadBuildings() {
 	int planetid = zone->getZoneID();
 
-	/*if (planetid != 8)
-		return;*/
-
 	lock();
 
 	stringstream query;
 	query << "SELECT * FROM staticobjects WHERE zoneid = " << planetid << ";";
 
-	ResultSet* result = ServerDatabase::instance()->executeQuery(query);
+	try {
+		ResultSet* result = ServerDatabase::instance()->executeQuery(query);
 
-	while (result->next()) {
-		uint64 oid = result->getUnsignedLong(1);
+		while (result->next()) {
+			uint64 oid = result->getUnsignedLong(1);
 
-		uint64 parentId = result->getUnsignedLong(2);
+			uint64 parentId = result->getUnsignedLong(2);
 
-		string file = result->getString(3);
+			string file = result->getString(3);
 
-		float oX = result->getFloat(4);
-		float oY = result->getFloat(5);
-		float oZ = result->getFloat(6);
-		float oW = result->getFloat(7);
+			float oX = result->getFloat(4);
+			float oY = result->getFloat(5);
+			float oZ = result->getFloat(6);
+			float oW = result->getFloat(7);
 
-		float x = result->getFloat(8);
-		float z = result->getFloat(9);
-		float y = result->getFloat(10);
+			float x = result->getFloat(8);
+			float z = result->getFloat(9);
+			float y = result->getFloat(10);
 
-		float type = result->getFloat(11);
+			float type = result->getFloat(11);
 
-		if ((int) file.find("object/cell/") >= 0) {
-			BuildingObject* buio = buildingMap->get(parentId);
+			if ((int) file.find("object/cell/") >= 0) {
+				BuildingObject* buio = buildingMap->get(parentId);
 
-			if (buio == NULL)
-				buio = loadBuilding(parentId, planetid);
+				if (buio == NULL)
+					buio = loadBuilding(parentId, planetid);
 
-			CellObject* cell = new CellObject(oid, buio);
+				CellObject* cell = new CellObject(oid, buio);
 
-			cell->setObjectCRC(String::hashCode(file));
-			cell->initializePosition(x, z, y);
-			cell->setDirection(oX, oZ, oY, oW);
+				cell->setObjectCRC(String::hashCode(file));
+				cell->initializePosition(x, z, y);
+				cell->setDirection(oX, oZ, oY, oW);
 
-			cell->setZoneProcessServer(server);
-			zone->registerObject(cell);
+				cell->setZoneProcessServer(server);
+				zone->registerObject(cell);
 
-			buio->addCell(cell);
+				buio->addCell(cell);
 
-			if (cellMap->put(oid, cell) != NULL) {
-				cout << "Error CELL/BUILDING already exists\n";
-				raise(SIGSEGV);
+				if (cellMap->put(oid, cell) != NULL) {
+					error("Error CELL/BUILDING already exists\n");
+					raise(SIGSEGV);
+				}
 			}
 		}
-	}
 
-	delete result;
+		delete result;
+	} catch (DatabaseException& e) {
+		error(e.getMessage());
+	} catch (...) {
+		error("unreported exception caught in PlanetManagerImplementation::loadBuildings()\n");
+	}
 
 	unlock();
 }
@@ -482,55 +491,60 @@ void PlanetManagerImplementation::loadCraftingStations() {
 	stringstream query;
 	query << "SELECT * FROM staticobjects WHERE zoneid = " << planetid << ";";
 
-	ResultSet* result = ServerDatabase::instance()->executeQuery(query);
+	try {
+		ResultSet* result = ServerDatabase::instance()->executeQuery(query);
 
-	while (result->next()) {
-		uint64 oid = result->getUnsignedLong(1);
+		while (result->next()) {
+			uint64 oid = result->getUnsignedLong(1);
 
-		uint64 parentId = result->getUnsignedLong(2);
+			uint64 parentId = result->getUnsignedLong(2);
 
-		string file = result->getString(3);
+			string file = result->getString(3);
 
-		float oX = result->getFloat(4);
-		float oY = result->getFloat(5);
+			float oX = result->getFloat(4);
+			float oY = result->getFloat(5);
 
-		float oZ = result->getFloat(6);
-		float oW = result->getFloat(7);
+			float oZ = result->getFloat(6);
+			float oW = result->getFloat(7);
 
-		float x = result->getFloat(8);
-		float z = result->getFloat(9);
-		float y = result->getFloat(10);
+			float x = result->getFloat(8);
+			float z = result->getFloat(9);
+			float y = result->getFloat(10);
 
-		float type = result->getFloat(11);
+			float type = result->getFloat(11);
 
-		if ((int) file.find("object/tangible/crafting/station/") >= 0) {
+			if ((int) file.find("object/tangible/crafting/station/") >= 0) {
 
-			crc = String::hashCode(file);
+				crc = String::hashCode(file);
 
-			name = getStationName(crc);
+				name = getStationName(crc);
 
-			CraftingStation* station = new CraftingStation(oid, crc, unicode(name), "public_crafting_station");
+				CraftingStation* station = new CraftingStation(oid, crc, unicode(name), "public_crafting_station");
 
-			station->setEffectiveness(22);
+				station->setEffectiveness(22);
 
-			station->initializePosition(x, z, y);
-			station->setDirection(oX, oZ, oY, oW);
-			station->insertToZone(zone);
-			zone->registerObject(station);
+				station->initializePosition(x, z, y);
+				station->setDirection(oX, oZ, oY, oW);
+				station->insertToZone(zone);
+				zone->registerObject(station);
 
-			zone->getZoneServer()->addObject(station, true);
+				zone->getZoneServer()->addObject(station, true);
 
-			craftingStationMap.put(oid, station);
+				craftingStationMap.put(oid, station);
+			}
 		}
-	}
 
-	delete result;
+		delete result;
+	} catch (DatabaseException& e) {
+		error(e.getMessage());
+	} catch (...) {
+		error("unreported exception caught in PlanetManagerImplementation::loadCraftingStations()");
+	}
 
 	unlock();
 }
 
 string PlanetManagerImplementation::getStationName(uint64 crc){
-
 	string name = "";
 
 	if(crc == 0xAF09A3F0)
@@ -549,62 +563,61 @@ string PlanetManagerImplementation::getStationName(uint64 crc){
 		name = "Weapon, Droid, and General Public Crafting Station";
 
 	return name;
-
 }
 
 int PlanetManagerImplementation::guessBuildingType(uint64 oid, string file) {
 	// Special buildings
 	switch (oid)
 	{
-		// Cantinas
-		case 1076941: // Tatooine	Mos Eisley	Cantina (Lucky Despot)
-			return BuildingObjectImplementation::CANTINA;
-		case 1153495: // Tatooine	Mos Entha	Cantina (The Fallen Star)
-			return BuildingObjectImplementation::CANTINA;
-		case 3355385: // Tatooine - Anchorhead Cantina
-			return BuildingObjectImplementation::CANTINA;
-		case 9925364: // Endor - Research Outpost Cantina
-			return BuildingObjectImplementation::CANTINA;
-		case 6645602: // Endor - Smuggler's Outpost Cantina
-			return BuildingObjectImplementation::CANTINA;
-		case 1028489: // Tatooine - Bestine Cantina
-			return BuildingObjectImplementation::CANTINA;
-		case 3035375: // Yavin IV - Labor Outpost Cantina
-			return BuildingObjectImplementation::CANTINA;
-		case 7925448: // Yavin IV - Mining Outpost Cantina
-			return BuildingObjectImplementation::CANTINA;
+	// Cantinas
+	case 1076941: // Tatooine	Mos Eisley	Cantina (Lucky Despot)
+		return BuildingObjectImplementation::CANTINA;
+	case 1153495: // Tatooine	Mos Entha	Cantina (The Fallen Star)
+		return BuildingObjectImplementation::CANTINA;
+	case 3355385: // Tatooine - Anchorhead Cantina
+		return BuildingObjectImplementation::CANTINA;
+	case 9925364: // Endor - Research Outpost Cantina
+		return BuildingObjectImplementation::CANTINA;
+	case 6645602: // Endor - Smuggler's Outpost Cantina
+		return BuildingObjectImplementation::CANTINA;
+	case 1028489: // Tatooine - Bestine Cantina
+		return BuildingObjectImplementation::CANTINA;
+	case 3035375: // Yavin IV - Labor Outpost Cantina
+		return BuildingObjectImplementation::CANTINA;
+	case 7925448: // Yavin IV - Mining Outpost Cantina
+		return BuildingObjectImplementation::CANTINA;
 
 		// Taverns
-		case 6205563: // Dantooine	Mining Outpost	Tavern
-			return BuildingObjectImplementation::TAVERN;
-		case 6205495: // Dantooine	Pirate Outpost	Tavern
-			return BuildingObjectImplementation::TAVERN;
-		case 1213343: // Tatooine	Anchorhead	Tavern
-			return BuildingObjectImplementation::TAVERN;
-		case 1154120: // Tatooine	Mos Taike	Tavern
-			return BuildingObjectImplementation::TAVERN;
-		case 6955366: // Dathomir	Trade Outpost	Tavern
-			return BuildingObjectImplementation::TAVERN;
+	case 6205563: // Dantooine	Mining Outpost	Tavern
+		return BuildingObjectImplementation::TAVERN;
+	case 6205495: // Dantooine	Pirate Outpost	Tavern
+		return BuildingObjectImplementation::TAVERN;
+	case 1213343: // Tatooine	Anchorhead	Tavern
+		return BuildingObjectImplementation::TAVERN;
+	case 1154120: // Tatooine	Mos Taike	Tavern
+		return BuildingObjectImplementation::TAVERN;
+	case 6955366: // Dathomir	Trade Outpost	Tavern
+		return BuildingObjectImplementation::TAVERN;
 
 		// Medical Centers
-		case 1414856: // Endor	Smuggler's Outpost	Medical Center
-			return BuildingObjectImplementation::MEDICAL_CENTER;
-		case 1414867: // Endor	Research Outpost	Medical Center
-			return BuildingObjectImplementation::MEDICAL_CENTER;
-		case 2835549: // Dathomir	Science Outpost	Medical Center
-			return BuildingObjectImplementation::MEDICAL_CENTER;
-		case 3035371: // Yavin IV	Labor Outpost	Medical Center
-			return BuildingObjectImplementation::MEDICAL_CENTER;
-		case 7925474: // Yavin IV	Mining Outpost	Medical Center
-			return BuildingObjectImplementation::MEDICAL_CENTER;
+	case 1414856: // Endor	Smuggler's Outpost	Medical Center
+		return BuildingObjectImplementation::MEDICAL_CENTER;
+	case 1414867: // Endor	Research Outpost	Medical Center
+		return BuildingObjectImplementation::MEDICAL_CENTER;
+	case 2835549: // Dathomir	Science Outpost	Medical Center
+		return BuildingObjectImplementation::MEDICAL_CENTER;
+	case 3035371: // Yavin IV	Labor Outpost	Medical Center
+		return BuildingObjectImplementation::MEDICAL_CENTER;
+	case 7925474: // Yavin IV	Mining Outpost	Medical Center
+		return BuildingObjectImplementation::MEDICAL_CENTER;
 
 		// Museum
-		case 1028167: //Tatooine	Bestine	Museum
-			return BuildingObjectImplementation::MUSEUM;
+	case 1028167: //Tatooine	Bestine	Museum
+		return BuildingObjectImplementation::MUSEUM;
 
 		// Junk Shop
-		case 1255995: // Tatooine	Mos Espa	Watto�s Junk Shop
-			return BuildingObjectImplementation::JUNKSHOP;
+	case 1255995: // Tatooine	Mos Espa	Watto�s Junk Shop
+		return BuildingObjectImplementation::JUNKSHOP;
 	}
 
 	if ((int) file.find("_cantina_") >= 0)
@@ -660,49 +673,55 @@ int PlanetManagerImplementation::guessBuildingType(uint64 oid, string file) {
 }
 
 BuildingObject* PlanetManagerImplementation::loadBuilding(uint64 oid, int planet) {
+	BuildingObject* buio = NULL;
+
 	stringstream query;
 	query << "SELECT * FROM staticobjects WHERE zoneid = '" << planet << "' AND objectid = '" << oid << "';";
 
-	ResultSet* result = ServerDatabase::instance()->executeQuery(query);
+	try {
+		ResultSet* result = ServerDatabase::instance()->executeQuery(query);
 
-	BuildingObject* buio = NULL;
+		if (result->next()) {
+			uint64 oid = result->getUnsignedLong(1);
+			uint64 parentId = result->getUnsignedLong(2);
 
-	if (result->next()) {
-		uint64 oid = result->getUnsignedLong(1);
-		uint64 parentId = result->getUnsignedLong(2);
+			string file = result->getString(3);
 
-		string file = result->getString(3);
+			float oX = result->getFloat(4);
+			float oY = result->getFloat(5);
+			float oZ = result->getFloat(6);
+			float oW = result->getFloat(7);
 
-		float oX = result->getFloat(4);
-		float oY = result->getFloat(5);
-		float oZ = result->getFloat(6);
-		float oW = result->getFloat(7);
+			float x = result->getFloat(8);
+			float z = result->getFloat(9);
+			float y = result->getFloat(10);
 
-		float x = result->getFloat(8);
-		float z = result->getFloat(9);
-		float y = result->getFloat(10);
+			float type = result->getFloat(11);
 
-		float type = result->getFloat(11);
+			buio = new BuildingObject(oid, true);
+			buio->setZoneProcessServer(server);
 
-		buio = new BuildingObject(oid, true);
-		buio->setZoneProcessServer(server);
+			buio->setObjectCRC(String::hashCode(file));
 
-		buio->setObjectCRC(String::hashCode(file));
+			buio->setBuildingType(guessBuildingType(oid, file));
 
-		buio->setBuildingType(guessBuildingType(oid, file));
+			buio->initializePosition(x, z, y);
+			buio->setDirection(oX, oZ, oY, oW);
 
-		buio->initializePosition(x, z, y);
-		buio->setDirection(oX, oZ, oY, oW);
+			buio->insertToZone(zone);
 
-		buio->insertToZone(zone);
-
-		if (buildingMap->put(oid, buio) != NULL) {
-			cout << "Error CELL/BUILDING already exists\n";
-			raise(SIGSEGV);
+			if (buildingMap->put(oid, buio) != NULL) {
+				error("Error CELL/BUILDING already exists\n");
+				raise(SIGSEGV);
+			}
 		}
-	}
 
-	delete result;
+		delete result;
+	} catch (DatabaseException& e) {
+		error(e.getMessage());
+	} catch (...) {
+		error("unreported exception caught in PlanetManagerImplementation::loadBuilding");
+	}
 
 	return buio;
 }
@@ -721,7 +740,7 @@ void PlanetManagerImplementation::landShuttles() {
 
 			shuttle->unlock();
 		} catch (...) {
-			cout << "exception in PlanetManagerImplementation::landShuttles()";
+			error("exception in PlanetManagerImplementation::landShuttles()");
 			shuttle->unlock();
 		}
 	}
@@ -745,7 +764,7 @@ void PlanetManagerImplementation::takeOffShuttles() {
 
 			shuttle->unlock();
 		} catch (...) {
-			cout << "exception in PlanetManagerImplementation::takeOffShuttles()";
+			error("exception in PlanetManagerImplementation::takeOffShuttles()");
 			shuttle->unlock();
 		}
 	}

@@ -40,7 +40,7 @@ it is their choice whether to do so. The GNU Lesser General Public License
 gives permission to release a modified version without this exception;
 this exception also makes it possible to release a modified version
 which carries forward this exception.
-*/
+ */
 
 #include "RadialManager.h"
 
@@ -103,7 +103,7 @@ void RadialManager::handleRadialRequest(Player* player, Packet* pack) {
 }
 
 void RadialManager::handleRadialSelect(Player* player, Packet* pack) {
-    SceneObject* obj = NULL;
+	SceneObject* obj = NULL;
 
 	try {
 		player->wlock();
@@ -255,7 +255,7 @@ ObjectMenuResponse* RadialManager::parseDefaults(Player* player, uint64 objectid
 		uint8 callback = pack->parseByte();
 
 		//if (radialid == 20)
-			callback = 3;
+		callback = 3;
 
 		pack->shiftOffset(4); // shift unicode command
 
@@ -283,7 +283,6 @@ void RadialManager::sendRadialResponseForBazaar(uint64 objectId, Player* player)
 
 	if (bazaar != NULL)
 		bazaar->newBazaarRequest(objectId, player, player->getZoneID());
-
 }
 
 void RadialManager::sendRadialResponseForBank(uint64 objectId, Player* player) {
@@ -319,6 +318,7 @@ void RadialManager::handleVehicleStore(SceneObject* obj) {
 		} catch (...) {
 			mount->unlock();
 		}
+
 		return;
 	}
 
