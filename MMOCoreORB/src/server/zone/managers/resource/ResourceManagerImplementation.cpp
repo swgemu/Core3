@@ -1,6 +1,47 @@
 /*
- *	ResourceManagerImplementationStub
+Copyright (C) 2007 <SWGEmu>
+
+This File is part of Core3.
+
+This program is free software; you can redistribute
+it and/or modify it under the terms of the GNU Lesser
+General Public License as published by the Free Software
+Foundation; either version 2 of the License,
+or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+See the GNU Lesser General Public License for
+more details.
+
+You should have received a copy of the GNU Lesser General
+Public License along with this program; if not, write to
+the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+
+Linking Engine3 statically or dynamically with other modules
+is making a combined work based on Engine3.
+Thus, the terms and conditions of the GNU Lesser General Public License
+cover the whole combination.
+
+In addition, as a special exception, the copyright holders of Engine3
+give you permission to combine Engine3 program with free software
+programs or libraries that are released under the GNU LGPL and with
+code included in the standard release of Core3 under the GNU LGPL
+license (or modified versions of such code, with unchanged license).
+You may copy and distribute such a system following the terms of the
+GNU LGPL for Engine3 and the licenses of the other code concerned,
+provided that you include the source code of that other code when
+and as the GNU LGPL requires distribution of source code.
+
+Note that people who make modified versions of Engine3 are not obligated
+to grant this special exception for their modified versions;
+it is their choice whether to do so. The GNU Lesser General Public License
+gives permission to release a modified version without this exception;
+this exception also makes it possible to release a modified version
+which carries forward this exception.
  */
+
 #include "engine/engine.h"
 
 #include "../../ZoneServer.h"
@@ -186,7 +227,7 @@ void ResourceManagerImplementation::countResources() {
 		stringstream query, query2, query3, query4;
 
 		query << "SELECT DISTINCT resource_name FROM resource_spawns"
-			  << " WHERE pool = 'minimum'";
+		<< " WHERE pool = 'minimum'";
 
 		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
 
@@ -194,7 +235,7 @@ void ResourceManagerImplementation::countResources() {
 		delete res;
 
 		query2 << "SELECT DISTINCT resource_name FROM resource_spawns"
-			   << " WHERE pool = 'random'";
+		<< " WHERE pool = 'random'";
 
 		res = ServerDatabase::instance()->executeQuery(query2);
 
@@ -202,7 +243,7 @@ void ResourceManagerImplementation::countResources() {
 		delete res;
 
 		query3 << "SELECT DISTINCT resource_name FROM resource_spawns"
-			   << " WHERE pool = 'fixed'";
+		<< " WHERE pool = 'fixed'";
 
 		res = ServerDatabase::instance()->executeQuery(query3);
 
@@ -210,7 +251,7 @@ void ResourceManagerImplementation::countResources() {
 		delete res;
 
 		query4 << "SELECT DISTINCT resource_name FROM resource_spawns"
-			   << " WHERE pool = 'native'";
+		<< " WHERE pool = 'native'";
 
 		res = ServerDatabase::instance()->executeQuery(query4);
 
@@ -315,31 +356,31 @@ void ResourceManagerImplementation::sendSurveyMessage(Player* player,
 		int points;
 
 		switch (player->getSurveyTool()->getSurveyToolRange()) {
-			case 128:
-				spacer = 42.6f;
-				points = 4;
-				x = player_x - (1.5 * spacer);
-				y = player_y - (1.5 * spacer);
-				break;
-			case 192:
-				spacer = 64.0f;
-				points = 4;
-				x = player_x - (1.5 * spacer);
-				y = player_y - (1.5 * spacer);
-				break;
-			case 256:
-				spacer = 64.0f;
-				points = 5;
-				x = player_x - (2 * spacer);
-				y = player_y - (2 * spacer);
-				break;
-			case 320:
-				spacer = 80.0f;
-				points = 5;
-				x = player_x - (2 * spacer);
-				y = player_y - (2 * spacer);
-				break;
-			default:
+		case 128:
+			spacer = 42.6f;
+			points = 4;
+			x = player_x - (1.5 * spacer);
+			y = player_y - (1.5 * spacer);
+			break;
+		case 192:
+			spacer = 64.0f;
+			points = 4;
+			x = player_x - (1.5 * spacer);
+			y = player_y - (1.5 * spacer);
+			break;
+		case 256:
+			spacer = 64.0f;
+			points = 5;
+			x = player_x - (2 * spacer);
+			y = player_y - (2 * spacer);
+			break;
+		case 320:
+			spacer = 80.0f;
+			points = 5;
+			x = player_x - (2 * spacer);
+			y = player_y - (2 * spacer);
+			break;
+		default:
 			spacer = 32.0f;
 			points = 3;
 			x = player_x - spacer;
@@ -428,7 +469,7 @@ void ResourceManagerImplementation::sendSampleMessage(Player* player,
 				int resQuantity = int(density * 25 + System::random(3));
 
 				if (!(resQuantity > 0))
-				resQuantity = 1;
+					resQuantity = 1;
 
 				player->getSampleTool()->sendSampleEffect(player);
 
@@ -549,7 +590,7 @@ void ResourceManagerImplementation::harvestOrganics(Player* player,
 				baseAmount = 3;
 
 			ResourceContainer* newRcno =
-					new ResourceContainer(player->getNewItemID());
+				new ResourceContainer(player->getNewItemID());
 
 			string resname = getCurrentNameFromType(harvestType);
 
@@ -567,7 +608,7 @@ void ResourceManagerImplementation::harvestOrganics(Player* player,
 			stringstream ss;
 
 			ss << "You have harvested " << baseAmount << " unit(s) of "
-					<< newRcno->getClassSeven();
+			<< newRcno->getClassSeven();
 
 			if (bonusAmount > 0) {
 
@@ -977,16 +1018,16 @@ void ResourceManagerImplementation::buildResourceMap() {
 	SpawnLocation* sl;
 	string resname;
 	string query = "SELECT resource_data.`INDEX`, resource_data.resource_name, resource_data.resource_type, "
-			"resource_data.class_1, resource_data.class_2, resource_data.class_3, resource_data.class_4, "
-			"resource_data.class_5, resource_data.class_6, resource_data.class_7, resource_data.res_decay_resist, "
-			"resource_data.res_quality, resource_data.res_flavor, resource_data.res_potential_energy, "
-			"resource_data.res_malleability, resource_data.res_toughness, resource_data.res_shock_resistance, "
-			"resource_data.res_cold_resist, resource_data.res_heat_resist, resource_data.res_conductivity, "
-			"resource_data.entangle_resistance, resource_data.shiftedIn, resource_data.shiftedOut, resource_data.container, "
-			"resource_data.containerCRC, resource_spawns.`INDEX`, resource_spawns.resource_name, resource_spawns.planet_id, "
-		    "resource_spawns.x, resource_spawns.y, resource_spawns.radius, resource_spawns.`max`, resource_spawns.despawn, "
-		    "resource_spawns.pool FROM resource_data Inner Join resource_spawns ON resource_data.resource_name = "
-		    "resource_spawns.resource_name ORDER BY resource_data.resource_name ASC";
+		"resource_data.class_1, resource_data.class_2, resource_data.class_3, resource_data.class_4, "
+		"resource_data.class_5, resource_data.class_6, resource_data.class_7, resource_data.res_decay_resist, "
+		"resource_data.res_quality, resource_data.res_flavor, resource_data.res_potential_energy, "
+		"resource_data.res_malleability, resource_data.res_toughness, resource_data.res_shock_resistance, "
+		"resource_data.res_cold_resist, resource_data.res_heat_resist, resource_data.res_conductivity, "
+		"resource_data.entangle_resistance, resource_data.shiftedIn, resource_data.shiftedOut, resource_data.container, "
+		"resource_data.containerCRC, resource_spawns.`INDEX`, resource_spawns.resource_name, resource_spawns.planet_id, "
+		"resource_spawns.x, resource_spawns.y, resource_spawns.radius, resource_spawns.`max`, resource_spawns.despawn, "
+		"resource_spawns.pool FROM resource_data Inner Join resource_spawns ON resource_data.resource_name = "
+		"resource_spawns.resource_name ORDER BY resource_data.resource_name ASC";
 
 	try {
 		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
@@ -1062,6 +1103,9 @@ void ResourceManagerImplementation::buildResourceMap() {
 
 	} catch (DatabaseException& e) {
 		cout << "Database error in buildMap\n";
+		cout << e.getMessage() << endl;
+	} catch (...) {
+		cout << "unreported exception caught in ResourceManagerImplementation::buildResourceMap()\n";
 	}
 }
 
@@ -1082,10 +1126,10 @@ void ResourceManagerImplementation::verifyResourceData(int i, ResourceTemplate* 
 	ResourceTemplate* resNew;
 	string resname;
 	string query = "SELECT `INDEX`, `resource_name`, `resource_type`, `class_1`, `class_2`, `class_3`, `class_4`,"
-			" `class_5`, `class_6`, `class_7`, `res_decay_resist`, `res_quality`, `res_flavor`, `res_potential_energy`,"
-			" `res_malleability`, `res_toughness`, `res_shock_resistance`, `res_cold_resist`, `res_heat_resist`,"
-			" `res_conductivity`, `entangle_resistance`, `shiftedIn`, `shiftedOut`, `container`, `containerCRC`"
-			"  FROM resource_data WHERE `resource_name` = '" + resTemp->getName() + "'";
+		" `class_5`, `class_6`, `class_7`, `res_decay_resist`, `res_quality`, `res_flavor`, `res_potential_energy`,"
+		" `res_malleability`, `res_toughness`, `res_shock_resistance`, `res_cold_resist`, `res_heat_resist`,"
+		" `res_conductivity`, `entangle_resistance`, `shiftedIn`, `shiftedOut`, `container`, `containerCRC`"
+		"  FROM resource_data WHERE `resource_name` = '" + resTemp->getName() + "'";
 	try {
 		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
 		if (res->size() == 1) {
@@ -1160,6 +1204,9 @@ void ResourceManagerImplementation::verifyResourceData(int i, ResourceTemplate* 
 		delete res;
 	} catch (DatabaseException& e) {
 		cout << "Database error in verifyMap\n";
+		cout << e.getMessage() << endl;
+	} catch (...) {
+		cout << "unreported exception caught in ResourceManagerImplementation::verifyResourceData\n";
 	}
 }
 
@@ -1191,10 +1238,10 @@ void ResourceManagerImplementation::removeExpiredResources() {
 			info(ss.str());
 
 			query2 << "UPDATE resource_data rd  "
-				<< "INNER JOIN resource_spawns rs "
-				<< " ON rd.resource_name = rs.resource_name "
-				   << " SET rd.shiftedOut = " << now + (System::random(aveduration) + (averageShiftTime * 2))
-				<< " WHERE rs.despawn <  " << now << " and rd.shiftedOut = 0";
+			<< "INNER JOIN resource_spawns rs "
+			<< " ON rd.resource_name = rs.resource_name "
+			<< " SET rd.shiftedOut = " << now + (System::random(aveduration) + (averageShiftTime * 2))
+			<< " WHERE rs.despawn <  " << now << " and rd.shiftedOut = 0";
 
 			ServerDatabase::instance()->executeStatement(query2);
 
@@ -1260,9 +1307,9 @@ void ResourceManagerImplementation::checkRandomPool() {
 int ResourceManagerImplementation::randomPoolNeeds() {
 	stringstream query;
 	query << "SELECT DISTINCT rd.resource_name, rd.resource_type, rd.class_1,rd.class_2,rd.class_3,"
-		  << "rd.class_4, rd.class_5, rd.class_6, rd.class_7 FROM `resource_data` rd "
-		  << "INNER JOIN `resource_spawns` rs ON rs.resource_name = rd.resource_name "
-		  << "WHERE rs.pool = 'random'";
+	<< "rd.class_4, rd.class_5, rd.class_6, rd.class_7 FROM `resource_data` rd "
+	<< "INNER JOIN `resource_spawns` rs ON rs.resource_name = rd.resource_name "
+	<< "WHERE rs.pool = 'random'";
 
 	ResultSet* res = ServerDatabase::instance()->executeQuery(query);
 
@@ -1304,9 +1351,9 @@ int ResourceManagerImplementation::fixedPoolIron() {
 
 	stringstream query;
 	query << "SELECT DISTINCT rd.resource_name, rd.resource_type, rd.class_1,rd.class_2,rd.class_3,"
-		  << "rd.class_4, rd.class_5, rd.class_6, rd.class_7 FROM `resource_data` rd "
-		  << "INNER JOIN `resource_spawns` rs ON rs.resource_name = rd.resource_name "
-		  << "WHERE rs.pool = 'fixed'  AND rd.class_5 = 'Iron'";
+	<< "rd.class_4, rd.class_5, rd.class_6, rd.class_7 FROM `resource_data` rd "
+	<< "INNER JOIN `resource_spawns` rs ON rs.resource_name = rd.resource_name "
+	<< "WHERE rs.pool = 'fixed'  AND rd.class_5 = 'Iron'";
 
 	ResultSet* res = ServerDatabase::instance()->executeQuery(query);
 
@@ -1352,13 +1399,13 @@ void ResourceManagerImplementation::poolNeeds(Vector<string>* invector, string p
 
 		if (pool == "minimum") {
 			query << "SELECT DISTINCT rd.resource_name, rd.resource_type, rd.class_1,rd.class_2,rd.class_3,"
-				  << "rd.class_4, rd.class_5, rd.class_6, rd.class_7 FROM `resource_data` rd "
-				  << "INNER JOIN `resource_spawns` rs ON rs.resource_name = rd.resource_name "
-				  << "WHERE rs.pool = 'minimum'";
+			<< "rd.class_4, rd.class_5, rd.class_6, rd.class_7 FROM `resource_data` rd "
+			<< "INNER JOIN `resource_spawns` rs ON rs.resource_name = rd.resource_name "
+			<< "WHERE rs.pool = 'minimum'";
 		} else {
 			query << "SELECT DISTINCT rd.resource_type FROM `resource_data` rd "
-				  << "INNER JOIN `resource_spawns` rs ON rs.resource_name = rd.resource_name "
-				  << "WHERE rs.pool = '"<< pool << "'";
+			<< "INNER JOIN `resource_spawns` rs ON rs.resource_name = rd.resource_name "
+			<< "WHERE rs.pool = '"<< pool << "'";
 		}
 
 		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
@@ -1415,17 +1462,17 @@ void ResourceManagerImplementation::getFromRandomPool(Vector<string> * spawnMe,	
 				stringstream query, query2;
 
 				query << "SELECT DISTINCT rd.resource_name FROM `resource_data` rd "
-					  << "INNER JOIN `resource_spawns` rs ON rs.resource_name = rd.resource_name "
-					  << "WHERE rs.pool = 'random' and shiftedOut = 0 and ("
-					  << "resource_type = '" << spawnMe->get(x) << "' OR "
-					  << "class_1 = '" << spawnMe->get(x) << "' OR "
-					  << "class_2 = '" << spawnMe->get(x) << "' OR "
-					  << "class_3 = '" << spawnMe->get(x) << "' OR "
-					  << "class_4 = '" << spawnMe->get(x) << "' OR "
-					  << "class_5 = '" << spawnMe->get(x) << "' OR "
-					  << "class_6 = '" << spawnMe->get(x) << "' OR "
-					  << "class_7 = '" << spawnMe->get(x) << "')"
-					  << "limit 1";
+				<< "INNER JOIN `resource_spawns` rs ON rs.resource_name = rd.resource_name "
+				<< "WHERE rs.pool = 'random' and shiftedOut = 0 and ("
+				<< "resource_type = '" << spawnMe->get(x) << "' OR "
+				<< "class_1 = '" << spawnMe->get(x) << "' OR "
+				<< "class_2 = '" << spawnMe->get(x) << "' OR "
+				<< "class_3 = '" << spawnMe->get(x) << "' OR "
+				<< "class_4 = '" << spawnMe->get(x) << "' OR "
+				<< "class_5 = '" << spawnMe->get(x) << "' OR "
+				<< "class_6 = '" << spawnMe->get(x) << "' OR "
+				<< "class_7 = '" << spawnMe->get(x) << "')"
+				<< "limit 1";
 
 				ResultSet* res = ServerDatabase::instance()->executeQuery(query);
 
@@ -1436,8 +1483,8 @@ void ResourceManagerImplementation::getFromRandomPool(Vector<string> * spawnMe,	
 					string resname = res->getString(0);
 
 					query2 << "UPDATE resource_spawns "
-						   << "SET pool = '" << pool << "' "
-						   << "WHERE resource_name = '" << resname << "'";
+					<< "SET pool = '" << pool << "' "
+					<< "WHERE resource_name = '" << resname << "'";
 
 					numQueries++;
 
@@ -1464,16 +1511,16 @@ string ResourceManagerImplementation::getRandomResourceFromType(string restype, 
 
 		stringstream query;
 		query << "SELECT `resource_type`,`class_1`,`class_2`,"
-			  << "`class_3`,`class_4`,`class_5`,`class_6`,`class_7`,`weight` "
-			  << "FROM `resource_tree` "
-			  << "WHERE (class_1 = '" << restype << "' OR "
-			  << "class_2 = '" << restype << "' OR "
-			  << "class_3 = '" << restype << "' OR "
-			  << "class_4 = '" << restype << "' OR "
-			  << "class_5 = '" << restype << "' OR "
-			  << "class_6 = '" << restype << "' OR "
-			  << "class_7 = '" << restype << "') AND ("
-			  << "class_6 != 'JTL')" << exclusion;
+		<< "`class_3`,`class_4`,`class_5`,`class_6`,`class_7`,`weight` "
+		<< "FROM `resource_tree` "
+		<< "WHERE (class_1 = '" << restype << "' OR "
+		<< "class_2 = '" << restype << "' OR "
+		<< "class_3 = '" << restype << "' OR "
+		<< "class_4 = '" << restype << "' OR "
+		<< "class_5 = '" << restype << "' OR "
+		<< "class_6 = '" << restype << "' OR "
+		<< "class_7 = '" << restype << "') AND ("
+		<< "class_6 != 'JTL')" << exclusion;
 
 		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
 
@@ -1563,7 +1610,6 @@ void ResourceManagerImplementation::createResource(string restype, string pool, 
 	}
 
 	resourceMap->put(resource->getName(), resource);
-
 }
 
 void ResourceManagerImplementation::generateResourceStats(ResourceTemplate* resource) {
@@ -1664,9 +1710,10 @@ void ResourceManagerImplementation::generateResourceStats(ResourceTemplate* reso
 
 		delete res;
 	} catch (DatabaseException& e) {
-
 		cout << "Resource Database error 2 generateResourceStats" << endl;
-
+		cout << e.getMessage() << endl;
+	} catch (...) {
+		cout << "unreported exception caught in ResourceManagerImplementation::generateResourceStats\n";
 	}
 }
 
@@ -1802,12 +1849,12 @@ void ResourceManagerImplementation::makeNativePoolVector() {
 
 		stringstream query;
 		query << "SELECT `resource_type` "
-			  << "FROM `resource_tree` "
-			  << "WHERE (class_1 = 'Organic' OR "
-			  << "class_3 = 'Fiberplast' OR "
-			  << "class_2 = 'Wind Energy' OR "
-			  << "class_2 = 'Solar Energy' OR "
-			  << "class_2 = 'Water') AND class_6 != 'JTL'";
+		<< "FROM `resource_tree` "
+		<< "WHERE (class_1 = 'Organic' OR "
+		<< "class_3 = 'Fiberplast' OR "
+		<< "class_2 = 'Wind Energy' OR "
+		<< "class_2 = 'Solar Energy' OR "
+		<< "class_2 = 'Water') AND class_6 != 'JTL'";
 
 		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
 
@@ -1818,8 +1865,11 @@ void ResourceManagerImplementation::makeNativePoolVector() {
 		}
 
 		delete res;
-	} catch (...) {
+	} catch (DatabaseException& e) {
 		cout << "Database error in makeNativePoolVector\n";
+		cout << e.getMessage() << endl;
+	} catch (...) {
+		cout << "unreported exception caught in ResourceManagerImplementation::makeNativePoolVector()\n";
 	}
 }
 bool ResourceManagerImplementation::isPlanetSpecific(const string type) {
@@ -1887,40 +1937,40 @@ void ResourceManagerImplementation::insertResource(ResourceTemplate* resource) {
 	try {
 		stringstream query;
 		query << "INSERT INTO `resource_data` "
-			<< "(`resource_name`,`resource_type`,`class_1`,"
-			<< "`class_2`,`class_3`,`class_4`,"
-			<< "`class_5`,`class_6`,`class_7`"
-			<< checkInsertCategory(resource->getAtt1())
-			<< checkInsertCategory(resource->getAtt2())
-			<< checkInsertCategory(resource->getAtt3())
-			<< checkInsertCategory(resource->getAtt4())
-			<< checkInsertCategory(resource->getAtt5())
-			<< checkInsertCategory(resource->getAtt6())
-			<< checkInsertCategory(resource->getAtt7())
-			<< checkInsertCategory(resource->getAtt8())
-			<< checkInsertCategory(resource->getAtt9())
-			<< checkInsertCategory(resource->getAtt10())
-			<< checkInsertCategory(resource->getAtt11())
-			<< ",`shiftedIn`,`container`, `containerCRC`)"
-			<< " VALUES ('"
-			<< resource->getName() << "','" << resource->getType() << "','"
-			<< resource->getClass1() << "','" << resource->getClass2() << "','"
-			<< resource->getClass3() << "','" << resource->getClass4() << "','"
-			<< resource->getClass5() << "','" << resource->getClass6() << "','"
-			<< resource->getClass7() << "'"
-			<< checkInsertValue(resource->getAtt1Stat())
-			<< checkInsertValue(resource->getAtt2Stat())
-			<< checkInsertValue(resource->getAtt3Stat())
-			<< checkInsertValue(resource->getAtt4Stat())
-			<< checkInsertValue(resource->getAtt5Stat())
-			<< checkInsertValue(resource->getAtt6Stat())
-			<< checkInsertValue(resource->getAtt7Stat())
-			<< checkInsertValue(resource->getAtt8Stat())
-			<< checkInsertValue(resource->getAtt9Stat())
-			<< checkInsertValue(resource->getAtt10Stat())
-			<< checkInsertValue(resource->getAtt11Stat())
-			<< ", " << (long)time(0) << ",'" << resource->getContainer()
-			<< "'," << resource->getContainerCRC() << ")";
+		<< "(`resource_name`,`resource_type`,`class_1`,"
+		<< "`class_2`,`class_3`,`class_4`,"
+		<< "`class_5`,`class_6`,`class_7`"
+		<< checkInsertCategory(resource->getAtt1())
+		<< checkInsertCategory(resource->getAtt2())
+		<< checkInsertCategory(resource->getAtt3())
+		<< checkInsertCategory(resource->getAtt4())
+		<< checkInsertCategory(resource->getAtt5())
+		<< checkInsertCategory(resource->getAtt6())
+		<< checkInsertCategory(resource->getAtt7())
+		<< checkInsertCategory(resource->getAtt8())
+		<< checkInsertCategory(resource->getAtt9())
+		<< checkInsertCategory(resource->getAtt10())
+		<< checkInsertCategory(resource->getAtt11())
+		<< ",`shiftedIn`,`container`, `containerCRC`)"
+		<< " VALUES ('"
+		<< resource->getName() << "','" << resource->getType() << "','"
+		<< resource->getClass1() << "','" << resource->getClass2() << "','"
+		<< resource->getClass3() << "','" << resource->getClass4() << "','"
+		<< resource->getClass5() << "','" << resource->getClass6() << "','"
+		<< resource->getClass7() << "'"
+		<< checkInsertValue(resource->getAtt1Stat())
+		<< checkInsertValue(resource->getAtt2Stat())
+		<< checkInsertValue(resource->getAtt3Stat())
+		<< checkInsertValue(resource->getAtt4Stat())
+		<< checkInsertValue(resource->getAtt5Stat())
+		<< checkInsertValue(resource->getAtt6Stat())
+		<< checkInsertValue(resource->getAtt7Stat())
+		<< checkInsertValue(resource->getAtt8Stat())
+		<< checkInsertValue(resource->getAtt9Stat())
+		<< checkInsertValue(resource->getAtt10Stat())
+		<< checkInsertValue(resource->getAtt11Stat())
+		<< ", " << (long)time(0) << ",'" << resource->getContainer()
+		<< "'," << resource->getContainerCRC() << ")";
 
 		ServerDatabase::instance()->executeStatement(query.str());
 
@@ -1951,17 +2001,17 @@ void ResourceManagerImplementation::insertSpawn(ResourceTemplate* resource, int 
 		}
 
 		long despawn = (long)time(0) + (System::random((aveduration * upper)-(aveduration * lower)))
-			+ (aveduration* lower);
+		+ (aveduration* lower);
 
 		stringstream query;
 		query << "INSERT INTO `resource_spawns` "
-			  << "(`resource_name`, `planet_id`,"
-			  << "`x`,`y`,`radius`,"
-			  << "`max`,`despawn`,`pool`)"
-			  << " VALUES ('"
-			  << resource->getName() << "'," << planet_id << ","
-			  << x << "," << y << ","<< radius
-			  << "," << max << "," << despawn << ",'" << pool << "')";
+		<< "(`resource_name`, `planet_id`,"
+		<< "`x`,`y`,`radius`,"
+		<< "`max`,`despawn`,`pool`)"
+		<< " VALUES ('"
+		<< resource->getName() << "'," << planet_id << ","
+		<< x << "," << y << ","<< radius
+		<< "," << max << "," << despawn << ",'" << pool << "')";
 
 		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
 
@@ -2008,6 +2058,7 @@ void ResourceManagerImplementation::makeResourceName(string& resname, bool isOrg
 		if(checkResourceName(randname))
 			break;
 	}
+
 	resname = randname;
 }
 
@@ -2033,7 +2084,10 @@ bool ResourceManagerImplementation::checkResourceName(const string instring) {
 			return false;
 		}
 	} catch (DatabaseException& e) {
+		cout << e.getMessage() << endl;
 		return false;
+	} catch (...) {
+		cout << "unreported exception caught in ResourceManageR::checkResourceName\n";
 	}
 }
 
@@ -2053,7 +2107,7 @@ bool ResourceManagerImplementation::isDumbPhrase(const string inname) {
 			(inname.find("anal") == string::npos))
 		return true;
 	else*/
-		return false;
+	return false;
 }
 
 inline string ResourceManagerImplementation::stringify(const int x) {
@@ -2123,48 +2177,47 @@ void ResourceManagerImplementation::setObjectSubType(ResourceTemplate* resImpl) 
 }
 
 void ResourceManagerImplementation::printResource(string name){
-
 	string resname;
-		string query = "SELECT * FROM resource_data WHERE `resource_name` = '" +
-		                name + "'";
-		try {
-			ResultSet* res = ServerDatabase::instance()->executeQuery(query);
-			if (res->size() == 1) {
-				while (res->next()) {
+	string query = "SELECT * FROM resource_data WHERE `resource_name` = '" +
+	name + "'";
+	try {
+		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
+		if (res->size() == 1) {
+			while (res->next()) {
 
-					cout << "Name = " << res->getString(1)<< "\n";
-					cout << "Type = " << res->getString(2) << "\n";
-					cout << "ID = " << res->getUnsignedLong(0) << "\n";
-					cout << "Class1 = " << res->getString(3) << "\n";
-					cout << "Class2 = " << res->getString(4) << "\n";
-					cout << "Class3 = " << res->getString(5) << "\n";
-					cout << "Class4 = " << res->getString(6) << "\n";
-					cout << "Class5 = " << res->getString(7) << "\n";
-					cout << "Class6 = " << res->getString(8) << "\n";
-					cout << "Class7 = " << res->getString(9) << "\n";
-					cout << "Decay Stat = " << res->getInt(10) << "\n";
-					cout << "Quality Stat = " << res->getInt(11) << "\n";
-					cout << "Flavor Stat = " << res->getInt(12) << "\n";
-					cout << "PE Stat = " << res->getInt(13) << "\n";
-					cout << "ME Stat = " << res->getInt(14) << "\n";
-					cout << "Toughness Stat = " << res->getInt(15) << "\n";
-					cout << "SR Stat = " << res->getInt(16) << "\n";
-					cout << "CR Stat = " << res->getInt(17) << "\n";
-					cout << "HR Stat = " << res->getInt(18) << "\n";
-					cout << "CD Stat = " << res->getInt(19) << "\n";
-					cout << "ER Stat = " << res->getInt(20) << "\n";
-					cout << "Container = " << res->getString(23) << "\n";
-					cout << "Bad CRC = " << res->getUnsignedInt(24) << "\n";
-
-				}
-			} else {
-
-				cout << "Multiple Resource with name: Size = " << res->size() << "\n";
+				cout << "Name = " << res->getString(1)<< "\n";
+				cout << "Type = " << res->getString(2) << "\n";
+				cout << "ID = " << res->getUnsignedLong(0) << "\n";
+				cout << "Class1 = " << res->getString(3) << "\n";
+				cout << "Class2 = " << res->getString(4) << "\n";
+				cout << "Class3 = " << res->getString(5) << "\n";
+				cout << "Class4 = " << res->getString(6) << "\n";
+				cout << "Class5 = " << res->getString(7) << "\n";
+				cout << "Class6 = " << res->getString(8) << "\n";
+				cout << "Class7 = " << res->getString(9) << "\n";
+				cout << "Decay Stat = " << res->getInt(10) << "\n";
+				cout << "Quality Stat = " << res->getInt(11) << "\n";
+				cout << "Flavor Stat = " << res->getInt(12) << "\n";
+				cout << "PE Stat = " << res->getInt(13) << "\n";
+				cout << "ME Stat = " << res->getInt(14) << "\n";
+				cout << "Toughness Stat = " << res->getInt(15) << "\n";
+				cout << "SR Stat = " << res->getInt(16) << "\n";
+				cout << "CR Stat = " << res->getInt(17) << "\n";
+				cout << "HR Stat = " << res->getInt(18) << "\n";
+				cout << "CD Stat = " << res->getInt(19) << "\n";
+				cout << "ER Stat = " << res->getInt(20) << "\n";
+				cout << "Container = " << res->getString(23) << "\n";
+				cout << "Bad CRC = " << res->getUnsignedInt(24) << "\n";
 
 			}
-			delete res;
-		} catch (DatabaseException& e) {
-			cout << "Database error in verifyMap\n";
-		}
+		} else
+			cout << "Multiple Resource with name: Size = " << res->size() << "\n";
 
+		delete res;
+	} catch (DatabaseException& e) {
+		cout << "Database error in verifyMap\n";
+		cout << e.getMessage() << endl;
+	} catch (...) {
+		cout << "unreported exception caught in ResourceManagerImplementation::printResource\n";
+	}
 }
