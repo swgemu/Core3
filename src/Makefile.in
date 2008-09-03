@@ -117,7 +117,8 @@ am__objects_1 = Zone.$(OBJEXT) ZoneClient.$(OBJEXT) \
 	RegionBazaar.$(OBJEXT) TicketCollector.$(OBJEXT) \
 	Instrument.$(OBJEXT) Pharmaceutical.$(OBJEXT) \
 	EnhancePack.$(OBJEXT) WoundPack.$(OBJEXT) StimPack.$(OBJEXT) \
-	RevivePack.$(OBJEXT) LairObject.$(OBJEXT) SurveyTool.$(OBJEXT) \
+	StatePack.$(OBJEXT) CurePack.$(OBJEXT) RevivePack.$(OBJEXT) \
+	LairObject.$(OBJEXT) SurveyTool.$(OBJEXT) \
 	CraftingTool.$(OBJEXT) Component.$(OBJEXT) \
 	FactoryCrate.$(OBJEXT) CraftingStation.$(OBJEXT) \
 	ResourceContainer.$(OBJEXT) Attachment.$(OBJEXT) \
@@ -146,7 +147,7 @@ am_core3_OBJECTS = $(am__objects_1) ServerCore.$(OBJEXT) \
 	ConfigManager.$(OBJEXT) ServerDatabase.$(OBJEXT) \
 	ForumsDatabase.$(OBJEXT) LoginServer.$(OBJEXT) \
 	LoginPacketHandler.$(OBJEXT) \
-	LoginMessageProcessorThread.$(OBJEXT) \
+	LoginMessageProcessorThread.$(OBJEXT) StatusServer.$(OBJEXT) \
 	ZoneImplementation.$(OBJEXT) \
 	ZoneClientImplementation.$(OBJEXT) \
 	ZoneServerImplementation.$(OBJEXT) ZonePacketHandler.$(OBJEXT) \
@@ -172,6 +173,8 @@ am_core3_OBJECTS = $(am__objects_1) ServerCore.$(OBJEXT) \
 	EnhancePackImplementation.$(OBJEXT) \
 	WoundPackImplementation.$(OBJEXT) \
 	StimPackImplementation.$(OBJEXT) \
+	StatePackImplementation.$(OBJEXT) \
+	CurePackImplementation.$(OBJEXT) \
 	RevivePackImplementation.$(OBJEXT) \
 	AttachmentImplementation.$(OBJEXT) \
 	PowerupImplementation.$(OBJEXT) TicketImplementation.$(OBJEXT) \
@@ -181,6 +184,8 @@ am_core3_OBJECTS = $(am__objects_1) ServerCore.$(OBJEXT) \
 	StaticObjectImplementation.$(OBJEXT) \
 	PlayerImplementation.$(OBJEXT) \
 	PlayerObjectImplementation.$(OBJEXT) \
+	FriendListImplementation.$(OBJEXT) \
+	IgnoreListImplementation.$(OBJEXT) \
 	SuiBoxImplementation.$(OBJEXT) \
 	SuiListBoxImplementation.$(OBJEXT) \
 	SuiMessageBoxImplementation.$(OBJEXT) \
@@ -403,6 +408,8 @@ core3_IDLS = server/zone/Zone.cpp \
 		server/zone/objects/tangible/pharmaceutical/EnhancePack.cpp \
 		server/zone/objects/tangible/pharmaceutical/WoundPack.cpp \
 		server/zone/objects/tangible/pharmaceutical/StimPack.cpp \
+		server/zone/objects/tangible/pharmaceutical/StatePack.cpp \
+		server/zone/objects/tangible/pharmaceutical/CurePack.cpp \
 		server/zone/objects/tangible/pharmaceutical/RevivePack.cpp \
 		server/zone/objects/attackable/lair/LairObject.cpp \
 		server/zone/objects/tangible/surveytool/SurveyTool.cpp \
@@ -461,6 +468,7 @@ core3_SOURCES = $(core3_IDLS) \
 		server/login/LoginServer.cpp \
 		server/login/LoginPacketHandler.cpp \
 		server/login/LoginMessageProcessorThread.cpp \
+		server/status/StatusServer.cpp \
 		server/zone/ZoneImplementation.cpp \
 		server/zone/ZoneClientImplementation.cpp \
 		server/zone/ZoneServerImplementation.cpp \
@@ -488,6 +496,8 @@ core3_SOURCES = $(core3_IDLS) \
 		server/zone/objects/tangible/pharmaceutical/EnhancePackImplementation.cpp \
 		server/zone/objects/tangible/pharmaceutical/WoundPackImplementation.cpp \
 		server/zone/objects/tangible/pharmaceutical/StimPackImplementation.cpp \
+		server/zone/objects/tangible/pharmaceutical/StatePackImplementation.cpp \
+		server/zone/objects/tangible/pharmaceutical/CurePackImplementation.cpp \
 		server/zone/objects/tangible/pharmaceutical/RevivePackImplementation.cpp \
 		server/zone/objects/tangible/attachment/AttachmentImplementation.cpp \
 		server/zone/objects/tangible/powerup/PowerupImplementation.cpp \
@@ -498,6 +508,8 @@ core3_SOURCES = $(core3_IDLS) \
 		server/zone/objects/static/StaticObjectImplementation.cpp \
 		server/zone/objects/player/PlayerImplementation.cpp \
 		server/zone/objects/player/PlayerObjectImplementation.cpp \
+		server/zone/objects/player/FriendListImplementation.cpp \
+		server/zone/objects/player/IgnoreListImplementation.cpp \
 		server/zone/objects/player/sui/SuiBoxImplementation.cpp \
 		server/zone/objects/player/sui/listbox/SuiListBoxImplementation.cpp \
 		server/zone/objects/player/sui/messagebox/SuiMessageBoxImplementation.cpp \
@@ -661,6 +673,8 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/CreatureManagerImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/CreatureObject.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/CreatureObjectImplementation.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/CurePack.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/CurePackImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/CustomizationManager.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Datapad.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/DraftSchematic.Po@am__quote@
@@ -676,6 +690,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Firework.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/FireworkWorld.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ForumsDatabase.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/FriendListImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/FriendsList.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/GameCommandHandler.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/GroupManager.Po@am__quote@
@@ -692,6 +707,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/HeightMap.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Holocron.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/IgnoreList.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/IgnoreListImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ImageDesignCustomization.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Instrument.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/IntangibleObject.Po@am__quote@
@@ -762,8 +778,11 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ShuttleCreatureImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SkillManager.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SpecialHeavyRangedWeapon.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/StatePack.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/StatePackImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/StaticObject.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/StaticObjectImplementation.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/StatusServer.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/StimPack.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/StimPackImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SuiBankTransferBox.Po@am__quote@
@@ -1712,6 +1731,34 @@ StimPack.obj: server/zone/objects/tangible/pharmaceutical/StimPack.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o StimPack.obj `if test -f 'server/zone/objects/tangible/pharmaceutical/StimPack.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/pharmaceutical/StimPack.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/pharmaceutical/StimPack.cpp'; fi`
 
+StatePack.o: server/zone/objects/tangible/pharmaceutical/StatePack.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT StatePack.o -MD -MP -MF $(DEPDIR)/StatePack.Tpo -c -o StatePack.o `test -f 'server/zone/objects/tangible/pharmaceutical/StatePack.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/pharmaceutical/StatePack.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/StatePack.Tpo $(DEPDIR)/StatePack.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/pharmaceutical/StatePack.cpp' object='StatePack.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o StatePack.o `test -f 'server/zone/objects/tangible/pharmaceutical/StatePack.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/pharmaceutical/StatePack.cpp
+
+StatePack.obj: server/zone/objects/tangible/pharmaceutical/StatePack.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT StatePack.obj -MD -MP -MF $(DEPDIR)/StatePack.Tpo -c -o StatePack.obj `if test -f 'server/zone/objects/tangible/pharmaceutical/StatePack.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/pharmaceutical/StatePack.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/pharmaceutical/StatePack.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/StatePack.Tpo $(DEPDIR)/StatePack.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/pharmaceutical/StatePack.cpp' object='StatePack.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o StatePack.obj `if test -f 'server/zone/objects/tangible/pharmaceutical/StatePack.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/pharmaceutical/StatePack.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/pharmaceutical/StatePack.cpp'; fi`
+
+CurePack.o: server/zone/objects/tangible/pharmaceutical/CurePack.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT CurePack.o -MD -MP -MF $(DEPDIR)/CurePack.Tpo -c -o CurePack.o `test -f 'server/zone/objects/tangible/pharmaceutical/CurePack.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/pharmaceutical/CurePack.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/CurePack.Tpo $(DEPDIR)/CurePack.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/pharmaceutical/CurePack.cpp' object='CurePack.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o CurePack.o `test -f 'server/zone/objects/tangible/pharmaceutical/CurePack.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/pharmaceutical/CurePack.cpp
+
+CurePack.obj: server/zone/objects/tangible/pharmaceutical/CurePack.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT CurePack.obj -MD -MP -MF $(DEPDIR)/CurePack.Tpo -c -o CurePack.obj `if test -f 'server/zone/objects/tangible/pharmaceutical/CurePack.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/pharmaceutical/CurePack.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/pharmaceutical/CurePack.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/CurePack.Tpo $(DEPDIR)/CurePack.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/pharmaceutical/CurePack.cpp' object='CurePack.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o CurePack.obj `if test -f 'server/zone/objects/tangible/pharmaceutical/CurePack.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/pharmaceutical/CurePack.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/pharmaceutical/CurePack.cpp'; fi`
+
 RevivePack.o: server/zone/objects/tangible/pharmaceutical/RevivePack.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT RevivePack.o -MD -MP -MF $(DEPDIR)/RevivePack.Tpo -c -o RevivePack.o `test -f 'server/zone/objects/tangible/pharmaceutical/RevivePack.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/pharmaceutical/RevivePack.cpp
 @am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/RevivePack.Tpo $(DEPDIR)/RevivePack.Po
@@ -2496,6 +2543,20 @@ LoginMessageProcessorThread.obj: server/login/LoginMessageProcessorThread.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o LoginMessageProcessorThread.obj `if test -f 'server/login/LoginMessageProcessorThread.cpp'; then $(CYGPATH_W) 'server/login/LoginMessageProcessorThread.cpp'; else $(CYGPATH_W) '$(srcdir)/server/login/LoginMessageProcessorThread.cpp'; fi`
 
+StatusServer.o: server/status/StatusServer.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT StatusServer.o -MD -MP -MF $(DEPDIR)/StatusServer.Tpo -c -o StatusServer.o `test -f 'server/status/StatusServer.cpp' || echo '$(srcdir)/'`server/status/StatusServer.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/StatusServer.Tpo $(DEPDIR)/StatusServer.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/status/StatusServer.cpp' object='StatusServer.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o StatusServer.o `test -f 'server/status/StatusServer.cpp' || echo '$(srcdir)/'`server/status/StatusServer.cpp
+
+StatusServer.obj: server/status/StatusServer.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT StatusServer.obj -MD -MP -MF $(DEPDIR)/StatusServer.Tpo -c -o StatusServer.obj `if test -f 'server/status/StatusServer.cpp'; then $(CYGPATH_W) 'server/status/StatusServer.cpp'; else $(CYGPATH_W) '$(srcdir)/server/status/StatusServer.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/StatusServer.Tpo $(DEPDIR)/StatusServer.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/status/StatusServer.cpp' object='StatusServer.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o StatusServer.obj `if test -f 'server/status/StatusServer.cpp'; then $(CYGPATH_W) 'server/status/StatusServer.cpp'; else $(CYGPATH_W) '$(srcdir)/server/status/StatusServer.cpp'; fi`
+
 ZoneImplementation.o: server/zone/ZoneImplementation.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ZoneImplementation.o -MD -MP -MF $(DEPDIR)/ZoneImplementation.Tpo -c -o ZoneImplementation.o `test -f 'server/zone/ZoneImplementation.cpp' || echo '$(srcdir)/'`server/zone/ZoneImplementation.cpp
 @am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/ZoneImplementation.Tpo $(DEPDIR)/ZoneImplementation.Po
@@ -2874,6 +2935,34 @@ StimPackImplementation.obj: server/zone/objects/tangible/pharmaceutical/StimPack
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o StimPackImplementation.obj `if test -f 'server/zone/objects/tangible/pharmaceutical/StimPackImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/pharmaceutical/StimPackImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/pharmaceutical/StimPackImplementation.cpp'; fi`
 
+StatePackImplementation.o: server/zone/objects/tangible/pharmaceutical/StatePackImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT StatePackImplementation.o -MD -MP -MF $(DEPDIR)/StatePackImplementation.Tpo -c -o StatePackImplementation.o `test -f 'server/zone/objects/tangible/pharmaceutical/StatePackImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/pharmaceutical/StatePackImplementation.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/StatePackImplementation.Tpo $(DEPDIR)/StatePackImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/pharmaceutical/StatePackImplementation.cpp' object='StatePackImplementation.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o StatePackImplementation.o `test -f 'server/zone/objects/tangible/pharmaceutical/StatePackImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/pharmaceutical/StatePackImplementation.cpp
+
+StatePackImplementation.obj: server/zone/objects/tangible/pharmaceutical/StatePackImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT StatePackImplementation.obj -MD -MP -MF $(DEPDIR)/StatePackImplementation.Tpo -c -o StatePackImplementation.obj `if test -f 'server/zone/objects/tangible/pharmaceutical/StatePackImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/pharmaceutical/StatePackImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/pharmaceutical/StatePackImplementation.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/StatePackImplementation.Tpo $(DEPDIR)/StatePackImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/pharmaceutical/StatePackImplementation.cpp' object='StatePackImplementation.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o StatePackImplementation.obj `if test -f 'server/zone/objects/tangible/pharmaceutical/StatePackImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/pharmaceutical/StatePackImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/pharmaceutical/StatePackImplementation.cpp'; fi`
+
+CurePackImplementation.o: server/zone/objects/tangible/pharmaceutical/CurePackImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT CurePackImplementation.o -MD -MP -MF $(DEPDIR)/CurePackImplementation.Tpo -c -o CurePackImplementation.o `test -f 'server/zone/objects/tangible/pharmaceutical/CurePackImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/pharmaceutical/CurePackImplementation.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/CurePackImplementation.Tpo $(DEPDIR)/CurePackImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/pharmaceutical/CurePackImplementation.cpp' object='CurePackImplementation.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o CurePackImplementation.o `test -f 'server/zone/objects/tangible/pharmaceutical/CurePackImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/pharmaceutical/CurePackImplementation.cpp
+
+CurePackImplementation.obj: server/zone/objects/tangible/pharmaceutical/CurePackImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT CurePackImplementation.obj -MD -MP -MF $(DEPDIR)/CurePackImplementation.Tpo -c -o CurePackImplementation.obj `if test -f 'server/zone/objects/tangible/pharmaceutical/CurePackImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/pharmaceutical/CurePackImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/pharmaceutical/CurePackImplementation.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/CurePackImplementation.Tpo $(DEPDIR)/CurePackImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/pharmaceutical/CurePackImplementation.cpp' object='CurePackImplementation.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o CurePackImplementation.obj `if test -f 'server/zone/objects/tangible/pharmaceutical/CurePackImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/pharmaceutical/CurePackImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/pharmaceutical/CurePackImplementation.cpp'; fi`
+
 RevivePackImplementation.o: server/zone/objects/tangible/pharmaceutical/RevivePackImplementation.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT RevivePackImplementation.o -MD -MP -MF $(DEPDIR)/RevivePackImplementation.Tpo -c -o RevivePackImplementation.o `test -f 'server/zone/objects/tangible/pharmaceutical/RevivePackImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/pharmaceutical/RevivePackImplementation.cpp
 @am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/RevivePackImplementation.Tpo $(DEPDIR)/RevivePackImplementation.Po
@@ -3013,6 +3102,34 @@ PlayerObjectImplementation.obj: server/zone/objects/player/PlayerObjectImplement
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/player/PlayerObjectImplementation.cpp' object='PlayerObjectImplementation.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o PlayerObjectImplementation.obj `if test -f 'server/zone/objects/player/PlayerObjectImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/player/PlayerObjectImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/player/PlayerObjectImplementation.cpp'; fi`
+
+FriendListImplementation.o: server/zone/objects/player/FriendListImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT FriendListImplementation.o -MD -MP -MF $(DEPDIR)/FriendListImplementation.Tpo -c -o FriendListImplementation.o `test -f 'server/zone/objects/player/FriendListImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/player/FriendListImplementation.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/FriendListImplementation.Tpo $(DEPDIR)/FriendListImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/player/FriendListImplementation.cpp' object='FriendListImplementation.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o FriendListImplementation.o `test -f 'server/zone/objects/player/FriendListImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/player/FriendListImplementation.cpp
+
+FriendListImplementation.obj: server/zone/objects/player/FriendListImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT FriendListImplementation.obj -MD -MP -MF $(DEPDIR)/FriendListImplementation.Tpo -c -o FriendListImplementation.obj `if test -f 'server/zone/objects/player/FriendListImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/player/FriendListImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/player/FriendListImplementation.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/FriendListImplementation.Tpo $(DEPDIR)/FriendListImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/player/FriendListImplementation.cpp' object='FriendListImplementation.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o FriendListImplementation.obj `if test -f 'server/zone/objects/player/FriendListImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/player/FriendListImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/player/FriendListImplementation.cpp'; fi`
+
+IgnoreListImplementation.o: server/zone/objects/player/IgnoreListImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT IgnoreListImplementation.o -MD -MP -MF $(DEPDIR)/IgnoreListImplementation.Tpo -c -o IgnoreListImplementation.o `test -f 'server/zone/objects/player/IgnoreListImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/player/IgnoreListImplementation.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/IgnoreListImplementation.Tpo $(DEPDIR)/IgnoreListImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/player/IgnoreListImplementation.cpp' object='IgnoreListImplementation.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o IgnoreListImplementation.o `test -f 'server/zone/objects/player/IgnoreListImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/player/IgnoreListImplementation.cpp
+
+IgnoreListImplementation.obj: server/zone/objects/player/IgnoreListImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT IgnoreListImplementation.obj -MD -MP -MF $(DEPDIR)/IgnoreListImplementation.Tpo -c -o IgnoreListImplementation.obj `if test -f 'server/zone/objects/player/IgnoreListImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/player/IgnoreListImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/player/IgnoreListImplementation.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/IgnoreListImplementation.Tpo $(DEPDIR)/IgnoreListImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/player/IgnoreListImplementation.cpp' object='IgnoreListImplementation.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o IgnoreListImplementation.obj `if test -f 'server/zone/objects/player/IgnoreListImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/player/IgnoreListImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/player/IgnoreListImplementation.cpp'; fi`
 
 SuiBoxImplementation.o: server/zone/objects/player/sui/SuiBoxImplementation.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT SuiBoxImplementation.o -MD -MP -MF $(DEPDIR)/SuiBoxImplementation.Tpo -c -o SuiBoxImplementation.o `test -f 'server/zone/objects/player/sui/SuiBoxImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/player/sui/SuiBoxImplementation.cpp
@@ -3663,8 +3780,8 @@ ID: $(HEADERS) $(SOURCES) $(LISP) $(TAGS_FILES)
 	unique=`for i in $$list; do \
 	    if test -f "$$i"; then echo $$i; else echo $(srcdir)/$$i; fi; \
 	  done | \
-	  $(AWK) '{ files[$$0] = 1; nonemtpy = 1; } \
-	      END { if (nonempty) { for (i in files) print i; }; }'`; \
+	  $(AWK) '    { files[$$0] = 1; } \
+	       END { for (i in files) print i; }'`; \
 	mkid -fID $$unique
 tags: TAGS
 
@@ -3676,8 +3793,8 @@ TAGS:  $(HEADERS) $(SOURCES)  $(TAGS_DEPENDENCIES) \
 	unique=`for i in $$list; do \
 	    if test -f "$$i"; then echo $$i; else echo $(srcdir)/$$i; fi; \
 	  done | \
-	  $(AWK) '{ files[$$0] = 1; nonempty = 1; } \
-	      END { if (nonempty) { for (i in files) print i; }; }'`; \
+	  $(AWK) '    { files[$$0] = 1; } \
+	       END { for (i in files) print i; }'`; \
 	if test -z "$(ETAGS_ARGS)$$tags$$unique"; then :; else \
 	  test -n "$$unique" || unique=$$empty_fix; \
 	  $(ETAGS) $(ETAGSFLAGS) $(AM_ETAGSFLAGS) $(ETAGS_ARGS) \
@@ -3692,8 +3809,8 @@ CTAGS:  $(HEADERS) $(SOURCES)  $(TAGS_DEPENDENCIES) \
 	unique=`for i in $$list; do \
 	    if test -f "$$i"; then echo $$i; else echo $(srcdir)/$$i; fi; \
 	  done | \
-	  $(AWK) '{ files[$$0] = 1; nonempty = 1; } \
-	      END { if (nonempty) { for (i in files) print i; }; }'`; \
+	  $(AWK) '    { files[$$0] = 1; } \
+	       END { for (i in files) print i; }'`; \
 	test -z "$(CTAGS_ARGS)$$tags$$unique" \
 	  || $(CTAGS) $(CTAGSFLAGS) $(AM_CTAGSFLAGS) $(CTAGS_ARGS) \
 	     $$tags $$unique

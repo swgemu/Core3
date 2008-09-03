@@ -102,8 +102,10 @@ void CustomizationManager::loadCustomizationData() {
 		}
 
 		delete res;
-	}
-	catch (DatabaseException& e) {
+	} catch (DatabaseException& e) {
+		cout << e.getMessage() << endl;
+	} catch (...) {
+		cout << "unreported exception caught in CustomizationManager::loadCustomizationData()\n";
 	}
 }
 

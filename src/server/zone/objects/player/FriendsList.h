@@ -17,14 +17,6 @@ class FriendsList : public DistributedObjectStub {
 public:
 	FriendsList(Player* player);
 
-	int getCount();
-
-	int getMagicNumber();
-
-	string& getFriendsName(const int i);
-
-	string& getFriendsServer(const int i);
-
 	void addFriend(string& name, string& inServer);
 
 	void friendsMagicNumberReset();
@@ -40,6 +32,14 @@ public:
 	void updateAllFriends(PlayerObject* playerObject);
 
 	void toString();
+
+	int getCount();
+
+	int getMagicNumber();
+
+	string& getFriendsName(const int i);
+
+	string& getFriendsServer(const int i);
 
 protected:
 	FriendsList(DummyConstructorParameter* param);
@@ -60,14 +60,6 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	int getCount();
-
-	int getMagicNumber();
-
-	string& getFriendsName(const int i);
-
-	string& getFriendsServer(const int i);
-
 	void addFriend(string& name, string& inServer);
 
 	void friendsMagicNumberReset();
@@ -83,6 +75,14 @@ public:
 	void updateAllFriends(PlayerObject* playerObject);
 
 	void toString();
+
+	int getCount();
+
+	int getMagicNumber();
+
+	string& getFriendsName(const int i);
+
+	string& getFriendsServer(const int i);
 
 protected:
 	string _param0_addFriend__string_string_;
