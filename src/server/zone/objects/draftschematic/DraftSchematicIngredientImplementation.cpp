@@ -42,54 +42,41 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef DRAFTSCHEMATICINGREDIENTIMPLEMENTATION_H_
-#define DRAFTSCHEMATICINGREDIENTIMPLEMENTATION_H_
+#include "DraftSchematicIngredientImplementation.h"
 
-#include "DraftSchematicIngredient.h"
+#include "../../packets/object/ObjectControllerMessage.h"
 
-class ObjectControllerMessage;
+DraftSchematicIngredientImplementation::DraftSchematicIngredientImplementation(const string& ingredientTemplateName, const string& ingredientTitleName,
+		bool optional, const string& resourceType, uint32 resourceQuantity) : DraftSchematicIngredientServant() {
+	DraftSchematicIngredientImplementation::templateName = ingredientTemplateName;
+	DraftSchematicIngredientImplementation::titleName = ingredientTitleName;
+	DraftSchematicIngredientImplementation::optional = optional;
+	DraftSchematicIngredientImplementation::resourceType = resourceType;
+	DraftSchematicIngredientImplementation::resourceQuantity = resourceQuantity;
+}
 
-class DraftSchematicIngredientImplementation : public DraftSchematicIngredientServant {
-	// example: craft_food_ingredients_n
-	string templateName;
-	// example: dried Fruit
-	string titleName;
+void DraftSchematicIngredientImplementation::helperSendToPlayer(ObjectControllerMessage* msg) {
+	msg->insertAscii(templateName); // ex: craft_food_ingredients_n
+	msg->insertInt(0);
+	msg->insertAscii(titleName); // ex: dried_fruit
 
-	// example: organic
-	string resourceType;
-	// example: 3
-	uint32 resourceQuantity;
+	if (optional)
+		msg->insertByte(1);  // ex: additive is optional so insertByte(1);
+	else
+		msg->insertByte(0);
 
-	// example: true
-	bool optional;
+	msg->insertInt(1);
+	msg->insertAscii(templateName);  // ex: craft_food_ingredients_n
+	msg->insertInt(0);
+	msg->insertAscii(titleName);	// ex: dried_fruit
 
-public:
-	DraftSchematicIngredientImplementation(const string& ingredientTemplateName, const string& ingredientTitleName,
-			bool optional, const string& resourceType, uint32 resourceQuantity);
+	unicode uniResourceType(resourceType);
+	msg->insertUnicode(uniResourceType); // ex: organic
 
-	void helperSendToPlayer(ObjectControllerMessage* msg);
+	if (resourceType.compare(0,16, "object/tangible/") == 0)
+		msg->insertByte(5);  // Enables Components
+	else
+		msg->insertByte(4);
 
-	// getters
-	inline string& getTemplateName() {
-		return templateName;
-	}
-
-	inline string& getTitleName() {
-		return titleName;
-	}
-
-	inline string& getResourceType() {
-		return resourceType;
-	}
-
-	inline uint32 getResourceQuantity() {
-		return resourceQuantity;
-	}
-
-	inline bool getOptional() {
-		return optional;
-	}
-
-};
-
-#endif /*DRAFTSCHEMATICINGREDIENTIMPLEMENTATION_H_*/
+	msg->insertInt(resourceQuantity); // ex: 3
+}

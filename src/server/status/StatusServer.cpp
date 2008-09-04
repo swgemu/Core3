@@ -46,9 +46,12 @@ which carries forward this exception.
 
 #include "../zone/managers/item/ItemManager.h"
 
-StatusServer::StatusServer(ConfigManager * conf, ZoneServer * server) {
+StatusServer::StatusServer(ConfigManager * conf, ZoneServer * server)
+	: Thread(), Logger("StatusServer") {
 	zoneServer = server;
 	configManager = conf;
+
+	setLogging(false);
 }
 
 StatusServer::~StatusServer() {
@@ -114,19 +117,39 @@ bool StatusServer::testZone() {
 }
 
 void StatusServer::run() {
-	init();
+	TCPServerSocket * socket = NULL;
 
-	TCPServerSocket * socket = new TCPServerSocket(new SocketAddress(configManager->getStatusPort()));
+	try {
+		init();
 
-	socket->listen(configManager->getStatusAllowedConnections());
+		socket = new TCPServerSocket(new SocketAddress(configManager->getStatusPort()));
+
+		socket->listen(configManager->getStatusAllowedConnections());
+	} catch (Exception& e) {
+		error("failed to initialize");
+		error(e.getMessage());
+		return;
+	} catch (...) {
+		error("failed to initialize");
+		return;
+	}
+
+	info("initialized", true);
 
 	while (true) {
+		try {
+			Socket * s = socket->accept();
+			s->send(getStatusXMLPacket());
+			s->close();
 
-		Socket * s = socket->accept();
-		s->send(getStatusXMLPacket());
-		s->close();
+			delete(s);
+		} catch (SocketException& e) {
+			info("socket exception caught");
+			info(e.getMessage());
+		} catch (...) {
+			info("unreported exception caught");
+		}
 
-		delete(s);
 		sleep(1);
 	}
 }

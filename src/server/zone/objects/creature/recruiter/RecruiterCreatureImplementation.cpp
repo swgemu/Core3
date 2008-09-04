@@ -42,54 +42,75 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef DRAFTSCHEMATICINGREDIENTIMPLEMENTATION_H_
-#define DRAFTSCHEMATICINGREDIENTIMPLEMENTATION_H_
+#include "RecruiterCreatureImplementation.h"
 
-#include "DraftSchematicIngredient.h"
+#include "../CreatureImplementation.h"
 
-class ObjectControllerMessage;
+#include "../../player/Player.h"
+#include "../../player/PlayerImplementation.h"
 
-class DraftSchematicIngredientImplementation : public DraftSchematicIngredientServant {
-	// example: craft_food_ingredients_n
-	string templateName;
-	// example: dried Fruit
-	string titleName;
+#include "../../player/events/ChangeFactionEvent.h"
 
-	// example: organic
-	string resourceType;
-	// example: 3
-	uint32 resourceQuantity;
+#include "../../../packets.h"
 
-	// example: true
-	bool optional;
+RecruiterCreatureImplementation::RecruiterCreatureImplementation(uint64 oid) : RecruiterCreatureServant(oid) {
+	setType(CreatureImplementation::RECRUITER);
 
-public:
-	DraftSchematicIngredientImplementation(const string& ingredientTemplateName, const string& ingredientTitleName,
-			bool optional, const string& resourceType, uint32 resourceQuantity);
+	creatureBitmask = 0x108;
 
-	void helperSendToPlayer(ObjectControllerMessage* msg);
+	stringstream loggingname;
+	loggingname << "Recruiter = 0x" << oid;
+	setLoggingName(loggingname.str());
 
-	// getters
-	inline string& getTemplateName() {
-		return templateName;
+	setLogging(false);
+	setGlobalLogging(true);
+}
+
+void RecruiterCreatureImplementation::sendConversationStartTo(SceneObject* obj) {
+	Player* player = (Player*)obj;
+
+	StartNpcConversation* conv = new StartNpcConversation(player, objectID, "");
+	player->sendMessage(conv);
+
+	unicode mes1 = "Please select the faction you want to join";
+	NpcConversationMessage* m1 = new NpcConversationMessage(player, mes1);
+	player->sendMessage(m1);
+
+	sendFactions(player);
+}
+
+void RecruiterCreatureImplementation::sendFactions(Player* player) {
+	StringList* slist = new StringList(player);
+
+	unicode rebel = "rebel";
+	unicode imperial = "imperial";
+	unicode neutral = "neutral";
+	slist->insertOption(rebel);
+	slist->insertOption(imperial);
+	slist->insertOption(neutral);
+
+	player->sendMessage(slist);
+}
+
+void RecruiterCreatureImplementation::selectConversationOption(int option, SceneObject* obj) {
+	if (!obj->isPlayer())
+		return;
+
+	Player* player = (Player*)obj;
+
+	if (player->isChangingFaction()) {
+		player->sendSystemMessage("You are already changing your faction.");
+		return;
 	}
 
-	inline string& getTitleName() {
-		return titleName;
-	}
+	if (option == 0)
+		player->newChangeFactionEvent(String::hashCode("rebel"));
+	else if (option == 1)
+		player->newChangeFactionEvent(String::hashCode("imperial"));
+	else if (option == 2)
+		player->newChangeFactionEvent(0);
 
-	inline string& getResourceType() {
-		return resourceType;
-	}
+	player->sendSystemMessage("Your faction will be changed in 5 minutes.");
 
-	inline uint32 getResourceQuantity() {
-		return resourceQuantity;
-	}
-
-	inline bool getOptional() {
-		return optional;
-	}
-
-};
-
-#endif /*DRAFTSCHEMATICINGREDIENTIMPLEMENTATION_H_*/
+	sendFactions(player);
+}

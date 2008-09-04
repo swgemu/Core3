@@ -21,7 +21,7 @@ public:
 
 	void insertToZone(Zone* zone);
 
-	void removeFromZone(bool dolock);
+	void removeFromZone(bool doLock = true);
 
 	void sendDestroyTo(Player* player);
 
@@ -76,7 +76,7 @@ public:
 
 	void insertToZone(Zone* zone);
 
-	void removeFromZone(bool dolock);
+	void removeFromZone(bool doLock);
 
 	void sendDestroyTo(Player* player);
 

@@ -74,7 +74,7 @@ void AttackableObjectImplementation::insertToZone(Zone* zone) {
 
 		zone->unlock();
 	} catch (...) {
-		cout << "exception AttackableObject::insertToZone(Zone* zone)\n";
+		error("exception AttackableObject::insertToZone(Zone* zone)");
 
 		zone->unlock();
 	}
@@ -109,7 +109,7 @@ void AttackableObjectImplementation::removeFromZone(bool dolock) {
 
 		zone->unlock(dolock);
 	} catch (...) {
-		error("exception Player::removeFromZone(bool doLock)");
+		error("exception AttackableObjectImplementation::removeFromZone(bool doLock)");
 
 		zone->unlock(dolock);
 	}
@@ -196,11 +196,11 @@ bool AttackableObjectImplementation::hasDefender(SceneObject* defender) {
 		if (defenderList.get(i) == defender)
 			return true;
 	}
+
 	return false;
 }
 
 void AttackableObjectImplementation::clearCombatState(bool removedefenders) {
-
 	inCombat = false;
 
 	if (removedefenders)
@@ -227,11 +227,9 @@ void AttackableObjectImplementation::sendTo(Player* player, bool doClose) {
 
 	if (doClose)
 		SceneObjectImplementation::close(client);
-
 }
 
 void AttackableObjectImplementation::doDamage(int damage, SceneObject* attacker) {
-
 	conditionDamage = conditionDamage + damage;
 
 	AttackableObjectDeltaMessage3* upd = new AttackableObjectDeltaMessage3((AttackableObject*) _this);
@@ -242,7 +240,6 @@ void AttackableObjectImplementation::doDamage(int damage, SceneObject* attacker)
 	if (conditionDamage >= maxCondition) {
 		doDestroyed(attacker);
 	}
-
 }
 
 void AttackableObjectImplementation::doDestroyed(SceneObject* attacker) {
@@ -257,7 +254,6 @@ void AttackableObjectImplementation::doDestroyed(SceneObject* attacker) {
 	dcreo3->close();
 
 	broadcastMessage(dcreo3);
-
 }
 
 void AttackableObjectImplementation::broadcastMessage(BaseMessage* msg, int range, bool doLock) {
@@ -288,7 +284,7 @@ void AttackableObjectImplementation::broadcastMessage(BaseMessage* msg, int rang
 		zone->unlock(doLock);
 
 	} catch (...) {
-		error("exception CreatureObject::broadcastMessage(Message* msg, int range, bool doLock)");
+		error("exception AttackableObjectImplementation::broadcastMessage(Message* msg, int range, bool doLock)");
 
 		zone->unlock(doLock);
 	}
@@ -301,4 +297,3 @@ void AttackableObjectImplementation::sendDestroyTo(Player* player) {
 
 	destroy(client);
 }
-

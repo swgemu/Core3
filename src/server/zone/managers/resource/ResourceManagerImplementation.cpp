@@ -40,7 +40,7 @@ it is their choice whether to do so. The GNU Lesser General Public License
 gives permission to release a modified version without this exception;
 this exception also makes it possible to release a modified version
 which carries forward this exception.
- */
+*/
 
 #include "engine/engine.h"
 
@@ -76,7 +76,6 @@ ResourceManagerImplementation::ResourceManagerImplementation(ZoneServer* inserve
 
 	setLogging(false);
 	setGlobalLogging(true);
-
 }
 
 ResourceManagerImplementation::~ResourceManagerImplementation() {
@@ -275,10 +274,10 @@ void ResourceManagerImplementation::clearResources() {
 
 		numQueries++;
 	} catch (DatabaseException& e) {
-		cout << "Error in clearResources\n";
+		cout << "Error in ResourceManagerImplementation::clearResources\n";
 		cout << e.getMessage();
 	} catch (...) {
-		cout << "Error in clearResources\n";
+		cout << "unreported exception caught in in ResourceManagerImplementation::clearResources\n";
 	}
 
 	unlock();
@@ -493,6 +492,7 @@ void ResourceManagerImplementation::sendSampleMessage(Player* player,
 
 				if (newRcno->getObjectSubType() == TangibleObjectImplementation::ENERGYRADIOACTIVE) {
 					int wound = int((sampleRate / 70) - System::random(9));
+
 					if (wound> 0) {
 						player->changeHealthWoundsBar(wound, false);
 						player->changeActionWoundsBar(wound, false);
@@ -554,6 +554,7 @@ void ResourceManagerImplementation::harvestOrganics(Player* player,
 					"creature_harvesting") / 100.0f));
 
 			float temp2 = float(baseAmount) * .1f;
+
 			if (temp2 < 3)
 				temp2 = 3;
 
@@ -605,7 +606,6 @@ void ResourceManagerImplementation::harvestOrganics(Player* player,
 			<< newRcno->getClassSeven();
 
 			if (bonusAmount > 0) {
-
 				ss << "  and got a ";
 
 				if (bonusPercentage > .35f)
@@ -614,11 +614,8 @@ void ResourceManagerImplementation::harvestOrganics(Player* player,
 					ss << " Ranger ";
 
 				ss << "group bonus of " << bonusAmount << " unit(s).";
-
 			} else {
-
 				ss << ".";
-
 			}
 
 			player->sendSystemMessage(ss.str());
@@ -719,7 +716,6 @@ void ResourceManagerImplementation::setResourceData(
 	}
 
 	try {
-
 		resContainer->wlock();
 
 		string contName;
@@ -757,7 +753,6 @@ void ResourceManagerImplementation::setResourceData(
 
 bool ResourceManagerImplementation::checkResource(Player* player, string& resourceName, int SurveyToolType, bool doLock) {
 	// Added by Ritter
-
 	lock(doLock);
 
 	ResourceTemplate* resource = resourceMap->get(resourceName);
@@ -799,6 +794,7 @@ bool ResourceManagerImplementation::checkResource(Player* player, string& resour
 		if (strcmp(resource->getClass2().c_str(), class2.c_str()) == 0 || strcmp(resource->getClass2().c_str(), class2re.c_str()) == 0) {
 			for(int i = resource->getSpawnSize() - 1; i >= 0; i--) {
 				SpawnLocation* sl = resource->getSpawn(i);
+
 				if (sl->getPlanet() == player->getZoneID()) {
 					unlock(doLock);
 					return true;
@@ -887,7 +883,9 @@ bool ResourceManagerImplementation::sendSurveyResources(Player* player, int Surv
 	sendSurveyResourceStats(player, resourceList);
 
 	delete resourceList;
+
 	unlock(doLock);
+
 	return true;
 }
 
@@ -1017,6 +1015,7 @@ void ResourceManagerImplementation::buildResourceMap() {
 
 	try {
 		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
+
 		if (res->size() != 0) {
 			while (res->next()) {
 
@@ -1112,9 +1111,9 @@ void ResourceManagerImplementation::verifyResourceData(int i, ResourceTemplate* 
 		"  FROM resource_data WHERE `resource_name` = '" + resTemp->getName() + "'";
 	try {
 		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
+
 		if (res->size() == 1) {
 			while (res->next()) {
-
 				resname = res->getString(1);
 				resNew = new ResourceTemplate(res->getString(2));
 				resNew->setName(resname);
@@ -1200,6 +1199,7 @@ void ResourceManagerImplementation::removeExpiredResources() {
 				uint64 sid = res->getUnsignedLong(0);
 				string rname = res->getString(1);
 				ResourceTemplate* resource = resourceMap->get(rname);
+
 				if (resource != NULL) {
 					SpawnLocation* sl = resource->removeSpawn(sid);
 				} else {
@@ -1236,8 +1236,11 @@ void ResourceManagerImplementation::removeExpiredResources() {
 		delete res;
 
 		numQueries++;
+	} catch (DatabaseException& e) {
+		cout << "Database error in ResourceManagerImplementation::removeExpiredResources()\n";
+		cout << e.getMessage() << endl;
 	} catch (...) {
-		cout << "Database error in removeExpiredResources\n";
+		cout << "unreported exception caught in ResourceManagerImplementation::removeExpiredResources()\n";
 	}
 }
 
@@ -1421,9 +1424,13 @@ void ResourceManagerImplementation::poolNeeds(Vector<string>* invector, string p
 				needs->add(invector->get(x));
 			}
 		}
+
 		delete res;
+	} catch (DatabaseException& e) {
+		cout << "Database error in ResourceManagerImplementation::poolNeeds\n";
+		cout << e.getMessage() << endl;
 	} catch (...) {
-		cout << "Database error in poolNeeds\n";
+		cout << "unreported exception caught in ResourceManagerImplementation::poolNeeds\n";
 	}
 }
 
@@ -1469,8 +1476,12 @@ void ResourceManagerImplementation::getFromRandomPool(Vector<string> * spawnMe,	
 				}
 
 				delete res;
+			} catch (DatabaseException& e) {
+				cout << "Database error in ResourceManagerImplementation::getFromRandomPool\n";
+				cout << e.getMessage() << endl;
+				break;
 			} catch (...) {
-				cout << "Database error in getFromRandomPool\n";
+				cout << "unreported exception in ResourceManagerImplementation::getFromRandomPool\n";
 				break;
 			}
 		}
@@ -1514,8 +1525,11 @@ string ResourceManagerImplementation::getRandomResourceFromType(string restype, 
 
 		delete res;
 
+	} catch (DatabaseException& e) {
+		cout << "Database error in ResourceManagerImplementation::getRandomResourceFromType\n";
+		cout << e.getMessage() << endl;
 	} catch (...) {
-		cout << "Database error in getRandomResourceFromType\n";
+		cout << "unreported exception in ResourceManagerImplementation::getRandomResourceFromType\n";
 	}
 
 	return "";
@@ -1534,7 +1548,7 @@ void ResourceManagerImplementation::createResource(string restype, string pool, 
 
 	generateResourceStats(resource);
 
-	if(resourceMap->get(resource->getName()) != NULL){
+	if (resourceMap->get(resource->getName()) != NULL){
 		resourceMap->drop(resource->getName());
 		info("Resource " + resource->getName() + " already exists in map, removing");
 	}
@@ -1692,8 +1706,7 @@ void ResourceManagerImplementation::generateResourceStats(ResourceTemplate* reso
 }
 
 int ResourceManagerImplementation::randomize(int min, int max) {
-
-	if(min == 0 && max == 0)
+	if (min == 0 && max == 0)
 		return 0;
 
 	float num = System::random(int(spawnThrottling + (.1f * spawnThrottling)));
@@ -1713,7 +1726,6 @@ int ResourceManagerImplementation::randomize(int min, int max) {
 }
 
 void ResourceManagerImplementation::setAttStat(ResourceTemplate* resource, string statTitle, int stat){
-
 	if (statTitle == "res_decay_resist") {
 		resource->setAtt1Stat(stat);
 		return;
@@ -1769,9 +1781,8 @@ void ResourceManagerImplementation::setAttStat(ResourceTemplate* resource, strin
 		return;
 	}
 
-	if(statTitle != "")
+	if (statTitle != "")
 		info("Something screwed up in finding stats to set in setAttStat: |" + statTitle + "| doesn't match");
-
 }
 
 void ResourceManagerImplementation::makeMinimumPoolVector() {
@@ -1795,7 +1806,7 @@ void ResourceManagerImplementation::makeMinimumPoolVector() {
 		minimumpool->add("Lubricating Oil");
 		minimumpool->add("Lubricating Oil");
 	} catch (...) {
-		cout << "Error in makeMinimumPoolVector\n";
+		cout << "unreported exception caught in ResourceManagerImplementation::makeMinimumPoolVector()\n";
 	}
 }
 
@@ -1949,14 +1960,16 @@ void ResourceManagerImplementation::insertResource(ResourceTemplate* resource) {
 		ServerDatabase::instance()->executeStatement(query.str());
 
 		numInsert++;
-	} catch (...) {
+	} catch (DatabaseException& e) {
 		cout << "Insert Resource Failed " << endl;
+		cout << e.getMessage() << endl;
+	} catch (...) {
+		cout << "unreported exception caught in ResourceManagerImplementation::insertResource(ResourceTemplate* resource)" << endl;
 	}
 }
 void ResourceManagerImplementation::insertSpawn(ResourceTemplate* resource, int planet_id,
 		float x, float y, float radius, float max, string pool, bool& jtl) {
 	numFunctions++;
-
 
 	try {
 		int upper, lower;
@@ -1998,8 +2011,11 @@ void ResourceManagerImplementation::insertSpawn(ResourceTemplate* resource, int 
 		delete res;
 
 		numInsert++;
-	} catch (...) {
+	} catch (DatabaseException& e) {
 		cout << "Insert Spawn Failed " << endl;
+		cout << e.getMessage() << endl;
+	} catch (...) {
+		cout << "unreported exception caught in ResourceManagerImplementation::insertSpawn" << endl;
 	}
 }
 
@@ -2029,7 +2045,8 @@ void ResourceManagerImplementation::makeResourceName(string& resname, bool isOrg
 
 	while(true) {
 		randname = serv->getNameManager()->makeResourceName(isOrganic);
-		if(checkResourceName(randname))
+
+		if (checkResourceName(randname))
 			break;
 	}
 
@@ -2098,8 +2115,6 @@ inline string ResourceManagerImplementation::stringify(const int x) {
 }
 
 void ResourceManagerImplementation::setObjectSubType(ResourceTemplate* resImpl) {
-
-
 	if (resImpl->getClass1() == "Inorganic") {
 		if (resImpl->getClass2() == "Mineral") {
 			resImpl->setObjectSubType(TangibleObjectImplementation::INORGANICMINERAL);
@@ -2159,9 +2174,9 @@ void ResourceManagerImplementation::printResource(string name){
 	name + "'";
 	try {
 		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
+
 		if (res->size() == 1) {
 			while (res->next()) {
-
 				cout << "Name = " << res->getString(1)<< "\n";
 				cout << "Type = " << res->getString(2) << "\n";
 				cout << "ID = " << res->getUnsignedLong(0) << "\n";
@@ -2185,7 +2200,6 @@ void ResourceManagerImplementation::printResource(string name){
 				cout << "ER Stat = " << res->getInt(20) << "\n";
 				cout << "Container = " << res->getString(23) << "\n";
 				cout << "Bad CRC = " << res->getUnsignedInt(24) << "\n";
-
 			}
 		} else
 			cout << "Multiple Resource with name: Size = " << res->size() << "\n";
