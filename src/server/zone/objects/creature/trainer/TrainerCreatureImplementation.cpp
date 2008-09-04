@@ -79,6 +79,9 @@ bool TrainerCreatureImplementation::train(SkillBox* skillBox, Player* player) {
 }
 
 void TrainerCreatureImplementation::sendConversationStartTo(SceneObject* obj) {
+	if (!obj->isPlayer())
+		return;
+		
 	Player* player = (Player*)obj;
 	
 	StartNpcConversation* conv = new StartNpcConversation(player, objectID, "");

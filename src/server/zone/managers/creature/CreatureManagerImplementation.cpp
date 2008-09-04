@@ -321,6 +321,12 @@ TrainerCreature* CreatureManagerImplementation::spawnTrainer(const string& profe
 		lock(doLock);
 
 		Profession* prof = server->getProfessionManager()->professionMap.get(profession);
+		
+		if (prof == NULL) {
+			error("Trying to load trainer with unknown profession " + profession);
+			unlock(doLock);
+			return NULL;
+		}		
 
 		TrainerCreature* trainer = new TrainerCreature(getNextCreatureID(), prof);
 		trainer->deploy();

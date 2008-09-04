@@ -297,7 +297,14 @@ void GameCommandHandler::map(StringTokenizer tokenizer, Player * player) {
 }
 
 void GameCommandHandler::warp(StringTokenizer tokenizer, Player * player) {
+	if (!tokenizer.hasMoreTokens())
+		return;
+		
 	float x = tokenizer.getFloatToken();
+	
+	if (!tokenizer.hasMoreTokens())
+		return;
+		
 	float y = tokenizer.getFloatToken();
 
 	uint64 cellID = 0;
@@ -314,6 +321,9 @@ void GameCommandHandler::warp(StringTokenizer tokenizer, Player * player) {
 }
 
 void GameCommandHandler::warpTo(StringTokenizer tokenizer, Player * player) {
+	if (!tokenizer.hasMoreTokens())
+		return;
+
 	ChatManager * chatManager = player->getZone()->getChatManager();
 
 	string name;
@@ -862,6 +872,9 @@ void GameCommandHandler::killArea(StringTokenizer tokenizer, Player * player) {
 	//Default
 	int meter = 32;
 	//..as you wish my master
+	if (!tokenizer.hasMoreTokens())
+		return;
+		
 	meter = tokenizer.getIntToken();
 
 	Zone* zone = player->getZone();
@@ -1559,6 +1572,9 @@ void GameCommandHandler::getCords(StringTokenizer tokenizer, Player * player) {
 
 void GameCommandHandler::giveItemTemp(StringTokenizer tokenizer, Player * player) {
 	//Give TANO
+	if (!tokenizer.hasMoreTokens())
+		return;
+		
 	string itemType;
 	tokenizer.getStringToken(itemType);
 

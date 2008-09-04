@@ -391,7 +391,7 @@ void CreatureObjectImplementation::sendToOwner(Player* player, bool doClose) {
 }
 
 void CreatureObjectImplementation::sendTo(Player* player, bool doClose) {
-	ZoneClient* client = player->getClient();
+	ReferenceSlot<ZoneClient> client = player->getClient();
 	if (client == NULL)
 		return;
 
