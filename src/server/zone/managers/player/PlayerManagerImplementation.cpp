@@ -501,58 +501,49 @@ void PlayerManagerImplementation::loadWaypoints(Player* player) {
 
 
 void PlayerManagerImplementation::updateOtherFriendlists(Player* player, bool status) {
-	/*string loggingInName = player->getFirstName();
+	player->info("Entering PlayerManagerImplementation::updateOtherFriendlists(Player* player, bool status)");
+
+	string loggingInName = player->getFirstName();
 	String::toLower(loggingInName);
 
-	try {
-		//This COULD be a huge task if many players are online...so we need to keep an eye of this!
-		//The critical subject is the needed time for a toon logging in if many players are online. Unfort. we must iterate the
-		//friendlists of the online players tho, DB is not reflecting it correctly before a toon logs out and writes his friendlist to the DB (bugfix)
+	playerMap->resetIterator();
 
-		playerMap->lock();
+	while (playerMap->hasNext()) {
+		Player* playerToInform = playerMap->next();
 
-		playerMap->resetIterator(false);
+		if (playerToInform != player) {
+			playerToInform->wlock(player);
 
-		while (playerMap->hasNext(false)) {
-			Player* playerToInform = playerMap->next(false);
+			PlayerObject* toInformObject = playerToInform->getPlayerObject();
 
-			try {
-				if (playerToInform != player)
-					playerToInform->wlock(player);
+			if (toInformObject != NULL) {
+				toInformObject->wlock();
 
-				PlayerObject* toInformObject = playerToInform->getPlayerObject();
+				for (int i = 0; i < toInformObject->getFriendsList()->getCount(); ++i){
+					if(toInformObject->getFriendsList()->getFriendsName(i) == loggingInName) {
 
-				if (toInformObject != NULL) {
-					for (int i = 0; i < toInformObject->getFriendsList()->getCount(); ++i){
-						if(toInformObject->getFriendsList()->getFriendsName(i) == loggingInName) {
+						if (playerToInform->isOnline()) {
 
-							if (playerToInform->isOnline()) {
+							FriendStatusChangeMessage* notifyStatus =
+								new FriendStatusChangeMessage(loggingInName, "Core3", status);
 
-								FriendStatusChangeMessage* notifyStatus =
-									new FriendStatusChangeMessage(player->getFirstName(), "Core3", status);
-
-								playerToInform->sendMessage(notifyStatus);
-							}
+							playerToInform->sendMessage(notifyStatus);
 						}
 					}
 				}
-
-				if (playerToInform != player)
-					playerToInform->unlock();
-
-			} catch (...) {
-				if (playerToInform != player);
-					playerToInform->unlock();
-				cout << "unreported exception caught in PlayerManagerImplementation::updateOtherFriendlists\n";
+				toInformObject->unlock();
 			}
+
+			if (playerToInform != player)
+				playerToInform->unlock();
+
+			playerToInform = NULL;
+			toInformObject = NULL;
 		}
+	}
 
-		playerMap->unlock();
-
-	} catch (...) {
-		playerMap->unlock();
-		cout << "Exception in PlayerManagerImplementation::updateOtherFriendlists iterating foreign frindlists " << endl;
-	}*/
+	player->info("Clean exit from PlayerManagerImplementation::updateOtherFriendlists(Player* player, bool status)");
+	player = NULL;
 }
 
 void PlayerManagerImplementation::unload(Player* player) {
@@ -1128,13 +1119,16 @@ void PlayerManagerImplementation::updateConsentList(Player* player) {
 	deleteq << "DELETE FROM consentlist WHERE character_id = " << player->getCharacterID() << ";";
 	ServerDatabase::instance()->executeStatement(deleteq);
 
+
+	deleteq.str("");
+
 	if (player->getConsentSize() > 0) {
 		stringstream insertq;
+		insertq.str("");
 
 		for (int i = 0; i < player->getConsentSize(); i++) {
-			insertq << "INSERT DELAYED INTO consentlist (character_id, target_id)"
-			<< "SELECT " << player->getCharacterID() << ", character_id as target_id FROM characters "
-			<< "WHERE LOWER(firstname) = '" << player->getConsentEntry(i) << "';";
+			insertq << "INSERT DELAYED INTO consentlist set character_id = " << player->getCharacterID() << ", "
+					<< "target_id = " << player->getConsentEntry(i) << ";";
 		}
 
 		try {
@@ -1142,6 +1136,7 @@ void PlayerManagerImplementation::updateConsentList(Player* player) {
 		} catch (DatabaseException& e) {
 			cout << e.getMessage() << endl;
 		}
+		insertq.str("");
 	}
 }
 
