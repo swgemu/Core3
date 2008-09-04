@@ -1157,6 +1157,9 @@ void CraftingManagerImplementation::createSchematic(Player* player,
 
 	StringTokenizer tokenizer(count);
 
+	if (!tokenizer.hasMoreTokens())
+		return;
+		
 	int counter = tokenizer.getIntToken();
 
 	// Add Schematic to datapad here

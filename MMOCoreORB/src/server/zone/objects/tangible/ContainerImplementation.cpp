@@ -64,39 +64,55 @@ ContainerImplementation::ContainerImplementation(uint64 oid) : ContainerServant(
 }
 
 ContainerImplementation::~ContainerImplementation() {
-	for (int i = 0; i < items.size(); ++i) {
-		SceneObject* item = items.get(i);
-
+	while (items.size() > 0) {
+		SceneObject* item = items.get(0);
+		
+		items.drop(item->getObjectID());
+		
+		item->release();
+		
 		if (item->isTangible())
 			((TangibleObject*) item)->setContainer(NULL);
-
+		
 		item->finalize();
 	}
-
-	items.removeAll();
 }
 
 void ContainerImplementation::addObject(SceneObject* obj) {
-	uint64 oid = obj->getObjectID(); 
+	uint64 oid = obj->getObjectID();
+	 
+	if (!items.contains(oid))
+		obj->acquire();
+	
 	items.put(oid, obj);
 }
 
 void ContainerImplementation::removeObject(int index) {
 	SceneObject* item = items.get(index);
+	
+	if (item == NULL)
+		return;
 
 	items.remove(index);
 
 	if (item->isTangible())
 		((TangibleObject*) item)->setContainer(NULL);
+		
+	item->release();
 }
 
 void ContainerImplementation::removeObject(uint64 oid) {
 	SceneObject* item = items.get(oid);
+	
+	if (item == NULL)
+		return;
 
 	items.drop(oid);
 
 	if (item != NULL && item->isTangible())
 		((TangibleObject*) item)->setContainer(NULL);
+		
+	item->release();
 }
 
 void ContainerImplementation::openTo(Player* player) {

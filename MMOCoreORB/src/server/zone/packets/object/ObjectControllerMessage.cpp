@@ -813,7 +813,7 @@ void ObjectControllerMessage::parseAttachmentDragDrop(Player* player,
 	unicode unicodeID;
 
 	pack->parseUnicode(unicodeID);
-	StringTokenizer tokenizer(unicodeID.c_str());
+	StringTokenizer tokenizer(unicodeID.c_str().c_str());
 
 	if (tokenizer.hasMoreTokens()) {
 		uint64 targetID = tokenizer.getLongToken();
@@ -872,7 +872,7 @@ void ObjectControllerMessage::parseNpcStartConversation(Player* player,
 
 	SceneObject* object = player->getZone()->lookupObject(target);
 
-	if (object != NULL) {
+	if (object != NULL && object->isNonPlayerCreature()) {
 		try {
 			if (object != player)
 				object->wlock(player);
@@ -3243,7 +3243,7 @@ void ObjectControllerMessage::parseRevokeConsentRequest(Player* player, Message*
 	Player* playerTarget = playerManager->getPlayer(consentName);
 
 	if (player->revokeConsent(consentName)) {
-		player->sendSystemMessage("You revoke your consent from " + playerTarget->getFirstNameProper() + ".");
+		player->sendSystemMessage("You revoke your consent from " + consentName + ".");
 
 		if (playerTarget != NULL) {
 			playerTarget->sendSystemMessage(player->getFirstNameProper() + " revokes your consent.");

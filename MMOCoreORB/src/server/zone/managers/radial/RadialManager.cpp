@@ -78,7 +78,7 @@ void RadialManager::handleRadialRequest(Player* player, Packet* pack) {
 		return;
 	}
 
-	SceneObject* object = zone->lookupObject(objectid);
+	ManagedReference<SceneObject> object = zone->lookupObject(objectid);
 
 	if (object == NULL)
 		object = player->getPlayerItem(objectid);
