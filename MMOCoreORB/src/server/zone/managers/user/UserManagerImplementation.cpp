@@ -169,7 +169,6 @@ void UserManagerImplementation::banUser(const string& ipaddr) {
 }
 
 bool UserManagerImplementation::banUserByName(string& name, string& admin) {
-
 	PlayerManager* playerManager = server->getPlayerManager();
 
 	String::toLower(name);
@@ -211,7 +210,6 @@ bool UserManagerImplementation::banUserByName(string& name, string& admin) {
 }
 
 bool UserManagerImplementation::kickUser(string& name, string& admin) {
-
 	PlayerManager* playerManager = server->getPlayerManager();
 
 	String::toLower(name);

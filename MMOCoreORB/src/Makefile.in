@@ -198,7 +198,12 @@ am_core3_OBJECTS = $(am__objects_1) ServerCore.$(OBJEXT) \
 	ShuttleCreatureImplementation.$(OBJEXT) \
 	TrainerCreatureImplementation.$(OBJEXT) \
 	BlueFrogCreatureImplementation.$(OBJEXT) \
-	MountCreatureImplementation.$(OBJEXT) Buff.$(OBJEXT) \
+	MountCreatureImplementation.$(OBJEXT) \
+	RecruiterCreatureImplementation.$(OBJEXT) Buff.$(OBJEXT) \
+	DraftSchematicExpPropGroupImplementation.$(OBJEXT) \
+	DraftSchematicImplementation.$(OBJEXT) \
+	DraftSchematicIngredientImplementation.$(OBJEXT) \
+	DraftSchematicValuesImplementation.$(OBJEXT) \
 	SceneObjectImplementation.$(OBJEXT) \
 	ShipObjectImplementation.$(OBJEXT) ObjectManager.$(OBJEXT) \
 	GuildManagerImplementation.$(OBJEXT) \
@@ -523,7 +528,12 @@ core3_SOURCES = $(core3_IDLS) \
 		server/zone/objects/creature/trainer/TrainerCreatureImplementation.cpp \
 		server/zone/objects/creature/bluefrog/BlueFrogCreatureImplementation.cpp \
 		server/zone/objects/creature/mount/MountCreatureImplementation.cpp \
+		server/zone/objects/creature/recruiter/RecruiterCreatureImplementation.cpp \
 		server/zone/objects/creature/buffs/Buff.cpp \
+		server/zone/objects/draftschematic/DraftSchematicExpPropGroupImplementation.cpp \
+		server/zone/objects/draftschematic/DraftSchematicImplementation.cpp \
+		server/zone/objects/draftschematic/DraftSchematicIngredientImplementation.cpp \
+		server/zone/objects/draftschematic/DraftSchematicValuesImplementation.cpp \
 		server/zone/objects/scene/SceneObjectImplementation.cpp \
 		server/zone/objects/ship/ShipObjectImplementation.cpp \
 		server/zone/managers/object/ObjectManager.cpp \
@@ -680,9 +690,13 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/DraftSchematic.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/DraftSchematicAttribute.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/DraftSchematicExpPropGroup.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/DraftSchematicExpPropGroupImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/DraftSchematicGroup.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/DraftSchematicImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/DraftSchematicIngredient.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/DraftSchematicIngredientImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/DraftSchematicValues.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/DraftSchematicValuesImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/EnhancePack.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/EnhancePackImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/FactoryCrate.Po@am__quote@
@@ -758,6 +772,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/RadialManager.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/RangedWeapon.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/RecruiterCreature.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/RecruiterCreatureImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/RegionBazaar.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ResourceContainer.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ResourceContainerImplementation.Po@am__quote@
@@ -3313,6 +3328,20 @@ MountCreatureImplementation.obj: server/zone/objects/creature/mount/MountCreatur
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o MountCreatureImplementation.obj `if test -f 'server/zone/objects/creature/mount/MountCreatureImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/creature/mount/MountCreatureImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/creature/mount/MountCreatureImplementation.cpp'; fi`
 
+RecruiterCreatureImplementation.o: server/zone/objects/creature/recruiter/RecruiterCreatureImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT RecruiterCreatureImplementation.o -MD -MP -MF $(DEPDIR)/RecruiterCreatureImplementation.Tpo -c -o RecruiterCreatureImplementation.o `test -f 'server/zone/objects/creature/recruiter/RecruiterCreatureImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/creature/recruiter/RecruiterCreatureImplementation.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/RecruiterCreatureImplementation.Tpo $(DEPDIR)/RecruiterCreatureImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/creature/recruiter/RecruiterCreatureImplementation.cpp' object='RecruiterCreatureImplementation.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o RecruiterCreatureImplementation.o `test -f 'server/zone/objects/creature/recruiter/RecruiterCreatureImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/creature/recruiter/RecruiterCreatureImplementation.cpp
+
+RecruiterCreatureImplementation.obj: server/zone/objects/creature/recruiter/RecruiterCreatureImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT RecruiterCreatureImplementation.obj -MD -MP -MF $(DEPDIR)/RecruiterCreatureImplementation.Tpo -c -o RecruiterCreatureImplementation.obj `if test -f 'server/zone/objects/creature/recruiter/RecruiterCreatureImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/creature/recruiter/RecruiterCreatureImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/creature/recruiter/RecruiterCreatureImplementation.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/RecruiterCreatureImplementation.Tpo $(DEPDIR)/RecruiterCreatureImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/creature/recruiter/RecruiterCreatureImplementation.cpp' object='RecruiterCreatureImplementation.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o RecruiterCreatureImplementation.obj `if test -f 'server/zone/objects/creature/recruiter/RecruiterCreatureImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/creature/recruiter/RecruiterCreatureImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/creature/recruiter/RecruiterCreatureImplementation.cpp'; fi`
+
 Buff.o: server/zone/objects/creature/buffs/Buff.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT Buff.o -MD -MP -MF $(DEPDIR)/Buff.Tpo -c -o Buff.o `test -f 'server/zone/objects/creature/buffs/Buff.cpp' || echo '$(srcdir)/'`server/zone/objects/creature/buffs/Buff.cpp
 @am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/Buff.Tpo $(DEPDIR)/Buff.Po
@@ -3326,6 +3355,62 @@ Buff.obj: server/zone/objects/creature/buffs/Buff.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/creature/buffs/Buff.cpp' object='Buff.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o Buff.obj `if test -f 'server/zone/objects/creature/buffs/Buff.cpp'; then $(CYGPATH_W) 'server/zone/objects/creature/buffs/Buff.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/creature/buffs/Buff.cpp'; fi`
+
+DraftSchematicExpPropGroupImplementation.o: server/zone/objects/draftschematic/DraftSchematicExpPropGroupImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT DraftSchematicExpPropGroupImplementation.o -MD -MP -MF $(DEPDIR)/DraftSchematicExpPropGroupImplementation.Tpo -c -o DraftSchematicExpPropGroupImplementation.o `test -f 'server/zone/objects/draftschematic/DraftSchematicExpPropGroupImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/draftschematic/DraftSchematicExpPropGroupImplementation.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/DraftSchematicExpPropGroupImplementation.Tpo $(DEPDIR)/DraftSchematicExpPropGroupImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/draftschematic/DraftSchematicExpPropGroupImplementation.cpp' object='DraftSchematicExpPropGroupImplementation.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o DraftSchematicExpPropGroupImplementation.o `test -f 'server/zone/objects/draftschematic/DraftSchematicExpPropGroupImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/draftschematic/DraftSchematicExpPropGroupImplementation.cpp
+
+DraftSchematicExpPropGroupImplementation.obj: server/zone/objects/draftschematic/DraftSchematicExpPropGroupImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT DraftSchematicExpPropGroupImplementation.obj -MD -MP -MF $(DEPDIR)/DraftSchematicExpPropGroupImplementation.Tpo -c -o DraftSchematicExpPropGroupImplementation.obj `if test -f 'server/zone/objects/draftschematic/DraftSchematicExpPropGroupImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/draftschematic/DraftSchematicExpPropGroupImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/draftschematic/DraftSchematicExpPropGroupImplementation.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/DraftSchematicExpPropGroupImplementation.Tpo $(DEPDIR)/DraftSchematicExpPropGroupImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/draftschematic/DraftSchematicExpPropGroupImplementation.cpp' object='DraftSchematicExpPropGroupImplementation.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o DraftSchematicExpPropGroupImplementation.obj `if test -f 'server/zone/objects/draftschematic/DraftSchematicExpPropGroupImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/draftschematic/DraftSchematicExpPropGroupImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/draftschematic/DraftSchematicExpPropGroupImplementation.cpp'; fi`
+
+DraftSchematicImplementation.o: server/zone/objects/draftschematic/DraftSchematicImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT DraftSchematicImplementation.o -MD -MP -MF $(DEPDIR)/DraftSchematicImplementation.Tpo -c -o DraftSchematicImplementation.o `test -f 'server/zone/objects/draftschematic/DraftSchematicImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/draftschematic/DraftSchematicImplementation.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/DraftSchematicImplementation.Tpo $(DEPDIR)/DraftSchematicImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/draftschematic/DraftSchematicImplementation.cpp' object='DraftSchematicImplementation.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o DraftSchematicImplementation.o `test -f 'server/zone/objects/draftschematic/DraftSchematicImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/draftschematic/DraftSchematicImplementation.cpp
+
+DraftSchematicImplementation.obj: server/zone/objects/draftschematic/DraftSchematicImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT DraftSchematicImplementation.obj -MD -MP -MF $(DEPDIR)/DraftSchematicImplementation.Tpo -c -o DraftSchematicImplementation.obj `if test -f 'server/zone/objects/draftschematic/DraftSchematicImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/draftschematic/DraftSchematicImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/draftschematic/DraftSchematicImplementation.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/DraftSchematicImplementation.Tpo $(DEPDIR)/DraftSchematicImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/draftschematic/DraftSchematicImplementation.cpp' object='DraftSchematicImplementation.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o DraftSchematicImplementation.obj `if test -f 'server/zone/objects/draftschematic/DraftSchematicImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/draftschematic/DraftSchematicImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/draftschematic/DraftSchematicImplementation.cpp'; fi`
+
+DraftSchematicIngredientImplementation.o: server/zone/objects/draftschematic/DraftSchematicIngredientImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT DraftSchematicIngredientImplementation.o -MD -MP -MF $(DEPDIR)/DraftSchematicIngredientImplementation.Tpo -c -o DraftSchematicIngredientImplementation.o `test -f 'server/zone/objects/draftschematic/DraftSchematicIngredientImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/draftschematic/DraftSchematicIngredientImplementation.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/DraftSchematicIngredientImplementation.Tpo $(DEPDIR)/DraftSchematicIngredientImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/draftschematic/DraftSchematicIngredientImplementation.cpp' object='DraftSchematicIngredientImplementation.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o DraftSchematicIngredientImplementation.o `test -f 'server/zone/objects/draftschematic/DraftSchematicIngredientImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/draftschematic/DraftSchematicIngredientImplementation.cpp
+
+DraftSchematicIngredientImplementation.obj: server/zone/objects/draftschematic/DraftSchematicIngredientImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT DraftSchematicIngredientImplementation.obj -MD -MP -MF $(DEPDIR)/DraftSchematicIngredientImplementation.Tpo -c -o DraftSchematicIngredientImplementation.obj `if test -f 'server/zone/objects/draftschematic/DraftSchematicIngredientImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/draftschematic/DraftSchematicIngredientImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/draftschematic/DraftSchematicIngredientImplementation.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/DraftSchematicIngredientImplementation.Tpo $(DEPDIR)/DraftSchematicIngredientImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/draftschematic/DraftSchematicIngredientImplementation.cpp' object='DraftSchematicIngredientImplementation.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o DraftSchematicIngredientImplementation.obj `if test -f 'server/zone/objects/draftschematic/DraftSchematicIngredientImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/draftschematic/DraftSchematicIngredientImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/draftschematic/DraftSchematicIngredientImplementation.cpp'; fi`
+
+DraftSchematicValuesImplementation.o: server/zone/objects/draftschematic/DraftSchematicValuesImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT DraftSchematicValuesImplementation.o -MD -MP -MF $(DEPDIR)/DraftSchematicValuesImplementation.Tpo -c -o DraftSchematicValuesImplementation.o `test -f 'server/zone/objects/draftschematic/DraftSchematicValuesImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/draftschematic/DraftSchematicValuesImplementation.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/DraftSchematicValuesImplementation.Tpo $(DEPDIR)/DraftSchematicValuesImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/draftschematic/DraftSchematicValuesImplementation.cpp' object='DraftSchematicValuesImplementation.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o DraftSchematicValuesImplementation.o `test -f 'server/zone/objects/draftschematic/DraftSchematicValuesImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/draftschematic/DraftSchematicValuesImplementation.cpp
+
+DraftSchematicValuesImplementation.obj: server/zone/objects/draftschematic/DraftSchematicValuesImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT DraftSchematicValuesImplementation.obj -MD -MP -MF $(DEPDIR)/DraftSchematicValuesImplementation.Tpo -c -o DraftSchematicValuesImplementation.obj `if test -f 'server/zone/objects/draftschematic/DraftSchematicValuesImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/draftschematic/DraftSchematicValuesImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/draftschematic/DraftSchematicValuesImplementation.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/DraftSchematicValuesImplementation.Tpo $(DEPDIR)/DraftSchematicValuesImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/draftschematic/DraftSchematicValuesImplementation.cpp' object='DraftSchematicValuesImplementation.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o DraftSchematicValuesImplementation.obj `if test -f 'server/zone/objects/draftschematic/DraftSchematicValuesImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/draftschematic/DraftSchematicValuesImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/draftschematic/DraftSchematicValuesImplementation.cpp'; fi`
 
 SceneObjectImplementation.o: server/zone/objects/scene/SceneObjectImplementation.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT SceneObjectImplementation.o -MD -MP -MF $(DEPDIR)/SceneObjectImplementation.Tpo -c -o SceneObjectImplementation.o `test -f 'server/zone/objects/scene/SceneObjectImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/scene/SceneObjectImplementation.cpp

@@ -102,7 +102,6 @@ void LairObjectImplementation::doDamage(int damage, SceneObject* attacker) {
 }
 
 void LairObjectImplementation::spawnCreatures() {
-
 	if (zone == NULL) {
 		cout << "Zone is NULL" << endl;
 		return;
@@ -113,6 +112,7 @@ void LairObjectImplementation::spawnCreatures() {
 	for (int i = 0; i < spawnSize; i++) {
 
 		bool baby = false;
+
 		if (System::random(1000000) < babiesPerMillion) {
 			baby = true;
 		}
@@ -209,5 +209,5 @@ void LairObjectImplementation::doDestroyed(SceneObject* attacker) {
 		}
 	}
 
-	removeFromZone(true);
+	removeFromZone();
 }

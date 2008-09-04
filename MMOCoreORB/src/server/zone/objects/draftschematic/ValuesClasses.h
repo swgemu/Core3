@@ -45,80 +45,60 @@ which carries forward this exception.
 #ifndef VALUESCLASSES_H_
 #define VALUESCLASSES_H_
 
+#include "engine/engine.h"
 
 class Values {
-
 	VectorMap<string, float> values;
 	string name;
 
 public:
-	Values(const string& n){
-
+	Values(const string& n) {
 		name = n;
 
 		values.put("maxPercentage", 0.0f);
 		values.put("currentPercentage", 0.0f);
 		values.put("currentValue", 0.0f);
-
 	}
+
 	~Values(){
-
 		values.removeAll();
-
 	}
 
-	inline float getPercentage(){
-
+	inline float getPercentage() {
 		return values.get("currentPercentage");
-
 	}
 
-	inline float getValue(){
-
+	inline float getValue() {
 		return values.get("currentValue");
-
 	}
 
-	inline float getMaxPercentage(){
-
+	inline float getMaxPercentage() {
 		return values.get("maxPercentage");
-
 	}
 
-	inline string& getName(){
-
+	inline string& getName() {
 		return name;
-
 	}
 
-	inline void setValue(const float value){
-
-		if(values.contains("currentValue")){
-
+	inline void setValue(const float value) {
+		if (values.contains("currentValue")) {
 			values.drop("currentValue");
-
 		}
 
 		values.put("currentValue", value);
 	}
 
-	inline void setMaxPercentage(const float value){
-
-		if(values.contains("maxPercentage")){
-
+	inline void setMaxPercentage(const float value) {
+		if (values.contains("maxPercentage")) {
 			values.drop("maxPercentage");
-
 		}
 
 		values.put("maxPercentage", value);
 	}
 
 	inline void setPercentage(const float value) {
-
 		if (values.contains("currentPercentage")) {
-
 			values.drop("currentPercentage");
-
 		}
 
 		values.put("currentPercentage", value);
@@ -126,14 +106,12 @@ public:
 };
 
 class Subclasses {
-
 	VectorMap<string, Values*> subClasses;
 	float avePercentage;
 	string name, className;
 
 public:
-	Subclasses(const string& title, const string& subtitle){
-
+	Subclasses(const string& title, const string& subtitle) {
 		className = title;
 
 		name = subtitle;
@@ -141,7 +119,6 @@ public:
 		Values* values = new Values(subtitle);
 
 		subClasses.put(subtitle, values);
-
 	}
 
 	~Subclasses(){
@@ -152,7 +129,7 @@ public:
 	}
 
 	void addSubtitle(const string& s) {
-		if(!subClasses.contains(s)) {
+		if (!subClasses.contains(s)) {
 			Values* values = new Values(s);
 
 			subClasses.put(s, values);
@@ -161,54 +138,42 @@ public:
 		}
 	}
 
-
 	inline Values* get(const int i){
-
 		return subClasses.get(i);
-
 	}
 
-	inline Values* get(const string& subTitle){
-
+	inline Values* get(const string& subTitle) {
 		return subClasses.get(subTitle);
 	}
 
 	inline int size(){
-
 		return subClasses.size();
 	}
 
-	inline float getPercentage(const string& subTitle){
-
+	inline float getPercentage(const string& subTitle) {
 		Values* values = subClasses.get(subTitle);
 		return values->getPercentage();
 	}
 
-	inline float getMaxPercentage(const string& subTitle){
-
+	inline float getMaxPercentage(const string& subTitle) {
 		Values* values = subClasses.get(subTitle);
 		return values->getMaxPercentage();
 	}
 
-	inline float getValue(const string& subTitle){
-
+	inline float getValue(const string& subTitle) {
 		Values* values = subClasses.get(subTitle);
 		return values->getValue();
 	}
 
-	inline string& getName(){
-
+	inline string& getName() {
 		return name;
-
 	}
 
 	inline string& getClassName() {
 		return className;
-
 	}
 
-	inline void setMaxPercentage(const string& subtitle, const float value){
-
+	inline void setMaxPercentage(const string& subtitle, const float value) {
 		Values* values = subClasses.get(subtitle);
 		values->setMaxPercentage(value);
 	}

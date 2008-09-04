@@ -45,9 +45,6 @@ which carries forward this exception.
 #ifndef DRAFTSCHEMATICVALUESIMPLEMENTATION_H_
 #define DRAFTSCHEMATICVALUESIMPLEMENTATION_H_
 
-
-#include "../../packets.h"
-
 #include "ValuesClasses.h"
 #include "DraftSchematicAttribute.h"
 #include "DraftSchematicValues.h"
@@ -55,466 +52,66 @@ which carries forward this exception.
 
 
 class DraftSchematicValuesImplementation : public DraftSchematicValuesServant {
-
 	VectorMap<string, Subclasses*> experimentalValuesMap;
 
 	Vector<string> valuesToSend;
 
 	string EMPTY;
 
-
 public:
-	DraftSchematicValuesImplementation() : DraftSchematicValuesServant() {
-
-		EMPTY = "";
-
-	}
-	~DraftSchematicValuesImplementation(){
-
-		for(int i = 0; i < experimentalValuesMap.size(); ++i){
-
-			delete experimentalValuesMap.get(i);
-
-		}
-
-		experimentalValuesMap.removeAll();
-
-		valuesToSend.removeAll();
-
-	}
+	DraftSchematicValuesImplementation();
+	~DraftSchematicValuesImplementation();
 	// Experimental Titles
-	inline void addExperimentalPropertySubtitle(const string& title, const string& subtitle){
+	void addExperimentalPropertySubtitle(const string& title, const string& subtitle);
 
-		Subclasses* subclasses;
+	string& getExperimentalPropertyTitle(const string& subtitle);
+	string& getExperimentalPropertyTitle(const int i);
 
-		if(experimentalValuesMap.contains(title)){
+	string& getExperimentalPropertySubtitleClass(const int i);
 
-			subclasses = experimentalValuesMap.get(title);
+	string& getExperimentalPropertySubtitle(const int i);
 
-			subclasses->addSubtitle(subtitle);
+	string& getExperimentalPropertySubtitle(const string title, const int i);
 
-		} else {
+	int getExperimentalPropertySubtitleSize();
 
-			subclasses = new Subclasses(title, subtitle);
+	int getExperimentalPropertySubtitleSize(const string title);
 
-			experimentalValuesMap.put(title, subclasses);
+	void setCurrentValue(const string& attribute, const float value);
 
-		}
+	float getCurrentValue(const string& attribute);
 
-	}
+	float getCurrentValue(const int i);
 
-	inline string& getExperimentalPropertyTitle(const string& subtitle) {
+	void setCurrentPercentage(const string& subtitle, const float value);
 
-		Subclasses* subClass;
+	float getCurrentPercentage(const string& attribute);
+	float getCurrentPercentage(const int i);
 
-		for(int j = 0; j < experimentalValuesMap.size(); ++j) {
+	float getCurrentPercentageAverage(const int i);
 
-			subClass = experimentalValuesMap.get(j);
+	void setMaxPercentage(const string& attribute, const float value);
 
-			if(subClass->getName() == subtitle) {
+	float getMaxPercentage(const string& attribute);
+	float getMaxPercentage(const int i);
 
-				return subClass->getClassName();
+	float getMaxPercentageAverage(const int i);
 
-			}
-		}
-		return EMPTY;
-	}
+	void recalculateValues(DraftSchematic* draftSchematic);
 
-
-	inline string& getExperimentalPropertyTitle(const int i){
-
-		Subclasses* subClass;
-
-		subClass = experimentalValuesMap.get(i);
-
-		if(subClass != NULL){
-
-			return subClass->getClassName();
-
-		} else {
-
-			return EMPTY;
-
-		}
-
-	}
-
-	inline string& getExperimentalPropertySubtitleClass(const int i){
-
-		Subclasses* subClasses;
-		int count = 0;
-
-		for(int j = 0; j < experimentalValuesMap.size(); ++j){
-
-			subClasses = experimentalValuesMap.get(j);
-
-			if(count + subClasses->size() <= i){
-
-				count += subClasses->size();
-
-			} else {
-
-
-				return subClasses->getClassName();
-			}
-
-		}
-		return EMPTY;
-	}
-
-	inline string& getExperimentalPropertySubtitle(const int i){
-
-		Subclasses* subClasses;
-		int count = 0;
-
-		for(int j = 0; j < experimentalValuesMap.size(); ++j){
-
-			subClasses = experimentalValuesMap.get(j);
-
-			if(count + subClasses->size() <= i){
-
-				count += subClasses->size();
-
-			} else {
-
-				count = i - count;
-
-				Values* values = subClasses->get(count);
-
-				return values->getName();
-			}
-
-		}
-		return EMPTY;
-	}
-
-	inline string& getExperimentalPropertySubtitle(const string title, const int i){
-
-		Subclasses* subClasses;
-
-		subClasses = experimentalValuesMap.get(title);
-
-		if(subClasses != NULL)
-			return subClasses->get(i)->getName();
-		else
-			return EMPTY;
-	}
-
-	inline int getExperimentalPropertySubtitleSize(){
-
-		Subclasses* subClasses;
-		int size = 0;
-
-		for(int j = 0; j < experimentalValuesMap.size(); ++j){
-
-			subClasses = experimentalValuesMap.get(j);
-
-			size += subClasses->size();
-
-		}
-
-		return size;
-
-	}
-
-	inline int getExperimentalPropertySubtitleSize(const string title){
-
-		Subclasses* subclasses = NULL;
-
-		subclasses = experimentalValuesMap.get(title);
-
-		if(subclasses != NULL)
-			return subclasses->size();
-		else
-			return -1234;
-
-	}
+	void toString();
 
 	inline int getExperimentalPropertyTitleSize(){
-
-
 		return experimentalValuesMap.size();
-
-	}
-
-	inline void setCurrentValue(const string& attribute, const float value) {
-
-		Subclasses* subClasses;
-
-		for (int j = 0; j < experimentalValuesMap.size(); ++j) {
-
-			subClasses = experimentalValuesMap.get(j);
-
-			if (subClasses->getName() == attribute) {
-
-				subClasses->setValue(attribute, value);
-				return;
-
-			}
-		}
 	}
 
 	inline int getValuesToSendSize(){
-
 		return valuesToSend.size();
-
 	}
 
 	string& getValuesToSend(const int i){
-
 		return valuesToSend.get(i);
-
 	}
-
-	inline float getCurrentValue(const string& attribute) {
-
-		Subclasses* subClasses;
-		Values* values;
-
-		for (int j = 0; j < experimentalValuesMap.size(); ++j) {
-
-			subClasses = experimentalValuesMap.get(j);
-
-			if (subClasses->getName() ==  attribute) {
-
-				return subClasses->getValue(attribute);
-
-			}
-		}
-		return -1234;
-	}
-
-	float getCurrentValue(const int i){
-
-		Subclasses* subClasses;
-		int count = 0;
-
-		for(int j = 0; j < experimentalValuesMap.size(); ++j){
-
-			subClasses = experimentalValuesMap.get(j);
-
-			if(count + subClasses->size() <= i){
-
-				count += subClasses->size();
-
-			} else {
-
-				count = i - count;
-
-				Values* values = subClasses->get(count);
-
-				return values->getValue();
-			}
-
-		}
-		return -1234;
-
-	}
-
-	inline void setCurrentPercentage(const string& subtitle, const float value){
-
-		float max = 0;
-
-		Subclasses* subClasses;
-
-		for(int j = 0; j < experimentalValuesMap.size(); ++j){
-
-			subClasses = experimentalValuesMap.get(j);
-
-			if(subClasses->getName() == subtitle){
-
-				max = subClasses->getMaxPercentage(subtitle);
-
-				if(value > max)
-					subClasses->setPercentage(subtitle, max);
-				else
-					subClasses->setPercentage(subtitle, value);
-
-				return;
-
-			}
-		}
-	}
-
-	float getCurrentPercentage(const string& attribute){
-
-		Subclasses* subClasses;
-
-		for(int j = 0; j < experimentalValuesMap.size(); ++j){
-
-			subClasses = experimentalValuesMap.get(j);
-
-			if(subClasses->getName() == attribute){
-
-				return subClasses->getPercentage(attribute);
-
-			}
-		}
-		return -1234;
-	}
-	float getCurrentPercentage(const int i){
-
-		Subclasses* subClasses;
-		int count = 0;
-
-		for(int j = 0; j < experimentalValuesMap.size(); ++j){
-
-			subClasses = experimentalValuesMap.get(j);
-
-			if(count + subClasses->size() <= i){
-
-				count += subClasses->size();
-
-			} else {
-
-				count = i - count;
-
-				Values* values = subClasses->get(count);
-
-				return values->getPercentage();
-			}
-
-		}
-		return -1234;
-
-	}
-
-	float getCurrentPercentageAverage(const int i){
-
-		Subclasses* subClasses;
-		Values* values;
-
-		subClasses = experimentalValuesMap.get(i);
-
-		float average = 0;
-
-		for(int j = 0; j < subClasses->size(); ++j){
-
-			values = subClasses->get(j);
-
-			average += values->getPercentage();
-
-		}
-
-		return (average / subClasses->size());
-
-	}
-
-	inline void setMaxPercentage(const string& attribute, const float value){
-
-		float max;
-
-		Subclasses* subClasses;
-
-		for(int j = 0; j < experimentalValuesMap.size(); ++j){
-
-			subClasses = experimentalValuesMap.get(j);
-
-			if(subClasses->getName() == attribute){
-
-				subClasses->setMaxPercentage(attribute, value);
-				return;
-			}
-		}
-	}
-
-	float getMaxPercentage(const string& attribute){
-
-		Subclasses* subClasses;
-
-		for(int j = 0; j < experimentalValuesMap.size(); ++j){
-
-			subClasses = experimentalValuesMap.get(j);
-
-			if(subClasses->getName() == attribute){
-
-				return subClasses->getMaxPercentage(attribute);
-
-			}
-		}
-		return -1234;
-	}
-	float getMaxPercentage(const int i){
-
-		Subclasses* subClasses;
-		int count = 0;
-
-		for(int j = 0; j < experimentalValuesMap.size(); ++j){
-
-			subClasses = experimentalValuesMap.get(j);
-
-			if(count + subClasses->size() <= i){
-
-				count += subClasses->size();
-
-			} else {
-
-				count = i - count;
-
-				Values* values = subClasses->get(count);
-
-				return values->getMaxPercentage();
-			}
-
-		}
-		return -1234;
-	}
-
-	float getMaxPercentageAverage(const int i){
-
-		Subclasses* subClasses;
-		Values* values;
-
-		subClasses = experimentalValuesMap.get(i);
-
-		float average = 0;
-
-		for(int j = 0; j < subClasses->size(); ++j){
-
-			values = subClasses->get(j);
-
-			average += values->getMaxPercentage();
-
-		}
-
-		return (average / subClasses->size());
-
-	}
-
-	void recalculateValues(DraftSchematic* draftSchematic){
-
-		string experimentalPropTitle, attributeName;
-		float percentage, min, max, newValue, oldValue;
-		DraftSchematicAttribute * attrib;
-
-		for(int i = 0; i < draftSchematic->getAttributesToSetListSize(); ++i){
-
-			attrib = draftSchematic->getAttributeToSet(i);
-			experimentalPropTitle = attrib->getAttributeExperimentalProperty();
-
-			attributeName = attrib->getAttributeName();
-			min = attrib->getMinValue();
-			max = attrib->getMaxValue();
-			percentage = getCurrentPercentage(experimentalPropTitle);
-
-			oldValue = getCurrentValue(experimentalPropTitle);
-
-			if(experimentalPropTitle == "null"){
-				newValue = max;
-			} else {
-				newValue = (percentage * (max - min)) + min;
-			}
-
-			if (newValue != oldValue) {
-
-				setCurrentValue(experimentalPropTitle, newValue);
-				valuesToSend.add(attributeName);
-
-			}
-
-		}
-	}
-
 
 	// Clear
 	inline void clear(){
@@ -524,21 +121,6 @@ public:
 	inline void clearAll(){
 		experimentalValuesMap.removeAll();
 		valuesToSend.removeAll();
-	}
-
-	void toString(){
-		Subclasses* tempSubclasses;
-
-		for (int i = 0;i < experimentalValuesMap.size(); ++i) {
-			tempSubclasses = experimentalValuesMap.get(i);
-
-			cout << "\n*************************" << endl;
-			cout << "Subclass " << i << endl;
-			cout << "Class: " << tempSubclasses->getClassName() << endl;
-			cout << "Name: " << tempSubclasses->getName() << endl;
-			tempSubclasses->toString();
-			cout << "**************************" << endl;
-		}
 	}
 
 };

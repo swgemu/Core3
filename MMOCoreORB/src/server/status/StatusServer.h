@@ -52,7 +52,7 @@ which carries forward this exception.
 
 #include "../zone/objects/tangible/attachment/Attachment.h"
 
-class StatusServer : public Thread {
+class StatusServer : public Thread, public Logger {
 	ZoneServer * zoneServer;
 	ConfigManager * configManager;
 	time_t timestamp;
