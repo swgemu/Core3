@@ -181,7 +181,7 @@ public:
 			objectID = tokenizer.getLongToken();
 	}
 
-	StatePack* searchInventory(CreatureObject* creature, uint64 stateAffected, int medicineUse) {
+	StatePack* searchInventory(CreatureObject* creature, uint64& stateAffected, int medicineUse) {
 		Inventory* inventory = creature->getInventory();
 		StatePack* statePack = NULL;
 

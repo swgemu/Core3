@@ -741,7 +741,7 @@ void ItemManagerImplementation::registerGlobals() {
 	setGlobalInt("FOCUS", PharmaceuticalImplementation::FOCUS);
 	setGlobalInt("WILLPOWER", PharmaceuticalImplementation::WILLPOWER);
 
-	setGlobalInt("INTIMIDATED", CreatureObjectImplementation::INTIMIDATED_STATE);
+	setGlobalInt("INTIMIDATED_STATE", CreatureObjectImplementation::INTIMIDATED_STATE);
 	setGlobalInt("STUNNED_STATE", CreatureObjectImplementation::STUNNED_STATE);
 	setGlobalInt("DIZZY_STATE", CreatureObjectImplementation::DIZZY_STATE);
 	setGlobalInt("BLINDED_STATE", CreatureObjectImplementation::BLINDED_STATE);
