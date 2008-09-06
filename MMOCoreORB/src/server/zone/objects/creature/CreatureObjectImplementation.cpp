@@ -2093,7 +2093,7 @@ void CreatureObjectImplementation::setActionWoundsBar(uint32 wounds) {
 	broadcastMessage(dcreo3);
 
 	// Update to match max/wounds
-	setActionBar(MIN(getMind(), getActionMax() - getActionWounds()));
+	setActionBar(MIN(getAction(), getActionMax() - getActionWounds()));
 	if(getAction() < getActionMax())
 		activateRecovery();
 }
