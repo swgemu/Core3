@@ -77,11 +77,6 @@ public:
 		uint64 stateAffected = 0;
 		StatePack* statePack = getStatePack(creature, modifier, stateAffected);
 
-		//If a statepack isnt passed with objectid, then we have to search for one in the creature's inventory.
-		//If no stateAffected was passed with modifier, then we have to check if the creature has the corresponding state before assigning that statepack.
-		//Problem: hasState(state) takes a CreatureObjectImplementation::DIZZY_STATE, but they do not correlate with the states from statepacks.
-		//Solution: change the states on statepacks to correlate with CreatureObjectImplementation so I can use hasState(state);
-
 		if (!target->isPlayer() && !target->isNonPlayerCreature()) {
 			creature->sendSystemMessage("healing_response", "healing_response_73"); //Target must be a player or a creature pet in order to heal a state.
 			return 0;
@@ -98,7 +93,7 @@ public:
 			return 0;
 		}
 
-		if (stateAffected == PharmaceuticalImplementation::UNKNOWN) {
+		if (stateAffected == 0) {
 			creature->sendSystemMessage("healing_response", "healing_response_70"); //You must specify a valid state type.
 			return 0;
 		}
@@ -202,8 +197,10 @@ public:
 							if (stateAffected == statePack->getStateAffected())
 								return statePack;
 						} else {
-							if (creature->hasState(statePack->getStateAffected()))
+							if (creature->hasState(statePack->getStateAffected())) {
+								stateAffected = statePack->getStateAffected();
 								return statePack;
+							}
 						}
 					}
 				}
@@ -263,7 +260,7 @@ public:
 		creatureTarget->sendSystemMessage(msgTarget.str());
 
 		if (creature != creatureTarget)
-			creatureTarget->sendSystemMessage(msgPlayer.str());
+			creature->sendSystemMessage(msgPlayer.str());
 	}
 
 	float calculateSpeed(CreatureObject* creature) {

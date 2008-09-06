@@ -366,8 +366,8 @@ public:
 	}
 
 	void sendWoundMessage(CreatureObject* creature, CreatureObject* creatureTarget, int poolAffected, int woundsHealed) {
-		string creatureName = ((Player*)creature)->getFirstNameProper();
-		string creatureTargetName = ((Player*)creatureTarget)->getFirstNameProper();
+		string creatureName = creature->getCharacterName().c_str();
+		string creatureTargetName = creatureTarget->getCharacterName().c_str();
 		string poolName = PharmaceuticalImplementation::getPoolName(poolAffected);
 
 		stringstream msgPlayer, msgTarget, msgTail;
