@@ -250,7 +250,7 @@ public:
 						stringstream msgTarget, msgPlayer;
 						msgTarget << "You apply disease antidote to " << creatureTarget->getCharacterName().c_str() << ".";
 						creature->sendSystemMessage(msgTarget.str());
-						msgPlayer << creature->getCharacterName().c_str() << " applies poison disease to you.";
+						msgPlayer << creature->getCharacterName().c_str() << " applies disease antidote to you.";
 						creatureTarget->sendSystemMessage(msgPlayer.str());
 					}
 					creatureTarget->updateStates();
