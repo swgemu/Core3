@@ -54,13 +54,13 @@ which carries forward this exception.
 class CureTargetSkill : public TargetSkill {
 protected:
 	string effectName;
-	int conditionCured;
+	uint64 conditionCured;
 	int mindCost;
 
 public:
 	CureTargetSkill(const string& name, const char* aname, ZoneProcessServerImplementation* serv) : TargetSkill(name, aname, HEAL, serv) {
 		setEffectName(aname);
-		setConditionCured(PharmaceuticalImplementation::UNKNOWN);
+		setConditionCured(0);
 		setMindCost(0);
 	}
 
@@ -76,7 +76,7 @@ public:
 
 	CurePack* findMedpack(CreatureObject* creature, const string& modifier) {
 		CurePack* curePack = NULL;
-		int conditionCured = getConditionCured();
+		uint64 conditionCured = getConditionCured();
 		int medicineUse = creature->getSkillMod("healing_ability");
 
 		if (!modifier.empty()) {
@@ -128,11 +128,10 @@ public:
 
 	int doSkill(CreatureObject* creature, SceneObject* target, const string& modifier, bool doAnimation = true) {
 		CurePack* curePack = findMedpack(creature, modifier);
-
-		int conditionCured = getConditionCured();
+		uint64 conditionCured = getConditionCured();
 
 		//Check that the condition cured is a valid condition
-		if (conditionCured == PharmaceuticalImplementation::UNKNOWN) {
+		if (conditionCured <= 0) {
 			creature->sendSystemMessage("You must specify a valid condition."); //NOTE: This should never happen unless a LUA file is setup wrong.
 			return 0;
 		}
@@ -141,15 +140,15 @@ public:
 		//TODO: Should check that is a Player or CreaturePet instead.
 		if (!target->isPlayer() && !target->isNonPlayerCreature()) {
 			switch (getConditionCured()) {
-				case PharmaceuticalImplementation::POISONED:
+				case CreatureObjectImplementation::POISONED_STATE:
 					creature->sendSystemMessage("healing_response", "healing_response_83"); //Target must be a player or a creature pet in order to cure poison.
 					break;
 
-				case PharmaceuticalImplementation::DISEASED:
+				case CreatureObjectImplementation::DISEASED_STATE:
 					creature->sendSystemMessage("healing_response", "healing_response_91"); //Target must be a player or a creature pet in order cure disease.
 					break;
 
-				case PharmaceuticalImplementation::ONFIRE:
+				case CreatureObjectImplementation::ONFIRE_STATE:
 				default:
 					creature->sendSystemMessage("healing_response", "healing_response_87"); //Target must be a player or a creature pet in order to quench flames.
 					break;
@@ -161,10 +160,8 @@ public:
 		CreatureObject* creatureTarget = (CreatureObject*) target;
 
 		//If the target is in an unhealable state, then we set target to self.
-		if (creatureTarget != creature) {
-			if (creatureTarget->isDead() || creatureTarget->isRidingCreature() || creatureTarget->isMounted())
-				creatureTarget = creature;
-		}
+		if (creatureTarget->isDead() || creatureTarget->isRidingCreature() || creatureTarget->isMounted())
+			creatureTarget = creature;
 
 		if (!creature->canTreatConditions()) {
 			creature->sendSystemMessage("healing_response", "healing_must_wait"); //You must wait before you can do that.
@@ -201,7 +198,6 @@ public:
 		}
 
 		creature->changeMindBar(mindCost);
-
 		creature->deactivateConditionTreatment();
 
 		if (curePack != NULL)
@@ -215,14 +211,16 @@ public:
 		return 0;
 	}
 
+
+	//TODO: This needs restructuring bad!
 	bool cureCondition(CreatureObject* creature, CreatureObject* creatureTarget) {
 		int conditionCured = getConditionCured();
 
 		switch (conditionCured) {
-			case PharmaceuticalImplementation::POISONED:
+			case CreatureObjectImplementation::POISONED_STATE:
 			{
-				if (creature->isPoisoned()) {
-					creature->clearState(CreatureObjectImplementation::POISONED_STATE);
+				if (creatureTarget->isPoisoned()) {
+					creatureTarget->clearState(CreatureObjectImplementation::POISONED_STATE);
 					if (creature == creatureTarget) {
 						creature->sendSystemMessage("healing_response", "poison_antidote_self"); //You apply poison antidote to yourself.
 					} else {
@@ -242,10 +240,10 @@ public:
 				}
 				break;
 			}
-			case PharmaceuticalImplementation::DISEASED:
+			case CreatureObjectImplementation::DISEASED_STATE:
 			{
-				if (creature->isDiseased()) {
-					creature->clearState(CreatureObjectImplementation::DISEASED_STATE);
+				if (creatureTarget->isDiseased()) {
+					creatureTarget->clearState(CreatureObjectImplementation::DISEASED_STATE);
 					if (creature == creatureTarget) {
 						creature->sendSystemMessage("healing_response", "disease_antidote_self"); //You apply disease antidote to yourself.
 					} else {
@@ -265,10 +263,10 @@ public:
 				}
 				break;
 			}
-			case PharmaceuticalImplementation::ONFIRE:
+			case CreatureObjectImplementation::ONFIRE_STATE:
 			{
-				if (creature->isOnFire()) {
-					creature->clearState(CreatureObjectImplementation::ONFIRE_STATE);
+				if (creatureTarget->isOnFire()) {
+					creatureTarget->clearState(CreatureObjectImplementation::ONFIRE_STATE);
 					if (creature == creatureTarget) {
 						creature->sendSystemMessage("healing_response", "blanket"); //You cover yourself in a suppressive blanket.
 					} else {
@@ -326,7 +324,7 @@ public:
 		effectName = name;
 	}
 
-	void setConditionCured(int condition) {
+	void setConditionCured(uint64 condition) {
 		conditionCured = condition;
 	}
 
@@ -334,7 +332,7 @@ public:
 		mindCost = cost;
 	}
 
-	int getConditionCured() {
+	uint64 getConditionCured() {
 		return conditionCured;
 	}
 };

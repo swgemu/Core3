@@ -197,12 +197,6 @@ void ScriptAttacksManager::registerGlobals() {
 	setGlobalInt("MIND", 7);
 	setGlobalInt("FOCUS", 8);
 	setGlobalInt("WILLPOWER", 9);
-
-	//conditions
-	setGlobalInt("POISONED", PharmaceuticalImplementation::POISONED);
-	setGlobalInt("DISEASED", PharmaceuticalImplementation::DISEASED);
-	setGlobalInt("ONFIRE", PharmaceuticalImplementation::ONFIRE);
-
 }
 
 int ScriptAttacksManager::AddRandomPoolAttackTargetSkill(lua_State *L) {
@@ -811,7 +805,7 @@ int ScriptAttacksManager::AddCureTargetSkill(lua_State* L) {
 	string effect = skill.getStringField("effect");
 
 	int mindCost = skill.getIntField("mindCost");
-	int conditionCured = skill.getIntField("conditionCured");
+	uint64 conditionCured = skill.getLongField("conditionCured");
 	float range = skill.getFloatField("range");
 
 	heal = new CureTargetSkill(skillname, effect.c_str(), server);

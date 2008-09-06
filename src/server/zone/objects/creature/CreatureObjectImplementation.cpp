@@ -4675,7 +4675,10 @@ void CreatureObjectImplementation::explode(int level, bool destroy) {
 
 void CreatureObjectImplementation::deactivateWoundTreatment() {
 	float modSkill = (float)getSkillMod("healing_wound_speed");
-	int delay = (int)round((-1.0f/15.0f) * modSkill + (61.0f/3.0f));
+	int delay = (int)round((modSkill * -(2.0f / 25.0f)) + 20.0f);
+
+	//Force the delay to be at least 4 seconds.
+	delay = (delay < 4) ? 4 : delay;
 
 	doWoundTreatment = false;
 	if (woundTreatmentEvent == NULL) {
@@ -4692,7 +4695,10 @@ void CreatureObjectImplementation::activateWoundTreatment() {
 
 void CreatureObjectImplementation::deactivateInjuryTreatment() {
 	float modSkill = (float)getSkillMod("healing_injury_speed");
-	int delay = (int)round((-2.0f/19.0f) * modSkill + (390.0f/19.0f));
+	int delay = (int)round((modSkill * -(1.0f / 8.0f)) + 21.0f);
+
+	//Force the delay to be at least 4 seconds.
+	delay = (delay < 4) ? 4 : delay;
 
 	doInjuryTreatment = false;
 	if (injuryTreatmentEvent == NULL) {
@@ -4709,7 +4715,10 @@ void CreatureObjectImplementation::activateInjuryTreatment() {
 
 void CreatureObjectImplementation::deactivateStateTreatment() {
 	float modSkill = (float)getSkillMod("healing_injury_speed");
-	int delay = (int)round((-2.0f/19.0f) * modSkill + (390.0f/19.0f));
+	int delay = (int)round((modSkill * -(1.0f / 8.0f)) + 21.0f);
+
+	//Force the delay to be at least 4 seconds.
+	delay = (delay < 4) ? 4 : delay;
 
 	doStateTreatment = false;
 	if (stateTreatmentEvent == NULL) {
@@ -4726,7 +4735,10 @@ void CreatureObjectImplementation::activateStateTreatment() {
 
 void CreatureObjectImplementation::deactivateConditionTreatment() {
 	float modSkill = (float)getSkillMod("healing_wound_speed");
-	int delay = (int)round((-1.0f/15.0f) * modSkill + (61.0f/3.0f));
+	int delay = (int)round((modSkill * -(2.0f / 25.0f)) + 20.0f);
+
+	//Force the delay to be at least 4 seconds.
+	delay = (delay < 4) ? 4 : delay;
 
 	doConditionTreatment = false;
 	if (conditionTreatmentEvent == NULL) {

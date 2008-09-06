@@ -58,5 +58,5 @@ poisonCureC = Object:new {
 	
 	effectiveness = 413,
 	
-	conditionCured = POISONED
+	conditionCured = POISONED_STATE
 }

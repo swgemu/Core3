@@ -80,7 +80,7 @@ void StatePackImplementation::parseItemAttributes() {
 	PharmaceuticalImplementation::parseItemAttributes();
 
 	string attr = "stateAffected";
-	setStateAffected(itemAttributes->getIntAttribute(attr));
+	setStateAffected(itemAttributes->getUnsignedLongAttribute(attr));
 }
 
 void StatePackImplementation::addAttributes(AttributeListMessage* alm) {

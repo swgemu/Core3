@@ -179,6 +179,11 @@ public:
 			return 0;
 		}
 
+		if (creature->isMeditating()) {
+			creature->sendSystemMessage("You can not Heal Wounds while meditating.");
+			return 0;
+		}
+
 		if (creature->isRidingCreature()) {
 			creature->sendSystemMessage("You cannot do that while Riding a Creature.");
 			return 0;
@@ -381,7 +386,7 @@ public:
 
 		if (creature != creatureTarget) {
 			msgPlayer << msgTail.str();
-			creatureTarget->sendSystemMessage(msgPlayer.str());
+			creature->sendSystemMessage(msgPlayer.str());
 		}
 	}
 

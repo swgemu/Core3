@@ -56,7 +56,7 @@ CurePoisonSkill = {
 	animation = "heal_self",
 	
 	mindCost = -100,
-	conditionCured = POISONED,
+	conditionCured = POISONED_STATE,
 	range = 6.0
 }
 
@@ -68,7 +68,7 @@ CureDiseaseSkill = {
 	animation = "heal_self",
 
 	mindCost = -100,
-	conditionCured = DISEASED,
+	conditionCured = DISEASED_STATE,
 	range = 6.0
 }
 
@@ -80,7 +80,7 @@ ExtinguishFireSkill = {
 	animation = "heal_self",
 
 	mindCost = -100,
-	conditionCured = ONFIRE,
+	conditionCured = ONFIRE_STATE,
 	range = 6.0
 }
 
