@@ -1145,7 +1145,6 @@ void PlayerManagerImplementation::updateConsentList(Player* player) {
 			cout << "Unhandled exception in PlayerManagerImplementation::updateConsentList()" << endl;
 			player->error("Unhandled exception in PlayerManagerImplementation::updateConsentList()");
 		}
-		delete query;
 	}
 }
 

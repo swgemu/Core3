@@ -62,6 +62,8 @@ which carries forward this exception.
 #include "target/CureTargetSkill.h"
 #include "target/DiagnoseTargetSkill.h"
 #include "target/ReviveTargetSkill.h"
+#include "target/FirstAidTargetSkill.h"
+#include "target/TendHealTargetSkill.h"
 
 #include "self/HealSelfSkill.h"
 #include "self/force/ForceHealSelfSkill.h"
