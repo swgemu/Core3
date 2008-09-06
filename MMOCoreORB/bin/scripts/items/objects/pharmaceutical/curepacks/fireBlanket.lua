@@ -58,5 +58,5 @@ fireBlanket = Object:new {
 	
 	effectiveness = 413,
 	
-	conditionCured = ONFIRE
+	conditionCured = ONFIRE_STATE
 }

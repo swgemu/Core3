@@ -58,5 +58,5 @@ diseaseCureC = Object:new {
 	
 	effectiveness = 413,
 	
-	conditionCured = DISEASED
+	conditionCured = DISEASED_STATE
 }

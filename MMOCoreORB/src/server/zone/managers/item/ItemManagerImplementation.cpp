@@ -741,14 +741,14 @@ void ItemManagerImplementation::registerGlobals() {
 	setGlobalInt("FOCUS", PharmaceuticalImplementation::FOCUS);
 	setGlobalInt("WILLPOWER", PharmaceuticalImplementation::WILLPOWER);
 
-	setGlobalInt("INTIMIDATED", PharmaceuticalImplementation::INTIMIDATED);
-	setGlobalInt("STUNNED", PharmaceuticalImplementation::STUNNED);
-	setGlobalInt("DIZZY", PharmaceuticalImplementation::DIZZY);
-	setGlobalInt("BLINDED", PharmaceuticalImplementation::BLINDED);
+	setGlobalInt("INTIMIDATED", CreatureObjectImplementation::INTIMIDATED_STATE);
+	setGlobalInt("STUNNED_STATE", CreatureObjectImplementation::STUNNED_STATE);
+	setGlobalInt("DIZZY_STATE", CreatureObjectImplementation::DIZZY_STATE);
+	setGlobalInt("BLINDED_STATE", CreatureObjectImplementation::BLINDED_STATE);
 
-	setGlobalInt("ONFIRE", PharmaceuticalImplementation::ONFIRE);
-	setGlobalInt("DISEASED", PharmaceuticalImplementation::DISEASED);
-	setGlobalInt("POISONED", PharmaceuticalImplementation::POISONED);
+	setGlobalInt("ONFIRE_STATE", CreatureObjectImplementation::ONFIRE_STATE);
+	setGlobalInt("DISEASED_STATE", CreatureObjectImplementation::DISEASED_STATE);
+	setGlobalInt("POISONED_STATE", CreatureObjectImplementation::POISONED_STATE);
 }
 
 int ItemManagerImplementation::runItemLUAFile(lua_State* L) {
@@ -856,7 +856,7 @@ TangibleObject* ItemManagerImplementation::createTemplateFromLua(LuaObject itemc
 		case PharmaceuticalImplementation::CUREPACK:
 		{
 			float eff = itemconfig.getFloatField("effectiveness");
-			int condition = itemconfig.getIntField("conditionCured");
+			uint64 condition = itemconfig.getLongField("conditionCured");
 
 			CurePack* curepack = (CurePack*) item;
 			curepack->setEffectiveness(eff);
@@ -865,7 +865,7 @@ TangibleObject* ItemManagerImplementation::createTemplateFromLua(LuaObject itemc
 		}
 		case PharmaceuticalImplementation::STATEPACK:
 		{
-			int state = itemconfig.getIntField("stateAffected");
+			uint64 state = itemconfig.getLongField("stateAffected");
 
 			StatePack* statepack = (StatePack*) item;
 			statepack->setStateAffected(state);

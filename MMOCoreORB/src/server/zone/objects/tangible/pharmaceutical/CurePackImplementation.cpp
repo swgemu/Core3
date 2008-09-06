@@ -69,13 +69,13 @@ int CurePackImplementation::useObject(Player* player) {
 	uint32 actionCRC = 0;
 
 	switch (getConditionCured()) {
-	case POISONED:
+	case CreatureObjectImplementation::POISONED_STATE:
 		actionCRC = 0x1754A3E5; //curepoison
 		break;
-	case DISEASED:
+	case CreatureObjectImplementation::DISEASED_STATE:
 		actionCRC = 0xE994DE9C; //curedisease
 		break;
-	case ONFIRE:
+	case CreatureObjectImplementation::ONFIRE_STATE:
 	default:
 		actionCRC = 0xDF49EA58; //extinguishfire
 		break;
@@ -98,7 +98,7 @@ void CurePackImplementation::parseItemAttributes() {
 	setEffectiveness(itemAttributes->getFloatAttribute(attr));
 
 	attr = "conditionCured";
-	setConditionCured(itemAttributes->getIntAttribute(attr));
+	setConditionCured(itemAttributes->getUnsignedLongAttribute(attr));
 }
 
 void CurePackImplementation::addAttributes(AttributeListMessage* alm) {

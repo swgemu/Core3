@@ -79,25 +79,11 @@ public:
 	static const int FOCUS = 8;
 	static const int WILLPOWER = 9;
 
-	//Affected States
-	static const int DIZZY = 10;
-	static const int STUNNED = 11;
-	static const int INTIMIDATED = 12;
-	static const int BLINDED = 13;
-
-	//Affected Conditions
-	static const int POISONED = 14;
-	static const int DISEASED = 15;
-	static const int ONFIRE = 16;
-
 public:
 
 	PharmaceuticalImplementation(uint64 oid, uint32 tempCRC, const unicode& n, const string& tempn, int mptype);
 	PharmaceuticalImplementation(CreatureObject* creature, uint64 oid, uint32 tempCRC, const unicode& n, const string& tempn, int mptype);
 	PharmaceuticalImplementation(CreatureObject* creature, uint32 tempCRC, const unicode& n, const string& tempn, int mptype);
-
-	//PharmaceuticalImplementation(uint64 oid, uint32 tempCRC, const unicode& n, const string& tempn, int mptype);
-	//PharmaceuticalImplementation(CreatureObject* creature, uint32 tempCRC, const unicode& n, const string& tempn, int mptype);
 
 	~PharmaceuticalImplementation();
 
@@ -255,43 +241,45 @@ public:
 
 	static const int getStateFromName(const string& state) {
 		if (state == "intimidated") {
-			return INTIMIDATED;
+			return CreatureObjectImplementation::INTIMIDATED_STATE;
 		} else if (state == "dizzy") {
-			return DIZZY;
+			return CreatureObjectImplementation::DIZZY_STATE;
 		} else if (state == "blinded") {
-			return BLINDED;
+			return CreatureObjectImplementation::BLINDED_STATE;
 		} else if (state == "stunned") {
-			return STUNNED;
+			return CreatureObjectImplementation::STUNNED_STATE;
 		} else {
 			return UNKNOWN;
 		}
 	}
 
-	static string getStateName(int state) {
+	static string getStateName(uint64 state) {
 		switch (state) {
-		case BLINDED:
+		case CreatureObjectImplementation::BLINDED_STATE:
 			return "blinded";
 			break;
-		case STUNNED:
+		case CreatureObjectImplementation::STUNNED_STATE:
 			return "stunned";
 			break;
-		case DIZZY:
+		case CreatureObjectImplementation::DIZZY_STATE:
 			return "dizzy";
 			break;
-		case INTIMIDATED:
-		default:
+		case CreatureObjectImplementation::INTIMIDATED_STATE:
 			return "intimidated";
+			break;
+		default:
+			return "unknown";
 			break;
 		}
 	}
 
 	static const int getConditionFromName(const string& condition) {
 		if (condition == "poisoned") {
-			return POISONED;
+			return CreatureObjectImplementation::POISONED_STATE;
 		} else if (condition == "diseased") {
-			return DISEASED;
+			return CreatureObjectImplementation::DISEASED_STATE;
 		} else if (condition == "onfire") {
-			return ONFIRE;
+			return CreatureObjectImplementation::ONFIRE_STATE;
 		} else {
 			return UNKNOWN;
 		}
@@ -299,13 +287,13 @@ public:
 
 	static string getConditionName(int condition) {
 		switch (condition) {
-		case POISONED:
+		case CreatureObjectImplementation::POISONED_STATE:
 			return "poison";
 			break;
-		case DISEASED:
+		case CreatureObjectImplementation::DISEASED_STATE:
 			return "disease";
 			break;
-		case ONFIRE:
+		case CreatureObjectImplementation::ONFIRE_STATE:
 		default:
 			return "fire";
 			break;

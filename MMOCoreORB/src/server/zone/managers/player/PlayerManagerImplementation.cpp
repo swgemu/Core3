@@ -1115,28 +1115,37 @@ void PlayerManagerImplementation::updateConsentList(Player* player) {
 	if (player == NULL)
 		return;
 
-	stringstream deleteq;
-	deleteq << "DELETE FROM consentlist WHERE character_id = " << player->getCharacterID() << ";";
-	ServerDatabase::instance()->executeStatement(deleteq);
+	//Remove all previous database entries for Consent List for this Player
+	stringstream query;
+	query << "DELETE FROM consentlist WHERE character_id = " << player->getCharacterID() << ";";
+	ServerDatabase::instance()->executeStatement(query);
 
+	int size = player->getConsentSize();
 
-	deleteq.str("");
+	if (size > 0) {
+		query.str("");
+		query << "INSERT DELAYED INTO consentlist (character_id, target_id) VALUES ";
 
-	if (player->getConsentSize() > 0) {
-		stringstream insertq;
-		insertq.str("");
+		stringstream insertSets;
 
-		for (int i = 0; i < player->getConsentSize(); i++) {
-			insertq << "INSERT DELAYED INTO consentlist set character_id = " << player->getCharacterID() << ", "
-					<< "target_id = " << player->getConsentEntry(i) << ";";
+		for (int i=0; i < size; i++) {
+			insertSets << "(" << player->getCharacterID() << ",(SELECT character_id FROM characters WHERE firstname = '" << player->getConsentEntry(i) << "'))";
+			if (i < size)
+				insertSets << ",";
 		}
+
+		query << insertSets << ";";
 
 		try {
-			ServerDatabase::instance()->executeStatement(insertq);
+			ServerDatabase::instance()->executeStatement(query);
 		} catch (DatabaseException& e) {
 			cout << e.getMessage() << endl;
+			player->error(e.getMessage());
+		} catch (...) {
+			cout << "Unhandled exception in PlayerManagerImplementation::updateConsentList()" << endl;
+			player->error("Unhandled exception in PlayerManagerImplementation::updateConsentList()");
 		}
-		insertq.str("");
+		delete query;
 	}
 }
 
