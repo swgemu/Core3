@@ -156,6 +156,11 @@ public:
 			return 0;
 		}
 
+		if (creature->isMeditating()) {
+			creature->sendSystemMessage("You can not Heal Enhance while meditating.");
+			return 0;
+		}
+
 		if (creature->isRidingCreature()) {
 			creature->sendSystemMessage("You cannot do that while Riding a Creature.");
 			return 0;
@@ -196,7 +201,6 @@ public:
 			return 0;
 		}
 
-		//TODO: BF MESSAGE
 		sendBFMessage(creature, creatureTarget, battleFatigue);
 
 		if (healthDamage > 0)
@@ -204,13 +208,13 @@ public:
 		if (actionDamage > 0)
 			creatureTarget->changeActionBar(actionDamage);
 
-		sendHealMessage(creature, creatureTarget, healthDamage, actionDamage);
-
 		if (creatureTarget->isIncapacitated()) {
 			//Bring incapped players back from incap.
 			if (creatureTarget->getHealth() > 0 && creatureTarget->getAction() > 0 && creatureTarget->getMind() > 0)
 				((Player*)creatureTarget)->changePosture(CreatureObjectImplementation::UPRIGHT_POSTURE);
 		}
+
+		sendHealMessage(creature, creatureTarget, healthDamage, actionDamage);
 
 		creature->changeMindBar(mindCost);
 

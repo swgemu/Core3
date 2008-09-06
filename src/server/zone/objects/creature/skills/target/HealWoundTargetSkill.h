@@ -278,7 +278,7 @@ public:
 			default:
 				creature->changeHealthWoundsBar(-woundsHealed);
 				break;
-			}
+		}
 	}
 
 	int calculateHeal(CreatureObject* creature, int woundPower, int poolAffected) {

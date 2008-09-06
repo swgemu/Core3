@@ -103,6 +103,11 @@ public:
 			return 0;
 		}
 
+		if (creature->isMeditating()) {
+			creature->sendSystemMessage("You can not Heal Enhance while meditating.");
+			return 0;
+		}
+
 		if (creature->isRidingCreature()) {
 			creature->sendSystemMessage("You cannot do that while Riding a Creature.");
 			return 0;
