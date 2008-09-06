@@ -134,7 +134,6 @@ public:
 		}
 
 		if (tendDamage) {
-			cout << "in tenddamage" << endl;
 			int healthDamage = 0, actionDamage = 0;
 
 			calculateHeal(creatureTarget, healthDamage, actionDamage, healthHealed, actionHealed);
@@ -172,10 +171,6 @@ public:
 		}
 
 		if (tendWound) {
-			if (!modifier.empty()) {
-				cout << "modifier is " << modifier << endl;
-			}
-
 			int woundsHealed = calculateWoundHeal(creatureTarget, 25, woundPool);
 
 			if (woundsHealed <= 0) {
@@ -336,7 +331,6 @@ public:
 	}
 
 	float calculateSpeed(CreatureObject* creature) {
-		cout << "speed is " << speed << endl;
 		return speed;
 	}
 
