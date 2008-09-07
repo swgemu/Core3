@@ -940,61 +940,97 @@ void ObjectControllerMessage::parseSetStatMigrationDataRequest(Player* player, M
 	uint32 targetAction, targetQuickness, targetStamina;
 	uint32 targetMind, targetFocus, targetWillpower;
 
+	/*****************************************************
+	 * TODO: Stat migration bug tracking.  Remove later. *
+	 ****************************************************/
+	ChatManager * chatManager = player->getZone()->getChatManager();
+	const string  sender = player->getCharacterName().c_str();
+	unicode header = "STAT MIGRATION BUG REPORT: " + sender;
+	stringstream ss;
+	ss << "The stat migration protection system has been triggered for user " << sender << "." << endl;
+	ss << "The following is the relevant debug information:" << endl << endl;
+	ss << "Player Name: " << player->getCharacterName().c_str() << endl;
+	ss << "Species: " << player->getSpeciesName() << endl;
+	ss << "Starting Profession: " << player->getStartingProfession() << endl;
+	ss << "Target Stats: " << stats.c_str() << endl;
+	ss << "Min/Max/Current Health: " << player->getMinHealth() << " | " << player->getMaxHealth() << " | " << player->getBaseHealth() << endl;
+	ss << "Min/Max/Current Strength: " << player->getMinStrength() << " | " << player->getMaxStrength() << " | " << player->getBaseStrength() << endl;
+	ss << "Min/Max/Current Constitution: " << player->getMinConstitution() << " | " << player->getMaxConstitution() << " | " << player->getBaseConstitution() << endl;
+	ss << "Min/Max/Current Action: " << player->getMinAction() << " | " << player->getMaxAction() << " | " << player->getBaseAction() << endl;
+	ss << "Min/Max/Current Quickness: " << player->getMinQuickness() << " | " << player->getMaxQuickness() << " | " << player->getBaseQuickness() << endl;
+	ss << "Min/Max/Current Stamina: " << player->getMinStamina() << " | " << player->getMaxStamina() << " | " << player->getBaseStamina() << endl;
+	ss << "Min/Max/Current Mind: " << player->getMinMind() << " | " << player->getMaxMind() << " | " << player->getBaseMind() << endl;
+	ss << "Min/Max/Current Focus: " << player->getMinFocus() << " | " << player->getMaxFocus() << " | " << player->getBaseFocus() << endl;
+	ss << "Min/Max/Current Willpower: " << player->getMinWillpower() << " | " << player->getMaxWillpower() << " | " << player->getBaseWillpower() << endl;
+	ss << "Total Attrib Points: " << player->getTotalAttribPoints();
+	unicode body = unicode(ss.str());
+	const string reciever = "Bobius";
+	/*******************************************************/
+
 	for(int i = 0; tokenizer.hasMoreTokens(); i++) {
 		uint32 value = tokenizer.getIntToken();
 		switch(i) {
 			case 0:
-				if (value < player->getMinHealth() || value > player->getMaxHealth())
+				if (value < player->getMinHealth() || value > player->getMaxHealth()) {
+					chatManager->sendMail(sender, header, body, reciever); //TODO: remove bug tracking code later
 					return;
-				else
+				} else
 					targetHealth = value;
 				break;
 			case 1:
-				if (value < player->getMinStrength() || value > player->getMaxStrength())
+				if (value < player->getMinStrength() || value > player->getMaxStrength()) {
+					chatManager->sendMail(sender, header, body, reciever); //TODO: remove bug tracking code later
 					return;
-				else
+				} else
 					targetStrength = value;
 				break;
 			case 2:
-				if (value < player->getMinConstitution() || value > player->getMaxConstitution())
+				if (value < player->getMinConstitution() || value > player->getMaxConstitution()) {
+					chatManager->sendMail(sender, header, body, reciever); //TODO: remove bug tracking code later
 					return;
-				else
+				} else
 					targetConstitution = value;
 				break;
 			case 3:
-				if (value < player->getMinAction() || value > player->getMaxAction())
+				if (value < player->getMinAction() || value > player->getMaxAction()) {
+					chatManager->sendMail(sender, header, body, reciever); //TODO: remove bug tracking code later
 					return;
-				else
+				} else
 					targetAction = value;
 				break;
 			case 4:
-				if (value < player->getMinQuickness() || value > player->getMaxQuickness())
+				if (value < player->getMinQuickness() || value > player->getMaxQuickness()) {
+					chatManager->sendMail(sender, header, body, reciever); //TODO: remove bug tracking code later
 					return;
-				else
+				} else
 					targetQuickness = value;
 				break;
 			case 5:
-				if (value < player->getMinStamina() || value > player->getMaxStamina())
+				if (value < player->getMinStamina() || value > player->getMaxStamina()) {
+					chatManager->sendMail(sender, header, body, reciever); //TODO: remove bug tracking code later
 					return;
-				else
+				} else
 					targetStamina = value;
 				break;
 			case 6:
-				if (value < player->getMinMind() || value > player->getMaxMind())
+				if (value < player->getMinMind() || value > player->getMaxMind()) {
+					chatManager->sendMail(sender, header, body, reciever); //TODO: remove bug tracking code later
 					return;
-				else
+				} else
 					targetMind = value;
 				break;
 			case 7:
-				if (value < player->getMinFocus() || value > player->getMaxFocus())
+				if (value < player->getMinFocus() || value > player->getMaxFocus()) {
+					chatManager->sendMail(sender, header, body, reciever); //TODO: remove bug tracking code later
 					return;
-				else
+				} else
 					targetFocus = value;
 				break;
 			case 8:
-				if (value < player->getMinWillpower() || value > player->getMaxWillpower())
+				if (value < player->getMinWillpower() || value > player->getMaxWillpower()) {
+					chatManager->sendMail(sender, header, body, reciever); //TODO: remove bug tracking code later
 					return;
-				else
+				} else
 					targetWillpower = value;
 				break;
 			default: // points available
@@ -1016,8 +1052,10 @@ void ObjectControllerMessage::parseSetStatMigrationDataRequest(Player* player, M
 		player->setTargetMind(targetMind);
 		player->setTargetFocus(targetFocus);
 		player->setTargetWillpower(targetWillpower);
+	} else {
+		chatManager->sendMail(sender, header, body, reciever); //TODO: remove bug tracking code later
+		return;
 	}
-
 
 	//if (tokenizer.hasMoreTokens()) {
 	//	uint64 targetID = tokenizer.getLongToken();
