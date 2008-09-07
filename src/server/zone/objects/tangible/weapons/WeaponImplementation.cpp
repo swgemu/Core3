@@ -50,7 +50,7 @@ which carries forward this exception.
 #include "WeaponImplementation.h"
 
 WeaponImplementation::WeaponImplementation(uint64 objid, uint32 tempCRC, const unicode& n, const string& tempn, bool eqp, int tp, int cat) 
-		: WeaponServant(objid, n, tempn, tempCRC, WEAPON) {
+		: WeaponServant(objid, tempCRC, n, tempn, WEAPON) {
 	type = tp;
 	setCategory(cat);
 		

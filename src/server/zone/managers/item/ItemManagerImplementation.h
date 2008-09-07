@@ -51,6 +51,8 @@
 
 #include "../../objects/player/Player.h"
 
+#include "../../objects/tangible/deed/DeedObject.h"
+
 #include "ItemManager.h"
 
 #include "StartingItemList.h"
@@ -125,6 +127,8 @@ public:
 
 	void createPlayerItem(Player* player, TangibleObject* item);
 
+	void createPlayerDeed(Player* player, DeedObject* item);
+	
 	void deletePlayerItem(Player* player, TangibleObject* item, bool notify);
 
 	void savePlayerItem(Player* player, TangibleObject* item);
@@ -158,6 +162,7 @@ public:
 };
 
 #endif /*ITEMMANAGERIMPLEMENTATION_H_*/
+
 
 
 

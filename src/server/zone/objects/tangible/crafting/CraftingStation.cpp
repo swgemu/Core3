@@ -183,11 +183,11 @@ DistributedObjectAdapter* CraftingStationHelper::createAdapter(DistributedObject
  *	CraftingStationServant
  */
 
-CraftingStationServant::CraftingStationServant(unsigned long long oid, const unicode& n, const string& tempn, unsigned int tempCRC, int tp) : TangibleObjectImplementation(oid, n, tempn, tempCRC, tp) {
+CraftingStationServant::CraftingStationServant(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, int tp) : TangibleObjectImplementation(oid, tempCRC, n, tempn, tp) {
 	_classHelper = CraftingStationHelper::instance();
 }
 
-CraftingStationServant::CraftingStationServant(CreatureObject* creature, const unicode& n, const string& tempn, unsigned int tempCRC, int tp) : TangibleObjectImplementation(creature, n, tempn, tempCRC, tp) {
+CraftingStationServant::CraftingStationServant(CreatureObject* creature, unsigned int tempCRC, const unicode& n, const string& tempn, int tp) : TangibleObjectImplementation(creature, tempCRC, n, tempn, tp) {
 	_classHelper = CraftingStationHelper::instance();
 }
 

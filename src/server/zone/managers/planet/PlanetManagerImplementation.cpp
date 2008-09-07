@@ -45,6 +45,11 @@ which carries forward this exception.
 #include "events/ShuttleLandingEvent.h"
 #include "events/ShuttleTakeOffEvent.h"
 
+#include "events/HarvesterSpawnEvent.h"
+#include "events/InstallationSpawnEvent.h"
+#include "events/TempInstallationSpawnEvent.h"
+#include "events/TempInstallationDespawnEvent.h"
+
 #include "PlanetManagerImplementation.h"
 
 #include "../../ZoneProcessServerImplementation.h"
@@ -128,6 +133,8 @@ void PlanetManagerImplementation::start() {
 
 	if (shuttleMap->size() > 0)
 		takeOffShuttles();
+		
+	loadPlayerStructures();
 }
 
 void PlanetManagerImplementation::stop() {
@@ -141,6 +148,87 @@ void PlanetManagerImplementation::stop() {
 
 	unlock();
 }
+
+void PlanetManagerImplementation::loadPlayerStructures() {
+	lock();
+	
+	int planetid = zone->getZoneID();
+	
+	stringstream query;
+	query << "SELECT * FROM character_structures WHERE zoneid = " << planetid << ";";
+	
+	ResultSet* result = ServerDatabase::instance()->executeQuery(query);
+	
+	while (result->next()) {
+		uint64 oid = result->getUnsignedLong(1);
+		uint64 parentId = result->getUnsignedLong(2);
+		
+		string title = result->getString(3);
+		
+		string tempname = result->getString(4);
+		
+		uint64 crc = result->getUnsignedLong(5);
+		
+		string file = result->getString(6);
+		
+		float oX = result->getFloat(7);
+		float oY = result->getFloat(8);
+		float oZ = result->getFloat(9);
+		float oW = result->getFloat(10);
+		
+		float x = result->getFloat(11);
+		float z = result->getFloat(12);					
+		float y = result->getFloat(13);
+		
+		float type = result->getFloat(14);
+		if ((int) file.find("object/building/") >= 0) {
+			BuildingObject* buio = new BuildingObject(oid, true);
+
+			buio->setObjectCRC(String::hashCode(file));
+			buio->initializePosition(x, z, y);
+			buio->setDirection(oX, oZ, oY, oW);
+			//buio->insertToZone(zone);
+			//zone->registerObject(buio);
+			
+			buildingMap->put(oid, buio);
+		} else if ((int)file.find("object/cell/") >= 0) {
+			BuildingObject* buio = buildingMap->get(parentId);
+			
+			if (buio == NULL)
+				buio = loadBuilding(parentId, planetid);
+			
+			CellObject* cell = new CellObject(oid, buio);
+			
+			cell->setObjectCRC(String::hashCode(file));
+			cell->initializePosition(x, z, y);
+			cell->setDirection(oX, oZ, oY, oW);
+			//cell->insertToZone(zone);
+			zone->registerObject(cell);
+			
+			buio->addCell(cell);
+			cellMap->put(oid, cell);
+		} else if ((int)file.find("object/installation/") >= 0) {
+			// Need to load player installations from DB here
+			/*uint64 newId = getNextStaticObjectID(true);
+			
+			HarvesterObjectImplementation* hisoImpl = 
+				new HarvesterObjectImplementation(newId, tempname);
+			
+			hisoImpl->setObjectCRC(String::hashCode(file));
+			hisoImpl->initializePosition(x, 9, y);
+			hisoImpl->setDirection(oX, oZ, oY, oW);
+			HarvesterObject* hiso = (HarvesterObject*) hisoImpl->deploy();
+			hiso->insertToZone(zone);
+			
+			zone->registerObject(hiso);*/
+		}
+	}
+	
+	delete result;
+	
+	unlock();
+}
+
 
 void PlanetManagerImplementation::clearShuttles() {
 	if (shuttleTakeOffEvent->isQueued())
@@ -724,6 +812,178 @@ BuildingObject* PlanetManagerImplementation::loadBuilding(uint64 oid, int planet
 	}
 
 	return buio;
+}
+
+void PlanetManagerImplementation::placePlayerStructure(Player * player,
+		uint64 objectID, float x, float y, int orient) {
+	try {
+
+		DeedObject * deed = (DeedObject*) player->getInventoryItem(objectID);
+		
+		float oX, oY, oZ, oW;
+
+		switch(orient) {
+			case 0:
+				oX = 0;
+				oY = 0;
+				oZ = 0;
+				oW = 1;
+				break;
+			case 1:
+				oX = 0;
+				oY = 0.707106;
+				oZ = 0;
+				oW = 0.707106;
+				break;
+			case 2:
+				oX = 0;
+				oY = 1;
+				oZ = 0;
+				oW = 0;
+				break;
+			case 3:
+				oX = 0;
+				oY = -0.707106;
+				oZ = 0;
+				oW = 0.707106;
+				break;
+		}
+		
+		spawnTempStructure(player, deed, x, player->getPositionZ(), y, oX, oZ, oY, oW);
+		
+cout << "Deed is = " << deed->getDeedSubType() << endl;
+		switch(deed->getDeedSubType()) {
+			case DeedObjectImplementation::HARVESTER:
+				
+				spawnHarvester(player, deed, x, player->getPositionZ(), y, oX, oZ, oY, oW);			
+				break;
+				
+			case DeedObjectImplementation::GENERATOR:
+			case DeedObjectImplementation::FACTORY:
+				
+				spawnInstallation(player, deed, x, player->getPositionZ(), y, oX, oZ, oY, oW);
+				break;
+				
+			case DeedObjectImplementation::BUILDING:
+
+				spawnBuilding(player, deed, x, player->getPositionZ(), y, oX, oZ, oY, oW);
+				break;
+				
+			default:
+				break;
+		}
+	}
+	catch(...) {
+		cout << "Exception in PlanetManagerImplementation::placePlayerStructure\n";
+	}
+}
+void PlanetManagerImplementation::spawnTempStructure(Player * player,
+		DeedObject * deed, float x, float z, float y, float oX, float oZ,
+		float oY, float oW) {
+
+	InstallationObject* inso = new InstallationObject(player->getNewItemID(), deed);
+
+	//inso->setObjectID(player->getNewItemID());
+	inso->setObjectCRC(String::hashCode(deed->getTargetTempFile()));
+	inso->setObjectSubType(0);
+	inso->initializePosition(x, z, y);
+	inso->setDirection(oX, oZ, oY, oW);
+	inso->setOwner(player->getFirstName());
+	inso->setZoneProcessServer(server);
+
+	tempInstallationSpawnEvent = new TempInstallationSpawnEvent(player, inso);
+	tempInstallationDespawnEvent = new TempInstallationDespawnEvent(inso);
+
+	//server->addEvent(tempInstallationSpawnEvent, 20);
+	//server->addEvent(tempInstallationDespawnEvent, 5000);
+}
+void PlanetManagerImplementation::spawnInstallation(Player * player,
+		DeedObject * deed, float x, float z, float y, float oX, float oZ,
+		float oY, float oW) {
+	
+	InstallationObject* inso = new InstallationObject(player->getNewItemID(), deed);
+
+	//inso->setObjectID(player->getNewItemID());
+	inso->setObjectCRC(String::hashCode(deed->getTargetFile()));
+	inso->initializePosition(x, z, y);
+	inso->setDirection(oX, oZ, oY, oW);
+	inso->setOwner(player->getFirstName());
+	inso->setZoneProcessServer(server);
+
+	installationSpawnEvent = new InstallationSpawnEvent(player, inso);
+
+	server->addEvent(installationSpawnEvent, 5500);
+}
+
+void PlanetManagerImplementation::spawnHarvester(Player * player,
+		DeedObject * deed, float x, float z, float y, float oX, float oZ,
+		float oY, float oW) {
+	
+	cout << "PlanetManagerImplementation::spawnHarvester" << endl;
+	HarvesterObject*  hino = new HarvesterObject(player->getNewItemID(), deed);
+
+	//hino->setObjectID(player->getNewItemID());
+	hino->setObjectCRC(String::hashCode(deed->getTargetFile()));
+	hino->initializePosition(x, z, y);
+	hino->setDirection(oX, oZ, oY, oW);
+	hino->setOwner(player->getFirstName());
+	hino->setZoneProcessServer(server);
+
+	cout << "PlanetManagerImplementation::spawnHarvester, creating event" << endl;
+	harvesterSpawnEvent = new HarvesterSpawnEvent(player, hino);
+
+	server->addEvent(harvesterSpawnEvent, 5500);
+	cout << "PlanetManagerImplementation::did spawnHarvester, creating event" << endl;
+}
+
+void PlanetManagerImplementation::spawnBuilding(Player * player,
+		DeedObject * thedeed, float x, float z, float y, float oX, float oZ,
+		float oY, float oW) {
+	PlayerHouseDeed * deed = (PlayerHouseDeed *) thedeed;
+
+	cout << "spawning building" << endl;
+
+	
+	BuildingObject* buio = new BuildingObject(player->getNewItemID(), false);
+	buio->setZoneProcessServer(server);
+
+	buio->setObjectCRC(String::hashCode(deed->getTargetFile()));
+	buio->initializePosition(x, z, y);
+	buio->setDirection(oX, oZ, oY, oW);
+	 
+	//zone->registerObject(buio);
+
+	
+	
+	cout << "adding player cells: " << deed->getCellCount() << endl;
+	addPlayerCells(player, buio, deed->getCellCount());
+	
+	//return;
+	
+	buio->insertToZone(zone);
+	
+
+	buildingMap->put(buio->getObjectID(), buio);	
+}
+void PlanetManagerImplementation::addPlayerCells(Player * player, BuildingObject * buio, int cellCount) {
+
+	for(int i = 1; i <= cellCount; ++i){
+		// Get new cell object ID
+		cout << "adding cell" << endl;
+		uint64 oid = player->getNewItemID();
+	
+		CellObject* cell = new CellObject(oid, buio, i); // server->getZoneServer()->getNextCellID()
+				
+		cell->setObjectCRC(String::hashCode("object/cell/shared_cell.iff"));
+		cell->initializePosition(0, 0, 0);
+		cell->setDirection(0, 0, 1, 0); // void SceneObject::setDirection(float x, float z, float y, float w) {
+		//cell->insertToZone(zone);
+		zone->registerObject(cell);
+				
+		buio->addCell(cell);
+		cellMap->put(oid, cell);
+	}
+	
 }
 
 void PlanetManagerImplementation::landShuttles() {

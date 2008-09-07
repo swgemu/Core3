@@ -56,11 +56,11 @@ interface ResourceContainer implements TangibleObject {
 	}
 	
 	ResourceContainer(unsigned long oid, unsigned int tempCRC, const unicode n, const string tempn) {
-		super(oid, n, tempn, tempCRC, int tp);
+		super(oid, tempCRC, n, tempn, int tp);
 	}
 	
 	ResourceContainer(CreatureObject creature, unsigned int tempCRC, const unicode n, const string tempn) {
-		super(creature, n, tempn, tempCRC, int tp);
+		super(creature, tempCRC, n, tempn, int tp);
 	}
 
 	boolean compare(ResourceContainer inResource);

@@ -54,7 +54,7 @@ import "../powerup/Powerup";
 
 interface Weapon implements TangibleObject {
 	Weapon(unsigned long oid, unsigned int tempCRC, const unicode n, const string tempn, boolean eqp, int tp, int cat) {
-		super(oid, n, tempn, tempCRC, tp);
+		super(oid, tempCRC, n, tempn, tp);
 	}
 	
 	Weapon(CreatureObject creature, const string temp, const unicode n, const string tempn, boolean eqp, int tp, int cat) {

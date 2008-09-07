@@ -52,11 +52,11 @@ import "../TangibleObject";
 
 interface SurveyTool implements TangibleObject {
 	SurveyTool(unsigned long oid, unsigned int tempCRC, const unicode n, const string tempn) {
-		super(oid, n, tempn, tempCRC, int tp);
+		super(oid, tempCRC, n, tempn, int tp);
 	}
 
 	SurveyTool(CreatureObject creature, unsigned int tempCRC, const unicode n, const string tempn) {
-		super(creature, n, tempn, tempCRC, int tp);
+		super(creature, tempCRC, n, tempn, int tp);
 	}
 	
 	int useObject(Player player);

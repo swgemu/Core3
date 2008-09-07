@@ -61,7 +61,7 @@ ResourceContainerImplementation::ResourceContainerImplementation(uint64 oid)
 }
 
 ResourceContainerImplementation::ResourceContainerImplementation(uint64 oid, uint32 tempCRC, const unicode& n,
-		const string& tempn) : ResourceContainerServant(oid, n, tempn, tempCRC, RESOURCECONTAINER) {
+		const string& tempn) : ResourceContainerServant(oid, tempCRC, n, tempn, RESOURCECONTAINER) {
 	templateTypeName = "obj_n";
 
 	name = n;
@@ -71,7 +71,7 @@ ResourceContainerImplementation::ResourceContainerImplementation(uint64 oid, uin
 }
 
 ResourceContainerImplementation::ResourceContainerImplementation(CreatureObject* creature, uint32 tempCRC,
-		const unicode& n, const string& tempn) : ResourceContainerServant(creature, n, tempn, tempCRC, RESOURCECONTAINER) {
+		const unicode& n, const string& tempn) : ResourceContainerServant(creature, tempCRC, n, tempn, RESOURCECONTAINER) {
 	templateTypeName = "obj_n";
 
 	name = n;
@@ -325,4 +325,5 @@ void ResourceContainerImplementation::addAttributes(AttributeListMessage* alm) {
 	if (res_er > 0)
 		alm->insertAttribute("entangle_resistance", res_er);
 }
+
 

@@ -47,15 +47,19 @@ which carries forward this exception.
 
 #include "../BaseLineMessage.h"
 
+#include "../../objects/installation/InstallationObject.h"
+
 class InstallationObjectMessage6 : public BaseLineMessage {
 public:
-	InstallationObjectMessage6(uint64 ioId)
-			: BaseLineMessage(ioId, 0x494E534F, 6, 0x05) {
+	InstallationObjectMessage6(InstallationObject * inso)
+			: BaseLineMessage(inso->getObjectID(), 0x494E534F, 6, 0x05) {
 		insertInt(0x62);
 		insertInt(0);
 		insertInt(0);
 		insertInt(0);
 		insertInt(0);
+		
+		setSize();
 	}
 };
 #endif /*INSTALLATIONOBJECTMESSAGE6_H_*/

@@ -56,7 +56,7 @@ SuiTransferBoxImplementation::SuiTransferBoxImplementation(Player* player, uint3
 
 void SuiTransferBoxImplementation::generateHeader(SuiCreatePageMessage* msg) {
 	msg->insertAscii("Script.transfer");
-	msg->insertInt(0); // Size
+	msg->insertInt(12); // Size
 	
 	for (int i = 0; i < 2; i++) {  // If these are not added twice it crashes the client
 		msg->insertByte(5);

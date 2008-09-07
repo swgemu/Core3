@@ -77,8 +77,8 @@ public:
 	FactoryCrate* _this;
 
 public:
-	FactoryCrateServant(unsigned long long oid, const unicode& n, const string& tempn, unsigned int tempCRC, int tp);
-	FactoryCrateServant(CreatureObject* creature, const unicode& n, const string& tempn, unsigned int tempCRC, int tp);
+	FactoryCrateServant(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, int tp);
+	FactoryCrateServant(CreatureObject* creature, unsigned int tempCRC, const unicode& n, const string& tempn, int tp);
 	virtual ~FactoryCrateServant();
 
 	void _setStub(DistributedObjectStub* stub);

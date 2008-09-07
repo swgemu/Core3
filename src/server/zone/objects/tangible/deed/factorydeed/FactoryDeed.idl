@@ -1,0 +1,14 @@
+import "../DeedObject";
+import "../../TangibleObject";
+import "../../../../packets";
+import "../../../player/Player";
+import "../../../creature/CreatureObject";
+
+interface FactoryDeed implements DeedObject {
+	FactoryDeed(CreatureObject creature, int tempCRC, const unicode n, const string tempn) {
+		super(creature, tempCRC, n, tempn, int tp);
+	}
+	FactoryDeed(unsigned long oid, int tempCRC, const unicode n, const string tempn) {
+		super(oid, tempCRC, n, tempn, int tp);
+	}
+}

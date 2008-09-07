@@ -105,6 +105,7 @@ ZoneServerImplementation::ZoneServerImplementation(int processingThreads) :
 	totalDeletedPlayers = 0;
 
 	nextCreatureID = 0x10000000;
+	nextCellID = 9995371; // last objectid in static objects // 0x00;
 
 	setLogging(false);
 	setLockName("ZoneServerLock");
@@ -459,6 +460,7 @@ SceneObject* ZoneServerImplementation::getCachedObject(uint64 oid, bool doLock) 
 SceneObject* ZoneServerImplementation::removeCachedObject(uint64 oid, bool doLock) {
 	SceneObject* obj = NULL;
 
+	cout << "removeCachedObject OID = " << oid << endl;
 	try {
 		lock(doLock);
 
@@ -571,3 +573,14 @@ uint64 ZoneServerImplementation::getNextCreatureID(bool doLock) {
 
 	return nextID;
 }
+
+uint64 ZoneServerImplementation::getNextCellID(bool doLock) {
+	lock(doLock);
+	
+	uint64 nextID = (nextCellID += 0x1);
+	
+	unlock(doLock);
+	
+	return nextID;
+}
+

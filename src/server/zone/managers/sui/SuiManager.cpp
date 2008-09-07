@@ -105,6 +105,24 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, Player* player, uint32
 	case 0xAFAF:
 		handleTicketCollectorRespones(boxID, player, cancel, atoi(value.c_str()));
 		break;
+	case 0x7280:   // Generate security code for Redeed
+		handleCodeForRedeed(boxID, player, cancel, value.c_str());
+		break;
+	case 0x7281:   // Redeed or Destroy Structure
+		handleRedeedStructure(boxID, player, cancel, atoi(value.c_str()));
+		break;
+	case 0x7282:   // Refresh Status Listbox
+		handleRefreshStatusListBox(boxID, player, cancel, atoi(value.c_str()));
+		break;
+	case 0x7283:   // Set Object Name
+		handleSetObjectName(boxID, player, cancel, value.c_str());
+		break;
+	case 0x7284:	// Add Maintenance
+		handleAddMaintenance(boxID, player, cancel, value.c_str());
+		break;
+	case 0x7285:	// Add Energy
+		handleAddEnergy(boxID, player, cancel, value.c_str());
+		break;
 	case 0xBABE:
 		handleColorPicker(boxID, player, cancel, value);
 		break;
@@ -126,6 +144,309 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, Player* player, uint32
 	default:
 		//error("Unknown SuiBoxNotification opcode");
 		break;
+	}
+}
+
+void SuiManager::handleCodeForRedeed(uint32 boxID, Player* player,
+		uint32 cancel, const string& extra) {
+	try {
+		player->wlock();
+
+		if (!player->hasSuiBox(boxID)) {
+			player->unlock();
+			return;
+		}
+
+		SuiBox* sui = player->getSuiBox(boxID);
+
+		if (sui->isListBox() && cancel != 1) {
+			Zone * zone = player->getZone();
+
+			SceneObject * scno = zone->lookupObject(player->getCurrentStructureID());
+
+			InstallationObject * inso = (InstallationObject *) scno;
+
+			inso->handleStructureRedeedConfirm(player);
+		}
+
+		player->removeSuiBox(boxID);
+
+		sui->finalize();
+		sui = NULL;
+
+		player->unlock();
+	} catch (Exception& e) {
+		error("Exception in SuiManager::handleCodeForRedeed ");
+		e.printStackTrace();
+
+		player->unlock();
+	} catch (...) {
+		error("Unreported exception caught in SuiManager::handleCodeForRedeed");
+		player->unlock();
+	}
+}
+
+void SuiManager::handleRedeedStructure(uint32 boxID, Player* player,
+		uint32 cancel, const int extra) {
+	try {
+		player->wlock();
+
+		if (!player->hasSuiBox(boxID)) {
+			player->unlock();
+			return;
+		}
+
+		SuiBox* sui = player->getSuiBox(boxID);
+
+		if (sui->isInputBox() && cancel != 1) {
+			
+			
+			
+			Zone * zone = player->getZone();
+
+			SceneObject * scno = zone->lookupObject(player->getCurrentStructureID());
+
+			InstallationObject * inso = (InstallationObject *) scno;
+
+			if(extra == inso->getDestroyCode()){			
+				inso->handleMakeDeed(player);
+			}
+			else{
+				SuiMessageBox* wrongCode = new SuiMessageBox(player, 0x00);
+				wrongCode->setPromptTitle("Star Wars Galaxies");
+				wrongCode->setPromptText("You have entered an incorrect code.  You will"
+						" have to issue the /destroyStructure again if you wish to continue.");
+				player->addSuiBox(wrongCode);
+				player->sendMessage(wrongCode->generateMessage());
+			}
+				
+		}
+
+		player->removeSuiBox(boxID);
+
+		sui->finalize();
+
+		player->unlock();
+	} catch (Exception& e) {
+		error("Exception in SuiManager::handleRedeedStructure ");
+		e.printStackTrace();
+
+		player->unlock();
+	} catch (...) {
+		error("Unreported exception caught in SuiManager::handleRedeedStructure");
+		player->unlock();
+	}
+}
+
+void SuiManager::handleRefreshStatusListBox(uint32 boxID, Player* player,
+		uint32 cancel, const int extra) {
+	try {
+		player->wlock();
+
+		if (!player->hasSuiBox(boxID)) {
+			player->unlock();
+			return;
+		}
+
+		SuiBox* sui = player->getSuiBox(boxID);
+
+		if (sui->isListBox() && cancel != 1) {
+			Zone * zone = player->getZone();
+
+			SceneObject * scno = zone->lookupObject(player->getCurrentStructureID());
+
+			InstallationObject * inso = (InstallationObject *) scno;
+
+			inso->handleStructureStatus(player);
+		}
+
+		player->removeSuiBox(boxID);
+
+		sui->finalize();
+		sui = NULL;
+
+		player->unlock();
+	} catch (Exception& e) {
+		error("Exception in SuiManager::handleRefreshStatusListBox ");
+		e.printStackTrace();
+
+		player->unlock();
+	} catch (...) {
+		error("Unreported exception caught in SuiManager::handleRefreshStatusListBox");
+		player->unlock();
+	}
+}
+
+void SuiManager::handleSetObjectName(uint32 boxID, Player* player,
+		uint32 cancel, const string& name) {
+	try {
+		
+		player->wlock();
+
+		if (!player->hasSuiBox(boxID)) {
+			player->unlock();
+			return;
+		}
+
+		SuiBox* sui = player->getSuiBox(boxID);
+
+		if (sui->isInputBox() && cancel != 1) {
+			Zone * zone = player->getZone();
+
+			SceneObject * scno = zone->lookupObject(player->getCurrentStructureID());
+
+			TangibleObject * tano = (TangibleObject *) tano;
+			
+			if(tano!= NULL)	{
+				
+				//tano->setTemplateName(name);
+				
+			}
+			
+			/*else {
+				BuildingObject * buio = (BuildingObject * ) obj;
+									
+				if(buio!= NULL)
+					buio->setName(unicode(name));
+			}*/
+
+		}
+
+		player->removeSuiBox(boxID);
+
+		sui->finalize();
+		sui = NULL;
+
+		player->unlock();
+	} catch (Exception& e) {
+		error("Exception in SuiManager::handleSetObjectName ");
+		e.printStackTrace();
+
+		player->unlock();
+	} catch (...) {
+		error("Unreported exception caught in SuiManager::handleSetObjectName");
+		player->unlock();
+	}
+}
+
+void SuiManager::handleAddMaintenance(uint32 boxID, Player* player,
+		uint32 cancel, const string& newCashVal) {
+	try {
+		
+		player->wlock();
+
+		if (!player->hasSuiBox(boxID)) {
+			player->unlock();
+			return;
+		}
+
+		SuiBox* sui = player->getSuiBox(boxID);
+
+		if (sui->isTransferBox() && cancel != 1) {
+			
+			Zone * zone = player->getZone();
+
+			SceneObject * scno = zone->lookupObject(player->getCurrentStructureID());
+
+			InstallationObject * inso = (InstallationObject *) scno;
+			
+			if(inso!= NULL && atoi(newCashVal.c_str()) != 0)	{
+				int maint = (player->getCashCredits() - atoi(newCashVal.c_str()));
+				
+				inso->addMaintenance(maint);			
+				player->subtractCashCredits(maint);
+				
+				stringstream report;
+				report << "You successfully make a payment of " << maint << " to "
+					<< inso->getName().c_str();
+				
+				player->sendSystemMessage(report.str());
+				
+			}
+			
+			/*else {
+				BuildingObject * buio = (BuildingObject * ) obj;
+									
+				if(buio!= NULL)
+					
+			}*/
+
+		}
+
+		player->removeSuiBox(boxID);
+
+		sui->finalize();
+		sui = NULL;
+
+		player->unlock();
+	} catch (Exception& e) {
+		error("Exception in SuiManager::handleAddMaintenance ");
+		e.printStackTrace();
+
+		player->unlock();
+	} catch (...) {
+		error("Unreported exception caught in SuiManager::handleAddMaintenance");
+		player->unlock();
+	}
+}
+void SuiManager::handleAddEnergy(uint32 boxID, Player* player,
+		uint32 cancel, const string& newEnergyVal) {
+	try {
+		
+		player->wlock();
+
+		if (!player->hasSuiBox(boxID)) {
+			player->unlock();
+			return;
+		}
+
+		SuiBox* sui = player->getSuiBox(boxID);
+
+		if (sui->isTransferBox() && cancel != 1) {
+			
+			Zone * zone = player->getZone();
+
+			SceneObject * scno = zone->lookupObject(player->getCurrentStructureID());
+
+			InstallationObject * inso = (InstallationObject *) scno;
+			
+			if(inso!= NULL)	{
+				uint energy = (inso->getEnergy() - atoi(newEnergyVal.c_str()));
+				
+				inso->addEnergy(energy);			
+				//player->removeEnergy(energy);
+				
+				stringstream report;
+				report << "You successfully deposit " << energy << " units of energy.\n"
+					<< "Energy reserves now at " << inso->getEnergy() << " units.";
+				
+				player->sendSystemMessage(report.str());
+				
+			}
+			
+			/*else {
+				BuildingObject * buio = (BuildingObject * ) obj;
+									
+				if(buio!= NULL)
+					
+			}*/
+
+		}
+
+		player->removeSuiBox(boxID);
+
+		sui->finalize();
+		sui = NULL;
+
+		player->unlock();
+	} catch (Exception& e) {
+		error("Exception in SuiManager::handleAddPower ");
+		e.printStackTrace();
+
+		player->unlock();
+	} catch (...) {
+		error("Unreported exception caught in SuiManager::handleAddPower");
+		player->unlock();
 	}
 }
 

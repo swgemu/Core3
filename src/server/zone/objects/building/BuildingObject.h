@@ -41,6 +41,12 @@ public:
 
 	void setBuildingType(int type);
 
+	string& getName();
+
+	void setName(string& name);
+
+	string& getDefaultName();
+
 	void lock(bool doLock = true);
 
 	void unlock(bool doLock = true);
@@ -61,6 +67,9 @@ protected:
 	BuildingObject(DummyConstructorParameter* param);
 
 	virtual ~BuildingObject();
+
+	string _return_getDefaultName;
+	string _return_getName;
 
 	friend class BuildingObjectHelper;
 };
@@ -87,6 +96,12 @@ public:
 
 	void setBuildingType(int type);
 
+	string& getName();
+
+	void setName(string& name);
+
+	string& getDefaultName();
+
 	void lock(bool doLock);
 
 	void unlock(bool doLock);
@@ -103,6 +118,8 @@ public:
 
 	void inRange(QuadTreeEntry* obj, float range);
 
+protected:
+	string _param0_setName__string_;
 };
 
 class BuildingObjectHelper : public DistributedObjectClassHelper, public Singleton<BuildingObjectHelper> {

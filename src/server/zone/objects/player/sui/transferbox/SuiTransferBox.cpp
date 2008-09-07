@@ -64,6 +64,38 @@ void SuiTransferBox::addOption(const string& itemText, const string& lblType, co
 		((SuiTransferBoxImplementation*) _impl)->addOption(itemText, lblType, itemType);
 }
 
+void SuiTransferBox::addFrom(const string& from, const string& startingFrom, const string& inputFrom, const string& rFrom) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
+		method.addAsciiParameter(from);
+		method.addAsciiParameter(startingFrom);
+		method.addAsciiParameter(inputFrom);
+		method.addAsciiParameter(rFrom);
+
+		method.executeWithVoidReturn();
+	} else
+		((SuiTransferBoxImplementation*) _impl)->addFrom(from, startingFrom, inputFrom, rFrom);
+}
+
+void SuiTransferBox::addTo(const string& to, const string& startingTo, const string& inputTo, const string& rTo) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 10);
+		method.addAsciiParameter(to);
+		method.addAsciiParameter(startingTo);
+		method.addAsciiParameter(inputTo);
+		method.addAsciiParameter(rTo);
+
+		method.executeWithVoidReturn();
+	} else
+		((SuiTransferBoxImplementation*) _impl)->addTo(to, startingTo, inputTo, rTo);
+}
+
 /*
  *	SuiTransferBoxAdapter
  */
@@ -84,6 +116,12 @@ Packet* SuiTransferBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	case 8:
 		addOption(inv->getAsciiParameter(_param0_addOption__string_string_string_), inv->getAsciiParameter(_param1_addOption__string_string_string_), inv->getAsciiParameter(_param2_addOption__string_string_string_));
 		break;
+	case 9:
+		addFrom(inv->getAsciiParameter(_param0_addFrom__string_string_string_string_), inv->getAsciiParameter(_param1_addFrom__string_string_string_string_), inv->getAsciiParameter(_param2_addFrom__string_string_string_string_), inv->getAsciiParameter(_param3_addFrom__string_string_string_string_));
+		break;
+	case 10:
+		addTo(inv->getAsciiParameter(_param0_addTo__string_string_string_string_), inv->getAsciiParameter(_param1_addTo__string_string_string_string_), inv->getAsciiParameter(_param2_addTo__string_string_string_string_), inv->getAsciiParameter(_param3_addTo__string_string_string_string_));
+		break;
 	default:
 		return NULL;
 	}
@@ -101,6 +139,14 @@ BaseMessage* SuiTransferBoxAdapter::getMessage() {
 
 void SuiTransferBoxAdapter::addOption(const string& itemText, const string& lblType, const string& itemType) {
 	return ((SuiTransferBoxImplementation*) impl)->addOption(itemText, lblType, itemType);
+}
+
+void SuiTransferBoxAdapter::addFrom(const string& from, const string& startingFrom, const string& inputFrom, const string& rFrom) {
+	return ((SuiTransferBoxImplementation*) impl)->addFrom(from, startingFrom, inputFrom, rFrom);
+}
+
+void SuiTransferBoxAdapter::addTo(const string& to, const string& startingTo, const string& inputTo, const string& rTo) {
+	return ((SuiTransferBoxImplementation*) impl)->addTo(to, startingTo, inputTo, rTo);
 }
 
 /*

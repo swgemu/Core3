@@ -74,6 +74,11 @@ interface BuildingObject implements SceneObject {
 	int getBuildingType();
 	void setBuildingType(int type);
 	
+	string getName();
+	void setName(string name);
+	
+	string getDefaultName();
+	
 	void lock(boolean doLock = true);
 	void unlock(boolean doLock = true);
 	

@@ -41,6 +41,7 @@ gives permission to release a modified version without this exception;
 this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
+#include "../../packets.h"
 
 #include "BuildingObjectImplementation.h"
 
@@ -49,6 +50,7 @@ which carries forward this exception.
 #include "../player/Player.h"
 #include "../player/PlayerImplementation.h"
 #include "../../Zone.h"
+#include "../../ZoneClientImplementation.h"
 
 BuildingObjectImplementation::BuildingObjectImplementation(uint64 oid, bool staticBuild)
 		: QuadTree(-1024, -1024, 1024, 1024), BuildingObjectServant(oid, BUILDING) {
@@ -56,6 +58,9 @@ BuildingObjectImplementation::BuildingObjectImplementation(uint64 oid, bool stat
 	staticBuilding = staticBuild;
 
 	buildingType = UNKNOWN; // default building Type
+	setDefaultName();
+
+	name = "";
 
 	objectType = SceneObjectImplementation::BUILDING;
 
@@ -177,7 +182,65 @@ void BuildingObjectImplementation::notifyDissapear(QuadTreeEntry* obj) {
 void BuildingObjectImplementation::sendTo(Player* player, bool doClose) {
 	// send buio packets if not static
 
+	ZoneClient* client = player->getClient();
+	if (client == NULL)
+		return;
+
+	if (staticBuilding)
+		return;
+
+	SceneObjectImplementation::create(client);
+
+	//cout << "generating building objects" << endl;
+	BaseMessage* buio3 = new BuildingObjectMessage3((BuildingObject*) _this);
+	player->sendMessage(buio3);
+
+	BaseMessage* buio6 = new BuildingObjectMessage6((BuildingObject*) _this);
+	player->sendMessage(buio6);
+
+	sendCells(player, true);
+
+	//cout << "finished sending cells..." << endl;
+	SceneObjectImplementation::close(client);
+
 }
+
+void BuildingObjectImplementation::sendCells(Player* player, bool doClose = true) {
+
+	UpdateContainmentMessage* link;
+	CellObjectMessage3* cellMsg3;
+	CellObjectMessage6* cellMsg6;
+	UpdateCellPermissionsMessage* perm;
+	CellObject * cell;
+
+	//cout << "sending cells, size: " << cells.size() << endl;
+	ZoneClient* client = player->getClient();
+	if (client == NULL)
+		return;
+	for(int i = 1; i <= cells.size(); ++i) {
+		//cout << "sending cell cell: " << i << endl;
+		cell = cells.get(i-1);
+
+		BaseMessage* msg = new SceneObjectCreateMessage(cell);
+		player->sendMessage(msg);
+
+		link = new UpdateContainmentMessage(cell->getObjectID(), _this->getObjectID(), 0xFFFFFFFF);
+		player->sendMessage(link);
+
+		cellMsg3 = new CellObjectMessage3(cell->getObjectID(), cell->getCellID()); //
+		player->sendMessage(cellMsg3);
+
+		cellMsg6 = new CellObjectMessage6(cell->getObjectID());
+		player->sendMessage(cellMsg6);
+
+		perm = new UpdateCellPermissionsMessage(cell->getObjectID());
+		player->sendMessage(perm);
+
+		BaseMessage* close = new SceneObjectCloseMessage(cell);
+		player->sendMessage(close);
+	}
+}
+
 
 void BuildingObjectImplementation::sendDestroyTo(Player* player) {
 	//send destroy if not static
@@ -235,3 +298,52 @@ void BuildingObjectImplementation::broadcastMessage(BaseMessage* msg, int range,
 			zone->unlock();
 	}
 }
+
+
+void BuildingObjectImplementation::setDefaultName()
+{
+	switch(getBuildingType())
+	{
+		case BuildingObjectImplementation::UNKNOWN:
+		case BuildingObjectImplementation::BANK:
+		case BuildingObjectImplementation::CANTINA:
+		case BuildingObjectImplementation::CAPITOL:
+		case BuildingObjectImplementation::CLONING_FACILITY:
+		case BuildingObjectImplementation::GARAGE:
+		case BuildingObjectImplementation::GUILD:
+		case BuildingObjectImplementation::GUILD_COMBAT:
+		case BuildingObjectImplementation::GUILD_COMMERCE:
+		case BuildingObjectImplementation::GUILD_THEATER:
+		case BuildingObjectImplementation::GUILD_UNIVERSITY:
+		case BuildingObjectImplementation::HOTEL:
+		case BuildingObjectImplementation::MEDICAL_CENTER:
+		case BuildingObjectImplementation::SHUTTLEPORT:
+		case BuildingObjectImplementation::STARPORT:
+		case BuildingObjectImplementation::THEMEPARK:
+		case BuildingObjectImplementation::JUNKSHOP:
+		case BuildingObjectImplementation::TAVERN:
+		case BuildingObjectImplementation::BARRACKS:
+		case BuildingObjectImplementation::REBEL_HQ:
+		case BuildingObjectImplementation::IMPERIAL_HQ:
+		case BuildingObjectImplementation::CITYHALL:
+		case BuildingObjectImplementation::THEATER:
+		case BuildingObjectImplementation::MUSEUM:
+		case BuildingObjectImplementation::SALON:
+		case BuildingObjectImplementation::SF_REBEL_FORWARD_BASE:
+		case BuildingObjectImplementation::SF_IMPERIAL_FORWARD_BASE:
+		case BuildingObjectImplementation::SF_REBEL_MINOR_BASE:
+		case BuildingObjectImplementation::SF_IMPERIAL_MINOR_BASE:
+		case BuildingObjectImplementation::SF_REBEL_MAJOR_BASE:
+		case BuildingObjectImplementation::SF_IMPERIAL_MAJOR_BASE:
+		case BuildingObjectImplementation::SF_REBEL_HQ:
+		case BuildingObjectImplementation::SF_IMPERIAL_HQ:
+		case BuildingObjectImplementation::REBEL_FORWARD_BASE:
+		case BuildingObjectImplementation::IMPERIAL_FORWARD_BASE:
+		case BuildingObjectImplementation::REBEL_MINOR_BASE:
+		case BuildingObjectImplementation::IMPERIAL_MINOR_BASE:
+		case BuildingObjectImplementation::REBEL_MAJOR_BASE:
+		case BuildingObjectImplementation::IMPERIAL_MAJOR_BASE:
+			defaultName = "base_building";
+	}
+}
+

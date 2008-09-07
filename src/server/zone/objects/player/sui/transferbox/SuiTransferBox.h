@@ -25,6 +25,10 @@ public:
 
 	void addOption(const string& itemText, const string& lblType, const string& itemType);
 
+	void addFrom(const string& from, const string& startingFrom, const string& inputFrom, const string& rFrom);
+
+	void addTo(const string& to, const string& startingTo, const string& inputTo, const string& rTo);
+
 protected:
 	SuiTransferBox(DummyConstructorParameter* param);
 
@@ -47,10 +51,22 @@ public:
 
 	void addOption(const string& itemText, const string& lblType, const string& itemType);
 
+	void addFrom(const string& from, const string& startingFrom, const string& inputFrom, const string& rFrom);
+
+	void addTo(const string& to, const string& startingTo, const string& inputTo, const string& rTo);
+
 protected:
 	string _param0_addOption__string_string_string_;
 	string _param1_addOption__string_string_string_;
 	string _param2_addOption__string_string_string_;
+	string _param0_addFrom__string_string_string_string_;
+	string _param1_addFrom__string_string_string_string_;
+	string _param2_addFrom__string_string_string_string_;
+	string _param3_addFrom__string_string_string_string_;
+	string _param0_addTo__string_string_string_string_;
+	string _param1_addTo__string_string_string_string_;
+	string _param2_addTo__string_string_string_string_;
+	string _param3_addTo__string_string_string_string_;
 };
 
 class SuiTransferBoxHelper : public DistributedObjectClassHelper, public Singleton<SuiTransferBoxHelper> {

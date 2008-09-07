@@ -110,6 +110,21 @@ which carries forward this exception.
 #include "objects/tangible/instrument/InstrumentImplementation.h"
 #include "objects/attackable/lair/LairObject.h"
 #include "objects/attackable/lair/LairObjectImplementation.h"
+
+// Deeds
+#include "objects/tangible/deed/DeedObject.h"
+#include "objects/tangible/deed/DeedObjectImplementation.h"
+#include "objects/tangible/deed/harvesterdeed/HarvesterDeed.h"
+#include "objects/tangible/deed/harvesterdeed/HarvesterDeedImplementation.h"
+#include "objects/tangible/deed/factorydeed/FactoryDeed.h"
+#include "objects/tangible/deed/factorydeed/FactoryDeedImplementation.h"
+#include "objects/tangible/deed/generatordeed/GeneratorDeed.h"
+#include "objects/tangible/deed/generatordeed/GeneratorDeedImplementation.h"
+#include "objects/tangible/deed/vehicledeed/VehicleDeed.h"
+#include "objects/tangible/deed/vehicledeed/VehicleDeedImplementation.h"
+#include "objects/tangible/deed/playerhousedeed/PlayerHouseDeed.h"
+#include "objects/tangible/deed/playerhousedeed/PlayerHouseDeedImplementation.h"
+
 #include "objects/tangible/holocron/Holocron.h"
 #include "objects/tangible/holocron/HolocronImplementation.h"
 #include "objects/tangible/firework/Firework.h"
@@ -209,6 +224,12 @@ which carries forward this exception.
 #include "objects/scene/SceneObject.h"
 #include "objects/scene/SceneObjectImplementation.h"
 
+// Installations
+#include "objects/installation/InstallationObject.h"
+#include "objects/installation/InstallationObjectImplementation.h"
+#include "objects/installation/harvester/HarvesterObject.h"
+#include "objects/installation/harvester/HarvesterObjectImplementation.h"
+
 #include "objects/mission/MissionObject.h"
 #include "objects/mission/MissionObjectImplementation.h"
 
@@ -221,5 +242,17 @@ which carries forward this exception.
 #include "objects/static/firework/FireworkWorldImplementation.h"
 
 #include "objects/auction/AuctionItem.h"
+
+// SUI
+#include "objects/player/sui/SuiBoxImplementation.h"
+#include "objects/player/sui/SuiBox.h"
+#include "objects/player/sui/inputbox/SuiInputBoxImplementation.h"
+#include "objects/player/sui/inputbox/SuiInputBox.h"
+#include "objects/player/sui/listbox/SuiListBoxImplementation.h"
+#include "objects/player/sui/listbox/SuiListBox.h"
+#include "objects/player/sui/messagebox/SuiMessageBoxImplementation.h"
+#include "objects/player/sui/messagebox/SuiMessageBox.h"
+#include "objects/player/sui/transferbox/SuiTransferBoxImplementation.h"
+#include "objects/player/sui/transferbox/SuiTransferBox.h"
 
 #endif /*ZONEOBJECTS_H_*/

@@ -57,6 +57,9 @@ class SurveyTool;
 class CraftingTool;
 class Weapon;
 class Armor;
+class InstallationObject;
+class HarvesterObject;
+class VehicleDeed;
 
 class RadialManager {
 
@@ -81,6 +84,17 @@ public:
 	void handleSlicing(Player* player, SceneObject* obj);
 	void handleRepair(Player* player, SceneObject* obj);
 	void handleRemovePowerup(Player* player, SceneObject* obj);
+
+	// Installation radial handling
+	void sendRadialResponseForHarvesters(Player* player, HarvesterObject* hino, ObjectMenuResponse* omr);
+	void handleStructureStatus(Player* player, SceneObject* obj);
+	void handleStructureDestroy(Player* player, SceneObject* obj);
+	void handleSetName(Player* player, SceneObject* obj);
+	void handleStructureAddMaintenance(Player* player, SceneObject* obj);
+	void handleStructureAddEnergy(Player* player, SceneObject* obj);
+
+	void sendRadialResponseForVehicleDeed(Player* player, VehicleDeed* deed, ObjectMenuResponse* omr);
+	
 	void handleOpenCraftingToolHopper(Player* player, SceneObject* obj);
 	void handleHarvest(Player* player, SceneObject* obj, int type);
 

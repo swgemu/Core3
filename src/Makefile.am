@@ -129,8 +129,16 @@ core3_IDLS =	server/zone/Zone.cpp \
 		server/zone/objects/tangible/resource/ResourceContainer.cpp \
 		server/zone/objects/tangible/attachment/Attachment.cpp \
 		server/zone/objects/tangible/powerup/Powerup.cpp \
+		server/zone/objects/tangible/deed/DeedObject.cpp \
+		server/zone/objects/tangible/deed/harvesterdeed/HarvesterDeed.cpp \
+		server/zone/objects/tangible/deed/factorydeed/FactoryDeed.cpp \
+		server/zone/objects/tangible/deed/generatordeed/GeneratorDeed.cpp \
+		server/zone/objects/tangible/deed/vehicledeed/VehicleDeed.cpp \
+		server/zone/objects/tangible/deed/playerhousedeed/PlayerHouseDeed.cpp \
 		server/zone/objects/tangible/holocron/Holocron.cpp \
 		server/zone/objects/tangible/firework/Firework.cpp \
+		server/zone/objects/installation/InstallationObject.cpp \
+		server/zone/objects/installation/harvester/HarvesterObject.cpp \
 		server/zone/objects/tangible/inventory/CreatureInventory.cpp \
 		server/zone/objects/intangible/IntangibleObject.cpp \
 		server/zone/objects/static/StaticObject.cpp \
@@ -184,6 +192,8 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/ZonePacketHandler.cpp \
 		server/zone/ZoneProcessServerImplementation.cpp \
 		server/zone/ZoneMessageProcessorThread.cpp \
+		server/zone/objects/installation/InstallationObjectImplementation.cpp \
+		server/zone/objects/installation/harvester/HarvesterObjectImplementation.cpp \
 		server/zone/objects/attackable/AttackableObjectImplementation.cpp \
 		server/zone/objects/building/BuildingObjectImplementation.cpp \
 		server/zone/objects/building/cell/CellObjectImplementation.cpp \
@@ -212,6 +222,12 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/powerup/PowerupImplementation.cpp \
 		server/zone/objects/tangible/ticket/TicketImplementation.cpp \
 		server/zone/objects/tangible/ticketcollector/TicketCollectorImplementation.cpp \
+    	server/zone/objects/tangible/deed/DeedObjectImplementation.cpp \
+		server/zone/objects/tangible/deed/harvesterdeed/HarvesterDeedImplementation.cpp \
+		server/zone/objects/tangible/deed/factorydeed/FactoryDeedImplementation.cpp \
+		server/zone/objects/tangible/deed/generatordeed/GeneratorDeedImplementation.cpp \
+		server/zone/objects/tangible/deed/vehicledeed/VehicleDeedImplementation.cpp \
+		server/zone/objects/tangible/deed/playerhousedeed/PlayerHouseDeedImplementation.cpp \
 		server/zone/objects/tangible/inventory/CreatureInventoryImplementation.cpp \
 		server/zone/objects/mission/MissionObjectImplementation.cpp \
 		server/zone/objects/static/StaticObjectImplementation.cpp \

@@ -81,5 +81,6 @@ interface PlanetManager {
 	
 	unsigned long getLandingTime();
 
+	void placePlayerStructure(Player player, unsigned long objectID, float x, float y, int orient);
 	unsigned int getTravelFare(string departurePlanet, string arrivalPlanet);
 }

@@ -543,7 +543,10 @@ interface Player implements CreatureObject {
 	unsigned int getForcePower();
 	unsigned int getForcePowerMax();
 
+	unsigned long getCurrentStructureID();
 
+	void setCurrentStructureID(unsigned long oid);
+	
 	SurveyTool getSurveyTool();
 	SurveyTool getSampleTool();
 	void setSurveyTool(SurveyTool sTool);
@@ -564,6 +567,8 @@ interface Player implements CreatureObject {
 	boolean getSurveyErrorMessage();
 	boolean getSampleErrorMessage();
 
+	void sendMail(string mailsender, unicode subjectSender, unicode bodySender, string charNameSender);
+	
 	void setEntertainerEvent();
 	void clearEntertainerEvent();
 

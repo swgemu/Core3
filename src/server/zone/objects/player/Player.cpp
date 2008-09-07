@@ -3600,12 +3600,37 @@ unsigned int Player::getForcePowerMax() {
 		return ((PlayerImplementation*) _impl)->getForcePowerMax();
 }
 
-SurveyTool* Player::getSurveyTool() {
+unsigned long long Player::getCurrentStructureID() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 283);
+
+		return method.executeWithUnsignedLongReturn();
+	} else
+		return ((PlayerImplementation*) _impl)->getCurrentStructureID();
+}
+
+void Player::setCurrentStructureID(unsigned long long oid) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 284);
+		method.addUnsignedLongParameter(oid);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerImplementation*) _impl)->setCurrentStructureID(oid);
+}
+
+SurveyTool* Player::getSurveyTool() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 285);
 
 		return (SurveyTool*) method.executeWithObjectReturn();
 	} else
@@ -3617,7 +3642,7 @@ SurveyTool* Player::getSampleTool() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 284);
+		DistributedMethod method(this, 286);
 
 		return (SurveyTool*) method.executeWithObjectReturn();
 	} else
@@ -3629,7 +3654,7 @@ void Player::setSurveyTool(SurveyTool* sTool) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 285);
+		DistributedMethod method(this, 287);
 		method.addObjectParameter(sTool);
 
 		method.executeWithVoidReturn();
@@ -3642,7 +3667,7 @@ void Player::setSampleTool(SurveyTool* sTool) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 286);
+		DistributedMethod method(this, 288);
 		method.addObjectParameter(sTool);
 
 		method.executeWithVoidReturn();
@@ -3655,7 +3680,7 @@ void Player::setSurveyWaypoint(WaypointObject* id) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 287);
+		DistributedMethod method(this, 289);
 		method.addObjectParameter(id);
 
 		method.executeWithVoidReturn();
@@ -3668,7 +3693,7 @@ WaypointObject* Player::getSurveyWaypoint() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 288);
+		DistributedMethod method(this, 290);
 
 		return (WaypointObject*) method.executeWithObjectReturn();
 	} else
@@ -3680,7 +3705,7 @@ bool Player::getCanSurvey() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 289);
+		DistributedMethod method(this, 291);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -3692,7 +3717,7 @@ bool Player::getCanSample() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 290);
+		DistributedMethod method(this, 292);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -3704,7 +3729,7 @@ void Player::setCanSurvey() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 291);
+		DistributedMethod method(this, 293);
 
 		method.executeWithVoidReturn();
 	} else
@@ -3716,7 +3741,7 @@ void Player::setCanSample() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 292);
+		DistributedMethod method(this, 294);
 
 		method.executeWithVoidReturn();
 	} else
@@ -3728,7 +3753,7 @@ void Player::setSurveyEvent(string& resourcename) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 293);
+		DistributedMethod method(this, 295);
 		method.addAsciiParameter(resourcename);
 
 		method.executeWithVoidReturn();
@@ -3741,7 +3766,7 @@ void Player::setSampleEvent(string& resourcename, bool firstTime) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 294);
+		DistributedMethod method(this, 296);
 		method.addAsciiParameter(resourcename);
 		method.addBooleanParameter(firstTime);
 
@@ -3755,7 +3780,7 @@ void Player::setCancelSample(bool val) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 295);
+		DistributedMethod method(this, 297);
 		method.addBooleanParameter(val);
 
 		method.executeWithVoidReturn();
@@ -3768,7 +3793,7 @@ bool Player::getCancelSample() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 296);
+		DistributedMethod method(this, 298);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -3780,7 +3805,7 @@ void Player::sendSampleTimeRemaining() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 297);
+		DistributedMethod method(this, 299);
 
 		method.executeWithVoidReturn();
 	} else
@@ -3792,7 +3817,7 @@ void Player::setSurveyErrorMessage() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 298);
+		DistributedMethod method(this, 300);
 
 		method.executeWithVoidReturn();
 	} else
@@ -3804,7 +3829,7 @@ void Player::setSampleErrorMessage() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 299);
+		DistributedMethod method(this, 301);
 
 		method.executeWithVoidReturn();
 	} else
@@ -3816,7 +3841,7 @@ bool Player::getSurveyErrorMessage() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 300);
+		DistributedMethod method(this, 302);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -3828,11 +3853,27 @@ bool Player::getSampleErrorMessage() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 301);
+		DistributedMethod method(this, 303);
 
 		return method.executeWithBooleanReturn();
 	} else
 		return ((PlayerImplementation*) _impl)->getSampleErrorMessage();
+}
+
+void Player::sendMail(string& mailsender, unicode& subjectSender, unicode& bodySender, string& charNameSender) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 304);
+		method.addAsciiParameter(mailsender);
+		method.addUnicodeParameter(subjectSender);
+		method.addUnicodeParameter(bodySender);
+		method.addAsciiParameter(charNameSender);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerImplementation*) _impl)->sendMail(mailsender, subjectSender, bodySender, charNameSender);
 }
 
 void Player::setEntertainerEvent() {
@@ -3840,7 +3881,7 @@ void Player::setEntertainerEvent() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 302);
+		DistributedMethod method(this, 305);
 
 		method.executeWithVoidReturn();
 	} else
@@ -3852,7 +3893,7 @@ void Player::clearEntertainerEvent() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 303);
+		DistributedMethod method(this, 306);
 
 		method.executeWithVoidReturn();
 	} else
@@ -3864,7 +3905,7 @@ void Player::setLastNpcConvStr(const string& conv) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 304);
+		DistributedMethod method(this, 307);
 		method.addAsciiParameter(conv);
 
 		method.executeWithVoidReturn();
@@ -3877,7 +3918,7 @@ void Player::setLastNpcConvMessStr(const string& mess) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 305);
+		DistributedMethod method(this, 308);
 		method.addAsciiParameter(mess);
 
 		method.executeWithVoidReturn();
@@ -3890,7 +3931,7 @@ string& Player::getLastNpcConvStr() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 306);
+		DistributedMethod method(this, 309);
 
 		method.executeWithAsciiReturn(_return_getLastNpcConvStr);
 		return _return_getLastNpcConvStr;
@@ -3903,7 +3944,7 @@ string& Player::getLastNpcConvMessStr() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 307);
+		DistributedMethod method(this, 310);
 
 		method.executeWithAsciiReturn(_return_getLastNpcConvMessStr);
 		return _return_getLastNpcConvMessStr;
@@ -4754,78 +4795,87 @@ Packet* PlayerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertInt(getForcePowerMax());
 		break;
 	case 283:
-		resp->insertLong(getSurveyTool()->_getObjectID());
+		resp->insertLong(getCurrentStructureID());
 		break;
 	case 284:
-		resp->insertLong(getSampleTool()->_getObjectID());
+		setCurrentStructureID(inv->getUnsignedLongParameter());
 		break;
 	case 285:
-		setSurveyTool((SurveyTool*) inv->getObjectParameter());
+		resp->insertLong(getSurveyTool()->_getObjectID());
 		break;
 	case 286:
-		setSampleTool((SurveyTool*) inv->getObjectParameter());
+		resp->insertLong(getSampleTool()->_getObjectID());
 		break;
 	case 287:
-		setSurveyWaypoint((WaypointObject*) inv->getObjectParameter());
+		setSurveyTool((SurveyTool*) inv->getObjectParameter());
 		break;
 	case 288:
-		resp->insertLong(getSurveyWaypoint()->_getObjectID());
+		setSampleTool((SurveyTool*) inv->getObjectParameter());
 		break;
 	case 289:
-		resp->insertBoolean(getCanSurvey());
+		setSurveyWaypoint((WaypointObject*) inv->getObjectParameter());
 		break;
 	case 290:
-		resp->insertBoolean(getCanSample());
+		resp->insertLong(getSurveyWaypoint()->_getObjectID());
 		break;
 	case 291:
-		setCanSurvey();
+		resp->insertBoolean(getCanSurvey());
 		break;
 	case 292:
-		setCanSample();
+		resp->insertBoolean(getCanSample());
 		break;
 	case 293:
-		setSurveyEvent(inv->getAsciiParameter(_param0_setSurveyEvent__string_));
+		setCanSurvey();
 		break;
 	case 294:
-		setSampleEvent(inv->getAsciiParameter(_param0_setSampleEvent__string_bool_), inv->getBooleanParameter());
+		setCanSample();
 		break;
 	case 295:
-		setCancelSample(inv->getBooleanParameter());
+		setSurveyEvent(inv->getAsciiParameter(_param0_setSurveyEvent__string_));
 		break;
 	case 296:
-		resp->insertBoolean(getCancelSample());
+		setSampleEvent(inv->getAsciiParameter(_param0_setSampleEvent__string_bool_), inv->getBooleanParameter());
 		break;
 	case 297:
-		sendSampleTimeRemaining();
+		setCancelSample(inv->getBooleanParameter());
 		break;
 	case 298:
-		setSurveyErrorMessage();
+		resp->insertBoolean(getCancelSample());
 		break;
 	case 299:
-		setSampleErrorMessage();
+		sendSampleTimeRemaining();
 		break;
 	case 300:
-		resp->insertBoolean(getSurveyErrorMessage());
+		setSurveyErrorMessage();
 		break;
 	case 301:
-		resp->insertBoolean(getSampleErrorMessage());
+		setSampleErrorMessage();
 		break;
 	case 302:
-		setEntertainerEvent();
+		resp->insertBoolean(getSurveyErrorMessage());
 		break;
 	case 303:
-		clearEntertainerEvent();
+		resp->insertBoolean(getSampleErrorMessage());
 		break;
 	case 304:
-		setLastNpcConvStr(inv->getAsciiParameter(_param0_setLastNpcConvStr__string_));
+		sendMail(inv->getAsciiParameter(_param0_sendMail__string_unicode_unicode_string_), inv->getUnicodeParameter(_param1_sendMail__string_unicode_unicode_string_), inv->getUnicodeParameter(_param2_sendMail__string_unicode_unicode_string_), inv->getAsciiParameter(_param3_sendMail__string_unicode_unicode_string_));
 		break;
 	case 305:
-		setLastNpcConvMessStr(inv->getAsciiParameter(_param0_setLastNpcConvMessStr__string_));
+		setEntertainerEvent();
 		break;
 	case 306:
-		resp->insertAscii(getLastNpcConvStr());
+		clearEntertainerEvent();
 		break;
 	case 307:
+		setLastNpcConvStr(inv->getAsciiParameter(_param0_setLastNpcConvStr__string_));
+		break;
+	case 308:
+		setLastNpcConvMessStr(inv->getAsciiParameter(_param0_setLastNpcConvMessStr__string_));
+		break;
+	case 309:
+		resp->insertAscii(getLastNpcConvStr());
+		break;
+	case 310:
 		resp->insertAscii(getLastNpcConvMessStr());
 		break;
 	default:
@@ -5943,6 +5993,14 @@ unsigned int PlayerAdapter::getForcePowerMax() {
 	return ((PlayerImplementation*) impl)->getForcePowerMax();
 }
 
+unsigned long long PlayerAdapter::getCurrentStructureID() {
+	return ((PlayerImplementation*) impl)->getCurrentStructureID();
+}
+
+void PlayerAdapter::setCurrentStructureID(unsigned long long oid) {
+	return ((PlayerImplementation*) impl)->setCurrentStructureID(oid);
+}
+
 SurveyTool* PlayerAdapter::getSurveyTool() {
 	return ((PlayerImplementation*) impl)->getSurveyTool();
 }
@@ -6017,6 +6075,10 @@ bool PlayerAdapter::getSurveyErrorMessage() {
 
 bool PlayerAdapter::getSampleErrorMessage() {
 	return ((PlayerImplementation*) impl)->getSampleErrorMessage();
+}
+
+void PlayerAdapter::sendMail(string& mailsender, unicode& subjectSender, unicode& bodySender, string& charNameSender) {
+	return ((PlayerImplementation*) impl)->sendMail(mailsender, subjectSender, bodySender, charNameSender);
 }
 
 void PlayerAdapter::setEntertainerEvent() {

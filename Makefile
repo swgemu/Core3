@@ -68,6 +68,8 @@ IDL_SOURCES = server/zone/Zone.idl \
 				server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.idl \
 				server/zone/objects/player/sui/inputbox/SuiInputBox.idl \
 				server/zone/objects/player/sui/colorpicker/SuiColorPicker.idl \
+				server/zone/objects/installation/InstallationObject.idl \
+				server/zone/objects/installation/harvester/HarvesterObject.idl \
 				server/zone/objects/tangible/TangibleObject.idl \
 				server/zone/objects/tangible/Container.idl \
 				server/zone/objects/tangible/Inventory.idl \
@@ -119,6 +121,12 @@ IDL_SOURCES = server/zone/Zone.idl \
 				server/zone/objects/tangible/powerup/Powerup.idl \
 				server/zone/objects/tangible/holocron/Holocron.idl \
 				server/zone/objects/tangible/firework/Firework.idl \
+				server/zone/objects/tangible/deed/factorydeed/FactoryDeed.idl \
+				server/zone/objects/tangible/deed/generatordeed/GeneratorDeed.idl \
+				server/zone/objects/tangible/deed/harvesterdeed/HarvesterDeed.idl \
+				server/zone/objects/tangible/deed/vehicledeed/VehicleDeed.idl \
+				server/zone/objects/tangible/deed/playerhousedeed/PlayerHouseDeed.idl \
+				server/zone/objects/tangible/deed/DeedObject.idl \
 				server/zone/objects/tangible/inventory/CreatureInventory.idl \
 				server/zone/objects/static/firework/FireworkWorld.idl \
 				server/zone/objects/static/StaticObject.idl \
@@ -172,4 +180,4 @@ clean: cleanidl
 	#done
 
 cleanidl:
-	cd src && idlc -rebuild $(IDL_SOURCES)
+	cd src && $(IDLC) -rebuild $(IDL_SOURCES)

@@ -54,6 +54,7 @@ class PlayerManager;
 class Player;
 class CombatManager;
 class ItemManager;
+class PlanetManager;
 
 class ObjectControllerMessage : public BaseMessage {
 public:
@@ -142,7 +143,8 @@ public:
 	static void parseDismount(Player* player, Message* pack);
 
 	static void parseTip(Player* player, Message* pack, PlayerManager* playerManager);
-
+	static void parsePlaceStructure(Player* player, Message* pack);
+	
 	// Schematics
 	static void parseRequestDraftSlotsBatch(Player* player, Message* pack);
 	static void parseRequestResourceWeightsBatch(Player* player, Message* pack);
@@ -181,6 +183,7 @@ public:
 };
 
 #endif /*OBJECTCONTROLLERMESSAGE_H_*/
+
 
 
 

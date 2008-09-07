@@ -1,44 +1,44 @@
 /*
 Copyright (C) 2007 <SWGEmu>
-
+ 
 This File is part of Core3.
-
-This program is free software; you can redistribute
-it and/or modify it under the terms of the GNU Lesser
+ 
+This program is free software; you can redistribute 
+it and/or modify it under the terms of the GNU Lesser 
 General Public License as published by the Free Software
-Foundation; either version 2 of the License,
+Foundation; either version 2 of the License, 
 or (at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ 
+This program is distributed in the hope that it will be useful, 
+but WITHOUT ANY WARRANTY; without even the implied warranty of 
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
 See the GNU Lesser General Public License for
 more details.
-
-You should have received a copy of the GNU Lesser General
+ 
+You should have received a copy of the GNU Lesser General 
 Public License along with this program; if not, write to
 the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
-
-Linking Engine3 statically or dynamically with other modules
-is making a combined work based on Engine3.
-Thus, the terms and conditions of the GNU Lesser General Public License
+ 
+Linking Engine3 statically or dynamically with other modules 
+is making a combined work based on Engine3. 
+Thus, the terms and conditions of the GNU Lesser General Public License 
 cover the whole combination.
-
-In addition, as a special exception, the copyright holders of Engine3
-give you permission to combine Engine3 program with free software
-programs or libraries that are released under the GNU LGPL and with
-code included in the standard release of Core3 under the GNU LGPL
-license (or modified versions of such code, with unchanged license).
-You may copy and distribute such a system following the terms of the
-GNU LGPL for Engine3 and the licenses of the other code concerned,
-provided that you include the source code of that other code when
+ 
+In addition, as a special exception, the copyright holders of Engine3 
+give you permission to combine Engine3 program with free software 
+programs or libraries that are released under the GNU LGPL and with 
+code included in the standard release of Core3 under the GNU LGPL 
+license (or modified versions of such code, with unchanged license). 
+You may copy and distribute such a system following the terms of the 
+GNU LGPL for Engine3 and the licenses of the other code concerned, 
+provided that you include the source code of that other code when 
 and as the GNU LGPL requires distribution of source code.
-
-Note that people who make modified versions of Engine3 are not obligated
-to grant this special exception for their modified versions;
-it is their choice whether to do so. The GNU Lesser General Public License
-gives permission to release a modified version without this exception;
-this exception also makes it possible to release a modified version
+ 
+Note that people who make modified versions of Engine3 are not obligated 
+to grant this special exception for their modified versions; 
+it is their choice whether to do so. The GNU Lesser General Public License 
+gives permission to release a modified version without this exception; 
+this exception also makes it possible to release a modified version 
 which carries forward this exception.
 */
 
@@ -57,39 +57,40 @@ which carries forward this exception.
 #include "../building/BuildingObject.h"
 #include "../building/cell/CellObject.h"
 
+#include "../player/sui/inputbox/SuiInputBoxImplementation.h"
 
-TangibleObjectImplementation::TangibleObjectImplementation(uint64 oid, int tp)
+TangibleObjectImplementation::TangibleObjectImplementation(uint64 oid, int tp) 
 		: TangibleObjectServant(oid, TANGIBLE) {
 	initialize();
-
+	
 	objectSubType = tp;
-
+	
 	pvpStatusBitmask = 0;
 
 	playerUseMask = ALL;
 }
 
-TangibleObjectImplementation::TangibleObjectImplementation(uint64 oid, const unicode& n, const string& tempname, uint32 tempCRC, int tp)
+TangibleObjectImplementation::TangibleObjectImplementation(uint64 oid, uint32 tempCRC, const unicode& n, const string& tempname, int tp) 
 		: TangibleObjectServant(oid, TANGIBLE) {
 	initialize();
-
+	
 	objectCRC = tempCRC;
-
+	
 	name = n;
 
 	objectSubType = tp;
-
+	
 	pvpStatusBitmask = 0;
 
 	playerUseMask = ALL;
 }
 
-TangibleObjectImplementation::TangibleObjectImplementation(CreatureObject* creature, const unicode& n, const string& tempname, uint32 tempCRC, int tp)
+TangibleObjectImplementation::TangibleObjectImplementation(CreatureObject* creature, uint32 tempCRC, const unicode& n, const string& tempname, int tp) 
 		: TangibleObjectServant() {
 	initialize();
-
+	
 	name = n;
-
+	
 	objectCRC = tempCRC;
 	objectID = creature->getNewItemID();
 
@@ -103,50 +104,50 @@ TangibleObjectImplementation::TangibleObjectImplementation(CreatureObject* creat
 TangibleObjectImplementation::~TangibleObjectImplementation() {
 	if (container != NULL) {
 		error(_this->getTemplateName() + "item still in container on delete");
-
+	
 		//raise(SIGSEGV);
 	}
+	
+	delete itemAttributes;	
 
-	delete itemAttributes;
 	itemAttributes = NULL;
-
 }
 
-void TangibleObjectImplementation::initialize() {
+void TangibleObjectImplementation::initialize() { 
 	stringstream name;
 	name << "TangibleObject :" << objectID;
 	setLoggingName(name.str());
-
+	
 	setLogging(false);
 	setGlobalLogging(true);
-
-
+	
+	
 	container = NULL;
 	zone = NULL;
-
+	
 	persistent = false;
 	updated = false;
-
+	
 	building = NULL;
 
 	objectCount = 0;
-
+	
 	conditionDamage = 0;
 	maxCondition = 6000;
-
+	
 	objectType = SceneObjectImplementation::TANGIBLE;
-
+	
 	equipped = false;
-
+	
 	pvpStatusBitmask = 0;
-
+	
 	itemAttributes = new ItemAttributes();
-
+	
 }
 
-void TangibleObjectImplementation::parseAttributes() {
+void TangibleObjectImplementation::parseAttributes() { 
 	maxCondition = itemAttributes->getMaxCondition();
-
+	
 	conditionDamage = (maxCondition - itemAttributes->getCurrentCondition());
 }
 
@@ -241,16 +242,16 @@ void TangibleObjectImplementation::generateSkillMods(AttributeListMessage* alm, 
 		break;
 	case 30:
 		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:heavyweapon_speed", skillModValue);
-		break;
+		break;	
 	case 31:
 		alm->insertAttribute("cat_skill_mod_bonus.@stat_n:heavyweapon_accuracy", skillModValue);
-		break;
+		break;	
 	}
 }
 
 void TangibleObjectImplementation::insertToZone(Zone* zone) {
 	TangibleObjectImplementation::zone = zone;
-
+	
 	/*if (container != NULL) {
 		if (container->isCell())
 			building = (BuildingObject*) container->getParent();
@@ -258,12 +259,12 @@ void TangibleObjectImplementation::insertToZone(Zone* zone) {
 
 	try {
 		zone->lock();
-
+		
 		zone->registerObject((TangibleObject*) _this);
-
+	
 		zone->insert(this);
 		zone->inRange(this, 128);
-
+		
 		zone->unlock();
 	} catch (...) {
 		cout << "exception TangibleObject::insertToZone(Zone* zone)\n";
@@ -275,13 +276,13 @@ void TangibleObjectImplementation::insertToZone(Zone* zone) {
 void TangibleObjectImplementation::removeFromZone() {
 	if (zone == NULL)
 		return;
-
+	
 	try {
 		zone->lock();
 
     	for (int i = 0; i < inRangeObjectCount(); ++i) {
 			QuadTreeEntry* obj = getInRangeObject(i);
-
+			
 			if (obj != this)
 				obj->removeInRangeObject(this);
 		}
@@ -290,9 +291,9 @@ void TangibleObjectImplementation::removeFromZone() {
 
 		zone->remove(this);
 		zone->deleteObject(objectID);
-
+		
 		zone->unlock();
-
+		
 		zone = NULL;
 	} catch (...) {
 		cout << "exception TangibleObject::removeFromZone(bool doLock)\n";
@@ -316,7 +317,7 @@ void TangibleObjectImplementation::sendTo(Player* player, bool doClose) {
 
 	BaseMessage* tano6 = new TangibleObjectMessage6((TangibleObject*) _this);
 	client->sendMessage(tano6);
-
+	
 	if (pvpStatusBitmask != 0) {
 		UpdatePVPStatusMessage* msg = new UpdatePVPStatusMessage(_this, pvpStatusBitmask);
 		client->sendMessage(msg);
@@ -324,28 +325,28 @@ void TangibleObjectImplementation::sendTo(Player* player, bool doClose) {
 
 	if (doClose)
 		SceneObjectImplementation::close(client);
-
+	
 }
 
 void TangibleObjectImplementation::sendDestroyTo(Player* player) {
 	ZoneClient* client = player->getClient();
 	if (client == NULL)
 		return;
-
+	
 	destroy(client);
 }
 
 void TangibleObjectImplementation::sendDeltas(Player* player) {
-
+	
 	ZoneClient* client = player->getClient();
 	if (client == NULL)
 		return;
-
+	
 	TangibleObjectDeltaMessage3* dtano3 = new TangibleObjectDeltaMessage3(_this);
 
 	dtano3->setQuantity(_this->getObjectCount());
 	dtano3->close();
-
+	
 	client->sendMessage(dtano3);
 
 }
@@ -361,11 +362,11 @@ void TangibleObjectImplementation::close(Player* player) {
 
 void TangibleObjectImplementation::repairItem(Player* player) {
 	int roll = System::random(100);
-
+	
 	int decayRate = 100;
-
+	
 	stringstream txt;
-
+	
 	if (roll < 10) {
 		player->sendSystemMessage("You have completely failed to repair the item. The item falls apart.");
 		maxCondition = 1;
@@ -377,21 +378,42 @@ void TangibleObjectImplementation::repairItem(Player* player) {
 		decayRate = 20;
 	} else {
 		txt << "You have completely repaired the item.";
-		decayRate = 0;
+		decayRate = 0;					
 	}
-
+	
 	player->sendSystemMessage(txt.str());
 
 	maxCondition = (maxCondition - (maxCondition / 100 * decayRate));
 	conditionDamage = 0;
-
+	
 	TangibleObjectDeltaMessage3* dtano3 = new TangibleObjectDeltaMessage3(_this);
 	dtano3->updateConditionDamage();
 	dtano3->updateMaxCondition();
 	dtano3->close();
 	player->broadcastMessage(dtano3);
-
+	
 	updated = true;
+}
+
+void TangibleObjectImplementation::setObjectName(Player * player) {
+	try {
+		//player->wlock();
+		player->setCurrentStructureID(this->getObjectID());		
+		//player->unlock();
+
+		SuiInputBox * setTheName = new SuiInputBox(player, 0x7283, 0x00);
+
+		setTheName->setPromptTitle("Name the Object");
+		setTheName->setPromptText("Please enter the new name you would like for this object");
+
+		player->addSuiBox(setTheName);
+		player->sendMessage(setTheName->generateMessage());
+
+	}
+	catch(...) {
+		cout << "Unreported exception in TangibleObjectImplementation::setObjectName\n";
+		//player->unlock();
+	}
 }
 
 void TangibleObjectImplementation::decay(int decayRate) {
@@ -399,15 +421,15 @@ void TangibleObjectImplementation::decay(int decayRate) {
 
 	if (conditionDamage > maxCondition)
 		conditionDamage = maxCondition;
-
+	
 	updated = true;
 }
 
 void TangibleObjectImplementation::addAttributes(AttributeListMessage* alm) {
 	stringstream cond;
 	cond << (maxCondition-conditionDamage) << "/" << maxCondition;
-
+	
 	alm->insertAttribute("condition", cond);
-
+	
 	alm->insertAttribute("volume", "1");
 }

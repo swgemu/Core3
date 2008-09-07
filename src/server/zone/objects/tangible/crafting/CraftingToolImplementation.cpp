@@ -49,7 +49,7 @@ which carries forward this exception.
 #include "../../../ZoneClient.h"
 
 CraftingToolImplementation::CraftingToolImplementation(uint64 object_id, uint32 tempCRC,
-		const unicode& n, const string& tempn) : CraftingToolServant(object_id, n, tempn, tempCRC,
+		const unicode& n, const string& tempn) : CraftingToolServant(object_id, tempCRC, n, tempn,
 				CRAFTINGTOOL) {
 	objectCRC = tempCRC;
 	templateTypeName = "obj_n";
@@ -59,7 +59,7 @@ CraftingToolImplementation::CraftingToolImplementation(uint64 object_id, uint32 
 }
 
 CraftingToolImplementation::CraftingToolImplementation(CreatureObject* creature, uint32 tempCRC,
-		const unicode& n, const string& tempn) : CraftingToolServant(creature, n, tempn, tempCRC,
+		const unicode& n, const string& tempn) : CraftingToolServant(creature, tempCRC, n, tempn,
 				CRAFTINGTOOL) {
 	objectCRC = tempCRC;
 	templateTypeName = "obj_n";
