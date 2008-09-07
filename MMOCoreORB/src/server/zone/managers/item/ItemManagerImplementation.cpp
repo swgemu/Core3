@@ -282,7 +282,7 @@ TangibleObject* ItemManagerImplementation::createPlayerObjectTemplate(int object
 			break;
 
 		default:
-			item = new TangibleObject(objectid, objectname, objecttemp, objectcrc, objecttype);
+			item = new TangibleObject(objectid, objectcrc, objectname, objecttemp, objecttype);
 			if (makeStats) {
 				item->setAttributes(lootAttributes );
 				item->parseItemAttributes();
@@ -333,7 +333,44 @@ TangibleObject* ItemManagerImplementation::createPlayerObjectTemplate(int object
 			item->setAttributes(lootAttributes );
 			item->parseItemAttributes();
 		}
+	} else if (objecttype & TangibleObjectImplementation::DEED) {
+		switch (objecttype) {
+			case DeedObjectImplementation::INSTALLATIONDEED:
+
+				//item = new HarvesterDeed(objectid, objectcrc, objectname, objecttemp);
+				switch(DeedObjectImplementation::getSubType(objectcrc)){
+					case DeedObjectImplementation::HARVESTER:
+						item = new HarvesterDeed(objectid, objectcrc, objectname, objecttemp);
+						break;
+					case DeedObjectImplementation::FACTORY:
+						item = new FactoryDeed(objectid, objectcrc, objectname, objecttemp);
+						break;
+					case DeedObjectImplementation::GENERATOR:
+						item = new GeneratorDeed(objectid, objectcrc, objectname, objecttemp);
+						break;
+					case DeedObjectImplementation::TURRET:
+						break;
+					case DeedObjectImplementation::MINEFIELD:
+						break;
+				}
+				break;
+			case TangibleObjectImplementation::BUILDINGDEED:
+				item = new PlayerHouseDeed(objectid, objectcrc, objectname, objecttemp);
+				break;
+			case TangibleObjectImplementation::PETDEED:
+
+				break;
+			case TangibleObjectImplementation::DROIDDEED:
+
+				break;
+			case TangibleObjectImplementation::VEHICLEDEED:
+				item = new VehicleDeed(objectid, objectcrc, objectname, objecttemp);
+				break;
+		}
 	}
+	/*else {
+		item = new TangibleObjectImplementation(objectid, objectname, objecttemp, objectcrc, equipped);
+	} */
 
 	return item;
 }
@@ -444,7 +481,7 @@ TangibleObject* ItemManagerImplementation::createSubObject(uint64 objectid, uint
 		item = new CurePack(objectid, objectcrc, objectname, objecttemp);
 		break;
 	default:
-		item = new TangibleObject(objectid, objectname, objecttemp, objectcrc, TangibleObjectImplementation::MISC);
+		item = new TangibleObject(objectid, objectcrc, objectname, objecttemp, TangibleObjectImplementation::MISC);
 		break;
 	}
 
@@ -1038,6 +1075,14 @@ void ItemManagerImplementation::loadDefaultPlayerItems(Player* player) {
 }
 
 void ItemManagerImplementation::loadDefaultPlayerDatapadItems(Player* player) {
+
+	// Leave in the x34 incase something goes wrong with deeds
+	// x34
+	MountCreature* land3 = new MountCreature(player, "landspeeder_x34", "monster_name",
+			String::hashCode("object/intangible/vehicle/shared_landspeeder_x34_pcd.iff"), 0x4EC3780C, player->getNewItemID());
+	land3->addToDatapad();
+
+	/*
 	// SWOOP
 	MountCreature* swoop = new MountCreature(player, "speederbike_swoop", "monster_name",
 			String::hashCode("object/intangible/vehicle/shared_speederbike_swoop_pcd.iff"), 0xAF6D9F4F, player->getNewItemID());
@@ -1053,13 +1098,13 @@ void ItemManagerImplementation::loadDefaultPlayerDatapadItems(Player* player) {
 			String::hashCode("object/intangible/vehicle/shared_landspeeder_x31_pcd.iff"), 0x273A9C02, player->getNewItemID());
 	land->addToDatapad();
 
-	// xp 38 doesnt work
-	/*MountCreatureImplementation* land2Impl = new MountCreatureImplementation(player, "landspeeder_xp38", "monster_name",
-	 String::hashCode("object/intangible/vehicle/shared_vehicle_pcd_base.iff"), 0x3F6E7BA7, player->getNewItemID());
-	 stringstream Land2;
-	 Land2 << "Mount" << land2Impl->getObjectID();
-	 MountCreature* land2 = (MountCreature*) DistributedObjectBroker::instance()->deploy(Land2.str(), land2Impl);
-	 land2->addToDatapad();*/
+	 // xp 38 doesnt work
+	 //MountCreatureImplementation* land2Impl = new MountCreatureImplementation(player, "landspeeder_xp38", "monster_name",
+	 //String::hashCode("object/intangible/vehicle/shared_vehicle_pcd_base.iff"), 0x3F6E7BA7, player->getNewItemID());
+	 //stringstream Land2;
+	 //Land2 << "Mount" << land2Impl->getObjectID();
+	 //MountCreature* land2 = (MountCreature*) DistributedObjectBroker::instance()->deploy(Land2.str(), land2Impl);
+	 //land2->addToDatapad();
 
 	// x34
 	MountCreature* land3 = new MountCreature(player, "landspeeder_x34", "monster_name",

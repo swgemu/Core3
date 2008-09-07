@@ -1328,7 +1328,7 @@ TangibleObject* CraftingManagerImplementation::generateTangibleObject(Player* pl
 			objectcrc, objectname, objecttemp, equipped);
 
 	if (tano == NULL) {
-		TangibleObject* tano = new TangibleObject(objectid, objectname, objecttemp, objectcrc);
+		TangibleObject* tano = new TangibleObject(objectid, objectcrc, objectname, objecttemp);
 	}
 
 	//item->setAttributes(attributes);

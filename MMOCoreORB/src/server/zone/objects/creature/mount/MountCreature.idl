@@ -61,6 +61,7 @@ interface MountCreature implements Creature {
 	boolean isVehicle();
 	boolean isPet();
 	boolean isDisabled();
+	boolean isJetpack();
 	
 	CreatureObject getLinkedCreature();
 	IntangibleObject getITNO();

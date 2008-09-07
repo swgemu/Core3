@@ -56,6 +56,9 @@ class Zone;
 class BuildingObjectImplementation : public QuadTree, public BuildingObjectServant {
 	SortedVector<CellObject*> cells;
 	
+	string name;
+	string defaultName;
+	
 	int buildingType;
 	
 	bool staticBuilding;
@@ -68,7 +71,7 @@ public:
 	static const int CAPITOL = 4;
 	static const int CLONING_FACILITY = 5;
 	static const int GARAGE = 6;
-	//static const int GUILD = 7; // Should just be a "parent" type?
+	static const int GUILD = 7; // Should just be a "parent" type?
 	static const int GUILD_COMBAT = 8;
 	static const int GUILD_COMMERCE = 9;
 	static const int GUILD_THEATER = 10;
@@ -162,6 +165,8 @@ public:
 	void sendDestroyTo(Player* player);
 	
 	void addCell(CellObject* cell);
+	
+	void sendCells(Player* player, bool close);
 		
 	void notifyInsert(QuadTreeEntry* obj);
 	void notifyDissapear(QuadTreeEntry* obj);
@@ -180,6 +185,22 @@ public:
 	
 	inline void setBuildingType(const int type) {
 		buildingType = type;
+		setDefaultName();
+	}
+	
+	void setDefaultName();
+
+	
+	inline void setName(const string& Name) {
+		name = Name;
+	}
+
+	inline string& getName() {
+		return name;
+	}
+
+	inline string& getDefaultName() {
+		return defaultName;
 	}
 	
 	void lock(bool doLock = true) {

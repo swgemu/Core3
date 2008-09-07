@@ -268,43 +268,43 @@ void ZonePacketHandler::handleSelectCharacter(Message* pack) {
 	uint64 playerID = (characterID << 32) + 0x15;
 
 	Player* player = NULL;
-	
+
 	try {
-		
+
 		server->lock();
 
 		SceneObject* obj = server->getObject(playerID, false);
-	
+
 		if (obj == NULL)
 			obj = server->getCachedObject(playerID, false);
-	
+
 		if (obj != NULL) {
 			player = (Player*) obj;
-			
+
 			server->addObject(player, false);
-			
+
 			server->unlock();
-			
+
 			player->reload(client);
-	
+
 			playerManager->updatePlayerCreditsFromDatabase(player);
 			playerManager->putPlayer(player);
 		} else {
 			player = playerManager->load(characterID);
 			player->setZone(server->getZone(player->getZoneIndex()));
-			
+
 			server->addObject(player, false);
-			
+
 			server->unlock();
-	
+
 			player->load(client);
 		}
-	
+
 		clientimpl->setLockName("ZoneClient = " + player->getFirstName());
 	} catch (Exception& e) {
 		cout << "unreported exception caught in ZonePacketHandler::handleSelectCharacter(Message* pack)\n";
 		e.printStackTrace();
-		server->unlock(); 
+		server->unlock();
 	}
 }
 
@@ -405,6 +405,8 @@ void ZonePacketHandler::handleObjectControllerMessage(Message* pack) {
 			player->unlock();
 			return;
 		}
+
+		//cout << "Header 1 = " << hex <<  header1 << "  Header 2 = " << header2 << endl;
 
 		uint64 parent;
 

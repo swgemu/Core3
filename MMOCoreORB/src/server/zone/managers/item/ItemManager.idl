@@ -49,6 +49,8 @@ import "../../objects/tangible/TangibleObject";
 import "../../objects/tangible/weapons/Weapon";
 import "../../objects/tangible/wearables/Armor";
 
+import "../../objects/tangible/deed/DeedObject";
+
 import "../../objects/creature/bluefrog/BlueFrogVector";
 
 import "../../objects/player/Player";

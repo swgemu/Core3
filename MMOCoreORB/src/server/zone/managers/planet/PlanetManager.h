@@ -49,6 +49,8 @@ public:
 
 	unsigned long long getLandingTime();
 
+	void placePlayerStructure(Player* player, unsigned long long objectID, float x, float y, int orient);
+
 	unsigned int getTravelFare(string& departurePlanet, string& arrivalPlanet);
 
 protected:
@@ -90,6 +92,8 @@ public:
 	BuildingObject* getBuilding(unsigned long long id);
 
 	unsigned long long getLandingTime();
+
+	void placePlayerStructure(Player* player, unsigned long long objectID, float x, float y, int orient);
 
 	unsigned int getTravelFare(string& departurePlanet, string& arrivalPlanet);
 

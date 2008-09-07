@@ -172,12 +172,15 @@ class CustomizationVariables : private VectorMap<uint8, uint8> {
 
 public:
 	CustomizationVariables() : VectorMap<uint8, uint8>() {
+		
+		removeAll();
+		
 		unknown = 1;
 
 		female = false;
 		setNullValue(0);
 
-		setInsertPlan(SortedVector<uint16>::NO_DUPLICATE);
+		setInsertPlan(SortedVector<uint8>::NO_DUPLICATE);
 	}
 
 	~CustomizationVariables() {
@@ -469,11 +472,11 @@ public:
 
 	}
 
-	uint16 getVariable(uint8 type) {
+	uint8 getVariable(uint8 type) {
 		return get(type);
 	}
 
-	uint16 getVariable(int idx) {
+	uint8 getVariable(int idx) {
 		return get(idx);
 	}
 

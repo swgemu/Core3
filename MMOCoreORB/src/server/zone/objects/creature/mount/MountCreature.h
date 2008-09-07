@@ -31,6 +31,8 @@ public:
 
 	bool isDisabled();
 
+	bool isJetpack();
+
 	CreatureObject* getLinkedCreature();
 
 	IntangibleObject* getITNO();
@@ -72,6 +74,8 @@ public:
 	bool isPet();
 
 	bool isDisabled();
+
+	bool isJetpack();
 
 	CreatureObject* getLinkedCreature();
 

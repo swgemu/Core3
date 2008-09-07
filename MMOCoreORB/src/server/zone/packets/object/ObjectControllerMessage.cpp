@@ -51,6 +51,8 @@
 
 #include "../../managers/player/PlayerManager.h"
 
+#include "../../managers/planet/PlanetManager.h"
+
 #include "../../managers/item/ItemManager.h"
 #include "../../managers/combat/CombatManager.h"
 #include "../../managers/player/ProfessionManager.h"
@@ -182,8 +184,10 @@ bool ObjectControllerMessage::parseDataTransform(Player* player, Message* pack) 
 	//cout << "Movement counter:" << movementCounter << "\n";
 
 	player->setMovementCounter(movementCounter);
+
 	player->setDirection(dx, dz, dy, dw);
 	player->setPosition(x, z, y);
+	
 
 	/*cout << "Player [" << player->getObjectID() << "] - Counter [" << player->getMovementCounter() << "]"
 	 << " - Position (" << (int) x << "," << (int) z << "," << (int) y << ")\n";*/
@@ -675,6 +679,9 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 		break;
 	case (0xE5F3B39B):
 		handleDeathblow(player, pack, combatManager);
+		break;
+	case (0x7AF26B0B):  // Place Structure
+		parsePlaceStructure(player, pack);
 		break;
 	case (0x19C9FAC1):
 		parseSurveySlashRequest(player, pack);
@@ -1970,13 +1977,17 @@ void ObjectControllerMessage::parseServerSit(Player* player, Message* pack) {
 			float y = tokenizer.getFloatToken();
 			float z = tokenizer.getFloatToken();
 
+			uint64 coID;
+			if (tokenizer.hasMoreTokens())
+				coID = tokenizer.getLongToken();
+				
 			if (x < -8192 || x> 8192)
 			x = 0;
 			if (y < -8192 || y> 8192)
 			y = 0;
 			if (z < -8192 || z> 8192)
 			z = 0;
-
+			
 			player->setPosture(CreatureObjectImplementation::SITTING_POSTURE, false, true, x, y, z);
 		} catch (...) {
 			cout << "Unreported exception in ObjectControllerMessage::parseServerSit\n";
@@ -2191,6 +2202,7 @@ void ObjectControllerMessage::parseServerDestroyObject(Player* player,
 	pack->parseUnicode(unkPramString); //?
 
 	WaypointObject* waypoint = player->getWaypoint(objid);
+	IntangibleObject* datapadData = (IntangibleObject*) player->getDatapadItem(objid);
 
 	SceneObject* invObj = player->getInventoryItem(objid);
 
@@ -2232,8 +2244,15 @@ void ObjectControllerMessage::parseServerDestroyObject(Player* player,
 	} else if (waypoint != NULL) {
 		if (player->removeWaypoint(waypoint))
 			waypoint->finalize();
+	} else if (datapadData != NULL){		
+		player->removeDatapadItem(objid);
+				
+		BaseMessage* msg = new SceneObjectDestroyMessage(datapadData);
+		player->getClient()->sendMessage(msg);
 	}
 }
+
+
 
 void ObjectControllerMessage::parseSetWaypointActiveStatus(Player* player,
 		Message* pack) {
@@ -2659,6 +2678,30 @@ void ObjectControllerMessage::handleDeathblow(Player* player, Message* packet,
 		target->unlock();
 	}
 }
+
+void ObjectControllerMessage::parsePlaceStructure(Player* player, Message* packet){
+
+	player->sendSystemMessage("Placing Structure");
+	packet->parseInt();  // Empty Data
+	packet->parseInt();  // Empty Data
+	
+	unicode data;
+	packet->parseUnicode(data);
+	
+	StringTokenizer tokenizer(data.c_str());
+	
+	string objectID;
+	tokenizer.getStringToken(objectID);
+	float x = tokenizer.getFloatToken();
+	float y = tokenizer.getFloatToken();
+	int orient = tokenizer.getIntToken();
+	
+	uint64 toID = String::toUnsignedLong(objectID.c_str());
+	
+	PlanetManager * planet = player->getZone()->getPlanetManager();
+	planet->placePlayerStructure(player, toID, x, y, orient);
+	
+} 
 
 void ObjectControllerMessage::parseSurveySlashRequest(Player* player,
 		Message* packet) {
@@ -3348,6 +3391,7 @@ void ObjectControllerMessage::parseHarvestOrganics(Player* player, Message* pack
 	resourceManager->harvestOrganics(player, creature, type);
 
 }
+
 
 
 

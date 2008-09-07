@@ -108,7 +108,8 @@ class ZoneServerImplementation : public DatagramServiceThread, public ZoneServer
 	time_t startTimestamp;
 
 	uint64 nextCreatureID;
-
+	uint64 nextCellID;
+	
 	string name;
 
 public:
@@ -243,6 +244,8 @@ public:
 
 	uint64 getNextCreatureID(bool doLock = true);
 
+	uint64 getNextCellID(bool doLock = true);
+	
 };
 
 #endif /*ZONESERVERIMPLEMENTATION_H_*/

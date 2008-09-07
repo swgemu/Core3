@@ -131,4 +131,6 @@ interface ZoneServer {
 	unsigned long getStartTimestamp();
 	
 	unsigned long getNextCreatureID(boolean doLock = true);
+	
+	unsigned long getNextCellID(boolean doLock = true);
 }

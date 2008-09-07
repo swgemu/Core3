@@ -23,6 +23,8 @@ class CellObject : public SceneObject {
 public:
 	CellObject(unsigned long long oid, BuildingObject* buio);
 
+	CellObject(unsigned long long oid, BuildingObject* buio, unsigned long long cid);
+
 	void insertToZone(Zone* zone);
 
 	void addChild(SceneObject* object, bool doLock = true);
@@ -30,6 +32,8 @@ public:
 	void removeChild(SceneObject* object, bool doLock = true);
 
 	SceneObject* getChild(int idx);
+
+	unsigned long long getCellID();
 
 	int getChildrenSize();
 
@@ -56,6 +60,8 @@ public:
 	void removeChild(SceneObject* object, bool doLock);
 
 	SceneObject* getChild(int idx);
+
+	unsigned long long getCellID();
 
 	int getChildrenSize();
 

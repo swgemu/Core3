@@ -57,4 +57,7 @@ interface SuiTransferBox implements SuiBox {
 	BaseMessage getMessage();
 
 	void addOption(const string itemText, const string lblType, const string itemType);
+	void addFrom(const string from, const string startingFrom, const string inputFrom, const string rFrom);
+	void addTo(const string to, const string startingTo, const string inputTo, const string rTo);
+	
 }

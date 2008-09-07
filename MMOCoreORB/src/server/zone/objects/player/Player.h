@@ -615,6 +615,10 @@ public:
 
 	unsigned int getForcePowerMax();
 
+	unsigned long long getCurrentStructureID();
+
+	void setCurrentStructureID(unsigned long long oid);
+
 	SurveyTool* getSurveyTool();
 
 	SurveyTool* getSampleTool();
@@ -652,6 +656,8 @@ public:
 	bool getSurveyErrorMessage();
 
 	bool getSampleErrorMessage();
+
+	void sendMail(string& mailsender, unicode& subjectSender, unicode& bodySender, string& charNameSender);
 
 	void setEntertainerEvent();
 
@@ -1250,6 +1256,10 @@ public:
 
 	unsigned int getForcePowerMax();
 
+	unsigned long long getCurrentStructureID();
+
+	void setCurrentStructureID(unsigned long long oid);
+
 	SurveyTool* getSurveyTool();
 
 	SurveyTool* getSampleTool();
@@ -1287,6 +1297,8 @@ public:
 	bool getSurveyErrorMessage();
 
 	bool getSampleErrorMessage();
+
+	void sendMail(string& mailsender, unicode& subjectSender, unicode& bodySender, string& charNameSender);
 
 	void setEntertainerEvent();
 
@@ -1342,6 +1354,10 @@ protected:
 	string _param0_subtractDraftSchematicsFromGroupName__string_;
 	string _param0_setSurveyEvent__string_;
 	string _param0_setSampleEvent__string_bool_;
+	string _param0_sendMail__string_unicode_unicode_string_;
+	unicode _param1_sendMail__string_unicode_unicode_string_;
+	unicode _param2_sendMail__string_unicode_unicode_string_;
+	string _param3_sendMail__string_unicode_unicode_string_;
 	string _param0_setLastNpcConvStr__string_;
 	string _param0_setLastNpcConvMessStr__string_;
 };

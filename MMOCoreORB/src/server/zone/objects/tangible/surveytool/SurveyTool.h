@@ -102,8 +102,8 @@ public:
 	SurveyTool* _this;
 
 public:
-	SurveyToolServant(unsigned long long oid, const unicode& n, const string& tempn, unsigned int tempCRC, int tp);
-	SurveyToolServant(CreatureObject* creature, const unicode& n, const string& tempn, unsigned int tempCRC, int tp);
+	SurveyToolServant(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, int tp);
+	SurveyToolServant(CreatureObject* creature, unsigned int tempCRC, const unicode& n, const string& tempn, int tp);
 	virtual ~SurveyToolServant();
 
 	void _setStub(DistributedObjectStub* stub);

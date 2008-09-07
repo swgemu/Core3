@@ -47,9 +47,9 @@ which carries forward this exception.
 #include "Component.h"
 #include "ComponentImplementation.h"
 #include "../../../../ZoneClient.h"
-
-ComponentImplementation::ComponentImplementation(uint64 object_id, uint32 tempCRC,
-		const unicode& n, const string& tempn) : ComponentServant(object_id, n, tempn, tempCRC,
+ 
+ComponentImplementation::ComponentImplementation(uint64 object_id, uint32 tempCRC, 
+		const unicode& n, const string& tempn) : ComponentServant(object_id, tempCRC, n, tempn, 
 				COMPONENT) {
 	objectCRC = tempCRC;
 	templateTypeName = "craft_weapon_ingredients_n";
@@ -57,9 +57,9 @@ ComponentImplementation::ComponentImplementation(uint64 object_id, uint32 tempCR
 	name = n;
 	init();
 }
-
-ComponentImplementation::ComponentImplementation(CreatureObject* creature, uint32 tempCRC,
-		const unicode& n, const string& tempn) : ComponentServant(creature, n, tempn, tempCRC,
+ 
+ComponentImplementation::ComponentImplementation(CreatureObject* creature, uint32 tempCRC, 
+		const unicode& n, const string& tempn) : ComponentServant(creature, tempCRC, n, tempn, 
 				COMPONENT) {
 	objectCRC = tempCRC;
 	templateTypeName = "craft_weapon_ingredients_n";
@@ -140,5 +140,6 @@ Component* ComponentImplementation::cloneComponent(Component* oldComp, uint64 oi
 	}
 
 }
+
 
 

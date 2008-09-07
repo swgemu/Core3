@@ -134,6 +134,13 @@ public:
 		updateListCount();
 	}
 	
+	void insertAttribute(const string& attribute, int value, bool asInt) {
+		insertAscii(attribute.c_str());
+		insertInt(value);
+	
+		updateListCount();
+	}
+
 	void updateListCount() {
 		insertInt(countLocation, ++listcount);
 	}

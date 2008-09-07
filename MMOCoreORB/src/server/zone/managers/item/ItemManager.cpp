@@ -14,6 +14,8 @@
 
 #include "../../objects/tangible/wearables/Armor.h"
 
+#include "../../objects/tangible/deed/DeedObject.h"
+
 #include "../../objects/creature/bluefrog/BlueFrogVector.h"
 
 #include "../../objects/player/Player.h"

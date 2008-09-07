@@ -49,12 +49,12 @@ which carries forward this exception.
 
 class EnterStructurePlacementModeMessage : public BaseMessage {
 public:
-    EnterStructurePlacementModeMessage(uint64 deedid) : BaseMessage() {
+	EnterStructurePlacementModeMessage(uint64 deedid, string crcpath) : BaseMessage() {
 		insertShort(0x03);
 		insertInt(0xE8A54DC1);  // CRC
         
 		insertLong(deedid); //Deed ID
-		insertAscii("object/building/player/shared_player_garage_corellia_style_01.iff"); //path to the object.
+		insertAscii(crcpath); //path to the object.
 	}
 };
 

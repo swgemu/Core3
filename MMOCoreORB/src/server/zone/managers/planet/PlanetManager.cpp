@@ -184,12 +184,29 @@ unsigned long long PlanetManager::getLandingTime() {
 		return ((PlanetManagerImplementation*) _impl)->getLandingTime();
 }
 
-unsigned int PlanetManager::getTravelFare(string& departurePlanet, string& arrivalPlanet) {
+void PlanetManager::placePlayerStructure(Player* player, unsigned long long objectID, float x, float y, int orient) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 18);
+		method.addObjectParameter(player);
+		method.addUnsignedLongParameter(objectID);
+		method.addFloatParameter(x);
+		method.addFloatParameter(y);
+		method.addSignedIntParameter(orient);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlanetManagerImplementation*) _impl)->placePlayerStructure(player, objectID, x, y, orient);
+}
+
+unsigned int PlanetManager::getTravelFare(string& departurePlanet, string& arrivalPlanet) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 19);
 		method.addAsciiParameter(departurePlanet);
 		method.addAsciiParameter(arrivalPlanet);
 
@@ -246,6 +263,9 @@ Packet* PlanetManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		resp->insertLong(getLandingTime());
 		break;
 	case 18:
+		placePlayerStructure((Player*) inv->getObjectParameter(), inv->getUnsignedLongParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getSignedIntParameter());
+		break;
+	case 19:
 		resp->insertInt(getTravelFare(inv->getAsciiParameter(_param0_getTravelFare__string_string_), inv->getAsciiParameter(_param1_getTravelFare__string_string_)));
 		break;
 	default:
@@ -301,6 +321,10 @@ BuildingObject* PlanetManagerAdapter::getBuilding(unsigned long long id) {
 
 unsigned long long PlanetManagerAdapter::getLandingTime() {
 	return ((PlanetManagerImplementation*) impl)->getLandingTime();
+}
+
+void PlanetManagerAdapter::placePlayerStructure(Player* player, unsigned long long objectID, float x, float y, int orient) {
+	return ((PlanetManagerImplementation*) impl)->placePlayerStructure(player, objectID, x, y, orient);
 }
 
 unsigned int PlanetManagerAdapter::getTravelFare(string& departurePlanet, string& arrivalPlanet) {

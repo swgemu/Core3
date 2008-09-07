@@ -45,8 +45,16 @@ which carries forward this exception.
 #ifndef CELLOBJECTIMPLEMENTATION_H_
 #define CELLOBJECTIMPLEMENTATION_H_
 
+#include "../../../packets.h"
+
 #include "CellObject.h"
 #include "../../scene/SceneObject.h"
+
+#include "../../player/Player.h"
+#include "../../player/PlayerImplementation.h"
+#include "../../../Zone.h"
+
+#include "../../../ZoneClientImplementation.h"
 
 class Player;
 class BuildingObject;
@@ -54,9 +62,11 @@ class Zone;
 
 class CellObjectImplementation : public CellObjectServant {
 	SortedVector<SceneObject*> children;
+	uint64 cellID;
 
 public:
-	CellObjectImplementation(uint64 oid, BuildingObject* buio);
+	CellObjectImplementation(uint64 objID, BuildingObject* buio);
+	CellObjectImplementation(uint64 objID, BuildingObject* buio, uint64 cid);
 	~CellObjectImplementation();
 	
 	void insertToZone(Zone* zone);
@@ -65,6 +75,26 @@ public:
 	void removeChild(SceneObject* obj, bool doLock = true);
 	
 	void sendTo(Player* player, bool doClose = true) {
+		/*ZoneClient* client = player->getClient();
++		if (client == NULL)
++			return;
++		
++		SceneObjectImplementation::create(client);
++		 
++		UpdateContainmentMessage* link = new UpdateContainmentMessage(objectID, parent->getObjectID(), 0xFFFFFFFF);
++		player->sendMessage(link);
++		 
++		CellObjectMessage3* cellMsg3 = new CellObjectMessage3(objectID, cellID);
++		player->sendMessage(cellMsg3);
++		 
++		CellObjectMessage6* cellMsg6 = new CellObjectMessage6(objectID);
++		player->sendMessage(cellMsg6);
++		 
++		UpdateCellPermissionsMessage* perm = new UpdateCellPermissionsMessage(objectID);
++		player->sendMessage(perm);
++		 
++		if (doClose)
++				SceneObjectImplementation::close(client);*/
 	}
 	
 	void sendDestroyTo(Player* player) {
@@ -77,6 +107,11 @@ public:
 	inline int getChildrenSize() {
 		return children.size();
 	}
+	
+	inline uint64 getCellID() {
+		return cellID;
+	}
+
 
 };
 

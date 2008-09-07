@@ -1516,6 +1516,14 @@ void PlayerImplementation::sendSystemMessage(const string& file, const string& s
 	sendMessage(msg);
 }
 
+void PlayerImplementation::sendMail(string& mailSender, unicode& subjectSender, 
+		unicode& bodySender, string& charNameSender) {
+ 
+	ChatManager * chat=  zone->getChatManager();
+	
+	chat->sendMail(mailSender, subjectSender, bodySender, charNameSender);
+}
+
 void PlayerImplementation::sendSystemMessage(unicode& message) {
 	ChatSystemMessage* smsg = new ChatSystemMessage(message);
 	sendMessage(smsg);

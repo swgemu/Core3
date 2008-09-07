@@ -542,6 +542,19 @@ unsigned long long ZoneServer::getNextCreatureID(bool doLock) {
 		return ((ZoneServerImplementation*) _impl)->getNextCreatureID(doLock);
 }
 
+unsigned long long ZoneServer::getNextCellID(bool doLock) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 45);
+		method.addBooleanParameter(doLock);
+
+		return method.executeWithUnsignedLongReturn();
+	} else
+		return ((ZoneServerImplementation*) _impl)->getNextCellID(doLock);
+}
+
 /*
  *	ZoneServerAdapter
  */
@@ -669,6 +682,9 @@ Packet* ZoneServerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case 44:
 		resp->insertLong(getNextCreatureID(inv->getBooleanParameter()));
+		break;
+	case 45:
+		resp->insertLong(getNextCellID(inv->getBooleanParameter()));
 		break;
 	default:
 		return NULL;
@@ -831,6 +847,10 @@ unsigned long long ZoneServerAdapter::getStartTimestamp() {
 
 unsigned long long ZoneServerAdapter::getNextCreatureID(bool doLock) {
 	return ((ZoneServerImplementation*) impl)->getNextCreatureID(doLock);
+}
+
+unsigned long long ZoneServerAdapter::getNextCellID(bool doLock) {
+	return ((ZoneServerImplementation*) impl)->getNextCellID(doLock);
 }
 
 /*

@@ -242,8 +242,8 @@ public:
 
 public:
 	ResourceContainerServant(unsigned long long oid, int tp);
-	ResourceContainerServant(unsigned long long oid, const unicode& n, const string& tempn, unsigned int tempCRC, int tp);
-	ResourceContainerServant(CreatureObject* creature, const unicode& n, const string& tempn, unsigned int tempCRC, int tp);
+	ResourceContainerServant(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, int tp);
+	ResourceContainerServant(CreatureObject* creature, unsigned int tempCRC, const unicode& n, const string& tempn, int tp);
 	virtual ~ResourceContainerServant();
 
 	void _setStub(DistributedObjectStub* stub);

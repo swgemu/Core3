@@ -52,7 +52,7 @@ which carries forward this exception.
 #include "../../../managers/resource/ResourceManager.h"
 
 SurveyToolImplementation::SurveyToolImplementation(uint64 object_id, uint32 tempCRC, const unicode& n, const string& tempn) 
-		: SurveyToolServant(object_id, n, tempn, tempCRC, SURVEYTOOL) {
+		: SurveyToolServant(object_id, tempCRC, n, tempn, SURVEYTOOL) {
 	objectCRC = tempCRC;
 	templateTypeName = "obj_n";
 	
@@ -64,7 +64,7 @@ SurveyToolImplementation::SurveyToolImplementation(uint64 object_id, uint32 temp
 }
 
 SurveyToolImplementation::SurveyToolImplementation(CreatureObject* creature, uint32 tempCRC, const unicode& n, const string& tempn) 
-		: SurveyToolServant(creature, n, tempn, tempCRC, SURVEYTOOL) {
+		: SurveyToolServant(creature, tempCRC, n, tempn, SURVEYTOOL) {
 	objectCRC = tempCRC;
 	
 	templateTypeName = "obj_n";

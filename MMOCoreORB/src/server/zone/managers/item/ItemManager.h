@@ -15,6 +15,8 @@ class Weapon;
 
 class Armor;
 
+class DeedObject;
+
 class BlueFrogVector;
 
 class Player;

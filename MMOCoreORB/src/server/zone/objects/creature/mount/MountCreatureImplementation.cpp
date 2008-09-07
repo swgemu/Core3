@@ -189,7 +189,14 @@ void MountCreatureImplementation::call() {
 			return;
 		}
 
-		initializePosition(linkedCreature->getPositionX(), linkedCreature->getPositionZ(), linkedCreature->getPositionY());
+		// Jet Pack
+		if(isJetpack()) {
+			//initializePosition(linkedCreature->getPositionX(), linkedCreature->getPositionZ() + 4, linkedCreature->getPositionY());
+			setAppearanceAttribute("index_hover_height", 40); // 32 = 9m, 64 = 12m
+			//setHeight(4.0f);
+		}
+		//else
+			initializePosition(linkedCreature->getPositionX(), linkedCreature->getPositionZ(), linkedCreature->getPositionY());
 
 		zone = linkedCreature->getZone();
 

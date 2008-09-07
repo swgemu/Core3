@@ -221,6 +221,16 @@ public:
 	static const int TWOHANDSABER = 0x2000002;
 	static const int POLEARMSABER = 0x2000003;
 
+	
+	// INSTALLATIONS
+	static const int INSTALLATION = 4096;
+	static const int FACTORY = 4097;
+	static const int GENERATOR = 4098;
+	static const int HARVESTER = 4099;
+	static const int TURRET = 4010;
+	static const int MINEFIELD = 4011;
+	
+	// DEEDS
 	static const int DEED = 0x800000;
 	static const int BUILDINGDEED = 0x800001;
 	static const int INSTALLATIONDEED = 0x800002;
@@ -281,8 +291,8 @@ public:
 
 public:
 	TangibleObjectImplementation(uint64 oid, int tp = 0);
-	TangibleObjectImplementation(uint64 oid, const unicode& name, const string& tempname, uint32 tempCRC, int tp = 0);
-	TangibleObjectImplementation(CreatureObject* creature, const unicode& name, const string& tempname, uint32 tempCRC, int tp = 0);
+	TangibleObjectImplementation(uint64 oid, uint32 tempCRC, const unicode& name, const string& tempname, int tp = 0);
+	TangibleObjectImplementation(CreatureObject* creature, uint32 tempCRC, const unicode& name, const string& tempname, int tp = 0);
 
 	~TangibleObjectImplementation();
 
@@ -320,6 +330,8 @@ public:
 	void close(Player* player);
 
 	void repairItem(Player* player);
+
+	void setObjectName(Player * player);
 
 	virtual void decay(int decayRate);
 
@@ -367,6 +379,10 @@ public:
 		customizationVars.setVariable(type, value);
 	}
 
+	inline void setCustomizationVariable(const string type, uint8 value) {
+		customizationVars.setVariable(type, value);
+	}
+	
 	inline void setCraftersName(string& n){
 		craftersName = n;
 		string temp = "craftersname";
@@ -512,6 +528,14 @@ public:
 		return objectSubType == FIREWORK;
 	}
 
+	inline bool isDeed() {
+		return ((objectSubType == INSTALLATIONDEED) || (objectSubType
+				== BUILDINGDEED) || (objectSubType == PETDEED)
+				|| (objectSubType == DROIDDEED) || (objectSubType
+				== VEHICLEDEED) || (objectSubType == DEED));
+	}
+
+	
 	inline bool isLair() {
 		return objectSubType == LAIR;
 	}

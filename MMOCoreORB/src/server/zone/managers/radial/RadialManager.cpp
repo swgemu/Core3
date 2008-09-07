@@ -80,6 +80,7 @@ void RadialManager::handleRadialRequest(Player* player, Packet* pack) {
 
 	ManagedReference<SceneObject> object = zone->lookupObject(objectid);
 
+	//cout << "Radial Request ObjectID: " << dec << objectid << "\n";
 	if (object == NULL)
 		object = player->getPlayerItem(objectid);
 
@@ -118,6 +119,7 @@ void RadialManager::handleRadialSelect(Player* player, Packet* pack) {
 			return;
 		}
 
+		//cout << "Radial ID = " << dec << radialID << endl;
 		obj = zone->lookupObject(objectID);
 
 		//TODO: Get a bazaar object to pass to the next functions
@@ -163,6 +165,7 @@ void RadialManager::handleSelection(int radialID, Player* player, SceneObject* o
 	// Pre: player is wlocked, obj is unlocked
 	// Post: player and obj unlocked
 
+	//cout << "Radial ID = " << dec << radialID << endl;
 	switch (radialID) {
 	case 7: // EXAMINE
 		break;
@@ -173,6 +176,8 @@ void RadialManager::handleSelection(int radialID, Player* player, SceneObject* o
 		break;
 	case 20: // ITEM_USE
 		obj->useObject(player);
+		break;
+	case 33: // Structure Set Name
 		break;
 	case 35:  // LOOT
 		player->lootCorpse();
@@ -205,6 +210,11 @@ void RadialManager::handleSelection(int radialID, Player* player, SceneObject* o
 	case 71: // REMOVE POWERUP
 		handleRemovePowerup(player, obj);
 		break;
+	case 77: // Add Energy
+		handleStructureAddEnergy(player, obj);
+		break;
+	case 82: // Manage Harvester
+		break;
 	case 108: // Harvest Meat
 		handleHarvest(player, obj, 1);
 		break;
@@ -213,6 +223,20 @@ void RadialManager::handleSelection(int radialID, Player* player, SceneObject* o
 		break;
 	case 110: // Harvest Bone
 		handleHarvest(player, obj, 3);
+		break;
+	case 122: // Structure Management
+		break;
+	case 128: // Structure Status
+		handleStructureStatus(player, obj);
+		break;
+	case 131: // Handle Set Name
+		handleSetName(player, obj);
+		break;
+	case 132: // Structure Destroy
+		handleStructureDestroy(player, obj);
+		break;
+	case 133: // Pay Maintenance
+		handleStructureAddMaintenance(player, obj);
 		break;
 	case 130: // Crafting tool hopper item retrieval
 		handleOpenCraftingToolHopper(player, obj);
@@ -404,6 +428,22 @@ void RadialManager::handleTrade(Player* player, SceneObject* obj) {
 	}
 }
 
+void RadialManager::sendRadialResponseForHarvesters(Player* player, HarvesterObject* hino, ObjectMenuResponse* omr) {
+	omr->addRadialItem(0, 122, 1, "@player_structure:management");
+
+	omr->addRadialItem(2, 132, 3, "@player_structure:permission_destroy");
+	omr->addRadialItem(2, 128, 3, "@player_structure:management_status");
+	omr->addRadialItem(2, 131, 3, "Set Name"); //"@player_structure:set_name"
+	omr->addRadialItem(2, 133, 3, "@player_structure:management_pay");
+	omr->addRadialItem(2, 82, 3, "@harvester:manage");
+	omr->addRadialItem(2, 77, 3, "@player_structure:management_power");
+
+	omr->finish();
+
+	player->sendMessage(omr);
+}
+
+
 void RadialManager::handleWearableColorChange(Player* player, SceneObject* obj) {
 	if (!obj->isTangible())
 		return;
@@ -425,6 +465,109 @@ void RadialManager::handleWearableColorChange(Player* player, SceneObject* obj) 
 
 	player->addSuiBox(sui);
 	player->sendMessage(sui->generateMessage());
+}
+
+void RadialManager::handleStructureDestroy(Player* player, SceneObject* obj) {
+	try{
+		InstallationObject * inso = (InstallationObject *) obj;
+
+		if(inso!= NULL)
+			inso->handleStructureRedeed(player);
+		/*else {
+				BuildingObject * buio = (BuildingObject * ) obj;
+
+				if(buio!= NULL)
+					buio->undeploy();
+			}
+		}*/
+	}
+	catch(...){
+		cout << "Unreported exception in RadialManager::handleStructureDestroy\n";
+	}
+}
+
+void RadialManager::handleStructureStatus(Player* player, SceneObject* obj) {
+	try{
+		InstallationObject * inso = (InstallationObject *) obj;
+
+		if(inso!= NULL)
+			inso->handleStructureStatus(player);
+		/*else {
+				BuildingObject * buio = (BuildingObject * ) obj;
+
+				if(buio!= NULL)
+					buio->handleStructureStatus(player);
+			}
+		}*/
+	}
+	catch(...){
+		cout << "Unreported exception in RadialManager::handleStructureStatus\n";
+	}
+}
+
+void RadialManager::handleSetName(Player* player, SceneObject* obj) {
+	try{
+		TangibleObject * tano = (TangibleObject*) obj;
+
+		if(tano!= NULL)
+
+			tano->setObjectName(player);
+
+		/*else {
+			BuildingObject * buio = (BuildingObject * ) obj;
+
+			if(buio!= NULL)
+				buio->setName(player);
+		}
+		*/
+
+	}
+	catch(...){
+		cout << "Unreported exception RadialManager::handleSetName\n";
+	}
+}
+
+void RadialManager::handleStructureAddMaintenance(Player* player, SceneObject* obj) {
+	try{
+		InstallationObject * inso = (InstallationObject*) obj;
+
+		if(inso!= NULL)
+
+			inso->handleStructureAddMaintenance(player);
+
+		/*else {
+			BuildingObject * buio = (BuildingObject * ) obj;
+
+			if(buio!= NULL)
+				buio->setName(player);
+		}
+		*/
+
+	}
+	catch(...){
+		cout << "Unreported exception in RadialManager::handleStructureAddMaintenance\n";
+	}
+}
+void RadialManager::handleStructureAddEnergy(Player* player, SceneObject* obj) {
+	try{
+		InstallationObject * inso = (InstallationObject*) obj;
+
+		if(inso!= NULL)
+
+			inso->handleStructureAddEnergy(player);
+
+		/*else {
+			BuildingObject * buio = (BuildingObject * ) obj;
+
+			if(buio!= NULL)
+				buio->setName(player);
+		}
+		*/
+
+	}
+	catch(...){
+		cout << "Unreported exception in RadialManager::handleStructureAddEnergy\n";
+	}
 }
 
 void RadialManager::handleSlicing(Player* player, SceneObject* obj) {
@@ -588,4 +731,5 @@ void RadialManager::handleHarvest(Player* player, SceneObject* obj, int type) {
 
 	resourceManager->harvestOrganics(player, creature, type);
 }
+
 

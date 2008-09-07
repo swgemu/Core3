@@ -841,11 +841,11 @@ DistributedObjectAdapter* CraftingToolHelper::createAdapter(DistributedObjectStu
  *	CraftingToolServant
  */
 
-CraftingToolServant::CraftingToolServant(unsigned long long oid, const unicode& n, const string& tempn, unsigned int tempCRC, int type) : TangibleObjectImplementation(oid, n, tempn, tempCRC, type) {
+CraftingToolServant::CraftingToolServant(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, int type) : TangibleObjectImplementation(oid, tempCRC, n, tempn, type) {
 	_classHelper = CraftingToolHelper::instance();
 }
 
-CraftingToolServant::CraftingToolServant(CreatureObject* creature, const unicode& n, const string& tempn, unsigned int tempCRC, int type) : TangibleObjectImplementation(creature, n, tempn, tempCRC, type) {
+CraftingToolServant::CraftingToolServant(CreatureObject* creature, unsigned int tempCRC, const unicode& n, const string& tempn, int type) : TangibleObjectImplementation(creature, tempCRC, n, tempn, type) {
 	_classHelper = CraftingToolHelper::instance();
 }
 

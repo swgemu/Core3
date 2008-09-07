@@ -56,6 +56,10 @@ interface CellObject implements SceneObject {
 	CellObject(unsigned long oid, BuildingObject buio) {
 		super(oid, int type);
 	}
+
+	CellObject(unsigned long oid, BuildingObject buio, unsigned long cid) {
+		super(oid, int type);
+	}
 	
 	void insertToZone(Zone zone);
 	
@@ -63,6 +67,8 @@ interface CellObject implements SceneObject {
 	void removeChild(SceneObject object, boolean doLock = true);
 	
 	SceneObject getChild(int idx);
+	
+	unsigned long getCellID();
 
 	int getChildrenSize();
 	

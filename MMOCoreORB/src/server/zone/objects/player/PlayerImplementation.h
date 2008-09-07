@@ -222,6 +222,8 @@ class PlayerImplementation : public PlayerServant {
 	VectorMap<uint32, SuiBox*> suiBoxes;
 	uint32 suiBoxNextID;
 
+	uint64 currentStructureID;
+	
 	//npc conversation
 	string lastNpcConvoMessage;
 	string lastNpcConvo;
@@ -1065,6 +1067,8 @@ public:
 		owner = client;
 	}
 
+	void sendMail(string& mailSender, unicode& subjectSender, unicode& bodySender, string& charNameSender);
+
 	inline void setStartingLocation(string& loc) {
 		startingLocation = loc;
 	}
@@ -1490,6 +1494,14 @@ public:
 		return lastNpcConvoMessage;
 	}
 
+	inline void setCurrentStructureID(uint64 oid){
+		currentStructureID = oid;
+	}
+
+	inline uint64 getCurrentStructureID(){
+		return currentStructureID;
+	}
+	
 	friend class PlayerManager;
 	friend class ProfessionManager;
 	friend class SkillManager;

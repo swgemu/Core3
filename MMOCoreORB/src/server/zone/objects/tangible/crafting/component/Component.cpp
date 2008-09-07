@@ -169,11 +169,11 @@ DistributedObjectAdapter* ComponentHelper::createAdapter(DistributedObjectStub* 
  *	ComponentServant
  */
 
-ComponentServant::ComponentServant(unsigned long long oid, const unicode& n, const string& tempn, unsigned int tempCRC, int tp) : TangibleObjectImplementation(oid, n, tempn, tempCRC, tp) {
+ComponentServant::ComponentServant(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, int tp) : TangibleObjectImplementation(oid, tempCRC, n, tempn, tp) {
 	_classHelper = ComponentHelper::instance();
 }
 
-ComponentServant::ComponentServant(CreatureObject* creature, const unicode& n, const string& tempn, unsigned int tempCRC, int tp) : TangibleObjectImplementation(creature, n, tempn, tempCRC, tp) {
+ComponentServant::ComponentServant(CreatureObject* creature, unsigned int tempCRC, const unicode& n, const string& tempn, int tp) : TangibleObjectImplementation(creature, tempCRC, n, tempn, tp) {
 	_classHelper = ComponentHelper::instance();
 }
 

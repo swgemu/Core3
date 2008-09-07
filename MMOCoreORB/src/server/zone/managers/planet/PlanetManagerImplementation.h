@@ -64,12 +64,18 @@ which carries forward this exception.
 
 class ShuttleTakeOffEvent;
 class ShuttleLandingEvent;
+class HarvesterSpawnEvent;
+class InstallationSpawnEvent;
+class TempInstallationSpawnEvent;
+class TempInstallationDespawnEvent;
 
 class Zone;
 class CreatureManager;
 
 class ZoneProcessServerImplementation;
 class BuildingObject;
+
+class ChatManager;
 
 class PlanetManagerImplementation : public PlanetManagerServant, public Mutex, public Logger {
 	Zone* zone;
@@ -88,6 +94,13 @@ class PlanetManagerImplementation : public PlanetManagerServant, public Mutex, p
 	ShuttleLandingEvent* shuttleLandingEvent;
 	ShuttleTakeOffEvent* shuttleTakeOffEvent;
 
+	HarvesterSpawnEvent* harvesterSpawnEvent;
+	InstallationSpawnEvent* installationSpawnEvent;
+	
+	TempInstallationSpawnEvent* tempInstallationSpawnEvent;
+	TempInstallationDespawnEvent* tempInstallationDespawnEvent;
+
+	
 	CreatureManager* creatureManager;
 
 	static const uint32 travelFare[10][10];
@@ -114,6 +127,7 @@ private:
 	void loadTrainers();
 	int guessBuildingType(uint64 oid, string file);
 	void loadBuildings();
+	void loadPlayerStructures();
 	void loadGuildTerminals();
 	void loadVendorTerminals();
 
@@ -144,9 +158,20 @@ public:
 
 	uint64 getNextStaticObjectID(bool doLock = true);
 
+	void placePlayerStructure(Player * player, uint64 objectID, float x, float y, int orient);
+	
 	inline uint32 getTravelFare(string departurePlanet, string arrivalPlanet) {
 		return travelFare[Planet::getPlanetID(departurePlanet)][Planet::getPlanetID(arrivalPlanet)];
 	}
+	void spawnTempStructure(Player * player, DeedObject * deed, float x, float z, float y, float oX, float oZ, float oY, float oW);
+	
+	void spawnInstallation(Player * player, DeedObject * deed, float x, float z, float y, float oX, float oZ, float oY, float oW);
+	
+	void spawnHarvester(Player * player, DeedObject * deed, float x, float z, float y, float oX, float oZ, float oY, float oW);
+	
+	void spawnBuilding(Player * player, DeedObject * deed, float x, float z, float y, float oX, float oZ, float oY, float oW);
+	
+	void addPlayerCells(Player * player, BuildingObject * buio, int cellCount);
 };
 
 #endif

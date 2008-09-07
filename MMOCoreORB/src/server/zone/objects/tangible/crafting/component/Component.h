@@ -81,8 +81,8 @@ public:
 	Component* _this;
 
 public:
-	ComponentServant(unsigned long long oid, const unicode& n, const string& tempn, unsigned int tempCRC, int tp);
-	ComponentServant(CreatureObject* creature, const unicode& n, const string& tempn, unsigned int tempCRC, int tp);
+	ComponentServant(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, int tp);
+	ComponentServant(CreatureObject* creature, unsigned int tempCRC, const unicode& n, const string& tempn, int tp);
 	virtual ~ComponentServant();
 
 	void _setStub(DistributedObjectStub* stub);

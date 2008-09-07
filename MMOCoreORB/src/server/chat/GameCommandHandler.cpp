@@ -299,12 +299,12 @@ void GameCommandHandler::map(StringTokenizer tokenizer, Player * player) {
 void GameCommandHandler::warp(StringTokenizer tokenizer, Player * player) {
 	if (!tokenizer.hasMoreTokens())
 		return;
-		
+
 	float x = tokenizer.getFloatToken();
-	
+
 	if (!tokenizer.hasMoreTokens())
 		return;
-		
+
 	float y = tokenizer.getFloatToken();
 
 	uint64 cellID = 0;
@@ -874,7 +874,7 @@ void GameCommandHandler::killArea(StringTokenizer tokenizer, Player * player) {
 	//..as you wish my master
 	if (!tokenizer.hasMoreTokens())
 		return;
-		
+
 	meter = tokenizer.getIntToken();
 
 	Zone* zone = player->getZone();
@@ -1574,7 +1574,7 @@ void GameCommandHandler::giveItemTemp(StringTokenizer tokenizer, Player * player
 	//Give TANO
 	if (!tokenizer.hasMoreTokens())
 		return;
-		
+
 	string itemType;
 	tokenizer.getStringToken(itemType);
 
@@ -1583,6 +1583,12 @@ void GameCommandHandler::giveItemTemp(StringTokenizer tokenizer, Player * player
 		player->addInventoryItem(item);
 
 		item->sendTo(player);
+	} else if (itemType == "Jetpack") {
+			VehicleDeed * item = new VehicleDeed(player, 0x9899666C, unicode("Deed for: Jetpack"), "jetpack_deed");
+			player->addInventoryItem(item);
+
+			item->sendTo(player);
+
 	} else if (itemType == "Firework") {
 		if (tokenizer.hasMoreTokens()) {
 			int fwAniType = tokenizer.getIntToken();

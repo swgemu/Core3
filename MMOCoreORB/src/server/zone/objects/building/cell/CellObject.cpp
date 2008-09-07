@@ -23,6 +23,11 @@ CellObject::CellObject(unsigned long long oid, BuildingObject* buio) : SceneObje
 	_impl->_setStub(this);
 }
 
+CellObject::CellObject(unsigned long long oid, BuildingObject* buio, unsigned long long cid) : SceneObject(DummyConstructorParameter::instance()) {
+	_impl = new CellObjectImplementation(oid, buio, cid);
+	_impl->_setStub(this);
+}
+
 CellObject::CellObject(DummyConstructorParameter* param) : SceneObject(param) {
 }
 
@@ -83,12 +88,24 @@ SceneObject* CellObject::getChild(int idx) {
 		return ((CellObjectImplementation*) _impl)->getChild(idx);
 }
 
-int CellObject::getChildrenSize() {
+unsigned long long CellObject::getCellID() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 10);
+
+		return method.executeWithUnsignedLongReturn();
+	} else
+		return ((CellObjectImplementation*) _impl)->getCellID();
+}
+
+int CellObject::getChildrenSize() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 11);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -119,6 +136,9 @@ Packet* CellObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertLong(getChild(inv->getSignedIntParameter())->_getObjectID());
 		break;
 	case 10:
+		resp->insertLong(getCellID());
+		break;
+	case 11:
 		resp->insertSignedInt(getChildrenSize());
 		break;
 	default:
@@ -142,6 +162,10 @@ void CellObjectAdapter::removeChild(SceneObject* object, bool doLock) {
 
 SceneObject* CellObjectAdapter::getChild(int idx) {
 	return ((CellObjectImplementation*) impl)->getChild(idx);
+}
+
+unsigned long long CellObjectAdapter::getCellID() {
+	return ((CellObjectImplementation*) impl)->getCellID();
 }
 
 int CellObjectAdapter::getChildrenSize() {
