@@ -1124,17 +1124,17 @@ void PlayerManagerImplementation::updateConsentList(Player* player) {
 
 	if (size > 0) {
 		query.str("");
-		query << "INSERT DELAYED INTO consentlist (character_id, target_id) VALUES ";
+		query << "INSERT INTO consentlist (character_id, target_id) VALUES ";
 
 		stringstream insertSets;
 
 		for (int i=0; i < size; i++) {
-			insertSets << "(" << player->getCharacterID() << ",(SELECT character_id FROM characters WHERE firstname = '" << player->getConsentEntry(i) << "'))";
-			if (i < size)
+			insertSets << "(" << player->getCharacterID() << ",IFNULL((SELECT character_id FROM characters WHERE firstname = '" << player->getConsentEntry(i) << "'),0))";
+			if (i < size - 1)
 				insertSets << ",";
 		}
 
-		query << insertSets << ";";
+		query << insertSets.str() << ";";
 
 		try {
 			ServerDatabase::instance()->executeStatement(query);
