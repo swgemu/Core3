@@ -235,17 +235,18 @@ QuadTreeEntry* SceneObject::getInRangeObject(int idx) {
 		return ((SceneObjectImplementation*) _impl)->getInRangeObject(idx);
 }
 
-void SceneObject::addInRangeObject(QuadTreeEntry* obj) {
+void SceneObject::addInRangeObject(QuadTreeEntry* obj, bool notifyUpdate) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 22);
 		method.addObjectParameter(obj);
+		method.addBooleanParameter(notifyUpdate);
 
 		method.executeWithVoidReturn();
 	} else
-		((SceneObjectImplementation*) _impl)->addInRangeObject(obj);
+		((SceneObjectImplementation*) _impl)->addInRangeObject(obj, notifyUpdate);
 }
 
 void SceneObject::removeInRangeObject(QuadTreeEntry* obj) {
@@ -1144,7 +1145,7 @@ Packet* SceneObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		resp->insertLong(getInRangeObject(inv->getSignedIntParameter())->_getObjectID());
 		break;
 	case 22:
-		addInRangeObject((QuadTreeEntry*) inv->getObjectParameter());
+		addInRangeObject((QuadTreeEntry*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
 	case 23:
 		removeInRangeObject((QuadTreeEntry*) inv->getObjectParameter());
@@ -1415,8 +1416,8 @@ QuadTreeEntry* SceneObjectAdapter::getInRangeObject(int idx) {
 	return ((SceneObjectImplementation*) impl)->getInRangeObject(idx);
 }
 
-void SceneObjectAdapter::addInRangeObject(QuadTreeEntry* obj) {
-	return ((SceneObjectImplementation*) impl)->addInRangeObject(obj);
+void SceneObjectAdapter::addInRangeObject(QuadTreeEntry* obj, bool notifyUpdate) {
+	return ((SceneObjectImplementation*) impl)->addInRangeObject(obj, notifyUpdate);
 }
 
 void SceneObjectAdapter::removeInRangeObject(QuadTreeEntry* obj) {

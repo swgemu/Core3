@@ -89,7 +89,7 @@ interface SceneObject implements ManagedObject {
 	int inRangeObjectCount();
 	
 	QuadTreeEntry getInRangeObject(int idx);
-	void addInRangeObject(QuadTreeEntry obj);
+	void addInRangeObject(QuadTreeEntry obj, boolean notifyUpdate = true);
 	void removeInRangeObject(QuadTreeEntry obj);
 	
 	boolean isInQuadTree();

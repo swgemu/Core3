@@ -59,7 +59,7 @@ public:
 
 	QuadTreeEntry* getInRangeObject(int idx);
 
-	void addInRangeObject(QuadTreeEntry* obj);
+	void addInRangeObject(QuadTreeEntry* obj, bool notifyUpdate = true);
 
 	void removeInRangeObject(QuadTreeEntry* obj);
 
@@ -247,7 +247,7 @@ public:
 
 	QuadTreeEntry* getInRangeObject(int idx);
 
-	void addInRangeObject(QuadTreeEntry* obj);
+	void addInRangeObject(QuadTreeEntry* obj, bool notifyUpdate);
 
 	void removeInRangeObject(QuadTreeEntry* obj);
 

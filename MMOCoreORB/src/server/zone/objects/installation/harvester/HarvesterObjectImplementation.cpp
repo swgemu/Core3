@@ -113,9 +113,10 @@ void HarvesterObjectImplementation::sendRadialResponseTo(Player* player, ObjectM
 	player->sendMessage(omr);
 }
 
-void HarvesterObjectImplementation::update(){
+void HarvesterObjectImplementation::update() {
 
 }
-int HarvesterObjectImplementation::getAvailableResourcesCount(){
 
+int HarvesterObjectImplementation::getAvailableResourcesCount() {
+	return 0;
 }
