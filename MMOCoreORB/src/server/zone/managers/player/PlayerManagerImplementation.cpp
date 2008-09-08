@@ -393,6 +393,8 @@ void PlayerManagerImplementation::loadFromDatabase(Player* player) {
 	player->setHairAppearance(hData);
 
 	int raceID = character->getInt(7);
+
+	player->setRaceID(raceID);
 	player->setObjectCRC(Races::getRaceCRC(raceID));
 	player->setRaceName(Races::getRace(raceID));
 	player->setSpeciesName(Races::getSpecies(raceID));

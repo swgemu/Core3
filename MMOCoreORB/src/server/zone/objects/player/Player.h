@@ -425,6 +425,8 @@ public:
 
 	void setRaceFileName(string& name);
 
+	void setRaceID(unsigned char id);
+
 	void setStartingLocation(string& loc);
 
 	void setFactionRank(string& fac);
@@ -496,6 +498,8 @@ public:
 	string& getFirstNameProper();
 
 	string& getRaceFileName();
+
+	unsigned char getRaceID();
 
 	unicode& getBiography();
 
@@ -1066,6 +1070,8 @@ public:
 
 	void setRaceFileName(string& name);
 
+	void setRaceID(unsigned char id);
+
 	void setStartingLocation(string& loc);
 
 	void setFactionRank(string& fac);
@@ -1137,6 +1143,8 @@ public:
 	string& getFirstNameProper();
 
 	string& getRaceFileName();
+
+	unsigned char getRaceID();
 
 	unicode& getBiography();
 

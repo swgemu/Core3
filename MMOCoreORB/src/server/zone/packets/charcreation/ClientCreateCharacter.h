@@ -78,6 +78,7 @@ public:
 		player->setRaceFileName(racefile);
 
 		int raceid = Races::getRaceID(racefile);
+		player->setRaceID(raceid);
 		player->setRaceName(Races::getRace(raceid));
 		player->setSpeciesName(Races::getSpecies(raceid));
 		player->setGender(Races::getGender(raceid));

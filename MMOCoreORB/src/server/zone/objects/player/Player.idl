@@ -378,6 +378,7 @@ interface Player implements CreatureObject {
 	void newChangeFactionEvent(unsigned int faction);
 
 	void setRaceFileName(string name);
+	void setRaceID(unsigned char id);
 	void setStartingLocation(string loc);
 
 	void setFactionRank(string fac);
@@ -446,6 +447,7 @@ interface Player implements CreatureObject {
 	string getLastName();
 	string getFirstNameProper();
 	string getRaceFileName();
+	unsigned char getRaceID();
 
 	unicode getBiography();
 	//string getHairData();
