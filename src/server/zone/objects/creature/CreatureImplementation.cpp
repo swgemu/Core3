@@ -963,11 +963,11 @@ void CreatureImplementation::updateCreaturePosition(bool lightUpdate) {
 }
 
 void CreatureImplementation::removeFromZone(bool doLock) {
-	deagro();
-
 	try {
 		if (zone == NULL || !isInQuadTree())
 			return;
+			
+		//deagro();
 
 		zone->lock(doLock);
 
@@ -1053,16 +1053,16 @@ void CreatureImplementation::notifyPositionUpdate(QuadTreeEntry* obj) {
 					aggroedCreature = player;
 
 					if (isQueued())
-					creatureManager->dequeueActivity(this);
+						creatureManager->dequeueActivity(this);
 
 					creatureManager->queueActivity(this, 10);
 
 				}
 			} else if ((parent == NULL) && !doRandomMovement && patrolPoints.isEmpty() && System::random(200) < 1) {
 				doRandomMovement = true;
-
+				
 				positionZ = obj->getPositionZ();
-
+				
 				//cout << hex << player->getObjectID() << " initiating movement of " << objectID << "\n";
 
 				if (!isQueued())
@@ -1091,7 +1091,11 @@ bool CreatureImplementation::activate() {
 		if (aggroedCreature != NULL && targetObject != aggroedCreature) {
 			updateTarget(aggroedCreature);
 		} else if (doRandomMovement) {
+			zone->lock();
+			
 			doRandomMovement = false;
+			
+			zone->unlock();
 
 			addRandomPatrolPoint(32 + System::random(64), false);
 		}
@@ -1197,8 +1201,17 @@ void CreatureImplementation::resetState() {
 	defenderList.removeAll();
 
 	clearStates();
+	
+	try {
 
-	aggroedCreature = NULL;
+		zone->lock();
+		
+		aggroedCreature = NULL;
+		
+		zone->unlock();
+	} catch (...) {
+		zone->unlock();
+	}
 
 	resetPatrolPoints(false);
 
@@ -1231,7 +1244,15 @@ void CreatureImplementation::broadcastNextPositionUpdate(PatrolPoint* point) {
 }
 
 void CreatureImplementation::setNextPosition() {
-	setPosition(nextPosition->getPositionX(), nextPosition->getPositionZ(), nextPosition->getPositionY());
+	try {
+		zone->lock();
+		
+		setPosition(nextPosition->getPositionX(), nextPosition->getPositionZ(), nextPosition->getPositionY());
+		
+		zone->unlock();
+	} catch (...) {
+		zone->unlock();
+	}
 	uint64 newCell = nextPosition->getCellID();
 
 	stringstream reachedPosition;
@@ -1402,8 +1423,16 @@ void CreatureImplementation::doAttack(CreatureObject* target, int damage) {
 		highestMadeDamage = damage;
 
 		info("new target locked");
-
-		aggroedCreature = target;
+		
+		try {
+			zone->lock();
+	
+			aggroedCreature = target;
+			
+			zone->unlock();
+		} catch (...) {
+			zone->unlock();
+		}
 
 		updateTarget(target);
 
@@ -1500,7 +1529,7 @@ bool CreatureImplementation::attack(CreatureObject* target) {
 	return true;
 }
 
-void CreatureImplementation::deagro() {
+void CreatureImplementation::deagro() {	
 	if (aggroedCreature != NULL) {
 		stringstream msg;
 		msg << "deaggroed (0x" << hex << aggroedCreature->getObjectID() << dec << ")";
@@ -1509,7 +1538,15 @@ void CreatureImplementation::deagro() {
 		if (aggroedCreature->isDead() || aggroedCreature->isIncapacitated())
 			doIncapAnimation();
 
-		aggroedCreature = NULL;
+		try {
+			zone->lock();
+			
+			aggroedCreature = NULL;
+			
+			zone->unlock();
+		} catch (...) {
+			zone->unlock();
+		}
 	}
 
 	clearTarget();

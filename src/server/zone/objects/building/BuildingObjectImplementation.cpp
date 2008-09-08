@@ -149,11 +149,11 @@ void BuildingObjectImplementation::notifyInsert(QuadTreeEntry* obj) {
 				SceneObject* child = cell->getChild(j);
 
 				if (child->isPlayer() || child->isNonPlayerCreature()) {
-					child->addInRangeObject(obj);
+					child->addInRangeObject(obj, false);
 
 					SceneObjectImplementation* a = (SceneObjectImplementation*) child->_getImplementation();
 					if (a != NULL)
-						obj->addInRangeObject(a);
+						obj->addInRangeObject(a, false);
 				}
 			}
 		}
@@ -258,8 +258,8 @@ void BuildingObjectImplementation::notifyInsertToZone(CreatureObject* creature) 
 		SceneObjectImplementation* objImpl = (SceneObjectImplementation*) obj;
 
 		if (objImpl->isPlayer() || objImpl->isNonPlayerCreature()) {
-			creoImpl->addInRangeObject(obj);
-			obj->addInRangeObject(creoImpl);
+			creoImpl->addInRangeObject(obj, false);
+			obj->addInRangeObject(creoImpl, false);
 		}
 	}
 }
