@@ -108,6 +108,7 @@ class PlayerImplementation : public PlayerServant {
 	string firstNameProper;
 
 	string raceFile; //race iff, defines the race file of the character being created.
+	uint8 raceID;
 
 	string startingLocation; //start location iff string
 	string startingProfession; //starting profession string
@@ -223,7 +224,7 @@ class PlayerImplementation : public PlayerServant {
 	uint32 suiBoxNextID;
 
 	uint64 currentStructureID;
-	
+
 	//npc conversation
 	string lastNpcConvoMessage;
 	string lastNpcConvo;
@@ -329,97 +330,97 @@ public:
 	//Attribute Limits
 
 	inline const uint32 getMinHealth() {
-		const uint32 * table =  Races::getAttribLimits(Races::getRaceID(raceFile));
+		const uint32 * table =  Races::getAttribLimits(raceID);
 		return table[0];
 	}
 
 	inline const uint32 getMaxHealth() {
-		const uint32 * table =  Races::getAttribLimits(Races::getRaceID(raceFile));
+		const uint32 * table =  Races::getAttribLimits(raceID);
 		return table[1];
 	}
 
 	inline const uint32 getMinStrength() {
-		const uint32 * table =  Races::getAttribLimits(Races::getRaceID(raceFile));
+		const uint32 * table =  Races::getAttribLimits(raceID);
 		return table[2];
 	}
 
 	inline const uint32 getMaxStrength() {
-		const uint32 * table =  Races::getAttribLimits(Races::getRaceID(raceFile));
+		const uint32 * table =  Races::getAttribLimits(raceID);
 		return table[3];
 	}
 
 	inline const uint32 getMinConstitution() {
-		const uint32 * table =  Races::getAttribLimits(Races::getRaceID(raceFile));
+		const uint32 * table =  Races::getAttribLimits(raceID);
 		return table[4];
 	}
 
 	inline const uint32 getMaxConstitution() {
-		const uint32 * table =  Races::getAttribLimits(Races::getRaceID(raceFile));
+		const uint32 * table =  Races::getAttribLimits(raceID);
 		return table[5];
 	}
 
 	inline const uint32 getMinAction() {
-		const uint32 * table =  Races::getAttribLimits(Races::getRaceID(raceFile));
+		const uint32 * table =  Races::getAttribLimits(raceID);
 		return table[6];
 	}
 
 	inline const uint32 getMaxAction() {
-		const uint32 * table =  Races::getAttribLimits(Races::getRaceID(raceFile));
+		const uint32 * table =  Races::getAttribLimits(raceID);
 		return table[7];
 	}
 
 	inline const uint32 getMinQuickness() {
-		const uint32 * table =  Races::getAttribLimits(Races::getRaceID(raceFile));
+		const uint32 * table =  Races::getAttribLimits(raceID);
 		return table[8];
 	}
 
 	inline const uint32 getMaxQuickness() {
-		const uint32 * table =  Races::getAttribLimits(Races::getRaceID(raceFile));
+		const uint32 * table =  Races::getAttribLimits(raceID);
 		return table[9];
 	}
 
 	inline const uint32 getMinStamina() {
-		const uint32 * table =  Races::getAttribLimits(Races::getRaceID(raceFile));
+		const uint32 * table =  Races::getAttribLimits(raceID);
 		return table[10];
 	}
 
 	inline const uint32 getMaxStamina() {
-		const uint32 * table =  Races::getAttribLimits(Races::getRaceID(raceFile));
+		const uint32 * table =  Races::getAttribLimits(raceID);
 		return table[11];
 	}
 
 	inline const uint32 getMinMind() {
-		const uint32 * table =  Races::getAttribLimits(Races::getRaceID(raceFile));
+		const uint32 * table =  Races::getAttribLimits(raceID);
 		return table[12];
 	}
 
 	inline const uint32 getMaxMind() {
-		const uint32 * table =  Races::getAttribLimits(Races::getRaceID(raceFile));
+		const uint32 * table =  Races::getAttribLimits(raceID);
 		return table[13];
 	}
 
 	inline const uint32 getMinFocus() {
-		const uint32 * table =  Races::getAttribLimits(Races::getRaceID(raceFile));
+		const uint32 * table =  Races::getAttribLimits(raceID);
 		return table[14];
 	}
 
 	inline const uint32 getMaxFocus() {
-		const uint32 * table =  Races::getAttribLimits(Races::getRaceID(raceFile));
+		const uint32 * table =  Races::getAttribLimits(raceID);
 		return table[15];
 	}
 
 	inline const uint32 getMinWillpower() {
-		const uint32 * table =  Races::getAttribLimits(Races::getRaceID(raceFile));
+		const uint32 * table =  Races::getAttribLimits(raceID);
 		return table[16];
 	}
 
 	inline uint32 getMaxWillpower() {
-		const uint32 * table =  Races::getAttribLimits(Races::getRaceID(raceFile));
+		const uint32 * table =  Races::getAttribLimits(raceID);
 		return table[17];
 	}
 
 	inline uint32 getTotalAttribPoints() {
-		const uint32 * table =  Races::getAttribLimits(Races::getRaceID(raceFile));
+		const uint32 * table =  Races::getAttribLimits(raceID);
 		return table[18];
 	}
 	void sendToOwner();
@@ -1077,6 +1078,10 @@ public:
 		raceFile = name;
 	}
 
+	inline void setRaceID(uint8 id) {
+		raceID = id;
+	}
+
 	inline void setHairObject(const string& hair) {
 		hairObject = hair;
 	}
@@ -1202,6 +1207,10 @@ public:
 
 	inline string& getRaceFileName() {
 		return raceFile;
+	}
+
+	inline uint8 getRaceID() {
+		return raceID;
 	}
 
 	inline int getZoneIndex() {
@@ -1501,7 +1510,7 @@ public:
 	inline uint64 getCurrentStructureID(){
 		return currentStructureID;
 	}
-	
+
 	friend class PlayerManager;
 	friend class ProfessionManager;
 	friend class SkillManager;

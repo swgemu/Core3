@@ -187,7 +187,7 @@ bool ObjectControllerMessage::parseDataTransform(Player* player, Message* pack) 
 
 	player->setDirection(dx, dz, dy, dw);
 	player->setPosition(x, z, y);
-	
+
 
 	/*cout << "Player [" << player->getObjectID() << "] - Counter [" << player->getMovementCounter() << "]"
 	 << " - Position (" << (int) x << "," << (int) z << "," << (int) y << ")\n";*/
@@ -951,14 +951,14 @@ void ObjectControllerMessage::parseSetStatMigrationDataRequest(Player* player, M
 	 * TODO: Stat migration bug tracking.  Remove later. *
 	 ****************************************************/
 	ChatManager * chatManager = player->getZone()->getChatManager();
-	const string  sender = player->getCharacterName().c_str();
-	unicode header = "STAT MIGRATION BUG REPORT: " + sender;
+	const string  sender = "BUG TRACKER";
+	unicode header = "STAT MIGRATION BUG REPORT";
 	stringstream ss;
-	ss << "The stat migration protection system has been triggered for user " << sender << "." << endl;
+	ss << "The stat migration protection system has been triggered for user " << player->getCharacterName().c_str() << "." << endl;
 	ss << "The following is the relevant debug information:" << endl << endl;
 	ss << "Player Name: " << player->getCharacterName().c_str() << endl;
 	ss << "Species: " << player->getSpeciesName() << endl;
-	ss << "Starting Profession: " << player->getStartingProfession() << endl;
+	ss << "Sex: " << player->getGender() << endl;
 	ss << "Target Stats: " << stats.c_str() << endl;
 	ss << "Min/Max/Current Health: " << player->getMinHealth() << " | " << player->getMaxHealth() << " | " << player->getBaseHealth() << endl;
 	ss << "Min/Max/Current Strength: " << player->getMinStrength() << " | " << player->getMaxStrength() << " | " << player->getBaseStrength() << endl;
@@ -1063,6 +1063,9 @@ void ObjectControllerMessage::parseSetStatMigrationDataRequest(Player* player, M
 		chatManager->sendMail(sender, header, body, reciever); //TODO: remove bug tracking code later
 		return;
 	}
+
+	//chatManager->sendMail(sender, header, body, reciever); //TODO: remove bug tracking code later
+
 
 	//if (tokenizer.hasMoreTokens()) {
 	//	uint64 targetID = tokenizer.getLongToken();
@@ -1980,14 +1983,14 @@ void ObjectControllerMessage::parseServerSit(Player* player, Message* pack) {
 			uint64 coID;
 			if (tokenizer.hasMoreTokens())
 				coID = tokenizer.getLongToken();
-				
+
 			if (x < -8192 || x> 8192)
 			x = 0;
 			if (y < -8192 || y> 8192)
 			y = 0;
 			if (z < -8192 || z> 8192)
 			z = 0;
-			
+
 			player->setPosture(CreatureObjectImplementation::SITTING_POSTURE, false, true, x, y, z);
 		} catch (...) {
 			cout << "Unreported exception in ObjectControllerMessage::parseServerSit\n";
@@ -2244,9 +2247,9 @@ void ObjectControllerMessage::parseServerDestroyObject(Player* player,
 	} else if (waypoint != NULL) {
 		if (player->removeWaypoint(waypoint))
 			waypoint->finalize();
-	} else if (datapadData != NULL){		
+	} else if (datapadData != NULL){
 		player->removeDatapadItem(objid);
-				
+
 		BaseMessage* msg = new SceneObjectDestroyMessage(datapadData);
 		player->getClient()->sendMessage(msg);
 	}
@@ -2684,24 +2687,24 @@ void ObjectControllerMessage::parsePlaceStructure(Player* player, Message* packe
 	player->sendSystemMessage("Placing Structure");
 	packet->parseInt();  // Empty Data
 	packet->parseInt();  // Empty Data
-	
+
 	unicode data;
 	packet->parseUnicode(data);
-	
+
 	StringTokenizer tokenizer(data.c_str());
-	
+
 	string objectID;
 	tokenizer.getStringToken(objectID);
 	float x = tokenizer.getFloatToken();
 	float y = tokenizer.getFloatToken();
 	int orient = tokenizer.getIntToken();
-	
+
 	uint64 toID = String::toUnsignedLong(objectID.c_str());
-	
+
 	PlanetManager * planet = player->getZone()->getPlanetManager();
 	planet->placePlayerStructure(player, toID, x, y, orient);
-	
-} 
+
+}
 
 void ObjectControllerMessage::parseSurveySlashRequest(Player* player,
 		Message* packet) {

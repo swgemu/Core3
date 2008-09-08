@@ -47,7 +47,7 @@ artisan_humanoid_male_items = {dressShoes, craftersPants, softUndershirt}
 
 --------------------------Female Humanoid Items---------------------------
 
-artisan_humanoid_female_items = {sandals, flaredCuff_Shirt, wrappedSkirt}
+artisan_humanoid_female_items = {sandals, flaredCuffShirt, wrappedSkirt}
 
 --------------------------Male Trandoshan Items---------------------------
 
