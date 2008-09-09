@@ -40,8 +40,53 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
---Tatooine
-
-if PLANET_ID == 8 then
- RunObjectFile("spawns/tatooine/staticSpawns.lua")
+-- Corellia
+if PLANET_ID == 0 then
+ RunObjectFile("spawns/corellia/creatureSpawns.lua")
 end
+
+-- Dantooine
+if PLANET_ID == 1 then
+ -- RunObjectFile("spawns/dantooine/creatureSpawns.lua")
+end
+
+-- Dathomir
+if PLANET_ID == 2 then
+ -- RunObjectFile("spawns/dathomir/creatureSpawns.lua")
+end
+
+-- Endor
+if PLANET_ID == 3 then
+ -- RunObjectFile("spawns/endor/creatureSpawns.lua")
+end
+
+-- Lok
+if PLANET_ID == 4 then
+ -- RunObjectFile("spawns/lok/creatureSpawns.lua")
+end
+
+-- Naboo
+if PLANET_ID == 5 then
+ -- RunObjectFile("spawns/naboo/creatureSpawns.lua")
+end
+
+-- Rori
+if PLANET_ID == 6 then
+ -- RunObjectFile("spawns/rori/creatureSpawns.lua")
+end
+
+-- Talus
+if PLANET_ID == 7 then
+ -- RunObjectFile("spawns/talus/creatureSpawns.lua")
+end
+
+--Tatooine
+if PLANET_ID == 8 then
+ -- RunObjectFile("spawns/tatooine/creatureSpawns.lua")
+end
+
+-- Yavin4
+if PLANET_ID == 9 then
+ -- RunObjectFile("spawns/yavin4/creatureSpawns.lua")
+end
+

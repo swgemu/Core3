@@ -43,11 +43,11 @@ nyaxAttack1 = {
 	attackname = "nyaxAttack1",
 	animation = "combo_2d_medium",
 	
-	requiredWeaponType = NONE,
+	requiredWeaponType = CARBINE,
 
 	range = 25,
 
-	damageRatio = 236,
+	damageRatio = 8.5,
 
 	speedRatio = 2,
 	coneAngle = 30,
@@ -75,11 +75,11 @@ nyaxAttack2 = {
 	attackname = "nyaxAttack2",
 	animation = "combo_4b_medium",
 	
-	requiredWeaponType = NONE,
+	requiredWeaponType = CARBINE,
 
 	range = 15,
 
-	damageRatio = 292,
+	damageRatio = 9.6,
 
 	speedRatio = 3,
 	coneAngle = 30,
@@ -120,13 +120,13 @@ nyaxAttack10 = {
 	actionAttackChance = 60,
 	mindAttackChance = 0,
 
-	dotChance = 10,
-	tickStrengthOfHit = 1,
+	dotChance = 50,
+	tickStrengthOfHit = 100,
 
 	fireStrength = 0,
 	fireType = 0,
 
-	bleedingStrength = 0,
+	bleedingStrength = 100,
 	bleedingType = ACTION,
 
 	poisonStrength = 0,
@@ -610,9 +610,3 @@ nyaxAttack24 = {
 }
 
 AddRandomPoolAttackTargetSkill(nyaxAttack24)
-
-
-
-
-
-
