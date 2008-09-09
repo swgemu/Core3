@@ -78,7 +78,17 @@ function spawnLair(lair, Planet, PositionX, PositionY, PositionZ)
 end
 
 -- Creature objects
-RunObjectFile("populateObjects.lua")
+RunObjectFile("objects/lairs/corelliaLairs.lua")
+-- RunObjectFile("objects/lairs/dantooineLairs.lua")
+-- RunObjectFile("objects/lairs/dathomirLairs.lua")
+-- RunObjectFile("objects/lairs/endorLairs.lua")
+-- RunObjectFile("objects/lairs/lokLairs.lua")
+-- RunObjectFile("objects/lairs/nabooLairs.lua")
+-- RunObjectFile("objects/lairs/roriLairs.lua")
+-- RunObjectFile("objects/lairs/talusLairs.lua")
+-- RunObjectFile("objects/lairs/tatooineLairs.lua")
+-- RunObjectFile("objects/lairs/yavin4Lairs.lua")
+
 
 -- Spawns
 RunObjectFile("spawns.lua")
