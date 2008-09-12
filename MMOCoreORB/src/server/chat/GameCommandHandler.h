@@ -144,6 +144,7 @@ private:
 	static void kickArea(StringTokenizer tokenizer, Player * player);
 	static void printRoomTree(StringTokenizer tokenizer, Player * player);
 	static void banUser(StringTokenizer tokenizer, Player * player);
+	static void getForumName(StringTokenizer tokenizer, Player* player);
 	static void mutePlayer(StringTokenizer tokenizer, Player * player);
 	static void kill(StringTokenizer tokenizer, Player * player);
 	static void killArea(StringTokenizer tokenizer, Player * player);

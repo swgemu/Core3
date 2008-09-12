@@ -48,6 +48,7 @@ which carries forward this exception.
 
 #include "../zone/managers/planet/PlanetManager.h"
 #include "../zone/managers/item/ItemManager.h"
+#include "../zone/managers/player/PlayerManager.h"
 
 #include "../zone/Zone.h"
 #include "../zone/packets.h"
@@ -112,6 +113,10 @@ void GameCommandHandler::init() {
 			"Bans a user from logging in to the server.",
 			"Usage: @banUser <player>",
 			&banUser);
+	gmCommands->addCommand("getForumName", PRIVILEGED,
+			"Returns forum name for select character.",
+			"Usage: @getForumName <player>",
+			&getForumName);
 	gmCommands->addCommand("mutePlayer", PRIVILEGED | EC,
 			"Prevents a player from speaking in spacial chat.",
 			"Usage: @mutePlayer <player>",
@@ -588,13 +593,16 @@ void GameCommandHandler::printRoomTree(StringTokenizer tokenizer, Player * playe
 }
 
 void GameCommandHandler::banUser(StringTokenizer tokenizer, Player* player) {
-	ZoneServer * server = player->getZone()->getZoneServer();
-	ChatManager * chatManager = player->getZone()->getChatManager();
+	ZoneServer* server = player->getZone()->getZoneServer();
+	ChatManager* chatManager = player->getZone()->getChatManager();
 
 	string name;
 	stringstream banMessage;
 	int banTime;
 	Player* targetPlayer;
+
+	int offendersAccountId = -1, adminsAccountId = -1;
+	string offendersAccountName = "", adminsAccountName = "";
 
 	if (tokenizer.hasMoreTokens()) {
 
@@ -656,9 +664,6 @@ void GameCommandHandler::banUser(StringTokenizer tokenizer, Player* player) {
 					<< player->getFirstName() << "'";
 
 			ResultSet* res = ServerDatabase::instance()->executeQuery(query);
-
-			int offendersAccountId = -1, adminsAccountId = -1;
-			string offendersAccountName = "", adminsAccountName = "";
 
 			if (res->next()) {
 				offendersAccountId = res->getInt(0);
@@ -762,14 +767,14 @@ void GameCommandHandler::banUser(StringTokenizer tokenizer, Player* player) {
 			}
 
 			player->sendSystemMessage("player \'" + name
-					+ "\' is banned (Forum Account)");
+					+ "\' is banned (Forum Account = " + offendersAccountName + ")");
 
 			server->kickUser(name, player->getFirstNameProper());
 
 		} catch (...) {
 
 			player->sendSystemMessage("unable to ban player \'" + name
-					+ "\'  (Forum Account)");
+					+ "\'  (Forum Account = " + offendersAccountName + ")");
 
 		}
 	} else if (server->banUser(name, player->getFirstName())) {
@@ -780,6 +785,68 @@ void GameCommandHandler::banUser(StringTokenizer tokenizer, Player* player) {
 		player->sendSystemMessage("unable to ban player \'" + name + "\' (IP)");
 	}
 
+	player->wlock();
+}
+
+void GameCommandHandler::getForumName(StringTokenizer tokenizer, Player* player) {
+	ZoneServer* server = player->getZone()->getZoneServer();
+	PlayerManager* playerManager = server->getPlayerManager();
+
+	string name;
+
+	Player* targetPlayer;
+
+	if (tokenizer.hasMoreTokens()) {
+
+		tokenizer.getStringToken(name);
+
+
+	} else {
+
+		SceneObject* obj = player->getTarget();
+		if (obj != NULL && obj->isPlayer()) {
+			targetPlayer = (Player*) obj;
+			name = targetPlayer->getFirstName();
+		} else {
+			return;
+		}
+
+	}
+
+	player->unlock();
+
+	if (ForumsDatabase::instance() != NULL) {
+
+		try {
+			stringstream query, query2, query3, query4, query5;
+
+			query   << "SELECT account.account_id, account.username FROM account "
+					<< "INNER JOIN characters ON "
+					<< "characters.account_id = account.account_id WHERE characters.firstname = '"
+					<< name << "'";
+
+			ResultSet* res = ServerDatabase::instance()->executeQuery(query);
+
+			int offendersAccountId = -1;
+			string offendersAccountName = "";
+
+			if (res->next()) {
+				offendersAccountId = res->getInt(0);
+				offendersAccountName = res->getString(1);
+			}
+
+			player->sendSystemMessage("Forum account name: " + offendersAccountName);
+
+		} catch (...) {
+
+			player->sendSystemMessage("unable to get forum account info");
+
+		}
+	} else  {
+
+		player->sendSystemMessage("Unable to get forum account for " + name);
+
+	}
 	player->wlock();
 }
 
