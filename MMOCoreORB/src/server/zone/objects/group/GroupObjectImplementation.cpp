@@ -43,7 +43,7 @@ which carries forward this exception.
 */
 
 #include "../../Zone.h"
-#include "../../ZoneClient.h"
+#include "../../ZoneClientSession.h"
 #include "../creature/CreatureObject.h"
 
 #include "../../packets.h"
@@ -79,7 +79,7 @@ void GroupObjectImplementation::startChannel() {
 }
 
 void GroupObjectImplementation::sendTo(Player* player, bool doClose) {
-	ZoneClient* client = player->getClient();
+	ZoneClientSession* client = player->getClient();
 	if (client == NULL)
 		return;
 

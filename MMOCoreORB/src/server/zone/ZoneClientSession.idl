@@ -53,8 +53,8 @@ import "ZoneServer";
 
 import "objects/player/Player";
 
-interface ZoneClient {
-	ZoneClient(DatagramServiceThread server, Socket sock, SocketAddress addr) {
+interface ZoneClientSession {
+	ZoneClientSession(DatagramServiceThread server, Socket sock, SocketAddress addr) {
 		super(server, sock, addr);
 	}
 	

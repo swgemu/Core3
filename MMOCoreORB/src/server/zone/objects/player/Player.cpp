@@ -6,7 +6,7 @@
 
 #include "PlayerImplementation.h"
 
-#include "../../ZoneClient.h"
+#include "../../ZoneClientSession.h"
 
 #include "../../Zone.h"
 
@@ -68,7 +68,7 @@ Player::Player(DummyConstructorParameter* param) : CreatureObject(param) {
 Player::~Player() {
 }
 
-void Player::create(ZoneClient* client) {
+void Player::create(ZoneClientSession* client) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -81,7 +81,7 @@ void Player::create(ZoneClient* client) {
 		((PlayerImplementation*) _impl)->create(client);
 }
 
-void Player::refuseCreate(ZoneClient* client) {
+void Player::refuseCreate(ZoneClientSession* client) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -94,7 +94,7 @@ void Player::refuseCreate(ZoneClient* client) {
 		((PlayerImplementation*) _impl)->refuseCreate(client);
 }
 
-void Player::load(ZoneClient* client) {
+void Player::load(ZoneClientSession* client) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -107,7 +107,7 @@ void Player::load(ZoneClient* client) {
 		((PlayerImplementation*) _impl)->load(client);
 }
 
-void Player::reload(ZoneClient* client) {
+void Player::reload(ZoneClientSession* client) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2332,7 +2332,7 @@ void Player::clearDisconnectEvent() {
 		((PlayerImplementation*) _impl)->clearDisconnectEvent();
 }
 
-void Player::setClient(ZoneClient* client) {
+void Player::setClient(ZoneClientSession* client) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2937,14 +2937,14 @@ string& Player::getHairObject() {
 		return ((PlayerImplementation*) _impl)->getHairObject();
 }
 
-ZoneClient* Player::getClient() {
+ZoneClientSession* Player::getClient() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 231);
 
-		return (ZoneClient*) method.executeWithObjectReturn();
+		return (ZoneClientSession*) method.executeWithObjectReturn();
 	} else
 		return ((PlayerImplementation*) _impl)->getClient();
 }
@@ -3989,16 +3989,16 @@ Packet* PlayerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case 6:
-		create((ZoneClient*) inv->getObjectParameter());
+		create((ZoneClientSession*) inv->getObjectParameter());
 		break;
 	case 7:
-		refuseCreate((ZoneClient*) inv->getObjectParameter());
+		refuseCreate((ZoneClientSession*) inv->getObjectParameter());
 		break;
 	case 8:
-		load((ZoneClient*) inv->getObjectParameter());
+		load((ZoneClientSession*) inv->getObjectParameter());
 		break;
 	case 9:
-		reload((ZoneClient*) inv->getObjectParameter());
+		reload((ZoneClientSession*) inv->getObjectParameter());
 		break;
 	case 10:
 		unload();
@@ -4520,7 +4520,7 @@ Packet* PlayerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		clearDisconnectEvent();
 		break;
 	case 183:
-		setClient((ZoneClient*) inv->getObjectParameter());
+		setClient((ZoneClientSession*) inv->getObjectParameter());
 		break;
 	case 184:
 		setOvert();
@@ -4916,19 +4916,19 @@ Packet* PlayerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	return resp;
 }
 
-void PlayerAdapter::create(ZoneClient* client) {
+void PlayerAdapter::create(ZoneClientSession* client) {
 	return ((PlayerImplementation*) impl)->create(client);
 }
 
-void PlayerAdapter::refuseCreate(ZoneClient* client) {
+void PlayerAdapter::refuseCreate(ZoneClientSession* client) {
 	return ((PlayerImplementation*) impl)->refuseCreate(client);
 }
 
-void PlayerAdapter::load(ZoneClient* client) {
+void PlayerAdapter::load(ZoneClientSession* client) {
 	return ((PlayerImplementation*) impl)->load(client);
 }
 
-void PlayerAdapter::reload(ZoneClient* client) {
+void PlayerAdapter::reload(ZoneClientSession* client) {
 	return ((PlayerImplementation*) impl)->reload(client);
 }
 
@@ -5624,7 +5624,7 @@ void PlayerAdapter::clearDisconnectEvent() {
 	return ((PlayerImplementation*) impl)->clearDisconnectEvent();
 }
 
-void PlayerAdapter::setClient(ZoneClient* client) {
+void PlayerAdapter::setClient(ZoneClientSession* client) {
 	return ((PlayerImplementation*) impl)->setClient(client);
 }
 
@@ -5816,7 +5816,7 @@ string& PlayerAdapter::getHairObject() {
 	return ((PlayerImplementation*) impl)->getHairObject();
 }
 
-ZoneClient* PlayerAdapter::getClient() {
+ZoneClientSession* PlayerAdapter::getClient() {
 	return ((PlayerImplementation*) impl)->getClient();
 }
 

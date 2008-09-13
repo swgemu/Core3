@@ -3107,8 +3107,8 @@ void ObjectControllerMessage::parseCreateSchematic(Player* player,
 
 void ObjectControllerMessage::parseExperimentation(Player * player,
 		Message* pack) {
-	ZoneClientImplementation* client =
-			(ZoneClientImplementation*) pack->getClient();
+	ZoneClientSessionImplementation* client =
+			(ZoneClientSessionImplementation*) pack->getClient();
 
 	if (player == NULL)
 		return;

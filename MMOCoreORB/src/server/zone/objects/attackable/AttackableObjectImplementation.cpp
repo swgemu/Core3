@@ -53,7 +53,7 @@ which carries forward this exception.
 #include "../scene/SceneObjectImplementation.h"
 
 #include "../../Zone.h"
-#include "../../ZoneClient.h"
+#include "../../ZoneClientSession.h"
 
 AttackableObjectImplementation::AttackableObjectImplementation(uint64 oid) : AttackableObjectServant(oid, ATTACKABLE) {
 	objectID = oid;
@@ -210,7 +210,7 @@ void AttackableObjectImplementation::clearCombatState(bool removedefenders) {
 }
 
 void AttackableObjectImplementation::sendTo(Player* player, bool doClose) {
-	ZoneClient* client = player->getClient();
+	ZoneClientSession* client = player->getClient();
 	if (client == NULL)
 		return;
 
@@ -291,7 +291,7 @@ void AttackableObjectImplementation::broadcastMessage(BaseMessage* msg, int rang
 }
 
 void AttackableObjectImplementation::sendDestroyTo(Player* player) {
-	ZoneClient* client = player->getClient();
+	ZoneClientSession* client = player->getClient();
 	if (client == NULL)
 		return;
 

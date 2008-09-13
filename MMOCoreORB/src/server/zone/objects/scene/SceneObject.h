@@ -17,7 +17,7 @@ class ObjectMenuResponse;
 
 class Zone;
 
-class ZoneClient;
+class ZoneClientSession;
 
 class Player;
 
@@ -41,15 +41,15 @@ public:
 
 	void sendRadialResponseTo(Player* player, ObjectMenuResponse* omr);
 
-	void create(ZoneClient* client);
+	void create(ZoneClientSession* client);
 
-	void destroy(ZoneClient* client);
+	void destroy(ZoneClientSession* client);
 
 	void sendConversationStartTo(SceneObject* obj);
 
 	void selectConversationOption(int option, SceneObject* obj);
 
-	void close(ZoneClient* client);
+	void close(ZoneClientSession* client);
 
 	bool isInRange(SceneObject* obj, float range);
 
@@ -71,7 +71,7 @@ public:
 
 	BaseMessage* link(SceneObject* obj);
 
-	void link(ZoneClient* client, SceneObject* obj);
+	void link(ZoneClientSession* client, SceneObject* obj);
 
 	void randomizePosition(float radius);
 
@@ -229,15 +229,15 @@ public:
 
 	void sendRadialResponseTo(Player* player, ObjectMenuResponse* omr);
 
-	void create(ZoneClient* client);
+	void create(ZoneClientSession* client);
 
-	void destroy(ZoneClient* client);
+	void destroy(ZoneClientSession* client);
 
 	void sendConversationStartTo(SceneObject* obj);
 
 	void selectConversationOption(int option, SceneObject* obj);
 
-	void close(ZoneClient* client);
+	void close(ZoneClientSession* client);
 
 	bool isInRange(SceneObject* obj, float range);
 
@@ -259,7 +259,7 @@ public:
 
 	BaseMessage* link(SceneObject* obj);
 
-	void link(ZoneClient* client, SceneObject* obj);
+	void link(ZoneClientSession* client, SceneObject* obj);
 
 	void randomizePosition(float radius);
 

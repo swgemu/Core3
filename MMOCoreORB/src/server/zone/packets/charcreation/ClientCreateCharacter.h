@@ -52,6 +52,23 @@ which carries forward this exception.
 
 class ClientCreateCharacter : public BaseMessage {
 public:
+	ClientCreateCharacter(const unicode& name) {
+		insertShort(12);
+		insertInt(0xB97F3074);
+
+		insertAscii("");
+		insertUnicode(name);
+		insertAscii("");
+		insertAscii("");
+		insertAscii("");
+		insertAscii("");
+		insertAscii("");
+		insertByte(0);
+		insertInt(1);
+		insertInt(0);
+		insertByte(0);
+	}
+
 	static void parse(Packet* pack, Player* player) {
 		string customization;
 		pack->parseAscii(customization);

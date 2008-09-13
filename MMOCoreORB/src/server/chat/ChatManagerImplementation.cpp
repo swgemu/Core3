@@ -45,7 +45,7 @@ which carries forward this exception.
 #include <fstream>
 
 #include "../zone/Zone.h"
-#include "../zone/ZoneClient.h"
+#include "../zone/ZoneClientSession.h"
 #include "../zone/ZoneServer.h"
 
 #include "../zone/packets.h"
@@ -197,14 +197,14 @@ void ChatManagerImplementation::broadcastMessage(Player* player, unicode& messag
 		Zone* zone = player->getZone();
 
 		/*if (message.c_str() == "LAG") {
-			ZoneClient* client = player->getClient();
+			ZoneClientSession* client = player->getClient();
 
 			client->reportStats(true);
 
 			Logger::slog("Client (" + client->getAddress() + ") is experiencing lag", true);
 			return;
 		} else if (message.c_str() == "QUEUE") {
-			ZoneClient* client = player->getClient();
+			ZoneClientSession* client = player->getClient();
 
 			client->reportStats(true);
 

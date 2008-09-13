@@ -88,7 +88,7 @@ CONFIG_CLEAN_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 binPROGRAMS_INSTALL = $(INSTALL_PROGRAM)
 PROGRAMS = $(bin_PROGRAMS)
-am__objects_1 = Zone.$(OBJEXT) ZoneClient.$(OBJEXT) \
+am__objects_1 = Zone.$(OBJEXT) ZoneClientSession.$(OBJEXT) \
 	ZoneServer.$(OBJEXT) AttackableObject.$(OBJEXT) \
 	AuctionItem.$(OBJEXT) SceneObject.$(OBJEXT) \
 	CreatureObject.$(OBJEXT) Creature.$(OBJEXT) \
@@ -142,7 +142,7 @@ am_core3_OBJECTS = $(am__objects_1) ServerCore.$(OBJEXT) \
 	LoginServer.$(OBJEXT) LoginPacketHandler.$(OBJEXT) \
 	LoginMessageProcessorThread.$(OBJEXT) \
 	ZoneImplementation.$(OBJEXT) \
-	ZoneClientImplementation.$(OBJEXT) \
+	ZoneClientSessionImplementation.$(OBJEXT) \
 	ZoneServerImplementation.$(OBJEXT) ZonePacketHandler.$(OBJEXT) \
 	ZoneProcessServerImplementation.$(OBJEXT) \
 	ZoneMessageProcessorThread.$(OBJEXT) \
@@ -330,7 +330,7 @@ INCLUDES = $(SYSTEM_INCLUDES) \
 	    -I$(ENGINE3_PATH)/include
 
 core3_IDLS = server/zone/Zone.cpp \
-		server/zone/ZoneClient.cpp \
+		server/zone/ZoneClientSession.cpp \
 		server/zone/ZoneServer.cpp \
 		server/zone/objects/attackable/AttackableObject.cpp \
 		server/zone/objects/auction/AuctionItem.cpp \
@@ -443,7 +443,7 @@ core3_SOURCES = $(core3_IDLS) \
 		server/login/LoginPacketHandler.cpp \
 		server/login/LoginMessageProcessorThread.cpp \
 		server/zone/ZoneImplementation.cpp \
-		server/zone/ZoneClientImplementation.cpp \
+		server/zone/ZoneClientSessionImplementation.cpp \
 		server/zone/ZoneServerImplementation.cpp \
 		server/zone/ZonePacketHandler.cpp \
 		server/zone/ZoneProcessServerImplementation.cpp \
@@ -765,8 +765,8 @@ include ./$(DEPDIR)/Weapon.Po
 include ./$(DEPDIR)/WeaponImplementation.Po
 include ./$(DEPDIR)/Wearable.Po
 include ./$(DEPDIR)/Zone.Po
-include ./$(DEPDIR)/ZoneClient.Po
-include ./$(DEPDIR)/ZoneClientImplementation.Po
+include ./$(DEPDIR)/ZoneClientSession.Po
+include ./$(DEPDIR)/ZoneClientSessionImplementation.Po
 include ./$(DEPDIR)/ZoneImplementation.Po
 include ./$(DEPDIR)/ZoneMessageProcessorThread.Po
 include ./$(DEPDIR)/ZonePacketHandler.Po
@@ -803,19 +803,19 @@ Zone.obj: server/zone/Zone.cpp
 #	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
 #	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o Zone.obj `if test -f 'server/zone/Zone.cpp'; then $(CYGPATH_W) 'server/zone/Zone.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/Zone.cpp'; fi`
 
-ZoneClient.o: server/zone/ZoneClient.cpp
-	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ZoneClient.o -MD -MP -MF $(DEPDIR)/ZoneClient.Tpo -c -o ZoneClient.o `test -f 'server/zone/ZoneClient.cpp' || echo '$(srcdir)/'`server/zone/ZoneClient.cpp
-	mv -f $(DEPDIR)/ZoneClient.Tpo $(DEPDIR)/ZoneClient.Po
-#	source='server/zone/ZoneClient.cpp' object='ZoneClient.o' libtool=no \
+ZoneClientSession.o: server/zone/ZoneClientSession.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ZoneClientSession.o -MD -MP -MF $(DEPDIR)/ZoneClientSession.Tpo -c -o ZoneClientSession.o `test -f 'server/zone/ZoneClientSession.cpp' || echo '$(srcdir)/'`server/zone/ZoneClientSession.cpp
+	mv -f $(DEPDIR)/ZoneClientSession.Tpo $(DEPDIR)/ZoneClientSession.Po
+#	source='server/zone/ZoneClientSession.cpp' object='ZoneClientSession.o' libtool=no \
 #	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
-#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ZoneClient.o `test -f 'server/zone/ZoneClient.cpp' || echo '$(srcdir)/'`server/zone/ZoneClient.cpp
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ZoneClientSession.o `test -f 'server/zone/ZoneClientSession.cpp' || echo '$(srcdir)/'`server/zone/ZoneClientSession.cpp
 
-ZoneClient.obj: server/zone/ZoneClient.cpp
-	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ZoneClient.obj -MD -MP -MF $(DEPDIR)/ZoneClient.Tpo -c -o ZoneClient.obj `if test -f 'server/zone/ZoneClient.cpp'; then $(CYGPATH_W) 'server/zone/ZoneClient.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/ZoneClient.cpp'; fi`
-	mv -f $(DEPDIR)/ZoneClient.Tpo $(DEPDIR)/ZoneClient.Po
-#	source='server/zone/ZoneClient.cpp' object='ZoneClient.obj' libtool=no \
+ZoneClientSession.obj: server/zone/ZoneClientSession.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ZoneClientSession.obj -MD -MP -MF $(DEPDIR)/ZoneClientSession.Tpo -c -o ZoneClientSession.obj `if test -f 'server/zone/ZoneClientSession.cpp'; then $(CYGPATH_W) 'server/zone/ZoneClientSession.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/ZoneClientSession.cpp'; fi`
+	mv -f $(DEPDIR)/ZoneClientSession.Tpo $(DEPDIR)/ZoneClientSession.Po
+#	source='server/zone/ZoneClientSession.cpp' object='ZoneClientSession.obj' libtool=no \
 #	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
-#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ZoneClient.obj `if test -f 'server/zone/ZoneClient.cpp'; then $(CYGPATH_W) 'server/zone/ZoneClient.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/ZoneClient.cpp'; fi`
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ZoneClientSession.obj `if test -f 'server/zone/ZoneClientSession.cpp'; then $(CYGPATH_W) 'server/zone/ZoneClientSession.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/ZoneClientSession.cpp'; fi`
 
 ZoneServer.o: server/zone/ZoneServer.cpp
 	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ZoneServer.o -MD -MP -MF $(DEPDIR)/ZoneServer.Tpo -c -o ZoneServer.o `test -f 'server/zone/ZoneServer.cpp' || echo '$(srcdir)/'`server/zone/ZoneServer.cpp
@@ -2357,19 +2357,19 @@ ZoneImplementation.obj: server/zone/ZoneImplementation.cpp
 #	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
 #	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ZoneImplementation.obj `if test -f 'server/zone/ZoneImplementation.cpp'; then $(CYGPATH_W) 'server/zone/ZoneImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/ZoneImplementation.cpp'; fi`
 
-ZoneClientImplementation.o: server/zone/ZoneClientImplementation.cpp
-	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ZoneClientImplementation.o -MD -MP -MF $(DEPDIR)/ZoneClientImplementation.Tpo -c -o ZoneClientImplementation.o `test -f 'server/zone/ZoneClientImplementation.cpp' || echo '$(srcdir)/'`server/zone/ZoneClientImplementation.cpp
-	mv -f $(DEPDIR)/ZoneClientImplementation.Tpo $(DEPDIR)/ZoneClientImplementation.Po
-#	source='server/zone/ZoneClientImplementation.cpp' object='ZoneClientImplementation.o' libtool=no \
+ZoneClientSessionImplementation.o: server/zone/ZoneClientSessionImplementation.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ZoneClientSessionImplementation.o -MD -MP -MF $(DEPDIR)/ZoneClientSessionImplementation.Tpo -c -o ZoneClientSessionImplementation.o `test -f 'server/zone/ZoneClientSessionImplementation.cpp' || echo '$(srcdir)/'`server/zone/ZoneClientSessionImplementation.cpp
+	mv -f $(DEPDIR)/ZoneClientSessionImplementation.Tpo $(DEPDIR)/ZoneClientSessionImplementation.Po
+#	source='server/zone/ZoneClientSessionImplementation.cpp' object='ZoneClientSessionImplementation.o' libtool=no \
 #	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
-#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ZoneClientImplementation.o `test -f 'server/zone/ZoneClientImplementation.cpp' || echo '$(srcdir)/'`server/zone/ZoneClientImplementation.cpp
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ZoneClientSessionImplementation.o `test -f 'server/zone/ZoneClientSessionImplementation.cpp' || echo '$(srcdir)/'`server/zone/ZoneClientSessionImplementation.cpp
 
-ZoneClientImplementation.obj: server/zone/ZoneClientImplementation.cpp
-	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ZoneClientImplementation.obj -MD -MP -MF $(DEPDIR)/ZoneClientImplementation.Tpo -c -o ZoneClientImplementation.obj `if test -f 'server/zone/ZoneClientImplementation.cpp'; then $(CYGPATH_W) 'server/zone/ZoneClientImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/ZoneClientImplementation.cpp'; fi`
-	mv -f $(DEPDIR)/ZoneClientImplementation.Tpo $(DEPDIR)/ZoneClientImplementation.Po
-#	source='server/zone/ZoneClientImplementation.cpp' object='ZoneClientImplementation.obj' libtool=no \
+ZoneClientSessionImplementation.obj: server/zone/ZoneClientSessionImplementation.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ZoneClientSessionImplementation.obj -MD -MP -MF $(DEPDIR)/ZoneClientSessionImplementation.Tpo -c -o ZoneClientSessionImplementation.obj `if test -f 'server/zone/ZoneClientSessionImplementation.cpp'; then $(CYGPATH_W) 'server/zone/ZoneClientSessionImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/ZoneClientSessionImplementation.cpp'; fi`
+	mv -f $(DEPDIR)/ZoneClientSessionImplementation.Tpo $(DEPDIR)/ZoneClientSessionImplementation.Po
+#	source='server/zone/ZoneClientSessionImplementation.cpp' object='ZoneClientSessionImplementation.obj' libtool=no \
 #	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
-#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ZoneClientImplementation.obj `if test -f 'server/zone/ZoneClientImplementation.cpp'; then $(CYGPATH_W) 'server/zone/ZoneClientImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/ZoneClientImplementation.cpp'; fi`
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ZoneClientSessionImplementation.obj `if test -f 'server/zone/ZoneClientSessionImplementation.cpp'; then $(CYGPATH_W) 'server/zone/ZoneClientSessionImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/ZoneClientSessionImplementation.cpp'; fi`
 
 ZoneServerImplementation.o: server/zone/ZoneServerImplementation.cpp
 	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ZoneServerImplementation.o -MD -MP -MF $(DEPDIR)/ZoneServerImplementation.Tpo -c -o ZoneServerImplementation.o `test -f 'server/zone/ZoneServerImplementation.cpp' || echo '$(srcdir)/'`server/zone/ZoneServerImplementation.cpp

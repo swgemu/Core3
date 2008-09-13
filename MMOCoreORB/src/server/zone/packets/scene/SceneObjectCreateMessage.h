@@ -64,13 +64,6 @@ public:
 		insertFloat(scno->getPositionY());
 		insertInt(scno->getObjectCRC());  // ObjectCRC
 		insertByte(0);
-
-		/*stringstream msg;
-		msg << hex << "SceneObjectCreateMessage [Object = " << scno->getObjectID() << "]" << " inseretd to (" << scno->getPositionX()
-			<< "," << scno->getPositionZ() << "," << scno->getPositionY() << ")\n";
-		cout << msg.str();*/
-
-		//cout << this->toString() << "\n";
 	}
 
 	SceneObjectCreateMessage(uint64 oid, uint32 objCrc) : BaseMessage() {
@@ -86,13 +79,17 @@ public:
 		insertFloat(0);
 		insertInt(objCrc);  // ObjectCRC
 		insertByte(0x00);
-
-		/*stringstream msg;
-		msg << hex << "SceneObjectCreateMessage [Object = " << oid << "]" << " inserted (" << objCrc << ")\n";
-		cout << msg.str(); */
-
 	}
 
+	static void parseMessage(Message* pack, SceneObject* scno) {
+		pack->shiftOffset(16);
+
+		float x = pack->parseFloat();
+		float z = pack->parseFloat();
+		float y = pack->parseFloat();
+
+		scno->setPosition(x, z, y);
+	}
 };
 
 #endif /*SCENEOBJECTCREATEMESSAGE_H_*/

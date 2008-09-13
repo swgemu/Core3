@@ -44,7 +44,7 @@ which carries forward this exception.
 
 #include "../../../ServerCore.h"
 
-#include "../../ZoneClient.h"
+#include "../../ZoneClientSession.h"
 
 #include "../../ZoneProcessServerImplementation.h"
 
@@ -160,13 +160,13 @@ void SceneObjectImplementation::removeUndeploymentEvent() {
 	}
 }
 
-void SceneObjectImplementation::create(ZoneClient* client) {
+void SceneObjectImplementation::create(ZoneClientSession* client) {
 	BaseMessage* msg = new SceneObjectCreateMessage(_this);
 
 	client->sendMessage(msg);
 }
 
-void SceneObjectImplementation::link(ZoneClient* client, SceneObject* container) {
+void SceneObjectImplementation::link(ZoneClientSession* client, SceneObject* container) {
 	if (client == NULL)
 		return;
 
@@ -184,7 +184,7 @@ BaseMessage* SceneObjectImplementation::link(SceneObject* container) {
 	return new UpdateContainmentMessage(container, _this, linkType);
 }
 
-void SceneObjectImplementation::close(ZoneClient* client) {
+void SceneObjectImplementation::close(ZoneClientSession* client) {
 	if (client == NULL)
 		return;
 
@@ -192,7 +192,7 @@ void SceneObjectImplementation::close(ZoneClient* client) {
 	client->sendMessage(msg);
 }
 
-void SceneObjectImplementation::destroy(ZoneClient* client) {
+void SceneObjectImplementation::destroy(ZoneClientSession* client) {
 	if (client == NULL)
 		return;
 

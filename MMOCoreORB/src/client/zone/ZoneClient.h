@@ -42,104 +42,63 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#include "ZoneServer.h"
+#ifndef ZONECLIENT_H_
+#define ZONECLIENT_H_
 
-#include "Zone.h"
+#include "engine/engine.h"
 
-#include "ZoneClient.h"
-#include "ZoneClientImplementation.h"
+class Zone;
 
-#include "objects/player/Player.h"
+class Player;
 
-ZoneClientImplementation::ZoneClientImplementation(DatagramServiceThread* serv, Socket* sock, SocketAddress* addr)
-		: BaseClientProxy(sock, *addr), ZoneClientServant() {
-	init(serv);
+class ZoneClient : public BaseClient, public Thread {
+	Zone* zone;
 
-	player = NULL;
-	sessionKey = 0;
+	Player* player;
 
-	disconnecting = false;
+	uint32 key;
 
-	stringstream loggingname;
-	loggingname << "ZoneClient " << addr->getFullIPAddress();
+	MessageQueue messageQueue;
 
-	setLoggingName(loggingname.str());
-	setLogging(false);
-}
+	bool doRun;
+	bool disconnecting;
 
-ZoneClientImplementation::~ZoneClientImplementation() {
-	player = NULL;
-}
+public:
+	ZoneClient(const string& addr, int port);
 
-void ZoneClientImplementation::disconnect() {
-	BaseClient::disconnect();
-}
+	~ZoneClient();
 
-void ZoneClientImplementation::disconnect(bool doLock) {
-	lock(doLock);
+	void run();
 
-	if (disconnecting) {
-		unlock(doLock);
-		return;
+	void sendMessage(Message* msg) {
+		BaseClient::sendPacket((BasePacket*) msg);
 	}
 
-	disconnecting = true;
-
-	if (hasError || !clientDisconnected) {
-		if (player != NULL) {
-			unlock();
-
-			player->disconnect(false, true);
-
-			lock();
-		}
-
-		closeConnection(false);
-	} else if (player != NULL) {
-		unlock();
-
-		player->logout();
-
-		lock();
+	void sendMessage(StandaloneBaseMessage* msg) {
+		BaseClient::sendPacket((BasePacket*) msg);
 	}
 
-	unlock(doLock);
-}
+	void disconnect(bool doLock = true);
 
-void ZoneClientImplementation::closeConnection(bool doLock) {
-	try {
-		lock(doLock);
-
-		info("disconnecting client \'" + ip + "\'");
-
-		ZoneServer* server = NULL;
-
-		if (player != NULL) {
-		 	if (player->getZone() != NULL)
-				server = player->getZone()->getZoneServer();
-
-			player->setClient(NULL);
-
-			player = NULL;
-		}
-
-		BaseClient::disconnect(false);
-
-		if (server != NULL) {
-			server->addTotalSentPacket(getSentPacketCount());
-			server->addTotalResentPacket(getResentPacketCount());
-		}
-
-		unlock(doLock);
-	} catch (...) {
-		unlock(doLock);
+	void setZone(Zone* zone) {
+		ZoneClient::zone = zone;
 	}
-}
 
-void ZoneClientImplementation::acquire() {
-	_this->acquire();
-}
+	void setPlayer(Player* p) {
+		player = p;
+	}
 
-void ZoneClientImplementation::release() {
-	_this->release();
-}
+	void setKey(uint32 key) {
+		ZoneClient::key = key;
+	}
+
+	Player* getPlayer() {
+		return player;
+	}
+
+	uint32 getKey(){
+		return key;
+	}
+};
+
+#endif /* ZONECLIENT_H_ */

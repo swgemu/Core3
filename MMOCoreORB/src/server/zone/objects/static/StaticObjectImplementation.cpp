@@ -42,7 +42,7 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#include "../../ZoneClient.h"
+#include "../../ZoneClientSession.h"
 #include "../creature/CreatureObject.h"
 
 #include "../player/Player.h"
@@ -118,7 +118,7 @@ void StaticObjectImplementation::removeFromZone() {
 }
 
 void StaticObjectImplementation::sendTo(Player* player, bool doClose) {
-	ZoneClient* client = player->getClient();
+	ZoneClientSession* client = player->getClient();
 	if (client == NULL)
 		return;
 
@@ -136,7 +136,7 @@ void StaticObjectImplementation::sendTo(Player* player, bool doClose) {
 }
 
 void StaticObjectImplementation::sendDestroyTo(Player* player) {
-	ZoneClient* client = player->getClient();
+	ZoneClientSession* client = player->getClient();
 	if (client == NULL)
 		return;
 
@@ -144,7 +144,7 @@ void StaticObjectImplementation::sendDestroyTo(Player* player) {
 }
 
 void StaticObjectImplementation::close(Player* player) {
-	ZoneClient* client = player->getClient();
+	ZoneClientSession* client = player->getClient();
 	if (client == NULL)
 		return;
 

@@ -43,7 +43,7 @@
 IDLC = /usr/local/bin/idlc
 
 IDL_SOURCES = server/zone/Zone.idl \
-				server/zone/ZoneClient.idl \
+				server/zone/ZoneClientSession.idl \
 				server/zone/ZoneServer.idl \
 				server/zone/objects/attackable/AttackableObject.idl \
 				server/zone/objects/auction/AuctionItem.idl \

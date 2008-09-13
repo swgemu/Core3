@@ -76,8 +76,8 @@ which carries forward this exception.
 #include "managers/bank/BankManager.h"
 #include "managers/bank/BankManagerImplementation.h"
 
-#include "ZoneClient.h"
-#include "ZoneClientImplementation.h"
+#include "ZoneClientSession.h"
+#include "ZoneClientSessionImplementation.h"
 
 #include "ZoneServerImplementation.h"
 
@@ -314,17 +314,17 @@ ServiceClient* ZoneServerImplementation::createConnection(Socket* sock, SocketAd
 	if (!userManager->checkUser(addr.getIPID()))
 		return NULL;
 
-	ZoneClient* client = new ZoneClient(this, sock, &addr);
-	client->deploy("ZoneClient " + addr.getFullIPAddress());
+	ZoneClientSession* client = new ZoneClientSession(this, sock, &addr);
+	client->deploy("ZoneClientSession " + addr.getFullIPAddress());
 
 	info("client connected from \'" + client->getAddress() + "\'");
 
-	ZoneClientImplementation* clientImpl = (ZoneClientImplementation*) client->_getImplementation();
+	ZoneClientSessionImplementation* clientImpl = (ZoneClientSessionImplementation*) client->_getImplementation();
 	return clientImpl;
 }
 
 void ZoneServerImplementation::handleMessage(ServiceClient* client, Packet* message) {
-	ZoneClientImplementation* zclient = (ZoneClientImplementation*) client;
+	ZoneClientSessionImplementation* zclient = (ZoneClientSessionImplementation*) client;
 
 	try {
 		/*if (zclient->simulatePacketLoss())
@@ -347,7 +347,7 @@ void ZoneServerImplementation::handleMessage(ServiceClient* client, Packet* mess
 }
 
 bool ZoneServerImplementation::handleError(ServiceClient* client, Exception& e) {
-	ZoneClientImplementation* zclient = (ZoneClientImplementation*) client;
+	ZoneClientSessionImplementation* zclient = (ZoneClientSessionImplementation*) client;
 	zclient->setError();
 
 	zclient->disconnect();

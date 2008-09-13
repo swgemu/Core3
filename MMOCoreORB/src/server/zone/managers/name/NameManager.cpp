@@ -48,7 +48,7 @@ which carries forward this exception.
 #include "NameManager.h"
 
 #include "../../ZoneServer.h"
-#include "../../ZoneClient.h"
+#include "../../ZoneClientSession.h"
 #include "../../objects/player/Races.h"
 
 NameManager::NameManager(ZoneProcessServerImplementation* serv) : Logger("NameManager") {

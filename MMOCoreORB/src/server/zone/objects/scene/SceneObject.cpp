@@ -10,7 +10,7 @@
 
 #include "../../Zone.h"
 
-#include "../../ZoneClient.h"
+#include "../../ZoneClientSession.h"
 
 #include "../player/Player.h"
 
@@ -115,7 +115,7 @@ void SceneObject::sendRadialResponseTo(Player* player, ObjectMenuResponse* omr) 
 		((SceneObjectImplementation*) _impl)->sendRadialResponseTo(player, omr);
 }
 
-void SceneObject::create(ZoneClient* client) {
+void SceneObject::create(ZoneClientSession* client) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -128,7 +128,7 @@ void SceneObject::create(ZoneClient* client) {
 		((SceneObjectImplementation*) _impl)->create(client);
 }
 
-void SceneObject::destroy(ZoneClient* client) {
+void SceneObject::destroy(ZoneClientSession* client) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -168,7 +168,7 @@ void SceneObject::selectConversationOption(int option, SceneObject* obj) {
 		((SceneObjectImplementation*) _impl)->selectConversationOption(option, obj);
 }
 
-void SceneObject::close(ZoneClient* client) {
+void SceneObject::close(ZoneClientSession* client) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -312,7 +312,7 @@ BaseMessage* SceneObject::link(SceneObject* obj) {
 		return ((SceneObjectImplementation*) _impl)->link(obj);
 }
 
-void SceneObject::link(ZoneClient* client, SceneObject* obj) {
+void SceneObject::link(ZoneClientSession* client, SceneObject* obj) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1118,10 +1118,10 @@ Packet* SceneObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		sendRadialResponseTo((Player*) inv->getObjectParameter(), (ObjectMenuResponse*) inv->getObjectParameter());
 		break;
 	case 13:
-		create((ZoneClient*) inv->getObjectParameter());
+		create((ZoneClientSession*) inv->getObjectParameter());
 		break;
 	case 14:
-		destroy((ZoneClient*) inv->getObjectParameter());
+		destroy((ZoneClientSession*) inv->getObjectParameter());
 		break;
 	case 15:
 		sendConversationStartTo((SceneObject*) inv->getObjectParameter());
@@ -1130,7 +1130,7 @@ Packet* SceneObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		selectConversationOption(inv->getSignedIntParameter(), (SceneObject*) inv->getObjectParameter());
 		break;
 	case 17:
-		close((ZoneClient*) inv->getObjectParameter());
+		close((ZoneClientSession*) inv->getObjectParameter());
 		break;
 	case 18:
 		resp->insertBoolean(isInRange((SceneObject*) inv->getObjectParameter(), inv->getFloatParameter()));
@@ -1163,7 +1163,7 @@ Packet* SceneObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		resp->insertLong(link((SceneObject*) inv->getObjectParameter())->_getObjectID());
 		break;
 	case 28:
-		link((ZoneClient*) inv->getObjectParameter(), (SceneObject*) inv->getObjectParameter());
+		link((ZoneClientSession*) inv->getObjectParameter(), (SceneObject*) inv->getObjectParameter());
 		break;
 	case 29:
 		randomizePosition(inv->getFloatParameter());
@@ -1380,11 +1380,11 @@ void SceneObjectAdapter::sendRadialResponseTo(Player* player, ObjectMenuResponse
 	return ((SceneObjectImplementation*) impl)->sendRadialResponseTo(player, omr);
 }
 
-void SceneObjectAdapter::create(ZoneClient* client) {
+void SceneObjectAdapter::create(ZoneClientSession* client) {
 	return ((SceneObjectImplementation*) impl)->create(client);
 }
 
-void SceneObjectAdapter::destroy(ZoneClient* client) {
+void SceneObjectAdapter::destroy(ZoneClientSession* client) {
 	return ((SceneObjectImplementation*) impl)->destroy(client);
 }
 
@@ -1396,7 +1396,7 @@ void SceneObjectAdapter::selectConversationOption(int option, SceneObject* obj) 
 	return ((SceneObjectImplementation*) impl)->selectConversationOption(option, obj);
 }
 
-void SceneObjectAdapter::close(ZoneClient* client) {
+void SceneObjectAdapter::close(ZoneClientSession* client) {
 	return ((SceneObjectImplementation*) impl)->close(client);
 }
 
@@ -1440,7 +1440,7 @@ BaseMessage* SceneObjectAdapter::link(SceneObject* obj) {
 	return ((SceneObjectImplementation*) impl)->link(obj);
 }
 
-void SceneObjectAdapter::link(ZoneClient* client, SceneObject* obj) {
+void SceneObjectAdapter::link(ZoneClientSession* client, SceneObject* obj) {
 	return ((SceneObjectImplementation*) impl)->link(client, obj);
 }
 

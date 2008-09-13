@@ -47,7 +47,7 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-#include "../../ZoneClient.h"
+#include "../../ZoneClientSession.h"
 
 #include "PlayerObject.h"
 
@@ -94,7 +94,7 @@ class Certification;
 class ResourceContainer;
 
 class PlayerImplementation : public PlayerServant {
-	ReferenceSlot<ZoneClient> owner;
+	ReferenceSlot<ZoneClientSession> owner;
 
 	int onlineStatus;
 	Time logoutTimeStamp;
@@ -292,12 +292,12 @@ public:
 
 	void init();
 
-	void create(ZoneClient* client);
+	void create(ZoneClientSession* client);
 
-	void refuseCreate(ZoneClient* client);
+	void refuseCreate(ZoneClientSession* client);
 
-	void load(ZoneClient* client);
-	void reload(ZoneClient* client);
+	void load(ZoneClientSession* client);
+	void reload(ZoneClientSession* client);
 
 	void unload();
 	void savePlayerState(bool doSchedule = false);
@@ -1064,7 +1064,7 @@ public:
 		disconnectEvent = NULL;
 	}
 
-	void setClient(ZoneClient* client) {
+	void setClient(ZoneClientSession* client) {
 		owner = client;
 	}
 
@@ -1201,7 +1201,7 @@ public:
 		return firstNameProper;
 	}
 
-	inline ZoneClient* getClient() {
+	inline ZoneClientSession* getClient() {
 		return owner;
 	}
 

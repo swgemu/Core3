@@ -50,7 +50,7 @@ which carries forward this exception.
 #include "../player/Player.h"
 #include "../player/PlayerImplementation.h"
 #include "../../Zone.h"
-#include "../../ZoneClientImplementation.h"
+#include "../../ZoneClientSessionImplementation.h"
 
 BuildingObjectImplementation::BuildingObjectImplementation(uint64 oid, bool staticBuild)
 		: QuadTree(-1024, -1024, 1024, 1024), BuildingObjectServant(oid, BUILDING) {
@@ -182,7 +182,7 @@ void BuildingObjectImplementation::notifyDissapear(QuadTreeEntry* obj) {
 void BuildingObjectImplementation::sendTo(Player* player, bool doClose) {
 	// send buio packets if not static
 
-	ZoneClient* client = player->getClient();
+	ZoneClientSession* client = player->getClient();
 	if (client == NULL)
 		return;
 
@@ -214,10 +214,11 @@ void BuildingObjectImplementation::sendCells(Player* player, bool doClose = true
 	CellObject * cell;
 
 	//cout << "sending cells, size: " << cells.size() << endl;
-	ZoneClient* client = player->getClient();
+	ZoneClientSession* client = player->getClient();
 	if (client == NULL)
 		return;
-	for(int i = 1; i <= cells.size(); ++i) {
+
+	for (int i = 1; i <= cells.size(); ++i) {
 		//cout << "sending cell cell: " << i << endl;
 		cell = cells.get(i-1);
 

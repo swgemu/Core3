@@ -48,7 +48,7 @@ which carries forward this exception.
 #include "../../player/Player.h"
 
 #include "../../../Zone.h"
-#include "../../../ZoneClient.h"
+#include "../../../ZoneClientSession.h"
 
 #include "../../../managers/resource/ResourceManager.h"
 #include "../../../managers/item/ItemManager.h"

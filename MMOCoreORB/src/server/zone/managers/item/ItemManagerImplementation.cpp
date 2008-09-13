@@ -1122,13 +1122,14 @@ void ItemManagerImplementation::loadDefaultPlayerDatapadItems(Player* player) {
 	speed->addToDatapad();
 
 	// jetpack
-	/*MountCreatureImplementation* jetImpl = new MountCreatureImplementation(player, "jetpack", "monster_name",
-	 String::hashCode("object/intangible/vehicle/shared_jetpack_pcd.iff"), 0x60250B32, player->getNewItemID());
-	 jetImpl->setInstantMount(true);
-	 stringstream Jet;
-	 Jet << "Mount" << jetImpl->getObjectID();
-	 MountCreature* jet = (MountCreature*) DistributedObjectBroker::instance()->deploy(Jet.str(), jetImpl);
-	 jet->addToDatapad();*/
+	MountCreatureImplementation* jetImpl = new MountCreatureImplementation(player, "jetpack", "monster_name",
+	String::hashCode("object/intangible/vehicle/shared_jetpack_pcd.iff"), 0x60250B32, player->getNewItemID());
+	jetImpl->setInstantMount(true);
+	stringstream Jet;
+	Jet << "Mount" << jetImpl->getObjectID();
+	MountCreature* jet = (MountCreature*) DistributedObjectBroker::instance()->deploy(Jet.str(), jetImpl);
+	jet->addToDatapad();
+	*/
 }
 
 void ItemManagerImplementation::unloadPlayerItems(Player* player) {

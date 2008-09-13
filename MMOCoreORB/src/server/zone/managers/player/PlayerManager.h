@@ -15,7 +15,7 @@ class Player;
 
 class TangibleObject;
 
-class ZoneClient;
+class ZoneClientSession;
 
 #include "server/zone/ZoneProcessServerImplementation.h"
 
@@ -35,7 +35,7 @@ public:
 
 	BaseMessage* checkPlayerName(const string& name, const string& species);
 
-	BaseMessage* attemptPlayerCreation(Player* player, ZoneClient* client);
+	BaseMessage* attemptPlayerCreation(Player* player, ZoneClientSession* client);
 
 	Player* load(unsigned long long charid);
 
@@ -109,7 +109,7 @@ public:
 
 	BaseMessage* checkPlayerName(const string& name, const string& species);
 
-	BaseMessage* attemptPlayerCreation(Player* player, ZoneClient* client);
+	BaseMessage* attemptPlayerCreation(Player* player, ZoneClientSession* client);
 
 	Player* load(unsigned long long charid);
 

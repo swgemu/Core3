@@ -42,7 +42,7 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#include "../../ZoneClient.h"
+#include "../../ZoneClientSession.h"
 #include "../../ZoneServer.h"
 
 #include "../../objects.h"
@@ -306,7 +306,7 @@ void PlayerImplementation::init() {
 	setGlobalLogging(true);
 }
 
-void PlayerImplementation::create(ZoneClient* client) {
+void PlayerImplementation::create(ZoneClientSession* client) {
 	playerObject = new PlayerObject(_this);
 
 	setClient(client);
@@ -401,7 +401,7 @@ void PlayerImplementation::makeCharacterMask() {
 	}
 }
 
-void PlayerImplementation::refuseCreate(ZoneClient* client) {
+void PlayerImplementation::refuseCreate(ZoneClientSession* client) {
 	info("name refused for character creation");
 
 	BaseMessage* msg = new ClientCreateCharacterFailed("name_declined_in_use");
@@ -410,7 +410,7 @@ void PlayerImplementation::refuseCreate(ZoneClient* client) {
 	client->disconnect();
 }
 
-void PlayerImplementation::load(ZoneClient* client) {
+void PlayerImplementation::load(ZoneClientSession* client) {
 	try {
 		wlock();
 
@@ -460,7 +460,7 @@ void PlayerImplementation::load(ZoneClient* client) {
 	}
 }
 
-void PlayerImplementation::reload(ZoneClient* client) {
+void PlayerImplementation::reload(ZoneClientSession* client) {
 	try {
 		wlock();
 
@@ -702,7 +702,7 @@ void PlayerImplementation::logout(bool doLock) {
 
 	if (disconnectEvent == NULL) {
 		info("creating disconnect event");
-		
+
 		disconnectEvent = new PlayerDisconnectEvent(_this);
 
 		if (isLoggingOut()) {
@@ -745,17 +745,17 @@ void PlayerImplementation::userLogout(int msgCounter) {
 
 			ClientLogout* packet = new ClientLogout();
 			sendMessage(packet);
-			
+
 			delete logoutEvent;
 			logoutEvent = NULL;
 			break;
 		}
 	} else {
-		if (logoutEvent != NULL) { // we better dont delete the event from where 
+		if (logoutEvent != NULL) { // we better dont delete the event from where
 									//we are running this so we make sure we make it null in event::activate() before calling this
 			if (logoutEvent->isQueued())
 				server->removeEvent(logoutEvent);
-			
+
 			delete logoutEvent;
 			logoutEvent = NULL;
 		}
@@ -1516,11 +1516,11 @@ void PlayerImplementation::sendSystemMessage(const string& file, const string& s
 	sendMessage(msg);
 }
 
-void PlayerImplementation::sendMail(string& mailSender, unicode& subjectSender, 
+void PlayerImplementation::sendMail(string& mailSender, unicode& subjectSender,
 		unicode& bodySender, string& charNameSender) {
- 
+
 	ChatManager * chat=  zone->getChatManager();
-	
+
 	chat->sendMail(mailSender, subjectSender, bodySender, charNameSender);
 }
 

@@ -49,13 +49,14 @@ INCLUDES =  $(SYSTEM_INCLUDES) \
 	    -I$(ENGINE3_PATH)/include
 			
 LIBS =	$(SYSTEM_LIBS)  \
+	-L../../../build/unix/src/client \
 	-L$(USER_LIBS_PATH)/ -L$(USER_LIBS_PATH)/mysql -L$(USER_LIBS_PATH)/lua -L$(ENGINE3_PATH)/lib/unix \
 	-lmysqlclient -lz -lengine3 -llua
 
 bin_PROGRAMS = core3
 
-core3_IDLS =	server/zone/Zone.cpp \
-		server/zone/ZoneClient.cpp \
+core3_IDLS = server/zone/Zone.cpp \
+		server/zone/ZoneClientSession.cpp \
 		server/zone/ZoneServer.cpp \
 		server/zone/objects/attackable/AttackableObject.cpp \
 		server/zone/objects/auction/AuctionItem.cpp \
@@ -181,13 +182,13 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/ServerCore.cpp \
 		server/conf/ConfigManager.cpp \
 		server/db/ServerDatabase.cpp \
-                server/db/ForumsDatabase.cpp \
+		server/db/ForumsDatabase.cpp \
 		server/login/LoginServer.cpp \
 		server/login/LoginPacketHandler.cpp \
 		server/login/LoginMessageProcessorThread.cpp \
 		server/status/StatusServer.cpp \
 		server/zone/ZoneImplementation.cpp \
-		server/zone/ZoneClientImplementation.cpp \
+		server/zone/ZoneClientSessionImplementation.cpp \
 		server/zone/ZoneServerImplementation.cpp \
 		server/zone/ZonePacketHandler.cpp \
 		server/zone/ZoneProcessServerImplementation.cpp \
