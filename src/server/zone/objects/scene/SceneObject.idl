@@ -52,7 +52,7 @@ import "../../packets/object/ObjectMenuResponse";
 
 import "../../Zone";
 
-import "../../ZoneClient";
+import "../../ZoneClientSession";
 
 import "../player/Player";
 
@@ -73,13 +73,13 @@ interface SceneObject implements ManagedObject {
 	
 	void sendRadialResponseTo(Player player, ObjectMenuResponse omr);
 	
-	void create(ZoneClient client);
-	void destroy(ZoneClient client);
+	void create(ZoneClientSession client);
+	void destroy(ZoneClientSession client);
 	
 	void sendConversationStartTo(SceneObject obj);
 	void selectConversationOption(int option, SceneObject obj);
 	
-	void close(ZoneClient client);
+	void close(ZoneClientSession client);
 	
 	// QT methods
 	boolean isInRange(SceneObject obj, float range);
@@ -99,7 +99,7 @@ interface SceneObject implements ManagedObject {
 	int compareTo(SceneObject obj);
 	
 	BaseMessage link(SceneObject obj);
-	void link(ZoneClient client, SceneObject obj);
+	void link(ZoneClientSession client, SceneObject obj);
 	
 	void randomizePosition(float radius);
 

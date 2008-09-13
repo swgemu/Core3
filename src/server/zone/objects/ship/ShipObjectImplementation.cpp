@@ -43,7 +43,7 @@ which carries forward this exception.
 */
 
 #include "../../Zone.h"
-#include "../../ZoneClient.h"
+#include "../../ZoneClientSession.h"
 
 #include "../creature/CreatureObject.h"
 #include "../creature/CreatureObjectImplementation.h"
@@ -107,7 +107,7 @@ void ShipObjectImplementation::init() {
 }
 
 void ShipObjectImplementation::sendToOwner(bool inSpace) {
-	ZoneClient* client = owner->getClient();
+	ZoneClientSession* client = owner->getClient();
 
 	create(client);
 
@@ -130,7 +130,7 @@ void ShipObjectImplementation::sendToOwner(bool inSpace) {
 }
 
 void ShipObjectImplementation::sendTo(Player* targetPlayer, bool inSpace, bool doClose) {
-	ZoneClient* client = targetPlayer->getClient();
+	ZoneClientSession* client = targetPlayer->getClient();
 	if (client == NULL)
 		return;
 

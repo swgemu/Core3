@@ -56,7 +56,7 @@ which carries forward this exception.
 #include "../../../packets.h"
 #include "../../../packets/creature/CreatureObjectMessage3.h"
 
-#include "../../../ZoneClient.h"
+#include "../../../ZoneClientSession.h"
 
 MountCreatureImplementation::MountCreatureImplementation(CreatureObject* linkCreature, const string& name,
 		const string& stf, uint32 itnocrc, uint32 objCRC, uint64 oid) : MountCreatureServant(oid) {
@@ -112,7 +112,7 @@ void MountCreatureImplementation::addToDatapad() {
 }
 
 void MountCreatureImplementation::sendTo(Player* player, bool doClose) {
-	ZoneClient* client = player->getClient();
+	ZoneClientSession* client = player->getClient();
 	if (client == NULL)
 		return;
 

@@ -50,7 +50,7 @@ which carries forward this exception.
 #include "../../objects/player/Player.h"
 
 #include "../../ZoneServer.h"
-#include "../../ZoneClient.h"
+#include "../../ZoneClientSession.h"
 #include "../player/PlayerManager.h"
 
 #include "../../../login/packets/ErrorMessage.h"
@@ -175,7 +175,7 @@ bool UserManagerImplementation::banUserByName(string& name, string& admin) {
 	Player* player = playerManager->getPlayer(name);
 
 	if (player != NULL) {
-		ZoneClient* client = player->getClient();
+		ZoneClientSession* client = player->getClient();
 		if (client == NULL)
 			return false;
 
@@ -216,7 +216,7 @@ bool UserManagerImplementation::kickUser(string& name, string& admin) {
 	Player* player = playerManager->getPlayer(name);
 
 	if (player != NULL) {
-		ZoneClient* client = player->getClient();
+		ZoneClientSession* client = player->getClient();
 		if (client == NULL)
 			return false;
 

@@ -129,7 +129,7 @@ void ResourceContainerImplementation::init() {
 }
 
 void ResourceContainerImplementation::sendTo(Player* player, bool doClose) {
-	ZoneClient* client = player->getClient();
+	ZoneClientSession* client = player->getClient();
 
 	if (client == NULL)
 		return;

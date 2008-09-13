@@ -42,7 +42,7 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#include "../../ZoneClient.h"
+#include "../../ZoneClientSession.h"
 #include "../creature/CreatureObject.h"
 
 #include "../player/Player.h"
@@ -303,7 +303,7 @@ void TangibleObjectImplementation::removeFromZone() {
 }
 
 void TangibleObjectImplementation::sendTo(Player* player, bool doClose) {
-	ZoneClient* client = player->getClient();
+	ZoneClientSession* client = player->getClient();
 	if (client == NULL)
 		return;
 
@@ -329,7 +329,7 @@ void TangibleObjectImplementation::sendTo(Player* player, bool doClose) {
 }
 
 void TangibleObjectImplementation::sendDestroyTo(Player* player) {
-	ZoneClient* client = player->getClient();
+	ZoneClientSession* client = player->getClient();
 	if (client == NULL)
 		return;
 	
@@ -338,7 +338,7 @@ void TangibleObjectImplementation::sendDestroyTo(Player* player) {
 
 void TangibleObjectImplementation::sendDeltas(Player* player) {
 	
-	ZoneClient* client = player->getClient();
+	ZoneClientSession* client = player->getClient();
 	if (client == NULL)
 		return;
 	
@@ -352,7 +352,7 @@ void TangibleObjectImplementation::sendDeltas(Player* player) {
 }
 
 void TangibleObjectImplementation::close(Player* player) {
-	ZoneClient* client = player->getClient();
+	ZoneClientSession* client = player->getClient();
 	if (client == NULL)
 		return;
 

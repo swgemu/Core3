@@ -47,7 +47,8 @@ which carries forward this exception.
 
 #include "ZoneServer.h"
 
-#include "ZoneClientImplementation.h"
+#include "ZoneClientSessionImplementation.h"
+
 #include "ZoneProcessServerImplementation.h"
 
 #include "Zone.h"
@@ -247,7 +248,7 @@ void ZonePacketHandler::handleMessage(Message* pack) {
 }
 
 void ZonePacketHandler::handleClientPermissionsMessage(Message* pack) {
-	ZoneClientImplementation* client = (ZoneClientImplementation*) pack->getClient();
+	ZoneClientSessionImplementation* client = (ZoneClientSessionImplementation*) pack->getClient();
 
 	uint32 accountID = ClientIDMessage::parse(pack);
 	client->setSessionKey(accountID);
@@ -261,8 +262,8 @@ void ZonePacketHandler::handleClientPermissionsMessage(Message* pack) {
 void ZonePacketHandler::handleSelectCharacter(Message* pack) {
 	PlayerManager* playerManager = server->getPlayerManager();
 
-	ZoneClientImplementation* clientimpl = (ZoneClientImplementation*) pack->getClient();
-	ZoneClient* client = (ZoneClient*) clientimpl->_getStub();
+	ZoneClientSessionImplementation* clientimpl = (ZoneClientSessionImplementation*) pack->getClient();
+	ZoneClientSession* client = (ZoneClientSession*) clientimpl->_getStub();
 
 	uint64 characterID = SelectCharacter::parse(pack);
 	uint64 playerID = (characterID << 32) + 0x15;
@@ -300,7 +301,7 @@ void ZonePacketHandler::handleSelectCharacter(Message* pack) {
 			player->load(client);
 		}
 
-		clientimpl->setLockName("ZoneClient = " + player->getFirstName());
+		clientimpl->setLockName("ZoneClientSession = " + player->getFirstName());
 	} catch (Exception& e) {
 		cout << "unreported exception caught in ZonePacketHandler::handleSelectCharacter(Message* pack)\n";
 		e.printStackTrace();
@@ -309,7 +310,7 @@ void ZonePacketHandler::handleSelectCharacter(Message* pack) {
 }
 
 void ZonePacketHandler::handleCmdSceneReady(Message* pack) {
-	ZoneClientImplementation* client = (ZoneClientImplementation*) pack->getClient();
+	ZoneClientSessionImplementation* client = (ZoneClientSessionImplementation*) pack->getClient();
 
 	BaseMessage* csr = new CmdSceneReady();
 	client->sendMessage(csr);
@@ -335,8 +336,8 @@ void ZonePacketHandler::handleCmdSceneReady(Message* pack) {
 void ZonePacketHandler::handleClientCreateCharacter(Message* pack) {
 	PlayerManager* playerManager = server->getPlayerManager();
 
-	ZoneClientImplementation* clientimpl = (ZoneClientImplementation*) pack->getClient();
-	ZoneClient* client = (ZoneClient*) clientimpl->_getStub();
+	ZoneClientSessionImplementation* clientimpl = (ZoneClientSessionImplementation*) pack->getClient();
+	ZoneClientSession* client = (ZoneClientSession*) clientimpl->_getStub();
 
 	Player* player = new Player();
 	player->setZoneProcessServer(processServer);
@@ -374,7 +375,7 @@ void ZonePacketHandler::handleClientCreateCharacter(Message* pack) {
 }
 
 void ZonePacketHandler::handleClientRandomNameRequest(Message* pack) {
-	ZoneClientImplementation* client = (ZoneClientImplementation*) pack->getClient();
+	ZoneClientSessionImplementation* client = (ZoneClientSessionImplementation*) pack->getClient();
 
 	NameManager* nameManager = processServer->getNameManager();
 
@@ -387,7 +388,7 @@ void ZonePacketHandler::handleClientRandomNameRequest(Message* pack) {
 }
 
 void ZonePacketHandler::handleObjectControllerMessage(Message* pack) {
-	ZoneClientImplementation* client = (ZoneClientImplementation*) pack->getClient();
+	ZoneClientSessionImplementation* client = (ZoneClientSessionImplementation*) pack->getClient();
 	Player* player = client->getPlayer();
 	if (player == NULL)
 		return;
@@ -507,7 +508,7 @@ void ZonePacketHandler::handleObjectControllerMessage(Message* pack) {
 }
 
 void ZonePacketHandler::handleTellMessage(Message* pack) {
-	ZoneClientImplementation* client = (ZoneClientImplementation*) pack->getClient();
+	ZoneClientSessionImplementation* client = (ZoneClientSessionImplementation*) pack->getClient();
 
 	Player* player = client->getPlayer();
 	if (player == NULL)
@@ -529,7 +530,7 @@ void ZonePacketHandler::handleTellMessage(Message* pack) {
 }
 
 void ZonePacketHandler::handleSendMail(Message* pack) {
-	ZoneClientImplementation* client = (ZoneClientImplementation*) pack->getClient();
+	ZoneClientSessionImplementation* client = (ZoneClientSessionImplementation*) pack->getClient();
 
 	Player* player = client->getPlayer();
 	if (player == NULL)
@@ -553,7 +554,7 @@ void ZonePacketHandler::handleSendMail(Message* pack) {
 }
 
 void ZonePacketHandler::handleRequestPersistentMsg(Message* pack) {
-	ZoneClientImplementation* client = (ZoneClientImplementation*) pack->getClient();
+	ZoneClientSessionImplementation* client = (ZoneClientSessionImplementation*) pack->getClient();
 
 	Player* player = client->getPlayer();
 	if (player == NULL)
@@ -567,7 +568,7 @@ void ZonePacketHandler::handleRequestPersistentMsg(Message* pack) {
 }
 
 void ZonePacketHandler::handleDeletePersistentMsg(Message* pack) {
-	ZoneClientImplementation* client = (ZoneClientImplementation*) pack->getClient();
+	ZoneClientSessionImplementation* client = (ZoneClientSessionImplementation*) pack->getClient();
 
 	uint32 mailid = pack->parseInt();
 
@@ -576,7 +577,7 @@ void ZonePacketHandler::handleDeletePersistentMsg(Message* pack) {
 }
 
 void ZonePacketHandler::handleFactionRequestMessage(Message* pack) {
-	ZoneClientImplementation* client = (ZoneClientImplementation*) pack->getClient();
+	ZoneClientSessionImplementation* client = (ZoneClientSessionImplementation*) pack->getClient();
 	Player* player = client->getPlayer();
 	if (player == NULL)
 		return;
@@ -603,7 +604,7 @@ void ZonePacketHandler::handleFactionRequestMessage(Message* pack) {
 }
 
 void ZonePacketHandler::handleGetMapLocationsRequestMessage(Message* pack) {
-	ZoneClientImplementation* client = (ZoneClientImplementation*) pack->getClient();
+	ZoneClientSessionImplementation* client = (ZoneClientSessionImplementation*) pack->getClient();
 
 	string planet;
     pack->parseAscii(planet);
@@ -646,7 +647,7 @@ void ZonePacketHandler::handleStomachRequestMessage(Message* pack) {
 }
 
 void ZonePacketHandler::handleGuildRequestMessage(Message* pack) {
-    ZoneClientImplementation* client = (ZoneClientImplementation*) pack->getClient();
+    ZoneClientSessionImplementation* client = (ZoneClientSessionImplementation*) pack->getClient();
     Player* player = client->getPlayer();
 
 	if (player == NULL)
@@ -686,7 +687,7 @@ void ZonePacketHandler::handleGuildRequestMessage(Message* pack) {
 }
 
 void ZonePacketHandler::handlePlayerMoneyRequest(Message* pack) {
-    ZoneClientImplementation* client = (ZoneClientImplementation*) pack->getClient();
+    ZoneClientSessionImplementation* client = (ZoneClientSessionImplementation*) pack->getClient();
 	Player* player = client->getPlayer();
 
 	if (player == NULL)
@@ -706,7 +707,7 @@ void ZonePacketHandler::handlePlayerMoneyRequest(Message* pack) {
 }
 
 void ZonePacketHandler::handleTravelListRequest(Message* pack) {
-    ZoneClientImplementation* client = (ZoneClientImplementation*) pack->getClient();
+    ZoneClientSessionImplementation* client = (ZoneClientSessionImplementation*) pack->getClient();
     Player* player = client->getPlayer();
 
     if (player == NULL)
@@ -730,7 +731,7 @@ void ZonePacketHandler::handleTravelListRequest(Message* pack) {
 }
 
 void ZonePacketHandler::handleRadialSelect(Message* pack) {
-	ZoneClientImplementation* client = (ZoneClientImplementation*) pack->getClient();
+	ZoneClientSessionImplementation* client = (ZoneClientSessionImplementation*) pack->getClient();
     Player* player = client->getPlayer();
 
     if (player == NULL)
@@ -740,7 +741,7 @@ void ZonePacketHandler::handleRadialSelect(Message* pack) {
 }
 
 void ZonePacketHandler::handleChatRoomMessage(Message* pack) {
-	ZoneClientImplementation* client = (ZoneClientImplementation*) pack->getClient();
+	ZoneClientSessionImplementation* client = (ZoneClientSessionImplementation*) pack->getClient();
 
 	Player* player = client->getPlayer();
 	if (player == NULL)
@@ -751,7 +752,7 @@ void ZonePacketHandler::handleChatRoomMessage(Message* pack) {
 }
 
 void ZonePacketHandler::handleChatRequestRoomList(Message* pack) {
-	ZoneClientImplementation* client = (ZoneClientImplementation*) pack->getClient();
+	ZoneClientSessionImplementation* client = (ZoneClientSessionImplementation*) pack->getClient();
 
 	Player* player = client->getPlayer();
 	if (player == NULL)
@@ -762,7 +763,7 @@ void ZonePacketHandler::handleChatRequestRoomList(Message* pack) {
 }
 
 void ZonePacketHandler::handleChatCreateRoom(Message* pack) {
-	ZoneClientImplementation* client = (ZoneClientImplementation*) pack->getClient();
+	ZoneClientSessionImplementation* client = (ZoneClientSessionImplementation*) pack->getClient();
 
 	Player* player = client->getPlayer();
 	if (player == NULL)
@@ -773,7 +774,7 @@ void ZonePacketHandler::handleChatCreateRoom(Message* pack) {
 }
 
 void ZonePacketHandler::handleChatEnterRoomById(Message* pack) {
-	ZoneClientImplementation* client = (ZoneClientImplementation*) pack->getClient();
+	ZoneClientSessionImplementation* client = (ZoneClientSessionImplementation*) pack->getClient();
 
 	Player* player = client->getPlayer();
 	if (player == NULL)
@@ -784,7 +785,7 @@ void ZonePacketHandler::handleChatEnterRoomById(Message* pack) {
 }
 
 void ZonePacketHandler::handleChatDestroyRoom(Message* pack) {
-	ZoneClientImplementation* client = (ZoneClientImplementation*) pack->getClient();
+	ZoneClientSessionImplementation* client = (ZoneClientSessionImplementation*) pack->getClient();
 
 	Player* player = client->getPlayer();
 	if (player == NULL)
@@ -795,7 +796,7 @@ void ZonePacketHandler::handleChatDestroyRoom(Message* pack) {
 }
 
 void ZonePacketHandler::handleChatRemoveAvatarFromRoom(Message* pack) {
-	ZoneClientImplementation* client = (ZoneClientImplementation*) pack->getClient();
+	ZoneClientSessionImplementation* client = (ZoneClientSessionImplementation*) pack->getClient();
 
 	Player* player = client->getPlayer();
 	if (player == NULL)
@@ -806,7 +807,7 @@ void ZonePacketHandler::handleChatRemoveAvatarFromRoom(Message* pack) {
 }
 
 void ZonePacketHandler::handleSuiEventNotification(Message* pack) {
-	ZoneClientImplementation* client = (ZoneClientImplementation*) pack->getClient();
+	ZoneClientSessionImplementation* client = (ZoneClientSessionImplementation*) pack->getClient();
 	Player* player = client->getPlayer();
 	if (player == NULL)
 		return;
@@ -828,7 +829,7 @@ void ZonePacketHandler::handleSuiEventNotification(Message* pack) {
 }
 
 void ZonePacketHandler::handleAbortTradeMessage(Message* pack) {
-	ZoneClientImplementation* client = (ZoneClientImplementation*) pack->getClient();
+	ZoneClientSessionImplementation* client = (ZoneClientSessionImplementation*) pack->getClient();
 	Player* player = client->getPlayer();
 
 	if (player == NULL)
@@ -838,7 +839,7 @@ void ZonePacketHandler::handleAbortTradeMessage(Message* pack) {
 }
 
 void ZonePacketHandler::handleAddItemMessage(Message* pack) {
-	ZoneClientImplementation* client = (ZoneClientImplementation*) pack->getClient();
+	ZoneClientSessionImplementation* client = (ZoneClientSessionImplementation*) pack->getClient();
 	Player* player = client->getPlayer();
 
 	if (player == NULL)
@@ -850,7 +851,7 @@ void ZonePacketHandler::handleAddItemMessage(Message* pack) {
 }
 
 void ZonePacketHandler::handleGiveMoneyMessage(Message* pack) {
-	ZoneClientImplementation* client = (ZoneClientImplementation*) pack->getClient();
+	ZoneClientSessionImplementation* client = (ZoneClientSessionImplementation*) pack->getClient();
 	Player* player = client->getPlayer();
 
 	if (player == NULL)
@@ -862,7 +863,7 @@ void ZonePacketHandler::handleGiveMoneyMessage(Message* pack) {
 }
 
 void ZonePacketHandler::handleAcceptTransactionMessage(Message* pack) {
-	ZoneClientImplementation* client = (ZoneClientImplementation*) pack->getClient();
+	ZoneClientSessionImplementation* client = (ZoneClientSessionImplementation*) pack->getClient();
 	Player* player = client->getPlayer();
 
 	if (player == NULL)
@@ -872,7 +873,7 @@ void ZonePacketHandler::handleAcceptTransactionMessage(Message* pack) {
 }
 
 void ZonePacketHandler::handleUnAcceptTransactionMessage(Message* pack) {
-	ZoneClientImplementation* client = (ZoneClientImplementation*) pack->getClient();
+	ZoneClientSessionImplementation* client = (ZoneClientSessionImplementation*) pack->getClient();
 	Player* player = client->getPlayer();
 
 	if (player == NULL)
@@ -882,7 +883,7 @@ void ZonePacketHandler::handleUnAcceptTransactionMessage(Message* pack) {
 }
 
 void ZonePacketHandler::handleVerifyTradeMessage(Message* pack) {
-	ZoneClientImplementation* client = (ZoneClientImplementation*) pack->getClient();
+	ZoneClientSessionImplementation* client = (ZoneClientSessionImplementation*) pack->getClient();
 	Player* player = client->getPlayer();
 
 	if (player == NULL)
@@ -892,7 +893,7 @@ void ZonePacketHandler::handleVerifyTradeMessage(Message* pack) {
 }
 
 void ZonePacketHandler::handleBazaarAddItem(Message* pack, bool auction) {
-	ZoneClientImplementation* client = (ZoneClientImplementation*) pack->getClient();
+	ZoneClientSessionImplementation* client = (ZoneClientSessionImplementation*) pack->getClient();
 
 	Player* player = client->getPlayer();
 	if (player == NULL)
@@ -912,7 +913,7 @@ void ZonePacketHandler::handleBazaarAddItem(Message* pack, bool auction) {
 }
 
 void ZonePacketHandler::handleBazaarScreens(Message* pack) {
-	ZoneClientImplementation* client = (ZoneClientImplementation*) pack->getClient();
+	ZoneClientSessionImplementation* client = (ZoneClientSessionImplementation*) pack->getClient();
 
 	Player* player = client->getPlayer();
 	if (player == NULL)
@@ -945,7 +946,7 @@ void ZonePacketHandler::handleBazaarScreens(Message* pack) {
 }
 
 void ZonePacketHandler::handleBazaarBuy(Message* pack) {
-	ZoneClientImplementation* client = (ZoneClientImplementation*) pack->getClient();
+	ZoneClientSessionImplementation* client = (ZoneClientSessionImplementation*) pack->getClient();
 
 	Player* player = client->getPlayer();
 	if (player == NULL)
@@ -961,7 +962,7 @@ void ZonePacketHandler::handleBazaarBuy(Message* pack) {
 }
 
 void ZonePacketHandler::handleRetrieveAuctionItem(Message* pack) {
-	ZoneClientImplementation* client = (ZoneClientImplementation*) pack->getClient();
+	ZoneClientSessionImplementation* client = (ZoneClientSessionImplementation*) pack->getClient();
 
 	Player* player = client->getPlayer();
 	if (player == NULL)
@@ -976,7 +977,7 @@ void ZonePacketHandler::handleRetrieveAuctionItem(Message* pack) {
 }
 
 void ZonePacketHandler::handleGetAuctionItemAttributes(Message* pack) {
-	ZoneClientImplementation* client = (ZoneClientImplementation*) pack->getClient();
+	ZoneClientSessionImplementation* client = (ZoneClientSessionImplementation*) pack->getClient();
 
 	Player* player = client->getPlayer();
 	if (player == NULL)

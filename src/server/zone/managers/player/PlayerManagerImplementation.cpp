@@ -55,7 +55,7 @@ which carries forward this exception.
 
 #include "../../../ServerCore.h"
 
-#include "../../ZoneClient.h"
+#include "../../ZoneClientSession.h"
 #include "../../ZoneServer.h"
 
 #include "../../objects.h"
@@ -96,7 +96,7 @@ void PlayerManagerImplementation::stop() {
 
 		player->wlock();
 
-		ZoneClient* client = player->getClient();
+		ZoneClientSession* client = player->getClient();
 
 		if (client != NULL)
 			client->disconnect();
@@ -256,7 +256,7 @@ BaseMessage* PlayerManagerImplementation::checkPlayerName(const string& name, co
 	return msg;
 }
 
-BaseMessage* PlayerManagerImplementation::attemptPlayerCreation(Player * player, ZoneClient * client) {
+BaseMessage* PlayerManagerImplementation::attemptPlayerCreation(Player* player, ZoneClientSession* client) {
 	//Player name is valid, attempt to create player
 	BaseMessage* msg = NULL;
 

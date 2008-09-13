@@ -54,7 +54,7 @@ which carries forward this exception.
 #include "events/UndeploySceneObjectEvent.h"
 
 class Zone;
-class ZoneClient;
+class ZoneClientSession;
 class Player;
 
 class ZoneProcessServerImplementation;
@@ -123,14 +123,14 @@ public:
 
 	void removeUndeploymentEvent();
 
-	void create(ZoneClient* client);
-	void destroy(ZoneClient* client);
+	void create(ZoneClientSession* client);
+	void destroy(ZoneClientSession* client);
 
-	void link(ZoneClient* client, SceneObject* obj);
+	void link(ZoneClientSession* client, SceneObject* obj);
 	BaseMessage* link(SceneObject* obj);
 	BaseMessage* link(uint64 container, uint32 type);
 
-	void close(ZoneClient* client);
+	void close(ZoneClientSession* client);
 
 	virtual void sendTo(Player* player, bool doClose = true) {
 	}

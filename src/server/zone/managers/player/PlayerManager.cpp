@@ -14,7 +14,7 @@
 
 #include "../../objects/tangible/TangibleObject.h"
 
-#include "server/zone/ZoneClient.h"
+#include "server/zone/ZoneClientSession.h"
 
 #include "PlayerMap.h"
 
@@ -87,7 +87,7 @@ BaseMessage* PlayerManager::checkPlayerName(const string& name, const string& sp
 		return ((PlayerManagerImplementation*) _impl)->checkPlayerName(name, species);
 }
 
-BaseMessage* PlayerManager::attemptPlayerCreation(Player* player, ZoneClient* client) {
+BaseMessage* PlayerManager::attemptPlayerCreation(Player* player, ZoneClientSession* client) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -449,7 +449,7 @@ Packet* PlayerManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		resp->insertLong(checkPlayerName(inv->getAsciiParameter(_param0_checkPlayerName__string_string_), inv->getAsciiParameter(_param1_checkPlayerName__string_string_))->_getObjectID());
 		break;
 	case 10:
-		resp->insertLong(attemptPlayerCreation((Player*) inv->getObjectParameter(), (ZoneClient*) inv->getObjectParameter())->_getObjectID());
+		resp->insertLong(attemptPlayerCreation((Player*) inv->getObjectParameter(), (ZoneClientSession*) inv->getObjectParameter())->_getObjectID());
 		break;
 	case 11:
 		resp->insertLong(load(inv->getUnsignedLongParameter())->_getObjectID());
@@ -546,7 +546,7 @@ BaseMessage* PlayerManagerAdapter::checkPlayerName(const string& name, const str
 	return ((PlayerManagerImplementation*) impl)->checkPlayerName(name, species);
 }
 
-BaseMessage* PlayerManagerAdapter::attemptPlayerCreation(Player* player, ZoneClient* client) {
+BaseMessage* PlayerManagerAdapter::attemptPlayerCreation(Player* player, ZoneClientSession* client) {
 	return ((PlayerManagerImplementation*) impl)->attemptPlayerCreation(player, client);
 }
 

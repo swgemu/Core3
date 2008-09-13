@@ -11,7 +11,7 @@
 
 #include "engine/service/proto/StandaloneBaseMessage.h"
 
-class ZoneClient;
+class ZoneClientSession;
 
 class Zone;
 
@@ -61,13 +61,13 @@ public:
 
 	Player(unsigned long long oid);
 
-	void create(ZoneClient* client);
+	void create(ZoneClientSession* client);
 
-	void refuseCreate(ZoneClient* client);
+	void refuseCreate(ZoneClientSession* client);
 
-	void load(ZoneClient* client);
+	void load(ZoneClientSession* client);
 
-	void reload(ZoneClient* client);
+	void reload(ZoneClientSession* client);
 
 	void unload();
 
@@ -415,7 +415,7 @@ public:
 
 	void clearDisconnectEvent();
 
-	void setClient(ZoneClient* client);
+	void setClient(ZoneClientSession* client);
 
 	void setOvert();
 
@@ -511,7 +511,7 @@ public:
 
 	string& getHairObject();
 
-	ZoneClient* getClient();
+	ZoneClientSession* getClient();
 
 	GroupObject* getGroupObject();
 
@@ -706,13 +706,13 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	void create(ZoneClient* client);
+	void create(ZoneClientSession* client);
 
-	void refuseCreate(ZoneClient* client);
+	void refuseCreate(ZoneClientSession* client);
 
-	void load(ZoneClient* client);
+	void load(ZoneClientSession* client);
 
-	void reload(ZoneClient* client);
+	void reload(ZoneClientSession* client);
 
 	void unload();
 
@@ -1060,7 +1060,7 @@ public:
 
 	void clearDisconnectEvent();
 
-	void setClient(ZoneClient* client);
+	void setClient(ZoneClientSession* client);
 
 	void setOvert();
 
@@ -1156,7 +1156,7 @@ public:
 
 	string& getHairObject();
 
-	ZoneClient* getClient();
+	ZoneClientSession* getClient();
 
 	GroupObject* getGroupObject();
 

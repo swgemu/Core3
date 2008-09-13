@@ -46,7 +46,7 @@ which carries forward this exception.
 #include "../../../../objects.h"
 #include "Component.h"
 #include "ComponentImplementation.h"
-#include "../../../../ZoneClient.h"
+#include "../../../../ZoneClientSession.h"
  
 ComponentImplementation::ComponentImplementation(uint64 object_id, uint32 tempCRC, 
 		const unicode& n, const string& tempn) : ComponentServant(object_id, tempCRC, n, tempn, 
@@ -91,7 +91,7 @@ int ComponentImplementation::useObject(Player* player) {
 }
 
 void ComponentImplementation::sendTo(Player* player, bool doClose) {
-	ZoneClient* client = player->getClient();
+	ZoneClientSession* client = player->getClient();
 	if (client == NULL)
 		return;
 

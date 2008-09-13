@@ -46,7 +46,7 @@ which carries forward this exception.
 #include "../../../objects.h"
 #include "CraftingStation.h"
 #include "CraftingStationImplementation.h"
-#include "../../../ZoneClient.h"
+#include "../../../ZoneClientSession.h"
  
 CraftingStationImplementation::CraftingStationImplementation(uint64 object_id, uint32 tempCRC, 
 		const unicode& n, const string& tempn) : CraftingStationServant(object_id, tempCRC, n, tempn, 
@@ -106,7 +106,7 @@ int CraftingStationImplementation::useObject(Player* player) {
 }
  
 /*void CraftingToolImplementation::sendTo(Player* player, bool doClose) {
-	ZoneClient* client = player->getClient();
+	ZoneClientSession* client = player->getClient();
 	if (client == NULL)
 		return;
 	SceneObjectImplementation::create(client);

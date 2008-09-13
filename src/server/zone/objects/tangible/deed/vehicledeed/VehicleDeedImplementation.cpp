@@ -11,7 +11,7 @@
 #include "../../../creature/CreatureObjectImplementation.h"
 #include "../../../tangible/DatapadImplementation.h"
 
-#include "../../../../ZoneClientImplementation.h"
+#include "../../../../ZoneClientSessionImplementation.h"
 
 VehicleDeedImplementation::VehicleDeedImplementation(CreatureObject* creature, uint32 tempcrc, const unicode& n, const string& tempn)
 	: VehicleDeedServant(creature, tempcrc, n, tempn, VEHICLEDEED) {

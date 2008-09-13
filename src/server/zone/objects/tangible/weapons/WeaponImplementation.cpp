@@ -42,7 +42,7 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#include "../../../ZoneClient.h"
+#include "../../../ZoneClientSession.h"
 #include "../../player/Player.h"
 
 #include "../../../packets.h"
@@ -319,7 +319,7 @@ void WeaponImplementation::parseItemAttributes() {
 }
 
 void WeaponImplementation::sendTo(Player* player, bool doClose) {
-	ZoneClient* client = player->getClient();
+	ZoneClientSession* client = player->getClient();
 	if (client == NULL)
 		return;
 

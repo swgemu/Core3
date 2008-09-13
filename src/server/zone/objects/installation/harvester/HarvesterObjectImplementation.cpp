@@ -1,4 +1,4 @@
-#include "../../../ZoneClient.h"
+#include "../../../ZoneClientSession.h"
 
 #include "../../player/Player.h"
 
@@ -70,7 +70,7 @@ void HarvesterObjectImplementation::insertToZone(Zone* zone) {
 	}
 }
 void HarvesterObjectImplementation::sendTo(Player* player, bool doClose) {
-	ZoneClient* client = player->getClient();
+	ZoneClientSession* client = player->getClient();
 	if (client == NULL)
 		return;
 
@@ -94,11 +94,9 @@ void HarvesterObjectImplementation::sendTo(Player* player, bool doClose) {
 
 	if (doClose)
 		SceneObjectImplementation::close(client);
-
 }
 
 void HarvesterObjectImplementation::sendRadialResponseTo(Player* player, ObjectMenuResponse* omr) {
-
 	omr->addRadialItem(0, 122, 1, "@player_structure:management");
 
 	omr->addRadialItem(2, 132, 3, "@player_structure:permission_destroy");
@@ -114,9 +112,9 @@ void HarvesterObjectImplementation::sendRadialResponseTo(Player* player, ObjectM
 }
 
 void HarvesterObjectImplementation::update() {
-
 }
 
 int HarvesterObjectImplementation::getAvailableResourcesCount() {
 	return 0;
 }
+

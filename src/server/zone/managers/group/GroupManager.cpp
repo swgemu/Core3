@@ -345,7 +345,7 @@ void GroupManager::kickFromGroup(GroupObject* group, Player* player, Player* pla
 			playerToKick->setGroup(NULL);
 			playerToKick->updateGroupId(0);
 		
-			ZoneClient* client = playerToKick->getClient();
+			ZoneClientSession* client = playerToKick->getClient();
 			if (client != NULL)	
 				group->destroy(client);
 			

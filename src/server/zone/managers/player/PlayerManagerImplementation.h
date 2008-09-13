@@ -96,7 +96,7 @@ public:
 	bool validateName(const string& cname);
 
 	BaseMessage* checkPlayerName(const string& name, const string& species);
-	BaseMessage* attemptPlayerCreation(Player* player, ZoneClient* client);
+	BaseMessage* attemptPlayerCreation(Player* player, ZoneClientSession* client);
 
 	void doBankTip(Player* sender, Player* receiver, uint32 tipAmount, bool updateTipTo);
 	void doCashTip(Player* sender, Player* receiver, uint32 tipAmount, bool updateTipTo);

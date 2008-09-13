@@ -48,7 +48,7 @@ which carries forward this exception.
 #include "../component/ComponentImplementation.h"
 #include "FactoryCrate.h"
 #include "FactoryCrateImplementation.h"
-#include "../../../../ZoneClient.h"
+#include "../../../../ZoneClientSession.h"
  
 FactoryCrateImplementation::FactoryCrateImplementation(uint64 object_id, uint32 tempCRC, 
 		const unicode& n, const string& tempn) : FactoryCrateServant(object_id, tempCRC, n, tempn, 

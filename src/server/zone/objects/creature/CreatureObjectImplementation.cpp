@@ -45,7 +45,7 @@ which carries forward this exception.
 #include "../../Zone.h"
 #include "../../ZoneProcessServerImplementation.h"
 
-#include "../../ZoneClient.h"
+#include "../../ZoneClientSession.h"
 
 #include "../../packets.h"
 #include "../../packets/creature/CreatureObjectMessage3.h"
@@ -371,7 +371,7 @@ CreatureObjectImplementation::~CreatureObjectImplementation() {
 }
 
 void CreatureObjectImplementation::sendToOwner(Player* player, bool doClose) {
-	ZoneClient* client = player->getClient();
+	ZoneClientSession* client = player->getClient();
 	if (client == NULL)
 		return;
 
@@ -391,7 +391,7 @@ void CreatureObjectImplementation::sendToOwner(Player* player, bool doClose) {
 }
 
 void CreatureObjectImplementation::sendTo(Player* player, bool doClose) {
-	ReferenceSlot<ZoneClient> client = player->getClient();
+	ReferenceSlot<ZoneClientSession> client = player->getClient();
 	if (client == NULL)
 		return;
 
@@ -430,7 +430,7 @@ void CreatureObjectImplementation::sendTo(Player* player, bool doClose) {
 }
 
 void CreatureObjectImplementation::sendDestroyTo(Player* player) {
-	ZoneClient* client = player->getClient();
+	ZoneClientSession* client = player->getClient();
 	if (client == NULL)
 		return;
 

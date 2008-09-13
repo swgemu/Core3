@@ -45,7 +45,7 @@ which carries forward this exception.
 include "engine/service/proto/BaseMessage";
 include "engine/service/proto/StandaloneBaseMessage";
 
-import "../../ZoneClient";
+import "../../ZoneClientSession";
 import "../../Zone";
 
 import "../scene/SceneObject";
@@ -90,12 +90,12 @@ interface Player implements CreatureObject {
 		super(oid);
 	}
 
-	void create(ZoneClient client);
+	void create(ZoneClientSession client);
 
-	void refuseCreate(ZoneClient client);
+	void refuseCreate(ZoneClientSession client);
 
-	void load(ZoneClient client);
-	void reload(ZoneClient client);
+	void load(ZoneClientSession client);
+	void reload(ZoneClientSession client);
 
 	void unload();
 	void savePlayerState(boolean doSchedule = false);
@@ -370,7 +370,7 @@ interface Player implements CreatureObject {
 
 	void clearDisconnectEvent();
 
-	void setClient(ZoneClient client);
+	void setClient(ZoneClientSession client);
 
 	void setOvert();
 	void setCovert();
@@ -460,7 +460,7 @@ interface Player implements CreatureObject {
 
 	string getHairObject();
 
-	ZoneClient getClient();
+	ZoneClientSession getClient();
 
 	GroupObject getGroupObject();
 

@@ -44,8 +44,8 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-#include "ZoneClient.h"
-#include "ZoneClientImplementation.h"
+#include "ZoneClientSession.h"
+#include "ZoneClientSessionImplementation.h"
 
 #include "ZoneServer.h"
 #include "Zone.h"

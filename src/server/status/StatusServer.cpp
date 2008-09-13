@@ -46,7 +46,7 @@ which carries forward this exception.
 
 #include "../zone/managers/item/ItemManager.h"
 
-StatusServer::StatusServer(ConfigManager * conf, ZoneServer * server)
+StatusServer::StatusServer(ConfigManager* conf, ZoneServer* server)
 	: Thread(), Logger("StatusServer") {
 	zoneServer = server;
 	configManager = conf;
@@ -69,12 +69,13 @@ void StatusServer::init() {
 }
 
 Packet * StatusServer::getStatusXMLPacket() {
-	Packet * p = new Packet();
+	Packet* p = new Packet();
 
 	stringstream ss;
 	ss << "<?xml version=\"1.0\" standalone=\"yes\"?>" << endl;
 	ss << "<zoneServer>" << endl;
-	if(lastStatus = testZone()) {
+
+	if (lastStatus = testZone()) {
 		ss << "<name>" << zoneServer->getServerName() << "</name>";
 		ss << "<status>up</status>" << endl;
 		ss << "<users>" << endl;
@@ -86,9 +87,9 @@ Packet * StatusServer::getStatusXMLPacket() {
 		ss << "<uptime>" << time(NULL) - zoneServer->getStartTimestamp() << "</uptime>" << endl;
 	} else
 		ss << "<status>down</status>";
+
 	ss << "<timestamp>" << timestamp << "</timestamp>" << endl;
 	ss << "</zoneServer>" << endl;
-
 
 	string xml = ss.str();
 
@@ -98,8 +99,7 @@ Packet * StatusServer::getStatusXMLPacket() {
 }
 
 bool StatusServer::testZone() {
-
-	if(zoneServer == NULL)
+	if (zoneServer == NULL)
 		return false;
 
 	if (time(NULL) - timestamp < configManager->getStatusInterval()) {
@@ -117,7 +117,7 @@ bool StatusServer::testZone() {
 }
 
 void StatusServer::run() {
-	TCPServerSocket * socket = NULL;
+	TCPServerSocket* socket = NULL;
 
 	try {
 		init();
@@ -138,11 +138,13 @@ void StatusServer::run() {
 
 	while (true) {
 		try {
-			Socket * s = socket->accept();
+			Socket* s = socket->accept();
+
 			s->send(getStatusXMLPacket());
+
 			s->close();
 
-			delete(s);
+			delete s;
 		} catch (SocketException& e) {
 			info("socket exception caught");
 			info(e.getMessage());
@@ -150,6 +152,6 @@ void StatusServer::run() {
 			info("unreported exception caught");
 		}
 
-		sleep(1);
+		Thread::sleep(1);
 	}
 }

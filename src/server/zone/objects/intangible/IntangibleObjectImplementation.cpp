@@ -48,7 +48,7 @@ which carries forward this exception.
 #include "../../packets.h"
 #include "../../objects.h"
 
-#include "../../ZoneClient.h"
+#include "../../ZoneClientSession.h"
 
 
 IntangibleObjectImplementation::IntangibleObjectImplementation(SceneObject* container, uint32 objCRC, uint64 id) : IntangibleObjectServant(id, INTANGIBLE) {
@@ -71,7 +71,7 @@ IntangibleObjectImplementation::~IntangibleObjectImplementation() {
 }
 
 void IntangibleObjectImplementation::sendTo(Player* player, bool doClose) {
-	ZoneClient* client = player->getClient();
+	ZoneClientSession* client = player->getClient();
 	if (client == NULL)
 		return;
 

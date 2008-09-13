@@ -42,62 +42,104 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef ZONECLIENTIMPLEMENTATION_H_
-#define ZONECLIENTIMPLEMENTATION_H_
+#include "ZoneServer.h"
 
-#include "engine/engine.h"
+#include "Zone.h"
 
-//class ZoneClient;
+#include "ZoneClientSession.h"
+#include "ZoneClientSessionImplementation.h"
 
 #include "objects/player/Player.h"
 
-#include "ZoneClient.h"
+ZoneClientSessionImplementation::ZoneClientSessionImplementation(DatagramServiceThread* serv, Socket* sock, SocketAddress* addr) 
+		: BaseClientProxy(sock, *addr), ZoneClientSessionServant() {
+	init(serv);
 
-class ZoneClientImplementation : public BaseClientProxy, public ZoneClientServant {
-	ManagedReference<Player> player;
-	
-	uint32 sessionKey;
-	
-	bool disconnecting;
-	
-public:
-	ZoneClientImplementation(DatagramServiceThread* serv, Socket* sock, SocketAddress* addr);
+	player = NULL;
+	sessionKey = 0;
 		
-	virtual ~ZoneClientImplementation();
-	
-	void sendMessage(BaseMessage* msg) {
-		BaseClientProxy::sendPacket((BasePacket*) msg);
-	}
+	disconnecting = false;
 
-	void sendMessage(StandaloneBaseMessage* msg) {
-		BaseClientProxy::sendPacket((BasePacket*) msg);
-	}
-	
-	void disconnect();
-	void disconnect(bool doLock);
-	
-	void closeConnection(bool doLock = true);
+	stringstream loggingname;
+	loggingname << "ZoneClientSession " << addr->getFullIPAddress();
 
-	void acquire();
-	
-	void release();
-	
-	// setters and getters
-	void setPlayer(Player* p) {
-		player = p;
-	}
+	setLoggingName(loggingname.str());
+	setLogging(false);
+}
 
-	void setSessionKey(uint32 key) {
-		sessionKey = key;
-	}
+ZoneClientSessionImplementation::~ZoneClientSessionImplementation() {
+	player = NULL;
+}
 
-	Player* getPlayer() {
-		return player;
+void ZoneClientSessionImplementation::disconnect() {
+	BaseClient::disconnect();
+}
+
+void ZoneClientSessionImplementation::disconnect(bool doLock) {
+	lock(doLock);
+	
+	if (disconnecting) {
+		unlock(doLock);
+		return;
 	}
 	
-	uint32 getSessionKey() {
-		return sessionKey;
-	}
-};
+	disconnecting = true;
+	
+	if (hasError || !clientDisconnected) {
+		if (player != NULL) {
+			unlock();
+			
+			player->disconnect(false, true);
+			
+			lock();
+		}
+		
+		closeConnection(false);
+	} else if (player != NULL) {
+		unlock();
 
-#endif /*ZONECLIENTIMPLEMENTATION_H_*/
+		player->logout();
+
+		lock();
+	}
+	
+	unlock(doLock);
+}
+
+void ZoneClientSessionImplementation::closeConnection(bool doLock) {
+	try {
+		lock(doLock);
+
+		info("disconnecting client \'" + ip + "\'");
+		
+		ZoneServer* server = NULL;
+		
+		if (player != NULL) {
+		 	if (player->getZone() != NULL)
+				server = player->getZone()->getZoneServer();
+
+			player->setClient(NULL);
+			
+			player = NULL;
+		}
+
+		BaseClient::disconnect(false);
+		
+		if (server != NULL) {
+			server->addTotalSentPacket(getSentPacketCount());
+			server->addTotalResentPacket(getResentPacketCount());
+		}
+		
+		unlock(doLock);
+	} catch (...) {
+		unlock(doLock);
+	}
+}
+
+void ZoneClientSessionImplementation::acquire() {
+	_this->acquire();
+}
+
+void ZoneClientSessionImplementation::release() {
+	_this->release();
+}
