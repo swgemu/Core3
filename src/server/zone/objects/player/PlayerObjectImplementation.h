@@ -92,6 +92,8 @@ class PlayerObjectImplementation : public PlayerObjectServant {
 	FriendsList* friendsList;
 	IgnoreList* ignoreList;
 
+	uint32 guildPermissionsBitmask;
+	
 	uint32 adminLevel;
 
 public:

@@ -44,13 +44,18 @@ which carries forward this exception.
 
 #include "SuiManager.h"
 
-#include "../../objects.h"
+#include "../../objects/player/sui/messagebox/SuiMessageBox.h"
 #include "../../objects/player/sui/colorpicker/SuiColorPicker.h"
+
+#include "../radial/RadialManager.h"
+
+#include "../../ZoneProcessServerImplementation.h"
+#include "../../objects.h"
 
 #include "../item/ItemManager.h"
 #include "../../objects/creature/bluefrog/BlueFrogVector.h"
 
-#include "../../ZoneProcessServerImplementation.h"
+#include "../../../login/packets/ErrorMessage.h"
 
 SuiManager::SuiManager(ZoneProcessServerImplementation* serv) : Logger("SuiManager") {
 	server = serv;
@@ -61,8 +66,12 @@ SuiManager::SuiManager(ZoneProcessServerImplementation* serv) : Logger("SuiManag
 
 void SuiManager::handleSuiEventNotification(uint32 boxID, Player* player, uint32 cancel, const string& value, const string& value2) {
 	uint16 type = (uint16) boxID;
-
 	int range;
+	string returnString;
+
+	server->lock();
+	GuildManager* pGuild = server->getGuildManager();
+	server->unlock();
 
 	switch (type) {
 	case 0xC057:
@@ -87,6 +96,60 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, Player* player, uint32
 		range = (atoi(value.c_str()) * 64) + 64;
 		handleSurveyToolRange(boxID, player, cancel, range);
 		break;
+	case 0x7270: // Guild creation InputBox #1 (Tag)
+		returnString = value;
+		pGuild->handleGuildTag(boxID, player, cancel, returnString);
+		if (!cancel)
+			pGuild->handleGuildName(boxID, player, cancel, returnString);
+		break;
+	case 0x7271: // Guild creation InputBox #2 (name)
+		returnString = value;
+		pGuild->handleGuildName(boxID, player, cancel, returnString);
+		break;
+	case 0x7272: // Guild Sponsoring Member InputBox (name)
+		returnString = value;
+		pGuild->handleGuildSponsor(boxID, player, cancel, returnString);
+		break;
+	case 0x7273: // Verify Messagebox Guild Sponsoring Target
+		pGuild->handleVerifyBoxSponsorTargetforGuildMembership(boxID, player, cancel);
+		break;
+	case 0x7274: // Sponsored guild member box
+		pGuild->handleSponsoredGuildMembersBox(boxID, player, cancel, atoi(value.c_str()));
+		break;
+	case 0x7275: // Sponsored guild member accept/decline box
+		pGuild->handleSponsoredGuildMembersAcceptBox(boxID, player, cancel, atoi(value.c_str()));
+		break;
+	case 0x7277: // Disband guild verify box
+		returnString = value;
+		pGuild->handleGuildDisbandBox(boxID, player, cancel, returnString);
+		break;
+	case 0x7278: // Namechange guild (Tag box)
+		returnString = value;
+		pGuild->handleGuildNameChange(boxID, player, cancel, returnString);
+		break;
+	case 0x7279: // Namechange guild (Tag box)
+		returnString = value;
+		pGuild->handleGuildNameChangeName(boxID, player, cancel, returnString);
+		break;
+	case 0x7280: // Guild Information - Members
+		pGuild->handleGuildInformationMembersBox(boxID, player, cancel, atoi(value.c_str()));
+		break;
+	case 0x7281: // Guild Information - Member options
+		pGuild->handleGuildMemberOptions(boxID, player, cancel, atoi(value.c_str()));
+		break;
+	case 0x7282: // Guild member permissions
+		pGuild->handleGuildPermissionSelection(boxID, player, cancel, atoi(value.c_str()));
+		break;
+	case 0x7283: // Guild remove from guild exec
+		pGuild->execRemoveFromGuild(boxID, player, cancel);
+		break;
+	case 0x7284: // Guild Transfer-Leadership Name of Target SUI Box return
+		returnString = value;
+		pGuild->handleGuildTransferLeaderBox(boxID, player, cancel, returnString);
+		break;
+	case 0x7285: // Guild Transfer-Leadership Accept/Decline Box Return
+		pGuild->handleGuildTransferLeaderVerifyBox(boxID, player, cancel);
+		break;
 	case 0xAAAA:	// slice weapon
 		handleSliceWeapon(boxID, player, cancel, atoi(value.c_str()));
 		break;
@@ -104,24 +167,6 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, Player* player, uint32
 		break;
 	case 0xAFAF:
 		handleTicketCollectorRespones(boxID, player, cancel, atoi(value.c_str()));
-		break;
-	case 0x7280:   // Generate security code for Redeed
-		handleCodeForRedeed(boxID, player, cancel, value.c_str());
-		break;
-	case 0x7281:   // Redeed or Destroy Structure
-		handleRedeedStructure(boxID, player, cancel, atoi(value.c_str()));
-		break;
-	case 0x7282:   // Refresh Status Listbox
-		handleRefreshStatusListBox(boxID, player, cancel, atoi(value.c_str()));
-		break;
-	case 0x7283:   // Set Object Name
-		handleSetObjectName(boxID, player, cancel, value.c_str());
-		break;
-	case 0x7284:	// Add Maintenance
-		handleAddMaintenance(boxID, player, cancel, value.c_str());
-		break;
-	case 0x7285:	// Add Energy
-		handleAddEnergy(boxID, player, cancel, value.c_str());
 		break;
 	case 0xBABE:
 		handleColorPicker(boxID, player, cancel, value);
@@ -142,8 +187,17 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, Player* player, uint32
 		handleDiagnose(boxID, player);
 		break;
 	default:
-		//error("Unknown SuiBoxNotification opcode");
-		break;
+		//Clean up players sui box:
+
+		player->wlock();
+
+		if (player->hasSuiBox(boxID)) {
+			SuiBox* sui = player->getSuiBox(boxID);
+			player->removeSuiBox(boxID);
+			sui->finalize();
+		}
+
+		player->unlock();
 	}
 }
 
@@ -199,16 +253,16 @@ void SuiManager::handleRedeedStructure(uint32 boxID, Player* player,
 		SuiBox* sui = player->getSuiBox(boxID);
 
 		if (sui->isInputBox() && cancel != 1) {
-			
-			
-			
+
+
+
 			Zone * zone = player->getZone();
 
 			SceneObject * scno = zone->lookupObject(player->getCurrentStructureID());
 
 			InstallationObject * inso = (InstallationObject *) scno;
 
-			if(extra == inso->getDestroyCode()){			
+			if(extra == inso->getDestroyCode()){
 				inso->handleMakeDeed(player);
 			}
 			else{
@@ -219,7 +273,7 @@ void SuiManager::handleRedeedStructure(uint32 boxID, Player* player,
 				player->addSuiBox(wrongCode);
 				player->sendMessage(wrongCode->generateMessage());
 			}
-				
+
 		}
 
 		player->removeSuiBox(boxID);
@@ -280,7 +334,7 @@ void SuiManager::handleRefreshStatusListBox(uint32 boxID, Player* player,
 void SuiManager::handleSetObjectName(uint32 boxID, Player* player,
 		uint32 cancel, const string& name) {
 	try {
-		
+
 		player->wlock();
 
 		if (!player->hasSuiBox(boxID)) {
@@ -296,16 +350,16 @@ void SuiManager::handleSetObjectName(uint32 boxID, Player* player,
 			SceneObject * scno = zone->lookupObject(player->getCurrentStructureID());
 
 			TangibleObject * tano = (TangibleObject *) tano;
-			
+
 			if(tano!= NULL)	{
-				
+
 				//tano->setTemplateName(name);
-				
+
 			}
-			
+
 			/*else {
 				BuildingObject * buio = (BuildingObject * ) obj;
-									
+
 				if(buio!= NULL)
 					buio->setName(unicode(name));
 			}*/
@@ -332,7 +386,7 @@ void SuiManager::handleSetObjectName(uint32 boxID, Player* player,
 void SuiManager::handleAddMaintenance(uint32 boxID, Player* player,
 		uint32 cancel, const string& newCashVal) {
 	try {
-		
+
 		player->wlock();
 
 		if (!player->hasSuiBox(boxID)) {
@@ -343,32 +397,32 @@ void SuiManager::handleAddMaintenance(uint32 boxID, Player* player,
 		SuiBox* sui = player->getSuiBox(boxID);
 
 		if (sui->isTransferBox() && cancel != 1) {
-			
+
 			Zone * zone = player->getZone();
 
 			SceneObject * scno = zone->lookupObject(player->getCurrentStructureID());
 
 			InstallationObject * inso = (InstallationObject *) scno;
-			
+
 			if(inso!= NULL && atoi(newCashVal.c_str()) != 0)	{
 				int maint = (player->getCashCredits() - atoi(newCashVal.c_str()));
-				
-				inso->addMaintenance(maint);			
+
+				inso->addMaintenance(maint);
 				player->subtractCashCredits(maint);
-				
+
 				stringstream report;
 				report << "You successfully make a payment of " << maint << " to "
 					<< inso->getName().c_str();
-				
+
 				player->sendSystemMessage(report.str());
-				
+
 			}
-			
+
 			/*else {
 				BuildingObject * buio = (BuildingObject * ) obj;
-									
+
 				if(buio!= NULL)
-					
+
 			}*/
 
 		}
@@ -392,7 +446,7 @@ void SuiManager::handleAddMaintenance(uint32 boxID, Player* player,
 void SuiManager::handleAddEnergy(uint32 boxID, Player* player,
 		uint32 cancel, const string& newEnergyVal) {
 	try {
-		
+
 		player->wlock();
 
 		if (!player->hasSuiBox(boxID)) {
@@ -403,32 +457,32 @@ void SuiManager::handleAddEnergy(uint32 boxID, Player* player,
 		SuiBox* sui = player->getSuiBox(boxID);
 
 		if (sui->isTransferBox() && cancel != 1) {
-			
+
 			Zone * zone = player->getZone();
 
 			SceneObject * scno = zone->lookupObject(player->getCurrentStructureID());
 
 			InstallationObject * inso = (InstallationObject *) scno;
-			
+
 			if(inso!= NULL)	{
 				uint energy = (inso->getEnergy() - atoi(newEnergyVal.c_str()));
-				
-				inso->addEnergy(energy);			
+
+				inso->addEnergy(energy);
 				//player->removeEnergy(energy);
-				
+
 				stringstream report;
 				report << "You successfully deposit " << energy << " units of energy.\n"
 					<< "Energy reserves now at " << inso->getEnergy() << " units.";
-				
+
 				player->sendSystemMessage(report.str());
-				
+
 			}
-			
+
 			/*else {
 				BuildingObject * buio = (BuildingObject * ) obj;
-									
+
 				if(buio!= NULL)
-					
+
 			}*/
 
 		}

@@ -1489,6 +1489,10 @@ void PlayerImplementation::notifySceneReady() {
 
 		playerObject->loadFriends();
 		playerObject->loadIgnore();
+
+		loadGuildChat();
+
+
 	} else {
 		//we need to reset the "magicnumber" for the internal friendlist due to clientbehaviour (Diff. Zoningservers SoE)
 		playerObject->friendsMagicNumberReset();
@@ -1502,6 +1506,15 @@ void PlayerImplementation::notifySceneReady() {
 
 	info("scene ready");
 	setOnline();
+}
+
+void PlayerImplementation::loadGuildChat() {
+	GroupManager* groupManager = server->getGroupManager();
+
+	if (groupManager)
+		groupManager->joinGuildGroup(_this);
+	else
+		error("Error: PlayerManagerImplementation::loadGuildChat() groupManager is null ");
 }
 
 void PlayerImplementation::sendSystemMessage(const string& message) {
@@ -3608,6 +3621,32 @@ void PlayerImplementation::toggleCharacterBit(uint32 bit) {
 		if (!playerObject->setCharacterBit(bit, true))
 			playerObject->clearCharacterBit(bit, true);
 	}
+}
+
+
+bool PlayerImplementation::setGuildPermissionsBit(uint32 bit, bool updateClient) {
+	if (!(guildPermissionsBitmask & bit)) {
+		guildPermissionsBitmask |= bit;
+
+		return true;
+
+	} else
+		return false;
+}
+
+bool PlayerImplementation::clearGuildPermissionsBit(uint32 bit, bool updateClient) {
+	if (guildPermissionsBitmask & bit) {
+		guildPermissionsBitmask &= ~bit;
+
+		return true;
+
+	} else
+		return false;
+}
+
+void PlayerImplementation::toggleGuildPermissionsBit(uint32 bit) {
+	if (!setGuildPermissionsBit(bit, true))
+		clearGuildPermissionsBit(bit, true);
 }
 
 bool PlayerImplementation::awardBadge(uint32 badgeindex) {

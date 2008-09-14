@@ -59,15 +59,55 @@ interface GuildManager {
 	
 	void load();
 
-	boolean createGuild(string tag, string name);
+	boolean createGuild(Player player, string tag, string name);
 
 	Guild getGuild(string tag, boolean doLock = true);
 	Guild getGuild(unsigned int gid, boolean doLock = true);
 	
-	boolean removeGuild(string tag);
-	boolean removeGuild(int gid, boolean doLock = true); 
+	boolean removeGuild(int gid); 
 	
 	void removePlayersFromGuild(int gid);
 	
 	GuildMap getGuildMap();
+	
+	void handleGuildTag(unsigned int boxID, Player player, unsigned int  cancel, string returnString);
+	void handleGuildName(unsigned int boxID, Player player, unsigned int cancel, string returnString);
+	void handleGuildCreationName(Player player);
+
+	void handleGuildSponsor(unsigned int boxID, Player player, unsigned int cancel, string returnString);
+
+	void handleVerifyBoxSponsorTargetforGuildMembership(unsigned int boxID, Player otherPlayer, unsigned int cancel);
+	void VerifyBoxSponsorTargetforGuildMembership(Player otherPlayer, string inviter, string guildname);
+	
+	void handleSponsoredGuildMembersBox(unsigned int boxID, Player player, unsigned int cancel, int index);
+	void handleSponsoredGuildMembersAcceptBox(unsigned int boxID, Player player, unsigned int cancel, int index);
+	
+	void removeFromGuild(Player player, Player removePlayer);
+	void execRemoveFromGuild(unsigned int boxID, Player player, unsigned int cancel);
+	
+	void handleGuildDisbandBox(unsigned int boxID, Player player, unsigned int cancel, string returnString);
+	void handleGuildNameChange(unsigned int boxID, Player player, unsigned int cancel, string returnString);
+	void handleGuildNameChangeName(unsigned int boxID, Player player, unsigned int cancel, string returnString);
+	
+	void handleGuildInformationMembers(Player player);
+	void handleGuildInformationMembersBox(unsigned int boxID, Player player, unsigned int cancel, int index);
+	
+	void handleGuildMemberOptions(unsigned int boxID, Player player, unsigned int cancel, int index);
+	
+	void handleRemoveFromGuild(Player player, string kickee);
+	
+	void callGuildPermissions(Player player, string proband);
+	void handleGuildPermissionSelection(unsigned int boxID, Player player, unsigned int cancel, int index);
+	
+	void declineSponsoring(string declinee,unsigned int inviteGuild, Player inviter);
+	
+	void handleGuildInfo(Player player);
+	
+	void handleGuildSponsoring(Player player);
+	
+	void handleGuildRenaming(Player player);
+	
+	void handleGuildTransferLeader(Player player);
+	void handleGuildTransferLeaderBox(unsigned int boxID, Player player, unsigned int cancel, string returnString);	
+	void handleGuildTransferLeaderVerifyBox(unsigned int boxID, Player player, unsigned int cancel);
 }

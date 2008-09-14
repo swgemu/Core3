@@ -44,6 +44,10 @@ which carries forward this exception.
 
 import "../player/Player";
 import "../../managers/guild/GuildManager";
+import "../../ZoneServer";
+import "../../../chat/room/ChatRoom";
+import "../../managers/player/PlayerMap";
+
 
 interface Guild {
 	Guild(unsigned int gid, const string name, const string tag);
@@ -57,7 +61,24 @@ interface Guild {
 	
 	unsigned int getGuildID();
 	
+	ChatRoom getGuildChat();
+	
+	void setGuildChat(ChatRoom guildchat);
+	
 	string getGuildName();
 	
+	void setGuildLeader(unsigned int guleader);
+	
+	unsigned int getGuildLeader();
+	
 	string getGuildTag();
+	
+	void setGuildName(const string nom);
+	void setGuildTag(const string nom);	
+	
+	void putSponsoredMap(const string nom);	
+	unsigned int getSponsoredMapSize();	
+	string getSponsoredMap(int i);	
+	void clearSponsoredMap();
+	
 }

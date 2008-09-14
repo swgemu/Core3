@@ -166,6 +166,10 @@ class PlayerImplementation : public PlayerServant {
 	CreatureObject* conversatingCreature;
 	SortedVector<ChatRoom*> chatRooms;
 
+
+	//guild permissions
+	uint32 guildPermissionsBitmask;
+
 	Badges badges;
 
 	float clonePositionX;
@@ -221,7 +225,8 @@ class PlayerImplementation : public PlayerServant {
 
 	// SuiEvents
 	VectorMap<uint32, SuiBox*> suiBoxes;
-	uint32 suiBoxNextID;
+	uint32 suiBoxNextID;	
+	string inputBoxReturnBuffer;
 
 	uint64 currentStructureID;
 
@@ -283,6 +288,15 @@ public:
 	static const int REBEL = 0x4000;
 	static const int COVERT = 0x8000;
 
+	//Guild permission statics
+	const static int GUILDMAIL = 1;
+	const static int GUILDSPONSOR = 2;
+	const static int GUILDTITLE = 4;
+	const static int GUILDKICK = 8;
+	const static int GUILDACCEPT = 16;
+	const static int GUILDWAR = 32;
+	const static int GUILDCHANGENAME = 64;
+	const static int GUILDDISBAND = 128;
 
 public:
 	PlayerImplementation();
@@ -517,6 +531,15 @@ public:
 	bool hasVerifiedTrade() {
 		return verifiedTrade;
 	}
+
+	void setInputBoxReturnBuffer(const string& message) {
+		inputBoxReturnBuffer = message;
+	}
+
+	inline string& getInputBoxReturnBuffer() {
+		return inputBoxReturnBuffer;
+	}
+
 
 
 
@@ -972,7 +995,22 @@ public:
 
 	bool updateGuild(uint32 gid);
 	void updateGuild(Guild* guild);
+	void loadGuildChat();
 
+	void toggleGuildPermissionsBit(uint32 bit);
+
+	void setGuildPermissions(uint32 bit) {
+		guildPermissionsBitmask = bit;
+	}
+
+	uint32 getGuildPermissions() {
+		return guildPermissionsBitmask;
+	}
+
+	bool setGuildPermissionsBit(uint32 bit, bool updateClient = false);
+	bool clearGuildPermissionsBit(uint32 bit, bool updateClient = false);
+
+	//Chat
 	void addChatRoom(ChatRoom* room) {
 		chatRooms.put(room);
 	}

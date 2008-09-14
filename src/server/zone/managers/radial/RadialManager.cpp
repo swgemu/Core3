@@ -53,11 +53,16 @@ which carries forward this exception.
 #include "../../objects/player/sui/listbox/SuiListBoxImplementation.h"
 #include "../../objects/player/sui/colorpicker/SuiColorPickerImplementation.h"
 #include "../../objects/player/sui/banktransferbox/SuiBankTransferBoxImplementation.h"
+#include "../../objects/player/sui/inputbox/SuiInputBoxImplementation.h"
 
 #include "../bazaar/BazaarManager.h"
 #include "../bazaar/BazaarManagerImplementation.h"
 #include "../bank/BankManager.h"
 #include "../bank/BankManagerImplementation.h"
+
+#include "../guild/GuildManagerImplementation.h"
+
+
 
 RadialManager::RadialManager() {
 }
@@ -156,7 +161,7 @@ void RadialManager::handleRadialSelect(Player* player, Packet* pack) {
 		handleSelection(radialID, player, obj);
 
 	} catch (...) {
-		cout << "unreported exception on ZonePacketHandler:::handleUseItem(Message* pack)\n";
+		cout << "unreported exception in void RadialManager::handleRadialSelect(Player* player, Packet* pack)\n";
 		player->unlock();
 	}
 }
@@ -249,18 +254,54 @@ void RadialManager::handleSelection(int radialID, Player* player, SceneObject* o
 	case 148: // Harvest
 		handleHarvest(player, obj, 0);
 		break;
-	case 187: // SERVER_GUILD_INFO
-		break;
+	case 187: // SERVER_GUILD_INFORMATION
+		player->unlock();
+		handleGuildInformation(player);
+		return;
 	case 188: // SERVER_GUILD_MEMBERS
-		break;
+		player->unlock();
+		handleGuildInformationMembers(player);
+		return;
 	case 190: // SERVER_GUILD_ENEMIES
-		break;
+		player->unlock();
+		cout << "Radial Guild Enemies" << endl;
+		return;
 	case 194: // SERVER_GUILD_GUILD_MANAGEMENT
+		//nothing, has sub menues
 		break;
 	case 195: // SERVER_GUILD_MEMBER_MANAGEMENT
+		//nothing, has sub menues
 		break;
+	case 196: // SERVER_GUILD_CREATION
+		player->unlock();
+		handleGuildCreationTag(player);
+		return;
+	case 197: // SERVER_GUILD_SPONSOR
+		player->unlock();
+		handleGuildSponsor(player);
+		return;
+	case 198: // SERVER_GUILD_SPONSORED
+		player->unlock();
+		handleGuildSponsored(player);
+		return;
+	case 199: // SERVER_GUILD_DISBAND
+		player->unlock();
+		handleGuildDisband(player);
+		return;
+	case 200: // SERVER_GUILD_NAMECHANGE
+		player->unlock();
+		handleGuildNameChange(player);
+		return;
+	case 201: // SERVER_GUILD_ENABLE/DISBALE_ELECTIONS
+		player->sendSystemMessage("This feature is not in yet. Thank you for choosing SWGEmu(c).");
+		player->unlock();
+		return;
+	case 202: // SERVER_GUILD_TRANSFER_LEADERSHIP
+		player->unlock();
+		handleGuildTransferLeader(player);
+		return;
 	default:
-		//cout << "Unkown radial selection received:" << radialID << "\n";
+		//cout << "Unknown radial selection received:" << radialID << "\n";
 		break;
 	}
 
@@ -732,4 +773,130 @@ void RadialManager::handleHarvest(Player* player, SceneObject* obj, int type) {
 	resourceManager->harvestOrganics(player, creature, type);
 }
 
+void RadialManager::handleGuildCreationTag(Player* player) {
+	if (player->hasSuiBoxType(0x7270) || player->hasSuiBoxType(0x7271))
+		return;
+
+	player->setInputBoxReturnBuffer("");
+
+	SuiInputBox* suiInpBox = new SuiInputBox(player, 0x7270, 0);
+
+	suiInpBox->setPromptTitle("@guild:create_abbrev_title");
+	suiInpBox->setPromptText("@guild:create_abbrev_prompt");
+	suiInpBox->setCancelButton(true);
+
+	player->addSuiBox(suiInpBox);
+	player->sendMessage(suiInpBox->generateMessage());
+
+}
+
+void RadialManager::handleGuildSponsor(Player* player) {
+	if (player->hasSuiBoxType(0x7272))
+		return;
+
+	if ( ! ( ( player->getGuildPermissions() ) & (PlayerImplementation::GUILDSPONSOR) ) ) {
+		player->sendSystemMessage("@guild:generic_fail_no_permission");
+		return;
+	}
+
+	player->setInputBoxReturnBuffer("");
+
+	SuiInputBox* suiInpBox = new SuiInputBox(player, 0x7272, 0);
+
+	suiInpBox->setPromptTitle("@guild:sponsor_title");
+	suiInpBox->setPromptText("@guild:sponsor_prompt");
+	suiInpBox->setCancelButton(true);
+
+	player->addSuiBox(suiInpBox);
+	player->sendMessage(suiInpBox->generateMessage());
+}
+
+void RadialManager::handleGuildSponsored(Player* player) {
+
+	Zone* zone = player->getZone();
+	if (zone == NULL)
+		return;
+
+	GuildManager* gm = zone->getZoneServer()->getGuildManager();
+	if (gm == NULL)
+		return;
+
+	gm->handleGuildSponsoring(player);
+}
+
+void RadialManager::handleGuildInformation(Player* player) {
+	Zone* zone = player->getZone();
+	if (zone == NULL)
+		return;
+
+	GuildManager* gm = zone->getZoneServer()->getGuildManager();
+	if (gm == NULL)
+		return;
+
+	gm->handleGuildInfo(player);
+}
+
+void RadialManager::handleGuildDisband(Player* player) {
+	if ( ! ( ( player->getGuildPermissions() ) & (PlayerImplementation::GUILDDISBAND) ) ) {
+		player->sendSystemMessage("@guild:generic_fail_no_permission");
+		return;
+	}
+
+	SuiInputBox* suiInpBox = new SuiInputBox(player, 0x7277, 0);
+
+	stringstream prompt;
+	prompt << "@guild:disband_prompt " << endl << endl << "To confirm the disbanding of your guild, "
+		<< "please type the following in the area below, then press Ok:" << endl << endl << "disband guild" << endl;
+
+	suiInpBox->setPromptTitle("@guild:disband_title");
+	suiInpBox->setPromptText(prompt.str());
+	suiInpBox->setCancelButton(true);
+
+	player->addSuiBox(suiInpBox);
+	player->sendMessage(suiInpBox->generateMessage());
+
+}
+
+void RadialManager::handleGuildNameChange(Player* player) {
+	if ( ! ( ( player->getGuildPermissions() ) & (PlayerImplementation::GUILDCHANGENAME) ) ) {
+		player->sendSystemMessage("@guild:generic_fail_no_permission");
+		return;
+	}
+
+	Zone* zone = player->getZone();
+	if (zone == NULL)
+		return;
+
+	GuildManager* gm = zone->getZoneServer()->getGuildManager();
+	if (gm == NULL)
+		return;
+
+	gm->handleGuildRenaming(player);
+
+}
+
+void RadialManager::handleGuildInformationMembers(Player* player) {
+	Zone* zone = player->getZone();
+	if (zone == NULL)
+		return; //can never happen?
+
+	GuildManager* pGuild = zone->getZoneServer()->getGuildManager();
+	if (pGuild == NULL)
+		return;
+
+	pGuild->handleGuildInformationMembers(player);
+}
+
+void RadialManager::handleGuildTransferLeader(Player* player) {
+	Zone* zone = player->getZone();
+	if (zone == NULL)
+		return; //can never happen?
+
+	GuildManager* pGuild = zone->getZoneServer()->getGuildManager();
+	if (pGuild == NULL)
+		return;
+
+	pGuild->handleGuildTransferLeader(player);
+
+}
 

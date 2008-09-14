@@ -56,7 +56,6 @@ import "../waypoint/WaypointObject";
 import "../../managers/player/PlayerManager";
 
 
-
 interface PlayerObject implements SceneObject {
 	PlayerObject(Player player) {
 		super(unsigned long oid, int type);

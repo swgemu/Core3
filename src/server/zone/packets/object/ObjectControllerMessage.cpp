@@ -338,12 +338,17 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 	 player->info(msg.str());*/
 
 	ChatManager* chatManager;
-
 	CombatManager* combatManager = serv->getCombatManager();
+	GuildManager* pGuild = serv->getGuildManager();
 
 	// CommandQueueAction* action; - not used anymore?
 
 	switch (actionCRC) {
+	case (0x1E0B1E43): //guildremove
+		player->clearQueueAction(actioncntr);
+		handleRemoveFromGuild(player, pack, serv);
+		break;
+
 	case (0x124629F2): // Meditating
 		if (player->getMeditate()) {
 			player->sendSystemMessage("jedi_spam", "already_in_meditative_state");
@@ -651,12 +656,15 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 		parseGroupMakeLeader(player, pack, serv->getGroupManager());
 		break;
 	case (0x68851C4F): // groupchat
+	case (0x0315D6D9): // g
+	case (0x3CDFF0CC): // gsay
 		chatManager = player->getZone()->getChatManager();
 		chatManager->handleGroupChat(player, pack);
 		break;
-	case (0x0315D6D9): // g
+	case (0x79DEB176): // guild (chat)
+	case (0x47948A6D): //guildsay
 		chatManager = player->getZone()->getChatManager();
-		chatManager->handleGroupChat(player, pack);
+		chatManager->handleGuildChat(player, pack);
 		break;
 	case (0xE007BF31): // mount
 		parseMount(player, pack);
@@ -3457,8 +3465,26 @@ void ObjectControllerMessage::parseHarvestOrganics(Player* player, Message* pack
 
 }
 
+void ObjectControllerMessage::handleRemoveFromGuild(Player* player, Message* pack, ZoneProcessServerImplementation* serv) {
+	//player is prelocked from ZonePacketHandler
+	uint64 objectid = pack->parseLong();
 
+	SceneObject* object = player->getZone()->lookupObject(objectid);
 
+	if (object == NULL)
+		return;
 
+	Player* removePlayer = NULL;
 
+	if (object->isPlayer())
+		removePlayer = (Player*) object;
+	else
+		return;
+
+	GuildManager* pGuild = serv->getGuildManager();
+
+	player->unlock();
+	pGuild->removeFromGuild(player, removePlayer);
+	player->wlock();
+}
 
