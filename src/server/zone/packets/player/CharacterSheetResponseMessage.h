@@ -53,21 +53,29 @@ public:
 		insertShort(0x0D);
 		insertInt(0x9B3A17C4);  // CRC
      
-		insertLong(0); //??
-		insertLong(0); //??
-		insertLong(0); //??
-		insertLong(0); //??
-		insertShort(0); //??
-		
-		insertAscii("tatooine"); //Bank Location
-		insertFloat(1337.0f); //X
-		insertFloat(1337.0f); //Y
-		insertFloat(1337.0f); //Z
-		insertAscii("tatooine"); //Home Planet
 		insertInt(0); //??
+		insertInt(0); //??
+		
+		insertFloat(0); //Bind Location X
+		insertFloat(0); //Bind Location Y
+		insertFloat(0); //Bind Location Z
+		insertAscii(""); //Bind Planet
+		
+		insertFloat(0); //Bank Location X
+		insertFloat(0); //Bank Location Y
+		insertFloat(0); //Bank Location Z
+		insertAscii("tatooine"); //Bank Planet
+		
+		insertFloat(1337.0f); //Home Location X
+		insertFloat(1337.0f); //Home Location Y
+		insertFloat(1337.0f); //Home Location Z
+		insertAscii("tatooine"); //Home Planet
+		
+		insertUnicode(""); //Spouse Name
 		insertInt(4); //Lots Remaining
-		insertInt(0); //?? Could be a long
-		insertInt(0); //?? Could be long with ^
+		
+		insertInt(0); //Faction CRC (or hashCode?)
+		insertInt(0); //Faction Status
 	}
 	
 };
