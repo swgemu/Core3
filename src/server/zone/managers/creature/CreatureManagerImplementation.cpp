@@ -56,6 +56,8 @@ which carries forward this exception.
 #include "../../objects/creature/trainer/TrainerCreature.h"
 #include "../../objects/creature/recruiter/RecruiterCreature.h"
 #include "../../objects/creature/shuttle/ShuttleCreature.h"
+#include "../../objects/creature/Action/ActionCreature.h"
+#include "../../objects/creature/action/Action.h"
 
 #include "../../objects/creature/CreatureGroup.h"
 
@@ -128,6 +130,7 @@ void CreatureManagerImplementation::loadCreatures() {
 	loadRecruiters();
 	loadStaticCreatures();
 	loadBlueFrogs();
+	loadMissionCreatures();
 }
 
 void CreatureManagerImplementation::run() {
@@ -243,6 +246,53 @@ void CreatureManagerImplementation::loadTrainers() {
 	}
 }
 
+void CreatureManagerImplementation::loadMissionCreatures() {
+	//temporary to work with hardcode missions
+	/*
+	if (zone->getZoneID() == 5) {
+		string name = "MAN O' ACTION";
+		string stf = "";
+		ActionCreature* tac;
+		tac = spawnActionCreature(name, stf, 0x8C73B91, "testM27", -4844.0f, 4155.0f, -.0339502, .999424);
+		
+		int actmsk;
+		actmsk |= ActionImplementation::TYPE_CONVERSE;
+		Action* act = new Action((SceneObject*)tac, actmsk, 0);
+		string scrnId = "0";
+		string leftBox = "Do you have...it?";
+		string Options = "Yes, here.|The weather is quite nice!|No, sorry I forgot."; //separate by |
+		string optLink = "1,none|2,none|ENDCNV,none"; //separate by | (nextScreenID,actionKey)
+		act->addConvoScreen(scrnId, leftBox, 3, Options, optLink);
+		
+		//Converstaion window in response to Yes, Here:
+		scrnId = "1";
+		leftBox = "Cool you have it? Give it to me!";
+		Options = "Here|No, bye.";
+		optLink = "EXECACTION,finm27|ENDCNV,none";
+		act->addConvoScreen(scrnId, leftBox, 1, Options, optLink);
+		
+		//Conversation window in response to weather:
+		scrnId = "2";
+		leftBox = "Yea the weather is pretty nice..";
+		Options = "Bye.";
+		optLink = "ENDCNV,none";
+		act->addConvoScreen(scrnId, leftBox, 1, Options, optLink);
+
+		string actionKey = "KEYA";
+		tac->addAction(actionKey, act);
+		tac->onConverse(actionKey); //link onConverse to action "KEYA"
+		
+		//Complete Mission Key:
+		actmsk = 0;
+		actmsk |= ActionImplementation::TYPE_TAKEITEM;
+		actmsk |= ActionImplementation::TYPE_COMPMISSION;
+		Action* act2 = new Action((SceneObject*)tac, actmsk, 0);
+
+		actionKey = "finm27";
+		tac->addAction(actionKey, act2);
+	}*/
+}
+
 void CreatureManagerImplementation::loadStaticCreatures() {
 }
 
@@ -284,6 +334,36 @@ CreatureGroup* CreatureManagerImplementation::spawnCreatureGroup(int count, cons
 	}
 }
 */
+
+ActionCreature* CreatureManagerImplementation::spawnActionCreature(string& name, string& stfname, uint32 objCrc, string misoKey, float x, float y, float oY, float oW, uint64 cellid, bool doLock) {
+	try {
+		lock(doLock);
+
+		ActionCreature* actCr = new ActionCreature(getNextCreatureID(), objCrc, name, stfname, misoKey, server->getMissionManager());
+
+		actCr->setTerrainName(Terrain::getTerrainName(zone->getZoneID()));
+
+		actCr->setHeight(1.0f);
+		actCr->initializePosition(x, 0, y);
+		actCr->setParent(instance->getZone()->lookupObject(cellid));
+		actCr->setDirection(0, 0, oY, oW);
+		actCr->setPvpStatusBitmask(0);
+
+		load(actCr);
+
+		actCr->insertToZone(zone);
+
+		creatureMap->put(actCr->getObjectID(), actCr);
+
+		unlock(doLock);
+		return actCr;
+	} catch (...) {
+		error("unreported Exception caught on spawnActionCreature()");
+
+		unlock(doLock);
+		return NULL;
+	}
+}
 
 BlueFrogCreature* CreatureManagerImplementation::spawnBlueFrog(float x, float y, float oY, float oW, int type, uint64 cellid, bool doLock) {
 	try {

@@ -124,6 +124,7 @@ public:
 	const static int SHUTTLE = 3;
 	const static int RECRUITER = 3;
 	const static int MOUNT = 4;
+	const static int ACTION = 5;
 
 	const static int ACTIVE = 1;
 	const static int INACTIVE = 2;
@@ -295,6 +296,10 @@ public:
 
 	inline bool isMount() {
 		return type == MOUNT;
+	}
+	
+	inline bool isActionCreature() {
+		return type == ACTION;
 	}
 
 	inline bool isInActiveState() {

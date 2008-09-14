@@ -79,6 +79,8 @@ public:
 
 	bool isMount();
 
+	bool isActionCreature();
+
 	string& getName();
 
 	int getZoneIndex();
@@ -184,6 +186,8 @@ public:
 	bool isRecruiter();
 
 	bool isMount();
+
+	bool isActionCreature();
 
 	string& getName();
 

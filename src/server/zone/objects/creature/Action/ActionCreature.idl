@@ -42,82 +42,38 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef STRINGLIST_H_
-#define STRINGLIST_H_
+import "Action";
 
-#include "ObjectControllerMessage.h"
+import "../../../managers/mission/MissionManager";
 
-class StringList : public ObjectControllerMessage {
-	uint8 optionCount;
-	
-public:
-	
-	StringList(CreatureObject* creo) : ObjectControllerMessage(creo->getObjectID(), 0x0B, 0xE0) {
-		optionCount = 0;
-		insertByte(0);
+import "../../scene/SceneObject";
+
+import "../../player/Player";
+
+import "../Creature";
+
+interface ActionCreature implements Creature {
+
+	ActionCreature(unsigned long oid, unsigned int objCrc, string creName, string stf, string missionKey, MissionManager mMgr = NULL) {
+		super(oid);
 	}
 	
-	void insertOption(const string& file, const string& str) {
-		
-		int size = 0x56 + file.size() + str.size();
-		bool odd = (size & 1);
-		
-		if (odd)
-			insertInt((size + 1) / 2);
-		else 
-			insertInt(size / 2);
-
-		insertShort(0);
-		insertShort(0);
-		insertByte(1);
-		insertInt(0xFFFFFFFF);
-		
-		insertAscii(file.c_str());
-		insertInt(0);
-		insertAscii(str.c_str());
-		
-		insertLong(0);
-		insertAscii("");
-		insertInt(0);
-		insertAscii("");
-		insertInt(0);
-		
-		insertLong(0);
-		insertAscii("");
-		insertInt(0);
-		insertAscii("");
-		insertInt(0);
-		
-		insertLong(0);
-		insertAscii("");
-		insertInt(0);
-		insertAscii("");
-		insertInt(0);
-		
-		insertInt(0);
-		insertInt(0);
-		insertByte(0);
-
-		if (odd)
-			insertByte(0);
-
-		updateOptionCount();
-	}
+	//Action List Manip
+	void addAction(string key, Action act);
+	Action getAction(string key);
 	
-	void insertOption(string& option) {
-		insertUnicode(unicode(option));
-		updateOptionCount();
-	}
-		
-	void insertOption(unicode& option) {
-		insertUnicode(option);
-		updateOptionCount();		
-	}
+	//Triggers: If an action key is passed, the action will be called when the trigger is pulled
+	void onConverse(string tco, Player player = NULL);
+	void onTrade(string ttr);
+	void onAttack(string tat);
+	void onDeath(string tde);
 	
-	void updateOptionCount() {
-		insertByte(30, ++optionCount);
-	}
+	//Mission Specific:
+	boolean isMissionNpc(); //Returns true if NPC has a mission assigned to it.
+	string getMissionKey();
+	MissionManager getMisoMgr();
 	
-};
-
-#endif
+	//Conversation Specific:
+	void sendConversationStartTo(SceneObject obj);
+	void selectConversationOption(int option, SceneObject obj);
+}

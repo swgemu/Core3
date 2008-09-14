@@ -73,6 +73,8 @@ void MissionObjectImplementation::init() {
 	dbKey = "";
 
 	terminalMask = 0;
+	
+	deliverItem = NULL;
 
 	//MISO3:
 	typeStr = ""; //3

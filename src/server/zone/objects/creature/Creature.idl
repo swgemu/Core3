@@ -112,6 +112,7 @@ interface Creature implements CreatureObject {
 	boolean isTrainer();
 	boolean isRecruiter();
 	boolean isMount();
+	boolean isActionCreature();
 
 	string getName();
 

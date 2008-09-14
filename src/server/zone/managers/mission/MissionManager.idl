@@ -42,82 +42,46 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef STRINGLIST_H_
-#define STRINGLIST_H_
+import "../../objects/player/Player";
+import "../../objects/mission/MissionObject";
+import "../../objects/tangible/TangibleObject";
 
-#include "ObjectControllerMessage.h"
+import "server/zone/ZoneServer";
+include "server/zone/ZoneProcessServerImplementation";
 
-class StringList : public ObjectControllerMessage {
-	uint8 optionCount;
-	
-public:
-	
-	StringList(CreatureObject* creo) : ObjectControllerMessage(creo->getObjectID(), 0x0B, 0xE0) {
-		optionCount = 0;
-		insertByte(0);
+interface MissionManager {
+	MissionManager(ZoneServer zs, ZoneProcessServerImplementation ps) {
+		super(zs, ps);
 	}
 	
-	void insertOption(const string& file, const string& str) {
-		
-		int size = 0x56 + file.size() + str.size();
-		bool odd = (size & 1);
-		
-		if (odd)
-			insertInt((size + 1) / 2);
-		else 
-			insertInt(size / 2);
-
-		insertShort(0);
-		insertShort(0);
-		insertByte(1);
-		insertInt(0xFFFFFFFF);
-		
-		insertAscii(file.c_str());
-		insertInt(0);
-		insertAscii(str.c_str());
-		
-		insertLong(0);
-		insertAscii("");
-		insertInt(0);
-		insertAscii("");
-		insertInt(0);
-		
-		insertLong(0);
-		insertAscii("");
-		insertInt(0);
-		insertAscii("");
-		insertInt(0);
-		
-		insertLong(0);
-		insertAscii("");
-		insertInt(0);
-		insertAscii("");
-		insertInt(0);
-		
-		insertInt(0);
-		insertInt(0);
-		insertByte(0);
-
-		if (odd)
-			insertByte(0);
-
-		updateOptionCount();
-	}
+	void init();
+	void unloadManager();
+	void removeMissions();
 	
-	void insertOption(string& option) {
-		insertUnicode(unicode(option));
-		updateOptionCount();
-	}
-		
-	void insertOption(unicode& option) {
-		insertUnicode(option);
-		updateOptionCount();		
-	}
+	// creation methods
+	MissionObject poolMission(string dbKey, int termMask, const string typeStr, unsigned int descKey, unsigned int titleKey, unsigned int diffLv, float destX, 
+			float destY, unsigned int destPlanetCrc, const string creatorName, unsigned int rewardAmount, float targetX, float targetY, unsigned int targetPlanetCrc, 
+			unsigned int depictedObjCrc, const string descriptionStf, const string titleStf, unsigned int typeCrc, TangibleObject deliverItem = NULL, boolean doLock = true);
 	
-	void updateOptionCount() {
-		insertByte(30, ++optionCount);
-	}
+	//Test
+	void setupHardcodeMissions();
 	
-};
+	//data setup
+	void sendTerminalData(Player player, int termBitmask, boolean doLock = true);
+	void sendMission(Player player, string tKey, boolean doLock = true);
+	
+	//events
+	void doMissionAccept(Player player, unsigned long oid, boolean doLock = true);
+	void doMissionComplete(Player player, string tKey);
+	void doMissionAbort(Player player, unsigned long oid, boolean doLock = true);
+	void doMissionAbort(Player player, string tKey, boolean doLock = true);
+	
+	
+	//Completely remove the mission from the server:
+	void removeMisoFromPool(MissionObject miso, boolean doLock = true);
 
-#endif
+	//script methods
+	void loadMissionScripts();
+	void registerFunctions();
+	void registerGlobals();
+}

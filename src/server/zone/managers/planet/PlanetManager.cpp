@@ -16,6 +16,8 @@
 
 #include "../../objects/building/cell/CellObject.h"
 
+#include "../../objects/tangible/terminal/mission/MissionTerminal.h"
+
 /*
  *	PlanetManagerStub
  */
@@ -172,12 +174,25 @@ BuildingObject* PlanetManager::getBuilding(unsigned long long id) {
 		return ((PlanetManagerImplementation*) _impl)->getBuilding(id);
 }
 
-unsigned long long PlanetManager::getLandingTime() {
+MissionTerminal* PlanetManager::getMissionTerminal(unsigned long long oid) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 17);
+		method.addUnsignedLongParameter(oid);
+
+		return (MissionTerminal*) method.executeWithObjectReturn();
+	} else
+		return ((PlanetManagerImplementation*) _impl)->getMissionTerminal(oid);
+}
+
+unsigned long long PlanetManager::getLandingTime() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 18);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -189,7 +204,7 @@ void PlanetManager::placePlayerStructure(Player* player, unsigned long long obje
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 19);
 		method.addObjectParameter(player);
 		method.addUnsignedLongParameter(objectID);
 		method.addFloatParameter(x);
@@ -206,7 +221,7 @@ unsigned int PlanetManager::getTravelFare(string& departurePlanet, string& arriv
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, 20);
 		method.addAsciiParameter(departurePlanet);
 		method.addAsciiParameter(arrivalPlanet);
 
@@ -260,12 +275,15 @@ Packet* PlanetManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		resp->insertLong(getBuilding(inv->getUnsignedLongParameter())->_getObjectID());
 		break;
 	case 17:
-		resp->insertLong(getLandingTime());
+		resp->insertLong(getMissionTerminal(inv->getUnsignedLongParameter())->_getObjectID());
 		break;
 	case 18:
-		placePlayerStructure((Player*) inv->getObjectParameter(), inv->getUnsignedLongParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getSignedIntParameter());
+		resp->insertLong(getLandingTime());
 		break;
 	case 19:
+		placePlayerStructure((Player*) inv->getObjectParameter(), inv->getUnsignedLongParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getSignedIntParameter());
+		break;
+	case 20:
 		resp->insertInt(getTravelFare(inv->getAsciiParameter(_param0_getTravelFare__string_string_), inv->getAsciiParameter(_param1_getTravelFare__string_string_)));
 		break;
 	default:
@@ -317,6 +335,10 @@ CellObject* PlanetManagerAdapter::getCell(unsigned long long id) {
 
 BuildingObject* PlanetManagerAdapter::getBuilding(unsigned long long id) {
 	return ((PlanetManagerImplementation*) impl)->getBuilding(id);
+}
+
+MissionTerminal* PlanetManagerAdapter::getMissionTerminal(unsigned long long oid) {
+	return ((PlanetManagerImplementation*) impl)->getMissionTerminal(oid);
 }
 
 unsigned long long PlanetManagerAdapter::getLandingTime() {

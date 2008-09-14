@@ -53,6 +53,7 @@ import "../../objects/creature/shuttle/ShuttleCreature";
 
 import "../../objects/building/BuildingObject";
 import "../../objects/building/cell/CellObject";
+import "../../objects/tangible/terminal/mission/MissionTerminal";
 
 interface PlanetManager {
 	PlanetManager(Zone zone, ZoneProcessServerImplementation processor) {
@@ -78,6 +79,8 @@ interface PlanetManager {
 	
 	CellObject getCell(unsigned long id);
 	BuildingObject getBuilding(unsigned long id);
+	
+	MissionTerminal getMissionTerminal(unsigned long oid);
 	
 	unsigned long getLandingTime();
 

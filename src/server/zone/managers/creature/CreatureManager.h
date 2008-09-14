@@ -21,6 +21,10 @@ class CreatureGroup;
 
 class LairObject;
 
+class ActionCreature;
+
+class Action;
+
 class TrainerCreature;
 
 class RecruiterCreature;
@@ -45,6 +49,8 @@ public:
 
 	void loadBlueFrogs();
 
+	void loadMissionCreatures();
+
 	void unloadCreature(Creature* creature);
 
 	Creature* spawnCreature(unsigned int objcrc, unsigned long long cellid, float x, float y, int bitmask = 0, bool baby = false, bool doLock = true);
@@ -56,6 +62,8 @@ public:
 	RecruiterCreature* spawnRecruiter(const string& stfname, const string& name, int objCrc, float x, float y, bool doLock = true);
 
 	LairObject* spawnLair(const string& type, float x, float y, float z, bool doLock = true);
+
+	ActionCreature* spawnActionCreature(string& name, string& stfname, unsigned int objCrc, string& misoKey, float x, float y, float oY, float oW, unsigned long long cellid = 0, bool doLock = true);
 
 	void registerFunctions();
 
@@ -95,6 +103,8 @@ public:
 
 	void loadBlueFrogs();
 
+	void loadMissionCreatures();
+
 	void unloadCreature(Creature* creature);
 
 	Creature* spawnCreature(unsigned int objcrc, unsigned long long cellid, float x, float y, int bitmask, bool baby, bool doLock);
@@ -106,6 +116,8 @@ public:
 	RecruiterCreature* spawnRecruiter(const string& stfname, const string& name, int objCrc, float x, float y, bool doLock);
 
 	LairObject* spawnLair(const string& type, float x, float y, float z, bool doLock);
+
+	ActionCreature* spawnActionCreature(string& name, string& stfname, unsigned int objCrc, string& misoKey, float x, float y, float oY, float oW, unsigned long long cellid, bool doLock);
 
 	void registerFunctions();
 
@@ -124,6 +136,9 @@ protected:
 	string _param0_spawnRecruiter__string_string_int_float_float_bool_;
 	string _param1_spawnRecruiter__string_string_int_float_float_bool_;
 	string _param0_spawnLair__string_float_float_float_bool_;
+	string _param0_spawnActionCreature__string_string_int_string_float_float_float_float_long_bool_;
+	string _param1_spawnActionCreature__string_string_int_string_float_float_float_float_long_bool_;
+	string _param3_spawnActionCreature__string_string_int_string_float_float_float_float_long_bool_;
 };
 
 class CreatureManagerHelper : public DistributedObjectClassHelper, public Singleton<CreatureManagerHelper> {

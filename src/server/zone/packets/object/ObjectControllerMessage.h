@@ -129,6 +129,11 @@ public:
     static void parseResourceContainerSplit(Player* player, Message* pack);
     static void parseResourceContainerTransfer(Player* player, Message* pack);
 
+    // mission
+    static void parseMissionListRequest(Player* player, Message* pack);
+    static void parseMissionAccept(Player* player, Message* pack);
+    static void parseMissionAbort(Player* player, Message* pack);
+    
     // group
     static void parseGroupInvite(Player* player, Message* pack, GroupManager* groupManager);
     static void parseGroupUninvite(Player* player, Message* pack);

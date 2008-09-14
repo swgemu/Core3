@@ -58,6 +58,7 @@ which carries forward this exception.
 #include "BuildingMap.h"
 #include "TicketCollectorMap.h"
 #include "TravelTerminalMap.h"
+#include "MissionTerminalMap.h"
 #include "../creature/CreatureManager.h"
 
 #include "PlanetManager.h"
@@ -89,6 +90,8 @@ class PlanetManagerImplementation : public PlanetManagerServant, public Mutex, p
 	CellMap* cellMap;
 	TicketCollectorMap* ticketCollectorMap;
 	TravelTerminalMap* travelTerminalMap;
+
+	MissionTerminalMap* missionTerminalMap;
 	VectorMap<uint64, CraftingStation*> craftingStationMap;
 
 	ShuttleLandingEvent* shuttleLandingEvent;
@@ -130,7 +133,7 @@ private:
 	void loadPlayerStructures();
 	void loadGuildTerminals();
 	void loadVendorTerminals();
-
+	void loadMissionTerminals();
 	void loadCraftingStations();
 	string getStationName(uint64 crc);
 
@@ -140,6 +143,7 @@ private:
 	void clearBuildings();
 	void clearTicketCollectors();
 	void clearTravelTerminals();
+	void clearMissionTerminals();
 	void clearCraftingStations();
 
 public:
@@ -154,6 +158,11 @@ public:
 		return buildingMap->get(id);
 	}
 
+	//change this to generic get terminal function if we move to unified terminal map:
+	inline MissionTerminal* getMissionTerminal(uint64 oid) {
+		return missionTerminalMap->get(oid);
+	}
+	
 	int64 getLandingTime();
 
 	uint64 getNextStaticObjectID(bool doLock = true);

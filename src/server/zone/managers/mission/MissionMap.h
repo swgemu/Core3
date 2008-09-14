@@ -42,82 +42,58 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef STRINGLIST_H_
-#define STRINGLIST_H_
+#ifndef MISSIONMAP_H_
+#define MISSIONMAP_H_
 
-#include "ObjectControllerMessage.h"
+#include "system/lang.h"
 
-class StringList : public ObjectControllerMessage {
-	uint8 optionCount;
+#include "../../objects/mission/MissionObject.h"
+
+class MissionMap {
+	VectorMap<uint64, MissionObject*> missionMap;
+	VectorMap<string, MissionObject*> missionIKMap; //Internal Key
 	
 public:
-	
-	StringList(CreatureObject* creo) : ObjectControllerMessage(creo->getObjectID(), 0x0B, 0xE0) {
-		optionCount = 0;
-		insertByte(0);
+	MissionMap() {
+		missionMap.setNullValue(NULL);
+		missionIKMap.setNullValue(NULL);
 	}
-	
-	void insertOption(const string& file, const string& str) {
-		
-		int size = 0x56 + file.size() + str.size();
-		bool odd = (size & 1);
-		
-		if (odd)
-			insertInt((size + 1) / 2);
-		else 
-			insertInt(size / 2);
 
-		insertShort(0);
-		insertShort(0);
-		insertByte(1);
-		insertInt(0xFFFFFFFF);
+	void add(MissionObject* miso) {
+		uint32 gid = miso->getObjectID();
 		
-		insertAscii(file.c_str());
-		insertInt(0);
-		insertAscii(str.c_str());
-		
-		insertLong(0);
-		insertAscii("");
-		insertInt(0);
-		insertAscii("");
-		insertInt(0);
-		
-		insertLong(0);
-		insertAscii("");
-		insertInt(0);
-		insertAscii("");
-		insertInt(0);
-		
-		insertLong(0);
-		insertAscii("");
-		insertInt(0);
-		insertAscii("");
-		insertInt(0);
-		
-		insertInt(0);
-		insertInt(0);
-		insertByte(0);
+		missionMap.put(gid, miso);
+		missionIKMap.put(miso->getDBKey(), miso);
+	}
+	
+	MissionObject* get(int index) {
+		return missionMap.get(index);
+	}
+	
+	MissionObject* get(uint64 oid) {
+		return missionMap.get(oid);
+	}
 
-		if (odd)
-			insertByte(0);
+	MissionObject* get(string& ik) {
+		return missionIKMap.get(ik);
+	}
 
-		updateOptionCount();
-	}
-	
-	void insertOption(string& option) {
-		insertUnicode(unicode(option));
-		updateOptionCount();
-	}
+	void remove(uint64 oid) {
+		MissionObject* miso = missionMap.get(oid);
 		
-	void insertOption(unicode& option) {
-		insertUnicode(option);
-		updateOptionCount();		
+		missionMap.drop(oid);
+		missionIKMap.drop(miso->getDBKey());
 	}
 	
-	void updateOptionCount() {
-		insertByte(30, ++optionCount);
+	void removeAll() {
+		missionMap.removeAll();
+		missionIKMap.removeAll();
 	}
 	
+	inline int size() {
+		return missionMap.size();
+	}
+
 };
 
-#endif
+#endif /*MISSIONMAP_H_*/

@@ -10,6 +10,8 @@
 
 #include "../player/Player.h"
 
+#include "../tangible/TangibleObject.h"
+
 /*
  *	MissionObjectStub
  */
@@ -141,12 +143,37 @@ int MissionObject::getTerminalMask() {
 		return ((MissionObjectImplementation*) _impl)->getTerminalMask();
 }
 
-void MissionObject::setTypeStr(const string& tstr) {
+void MissionObject::setDeliverItem(TangibleObject* tdi) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 15);
+		method.addObjectParameter(tdi);
+
+		method.executeWithVoidReturn();
+	} else
+		((MissionObjectImplementation*) _impl)->setDeliverItem(tdi);
+}
+
+TangibleObject* MissionObject::getDeliverItem() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 16);
+
+		return (TangibleObject*) method.executeWithObjectReturn();
+	} else
+		return ((MissionObjectImplementation*) _impl)->getDeliverItem();
+}
+
+void MissionObject::setTypeStr(const string& tstr) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 17);
 		method.addAsciiParameter(tstr);
 
 		method.executeWithVoidReturn();
@@ -159,7 +186,7 @@ string& MissionObject::getTypeStr() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 18);
 
 		method.executeWithAsciiReturn(_return_getTypeStr);
 		return _return_getTypeStr;
@@ -172,7 +199,7 @@ void MissionObject::setDescKey(int tdk) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 19);
 		method.addSignedIntParameter(tdk);
 
 		method.executeWithVoidReturn();
@@ -185,7 +212,7 @@ unsigned int MissionObject::getDescKey() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 20);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -197,7 +224,7 @@ void MissionObject::setTitleKey(int ttk) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, 21);
 		method.addSignedIntParameter(ttk);
 
 		method.executeWithVoidReturn();
@@ -210,7 +237,7 @@ unsigned int MissionObject::getTitleKey() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, 22);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -222,7 +249,7 @@ void MissionObject::setDifficultyLevel(unsigned int tdlv) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, 23);
 		method.addUnsignedIntParameter(tdlv);
 
 		method.executeWithVoidReturn();
@@ -235,7 +262,7 @@ unsigned int MissionObject::getDifficultyLevel() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 22);
+		DistributedMethod method(this, 24);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -247,7 +274,7 @@ void MissionObject::setDestX(float tdx) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 23);
+		DistributedMethod method(this, 25);
 		method.addFloatParameter(tdx);
 
 		method.executeWithVoidReturn();
@@ -260,7 +287,7 @@ float MissionObject::getDestX() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 24);
+		DistributedMethod method(this, 26);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -272,7 +299,7 @@ void MissionObject::setDestY(float tdy) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 25);
+		DistributedMethod method(this, 27);
 		method.addFloatParameter(tdy);
 
 		method.executeWithVoidReturn();
@@ -285,7 +312,7 @@ float MissionObject::getDestY() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 26);
+		DistributedMethod method(this, 28);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -297,7 +324,7 @@ void MissionObject::setDestPlanetCrc(unsigned int tpc) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 27);
+		DistributedMethod method(this, 29);
 		method.addUnsignedIntParameter(tpc);
 
 		method.executeWithVoidReturn();
@@ -310,7 +337,7 @@ unsigned int MissionObject::getDestPlanetCrc() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 28);
+		DistributedMethod method(this, 30);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -322,7 +349,7 @@ void MissionObject::setCreatorName(const unicode& tcn) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 29);
+		DistributedMethod method(this, 31);
 		method.addUnicodeParameter(tcn);
 
 		method.executeWithVoidReturn();
@@ -335,7 +362,7 @@ unicode& MissionObject::getCreatorName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 30);
+		DistributedMethod method(this, 32);
 
 		method.executeWithUnicodeReturn(_return_getCreatorName);
 		return _return_getCreatorName;
@@ -348,7 +375,7 @@ void MissionObject::setReward(unsigned int tr) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 31);
+		DistributedMethod method(this, 33);
 		method.addUnsignedIntParameter(tr);
 
 		method.executeWithVoidReturn();
@@ -361,7 +388,7 @@ unsigned int MissionObject::getReward() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 32);
+		DistributedMethod method(this, 34);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -373,7 +400,7 @@ void MissionObject::setTargetX(float ttx) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 33);
+		DistributedMethod method(this, 35);
 		method.addFloatParameter(ttx);
 
 		method.executeWithVoidReturn();
@@ -386,7 +413,7 @@ float MissionObject::getTargetX() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 34);
+		DistributedMethod method(this, 36);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -398,7 +425,7 @@ void MissionObject::setTargetY(float tty) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 35);
+		DistributedMethod method(this, 37);
 		method.addFloatParameter(tty);
 
 		method.executeWithVoidReturn();
@@ -411,7 +438,7 @@ float MissionObject::getTargetY() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 36);
+		DistributedMethod method(this, 38);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -423,7 +450,7 @@ void MissionObject::setTargetPlanetCrc(unsigned int tpc) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 37);
+		DistributedMethod method(this, 39);
 		method.addUnsignedIntParameter(tpc);
 
 		method.executeWithVoidReturn();
@@ -436,7 +463,7 @@ unsigned int MissionObject::getTargetPlanetCrc() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 38);
+		DistributedMethod method(this, 40);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -448,7 +475,7 @@ void MissionObject::setDepictedObjCrc(unsigned int tsdc) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 39);
+		DistributedMethod method(this, 41);
 		method.addUnsignedIntParameter(tsdc);
 
 		method.executeWithVoidReturn();
@@ -461,7 +488,7 @@ unsigned int MissionObject::getDepictedObjCrc() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 40);
+		DistributedMethod method(this, 42);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -473,7 +500,7 @@ void MissionObject::setDescriptionStf(const string& tds) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 41);
+		DistributedMethod method(this, 43);
 		method.addAsciiParameter(tds);
 
 		method.executeWithVoidReturn();
@@ -486,7 +513,7 @@ string& MissionObject::getDescriptionStf() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 42);
+		DistributedMethod method(this, 44);
 
 		method.executeWithAsciiReturn(_return_getDescriptionStf);
 		return _return_getDescriptionStf;
@@ -499,7 +526,7 @@ void MissionObject::setTitleStf(const string& tts) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 43);
+		DistributedMethod method(this, 45);
 		method.addAsciiParameter(tts);
 
 		method.executeWithVoidReturn();
@@ -512,7 +539,7 @@ string& MissionObject::getTitleStf() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 44);
+		DistributedMethod method(this, 46);
 
 		method.executeWithAsciiReturn(_return_getTitleStf);
 		return _return_getTitleStf;
@@ -525,7 +552,7 @@ void MissionObject::setRefreshCount(unsigned int trc) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 45);
+		DistributedMethod method(this, 47);
 		method.addUnsignedIntParameter(trc);
 
 		method.executeWithVoidReturn();
@@ -538,7 +565,7 @@ unsigned int MissionObject::getRefreshCount() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 46);
+		DistributedMethod method(this, 48);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -550,7 +577,7 @@ void MissionObject::setTypeCrc(unsigned int ttc) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 47);
+		DistributedMethod method(this, 49);
 		method.addUnsignedIntParameter(ttc);
 
 		method.executeWithVoidReturn();
@@ -563,7 +590,7 @@ unsigned int MissionObject::getTypeCrc() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 48);
+		DistributedMethod method(this, 50);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -609,105 +636,111 @@ Packet* MissionObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		resp->insertSignedInt(getTerminalMask());
 		break;
 	case 15:
-		setTypeStr(inv->getAsciiParameter(_param0_setTypeStr__string_));
+		setDeliverItem((TangibleObject*) inv->getObjectParameter());
 		break;
 	case 16:
-		resp->insertAscii(getTypeStr());
+		resp->insertLong(getDeliverItem()->_getObjectID());
 		break;
 	case 17:
-		setDescKey(inv->getSignedIntParameter());
+		setTypeStr(inv->getAsciiParameter(_param0_setTypeStr__string_));
 		break;
 	case 18:
-		resp->insertInt(getDescKey());
+		resp->insertAscii(getTypeStr());
 		break;
 	case 19:
-		setTitleKey(inv->getSignedIntParameter());
+		setDescKey(inv->getSignedIntParameter());
 		break;
 	case 20:
-		resp->insertInt(getTitleKey());
+		resp->insertInt(getDescKey());
 		break;
 	case 21:
-		setDifficultyLevel(inv->getUnsignedIntParameter());
+		setTitleKey(inv->getSignedIntParameter());
 		break;
 	case 22:
-		resp->insertInt(getDifficultyLevel());
+		resp->insertInt(getTitleKey());
 		break;
 	case 23:
-		setDestX(inv->getFloatParameter());
+		setDifficultyLevel(inv->getUnsignedIntParameter());
 		break;
 	case 24:
-		resp->insertFloat(getDestX());
+		resp->insertInt(getDifficultyLevel());
 		break;
 	case 25:
-		setDestY(inv->getFloatParameter());
+		setDestX(inv->getFloatParameter());
 		break;
 	case 26:
-		resp->insertFloat(getDestY());
+		resp->insertFloat(getDestX());
 		break;
 	case 27:
-		setDestPlanetCrc(inv->getUnsignedIntParameter());
+		setDestY(inv->getFloatParameter());
 		break;
 	case 28:
-		resp->insertInt(getDestPlanetCrc());
+		resp->insertFloat(getDestY());
 		break;
 	case 29:
-		setCreatorName(inv->getUnicodeParameter(_param0_setCreatorName__unicode_));
+		setDestPlanetCrc(inv->getUnsignedIntParameter());
 		break;
 	case 30:
-		resp->insertUnicode(getCreatorName());
+		resp->insertInt(getDestPlanetCrc());
 		break;
 	case 31:
-		setReward(inv->getUnsignedIntParameter());
+		setCreatorName(inv->getUnicodeParameter(_param0_setCreatorName__unicode_));
 		break;
 	case 32:
-		resp->insertInt(getReward());
+		resp->insertUnicode(getCreatorName());
 		break;
 	case 33:
-		setTargetX(inv->getFloatParameter());
+		setReward(inv->getUnsignedIntParameter());
 		break;
 	case 34:
-		resp->insertFloat(getTargetX());
+		resp->insertInt(getReward());
 		break;
 	case 35:
-		setTargetY(inv->getFloatParameter());
+		setTargetX(inv->getFloatParameter());
 		break;
 	case 36:
-		resp->insertFloat(getTargetY());
+		resp->insertFloat(getTargetX());
 		break;
 	case 37:
-		setTargetPlanetCrc(inv->getUnsignedIntParameter());
+		setTargetY(inv->getFloatParameter());
 		break;
 	case 38:
-		resp->insertInt(getTargetPlanetCrc());
+		resp->insertFloat(getTargetY());
 		break;
 	case 39:
-		setDepictedObjCrc(inv->getUnsignedIntParameter());
+		setTargetPlanetCrc(inv->getUnsignedIntParameter());
 		break;
 	case 40:
-		resp->insertInt(getDepictedObjCrc());
+		resp->insertInt(getTargetPlanetCrc());
 		break;
 	case 41:
-		setDescriptionStf(inv->getAsciiParameter(_param0_setDescriptionStf__string_));
+		setDepictedObjCrc(inv->getUnsignedIntParameter());
 		break;
 	case 42:
-		resp->insertAscii(getDescriptionStf());
+		resp->insertInt(getDepictedObjCrc());
 		break;
 	case 43:
-		setTitleStf(inv->getAsciiParameter(_param0_setTitleStf__string_));
+		setDescriptionStf(inv->getAsciiParameter(_param0_setDescriptionStf__string_));
 		break;
 	case 44:
-		resp->insertAscii(getTitleStf());
+		resp->insertAscii(getDescriptionStf());
 		break;
 	case 45:
-		setRefreshCount(inv->getUnsignedIntParameter());
+		setTitleStf(inv->getAsciiParameter(_param0_setTitleStf__string_));
 		break;
 	case 46:
-		resp->insertInt(getRefreshCount());
+		resp->insertAscii(getTitleStf());
 		break;
 	case 47:
-		setTypeCrc(inv->getUnsignedIntParameter());
+		setRefreshCount(inv->getUnsignedIntParameter());
 		break;
 	case 48:
+		resp->insertInt(getRefreshCount());
+		break;
+	case 49:
+		setTypeCrc(inv->getUnsignedIntParameter());
+		break;
+	case 50:
 		resp->insertInt(getTypeCrc());
 		break;
 	default:
@@ -751,6 +784,14 @@ void MissionObjectAdapter::applyTerminalMask(int tam) {
 
 int MissionObjectAdapter::getTerminalMask() {
 	return ((MissionObjectImplementation*) impl)->getTerminalMask();
+}
+
+void MissionObjectAdapter::setDeliverItem(TangibleObject* tdi) {
+	return ((MissionObjectImplementation*) impl)->setDeliverItem(tdi);
+}
+
+TangibleObject* MissionObjectAdapter::getDeliverItem() {
+	return ((MissionObjectImplementation*) impl)->getDeliverItem();
 }
 
 void MissionObjectAdapter::setTypeStr(const string& tstr) {
