@@ -48,16 +48,16 @@ which carries forward this exception.
 
 SuiBankTransferBoxImplementation::SuiBankTransferBoxImplementation(Player* player, uint32 boxType) :
 	SuiBankTransferBoxServant(player, boxType, BANKTRANSFERBOX) {
-	
+
 	options = 0;
-	
+
 	SuiCreatePageMessage* message = NULL;
 }
 
 void SuiBankTransferBoxImplementation::generateHeader(SuiCreatePageMessage* msg) {
 	msg->insertAscii("Script.transfer");
 	msg->insertInt(0x0C); // Size
-	
+
 	for (int i = 0; i < 2; i++) {  // If these are not added twice it crashes the client
 		msg->insertByte(5);
 		msg->insertInt(0);
@@ -71,7 +71,7 @@ void SuiBankTransferBoxImplementation::generateHeader(SuiCreatePageMessage* msg)
 		msg->insertAscii("transaction.txtInputTo"); // 6
 		msg->insertAscii("Text"); // 7
 	}
-	
+
 	promptTitle = "@base_player:bank_title";
 	promptText = "@base_player:bank_prompt";
 	msg->insertOption(3, promptTitle, "bg.caption.lblTitle", "Text");
@@ -82,19 +82,19 @@ void SuiBankTransferBoxImplementation::generateHeader(SuiCreatePageMessage* msg)
 BaseMessage* SuiBankTransferBoxImplementation::generateMessage() {
 	message = new SuiCreatePageMessage(boxID);
 	generateHeader(message);
-	
+
 	addOption(lblFrom, "transaction.lblFrom", "Text");
 	addOption(lblTo, "transaction.lblTo", "Text");
-	
+
 	addOption(lblStartingFrom, "transaction.lblStartingFrom", "Text");
 	addOption(lblStartingTo, "transaction.lblStartingTo", "Text");
-	
+
 	addOption(lblInputFrom, "transaction.txtInputFrom", "Text");
 	addOption(lblInputTo, "transaction.txtInputTo", "Text");
-	
+
 	addOption(convertRatioFrom, "transaction", "ConversionRatioFrom");
 	addOption(convertRatioTo, "transaction", "ConversionRatioTo");
-	
+
 	message->insertLong(0);
 	message->insertInt(0x7F7FFFFF);
 	message->insertInt(0x7F7FFFFF);
@@ -109,17 +109,17 @@ void SuiBankTransferBoxImplementation::addOption(const string& itemText, const s
 	++options;
 }
 void SuiBankTransferBoxImplementation::addCash(int cash) {
-	
+
 	lblFrom = "Cash";
 	stringstream cashString;
 	cashString << cash;
 	lblStartingFrom = cashString.str();
 	lblInputFrom = cashString.str();
 	convertRatioFrom = "1";
-	
+
 }
 void SuiBankTransferBoxImplementation::addBank(int bank) {
-	
+
 	lblTo = "Bank";
 	stringstream bankString;
 	bankString << bank;

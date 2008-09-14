@@ -86,18 +86,19 @@ interface ChatManager {
 
 	void handleChatRoomMessage(Player player, Message pack);
 	void handleGroupChat(Player player, Message pack);
+	void handleGuildChat(Player player, Message pack);
 	void handleCreateRoom(Player player, Message pack);
 	void handleChatEnterRoomById(Player player, Message pack);
 	void handleChatDestroyRoom(Player player, Message pack);
 	void handleChatRemoveAvatarFromRoom(Player player, Message pack);
 
 	ChatRoom getChatRoom(unsigned int id);
-
+	
 	void addRoom(ChatRoom channel);
 	void removeRoom(ChatRoom channel);
 
 	void sendRoomList(Player player);
-	ChatRoom createGroupRoom(unsigned int groupID, Player creator);
+	ChatRoom createGroupRoom(unsigned int groupID, Player creator, boolean mode);
 
 	ChatRoom createRoomByFullPath(const string path);
 
@@ -106,7 +107,6 @@ interface ChatManager {
 	void printRoomTree(ChatRoom channel);
 
 	ChatRoom getChatRoomByFullPath(const string path);
-
 	ChatRoom getGameRoom(const string game);
 	ChatRoom getChatRoomByGamePath(ChatRoom game, const string path);
 

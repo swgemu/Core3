@@ -68,11 +68,13 @@ which carries forward this exception.
 #include "PlayerMapImplementation.h"
 
 #include "../guild/GuildManager.h"
+#include "../group/GroupManager.h"
 #include "../planet/PlanetManager.h"
 #include "../item/ItemManager.h"
 #include "../name/NameManager.h"
 #include "../user/UserManager.h"
 #include "../../../chat/ChatManager.h"
+#include "../../../chat/ChatManagerImplementation.h"
 
 PlayerManagerImplementation::PlayerManagerImplementation(ItemManager* mgr, ZoneProcessServerImplementation* srv) : PlayerManagerServant() {
 	playerMap = new PlayerMap(3000);
@@ -376,9 +378,17 @@ void PlayerManagerImplementation::loadFromDatabase(Player* player) {
 	player->setTerrainName(Terrain::getTerrainName(player->getZoneIndex()));
 	player->initializePosition(character->getFloat(13), character->getFloat(15), character->getFloat(14));
 
+	server->lock();
 	Guild* guild = guildManager->getGuild(character->getUnsignedInt(12));
-	if (guild != NULL)
+	if (guild != NULL) {
 		player->setGuild(guild);
+		if (guild->getGuildLeader() == player->getCharacterID())
+			player->setGuildLeader(true);
+		else
+			player->setGuildLeader(false);
+	}
+	server->unlock();
+
 
 	string appearance = character->getString(5);
 	BinaryData cust(appearance);
@@ -442,6 +452,8 @@ void PlayerManagerImplementation::loadFromDatabase(Player* player) {
 	player->setFocusWounds(character->getInt(51));
 	player->setWillpowerWounds(character->getInt(52));
 	player->setShockWounds(character->getInt(53));
+
+	player->setGuildPermissions(character->getInt(56));
 
 	player->resetHAMBars(false);
 
@@ -581,6 +593,7 @@ void PlayerManagerImplementation::save(Player* player) {
 	<< ",BattleFatigue=" << player->getShockWounds()
 	<< ",AdminLevel=" << player->getAdminLevel()
 	<< ",PvpRating=" << player->getPvpRating()
+	<< ",guildpermission=" << player->getGuildPermissions()
 	<< " WHERE character_id=" << player->getCharacterID() << ";";
 	try {
 		ServerDatabase::instance()->executeStatement(query);

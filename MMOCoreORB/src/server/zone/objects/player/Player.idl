@@ -419,6 +419,7 @@ interface Player implements CreatureObject {
 
 	boolean hasSuiBox(unsigned int boxID);
 	boolean hasSuiBoxType(unsigned int boxTypeID);
+	unsigned int getSuiBoxFromType(unsigned int boxTypeID);
 
 	void removeSuiBox(unsigned int boxID);
 
@@ -490,6 +491,8 @@ interface Player implements CreatureObject {
 
 	boolean isChatMuted();
 	boolean isImmune();
+	
+	string getInputBoxReturnBuffer();
 
 	// mission stuff
 	unsigned int nextMisoRFC();
@@ -544,9 +547,10 @@ interface Player implements CreatureObject {
 
 	unsigned int getForcePower();
 	unsigned int getForcePowerMax();
+	
+	boolean isGuildLeader();
 
 	unsigned long getCurrentStructureID();
-
 	void setCurrentStructureID(unsigned long oid);
 	
 	SurveyTool getSurveyTool();
@@ -579,4 +583,19 @@ interface Player implements CreatureObject {
 
 	string getLastNpcConvStr();
 	string getLastNpcConvMessStr();
+	
+	void setInputBoxReturnBuffer(const string message);
+	
+	void setGuildLeader(boolean guildLeader = true);
+	
+	void loadGuildChat();
+	
+	//Guild Bitmask Permissions
+	void setGuildPermissions(unsigned int bit);
+	unsigned int getGuildPermissions();
+	
+	boolean setGuildPermissionsBit(unsigned int bit, boolean updateClient = false);	
+	void toggleGuildPermissionsBit(unsigned int bit);	
+	boolean clearGuildPermissionsBit(unsigned int bit, boolean updateClient = false);
+	
 }

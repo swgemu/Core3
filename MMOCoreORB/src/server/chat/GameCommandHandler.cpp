@@ -56,6 +56,8 @@ which carries forward this exception.
 
 #include "ChatManager.h"
 
+#include "../zone/managers/guild/GuildManager.h"
+
 GMCommandMap * GameCommandHandler::gmCommands = NULL;
 
 void GameCommandHandler::init() {

@@ -138,6 +138,12 @@ void ChatManagerImplementation::initiateRooms() {
 	core3Room->addSubRoom(groupRoom);
 	addRoom(groupRoom);
 
+	guildRoom = new ChatRoom(server, core3Room, "guild", getNextRoomID());
+	guildRoom->deploy();
+	guildRoom->setPrivate();
+	core3Room->addSubRoom(guildRoom);
+	addRoom(guildRoom);
+
 	ChatRoom* generalRoom = new ChatRoom(server, core3Room, "general", getNextRoomID());
 	generalRoom->deploy();
 	core3Room->addSubRoom(generalRoom);
@@ -442,6 +448,7 @@ void ChatManagerImplementation::sendMail(const string& sendername, unicode& head
 
 		uint64 receiverObjId;
 
+		//receiver = valid player?
 		stringstream idqry;
 		idqry << "SELECT character_id FROM characters WHERE lower(firstname) = '" << Name << "';";
 
@@ -455,7 +462,7 @@ void ChatManagerImplementation::sendMail(const string& sendername, unicode& head
 
 		delete rescid;
 
-		//Insert mail into db.
+		//Receiver is valid: Insert mail into db.
 
 	  	string headerString = header.c_str();
 	  	MySqlDatabase::escapeString(headerString);
@@ -486,15 +493,16 @@ void ChatManagerImplementation::sendMail(const string& sendername, unicode& head
 		//receiver->wlock();
 
 		stringstream query;
-		query << "SELECT mail_id FROM mail WHERE time = " << currentTime << ";";
+		query << "SELECT mail_id FROM mail WHERE time = " << currentTime << " and lower(recv_name) = '" << Name << "';";
 
 		ResultSet* mail = ServerDatabase::instance()->executeQuery(query);
 
-		if (mail->next()) {
+		while (mail->next()) {
 			int mailid = mail->getInt(0);
 
 			BaseMessage* mmsg = new ChatPersistentMessageToClient(sendername, mailid, 0x01, header, body, currentTime, 'N');
 			receiver->sendMessage(mmsg);
+
 
 			stringstream update;
 			update << "UPDATE `mail` SET `read` = 1 WHERE mail_id = " << mailid << ";";
@@ -610,6 +618,7 @@ void ChatManagerImplementation::handleChatRoomMessage(Player* sender, Message* p
 	pack->shiftOffset(4);
 
 	uint32 channelid = pack->parseInt();
+
 	uint32 counter = pack->parseInt();
 
 	ChatRoom* channel = getChatRoom(channelid);
@@ -665,11 +674,50 @@ void ChatManagerImplementation::handleGroupChat(Player* sender, Message* pack) {
 	sender->wlock();
 }
 
+void ChatManagerImplementation::handleGuildChat(Player* sender, Message* pack) {
+	string name = sender->getFirstName();
+	pack->shiftOffset(8);
+
+	unicode message;
+
+	pack->parseUnicode(message);
+
+	Guild* kuild;
+	kuild = sender->getGuild();
+
+	if (kuild == NULL) {
+		return;
+	}
+
+	ChatRoom* guildChat = kuild->getGuildChat();
+
+	if (guildChat == NULL) {
+		return;
+	}
+
+	sender->unlock();
+
+	try {
+		kuild->wlock();
+
+		BaseMessage* msg = new ChatRoomMessage(name, message, guildChat->getRoomID());
+		guildChat->broadcastMessage(msg);
+
+		kuild->unlock();
+	} catch (...) {
+		cout << "Exception in ChatManagerImplementation::handleGuildChat(Player* sender, Message* pack)\n";
+		kuild->unlock();
+	}
+
+	sender->wlock();
+}
+
 void ChatManagerImplementation::handleChatEnterRoomById(Player* player, Message* pack) {
 	uint32 counter = pack->parseInt();
 	uint32 roomID = pack->parseInt();
 
 	ChatRoom* room = getChatRoom(roomID);
+
 	if (room == NULL)
 		return;
 
@@ -678,7 +726,7 @@ void ChatManagerImplementation::handleChatEnterRoomById(Player* player, Message*
 }
 
 void ChatManagerImplementation::handleCreateRoom(Player* player, Message* pack) {
-	pack->shiftOffset(4); // Unkown
+	pack->shiftOffset(4); // Unknown
 
 	string fullPath;
 	pack->parseAscii(fullPath);
@@ -834,7 +882,7 @@ void ChatManagerImplementation::printRoomTree(ChatRoom* channel, string name) {
 
 	name = name + channel->getName();
 
-	cout << "Name: " << name << "\n";
+	cout << "Name: " << name << "\n" << endl;
 
 	for (int i = 0; i < channel->getSubRoomsSize(); i++) {
 		ChatRoom* chan = channel->getSubRoom(i);
@@ -888,9 +936,13 @@ ChatRoom* ChatManagerImplementation::getGameRoom(const string& game) {
 	return gameRooms.get(game);
 }
 
-ChatRoom* ChatManagerImplementation::createGroupRoom(uint32 groupID, Player* creator) {
+ChatRoom* ChatManagerImplementation::createGroupRoom(uint32 groupID, Player* creator,bool mode) {
 	// Pre: creator locked;
 	// Post: creator locked.
+
+
+	ChatRoom* groupChatRoom;
+
 	stringstream name;
 	name << groupID;
 
@@ -901,20 +953,70 @@ ChatRoom* ChatManagerImplementation::createGroupRoom(uint32 groupID, Player* cre
 	groupRoom->addSubRoom(newGroupRoom);
 	addRoom(newGroupRoom);
 
-	ChatRoom* groupChatRoom = new ChatRoom(server, newGroupRoom, "GroupChat", getNextRoomID());
+	groupChatRoom = new ChatRoom(server, newGroupRoom, "GroupChat", getNextRoomID());
 	groupChatRoom->deploy();
 
 	groupChatRoom->setTitle(name.str());
 	groupChatRoom->setPrivate();
 
-	groupChatRoom->sendTo(creator);
-
-	groupChatRoom->addPlayer(creator, false);
+	if (!mode) { //Standard group
+		groupChatRoom->sendTo(creator);
+		groupChatRoom->addPlayer(creator, false);
+	}
 
 	newGroupRoom->addSubRoom(groupChatRoom);
 	addRoom(groupChatRoom);
 
+	if (mode) {
+		uint32 guildid = creator->getGuildID();
+		initGuildChannel(creator,guildid);
+	}
+
 	return groupChatRoom;
+}
+
+void ChatManagerImplementation::initGuildChannel(Player* creator, uint32 gid) {
+	// Pre: creator locked;
+	// Post: creator locked.
+
+	Guild* kuild;
+	kuild = creator->getGuild();
+
+	kuild->wlock();
+
+	if (kuild->getGuildChat() != NULL) {
+		kuild->unlock();
+		return;
+	}
+
+	stringstream name;
+	name.str("");
+
+	uint32 guildID = gid;
+
+	ChatRoom* newGuildRoom = new ChatRoom(server, guildRoom, name.str(), getNextRoomID());
+	newGuildRoom->deploy();
+
+	newGuildRoom->setPrivate();
+	guildRoom->addSubRoom(newGuildRoom);
+	addRoom(newGuildRoom);
+
+	ChatRoom* guildChatRoom = new ChatRoom(server, newGuildRoom, "GuildChat", getNextRoomID());
+	guildChatRoom->deploy();
+
+	guildChatRoom->setTitle(name.str());
+	guildChatRoom->setPrivate();
+
+
+	guildChatRoom->sendTo(creator);
+	guildChatRoom->addPlayer(creator, false);
+
+	newGuildRoom->addSubRoom(guildChatRoom);
+	addRoom(guildChatRoom);
+
+	kuild->setGuildChat(guildChatRoom);
+
+	kuild->unlock();
 }
 
 void ChatManagerImplementation::destroyRoom(ChatRoom* room) {
@@ -935,18 +1037,3 @@ void ChatManagerImplementation::destroyRoom(ChatRoom* room) {
 
 	room->finalize();
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

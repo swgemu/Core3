@@ -327,7 +327,7 @@ void PlanetManagerImplementation::clearCraftingStations() {
 
 void PlanetManagerImplementation::loadStaticPlanetObjects() {
 	loadShuttles();
-	//loadGuildTerminals();
+	loadGuildTerminals();
 	//loadVendorTerminals();
 	loadCraftingStations();
 	loadMissionTerminals();
@@ -405,16 +405,66 @@ void PlanetManagerImplementation::loadTrainers() {
 }
 
 void PlanetManagerImplementation::loadGuildTerminals() {
-	if (zone->getZoneID() != 8)
-		return;
+	if (zone->getZoneID() == 8) {
+		lock();
 
-	lock();
+		//Anchorhead
+		GuildTerminal* guildterminal = new GuildTerminal(server->getGuildManager(), getNextStaticObjectID(false), 41, 52, -5352);
+		guildterminal->setDirection(0, 0, 0, 0);
+		guildterminal->insertToZone(zone);
 
-	GuildTerminal* guildterminal = new GuildTerminal(server->getGuildManager(), getNextStaticObjectID(false), 44, 52, -5352);
+		guildterminal = new GuildTerminal(server->getGuildManager(), getNextStaticObjectID(false), 43, 52, -5352);
+		guildterminal->setDirection(0, 0, 0, 0);
+		guildterminal->insertToZone(zone);
 
-	guildterminal->insertToZone(zone);
+		guildterminal = new GuildTerminal(server->getGuildManager(), getNextStaticObjectID(false), 47, 52, -5352);
+		guildterminal->setDirection(0, 0, 0, 0);
+		guildterminal->insertToZone(zone);
 
-	unlock();
+		guildterminal = new GuildTerminal(server->getGuildManager(), getNextStaticObjectID(false), 36, 53, -5351);
+		guildterminal->setDirection(0, 0, 0, 0);
+		guildterminal->insertToZone(zone);
+
+		unlock();
+	}
+
+
+
+	if (zone->getZoneID() == 5) {
+		lock();
+
+		//Theed
+		GuildTerminal* guildterminal = new GuildTerminal(server->getGuildManager(), getNextStaticObjectID(false), -4874, 6.41, 4189);
+		guildterminal->setDirection(0, 0, -0.93603, 0.341851);
+		guildterminal->insertToZone(zone);
+
+		guildterminal = new GuildTerminal(server->getGuildManager(), getNextStaticObjectID(false), -4875, 6.41, 4190);
+		guildterminal->setDirection(0, 0, -0.93603, 0.341851);
+		guildterminal->insertToZone(zone);
+
+		guildterminal = new GuildTerminal(server->getGuildManager(), getNextStaticObjectID(false), -4864, 6.41, 4182);
+		guildterminal->setDirection(0, 0, -0.93603, 0.341851);
+		guildterminal->insertToZone(zone);
+
+		guildterminal = new GuildTerminal(server->getGuildManager(), getNextStaticObjectID(false), -4863, 6.41, 4181);
+		guildterminal->setDirection(0, 0, -0.93603, 0.341851);
+		guildterminal->insertToZone(zone);
+
+		guildterminal = new GuildTerminal(server->getGuildManager(), getNextStaticObjectID(false), -4843, 6.41, 4164);
+		guildterminal->setDirection(0, 0, -0.93603, 0.341851);
+		guildterminal->insertToZone(zone);
+
+		guildterminal = new GuildTerminal(server->getGuildManager(), getNextStaticObjectID(false), -4842, 6.41, 4163);
+		guildterminal->setDirection(0, 0, -0.93603, 0.341851);
+		guildterminal->insertToZone(zone);
+
+		guildterminal = new GuildTerminal(server->getGuildManager(), getNextStaticObjectID(false), -4831, 6.41, 4152);
+		guildterminal->setDirection(0, 0, -0.93603, 0.341851);
+		guildterminal->insertToZone(zone);
+
+		unlock();
+	}
+
 }
 
 void PlanetManagerImplementation::loadVendorTerminals() {

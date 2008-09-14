@@ -52,7 +52,7 @@ which carries forward this exception.
 
 #include "../../../chat/ChatManager.h"
 
-GroupObjectImplementation::GroupObjectImplementation(uint64 oid, Player* Leader) : GroupObjectServant(oid, GROUP) {
+GroupObjectImplementation::GroupObjectImplementation(uint64 oid, Player* Leader, bool mode) : GroupObjectServant(oid, GROUP) {
 	objectCRC = 0x788CF998; //0x98, 0xF9, 0x8C, 0x78,
 
 	objectType = SceneObjectImplementation::GROUP;
@@ -62,6 +62,8 @@ GroupObjectImplementation::GroupObjectImplementation(uint64 oid, Player* Leader)
 	leader = Leader;
 
 	groupMembers.add(Leader);
+
+	modus = mode;
 
 	stringstream name;
 	name << "Group :" << oid;
@@ -75,7 +77,10 @@ GroupObjectImplementation::GroupObjectImplementation(uint64 oid, Player* Leader)
 
 void GroupObjectImplementation::startChannel() {
 	ChatManager* chatManager = leader->getZone()->getChatManager();
-	groupChannel = chatManager->createGroupRoom(objectID, leader);
+
+	//Modus: False = Standard group, TRUE = Guild-Group (Pseudo Object)
+	groupChannel = chatManager->createGroupRoom(objectID, leader, modus);
+
 }
 
 void GroupObjectImplementation::sendTo(Player* player, bool doClose) {
@@ -94,8 +99,34 @@ void GroupObjectImplementation::sendTo(Player* player, bool doClose) {
 	if (doClose)
 		close(client);
 
-	if (groupChannel != NULL)
-		groupChannel->sendTo(player);
+	if (!modus) {
+		if (groupChannel != NULL)
+			groupChannel->sendTo(player);
+	}
+
+	//Dirty hack: Remove/destroy everything of the groupObject not needed for guild chat creation
+	if (modus) { //Guild modus
+		player->wlock((GroupObject*) _this);
+		player->removeChatRoom(groupChannel);
+
+		player->setGroup(NULL);
+		player->updateGroupId(0);
+
+		BaseMessage* msg = new SceneObjectDestroyMessage((GroupObject*) _this);
+		player->sendMessage(msg);
+		player->unlock();
+
+		ChatRoom* room = groupChannel->getParent();
+		ChatRoom* parent = room->getParent();
+
+		ChatManager* chatManager = getZone()->getChatManager();
+
+		chatManager->destroyRoom(groupChannel);
+		chatManager->destroyRoom(room);
+
+		groupChannel = NULL;
+		groupMembers.removeAll();
+	}
 }
 
 void GroupObjectImplementation::addPlayer(Player* player) {
