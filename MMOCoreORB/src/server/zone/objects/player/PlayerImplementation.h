@@ -467,7 +467,7 @@ public:
 	void addInventoryResource(ResourceContainer* item);
 	void equipPlayerItem(TangibleObject* item);
 	SceneObject* getPlayerItem(uint64 oid);
-	bool isAllowedBySpecies(TangibleObject* item);
+	bool hasItemPermission(TangibleObject* item);
 
 	// trade mehtods
 	void addTradeItem(TangibleObject* item) {

@@ -40,7 +40,7 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-bowcaster = {
+bowcaster = Weapon:new{
 	
 
 	objectName = "Bowcaster",
@@ -57,5 +57,7 @@ bowcaster = {
 	
 	certification = "",
 
-	equipped = "0"
+	equipped = "0",
+
+	itemMask = WOOKIEES
 }

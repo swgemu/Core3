@@ -49,6 +49,8 @@ hideBoots = Clothing:new {
 	objectCRC = "2321198008",
 
 	objectType = FOOTWEAR,
+	
+	itemMask = HUMANOID_FOOTWEAR,
 
 	equipped = "1"
 }

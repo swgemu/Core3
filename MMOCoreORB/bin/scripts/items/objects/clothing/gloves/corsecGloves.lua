@@ -50,5 +50,7 @@ corsecGloves = Clothing:new {
 
 	objectType = HANDWEAR,
 
-	equipped = "0"
+	equipped = "0",
+
+	itemMask = HUMANOIDS
 }

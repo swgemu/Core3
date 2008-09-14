@@ -49,6 +49,8 @@ mangyVest = Clothing:new {
 	objectCRC = "1655790437",
 
 	objectType = VEST,
+	
+	itemMask = HUMANOIDS,
 
 	equipped = "1"
 }

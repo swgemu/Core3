@@ -69,6 +69,7 @@ class LootTableTemplate {
 	string lootItemTypeHex;
 	string lootItemPath;
 	string lootItemString;
+	uint16 lootItemMask;
 
 	Vector<LootTableFields*> * lootTableFields;
 
@@ -93,7 +94,7 @@ public:
 		lootItemTypeHex = "0x0";
 		lootItemPath = "";
 		lootItemString = "";
-
+		lootItemMask = 0xFFFF;
 
 		lootTableFields = new Vector<LootTableFields*>();
 	}
@@ -182,6 +183,10 @@ public:
 		lootItemString = lootitemstring;
 	}
 
+	inline void setLootItemMask(uint16 lootitemmask) {
+		lootItemMask = lootitemmask;
+	}
+
 	//getters
 
 	inline int getLootItemGroup() {
@@ -256,6 +261,9 @@ public:
 		return lootItemString;
 	}
 
+	inline uint16 getLootItemMask() {
+		return lootItemMask;
+	}
 
 };
 

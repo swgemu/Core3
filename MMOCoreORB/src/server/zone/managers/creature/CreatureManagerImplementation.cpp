@@ -56,7 +56,7 @@ which carries forward this exception.
 #include "../../objects/creature/trainer/TrainerCreature.h"
 #include "../../objects/creature/recruiter/RecruiterCreature.h"
 #include "../../objects/creature/shuttle/ShuttleCreature.h"
-#include "../../objects/creature/Action/ActionCreature.h"
+#include "../../objects/creature/action/ActionCreature.h"
 #include "../../objects/creature/action/Action.h"
 
 #include "../../objects/creature/CreatureGroup.h"
@@ -254,7 +254,7 @@ void CreatureManagerImplementation::loadMissionCreatures() {
 		string stf = "";
 		ActionCreature* tac;
 		tac = spawnActionCreature(name, stf, 0x8C73B91, "testM27", -4844.0f, 4155.0f, -.0339502, .999424);
-		
+
 		int actmsk;
 		actmsk |= ActionImplementation::TYPE_CONVERSE;
 		Action* act = new Action((SceneObject*)tac, actmsk, 0);
@@ -263,14 +263,14 @@ void CreatureManagerImplementation::loadMissionCreatures() {
 		string Options = "Yes, here.|The weather is quite nice!|No, sorry I forgot."; //separate by |
 		string optLink = "1,none|2,none|ENDCNV,none"; //separate by | (nextScreenID,actionKey)
 		act->addConvoScreen(scrnId, leftBox, 3, Options, optLink);
-		
+
 		//Converstaion window in response to Yes, Here:
 		scrnId = "1";
 		leftBox = "Cool you have it? Give it to me!";
 		Options = "Here|No, bye.";
 		optLink = "EXECACTION,finm27|ENDCNV,none";
 		act->addConvoScreen(scrnId, leftBox, 1, Options, optLink);
-		
+
 		//Conversation window in response to weather:
 		scrnId = "2";
 		leftBox = "Yea the weather is pretty nice..";
@@ -281,7 +281,7 @@ void CreatureManagerImplementation::loadMissionCreatures() {
 		string actionKey = "KEYA";
 		tac->addAction(actionKey, act);
 		tac->onConverse(actionKey); //link onConverse to action "KEYA"
-		
+
 		//Complete Mission Key:
 		actmsk = 0;
 		actmsk |= ActionImplementation::TYPE_TAKEITEM;
@@ -401,12 +401,12 @@ TrainerCreature* CreatureManagerImplementation::spawnTrainer(const string& profe
 		lock(doLock);
 
 		Profession* prof = server->getProfessionManager()->professionMap.get(profession);
-		
+
 		if (prof == NULL) {
 			error("Trying to load trainer with unknown profession " + profession);
 			unlock(doLock);
 			return NULL;
-		}		
+		}
 
 		TrainerCreature* trainer = new TrainerCreature(getNextCreatureID(), prof);
 		trainer->deploy();

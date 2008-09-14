@@ -60,5 +60,7 @@ composite_bracer_l = Armor:new{
 
 	actionEncum = 70,
 
-	mindEncum = 70
+	mindEncum = 70,
+
+	itemMask = HUMANOIDS
 }

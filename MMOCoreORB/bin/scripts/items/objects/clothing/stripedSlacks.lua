@@ -49,6 +49,8 @@ stripedSlacks = Clothing:new {
 	objectCRC = "597357025",
 
 	objectType = PANTS,
+	
+	itemMask = HUMANOIDS,
 
 	equipped = "1"
 }

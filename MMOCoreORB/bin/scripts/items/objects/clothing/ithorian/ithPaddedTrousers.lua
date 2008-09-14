@@ -50,5 +50,7 @@ ithPaddedTrousers = Clothing:new {
 
 	objectType = ITHOGARB,
 
-	equipped = "1"
+	equipped = "1",
+
+	itemMask = ITHORIANS
 }

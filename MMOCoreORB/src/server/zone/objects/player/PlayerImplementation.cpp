@@ -335,9 +335,7 @@ void PlayerImplementation::makeCharacterMask() {
 	if(!this->isOvert())
 		characterMask |= COVERT;
 
-	int raceid = Races::getRaceID(raceFile);
-
-	switch (raceid) {
+	switch (raceID) {
 	case 0:
 		characterMask |= MALE | HUMAN;
 		break;
@@ -2548,26 +2546,28 @@ void PlayerImplementation::equipPlayerItem(TangibleObject* item) {
 	}
 }
 
-bool PlayerImplementation::isAllowedBySpecies(TangibleObject * item) {
-	int type = item->getObjectSubType();
-	bool ithoonly = ((type == TangibleObjectImplementation::ITHOGARB) ||
-			(item->getTemplateName().find("ith_armor") != string::npos));
-	bool wookonly = ((type == TangibleObjectImplementation::WOOKIEGARB) ||
-			(item->getTemplateName().find("armor_kashyyykian") != string::npos));
-	bool footwear = ((type == TangibleObjectImplementation::FOOTWEAR) ||
-			(type == TangibleObjectImplementation::FOOTARMOR));
+bool PlayerImplementation::hasItemPermission(TangibleObject * item) {
+	uint16 maskRes = ~(item->getPlayerUseMask()) & characterMask;
 
-	string species = this->getSpeciesName();
-
-	if (species.compare("ithorian") == 0) {
-		return ithoonly;
-	} else if (species.compare("wookiee") == 0) {
-		return wookonly;
-	} else if (species.compare("trandoshan") == 0) {
-		return !ithoonly && !wookonly && !footwear;
-	} else {
-		return !ithoonly && !wookonly;
+	if (maskRes == 0)
+		return true;
+	else if (maskRes == COVERT) {
+		this->sendSystemMessage("You must be declared overt to use this item.");
+		return false;
+	} else if (maskRes & (COVERT | REBEL | IMPERIAL | NEUTRAL)) {
+		this->sendSystemMessage("You are not the proper faction to use this item.");
+		return false;
+	} else if (maskRes & 0x0FFC) {
+		this->sendSystemMessage("Your species can not use this item.");
+		return false;
+	} else if (maskRes & (MALE | FEMALE)) {
+		this->sendSystemMessage("This item is not appropriate for your gender.");
+		return false;
 	}
+
+	//should never get here
+	this->sendSystemMessage("There was an error, while trying to equip this item.");
+	return false;
 }
 void PlayerImplementation::changeCloth(uint64 itemid) {
 	SceneObject* obj = inventory->getObject(itemid);
@@ -2576,6 +2576,11 @@ void PlayerImplementation::changeCloth(uint64 itemid) {
 		return;
 
 	TangibleObject* cloth = (TangibleObject*) obj;
+
+	if(!hasItemPermission(cloth)) {
+		cloth->setEquipped(false);
+		return;
+	}
 
 	if (cloth->isWeapon()) {
 		if (cloth->isEquipped())
@@ -2586,12 +2591,6 @@ void PlayerImplementation::changeCloth(uint64 itemid) {
 	if (cloth->isArmor()) {
 		if (cloth->isEquipped())
 			changeArmor(itemid, false);
-		return;
-	}
-
-	if(!isAllowedBySpecies(cloth)) {
-		cloth->setEquipped(false);
-		sendSystemMessage("Your species can not wear this item.");
 		return;
 	}
 
@@ -2608,6 +2607,8 @@ void PlayerImplementation::changeWeapon(uint64 itemid) {
 	if (obj == NULL || !obj->isTangible())
 		return;
 
+
+
 	if (isPlayingMusic())
 		stopPlayingMusic();
 
@@ -2616,6 +2617,9 @@ void PlayerImplementation::changeWeapon(uint64 itemid) {
 		Weapon* weapon = (Weapon*) obj;
 
 		if (weapon == NULL)
+			return;
+
+		if (!this->hasItemPermission(weapon))
 			return;
 
 		if (centered)
@@ -2755,9 +2759,8 @@ void PlayerImplementation::changeArmor(uint64 itemid, bool forced) {
 		if (armoritem == NULL)
 			return;
 
-		if(!isAllowedBySpecies(armoritem)) {
+		if(!hasItemPermission(armoritem)) {
 			armoritem->setEquipped(false);
-			sendSystemMessage("Your species can not wear this item.");
 			return;
 		}
 
@@ -3204,7 +3207,7 @@ void PlayerImplementation::setOvert() {
 	if (!(pvpStatusBitmask & OVERT_FLAG))
 		pvpStatusBitmask |= OVERT_FLAG;
 
-	characterMask &= !COVERT;
+	characterMask &= ~COVERT;
 
 	uint32 pvpBitmask = pvpStatusBitmask;
 

@@ -49,6 +49,8 @@ desertCrawlers = Clothing:new {
 	objectCRC = "810982418",
 
 	objectType = PANTS,
+	
+	itemMask = HUMANOIDS,
 
 	equipped = "1"
 }
