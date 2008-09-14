@@ -899,6 +899,24 @@ void ObjectControllerMessage::parseNpcStartConversation(Player* player,
 	}
 }
 
+void ObjectControllerMessage::parseNpcConversationSelect(Player* player,
+		Message* pack) {
+	pack->shiftOffset(8);
+
+	SceneObject* object = player->getConversatingCreature();
+
+	if (object != NULL) {
+		if (!player->isInRange(object, 5))
+			return;
+
+		unicode opt;
+		pack->parseUnicode(opt);
+
+		int option = atoi(opt.c_str().c_str());
+		object->selectConversationOption(option, player);
+	}
+}
+
 void ObjectControllerMessage::parseNpcStopConversation(Player* player,
 		Message* pack) {
 	uint64 target = pack->parseLong();
@@ -1233,24 +1251,6 @@ void ObjectControllerMessage::parsePurchaseTicket(Player* player, Message *pack)
 
 	player->addSuiBox(sui);
 	player->sendMessage(sui->generateMessage());
-}
-
-void ObjectControllerMessage::parseNpcConversationSelect(Player* player,
-		Message* pack) {
-	pack->shiftOffset(8);
-
-	SceneObject* object = player->getConversatingCreature();
-
-	if (object != NULL) {
-		if (!player->isInRange(object, 5))
-			return;
-
-		unicode opt;
-		pack->parseUnicode(opt);
-
-		int option = atoi(opt.c_str().c_str());
-		object->selectConversationOption(option, player);
-	}
 }
 
 void ObjectControllerMessage::parseGetAttributes(Player* player, Message* pack) {
@@ -2273,6 +2273,68 @@ void ObjectControllerMessage::parseRequestCharacterMatch(Player* player,
 		Message* pack) {
 	//pack->shiftOffset(8); //Shift past the blank long. Eventually parse stuff here. Not yet. lols.
 	player->getPlayersNearYou();
+}
+
+void ObjectControllerMessage::parseMissionListRequest(Player* player, Message* pack) {
+	//skip objId + old size + unk byte + refresh byte
+	pack->shiftOffset(14);
+	
+	//Grab the mission terminal id
+	uint64 termId = pack->parseLong();
+	
+	//TODO: Take the error messages out after testing
+	PlanetManager* plnMgr = player->getZone()->getPlanetManager();
+	if (plnMgr == NULL) {
+		cout << "Error: Planet Manager NULL in parseMissionListRequest() \n";
+		return;
+	}
+
+	MissionTerminal* mt = plnMgr->getMissionTerminal(termId);
+	if (mt == NULL) {
+		//Turn this message off after testing: (this msg will be frequent until we have a complete static object table)
+		cout << "Error: Mission Terminal object NULL in parseMissionListRequest(). Mission Terminal does not exist! \n";
+		return;
+	}
+	
+	MissionManager* misoMgr = player->getZone()->getZoneServer()->getMissionManager();
+	if (misoMgr == NULL) {
+		cout << "Error: Mission Manager NULL in parseMissionListRequest() \n";
+		return;
+	}
+
+	misoMgr->sendTerminalData(player, mt->getTerminalMask(), true);
+}
+
+void ObjectControllerMessage::parseMissionAccept(Player* player, Message* pack){
+	//skip objId + old size
+	pack->shiftOffset(12);
+	
+	//Grab the mission object id
+	uint64 misoId = pack->parseLong();
+	
+	MissionManager* misoMgr = player->getZone()->getZoneServer()->getMissionManager();
+	if (misoMgr == NULL) {
+		cout << "Error: Mission Manager NULL in parseMissionAccept() \n";
+		return;
+	}
+	
+	misoMgr->doMissionAccept(player, misoId, true);
+}
+
+void ObjectControllerMessage::parseMissionAbort(Player* player, Message* pack) {
+	//skip objId + old size
+	pack->shiftOffset(12);
+	
+	//Grab the mission object id
+	uint64 misoId = pack->parseLong();
+	
+	MissionManager* misoMgr = player->getZone()->getZoneServer()->getMissionManager();
+	if (misoMgr == NULL) {
+		cout << "Error: Mission Manager NULL in parseMissionAbort() \n";
+		return;
+	}
+	
+	misoMgr->doMissionAbort(player, misoId, true);
 }
 
 void ObjectControllerMessage::parseGroupInvite(Player* player, Message* pack,

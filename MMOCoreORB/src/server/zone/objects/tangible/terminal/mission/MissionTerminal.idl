@@ -42,82 +42,22 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef STRINGLIST_H_
-#define STRINGLIST_H_
+include "engine/service/Message";
 
-#include "ObjectControllerMessage.h"
+import "../../../player/Player";
 
-class StringList : public ObjectControllerMessage {
-	uint8 optionCount;
-	
-public:
-	
-	StringList(CreatureObject* creo) : ObjectControllerMessage(creo->getObjectID(), 0x0B, 0xE0) {
-		optionCount = 0;
-		insertByte(0);
+import "../../../creature/shuttle/ShuttleCreature";
+
+import "../Terminal";
+
+interface MissionTerminal implements Terminal {
+	MissionTerminal(unsigned long objid, float x, float z, float y, int pId, int tmsk) {
+		super(unsigned int objCRC, objid, const unicode n, const string tempn, x, z, y, int TerminalType); 
 	}
 	
-	void insertOption(const string& file, const string& str) {
-		
-		int size = 0x56 + file.size() + str.size();
-		bool odd = (size & 1);
-		
-		if (odd)
-			insertInt((size + 1) / 2);
-		else 
-			insertInt(size / 2);
+	int getPlanetId();
+	int getTerminalMask();
+			
+	int useObject(Player player);
 
-		insertShort(0);
-		insertShort(0);
-		insertByte(1);
-		insertInt(0xFFFFFFFF);
-		
-		insertAscii(file.c_str());
-		insertInt(0);
-		insertAscii(str.c_str());
-		
-		insertLong(0);
-		insertAscii("");
-		insertInt(0);
-		insertAscii("");
-		insertInt(0);
-		
-		insertLong(0);
-		insertAscii("");
-		insertInt(0);
-		insertAscii("");
-		insertInt(0);
-		
-		insertLong(0);
-		insertAscii("");
-		insertInt(0);
-		insertAscii("");
-		insertInt(0);
-		
-		insertInt(0);
-		insertInt(0);
-		insertByte(0);
-
-		if (odd)
-			insertByte(0);
-
-		updateOptionCount();
-	}
-	
-	void insertOption(string& option) {
-		insertUnicode(unicode(option));
-		updateOptionCount();
-	}
-		
-	void insertOption(unicode& option) {
-		insertUnicode(option);
-		updateOptionCount();		
-	}
-	
-	void updateOptionCount() {
-		insertByte(30, ++optionCount);
-	}
-	
-};
-
-#endif
+}

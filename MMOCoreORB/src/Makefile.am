@@ -66,6 +66,8 @@ core3_IDLS = server/zone/Zone.cpp \
 		server/zone/objects/creature/CreatureGroup.cpp \
 		server/zone/objects/creature/shuttle/ShuttleCreature.cpp \
 		server/zone/objects/creature/trainer/TrainerCreature.cpp \
+		server/zone/objects/creature/Action/ActionCreature.cpp \
+		server/zone/objects/creature/Action/Action.cpp \
 		server/zone/objects/creature/bluefrog/BlueFrogCreature.cpp \
 		server/zone/objects/creature/bluefrog/BlueFrogVector.cpp \
 		server/zone/objects/creature/recruiter/RecruiterCreature.cpp \
@@ -109,6 +111,7 @@ core3_IDLS = server/zone/Zone.cpp \
 		server/zone/objects/tangible/ticket/Ticket.cpp \
 		server/zone/objects/tangible/terminal/Terminal.cpp \
 		server/zone/objects/tangible/terminal/travel/TravelTerminal.cpp \
+		server/zone/objects/tangible/terminal/mission/MissionTerminal.cpp \
 		server/zone/objects/tangible/terminal/guild/GuildTerminal.cpp \
 		server/zone/objects/tangible/terminal/vendor/VendorTerminal.cpp \
 		server/zone/objects/tangible/terminal/bazaar/RegionBazaar.cpp \
@@ -174,6 +177,7 @@ core3_IDLS = server/zone/Zone.cpp \
 		server/zone/managers/bazaar/BazaarManager.cpp \
 		server/zone/managers/bazaar/BazaarPlanetManager.cpp \
 		server/zone/managers/bank/BankManager.cpp \
+		server/zone/managers/mission/MissionManager.cpp \
 		server/chat/room/ChatRoom.cpp \
 		server/chat/ChatManager.cpp \
 		server/chat/GameCommandHandler.cpp
@@ -182,7 +186,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/ServerCore.cpp \
 		server/conf/ConfigManager.cpp \
 		server/db/ServerDatabase.cpp \
-		server/db/ForumsDatabase.cpp \
+        server/db/ForumsDatabase.cpp \
 		server/login/LoginServer.cpp \
 		server/login/LoginPacketHandler.cpp \
 		server/login/LoginMessageProcessorThread.cpp \
@@ -246,6 +250,8 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/creature/CreatureImplementation.cpp \
 		server/zone/objects/creature/CreatureObjectImplementation.cpp \
 		server/zone/objects/creature/shuttle/ShuttleCreatureImplementation.cpp \
+		server/zone/objects/creature/Action/ActionCreatureImplementation.cpp \
+		server/zone/objects/creature/Action/ActionImplementation.cpp \
 		server/zone/objects/creature/trainer/TrainerCreatureImplementation.cpp \
 		server/zone/objects/creature/bluefrog/BlueFrogCreatureImplementation.cpp \
 		server/zone/objects/creature/mount/MountCreatureImplementation.cpp \
@@ -283,6 +289,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/bank/BankManagerImplementation.cpp \
 		server/zone/managers/sui/SuiManager.cpp \
 		server/zone/managers/name/NameManager.cpp \
+		server/zone/managers/mission/MissionManagerImplementation.cpp \
 		server/chat/room/ChatRoomImplementation.cpp \
 		server/chat/ChatManagerImplementation.cpp \
 		server/zone/packets/object/ObjectControllerMessage.cpp \

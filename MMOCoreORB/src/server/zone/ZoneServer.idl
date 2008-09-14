@@ -55,6 +55,7 @@ import "managers/resource/ResourceManager";
 import "managers/loot/LootTableManager";
 import "managers/bazaar/BazaarManager";
 import "managers/bank/BankManager";
+import "managers/mission/MissionManager";
 
 import "../chat/ChatManager";
 
@@ -118,6 +119,7 @@ interface ZoneServer {
 	LootTableManager getLootTableManager();
 	BazaarManager getBazaarManager();
 	BankManager getBankManager();
+	MissionManager getMissionManager();
 	
 	Zone getZone(int index);
 	
@@ -131,6 +133,6 @@ interface ZoneServer {
 	unsigned long getStartTimestamp();
 	
 	unsigned long getNextCreatureID(boolean doLock = true);
-	
+	unsigned long getNextID(boolean doLock = true);
 	unsigned long getNextCellID(boolean doLock = true);
 }

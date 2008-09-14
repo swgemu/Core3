@@ -53,11 +53,16 @@ which carries forward this exception.
 #include "../player/Player.h"
 #include "../player/PlayerImplementation.h"
 
+#include "../tangible/TangibleObject.h"
+#include "../tangible/TangibleObjectImplementation.h"
+
 class MissionObjectImplementation : public SceneObjectImplementation {
 	
 	string dbKey;
 	
 	int terminalMask;
+	
+	TangibleObject* deliverItem;
 	
 	//MISO3:
 	string typeStr; //3 BASELINE ONLY
@@ -108,6 +113,14 @@ public:
 	
 	inline int getTerminalMask() {
 		return terminalMask;
+	}
+	
+	inline void setDeliverItem(TangibleObject* tdi) {
+		deliverItem = tdi;
+	}
+	
+	TangibleObject* getDeliverItem() {
+		return deliverItem;
 	}
 	
 	inline void setTypeStr(const string& tstr) {

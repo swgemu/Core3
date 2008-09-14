@@ -471,6 +471,15 @@ void ZonePacketHandler::handleObjectControllerMessage(Message* pack) {
 			break;
 		case 0x83:
 			switch (header2) {
+			case 0xF5:
+				ObjectControllerMessage::parseMissionListRequest(player, pack);
+				break;
+			case 0xF9:
+				ObjectControllerMessage::parseMissionAccept(player, pack);
+				break;
+			case 0x142:
+				ObjectControllerMessage::parseMissionAbort(player, pack);
+				break;
 			case 0x106:
 				ObjectControllerMessage::parseExperimentation(player, pack);
 				break;

@@ -26,6 +26,8 @@
 
 #include "managers/bank/BankManager.h"
 
+#include "managers/mission/MissionManager.h"
+
 #include "../chat/ChatManager.h"
 
 #include "Zone.h"
@@ -443,12 +445,24 @@ BankManager* ZoneServer::getBankManager() {
 		return ((ZoneServerImplementation*) _impl)->getBankManager();
 }
 
-Zone* ZoneServer::getZone(int index) {
+MissionManager* ZoneServer::getMissionManager() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 37);
+
+		return (MissionManager*) method.executeWithObjectReturn();
+	} else
+		return ((ZoneServerImplementation*) _impl)->getMissionManager();
+}
+
+Zone* ZoneServer::getZone(int index) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 38);
 		method.addSignedIntParameter(index);
 
 		return (Zone*) method.executeWithObjectReturn();
@@ -461,7 +475,7 @@ string& ZoneServer::getServerName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 38);
+		DistributedMethod method(this, 39);
 
 		method.executeWithAsciiReturn(_return_getServerName);
 		return _return_getServerName;
@@ -474,7 +488,7 @@ int ZoneServer::getConnectionCount() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 39);
+		DistributedMethod method(this, 40);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -486,7 +500,7 @@ int ZoneServer::getTotalPlayers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 40);
+		DistributedMethod method(this, 41);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -498,7 +512,7 @@ int ZoneServer::getMaxPlayers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 41);
+		DistributedMethod method(this, 42);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -510,7 +524,7 @@ int ZoneServer::getDeletedPlayers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 42);
+		DistributedMethod method(this, 43);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -522,7 +536,7 @@ unsigned long long ZoneServer::getStartTimestamp() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 43);
+		DistributedMethod method(this, 44);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -534,7 +548,7 @@ unsigned long long ZoneServer::getNextCreatureID(bool doLock) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 44);
+		DistributedMethod method(this, 45);
 		method.addBooleanParameter(doLock);
 
 		return method.executeWithUnsignedLongReturn();
@@ -542,12 +556,25 @@ unsigned long long ZoneServer::getNextCreatureID(bool doLock) {
 		return ((ZoneServerImplementation*) _impl)->getNextCreatureID(doLock);
 }
 
+unsigned long long ZoneServer::getNextID(bool doLock) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 46);
+		method.addBooleanParameter(doLock);
+
+		return method.executeWithUnsignedLongReturn();
+	} else
+		return ((ZoneServerImplementation*) _impl)->getNextID(doLock);
+}
+
 unsigned long long ZoneServer::getNextCellID(bool doLock) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 45);
+		DistributedMethod method(this, 47);
 		method.addBooleanParameter(doLock);
 
 		return method.executeWithUnsignedLongReturn();
@@ -660,30 +687,36 @@ Packet* ZoneServerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertLong(getBankManager()->_getObjectID());
 		break;
 	case 37:
-		resp->insertLong(getZone(inv->getSignedIntParameter())->_getObjectID());
+		resp->insertLong(getMissionManager()->_getObjectID());
 		break;
 	case 38:
-		resp->insertAscii(getServerName());
+		resp->insertLong(getZone(inv->getSignedIntParameter())->_getObjectID());
 		break;
 	case 39:
-		resp->insertSignedInt(getConnectionCount());
+		resp->insertAscii(getServerName());
 		break;
 	case 40:
-		resp->insertSignedInt(getTotalPlayers());
+		resp->insertSignedInt(getConnectionCount());
 		break;
 	case 41:
-		resp->insertSignedInt(getMaxPlayers());
+		resp->insertSignedInt(getTotalPlayers());
 		break;
 	case 42:
-		resp->insertSignedInt(getDeletedPlayers());
+		resp->insertSignedInt(getMaxPlayers());
 		break;
 	case 43:
-		resp->insertLong(getStartTimestamp());
+		resp->insertSignedInt(getDeletedPlayers());
 		break;
 	case 44:
-		resp->insertLong(getNextCreatureID(inv->getBooleanParameter()));
+		resp->insertLong(getStartTimestamp());
 		break;
 	case 45:
+		resp->insertLong(getNextCreatureID(inv->getBooleanParameter()));
+		break;
+	case 46:
+		resp->insertLong(getNextID(inv->getBooleanParameter()));
+		break;
+	case 47:
 		resp->insertLong(getNextCellID(inv->getBooleanParameter()));
 		break;
 	default:
@@ -817,6 +850,10 @@ BankManager* ZoneServerAdapter::getBankManager() {
 	return ((ZoneServerImplementation*) impl)->getBankManager();
 }
 
+MissionManager* ZoneServerAdapter::getMissionManager() {
+	return ((ZoneServerImplementation*) impl)->getMissionManager();
+}
+
 Zone* ZoneServerAdapter::getZone(int index) {
 	return ((ZoneServerImplementation*) impl)->getZone(index);
 }
@@ -847,6 +884,10 @@ unsigned long long ZoneServerAdapter::getStartTimestamp() {
 
 unsigned long long ZoneServerAdapter::getNextCreatureID(bool doLock) {
 	return ((ZoneServerImplementation*) impl)->getNextCreatureID(doLock);
+}
+
+unsigned long long ZoneServerAdapter::getNextID(bool doLock) {
+	return ((ZoneServerImplementation*) impl)->getNextID(doLock);
 }
 
 unsigned long long ZoneServerAdapter::getNextCellID(bool doLock) {

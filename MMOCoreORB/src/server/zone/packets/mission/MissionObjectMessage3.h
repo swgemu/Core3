@@ -66,10 +66,18 @@ public:
 		
 		insertFloat(1.0f);
 
-		insertAscii("mission/mission_object");
+		if(mi->getTitleKey() != 0) {
+			insertAscii("mission/mission_object");
+		} else {
+			insertAscii(mi->getTitleStf());
+		}
 		insertInt(0);
 		
-		insertAscii(mi->getTypeStr());
+		if(mi->getTitleKey() != 0) {
+			insertAscii(mi->getTypeStr());
+		} else {
+			insertAscii("");
+		}
 		
 		//4
 		insertInt(0);

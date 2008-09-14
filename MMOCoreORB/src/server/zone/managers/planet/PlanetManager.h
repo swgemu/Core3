@@ -21,6 +21,8 @@ class BuildingObject;
 
 class CellObject;
 
+class MissionTerminal;
+
 class PlanetManager : public DistributedObjectStub {
 public:
 	PlanetManager(Zone* zone, ZoneProcessServerImplementation* processor);
@@ -46,6 +48,8 @@ public:
 	CellObject* getCell(unsigned long long id);
 
 	BuildingObject* getBuilding(unsigned long long id);
+
+	MissionTerminal* getMissionTerminal(unsigned long long oid);
 
 	unsigned long long getLandingTime();
 
@@ -90,6 +94,8 @@ public:
 	CellObject* getCell(unsigned long long id);
 
 	BuildingObject* getBuilding(unsigned long long id);
+
+	MissionTerminal* getMissionTerminal(unsigned long long oid);
 
 	unsigned long long getLandingTime();
 

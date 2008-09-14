@@ -52,6 +52,8 @@ IDL_SOURCES = server/zone/Zone.idl \
 				server/zone/objects/creature/Creature.idl \
 				server/zone/objects/creature/CreatureGroup.idl \
 				server/zone/objects/creature/shuttle/ShuttleCreature.idl \
+				server/zone/objects/creature/Action/ActionCreature.idl \
+				server/zone/objects/creature/Action/Action.idl \
 				server/zone/objects/creature/trainer/TrainerCreature.idl \
 				server/zone/objects/creature/bluefrog/BlueFrogCreature.idl \
 				server/zone/objects/creature/bluefrog/BlueFrogVector.idl \
@@ -98,6 +100,7 @@ IDL_SOURCES = server/zone/Zone.idl \
 				server/zone/objects/tangible/ticket/Ticket.idl \
 				server/zone/objects/tangible/terminal/Terminal.idl \
 				server/zone/objects/tangible/terminal/travel/TravelTerminal.idl \
+				server/zone/objects/tangible/terminal/mission/MissionTerminal.idl \
 				server/zone/objects/tangible/terminal/guild/GuildTerminal.idl \
 				server/zone/objects/tangible/terminal/vendor/VendorTerminal.idl \
 				server/zone/objects/tangible/terminal/bazaar/RegionBazaar.idl \
@@ -145,11 +148,12 @@ IDL_SOURCES = server/zone/Zone.idl \
 				server/zone/objects/manufacture/ManufactureSchematic.idl \
 				server/zone/objects/mission/MissionObject.idl \
 				server/zone/objects/waypoint/WaypointObject.idl \
+				server/zone/objects/tangible/component/ShipComponent.idl \
+				server/zone/objects/ship/ShipObject.idl \
 				server/zone/managers/bazaar/BazaarManager.idl \
 				server/zone/managers/bazaar/BazaarPlanetManager.idl \
 				server/zone/managers/bank/BankManager.idl \
-				server/zone/objects/tangible/component/ShipComponent.idl \
-				server/zone/objects/ship/ShipObject.idl \
+				server/zone/managers/mission/MissionManager.idl \
 				server/zone/managers/guild/GuildMap.idl \
 				server/zone/managers/guild/GuildManager.idl \
 				server/zone/managers/player/PlayerManager.idl \

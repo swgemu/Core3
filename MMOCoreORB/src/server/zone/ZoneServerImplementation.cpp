@@ -73,8 +73,12 @@ which carries forward this exception.
 
 #include "managers/bazaar/BazaarManager.h"
 #include "managers/bazaar/BazaarManagerImplementation.h"
+
 #include "managers/bank/BankManager.h"
 #include "managers/bank/BankManagerImplementation.h"
+
+#include "managers/mission/MissionManager.h"
+#include "managers/mission/MissionManagerImplementation.h"
 
 #include "ZoneClientSession.h"
 #include "ZoneClientSessionImplementation.h"
@@ -179,6 +183,11 @@ ZoneServerImplementation::~ZoneServerImplementation() {
 		chatManager = NULL;
 	}
 
+	if (missionManager != NULL) {
+		missionManager->finalize();
+		missionManager = NULL;
+	}
+	
 	for (int i = 0; i < 50; ++i) {
 		Zone* zone = zones.get(i);
 		zone->finalize();
@@ -257,6 +266,9 @@ void ZoneServerImplementation::startManagers() {
 
 	bankManager = new BankManager(_this, processor);
 	bankManager->deploy("BankManager");
+	
+	missionManager = new MissionManager(_this, processor);
+	missionManager->deploy("MissionManager");
 }
 
 void ZoneServerImplementation::run() {
@@ -304,6 +316,9 @@ void ZoneServerImplementation::stopManagers() {
 	/*if (playerManager != NULL)
 		playerManager->stop();*/
 
+	if(missionManager != NULL)
+		missionManager->unloadManager();
+	
 	if (resourceManager != NULL)
 		resourceManager->stop();
 
@@ -574,6 +589,16 @@ uint64 ZoneServerImplementation::getNextCreatureID(bool doLock) {
 	return nextID;
 }
 
+uint64 ZoneServerImplementation::getNextID(bool doLock) {
+	lock(doLock);
+	
+	uint64 nextID = (nextCreatureID += 0x01);
+	
+	unlock(doLock);
+	
+	return nextID;
+}
+
 uint64 ZoneServerImplementation::getNextCellID(bool doLock) {
 	lock(doLock);
 	
@@ -583,4 +608,3 @@ uint64 ZoneServerImplementation::getNextCellID(bool doLock) {
 	
 	return nextID;
 }
-

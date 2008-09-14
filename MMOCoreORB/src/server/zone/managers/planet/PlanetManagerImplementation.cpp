@@ -87,7 +87,7 @@ PlanetManagerImplementation::PlanetManagerImplementation(Zone* planet, ZoneProce
 	shuttleMap = new ShuttleMap();
 	ticketCollectorMap = new TicketCollectorMap(2000);
 	travelTerminalMap = new TravelTerminalMap(2000);
-
+	missionTerminalMap = new MissionTerminalMap(100);
 	craftingStationMap.setNullValue(NULL);
 	craftingStationMap.setInsertPlan(SortedVector<VectorMapEntry<uint64, CraftingStation*>*>::NO_DUPLICATE);
 
@@ -117,6 +117,9 @@ PlanetManagerImplementation::~PlanetManagerImplementation() {
 	delete travelTerminalMap;
 	travelTerminalMap = NULL;
 
+	delete missionTerminalMap;
+	missionTerminalMap = NULL;
+	
 	delete shuttleTakeOffEvent;
 	shuttleTakeOffEvent = NULL;
 
@@ -291,6 +294,21 @@ void PlanetManagerImplementation::clearTravelTerminals() {
 	info("cleared travelTerminals");
 }
 
+void PlanetManagerImplementation::clearMissionTerminals() {
+	missionTerminalMap->resetIterator();
+
+	while (travelTerminalMap->hasNext()) {
+		MissionTerminal* missionTerminal = missionTerminalMap->getNextValue();
+		missionTerminal->removeFromZone();
+
+		missionTerminal->finalize();
+	}
+	
+	missionTerminalMap->removeAll();
+	
+	info("cleared missionTerminals");
+}
+
 void PlanetManagerImplementation::clearCraftingStations() {
 	for (int i = 0; i < craftingStationMap.size(); ++i) {
 		CraftingStation* station = craftingStationMap.get(i);
@@ -312,6 +330,7 @@ void PlanetManagerImplementation::loadStaticPlanetObjects() {
 	//loadGuildTerminals();
 	//loadVendorTerminals();
 	loadCraftingStations();
+	loadMissionTerminals();
 }
 
 void PlanetManagerImplementation::loadShuttles() {
@@ -411,6 +430,28 @@ void PlanetManagerImplementation::loadVendorTerminals() {
 
 	vendorTerminal->insertToZone(zone);
 
+	unlock();
+}
+
+void PlanetManagerImplementation::loadMissionTerminals() {
+	//The following code is temporary.
+	//TODO: Have a discussion w/ team about having one single "terminal map"
+	
+	int planetId = zone->getZoneID();
+	
+	if (planetId != 5)
+		return;
+	
+	lock();
+	
+	MissionTerminal* missionTerminal = new MissionTerminal(getNextStaticObjectID(false), -4836.0f, 6.0f, 4155.0f, planetId, MissionTerminalImplementation::TMASK_GENERAL);
+	missionTerminal->setDirection(0, 0, 0, 0);
+	
+	missionTerminal->setZoneProcessServer(server);
+	
+	missionTerminal->insertToZone(zone);
+	missionTerminalMap->put(missionTerminal->getObjectID(), missionTerminal); 
+	
 	unlock();
 }
 
@@ -1082,7 +1123,8 @@ uint64 PlanetManagerImplementation::getNextStaticObjectID(bool doLock) {
 
 	//uint64 nextId = ++nextStaticObjectID;
 
-	uint64 nextId = server->getZoneServer()->getNextCreatureID();
+	uint64 nextId = server->getZoneServer()->getNextID();
+	//uint64 nextId = server->getZoneServer()->getNextCreatureID();
 
 	unlock(doLock);
 

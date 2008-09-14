@@ -42,82 +42,22 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef STRINGLIST_H_
-#define STRINGLIST_H_
+#ifndef MISSIONTERMINALMAP_H_
+#define MISSIONTERMINALMAP_H_
 
-#include "ObjectControllerMessage.h"
+#include "engine/engine.h"
 
-class StringList : public ObjectControllerMessage {
-	uint8 optionCount;
+class MissionTerminalMap : public HashTable<uint64, MissionTerminal*>, public HashTableIterator<uint64, MissionTerminal*> {
 	
+	int hash(const uint64& key) {
+        return Long::hashCode(key);
+	}
+
 public:
-	
-	StringList(CreatureObject* creo) : ObjectControllerMessage(creo->getObjectID(), 0x0B, 0xE0) {
-		optionCount = 0;
-		insertByte(0);
+	MissionTerminalMap(int initsize) : HashTable<uint64, MissionTerminal*>(initsize), HashTableIterator<uint64, MissionTerminal*>(this) {
+		setNullValue(NULL);
 	}
-	
-	void insertOption(const string& file, const string& str) {
-		
-		int size = 0x56 + file.size() + str.size();
-		bool odd = (size & 1);
-		
-		if (odd)
-			insertInt((size + 1) / 2);
-		else 
-			insertInt(size / 2);
 
-		insertShort(0);
-		insertShort(0);
-		insertByte(1);
-		insertInt(0xFFFFFFFF);
-		
-		insertAscii(file.c_str());
-		insertInt(0);
-		insertAscii(str.c_str());
-		
-		insertLong(0);
-		insertAscii("");
-		insertInt(0);
-		insertAscii("");
-		insertInt(0);
-		
-		insertLong(0);
-		insertAscii("");
-		insertInt(0);
-		insertAscii("");
-		insertInt(0);
-		
-		insertLong(0);
-		insertAscii("");
-		insertInt(0);
-		insertAscii("");
-		insertInt(0);
-		
-		insertInt(0);
-		insertInt(0);
-		insertByte(0);
-
-		if (odd)
-			insertByte(0);
-
-		updateOptionCount();
-	}
-	
-	void insertOption(string& option) {
-		insertUnicode(unicode(option));
-		updateOptionCount();
-	}
-		
-	void insertOption(unicode& option) {
-		insertUnicode(option);
-		updateOptionCount();		
-	}
-	
-	void updateOptionCount() {
-		insertByte(30, ++optionCount);
-	}
-	
 };
 
-#endif
+#endif /*MISSIONTERMINALMAP_H_*/

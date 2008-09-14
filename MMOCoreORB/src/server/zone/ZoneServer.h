@@ -27,6 +27,8 @@ class BazaarManager;
 
 class BankManager;
 
+class MissionManager;
+
 class ChatManager;
 
 class Zone;
@@ -99,6 +101,8 @@ public:
 
 	BankManager* getBankManager();
 
+	MissionManager* getMissionManager();
+
 	Zone* getZone(int index);
 
 	string& getServerName();
@@ -114,6 +118,8 @@ public:
 	unsigned long long getStartTimestamp();
 
 	unsigned long long getNextCreatureID(bool doLock = true);
+
+	unsigned long long getNextID(bool doLock = true);
 
 	unsigned long long getNextCellID(bool doLock = true);
 
@@ -197,6 +203,8 @@ public:
 
 	BankManager* getBankManager();
 
+	MissionManager* getMissionManager();
+
 	Zone* getZone(int index);
 
 	string& getServerName();
@@ -212,6 +220,8 @@ public:
 	unsigned long long getStartTimestamp();
 
 	unsigned long long getNextCreatureID(bool doLock);
+
+	unsigned long long getNextID(bool doLock);
 
 	unsigned long long getNextCellID(bool doLock);
 

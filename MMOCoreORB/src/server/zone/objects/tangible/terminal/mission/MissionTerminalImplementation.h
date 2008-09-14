@@ -42,82 +42,56 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef STRINGLIST_H_
-#define STRINGLIST_H_
+#ifndef MISSIONTERMINALIMPLEMENTATION_H_
+#define MISSIONTERMINALIMPLEMENTATION_H_
 
-#include "ObjectControllerMessage.h"
+#include "MissionTerminal.h"
 
-class StringList : public ObjectControllerMessage {
-	uint8 optionCount;
-	
+#include "../../../player/Player.h"
+
+#include "../../../../managers/mission/MissionManager.h"
+
+#include "../../../../packets.h"
+
+class MissionTerminalImplementation : public MissionTerminalServant {
+protected:
+		
+	int planetId;
+	int termMask;
+
 public:
-	
-	StringList(CreatureObject* creo) : ObjectControllerMessage(creo->getObjectID(), 0x0B, 0xE0) {
-		optionCount = 0;
-		insertByte(0);
-	}
-	
-	void insertOption(const string& file, const string& str) {
+	const static int TMASK_GENERAL = 1;
+	const static int TMASK_ENTERTAINER = 2;
+	const static int TMASK_EXPLORER = 4;
+	const static int TMASK_BOUNTY = 8;
+	const static int TMASK_ARTISAN = 16;
+	const static int TMASK_REBEL = 32;
+	const static int TMASK_IMPERIAL = 64;
+	//128, 256, 512, 1024 = reserved
 		
-		int size = 0x56 + file.size() + str.size();
-		bool odd = (size & 1);
-		
-		if (odd)
-			insertInt((size + 1) / 2);
-		else 
-			insertInt(size / 2);
+public:
+	MissionTerminalImplementation(uint64 objid, float x, float z, float y, int pId, int tmsk) 
+			: MissionTerminalServant(0xAD456B02, objid, unicode("SWGEmu Mission Terminal"), "terminal_mission", x, z, y, TERMINAL) {
 
-		insertShort(0);
-		insertShort(0);
-		insertByte(1);
-		insertInt(0xFFFFFFFF);
+		planetId = pId;
+		termMask = tmsk;
 		
-		insertAscii(file.c_str());
-		insertInt(0);
-		insertAscii(str.c_str());
-		
-		insertLong(0);
-		insertAscii("");
-		insertInt(0);
-		insertAscii("");
-		insertInt(0);
-		
-		insertLong(0);
-		insertAscii("");
-		insertInt(0);
-		insertAscii("");
-		insertInt(0);
-		
-		insertLong(0);
-		insertAscii("");
-		insertInt(0);
-		insertAscii("");
-		insertInt(0);
-		
-		insertInt(0);
-		insertInt(0);
-		insertByte(0);
-
-		if (odd)
-			insertByte(0);
-
-		updateOptionCount();
 	}
 	
-	void insertOption(string& option) {
-		insertUnicode(unicode(option));
-		updateOptionCount();
-	}
-		
-	void insertOption(unicode& option) {
-		insertUnicode(option);
-		updateOptionCount();		
+	int getPlanetId() {
+		return planetId;
 	}
 	
-	void updateOptionCount() {
-		insertByte(30, ++optionCount);
+	int getTerminalMask() {
+		return termMask;
+	}
+	
+	int useObject(Player* player) {
+		//missionManager->sendTerminalData(player, TMASK_GENERAL, false);
+		
+		return 0;
 	}
 	
 };
 
-#endif
+#endif /*MISSIONTERMINALIMPLEMENTATION_H_*/

@@ -67,7 +67,7 @@ class GuildManager;
 class ChatManager;
 
 class ResourceManager;
-
+class MissionManager;
 class LootTableManager;
 
 class BazaarManager;
@@ -96,6 +96,8 @@ class ZoneServerImplementation : public DatagramServiceThread, public ZoneServer
 
 	LootTableManager* lootTableManager;
 
+	MissionManager* missionManager;
+	
 	BazaarManager* bazaarManager;
 	BankManager* bankManager;
 
@@ -222,6 +224,10 @@ public:
 		return bankManager;
 	}
 
+	inline MissionManager* getMissionManager() {
+		return missionManager;
+	}
+	
 	inline Zone* getZone(int index) {
 		return zones.get(index);
 	}
@@ -243,9 +249,8 @@ public:
 	}
 
 	uint64 getNextCreatureID(bool doLock = true);
-
+	uint64 getNextID(bool doLock = true);
 	uint64 getNextCellID(bool doLock = true);
-	
 };
 
 #endif /*ZONESERVERIMPLEMENTATION_H_*/
