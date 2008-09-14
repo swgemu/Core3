@@ -49,6 +49,8 @@ reinforcedWorkShirt = Clothing:new {
 	objectCRC = "3169222941",
 
 	objectType = SHIRT,
+	
+	itemMask = HUMANOIDS,
 
 	equipped = "1"
 }

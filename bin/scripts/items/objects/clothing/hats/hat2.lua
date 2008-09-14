@@ -50,5 +50,7 @@ hat2 = Clothing:new {
 
 	objectType = HEADWEAR,
 
-	equipped = "0"
+	equipped = "0",
+
+	itemMask = HUMANOIDS
 }

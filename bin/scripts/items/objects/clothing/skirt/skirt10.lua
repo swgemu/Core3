@@ -50,5 +50,7 @@ skirt10 = Clothing:new {
 
 	objectType = SKIRT,
 
-	equipped = "0"
+	equipped = "0",
+
+	itemMask = HUMANOID_FEMALES
 }

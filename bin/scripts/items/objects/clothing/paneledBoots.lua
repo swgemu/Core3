@@ -49,6 +49,8 @@ paneledBoots = Clothing:new {
 	objectCRC = "3589494086",
 
 	objectType = FOOTWEAR,
+	
+	itemMask = HUMANOID_FOOTWEAR,
 
 	equipped = "1"
 }

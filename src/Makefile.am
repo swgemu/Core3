@@ -66,8 +66,8 @@ core3_IDLS = server/zone/Zone.cpp \
 		server/zone/objects/creature/CreatureGroup.cpp \
 		server/zone/objects/creature/shuttle/ShuttleCreature.cpp \
 		server/zone/objects/creature/trainer/TrainerCreature.cpp \
-		server/zone/objects/creature/Action/ActionCreature.cpp \
-		server/zone/objects/creature/Action/Action.cpp \
+		server/zone/objects/creature/action/ActionCreature.cpp \
+		server/zone/objects/creature/action/Action.cpp \
 		server/zone/objects/creature/bluefrog/BlueFrogCreature.cpp \
 		server/zone/objects/creature/bluefrog/BlueFrogVector.cpp \
 		server/zone/objects/creature/recruiter/RecruiterCreature.cpp \
@@ -250,8 +250,8 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/creature/CreatureImplementation.cpp \
 		server/zone/objects/creature/CreatureObjectImplementation.cpp \
 		server/zone/objects/creature/shuttle/ShuttleCreatureImplementation.cpp \
-		server/zone/objects/creature/Action/ActionCreatureImplementation.cpp \
-		server/zone/objects/creature/Action/ActionImplementation.cpp \
+		server/zone/objects/creature/action/ActionCreatureImplementation.cpp \
+		server/zone/objects/creature/action/ActionImplementation.cpp \
 		server/zone/objects/creature/trainer/TrainerCreatureImplementation.cpp \
 		server/zone/objects/creature/bluefrog/BlueFrogCreatureImplementation.cpp \
 		server/zone/objects/creature/mount/MountCreatureImplementation.cpp \

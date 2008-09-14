@@ -49,6 +49,8 @@ dressShoes = Clothing:new {
 	objectCRC = "3549441025",
 
 	objectType = FOOTWEAR,
+	
+	itemMask = HUMANOID_FOOTWEAR,
 
 	equipped = "1"
 }

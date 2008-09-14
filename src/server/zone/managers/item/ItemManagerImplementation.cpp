@@ -499,6 +499,8 @@ TangibleObject* ItemManagerImplementation::createPlayerObject(Player* player, Re
 
 	string appearance = result->getString(10);
 
+	uint16 itemMask = result->getUnsignedInt(11);
+
 	BinaryData cust(appearance);
 
 	string custStr;
@@ -521,6 +523,8 @@ TangibleObject* ItemManagerImplementation::createPlayerObject(Player* player, Re
 
 	item->setAttributes(attributes);
 	item->parseItemAttributes();
+
+	item->setPlayerUseMask(itemMask);
 
 	item->setCustomizationString(custStr);
 
@@ -571,6 +575,8 @@ TangibleObject* ItemManagerImplementation::clonePlayerObjectTemplate(uint64 obje
 
 	newTempl->setAttributes(templ->getAttributes());
 	newTempl->parseItemAttributes();
+
+	newTempl->setPlayerUseMask(templ->getPlayerUseMask());
 
 	return newTempl;
 }
@@ -786,6 +792,39 @@ void ItemManagerImplementation::registerGlobals() {
 	setGlobalInt("ONFIRE_STATE", CreatureObjectImplementation::ONFIRE_STATE);
 	setGlobalInt("DISEASED_STATE", CreatureObjectImplementation::DISEASED_STATE);
 	setGlobalInt("POISONED_STATE", CreatureObjectImplementation::POISONED_STATE);
+
+	//ItemMasks
+	setGlobalShort("MALE", TangibleObjectImplementation::MALE);
+	setGlobalShort("FEMALE", TangibleObjectImplementation::FEMALE);
+
+	setGlobalShort("HUMAN", TangibleObjectImplementation::HUMAN);
+	setGlobalShort("TRANDOSHAN", TangibleObjectImplementation::TRANDOSHAN);
+	setGlobalShort("TWILEK", TangibleObjectImplementation::TWILEK);
+	setGlobalShort("BOTHAN", TangibleObjectImplementation::BOTHAN);
+	setGlobalShort("ZABRAK", TangibleObjectImplementation::ZABRAK);
+	setGlobalShort("RODIAN", TangibleObjectImplementation::RODIAN);
+	setGlobalShort("MONCALAMARI", TangibleObjectImplementation::MONCALAMARI);
+	setGlobalShort("WOOKIEE", TangibleObjectImplementation::WOOKIEE);
+	setGlobalShort("SULLUSTAN", TangibleObjectImplementation::SULLUSTAN);
+	setGlobalShort("ITHORIAN", TangibleObjectImplementation::ITHORIAN);
+
+	setGlobalShort("NEUTRAL", TangibleObjectImplementation::NEUTRAL);
+	setGlobalShort("IMPERIAL", TangibleObjectImplementation::IMPERIAL);
+	setGlobalShort("REBEL", TangibleObjectImplementation::REBEL);
+	setGlobalShort("COVERT", TangibleObjectImplementation::COVERT);
+
+	setGlobalShort("ALL", TangibleObjectImplementation::ALL);
+	setGlobalShort("ALLSEXES", TangibleObjectImplementation::ALLSEXES);
+	setGlobalShort("ALLFACTIONS", TangibleObjectImplementation::ALLFACTIONS);
+	setGlobalShort("HUMANOIDS", TangibleObjectImplementation::HUMANOIDS);
+	setGlobalShort("HUMANOID_FOOTWEAR", TangibleObjectImplementation::HUMANOID_FOOTWEAR);
+	setGlobalShort("HUMANOID_MALES", TangibleObjectImplementation::HUMANOID_MALES);
+	setGlobalShort("HUMANOID_FEMALES", TangibleObjectImplementation::HUMANOID_FEMALES);
+	setGlobalShort("HUMANOID_IMPERIALS", TangibleObjectImplementation::HUMANOID_IMPERIALS);
+	setGlobalShort("HUMANOID_REBELS", TangibleObjectImplementation::HUMANOID_REBELS);
+	setGlobalShort("WOOKIEES", TangibleObjectImplementation::WOOKIEES);
+	setGlobalShort("ITHORIANS", TangibleObjectImplementation::ITHORIANS);
+	setGlobalShort("TWILEKS", TangibleObjectImplementation::TWILEKS);
 }
 
 int ItemManagerImplementation::runItemLUAFile(lua_State* L) {
@@ -803,10 +842,12 @@ TangibleObject* ItemManagerImplementation::createTemplateFromLua(LuaObject itemc
 	string templ = itemconfig.getStringField("templateName");
 	bool equipped = bool(itemconfig.getByteField("equipped"));
 	int type = itemconfig.getIntField("objectType");
+	uint16 itemMask = itemconfig.getIntField("itemMask");
 
 	TangibleObject* item = createPlayerObjectTemplate(type, 1, crc, unicode(name), templ, equipped, false, "", 0);
 
 	item->setObjectSubType(type);
+	item->setPlayerUseMask(itemMask);
 
 	//ADD ATTRIBUTES
 	if (type & TangibleObjectImplementation::ARMOR) {

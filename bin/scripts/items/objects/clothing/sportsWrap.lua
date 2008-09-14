@@ -49,6 +49,8 @@ sportsWrap = Clothing:new {
 	objectCRC = "2976519446",
 
 	objectType = SHIRT,
+	
+	itemMask = HUMANOID_FEMALES,
 
 	equipped = "1"
 }

@@ -49,6 +49,8 @@ sturdyBoots = Clothing:new {
 	objectCRC = "3277311029",
 
 	objectType = FOOTWEAR,
+	
+	itemMask = HUMANOID_FOOTWEAR,
 
 	equipped = "1"
 }

@@ -49,6 +49,8 @@ dressSlippers = Clothing:new {
 	objectCRC = "2457414407",
 
 	objectType = FOOTWEAR,
+	
+	itemMask = HUMANOID_FOOTWEAR,
 
 	equipped = "1"
 }

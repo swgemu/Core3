@@ -52,8 +52,8 @@ IDL_SOURCES = server/zone/Zone.idl \
 				server/zone/objects/creature/Creature.idl \
 				server/zone/objects/creature/CreatureGroup.idl \
 				server/zone/objects/creature/shuttle/ShuttleCreature.idl \
-				server/zone/objects/creature/Action/ActionCreature.idl \
-				server/zone/objects/creature/Action/Action.idl \
+				server/zone/objects/creature/action/ActionCreature.idl \
+				server/zone/objects/creature/action/Action.idl \
 				server/zone/objects/creature/trainer/TrainerCreature.idl \
 				server/zone/objects/creature/bluefrog/BlueFrogCreature.idl \
 				server/zone/objects/creature/bluefrog/BlueFrogVector.idl \

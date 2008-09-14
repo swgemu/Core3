@@ -50,5 +50,7 @@ bodysuit12 = Clothing:new {
 
 	objectType = BODYSUIT,
 
-	equipped = "0"
+	equipped = "0",
+
+	itemMask = HUMANOID_FEMALES
 }

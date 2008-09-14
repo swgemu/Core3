@@ -50,5 +50,7 @@ atat_quest = Clothing:new {
 
 	objectType = BODYSUIT,
 
-	equipped = "0"
+	equipped = "0",
+
+	itemMask = HUMANOID_IMPERIALS
 }
