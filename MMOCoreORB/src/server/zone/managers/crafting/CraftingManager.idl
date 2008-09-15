@@ -59,6 +59,8 @@ interface CraftingManager {
 		super(server, processor);
 	}
 	
+	void reloadSchematicTable();
+	
 	void prepareCraftingSession(Player player, CraftingTool craftingTool, DraftSchematic draftSchematic);
 	
 	void addIngredientToSlot(Player player, TangibleObject tano, int slot, int counter);
@@ -79,4 +81,6 @@ interface CraftingManager {
 
 	void addDraftSchematicsFromGroupName(Player player, const string schematicGroupName);
 	void subtractDraftSchematicsFromGroupName(Player player, const string schematicGroupName);
+
+	void refreshDraftSchematics(Player player);
 }

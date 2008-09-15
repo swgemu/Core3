@@ -61,6 +61,8 @@ public:
 
 	void handleGroupChat(Player* player, Message* pack);
 
+	void handleGuildChat(Player* player, Message* pack);
+
 	void handleCreateRoom(Player* player, Message* pack);
 
 	void handleChatEnterRoomById(Player* player, Message* pack);
@@ -77,7 +79,7 @@ public:
 
 	void sendRoomList(Player* player);
 
-	ChatRoom* createGroupRoom(unsigned int groupID, Player* creator);
+	ChatRoom* createGroupRoom(unsigned int groupID, Player* creator, bool mode);
 
 	ChatRoom* createRoomByFullPath(const string& path);
 
@@ -157,6 +159,8 @@ public:
 
 	void handleGroupChat(Player* player, Message* pack);
 
+	void handleGuildChat(Player* player, Message* pack);
+
 	void handleCreateRoom(Player* player, Message* pack);
 
 	void handleChatEnterRoomById(Player* player, Message* pack);
@@ -173,7 +177,7 @@ public:
 
 	void sendRoomList(Player* player);
 
-	ChatRoom* createGroupRoom(unsigned int groupID, Player* creator);
+	ChatRoom* createGroupRoom(unsigned int groupID, Player* creator, bool mode);
 
 	ChatRoom* createRoomByFullPath(const string& path);
 

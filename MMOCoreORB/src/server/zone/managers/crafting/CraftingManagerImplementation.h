@@ -137,6 +137,8 @@ public:
 	CraftingManagerImplementation(ZoneServer* serv, ZoneProcessServerImplementation* proc);
 	~CraftingManagerImplementation();
 
+	void reloadSchematicTable();
+
 	// Setup initial crafting process
 	void prepareCraftingSession(Player* player, CraftingTool* craftingTool, DraftSchematic* draftSchematic);
 
@@ -163,6 +165,8 @@ public:
 
 	void addDraftSchematicsFromGroupName(Player* player, const string& schematicGroupName);
 	void subtractDraftSchematicsFromGroupName(Player* player, const string& schematicGroupName);
+
+	void refreshDraftSchematics(Player* player);
 
 private:
 	void mapDraftSchematic(DraftSchematic* draftSchematic);
