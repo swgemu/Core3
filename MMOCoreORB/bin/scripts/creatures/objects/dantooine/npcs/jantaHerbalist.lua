@@ -120,7 +120,7 @@ jantaHerbalist = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0,1,2,3", -- Group it belongs to for loot
+      lootGroup = "0,11,15,19,21,33", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 

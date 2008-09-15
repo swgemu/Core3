@@ -233,7 +233,7 @@ void GameCommandHandler::init() {
 			"Adds a requested item to your inventory.",
 			"Usage: @giveItemTemp <Item Type> [item sub-type]",
 			&giveItemTemp);
-	gmCommands->addCommand("clientEffect", DEVELOPER,
+	gmCommands->addCommand("clientEffect", PRIVILEGED,
 			"Plays a client effect animation around your character.",
 			"Usage: @clientEffect <effect>",
 			&clientEffect);
