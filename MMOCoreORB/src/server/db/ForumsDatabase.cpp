@@ -49,3 +49,4 @@ string ForumsDatabase::forumsbannedGroup = "0";
 string ForumsDatabase::forumsStandardGroup = "0";
 string ForumsDatabase::forumsUserTable = "0";
 string ForumsDatabase::forumsBannedTable = "0";
+string ForumsDatabase::forumsNewActivationTable = "0";

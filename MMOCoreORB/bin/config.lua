@@ -66,6 +66,7 @@ ForumsBannedGroupID = "" -- ID String of "banned" group
 ForumsStandardGroupID = "" -- ID String of standard user group
 ForumsUserTable = "" -- user table ex. vb3_users
 ForumsBannedTable = "" -- banned table ex. vb3_userban
+ForumsNewActivationTable = "" -- new user table ex. vb3_useractivation
 
 LoginPort = 44453
 LoginAllowedConnections = 3000

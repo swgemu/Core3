@@ -78,6 +78,7 @@ public:
 	static const int ACCOUNTBANNED = 3;
 	static const int ACCOUNTAUTOREGDISABLED = 4;
 	static const int ACCOUNTDOESNTEXIST = 5;
+	static const int ACCOUNTNOTACTIVE = 6;
 
 
 public:
@@ -187,7 +188,13 @@ public:
 			      << " WHERE userid = (SELECT "
 			      << ForumsDatabase::userTable() << ".userid "
 			      << "FROM " << ForumsDatabase::userTable()
-			      << " WHERE username = \'" << username << "\') ) as banned"
+			      << " WHERE username = \'" << username << "\') ) as banned, "
+				  << "(SELECT userid FROM "
+				  << ForumsDatabase::newActivationTable()
+			      << " WHERE userid = (SELECT "
+			      << ForumsDatabase::userTable() << ".userid "
+			      << "FROM " << ForumsDatabase::userTable()
+			      << " WHERE username = \'" << username << "\') ) as newuser "
 				  << " FROM " << ForumsDatabase::userTable()
 			      << " WHERE "
 			      << ForumsDatabase::userTable() << ".username = \'" << username << "\'";
@@ -215,7 +222,21 @@ public:
 					delete res;
 					return ACCOUNTBANNED;
 				}
-				
+
+				try {
+					string test = res->getString(6);
+					isBanned = true;
+				} catch (...) {
+
+					isBanned = false;
+
+				}
+
+				if(isBanned){
+					delete res;
+					return ACCOUNTNOTACTIVE;
+				}
+
 				string forSalt = forumSalt;
 				MySqlDatabase::escapeString(forSalt);
 

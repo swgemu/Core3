@@ -70,6 +70,7 @@ bool ConfigManager::loadConfigData() {
 	forumsStandardGroupID = getGlobalString("ForumsStandardGroupID");
 	forumsUserTable = getGlobalString("ForumsUserTable");
 	forumsBannedTable = getGlobalString("ForumsBannedTable");
+	forumsNewActivationTable = getGlobalString("ForumsNewActivationTable");
 
 	statusPort = getGlobalShort("StatusPort");
 

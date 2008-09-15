@@ -65,6 +65,7 @@ class ConfigManager : public Lua {
 	string forumsStandardGroupID;
 	string forumsUserTable;
 	string forumsBannedTable;
+	string forumsNewActivationTable;
 
 	string dBHost;
 	uint16 dBPort;
@@ -110,6 +111,7 @@ public:
 		forumsStandardGroupID = "2";
 		forumsUserTable = "vb3_users";
 		forumsBannedTable = "vb3_bannedusers";
+		forumsNewActivationTable = "vb3_useractivation";
 		useVBIngeration = 0;
 
 		statusPort = 44455;
@@ -210,6 +212,10 @@ public:
 
 	inline string& getForumsBannedTable() {
 		return forumsBannedTable;
+	}
+
+	inline string& getForumsNewActivationTable() {
+		return forumsNewActivationTable;
 	}
 
 	inline uint16 getLoginPort() {
