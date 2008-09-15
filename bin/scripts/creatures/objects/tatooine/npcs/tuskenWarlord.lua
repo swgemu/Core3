@@ -120,7 +120,7 @@ tuskenWarlord = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0,10,1,2,3,72", -- Group it belongs to for loot
+      lootGroup = "0,23,27,33,34,39,40", -- Group it belongs to for lootr loot
 
       tame = 0,  -- Likely hood to be tamed
 
