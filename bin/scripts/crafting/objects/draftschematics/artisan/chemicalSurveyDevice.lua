@@ -51,37 +51,35 @@ chemicalSurveyDevice = Object:new {
   craftingToolTab = 4096,
   complexity = 7,
   size = 1, 
+
+  xpType = "crafting_general",
+  xp = 57,
+
+  assemblySkill = "general_assembly",
+  experimentingSkill = "general_experimentation",
   
   ingredientTemplateNames = "craft_item_ingredients_n, craft_item_ingredients_n, craft_item_ingredients_n, craft_item_ingredients_n",
   ingredientTitleNames = "assembly_enclosure, controller, scanner_assembly, storage_unit",
   ingredientOptionals = "0, 0, 0, 0",
   resourceTypes = "metal, metal, metal, mineral",
   resourceQuantities = "8, 3, 8, 8",
+  combineTypes = "1, 1, 1, 1",
   
   numberExperimentalProperties = "1, 1, 1, 1",
-
   experimentalProperties = "XX, XX, XX, CD",
   experimentalWeights = "0, 0, 0, 1",
-
   experimentalGroupTitles = "exp_effectiveness",
-
   experimentalSubGroupCount = "1",
-
   experimentalSubGroupTitles = "quality",
   
-  tanoAttributes = "objecttype=32770:objectcrc=2242363434:objecttemp=survey_tool_chemical:",
+  tanoAttributes = "objecttype=32770:objectcrc=2242363434:objecttemp=survey_tool_chemical:templatetype=obj_n:",
    
-  attributesToSet = "hitPoints, useModifier",
 
-  attributeExperimentalProperties = "null, quality",
+  attributesToSet = "quality",
+  attributeExperimentalProperties = "exp_effectiveness",
+  attributePrecision = "2",
+  attributesMinMax = "-15, 15"
 
-  attributesMinMax = "1000, 1000, -15, 15",
-
-  xpType = "crafting_general",
-  xp = 57,
-
-  assemblySkill = "general_assembly",
-  experimentingSkill = "general_experimentation"
 }
 
 DraftSchematics:addDraftSchematic(chemicalSurveyDevice, 780227147) --- Add to global DraftSchematics table

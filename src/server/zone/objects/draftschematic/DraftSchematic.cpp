@@ -24,8 +24,8 @@
  *	DraftSchematicStub
  */
 
-DraftSchematic::DraftSchematic(unsigned int schematicID, const string& objName, unsigned int objCRC, const string& groupName, unsigned int complexity, unsigned int schematicSize, int craftingToolTab) : ManagedObject(DummyConstructorParameter::instance()) {
-	_impl = new DraftSchematicImplementation(schematicID, objName, objCRC, groupName, complexity, schematicSize, craftingToolTab);
+DraftSchematic::DraftSchematic(unsigned int schematicID, const string& objName, const string& stringName, unsigned int objCRC, const string& groupName, unsigned int complexity, unsigned int schematicSize, int craftingToolTab) : ManagedObject(DummyConstructorParameter::instance()) {
+	_impl = new DraftSchematicImplementation(schematicID, objName, stringName, objCRC, groupName, complexity, schematicSize, craftingToolTab);
 	_impl->_setStub(this);
 }
 
@@ -157,7 +157,7 @@ void DraftSchematic::helperSendIngredientsToPlayer(ObjectControllerMessage* objM
 		((DraftSchematicImplementation*) _impl)->helperSendIngredientsToPlayer(objMsg);
 }
 
-void DraftSchematic::addIngredient(const string& ingredientTemplateName, const string& ingredientTitleName, bool optional, const string& resourceType, unsigned int resourceQuantity) {
+void DraftSchematic::addIngredient(const string& ingredientTemplateName, const string& ingredientTitleName, bool optional, const string& resourceType, unsigned int resourceQuantity, unsigned int combineType) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -168,10 +168,11 @@ void DraftSchematic::addIngredient(const string& ingredientTemplateName, const s
 		method.addBooleanParameter(optional);
 		method.addAsciiParameter(resourceType);
 		method.addUnsignedIntParameter(resourceQuantity);
+		method.addUnsignedIntParameter(combineType);
 
 		method.executeWithVoidReturn();
 	} else
-		((DraftSchematicImplementation*) _impl)->addIngredient(ingredientTemplateName, ingredientTitleName, optional, resourceType, resourceQuantity);
+		((DraftSchematicImplementation*) _impl)->addIngredient(ingredientTemplateName, ingredientTitleName, optional, resourceType, resourceQuantity, combineType);
 }
 
 DraftSchematicIngredient* DraftSchematic::getIngredient(int index) {
@@ -390,20 +391,34 @@ DraftSchematicAttribute* DraftSchematic::getAttributeToSet(const int i) {
 		return ((DraftSchematicImplementation*) _impl)->getAttributeToSet(i);
 }
 
-void DraftSchematic::addAttributeToSet(const string& attribute, float minVal, float maxVal, const string& attributeExpProp) {
+DraftSchematicAttribute* DraftSchematic::getAttributeToSet(const string& name) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 33);
+		method.addAsciiParameter(name);
+
+		return (DraftSchematicAttribute*) method.executeWithObjectReturn();
+	} else
+		return ((DraftSchematicImplementation*) _impl)->getAttributeToSet(name);
+}
+
+void DraftSchematic::addAttributeToSet(const string& attribute, float minVal, float maxVal, const string& attributeExpProp, const int precision) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 34);
 		method.addAsciiParameter(attribute);
 		method.addFloatParameter(minVal);
 		method.addFloatParameter(maxVal);
 		method.addAsciiParameter(attributeExpProp);
+		method.addSignedIntParameter(precision);
 
 		method.executeWithVoidReturn();
 	} else
-		((DraftSchematicImplementation*) _impl)->addAttributeToSet(attribute, minVal, maxVal, attributeExpProp);
+		((DraftSchematicImplementation*) _impl)->addAttributeToSet(attribute, minVal, maxVal, attributeExpProp, precision);
 }
 
 int DraftSchematic::getExpPropGroupListSize() {
@@ -411,7 +426,7 @@ int DraftSchematic::getExpPropGroupListSize() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 34);
+		DistributedMethod method(this, 35);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -423,7 +438,7 @@ DraftSchematicExpPropGroup* DraftSchematic::getExpPropGroup(int index) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 35);
+		DistributedMethod method(this, 36);
 		method.addSignedIntParameter(index);
 
 		return (DraftSchematicExpPropGroup*) method.executeWithObjectReturn();
@@ -436,7 +451,7 @@ unsigned int DraftSchematic::getSchematicID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 36);
+		DistributedMethod method(this, 37);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -448,7 +463,7 @@ unsigned int DraftSchematic::getSchematicCRC() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 37);
+		DistributedMethod method(this, 38);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -460,7 +475,7 @@ string& DraftSchematic::getName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 38);
+		DistributedMethod method(this, 39);
 
 		method.executeWithAsciiReturn(_return_getName);
 		return _return_getName;
@@ -468,12 +483,25 @@ string& DraftSchematic::getName() {
 		return ((DraftSchematicImplementation*) _impl)->getName();
 }
 
+string& DraftSchematic::getStringName() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 40);
+
+		method.executeWithAsciiReturn(_return_getStringName);
+		return _return_getStringName;
+	} else
+		return ((DraftSchematicImplementation*) _impl)->getStringName();
+}
+
 string& DraftSchematic::getGroupName() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 39);
+		DistributedMethod method(this, 41);
 
 		method.executeWithAsciiReturn(_return_getGroupName);
 		return _return_getGroupName;
@@ -486,7 +514,7 @@ unsigned int DraftSchematic::getComplexity() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 40);
+		DistributedMethod method(this, 42);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -498,7 +526,7 @@ unsigned int DraftSchematic::getSchematicSize() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 41);
+		DistributedMethod method(this, 43);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -510,7 +538,7 @@ unsigned int DraftSchematic::getObjectID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 42);
+		DistributedMethod method(this, 44);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -522,7 +550,7 @@ string& DraftSchematic::getTanoAttributes() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 43);
+		DistributedMethod method(this, 45);
 
 		method.executeWithAsciiReturn(_return_getTanoAttributes);
 		return _return_getTanoAttributes;
@@ -535,7 +563,7 @@ int DraftSchematic::getCraftingToolTab() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 44);
+		DistributedMethod method(this, 46);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -547,7 +575,7 @@ SceneObject* DraftSchematic::getContainer() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 45);
+		DistributedMethod method(this, 47);
 
 		return (SceneObject*) method.executeWithObjectReturn();
 	} else
@@ -559,7 +587,7 @@ string& DraftSchematic::getXpType() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 46);
+		DistributedMethod method(this, 48);
 
 		method.executeWithAsciiReturn(_return_getXpType);
 		return _return_getXpType;
@@ -572,7 +600,7 @@ int DraftSchematic::getXp() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 47);
+		DistributedMethod method(this, 49);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -584,7 +612,7 @@ string& DraftSchematic::getExperimentingSkill() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 48);
+		DistributedMethod method(this, 50);
 
 		method.executeWithAsciiReturn(_return_getExperimentingSkill);
 		return _return_getExperimentingSkill;
@@ -597,7 +625,7 @@ string& DraftSchematic::getAssemblySkill() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 49);
+		DistributedMethod method(this, 51);
 
 		method.executeWithAsciiReturn(_return_getAssemblySkill);
 		return _return_getAssemblySkill;
@@ -610,7 +638,7 @@ int DraftSchematic::getExpPoints() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 50);
+		DistributedMethod method(this, 52);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -622,7 +650,7 @@ int DraftSchematic::getExpCounter() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 51);
+		DistributedMethod method(this, 53);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -634,7 +662,7 @@ float DraftSchematic::getExpFailure() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 52);
+		DistributedMethod method(this, 54);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -646,7 +674,7 @@ DraftSchematicValues* DraftSchematic::getCraftingValues() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 53);
+		DistributedMethod method(this, 55);
 
 		return (DraftSchematicValues*) method.executeWithObjectReturn();
 	} else
@@ -658,7 +686,7 @@ bool DraftSchematic::isFinished() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 54);
+		DistributedMethod method(this, 56);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -670,7 +698,7 @@ void DraftSchematic::toString() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 55);
+		DistributedMethod method(this, 57);
 
 		method.executeWithVoidReturn();
 	} else
@@ -716,7 +744,7 @@ Packet* DraftSchematicAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		helperSendIngredientsToPlayer((ObjectControllerMessage*) inv->getObjectParameter());
 		break;
 	case 15:
-		addIngredient(inv->getAsciiParameter(_param0_addIngredient__string_string_bool_string_int_), inv->getAsciiParameter(_param1_addIngredient__string_string_bool_string_int_), inv->getBooleanParameter(), inv->getAsciiParameter(_param3_addIngredient__string_string_bool_string_int_), inv->getUnsignedIntParameter());
+		addIngredient(inv->getAsciiParameter(_param0_addIngredient__string_string_bool_string_int_int_), inv->getAsciiParameter(_param1_addIngredient__string_string_bool_string_int_int_), inv->getBooleanParameter(), inv->getAsciiParameter(_param3_addIngredient__string_string_bool_string_int_int_), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter());
 		break;
 	case 16:
 		resp->insertLong(getIngredient(inv->getSignedIntParameter())->_getObjectID());
@@ -770,72 +798,78 @@ Packet* DraftSchematicAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		resp->insertLong(getAttributeToSet(inv->getSignedIntParameter())->_getObjectID());
 		break;
 	case 33:
-		addAttributeToSet(inv->getAsciiParameter(_param0_addAttributeToSet__string_float_float_string_), inv->getFloatParameter(), inv->getFloatParameter(), inv->getAsciiParameter(_param3_addAttributeToSet__string_float_float_string_));
+		resp->insertLong(getAttributeToSet(inv->getAsciiParameter(_param0_getAttributeToSet__string_))->_getObjectID());
 		break;
 	case 34:
-		resp->insertSignedInt(getExpPropGroupListSize());
+		addAttributeToSet(inv->getAsciiParameter(_param0_addAttributeToSet__string_float_float_string_int_), inv->getFloatParameter(), inv->getFloatParameter(), inv->getAsciiParameter(_param3_addAttributeToSet__string_float_float_string_int_), inv->getSignedIntParameter());
 		break;
 	case 35:
-		resp->insertLong(getExpPropGroup(inv->getSignedIntParameter())->_getObjectID());
+		resp->insertSignedInt(getExpPropGroupListSize());
 		break;
 	case 36:
-		resp->insertInt(getSchematicID());
+		resp->insertLong(getExpPropGroup(inv->getSignedIntParameter())->_getObjectID());
 		break;
 	case 37:
-		resp->insertInt(getSchematicCRC());
+		resp->insertInt(getSchematicID());
 		break;
 	case 38:
-		resp->insertAscii(getName());
+		resp->insertInt(getSchematicCRC());
 		break;
 	case 39:
-		resp->insertAscii(getGroupName());
+		resp->insertAscii(getName());
 		break;
 	case 40:
-		resp->insertInt(getComplexity());
+		resp->insertAscii(getStringName());
 		break;
 	case 41:
-		resp->insertInt(getSchematicSize());
+		resp->insertAscii(getGroupName());
 		break;
 	case 42:
-		resp->insertInt(getObjectID());
+		resp->insertInt(getComplexity());
 		break;
 	case 43:
-		resp->insertAscii(getTanoAttributes());
+		resp->insertInt(getSchematicSize());
 		break;
 	case 44:
-		resp->insertSignedInt(getCraftingToolTab());
+		resp->insertInt(getObjectID());
 		break;
 	case 45:
-		resp->insertLong(getContainer()->_getObjectID());
+		resp->insertAscii(getTanoAttributes());
 		break;
 	case 46:
-		resp->insertAscii(getXpType());
+		resp->insertSignedInt(getCraftingToolTab());
 		break;
 	case 47:
-		resp->insertSignedInt(getXp());
+		resp->insertLong(getContainer()->_getObjectID());
 		break;
 	case 48:
-		resp->insertAscii(getExperimentingSkill());
+		resp->insertAscii(getXpType());
 		break;
 	case 49:
-		resp->insertAscii(getAssemblySkill());
+		resp->insertSignedInt(getXp());
 		break;
 	case 50:
-		resp->insertSignedInt(getExpPoints());
+		resp->insertAscii(getExperimentingSkill());
 		break;
 	case 51:
-		resp->insertSignedInt(getExpCounter());
+		resp->insertAscii(getAssemblySkill());
 		break;
 	case 52:
-		resp->insertFloat(getExpFailure());
+		resp->insertSignedInt(getExpPoints());
 		break;
 	case 53:
-		resp->insertLong(getCraftingValues()->_getObjectID());
+		resp->insertSignedInt(getExpCounter());
 		break;
 	case 54:
-		resp->insertBoolean(isFinished());
+		resp->insertFloat(getExpFailure());
 		break;
 	case 55:
+		resp->insertLong(getCraftingValues()->_getObjectID());
+		break;
+	case 56:
+		resp->insertBoolean(isFinished());
+		break;
+	case 57:
 		toString();
 		break;
 	default:
@@ -881,8 +915,8 @@ void DraftSchematicAdapter::helperSendIngredientsToPlayer(ObjectControllerMessag
 	return ((DraftSchematicImplementation*) impl)->helperSendIngredientsToPlayer(objMsg);
 }
 
-void DraftSchematicAdapter::addIngredient(const string& ingredientTemplateName, const string& ingredientTitleName, bool optional, const string& resourceType, unsigned int resourceQuantity) {
-	return ((DraftSchematicImplementation*) impl)->addIngredient(ingredientTemplateName, ingredientTitleName, optional, resourceType, resourceQuantity);
+void DraftSchematicAdapter::addIngredient(const string& ingredientTemplateName, const string& ingredientTitleName, bool optional, const string& resourceType, unsigned int resourceQuantity, unsigned int combineType) {
+	return ((DraftSchematicImplementation*) impl)->addIngredient(ingredientTemplateName, ingredientTitleName, optional, resourceType, resourceQuantity, combineType);
 }
 
 DraftSchematicIngredient* DraftSchematicAdapter::getIngredient(int index) {
@@ -953,8 +987,12 @@ DraftSchematicAttribute* DraftSchematicAdapter::getAttributeToSet(const int i) {
 	return ((DraftSchematicImplementation*) impl)->getAttributeToSet(i);
 }
 
-void DraftSchematicAdapter::addAttributeToSet(const string& attribute, float minVal, float maxVal, const string& attributeExpProp) {
-	return ((DraftSchematicImplementation*) impl)->addAttributeToSet(attribute, minVal, maxVal, attributeExpProp);
+DraftSchematicAttribute* DraftSchematicAdapter::getAttributeToSet(const string& name) {
+	return ((DraftSchematicImplementation*) impl)->getAttributeToSet(name);
+}
+
+void DraftSchematicAdapter::addAttributeToSet(const string& attribute, float minVal, float maxVal, const string& attributeExpProp, const int precision) {
+	return ((DraftSchematicImplementation*) impl)->addAttributeToSet(attribute, minVal, maxVal, attributeExpProp, precision);
 }
 
 int DraftSchematicAdapter::getExpPropGroupListSize() {
@@ -975,6 +1013,10 @@ unsigned int DraftSchematicAdapter::getSchematicCRC() {
 
 string& DraftSchematicAdapter::getName() {
 	return ((DraftSchematicImplementation*) impl)->getName();
+}
+
+string& DraftSchematicAdapter::getStringName() {
+	return ((DraftSchematicImplementation*) impl)->getStringName();
 }
 
 string& DraftSchematicAdapter::getGroupName() {

@@ -41,23 +41,30 @@
 --which carries forward this exception.
 
 DraftSchematic = Object:new {
-	objectName = "DraftSchematic", -- name of the lua Object
+  objectName = "DraftSchematic", -- name of the lua Object
 
-	stfName = "",
+  stfName = "",
 
-	name = "",
-	objectCRC = 0,
+  name = "",
+  objectCRC = 0,
   groupName = "",
 
   craftingToolTab = 0,
   complexity = 0,
   size = 0,
 
+  xpType = "",
+  xp = 0,
+
+  assemblySkill = "",
+  experimentationSkill = "",
+
   ingredientTemplateNames = "",
   ingredientTitleNames = "",
   ingredientOptionals = "",
   resourceTypes = "",
   resourceQuantities = "",
+  combineTypes = "",
 
   numberExperimentalProperties = "",
   experimentalProperties = "",
@@ -75,11 +82,7 @@ DraftSchematic = Object:new {
 
   attributeExperimentalProperties = "",
 
-  attributesMinMax = "",
+  attributePrecision = "",
+  attributesMinMax = ""
 
-  xpType = "",
-  xp = 0,
-
-  assemblySkill = "",
-  experimentationSkill = ""
 }

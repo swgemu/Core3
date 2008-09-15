@@ -50,6 +50,8 @@ which carries forward this exception.
 #include "DraftSchematicValues.h"
 #include "DraftSchematic.h"
 
+#include "../tangible/crafting/CraftingTool.h"
+
 
 class DraftSchematicValuesImplementation : public DraftSchematicValuesServant {
 	VectorMap<string, Subclasses*> experimentalValuesMap;
@@ -109,8 +111,41 @@ public:
 		return valuesToSend.size();
 	}
 
+	inline int getTitleLine(string& title){
+
+		Subclasses* subClasses;
+		string exptitle;
+
+		for (int j = 0; j < experimentalValuesMap.size(); ++j) {
+
+			subClasses = experimentalValuesMap.get(j);
+
+			exptitle = subClasses->getClassName();
+
+			if(title == exptitle)
+				return j;
+		}
+
+		return -1;
+
+	}
+
 	string& getValuesToSend(const int i){
 		return valuesToSend.get(i);
+	}
+
+	float getAttributeAndValue(DraftSchematic* draftSchematic, string& attribute, const int i){
+
+		attribute = getExperimentalPropertySubtitle(i);
+		return getCurrentValue(attribute);
+
+	}
+
+	int getPrecision(DraftSchematic* draftSchematic, const int i){
+
+		DraftSchematicAttribute* attrib = draftSchematic->getAttributeToSet(i);
+		return attrib->getPrecision();
+
 	}
 
 	// Clear

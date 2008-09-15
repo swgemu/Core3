@@ -111,6 +111,12 @@ class CraftingManagerImplementation : public CraftingManagerServant,
 	static const short SLOTMYSTERY = 0x1B; // Didn't read this one
 	static const short SLOTFAILEDTOTRANSFER = 0x1C; // Failed to transfer resources to station
 
+	// Ingredient math types
+	static const short RESOURCE = 0x01;
+	static const short PERCENTAGEADDPROPERTIES = 0x02;
+	static const short LINEARADDPROPERTIES = 0x03;
+	static const short SIMULATEWEIGHTEDVALUE = 0x04;
+
 
 public:
 
@@ -126,98 +132,101 @@ public:
 
 	static int addDraftSchematicToServer(lua_State *L);
 
-private:
-	void mapDraftSchematic(DraftSchematic* draftSchematic);
-	// End LUA Methods
-
 public:
 
 	CraftingManagerImplementation(ZoneServer* serv, ZoneProcessServerImplementation* proc);
 	~CraftingManagerImplementation();
 
-
-	// Methods to setup the crafting sequence
+	// Setup initial crafting process
 	void prepareCraftingSession(Player* player, CraftingTool* craftingTool, DraftSchematic* draftSchematic);
-	void createDraftSchematic(Player* player, CraftingTool* craftingTool, DraftSchematic* draftSchematic);
-	void createTangibleObject(Player* player, CraftingTool* craftingTool, DraftSchematic* draftSchematic);
-	void setupIngredients(Player* player, CraftingTool* craftingTool, DraftSchematic* draftSchematic);
-
 
 	// Methods relating to adding Items to the crafting process
 	void addIngredientToSlot(Player* player, TangibleObject* tano, int slot, int counter);
-	bool slotIsFull(Player* player, CraftingTool* craftingTool, TangibleObject* tano, TangibleObject* ingredientInSlot,
-			int slot, int quantity, int counter);
-
-	// Tranferring items to crafting slots
-	TangibleObject* transferIngredientToSlot(Player* player, TangibleObject* tano,
-			CraftingTool* craftingTool, int& quantity);
-
-	TangibleObject* transferResourceToSlot(Player* player, ResourceContainer* rcno,
-			CraftingTool* craftingTool, int& quantity);
-
-	TangibleObject* transferComponentToSlot(
-			Player* player, Component* component, CraftingTool* craftingTool,
-			int& quantity);
 
 	// Methods relating to removing Items to the crafting process
-	void removeResourceFromCraft(Player* player, int slot, int counter);
+	void removeIngredientFromSlot(Player* player, int slot, int counter);
 
+	// Pretty Self explanitory
 	void putComponentBackInInventory(Player* player, TangibleObject* tano);
 
-	Component* cloneComponent(Player* player, TangibleObject* tano);
-	Component* cloneComponent(Player* player, Component* component);
-
-	//
-
+	// Crafting Methods
 	void nextCraftingStage(Player* player, string test);
+	void craftingCustomization(Player* player, string name, int condition);
+	void handleExperimenting(Player* player, int counter, int numRowsAttempted, string expstring);
 	void createPrototype(Player* player, string count);
 	void createSchematic(Player* player, string count);
 
-	// Resource Handling
 
-
-
-	void enableExperimentation(Player* player, CraftingTool* craftingTool);
-
-	void initialAssembly(Player* player, CraftingTool* craftingTool, DraftSchematic* draftSchematic, int counter, int stage);
-	void experimentRow(DraftSchematicValues* craftingValues,
-			int rowEffected, int pointsAttempted, float failure, int assemblyResult);
-	void setInitialCraftingValues(Player* player, CraftingTool* craftingTool, DraftSchematic* draftSchematic);
-
-	void finishAssembly(Player * player, CraftingTool * craftingTool, DraftSchematic * draftSchematic, int counter);
-	void handleExperimenting(Player * player, int counter, int numRowsAttempted, string expstring);
-	void craftingCustomization(Player * player, string name, int condition);
-	void finishStage1(Player * player, int counter);
-	void finishStage2(Player * player, int counter);
-	void createObjectInInventory(Player * player, int timer, bool create);
-
-	TangibleObject * generateTangibleObject(Player * player, DraftSchematic * draftSchematic);
-
-
-	void sendSlotMessage(Player * player, int counter, short message);
-	ResourceContainer * makeNewResourceStack(Player * player, string name, int quantity);
-
-	void calculateAssemblySuccess(Player * player, CraftingTool * craftingTool, DraftSchematic * draftSchematic, float modifier);
-	int calculateAssemblyFailureRate(Player * player, CraftingTool * craftingTool, float assemblyPoints);
-	float calculateExperimentationFailureRate(Player * player, CraftingTool * craftingTool, DraftSchematic * draftSchematic, int pointsUsed);
-	void calculateExperimentationSuccess(Player * player, CraftingTool * craftingTool, DraftSchematic * draftSchematic, float failure);
-	float calculateAssemblyModifier(CraftingTool * craftingTool);
-	float calculateAssemblyValueModifier(CraftingTool * craftingTool);
-	float calculateExperimentationValueModifier(int assemblyResult, int pointsAttempted, float failure);
-
-	float getLog(float value);
-
-	float getWeightedValue(Player * player, CraftingTool * craftingTool, DraftSchematic * draftSchematic, int type);
+	float getWeightedValue(Player* player, CraftingTool* craftingTool, DraftSchematic* draftSchematic, int type);
 	float getAssemblyPercentage(float value);
-	int lookUpResourceAttribute(Player * player, CraftingTool * craftingTool, int type,  int slot);
-
-	string generateCraftedSerial();
+	float calculateAssemblyValueModifier(CraftingTool* craftingTool);
 
 	void addDraftSchematicsFromGroupName(Player* player, const string& schematicGroupName);
 	void subtractDraftSchematicsFromGroupName(Player* player, const string& schematicGroupName);
 
+private:
+	void mapDraftSchematic(DraftSchematic* draftSchematic);
+	// End LUA Methods
+
+	// Methods to setup the crafting sequence
+	void createDraftSchematic(Player* player, CraftingTool* craftingTool, DraftSchematic* draftSchematic);
+	void createTangibleObject(Player* player, CraftingTool* craftingTool, DraftSchematic* draftSchematic);
+	void setupIngredients(Player* player, CraftingTool* craftingTool, DraftSchematic* draftSchematic);
+	TangibleObject * generateTangibleObject(Player* player, DraftSchematic* draftSchematic);
+
+	// Slot manipulation
+	void sendSlotMessage(Player* player, int counter, short message);
+	ResourceContainer * makeNewResourceStack(Player* player, string name, int quantity);
+	bool slotIsFull(Player* player, CraftingTool* craftingTool, TangibleObject* tano, TangibleObject* ingredientInSlot,
+			int slot, int quantity, int counter);
+	TangibleObject* transferIngredientToSlot(Player* player, TangibleObject* tano,
+			CraftingTool* craftingTool, int& quantity);
+	TangibleObject* transferResourceToSlot(Player* player, ResourceContainer* rcno,
+			CraftingTool* craftingTool, int& quantity);
+	TangibleObject* transferComponentToSlot(
+			Player* player, Component* component, CraftingTool* craftingTool,
+			int& quantity);
+
+	// Cloning methods
+	Component* cloneComponent(Player* player, TangibleObject* tano);
+	Component* cloneComponent(Player* player, Component* component);
+
+	// Turn on Experimentation window
+	void enableExperimentation(Player* player, CraftingTool* craftingTool);
+
+	// Setting initial crafting values
+	void initialAssembly(Player* player, CraftingTool* craftingTool, DraftSchematic* draftSchematic, int counter, int stage);
+	void setInitialCraftingValues(Player* player, CraftingTool* craftingTool, DraftSchematic* draftSchematic);
+	bool applyComponentLinearBoost(string subtitle, DraftSchematic* draftSchematic, CraftingTool* craftingTool);
+	float applyComponentPercentageBoost(string subtitle, DraftSchematic* draftSchematic, CraftingTool* craftingTool);
+
+	// Experimenting
+	void experimentRow(DraftSchematicValues* craftingValues,
+			int rowEffected, int pointsAttempted, float failure, int assemblyResult);
+
+	// Final creation methods
+	void finishAssembly(Player* player, CraftingTool* craftingTool, DraftSchematic* draftSchematic, int counter);
+	void finishStage1(Player* player, int counter);
+	void finishStage2(Player* player, int counter);
+	void createObjectInInventory(Player* player, int timer, bool create);
+
+	// Calculations
+
+	void calculateAssemblySuccess(Player* player, CraftingTool* craftingTool, DraftSchematic* draftSchematic, float modifier);
+	int calculateAssemblyFailureRate(Player* player, CraftingTool* craftingTool, float assemblyPoints);
+	float calculateExperimentationFailureRate(Player* player, CraftingTool* craftingTool, DraftSchematic* draftSchematic, int pointsUsed);
+	void calculateExperimentationSuccess(Player* player, CraftingTool* craftingTool, DraftSchematic* draftSchematic, float failure);
+	float calculateAssemblyModifier(CraftingTool* craftingTool);
+	float calculateExperimentationValueModifier(int assemblyResult, int pointsAttempted, float failure);
+	float getLog(float value);
+
+	int lookUpResourceAttribute(Player* player, TangibleObject* tano, int type,  int slot);
+
+	string generateCraftedSerial();
+
 	Vector<string> parseStringsFromString(const string& unparsedStrings);
 	Vector<uint32> parseUnsignedInt32sFromString(const string& unparsedInts);
+
 };
 
 #endif /*CRAFTINGMANAGERIMPLEMENTATION_H_*/

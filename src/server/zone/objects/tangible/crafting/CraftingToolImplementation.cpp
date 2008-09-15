@@ -517,9 +517,9 @@ void CraftingToolImplementation::cleanUp(Player* player) {
 
 					ResourceContainer* rcno = (ResourceContainer*)tano;
 
-					if (quantity != 0) {
+					if (rcno->getContents() > 0) {
 
-						player->addInventoryItem(rcno);
+						player->addInventoryResource(rcno);
 
 					}
 
@@ -557,19 +557,20 @@ void CraftingToolImplementation::cleanUp(Player* player) {
 		currentTano = NULL;
 	}
 
+	SceneObject* tempScno;
+
 	for(int i = 0; i < tempIngredient.size(); ++i){
 
 		tano = tempIngredient.get(i);
+		tempScno = player->getInventoryItem(tano->getObjectID());
 
-		if(tano != NULL){
+		if(tano != NULL && tempScno == NULL){
 
 			SceneObjectDestroyMessage* destroy = new SceneObjectDestroyMessage(tano->getObjectID());
 			player->sendMessage(destroy);
 
 			tano->setContainer(NULL);
 			tano->finalize();
-
-
 		}
 
 		tano = NULL;

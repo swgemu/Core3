@@ -27,7 +27,7 @@ class ObjectControllerMessage;
 
 class DraftSchematic : public ManagedObject {
 public:
-	DraftSchematic(unsigned int schematicID, const string& objName, unsigned int objCRC, const string& groupName, unsigned int complexity, unsigned int schematicSize, int craftingToolTab);
+	DraftSchematic(unsigned int schematicID, const string& objName, const string& stringName, unsigned int objCRC, const string& groupName, unsigned int complexity, unsigned int schematicSize, int craftingToolTab);
 
 	DraftSchematic(DraftSchematic* draftSchematic);
 
@@ -49,7 +49,7 @@ public:
 
 	void helperSendIngredientsToPlayer(ObjectControllerMessage* objMsg);
 
-	void addIngredient(const string& ingredientTemplateName, const string& ingredientTitleName, bool optional, const string& resourceType, unsigned int resourceQuantity);
+	void addIngredient(const string& ingredientTemplateName, const string& ingredientTitleName, bool optional, const string& resourceType, unsigned int resourceQuantity, unsigned int combineType);
 
 	DraftSchematicIngredient* getIngredient(int index);
 
@@ -85,7 +85,9 @@ public:
 
 	DraftSchematicAttribute* getAttributeToSet(const int i);
 
-	void addAttributeToSet(const string& attribute, float minVal, float maxVal, const string& attributeExpProp);
+	DraftSchematicAttribute* getAttributeToSet(const string& name);
+
+	void addAttributeToSet(const string& attribute, float minVal, float maxVal, const string& attributeExpProp, const int precision);
 
 	int getExpPropGroupListSize();
 
@@ -96,6 +98,8 @@ public:
 	unsigned int getSchematicCRC();
 
 	string& getName();
+
+	string& getStringName();
 
 	string& getGroupName();
 
@@ -140,6 +144,7 @@ protected:
 	string _return_getExperimentingSkill;
 	string _return_getGroupName;
 	string _return_getName;
+	string _return_getStringName;
 	string _return_getTanoAttributes;
 	string _return_getXpType;
 
@@ -172,7 +177,7 @@ public:
 
 	void helperSendIngredientsToPlayer(ObjectControllerMessage* objMsg);
 
-	void addIngredient(const string& ingredientTemplateName, const string& ingredientTitleName, bool optional, const string& resourceType, unsigned int resourceQuantity);
+	void addIngredient(const string& ingredientTemplateName, const string& ingredientTitleName, bool optional, const string& resourceType, unsigned int resourceQuantity, unsigned int combineType);
 
 	DraftSchematicIngredient* getIngredient(int index);
 
@@ -208,7 +213,9 @@ public:
 
 	DraftSchematicAttribute* getAttributeToSet(const int i);
 
-	void addAttributeToSet(const string& attribute, float minVal, float maxVal, const string& attributeExpProp);
+	DraftSchematicAttribute* getAttributeToSet(const string& name);
+
+	void addAttributeToSet(const string& attribute, float minVal, float maxVal, const string& attributeExpProp, const int precision);
 
 	int getExpPropGroupListSize();
 
@@ -219,6 +226,8 @@ public:
 	unsigned int getSchematicCRC();
 
 	string& getName();
+
+	string& getStringName();
 
 	string& getGroupName();
 
@@ -256,15 +265,16 @@ public:
 
 protected:
 	string _param1_addExperimentalProperty__int_string_int_;
-	string _param0_addIngredient__string_string_bool_string_int_;
-	string _param1_addIngredient__string_string_bool_string_int_;
-	string _param3_addIngredient__string_string_bool_string_int_;
+	string _param0_addIngredient__string_string_bool_string_int_int_;
+	string _param1_addIngredient__string_string_bool_string_int_int_;
+	string _param3_addIngredient__string_string_bool_string_int_int_;
 	string _param0_setTanoAttributes__string_;
 	string _param0_setXpType__string_;
 	string _param0_setExperimentingSkill__string_;
 	string _param0_setAssemblySkill__string_;
-	string _param0_addAttributeToSet__string_float_float_string_;
-	string _param3_addAttributeToSet__string_float_float_string_;
+	string _param0_getAttributeToSet__string_;
+	string _param0_addAttributeToSet__string_float_float_string_int_;
+	string _param3_addAttributeToSet__string_float_float_string_int_;
 };
 
 class DraftSchematicHelper : public DistributedObjectClassHelper, public Singleton<DraftSchematicHelper> {

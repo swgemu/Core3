@@ -17,6 +17,8 @@ class CreatureObject;
 
 class TangibleObject;
 
+class DraftSchematic;
+
 #include "../../TangibleObject.h"
 
 class Component : public TangibleObject {
@@ -29,9 +31,13 @@ public:
 
 	void generateAttributes(Player* player);
 
+	void updateCraftingValues(DraftSchematic* draftSchematic);
+
 	int useObject(Player* player);
 
 	Component* cloneComponent(Component* component, unsigned long long oid);
+
+	float getAttributeValue(string& attributeName);
 
 protected:
 	Component(DummyConstructorParameter* param);
@@ -53,10 +59,16 @@ public:
 
 	void generateAttributes(Player* player);
 
+	void updateCraftingValues(DraftSchematic* draftSchematic);
+
 	int useObject(Player* player);
 
 	Component* cloneComponent(Component* component, unsigned long long oid);
 
+	float getAttributeValue(string& attributeName);
+
+protected:
+	string _param0_getAttributeValue__string_;
 };
 
 class ComponentHelper : public DistributedObjectClassHelper, public Singleton<ComponentHelper> {

@@ -53,11 +53,18 @@ genericCraftingTool = Object:new {
   complexity = 10,
   size = 2,
 
+  xpType = "crafting_general",
+  xp = 25,
+
+  assemblySkill = "general_assembly",
+  experimentingSkill = "general_experimentation",
+
   ingredientTemplateNames = "craft_item_ingredients_n, craft_item_ingredients_n, craft_item_ingredients_n",
   ingredientTitleNames = "assembly_enclosure, thermal_shielding, electronic_control_unit",
   ingredientOptionals = "0, 0, 0",
   resourceTypes = "metal, mineral, chemical",
   resourceQuantities = "12, 4, 4",
+  combineTypes = "1, 1, 1",
 
   numberExperimentalProperties = "1, 1, 1, 1",
 
@@ -70,19 +77,12 @@ genericCraftingTool = Object:new {
 
   experimentalSubGroupTitles = "quality",
 
-  tanoAttributes = "objecttype=32769:objectcrc=1055200365:objecttemp=generic_tool:",
+  tanoAttributes = "objecttype=32769:objectcrc=1055200365:objecttemp=generic_tool_name:templatetype=crafting:",
 
-  attributesToSet = "hitPoints, useModifier",
-
-  attributeExperimentalProperties = "null, quality",
-
-  attributesMinMax = "1000, 1000, -15, 15",
-
-  xpType = "crafting_general",
-  xp = 25,
-
-  assemblySkill = "general_assembly",
-  experimentingSkill = "general_experimentation"
+  attributesToSet = "quality",
+  attributeExperimentalProperties = "exp_effectiveness",
+  attributePrecision = "2",
+  attributesMinMax = "-15, 15"
 
 }
 

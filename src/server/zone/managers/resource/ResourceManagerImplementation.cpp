@@ -457,7 +457,7 @@ void ResourceManagerImplementation::sendSampleMessage(Player* player,
 
 			player->changePosture(CreatureObjectImplementation::UPRIGHT_POSTURE);
 		} else {
-			if (player->getSurveyTool() == NULL) {
+			if (player->getSampleTool() == NULL) {
 				unlock(doLock);
 				return;
 			}
@@ -504,7 +504,7 @@ void ResourceManagerImplementation::sendSampleMessage(Player* player,
 			} else {
 				ChatSystemMessage* sysMessage = new ChatSystemMessage("survey", "sample_failed", resourceName, 0, false);
 
-				player->getSurveyTool()->sendSampleEffect(player);
+				player->getSampleTool()->sendSampleEffect(player);
 
 				player->sendMessage(sysMessage);
 			}
@@ -520,6 +520,8 @@ void ResourceManagerImplementation::sendSampleMessage(Player* player,
 
 void ResourceManagerImplementation::harvestOrganics(Player* player,
 		Creature* creature, int type) {
+	lock();
+
 	if (creature == NULL)
 		return;
 
@@ -547,6 +549,7 @@ void ResourceManagerImplementation::harvestOrganics(Player* player,
 
 			if (baseAmount == 0 || harvestType == "") {
 				creature->unlock();
+				unlock();
 				return;
 			}
 
@@ -591,6 +594,7 @@ void ResourceManagerImplementation::harvestOrganics(Player* player,
 
 			if (resname == "") {
 				creature->unlock();
+				unlock();
 				return;
 			}
 
@@ -635,6 +639,7 @@ void ResourceManagerImplementation::harvestOrganics(Player* player,
 		cout << "unreported exception caught in Resourcemanager::harvestOrganics()\n";
 		creature->unlock();
 	}
+	unlock();
 }
 
 void ResourceManagerImplementation::getHarvestingType(CreatureObject* creatureObj,
@@ -2169,6 +2174,8 @@ void ResourceManagerImplementation::setObjectSubType(ResourceTemplate* resImpl) 
 }
 
 void ResourceManagerImplementation::printResource(string name){
+	lock();
+
 	string resname;
 	string query = "SELECT * FROM resource_data WHERE `resource_name` = '" +
 	name + "'";

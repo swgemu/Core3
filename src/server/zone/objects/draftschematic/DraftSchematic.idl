@@ -55,9 +55,9 @@ import "../../packets/object/ObjectControllerMessage";
 
 interface DraftSchematic implements ManagedObject {
 
-	DraftSchematic(unsigned int schematicID, const string objName, unsigned int objCRC, 
-			const string groupName, unsigned int complexity, unsigned int schematicSize, 
-			int craftingToolTab);
+	DraftSchematic(unsigned int schematicID, const string objName, const string stringName, 
+			unsigned int objCRC, const string groupName, unsigned int complexity, 
+			unsigned int schematicSize, int craftingToolTab);
 
 	DraftSchematic(DraftSchematic draftSchematic);
 
@@ -85,7 +85,8 @@ interface DraftSchematic implements ManagedObject {
 	void helperSendIngredientsToPlayer(ObjectControllerMessage objMsg);
 
 	void addIngredient(const string ingredientTemplateName, const string ingredientTitleName,
-		boolean optional, const string resourceType, unsigned int resourceQuantity);
+		boolean optional, const string resourceType, unsigned int resourceQuantity, 
+		unsigned int combineType);
 
 	DraftSchematicIngredient getIngredient(int index);
 
@@ -123,18 +124,23 @@ interface DraftSchematic implements ManagedObject {
 	int getAttributesToSetListSize();
 
 	DraftSchematicAttribute getAttributeToSet(const int i);
-	void addAttributeToSet(const string attribute, const float minVal, const float maxVal, const string attributeExpProp);
+
+	DraftSchematicAttribute getAttributeToSet(const string name);
+
+	void addAttributeToSet(const string attribute, const float minVal, const float maxVal, 
+		const string attributeExpProp, const int precision);
 	
 	int getExpPropGroupListSize();
+
 	DraftSchematicExpPropGroup getExpPropGroup(int index);
-
-
 
 	unsigned int getSchematicID();
 	
 	unsigned int getSchematicCRC();
 	
 	string getName();
+
+	string getStringName();
 	
 	string getGroupName();
 	

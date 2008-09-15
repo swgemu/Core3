@@ -2652,10 +2652,10 @@ void CreatureObjectImplementation::addInventoryResource(ResourceContainer* rcno)
 
 				if (inventoryResource->compare(rcno)
 						&& inventoryResource->getContents()
-								!= inventoryResource->getMaxContents()) {
+								< inventoryResource->getMaxContents()) {
 
 					if (inventoryResource->getContents()
-							+ inventoryResource->getContents()
+							+ rcno->getContents()
 							<= inventoryResource->getMaxContents()) {
 
 						inventoryResource->transferContents(player, rcno);
@@ -2663,6 +2663,8 @@ void CreatureObjectImplementation::addInventoryResource(ResourceContainer* rcno)
 						makeNewResource = false;
 
 						inventoryResource->unlock();
+
+						return;
 
 						break;
 					} else {
@@ -2674,7 +2676,7 @@ void CreatureObjectImplementation::addInventoryResource(ResourceContainer* rcno)
 						inventoryResource->setContents(
 								inventoryResource->getMaxContents());
 
-						rcno->setContents(rcno->getContents() - diff);
+						rcno->setContents(diff);
 
 						inventoryResource->sendDeltas(player);
 

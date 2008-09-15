@@ -46,6 +46,7 @@ import "../../packets/object/ObjectControllerMessage";
 
 interface DraftSchematicExpPropGroup {
 	DraftSchematicExpPropGroup();
+	DraftSchematicExpPropGroup(DraftSchematicExpPropGroup group);
 	
 	void addExperimentalProperty(const string experimentalPropertyType, unsigned int weight);
 	
@@ -62,4 +63,20 @@ interface DraftSchematicExpPropGroup {
 	   
 
 	unsigned char getTypeAndWeight(unsigned int index);
+
+	// Cloning stuffs
+	string getKey(int i);
+	int getKeyCount();
+
+	string getExpPropTypesKey(int i);
+	unsigned char getExpPropTypesValue(int i);
+	int getExpPropTypesSize();
+
+	string getExpPropWeightsKey(int i);
+	unsigned char getExpPropWeightsValue(int i);
+	int getExpPropWeightsSize();
+
+	string getExpPropWeightPercentagesKey(int i);
+	float getExpPropWeightPercentagesValue(int i);
+	int getExpPropWeightPercentagesSize();
 }

@@ -11,7 +11,9 @@ class ObjectControllerMessage;
 
 class DraftSchematicIngredient : public DistributedObjectStub {
 public:
-	DraftSchematicIngredient(const string& ingredientTemplateName, const string& ingredientTitleName, bool optional, const string& resourceType, unsigned int resourceQuantity);
+	DraftSchematicIngredient(const string& ingredientTemplateName, const string& ingredientTitleName, bool optional, const string& resourceType, unsigned int resourceQuantity, unsigned int combineType);
+
+	DraftSchematicIngredient(DraftSchematicIngredient* ingredient);
 
 	void helperSendToPlayer(ObjectControllerMessage* msg);
 
@@ -22,6 +24,8 @@ public:
 	string& getResourceType();
 
 	unsigned int getResourceQuantity();
+
+	unsigned int getCombineType();
 
 	bool getOptional();
 
@@ -54,6 +58,8 @@ public:
 	string& getResourceType();
 
 	unsigned int getResourceQuantity();
+
+	unsigned int getCombineType();
 
 	bool getOptional();
 

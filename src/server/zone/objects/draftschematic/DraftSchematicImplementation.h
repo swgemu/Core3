@@ -65,7 +65,7 @@
 class Player;
 class ObjectControllerMessage;
 
-class DraftSchematicImplementation : public DraftSchematicServant {
+class DraftSchematicImplementation: public DraftSchematicServant {
 	// example: 0x838FF623
 	uint32 schematicID;
 
@@ -74,6 +74,10 @@ class DraftSchematicImplementation : public DraftSchematicServant {
 
 	// example: Bofa Treat
 	string objName;
+
+	// example: @food_name:bofa_treat
+	string stringName;
+
 	// example: craftArtisanNewbieGroupA
 	string groupName;
 
@@ -148,8 +152,8 @@ class DraftSchematicImplementation : public DraftSchematicServant {
 
 public:
 	DraftSchematicImplementation(uint32 schematicID, const string& objName,
-			uint32 objCRC, const string& groupName, uint32 complexity,
-			uint32 schematicSize, int craftingToolTab);
+			const string& stringName, uint32 objCRC, const string& groupName,
+			uint32 complexity, uint32 schematicSize, int craftingToolTab);
 
 	DraftSchematicImplementation(DraftSchematic* draftSchematic);
 
@@ -164,8 +168,10 @@ public:
 	void sendTo(Player* player);
 
 	// Ingredient Methods
-	void addIngredient(const string& ingredientTemplateName, const string& ingredientTitleName,
-			bool optional, const string& resourceType, uint32 resourceQuantity);
+	void addIngredient(const string& ingredientTemplateName,
+			const string& ingredientTitleName, bool optional,
+			const string& resourceType, uint32 resourceQuantity,
+			uint32 combineType);
 
 	// THERE IS A BUG WHEN YOU LEAVE YOUR DATAPAD UP AND SURRENDER A SKILL, THE DRAFT SCHEMATICS
 	// STILL ARE IN YOUR DATAPAD, SO IF YOU CLICK THEM, IT WILL SAY SCHEMATIC NOT FOUND AND WILL
@@ -200,11 +206,11 @@ public:
 		parent = obj;
 	}
 
-	inline void setXpType(string type){
+	inline void setXpType(string type) {
 		xpType = type;
 	}
 
-	inline void setXp(int x){
+	inline void setXp(int x) {
 		xp = x;
 	}
 
@@ -212,31 +218,31 @@ public:
 		expCounter = craftingValues->getExperimentalPropertyTitleSize() + 1;
 	}
 
-	inline void increaseExpCounter(){
+	inline void increaseExpCounter() {
 		expCounter++;
 	}
 
-	inline void setExpPoints(int points){
+	inline void setExpPoints(int points) {
 		expPointsUsed = points;
 	}
 
-	inline void setExpFailure(float rate){
+	inline void setExpFailure(float rate) {
 		experimentalFailureRate = rate;
 	}
 
-	inline void setExperimentingSkill(const string& exp){
+	inline void setExperimentingSkill(const string& exp) {
 		experimentingSkill = exp;
 	}
 
-	inline void setAssemblySkill(const string& ass){
+	inline void setAssemblySkill(const string& ass) {
 		assemblySkill = ass;
 	}
 
-	inline void increaseComplexity(){
+	inline void increaseComplexity() {
 		complexity++;
 	}
 
-	inline void setFinished(){
+	inline void setFinished() {
 		finished = true;
 	}
 
@@ -251,6 +257,10 @@ public:
 
 	inline string& getName() {
 		return objName;
+	}
+
+	inline string& getStringName() {
+		return stringName;
 	}
 
 	inline string& getGroupName() {
@@ -281,24 +291,26 @@ public:
 		return parent;
 	}
 
-	inline string& getXpType(){
+	inline string& getXpType() {
 		return xpType;
 	}
 
-	inline int getXp(){
+	inline int getXp() {
 		return xp;
 	}
 
-	inline string& getExperimentingSkill(){
+	inline string& getExperimentingSkill() {
 		return experimentingSkill;
 	}
 
-	inline string& getAssemblySkill(){
+	inline string& getAssemblySkill() {
 		return assemblySkill;
 	}
 
-	inline void addAttributeToSet(const string& attribute, const float minVal, const float maxVal, const string& attributeExpProp) {
-		DraftSchematicAttribute* attrib = new DraftSchematicAttribute(attribute, minVal, maxVal, attributeExpProp);
+	inline void addAttributeToSet(const string& attribute, const float minVal,
+			const float maxVal, const string& attributeExpProp, int precision) {
+		DraftSchematicAttribute* attrib =
+						new DraftSchematicAttribute(attribute, minVal, maxVal, attributeExpProp, precision);
 		attributesToSet.add(attrib);
 	}
 
@@ -306,23 +318,38 @@ public:
 		return attributesToSet.get(i);
 	}
 
-	inline int getAttributesToSetListSize(){
+	inline int getAttributesToSetListSize() {
 		return attributesToSet.size();
 	}
 
-	inline DraftSchematicAttribute* getAttributesToSet(const int i){
-		return attributesToSet.get(i);
+	inline DraftSchematicAttribute* getAttributeToSet(const string& name) {
+
+		DraftSchematicAttribute* attrib;
+
+		for (int i = 0; i < getAttributesToSetListSize(); ++i) {
+
+			attrib = getAttributeToSet(i);
+
+			if (attrib->getAttributeName() == name) {
+
+				return attrib;
+
+			}
+
+		}
+
+		return NULL;
 	}
 
-	inline int getExpPoints(){
+	inline int getExpPoints() {
 		return expPointsUsed;
 	}
 
-	inline int getExpCounter(){
+	inline int getExpCounter() {
 		return expCounter;
 	}
 
-	inline float getExpFailure(){
+	inline float getExpFailure() {
 		return experimentalFailureRate;
 	}
 
@@ -344,11 +371,11 @@ public:
 
 	int getRequiredIngredientCount();
 
-	inline DraftSchematicValues* getCraftingValues(){
+	inline DraftSchematicValues* getCraftingValues() {
 		return craftingValues;
 	}
 
-	inline bool isFinished(){
+	inline bool isFinished() {
 		return finished;
 	}
 

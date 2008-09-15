@@ -14,6 +14,8 @@
 
 #include "../../TangibleObject.h"
 
+#include "../../../draftschematic/DraftSchematic.h"
+
 /*
  *	ComponentStub
  */
@@ -61,12 +63,25 @@ void Component::generateAttributes(Player* player) {
 		((ComponentImplementation*) _impl)->generateAttributes(player);
 }
 
-int Component::useObject(Player* player) {
+void Component::updateCraftingValues(DraftSchematic* draftSchematic) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 8);
+		method.addObjectParameter(draftSchematic);
+
+		method.executeWithVoidReturn();
+	} else
+		((ComponentImplementation*) _impl)->updateCraftingValues(draftSchematic);
+}
+
+int Component::useObject(Player* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
 		method.addObjectParameter(player);
 
 		return method.executeWithSignedIntReturn();
@@ -79,13 +94,26 @@ Component* Component::cloneComponent(Component* component, unsigned long long oi
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, 10);
 		method.addObjectParameter(component);
 		method.addUnsignedLongParameter(oid);
 
 		return (Component*) method.executeWithObjectReturn();
 	} else
 		return ((ComponentImplementation*) _impl)->cloneComponent(component, oid);
+}
+
+float Component::getAttributeValue(string& attributeName) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 11);
+		method.addAsciiParameter(attributeName);
+
+		return method.executeWithFloatReturn();
+	} else
+		return ((ComponentImplementation*) _impl)->getAttributeValue(attributeName);
 }
 
 /*
@@ -106,10 +134,16 @@ Packet* ComponentAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		generateAttributes((Player*) inv->getObjectParameter());
 		break;
 	case 8:
-		resp->insertSignedInt(useObject((Player*) inv->getObjectParameter()));
+		updateCraftingValues((DraftSchematic*) inv->getObjectParameter());
 		break;
 	case 9:
+		resp->insertSignedInt(useObject((Player*) inv->getObjectParameter()));
+		break;
+	case 10:
 		resp->insertLong(cloneComponent((Component*) inv->getObjectParameter(), inv->getUnsignedLongParameter())->_getObjectID());
+		break;
+	case 11:
+		resp->insertFloat(getAttributeValue(inv->getAsciiParameter(_param0_getAttributeValue__string_)));
 		break;
 	default:
 		return NULL;
@@ -126,12 +160,20 @@ void ComponentAdapter::generateAttributes(Player* player) {
 	return ((ComponentImplementation*) impl)->generateAttributes(player);
 }
 
+void ComponentAdapter::updateCraftingValues(DraftSchematic* draftSchematic) {
+	return ((ComponentImplementation*) impl)->updateCraftingValues(draftSchematic);
+}
+
 int ComponentAdapter::useObject(Player* player) {
 	return ((ComponentImplementation*) impl)->useObject(player);
 }
 
 Component* ComponentAdapter::cloneComponent(Component* component, unsigned long long oid) {
 	return ((ComponentImplementation*) impl)->cloneComponent(component, oid);
+}
+
+float ComponentAdapter::getAttributeValue(string& attributeName) {
+	return ((ComponentImplementation*) impl)->getAttributeValue(attributeName);
 }
 
 /*

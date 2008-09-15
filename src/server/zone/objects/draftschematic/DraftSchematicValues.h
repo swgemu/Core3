@@ -9,6 +9,8 @@
 
 class DraftSchematic;
 
+class CraftingTool;
+
 #include "engine/core/ManagedObject.h"
 
 class DraftSchematicValues : public ManagedObject {
@@ -57,9 +59,15 @@ public:
 
 	int getValuesToSendSize();
 
+	int getTitleLine(string& title);
+
 	string& getValuesToSend(const int i);
 
 	void recalculateValues(DraftSchematic* draftSchematic);
+
+	float getAttributeAndValue(DraftSchematic* draftSchematic, string& attribute, const int i);
+
+	int getPrecision(DraftSchematic* draftSchematic, const int i);
 
 	void clearAll();
 
@@ -130,9 +138,15 @@ public:
 
 	int getValuesToSendSize();
 
+	int getTitleLine(string& title);
+
 	string& getValuesToSend(const int i);
 
 	void recalculateValues(DraftSchematic* draftSchematic);
+
+	float getAttributeAndValue(DraftSchematic* draftSchematic, string& attribute, const int i);
+
+	int getPrecision(DraftSchematic* draftSchematic, const int i);
 
 	void clearAll();
 
@@ -152,6 +166,8 @@ protected:
 	string _param0_getCurrentValue__string_;
 	string _param0_getCurrentPercentage__string_;
 	string _param0_getMaxPercentage__string_;
+	string _param0_getTitleLine__string_;
+	string _param1_getAttributeAndValue__DraftSchematic_string_int_;
 };
 
 class DraftSchematicValuesHelper : public DistributedObjectClassHelper, public Singleton<DraftSchematicValuesHelper> {
