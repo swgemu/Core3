@@ -66,6 +66,7 @@ public:
 	static const int ACCOUNTBANNED = 3;
 	static const int ACCOUNTAUTOREGDISABLED = 4;
 	static const int ACCOUNTDOESNTEXIST = 5;
+	static const int ACCOUNTNOTACTIVE = 6;
 
 public:
 
