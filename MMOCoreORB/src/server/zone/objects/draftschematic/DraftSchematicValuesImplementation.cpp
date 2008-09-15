@@ -376,9 +376,9 @@ void DraftSchematicValuesImplementation::recalculateValues(DraftSchematic* draft
 		attributeName = attrib->getAttributeName();
 		min = attrib->getMinValue();
 		max = attrib->getMaxValue();
-		percentage = getCurrentPercentage(experimentalPropTitle);
+		percentage = getCurrentPercentage(attributeName);//experimentalPropTitle);
 
-		oldValue = getCurrentValue(experimentalPropTitle);
+		oldValue = getCurrentValue(attributeName);
 
 		if (experimentalPropTitle == "null") {
 			newValue = max;
@@ -387,10 +387,11 @@ void DraftSchematicValuesImplementation::recalculateValues(DraftSchematic* draft
 		}
 
 		if (newValue != oldValue) {
-			setCurrentValue(experimentalPropTitle, newValue);
+			setCurrentValue(attributeName, newValue);
 			valuesToSend.add(attributeName);
 		}
 	}
+
 }
 
 

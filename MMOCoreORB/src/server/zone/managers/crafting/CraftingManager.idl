@@ -62,16 +62,16 @@ interface CraftingManager {
 	void prepareCraftingSession(Player player, CraftingTool craftingTool, DraftSchematic draftSchematic);
 	
 	void addIngredientToSlot(Player player, TangibleObject tano, int slot, int counter);
-	void removeResourceFromCraft(Player player, int slot, int counter);
+	void removeIngredientFromSlot(Player player, int slot, int counter);
+
+	void putComponentBackInInventory(Player player, TangibleObject tano);
 	
 	void nextCraftingStage(Player player, string test);
-	
 	void craftingCustomization(Player player, string name, int condition);
 	void handleExperimenting(Player player, int counter, int numRowsAttempted, string expstring);
 	void createPrototype(Player player, string count);
 	void createSchematic(Player player, string count);
 
-	void putComponentBackInInventory(Player player, TangibleObject tano);
 
 	float getWeightedValue(Player player, CraftingTool craftingTool, DraftSchematic draftSchematic, int type);
 	float getAssemblyPercentage(float value);

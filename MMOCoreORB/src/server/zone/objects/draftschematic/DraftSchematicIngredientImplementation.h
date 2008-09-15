@@ -50,6 +50,7 @@ which carries forward this exception.
 class ObjectControllerMessage;
 
 class DraftSchematicIngredientImplementation : public DraftSchematicIngredientServant {
+
 	// example: craft_food_ingredients_n
 	string templateName;
 	// example: dried Fruit
@@ -63,9 +64,14 @@ class DraftSchematicIngredientImplementation : public DraftSchematicIngredientSe
 	// example: true
 	bool optional;
 
+	// Math Type
+	uint32 combineType;
+
 public:
 	DraftSchematicIngredientImplementation(const string& ingredientTemplateName, const string& ingredientTitleName,
-			bool optional, const string& resourceType, uint32 resourceQuantity);
+			bool optional, const string& resourceType, uint32 resourceQuantity, uint32 combineType);
+
+	DraftSchematicIngredientImplementation(DraftSchematicIngredient* ingredient);
 
 	void helperSendToPlayer(ObjectControllerMessage* msg);
 
@@ -84,6 +90,10 @@ public:
 
 	inline uint32 getResourceQuantity() {
 		return resourceQuantity;
+	}
+
+	inline uint32 getCombineType() {
+		return combineType;
 	}
 
 	inline bool getOptional() {

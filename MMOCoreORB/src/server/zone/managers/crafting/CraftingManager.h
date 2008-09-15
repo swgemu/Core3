@@ -31,7 +31,9 @@ public:
 
 	void addIngredientToSlot(Player* player, TangibleObject* tano, int slot, int counter);
 
-	void removeResourceFromCraft(Player* player, int slot, int counter);
+	void removeIngredientFromSlot(Player* player, int slot, int counter);
+
+	void putComponentBackInInventory(Player* player, TangibleObject* tano);
 
 	void nextCraftingStage(Player* player, string& test);
 
@@ -42,8 +44,6 @@ public:
 	void createPrototype(Player* player, string& count);
 
 	void createSchematic(Player* player, string& count);
-
-	void putComponentBackInInventory(Player* player, TangibleObject* tano);
 
 	float getWeightedValue(Player* player, CraftingTool* craftingTool, DraftSchematic* draftSchematic, int type);
 
@@ -75,7 +75,9 @@ public:
 
 	void addIngredientToSlot(Player* player, TangibleObject* tano, int slot, int counter);
 
-	void removeResourceFromCraft(Player* player, int slot, int counter);
+	void removeIngredientFromSlot(Player* player, int slot, int counter);
+
+	void putComponentBackInInventory(Player* player, TangibleObject* tano);
 
 	void nextCraftingStage(Player* player, string& test);
 
@@ -86,8 +88,6 @@ public:
 	void createPrototype(Player* player, string& count);
 
 	void createSchematic(Player* player, string& count);
-
-	void putComponentBackInInventory(Player* player, TangibleObject* tano);
 
 	float getWeightedValue(Player* player, CraftingTool* craftingTool, DraftSchematic* draftSchematic, int type);
 

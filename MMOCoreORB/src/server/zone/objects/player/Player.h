@@ -469,6 +469,8 @@ public:
 
 	bool hasSuiBoxType(unsigned int boxTypeID);
 
+	unsigned int getSuiBoxFromType(unsigned int boxTypeID);
+
 	void removeSuiBox(unsigned int boxID);
 
 	SuiBox* getSuiBox(unsigned int boxID);
@@ -545,6 +547,8 @@ public:
 
 	bool isImmune();
 
+	string& getInputBoxReturnBuffer();
+
 	unsigned int nextMisoRFC();
 
 	int checkMisoBSB(int tcb);
@@ -619,6 +623,8 @@ public:
 
 	unsigned int getForcePowerMax();
 
+	bool isGuildLeader();
+
 	unsigned long long getCurrentStructureID();
 
 	void setCurrentStructureID(unsigned long long oid);
@@ -675,6 +681,22 @@ public:
 
 	string& getLastNpcConvMessStr();
 
+	void setInputBoxReturnBuffer(const string& message);
+
+	void setGuildLeader(bool guildLeader = true);
+
+	void loadGuildChat();
+
+	void setGuildPermissions(unsigned int bit);
+
+	unsigned int getGuildPermissions();
+
+	bool setGuildPermissionsBit(unsigned int bit, bool updateClient = false);
+
+	void toggleGuildPermissionsBit(unsigned int bit);
+
+	bool clearGuildPermissionsBit(unsigned int bit, bool updateClient = false);
+
 protected:
 	Player(DummyConstructorParameter* param);
 
@@ -686,6 +708,7 @@ protected:
 	string _return_getFirstName;
 	string _return_getFirstNameProper;
 	string _return_getHairObject;
+	string _return_getInputBoxReturnBuffer;
 	string _return_getLastName;
 	string _return_getLastNpcConvMessStr;
 	string _return_getLastNpcConvStr;
@@ -1114,6 +1137,8 @@ public:
 
 	bool hasSuiBoxType(unsigned int boxTypeID);
 
+	unsigned int getSuiBoxFromType(unsigned int boxTypeID);
+
 	void removeSuiBox(unsigned int boxID);
 
 	SuiBox* getSuiBox(unsigned int boxID);
@@ -1190,6 +1215,8 @@ public:
 
 	bool isImmune();
 
+	string& getInputBoxReturnBuffer();
+
 	unsigned int nextMisoRFC();
 
 	int checkMisoBSB(int tcb);
@@ -1264,6 +1291,8 @@ public:
 
 	unsigned int getForcePowerMax();
 
+	bool isGuildLeader();
+
 	unsigned long long getCurrentStructureID();
 
 	void setCurrentStructureID(unsigned long long oid);
@@ -1320,6 +1349,22 @@ public:
 
 	string& getLastNpcConvMessStr();
 
+	void setInputBoxReturnBuffer(const string& message);
+
+	void setGuildLeader(bool guildLeader);
+
+	void loadGuildChat();
+
+	void setGuildPermissions(unsigned int bit);
+
+	unsigned int getGuildPermissions();
+
+	bool setGuildPermissionsBit(unsigned int bit, bool updateClient);
+
+	void toggleGuildPermissionsBit(unsigned int bit);
+
+	bool clearGuildPermissionsBit(unsigned int bit, bool updateClient);
+
 protected:
 	string _param0_queueFlourish__string_long_int_;
 	string _param4_queueAction__Player_long_int_int_string_;
@@ -1368,6 +1413,7 @@ protected:
 	string _param3_sendMail__string_unicode_unicode_string_;
 	string _param0_setLastNpcConvStr__string_;
 	string _param0_setLastNpcConvMessStr__string_;
+	string _param0_setInputBoxReturnBuffer__string_;
 };
 
 class PlayerHelper : public DistributedObjectClassHelper, public Singleton<PlayerHelper> {

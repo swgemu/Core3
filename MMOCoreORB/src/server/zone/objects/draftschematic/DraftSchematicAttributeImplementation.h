@@ -51,6 +51,7 @@ which carries forward this exception.
 #include "DraftSchematicAttribute.h"
 
 class DraftSchematicAttributeImplementation : public DraftSchematicAttributeServant {
+
 	// example: useModifier
 	string attributeName;
 	string attributeExperimentalProperty;
@@ -59,13 +60,30 @@ class DraftSchematicAttributeImplementation : public DraftSchematicAttributeServ
 	float maxValue;
 	float range;
 
+	int precision;
+
 public:
-	DraftSchematicAttributeImplementation(const string& attribute, const float minVal, const float maxVal, const string& attributeExpProp) : DraftSchematicAttributeServant() {
+	DraftSchematicAttributeImplementation(const string& attribute, const float minVal, const float maxVal,
+			const string& attributeExpProp, const int prec) : DraftSchematicAttributeServant() {
+
 		attributeName = attribute;
 		minValue = minVal;
 		maxValue = maxVal;
 		range = maxValue - minValue;
 		attributeExperimentalProperty = attributeExpProp;
+		precision = prec;
+
+	}
+
+	DraftSchematicAttributeImplementation(DraftSchematicAttribute* attrib) : DraftSchematicAttributeServant() {
+
+		attributeName = attrib->getAttributeName();
+		minValue = attrib->getMinValue();
+		maxValue = attrib->getMaxValue();
+		range = maxValue - minValue;
+		attributeExperimentalProperty = attrib->getAttributeExperimentalProperty();
+		precision = attrib->getPrecision();
+
 	}
 
 	// setters
@@ -104,9 +122,14 @@ public:
 		return range;
 	}
 
+	inline int getPrecision() {
+		return precision;
+	}
+
 	inline string& getAttributeExperimentalProperty(){
 		return attributeExperimentalProperty;
 	}
+
 
 };
 

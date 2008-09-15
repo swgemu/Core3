@@ -51,12 +51,19 @@ windCurrentSurveyingDevice = Object:new {
   craftingToolTab = 4096,
   complexity = 8,
   size = 1,
+
+  xpType = "crafting_general",
+  xp = 33,
+
+  assemblySkill = "general_assembly",
+  experimentingSkill = "general_experimentation",
   
   ingredientTemplateNames = "craft_item_ingredients_n, craft_item_ingredients_n, craft_item_ingredients_n",
   ingredientTitleNames = "assembly_enclosure, controller, scanner_assembly",
   ingredientOptionals = "0, 0, 0",
   resourceTypes = "metal, metal, metal",
   resourceQuantities = "5, 3, 8",
+  combineTypes = "1, 1, 1",
   
   numberExperimentalProperties = "1, 1, 1, 1",
 
@@ -69,19 +76,15 @@ windCurrentSurveyingDevice = Object:new {
 
   experimentalSubGroupTitles = "quality",
   
-  tanoAttributes = "objecttype=32770:objectcrc=566467536:objecttemp=survey_tool_wind:",
+  tanoAttributes = "objecttype=32770:objectcrc=566467536:objecttemp=survey_tool_wind:templatetype=obj_n:",
    
   attributesToSet = "hitPoints, useModifier",
 
   attributeExperimentalProperties = "null, quality",
 
-  attributesMinMax = "1000, 1000, -15, 15",
+  attributePrecision = "0, 2",
+  attributesMinMax = "1000, 1000, -15, 15"
 
-  xpType = "crafting_general",
-  xp = 33,
-
-  assemblySkill = "general_assembly",
-  experimentingSkill = "general_experimentation"
 }
 
 DraftSchematics:addDraftSchematic(windCurrentSurveyingDevice, 2695222848) --- Add to global DraftSchematics table

@@ -423,6 +423,11 @@ public:
 			return parent->getObjectID();
 	}
 
+	inline float getPrecision(float num, int digits) {
+		float power = pow(10, digits);
+		return floor(num * power + .05f) / power;
+	}
+
 	inline bool doKeepObject() {
 		return keepObject;
 	}

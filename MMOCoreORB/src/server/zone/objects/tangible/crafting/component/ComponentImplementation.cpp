@@ -52,7 +52,7 @@ ComponentImplementation::ComponentImplementation(uint64 object_id, uint32 tempCR
 		const unicode& n, const string& tempn) : ComponentServant(object_id, tempCRC, n, tempn, 
 				COMPONENT) {
 	objectCRC = tempCRC;
-	templateTypeName = "craft_weapon_ingredients_n";
+	templateTypeName = "obj_n";
 	templateName = tempn;
 	name = n;
 	init();
@@ -62,7 +62,7 @@ ComponentImplementation::ComponentImplementation(CreatureObject* creature, uint3
 		const unicode& n, const string& tempn) : ComponentServant(creature, tempCRC, n, tempn, 
 				COMPONENT) {
 	objectCRC = tempCRC;
-	templateTypeName = "craft_weapon_ingredients_n";
+	templateTypeName = "obj_n";
 	templateName = tempn;
 	name = n;
 	init();
@@ -70,7 +70,9 @@ ComponentImplementation::ComponentImplementation(CreatureObject* creature, uint3
 
 
 ComponentImplementation::~ComponentImplementation(){
-
+	attributeMap.removeAll();
+	precisionMap.removeAll();
+	keyList.removeAll();
 }
 
 void ComponentImplementation::sendRadialResponseTo(Player* player, ObjectMenuResponse* omr) {
@@ -80,9 +82,9 @@ void ComponentImplementation::sendRadialResponseTo(Player* player, ObjectMenuRes
 }
 
 void ComponentImplementation::init() {
-
 	objectSubType = TangibleObjectImplementation::COMPONENT;
-
+	parseAttributeString();
+	parsePrecisionString();
 }
 
 int ComponentImplementation::useObject(Player* player) {
@@ -119,11 +121,46 @@ void ComponentImplementation::sendTo(Player* player, bool doClose) {
 void ComponentImplementation::generateAttributes(SceneObject* obj) {
 	if (!obj->isPlayer())
 		return;
+
+	string attribute;
+	float value;
+	double power;
+	int precision;
+
 	Player* player = (Player*) obj;
 	AttributeListMessage* alm = new AttributeListMessage(_this);
 	alm->insertAttribute("volume", "1");
 
+	attribute = "craftersname";
+	alm->insertAttribute("crafter", craftersName);
+
+	attribute = "craftedserial";
+	alm->insertAttribute("serial_number", craftedSerial);
+
+	for(int i = 0; i < keyList.size(); ++i){
+
+		attribute = keyList.get(i);
+		value = attributeMap.get(attribute);
+		precision = precisionMap.get(attribute);
+
+		alm->insertAttribute(attribute, getPrecision(value, precision));
+
+	}
+
 	player->sendMessage(alm);
+}
+
+void ComponentImplementation::parseItemAttributes(){
+
+	parseAttributeString();
+	parsePrecisionString();
+
+	string temp = "craftersname";
+	craftersName = itemAttributes->getStringAttribute(temp);
+
+	temp = "craftedserial";
+	craftedSerial = itemAttributes->getStringAttribute(temp);
+
 }
 
 Component* ComponentImplementation::cloneComponent(Component* oldComp, uint64 oid) {
@@ -141,5 +178,117 @@ Component* ComponentImplementation::cloneComponent(Component* oldComp, uint64 oi
 
 }
 
+float ComponentImplementation::getAttributeValue(string& attributeName){
 
+	return attributeMap.get(attributeName);
+
+}
+
+void ComponentImplementation::updateCraftingValues(DraftSchematic* draftSchematic){
+
+	DraftSchematicValues* craftingValues = draftSchematic->getCraftingValues();
+	string attribute;
+	float value;
+	int precision;
+	attributeMap.removeAll();
+	precisionMap.removeAll();
+	keyList.removeAll();
+
+	int start = draftSchematic->getAttributesToSetListSize() - 1;
+
+	for(int i = 0; i < draftSchematic->getAttributesToSetListSize(); ++i){
+
+		value = craftingValues->getAttributeAndValue(draftSchematic, attribute, i);
+		precision = craftingValues->getPrecision(draftSchematic, i);
+
+		keyList.add(attribute);
+
+		itemAttributes->setFloatAttribute(attribute, value);
+
+		attributeMap.put(attribute, value);
+		precisionMap.put(attribute, precision);
+
+	}
+
+	savePrecisionList();
+
+}
+
+void ComponentImplementation::savePrecisionList(){
+
+	stringstream ss;
+	string element;
+
+	for(int i = 0; i < keyList.size(); ++i){
+
+		element = keyList.get(i);
+
+		ss << element << "=" << precisionMap.get(element) << ";";
+
+	}
+
+	string attribute = "precision";
+	string value = ss.str();
+
+	itemAttributes->setStringAttribute(attribute, value);
+
+}
+
+void ComponentImplementation::parsePrecisionString() {
+
+	int index1 = 0;
+	int index2;
+	int index3;
+	precisionMap.removeAll();
+	keyList.removeAll();
+
+	string attribute = "precision";
+	string precisionString = itemAttributes->getStringAttribute(attribute);
+
+
+	while ((index2 = precisionString.find(";", index1)) != string::npos) {
+
+		string attrPair = precisionString.substr(index1, index2 - index1);
+
+		if ((index3 = attrPair.find("=", 0)) != string::npos) {
+
+			string key = attrPair.substr(0, index3);
+			string value = attrPair.substr(index3 + 1, attrPair.length()
+					- index3);
+
+			precisionMap.put(key, atoi(value.c_str()));
+			keyList.add(key);
+
+		}
+
+		index1 = index2 + 1;
+	}
+}
+
+void ComponentImplementation::parseAttributeString() {
+
+	int index1 = 0;
+	int index2;
+	int index3;
+	attributeMap.removeAll();
+	itemAttributes->getAttributeString(attributeString);
+
+	while ((index2 = attributeString.find(":", index1)) != string::npos) {
+
+		string attrPair = attributeString.substr(index1, index2 - index1);
+
+		if ((index3 = attrPair.find("=", 0)) != string::npos) {
+
+			string key = attrPair.substr(0, index3);
+			string value = attrPair.substr(index3 + 1, attrPair.length()
+					- index3);
+
+			attributeMap.put(key, atof(value.c_str()));
+
+		}
+
+		index1 = index2 + 1;
+	}
+
+}
 

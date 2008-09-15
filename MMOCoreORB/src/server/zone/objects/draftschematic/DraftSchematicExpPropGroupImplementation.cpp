@@ -51,6 +51,36 @@ DraftSchematicExpPropGroupImplementation::DraftSchematicExpPropGroupImplementati
 
 	expPropGroupListSize = 0;
 }
+DraftSchematicExpPropGroupImplementation::DraftSchematicExpPropGroupImplementation(DraftSchematicExpPropGroup* group) : DraftSchematicExpPropGroupServant() {
+
+
+		for(int i = 0; i < group->getKeyCount(); ++i){
+			keys.add(group->getKey(i));
+		}
+
+		for(int i = 0; i < group->getExpPropTypesSize(); ++i){
+			expPropTypes.put(group->getExpPropTypesKey(i), group->getExpPropTypesValue(i));
+		}
+
+		for(int i = 0; i < group->getExpPropWeightsSize(); ++i){
+			expPropWeights.put(group->getExpPropWeightsKey(i), group->getExpPropWeightsValue(i));
+		}
+
+		for(int i = 0; i < group->getExpPropWeightPercentagesSize(); ++i){
+			expPropWeightPercentages.put(group->getExpPropWeightPercentagesKey(i),
+					group->getExpPropWeightPercentagesValue(i));
+		}
+	}
+
+DraftSchematicExpPropGroupImplementation::~DraftSchematicExpPropGroupImplementation(){
+
+		keys.removeAll();
+
+		expPropTypes.removeAll();
+		expPropWeights.removeAll();
+		expPropWeightPercentages.removeAll();
+
+	}
 
 void DraftSchematicExpPropGroupImplementation::addExperimentalProperty(const string& experimentalPropertyType, uint32 weight) {
 	uint8 expPropType = 0x00;

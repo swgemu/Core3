@@ -3439,7 +3439,7 @@ void PlayerImplementation::addIngredientToSlot(TangibleObject* tano, int slot, i
 
 void PlayerImplementation::removeResourceFromCraft(uint64 resID, int slot, int counter) {
 	CraftingManager* craftingManager = server->getCraftingManager();
-	craftingManager->removeResourceFromCraft(_this, slot, counter);
+	craftingManager->removeIngredientFromSlot(_this, slot, counter);
 }
 
 void PlayerImplementation::nextCraftingStage(string test) {

@@ -106,7 +106,7 @@ public:
 };
 
 class Subclasses {
-	VectorMap<string, Values*> subClasses;
+	VectorMap<string, Values*> valueList;
 	float avePercentage;
 	string name, className;
 
@@ -118,50 +118,49 @@ public:
 
 		Values* values = new Values(subtitle);
 
-		subClasses.put(subtitle, values);
+		valueList.put(subtitle, values);
 	}
 
 	~Subclasses(){
-		for (int i = 0; i < subClasses.size(); ++i)
-			delete subClasses.get(i);
+		for (int i = 0; i < valueList.size(); ++i)
+			delete valueList.get(i);
 
-		subClasses.removeAll();
+		valueList.removeAll();
 	}
 
 	void addSubtitle(const string& s) {
-		if (!subClasses.contains(s)) {
+
+		if (!valueList.contains(s)) {
 			Values* values = new Values(s);
 
-			subClasses.put(s, values);
-		} else {
-			cout << "Error Adding subclass - already exists\n";
+			valueList.put(s, values);
 		}
 	}
 
 	inline Values* get(const int i){
-		return subClasses.get(i);
+		return valueList.get(i);
 	}
 
 	inline Values* get(const string& subTitle) {
-		return subClasses.get(subTitle);
+		return valueList.get(subTitle);
 	}
 
 	inline int size(){
-		return subClasses.size();
+		return valueList.size();
 	}
 
 	inline float getPercentage(const string& subTitle) {
-		Values* values = subClasses.get(subTitle);
+		Values* values = valueList.get(subTitle);
 		return values->getPercentage();
 	}
 
 	inline float getMaxPercentage(const string& subTitle) {
-		Values* values = subClasses.get(subTitle);
+		Values* values = valueList.get(subTitle);
 		return values->getMaxPercentage();
 	}
 
 	inline float getValue(const string& subTitle) {
-		Values* values = subClasses.get(subTitle);
+		Values* values = valueList.get(subTitle);
 		return values->getValue();
 	}
 
@@ -174,26 +173,27 @@ public:
 	}
 
 	inline void setMaxPercentage(const string& subtitle, const float value) {
-		Values* values = subClasses.get(subtitle);
+		Values* values = valueList.get(subtitle);
 		values->setMaxPercentage(value);
+
 	}
 
 	inline void setValue(const string& subtitle, const float value) {
-		Values* values = subClasses.get(subtitle);
+		Values* values = valueList.get(subtitle);
 		values->setValue(value);
 	}
 
 	inline void setPercentage(const string& subtitle, const float value) {
-		Values* values = subClasses.get(subtitle);
+		Values* values = valueList.get(subtitle);
 		values->setPercentage(value);
 	}
 
 	void toString(){
 		Values* tempValues;
 
-		for (int i = 0;i < subClasses.size(); ++i) {
+		for (int i = 0;i < valueList.size(); ++i) {
 
-			tempValues = subClasses.get(i);
+			tempValues = valueList.get(i);
 
 			cout << "Property Name: " << tempValues->getName() << endl;
 			cout << "Max % " << tempValues->getMaxPercentage() << endl;

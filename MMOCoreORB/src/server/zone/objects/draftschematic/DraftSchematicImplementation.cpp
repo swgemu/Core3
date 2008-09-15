@@ -47,11 +47,12 @@ which carries forward this exception.
 #include "../../packets.h"
 
 DraftSchematicImplementation::DraftSchematicImplementation(uint32 schematicID, const string& objName,
-		uint32 objCRC, const string& groupName, uint32 complexity,
+		const string& stringName, uint32 objCRC, const string& groupName, uint32 complexity,
 		uint32 schematicSize, int craftingToolTab) :
 			DraftSchematicServant() {
 	DraftSchematicImplementation::schematicID = schematicID;
 	DraftSchematicImplementation::objName = objName;
+	DraftSchematicImplementation::stringName = stringName;
 	DraftSchematicImplementation::schematicCRC = objCRC;
 	DraftSchematicImplementation::groupName = groupName;
 	DraftSchematicImplementation::complexity = complexity;
@@ -73,6 +74,7 @@ DraftSchematicImplementation::DraftSchematicImplementation(DraftSchematic* draft
 
 	schematicID = draftSchematic->getSchematicID();
 	objName = draftSchematic->getName();
+	stringName = draftSchematic->getStringName();
 	schematicCRC = draftSchematic->getSchematicCRC();
 	groupName = draftSchematic->getGroupName();
 	complexity = draftSchematic->getComplexity();
@@ -203,11 +205,11 @@ void DraftSchematicImplementation::sendTo(Player* player) {
 
 // Ingredient Methods
 void DraftSchematicImplementation::addIngredient(const string& ingredientTemplateName, const string& ingredientTitleName,
-		bool optional, const string& resourceType, uint32 resourceQuantity) {
-	DraftSchematicIngredient* ingreedient = new DraftSchematicIngredient(ingredientTemplateName,
-			ingredientTitleName, optional, resourceType, resourceQuantity);
+		bool optional, const string& resourceType, uint32 resourceQuantity, uint32 combineType) {
+	DraftSchematicIngredient* ingredient = new DraftSchematicIngredient(ingredientTemplateName,
+			ingredientTitleName, optional, resourceType, resourceQuantity, combineType);
 
-	dsIngredients.add(ingreedient);
+	dsIngredients.add(ingredient);
 }
 
 // THERE IS A BUG WHEN YOU LEAVE YOUR DATAPAD UP AND SURRENDER A SKILL, THE DRAFT SCHEMATICS
