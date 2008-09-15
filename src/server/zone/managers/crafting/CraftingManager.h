@@ -27,6 +27,8 @@ class CraftingManager : public DistributedObjectStub {
 public:
 	CraftingManager(ZoneServer* server, ZoneProcessServerImplementation* processor);
 
+	void reloadSchematicTable();
+
 	void prepareCraftingSession(Player* player, CraftingTool* craftingTool, DraftSchematic* draftSchematic);
 
 	void addIngredientToSlot(Player* player, TangibleObject* tano, int slot, int counter);
@@ -54,6 +56,8 @@ public:
 	void addDraftSchematicsFromGroupName(Player* player, const string& schematicGroupName);
 
 	void subtractDraftSchematicsFromGroupName(Player* player, const string& schematicGroupName);
+
+	void refreshDraftSchematics(Player* player);
 
 protected:
 	CraftingManager(DummyConstructorParameter* param);
@@ -71,6 +75,8 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
+	void reloadSchematicTable();
+
 	void prepareCraftingSession(Player* player, CraftingTool* craftingTool, DraftSchematic* draftSchematic);
 
 	void addIngredientToSlot(Player* player, TangibleObject* tano, int slot, int counter);
@@ -98,6 +104,8 @@ public:
 	void addDraftSchematicsFromGroupName(Player* player, const string& schematicGroupName);
 
 	void subtractDraftSchematicsFromGroupName(Player* player, const string& schematicGroupName);
+
+	void refreshDraftSchematics(Player* player);
 
 protected:
 	string _param1_nextCraftingStage__Player_string_;

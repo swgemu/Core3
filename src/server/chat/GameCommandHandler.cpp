@@ -49,6 +49,7 @@ which carries forward this exception.
 #include "../zone/managers/planet/PlanetManager.h"
 #include "../zone/managers/item/ItemManager.h"
 #include "../zone/managers/player/PlayerManager.h"
+#include "../zone/managers/player/PlayerMap.h"
 
 #include "../zone/Zone.h"
 #include "../zone/packets.h"
@@ -244,6 +245,10 @@ void GameCommandHandler::init() {
 			"Toggles immunity.",
 			"Usage: @immune",
 			&immune);
+	gmCommands->addCommand("reloadSchematics", DEVELOPER,
+			"Hot Loads schematic tables.",
+			"Usage: @reloadSchematics",
+			&reloadSchematics);
 }
 
 GameCommandHandler::~GameCommandHandler() {
@@ -253,7 +258,7 @@ GameCommandHandler::~GameCommandHandler() {
 	}
 }
 
-void GameCommandHandler::handleCommand(string cmd, StringTokenizer tokenizer, Player * player) {
+void GameCommandHandler::handleCommand(string cmd, StringTokenizer tokenizer, Player* player) {
 	if (!gmCommands->containsKey(cmd)) {
 		player->sendSystemMessage("Command not found.");
 		return;
@@ -1782,6 +1787,34 @@ void GameCommandHandler::revive(StringTokenizer tokenizer, Player * player) {
 	}
 }
 
-void GameCommandHandler::immune(StringTokenizer tokenizer, Player * player) {
+void GameCommandHandler::immune(StringTokenizer tokenizer, Player* player) {
 	player->toggleImmune();
+}
+
+void GameCommandHandler::reloadSchematics(StringTokenizer tokenizer,
+		Player* player) {
+
+	Zone* zone = player->getZone();
+	ZoneServer* server = zone->getZoneServer();
+	CraftingManager* craftingManager = server->getCraftingManager();
+	PlayerManager* playerManager = server->getPlayerManager();
+
+	PlayerMap* playerMap = playerManager->getPlayerMap();
+
+	Player* targetPlayer;
+
+	craftingManager->reloadSchematicTable();
+
+	playerMap->resetIterator();
+
+	while (playerMap->hasNext()) {
+
+		targetPlayer = playerMap->next();
+
+		if (targetPlayer != NULL) {
+
+			craftingManager->refreshDraftSchematics(targetPlayer);
+		}
+
+	}
 }

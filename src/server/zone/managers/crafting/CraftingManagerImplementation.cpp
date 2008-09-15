@@ -78,6 +78,15 @@ void CraftingManagerImplementation::init() {
 	loadDraftSchematicFile();
 }
 
+void CraftingManagerImplementation::reloadSchematicTable() {
+
+	Lua::deinit();
+	Lua::init();
+	registerFunctions();
+	draftSchematicsMap.removeAll();
+	loadDraftSchematicFile();
+}
+
 // Crafting Methods
 void CraftingManagerImplementation::prepareCraftingSession(Player* player,
 		CraftingTool* craftingTool, DraftSchematic* draftSchematic) {
@@ -1991,6 +2000,28 @@ void CraftingManagerImplementation::subtractDraftSchematicsFromGroupName(
 			for (int i = 0; i < dsg->getSizeOfDraftSchematicList(); i++) {
 				DraftSchematic* draftSchematic = dsg->getDraftSchematic(i);
 				player->subtractDraftSchematic(draftSchematic);
+			}
+		}
+	}
+
+	unlock();
+}
+
+void CraftingManagerImplementation::refreshDraftSchematics(Player* player) {
+	lock();
+
+	for (int i = 0; i < draftSchematicsMap.size(); ++i) {
+		DraftSchematicGroup* dsg = draftSchematicsMap.get(i);
+
+		for (int j = 0; j < dsg->getSizeOfDraftSchematicList(); ++j) {
+
+			if (dsg != NULL) {
+
+				DraftSchematic* draftSchematic = dsg->getDraftSchematic(j);
+				player->subtractDraftSchematic(draftSchematic);
+
+				player->addDraftSchematic(draftSchematic);
+
 			}
 		}
 	}
