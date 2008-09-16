@@ -46,12 +46,12 @@ acklay = Creature:new {
       faction = "Acklay",
       gender = "male",
 
-      stfName = "Acklay King",
+      stfName = "Acklay Avenger",
       objectCRC = 258679778, 
       socialGroup = "Acklay",
       named = FALSE, 
 
-      level = 1000,
+      level = 1024,
       xp = 28549,
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
@@ -71,7 +71,7 @@ acklay = Creature:new {
       focus = 50000,
       willpower = 50000,
 
-      height = 1.5, -- Size of creature
+      height = 3, -- Size of creature
       armor = 3, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
       kinetic = 95,
       energy = 99,
@@ -83,7 +83,7 @@ acklay = Creature:new {
       acid = 99,
       lightsaber = 0,
 
-      accuracy = 580,
+      accuracy = 300,
 
       healer = 0,
 
