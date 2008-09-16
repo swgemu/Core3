@@ -239,7 +239,7 @@ DotPoolAtt = {
 	dotChance = 60,
 	tickStrengthOfHit = 2,
 
-	fireStrength = 0,
+	fireStrength = 50,
 	fireType = HEALTH,
 
 	bleedingStrength = 0,
