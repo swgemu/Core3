@@ -16,8 +16,8 @@
  *	GroupObjectStub
  */
 
-GroupObject::GroupObject(unsigned long long oid, Player* leader) : SceneObject(DummyConstructorParameter::instance()) {
-	_impl = new GroupObjectImplementation(oid, leader);
+GroupObject::GroupObject(unsigned long long oid, Player* leader, bool mode) : SceneObject(DummyConstructorParameter::instance()) {
+	_impl = new GroupObjectImplementation(oid, leader, mode);
 	_impl->_setStub(this);
 }
 

@@ -70,6 +70,8 @@ public:
 					player->setOvert();
 				else
 					player->setCovert();
+
+				player->makeCharacterMask();
 			}
 
 			player->setChangeFactionEvent(NULL);

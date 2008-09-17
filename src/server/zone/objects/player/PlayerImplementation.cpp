@@ -2590,10 +2590,8 @@ void PlayerImplementation::changeCloth(uint64 itemid) {
 
 	TangibleObject* cloth = (TangibleObject*) obj;
 
-	if(!hasItemPermission(cloth)) {
-		cloth->setEquipped(false);
+	if(!hasItemPermission(cloth) && !cloth->isEquipped())
 		return;
-	}
 
 	if (cloth->isWeapon()) {
 		if (cloth->isEquipped())
@@ -2632,7 +2630,7 @@ void PlayerImplementation::changeWeapon(uint64 itemid) {
 		if (weapon == NULL)
 			return;
 
-		if (!this->hasItemPermission(weapon))
+		if (!this->hasItemPermission(weapon) && !weapon->isEquipped())
 			return;
 
 		if (centered)
@@ -2772,10 +2770,8 @@ void PlayerImplementation::changeArmor(uint64 itemid, bool forced) {
 		if (armoritem == NULL)
 			return;
 
-		if(!hasItemPermission(armoritem)) {
-			armoritem->setEquipped(false);
+		if(!hasItemPermission(armoritem) && !armoritem->isEquipped())
 			return;
-		}
 
 		if (armoritem->isEquipped()) {
 			unequipItem((TangibleObject*) obj);
