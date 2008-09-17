@@ -46,7 +46,7 @@ singingMtnClanCouncilwoman = Creature:new {
       faction = "Mtn. Clan",
       gender = "",
 
-      name = "Singing Mountain clan councilwomon",
+      name = "Singing Mountain clan councilwoman",
       objectCRC = 905293113, 
       socialGroup = "Mtn. Clan",
       named = FALSE, 
