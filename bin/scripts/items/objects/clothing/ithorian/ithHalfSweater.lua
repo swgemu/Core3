@@ -52,5 +52,5 @@ ithHalfSweater = Clothing:new {
 
 	equipped = "1",
 
-	itemMask = ITHORIANS,
+	itemMask = ITHORIANS
 }
