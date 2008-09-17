@@ -46,7 +46,7 @@ acklay = Creature:new {
       faction = "Acklay",
       gender = "male",
 
-      stfName = "Acklay Avenger",
+      stfName = "Acklay Ravager",
       objectCRC = 258679778, 
       socialGroup = "Acklay",
       named = FALSE, 
@@ -58,18 +58,18 @@ acklay = Creature:new {
 
       healthMax = 4500000,
       healthMin = 3000000,
-      strength = 50000,
-      constitution = 50000,
+      strength = 500000,
+      constitution = 500000,
 
       actionMax = 4500000,
       actionMin = 3000000,
-      quickness = 50000,
-      stamina = 50000,
+      quickness = 500000,
+      stamina = 500000,
 
       mindMax = 4500000,
       mindMin = 3000000,
-      focus = 50000,
-      willpower = 50000,
+      focus = 500000,
+      willpower = 500000,
 
       height = 5, -- Size of creature
       armor = 3, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
@@ -96,16 +96,16 @@ acklay = Creature:new {
 
       attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      weaponName = "", -- Name ex. 'a Vibrolance'
-      weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+      weapon = "object/weapon/melee/baton/shared_baton_gaderiffi.iff", -- File path to weapon -> object\xxx\xxx\xx
+      weaponName = "a Gaderiffi", -- Name ex. 'a Vibrolance'
+      weaponTemp = "shared_baton_gaderiffi", -- Weapon Template ex. 'lance_vibrolance'
+      weaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
       weaponEquipped = 0,
-      weaponMinDamage = 0,
-      weaponMaxDamage = 0,
-      weaponAttackSpeed = 0,
-      weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+      weaponMinDamage = 550,
+      weaponMaxDamage = 950,
+      weaponAttackSpeed = 1.5,
+      weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
+      weaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
 
       alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
       alternateWeaponName = "", -- Name ex. 'a Vibrolance'

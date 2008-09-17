@@ -320,7 +320,7 @@ acklayAttack9 = {
 
 	range = 65,
 
-	damageRatio = 128,
+	damageRatio = 2048,
 
 	speedRatio = 1,
 
@@ -332,7 +332,7 @@ acklayAttack9 = {
 	mindAttackChance = 0,
 
 	dotChance = 95,
-	tickStrengthOfHit = 500,
+	tickStrengthOfHit = 128,
 
 	fireStrength = 0,
 	fireType = 0,
@@ -340,7 +340,7 @@ acklayAttack9 = {
 	bleedingStrength = 0,
 	bleedingType = 0,
 
-	poisonStrength = 500,
+	poisonStrength = 128,
 	poisonType = HEALTH,
 
 	diseaseStrength = 0,
@@ -373,7 +373,7 @@ acklayAttack10 = {
 
 	range = 40,
 
-	damageRatio = 128,
+	damageRatio = 2048,
 
 	speedRatio = 1,
 
@@ -385,12 +385,12 @@ acklayAttack10 = {
 	mindAttackChance = 0,
 
 	dotChance = 95,
-	tickStrengthOfHit = 500,
+	tickStrengthOfHit = 128,
 
 	fireStrength = 0,
 	fireType = 0,
 
-	bleedingStrength = 500,
+	bleedingStrength = 128,
 	bleedingType = ACTION,
 
 	poisonStrength = 0,

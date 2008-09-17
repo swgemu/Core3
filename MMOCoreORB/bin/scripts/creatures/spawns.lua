@@ -54,7 +54,7 @@ if (PLANET_ID == 1) then
  RunCreatureFile("spawns/dantooine/forceCrystalHuntersCave.lua")
  RunCreatureFile("spawns/dantooine/jantaCave.lua")
  RunCreatureFile("spawns/dantooine/kungaCave.lua")
- RunCreatureFile("spawns/dantooine/mokkCave.lua")
+ RunCreatureFile("spawns/dantooine/MokkCave.lua")
 end
 
 --Dathomir
