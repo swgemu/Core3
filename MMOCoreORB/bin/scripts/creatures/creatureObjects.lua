@@ -122,8 +122,8 @@ end
 
 --Faction Spawns (All Planets) 
 --Imperial
---RunCreatureFile("objects/npcs/atSt.lua")
---RunCreatureFile("objects/npcs/atAt.lua")
+RunCreatureFile("objects/npcs/atSt.lua")
+RunCreatureFile("objects/npcs/atAt.lua")
 RunCreatureFile("objects/npcs/darkTrooper.lua")
 RunCreatureFile("objects/npcs/darthVader.lua")
 RunCreatureFile("objects/npcs/imperialColonel.lua")

@@ -51,7 +51,7 @@ darthVader = Creature:new {
       socialGroup = "Imperial",
       named = TRUE, 
 
-      level = 300,
+      level = 350,
       xp = 28549,
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
@@ -72,15 +72,15 @@ darthVader = Creature:new {
       willpower = 50000,
 
       height = 1, -- Size of creature
-      armor = 2, -- Just a guess
-      kinetic = 60,
-      energy = 50,
-	  electricity = 60,
-      stun = 60,
- 	  blast = 60,
- 	  heat = 60,
- 	  cold = 60,
- 	  acid = 60,
+      armor = 3, -- Just a guess
+      kinetic = 85,
+      energy = 75,
+	  electricity = 75,
+      stun = 75,
+ 	  blast = 75,
+ 	  heat = 75,
+ 	  cold = 75,
+ 	  acid = 75,
  	  lightSaber = 0, 
 
       accuracy = 300,
@@ -101,8 +101,8 @@ darthVader = Creature:new {
       weaponTemp = "sword_lightsaber_one_handed_s4_gen4", -- Weapon Template ex. 'lance_vibrolance'
       weaponClass = "OneHandedJediWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
       weaponEquipped = 1,
-      weaponMinDamage = 450,
-      weaponMaxDamage = 950,
+      weaponMinDamage = 650,
+      weaponMaxDamage = 800,
       weaponAttackSpeed = 1.5,
       weaponDamageType = "LIGHTSABER", -- ELECTRICITY, KINETIC, etc
       weaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
@@ -136,7 +136,7 @@ darthVader = Creature:new {
       meatMax = 0,
 
       skills = { "darthAttack1", "darthAttack2", "darthAttack3", "darthAttack4" },
-      -- respawnTimer = 180,
+      respawnTimer = 3600,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }

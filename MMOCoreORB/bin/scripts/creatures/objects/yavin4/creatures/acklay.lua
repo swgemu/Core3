@@ -71,7 +71,7 @@ acklay = Creature:new {
       focus = 50000,
       willpower = 50000,
 
-      height = 3, -- Size of creature
+      height = 5, -- Size of creature
       armor = 3, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
       kinetic = 95,
       energy = 99,

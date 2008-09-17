@@ -267,26 +267,29 @@ spawnCreatures(nightsisterRanger, 2, -2515, 1475, 1000, 25)
 
 
 -- Imperial Prision
--- spawnCreature(atAt, 2, -6134, 911, 250)
+
 spawnCreatures(stormtrooper, 2, -6134, 911, 100, 2)
--- spawnCreature(atAt, 2, -6207, 808, 250)
 spawnCreatures(stormtrooper, 2, -6207, 808, 100, 2)
--- spawnCreature(atAt, 2, -6233, 650, 250)
 spawnCreatures(stormtrooper, 2, -6233, 650, 100, 2)
--- spawnCreature(atSt, 2, -6418, 712, 250)
 spawnCreatures(stormtrooper, 2, -6418, 712, 100, 8)
--- spawnCreature(atSt, 2, -6190, 851, 250)
 spawnCreatures(stormtrooper, 2, -6190, 851, 100, 8)
--- spawnCreature(atSt, 2, -6122, 1082, 250)
 spawnCreatures(stormtrooper, 2, -6122, 1082, 100, 8)
--- spawnCreature(atSt, 2, -6274, 712, 250)
 spawnCreatures(stormtrooper, 2, -6274, 712, 300, 15)
--- spawnCreature(atSt, 2, -6381, 712, 250)
 spawnCreatures(stormtrooper, 2, -6381, 712, 300, 15)
--- spawnCreature(atSt, 2, -6164, 972, 250)
 spawnCreatures(stormtrooper, 2, -6385, 938, 100, 15)
 spawnCreatures(stormtrooper, 2, -6429, 968, 100, 15)
-spawnCreature(darthVader, 2, -6300, 930, 250)
+
+spawnCreature(atSt, 2, -6418, 712)
+spawnCreature(atSt, 2, -6190, 851)
+spawnCreature(atSt, 2, -6122, 1082)
+spawnCreature(atSt, 2, -6274, 712)
+spawnCreature(atSt, 2, -6381, 712)
+spawnCreature(atSt, 2, -6164, 972)
+spawnCreature(atAt, 2, -6134, 911)
+spawnCreature(atAt, 2, -6207, 808)
+spawnCreature(atAt, 2, -6233, 650)
+
+spawnCreature(darthVader, 2, -6300, 930)
 
 -- Sarlaac POI
 spawnCreatures(rancor, 2, -2075, 3147, 1000, 80)
