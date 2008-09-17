@@ -48,7 +48,7 @@ forceCrystalHunterAttack20 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 520,
+	damageRatio = 7.20,
 	speedRatio = 1.45,
 	areaRange = 0,
 	accuracyBonus = 300,
@@ -90,7 +90,7 @@ forceCrystalHunterAttack21 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 520,
+	damageRatio = 7.20,
 	speedRatio = 1.45,
 	areaRange = 0,
 	accuracyBonus = 300,
@@ -121,7 +121,7 @@ forceCrystalHunterAttack22 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 520,
+	damageRatio = 7.20,
 	speedRatio = 1.45,
 	areaRange = 0,
 	accuracyBonus = 300,
@@ -152,7 +152,7 @@ forceCrystalHunterAttack23 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 520,
+	damageRatio = 7.20,
 	speedRatio = 1.45,
 	areaRange = 7,
 	accuracyBonus = 300,
@@ -183,7 +183,7 @@ forceCrystalHunterAttack24 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 520,
+	damageRatio = 7.20,
 	speedRatio = 1.45,
 	areaRange = 0,
 	accuracyBonus = 300,
@@ -225,7 +225,7 @@ forceCrystalHunterAttack25 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 520,
+	damageRatio = 7.20,
 	speedRatio = 1.45,
 	areaRange = 7,
 	accuracyBonus = 300,
@@ -256,7 +256,7 @@ forceCrystalHunterAttack26 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 520,
+	damageRatio = 7.20,
 	speedRatio = 2.45,
 	areaRange = 7,
 	accuracyBonus = 300,
@@ -286,7 +286,7 @@ forceCrystalHunterAttack27 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 520,
+	damageRatio = 7.20,
 	speedRatio = 1.25,
 	areaRange = 0,
 	accuracyBonus = 300,

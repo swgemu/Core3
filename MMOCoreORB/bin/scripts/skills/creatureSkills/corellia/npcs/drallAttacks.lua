@@ -47,7 +47,7 @@ drallAttack01 = {
 
 	range = 64,
 
-	damageRatio = 70,
+	damageRatio = 7.0,
 
 	speedRatio = 5,
 	coneAngle = 0,
@@ -56,12 +56,12 @@ drallAttack01 = {
 	accuracyBonus = 0,
 		
 	knockdownChance = 1,
-	postureDownChance = 1,
+	postureDownChance = 0,
 	postureUpChance = 0,
-	dizzyChance = 1,
-	blindChance = 1,
-	stunChance = 1,
-	intimidateChance = 1,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
 	
 	CbtSpamBlock = "attack_block",
 	CbtSpamCounter = "attack_counter",
@@ -82,7 +82,7 @@ drallAttack02 = {
 
 	range = 64,
 
-	damageRatio = 150,
+	damageRatio = 7.5,
 
 	speedRatio = 5,
 	coneAngle = 0,
@@ -117,7 +117,7 @@ drallAttack03 = {
 
 	range = 64,
 
-	damageRatio = 200,
+	damageRatio = 9.0,
 
 	speedRatio = 2,
 	coneAngle = 0,
@@ -125,10 +125,10 @@ drallAttack03 = {
 	areaRange = 0,
 	accuracyBonus = 0,
 		
-	knockdownChance = 1,
+	knockdownChance = 0,
 	postureDownChance = 0,
 	postureUpChance = 0,
-	dizzyChance = 1,
+	dizzyChance = 0,
 	blindChance = 0,
 	stunChance = 0,
 	intimidateChance = 1,
@@ -152,7 +152,7 @@ drallAttack04 = {
 
 	range = 64,
 
-	damageRatio = 70,
+	damageRatio = 7.0,
 
 	speedRatio = 5,
 	coneAngle = 0,
@@ -160,13 +160,13 @@ drallAttack04 = {
 	areaRange = 0,
 	accuracyBonus = 0,
 		
-	knockdownChance = 1,
-	postureDownChance = 1,
+	knockdownChance = 0,
+	postureDownChance = 0,
 	postureUpChance = 0,
-	dizzyChance = 1,
+	dizzyChance = 0,
 	blindChance = 1,
-	stunChance = 1,
-	intimidateChance = 1,
+	stunChance = 0,
+	intimidateChance = 0,
 	
 	CbtSpamBlock = "attack_block",
 	CbtSpamCounter = "attack_counter",
@@ -187,7 +187,7 @@ drallAttack05 = {
 
 	range = 64,
 
-	damageRatio = 70,
+	damageRatio = 7.0,
 
 	speedRatio = 5,
 	coneAngle = 0,
@@ -195,13 +195,13 @@ drallAttack05 = {
 	areaRange = 0,
 	accuracyBonus = 0,
 		
-	knockdownChance = 1,
-	postureDownChance = 1,
+	knockdownChance = 0,
+	postureDownChance = 0,
 	postureUpChance = 0,
-	dizzyChance = 1,
-	blindChance = 1,
+	dizzyChance = 0,
+	blindChance = 0,
 	stunChance = 1,
-	intimidateChance = 1,
+	intimidateChance = 0,
 	
 	CbtSpamBlock = "attack_block",
 	CbtSpamCounter = "attack_counter",

@@ -51,6 +51,7 @@
  RunCreatureFile("objects/dathomir/npcs/nightsisterSentry.lua")
  RunCreatureFile("objects/dathomir/npcs/nightsisterSpellWeaver.lua")
  RunCreatureFile("objects/dathomir/npcs/nightsisterStalker.lua")
+ RunCreatureFile("objects/dathomir/npcs/axkvaMin.lua")
 
  RunCreatureFile("objects/dathomir/npcs/singingMountainClanSentry.lua")
  RunCreatureFile("objects/dathomir/npcs/singingMtnClanArchWitch.lua")

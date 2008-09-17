@@ -72,3 +72,16 @@
  RunCreatureFile("objects/dantooine/npcs/kungaTribesman.lua")
  RunCreatureFile("objects/dantooine/npcs/kungaWarrior.lua")
 
+--Mokks
+ RunCreatureFile("objects/dantooine/npcs/mokkClanLeader.lua")
+ RunCreatureFile("objects/dantooine/npcs/mokkHarvester.lua")
+ RunCreatureFile("objects/dantooine/npcs/mokkHerbalist.lua")
+ RunCreatureFile("objects/dantooine/npcs/mokkHunter.lua")
+ RunCreatureFile("objects/dantooine/npcs/mokkLoreweaver.lua")
+ RunCreatureFile("objects/dantooine/npcs/mokkPrimalist.lua")
+ RunCreatureFile("objects/dantooine/npcs/mokkRockshaper.lua")
+ RunCreatureFile("objects/dantooine/npcs/mokkScout.lua")
+ RunCreatureFile("objects/dantooine/npcs/mokkShaman.lua")
+ RunCreatureFile("objects/dantooine/npcs/mokkSoothsayer.lua")
+ RunCreatureFile("objects/dantooine/npcs/mokkTribesman.lua")
+ RunCreatureFile("objects/dantooine/npcs/mokkWarrior.lua")

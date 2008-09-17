@@ -135,9 +135,9 @@ bullRancor = Creature:new {
       meatType = "meat_carnivore_dathomir",
       meatMax = 1020,
 
-	  skills = { "rancorAttack1" },
+	  skills = { "rancorAttack1", "rancorAttack2", "rancorAttack3" },
       --skills = { " Area attack (disease)", " Dizzy attack", "" }
-      -- respawnTimer = 180,
+      respawnTimer = 180,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }

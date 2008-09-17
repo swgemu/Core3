@@ -52,5 +52,5 @@ bodysuit14 = Clothing:new {
 
 	equipped = "0",
 
-	itemMask = HUMANOID_REBELS
+	itemMask = HUMANOID_REBELS,
 }
