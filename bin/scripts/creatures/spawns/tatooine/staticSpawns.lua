@@ -46,7 +46,6 @@ spawnCreatures(wompRat, 8, 0, 0, 2000, 100)
 spawnCreatures(scyk, 8, 0, 0, 2000, 100)
 spawnCreatures(worrt, 8, 0, 0, 2000, 100)
 spawnCreatures(rill, 8, 0, 0, 2000, 100)
--- spawnCreatures(derangedSquill, 8, 0, 0, 2000, 100)
 spawnCreatures(squill, 8, 0, 0, 2000, 100)
 spawnCreatures(dewback,8, 0, 0, 2000, 100)
 
@@ -54,7 +53,6 @@ spawnCreatures(wompRat, 8, -5000, 0, 3000, 100)
 spawnCreatures(scyk, 8, -5000, 0, 3000, 100)
 spawnCreatures(worrt, 8, -5000, 0, 3000, 100)
 spawnCreatures(rill, 8, -5000, 0, 3000, 100)
--- spawnCreatures(derangedSquill, 8, -5000, 0, 3000, 100)
 spawnCreatures(squill, 8, -5000, 0, 3000, 100)
 spawnCreatures(dewback,8, -5000, 0, 2000, 100)
 
@@ -62,7 +60,6 @@ spawnCreatures(wompRat, 8, 5000, 0, 3000, 100)
 spawnCreatures(scyk, 8, 5000, 0, 3000, 100)
 spawnCreatures(worrt, 8, 5000, 0, 3000, 100)
 spawnCreatures(rill, 8, 5000, 0, 3000, 100)
--- spawnCreatures(derangedSquill, 8, 5000, 0, 3000, 100)
 spawnCreatures(squill, 8, 5000, 0, 3000, 100)
 spawnCreatures(dewback,8, 5000, 0, 2000, 100)
 
@@ -70,7 +67,6 @@ spawnCreatures(wompRat, 8, 0, 5000, 3000, 100)
 spawnCreatures(scyk, 8, 0, 5000, 3000, 100)
 spawnCreatures(worrt, 8, 0, 5000, 3000, 100)
 spawnCreatures(rill, 8, 0, 5000, 3000, 100)
--- spawnCreatures(derangedSquill, 8, 0, 5000, 3000, 100)
 spawnCreatures(squill, 8, 0, 5000, 3000, 100)
 spawnCreatures(dewback,8, 0, 5000, 2000, 100)
 
@@ -79,7 +75,6 @@ spawnCreatures(wompRat, 8, 0, -5000, 3000, 100)
 spawnCreatures(scyk, 8, 0, -5000, 3000, 100)
 spawnCreatures(worrt, 8, 0, -5000, 3000, 100)
 spawnCreatures(rill, 8, 0, -5000, 3000, 100)
--- spawnCreatures(derangedSquill, 8, 0, -5000, 3000, 100)
 spawnCreatures(squill, 8, 0, -5000, 3000, 100)
 spawnCreatures(dewback,8, 0, -5000, 2000, 100)
 
@@ -87,7 +82,6 @@ spawnCreatures(wompRat, 8, -5000, -5000, 3000, 100)
 spawnCreatures(scyk, 8, -5000, -5000, 3000, 100)
 spawnCreatures(worrt, 8, -5000, -5000, 3000, 100)
 spawnCreatures(rill, 8, -5000, -5000, 3000, 100)
--- spawnCreatures(derangedSquill, 8, -5000, -5000, 3000, 100)
 spawnCreatures(squill, 8, -5000, -5000, 3000, 100)
 spawnCreatures(dewback,8, -5000, -5000, 2000, 100)
 
@@ -95,7 +89,6 @@ spawnCreatures(wompRat, 8, 5000, 5000, 3000, 100)
 spawnCreatures(scyk, 8, 5000, 5000, 3000, 100)
 spawnCreatures(worrt, 8, 5000, 5000, 3000, 100)
 spawnCreatures(rill, 8, 5000, 5000, 3000, 100)
--- spawnCreatures(derangedSquill, 8, 5000, 5000, 3000, 100)
 spawnCreatures(squill, 8, 5000, 5000, 3000, 100)
 spawnCreatures(dewback,8, 5000, 5000, 2000, 100)
 
@@ -103,7 +96,6 @@ spawnCreatures(wompRat, 8, 5000, -5000, 3000, 100)
 spawnCreatures(scyk, 8, 5000, -5000, 3000, 100)
 spawnCreatures(worrt, 8, 5000, -5000, 3000, 100)
 spawnCreatures(rill, 8, 5000, -5000, 3000, 100)
--- spawnCreatures(derangedSquill, 8, -5000, 5000, 3000, 100)
 spawnCreatures(squill, 8, 5000, -5000, 3000, 100)
 spawnCreatures(dewback,8, 5000, -5000, 2000, 100)
 
@@ -112,7 +104,6 @@ spawnCreatures(wompRat, 8, -5000, 5000, 3000, 100)
 spawnCreatures(scyk, 8, -5000, 5000, 3000, 100)
 spawnCreatures(worrt, 8, -5000, 5000, 3000, 100)
 spawnCreatures(rill, 8, -5000, 5000, 3000, 100)
--- spawnCreatures(derangedSquill, 8, -5000, 5000, 3000, 100)
 spawnCreatures(squill, 8, -5000, 5000, 3000, 100)
 spawnCreatures(dewback,8, -5000, 5000, 2000, 100)
 
@@ -179,6 +170,7 @@ spawnCreature(juvenileCanyonKrayt, 8, -4669, -4432)
 spawnCreature(juvenileCanyonKrayt, 8, -4752, -4401)
 spawnCreature(juvenileCanyonKrayt, 8, -4740, -4303)
 spawnCreature(juvenileCanyonKrayt, 8, -4673, -4290)
+
 ----------------------------------------------------------------------------------------------------------
 
 --Krayt Graveyard
@@ -207,7 +199,6 @@ spawnCreature(juvenileCanyonKrayt, 8, 6543, 4283)
 spawnCreature(juvenileCanyonKrayt, 8, 6865, 4093)
 spawnCreature(juvenileCanyonKrayt, 8, 7044, 4203)
 spawnCreature(juvenileCanyonKrayt, 8, 7273, 4317)
-
 
 -------
 

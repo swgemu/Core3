@@ -40,7 +40,52 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
--------------------------------------------------------------------------------------------
+--Corellia
+if (PLANET_ID == 0) then
+ RunCreatureFile("spawns/corellia/staticSpawns.lua")
+ RunCreatureFile("spawns/corellia/afarathuCave.lua")
+ RunCreatureFile("spawns/corellia/drallCave.lua")
+ RunCreatureFile("spawns/corellia/lordNyaxCult.lua")
+ RunCreatureFile("spawns/corellia/rogueCorsec.lua")
+end
+
+--Dantooine
+if (PLANET_ID == 1) then
+ RunCreatureFile("spawns/dantooine/forceCrystalHuntersCave.lua")
+ RunCreatureFile("spawns/dantooine/jantaCave.lua")
+ RunCreatureFile("spawns/dantooine/kungaCave.lua")
+end
+
+--Dathomir
+if (PLANET_ID == 2) then
+ RunCreatureFile("spawns/dathomir/staticSpawns.lua")
+ RunCreatureFile("spawns/dathomir/nightsisters.lua")
+ RunCreatureFile("spawns/dathomir/singingmtnclan.lua")
+end
+
+
+--Endor
+--if (PLANET_ID == 3) then
+--Disabled till other Endor Caves are done
+--RunCreatureFile("spawns/endor/deathWatchBunker.lua")
+--end
+
+--Lok
+--if (PLANET_ID == 4) then
+--end
+
+--Naboo
+if (PLANET_ID == 5) then
+ RunCreatureFile("spawns/naboo/staticSpawns.lua")
+end
+
+--rori
+--if (PLANET_ID == 6) then
+--end
+
+--Talus
+--if (PLANET_ID == 7) then
+--end
 
 --Tatooine
 if (PLANET_ID == 8) then
@@ -52,45 +97,6 @@ if (PLANET_ID == 8) then
  RunCreatureFile("spawns/tatooine/beetlecave.lua")
 end
 
-------------------------------------------------------------------------------------------------------
-
---Dathomir
-if (PLANET_ID == 2) then
- RunCreatureFile("spawns/dathomir/staticSpawns.lua")
- RunCreatureFile("spawns/dathomir/nightsisters.lua")
- RunCreatureFile("spawns/dathomir/singingmtnclan.lua")
-end
-------------------------------------------------------------------------------------------------------
-
---Corellia
-if (PLANET_ID == 0) then
- RunCreatureFile("spawns/corellia/staticSpawns.lua")
- RunCreatureFile("spawns/corellia/afarathuCave.lua")
- RunCreatureFile("spawns/corellia/drallCave.lua")
- RunCreatureFile("spawns/corellia/lordNyaxCult.lua")
- RunCreatureFile("spawns/corellia/rogueCorsec.lua")
-end
---------------------------------------------------------------------------------------------------------
---Dantooine
-if (PLANET_ID == 1) then
- RunCreatureFile("spawns/dantooine/forceCrystalHuntersCave.lua")
- RunCreatureFile("spawns/dantooine/jantaCave.lua")
- RunCreatureFile("spawns/dantooine/kungaCave.lua")
-end
-----------------------------------------------------------------------------------------------------------------
-
---Endor
-
---Disabled till other Endor Caves are done
---RunCreatureFile("spawns/endor/deathWatchBunker.lua")
-
--------------------------------------------------------------------------------------------------------------------
-
 --Yavin 4
-
--------------------------------------------------------------------------------------------------------------------
-
---Naboo
-if (PLANET_ID == 5) then
- RunCreatureFile("spawns/naboo/staticSpawns.lua")
-end
+--if (PLANET_ID == 9) then
+--end

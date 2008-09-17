@@ -64,10 +64,10 @@ end
 -------------------------------------------------------------
 
 --Endor
-if (PLANET_ID == 3) then
+--if (PLANET_ID == 3) then
 -- RunCreatureFile("objects/endor/creatures.lua") 
 -- RunCreatureFile("objects/endor/npcs.lua")
-end
+--end
 
 --------------------------------------------------------------
 
