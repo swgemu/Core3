@@ -52,5 +52,5 @@ imperialHat = Clothing:new {
 
 	equipped = "0",
 
-	itemMask = IMPERIAL_HUMANOIDS
+	itemMask = HUMANOID_IMPERIALS,
 }

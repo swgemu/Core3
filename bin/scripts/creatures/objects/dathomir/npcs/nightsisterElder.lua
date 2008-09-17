@@ -120,7 +120,7 @@ nightsisterElder = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0,19,21,29,30,31,33,34,39,40", -- Group it belongs to for loot
+      lootGroup = "0,19,21,30,31,33,34,39,40", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
@@ -136,7 +136,7 @@ nightsisterElder = Creature:new {
       meatMax = 0,
 
       skills = { "nightsisterAttack20", "nightsisterAttack21", "nightsisterAttack22", "nightsisterAttack23", "nightsisterAttack24",  "nightsisterAttack25", "nightsisterAttack26", "nightsisterAttack27", "nightsisterAttack28", "nightsisterAttack29", "nightsisterAttack30", "nightsisterAttack31" },
-         respawnTimer = 600,
+      respawnTimer = 1800,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }

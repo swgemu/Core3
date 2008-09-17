@@ -134,8 +134,8 @@ rancor = Creature:new {
 
       meatType = "meat_carnivore_dathomir",
       meatMax = 950,
-	  skills = { "rancorAttack1", "rancorAttack2" },   
-      -- respawnTimer = 180,
+	skills = { "rancorAttack1", "rancorAttack2" },   
+      respawnTimer = 180,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }

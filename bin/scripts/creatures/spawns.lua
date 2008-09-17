@@ -54,6 +54,7 @@ if (PLANET_ID == 1) then
  RunCreatureFile("spawns/dantooine/forceCrystalHuntersCave.lua")
  RunCreatureFile("spawns/dantooine/jantaCave.lua")
  RunCreatureFile("spawns/dantooine/kungaCave.lua")
+ RunCreatureFile("spawns/dantooine/mokkCave.lua")
 end
 
 --Dathomir
@@ -61,6 +62,8 @@ if (PLANET_ID == 2) then
  RunCreatureFile("spawns/dathomir/staticSpawns.lua")
  RunCreatureFile("spawns/dathomir/nightsisters.lua")
  RunCreatureFile("spawns/dathomir/singingmtnclan.lua")
+ RunCreatureFile("spawns/dathomir/rancorCave.lua")
+ RunCreatureFile("spawns/dathomir/nightsisterCave.lua")
 end
 
 
