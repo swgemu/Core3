@@ -19,7 +19,7 @@ class ChatRoom;
 
 class GroupObject : public SceneObject {
 public:
-	GroupObject(unsigned long long oid, Player* leader);
+	GroupObject(unsigned long long oid, Player* leader, bool mode);
 
 	void sendTo(Player* player);
 

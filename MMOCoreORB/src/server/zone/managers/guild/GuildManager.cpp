@@ -68,18 +68,19 @@ void GuildManager::load() {
 		((GuildManagerImplementation*) _impl)->load();
 }
 
-bool GuildManager::createGuild(string& tag, string& name) {
+bool GuildManager::createGuild(Player* player, string& tag, string& name) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 9);
+		method.addObjectParameter(player);
 		method.addAsciiParameter(tag);
 		method.addAsciiParameter(name);
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((GuildManagerImplementation*) _impl)->createGuild(tag, name);
+		return ((GuildManagerImplementation*) _impl)->createGuild(player, tag, name);
 }
 
 Guild* GuildManager::getGuild(string& tag, bool doLock) {
@@ -110,31 +111,17 @@ Guild* GuildManager::getGuild(unsigned int gid, bool doLock) {
 		return ((GuildManagerImplementation*) _impl)->getGuild(gid, doLock);
 }
 
-bool GuildManager::removeGuild(string& tag) {
+bool GuildManager::removeGuild(int gid) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 12);
-		method.addAsciiParameter(tag);
-
-		return method.executeWithBooleanReturn();
-	} else
-		return ((GuildManagerImplementation*) _impl)->removeGuild(tag);
-}
-
-bool GuildManager::removeGuild(int gid, bool doLock) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 13);
 		method.addSignedIntParameter(gid);
-		method.addBooleanParameter(doLock);
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((GuildManagerImplementation*) _impl)->removeGuild(gid, doLock);
+		return ((GuildManagerImplementation*) _impl)->removeGuild(gid);
 }
 
 void GuildManager::removePlayersFromGuild(int gid) {
@@ -142,7 +129,7 @@ void GuildManager::removePlayersFromGuild(int gid) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 13);
 		method.addSignedIntParameter(gid);
 
 		method.executeWithVoidReturn();
@@ -155,11 +142,398 @@ GuildMap* GuildManager::getGuildMap() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, 14);
 
 		return (GuildMap*) method.executeWithObjectReturn();
 	} else
 		return ((GuildManagerImplementation*) _impl)->getGuildMap();
+}
+
+void GuildManager::handleGuildTag(unsigned int boxID, Player* player, unsigned int cancel, string& returnString) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 15);
+		method.addUnsignedIntParameter(boxID);
+		method.addObjectParameter(player);
+		method.addUnsignedIntParameter(cancel);
+		method.addAsciiParameter(returnString);
+
+		method.executeWithVoidReturn();
+	} else
+		((GuildManagerImplementation*) _impl)->handleGuildTag(boxID, player, cancel, returnString);
+}
+
+void GuildManager::handleGuildName(unsigned int boxID, Player* player, unsigned int cancel, string& returnString) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 16);
+		method.addUnsignedIntParameter(boxID);
+		method.addObjectParameter(player);
+		method.addUnsignedIntParameter(cancel);
+		method.addAsciiParameter(returnString);
+
+		method.executeWithVoidReturn();
+	} else
+		((GuildManagerImplementation*) _impl)->handleGuildName(boxID, player, cancel, returnString);
+}
+
+void GuildManager::handleGuildCreationName(Player* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 17);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		((GuildManagerImplementation*) _impl)->handleGuildCreationName(player);
+}
+
+void GuildManager::handleGuildSponsor(unsigned int boxID, Player* player, unsigned int cancel, string& returnString) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 18);
+		method.addUnsignedIntParameter(boxID);
+		method.addObjectParameter(player);
+		method.addUnsignedIntParameter(cancel);
+		method.addAsciiParameter(returnString);
+
+		method.executeWithVoidReturn();
+	} else
+		((GuildManagerImplementation*) _impl)->handleGuildSponsor(boxID, player, cancel, returnString);
+}
+
+void GuildManager::handleVerifyBoxSponsorTargetforGuildMembership(unsigned int boxID, Player* otherPlayer, unsigned int cancel) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 19);
+		method.addUnsignedIntParameter(boxID);
+		method.addObjectParameter(otherPlayer);
+		method.addUnsignedIntParameter(cancel);
+
+		method.executeWithVoidReturn();
+	} else
+		((GuildManagerImplementation*) _impl)->handleVerifyBoxSponsorTargetforGuildMembership(boxID, otherPlayer, cancel);
+}
+
+void GuildManager::VerifyBoxSponsorTargetforGuildMembership(Player* otherPlayer, string& inviter, string& guildname) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 20);
+		method.addObjectParameter(otherPlayer);
+		method.addAsciiParameter(inviter);
+		method.addAsciiParameter(guildname);
+
+		method.executeWithVoidReturn();
+	} else
+		((GuildManagerImplementation*) _impl)->VerifyBoxSponsorTargetforGuildMembership(otherPlayer, inviter, guildname);
+}
+
+void GuildManager::handleSponsoredGuildMembersBox(unsigned int boxID, Player* player, unsigned int cancel, int index) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 21);
+		method.addUnsignedIntParameter(boxID);
+		method.addObjectParameter(player);
+		method.addUnsignedIntParameter(cancel);
+		method.addSignedIntParameter(index);
+
+		method.executeWithVoidReturn();
+	} else
+		((GuildManagerImplementation*) _impl)->handleSponsoredGuildMembersBox(boxID, player, cancel, index);
+}
+
+void GuildManager::handleSponsoredGuildMembersAcceptBox(unsigned int boxID, Player* player, unsigned int cancel, int index) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 22);
+		method.addUnsignedIntParameter(boxID);
+		method.addObjectParameter(player);
+		method.addUnsignedIntParameter(cancel);
+		method.addSignedIntParameter(index);
+
+		method.executeWithVoidReturn();
+	} else
+		((GuildManagerImplementation*) _impl)->handleSponsoredGuildMembersAcceptBox(boxID, player, cancel, index);
+}
+
+void GuildManager::removeFromGuild(Player* player, Player* removePlayer) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 23);
+		method.addObjectParameter(player);
+		method.addObjectParameter(removePlayer);
+
+		method.executeWithVoidReturn();
+	} else
+		((GuildManagerImplementation*) _impl)->removeFromGuild(player, removePlayer);
+}
+
+void GuildManager::execRemoveFromGuild(unsigned int boxID, Player* player, unsigned int cancel) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 24);
+		method.addUnsignedIntParameter(boxID);
+		method.addObjectParameter(player);
+		method.addUnsignedIntParameter(cancel);
+
+		method.executeWithVoidReturn();
+	} else
+		((GuildManagerImplementation*) _impl)->execRemoveFromGuild(boxID, player, cancel);
+}
+
+void GuildManager::handleGuildDisbandBox(unsigned int boxID, Player* player, unsigned int cancel, string& returnString) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 25);
+		method.addUnsignedIntParameter(boxID);
+		method.addObjectParameter(player);
+		method.addUnsignedIntParameter(cancel);
+		method.addAsciiParameter(returnString);
+
+		method.executeWithVoidReturn();
+	} else
+		((GuildManagerImplementation*) _impl)->handleGuildDisbandBox(boxID, player, cancel, returnString);
+}
+
+void GuildManager::handleGuildNameChange(unsigned int boxID, Player* player, unsigned int cancel, string& returnString) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 26);
+		method.addUnsignedIntParameter(boxID);
+		method.addObjectParameter(player);
+		method.addUnsignedIntParameter(cancel);
+		method.addAsciiParameter(returnString);
+
+		method.executeWithVoidReturn();
+	} else
+		((GuildManagerImplementation*) _impl)->handleGuildNameChange(boxID, player, cancel, returnString);
+}
+
+void GuildManager::handleGuildNameChangeName(unsigned int boxID, Player* player, unsigned int cancel, string& returnString) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 27);
+		method.addUnsignedIntParameter(boxID);
+		method.addObjectParameter(player);
+		method.addUnsignedIntParameter(cancel);
+		method.addAsciiParameter(returnString);
+
+		method.executeWithVoidReturn();
+	} else
+		((GuildManagerImplementation*) _impl)->handleGuildNameChangeName(boxID, player, cancel, returnString);
+}
+
+void GuildManager::handleGuildInformationMembers(Player* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 28);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		((GuildManagerImplementation*) _impl)->handleGuildInformationMembers(player);
+}
+
+void GuildManager::handleGuildInformationMembersBox(unsigned int boxID, Player* player, unsigned int cancel, int index) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 29);
+		method.addUnsignedIntParameter(boxID);
+		method.addObjectParameter(player);
+		method.addUnsignedIntParameter(cancel);
+		method.addSignedIntParameter(index);
+
+		method.executeWithVoidReturn();
+	} else
+		((GuildManagerImplementation*) _impl)->handleGuildInformationMembersBox(boxID, player, cancel, index);
+}
+
+void GuildManager::handleGuildMemberOptions(unsigned int boxID, Player* player, unsigned int cancel, int index) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 30);
+		method.addUnsignedIntParameter(boxID);
+		method.addObjectParameter(player);
+		method.addUnsignedIntParameter(cancel);
+		method.addSignedIntParameter(index);
+
+		method.executeWithVoidReturn();
+	} else
+		((GuildManagerImplementation*) _impl)->handleGuildMemberOptions(boxID, player, cancel, index);
+}
+
+void GuildManager::handleRemoveFromGuild(Player* player, string& kickee) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 31);
+		method.addObjectParameter(player);
+		method.addAsciiParameter(kickee);
+
+		method.executeWithVoidReturn();
+	} else
+		((GuildManagerImplementation*) _impl)->handleRemoveFromGuild(player, kickee);
+}
+
+void GuildManager::callGuildPermissions(Player* player, string& proband) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 32);
+		method.addObjectParameter(player);
+		method.addAsciiParameter(proband);
+
+		method.executeWithVoidReturn();
+	} else
+		((GuildManagerImplementation*) _impl)->callGuildPermissions(player, proband);
+}
+
+void GuildManager::handleGuildPermissionSelection(unsigned int boxID, Player* player, unsigned int cancel, int index) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 33);
+		method.addUnsignedIntParameter(boxID);
+		method.addObjectParameter(player);
+		method.addUnsignedIntParameter(cancel);
+		method.addSignedIntParameter(index);
+
+		method.executeWithVoidReturn();
+	} else
+		((GuildManagerImplementation*) _impl)->handleGuildPermissionSelection(boxID, player, cancel, index);
+}
+
+void GuildManager::declineSponsoring(string& declinee, unsigned int inviteGuild, Player* inviter) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 34);
+		method.addAsciiParameter(declinee);
+		method.addUnsignedIntParameter(inviteGuild);
+		method.addObjectParameter(inviter);
+
+		method.executeWithVoidReturn();
+	} else
+		((GuildManagerImplementation*) _impl)->declineSponsoring(declinee, inviteGuild, inviter);
+}
+
+void GuildManager::handleGuildInfo(Player* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 35);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		((GuildManagerImplementation*) _impl)->handleGuildInfo(player);
+}
+
+void GuildManager::handleGuildSponsoring(Player* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 36);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		((GuildManagerImplementation*) _impl)->handleGuildSponsoring(player);
+}
+
+void GuildManager::handleGuildRenaming(Player* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 37);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		((GuildManagerImplementation*) _impl)->handleGuildRenaming(player);
+}
+
+void GuildManager::handleGuildTransferLeader(Player* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 38);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		((GuildManagerImplementation*) _impl)->handleGuildTransferLeader(player);
+}
+
+void GuildManager::handleGuildTransferLeaderBox(unsigned int boxID, Player* player, unsigned int cancel, string& returnString) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 39);
+		method.addUnsignedIntParameter(boxID);
+		method.addObjectParameter(player);
+		method.addUnsignedIntParameter(cancel);
+		method.addAsciiParameter(returnString);
+
+		method.executeWithVoidReturn();
+	} else
+		((GuildManagerImplementation*) _impl)->handleGuildTransferLeaderBox(boxID, player, cancel, returnString);
+}
+
+void GuildManager::handleGuildTransferLeaderVerifyBox(unsigned int boxID, Player* player, unsigned int cancel) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 40);
+		method.addUnsignedIntParameter(boxID);
+		method.addObjectParameter(player);
+		method.addUnsignedIntParameter(cancel);
+
+		method.executeWithVoidReturn();
+	} else
+		((GuildManagerImplementation*) _impl)->handleGuildTransferLeaderVerifyBox(boxID, player, cancel);
 }
 
 /*
@@ -183,7 +557,7 @@ Packet* GuildManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		load();
 		break;
 	case 9:
-		resp->insertBoolean(createGuild(inv->getAsciiParameter(_param0_createGuild__string_string_), inv->getAsciiParameter(_param1_createGuild__string_string_)));
+		resp->insertBoolean(createGuild((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_createGuild__Player_string_string_), inv->getAsciiParameter(_param2_createGuild__Player_string_string_)));
 		break;
 	case 10:
 		resp->insertLong(getGuild(inv->getAsciiParameter(_param0_getGuild__string_bool_), inv->getBooleanParameter())->_getObjectID());
@@ -192,16 +566,91 @@ Packet* GuildManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		resp->insertLong(getGuild(inv->getUnsignedIntParameter(), inv->getBooleanParameter())->_getObjectID());
 		break;
 	case 12:
-		resp->insertBoolean(removeGuild(inv->getAsciiParameter(_param0_removeGuild__string_)));
+		resp->insertBoolean(removeGuild(inv->getSignedIntParameter()));
 		break;
 	case 13:
-		resp->insertBoolean(removeGuild(inv->getSignedIntParameter(), inv->getBooleanParameter()));
-		break;
-	case 14:
 		removePlayersFromGuild(inv->getSignedIntParameter());
 		break;
-	case 15:
+	case 14:
 		resp->insertLong(getGuildMap()->_getObjectID());
+		break;
+	case 15:
+		handleGuildTag(inv->getUnsignedIntParameter(), (Player*) inv->getObjectParameter(), inv->getUnsignedIntParameter(), inv->getAsciiParameter(_param3_handleGuildTag__int_Player_int_string_));
+		break;
+	case 16:
+		handleGuildName(inv->getUnsignedIntParameter(), (Player*) inv->getObjectParameter(), inv->getUnsignedIntParameter(), inv->getAsciiParameter(_param3_handleGuildName__int_Player_int_string_));
+		break;
+	case 17:
+		handleGuildCreationName((Player*) inv->getObjectParameter());
+		break;
+	case 18:
+		handleGuildSponsor(inv->getUnsignedIntParameter(), (Player*) inv->getObjectParameter(), inv->getUnsignedIntParameter(), inv->getAsciiParameter(_param3_handleGuildSponsor__int_Player_int_string_));
+		break;
+	case 19:
+		handleVerifyBoxSponsorTargetforGuildMembership(inv->getUnsignedIntParameter(), (Player*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
+		break;
+	case 20:
+		VerifyBoxSponsorTargetforGuildMembership((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_VerifyBoxSponsorTargetforGuildMembership__Player_string_string_), inv->getAsciiParameter(_param2_VerifyBoxSponsorTargetforGuildMembership__Player_string_string_));
+		break;
+	case 21:
+		handleSponsoredGuildMembersBox(inv->getUnsignedIntParameter(), (Player*) inv->getObjectParameter(), inv->getUnsignedIntParameter(), inv->getSignedIntParameter());
+		break;
+	case 22:
+		handleSponsoredGuildMembersAcceptBox(inv->getUnsignedIntParameter(), (Player*) inv->getObjectParameter(), inv->getUnsignedIntParameter(), inv->getSignedIntParameter());
+		break;
+	case 23:
+		removeFromGuild((Player*) inv->getObjectParameter(), (Player*) inv->getObjectParameter());
+		break;
+	case 24:
+		execRemoveFromGuild(inv->getUnsignedIntParameter(), (Player*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
+		break;
+	case 25:
+		handleGuildDisbandBox(inv->getUnsignedIntParameter(), (Player*) inv->getObjectParameter(), inv->getUnsignedIntParameter(), inv->getAsciiParameter(_param3_handleGuildDisbandBox__int_Player_int_string_));
+		break;
+	case 26:
+		handleGuildNameChange(inv->getUnsignedIntParameter(), (Player*) inv->getObjectParameter(), inv->getUnsignedIntParameter(), inv->getAsciiParameter(_param3_handleGuildNameChange__int_Player_int_string_));
+		break;
+	case 27:
+		handleGuildNameChangeName(inv->getUnsignedIntParameter(), (Player*) inv->getObjectParameter(), inv->getUnsignedIntParameter(), inv->getAsciiParameter(_param3_handleGuildNameChangeName__int_Player_int_string_));
+		break;
+	case 28:
+		handleGuildInformationMembers((Player*) inv->getObjectParameter());
+		break;
+	case 29:
+		handleGuildInformationMembersBox(inv->getUnsignedIntParameter(), (Player*) inv->getObjectParameter(), inv->getUnsignedIntParameter(), inv->getSignedIntParameter());
+		break;
+	case 30:
+		handleGuildMemberOptions(inv->getUnsignedIntParameter(), (Player*) inv->getObjectParameter(), inv->getUnsignedIntParameter(), inv->getSignedIntParameter());
+		break;
+	case 31:
+		handleRemoveFromGuild((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_handleRemoveFromGuild__Player_string_));
+		break;
+	case 32:
+		callGuildPermissions((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_callGuildPermissions__Player_string_));
+		break;
+	case 33:
+		handleGuildPermissionSelection(inv->getUnsignedIntParameter(), (Player*) inv->getObjectParameter(), inv->getUnsignedIntParameter(), inv->getSignedIntParameter());
+		break;
+	case 34:
+		declineSponsoring(inv->getAsciiParameter(_param0_declineSponsoring__string_int_Player_), inv->getUnsignedIntParameter(), (Player*) inv->getObjectParameter());
+		break;
+	case 35:
+		handleGuildInfo((Player*) inv->getObjectParameter());
+		break;
+	case 36:
+		handleGuildSponsoring((Player*) inv->getObjectParameter());
+		break;
+	case 37:
+		handleGuildRenaming((Player*) inv->getObjectParameter());
+		break;
+	case 38:
+		handleGuildTransferLeader((Player*) inv->getObjectParameter());
+		break;
+	case 39:
+		handleGuildTransferLeaderBox(inv->getUnsignedIntParameter(), (Player*) inv->getObjectParameter(), inv->getUnsignedIntParameter(), inv->getAsciiParameter(_param3_handleGuildTransferLeaderBox__int_Player_int_string_));
+		break;
+	case 40:
+		handleGuildTransferLeaderVerifyBox(inv->getUnsignedIntParameter(), (Player*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
 		break;
 	default:
 		return NULL;
@@ -222,8 +671,8 @@ void GuildManagerAdapter::load() {
 	return ((GuildManagerImplementation*) impl)->load();
 }
 
-bool GuildManagerAdapter::createGuild(string& tag, string& name) {
-	return ((GuildManagerImplementation*) impl)->createGuild(tag, name);
+bool GuildManagerAdapter::createGuild(Player* player, string& tag, string& name) {
+	return ((GuildManagerImplementation*) impl)->createGuild(player, tag, name);
 }
 
 Guild* GuildManagerAdapter::getGuild(string& tag, bool doLock) {
@@ -234,12 +683,8 @@ Guild* GuildManagerAdapter::getGuild(unsigned int gid, bool doLock) {
 	return ((GuildManagerImplementation*) impl)->getGuild(gid, doLock);
 }
 
-bool GuildManagerAdapter::removeGuild(string& tag) {
-	return ((GuildManagerImplementation*) impl)->removeGuild(tag);
-}
-
-bool GuildManagerAdapter::removeGuild(int gid, bool doLock) {
-	return ((GuildManagerImplementation*) impl)->removeGuild(gid, doLock);
+bool GuildManagerAdapter::removeGuild(int gid) {
+	return ((GuildManagerImplementation*) impl)->removeGuild(gid);
 }
 
 void GuildManagerAdapter::removePlayersFromGuild(int gid) {
@@ -248,6 +693,110 @@ void GuildManagerAdapter::removePlayersFromGuild(int gid) {
 
 GuildMap* GuildManagerAdapter::getGuildMap() {
 	return ((GuildManagerImplementation*) impl)->getGuildMap();
+}
+
+void GuildManagerAdapter::handleGuildTag(unsigned int boxID, Player* player, unsigned int cancel, string& returnString) {
+	return ((GuildManagerImplementation*) impl)->handleGuildTag(boxID, player, cancel, returnString);
+}
+
+void GuildManagerAdapter::handleGuildName(unsigned int boxID, Player* player, unsigned int cancel, string& returnString) {
+	return ((GuildManagerImplementation*) impl)->handleGuildName(boxID, player, cancel, returnString);
+}
+
+void GuildManagerAdapter::handleGuildCreationName(Player* player) {
+	return ((GuildManagerImplementation*) impl)->handleGuildCreationName(player);
+}
+
+void GuildManagerAdapter::handleGuildSponsor(unsigned int boxID, Player* player, unsigned int cancel, string& returnString) {
+	return ((GuildManagerImplementation*) impl)->handleGuildSponsor(boxID, player, cancel, returnString);
+}
+
+void GuildManagerAdapter::handleVerifyBoxSponsorTargetforGuildMembership(unsigned int boxID, Player* otherPlayer, unsigned int cancel) {
+	return ((GuildManagerImplementation*) impl)->handleVerifyBoxSponsorTargetforGuildMembership(boxID, otherPlayer, cancel);
+}
+
+void GuildManagerAdapter::VerifyBoxSponsorTargetforGuildMembership(Player* otherPlayer, string& inviter, string& guildname) {
+	return ((GuildManagerImplementation*) impl)->VerifyBoxSponsorTargetforGuildMembership(otherPlayer, inviter, guildname);
+}
+
+void GuildManagerAdapter::handleSponsoredGuildMembersBox(unsigned int boxID, Player* player, unsigned int cancel, int index) {
+	return ((GuildManagerImplementation*) impl)->handleSponsoredGuildMembersBox(boxID, player, cancel, index);
+}
+
+void GuildManagerAdapter::handleSponsoredGuildMembersAcceptBox(unsigned int boxID, Player* player, unsigned int cancel, int index) {
+	return ((GuildManagerImplementation*) impl)->handleSponsoredGuildMembersAcceptBox(boxID, player, cancel, index);
+}
+
+void GuildManagerAdapter::removeFromGuild(Player* player, Player* removePlayer) {
+	return ((GuildManagerImplementation*) impl)->removeFromGuild(player, removePlayer);
+}
+
+void GuildManagerAdapter::execRemoveFromGuild(unsigned int boxID, Player* player, unsigned int cancel) {
+	return ((GuildManagerImplementation*) impl)->execRemoveFromGuild(boxID, player, cancel);
+}
+
+void GuildManagerAdapter::handleGuildDisbandBox(unsigned int boxID, Player* player, unsigned int cancel, string& returnString) {
+	return ((GuildManagerImplementation*) impl)->handleGuildDisbandBox(boxID, player, cancel, returnString);
+}
+
+void GuildManagerAdapter::handleGuildNameChange(unsigned int boxID, Player* player, unsigned int cancel, string& returnString) {
+	return ((GuildManagerImplementation*) impl)->handleGuildNameChange(boxID, player, cancel, returnString);
+}
+
+void GuildManagerAdapter::handleGuildNameChangeName(unsigned int boxID, Player* player, unsigned int cancel, string& returnString) {
+	return ((GuildManagerImplementation*) impl)->handleGuildNameChangeName(boxID, player, cancel, returnString);
+}
+
+void GuildManagerAdapter::handleGuildInformationMembers(Player* player) {
+	return ((GuildManagerImplementation*) impl)->handleGuildInformationMembers(player);
+}
+
+void GuildManagerAdapter::handleGuildInformationMembersBox(unsigned int boxID, Player* player, unsigned int cancel, int index) {
+	return ((GuildManagerImplementation*) impl)->handleGuildInformationMembersBox(boxID, player, cancel, index);
+}
+
+void GuildManagerAdapter::handleGuildMemberOptions(unsigned int boxID, Player* player, unsigned int cancel, int index) {
+	return ((GuildManagerImplementation*) impl)->handleGuildMemberOptions(boxID, player, cancel, index);
+}
+
+void GuildManagerAdapter::handleRemoveFromGuild(Player* player, string& kickee) {
+	return ((GuildManagerImplementation*) impl)->handleRemoveFromGuild(player, kickee);
+}
+
+void GuildManagerAdapter::callGuildPermissions(Player* player, string& proband) {
+	return ((GuildManagerImplementation*) impl)->callGuildPermissions(player, proband);
+}
+
+void GuildManagerAdapter::handleGuildPermissionSelection(unsigned int boxID, Player* player, unsigned int cancel, int index) {
+	return ((GuildManagerImplementation*) impl)->handleGuildPermissionSelection(boxID, player, cancel, index);
+}
+
+void GuildManagerAdapter::declineSponsoring(string& declinee, unsigned int inviteGuild, Player* inviter) {
+	return ((GuildManagerImplementation*) impl)->declineSponsoring(declinee, inviteGuild, inviter);
+}
+
+void GuildManagerAdapter::handleGuildInfo(Player* player) {
+	return ((GuildManagerImplementation*) impl)->handleGuildInfo(player);
+}
+
+void GuildManagerAdapter::handleGuildSponsoring(Player* player) {
+	return ((GuildManagerImplementation*) impl)->handleGuildSponsoring(player);
+}
+
+void GuildManagerAdapter::handleGuildRenaming(Player* player) {
+	return ((GuildManagerImplementation*) impl)->handleGuildRenaming(player);
+}
+
+void GuildManagerAdapter::handleGuildTransferLeader(Player* player) {
+	return ((GuildManagerImplementation*) impl)->handleGuildTransferLeader(player);
+}
+
+void GuildManagerAdapter::handleGuildTransferLeaderBox(unsigned int boxID, Player* player, unsigned int cancel, string& returnString) {
+	return ((GuildManagerImplementation*) impl)->handleGuildTransferLeaderBox(boxID, player, cancel, returnString);
+}
+
+void GuildManagerAdapter::handleGuildTransferLeaderVerifyBox(unsigned int boxID, Player* player, unsigned int cancel) {
+	return ((GuildManagerImplementation*) impl)->handleGuildTransferLeaderVerifyBox(boxID, player, cancel);
 }
 
 /*
