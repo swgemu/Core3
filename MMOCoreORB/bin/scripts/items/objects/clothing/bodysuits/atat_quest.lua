@@ -52,5 +52,5 @@ atat_quest = Clothing:new {
 
 	equipped = "0",
 
-	itemMask = HUMANOID_IMPERIALS,
+	itemMask = HUMANOID_IMPERIALS
 }

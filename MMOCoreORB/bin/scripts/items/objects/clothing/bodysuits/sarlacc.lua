@@ -52,5 +52,5 @@ sarlacc = Clothing:new {
 
 	equipped = "0",
 
-	itemMask = HUMANOIDS,
+	itemMask = HUMANOIDS
 }
