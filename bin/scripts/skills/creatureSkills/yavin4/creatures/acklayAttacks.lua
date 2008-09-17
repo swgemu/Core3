@@ -42,7 +42,7 @@
 
 acklayAttack1 = {
 	attackname = "acklayAttack1",
-	animation = "creature_attack_light",
+	animation = "creature_attack_ranged_light",
 	
 	requiredWeaponType = NONE,
 
@@ -76,7 +76,7 @@ AddRandomPoolAttackTargetSkill(acklayAttack1)
 
 acklayAttack2 = {
 	attackname = "acklayAttack2",
-	animation = "creature_attack_light",
+	animation = "creature_attack_special_1_medium",
 	
 	requiredWeaponType = NONE,
 
@@ -110,7 +110,7 @@ AddRandomPoolAttackTargetSkill(acklayAttack2)
 
 acklayAttack3 = {
 	attackname = "acklayAttack3",
-	animation = "creature_attack_light",
+	animation = "creature_attack_special_1_light",
 	
 	requiredWeaponType = NONE,
 
@@ -144,7 +144,7 @@ AddRandomPoolAttackTargetSkill(acklayAttack3)
 
 acklayAttack4 = {
 	attackname = "acklayAttack4",
-	animation = "creature_attack_light",
+	animation = "creature_attack_special_2_medium",
 	
 	requiredWeaponType = NONE,
 
@@ -178,7 +178,7 @@ AddRandomPoolAttackTargetSkill(acklayAttack4)
 
 acklayAttack5 = {
 	attackname = "acklayAttack5",
-	animation = "creature_attack_light",
+	animation = "creature_attack_special_2_light",
 	
 	requiredWeaponType = NONE,
 
@@ -212,7 +212,7 @@ AddRandomPoolAttackTargetSkill(acklayAttack5)
 
 acklayAttack6 = {
 	attackname = "acklayAttack6",
-	animation = "creature_attack_light",
+	animation = "creature_attack_medium",
 	
 	requiredWeaponType = NONE,
 
@@ -314,11 +314,11 @@ AddRandomPoolAttackTargetSkill(acklayAttack8)
 
 acklayAttack9 = {
 	attackname = "acklayAttack9",
-	animation = "creature_attack_light",
+	animation = "creature_attack_ranged_medium",
 	
 	requiredWeaponType = NONE,
 
-	range = 40,
+	range = 65,
 
 	damageRatio = 128,
 
@@ -367,7 +367,7 @@ AddRandomPoolAttackTargetSkill(acklayAttack9)
 
 acklayAttack10 = {
 	attackname = "acklayAttack10",
-	animation = "creature_attack_light",
+	animation = "creature_attack_special_2_medium",
 	
 	requiredWeaponType = NONE,
 

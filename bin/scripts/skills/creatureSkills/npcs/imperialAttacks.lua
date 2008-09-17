@@ -69,11 +69,11 @@ stormTrooperAttack1 = {
 	CbtSpamHit = "attack_hit",
 	CbtSpamMiss = "attack_miss",
 }
-
 AddRandomPoolAttackTargetSkill(stormTrooperAttack1)
+
 stormTrooperAttack2 = {
 	attackname = "stormTrooperAttack2",
-	animation = "creature_attack_ranged_light",
+	animation = "fire_turret_medium",
 	
 	requiredWeaponType = RANGED,
 
@@ -101,8 +101,8 @@ stormTrooperAttack2 = {
 	CbtSpamHit = "attack_hit",
 	CbtSpamMiss = "attack_miss",
 }
-
 AddRandomPoolAttackTargetSkill(stormTrooperAttack2)
+
 stormTrooperAttack3 = {
 	attackname = "stormTrooperAttack3",
 	animation = "creature_attack_ranged_light",

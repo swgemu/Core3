@@ -47,35 +47,31 @@ atSt = Creature:new {
 	
 	stfName = "an AT-ST",
 	objectCRC = 2128352281,
-	socialGroup = "imperial",
+	socialGroup = "Imperial",
+	named = TRUE, 
 	
-	level = 100,
-	
+	level = 100,	
 	xp = 10000,
 	
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
-
-	health = 50000,
-	strength = 5000,
-	constitution = 5000,
-
-	action = 50000,
-	quickness = 5000,
-	stamina = 5000,
-
-	mind = 50000,
-	focus = 5000,
-	willpower = 5000,
 	
-	armor = 2,
+	healthMax = 55000,
+    healthMin = 50000,
+    strength = 5000,
+    constitution = 5000,
 
-	height = 1,
-	
-	accuracy = 300,
-	
-	height = 1, -- Size of creature
-      
-	armor = 3, -- from http://web.archive.org/web/20050513205858/http://swg.allakhazam.com/db/bestiary.html?swgbeast=3736
+    actionMax = 55000,
+    actionMin = 50000,
+    quickness = 5000,
+    stamina = 5000,
+
+    mindMax = 55000,
+    mindMin = 50000,
+    focus = 5000,
+    willpower = 5000,	
+
+	height = 1,	
+	armor = 3, -- from http://web.archive.org/web/20050513205858/http://swg.allakhazam.com/db/bestiary.html?swgbeast=3736		
 	kinetic = 90,
 	energy = 90,
 	electricity = 90,
@@ -86,60 +82,60 @@ atSt = Creature:new {
 	acid = 90,
 	lightSaber = 0,
 
-      accuracy = 300,
+	accuracy = 300,
 
-      healer = 0,
+	healer = 0,	
+	pack = 1,
+	herd = 0,
+	stalker = 0,
+	killer = 1,
+	aggressive = 0,
+	invincible = 0,
 
-      pack = 1,
-      herd = 0,
-      stalker = 0,
-      killer = 1,
-      aggressive = 0,
-      invincible = 0,
+	attackCreatureOnSight = "", -- Enter socialGroups 
 
-      attackCreatureOnSight = "", -- Enter socialGroups 
+	weapon = "object/weapon/ranged/vehicle/shared_vehicle_atst_ranged.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "Imperial Cannon", -- Name ex. 'a Vibrolance'
+	weaponTemp = "vehicle_atst_ranged", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "RifleRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 1,
+	weaponMinDamage = 350,
+	weaponMaxDamage = 500,
+	weaponAttackSpeed = 1.0,
+	weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      weapon = "object/weapon/ranged/vehicle/shared_vehicle_atst_ranged.iff", -- File path to weapon -> object\xxx\xxx\xx
-      weaponName = "Imperial Cannon", -- Name ex. 'a Vibrolance'
-      weaponTemp = "vehicle_atst_ranged", -- Weapon Template ex. 'lance_vibrolance'
-      weaponClass = "RifleRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      weaponEquipped = 1,
-      weaponMinDamage = 350,
-      weaponMaxDamage = 400,
-      weaponAttackSpeed = 1.5f,
-      weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
-      weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
+	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
+	alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
+	alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	alternateWeaponEquipped = 0,
+	alternateWeaponMinDamage = 0,
+	alternateWeaponMaxDamage = 0,
+	alternateWeaponAttackSpeed = 0,
+	alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
+	alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      alternateWeaponName = "", -- Name ex. 'a Vibrolance'
-      alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      alternateWeaponEquipped = 0,
-      alternateWeaponMinDamage = 0,
-      alternateWeaponMaxDamage = 0,
-      alternateWeaponAttackSpeed = 0,
-      alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
+	lootGroup = "0,11,15,19,21,33,34", -- Group it belongs to for loot
 
-      lootGroup = "0,11,15,19,21,33,34", -- Group it belongs to for loot
+	tame = 0,  -- Likely hood to be tamed
 
-      tame = 0,  -- Likely hood to be tamed
+	milk = 0,
 
-      milk = 0,
+	boneType = "",
+	boneMax = 0,
 
-      boneType = "",
-      boneMax = 0,
+	hideType = "",
+	hideMax = 0,
 
-      hideType = "",
-      hideMax = 0,
-
-      meatType = "",
-      meatMax = 0,
+	meatType = "",
+	meatMax = 0,
 
 	skills = { "stormTrooperAttack2" },
-	respawnTimer = 1200, 
+	respawnTimer = 1800, 
+	
 	behaviorScript = "", -- Link to the behavior script for this object
 }
 
