@@ -47,7 +47,7 @@ tuskenAttack40 = {
 
 	requiredWeaponType = ONEHANDED,
 	
-	range = 11,
+	range = 6,
 	damageRatio = 4.5,
 	speedRatio = 1.25,
 	areaRange = 0,
@@ -78,7 +78,7 @@ tuskenAttack41 = {
 
 	requiredWeaponType = ONEHANDED,
 	
-	range = 11,
+	range = 6,
 	damageRatio = 4.5,
 	speedRatio = 1.25,
 	areaRange = 0,
@@ -109,7 +109,7 @@ tuskenAttack42 = {
 
 	requiredWeaponType = ONEHANDED,
 	
-	range = 11,
+	range = 6,
 	damageRatio = 4.0,
 	speedRatio = 1.8,
 	areaRange = 7,
@@ -140,7 +140,7 @@ tuskenAttack43 = {
 
 	requiredWeaponType = ONEHANDED,
 	
-	range = 11,
+	range = 6,
 	damageRatio = 4.2,
 	speedRatio = 1.25,
 	areaRange = 0,
@@ -172,7 +172,7 @@ tuskenAttack44 = {
 
 	requiredWeaponType = ONEHANDED,
 	
-	range = 11,
+	range = 6,
 	damageRatio = 4.15,
 	speedRatio = 1.45,
 	areaRange = 0,
@@ -214,7 +214,7 @@ tuskenAttack45 = {
 
 	requiredWeaponType = ONEHANDED,
 	
-	range = 11,
+	range = 6,
 	damageRatio = 4.15,
 	speedRatio = 1.45,
 	areaRange = 7,
@@ -246,7 +246,7 @@ tuskenAttack46 = {
 
 	requiredWeaponType = ONEHANDED,
 	
-	range = 11,
+	range = 6,
 	damageRatio = 4.15,
 	speedRatio = 1.45,
 	areaRange = 0,
@@ -288,7 +288,7 @@ tuskenAttack47 = {
 
 	requiredWeaponType = ONEHANDED,
 	
-	range = 11,
+	range = 6,
 	damageRatio = 4.15,
 	speedRatio = 1.45,
 	areaRange = 0,
@@ -330,7 +330,7 @@ tuskenAttack48 = {
 
 	requiredWeaponType = ONEHANDED,
 	
-	range = 11,
+	range = 6,
 	damageRatio = 4.15,
 	speedRatio = 1.45,
 	areaRange = 0,
@@ -372,7 +372,7 @@ tuskenAttack49 = {
 
 	requiredWeaponType = ONEHANDED,
 	
-	range = 11,
+	range = 6,
 	damageRatio = 4.15,
 	speedRatio = 1.45,
 	areaRange = 7,
@@ -403,7 +403,7 @@ tuskenAttack50 = {
 
 	requiredWeaponType = ONEHANDED,
 	
-	range = 11,
+	range = 6,
 	damageRatio = 4.55,
 	speedRatio = 1.45,
 	areaRange = 7,
@@ -434,7 +434,7 @@ tuskenAttack51 = {
 
 	requiredWeaponType = ONEHANDED,
 	
-	range = 11,
+	range = 6,
 	damageRatio = 4.5,
 	speedRatio = 1.25,
 	areaRange = 0,
@@ -467,7 +467,7 @@ tuskenAttack52 = {
 
 	requiredWeaponType = ONEHANDED,
 	
-	range = 11,
+	range = 6,
 	damageRatio = 4.15,
 	speedRatio = 1.45,
 	areaRange = 0,
@@ -508,7 +508,7 @@ tuskenAttack53 = {
 
 	requiredWeaponType = ONEHANDED,
 	
-	range = 11,
+	range = 6,
 	damageRatio = 3.15,
 	speedRatio = 1.45,
 	areaRange = 0,
