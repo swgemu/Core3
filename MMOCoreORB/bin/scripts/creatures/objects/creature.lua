@@ -82,7 +82,7 @@ Creature = Object:new {
 	positionY = 0,
 	positionZ = 0,
 	
-	accuracy = 0,
+	accuracy = 200,
 	
 	speed = 5.76,
 	acceleration = 1.549,

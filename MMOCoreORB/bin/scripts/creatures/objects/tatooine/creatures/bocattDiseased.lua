@@ -83,7 +83,7 @@ bocattDiseased = Creature:new {
       acid = 10,
       lightsaber = 0,
 
-      accuracy = 0,
+      accuracy = 200,
 
       healer = 0,
 

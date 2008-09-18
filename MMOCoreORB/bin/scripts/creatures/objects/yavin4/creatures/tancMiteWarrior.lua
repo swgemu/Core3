@@ -83,7 +83,7 @@ tancMiteWarrior = Creature:new {
       acid = -1,
       lightsaber = 0,
 
-      accuracy = 0,
+      accuracy = 200,
 
       healer = 0,
 
