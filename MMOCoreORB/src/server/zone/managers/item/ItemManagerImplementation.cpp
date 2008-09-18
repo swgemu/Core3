@@ -1211,12 +1211,12 @@ void ItemManagerImplementation::createPlayerItem(Player* player, TangibleObject*
 
 		stringstream query;
 		query << "INSERT INTO `character_items` "
-		<< "(`item_id`,`character_id`,`name`,`template_crc`,`template_type`,`template_name`,`equipped`,`attributes`,`appearance`)"
+		<< "(`item_id`,`character_id`,`name`,`template_crc`,`template_type`,`template_name`,`equipped`,`attributes`,`appearance`, `itemMask`)"
 		<< " VALUES(" << item->getObjectID() << "," << player->getCharacterID()
 		<< ",'\\" << itemname << "',"
 		<< item->getObjectCRC() << "," << item->getObjectSubType() << ",'" << item->getTemplateName() << "',"
 		<< item->isEquipped() << ",'" << item->getAttributes()
-		<< "','" << appearance.substr(0, appearance.size() - 1) << "')";
+		<< "','" << appearance.substr(0, appearance.size() - 1) << "', " << item->getPlayerUseMask() << ")";
 
 		ServerDatabase::instance()->executeStatement(query);
 
@@ -1243,6 +1243,7 @@ void ItemManagerImplementation::savePlayerItem(Player* player, TangibleObject* i
 		query << ", character_id = " << player->getCharacterID() << " ";
 		query << ", attributes = '" << item->getAttributes() << "' ";
 		query << ", appearance = '" << appearance.substr(0, appearance.size() - 1) << "' ";
+		query << ", itemMask = " << item->getPlayerUseMask() << " ";
 		query << "where item_id = " << item->getObjectID();
 
 		ServerDatabase::instance()->executeStatement(query);
