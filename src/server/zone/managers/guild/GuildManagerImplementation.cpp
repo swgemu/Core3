@@ -148,22 +148,22 @@ bool GuildManagerImplementation::createGuild(Player* player, string& tag, string
 
 		stringstream query;
 		Time systemTime;
+
 	    query << "INSERT INTO `guilds` "
 	          << "(`guild_tag`,`guild_name`, members, created, leader,last_name_change)"
 		      << "VALUES ('" << tagString << "','" << nameString << "'"
 		      << ",0," << systemTime.getMiliTime() / 1000 << "," << charID << ","
 		      << systemTime.getMiliTime() / 1000 << ");";
 
+
 		ResultSet* resins = ServerDatabase::instance()->executeQuery(query);
 		gid = resins->getLastAffectedRow();
-		query.str("");
 
 		stringstream query2;
 	    query2 << "UPDATE characters set guild = " << gid << ", guildpermission=255 "
 				<< " WHERE character_id = " << charID << ";";
 
 		ServerDatabase::instance()->executeStatement(query2);
-		query2.str("");
 
 		//Delete all sponsoring for this character
 		declineSponsoring(player->getFirstName(), gid, player);
@@ -175,7 +175,6 @@ bool GuildManagerImplementation::createGuild(Player* player, string& tag, string
 		cout << e.getMessage() << "\n";
 		player->info("DB Exception in GuildManagerImplementation::createGuild(Player* player, string& tag, string& name)");
 
-		//player->unlock();
 		return false;
 	}
 
@@ -184,16 +183,16 @@ bool GuildManagerImplementation::createGuild(Player* player, string& tag, string
 
 	try {
 		server->lock();
-	
-		Guild* guild = new Guild(gid, name, tag);
-	
+
+		guild = new Guild(gid, name, tag);
+
 		guild->setGuildManager((GuildManager*) _this);
 		guild->setGuildLeader(player->getCharacterID());
 		guilds->add(guild);
-	
+
 		player->setGuildPermissions(255);
 		player->setGuildLeader(true);
-		
+
 		server->unlock();
 	} catch (...) {
 		server->unlock();
@@ -207,14 +206,10 @@ bool GuildManagerImplementation::createGuild(Player* player, string& tag, string
 		player->wlock();
 		guild->sendGuildListTo(player);
 		player->unlock();
+
 	}
 
 	player->info("Clean exit from GuildManagerImplementation::createGuild(Player* player, string& tag, string& name)");
-
-	//Garbage collection
-	guild = NULL;
-	player = NULL;
-	players = NULL;
 
 	return true;
 }
@@ -290,9 +285,9 @@ void GuildManagerImplementation::removePlayersFromGuild(int gid) {
 	uint64 defGuild = 0;
 
 	server->lock();
-	
+
 	PlayerMap* players = playerManager->getPlayerMap();
-	
+
 	server->unlock();
 
 	players->resetIterator();
@@ -323,7 +318,7 @@ void GuildManagerImplementation::removePlayersFromGuild(int gid) {
 			room = NULL;
 			playerGuild = NULL;
 		}
-		
+
 		player->unlock();
 		player = NULL;
 	}
@@ -331,7 +326,7 @@ void GuildManagerImplementation::removePlayersFromGuild(int gid) {
 	try {
 		stringstream query;
 		query << "UPDATE characters set guild = 0, guildpermission = 0 where guild = " << gid << ";";
-		
+
 		ServerDatabase::instance()->executeStatement(query);
 	} catch (DatabaseException& e) {
 		cout << e.getMessage() << "\n";
@@ -2324,10 +2319,10 @@ void GuildManagerImplementation::handleGuildInfo(Player* player) {
 
 	//Garbage collection
 	query.str("");
-	
+
 	player = NULL;
 	guildInfoBox = NULL;
-	
+
 	delete guildInfo;
 }
 
