@@ -44,7 +44,7 @@ acklayAttack1 = {
 	attackname = "acklayAttack1",
 	animation = "creature_attack_ranged_light",
 	
-	requiredWeaponType = OneHandedMeleeWeapon,
+	requiredWeaponType = NONE,
 
 	range = 40,
 
@@ -78,7 +78,7 @@ acklayAttack2 = {
 	attackname = "acklayAttack2",
 	animation = "creature_attack_special_1_medium",
 	
-	requiredWeaponType = OneHandedMeleeWeapon,
+	requiredWeaponType = NONE,
 
 	range = 40,
 
@@ -112,7 +112,7 @@ acklayAttack3 = {
 	attackname = "acklayAttack3",
 	animation = "creature_attack_special_1_light",
 	
-	requiredWeaponType = OneHandedMeleeWeapon,
+	requiredWeaponType = NONE,
 
 	range = 40,
 
@@ -146,7 +146,7 @@ acklayAttack4 = {
 	attackname = "acklayAttack4",
 	animation = "creature_attack_special_2_medium",
 	
-	requiredWeaponType = OneHandedMeleeWeapon,
+	requiredWeaponType = NONE,
 
 	range = 40,
 
@@ -180,7 +180,7 @@ acklayAttack5 = {
 	attackname = "acklayAttack5",
 	animation = "creature_attack_special_2_light",
 	
-	requiredWeaponType = OneHandedMeleeWeapon,
+	requiredWeaponType = NONE,
 
 	range = 40,
 
@@ -214,7 +214,7 @@ acklayAttack6 = {
 	attackname = "acklayAttack6",
 	animation = "creature_attack_medium",
 	
-	requiredWeaponType = OneHandedMeleeWeapon,
+	requiredWeaponType = NONE,
 
 	range = 40,
 
@@ -248,7 +248,7 @@ acklayAttack7 = {
 	attackname = "acklayAttack7",
 	animation = "creature_attack_light",
 	
-	requiredWeaponType = OneHandedMeleeWeapon,
+	requiredWeaponType = NONE,
 
 	range = 40,
 
@@ -282,7 +282,7 @@ acklayAttack8 = {
 	attackname = "acklayAttack8",
 	animation = "creature_attack_light",
 	
-	requiredWeaponType = OneHandedMeleeWeapon,
+	requiredWeaponType = NONE,
 
 	range = 40,
 
