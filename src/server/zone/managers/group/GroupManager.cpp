@@ -85,8 +85,11 @@ void GroupManager::inviteToGroup(Player* leader, Player* player) {
 			player->unlock();
 			return;
 		} else if (player->getGroupInviterID() != 0) {
-			leader->sendSystemMessage("group", "considering_other_group");
+			stringstream msg;
+			msg << player->getCharacterName().c_str() << " is considering joining another group.";
+			leader->sendSystemMessage(msg.str());
 			player->unlock();
+			msg.str("");
 			return;
 		}
 
@@ -369,34 +372,34 @@ void GroupManager::kickFromGroup(GroupObject* group, Player* player, Player* pla
 		cout << "Exception in GroupManager::kickFromGroup(GroupObject* group, Player* player, Player* playerToKick)\n";
 		group->unlock();
 	}
-	
+
 	if (!disbanded) {
 		try {
 			playerToKick->wlock();
-		
+
 			ChatRoom* groupChannel = group->getGroupChannel();
 			groupChannel->removePlayer(playerToKick, false);
 			groupChannel->sendDestroyTo(playerToKick);
-		
+
 			ChatRoom* room = groupChannel->getParent();
 			room->sendDestroyTo(playerToKick);
-		
+
 			playerToKick->setGroup(NULL);
 			playerToKick->updateGroupId(0);
-		
+
 			ZoneClientSession* client = playerToKick->getClient();
-			if (client != NULL)	
+			if (client != NULL)
 				group->destroy(client);
-			
-			playerToKick->unlock();			
+
+			playerToKick->unlock();
 		} catch (...) {
 			cout << "Exception in GroupManager::kickFromGroup(GroupObject* group, Player* player, Player* playerToKick)\n";
 			playerToKick->unlock();
-	
+
 		}
 	} else
 		group->finalize();
-	
+
 	player->wlock();
 }
 

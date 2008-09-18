@@ -1857,17 +1857,13 @@ void GuildManagerImplementation::callGuildPermissions(Player* player, string pro
 
 	Player* probandPlayer = playerManager->getPlayer(proband);
 
-	if (probandPlayer == NULL) {
-		player->info("Clean exit from GuildManagerImplementation::callGuildPermissions(Player* player, string proband)");
-		player->unlock();
-		return;
-	}
+	if (probandPlayer != NULL) {
+		probandPlayer->wlock();
 
-	probandPlayer->wlock();
-
-	if (probandPlayer->isOnline()) {
-		//member is online, pulling permissions from member
-		permissions = probandPlayer->getGuildPermissions();
+		if (probandPlayer->isOnline()) {
+			//member is online, pulling permissions from member
+			permissions = probandPlayer->getGuildPermissions();
+		}
 
 	} else {
 		//Member is not online, pull permissions from the DB
@@ -1887,13 +1883,11 @@ void GuildManagerImplementation::callGuildPermissions(Player* player, string pro
 
 			player->info("Clean exit from GuildManagerImplementation::callGuildPermissions(Player* player, string proband)");
 
-			probandPlayer->unlock();
 			player->unlock();
 			return;
 		}
 
 		if (! memberPerm->next()) {
-			probandPlayer->unlock();
 			player->unlock();
 
 			player->info("Clean exit from GuildManagerImplementation::callGuildPermissions(Player* player, string proband)");
@@ -1962,7 +1956,9 @@ void GuildManagerImplementation::callGuildPermissions(Player* player, string pro
 	player->addSuiBox(suiListBox);
 	player->sendMessage(suiListBox->generateMessage());
 
-	probandPlayer->unlock();
+	if (probandPlayer != NULL)
+		probandPlayer->unlock();
+
 	player->unlock();
 
 	player->info("Clean exit from GuildManagerImplementation::callGuildPermissions(Player* player, string proband)");
@@ -2005,12 +2001,6 @@ void GuildManagerImplementation::handleGuildPermissionSelection(uint32 boxID, Pl
 
 	if (probandPlayer != NULL) {
 		probandPlayer->wlock();
-
-		if (!probandPlayer->isOnline()) {
-			player->info("Clean exit from GuildManagerImplementation::handleGuildPermissionSelection(uint32 boxID, Player* player, uint32 cancel, int index)");
-			probandPlayer->unlock();
-			return;
-		}
 
 		if (probandPlayer->isGuildLeader()) {
 			player->sendSystemMessage("You cannot change the permissions of the guild leader.");
@@ -2058,9 +2048,11 @@ void GuildManagerImplementation::handleGuildPermissionSelection(uint32 boxID, Pl
 		ResultSet* memberPerm;
 		stringstream query;
 		query.str("");
+		string lProband = proband;
+		String::toLower(lProband);
 
 		try{
-			query << "SELECT guildpermission FROM characters where firstname = '" << proband
+			query << "SELECT guildpermission FROM characters where lcase(`firstname`) = '" << lProband
 				<< "' and guild = " << player->getGuildID() << ";";
 
 			memberPerm = ServerDatabase::instance()->executeQuery(query);
@@ -2156,11 +2148,10 @@ void GuildManagerImplementation::handleGuildPermissionSelection(uint32 boxID, Pl
 
 		query.str("");
 	    query << "UPDATE characters set guildpermission = " << permissions
-				<< " WHERE character_id = " << probandPlayer->getCharacterID() << ";";
+				<< " WHERE lcase(`firstname`) = '" << lProband << "';";
 
-		ServerDatabase::instance()->executeStatement(query);
+		ServerDatabase::instance()->executeQuery(query);
 	    query.str("");
-
 	}
 
 	player->info("Clean exit from GuildManagerImplementation::handleGuildPermissionSelection(uint32 boxID, Player* player, uint32 cancel, int index)");
