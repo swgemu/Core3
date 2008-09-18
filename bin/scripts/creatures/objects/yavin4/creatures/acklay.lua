@@ -51,7 +51,7 @@ acklay = Creature:new {
       socialGroup = "Acklay",
       named = FALSE, 
 
-      level = 1024,
+      level = 500,
       xp = 28549,
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
@@ -101,11 +101,11 @@ acklay = Creature:new {
       weaponTemp = "shared_baton_gaderiffi", -- Weapon Template ex. 'lance_vibrolance'
       weaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
       weaponEquipped = 0,
-      weaponMinDamage = 550,
-      weaponMaxDamage = 950,
+      weaponMinDamage = 250,
+      weaponMaxDamage = 400,
       weaponAttackSpeed = 1.5,
       weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
-      weaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
+      weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
 
       alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
       alternateWeaponName = "", -- Name ex. 'a Vibrolance'
@@ -120,7 +120,7 @@ acklay = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0,11,5,19,21,33,34,39,40,46,47,49,50", -- Group it belongs to for loot
+      lootGroup = "0,11,15,19,21,33,34,39,40,46,47,49,50", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
@@ -135,7 +135,8 @@ acklay = Creature:new {
       meatType = "meat_insect_yavin4",
       meatMax = 1250,
 
-      skills = { "acklayAttack1", "acklayAttack2", "acklayAttack3", "acklayAttack4", "acklayAttack5", "acklayAttack6", "acklayAttack7", "acklayAttack8", "acklayAttack9", "acklayAttack10" },
+      
+	  skills = { "acklayAttack1", "acklayAttack2", "acklayAttack3", "acklayAttack4", "acklayAttack5", "acklayAttack6", "acklayAttack7", "acklayAttack8", "acklayAttack9" },
       respawnTimer = 9000,
 
       behaviorScript = "", -- Link to the behavior script for this object

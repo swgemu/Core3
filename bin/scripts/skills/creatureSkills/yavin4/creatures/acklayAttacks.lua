@@ -44,11 +44,11 @@ acklayAttack1 = {
 	attackname = "acklayAttack1",
 	animation = "creature_attack_ranged_light",
 	
-	requiredWeaponType = NONE,
+	requiredWeaponType = OneHandedMeleeWeapon,
 
 	range = 40,
 
-	damageRatio = 1024,
+	damageRatio = 65,
 
 	speedRatio = .5,
 
@@ -78,11 +78,11 @@ acklayAttack2 = {
 	attackname = "acklayAttack2",
 	animation = "creature_attack_special_1_medium",
 	
-	requiredWeaponType = NONE,
+	requiredWeaponType = OneHandedMeleeWeapon,
 
 	range = 40,
 
-	damageRatio = 1024,
+	damageRatio = 65,
 
 	speedRatio = .5,
 
@@ -112,11 +112,11 @@ acklayAttack3 = {
 	attackname = "acklayAttack3",
 	animation = "creature_attack_special_1_light",
 	
-	requiredWeaponType = NONE,
+	requiredWeaponType = OneHandedMeleeWeapon,
 
 	range = 40,
 
-	damageRatio = 1024,
+	damageRatio = 65,
 
 	speedRatio = .5,
 
@@ -146,11 +146,11 @@ acklayAttack4 = {
 	attackname = "acklayAttack4",
 	animation = "creature_attack_special_2_medium",
 	
-	requiredWeaponType = NONE,
+	requiredWeaponType = OneHandedMeleeWeapon,
 
 	range = 40,
 
-	damageRatio = 1024,
+	damageRatio = 65,
 
 	speedRatio = .5,
 
@@ -180,11 +180,11 @@ acklayAttack5 = {
 	attackname = "acklayAttack5",
 	animation = "creature_attack_special_2_light",
 	
-	requiredWeaponType = NONE,
+	requiredWeaponType = OneHandedMeleeWeapon,
 
 	range = 40,
 
-	damageRatio = 1024,
+	damageRatio = 65,
 
 	speedRatio = .5,
 
@@ -214,11 +214,11 @@ acklayAttack6 = {
 	attackname = "acklayAttack6",
 	animation = "creature_attack_medium",
 	
-	requiredWeaponType = NONE,
+	requiredWeaponType = OneHandedMeleeWeapon,
 
 	range = 40,
 
-	damageRatio = 1024,
+	damageRatio = 65,
 
 	speedRatio = .5,
 
@@ -248,11 +248,11 @@ acklayAttack7 = {
 	attackname = "acklayAttack7",
 	animation = "creature_attack_light",
 	
-	requiredWeaponType = NONE,
+	requiredWeaponType = OneHandedMeleeWeapon,
 
 	range = 40,
 
-	damageRatio = 1024,
+	damageRatio = 65,
 
 	speedRatio = .5,
 
@@ -282,11 +282,11 @@ acklayAttack8 = {
 	attackname = "acklayAttack8",
 	animation = "creature_attack_light",
 	
-	requiredWeaponType = NONE,
+	requiredWeaponType = OneHandedMeleeWeapon,
 
 	range = 40,
 
-	damageRatio = 1024,
+	damageRatio = 65,
 
 	speedRatio = .5,
 
@@ -314,25 +314,25 @@ AddRandomPoolAttackTargetSkill(acklayAttack8)
 
 acklayAttack9 = {
 	attackname = "acklayAttack9",
-	animation = "creature_attack_ranged_medium",
+	animation = "creature_attack_light",
 	
 	requiredWeaponType = NONE,
 
-	range = 65,
+	range = 40,
 
-	damageRatio = 2048,
+	damageRatio = 65,
 
-	speedRatio = 1,
+	speedRatio = 4,
 
 	areaRange = 0,
 	accuracyBonus = 0,
 
-	healthAttackChance = 95,
-	actionAttackChance = 0,
+	healthAttackChance = 0,
+	actionAttackChance = 100,
 	mindAttackChance = 0,
 
 	dotChance = 95,
-	tickStrengthOfHit = 128,
+	tickStrengthOfHit = 256,
 
 	fireStrength = 0,
 	fireType = 0,
@@ -340,8 +340,8 @@ acklayAttack9 = {
 	bleedingStrength = 0,
 	bleedingType = 0,
 
-	poisonStrength = 128,
-	poisonType = HEALTH,
+	poisonStrength = 512,
+	poisonType = ACTION,
 
 	diseaseStrength = 0,
 	diseaseType = 0,
@@ -361,57 +361,4 @@ acklayAttack9 = {
 	CbtSpamMiss = "attack_miss",
 }
 
-AddRandomPoolAttackTargetSkill(acklayAttack9)
-
------------------------------------------------
-
-acklayAttack10 = {
-	attackname = "acklayAttack10",
-	animation = "creature_attack_special_2_medium",
-	
-	requiredWeaponType = NONE,
-
-	range = 40,
-
-	damageRatio = 2048,
-
-	speedRatio = 1,
-
-	areaRange = 0,
-	accuracyBonus = 0,
-
-	healthAttackChance = 0,
-	actionAttackChance = 95,
-	mindAttackChance = 0,
-
-	dotChance = 95,
-	tickStrengthOfHit = 128,
-
-	fireStrength = 0,
-	fireType = 0,
-
-	bleedingStrength = 128,
-	bleedingType = ACTION,
-
-	poisonStrength = 0,
-	poisonType = 0,
-
-	diseaseStrength = 0,
-	diseaseType = 0,
-		
-	knockdownChance = 0,
-	postureDownChance = 0,
-	postureUpChance = 0,
-	dizzyChance = 0,
-	blindChance = 0,
-	stunChance = 0,
-	intimidateChance = 0,
-	
-	CbtSpamBlock = "attack_block",
-	CbtSpamCounter = "attack_counter",
-	CbtSpamEvade = "attack_evade",
-	CbtSpamHit = "attack_hit",
-	CbtSpamMiss = "attack_miss",
-}
-
-AddRandomPoolAttackTargetSkill(acklayAttack10)
+AddDotPoolAttackTargetSkill(acklayAttack9)
