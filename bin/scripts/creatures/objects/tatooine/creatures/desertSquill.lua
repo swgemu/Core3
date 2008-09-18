@@ -83,7 +83,7 @@ desertSquill = Creature:new {
       acid = 0,
       lightsaber = 0,
 
-      accuracy = 0,
+      accuracy = 200,
 
       healer = 0,
 

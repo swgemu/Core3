@@ -83,7 +83,7 @@ weatheredJindaShaman = Creature:new {
       acid = 0,
       lightsaber = 0,
 
-      accuracy = 0,
+      accuracy = 200,
 
       healer = 1,
 
@@ -120,7 +120,7 @@ weatheredJindaShaman = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0,11,15,19,33,34", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 

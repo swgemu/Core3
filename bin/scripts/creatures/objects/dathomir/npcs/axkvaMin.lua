@@ -72,18 +72,18 @@ axkvaMin = Creature:new {
       willpower = 0,
 
       height = 1, -- Size of creature
-      armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+      armor = 3, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
       kinetic = 100,
-      energy = 0,
+      energy = 35,
       electricity = 100,
       stun = 100,
-      blast = 0,
+      blast = 35,
       heat = 100,
       cold = 100,
       acid = 100,
       lightsaber = 0,
 
-      accuracy = 0,
+      accuracy = 300,
 
       healer = 1,
 

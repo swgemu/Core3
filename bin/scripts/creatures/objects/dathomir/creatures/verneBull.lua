@@ -83,7 +83,7 @@ verneBull = Creature:new {
       acid = 25,
       lightsaber = 0,
 
-      accuracy = 0,
+      accuracy = 200,
 
       healer = 0,
 
