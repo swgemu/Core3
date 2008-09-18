@@ -2300,7 +2300,7 @@ void ObjectControllerMessage::parseMissionListRequest(Player* player, Message* p
 	MissionTerminal* mt = plnMgr->getMissionTerminal(termId);
 	if (mt == NULL) {
 		//Turn this message off after testing: (this msg will be frequent until we have a complete static object table)
-		cout << "Error: Mission Terminal object NULL in parseMissionListRequest(). Mission Terminal does not exist! \n";
+		//cout << "Error: Mission Terminal object NULL in parseMissionListRequest(). Mission Terminal does not exist! \n";
 		return;
 	}
 	

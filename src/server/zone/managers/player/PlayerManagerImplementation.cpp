@@ -515,7 +515,8 @@ void PlayerManagerImplementation::loadWaypoints(Player* player) {
 
 
 void PlayerManagerImplementation::updateOtherFriendlists(Player* player, bool status) {
-	player->info("Entering PlayerManagerImplementation::updateOtherFriendlists(Player* player, bool status)");
+	//still crashing here
+	/*player->info("Entering PlayerManagerImplementation::updateOtherFriendlists(Player* player, bool status)");
 
 	string loggingInName = player->getFirstName();
 	String::toLower(loggingInName);
@@ -557,7 +558,7 @@ void PlayerManagerImplementation::updateOtherFriendlists(Player* player, bool st
 	}
 
 	player->info("Clean exit from PlayerManagerImplementation::updateOtherFriendlists(Player* player, bool status)");
-	player = NULL;
+	player = NULL;*/
 }
 
 void PlayerManagerImplementation::unload(Player* player) {
