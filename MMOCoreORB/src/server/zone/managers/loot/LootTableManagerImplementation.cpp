@@ -243,7 +243,7 @@ void LootTableManagerImplementation::createLootItem(Creature* creature, int leve
 		offset = selectedLootTableMap.size() - itemcount;
 
 
-	TangibleObject* item[itemcount];
+	TangibleObject* items[itemcount];
 
 	for (int i = 0; i < itemcount; ++i) {
 		lootTableTemp = selectedLootTableMap.get(i+offset);
@@ -256,13 +256,17 @@ void LootTableManagerImplementation::createLootItem(Creature* creature, int leve
 		uint16 itemMask = lootTableTemp->getLootItemMask();
 
 		//for testing: cout << "Selected lootitem is " << lootTableTemp->getLootItemName() << endl;
-
-		item[i] = im->createPlayerObjectTemplate(itemType, creature->getNewItemID(), itemCRC,
+		TangibleObject* item = im->createPlayerObjectTemplate(itemType, creature->getNewItemID(), itemCRC,
 				clearName, itemName, false, true, lootAttributes, level);
+				
+		items[i] = item;
+		
+		//TODO - FIXME: how can item be NULL 
+		if (item != NULL) {
+			item->setPlayerUseMask(itemMask);
 
-		item[i]->setPlayerUseMask(itemMask);
-
-		creature->addLootItem(item[i]);
+			creature->addLootItem(item);
+		}
 	}
 
 	//unlock();
