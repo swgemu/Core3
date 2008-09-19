@@ -49,9 +49,9 @@ which carries forward this exception.
 SuiInputBoxImplementation::SuiInputBoxImplementation(Player* player, uint32 boxType, int inputtype) :
 	SuiInputBoxServant(player, boxType, INPUTBOX) {
 
-	int maxInputSize = 10;
+	maxInputSize = 10;
 
-	int inputType = inputtype;
+	inputType = inputtype;
 }
 
 void SuiInputBoxImplementation::generateHeader(BaseMessage* msg) {

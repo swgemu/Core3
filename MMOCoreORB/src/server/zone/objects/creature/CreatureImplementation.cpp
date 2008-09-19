@@ -110,6 +110,8 @@ void CreatureImplementation::init() {
 
 	doRandomMovement = false;
 
+	directionAngle = 0;
+
 	//visibilityRange = 32;
 
 	// constants
@@ -966,7 +968,7 @@ void CreatureImplementation::removeFromZone(bool doLock) {
 	try {
 		if (zone == NULL || !isInQuadTree())
 			return;
-			
+
 		//deagro();
 
 		zone->lock(doLock);
@@ -1060,9 +1062,9 @@ void CreatureImplementation::notifyPositionUpdate(QuadTreeEntry* obj) {
 				}
 			} else if ((parent == NULL) && !doRandomMovement && patrolPoints.isEmpty() && System::random(200) < 1) {
 				doRandomMovement = true;
-				
+
 				positionZ = obj->getPositionZ();
-				
+
 				//cout << hex << player->getObjectID() << " initiating movement of " << objectID << "\n";
 
 				if (!isQueued())
@@ -1092,9 +1094,9 @@ bool CreatureImplementation::activate() {
 			updateTarget(aggroedCreature);
 		} else if (doRandomMovement) {
 			zone->lock();
-			
+
 			doRandomMovement = false;
-			
+
 			zone->unlock();
 
 			addRandomPatrolPoint(32 + System::random(64), false);
@@ -1201,13 +1203,13 @@ void CreatureImplementation::resetState() {
 	defenderList.removeAll();
 
 	clearStates();
-	
+
 	try {
 
 		zone->lock();
-		
+
 		aggroedCreature = NULL;
-		
+
 		zone->unlock();
 	} catch (...) {
 		zone->unlock();
@@ -1246,9 +1248,9 @@ void CreatureImplementation::broadcastNextPositionUpdate(PatrolPoint* point) {
 void CreatureImplementation::setNextPosition() {
 	try {
 		zone->lock();
-		
+
 		setPosition(nextPosition->getPositionX(), nextPosition->getPositionZ(), nextPosition->getPositionY());
-		
+
 		zone->unlock();
 	} catch (...) {
 		zone->unlock();
@@ -1423,12 +1425,12 @@ void CreatureImplementation::doAttack(CreatureObject* target, int damage) {
 		highestMadeDamage = damage;
 
 		info("new target locked");
-		
+
 		try {
 			zone->lock();
-	
+
 			aggroedCreature = target;
-			
+
 			zone->unlock();
 		} catch (...) {
 			zone->unlock();
@@ -1529,7 +1531,7 @@ bool CreatureImplementation::attack(CreatureObject* target) {
 	return true;
 }
 
-void CreatureImplementation::deagro() {	
+void CreatureImplementation::deagro() {
 	if (aggroedCreature != NULL) {
 		stringstream msg;
 		msg << "deaggroed (0x" << hex << aggroedCreature->getObjectID() << dec << ")";
@@ -1540,9 +1542,9 @@ void CreatureImplementation::deagro() {
 
 		try {
 			zone->lock();
-			
+
 			aggroedCreature = NULL;
-			
+
 			zone->unlock();
 		} catch (...) {
 			zone->unlock();

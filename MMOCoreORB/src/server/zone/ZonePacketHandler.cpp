@@ -280,6 +280,11 @@ void ZonePacketHandler::handleSelectCharacter(Message* pack) {
 			obj = server->getCachedObject(playerID, false);
 
 		if (obj != NULL) {
+			if (!obj->isPlayer()) {
+				server->unlock();
+				return;
+			}
+
 			player = (Player*) obj;
 
 			server->addObject(player, false);
@@ -296,9 +301,17 @@ void ZonePacketHandler::handleSelectCharacter(Message* pack) {
 
 			server->addObject(player, false);
 
-			server->unlock();
+			try {
+				player->wlock();
 
-			player->load(client);
+				server->unlock();
+
+				player->load(client);
+
+				player->unlock();
+			} catch (...) {
+				player->unlock();
+			}
 		}
 
 		clientimpl->setLockName("ZoneClientSession = " + player->getFirstName());
