@@ -69,9 +69,7 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, Player* player, uint32
 	int range;
 	string returnString;
 
-	server->lock();
 	GuildManager* pGuild = server->getGuildManager();
-	server->unlock();
 
 	switch (type) {
 	case 0xC057:
@@ -189,15 +187,22 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, Player* player, uint32
 	default:
 		//Clean up players sui box:
 
-		player->wlock();
+		try {
+			player->wlock();
 
-		if (player->hasSuiBox(boxID)) {
-			SuiBox* sui = player->getSuiBox(boxID);
-			player->removeSuiBox(boxID);
-			sui->finalize();
+			if (player->hasSuiBox(boxID)) {
+				SuiBox* sui = player->getSuiBox(boxID);
+
+				player->removeSuiBox(boxID);
+
+				sui->finalize();
+			}
+
+			player->unlock();
+		} catch (...) {
+			player->error("error while cleaning sui in SuiManager::handleSuiEventNotification");
+			player->unlock();
 		}
-
-		player->unlock();
 	}
 }
 

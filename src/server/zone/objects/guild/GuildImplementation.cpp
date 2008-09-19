@@ -70,6 +70,7 @@ GuildImplementation::GuildImplementation(uint32 gid, const string& name, const s
 
 	guildChannel = NULL;
 
+	guildLeader = 0;
 }
 
 void GuildImplementation::sendGuildListTo(Player* player, bool doLock) {

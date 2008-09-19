@@ -410,7 +410,7 @@ void PlayerImplementation::refuseCreate(ZoneClientSession* client) {
 
 void PlayerImplementation::load(ZoneClientSession* client) {
 	try {
-		wlock();
+		//wlock();
 
 		setLoggingIn();
 
@@ -424,6 +424,8 @@ void PlayerImplementation::load(ZoneClientSession* client) {
 		setLoggingName(logName.str());
 
 		info("loading player");
+
+		makeCharacterMask();
 
 		loadItems();
 		//resetArmorEncumbrance();
@@ -445,11 +447,9 @@ void PlayerImplementation::load(ZoneClientSession* client) {
 		PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
 		playerManager->updateOtherFriendlists(_this, true);
 
-		makeCharacterMask();
-
-		unlock();
+		//unlock();
 	} catch (Exception& e) {
-		unlock();
+		//unlock();
 
 		error("logging in character");
 		error(e.getMessage());

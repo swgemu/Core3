@@ -80,10 +80,10 @@ public:
 public:
 	SuiBoxImplementation(Player* play, uint32 typeID, uint32 boxtype);
 
-	~SuiBoxImplementation();
+	virtual ~SuiBoxImplementation();
 
 	virtual BaseMessage* generateMessage() = 0;
-	
+
 	BaseMessage* generateCloseMessage();
 
 	int compareTo(SuiBox* obj) {
