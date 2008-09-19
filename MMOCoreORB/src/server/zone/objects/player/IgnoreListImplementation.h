@@ -72,19 +72,19 @@ public:
 
 	void saveIgnore();
 
-	inline int getCount(){
+	inline int getCount() {
 		return ignoreName.size();
 	}
 
-	inline int getMagicNumber(){
+	inline int getMagicNumber() {
 		return ignoreMagicNumber;
 	}
 
-	string& getIgnoreName(const int i){
+	string& getIgnoreName(const int i) {
 		return ignoreName.get(i);
 	}
 
-	string& getIgnoreServer(const int i){
+	string& getIgnoreServer(const int i) {
 		return ignoreServer.get(i);
 	}
 
