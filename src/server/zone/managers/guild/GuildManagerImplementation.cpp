@@ -198,15 +198,20 @@ bool GuildManagerImplementation::createGuild(Player* player, string& tag, string
 		server->unlock();
 	}
 
-	players->resetIterator();
+	try {
+		players->lock();
 
-	while (players->hasNext()) {
-		Player* player = players->getNextValue();
+		players->resetIterator(false);
 
-		player->wlock();
-		guild->sendGuildListTo(player);
-		player->unlock();
+		while (players->hasNext(false)) {
+			Player* player = players->getNextValue(false);
 
+			guild->sendGuildListTo(player);
+		}
+
+		players->unlock();
+	} catch (...) {
+		players->unlock();
 	}
 
 	player->info("Clean exit from GuildManagerImplementation::createGuild(Player* player, string& tag, string& name)");
@@ -266,7 +271,9 @@ bool GuildManagerImplementation::removeGuild(int gid) {
 	query.str("");
 
 	lock();
+
 	guilds->remove(gid);
+
 	unlock();
 
 	return true;
@@ -284,43 +291,48 @@ void GuildManagerImplementation::removeGuilds() {
 void GuildManagerImplementation::removePlayersFromGuild(int gid) {
 	uint64 defGuild = 0;
 
-	server->lock();
-
 	PlayerMap* players = playerManager->getPlayerMap();
 
-	server->unlock();
+	try {
+		players->lock();
 
-	players->resetIterator();
+		players->resetIterator(false);
 
-	while (players->hasNext()) {
-		Player* player = players->getNextValue();
+		while (players->hasNext(false)) {
+			Player* player = players->getNextValue(false);
 
-		player->wlock();
+			player->wlock();
 
-		if (player->getGuildID() == gid) {
-			Guild* playerGuild = player->getGuild();
+			if (player->getGuildID() == gid) {
+				Guild* playerGuild = player->getGuild();
 
-			if (playerGuild == NULL) {
-				player->unlock();
-				return;
+				if (playerGuild == NULL) {
+					player->unlock();
+					players->unlock();
+					return;
+				}
+
+				ChatRoom* room = playerGuild->getGuildChat();
+
+				player->setGuild(defGuild);
+				player->updateGuild(defGuild);
+				player->setGuildLeader(false);
+				player->setGuildPermissions(0);
+
+				if (room != NULL)
+					room->removePlayer(player, false);
+
+				room = NULL;
+				playerGuild = NULL;
 			}
 
-			ChatRoom* room = playerGuild->getGuildChat();
-
-			player->setGuild(defGuild);
-			player->updateGuild(defGuild);
-			player->setGuildLeader(false);
-			player->setGuildPermissions(0);
-
-			if (room != NULL)
-				room->removePlayer(player, false);
-
-			room = NULL;
-			playerGuild = NULL;
+			player->unlock();
+			player = NULL;
 		}
 
-		player->unlock();
-		player = NULL;
+		players->unlock();
+	} catch (...) {
+		players->unlock();
 	}
 
 	try {
@@ -407,9 +419,7 @@ void GuildManagerImplementation::handleGuildName(uint32 boxID, Player* player, u
 	string tempName = returnString;
 	String::toLower(tempName);
 
-	server->lock();
 	GuildManager* myGuildmanager = server->getGuildManager();
-	server->unlock();
 
 	if (myGuildmanager == NULL) {
 		player->info("Clean exit from GuildManagerImplementation::handleGuildName(uint32 boxID, Player* player, string returnString)");
@@ -667,8 +677,10 @@ void GuildManagerImplementation::handleGuildSponsor(uint32 boxID, Player* player
 		return;
 	}
 
-	otherPlayer->lock();
+	otherPlayer->wlock();
+
 	otherPlayer->setInputBoxReturnBuffer(name);
+
 	otherPlayer->unlock();
 
 	VerifyBoxSponsorTargetforGuildMembership(otherPlayer, name, player->getGuildName());
@@ -703,9 +715,7 @@ void GuildManagerImplementation::handleVerifyBoxSponsorTargetforGuildMembership(
 		return;
 	}
 
-	server->lock();
 	Player* inviter = playerManager->getPlayer(inviterName);
-	server->unlock();
 
 	if (inviter == NULL) {
 		otherPlayer->unlock();
@@ -720,12 +730,15 @@ void GuildManagerImplementation::handleVerifyBoxSponsorTargetforGuildMembership(
 		sui->setPromptTitle("Sponsor For Membership");
 		sui->setPromptText((otherPlayer->getFirstName()) + " has declined your sponsorship.");
 
-		inviter->wlock();
+		if (inviter != otherPlayer)
+			inviter->wlock(otherPlayer);
 
 		inviter->addSuiBox(sui);
 		inviter->sendMessage(sui->generateMessage());
 
-		inviter->unlock();
+		if (inviter != otherPlayer)
+			inviter->unlock();
+
 		otherPlayer->unlock();
 
 		otherPlayer->info("Clean exit from GuildManagerImplementation::handleVerifyBoxSponsorTargetforGuildMembership(uint32 boxID, Player* otherPlayer, uint32 cancel)");
@@ -733,7 +746,8 @@ void GuildManagerImplementation::handleVerifyBoxSponsorTargetforGuildMembership(
 	}
 
 
-	inviter->wlock();
+	if (inviter != otherPlayer)
+		inviter->wlock(otherPlayer);
 
 	uint32 inviteGuild = inviter->getGuildID();
 	string toSponsor = otherPlayer->getFirstName();
@@ -741,7 +755,9 @@ void GuildManagerImplementation::handleVerifyBoxSponsorTargetforGuildMembership(
 	uint64 inviterID = inviter->getCharacterID();
 	uint64 otherPlayerID = otherPlayer->getCharacterID();
 
-	inviter->unlock();
+	if (inviter != otherPlayer)
+		inviter->unlock();
+
 	otherPlayer->unlock();
 
 	//delete all previous sponsoring
@@ -884,7 +900,9 @@ void GuildManagerImplementation::sendMailGuildLeader(Player* player, string send
 	ResultSet* inform;
 
 	player->wlock();
+
 	ChatManager * cm = player->getZone()->getChatManager();
+
 	player->unlock();
 
 	if (cm == NULL) {
@@ -999,9 +1017,7 @@ void GuildManagerImplementation::handleSponsoredGuildMembersAcceptBox(uint32 box
 		return;
 	}
 
-	server->lock();
 	Player* proband = playerManager->getPlayer(probandName);
-	server->unlock();
 
 	if (proband == NULL) {
 		player->info("Clean exit from GuildManagerImplementation::handleSponsoredGuildMembersAcceptBox(uint32 boxID, Player* player, uint32 cancel, int index)");
@@ -1069,7 +1085,9 @@ void GuildManagerImplementation::handleSponsoredGuildMembersAcceptBox(uint32 box
 	} else {
 
 		proband->wlock();
+
 		uint64 probandID = proband->getCharacterID();
+
 		proband->unlock();
 
 		ostringstream query;
@@ -1113,11 +1131,12 @@ void GuildManagerImplementation::removeFromGuild(Player* player, Player* removeP
 	player->info("Entering GuildManagerImplementation::removeFromGuild(Player* player, Player* removePlayer)");
 
 	if (player != removePlayer)
-		removePlayer->wlock();
+		removePlayer->wlock(player);
 
 	if (player->getGuildID() == 0) {
 		player->info("Clean exit from GuildManagerImplementation::removeFromGuild(Player* player, Player* removePlayer)");
 		player->unlock();
+
 		if (player != removePlayer)
 			removePlayer->unlock();
 
@@ -1130,6 +1149,7 @@ void GuildManagerImplementation::removeFromGuild(Player* player, Player* removeP
 	if (playerGuildID != removeGuildID) {
 		player->info("Clean exit from GuildManagerImplementation::removeFromGuild(Player* player, Player* removePlayer)");
 		player->unlock();
+
 		if (player != removePlayer)
 			removePlayer->unlock();
 
@@ -1159,6 +1179,7 @@ void GuildManagerImplementation::removeFromGuild(Player* player, Player* removeP
 		player->info("Clean exit from GuildManagerImplementation::removeFromGuild(Player* player, Player* removePlayer)");
 
 		player->unlock();
+
 		if (player != removePlayer)
 			removePlayer->unlock();
 
@@ -1167,6 +1188,7 @@ void GuildManagerImplementation::removeFromGuild(Player* player, Player* removeP
 	}
 
 	player->unlock();
+
 	if (player != removePlayer)
 		removePlayer->unlock();
 
@@ -1225,7 +1247,9 @@ void GuildManagerImplementation::removeFromGuild(Player* player, Player* removeP
 		unicode uBody(body.str());
 
 		removePlayer->wlock();
+
 		ChatManager * cm = removePlayer->getZone()->getChatManager();
+
 		removePlayer->unlock();
 
 		if (cm != NULL)
@@ -1511,17 +1535,26 @@ void GuildManagerImplementation::handleGuildNameChangeName(uint32 boxID, Player*
 
 	server->unlock();
 
-	players->resetIterator();
+	try {
+		players->lock();
 
-	while (players->hasNext()) {
-		Player* oPlayer = players->getNextValue();
-		oPlayer->wlock();
+		players->resetIterator(false);
 
-		if (oPlayer->getGuildID() == guildid) {
-			myGuild->sendGuildListTo(oPlayer);
-			oPlayer->updateGuild(myGuild);
+		while (players->hasNext(false)) {
+			Player* oPlayer = players->getNextValue(false);
+
+			oPlayer->wlock();
+
+			if (oPlayer->getGuildID() == guildid) {
+				myGuild->sendGuildListTo(oPlayer);
+				oPlayer->updateGuild(myGuild);
+			}
+
+			oPlayer->unlock();
 		}
-		oPlayer->unlock();
+		players->unlock();
+	} catch (...) {
+		players->unlock();
 	}
 
 	stringstream message;
@@ -1702,7 +1735,6 @@ void GuildManagerImplementation::handleGuildMemberOptions(uint32 boxID, Player* 
 		callGuildPermissions(player, proband);
 		break;
 	default:
-		player->unlock();
 		player->info("Clean exit from GuildManagerImplementation::handleGuildMemberOptions(uint32 boxID, Player* player, uint32 cancel, int index)");
 		return;
 	}
@@ -1793,9 +1825,8 @@ void GuildManagerImplementation::execRemoveFromGuild(uint32 boxID, Player* playe
 	player->unlock();
 
 	//If kickee-player is online, remove from guild
-	server->lock();
+
 	Player* kickeePlayer = playerManager->getPlayer(kickee);
-	server->unlock();
 
 	if ( kickeePlayer != NULL) {
 		kickeePlayer->wlock();
@@ -1853,7 +1884,8 @@ void GuildManagerImplementation::callGuildPermissions(Player* player, string pro
 	Player* probandPlayer = playerManager->getPlayer(proband);
 
 	if (probandPlayer != NULL) {
-		probandPlayer->wlock();
+		if (probandPlayer != player)
+			probandPlayer->wlock(player);
 
 		if (probandPlayer->isOnline()) {
 			//member is online, pulling permissions from member
@@ -1951,7 +1983,7 @@ void GuildManagerImplementation::callGuildPermissions(Player* player, string pro
 	player->addSuiBox(suiListBox);
 	player->sendMessage(suiListBox->generateMessage());
 
-	if (probandPlayer != NULL)
+	if (probandPlayer != NULL && probandPlayer != player)
 		probandPlayer->unlock();
 
 	player->unlock();
@@ -1990,9 +2022,7 @@ void GuildManagerImplementation::handleGuildPermissionSelection(uint32 boxID, Pl
 
 	player->unlock();
 
-	server->lock();
 	Player* probandPlayer = playerManager->getPlayer(proband);
-	server->unlock();
 
 	if (probandPlayer != NULL) {
 		probandPlayer->wlock();
@@ -2145,7 +2175,7 @@ void GuildManagerImplementation::handleGuildPermissionSelection(uint32 boxID, Pl
 	    query << "UPDATE characters set guildpermission = " << permissions
 				<< " WHERE lcase(`firstname`) = '" << lProband << "';";
 
-		ServerDatabase::instance()->executeQuery(query);
+		ServerDatabase::instance()->executeStatement(query);
 	    query.str("");
 	}
 
@@ -2522,29 +2552,33 @@ void GuildManagerImplementation::handleGuildTransferLeaderBox(uint32 boxID, Play
 
 	string name = player->getFirstName();
 
-	server->lock();
-
 	string newLeaderName = "";
-	Player* otherPlayer;
+	Player* otherPlayer = NULL;
 
-	for (int i = 0; i < player->inRangeObjectCount(); ++i) {
-		SceneObject* obj = (SceneObject*) (((SceneObjectImplementation*) player->getInRangeObject(i))->_getStub());
+	Zone* zone = player->getZone();
 
-		if (obj->isPlayer()) {
-			otherPlayer = (Player*) obj;
+	if (zone != NULL) {
+		zone->lock();
 
-			string otherName = otherPlayer->getFirstName();
-			String::toLower(otherName);
+		for (int i = 0; i < player->inRangeObjectCount(); ++i) {
+			SceneObject* obj = (SceneObject*) (((SceneObjectImplementation*) player->getInRangeObject(i))->_getStub());
 
-			if (otherName != name && otherName == proband && (player->isInRange(otherPlayer, 8))) {
-				newLeaderName = otherName;
-				break;
+			if (obj->isPlayer()) {
+				otherPlayer = (Player*) obj;
+
+				string otherName = otherPlayer->getFirstName();
+				String::toLower(otherName);
+
+				if (otherName != name && otherName == proband && (player->isInRange(otherPlayer, 8))) {
+					newLeaderName = otherName;
+					break;
+				}
 			}
 		}
+
+		zone->unlock();
 	}
 
-
-	server->unlock();
 
 	if (newLeaderName == "") {
 		player->sendSystemMessage("That person is not loaded or is too far away.");
@@ -2554,14 +2588,16 @@ void GuildManagerImplementation::handleGuildTransferLeaderBox(uint32 boxID, Play
 		return;
 	}
 
-	otherPlayer->wlock();
+	if (otherPlayer != player)
+		otherPlayer->wlock(player);
 
 	if (otherPlayer->getGuildID() != player->getGuildID()) {
 		player->sendSystemMessage("Unable to find a member of the PA with that name.");
 		player->info("Clean exit from GuildManagerImplementation::handleGuildTransferLeaderBox(uint32 boxID, Player* player, uint32 cancel, string returnString)");
 
 		player->unlock();
-		otherPlayer->unlock();
+		if (otherPlayer != player)
+			otherPlayer->unlock();
 		return;
 	}
 
@@ -2578,7 +2614,8 @@ void GuildManagerImplementation::handleGuildTransferLeaderBox(uint32 boxID, Play
 
 	otherPlayer->setInputBoxReturnBuffer(player->getFirstName());
 
-	otherPlayer->unlock();
+	if (otherPlayer != player)
+		otherPlayer->unlock();
 	player->unlock();
 
 	player->info("Clean exit from GuildManagerImplementation::handleGuildTransferLeaderBox(uint32 boxID, Player* player, uint32 cancel, string returnString)");
@@ -2613,6 +2650,7 @@ void GuildManagerImplementation::handleGuildTransferLeaderVerifyBox(uint32 boxID
 		player->info("Clean exit from GuildManagerImplementation::handleGuildTransferLeaderVerifyBox(uint32 boxID, Player* player, uint32 cancel)");
 
 		player->unlock();
+		server->unlock();
 		return;
 	}
 
@@ -2638,7 +2676,8 @@ void GuildManagerImplementation::handleGuildTransferLeaderVerifyBox(uint32 boxID
 	}
 
 
-	olPlayer->wlock();
+	if (olPlayer != player)
+		olPlayer->wlock(player);
 
 	player->setGuildPermissions(255);
 	player->setGuildLeader(true);
@@ -2672,7 +2711,8 @@ void GuildManagerImplementation::handleGuildTransferLeaderVerifyBox(uint32 boxID
 	message << player->getFirstName() << " is the new guild leader.";
 
 	player->unlock();
-	olPlayer->unlock();
+	if (olPlayer != player)
+		olPlayer->unlock();
 
 	sendGuildMail(player, "Guild manager", "@guildmail:leaderchange_subject", message.str(), false);
 

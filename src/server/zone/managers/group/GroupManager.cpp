@@ -207,19 +207,16 @@ void GroupManager::joinGuildGroup(Player* player) {
 	//No Null Check: Player has always a guild (Default guild (unguilded) is 0 )
 
 	playerGuild->wlock();
+
 	ChatRoom* guildchat = playerGuild->getGuildChat();
+
 	playerGuild->unlock();
 
 	if (guildchat == 0) {
-		GroupObject* group = NULL;
-		group = createGuildGroup(player);
+		GroupObject* group = createGuildGroup(player);
 	} else {
-		player->unlock();
-
 		guildchat->sendTo(player);
 		guildchat->addPlayer(player, false);
-
-		player->wlock();
 	}
 }
 

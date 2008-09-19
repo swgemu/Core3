@@ -100,30 +100,7 @@ public:
 
 	string stringify(const int x);
 
-	void useCharge(Player* player) {
-		setUsesRemaining(getUsesRemaining() - 1);
-
-		if (getUsesRemaining() <= 0) {
-			_this->sendDestroyTo(player);
-
-			Zone* zone = player->getZone();
-
-			if (zone != NULL) {
-				ZoneServer* zoneServer = zone->getZoneServer();
-
-				ItemManager* itemManager;
-				if (zoneServer != NULL && ((itemManager = zoneServer->getItemManager()) != NULL)) {
-					player->removeInventoryItem(objectID);
-
-					itemManager->deletePlayerItem(player, _this, false);
-
-					finalize();
-				}
-			}
-		} else {
-			sendDeltas(player);
-		}
-	}
+	void useCharge(Player* player);
 
 	inline void setUsesRemaining(int uses) {
 		usesRemaining = uses;

@@ -61,7 +61,7 @@ which carries forward this exception.
 #include "../waypoint/WaypointObject.h"
 #include "../../managers/object/ObjectManager.h"
 
-IgnoreListImplementation::IgnoreListImplementation(Player* pl): IgnoreListServant(){
+IgnoreListImplementation::IgnoreListImplementation(Player* pl) : IgnoreListServant() {
 	player = pl;
 	ignoreMagicNumber = 0;
 }
