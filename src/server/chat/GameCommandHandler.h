@@ -177,6 +177,7 @@ private:
 	static void revive(StringTokenizer tokenizer, Player * player);
 	static void immune(StringTokenizer tokenizer, Player * player);
 	static void reloadSchematics(StringTokenizer tokenizer, Player * player);
+	static void addNoBuildArea(StringTokenizer tokenizer, Player * player);
 
 	void init();
 

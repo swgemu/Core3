@@ -99,6 +99,8 @@ public:
 
 	void setZoneIndex(int id);
 
+	void setAssociatedArea(unsigned long long uid);
+
 	void setParent(SceneObject* par, unsigned int linktype = 04);
 
 	void setZone(Zone* zne);
@@ -132,6 +134,8 @@ public:
 	float getDirectionW();
 
 	string& getLoggingName();
+
+	unsigned long long getAssociatedArea();
 
 	bool isPlayer();
 
@@ -194,6 +198,8 @@ public:
 	bool isPeaced();
 
 	bool isAttackableBy(CreatureObject* creature);
+
+	bool isInANoBuildArea();
 
 protected:
 	SceneObject(DummyConstructorParameter* param);
@@ -285,6 +291,8 @@ public:
 
 	void setZoneIndex(int id);
 
+	void setAssociatedArea(unsigned long long uid);
+
 	void setParent(SceneObject* par, unsigned int linktype);
 
 	void setZone(Zone* zne);
@@ -318,6 +326,8 @@ public:
 	float getDirectionW();
 
 	string& getLoggingName();
+
+	unsigned long long getAssociatedArea();
 
 	bool isPlayer();
 
@@ -380,6 +390,8 @@ public:
 	bool isPeaced();
 
 	bool isAttackableBy(CreatureObject* creature);
+
+	bool isInANoBuildArea();
 
 protected:
 	string _param0_info__string_bool_;

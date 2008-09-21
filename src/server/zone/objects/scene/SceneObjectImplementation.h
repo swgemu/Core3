@@ -53,6 +53,12 @@ which carries forward this exception.
 
 #include "events/UndeploySceneObjectEvent.h"
 
+#include "../area/BaseArea.h"
+
+#include "../../managers/planet/PlanetManager.h"
+
+#include "../../Zone.h"
+
 class Zone;
 class ZoneClientSession;
 class Player;
@@ -90,6 +96,8 @@ protected:
 	UndeploySceneObjectEvent* undeployEvent;
 
 	bool keepObject;
+
+	uint64 associatedArea;
 
 public:
 	static const int NONPLAYERCREATURE = 1;
@@ -363,6 +371,10 @@ public:
 		return undeployEvent != NULL;
 	}
 
+	inline void setAssociatedArea(uint64 uid) {
+		associatedArea = uid;
+	}
+
 	// getters
 	inline Zone* getZone() {
 		return zone;
@@ -428,6 +440,10 @@ public:
 		return floor(num * power + .05f) / power;
 	}
 
+	inline uint64 getAssociatedArea() {
+		return associatedArea;
+	}
+
 	inline bool doKeepObject() {
 		return keepObject;
 	}
@@ -469,6 +485,12 @@ public:
 
 	virtual bool isAttackableBy(CreatureObject* creature) {
 		return false;
+	}
+
+	inline bool isInANoBuildArea() {
+		PlanetManager * planetManager = this->getZone()->getPlanetManager();
+
+		return planetManager->isNoBuildArea(positionX, positionY);
 	}
 
 };

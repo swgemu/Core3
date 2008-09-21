@@ -498,12 +498,25 @@ void SceneObject::setZoneIndex(int id) {
 		((SceneObjectImplementation*) _impl)->setZoneIndex(id);
 }
 
-void SceneObject::setParent(SceneObject* par, unsigned int linktype) {
+void SceneObject::setAssociatedArea(unsigned long long uid) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 41);
+		method.addUnsignedLongParameter(uid);
+
+		method.executeWithVoidReturn();
+	} else
+		((SceneObjectImplementation*) _impl)->setAssociatedArea(uid);
+}
+
+void SceneObject::setParent(SceneObject* par, unsigned int linktype) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 42);
 		method.addObjectParameter(par);
 		method.addUnsignedIntParameter(linktype);
 
@@ -517,7 +530,7 @@ void SceneObject::setZone(Zone* zne) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 42);
+		DistributedMethod method(this, 43);
 		method.addObjectParameter(zne);
 
 		method.executeWithVoidReturn();
@@ -530,7 +543,7 @@ void SceneObject::clearUndeploymentEvent() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 43);
+		DistributedMethod method(this, 44);
 
 		method.executeWithVoidReturn();
 	} else
@@ -542,7 +555,7 @@ bool SceneObject::isUndeploymentScheduled() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 44);
+		DistributedMethod method(this, 45);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -554,7 +567,7 @@ int SceneObject::getObjectType() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 45);
+		DistributedMethod method(this, 46);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -566,7 +579,7 @@ unsigned long long SceneObject::getObjectID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 46);
+		DistributedMethod method(this, 47);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -578,7 +591,7 @@ unsigned int SceneObject::getObjectCRC() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 47);
+		DistributedMethod method(this, 48);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -590,7 +603,7 @@ unsigned int SceneObject::getMovementCounter() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 48);
+		DistributedMethod method(this, 49);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -602,7 +615,7 @@ float SceneObject::getPositionX() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 49);
+		DistributedMethod method(this, 50);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -614,7 +627,7 @@ float SceneObject::getPositionZ() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 50);
+		DistributedMethod method(this, 51);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -626,7 +639,7 @@ float SceneObject::getPositionY() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 51);
+		DistributedMethod method(this, 52);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -638,7 +651,7 @@ int SceneObject::getDirectionAngle() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 52);
+		DistributedMethod method(this, 53);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -650,7 +663,7 @@ float SceneObject::getDirectionX() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 53);
+		DistributedMethod method(this, 54);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -662,7 +675,7 @@ float SceneObject::getDirectionZ() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 54);
+		DistributedMethod method(this, 55);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -674,7 +687,7 @@ float SceneObject::getDirectionY() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 55);
+		DistributedMethod method(this, 56);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -686,7 +699,7 @@ float SceneObject::getDirectionW() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 56);
+		DistributedMethod method(this, 57);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -698,7 +711,7 @@ string& SceneObject::getLoggingName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 57);
+		DistributedMethod method(this, 58);
 
 		method.executeWithAsciiReturn(_return_getLoggingName);
 		return _return_getLoggingName;
@@ -706,12 +719,24 @@ string& SceneObject::getLoggingName() {
 		return ((SceneObjectImplementation*) _impl)->getLoggingName();
 }
 
+unsigned long long SceneObject::getAssociatedArea() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 59);
+
+		return method.executeWithUnsignedLongReturn();
+	} else
+		return ((SceneObjectImplementation*) _impl)->getAssociatedArea();
+}
+
 bool SceneObject::isPlayer() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 58);
+		DistributedMethod method(this, 60);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -723,7 +748,7 @@ bool SceneObject::isNonPlayerCreature() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 59);
+		DistributedMethod method(this, 61);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -735,7 +760,7 @@ bool SceneObject::isBuilding() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 60);
+		DistributedMethod method(this, 62);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -747,7 +772,7 @@ bool SceneObject::isCell() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 61);
+		DistributedMethod method(this, 63);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -759,7 +784,7 @@ bool SceneObject::isTangible() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 62);
+		DistributedMethod method(this, 64);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -771,7 +796,7 @@ bool SceneObject::isIntangible() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 63);
+		DistributedMethod method(this, 65);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -783,7 +808,7 @@ bool SceneObject::isStatic() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 64);
+		DistributedMethod method(this, 66);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -795,7 +820,7 @@ bool SceneObject::isShip() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 65);
+		DistributedMethod method(this, 67);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -807,7 +832,7 @@ bool SceneObject::isAttackableObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 66);
+		DistributedMethod method(this, 68);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -819,7 +844,7 @@ bool SceneObject::isMission() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 67);
+		DistributedMethod method(this, 69);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -831,7 +856,7 @@ bool SceneObject::isPlayerObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 68);
+		DistributedMethod method(this, 70);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -843,7 +868,7 @@ bool SceneObject::isWaypoint() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 69);
+		DistributedMethod method(this, 71);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -855,7 +880,7 @@ bool SceneObject::isManufactureSchematic() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 70);
+		DistributedMethod method(this, 72);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -867,7 +892,7 @@ Zone* SceneObject::getZone() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 71);
+		DistributedMethod method(this, 73);
 
 		return (Zone*) method.executeWithObjectReturn();
 	} else
@@ -879,7 +904,7 @@ int SceneObject::getZoneID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 72);
+		DistributedMethod method(this, 74);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -891,7 +916,7 @@ SceneObject* SceneObject::getParent() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 73);
+		DistributedMethod method(this, 75);
 
 		return (SceneObject*) method.executeWithObjectReturn();
 	} else
@@ -903,7 +928,7 @@ unsigned long long SceneObject::getParentID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 74);
+		DistributedMethod method(this, 76);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -915,7 +940,7 @@ bool SceneObject::isMoving() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 75);
+		DistributedMethod method(this, 77);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -927,7 +952,7 @@ void SceneObject::switchMovingState() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 76);
+		DistributedMethod method(this, 78);
 
 		method.executeWithVoidReturn();
 	} else
@@ -939,7 +964,7 @@ bool SceneObject::doKeepObject() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 77);
+		DistributedMethod method(this, 79);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -951,7 +976,7 @@ void SceneObject::setCombatState() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 78);
+		DistributedMethod method(this, 80);
 
 		method.executeWithVoidReturn();
 	} else
@@ -963,7 +988,7 @@ void SceneObject::clearCombatState(bool removedefenders) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 79);
+		DistributedMethod method(this, 81);
 		method.addBooleanParameter(removedefenders);
 
 		method.executeWithVoidReturn();
@@ -976,7 +1001,7 @@ void SceneObject::setDefender(SceneObject* defender) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 80);
+		DistributedMethod method(this, 82);
 		method.addObjectParameter(defender);
 
 		method.executeWithVoidReturn();
@@ -989,7 +1014,7 @@ void SceneObject::addDefender(SceneObject* defender) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 81);
+		DistributedMethod method(this, 83);
 		method.addObjectParameter(defender);
 
 		method.executeWithVoidReturn();
@@ -1002,7 +1027,7 @@ void SceneObject::removeDefenders() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 82);
+		DistributedMethod method(this, 84);
 
 		method.executeWithVoidReturn();
 	} else
@@ -1014,7 +1039,7 @@ void SceneObject::removeDefender(SceneObject* defender) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 83);
+		DistributedMethod method(this, 85);
 		method.addObjectParameter(defender);
 
 		method.executeWithVoidReturn();
@@ -1027,7 +1052,7 @@ bool SceneObject::hasDefender(SceneObject* defender) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 84);
+		DistributedMethod method(this, 86);
 		method.addObjectParameter(defender);
 
 		return method.executeWithBooleanReturn();
@@ -1040,7 +1065,7 @@ SceneObject* SceneObject::getDefender(int idx) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 85);
+		DistributedMethod method(this, 87);
 		method.addSignedIntParameter(idx);
 
 		return (SceneObject*) method.executeWithObjectReturn();
@@ -1053,7 +1078,7 @@ unsigned int SceneObject::getDefenderListSize() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 86);
+		DistributedMethod method(this, 88);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -1065,7 +1090,7 @@ bool SceneObject::isPeaced() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 87);
+		DistributedMethod method(this, 89);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -1077,12 +1102,24 @@ bool SceneObject::isAttackableBy(CreatureObject* creature) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 88);
+		DistributedMethod method(this, 90);
 		method.addObjectParameter(creature);
 
 		return method.executeWithBooleanReturn();
 	} else
 		return ((SceneObjectImplementation*) _impl)->isAttackableBy(creature);
+}
+
+bool SceneObject::isInANoBuildArea() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 91);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((SceneObjectImplementation*) _impl)->isInANoBuildArea();
 }
 
 /*
@@ -1202,148 +1239,157 @@ Packet* SceneObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		setZoneIndex(inv->getSignedIntParameter());
 		break;
 	case 41:
-		setParent((SceneObject*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
+		setAssociatedArea(inv->getUnsignedLongParameter());
 		break;
 	case 42:
-		setZone((Zone*) inv->getObjectParameter());
+		setParent((SceneObject*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
 		break;
 	case 43:
-		clearUndeploymentEvent();
+		setZone((Zone*) inv->getObjectParameter());
 		break;
 	case 44:
-		resp->insertBoolean(isUndeploymentScheduled());
+		clearUndeploymentEvent();
 		break;
 	case 45:
-		resp->insertSignedInt(getObjectType());
+		resp->insertBoolean(isUndeploymentScheduled());
 		break;
 	case 46:
-		resp->insertLong(getObjectID());
+		resp->insertSignedInt(getObjectType());
 		break;
 	case 47:
-		resp->insertInt(getObjectCRC());
+		resp->insertLong(getObjectID());
 		break;
 	case 48:
-		resp->insertInt(getMovementCounter());
+		resp->insertInt(getObjectCRC());
 		break;
 	case 49:
-		resp->insertFloat(getPositionX());
+		resp->insertInt(getMovementCounter());
 		break;
 	case 50:
-		resp->insertFloat(getPositionZ());
+		resp->insertFloat(getPositionX());
 		break;
 	case 51:
-		resp->insertFloat(getPositionY());
+		resp->insertFloat(getPositionZ());
 		break;
 	case 52:
-		resp->insertSignedInt(getDirectionAngle());
+		resp->insertFloat(getPositionY());
 		break;
 	case 53:
-		resp->insertFloat(getDirectionX());
+		resp->insertSignedInt(getDirectionAngle());
 		break;
 	case 54:
-		resp->insertFloat(getDirectionZ());
+		resp->insertFloat(getDirectionX());
 		break;
 	case 55:
-		resp->insertFloat(getDirectionY());
+		resp->insertFloat(getDirectionZ());
 		break;
 	case 56:
-		resp->insertFloat(getDirectionW());
+		resp->insertFloat(getDirectionY());
 		break;
 	case 57:
-		resp->insertAscii(getLoggingName());
+		resp->insertFloat(getDirectionW());
 		break;
 	case 58:
-		resp->insertBoolean(isPlayer());
+		resp->insertAscii(getLoggingName());
 		break;
 	case 59:
-		resp->insertBoolean(isNonPlayerCreature());
+		resp->insertLong(getAssociatedArea());
 		break;
 	case 60:
-		resp->insertBoolean(isBuilding());
+		resp->insertBoolean(isPlayer());
 		break;
 	case 61:
-		resp->insertBoolean(isCell());
+		resp->insertBoolean(isNonPlayerCreature());
 		break;
 	case 62:
-		resp->insertBoolean(isTangible());
+		resp->insertBoolean(isBuilding());
 		break;
 	case 63:
-		resp->insertBoolean(isIntangible());
+		resp->insertBoolean(isCell());
 		break;
 	case 64:
-		resp->insertBoolean(isStatic());
+		resp->insertBoolean(isTangible());
 		break;
 	case 65:
-		resp->insertBoolean(isShip());
+		resp->insertBoolean(isIntangible());
 		break;
 	case 66:
-		resp->insertBoolean(isAttackableObject());
+		resp->insertBoolean(isStatic());
 		break;
 	case 67:
-		resp->insertBoolean(isMission());
+		resp->insertBoolean(isShip());
 		break;
 	case 68:
-		resp->insertBoolean(isPlayerObject());
+		resp->insertBoolean(isAttackableObject());
 		break;
 	case 69:
-		resp->insertBoolean(isWaypoint());
+		resp->insertBoolean(isMission());
 		break;
 	case 70:
-		resp->insertBoolean(isManufactureSchematic());
+		resp->insertBoolean(isPlayerObject());
 		break;
 	case 71:
-		resp->insertLong(getZone()->_getObjectID());
+		resp->insertBoolean(isWaypoint());
 		break;
 	case 72:
-		resp->insertSignedInt(getZoneID());
+		resp->insertBoolean(isManufactureSchematic());
 		break;
 	case 73:
-		resp->insertLong(getParent()->_getObjectID());
+		resp->insertLong(getZone()->_getObjectID());
 		break;
 	case 74:
-		resp->insertLong(getParentID());
+		resp->insertSignedInt(getZoneID());
 		break;
 	case 75:
-		resp->insertBoolean(isMoving());
+		resp->insertLong(getParent()->_getObjectID());
 		break;
 	case 76:
-		switchMovingState();
+		resp->insertLong(getParentID());
 		break;
 	case 77:
-		resp->insertBoolean(doKeepObject());
+		resp->insertBoolean(isMoving());
 		break;
 	case 78:
-		setCombatState();
+		switchMovingState();
 		break;
 	case 79:
-		clearCombatState(inv->getBooleanParameter());
+		resp->insertBoolean(doKeepObject());
 		break;
 	case 80:
-		setDefender((SceneObject*) inv->getObjectParameter());
+		setCombatState();
 		break;
 	case 81:
-		addDefender((SceneObject*) inv->getObjectParameter());
+		clearCombatState(inv->getBooleanParameter());
 		break;
 	case 82:
-		removeDefenders();
+		setDefender((SceneObject*) inv->getObjectParameter());
 		break;
 	case 83:
-		removeDefender((SceneObject*) inv->getObjectParameter());
+		addDefender((SceneObject*) inv->getObjectParameter());
 		break;
 	case 84:
-		resp->insertBoolean(hasDefender((SceneObject*) inv->getObjectParameter()));
+		removeDefenders();
 		break;
 	case 85:
-		resp->insertLong(getDefender(inv->getSignedIntParameter())->_getObjectID());
+		removeDefender((SceneObject*) inv->getObjectParameter());
 		break;
 	case 86:
-		resp->insertInt(getDefenderListSize());
+		resp->insertBoolean(hasDefender((SceneObject*) inv->getObjectParameter()));
 		break;
 	case 87:
-		resp->insertBoolean(isPeaced());
+		resp->insertLong(getDefender(inv->getSignedIntParameter())->_getObjectID());
 		break;
 	case 88:
+		resp->insertInt(getDefenderListSize());
+		break;
+	case 89:
+		resp->insertBoolean(isPeaced());
+		break;
+	case 90:
 		resp->insertBoolean(isAttackableBy((CreatureObject*) inv->getObjectParameter()));
+		break;
+	case 91:
+		resp->insertBoolean(isInANoBuildArea());
 		break;
 	default:
 		return NULL;
@@ -1492,6 +1538,10 @@ void SceneObjectAdapter::setZoneIndex(int id) {
 	return ((SceneObjectImplementation*) impl)->setZoneIndex(id);
 }
 
+void SceneObjectAdapter::setAssociatedArea(unsigned long long uid) {
+	return ((SceneObjectImplementation*) impl)->setAssociatedArea(uid);
+}
+
 void SceneObjectAdapter::setParent(SceneObject* par, unsigned int linktype) {
 	return ((SceneObjectImplementation*) impl)->setParent(par, linktype);
 }
@@ -1558,6 +1608,10 @@ float SceneObjectAdapter::getDirectionW() {
 
 string& SceneObjectAdapter::getLoggingName() {
 	return ((SceneObjectImplementation*) impl)->getLoggingName();
+}
+
+unsigned long long SceneObjectAdapter::getAssociatedArea() {
+	return ((SceneObjectImplementation*) impl)->getAssociatedArea();
 }
 
 bool SceneObjectAdapter::isPlayer() {
@@ -1682,6 +1736,10 @@ bool SceneObjectAdapter::isPeaced() {
 
 bool SceneObjectAdapter::isAttackableBy(CreatureObject* creature) {
 	return ((SceneObjectImplementation*) impl)->isAttackableBy(creature);
+}
+
+bool SceneObjectAdapter::isInANoBuildArea() {
+	return ((SceneObjectImplementation*) impl)->isInANoBuildArea();
 }
 
 /*
