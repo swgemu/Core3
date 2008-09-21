@@ -58,6 +58,10 @@ bin_PROGRAMS = core3
 core3_IDLS = server/zone/Zone.cpp \
 		server/zone/ZoneClientSession.cpp \
 		server/zone/ZoneServer.cpp \
+		server/zone/objects/area/Area.cpp \
+		server/zone/objects/area/ActiveArea.cpp \
+		server/zone/objects/area/BaseArea.cpp \
+		server/zone/objects/area/NoBuildArea.cpp \
 		server/zone/objects/attackable/AttackableObject.cpp \
 		server/zone/objects/auction/AuctionItem.cpp \
 		server/zone/objects/scene/SceneObject.cpp \

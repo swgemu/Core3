@@ -129,6 +129,8 @@ interface SceneObject implements ManagedObject {
 	void setMovementCounter(unsigned int cntr);
 	
 	void setZoneIndex(int id);
+
+	void setAssociatedArea(unsigned long uid);
 	
 	//void setLockName(const string name);
 	
@@ -166,6 +168,8 @@ interface SceneObject implements ManagedObject {
 	float getDirectionW();
 	
 	string getLoggingName();
+
+	unsigned long getAssociatedArea();
 	
 	boolean isPlayer();
 	
@@ -223,4 +227,6 @@ interface SceneObject implements ManagedObject {
 	
 	boolean isPeaced();
 	boolean isAttackableBy(CreatureObject creature);
+
+	boolean isInANoBuildArea();
 }

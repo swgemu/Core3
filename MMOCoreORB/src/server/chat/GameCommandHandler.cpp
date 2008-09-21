@@ -58,6 +58,7 @@ which carries forward this exception.
 #include "ChatManager.h"
 
 #include "../zone/managers/guild/GuildManager.h"
+#include "../zone/managers/planet/PlanetManager.h"
 
 GMCommandMap * GameCommandHandler::gmCommands = NULL;
 
@@ -249,6 +250,10 @@ void GameCommandHandler::init() {
 			"Hot Loads schematic tables.",
 			"Usage: @reloadSchematics",
 			&reloadSchematics);
+	gmCommands->addCommand("addNoBuildArea", DEVELOPER,
+			"Adds a no build area to the map.",
+			"Usage: @addNoBuildArea <minX> <maxX> <minY> <maxY>",
+			&addNoBuildArea);
 }
 
 GameCommandHandler::~GameCommandHandler() {
@@ -1816,5 +1821,43 @@ void GameCommandHandler::reloadSchematics(StringTokenizer tokenizer,
 			craftingManager->refreshDraftSchematics(targetPlayer);
 		}
 
+	}
+}
+
+void GameCommandHandler::addNoBuildArea(StringTokenizer tokenizer, Player* player) {
+	try {
+		if (!tokenizer.hasMoreTokens())
+			return;
+
+		float xMin = tokenizer.getFloatToken();
+
+		if (!tokenizer.hasMoreTokens())
+			return;
+
+		float xMax = tokenizer.getFloatToken();
+
+		if (!tokenizer.hasMoreTokens())
+			return;
+
+		float yMin = tokenizer.getFloatToken();
+
+		if (!tokenizer.hasMoreTokens())
+			return;
+
+		float yMax = tokenizer.getFloatToken();
+
+		PlanetManager * planetManager = player->getZone()->getPlanetManager();
+
+		if (planetManager->createNoBuildArea(xMin, xMax, yMin, yMax) != NULL)
+			player->sendSystemMessage("No Build Area Created");
+		else
+			player->sendSystemMessage("No Build Area could not be created.");
+
+	} catch (Exception e) {
+		player->sendSystemMessage("No Build Area could not be created (Exception Thrown)");
+		cout << "Exception Caught in GameCommandHandler::addNoBuildArea: "  << e.getMessage() << endl;
+	} catch (...) {
+		player->sendSystemMessage("No Build Area could not be created (Exception Thrown)");
+		cout << "Unspecified Exception Caught in GameCommandHandler::addNoBuildArea" << endl;
 	}
 }

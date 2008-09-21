@@ -65,11 +65,14 @@ class AreaMap {
 		if (baseAreas == NULL)
 			return;
 		try {
+			uint64 uid = 0;
+
 			float yMin = -(mapHeight / 2);
 			for(int i = 0; i < yCells; i++) {
 				float xMin = -(mapWidth / 2);
 				for(int j = 0; j < xCells; j++) {
 					baseAreas[j][i] = new BaseArea(xMin, xMin + baseAreaWidth, yMin, yMin + baseAreaHeight);
+					baseAreas[j][i]->setUID(++uid);
 					xMin += baseAreaWidth;
 				}
 				yMin += baseAreaHeight;
@@ -104,7 +107,7 @@ public:
 	~AreaMap() {
 		for(int i = 0; i < yCells; i++) {
 			for (int j=0; j<xCells; j++)
-				delete(baseAreas[j][i]);
+				baseAreas[j][i]->finalize();
 		}
 	}
 

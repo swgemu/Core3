@@ -2286,10 +2286,10 @@ void ObjectControllerMessage::parseRequestCharacterMatch(Player* player,
 void ObjectControllerMessage::parseMissionListRequest(Player* player, Message* pack) {
 	//skip objId + old size + unk byte + refresh byte
 	pack->shiftOffset(14);
-	
+
 	//Grab the mission terminal id
 	uint64 termId = pack->parseLong();
-	
+
 	//TODO: Take the error messages out after testing
 	PlanetManager* plnMgr = player->getZone()->getPlanetManager();
 	if (plnMgr == NULL) {
@@ -2303,7 +2303,7 @@ void ObjectControllerMessage::parseMissionListRequest(Player* player, Message* p
 		//cout << "Error: Mission Terminal object NULL in parseMissionListRequest(). Mission Terminal does not exist! \n";
 		return;
 	}
-	
+
 	MissionManager* misoMgr = player->getZone()->getZoneServer()->getMissionManager();
 	if (misoMgr == NULL) {
 		cout << "Error: Mission Manager NULL in parseMissionListRequest() \n";
@@ -2316,32 +2316,32 @@ void ObjectControllerMessage::parseMissionListRequest(Player* player, Message* p
 void ObjectControllerMessage::parseMissionAccept(Player* player, Message* pack){
 	//skip objId + old size
 	pack->shiftOffset(12);
-	
+
 	//Grab the mission object id
 	uint64 misoId = pack->parseLong();
-	
+
 	MissionManager* misoMgr = player->getZone()->getZoneServer()->getMissionManager();
 	if (misoMgr == NULL) {
 		cout << "Error: Mission Manager NULL in parseMissionAccept() \n";
 		return;
 	}
-	
+
 	misoMgr->doMissionAccept(player, misoId, true);
 }
 
 void ObjectControllerMessage::parseMissionAbort(Player* player, Message* pack) {
 	//skip objId + old size
 	pack->shiftOffset(12);
-	
+
 	//Grab the mission object id
 	uint64 misoId = pack->parseLong();
-	
+
 	MissionManager* misoMgr = player->getZone()->getZoneServer()->getMissionManager();
 	if (misoMgr == NULL) {
 		cout << "Error: Mission Manager NULL in parseMissionAbort() \n";
 		return;
 	}
-	
+
 	misoMgr->doMissionAbort(player, misoId, true);
 }
 

@@ -54,6 +54,7 @@ import "../../objects/creature/shuttle/ShuttleCreature";
 import "../../objects/building/BuildingObject";
 import "../../objects/building/cell/CellObject";
 import "../../objects/tangible/terminal/mission/MissionTerminal";
+import "../../objects/area/NoBuildArea";
 
 interface PlanetManager {
 	PlanetManager(Zone zone, ZoneProcessServerImplementation processor) {
@@ -86,4 +87,9 @@ interface PlanetManager {
 
 	void placePlayerStructure(Player player, unsigned long objectID, float x, float y, int orient);
 	unsigned int getTravelFare(string departurePlanet, string arrivalPlanet);
+
+	boolean isNoBuildArea(boolean x, boolean y);
+	void addNoBuildArea(float minX, float maxX, float minY, float maxY, unsigned long uid, unsigned char reason = 0);
+	void addNoBuildArea(NoBuildArea area);
+	NoBuildArea createNoBuildArea(float minX, float maxX, float minY, float maxY, unsigned char reason = 0);
 }

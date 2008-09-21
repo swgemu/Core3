@@ -58,9 +58,6 @@ which carries forward this exception.
 
 #include "../../objects/terrain/PlanetNames.h"
 
-#include "AreaMap.h"
-#include "../../objects/area/BaseArea.h"
-
 const uint32 PlanetManagerImplementation::travelFare[10][10] = {
 		{ 100, 1000, 2000, 4000,    0,  500,    0,    0,  600, 3000},
 		{1000,  100,    0,    0,    0,    0,    0,    0,    0,    0},
@@ -93,6 +90,7 @@ PlanetManagerImplementation::PlanetManagerImplementation(Zone* planet, ZoneProce
 	missionTerminalMap = new MissionTerminalMap(100);
 	craftingStationMap.setNullValue(NULL);
 	craftingStationMap.setInsertPlan(SortedVector<VectorMapEntry<uint64, CraftingStation*>*>::NO_DUPLICATE);
+	areaMap = new AreaMap(16000, 16000, 500, 500);
 
 	creatureManager = planet->getCreatureManager();
 
@@ -123,6 +121,9 @@ PlanetManagerImplementation::~PlanetManagerImplementation() {
 	delete missionTerminalMap;
 	missionTerminalMap = NULL;
 
+	delete areaMap;
+	areaMap = NULL;
+
 	delete shuttleTakeOffEvent;
 	shuttleTakeOffEvent = NULL;
 
@@ -141,6 +142,8 @@ void PlanetManagerImplementation::start() {
 		takeOffShuttles();
 
 	loadPlayerStructures();
+
+	loadNoBuildAreas();
 }
 
 void PlanetManagerImplementation::stop() {
@@ -155,6 +158,92 @@ void PlanetManagerImplementation::stop() {
 	unlock();
 }
 
+void PlanetManagerImplementation::loadNoBuildAreas() {
+	stringstream query;
+	query << "SELECT * FROM no_build_areas WHERE zoneid = " << zone->getZoneID() << ";";
+
+	ResultSet* result = ServerDatabase::instance()->executeQuery(query);
+
+	while (result->next()) {
+		uint64 uid = result->getUnsignedLong(1);
+		float minX = result->getFloat(2);
+		float maxX = result->getFloat(3);
+		float minY = result->getFloat(4);
+		float maxY = result->getFloat(5);
+		uint8 reason = result->getUnsignedInt(6);
+
+		addNoBuildArea(minX, maxX, minY, maxY, reason, uid);
+	}
+
+	delete result;
+}
+
+void PlanetManagerImplementation::addNoBuildArea(float minX, float maxX, float minY, float maxY, uint64 uid, uint8 reason) {
+	lock();
+	try {
+		NoBuildArea * area = new NoBuildArea(minX, maxX, minY, maxY, reason);
+		area->setUID(uid);
+		areaMap->addArea(area);
+	} catch (Exception e) {
+		cout << "Exception Caught in PlanetManagerImplementation::loadNoBuildAreas: "  << e.getMessage() << endl;
+	} catch (...) {
+		cout << "Unspecified Exception Caught in PlanetManagerImplementation::loadNoBuildAreas" << endl;
+	}
+	unlock();
+}
+
+void PlanetManagerImplementation::addNoBuildArea(NoBuildArea * area) {
+	lock();
+	try {
+		areaMap->addArea(area);
+	} catch (Exception e) {
+		cout << "Exception Caught in PlanetManagerImplementation::addNoBuildArea: "  << e.getMessage() << endl;
+	} catch (...) {
+		cout << "Unspecified Exception Caught in PlanetManagerImplementation::addNoBuildArea" << endl;
+	}
+	unlock();
+}
+
+NoBuildArea * PlanetManagerImplementation::createNoBuildArea(float minX, float maxX, float minY, float maxY, uint8 reason) {
+	NoBuildArea * area = NULL;
+
+	try {
+		area = new NoBuildArea(minX, maxX, minY, maxY, reason);
+
+		stringstream statement;
+
+		statement << "INSERT INTO `no_build_areas` "
+		<< "(`zoneid`,`xMin`,`xMax`,`yMin`,`yMax`,`reason`)"
+		<< " VALUES(" << zone->getZoneID() << ", " << minX << ", " << maxX
+		<< ", " << minY << ", " << maxY << ", " << (unsigned short) reason << ");";
+
+		ServerDatabase::instance()->executeStatement(statement);
+
+		stringstream query;
+
+		query << "SELECT MAX(uid) FROM no_build_areas";
+
+		ResultSet * rs = ServerDatabase::instance()->executeQuery(query);
+
+
+		if (rs->next())
+			area->setUID(rs->getUnsignedLong(0));
+
+		delete rs;
+
+	} catch (Exception e) {
+		cout << "Exception Caught in PlanetManagerImplementation::createNoBuildArea: "  << e.getMessage() << endl;
+		return NULL;
+	} catch (...) {
+		cout << "Unspecified Exception Caught in PlanetManagerImplementation::createNoBuildArea" << endl;
+		return NULL;
+	}
+
+	if (area != NULL)
+		addNoBuildArea(area);
+
+	return area;
+}
 void PlanetManagerImplementation::loadPlayerStructures() {
 	lock();
 
@@ -187,6 +276,9 @@ void PlanetManagerImplementation::loadPlayerStructures() {
 		float y = result->getFloat(13);
 
 		float type = result->getFloat(14);
+
+		uint64 noBuildAreaUID = result->getUnsignedLong(15);
+
 		if ((int) file.find("object/building/") >= 0) {
 			BuildingObject* buio = new BuildingObject(oid, true);
 
@@ -212,6 +304,7 @@ void PlanetManagerImplementation::loadPlayerStructures() {
 			zone->registerObject(cell);
 
 			buio->addCell(cell);
+			buio->setAssociatedArea(noBuildAreaUID);
 			cellMap->put(oid, cell);
 		} else if ((int)file.find("object/installation/") >= 0) {
 			// Need to load player installations from DB here
@@ -223,6 +316,7 @@ void PlanetManagerImplementation::loadPlayerStructures() {
 			hisoImpl->setObjectCRC(String::hashCode(file));
 			hisoImpl->initializePosition(x, 9, y);
 			hisoImpl->setDirection(oX, oZ, oY, oW);
+			hisoImpl->setAssociatedArea(noBuildAreaUID);
 			HarvesterObject* hiso = (HarvesterObject*) hisoImpl->deploy();
 			hiso->insertToZone(zone);
 
@@ -912,7 +1006,17 @@ void PlanetManagerImplementation::placePlayerStructure(Player * player,
 		uint64 objectID, float x, float y, int orient) {
 	try {
 
+		BaseArea * baseArea = areaMap->getBaseArea(x,y);
+
+		if (baseArea->containsNoBuildAreas() && baseArea->getNoBuildArea(x, y) != NULL) {
+			player->sendSystemMessage("You can not build here.");
+			return;
+		}
+
 		DeedObject * deed = (DeedObject*) player->getInventoryItem(objectID);
+
+		if (deed == NULL)
+			return;
 
 		float oX, oY, oZ, oW;
 
@@ -945,7 +1049,7 @@ void PlanetManagerImplementation::placePlayerStructure(Player * player,
 
 		spawnTempStructure(player, deed, x, player->getPositionZ(), y, oX, oZ, oY, oW);
 
-cout << "Deed is = " << deed->getDeedSubType() << endl;
+		//cout << "Deed is = " << deed->getDeedSubType() << endl;
 		switch(deed->getDeedSubType()) {
 			case DeedObjectImplementation::HARVESTER:
 
@@ -971,6 +1075,7 @@ cout << "Deed is = " << deed->getDeedSubType() << endl;
 		cout << "Exception in PlanetManagerImplementation::placePlayerStructure\n";
 	}
 }
+
 void PlanetManagerImplementation::spawnTempStructure(Player * player,
 		DeedObject * deed, float x, float z, float y, float oX, float oZ,
 		float oY, float oW) {
@@ -1182,4 +1287,17 @@ uint64 PlanetManagerImplementation::getNextStaticObjectID(bool doLock) {
 	unlock(doLock);
 
 	return nextId;
+}
+
+bool PlanetManagerImplementation::isNoBuildArea(float x, float y) {
+	try {
+		BaseArea * area = areaMap->getBaseArea(x,y);
+		return (area->getNoBuildArea(x, y) != NULL);
+	} catch (Exception e) {
+		cout << "Exception Caught in PlanetManagerImplementation::isNoBuildArea: " << e.getMessage() << endl;
+		return false;
+	} catch ( ... ) {
+		cout << "Unspecified Exception Caught in PlanetManagerImplementation::isNoBuildArea" << endl;
+		return false;
+	}
 }

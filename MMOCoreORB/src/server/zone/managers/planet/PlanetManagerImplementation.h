@@ -63,6 +63,9 @@ which carries forward this exception.
 
 #include "PlanetManager.h"
 
+#include "AreaMap.h"
+#include "../../objects/area/BaseArea.h"
+
 class ShuttleTakeOffEvent;
 class ShuttleLandingEvent;
 class HarvesterSpawnEvent;
@@ -86,7 +89,7 @@ class PlanetManagerImplementation : public PlanetManagerServant, public Mutex, p
 	uint64 nextStaticObjectID;
 
 	ShuttleMap* shuttleMap;
-	BuildingMap* buildingMap;
+ 	BuildingMap* buildingMap;
 	CellMap* cellMap;
 	TicketCollectorMap* ticketCollectorMap;
 	TravelTerminalMap* travelTerminalMap;
@@ -99,12 +102,14 @@ class PlanetManagerImplementation : public PlanetManagerServant, public Mutex, p
 
 	HarvesterSpawnEvent* harvesterSpawnEvent;
 	InstallationSpawnEvent* installationSpawnEvent;
-	
+
 	TempInstallationSpawnEvent* tempInstallationSpawnEvent;
 	TempInstallationDespawnEvent* tempInstallationDespawnEvent;
 
-	
+
 	CreatureManager* creatureManager;
+
+	AreaMap * areaMap;
 
 	static const uint32 travelFare[10][10];
 
@@ -124,6 +129,11 @@ public:
 
 	BuildingObject* findBuildingType(const string& word, float targetX, float targetY);
 
+	bool isNoBuildArea(float x, float y);
+	void addNoBuildArea(float minX, float maxX, float minY, float maxY, uint64 uid, uint8 reason = 0);
+	void addNoBuildArea(NoBuildArea * area);
+	NoBuildArea* createNoBuildArea(float minX, float maxX, float minY, float maxY, uint8 reason = 0);
+
 private:
 	void loadStaticPlanetObjects();
 	void loadShuttles();
@@ -135,9 +145,12 @@ private:
 	void loadVendorTerminals();
 	void loadMissionTerminals();
 	void loadCraftingStations();
+	void loadNoBuildAreas();
 	string getStationName(uint64 crc);
 
+
 	BuildingObject* loadBuilding(uint64 oid, int planet);
+
 
 	void clearShuttles();
 	void clearBuildings();
@@ -145,6 +158,8 @@ private:
 	void clearTravelTerminals();
 	void clearMissionTerminals();
 	void clearCraftingStations();
+
+
 
 public:
 	// getters
@@ -162,24 +177,24 @@ public:
 	inline MissionTerminal* getMissionTerminal(uint64 oid) {
 		return missionTerminalMap->get(oid);
 	}
-	
+
 	int64 getLandingTime();
 
 	uint64 getNextStaticObjectID(bool doLock = true);
 
 	void placePlayerStructure(Player * player, uint64 objectID, float x, float y, int orient);
-	
+
 	inline uint32 getTravelFare(string departurePlanet, string arrivalPlanet) {
 		return travelFare[Planet::getPlanetID(departurePlanet)][Planet::getPlanetID(arrivalPlanet)];
 	}
 	void spawnTempStructure(Player * player, DeedObject * deed, float x, float z, float y, float oX, float oZ, float oY, float oW);
-	
+
 	void spawnInstallation(Player * player, DeedObject * deed, float x, float z, float y, float oX, float oZ, float oY, float oW);
-	
+
 	void spawnHarvester(Player * player, DeedObject * deed, float x, float z, float y, float oX, float oZ, float oY, float oW);
-	
+
 	void spawnBuilding(Player * player, DeedObject * deed, float x, float z, float y, float oX, float oZ, float oY, float oW);
-	
+
 	void addPlayerCells(Player * player, BuildingObject * buio, int cellCount);
 };
 

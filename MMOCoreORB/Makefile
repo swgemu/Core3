@@ -45,6 +45,10 @@ IDLC = /usr/local/bin/idlc
 IDL_SOURCES = server/zone/Zone.idl \
 				server/zone/ZoneClientSession.idl \
 				server/zone/ZoneServer.idl \
+				server/zone/objects/area/Area.idl \
+				server/zone/objects/area/ActiveArea.idl \
+				server/zone/objects/area/BaseArea.idl \
+				server/zone/objects/area/NoBuildArea.idl \
 				server/zone/objects/attackable/AttackableObject.idl \
 				server/zone/objects/auction/AuctionItem.idl \
 				server/zone/objects/scene/SceneObject.idl \

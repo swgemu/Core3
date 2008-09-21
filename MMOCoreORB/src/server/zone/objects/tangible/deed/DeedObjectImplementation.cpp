@@ -54,6 +54,11 @@ void DeedObjectImplementation::init(){
 }
 
 int DeedObjectImplementation::useObject(Player* player) {
+	if (player->isInANoBuildArea()) {
+		player->sendSystemMessage("You can not build here.");
+		return 1;
+	}
+
 	cout << "Enter Placement Mode.  Target File: " << targetFile << endl;
 	EnterStructurePlacementModeMessage * espmm = new EnterStructurePlacementModeMessage(objectID, targetFile);
 	player->sendMessage(espmm);
