@@ -115,7 +115,7 @@ public:
 	//Creature* spawnCreature(const string& stfname, const string& name, int objCrc, float x, float y, int bitmask = 0x00, bool doLock = true);
 	Creature* spawnCreature(uint32 objcrc, uint64 cellid, float x, float y, int bitmask = 0, bool baby = false, bool doLock = true);
 	TrainerCreature* spawnTrainer(const string& profession, const string& stfname, const string& name, int objCrc, uint64 cell, float x, float y, float z, float oy, float ow, bool doLock = true);
-	ShuttleCreature* spawnShuttle(const string& Planet, const string& City, Coordinate* playerSpawnPoint, float x, float y, float z, uint32 tax = 0, bool starport = false, bool doLock = true);
+	ShuttleCreature* spawnShuttle(const string& Planet, const string& City, Coordinate* playerSpawnPoint, uint64 cellid,float x, float y, float z, uint32 tax = 0, bool starport = false, bool doLock = true);
 	RecruiterCreature* spawnRecruiter(const string& stfname, const string& name, int objCrc, float x, float y, bool doLock = true);
 	BlueFrogCreature* spawnBlueFrog(float x, float y, float oY, float oW, int type = 0, uint64 cellid = 0, bool doLock = true);
 	ActionCreature* spawnActionCreature(string& name, string& stfname, uint32 objCrc, string misoKey, float x, float y, float oY, float oW, uint64 cellid = 0, bool doLock = true);

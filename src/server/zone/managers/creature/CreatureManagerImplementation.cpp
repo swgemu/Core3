@@ -481,11 +481,12 @@ RecruiterCreature* CreatureManagerImplementation::spawnRecruiter(const string& s
 	}
 }
 
-ShuttleCreature* CreatureManagerImplementation::spawnShuttle(const string& Planet, const string& City, Coordinate* playerSpawnPoint, float x, float y, float z, uint32 tax, bool starport, bool doLock) {
+ShuttleCreature* CreatureManagerImplementation::spawnShuttle(const string& Planet, const string& City, Coordinate* playerSpawnPoint, uint64 cellid, float x, float y, float z, uint32 tax, bool starport, bool doLock) {
 	try {
 		lock(doLock);
 
 		ShuttleCreature* shuttle = new ShuttleCreature(Planet, City, playerSpawnPoint, getNextCreatureID(), tax, starport);
+		shuttle->setParent(instance->getZone()->lookupObject(cellid));
 		shuttle->deploy();
 
 		shuttle->setTerrainName(Terrain::getTerrainName(zone->getZoneID()));
