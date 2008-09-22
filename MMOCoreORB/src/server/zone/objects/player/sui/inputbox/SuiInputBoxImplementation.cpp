@@ -49,7 +49,7 @@ which carries forward this exception.
 SuiInputBoxImplementation::SuiInputBoxImplementation(Player* player, uint32 boxType, int inputtype) :
 	SuiInputBoxServant(player, boxType, INPUTBOX) {
 
-	maxInputSize = 10;
+	maxInputSize = 25;
 
 	inputType = inputtype;
 }

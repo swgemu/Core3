@@ -1686,7 +1686,7 @@ float CraftingManagerImplementation::calculateExperimentationFailureRate(
 			* pointsUsed) / 100.0f;
 
 	// Return 0 if > 1.0 and return 1.0 - failure if < 1.0
-	if (failure > 1)
+	if (failure > 1.0f)
 		return 0;
 	else
 		return (1.0f - failure);

@@ -369,22 +369,33 @@ void ZonePacketHandler::handleClientCreateCharacter(Message* pack) {
 	//Check name for invalid characters and profanity
 	BaseMessage* msg = playerManager->checkPlayerName(name, species);
 
-	// Oru we need a complete DistributedObjectBroker lock while checking if the player is deployed and deploying the player ?
+	try {
+		server->lock();
 
-	if (msg != NULL || (DistributedObjectBroker::instance()->lookUp("Player " + firstName) != NULL)) {
-		if (msg == NULL)
-			msg = new ClientCreateCharacterFailed("name_declined_in_use");
+		if (msg != NULL || (DistributedObjectBroker::instance()->lookUp("Player " + firstName) != NULL)) {
+			if (msg == NULL)
+				msg = new ClientCreateCharacterFailed("name_declined_in_use");
 
+			server->unlock();
+			client->sendMessage(msg);
+			//player->disconnect();
+			player->finalize();
+			return;
+		}
+
+		player->deploy("Player " + firstName);
+
+		server->unlock();
+
+		msg = playerManager->attemptPlayerCreation(player, client);
 		client->sendMessage(msg);
-		//player->disconnect();
-		player->finalize();
-		return;
+	} catch (Exception& e) {
+		error(e.getMessage());
+		server->unlock();
+	} catch (...) {
+		error("unreported exception caught in ZonePacketHandler::handleClientCreateCharacter(Message* pack)");
+		server->unlock();
 	}
-
-	player->deploy("Player " + firstName);
-
-	msg = playerManager->attemptPlayerCreation(player, client);
-	client->sendMessage(msg);
 }
 
 void ZonePacketHandler::handleClientRandomNameRequest(Message* pack) {
