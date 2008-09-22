@@ -260,11 +260,12 @@ public:
 	static const int LOGGINGOUT = 5;
 
 	static const int CSR = 1;
-	static const int DEVELOPER = 2;
+	static const int DEVELOPER = 2;	
 	static const int ADMIN = CSR | DEVELOPER;
 	static const int NORMAL = 4;
 	static const int QA = 8;
 	static const int EC = 16;
+	static const int LEADQA = 32;
 
 	static const int PVPRATING_MIN = 800;
 	static const int PVPRATING_DEFAULT = 1200;

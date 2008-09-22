@@ -62,14 +62,20 @@ which carries forward this exception.
 
 GMCommandMap * GameCommandHandler::gmCommands = NULL;
 
-void GameCommandHandler::init() {
-	const int DEVELOPER = PlayerImplementation::DEVELOPER;
-	const int CSR = PlayerImplementation::CSR;
-	const int NORMAL = PlayerImplementation::NORMAL;
-	const int QA = PlayerImplementation::QA;
-	const int EC = PlayerImplementation::EC;
-	const int PRIVILEGED = DEVELOPER | CSR;
-	const int ALL = DEVELOPER | NORMAL | CSR | QA | EC;
+void GameCommandHandler::init() {	
+	/* Admin Levels */
+	const int DEVELOPER = PlayerImplementation::DEVELOPER;	
+	const int CSR = PlayerImplementation::CSR;	
+	const int EC = PlayerImplementation::EC;	
+	const int LEADQA = PlayerImplementation::LEADQA;		
+	const int QA = PlayerImplementation::QA;		
+	const int NORMAL = PlayerImplementation::NORMAL;	
+	
+	/* Admin Groups */
+	const int ALL = DEVELOPER | CSR | EC | LEADQA | QA | NORMAL;
+	const int STAFF = DEVELOPER | CSR | EC | LEADQA | QA;	
+	const int PRIVILEGED = DEVELOPER | CSR;	
+	const int CSREVENTS = DEVELOPER | CSR | EC;	
 
 	gmCommands = new GMCommandMap();
 
@@ -77,19 +83,19 @@ void GameCommandHandler::init() {
 			"Prints a list of commands.",
 			"Usage: @help [command]",
 			&help);
-	gmCommands->addCommand("map", PRIVILEGED | QA | EC,
+	gmCommands->addCommand("map", STAFF,
 			"Warps you to a different map.",
 			"Usage: @map <planetid> \n PlanetId List: 0=Corellia, 1=Dantooine, 2=Dathomir, 3=Endor, 4=Lok, 5=Naboo, 6=Rori, 7=Talus, 8=Tatooine, 9=Yavin 4",
 			&map);
-	gmCommands->addCommand("warp", PRIVILEGED | QA | EC,
+	gmCommands->addCommand("warp", STAFF,
 			"Warps you to a given set of coordinates.",
 			"Usage: @warp <x> <y>",
 			&warp);
-	gmCommands->addCommand("warpToWP", PRIVILEGED | QA,
+	gmCommands->addCommand("warpToWP", STAFF,
 			"Warps you to the waypoint of the given name (casesensitive).",
 			"Usage: @warpToWP <waypointName>",
 			&warpToWP);
-	gmCommands->addCommand("warpTo", PRIVILEGED | QA,
+	gmCommands->addCommand("warpTo", STAFF,
 			"Warps you to a player\'s location ",
 			"Usage @warpTo <player>",
 			&warpTo);
@@ -115,13 +121,13 @@ void GameCommandHandler::init() {
 			&printRoomTree);*/
 	gmCommands->addCommand("banUser", PRIVILEGED,
 			"Bans a user from logging in to the server.",
-			"Usage: @banUser <player>",
+			"Usage: @banUser <name> <ban time in minutes> <reason>",
 			&banUser);
 	gmCommands->addCommand("getForumName", PRIVILEGED,
 			"Returns forum name for select character.",
 			"Usage: @getForumName <player>",
 			&getForumName);
-	gmCommands->addCommand("mutePlayer", PRIVILEGED | EC,
+	gmCommands->addCommand("mutePlayer", CSREVENTS,
 			"Prevents a player from speaking in spacial chat.",
 			"Usage: @mutePlayer <player>",
 			&mutePlayer);
@@ -133,19 +139,19 @@ void GameCommandHandler::init() {
 			"Kills all players within a certain range.",
 			"Usage: @killArea [distance]",
 			&killArea);
-	gmCommands->addCommand("muteChat", PRIVILEGED | EC,
+	gmCommands->addCommand("muteChat", CSREVENTS,
 			"Prevents players from speaking in chat.",
 			"Usage: @muteChat",
 			&muteChat);
-	gmCommands->addCommand("users", PRIVILEGED | EC,
+	gmCommands->addCommand("users", STAFF,
 			"Prints the amount of users on the server.",
 			"Usage: @users",
 			&users);
-	gmCommands->addCommand("setWeather", PRIVILEGED | EC,
+	gmCommands->addCommand("setWeather", CSREVENTS,
 			"Changes the weather conditions on the planet.",
 			"Usage: @setWeather <1-5>",
 			&setWeather);
-	gmCommands->addCommand("ticketPurchase", PRIVILEGED,
+	gmCommands->addCommand("ticketPurchase", DEVELOPER,
 			"Gives you a travel ticket.",
 			"Usage: @ticketPurchase <planet> <city>",
 			&ticketPurchase);
@@ -153,7 +159,7 @@ void GameCommandHandler::init() {
 			"Awards a badge to targeted player.",
 			"Usage: @awardBadge <badgeid>",
 			&awardBadge);
-	gmCommands->addCommand("systemMessage", PRIVILEGED | EC,
+	gmCommands->addCommand("systemMessage", CSREVENTS,
 			"Sends a message to all players on the server.",
 			"Usage: @systemMessage <range> <message>",
 			&systemMessage);
@@ -193,7 +199,7 @@ void GameCommandHandler::init() {
 			"Prints your current HAM stats.",
 			"Usage: @HAMStats",
 			&HAMStats);
-	gmCommands->addCommand("buff", PRIVILEGED,
+	gmCommands->addCommand("buff", STAFF,
 			"Buffs your player.",
 			"Usage: @buff",
 			&buff);
@@ -213,7 +219,7 @@ void GameCommandHandler::init() {
 			"Purges deleted items from the database.",
 			"Usage: @dbPurge",
 			&dbPurge);*/
-	gmCommands->addCommand("getDirection", PRIVILEGED,
+	gmCommands->addCommand("getDirection", STAFF,
 			"Prints out your direction or the direction of a targeted object.",
 			"Usage: @getDirection",
 			&getDirection);
@@ -419,13 +425,13 @@ void GameCommandHandler::warpPlayer(StringTokenizer tokenizer, Player * player) 
 				}
 			} else {
 				targetPlayer->unlock();
-				player->sendSystemMessage("Usage: @warpPlayer <SUPPLY PLAYERNAME OR CURRENT TARGET> <starport> <hotel> <shuttle> <medical> <bank> <garage> <salon> \n");
+				player->sendSystemMessage("Usage: @warpPlayer <SUPPLY PLAYERNAME OR CURRENT TARGET> <starport> <hotel> <shuttle> <medical> <bank> <garage> <salon> <punish> \n");
 			}
 		} catch (...) {
 			targetPlayer->unlock();
 		}
 	} else {
-		player->sendSystemMessage("Usage: @warpPlayer <SUPPLY PLAYERNAME OR CURRENT TARGET> <starport> <hotel> <shuttle> <medical> <bank> <garage> <salon> \n");
+		player->sendSystemMessage("Usage: @warpPlayer <SUPPLY PLAYERNAME OR CURRENT TARGET> <starport> <hotel> <shuttle> <medical> <bank> <garage> <salon> <punish> \n");
 	}
 }
 
