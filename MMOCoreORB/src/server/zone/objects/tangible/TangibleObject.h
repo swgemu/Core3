@@ -35,10 +35,6 @@ public:
 
 	void updateCraftingValues(DraftSchematic* draftSchematic);
 
-	void insertToZone(Zone* zone);
-
-	void removeFromZone();
-
 	void close(Player* player);
 
 	void setEquipped(bool eqp);
@@ -184,10 +180,6 @@ public:
 	void generateAttributes(Player* player);
 
 	void updateCraftingValues(DraftSchematic* draftSchematic);
-
-	void insertToZone(Zone* zone);
-
-	void removeFromZone();
 
 	void close(Player* player);
 

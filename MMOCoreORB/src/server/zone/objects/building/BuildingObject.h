@@ -29,11 +29,7 @@ public:
 
 	void addCell(CellObject* cell);
 
-	void insertToZone(Zone* zone);
-
-	void removeFromZone();
-
-	void notifyInsertToZone(CreatureObject* creature);
+	void notifyInsertToZone(SceneObject* object);
 
 	bool isStatic();
 
@@ -84,11 +80,7 @@ public:
 
 	void addCell(CellObject* cell);
 
-	void insertToZone(Zone* zone);
-
-	void removeFromZone();
-
-	void notifyInsertToZone(CreatureObject* creature);
+	void notifyInsertToZone(SceneObject* object);
 
 	bool isStatic();
 

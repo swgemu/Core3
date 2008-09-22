@@ -69,9 +69,6 @@ interface TangibleObject implements SceneObject {
 
 	void updateCraftingValues(DraftSchematic draftSchematic);
 
-	void insertToZone(Zone zone);
-	void removeFromZone();
-
 	void close(Player player);
 	
 	void setEquipped(boolean eqp);

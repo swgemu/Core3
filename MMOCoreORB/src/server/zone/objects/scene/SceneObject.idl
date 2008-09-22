@@ -43,6 +43,7 @@ which carries forward this exception.
 */
 
 include "engine/service/proto/BaseMessage";
+include "engine/service/proto/StandaloneBaseMessage";
 
 include "engine/util/QuadTreeEntry";
 
@@ -57,6 +58,8 @@ import "../../ZoneClientSession";
 import "../player/Player";
 
 import "../creature/CreatureObject";
+
+import "../building/BuildingObject";
 
 interface SceneObject implements ManagedObject {
 	native boolean destroy();
@@ -139,7 +142,17 @@ interface SceneObject implements ManagedObject {
 	void setZone(Zone zne);
 	
 	void clearUndeploymentEvent();
-	
+
+	void insertToZone(Zone zone);
+
+	void insertToBuilding(BuildingObject building);
+
+	void removeFromZone(boolean doLock = true);
+	void removeFromBuilding(BuildingObject building);
+
+	void broadcastMessage(BaseMessage msg, int range = 128, boolean doLock = true);
+	void broadcastMessage(StandaloneBaseMessage msg, int range = 128, boolean doLock = true);
+
 	boolean isUndeploymentScheduled();
 
 	// getters

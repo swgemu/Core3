@@ -56,6 +56,8 @@ which carries forward this exception.
 
 #include "engine/core/ManagedObjectImplementation.h"
 
+#include "../building/cell/CellObject.h"
+
 SceneObjectImplementation::SceneObjectImplementation() : SceneObjectServant(), QuadTreeEntry(), Logger() {
 	objectID = 0;
 	objectType = 0;
@@ -250,4 +252,191 @@ void SceneObjectImplementation::unlock(bool doLock) {
 
 void SceneObjectImplementation::setLockName(const string& name) {
 	//ManagedObjectImplementation::setLockName(name);
+}
+
+void SceneObjectImplementation::insertToZone(Zone* zone) {
+	SceneObjectImplementation::zone = zone;
+	zoneID = zone->getZoneID();
+
+	try {
+		zone->lock();
+
+		zone->registerObject(_this);
+
+		if (parent != NULL) {
+			BuildingObject* building = (BuildingObject*)parent->getParent();
+
+			insertToBuilding(building);
+
+			building->notifyInsertToZone(_this);
+		} else {
+			zone->insert(this);
+			zone->inRange(this, 128);
+		}
+
+		zone->unlock();
+	} catch (...) {
+		cout << "exception SceneObjectImplementation::insertToZone(Zone* zone)\n";
+
+		zone->unlock();
+	}
+}
+
+void SceneObjectImplementation::insertToBuilding(BuildingObject* building) {
+	if (isInQuadTree() || !parent->isCell())
+		return;
+
+	try {
+		//building->lock(doLock);
+
+		info("inserting to building");
+
+		((CellObject*)parent)->addChild(_this);
+
+		building->insert(this);
+		building->inRange(this, 128);
+
+		//building->unlock(doLock);
+
+		linkType = 0xFFFFFFFF;
+		broadcastMessage(link(parent), 128, false);
+
+	} catch (...) {
+		error("exception SceneObjectImplementation::insertToBuilding(BuildingObject* building)");
+
+		//building->unlock(doLock);
+	}
+}
+
+void SceneObjectImplementation::broadcastMessage(BaseMessage* msg, int range, bool doLock) {
+	if (zone == NULL) {
+		delete msg;
+		return;
+	}
+
+	try {
+		//cout << "CreatureObject::broadcastMessage(Message* msg, int range, bool doLock)\n";
+		zone->lock(doLock);
+
+		for (int i = 0; i < inRangeObjectCount(); ++i) {
+			SceneObjectImplementation* scno = (SceneObjectImplementation*) getInRangeObject(i);
+			SceneObject* object = (SceneObject*) scno->_getStub();
+
+			if (object->isPlayer()) {
+				Player* player = (Player*) object;
+
+				if (range == 128 || isInRange(player, range) || player->getParent() != NULL) {
+					//cout << "CreatureObject - sending message to player " << player->getFirstName() << "\n";
+					player->sendMessage(msg->clone());
+				}
+			}
+		}
+
+		delete msg;
+
+		zone->unlock(doLock);
+
+	} catch (...) {
+		error("exception SceneObject::broadcastMessage(Message* msg, int range, bool doLock)");
+
+		zone->unlock(doLock);
+	}
+
+	//cout << "finished CreatureObject::broadcastMessage(Message* msg, int range, bool doLock)\n";
+}
+
+void SceneObjectImplementation::broadcastMessage(StandaloneBaseMessage* msg, int range, bool doLock) {
+	if (zone == NULL) {
+		delete msg;
+		return;
+	}
+
+	try {
+		//cout << "CreatureObject::broadcastMessage(Message* msg, int range, bool doLock)\n";
+		zone->lock(doLock);
+
+		for (int i = 0; i < inRangeObjectCount(); ++i) {
+			SceneObjectImplementation* scno = (SceneObjectImplementation*) getInRangeObject(i);
+			SceneObject* object = (SceneObject*) scno->_getStub();
+
+			if (object->isPlayer()) {
+				Player* player = (Player*) object;
+
+				if (range == 128 || isInRange(player, range) || player->getParent() != NULL) {
+					//cout << "CreatureObject - sending message to player " << player->getFirstName() << "\n";
+					player->sendMessage((StandaloneBaseMessage*)msg->clone());
+				}
+			}
+		}
+
+		delete msg;
+
+		zone->unlock(doLock);
+
+	} catch (...) {
+		error("exception SceneObject::broadcastMessage(Message* msg, int range, bool doLock)");
+
+		zone->unlock(doLock);
+	}
+
+	//cout << "finished SceneObject::broadcastMessage(Message* msg, int range, bool doLock)\n";
+}
+
+void SceneObjectImplementation::removeFromZone(bool doLock) {
+	try {
+		if (zone == NULL || !isInQuadTree())
+			return;
+
+		//deagro();
+
+		zone->lock(doLock);
+
+		if (parent != NULL && parent->isCell()) {
+			CellObject* cell = (CellObject*) parent;
+			BuildingObject* building = (BuildingObject*)parent->getParent();
+
+			removeFromBuilding(building);
+		} else
+			zone->remove(this);
+
+    	for (int i = 0; i < inRangeObjectCount(); ++i) {
+			QuadTreeEntry* obj = getInRangeObject(i);
+
+			if (obj != this)
+				obj->removeInRangeObject(this);
+		}
+
+		removeInRangeObjects();
+
+		zone->deleteObject(objectID);
+
+		zone->unlock(doLock);
+	} catch (...) {
+		cout << "exception CreatureImplementation::removeFromZone(bool doLock)\n";
+
+		zone->unlock(doLock);
+	}
+}
+
+void SceneObjectImplementation::removeFromBuilding(BuildingObject* building) {
+	if (building == NULL || !isInQuadTree() || !parent->isCell())
+		return;
+
+	try {
+		//building->lock(doLock);
+
+		info("removing from building");
+
+		broadcastMessage(link(0, 0xFFFFFFFF), 128, false);
+
+		((CellObject*)parent)->removeChild(_this);
+
+		building->remove(this);
+
+		//building->unlock(doLock);
+	} catch (...) {
+		error("exception SceneObjectImplementation::removeFromBuilding(BuildingObject* building, bool doLock)");
+
+		//building->unlock(doLock);
+	}
 }

@@ -335,10 +335,6 @@ public:
 
 	void removeLootItem(unsigned long long oid);
 
-	void broadcastMessage(BaseMessage* msg, int range = 128, bool doLock = true);
-
-	void broadcastMessage(StandaloneBaseMessage* msg, int range = 128, bool doLock = true);
-
 	Inventory* getInventory();
 
 	Container* getLootContainer();
@@ -1391,10 +1387,6 @@ public:
 	SceneObject* getLootItem(unsigned long long oid);
 
 	void removeLootItem(unsigned long long oid);
-
-	void broadcastMessage(BaseMessage* msg, int range, bool doLock);
-
-	void broadcastMessage(StandaloneBaseMessage* msg, int range, bool doLock);
 
 	Inventory* getInventory();
 

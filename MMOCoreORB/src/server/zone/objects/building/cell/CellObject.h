@@ -25,8 +25,6 @@ public:
 
 	CellObject(unsigned long long oid, BuildingObject* buio, unsigned long long cid);
 
-	void insertToZone(Zone* zone);
-
 	void addChild(SceneObject* object, bool doLock = true);
 
 	void removeChild(SceneObject* object, bool doLock = true);
@@ -52,8 +50,6 @@ public:
 	CellObjectAdapter(CellObjectImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
-
-	void insertToZone(Zone* zone);
 
 	void addChild(SceneObject* object, bool doLock);
 

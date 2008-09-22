@@ -69,8 +69,6 @@ public:
 	CellObjectImplementation(uint64 objID, BuildingObject* buio, uint64 cid);
 	~CellObjectImplementation();
 
-	void insertToZone(Zone* zone);
-
 	void addChild(SceneObject* obj, bool doLock = true);
 	void removeChild(SceneObject* obj, bool doLock = true);
 

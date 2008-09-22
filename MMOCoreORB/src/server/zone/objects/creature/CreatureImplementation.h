@@ -150,15 +150,10 @@ public:
 	void generateAttributes(SceneObject* obj);
 
 	// spatial methods
-	void insertToZone(Zone* zone);
-	void insertToBuilding(BuildingObject* building);
 
 	void updateZone(bool lightUpdate = false, bool sendPackets = true);
 	void updateZoneWithParent(uint64 par, bool lightUpdate = false, bool sendPackets = true);
 	void updateCreaturePosition(bool lightUpdate);
-
-	void removeFromZone(bool doLock = true);
-	void removeFromBuilding(BuildingObject* building);
 
 	void loadItems();
 
@@ -297,7 +292,7 @@ public:
 	inline bool isMount() {
 		return type == MOUNT;
 	}
-	
+
 	inline bool isActionCreature() {
 		return type == ACTION;
 	}

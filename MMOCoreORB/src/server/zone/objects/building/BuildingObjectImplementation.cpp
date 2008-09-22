@@ -86,54 +86,6 @@ BuildingObjectImplementation::~BuildingObjectImplementation() {
 	}
 }
 
-void BuildingObjectImplementation::insertToZone(Zone* zone) {
-	BuildingObjectImplementation::zone = zone;
-
-	try {
-		zone->lock();
-
-		zone->registerObject((SceneObject*) _this);
-
-		zone->insert(this);
-		zone->inRange(this, 128);
-
-		zone->unlock();
-	} catch (...) {
-		cout << "exception TangibleObject::insertToZone(Zone* zone)\n";
-
-		zone->unlock();
-	}
-}
-
-void BuildingObjectImplementation::removeFromZone() {
-	if (zone == NULL)
-		return;
-
-	try {
-		zone->lock();
-
-    	for (int i = 0; i < inRangeObjectCount(); ++i) {
-			QuadTreeEntry* obj = getInRangeObject(i);
-
-			if (obj != this)
-				obj->removeInRangeObject(this);
-		}
-
-		removeInRangeObjects();
-
-		zone->remove(this);
-		zone->deleteObject(objectID);
-
-		zone->unlock();
-
-		zone = NULL;
-	} catch (...) {
-		cout << "exception BuildingObject::removeFromZone(bool doLock)\n";
-
-		zone->unlock();
-	}
-}
-
 void BuildingObjectImplementation::addCell(CellObject* cell) {
 	cells.put(cell);
 }
@@ -249,8 +201,8 @@ void BuildingObjectImplementation::sendDestroyTo(Player* player) {
 	//destroy(player->getClient());
 }
 
-void BuildingObjectImplementation::notifyInsertToZone(CreatureObject* creature) {
-	SceneObjectImplementation* creoImpl = (SceneObjectImplementation*) creature->_getImplementation();
+void BuildingObjectImplementation::notifyInsertToZone(SceneObject* object) {
+	SceneObjectImplementation* creoImpl = (SceneObjectImplementation*) object->_getImplementation();
 	if (creoImpl == NULL)
 		return;
 
@@ -258,47 +210,13 @@ void BuildingObjectImplementation::notifyInsertToZone(CreatureObject* creature) 
 		QuadTreeEntry* obj = getInRangeObject(i);
 		SceneObjectImplementation* objImpl = (SceneObjectImplementation*) obj;
 
-		if (objImpl->isPlayer() || objImpl->isNonPlayerCreature()) {
+		//if (objImpl->isPlayer() || objImpl->isNonPlayerCreature()) {
 			creoImpl->addInRangeObject(obj, false);
 			obj->addInRangeObject(creoImpl, false);
-		}
+		//}
 	}
 }
 
-void BuildingObjectImplementation::broadcastMessage(BaseMessage* msg, int range, bool doLock) {
-	if (zone == NULL) {
-		delete msg;
-		return;
-	}
-
-	try {
-		//cout << "CreatureObject::broadcastMessage(Message* msg, int range, bool doLock)\n";
-		if (doLock)
-			zone->lock();
-
-		for (int i = 0; i < inRangeObjectCount(); ++i) {
-			SceneObject* object = (SceneObject*) (((SceneObjectImplementation*) getInRangeObject(i))->_this);
-			if (object->isPlayer()) {
-				Player* player = (Player*) object;
-
-				if (range == 128 || isInRange(player, range))
-					player->sendMessage(msg->clone());
-			}
-		}
-
-		delete msg;
-
-		if (doLock)
-			zone->unlock();
-
-		//cout << "finished CreatureObject::broadcastMessage(Message* msg, int range, bool doLock)\n";
-	} catch (...) {
-		cout << "exception CreatureObject::broadcastMessage(Message* msg, int range, bool doLock)\n";
-
-		if (doLock)
-			zone->unlock();
-	}
-}
 
 
 void BuildingObjectImplementation::setDefaultName()

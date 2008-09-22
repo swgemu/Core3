@@ -86,26 +86,6 @@ CellObjectImplementation::CellObjectImplementation(uint64 objID, BuildingObject*
 CellObjectImplementation::~CellObjectImplementation() {
 }
 
-void CellObjectImplementation::insertToZone(Zone* zone) {
-	CellObjectImplementation::zone = zone;
-
-	try {
-		zone->lock();
-
-		zone->registerObject((SceneObject*) _this);
-
-		zone->insert(this);
-		zone->inRange(this, 128);
-
-		zone->unlock();
-	} catch (...) {
-		cout << "exception CellObjectImplementation::insertToZone(Zone* zone)\n";
-
-		zone->unlock();
-	}
-}
-
-
 void CellObjectImplementation::addChild(SceneObject* obj, bool doLock) {
 	wlock(doLock);
 
