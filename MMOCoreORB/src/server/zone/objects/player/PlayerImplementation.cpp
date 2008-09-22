@@ -302,6 +302,8 @@ void PlayerImplementation::init() {
 
 	suiBoxNextID = 0;
 
+	guildLeader = false;
+
 	setLogging(false);
 	setGlobalLogging(true);
 }
