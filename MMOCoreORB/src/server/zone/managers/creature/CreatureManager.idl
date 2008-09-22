@@ -89,7 +89,10 @@ interface CreatureManager {
 	LairObject spawnLair(const string type, float x, float y, float z, boolean doLock = true);
 	ActionCreature spawnActionCreature(string name, string stfname, unsigned int objCrc, string misoKey, float x, float y, float oY, float oW, unsigned long cellid = 0, boolean doLock = true);
 	//CreatureGroup spawnCreatureGroup(int count, const string stfname, const string name, int objCrc, float x, float y, int bitmask = 0x00, int layout = 1);
-		
+
+	unsigned int getCreatureCrc(string name);
+	boolean hotLoadCreature(string name);
+
 	void registerFunctions();
 	void registerGlobals();
 	

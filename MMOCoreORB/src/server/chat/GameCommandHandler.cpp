@@ -250,6 +250,10 @@ void GameCommandHandler::init() {
 			"Hot Loads schematic tables.",
 			"Usage: @reloadSchematics",
 			&reloadSchematics);
+	gmCommands->addCommand("spawn", DEVELOPER,
+			"Spawn a creature.",
+			"Usage: @spawn <creaturetype> <cellid> <x> <y> <bitmask> <baby>",
+			&spawn);
 	gmCommands->addCommand("addNoBuildArea", DEVELOPER,
 			"Adds a no build area to the map.",
 			"Usage: @addNoBuildArea <minX> <maxX> <minY> <maxY>",
@@ -907,7 +911,8 @@ void GameCommandHandler::mutePlayer(StringTokenizer tokenizer, Player * player) 
 
 void GameCommandHandler::kill(StringTokenizer tokenizer, Player * player) {
 	string name;
-	Player* targetPlayer;
+	Player* targetPlayer = NULL;
+	Creature* creature = NULL;
 
 	ChatManager * chatManager = player->getZone()->getChatManager();
 
@@ -922,27 +927,50 @@ void GameCommandHandler::kill(StringTokenizer tokenizer, Player * player) {
 		if (obj != NULL && obj->isPlayer()) {
 			targetPlayer = (Player*) obj;
 			name = targetPlayer->getFirstName();
+		} else if (obj != NULL && obj->isNonPlayerCreature()) {
+			creature = (Creature*) obj;
+			name = creature->getName();
 		} else {
 			return;
 		}
+
 	}
+	if (targetPlayer != NULL) {
+		try {
+			if (targetPlayer != player)
+				targetPlayer->wlock(player);
 
-	try {
-		if (targetPlayer != player)
-			targetPlayer->wlock(player);
+			targetPlayer->explode(2, false);
+			targetPlayer->kill();
 
-		targetPlayer->explode(2, false);
-		targetPlayer->kill();
+			targetPlayer->sendSystemMessage(
+					"Your character has been killed by \'"
+							+ player->getFirstName() + "\'.");
+			player->sendSystemMessage("You killed the character \'" + name
+					+ "\'.");
 
-		targetPlayer->sendSystemMessage("Your character has been killed by \'" + player->getFirstName() + "\'.");
-		player->sendSystemMessage("You killed the character \'" + name + "\'.");
+			if (targetPlayer != player)
+				targetPlayer->unlock();
 
-		if (targetPlayer != player)
-			targetPlayer->unlock();
+		} catch (...) {
+			if (targetPlayer != player)
+				targetPlayer->unlock();
+		}
+	} else if (creature != NULL) {
 
-	} catch (...) {
-		if (targetPlayer != player)
-			targetPlayer->unlock();
+		try {
+			creature->wlock();
+
+			creature->explode(2, false);
+			uint damage = 100000000;
+			creature->takeHealthDamage(damage);
+
+			creature->unlock();
+
+		} catch (...) {
+			creature->unlock();
+		}
+
 	}
 }
 
@@ -1823,7 +1851,69 @@ void GameCommandHandler::reloadSchematics(StringTokenizer tokenizer,
 
 	}
 }
+void GameCommandHandler::spawn(StringTokenizer tokenizer,
+		Player* player) {
 
+	Zone* zone = player->getZone();
+	CreatureManager* creatureManager = zone->getCreatureManager();
+	string name;
+	uint64 cellid;
+	uint32 objcrc;
+	float x, y;
+
+	// spawnCreature(uint32 objcrc, uint64 cellid, float x, float y, int bitmask, bool baby, bool doLock)
+
+	if (tokenizer.hasMoreTokens()) {
+		tokenizer.getStringToken(name);
+	} else {
+		return;
+	}
+
+	try {
+		objcrc = creatureManager->getCreatureCrc(name);
+
+		if(objcrc == 0)
+			return;
+
+	} catch (...) {
+		return;
+	}
+
+	if (player->getParent() != NULL) {
+		cellid = player->getParent()->getObjectID();
+	} else {
+		cellid = player->getZoneID();
+	}
+
+	x = player->getPositionX();
+	y = player->getPositionY();
+
+	/*try {
+
+		if (tokenizer.hasMoreTokens()) {
+			tokenizer.getFloatToken(x);
+		}
+		if (tokenizer.hasMoreTokens()) {
+			tokenizer.getFloatToken(y);
+		}
+
+	} catch (...) {
+
+	}*/
+
+	Creature* creature =  creatureManager->spawnCreature(objcrc, 0, x, y, 0, false, true);
+
+	if(creature != NULL)
+		return;
+
+	creatureManager->hotLoadCreature(name);
+
+	creature = creatureManager->spawnCreature(objcrc, 0, x, y, 0, false, true);
+
+	if(creature == NULL)
+		player->sendSystemMessage("Error spawning creature");
+
+}
 void GameCommandHandler::addNoBuildArea(StringTokenizer tokenizer, Player* player) {
 	try {
 		if (!tokenizer.hasMoreTokens())

@@ -65,6 +65,7 @@ which carries forward this exception.
 
 #include "CreatureMap.h"
 #include "LairMap.h"
+#include "SpawnInfoMap.h"
 
 #include "CreatureManager.h"
 
@@ -82,9 +83,11 @@ class CreatureManagerImplementation : public CreatureManagerServant, public Thre
 
 	ZoneProcessServerImplementation* server;
 
+	static SpawnInfoMap* spawnInfoMap;
 	static CreatureManagerImplementation* instance;
 
 public:
+
 	static const int LINE_LAYOUT = 1;
 	static const int GRID_LAYOUT = 2;
 	static const int RANDOM_LAYOUT = 3;
@@ -124,6 +127,8 @@ public:
 	void despawnCreature(Creature* creature);
 	void respawnCreature(Creature* creature);
 
+	uint32 getCreatureCrc(string name);
+
 	void unloadManager();
 
 	void registerFunctions();
@@ -136,6 +141,8 @@ public:
 	void loadObjectFile() {
 		runFile("scripts/sceneobjects/main.lua");
 	}
+
+	bool hotLoadCreature(string name);
 
 	//creature naming
 	string makeStormTrooperName();
@@ -162,6 +169,7 @@ public:
 	void dequeueActivity(CreatureImplementation* creature) {
 		creatureActivityQueue.remove(creature);
 	}
+
 
 private:
 	uint64 getNextCreatureID();

@@ -65,6 +65,10 @@ public:
 
 	ActionCreature* spawnActionCreature(string& name, string& stfname, unsigned int objCrc, string& misoKey, float x, float y, float oY, float oW, unsigned long long cellid = 0, bool doLock = true);
 
+	unsigned int getCreatureCrc(string& name);
+
+	bool hotLoadCreature(string& name);
+
 	void registerFunctions();
 
 	void registerGlobals();
@@ -119,6 +123,10 @@ public:
 
 	ActionCreature* spawnActionCreature(string& name, string& stfname, unsigned int objCrc, string& misoKey, float x, float y, float oY, float oW, unsigned long long cellid, bool doLock);
 
+	unsigned int getCreatureCrc(string& name);
+
+	bool hotLoadCreature(string& name);
+
 	void registerFunctions();
 
 	void registerGlobals();
@@ -139,6 +147,8 @@ protected:
 	string _param0_spawnActionCreature__string_string_int_string_float_float_float_float_long_bool_;
 	string _param1_spawnActionCreature__string_string_int_string_float_float_float_float_long_bool_;
 	string _param3_spawnActionCreature__string_string_int_string_float_float_float_float_long_bool_;
+	string _param0_getCreatureCrc__string_;
+	string _param0_hotLoadCreature__string_;
 };
 
 class CreatureManagerHelper : public DistributedObjectClassHelper, public Singleton<CreatureManagerHelper> {

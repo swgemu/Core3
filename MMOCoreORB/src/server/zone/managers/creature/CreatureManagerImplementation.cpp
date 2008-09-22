@@ -73,6 +73,7 @@ which carries forward this exception.
 #include "../../ZoneProcessServerImplementation.h"
 
 CreatureManagerImplementation* CreatureManagerImplementation::instance = NULL;
+SpawnInfoMap* CreatureManagerImplementation::spawnInfoMap;
 
 CreatureManagerImplementation::CreatureManagerImplementation(Zone* zone, ZoneProcessServerImplementation* serv) : CreatureManagerServant(), Thread(), Mutex("CreatureManager"),
 		Lua() {
@@ -106,6 +107,12 @@ CreatureManagerImplementation::~CreatureManagerImplementation() {
 		delete scheduler;
 		scheduler = NULL;
 	}
+
+	if (spawnInfoMap != NULL) {
+		delete spawnInfoMap;
+		spawnInfoMap = NULL;
+	}
+
 }
 
 void CreatureManagerImplementation::init() {
@@ -115,6 +122,10 @@ void CreatureManagerImplementation::init() {
 	scheduler = new ScheduleManager("CreatureScheduler");
 
 	instance = this;
+
+	if(spawnInfoMap == NULL){
+		spawnInfoMap = new SpawnInfoMap();
+	}
 
 	// Scripting
 	Lua::init();
@@ -511,7 +522,6 @@ ShuttleCreature* CreatureManagerImplementation::spawnShuttle(const string& Plane
 	}
 }
 
-
 Creature* CreatureManagerImplementation::spawnCreature(uint32 objcrc, uint64 cellid, float x, float y, int bitmask, bool baby, bool doLock) {
 	instance->lock(doLock);
 	Creature* creature = new Creature(getNextCreatureID());
@@ -527,11 +537,13 @@ Creature* CreatureManagerImplementation::spawnCreature(uint32 objcrc, uint64 cel
 
 		LuaObject result(getLuaState());
 		if (!result.isValidTable()) {
-			cout << "Unknown object CRC " << objcrc << endl;
+			info("Unknown object CRC " + objcrc);
+			instance->unlock(doLock);
 			return NULL;
 		}
 
 		string objectName = result.getStringField("objectName");
+
 		string stfname = result.getStringField("stfName");
 		if (baby)
 			stfname += " baby";
@@ -916,11 +928,13 @@ int CreatureManagerImplementation::addCreature(lua_State *L) {
 	creature->deploy();
 
 	string objectName = creatureConfig.getStringField("objectName");
+
 	string stfname = creatureConfig.getStringField("stfName");
 	string name = creatureConfig.getStringField("name");
 
 	creature->setObjectCRC(creatureConfig.getIntField("objectCRC"));
 
+	spawnInfoMap->addCRC(objectName, creatureConfig.getIntField("objectCRC"));
 
 	if (!stfname.empty())
 		creature->setCharacterName(stfname);
@@ -1025,6 +1039,23 @@ int CreatureManagerImplementation::addLair(lua_State * L) {
 int CreatureManagerImplementation::runCreatureFile(lua_State* L) {
 	string filename = getStringParameter(L);
 
+	if ((int) filename.find("objects/") >= 0  &&
+			filename.find_last_of('/') != filename.find_first_of('/')) {
+
+		int size = (filename.find_last_of('/') + 1) - filename.find_first_of('.');
+
+		string templatename = filename.substr(filename.find_last_of('/') + 1, size);
+
+		templatename = templatename.substr(0, templatename.find_first_of('.'));
+
+		SpawnInfo* spawnInfo = new SpawnInfo();
+		spawnInfo->setName(templatename);
+		spawnInfo->setFileName("scripts/creatures/" + filename);
+
+		spawnInfoMap->put(templatename, spawnInfo);
+
+	}
+
 	runFile("scripts/creatures/" + filename, L);
 
 	return 0;
@@ -1036,6 +1067,21 @@ int CreatureManagerImplementation::runObjectFile(lua_State* L) {
 	runFile("scripts/sceneobjects/" + filename, L);
 
 	return 0;
+}
+
+bool CreatureManagerImplementation::hotLoadCreature(string name) {
+
+	SpawnInfo* spawnInfo = spawnInfoMap->get(name);
+	if(spawnInfo == NULL)
+		return false;
+
+	try {
+		runFile(spawnInfo->getFileName(), L);
+	} catch (...) {
+		return false;
+	}
+
+	return true;
 }
 
 void CreatureManagerImplementation::registerFunctions() {
@@ -1115,6 +1161,14 @@ string CreatureManagerImplementation::makeDarkTrooperName() {
 	characterName << "N-" << System::random(490)+10;
 
 	return characterName.str();
+}
+
+uint32 CreatureManagerImplementation::getCreatureCrc(string name) {
+	SpawnInfo* spawnInfo = spawnInfoMap->get(name);
+	if(spawnInfo == NULL)
+		return -1;
+
+	return spawnInfo->getCRC();
 }
 
 string CreatureManagerImplementation::makeCreatureName(string charname) {
