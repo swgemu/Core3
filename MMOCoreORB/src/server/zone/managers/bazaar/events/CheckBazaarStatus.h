@@ -22,6 +22,7 @@ public:
 			bazaarManager->unlock();
 		} catch (...) {
 			bazaarManager->unlock();
+			bazaarManager->error("unreported exception caught in CheckBazaarStatus::activate");
 		}
 
 		return true;

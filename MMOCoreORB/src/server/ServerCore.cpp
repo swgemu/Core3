@@ -61,6 +61,7 @@ ServerCore::ServerCore() : Core("core3.log"), Logger("Core") {
 	loginServer = NULL;
 	zoneServer = NULL;
 	statusServer = NULL;
+	pingServer = NULL;
 	forumDatabase = NULL;
 }
 
@@ -94,6 +95,10 @@ void ServerCore::init() {
 			statusServer = new StatusServer(&configManager, zoneServer);
 		}
 
+		if (configManager.getMakePing()) {
+			pingServer = new PingServer();
+		}
+
 	} catch (ServiceException& e) {
 		shutdown();
 	} catch (DatabaseException& e) {
@@ -124,6 +129,13 @@ void ServerCore::run() {
 		statusServer->start();
 	}
 
+	if (pingServer != NULL) {
+		int pingPort = configManager.getPingPort();
+		int pingAllowedConnections = configManager.getPingAllowedConnections();
+
+		pingServer->start(pingPort, pingAllowedConnections);
+	}
+
 	info("initialized", true);
 
 	handleCommands();
@@ -151,6 +163,13 @@ void ServerCore::shutdown() {
 
 		delete loginServer;
 		loginServer = NULL;
+	}
+
+	if (pingServer != NULL) {
+		pingServer->stop();
+
+		delete pingServer;
+		pingServer = NULL;
 	}
 
 	DistributedObjectBroker::finalize();

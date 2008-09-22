@@ -42,47 +42,39 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef BANKTERMINALDETAILS_H_
-#define BANKTERMINALDETAILS_H_
+#ifndef PINGSERVER_H_
+#define PINGSERVER_H_
 
 #include "engine/engine.h"
 
-class BankTerminalDetails : public DistributedObject {
-	int bankPlanet;
-	int bankX;
-	int bankZ;
+#include "PingMessageProcessorThread.h"
+
+#include "PingClient.h"
+
+class PingServer : public DatagramServiceThread {
+	PingMessageProcessorThread** processors;
+
+	int procThreadCount;
 
 public:
-	BankTerminalDetails(int planet, int x, int z) {
-		bankPlanet = planet;
-		bankX = x;
-		bankZ = z;
-	}
+	PingServer();
 
-	inline int getPlanet() {
-		return bankPlanet;
-	}
+	~PingServer();
 
-	inline int getX() {
-		return bankX;
-	}
+	void init();
 
-	inline int getZ() {
-		return bankZ;
-	}
-};
+	void run();
 
-class BankMap : public HashTable<uint64, BankTerminalDetails*>, public HashTableIterator<uint64, BankTerminalDetails*> {
+	void shutdown();
 
-	int hash(const uint64& key) {
-        return Long::hashCode(key);
-	}
+	PingClient* createConnection(Socket* sock, SocketAddress& addr);
 
-public:
-	BankMap(int initsize) : HashTable<uint64, BankTerminalDetails*>(initsize), HashTableIterator<uint64, BankTerminalDetails*>(this) {
-		setNullValue(NULL);
-	}
+	void handleMessage(ServiceClient* client, Packet* message);
+
+	bool handleError(ServiceClient* client, Exception& e);
+
+	void printInfo();
 
 };
 
-#endif /*BANKTERMINALDETAILS_H_*/
+#endif /*PINGSERVERSERVER_H_*/

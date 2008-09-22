@@ -50,11 +50,11 @@ MakeStatus = 1
 ORB = ""
 
 
-DBHost = "127.0.0.1"
+DBHost = "172.26.0.2"
 DBPort = 3306
 DBName = "swgemu"
-DBUser = "swgemu"
-DBPass = "123456"
+DBUser = "root"
+DBPass = ""
 
 -- vBulletin 3 integration
 ForumsDBHost = ""
@@ -70,8 +70,12 @@ ForumsNewActivationTable = "" -- new user table ex. vb3_useractivation
 
 LoginPort = 44453
 LoginAllowedConnections = 3000
+
 AutoReg = 1
 UseVBIngeration = 0
+
+PingPort = 44462
+PingAllowedConnections = 3000
 
 ZoneProcessingThreads = 10
 ZoneAllowedConnections = 30000

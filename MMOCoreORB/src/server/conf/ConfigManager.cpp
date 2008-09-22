@@ -74,6 +74,9 @@ bool ConfigManager::loadConfigData() {
 
 	statusPort = getGlobalShort("StatusPort");
 
+	pingPort = getGlobalShort("PingPort");
+	pingAllowedConnections = getGlobalInt("PingAllowedConnections");
+
 	loginPort = getGlobalShort("LoginPort");
 	loginAllowedConnections =  getGlobalInt("LoginAllowedConnections");
 	autoReg = getGlobalByte("AutoReg");
