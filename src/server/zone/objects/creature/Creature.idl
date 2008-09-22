@@ -66,12 +66,9 @@ interface Creature implements CreatureObject {
 	void unload();
 
 	// spatial methods
-	void insertToZone(Zone zone);
 	void updateZone();
 	
 	//void update(unsigned int time);
-	
-	void removeFromZone(boolean doLock = true);
 	
 	void loadItems();
 

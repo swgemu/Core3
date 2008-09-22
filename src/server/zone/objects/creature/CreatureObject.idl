@@ -279,10 +279,7 @@ interface CreatureObject implements SceneObject {
 
 	SceneObject getLootItem(unsigned long oid);
 	void removeLootItem(unsigned long oid);
-		
-	void broadcastMessage(BaseMessage msg, int range = 128, boolean doLock = true);
-	void broadcastMessage(StandaloneBaseMessage msg, int range = 128, boolean doLock = true);
-	
+			
 	Inventory getInventory();
 
 	Container getLootContainer();

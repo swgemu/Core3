@@ -140,6 +140,14 @@ public:
 
 	void close(ZoneClientSession* client);
 
+	void insertToZone(Zone * zone);
+	void insertToBuilding(BuildingObject * building);
+	void removeFromZone(bool doLock = true);
+	void removeFromBuilding(BuildingObject* building);
+
+	void broadcastMessage(BaseMessage* msg, int range = 128, bool doLock = true);
+	void broadcastMessage(StandaloneBaseMessage* msg, int range = 128, bool doLock = true);
+
 	virtual void sendTo(Player* player, bool doClose = true) {
 	}
 

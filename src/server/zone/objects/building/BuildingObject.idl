@@ -63,11 +63,8 @@ interface BuildingObject implements SceneObject {
 	//void sendDestroyTo(Player* player);
 		
 	void addCell(CellObject cell);
-	
-	void insertToZone(Zone zone);
-	void removeFromZone();
-	
-	void notifyInsertToZone(CreatureObject creature);
+		
+	void notifyInsertToZone(SceneObject object);
 		
 	boolean isStatic();
 	

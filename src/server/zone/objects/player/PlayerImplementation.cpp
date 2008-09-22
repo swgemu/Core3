@@ -481,7 +481,7 @@ void PlayerImplementation::reload(ZoneClientSession* client) {
 
 			unlock();
 
-			if (owner != NULL)
+			if (owner != NULL && owner != client)
 				owner->disconnect();
 
 			wlock();

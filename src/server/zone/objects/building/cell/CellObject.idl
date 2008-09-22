@@ -61,8 +61,6 @@ interface CellObject implements SceneObject {
 		super(oid, int type);
 	}
 	
-	void insertToZone(Zone zone);
-	
 	void addChild(SceneObject object, boolean doLock = true);
 	void removeChild(SceneObject object, boolean doLock = true);
 	

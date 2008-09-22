@@ -9,6 +9,8 @@
 
 #include "engine/service/proto/BaseMessage.h"
 
+#include "engine/service/proto/StandaloneBaseMessage.h"
+
 #include "engine/util/QuadTreeEntry.h"
 
 #include "../../ZoneProcessServerImplementation.h"
@@ -22,6 +24,8 @@ class ZoneClientSession;
 class Player;
 
 class CreatureObject;
+
+class BuildingObject;
 
 #include "engine/core/ManagedObject.h"
 
@@ -106,6 +110,18 @@ public:
 	void setZone(Zone* zne);
 
 	void clearUndeploymentEvent();
+
+	void insertToZone(Zone* zone);
+
+	void insertToBuilding(BuildingObject* building);
+
+	void removeFromZone(bool doLock = true);
+
+	void removeFromBuilding(BuildingObject* building);
+
+	void broadcastMessage(BaseMessage* msg, int range = 128, bool doLock = true);
+
+	void broadcastMessage(StandaloneBaseMessage* msg, int range = 128, bool doLock = true);
 
 	bool isUndeploymentScheduled();
 
@@ -298,6 +314,18 @@ public:
 	void setZone(Zone* zne);
 
 	void clearUndeploymentEvent();
+
+	void insertToZone(Zone* zone);
+
+	void insertToBuilding(BuildingObject* building);
+
+	void removeFromZone(bool doLock);
+
+	void removeFromBuilding(BuildingObject* building);
+
+	void broadcastMessage(BaseMessage* msg, int range, bool doLock);
+
+	void broadcastMessage(StandaloneBaseMessage* msg, int range, bool doLock);
 
 	bool isUndeploymentScheduled();
 

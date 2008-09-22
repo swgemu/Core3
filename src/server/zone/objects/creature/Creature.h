@@ -31,11 +31,7 @@ public:
 
 	void unload();
 
-	void insertToZone(Zone* zone);
-
 	void updateZone();
-
-	void removeFromZone(bool doLock = true);
 
 	void loadItems();
 
@@ -139,11 +135,7 @@ public:
 
 	void unload();
 
-	void insertToZone(Zone* zone);
-
 	void updateZone();
-
-	void removeFromZone(bool doLock);
 
 	void loadItems();
 
