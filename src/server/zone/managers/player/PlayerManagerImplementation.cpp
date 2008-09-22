@@ -195,6 +195,18 @@ bool PlayerManagerImplementation::create(Player* player, uint32 sessionkey) {
 		PlayerObject* playerObject = player->getPlayerObject();
 		playerObject->setObjectID(player->getObjectID() + 0x0C);
 
+		server->lock();
+
+		Guild* guild = guildManager->getGuild(0);
+
+		if (guild != NULL) {
+			player->setGuild(guild);
+
+			player->setGuildLeader(false);
+		}
+
+		server->unlock();
+
 		playerMap->put(player->getFirstName(), player);
 
 		delete res;

@@ -139,12 +139,14 @@ void StatusServer::run() {
 	while (true) {
 		try {
 			Socket* s = socket->accept();
+			Packet* pack = getStatusXMLPacket();
 
-			s->send(getStatusXMLPacket());
+			s->send(pack);
 
 			s->close();
 
 			delete s;
+			delete pack;
 		} catch (SocketException& e) {
 			info("socket exception caught");
 			info(e.getMessage());

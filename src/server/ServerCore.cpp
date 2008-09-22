@@ -208,6 +208,9 @@ void ServerCore::handleCommands() {
 
 				if (zoneServer != NULL)
 					zoneServer->printInfo();
+
+				if (pingServer != NULL)
+					pingServer->printInfo();
 			} else if (command == "icap") {
 				if (zoneServer != NULL)
 					zoneServer->changeUserCap();
