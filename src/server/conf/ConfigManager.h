@@ -74,8 +74,9 @@ class ConfigManager : public Lua {
 	string dBPass;
 
 	uint16 statusPort;
-
 	uint16 loginPort;
+	uint16 pingPort;
+
 	int loginAllowedConnections;
 	bool autoReg;
 	bool useVBIngeration;
@@ -85,6 +86,8 @@ class ConfigManager : public Lua {
 
 	int statusAllowedConnections;
 	unsigned int statusInterval;
+
+	int pingAllowedConnections;
 
 public:
 
@@ -116,6 +119,8 @@ public:
 
 		statusPort = 44455;
 
+		pingPort = 44462;
+
 		loginPort = 44453;
 		loginAllowedConnections = 30;
 		autoReg = true;
@@ -125,6 +130,8 @@ public:
 
 		statusAllowedConnections = 100;
 		statusInterval = 60;
+
+		pingAllowedConnections = 3000;
 	}
 
 	~ConfigManager() {
@@ -226,12 +233,20 @@ public:
 		return statusPort;
 	}
 
+	inline uint16 getPingPort() {
+		return pingPort;
+	}
+
 	inline int getLoginAllowedConnections() {
 		return loginAllowedConnections;
 	}
 
 	inline int getStatusAllowedConnections() {
 		return statusAllowedConnections;
+	}
+
+	inline int getPingAllowedConnections() {
+		return pingAllowedConnections;
 	}
 
 	inline int getStatusInterval() {
