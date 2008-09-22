@@ -1493,7 +1493,6 @@ void GuildManagerImplementation::handleGuildNameChangeName(uint32 boxID, Player*
 			player->unlock();
 			return;
 		}
-		msg->finalize();
 	}
 
 	stringstream msg;
@@ -1838,6 +1837,8 @@ void GuildManagerImplementation::execRemoveFromGuild(uint32 boxID, Player* playe
 			kickeePlayer->unlock();
 	}
 
+	/* if kickeePlayer == NULL you cant call this =)
+
 	kickeePlayer->wlock();
 
 	if (kickeePlayer->getGuildID() == 0) {
@@ -1854,7 +1855,7 @@ void GuildManagerImplementation::execRemoveFromGuild(uint32 boxID, Player* playe
 		}
 	}
 
-	kickeePlayer->unlock();
+	kickeePlayer->unlock();*/
 
 	player->info("Clean exit from GuildManagerImplementation::execRemoveFromGuild(uint32 boxID, Player* player, uint32 cancel)");
 

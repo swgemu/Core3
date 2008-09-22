@@ -199,6 +199,10 @@ bool PlayerManagerImplementation::create(Player* player, uint32 sessionkey) {
 
 		delete res;
 	} catch (DatabaseException& e) {
+		player->error(e.getMessage());
+		return false;
+	} catch (...) {
+		player->error("unreported exception caught in PlayerManagerImplementation::create");
 		return false;
 	}
 
@@ -261,6 +265,7 @@ BaseMessage* PlayerManagerImplementation::checkPlayerName(const string& name, co
 BaseMessage* PlayerManagerImplementation::attemptPlayerCreation(Player* player, ZoneClientSession* client) {
 	//Player name is valid, attempt to create player
 	BaseMessage* msg = NULL;
+	player->info("entering PlayerManagerImplementation::attemptPlayerCreation");
 
 	try {
 		player->wlock();
@@ -276,6 +281,7 @@ BaseMessage* PlayerManagerImplementation::attemptPlayerCreation(Player* player, 
 
 			zone->registerObject(player);
 
+			player->info("trying to createItems and train professions");
 			player->createItems();
 			player->trainStartingProfession();
 
@@ -283,11 +289,15 @@ BaseMessage* PlayerManagerImplementation::attemptPlayerCreation(Player* player, 
 
 			zone->deleteObject(player->getObjectID());
 
+			player->info("succesufully created player");
+
 			player->unlock();
 		} else {
 			client->info("name refused for character creation");
 
 			msg = new ClientCreateCharacterFailed("name_declined_retry");
+
+			player->info("name refused on creation");
 
 			player->unlock();
 
@@ -298,12 +308,16 @@ BaseMessage* PlayerManagerImplementation::attemptPlayerCreation(Player* player, 
 
 		return msg; //return success or fail packet
 	} catch (Exception& e) {
+		stringstream err;
+		err << "unreported exception on PlayerManagerImplementation::attemptPlayerCreation()\n" << e.getMessage() << "\n";
+		player->error(err.str());
 		player->unlock();
-		cout << "unreported exception on PlayerManagerImplementation::attemptPlayerCreation()\n" << e.getMessage() << "\n";
 		return new ClientCreateCharacterFailed("name_declined_internal_error"); //something went wrong
 	} catch (...) {
+		stringstream err;
+		err << "unreported exception on PlayerManagerImplementation::attemptPlayerCreation()\n";
+		player->error(err.str());
 		player->unlock();
-		cout << "unreported exception on PlayerManagerImplementation::attemptPlayerCreation()\n";
 		return new ClientCreateCharacterFailed("name_declined_internal_error"); //something went wrong
 	}
 }
