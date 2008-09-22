@@ -221,7 +221,7 @@ void GameCommandHandler::init() {
 			"Sets your admin level.",
 			"Usage: @setAdminLevel <player> <level> \n Levels: 1-CSR 2-DEVELOPER 4-PLAYER 8-QA 16-EC",
 			&setAdminLevel);
-	gmCommands->addCommand("getLocation", PRIVILEGED,
+	gmCommands->addCommand("getLocation", ALL,
 			"Gives full detailsofyour location.",
 			"Usage: @getLocation",
 			&getLocation);

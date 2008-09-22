@@ -432,63 +432,91 @@ void PlanetManagerImplementation::loadStaticPlanetObjects() {
 
 void PlanetManagerImplementation::loadShuttles() {
 	int planetid = zone->getZoneID();
-	lock();
-
-	ShuttleCreature* shuttle;
-	TravelTerminal* terminal;
-	TicketCollector* colector;
-	Coordinate* coordinates;
-
 	string planetName = Planet::getPlanetName(zone->getZoneID());
 
-	stringstream query;
-	query << "SELECT * FROM shuttles WHERE planet_id = " << planetid << ";";
-
+	lock();
 	try {
+		stringstream query;
+		query << "SELECT * FROM transports WHERE planet_id = " << planetid << ";";
+
 		ResultSet* shut = ServerDatabase::instance()->executeQuery(query);
 
 		while (shut->next()) {
+			uint32 shuttleId = shut->getUnsignedInt(0);
 			string shuttleName = shut->getString(2);
-			float playerSpawnX = shut->getFloat(3);
-			float playerSpawnY = shut->getFloat(4);
-			float playerSpawnZ = shut->getFloat(5);
-			float shutx = shut->getFloat(6);
-			float shuty = shut->getFloat(7);
-			float shutz = shut->getFloat(8);
-			float shutdiry = shut->getFloat(9);
-			float shutdirw = shut->getFloat(10);
-			uint32	tax = shut->getInt(11);
+			uint64 shuttleParentId = shut->getUnsignedLong(3);
+			float shuttlePosX = shut->getFloat(4);
+			float shuttlePosY = shut->getFloat(5);
+			float shuttlePosZ = shut->getFloat(6);
+			float shuttleDirY = shut->getFloat(7);
+			float shuttleDirW = shut->getFloat(8);
+			float playerSpawnX = shut->getFloat(9);
+			float playerSpawnY = shut->getFloat(10);
+			float playerSpawnZ = shut->getFloat(11);
 			bool starport = shut->getInt(12);
-			float colx = shut->getFloat(13);
-			float coly = shut->getFloat(14);
-			float tickdiry = shut->getFloat(15);
-			float tickdirw = shut->getFloat(16);
-			float termx = shut->getFloat(17);
-			float termy = shut->getFloat(18);
+			uint32	tax = shut->getInt(13);
+			uint64 shuttleCRC = shut->getUnsignedLong(14);
 
-			coordinates = new Coordinate(playerSpawnX, playerSpawnZ, playerSpawnY);
-			shuttle = creatureManager->spawnShuttle(planetName, shuttleName, coordinates, shutx, shuty, shutz, tax, starport);
-			shuttle->setDirection(0, 0, shutdiry, shutdirw);
+			Coordinate * spawnCoords = new Coordinate(playerSpawnX, playerSpawnZ, playerSpawnY);
+
+			ShuttleCreature * shuttle = creatureManager->spawnShuttle(planetName, shuttleName, spawnCoords, shuttleParentId, shuttlePosX, shuttlePosY, shuttlePosZ, tax, starport);
+			shuttle->setDirection(0, 0, shuttleDirY, shuttleDirW);
+			shuttle->setObjectCRC(shuttleCRC);
 			shuttleMap->put(shuttleName, shuttle);
 
-			colector = new TicketCollector(shuttle, getNextStaticObjectID(false),
-					unicode("Ticket Collector"), "ticket_travel", colx, playerSpawnZ, coly);
-			colector->setZoneProcessServer(server);
-			colector->setDirection(0, 0, tickdiry, tickdirw);
+			stringstream query2;
+			query2 << "SELECT parent, pos_x, pos_y, pos_z, dir_y, dir_w FROM ticket_collectors WHERE transport_id = " << shuttleId << ";";
 
-			colector->insertToZone(zone);
-			ticketCollectorMap->put(colector->getObjectID(), colector);
+			ResultSet* collectors = ServerDatabase::instance()->executeQuery(query2);
 
-			terminal = new TravelTerminal(shuttle, getNextStaticObjectID(false),
-					termx, playerSpawnZ, termy);
-			terminal->setZoneProcessServer(server);
-			terminal->setDirection(0, 0, tickdiry, tickdirw);
+			while (collectors->next()) {
+				uint64 collCellId = collectors->getUnsignedLong(0);
+				float collPosX = collectors->getFloat(1);
+				float collPosY = collectors->getFloat(2);
+				float collPosZ = collectors->getFloat(3);
+				float collDirY = collectors->getFloat(4);
+				float collDirW = collectors->getFloat(5);
 
-			terminal->insertToZone(zone);
-			travelTerminalMap->put(terminal->getObjectID(), terminal);
+				TicketCollector * colector = new TicketCollector(shuttle, getNextStaticObjectID(false),
+					unicode("Ticket Collector"), "ticket_travel", collPosX, collPosZ, collPosY);
+				colector->setZoneProcessServer(server);
+				colector->setDirection(0, 0, collDirY, collDirW);
+				colector->setParent(zone->lookupObject(collCellId));
+
+				colector->insertToZone(zone);
+				ticketCollectorMap->put(colector->getObjectID(), colector);
+			}
+
+			delete collectors;
+
+			stringstream query3;
+			query3 << "SELECT parent, pos_x, pos_y, pos_z, dir_y, dir_w FROM ticket_terminals WHERE transport_id = " << shuttleId << ";";
+
+			ResultSet* terminals = ServerDatabase::instance()->executeQuery(query3);
+
+			while (terminals->next()) {
+				uint64 termCellId = terminals->getUnsignedLong(0);
+				float termPosX = terminals->getFloat(1);
+				float termPosY = terminals->getFloat(2);
+				float termPosZ = terminals->getFloat(3);
+				float termDirY = terminals->getFloat(4);
+				float termDirW = terminals->getFloat(5);
+
+				TravelTerminal * terminal = new TravelTerminal(shuttle, getNextStaticObjectID(false),
+									termPosX, termPosZ, termPosY);
+				terminal->setZoneProcessServer(server);
+				terminal->setDirection(0, 0, termDirY, termDirW);
+				terminal->setParent(zone->lookupObject(termCellId));
+				terminal->insertToZone(zone);
+				travelTerminalMap->put(terminal->getObjectID(), terminal);
+			}
+
+			delete terminals;
+
 		}
 
 		delete shut;
+
 	} catch (DatabaseException& e) {
 		error(e.getMessage());
 	} catch (...) {
@@ -1244,7 +1272,9 @@ void PlanetManagerImplementation::sendPlanetTravelPointListResponse(Player* play
 	while (shuttleMap->hasNext()) {
 		ShuttleCreature* shuttle = shuttleMap->getNextValue();
 
-		msg->addPoint(shuttle->getCity(), shuttle->getPositionX(), shuttle->getPositionZ(), shuttle->getPositionY(), shuttle->getTax(), shuttle->isStarport());
+		Coordinate * arrivalPoint = shuttle->getArrivalPoint();
+
+		msg->addPoint(shuttle->getCity(), arrivalPoint->getPositionX(), arrivalPoint->getPositionZ(), arrivalPoint->getPositionY(), shuttle->getTax(), shuttle->isStarport());
 	}
 
 	unlock();

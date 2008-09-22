@@ -50,6 +50,11 @@ which carries forward this exception.
 #include "../../objects/area/ActiveArea.h"
 #include "../../objects/area/NoBuildArea.h"
 
+struct AreaMapIndex {
+	uint16 xIndex;
+	uint16 yIndex;
+};
+
 class AreaMap {
 	BaseArea * ** baseAreas;
 
@@ -84,6 +89,14 @@ class AreaMap {
 		}
 	}
 
+	AreaMapIndex getIndex(float x, float y) {
+		AreaMapIndex index;
+		index.xIndex = (uint16) ceil((x + mapWidth / 2) / baseAreaWidth) - 1;
+		index.yIndex = (uint16) ceil((y + mapHeight / 2) / baseAreaHeight) - 1;
+
+		return index;
+	}
+
 public:
 	AreaMap(const float mapWidth, const float mapHeight, const float baseAreaWidth, const float baseAreaHeight) {
 	  this->mapWidth = mapWidth;
@@ -112,15 +125,15 @@ public:
 	}
 
 	BaseArea * getBaseArea(float x, float y) {
-		const uint16 xIndex = (uint16) ceil((x + mapWidth / 2) / baseAreaWidth) - 1;
-		const uint16 yIndex = (uint16) ceil((y + mapHeight / 2) / baseAreaHeight) - 1;
+		AreaMapIndex index = getIndex(x, y);
 
-		if (xIndex >= xCells || yIndex >= yCells)
+		if (index.xIndex >= xCells || index.yIndex >= yCells)
 			throw Exception("Base Area out of Bounds!");
 
-		return baseAreas[xIndex][yIndex];
+		return baseAreas[index.xIndex][index.yIndex];
 	}
 
+	//TODO: Fix this after feature freeze. It doesn't take into account all possible base areas
 	void addArea(Area * area) {
 		BaseArea * ba = getBaseArea(area->getMaxX(), area->getMaxY());
 		BaseArea * ba2 = getBaseArea(area->getMinX(), area->getMaxY());

@@ -193,7 +193,7 @@ TrainerCreature* CreatureManager::spawnTrainer(const string& profession, const s
 		return ((CreatureManagerImplementation*) _impl)->spawnTrainer(profession, stfname, name, objCrc, cell, x, y, z, oy, ow, doLock);
 }
 
-ShuttleCreature* CreatureManager::spawnShuttle(const string& Planet, const string& City, Coordinate* playerSpawnPoint, float x, float y, float z, int tax, bool starport, bool doLock) {
+ShuttleCreature* CreatureManager::spawnShuttle(const string& Planet, const string& City, Coordinate* playerSpawnPoint, unsigned long long cellid, float x, float y, float z, int tax, bool starport, bool doLock) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -202,6 +202,7 @@ ShuttleCreature* CreatureManager::spawnShuttle(const string& Planet, const strin
 		method.addAsciiParameter(Planet);
 		method.addAsciiParameter(City);
 		method.addObjectParameter(playerSpawnPoint);
+		method.addUnsignedLongParameter(cellid);
 		method.addFloatParameter(x);
 		method.addFloatParameter(y);
 		method.addFloatParameter(z);
@@ -211,7 +212,7 @@ ShuttleCreature* CreatureManager::spawnShuttle(const string& Planet, const strin
 
 		return (ShuttleCreature*) method.executeWithObjectReturn();
 	} else
-		return ((CreatureManagerImplementation*) _impl)->spawnShuttle(Planet, City, playerSpawnPoint, x, y, z, tax, starport, doLock);
+		return ((CreatureManagerImplementation*) _impl)->spawnShuttle(Planet, City, playerSpawnPoint, cellid, x, y, z, tax, starport, doLock);
 }
 
 RecruiterCreature* CreatureManager::spawnRecruiter(const string& stfname, const string& name, int objCrc, float x, float y, bool doLock) {
@@ -365,7 +366,7 @@ Packet* CreatureManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		resp->insertLong(spawnTrainer(inv->getAsciiParameter(_param0_spawnTrainer__string_string_string_int_long_float_float_float_float_float_bool_), inv->getAsciiParameter(_param1_spawnTrainer__string_string_string_int_long_float_float_float_float_float_bool_), inv->getAsciiParameter(_param2_spawnTrainer__string_string_string_int_long_float_float_float_float_float_bool_), inv->getSignedIntParameter(), inv->getUnsignedLongParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getBooleanParameter())->_getObjectID());
 		break;
 	case 17:
-		resp->insertLong(spawnShuttle(inv->getAsciiParameter(_param0_spawnShuttle__string_string_Coordinate_float_float_float_int_bool_bool_), inv->getAsciiParameter(_param1_spawnShuttle__string_string_Coordinate_float_float_float_int_bool_bool_), (Coordinate*) inv->getObjectParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter(), inv->getBooleanParameter())->_getObjectID());
+		resp->insertLong(spawnShuttle(inv->getAsciiParameter(_param0_spawnShuttle__string_string_Coordinate_long_float_float_float_int_bool_bool_), inv->getAsciiParameter(_param1_spawnShuttle__string_string_Coordinate_long_float_float_float_int_bool_bool_), (Coordinate*) inv->getObjectParameter(), inv->getUnsignedLongParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter(), inv->getBooleanParameter())->_getObjectID());
 		break;
 	case 18:
 		resp->insertLong(spawnRecruiter(inv->getAsciiParameter(_param0_spawnRecruiter__string_string_int_float_float_bool_), inv->getAsciiParameter(_param1_spawnRecruiter__string_string_int_float_float_bool_), inv->getSignedIntParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getBooleanParameter())->_getObjectID());
@@ -439,8 +440,8 @@ TrainerCreature* CreatureManagerAdapter::spawnTrainer(const string& profession, 
 	return ((CreatureManagerImplementation*) impl)->spawnTrainer(profession, stfname, name, objCrc, cell, x, y, z, oy, ow, doLock);
 }
 
-ShuttleCreature* CreatureManagerAdapter::spawnShuttle(const string& Planet, const string& City, Coordinate* playerSpawnPoint, float x, float y, float z, int tax, bool starport, bool doLock) {
-	return ((CreatureManagerImplementation*) impl)->spawnShuttle(Planet, City, playerSpawnPoint, x, y, z, tax, starport, doLock);
+ShuttleCreature* CreatureManagerAdapter::spawnShuttle(const string& Planet, const string& City, Coordinate* playerSpawnPoint, unsigned long long cellid, float x, float y, float z, int tax, bool starport, bool doLock) {
+	return ((CreatureManagerImplementation*) impl)->spawnShuttle(Planet, City, playerSpawnPoint, cellid, x, y, z, tax, starport, doLock);
 }
 
 RecruiterCreature* CreatureManagerAdapter::spawnRecruiter(const string& stfname, const string& name, int objCrc, float x, float y, bool doLock) {
