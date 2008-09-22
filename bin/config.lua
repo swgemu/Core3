@@ -53,8 +53,8 @@ ORB = ""
 DBHost = "127.0.0.1"
 DBPort = 3306
 DBName = "swgemu"
-DBUser = "123456"
-DBPass = ""
+DBUser = "swgemu"
+DBPass = "123456"
 
 -- vBulletin 3 integration
 ForumsDBHost = ""
