@@ -3484,7 +3484,7 @@ void ObjectControllerMessage::handleRemoveFromGuild(Player* player, Message* pac
 	GuildManager* pGuild = serv->getGuildManager();
 
 	player->unlock();
-	pGuild->removeFromGuild(player, removePlayer);
+	pGuild->removeOnlineFromGuild(player, removePlayer);
 	player->wlock();
 }
 

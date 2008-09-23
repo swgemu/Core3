@@ -98,7 +98,8 @@ public:
 	void handleSponsoredGuildMembersAcceptBox(uint32 boxID, Player* player, uint32 cancel, int index);
 	void handleGuildDisbandBox(uint32 boxID, Player* player, uint32 cancel, string returnString);
 
-	void removeFromGuild(Player* player, Player* removePlayer);
+	void removeOnlineFromGuild(Player* player, Player* removePlayer);
+	void removeOfflineFromGuild(Player* player, string removeName);
 
 	void handleGuildNameChange(uint32 boxID, Player* player, uint32 cancel, string returnString);
 	void handleGuildNameChangeName(uint32 boxID, Player* player, uint32 cancel, string returnString);
@@ -126,6 +127,56 @@ public:
 	void handleGuildTransferLeader(Player* player);
 	void handleGuildTransferLeaderBox(uint32 boxID, Player* player, uint32 cancel, string returnString);
 	void handleGuildTransferLeaderVerifyBox(uint32 boxID, Player* player, uint32 cancel);
+
+	uint32 insertGuildToDB (Player* player, string tag, string name, uint64 chardID);
+
+	bool setupNewGuild(Player* player, uint32 gid, string name, string tag);
+
+	bool checkGuildNameAndTag(string tempname, string tag, Player* player);
+
+	bool checkGuildProfanity(string returnString, string tag, Player* player);
+
+	bool checkPlayerInRange(Player* player, string proband, string selfname);
+
+	bool insertSponsorshipDB(Player* inviter, uint64 otherPlayerID);
+
+	bool updateCharIntoGuild(Player* proband, Player* player);
+
+	bool updateDeclineGuild(Player* proband, Player* player);
+
+	bool twoPlayersInSameGuild(Player* player, Player* removePlayer);
+
+	void notifyOfGuildRemoval(Player* player, Player* removePlayer);
+
+	void removeToonFromGuildDB(uint64 removeCharID);
+
+	void updateGuildInDB(Player* player, string tag, string returnString);
+
+	string getGuildLeaderName(Guild* playerGuild);
+
+	uint64 getOfflineGuildMemberID(string name);
+
+	void sendGuildListToPlayers(Guild* guild);
+
+	uint32 getGuildPermissionsFromDB(string proband);
+
+	void updateGuildPermissionsToDB(string proband, uint32 permissions);
+
+	void deletePreviousSponsoringsFromDB(Player* declineePlayer);
+
+	void checkPreviousSponsoringInDB(Player* inviter, Player* declineePlayer, uint32 inviteGuild);
+
+	bool updateOfflineDeclineGuild(string probandName, Player* player);
+
+	bool checkLastRenameTime(Player* player);
+
+	string checkForNewLeader(Player* player, string proband);
+
+	bool changeGuildLeader(Player* olPlayer, Player* player);
+
+	uint32 totalMembersCount(Player* player);
+
+	bool swapLeaderInDB(uint64 playerID, uint64 olPlayerID, uint32 guildID);
 
 };
 
