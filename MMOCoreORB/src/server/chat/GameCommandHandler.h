@@ -179,6 +179,8 @@ private:
 	static void reloadSchematics(StringTokenizer tokenizer, Player * player);
 	static void spawn(StringTokenizer tokenizer, Player * player);
 	static void addNoBuildArea(StringTokenizer tokenizer, Player * player);
+	static void guildAdmin(StringTokenizer tokenizer, Player * player);
+	static void endGuildAdmin(StringTokenizer tokenizer, Player * player);
 
 	void init();
 
