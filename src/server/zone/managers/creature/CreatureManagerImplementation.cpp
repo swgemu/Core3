@@ -537,7 +537,9 @@ Creature* CreatureManagerImplementation::spawnCreature(uint32 objcrc, uint64 cel
 
 		LuaObject result(getLuaState());
 		if (!result.isValidTable()) {
-			cout << "Unknown object CRC " << objcrc << endl;
+			stringstream ss;
+			ss << "Unknown object CRC " << objcrc;
+			info(ss.str());
 			instance->unlock(doLock);
 			return NULL;
 		}
