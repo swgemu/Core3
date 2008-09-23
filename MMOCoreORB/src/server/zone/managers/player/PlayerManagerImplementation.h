@@ -120,6 +120,8 @@ public:
 
 	void updateOtherFriendlists(Player* player,bool status);
 
+	void updateGuildStatus(Player* player);
+
 	void moveItem(Player* sender, Player* receiver, TangibleObject* item);
 
 	// setters

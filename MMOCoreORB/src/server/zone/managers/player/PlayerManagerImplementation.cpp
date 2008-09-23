@@ -539,6 +539,65 @@ void PlayerManagerImplementation::loadWaypoints(Player* player) {
 	delete result;
 }
 
+void PlayerManagerImplementation::updateGuildStatus(Player* player) {
+	//This function makes sure, that a player, which was removed from a guild while being offline,
+	//is not re-inserted as a guildmember again on loading from cache
+
+	player->info("Entering PlayerManagerImplementation::updateGuildStatus(Player* player)");
+
+	ResultSet* character;
+	stringstream query;
+
+	try {
+		query << "SELECT guild FROM characters WHERE character_id = " << player->getCharacterID();
+
+		character = ServerDatabase::instance()->executeQuery(query);
+
+	} catch (DatabaseException& e) {
+		cout << "DB Exception in PlayerManagerImplementation::updateGuildStatus(Player* player):" << endl << e.getMessage() << endl;
+		player->info("DB ERROR: Catch #1 from PlayerManagerImplementation::updateGuildStatus(Player* player)");
+
+		return;
+
+	} catch (...) {
+		cout << "unreported exception caught in PlayerManagerImplementation::updateGuildStatus\n";
+		player->info("ERROR: Exit via catch #2 from PlayerManagerImplementation::updateGuildStatus(Player* player)");
+
+		return;
+	}
+
+
+	if (character->next()) {
+		if (character->getInt(0) == 0) {
+
+			try {
+				server->lock();
+
+				uint64 defGuild = 0;
+
+				Guild * guild = player->getGuild();
+				ChatRoom* room = guild->getGuildChat();
+
+				if (room != NULL)
+					room->removePlayer(player, false);
+
+				player->setGuild(defGuild);
+				player->updateGuild(defGuild);
+				player->setGuildLeader(false);
+				player->setGuildPermissions(0);
+
+				server->unlock();
+			} catch (...) {
+				player->info("ERROR: Executed catch #3 in PlayerManagerImplementation::updateGuildStatus(Player* player)");
+
+				server->unlock();
+			}
+		}
+	}
+
+	player->info("Clean exit from PlayerManagerImplementation::updateGuildStatus(Player* player)");
+}
+
 
 void PlayerManagerImplementation::updateOtherFriendlists(Player* player, bool status) {
 	//still crashing here

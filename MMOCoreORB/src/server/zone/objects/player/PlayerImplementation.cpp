@@ -522,6 +522,7 @@ void PlayerImplementation::reload(ZoneClientSession* client) {
 		PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
 		playerObject->updateAllFriends(playerObject);
 		playerManager->updateOtherFriendlists(_this, true);
+		playerManager->updateGuildStatus(_this);
 
 		//resetArmorEncumbrance();
 

@@ -94,6 +94,8 @@ interface PlayerManager {
 	void updatePlayerBaseHAMToDatabase(Player player);
 
 	void updateOtherFriendlists(Player player, boolean status);
+	
+	void updateGuildStatus(Player player);
 
 	void setGuildManager(GuildManager gmanager);
 

@@ -784,6 +784,7 @@ void RadialManager::handleGuildCreationTag(Player* player) {
 	suiInpBox->setPromptTitle("@guild:create_abbrev_title");
 	suiInpBox->setPromptText("@guild:create_abbrev_prompt");
 	suiInpBox->setCancelButton(true);
+	suiInpBox->setMaxInputSize(5);
 
 	player->addSuiBox(suiInpBox);
 	player->sendMessage(suiInpBox->generateMessage());
@@ -806,6 +807,7 @@ void RadialManager::handleGuildSponsor(Player* player) {
 	suiInpBox->setPromptTitle("@guild:sponsor_title");
 	suiInpBox->setPromptText("@guild:sponsor_prompt");
 	suiInpBox->setCancelButton(true);
+	suiInpBox->setMaxInputSize(25);
 
 	player->addSuiBox(suiInpBox);
 	player->sendMessage(suiInpBox->generateMessage());
@@ -818,6 +820,7 @@ void RadialManager::handleGuildSponsored(Player* player) {
 		return;
 
 	GuildManager* gm = zone->getZoneServer()->getGuildManager();
+
 	if (gm == NULL)
 		return;
 
@@ -825,6 +828,7 @@ void RadialManager::handleGuildSponsored(Player* player) {
 }
 
 void RadialManager::handleGuildInformation(Player* player) {
+
 	Zone* zone = player->getZone();
 	if (zone == NULL)
 		return;
@@ -837,6 +841,7 @@ void RadialManager::handleGuildInformation(Player* player) {
 }
 
 void RadialManager::handleGuildDisband(Player* player) {
+
 	if ( ! ( ( player->getGuildPermissions() ) & (PlayerImplementation::GUILDDISBAND) ) ) {
 		player->sendSystemMessage("@guild:generic_fail_no_permission");
 		return;
@@ -846,18 +851,19 @@ void RadialManager::handleGuildDisband(Player* player) {
 
 	stringstream prompt;
 	prompt << "@guild:disband_prompt " << endl << endl << "To confirm the disbanding of your guild, "
-		<< "please type the following in the area below, then press Ok:" << endl << endl << "disband guild" << endl;
+	<< "please type the following in the area below, then press Ok:" << endl << endl << "disband guild" << endl;
 
 	suiInpBox->setPromptTitle("@guild:disband_title");
 	suiInpBox->setPromptText(prompt.str());
 	suiInpBox->setCancelButton(true);
+	suiInpBox->setMaxInputSize(15);
 
 	player->addSuiBox(suiInpBox);
 	player->sendMessage(suiInpBox->generateMessage());
-
 }
 
 void RadialManager::handleGuildNameChange(Player* player) {
+
 	if ( ! ( ( player->getGuildPermissions() ) & (PlayerImplementation::GUILDCHANGENAME) ) ) {
 		player->sendSystemMessage("@guild:generic_fail_no_permission");
 		return;
@@ -868,6 +874,7 @@ void RadialManager::handleGuildNameChange(Player* player) {
 		return;
 
 	GuildManager* gm = zone->getZoneServer()->getGuildManager();
+
 	if (gm == NULL)
 		return;
 
@@ -877,10 +884,12 @@ void RadialManager::handleGuildNameChange(Player* player) {
 
 void RadialManager::handleGuildInformationMembers(Player* player) {
 	Zone* zone = player->getZone();
+
 	if (zone == NULL)
-		return; //can never happen?
+		return;
 
 	GuildManager* pGuild = zone->getZoneServer()->getGuildManager();
+
 	if (pGuild == NULL)
 		return;
 
@@ -889,14 +898,15 @@ void RadialManager::handleGuildInformationMembers(Player* player) {
 
 void RadialManager::handleGuildTransferLeader(Player* player) {
 	Zone* zone = player->getZone();
+
 	if (zone == NULL)
-		return; //can never happen?
+		return;
 
 	GuildManager* pGuild = zone->getZoneServer()->getGuildManager();
+
 	if (pGuild == NULL)
 		return;
 
 	pGuild->handleGuildTransferLeader(player);
 
 }
-
