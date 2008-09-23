@@ -146,4 +146,4 @@ spawnCreatures(nightspider, 5, -5060.8, 3806.97, 40, 5)
 spawnCreatures(shaupaut, 5, -5060.8, 3806.97, 40, 5)
 
 -- Epic Starport Dude
-spawnCreatureInCell(acklay, 5, -0.012525, 7.9418, 54.5436, 1692104)
+--spawnCreatureInCell(acklay, 5, -0.012525, 7.9418, 54.5436, 1692104)
