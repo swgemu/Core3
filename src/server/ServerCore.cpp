@@ -61,6 +61,8 @@ ServerCore::ServerCore() : Core("core3.log"), Logger("Core") {
 	loginServer = NULL;
 	zoneServer = NULL;
 	statusServer = NULL;
+	pingServer = NULL;
+	forumDatabase = NULL;
 }
 
 void ServerCore::init() {
@@ -73,7 +75,7 @@ void ServerCore::init() {
 		database = new ServerDatabase(&configManager);
 
 		if(configManager.getUseVBIngeration() == 1)
-			forumdatabase = new ForumsDatabase(&configManager);
+			forumDatabase = new ForumsDatabase(&configManager);
 
 		if (configManager.getMakeZone()) {
 			string& orbaddr = configManager.getORBNamingDirectoryAddress();
@@ -91,6 +93,10 @@ void ServerCore::init() {
 
 		if (configManager.getMakeStatus()) {
 			statusServer = new StatusServer(&configManager, zoneServer);
+		}
+
+		if (configManager.getMakePing()) {
+			pingServer = new PingServer();
 		}
 
 	} catch (ServiceException& e) {
@@ -123,6 +129,13 @@ void ServerCore::run() {
 		statusServer->start();
 	}
 
+	if (pingServer != NULL) {
+		int pingPort = configManager.getPingPort();
+		int pingAllowedConnections = configManager.getPingAllowedConnections();
+
+		pingServer->start(pingPort, pingAllowedConnections);
+	}
+
 	info("initialized", true);
 
 	handleCommands();
@@ -132,6 +145,11 @@ void ServerCore::run() {
 
 void ServerCore::shutdown() {
 	info("shutting down server..");
+
+	if (statusServer != NULL) {
+		delete statusServer;
+		statusServer = NULL;
+	}
 
 	if (zoneServer != NULL) {
 		zoneServer->stop();
@@ -147,17 +165,21 @@ void ServerCore::shutdown() {
 		loginServer = NULL;
 	}
 
-	if(statusServer != NULL) {
-		statusServer->kill();
+	if (pingServer != NULL) {
+		pingServer->stop();
 
-		delete statusServer;
-		statusServer = NULL;
+		delete pingServer;
+		pingServer = NULL;
 	}
 
 	DistributedObjectBroker::finalize();
 
 	delete database;
-	delete forumdatabase;
+
+	if (forumDatabase != NULL) {
+		delete forumDatabase;
+		forumDatabase = NULL;
+	}
 
 	info("server closed");
 }
@@ -186,6 +208,9 @@ void ServerCore::handleCommands() {
 
 				if (zoneServer != NULL)
 					zoneServer->printInfo();
+
+				if (pingServer != NULL)
+					pingServer->printInfo();
 			} else if (command == "icap") {
 				if (zoneServer != NULL)
 					zoneServer->changeUserCap();

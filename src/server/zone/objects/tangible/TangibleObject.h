@@ -27,17 +27,13 @@ class TangibleObject : public SceneObject {
 public:
 	TangibleObject(unsigned long long oid, int tp = 0);
 
-	TangibleObject(unsigned long long oid, const unicode& n, const string& tempname, unsigned int tempCRC, int tp = 0);
+	TangibleObject(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempname, int tp = 0);
 
-	TangibleObject(CreatureObject* creature, const unicode& n, const string& tempname, unsigned int tempCRC, int tp = 0);
+	TangibleObject(CreatureObject* creature, unsigned int tempCRC, const unicode& n, const string& tempname, int tp = 0);
 
 	void generateAttributes(Player* player);
 
 	void updateCraftingValues(DraftSchematic* draftSchematic);
-
-	void insertToZone(Zone* zone);
-
-	void removeFromZone();
 
 	void close(Player* player);
 
@@ -50,6 +46,8 @@ public:
 	void sendDeltas(Player* player);
 
 	void repairItem(Player* player);
+
+	void setObjectName(Player* player);
 
 	void decay(int decayRate);
 
@@ -82,6 +80,8 @@ public:
 	bool isPharmaceutical();
 
 	bool isLair();
+
+	bool isDeed();
 
 	bool isCraftingStation();
 
@@ -146,6 +146,8 @@ public:
 	void setConditionDamage(int damage);
 
 	void setCustomizationString(string& cust);
+
+	void setCustomizationVariable(const string& type, unsigned int value);
 
 	void setCustomizationVariable(unsigned char type, unsigned int value);
 
@@ -179,10 +181,6 @@ public:
 
 	void updateCraftingValues(DraftSchematic* draftSchematic);
 
-	void insertToZone(Zone* zone);
-
-	void removeFromZone();
-
 	void close(Player* player);
 
 	void setEquipped(bool eqp);
@@ -194,6 +192,8 @@ public:
 	void sendDeltas(Player* player);
 
 	void repairItem(Player* player);
+
+	void setObjectName(Player* player);
 
 	void decay(int decayRate);
 
@@ -226,6 +226,8 @@ public:
 	bool isPharmaceutical();
 
 	bool isLair();
+
+	bool isDeed();
 
 	bool isCraftingStation();
 
@@ -291,6 +293,8 @@ public:
 
 	void setCustomizationString(string& cust);
 
+	void setCustomizationVariable(const string& type, unsigned int value);
+
 	void setCustomizationVariable(unsigned char type, unsigned int value);
 
 	void setObjectCount(const int count);
@@ -304,6 +308,7 @@ protected:
 	string _param0_setTemplateName__string_;
 	string _param0_setTemplateTypeName__string_;
 	string _param0_setCustomizationString__string_;
+	string _param0_setCustomizationVariable__string_int_;
 };
 
 class TangibleObjectHelper : public DistributedObjectClassHelper, public Singleton<TangibleObjectHelper> {

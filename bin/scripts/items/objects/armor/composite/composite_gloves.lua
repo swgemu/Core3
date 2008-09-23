@@ -60,5 +60,7 @@ composite_gloves = Armor:new{
 
 	actionEncum = 70,
 
-	mindEncum = 70
+	mindEncum = 70,
+
+	itemMask = HUMANOIDS
 }

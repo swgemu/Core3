@@ -40,7 +40,7 @@ it is their choice whether to do so. The GNU Lesser General Public License
 gives permission to release a modified version without this exception;
 this exception also makes it possible to release a modified version
 which carries forward this exception.
-*/
+ */
 
 #include "RadialManager.h"
 
@@ -53,11 +53,16 @@ which carries forward this exception.
 #include "../../objects/player/sui/listbox/SuiListBoxImplementation.h"
 #include "../../objects/player/sui/colorpicker/SuiColorPickerImplementation.h"
 #include "../../objects/player/sui/banktransferbox/SuiBankTransferBoxImplementation.h"
+#include "../../objects/player/sui/inputbox/SuiInputBoxImplementation.h"
 
 #include "../bazaar/BazaarManager.h"
 #include "../bazaar/BazaarManagerImplementation.h"
 #include "../bank/BankManager.h"
 #include "../bank/BankManagerImplementation.h"
+
+#include "../guild/GuildManagerImplementation.h"
+
+
 
 RadialManager::RadialManager() {
 }
@@ -78,8 +83,9 @@ void RadialManager::handleRadialRequest(Player* player, Packet* pack) {
 		return;
 	}
 
-	SceneObject* object = zone->lookupObject(objectid);
+	ManagedReference<SceneObject> object = zone->lookupObject(objectid);
 
+	//cout << "Radial Request ObjectID: " << dec << objectid << "\n";
 	if (object == NULL)
 		object = player->getPlayerItem(objectid);
 
@@ -103,7 +109,7 @@ void RadialManager::handleRadialRequest(Player* player, Packet* pack) {
 }
 
 void RadialManager::handleRadialSelect(Player* player, Packet* pack) {
-    SceneObject* obj = NULL;
+	SceneObject* obj = NULL;
 
 	try {
 		player->wlock();
@@ -118,6 +124,7 @@ void RadialManager::handleRadialSelect(Player* player, Packet* pack) {
 			return;
 		}
 
+		//cout << "Radial ID = " << dec << radialID << endl;
 		obj = zone->lookupObject(objectID);
 
 		//TODO: Get a bazaar object to pass to the next functions
@@ -154,7 +161,7 @@ void RadialManager::handleRadialSelect(Player* player, Packet* pack) {
 		handleSelection(radialID, player, obj);
 
 	} catch (...) {
-		cout << "unreported exception on ZonePacketHandler:::handleUseItem(Message* pack)\n";
+		cout << "unreported exception in void RadialManager::handleRadialSelect(Player* player, Packet* pack)\n";
 		player->unlock();
 	}
 }
@@ -163,6 +170,7 @@ void RadialManager::handleSelection(int radialID, Player* player, SceneObject* o
 	// Pre: player is wlocked, obj is unlocked
 	// Post: player and obj unlocked
 
+	//cout << "Radial ID = " << dec << radialID << endl;
 	switch (radialID) {
 	case 7: // EXAMINE
 		break;
@@ -173,6 +181,8 @@ void RadialManager::handleSelection(int radialID, Player* player, SceneObject* o
 		break;
 	case 20: // ITEM_USE
 		obj->useObject(player);
+		break;
+	case 33: // Structure Set Name
 		break;
 	case 35:  // LOOT
 		player->lootCorpse();
@@ -205,6 +215,11 @@ void RadialManager::handleSelection(int radialID, Player* player, SceneObject* o
 	case 71: // REMOVE POWERUP
 		handleRemovePowerup(player, obj);
 		break;
+	case 77: // Add Energy
+		handleStructureAddEnergy(player, obj);
+		break;
+	case 82: // Manage Harvester
+		break;
 	case 108: // Harvest Meat
 		handleHarvest(player, obj, 1);
 		break;
@@ -213,6 +228,20 @@ void RadialManager::handleSelection(int radialID, Player* player, SceneObject* o
 		break;
 	case 110: // Harvest Bone
 		handleHarvest(player, obj, 3);
+		break;
+	case 122: // Structure Management
+		break;
+	case 128: // Structure Status
+		handleStructureStatus(player, obj);
+		break;
+	case 131: // Handle Set Name
+		handleSetName(player, obj);
+		break;
+	case 132: // Structure Destroy
+		handleStructureDestroy(player, obj);
+		break;
+	case 133: // Pay Maintenance
+		handleStructureAddMaintenance(player, obj);
 		break;
 	case 130: // Crafting tool hopper item retrieval
 		handleOpenCraftingToolHopper(player, obj);
@@ -225,18 +254,54 @@ void RadialManager::handleSelection(int radialID, Player* player, SceneObject* o
 	case 148: // Harvest
 		handleHarvest(player, obj, 0);
 		break;
-	case 187: // SERVER_GUILD_INFO
-		break;
+	case 187: // SERVER_GUILD_INFORMATION
+		player->unlock();
+		handleGuildInformation(player);
+		return;
 	case 188: // SERVER_GUILD_MEMBERS
-		break;
+		player->unlock();
+		handleGuildInformationMembers(player);
+		return;
 	case 190: // SERVER_GUILD_ENEMIES
-		break;
+		player->unlock();
+		cout << "Radial Guild Enemies" << endl;
+		return;
 	case 194: // SERVER_GUILD_GUILD_MANAGEMENT
+		//nothing, has sub menues
 		break;
 	case 195: // SERVER_GUILD_MEMBER_MANAGEMENT
+		//nothing, has sub menues
 		break;
+	case 196: // SERVER_GUILD_CREATION
+		player->unlock();
+		handleGuildCreationTag(player);
+		return;
+	case 197: // SERVER_GUILD_SPONSOR
+		player->unlock();
+		handleGuildSponsor(player);
+		return;
+	case 198: // SERVER_GUILD_SPONSORED
+		player->unlock();
+		handleGuildSponsored(player);
+		return;
+	case 199: // SERVER_GUILD_DISBAND
+		player->unlock();
+		handleGuildDisband(player);
+		return;
+	case 200: // SERVER_GUILD_NAMECHANGE
+		player->unlock();
+		handleGuildNameChange(player);
+		return;
+	case 201: // SERVER_GUILD_ENABLE/DISBALE_ELECTIONS
+		player->sendSystemMessage("This feature is not in yet. Thank you for choosing SWGEmu(c).");
+		player->unlock();
+		return;
+	case 202: // SERVER_GUILD_TRANSFER_LEADERSHIP
+		player->unlock();
+		handleGuildTransferLeader(player);
+		return;
 	default:
-		//cout << "Unkown radial selection received:" << radialID << "\n";
+		//cout << "Unknown radial selection received:" << radialID << "\n";
 		break;
 	}
 
@@ -255,7 +320,7 @@ ObjectMenuResponse* RadialManager::parseDefaults(Player* player, uint64 objectid
 		uint8 callback = pack->parseByte();
 
 		//if (radialid == 20)
-			callback = 3;
+		callback = 3;
 
 		pack->shiftOffset(4); // shift unicode command
 
@@ -283,7 +348,6 @@ void RadialManager::sendRadialResponseForBazaar(uint64 objectId, Player* player)
 
 	if (bazaar != NULL)
 		bazaar->newBazaarRequest(objectId, player, player->getZoneID());
-
 }
 
 void RadialManager::sendRadialResponseForBank(uint64 objectId, Player* player) {
@@ -319,6 +383,7 @@ void RadialManager::handleVehicleStore(SceneObject* obj) {
 		} catch (...) {
 			mount->unlock();
 		}
+
 		return;
 	}
 
@@ -404,6 +469,22 @@ void RadialManager::handleTrade(Player* player, SceneObject* obj) {
 	}
 }
 
+void RadialManager::sendRadialResponseForHarvesters(Player* player, HarvesterObject* hino, ObjectMenuResponse* omr) {
+	omr->addRadialItem(0, 122, 1, "@player_structure:management");
+
+	omr->addRadialItem(2, 132, 3, "@player_structure:permission_destroy");
+	omr->addRadialItem(2, 128, 3, "@player_structure:management_status");
+	omr->addRadialItem(2, 131, 3, "Set Name"); //"@player_structure:set_name"
+	omr->addRadialItem(2, 133, 3, "@player_structure:management_pay");
+	omr->addRadialItem(2, 82, 3, "@harvester:manage");
+	omr->addRadialItem(2, 77, 3, "@player_structure:management_power");
+
+	omr->finish();
+
+	player->sendMessage(omr);
+}
+
+
 void RadialManager::handleWearableColorChange(Player* player, SceneObject* obj) {
 	if (!obj->isTangible())
 		return;
@@ -425,6 +506,109 @@ void RadialManager::handleWearableColorChange(Player* player, SceneObject* obj) 
 
 	player->addSuiBox(sui);
 	player->sendMessage(sui->generateMessage());
+}
+
+void RadialManager::handleStructureDestroy(Player* player, SceneObject* obj) {
+	try{
+		InstallationObject * inso = (InstallationObject *) obj;
+
+		if(inso!= NULL)
+			inso->handleStructureRedeed(player);
+		/*else {
+				BuildingObject * buio = (BuildingObject * ) obj;
+
+				if(buio!= NULL)
+					buio->undeploy();
+			}
+		}*/
+	}
+	catch(...){
+		cout << "Unreported exception in RadialManager::handleStructureDestroy\n";
+	}
+}
+
+void RadialManager::handleStructureStatus(Player* player, SceneObject* obj) {
+	try{
+		InstallationObject * inso = (InstallationObject *) obj;
+
+		if(inso!= NULL)
+			inso->handleStructureStatus(player);
+		/*else {
+				BuildingObject * buio = (BuildingObject * ) obj;
+
+				if(buio!= NULL)
+					buio->handleStructureStatus(player);
+			}
+		}*/
+	}
+	catch(...){
+		cout << "Unreported exception in RadialManager::handleStructureStatus\n";
+	}
+}
+
+void RadialManager::handleSetName(Player* player, SceneObject* obj) {
+	try{
+		TangibleObject * tano = (TangibleObject*) obj;
+
+		if(tano!= NULL)
+
+			tano->setObjectName(player);
+
+		/*else {
+			BuildingObject * buio = (BuildingObject * ) obj;
+
+			if(buio!= NULL)
+				buio->setName(player);
+		}
+		*/
+
+	}
+	catch(...){
+		cout << "Unreported exception RadialManager::handleSetName\n";
+	}
+}
+
+void RadialManager::handleStructureAddMaintenance(Player* player, SceneObject* obj) {
+	try{
+		InstallationObject * inso = (InstallationObject*) obj;
+
+		if(inso!= NULL)
+
+			inso->handleStructureAddMaintenance(player);
+
+		/*else {
+			BuildingObject * buio = (BuildingObject * ) obj;
+
+			if(buio!= NULL)
+				buio->setName(player);
+		}
+		*/
+
+	}
+	catch(...){
+		cout << "Unreported exception in RadialManager::handleStructureAddMaintenance\n";
+	}
+}
+void RadialManager::handleStructureAddEnergy(Player* player, SceneObject* obj) {
+	try{
+		InstallationObject * inso = (InstallationObject*) obj;
+
+		if(inso!= NULL)
+
+			inso->handleStructureAddEnergy(player);
+
+		/*else {
+			BuildingObject * buio = (BuildingObject * ) obj;
+
+			if(buio!= NULL)
+				buio->setName(player);
+		}
+		*/
+
+	}
+	catch(...){
+		cout << "Unreported exception in RadialManager::handleStructureAddEnergy\n";
+	}
 }
 
 void RadialManager::handleSlicing(Player* player, SceneObject* obj) {
@@ -589,3 +773,140 @@ void RadialManager::handleHarvest(Player* player, SceneObject* obj, int type) {
 	resourceManager->harvestOrganics(player, creature, type);
 }
 
+void RadialManager::handleGuildCreationTag(Player* player) {
+	if (player->hasSuiBoxType(0x7270) || player->hasSuiBoxType(0x7271))
+		return;
+
+	player->setInputBoxReturnBuffer("");
+
+	SuiInputBox* suiInpBox = new SuiInputBox(player, 0x7270, 0);
+
+	suiInpBox->setPromptTitle("@guild:create_abbrev_title");
+	suiInpBox->setPromptText("@guild:create_abbrev_prompt");
+	suiInpBox->setCancelButton(true);
+	suiInpBox->setMaxInputSize(5);
+
+	player->addSuiBox(suiInpBox);
+	player->sendMessage(suiInpBox->generateMessage());
+
+}
+
+void RadialManager::handleGuildSponsor(Player* player) {
+	if (player->hasSuiBoxType(0x7272))
+		return;
+
+	if ( ! ( ( player->getGuildPermissions() ) & (PlayerImplementation::GUILDSPONSOR) ) ) {
+		player->sendSystemMessage("@guild:generic_fail_no_permission");
+		return;
+	}
+
+	player->setInputBoxReturnBuffer("");
+
+	SuiInputBox* suiInpBox = new SuiInputBox(player, 0x7272, 0);
+
+	suiInpBox->setPromptTitle("@guild:sponsor_title");
+	suiInpBox->setPromptText("@guild:sponsor_prompt");
+	suiInpBox->setCancelButton(true);
+	suiInpBox->setMaxInputSize(25);
+
+	player->addSuiBox(suiInpBox);
+	player->sendMessage(suiInpBox->generateMessage());
+}
+
+void RadialManager::handleGuildSponsored(Player* player) {
+
+	Zone* zone = player->getZone();
+	if (zone == NULL)
+		return;
+
+	GuildManager* gm = zone->getZoneServer()->getGuildManager();
+
+	if (gm == NULL)
+		return;
+
+	gm->handleGuildSponsoring(player);
+}
+
+void RadialManager::handleGuildInformation(Player* player) {
+
+	Zone* zone = player->getZone();
+	if (zone == NULL)
+		return;
+
+	GuildManager* gm = zone->getZoneServer()->getGuildManager();
+	if (gm == NULL)
+		return;
+
+	gm->handleGuildInfo(player);
+}
+
+void RadialManager::handleGuildDisband(Player* player) {
+
+	if ( ! ( ( player->getGuildPermissions() ) & (PlayerImplementation::GUILDDISBAND) ) ) {
+		player->sendSystemMessage("@guild:generic_fail_no_permission");
+		return;
+	}
+
+	SuiInputBox* suiInpBox = new SuiInputBox(player, 0x7277, 0);
+
+	stringstream prompt;
+	prompt << "@guild:disband_prompt " << endl << endl << "To confirm the disbanding of your guild, "
+	<< "please type the following in the area below, then press Ok:" << endl << endl << "disband guild" << endl;
+
+	suiInpBox->setPromptTitle("@guild:disband_title");
+	suiInpBox->setPromptText(prompt.str());
+	suiInpBox->setCancelButton(true);
+	suiInpBox->setMaxInputSize(15);
+
+	player->addSuiBox(suiInpBox);
+	player->sendMessage(suiInpBox->generateMessage());
+}
+
+void RadialManager::handleGuildNameChange(Player* player) {
+
+	if ( ! ( ( player->getGuildPermissions() ) & (PlayerImplementation::GUILDCHANGENAME) ) ) {
+		player->sendSystemMessage("@guild:generic_fail_no_permission");
+		return;
+	}
+
+	Zone* zone = player->getZone();
+	if (zone == NULL)
+		return;
+
+	GuildManager* gm = zone->getZoneServer()->getGuildManager();
+
+	if (gm == NULL)
+		return;
+
+	gm->handleGuildRenaming(player);
+
+}
+
+void RadialManager::handleGuildInformationMembers(Player* player) {
+	Zone* zone = player->getZone();
+
+	if (zone == NULL)
+		return;
+
+	GuildManager* pGuild = zone->getZoneServer()->getGuildManager();
+
+	if (pGuild == NULL)
+		return;
+
+	pGuild->handleGuildInformationMembers(player);
+}
+
+void RadialManager::handleGuildTransferLeader(Player* player) {
+	Zone* zone = player->getZone();
+
+	if (zone == NULL)
+		return;
+
+	GuildManager* pGuild = zone->getZoneServer()->getGuildManager();
+
+	if (pGuild == NULL)
+		return;
+
+	pGuild->handleGuildTransferLeader(player);
+
+}

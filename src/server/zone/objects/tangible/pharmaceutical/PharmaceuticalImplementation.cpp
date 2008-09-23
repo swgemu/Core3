@@ -150,6 +150,31 @@ void PharmaceuticalImplementation::addAttributes(AttributeListMessage* alm) {
 	addFooterAttributes(alm);
 }
 
+void PharmaceuticalImplementation::useCharge(Player* player) {
+	setUsesRemaining(getUsesRemaining() - 1);
+
+	if (getUsesRemaining() <= 0) {
+		_this->sendDestroyTo(player);
+
+		Zone* zone = player->getZone();
+
+		if (zone != NULL) {
+			ZoneServer* zoneServer = zone->getZoneServer();
+
+			ItemManager* itemManager;
+			if (zoneServer != NULL && ((itemManager = zoneServer->getItemManager()) != NULL)) {
+				player->removeInventoryItem(objectID);
+
+				itemManager->deletePlayerItem(player, _this, false);
+
+				finalize();
+			}
+		}
+	} else {
+		sendDeltas(player);
+	}
+}
+
 inline string PharmaceuticalImplementation::stringify(const int x) {
 	ostringstream o;
 

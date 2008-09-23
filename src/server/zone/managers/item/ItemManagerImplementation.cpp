@@ -40,7 +40,7 @@ it is their choice whether to do so. The GNU Lesser General Public License
 gives permission to release a modified version without this exception;
 this exception also makes it possible to release a modified version
 which carries forward this exception.
-*/
+ */
 
 #include "system/lang.h"
 
@@ -124,6 +124,8 @@ void ItemManagerImplementation::loadPlayerItems(Player* player) {
 		delete res;
 	} catch (DatabaseException& e) {
 		cout << e.getMessage() << "\n";
+	} catch (...) {
+		cout << "unreported exception caught in ItemManagerImplementation::loadPlayerItems(Player* player)\n";
 	}
 }
 
@@ -151,6 +153,8 @@ TangibleObject* ItemManagerImplementation::getPlayerItem(Player* player, uint64 
 
 	} catch (DatabaseException& e) {
 		cout << e.getMessage() << "\n";
+	} catch (...) {
+		cout << "unreported exception caught in TangibleObject* ItemManagerImplementation::getPlayerItem(Player* player, uint64 objectid)\n";
 	}
 
 	return tano;
@@ -278,7 +282,7 @@ TangibleObject* ItemManagerImplementation::createPlayerObjectTemplate(int object
 			break;
 
 		default:
-			item = new TangibleObject(objectid, objectname, objecttemp, objectcrc, objecttype);
+			item = new TangibleObject(objectid, objectcrc, objectname, objecttemp, objecttype);
 			if (makeStats) {
 				item->setAttributes(lootAttributes );
 				item->parseItemAttributes();
@@ -329,7 +333,44 @@ TangibleObject* ItemManagerImplementation::createPlayerObjectTemplate(int object
 			item->setAttributes(lootAttributes );
 			item->parseItemAttributes();
 		}
+	} else if (objecttype & TangibleObjectImplementation::DEED) {
+		switch (objecttype) {
+			case DeedObjectImplementation::INSTALLATIONDEED:
+
+				//item = new HarvesterDeed(objectid, objectcrc, objectname, objecttemp);
+				switch(DeedObjectImplementation::getSubType(objectcrc)){
+					case DeedObjectImplementation::HARVESTER:
+						item = new HarvesterDeed(objectid, objectcrc, objectname, objecttemp);
+						break;
+					case DeedObjectImplementation::FACTORY:
+						item = new FactoryDeed(objectid, objectcrc, objectname, objecttemp);
+						break;
+					case DeedObjectImplementation::GENERATOR:
+						item = new GeneratorDeed(objectid, objectcrc, objectname, objecttemp);
+						break;
+					case DeedObjectImplementation::TURRET:
+						break;
+					case DeedObjectImplementation::MINEFIELD:
+						break;
+				}
+				break;
+			case TangibleObjectImplementation::BUILDINGDEED:
+				item = new PlayerHouseDeed(objectid, objectcrc, objectname, objecttemp);
+				break;
+			case TangibleObjectImplementation::PETDEED:
+
+				break;
+			case TangibleObjectImplementation::DROIDDEED:
+
+				break;
+			case TangibleObjectImplementation::VEHICLEDEED:
+				item = new VehicleDeed(objectid, objectcrc, objectname, objecttemp);
+				break;
+		}
 	}
+	/*else {
+		item = new TangibleObjectImplementation(objectid, objectname, objecttemp, objectcrc, equipped);
+	} */
 
 	return item;
 }
@@ -371,7 +412,7 @@ TangibleObject* ItemManagerImplementation::createSubObject(uint64 objectid, uint
 	case 0x10EDF682:
 		item = new EnhancePack(objectid, objectcrc, objectname, objecttemp);
 		break;
-	//Pharmaceutical StimPacks
+		//Pharmaceutical StimPacks
 	case 0x904FA809:
 	case 0x4B58009E:
 	case 0x02556713:
@@ -416,7 +457,7 @@ TangibleObject* ItemManagerImplementation::createSubObject(uint64 objectid, uint
 	case 0x316C7330:
 		item = new WoundPack(objectid, objectcrc, objectname, objecttemp);
 		break;
-	//Pharmaceutical RevivePack
+		//Pharmaceutical RevivePack
 	case 0x35431212:
 		item = new RevivePack(objectid, objectcrc, objectname, objecttemp);
 		break;
@@ -440,7 +481,7 @@ TangibleObject* ItemManagerImplementation::createSubObject(uint64 objectid, uint
 		item = new CurePack(objectid, objectcrc, objectname, objecttemp);
 		break;
 	default:
-		item = new TangibleObject(objectid, objectname, objecttemp, objectcrc, TangibleObjectImplementation::MISC);
+		item = new TangibleObject(objectid, objectcrc, objectname, objecttemp, TangibleObjectImplementation::MISC);
 		break;
 	}
 
@@ -458,6 +499,8 @@ TangibleObject* ItemManagerImplementation::createPlayerObject(Player* player, Re
 
 	string appearance = result->getString(10);
 
+	uint16 itemMask = result->getUnsignedInt(11);
+
 	BinaryData cust(appearance);
 
 	string custStr;
@@ -471,7 +514,7 @@ TangibleObject* ItemManagerImplementation::createPlayerObject(Player* player, Re
 	string attributes = result->getString(9);
 
 	TangibleObject* item = createPlayerObjectTemplate(objecttype, objectid, objectcrc,
-							unicode(objectname), objecttemp, equipped, false, "", 0);
+			unicode(objectname), objecttemp, equipped, false, "", 0);
 
 	if (item == NULL) {
 		//cout << "NULL ITEM objectType:[" << objecttype << "] objectname[" << objectname << "]" << endl;
@@ -480,6 +523,8 @@ TangibleObject* ItemManagerImplementation::createPlayerObject(Player* player, Re
 
 	item->setAttributes(attributes);
 	item->parseItemAttributes();
+
+	item->setPlayerUseMask(itemMask);
 
 	item->setCustomizationString(custStr);
 
@@ -525,11 +570,13 @@ TangibleObject* ItemManagerImplementation::clonePlayerObjectTemplate(uint64 obje
 	}
 	//the name is passed in a hackish way to stop buffer overflows.. anyone know why it was doing that?
 	TangibleObject* newTempl = createPlayerObjectTemplate(templ->getObjectSubType(),
-						objectid, templ->getObjectCRC(), unicode(templ->getName().c_str()),
-						(char *) templ->getTemplateName().c_str(), templ->isEquipped(), false, "", 0);
+			objectid, templ->getObjectCRC(), unicode(templ->getName().c_str()),
+			(char *) templ->getTemplateName().c_str(), templ->isEquipped(), false, "", 0);
 
 	newTempl->setAttributes(templ->getAttributes());
 	newTempl->parseItemAttributes();
+
+	newTempl->setPlayerUseMask(templ->getPlayerUseMask());
 
 	return newTempl;
 }
@@ -737,14 +784,47 @@ void ItemManagerImplementation::registerGlobals() {
 	setGlobalInt("FOCUS", PharmaceuticalImplementation::FOCUS);
 	setGlobalInt("WILLPOWER", PharmaceuticalImplementation::WILLPOWER);
 
-	setGlobalInt("INTIMIDATED", PharmaceuticalImplementation::INTIMIDATED);
-	setGlobalInt("STUNNED", PharmaceuticalImplementation::STUNNED);
-	setGlobalInt("DIZZY", PharmaceuticalImplementation::DIZZY);
-	setGlobalInt("BLINDED", PharmaceuticalImplementation::BLINDED);
+	setGlobalInt("INTIMIDATED_STATE", CreatureObjectImplementation::INTIMIDATED_STATE);
+	setGlobalInt("STUNNED_STATE", CreatureObjectImplementation::STUNNED_STATE);
+	setGlobalInt("DIZZY_STATE", CreatureObjectImplementation::DIZZY_STATE);
+	setGlobalInt("BLINDED_STATE", CreatureObjectImplementation::BLINDED_STATE);
 
-	setGlobalInt("ONFIRE", PharmaceuticalImplementation::ONFIRE);
-	setGlobalInt("DISEASED", PharmaceuticalImplementation::DISEASED);
-	setGlobalInt("POISONED", PharmaceuticalImplementation::POISONED);
+	setGlobalInt("ONFIRE_STATE", CreatureObjectImplementation::ONFIRE_STATE);
+	setGlobalInt("DISEASED_STATE", CreatureObjectImplementation::DISEASED_STATE);
+	setGlobalInt("POISONED_STATE", CreatureObjectImplementation::POISONED_STATE);
+
+	//ItemMasks
+	setGlobalShort("MALE", TangibleObjectImplementation::MALE);
+	setGlobalShort("FEMALE", TangibleObjectImplementation::FEMALE);
+
+	setGlobalShort("HUMAN", TangibleObjectImplementation::HUMAN);
+	setGlobalShort("TRANDOSHAN", TangibleObjectImplementation::TRANDOSHAN);
+	setGlobalShort("TWILEK", TangibleObjectImplementation::TWILEK);
+	setGlobalShort("BOTHAN", TangibleObjectImplementation::BOTHAN);
+	setGlobalShort("ZABRAK", TangibleObjectImplementation::ZABRAK);
+	setGlobalShort("RODIAN", TangibleObjectImplementation::RODIAN);
+	setGlobalShort("MONCALAMARI", TangibleObjectImplementation::MONCALAMARI);
+	setGlobalShort("WOOKIEE", TangibleObjectImplementation::WOOKIEE);
+	setGlobalShort("SULLUSTAN", TangibleObjectImplementation::SULLUSTAN);
+	setGlobalShort("ITHORIAN", TangibleObjectImplementation::ITHORIAN);
+
+	setGlobalShort("NEUTRAL", TangibleObjectImplementation::NEUTRAL);
+	setGlobalShort("IMPERIAL", TangibleObjectImplementation::IMPERIAL);
+	setGlobalShort("REBEL", TangibleObjectImplementation::REBEL);
+	setGlobalShort("COVERT", TangibleObjectImplementation::COVERT);
+
+	setGlobalShort("ALL", TangibleObjectImplementation::ALL);
+	setGlobalShort("ALLSEXES", TangibleObjectImplementation::ALLSEXES);
+	setGlobalShort("ALLFACTIONS", TangibleObjectImplementation::ALLFACTIONS);
+	setGlobalShort("HUMANOIDS", TangibleObjectImplementation::HUMANOIDS);
+	setGlobalShort("HUMANOID_FOOTWEAR", TangibleObjectImplementation::HUMANOID_FOOTWEAR);
+	setGlobalShort("HUMANOID_MALES", TangibleObjectImplementation::HUMANOID_MALES);
+	setGlobalShort("HUMANOID_FEMALES", TangibleObjectImplementation::HUMANOID_FEMALES);
+	setGlobalShort("HUMANOID_IMPERIALS", TangibleObjectImplementation::HUMANOID_IMPERIALS);
+	setGlobalShort("HUMANOID_REBELS", TangibleObjectImplementation::HUMANOID_REBELS);
+	setGlobalShort("WOOKIEES", TangibleObjectImplementation::WOOKIEES);
+	setGlobalShort("ITHORIANS", TangibleObjectImplementation::ITHORIANS);
+	setGlobalShort("TWILEKS", TangibleObjectImplementation::TWILEKS);
 }
 
 int ItemManagerImplementation::runItemLUAFile(lua_State* L) {
@@ -762,10 +842,12 @@ TangibleObject* ItemManagerImplementation::createTemplateFromLua(LuaObject itemc
 	string templ = itemconfig.getStringField("templateName");
 	bool equipped = bool(itemconfig.getByteField("equipped"));
 	int type = itemconfig.getIntField("objectType");
+	uint16 itemMask = itemconfig.getIntField("itemMask");
 
 	TangibleObject* item = createPlayerObjectTemplate(type, 1, crc, unicode(name), templ, equipped, false, "", 0);
 
 	item->setObjectSubType(type);
+	item->setPlayerUseMask(itemMask);
 
 	//ADD ATTRIBUTES
 	if (type & TangibleObjectImplementation::ARMOR) {
@@ -827,74 +909,74 @@ TangibleObject* ItemManagerImplementation::createTemplateFromLua(LuaObject itemc
 		pharma->setMedicineUseRequired(medicineUse);
 
 		switch (medpackType) {
-			case PharmaceuticalImplementation::ENHANCEPACK:
-			{
-				float eff = itemconfig.getFloatField("effectiveness");
-				float dur = itemconfig.getFloatField("duration");
-				int pool = itemconfig.getIntField("poolAffected");
+		case PharmaceuticalImplementation::ENHANCEPACK:
+		{
+			float eff = itemconfig.getFloatField("effectiveness");
+			float dur = itemconfig.getFloatField("duration");
+			int pool = itemconfig.getIntField("poolAffected");
 
-				EnhancePack* enhance = (EnhancePack*) item;
-				enhance->setEffectiveness(eff);
-				enhance->setDuration(dur);
-				enhance->setPoolAffected(pool);
-				break;
-			}
-			case PharmaceuticalImplementation::WOUNDPACK:
-			{
-				float eff = itemconfig.getFloatField("effectiveness");
-				int pool = itemconfig.getIntField("poolAffected");
+			EnhancePack* enhance = (EnhancePack*) item;
+			enhance->setEffectiveness(eff);
+			enhance->setDuration(dur);
+			enhance->setPoolAffected(pool);
+			break;
+		}
+		case PharmaceuticalImplementation::WOUNDPACK:
+		{
+			float eff = itemconfig.getFloatField("effectiveness");
+			int pool = itemconfig.getIntField("poolAffected");
 
-				WoundPack* wound = (WoundPack*) item;
-				wound->setEffectiveness(eff);
-				wound->setPoolAffected(pool);
-				break;
-			}
-			case PharmaceuticalImplementation::CUREPACK:
-			{
-				float eff = itemconfig.getFloatField("effectiveness");
-				int condition = itemconfig.getIntField("conditionCured");
+			WoundPack* wound = (WoundPack*) item;
+			wound->setEffectiveness(eff);
+			wound->setPoolAffected(pool);
+			break;
+		}
+		case PharmaceuticalImplementation::CUREPACK:
+		{
+			float eff = itemconfig.getFloatField("effectiveness");
+			uint64 condition = itemconfig.getLongField("conditionCured");
 
-				CurePack* curepack = (CurePack*) item;
-				curepack->setEffectiveness(eff);
-				curepack->setConditionCured(condition);
-				break;
-			}
-			case PharmaceuticalImplementation::STATEPACK:
-			{
-				int state = itemconfig.getIntField("stateAffected");
+			CurePack* curepack = (CurePack*) item;
+			curepack->setEffectiveness(eff);
+			curepack->setConditionCured(condition);
+			break;
+		}
+		case PharmaceuticalImplementation::STATEPACK:
+		{
+			uint64 state = itemconfig.getLongField("stateAffected");
 
-				StatePack* statepack = (StatePack*) item;
-				statepack->setStateAffected(state);
-				break;
-			}
-			case PharmaceuticalImplementation::REVIVEPACK:
-			{
-				float hw = itemconfig.getFloatField("healthWoundHealed");
-				float hh = itemconfig.getFloatField("healthHealed");
-				float aw = itemconfig.getFloatField("actionWoundHealed");
-				float ah = itemconfig.getFloatField("actionHealed");
-				float mw = itemconfig.getFloatField("mindWoundHealed");
-				float mh = itemconfig.getFloatField("mindHealed");
+			StatePack* statepack = (StatePack*) item;
+			statepack->setStateAffected(state);
+			break;
+		}
+		case PharmaceuticalImplementation::REVIVEPACK:
+		{
+			float hw = itemconfig.getFloatField("healthWoundHealed");
+			float hh = itemconfig.getFloatField("healthHealed");
+			float aw = itemconfig.getFloatField("actionWoundHealed");
+			float ah = itemconfig.getFloatField("actionHealed");
+			float mw = itemconfig.getFloatField("mindWoundHealed");
+			float mh = itemconfig.getFloatField("mindHealed");
 
-				RevivePack* revive = (RevivePack*) item;
-				revive->setHealthWoundHealed(hw);
-				revive->setHealthHealed(hh);
-				revive->setActionWoundHealed(aw);
-				revive->setActionHealed(ah);
-				revive->setMindWoundHealed(mw);
-				revive->setMindHealed(mh);
-				break;
-			}
-			case PharmaceuticalImplementation::STIMPACK:
-			{
-				float eff = itemconfig.getFloatField("effectiveness");
+			RevivePack* revive = (RevivePack*) item;
+			revive->setHealthWoundHealed(hw);
+			revive->setHealthHealed(hh);
+			revive->setActionWoundHealed(aw);
+			revive->setActionHealed(ah);
+			revive->setMindWoundHealed(mw);
+			revive->setMindHealed(mh);
+			break;
+		}
+		case PharmaceuticalImplementation::STIMPACK:
+		{
+			float eff = itemconfig.getFloatField("effectiveness");
 
-				StimPack* stim = (StimPack*) item;
-				stim->setEffectiveness(eff);
-				break;
-			}
-			default:
-				break;
+			StimPack* stim = (StimPack*) item;
+			stim->setEffectiveness(eff);
+			break;
+		}
+		default:
+			break;
 		}
 	}
 
@@ -1034,6 +1116,14 @@ void ItemManagerImplementation::loadDefaultPlayerItems(Player* player) {
 }
 
 void ItemManagerImplementation::loadDefaultPlayerDatapadItems(Player* player) {
+
+	// Leave in the x34 incase something goes wrong with deeds
+	// x34
+	MountCreature* land3 = new MountCreature(player, "landspeeder_x34", "monster_name",
+			String::hashCode("object/intangible/vehicle/shared_landspeeder_x34_pcd.iff"), 0x4EC3780C, player->getNewItemID());
+	land3->addToDatapad();
+
+	/*
 	// SWOOP
 	MountCreature* swoop = new MountCreature(player, "speederbike_swoop", "monster_name",
 			String::hashCode("object/intangible/vehicle/shared_speederbike_swoop_pcd.iff"), 0xAF6D9F4F, player->getNewItemID());
@@ -1046,40 +1136,41 @@ void ItemManagerImplementation::loadDefaultPlayerDatapadItems(Player* player) {
 
 	// landspeeder
 	MountCreature* land = new MountCreature(player, "landspeeder_x31", "monster_name",
-		String::hashCode("object/intangible/vehicle/shared_landspeeder_x31_pcd.iff"), 0x273A9C02, player->getNewItemID());
+			String::hashCode("object/intangible/vehicle/shared_landspeeder_x31_pcd.iff"), 0x273A9C02, player->getNewItemID());
 	land->addToDatapad();
 
-	// xp 38 doesnt work
-	/*MountCreatureImplementation* land2Impl = new MountCreatureImplementation(player, "landspeeder_xp38", "monster_name",
-	 String::hashCode("object/intangible/vehicle/shared_vehicle_pcd_base.iff"), 0x3F6E7BA7, player->getNewItemID());
-	 stringstream Land2;
-	 Land2 << "Mount" << land2Impl->getObjectID();
-	 MountCreature* land2 = (MountCreature*) DistributedObjectBroker::instance()->deploy(Land2.str(), land2Impl);
-	 land2->addToDatapad();*/
+	 // xp 38 doesnt work
+	 //MountCreatureImplementation* land2Impl = new MountCreatureImplementation(player, "landspeeder_xp38", "monster_name",
+	 //String::hashCode("object/intangible/vehicle/shared_vehicle_pcd_base.iff"), 0x3F6E7BA7, player->getNewItemID());
+	 //stringstream Land2;
+	 //Land2 << "Mount" << land2Impl->getObjectID();
+	 //MountCreature* land2 = (MountCreature*) DistributedObjectBroker::instance()->deploy(Land2.str(), land2Impl);
+	 //land2->addToDatapad();
 
 	// x34
 	MountCreature* land3 = new MountCreature(player, "landspeeder_x34", "monster_name",
-		String::hashCode("object/intangible/vehicle/shared_landspeeder_x34_pcd.iff"), 0x4EC3780C, player->getNewItemID());
+			String::hashCode("object/intangible/vehicle/shared_landspeeder_x34_pcd.iff"), 0x4EC3780C, player->getNewItemID());
 	land3->addToDatapad();
 
 	// av21
 	MountCreature* land4 = new MountCreature(player, "landspeeder_av21", "monster_name",
-		String::hashCode("object/intangible/vehicle/shared_landspeeder_av21_pcd.iff"), 0xA965DDBA, player->getNewItemID());
+			String::hashCode("object/intangible/vehicle/shared_landspeeder_av21_pcd.iff"), 0xA965DDBA, player->getNewItemID());
 	land4->addToDatapad();
 
 	// speederbike
 	MountCreature* speed = new MountCreature(player, "speederbike", "monster_name",
-		String::hashCode("object/intangible/vehicle/shared_speederbike_pcd.iff"), 0x729517EF, player->getNewItemID());
+			String::hashCode("object/intangible/vehicle/shared_speederbike_pcd.iff"), 0x729517EF, player->getNewItemID());
 	speed->addToDatapad();
 
 	// jetpack
-	/*MountCreatureImplementation* jetImpl = new MountCreatureImplementation(player, "jetpack", "monster_name",
-	 String::hashCode("object/intangible/vehicle/shared_jetpack_pcd.iff"), 0x60250B32, player->getNewItemID());
-	 jetImpl->setInstantMount(true);
-	 stringstream Jet;
-	 Jet << "Mount" << jetImpl->getObjectID();
-	 MountCreature* jet = (MountCreature*) DistributedObjectBroker::instance()->deploy(Jet.str(), jetImpl);
-	 jet->addToDatapad();*/
+	MountCreatureImplementation* jetImpl = new MountCreatureImplementation(player, "jetpack", "monster_name",
+	String::hashCode("object/intangible/vehicle/shared_jetpack_pcd.iff"), 0x60250B32, player->getNewItemID());
+	jetImpl->setInstantMount(true);
+	stringstream Jet;
+	Jet << "Mount" << jetImpl->getObjectID();
+	MountCreature* jet = (MountCreature*) DistributedObjectBroker::instance()->deploy(Jet.str(), jetImpl);
+	jet->addToDatapad();
+	*/
 }
 
 void ItemManagerImplementation::unloadPlayerItems(Player* player) {
@@ -1120,12 +1211,12 @@ void ItemManagerImplementation::createPlayerItem(Player* player, TangibleObject*
 
 		stringstream query;
 		query << "INSERT INTO `character_items` "
-			  << "(`item_id`,`character_id`,`name`,`template_crc`,`template_type`,`template_name`,`equipped`,`attributes`,`appearance`)"
-			  << " VALUES(" << item->getObjectID() << "," << player->getCharacterID()
-			  << ",'\\" << itemname << "',"
-			  << item->getObjectCRC() << "," << item->getObjectSubType() << ",'" << item->getTemplateName() << "',"
-			  << item->isEquipped() << ",'" << item->getAttributes()
-			  << "','" << appearance.substr(0, appearance.size() - 1) << "')";
+		<< "(`item_id`,`character_id`,`name`,`template_crc`,`template_type`,`template_name`,`equipped`,`attributes`,`appearance`, `itemMask`)"
+		<< " VALUES(" << item->getObjectID() << "," << player->getCharacterID()
+		<< ",'\\" << itemname << "',"
+		<< item->getObjectCRC() << "," << item->getObjectSubType() << ",'" << item->getTemplateName() << "',"
+		<< item->isEquipped() << ",'" << item->getAttributes()
+		<< "','" << appearance.substr(0, appearance.size() - 1) << "', " << item->getPlayerUseMask() << ")";
 
 		ServerDatabase::instance()->executeStatement(query);
 
@@ -1134,6 +1225,8 @@ void ItemManagerImplementation::createPlayerItem(Player* player, TangibleObject*
 
 	} catch (DatabaseException& e) {
 		cout << e.getMessage() << "\n";
+	} catch (...) {
+		cout << "unreported exception caught in ItemManagerImplementation::createPlayerItem(Player* player, TangibleObject* item)\n";
 	}
 }
 
@@ -1150,12 +1243,15 @@ void ItemManagerImplementation::savePlayerItem(Player* player, TangibleObject* i
 		query << ", character_id = " << player->getCharacterID() << " ";
 		query << ", attributes = '" << item->getAttributes() << "' ";
 		query << ", appearance = '" << appearance.substr(0, appearance.size() - 1) << "' ";
+		query << ", itemMask = " << item->getPlayerUseMask() << " ";
 		query << "where item_id = " << item->getObjectID();
 
 		ServerDatabase::instance()->executeStatement(query);
 
 	} catch (DatabaseException& e) {
 		cout << e.getMessage() << "\n";
+	} catch (...) {
+		cout << "unreported exception caught in ItemManagerImplementation::savePlayerItem(Player* player, TangibleObject* item)\n";
 	}
 }
 
@@ -1258,8 +1354,8 @@ void ItemManagerImplementation::showDbStats(Player* player) {
 		while (res->next()) {
 			if (res->getInt(4) == WeaponImplementation::WEAPON) {
 				txt << "ObjID: " << res->getUnsignedLong(0) << " Name: " << res->getString(2)
-					<< "\\#ffffff MinDmg: " << res->getFloat(11) << " MaxDmg: " << res->getFloat(12)
-					<< " Spd: " << res->getFloat(13) << "\n";
+				<< "\\#ffffff MinDmg: " << res->getFloat(11) << " MaxDmg: " << res->getFloat(12)
+				<< " Spd: " << res->getFloat(13) << "\n";
 			}
 		}
 
@@ -1281,9 +1377,9 @@ void ItemManagerImplementation::showDbStats(Player* player) {
 		while (res->next()) {
 			if (res->getInt(4) == WeaponImplementation::WEAPON) {
 				txt << "ObjID: " << res->getUnsignedLong(0) << " Name: " << res->getString(2)
-					<< "\\#ffffff MinDmg: " << res->getFloat(11) << " MaxDmg: " << res->getFloat(12)
-					<< " Spd: " << res->getFloat(13) << " Strength: " << res->getInt(58)
-					<< " Potency: " << res->getInt(60) << "\n";
+				<< "\\#ffffff MinDmg: " << res->getFloat(11) << " MaxDmg: " << res->getFloat(12)
+				<< " Spd: " << res->getFloat(13) << " Strength: " << res->getInt(58)
+				<< " Potency: " << res->getInt(60) << "\n";
 			}
 		}
 
@@ -1309,8 +1405,8 @@ void ItemManagerImplementation::showDbDeleted(Player* player) {
 		while (res->next()) {
 			if (res->getInt(4) == WeaponImplementation::WEAPON) {
 				txt << "ObjID: " << res->getUnsignedLong(0) << " Name: " << res->getString(2)
-					<< "\\#ffffff MinDmg: " << res->getFloat(11) << " MaxDmg: " << res->getFloat(12)
-					<< " Spd: " << res->getFloat(13) << "\n";
+				<< "\\#ffffff MinDmg: " << res->getFloat(11) << " MaxDmg: " << res->getFloat(12)
+				<< " Spd: " << res->getFloat(13) << "\n";
 			} else if (res->getInt(4) == ArmorImplementation::ARMOR) {
 				txt << "ObjID: " << res->getUnsignedLong(0) << " Name: " << res->getString(2)
 				<< "\\#ffffff Resists: " << res->getFloat(31) << " " << res->getFloat(33) << " "

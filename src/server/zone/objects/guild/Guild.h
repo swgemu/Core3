@@ -11,6 +11,12 @@ class Player;
 
 class GuildManager;
 
+class ZoneServer;
+
+class ChatRoom;
+
+class PlayerMap;
+
 class Guild : public DistributedObjectStub {
 public:
 	Guild(unsigned int gid, const string& name, const string& tag);
@@ -25,9 +31,29 @@ public:
 
 	unsigned int getGuildID();
 
+	ChatRoom* getGuildChat();
+
+	void setGuildChat(ChatRoom* guildchat);
+
 	string& getGuildName();
 
+	void setGuildLeader(unsigned int guleader);
+
+	unsigned int getGuildLeader();
+
 	string& getGuildTag();
+
+	void setGuildName(const string& nom);
+
+	void setGuildTag(const string& nom);
+
+	void putSponsoredMap(const string& nom);
+
+	unsigned int getSponsoredMapSize();
+
+	string& getSponsoredMap(int i);
+
+	void clearSponsoredMap();
 
 protected:
 	Guild(DummyConstructorParameter* param);
@@ -36,6 +62,7 @@ protected:
 
 	string _return_getGuildName;
 	string _return_getGuildTag;
+	string _return_getSponsoredMap;
 
 	friend class GuildHelper;
 };
@@ -58,10 +85,34 @@ public:
 
 	unsigned int getGuildID();
 
+	ChatRoom* getGuildChat();
+
+	void setGuildChat(ChatRoom* guildchat);
+
 	string& getGuildName();
+
+	void setGuildLeader(unsigned int guleader);
+
+	unsigned int getGuildLeader();
 
 	string& getGuildTag();
 
+	void setGuildName(const string& nom);
+
+	void setGuildTag(const string& nom);
+
+	void putSponsoredMap(const string& nom);
+
+	unsigned int getSponsoredMapSize();
+
+	string& getSponsoredMap(int i);
+
+	void clearSponsoredMap();
+
+protected:
+	string _param0_setGuildName__string_;
+	string _param0_setGuildTag__string_;
+	string _param0_putSponsoredMap__string_;
 };
 
 class GuildHelper : public DistributedObjectClassHelper, public Singleton<GuildHelper> {

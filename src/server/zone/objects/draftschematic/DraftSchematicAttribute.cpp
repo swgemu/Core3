@@ -10,8 +10,13 @@
  *	DraftSchematicAttributeStub
  */
 
-DraftSchematicAttribute::DraftSchematicAttribute(const string& attribute, float minVal, float maxVal, const string& attributeExpProp) {
-	_impl = new DraftSchematicAttributeImplementation(attribute, minVal, maxVal, attributeExpProp);
+DraftSchematicAttribute::DraftSchematicAttribute(const string& attribute, float minVal, float maxVal, const string& attributeExpProp, const int precision) {
+	_impl = new DraftSchematicAttributeImplementation(attribute, minVal, maxVal, attributeExpProp, precision);
+	_impl->_setStub(this);
+}
+
+DraftSchematicAttribute::DraftSchematicAttribute(DraftSchematicAttribute* attrib) {
+	_impl = new DraftSchematicAttributeImplementation(attrib);
 	_impl->_setStub(this);
 }
 
@@ -123,12 +128,24 @@ float DraftSchematicAttribute::getRange() {
 		return ((DraftSchematicAttributeImplementation*) _impl)->getRange();
 }
 
-string& DraftSchematicAttribute::getAttributeExperimentalProperty() {
+int DraftSchematicAttribute::getPrecision() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 14);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((DraftSchematicAttributeImplementation*) _impl)->getPrecision();
+}
+
+string& DraftSchematicAttribute::getAttributeExperimentalProperty() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 15);
 
 		method.executeWithAsciiReturn(_return_getAttributeExperimentalProperty);
 		return _return_getAttributeExperimentalProperty;
@@ -172,6 +189,9 @@ Packet* DraftSchematicAttributeAdapter::invokeMethod(uint32 methid, DistributedM
 		resp->insertFloat(getRange());
 		break;
 	case 14:
+		resp->insertSignedInt(getPrecision());
+		break;
+	case 15:
 		resp->insertAscii(getAttributeExperimentalProperty());
 		break;
 	default:
@@ -211,6 +231,10 @@ float DraftSchematicAttributeAdapter::getMaxValue() {
 
 float DraftSchematicAttributeAdapter::getRange() {
 	return ((DraftSchematicAttributeImplementation*) impl)->getRange();
+}
+
+int DraftSchematicAttributeAdapter::getPrecision() {
+	return ((DraftSchematicAttributeImplementation*) impl)->getPrecision();
 }
 
 string& DraftSchematicAttributeAdapter::getAttributeExperimentalProperty() {

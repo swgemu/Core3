@@ -73,11 +73,15 @@ which carries forward this exception.
 
 #include "managers/bazaar/BazaarManager.h"
 #include "managers/bazaar/BazaarManagerImplementation.h"
+
 #include "managers/bank/BankManager.h"
 #include "managers/bank/BankManagerImplementation.h"
 
-#include "ZoneClient.h"
-#include "ZoneClientImplementation.h"
+#include "managers/mission/MissionManager.h"
+#include "managers/mission/MissionManagerImplementation.h"
+
+#include "ZoneClientSession.h"
+#include "ZoneClientSessionImplementation.h"
 
 #include "ZoneServerImplementation.h"
 
@@ -105,6 +109,7 @@ ZoneServerImplementation::ZoneServerImplementation(int processingThreads) :
 	totalDeletedPlayers = 0;
 
 	nextCreatureID = 0x10000000;
+	nextCellID = 9995371; // last objectid in static objects // 0x00;
 
 	setLogging(false);
 	setLockName("ZoneServerLock");
@@ -178,6 +183,11 @@ ZoneServerImplementation::~ZoneServerImplementation() {
 		chatManager = NULL;
 	}
 
+	if (missionManager != NULL) {
+		missionManager->finalize();
+		missionManager = NULL;
+	}
+	
 	for (int i = 0; i < 50; ++i) {
 		Zone* zone = zones.get(i);
 		zone->finalize();
@@ -256,6 +266,9 @@ void ZoneServerImplementation::startManagers() {
 
 	bankManager = new BankManager(_this, processor);
 	bankManager->deploy("BankManager");
+	
+	missionManager = new MissionManager(_this, processor);
+	missionManager->deploy("MissionManager");
 }
 
 void ZoneServerImplementation::run() {
@@ -303,6 +316,9 @@ void ZoneServerImplementation::stopManagers() {
 	/*if (playerManager != NULL)
 		playerManager->stop();*/
 
+	if(missionManager != NULL)
+		missionManager->unloadManager();
+	
 	if (resourceManager != NULL)
 		resourceManager->stop();
 
@@ -313,17 +329,17 @@ ServiceClient* ZoneServerImplementation::createConnection(Socket* sock, SocketAd
 	if (!userManager->checkUser(addr.getIPID()))
 		return NULL;
 
-	ZoneClient* client = new ZoneClient(this, sock, &addr);
-	client->deploy("ZoneClient " + addr.getFullIPAddress());
+	ZoneClientSession* client = new ZoneClientSession(this, sock, &addr);
+	client->deploy("ZoneClientSession " + addr.getFullIPAddress());
 
 	info("client connected from \'" + client->getAddress() + "\'");
 
-	ZoneClientImplementation* clientImpl = (ZoneClientImplementation*) client->_getImplementation();
+	ZoneClientSessionImplementation* clientImpl = (ZoneClientSessionImplementation*) client->_getImplementation();
 	return clientImpl;
 }
 
 void ZoneServerImplementation::handleMessage(ServiceClient* client, Packet* message) {
-	ZoneClientImplementation* zclient = (ZoneClientImplementation*) client;
+	ZoneClientSessionImplementation* zclient = (ZoneClientSessionImplementation*) client;
 
 	try {
 		/*if (zclient->simulatePacketLoss())
@@ -346,7 +362,7 @@ void ZoneServerImplementation::handleMessage(ServiceClient* client, Packet* mess
 }
 
 bool ZoneServerImplementation::handleError(ServiceClient* client, Exception& e) {
-	ZoneClientImplementation* zclient = (ZoneClientImplementation*) client;
+	ZoneClientSessionImplementation* zclient = (ZoneClientSessionImplementation*) client;
 	zclient->setError();
 
 	zclient->disconnect();
@@ -459,6 +475,7 @@ SceneObject* ZoneServerImplementation::getCachedObject(uint64 oid, bool doLock) 
 SceneObject* ZoneServerImplementation::removeCachedObject(uint64 oid, bool doLock) {
 	SceneObject* obj = NULL;
 
+	cout << "removeCachedObject OID = " << oid << endl;
 	try {
 		lock(doLock);
 
@@ -569,5 +586,25 @@ uint64 ZoneServerImplementation::getNextCreatureID(bool doLock) {
 
 	unlock(doLock);
 
+	return nextID;
+}
+
+uint64 ZoneServerImplementation::getNextID(bool doLock) {
+	lock(doLock);
+	
+	uint64 nextID = (nextCreatureID += 0x01);
+	
+	unlock(doLock);
+	
+	return nextID;
+}
+
+uint64 ZoneServerImplementation::getNextCellID(bool doLock) {
+	lock(doLock);
+	
+	uint64 nextID = (nextCellID += 0x1);
+	
+	unlock(doLock);
+	
 	return nextID;
 }

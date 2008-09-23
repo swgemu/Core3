@@ -44,42 +44,17 @@ void BuildingObject::addCell(CellObject* cell) {
 		((BuildingObjectImplementation*) _impl)->addCell(cell);
 }
 
-void BuildingObject::insertToZone(Zone* zone) {
+void BuildingObject::notifyInsertToZone(SceneObject* object) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 7);
-		method.addObjectParameter(zone);
+		method.addObjectParameter(object);
 
 		method.executeWithVoidReturn();
 	} else
-		((BuildingObjectImplementation*) _impl)->insertToZone(zone);
-}
-
-void BuildingObject::removeFromZone() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 8);
-
-		method.executeWithVoidReturn();
-	} else
-		((BuildingObjectImplementation*) _impl)->removeFromZone();
-}
-
-void BuildingObject::notifyInsertToZone(CreatureObject* creature) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 9);
-		method.addObjectParameter(creature);
-
-		method.executeWithVoidReturn();
-	} else
-		((BuildingObjectImplementation*) _impl)->notifyInsertToZone(creature);
+		((BuildingObjectImplementation*) _impl)->notifyInsertToZone(object);
 }
 
 bool BuildingObject::isStatic() {
@@ -87,7 +62,7 @@ bool BuildingObject::isStatic() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, 8);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -99,7 +74,7 @@ int BuildingObject::getBuildingType() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 9);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -111,7 +86,7 @@ void BuildingObject::setBuildingType(int type) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, 10);
 		method.addSignedIntParameter(type);
 
 		method.executeWithVoidReturn();
@@ -119,12 +94,51 @@ void BuildingObject::setBuildingType(int type) {
 		((BuildingObjectImplementation*) _impl)->setBuildingType(type);
 }
 
-void BuildingObject::lock(bool doLock) {
+string& BuildingObject::getName() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 11);
+
+		method.executeWithAsciiReturn(_return_getName);
+		return _return_getName;
+	} else
+		return ((BuildingObjectImplementation*) _impl)->getName();
+}
+
+void BuildingObject::setName(string& name) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 12);
+		method.addAsciiParameter(name);
+
+		method.executeWithVoidReturn();
+	} else
+		((BuildingObjectImplementation*) _impl)->setName(name);
+}
+
+string& BuildingObject::getDefaultName() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 13);
+
+		method.executeWithAsciiReturn(_return_getDefaultName);
+		return _return_getDefaultName;
+	} else
+		return ((BuildingObjectImplementation*) _impl)->getDefaultName();
+}
+
+void BuildingObject::lock(bool doLock) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 14);
 		method.addBooleanParameter(doLock);
 
 		method.executeWithVoidReturn();
@@ -137,7 +151,7 @@ void BuildingObject::unlock(bool doLock) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 15);
 		method.addBooleanParameter(doLock);
 
 		method.executeWithVoidReturn();
@@ -150,7 +164,7 @@ void BuildingObject::setSize(float minx, float miny, float maxx, float maxy) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, 16);
 		method.addFloatParameter(minx);
 		method.addFloatParameter(miny);
 		method.addFloatParameter(maxx);
@@ -166,7 +180,7 @@ void BuildingObject::insert(QuadTreeEntry* obj) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 17);
 		method.addObjectParameter(obj);
 
 		method.executeWithVoidReturn();
@@ -179,7 +193,7 @@ void BuildingObject::remove(QuadTreeEntry* obj) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 18);
 		method.addObjectParameter(obj);
 
 		method.executeWithVoidReturn();
@@ -192,7 +206,7 @@ void BuildingObject::removeAll() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 19);
 
 		method.executeWithVoidReturn();
 	} else
@@ -204,7 +218,7 @@ bool BuildingObject::update(QuadTreeEntry* obj) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, 20);
 		method.addObjectParameter(obj);
 
 		return method.executeWithBooleanReturn();
@@ -217,7 +231,7 @@ void BuildingObject::inRange(QuadTreeEntry* obj, float range) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, 21);
 		method.addObjectParameter(obj);
 		method.addFloatParameter(range);
 
@@ -241,45 +255,48 @@ Packet* BuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		addCell((CellObject*) inv->getObjectParameter());
 		break;
 	case 7:
-		insertToZone((Zone*) inv->getObjectParameter());
+		notifyInsertToZone((SceneObject*) inv->getObjectParameter());
 		break;
 	case 8:
-		removeFromZone();
-		break;
-	case 9:
-		notifyInsertToZone((CreatureObject*) inv->getObjectParameter());
-		break;
-	case 10:
 		resp->insertBoolean(isStatic());
 		break;
-	case 11:
+	case 9:
 		resp->insertSignedInt(getBuildingType());
 		break;
-	case 12:
+	case 10:
 		setBuildingType(inv->getSignedIntParameter());
 		break;
+	case 11:
+		resp->insertAscii(getName());
+		break;
+	case 12:
+		setName(inv->getAsciiParameter(_param0_setName__string_));
+		break;
 	case 13:
-		lock(inv->getBooleanParameter());
+		resp->insertAscii(getDefaultName());
 		break;
 	case 14:
-		unlock(inv->getBooleanParameter());
+		lock(inv->getBooleanParameter());
 		break;
 	case 15:
-		setSize(inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter());
+		unlock(inv->getBooleanParameter());
 		break;
 	case 16:
-		insert((QuadTreeEntry*) inv->getObjectParameter());
+		setSize(inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter());
 		break;
 	case 17:
-		remove((QuadTreeEntry*) inv->getObjectParameter());
+		insert((QuadTreeEntry*) inv->getObjectParameter());
 		break;
 	case 18:
-		removeAll();
+		remove((QuadTreeEntry*) inv->getObjectParameter());
 		break;
 	case 19:
-		resp->insertBoolean(update((QuadTreeEntry*) inv->getObjectParameter()));
+		removeAll();
 		break;
 	case 20:
+		resp->insertBoolean(update((QuadTreeEntry*) inv->getObjectParameter()));
+		break;
+	case 21:
 		inRange((QuadTreeEntry*) inv->getObjectParameter(), inv->getFloatParameter());
 		break;
 	default:
@@ -293,16 +310,8 @@ void BuildingObjectAdapter::addCell(CellObject* cell) {
 	return ((BuildingObjectImplementation*) impl)->addCell(cell);
 }
 
-void BuildingObjectAdapter::insertToZone(Zone* zone) {
-	return ((BuildingObjectImplementation*) impl)->insertToZone(zone);
-}
-
-void BuildingObjectAdapter::removeFromZone() {
-	return ((BuildingObjectImplementation*) impl)->removeFromZone();
-}
-
-void BuildingObjectAdapter::notifyInsertToZone(CreatureObject* creature) {
-	return ((BuildingObjectImplementation*) impl)->notifyInsertToZone(creature);
+void BuildingObjectAdapter::notifyInsertToZone(SceneObject* object) {
+	return ((BuildingObjectImplementation*) impl)->notifyInsertToZone(object);
 }
 
 bool BuildingObjectAdapter::isStatic() {
@@ -315,6 +324,18 @@ int BuildingObjectAdapter::getBuildingType() {
 
 void BuildingObjectAdapter::setBuildingType(int type) {
 	return ((BuildingObjectImplementation*) impl)->setBuildingType(type);
+}
+
+string& BuildingObjectAdapter::getName() {
+	return ((BuildingObjectImplementation*) impl)->getName();
+}
+
+void BuildingObjectAdapter::setName(string& name) {
+	return ((BuildingObjectImplementation*) impl)->setName(name);
+}
+
+string& BuildingObjectAdapter::getDefaultName() {
+	return ((BuildingObjectImplementation*) impl)->getDefaultName();
 }
 
 void BuildingObjectAdapter::lock(bool doLock) {

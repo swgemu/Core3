@@ -57,6 +57,9 @@ class SurveyTool;
 class CraftingTool;
 class Weapon;
 class Armor;
+class InstallationObject;
+class HarvesterObject;
+class VehicleDeed;
 
 class RadialManager {
 
@@ -81,12 +84,33 @@ public:
 	void handleSlicing(Player* player, SceneObject* obj);
 	void handleRepair(Player* player, SceneObject* obj);
 	void handleRemovePowerup(Player* player, SceneObject* obj);
+
+	// Installation radial handling
+	void sendRadialResponseForHarvesters(Player* player, HarvesterObject* hino, ObjectMenuResponse* omr);
+	void handleStructureStatus(Player* player, SceneObject* obj);
+	void handleStructureDestroy(Player* player, SceneObject* obj);
+	void handleSetName(Player* player, SceneObject* obj);
+	void handleStructureAddMaintenance(Player* player, SceneObject* obj);
+	void handleStructureAddEnergy(Player* player, SceneObject* obj);
+
+	void sendRadialResponseForVehicleDeed(Player* player, VehicleDeed* deed, ObjectMenuResponse* omr);
+	
 	void handleOpenCraftingToolHopper(Player* player, SceneObject* obj);
 	void handleHarvest(Player* player, SceneObject* obj, int type);
 
+	//Guildterminal
+	void handleGuildCreationTag(Player* player);
+	void handleGuildSponsor(Player* player);
+	void handleGuildSponsored(Player* player);
+	void handleGuildInformation(Player* player);
+	void handleGuildDisband(Player* player);
+	void handleGuildNameChange(Player* player);
+	void handleGuildInformationMembers(Player* player);
+	void handleGuildTransferLeader(Player* player);
+
+	//Surveytools
 	void sendRadialResponseForSurveyTools(Player* player, SurveyTool* surveyTool, ObjectMenuResponse* omr);
 	void sendRadialResponseForSurveyToolRange(Player* player, SceneObject* obj);
-
 };
 
 #endif /*RADIALMANAGER_H_*/

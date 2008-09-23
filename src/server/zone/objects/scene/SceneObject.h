@@ -9,6 +9,8 @@
 
 #include "engine/service/proto/BaseMessage.h"
 
+#include "engine/service/proto/StandaloneBaseMessage.h"
+
 #include "engine/util/QuadTreeEntry.h"
 
 #include "../../ZoneProcessServerImplementation.h"
@@ -17,11 +19,13 @@ class ObjectMenuResponse;
 
 class Zone;
 
-class ZoneClient;
+class ZoneClientSession;
 
 class Player;
 
 class CreatureObject;
+
+class BuildingObject;
 
 #include "engine/core/ManagedObject.h"
 
@@ -41,15 +45,15 @@ public:
 
 	void sendRadialResponseTo(Player* player, ObjectMenuResponse* omr);
 
-	void create(ZoneClient* client);
+	void create(ZoneClientSession* client);
 
-	void destroy(ZoneClient* client);
+	void destroy(ZoneClientSession* client);
 
 	void sendConversationStartTo(SceneObject* obj);
 
 	void selectConversationOption(int option, SceneObject* obj);
 
-	void close(ZoneClient* client);
+	void close(ZoneClientSession* client);
 
 	bool isInRange(SceneObject* obj, float range);
 
@@ -59,7 +63,7 @@ public:
 
 	QuadTreeEntry* getInRangeObject(int idx);
 
-	void addInRangeObject(QuadTreeEntry* obj);
+	void addInRangeObject(QuadTreeEntry* obj, bool notifyUpdate = true);
 
 	void removeInRangeObject(QuadTreeEntry* obj);
 
@@ -71,7 +75,7 @@ public:
 
 	BaseMessage* link(SceneObject* obj);
 
-	void link(ZoneClient* client, SceneObject* obj);
+	void link(ZoneClientSession* client, SceneObject* obj);
 
 	void randomizePosition(float radius);
 
@@ -99,11 +103,25 @@ public:
 
 	void setZoneIndex(int id);
 
+	void setAssociatedArea(unsigned long long uid);
+
 	void setParent(SceneObject* par, unsigned int linktype = 04);
 
 	void setZone(Zone* zne);
 
 	void clearUndeploymentEvent();
+
+	void insertToZone(Zone* zone);
+
+	void insertToBuilding(BuildingObject* building);
+
+	void removeFromZone(bool doLock = true);
+
+	void removeFromBuilding(BuildingObject* building);
+
+	void broadcastMessage(BaseMessage* msg, int range = 128, bool doLock = true);
+
+	void broadcastMessage(StandaloneBaseMessage* msg, int range = 128, bool doLock = true);
 
 	bool isUndeploymentScheduled();
 
@@ -132,6 +150,8 @@ public:
 	float getDirectionW();
 
 	string& getLoggingName();
+
+	unsigned long long getAssociatedArea();
 
 	bool isPlayer();
 
@@ -195,6 +215,8 @@ public:
 
 	bool isAttackableBy(CreatureObject* creature);
 
+	bool isInANoBuildArea();
+
 protected:
 	SceneObject(DummyConstructorParameter* param);
 
@@ -229,15 +251,15 @@ public:
 
 	void sendRadialResponseTo(Player* player, ObjectMenuResponse* omr);
 
-	void create(ZoneClient* client);
+	void create(ZoneClientSession* client);
 
-	void destroy(ZoneClient* client);
+	void destroy(ZoneClientSession* client);
 
 	void sendConversationStartTo(SceneObject* obj);
 
 	void selectConversationOption(int option, SceneObject* obj);
 
-	void close(ZoneClient* client);
+	void close(ZoneClientSession* client);
 
 	bool isInRange(SceneObject* obj, float range);
 
@@ -247,7 +269,7 @@ public:
 
 	QuadTreeEntry* getInRangeObject(int idx);
 
-	void addInRangeObject(QuadTreeEntry* obj);
+	void addInRangeObject(QuadTreeEntry* obj, bool notifyUpdate);
 
 	void removeInRangeObject(QuadTreeEntry* obj);
 
@@ -259,7 +281,7 @@ public:
 
 	BaseMessage* link(SceneObject* obj);
 
-	void link(ZoneClient* client, SceneObject* obj);
+	void link(ZoneClientSession* client, SceneObject* obj);
 
 	void randomizePosition(float radius);
 
@@ -285,11 +307,25 @@ public:
 
 	void setZoneIndex(int id);
 
+	void setAssociatedArea(unsigned long long uid);
+
 	void setParent(SceneObject* par, unsigned int linktype);
 
 	void setZone(Zone* zne);
 
 	void clearUndeploymentEvent();
+
+	void insertToZone(Zone* zone);
+
+	void insertToBuilding(BuildingObject* building);
+
+	void removeFromZone(bool doLock);
+
+	void removeFromBuilding(BuildingObject* building);
+
+	void broadcastMessage(BaseMessage* msg, int range, bool doLock);
+
+	void broadcastMessage(StandaloneBaseMessage* msg, int range, bool doLock);
 
 	bool isUndeploymentScheduled();
 
@@ -318,6 +354,8 @@ public:
 	float getDirectionW();
 
 	string& getLoggingName();
+
+	unsigned long long getAssociatedArea();
 
 	bool isPlayer();
 
@@ -380,6 +418,8 @@ public:
 	bool isPeaced();
 
 	bool isAttackableBy(CreatureObject* creature);
+
+	bool isInANoBuildArea();
 
 protected:
 	string _param0_info__string_bool_;

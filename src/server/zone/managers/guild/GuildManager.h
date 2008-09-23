@@ -25,19 +25,55 @@ public:
 
 	void load();
 
-	bool createGuild(string& tag, string& name);
+	bool createGuild(Player* player, string& tag, string& name);
 
 	Guild* getGuild(string& tag, bool doLock = true);
 
 	Guild* getGuild(unsigned int gid, bool doLock = true);
 
-	bool removeGuild(string& tag);
-
-	bool removeGuild(int gid, bool doLock = true);
-
-	void removePlayersFromGuild(int gid);
-
 	GuildMap* getGuildMap();
+
+	void handleGuildTag(unsigned int boxID, Player* player, unsigned int cancel, string& returnString);
+
+	void handleGuildName(unsigned int boxID, Player* player, unsigned int cancel, string& returnString);
+
+	void handleGuildSponsor(unsigned int boxID, Player* player, unsigned int cancel, string& returnString);
+
+	void handleVerifyBoxSponsorTargetforGuildMembership(unsigned int boxID, Player* otherPlayer, unsigned int cancel);
+
+	void handleSponsoredGuildMembersBox(unsigned int boxID, Player* player, unsigned int cancel, int index);
+
+	void handleSponsoredGuildMembersAcceptBox(unsigned int boxID, Player* player, unsigned int cancel, int index);
+
+	void removeOnlineFromGuild(Player* player, Player* removePlayer);
+
+	void execRemoveFromGuild(unsigned int boxID, Player* player, unsigned int cancel);
+
+	void handleGuildDisbandBox(unsigned int boxID, Player* player, unsigned int cancel, string& returnString);
+
+	void handleGuildNameChange(unsigned int boxID, Player* player, unsigned int cancel, string& returnString);
+
+	void handleGuildNameChangeName(unsigned int boxID, Player* player, unsigned int cancel, string& returnString);
+
+	void handleGuildInformationMembers(Player* player);
+
+	void handleGuildInformationMembersBox(unsigned int boxID, Player* player, unsigned int cancel, int index);
+
+	void handleGuildMemberOptions(unsigned int boxID, Player* player, unsigned int cancel, int index);
+
+	void handleGuildPermissionSelection(unsigned int boxID, Player* player, unsigned int cancel, int index);
+
+	void handleGuildInfo(Player* player);
+
+	void handleGuildSponsoring(Player* player);
+
+	void handleGuildRenaming(Player* player);
+
+	void handleGuildTransferLeader(Player* player);
+
+	void handleGuildTransferLeaderBox(unsigned int boxID, Player* player, unsigned int cancel, string& returnString);
+
+	void handleGuildTransferLeaderVerifyBox(unsigned int boxID, Player* player, unsigned int cancel);
 
 protected:
 	GuildManager(DummyConstructorParameter* param);
@@ -61,25 +97,67 @@ public:
 
 	void load();
 
-	bool createGuild(string& tag, string& name);
+	bool createGuild(Player* player, string& tag, string& name);
 
 	Guild* getGuild(string& tag, bool doLock);
 
 	Guild* getGuild(unsigned int gid, bool doLock);
 
-	bool removeGuild(string& tag);
-
-	bool removeGuild(int gid, bool doLock);
-
-	void removePlayersFromGuild(int gid);
-
 	GuildMap* getGuildMap();
 
+	void handleGuildTag(unsigned int boxID, Player* player, unsigned int cancel, string& returnString);
+
+	void handleGuildName(unsigned int boxID, Player* player, unsigned int cancel, string& returnString);
+
+	void handleGuildSponsor(unsigned int boxID, Player* player, unsigned int cancel, string& returnString);
+
+	void handleVerifyBoxSponsorTargetforGuildMembership(unsigned int boxID, Player* otherPlayer, unsigned int cancel);
+
+	void handleSponsoredGuildMembersBox(unsigned int boxID, Player* player, unsigned int cancel, int index);
+
+	void handleSponsoredGuildMembersAcceptBox(unsigned int boxID, Player* player, unsigned int cancel, int index);
+
+	void removeOnlineFromGuild(Player* player, Player* removePlayer);
+
+	void execRemoveFromGuild(unsigned int boxID, Player* player, unsigned int cancel);
+
+	void handleGuildDisbandBox(unsigned int boxID, Player* player, unsigned int cancel, string& returnString);
+
+	void handleGuildNameChange(unsigned int boxID, Player* player, unsigned int cancel, string& returnString);
+
+	void handleGuildNameChangeName(unsigned int boxID, Player* player, unsigned int cancel, string& returnString);
+
+	void handleGuildInformationMembers(Player* player);
+
+	void handleGuildInformationMembersBox(unsigned int boxID, Player* player, unsigned int cancel, int index);
+
+	void handleGuildMemberOptions(unsigned int boxID, Player* player, unsigned int cancel, int index);
+
+	void handleGuildPermissionSelection(unsigned int boxID, Player* player, unsigned int cancel, int index);
+
+	void handleGuildInfo(Player* player);
+
+	void handleGuildSponsoring(Player* player);
+
+	void handleGuildRenaming(Player* player);
+
+	void handleGuildTransferLeader(Player* player);
+
+	void handleGuildTransferLeaderBox(unsigned int boxID, Player* player, unsigned int cancel, string& returnString);
+
+	void handleGuildTransferLeaderVerifyBox(unsigned int boxID, Player* player, unsigned int cancel);
+
 protected:
-	string _param0_createGuild__string_string_;
-	string _param1_createGuild__string_string_;
+	string _param1_createGuild__Player_string_string_;
+	string _param2_createGuild__Player_string_string_;
 	string _param0_getGuild__string_bool_;
-	string _param0_removeGuild__string_;
+	string _param3_handleGuildTag__int_Player_int_string_;
+	string _param3_handleGuildName__int_Player_int_string_;
+	string _param3_handleGuildSponsor__int_Player_int_string_;
+	string _param3_handleGuildDisbandBox__int_Player_int_string_;
+	string _param3_handleGuildNameChange__int_Player_int_string_;
+	string _param3_handleGuildNameChangeName__int_Player_int_string_;
+	string _param3_handleGuildTransferLeaderBox__int_Player_int_string_;
 };
 
 class GuildManagerHelper : public DistributedObjectClassHelper, public Singleton<GuildManagerHelper> {

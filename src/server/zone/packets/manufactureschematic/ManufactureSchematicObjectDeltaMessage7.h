@@ -1,44 +1,44 @@
 /*
  Copyright (C) 2007 <SWGEmu>
- 
+
  This File is part of Core3.
- 
- This program is free software; you can redistribute 
- it and/or modify it under the terms of the GNU Lesser 
+
+ This program is free software; you can redistribute
+ it and/or modify it under the terms of the GNU Lesser
  General Public License as published by the Free Software
- Foundation; either version 2 of the License, 
+ Foundation; either version 2 of the License,
  or (at your option) any later version.
- 
- This program is distributed in the hope that it will be useful, 
- but WITHOUT ANY WARRANTY; without even the implied warranty of 
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  See the GNU Lesser General Public License for
  more details.
- 
- You should have received a copy of the GNU Lesser General 
+
+ You should have received a copy of the GNU Lesser General
  Public License along with this program; if not, write to
  the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
- 
- Linking Engine3 statically or dynamically with other modules 
- is making a combined work based on Engine3. 
- Thus, the terms and conditions of the GNU Lesser General Public License 
+
+ Linking Engine3 statically or dynamically with other modules
+ is making a combined work based on Engine3.
+ Thus, the terms and conditions of the GNU Lesser General Public License
  cover the whole combination.
- 
- In addition, as a special exception, the copyright holders of Engine3 
- give you permission to combine Engine3 program with free software 
- programs or libraries that are released under the GNU LGPL and with 
- code included in the standard release of Core3 under the GNU LGPL 
- license (or modified versions of such code, with unchanged license). 
- You may copy and distribute such a system following the terms of the 
- GNU LGPL for Engine3 and the licenses of the other code concerned, 
- provided that you include the source code of that other code when 
+
+ In addition, as a special exception, the copyright holders of Engine3
+ give you permission to combine Engine3 program with free software
+ programs or libraries that are released under the GNU LGPL and with
+ code included in the standard release of Core3 under the GNU LGPL
+ license (or modified versions of such code, with unchanged license).
+ You may copy and distribute such a system following the terms of the
+ GNU LGPL for Engine3 and the licenses of the other code concerned,
+ provided that you include the source code of that other code when
  and as the GNU LGPL requires distribution of source code.
- 
- Note that people who make modified versions of Engine3 are not obligated 
- to grant this special exception for their modified versions; 
- it is their choice whether to do so. The GNU Lesser General Public License 
- gives permission to release a modified version without this exception; 
- this exception also makes it possible to release a modified version 
+
+ Note that people who make modified versions of Engine3 are not obligated
+ to grant this special exception for their modified versions;
+ it is their choice whether to do so. The GNU Lesser General Public License
+ gives permission to release a modified version without this exception;
+ this exception also makes it possible to release a modified version
  which carries forward this exception.
  */
 
@@ -68,21 +68,22 @@ public:
 		update6(size, size, slot);
 		update7();
 		initializeExperimentalValues(draftSchematic);
+		update14();
 	}
-	
-	void partialUpdate(int slot, int counter, uint64 resourceID, int quantity) { 
+
+	void partialUpdate(int slot, int counter, uint64 resourceID, int quantity) {
 		updateSlot(1, counter, slot);
 		updateResource(1, counter, slot, resourceID);
 		updateQuantity(1, counter, slot, quantity);
 		update5(1, counter, slot);
-		update7();	
+		update7();
 	}
-	
+
 	void removeResource(int slot, int counter){
 		startUpdate(1);
 		startList(1, counter);
 		removeListIntElement(slot, 0);
-		
+
 		startUpdate(2);
 		startList(1, counter);
 		removeListIntElement(slot, 0);
@@ -90,27 +91,27 @@ public:
 		startUpdate(3);
 		startList(1, counter);
 		removeListIntElement(slot, 0);
-		
+
 		startUpdate(5);
 		startList(1, counter);
 		removeListIntElement(slot, 0xFFFFFFFF);
-		
-		update7();	
+
+		update7();
 	}
-	
-	void updateForAssembly(DraftSchematic * draftSchematic){
+
+	void updateForAssembly(DraftSchematic* draftSchematic){
 		update9(draftSchematic);
 		update0B(draftSchematic);
 		update0C(draftSchematic);
 		update12(draftSchematic);
 	}
 
-	void updateIngredientList(DraftSchematic * draftSchematic) {
+	void updateIngredientList(DraftSchematic* draftSchematic) {
 
 		startUpdate(0);
 
 		int ingredientListSize = draftSchematic->getIngredientListSize();
-		
+
 		startList(ingredientListSize, ingredientListSize);
 
 		for (int i = 0; i < ingredientListSize; i++) {
@@ -172,11 +173,11 @@ public:
 		startList(size, counter);
 
 		for (int i = 0; i < size; i++) {
-//			if(i == slot){
+			if(i == 0){
 				addListIntElement(i, 0);
-//			} else {
-//				addListFloatElement(i, 1.0f);
-//			}
+			} else {
+				addListFloatElement(i, 1.0f);
+			}
 		}
 	}
 
@@ -205,26 +206,25 @@ public:
 	void update7() {
 
 		startUpdate(7);
-		insertByte(0x10); // No clue, was Decimal 24 for Scatter and 16 for Bofa
+		insertByte(16); // No clue, was Decimal 24 for Scatter and 16 for Bofa
 
 	}
 
 	void initializeExperimentalValues(DraftSchematic* draftSchematic) {
 
-		DraftSchematicValues * craftingValues = draftSchematic->getCraftingValues();
-		
+		DraftSchematicValues* craftingValues = draftSchematic->getCraftingValues();
+
 		startUpdate(8);
-		
+
 		int titleCount = craftingValues->getExperimentalPropertyTitleSize();
 		int counter = draftSchematic->getExpCounter();
-		
+
 		insertInt(titleCount);
 		insertInt(titleCount);
-		
-		
+
 		for(int i = 0; i < titleCount; i++) {
 			string title = craftingValues->getExperimentalPropertyTitle(i);
-			
+
 			insertByte(1);
 			insertShort(i);
 			insertAscii("crafting");  // I think this is always "crafting"
@@ -232,14 +232,14 @@ public:
 			insertAscii(title);
 
 		}
-				
+
 		// Initialize update 9************
 		startUpdate(9);
 
 		startList(titleCount, titleCount);  // titleCount, counter
 
 		for (int i = 0; i < titleCount; i++) {
-			addListFloatElement(i, 0); 
+			addListFloatElement(i, 0); //0
 		}
 		//*********************************
 		// Initialize update 0A************
@@ -248,7 +248,7 @@ public:
 		startList(titleCount, titleCount);
 
 		for (int i = 0; i < titleCount; i++) {
-			addListFloatElement(i, counter);
+			addListFloatElement(i, 0);
 		}
 		//*********************************
 		// Initialize update 0B************
@@ -257,7 +257,7 @@ public:
 		startList(titleCount, titleCount);
 
 		for (int i = 0; i < titleCount; i++) {
-			addListFloatElement(i, counter);
+			addListFloatElement(i, 0);
 		}
 		//*********************************
 		// Initialize update 0C************
@@ -266,32 +266,49 @@ public:
 		startList(titleCount, titleCount);
 
 		for (int i = 0; i < titleCount; i++) {
-			addListFloatElement(i, counter);
+			addListFloatElement(i, 0);
 		}
 		//*********************************
-		
+
 	}
-	
+
 	// This should send the experimental values shown in the Screen after hitting assemble
-	void update9(DraftSchematic * draftSchematic) {
+	void update9(DraftSchematic* draftSchematic) {
 		startUpdate(9);
-		
-		DraftSchematicValues * craftingValues = draftSchematic->getCraftingValues();
-		
-		int titleCount = craftingValues->getExperimentalPropertyTitleSize();
 
-		startList(titleCount, draftSchematic->getExpCounter());
-		
-		for (int i = 0; i < titleCount; ++i) {
+		DraftSchematicValues* craftingValues = draftSchematic->getCraftingValues();
+		int count, linenum;
+		string title, subtitle;
+		float value;
+		VectorMap<string, int> updatedLines;
 
-			removeListFloatElement(i, craftingValues->getCurrentPercentageAverage(i));
-			
+		for (int i = 0; i < craftingValues->getValuesToSendSize(); ++i) {
+
+			subtitle = craftingValues->getValuesToSend(i);
+
+			title = craftingValues->getExperimentalPropertyTitle(subtitle);
+
+			linenum = craftingValues->getTitleLine(title);
+
+			if(!updatedLines.contains(title) && linenum != -1)
+				updatedLines.put(title, linenum);
 		}
+
+		startList(updatedLines.size(), draftSchematic->getExpCounter());
+
+		for (int i = 0; i < updatedLines.size(); ++i) {
+			value = craftingValues->getCurrentPercentageAverage(updatedLines.get(i));
+
+			removeListFloatElement(updatedLines.get(i), value);
+
+		}
+
+		updatedLines.removeAll();
 	}
 
-	void update0A(DraftSchematic * draftSchematic) {
-		
-		DraftSchematicValues * craftingValues = draftSchematic->getCraftingValues();
+	void update0A(DraftSchematic* draftSchematic) {
+
+		DraftSchematicValues* craftingValues = draftSchematic->getCraftingValues();
 
 		startUpdate(0x0A);
 
@@ -300,13 +317,13 @@ public:
 		startList(titleCount, draftSchematic->getExpCounter());
 
 		for (int i = 0; i < titleCount; i++) {
-			removeListFloatElement(i, 1.0);
+			removeListFloatElement(i, 1.0f);
 		}
 	}
 	// I think this is usually 1.0
-	void update0B(DraftSchematic * draftSchematic) {
-		
-		DraftSchematicValues * craftingValues = draftSchematic->getCraftingValues();
+	void update0B(DraftSchematic* draftSchematic) {
+
+		DraftSchematicValues* craftingValues = draftSchematic->getCraftingValues();
 
 		startUpdate(0x0B);
 
@@ -319,9 +336,9 @@ public:
 		}
 	}
 	// This is the MAX experimental value.  How many bars
-	void update0C(DraftSchematic * draftSchematic) {
-		
-		DraftSchematicValues * craftingValues = draftSchematic->getCraftingValues();
+	void update0C(DraftSchematic* draftSchematic) {
+
+		DraftSchematicValues* craftingValues = draftSchematic->getCraftingValues();
 
 		startUpdate(0x0C);
 
@@ -329,18 +346,22 @@ public:
 
 		startList(titleCount, draftSchematic->getExpCounter());
 
+		float value;
+
 		for (int i = 0; i < titleCount; i++) {
 
-			removeListFloatElement(i, craftingValues->getMaxPercentageAverage(i));
-			
+			value = craftingValues->getMaxPercentageAverage(i);
+
+			removeListFloatElement(i, value);
+
 		}
 	}
 
-	void update12(DraftSchematic * draftSchematic){
-		startUpdate(0x12); 
-		insertFloat(39.0f);//draftSchematic->getExpFailure());
+	void update12(DraftSchematic* draftSchematic){
+		startUpdate(0x12);
+		insertFloat(draftSchematic->getExpFailure());
 	}
-	
+
 	void update14() {
 
 		startUpdate(0x14);

@@ -43,6 +43,7 @@ which carries forward this exception.
 */
 
 include "engine/service/proto/BaseMessage";
+include "engine/service/proto/StandaloneBaseMessage";
 
 include "engine/util/QuadTreeEntry";
 
@@ -52,11 +53,13 @@ import "../../packets/object/ObjectMenuResponse";
 
 import "../../Zone";
 
-import "../../ZoneClient";
+import "../../ZoneClientSession";
 
 import "../player/Player";
 
 import "../creature/CreatureObject";
+
+import "../building/BuildingObject";
 
 interface SceneObject implements ManagedObject {
 	native boolean destroy();
@@ -73,13 +76,13 @@ interface SceneObject implements ManagedObject {
 	
 	void sendRadialResponseTo(Player player, ObjectMenuResponse omr);
 	
-	void create(ZoneClient client);
-	void destroy(ZoneClient client);
+	void create(ZoneClientSession client);
+	void destroy(ZoneClientSession client);
 	
 	void sendConversationStartTo(SceneObject obj);
 	void selectConversationOption(int option, SceneObject obj);
 	
-	void close(ZoneClient client);
+	void close(ZoneClientSession client);
 	
 	// QT methods
 	boolean isInRange(SceneObject obj, float range);
@@ -89,7 +92,7 @@ interface SceneObject implements ManagedObject {
 	int inRangeObjectCount();
 	
 	QuadTreeEntry getInRangeObject(int idx);
-	void addInRangeObject(QuadTreeEntry obj);
+	void addInRangeObject(QuadTreeEntry obj, boolean notifyUpdate = true);
 	void removeInRangeObject(QuadTreeEntry obj);
 	
 	boolean isInQuadTree();
@@ -99,7 +102,7 @@ interface SceneObject implements ManagedObject {
 	int compareTo(SceneObject obj);
 	
 	BaseMessage link(SceneObject obj);
-	void link(ZoneClient client, SceneObject obj);
+	void link(ZoneClientSession client, SceneObject obj);
 	
 	void randomizePosition(float radius);
 
@@ -129,6 +132,8 @@ interface SceneObject implements ManagedObject {
 	void setMovementCounter(unsigned int cntr);
 	
 	void setZoneIndex(int id);
+
+	void setAssociatedArea(unsigned long uid);
 	
 	//void setLockName(const string name);
 	
@@ -137,7 +142,17 @@ interface SceneObject implements ManagedObject {
 	void setZone(Zone zne);
 	
 	void clearUndeploymentEvent();
-	
+
+	void insertToZone(Zone zone);
+
+	void insertToBuilding(BuildingObject building);
+
+	void removeFromZone(boolean doLock = true);
+	void removeFromBuilding(BuildingObject building);
+
+	void broadcastMessage(BaseMessage msg, int range = 128, boolean doLock = true);
+	void broadcastMessage(StandaloneBaseMessage msg, int range = 128, boolean doLock = true);
+
 	boolean isUndeploymentScheduled();
 
 	// getters
@@ -166,6 +181,8 @@ interface SceneObject implements ManagedObject {
 	float getDirectionW();
 	
 	string getLoggingName();
+
+	unsigned long getAssociatedArea();
 	
 	boolean isPlayer();
 	
@@ -223,4 +240,6 @@ interface SceneObject implements ManagedObject {
 	
 	boolean isPeaced();
 	boolean isAttackableBy(CreatureObject creature);
+
+	boolean isInANoBuildArea();
 }

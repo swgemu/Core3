@@ -78,6 +78,15 @@ void CraftingManagerImplementation::init() {
 	loadDraftSchematicFile();
 }
 
+void CraftingManagerImplementation::reloadSchematicTable() {
+
+	Lua::deinit();
+	Lua::init();
+	registerFunctions();
+	draftSchematicsMap.removeAll();
+	loadDraftSchematicFile();
+}
+
 // Crafting Methods
 void CraftingManagerImplementation::prepareCraftingSession(Player* player,
 		CraftingTool* craftingTool, DraftSchematic* draftSchematic) {
@@ -115,7 +124,8 @@ void CraftingManagerImplementation::createDraftSchematic(Player* player,
 	draftSchematic->sendTo(player);
 
 	// Setup crafting slots
-	craftingTool->initializeCraftingSlots(draftSchematic->getIngredientListSize());
+	craftingTool->initializeCraftingSlots(
+			draftSchematic->getIngredientListSize());
 
 }
 
@@ -133,7 +143,8 @@ void CraftingManagerImplementation::createTangibleObject(Player* player,
 
 	// Dplay9 ********************************************************
 	// Sets the Crafting state to 2, which is the Resource screen
-	PlayerObjectDeltaMessage9* dplay9 = new PlayerObjectDeltaMessage9(player->getPlayerObject());
+	PlayerObjectDeltaMessage9* dplay9 =
+			new PlayerObjectDeltaMessage9(player->getPlayerObject());
 	dplay9->setExperimentationPoints(0xFFFFFFFF);
 	dplay9->setCraftingState(2);
 	craftingTool->setCraftingState(2);
@@ -171,7 +182,8 @@ void CraftingManagerImplementation::setupIngredients(Player* player,
 		CraftingTool* craftingTool, DraftSchematic* draftSchematic) {
 
 	// Object Controller w/ Ingredients ***************************
-	ObjectControllerMessage* objMsg = new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x0103);
+	ObjectControllerMessage* objMsg =
+			new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x0103);
 	objMsg->insertLong(craftingTool->getObjectID()); // Crafting Tool Object ID
 	objMsg->insertLong(draftSchematic->getObjectID()); // Draft Schematic Object ID
 	objMsg->insertLong(craftingTool->getWorkingTano()->getObjectID()); // Crafting Tangible Object ID
@@ -186,15 +198,14 @@ void CraftingManagerImplementation::setupIngredients(Player* player,
 
 
 	// MSCO7 ******************************************************* Verified
-	ManufactureSchematicObjectMessage7* msco7 =
-			new ManufactureSchematicObjectMessage7(draftSchematic->getObjectID(), draftSchematic);
+	ManufactureSchematicObjectMessage7
+			* msco7 =
+					new ManufactureSchematicObjectMessage7(draftSchematic->getObjectID(), draftSchematic);
 
 	player->sendMessage(msco7);
 	// End MSCO7 ***************************************************
 
 }
-
-
 
 // Methods to Add items to the crafting process
 void CraftingManagerImplementation::addIngredientToSlot(Player* player,
@@ -204,7 +215,7 @@ void CraftingManagerImplementation::addIngredientToSlot(Player* player,
 
 	CraftingTool* craftingTool = player->getCurrentCraftingTool();
 
-	if (craftingTool == NULL){
+	if (craftingTool == NULL) {
 
 		sendSlotMessage(player, counter, SLOTNOTOOL);
 		return;
@@ -213,7 +224,7 @@ void CraftingManagerImplementation::addIngredientToSlot(Player* player,
 
 	DraftSchematic* draftSchematic = craftingTool->getWorkingDraftSchematic();
 
-	if (draftSchematic == NULL){
+	if (draftSchematic == NULL) {
 
 		sendSlotMessage(player, counter, SLOTNOSCHEMATIC);
 		return;
@@ -222,50 +233,44 @@ void CraftingManagerImplementation::addIngredientToSlot(Player* player,
 
 	DraftSchematicIngredient* dsi = draftSchematic->getIngredient(slot);
 
-	if (dsi == NULL)
+	if (dsi == NULL) {
 		return;
+	}
 
 	try {
-
-		// Lock appropriate objects
-		craftingTool->wlock();
-		draftSchematic->wlock();
 
 		// Get the resouce requirements for the chosen slot
 		int quantity = dsi->getResourceQuantity();
 
 		// Get what, if anything, is in the affected slot
 
-		TangibleObject* ingredientInSlot = craftingTool->getIngredientInSlot(slot);
+		TangibleObject* ingredientInSlot = craftingTool->getIngredientInSlot(
+				slot);
 
 		// Send slot messages base on contenst if needed
-		if(ingredientInSlot != NULL) {
+		if (ingredientInSlot != NULL) {
 
-			if(slotIsFull(player, craftingTool, tano, ingredientInSlot, slot, quantity, counter)) {
-
-				craftingTool->unlock();
-				draftSchematic->unlock();
+			if (slotIsFull(player, craftingTool, tano, ingredientInSlot, slot,
+					quantity, counter)) {
 
 				return;
 			}
 		}
 
 		// Set resource values appropriately
-		newTano = transferIngredientToSlot(player, tano, craftingTool, quantity);
+		newTano
+				= transferIngredientToSlot(player, tano, craftingTool, quantity);
 
-		if(newTano == NULL){
+		if (newTano == NULL) {
 
 			sendSlotMessage(player, counter, SLOTBADCRATE);
-
-			craftingTool->unlock();
-			draftSchematic->unlock();
-
 			return;
 		}
 		// DMSCO6 ***************************************************
 		// Prepares the slot for insert
-		ManufactureSchematicObjectDeltaMessage6* dMsco6 =
-		new ManufactureSchematicObjectDeltaMessage6(draftSchematic->getObjectID());
+		ManufactureSchematicObjectDeltaMessage6
+				* dMsco6 =
+						new ManufactureSchematicObjectDeltaMessage6(draftSchematic->getObjectID());
 		dMsco6->insertToResourceSlot(craftingTool->getInsertCount());
 		dMsco6->close();
 
@@ -274,19 +279,22 @@ void CraftingManagerImplementation::addIngredientToSlot(Player* player,
 
 		// DMSCO7 ***************************************************
 		// Updates the slot
-		ManufactureSchematicObjectDeltaMessage7* dMsco7 =
-		new ManufactureSchematicObjectDeltaMessage7(draftSchematic->getObjectID());
+		ManufactureSchematicObjectDeltaMessage7
+				* dMsco7 =
+						new ManufactureSchematicObjectDeltaMessage7(draftSchematic->getObjectID());
 
 		if (craftingTool->getInsertCount() == 1) {
 
 			// If it's the first resource inserted, we need to fully update all the slots
-			dMsco7->fullUpdate(draftSchematic, draftSchematic->getIngredientListSize(), slot,
+			dMsco7->fullUpdate(draftSchematic,
+					draftSchematic->getIngredientListSize(), slot,
 					newTano->getObjectID(), quantity);
 		} else {
 
 			// If it's not the first resources, slots are updates, and only insert needs done
 			dMsco7->partialUpdate(slot, draftSchematic->getIngredientListSize()
-					+ craftingTool->getInsertCount(), newTano->getObjectID(), quantity);
+					+ craftingTool->getInsertCount(), newTano->getObjectID(),
+					quantity);
 		}
 		dMsco7->close();
 
@@ -301,17 +309,10 @@ void CraftingManagerImplementation::addIngredientToSlot(Player* player,
 		// Add the resource to the "slots" in the crafting tool for tracking
 		craftingTool->addIngredientToSlot(slot, newTano);
 
-		draftSchematic->unlock();
-		craftingTool->unlock();
-
-
-	} catch(...) {
-		draftSchematic->unlock();
-		craftingTool->unlock();
-
-		cout << "Unreported exception caught in CraftingManagerImplementation::addResourceToCraft\n";
+	} catch (...) {
+		info(
+				"Unreported exception caught in CraftingManagerImplementation::addResourceToCraft");
 	}
-
 }
 bool CraftingManagerImplementation::slotIsFull(Player* player,
 		CraftingTool* craftingTool, TangibleObject* tano,
@@ -319,59 +320,36 @@ bool CraftingManagerImplementation::slotIsFull(Player* player,
 
 	if (tano->isResource()) {
 
-		ResourceContainer* rcno = (ResourceContainer*)tano;
-		ResourceContainer* rcnoinSlot = (ResourceContainer*)ingredientInSlot;
+		ResourceContainer* rcno = (ResourceContainer*) tano;
+		ResourceContainer* rcnoinSlot = (ResourceContainer*) ingredientInSlot;
 
-		if(rcnoinSlot == NULL)
+		if (rcnoinSlot == NULL)
 			return true;
 
-		try {
+		if (rcnoinSlot->getContents() != 0) {
 
-			rcno->wlock();
-			rcnoinSlot->wlock();
+			if (quantity == rcnoinSlot->getContents()) {
 
-			if (rcnoinSlot->getContents() != 0) {
-
-				if (quantity == rcnoinSlot->getContents()) {
-
-					// If slot is full send slot is full message
-					sendSlotMessage(player, counter, SLOTFULL);
-
-					rcno->unlock();
-					rcnoinSlot->unlock();
-
-					return true;
-
-				}
-
-				// If the is a partial resource in the slot, add it back to inventory
-				// So that resource amounts are correct
-				if (!rcnoinSlot->compare(rcno)) {
-
-					// If Resource isn't the same, throw slot error
-					sendSlotMessage(player, counter, SLOTINVALIDINGREDIENT);
-
-					rcno->unlock();
-					rcnoinSlot->unlock();
-
-					return true;
-
-				} else {
-
-					// If resource is the same add resource to incoming stack
-					rcno->setContents(rcno->getContents() + rcnoinSlot->getContents());
-
-				}
+				// If slot is full send slot is full message
+				sendSlotMessage(player, counter, SLOTFULL);
+				return true;
 			}
 
-			rcno->unlock();
-			rcnoinSlot->unlock();
-		}
-		catch(...) {
+			// If the is a partial resource in the slot, add it back to inventory
+			// So that resource amounts are correct
+			if (!rcnoinSlot->compare(rcno)) {
 
-			rcno->unlock();
-			rcnoinSlot->unlock();
+				// If Resource isn't the same, throw slot error
+				sendSlotMessage(player, counter, SLOTINVALIDINGREDIENT);
+				return true;
 
+			} else {
+
+				// If resource is the same add resource to incoming stack
+				rcno->setContents(rcno->getContents()
+						+ rcnoinSlot->getContents());
+
+			}
 		}
 
 	} else {
@@ -384,11 +362,13 @@ bool CraftingManagerImplementation::slotIsFull(Player* player,
 	return false;
 }
 
-void CraftingManagerImplementation::sendSlotMessage(Player* player, int counter, short message){
+void CraftingManagerImplementation::sendSlotMessage(Player* player,
+		int counter, short message) {
 
 	// Object Controller ********************************************
 	// Send Bad Slot message
-	ObjectControllerMessage* objMsg = new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x010C);
+	ObjectControllerMessage* objMsg =
+			new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x010C);
 	objMsg->insertInt(0x107);
 	objMsg->insertInt(message);
 	objMsg->insertByte(counter);
@@ -397,23 +377,26 @@ void CraftingManagerImplementation::sendSlotMessage(Player* player, int counter,
 	//End Object Controller ******************************************
 }
 
-TangibleObject* CraftingManagerImplementation::transferIngredientToSlot(Player* player, TangibleObject* tano,
-		CraftingTool* craftingTool, int& quantity) {
+TangibleObject* CraftingManagerImplementation::transferIngredientToSlot(
+		Player* player, TangibleObject* tano, CraftingTool* craftingTool,
+		int& quantity) {
 
+	if (tano->isResource()) {
 
-	if(tano->isResource()){
-
-		ResourceContainer* rcno = (ResourceContainer*)tano;
+		ResourceContainer* rcno = (ResourceContainer*) tano;
 		return transferResourceToSlot(player, rcno, craftingTool, quantity);
 
-	} else if (tano->isComponent()){
+	} else if (tano->isComponent()) {
 
-		Component* component = (Component*)tano;
-		return transferComponentToSlot(player, component, craftingTool, quantity);
+		Component* component = (Component*) tano;
+		return transferComponentToSlot(player, component, craftingTool,
+				quantity);
 
 	} else {
 
-		cout << "I'm not a resource or a component, WTF am I = " << tano->getObjectSubType() << "\n";
+		info(
+				"CraftingManagerImplementation::transferIngredientToSlot - I'm not a resource or a component, WTF am I = "
+						+ tano->getObjectSubType());
 		return NULL;
 	}
 }
@@ -444,8 +427,6 @@ TangibleObject* CraftingManagerImplementation::transferResourceToSlot(
 	} else {
 
 		try {
-			rcno->wlock();
-
 			// Remove proper amount of resource from chosen Container
 			int newContents = rcno->getContents() - quantity;
 			rcno->setContents(newContents);
@@ -456,12 +437,10 @@ TangibleObject* CraftingManagerImplementation::transferResourceToSlot(
 			// Flag ResourceContainer for saving changes
 			rcno->setUpdated(true);
 
-			rcno->unlock();
-		}
-		catch(...)
-		{
-			cout << "Error changing contents\n";
-			rcno->unlock();
+		} catch (...) {
+			info(
+					"CraftingManagerImplementation::transferResourceToSlot - Error changing contents");
+
 		}
 	}
 
@@ -489,7 +468,7 @@ TangibleObject* CraftingManagerImplementation::transferResourceToSlot(
 
 	// Adding the ObjectID to a vector for proper clean up when the tool is closed
 	// Because otherwise the resource stack is lost in memory
-	TangibleObject* tano = (TangibleObject*)newRcno;
+	TangibleObject* tano = (TangibleObject*) newRcno;
 
 	craftingTool->addTempIngredient(tano);
 
@@ -502,9 +481,9 @@ TangibleObject* CraftingManagerImplementation::transferComponentToSlot(
 
 	int objectCount = component->getObjectCount();
 
-	Component* 	newComponent = cloneComponent(player, component);
+	Component* newComponent = cloneComponent(player, component);
 
-	if(objectCount == 0)
+	if (objectCount == 0)
 		objectCount = 1;
 
 	if (objectCount - quantity < 1) {
@@ -517,11 +496,9 @@ TangibleObject* CraftingManagerImplementation::transferComponentToSlot(
 
 		component->finalize();
 
-
 	} else {
 
 		try {
-			component->wlock();
 
 			// Remove proper amount of item from chosen stack
 			component->setObjectCount(objectCount - quantity);
@@ -532,13 +509,10 @@ TangibleObject* CraftingManagerImplementation::transferComponentToSlot(
 			// Flag Tano for saving changes
 			component->setUpdated(true);
 
-			component->unlock();
+		} catch (...) {
+			info(
+					"CraftingManagerImplementation::transferComponentToSlot - Error changing contents");
 
-		}
-		catch(...)
-		{
-			cout << "Error changing contents\n";
-			component->unlock();
 		}
 	}
 
@@ -549,7 +523,7 @@ TangibleObject* CraftingManagerImplementation::transferComponentToSlot(
 	// slot useless
 
 	//if (newComponent == NULL)
-		//return NULL;
+	//return NULL;
 
 	// Add resource to object map
 	player->getZone()->getZoneServer()->addObject(newComponent, true);
@@ -562,7 +536,7 @@ TangibleObject* CraftingManagerImplementation::transferComponentToSlot(
 	//Send attributes to update crafting window (Or quality bars don't show up
 	newComponent->generateAttributes(player);
 
-	TangibleObject* tano = (TangibleObject*)newComponent;
+	TangibleObject* tano = (TangibleObject*) newComponent;
 
 	// Adding the ObjectID to a vector for proper clean up when the tool is closed
 	// Because otherwise the resource stack is lost in memory
@@ -572,7 +546,7 @@ TangibleObject* CraftingManagerImplementation::transferComponentToSlot(
 
 }
 
-void CraftingManagerImplementation::removeResourceFromCraft(Player* player,
+void CraftingManagerImplementation::removeIngredientFromSlot(Player* player,
 		int slot, int counter) {
 
 	CraftingTool* craftingTool = player->getCurrentCraftingTool();
@@ -590,13 +564,9 @@ void CraftingManagerImplementation::removeResourceFromCraft(Player* player,
 
 		sendSlotMessage(player, counter, SLOTNOSCHEMATIC);
 		return;
-
 	}
 
 	try {
-
-		craftingTool->wlock();
-		draftSchematic->wlock();
 
 		string name;
 
@@ -604,17 +574,15 @@ void CraftingManagerImplementation::removeResourceFromCraft(Player* player,
 		TangibleObject* tano = craftingTool->getIngredientInSlot(slot);
 
 		if (tano == NULL) {
-			draftSchematic->unlock();
-			craftingTool->unlock();
-
+			player->sendSystemMessage("Bad ingredient in slot");
 			return; // TODO: send some error message
 		}
 
 		// Pretty easy to understand this
-		if(tano->isResource()){
+		if (tano->isResource()) {
 
-			ResourceContainer* rcno = (ResourceContainer*)tano;
-			player->addInventoryItem(rcno);
+			ResourceContainer* rcno = (ResourceContainer*) tano;
+			player->addInventoryResource(rcno);
 
 		} else {
 
@@ -622,12 +590,11 @@ void CraftingManagerImplementation::removeResourceFromCraft(Player* player,
 
 		}
 
-		//
-
 		// DMCSO7 ******************************************************
 		// Removes resource from client slot
-		ManufactureSchematicObjectDeltaMessage7* dMsco7 =
-		new ManufactureSchematicObjectDeltaMessage7(draftSchematic->getObjectID());
+		ManufactureSchematicObjectDeltaMessage7
+				* dMsco7 =
+						new ManufactureSchematicObjectDeltaMessage7(draftSchematic->getObjectID());
 
 		dMsco7->removeResource(slot, draftSchematic->getIngredientListSize()
 				+ craftingTool->getInsertCount());
@@ -640,7 +607,9 @@ void CraftingManagerImplementation::removeResourceFromCraft(Player* player,
 
 		// Object Controller ********************************************
 		// Updates the screen with the resource removal
-		ObjectControllerMessage* objMsg = new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x010C);
+		ObjectControllerMessage
+				* objMsg =
+						new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x010C);
 		objMsg->insertInt(0x108);
 		objMsg->insertInt(0);
 		objMsg->insertByte(counter);
@@ -656,13 +625,9 @@ void CraftingManagerImplementation::removeResourceFromCraft(Player* player,
 		// Increases Insert Counter
 		craftingTool->increaseInsertCount();
 
-		craftingTool->unlock();
-		draftSchematic->unlock();
-	}
-	catch(...) {
+	} catch (...) {
 
-		craftingTool->unlock();
-		draftSchematic->unlock();
+		info("Error removing resource from slot");
 
 	}
 }
@@ -678,12 +643,14 @@ ResourceContainer* CraftingManagerImplementation::makeNewResourceStack(
 
 	rco->setContents(quantity);
 
-	player->getZone()->getZoneServer()->getResourceManager()->setResourceData(rco);
+	player->getZone()->getZoneServer()->getResourceManager()->setResourceData(
+			rco);
 
 	return rco;
 }
 
-void CraftingManagerImplementation::putComponentBackInInventory(Player* player, TangibleObject* tano){
+void CraftingManagerImplementation::putComponentBackInInventory(Player* player,
+		TangibleObject* tano) {
 
 	Component* newComponent = cloneComponent(player, tano);
 
@@ -701,11 +668,12 @@ void CraftingManagerImplementation::putComponentBackInInventory(Player* player, 
 
 }
 
-Component* CraftingManagerImplementation::cloneComponent(Player* player, TangibleObject* tano){
+Component* CraftingManagerImplementation::cloneComponent(Player* player,
+		TangibleObject* tano) {
 
-	if(tano->isComponent()){
+	if (tano->isComponent()) {
 
-		Component* component = (Component*)tano;
+		Component* component = (Component*) tano;
 		return cloneComponent(player, component);
 
 	}
@@ -714,10 +682,12 @@ Component* CraftingManagerImplementation::cloneComponent(Player* player, Tangibl
 
 }
 
-Component* CraftingManagerImplementation::cloneComponent(Player* player, Component* component){
+Component* CraftingManagerImplementation::cloneComponent(Player* player,
+		Component* component) {
 
-	Component* newComponent = new Component(player->getNewItemID(), component->getObjectCRC(), component->getName(),
-			component->getTemplateName());
+	Component
+			* newComponent =
+					new Component(player->getNewItemID(), component->getObjectCRC(), component->getName(), component->getTemplateName());
 
 	newComponent->setObjectCount(component->getObjectCount());
 
@@ -741,63 +711,50 @@ void CraftingManagerImplementation::nextCraftingStage(Player* player,
 
 	if (draftSchematic == NULL)
 		return;
+	// Clears all the crafting vectors
+	//draftSchematic->getCraftingValues()->clearAll();
 
-	try {
-		craftingTool->wlock();
-		draftSchematic->wlock();
+	// Get counter from packet
+	int counter = atoi(test.c_str());
 
-		// Clears all the crafting vectors
-		//draftSchematic->getCraftingValues()->clearAll();
+	if (craftingTool->getCraftingState() == 2) {
 
-		// Get counter from packet
-		int counter = atoi(test.c_str());
+		// Calculate exp failure for red bars
+		float failure = calculateExperimentationFailureRate(player,
+				craftingTool, draftSchematic, 0);
+		draftSchematic->setExpFailure(failure);
 
-		if (craftingTool->getCraftingState() == 2) {
+		// Flag to get the experimenting window
+		if (craftingTool->isExperimenting()) {
 
-			// Flag to get the experimenting window
-			if (craftingTool->isExperimenting()) {
+			// Assemble with Experimenting
+			initialAssembly(player, craftingTool, draftSchematic, counter, 3);
 
-				// Calculate exp failure for red bars
-				float failure = calculateExperimentationFailureRate(player, craftingTool, draftSchematic, 0);
-				draftSchematic->setExpFailure(failure);
+		} else {
 
-				// Assemble with Experimenting
-				initialAssembly(player, craftingTool, draftSchematic, counter, 3);
+			// Assemble without Experimenting
+			initialAssembly(player, craftingTool, draftSchematic, counter, 4);
 
-			} else {
-
-				// Assemble without Experimenting
-				initialAssembly(player, craftingTool, draftSchematic, counter, 4);
-
-			}
-
-		} else if (craftingTool->getCraftingState() == 3) {
-
-			finishAssembly(player, craftingTool, draftSchematic, counter);
-
-		} else if (craftingTool->getCraftingState() == 5) {
-
-			finishStage1(player, counter);
-
-		} else if (craftingTool->getCraftingState() == 6) {
-
-			finishStage2(player, counter);
 		}
 
-		craftingTool->unlock();
-		draftSchematic->unlock();
+	} else if (craftingTool->getCraftingState() == 3) {
 
+		finishAssembly(player, craftingTool, draftSchematic, counter);
+
+	} else if (craftingTool->getCraftingState() == 5) {
+
+		finishStage1(player, counter);
+
+	} else if (craftingTool->getCraftingState() == 6) {
+
+		finishStage2(player, counter);
 	}
-	catch(...) {
 
-		craftingTool->unlock();
-		draftSchematic->unlock();
-
-	}
 }
 
 void CraftingManagerImplementation::initialAssembly(Player* player,
-		CraftingTool* craftingTool, DraftSchematic* draftSchematic, int counter, int stage) {
+		CraftingTool* craftingTool, DraftSchematic* draftSchematic,
+		int counter, int stage) {
 
 	TangibleObject* tano = craftingTool->getWorkingTano();
 
@@ -814,7 +771,8 @@ void CraftingManagerImplementation::initialAssembly(Player* player,
 
 	// Start DPLAY9 ***********************************************************
 	// Updates the stage of crafting, sets the number of experimentation points
-	PlayerObjectDeltaMessage9* dplay9 = new PlayerObjectDeltaMessage9(player->getPlayerObject());
+	PlayerObjectDeltaMessage9* dplay9 =
+			new PlayerObjectDeltaMessage9(player->getPlayerObject());
 	dplay9->setCraftingState(stage); // 3 If Experimenting is active, 4 if already experimented/ No experimenting
 	dplay9->setExperimentationPoints(exppoints);
 	craftingTool->setCraftingState(stage);
@@ -838,11 +796,11 @@ void CraftingManagerImplementation::initialAssembly(Player* player,
 	string serial = generateCraftedSerial();
 	tano->setCraftedSerial(serial);
 
-
 	// Start DMSCO3 ***********************************************************
 	// Sends the updated values to the crafting screen
-	ManufactureSchematicObjectDeltaMessage3* dMsco3 =
-			new ManufactureSchematicObjectDeltaMessage3(draftSchematic->getObjectID());
+	ManufactureSchematicObjectDeltaMessage3
+			* dMsco3 =
+					new ManufactureSchematicObjectDeltaMessage3(draftSchematic->getObjectID());
 	dMsco3->updateCraftedValues(draftSchematic);
 	dMsco3->close();
 
@@ -852,8 +810,9 @@ void CraftingManagerImplementation::initialAssembly(Player* player,
 
 	// Start DMSCO7 ***********************************************************
 	// Sends the experimental properties and experimental percentages
-	ManufactureSchematicObjectDeltaMessage7* dMsco7 =
-			new ManufactureSchematicObjectDeltaMessage7(draftSchematic->getObjectID());
+	ManufactureSchematicObjectDeltaMessage7
+			* dMsco7 =
+					new ManufactureSchematicObjectDeltaMessage7(draftSchematic->getObjectID());
 	dMsco7->updateForAssembly(draftSchematic);
 	dMsco7->close();
 
@@ -874,7 +833,8 @@ void CraftingManagerImplementation::initialAssembly(Player* player,
 
 	// Start Object Controller *******************************************
 	// Send the results
-	ObjectControllerMessage* objMsg = new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x01BE);
+	ObjectControllerMessage* objMsg =
+			new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x01BE);
 	objMsg->insertInt(0x109);
 
 	objMsg->insertInt(craftingTool->getAssemblyResults()); // Assembly Results
@@ -902,7 +862,8 @@ void CraftingManagerImplementation::initialAssembly(Player* player,
 
 		// Start Dplay9 **************************************
 		// Reset crafting state
-		PlayerObjectDeltaMessage9* dplay9 = new PlayerObjectDeltaMessage9(player->getPlayerObject());
+		PlayerObjectDeltaMessage9* dplay9 =
+				new PlayerObjectDeltaMessage9(player->getPlayerObject());
 		dplay9->setCraftingState(2);
 		craftingTool->setCraftingState(2);
 		dplay9->close();
@@ -916,7 +877,8 @@ void CraftingManagerImplementation::initialAssembly(Player* player,
 	}
 
 }
-void CraftingManagerImplementation::setInitialCraftingValues(Player* player, CraftingTool* craftingTool, DraftSchematic* draftSchematic){
+void CraftingManagerImplementation::setInitialCraftingValues(Player* player,
+		CraftingTool* craftingTool, DraftSchematic* draftSchematic) {
 
 	DraftSchematicValues* craftingValues = draftSchematic->getCraftingValues();
 
@@ -938,14 +900,14 @@ void CraftingManagerImplementation::setInitialCraftingValues(Player* player, Cra
 
 	float modifier = calculateAssemblyValueModifier(craftingTool);
 
-	for(int i = 0; i < draftSchematic->getExpPropGroupListSize(); ++i){
+	for (int i = 0; i < draftSchematic->getExpPropGroupListSize(); ++i) {
 
 		// Grab the first weight group
 		dsepg = draftSchematic->getExpPropGroup(i);
 
 		weightedSum = 0;
 
-		for(int ii = 0; ii < dsepg->getExpPropPercentageListSize(); ++ii){
+		for (int ii = 0; ii < dsepg->getExpPropPercentageListSize(); ++ii) {
 
 			// Based on the script we cycle through each exp group
 
@@ -956,21 +918,27 @@ void CraftingManagerImplementation::setInitialCraftingValues(Player* player, Cra
 			float resPercentage = dsepg->getExpPropPercentage(ii);
 
 			// add to the weighted sum based on type and percentage
-			weightedSum += getWeightedValue(player, craftingTool, draftSchematic, type) * resPercentage;
+			weightedSum += getWeightedValue(player, craftingTool,
+					draftSchematic, type) * resPercentage;
 
 		}
 
 		// > 0 ensures that we don't add things when there is NaN value
-		if(weightedSum > 0){
+		if (weightedSum > 0) {
 
 			// Getting the title ex: minDamage
-			subtitle = craftingValues->getExperimentalPropertySubtitle(subtitleCounter);
+			subtitle = craftingValues->getExperimentalPropertySubtitle(
+					subtitleCounter);
 
 			// This is the formula for max experimenting percentages
 			maxPercentage = ((weightedSum / 10.0f) * .01f);
 
 			// Based on the weighted sum, we can get the initial %
-			currentPercentage = (getAssemblyPercentage(weightedSum)) * modifier;
+			currentPercentage = (getAssemblyPercentage( weightedSum)) *modifier;
+
+			// If components give a boost, calculate here
+			currentPercentage += applyComponentPercentageBoost(subtitle,
+					draftSchematic, craftingTool);
 
 			craftingValues->setMaxPercentage(subtitle, maxPercentage);
 			craftingValues->setCurrentPercentage(subtitle, currentPercentage);
@@ -982,6 +950,91 @@ void CraftingManagerImplementation::setInitialCraftingValues(Player* player, Cra
 
 	craftingValues->recalculateValues(draftSchematic);
 
+	if (applyComponentLinearBoost(subtitle, draftSchematic, craftingTool))
+		craftingValues->recalculateValues(draftSchematic);
+
+}
+
+float CraftingManagerImplementation::applyComponentPercentageBoost(
+		string subtitle, DraftSchematic* draftSchematic,
+		CraftingTool* craftingTool) {
+
+	DraftSchematicIngredient* ingredient;
+	TangibleObject* tano;
+	Component* component;
+	float value = 0;
+
+	DraftSchematicValues* craftingValues = draftSchematic->getCraftingValues();
+
+	for (int i = 0; i < draftSchematic->getIngredientListSize(); ++i) {
+
+		ingredient = draftSchematic->getIngredient(i);
+
+		if (ingredient != NULL) {
+
+			if (ingredient->getCombineType() == PERCENTAGEADDPROPERTIES) {
+
+				tano = craftingTool->getIngredientInSlot(i);
+
+				if (tano != NULL && tano->isComponent()) {
+
+					component = (Component*) tano;
+
+					value += component->getAttributeValue(subtitle);
+				}
+			}
+		}
+	}
+	return value;
+}
+
+bool CraftingManagerImplementation::applyComponentLinearBoost(string subtitle,
+		DraftSchematic* draftSchematic, CraftingTool* craftingTool) {
+
+	DraftSchematicIngredient* ingredient;
+	DraftSchematicAttribute* attribute;
+	TangibleObject* tano;
+	Component* component;
+	float max, min, currentVal, newPercentage;
+	bool modified = false;
+
+	DraftSchematicValues* craftingValues = draftSchematic->getCraftingValues();
+
+	for (int i = 0; i < draftSchematic->getIngredientListSize(); ++i) {
+
+		ingredient = draftSchematic->getIngredient(i);
+
+		if (ingredient != NULL) {
+
+			if (ingredient->getCombineType() == LINEARADDPROPERTIES) {
+
+				tano = craftingTool->getIngredientInSlot(i);
+
+				if (tano != NULL && tano->isComponent()) {
+
+					modified = true;
+
+					component = (Component*) tano;
+
+					attribute = draftSchematic->getAttributeToSet(subtitle);
+
+					min = attribute->getMinValue();
+
+					max = attribute->getMaxValue();
+
+					currentVal = craftingValues->getCurrentValue(subtitle);
+
+					currentVal += component->getAttributeValue(subtitle);
+
+					newPercentage = (currentVal - min) / (max - min);
+
+					craftingValues->setCurrentPercentage(subtitle,
+							newPercentage);
+				}
+			}
+		}
+	}
+	return modified;
 }
 
 void CraftingManagerImplementation::finishAssembly(Player* player,
@@ -989,7 +1042,8 @@ void CraftingManagerImplementation::finishAssembly(Player* player,
 
 	// Start Dplay9 **************************************
 	// Move crafting to State 4
-	PlayerObjectDeltaMessage9* dplay9 = new PlayerObjectDeltaMessage9(player->getPlayerObject());
+	PlayerObjectDeltaMessage9* dplay9 =
+			new PlayerObjectDeltaMessage9(player->getPlayerObject());
 	dplay9->setCraftingState(4);
 	craftingTool->setCraftingState(4);
 	dplay9->close();
@@ -998,7 +1052,8 @@ void CraftingManagerImplementation::finishAssembly(Player* player,
 	// End DPLAY9
 
 	// Start Object Controller **************************************
-	ObjectControllerMessage* objMsg = new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x01BE);
+	ObjectControllerMessage* objMsg =
+			new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x01BE);
 	objMsg->insertInt(0x109);
 	objMsg->insertInt(4);
 	objMsg->insertByte(counter);
@@ -1034,134 +1089,123 @@ void CraftingManagerImplementation::handleExperimenting(Player* player,
 	if (tano == NULL)
 		return;
 
-	try {
+	StringTokenizer tokenizer(expstring);
 
-		draftSchematic->wlock();
-		craftingTool->wlock();
-		tano->wlock();
+	int rowEffected, pointsAttempted, totalPoints;
+	int lowestExpSuccess = 0;
 
-		StringTokenizer tokenizer(expstring);
+	totalPoints = 0;
 
-		int rowEffected, pointsAttempted, totalPoints;
-		int lowestExpSuccess = 0;
+	float failure;
 
-		totalPoints = 0;
+	DraftSchematicValues* craftingValues = draftSchematic->getCraftingValues();
 
-		float failure;
+	craftingValues->clear();
 
-		DraftSchematicValues* craftingValues = draftSchematic->getCraftingValues();
+	// Loop through all the lines of experimentation
+	for (int i = 0; i < numRowsAttempted; ++i) {
 
-		craftingValues->clear();
+		// Each line gets it's own rolls
+		// Calcualte a new failure rate for each line of experimentation
+		failure = calculateExperimentationFailureRate(player, craftingTool,
+				draftSchematic, pointsAttempted);
 
-		// Loop through all the lines of experimentation
-		for (int i = 0; i < numRowsAttempted; ++i) {
+		// Set the experimentation result ie:  Amazing Success
+		calculateExperimentationSuccess(player, craftingTool, draftSchematic,
+				failure);
 
-			// Each line gets it's own rolls
-			// Calcualte a new failure rate for each line of experimentation
-			failure = calculateExperimentationFailureRate(player, craftingTool, draftSchematic, pointsAttempted);
-
-			// Set the experimentation result ie:  Amazing Success
-			calculateExperimentationSuccess(player, craftingTool, draftSchematic, failure);
-
-			// Make sure to store the lowest roll to display (Effect the multiline rolls
-			if(lowestExpSuccess < craftingTool->getAssemblyResults())
+		// Make sure to store the lowest roll to display (Effect the multiline rolls
+		if (lowestExpSuccess < craftingTool->getAssemblyResults())
 			lowestExpSuccess = craftingTool->getAssemblyResults();
 
-			draftSchematic->increaseExpCounter();
+		draftSchematic->increaseExpCounter();
 
-			rowEffected = tokenizer.getIntToken();
-			pointsAttempted = tokenizer.getIntToken();
+		rowEffected = tokenizer.getIntToken();
+		pointsAttempted = tokenizer.getIntToken();
 
-			totalPoints += pointsAttempted;
+		totalPoints += pointsAttempted;
 
-			draftSchematic->increaseComplexity();
+		draftSchematic->increaseComplexity();
 
-			// Do the experimenting - sets new percentages
-			experimentRow(draftSchematic->getCraftingValues(), rowEffected, pointsAttempted, failure, craftingTool->getAssemblyResults());
-
-		}
-
-		// Use percentages to recalculate the values
-		craftingValues->recalculateValues(draftSchematic);
-
-		// Update the Tano with new values
-		tano->updateCraftingValues(draftSchematic);
-
-		// Sets the result for display
-		craftingTool->setAssemblyResults(lowestExpSuccess);
-
-		// Get exp points left
-		int expPoints = draftSchematic->getExpPoints();
-
-		// Set new exp points subtracting those used above
-		draftSchematic->setExpPoints(expPoints - totalPoints);
-
-
-		// Start Player Object Delta **************************************
-		PlayerObjectDeltaMessage9* dplay9 = new PlayerObjectDeltaMessage9(player->getPlayerObject());
-		dplay9->setExperimentationPoints(draftSchematic->getExpPoints());
-		dplay9->close();
-
-		player->sendMessage(dplay9);
-		// End Player Object Delta **************************************
-
-
-		ManufactureSchematicObjectDeltaMessage3* dMsco3 =
-		new ManufactureSchematicObjectDeltaMessage3(draftSchematic->getObjectID());
-		dMsco3->updateComplexity(draftSchematic->getComplexity());
-		dMsco3->updateCraftedValues(draftSchematic);
-		dMsco3->close();
-
-		player->sendMessage(dMsco3);
-
-		ManufactureSchematicObjectDeltaMessage7* dMsco7 =
-		new ManufactureSchematicObjectDeltaMessage7(draftSchematic->getObjectID());
-
-		dMsco7->update9(draftSchematic);
-		dMsco7->close();
-
-		player->sendMessage(dMsco7);
-
-		TangibleObjectDeltaMessage3* dtano3 = new TangibleObjectDeltaMessage3(craftingTool->getWorkingTano());
-		dtano3->updateComplexity(float(draftSchematic->getComplexity()));
-
-		dtano3->close();
-
-		player->sendMessage(dtano3);
-
-		ObjectControllerMessage* objMsg = new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x0113);
-		objMsg->insertInt(0x105);
-
-		objMsg->insertInt(craftingTool->getAssemblyResults()); // Experimentation Result
-		// 0 = Amazing
-		// 1 = Great
-		// 2 = Good
-		// 3 = Moderate
-		// 4 = A succees
-		// 5 = Marginally Successful
-		// 6 = "ok"
-		// 7 = Barely Succeeded
-		// 8 = Critical Failure
-		objMsg->insertByte(counter);
-
-		player->sendMessage(objMsg);
-
-		craftingTool->unlock();
-		draftSchematic->unlock();
-		tano->unlock();
+		// Do the experimenting - sets new percentages
+		experimentRow(draftSchematic->getCraftingValues(), rowEffected,
+				pointsAttempted, failure, craftingTool->getAssemblyResults());
 
 	}
-	catch(...) {
 
-		craftingTool->unlock();
-		draftSchematic->unlock();
-		tano->unlock();
+	// Use percentages to recalculate the values
+	craftingValues->recalculateValues(draftSchematic);
 
-	}
+	// Update the Tano with new values
+	tano->updateCraftingValues(draftSchematic);
+
+	// Sets the result for display
+	craftingTool->setAssemblyResults(lowestExpSuccess);
+
+	// Get exp points left
+	int expPoints = draftSchematic->getExpPoints();
+
+	// Set new exp points subtracting those used above
+	draftSchematic->setExpPoints(expPoints - totalPoints);
+
+	// Start Player Object Delta **************************************
+	PlayerObjectDeltaMessage9* dplay9 =
+			new PlayerObjectDeltaMessage9(player->getPlayerObject());
+	dplay9->setExperimentationPoints(draftSchematic->getExpPoints());
+	dplay9->close();
+
+	player->sendMessage(dplay9);
+	// End Player Object Delta **************************************
+
+
+	ManufactureSchematicObjectDeltaMessage3
+			* dMsco3 =
+					new ManufactureSchematicObjectDeltaMessage3(draftSchematic->getObjectID());
+	dMsco3->updateComplexity(draftSchematic->getComplexity());
+	dMsco3->updateCraftedValues(draftSchematic);
+	dMsco3->close();
+
+	player->sendMessage(dMsco3);
+
+	ManufactureSchematicObjectDeltaMessage7
+			* dMsco7 =
+					new ManufactureSchematicObjectDeltaMessage7(draftSchematic->getObjectID());
+	dMsco7->update9(draftSchematic);
+	dMsco7->close();
+
+	player->sendMessage(dMsco7);
+
+	TangibleObjectDeltaMessage3* dtano3 =
+			new TangibleObjectDeltaMessage3(craftingTool->getWorkingTano());
+	dtano3->updateComplexity(float(draftSchematic->getComplexity()));
+
+	dtano3->close();
+
+	player->sendMessage(dtano3);
+
+	ObjectControllerMessage* objMsg =
+			new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x0113);
+	objMsg->insertInt(0x105);
+
+	objMsg->insertInt(craftingTool->getAssemblyResults()); // Experimentation Result
+	// 0 = Amazing
+	// 1 = Great
+	// 2 = Good
+	// 3 = Moderate
+	// 4 = A success
+	// 5 = Marginally Successful
+	// 6 = "ok"
+	// 7 = Barely Succeeded
+	// 8 = Critical Failure
+	objMsg->insertByte(counter);
+
+	player->sendMessage(objMsg);
+
 }
 
-void CraftingManagerImplementation::experimentRow(DraftSchematicValues* craftingValues,
-		int rowEffected, int pointsAttempted, float failure, int assemblyResult){
+void CraftingManagerImplementation::experimentRow(
+		DraftSchematicValues* craftingValues, int rowEffected,
+		int pointsAttempted, float failure, int assemblyResult) {
 
 	float modifier, newValue;
 
@@ -1183,13 +1227,16 @@ void CraftingManagerImplementation::experimentRow(DraftSchematicValues* crafting
 			newValue = craftingValues->getCurrentPercentage(subtitle)
 					+ modifier;
 
+			if (newValue > craftingValues->getMaxPercentage(subtitle))
+				newValue = craftingValues->getMaxPercentage(subtitle);
+
 			craftingValues->setCurrentPercentage(subtitle, newValue);
 		}
 	}
-
 }
 
-void CraftingManagerImplementation::createPrototype(Player* player, string count) {
+void CraftingManagerImplementation::createPrototype(Player* player,
+		string count) {
 
 	CraftingTool* craftingTool;
 	DraftSchematic* draftSchematic;
@@ -1221,21 +1268,25 @@ void CraftingManagerImplementation::createPrototype(Player* player, string count
 		if (!draftSchematic->isFinished()) {
 
 			//Object Controller - Closes Window
-			ObjectControllerMessage* objMsg = new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x010C);
+			ObjectControllerMessage
+					* objMsg =
+							new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x010C);
 			objMsg->insertInt(0x10A);
 			objMsg->insertInt(1);
 			objMsg->insertByte(counter);
 
 			player->sendMessage(objMsg);
 
-			objMsg = new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x010C);
+			objMsg
+					= new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x010C);
 			objMsg->insertInt(0x10A);
 			objMsg->insertInt(0);
 			objMsg->insertByte(counter);
 
 			player->sendMessage(objMsg);
 
-			objMsg = new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x01C2);
+			objMsg
+					= new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x01C2);
 			objMsg->insertByte(counter);
 			player->sendMessage(objMsg);
 
@@ -1244,12 +1295,13 @@ void CraftingManagerImplementation::createPrototype(Player* player, string count
 
 			if (practice != 0) {
 
-				createObjectInInventory(player, draftSchematic->getComplexity() * 2, true);
+				createObjectInInventory(player, draftSchematic->getComplexity()
+						* 2, true);
 
-			}
-			else {
+			} else {
 
-				createObjectInInventory(player, draftSchematic->getComplexity() * 2, false);
+				createObjectInInventory(player, draftSchematic->getComplexity()
+						* 2, false);
 				xp = int(round(1.05 * xp));
 
 			}
@@ -1258,9 +1310,7 @@ void CraftingManagerImplementation::createPrototype(Player* player, string count
 			draftSchematic->setFinished();
 		}
 
-
-	} catch(...) {
-
+	} catch (...) {
 
 	}
 }
@@ -1269,6 +1319,9 @@ void CraftingManagerImplementation::createSchematic(Player* player,
 		string count) {
 
 	StringTokenizer tokenizer(count);
+
+	if (!tokenizer.hasMoreTokens())
+		return;
 
 	int counter = tokenizer.getIntToken();
 
@@ -1299,8 +1352,9 @@ void CraftingManagerImplementation::craftingCustomization(Player* player,
 
 	player->sendMessage(dtano3);
 
-	ManufactureSchematicObjectDeltaMessage3* dMsco3 =
-			new ManufactureSchematicObjectDeltaMessage3(draftSchematic->getObjectID());
+	ManufactureSchematicObjectDeltaMessage3
+			* dMsco3 =
+					new ManufactureSchematicObjectDeltaMessage3(draftSchematic->getObjectID());
 	dMsco3->updateName(name);
 	dMsco3->updateCondition(condition);
 	dMsco3->close();
@@ -1308,7 +1362,8 @@ void CraftingManagerImplementation::craftingCustomization(Player* player,
 	player->sendMessage(dMsco3);
 
 	//Object Controller
-	ObjectControllerMessage* objMsg = new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x010C);
+	ObjectControllerMessage* objMsg =
+			new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x010C);
 	objMsg->insertInt(0x15A);
 	objMsg->insertInt(0);
 	objMsg->insertByte(0);
@@ -1322,21 +1377,23 @@ void CraftingManagerImplementation::finishStage1(Player* player, int counter) {
 
 	CraftingTool* craftingTool = player->getCurrentCraftingTool();
 
-	if (craftingTool == NULL){
+	if (craftingTool == NULL) {
 
 		sendSlotMessage(player, counter, SLOTNOTOOL);
 		return;
 
 	}
 
-	PlayerObjectDeltaMessage9* dplay9 = new PlayerObjectDeltaMessage9(player->getPlayerObject());
+	PlayerObjectDeltaMessage9* dplay9 =
+			new PlayerObjectDeltaMessage9(player->getPlayerObject());
 	dplay9->setCraftingState(5);
 	dplay9->close();
 
 	player->sendMessage(dplay9);
 
 	//Object Controller
-	ObjectControllerMessage* objMsg = new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x01BE);
+	ObjectControllerMessage* objMsg =
+			new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x01BE);
 	objMsg->insertInt(0x109);
 	objMsg->insertInt(4);
 	objMsg->insertByte(counter);
@@ -1350,14 +1407,15 @@ void CraftingManagerImplementation::finishStage2(Player* player, int counter) {
 
 	CraftingTool* craftingTool = player->getCurrentCraftingTool();
 
-	if (craftingTool == NULL){
+	if (craftingTool == NULL) {
 
 		sendSlotMessage(player, counter, SLOTNOTOOL);
 		return;
 
 	}
 
-	PlayerObjectDeltaMessage9* dplay9 = new PlayerObjectDeltaMessage9(player->getPlayerObject());
+	PlayerObjectDeltaMessage9* dplay9 =
+			new PlayerObjectDeltaMessage9(player->getPlayerObject());
 	dplay9->insertShort(5);
 	dplay9->insertInt(0xFFFFFFFF);
 	dplay9->setCraftingState(0);
@@ -1366,7 +1424,8 @@ void CraftingManagerImplementation::finishStage2(Player* player, int counter) {
 	player->sendMessage(dplay9);
 
 	//Object Controller
-	ObjectControllerMessage* objMsg = new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x010C);
+	ObjectControllerMessage* objMsg =
+			new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x010C);
 	objMsg->insertInt(0x10A);
 	objMsg->insertInt(1);
 	objMsg->insertByte(counter); //?!?!
@@ -1388,10 +1447,11 @@ void CraftingManagerImplementation::createObjectInInventory(Player* player,
 	if (processor != NULL) {
 
 		while (timer > 0) {
-			updateToolCountdownEvent = new UpdateToolCountdownEvent(player, craftingTool, timer);
+			updateToolCountdownEvent
+					= new UpdateToolCountdownEvent(player, craftingTool, timer);
 			processor->addEvent(updateToolCountdownEvent, timer2);
-			timer-=5;
-			timer2+=5000;
+			timer -= 5;
+			timer2 += 5000;
 		}
 
 		if (timer < 0) {
@@ -1399,7 +1459,8 @@ void CraftingManagerImplementation::createObjectInInventory(Player* player,
 			timer = 0;
 		}
 
-		updateToolCountdownEvent = new UpdateToolCountdownEvent(player, craftingTool, timer);
+		updateToolCountdownEvent
+				= new UpdateToolCountdownEvent(player, craftingTool, timer);
 
 		processor->addEvent(updateToolCountdownEvent, timer2);
 		processor->addEvent(createObjectEvent, timer2);
@@ -1408,9 +1469,11 @@ void CraftingManagerImplementation::createObjectInInventory(Player* player,
 	}
 }
 
-TangibleObject* CraftingManagerImplementation::generateTangibleObject(Player* player, DraftSchematic* draftSchematic) {
-	ItemManager* itemManager = player->getZone()->getZoneServer()->getItemManager();
-	TangibleObject* tano= NULL;
+TangibleObject* CraftingManagerImplementation::generateTangibleObject(
+		Player* player, DraftSchematic* draftSchematic) {
+	ItemManager* itemManager =
+			player->getZone()->getZoneServer()->getItemManager();
+	TangibleObject* tano = NULL;
 
 	string attributes = draftSchematic->getTanoAttributes();
 
@@ -1425,10 +1488,13 @@ TangibleObject* CraftingManagerImplementation::generateTangibleObject(Player* pl
 	temp = "objectcrc";
 	uint32 objectcrc = itemAttributes->getUnsignedLongAttribute(temp);
 
-	string objectname = draftSchematic->getName();
+	string objectname = "";
 
 	temp = "objecttemp";
 	string objecttemp = itemAttributes->getStringAttribute(temp);
+
+	temp = "templatetype";
+	string templatetype = itemAttributes->getStringAttribute(temp);
 
 	//(objectid, objectcrc, objectname, objecttemp, false);
 	// Set these defaults in case
@@ -1446,9 +1512,11 @@ TangibleObject* CraftingManagerImplementation::generateTangibleObject(Player* pl
 
 	if (tano == NULL) {
 
-		TangibleObject* tano = new TangibleObject(objectid, objectname, objecttemp, objectcrc);
+		TangibleObject* tano =
+				new TangibleObject(objectid, objectcrc, objectname, objecttemp);
 
 	}
+	tano->setTemplateTypeName(templatetype);
 
 	//item->setAttributes(attributes);
 	//item->parseItemAttributes();
@@ -1458,7 +1526,8 @@ TangibleObject* CraftingManagerImplementation::generateTangibleObject(Player* pl
 }
 
 void CraftingManagerImplementation::calculateAssemblySuccess(Player* player,
-		CraftingTool* craftingTool, DraftSchematic* draftSchematic, float modifier) {
+		CraftingTool* craftingTool, DraftSchematic* draftSchematic,
+		float modifier) {
 
 	// Skill + Luck roll and crafting tool effectiveness determine the
 	// Success of the crafting result
@@ -1474,24 +1543,22 @@ void CraftingManagerImplementation::calculateAssemblySuccess(Player* player,
 	float toolModifier = calculateAssemblyModifier(craftingTool);
 
 	// Gets failure rate * 100 .25 = 25, so decimals matter in the roll
-	int failureRate = calculateAssemblyFailureRate(player, craftingTool, assemblyPoints)
-			+ int(modifier * 100);
+	int failureRate = calculateAssemblyFailureRate(player, craftingTool,
+			assemblyPoints) + int(modifier * 100);
 
 	int luck = System::random(100);
-
 
 	if (failureRate > luck * 10) {
 
 		result = 8;
 
-	} else if (luck >= 95 - int(10.0f * ((toolModifier + .15f) - 1.0f))){
+	} else if (luck >= 95 - int(10.0f * ((toolModifier + .15f) - 1.0f))) {
 
 		result = 0;
 
 	} else {
 
-		preresult = int(toolModifier *((assemblyPoints * 10) + luck));
-
+		preresult = int(toolModifier * ((assemblyPoints * 10) + luck));
 
 		if (preresult > 130) {
 
@@ -1528,81 +1595,82 @@ void CraftingManagerImplementation::calculateAssemblySuccess(Player* player,
 	craftingTool->setAssemblyResults(result);
 }
 
-void CraftingManagerImplementation::calculateExperimentationSuccess(Player* player,
-		CraftingTool* craftingTool, DraftSchematic* draftSchematic, float failure) {
+void CraftingManagerImplementation::calculateExperimentationSuccess(
+		Player* player, CraftingTool* craftingTool,
+		DraftSchematic* draftSchematic, float failure) {
+
+	// Skill + Luck roll and crafting station effectiveness determine the
+	// Success of the crafting result
+
+	int result, preresult;
+
+	// Get modifier from tool to modify success
+	float stationModifier = .80;//calculateExperimentationModifier(craftingTool);
+	string expSkill = draftSchematic->getExperimentingSkill();
+
+	// Get experiemtnation points from skill
+	int expPoints = player->getSkillMod(expSkill);
+
+	// Gets failure rate * 100 .25 = 25, so decimals matter in the roll
+	int failureRate = int(failure * 100);
+
+	int luck = System::random(100);
+
+	if (failureRate > luck * 10) {
+
+		result = 8;
+
+	} else if (luck >= 99 - int(9.0f * stationModifier)) {
+
+		result = 0;
+
+	} else {
+
+		if (stationModifier < .8f)
+			stationModifier = .8f;
+
+		preresult = int(stationModifier * (expPoints + luck));
+
+		//cout << "PRERESULT = " << preresult << "  expPoints = " << expPoints << "   luck = " << luck << endl;
 
 
-		// Skill + Luck roll and crafting station effectiveness determine the
-		// Success of the crafting result
+		if (preresult > 90) {
 
-		int result, preresult;
+			result = 1;
 
-		// Get modifier from tool to modify success
-		float stationModifier = .80;//calculateExperimentationModifier(craftingTool);
-		string expSkill = draftSchematic->getExperimentingSkill();
+		} else if (preresult > 80) {
 
-		// Get experiemtnation points from skill
-		int expPoints = player->getSkillMod(expSkill);
+			result = 2;
 
-		// Gets failure rate * 100 .25 = 25, so decimals matter in the roll
-		int failureRate = int(failure * 100);
+		} else if (preresult > 70) {
 
-		int luck = System::random(100);
+			result = 3;
 
-		if (failureRate > luck * 10) {
+		} else if (preresult > 50) {
 
-			result = 8;
+			result = 4;
 
-		} else if (luck >= 99 - int(9.0f * stationModifier)){
+		} else if (preresult > 20) {
 
-			result = 0;
+			result = 5;
 
-		} else {
+		} else { //if (preresult > 40) {
 
-			if(stationModifier < .8f)
-				stationModifier = .8f;
+			result = 6;
 
-			preresult = int(stationModifier *(expPoints + luck));
+		} //else {
 
-//cout << "PRERESULT = " << preresult << "  expPoints = " << expPoints << "   luck = " << luck << endl;
+		//result = 7;
 
+		//}
 
-			if (preresult > 90) {
-
-				result = 1;
-
-			} else if (preresult > 80) {
-
-				result = 2;
-
-			} else if (preresult > 70) {
-
-				result = 3;
-
-			} else if (preresult > 50) {
-
-				result = 4;
-
-			} else if (preresult > 20) {
-
-				result = 5;
-
-			} else { //if (preresult > 40) {
-
-				result = 6;
-
-			} //else {
-
-				//result = 7;
-
-			//}
-
-		}
-		craftingTool->setAssemblyResults(result);
+	}
+	craftingTool->setAssemblyResults(result);
 }
 
-float CraftingManagerImplementation::calculateExperimentationFailureRate(Player* player,
-		CraftingTool* craftingTool, DraftSchematic* draftSchematic, int pointsUsed) {
+float CraftingManagerImplementation::calculateExperimentationFailureRate(
+		Player* player, CraftingTool* craftingTool,
+		DraftSchematic* draftSchematic, int pointsUsed) {
 
 	// Skill + Luck roll and crafting tool effectiveness determine the
 	// Success of the crafting result
@@ -1614,36 +1682,39 @@ float CraftingManagerImplementation::calculateExperimentationFailureRate(Player*
 	string expSkill = draftSchematic->getExperimentingSkill();
 	float expPoints = player->getSkillMod(expSkill);
 
-	float failure = (50.0f + (ma - 500.0f)/40.0f + expPoints - 5.0f * pointsUsed) / 100.0f;
+	float failure = (50.0f + (ma - 500.0f) / 40.0f + expPoints - 5.0f
+			* pointsUsed) / 100.0f;
 
 	// Return 0 if > 1.0 and return 1.0 - failure if < 1.0
-	if (failure > 1)
+	if (failure > 1.0f)
 		return 0;
 	else
 		return (1.0f - failure);
 }
 
-int CraftingManagerImplementation::calculateAssemblyFailureRate(Player* player, CraftingTool* craftingTool, float assemblyPoints) {
+int CraftingManagerImplementation::calculateAssemblyFailureRate(Player* player,
+		CraftingTool* craftingTool, float assemblyPoints) {
 
 	// Here we take the standard failure rate(From the equation below), and add a rate from 0-15% based on the
 	// Negative value of the crafting tool.  Positive values have no effect
 
 	float effectiveness = 1.0f + (craftingTool->getToolEffectiveness() / 100);
 
-	if(effectiveness > 0)
+	if (effectiveness > 0)
 		effectiveness = 0;
 
+	int failureRate = int(round((((2.68 / getLog(assemblyPoints + 5.2)) - .89)
+			* 100) + effectiveness));
 
-	int failureRate = int(round(((( 2.68 / getLog(assemblyPoints+5.2) ) -.89 ) * 100) + effectiveness));
-
-	if(failureRate < 0)
+	if (failureRate < 0)
 		failureRate = 0;
 
 	return failureRate;
 
 }
 
-float CraftingManagerImplementation::calculateAssemblyModifier(CraftingTool* craftingTool) {
+float CraftingManagerImplementation::calculateAssemblyModifier(
+		CraftingTool* craftingTool) {
 
 	// Using the tools effectiveness, we return a modifier
 	float effectiveness = 1.0f + (craftingTool->getToolEffectiveness() / 100);
@@ -1652,17 +1723,18 @@ float CraftingManagerImplementation::calculateAssemblyModifier(CraftingTool* cra
 
 }
 
-float CraftingManagerImplementation::calculateAssemblyValueModifier(CraftingTool* craftingTool) {
+float CraftingManagerImplementation::calculateAssemblyValueModifier(
+		CraftingTool* craftingTool) {
 
 	int assembly = craftingTool->getAssemblyResults();
 
-	float results = (( 3.4 / getLog(assembly + 4) ) -1.1111 );
+	float results = ((3.4 / getLog(assembly + 4)) - 1.1111);
 
 	// Unles we want amazing assemblies to get a bonus, we cap the madifier at 1
 
 	if (results > 1.00) {
 
-		if(results < 1.05){
+		if (results < 1.05) {
 
 			results = 1.0f;
 
@@ -1678,20 +1750,20 @@ float CraftingManagerImplementation::calculateAssemblyValueModifier(CraftingTool
 
 }
 
-float CraftingManagerImplementation::getLog(float value){
+float CraftingManagerImplementation::getLog(float value) {
 
 	return (log10(value) / log10(CONSTE));
 
 }
 
-float CraftingManagerImplementation::calculateExperimentationValueModifier(int assemblyResult, int pointsAttempted,
-		float failure) {
+float CraftingManagerImplementation::calculateExperimentationValueModifier(
+		int assemblyResult, int pointsAttempted, float failure) {
 
 	// Make it so failure detract
 
 	float results;
 
-	switch(assemblyResult){
+	switch (assemblyResult) {
 
 	case 0:
 		results = 0.08f;
@@ -1727,7 +1799,6 @@ float CraftingManagerImplementation::calculateExperimentationValueModifier(int a
 
 	results *= pointsAttempted;
 
-
 	return results;
 
 }
@@ -1735,23 +1806,48 @@ float CraftingManagerImplementation::calculateExperimentationValueModifier(int a
 float CraftingManagerImplementation::getWeightedValue(Player* player,
 		CraftingTool* craftingTool, DraftSchematic* draftSchematic, int type) {
 
+	DraftSchematicIngredient* ingredient;
+	TangibleObject* tano;
+
 	int stat = 0;
 	int n = 0;
 	int nsum = 0;
+	int combineType = 0;
 	float weightedAverage = 0;
+
+	if (draftSchematic->getIngredientListSize() != craftingTool->getSlotCount()) {
+		info(
+				"Error in sizes in CraftingManagerImplementation::getWeightedValue.  This is very bad");
+		player->sendSystemMessage(
+				"Error in sizes in CraftingManagerImplementation::getWeightedValue.  This is very bad");
+		return 0.0f;
+	}
 
 	for (int i = 0; i < draftSchematic->getIngredientListSize(); ++i) {
 
-		n = draftSchematic->getIngredient(i)->getResourceQuantity();
-		stat = lookUpResourceAttribute(player, craftingTool, type, i);
+		ingredient = draftSchematic->getIngredient(i);
+		tano = craftingTool->getIngredientInSlot(i);
+		combineType = ingredient->getCombineType();
 
-		if (stat != 0) {
+		switch (combineType) {
+		case RESOURCE:
+			n = ingredient->getResourceQuantity();
+			stat = lookUpResourceAttribute(player, tano, type, i);
 
-			nsum += n;
-			weightedAverage += (stat * n);
+			if (stat != 0) {
+
+				nsum += n;
+				weightedAverage += (stat * n);
+
+			}
+			break;
+		case SIMULATEWEIGHTEDVALUE:
+			break;
+		case PERCENTAGEADDPROPERTIES:
+		case LINEARADDPROPERTIES:
+			break;
 
 		}
-
 	}
 
 	weightedAverage /= float(nsum);
@@ -1761,40 +1857,38 @@ float CraftingManagerImplementation::getWeightedValue(Player* player,
 
 float CraftingManagerImplementation::getAssemblyPercentage(float value) {
 
-	float percentage = (value * (0.000015 * value + .015))  * 0.01f;
+	float percentage = (value * (0.000015 * value + .015)) * 0.01f;
 
 	return percentage;
 }
 
 int CraftingManagerImplementation::lookUpResourceAttribute(Player* player,
-		CraftingTool* craftingTool, int type, int slot) {
-
-	TangibleObject* tano = craftingTool->getIngredientInSlot(slot);
+		TangibleObject* tano, int type, int slot) {
 
 	if (tano == NULL)
 		return 0;
 
-	if(!tano->isResource())
+	if (!tano->isResource())
 		return 0;
 
-	ResourceContainer* rcno = (ResourceContainer*)tano;
+	ResourceContainer* rcno = (ResourceContainer*) tano;
 
 	int tempValue = 0;
 
 	/*
 	 * 0 Potency
-	1 CR
-	2 CD
-	3 DR
-	4 HR
-	5 FL
-	6 MA
-	7 PE
-	8 OQ
-	9 SR
-	A UT
-	B Bulk
-	*/
+	 1 CR
+	 2 CD
+	 3 DR
+	 4 HR
+	 5 FL
+	 6 MA
+	 7 PE
+	 8 OQ
+	 9 SR
+	 A UT
+	 B Bulk
+	 */
 
 	switch (type) {
 	case 1: // CR
@@ -1913,6 +2007,28 @@ void CraftingManagerImplementation::subtractDraftSchematicsFromGroupName(
 	unlock();
 }
 
+void CraftingManagerImplementation::refreshDraftSchematics(Player* player) {
+	lock();
+
+	for (int i = 0; i < draftSchematicsMap.size(); ++i) {
+		DraftSchematicGroup* dsg = draftSchematicsMap.get(i);
+
+		for (int j = 0; j < dsg->getSizeOfDraftSchematicList(); ++j) {
+
+			if (dsg != NULL) {
+
+				DraftSchematic* draftSchematic = dsg->getDraftSchematic(j);
+				player->subtractDraftSchematic(draftSchematic);
+
+				player->addDraftSchematic(draftSchematic);
+
+			}
+		}
+	}
+
+	unlock();
+}
+
 void CraftingManagerImplementation::registerFunctions() {
 	//lua_register(getLuaState(), "RunCraftingConfiguration", runCraftingConfiguration);
 	lua_register(getLuaState(), "RunDraftSchematicFile", runDraftSchematicFile);
@@ -1920,12 +2036,12 @@ void CraftingManagerImplementation::registerFunctions() {
 }
 
 /*int CraftingManagerImplementation::runCraftingConfiguration(lua_State* L) {
-	string craftingBonus = getFloatParameter(L);
+ string craftingBonus = getFloatParameter(L);
 
-	runFile("scripts/crafting/" + filename, L);
+ runFile("scripts/crafting/" + filename, L);
 
-	return 0;
-}*/
+ return 0;
+ }*/
 
 int CraftingManagerImplementation::addDraftSchematicToServer(lua_State *L) {
 	LuaObject schematic(L);
@@ -1933,187 +2049,230 @@ int CraftingManagerImplementation::addDraftSchematicToServer(lua_State *L) {
 	if (!schematic.isValidTable())
 		return 1;
 
-	instance->lock();
+	try {
 
-	// The objName is the name you want the object to have
-	// example: object/draft_schematic/item/shared_item_battery_droid.iff
-	// objName could be "A Droid Battery"
-	string objectName = schematic.getStringField("objectName");
+		instance->lock();
 
-	// The objTemplateCRC is the CRC value of the object using it's .iff file
-	// example: object/draft_schematic/item/shared_item_battery_droid.iff
-	// objCRC would be 0xD1207EFF
-	uint32 objCRC = schematic.getIntField("objectCRC");
+		// The objName is the name you want the object to have
+		// example: object/draft_schematic/item/shared_item_battery_droid.iff
+		// objName could be "A Droid Battery"
+		string objectName = schematic.getStringField("objectName");
 
-	// The groupName will be used as the key to return a list of schematics with that groupName
-	// example: "craftArtisanNewbieGroupA" (this is one groupName from Novice Artisan)
-	// this groupName will include, CDEF Carbine, CDEF Rifle, Bofa Treat, etc...
-	string groupName = schematic.getStringField("groupName");
+		string stfName = schematic.getStringField("stfName");
 
-	// The number that tells the client which crafting tool tab to put the draftSchematic in
-	int craftingToolTab = schematic.getIntField("craftingToolTab");
+		// The objTemplateCRC is the CRC value of the object using it's .iff file
+		// example: object/draft_schematic/item/shared_item_battery_droid.iff
+		// objCRC would be 0xD1207EFF
+		uint32 objCRC = schematic.getIntField("objectCRC");
 
-	// The objID is two of the crc combined to make a uint64
-	uint32 schematicID = objCRC;
+		// The groupName will be used as the key to return a list of schematics with that groupName
+		// example: "craftArtisanNewbieGroupA" (this is one groupName from Novice Artisan)
+		// this groupName will include, CDEF Carbine, CDEF Rifle, Bofa Treat, etc...
+		string groupName = schematic.getStringField("groupName");
 
-	// The complexity will give a number that will correspond to which level of crafting tools and or
-	// crafting stations are required
-	uint32 complexity = schematic.getIntField("complexity");
+		// The number that tells the client which crafting tool tab to put the draftSchematic in
+		int craftingToolTab = schematic.getIntField("craftingToolTab");
 
-	// I have no idea what the schematicSize is used for :D, but it's a part of all draft schematics
-	uint32 schematicSize = schematic.getIntField("size");
+		// The objID is two of the crc combined to make a uint64
+		uint32 schematicID = objCRC;
 
+		// The complexity will give a number that will correspond to which level of crafting tools and or
+		// crafting stations are required
+		uint32 complexity = schematic.getIntField("complexity");
 
-	DraftSchematic* draftSchematic = new DraftSchematic(schematicID, objectName, objCRC, groupName,
-			complexity, schematicSize, craftingToolTab);
+		// I have no idea what the schematicSize is used for :D, but it's a part of all draft schematics
+		uint32 schematicSize = schematic.getIntField("size");
 
-	// Parse the Ingredient data of DraftSchematic from LUA
-	// example: craft_food_ingredients_n, craft_food_ingredients_n, craft_food_ingredients_n
-	string unparIngredientTemplateNames = schematic.getStringField("ingredientTemplateNames");
-	Vector<string> parsedIngredientTemplateNames =
-			instance->parseStringsFromString(unparIngredientTemplateNames);
+		DraftSchematic* draftSchematic = new DraftSchematic(schematicID,
+				objectName, stfName, objCRC, groupName, complexity, schematicSize,
+				craftingToolTab);
 
-	// example: dried Fruit, crust, additive
-	string unparIngredientTitleNames = schematic.getStringField("ingredientTitleNames");
-	Vector<string> parsedIngredientTitleNames =
-		instance->parseStringsFromString(unparIngredientTitleNames);
+		string xptype = schematic.getStringField("xpType");
+		draftSchematic->setXpType(xptype);
 
-	// example: 1 for optional, 0 for mandatory
-	string unparOptionalFlags = schematic.getStringField("ingredientOptionals");
-	Vector<uint32> parsedOptionalFlags =
-		instance->parseUnsignedInt32sFromString(unparOptionalFlags);
+		int xp = schematic.getIntField("xp");
+		draftSchematic->setXp(xp);
 
-	// example: organic, cereal, object/tangible/food/crafted/additive/shared_additive_light.iff
-	string unparResourceTypes = schematic.getStringField("resourceTypes");
-	Vector<string> parsedResourceTypes =
-		instance->parseStringsFromString(unparResourceTypes);
+		string assemblySkill = schematic.getStringField("assemblySkill");
+		draftSchematic->setAssemblySkill(assemblySkill);
 
-	// example: 3,8,1
-	string unparResourceQuantities = schematic.getStringField("resourceQuantities");
-	Vector<uint32> parsedResourceQuantities =
-		instance->parseUnsignedInt32sFromString(unparResourceQuantities);
+		string experimentingSkill = schematic.getStringField(
+				"experimentingSkill");
+		draftSchematic->setExperimentingSkill(experimentingSkill);
 
-	// Add resource requirement sets to schematic
-	// Each vector just parsed should all have the same .size() so any .size() will work
-	// for the amount of times the loop should execute
-	for (int i = 0; i < parsedIngredientTemplateNames.size(); i++) {
-		draftSchematic->addIngredient(parsedIngredientTemplateNames.get(i),
-				parsedIngredientTitleNames.get(i),
-				(bool)parsedOptionalFlags.get(i), parsedResourceTypes.get(i),
-				parsedResourceQuantities.get(i));
-	}
+		// Parse the Ingredient data of DraftSchematic from LUA
+		// example: craft_food_ingredients_n, craft_food_ingredients_n, craft_food_ingredients_n
+		string unparIngredientTemplateNames = schematic.getStringField(
+				"ingredientTemplateNames");
+		Vector<string> parsedIngredientTemplateNames =
+				instance->parseStringsFromString(unparIngredientTemplateNames);
 
-	// Parse Experimental Properties of Draft Schematic from DB
-	// example: 1, 1, 1, 2, 2, 2, 2
-	string unparNumberExperimentalProperties = schematic.getStringField("numberExperimentalProperties");
-	Vector<uint32> parsedNumberExperimentalProperties =
-		instance->parseUnsignedInt32sFromString(unparNumberExperimentalProperties);
+		// example: dried Fruit, crust, additive
+		string unparIngredientTitleNames = schematic.getStringField(
+				"ingredientTitleNames");
+		Vector<string> parsedIngredientTitleNames =
+				instance->parseStringsFromString(unparIngredientTitleNames);
 
-	// example: XX, XX, XX, OQ, PE, FL, OQ, DR, PE, DR, OQ
-	string unparExperimentalProperties = schematic.getStringField("experimentalProperties");
-	Vector<string> parsedExperimentalProperties =
-		instance->parseStringsFromString(unparExperimentalProperties);
+		// example: 1 for optional, 0 for mandatory
+		string unparOptionalFlags = schematic.getStringField(
+				"ingredientOptionals");
+		Vector<uint32> parsedOptionalFlags =
+				instance->parseUnsignedInt32sFromString(unparOptionalFlags);
 
-	// example: 0, 0, 0, 1, 2, 2, 1, 1, 3, 3, 1
-	string unparExperimentalWeights = schematic.getStringField("experimentalWeights");
-	Vector<uint32> parsedExperimentalWeights =
-		instance->parseUnsignedInt32sFromString(unparExperimentalWeights);
+		// example: organic, cereal, object/tangible/food/crafted/additive/shared_additive_light.iff
+		string unparResourceTypes = schematic.getStringField("resourceTypes");
+		Vector<string> parsedResourceTypes = instance->parseStringsFromString(
+				unparResourceTypes);
 
-	// Add experimental properties groups to the draft schematic
-	uint32 iterator = 0;
-	for (uint32 i = 0; i < parsedNumberExperimentalProperties.size(); i++) {
-		for (uint32 j = 0; j < parsedNumberExperimentalProperties.get(i); j++) {
-			draftSchematic->addExperimentalProperty(i,
-					parsedExperimentalProperties.get(iterator),
-					parsedExperimentalWeights.get(iterator));
-			iterator++;
+		// example: 3,8,1
+		string unparResourceQuantities = schematic.getStringField(
+				"resourceQuantities");
+		Vector<uint32>
+				parsedResourceQuantities =
+						instance->parseUnsignedInt32sFromString(
+								unparResourceQuantities);
+
+		// example: 1,2,3
+		string unparCombineTypes = schematic.getStringField("combineTypes");
+		Vector<uint32> parsedCombineTypes =
+				instance->parseUnsignedInt32sFromString(unparCombineTypes);
+
+		// Add resource requirement sets to schematic
+		// Each vector just parsed should all have the same .size() so any .size() will work
+		// for the amount of times the loop should execute
+		for (int i = 0; i < parsedIngredientTemplateNames.size(); i++) {
+			draftSchematic->addIngredient(parsedIngredientTemplateNames.get(i),
+					parsedIngredientTitleNames.get(i),
+					(bool) parsedOptionalFlags.get(i), parsedResourceTypes.get(
+							i), parsedResourceQuantities.get(i),
+					parsedCombineTypes.get(i));
 		}
-	}
 
-	// example: exp_filling, exp_flavor, exp_nutrition, exp_quantity
-	string unparExperimentalGroupTitles = schematic.getStringField("experimentalGroupTitles");
-	Vector<string> parsedExperimentalGroupTitles =
-		instance->parseStringsFromString(unparExperimentalGroupTitles);
+		// Parse Experimental Properties of Draft Schematic from DB
+		// example: 1, 1, 1, 2, 2, 2, 2
+		string unparNumberExperimentalProperties = schematic.getStringField(
+				"numberExperimentalProperties");
+		Vector<uint32> parsedNumberExperimentalProperties =
+				instance->parseUnsignedInt32sFromString(
+						unparNumberExperimentalProperties);
 
-	string unparExperimentalSubGroupCount = schematic.getStringField("experimentalSubGroupCount");
-	Vector<uint32> parsedExperimentalSubGroupCount =
-		instance->parseUnsignedInt32sFromString(unparExperimentalSubGroupCount);
+		// example: XX, XX, XX, OQ, PE, FL, OQ, DR, PE, DR, OQ
+		string unparExperimentalProperties = schematic.getStringField(
+				"experimentalProperties");
+		Vector<string> parsedExperimentalProperties =
+				instance->parseStringsFromString(unparExperimentalProperties);
 
-	string unparExperimentalSubGroupTitles = schematic.getStringField("experimentalSubGroupTitles");
-	Vector<string> parsedExperimentalSubGroupTitles =
-		instance->parseStringsFromString(unparExperimentalSubGroupTitles);
+		// example: 0, 0, 0, 1, 2, 2, 1, 1, 3, 3, 1
+		string unparExperimentalWeights = schematic.getStringField(
+				"experimentalWeights");
+		Vector<uint32> parsedExperimentalWeights =
+				instance->parseUnsignedInt32sFromString(
+						unparExperimentalWeights);
 
-	string title, subtitle;
-	int position = 0;
-
-	for (int i = 0; i < parsedExperimentalGroupTitles.size(); ++i) {
-
-		title = parsedExperimentalGroupTitles.get(i);
-
-		for (int j = 0; j < parsedExperimentalSubGroupCount.get(i); ++j) {
-
-			subtitle = parsedExperimentalSubGroupTitles.get(position);
-
-			draftSchematic->getCraftingValues()->addExperimentalPropertySubtitle(title, subtitle);
-
-			position++;
+		// Add experimental properties groups to the draft schematic
+		uint32 iterator = 0;
+		for (uint32 i = 0; i < parsedNumberExperimentalProperties.size(); i++) {
+			for (uint32 j = 0; j < parsedNumberExperimentalProperties.get(i); j++) {
+				draftSchematic->addExperimentalProperty(i,
+						parsedExperimentalProperties.get(iterator),
+						parsedExperimentalWeights.get(iterator));
+				iterator++;
+			}
 		}
+
+		// example: exp_filling, exp_flavor, exp_nutrition, exp_quantity
+		string unparExperimentalGroupTitles = schematic.getStringField(
+				"experimentalGroupTitles");
+		Vector<string> parsedExperimentalGroupTitles =
+				instance->parseStringsFromString(unparExperimentalGroupTitles);
+
+		string unparExperimentalSubGroupCount = schematic.getStringField(
+				"experimentalSubGroupCount");
+		Vector<uint32> parsedExperimentalSubGroupCount =
+				instance->parseUnsignedInt32sFromString(
+						unparExperimentalSubGroupCount);
+
+		string unparExperimentalSubGroupTitles = schematic.getStringField(
+				"experimentalSubGroupTitles");
+		Vector<string> parsedExperimentalSubGroupTitles =
+				instance->parseStringsFromString(
+						unparExperimentalSubGroupTitles);
+
+		string title, subtitle;
+		int position = 0;
+
+		for (int i = 0; i < parsedExperimentalGroupTitles.size(); ++i) {
+
+			title = parsedExperimentalGroupTitles.get(i);
+
+			for (int j = 0; j < parsedExperimentalSubGroupCount.get(i); ++j) {
+
+				subtitle = parsedExperimentalSubGroupTitles.get(position);
+
+				draftSchematic->getCraftingValues()->addExperimentalPropertySubtitle(
+						title, subtitle);
+
+				position++;
+			}
+		}
+
+		// Save schematics tano attributes
+		string tanoAttributes = schematic.getStringField("tanoAttributes");
+		draftSchematic->setTanoAttributes(tanoAttributes);
+
+		// Set ItemAttribute properties for values in crafting assembly/experimentation
+		string unparAttributesToSet = schematic.getStringField(
+				"attributesToSet");
+		Vector<string> parsedAttributesToSet =
+				instance->parseStringsFromString(unparAttributesToSet);
+
+		// Set ItemAttribute properties for values in crafting assembly/experimentation
+		string unparAttributesExpProps = schematic.getStringField(
+				"attributeExperimentalProperties");
+		Vector<string> parsedAttributesExpProps =
+				instance->parseStringsFromString(unparAttributesExpProps);
+
+		// Set associated attribute precision
+		string unparAttributesPrecisionToSet = schematic.getStringField(
+				"attributePrecision");
+		Vector<string> parsedAttributesPrecisionToSet =
+				instance->parseStringsFromString(unparAttributesPrecisionToSet);
+
+		// Set associated exp property
+		string unparAttributesMinMaxToSet = schematic.getStringField(
+				"attributesMinMax");
+		Vector<string> parsedAttributesMinMaxToSet =
+				instance->parseStringsFromString(unparAttributesMinMaxToSet);
+
+		int ii = 0;
+		int precision;
+		string attribute, attributeExpProp;
+		float minVal, maxVal;
+
+		for (int i = 0; i < parsedAttributesToSet.size(); i++) {
+			attribute = parsedAttributesToSet.get(i);
+			minVal = atof(parsedAttributesMinMaxToSet.get(ii).c_str());
+			maxVal = atof(parsedAttributesMinMaxToSet.get(ii + 1).c_str());
+			attributeExpProp = parsedAttributesExpProps.get(i);
+			precision = atoi(parsedAttributesPrecisionToSet.get(i).c_str());
+			draftSchematic->addAttributeToSet(attribute, minVal, maxVal,
+					attributeExpProp, precision);
+			ii = ii + 2;
+		}
+
+		instance->mapDraftSchematic(draftSchematic);
+		instance->unlock();
+	} catch (...) {
+
+		instance->unlock();
+
 	}
-
-	// Save schematics tano attributes
-	string tanoAttributes = schematic.getStringField("tanoAttributes");
-	draftSchematic->setTanoAttributes(tanoAttributes);
-
-	// Set ItemAttribute properties for values in crafting assembly/experimentation
-	string unparAttributesToSet = schematic.getStringField("attributesToSet");
-	Vector<string> parsedAttributesToSet =
-		instance->parseStringsFromString(unparAttributesToSet);
-
-	// Set ItemAttribute properties for values in crafting assembly/experimentation
-	string unparAttributesExpProps = schematic.getStringField("attributeExperimentalProperties");
-	Vector<string> parsedAttributesExpProps =
-		instance->parseStringsFromString(unparAttributesExpProps);
-
-	// Set associated exp property
-	string unparAttributesMinMaxToSet = schematic.getStringField("attributesMinMax");
-	Vector<string> parsedAttributesMinMaxToSet =
-		instance->parseStringsFromString(unparAttributesMinMaxToSet);
-
-	int ii = 0;
-	string attribute, attributeExpProp;
-	float minVal, maxVal;
-
-	for (int i = 0; i < parsedAttributesToSet.size(); i++) {
-		attribute = parsedAttributesToSet.get(i);
-		minVal = atof(parsedAttributesMinMaxToSet.get(ii).c_str());
-		maxVal = atof(parsedAttributesMinMaxToSet.get(ii + 1).c_str());
-		attributeExpProp = parsedAttributesExpProps.get(i);
-		draftSchematic->addAttributeToSet(attribute, minVal, maxVal, attributeExpProp);
-		ii = ii + 2;
-	}
-
-	string xptype = schematic.getStringField("xpType");
-	draftSchematic->setXpType(xptype);
-
-	int xp = schematic.getIntField("xp");
-	draftSchematic->setXp(xp);
-
-	string assemblySkill = schematic.getStringField("assemblySkill");
-	draftSchematic->setAssemblySkill(assemblySkill);
-
-	string experimentingSkill = schematic.getStringField("experimentingSkill");
-	draftSchematic->setExperimentingSkill(experimentingSkill);
-
-	int componentMath = schematic.getIntField("componentMath");
-	//draftSchematic->setComponentMathType(componentMath);
-
-	instance->mapDraftSchematic(draftSchematic);
-	instance->unlock();
 
 	return 0;
 }
 
-void CraftingManagerImplementation::mapDraftSchematic(DraftSchematic* draftSchematic) {
+void CraftingManagerImplementation::mapDraftSchematic(
+		DraftSchematic* draftSchematic) {
 	string groupName = draftSchematic->getGroupName();
 	if (!draftSchematicsMap.contains(groupName)) {
 		DraftSchematicGroup* dsg = new DraftSchematicGroup();
@@ -2122,7 +2281,8 @@ void CraftingManagerImplementation::mapDraftSchematic(DraftSchematic* draftSchem
 
 		draftSchematicsMap.put(groupName, dsg);
 	} else
-		draftSchematicsMap.get(draftSchematic->getGroupName())->addDraftSchematic(draftSchematic);
+		draftSchematicsMap.get(draftSchematic->getGroupName())->addDraftSchematic(
+				draftSchematic);
 }
 
 int CraftingManagerImplementation::runDraftSchematicFile(lua_State* L) {
@@ -2167,7 +2327,7 @@ Vector<uint32> CraftingManagerImplementation::parseUnsignedInt32sFromString(
 
 		if (currentChar != ' ') {
 			if (currentChar == ',') {
-				uint32 resourceQuantity = (uint32)atoi(parseHelper.c_str());
+				uint32 resourceQuantity = (uint32) atoi(parseHelper.c_str());
 				parsedInts.add(resourceQuantity);
 				parseHelper.clear();
 			} else {
@@ -2177,7 +2337,7 @@ Vector<uint32> CraftingManagerImplementation::parseUnsignedInt32sFromString(
 	}
 
 	// The last template name has to be added because it was not added during the loop
-	uint32 resourceQuantity = (uint32)atoi(parseHelper.c_str());
+	uint32 resourceQuantity = (uint32) atoi(parseHelper.c_str());
 	parsedInts.add(resourceQuantity);
 
 	return parsedInts;

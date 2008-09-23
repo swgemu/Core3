@@ -44,7 +44,7 @@ which carries forward this exception.
 
 #include "../../packets.h"
 #include "../../objects.h"
-#include "../../ZoneClient.h"
+#include "../../ZoneClientSession.h"
 
 #include "../scene/SceneObject.h"
 
@@ -59,6 +59,7 @@ which carries forward this exception.
 
 #include "IgnoreList.h"
 #include "IgnoreListImplementation.h"
+
 
 PlayerObjectImplementation::PlayerObjectImplementation(Player* pl) : PlayerObjectServant(pl->getObjectID() + 0x0C, PLAYEROBJECT) {
 	player = pl;
@@ -108,7 +109,7 @@ PlayerObjectImplementation::~PlayerObjectImplementation() {
 }
 
 void PlayerObjectImplementation::sendToOwner() {
-	ZoneClient* client = player->getClient();
+	ZoneClientSession* client = player->getClient();
 
 	create(client);
 	link(client, player);
@@ -129,7 +130,7 @@ void PlayerObjectImplementation::sendToOwner() {
 }
 
 void PlayerObjectImplementation::sendTo(Player* targetPlayer, bool doClose) {
-	ZoneClient* client = targetPlayer->getClient();
+	ZoneClientSession* client = targetPlayer->getClient();
 	if (client == NULL)
 		return;
 

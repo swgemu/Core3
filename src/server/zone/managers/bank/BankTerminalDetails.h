@@ -54,9 +54,9 @@ class BankTerminalDetails : public DistributedObject {
 
 public:
 	BankTerminalDetails(int planet, int x, int z) {
-		bankPlanet=planet;
-		bankX=x;
-		bankZ=z;
+		bankPlanet = planet;
+		bankX = x;
+		bankZ = z;
 	}
 
 	inline int getPlanet() {

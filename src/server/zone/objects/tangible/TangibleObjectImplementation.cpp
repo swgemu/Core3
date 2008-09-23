@@ -42,7 +42,7 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#include "../../ZoneClient.h"
+#include "../../ZoneClientSession.h"
 #include "../creature/CreatureObject.h"
 
 #include "../player/Player.h"
@@ -57,6 +57,7 @@ which carries forward this exception.
 #include "../building/BuildingObject.h"
 #include "../building/cell/CellObject.h"
 
+#include "../player/sui/inputbox/SuiInputBoxImplementation.h"
 
 TangibleObjectImplementation::TangibleObjectImplementation(uint64 oid, int tp)
 		: TangibleObjectServant(oid, TANGIBLE) {
@@ -69,7 +70,7 @@ TangibleObjectImplementation::TangibleObjectImplementation(uint64 oid, int tp)
 	playerUseMask = ALL;
 }
 
-TangibleObjectImplementation::TangibleObjectImplementation(uint64 oid, const unicode& n, const string& tempname, uint32 tempCRC, int tp)
+TangibleObjectImplementation::TangibleObjectImplementation(uint64 oid, uint32 tempCRC, const unicode& n, const string& tempname, int tp)
 		: TangibleObjectServant(oid, TANGIBLE) {
 	initialize();
 
@@ -84,7 +85,7 @@ TangibleObjectImplementation::TangibleObjectImplementation(uint64 oid, const uni
 	playerUseMask = ALL;
 }
 
-TangibleObjectImplementation::TangibleObjectImplementation(CreatureObject* creature, const unicode& n, const string& tempname, uint32 tempCRC, int tp)
+TangibleObjectImplementation::TangibleObjectImplementation(CreatureObject* creature, uint32 tempCRC, const unicode& n, const string& tempname, int tp)
 		: TangibleObjectServant() {
 	initialize();
 
@@ -108,8 +109,8 @@ TangibleObjectImplementation::~TangibleObjectImplementation() {
 	}
 
 	delete itemAttributes;
-	itemAttributes = NULL;
 
+	itemAttributes = NULL;
 }
 
 void TangibleObjectImplementation::initialize() {
@@ -248,65 +249,17 @@ void TangibleObjectImplementation::generateSkillMods(AttributeListMessage* alm, 
 	}
 }
 
-void TangibleObjectImplementation::insertToZone(Zone* zone) {
-	TangibleObjectImplementation::zone = zone;
 
-	/*if (container != NULL) {
-		if (container->isCell())
-			building = (BuildingObject*) container->getParent();
-	}*/
-
-	try {
-		zone->lock();
-
-		zone->registerObject((TangibleObject*) _this);
-
-		zone->insert(this);
-		zone->inRange(this, 128);
-
-		zone->unlock();
-	} catch (...) {
-		cout << "exception TangibleObject::insertToZone(Zone* zone)\n";
-
-		zone->unlock();
-	}
-}
-
-void TangibleObjectImplementation::removeFromZone() {
-	if (zone == NULL)
-		return;
-
-	try {
-		zone->lock();
-
-    	for (int i = 0; i < inRangeObjectCount(); ++i) {
-			QuadTreeEntry* obj = getInRangeObject(i);
-
-			if (obj != this)
-				obj->removeInRangeObject(this);
-		}
-
-		removeInRangeObjects();
-
-		zone->remove(this);
-		zone->deleteObject(objectID);
-
-		zone->unlock();
-
-		zone = NULL;
-	} catch (...) {
-		cout << "exception TangibleObject::removeFromZone(bool doLock)\n";
-
-		zone->unlock();
-	}
-}
 
 void TangibleObjectImplementation::sendTo(Player* player, bool doClose) {
-	ZoneClient* client = player->getClient();
+	ZoneClientSession* client = player->getClient();
 	if (client == NULL)
 		return;
 
 	SceneObjectImplementation::create(client);
+
+	if(parent != NULL)
+		client->sendMessage(link(parent));
 
 	if (container != NULL)
 		link(client, container);
@@ -328,7 +281,7 @@ void TangibleObjectImplementation::sendTo(Player* player, bool doClose) {
 }
 
 void TangibleObjectImplementation::sendDestroyTo(Player* player) {
-	ZoneClient* client = player->getClient();
+	ZoneClientSession* client = player->getClient();
 	if (client == NULL)
 		return;
 
@@ -337,7 +290,7 @@ void TangibleObjectImplementation::sendDestroyTo(Player* player) {
 
 void TangibleObjectImplementation::sendDeltas(Player* player) {
 
-	ZoneClient* client = player->getClient();
+	ZoneClientSession* client = player->getClient();
 	if (client == NULL)
 		return;
 
@@ -351,7 +304,7 @@ void TangibleObjectImplementation::sendDeltas(Player* player) {
 }
 
 void TangibleObjectImplementation::close(Player* player) {
-	ZoneClient* client = player->getClient();
+	ZoneClientSession* client = player->getClient();
 	if (client == NULL)
 		return;
 
@@ -392,6 +345,27 @@ void TangibleObjectImplementation::repairItem(Player* player) {
 	player->broadcastMessage(dtano3);
 
 	updated = true;
+}
+
+void TangibleObjectImplementation::setObjectName(Player * player) {
+	try {
+		//player->wlock();
+		player->setCurrentStructureID(this->getObjectID());
+		//player->unlock();
+
+		SuiInputBox * setTheName = new SuiInputBox(player, 0x7283, 0x00);
+
+		setTheName->setPromptTitle("Name the Object");
+		setTheName->setPromptText("Please enter the new name you would like for this object");
+
+		player->addSuiBox(setTheName);
+		player->sendMessage(setTheName->generateMessage());
+
+	}
+	catch(...) {
+		cout << "Unreported exception in TangibleObjectImplementation::setObjectName\n";
+		//player->unlock();
+	}
 }
 
 void TangibleObjectImplementation::decay(int decayRate) {

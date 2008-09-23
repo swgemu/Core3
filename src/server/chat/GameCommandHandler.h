@@ -144,6 +144,7 @@ private:
 	static void kickArea(StringTokenizer tokenizer, Player * player);
 	static void printRoomTree(StringTokenizer tokenizer, Player * player);
 	static void banUser(StringTokenizer tokenizer, Player * player);
+	static void getForumName(StringTokenizer tokenizer, Player* player);
 	static void mutePlayer(StringTokenizer tokenizer, Player * player);
 	static void kill(StringTokenizer tokenizer, Player * player);
 	static void killArea(StringTokenizer tokenizer, Player * player);
@@ -175,6 +176,9 @@ private:
 	static void clientEffect(StringTokenizer tokenizer, Player * player);
 	static void revive(StringTokenizer tokenizer, Player * player);
 	static void immune(StringTokenizer tokenizer, Player * player);
+	static void reloadSchematics(StringTokenizer tokenizer, Player * player);
+	static void spawn(StringTokenizer tokenizer, Player * player);
+	static void addNoBuildArea(StringTokenizer tokenizer, Player * player);
 
 	void init();
 

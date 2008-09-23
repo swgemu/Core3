@@ -63,16 +63,18 @@ interface BuildingObject implements SceneObject {
 	//void sendDestroyTo(Player* player);
 		
 	void addCell(CellObject cell);
-	
-	void insertToZone(Zone zone);
-	void removeFromZone();
-	
-	void notifyInsertToZone(CreatureObject creature);
+		
+	void notifyInsertToZone(SceneObject object);
 		
 	boolean isStatic();
 	
 	int getBuildingType();
 	void setBuildingType(int type);
+	
+	string getName();
+	void setName(string name);
+	
+	string getDefaultName();
 	
 	void lock(boolean doLock = true);
 	void unlock(boolean doLock = true);

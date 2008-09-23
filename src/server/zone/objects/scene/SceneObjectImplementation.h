@@ -53,8 +53,14 @@ which carries forward this exception.
 
 #include "events/UndeploySceneObjectEvent.h"
 
+#include "../area/BaseArea.h"
+
+#include "../../managers/planet/PlanetManager.h"
+
+#include "../../Zone.h"
+
 class Zone;
-class ZoneClient;
+class ZoneClientSession;
 class Player;
 
 class ZoneProcessServerImplementation;
@@ -91,6 +97,8 @@ protected:
 
 	bool keepObject;
 
+	uint64 associatedArea;
+
 public:
 	static const int NONPLAYERCREATURE = 1;
 	static const int PLAYER = 2;
@@ -123,14 +131,22 @@ public:
 
 	void removeUndeploymentEvent();
 
-	void create(ZoneClient* client);
-	void destroy(ZoneClient* client);
+	void create(ZoneClientSession* client);
+	void destroy(ZoneClientSession* client);
 
-	void link(ZoneClient* client, SceneObject* obj);
+	void link(ZoneClientSession* client, SceneObject* obj);
 	BaseMessage* link(SceneObject* obj);
 	BaseMessage* link(uint64 container, uint32 type);
 
-	void close(ZoneClient* client);
+	void close(ZoneClientSession* client);
+
+	void insertToZone(Zone * zone);
+	void insertToBuilding(BuildingObject * building);
+	void removeFromZone(bool doLock = true);
+	void removeFromBuilding(BuildingObject* building);
+
+	void broadcastMessage(BaseMessage* msg, int range = 128, bool doLock = true);
+	void broadcastMessage(StandaloneBaseMessage* msg, int range = 128, bool doLock = true);
 
 	virtual void sendTo(Player* player, bool doClose = true) {
 	}
@@ -363,6 +379,10 @@ public:
 		return undeployEvent != NULL;
 	}
 
+	inline void setAssociatedArea(uint64 uid) {
+		associatedArea = uid;
+	}
+
 	// getters
 	inline Zone* getZone() {
 		return zone;
@@ -423,6 +443,15 @@ public:
 			return parent->getObjectID();
 	}
 
+	inline float getPrecision(float num, int digits) {
+		float power = pow(10, digits);
+		return floor(num * power + .05f) / power;
+	}
+
+	inline uint64 getAssociatedArea() {
+		return associatedArea;
+	}
+
 	inline bool doKeepObject() {
 		return keepObject;
 	}
@@ -464,6 +493,12 @@ public:
 
 	virtual bool isAttackableBy(CreatureObject* creature) {
 		return false;
+	}
+
+	inline bool isInANoBuildArea() {
+		PlanetManager * planetManager = this->getZone()->getPlanetManager();
+
+		return planetManager->isNoBuildArea(positionX, positionY);
 	}
 
 };

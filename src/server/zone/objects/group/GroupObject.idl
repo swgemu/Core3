@@ -51,7 +51,7 @@ import "../player/Player";
 import "../../../chat/room/ChatRoom";
 
 interface GroupObject implements SceneObject {
-	GroupObject(unsigned long oid, Player leader) {
+	GroupObject(unsigned long oid, Player leader, boolean mode) {
 		super(oid, int type);
 	}
 	

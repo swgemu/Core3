@@ -46,10 +46,10 @@ which carries forward this exception.
 #include "../../../objects.h"
 #include "CraftingStation.h"
 #include "CraftingStationImplementation.h"
-#include "../../../ZoneClient.h"
+#include "../../../ZoneClientSession.h"
  
 CraftingStationImplementation::CraftingStationImplementation(uint64 object_id, uint32 tempCRC, 
-		const unicode& n, const string& tempn) : CraftingStationServant(object_id, n, tempn, tempCRC, 
+		const unicode& n, const string& tempn) : CraftingStationServant(object_id, tempCRC, n, tempn, 
 				CRAFTINGTOOL) {
 	objectCRC = tempCRC;
 	templateTypeName = "obj_n";
@@ -59,7 +59,7 @@ CraftingStationImplementation::CraftingStationImplementation(uint64 object_id, u
 }
  
 CraftingStationImplementation::CraftingStationImplementation(CreatureObject* creature, uint32 tempCRC, 
-		const unicode& n, const string& tempn) : CraftingStationServant(creature, n, tempn, tempCRC, 
+		const unicode& n, const string& tempn) : CraftingStationServant(creature, tempCRC, n, tempn, 
 				CRAFTINGTOOL) {
 	objectCRC = tempCRC;
 	templateTypeName = "obj_n";
@@ -106,7 +106,7 @@ int CraftingStationImplementation::useObject(Player* player) {
 }
  
 /*void CraftingToolImplementation::sendTo(Player* player, bool doClose) {
-	ZoneClient* client = player->getClient();
+	ZoneClientSession* client = player->getClient();
 	if (client == NULL)
 		return;
 	SceneObjectImplementation::create(client);
@@ -134,5 +134,6 @@ void CraftingStationImplementation::generateAttributes(SceneObject* obj) {
 	
 	player->sendMessage(alm);
 }
+
 
 

@@ -17,6 +17,11 @@ DraftSchematicExpPropGroup::DraftSchematicExpPropGroup() {
 	_impl->_setStub(this);
 }
 
+DraftSchematicExpPropGroup::DraftSchematicExpPropGroup(DraftSchematicExpPropGroup* group) {
+	_impl = new DraftSchematicExpPropGroupImplementation(group);
+	_impl->_setStub(this);
+}
+
 DraftSchematicExpPropGroup::DraftSchematicExpPropGroup(DummyConstructorParameter* param) {
 	_impl = NULL;
 }
@@ -116,6 +121,149 @@ unsigned char DraftSchematicExpPropGroup::getTypeAndWeight(unsigned int index) {
 		return ((DraftSchematicExpPropGroupImplementation*) _impl)->getTypeAndWeight(index);
 }
 
+string& DraftSchematicExpPropGroup::getKey(int i) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 13);
+		method.addSignedIntParameter(i);
+
+		method.executeWithAsciiReturn(_return_getKey);
+		return _return_getKey;
+	} else
+		return ((DraftSchematicExpPropGroupImplementation*) _impl)->getKey(i);
+}
+
+int DraftSchematicExpPropGroup::getKeyCount() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 14);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((DraftSchematicExpPropGroupImplementation*) _impl)->getKeyCount();
+}
+
+string& DraftSchematicExpPropGroup::getExpPropTypesKey(int i) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 15);
+		method.addSignedIntParameter(i);
+
+		method.executeWithAsciiReturn(_return_getExpPropTypesKey);
+		return _return_getExpPropTypesKey;
+	} else
+		return ((DraftSchematicExpPropGroupImplementation*) _impl)->getExpPropTypesKey(i);
+}
+
+unsigned char DraftSchematicExpPropGroup::getExpPropTypesValue(int i) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 16);
+		method.addSignedIntParameter(i);
+
+		return method.executeWithUnsignedCharReturn();
+	} else
+		return ((DraftSchematicExpPropGroupImplementation*) _impl)->getExpPropTypesValue(i);
+}
+
+int DraftSchematicExpPropGroup::getExpPropTypesSize() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 17);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((DraftSchematicExpPropGroupImplementation*) _impl)->getExpPropTypesSize();
+}
+
+string& DraftSchematicExpPropGroup::getExpPropWeightsKey(int i) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 18);
+		method.addSignedIntParameter(i);
+
+		method.executeWithAsciiReturn(_return_getExpPropWeightsKey);
+		return _return_getExpPropWeightsKey;
+	} else
+		return ((DraftSchematicExpPropGroupImplementation*) _impl)->getExpPropWeightsKey(i);
+}
+
+unsigned char DraftSchematicExpPropGroup::getExpPropWeightsValue(int i) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 19);
+		method.addSignedIntParameter(i);
+
+		return method.executeWithUnsignedCharReturn();
+	} else
+		return ((DraftSchematicExpPropGroupImplementation*) _impl)->getExpPropWeightsValue(i);
+}
+
+int DraftSchematicExpPropGroup::getExpPropWeightsSize() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 20);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((DraftSchematicExpPropGroupImplementation*) _impl)->getExpPropWeightsSize();
+}
+
+string& DraftSchematicExpPropGroup::getExpPropWeightPercentagesKey(int i) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 21);
+		method.addSignedIntParameter(i);
+
+		method.executeWithAsciiReturn(_return_getExpPropWeightPercentagesKey);
+		return _return_getExpPropWeightPercentagesKey;
+	} else
+		return ((DraftSchematicExpPropGroupImplementation*) _impl)->getExpPropWeightPercentagesKey(i);
+}
+
+float DraftSchematicExpPropGroup::getExpPropWeightPercentagesValue(int i) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 22);
+		method.addSignedIntParameter(i);
+
+		return method.executeWithFloatReturn();
+	} else
+		return ((DraftSchematicExpPropGroupImplementation*) _impl)->getExpPropWeightPercentagesValue(i);
+}
+
+int DraftSchematicExpPropGroup::getExpPropWeightPercentagesSize() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 23);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((DraftSchematicExpPropGroupImplementation*) _impl)->getExpPropWeightPercentagesSize();
+}
+
 /*
  *	DraftSchematicExpPropGroupAdapter
  */
@@ -147,6 +295,39 @@ Packet* DraftSchematicExpPropGroupAdapter::invokeMethod(uint32 methid, Distribut
 		break;
 	case 12:
 		resp->insertByte(getTypeAndWeight(inv->getUnsignedIntParameter()));
+		break;
+	case 13:
+		resp->insertAscii(getKey(inv->getSignedIntParameter()));
+		break;
+	case 14:
+		resp->insertSignedInt(getKeyCount());
+		break;
+	case 15:
+		resp->insertAscii(getExpPropTypesKey(inv->getSignedIntParameter()));
+		break;
+	case 16:
+		resp->insertByte(getExpPropTypesValue(inv->getSignedIntParameter()));
+		break;
+	case 17:
+		resp->insertSignedInt(getExpPropTypesSize());
+		break;
+	case 18:
+		resp->insertAscii(getExpPropWeightsKey(inv->getSignedIntParameter()));
+		break;
+	case 19:
+		resp->insertByte(getExpPropWeightsValue(inv->getSignedIntParameter()));
+		break;
+	case 20:
+		resp->insertSignedInt(getExpPropWeightsSize());
+		break;
+	case 21:
+		resp->insertAscii(getExpPropWeightPercentagesKey(inv->getSignedIntParameter()));
+		break;
+	case 22:
+		resp->insertFloat(getExpPropWeightPercentagesValue(inv->getSignedIntParameter()));
+		break;
+	case 23:
+		resp->insertSignedInt(getExpPropWeightPercentagesSize());
 		break;
 	default:
 		return NULL;
@@ -181,6 +362,50 @@ float DraftSchematicExpPropGroupAdapter::getExpPropPercentage(unsigned int index
 
 unsigned char DraftSchematicExpPropGroupAdapter::getTypeAndWeight(unsigned int index) {
 	return ((DraftSchematicExpPropGroupImplementation*) impl)->getTypeAndWeight(index);
+}
+
+string& DraftSchematicExpPropGroupAdapter::getKey(int i) {
+	return ((DraftSchematicExpPropGroupImplementation*) impl)->getKey(i);
+}
+
+int DraftSchematicExpPropGroupAdapter::getKeyCount() {
+	return ((DraftSchematicExpPropGroupImplementation*) impl)->getKeyCount();
+}
+
+string& DraftSchematicExpPropGroupAdapter::getExpPropTypesKey(int i) {
+	return ((DraftSchematicExpPropGroupImplementation*) impl)->getExpPropTypesKey(i);
+}
+
+unsigned char DraftSchematicExpPropGroupAdapter::getExpPropTypesValue(int i) {
+	return ((DraftSchematicExpPropGroupImplementation*) impl)->getExpPropTypesValue(i);
+}
+
+int DraftSchematicExpPropGroupAdapter::getExpPropTypesSize() {
+	return ((DraftSchematicExpPropGroupImplementation*) impl)->getExpPropTypesSize();
+}
+
+string& DraftSchematicExpPropGroupAdapter::getExpPropWeightsKey(int i) {
+	return ((DraftSchematicExpPropGroupImplementation*) impl)->getExpPropWeightsKey(i);
+}
+
+unsigned char DraftSchematicExpPropGroupAdapter::getExpPropWeightsValue(int i) {
+	return ((DraftSchematicExpPropGroupImplementation*) impl)->getExpPropWeightsValue(i);
+}
+
+int DraftSchematicExpPropGroupAdapter::getExpPropWeightsSize() {
+	return ((DraftSchematicExpPropGroupImplementation*) impl)->getExpPropWeightsSize();
+}
+
+string& DraftSchematicExpPropGroupAdapter::getExpPropWeightPercentagesKey(int i) {
+	return ((DraftSchematicExpPropGroupImplementation*) impl)->getExpPropWeightPercentagesKey(i);
+}
+
+float DraftSchematicExpPropGroupAdapter::getExpPropWeightPercentagesValue(int i) {
+	return ((DraftSchematicExpPropGroupImplementation*) impl)->getExpPropWeightPercentagesValue(i);
+}
+
+int DraftSchematicExpPropGroupAdapter::getExpPropWeightPercentagesSize() {
+	return ((DraftSchematicExpPropGroupImplementation*) impl)->getExpPropWeightPercentagesSize();
 }
 
 /*

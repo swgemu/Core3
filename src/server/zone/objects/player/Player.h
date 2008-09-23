@@ -11,7 +11,7 @@
 
 #include "engine/service/proto/StandaloneBaseMessage.h"
 
-class ZoneClient;
+class ZoneClientSession;
 
 class Zone;
 
@@ -61,13 +61,13 @@ public:
 
 	Player(unsigned long long oid);
 
-	void create(ZoneClient* client);
+	void create(ZoneClientSession* client);
 
-	void refuseCreate(ZoneClient* client);
+	void refuseCreate(ZoneClientSession* client);
 
-	void load(ZoneClient* client);
+	void load(ZoneClientSession* client);
 
-	void reload(ZoneClient* client);
+	void reload(ZoneClientSession* client);
 
 	void unload();
 
@@ -415,7 +415,7 @@ public:
 
 	void clearDisconnectEvent();
 
-	void setClient(ZoneClient* client);
+	void setClient(ZoneClientSession* client);
 
 	void setOvert();
 
@@ -424,6 +424,8 @@ public:
 	void newChangeFactionEvent(unsigned int faction);
 
 	void setRaceFileName(string& name);
+
+	void setRaceID(unsigned char id);
 
 	void setStartingLocation(string& loc);
 
@@ -467,6 +469,8 @@ public:
 
 	bool hasSuiBoxType(unsigned int boxTypeID);
 
+	unsigned int getSuiBoxFromType(unsigned int boxTypeID);
+
 	void removeSuiBox(unsigned int boxID);
 
 	SuiBox* getSuiBox(unsigned int boxID);
@@ -497,6 +501,8 @@ public:
 
 	string& getRaceFileName();
 
+	unsigned char getRaceID();
+
 	unicode& getBiography();
 
 	unsigned long long getCharacterID();
@@ -507,7 +513,7 @@ public:
 
 	string& getHairObject();
 
-	ZoneClient* getClient();
+	ZoneClientSession* getClient();
 
 	GroupObject* getGroupObject();
 
@@ -540,6 +546,8 @@ public:
 	bool isChatMuted();
 
 	bool isImmune();
+
+	string& getInputBoxReturnBuffer();
 
 	unsigned int nextMisoRFC();
 
@@ -615,6 +623,12 @@ public:
 
 	unsigned int getForcePowerMax();
 
+	bool isGuildLeader();
+
+	unsigned long long getCurrentStructureID();
+
+	void setCurrentStructureID(unsigned long long oid);
+
 	SurveyTool* getSurveyTool();
 
 	SurveyTool* getSampleTool();
@@ -653,6 +667,8 @@ public:
 
 	bool getSampleErrorMessage();
 
+	void sendMail(string& mailsender, unicode& subjectSender, unicode& bodySender, string& charNameSender);
+
 	void setEntertainerEvent();
 
 	void clearEntertainerEvent();
@@ -665,6 +681,22 @@ public:
 
 	string& getLastNpcConvMessStr();
 
+	void setInputBoxReturnBuffer(const string& message);
+
+	void setGuildLeader(bool guildLeader = true);
+
+	void loadGuildChat();
+
+	void setGuildPermissions(unsigned int bit);
+
+	unsigned int getGuildPermissions();
+
+	bool setGuildPermissionsBit(unsigned int bit, bool updateClient = false);
+
+	void toggleGuildPermissionsBit(unsigned int bit);
+
+	bool clearGuildPermissionsBit(unsigned int bit, bool updateClient = false);
+
 protected:
 	Player(DummyConstructorParameter* param);
 
@@ -676,6 +708,7 @@ protected:
 	string _return_getFirstName;
 	string _return_getFirstNameProper;
 	string _return_getHairObject;
+	string _return_getInputBoxReturnBuffer;
 	string _return_getLastName;
 	string _return_getLastNpcConvMessStr;
 	string _return_getLastNpcConvStr;
@@ -696,13 +729,13 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	void create(ZoneClient* client);
+	void create(ZoneClientSession* client);
 
-	void refuseCreate(ZoneClient* client);
+	void refuseCreate(ZoneClientSession* client);
 
-	void load(ZoneClient* client);
+	void load(ZoneClientSession* client);
 
-	void reload(ZoneClient* client);
+	void reload(ZoneClientSession* client);
 
 	void unload();
 
@@ -1050,7 +1083,7 @@ public:
 
 	void clearDisconnectEvent();
 
-	void setClient(ZoneClient* client);
+	void setClient(ZoneClientSession* client);
 
 	void setOvert();
 
@@ -1059,6 +1092,8 @@ public:
 	void newChangeFactionEvent(unsigned int faction);
 
 	void setRaceFileName(string& name);
+
+	void setRaceID(unsigned char id);
 
 	void setStartingLocation(string& loc);
 
@@ -1102,6 +1137,8 @@ public:
 
 	bool hasSuiBoxType(unsigned int boxTypeID);
 
+	unsigned int getSuiBoxFromType(unsigned int boxTypeID);
+
 	void removeSuiBox(unsigned int boxID);
 
 	SuiBox* getSuiBox(unsigned int boxID);
@@ -1132,6 +1169,8 @@ public:
 
 	string& getRaceFileName();
 
+	unsigned char getRaceID();
+
 	unicode& getBiography();
 
 	unsigned long long getCharacterID();
@@ -1142,7 +1181,7 @@ public:
 
 	string& getHairObject();
 
-	ZoneClient* getClient();
+	ZoneClientSession* getClient();
 
 	GroupObject* getGroupObject();
 
@@ -1175,6 +1214,8 @@ public:
 	bool isChatMuted();
 
 	bool isImmune();
+
+	string& getInputBoxReturnBuffer();
 
 	unsigned int nextMisoRFC();
 
@@ -1250,6 +1291,12 @@ public:
 
 	unsigned int getForcePowerMax();
 
+	bool isGuildLeader();
+
+	unsigned long long getCurrentStructureID();
+
+	void setCurrentStructureID(unsigned long long oid);
+
 	SurveyTool* getSurveyTool();
 
 	SurveyTool* getSampleTool();
@@ -1288,6 +1335,8 @@ public:
 
 	bool getSampleErrorMessage();
 
+	void sendMail(string& mailsender, unicode& subjectSender, unicode& bodySender, string& charNameSender);
+
 	void setEntertainerEvent();
 
 	void clearEntertainerEvent();
@@ -1299,6 +1348,22 @@ public:
 	string& getLastNpcConvStr();
 
 	string& getLastNpcConvMessStr();
+
+	void setInputBoxReturnBuffer(const string& message);
+
+	void setGuildLeader(bool guildLeader);
+
+	void loadGuildChat();
+
+	void setGuildPermissions(unsigned int bit);
+
+	unsigned int getGuildPermissions();
+
+	bool setGuildPermissionsBit(unsigned int bit, bool updateClient);
+
+	void toggleGuildPermissionsBit(unsigned int bit);
+
+	bool clearGuildPermissionsBit(unsigned int bit, bool updateClient);
 
 protected:
 	string _param0_queueFlourish__string_long_int_;
@@ -1342,8 +1407,13 @@ protected:
 	string _param0_subtractDraftSchematicsFromGroupName__string_;
 	string _param0_setSurveyEvent__string_;
 	string _param0_setSampleEvent__string_bool_;
+	string _param0_sendMail__string_unicode_unicode_string_;
+	unicode _param1_sendMail__string_unicode_unicode_string_;
+	unicode _param2_sendMail__string_unicode_unicode_string_;
+	string _param3_sendMail__string_unicode_unicode_string_;
 	string _param0_setLastNpcConvStr__string_;
 	string _param0_setLastNpcConvMessStr__string_;
+	string _param0_setInputBoxReturnBuffer__string_;
 };
 
 class PlayerHelper : public DistributedObjectClassHelper, public Singleton<PlayerHelper> {

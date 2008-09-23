@@ -48,12 +48,13 @@ import "../guild/GuildManager";
 import "../../objects/player/Player";
 import "../../objects/tangible/TangibleObject";
 
-import "server/zone/ZoneClient";
+import "server/zone/ZoneClientSession";
 include "server/zone/ZoneProcessServerImplementation";
 
 import "PlayerMap";
 
 include "engine/service/proto/BaseMessage";
+
 
 interface PlayerManager {
 	PlayerManager(ItemManager itemManager, ZoneProcessServerImplementation processor) {
@@ -66,7 +67,7 @@ interface PlayerManager {
 	boolean validateName(string name);
 
 	BaseMessage checkPlayerName(const string name, const string species);
-	BaseMessage attemptPlayerCreation(Player player, ZoneClient client);
+	BaseMessage attemptPlayerCreation(Player player, ZoneClientSession client);
 
 	Player load(unsigned long charid);
 
@@ -93,6 +94,8 @@ interface PlayerManager {
 	void updatePlayerBaseHAMToDatabase(Player player);
 
 	void updateOtherFriendlists(Player player, boolean status);
+	
+	void updateGuildStatus(Player player);
 
 	void setGuildManager(GuildManager gmanager);
 

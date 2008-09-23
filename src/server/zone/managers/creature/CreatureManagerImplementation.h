@@ -58,9 +58,14 @@ which carries forward this exception.
 #include "../../objects/creature/CreatureImplementation.h"
 #include "../../objects/creature/bluefrog/BlueFrogCreature.h"
 #include "../../objects/creature/bluefrog/BlueFrogCreatureImplementation.h"
+#include "../../objects/creature/action/ActionCreature.h"
+#include "../../objects/creature/action/ActionCreatureImplementation.h"
+#include "../../objects/creature/action/Action.h"
+#include "../../objects/creature/action/ActionImplementation.h"
 
 #include "CreatureMap.h"
 #include "LairMap.h"
+#include "SpawnInfoMap.h"
 
 #include "CreatureManager.h"
 
@@ -78,9 +83,11 @@ class CreatureManagerImplementation : public CreatureManagerServant, public Thre
 
 	ZoneProcessServerImplementation* server;
 
+	static SpawnInfoMap* spawnInfoMap;
 	static CreatureManagerImplementation* instance;
 
 public:
+
 	static const int LINE_LAYOUT = 1;
 	static const int GRID_LAYOUT = 2;
 	static const int RANDOM_LAYOUT = 3;
@@ -102,6 +109,7 @@ public:
 	void loadRecruiters();
 	void loadStaticCreatures();
 	void loadBlueFrogs();
+	void loadMissionCreatures();
 
 	void load(Creature* creature);
 	void unloadCreature(Creature* creature);
@@ -110,13 +118,16 @@ public:
 	//Creature* spawnCreature(const string& stfname, const string& name, int objCrc, float x, float y, int bitmask = 0x00, bool doLock = true);
 	Creature* spawnCreature(uint32 objcrc, uint64 cellid, float x, float y, int bitmask = 0, bool baby = false, bool doLock = true);
 	TrainerCreature* spawnTrainer(const string& profession, const string& stfname, const string& name, int objCrc, uint64 cell, float x, float y, float z, float oy, float ow, bool doLock = true);
-	ShuttleCreature* spawnShuttle(const string& Planet, const string& City, Coordinate* playerSpawnPoint, float x, float y, float z, uint32 tax = 0, bool starport = false, bool doLock = true);
+	ShuttleCreature* spawnShuttle(const string& Planet, const string& City, Coordinate* playerSpawnPoint, uint64 cellid,float x, float y, float z, uint32 tax = 0, bool starport = false, bool doLock = true);
 	RecruiterCreature* spawnRecruiter(const string& stfname, const string& name, int objCrc, float x, float y, bool doLock = true);
 	BlueFrogCreature* spawnBlueFrog(float x, float y, float oY, float oW, int type = 0, uint64 cellid = 0, bool doLock = true);
+	ActionCreature* spawnActionCreature(string& name, string& stfname, uint32 objCrc, string misoKey, float x, float y, float oY, float oW, uint64 cellid = 0, bool doLock = true);
 	//CreatureGroup* spawnCreatureGroup(int count, const string& stfname, const string& name, int objCrc, float x, float y, int bitmask = 0x00, int layout = LINE_LAYOUT);
 	LairObject* spawnLair(const string& type, float x, float y, float z, bool doLock = true);
 	void despawnCreature(Creature* creature);
 	void respawnCreature(Creature* creature);
+
+	uint32 getCreatureCrc(string name);
 
 	void unloadManager();
 
@@ -130,6 +141,8 @@ public:
 	void loadObjectFile() {
 		runFile("scripts/sceneobjects/main.lua");
 	}
+
+	bool hotLoadCreature(string name);
 
 	//creature naming
 	string makeStormTrooperName();
@@ -156,6 +169,7 @@ public:
 	void dequeueActivity(CreatureImplementation* creature) {
 		creatureActivityQueue.remove(creature);
 	}
+
 
 private:
 	uint64 getNextCreatureID();

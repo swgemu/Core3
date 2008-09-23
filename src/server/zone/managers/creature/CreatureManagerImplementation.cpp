@@ -56,6 +56,8 @@ which carries forward this exception.
 #include "../../objects/creature/trainer/TrainerCreature.h"
 #include "../../objects/creature/recruiter/RecruiterCreature.h"
 #include "../../objects/creature/shuttle/ShuttleCreature.h"
+#include "../../objects/creature/action/ActionCreature.h"
+#include "../../objects/creature/action/Action.h"
 
 #include "../../objects/creature/CreatureGroup.h"
 
@@ -71,6 +73,7 @@ which carries forward this exception.
 #include "../../ZoneProcessServerImplementation.h"
 
 CreatureManagerImplementation* CreatureManagerImplementation::instance = NULL;
+SpawnInfoMap* CreatureManagerImplementation::spawnInfoMap;
 
 CreatureManagerImplementation::CreatureManagerImplementation(Zone* zone, ZoneProcessServerImplementation* serv) : CreatureManagerServant(), Thread(), Mutex("CreatureManager"),
 		Lua() {
@@ -104,6 +107,12 @@ CreatureManagerImplementation::~CreatureManagerImplementation() {
 		delete scheduler;
 		scheduler = NULL;
 	}
+
+	if (spawnInfoMap != NULL) {
+		delete spawnInfoMap;
+		spawnInfoMap = NULL;
+	}
+
 }
 
 void CreatureManagerImplementation::init() {
@@ -113,6 +122,10 @@ void CreatureManagerImplementation::init() {
 	scheduler = new ScheduleManager("CreatureScheduler");
 
 	instance = this;
+
+	if(spawnInfoMap == NULL){
+		spawnInfoMap = new SpawnInfoMap();
+	}
 
 	// Scripting
 	Lua::init();
@@ -128,6 +141,7 @@ void CreatureManagerImplementation::loadCreatures() {
 	loadRecruiters();
 	loadStaticCreatures();
 	loadBlueFrogs();
+	loadMissionCreatures();
 }
 
 void CreatureManagerImplementation::run() {
@@ -243,6 +257,53 @@ void CreatureManagerImplementation::loadTrainers() {
 	}
 }
 
+void CreatureManagerImplementation::loadMissionCreatures() {
+	//temporary to work with hardcode missions
+	/*
+	if (zone->getZoneID() == 5) {
+		string name = "MAN O' ACTION";
+		string stf = "";
+		ActionCreature* tac;
+		tac = spawnActionCreature(name, stf, 0x8C73B91, "testM27", -4844.0f, 4155.0f, -.0339502, .999424);
+
+		int actmsk;
+		actmsk |= ActionImplementation::TYPE_CONVERSE;
+		Action* act = new Action((SceneObject*)tac, actmsk, 0);
+		string scrnId = "0";
+		string leftBox = "Do you have...it?";
+		string Options = "Yes, here.|The weather is quite nice!|No, sorry I forgot."; //separate by |
+		string optLink = "1,none|2,none|ENDCNV,none"; //separate by | (nextScreenID,actionKey)
+		act->addConvoScreen(scrnId, leftBox, 3, Options, optLink);
+
+		//Converstaion window in response to Yes, Here:
+		scrnId = "1";
+		leftBox = "Cool you have it? Give it to me!";
+		Options = "Here|No, bye.";
+		optLink = "EXECACTION,finm27|ENDCNV,none";
+		act->addConvoScreen(scrnId, leftBox, 1, Options, optLink);
+
+		//Conversation window in response to weather:
+		scrnId = "2";
+		leftBox = "Yea the weather is pretty nice..";
+		Options = "Bye.";
+		optLink = "ENDCNV,none";
+		act->addConvoScreen(scrnId, leftBox, 1, Options, optLink);
+
+		string actionKey = "KEYA";
+		tac->addAction(actionKey, act);
+		tac->onConverse(actionKey); //link onConverse to action "KEYA"
+
+		//Complete Mission Key:
+		actmsk = 0;
+		actmsk |= ActionImplementation::TYPE_TAKEITEM;
+		actmsk |= ActionImplementation::TYPE_COMPMISSION;
+		Action* act2 = new Action((SceneObject*)tac, actmsk, 0);
+
+		actionKey = "finm27";
+		tac->addAction(actionKey, act2);
+	}*/
+}
+
 void CreatureManagerImplementation::loadStaticCreatures() {
 }
 
@@ -285,6 +346,36 @@ CreatureGroup* CreatureManagerImplementation::spawnCreatureGroup(int count, cons
 }
 */
 
+ActionCreature* CreatureManagerImplementation::spawnActionCreature(string& name, string& stfname, uint32 objCrc, string misoKey, float x, float y, float oY, float oW, uint64 cellid, bool doLock) {
+	try {
+		lock(doLock);
+
+		ActionCreature* actCr = new ActionCreature(getNextCreatureID(), objCrc, name, stfname, misoKey, server->getMissionManager());
+
+		actCr->setTerrainName(Terrain::getTerrainName(zone->getZoneID()));
+
+		actCr->setHeight(1.0f);
+		actCr->initializePosition(x, 0, y);
+		actCr->setParent(instance->getZone()->lookupObject(cellid));
+		actCr->setDirection(0, 0, oY, oW);
+		actCr->setPvpStatusBitmask(0);
+
+		load(actCr);
+
+		actCr->insertToZone(zone);
+
+		creatureMap->put(actCr->getObjectID(), actCr);
+
+		unlock(doLock);
+		return actCr;
+	} catch (...) {
+		error("unreported Exception caught on spawnActionCreature()");
+
+		unlock(doLock);
+		return NULL;
+	}
+}
+
 BlueFrogCreature* CreatureManagerImplementation::spawnBlueFrog(float x, float y, float oY, float oW, int type, uint64 cellid, bool doLock) {
 	try {
 		lock(doLock);
@@ -321,6 +412,12 @@ TrainerCreature* CreatureManagerImplementation::spawnTrainer(const string& profe
 		lock(doLock);
 
 		Profession* prof = server->getProfessionManager()->professionMap.get(profession);
+
+		if (prof == NULL) {
+			error("Trying to load trainer with unknown profession " + profession);
+			unlock(doLock);
+			return NULL;
+		}
 
 		TrainerCreature* trainer = new TrainerCreature(getNextCreatureID(), prof);
 		trainer->deploy();
@@ -395,11 +492,12 @@ RecruiterCreature* CreatureManagerImplementation::spawnRecruiter(const string& s
 	}
 }
 
-ShuttleCreature* CreatureManagerImplementation::spawnShuttle(const string& Planet, const string& City, Coordinate* playerSpawnPoint, float x, float y, float z, uint32 tax, bool starport, bool doLock) {
+ShuttleCreature* CreatureManagerImplementation::spawnShuttle(const string& Planet, const string& City, Coordinate* playerSpawnPoint, uint64 cellid, float x, float y, float z, uint32 tax, bool starport, bool doLock) {
 	try {
 		lock(doLock);
 
 		ShuttleCreature* shuttle = new ShuttleCreature(Planet, City, playerSpawnPoint, getNextCreatureID(), tax, starport);
+		shuttle->setParent(instance->getZone()->lookupObject(cellid));
 		shuttle->deploy();
 
 		shuttle->setTerrainName(Terrain::getTerrainName(zone->getZoneID()));
@@ -424,7 +522,6 @@ ShuttleCreature* CreatureManagerImplementation::spawnShuttle(const string& Plane
 	}
 }
 
-
 Creature* CreatureManagerImplementation::spawnCreature(uint32 objcrc, uint64 cellid, float x, float y, int bitmask, bool baby, bool doLock) {
 	instance->lock(doLock);
 	Creature* creature = new Creature(getNextCreatureID());
@@ -440,11 +537,13 @@ Creature* CreatureManagerImplementation::spawnCreature(uint32 objcrc, uint64 cel
 
 		LuaObject result(getLuaState());
 		if (!result.isValidTable()) {
-			cout << "Unknown object CRC " << objcrc << endl;
+			info("Unknown object CRC " + objcrc);
+			instance->unlock(doLock);
 			return NULL;
 		}
 
 		string objectName = result.getStringField("objectName");
+
 		string stfname = result.getStringField("stfName");
 		if (baby)
 			stfname += " baby";
@@ -829,11 +928,13 @@ int CreatureManagerImplementation::addCreature(lua_State *L) {
 	creature->deploy();
 
 	string objectName = creatureConfig.getStringField("objectName");
+
 	string stfname = creatureConfig.getStringField("stfName");
 	string name = creatureConfig.getStringField("name");
 
 	creature->setObjectCRC(creatureConfig.getIntField("objectCRC"));
 
+	spawnInfoMap->addCRC(objectName, creatureConfig.getIntField("objectCRC"));
 
 	if (!stfname.empty())
 		creature->setCharacterName(stfname);
@@ -938,6 +1039,23 @@ int CreatureManagerImplementation::addLair(lua_State * L) {
 int CreatureManagerImplementation::runCreatureFile(lua_State* L) {
 	string filename = getStringParameter(L);
 
+	if ((int) filename.find("objects/") >= 0  &&
+			filename.find_last_of('/') != filename.find_first_of('/')) {
+
+		int size = (filename.find_last_of('/') + 1) - filename.find_first_of('.');
+
+		string templatename = filename.substr(filename.find_last_of('/') + 1, size);
+
+		templatename = templatename.substr(0, templatename.find_first_of('.'));
+
+		SpawnInfo* spawnInfo = new SpawnInfo();
+		spawnInfo->setName(templatename);
+		spawnInfo->setFileName("scripts/creatures/" + filename);
+
+		spawnInfoMap->put(templatename, spawnInfo);
+
+	}
+
 	runFile("scripts/creatures/" + filename, L);
 
 	return 0;
@@ -949,6 +1067,21 @@ int CreatureManagerImplementation::runObjectFile(lua_State* L) {
 	runFile("scripts/sceneobjects/" + filename, L);
 
 	return 0;
+}
+
+bool CreatureManagerImplementation::hotLoadCreature(string name) {
+
+	SpawnInfo* spawnInfo = spawnInfoMap->get(name);
+	if(spawnInfo == NULL)
+		return false;
+
+	try {
+		runFile(spawnInfo->getFileName(), L);
+	} catch (...) {
+		return false;
+	}
+
+	return true;
 }
 
 void CreatureManagerImplementation::registerFunctions() {
@@ -1028,6 +1161,14 @@ string CreatureManagerImplementation::makeDarkTrooperName() {
 	characterName << "N-" << System::random(490)+10;
 
 	return characterName.str();
+}
+
+uint32 CreatureManagerImplementation::getCreatureCrc(string name) {
+	SpawnInfo* spawnInfo = spawnInfoMap->get(name);
+	if(spawnInfo == NULL)
+		return -1;
+
+	return spawnInfo->getCRC();
 }
 
 string CreatureManagerImplementation::makeCreatureName(string charname) {

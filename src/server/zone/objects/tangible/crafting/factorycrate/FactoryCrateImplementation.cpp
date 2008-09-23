@@ -48,10 +48,10 @@ which carries forward this exception.
 #include "../component/ComponentImplementation.h"
 #include "FactoryCrate.h"
 #include "FactoryCrateImplementation.h"
-#include "../../../../ZoneClient.h"
-
-FactoryCrateImplementation::FactoryCrateImplementation(uint64 object_id, uint32 tempCRC,
-		const unicode& n, const string& tempn) : FactoryCrateServant(object_id, n, tempn, tempCRC,
+#include "../../../../ZoneClientSession.h"
+ 
+FactoryCrateImplementation::FactoryCrateImplementation(uint64 object_id, uint32 tempCRC, 
+		const unicode& n, const string& tempn) : FactoryCrateServant(object_id, tempCRC, n, tempn, 
 				FACTORYCRATE) {
 	objectCRC = tempCRC;
 	templateTypeName = "factory_n";
@@ -59,9 +59,9 @@ FactoryCrateImplementation::FactoryCrateImplementation(uint64 object_id, uint32 
 	name = n;
 	init();
 }
-
-FactoryCrateImplementation::FactoryCrateImplementation(CreatureObject* creature, uint32 tempCRC,
-		const unicode& n, const string& tempn) : FactoryCrateServant(creature, n, tempn, tempCRC,
+ 
+FactoryCrateImplementation::FactoryCrateImplementation(CreatureObject* creature, uint32 tempCRC, 
+		const unicode& n, const string& tempn) : FactoryCrateServant(creature, tempCRC, n, tempn, 
 				FACTORYCRATE) {
 	objectCRC = tempCRC;
 	templateTypeName = "factory_n";
@@ -108,5 +108,6 @@ void FactoryCrateImplementation::generateAttributes(SceneObject* obj) {
 
 	player->sendMessage(alm);
 }
+
 
 

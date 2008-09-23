@@ -47,7 +47,7 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-#include "ZoneClient.h"
+#include "ZoneClientSession.h"
 
 class ZoneServer;
 class ZoneProcessServerImplementation;

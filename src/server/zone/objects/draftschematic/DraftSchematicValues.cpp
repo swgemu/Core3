@@ -8,6 +8,8 @@
 
 #include "DraftSchematic.h"
 
+#include "../tangible/crafting/CraftingTool.h"
+
 /*
  *	DraftSchematicValuesStub
  */
@@ -303,12 +305,25 @@ int DraftSchematicValues::getValuesToSendSize() {
 		return ((DraftSchematicValuesImplementation*) _impl)->getValuesToSendSize();
 }
 
-string& DraftSchematicValues::getValuesToSend(const int i) {
+int DraftSchematicValues::getTitleLine(string& title) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 27);
+		method.addAsciiParameter(title);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((DraftSchematicValuesImplementation*) _impl)->getTitleLine(title);
+}
+
+string& DraftSchematicValues::getValuesToSend(const int i) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 28);
 		method.addSignedIntParameter(i);
 
 		method.executeWithAsciiReturn(_return_getValuesToSend);
@@ -322,7 +337,7 @@ void DraftSchematicValues::recalculateValues(DraftSchematic* draftSchematic) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 28);
+		DistributedMethod method(this, 29);
 		method.addObjectParameter(draftSchematic);
 
 		method.executeWithVoidReturn();
@@ -330,12 +345,41 @@ void DraftSchematicValues::recalculateValues(DraftSchematic* draftSchematic) {
 		((DraftSchematicValuesImplementation*) _impl)->recalculateValues(draftSchematic);
 }
 
+float DraftSchematicValues::getAttributeAndValue(DraftSchematic* draftSchematic, string& attribute, const int i) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 30);
+		method.addObjectParameter(draftSchematic);
+		method.addAsciiParameter(attribute);
+		method.addSignedIntParameter(i);
+
+		return method.executeWithFloatReturn();
+	} else
+		return ((DraftSchematicValuesImplementation*) _impl)->getAttributeAndValue(draftSchematic, attribute, i);
+}
+
+int DraftSchematicValues::getPrecision(DraftSchematic* draftSchematic, const int i) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 31);
+		method.addObjectParameter(draftSchematic);
+		method.addSignedIntParameter(i);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((DraftSchematicValuesImplementation*) _impl)->getPrecision(draftSchematic, i);
+}
+
 void DraftSchematicValues::clearAll() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 29);
+		DistributedMethod method(this, 32);
 
 		method.executeWithVoidReturn();
 	} else
@@ -347,7 +391,7 @@ void DraftSchematicValues::clear() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 30);
+		DistributedMethod method(this, 33);
 
 		method.executeWithVoidReturn();
 	} else
@@ -359,7 +403,7 @@ void DraftSchematicValues::toString() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 31);
+		DistributedMethod method(this, 34);
 
 		method.executeWithVoidReturn();
 	} else
@@ -441,18 +485,27 @@ Packet* DraftSchematicValuesAdapter::invokeMethod(uint32 methid, DistributedMeth
 		resp->insertSignedInt(getValuesToSendSize());
 		break;
 	case 27:
-		resp->insertAscii(getValuesToSend(inv->getSignedIntParameter()));
+		resp->insertSignedInt(getTitleLine(inv->getAsciiParameter(_param0_getTitleLine__string_)));
 		break;
 	case 28:
-		recalculateValues((DraftSchematic*) inv->getObjectParameter());
+		resp->insertAscii(getValuesToSend(inv->getSignedIntParameter()));
 		break;
 	case 29:
-		clearAll();
+		recalculateValues((DraftSchematic*) inv->getObjectParameter());
 		break;
 	case 30:
-		clear();
+		resp->insertFloat(getAttributeAndValue((DraftSchematic*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_getAttributeAndValue__DraftSchematic_string_int_), inv->getSignedIntParameter()));
 		break;
 	case 31:
+		resp->insertSignedInt(getPrecision((DraftSchematic*) inv->getObjectParameter(), inv->getSignedIntParameter()));
+		break;
+	case 32:
+		clearAll();
+		break;
+	case 33:
+		clear();
+		break;
+	case 34:
 		toString();
 		break;
 	default:
@@ -546,12 +599,24 @@ int DraftSchematicValuesAdapter::getValuesToSendSize() {
 	return ((DraftSchematicValuesImplementation*) impl)->getValuesToSendSize();
 }
 
+int DraftSchematicValuesAdapter::getTitleLine(string& title) {
+	return ((DraftSchematicValuesImplementation*) impl)->getTitleLine(title);
+}
+
 string& DraftSchematicValuesAdapter::getValuesToSend(const int i) {
 	return ((DraftSchematicValuesImplementation*) impl)->getValuesToSend(i);
 }
 
 void DraftSchematicValuesAdapter::recalculateValues(DraftSchematic* draftSchematic) {
 	return ((DraftSchematicValuesImplementation*) impl)->recalculateValues(draftSchematic);
+}
+
+float DraftSchematicValuesAdapter::getAttributeAndValue(DraftSchematic* draftSchematic, string& attribute, const int i) {
+	return ((DraftSchematicValuesImplementation*) impl)->getAttributeAndValue(draftSchematic, attribute, i);
+}
+
+int DraftSchematicValuesAdapter::getPrecision(DraftSchematic* draftSchematic, const int i) {
+	return ((DraftSchematicValuesImplementation*) impl)->getPrecision(draftSchematic, i);
 }
 
 void DraftSchematicValuesAdapter::clearAll() {

@@ -59,11 +59,11 @@ import "CraftingStation";
  
 interface CraftingTool implements TangibleObject {
 	CraftingTool(unsigned long oid, unsigned int tempCRC, const unicode n, const string tempn) {
-		super(oid, n, tempn, tempCRC, int type);
+		super(oid, tempCRC, n, tempn, int type);
 	}
 	
 	CraftingTool(CreatureObject creature, unsigned int tempCRC, const unicode n, const string tempn) {
-		super(creature, n, tempn, tempCRC, int type);
+		super(creature, tempCRC, n, tempn, int type);
 	}
  
 	void sendTo(Player player, boolean doClose = true);

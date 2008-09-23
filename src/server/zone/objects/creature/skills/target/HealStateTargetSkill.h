@@ -73,100 +73,38 @@ public:
 			creature->doAnimation("heal_other");
 	}
 
-	StatePack* findMedpack(CreatureObject* creature, const string& modifier, int& stateAffected) {
-		StatePack* statePack = NULL;
-		int medicineUse = creature->getSkillMod("healing_ability");
-
-		if (!modifier.empty()) {
-			StringTokenizer tokenizer(modifier);
-			string stateName;
-			uint64 objectid = 0;
-
-			tokenizer.setDelimeter("|");
-
-			tokenizer.getStringToken(stateName);
-
-			stateAffected = PharmaceuticalImplementation::getStateFromName(stateName);
-
-			if (tokenizer.hasMoreTokens())
-				objectid = tokenizer.getLongToken();
-
-			if (objectid > 0) {
-				SceneObject* invObj = creature->getInventoryItem(objectid);
-
-				if (invObj != NULL && invObj->isTangible()) {
-					TangibleObject* tano = (TangibleObject*) invObj;
-
-					if (tano->isPharmaceutical()) {
-						Pharmaceutical* pharm = (Pharmaceutical*) tano;
-
-						if (pharm->isStatePack()) {
-							statePack = (StatePack*) pharm;
-
-							if (statePack->getMedicineUseRequired() <= medicineUse && statePack->getStateAffected() == stateAffected)
-								return statePack;
-						}
-					}
-				}
-			}
-		} else {
-			stateAffected = PharmaceuticalImplementation::UNKNOWN;
-			return NULL;
-		}
-
-		Inventory* inventory = creature->getInventory();
-
-		for (int i=0; i<inventory->objectsSize(); i++) {
-			TangibleObject* item = (TangibleObject*) inventory->getObject(i);
-
-			if (item != NULL && item->isPharmaceutical()) {
-				statePack = (StatePack*) item;
-
-				if (statePack->isStatePack()
-						&& statePack->getMedicineUseRequired() <= medicineUse
-						&& statePack->getStateAffected() == stateAffected)
-					return statePack;
-			}
-		}
-
-		return NULL; //Never found a stimpack
-	}
-
 	int doSkill(CreatureObject* creature, SceneObject* target, const string& modifier, bool doAnimation = true) {
-		CreatureObject* creatureTarget = NULL;
-		StatePack* statePack = NULL;
+		uint64 stateAffected = 0;
+		StatePack* statePack = getStatePack(creature, modifier, stateAffected);
 
-		int stateAffected = 0;
-
-		statePack = findMedpack(creature, modifier, stateAffected);
-
-		if (target->isPlayer() || target->isNonPlayerCreature()) {
-			creatureTarget = (CreatureObject*) target;
-		} else {
+		if (!target->isPlayer() && !target->isNonPlayerCreature()) {
 			creature->sendSystemMessage("healing_response", "healing_response_73"); //Target must be a player or a creature pet in order to heal a state.
 			return 0;
 		}
 
-		if (creatureTarget != creature
-				&& (creatureTarget->isDead()
-						|| creatureTarget->isRidingCreature()
-						|| creatureTarget->isMounted())) {
-			//If the target is dead or mounted, then make self the target.
-			creatureTarget = creature;
-		}
+		CreatureObject* creatureTarget = (CreatureObject*) target;
+
+		if (creatureTarget->isDead() || creatureTarget->isRidingCreature() || creatureTarget->isMounted())
+			creatureTarget = creature;	//If our target is dead, riding a creature, or mounted, then we make ourself target.
+
 
 		if (!creature->canTreatStates()) {
 			creature->sendSystemMessage("healing_response", "healing_must_wait"); //You must wait before you can do that.
 			return 0;
 		}
 
-		if (stateAffected == PharmaceuticalImplementation::UNKNOWN) {
+		if (stateAffected == 0) {
 			creature->sendSystemMessage("healing_response", "healing_response_70"); //You must specify a valid state type.
 			return 0;
 		}
 
 		if (statePack == NULL) {
 			creature->sendSystemMessage("healing_response", "healing_response_60"); //No valid medicine found.
+			return 0;
+		}
+
+		if (creature->isMeditating()) {
+			creature->sendSystemMessage("You can not Heal Enhance while meditating.");
 			return 0;
 		}
 
@@ -190,20 +128,17 @@ public:
 			return 0;
 		}
 
-		if (!applyStateHeal(creatureTarget, stateAffected)) {
-			if (creature == creatureTarget) {
+		if (!healState(creatureTarget, stateAffected)) {
+			if (creature == creatureTarget)
 				creature->sendSystemMessage("healing_response", "healing_response_72"); //You have no state of that type to heal.
-			} else {
-				creature->sendSystemMessage("healing_response", "healing_response_74", creatureTarget->getObjectID()); //%NT has no state of that type to heal.")
-			}
-			return 0;
-		} else
-			creatureTarget->updateStates();
+			else
+				creature->sendSystemMessage("healing_response", "healing_response_74", creatureTarget->getObjectID()); //%NT has no state of that type to heal.
 
-		sendStateMessage(creature, creatureTarget, stateAffected);
+			return 0;
+		}
 
 		creature->changeMindBar(mindCost);
-
+		sendStateMessage(creature, creatureTarget, stateAffected);
 		creature->deactivateStateTreatment();
 
 		if (statePack != NULL)
@@ -217,52 +152,77 @@ public:
 		return 0;
 	}
 
-	bool applyStateHeal(CreatureObject* creature, int stateAffected) {
-		switch (stateAffected) {
-			case PharmaceuticalImplementation::DIZZY:
-			{
-				if (creature->isDizzied()) {
-					creature->clearState(CreatureObjectImplementation::DIZZY_STATE);
-					return true;
+	StatePack* getStatePack(CreatureObject* creature, const string& modifier, uint64& stateAffected) {
+		StatePack* statePack = NULL;
+
+		int medicineUse = creature->getSkillMod("healing_ability");
+
+		if (modifier.empty()) {
+			return searchInventory(creature, stateAffected, medicineUse);
+		} else {
+			uint64 objectID = 0;
+
+			parseModifier(modifier, stateAffected, objectID);
+
+			if (objectID <= 0) {
+				return searchInventory(creature, stateAffected, medicineUse);
+			} else {
+				SceneObject* object = creature->getInventoryItem(objectID);
+				return (StatePack*) object;
+			}
+		}
+	}
+
+	void parseModifier(const string& modifier, uint64& stateAffected, uint64& objectID) {
+		StringTokenizer tokenizer(modifier);
+		tokenizer.setDelimeter("|");
+		string stateName;
+
+		tokenizer.getStringToken(stateName);
+
+		stateAffected = PharmaceuticalImplementation::getStateFromName(stateName);
+
+		if (tokenizer.hasMoreTokens())
+			objectID = tokenizer.getLongToken();
+	}
+
+	StatePack* searchInventory(CreatureObject* creature, uint64& stateAffected, int medicineUse) {
+		Inventory* inventory = creature->getInventory();
+		StatePack* statePack = NULL;
+
+		if (inventory != NULL) {
+			for (int i=0; i<inventory->objectsSize(); i++) {
+				TangibleObject* item = (TangibleObject*) inventory->getObject(i);
+
+				if (item != NULL && item->isPharmaceutical()) {
+					statePack = (StatePack*) item;
+
+					if (statePack->isStatePack() && statePack->getMedicineUseRequired() <= medicineUse) {
+						if (stateAffected > 0) {
+							if (stateAffected == statePack->getStateAffected())
+								return statePack;
+						} else {
+							if (creature->hasState(statePack->getStateAffected())) {
+								stateAffected = statePack->getStateAffected();
+								return statePack;
+							}
+						}
+					}
 				}
-				break;
+
 			}
-			case PharmaceuticalImplementation::INTIMIDATED:
-			{
-				if (creature->isIntimidated()) {
-					creature->clearState(CreatureObjectImplementation::INTIMIDATED_STATE);
-					return true;
-				}
-				break;
+		}
+
+		return NULL;
+	}
+
+	bool healState(CreatureObject* creature, uint64 stateAffected) {
+		if (creature->hasState(stateAffected)) {
+			if (creature->clearState(stateAffected)) {
+				creature->updateStates();
+				return true;
 			}
-			case PharmaceuticalImplementation::BLINDED:
-			{
-				if (creature->isBlinded()) {
-					creature->clearState(CreatureObjectImplementation::BLINDED_STATE);
-					return true;
-				}
-				break;
-			}
-			case PharmaceuticalImplementation::STUNNED:
-			{
-				if (creature->isBlinded()) {
-					creature->clearState(CreatureObjectImplementation::STUNNED_STATE);
-					return true;
-				}
-				break;
-			}
-			case PharmaceuticalImplementation::ONFIRE:
-			{
-				if (creature->isOnFire()) {
-					creature->clearState(CreatureObjectImplementation::ONFIRE_STATE);
-					return true;
-				}
-				break;
-			}
-			case PharmaceuticalImplementation::UNKNOWN:
-			default:
-				return false;
-			}
+		}
 
 		return false;
 	}
@@ -285,27 +245,27 @@ public:
 		player->sendSystemMessage(msgExperience.str());
 	}
 
-	void sendStateMessage(CreatureObject* creature, CreatureObject* creatureTarget, int stateAffected) {
+	void sendStateMessage(CreatureObject* creature, CreatureObject* creatureTarget, uint64 stateAffected) {
 		stringstream msgPlayer, msgTarget;
-		
+
 		string stateName = PharmaceuticalImplementation::getStateName(stateAffected);
 		stateName[0] = toupper(stateName[0]); //initial cap statename
-		
+
 		if (creature == creatureTarget) {
 			msgTarget << "You remove the " << stateName << " state from yourself.";
 		} else {
 			string creatureName = creature->getCharacterName().c_str().c_str();
 			string creatureTargetName = creatureTarget->getCharacterName().c_str().c_str();
-			
+
 			msgPlayer << "You remove the " << stateName << " state from " << creatureTargetName << ".";
 			msgTarget << creatureName << " removes the " << stateName << " from you.";
 		}
-		
+
 
 		creatureTarget->sendSystemMessage(msgTarget.str());
 
 		if (creature != creatureTarget)
-			creatureTarget->sendSystemMessage(msgPlayer.str());
+			creature->sendSystemMessage(msgPlayer.str());
 	}
 
 	float calculateSpeed(CreatureObject* creature) {

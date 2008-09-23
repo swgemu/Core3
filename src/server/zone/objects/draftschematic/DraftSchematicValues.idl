@@ -43,6 +43,7 @@ which carries forward this exception.
 */
 
 import "DraftSchematic";
+import "../tangible/crafting/CraftingTool";
 
 interface DraftSchematicValues implements ManagedObject {
 	DraftSchematicValues();
@@ -75,9 +76,13 @@ interface DraftSchematicValues implements ManagedObject {
 	float getMaxPercentageAverage(const int index);
 
 	int getValuesToSendSize();
+	int getTitleLine(string title);
 	string getValuesToSend(const int i);
 
 	void recalculateValues(DraftSchematic draftSchematic);
+
+	float getAttributeAndValue(DraftSchematic draftSchematic, string& attribute, const int i);
+	int getPrecision(DraftSchematic draftSchematic, const int i);
 
 	void clearAll();
 	void clear();

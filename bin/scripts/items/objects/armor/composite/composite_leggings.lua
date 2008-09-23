@@ -60,5 +60,7 @@ composite_leggings = Armor:new{
 
 	actionEncum = 190,
 
-	mindEncum = 70
+	mindEncum = 70,
+
+	itemMask = HUMANOIDS
 }

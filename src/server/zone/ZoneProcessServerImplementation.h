@@ -61,6 +61,7 @@ class CraftingManager;
 class ItemManager;
 class GuildManager;
 class ChatManager;
+class MissionManager;
 
 // Static managers
 class CombatManager;
@@ -134,6 +135,10 @@ public:
 		return server->getGuildManager();
 	}
 	
+	inline MissionManager* getMissionManager() {
+		return server->getMissionManager();
+	}
+	
 	inline CombatManager* getCombatManager() {
 		return combatManager;
 	}
@@ -163,8 +168,9 @@ public:
 	}
 	
 	inline NameManager* getNameManager() {
-			return nameManager;
+		return nameManager;
 	}
+
 };
 
 #endif /*ZONEPROCESSSERVERIMPLEMENTATION_H_*/

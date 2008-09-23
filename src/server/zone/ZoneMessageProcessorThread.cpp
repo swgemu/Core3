@@ -42,14 +42,14 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#include "ZoneClient.h"
-#include "ZoneClientImplementation.h"
+#include "ZoneClientSession.h"
+#include "ZoneClientSessionImplementation.h"
 
 #include "ZoneMessageProcessorThread.h"
 
 void ZoneMessageProcessorThread::processMessage(Message* message) {
 	try {
-		ZoneClientImplementation* client = (ZoneClientImplementation*) message->getClient();
+		ZoneClientSessionImplementation* client = (ZoneClientSessionImplementation*) message->getClient();
 
 		if (client->isAvailable())
 			phandler->handleMessage(message);

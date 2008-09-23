@@ -53,14 +53,21 @@ blasterRifleBarrel = Object:new {
   complexity = 5,
   size = 1, 
 
+  xpType = "crafting_weapons_general",
+  xp = 20,
+
+  assemblySkill = "weapon_assembly",
+  experimentingSkill = "weapon_experimentation",
+
   ingredientTemplateNames = "craft_weapon_ingredients_n, craft_weapon_ingredients_n, craft_weapon_ingredients_n, craft_weapon_ingredients_n, craft_weapon_ingredients_n",
   ingredientTitleNames = "module_assembly, xciter_circuitry, circuitry_substrate, gas_containment_unit, reactant_source",
-  ingredientOptionals = "0, 0, 0, 0, 0,",
-  resourceTypes = "petrochem_inert, copper, ore, metal, gas_reactive",
+  ingredientOptionals = "0, 0, 0, 0, 0",
+  --resourceTypes = "petrochem_inert, copper, ore, metal, gas_reactive",
+resourceTypes = "metal, metal, metal, metal, metal",
   resourceQuantities = "12, 3, 3, 5, 10",
+  combineTypes = "1, 1, 1, 1, 1",
 
   numberExperimentalProperties = "1, 1, 1, 2, 2, 2, 1, 2",
-
   experimentalProperties = "XX, XX, XX, CD, OQ, CD, OQ, CD, OQ, XX, CD, OQ",
   experimentalWeights = "1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1",
 
@@ -68,20 +75,17 @@ blasterRifleBarrel = Object:new {
 
   experimentalSubGroupCount = "3, 1",
 
-  experimentalSubGroupTitles = "speed, maxDamage, minDamage, decay",
+  experimentalSubGroupTitles = "speed, maxDamage, minDamage, hitpoints",
 
-  tanoAttributes = "objecttype=262144:objectcrc=260681278:objecttemp=blaster_rifle_barrel:",
+  tanoAttributes = "objecttype=262144:objectcrc=260681278:objecttemp=blaster_rifle_barrel:templatetype=obj_n:",
 
-  attributesToSet = "speed, maxDamage, minDamage, decay",
+  attributesToSet = "speed, maxDamage, minDamage, hitpoints",
 
   attributeExperimentalProperties = "expdamage, expdamage, expdamage, expdurability",
 
-  attributesMinMax = "1, 5, 2, 6, 3, 7, 1, 1000",
-  xpType = "crafting_weapons_general",
-  xp = 20,
+  attributePrecision = "1, 1, 1, 0",
+  attributesMinMax = "1, 5, 2, 6, 3, 7, 1, 1000"
 
-  assemblySkill = "weapon_assembly",
-  experimentingSkill = "weapon_experimentation"
 }
 
 DraftSchematics:addDraftSchematic(blasterRifleBarrel, 3017432687)--- Add to global DraftSchematics table

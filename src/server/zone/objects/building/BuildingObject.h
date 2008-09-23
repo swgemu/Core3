@@ -29,17 +29,19 @@ public:
 
 	void addCell(CellObject* cell);
 
-	void insertToZone(Zone* zone);
-
-	void removeFromZone();
-
-	void notifyInsertToZone(CreatureObject* creature);
+	void notifyInsertToZone(SceneObject* object);
 
 	bool isStatic();
 
 	int getBuildingType();
 
 	void setBuildingType(int type);
+
+	string& getName();
+
+	void setName(string& name);
+
+	string& getDefaultName();
 
 	void lock(bool doLock = true);
 
@@ -62,6 +64,9 @@ protected:
 
 	virtual ~BuildingObject();
 
+	string _return_getDefaultName;
+	string _return_getName;
+
 	friend class BuildingObjectHelper;
 };
 
@@ -75,17 +80,19 @@ public:
 
 	void addCell(CellObject* cell);
 
-	void insertToZone(Zone* zone);
-
-	void removeFromZone();
-
-	void notifyInsertToZone(CreatureObject* creature);
+	void notifyInsertToZone(SceneObject* object);
 
 	bool isStatic();
 
 	int getBuildingType();
 
 	void setBuildingType(int type);
+
+	string& getName();
+
+	void setName(string& name);
+
+	string& getDefaultName();
 
 	void lock(bool doLock);
 
@@ -103,6 +110,8 @@ public:
 
 	void inRange(QuadTreeEntry* obj, float range);
 
+protected:
+	string _param0_setName__string_;
 };
 
 class BuildingObjectHelper : public DistributedObjectClassHelper, public Singleton<BuildingObjectHelper> {

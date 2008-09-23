@@ -51,6 +51,8 @@
 
 #include "../../managers/player/PlayerManager.h"
 
+#include "../../managers/planet/PlanetManager.h"
+
 #include "../../managers/item/ItemManager.h"
 #include "../../managers/combat/CombatManager.h"
 #include "../../managers/player/ProfessionManager.h"
@@ -182,8 +184,10 @@ bool ObjectControllerMessage::parseDataTransform(Player* player, Message* pack) 
 	//cout << "Movement counter:" << movementCounter << "\n";
 
 	player->setMovementCounter(movementCounter);
+
 	player->setDirection(dx, dz, dy, dw);
 	player->setPosition(x, z, y);
+
 
 	/*cout << "Player [" << player->getObjectID() << "] - Counter [" << player->getMovementCounter() << "]"
 	 << " - Position (" << (int) x << "," << (int) z << "," << (int) y << ")\n";*/
@@ -334,12 +338,17 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 	 player->info(msg.str());*/
 
 	ChatManager* chatManager;
-
 	CombatManager* combatManager = serv->getCombatManager();
+	GuildManager* pGuild = serv->getGuildManager();
 
 	// CommandQueueAction* action; - not used anymore?
 
 	switch (actionCRC) {
+	case (0x1E0B1E43): //guildremove
+		player->clearQueueAction(actioncntr);
+		handleRemoveFromGuild(player, pack, serv);
+		break;
+
 	case (0x124629F2): // Meditating
 		if (player->getMeditate()) {
 			player->sendSystemMessage("jedi_spam", "already_in_meditative_state");
@@ -647,12 +656,15 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 		parseGroupMakeLeader(player, pack, serv->getGroupManager());
 		break;
 	case (0x68851C4F): // groupchat
+	case (0x0315D6D9): // g
+	case (0x3CDFF0CC): // gsay
 		chatManager = player->getZone()->getChatManager();
 		chatManager->handleGroupChat(player, pack);
 		break;
-	case (0x0315D6D9): // g
+	case (0x79DEB176): // guild (chat)
+	case (0x47948A6D): //guildsay
 		chatManager = player->getZone()->getChatManager();
-		chatManager->handleGroupChat(player, pack);
+		chatManager->handleGuildChat(player, pack);
 		break;
 	case (0xE007BF31): // mount
 		parseMount(player, pack);
@@ -675,6 +687,9 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 		break;
 	case (0xE5F3B39B):
 		handleDeathblow(player, pack, combatManager);
+		break;
+	case (0x7AF26B0B):  // Place Structure
+		parsePlaceStructure(player, pack);
 		break;
 	case (0x19C9FAC1):
 		parseSurveySlashRequest(player, pack);
@@ -813,7 +828,7 @@ void ObjectControllerMessage::parseAttachmentDragDrop(Player* player,
 	unicode unicodeID;
 
 	pack->parseUnicode(unicodeID);
-	StringTokenizer tokenizer(unicodeID.c_str());
+	StringTokenizer tokenizer(unicodeID.c_str().c_str());
 
 	if (tokenizer.hasMoreTokens()) {
 		uint64 targetID = tokenizer.getLongToken();
@@ -872,7 +887,7 @@ void ObjectControllerMessage::parseNpcStartConversation(Player* player,
 
 	SceneObject* object = player->getZone()->lookupObject(target);
 
-	if (object != NULL) {
+	if (object != NULL && object->isNonPlayerCreature()) {
 		try {
 			if (object != player)
 				object->wlock(player);
@@ -889,6 +904,24 @@ void ObjectControllerMessage::parseNpcStartConversation(Player* player,
 			if (object != player)
 				object->unlock();
 		}
+	}
+}
+
+void ObjectControllerMessage::parseNpcConversationSelect(Player* player,
+		Message* pack) {
+	pack->shiftOffset(8);
+
+	SceneObject* object = player->getConversatingCreature();
+
+	if (object != NULL) {
+		if (!player->isInRange(object, 5))
+			return;
+
+		unicode opt;
+		pack->parseUnicode(opt);
+
+		int option = atoi(opt.c_str().c_str());
+		object->selectConversationOption(option, player);
 	}
 }
 
@@ -940,61 +973,97 @@ void ObjectControllerMessage::parseSetStatMigrationDataRequest(Player* player, M
 	uint32 targetAction, targetQuickness, targetStamina;
 	uint32 targetMind, targetFocus, targetWillpower;
 
+	/*****************************************************
+	 * TODO: Stat migration bug tracking.  Remove later. *
+	 ****************************************************/
+	ChatManager * chatManager = player->getZone()->getChatManager();
+	const string  sender = "BUG TRACKER";
+	unicode header = "STAT MIGRATION BUG REPORT";
+	stringstream ss;
+	ss << "The stat migration protection system has been triggered for user " << player->getCharacterName().c_str() << "." << endl;
+	ss << "The following is the relevant debug information:" << endl << endl;
+	ss << "Player Name: " << player->getCharacterName().c_str() << endl;
+	ss << "Species: " << player->getSpeciesName() << endl;
+	ss << "Sex: " << player->getGender() << endl;
+	ss << "Target Stats: " << stats.c_str() << endl;
+	ss << "Min/Max/Current Health: " << player->getMinHealth() << " | " << player->getMaxHealth() << " | " << player->getBaseHealth() << endl;
+	ss << "Min/Max/Current Strength: " << player->getMinStrength() << " | " << player->getMaxStrength() << " | " << player->getBaseStrength() << endl;
+	ss << "Min/Max/Current Constitution: " << player->getMinConstitution() << " | " << player->getMaxConstitution() << " | " << player->getBaseConstitution() << endl;
+	ss << "Min/Max/Current Action: " << player->getMinAction() << " | " << player->getMaxAction() << " | " << player->getBaseAction() << endl;
+	ss << "Min/Max/Current Quickness: " << player->getMinQuickness() << " | " << player->getMaxQuickness() << " | " << player->getBaseQuickness() << endl;
+	ss << "Min/Max/Current Stamina: " << player->getMinStamina() << " | " << player->getMaxStamina() << " | " << player->getBaseStamina() << endl;
+	ss << "Min/Max/Current Mind: " << player->getMinMind() << " | " << player->getMaxMind() << " | " << player->getBaseMind() << endl;
+	ss << "Min/Max/Current Focus: " << player->getMinFocus() << " | " << player->getMaxFocus() << " | " << player->getBaseFocus() << endl;
+	ss << "Min/Max/Current Willpower: " << player->getMinWillpower() << " | " << player->getMaxWillpower() << " | " << player->getBaseWillpower() << endl;
+	ss << "Total Attrib Points: " << player->getTotalAttribPoints();
+	unicode body = unicode(ss.str());
+	const string reciever = "Bobius";
+	/*******************************************************/
+
 	for(int i = 0; tokenizer.hasMoreTokens(); i++) {
 		uint32 value = tokenizer.getIntToken();
 		switch(i) {
 			case 0:
-				if (value < player->getMinHealth() || value > player->getMaxHealth())
+				if (value < player->getMinHealth() || value > player->getMaxHealth()) {
+					chatManager->sendMail(sender, header, body, reciever); //TODO: remove bug tracking code later
 					return;
-				else
+				} else
 					targetHealth = value;
 				break;
 			case 1:
-				if (value < player->getMinStrength() || value > player->getMaxStrength())
+				if (value < player->getMinStrength() || value > player->getMaxStrength()) {
+					chatManager->sendMail(sender, header, body, reciever); //TODO: remove bug tracking code later
 					return;
-				else
+				} else
 					targetStrength = value;
 				break;
 			case 2:
-				if (value < player->getMinConstitution() || value > player->getMaxConstitution())
+				if (value < player->getMinConstitution() || value > player->getMaxConstitution()) {
+					chatManager->sendMail(sender, header, body, reciever); //TODO: remove bug tracking code later
 					return;
-				else
+				} else
 					targetConstitution = value;
 				break;
 			case 3:
-				if (value < player->getMinAction() || value > player->getMaxAction())
+				if (value < player->getMinAction() || value > player->getMaxAction()) {
+					chatManager->sendMail(sender, header, body, reciever); //TODO: remove bug tracking code later
 					return;
-				else
+				} else
 					targetAction = value;
 				break;
 			case 4:
-				if (value < player->getMinQuickness() || value > player->getMaxQuickness())
+				if (value < player->getMinQuickness() || value > player->getMaxQuickness()) {
+					chatManager->sendMail(sender, header, body, reciever); //TODO: remove bug tracking code later
 					return;
-				else
+				} else
 					targetQuickness = value;
 				break;
 			case 5:
-				if (value < player->getMinStamina() || value > player->getMaxStamina())
+				if (value < player->getMinStamina() || value > player->getMaxStamina()) {
+					chatManager->sendMail(sender, header, body, reciever); //TODO: remove bug tracking code later
 					return;
-				else
+				} else
 					targetStamina = value;
 				break;
 			case 6:
-				if (value < player->getMinMind() || value > player->getMaxMind())
+				if (value < player->getMinMind() || value > player->getMaxMind()) {
+					chatManager->sendMail(sender, header, body, reciever); //TODO: remove bug tracking code later
 					return;
-				else
+				} else
 					targetMind = value;
 				break;
 			case 7:
-				if (value < player->getMinFocus() || value > player->getMaxFocus())
+				if (value < player->getMinFocus() || value > player->getMaxFocus()) {
+					chatManager->sendMail(sender, header, body, reciever); //TODO: remove bug tracking code later
 					return;
-				else
+				} else
 					targetFocus = value;
 				break;
 			case 8:
-				if (value < player->getMinWillpower() || value > player->getMaxWillpower())
+				if (value < player->getMinWillpower() || value > player->getMaxWillpower()) {
+					chatManager->sendMail(sender, header, body, reciever); //TODO: remove bug tracking code later
 					return;
-				else
+				} else
 					targetWillpower = value;
 				break;
 			default: // points available
@@ -1016,7 +1085,12 @@ void ObjectControllerMessage::parseSetStatMigrationDataRequest(Player* player, M
 		player->setTargetMind(targetMind);
 		player->setTargetFocus(targetFocus);
 		player->setTargetWillpower(targetWillpower);
+	} else {
+		chatManager->sendMail(sender, header, body, reciever); //TODO: remove bug tracking code later
+		return;
 	}
+
+	//chatManager->sendMail(sender, header, body, reciever); //TODO: remove bug tracking code later
 
 
 	//if (tokenizer.hasMoreTokens()) {
@@ -1185,24 +1259,6 @@ void ObjectControllerMessage::parsePurchaseTicket(Player* player, Message *pack)
 
 	player->addSuiBox(sui);
 	player->sendMessage(sui->generateMessage());
-}
-
-void ObjectControllerMessage::parseNpcConversationSelect(Player* player,
-		Message* pack) {
-	pack->shiftOffset(8);
-
-	SceneObject* object = player->getConversatingCreature();
-
-	if (object != NULL) {
-		if (!player->isInRange(object, 5))
-			return;
-
-		unicode opt;
-		pack->parseUnicode(opt);
-
-		int option = atoi(opt.c_str().c_str());
-		object->selectConversationOption(option, player);
-	}
 }
 
 void ObjectControllerMessage::parseGetAttributes(Player* player, Message* pack) {
@@ -1932,6 +1988,10 @@ void ObjectControllerMessage::parseServerSit(Player* player, Message* pack) {
 			float y = tokenizer.getFloatToken();
 			float z = tokenizer.getFloatToken();
 
+			uint64 coID;
+			if (tokenizer.hasMoreTokens())
+				coID = tokenizer.getLongToken();
+
 			if (x < -8192 || x> 8192)
 			x = 0;
 			if (y < -8192 || y> 8192)
@@ -2153,6 +2213,7 @@ void ObjectControllerMessage::parseServerDestroyObject(Player* player,
 	pack->parseUnicode(unkPramString); //?
 
 	WaypointObject* waypoint = player->getWaypoint(objid);
+	IntangibleObject* datapadData = (IntangibleObject*) player->getDatapadItem(objid);
 
 	SceneObject* invObj = player->getInventoryItem(objid);
 
@@ -2194,8 +2255,15 @@ void ObjectControllerMessage::parseServerDestroyObject(Player* player,
 	} else if (waypoint != NULL) {
 		if (player->removeWaypoint(waypoint))
 			waypoint->finalize();
+	} else if (datapadData != NULL){
+		player->removeDatapadItem(objid);
+
+		BaseMessage* msg = new SceneObjectDestroyMessage(datapadData);
+		player->getClient()->sendMessage(msg);
 	}
 }
+
+
 
 void ObjectControllerMessage::parseSetWaypointActiveStatus(Player* player,
 		Message* pack) {
@@ -2213,6 +2281,68 @@ void ObjectControllerMessage::parseRequestCharacterMatch(Player* player,
 		Message* pack) {
 	//pack->shiftOffset(8); //Shift past the blank long. Eventually parse stuff here. Not yet. lols.
 	player->getPlayersNearYou();
+}
+
+void ObjectControllerMessage::parseMissionListRequest(Player* player, Message* pack) {
+	//skip objId + old size + unk byte + refresh byte
+	pack->shiftOffset(14);
+
+	//Grab the mission terminal id
+	uint64 termId = pack->parseLong();
+
+	//TODO: Take the error messages out after testing
+	PlanetManager* plnMgr = player->getZone()->getPlanetManager();
+	if (plnMgr == NULL) {
+		cout << "Error: Planet Manager NULL in parseMissionListRequest() \n";
+		return;
+	}
+
+	MissionTerminal* mt = plnMgr->getMissionTerminal(termId);
+	if (mt == NULL) {
+		//Turn this message off after testing: (this msg will be frequent until we have a complete static object table)
+		//cout << "Error: Mission Terminal object NULL in parseMissionListRequest(). Mission Terminal does not exist! \n";
+		return;
+	}
+
+	MissionManager* misoMgr = player->getZone()->getZoneServer()->getMissionManager();
+	if (misoMgr == NULL) {
+		cout << "Error: Mission Manager NULL in parseMissionListRequest() \n";
+		return;
+	}
+
+	misoMgr->sendTerminalData(player, mt->getTerminalMask(), true);
+}
+
+void ObjectControllerMessage::parseMissionAccept(Player* player, Message* pack){
+	//skip objId + old size
+	pack->shiftOffset(12);
+
+	//Grab the mission object id
+	uint64 misoId = pack->parseLong();
+
+	MissionManager* misoMgr = player->getZone()->getZoneServer()->getMissionManager();
+	if (misoMgr == NULL) {
+		cout << "Error: Mission Manager NULL in parseMissionAccept() \n";
+		return;
+	}
+
+	misoMgr->doMissionAccept(player, misoId, true);
+}
+
+void ObjectControllerMessage::parseMissionAbort(Player* player, Message* pack) {
+	//skip objId + old size
+	pack->shiftOffset(12);
+
+	//Grab the mission object id
+	uint64 misoId = pack->parseLong();
+
+	MissionManager* misoMgr = player->getZone()->getZoneServer()->getMissionManager();
+	if (misoMgr == NULL) {
+		cout << "Error: Mission Manager NULL in parseMissionAbort() \n";
+		return;
+	}
+
+	misoMgr->doMissionAbort(player, misoId, true);
 }
 
 void ObjectControllerMessage::parseGroupInvite(Player* player, Message* pack,
@@ -2622,6 +2752,30 @@ void ObjectControllerMessage::handleDeathblow(Player* player, Message* packet,
 	}
 }
 
+void ObjectControllerMessage::parsePlaceStructure(Player* player, Message* packet){
+
+	player->sendSystemMessage("Placing Structure");
+	packet->parseInt();  // Empty Data
+	packet->parseInt();  // Empty Data
+
+	unicode data;
+	packet->parseUnicode(data);
+
+	StringTokenizer tokenizer(data.c_str());
+
+	string objectID;
+	tokenizer.getStringToken(objectID);
+	float x = tokenizer.getFloatToken();
+	float y = tokenizer.getFloatToken();
+	int orient = tokenizer.getIntToken();
+
+	uint64 toID = String::toUnsignedLong(objectID.c_str());
+
+	PlanetManager * planet = player->getZone()->getPlanetManager();
+	planet->placePlayerStructure(player, toID, x, y, orient);
+
+}
+
 void ObjectControllerMessage::parseSurveySlashRequest(Player* player,
 		Message* packet) {
 	player->setSurveyErrorMessage();
@@ -3023,8 +3177,8 @@ void ObjectControllerMessage::parseCreateSchematic(Player* player,
 
 void ObjectControllerMessage::parseExperimentation(Player * player,
 		Message* pack) {
-	ZoneClientImplementation* client =
-			(ZoneClientImplementation*) pack->getClient();
+	ZoneClientSessionImplementation* client =
+			(ZoneClientSessionImplementation*) pack->getClient();
 
 	if (player == NULL)
 		return;
@@ -3243,7 +3397,7 @@ void ObjectControllerMessage::parseRevokeConsentRequest(Player* player, Message*
 	Player* playerTarget = playerManager->getPlayer(consentName);
 
 	if (player->revokeConsent(consentName)) {
-		player->sendSystemMessage("You revoke your consent from " + playerTarget->getFirstNameProper() + ".");
+		player->sendSystemMessage("You revoke your consent from " + consentName + ".");
 
 		if (playerTarget != NULL) {
 			playerTarget->sendSystemMessage(player->getFirstNameProper() + " revokes your consent.");
@@ -3311,7 +3465,26 @@ void ObjectControllerMessage::parseHarvestOrganics(Player* player, Message* pack
 
 }
 
+void ObjectControllerMessage::handleRemoveFromGuild(Player* player, Message* pack, ZoneProcessServerImplementation* serv) {
+	//player is prelocked from ZonePacketHandler
+	uint64 objectid = pack->parseLong();
 
+	SceneObject* object = player->getZone()->lookupObject(objectid);
 
+	if (object == NULL)
+		return;
 
+	Player* removePlayer = NULL;
+
+	if (object->isPlayer())
+		removePlayer = (Player*) object;
+	else
+		return;
+
+	GuildManager* pGuild = serv->getGuildManager();
+
+	player->unlock();
+	pGuild->removeOnlineFromGuild(player, removePlayer);
+	player->wlock();
+}
 

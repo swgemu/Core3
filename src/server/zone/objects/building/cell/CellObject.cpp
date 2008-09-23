@@ -23,23 +23,15 @@ CellObject::CellObject(unsigned long long oid, BuildingObject* buio) : SceneObje
 	_impl->_setStub(this);
 }
 
+CellObject::CellObject(unsigned long long oid, BuildingObject* buio, unsigned long long cid) : SceneObject(DummyConstructorParameter::instance()) {
+	_impl = new CellObjectImplementation(oid, buio, cid);
+	_impl->_setStub(this);
+}
+
 CellObject::CellObject(DummyConstructorParameter* param) : SceneObject(param) {
 }
 
 CellObject::~CellObject() {
-}
-
-void CellObject::insertToZone(Zone* zone) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 6);
-		method.addObjectParameter(zone);
-
-		method.executeWithVoidReturn();
-	} else
-		((CellObjectImplementation*) _impl)->insertToZone(zone);
 }
 
 void CellObject::addChild(SceneObject* object, bool doLock) {
@@ -47,7 +39,7 @@ void CellObject::addChild(SceneObject* object, bool doLock) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, 6);
 		method.addObjectParameter(object);
 		method.addBooleanParameter(doLock);
 
@@ -61,7 +53,7 @@ void CellObject::removeChild(SceneObject* object, bool doLock) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, 7);
 		method.addObjectParameter(object);
 		method.addBooleanParameter(doLock);
 
@@ -75,12 +67,24 @@ SceneObject* CellObject::getChild(int idx) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, 8);
 		method.addSignedIntParameter(idx);
 
 		return (SceneObject*) method.executeWithObjectReturn();
 	} else
 		return ((CellObjectImplementation*) _impl)->getChild(idx);
+}
+
+unsigned long long CellObject::getCellID() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
+
+		return method.executeWithUnsignedLongReturn();
+	} else
+		return ((CellObjectImplementation*) _impl)->getCellID();
 }
 
 int CellObject::getChildrenSize() {
@@ -107,16 +111,16 @@ Packet* CellObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case 6:
-		insertToZone((Zone*) inv->getObjectParameter());
-		break;
-	case 7:
 		addChild((SceneObject*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
-	case 8:
+	case 7:
 		removeChild((SceneObject*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
-	case 9:
+	case 8:
 		resp->insertLong(getChild(inv->getSignedIntParameter())->_getObjectID());
+		break;
+	case 9:
+		resp->insertLong(getCellID());
 		break;
 	case 10:
 		resp->insertSignedInt(getChildrenSize());
@@ -126,10 +130,6 @@ Packet* CellObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	}
 
 	return resp;
-}
-
-void CellObjectAdapter::insertToZone(Zone* zone) {
-	return ((CellObjectImplementation*) impl)->insertToZone(zone);
 }
 
 void CellObjectAdapter::addChild(SceneObject* object, bool doLock) {
@@ -142,6 +142,10 @@ void CellObjectAdapter::removeChild(SceneObject* object, bool doLock) {
 
 SceneObject* CellObjectAdapter::getChild(int idx) {
 	return ((CellObjectImplementation*) impl)->getChild(idx);
+}
+
+unsigned long long CellObjectAdapter::getCellID() {
+	return ((CellObjectImplementation*) impl)->getCellID();
 }
 
 int CellObjectAdapter::getChildrenSize() {

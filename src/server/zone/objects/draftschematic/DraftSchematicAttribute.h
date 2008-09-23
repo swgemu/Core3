@@ -9,7 +9,9 @@
 
 class DraftSchematicAttribute : public DistributedObjectStub {
 public:
-	DraftSchematicAttribute(const string& attribute, float minVal, float maxVal, const string& attributeExpProp);
+	DraftSchematicAttribute(const string& attribute, float minVal, float maxVal, const string& attributeExpProp, const int precision);
+
+	DraftSchematicAttribute(DraftSchematicAttribute* attrib);
 
 	void setAttributeName(const string& attribute);
 
@@ -26,6 +28,8 @@ public:
 	float getMaxValue();
 
 	float getRange();
+
+	int getPrecision();
 
 	string& getAttributeExperimentalProperty();
 
@@ -63,6 +67,8 @@ public:
 	float getMaxValue();
 
 	float getRange();
+
+	int getPrecision();
 
 	string& getAttributeExperimentalProperty();
 

@@ -41,6 +41,7 @@ gives permission to release a modified version without this exception;
 this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
+#include "../../packets.h"
 
 #include "BuildingObjectImplementation.h"
 
@@ -49,6 +50,7 @@ which carries forward this exception.
 #include "../player/Player.h"
 #include "../player/PlayerImplementation.h"
 #include "../../Zone.h"
+#include "../../ZoneClientSessionImplementation.h"
 
 BuildingObjectImplementation::BuildingObjectImplementation(uint64 oid, bool staticBuild)
 		: QuadTree(-1024, -1024, 1024, 1024), BuildingObjectServant(oid, BUILDING) {
@@ -56,6 +58,9 @@ BuildingObjectImplementation::BuildingObjectImplementation(uint64 oid, bool stat
 	staticBuilding = staticBuild;
 
 	buildingType = UNKNOWN; // default building Type
+	setDefaultName();
+
+	name = "";
 
 	objectType = SceneObjectImplementation::BUILDING;
 
@@ -81,54 +86,6 @@ BuildingObjectImplementation::~BuildingObjectImplementation() {
 	}
 }
 
-void BuildingObjectImplementation::insertToZone(Zone* zone) {
-	BuildingObjectImplementation::zone = zone;
-
-	try {
-		zone->lock();
-
-		zone->registerObject((SceneObject*) _this);
-
-		zone->insert(this);
-		zone->inRange(this, 128);
-
-		zone->unlock();
-	} catch (...) {
-		cout << "exception TangibleObject::insertToZone(Zone* zone)\n";
-
-		zone->unlock();
-	}
-}
-
-void BuildingObjectImplementation::removeFromZone() {
-	if (zone == NULL)
-		return;
-
-	try {
-		zone->lock();
-
-    	for (int i = 0; i < inRangeObjectCount(); ++i) {
-			QuadTreeEntry* obj = getInRangeObject(i);
-
-			if (obj != this)
-				obj->removeInRangeObject(this);
-		}
-
-		removeInRangeObjects();
-
-		zone->remove(this);
-		zone->deleteObject(objectID);
-
-		zone->unlock();
-
-		zone = NULL;
-	} catch (...) {
-		cout << "exception BuildingObject::removeFromZone(bool doLock)\n";
-
-		zone->unlock();
-	}
-}
-
 void BuildingObjectImplementation::addCell(CellObject* cell) {
 	cells.put(cell);
 }
@@ -144,11 +101,11 @@ void BuildingObjectImplementation::notifyInsert(QuadTreeEntry* obj) {
 				SceneObject* child = cell->getChild(j);
 
 				if (child->isPlayer() || child->isNonPlayerCreature()) {
-					child->addInRangeObject(obj);
+					child->addInRangeObject(obj, false);
 
 					SceneObjectImplementation* a = (SceneObjectImplementation*) child->_getImplementation();
 					if (a != NULL)
-						obj->addInRangeObject(a);
+						obj->addInRangeObject(a, false);
 				}
 			}
 		}
@@ -177,7 +134,66 @@ void BuildingObjectImplementation::notifyDissapear(QuadTreeEntry* obj) {
 void BuildingObjectImplementation::sendTo(Player* player, bool doClose) {
 	// send buio packets if not static
 
+	ZoneClientSession* client = player->getClient();
+	if (client == NULL)
+		return;
+
+	if (staticBuilding)
+		return;
+
+	SceneObjectImplementation::create(client);
+
+	//cout << "generating building objects" << endl;
+	BaseMessage* buio3 = new BuildingObjectMessage3((BuildingObject*) _this);
+	player->sendMessage(buio3);
+
+	BaseMessage* buio6 = new BuildingObjectMessage6((BuildingObject*) _this);
+	player->sendMessage(buio6);
+
+	sendCells(player, true);
+
+	//cout << "finished sending cells..." << endl;
+	SceneObjectImplementation::close(client);
+
 }
+
+void BuildingObjectImplementation::sendCells(Player* player, bool doClose = true) {
+
+	UpdateContainmentMessage* link;
+	CellObjectMessage3* cellMsg3;
+	CellObjectMessage6* cellMsg6;
+	UpdateCellPermissionsMessage* perm;
+	CellObject * cell;
+
+	//cout << "sending cells, size: " << cells.size() << endl;
+	ZoneClientSession* client = player->getClient();
+	if (client == NULL)
+		return;
+
+	for (int i = 1; i <= cells.size(); ++i) {
+		//cout << "sending cell cell: " << i << endl;
+		cell = cells.get(i-1);
+
+		BaseMessage* msg = new SceneObjectCreateMessage(cell);
+		player->sendMessage(msg);
+
+		link = new UpdateContainmentMessage(cell->getObjectID(), _this->getObjectID(), 0xFFFFFFFF);
+		player->sendMessage(link);
+
+		cellMsg3 = new CellObjectMessage3(cell->getObjectID(), cell->getCellID()); //
+		player->sendMessage(cellMsg3);
+
+		cellMsg6 = new CellObjectMessage6(cell->getObjectID());
+		player->sendMessage(cellMsg6);
+
+		perm = new UpdateCellPermissionsMessage(cell->getObjectID());
+		player->sendMessage(perm);
+
+		BaseMessage* close = new SceneObjectCloseMessage(cell);
+		player->sendMessage(close);
+	}
+}
+
 
 void BuildingObjectImplementation::sendDestroyTo(Player* player) {
 	//send destroy if not static
@@ -185,8 +201,8 @@ void BuildingObjectImplementation::sendDestroyTo(Player* player) {
 	//destroy(player->getClient());
 }
 
-void BuildingObjectImplementation::notifyInsertToZone(CreatureObject* creature) {
-	SceneObjectImplementation* creoImpl = (SceneObjectImplementation*) creature->_getImplementation();
+void BuildingObjectImplementation::notifyInsertToZone(SceneObject* object) {
+	SceneObjectImplementation* creoImpl = (SceneObjectImplementation*) object->_getImplementation();
 	if (creoImpl == NULL)
 		return;
 
@@ -194,44 +210,59 @@ void BuildingObjectImplementation::notifyInsertToZone(CreatureObject* creature) 
 		QuadTreeEntry* obj = getInRangeObject(i);
 		SceneObjectImplementation* objImpl = (SceneObjectImplementation*) obj;
 
-		if (objImpl->isPlayer() || objImpl->isNonPlayerCreature()) {
-			creoImpl->addInRangeObject(obj);
-			obj->addInRangeObject(creoImpl);
-		}
+		//if (objImpl->isPlayer() || objImpl->isNonPlayerCreature()) {
+			creoImpl->addInRangeObject(obj, false);
+			obj->addInRangeObject(creoImpl, false);
+		//}
 	}
 }
 
-void BuildingObjectImplementation::broadcastMessage(BaseMessage* msg, int range, bool doLock) {
-	if (zone == NULL) {
-		delete msg;
-		return;
-	}
 
-	try {
-		//cout << "CreatureObject::broadcastMessage(Message* msg, int range, bool doLock)\n";
-		if (doLock)
-			zone->lock();
 
-		for (int i = 0; i < inRangeObjectCount(); ++i) {
-			SceneObject* object = (SceneObject*) (((SceneObjectImplementation*) getInRangeObject(i))->_this);
-			if (object->isPlayer()) {
-				Player* player = (Player*) object;
-
-				if (range == 128 || isInRange(player, range))
-					player->sendMessage(msg->clone());
-			}
-		}
-
-		delete msg;
-
-		if (doLock)
-			zone->unlock();
-
-		//cout << "finished CreatureObject::broadcastMessage(Message* msg, int range, bool doLock)\n";
-	} catch (...) {
-		cout << "exception CreatureObject::broadcastMessage(Message* msg, int range, bool doLock)\n";
-
-		if (doLock)
-			zone->unlock();
+void BuildingObjectImplementation::setDefaultName()
+{
+	switch(getBuildingType())
+	{
+		case BuildingObjectImplementation::UNKNOWN:
+		case BuildingObjectImplementation::BANK:
+		case BuildingObjectImplementation::CANTINA:
+		case BuildingObjectImplementation::CAPITOL:
+		case BuildingObjectImplementation::CLONING_FACILITY:
+		case BuildingObjectImplementation::GARAGE:
+		case BuildingObjectImplementation::GUILD:
+		case BuildingObjectImplementation::GUILD_COMBAT:
+		case BuildingObjectImplementation::GUILD_COMMERCE:
+		case BuildingObjectImplementation::GUILD_THEATER:
+		case BuildingObjectImplementation::GUILD_UNIVERSITY:
+		case BuildingObjectImplementation::HOTEL:
+		case BuildingObjectImplementation::MEDICAL_CENTER:
+		case BuildingObjectImplementation::SHUTTLEPORT:
+		case BuildingObjectImplementation::STARPORT:
+		case BuildingObjectImplementation::THEMEPARK:
+		case BuildingObjectImplementation::JUNKSHOP:
+		case BuildingObjectImplementation::TAVERN:
+		case BuildingObjectImplementation::BARRACKS:
+		case BuildingObjectImplementation::REBEL_HQ:
+		case BuildingObjectImplementation::IMPERIAL_HQ:
+		case BuildingObjectImplementation::CITYHALL:
+		case BuildingObjectImplementation::THEATER:
+		case BuildingObjectImplementation::MUSEUM:
+		case BuildingObjectImplementation::SALON:
+		case BuildingObjectImplementation::SF_REBEL_FORWARD_BASE:
+		case BuildingObjectImplementation::SF_IMPERIAL_FORWARD_BASE:
+		case BuildingObjectImplementation::SF_REBEL_MINOR_BASE:
+		case BuildingObjectImplementation::SF_IMPERIAL_MINOR_BASE:
+		case BuildingObjectImplementation::SF_REBEL_MAJOR_BASE:
+		case BuildingObjectImplementation::SF_IMPERIAL_MAJOR_BASE:
+		case BuildingObjectImplementation::SF_REBEL_HQ:
+		case BuildingObjectImplementation::SF_IMPERIAL_HQ:
+		case BuildingObjectImplementation::REBEL_FORWARD_BASE:
+		case BuildingObjectImplementation::IMPERIAL_FORWARD_BASE:
+		case BuildingObjectImplementation::REBEL_MINOR_BASE:
+		case BuildingObjectImplementation::IMPERIAL_MINOR_BASE:
+		case BuildingObjectImplementation::REBEL_MAJOR_BASE:
+		case BuildingObjectImplementation::IMPERIAL_MAJOR_BASE:
+			defaultName = "base_building";
 	}
 }
+

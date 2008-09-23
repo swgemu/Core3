@@ -1,0 +1,15 @@
+import "../DeedObject";
+import "../../TangibleObject";
+import "../../../../packets";
+import "../../../player/Player";
+import "../../../creature/CreatureObject";
+
+interface GeneratorDeed implements DeedObject {
+	GeneratorDeed(CreatureObject creature, int tempCRC, const unicode n, const string tempn) {
+		super(creature, tempCRC, n, tempn, int tp);
+	}
+	GeneratorDeed(unsigned long oid, int tempCRC, const unicode n, const string tempn) {
+		super(oid, tempCRC, n, tempn, int tp);
+	}
+}
+

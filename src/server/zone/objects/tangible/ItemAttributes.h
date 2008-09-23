@@ -177,7 +177,9 @@ public:
 	}
 	
 	void getAttributeString(string& attrstring) {
-		attributeString = "";
+		attributeString.clear();
+		//attributeString = "";
+		stringstream attrs;
 
 		attributes->resetIterator();
 		
@@ -186,8 +188,11 @@ public:
 			string value;
 
 			attributes->getNextKeyAndValue(key, value);
-			attributeString += key + "=" + value + ":";
+			//attributeString += key.c_str() + "=" + value.c_str() + ":";
+			attrs << key.c_str() << "=" << value.c_str() << ":";
 		}
+		
+		attributeString = attrs.str().c_str();
 		
 		attrstring = attributeString;
 		

@@ -47,8 +47,6 @@
 
 #include "engine/engine.h"
 
-#include "../../packets.h"
-
 #include "DraftSchematic.h"
 #include "DraftSchematicImplementation.h"
 
@@ -65,8 +63,9 @@
 #include "DraftSchematicValuesImplementation.h"
 
 class Player;
+class ObjectControllerMessage;
 
-class DraftSchematicImplementation : public DraftSchematicServant {
+class DraftSchematicImplementation: public DraftSchematicServant {
 	// example: 0x838FF623
 	uint32 schematicID;
 
@@ -75,6 +74,10 @@ class DraftSchematicImplementation : public DraftSchematicServant {
 
 	// example: Bofa Treat
 	string objName;
+
+	// example: @food_name:bofa_treat
+	string stringName;
+
 	// example: craftArtisanNewbieGroupA
 	string groupName;
 
@@ -149,297 +152,43 @@ class DraftSchematicImplementation : public DraftSchematicServant {
 
 public:
 	DraftSchematicImplementation(uint32 schematicID, const string& objName,
-			uint32 objCRC, const string& groupName, uint32 complexity,
-			uint32 schematicSize, int craftingToolTab) :
-		DraftSchematicServant() {
-		this->schematicID = schematicID;
-		this->objName = objName;
-		this->schematicCRC = objCRC;
-		this->groupName = groupName;
-		this->complexity = complexity;
-		this->schematicSize = schematicSize;
-		this->craftingToolTab = craftingToolTab;
+			const string& stringName, uint32 objCRC, const string& groupName,
+			uint32 complexity, uint32 schematicSize, int craftingToolTab);
 
-		this->craftingValues = new DraftSchematicValues();
+	DraftSchematicImplementation(DraftSchematic* draftSchematic);
 
-		this->persistent = false;
-		this->expPointsUsed = 0;
+	~DraftSchematicImplementation();
 
-		this->finished = false;
-	}
+	DraftSchematic* dsClone(DraftSchematic* draftSchematic);
 
-	DraftSchematicImplementation(DraftSchematic* draftSchematic) :
-		DraftSchematicServant() {
+	void close(Player* player);
 
-		//draftSchematic->toString();
+	void destroy(Player* player);
 
-		this->schematicID = draftSchematic->getSchematicID();
-		this->objName = draftSchematic->getName();
-		this->schematicCRC = draftSchematic->getSchematicCRC();
-		this->groupName = draftSchematic->getGroupName();
-		this->complexity = draftSchematic->getComplexity();
-		this->schematicSize = draftSchematic->getSchematicSize();
-		this->craftingToolTab = draftSchematic->getCraftingToolTab();
-
-		this->craftingValues = new DraftSchematicValues();
-
-		this->persistent = false;
-
-		this->finished = false;
-
-		for(int i = 0; i < draftSchematic->getIngredientListSize(); ++i){
-
-			this->dsIngredients.add(draftSchematic->getIngredient(i));
-
-		}
-
-		for(int i = 0; i < draftSchematic->getExpPropGroupListSize(); ++i){
-
-			this->dsExpPropGroups.add(draftSchematic->getExpPropGroup(i));
-
-		}
-
-		string title;
-		string subtitle;
-
-		for(int i = 0; i < draftSchematic->getCraftingValues()->getExperimentalPropertyTitleSize(); ++i){
-
-			title = draftSchematic->getCraftingValues()->getExperimentalPropertyTitle(i);
-
-			for(int j = 0; j < draftSchematic->getCraftingValues()->getExperimentalPropertySubtitleSize(title); ++j){
-
-				subtitle = draftSchematic->getCraftingValues()->getExperimentalPropertySubtitle(title, j);
-
-				this->craftingValues->addExperimentalPropertySubtitle(title, subtitle);
-			}
-		}
-
-		for(int i = 0; i < draftSchematic->getAttributesToSetListSize(); ++i){
-
-			this->attributesToSet.add(draftSchematic->getAttributeToSet(i));
-
-		}
-
-		this->tanoAttributes = draftSchematic->getTanoAttributes();
-		this->xpType = draftSchematic->getXpType();
-		this->xp = draftSchematic->getXp();
-
-		this->experimentingSkill = draftSchematic->getExperimentingSkill();
-		this->assemblySkill = draftSchematic->getAssemblySkill();
-
-		//toString();
-	}
-
-	~DraftSchematicImplementation(){
-		while (dsExpPropGroups.size() > 0)
-			dsExpPropGroups.remove(0)->finalize();
-
-		while (attributesToSet.size() > 0)
-			attributesToSet.remove(0)->finalize();
-
-		while (dsIngredients.size() > 0)
-			dsIngredients.remove(0)->finalize();
-
-		experimentalProperties.removeAll();
-
-		craftingValues->finalize();
-		craftingValues = NULL;
-
-	}
-
-	DraftSchematic* dsClone(DraftSchematic* draftSchematic) {
-		if (draftSchematic != NULL) {
-			return new DraftSchematic(draftSchematic);
-		} else {
-			return NULL;
-		}
-	}
-
-
-
-	void close(Player* player) {
-		if (player == NULL)
-			return;
-
-		BaseMessage* msg = new SceneObjectCloseMessage(_this->getObjectID());
-		player->sendMessage(msg);
-	}
-
-	void destroy(Player* player) {
-		if (player == NULL)
-			return;
-
-		BaseMessage* msg = new SceneObjectDestroyMessage(_this->getObjectID());
-		player->sendMessage(msg);
-	}
-
-	void sendTo(Player* player) {
-		// This sends the initial DraftSchematic data to begin the crafting Session
-
-		if (player == NULL)
-			return;
-
-		// Scene Create
-		BaseMessage* create = new SceneObjectCreateMessage(_this->getObjectID(), 0x3819C409);
-		player->sendMessage(create);
-
-		// Link to Crafting Tool
-		BaseMessage* link = new UpdateContainmentMessage(_this->getObjectID(), _this->getContainer()->getObjectID(), 4);
-		player->sendMessage(link);
-
-		// MSCO3
-		unicode& uniPlayerName = player->getCharacterName();
-
-		ManufactureSchematicObjectMessage3* msco3 =
-				new ManufactureSchematicObjectMessage3(_this->getObjectID(), _this->getComplexity(), uniPlayerName);
-		player->sendMessage(msco3);
-
-		// MSCO6
-		ManufactureSchematicObjectMessage6* msco6 =
-				new ManufactureSchematicObjectMessage6(_this->getObjectID(), _this->getSchematicCRC());
-		player->sendMessage(msco6);
-
-		// MSCO8
-		ManufactureSchematicObjectMessage8* msco8 =
-				new ManufactureSchematicObjectMessage8(_this->getObjectID());
-		player->sendMessage(msco8);
-
-		// MSCO9
-		ManufactureSchematicObjectMessage9* msco9 =
-				new ManufactureSchematicObjectMessage9(_this->getObjectID());
-		player->sendMessage(msco9);
-
-		// Scene Close
-		BaseMessage* close = new SceneObjectCloseMessage(_this->getObjectID());
-		player->sendMessage(close);
-
-	}
-
-	int getIngredientListSize() {
-		return dsIngredients.size();
-	}
-
-	DraftSchematicIngredient* getIngredient(int index) {
-		return dsIngredients.get(index);
-	}
-
-	int getExpPropGroupListSize() {
-		return dsExpPropGroups.size();
-	}
-
-	DraftSchematicExpPropGroup* getExpPropGroup(int index) {
-		return dsExpPropGroups.get(index);
-	}
+	void sendTo(Player* player);
 
 	// Ingredient Methods
-	void addIngredient(const string& ingredientTemplateName, const string& ingredientTitleName,
-			bool optional, const string& resourceType, uint32 resourceQuantity) {
-		DraftSchematicIngredient* ingreedient = new DraftSchematicIngredient(ingredientTemplateName,
-				ingredientTitleName, optional, resourceType, resourceQuantity);
-
-		dsIngredients.add(ingreedient);
-	}
+	void addIngredient(const string& ingredientTemplateName,
+			const string& ingredientTitleName, bool optional,
+			const string& resourceType, uint32 resourceQuantity,
+			uint32 combineType);
 
 	// THERE IS A BUG WHEN YOU LEAVE YOUR DATAPAD UP AND SURRENDER A SKILL, THE DRAFT SCHEMATICS
 	// STILL ARE IN YOUR DATAPAD, SO IF YOU CLICK THEM, IT WILL SAY SCHEMATIC NOT FOUND AND WILL
 	// SCREW UP THE CLIENT TRYING TO GET THE INGREDIENTS AND EXP PROPS FROM THERE ON UNTIL THE CLIENT
 	// FULLY EXITS THE GAME
-	void sendIngredientsToPlayer(Player* player) {
-		ObjectControllerMessage* msg = new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x01BF);
+	void sendIngredientsToPlayer(Player* player);
 
-		msg->insertInt(schematicID); // ex: 0x838FF623838FF623 (objID is always the crc value in the upper 4 bytes and the lower 4 bytes)
-		msg->insertInt(schematicCRC);
-		msg->insertInt(complexity); // ex: 3
-		msg->insertInt(schematicSize); // ex: 1
-		msg->insertByte(1);
-
-		helperSendIngredientsToPlayer(msg);
-
-		player->sendMessage(msg);
-	}
-
-	inline void helperSendIngredientsToPlayer(ObjectControllerMessage* objMsg) {
-		int listSize = dsIngredients.size();
-		objMsg->insertInt(listSize);
-
-		// Send all the ingredient data
-		for (int i = 0; i < listSize; i++) {
-			DraftSchematicIngredient* dsi = dsIngredients.get(i);
-			dsi->helperSendToPlayer(objMsg);
-		}
-
-		/* for debugging
-		 stringstream ss;
-		 ss << msg->toString();
-		 player->info(ss.str());*/
-
-		objMsg->insertShort(0);
-	}
+	void helperSendIngredientsToPlayer(ObjectControllerMessage* objMsg);
 
 	// Experimental Property Methods
 	// UPDATE THIS METHOD WHEN WE CAN PASS VECTORS AROUND IN IDL
 	void addExperimentalProperty(uint32 groupNumber,
-			const string& experimentalProperty, uint32 weight) {
-		if (groupNumber < dsExpPropGroups.size()) {
-			dsExpPropGroups.get(groupNumber)->addExperimentalProperty(experimentalProperty,
-					weight);
-		} else {
-			DraftSchematicExpPropGroup* dsEpg = new DraftSchematicExpPropGroup();
-			dsEpg->addExperimentalProperty(experimentalProperty, weight);
+			const string& experimentalProperty, uint32 weight);
 
-			dsExpPropGroups.add(dsEpg);
-		}
-	}
+	void sendExperimentalPropertiesToPlayer(Player* player);
 
-	void sendExperimentalPropertiesToPlayer(Player* player) {
-		ObjectControllerMessage* msg = new ObjectControllerMessage(player->getObjectID(), 0x1B, 0x0207);
-
-		msg->insertInt(schematicID);
-		msg->insertInt(schematicCRC);
-
-		uint8 listSize = dsExpPropGroups.size();
-
-		/*uint32 padding = 0;
-		 if (draftSchematicIngredients.size() > 0) {
-		 string templateName = draftSchematicIngredients.get(0)->getTemplateName();
-
-		 if( templateName == "craft_chemical_ingredients_n" || templateName == "craft_droid_ingredients_n"
-		 || templateName == "craft_munition_ingredients_n" || templateName == "craft_structure_ingredients_n"
-		 || templateName == "craft_tissue_ingredients_n" || templateName == "craft_vehicle_ingredients_n"
-		 || templateName == "craft_weapon_ingredients_n") {
-		 padding = 2;
-		 } else {
-		 padding = 3;
-		 }
-		 }*/
-
-		// Have to run the loop twice.  Ask soe why :/
-
-		for (int soeFtl = 0; soeFtl < 2; soeFtl++) {
-			// The +3 is for the padding
-			//msg->insertByte(listSize + padding);
-
-			msg->insertByte(listSize);
-
-			/* This loop adds the padding required for this packet to work
-			 for (int soeIsDumb = 0; soeIsDumb < padding; soeIsDumb++) {
-			 msg->insertByte(1);
-			 msg->insertByte(0);
-			 }*/
-
-			int count = getRequiredIngredientCount();
-
-			// Send all the experimental property data
-			for (int i = 0; i < listSize; i++) {
-				DraftSchematicExpPropGroup* dsEpg = dsExpPropGroups.get(i);
-				// OLD dsEpg->sendToPlayer(msg);
-				dsEpg->sendToPlayer(msg, count);
-				count++;
-			}
-		}
-
-		player->sendMessage(msg);
-	}
+	void toString();
 
 	// setters
 	inline void setPersistent(bool status) {
@@ -457,11 +206,11 @@ public:
 		parent = obj;
 	}
 
-	inline void setXpType(string type){
+	inline void setXpType(string type) {
 		xpType = type;
 	}
 
-	inline void setXp(int x){
+	inline void setXp(int x) {
 		xp = x;
 	}
 
@@ -469,31 +218,31 @@ public:
 		expCounter = craftingValues->getExperimentalPropertyTitleSize() + 1;
 	}
 
-	inline void increaseExpCounter(){
+	inline void increaseExpCounter() {
 		expCounter++;
 	}
 
-	inline void setExpPoints(int points){
+	inline void setExpPoints(int points) {
 		expPointsUsed = points;
 	}
 
-	inline void setExpFailure(float rate){
+	inline void setExpFailure(float rate) {
 		experimentalFailureRate = rate;
 	}
 
-	inline void setExperimentingSkill(const string& exp){
+	inline void setExperimentingSkill(const string& exp) {
 		experimentingSkill = exp;
 	}
 
-	inline void setAssemblySkill(const string& ass){
+	inline void setAssemblySkill(const string& ass) {
 		assemblySkill = ass;
 	}
 
-	inline void increaseComplexity(){
+	inline void increaseComplexity() {
 		complexity++;
 	}
 
-	inline void setFinished(){
+	inline void setFinished() {
 		finished = true;
 	}
 
@@ -508,6 +257,10 @@ public:
 
 	inline string& getName() {
 		return objName;
+	}
+
+	inline string& getStringName() {
+		return stringName;
 	}
 
 	inline string& getGroupName() {
@@ -538,24 +291,26 @@ public:
 		return parent;
 	}
 
-	inline string& getXpType(){
+	inline string& getXpType() {
 		return xpType;
 	}
 
-	inline int getXp(){
+	inline int getXp() {
 		return xp;
 	}
 
-	inline string& getExperimentingSkill(){
+	inline string& getExperimentingSkill() {
 		return experimentingSkill;
 	}
 
-	inline string& getAssemblySkill(){
+	inline string& getAssemblySkill() {
 		return assemblySkill;
 	}
 
-	inline void addAttributeToSet(const string& attribute, const float minVal, const float maxVal, const string& attributeExpProp) {
-		DraftSchematicAttribute* attrib = new DraftSchematicAttribute(attribute, minVal, maxVal, attributeExpProp);
+	inline void addAttributeToSet(const string& attribute, const float minVal,
+			const float maxVal, const string& attributeExpProp, int precision) {
+		DraftSchematicAttribute* attrib =
+						new DraftSchematicAttribute(attribute, minVal, maxVal, attributeExpProp, precision);
 		attributesToSet.add(attrib);
 	}
 
@@ -563,125 +318,65 @@ public:
 		return attributesToSet.get(i);
 	}
 
-	inline int getAttributesToSetListSize(){
+	inline int getAttributesToSetListSize() {
 		return attributesToSet.size();
 	}
 
-	inline DraftSchematicAttribute* getAttributesToSet(const int i){
-		return attributesToSet.get(i);
+	inline DraftSchematicAttribute* getAttributeToSet(const string& name) {
+
+		DraftSchematicAttribute* attrib;
+
+		for (int i = 0; i < getAttributesToSetListSize(); ++i) {
+
+			attrib = getAttributeToSet(i);
+
+			if (attrib->getAttributeName() == name) {
+
+				return attrib;
+
+			}
+
+		}
+
+		return NULL;
 	}
 
-	inline int getExpPoints(){
+	inline int getExpPoints() {
 		return expPointsUsed;
 	}
 
-	inline int getExpCounter(){
+	inline int getExpCounter() {
 		return expCounter;
 	}
 
-	inline float getExpFailure(){
+	inline float getExpFailure() {
 		return experimentalFailureRate;
 	}
 
-	inline int getRequiredIngredientCount(){
-
-		DraftSchematicIngredient* dsi;
-		int count = 0;
-
-		for(int i = 0; i < dsIngredients.size(); i++){
-			dsi = dsIngredients.get(i);
-
-			if(!dsi->getOptional())
-				count++;
-		}
-		return count;
+	int getIngredientListSize() {
+		return dsIngredients.size();
 	}
 
-	inline DraftSchematicValues* getCraftingValues(){
+	DraftSchematicIngredient* getIngredient(int index) {
+		return dsIngredients.get(index);
+	}
+
+	int getExpPropGroupListSize() {
+		return dsExpPropGroups.size();
+	}
+
+	DraftSchematicExpPropGroup* getExpPropGroup(int index) {
+		return dsExpPropGroups.get(index);
+	}
+
+	int getRequiredIngredientCount();
+
+	inline DraftSchematicValues* getCraftingValues() {
 		return craftingValues;
 	}
 
-	inline bool isFinished(){
+	inline bool isFinished() {
 		return finished;
-	}
-
-	void toString(){
-
-		cout << "Name: " << objName;
-		cout << "\nSchematicID: " << schematicID;
-		cout << "\nobjectID: " << objectID;
-		cout << "\nschematicCRC: " << schematicCRC;
-		cout << "\ngroupName: " << groupName;
-		cout << "\ncomplexity: " << complexity;
-		cout << "\nschematicSize: " << schematicSize;
-		cout << "\ncraftingToolTab: " << craftingToolTab;
-
-		cout << "\nxpType: " << xpType;
-		cout << "\nxp: " << xp;
-		cout << "\ntanoAttributes: " << tanoAttributes;
-
-		cout << "\nAssembly Skill: " << assemblySkill;
-		cout << "\nExperimenting Skill: " << experimentingSkill;
-
-		DraftSchematicIngredient* ingredient;
-		for(int i = 0;i < dsIngredients.size(); ++i){
-
-			ingredient = dsIngredients.get(i);
-
-			cout << "\n*************************" << endl;
-			cout << "Ingredient " << i << endl;
-			cout << "Title: " << ingredient->getTitleName() << endl;
-			cout << "Resource Type: " << ingredient->getResourceType() << endl;
-			cout << "Template Name: " << ingredient->getTemplateName() << endl;
-			cout << "Quantity: " << ingredient->getResourceQuantity() << endl;
-			cout << "Optional: " << ingredient->getOptional() << endl;
-			cout << "**************************" << endl;
-
-		}
-
-		DraftSchematicExpPropGroup* tempGroup;
-		for(int i = 0;i < dsExpPropGroups.size(); ++i){
-
-			tempGroup = dsExpPropGroups.get(i);
-
-			cout << "\n*************************" << endl;
-			cout << "Exp Property " << i << endl;
-			cout << "Type and Weight: " << tempGroup->getTypeAndWeight(i) << endl;
-			cout << "Percentage: " << tempGroup->getExpPropPercentage(i) << endl;
-			cout << "**************************" << endl;
-
-		}
-
-		DraftSchematicAttribute* tempAttribute;
-		for(int i = 0;i < attributesToSet.size(); ++i){
-
-			tempAttribute = attributesToSet.get(i);
-
-			cout << "\n*************************" << endl;
-			cout << "Attribute " << i << endl;
-			cout << "Name: " << tempAttribute->getAttributeName() << endl;
-			cout << "Property: " << tempAttribute->getAttributeExperimentalProperty() << endl;
-			cout << "Min: " << tempAttribute->getMinValue() << endl;
-			cout << "Max: " << tempAttribute->getMaxValue() << endl;
-			cout << "Range: " << tempAttribute->getRange() << endl;
-			cout << "**************************" << endl;
-
-		}
-
-		float tempProperty;
-		for(int i = 0;i < experimentalProperties.size(); ++i){
-
-			tempProperty = experimentalProperties.get(i);
-
-			cout << "*************************" << endl;
-			cout << "Prop " << i << endl;
-			cout << "Prop: " << tempProperty << endl;
-			cout << "**************************" << endl;
-
-		}
-
-		craftingValues->toString();
-
 	}
 
 };

@@ -110,6 +110,8 @@ void CreatureImplementation::init() {
 
 	doRandomMovement = false;
 
+	directionAngle = 0;
+
 	//visibilityRange = 32;
 
 	// constants
@@ -782,64 +784,6 @@ void CreatureImplementation::loadItems() {
 	*/
 }
 
-void CreatureImplementation::insertToZone(Zone* zone) {
-	CreatureImplementation::zone = zone;
-	zoneID = zone->getZoneID();
-
-	stringstream msg;
-	msg << "spawned on " << zoneID;
-	info(msg);
-
-	try {
-		zone->lock();
-
-		zone->registerObject(_this);
-
-		if (parent != NULL) {
-			BuildingObject* building = (BuildingObject*)parent->getParent();
-
-			insertToBuilding(building);
-
-			building->notifyInsertToZone(_this);
-		} else {
-			zone->insert(this);
-			zone->inRange(this, 128);
-		}
-
-		zone->unlock();
-	} catch (...) {
-		cout << "exception CreatureImplementation::insertToZone(Zone* zone)\n";
-
-		zone->unlock();
-	}
-}
-
-void CreatureImplementation::insertToBuilding(BuildingObject* building) {
-	if (isInQuadTree() || !parent->isCell())
-		return;
-
-	try {
-		//building->lock(doLock);
-
-		info("inserting to building");
-
-		((CellObject*)parent)->addChild(_this);
-
-		building->insert(this);
-		building->inRange(this, 128);
-
-		//building->unlock(doLock);
-
-		linkType = 0xFFFFFFFF;
-		broadcastMessage(link(parent), 128, false);
-
-	} catch (...) {
-		error("exception CreatureImplementation::insertToBuilding(BuildingObject* building)");
-
-		//building->unlock(doLock);
-	}
-}
-
 void CreatureImplementation::updateZone(bool lightUpdate, bool sendPackets) {
 	bool insert = false;
 
@@ -962,65 +906,6 @@ void CreatureImplementation::updateCreaturePosition(bool lightUpdate) {
 	}
 }
 
-void CreatureImplementation::removeFromZone(bool doLock) {
-	deagro();
-
-	try {
-		if (zone == NULL || !isInQuadTree())
-			return;
-
-		zone->lock(doLock);
-
-		if (parent != NULL && parent->isCell()) {
-			CellObject* cell = (CellObject*) parent;
-			BuildingObject* building = (BuildingObject*)parent->getParent();
-
-			removeFromBuilding(building);
-		} else
-			zone->remove(this);
-
-    	for (int i = 0; i < inRangeObjectCount(); ++i) {
-			QuadTreeEntry* obj = getInRangeObject(i);
-
-			if (obj != this)
-				obj->removeInRangeObject(this);
-		}
-
-		removeInRangeObjects();
-
-		zone->deleteObject(objectID);
-
-		zone->unlock(doLock);
-	} catch (...) {
-		cout << "exception CreatureImplementation::removeFromZone(bool doLock)\n";
-
-		zone->unlock(doLock);
-	}
-}
-
-void CreatureImplementation::removeFromBuilding(BuildingObject* building) {
-	if (building == NULL || !isInQuadTree() || !parent->isCell())
-		return;
-
-	try {
-		//building->lock(doLock);
-
-		info("removing from building");
-
-		broadcastMessage(link(0, 0xFFFFFFFF), 128, false);
-
-		((CellObject*)parent)->removeChild(_this);
-
-		building->remove(this);
-
-		//building->unlock(doLock);
-	} catch (...) {
-		error("exception CreatureImplementation::removeFromBuilding(BuildingObject* building, bool doLock)");
-
-		//building->unlock(doLock);
-	}
-}
-
 void CreatureImplementation::notifyPositionUpdate(QuadTreeEntry* obj) {
 	try {
 		if (obj == this)
@@ -1053,7 +938,7 @@ void CreatureImplementation::notifyPositionUpdate(QuadTreeEntry* obj) {
 					aggroedCreature = player;
 
 					if (isQueued())
-					creatureManager->dequeueActivity(this);
+						creatureManager->dequeueActivity(this);
 
 					creatureManager->queueActivity(this, 10);
 
@@ -1091,7 +976,11 @@ bool CreatureImplementation::activate() {
 		if (aggroedCreature != NULL && targetObject != aggroedCreature) {
 			updateTarget(aggroedCreature);
 		} else if (doRandomMovement) {
+			zone->lock();
+
 			doRandomMovement = false;
+
+			zone->unlock();
 
 			addRandomPatrolPoint(32 + System::random(64), false);
 		}
@@ -1198,7 +1087,16 @@ void CreatureImplementation::resetState() {
 
 	clearStates();
 
-	aggroedCreature = NULL;
+	try {
+
+		zone->lock();
+
+		aggroedCreature = NULL;
+
+		zone->unlock();
+	} catch (...) {
+		zone->unlock();
+	}
 
 	resetPatrolPoints(false);
 
@@ -1231,7 +1129,15 @@ void CreatureImplementation::broadcastNextPositionUpdate(PatrolPoint* point) {
 }
 
 void CreatureImplementation::setNextPosition() {
-	setPosition(nextPosition->getPositionX(), nextPosition->getPositionZ(), nextPosition->getPositionY());
+	try {
+		zone->lock();
+
+		setPosition(nextPosition->getPositionX(), nextPosition->getPositionZ(), nextPosition->getPositionY());
+
+		zone->unlock();
+	} catch (...) {
+		zone->unlock();
+	}
 	uint64 newCell = nextPosition->getCellID();
 
 	stringstream reachedPosition;
@@ -1403,7 +1309,15 @@ void CreatureImplementation::doAttack(CreatureObject* target, int damage) {
 
 		info("new target locked");
 
-		aggroedCreature = target;
+		try {
+			zone->lock();
+
+			aggroedCreature = target;
+
+			zone->unlock();
+		} catch (...) {
+			zone->unlock();
+		}
 
 		updateTarget(target);
 
@@ -1509,7 +1423,15 @@ void CreatureImplementation::deagro() {
 		if (aggroedCreature->isDead() || aggroedCreature->isIncapacitated())
 			doIncapAnimation();
 
-		aggroedCreature = NULL;
+		try {
+			zone->lock();
+
+			aggroedCreature = NULL;
+
+			zone->unlock();
+		} catch (...) {
+			zone->unlock();
+		}
 	}
 
 	clearTarget();

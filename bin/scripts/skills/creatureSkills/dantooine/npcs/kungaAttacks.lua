@@ -47,7 +47,7 @@ kungaAttack01 = {
 	requiredWeaponType = NONE,
 
 	range = 15,
-	damageRatio = 48,
+	damageRatio = 4.8,
 	speedRatio = 2,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -89,7 +89,7 @@ kungaAttack02 = {
 	requiredWeaponType = NONE,
 	
 	range = 15,
-	damageRatio = 42,
+	damageRatio = 4.2,
 	speedRatio = 2,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -108,10 +108,10 @@ kungaAttack02 = {
 		
 	knockdownChance = 1,
 	postureDownChance = 0,
-	dizzyChance = 1,
-	blindChance = 1,
-	stunChance = 1,
-	intimidateChance = 1,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
 	
 	CbtSpamBlock = "melee_block",
 	CbtSpamCounter = "melee_counter",
@@ -131,7 +131,7 @@ kungaAttack03 = {
 	requiredWeaponType = NONE,
 	
 	range = 15,
-	damageRatio = 48,
+	damageRatio = 4.8,
 	speedRatio = 2,
 	areaRange = 7,
 	accuracyBonus = 0,
@@ -162,7 +162,7 @@ kungaAttack04 = {
 	requiredWeaponType = NONE,
 	
 	range = 15,
-	damageRatio = 42,
+	damageRatio = 4.2,
 	speedRatio = 2,
 	areaRange = 7,
 	accuracyBonus = 0,
@@ -170,9 +170,9 @@ kungaAttack04 = {
 	knockdownChance = 0,
 	postureDownChance = 1,
 	postureUpChance = 0,
-	dizzyChance = 1,
+	dizzyChance = 0,
 	blindChance = 0,
-	stunChance = 1,
+	stunChance = 0,
 	intimidateChance = 0,
 	
 	CbtSpamBlock = "melee_block",
@@ -192,7 +192,7 @@ kungaAttack05 = {
 	requiredWeaponType = NONE,
 	
 	range = 15,
-	damageRatio = 48,
+	damageRatio = 4.8,
 	speedRatio = 2,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -222,7 +222,7 @@ kungaAttack06 = {
 	requiredWeaponType = NONE, 
 	
 	range = 15,
-	damageRatio = 42,
+	damageRatio = 4.2,
 	speedRatio = 2,
 	areaRange = 7, 
 	accuracyBonus = 0, 
@@ -230,10 +230,10 @@ kungaAttack06 = {
 	knockdownChance = 0, 
 	postureDownChance = 0, 
 	postureUpChance = 0, 
-	dizzyChance = 1, 
+	dizzyChance = 0, 
 	blindChance = 0, 
 	stunChance = 0, 
-	intimidateChance = 0, 
+	intimidateChance = 1, 
 	
 	CbtSpamBlock = "melee_block", 
 	CbtSpamCounter = "melee_counter", 
@@ -252,7 +252,7 @@ kungaAttack07 = {
 	requiredWeaponType = NONE, 
 	
 	range = 15,
-	damageRatio = 48,
+	damageRatio = 4.8,
 	speedRatio = 2,
 	areaRange = 7, 
 	accuracyBonus = 0, 
@@ -282,7 +282,7 @@ kungaAttack08 = {
 	requiredWeaponType = NONE, 
 	
 	range = 15,
-	damageRatio = 42,
+	damageRatio = 4.2,
 	speedRatio = 2,
 	areaRange = 7, 
 	accuracyBonus = 0, 
@@ -313,7 +313,7 @@ kungaAttack09 = {
 	requiredWeaponType = NONE, 
 	
 	range = 15,
-	damageRatio = 48,
+	damageRatio = 4.8,
 	speedRatio = 1,
 	areaRange = 7, 
 	accuracyBonus = 0, 
@@ -321,10 +321,10 @@ kungaAttack09 = {
 	knockdownChance = 0, 
 	postureDownChance = 0, 
 	postureUpChance = 0, 
-	dizzyChance = 1, 
+	dizzyChance = 0, 
 	blindChance = 1, 
-	stunChance = 1, 
-	intimidateChance = 1, 
+	stunChance = 0, 
+	intimidateChance = 0, 
 	
 	CbtSpamBlock = "melee_block", 
 	CbtSpamCounter = "melee_counter", 

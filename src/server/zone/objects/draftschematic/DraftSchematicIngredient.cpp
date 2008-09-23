@@ -12,8 +12,13 @@
  *	DraftSchematicIngredientStub
  */
 
-DraftSchematicIngredient::DraftSchematicIngredient(const string& ingredientTemplateName, const string& ingredientTitleName, bool optional, const string& resourceType, unsigned int resourceQuantity) {
-	_impl = new DraftSchematicIngredientImplementation(ingredientTemplateName, ingredientTitleName, optional, resourceType, resourceQuantity);
+DraftSchematicIngredient::DraftSchematicIngredient(const string& ingredientTemplateName, const string& ingredientTitleName, bool optional, const string& resourceType, unsigned int resourceQuantity, unsigned int combineType) {
+	_impl = new DraftSchematicIngredientImplementation(ingredientTemplateName, ingredientTitleName, optional, resourceType, resourceQuantity, combineType);
+	_impl->_setStub(this);
+}
+
+DraftSchematicIngredient::DraftSchematicIngredient(DraftSchematicIngredient* ingredient) {
+	_impl = new DraftSchematicIngredientImplementation(ingredient);
 	_impl->_setStub(this);
 }
 
@@ -88,12 +93,24 @@ unsigned int DraftSchematicIngredient::getResourceQuantity() {
 		return ((DraftSchematicIngredientImplementation*) _impl)->getResourceQuantity();
 }
 
-bool DraftSchematicIngredient::getOptional() {
+unsigned int DraftSchematicIngredient::getCombineType() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 11);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((DraftSchematicIngredientImplementation*) _impl)->getCombineType();
+}
+
+bool DraftSchematicIngredient::getOptional() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 12);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -127,6 +144,9 @@ Packet* DraftSchematicIngredientAdapter::invokeMethod(uint32 methid, Distributed
 		resp->insertInt(getResourceQuantity());
 		break;
 	case 11:
+		resp->insertInt(getCombineType());
+		break;
+	case 12:
 		resp->insertBoolean(getOptional());
 		break;
 	default:
@@ -154,6 +174,10 @@ string& DraftSchematicIngredientAdapter::getResourceType() {
 
 unsigned int DraftSchematicIngredientAdapter::getResourceQuantity() {
 	return ((DraftSchematicIngredientImplementation*) impl)->getResourceQuantity();
+}
+
+unsigned int DraftSchematicIngredientAdapter::getCombineType() {
+	return ((DraftSchematicIngredientImplementation*) impl)->getCombineType();
 }
 
 bool DraftSchematicIngredientAdapter::getOptional() {

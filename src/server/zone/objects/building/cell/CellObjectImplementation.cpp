@@ -54,8 +54,7 @@ which carries forward this exception.
 
 #include "../../../Zone.h"
 
-CellObjectImplementation::CellObjectImplementation(uint64 oid, BuildingObject* buio) :
-	CellObjectServant(oid, CELL) {
+CellObjectImplementation::CellObjectImplementation(uint64 objID, BuildingObject* buio) : CellObjectServant(objID, CELL) {
 
 	parent = (SceneObject*) buio;
 
@@ -63,19 +62,29 @@ CellObjectImplementation::CellObjectImplementation(uint64 oid, BuildingObject* b
 
 	children.setInsertPlan(SortedVector<SceneObject*>::NO_DUPLICATE);
 	stringstream name;
-	name << "Cell :" << oid;
+	name << "Cell :" << objID;
 	setLoggingName(name.str());
 
 	setLogging(false);
 	setGlobalLogging(true);
 }
 
+CellObjectImplementation::CellObjectImplementation(uint64 objID, BuildingObject* buio, uint64 cid) :
+	CellObjectServant(objID, CELL) {
+
+	cellID = cid;
+	//cout << "Cell Constructor objID: " << objID << " cellID: " << cid << endl;
+
+	parent = (SceneObject*) buio;
+
+	objectType = SceneObjectImplementation::CELL;
+
+	children.setInsertPlan(SortedVector<SceneObject*>::NO_DUPLICATE);
+}
+
+
 CellObjectImplementation::~CellObjectImplementation() {
 }
-
-void CellObjectImplementation::insertToZone(Zone* zone) {
-}
-
 
 void CellObjectImplementation::addChild(SceneObject* obj, bool doLock) {
 	wlock(doLock);

@@ -90,6 +90,33 @@ RandPoolAtt = {
 	stunChance = 0,
 	intimidateChance = 0,
 	
+	healthAttackChance = 0,
+	strengthAttackChance = 0,
+	constitutionAttackChance = 0,
+	
+	actionAttackChance = 100,
+	quicknessAttackChance = 0,
+	staminaAttackChance = 0,
+
+	mindAttackChance = 0,
+	focusAttackChance = 0,
+	willpowerAttackChance = 0,
+
+	dotChance = 60,
+	tickStrengthOfHit = 2,
+
+	fireStrength = 0,
+	fireType = HEALTH,
+
+	bleedingStrength = 0,
+	bleedingType = 0,
+
+	poisonStrength = 0,
+	poisonType = 0,
+
+	diseaseStrength = 0,
+	diseaseType = 0,
+	
 	CbtSpamBlock = "knockdownfire_block",
 	CbtSpamCounter = "knockdownfire_counter",
 	CbtSpamEvade = "knockdownfire_evade",
@@ -456,5 +483,3 @@ DirectPoolAtt = {
 }
 
 AddDirectPoolAttackTargetSkill(DirectPoolAtt)
-
------------------------------------------------------------------------

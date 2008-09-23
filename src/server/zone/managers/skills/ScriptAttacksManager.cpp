@@ -83,6 +83,8 @@ void ScriptAttacksManager::registerFunctions() {
 	lua_register(getLuaState(), "AddHealWoundTargetSkill", AddHealWoundTargetSkill);
 	lua_register(getLuaState(), "AddCureTargetSkill", AddCureTargetSkill);
 	lua_register(getLuaState(), "AddReviveTargetSkill", AddReviveTargetSkill);
+	lua_register(getLuaState(), "AddFirstAidTargetSkill", AddFirstAidTargetSkill);
+	lua_register(getLuaState(), "AddTendHealTargetSkill", AddTendHealTargetSkill);
 	lua_register(getLuaState(), "AddDeBuffAttackTargetSkill", AddDeBuffAttackTargetSkill);
 	lua_register(getLuaState(), "AddEnhanceSelfSkill", AddEnhanceSelfSkill);
 	lua_register(getLuaState(), "AddDotPoolAttackTargetSkill", AddDotPoolAttackTargetSkill);
@@ -197,12 +199,6 @@ void ScriptAttacksManager::registerGlobals() {
 	setGlobalInt("MIND", 7);
 	setGlobalInt("FOCUS", 8);
 	setGlobalInt("WILLPOWER", 9);
-
-	//conditions
-	setGlobalInt("POISONED", PharmaceuticalImplementation::POISONED);
-	setGlobalInt("DISEASED", PharmaceuticalImplementation::DISEASED);
-	setGlobalInt("ONFIRE", PharmaceuticalImplementation::ONFIRE);
-
 }
 
 int ScriptAttacksManager::AddRandomPoolAttackTargetSkill(lua_State *L) {
@@ -798,6 +794,32 @@ int ScriptAttacksManager::AddHealWoundTargetSkill(lua_State* L) {
 	return 0;
 }
 
+int ScriptAttacksManager::AddFirstAidTargetSkill(lua_State* L) {
+	LuaObject skill(L);
+
+	if (!skill.isValidTable())
+		return 0;
+
+	FirstAidTargetSkill* heal;
+
+	string skillname = skill.getStringField("skillname");
+	string animation = skill.getStringField("animation");
+	string effect = skill.getStringField("effect");
+
+	int mindCost = skill.getIntField("mindCost");
+	float speed = skill.getFloatField("speed");
+	float range = skill.getFloatField("range");
+
+	heal = new FirstAidTargetSkill(skillname, effect.c_str(), server);
+	heal->setSecondaryAnim(animation);
+	heal->setMindCost(mindCost);
+	heal->setSpeed(speed);
+	heal->setRange(range);
+
+	CombatActions->put(heal);
+	return 0;
+}
+
 int ScriptAttacksManager::AddCureTargetSkill(lua_State* L) {
 	LuaObject skill(L);
 
@@ -811,7 +833,7 @@ int ScriptAttacksManager::AddCureTargetSkill(lua_State* L) {
 	string effect = skill.getStringField("effect");
 
 	int mindCost = skill.getIntField("mindCost");
-	int conditionCured = skill.getIntField("conditionCured");
+	uint64 conditionCured = skill.getLongField("conditionCured");
 	float range = skill.getFloatField("range");
 
 	heal = new CureTargetSkill(skillname, effect.c_str(), server);
@@ -897,6 +919,53 @@ int ScriptAttacksManager::AddReviveTargetSkill(lua_State* L) {
 	return 0;
 }
 
+int ScriptAttacksManager::AddTendHealTargetSkill(lua_State* L) {
+	LuaObject skill(L);
+
+	if (!skill.isValidTable())
+		return 0;
+
+	TendHealTargetSkill* heal;
+
+	string skillname = skill.getStringField("skillname");
+	string animation = skill.getStringField("animation");
+	string effect = skill.getStringField("effect");
+
+	int mindCost = skill.getIntField("mindCost");
+	int mindWoundCost = skill.getIntField("mindWoundCost");
+	float range = skill.getFloatField("range");
+	float speed = skill.getFloatField("speed");
+
+	int healthHealed = skill.getIntField("healthHealed");
+	int actionHealed = skill.getIntField("actionHealed");
+	int mindHealed = skill.getIntField("mindHealed");
+
+	int woundPool = skill.getIntField("woundPool");
+	int woundsHealed = skill.getIntField("woundsHealed");
+
+	bool tendDamage = skill.getIntField("tendDamage");
+	bool tendWound = skill.getIntField("tendWound");
+
+	heal = new TendHealTargetSkill(skillname, effect.c_str(), server);
+	heal->setSecondaryAnim(animation);
+	heal->setMindCost(mindCost);
+	heal->setMindWoundCost(mindWoundCost);
+	heal->setRange(range);
+	heal->setSpeed(speed);
+
+	heal->setHealthHealed(healthHealed);
+	heal->setActionHealed(actionHealed);
+	heal->setMindHealed(mindHealed);
+
+	heal->setWoundPool(woundPool);
+	heal->setWoundsHealed(woundsHealed);
+
+	heal->setTendDamage(tendDamage);
+	heal->setTendWound(tendWound);
+
+	CombatActions->put(heal);
+	return 0;
+}
 
 int ScriptAttacksManager::AddDeBuffAttackTargetSkill(lua_State* L) {
 	LuaObject skill(L);

@@ -46,7 +46,7 @@ singingMtnClanCouncilwoman = Creature:new {
       faction = "Mtn. Clan",
       gender = "",
 
-      name = "Singing Mountain clan councilwomon",
+      name = "Singing Mountain clan councilwoman",
       objectCRC = 905293113, 
       socialGroup = "Mtn. Clan",
       named = FALSE, 
@@ -72,7 +72,7 @@ singingMtnClanCouncilwoman = Creature:new {
       willpower = 500,
 
       height = 1, -- Size of creature
-      armor = 30, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+      armor = 3, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
       kinetic = 100,
       energy = 20,
       electricity = 100,
@@ -102,7 +102,7 @@ singingMtnClanCouncilwoman = Creature:new {
       weaponClass = "PolearmMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
       weaponEquipped = 1,
       weaponMinDamage = 250,
-      weaponMaxDamage = 200,
+      weaponMaxDamage = 450,
       weaponAttackSpeed = 1.5,
       weaponDamageType = "ELECTRICITY", -- ELECTRICITY, KINETIC, etc
       weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
@@ -120,7 +120,7 @@ singingMtnClanCouncilwoman = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0,1,2,3", -- Group it belongs to for loot
+      lootGroup = "0,19,21,30,31,33,34,39,40", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
@@ -136,7 +136,7 @@ singingMtnClanCouncilwoman = Creature:new {
       meatMax = 0,
 
       skills = { "singingMountainClanAttack20", "singingMountainClanAttack21", "singingMountainClanAttack22", "singingMountainClanAttack23", "singingMountainClanAttack24",  "singingMountainClanAttack25", "singingMountainClanAttack26", "singingMountainClanAttack27", "singingMountainClanAttack28", "singingMountainClanAttack29", "singingMountainClanAttack30", "singingMountainClanAttack31" },
-         respawnTimer = 600,
+      respawnTimer = 600,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }

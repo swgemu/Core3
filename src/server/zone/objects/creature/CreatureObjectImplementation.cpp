@@ -45,7 +45,7 @@ which carries forward this exception.
 #include "../../Zone.h"
 #include "../../ZoneProcessServerImplementation.h"
 
-#include "../../ZoneClient.h"
+#include "../../ZoneClientSession.h"
 
 #include "../../packets.h"
 #include "../../packets/creature/CreatureObjectMessage3.h"
@@ -371,7 +371,7 @@ CreatureObjectImplementation::~CreatureObjectImplementation() {
 }
 
 void CreatureObjectImplementation::sendToOwner(Player* player, bool doClose) {
-	ZoneClient* client = player->getClient();
+	ZoneClientSession* client = player->getClient();
 	if (client == NULL)
 		return;
 
@@ -391,7 +391,7 @@ void CreatureObjectImplementation::sendToOwner(Player* player, bool doClose) {
 }
 
 void CreatureObjectImplementation::sendTo(Player* player, bool doClose) {
-	ZoneClient* client = player->getClient();
+	ReferenceSlot<ZoneClientSession> client = player->getClient();
 	if (client == NULL)
 		return;
 
@@ -430,7 +430,7 @@ void CreatureObjectImplementation::sendTo(Player* player, bool doClose) {
 }
 
 void CreatureObjectImplementation::sendDestroyTo(Player* player) {
-	ZoneClient* client = player->getClient();
+	ZoneClientSession* client = player->getClient();
 	if (client == NULL)
 		return;
 
@@ -2093,7 +2093,7 @@ void CreatureObjectImplementation::setActionWoundsBar(uint32 wounds) {
 	broadcastMessage(dcreo3);
 
 	// Update to match max/wounds
-	setActionBar(MIN(getMind(), getActionMax() - getActionWounds()));
+	setActionBar(MIN(getAction(), getActionMax() - getActionWounds()));
 	if(getAction() < getActionMax())
 		activateRecovery();
 }
@@ -2652,10 +2652,10 @@ void CreatureObjectImplementation::addInventoryResource(ResourceContainer* rcno)
 
 				if (inventoryResource->compare(rcno)
 						&& inventoryResource->getContents()
-								!= inventoryResource->getMaxContents()) {
+								< inventoryResource->getMaxContents()) {
 
 					if (inventoryResource->getContents()
-							+ inventoryResource->getContents()
+							+ rcno->getContents()
 							<= inventoryResource->getMaxContents()) {
 
 						inventoryResource->transferContents(player, rcno);
@@ -2663,6 +2663,8 @@ void CreatureObjectImplementation::addInventoryResource(ResourceContainer* rcno)
 						makeNewResource = false;
 
 						inventoryResource->unlock();
+
+						return;
 
 						break;
 					} else {
@@ -2674,7 +2676,7 @@ void CreatureObjectImplementation::addInventoryResource(ResourceContainer* rcno)
 						inventoryResource->setContents(
 								inventoryResource->getMaxContents());
 
-						rcno->setContents(rcno->getContents() - diff);
+						rcno->setContents(diff);
 
 						inventoryResource->sendDeltas(player);
 
@@ -4077,79 +4079,6 @@ uint32 CreatureObjectImplementation::getMitigation(const string& mit) {
 	}
 }
 
-void CreatureObjectImplementation::broadcastMessage(BaseMessage* msg, int range, bool doLock) {
-	if (zone == NULL) {
-		delete msg;
-		return;
-	}
-
-	try {
-		//cout << "CreatureObject::broadcastMessage(Message* msg, int range, bool doLock)\n";
-		zone->lock(doLock);
-
-		for (int i = 0; i < inRangeObjectCount(); ++i) {
-			SceneObjectImplementation* scno = (SceneObjectImplementation*) getInRangeObject(i);
-			SceneObject* object = (SceneObject*) scno->_getStub();
-
-			if (object->isPlayer()) {
-				Player* player = (Player*) object;
-
-				if (range == 128 || isInRange(player, range) || player->getParent() != NULL) {
-					//cout << "CreatureObject - sending message to player " << player->getFirstName() << "\n";
-					player->sendMessage(msg->clone());
-				}
-			}
-		}
-
-		delete msg;
-
-		zone->unlock(doLock);
-
-	} catch (...) {
-		error("exception CreatureObject::broadcastMessage(Message* msg, int range, bool doLock)");
-
-		zone->unlock(doLock);
-	}
-
-	//cout << "finished CreatureObject::broadcastMessage(Message* msg, int range, bool doLock)\n";
-}
-
-void CreatureObjectImplementation::broadcastMessage(StandaloneBaseMessage* msg, int range, bool doLock) {
-	if (zone == NULL) {
-		delete msg;
-		return;
-	}
-
-	try {
-		//cout << "CreatureObject::broadcastMessage(Message* msg, int range, bool doLock)\n";
-		zone->lock(doLock);
-
-		for (int i = 0; i < inRangeObjectCount(); ++i) {
-			SceneObjectImplementation* scno = (SceneObjectImplementation*) getInRangeObject(i);
-			SceneObject* object = (SceneObject*) scno->_getStub();
-
-			if (object->isPlayer()) {
-				Player* player = (Player*) object;
-
-				if (range == 128 || isInRange(player, range) || player->getParent() != NULL) {
-					//cout << "CreatureObject - sending message to player " << player->getFirstName() << "\n";
-					player->sendMessage((StandaloneBaseMessage*)msg->clone());
-				}
-			}
-		}
-
-		delete msg;
-
-		zone->unlock(doLock);
-
-	} catch (...) {
-		error("exception CreatureObject::broadcastMessage(Message* msg, int range, bool doLock)");
-
-		zone->unlock(doLock);
-	}
-
-	//cout << "finished CreatureObject::broadcastMessage(Message* msg, int range, bool doLock)\n";
-}
 
 void CreatureObjectImplementation::broadcastMessages(Vector<BaseMessage*>& msgs, int range, bool doLock) {
 	if (zone == NULL) {
@@ -4675,7 +4604,10 @@ void CreatureObjectImplementation::explode(int level, bool destroy) {
 
 void CreatureObjectImplementation::deactivateWoundTreatment() {
 	float modSkill = (float)getSkillMod("healing_wound_speed");
-	int delay = (int)round((-1.0f/15.0f) * modSkill + (61.0f/3.0f));
+	int delay = (int)round((modSkill * -(2.0f / 25.0f)) + 20.0f);
+
+	//Force the delay to be at least 4 seconds.
+	delay = (delay < 4) ? 4 : delay;
 
 	doWoundTreatment = false;
 	if (woundTreatmentEvent == NULL) {
@@ -4692,7 +4624,10 @@ void CreatureObjectImplementation::activateWoundTreatment() {
 
 void CreatureObjectImplementation::deactivateInjuryTreatment() {
 	float modSkill = (float)getSkillMod("healing_injury_speed");
-	int delay = (int)round((-2.0f/19.0f) * modSkill + (390.0f/19.0f));
+	int delay = (int)round((modSkill * -(1.0f / 8.0f)) + 21.0f);
+
+	//Force the delay to be at least 4 seconds.
+	delay = (delay < 4) ? 4 : delay;
 
 	doInjuryTreatment = false;
 	if (injuryTreatmentEvent == NULL) {
@@ -4709,7 +4644,10 @@ void CreatureObjectImplementation::activateInjuryTreatment() {
 
 void CreatureObjectImplementation::deactivateStateTreatment() {
 	float modSkill = (float)getSkillMod("healing_injury_speed");
-	int delay = (int)round((-2.0f/19.0f) * modSkill + (390.0f/19.0f));
+	int delay = (int)round((modSkill * -(1.0f / 8.0f)) + 21.0f);
+
+	//Force the delay to be at least 4 seconds.
+	delay = (delay < 4) ? 4 : delay;
 
 	doStateTreatment = false;
 	if (stateTreatmentEvent == NULL) {
@@ -4726,7 +4664,10 @@ void CreatureObjectImplementation::activateStateTreatment() {
 
 void CreatureObjectImplementation::deactivateConditionTreatment() {
 	float modSkill = (float)getSkillMod("healing_wound_speed");
-	int delay = (int)round((-1.0f/15.0f) * modSkill + (61.0f/3.0f));
+	int delay = (int)round((modSkill * -(2.0f / 25.0f)) + 20.0f);
+
+	//Force the delay to be at least 4 seconds.
+	delay = (delay < 4) ? 4 : delay;
 
 	doConditionTreatment = false;
 	if (conditionTreatmentEvent == NULL) {

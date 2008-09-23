@@ -47,14 +47,16 @@ which carries forward this exception.
 
 #include "../BaseLineMessage.h"
 
+#include "../../objects/installation/InstallationObject.h"
+
 class InstallationObjectMessage3 : public BaseLineMessage {
 public:
-	InstallationObjectMessage3(uint64 ioId)
-			: BaseLineMessage(ioId, 0x494E534F, 3, 0x05) {
+	InstallationObjectMessage3(InstallationObject * inso)
+			: BaseLineMessage(inso->getObjectID(), 0x494E534F, 3, 0x05) {
 		insertFloat(1.0);
-		insertAscii("building_name");
+		insertAscii("installation_n");
 		insertInt(0); //nothing.
-		insertAscii("housing_naboo_medium");
+		insertAscii(inso->getTemplateName());
 		insertInt(0); //nothing.
 		insertInt(1);
 		insertInt(0);
@@ -69,6 +71,8 @@ public:
 		insertInt(1);
 		insertInt(0);
 		insertShort(0);
+		
+		setSize();
 	}
 };
 #endif /*INSTALLATIONOBJECTMESSAGE3_H_*/

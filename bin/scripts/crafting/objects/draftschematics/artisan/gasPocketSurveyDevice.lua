@@ -51,12 +51,19 @@ gasPocketSurveyDevice = Object:new {
   craftingToolTab = 4096,
   complexity = 7,
   size = 1,
+
+  xpType = "crafting_general",
+  xp = 57,
+
+  assemblySkill = "general_assembly",
+  experimentingSkill = "general_experimentation",
   
   ingredientTemplateNames = "craft_item_ingredients_n, craft_item_ingredients_n, craft_item_ingredients_n, craft_item_ingredients_n",
   ingredientTitleNames = "assembly_enclosure, controller, scanner_assembly, storage_unit",
   ingredientOptionals = "0, 0, 0, 0",
   resourceTypes = "metal, metal, metal, mineral",
   resourceQuantities = "8, 8, 3, 8",
+  combineTypes = "1, 1, 1, 1",
   
   numberExperimentalProperties = "1, 1, 1, 1",
 
@@ -69,19 +76,13 @@ gasPocketSurveyDevice = Object:new {
 
   experimentalSubGroupTitles = "quality",
   
-  tanoAttributes = "objecttype=32770:objectcrc=1059021891:objecttemp=survey_tool_gas:",
+  tanoAttributes = "objecttype=32770:objectcrc=1059021891:objecttemp=survey_tool_gas:templatetype=obj_n:",
    
-  attributesToSet = "hitPoints, useModifier",
+  attributesToSet = "quality",
+  attributeExperimentalProperties = "exp_effectiveness",
+  attributePrecision = "2",
+  attributesMinMax = "-15, 15"
 
-  attributeExperimentalProperties = "null, quality",
-
-  attributesMinMax = "1000, 1000, -15, 15",
-
-  xpType = "crafting_general",
-  xp = 57,
-
-  assemblySkill = "general_assembly",
-  experimentingSkill = "general_experimentation"
 }
 
 DraftSchematics:addDraftSchematic(gasPocketSurveyDevice, 256520291) --- Add to global DraftSchematics table

@@ -40,17 +40,17 @@ void AttackableObject::insertToZone(Zone* zone) {
 		((AttackableObjectImplementation*) _impl)->insertToZone(zone);
 }
 
-void AttackableObject::removeFromZone(bool dolock) {
+void AttackableObject::removeFromZone(bool doLock) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 7);
-		method.addBooleanParameter(dolock);
+		method.addBooleanParameter(doLock);
 
 		method.executeWithVoidReturn();
 	} else
-		((AttackableObjectImplementation*) _impl)->removeFromZone(dolock);
+		((AttackableObjectImplementation*) _impl)->removeFromZone(doLock);
 }
 
 void AttackableObject::sendDestroyTo(Player* player) {
@@ -303,8 +303,8 @@ void AttackableObjectAdapter::insertToZone(Zone* zone) {
 	return ((AttackableObjectImplementation*) impl)->insertToZone(zone);
 }
 
-void AttackableObjectAdapter::removeFromZone(bool dolock) {
-	return ((AttackableObjectImplementation*) impl)->removeFromZone(dolock);
+void AttackableObjectAdapter::removeFromZone(bool doLock) {
+	return ((AttackableObjectImplementation*) impl)->removeFromZone(doLock);
 }
 
 void AttackableObjectAdapter::sendDestroyTo(Player* player) {

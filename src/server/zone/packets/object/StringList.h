@@ -103,6 +103,11 @@ public:
 
 		updateOptionCount();
 	}
+	
+	void insertOption(string& option) {
+		insertUnicode(unicode(option));
+		updateOptionCount();
+	}
 		
 	void insertOption(unicode& option) {
 		insertUnicode(option);

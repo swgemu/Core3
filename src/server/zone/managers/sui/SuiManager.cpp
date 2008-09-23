@@ -44,13 +44,18 @@ which carries forward this exception.
 
 #include "SuiManager.h"
 
-#include "../../objects.h"
+#include "../../objects/player/sui/messagebox/SuiMessageBox.h"
 #include "../../objects/player/sui/colorpicker/SuiColorPicker.h"
+
+#include "../radial/RadialManager.h"
+
+#include "../../ZoneProcessServerImplementation.h"
+#include "../../objects.h"
 
 #include "../item/ItemManager.h"
 #include "../../objects/creature/bluefrog/BlueFrogVector.h"
 
-#include "../../ZoneProcessServerImplementation.h"
+#include "../../../login/packets/ErrorMessage.h"
 
 SuiManager::SuiManager(ZoneProcessServerImplementation* serv) : Logger("SuiManager") {
 	server = serv;
@@ -61,8 +66,10 @@ SuiManager::SuiManager(ZoneProcessServerImplementation* serv) : Logger("SuiManag
 
 void SuiManager::handleSuiEventNotification(uint32 boxID, Player* player, uint32 cancel, const string& value, const string& value2) {
 	uint16 type = (uint16) boxID;
-
 	int range;
+	string returnString;
+
+	GuildManager* pGuild = server->getGuildManager();
 
 	switch (type) {
 	case 0xC057:
@@ -86,6 +93,60 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, Player* player, uint32
 	case 0x7259:
 		range = (atoi(value.c_str()) * 64) + 64;
 		handleSurveyToolRange(boxID, player, cancel, range);
+		break;
+	case 0x7270: // Guild creation InputBox #1 (Tag)
+		returnString = value;
+		pGuild->handleGuildTag(boxID, player, cancel, returnString);
+		if (!cancel)
+			pGuild->handleGuildName(boxID, player, cancel, returnString);
+		break;
+	case 0x7271: // Guild creation InputBox #2 (name)
+		returnString = value;
+		pGuild->handleGuildName(boxID, player, cancel, returnString);
+		break;
+	case 0x7272: // Guild Sponsoring Member InputBox (name)
+		returnString = value;
+		pGuild->handleGuildSponsor(boxID, player, cancel, returnString);
+		break;
+	case 0x7273: // Verify Messagebox Guild Sponsoring Target
+		pGuild->handleVerifyBoxSponsorTargetforGuildMembership(boxID, player, cancel);
+		break;
+	case 0x7274: // Sponsored guild member box
+		pGuild->handleSponsoredGuildMembersBox(boxID, player, cancel, atoi(value.c_str()));
+		break;
+	case 0x7275: // Sponsored guild member accept/decline box
+		pGuild->handleSponsoredGuildMembersAcceptBox(boxID, player, cancel, atoi(value.c_str()));
+		break;
+	case 0x7277: // Disband guild verify box
+		returnString = value;
+		pGuild->handleGuildDisbandBox(boxID, player, cancel, returnString);
+		break;
+	case 0x7278: // Namechange guild (Tag box)
+		returnString = value;
+		pGuild->handleGuildNameChange(boxID, player, cancel, returnString);
+		break;
+	case 0x7279: // Namechange guild (Tag box)
+		returnString = value;
+		pGuild->handleGuildNameChangeName(boxID, player, cancel, returnString);
+		break;
+	case 0x7280: // Guild Information - Members
+		pGuild->handleGuildInformationMembersBox(boxID, player, cancel, atoi(value.c_str()));
+		break;
+	case 0x7281: // Guild Information - Member options
+		pGuild->handleGuildMemberOptions(boxID, player, cancel, atoi(value.c_str()));
+		break;
+	case 0x7282: // Guild member permissions
+		pGuild->handleGuildPermissionSelection(boxID, player, cancel, atoi(value.c_str()));
+		break;
+	case 0x7283: // Guild remove from guild exec
+		pGuild->execRemoveFromGuild(boxID, player, cancel);
+		break;
+	case 0x7284: // Guild Transfer-Leadership Name of Target SUI Box return
+		returnString = value;
+		pGuild->handleGuildTransferLeaderBox(boxID, player, cancel, returnString);
+		break;
+	case 0x7285: // Guild Transfer-Leadership Accept/Decline Box Return
+		pGuild->handleGuildTransferLeaderVerifyBox(boxID, player, cancel);
 		break;
 	case 0xAAAA:	// slice weapon
 		handleSliceWeapon(boxID, player, cancel, atoi(value.c_str()));
@@ -124,8 +185,327 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, Player* player, uint32
 		handleDiagnose(boxID, player);
 		break;
 	default:
-		//error("Unknown SuiBoxNotification opcode");
-		break;
+		//Clean up players sui box:
+
+		try {
+			player->wlock();
+
+			if (player->hasSuiBox(boxID)) {
+				SuiBox* sui = player->getSuiBox(boxID);
+
+				player->removeSuiBox(boxID);
+
+				sui->finalize();
+			}
+
+			player->unlock();
+		} catch (...) {
+			player->error("error while cleaning sui in SuiManager::handleSuiEventNotification");
+			player->unlock();
+		}
+	}
+}
+
+void SuiManager::handleCodeForRedeed(uint32 boxID, Player* player,
+		uint32 cancel, const string& extra) {
+	try {
+		player->wlock();
+
+		if (!player->hasSuiBox(boxID)) {
+			player->unlock();
+			return;
+		}
+
+		SuiBox* sui = player->getSuiBox(boxID);
+
+		if (sui->isListBox() && cancel != 1) {
+			Zone * zone = player->getZone();
+
+			SceneObject * scno = zone->lookupObject(player->getCurrentStructureID());
+
+			InstallationObject * inso = (InstallationObject *) scno;
+
+			inso->handleStructureRedeedConfirm(player);
+		}
+
+		player->removeSuiBox(boxID);
+
+		sui->finalize();
+		sui = NULL;
+
+		player->unlock();
+	} catch (Exception& e) {
+		error("Exception in SuiManager::handleCodeForRedeed ");
+		e.printStackTrace();
+
+		player->unlock();
+	} catch (...) {
+		error("Unreported exception caught in SuiManager::handleCodeForRedeed");
+		player->unlock();
+	}
+}
+
+void SuiManager::handleRedeedStructure(uint32 boxID, Player* player,
+		uint32 cancel, const int extra) {
+	try {
+		player->wlock();
+
+		if (!player->hasSuiBox(boxID)) {
+			player->unlock();
+			return;
+		}
+
+		SuiBox* sui = player->getSuiBox(boxID);
+
+		if (sui->isInputBox() && cancel != 1) {
+
+
+
+			Zone * zone = player->getZone();
+
+			SceneObject * scno = zone->lookupObject(player->getCurrentStructureID());
+
+			InstallationObject * inso = (InstallationObject *) scno;
+
+			if(extra == inso->getDestroyCode()){
+				inso->handleMakeDeed(player);
+			}
+			else{
+				SuiMessageBox* wrongCode = new SuiMessageBox(player, 0x00);
+				wrongCode->setPromptTitle("Star Wars Galaxies");
+				wrongCode->setPromptText("You have entered an incorrect code.  You will"
+						" have to issue the /destroyStructure again if you wish to continue.");
+				player->addSuiBox(wrongCode);
+				player->sendMessage(wrongCode->generateMessage());
+			}
+
+		}
+
+		player->removeSuiBox(boxID);
+
+		sui->finalize();
+
+		player->unlock();
+	} catch (Exception& e) {
+		error("Exception in SuiManager::handleRedeedStructure ");
+		e.printStackTrace();
+
+		player->unlock();
+	} catch (...) {
+		error("Unreported exception caught in SuiManager::handleRedeedStructure");
+		player->unlock();
+	}
+}
+
+void SuiManager::handleRefreshStatusListBox(uint32 boxID, Player* player,
+		uint32 cancel, const int extra) {
+	try {
+		player->wlock();
+
+		if (!player->hasSuiBox(boxID)) {
+			player->unlock();
+			return;
+		}
+
+		SuiBox* sui = player->getSuiBox(boxID);
+
+		if (sui->isListBox() && cancel != 1) {
+			Zone * zone = player->getZone();
+
+			SceneObject * scno = zone->lookupObject(player->getCurrentStructureID());
+
+			InstallationObject * inso = (InstallationObject *) scno;
+
+			inso->handleStructureStatus(player);
+		}
+
+		player->removeSuiBox(boxID);
+
+		sui->finalize();
+		sui = NULL;
+
+		player->unlock();
+	} catch (Exception& e) {
+		error("Exception in SuiManager::handleRefreshStatusListBox ");
+		e.printStackTrace();
+
+		player->unlock();
+	} catch (...) {
+		error("Unreported exception caught in SuiManager::handleRefreshStatusListBox");
+		player->unlock();
+	}
+}
+
+void SuiManager::handleSetObjectName(uint32 boxID, Player* player,
+		uint32 cancel, const string& name) {
+	try {
+
+		player->wlock();
+
+		if (!player->hasSuiBox(boxID)) {
+			player->unlock();
+			return;
+		}
+
+		SuiBox* sui = player->getSuiBox(boxID);
+
+		if (sui->isInputBox() && cancel != 1) {
+			Zone * zone = player->getZone();
+
+			SceneObject * scno = zone->lookupObject(player->getCurrentStructureID());
+
+			TangibleObject * tano = (TangibleObject *) tano;
+
+			if(tano!= NULL)	{
+
+				//tano->setTemplateName(name);
+
+			}
+
+			/*else {
+				BuildingObject * buio = (BuildingObject * ) obj;
+
+				if(buio!= NULL)
+					buio->setName(unicode(name));
+			}*/
+
+		}
+
+		player->removeSuiBox(boxID);
+
+		sui->finalize();
+		sui = NULL;
+
+		player->unlock();
+	} catch (Exception& e) {
+		error("Exception in SuiManager::handleSetObjectName ");
+		e.printStackTrace();
+
+		player->unlock();
+	} catch (...) {
+		error("Unreported exception caught in SuiManager::handleSetObjectName");
+		player->unlock();
+	}
+}
+
+void SuiManager::handleAddMaintenance(uint32 boxID, Player* player,
+		uint32 cancel, const string& newCashVal) {
+	try {
+
+		player->wlock();
+
+		if (!player->hasSuiBox(boxID)) {
+			player->unlock();
+			return;
+		}
+
+		SuiBox* sui = player->getSuiBox(boxID);
+
+		if (sui->isTransferBox() && cancel != 1) {
+
+			Zone * zone = player->getZone();
+
+			SceneObject * scno = zone->lookupObject(player->getCurrentStructureID());
+
+			InstallationObject * inso = (InstallationObject *) scno;
+
+			if(inso!= NULL && atoi(newCashVal.c_str()) != 0)	{
+				int maint = (player->getCashCredits() - atoi(newCashVal.c_str()));
+
+				inso->addMaintenance(maint);
+				player->subtractCashCredits(maint);
+
+				stringstream report;
+				report << "You successfully make a payment of " << maint << " to "
+					<< inso->getName().c_str();
+
+				player->sendSystemMessage(report.str());
+
+			}
+
+			/*else {
+				BuildingObject * buio = (BuildingObject * ) obj;
+
+				if(buio!= NULL)
+
+			}*/
+
+		}
+
+		player->removeSuiBox(boxID);
+
+		sui->finalize();
+		sui = NULL;
+
+		player->unlock();
+	} catch (Exception& e) {
+		error("Exception in SuiManager::handleAddMaintenance ");
+		e.printStackTrace();
+
+		player->unlock();
+	} catch (...) {
+		error("Unreported exception caught in SuiManager::handleAddMaintenance");
+		player->unlock();
+	}
+}
+void SuiManager::handleAddEnergy(uint32 boxID, Player* player,
+		uint32 cancel, const string& newEnergyVal) {
+	try {
+
+		player->wlock();
+
+		if (!player->hasSuiBox(boxID)) {
+			player->unlock();
+			return;
+		}
+
+		SuiBox* sui = player->getSuiBox(boxID);
+
+		if (sui->isTransferBox() && cancel != 1) {
+
+			Zone * zone = player->getZone();
+
+			SceneObject * scno = zone->lookupObject(player->getCurrentStructureID());
+
+			InstallationObject * inso = (InstallationObject *) scno;
+
+			if(inso!= NULL)	{
+				uint energy = (inso->getEnergy() - atoi(newEnergyVal.c_str()));
+
+				inso->addEnergy(energy);
+				//player->removeEnergy(energy);
+
+				stringstream report;
+				report << "You successfully deposit " << energy << " units of energy.\n"
+					<< "Energy reserves now at " << inso->getEnergy() << " units.";
+
+				player->sendSystemMessage(report.str());
+
+			}
+
+			/*else {
+				BuildingObject * buio = (BuildingObject * ) obj;
+
+				if(buio!= NULL)
+
+			}*/
+
+		}
+
+		player->removeSuiBox(boxID);
+
+		sui->finalize();
+		sui = NULL;
+
+		player->unlock();
+	} catch (Exception& e) {
+		error("Exception in SuiManager::handleAddPower ");
+		e.printStackTrace();
+
+		player->unlock();
+	} catch (...) {
+		error("Unreported exception caught in SuiManager::handleAddPower");
+		player->unlock();
 	}
 }
 

@@ -23,13 +23,15 @@ class CellObject : public SceneObject {
 public:
 	CellObject(unsigned long long oid, BuildingObject* buio);
 
-	void insertToZone(Zone* zone);
+	CellObject(unsigned long long oid, BuildingObject* buio, unsigned long long cid);
 
 	void addChild(SceneObject* object, bool doLock = true);
 
 	void removeChild(SceneObject* object, bool doLock = true);
 
 	SceneObject* getChild(int idx);
+
+	unsigned long long getCellID();
 
 	int getChildrenSize();
 
@@ -49,13 +51,13 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	void insertToZone(Zone* zone);
-
 	void addChild(SceneObject* object, bool doLock);
 
 	void removeChild(SceneObject* object, bool doLock);
 
 	SceneObject* getChild(int idx);
+
+	unsigned long long getCellID();
 
 	int getChildrenSize();
 

@@ -55,6 +55,7 @@ class ForumsDatabase {
 	static string forumsStandardGroup;
 	static string forumsUserTable;
 	static string forumsBannedTable;
+	static string forumsNewActivationTable;
 
 public:
 	ForumsDatabase(ConfigManager* configManager) {
@@ -67,6 +68,7 @@ public:
         forumsStandardGroup = configManager->getForumsStandardGroup();
         forumsUserTable = configManager->getForumsUserTable();
         forumsBannedTable = configManager->getForumsBannedTable();
+        forumsNewActivationTable = configManager->getForumsNewActivationTable();
 
         impl = new MySqlDatabase(string("ForumsDatabase"), forumdbHost);
         impl->connect(forumdbName, forumdbUser, forumdbPass, forumdbPort);
@@ -95,6 +97,10 @@ public:
 
 	inline static string bannedTable() {
 		return forumsBannedTable;
+	}
+
+	inline static string newActivationTable() {
+		return forumsNewActivationTable;
 	}
 
 };

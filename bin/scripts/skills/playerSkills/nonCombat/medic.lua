@@ -62,17 +62,54 @@ HealSelfSkill = {
 AddHealWoundTargetSkill(HealSelfSkill);
 
 
-HealSelfSkill = {
+FirstAidSkill = {
 	skillname = "firstaid",
 	effect = "clienteffect/healing_healdamage.cef",
 	animation = "heal_self",
-
-	healBleeding = 1,
-
-	speed = 2.0,
+	
+	speed = 5.0,
+	range = 6.0
 }
 
-AddHealSelfSkill(HealSelfSkill);
+AddFirstAidTargetSkill(FirstAidSkill);
+
+TendDamageSkill = {
+	skillname = "tenddamage",
+	effect = "clienteffect/healing_healdamage.cef",
+	animation = "heal_self",
+	
+	mindCost = 30;
+	mindCostWound = 5;
+	
+	healthHealed = 50;
+	actionHealed = 50;
+	
+	tendDamage = 1;
+	
+	speed = 5.0,
+	range = 6.0
+}
+
+AddTendHealTargetSkill(TendDamageSkill);
+
+TendWoundSkill = {
+	skillname = "tendwound",
+	effect = "clienteffect/healing_healwound.cef",
+	animation = "heal_self",
+	
+	mindCost = 30;
+	mindCostWound = 10;
+	
+	woundPool = 1;
+	woundHealed = 25;
+	
+	tendWound = 1;
+	
+	speed = 5.0,
+	range = 6.0
+}
+
+AddTendHealTargetSkill(TendWoundSkill);
 
 DiagnoseTargetSkill = {
 	skillname = "diagnose",

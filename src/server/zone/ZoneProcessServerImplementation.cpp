@@ -44,8 +44,8 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-#include "ZoneClient.h"
-#include "ZoneClientImplementation.h"
+#include "ZoneClientSession.h"
+#include "ZoneClientSessionImplementation.h"
 
 #include "ZoneServer.h"
 #include "Zone.h"
@@ -71,8 +71,12 @@ which carries forward this exception.
 #include "managers/item/ItemManagerImplementation.h"
 
 #include "managers/combat/CombatManager.h"
+
 #include "../chat/ChatManager.h"
 #include "../chat/ChatManagerImplementation.h"
+
+#include "managers/mission/MissionManager.h"
+#include "managers/mission/MissionManagerImplementation.h"
 
 #include "managers/radial/RadialManager.h"
 #include "managers/guild/GuildManager.h"

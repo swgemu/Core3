@@ -63,8 +63,8 @@ which carries forward this exception.
 #include "../player/PlayerManager.h"
 #include "../../../chat/ChatManager.h"
 
-BazaarManagerImplementation::BazaarManagerImplementation(ZoneServer* zoneserver, ZoneProcessServerImplementation* server) : AuctionController(),
-	BazaarManagerServant(), Logger("BazaarManager") {
+BazaarManagerImplementation::BazaarManagerImplementation(ZoneServer* zoneserver, ZoneProcessServerImplementation* server)
+	: AuctionController(), BazaarManagerServant(), Logger("BazaarManager") {
 
 	processServer = server;
 	zoneServer = zoneserver;
@@ -77,7 +77,7 @@ BazaarManagerImplementation::BazaarManagerImplementation(ZoneServer* zoneserver,
 	info("Setting up bazaars");
 
 	// Set up the bazaar planet managers
-	for (int i = 0; i < 10; i++)  {
+	for (int i = 0; i < 10; ++i)  {
 		BazaarPlanetManager* bpManager = new BazaarPlanetManager(i);
 		bpManager->deploy("BazaarPlanetManager", i);
 
@@ -94,7 +94,7 @@ BazaarManagerImplementation::BazaarManagerImplementation(ZoneServer* zoneserver,
 	// Populate the bazaars
 	info("Starting to populate the bazaars");
 
-	for (int i = 0; i < 10; i++)  {
+	for (int i = 0; i < 10; ++i)  {
 		stringstream query;
 		query << "SELECT * from `bazaar_items` where `planet` = " << i << ";";
 
@@ -154,16 +154,13 @@ BazaarManagerImplementation::~BazaarManagerImplementation() {
 	delete checkEvent;
 	checkEvent = NULL;
 
-	for (int i = 0; i < 10; i++)
+	for (int i = 0; i < 10; ++i)
 		bazaarPlanets[i]->finalize();
 
 }
 
 bool BazaarManagerImplementation::isBazaarTerminal(uint64 objectID) {
-	if (bazaarTerminals->isBazaarTerminal(objectID) != NULL)
-		return true;
-	else
-		return false;
+	return bazaarTerminals->isBazaarTerminal(objectID) != NULL;
 }
 
 void BazaarManagerImplementation::newBazaarRequest(uint64 bazaarID, Player* player, int planet) {
@@ -210,7 +207,7 @@ void BazaarManagerImplementation::addSaleItem(Player* player, uint64 objectid, u
 
 		stringstream str;
 		str << player->getCharacterName().c_str() << " trying to add objectid "
-			<< objectid << " to the bazaar again";
+		<< objectid << " to the bazaar again";
 		error(str.str());
 
 		BaseMessage* msg = new ItemSoldMessage(objectid, 6);
@@ -259,13 +256,12 @@ void BazaarManagerImplementation::addSaleItem(Player* player, uint64 objectid, u
 
 		delete res;
 
-	} catch(DatabaseException& e) {
-		cout << "Can't count bazaar_items for user " << player->getCharacterName().c_str() << "\n";
+	} catch (DatabaseException& e) {
+		error("Can't count bazaar_items for user " + player->getCharacterName().c_str());
 		player->unlock();
 		unlock();
 		return;
 	}
-
 
 	if (numberOfItems >= MAXSALES) {
 		BaseMessage* msg = new ItemSoldMessage(objectid, 13);
@@ -292,7 +288,6 @@ void BazaarManagerImplementation::addSaleItem(Player* player, uint64 objectid, u
 
 	TangibleObject* obj = (TangibleObject*)invObj;
 
-
 	if (obj->isEquipped()) {
 		BaseMessage* msg = new ItemSoldMessage(objectid, 2);
 		player->sendMessage(msg);
@@ -310,9 +305,10 @@ void BazaarManagerImplementation::addSaleItem(Player* player, uint64 objectid, u
 
 	ItemManager* itemManager = player->getZone()->getZoneServer()->getItemManager();
 
-	if(!obj->isPersistent())
+	if (!obj->isPersistent())
 		itemManager->createPlayerItem(player, obj);
-	if(obj->isUpdated())
+
+	if (obj->isUpdated())
 		itemManager->savePlayerItem(player, obj);
 
 	Time expireTime;
@@ -320,7 +316,8 @@ void BazaarManagerImplementation::addSaleItem(Player* player, uint64 objectid, u
 	uint64 expire = expireTime.getMiliTime() / 1000;
 
 	int auctionout;
-	if(auction)
+
+	if (auction)
 		auctionout = 1;
 	else
 		auctionout = 0;
@@ -333,10 +330,10 @@ void BazaarManagerImplementation::addSaleItem(Player* player, uint64 objectid, u
 	try {
 		stringstream query2;
 		query2 << "INSERT into `bazaar_items` (objectid, name, description, item_type, ownerid, ownername,"
-			<< " price, auction, sold, expire, terminalid, planet, buyerid, bidderName) "
-			<< "VALUES (" << objectid << ",'\\" << name << "','" << description.c_str() << "'," << itemType << ","
-			<< player->getObjectID() << ",'" << playername << "'," << price << "," << auctionout << ",0,"
-			<< expire << "," << bazaarid << "," << planet << ",0,'');";
+		<< " price, auction, sold, expire, terminalid, planet, buyerid, bidderName) "
+		<< "VALUES (" << objectid << ",'\\" << name << "','" << description.c_str() << "'," << itemType << ","
+		<< player->getObjectID() << ",'" << playername << "'," << price << "," << auctionout << ",0,"
+		<< expire << "," << bazaarid << "," << planet << ",0,'');";
 
 		ServerDatabase::instance()->executeStatement(query2);
 
@@ -345,8 +342,10 @@ void BazaarManagerImplementation::addSaleItem(Player* player, uint64 objectid, u
 
 		ServerDatabase::instance()->executeStatement(query3);
 
-	} catch(DatabaseException& e) {
-		cout << "Can't add bazaar_item " << objectid << "\n";
+	} catch (DatabaseException& e) {
+		stringstream err;
+		err << "Can't add bazaar_item " << objectid;
+		error(err);
 		player->unlock();
 		unlock();
 		return;
@@ -424,113 +423,132 @@ void BazaarManagerImplementation::checkAuctions() {
 	uint64 currentTime = expireTime.getMiliTime() / 1000;
 	uint64 availableTime = currentTime + 2592000;
 
-	for (int i = 0; i < items.size(); i++) {
+	for (int i = 0; i < items.size(); ++i) {
 		AuctionItem* item = items.get(i);
 		uint64 objectId = item->getID();
 
-		if (item->getExpireTime() <= currentTime) {
-			if (item->isSold()) {
+		try {
+			item->wlock();
 
-				bazaarPlanets[item->getPlanet()]->removeBazaarItem(objectId);
-				if (removeItem(objectId, false)) {
-					//item->finalize(); FOR GODS SAKE WE CANT DELETE THIS HERE, the reference is still stored somewhere else
+			if (item->getExpireTime() <= currentTime) {
+				if (item->isSold()) {
+					bazaarPlanets[item->getPlanet()]->removeBazaarItem(objectId);
+
+					if (removeItem(objectId, false)) {
+						//item->finalize(); the reference is still stored somewhere else
+					} else {
+						stringstream err;
+						err << "checkAuctions cannot remove bazaar item from items " << objectId;
+						error(err);
+					}
+
+					stringstream del1;
+					del1 << "DELETE from `bazaar_items` WHERE objectid = " << objectId << ";";
+
+					stringstream del2;
+					del2 << "DELETE from `character_items` WHERE objectid = " << objectId << ";";
+
+					try {
+						ServerDatabase::instance()->executeStatement(del1);
+
+					} catch (DatabaseException& e) {
+						stringstream err;
+						err << "Can't delete bazaar_item " << objectId;
+						error(err);
+						error(e.getMessage());
+
+						/*unlock();
+						return;*/
+					}
+
+					try {
+						ServerDatabase::instance()->executeStatement(del2);
+
+					} catch (DatabaseException& e) {
+						stringstream err;
+						err << "Can't delete character_item " << objectId;
+						error(err);
+						error(e.getMessage());
+
+						/*unlock();
+						return;*/
+					}
 				} else {
-					cout << "checkAuctions cannot remove bazaar item from items " << objectId << "\n";
-				}
+					ChatManager* cman = processServer->getChatManager();
 
-				stringstream del1;
-				del1 << "DELETE from `bazaar_items` WHERE objectid = " << objectId << ";";
+					// retrieve failed auctions for owner
+					if (item->getBidderName().length() < 1) {
+						item->setBuyerID(item->getOwnerID());
+						item->setBidderName(item->getOwnerName());
 
-				stringstream del2;
-				del2 << "DELETE from `character_items` WHERE objectid = " << objectId << ";";
+						stringstream message;
+						unicode subject("Auction Unsuccessful");
 
-				try {
-					ServerDatabase::instance()->executeStatement(del1);
-
-				} catch (DatabaseException& e) {
-					cout << "Can't delete bazaar_item " << objectId << "\n";
-
-					/*unlock();
-					return;*/
-				}
-
-				try {
-					ServerDatabase::instance()->executeStatement(del2);
-
-				} catch (DatabaseException& e) {
-					cout << "Can't delete character_item " << objectId << "\n";
-
-					/*unlock();
-					return;*/
-				}
-			} else {
-				ChatManager* cman = processServer->getChatManager();
-
-				 // retrieve failed auctions for owner
-				if (item->getBidderName().length() < 1)
-				{
-					item->setBuyerID(item->getOwnerID());
-					item->setBidderName(item->getOwnerName());
-
-					stringstream message;
-					unicode subject("Auction Unsuccessful");
-
-					message << "Your auction of " << item->getItemName() <<
+						message << "Your auction of " << item->getItemName() <<
 						" has been completed and has not been  purchased.";
-					unicode body(message.str());
+						unicode body(message.str());
 
-					cman->sendMail("Auctioner", subject, body, item->getOwnerName());
+						cman->sendMail("Auctioner", subject, body, item->getOwnerName());
 
-				// bidder won auction. handle transactions and send messages
-				} else {
-					PlayerManager* pman = zoneServer->getPlayerManager();
-					pman->modifyRecipientOfflineBank(item->getOwnerName(), item->getPrice());
+						// bidder won auction. handle transactions and send messages
+					} else {
+						PlayerManager* pman = zoneServer->getPlayerManager();
+						pman->modifyRecipientOfflineBank(item->getOwnerName(), item->getPrice());
 
-					string sender = "Auctioner";
-					stringstream message1;
-					unicode subject1("Auction Sale Complete");
-					unicode subject2("Auction Won");
+						string sender = "Auctioner";
+						stringstream message1;
+						unicode subject1("Auction Sale Complete");
+						unicode subject2("Auction Won");
 
-					message1 << "Your auction of " << item->getItemName() << " has been sold to " << item->getBidderName()
+						message1 << "Your auction of " << item->getItemName() << " has been sold to " << item->getBidderName()
 						<< " for " << item->getPrice() << " credits.";
 
-					unicode body1(message1.str());
+						unicode body1(message1.str());
 
-					cman->sendMail(sender, subject1, body1, item->getOwnerName());
+						cman->sendMail(sender, subject1, body1, item->getOwnerName());
 
-					stringstream message2;
+						stringstream message2;
 
-					message2 << "You have won the auction of " << item->getItemName() << " from " << item->getOwnerName() << " for " << item->getPrice() << " credits.\n"
+						message2 << "You have won the auction of " << item->getItemName() << " from " << item->getOwnerName() << " for " << item->getPrice() << " credits.\n"
 						<< "The sale took place at " << item->getLocation();
-					unicode body2(message2.str());
-					cman->sendMail(sender, subject2, body2, item->getBidderName());
+						unicode body2(message2.str());
+						cman->sendMail(sender, subject2, body2, item->getBidderName());
 
-					item->setOwnerID(item->getBuyerID());
-					item->setOwnerName(item->getBidderName());
-				}
+						item->setOwnerID(item->getBuyerID());
+						item->setOwnerName(item->getBidderName());
+					}
 
-				// move to available items
-				bazaarPlanets[item->getPlanet()]->removeBazaarItem(objectId);
+					// move to available items
+					bazaarPlanets[item->getPlanet()]->removeBazaarItem(objectId);
 
-				item->setSold(true);
-				item->setExpireTime(availableTime);
-				item->setBuyerID(item->getOwnerID());
+					item->setSold(true);
+					item->setExpireTime(availableTime);
+					item->setBuyerID(item->getOwnerID());
 
-				stringstream update;
-				update << "UPDATE `bazaar_items` SET sold = 1, expire = " << availableTime << ", buyerid = "
+					stringstream update;
+					update << "UPDATE `bazaar_items` SET sold = 1, expire = " << availableTime << ", buyerid = "
 					<< item->getBuyerID() << ", bidderName = '" << item->getBidderName() << "', ownerid = "
 					<< item->getOwnerID() << ", ownerName = '" << item->getOwnerName() << "' where objectid = " << item->getID() << ";";
 
-				try {
-					ServerDatabase::instance()->executeStatement(update);
-				} catch (DatabaseException& e) {
-					cout << "Can't update bazaar_item " << objectId << "\n";
-					cout << update.str() << "\n";
+					try {
+						ServerDatabase::instance()->executeStatement(update);
+					} catch (DatabaseException& e) {
+						stringstream err;
+						err << "Can't update bazaar_item " << objectId;
+						error(err);
+						error(e.getMessage());
 
-					unlock();
-					return;
+						item->unlock();
+						unlock();
+						return;
+					}
 				}
 			}
+
+			item->unlock();
+		} catch (...) {
+			item->unlock();
+			error("unreported exception caught in BazaarManagerImplementation::checkAuctions()");
 		}
 	}
 
@@ -538,19 +556,20 @@ void BazaarManagerImplementation::checkAuctions() {
 }
 
 void BazaarManagerImplementation::buyItem(Player* player, uint64 objectid, int price1, int price2) {
+	AuctionItem* item = NULL;
+
 	try {
 		lock();
 		player->wlock();
 
 		ChatManager *cman = processServer->getChatManager();
 		PlayerManager *pman = processServer->getPlayerManager();
-		AuctionItem* item = getItem(objectid, false);
+		item = getItem(objectid, false);
 
 		string playername = player->getFirstName();
 		String::toLower(playername);
 
 		if (item == NULL) { // send invalid item message
-
 			BaseMessage* msg = new BidAuctionResponseMessage(objectid, 2);
 			player->sendMessage(msg);
 
@@ -559,18 +578,21 @@ void BazaarManagerImplementation::buyItem(Player* player, uint64 objectid, int p
 			return;
 		}
 
+		item->wlock();
+
 		if (price1 > MAXPRICE || price2 > MAXPRICE) {
 			BaseMessage* msg = new BidAuctionResponseMessage(objectid, 14);
 			player->sendMessage(msg);
 
+			item->unlock();
 			player->unlock();
 			unlock();
 			return;
-
 		} else if (price1 < 1 || price2 < 1) {
 			BaseMessage* msg = new BidAuctionResponseMessage(objectid, 4);
 			player->sendMessage(msg);
 
+			item->unlock();
 			player->unlock();
 			unlock();
 			return;
@@ -581,10 +603,10 @@ void BazaarManagerImplementation::buyItem(Player* player, uint64 objectid, int p
 		uint64 availableTime = currentTime + 2592000;
 
 		if (player->getBankCredits() < price1) { // Credit Check
-
 			BaseMessage* msg = new BidAuctionResponseMessage(objectid, 9);
 			player->sendMessage(msg);
 
+			item->unlock();
 			player->unlock();
 			unlock();
 			return;
@@ -598,40 +620,40 @@ void BazaarManagerImplementation::buyItem(Player* player, uint64 objectid, int p
 
 			stringstream update;
 			update << "UPDATE `bazaar_items` SET sold = 1, expire = " << availableTime << ", buyerid = "
-				<< item->getBuyerID() << ", bidderName='" << item->getBidderName() << "' where objectid = " << item->getID() << ";";
-			try {
+			<< item->getBuyerID() << ", bidderName='" << item->getBidderName() << "' where objectid = " << item->getID() << ";";
 
+			try {
 				ServerDatabase::instance()->executeStatement(update);
 
 				player->subtractBankCredits(price1);
 
-			// move to available items
+				// move to available items
 				bazaarPlanets[item->getPlanet()]->removeBazaarItem(item->getID());
 
 				BaseMessage* msg = new BidAuctionResponseMessage(objectid, 0);
 				player->sendMessage(msg);
 
-			// send the bidder a message
+				// send the bidder a message
 				stringstream body;
 
 				body << "You have won the auction of " << item->getItemName() << " from " << item->getOwnerName() << " for " << price1 << " credits.\n"
-					"The sale took place at " << item->getLocation();
+				"The sale took place at " << item->getLocation();
 				unicode subject1("Instant Sale Item, Puchased");
 				unicode ubody1(body.str());
 
 				player->sendSystemMessage(body.str());
 				cman->sendMail("Auctioner", subject1, ubody1, item->getBidderName());
 
-			// send the seller a message
+				// send the seller a message
 				stringstream body2;
 
 				body2 << "Your auction of " << item->getItemName() << " has been sold to " << item->getBidderName()
-					<< " for " << price1 << " credits.";
+				<< " for " << price1 << " credits.";
 				unicode subject2("Instant Sale Complete");
 				unicode ubody2(body2.str());
 				cman->sendMail("Auctioner", subject2, ubody2, item->getOwnerName());
 
-			// pay the seller
+				// pay the seller
 				Player* seller = pman->getPlayer(item->getOwnerName());
 
 				if (seller != NULL) {
@@ -642,46 +664,49 @@ void BazaarManagerImplementation::buyItem(Player* player, uint64 objectid, int p
 						seller->sendSystemMessage(body2.str());
 						seller->addBankCredits(price1);
 
-
 						if (seller != player)
 							seller->unlock();
 					} catch(...) {
 						if (player != seller)
 							seller->unlock();
-						error("Unreported1 exception caught in BazaarManagerImplementation::buyItem(Player* player, uint64 objectid, int price1, int price2)");
+						error("unreported1 exception caught in BazaarManagerImplementation::buyItem(Player* player, uint64 objectid, int price1, int price2)");
 					}
 				} else {
 					if (!pman->modifyRecipientOfflineBank(item->getOwnerName(), price1)) {
+						item->unlock();
 						player->unlock();
 						unlock();
 						return;
 					}
 				}
-
-
 			} catch (DatabaseException& e) {
 				BaseMessage* msg = new BidAuctionResponseMessage(objectid, 2);
 				player->sendMessage(msg);
-				cout << "Can't update bazaar_item " << item->getID() << "\n";
-				cout << update.str() << "\n";
 
+				stringstream err;
+				err << "Can't update bazaar_item " << item->getID();
+				error(err);
+				error(e.getMessage());
+
+				item->unlock();
 				player->unlock();
 				unlock();
 				return;
 			}
 		} else { // For Auction Bids
-
-		// don't allow owner or last bidder bid on the item.  don't allow old auction info
-		// send auctioner invalid message
+			// don't allow owner or last bidder bid on the item.  don't allow old auction info
+			// send auctioner invalid message
 			if (playername == item->getBidderName() || playername == item->getOwnerName() || price1 <= item->getPrice()) {
 				BaseMessage* msg = new BidAuctionResponseMessage(objectid, 1);
 				player->sendMessage(msg);
+
+				item->unlock();
 				player->unlock();
 				unlock();
 				return;
 			}
 
-		// send prior bidder their money back
+			// send prior bidder their money back
 			if (item->getBidderName().length() > 0) {
 				stringstream body;
 
@@ -693,19 +718,20 @@ void BazaarManagerImplementation::buyItem(Player* player, uint64 objectid, int p
 						if (priorBidder != player)
 							priorBidder->wlock(player);
 
-							priorBidder->sendSystemMessage(body.str());
-							priorBidder->addBankCredits(item->getPrice());
+						priorBidder->sendSystemMessage(body.str());
+						priorBidder->addBankCredits(item->getPrice());
 
 						if (priorBidder != player)
 							priorBidder->unlock();
-					} catch(...) {
+					} catch (...) {
 						if (priorBidder != player)
 							priorBidder->unlock();
 
-						error("Unreported2 exception caught in BazaarManagerImplementation::buyItem(Player* player, uint64 objectid, int price1, int price2)");
+						error("unreported2 exception caught in BazaarManagerImplementation::buyItem(Player* player, uint64 objectid, int price1, int price2)");
 					}
 				} else {
-					if(!pman->modifyRecipientOfflineBank(item->getBidderName(), item->getPrice())) {
+					if (!pman->modifyRecipientOfflineBank(item->getBidderName(), item->getPrice())) {
+						item->unlock();
 						player->unlock();
 						unlock();
 
@@ -713,8 +739,7 @@ void BazaarManagerImplementation::buyItem(Player* player, uint64 objectid, int p
 					}
 				}
 
-
-			// mail prior bidder with outcome
+				// mail prior bidder with outcome
 				unicode subject("Outbid");
 				unicode ubody(body.str());
 
@@ -723,10 +748,10 @@ void BazaarManagerImplementation::buyItem(Player* player, uint64 objectid, int p
 				item->setBuyerID(player->getObjectID());
 				item->setBidderName(playername);
 
-			// take money from high bidder
+				// take money from high bidder
 				player->subtractBankCredits(price1);
 
-		// no prior bidder, just take the money
+				// no prior bidder, just take the money
 			} else {
 				item->setPrice(price1);
 				item->setBuyerID(player->getObjectID());
@@ -739,33 +764,43 @@ void BazaarManagerImplementation::buyItem(Player* player, uint64 objectid, int p
 			update << "UPDATE `bazaar_items` SET price = " << price1 << ", bidderName = '" << item->getBidderName() << "', buyerid = " << player->getObjectID() << " where objectid = " << objectid << ";";
 			try {
 
-		 		ServerDatabase::instance()->executeStatement(update);
+				ServerDatabase::instance()->executeStatement(update);
 
 			} catch (DatabaseException& e) {
-		 		cout << "Can't update bazaar_item " << item->getID() << "\n";
-		 		cout << update.str() << "\n";
+				stringstream err;
+				err << "Can't update bazaar_item " << item->getID();
+				error(err);
+				error(e.getMessage());
 
-		 		BaseMessage* msg = new BidAuctionResponseMessage(objectid, 2);
-		 		player->sendMessage(msg);
+				BaseMessage* msg = new BidAuctionResponseMessage(objectid, 2);
+				player->sendMessage(msg);
 
-		 		player->unlock();
-		 		unlock();
-		 		return;
+				item->unlock();
+				player->unlock();
+				unlock();
+				return;
 			}
+
 			BaseMessage* msg = new BidAuctionResponseMessage(objectid, 0);
 			player->sendMessage(msg);
 		}
 
+		item->unlock();
 		player->unlock();
 		unlock();
 
 	} catch (Exception& e) {
+		if (item != NULL)
+			item->unlock();
+
 		player->unlock();
 		unlock();
 
 		error("Unreported3 exception caught in BazaarManagerImplementation::buyItem(Player* player, uint64 objectid, int price1, int price2)");
 		e.printStackTrace();
 	} catch (...) {
+		if (item != NULL)
+			item->unlock();
 		player->unlock();
 		unlock();
 
@@ -775,16 +810,17 @@ void BazaarManagerImplementation::buyItem(Player* player, uint64 objectid, int p
 
 void BazaarManagerImplementation::retrieveItem(Player* player, uint64 objectid, uint64 bazaarid) {
 	BaseMessage* msg;
+	AuctionItem* item = NULL;
 
 	try {
 		lock();
 		player->wlock();
 
-	// Check player is at correct bazaar
-		AuctionItem* item = getItem(objectid, false);
+		// Check player is at correct bazaar
+		item = getItem(objectid, false);
 		string playername = player->getFirstName().c_str();
 
-	// object was probably already retrieved
+		// object was probably already retrieved
 		if (item == NULL) {
 			msg = new RetrieveAuctionItemResponseMessage(objectid, 1);
 			player->sendMessage(msg);
@@ -794,20 +830,25 @@ void BazaarManagerImplementation::retrieveItem(Player* player, uint64 objectid, 
 			return;
 		}
 
-	// only the owner can yank his own auction off the bazaar
+		item->wlock();
+
+		// only the owner can yank his own auction off the bazaar
 		if (!item->isSold() && item->getOwnerName() != playername ) {
 			msg = new RetrieveAuctionItemResponseMessage(objectid, 1);
 			player->sendMessage(msg);
 
+			item->unlock();
 			player->unlock();
 			unlock();
 			return;
 		}
 
-	// the bidder is the only one who can get his auction after expiration
+		// the bidder is the only one who can get his auction after expiration
 		if (item->isSold() && item->getBuyerID() != player->getObjectID()) {
 			msg = new RetrieveAuctionItemResponseMessage(objectid, 1);
 			player->sendMessage(msg);
+
+			item->unlock();
 			player->unlock();
 			unlock();
 			return;
@@ -819,16 +860,20 @@ void BazaarManagerImplementation::retrieveItem(Player* player, uint64 objectid, 
 		if (item->getLocation().find(region) == string::npos) {
 			msg = new RetrieveAuctionItemResponseMessage(objectid, 1);
 			player->sendMessage(msg);
+
+			item->unlock();
 			player->unlock();
 			unlock();
 			return;
 		}
 
-	// Check if inventory is full
+		// Check if inventory is full
 		Inventory * inventory = player->getInventory();
 
 		if (inventory->objectsSize() > 79) {
 			msg = new RetrieveAuctionItemResponseMessage(objectid, 12);
+
+			item->unlock();
 			player->sendMessage(msg);
 			player->unlock();
 			unlock();
@@ -844,22 +889,27 @@ void BazaarManagerImplementation::retrieveItem(Player* player, uint64 objectid, 
 			ServerDatabase::instance()->executeStatement(update);
 			ServerDatabase::instance()->executeStatement(delBazaar);
 
-		} catch(DatabaseException& e) {
-			cout << "Can't remove bazaar_item " << objectid << "\n";
+		} catch (DatabaseException& e) {
+			stringstream err;
+			err << "Can't remove bazaar_item " << objectid;
+			error(err);
+			error(e.getMessage());
 			msg = new RetrieveAuctionItemResponseMessage(objectid, 1);
+
+			item->unlock();
 			player->sendMessage(msg);
 			player->unlock();
 			unlock();
 			return;
 		}
 
-	// refund money to bidder for sniping the auction
+		// refund money to bidder for sniping the auction
 		if (!item->isSold() && item->getBidderName().length() > 0) {
 			PlayerManager* pman = processServer->getPlayerManager();
 			Player* bidder = pman->getPlayer(item->getBidderName());
 			ChatManager* cman = processServer->getChatManager();
 
-		// send the player a mail and system message
+			// send the player a mail and system message
 			unicode subject("Auction Cancelled");
 			stringstream mess;
 			mess <<  "Your bid on " << item->getItemName() << " was retracted because the auction was cancelled by the owner.";
@@ -890,15 +940,21 @@ void BazaarManagerImplementation::retrieveItem(Player* player, uint64 objectid, 
 		ItemManager* itemManager = processServer->getItemManager();
 		TangibleObject* tano = itemManager->getPlayerItem(player, objectid);
 
-	// TODO: handle this case
+		// TODO: handle this case
 		if (tano == NULL) {
-			cout << "retrieveItem NULL pointer for bazaar_item " << objectid << "\n";
+			stringstream err;
+			err << "retrieveItem NULL pointer for bazaar_item " << objectid;
+			error(err);
+
 			if (removeItem(objectid, false)) {
-				//item->finalize();  FOR GODS SAKE WE CANT DELETE THIS HERE, the reference is still stored somewhere else
+				//item->finalize();  the reference is still stored somewhere else
 			} else {
-				cout << "retrieveItem cannot remove bazaar item from items " << objectid << "\n";
+				stringstream errMsg;
+				errMsg << "retrieveItem cannot remove bazaar item from items " << objectid;
+				error(errMsg);
 			}
 
+			item->unlock();
 			player->unlock();
 			unlock();
 			return;
@@ -907,17 +963,23 @@ void BazaarManagerImplementation::retrieveItem(Player* player, uint64 objectid, 
 		tano->sendTo(player);
 
 		msg = new RetrieveAuctionItemResponseMessage(objectid, 0);
+
+		item->unlock();
 		player->sendMessage(msg);
 		player->unlock();
 
 		if (removeItem(objectid, false)) {
-			//item->finalize();  FOR GODS SAKE WE CANT DELETE THIS HERE, the reference is still stored somewhere else
+			//item->finalize();  the reference is still stored somewhere else
 		} else {
-			cout << "retrieveItem cannot remove bazaar item from items " << objectid << "\n";
+			stringstream errMsg;
+			errMsg << "retrieveItem cannot remove bazaar item from items " << objectid;
+			error(errMsg);
 		}
 
 		unlock();
 	} catch (...) {
+		if (item != NULL)
+			item->unlock();
 		player->unlock();
 		unlock();
 
@@ -943,7 +1005,7 @@ void BazaarManagerImplementation::getItemAttributes(Player* player, uint64 objec
 
 	unicode description;
 	AuctionItem* item = getItem(objectid, false);
-	if(item == NULL)
+	if (item == NULL)
 		description = unicode("");
 	else
 		description = unicode(item->getItemDescription());

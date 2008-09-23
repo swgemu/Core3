@@ -1,0 +1,49 @@
+#ifndef VEHICLEDEEDIMPLEMENTATION_H_
+#define VEHICLEDEEDIMPLEMENTATION_H_
+
+#include "../../../player/Player.h"
+#include "../../../../packets.h"
+
+#include "../DeedObject.h"
+#include "../DeedObjectImplementation.h"
+
+class DeedObject;
+class TangibleObject;
+class MountCreature;
+class Player;
+class CreatureObject;
+
+class VehicleDeedImplementation : public VehicleDeedServant {
+protected:
+	string vehicleFile;
+public:
+	static const int ORE = 1;
+	static const int MOISTURE = 2;
+	static const int LIQUID = 3;
+	static const int GAS = 4;
+	static const int FLORA = 5;
+	static const int CREATURE = 6;
+
+public:
+
+	VehicleDeedImplementation(CreatureObject* creature, uint32 tempcrc, const unicode& n, const string& tempn);
+	VehicleDeedImplementation(uint64 objid, uint32 tempcrc, const unicode& n, const string& tempn);
+	~VehicleDeedImplementation();
+
+	void init();
+
+	int useObject(Player* player);
+
+	void sendRadialResponseTo(Player* player, ObjectMenuResponse* omr);
+
+	//void sendTo(Player* player, MountCreature* swoop, bool doClose);
+
+	//inline VehicleDeed* deploy() {
+	//	return (VehicleDeed*) SceneObjectImplementation::deploy();
+	//}
+private:
+
+};
+
+#endif /*VEHICLEDEEDIMPLEMENTATION_H_*/
+

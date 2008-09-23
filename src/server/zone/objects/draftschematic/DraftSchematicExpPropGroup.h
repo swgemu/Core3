@@ -13,6 +13,8 @@ class DraftSchematicExpPropGroup : public DistributedObjectStub {
 public:
 	DraftSchematicExpPropGroup();
 
+	DraftSchematicExpPropGroup(DraftSchematicExpPropGroup* group);
+
 	void addExperimentalProperty(const string& experimentalPropertyType, unsigned int weight);
 
 	void sendToPlayer(ObjectControllerMessage* msg, int count);
@@ -27,10 +29,37 @@ public:
 
 	unsigned char getTypeAndWeight(unsigned int index);
 
+	string& getKey(int i);
+
+	int getKeyCount();
+
+	string& getExpPropTypesKey(int i);
+
+	unsigned char getExpPropTypesValue(int i);
+
+	int getExpPropTypesSize();
+
+	string& getExpPropWeightsKey(int i);
+
+	unsigned char getExpPropWeightsValue(int i);
+
+	int getExpPropWeightsSize();
+
+	string& getExpPropWeightPercentagesKey(int i);
+
+	float getExpPropWeightPercentagesValue(int i);
+
+	int getExpPropWeightPercentagesSize();
+
 protected:
 	DraftSchematicExpPropGroup(DummyConstructorParameter* param);
 
 	virtual ~DraftSchematicExpPropGroup();
+
+	string _return_getExpPropTypesKey;
+	string _return_getExpPropWeightPercentagesKey;
+	string _return_getExpPropWeightsKey;
+	string _return_getKey;
 
 	friend class DraftSchematicExpPropGroupHelper;
 };
@@ -56,6 +85,28 @@ public:
 	float getExpPropPercentage(unsigned int index);
 
 	unsigned char getTypeAndWeight(unsigned int index);
+
+	string& getKey(int i);
+
+	int getKeyCount();
+
+	string& getExpPropTypesKey(int i);
+
+	unsigned char getExpPropTypesValue(int i);
+
+	int getExpPropTypesSize();
+
+	string& getExpPropWeightsKey(int i);
+
+	unsigned char getExpPropWeightsValue(int i);
+
+	int getExpPropWeightsSize();
+
+	string& getExpPropWeightPercentagesKey(int i);
+
+	float getExpPropWeightPercentagesValue(int i);
+
+	int getExpPropWeightPercentagesSize();
 
 protected:
 	string _param0_addExperimentalProperty__string_int_;

@@ -56,7 +56,7 @@ which carries forward this exception.
 #include "../../../packets.h"
 #include "../../../packets/creature/CreatureObjectMessage3.h"
 
-#include "../../../ZoneClient.h"
+#include "../../../ZoneClientSession.h"
 
 MountCreatureImplementation::MountCreatureImplementation(CreatureObject* linkCreature, const string& name,
 		const string& stf, uint32 itnocrc, uint32 objCRC, uint64 oid) : MountCreatureServant(oid) {
@@ -112,7 +112,7 @@ void MountCreatureImplementation::addToDatapad() {
 }
 
 void MountCreatureImplementation::sendTo(Player* player, bool doClose) {
-	ZoneClient* client = player->getClient();
+	ZoneClientSession* client = player->getClient();
 	if (client == NULL)
 		return;
 
@@ -189,7 +189,14 @@ void MountCreatureImplementation::call() {
 			return;
 		}
 
-		initializePosition(linkedCreature->getPositionX(), linkedCreature->getPositionZ(), linkedCreature->getPositionY());
+		// Jet Pack
+		if(isJetpack()) {
+			//initializePosition(linkedCreature->getPositionX(), linkedCreature->getPositionZ() + 4, linkedCreature->getPositionY());
+			setAppearanceAttribute("index_hover_height", 40); // 32 = 9m, 64 = 12m
+			//setHeight(4.0f);
+		}
+		//else
+			initializePosition(linkedCreature->getPositionX(), linkedCreature->getPositionZ(), linkedCreature->getPositionY());
 
 		zone = linkedCreature->getZone();
 

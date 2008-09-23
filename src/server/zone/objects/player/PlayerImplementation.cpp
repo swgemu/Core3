@@ -42,7 +42,7 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#include "../../ZoneClient.h"
+#include "../../ZoneClientSession.h"
 #include "../../ZoneServer.h"
 
 #include "../../objects.h"
@@ -302,11 +302,13 @@ void PlayerImplementation::init() {
 
 	suiBoxNextID = 0;
 
+	guildLeader = false;
+
 	setLogging(false);
 	setGlobalLogging(true);
 }
 
-void PlayerImplementation::create(ZoneClient* client) {
+void PlayerImplementation::create(ZoneClientSession* client) {
 	playerObject = new PlayerObject(_this);
 
 	setClient(client);
@@ -335,9 +337,7 @@ void PlayerImplementation::makeCharacterMask() {
 	if(!this->isOvert())
 		characterMask |= COVERT;
 
-	int raceid = Races::getRaceID(raceFile);
-
-	switch (raceid) {
+	switch (raceID) {
 	case 0:
 		characterMask |= MALE | HUMAN;
 		break;
@@ -401,7 +401,7 @@ void PlayerImplementation::makeCharacterMask() {
 	}
 }
 
-void PlayerImplementation::refuseCreate(ZoneClient* client) {
+void PlayerImplementation::refuseCreate(ZoneClientSession* client) {
 	info("name refused for character creation");
 
 	BaseMessage* msg = new ClientCreateCharacterFailed("name_declined_in_use");
@@ -410,9 +410,9 @@ void PlayerImplementation::refuseCreate(ZoneClient* client) {
 	client->disconnect();
 }
 
-void PlayerImplementation::load(ZoneClient* client) {
+void PlayerImplementation::load(ZoneClientSession* client) {
 	try {
-		wlock();
+		//wlock();
 
 		setLoggingIn();
 
@@ -426,6 +426,8 @@ void PlayerImplementation::load(ZoneClient* client) {
 		setLoggingName(logName.str());
 
 		info("loading player");
+
+		makeCharacterMask();
 
 		loadItems();
 		//resetArmorEncumbrance();
@@ -447,11 +449,9 @@ void PlayerImplementation::load(ZoneClient* client) {
 		PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
 		playerManager->updateOtherFriendlists(_this, true);
 
-		makeCharacterMask();
-
-		unlock();
+		//unlock();
 	} catch (Exception& e) {
-		unlock();
+		//unlock();
 
 		error("logging in character");
 		error(e.getMessage());
@@ -460,7 +460,7 @@ void PlayerImplementation::load(ZoneClient* client) {
 	}
 }
 
-void PlayerImplementation::reload(ZoneClient* client) {
+void PlayerImplementation::reload(ZoneClientSession* client) {
 	try {
 		wlock();
 
@@ -483,7 +483,8 @@ void PlayerImplementation::reload(ZoneClient* client) {
 
 			unlock();
 
-			owner->disconnect();
+			if (owner != NULL && owner != client)
+				owner->disconnect();
 
 			wlock();
 
@@ -521,6 +522,7 @@ void PlayerImplementation::reload(ZoneClient* client) {
 		PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
 		playerObject->updateAllFriends(playerObject);
 		playerManager->updateOtherFriendlists(_this, true);
+		playerManager->updateGuildStatus(_this);
 
 		//resetArmorEncumbrance();
 
@@ -701,7 +703,7 @@ void PlayerImplementation::logout(bool doLock) {
 
 	if (disconnectEvent == NULL) {
 		info("creating disconnect event");
-		
+
 		disconnectEvent = new PlayerDisconnectEvent(_this);
 
 		if (isLoggingOut()) {
@@ -744,17 +746,17 @@ void PlayerImplementation::userLogout(int msgCounter) {
 
 			ClientLogout* packet = new ClientLogout();
 			sendMessage(packet);
-			
+
 			delete logoutEvent;
 			logoutEvent = NULL;
 			break;
 		}
 	} else {
-		if (logoutEvent != NULL) { // we better dont delete the event from where 
+		if (logoutEvent != NULL) { // we better dont delete the event from where
 									//we are running this so we make sure we make it null in event::activate() before calling this
 			if (logoutEvent->isQueued())
 				server->removeEvent(logoutEvent);
-			
+
 			delete logoutEvent;
 			logoutEvent = NULL;
 		}
@@ -1490,6 +1492,10 @@ void PlayerImplementation::notifySceneReady() {
 
 		playerObject->loadFriends();
 		playerObject->loadIgnore();
+
+		loadGuildChat();
+
+
 	} else {
 		//we need to reset the "magicnumber" for the internal friendlist due to clientbehaviour (Diff. Zoningservers SoE)
 		playerObject->friendsMagicNumberReset();
@@ -1505,6 +1511,15 @@ void PlayerImplementation::notifySceneReady() {
 	setOnline();
 }
 
+void PlayerImplementation::loadGuildChat() {
+	GroupManager* groupManager = server->getGroupManager();
+
+	if (groupManager)
+		groupManager->joinGuildGroup(_this);
+	else
+		error("Error: PlayerManagerImplementation::loadGuildChat() groupManager is null ");
+}
+
 void PlayerImplementation::sendSystemMessage(const string& message) {
 	unicode msg(message);
 	sendSystemMessage(msg);
@@ -1513,6 +1528,14 @@ void PlayerImplementation::sendSystemMessage(const string& message) {
 void PlayerImplementation::sendSystemMessage(const string& file, const string& str, uint64 targetid) {
 	ChatSystemMessage* msg = new ChatSystemMessage(file, str, targetid);
 	sendMessage(msg);
+}
+
+void PlayerImplementation::sendMail(string& mailSender, unicode& subjectSender,
+		unicode& bodySender, string& charNameSender) {
+
+	ChatManager * chat=  zone->getChatManager();
+
+	chat->sendMail(mailSender, subjectSender, bodySender, charNameSender);
 }
 
 void PlayerImplementation::sendSystemMessage(unicode& message) {
@@ -2539,26 +2562,28 @@ void PlayerImplementation::equipPlayerItem(TangibleObject* item) {
 	}
 }
 
-bool PlayerImplementation::isAllowedBySpecies(TangibleObject * item) {
-	int type = item->getObjectSubType();
-	bool ithoonly = ((type == TangibleObjectImplementation::ITHOGARB) ||
-			(item->getTemplateName().find("ith_armor") != string::npos));
-	bool wookonly = ((type == TangibleObjectImplementation::WOOKIEGARB) ||
-			(item->getTemplateName().find("armor_kashyyykian") != string::npos));
-	bool footwear = ((type == TangibleObjectImplementation::FOOTWEAR) ||
-			(type == TangibleObjectImplementation::FOOTARMOR));
+bool PlayerImplementation::hasItemPermission(TangibleObject * item) {
+	uint16 maskRes = ~(item->getPlayerUseMask()) & characterMask;
 
-	string species = this->getSpeciesName();
-
-	if (species.compare("ithorian") == 0) {
-		return ithoonly;
-	} else if (species.compare("wookiee") == 0) {
-		return wookonly;
-	} else if (species.compare("trandoshan") == 0) {
-		return !ithoonly && !wookonly && !footwear;
-	} else {
-		return !ithoonly && !wookonly;
+	if (maskRes == 0)
+		return true;
+	else if (maskRes == COVERT) {
+		this->sendSystemMessage("You must be declared overt to use this item.");
+		return false;
+	} else if (maskRes & (COVERT | REBEL | IMPERIAL | NEUTRAL)) {
+		this->sendSystemMessage("You are not the proper faction to use this item.");
+		return false;
+	} else if (maskRes & 0x0FFC) {
+		this->sendSystemMessage("Your species can not use this item.");
+		return false;
+	} else if (maskRes & (MALE | FEMALE)) {
+		this->sendSystemMessage("This item is not appropriate for your gender.");
+		return false;
 	}
+
+	//should never get here
+	this->sendSystemMessage("There was an error, while trying to equip this item.");
+	return false;
 }
 void PlayerImplementation::changeCloth(uint64 itemid) {
 	SceneObject* obj = inventory->getObject(itemid);
@@ -2567,6 +2592,9 @@ void PlayerImplementation::changeCloth(uint64 itemid) {
 		return;
 
 	TangibleObject* cloth = (TangibleObject*) obj;
+
+	if(!hasItemPermission(cloth) && !cloth->isEquipped())
+		return;
 
 	if (cloth->isWeapon()) {
 		if (cloth->isEquipped())
@@ -2577,12 +2605,6 @@ void PlayerImplementation::changeCloth(uint64 itemid) {
 	if (cloth->isArmor()) {
 		if (cloth->isEquipped())
 			changeArmor(itemid, false);
-		return;
-	}
-
-	if(!isAllowedBySpecies(cloth)) {
-		cloth->setEquipped(false);
-		sendSystemMessage("Your species can not wear this item.");
 		return;
 	}
 
@@ -2599,6 +2621,8 @@ void PlayerImplementation::changeWeapon(uint64 itemid) {
 	if (obj == NULL || !obj->isTangible())
 		return;
 
+
+
 	if (isPlayingMusic())
 		stopPlayingMusic();
 
@@ -2607,6 +2631,9 @@ void PlayerImplementation::changeWeapon(uint64 itemid) {
 		Weapon* weapon = (Weapon*) obj;
 
 		if (weapon == NULL)
+			return;
+
+		if (!this->hasItemPermission(weapon) && !weapon->isEquipped())
 			return;
 
 		if (centered)
@@ -2746,11 +2773,8 @@ void PlayerImplementation::changeArmor(uint64 itemid, bool forced) {
 		if (armoritem == NULL)
 			return;
 
-		if(!isAllowedBySpecies(armoritem)) {
-			armoritem->setEquipped(false);
-			sendSystemMessage("Your species can not wear this item.");
+		if(!hasItemPermission(armoritem) && !armoritem->isEquipped())
 			return;
-		}
 
 		if (armoritem->isEquipped()) {
 			unequipItem((TangibleObject*) obj);
@@ -3195,7 +3219,7 @@ void PlayerImplementation::setOvert() {
 	if (!(pvpStatusBitmask & OVERT_FLAG))
 		pvpStatusBitmask |= OVERT_FLAG;
 
-	characterMask &= !COVERT;
+	characterMask &= ~COVERT;
 
 	uint32 pvpBitmask = pvpStatusBitmask;
 
@@ -3414,7 +3438,7 @@ void PlayerImplementation::addIngredientToSlot(TangibleObject* tano, int slot, i
 
 void PlayerImplementation::removeResourceFromCraft(uint64 resID, int slot, int counter) {
 	CraftingManager* craftingManager = server->getCraftingManager();
-	craftingManager->removeResourceFromCraft(_this, slot, counter);
+	craftingManager->removeIngredientFromSlot(_this, slot, counter);
 }
 
 void PlayerImplementation::nextCraftingStage(string test) {
@@ -3596,6 +3620,32 @@ void PlayerImplementation::toggleCharacterBit(uint32 bit) {
 		if (!playerObject->setCharacterBit(bit, true))
 			playerObject->clearCharacterBit(bit, true);
 	}
+}
+
+
+bool PlayerImplementation::setGuildPermissionsBit(uint32 bit, bool updateClient) {
+	if (!(guildPermissionsBitmask & bit)) {
+		guildPermissionsBitmask |= bit;
+
+		return true;
+
+	} else
+		return false;
+}
+
+bool PlayerImplementation::clearGuildPermissionsBit(uint32 bit, bool updateClient) {
+	if (guildPermissionsBitmask & bit) {
+		guildPermissionsBitmask &= ~bit;
+
+		return true;
+
+	} else
+		return false;
+}
+
+void PlayerImplementation::toggleGuildPermissionsBit(uint32 bit) {
+	if (!setGuildPermissionsBit(bit, true))
+		clearGuildPermissionsBit(bit, true);
 }
 
 bool PlayerImplementation::awardBadge(uint32 badgeindex) {

@@ -70,8 +70,12 @@ bool ConfigManager::loadConfigData() {
 	forumsStandardGroupID = getGlobalString("ForumsStandardGroupID");
 	forumsUserTable = getGlobalString("ForumsUserTable");
 	forumsBannedTable = getGlobalString("ForumsBannedTable");
+	forumsNewActivationTable = getGlobalString("ForumsNewActivationTable");
 
 	statusPort = getGlobalShort("StatusPort");
+
+	pingPort = getGlobalShort("PingPort");
+	pingAllowedConnections = getGlobalInt("PingAllowedConnections");
 
 	loginPort = getGlobalShort("LoginPort");
 	loginAllowedConnections =  getGlobalInt("LoginAllowedConnections");

@@ -11,6 +11,8 @@ class SceneObject;
 
 class Player;
 
+class TangibleObject;
+
 #include "../scene/SceneObject.h"
 
 class MissionObject : public SceneObject {
@@ -34,6 +36,10 @@ public:
 	void applyTerminalMask(int tam);
 
 	int getTerminalMask();
+
+	void setDeliverItem(TangibleObject* tdi);
+
+	TangibleObject* getDeliverItem();
 
 	void setTypeStr(const string& tstr);
 
@@ -143,6 +149,10 @@ public:
 	void applyTerminalMask(int tam);
 
 	int getTerminalMask();
+
+	void setDeliverItem(TangibleObject* tdi);
+
+	TangibleObject* getDeliverItem();
 
 	void setTypeStr(const string& tstr);
 

@@ -118,7 +118,7 @@ void LootTableManagerImplementation::buildLootMap() {
 	try {
 		query << "SELECT "
 				<< "lootgroup,name,template_crc,template_type,template_name,container,attributes,appearance,level,"
-				<< "chance,lastdropstamp,dontdropbefore,`unique`,notrade,`race` "
+				<< "chance,lastdropstamp,dontdropbefore,`unique`,notrade,`race`,itemMask "
 				<< "FROM loottable order by lootgroup asc;";
 
 		lootRes = ServerDatabase::instance()->executeQuery(query);
@@ -165,6 +165,7 @@ void LootTableManagerImplementation::buildLootMap() {
 		lootTableTemp->setLootItemUnique(lootRes->getInt(12));
 		lootTableTemp->setLootItemNoTrade(lootRes->getInt(13));
 		lootTableTemp->setLootItemRace(lootRes->getString(14));
+		lootTableTemp->setLootItemMask(lootRes->getUnsignedInt(15));
 
 		lootTableMap[lootRes->getInt(0)]->add(lootTableTemp);
 		//for testing: cout << "Adding item " << lootRes->getString(1) << "to lootMap No." << lootRes->getInt(0) << endl;
@@ -242,7 +243,7 @@ void LootTableManagerImplementation::createLootItem(Creature* creature, int leve
 		offset = selectedLootTableMap.size() - itemcount;
 
 
-	TangibleObject* item[itemcount];
+	TangibleObject* items[itemcount];
 
 	for (int i = 0; i < itemcount; ++i) {
 		lootTableTemp = selectedLootTableMap.get(i+offset);
@@ -252,14 +253,20 @@ void LootTableManagerImplementation::createLootItem(Creature* creature, int leve
 		uint64 itemCRC = lootTableTemp->getLootItemTemplateCRC();
 		string itemName = lootTableTemp->getLootItemTemplateName();
 		string lootAttributes = lootTableTemp->getLootItemAttributes();
+		uint16 itemMask = lootTableTemp->getLootItemMask();
 
 		//for testing: cout << "Selected lootitem is " << lootTableTemp->getLootItemName() << endl;
-
-		item[i] = im->createPlayerObjectTemplate(itemType, creature->getNewItemID(), itemCRC,
+		TangibleObject* item = im->createPlayerObjectTemplate(itemType, creature->getNewItemID(), itemCRC,
 				clearName, itemName, false, true, lootAttributes, level);
+				
+		items[i] = item;
+		
+		//TODO - FIXME: how can item be NULL 
+		if (item != NULL) {
+			item->setPlayerUseMask(itemMask);
 
-		creature->addLootItem(item[i]);
-
+			creature->addLootItem(item);
+		}
 	}
 
 	//unlock();

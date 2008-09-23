@@ -49,14 +49,19 @@ INCLUDES =  $(SYSTEM_INCLUDES) \
 	    -I$(ENGINE3_PATH)/include
 			
 LIBS =	$(SYSTEM_LIBS)  \
+	-L../../../build/unix/src/client \
 	-L$(USER_LIBS_PATH)/ -L$(USER_LIBS_PATH)/mysql -L$(USER_LIBS_PATH)/lua -L$(ENGINE3_PATH)/lib/unix \
 	-lmysqlclient -lz -lengine3 -llua
 
 bin_PROGRAMS = core3
 
-core3_IDLS =	server/zone/Zone.cpp \
-		server/zone/ZoneClient.cpp \
+core3_IDLS = server/zone/Zone.cpp \
+		server/zone/ZoneClientSession.cpp \
 		server/zone/ZoneServer.cpp \
+		server/zone/objects/area/Area.cpp \
+		server/zone/objects/area/ActiveArea.cpp \
+		server/zone/objects/area/BaseArea.cpp \
+		server/zone/objects/area/NoBuildArea.cpp \
 		server/zone/objects/attackable/AttackableObject.cpp \
 		server/zone/objects/auction/AuctionItem.cpp \
 		server/zone/objects/scene/SceneObject.cpp \
@@ -65,6 +70,8 @@ core3_IDLS =	server/zone/Zone.cpp \
 		server/zone/objects/creature/CreatureGroup.cpp \
 		server/zone/objects/creature/shuttle/ShuttleCreature.cpp \
 		server/zone/objects/creature/trainer/TrainerCreature.cpp \
+		server/zone/objects/creature/action/ActionCreature.cpp \
+		server/zone/objects/creature/action/Action.cpp \
 		server/zone/objects/creature/bluefrog/BlueFrogCreature.cpp \
 		server/zone/objects/creature/bluefrog/BlueFrogVector.cpp \
 		server/zone/objects/creature/recruiter/RecruiterCreature.cpp \
@@ -108,6 +115,7 @@ core3_IDLS =	server/zone/Zone.cpp \
 		server/zone/objects/tangible/ticket/Ticket.cpp \
 		server/zone/objects/tangible/terminal/Terminal.cpp \
 		server/zone/objects/tangible/terminal/travel/TravelTerminal.cpp \
+		server/zone/objects/tangible/terminal/mission/MissionTerminal.cpp \
 		server/zone/objects/tangible/terminal/guild/GuildTerminal.cpp \
 		server/zone/objects/tangible/terminal/vendor/VendorTerminal.cpp \
 		server/zone/objects/tangible/terminal/bazaar/RegionBazaar.cpp \
@@ -129,8 +137,16 @@ core3_IDLS =	server/zone/Zone.cpp \
 		server/zone/objects/tangible/resource/ResourceContainer.cpp \
 		server/zone/objects/tangible/attachment/Attachment.cpp \
 		server/zone/objects/tangible/powerup/Powerup.cpp \
+		server/zone/objects/tangible/deed/DeedObject.cpp \
+		server/zone/objects/tangible/deed/harvesterdeed/HarvesterDeed.cpp \
+		server/zone/objects/tangible/deed/factorydeed/FactoryDeed.cpp \
+		server/zone/objects/tangible/deed/generatordeed/GeneratorDeed.cpp \
+		server/zone/objects/tangible/deed/vehicledeed/VehicleDeed.cpp \
+		server/zone/objects/tangible/deed/playerhousedeed/PlayerHouseDeed.cpp \
 		server/zone/objects/tangible/holocron/Holocron.cpp \
 		server/zone/objects/tangible/firework/Firework.cpp \
+		server/zone/objects/installation/InstallationObject.cpp \
+		server/zone/objects/installation/harvester/HarvesterObject.cpp \
 		server/zone/objects/tangible/inventory/CreatureInventory.cpp \
 		server/zone/objects/intangible/IntangibleObject.cpp \
 		server/zone/objects/static/StaticObject.cpp \
@@ -165,6 +181,7 @@ core3_IDLS =	server/zone/Zone.cpp \
 		server/zone/managers/bazaar/BazaarManager.cpp \
 		server/zone/managers/bazaar/BazaarPlanetManager.cpp \
 		server/zone/managers/bank/BankManager.cpp \
+		server/zone/managers/mission/MissionManager.cpp \
 		server/chat/room/ChatRoom.cpp \
 		server/chat/ChatManager.cpp \
 		server/chat/GameCommandHandler.cpp
@@ -173,17 +190,20 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/ServerCore.cpp \
 		server/conf/ConfigManager.cpp \
 		server/db/ServerDatabase.cpp \
-                server/db/ForumsDatabase.cpp \
+        server/db/ForumsDatabase.cpp \
 		server/login/LoginServer.cpp \
 		server/login/LoginPacketHandler.cpp \
 		server/login/LoginMessageProcessorThread.cpp \
 		server/status/StatusServer.cpp \
+		server/ping/PingServer.cpp \
 		server/zone/ZoneImplementation.cpp \
-		server/zone/ZoneClientImplementation.cpp \
+		server/zone/ZoneClientSessionImplementation.cpp \
 		server/zone/ZoneServerImplementation.cpp \
 		server/zone/ZonePacketHandler.cpp \
 		server/zone/ZoneProcessServerImplementation.cpp \
 		server/zone/ZoneMessageProcessorThread.cpp \
+		server/zone/objects/installation/InstallationObjectImplementation.cpp \
+		server/zone/objects/installation/harvester/HarvesterObjectImplementation.cpp \
 		server/zone/objects/attackable/AttackableObjectImplementation.cpp \
 		server/zone/objects/building/BuildingObjectImplementation.cpp \
 		server/zone/objects/building/cell/CellObjectImplementation.cpp \
@@ -212,11 +232,19 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/powerup/PowerupImplementation.cpp \
 		server/zone/objects/tangible/ticket/TicketImplementation.cpp \
 		server/zone/objects/tangible/ticketcollector/TicketCollectorImplementation.cpp \
+    	server/zone/objects/tangible/deed/DeedObjectImplementation.cpp \
+		server/zone/objects/tangible/deed/harvesterdeed/HarvesterDeedImplementation.cpp \
+		server/zone/objects/tangible/deed/factorydeed/FactoryDeedImplementation.cpp \
+		server/zone/objects/tangible/deed/generatordeed/GeneratorDeedImplementation.cpp \
+		server/zone/objects/tangible/deed/vehicledeed/VehicleDeedImplementation.cpp \
+		server/zone/objects/tangible/deed/playerhousedeed/PlayerHouseDeedImplementation.cpp \
 		server/zone/objects/tangible/inventory/CreatureInventoryImplementation.cpp \
 		server/zone/objects/mission/MissionObjectImplementation.cpp \
 		server/zone/objects/static/StaticObjectImplementation.cpp \
 		server/zone/objects/player/PlayerImplementation.cpp \
 		server/zone/objects/player/PlayerObjectImplementation.cpp \
+		server/zone/objects/player/FriendListImplementation.cpp \
+		server/zone/objects/player/IgnoreListImplementation.cpp \
 		server/zone/objects/player/sui/SuiBoxImplementation.cpp \
 		server/zone/objects/player/sui/listbox/SuiListBoxImplementation.cpp \
 		server/zone/objects/player/sui/messagebox/SuiMessageBoxImplementation.cpp \
@@ -227,10 +255,17 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/creature/CreatureImplementation.cpp \
 		server/zone/objects/creature/CreatureObjectImplementation.cpp \
 		server/zone/objects/creature/shuttle/ShuttleCreatureImplementation.cpp \
+		server/zone/objects/creature/action/ActionCreatureImplementation.cpp \
+		server/zone/objects/creature/action/ActionImplementation.cpp \
 		server/zone/objects/creature/trainer/TrainerCreatureImplementation.cpp \
 		server/zone/objects/creature/bluefrog/BlueFrogCreatureImplementation.cpp \
 		server/zone/objects/creature/mount/MountCreatureImplementation.cpp \
+		server/zone/objects/creature/recruiter/RecruiterCreatureImplementation.cpp \
 		server/zone/objects/creature/buffs/Buff.cpp \
+		server/zone/objects/draftschematic/DraftSchematicExpPropGroupImplementation.cpp \
+		server/zone/objects/draftschematic/DraftSchematicImplementation.cpp \
+		server/zone/objects/draftschematic/DraftSchematicIngredientImplementation.cpp \
+		server/zone/objects/draftschematic/DraftSchematicValuesImplementation.cpp \
 		server/zone/objects/scene/SceneObjectImplementation.cpp \
 		server/zone/objects/ship/ShipObjectImplementation.cpp \
 		server/zone/managers/object/ObjectManager.cpp \
@@ -259,6 +294,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/bank/BankManagerImplementation.cpp \
 		server/zone/managers/sui/SuiManager.cpp \
 		server/zone/managers/name/NameManager.cpp \
+		server/zone/managers/mission/MissionManagerImplementation.cpp \
 		server/chat/room/ChatRoomImplementation.cpp \
 		server/chat/ChatManagerImplementation.cpp \
 		server/zone/packets/object/ObjectControllerMessage.cpp \

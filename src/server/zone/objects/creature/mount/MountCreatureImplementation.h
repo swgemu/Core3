@@ -108,6 +108,10 @@ public:
 		return mountType == VEHICLE;
 	}
 
+	inline bool isJetpack() {
+		return objectCRC == 0x60250B32;
+	}
+	
 	inline bool isPet() {
 		return mountType == PET;
 	}

@@ -120,7 +120,7 @@ rancor = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0,1,2,3", -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0.25,  -- Likely hood to be tamed
 
@@ -134,8 +134,8 @@ rancor = Creature:new {
 
       meatType = "meat_carnivore_dathomir",
       meatMax = 950,
-	  skills = { "rancorAttack1", "rancorAttack2" },   
-      -- respawnTimer = 180,
+	skills = { "rancorAttack1", "rancorAttack2" },   
+      respawnTimer = 180,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }

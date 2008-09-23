@@ -53,11 +53,18 @@ bofaTreat = Object:new {
   complexity = 3,
   size = 1, 
 
+  xpType = "general",
+  xp = 42,
+
+  assemblySkill = "general_assembly",
+  experimentingSkill = "general_experimentation",
+
   ingredientTemplateNames = "craft_weapon_ingredients_n, craft_weapon_ingredients_n, craft_weapon_ingredients_n, craft_weapon_ingredients_n, craft_weapon_ingredients_n",
   ingredientTitleNames = "frame_assembly, receiver_assembly, grip_assembly, powerhandler, blaster_rifle_barrel",
   ingredientOptionals = "0, 0, 0, 0, 0",
   resourceTypes = "metal, metal_ferrous, metal, object/tangible/component/weapon/shared_blaster_power_handler.iff, object/tangible/component/weapon/shared_blaster_rifle_barrel.iff",
   resourceQuantities = "35, 17, 9, 1, 1",
+  combineTypes = "1, 1, 1, 2, 2",
 
   numberExperimentalProperties = "1, 1, 2, 2, 2, 2, 1, 2, 1, 1, 2, 2, 2, 1, 2, 1",
 
@@ -66,19 +73,15 @@ bofaTreat = Object:new {
 
   experimentalGroupTitles = "exp_damage, exp_durability, exp_efficiency, exp_range",
 
-  tanoAttributes = "objecttype=8202:objectcrc=2010692823:objecttemp=dessert_bofa_treat:",
+  tanoAttributes = "objecttype=8202:objectcrc=2010692823:objecttemp=dessert_bofa_treat:templatetype=obj_n:",
 
   attributesToSet = "hitPoints, useModifier",
 
   attributeExperimentalProperties = "null, exp_effectiveness",
 
-  attributesMinMax = "1000, 1000, -15, 15",
+  attributePrecision = "0, 2",
+  attributesMinMax = "1000, 1000, -15, 15"
 
-  xpType = "general",
-  xp = 42,
-
-  assemblySkill = "general_assembly",
-  experimentingSkill = "general_experimentation"
 }
 
 DraftSchematics:addDraftSchematic(bofaTreat, 2010692823)--- Add to global DraftSchematics table

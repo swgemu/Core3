@@ -55,6 +55,8 @@ which carries forward this exception.
 
 #include "login/LoginServer.h"
 
+#include "ping/PingServer.h"
+
 #include "status/StatusServer.h"
 
 #include "zone/ZoneServer.h"
@@ -65,13 +67,15 @@ class ServerCore : public Core, public Logger {
 
 	ServerDatabase* database;
 
-	ForumsDatabase* forumdatabase;
+	ForumsDatabase* forumDatabase;
 
 	DistributedObjectBroker* orb;
 
 	LoginServer* loginServer;
 
 	StatusServer * statusServer;
+
+	PingServer* pingServer;
 
 	static ZoneServer* zoneServer;
 

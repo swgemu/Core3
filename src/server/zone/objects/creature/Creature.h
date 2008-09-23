@@ -31,11 +31,7 @@ public:
 
 	void unload();
 
-	void insertToZone(Zone* zone);
-
 	void updateZone();
-
-	void removeFromZone(bool doLock = true);
 
 	void loadItems();
 
@@ -78,6 +74,8 @@ public:
 	bool isRecruiter();
 
 	bool isMount();
+
+	bool isActionCreature();
 
 	string& getName();
 
@@ -137,11 +135,7 @@ public:
 
 	void unload();
 
-	void insertToZone(Zone* zone);
-
 	void updateZone();
-
-	void removeFromZone(bool doLock);
 
 	void loadItems();
 
@@ -184,6 +178,8 @@ public:
 	bool isRecruiter();
 
 	bool isMount();
+
+	bool isActionCreature();
 
 	string& getName();
 

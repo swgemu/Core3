@@ -42,7 +42,7 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#include "../../../ZoneClient.h"
+#include "../../../ZoneClientSession.h"
 #include "../../player/Player.h"
 
 #include "../../../packets.h"
@@ -50,7 +50,7 @@ which carries forward this exception.
 #include "WeaponImplementation.h"
 
 WeaponImplementation::WeaponImplementation(uint64 objid, uint32 tempCRC, const unicode& n, const string& tempn, bool eqp, int tp, int cat) 
-		: WeaponServant(objid, n, tempn, tempCRC, WEAPON) {
+		: WeaponServant(objid, tempCRC, n, tempn, WEAPON) {
 	type = tp;
 	setCategory(cat);
 		
@@ -319,7 +319,7 @@ void WeaponImplementation::parseItemAttributes() {
 }
 
 void WeaponImplementation::sendTo(Player* player, bool doClose) {
-	ZoneClient* client = player->getClient();
+	ZoneClientSession* client = player->getClient();
 	if (client == NULL)
 		return;
 

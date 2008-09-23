@@ -148,11 +148,11 @@ DistributedObjectAdapter* FactoryCrateHelper::createAdapter(DistributedObjectStu
  *	FactoryCrateServant
  */
 
-FactoryCrateServant::FactoryCrateServant(unsigned long long oid, const unicode& n, const string& tempn, unsigned int tempCRC, int tp) : TangibleObjectImplementation(oid, n, tempn, tempCRC, tp) {
+FactoryCrateServant::FactoryCrateServant(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, int tp) : TangibleObjectImplementation(oid, tempCRC, n, tempn, tp) {
 	_classHelper = FactoryCrateHelper::instance();
 }
 
-FactoryCrateServant::FactoryCrateServant(CreatureObject* creature, const unicode& n, const string& tempn, unsigned int tempCRC, int tp) : TangibleObjectImplementation(creature, n, tempn, tempCRC, tp) {
+FactoryCrateServant::FactoryCrateServant(CreatureObject* creature, unsigned int tempCRC, const unicode& n, const string& tempn, int tp) : TangibleObjectImplementation(creature, tempCRC, n, tempn, tp) {
 	_classHelper = FactoryCrateHelper::instance();
 }
 

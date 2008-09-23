@@ -264,11 +264,11 @@ DistributedObjectAdapter* SurveyToolHelper::createAdapter(DistributedObjectStub*
  *	SurveyToolServant
  */
 
-SurveyToolServant::SurveyToolServant(unsigned long long oid, const unicode& n, const string& tempn, unsigned int tempCRC, int tp) : TangibleObjectImplementation(oid, n, tempn, tempCRC, tp) {
+SurveyToolServant::SurveyToolServant(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, int tp) : TangibleObjectImplementation(oid, tempCRC, n, tempn, tp) {
 	_classHelper = SurveyToolHelper::instance();
 }
 
-SurveyToolServant::SurveyToolServant(CreatureObject* creature, const unicode& n, const string& tempn, unsigned int tempCRC, int tp) : TangibleObjectImplementation(creature, n, tempn, tempCRC, tp) {
+SurveyToolServant::SurveyToolServant(CreatureObject* creature, unsigned int tempCRC, const unicode& n, const string& tempn, int tp) : TangibleObjectImplementation(creature, tempCRC, n, tempn, tp) {
 	_classHelper = SurveyToolHelper::instance();
 }
 

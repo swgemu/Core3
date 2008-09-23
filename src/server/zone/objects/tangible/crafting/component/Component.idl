@@ -52,22 +52,25 @@ import "../../../creature/CreatureObject";
 
 import "../../TangibleObject";
 
-//import "../../draftschematic/DraftSchematic";
+import "../../../draftschematic/DraftSchematic";
  
 interface Component implements TangibleObject {
 	Component(unsigned long oid, unsigned int tempCRC, const unicode n, const string tempn) {
-		super(oid, n, tempn, tempCRC, int tp);
+		super(oid, tempCRC, n, tempn, int tp);
 	}
 	
 	Component(CreatureObject creature, unsigned int tempCRC, const unicode n, const string tempn) {
-		super(creature, n, tempn, tempCRC, int tp);
+		super(creature, tempCRC, n, tempn, int tp);
 	}
  
 	void sendTo(Player player, boolean doClose = true);
 	void generateAttributes(Player player);
+
+	void updateCraftingValues(DraftSchematic draftSchematic);
  
 	int useObject(Player player);
 
 	Component cloneComponent(Component component, unsigned long oid);
+	float getAttributeValue(string attributeName);
 
 }

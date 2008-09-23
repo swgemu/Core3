@@ -469,7 +469,7 @@ public:
 	Weapon* _this;
 
 public:
-	WeaponServant(unsigned long long oid, const unicode& n, const string& tempn, unsigned int tempCRC, int tp);
+	WeaponServant(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, int tp);
 	WeaponServant(unsigned long long oid, int tp);
 	virtual ~WeaponServant();
 

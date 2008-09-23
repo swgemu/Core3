@@ -927,8 +927,6 @@ public:
 
 	void sendDestroyTo(Player* player);
 
-	void broadcastMessage(BaseMessage* msg, int range = 128, bool doLock = true);
-	void broadcastMessage(StandaloneBaseMessage* msg, int range = 128, bool doLock = true);
 	void broadcastMessages(Vector<BaseMessage*>& msgs, int range = 128, bool doLock = true);
 
 	void sendSystemMessage(const string& message);

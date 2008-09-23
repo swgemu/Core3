@@ -21,6 +21,10 @@ class BuildingObject;
 
 class CellObject;
 
+class MissionTerminal;
+
+class NoBuildArea;
+
 class PlanetManager : public DistributedObjectStub {
 public:
 	PlanetManager(Zone* zone, ZoneProcessServerImplementation* processor);
@@ -47,9 +51,21 @@ public:
 
 	BuildingObject* getBuilding(unsigned long long id);
 
+	MissionTerminal* getMissionTerminal(unsigned long long oid);
+
 	unsigned long long getLandingTime();
 
+	void placePlayerStructure(Player* player, unsigned long long objectID, float x, float y, int orient);
+
 	unsigned int getTravelFare(string& departurePlanet, string& arrivalPlanet);
+
+	bool isNoBuildArea(bool x, bool y);
+
+	void addNoBuildArea(float minX, float maxX, float minY, float maxY, unsigned long long uid, unsigned char reason = 0);
+
+	void addNoBuildArea(NoBuildArea* area);
+
+	NoBuildArea* createNoBuildArea(float minX, float maxX, float minY, float maxY, unsigned char reason = 0);
 
 protected:
 	PlanetManager(DummyConstructorParameter* param);
@@ -89,9 +105,21 @@ public:
 
 	BuildingObject* getBuilding(unsigned long long id);
 
+	MissionTerminal* getMissionTerminal(unsigned long long oid);
+
 	unsigned long long getLandingTime();
 
+	void placePlayerStructure(Player* player, unsigned long long objectID, float x, float y, int orient);
+
 	unsigned int getTravelFare(string& departurePlanet, string& arrivalPlanet);
+
+	bool isNoBuildArea(bool x, bool y);
+
+	void addNoBuildArea(float minX, float maxX, float minY, float maxY, unsigned long long uid, unsigned char reason);
+
+	void addNoBuildArea(NoBuildArea* area);
+
+	NoBuildArea* createNoBuildArea(float minX, float maxX, float minY, float maxY, unsigned char reason);
 
 protected:
 	string _param0_findBuildingType__string_float_float_;

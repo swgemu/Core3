@@ -46,10 +46,10 @@ which carries forward this exception.
 #include "../../../objects.h"
 #include "CraftingTool.h"
 #include "CraftingToolImplementation.h"
-#include "../../../ZoneClient.h"
+#include "../../../ZoneClientSession.h"
 
 CraftingToolImplementation::CraftingToolImplementation(uint64 object_id, uint32 tempCRC,
-		const unicode& n, const string& tempn) : CraftingToolServant(object_id, n, tempn, tempCRC,
+		const unicode& n, const string& tempn) : CraftingToolServant(object_id, tempCRC, n, tempn,
 				CRAFTINGTOOL) {
 	objectCRC = tempCRC;
 	templateTypeName = "obj_n";
@@ -59,7 +59,7 @@ CraftingToolImplementation::CraftingToolImplementation(uint64 object_id, uint32 
 }
 
 CraftingToolImplementation::CraftingToolImplementation(CreatureObject* creature, uint32 tempCRC,
-		const unicode& n, const string& tempn) : CraftingToolServant(creature, n, tempn, tempCRC,
+		const unicode& n, const string& tempn) : CraftingToolServant(creature, tempCRC, n, tempn,
 				CRAFTINGTOOL) {
 	objectCRC = tempCRC;
 	templateTypeName = "obj_n";
@@ -175,7 +175,7 @@ int CraftingToolImplementation::useObject(Player* player) {
 }
 
 void CraftingToolImplementation::sendTo(Player* player, bool doClose) {
-	ZoneClient* client = player->getClient();
+	ZoneClientSession* client = player->getClient();
 	if (client == NULL)
 		return;
 	SceneObjectImplementation::create(client);
@@ -517,9 +517,9 @@ void CraftingToolImplementation::cleanUp(Player* player) {
 
 					ResourceContainer* rcno = (ResourceContainer*)tano;
 
-					if (quantity != 0) {
+					if (rcno->getContents() > 0) {
 
-						player->addInventoryItem(rcno);
+						player->addInventoryResource(rcno);
 
 					}
 
@@ -557,19 +557,20 @@ void CraftingToolImplementation::cleanUp(Player* player) {
 		currentTano = NULL;
 	}
 
+	SceneObject* tempScno;
+
 	for(int i = 0; i < tempIngredient.size(); ++i){
 
 		tano = tempIngredient.get(i);
+		tempScno = player->getInventoryItem(tano->getObjectID());
 
-		if(tano != NULL){
+		if(tano != NULL && tempScno == NULL){
 
 			SceneObjectDestroyMessage* destroy = new SceneObjectDestroyMessage(tano->getObjectID());
 			player->sendMessage(destroy);
 
 			tano->setContainer(NULL);
 			tano->finalize();
-
-
 		}
 
 		tano = NULL;

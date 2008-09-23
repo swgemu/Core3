@@ -143,6 +143,12 @@ void LoginPacketHandler::handleLoginClientID(Message* pack) {
 			ver = new ErrorMessage(errtype, errmsg, 0x00);
 			client->sendMessage(ver);
 			return;
+		case ACCOUNTNOTACTIVE:
+			errtype = "Inactive Account";
+			errmsg = "You have not responded to your activation email, and will not be allowed to log on until you do.";
+			ver = new ErrorMessage(errtype, errmsg, 0x00);
+			client->sendMessage(ver);
+			return;
 		default:
 			break;
 		}
@@ -221,7 +227,7 @@ void LoginPacketHandler::handleDeleteCharacterMessage(Message* pack) {
 		query.str("");
 		query << "DELETE FROM consentlist WHERE character_id = '" << charId << "';";
 		ServerDatabase::instance()->executeStatement(query);
-		
+
 		delete res;
 		dbDelete = 0;
     } catch(DatabaseException& e) {

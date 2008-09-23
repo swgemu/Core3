@@ -51,12 +51,19 @@ floraSurveyTool = Object:new {
   craftingToolTab = 4096,
   complexity = 7,
   size = 1, 
+
+  xpType = "crafting_general",
+  xp = 57,
+
+  assemblySkill = "general_assembly",
+  experimentingSkill = "general_experimentation",
   
   ingredientTemplateNames = "craft_item_ingredients_n, craft_item_ingredients_n, craft_item_ingredients_n, craft_item_ingredients_n",
   ingredientTitleNames = "assembly_enclosure, controller, scanner_assembly, storage_unit",
   ingredientOptionals = "0, 0, 0, 0",
   resourceTypes = "metal, metal, metal, mineral",
   resourceQuantities = "8, 8, 3, 8",
+  combineTypes = "1, 1, 1, 1",
   
   numberExperimentalProperties = "1, 1, 1, 1",
 
@@ -69,19 +76,15 @@ floraSurveyTool = Object:new {
 
   experimentalSubGroupTitles = "quality",
   
-  tanoAttributes = "objecttype=32770:objectcrc=1329114448:objecttemp=survey_tool_flora:",
+  tanoAttributes = "objecttype=32770:objectcrc=1329114448:objecttemp=survey_tool_flora:templatetype=obj_n:",
    
   attributesToSet = "hitPoints, useModifier",
 
   attributeExperimentalProperties = "null, quality",
 
-  attributesMinMax = "1000, 1000, -15, 15",
+  attributePrecision = "0, 2",
+  attributesMinMax = "1000, 1000, -15, 15"
 
-  xpType = "crafting_general",
-  xp = 57,
-
-  assemblySkill = "general_assembly",
-  experimentingSkill = "general_experimentation"
 }
 
 DraftSchematics:addDraftSchematic(floraSurveyTool, 1375088999) --- Add to global DraftSchematics table

@@ -43,7 +43,7 @@ which carries forward this exception.
 */
 
 #include "../../Zone.h"
-#include "../../ZoneClient.h"
+#include "../../ZoneClientSession.h"
 
 #include "../../packets.h"
 #include "../../objects.h"
@@ -73,6 +73,8 @@ void MissionObjectImplementation::init() {
 	dbKey = "";
 
 	terminalMask = 0;
+	
+	deliverItem = NULL;
 
 	//MISO3:
 	typeStr = ""; //3
@@ -99,7 +101,7 @@ void MissionObjectImplementation::init() {
 }
 
 void MissionObjectImplementation::sendTo(Player* player, bool doClose) {
-	ZoneClient* client = player->getClient();
+	ZoneClientSession* client = player->getClient();
 	if (client == NULL)
 		return;
 
@@ -117,7 +119,7 @@ void MissionObjectImplementation::sendTo(Player* player, bool doClose) {
 }
 
 void MissionObjectImplementation::sendDeltaTo(Player* player) {
-	ZoneClient* client = player->getClient();
+	ZoneClientSession* client = player->getClient();
 	if (client == NULL)
 		return;
 
@@ -148,7 +150,7 @@ void MissionObjectImplementation::doLinkToPlayer(Player* player) {
 //Use this function to remove the mission from the player.
 //This does NOT remove the actual mission Object from the pool
 void MissionObjectImplementation::sendDestroyTo(Player* player) {
-	ZoneClient* client = player->getClient();
+	ZoneClientSession* client = player->getClient();
 	if (client == NULL)
 		return;
 

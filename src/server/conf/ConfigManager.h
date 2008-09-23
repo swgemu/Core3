@@ -65,6 +65,7 @@ class ConfigManager : public Lua {
 	string forumsStandardGroupID;
 	string forumsUserTable;
 	string forumsBannedTable;
+	string forumsNewActivationTable;
 
 	string dBHost;
 	uint16 dBPort;
@@ -73,8 +74,9 @@ class ConfigManager : public Lua {
 	string dBPass;
 
 	uint16 statusPort;
-
 	uint16 loginPort;
+	uint16 pingPort;
+
 	int loginAllowedConnections;
 	bool autoReg;
 	bool useVBIngeration;
@@ -84,6 +86,8 @@ class ConfigManager : public Lua {
 
 	int statusAllowedConnections;
 	unsigned int statusInterval;
+
+	int pingAllowedConnections;
 
 public:
 
@@ -110,9 +114,12 @@ public:
 		forumsStandardGroupID = "2";
 		forumsUserTable = "vb3_users";
 		forumsBannedTable = "vb3_bannedusers";
+		forumsNewActivationTable = "vb3_useractivation";
 		useVBIngeration = 0;
 
 		statusPort = 44455;
+
+		pingPort = 44462;
 
 		loginPort = 44453;
 		loginAllowedConnections = 30;
@@ -123,6 +130,8 @@ public:
 
 		statusAllowedConnections = 100;
 		statusInterval = 60;
+
+		pingAllowedConnections = 3000;
 	}
 
 	~ConfigManager() {
@@ -212,6 +221,10 @@ public:
 		return forumsBannedTable;
 	}
 
+	inline string& getForumsNewActivationTable() {
+		return forumsNewActivationTable;
+	}
+
 	inline uint16 getLoginPort() {
 		return loginPort;
 	}
@@ -220,12 +233,20 @@ public:
 		return statusPort;
 	}
 
+	inline uint16 getPingPort() {
+		return pingPort;
+	}
+
 	inline int getLoginAllowedConnections() {
 		return loginAllowedConnections;
 	}
 
 	inline int getStatusAllowedConnections() {
 		return statusAllowedConnections;
+	}
+
+	inline int getPingAllowedConnections() {
+		return pingAllowedConnections;
 	}
 
 	inline int getStatusInterval() {

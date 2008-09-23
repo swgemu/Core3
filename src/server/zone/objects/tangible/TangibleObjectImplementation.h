@@ -221,6 +221,16 @@ public:
 	static const int TWOHANDSABER = 0x2000002;
 	static const int POLEARMSABER = 0x2000003;
 
+
+	// INSTALLATIONS
+	static const int INSTALLATION = 4096;
+	static const int FACTORY = 4097;
+	static const int GENERATOR = 4098;
+	static const int HARVESTER = 4099;
+	static const int TURRET = 4010;
+	static const int MINEFIELD = 4011;
+
+	// DEEDS
 	static const int DEED = 0x800000;
 	static const int BUILDINGDEED = 0x800001;
 	static const int INSTALLATIONDEED = 0x800002;
@@ -271,18 +281,20 @@ public:
 	static const uint16 ALL = 0xFFFF;
 	static const uint16 ALLSEXES = MALE | FEMALE;
 	static const uint16 ALLFACTIONS = NEUTRAL | IMPERIAL | REBEL | COVERT;
-	static const uint16 MEN = ALL & !FEMALE;
-	static const uint16 WOMEN = ALL & !MALE;
-	static const uint16 HUMANOIDS = ALL & !(WOOKIEE | ITHORIAN);
-	static const uint16 REBELS = ALL & !(IMPERIAL | NEUTRAL | COVERT);
-	static const uint16 IMPERIALS = ALL & !(REBEL | NEUTRAL | COVERT);
+	static const uint16 HUMANOIDS = ALL & ~(WOOKIEE | ITHORIAN);
+	static const uint16 HUMANOID_FOOTWEAR = HUMANOIDS & ~TRANDOSHAN;
+	static const uint16 HUMANOID_MALES = HUMANOIDS & ~FEMALE;
+	static const uint16 HUMANOID_FEMALES = HUMANOIDS & ~MALE;
+	static const uint16 HUMANOID_IMPERIALS = HUMANOIDS & ~(REBEL | NEUTRAL | COVERT);
+	static const uint16 HUMANOID_REBELS = HUMANOIDS & ~(IMPERIAL | NEUTRAL | COVERT);
 	static const uint16 WOOKIEES = WOOKIEE | ALLSEXES | ALLFACTIONS;
 	static const uint16 ITHORIANS = ITHORIAN | ALLSEXES | ALLFACTIONS;
+	static const uint16 TWILEKS = TWILEK | ALLSEXES | ALLFACTIONS;
 
 public:
 	TangibleObjectImplementation(uint64 oid, int tp = 0);
-	TangibleObjectImplementation(uint64 oid, const unicode& name, const string& tempname, uint32 tempCRC, int tp = 0);
-	TangibleObjectImplementation(CreatureObject* creature, const unicode& name, const string& tempname, uint32 tempCRC, int tp = 0);
+	TangibleObjectImplementation(uint64 oid, uint32 tempCRC, const unicode& name, const string& tempname, int tp = 0);
+	TangibleObjectImplementation(CreatureObject* creature, uint32 tempCRC, const unicode& name, const string& tempname, int tp = 0);
 
 	~TangibleObjectImplementation();
 
@@ -308,9 +320,6 @@ public:
 
 	void generateSkillMods(class AttributeListMessage* alm, int skillModType, int skillModValue);
 
-	void insertToZone(Zone* zone);
-	void removeFromZone();
-
 	void sendTo(Player* player, bool doClose = true);
 
 	void sendDestroyTo(Player* player);
@@ -320,6 +329,8 @@ public:
 	void close(Player* player);
 
 	void repairItem(Player* player);
+
+	void setObjectName(Player * player);
 
 	virtual void decay(int decayRate);
 
@@ -364,6 +375,10 @@ public:
 	}
 
 	inline void setCustomizationVariable(uint8 type, uint16 value) {
+		customizationVars.setVariable(type, value);
+	}
+
+	inline void setCustomizationVariable(const string type, uint8 value) {
 		customizationVars.setVariable(type, value);
 	}
 
@@ -511,6 +526,14 @@ public:
 	inline bool isFirework() {
 		return objectSubType == FIREWORK;
 	}
+
+	inline bool isDeed() {
+		return ((objectSubType == INSTALLATIONDEED) || (objectSubType
+				== BUILDINGDEED) || (objectSubType == PETDEED)
+				|| (objectSubType == DROIDDEED) || (objectSubType
+				== VEHICLEDEED) || (objectSubType == DEED));
+	}
+
 
 	inline bool isLair() {
 		return objectSubType == LAIR;

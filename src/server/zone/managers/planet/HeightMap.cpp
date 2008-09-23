@@ -31,6 +31,8 @@ void HeightMap::load(const string& path) {
 }
 
 float HeightMap::getHeight(float x, float y) {
+	//return getHeightFrom(reader, x, y);
+
 	int planePosition = getPlanePosition(x, y);
 
 	HeightMapPlane* plane = planes[planePosition];
@@ -47,6 +49,22 @@ float HeightMap::getHeight(float x, float y) {
 		height = PLANEWIDTH + height;
 
 	return plane->getHeight(width, height);
+}
+
+float HeightMap::getHeightFrom(Reader* file, float x, float y) {
+	if (x < -7680 || x > 7680 || y < -7680 || y > 7680)
+		return 0;
+
+	byte buffer[sizeof(float)];
+
+	int tableX = (int) x + 7680;
+	int tableY = (int) y + 7680;
+
+	uint32 offset = ((7680 * 2 + 1) * tableX + tableY) * sizeof(float);
+
+	file->read(buffer, offset, sizeof(float));
+
+	return *((float*) buffer);
 }
 
 HeightMapPlane* HeightMap::streamPlaneAt(float x, float y) {
@@ -108,12 +126,10 @@ void HeightMap::convert(const string& path) {
 		for (int j = 0; j < 60; ++j) {
 			cout << "\r writing(" << planeIndexX << ", " << planeIndexY << ")";
 
-			for (int k = 0; k < PLANEWIDTH; ++k) {
-				uint32 offset = (planeIndexX - 2) * PLANEWIDTH + ((planeIndexY - 2) * PLANEWIDTH + k) * PLANEWIDTH * 60;
-				reader->read(buffer, offset * HEIGHTSIZE, PLANEWIDTH * HEIGHTSIZE);
+			float plane[PLANEWIDTH * PLANEWIDTH];
+			readPlaneForConversion(reader, plane, planeIndexX - 2, planeIndexY);
 
-				writer->write(buffer, PLANEWIDTH * HEIGHTSIZE);
-			}
+			writer->write((byte*) plane, PLANEWIDTH * PLANEWIDTH * HEIGHTSIZE);
 
 			++planeIndexX;
 		}
@@ -134,3 +150,17 @@ void HeightMap::convert(const string& path) {
 
 	writer->close();
 }
+
+void HeightMap::readPlaneForConversion(Reader* file, float* buffer, int planeX, int planeY) {
+	int tableX = planeX * PLANEWIDTH - 7680;
+	int tableY = (60 - planeY) * PLANEWIDTH - 7680;
+
+	uint32 offset = ((7680 * 2 + 1) * tableX + tableY) * sizeof(float);
+
+	for (int y = 0; y < PLANEWIDTH; ++y) {
+		for (int x = 0; x < PLANEWIDTH; ++x) {
+			*(buffer++) = getHeightFrom(file, tableX + x, tableY - y);
+		}
+	}
+}
+

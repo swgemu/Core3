@@ -43,8 +43,12 @@
 IDLC = /usr/local/bin/idlc
 
 IDL_SOURCES = server/zone/Zone.idl \
-				server/zone/ZoneClient.idl \
+				server/zone/ZoneClientSession.idl \
 				server/zone/ZoneServer.idl \
+				server/zone/objects/area/Area.idl \
+				server/zone/objects/area/ActiveArea.idl \
+				server/zone/objects/area/BaseArea.idl \
+				server/zone/objects/area/NoBuildArea.idl \
 				server/zone/objects/attackable/AttackableObject.idl \
 				server/zone/objects/auction/AuctionItem.idl \
 				server/zone/objects/scene/SceneObject.idl \
@@ -52,6 +56,8 @@ IDL_SOURCES = server/zone/Zone.idl \
 				server/zone/objects/creature/Creature.idl \
 				server/zone/objects/creature/CreatureGroup.idl \
 				server/zone/objects/creature/shuttle/ShuttleCreature.idl \
+				server/zone/objects/creature/action/ActionCreature.idl \
+				server/zone/objects/creature/action/Action.idl \
 				server/zone/objects/creature/trainer/TrainerCreature.idl \
 				server/zone/objects/creature/bluefrog/BlueFrogCreature.idl \
 				server/zone/objects/creature/bluefrog/BlueFrogVector.idl \
@@ -68,6 +74,8 @@ IDL_SOURCES = server/zone/Zone.idl \
 				server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.idl \
 				server/zone/objects/player/sui/inputbox/SuiInputBox.idl \
 				server/zone/objects/player/sui/colorpicker/SuiColorPicker.idl \
+				server/zone/objects/installation/InstallationObject.idl \
+				server/zone/objects/installation/harvester/HarvesterObject.idl \
 				server/zone/objects/tangible/TangibleObject.idl \
 				server/zone/objects/tangible/Container.idl \
 				server/zone/objects/tangible/Inventory.idl \
@@ -96,6 +104,7 @@ IDL_SOURCES = server/zone/Zone.idl \
 				server/zone/objects/tangible/ticket/Ticket.idl \
 				server/zone/objects/tangible/terminal/Terminal.idl \
 				server/zone/objects/tangible/terminal/travel/TravelTerminal.idl \
+				server/zone/objects/tangible/terminal/mission/MissionTerminal.idl \
 				server/zone/objects/tangible/terminal/guild/GuildTerminal.idl \
 				server/zone/objects/tangible/terminal/vendor/VendorTerminal.idl \
 				server/zone/objects/tangible/terminal/bazaar/RegionBazaar.idl \
@@ -119,6 +128,12 @@ IDL_SOURCES = server/zone/Zone.idl \
 				server/zone/objects/tangible/powerup/Powerup.idl \
 				server/zone/objects/tangible/holocron/Holocron.idl \
 				server/zone/objects/tangible/firework/Firework.idl \
+				server/zone/objects/tangible/deed/factorydeed/FactoryDeed.idl \
+				server/zone/objects/tangible/deed/generatordeed/GeneratorDeed.idl \
+				server/zone/objects/tangible/deed/harvesterdeed/HarvesterDeed.idl \
+				server/zone/objects/tangible/deed/vehicledeed/VehicleDeed.idl \
+				server/zone/objects/tangible/deed/playerhousedeed/PlayerHouseDeed.idl \
+				server/zone/objects/tangible/deed/DeedObject.idl \
 				server/zone/objects/tangible/inventory/CreatureInventory.idl \
 				server/zone/objects/static/firework/FireworkWorld.idl \
 				server/zone/objects/static/StaticObject.idl \
@@ -137,11 +152,12 @@ IDL_SOURCES = server/zone/Zone.idl \
 				server/zone/objects/manufacture/ManufactureSchematic.idl \
 				server/zone/objects/mission/MissionObject.idl \
 				server/zone/objects/waypoint/WaypointObject.idl \
+				server/zone/objects/tangible/component/ShipComponent.idl \
+				server/zone/objects/ship/ShipObject.idl \
 				server/zone/managers/bazaar/BazaarManager.idl \
 				server/zone/managers/bazaar/BazaarPlanetManager.idl \
 				server/zone/managers/bank/BankManager.idl \
-				server/zone/objects/tangible/component/ShipComponent.idl \
-				server/zone/objects/ship/ShipObject.idl \
+				server/zone/managers/mission/MissionManager.idl \
 				server/zone/managers/guild/GuildMap.idl \
 				server/zone/managers/guild/GuildManager.idl \
 				server/zone/managers/player/PlayerManager.idl \
@@ -172,4 +188,4 @@ clean: cleanidl
 	#done
 
 cleanidl:
-	cd src && idlc -rebuild $(IDL_SOURCES)
+	cd src && $(IDLC) -rebuild $(IDL_SOURCES)

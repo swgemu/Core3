@@ -179,6 +179,11 @@ public:
 			return 0;
 		}
 
+		if (creature->isMeditating()) {
+			creature->sendSystemMessage("You can not Heal Wounds while meditating.");
+			return 0;
+		}
+
 		if (creature->isRidingCreature()) {
 			creature->sendSystemMessage("You cannot do that while Riding a Creature.");
 			return 0;
@@ -273,7 +278,7 @@ public:
 			default:
 				creature->changeHealthWoundsBar(-woundsHealed);
 				break;
-			}
+		}
 	}
 
 	int calculateHeal(CreatureObject* creature, int woundPower, int poolAffected) {
@@ -361,8 +366,8 @@ public:
 	}
 
 	void sendWoundMessage(CreatureObject* creature, CreatureObject* creatureTarget, int poolAffected, int woundsHealed) {
-		string creatureName = ((Player*)creature)->getFirstNameProper();
-		string creatureTargetName = ((Player*)creatureTarget)->getFirstNameProper();
+		string creatureName = creature->getCharacterName().c_str();
+		string creatureTargetName = creatureTarget->getCharacterName().c_str();
 		string poolName = PharmaceuticalImplementation::getPoolName(poolAffected);
 
 		stringstream msgPlayer, msgTarget, msgTail;
@@ -381,7 +386,7 @@ public:
 
 		if (creature != creatureTarget) {
 			msgPlayer << msgTail.str();
-			creatureTarget->sendSystemMessage(msgPlayer.str());
+			creature->sendSystemMessage(msgPlayer.str());
 		}
 	}
 

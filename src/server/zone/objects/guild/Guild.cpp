@@ -10,6 +10,12 @@
 
 #include "../../managers/guild/GuildManager.h"
 
+#include "../../ZoneServer.h"
+
+#include "../../../chat/room/ChatRoom.h"
+
+#include "../../managers/player/PlayerMap.h"
+
 /*
  *	GuildStub
  */
@@ -91,12 +97,37 @@ unsigned int Guild::getGuildID() {
 		return ((GuildImplementation*) _impl)->getGuildID();
 }
 
-string& Guild::getGuildName() {
+ChatRoom* Guild::getGuildChat() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 11);
+
+		return (ChatRoom*) method.executeWithObjectReturn();
+	} else
+		return ((GuildImplementation*) _impl)->getGuildChat();
+}
+
+void Guild::setGuildChat(ChatRoom* guildchat) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 12);
+		method.addObjectParameter(guildchat);
+
+		method.executeWithVoidReturn();
+	} else
+		((GuildImplementation*) _impl)->setGuildChat(guildchat);
+}
+
+string& Guild::getGuildName() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 13);
 
 		method.executeWithAsciiReturn(_return_getGuildName);
 		return _return_getGuildName;
@@ -104,17 +135,119 @@ string& Guild::getGuildName() {
 		return ((GuildImplementation*) _impl)->getGuildName();
 }
 
+void Guild::setGuildLeader(unsigned int guleader) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 14);
+		method.addUnsignedIntParameter(guleader);
+
+		method.executeWithVoidReturn();
+	} else
+		((GuildImplementation*) _impl)->setGuildLeader(guleader);
+}
+
+unsigned int Guild::getGuildLeader() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 15);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((GuildImplementation*) _impl)->getGuildLeader();
+}
+
 string& Guild::getGuildTag() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, 16);
 
 		method.executeWithAsciiReturn(_return_getGuildTag);
 		return _return_getGuildTag;
 	} else
 		return ((GuildImplementation*) _impl)->getGuildTag();
+}
+
+void Guild::setGuildName(const string& nom) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 17);
+		method.addAsciiParameter(nom);
+
+		method.executeWithVoidReturn();
+	} else
+		((GuildImplementation*) _impl)->setGuildName(nom);
+}
+
+void Guild::setGuildTag(const string& nom) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 18);
+		method.addAsciiParameter(nom);
+
+		method.executeWithVoidReturn();
+	} else
+		((GuildImplementation*) _impl)->setGuildTag(nom);
+}
+
+void Guild::putSponsoredMap(const string& nom) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 19);
+		method.addAsciiParameter(nom);
+
+		method.executeWithVoidReturn();
+	} else
+		((GuildImplementation*) _impl)->putSponsoredMap(nom);
+}
+
+unsigned int Guild::getSponsoredMapSize() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 20);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((GuildImplementation*) _impl)->getSponsoredMapSize();
+}
+
+string& Guild::getSponsoredMap(int i) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 21);
+		method.addSignedIntParameter(i);
+
+		method.executeWithAsciiReturn(_return_getSponsoredMap);
+		return _return_getSponsoredMap;
+	} else
+		return ((GuildImplementation*) _impl)->getSponsoredMap(i);
+}
+
+void Guild::clearSponsoredMap() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 22);
+
+		method.executeWithVoidReturn();
+	} else
+		((GuildImplementation*) _impl)->clearSponsoredMap();
 }
 
 /*
@@ -144,10 +277,40 @@ Packet* GuildAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertInt(getGuildID());
 		break;
 	case 11:
-		resp->insertAscii(getGuildName());
+		resp->insertLong(getGuildChat()->_getObjectID());
 		break;
 	case 12:
+		setGuildChat((ChatRoom*) inv->getObjectParameter());
+		break;
+	case 13:
+		resp->insertAscii(getGuildName());
+		break;
+	case 14:
+		setGuildLeader(inv->getUnsignedIntParameter());
+		break;
+	case 15:
+		resp->insertInt(getGuildLeader());
+		break;
+	case 16:
 		resp->insertAscii(getGuildTag());
+		break;
+	case 17:
+		setGuildName(inv->getAsciiParameter(_param0_setGuildName__string_));
+		break;
+	case 18:
+		setGuildTag(inv->getAsciiParameter(_param0_setGuildTag__string_));
+		break;
+	case 19:
+		putSponsoredMap(inv->getAsciiParameter(_param0_putSponsoredMap__string_));
+		break;
+	case 20:
+		resp->insertInt(getSponsoredMapSize());
+		break;
+	case 21:
+		resp->insertAscii(getSponsoredMap(inv->getSignedIntParameter()));
+		break;
+	case 22:
+		clearSponsoredMap();
 		break;
 	default:
 		return NULL;
@@ -176,12 +339,52 @@ unsigned int GuildAdapter::getGuildID() {
 	return ((GuildImplementation*) impl)->getGuildID();
 }
 
+ChatRoom* GuildAdapter::getGuildChat() {
+	return ((GuildImplementation*) impl)->getGuildChat();
+}
+
+void GuildAdapter::setGuildChat(ChatRoom* guildchat) {
+	return ((GuildImplementation*) impl)->setGuildChat(guildchat);
+}
+
 string& GuildAdapter::getGuildName() {
 	return ((GuildImplementation*) impl)->getGuildName();
 }
 
+void GuildAdapter::setGuildLeader(unsigned int guleader) {
+	return ((GuildImplementation*) impl)->setGuildLeader(guleader);
+}
+
+unsigned int GuildAdapter::getGuildLeader() {
+	return ((GuildImplementation*) impl)->getGuildLeader();
+}
+
 string& GuildAdapter::getGuildTag() {
 	return ((GuildImplementation*) impl)->getGuildTag();
+}
+
+void GuildAdapter::setGuildName(const string& nom) {
+	return ((GuildImplementation*) impl)->setGuildName(nom);
+}
+
+void GuildAdapter::setGuildTag(const string& nom) {
+	return ((GuildImplementation*) impl)->setGuildTag(nom);
+}
+
+void GuildAdapter::putSponsoredMap(const string& nom) {
+	return ((GuildImplementation*) impl)->putSponsoredMap(nom);
+}
+
+unsigned int GuildAdapter::getSponsoredMapSize() {
+	return ((GuildImplementation*) impl)->getSponsoredMapSize();
+}
+
+string& GuildAdapter::getSponsoredMap(int i) {
+	return ((GuildImplementation*) impl)->getSponsoredMap(i);
+}
+
+void GuildAdapter::clearSponsoredMap() {
+	return ((GuildImplementation*) impl)->clearSponsoredMap();
 }
 
 /*
