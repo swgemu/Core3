@@ -62,20 +62,20 @@ which carries forward this exception.
 
 GMCommandMap * GameCommandHandler::gmCommands = NULL;
 
-void GameCommandHandler::init() {	
+void GameCommandHandler::init() {
 	/* Admin Levels */
-	const int DEVELOPER = PlayerImplementation::DEVELOPER;	
-	const int CSR = PlayerImplementation::CSR;	
-	const int EC = PlayerImplementation::EC;	
-	const int LEADQA = PlayerImplementation::LEADQA;		
-	const int QA = PlayerImplementation::QA;		
-	const int NORMAL = PlayerImplementation::NORMAL;	
-	
+	const int DEVELOPER = PlayerImplementation::DEVELOPER;
+	const int CSR = PlayerImplementation::CSR;
+	const int EC = PlayerImplementation::EC;
+	const int LEADQA = PlayerImplementation::LEADQA;
+	const int QA = PlayerImplementation::QA;
+	const int NORMAL = PlayerImplementation::NORMAL;
+
 	/* Admin Groups */
 	const int ALL = DEVELOPER | CSR | EC | LEADQA | QA | NORMAL;
-	const int STAFF = DEVELOPER | CSR | EC | LEADQA | QA;	
-	const int PRIVILEGED = DEVELOPER | CSR;	
-	const int CSREVENTS = DEVELOPER | CSR | EC;	
+	const int STAFF = DEVELOPER | CSR | EC | LEADQA | QA;
+	const int PRIVILEGED = DEVELOPER | CSR;
+	const int CSREVENTS = DEVELOPER | CSR | EC;
 
 	gmCommands = new GMCommandMap();
 
@@ -264,6 +264,14 @@ void GameCommandHandler::init() {
 			"Adds a no build area to the map.",
 			"Usage: @addNoBuildArea <minX> <maxX> <minY> <maxY>",
 			&addNoBuildArea);
+	gmCommands->addCommand("guildAdmin", PRIVILEGED,
+			"Let you join a guild temporarily to administer the guild via guildterminal.",
+			"Usage: @guildAdmin GUILDTAG",
+			&guildAdmin);
+	gmCommands->addCommand("endGuildAdmin", PRIVILEGED,
+			"Let you leave the guild you temporarily joined for support actions.",
+			"Usage: @endGuildAdmin",
+			&endGuildAdmin);
 }
 
 GameCommandHandler::~GameCommandHandler() {
@@ -1955,5 +1963,94 @@ void GameCommandHandler::addNoBuildArea(StringTokenizer tokenizer, Player* playe
 	} catch (...) {
 		player->sendSystemMessage("No Build Area could not be created (Exception Thrown)");
 		cout << "Unspecified Exception Caught in GameCommandHandler::addNoBuildArea" << endl;
+	}
+}
+
+void GameCommandHandler::guildAdmin(StringTokenizer tokenizer, Player * player) {
+	string tag;
+
+	if (!tokenizer.hasMoreTokens()) {
+		player->sendSystemMessage("Wrong format: Guildtag/abbrev. missing!");
+		return;
+	} else {
+			tokenizer.getStringToken(tag);
+	}
+
+	ZoneServer* server;
+
+	GuildManager* guildManager;
+
+	Guild* playerGuild;
+
+	ChatRoom* room;
+
+	try {
+		server = player->getZone()->getZoneServer();
+		if (server == NULL)
+			return;
+
+
+		guildManager = server->getGuildManager();
+		if (guildManager == NULL)
+			return;
+
+
+		playerGuild = guildManager->getGuild(tag, true);
+
+		if (playerGuild == NULL) {
+			player->sendSystemMessage("Guild not found!  Remember: Tag/abbrev. is case sensitive.");
+				return;
+		}
+
+		player->setGuild(playerGuild);
+		player->updateGuild(playerGuild);
+		player->setGuildLeader(true);
+		player->setGuildPermissions(255);
+
+		room = playerGuild->getGuildChat();
+
+		if (room != NULL) {
+			room->sendTo(player);
+			room->addPlayer(player, false);
+		}
+
+
+		stringstream message;
+
+		message << "You have become part and temporarely co-leader of the guild '" << playerGuild->getGuildName() << "'.\n"
+			<< "Please make sure, after you finished support actions, to leave the guild by typing @endGuildAdmin.";
+
+		player->sendSystemMessage(message.str());
+
+	} catch (...) {
+		return;
+	}
+}
+
+void GameCommandHandler::endGuildAdmin(StringTokenizer tokenizer, Player * player) {
+	uint64 defGuild = 0;
+
+	Guild* playerGuild;
+
+	ChatRoom* room;
+
+	try {
+		playerGuild = player->getGuild();
+
+		if (playerGuild != 0) {
+
+			room = playerGuild->getGuildChat();
+			if (room != NULL)
+				room->removePlayer(player, false);
+
+			player->setGuild(defGuild);
+			player->updateGuild(defGuild);
+			player->setGuildLeader(false);
+			player->setGuildPermissions(0);
+
+		}
+
+	} catch (...) {
+		return;
 	}
 }
