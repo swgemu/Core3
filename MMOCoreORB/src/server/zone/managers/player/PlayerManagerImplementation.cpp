@@ -203,6 +203,8 @@ bool PlayerManagerImplementation::create(Player* player, uint32 sessionkey) {
 			player->setGuild(guild);
 
 			player->setGuildLeader(false);
+
+			player->setGuildPermissions(0);
 		}
 
 		server->unlock();

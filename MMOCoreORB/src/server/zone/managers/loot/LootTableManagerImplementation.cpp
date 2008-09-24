@@ -185,13 +185,8 @@ void LootTableManagerImplementation::buildLootMap() {
 
 
 void LootTableManagerImplementation::createLootItem(Creature* creature, int level, Player* player) {
-	//lock(); TA: moved selectedLootTableMap into the function
-	//to avoid locking the whole manager so the server can create the loot items for more then one creature at once
-
-	if (creature == NULL) {
-		//unlock();
+	if (creature == NULL)
 		return;
-	}
 
 	int i, itemcount;
 	i = 0;
@@ -258,18 +253,12 @@ void LootTableManagerImplementation::createLootItem(Creature* creature, int leve
 		//for testing: cout << "Selected lootitem is " << lootTableTemp->getLootItemName() << endl;
 		TangibleObject* item = im->createPlayerObjectTemplate(itemType, creature->getNewItemID(), itemCRC,
 				clearName, itemName, false, true, lootAttributes, level);
-				
+
 		items[i] = item;
-		
-		//TODO - FIXME: how can item be NULL 
-		if (item != NULL) {
-			item->setPlayerUseMask(itemMask);
 
-			creature->addLootItem(item);
-		}
+		item->setPlayerUseMask(itemMask);
+		creature->addLootItem(item);
 	}
-
-	//unlock();
 
 }
 
