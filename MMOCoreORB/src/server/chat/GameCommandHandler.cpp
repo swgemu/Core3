@@ -1919,7 +1919,7 @@ void GameCommandHandler::spawn(StringTokenizer tokenizer,
 	if (player->getParent() != NULL) {
 		cellid = player->getParent()->getObjectID();
 	} else {
-		cellid = player->getZoneID();
+		cellid = 0;
 	}
 
 	x = player->getPositionX();
@@ -1938,14 +1938,14 @@ void GameCommandHandler::spawn(StringTokenizer tokenizer,
 
 	}*/
 
-	Creature* creature = creatureManager->spawnCreature(objcrc, 0, x, y, 0,
+	Creature* creature = creatureManager->spawnCreature(objcrc, cellid, x, y, 0,
 			false, true);
 
 	if (creature == NULL) {
 
 		creatureManager->hotLoadCreature(name);
 
-		creature = creatureManager->spawnCreature(objcrc, 0, x, y, 0, false,
+		creature = creatureManager->spawnCreature(objcrc, cellid, x, y, 0, false,
 				true);
 
 	}
