@@ -40,4 +40,4 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-RunCreatureFile("objects/npcs/naboostormTrooper.lua")
+

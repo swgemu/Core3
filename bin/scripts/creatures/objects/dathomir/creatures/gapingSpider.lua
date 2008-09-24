@@ -135,7 +135,7 @@ gapingSpider = Creature:new {
       meatType = "meat_insect_dathomir",
       meatMax = 8,
 	  skills = { "gapingSpiderAttack1", "gapingSpiderAttack2" },      
-      -- respawnTimer = 180,
+       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }

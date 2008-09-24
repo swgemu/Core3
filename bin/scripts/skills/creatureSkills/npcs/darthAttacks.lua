@@ -55,13 +55,13 @@ darthAttack1 = {
 	areaRange = 0,
 	accuracyBonus = 0,
 		
-	knockdownChance = 10,
+	knockdownChance = 50,
 	postureDownChance = 10,
 	postureUpChance = 0,
-	dizzyChance = 10,
-	blindChance = 10,
-	stunChance = 10,
-	intimidateChance = 10,
+	dizzyChance = 50,
+	blindChance = 50,
+	stunChance = 50,
+	intimidateChance = 50,
 	
 	CbtSpamBlock = "attack_block",
 	CbtSpamCounter = "attack_counter",
@@ -87,9 +87,9 @@ darthAttack2 = {
 	
 	knockdownChance = 0,
 	postureDownChance = 0,
-	dizzyChance = 50,
-	blindChance = 45,
-	stunChance = 40,
+	dizzyChance = 70,
+	blindChance = 65,
+	stunChance = 60,
 	intimidateChance = 0,
 
 	CbtSpamBlock = "saberpolearmdervish2_block",
@@ -115,7 +115,7 @@ darthAttack3 = {
 	coneAngle = 40,
 	accuracyBonus = 0,
 	
-	knockdownChance = 40,
+	knockdownChance = 60,
 	postureDownChance = 0,
 	dizzyChance = 0,
 	blindChance = 0,
@@ -151,7 +151,7 @@ darthAttack4 = {
 	mindAttackChance = 50,
 
 	dotChance = 50,
-	tickStrengthOfHit = 1,
+	tickStrengthOfHit = 10,
 
 	fireStrength = 0,
 	fireType = 0,

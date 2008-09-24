@@ -40,72 +40,72 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-naboostormtrooper = Creature:new {
-      objectName = "naboostormtrooper",  -- Lua Object Name
+jediKnight = Creature:new {
+      objectName = "jediKnight",  -- Lua Object Name
       creatureType = "NPC",
-      faction = "Imperial",
+      faction = "sith",
       gender = "",
 
-      name = "Stormtrooper",
-      objectCRC = 3128894413, 
-      socialGroup = "Imperial",
-      named = FALSE, 
+      stfName = "Dark Jedi Knight",
+      objectCRC = 1570698968, 
+      socialGroup = "sith",
+      named = TRUE, 
 
-      level = 80,
-      xp = 10000,
+      level = 350,
+      xp = 28549,
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
-      healthMax = 8800,
-      healthMin = 7200,
-      strength = 500,
-      constitution = 500,
+      healthMax = 311000,
+      healthMin = 300000,
+      strength = 50000,
+      constitution = 50000,
 
-      actionMax = 8800,
-      actionMin = 7200,
-      quickness = 500,
-      stamina = 500,
+      actionMax = 311000,
+      actionMin = 300000,
+      quickness = 50000,
+      stamina = 50000,
 
-      mindMax = 8800,
-      mindMin = 7200,
-      focus = 500,
-      willpower = 500,
+      mindMax = 311000,
+      mindMin = 300000,
+      focus = 50000,
+      willpower = 50000,
 
       height = 1, -- Size of creature
-      armor = 2, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-      kinetic = 30,
-      energy = 30,
-      electricity = 30,
-      stun = 0,
-      blast = 30,
-      heat = 0,
-      cold = 30,
-      acid = 0,
-      lightsaber = 0,
+      armor = 3, -- Just a guess
+      kinetic = 90,
+      energy = 90,
+	  electricity = 90,
+      stun = 90,
+ 	  blast = 90,
+ 	  heat = 90,
+ 	  cold = 90,
+ 	  acid = 90,
+ 	  lightSaber = 0, 
 
-      accuracy = 300,
+      accuracy = 500,
 
       healer = 0,
 
       pack = 1,
       herd = 0,
       stalker = 0,
-      killer = 1,
+      killer = 0,
       aggressive = 0,
-      invincible = 0,
+      invincible = 1,
 
       attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "object/weapon/ranged/carbine/shared_carbine_e11.iff", -- File path to weapon -> object\xxx\xxx\xx
-      weaponName = "a e11 Carbine", -- Name ex. 'a Vibrolance'
-      weaponTemp = "carbine_e11", -- Weapon Template ex. 'lance_vibrolance'
-      weaponClass = "CarbineRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+      weapon = "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s4_gen4.iff", -- File path to weapon -> object\xxx\xxx\xx
+      weaponName = "Darth Saber", -- Name ex. 'a Vibrolance'
+      weaponTemp = "sword_lightsaber_one_handed_s4_gen4", -- Weapon Template ex. 'lance_vibrolance'
+      weaponClass = "OneHandedJediWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
       weaponEquipped = 1,
-      weaponMinDamage = 350,
-      weaponMaxDamage = 400,
-      weaponAttackSpeed = 2,
-      weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
-      weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
+      weaponMinDamage = 750,
+      weaponMaxDamage = 850,
+      weaponAttackSpeed = 1,
+      weaponDamageType = "LIGHTSABER", -- ELECTRICITY, KINETIC, etc
+      weaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
 
       alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
       alternateWeaponName = "", -- Name ex. 'a Vibrolance'
@@ -120,7 +120,7 @@ naboostormtrooper = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0,11,15,19,21,33,34,42", -- Group it belongs to for loot
+      lootGroup = "0,11,15,19,21,33,34,39,40,49,47,49,50", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
@@ -135,10 +135,10 @@ naboostormtrooper = Creature:new {
       meatType = "",
       meatMax = 0,
 
-      skills = { "stormTrooperAttack1" },
-      -- respawnTimer = 180,
+      skills = { "darthAttack1", "darthAttack2", "darthAttack3", "darthAttack4" },
+      respawnTimer = 3600,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(naboostormtrooper, 628727249) --  Add to Global Table
+Creatures:addCreature(jediKnight, 1570698968) --  Add to Global Table

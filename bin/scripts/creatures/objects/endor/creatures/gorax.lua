@@ -46,41 +46,41 @@ gorax = Creature:new {
       faction = "Gorax",
       gender = "male",
 
-      stfName = "Gorax King",
+      stfName = "Gorax",
       objectCRC = 3371835636, 
       socialGroup = "Gorax",
       named = FALSE, 
 
-      level = 1000,
+      level = 300,
       xp = 28549,
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
-      healthMax = 2000000,
-      healthMin = 1500000,
-      strength = 200000,
-      constitution = 200000,
+      healthMax = 400000,
+      healthMin = 390000,
+      strength = 50000,
+      constitution = 50000,
 
-      actionMax = 2000000,
-      actionMin = 1500000,
-      quickness = 200000,
-      stamina = 200000,
+      actionMax = 400000,
+      actionMin = 390000,
+      quickness = 50000,
+      stamina = 50000,
 
-      mindMax = 2000000,
-      mindMin = 1500000,
-      focus = 200000,
-      willpower = 200000,
+      mindMax = 400000,
+      mindMin = 390000,
+      focus = 50000,
+      willpower = 50000,
 
       height = 1.5, -- Size of creature
       armor = 3, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-      kinetic = 95,
-      energy = 95,
-      electricity = 95,
-      stun = 95,
-      blast = 95,
-      heat = 95,
-      cold = 95,
-      acid = 95,
+      kinetic = 65,
+      energy = 45,
+      electricity = 35,
+      stun = 35,
+      blast = 35,
+      heat = 35,
+      cold = 35,
+      acid = 35,
       lightsaber = 0,
 
       accuracy = 580,
@@ -120,7 +120,7 @@ gorax = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0,1,2,3,103", -- Group it belongs to for loot
+      lootGroup = "0,11,15,19,33,34,39,40,46,47,49,50", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
@@ -136,7 +136,7 @@ gorax = Creature:new {
       meatMax = 0,
 
       skills = { "goraxAttack1", "goraxAttack2", "goraxAttack3", "goraxAttack4" },
-      respawnTimer = 18000,
+      respawnTimer = 43200,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }

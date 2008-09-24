@@ -136,7 +136,7 @@ spinedPuc = Creature:new {
       meatMax = 6,
 
       skills = { "spinedPucAttack1" },
-      -- respawnTimer = 180,
+       respawnTimer = 60,
 
       behaviorScript = "" -- Link to the behavior script for this object
 }

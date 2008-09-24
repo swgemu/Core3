@@ -42,4 +42,4 @@
 
 twilekHats = {twilekHat1, twilekHat2, twilekHat3, twilekHat4, twilekHat5}
 
-addBFItemSet("Hats" , hats);
+addBFItemSet("Twilek-Hats" , twilekHats);

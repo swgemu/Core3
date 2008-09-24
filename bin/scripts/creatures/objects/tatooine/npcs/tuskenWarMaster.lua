@@ -136,7 +136,7 @@ tuskenWarMaster = Creature:new {
       meatMax = 0,
 
       skills = { "tuskenAttack40", "tuskenAttack41", "tuskenAttack42", "tuskenAttack43", "tuskenAttack44", "tuskenAttack45", "tuskenAttack46", "tuskenAttack47", "tuskenAttack48", "tuskenAttack49", "tuskenAttack50", "tuskenAttack51" },
-      respawnTimer = 120 ,
+      respawnTimer = 300,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }

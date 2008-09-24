@@ -65,7 +65,7 @@ end
 
 --Endor
 --if (PLANET_ID == 3) then
--- RunCreatureFile("objects/endor/creatures.lua") 
+RunCreatureFile("objects/endor/creatures.lua") 
 -- RunCreatureFile("objects/endor/npcs.lua")
 --end
 
@@ -121,6 +121,7 @@ end
 --------------------------------------------------------------------
 
 --Faction Spawns (All Planets) 
+
 --Imperial
 RunCreatureFile("objects/npcs/atSt.lua")
 RunCreatureFile("objects/npcs/atAt.lua")
@@ -136,5 +137,12 @@ RunCreatureFile("objects/npcs/stormTrooper.lua")
 --Rebel
 RunCreatureFile("objects/npcs/rebelGeneral.lua")
 RunCreatureFile("objects/npcs/rebelSurfaceMarshal.lua")
+
+--Misc
+RunCreatureFile("objects/npcs/moJediMaster.lua")
+RunCreatureFile("objects/npcs/mellichae.lua")
+RunCreatureFile("objects/npcs/jediMaster.lua")
+RunCreatureFile("objects/npcs/jediKnight.lua")
+
 
 ----------------------------------------------------------------------------------------------------

@@ -136,7 +136,7 @@ jindaLoremaster = Creature:new {
       meatMax = 0,
 
       skills = { "", "", "" }
-      -- respawnTimer = 180,
+      respawnTimer = 300,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }

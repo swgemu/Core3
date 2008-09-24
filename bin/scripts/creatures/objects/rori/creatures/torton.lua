@@ -137,7 +137,7 @@ torton = Creature:new {
 
       skills = { "tortonAttack1" }
 	  -- skills = { " Dizzy attack", " Knockdown attack", "" }
-      -- respawnTimer = 180,
+       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }
