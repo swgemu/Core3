@@ -121,6 +121,11 @@ public:
 		toParam = new StfUnicodeParameter(str);
 	}
 
+	void addTO(const string& str) {
+		delete toParam;
+		toParam = new StfUnicodeParameter(unicode(str));
+	}
+
 	void addTU(uint64 to) {
 		delete tuParam;
 		tuParam = new StfPointerParameter(to);
@@ -134,6 +139,11 @@ public:
 	void addTU(const unicode& str) {
 		delete tuParam;
 		tuParam = new StfUnicodeParameter(str);
+	}
+
+	void addTU(const string& str) {
+		delete tuParam;
+		tuParam = new StfUnicodeParameter(unicode(str));
 	}
 
 	void addTT(uint64 to) {
@@ -151,6 +161,11 @@ public:
 		ttParam = new StfUnicodeParameter(str);
 	}
 
+	void addTT(const string& str) {
+		delete ttParam;
+		ttParam = new StfUnicodeParameter(unicode(str));
+	}
+
 	void addDI(int i) {
 		di = i;
 	}
@@ -160,6 +175,9 @@ public:
 	}
 
 	void generate() {
+		clear();
+		reset();
+
 		insertStream(tuParam);
 		insertStream(ttParam);
 		insertStream(toParam);
