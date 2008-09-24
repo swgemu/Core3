@@ -137,7 +137,7 @@ desertVesp = Creature:new {
 
       skills = { "vespAttack1" },
 	  -- skills = { " Poison attack (strong)", " Stun attack", "" },
-      -- respawnTimer = 180,
+       respawnTimer = 60,
 
       behaviorScript = "" -- Link to the behavior script for this object
 }

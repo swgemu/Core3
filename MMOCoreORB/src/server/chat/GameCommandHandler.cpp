@@ -103,7 +103,7 @@ void GameCommandHandler::init() {
 			"Warps a player to a given set of coordinates.",
 			"Usage: @warpPlayer <player> <starport |hotel | shuttle | medical | bank | garage | salon | punish>",
 			&warpPlayer);
-	gmCommands->addCommand("summon", PRIVILEGED,
+	gmCommands->addCommand("summon", PRIVILEGED | LEADQA,
 			"Warps a player to your location.",
 			"Usage: @summon <player>",
 			&summon);
@@ -159,7 +159,7 @@ void GameCommandHandler::init() {
 			"Awards a badge to targeted player.",
 			"Usage: @awardBadge <badgeid>",
 			&awardBadge);
-	gmCommands->addCommand("systemMessage", CSREVENTS,
+	gmCommands->addCommand("systemMessage", CSREVENTS | LEADQA,
 			"Sends a message to all players on the server.",
 			"Usage: @systemMessage <range> <message>",
 			&systemMessage);
@@ -199,7 +199,7 @@ void GameCommandHandler::init() {
 			"Prints your current HAM stats.",
 			"Usage: @HAMStats",
 			&HAMStats);
-	gmCommands->addCommand("buff", PRIVILEGED,
+	gmCommands->addCommand("buff", PRIVILEGED | LEADQA,
 			"Buffs your player.",
 			"Usage: @buff",
 			&buff);
@@ -225,7 +225,7 @@ void GameCommandHandler::init() {
 			&getDirection);
 	gmCommands->addCommand("setAdminLevel", DEVELOPER,
 			"Sets your admin level.",
-			"Usage: @setAdminLevel <player> <level> \n Levels: 1-CSR 2-DEVELOPER 4-PLAYER 8-QA 16-EC",
+			"Usage: @setAdminLevel <player> <level> \n Levels: 1-CSR 2-DEVELOPER 4-PLAYER 8-QA 16-EC 32-LEADQA",
 			&setAdminLevel);
 	gmCommands->addCommand("getLocation", ALL,
 			"Gives full detailsofyour location.",
@@ -244,11 +244,11 @@ void GameCommandHandler::init() {
 			"Plays a client effect animation around your character.",
 			"Usage: @clientEffect <effect>",
 			&clientEffect);
-	gmCommands->addCommand("revive", PRIVILEGED,
+	gmCommands->addCommand("revive", PRIVILEGED | LEADQA,
 			"Revives a player.",
 			"Usage: @revive <player>",
 			&revive);
-	gmCommands->addCommand("immune", PRIVILEGED,
+	gmCommands->addCommand("immune", PRIVILEGED | LEADQA,
 			"Toggles immunity.",
 			"Usage: @immune",
 			&immune);

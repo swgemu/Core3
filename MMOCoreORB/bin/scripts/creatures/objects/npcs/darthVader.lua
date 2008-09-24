@@ -51,39 +51,39 @@ darthVader = Creature:new {
       socialGroup = "Imperial",
       named = TRUE, 
 
-      level = 350,
+      level = 500,
       xp = 28549,
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
-      healthMax = 471000,
-      healthMin = 385000,
-      strength = 50000,
-      constitution = 50000,
+      healthMax = 650000,
+      healthMin = 620000,
+      strength = 80000,
+      constitution = 80000,
 
-      actionMax = 471000,
-      actionMin = 385000,
-      quickness = 50000,
-      stamina = 50000,
+      actionMax = 650000,
+      actionMin = 620000,
+      quickness = 80000,
+      stamina = 80000,
 
-      mindMax = 471000,
-      mindMin = 385000,
-      focus = 50000,
-      willpower = 50000,
+      mindMax = 650000,
+      mindMin = 620000,
+      focus = 80000,
+      willpower = 80000,
 
       height = 1, -- Size of creature
       armor = 3, -- Just a guess
-      kinetic = 85,
-      energy = 75,
-	  electricity = 75,
-      stun = 75,
- 	  blast = 75,
- 	  heat = 75,
- 	  cold = 75,
- 	  acid = 75,
- 	  lightSaber = 0, 
+      kinetic = 95,
+      energy = 95,
+	  electricity = 95,
+      stun = 95,
+ 	  blast = 95,
+ 	  heat = 95,
+ 	  cold = 95,
+ 	  acid = 95,
+ 	  lightSaber = 95, 
 
-      accuracy = 300,
+      accuracy = 500,
 
       healer = 0,
 
@@ -101,9 +101,9 @@ darthVader = Creature:new {
       weaponTemp = "sword_lightsaber_one_handed_s4_gen4", -- Weapon Template ex. 'lance_vibrolance'
       weaponClass = "OneHandedJediWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
       weaponEquipped = 1,
-      weaponMinDamage = 650,
-      weaponMaxDamage = 800,
-      weaponAttackSpeed = 1.5,
+      weaponMinDamage = 750,
+      weaponMaxDamage = 950,
+      weaponAttackSpeed = 1.0,
       weaponDamageType = "LIGHTSABER", -- ELECTRICITY, KINETIC, etc
       weaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
 

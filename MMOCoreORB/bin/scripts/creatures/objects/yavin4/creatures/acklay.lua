@@ -46,41 +46,41 @@ acklay = Creature:new {
       faction = "Acklay",
       gender = "male",
 
-      stfName = "Acklay Ravager",
+      stfName = "Acklay",
       objectCRC = 258679778, 
       socialGroup = "Acklay",
       named = FALSE, 
 
-      level = 500,
+      level = 157,
       xp = 28549,
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
-      healthMax = 4500000,
-      healthMin = 3000000,
-      strength = 500000,
-      constitution = 500000,
+      healthMax = 120000,
+      healthMin = 100000,
+      strength = 20000,
+      constitution = 20000,
 
-      actionMax = 4500000,
-      actionMin = 3000000,
-      quickness = 500000,
-      stamina = 500000,
+      actionMax = 120000,
+      actionMin = 100000,
+      quickness = 20000,
+      stamina = 20000,
 
-      mindMax = 4500000,
-      mindMin = 3000000,
-      focus = 500000,
-      willpower = 500000,
+      mindMax = 120000,
+      mindMin = 100000,
+      focus = 20000,
+      willpower = 20000,
 
-      height = 5, -- Size of creature
-      armor = 3, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-      kinetic = 95,
-      energy = 99,
-      electricity = 95,
-      stun = 95,
-      blast = 95,
-      heat = 95,
-      cold = 95,
-      acid = 99,
+      height = 1.5, -- Size of creature
+      armor = 2, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+      kinetic = 30,
+      energy = 45,
+      electricity = 30,
+      stun = 30,
+      blast = 55,
+      heat = 55,
+      cold = 45,
+      acid = 30,
       lightsaber = 0,
 
       accuracy = 300,
@@ -101,8 +101,8 @@ acklay = Creature:new {
       weaponTemp = "shared_baton_gaderiffi", -- Weapon Template ex. 'lance_vibrolance'
       weaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
       weaponEquipped = 0,
-      weaponMinDamage = 280,
-      weaponMaxDamage = 450,
+      weaponMinDamage = 380,
+      weaponMaxDamage = 650,
       weaponAttackSpeed = 1.5,
       weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
       weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
@@ -120,7 +120,7 @@ acklay = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0,11,15,19,21,33,34,39,40,46,47,49,50", -- Group it belongs to for loot
+      lootGroup = "0,11,15,19,33,34,39,40,46,47,49,50", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
@@ -137,7 +137,7 @@ acklay = Creature:new {
 
       
 	  skills = { "acklayAttack1", "acklayAttack2", "acklayAttack3", "acklayAttack4", "acklayAttack5", "acklayAttack6", "acklayAttack7", "acklayAttack8", "acklayAttack9" },
-      respawnTimer = 9000,
+      respawnTimer = 43200,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }

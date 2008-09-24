@@ -137,7 +137,7 @@ vesp = Creature:new {
 
       skills = { "vespAttack1" },
 	  -- skills = { " Stun attack", " Blind attack", "" },
-      -- respawnTimer = 180,
+       respawnTimer = 60,
 
       behaviorScript = "" -- Link to the behavior script for this object
 }

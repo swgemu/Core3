@@ -40,13 +40,13 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-stormtrooper = Creature:new {
-      objectName = "stormtrooper",  -- Lua Object Name
+stormTrooper = Creature:new {
+      objectName = "stormTrooper",  -- Lua Object Name
       creatureType = "NPC",
       faction = "Imperial",
       gender = "",
 
-      name = "Stormtrooper",
+      name = "stormTrooper",
       objectCRC = 3128894413, 
       socialGroup = "Imperial",
       named = FALSE, 
@@ -136,9 +136,9 @@ stormtrooper = Creature:new {
       meatMax = 0,
 
       skills = { "stormTrooperAttack1" },
-      -- respawnTimer = 180,
+      respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(stormtrooper, 628727249) --  Add to Global Table
+Creatures:addCreature(stormTrooper, 3128894413) --  Add to Global Table

@@ -136,7 +136,7 @@ direCat = Creature:new {
       meatMax = 65,
 
       skills = { "direCatAttack1" },
-      -- respawnTimer = 180,
+       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }

@@ -51,6 +51,7 @@ end
 
 --Dantooine
 if (PLANET_ID == 1) then
+ RunCreatureFile("spawns/dantooine/staticSpawns.lua")
  RunCreatureFile("spawns/dantooine/forceCrystalHuntersCave.lua")
  RunCreatureFile("spawns/dantooine/jantaCave.lua")
  RunCreatureFile("spawns/dantooine/kungaCave.lua")
@@ -68,27 +69,27 @@ end
 
 
 --Endor
---if (PLANET_ID == 3) then
---Disabled till other Endor Caves are done
+if (PLANET_ID == 3) then
+RunCreatureFile("spawns/endor/staticSpawns.lua")
 --RunCreatureFile("spawns/endor/deathWatchBunker.lua")
---end
+end
 
 --Lok
---if (PLANET_ID == 4) then
---end
+if (PLANET_ID == 4) then
+end
 
 --Naboo
 if (PLANET_ID == 5) then
  RunCreatureFile("spawns/naboo/staticSpawns.lua")
 end
 
---rori
---if (PLANET_ID == 6) then
---end
+--Rori
+if (PLANET_ID == 6) then
+end
 
 --Talus
---if (PLANET_ID == 7) then
---end
+if (PLANET_ID == 7) then
+end
 
 --Tatooine
 if (PLANET_ID == 8) then
@@ -101,5 +102,6 @@ if (PLANET_ID == 8) then
 end
 
 --Yavin 4
---if (PLANET_ID == 9) then
---end
+if (PLANET_ID == 9) then
+RunCreatureFile("spawns/yavin4/staticSpawns.lua")
+end

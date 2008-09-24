@@ -135,7 +135,7 @@ sharnaff = Creature:new {
       meatType = "meat_carnivore_corellia",
       meatMax = 450,
 	  skills = { "sharnaffAttack1","sharnaffAttack1" },      
-      -- respawnTimer = 180,
+       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }

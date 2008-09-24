@@ -43,8 +43,8 @@
 --global clusters
 
 -- Starport Guards
-spawnCreature(naboostormtrooper, 5, -4852.37, 4175.86)
-spawnCreature(naboostormtrooper, 5, -4848.24, 4172.5)
+spawnCreature(stormTrooper, 5, -4852.37, 4175.86)
+spawnCreature(stormTrooper, 5, -4848.24, 4172.5)
 
 -- Forest Creatures
 -- spawnCreatures(nightspider, 5, -5052.52, 3905.86, 200, 15)
@@ -145,5 +145,5 @@ spawnCreatures(fleshEatingChuba, 5, -5060.8, 3806.97, 40, 5)
 spawnCreatures(nightspider, 5, -5060.8, 3806.97, 40, 5)
 spawnCreatures(shaupaut, 5, -5060.8, 3806.97, 40, 5)
 
--- Epic Starport Dude
---spawnCreatureInCell(acklay, 5, -0.012525, 7.9418, 54.5436, 1692104)
+-- Epic theed Spawn
+--spawnCreatureInCell(mellichae, 5, 0.429564, 27, -120.732, 1688865)
