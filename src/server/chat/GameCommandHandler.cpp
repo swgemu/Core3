@@ -326,7 +326,7 @@ void GameCommandHandler::map(StringTokenizer tokenizer, Player * player) {
 			player->switchMap(planetid);
 	} else {
 		player->sendSystemMessage("Usage: map <planetid>\n"
-		"0=Corellia, 1=Dantooine, 2=Dathomir, 3=Endor,\n"
+		"0=Corellia, 1=Dantooine, 2=Dathomir, 3=Endor, 4=Lok,\n"
 		"5=Naboo, 6=Rori, 7=Talus, 8=Tatooine, 9=Yavin 4, 10=Bad player prison (Space)");
 	}
 }
