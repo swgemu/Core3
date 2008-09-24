@@ -1276,7 +1276,9 @@ void CreatureImplementation::createHarvestList() {
 	GroupObject* group;
 	Player* owner = (Player*)getLootOwner();
 
-	if(owner == NULL)
+	string skillBox = "outdoors_scout_novice";
+
+	if(owner == NULL || hasOrganics())
 		return;
 
 	if (owner->isInAGroup()) {
@@ -1287,14 +1289,14 @@ void CreatureImplementation::createHarvestList() {
 
 			tempPlayer = group->getGroupMember(i);
 
-			if(tempPlayer != NULL)
+			if(tempPlayer != NULL  && tempPlayer->hasSkillBox(skillBox))
 				playerCanHarvest.add(tempPlayer->getFirstName());
-
 		}
 
 	} else {
 
-		playerCanHarvest.add(owner->getFirstName());
+		if(owner->hasSkillBox(skillBox))
+			playerCanHarvest.add(owner->getFirstName());
 
 	}
 }

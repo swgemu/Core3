@@ -148,6 +148,19 @@ void ChatManagerImplementation::initiateRooms() {
 	generalRoom->deploy();
 	core3Room->addSubRoom(generalRoom);
 	addRoom(generalRoom);
+
+	// Planet Chat
+
+	// Naboo
+	ChatRoom* nabooRoom = new ChatRoom(server, core3Room, "naboo", getNextRoomID());
+	nabooRoom->deploy();
+	core3Room->addSubRoom(nabooRoom);
+	addRoom(nabooRoom);
+
+	ChatRoom* nabooPlanetary = new ChatRoom(server, nabooRoom, "chat", getNextRoomID());
+	nabooPlanetary->deploy();
+	nabooRoom->addSubRoom(nabooPlanetary);
+	addRoom(nabooPlanetary);
 }
 
 void ChatManagerImplementation::destroyRooms() {
@@ -614,6 +627,13 @@ void ChatManagerImplementation::handleChatRoomMessage(Player* sender, Message* p
 
 	unicode message;
 	pack->parseUnicode(message);
+
+	string adminmsg = message.c_str();
+
+	if (adminmsg[0] == '@') {
+		handleGameCommand(sender, adminmsg.c_str());
+		return;
+	}
 
 	pack->shiftOffset(4);
 

@@ -970,13 +970,15 @@ void GameCommandHandler::kill(StringTokenizer tokenizer, Player * player) {
 			if (targetPlayer != player)
 				targetPlayer->unlock();
 		}
-	} else if (creature != NULL) {
+	} else if (creature != NULL  && !creature->isTrainer() && !creature->isRecruiter()) {
 
 		try {
 			creature->wlock();
 
 			creature->explode(2, false);
 			uint damage = 100000000;
+
+			creature->addDamage(player, damage);
 			creature->takeHealthDamage(damage);
 
 			creature->unlock();
@@ -1007,13 +1009,18 @@ void GameCommandHandler::killArea(StringTokenizer tokenizer, Player * player) {
 		zone->lock();
 
 		for (int i = 0; i < player->inRangeObjectCount(); ++i) {
-			SceneObject* obj = (SceneObject*) (((SceneObjectImplementation*) player->getInRangeObject(i))->_getStub());
+			SceneObject
+					* obj =
+							(SceneObject*) (((SceneObjectImplementation*) player->getInRangeObject(
+									i))->_getStub());
 
 			if (obj->isPlayer()) {
 				Player* otherPlayer = (Player*) obj;
 				string otherName = otherPlayer->getFirstName();
 
-				if (otherName != name && player->isInRange(otherPlayer, meter) && (otherPlayer->getAdminLevel() == PlayerImplementation::NORMAL)) {
+				if (otherName != name && player->isInRange(otherPlayer, meter)
+						&& (otherPlayer->getAdminLevel()
+								== PlayerImplementation::NORMAL)) {
 					zone->unlock();
 
 					try {
@@ -1026,18 +1033,41 @@ void GameCommandHandler::killArea(StringTokenizer tokenizer, Player * player) {
 						if (otherPlayer != player)
 							otherPlayer->unlock();
 
-						player->sendSystemMessage("player \'" + otherName + "\' has been killed.");
+						player->sendSystemMessage("player \'" + otherName
+								+ "\' has been killed.");
 					} catch (...) {
 						if (otherPlayer != player)
 							otherPlayer->unlock();
-						player->sendSystemMessage("unable to kill player \'" + otherName + "\'");
+						player->sendSystemMessage("unable to kill player \'"
+								+ otherName + "\'");
 					}
 
 					zone->lock();
 				}
+			} else if (obj->isNonPlayerCreature()) {
+
+				Creature* creature = (Creature*) obj;
+
+				if (!creature->isTrainer() && !creature->isRecruiter()) {
+					zone->unlock();
+
+
+
+					try {
+						uint damage = 100000000;
+						creature->explode(2, false);
+						creature->addDamage(player, damage);
+						creature->takeHealthDamage(damage);
+						player->sendSystemMessage("creature has been killed.");
+					} catch (...) {
+						player->sendSystemMessage("unable to kill creature");
+					}
+
+					zone->lock();
+
+				}
 			}
 		}
-
 		zone->unlock();
 	} catch (...) {
 		zone->unlock();
@@ -1883,15 +1913,8 @@ void GameCommandHandler::spawn(StringTokenizer tokenizer,
 		return;
 	}
 
-	try {
-		objcrc = creatureManager->getCreatureCrc(name);
+	objcrc = creatureManager->getCreatureCrc(name);
 
-		if(objcrc == 0)
-			return;
-
-	} catch (...) {
-		return;
-	}
 
 	if (player->getParent() != NULL) {
 		cellid = player->getParent()->getObjectID();
@@ -1915,17 +1938,23 @@ void GameCommandHandler::spawn(StringTokenizer tokenizer,
 
 	}*/
 
-	Creature* creature =  creatureManager->spawnCreature(objcrc, 0, x, y, 0, false, true);
+	Creature* creature = creatureManager->spawnCreature(objcrc, 0, x, y, 0,
+			false, true);
 
-	if(creature != NULL)
-		return;
+	if (creature == NULL) {
 
-	creatureManager->hotLoadCreature(name);
+		creatureManager->hotLoadCreature(name);
 
-	creature = creatureManager->spawnCreature(objcrc, 0, x, y, 0, false, true);
+		creature = creatureManager->spawnCreature(objcrc, 0, x, y, 0, false,
+				true);
 
-	if(creature == NULL)
-		player->sendSystemMessage("Error spawning creature");
+	}
+
+	if (creature != NULL)
+		creature->setRespawnTimer(0);
+	else
+		player->sendSystemMessage("Cannot spawn creature");
+
 
 }
 void GameCommandHandler::addNoBuildArea(StringTokenizer tokenizer, Player* player) {

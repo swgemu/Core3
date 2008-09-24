@@ -727,6 +727,8 @@ public:
 
 	int getMilk();
 
+	bool hasOrganics();
+
 	int getXP();
 
 	int isHealer();
@@ -1777,6 +1779,8 @@ public:
 	int getMeatMax();
 
 	int getMilk();
+
+	bool hasOrganics();
 
 	int getXP();
 
