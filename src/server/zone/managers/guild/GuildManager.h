@@ -31,29 +31,21 @@ public:
 
 	Guild* getGuild(unsigned int gid, bool doLock = true);
 
-	bool removeGuild(int gid);
-
-	void removePlayersFromGuild(int gid);
-
 	GuildMap* getGuildMap();
 
 	void handleGuildTag(unsigned int boxID, Player* player, unsigned int cancel, string& returnString);
 
 	void handleGuildName(unsigned int boxID, Player* player, unsigned int cancel, string& returnString);
 
-	void handleGuildCreationName(Player* player);
-
 	void handleGuildSponsor(unsigned int boxID, Player* player, unsigned int cancel, string& returnString);
 
 	void handleVerifyBoxSponsorTargetforGuildMembership(unsigned int boxID, Player* otherPlayer, unsigned int cancel);
-
-	void VerifyBoxSponsorTargetforGuildMembership(Player* otherPlayer, string& inviter, string& guildname);
 
 	void handleSponsoredGuildMembersBox(unsigned int boxID, Player* player, unsigned int cancel, int index);
 
 	void handleSponsoredGuildMembersAcceptBox(unsigned int boxID, Player* player, unsigned int cancel, int index);
 
-	void removeFromGuild(Player* player, Player* removePlayer);
+	void removeOnlineFromGuild(Player* player, Player* removePlayer);
 
 	void execRemoveFromGuild(unsigned int boxID, Player* player, unsigned int cancel);
 
@@ -69,13 +61,7 @@ public:
 
 	void handleGuildMemberOptions(unsigned int boxID, Player* player, unsigned int cancel, int index);
 
-	void handleRemoveFromGuild(Player* player, string& kickee);
-
-	void callGuildPermissions(Player* player, string& proband);
-
 	void handleGuildPermissionSelection(unsigned int boxID, Player* player, unsigned int cancel, int index);
-
-	void declineSponsoring(string& declinee, unsigned int inviteGuild, Player* inviter);
 
 	void handleGuildInfo(Player* player);
 
@@ -117,29 +103,21 @@ public:
 
 	Guild* getGuild(unsigned int gid, bool doLock);
 
-	bool removeGuild(int gid);
-
-	void removePlayersFromGuild(int gid);
-
 	GuildMap* getGuildMap();
 
 	void handleGuildTag(unsigned int boxID, Player* player, unsigned int cancel, string& returnString);
 
 	void handleGuildName(unsigned int boxID, Player* player, unsigned int cancel, string& returnString);
 
-	void handleGuildCreationName(Player* player);
-
 	void handleGuildSponsor(unsigned int boxID, Player* player, unsigned int cancel, string& returnString);
 
 	void handleVerifyBoxSponsorTargetforGuildMembership(unsigned int boxID, Player* otherPlayer, unsigned int cancel);
-
-	void VerifyBoxSponsorTargetforGuildMembership(Player* otherPlayer, string& inviter, string& guildname);
 
 	void handleSponsoredGuildMembersBox(unsigned int boxID, Player* player, unsigned int cancel, int index);
 
 	void handleSponsoredGuildMembersAcceptBox(unsigned int boxID, Player* player, unsigned int cancel, int index);
 
-	void removeFromGuild(Player* player, Player* removePlayer);
+	void removeOnlineFromGuild(Player* player, Player* removePlayer);
 
 	void execRemoveFromGuild(unsigned int boxID, Player* player, unsigned int cancel);
 
@@ -155,13 +133,7 @@ public:
 
 	void handleGuildMemberOptions(unsigned int boxID, Player* player, unsigned int cancel, int index);
 
-	void handleRemoveFromGuild(Player* player, string& kickee);
-
-	void callGuildPermissions(Player* player, string& proband);
-
 	void handleGuildPermissionSelection(unsigned int boxID, Player* player, unsigned int cancel, int index);
-
-	void declineSponsoring(string& declinee, unsigned int inviteGuild, Player* inviter);
 
 	void handleGuildInfo(Player* player);
 
@@ -182,14 +154,9 @@ protected:
 	string _param3_handleGuildTag__int_Player_int_string_;
 	string _param3_handleGuildName__int_Player_int_string_;
 	string _param3_handleGuildSponsor__int_Player_int_string_;
-	string _param1_VerifyBoxSponsorTargetforGuildMembership__Player_string_string_;
-	string _param2_VerifyBoxSponsorTargetforGuildMembership__Player_string_string_;
 	string _param3_handleGuildDisbandBox__int_Player_int_string_;
 	string _param3_handleGuildNameChange__int_Player_int_string_;
 	string _param3_handleGuildNameChangeName__int_Player_int_string_;
-	string _param1_handleRemoveFromGuild__Player_string_;
-	string _param1_callGuildPermissions__Player_string_;
-	string _param0_declineSponsoring__string_int_Player_;
 	string _param3_handleGuildTransferLeaderBox__int_Player_int_string_;
 };
 

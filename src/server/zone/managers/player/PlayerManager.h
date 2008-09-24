@@ -75,6 +75,8 @@ public:
 
 	void updateOtherFriendlists(Player* player, bool status);
 
+	void updateGuildStatus(Player* player);
+
 	void setGuildManager(GuildManager* gmanager);
 
 	Player* putPlayer(Player* player);
@@ -148,6 +150,8 @@ public:
 	void updatePlayerBaseHAMToDatabase(Player* player);
 
 	void updateOtherFriendlists(Player* player, bool status);
+
+	void updateGuildStatus(Player* player);
 
 	void setGuildManager(GuildManager* gmanager);
 

@@ -362,12 +362,25 @@ void PlayerManager::updateOtherFriendlists(Player* player, bool status) {
 		((PlayerManagerImplementation*) _impl)->updateOtherFriendlists(player, status);
 }
 
-void PlayerManager::setGuildManager(GuildManager* gmanager) {
+void PlayerManager::updateGuildStatus(Player* player) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 30);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerManagerImplementation*) _impl)->updateGuildStatus(player);
+}
+
+void PlayerManager::setGuildManager(GuildManager* gmanager) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 31);
 		method.addObjectParameter(gmanager);
 
 		method.executeWithVoidReturn();
@@ -380,7 +393,7 @@ Player* PlayerManager::putPlayer(Player* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 31);
+		DistributedMethod method(this, 32);
 		method.addObjectParameter(player);
 
 		return (Player*) method.executeWithObjectReturn();
@@ -393,7 +406,7 @@ Player* PlayerManager::getPlayer(string& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 32);
+		DistributedMethod method(this, 33);
 		method.addAsciiParameter(name);
 
 		return (Player*) method.executeWithObjectReturn();
@@ -406,7 +419,7 @@ GuildManager* PlayerManager::getGuildManager() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 33);
+		DistributedMethod method(this, 34);
 
 		return (GuildManager*) method.executeWithObjectReturn();
 	} else
@@ -418,7 +431,7 @@ PlayerMap* PlayerManager::getPlayerMap() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 34);
+		DistributedMethod method(this, 35);
 
 		return (PlayerMap*) method.executeWithObjectReturn();
 	} else
@@ -509,18 +522,21 @@ Packet* PlayerManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		updateOtherFriendlists((Player*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
 	case 30:
-		setGuildManager((GuildManager*) inv->getObjectParameter());
+		updateGuildStatus((Player*) inv->getObjectParameter());
 		break;
 	case 31:
-		resp->insertLong(putPlayer((Player*) inv->getObjectParameter())->_getObjectID());
+		setGuildManager((GuildManager*) inv->getObjectParameter());
 		break;
 	case 32:
-		resp->insertLong(getPlayer(inv->getAsciiParameter(_param0_getPlayer__string_))->_getObjectID());
+		resp->insertLong(putPlayer((Player*) inv->getObjectParameter())->_getObjectID());
 		break;
 	case 33:
-		resp->insertLong(getGuildManager()->_getObjectID());
+		resp->insertLong(getPlayer(inv->getAsciiParameter(_param0_getPlayer__string_))->_getObjectID());
 		break;
 	case 34:
+		resp->insertLong(getGuildManager()->_getObjectID());
+		break;
+	case 35:
 		resp->insertLong(getPlayerMap()->_getObjectID());
 		break;
 	default:
@@ -624,6 +640,10 @@ void PlayerManagerAdapter::updatePlayerBaseHAMToDatabase(Player* player) {
 
 void PlayerManagerAdapter::updateOtherFriendlists(Player* player, bool status) {
 	return ((PlayerManagerImplementation*) impl)->updateOtherFriendlists(player, status);
+}
+
+void PlayerManagerAdapter::updateGuildStatus(Player* player) {
+	return ((PlayerManagerImplementation*) impl)->updateGuildStatus(player);
 }
 
 void PlayerManagerAdapter::setGuildManager(GuildManager* gmanager) {

@@ -67,9 +67,10 @@ LootTableManagerImplementation::LootTableManagerImplementation(ZoneServer* inser
 
 	serv = inserv;
 
+	setLoggingName("LootTableManager");
+
 	setLogging(false);
 	setGlobalLogging(true);
-
 }
 
 LootTableManagerImplementation::~LootTableManagerImplementation() {
@@ -256,10 +257,19 @@ void LootTableManagerImplementation::createLootItem(Creature* creature, int leve
 
 		items[i] = item;
 
-		item->setPlayerUseMask(itemMask);
-		creature->addLootItem(item);
+		if (item != NULL) {
+			item->setPlayerUseMask(itemMask);
+			creature->addLootItem(item);
+		} else {
+			stringstream err;
+			err << "Loot item could not be created"
+				<< " itemType = 0x" << hex << itemType
+				<< " itemCRC = " << itemCRC
+				<< " itemMask = " << itemMask
+				<< " itemName = " << itemName;
+			error(err.str());
+		}
 	}
-
 }
 
 int LootTableManagerImplementation::makeLootGroup(Creature* creature) {
