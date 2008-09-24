@@ -3984,3 +3984,26 @@ void PlayerImplementation::queueHeal(TangibleObject* medPack, uint32 actionCRC, 
 
 	queueAction(_this, getTargetID(), actionCRC, ++actionCounter, actionModifier.str());
 }
+
+void PlayerImplementation::sendRadialResponseTo(Player* player, ObjectMenuResponse* omr) {
+	//player = the player requesting the radial
+	//_this = the object who's radial was activated (can only be a playerobject)
+
+	if (_this->isPlayingMusic())
+		if (!player->isListening())
+			omr->addRadialItem(0, 50, 3, "Listen");
+		else
+			omr->addRadialItem(0, 50, 3, "Stop Listen");
+
+
+	if (_this->isDancing())
+		if (!player->isWatching())
+			omr->addRadialItem(0, 50, 3, "Watch");
+		else
+			omr->addRadialItem(0, 50, 3, "Stop Watch");
+
+	omr->finish();
+
+	player->sendMessage(omr);
+}
+

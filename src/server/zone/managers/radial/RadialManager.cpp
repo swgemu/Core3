@@ -193,6 +193,9 @@ void RadialManager::handleSelection(int radialID, Player* player, SceneObject* o
 	case 45: // Open vendor
 		sendRadialResponseForBazaar(obj->getObjectID(), player);
 		break;
+	case 50:  // LISTEN / WATCH (Entertainer)
+		handleEntertainerActions(player, obj);
+		break;
 	case 60: // VEHICLE_GENERATE
 		player->unlock();
 
@@ -264,7 +267,7 @@ void RadialManager::handleSelection(int radialID, Player* player, SceneObject* o
 		return;
 	case 190: // SERVER_GUILD_ENEMIES
 		player->unlock();
-		cout << "Radial Guild Enemies" << endl;
+		//cout << "Radial Guild Enemies" << endl;
 		return;
 	case 194: // SERVER_GUILD_GUILD_MANAGEMENT
 		//nothing, has sub menues
@@ -909,4 +912,50 @@ void RadialManager::handleGuildTransferLeader(Player* player) {
 
 	pGuild->handleGuildTransferLeader(player);
 
+}
+
+void RadialManager::handleEntertainerActions(Player* player, SceneObject* obj) {
+	//i am not sure, but i don't think OBJ can be anything else then a player?
+	if (!obj->isPlayer())
+		return;
+
+	Player* target = (Player*)obj;
+
+	try {
+
+		target->wlock(player);
+
+		//we need to request the getter's with the just applied cross lock
+		//because startWatch/listen and stopWatch/listen are cross-locking on their own (->deadlock)
+
+		bool dancing = target->isDancing();
+		bool noising = target->isPlayingMusic();
+		uint64 targetID = target->getObjectID();
+
+		target->unlock();
+
+
+		if (dancing) {
+			if (!player->isWatching())
+				player->startWatch(targetID);
+			else
+				player->stopWatch(player->getWatchID());
+
+			return;
+		}
+
+		if (noising) {
+			if (!player->isListening())
+				player->startListen(targetID);
+			else
+				player->stopListen(player->getListenID());
+
+			return;
+		}
+
+	} catch (...) {
+		target->unlock();
+
+		return;
+	}
 }

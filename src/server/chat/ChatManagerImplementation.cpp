@@ -456,6 +456,39 @@ void ChatManagerImplementation::sendMail(const string& sendername, unicode& head
   	String::toLower(Name);
   	receiver = getPlayer(Name);
 
+
+
+  	//guild mail?
+  	string checkReceiver = Name;
+  	String::toLower(checkReceiver);
+  	string guildSender = sendername;
+
+  	if (checkReceiver == "guild") {
+		Player* sender = getPlayer(guildSender);
+
+		if (sender == NULL)
+			return;
+
+  		if ( ! ( ( sender->getGuildPermissions() ) & (PlayerImplementation::GUILDMAIL) ) ) {
+			sender->sendSystemMessage("@guild:generic_fail_no_permission");
+			return;
+		}
+
+  		GuildManager* gm = server->getGuildManager();
+
+  		if (gm == NULL)
+  			return;
+
+  		stringstream mySender;
+  		mySender << "Guildmail: " << sendername;
+
+  		gm->sendGuildMail(sender, mySender.str(), header.c_str() , body.c_str(), false);
+
+  		return;
+  	}
+  	//end guildmail
+
+
   	try {
 		MySqlDatabase::escapeString(Name);
 
@@ -674,6 +707,15 @@ void ChatManagerImplementation::handleGroupChat(Player* sender, Message* pack) {
 	unicode message;
 	pack->parseUnicode(message);
 
+
+	string adminmsg = message.c_str();
+
+	if (adminmsg[0] == '@') {
+		handleGameCommand(sender, adminmsg.c_str());
+		return;
+	}
+
+
 	GroupObject* group = sender->getGroupObject();
 	if (group == NULL)
 		return;
@@ -699,8 +741,16 @@ void ChatManagerImplementation::handleGuildChat(Player* sender, Message* pack) {
 	pack->shiftOffset(8);
 
 	unicode message;
-
 	pack->parseUnicode(message);
+
+
+	string adminmsg = message.c_str();
+
+	if (adminmsg[0] == '@') {
+		handleGameCommand(sender, adminmsg.c_str());
+		return;
+	}
+
 
 	Guild* kuild;
 	kuild = sender->getGuild();
