@@ -1278,7 +1278,7 @@ void CreatureImplementation::createHarvestList() {
 
 	string skillBox = "outdoors_scout_novice";
 
-	if(owner == NULL || hasOrganics())
+	if(owner == NULL || !hasOrganics())
 		return;
 
 	if (owner->isInAGroup()) {
