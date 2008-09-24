@@ -1094,8 +1094,6 @@ void ChatManagerImplementation::destroyRoom(ChatRoom* room) {
 
 	roomMap->remove(room->getRoomID());
 
-	unlock();
-
 	ChatOnDestroyRoom* msg = new ChatOnDestroyRoom("SWG", server->getServerName(), room->getRoomID());
 	room->broadcastMessage(msg);
 	room->removeAllPlayers();
@@ -1106,4 +1104,6 @@ void ChatManagerImplementation::destroyRoom(ChatRoom* room) {
 		parent->removeSubRoom(room);
 
 	room->finalize();
+
+	unlock();
 }
