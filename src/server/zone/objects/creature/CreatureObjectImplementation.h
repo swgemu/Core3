@@ -2008,6 +2008,10 @@ public:
 		return hideType;
 	}
 
+	inline bool hasOrganics(){
+		return ((hideMax + boneMax + meatMax) > 0);
+	}
+
 	inline int getMilk() {
 		return milk;
 	}

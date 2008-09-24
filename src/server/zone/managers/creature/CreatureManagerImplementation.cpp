@@ -390,6 +390,7 @@ BlueFrogCreature* CreatureManagerImplementation::spawnBlueFrog(float x, float y,
 		bluefrog->setDirection(0, 0, oY, oW);
 		bluefrog->setPvpStatusBitmask(0);//0x01 + 0x02 + 0x20;
 		bluefrog->setBFType(type);
+		bluefrog->setType(CreatureImplementation::TRAINER);
 
 		load(bluefrog);
 
@@ -919,10 +920,10 @@ int CreatureManagerImplementation::addCreature(lua_State *L) {
 	if (!creatureConfig.isValidTable())
 		return 1;
 
-	int planet = creatureConfig.getIntField("planet");
+	/*int planet = creatureConfig.getIntField("planet");
 
 	if (planet != instance->getZone()->getZoneID())
-		return 1;
+		return 1;*/
 
 	instance->lock();
 
@@ -933,6 +934,7 @@ int CreatureManagerImplementation::addCreature(lua_State *L) {
 
 	string stfname = creatureConfig.getStringField("stfName");
 	string name = creatureConfig.getStringField("name");
+
 
 	creature->setObjectCRC(creatureConfig.getIntField("objectCRC"));
 
@@ -950,7 +952,7 @@ int CreatureManagerImplementation::addCreature(lua_State *L) {
 		else
 			creature->setCharacterName(unicode(instance->makeCreatureName(name)));
 
-	creature->setTerrainName(Terrain::getTerrainName(planet));
+	//creature->setTerrainName(Terrain::getTerrainName(zone->get));
 
 
 	try {
@@ -1076,6 +1078,8 @@ bool CreatureManagerImplementation::hotLoadCreature(string name) {
 	SpawnInfo* spawnInfo = spawnInfoMap->get(name);
 	if(spawnInfo == NULL)
 		return false;
+
+	//spawnInfoMap->printBadSpawns();
 
 	try {
 		runFile(spawnInfo->getFileName(), L);
