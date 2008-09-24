@@ -199,7 +199,7 @@ void GameCommandHandler::init() {
 			"Prints your current HAM stats.",
 			"Usage: @HAMStats",
 			&HAMStats);
-	gmCommands->addCommand("buff", STAFF,
+	gmCommands->addCommand("buff", PRIVILEGED,
 			"Buffs your player.",
 			"Usage: @buff",
 			&buff);
