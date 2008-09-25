@@ -39,6 +39,7 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
+
 darthAttack1 = {
 	attackname = "darthAttack1",
 	animation = "combo_jedi_2_light",
@@ -47,9 +48,9 @@ darthAttack1 = {
 
 	range = 11,
 
-	damageRatio = 30,
+	damageRatio = 50,
 
-	speedRatio = 2,
+	speedRatio = 1,
 	coneAngle = 30,
 
 	areaRange = 0,
@@ -73,15 +74,81 @@ darthAttack1 = {
 AddRandomPoolAttackTargetSkill(darthAttack1)
 
 -----------------------------------------------
+
 darthAttack2 = {
 	attackname = "darthAttack2",
+	animation = "force_intimidate_chain",
+	
+	requiredWeaponType = JEDI,
+
+	range = 32,
+
+	damageRatio = 50,
+
+	speedRatio = 1,
+	coneAngle = 80,
+
+	areaRange = 0,
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 80,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+}
+
+AddRandomPoolAttackTargetSkill(darthAttack2)
+
+-----------------------------------------------
+darthAttack3 = {
+attackname = "darthAttack3",
+animation = "force_lightning_1_particle_level_5_medium",
+
+	requiredWeaponType = JEDI,
+	
+	range = 35,
+	damageRatio = 50,
+	speedRatio = 1,
+	areaRange = 0,
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 50,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "melee_block",
+	CbtSpamCounter = "melee_counter",
+	CbtSpamEvade = "melee_evade",
+	CbtSpamHit = "melee_hit",
+	CbtSpamMiss = "melee_miss",
+}
+
+AddRandomPoolAttackTargetSkill(darthAttack3)
+
+-----------------------------------------------
+
+darthAttack4 = {
+	attackname = "darthAttack4",
 	animation = "combo_jedi_2_light",
 
 	requiredWeaponType = JEDI,
 
 	range = 11,
 	coneAngle = 40,
-	damageRatio = 35,
+	damageRatio = 50,
 	speedRatio = 1.5,
 	accuracyBonus = 0,
 	
@@ -99,24 +166,24 @@ darthAttack2 = {
 	CbtSpamMiss = "saberpolearmdervish2_miss"
 }
 
-AddRandomPoolAttackTargetSkill(darthAttack2)
+AddRandomPoolAttackTargetSkill(darthAttack4)
 
 -----------------------------------------------------------------------
 
-darthAttack3 = {
-	attackname = "darthAttack3",
+darthAttack5 = {
+	attackname = "darthAttack5",
 	animation = "saberthrow_posture_change",
 
 	requiredWeaponType = JEDI,
 
 	range = 32,
-	damageRatio = 30,
+	damageRatio = 50,
 	speedRatio = 1.0,
 	coneAngle = 40,
 	accuracyBonus = 0,
 	
-	knockdownChance = 60,
-	postureDownChance = 0,
+	knockdownChance = 70,
+	postureDownChance = 70,
 	dizzyChance = 0,
 	blindChance = 0,
 	stunChance = 0,
@@ -129,12 +196,12 @@ darthAttack3 = {
 	CbtSpamMiss = "saberthrow3_miss"
 }
 
-AddRandomPoolAttackTargetSkill(darthAttack3)
+AddRandomPoolAttackTargetSkill(darthAttack5)
 
 -----------------------------------------------------------------------
 
-darthAttack4 = { 
-	attackname = "darthAttack4",
+darthAttack6 = { 
+	attackname = "darthAttack6",
 	animation = "combo_2d_light",
 
 	requiredWeaponType = JEDI,
@@ -172,6 +239,66 @@ darthAttack4 = {
 	CbtSpamMiss = "saberslash2_miss"
 }
 
-AddDotPoolAttackTargetSkill(darthAttack4)
+AddDotPoolAttackTargetSkill(darthAttack6)
+
+-----------------------------------------------------------------------
+
+darthAttack7 = { 
+	attackname = "darthAttack7",
+	animation = "force_lightning_1_arc_particle_level_5_medium",
+
+	requiredWeaponType = JEDI,
+	
+	range = 32,
+	damageRatio = 50,
+	speedRatio = 1.0,
+	coneAngle = 80,
+	accuracyBonus = 0,
+	
+	knockdownChance = 0,
+	postureDownChance = 0,
+	dizzyChance = 95,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "forcelightningcone2_block",
+	CbtSpamCounter = "forcelightningcone2_counter",
+    CbtSpamEvade = "forcelightningcone2_evade",
+    CbtSpamHit = "forcelightningcone2_hit",
+    CbtSpamMiss = "forcelightningcone2_miss"
+}
+
+AddDotPoolAttackTargetSkill(darthAttack7)
+
+-----------------------------------------------------------------------
+
+darthAttack8 = { 
+	attackname = "darthAttack8",
+	animation = "force_knockdown_1_arc_particle_level_1",
+
+	requiredWeaponType = JEDI,
+	
+	range = 32,
+	damageRatio = 50,
+	speedRatio = 1.0,
+	coneAngle = 50,
+	accuracyBonus = 0,
+	
+	knockdownChance = 95,
+	postureDownChance = 70,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "forceknockdown3_block",
+	CbtSpamCounter = "forceknockdown3_counter",
+	CbtSpamEvade = "forceknockdown3_evade",
+	CbtSpamHit = "forceknockdown3_hit",
+	CbtSpamMiss = "forceknockdown3_miss"
+}
+
+AddDotPoolAttackTargetSkill(darthAttack8)
 
 -----------------------------------------------------------------------

@@ -54,7 +54,7 @@ stormTrooper = Creature:new {
       level = 80,
       xp = 10000,
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
+      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
       healthMax = 8800,
       healthMin = 7200,

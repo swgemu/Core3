@@ -146,4 +146,4 @@ spawnCreatures(nightspider, 5, -5060.8, 3806.97, 40, 5)
 spawnCreatures(shaupaut, 5, -5060.8, 3806.97, 40, 5)
 
 -- Epic theed Spawn
---spawnCreatureInCell(mellichae, 5, 0.429564, 27, -120.732, 1688865)
+spawnCreatureInCell(mellichae, 5, 0.429564, 27, -120.732, 1688865)

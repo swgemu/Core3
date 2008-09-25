@@ -54,7 +54,7 @@ acklay = Creature:new {
       level = 157,
       xp = 28549,
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
       healthMax = 120000,
       healthMin = 100000,
