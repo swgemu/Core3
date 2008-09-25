@@ -1174,7 +1174,7 @@ bool CreatureImplementation::doMovement() {
 	float waypointX, waypointY, waypointZ;
 	uint64 cellID = 0;
 
-	float maxSpeed = speed;
+	float maxSpeed = speed + 2.5f;
 
 	if (aggroedCreature != NULL) {
 		waypointX = aggroedCreature->getPositionX();
@@ -1214,10 +1214,16 @@ bool CreatureImplementation::doMovement() {
 	if (dist < maxDistance) {
 		info("reached destintaion");
 
-		if (aggroedCreature == NULL)
+		if (aggroedCreature == NULL) {
 			resetPatrolPoints(false);
+			actualSpeed = 0;
+		}
 
-		actualSpeed = 0;
+		//actualSpeed = 0;
+
+		if(aggroedCreature != NULL && !aggroedCreature->isMoving()) {
+			actualSpeed == 0;
+		}
 
 		checkNewAngle(directionangle);
 
