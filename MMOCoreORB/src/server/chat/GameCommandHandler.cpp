@@ -1922,36 +1922,54 @@ void GameCommandHandler::spawn(StringTokenizer tokenizer,
 		cellid = 0;
 	}
 
+	float height = 1;
 	x = player->getPositionX();
 	y = player->getPositionY();
 
-	/*try {
+	if (tokenizer.hasMoreTokens())
+		height = tokenizer.getFloatToken();
 
-		if (tokenizer.hasMoreTokens()) {
-			tokenizer.getFloatToken(x);
-		}
-		if (tokenizer.hasMoreTokens()) {
-			tokenizer.getFloatToken(y);
-		}
+	if (tokenizer.hasMoreTokens()) {
+		x = tokenizer.getFloatToken();
+	}
 
-	} catch (...) {
+	if (tokenizer.hasMoreTokens()) {
+		y = tokenizer.getFloatToken();
+	}
 
-	}*/
+	if (height > 100)
+		height = 100;
 
-	Creature* creature = creatureManager->spawnCreature(objcrc, cellid, x, y, 0,
-			false, true);
+	if (height < .01f)
+		height = .01f;
+
+	if (x > 7680)
+		x = 7680;
+	if(x < -7680)
+		x = -7680;
+
+	if(y > 7680)
+		y = 7680;
+	if(y < -7680)
+		y = -7680;
+
+
+	Creature* creature = creatureManager->spawnCreature(objcrc, cellid, x, y,
+			0, false, true, height);
 
 	if (creature == NULL) {
 
 		creatureManager->hotLoadCreature(name);
 
-		creature = creatureManager->spawnCreature(objcrc, cellid, x, y, 0, false,
-				true);
+		creature = creatureManager->spawnCreature(objcrc, cellid, x, y, 0,
+				false, true, height);
 
 	}
 
-	if (creature != NULL)
+	if (creature != NULL) {
 		creature->setRespawnTimer(0);
+		creature->setHeight(height);
+	}
 	else
 		player->sendSystemMessage("Cannot spawn creature");
 

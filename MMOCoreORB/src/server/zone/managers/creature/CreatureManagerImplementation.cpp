@@ -523,7 +523,7 @@ ShuttleCreature* CreatureManagerImplementation::spawnShuttle(const string& Plane
 	}
 }
 
-Creature* CreatureManagerImplementation::spawnCreature(uint32 objcrc, uint64 cellid, float x, float y, int bitmask, bool baby, bool doLock) {
+Creature* CreatureManagerImplementation::spawnCreature(uint32 objcrc, uint64 cellid, float x, float y, int bitmask, bool baby, bool doLock, float height) {
 	lock(doLock);
 	Creature* creature = new Creature(getNextCreatureID());
 
@@ -590,6 +590,8 @@ Creature* CreatureManagerImplementation::spawnCreature(uint32 objcrc, uint64 cel
 		creature->setParent(getZone()->lookupObject(cellid));
 		creature->setDirection(0, 0, oY, oW);
 
+		if(height != 1)
+			creature->setHeight(height);
 
 		result.pop(); // remove table from stack
 

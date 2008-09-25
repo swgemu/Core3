@@ -1552,12 +1552,12 @@ void CreatureImplementation::queueRespawn() {
 	creatureState = RESPAWNING;
 
 	stringstream msg;
-	msg << "respawning creature with " << respawnTimer << "s timer";
 	info(msg);
 
 	removeFromQueue();
 
-	creatureManager->queueActivity(this, respawnTimer * 1000);
+	if(respawnTimer > 0)
+		creatureManager->queueActivity(this, respawnTimer * 1000);
 }
 
 void CreatureImplementation::setPatrolPoint(PatrolPoint* cord, bool doLock) {

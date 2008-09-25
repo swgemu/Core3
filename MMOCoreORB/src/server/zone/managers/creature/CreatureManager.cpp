@@ -151,7 +151,7 @@ void CreatureManager::unloadCreature(Creature* creature) {
 		((CreatureManagerImplementation*) _impl)->unloadCreature(creature);
 }
 
-Creature* CreatureManager::spawnCreature(unsigned int objcrc, unsigned long long cellid, float x, float y, int bitmask, bool baby, bool doLock) {
+Creature* CreatureManager::spawnCreature(unsigned int objcrc, unsigned long long cellid, float x, float y, int bitmask, bool baby, bool doLock, float height) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -164,10 +164,11 @@ Creature* CreatureManager::spawnCreature(unsigned int objcrc, unsigned long long
 		method.addSignedIntParameter(bitmask);
 		method.addBooleanParameter(baby);
 		method.addBooleanParameter(doLock);
+		method.addFloatParameter(height);
 
 		return (Creature*) method.executeWithObjectReturn();
 	} else
-		return ((CreatureManagerImplementation*) _impl)->spawnCreature(objcrc, cellid, x, y, bitmask, baby, doLock);
+		return ((CreatureManagerImplementation*) _impl)->spawnCreature(objcrc, cellid, x, y, bitmask, baby, doLock, height);
 }
 
 TrainerCreature* CreatureManager::spawnTrainer(const string& profession, const string& stfname, const string& name, int objCrc, unsigned long long cell, float x, float y, float z, float oy, float ow, bool doLock) {
@@ -386,7 +387,7 @@ Packet* CreatureManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		unloadCreature((Creature*) inv->getObjectParameter());
 		break;
 	case 15:
-		resp->insertLong(spawnCreature(inv->getUnsignedIntParameter(), inv->getUnsignedLongParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter(), inv->getBooleanParameter())->_getObjectID());
+		resp->insertLong(spawnCreature(inv->getUnsignedIntParameter(), inv->getUnsignedLongParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter(), inv->getBooleanParameter(), inv->getFloatParameter())->_getObjectID());
 		break;
 	case 16:
 		resp->insertLong(spawnTrainer(inv->getAsciiParameter(_param0_spawnTrainer__string_string_string_int_long_float_float_float_float_float_bool_), inv->getAsciiParameter(_param1_spawnTrainer__string_string_string_int_long_float_float_float_float_float_bool_), inv->getAsciiParameter(_param2_spawnTrainer__string_string_string_int_long_float_float_float_float_float_bool_), inv->getSignedIntParameter(), inv->getUnsignedLongParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getBooleanParameter())->_getObjectID());
@@ -464,8 +465,8 @@ void CreatureManagerAdapter::unloadCreature(Creature* creature) {
 	return ((CreatureManagerImplementation*) impl)->unloadCreature(creature);
 }
 
-Creature* CreatureManagerAdapter::spawnCreature(unsigned int objcrc, unsigned long long cellid, float x, float y, int bitmask, bool baby, bool doLock) {
-	return ((CreatureManagerImplementation*) impl)->spawnCreature(objcrc, cellid, x, y, bitmask, baby, doLock);
+Creature* CreatureManagerAdapter::spawnCreature(unsigned int objcrc, unsigned long long cellid, float x, float y, int bitmask, bool baby, bool doLock, float height) {
+	return ((CreatureManagerImplementation*) impl)->spawnCreature(objcrc, cellid, x, y, bitmask, baby, doLock, height);
 }
 
 TrainerCreature* CreatureManagerAdapter::spawnTrainer(const string& profession, const string& stfname, const string& name, int objCrc, unsigned long long cell, float x, float y, float z, float oy, float ow, bool doLock) {
