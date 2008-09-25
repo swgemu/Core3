@@ -96,27 +96,27 @@ jediKnight = Creature:new {
 
       attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s4_gen4.iff", -- File path to weapon -> object\xxx\xxx\xx
-      weaponName = "Darth Saber", -- Name ex. 'a Vibrolance'
-      weaponTemp = "sword_lightsaber_one_handed_s4_gen4", -- Weapon Template ex. 'lance_vibrolance'
-      weaponClass = "OneHandedJediWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+      weapon = "object/weapon/melee/2h_sword/crafted_saber/shared_sword_lightsaber_two_handed_s9_gen4.iff", -- File path to weapon -> object\xxx\xxx\xx
+      weaponName = "Knight Saber", -- Name ex. 'a Vibrolance'
+      weaponTemp = "sword_lightsaber_two_handed_s9_gen4", -- Weapon Template ex. 'lance_vibrolance'
+      weaponClass = "TwoHandedJediWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
       weaponEquipped = 1,
-      weaponMinDamage = 750,
-      weaponMaxDamage = 850,
+      weaponMinDamage = 850,
+      weaponMaxDamage = 1000,
       weaponAttackSpeed = 1,
       weaponDamageType = "LIGHTSABER", -- ELECTRICITY, KINETIC, etc
       weaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      alternateWeaponName = "", -- Name ex. 'a Vibrolance'
-      alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      alternateWeaponEquipped = 0,
-      alternateWeaponMinDamage = 0,
-      alternateWeaponMaxDamage = 0,
-      alternateWeaponAttackSpeed = 0,
-      alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+      alternateWeapon = "object/weapon/melee/polearm/crafted_saber/shared_sword_lightsaber_polearm_s2_gen4.iff", -- File path to weapon -> object\xxx\xxx\xx
+      alternateWeaponName = "Knight Saber", -- Name ex. 'a Vibrolance'
+      alternateWeaponTemp = "sword_lightsaber_polearm_s2_gen4", -- Weapon Template ex. 'lance_vibrolance'
+      alternateWeaponClass = "PolearmJediWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+      alternateWeaponEquipped = 1,
+      alternateWeaponMinDamage = 850,
+      alternateWeaponMaxDamage = 1000,
+      alternateWeaponAttackSpeed = 1,
+      alternateWeaponDamageType = "LIGHTSABER", -- ELECTRICITY, KINETIC, etc
+      alternateWeaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
@@ -135,7 +135,7 @@ jediKnight = Creature:new {
       meatType = "",
       meatMax = 0,
 
-      skills = { "darthAttack1", "darthAttack2", "darthAttack3", "darthAttack4" },
+      skills = { "darthAttack1", "darthAttack2", "darthAttack3", "darthAttack4", "darthAttack5", "darthAttack6", "darthAttack7", "darthAttack8" },
       respawnTimer = 3600,
 
       behaviorScript = "", -- Link to the behavior script for this object

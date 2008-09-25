@@ -96,12 +96,12 @@ mellichae = Creature:new {
 
       attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s4_gen4.iff", -- File path to weapon -> object\xxx\xxx\xx
-      weaponName = "Darth Saber", -- Name ex. 'a Vibrolance'
-      weaponTemp = "sword_lightsaber_one_handed_s4_gen4", -- Weapon Template ex. 'lance_vibrolance'
-      weaponClass = "OneHandedJediWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+      weapon = "object/weapon/melee/polearm/crafted_saber/shared_sword_lightsaber_polearm_s1_gen4.iff", -- File path to weapon -> object\xxx\xxx\xx
+      weaponName = "Mellichae Saber", -- Name ex. 'a Vibrolance'
+      weaponTemp = "sword_lightsaber_polearm_s1_gen4", -- Weapon Template ex. 'lance_vibrolance'
+      weaponClass = "PolearmJediWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
       weaponEquipped = 1,
-      weaponMinDamage = 850,
+      weaponMinDamage = 950,
       weaponMaxDamage = 1200,
       weaponAttackSpeed = 1.5,
       weaponDamageType = "LIGHTSABER", -- ELECTRICITY, KINETIC, etc
@@ -135,7 +135,7 @@ mellichae = Creature:new {
       meatType = "",
       meatMax = 0,
 
-      skills = { "darthAttack1", "darthAttack2", "darthAttack3", "darthAttack4" },
+      skills = { "darthAttack1", "darthAttack2", "darthAttack3", "darthAttack4", "darthAttack5", "darthAttack6", "darthAttack7", "darthAttack8" },
       respawnTimer = 3600,
 
       behaviorScript = "", -- Link to the behavior script for this object

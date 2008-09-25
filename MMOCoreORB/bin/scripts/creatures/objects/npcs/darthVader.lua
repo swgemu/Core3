@@ -101,8 +101,8 @@ darthVader = Creature:new {
       weaponTemp = "sword_lightsaber_one_handed_s4_gen4", -- Weapon Template ex. 'lance_vibrolance'
       weaponClass = "OneHandedJediWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
       weaponEquipped = 1,
-      weaponMinDamage = 750,
-      weaponMaxDamage = 950,
+      weaponMinDamage = 1200,
+      weaponMaxDamage = 1500,
       weaponAttackSpeed = 1.0,
       weaponDamageType = "LIGHTSABER", -- ELECTRICITY, KINETIC, etc
       weaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
@@ -135,7 +135,7 @@ darthVader = Creature:new {
       meatType = "",
       meatMax = 0,
 
-      skills = { "darthAttack1", "darthAttack2", "darthAttack3", "darthAttack4" },
+      skills = { "darthAttack1", "darthAttack2", "darthAttack3", "darthAttack4", "darthAttack5", "darthAttack6", "darthAttack7", "darthAttack8" },
       respawnTimer = 3600,
 
       behaviorScript = "", -- Link to the behavior script for this object

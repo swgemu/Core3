@@ -102,7 +102,7 @@ atAt = Creature:new {
 	weaponMinDamage = 450,
 	weaponMaxDamage = 600,
 	weaponAttackSpeed = 1.5,
-	weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
+	weaponDamageType = "BLAST", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "HEAVY", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx

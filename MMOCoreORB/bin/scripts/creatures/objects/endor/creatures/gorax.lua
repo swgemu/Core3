@@ -54,7 +54,7 @@ gorax = Creature:new {
       level = 300,
       xp = 28549,
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
       healthMax = 400000,
       healthMin = 390000,
