@@ -617,6 +617,10 @@ public:
 		return !isIncapacitated() && !isDead();
 	}
 
+	virtual void handleDeath() {
+		setPosture(DEAD_POSTURE);
+	}
+
 	inline bool isAttackableBy(CreatureObject* attacker) {
 		return !(creatureBitmask & 0x100);
 	}

@@ -275,6 +275,8 @@ public:
 
 	void setWillpowerWoundsBar(unsigned int wnds);
 
+	void handleDeath();
+
 	bool hasAttackDelay();
 
 	void clearAttackDelay();
@@ -1329,6 +1331,8 @@ public:
 	void setFocusWoundsBar(unsigned int wnds);
 
 	void setWillpowerWoundsBar(unsigned int wnds);
+
+	void handleDeath();
 
 	bool hasAttackDelay();
 
