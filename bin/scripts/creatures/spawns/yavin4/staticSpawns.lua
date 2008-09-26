@@ -43,3 +43,5 @@
 --global clusters
 
 spawnCreatureInCell(acklay, 9, 118.583, -33.9403, -319.481, 1627823)
+
+spawnCreatureInCell(palpatine, 9, -0.0130447, -43.2978, -153.352, 3435642)
