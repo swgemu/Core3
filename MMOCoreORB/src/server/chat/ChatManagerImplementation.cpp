@@ -363,13 +363,18 @@ void ChatManagerImplementation::handleEmote(Player* player, Message* pack) {
 		uint32 unkint = tokenizer.getIntToken();
 		uint32 unkint2 = tokenizer.getIntToken();
 
+		bool showtext = true;
+
+		if(unkint2 == 0)
+			showtext = false;
+
 		for (int i = 0; i < player->inRangeObjectCount(); ++i) {
 			SceneObject* object = (SceneObject*) (((SceneObjectImplementation*) player->getInRangeObject(i))->_this);
 
 			if (object->isPlayer()) {
 				Player* creature = (Player*) object;
 
-				Emote* emsg = new Emote(creature, player, targetid, emoteid);
+				Emote* emsg = new Emote(creature, player, targetid, emoteid, showtext);
 				creature->sendMessage(emsg);
 			}
 		}

@@ -229,6 +229,8 @@ interface CreatureObject implements SceneObject {
 	void setMindWoundsBar(unsigned int  wnds);
 	void setFocusWoundsBar(unsigned int  wnds);
 	void setWillpowerWoundsBar(unsigned int  wnds);
+
+	void handleDeath();
 	
 	boolean hasAttackDelay();
 	void clearAttackDelay();

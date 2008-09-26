@@ -211,6 +211,8 @@ public:
 
 	void revive();
 
+	void handleDeath();
+
 	void doClone();
 
 	void activateClone();
@@ -878,6 +880,8 @@ public:
 	void deathblow(Player* player);
 
 	void revive();
+
+	void handleDeath();
 
 	void doClone();
 
