@@ -135,7 +135,7 @@ jindaElder = Creature:new {
       meatType = "",
       meatMax = 0,
 
-      skills = { "", "", "" }
+      skills = { "jindaAttack01", "jindaAttack02", "jindaAttack03", "jindaAttack04", "jindaAttack05", "jindaAttack06", "jindaAttack07", "jindaAttack08", "jindaAttack09" },
       respawnTimer = 300,
 
       behaviorScript = "", -- Link to the behavior script for this object

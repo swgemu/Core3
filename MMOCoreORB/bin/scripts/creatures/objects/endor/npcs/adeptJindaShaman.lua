@@ -47,7 +47,7 @@ adeptJindaShaman = Creature:new {
       gender = "",
 
       name = "Adept Jinda shaman",
-      objectCRC = 1884909391, 
+      objectCRC = 176533841, 
       socialGroup = "Jinda Tribe",
       named = FALSE, 
 
@@ -135,10 +135,11 @@ adeptJindaShaman = Creature:new {
       meatType = "",
       meatMax = 0,
 
-      skills = { "", "", "" }
+      skills = { "jindaAttack01", "jindaAttack02", "jindaAttack03", "jindaAttack04", "jindaAttack05", "jindaAttack06", "jindaAttack07", "jindaAttack08", "jindaAttack09" },
       respawnTimer = 300,
+
 
       behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(adeptJindaShaman, 1884909391) --  Add to Global Table
+Creatures:addCreature(adeptJindaShaman, 176533841) --  Add to Global Table

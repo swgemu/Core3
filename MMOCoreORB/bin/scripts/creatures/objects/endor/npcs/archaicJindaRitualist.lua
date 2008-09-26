@@ -47,7 +47,7 @@ archaicJindaRitualist = Creature:new {
       gender = "",
 
       name = "Archaic Jinda ritualist",
-      objectCRC = 2896666141, 
+      objectCRC = 176533841, 
       socialGroup = "Jinda Tribe",
       named = FALSE, 
 
@@ -135,10 +135,10 @@ archaicJindaRitualist = Creature:new {
       meatType = "",
       meatMax = 0,
 
-      skills = { "", "", "" }
+      skills = { "jindaAttack01", "jindaAttack02", "jindaAttack03", "jindaAttack04", "jindaAttack05", "jindaAttack06", "jindaAttack07", "jindaAttack08", "jindaAttack09" },
       respawnTimer = 300,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(archaicJindaRitualist, 2896666141) --  Add to Global Table
+Creatures:addCreature(archaicJindaRitualist, 176533841) --  Add to Global Table

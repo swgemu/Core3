@@ -46,7 +46,7 @@ wiseJindaRitualist = Creature:new {
       faction = "Jinda Tribe",
       gender = "",
 
-      name = "wise Undo rigualist",
+      name = "wise Jinda ritualist",
       objectCRC = 2962201923, 
       socialGroup = "Jinda Tribe",
       named = FALSE, 
@@ -135,8 +135,10 @@ wiseJindaRitualist = Creature:new {
       meatType = "",
       meatMax = 0,
 
-      skills = { "", "", "" }
+
+       skills = { "jindaAttack01", "jindaAttack02", "jindaAttack03", "jindaAttack04", "jindaAttack05", "jindaAttack06", "jindaAttack07", "jindaAttack08", "jindaAttack09" },
       respawnTimer = 300,
+
 
       behaviorScript = "", -- Link to the behavior script for this object
 }
