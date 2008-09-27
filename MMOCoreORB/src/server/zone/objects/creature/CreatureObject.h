@@ -69,6 +69,8 @@ public:
 
 	unsigned int getDamage(CreatureObject* creature);
 
+	void removeFromDamageMap(CreatureObject* target);
+
 	bool isLootOwner(CreatureObject* creature);
 
 	CreatureObject* getLootOwner();
@@ -1125,6 +1127,8 @@ public:
 	void addDamage(CreatureObject* creature, unsigned int damage);
 
 	unsigned int getDamage(CreatureObject* creature);
+
+	void removeFromDamageMap(CreatureObject* target);
 
 	bool isLootOwner(CreatureObject* creature);
 
