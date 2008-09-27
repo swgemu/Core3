@@ -609,6 +609,7 @@ public:
 	void setMeditateState();
 
 	void addDamage(CreatureObject* creature, uint32 damage);
+	void removeFromDamageMap(CreatureObject* target);
 
 	bool isLootOwner(CreatureObject* creature);
 	CreatureObject* getLootOwner();

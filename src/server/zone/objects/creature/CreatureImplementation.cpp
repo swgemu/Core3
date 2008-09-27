@@ -1493,7 +1493,9 @@ void CreatureImplementation::deagro() {
 
 		if (isKiller() && aggroedCreature->isIncapacitated()
 				&& aggroedCreature->isPlayer()) {
+
 			aggroedCreature->handleDeath();
+			removeFromDamageMap(aggroedCreature);
 		}
 
 		try {
